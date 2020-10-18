@@ -18,7 +18,7 @@
 #include "UITreeViewItem.h"//
 #include "UIPdaAux.h"//
 #include "UIEncyclopediaArticleWnd.h"//
-#include "../EncyclopediaArticle.h"
+#include "..\EncyclopediaArticle.h"
 #include "../alife_registry_wrappers.h"
 #include "../actor.h"
 #include "../object_broker.h"

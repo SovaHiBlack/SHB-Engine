@@ -10,7 +10,7 @@
 #include "UIXmlInit.h"//
 #include "UIPdaMsgListItem.h"//
 #include "UIColorAnimatorWrapper.h"//
-#include "../InfoPortion.h"
+#include "..\InfoPortion.h"
 //#include "..\StringTable.h"
 
 CUIMessagesWindow::CUIMessagesWindow(){

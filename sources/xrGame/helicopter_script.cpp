@@ -1,6 +1,6 @@
 #include "stdafx.h"
 
-#include "helicopter.h"
+#include "Helicopter.h"
 #include "script_game_object.h"
 
 int CHelicopter::GetMovementState()

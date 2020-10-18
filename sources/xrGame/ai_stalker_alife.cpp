@@ -17,7 +17,7 @@
 #include "Pda.h"
 //#include "EatableItem.h"
 #include "Medkit.h"
-#include "weapon.h"
+#include "Weapon.h"
 #include "CustomDetector.h"
 #include "ef_storage.h"
 #include "ef_primary.h"

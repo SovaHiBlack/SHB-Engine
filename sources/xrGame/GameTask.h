@@ -1,7 +1,7 @@
 #pragma once
 
 #include "EncyclopediaArticle_defs.h"
-#include "GameTaskDefs.h"
+#include "GameTask_defs.h"
 #include "script_export_space.h"
 
 class CGameTaskManager;

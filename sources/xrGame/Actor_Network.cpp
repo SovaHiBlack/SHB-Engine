@@ -15,7 +15,7 @@
 #include "Level.h"
 #include "xr_level_controller.h"
 #include "game_cl_base.h"
-#include "infoportion.h"
+#include "InfoPortion.h"
 #include "alife_registry_wrappers.h"
 #include "..\ENGINE\skeletonanimated.h"
 #include "client_spawn_manager.h"
@@ -28,7 +28,7 @@
 
 #include "actor_anim_defs.h"
 
-#include "map_manager.h"
+#include "MapManager.h"
 #include "HUDManager.h"//
 #include "ui/UIArtefactPanel.h"//
 #include "ui/UIMainIngameWnd.h"//

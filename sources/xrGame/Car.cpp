@@ -8,7 +8,7 @@
 
 #include "hit.h"
 #include "PHDestroyable.h"
-#include "car.h"
+#include "Car.h"
 #include "HUDManager.h"//
 #include "CameraLook.h"
 #include "camerafirsteye.h"

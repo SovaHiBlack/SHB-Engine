@@ -2,7 +2,7 @@
 
 #include "UIDialogWnd.h"//
 #include "UIPdaAux.h"//
-#include "../EncyclopediaArticle_defs.h"
+#include "..\EncyclopediaArticle_defs.h"
 
 class CInventoryOwner;
 class CUIFrameLineWnd;

@@ -4,6 +4,7 @@
 //////////////////////////////////////////////////////////////////////
 
 #include "stdafx.h"
+
 #include "RocketLauncher.h"
 #include "CustomRocket.h"
 #include "xrserver_objects_alife_items.h"
@@ -15,10 +16,11 @@ CRocketLauncher::CRocketLauncher()
 {
 //	m_pRocket =  NULL;
 }
+
 CRocketLauncher::~CRocketLauncher()
-{
-}
-void  CRocketLauncher::Load	(LPCSTR section)
+{ }
+
+void CRocketLauncher::Load	(LPCSTR section)
 {
 	m_fLaunchSpeed = pSettings->r_float(section, "launch_speed");
 }
@@ -75,14 +77,14 @@ void CRocketLauncher::DetachRocket(u16 rocket_id, bool bLaunch)
 	{
 		VERIFY( (It != m_rockets.end())||
 			(It_l != m_launched_rockets.end()) );
-	};
+	}
 
 	if( It != m_rockets.end() )
 	{
 		(*It)->m_bLaunched	= bLaunch;
 		(*It)->H_SetParent	(NULL);
 		m_rockets.erase		(It);
-	};
+	}
 
 	if( It_l != m_launched_rockets.end() )
 	{
@@ -91,9 +93,6 @@ void CRocketLauncher::DetachRocket(u16 rocket_id, bool bLaunch)
 		m_launched_rockets.erase	(It_l);
 	}
 }
-
-
-
 
 void CRocketLauncher::LaunchRocket(const Fmatrix& xform,  
 								   const Fvector& vel, 

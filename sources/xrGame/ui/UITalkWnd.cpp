@@ -11,8 +11,8 @@
 #include "../character_info.h"
 #include "../level.h"
 
-#include "../PhraseDialog.h"
-#include "../PhraseDialogManager.h"
+#include "..\PhraseDialog.h"
+#include "..\PhraseDialogManager.h"
 
 #include "../game_cl_base.h"
 #include "..\StringTable.h"

@@ -14,7 +14,6 @@ struct GAME_NEWS_DATA : public IPureSerializeObject<IReader,IWriter>
 	virtual void		load				(IReader&);
 	virtual void		save				(IWriter&);
 
-
 	shared_str			news_text;
 	int					show_time;
 
@@ -28,7 +27,6 @@ struct GAME_NEWS_DATA : public IPureSerializeObject<IReader,IWriter>
 private:
 	//полный текст новостей, формируется при первом обращении
 	xr_string full_news_text;
-
 };
 
 DEFINE_VECTOR(GAME_NEWS_DATA, GAME_NEWS_VECTOR, GAME_NEWS_IT);

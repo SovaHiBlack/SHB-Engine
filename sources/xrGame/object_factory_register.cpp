@@ -52,9 +52,9 @@
 
 #include "hit.h"
 #include "PHDestroyable.h"
-#include "car.h"
+#include "Car.h"
 
-#include "helicopter.h"
+#include "Helicopter.h"
 
 #include "MercuryBall.h"
 #include "BlackDrops.h"
@@ -70,25 +70,25 @@
 #include "GraviArtifact.h"
 
 #include "WeaponAmmo.h"
-#include "weaponFN2000.h"
-#include "weaponAK74.h"
-#include "weaponLR300.h"
-#include "weaponHPSA.h"
-#include "weaponPM.h"
-#include "weaponFORT.h"
-#include "weaponBINOCULARS.h"
-#include "weaponShotgun.h"
-#include "weaponsvd.h"
-#include "weaponsvu.h"
-#include "weaponrpg7.h"
-#include "weaponval.h"
-#include "weaponvintorez.h"
-#include "weaponwalther.h"
-#include "weaponusp45.h"
-#include "weapongroza.h"
-#include "weaponknife.h"
-#include "weaponBM16.h"
-#include "weaponRG6.h"
+#include "WeaponFN2000.h"
+#include "WeaponAK74.h"
+#include "WeaponLR300.h"
+#include "WeaponHPSA.h"
+#include "WeaponPM.h"
+#include "WeaponFORT.h"
+#include "WeaponBinoculars.h"
+#include "WeaponShotgun.h"
+#include "WeaponSVD.h"
+#include "WeaponSVU.h"
+#include "WeaponRPG7.h"
+#include "WeaponVal.h"
+#include "WeaponVintorez.h"
+#include "WeaponWalther.h"
+#include "WeaponUSP45.h"
+#include "WeaponGroza.h"
+#include "WeaponKnife.h"
+#include "WeaponBM16.h"
+#include "WeaponRG6.h"
 #include "WeaponMounted.h"
 #include "WeaponStatMgun.h"
 
@@ -96,7 +96,7 @@
 #include "Scope.h"
 #include "Silencer.h"
 
-#include "bolt.h"
+#include "Bolt.h"
 #include "Medkit.h"
 #include "Antirad.h"//==>
 #include "FoodItem.h"
@@ -111,33 +111,33 @@
 #include "MilitaryOutfit.h"
 #include "ExoOutfit.h"
 
-#include "f1.h"
-#include "rgd5.h"
+#include "GrenadeF1.h"
+#include "GrenadeRGD5.h"
 
-#include "explosiverocket.h"
+#include "ExplosiveRocket.h"
 
-#include "customzone.h"
-#include "mosquitobald.h"
-#include "mincer.h"
-#include "gravizone.h"
-#include "radioactivezone.h"
-#include "level_changer.h"
-#include "script_zone.h"
-#include "team_base_zone.h"
-#include "torridZone.h"
+#include "CustomZone.h"
+#include "MosquitoBald.h"
+#include "Mincer.h"
+#include "GraviZone.h"
+#include "RadioactiveZone.h"
+#include "LevelChanger.h"
+#include "ScriptZone.h"
+#include "TeamBaseZone.h"
+#include "TorridZone.h"
 #include "ZoneVisual.h"
-#include "hairszone.h"
-#include "amebazone.h"
-#include "nogravityzone.h"
+#include "HairsZone.h"
+#include "AmebaZone.h"
+#include "NoGravityZone.h"
 #include "SimpleDetector.h"
 
 #include "torch.h"
 #include "Pda.h"
 
-#include "searchlight.h"
+#include "Projector.h"
 
 #include "HangingLamp.h"
-#include "physicobject.h"
+#include "PhysicObject.h"
 #include "script_object.h"
 #include "BreakableObject.h"
 #include "PhysicsSkeletonObject.h"
@@ -147,8 +147,8 @@
 #include "game_cl_single.h"
 
 #include "ui/UIGameSP.h"//
-#include "climableobject.h"
-#include "space_restrictor.h"
+#include "ClimableObject.h"
+#include "SpaceRestrictor.h"
 #include "SmartZone.h"
 #include "InventoryBox.h"
 
@@ -282,8 +282,8 @@ void CObjectFactory::register_classes	()
 	ADD(CExoOutfit				,CSE_ALifeItemCustomOutfit		,CLSID_EQUIPMENT_EXO			,"equ_exo");
 
 	// Grenades
-	ADD(CF1						,CSE_ALifeItemGrenade			,CLSID_GRENADE_F1				,"wpn_grenade_f1");
-	ADD(CRGD5					,CSE_ALifeItemGrenade			,CLSID_GRENADE_RGD5				,"wpn_grenade_rgd5");
+	ADD(CGrenadeF1,CSE_ALifeItemGrenade			,CLSID_GRENADE_F1				,"wpn_grenade_f1");
+	ADD(CGrenadeRGD5,CSE_ALifeItemGrenade			,CLSID_GRENADE_RGD5				,"wpn_grenade_rgd5");
 
 	// Rockets
 	ADD(CExplosiveRocket		,CSE_Temporary					,CLSID_OBJECT_G_RPG7			,"wpn_grenade_rpg7");

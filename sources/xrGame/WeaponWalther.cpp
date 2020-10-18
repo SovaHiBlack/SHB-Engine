@@ -1,14 +1,14 @@
 #include "stdafx.h"
 
-#include "weaponwalther.h"
+#include "WeaponWalther.h"
 
-CWeaponWalther::CWeaponWalther(void) : CWeaponPistol("WALTHER")
+CWeaponWalther::CWeaponWalther( ) : CWeaponPistol("WALTHER")
 {
 	m_weight = .5f;
 	m_slot = 1;
 }
 
-CWeaponWalther::~CWeaponWalther(void)
+CWeaponWalther::~CWeaponWalther( )
 { }
 
 using namespace luabind;

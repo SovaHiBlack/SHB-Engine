@@ -1,11 +1,12 @@
 #include "stdafx.h"
+
 #include "CustomDetector.h"
-#include "customzone.h"
+#include "CustomZone.h"
 #include "HUDManager.h"//
 #include "Artefact.h"
 #include "inventory.h"
 #include "level.h"
-#include "map_manager.h"
+#include "MapManager.h"
 #include "cameraEffector.h"
 #include "actor.h"
 #include "ai_sounds.h"

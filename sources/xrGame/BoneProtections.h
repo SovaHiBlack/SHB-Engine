@@ -17,4 +17,3 @@ struct SBoneProtections{
 	float				getBoneArmour		(s16 bone_id);
 	BOOL				getBonePassBullet	(s16 bone_id);
 };
-

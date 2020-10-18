@@ -1,11 +1,11 @@
 #include "stdafx.h"
 
-#include "weaponsvd.h"
+#include "WeaponSVD.h"
 
-CWeaponSVD::CWeaponSVD(void) : CWeaponCustomPistol("SVD")
+CWeaponSVD::CWeaponSVD( ) : CWeaponCustomPistol("SVD")
 { }
 
-CWeaponSVD::~CWeaponSVD(void)
+CWeaponSVD::~CWeaponSVD( )
 { }
 
 void CWeaponSVD::switch2_Fire	()

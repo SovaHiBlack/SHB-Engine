@@ -3,7 +3,7 @@
 #include "InfoPortion.h"
 #include "GameObject.h"
 #include "EncyclopediaArticle.h"
-#include "gametask.h"
+#include "GameTask.h"
 #include "ai_space.h"
 #include "alife_simulator.h"
 #include "alife_story_registry.h"

@@ -5,7 +5,7 @@
 #include "PhysicsShellHolder.h"
 #include "level.h"
 #include "hit.h"
-#include "phdestroyable.h"
+#include "PHDestroyable.h"
 #include "xrmessages.h"
 #include "..\ENGINE\SkeletonCustom.h"
 #include "PHWorld.h"

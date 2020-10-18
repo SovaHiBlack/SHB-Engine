@@ -12,7 +12,7 @@
 #include "../../inventoryowner.h"
 #include "../../script_entity.h"
 #include "../../sound_player.h"
-#include "../../AI_PhraseDialogManager.h"
+#include "..\..\AI_PhraseDialogManager.h"
 #include "../../script_export_space.h"
 
 class CInventoryItem;

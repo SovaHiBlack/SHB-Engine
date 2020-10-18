@@ -1,9 +1,11 @@
 #include "stdafx.h"
-#include "mosquitobald.h"
+
+#include "MosquitoBald.h"
 #include "HUDManager.h"//
 #include "ParticlesObject.h"
 #include "level.h"
-#include "physicsshellholder.h"
+#include "PhysicsShellHolder.h"
+
 CMosquitoBald::CMosquitoBald(void) 
 {
 	m_dwDeltaTime			= 0;

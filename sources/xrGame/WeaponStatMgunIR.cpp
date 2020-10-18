@@ -1,7 +1,7 @@
 #include "stdafx.h"
+
 #include "WeaponStatMgun.h"
 #include "xr_level_controller.h"
-
 
 void CWeaponStatMgun::OnMouseMove			(int dx, int dy)
 {

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "GameTaskDefs.h"
+#include "GameTask_defs.h"
 #include "object_interfaces.h"
 
 class CGameTaskWrapper;

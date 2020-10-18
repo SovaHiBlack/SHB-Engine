@@ -1,5 +1,6 @@
 #include "stdafx.h"
-#include "helicopter.h"
+
+#include "Helicopter.h"
 #include "ExplosiveRocket.h"
 #include "xrMessages.h"
 #include "../ENGINE/net_utils.h"

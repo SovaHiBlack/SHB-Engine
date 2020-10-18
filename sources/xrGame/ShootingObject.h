@@ -32,7 +32,6 @@ protected:
 	//ID персонажа который иницировал действие
 	u16			m_iCurrentParentID;
 
-
 //////////////////////////////////////////////////////////////////////////
 // Fire Params
 //////////////////////////////////////////////////////////////////////////
@@ -49,6 +48,7 @@ protected:
 
 	virtual void			FireStart			();
 	virtual void			FireEnd				();
+
 public:
 	IC BOOL					IsWorking			()	const	{return bWorking;}
 	virtual BOOL			ParentMayHaveAimBullet()		{return FALSE;}
@@ -80,7 +80,6 @@ protected:
 	float					m_fMinRadius;
 	float					m_fMaxRadius;
 
-
 //////////////////////////////////////////////////////////////////////////
 // Lights
 //////////////////////////////////////////////////////////////////////////
@@ -97,7 +96,7 @@ protected:
 	float					light_time;
 	//включение подсветки во время выстрела
 	bool					m_bLightShotEnabled;
-protected:
+
 	void					Light_Create		();
 	void					Light_Destroy		();
 
@@ -135,23 +134,24 @@ protected:
 	virtual void			UpdateFlameParticles();
 
 	//партиклы дыма
-	virtual void			StartSmokeParticles	(const Fvector& play_pos,
-												 const Fvector& parent_vel);
+	virtual void			StartSmokeParticles	(const Fvector& play_pos, const Fvector& parent_vel);
 
 	//партиклы полосы от пули
 	virtual void			StartShotParticles	();
 
 	//партиклы гильз
-	virtual void			OnShellDrop			(const Fvector& play_pos,
-												 const Fvector& parent_vel);
+	virtual void			OnShellDrop			(const Fvector& play_pos, const Fvector& parent_vel);
+
 protected:
 	//имя пратиклов для гильз
 	shared_str				m_sShellParticles;
+
 public:
 	Fvector					vLoadedShellPoint;
 	float					m_fPredBulletTime;
 	float					m_fTimeToAim;
 	BOOL					m_bUseAimBullet;
+
 protected:
 	//имя пратиклов для огня
 	shared_str				m_sFlameParticlesCurrent;

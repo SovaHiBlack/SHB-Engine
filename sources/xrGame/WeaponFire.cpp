@@ -3,20 +3,18 @@
 //////////////////////////////////////////////////////////////////////
 
 #include "stdafx.h"
+
 #include "Weapon.h"
 #include "WeaponHUD.h"
 #include "ParticlesObject.h"
 #include "HUDManager.h"//
 #include "entity.h"
 #include "actor.h"
-
 #include "actoreffector.h"
 #include "effectorshot.h"
-
 #include "level_bullet_manager.h"
 
 #define FLAME_TIME 0.05f
-
 
 float _nrand(float sigma)
 {
@@ -68,7 +66,6 @@ void CWeapon::FireTrace		(const Fvector& P, const Fvector& D)
 //	Msg("Deterioration = %f", Deterioration);
 	ChangeCondition(-GetWeaponDeterioration()*l_cartridge.m_impair);
 
-	
 	float fire_disp				= GetFireDispersion(true);
 
 	bool SendHit = SendHitAllowed(H_Parent());
@@ -83,7 +80,6 @@ void CWeapon::FireTrace		(const Fvector& P, const Fvector& D)
 	if(m_bLightShotEnabled) 
 		Light_Start			();
 
-	
 	// Ammo
 	m_magazine.pop_back	();
 	--iAmmoElapsed;
@@ -98,6 +94,7 @@ void CWeapon::Fire2Start()
 { 
 	bWorking2=true;	
 }
+
 void CWeapon::Fire2End	()
 { 
 	//принудительно останавливать зацикленные партиклы
@@ -127,15 +124,16 @@ void CWeapon::FireEnd				()
 	ClearShotEffector();
 }
 
-
 void CWeapon::StartFlameParticles2	()
 {
 	CShootingObject::StartParticles (m_pFlameParticles2, *m_sFlameParticles2, get_LastFP2());
 }
+
 void CWeapon::StopFlameParticles2	()
 {
 	CShootingObject::StopParticles (m_pFlameParticles2);
 }
+
 void CWeapon::UpdateFlameParticles2	()
 {
 	if (m_pFlameParticles2)			CShootingObject::UpdateParticles (m_pFlameParticles2, get_LastFP2());

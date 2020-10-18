@@ -12,7 +12,7 @@
 
 #include "../CustomOutfit.h"
 
-#include "../weapon.h"
+#include "..\Weapon.h"
 
 #include "../script_process.h"
 
@@ -23,7 +23,7 @@
 
 using namespace InventoryUtilities;
 
-#include "../InfoPortion.h"
+#include "..\InfoPortion.h"
 #include "../level.h"
 #include "../game_base_space.h"
 #include "../entitycondition.h"

@@ -4,7 +4,7 @@
 #include "PHSkeleton.h"
 #include "Entity_Alive.h"
 #include "PHSoundPlayer.h"
-#include "Phdestroyable.h"
+#include "PHDestroyable.h"
 #include "character_hit_animations.h"
 
 class CPhysicsShell;

@@ -7,6 +7,7 @@ class CHudItem;
 struct weapon_hud_value: public shared_value
 {
 	CKinematicsAnimated*	m_animations;
+
 public:
 	int					m_fire_bone;
 	Fvector				m_fp_offset;
@@ -14,6 +15,7 @@ public:
 	Fvector				m_sp_offset;
 
 	Fmatrix				m_offset;
+
 public:
 	virtual				~weapon_hud_value		();
 	BOOL				load					(const shared_str& section, CHudItem* owner);
@@ -30,6 +32,7 @@ protected:
 						on_new_pred				(CHudItem* _owner):owner(_owner){}
 		BOOL			operator()				(const shared_str& key, weapon_hud_value* val) const {return val->load(key,owner);}
 	};
+
 public:
 	void				create					(shared_str key, CHudItem* owner)
 	{	
@@ -69,6 +72,7 @@ class CWeaponHUD
 	float				m_fZoomRotateX;
 	float				m_fZoomRotateY;
 	Fvector				m_fZoomOffset;
+
 public: 
 						CWeaponHUD		(CHudItem* pHudItem);
 						~CWeaponHUD		();

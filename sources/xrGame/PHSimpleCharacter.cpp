@@ -13,7 +13,7 @@
 #include "level.h"
 #include "gamemtllib.h"
 #include "GameObject.h"
-#include "physicsshellholder.h"
+#include "PhysicsShellHolder.h"
 #include "..\ENGINE\skeletoncustom.h"
 #include "PHSimpleCharacterInline.h"
 #include "IDamageSource.h"

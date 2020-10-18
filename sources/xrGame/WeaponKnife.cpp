@@ -25,7 +25,6 @@ CWeaponKnife::CWeaponKnife() : CWeapon("KNIFE")
 CWeaponKnife::~CWeaponKnife()
 {
 	HUD_SOUND::DestroySound(m_sndShot);
-
 }
 
 void CWeaponKnife::Load	(LPCSTR section)
@@ -103,12 +102,11 @@ void CWeaponKnife::OnStateSwitch	(u32 S)
 		}break;
 	}
 }
-	
 
 void CWeaponKnife::KnifeStrike(const Fvector& pos, const Fvector& dir)
 {
 	CCartridge						cartridge; 
-	cartridge.m_buckShot			= 1;				
+	cartridge.m_buckShot			= 1;
 	cartridge.m_impair				= 1;
 	cartridge.m_kDisp				= 1;
 	cartridge.m_kHit				= 1;
@@ -137,7 +135,6 @@ void CWeaponKnife::KnifeStrike(const Fvector& pos, const Fvector& dir)
 										cartridge, 
 										SendHit);
 }
-
 
 void CWeaponKnife::OnAnimationEnd(u32 state)
 {
@@ -175,8 +172,7 @@ void CWeaponKnife::OnAnimationEnd(u32 state)
 }
 
 void CWeaponKnife::state_Attacking	(float)
-{
-}
+{ }
 
 void CWeaponKnife::switch2_Attacking	(u32 state)
 {
@@ -221,7 +217,7 @@ void CWeaponKnife::switch2_Showing	()
 }
 
 void CWeaponKnife::FireStart()
-{	
+{
 	inherited::FireStart();
 	SwitchState			(eFire);
 }
@@ -287,9 +283,22 @@ void CWeaponKnife::StartIdleAnim()
 {
 	m_pHUD->animDisplay(mhud_idle[Random.randI(mhud_idle.size())], TRUE);
 }
+
 void CWeaponKnife::GetBriefInfo(xr_string& str_name, xr_string& icon_sect_name, xr_string& str_count)
 {
 	str_name		= NameShort();
 	str_count		= "";
 	icon_sect_name	= *cNameSect();
+}
+
+using namespace luabind;
+
+#pragma optimize("s",on)
+void CWeaponKnife::script_register(lua_State* L)
+{
+	module(L)
+		[
+			class_<CWeaponKnife, CGameObject>("CWeaponKnife")
+			.def(constructor<>( ))
+		];
 }

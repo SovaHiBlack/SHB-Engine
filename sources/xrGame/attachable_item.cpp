@@ -7,7 +7,8 @@
 ////////////////////////////////////////////////////////////////////////////
 
 #include "stdafx.h"
-#include "physicsshellholder.h"
+
+#include "PhysicsShellHolder.h"
 #include "attachable_item.h"
 #include "inventoryowner.h"
 #include "inventory.h"

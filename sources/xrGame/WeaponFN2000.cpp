@@ -12,8 +12,7 @@ CWeaponFN2000::CWeaponFN2000() : CWeaponMagazined("FN2000",SOUND_TYPE_WEAPON_SNI
 }
 
 CWeaponFN2000::~CWeaponFN2000()
-{
-}
+{ }
 
 using namespace luabind;
 

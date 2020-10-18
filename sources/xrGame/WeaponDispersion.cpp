@@ -4,7 +4,7 @@
 
 #include "stdafx.h"
 
-#include "weapon.h"
+#include "Weapon.h"
 #include "inventoryowner.h"
 #include "actor.h"
 #include "inventory_item_impl.h"
@@ -12,7 +12,6 @@
 #include "actoreffector.h"
 #include "effectorshot.h"
 #include "EffectorShotX.h"
-
 
 //возвращает 1, если оружие в отличном состоянии и >1 если повреждено
 float CWeapon::GetConditionDispersionFactor() const
@@ -42,7 +41,6 @@ float CWeapon::GetFireDispersion	(float cartridge_k)
 
 	return fire_disp;
 }
-
 
 //////////////////////////////////////////////////////////////////////////
 // Для эффекта отдачи оружия
@@ -74,7 +72,6 @@ void	CWeapon::ClearShotEffector	()
 	CInventoryOwner* pInventoryOwner = smart_cast<CInventoryOwner*>(H_Parent());
 	if (pInventoryOwner)
 		pInventoryOwner->on_weapon_hide	(this);
-
 };
 
 /**

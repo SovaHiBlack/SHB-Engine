@@ -40,7 +40,6 @@ public:
 	virtual CWeapon			*cast_weapon			()					{return this;}
 	virtual CWeaponMagazined*cast_weapon_magazined	()					{return 0;}
 
-
 	//serialization
 	virtual void			save				(NET_Packet &output_packet);
 	virtual void			load				(IReader &input_packet);
@@ -79,7 +78,6 @@ public:
 //////////////////////////////////////////////////////////////////////////
 //  Network
 //////////////////////////////////////////////////////////////////////////
-
 public:
 	virtual bool			can_kill			() const;
 	virtual CInventoryItem	*can_kill			(CInventory *inventory) const;
@@ -87,6 +85,7 @@ public:
 	virtual bool			ready_to_kill		() const;
 	virtual bool			NeedToDestroyObject	() const; 
 	virtual ALife::_TIME_ID	TimePassedAfterIndependant() const;
+
 protected:
 	//время удаления оружия
 	ALife::_TIME_ID			m_dwWeaponRemoveTime;
@@ -136,14 +135,13 @@ public:
 	// Does weapon need's update?
 	BOOL					IsUpdating			();
 
-
 	BOOL					IsMisfire			() const;
 	BOOL					CheckForMisfire		();
-
 
 	BOOL					AutoSpawnAmmo		() const		{ return m_bAutoSpawnAmmo; };
 	bool					IsTriStateReload	() const		{ return m_bTriStateReload;}
 	EWeaponSubStates		GetReloadState		() const		{ return (EWeaponSubStates)m_sub_state;}
+
 protected:
 	bool					m_bTriStateReload;
 	u8						m_sub_state;
@@ -153,6 +151,7 @@ protected:
 	bool					bMisfire;				
 
 	BOOL					m_bAutoSpawnAmmo;
+
 //////////////////////////////////////////////////////////////////////////
 //  Weapon Addons
 //////////////////////////////////////////////////////////////////////////
@@ -191,6 +190,7 @@ public:
 
 	u8		GetAddonsState						()		const		{return m_flagsAddOnState;};
 	void	SetAddonsState						(u8 st)	{m_flagsAddOnState=st;}//dont use!!! for buy menu only!!!
+
 protected:
 	//состояние подключенных аддонов
 	u8 m_flagsAddOnState;
@@ -232,8 +232,8 @@ protected:
 	//мы перемещаем HUD  
 	float			m_fZoomRotationFactor;
 	bool			m_bHideCrosshairInZoom;
+	
 public:
-
 	IC bool					IsZoomEnabled		()	const	{return m_bZoomEnabled;}
 	virtual	void			ZoomInc				(){};
 	virtual	void			ZoomDec				(){};
@@ -305,6 +305,7 @@ protected:
 	IC		void			UpdateFireDependencies	()			{ if (dwFP_Frame==Device.dwFrame) return; UpdateFireDependencies_internal(); };
 
 	virtual void			LoadFireParams		(const char* section, const char* prefix);
+
 public:	
 	IC		const Fvector&	get_LastFP				()			{ UpdateFireDependencies(); return m_firedeps.vLastFP;	}
 	IC		const Fvector&	get_LastFP2				()			{ UpdateFireDependencies(); return m_firedeps.vLastFP2;	}
@@ -472,6 +473,7 @@ protected:
 	// therefore we should hold them by ourself :-((
 	float					m_addon_holder_range_modifier;
 	float					m_addon_holder_fov_modifier;
+
 public:
 	virtual	void			modify_holder_params		(float &range, float &fov) const;
 	virtual bool			use_crosshair				()	const {return true;}

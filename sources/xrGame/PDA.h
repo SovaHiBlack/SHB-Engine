@@ -3,7 +3,7 @@
 #include "..\ENGINE\feel_touch.h"
 #include "inventory_item_object.h"
 
-#include "InfoPortionDefs.h"
+#include "InfoPortion_defs.h"
 #include "character_info_defs.h"
 
 #include "PdaMsg.h"

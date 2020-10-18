@@ -28,13 +28,12 @@ void SHeliMovementState::Load(const char* section)
 	LinearAcc_fw			= pSettings->r_float(section,"path_linear_acc_fw");
 	LinearAcc_bk			= pSettings->r_float(section,"path_linear_acc_bk");
 	if(pSettings->line_exist(section,"flag_by_new_acc"))
-		isAdnAcc				= pSettings->r_float(section,"flag_by_new_acc");		
+		isAdnAcc				= pSettings->r_float(section,"flag_by_new_acc");
 	else
 		isAdnAcc				= 0;
 	onPointRangeDist		= pSettings->r_float(section,"on_point_range_dist");
 	maxLinearSpeed			= pSettings->r_float(section,"velocity");
 	min_altitude			= pSettings->r_float(section,"min_altitude");
-
 
 	float y0				= pSettings->r_float(section,"path_angular_sp_pitch_0");
 	PitchSpB				= y0;
@@ -101,8 +100,8 @@ void SHeliMovementState::reinit()
 	parent->XFORM().getHPB		(currPathH, currPathP, bbb);
 
 	speedInDestPoint			= 0.0f;
-
 }
+
 float SHeliMovementState::GetDistanceToDestPosition()
 {
 	return desiredPoint.distance_to(currP);
@@ -141,6 +140,7 @@ void SHeliMovementState::UpdateMovToPoint()
 		type = eMovNone;
 	}
 }
+
 extern float STEP;
 bool SHeliMovementState::AlreadyOnPoint()
 {
@@ -190,8 +190,8 @@ void SHeliMovementState::getPathAltitude (Fvector& point, float base_altitude)
 	float maxY = boundingVolume.max.y+base_altitude;
 	clamp (point.y,minY,maxY);
 	VERIFY( _valid(point) );
-
 }
+
 void SHeliMovementState::SetDestPosition(Fvector* pos)
 {
 	desiredPoint = *pos;
@@ -242,7 +242,6 @@ void SHeliMovementState::save(NET_Packet &output_packet)
 
 	output_packet.w_vec3	(currP);
 
-
 	output_packet.w_float	(currPathH);
 	output_packet.w_float	(currPathP);
 	
@@ -278,7 +277,6 @@ void SHeliMovementState::load(IReader &input_packet)
 
 	input_packet.r_fvector3		(currP);
 
-
 	currPathH			=		input_packet.r_float();
 	currPathP			=		input_packet.r_float();
 
@@ -295,10 +293,10 @@ void SHeliMovementState::load(IReader &input_packet)
 		int idx = input_packet.r_s32();
 		currPatrolVertex =  currPatrolPath->vertex(idx);
 	}
+
 	if(type==eMovRoundPath){
 		goByRoundPath(round_center, round_radius, !round_reverse);
 	}
-
 }
 
 float SHeliMovementState::GetSafeAltitude()
@@ -325,7 +323,6 @@ void SHeliMovementState::CreateRoundPoints(Fvector center, float radius, float s
 		round_points.push_back( STmpPt(new_pt,dir_h) );
 		dir_h	+= td;
 	}
-
 }
 
 void SHeliMovementState::goByRoundPath(Fvector center_, float radius_, bool clockwise_)
@@ -337,7 +334,7 @@ void SHeliMovementState::goByRoundPath(Fvector center_, float radius_, bool cloc
 	if(r_verify>radius_){
 		Msg("! Helicopter: cannot build round path R=%f. Min R=%f",radius_,r_verify);
 		return;
-	} 
+	}
 
 	round_center	= center_;
 	round_radius	= radius_;
@@ -360,7 +357,6 @@ void SHeliMovementState::goByRoundPath(Fvector center_, float radius_, bool cloc
 	if(clockwise_)
 		std::reverse(round_points.begin()+1, round_points.end());
 
-
 	it = round_points.begin();
 	it_e = round_points.end();
 	for(;it!=it_e;++it,++pt_idx){
@@ -372,7 +368,6 @@ void SHeliMovementState::goByRoundPath(Fvector center_, float radius_, bool cloc
 			pp->add_edge(pt_idx-1,pt_idx,1.f);
 	}
 	pp->add_edge(pt_idx-1, 0, 1.f);
-
 
 	currPatrolPath = pp;
 
@@ -391,7 +386,6 @@ void SHeliMovementState::goByRoundPath(Fvector center_, float radius_, bool cloc
 			start_vertex_id = (*b).first;
 		}
 	}
-
 
 	SetPointFlags(start_vertex_id, 1);
 	currPatrolVertex	=  currPatrolPath->vertex(start_vertex_id);
@@ -417,7 +411,6 @@ void SHeliMovementState::SetPointFlags(u32 idx, u32 new_flags)
 
 	p->vertex(idx)->data	(*pt_new);
 //	xr_delete(pt_curr);
-
 }
 
 float SHeliMovementState::GetSpeedInDestPoint			()
@@ -426,6 +419,7 @@ float SHeliMovementState::GetSpeedInDestPoint			()
 	else 
 		return speedInDestPoint;
 }
+
 void SHeliMovementState::SetSpeedInDestPoint			(float val)
 {
 	speedInDestPoint = val;
@@ -484,8 +478,5 @@ void CHelicopter::OnRender()
 	Level().debug_renderer().draw_line(Fidentity,m_heli->XFORM().c,m_heli->m_data.m_destEnemyPos,D3DCOLOR_XRGB(255,0,0));
 	return;
 */
-
-
 }
 #endif
-

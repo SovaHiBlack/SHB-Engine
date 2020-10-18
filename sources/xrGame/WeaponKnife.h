@@ -54,6 +54,7 @@ protected:
 
 protected:
 	virtual void		LoadFireParams					(const char* section, const char* prefix);
+
 public:
 						CWeaponKnife(); 
 	virtual				~CWeaponKnife(); 

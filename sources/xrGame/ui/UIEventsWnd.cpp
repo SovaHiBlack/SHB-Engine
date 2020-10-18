@@ -12,14 +12,14 @@
 #include "../HUDManager.h"//
 #include "../level.h"
 #include "../actor.h"
-#include "../gametaskmanager.h"
-#include "../gametask.h"
-#include "../map_manager.h"
-#include "../map_location.h"
+#include "..\GameTaskManager.h"
+#include "..\GameTask.h"
+#include "..\MapLocation.h"
+#include "..\MapManager.h"
 //#include "..\StringTable.h"
 #include "UITaskItem.h"//
 #include "../alife_registry_wrappers.h"
-#include "../EncyclopediaArticle.h"
+#include "..\EncyclopediaArticle.h"
 
 CUIEventsWnd::CUIEventsWnd			()
 {

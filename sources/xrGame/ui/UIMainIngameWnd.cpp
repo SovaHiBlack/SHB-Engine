@@ -10,7 +10,7 @@
 #include "../actor.h"
 #include "../HUDManager.h"//
 #include "../Pda.h"
-#include "../WeaponHUD.h"
+#include "..\WeaponHUD.h"
 #include "../character_info.h"
 #include "../inventory.h"
 #include "UIGameSP.h"//
@@ -1118,7 +1118,7 @@ ID3DXSprite*        g_pTextSprite = NULL;   // Sprite for batching draw text cal
 
 /*
 #include "UIGameTutorial.h"
-#include "../ActorStatisticMgr.h"
+#include "..\ActorStatisticMgr.h"
 CUIGameTutorial* g_tut = NULL;
 */
 //#include "../postprocessanimator.h"

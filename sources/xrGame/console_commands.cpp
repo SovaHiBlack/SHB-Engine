@@ -18,7 +18,7 @@
 #include "PHDestroyable.h"
 #include "actor.h"
 #include "Actor_Flags.h"
-#include "customzone.h"
+#include "CustomZone.h"
 #include "script_engine.h"
 #include "script_engine_space.h"
 #include "script_process.h"
@@ -49,6 +49,7 @@
 
 #include "ui/UIGameCustom.h"//
 #include "HUDManager.h"//
+#include "MapManager.h"
 
 string_path		g_last_saved_game;
 
@@ -775,7 +776,7 @@ public:
 		strcpy_s(I,"dumps all infoportions that actor have"); 
 	}
 };
-#include "map_manager.h"
+
 class CCC_DumpMap : public IConsoleCommand
 {
 public:

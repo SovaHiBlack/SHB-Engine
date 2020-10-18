@@ -8,7 +8,7 @@
 
 #pragma once
 
-#include "space_restrictor.h"
+#include "SpaceRestrictor.h"
 #include "script_export_space.h"
 
 class CSmartZone : public CSpaceRestrictor {

@@ -24,7 +24,7 @@
 #include "../../../xr_level_controller.h"
 #include "../../../ActorCondition.h"
 
-#include "../../../PHDestroyable.h"
+#include "..\..\..\PHDestroyable.h"
 #include "../../../CharacterPhysicsSupport.h"
 
 #ifdef DEBUG

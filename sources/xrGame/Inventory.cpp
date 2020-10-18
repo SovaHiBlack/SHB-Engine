@@ -2,8 +2,8 @@
 
 #include "inventory.h"
 #include "actor.h"
-#include "trade.h"
-#include "weapon.h"
+#include "Trade.h"
+#include "Weapon.h"
 
 #include "ui/UIInventoryUtilities.h"//
 
@@ -21,6 +21,7 @@
 #include "GameObject_space.h"
 #include "script_callback_ex.h"
 #include "script_game_object.h"
+#include "WeaponHUD.h"
 
 using namespace InventoryUtilities;
 
@@ -1053,7 +1054,6 @@ bool CInventory::isBeautifulForActiveSlot	(CInventoryItem *pIItem)
 	return				(false);
 }
 
-#include "WeaponHUD.h"
 void CInventory::Items_SetCurrentEntityHud(bool current_entity)
 {
 	TIItemContainer::iterator it;

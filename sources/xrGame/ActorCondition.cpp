@@ -16,7 +16,7 @@
 #include "ui\UIVideoPlayerWnd.h"//
 #include "script_callback_ex.h"
 #include "object_broker.h"
-#include "weapon.h"
+#include "Weapon.h"
 
 #include "HUDManager.h"//
 #include "CustomOutfit.h"

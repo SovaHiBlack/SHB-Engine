@@ -1,10 +1,10 @@
 #pragma once
 
-#include "shootingobject.h"
+#include "ShootingObject.h"
 #include "WeaponAmmo.h"
-#include "rocketlauncher.h"
+#include "RocketLauncher.h"
 #include "entity.h"
-#include "phskeleton.h"
+#include "PHSkeleton.h"
 #include "hit_immunity.h"
 #include "script_export_space.h"
 #include "memory_manager.h"
@@ -80,11 +80,13 @@ struct SHeliMovementState{
 	float							LinearAcc_fw;
 	float							LinearAcc_bk;
 	float							isAdnAcc;
+
 protected:
 	float							HeadingSpK,	HeadingSpB;
 	float							PitchSpK,	PitchSpB, AngSP, AngSH;
 	float							speedInDestPoint;
 	void							SetPointFlags(u32 idx, u32 new_flags);
+
 public:
 	float							min_altitude;
 //runtime values
@@ -97,7 +99,6 @@ public:
 	float							currPathH;
 	float							currPathP;
 
-
 	Fvector							round_center;
 	float							round_radius;
 	bool							round_reverse;
@@ -107,7 +108,6 @@ public:
 	void	SetSpeedInDestPoint			(float);
 	float	GetAngSpeedPitch			(float speed);
 	float	GetAngSpeedHeading			(float speed);
-
 
 	float	GetSafeAltitude				();
 	void	reinit						();
@@ -145,8 +145,7 @@ public:
 		eAlive							= u32(0),
 		eDead,
 		eForce = u32(-1)
-	}; 
-
+	};
 
 // heli weapons
 	bool							m_use_rocket_on_attack;
@@ -245,10 +244,9 @@ protected:
 	float							m_stepRemains;
 
 	void	UpdateState					();
+
 public:
 	void							ExplodeHelicopter			();
-
-
 
 	CHelicopter();
 	virtual							~CHelicopter();

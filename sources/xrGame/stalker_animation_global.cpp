@@ -16,7 +16,7 @@
 #include "stalker_movement_manager.h"
 #include "ai/stalker/ai_stalker_space.h"
 #include "stalker_animation_data.h"
-#include "weapon.h"
+#include "Weapon.h"
 #include "Missile.h"
 #include "stalker_animation_manager_impl.h"
 

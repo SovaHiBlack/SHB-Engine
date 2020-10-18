@@ -37,7 +37,7 @@
 #include "HudItem.h"
 #include "ai_sounds.h"
 #include "ai_space.h"
-#include "trade.h"
+#include "Trade.h"
 #include "inventory.h"
 #include "Physics.h"
 #include "Level.h"
@@ -57,7 +57,7 @@
 #include "ICollisionDamageInfo.h"
 #include "ui/UIMainIngameWnd.h"//
 #include "ui/UIArtefactPanel.h"//
-#include "map_manager.h"
+#include "MapManager.h"
 #include "GameTaskManager.h"
 #include "actor_memory.h"
 #include "Script_Game_Object.h"

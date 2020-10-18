@@ -9,7 +9,7 @@
 #include "alife_space.h"
 #include "hit.h"
 #include "PHDestroyable.h"
-#include "car.h"
+#include "Car.h"
 #include "actor.h"
 #include "CameraLook.h"
 #include "camerafirsteye.h"

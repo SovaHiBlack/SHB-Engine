@@ -9,9 +9,9 @@
 
 #include "ai_stalker.h"///
 #include "../ai_monsters_misc.h"
-#include "../../weapon.h"
+#include "..\..\Weapon.h"
 #include "../../hit.h"
-#include "../../phdestroyable.h"
+#include "..\..\PHDestroyable.h"
 #include "../../CharacterPhysicsSupport.h"
 #include "../../script_entity_action.h"
 #include "../../game_level_cross_table.h"
@@ -64,8 +64,8 @@
 #	include "../../alife_simulator.h"
 #	include "../../alife_object_registry.h"
 #	include "../../level.h"
-#	include "../../map_location.h"
-#	include "../../map_manager.h"
+#	include "..\..\MapLocation.h"
+#	include "..\..\MapManager.h"
 #endif // DEBUG
 
 using namespace StalkerSpace;

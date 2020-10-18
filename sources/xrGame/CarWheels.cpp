@@ -8,7 +8,7 @@
 #include "alife_space.h"
 #include "hit.h"
 #include "PHDestroyable.h"
-#include "car.h"
+#include "Car.h"
 #include "..\ENGINE\skeletoncustom.h"
 #include "ExtendedGeom.h"
 

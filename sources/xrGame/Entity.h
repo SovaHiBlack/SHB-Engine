@@ -1,9 +1,9 @@
 #pragma once
 
-
-#include "physicsshellholder.h"
+#include "PhysicsShellHolder.h"
 #include "DamageManager.h"
 #include "entitycondition.h"
+
 // refs
 class	ENGINE_API CCameraBase;
 class	ENGINE_API C3DSound;

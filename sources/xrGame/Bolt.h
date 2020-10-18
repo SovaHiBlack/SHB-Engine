@@ -10,8 +10,8 @@ class CBolt :
 	typedef CMissile inherited;
 	u16	m_thrower_id;
 public:
-	CBolt(void);
-	virtual ~CBolt(void);
+	CBolt( );
+	virtual ~CBolt( );
 
 	virtual void OnH_A_Chield();
 	virtual void OnEvent(NET_Packet& P, u16 type);

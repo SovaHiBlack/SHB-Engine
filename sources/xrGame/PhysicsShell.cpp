@@ -8,7 +8,7 @@
 #include "PHJointDestroyInfo.h"
 #include "PHSplitedShell.h"
 #include "GameObject.h"
-#include "physicsshellholder.h"
+#include "PhysicsShellHolder.h"
 #include "..\ENGINE\skeletoncustom.h"
 
 extern CPHWorld* ph_world;

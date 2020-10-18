@@ -2,8 +2,8 @@
 
 #include "../level.h"
 //.#include "../LevelFogOfWar.h"
-#include "../map_location.h"
-#include "../map_manager.h"
+#include "..\MapLocation.h"
+#include "..\MapManager.h"
 #include "../MapSpot.h"//
 #include "UIMap.h"//
 #include "UIMapWnd.h"//

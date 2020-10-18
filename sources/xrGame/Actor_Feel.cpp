@@ -1,14 +1,14 @@
 #include "stdafx.h"
 
 #include "actor.h"
-#include "weapon.h"
+#include "Weapon.h"
 #include "mercuryball.h"
 #include "inventory.h"
 #include "HUDManager.h"//
 #include "character_info.h"
 #include "xr_level_controller.h"
 #include "UsableScriptObject.h"
-#include "customzone.h"
+#include "CustomZone.h"
 #include "GameMtlLib.h"
 #include "ui/UIMainIngameWnd.h"//
 #include "Grenade.h"

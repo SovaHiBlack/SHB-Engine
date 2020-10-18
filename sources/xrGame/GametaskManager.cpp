@@ -5,8 +5,8 @@
 #include "ui/xrUIXmlParser.h"//
 #include "GameTask.h"
 #include "Level.h"
-#include "map_manager.h"
-#include "map_location.h"
+#include "MapLocation.h"
+#include "MapManager.h"
 #include "HUDManager.h"//
 #include "actor.h"
 #include "ui/UIGameSP.h"//

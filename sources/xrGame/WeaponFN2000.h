@@ -7,6 +7,7 @@ class CWeaponFN2000: public CWeaponMagazined
 {
 private:
 	typedef CWeaponMagazined inherited;
+
 public:
 	CWeaponFN2000	();
 	virtual			~CWeaponFN2000	();

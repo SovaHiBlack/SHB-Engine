@@ -3,18 +3,18 @@
 // 
 //////////////////////////////////////////////////////////////////////////
 
-#pragma	once
+#pragma once
 
 #include "character_info_defs.h"
 #include "shared_data.h"
-#include "xml_str_id_loader.h"
+#include "XML_IdToIndex.h"
 
 class NET_Packet;
 
 #include "SpecificCharacter.h"
 
 #ifdef XRGAME_EXPORTS
-	#include "PhraseDialogDefs.h"
+	#include "PhraseDialog_defs.h"
 	#include "character_community.h"
 	#include "character_rank.h"
 	#include "character_reputation.h"

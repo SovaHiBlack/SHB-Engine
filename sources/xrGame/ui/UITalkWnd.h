@@ -7,7 +7,7 @@
 #include "UIListWnd.h"//
 #include "UIFrameWindow.h"//
 
-#include "../PhraseDialogDefs.h"
+#include "..\PhraseDialog_defs.h"
 
 class CActor;
 class CInventoryOwner;

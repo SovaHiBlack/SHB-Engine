@@ -13,7 +13,7 @@
 #include "ParticlesObject.h"
 #include "actor.h"
 #include "game_base_space.h"
-#include "weaponhud.h"
+#include "WeaponHUD.h"
 #include "stalker_animation_data_storage.h"
 #include "stalker_velocity_holder.h"
 

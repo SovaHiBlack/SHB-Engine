@@ -1,6 +1,6 @@
 #include "stdafx.h"
 
-#include "cardamageparticles.h"
+#include "CarDamageParticles.h"
 
 #ifdef DEBUG
 #	include "ode_include.h"

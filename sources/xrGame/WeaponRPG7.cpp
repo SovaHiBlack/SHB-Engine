@@ -1,19 +1,18 @@
 #include "stdafx.h"
-#include "weaponrpg7.h"
+
+#include "WeaponRPG7.h"
 #include "WeaponHUD.h"
 #include "xrserver_objects_alife_items.h"
-#include "explosiverocket.h"
+#include "ExplosiveRocket.h"
 #include "entity.h"
 #include "level.h"
 #include "..\ENGINE\skeletoncustom.h"
 
-CWeaponRPG7::CWeaponRPG7(void) : CWeaponCustomPistol("RPG7") 
-{
-}
+CWeaponRPG7::CWeaponRPG7( ) : CWeaponCustomPistol("RPG7")
+{ }
 
-CWeaponRPG7::~CWeaponRPG7(void) 
-{
-}
+CWeaponRPG7::~CWeaponRPG7( )
+{ }
 
 void CWeaponRPG7::Load	(LPCSTR section)
 {
@@ -169,4 +168,16 @@ void CWeaponRPG7::net_Import( NET_Packet& P)
 {
 	inherited::net_Import		(P);
 	UpdateMissileVisibility		();
+}
+
+using namespace luabind;
+
+#pragma optimize("s",on)
+void CWeaponRPG7::script_register(lua_State* L)
+{
+	module(L)
+		[
+			class_<CWeaponRPG7, CGameObject>("CWeaponRPG7")
+			.def(constructor<>( ))
+		];
 }

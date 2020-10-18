@@ -2,7 +2,7 @@
 
 #include "UIEncyclopediaArticleWnd.h"//
 #include "UIStatic.h"//
-#include "../EncyclopediaArticle.h"
+#include "..\EncyclopediaArticle.h"
 #include "UIXmlInit.h"//
 #include "..\StringTable.h"
 

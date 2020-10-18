@@ -4,7 +4,7 @@
 #pragma once
 
 #include "GameObject.h"
-#include "physicsshellholder.h"
+#include "PhysicsShellHolder.h"
 #include "PHSkeleton.h"
 #include "script_export_space.h"
 

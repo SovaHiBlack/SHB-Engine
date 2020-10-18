@@ -1,6 +1,6 @@
 #include "stdafx.h"
 
-#include "phcollisiondamagereceiver.h"
+#include "PHCollisionDamageReceiver.h"
 #include "PhysicsShellHolder.h"
 #include "..\ENGINE\skeletoncustom.h"
 #include "Geometry.h"

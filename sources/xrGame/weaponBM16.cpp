@@ -1,5 +1,6 @@
 #include "stdafx.h"
-#include "weaponBM16.h"
+
+#include "WeaponBM16.h"
 #include "WeaponHUD.h"
 
 CWeaponBM16::~CWeaponBM16()
@@ -18,9 +19,7 @@ void CWeaponBM16::Load	(LPCSTR section)
 	animGet	(mhud_zoomed_idle1,		pSettings->r_string(*hud_sect,"anim_zoomed_idle_1"));
 	animGet	(mhud_zoomed_idle2,		pSettings->r_string(*hud_sect,"anim_zoomedidle_2"));
 
-
 	HUD_SOUND::LoadSound(section, "snd_reload_1", m_sndReload1, m_eSoundShot);
-
 }
 
 void CWeaponBM16::PlayReloadSound()
@@ -46,7 +45,6 @@ void CWeaponBM16::PlayAnimReload()
 		m_pHUD->animPlay(random_anim(mhud_reload1),TRUE,this,GetState());
 	else
 		m_pHUD->animPlay(random_anim(mhud.mhud_reload),TRUE,this,GetState());
-
 }
 
 void CWeaponBM16::PlayAnimIdle()
@@ -81,4 +79,16 @@ void CWeaponBM16::PlayAnimIdle()
 		}break;
 		};
 	}
+}
+
+using namespace luabind;
+
+#pragma optimize("s",on)
+void CWeaponBM16::script_register(lua_State* L)
+{
+	module(L)
+		[
+			class_<CWeaponBM16, CGameObject>("CWeaponBM16")
+			.def(constructor<>( ))
+		];
 }

@@ -60,7 +60,6 @@ void CWeaponBinoculars::OnZoomIn		()
 
 	inherited::OnZoomIn();
 	m_fZoomFactor = m_fRTZoomFactor;
-
 }
 
 void CWeaponBinoculars::OnZoomOut		()
@@ -75,7 +74,6 @@ void CWeaponBinoculars::OnZoomOut		()
 	
 		m_fRTZoomFactor = m_fZoomFactor;//store current
 	}
-
 
 	inherited::OnZoomOut();
 }
@@ -117,7 +115,6 @@ void GetZoomData(const float scope_factor, float& delta, float& min_zoom_factor)
 	VERIFY(delta_factor_total>0);
 	min_zoom_factor = def_fov-delta_factor_total*min_zoom_k;
 	delta = (delta_factor_total*(1-min_zoom_k) )/zoom_step_count;
-
 }
 
 void CWeaponBinoculars::ZoomInc()
@@ -137,6 +134,7 @@ void CWeaponBinoculars::ZoomDec()
 	m_fZoomFactor	+=delta;
 	clamp(m_fZoomFactor,m_fScopeZoomFactor, min_zoom_factor);
 }
+
 void CWeaponBinoculars::save(NET_Packet &output_packet)
 {
 	inherited::save(output_packet);
@@ -162,4 +160,15 @@ void CWeaponBinoculars::net_Relcase	(CObject *object)
 		return;
 
 	m_binoc_vision->remove_links	(object);
+}
+
+using namespace luabind;
+
+void CWeaponBinoculars::script_register(lua_State* L)
+{
+	module(L)
+		[
+			class_<CWeaponBinoculars, CGameObject>("CWeaponBinoculars")
+			.def(constructor<>( ))
+		];
 }

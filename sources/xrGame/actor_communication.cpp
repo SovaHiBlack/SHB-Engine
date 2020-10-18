@@ -17,7 +17,7 @@
 #include "xrServer.h"
 #include "xrServer_Objects_ALife_Monsters.h"
 #include "alife_registry_wrappers.h"
-#include "map_manager.h"
+#include "MapManager.h"
 #include "ui/UIMainIngameWnd.h"//
 #include "ui/UIPdaWnd.h"//
 #include "ui/UIDiaryWnd.h"//
@@ -26,8 +26,8 @@
 #include "script_callback_ex.h"
 #include "EncyclopediaArticle.h"
 #include "GameTaskManager.h"
-#include "GameTaskdefs.h"
-#include "infoportion.h"
+#include "GameTask_defs.h"
+#include "InfoPortion.h"
 //#include "ai/monsters/basemonster/BaseMonster.h"
 #include "ai/trader/ai_trader.h"
 

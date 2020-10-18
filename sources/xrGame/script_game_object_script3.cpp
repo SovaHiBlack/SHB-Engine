@@ -22,13 +22,13 @@
 #include "script_entity_action.h"
 #include "action_planner.h"
 #include "PhysicsShell.h"
-#include "helicopter.h"
+#include "Helicopter.h"
 #include "HangingLamp.h"
 #include "HolderCustom.h"
-#include "script_zone.h"
+#include "ScriptZone.h"
 #include "relation_registry.h"
 #include "GameTask.h"
-#include "car.h"
+#include "Car.h"
 
 using namespace luabind;
 

@@ -7,7 +7,7 @@
 #include "../../../../ENGINE/net_utils.h"
 #include "../../../ai_space.h"
 #include "../../../hit.h"
-#include "../../../PHDestroyable.h"
+#include "..\..\..\PHDestroyable.h"
 #include "../../../CharacterPhysicsSupport.h"
 
 void CBaseMonster::net_Save			(NET_Packet& P)

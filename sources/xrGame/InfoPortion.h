@@ -3,12 +3,11 @@
 #include "shared_data.h"
 #include "PhraseScript.h"
 
-#include "xml_str_id_loader.h"
+#include "XML_IdToIndex.h"
 #include "EncyclopediaArticle_defs.h"
 
-#include "GameTaskDefs.h"
-#include "PhraseDialogDefs.h"
-
+#include "GameTask_defs.h"
+#include "PhraseDialog_defs.h"
 
 struct SInfoPortionData : CSharedResource
 {

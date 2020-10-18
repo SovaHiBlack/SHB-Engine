@@ -4,9 +4,9 @@
 #include "UIMap.h"//
 #include "UIXmlInit.h"//
 
-#include "../map_manager.h"
 #include "UIInventoryUtilities.h"//
-#include "../map_location.h"
+#include "..\MapLocation.h"
+#include "..\MapManager.h"
 
 #include "UIScrollBar.h"//
 #include "UIFrameWindow.h"//

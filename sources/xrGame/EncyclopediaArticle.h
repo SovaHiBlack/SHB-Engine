@@ -2,7 +2,7 @@
 #pragma once
 
 #include "EncyclopediaArticle_defs.h"
-#include "xml_str_id_loader.h"
+#include "XML_IdToIndex.h"
 #include "shared_data.h"
 
 #include "ui\UIStatic.h"//

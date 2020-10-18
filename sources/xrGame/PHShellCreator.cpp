@@ -3,7 +3,7 @@
 #include "PHShellCreator.h"
 #include "PhysicsShell.h"
 #include "GameObject.h"
-#include "physicsshellholder.h"
+#include "PhysicsShellHolder.h"
 #include "..\ENGINE\skeletoncustom.h"
 
 void CPHShellSimpleCreator::CreatePhysicsShell()

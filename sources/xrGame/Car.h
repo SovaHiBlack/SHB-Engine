@@ -9,10 +9,9 @@
 #include "HolderCustom.h"
 #include "PHSkeleton.h"
 #include "DamagableItem.h"//ok
-#include "phcollisiondamagereceiver.h"
+#include "PHCollisionDamageReceiver.h"
 #include "CarDamageParticles.h"
 #include "xrserver_objects_alife.h"
-#include "CarDamageParticles.h"
 #include "hit_immunity.h"
 #include "Explosive.h"
 #include "PHDestroyable.h"

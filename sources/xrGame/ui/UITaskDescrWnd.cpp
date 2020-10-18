@@ -6,7 +6,7 @@
 #include "UIFrameLineWnd.h"//
 #include "UIScrollView.h"//
 #include "UIEncyclopediaArticleWnd.h"//
-#include "../EncyclopediaArticle.h"
+#include "..\EncyclopediaArticle.h"
 
 CUITaskDescrWnd::CUITaskDescrWnd	()
 {}

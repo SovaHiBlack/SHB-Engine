@@ -1,7 +1,7 @@
 #include "stdafx.h"
 
 #include "..\ENGINE\Console.h"
-#include "customzone.h"
+#include "CustomZone.h"
 #include "hit.h"
 #include "PHDestroyable.h"
 #include "actor.h"
@@ -16,7 +16,7 @@
 #include "ai_object_location.h"
 #include "..\ENGINE\skeletoncustom.h"
 #include "zone_effector.h"
-#include "breakableobject.h"
+#include "BreakableObject.h"
 
 //////////////////////////////////////////////////////////////////////////
 #define PREFETCHED_ARTEFACTS_NUM 1	//количество предварительно проспавненых артефактов

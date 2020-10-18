@@ -6,10 +6,8 @@
 #include "stdafx.h"
 
 #include "ShootingObject.h"
-
 #include "ParticlesObject.h"
 #include "WeaponAmmo.h"
-
 #include "actor.h"
 #include "game_cl_base.h"
 #include "level.h"
@@ -46,11 +44,10 @@ CShootingObject::CShootingObject(void)
 	light_render					= 0;
 
 	reinit();
+}
 
-}
-CShootingObject::~CShootingObject(void)
-{
-}
+CShootingObject::~CShootingObject( )
+{ }
 
 void CShootingObject::reinit()
 {
@@ -110,10 +107,12 @@ void CShootingObject::LoadFireParams	(LPCSTR section, LPCSTR prefix)
 	{
 		fvHitPower[egdVeteran]	= (float)atof(_GetItem(*s_sHitPower,1,buffer));//то вычитываем его для уровня ветерана
 	}
+
 	if (num_game_diff_param>2)//если задан третий параметр хита
 	{
 		fvHitPower[egdStalker]	= (float)atof(_GetItem(*s_sHitPower,2,buffer));//то вычитываем его для уровня сталкера
 	}
+
 	if (num_game_diff_param>3)//если задан четвёртый параметр хита
 	{
 		fvHitPower[egdNovice]	= (float)atof(_GetItem(*s_sHitPower,3,buffer));//то вычитываем его для уровня новичка
@@ -177,7 +176,6 @@ void CShootingObject::Light_Render	(const Fvector& P)
 	}
 }
 
-
 //////////////////////////////////////////////////////////////////////////
 // Particles
 //////////////////////////////////////////////////////////////////////////
@@ -198,6 +196,7 @@ void CShootingObject::StartParticles (CParticlesObject*& pParticles, LPCSTR part
 	UpdateParticles(pParticles, pos, vel);
 	pParticles->Play();
 }
+
 void CShootingObject::StopParticles (CParticlesObject*&	pParticles)
 {
 	if(pParticles == NULL) return;
@@ -224,7 +223,6 @@ void CShootingObject::UpdateParticles (CParticlesObject*& pParticles,
 		CParticlesObject::Destroy(pParticles);
 	}
 }
-
 
 void CShootingObject::LoadShellParticles (LPCSTR section, LPCSTR prefix)
 {
@@ -255,12 +253,10 @@ void CShootingObject::LoadFlameParticles (LPCSTR section, LPCSTR prefix)
 	if(pSettings->line_exist(section, full_name))
 		m_sShotParticles = pSettings->r_string (section, full_name);
 
-
 	//текущие партиклы
 	m_sFlameParticlesCurrent = m_sFlameParticles;
 	m_sSmokeParticlesCurrent = m_sSmokeParticles;
 }
-
 
 void CShootingObject::OnShellDrop	(const Fvector& play_pos,
 									 const Fvector& parent_vel)
@@ -278,7 +274,6 @@ void CShootingObject::OnShellDrop	(const Fvector& play_pos,
 	pShellParticles->Play				();
 }
 
-
 //партиклы дыма
 void CShootingObject::StartSmokeParticles	(const Fvector& play_pos,
 											const Fvector& parent_vel)
@@ -286,7 +281,6 @@ void CShootingObject::StartSmokeParticles	(const Fvector& play_pos,
 	CParticlesObject* pSmokeParticles = NULL;
 	StartParticles(pSmokeParticles, *m_sSmokeParticlesCurrent, play_pos, parent_vel, true);
 }
-
 
 void CShootingObject::StartFlameParticles	()
 {
@@ -304,8 +298,8 @@ void CShootingObject::StartFlameParticles	()
 	m_pFlameParticles = CParticlesObject::Create(*m_sFlameParticlesCurrent,FALSE);
 	UpdateFlameParticles();
 	m_pFlameParticles->Play();
-
 }
+
 void CShootingObject::StopFlameParticles	()
 {
 	if(0==m_sFlameParticlesCurrent.size()) return;
@@ -458,6 +452,7 @@ void CShootingObject::FireStart	()
 {
 	bWorking=true;	
 }
+
 void CShootingObject::FireEnd	()				
 { 
 	bWorking=false;	

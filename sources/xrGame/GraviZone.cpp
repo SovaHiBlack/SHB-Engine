@@ -10,7 +10,7 @@
 
 #include "stdafx.h"
 
-#include "gravizone.h"
+#include "GraviZone.h"
 
 #include "PhysicsShell.h"
 #include "entity_alive.h"

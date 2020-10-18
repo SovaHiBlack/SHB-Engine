@@ -1,8 +1,8 @@
 #pragma once
 
 #include "HolderCustom.h"
-#include "shootingobject.h"
-#include "physicsshellholder.h"
+#include "ShootingObject.h"
+#include "PhysicsShellHolder.h"
 #include "HudSound.h"
 
 class CCartridge;

@@ -1,10 +1,13 @@
 #include "stdafx.h"
+
 #include "WeaponRG6.h"
 #include "entity.h"
-#include "explosiveRocket.h"
+#include "ExplosiveRocket.h"
 #include "level.h"
 #include "clsid_game.h"
 #include "MathUtils.h"
+#include "inventory.h"
+#include "inventoryOwner.h"
 
 #ifdef DEBUG
 #	include "PHDebug.h"
@@ -34,9 +37,7 @@ BOOL	CWeaponRG6::net_Spawn				(CSE_Abstract* DC)
 		}
 //			inheritedRL::SpawnRocket(*fake_grenade_name, this);
 	}
-	
 
-	
 	return l_res;
 };
 
@@ -45,11 +46,9 @@ void CWeaponRG6::Load(LPCSTR section)
 	inheritedRL::Load(section);
 	inheritedSG::Load(section);
 }
-#include "inventory.h"
-#include "inventoryOwner.h"
+
 void CWeaponRG6::FireStart ()
 {
-
 	if(GetState() == eIdle	&& getRocketCount() ) 
 	{
 		inheritedSG::FireStart ();
@@ -165,4 +164,16 @@ void CWeaponRG6::OnEvent(NET_Packet& P, u16 type)
 			inheritedRL::DetachRocket	(id, bLaunch);
 		} break;
 	}
+}
+
+using namespace luabind;
+
+#pragma optimize("s",on)
+void CWeaponRG6::script_register(lua_State* L)
+{
+	module(L)
+		[
+			class_<CWeaponRG6, CGameObject>("CWeaponRG6")
+			.def(constructor<>( ))
+		];
 }

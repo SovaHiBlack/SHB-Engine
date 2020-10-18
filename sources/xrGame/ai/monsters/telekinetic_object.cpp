@@ -1,6 +1,6 @@
 #include "stdafx.h"
 
-#include "../../physicsshellholder.h"
+#include "..\..\PhysicsShellHolder.h"
 #include "telekinetic_object.h"
 #include "../../PhysicsShell.h"
 #include "../../PHInterpolation.h"

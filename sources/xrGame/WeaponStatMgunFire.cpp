@@ -1,4 +1,5 @@
 #include "stdafx.h"
+
 #include "WeaponStatMgun.h"
 #include "level.h"
 #include "entity_alive.h"
@@ -52,7 +53,6 @@ void CWeaponStatMgun::UpdateFire()
 		angle_lerp		(m_dAngle.y,0.f,5.f,Device.fTimeDelta);
 	}
 }
-
 
 void CWeaponStatMgun::OnShot()
 {

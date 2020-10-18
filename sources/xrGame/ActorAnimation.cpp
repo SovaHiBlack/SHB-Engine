@@ -6,7 +6,7 @@
 
 #include "HUDManager.h"//
 #include "ui/UI.h"//
-#include "weapon.h"
+#include "Weapon.h"
 #include "inventory.h"
 #include "Missile.h"
 #include "Level.h"

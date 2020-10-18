@@ -2,7 +2,7 @@
 
 #include "UICellCustomItems.h"//
 #include "UIInventoryUtilities.h"//
-#include "../Weapon.h"
+#include "..\Weapon.h"
 #include "../object_broker.h"
 
 #define INV_GRID_WIDTHF			50.0f

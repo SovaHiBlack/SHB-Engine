@@ -3,11 +3,10 @@
 // InfoDocument - документ, содержащий сюжетную информацию
 ///////////////////////////////////////////////////////////////
 
-
 #pragma once
 
 #include "inventory_item_object.h"
-#include "InfoPortionDefs.h"
+#include "InfoPortion_defs.h"
 
 class CInfoDocument: public CInventoryItemObject {
 private:

@@ -1,5 +1,6 @@
 #include "stdafx.h"
-#include "weaponshotgun.h"
+
+#include "WeaponShotgun.h"
 #include "WeaponHUD.h"
 #include "entity.h"
 #include "ParticlesObject.h"
@@ -417,4 +418,16 @@ void	CWeaponShotgun::net_Import	(NET_Packet& P)
 		l_cartridge.Load(*(m_ammoTypes[LocalAmmoType]), LocalAmmoType); 
 //		m_fCurrentCartirdgeDisp = m_DefaultCartridge.m_kDisp;		
 	}
+}
+
+using namespace luabind;
+
+#pragma optimize("s",on)
+void CWeaponShotgun::script_register(lua_State* L)
+{
+	module(L)
+		[
+			class_<CWeaponShotgun, CGameObject>("CWeaponShotgun")
+			.def(constructor<>( ))
+		];
 }

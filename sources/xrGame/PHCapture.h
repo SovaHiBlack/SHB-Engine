@@ -2,7 +2,7 @@
 
 #include "PHObject.h"
 #include "GameObject.h"
-#include "physicsshellholder.h"
+#include "PhysicsShellHolder.h"
 
 class CPhysicShellHolder;
 class CPHCharacter;

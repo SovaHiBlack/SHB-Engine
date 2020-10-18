@@ -1,11 +1,11 @@
 #include "stdafx.h"
 
-#include "weaponsvu.h"
+#include "WeaponSVU.h"
 
-CWeaponSVU::CWeaponSVU(void) : CWeaponCustomPistol("SVU")
+CWeaponSVU::CWeaponSVU( ) : CWeaponCustomPistol("SVU")
 { }
 
-CWeaponSVU::~CWeaponSVU(void)
+CWeaponSVU::~CWeaponSVU( )
 { }
 
 using namespace luabind;

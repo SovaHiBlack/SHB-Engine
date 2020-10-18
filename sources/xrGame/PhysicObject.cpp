@@ -1,6 +1,6 @@
 #include "stdafx.h"
 
-#include "physicobject.h"
+#include "PhysicObject.h"
 #include "PhysicsShell.h"
 #include "Physics.h"
 #include "xrserver_objects_alife.h"
@@ -9,14 +9,14 @@
 #include "GameObject_space.h"
 
 
-CPhysicObject::CPhysicObject(void) 
+CPhysicObject::CPhysicObject( ) 
 {
 	m_type					=	epotBox;
 	m_mass					=	10.f;
 	m_collision_hit_callback=	NULL;
 }
 
-CPhysicObject::~CPhysicObject(void)
+CPhysicObject::~CPhysicObject( )
 {
 }
 
@@ -289,3 +289,14 @@ Msg("%s",(*I).first);
 */
 
 //////////////////////////////////////////////////////////////////////////
+using namespace luabind;
+
+#pragma optimize("s",on)
+void CPhysicObject::script_register(lua_State* L)
+{
+	module(L)
+		[
+			class_<CPhysicObject, CGameObject>("CPhysicObject")
+			.def(constructor<>( ))
+		];
+}

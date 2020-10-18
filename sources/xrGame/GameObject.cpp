@@ -5,7 +5,7 @@
 #include "PhysicsShell.h"
 #include "ai_space.h"
 #include "CustomMonster.h" 
-#include "physicobject.h"
+#include "PhysicObject.h"
 #include "HangingLamp.h"
 //#include "PhysicsShell.h"
 #include "game_sv_single.h"
@@ -34,6 +34,8 @@
 #	include "debug_renderer.h"
 #	include "PHDebug.h"
 #endif
+
+#include "Bolt.h"
 
 CGameObject::CGameObject		()
 {
@@ -666,7 +668,6 @@ void CGameObject::u_EventSend(NET_Packet& P, u32 dwFlags )
 	Level().Send(P, dwFlags);
 }
 
-#include "bolt.h"
 void CGameObject::OnH_B_Chield()
 {
 	inherited::OnH_B_Chield();

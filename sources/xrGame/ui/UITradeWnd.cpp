@@ -9,7 +9,7 @@
 #include "../HUDManager.h"//
 #include "..\WeaponAmmo.h"
 #include "../Actor.h"
-#include "../Trade.h"
+#include "..\Trade.h"
 #include "UIGameSP.h"//
 #include "UIInventoryUtilities.h"//
 #include "../inventoryowner.h"

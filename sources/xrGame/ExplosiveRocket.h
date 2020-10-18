@@ -1,7 +1,4 @@
-//////////////////////////////////////////////////////////////////////
-// ExplosiveRocket.h:	ракета, которой стреляет RocketLauncher 
-//						взрывается при столкновении
-//////////////////////////////////////////////////////////////////////
+// ExplosiveRocket.h:	ракета, которой стреляет RocketLauncher взрывается при столкновении
 
 #pragma once
 
@@ -9,18 +6,17 @@
 #include "Explosive.h"
 #include "inventory_item.h"
 
-class CExplosiveRocket : 
-			public CCustomRocket,
-			public CInventoryItem,
-			public CExplosive
+class CExplosiveRocket : public CCustomRocket, public CInventoryItem, public CExplosive
 {
 private:
 	typedef CCustomRocket inherited;
 	friend CRocketLauncher;
+
 public:
-	CExplosiveRocket(void);
-	virtual ~CExplosiveRocket(void);
+	CExplosiveRocket( );
+	virtual ~CExplosiveRocket( );
 	virtual DLL_Pure	*_construct	();
+
 public:
 	virtual CExplosive					*cast_explosive			()						{return this;}
 	virtual CInventoryItem				*cast_inventory_item	()						{return this;}
@@ -29,12 +25,12 @@ public:
 	virtual CGameObject					*cast_game_object		()						{return this;}
 	virtual IDamageSource*				cast_IDamageSource()							{return CExplosive::cast_IDamageSource();}
 	virtual void						on_activate_physic_shell();
-public:
 
+public:
 	virtual void Load				(const char* section);
 	virtual BOOL net_Spawn			(CSE_Abstract* DC);
 	virtual void net_Destroy		();
-	virtual	void net_Relcase		(CObject* O );
+	virtual void net_Relcase		(CObject* O );
 	virtual void OnH_A_Independent	();
 	virtual void OnH_B_Independent	(bool just_before_destroy);
 	virtual void UpdateCL			();
@@ -43,7 +39,7 @@ public:
 
 	virtual void OnEvent (NET_Packet& P, u16 type) ;
 
-	virtual	void Hit	(SHit* pHDS)
+	virtual void Hit	(SHit* pHDS)
 						{ inherited::Hit(pHDS); };
 
 public:

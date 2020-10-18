@@ -14,7 +14,7 @@
 #include "UICharacterInfo.h"//
 #include "UI3tButton.h"//
 #include "UIInventoryUtilities.h"//
-#include "../ActorStatisticMgr.h"
+#include "..\ActorStatisticMgr.h"
 #include "../character_community.h"
 #include "../character_reputation.h"
 #include "../relation_registry.h"

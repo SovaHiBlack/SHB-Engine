@@ -1,5 +1,6 @@
 #include "stdafx.h"
-#include "radioactivezone.h"
+
+#include "RadioactiveZone.h"
 #include "HUDManager.h"//
 #include "level.h"
 #include "xrmessages.h"
@@ -7,7 +8,6 @@
 #include "clsid_game.h"
 #include "game_base_space.h"
 #include "Hit.h"
-
 
 CRadioactiveZone::CRadioactiveZone(void) 
 {}

@@ -7,8 +7,8 @@
 
 #include "alife_space.h"
 #include "hit.h"
-#include "phdestroyable.h"
-#include "car.h"
+#include "PHDestroyable.h"
+#include "Car.h"
 #include "actor.h"
 #include "CameraLook.h"
 #include "camerafirsteye.h"

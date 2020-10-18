@@ -3,7 +3,7 @@
 #include "BaseMonster.h"
 #include "../../../PhysicsShell.h"
 #include "../../../hit.h"
-#include "../../../PHDestroyable.h"
+#include "..\..\..\PHDestroyable.h"
 #include "../../../CharacterPhysicsSupport.h"
 #include "../../../game_level_cross_table.h"
 #include "../../../game_graph.h"
@@ -16,7 +16,7 @@
 #include "../../../team_hierarchy_holder.h"
 #include "../../../squad_hierarchy_holder.h"
 #include "../../../group_hierarchy_holder.h"
-//#include "../../../phdestroyable.h"
+//#include "..\..\..\PHDestroyable.h"
 #include "../../../..\ENGINE\skeletoncustom.h"
 #include "../../../detail_path_manager.h"
 #include "../../../HUDManager.h"//

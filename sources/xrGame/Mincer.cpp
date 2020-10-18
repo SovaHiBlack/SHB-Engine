@@ -3,7 +3,7 @@
 #include "alife_space.h"
 #include "hit.h"
 #include "PHDestroyable.h"
-#include "mincer.h"
+#include "Mincer.h"
 #include "HUDManager.h"//
 #include "xrmessages.h"
 #include "level.h"

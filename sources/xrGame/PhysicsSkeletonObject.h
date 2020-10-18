@@ -1,6 +1,6 @@
 #pragma once
 
-#include "physicsshellholder.h"
+#include "PhysicsShellHolder.h"
 #include "PHSkeleton.h"
 
 class CSE_ALifePHSkeletonObject;

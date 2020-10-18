@@ -12,7 +12,7 @@
 #include "../../script_entity_action.h"
 #include "../../torch.h"
 #include "../../inventory.h"
-#include "../../weapon.h"
+#include "..\..\Weapon.h"
 #include "..\..\WeaponMagazined.h"
 #include "../../..\ENGINE\skeletoncustom.h"
 #include "../../script_engine.h"

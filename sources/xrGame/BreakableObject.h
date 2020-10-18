@@ -3,7 +3,7 @@
 //////////////////////////////////////////////////////////////////////
 #pragma once
 
-#include "physicsshellholder.h"
+#include "PhysicsShellHolder.h"
 
 class	CPHStaticGeomShell;
 struct	dContact;

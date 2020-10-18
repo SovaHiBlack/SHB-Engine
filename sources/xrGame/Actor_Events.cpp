@@ -4,7 +4,7 @@
 #include "CustomDetector.h"
 #include "ui/UIGameSP.h"//
 #include "HUDManager.h"//
-#include "weapon.h"
+#include "Weapon.h"
 #include "Artefact.h"
 #include "GrenadeLauncher.h"
 #include "Scope.h"

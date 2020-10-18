@@ -7,10 +7,8 @@
 
 #include "ExplosiveRocket.h"
 
-
 CExplosiveRocket::CExplosiveRocket() 
-{
-}
+{ }
 
 CExplosiveRocket::~CExplosiveRocket() 
 {
@@ -81,13 +79,11 @@ void CExplosiveRocket::UpdateCL()
 		inherited::UpdateCL();
 }
 
-
 void  CExplosiveRocket::OnEvent (NET_Packet& P, u16 type) 
 {
 	CExplosive::OnEvent(P, type);
 	inherited::OnEvent(P,type);
 }
-
 
 void CExplosiveRocket::make_Interpolation ()
 {
@@ -157,6 +153,7 @@ bool CExplosiveRocket::Useful					() const
 {
 	return			(inherited::Useful());
 }
+
 void CExplosiveRocket::net_Relcase(CObject* O )
 {
 	CExplosive::net_Relcase(O);

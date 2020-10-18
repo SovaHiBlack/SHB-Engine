@@ -21,7 +21,7 @@
 #include "HudItem.h"
 #include "clsid_game.h"
 //#include "StringTable.h"
-#include "map_manager.h"
+#include "MapManager.h"
 #include "..\ENGINE\IGamePersistent.h"//==>
 
 //////////////////////////////////////////////////////////////////////

@@ -14,7 +14,7 @@
 #include "team_hierarchy_holder.h"
 #include "squad_hierarchy_holder.h"
 #include "group_hierarchy_holder.h"
-#include "customzone.h"
+#include "CustomZone.h"
 #include "clsid_game.h"
 #include "..\ENGINE\skeletonanimated.h"
 #include "detail_path_manager.h"

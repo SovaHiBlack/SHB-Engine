@@ -22,7 +22,7 @@
 #include "agent_manager.h"
 #include "agent_member_manager.h"
 #include "inventory.h"
-#include "weapon.h"
+#include "Weapon.h"
 
 using namespace StalkerDecisionSpace;
 

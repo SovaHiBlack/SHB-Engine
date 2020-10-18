@@ -95,7 +95,6 @@ BOOL CWeaponStatMgun::net_Spawn(CSE_Abstract* DC)
 	m_lim_x_rot.set			(bdX.IK_data.limits[0].limit.x,bdX.IK_data.limits[0].limit.y);
 	CBoneData& bdY			= K->LL_GetData(m_rotate_y_bone); VERIFY(bdY.IK_data.type==jtJoint);
 	m_lim_y_rot.set			(bdY.IK_data.limits[1].limit.x,bdY.IK_data.limits[1].limit.y);
-	
 
 	xr_vector<Fmatrix> matrices;
 	K->LL_GetBindTransform	(matrices);
@@ -140,7 +139,6 @@ void CWeaponStatMgun::net_Import(NET_Packet& P)	// import from server
 
 	if(TRUE==IsWorking()&&!state)			FireEnd		();
 	if(FALSE==IsWorking()&&state)			FireStart	();
-
 }
 
 void CWeaponStatMgun::UpdateCL()
@@ -155,7 +153,6 @@ void CWeaponStatMgun::UpdateCL()
 		OwnerActor()->Cameras().Update(Camera());
 		OwnerActor()->Cameras().ApplyDevice(VIEWPORT_NEAR);
 	}
-
 }
 
 //void CWeaponStatMgun::Hit(	float P, Fvector &dir,	CObject* who, 
@@ -222,23 +219,17 @@ void CWeaponStatMgun::cam_Update			(float dt, float fov)
 	d.getHP(des_cam_dir.x, des_cam_dir.y);
 	des_cam_dir.mul(-1.0f);
 
-
 	Camera()->yaw		= angle_inertion_var(Camera()->yaw,		des_cam_dir.x,	0.5f,	7.5f,	PI_DIV_6,	Device.fTimeDelta);
 	Camera()->pitch		= angle_inertion_var(Camera()->pitch,	des_cam_dir.y,	0.5f,	7.5f,	PI_DIV_6,	Device.fTimeDelta);
-
-
-
 
 	if(OwnerActor()){
 		// rotate head
 		OwnerActor()->Orientation().yaw			= -Camera()->yaw;
 		OwnerActor()->Orientation().pitch		= -Camera()->pitch;
 	}
-	
 
 	Camera()->Update						(P,Da);
 	Level().Cameras().Update				(Camera());
-
 }
 
 void CWeaponStatMgun::renderable_Render	()

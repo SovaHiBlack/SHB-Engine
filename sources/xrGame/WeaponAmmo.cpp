@@ -5,7 +5,7 @@
 #include "xrserver_objects_alife_items.h"
 #include "Actor_Flags.h"
 #include "inventory.h"
-#include "weapon.h"
+#include "Weapon.h"
 #include "level_bullet_manager.h"
 #include "ai_space.h"
 #include "gamemtllib.h"

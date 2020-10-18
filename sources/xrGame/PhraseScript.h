@@ -4,7 +4,7 @@
 ///////////////////////////////////////////////////////////////
 #pragma once
 
-#include "InfoPortionDefs.h"
+#include "InfoPortion_defs.h"
 
 class CGameObject;
 class CInventoryOwner;
