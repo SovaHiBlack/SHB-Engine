@@ -40,7 +40,7 @@ protected:
 	virtual	void		reload					(const char* section);
 
 public:
-						CALifeUpdateManager		(xrServer *server, const char* section);
+						CALifeUpdateManager		(CServer*server, const char* section);
 	virtual 			~CALifeUpdateManager	();
 	virtual	shared_str	shedule_Name			() const		{ return shared_str("alife_simulator"); };
 	virtual float		shedule_Scale			();

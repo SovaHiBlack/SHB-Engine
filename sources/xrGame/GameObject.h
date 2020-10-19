@@ -2,7 +2,7 @@
 
 #include <depr/dplay8.h>// раньше небыло
 #include "..\ENGINE\Object.h"
-#include "xrServer_Space.h"
+#include "Server_space.h"
 #include "alife_space.h"
 #include "UsableScriptObject.h"
 #include "script_binder.h"

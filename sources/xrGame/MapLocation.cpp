@@ -8,12 +8,12 @@
 //#include "..\ENGINE\Object.h"
 #include "ai_space.h"
 #include "game_graph.h"
-#include "xrServer.h"
+#include "Server.h"
 #include "xrServer_Objects_ALife_Monsters.h"
 #include "ui/UIXmlInit.h"//
 #include "ui/UIMap.h"//
 #include "alife_simulator.h"
-#include "graph_engine.h"
+#include "GraphEngine.h"
 #include "actor.h"
 #include "ai_object_location.h"
 #include "alife_object_registry.h"

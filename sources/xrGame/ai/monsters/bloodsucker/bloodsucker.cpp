@@ -6,7 +6,7 @@
 #include "../../../actor.h"
 #include "../../../ActorEffector.h"
 #include "../../../..\ENGINE\skeletonanimated.h"
-#include "../../../level.h"
+#include "..\..\..\Level.h"
 #include "../../../MaterialManager.h"
 #include "bloodsucker_vampire_effector.h"
 #include "../../../detail_path_manager.h"

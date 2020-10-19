@@ -7,12 +7,13 @@
 ////////////////////////////////////////////////////////////////////////////
 
 #include "stdafx.h"
+
 #include "space_restriction.h"
 #include "space_restriction_manager.h"
 #include "ai_space.h"
 #include "level_graph.h"
 #include "space_restriction_base.h"
-#include "profiler.h"
+#include "Profiler.h"
 
 const float dependent_distance = 100.f;
 

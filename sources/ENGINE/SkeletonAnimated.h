@@ -60,6 +60,7 @@ public:
 		eFalloff,
 		eFORCEDWORD = u32(-1)
 	};
+
 public:
 	float			blendAmount;
 	float			timeCurrent;
@@ -83,6 +84,7 @@ public:
 
 	u32				mem_usage			(){ return sizeof(*this); }
 };
+
 typedef svector<CBlend*,MAX_BLENDED*MAX_CHANNELS>	BlendSVec;//*MAX_CHANNELS
 typedef BlendSVec::iterator							BlendSVecIt;
 typedef BlendSVec::const_iterator					BlendSVecCIt;
@@ -94,10 +96,11 @@ public:
 	typedef svector<CBlend*,MAX_BLENDED>	BlendSVec;
 	typedef BlendSVec::iterator				BlendSVecIt;
 	typedef BlendSVec::const_iterator		BlendSVecCIt;
+
 private:
 	BlendSVec			Blend;
-public:
 
+public:
 	// methods
 IC	BlendSVec			&blend_vector	()	{ return Blend;}
 	void				construct		();
@@ -121,6 +124,7 @@ class ENGINE_API	CKinematicsAnimated	: public CKinematics
 	friend class								CBoneData;
 	friend class								CMotionDef;
 	friend class								CSkeletonX;
+
 private:
 	// Motion control
 	void						Bone_Motion_Start		(CBoneData* bd, CBlend* handle);	// with recursion
@@ -133,6 +137,7 @@ private:
 private:
 			void				BoneChain_Calculate		(const CBoneData* bd, CBoneInstance &bi,u8 channel_mask, bool ignore_callbacks);
 			void				CLBone					(const CBoneData* bd, CBoneInstance &bi, const Fmatrix *parent,const CBlendInstance::BlendSVec &Blend, u8 mask_channel = (1<<0));
+
 public:
 	virtual void				Bone_Calculate			(CBoneData* bd, Fmatrix* parent);
 			void				Bone_GetAnimPos			(Fmatrix& pos,u16 id, u8 channel_mask, bool ignore_callbacks);
@@ -157,6 +162,7 @@ private:
 	BlendSVec									blend_cycles[MAX_PARTS];
 	BlendSVec									blend_fx;
 	float										channel_factors[MAX_CHANNELS];
+
 protected:
 	// internal functions
 	virtual void				IBoneInstances_Create	();
@@ -165,10 +171,12 @@ protected:
 	void						IBlend_Startup			();
 	void						ChannelFactorsStartup	();
 	CBlend*						IBlend_Create			();
+
 private:
 	void						IBlendSetup				(CBlend& B,u16 part,u8 channel, MotionID motion_ID, BOOL  bMixing, float blendAccrue, float blendFalloff, float Speed, BOOL noloop, PlayCallback Callback, LPVOID CallbackParam);
 	void						IFXBlendSetup			(CBlend &B, MotionID motion_ID, float blendAccrue, float blendFalloff,float Power ,float Speed,u16 bone);
 //.	bool						LoadMotions				(const char* N, IReader *data);
+
 public:
 
 #ifdef DEBUG
@@ -231,4 +239,5 @@ public:
 		return					(blend_cycles[bone_part_id]);
 	}
 };
+
 IC CKinematicsAnimated* PKinematicsAnimated(IRender_Visual* V) { return V?V->dcast_PKinematicsAnimated():0; }

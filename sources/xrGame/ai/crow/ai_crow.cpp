@@ -11,7 +11,7 @@
 #include "../../PhysicsShell.h"
 #include "ai_crow.h"
 #include "../../HUDManager.h"//
-#include "../../Level.h"
+#include "..\..\Level.h"
 #include "../../..\ENGINE\skeletonanimated.h"
 
 void CAI_Crow::SAnim::Load	(CKinematicsAnimated* visual, const char* prefix)

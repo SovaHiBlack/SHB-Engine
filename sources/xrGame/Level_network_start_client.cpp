@@ -10,6 +10,7 @@
 #include "PhysicsGamePars.h"
 #include "ai_space.h"
 #include "StringTable.h"
+#include "Server.h"
 
 extern	pureFrame*				g_pNetProcessor;
 
@@ -38,8 +39,6 @@ bool	CLevel::net_start_client1				()
 	return true;
 }
 
-#include "xrServer.h"
-
 bool	CLevel::net_start_client2				()
 {
 	Server->create_direct_client();
@@ -62,7 +61,7 @@ bool	CLevel::net_start_client3				()
 			pApp->LoadEnd		();
 			connected_to_server = FALSE;
 			m_name				= level_name;
-			m_connect_server_err = xrServer::ErrNoLevel;
+			m_connect_server_err = CServer::ErrNoLevel;
 			return				false;
 		}
 		pApp->Level_Set			(level_id);

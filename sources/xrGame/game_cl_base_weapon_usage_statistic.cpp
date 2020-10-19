@@ -6,7 +6,7 @@
 #include "alife_space.h"
 #include "hit.h"
 #include "Actor.h"
-#include "xrServer.h"
+#include "Server.h"
 #include "HUDManager.h"//
 #include "game_cl_base_weapon_usage_statistic.h"
 //#include "GameFont.h"

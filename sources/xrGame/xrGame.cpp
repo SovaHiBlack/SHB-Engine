@@ -8,10 +8,10 @@
 
 #include "stdafx.h"
 
-#include "object_factory.h"
+#include "ObjectFactory.h"
 #include "ui/xrUIXmlParser.h"//
 #include "xr_level_controller.h"
-#include "profiler.h"
+#include "Profiler.h"
 
 #pragma comment(lib, "Core.lib")
 #pragma comment(lib, "ode.lib")

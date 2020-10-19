@@ -2,7 +2,7 @@
 
 #include "game_sv_base.h"
 
-class xrServer;
+class CServer;
 class CALifeSimulator;
 
 class	game_sv_Single				: public game_sv_GameState
@@ -52,7 +52,7 @@ public:
 	virtual		void				on_death				(CSE_Abstract *e_dest, CSE_Abstract *e_src);
 				void				restart_simulator		(const char* saved_game_name);
 
-	IC			xrServer			&server					() const
+	IC			CServer&server					() const
 	{
 		VERIFY						(m_server);
 		return						(*m_server);

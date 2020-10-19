@@ -7,10 +7,11 @@
 ////////////////////////////////////////////////////////////////////////////
 
 #include "stdafx.h"
+
 #include "script_ini_file.h"
 #include "script_engine.h"
 #include "ai_space.h"
-#include "object_factory.h"
+#include "ObjectFactory.h"
 
 CScriptIniFile::CScriptIniFile		(IReader *F, LPCSTR path) :
 	inherited	(F,path)

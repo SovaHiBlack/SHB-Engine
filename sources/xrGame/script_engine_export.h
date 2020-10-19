@@ -18,7 +18,7 @@
 #include "script_ini_file.h"
 #include "script_reader.h"
 #include "script_net_packet.h"
-#include "object_factory.h"
+#include "ObjectFactory.h"
 #include "script_sound_type.h"
 #include "xrServer_Objects_ALife_All.h"
 
@@ -42,7 +42,7 @@
 #	include "script_world_property.h"
 #	include "ai/stalker/ai_stalker.h"
 #	include "script_effector.h"
-#	include "particlesobject.h"
+#	include "ParticlesObject.h"
 #	include "level.h"
 #	include "memory_space.h"
 #	include "script_render_device.h"

@@ -7,6 +7,7 @@
 ////////////////////////////////////////////////////////////////////////////
 
 #include "stdafx.h"
+
 #include "space_restriction_bridge.h"
 #include "space_restriction_composition.h"
 #include "space_restriction_holder.h"
@@ -14,7 +15,7 @@
 #include "restriction_space.h"
 #include "ai_space.h"
 #include "level_graph.h"
-#include "graph_engine.h"
+#include "GraphEngine.h"
 
 #pragma warning(push)
 #pragma warning(disable:4995)

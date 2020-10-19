@@ -7,7 +7,8 @@
 ////////////////////////////////////////////////////////////////////////////
 
 #include "stdafx.h"
-#include "profiler.h"
+
+#include "Profiler.h"
 #include "..\ENGINE\gamefont.h"
 
 CProfiler	*g_profiler			= 0;

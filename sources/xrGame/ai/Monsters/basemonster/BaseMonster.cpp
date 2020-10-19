@@ -25,7 +25,7 @@
 #include "../monster_velocity_space.h"
 #include "../../../entitycondition.h"
 #include "../../../sound_player.h"
-#include "../../../Level.h"
+#include "..\..\..\Level.h"
 #include "../../../ui/UIMainIngameWnd.h"//
 #include "../state_manager.h"
 #include "../controlled_entity.h"
@@ -37,7 +37,7 @@
 #include "../monster_cover_manager.h"
 #include "../monster_home.h"
 #include "../../../inventory.h"
-#include "../../../xrserver.h"
+#include "..\..\..\Server.h"
 #include "../ai_monster_squad.h"
 #include "../../../actor.h"
 #include "../../../ai_object_location.h"

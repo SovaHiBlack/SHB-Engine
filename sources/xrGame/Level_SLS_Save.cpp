@@ -1,8 +1,9 @@
 #include "stdafx.h"
+
 #include "HUDManager.h"//
 #include "..\ENGINE\xrLevel.h"
 #include "Level.h"
-#include "xrserver.h"
+#include "Server.h"
 
 void	CLevel::net_Save				(const char* name)		// Game Save
 {

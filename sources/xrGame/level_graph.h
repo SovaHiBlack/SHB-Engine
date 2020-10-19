@@ -239,7 +239,7 @@ IC	bool operator>		(const u32 &vertex_xz, const CLevelGraph::CVertex &vertex);
 IC	bool operator==		(const u32 &vertex_xz, const CLevelGraph::CVertex &vertex);
 
 #ifdef DEBUG
-		extern BOOL	g_bDebugNode;
+		extern bool	g_bDebugNode;
 		extern u32	g_dwDebugNodeSource;
 		extern u32	g_dwDebugNodeDest;
 #endif

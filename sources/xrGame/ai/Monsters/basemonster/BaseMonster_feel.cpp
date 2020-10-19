@@ -15,7 +15,7 @@
 #include "../../../clsid_game.h"
 #include "../../../..\ENGINE\skeletonanimated.h"
 #include "../../../sound_player.h"
-#include "../../../level.h"
+#include "..\..\..\Level.h"
 #include "../../../script_callback_ex.h"
 #include "../../../script_game_object.h"
 #include "../../../GameObject_space.h"
@@ -24,7 +24,7 @@
 #include "../../../ui/UIGameCustom.h"//
 #include "../../../ui/UIStatic.h"//
 #include "../../../ai_object_location.h"
-#include "../../../profiler.h"
+#include "..\..\..\Profiler.h"
 #include "../../../ActorEffector.h"
 #include "../../../..\ENGINE\CameraBase.h"
 

@@ -1,13 +1,12 @@
 #include "stdafx.h"
 
-#include "xrServer.h"
+#include "Server.h"
 #include "LevelGameDef.h"
 #include "script_process.h"
 #include "xrServer_Objects_ALife_Monsters.h"
 #include "script_engine.h"
 #include "script_engine_space.h"
 #include "level.h"
-#include "xrserver.h"
 #include "ai_space.h"
 #include "game_sv_event_queue.h"
 #include "..\ENGINE\Console.h"
@@ -216,6 +215,7 @@ string64&			game_sv_GameState::get_option_s				(const char* lst, const char* nam
 	}
 	return ret;
 }
+
 void				game_sv_GameState::signal_Syncronize		()
 {
 	sv_force_sync	= TRUE;
@@ -292,7 +292,7 @@ void game_sv_GameState::net_Export_Update(NET_Packet& P, ClientID id_to, ClientI
 		P.w_clientID	(id);
 		A->net_Export	(P);
 		A->flags__		= bk_flags;
-	};
+	}
 };
 
 void game_sv_GameState::net_Export_GameTime						(NET_Packet& P)
@@ -304,7 +304,6 @@ void game_sv_GameState::net_Export_GameTime						(NET_Packet& P)
 	P.w_u64(GetEnvironmentGameTime());
 	P.w_float(GetEnvironmentGameTimeFactor());
 };
-
 
 void game_sv_GameState::OnPlayerConnect			(ClientID /**id_who/**/)
 {
@@ -398,7 +397,7 @@ void game_sv_GameState::Create					(shared_str &options)
 		{
 			Console->ExecuteScript(svcfg_name);
 		}
-	};
+	}
 	//---------------------------------------------------------------------
 	ReadOptions(options);
 }
@@ -466,7 +465,7 @@ void	game_sv_GameState::assign_RP				(CSE_Abstract* E, game_PlayerState* ps_who)
 			{
 				rp[i].TimeToUnfreeze = 0;
 			};
-		};
+		}
 		rpoint = ::Random.randI((int)rp.size());
 	}
 	//-----------------------------------------------------------
@@ -474,7 +473,7 @@ void	game_sv_GameState::assign_RP				(CSE_Abstract* E, game_PlayerState* ps_who)
 	if (!tpSpectator)
 	{
 		r.TimeToUnfreeze	= Level().timeServer() + g_sv_base_dwRPointFreezeTime;
-	};
+	}
 	E->o_Position.set	(r.P);
 	E->o_Angle.set		(r.A);
 }
@@ -576,7 +575,7 @@ game_sv_GameState::~game_sv_GameState()
 
 bool game_sv_GameState::change_level (NET_Packet &net_packet, ClientID sender)
 {
-	return						(true);
+	return true;
 }
 
 void game_sv_GameState::save_game (NET_Packet &net_packet, ClientID sender)
@@ -584,7 +583,7 @@ void game_sv_GameState::save_game (NET_Packet &net_packet, ClientID sender)
 
 bool game_sv_GameState::load_game (NET_Packet &net_packet, ClientID sender)
 {
-	return						(true);
+	return true;
 }
 
 void game_sv_GameState::reload_game (NET_Packet &net_packet, ClientID sender)
@@ -940,7 +939,6 @@ void		game_sv_GameState::OnRender				()
 			T.translate_add(pPlayer->Position());
 			Level().debug_renderer().draw_ellipse(T, TeamColors[PS->team]);
 		};
-
 	}
 };
 #endif

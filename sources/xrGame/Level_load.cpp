@@ -1,4 +1,5 @@
 #include "stdafx.h"
+
 #include "HUDManager.h"//
 #include "LevelGameDef.h"
 #include "ai_space.h"

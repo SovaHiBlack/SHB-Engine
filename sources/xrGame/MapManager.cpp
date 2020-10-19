@@ -9,7 +9,7 @@
 #include "MapLocation.h"
 #include "MapManager.h"
 #include "GameTaskManager.h"
-#include "xrServer.h"
+#include "Server.h"
 #include "GameObject_space.h"
 #include "script_callback_ex.h"
 

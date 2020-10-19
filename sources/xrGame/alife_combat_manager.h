@@ -36,7 +36,7 @@ protected:
 			void					vfFinishCombat				(ALife::ECombatResult		tCombatResult);
 /**/
 public:
-									CALifeCombatManager			(xrServer *server, const char* section);
+									CALifeCombatManager			(CServer*server, const char* section);
 /**
 	virtual							~CALifeCombatManager		();
 	IC		ALife::ECombatType		combat_type					() const;

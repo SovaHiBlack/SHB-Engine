@@ -1,5 +1,6 @@
 #include "stdafx.h"
-#include "xrserver.h"
+
+#include "Server.h"
 #include "xrmessages.h"
 #include "HUDManager.h"//
 #include "xrserver_objects.h"
@@ -7,7 +8,7 @@
 
 xr_vector<u16> g_perform_spawn_ids;
 
-void xrServer::Perform_connect_spawn(CSE_Abstract* E, xrClientData* CL, NET_Packet& P)
+void CServer::Perform_connect_spawn(CSE_Abstract* E, xrClientData* CL, NET_Packet& P)
 {
 	xr_vector<u16>::iterator it = std::find(g_perform_spawn_ids.begin(), g_perform_spawn_ids.end(), E->ID);
 	if(it!=g_perform_spawn_ids.end())
@@ -52,7 +53,7 @@ void xrServer::Perform_connect_spawn(CSE_Abstract* E, xrClientData* CL, NET_Pack
 	E->net_Processed	= TRUE;
 }
 
-void xrServer::SendConnectionData(IClient* _CL)
+void CServer::SendConnectionData(IClient* _CL)
 {
 	g_perform_spawn_ids.clear_not_free();
 	xrClientData*	CL				= (xrClientData*)_CL;
@@ -68,7 +69,7 @@ void xrServer::SendConnectionData(IClient* _CL)
 	SendTo							(CL->ID,P,mode);
 };
 
-void xrServer::OnCL_Connected		(IClient* _CL)
+void CServer::OnCL_Connected		(IClient* _CL)
 {
 	xrClientData*	CL				= (xrClientData*)_CL;
 	CL->net_Accepted = TRUE;
@@ -91,7 +92,7 @@ void xrServer::OnCL_Connected		(IClient* _CL)
 	game->ProcessDelayedEvent		();
 }
 
-void xrServer::SendConnectResult(IClient* CL, u8 res, u8 res1, char* ResultStr)
+void CServer::SendConnectResult(IClient* CL, u8 res, u8 res1, char* ResultStr)
 {
 	NET_Packet	P;
 	P.w_begin	(M_CLIENT_CONNECT_RESULT);
@@ -109,7 +110,7 @@ void xrServer::SendConnectResult(IClient* CL, u8 res, u8 res1, char* ResultStr)
 	
 };
 
-void xrServer::Check_GameSpy_CDKey_Success			(IClient* CL)
+void CServer::Check_GameSpy_CDKey_Success			(IClient* CL)
 {
 	if (NeedToCheckClient_BuildVersion(CL))				return;
 	//-------------------------------------------------------------
@@ -118,7 +119,7 @@ void xrServer::Check_GameSpy_CDKey_Success			(IClient* CL)
 
 BOOL	g_SV_Disable_Auth_Check = FALSE;
 
-bool xrServer::NeedToCheckClient_BuildVersion		(IClient* CL)	
+bool CServer::NeedToCheckClient_BuildVersion		(IClient* CL)
 {
 //#ifdef DEBUG
 	//return false; 
@@ -134,7 +135,7 @@ bool xrServer::NeedToCheckClient_BuildVersion		(IClient* CL)
 //#endif
 };
 
-void xrServer::OnBuildVersionRespond				( IClient* CL, NET_Packet& P )
+void CServer::OnBuildVersionRespond				( IClient* CL, NET_Packet& P )
 {
 	u16 Type;
 	P.r_begin( Type );
@@ -176,7 +177,7 @@ void xrServer::OnBuildVersionRespond				( IClient* CL, NET_Packet& P )
 	}
 };
 
-void xrServer::Check_BuildVersion_Success			( IClient* CL )
+void CServer::Check_BuildVersion_Success			( IClient* CL )
 {
 	CL->flags.bVerified = TRUE;
 	SendConnectResult(CL, 1, 0, "All Ok");

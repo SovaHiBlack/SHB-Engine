@@ -144,7 +144,7 @@ public:
 
 #include "ai_space.h"
 
-#include "graph_engine.h"
+#include "GraphEngine.h"
 #include "object_broker.h"
 
 #include "problem_solver_inline.h"

@@ -13,7 +13,7 @@
 #include "game_graph_space.h"
 #include "object_interfaces.h"
 
-class xrServer;
+class CServer;
 class CALifeSimulatorHeader;
 class CALifeTimeManager;
 class CALifeSpawnRegistry;
@@ -33,7 +33,7 @@ class CSE_ALifeCreatureAbstract;
 
 class CALifeSimulatorBase : public IPureDestroyableObject {
 protected:
-	xrServer									*m_server;
+	CServer*									m_server;
 	CALifeSimulatorHeader						*m_header;
 	CALifeTimeManager							*m_time_manager;
 	CALifeSpawnRegistry							*m_spawns;
@@ -69,7 +69,7 @@ public:
 	IC		CALifeRegistryContainer				&registry					() const;
 
 public:
-												CALifeSimulatorBase			(xrServer *server, const char* section);
+												CALifeSimulatorBase			(CServer*server, const char* section);
 	virtual										~CALifeSimulatorBase		();
 	virtual	void								destroy						();
 	IC		bool								initialized					() const;
@@ -83,7 +83,7 @@ public:
 	IC		const CALifeSmartTerrainRegistry	&smart_terrains				() const;
 	IC		const CALifeGroupRegistry			&groups						() const;
 	IC		CRandom32							&random						();
-	IC		xrServer							&server						() const;
+	IC		CServer&							server						() const;
 	IC		const CALifeTimeManager				&time_manager				() const;
 	IC		shared_str							*server_command_line		() const;
 	template <typename T>

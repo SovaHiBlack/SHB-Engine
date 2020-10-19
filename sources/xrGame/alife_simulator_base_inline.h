@@ -156,7 +156,7 @@ IC	void								CALifeSimulatorBase::setup_command_line		(shared_str *command_lin
 	m_server_command_line		= command_line;
 }
 
-IC	xrServer							&CALifeSimulatorBase::server				() const
+IC	CServer&CALifeSimulatorBase::server				() const
 {
 	VERIFY						(m_server);
 	return						(*m_server);

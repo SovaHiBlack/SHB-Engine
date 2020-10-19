@@ -7,6 +7,7 @@
 ////////////////////////////////////////////////////////////////////////////
 
 #include "stdafx.h"
+
 #include "item_manager.h"
 #include "inventory_item.h"
 #include "custommonster.h"
@@ -15,7 +16,7 @@
 #include "restricted_object.h"
 #include "movement_manager.h"
 #include "ai_space.h"
-#include "profiler.h"
+#include "Profiler.h"
 
 bool CItemManager::is_useful		(const CGameObject *object) const
 {

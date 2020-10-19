@@ -5,7 +5,7 @@
 #include "PHDestroyable.h"
 #include "PhysicsShellHolder.h"
 #include "xrMessages.h"
-#include "object_factory.h"
+#include "ObjectFactory.h"
 #include "xrServer_Objects_ALife.h"
 #include "Level.h"
 #include "PhysicsShell.h"

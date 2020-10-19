@@ -18,7 +18,7 @@
 #include "alife_smart_terrain_registry.h"
 #include "alife_group_registry.h"
 #include "alife_registry_container.h"
-#include "xrserver.h"
+#include "Server.h"
 #include "level_graph.h"
 
 #pragma warning(push)
@@ -28,7 +28,7 @@
 
 using namespace ALife;
 
-CALifeSimulatorBase::CALifeSimulatorBase	(xrServer *server, const char* section)
+CALifeSimulatorBase::CALifeSimulatorBase	(CServer*server, const char* section)
 {
 	m_server					= server;
 	m_initialized				= false;

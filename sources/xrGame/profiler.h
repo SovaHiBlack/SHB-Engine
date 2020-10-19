@@ -1,5 +1,5 @@
 ////////////////////////////////////////////////////////////////////////////
-//	Module 		: profiler.h
+//	Module 		: Profiler.h
 //	Created 	: 23.07.2004
 //  Modified 	: 23.07.2004
 //	Author		: Dmitriy Iassenev
@@ -81,7 +81,7 @@ IC	CProfiler&	profiler();
 #	define START_PROFILE(a) { CProfilePortion	__profile_portion__(a);
 #	define STOP_PROFILE     }
 
-#	include "profiler_inline.h"
+#	include "Profiler_inline.h"
 
 #else // DEBUG
 #	define START_PROFILE(a) {

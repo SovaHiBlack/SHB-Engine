@@ -6,7 +6,7 @@
 #include "Entity.h"
 #include "actor.h"
 
-#include "xrserver.h"
+#include "Server.h"
 #include "xrServer_Objects_ALife_Items.h"
 #include "level.h"
 

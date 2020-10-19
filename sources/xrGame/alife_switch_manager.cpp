@@ -7,13 +7,14 @@
 ////////////////////////////////////////////////////////////////////////////
 
 #include "stdafx.h"
+
 #include "alife_switch_manager.h"
 #include "xrServer_Objects_ALife.h"
 #include "alife_graph_registry.h"
 #include "alife_object_registry.h"
 #include "alife_schedule_registry.h"
 #include "game_level_cross_table.h"
-#include "xrserver.h"
+#include "Server.h"
 #include "ai_space.h"
 #include "level_graph.h"
 
@@ -24,9 +25,9 @@
 using namespace ALife;
 
 struct remove_non_savable_predicate {
-	xrServer			*m_server;
+	CServer*m_server;
 
-	IC		 remove_non_savable_predicate(xrServer *server)
+	IC		 remove_non_savable_predicate(CServer*server)
 	{
 		VERIFY			(server);
 		m_server		= server;

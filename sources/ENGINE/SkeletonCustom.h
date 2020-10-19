@@ -1,19 +1,20 @@
 #pragma once
 
-#include		"fhierrarhyvisual.h"
-#include		"bone.h"
+#include "fhierrarhyvisual.h"
+#include "bone.h"
 
 // consts
-const	u32					MAX_BONE_PARAMS = 4;
-const	u32					UCalc_Interval = 100;	// 10 fps
-extern	xrCriticalSection	UCalc_Mutex;
+const u32					MAX_BONE_PARAMS = 4;
+const u32					UCalc_Interval = 100;	// 10 fps
+extern xrCriticalSection	UCalc_Mutex;
 
 // refs
-class	ENGINE_API CKinematics;
-class	ENGINE_API CIniFile;
-class	ENGINE_API CBoneData;
-class   ENGINE_API CBoneInstance;
-struct	SEnumVerticesCallback;
+class ENGINE_API CKinematics;
+class ENGINE_API CIniFile;
+class ENGINE_API CBoneData;
+class ENGINE_API CBoneInstance;
+struct SEnumVerticesCallback;
+
 // t-defs
 typedef xr_vector<CBoneData*>		vecBones;
 typedef vecBones::iterator			vecBonesIt;
@@ -23,7 +24,7 @@ typedef void (*BoneCallback)		(CBoneInstance* P);
 typedef void (*UpdateCallback)		(CKinematics* P);
 
 // MT-locker
-struct	UCalc_mtlock
+struct UCalc_mtlock
 {
 	UCalc_mtlock( )
 	{
@@ -200,6 +201,7 @@ public:
 		return m_Shader;
 	}
 };
+
 DEFINE_VECTOR(intrusive_ptr<CSkeletonWallmark>, SkeletonWMVec, SkeletonWMVecIt);
 
 // sanity check
@@ -221,7 +223,7 @@ struct dbg_marker
 #	define _DBG_SINGLE_USE_MARKER
 #endif
 
-class ENGINE_API	CKinematics : public FHierrarhyVisual
+class ENGINE_API CKinematics : public FHierrarhyVisual
 {
 	typedef FHierrarhyVisual	inherited;
 	friend class				CBoneData;

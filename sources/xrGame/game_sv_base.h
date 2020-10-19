@@ -19,7 +19,7 @@ enum ERoundEnd_Result
 };
 
 class CSE_Abstract;
-class xrServer;
+class CServer;
 // [OLES] Policy:
 // it_*		- means ordinal number of player
 // id_*		- means player-id
@@ -32,7 +32,7 @@ class	game_sv_GameState	: public game_GameState
 protected:
 
 //	u32								m_RPointFreezeTime;
-	xrServer*						m_server;
+	CServer*						m_server;
 	GameEventQueue*					m_event_queue;
 //	BOOL							m_bVotingEnabled;
 		
@@ -78,7 +78,6 @@ public:
 	virtual		void				OnPlayerFire			(ClientID id_who, NET_Packet &P) {};
 	virtual		void				OnPlayer_Sell_Item		(ClientID id_who, NET_Packet &P) {};
 				void				GenerateGameMessage		(NET_Packet &P);
-	
 
 	virtual		void				OnRoundStart			();									// старт раунда
 	virtual		void				OnRoundEnd				();	//	round_end_reason			// конец раунда

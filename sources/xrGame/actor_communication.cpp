@@ -4,7 +4,7 @@
 #include "ui/UIGameSP.h"//
 #include "Pda.h"
 #include "HUDManager.h"//
-#include "level.h"
+#include "Level.h"
 //#include "StringTable.h"
 #include "PhraseDialog.h"
 #include "character_info.h"
@@ -14,7 +14,7 @@
 #include "alife_registry_container.h"
 #include "script_game_object.h"
 #include "game_cl_base.h"
-#include "xrServer.h"
+#include "Server.h"
 #include "xrServer_Objects_ALife_Monsters.h"
 #include "alife_registry_wrappers.h"
 #include "MapManager.h"

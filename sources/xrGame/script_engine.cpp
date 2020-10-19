@@ -9,7 +9,7 @@
 
 #include "script_engine.h"
 #include "ai_space.h"
-#include "object_factory.h"
+#include "ObjectFactory.h"
 #include "script_process.h"
 
 #ifdef USE_DEBUGGER

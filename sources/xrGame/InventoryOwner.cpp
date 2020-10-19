@@ -14,7 +14,7 @@
 #include "level.h"
 #include "game_base_space.h"
 #include "PhraseDialog.h"
-#include "xrserver.h"
+#include "Server.h"
 #include "xrServer_Objects_ALife_Monsters.h"
 #include "alife_registry_wrappers.h"
 #include "relation_registry.h"

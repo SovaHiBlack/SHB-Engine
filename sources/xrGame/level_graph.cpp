@@ -9,7 +9,7 @@
 #include "stdafx.h"
 
 #include "level_graph.h"
-#include "profiler.h"
+#include "Profiler.h"
 
 const char* LEVEL_GRAPH_NAME = "level.ai";
 

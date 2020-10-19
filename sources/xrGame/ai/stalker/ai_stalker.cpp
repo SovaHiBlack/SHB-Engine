@@ -21,7 +21,7 @@
 #include "../../PHMovementControl.h"
 #include "../../xrserver_objects_alife_monsters.h"
 #include "../../cover_evaluators.h"
-#include "../../xrserver.h"
+#include "..\..\Server.h"
 #include "../../xr_level_controller.h"
 #include "../../HUDManager.h"//
 #include "../../clsid_game.h"
@@ -53,7 +53,7 @@
 #include "../../visual_memory_manager.h"
 #include "../../enemy_manager.h"
 #include "../../alife_human_brain.h"
-#include "../../profiler.h"
+#include "..\..\Profiler.h"
 #include "../../BoneProtections.h"
 #include "../../stalker_animation_names.h"
 #include "../../stalker_decision_space.h"///

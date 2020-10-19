@@ -9,7 +9,7 @@
 #pragma once
 
 #pragma pack(push,4)
-#include "xrServer_Space.h"
+#include "Server_space.h"
 
 #ifdef XRGAME_EXPORTS
 #	include "../../xrCDB/xrCDB.h"

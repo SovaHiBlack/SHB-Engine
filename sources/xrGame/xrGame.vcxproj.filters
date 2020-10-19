@@ -1573,18 +1573,6 @@
     <Filter Include="Core\Common\ObjectFactory">
       <UniqueIdentifier>{7765c17f-dd3b-4eea-bbc6-58a0a034a148}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Core\Common\ObjectFactory\object_item_abstract">
-      <UniqueIdentifier>{9ce525ca-0fb0-47c9-aabb-d66f024a405d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Core\Common\ObjectFactory\object_item_client_server">
-      <UniqueIdentifier>{efa4cbf8-e1cc-454d-bb32-c3c2b9d0ccfa}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Core\Common\ObjectFactory\object_item_script">
-      <UniqueIdentifier>{c90dde81-0ea3-4d7b-b287-eb884df7531b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Core\Common\ObjectFactory\object_item_single">
-      <UniqueIdentifier>{4f5b8fbe-3529-46a6-8cbc-7c7497e84691}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Core\Common\Profiler">
       <UniqueIdentifier>{6f380bda-098d-4e48-8e5c-2d682ae201bd}</UniqueIdentifier>
     </Filter>
@@ -2076,6 +2064,18 @@
     </Filter>
     <Filter Include="Core\Client\Objects\Projector">
       <UniqueIdentifier>{f90db9d7-7d0e-4817-bf0a-042b32c696a6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Common\ObjectFactory\ObjectItemAbstract">
+      <UniqueIdentifier>{9ce525ca-0fb0-47c9-aabb-d66f024a405d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Common\ObjectFactory\ObjectItemClientServer">
+      <UniqueIdentifier>{efa4cbf8-e1cc-454d-bb32-c3c2b9d0ccfa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Common\ObjectFactory\ObjectItemScript">
+      <UniqueIdentifier>{c90dde81-0ea3-4d7b-b287-eb884df7531b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Common\ObjectFactory\ObjectItemSingle">
+      <UniqueIdentifier>{4f5b8fbe-3529-46a6-8cbc-7c7497e84691}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -4008,15 +4008,6 @@
     <ClInclude Include="vertex_manager_hash_fixed_inline.h">
       <Filter>AI\ANavigation\Pathfinding\DataStorages\vertex_managers\hash_fixed</Filter>
     </ClInclude>
-    <ClInclude Include="graph_engine.h">
-      <Filter>AI\ANavigation\Pathfinding\GraphEngine</Filter>
-    </ClInclude>
-    <ClInclude Include="graph_engine_inline.h">
-      <Filter>AI\ANavigation\Pathfinding\GraphEngine</Filter>
-    </ClInclude>
-    <ClInclude Include="graph_engine_space.h">
-      <Filter>AI\ANavigation\Pathfinding\GraphEngine</Filter>
-    </ClInclude>
     <ClInclude Include="path_manager.h">
       <Filter>AI\ANavigation\Pathfinding\PathManagers</Filter>
     </ClInclude>
@@ -4989,51 +4980,6 @@
     <ClInclude Include="clsid_game.h">
       <Filter>Core\Common\ObjectFactory</Filter>
     </ClInclude>
-    <ClInclude Include="object_factory.h">
-      <Filter>Core\Common\ObjectFactory</Filter>
-    </ClInclude>
-    <ClInclude Include="object_factory_impl.h">
-      <Filter>Core\Common\ObjectFactory</Filter>
-    </ClInclude>
-    <ClInclude Include="object_factory_inline.h">
-      <Filter>Core\Common\ObjectFactory</Filter>
-    </ClInclude>
-    <ClInclude Include="object_factory_space.h">
-      <Filter>Core\Common\ObjectFactory</Filter>
-    </ClInclude>
-    <ClInclude Include="object_item_abstract.h">
-      <Filter>Core\Common\ObjectFactory\object_item_abstract</Filter>
-    </ClInclude>
-    <ClInclude Include="object_item_abstract_inline.h">
-      <Filter>Core\Common\ObjectFactory\object_item_abstract</Filter>
-    </ClInclude>
-    <ClInclude Include="object_item_client_server.h">
-      <Filter>Core\Common\ObjectFactory\object_item_client_server</Filter>
-    </ClInclude>
-    <ClInclude Include="object_item_client_server_inline.h">
-      <Filter>Core\Common\ObjectFactory\object_item_client_server</Filter>
-    </ClInclude>
-    <ClInclude Include="object_item_script.h">
-      <Filter>Core\Common\ObjectFactory\object_item_script</Filter>
-    </ClInclude>
-    <ClInclude Include="object_item_single.h">
-      <Filter>Core\Common\ObjectFactory\object_item_single</Filter>
-    </ClInclude>
-    <ClInclude Include="object_item_single_inline.h">
-      <Filter>Core\Common\ObjectFactory\object_item_single</Filter>
-    </ClInclude>
-    <ClInclude Include="profiler.h">
-      <Filter>Core\Common\Profiler</Filter>
-    </ClInclude>
-    <ClInclude Include="profiler_inline.h">
-      <Filter>Core\Common\Profiler</Filter>
-    </ClInclude>
-    <ClInclude Include="quadtree.h">
-      <Filter>Core\Common\QuadTree</Filter>
-    </ClInclude>
-    <ClInclude Include="quadtree_inline.h">
-      <Filter>Core\Common\QuadTree</Filter>
-    </ClInclude>
     <ClInclude Include="random32.h">
       <Filter>Core\Common\Random32</Filter>
     </ClInclude>
@@ -5063,12 +5009,6 @@
     </ClInclude>
     <ClInclude Include="associative_vector_compare_predicate_inline.h">
       <Filter>Core\Common\associative_vector\compare</Filter>
-    </ClInclude>
-    <ClInclude Include="xrServer.h">
-      <Filter>Core\Server</Filter>
-    </ClInclude>
-    <ClInclude Include="xrServer_Space.h">
-      <Filter>Core\Server</Filter>
     </ClInclude>
     <ClInclude Include="FastDelegate.h">
       <Filter>Core\Server\Editor</Filter>
@@ -5966,6 +5906,66 @@
     </ClInclude>
     <ClInclude Include="TeamBaseZone.h">
       <Filter>Core\Client\Objects\zones\TeamBaseZone</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectItemAbstract.h">
+      <Filter>Core\Common\ObjectFactory\ObjectItemAbstract</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectItemAbstract_inline.h">
+      <Filter>Core\Common\ObjectFactory\ObjectItemAbstract</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectItemClientServer.h">
+      <Filter>Core\Common\ObjectFactory\ObjectItemClientServer</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectItemClientServer_inline.h">
+      <Filter>Core\Common\ObjectFactory\ObjectItemClientServer</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectItemScript.h">
+      <Filter>Core\Common\ObjectFactory\ObjectItemScript</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectItemSingle.h">
+      <Filter>Core\Common\ObjectFactory\ObjectItemSingle</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectItemSingle_inline.h">
+      <Filter>Core\Common\ObjectFactory\ObjectItemSingle</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectFactory.h">
+      <Filter>Core\Common\ObjectFactory</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectFactory_impl.h">
+      <Filter>Core\Common\ObjectFactory</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectFactory_inline.h">
+      <Filter>Core\Common\ObjectFactory</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectFactory_space.h">
+      <Filter>Core\Common\ObjectFactory</Filter>
+    </ClInclude>
+    <ClInclude Include="Profiler.h">
+      <Filter>Core\Common\Profiler</Filter>
+    </ClInclude>
+    <ClInclude Include="Profiler_inline.h">
+      <Filter>Core\Common\Profiler</Filter>
+    </ClInclude>
+    <ClInclude Include="GraphEngine.h">
+      <Filter>AI\ANavigation\Pathfinding\GraphEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="GraphEngine_inline.h">
+      <Filter>AI\ANavigation\Pathfinding\GraphEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="GraphEngine_space.h">
+      <Filter>AI\ANavigation\Pathfinding\GraphEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="QuadTree.h">
+      <Filter>Core\Common\QuadTree</Filter>
+    </ClInclude>
+    <ClInclude Include="QuadTree_inline.h">
+      <Filter>Core\Common\QuadTree</Filter>
+    </ClInclude>
+    <ClInclude Include="Server.h">
+      <Filter>Core\Server</Filter>
+    </ClInclude>
+    <ClInclude Include="Server_space.h">
+      <Filter>Core\Server</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -7679,21 +7679,6 @@
     <ClCompile Include="xrgame_dll_detach.cpp">
       <Filter>Core\Common\Dll Process Detach</Filter>
     </ClCompile>
-    <ClCompile Include="object_factory.cpp">
-      <Filter>Core\Common\ObjectFactory</Filter>
-    </ClCompile>
-    <ClCompile Include="object_factory_register.cpp">
-      <Filter>Core\Common\ObjectFactory</Filter>
-    </ClCompile>
-    <ClCompile Include="object_factory_script.cpp">
-      <Filter>Core\Common\ObjectFactory</Filter>
-    </ClCompile>
-    <ClCompile Include="object_item_script.cpp">
-      <Filter>Core\Common\ObjectFactory\object_item_script</Filter>
-    </ClCompile>
-    <ClCompile Include="profiler.cpp">
-      <Filter>Core\Common\Profiler</Filter>
-    </ClCompile>
     <ClCompile Include="random32.cpp">
       <Filter>Core\Common\Random32</Filter>
     </ClCompile>
@@ -7702,12 +7687,6 @@
     </ClCompile>
     <ClCompile Include="smart_cast_stats.cpp">
       <Filter>Core\Common\SmartCast</Filter>
-    </ClCompile>
-    <ClCompile Include="xrServer.cpp">
-      <Filter>Core\Server</Filter>
-    </ClCompile>
-    <ClCompile Include="xrServer_balance.cpp">
-      <Filter>Core\Server</Filter>
     </ClCompile>
     <ClCompile Include="game_base.cpp">
       <Filter>Core\Server\Games</Filter>
@@ -7751,9 +7730,6 @@
     <ClCompile Include="xrServer_Connect.cpp">
       <Filter>Core\Server\Games\server\single\ServerConnect</Filter>
     </ClCompile>
-    <ClCompile Include="xrServer_Disconnect.cpp">
-      <Filter>Core\Server\Games\server\single\ServerConnect</Filter>
-    </ClCompile>
     <ClCompile Include="xrServer_Factory.cpp">
       <Filter>Core\Server\ServerEntities</Filter>
     </ClCompile>
@@ -7786,48 +7762,6 @@
     </ClCompile>
     <ClCompile Include="xrServer_Objects_ALife_Monsters_script.cpp">
       <Filter>Core\Server\ServerEntities\objects_alife_monsters</Filter>
-    </ClCompile>
-    <ClCompile Include="xrServer_perform_GameExport.cpp">
-      <Filter>Core\Server\ServerPerform</Filter>
-    </ClCompile>
-    <ClCompile Include="xrServer_perform_migration.cpp">
-      <Filter>Core\Server\ServerPerform</Filter>
-    </ClCompile>
-    <ClCompile Include="xrServer_perform_RPgen.cpp">
-      <Filter>Core\Server\ServerPerform</Filter>
-    </ClCompile>
-    <ClCompile Include="xrServer_perform_sls_default.cpp">
-      <Filter>Core\Server\ServerPerform</Filter>
-    </ClCompile>
-    <ClCompile Include="xrServer_perform_sls_load.cpp">
-      <Filter>Core\Server\ServerPerform</Filter>
-    </ClCompile>
-    <ClCompile Include="xrServer_perform_sls_save.cpp">
-      <Filter>Core\Server\ServerPerform</Filter>
-    </ClCompile>
-    <ClCompile Include="xrServer_perform_transfer.cpp">
-      <Filter>Core\Server\ServerPerform</Filter>
-    </ClCompile>
-    <ClCompile Include="xrServer_sls_clear.cpp">
-      <Filter>Core\Server\ServerPerform</Filter>
-    </ClCompile>
-    <ClCompile Include="xrServer_process_event.cpp">
-      <Filter>Core\Server\ServerProcess</Filter>
-    </ClCompile>
-    <ClCompile Include="xrServer_process_event_destroy.cpp">
-      <Filter>Core\Server\ServerProcess</Filter>
-    </ClCompile>
-    <ClCompile Include="xrServer_process_event_ownership.cpp">
-      <Filter>Core\Server\ServerProcess</Filter>
-    </ClCompile>
-    <ClCompile Include="xrServer_process_event_reject.cpp">
-      <Filter>Core\Server\ServerProcess</Filter>
-    </ClCompile>
-    <ClCompile Include="xrServer_process_spawn.cpp">
-      <Filter>Core\Server\ServerProcess</Filter>
-    </ClCompile>
-    <ClCompile Include="xrServer_process_update.cpp">
-      <Filter>Core\Server\ServerProcess</Filter>
     </ClCompile>
     <ClCompile Include="PHDebug.cpp">
       <Filter>Physics\Base</Filter>
@@ -8632,6 +8566,72 @@
     </ClCompile>
     <ClCompile Include="TeamBaseZone.cpp">
       <Filter>Core\Client\Objects\zones\TeamBaseZone</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjectItemScript.cpp">
+      <Filter>Core\Common\ObjectFactory\ObjectItemScript</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjectFactory.cpp">
+      <Filter>Core\Common\ObjectFactory</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjectFactory_register.cpp">
+      <Filter>Core\Common\ObjectFactory</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjectFactory_script.cpp">
+      <Filter>Core\Common\ObjectFactory</Filter>
+    </ClCompile>
+    <ClCompile Include="Profiler.cpp">
+      <Filter>Core\Common\Profiler</Filter>
+    </ClCompile>
+    <ClCompile Include="Server_balance.cpp">
+      <Filter>Core\Server</Filter>
+    </ClCompile>
+    <ClCompile Include="Server.cpp">
+      <Filter>Core\Server</Filter>
+    </ClCompile>
+    <ClCompile Include="Server_process_event.cpp">
+      <Filter>Core\Server\ServerProcess</Filter>
+    </ClCompile>
+    <ClCompile Include="Server_process_event_destroy.cpp">
+      <Filter>Core\Server\ServerProcess</Filter>
+    </ClCompile>
+    <ClCompile Include="Server_process_event_ownership.cpp">
+      <Filter>Core\Server\ServerProcess</Filter>
+    </ClCompile>
+    <ClCompile Include="Server_process_event_reject.cpp">
+      <Filter>Core\Server\ServerProcess</Filter>
+    </ClCompile>
+    <ClCompile Include="Server_process_spawn.cpp">
+      <Filter>Core\Server\ServerProcess</Filter>
+    </ClCompile>
+    <ClCompile Include="Server_process_update.cpp">
+      <Filter>Core\Server\ServerProcess</Filter>
+    </ClCompile>
+    <ClCompile Include="Server_perform_GameExport.cpp">
+      <Filter>Core\Server\ServerPerform</Filter>
+    </ClCompile>
+    <ClCompile Include="Server_perform_migration.cpp">
+      <Filter>Core\Server\ServerPerform</Filter>
+    </ClCompile>
+    <ClCompile Include="Server_perform_RPgen.cpp">
+      <Filter>Core\Server\ServerPerform</Filter>
+    </ClCompile>
+    <ClCompile Include="Server_perform_sls_default.cpp">
+      <Filter>Core\Server\ServerPerform</Filter>
+    </ClCompile>
+    <ClCompile Include="Server_perform_sls_load.cpp">
+      <Filter>Core\Server\ServerPerform</Filter>
+    </ClCompile>
+    <ClCompile Include="Server_perform_sls_save.cpp">
+      <Filter>Core\Server\ServerPerform</Filter>
+    </ClCompile>
+    <ClCompile Include="Server_perform_transfer.cpp">
+      <Filter>Core\Server\ServerPerform</Filter>
+    </ClCompile>
+    <ClCompile Include="Server_sls_clear.cpp">
+      <Filter>Core\Server\ServerPerform</Filter>
+    </ClCompile>
+    <ClCompile Include="Server_Disconnect.cpp">
+      <Filter>Core\Server\Games\server\single\ServerConnect</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

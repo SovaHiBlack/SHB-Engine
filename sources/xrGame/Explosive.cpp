@@ -29,7 +29,7 @@
 #include "Physics.h"
 #include "PHActivationShape.h"//
 #include "game_base_space.h"
-#include "profiler.h"
+#include "Profiler.h"
 
 #define EFFECTOR_RADIUS 30.f
 const u16	TEST_RAYS_PER_OBJECT=5;

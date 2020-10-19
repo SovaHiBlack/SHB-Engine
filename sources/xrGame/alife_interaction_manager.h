@@ -8,7 +8,7 @@
 
 #pragma once
 
-#include "xrserver_space.h"
+#include "Server_space.h"
 #include "alife_combat_manager.h"
 #include "alife_communication_manager.h"
 
@@ -27,7 +27,7 @@ public:
 
 /**/
 public:
-									CALifeInteractionManager	(xrServer *server, const char* section);
+									CALifeInteractionManager	(CServer*server, const char* section);
 /**
 	virtual							~CALifeInteractionManager	();
 			void					check_for_interaction		(CSE_ALifeSchedulable		*tpALifeSchedulable);

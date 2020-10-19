@@ -1,5 +1,5 @@
 ////////////////////////////////////////////////////////////////////////////
-//	Module 		: quadtree.h
+//	Module 		: QuadTree.h
 //	Created 	: 23.03.2004
 //  Modified 	: 23.03.2004
 //	Author		: Dmitriy Iassenev
@@ -8,7 +8,7 @@
 
 #pragma once
 
-#include "profiler.h"
+#include "Profiler.h"
 
 template <typename _object_type>
 class CQuadTree {
@@ -112,4 +112,4 @@ public:
 	IC		size_t				size			() const;
 };
 
-#include "quadtree_inline.h"
+#include "QuadTree_inline.h"

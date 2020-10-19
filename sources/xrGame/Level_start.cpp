@@ -1,7 +1,8 @@
 #include "stdafx.h"
+
 #include "level.h"
 #include "Level_Bullet_Manager.h"
-#include "xrserver.h"
+#include "Server.h"
 #include "game_cl_base.h"
 #include "xrmessages.h"
 #include "..\ENGINE\Application.h"
@@ -99,7 +100,7 @@ bool CLevel::net_start1				()
 		typedef IGamePersistent::params params;
 		params							&p = g_pGamePersistent->m_game_params;
 		// Connect
-		Server					= xr_new<xrServer>();
+		Server					= xr_new<CServer>();
 		
 //		if (!strstr(*m_caServerOptions,"/alife")) 
 		if (xr_strcmp(p.m_alife,"alife"))
@@ -131,7 +132,7 @@ bool CLevel::net_start2				()
 {
 	if (net_start_result_total && m_caServerOptions.size())
 	{
-		if ((m_connect_server_err=Server->Connect(m_caServerOptions))!=xrServer::ErrNoError)
+		if ((m_connect_server_err=Server->Connect(m_caServerOptions))!= CServer::ErrNoError)
 		{
 			net_start_result_total = false;
 			Msg				("! Failed to start server.");
@@ -212,7 +213,7 @@ bool CLevel::net_start5				()
 }
 
 BOOL				g_start_total_res		= TRUE;
-xrServer::EConnect	g_connect_server_err	= xrServer::ErrConnect;
+CServer::EConnect	g_connect_server_err	= CServer::ErrConnect;
 
 struct LevelLoadFinalizer
 {

@@ -8,7 +8,7 @@
 #include "..\ENGINE\IGamePersistent.h"//==>
 #include "ParticlesObject.h"
 #include "Level.h"
-#include "xrServer.h"
+#include "Server.h"
 #include "net_queue.h"
 #include "game_cl_base.h"
 #include "entity_alive.h"
@@ -87,8 +87,6 @@ CLevel::CLevel():IPureClient	(Device.GetTimerGlobal())
 
 	m_map_manager				= xr_new<CMapManager>();
 
-//	m_pFogOfWarMngr				= xr_new<CFogOfWarMngr>();
-//----------------------------------------------------
 	m_bNeed_CrPr				= false;
 	m_bIn_CrPr					= false;
 	m_dwNumSteps				= 0;

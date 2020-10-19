@@ -4,7 +4,7 @@
 #include "Actor_Flags.h"
 #include "inventory.h"
 #include "xrserver_objects_alife_monsters.h"
-#include "xrServer.h"
+#include "Server.h"
 
 #include "CameraLook.h"
 #include "CameraFirstEye.h"

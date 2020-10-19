@@ -4,7 +4,7 @@
 #include "BaseMonster/BaseMonster.h"
 #include "../../restricted_object.h"
 #include "..\..\CustomZone.h"
-#include "../../Level.h"
+#include "..\..\Level.h"
 #include "../../space_restriction_manager.h"
 
 CAnomalyDetector::CAnomalyDetector(CBaseMonster *monster) : m_object(monster)

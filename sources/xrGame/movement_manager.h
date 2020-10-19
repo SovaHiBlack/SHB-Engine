@@ -9,7 +9,7 @@
 #pragma once
 
 #include "ai_monster_space.h"
-#include "graph_engine_space.h"
+#include "GraphEngine_space.h"
 #include "game_graph_space.h"
 
 namespace MovementManager {

@@ -18,7 +18,7 @@
 #include "../alife_simulator.h"
 #include "../ai_space.h"
 #include "../alife_object_registry.h"
-#include "../xrServer.h"
+#include "..\Server.h"
 #include "../xrServer_Objects_ALife_Monsters.h"
 
 using namespace InventoryUtilities;

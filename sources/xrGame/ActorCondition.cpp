@@ -8,7 +8,7 @@
 #include "sleepeffector.h"
 #include "game_base_space.h"
 #include "autosave_manager.h"
-#include "xrserver.h"
+#include "Server.h"
 #include "ai_space.h"
 #include "script_callback_ex.h"
 #include "script_game_object.h"

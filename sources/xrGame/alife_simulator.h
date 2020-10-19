@@ -24,7 +24,7 @@ protected:
 	virtual void	reload				(const char* section);
 
 public:
-					CALifeSimulator		(xrServer *server, shared_str* command_line);
+					CALifeSimulator		(CServer*server, shared_str* command_line);
 	virtual			~CALifeSimulator	();
 	virtual	void	destroy				();
 

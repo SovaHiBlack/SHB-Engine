@@ -2,7 +2,7 @@
 
 #include "poltergeist.h"
 #include "../../../PhysicsShell.h"
-#include "../../../level.h"
+#include "..\..\..\Level.h"
 #include "../../../MaterialManager.h"
 #include "../../../level_debug.h"
 

@@ -1,5 +1,5 @@
 ////////////////////////////////////////////////////////////////////////////
-//	Module 		: profiler_inline.h
+//	Module 		: Profiler_inline.h
 //	Created 	: 23.07.2004
 //  Modified 	: 23.07.2004
 //	Author		: Dmitriy Iassenev

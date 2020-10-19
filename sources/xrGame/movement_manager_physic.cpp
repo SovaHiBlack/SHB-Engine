@@ -14,7 +14,7 @@
 #include "level.h"
 #include "custommonster.h"
 #include "ICollisionDamageInfo.h"
-#include "profiler.h"
+#include "Profiler.h"
 
 #ifdef DEBUG
 #	include "PHDebug.h"

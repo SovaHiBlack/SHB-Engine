@@ -2,7 +2,7 @@
 
 #include "Level.h"
 #include "Level_Bullet_Manager.h"
-#include "xrserver.h"
+#include "Server.h"
 #include "xrmessages.h"
 #include "game_cl_base.h"
 #include "PHCommander.h"

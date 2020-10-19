@@ -8,8 +8,8 @@
 
 #pragma once
 
-#include "profiler.h"
-#include "quadtree.h"
+#include "Profiler.h"
+#include "QuadTree.h"
 
 class CCoverPoint;
 

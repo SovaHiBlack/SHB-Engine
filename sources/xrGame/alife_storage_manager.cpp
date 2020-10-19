@@ -15,7 +15,7 @@
 #include "alife_graph_registry.h"
 #include "alife_group_registry.h"
 #include "alife_registry_container.h"
-#include "xrserver.h"
+#include "Server.h"
 #include "level.h"
 //#include "..\ENGINE\Application.h"
 #include "saved_game_wrapper.h"

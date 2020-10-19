@@ -1,4 +1,5 @@
 #include "stdafx.h"
+
 #include "entity.h"
 #include "xrserver_objects.h"
 #include "level.h"
@@ -6,7 +7,7 @@
 #include "game_cl_base.h"
 #include "net_queue.h"
 #include "Physics.h"
-#include "xrServer.h"
+#include "Server.h"
 #include "Actor.h"
 #include "game_cl_base_weapon_usage_statistic.h"
 #include "ai_space.h"

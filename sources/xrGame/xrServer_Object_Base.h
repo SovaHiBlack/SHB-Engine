@@ -160,6 +160,7 @@ public:
 	virtual CSE_ALifeOnlineOfflineGroup	*cast_online_offline_group	() {return 0;};
 	virtual CSE_ALifeItemPDA			*cast_item_pda				() {return 0;};
 };
+
 add_to_type_list(CSE_Abstract)
 #define script_type_list save_type_list(CSE_Abstract)
 

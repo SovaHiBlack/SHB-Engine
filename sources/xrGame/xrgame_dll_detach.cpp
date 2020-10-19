@@ -1,7 +1,7 @@
 #include "stdafx.h"
 
 #include "ai_space.h"
-#include "object_factory.h"
+#include "ObjectFactory.h"
 #include "ai/monsters/ai_monster_squad_manager.h"
 #include "StringTable.h"
 
@@ -21,7 +21,7 @@
 #include "character_rank.h"
 #include "character_reputation.h"
 
-#include "profiler.h"
+#include "Profiler.h"
 
 #include "sound_collection_storage.h"
 #include "relation_registry.h"

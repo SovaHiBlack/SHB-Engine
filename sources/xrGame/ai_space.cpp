@@ -7,10 +7,11 @@
 ////////////////////////////////////////////////////////////////////////////
 
 #include "stdafx.h"
+
 #include "game_graph.h"
 #include "game_level_cross_table.h"
 #include "level_graph.h"
-#include "graph_engine.h"
+#include "GraphEngine.h"
 #include "ef_storage.h"
 #include "ai_space.h"
 #include "cover_manager.h"

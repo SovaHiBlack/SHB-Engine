@@ -1,6 +1,6 @@
 #include "stdafx.h"
 
-#include "..\ENGINE\skeletonX.h"
+#include "..\ENGINE\SkeletonX.h"
 #include "..\ENGINE\skeletoncustom.h"
 
 void __stdcall xrSkin1W_x86(	vertRender*		D,

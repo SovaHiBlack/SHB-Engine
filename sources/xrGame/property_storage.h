@@ -8,7 +8,7 @@
 
 #pragma once
 
-#include "graph_engine_space.h"
+#include "GraphEngine_space.h"
 #include "script_export_space.h"
 
 class CPropertyStorage {

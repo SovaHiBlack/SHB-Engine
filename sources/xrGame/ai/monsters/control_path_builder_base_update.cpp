@@ -3,7 +3,7 @@
 #include "control_path_builder_base.h"
 #include "BaseMonster/BaseMonster.h"
 #include "../../detail_path_manager.h"
-#include "../../profiler.h"
+#include "..\..\Profiler.h"
 
 void CControlPathBuilderBase::update_frame()
 {	

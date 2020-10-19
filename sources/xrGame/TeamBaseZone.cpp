@@ -14,7 +14,7 @@
 #include "Actor.h"
 #include "HUDManager.h"//
 #include "level.h"
-#include "xrserver.h"
+#include "Server.h"
 #include "game_cl_base.h"
 #include "clsid_game.h"
 #include "MapLocation.h"

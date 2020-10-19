@@ -38,7 +38,7 @@ void print_time(const char* S, _TIME_ID tTimeID)
 }
 
 /**/
-CALifeCombatManager::CALifeCombatManager	(xrServer *server, const char* section) :
+CALifeCombatManager::CALifeCombatManager	(CServer*server, const char* section) :
 	CALifeSimulatorBase	(server,section)
 {
 /**

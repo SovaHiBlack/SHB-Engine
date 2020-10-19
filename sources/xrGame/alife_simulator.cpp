@@ -13,7 +13,7 @@
 #include "..\ENGINE\IGamePersistent.h"//==>
 #include "script_engine.h"
 #include "mainmenu.h"
-#include "object_factory.h"
+#include "ObjectFactory.h"
 
 const char* alife_section = "alife";
 
@@ -30,7 +30,7 @@ void restart_all				()
 	ai().script_engine().init	();
 }
 
-CALifeSimulator::CALifeSimulator		(xrServer *server, shared_str *command_line) :
+CALifeSimulator::CALifeSimulator		(CServer*server, shared_str *command_line) :
 	CALifeUpdateManager			(server,alife_section),
 	CALifeInteractionManager	(server,alife_section),
 	CALifeSimulatorBase			(server,alife_section)

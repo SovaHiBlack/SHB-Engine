@@ -15,7 +15,7 @@
 #include "stalker_movement_manager.h"
 #include "Inventory.h"
 #include "WeaponHUD.h"
-#include "xrServer.h"
+#include "Server.h"
 #include "autosave_manager.h"
 
 #include "actor.h"

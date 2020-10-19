@@ -9,7 +9,7 @@
 #include "poltergeist_movement.h"
 #include "../../../detail_path_manager.h"
 #include "../monster_velocity_space.h"
-#include "../../../level.h"
+#include "..\..\..\Level.h"
 #include "../../../level_debug.h"
 #include "../control_animation_base.h"
 #include "../control_movement_base.h"

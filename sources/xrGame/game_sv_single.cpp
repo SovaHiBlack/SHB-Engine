@@ -1,4 +1,5 @@
 #include "stdafx.h"
+
 #include "game_sv_single.h"
 #include "xrserver_objects_alife_monsters.h"
 #include "alife_simulator.h"
@@ -8,7 +9,7 @@
 #include "../ENGINE/net_utils.h"
 #include "object_broker.h"
 #include "gamepersistent.h"
-#include "xrServer.h"
+#include "Server.h"
 #include "..\ENGINE\Application.h"
 
 game_sv_Single::game_sv_Single			()

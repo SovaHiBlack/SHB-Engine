@@ -9,7 +9,7 @@
 #pragma once
 
 #include "ai_sounds.h"
-#include "xrserver_space.h"
+#include "Server_space.h"
 #include "alife_space.h"
 #include "script_export_space.h"
 

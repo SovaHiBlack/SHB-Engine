@@ -1,7 +1,8 @@
 #include "stdafx.h"
+
 #include "Level.h"
 #include "HUDManager.h"//
-#include "xrServer.h"
+#include "Server.h"
 
 #define DEMO_DATA_SIZE	65536
 u32	g_dwDemoDeltaFrame = 1;

@@ -19,7 +19,7 @@
 #include <malloc.h>
 #pragma warning(pop)
 
-#include "object_factory.h"
+#include "ObjectFactory.h"
 
 #include "xrEProps.h"
 

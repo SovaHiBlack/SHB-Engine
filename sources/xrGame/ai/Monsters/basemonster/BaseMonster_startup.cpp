@@ -20,11 +20,11 @@
 #include "../monster_cover_manager.h"
 #include "../monster_home.h"
 #include "../../../ai_object_location.h"
-#include "../../../level.h"
+#include "..\..\..\Level.h"
 #include "../../../xrserver_objects_alife_monsters.h"
 #include "../../../alife_simulator.h"
 #include "../../../alife_object_registry.h"
-#include "../../../xrServer.h"
+#include "..\..\..\Server.h"
 #include "../../../inventory_item.h"
 #include "../../../xrServer_Objects_ALife.h"
 

@@ -14,7 +14,7 @@
 #include "ai_space.h"
 //#include "..\ENGINE\Object.h"
 #include "..\ENGINE\skeletoncustom.h"
-#include "profiler.h"
+#include "Profiler.h"
 #include "sound_collection_storage.h"
 #include "object_broker.h"
 

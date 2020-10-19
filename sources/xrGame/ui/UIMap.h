@@ -51,14 +51,14 @@ protected:
 
 class CUIGlobalMap: public CUICustomMap{
 	typedef  CUICustomMap inherited;
-public:
+
 private:
 	shared_str		m_prev_active_map;
 	CUIMapWnd*		m_mapWnd;
 	float			m_minZoom;
 	float			m_max_zoom;
-public:
 
+public:
 	virtual Fvector2 ConvertRealToLocal		(const Fvector2& src);// pixels->pixels (relatively own left-top pos)
 
 					CUIGlobalMap			(CUIMapWnd*	pMapWnd);
@@ -86,6 +86,7 @@ class CUILevelMap: public CUICustomMap{
 	CUIMapWnd*					m_mapWnd;
 	Frect						m_GlobalRect;			// virtual map size (meters)
 //	CUIStatic*					m_anomalies_map;
+
 private:
 								CUILevelMap			(const CUILevelMap &obj) {}
 			CUILevelMap			&operator=			(const CUILevelMap &obj) {}
@@ -107,8 +108,6 @@ public:
 
 protected:
 	virtual void				UpdateSpots			();
-
-
 };
 
 class CUIMiniMap: public CUICustomMap{
@@ -118,7 +117,7 @@ public:
 								CUIMiniMap			();
 	virtual						~CUIMiniMap			();
 	virtual void				Init				(shared_str name, CIniFile& gameLtx, LPCSTR sh_name);
+
 protected:
 	virtual void				UpdateSpots			();
-
 };

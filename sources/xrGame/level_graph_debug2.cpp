@@ -36,7 +36,7 @@
 #include "level.h"
 #include "ai_object_location.h"
 #include "movement_manager.h"
-#include "graph_engine.h"
+#include "GraphEngine.h"
 #include "debug_renderer.h"
 
 void CLevelGraph::draw_nodes	()

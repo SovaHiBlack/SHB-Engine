@@ -7,6 +7,7 @@
 ////////////////////////////////////////////////////////////////////////////
 
 #include "stdafx.h"
+
 #include "alife_update_manager.h"
 #include "alife_simulator_header.h"
 #include "alife_time_manager.h"
@@ -15,12 +16,12 @@
 #include "alife_spawn_registry.h"
 #include "alife_object_registry.h"
 #include "ef_storage.h"
-#include "xrserver.h"
+#include "Server.h"
 #include "level.h"
-#include "graph_engine.h"
+#include "GraphEngine.h"
 //#include "..\ENGINE\Application.h"
 #include "restriction_space.h"
-#include "profiler.h"
+#include "Profiler.h"
 #include "mt_config.h"
 #include "..\ENGINE\IGamePersistent.h"//==>
 
@@ -53,7 +54,7 @@ public:
 	}
 };
 
-CALifeUpdateManager::CALifeUpdateManager	(xrServer *server, const char* section) :
+CALifeUpdateManager::CALifeUpdateManager	(CServer*server, const char* section) :
 	CALifeSwitchManager		(server,section),
 	CALifeSurgeManager		(server,section),
 	CALifeStorageManager	(server,section),

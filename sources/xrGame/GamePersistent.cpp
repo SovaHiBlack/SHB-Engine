@@ -5,7 +5,7 @@
 #include "..\ENGINE\Console.h"
 #include "gamemtllib.h"
 #include "..\ENGINE\skeletoncustom.h"
-#include "profiler.h"
+#include "Profiler.h"
 #include "MainMenu.h"
 #include "ui/UICursor.h"//
 #include "game_base_space.h"
@@ -29,6 +29,8 @@
 #include "UI/UIGameTutorial.h"//
 #include "StringTable.h"
 #include "..\ENGINE\Application.h"
+#include "game_sv_single.h"
+#include "Server.h"
 
 static void*	ode_alloc	(size_t size)								{ return xr_malloc(size);			}
 static void*	ode_realloc	(void *ptr, size_t oldsize, size_t newsize)	{ return xr_realloc(ptr,newsize);	}
@@ -403,9 +405,6 @@ void CGamePersistent::OnFrame	()
 		profiler().clear		();
 #endif
 }
-
-#include "game_sv_single.h"
-#include "xrServer.h"
 
 void CGamePersistent::OnEvent(EVENT E, u64 P1, u64 P2)
 {

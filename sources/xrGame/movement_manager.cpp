@@ -21,7 +21,7 @@
 #include "location_manager.h"
 #include "level_path_builder.h"
 #include "detail_path_builder.h"
-#include "profiler.h"
+#include "Profiler.h"
 #include "mt_config.h"
 //#include "custommonster.h"
 
