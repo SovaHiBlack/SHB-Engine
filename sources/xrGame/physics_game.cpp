@@ -19,6 +19,7 @@ static const float SOUND_EFFECT_DIST = 70.0f;
 //////////////////////////////////////////////////////////////////////////////////
 static const float SQUARE_PARTICLE_EFFECT_DIST = PARTICLE_EFFECT_DIST * PARTICLE_EFFECT_DIST;
 static const float SQUARE_SOUND_EFFECT_DIST = SOUND_EFFECT_DIST * SOUND_EFFECT_DIST;
+
 class CPHParticlesPlayCall : public CPHAction
 {
 	LPCSTR ps_name;

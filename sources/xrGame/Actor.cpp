@@ -44,7 +44,7 @@
 #include "GamePersistent.h"
 #include "game_cl_base.h"
 #include "game_cl_single.h"
-#include "xrmessages.h"
+#include "Messages.h"
 #include "StringTable.h"
 #include "usablescriptobject.h"
 #include "..\ENGINE\cl_intersect.h"

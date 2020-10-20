@@ -3,11 +3,11 @@
 
 #include "stdafx.h"
 
-#include "actor.h"
+#include "Actor.h"
 #include "inventory.h"
 #include "Weapon.h"
 #include "..\ENGINE\CameraBase.h"
-#include "xrMessages.h"
+#include "Messages.h"
 
 #include "Level.h"
 #include "HUDManager.h"//

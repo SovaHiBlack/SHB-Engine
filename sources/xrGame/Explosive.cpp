@@ -18,7 +18,7 @@
 #include "actoreffector.h"
 #include "level.h"
 #include "level_bullet_manager.h"
-#include "xrmessages.h"
+#include "Messages.h"
 #include "gamemtllib.h"
 #include "clsid_game.h"
 

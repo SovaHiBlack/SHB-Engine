@@ -1,10 +1,11 @@
 #include "stdafx.h"
+
 #include "UITalkWnd.h"//
 
 #include "UITradeWnd.h"//
 #include "UITalkDialogWnd.h"//
 
-#include "../actor.h"
+#include "..\Actor.h"
 #include "../HUDManager.h"//
 #include "UIGameSP.h"//
 #include "../Pda.h"

@@ -4,7 +4,7 @@
 #include "level.h"
 #include "entity_alive.h"
 #include "HudSound.h"
-#include "actor.h"
+#include "Actor.h"
 #include "actorEffector.h"
 #include "EffectorShot.h"
 

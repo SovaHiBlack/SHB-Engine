@@ -238,7 +238,7 @@
     <ClInclude Include="MbHelpers.h" />
     <ClInclude Include="motion.h" />
     <ClInclude Include="ObjectAnimator.h" />
-    <ClInclude Include="ParticleCustom.h" />
+    <ClInclude Include="IParticleCustom.h" />
     <ClInclude Include="perlin.h" />
     <ClInclude Include="Properties.h" />
     <ClInclude Include="PS_instance.h" />
@@ -348,7 +348,7 @@
     <ClCompile Include="Feel_Touch.cpp" />
     <ClCompile Include="Feel_Vision.cpp" />
     <ClCompile Include="FHierrarhyVisual.cpp" />
-    <ClCompile Include="fmesh.cpp" />
+    <ClCompile Include="Fmesh.cpp" />
     <ClCompile Include="Frustum.cpp" />
     <ClCompile Include="GameFont.cpp" />
     <ClCompile Include="HW.cpp" />
@@ -371,7 +371,7 @@
     <ClCompile Include="MbHelpers.cpp" />
     <ClCompile Include="motion.cpp" />
     <ClCompile Include="ObjectAnimator.cpp" />
-    <ClCompile Include="ParticleCustom.cpp" />
+    <ClCompile Include="IParticleCustom.cpp" />
     <ClCompile Include="perlin.cpp" />
     <ClCompile Include="PS_instance.cpp" />
     <ClCompile Include="pure.cpp" />

@@ -1,7 +1,7 @@
 #include "stdafx.h"
 
 #include "Server.h"
-#include "xrmessages.h"
+#include "Messages.h"
 #include "HUDManager.h"//
 #include "xrserver_objects.h"
 #include "Level.h"

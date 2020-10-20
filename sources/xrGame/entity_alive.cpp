@@ -7,7 +7,7 @@
 #include "gamemtllib.h"
 #include "PHMovementControl.h"
 #include "wound.h"
-#include "xrmessages.h"
+#include "Messages.h"
 #include "level.h"
 #include "..\ENGINE\skeletoncustom.h"
 #include "relation_registry.h"

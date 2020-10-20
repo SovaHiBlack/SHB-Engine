@@ -2,7 +2,7 @@
 
 #include "PhysicsShellHolder.h"
 #include "PhysicsShell.h"
-#include "xrMessages.h"
+#include "Messages.h"
 #include "IPhysicShellCreator.h"
 #include "..\ENGINE\skeletoncustom.h"
 #include "script_callback_ex.h"

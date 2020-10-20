@@ -8,7 +8,7 @@
 
 #include "stdafx.h"
 
-#include "xrMessages.h"
+#include "Messages.h"
 #include "../ENGINE/net_utils.h"
 #include "clsid_game.h"
 #include "xrServer_Objects_ALife_Items.h"

@@ -4,7 +4,7 @@
 #include "stdafx.h"
 
 #include "Server.h"
-#include "xrMessages.h"
+#include "Messages.h"
 #include "xrServer_Objects_ALife_All.h"
 #include "level.h"
 #include "game_cl_base.h"

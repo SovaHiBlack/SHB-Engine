@@ -4,7 +4,7 @@
 #include "alife_simulator.h"
 #include "xrServer_Objects.h"
 #include "Server.h"
-#include "xrmessages.h"
+#include "Messages.h"
 #include "ai_space.h"
 
 void CServer::Perform_destroy	(CSE_Abstract* object, u32 mode)

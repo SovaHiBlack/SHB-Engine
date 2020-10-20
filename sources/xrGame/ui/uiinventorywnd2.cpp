@@ -3,7 +3,7 @@
 #include "UIInventoryWnd.h"//
 //#include "UISleepWnd.h"
 #include "../level.h"
-#include "../actor.h"
+#include "..\Actor.h"
 #include "../ActorCondition.h"
 #include "../HUDManager.h"//
 #include "../inventory.h"

@@ -7,6 +7,10 @@
 #include "UI3tButton.h"//
 #include "UI.h"//
 #include "UIInventoryUtilities.h"//
+#include "../game_news.h"
+#include "../level.h"
+#include "..\Actor.h"
+#include "../alife_registry_wrappers.h"
 
 #define				TALK_XML				"talk.xml"
 #define				TRADE_CHARACTER_XML		"trade_character.xml"
@@ -148,10 +152,7 @@ void CUITalkDialogWnd::AddQuestion(LPCSTR str, LPCSTR value)
 	UIQuestionsList->AddWindow		(itm, true);
 	Register						(itm);
 }
-#include "../game_news.h"
-#include "../level.h"
-#include "../actor.h"
-#include "../alife_registry_wrappers.h"
+
 void CUITalkDialogWnd::AddAnswer(LPCSTR SpeakerName, LPCSTR str, bool bActor)
 {
 	CUIAnswerItem* itm				= xr_new<CUIAnswerItem>(m_uiXml,bActor?"actor_answer_item":"other_answer_item");

@@ -11,7 +11,7 @@
 #include "entity_alive.h"
 #include "ParticlesObject.h"
 #include "PHMovementControl.h"
-#include "xrmessages.h"
+#include "Messages.h"
 //#include "PhysicsShellHolder.h"
 #include "explosive.h"
 #include "../ENGINE/net_utils.h"

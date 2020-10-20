@@ -4,7 +4,7 @@
 #include "Level_Bullet_Manager.h"
 #include "Server.h"
 #include "game_cl_base.h"
-#include "xrmessages.h"
+#include "Messages.h"
 #include "..\ENGINE\Application.h"
 //#include "..\ENGINE\RenderDevice.h"
 #include "..\ENGINE\IGamePersistent.h"//==>

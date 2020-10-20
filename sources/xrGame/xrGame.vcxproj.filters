@@ -4950,9 +4950,6 @@
     <ClInclude Include="NET_Queue.h">
       <Filter>Core\Common\NET Shared</Filter>
     </ClInclude>
-    <ClInclude Include="xrMessages.h">
-      <Filter>Core\Common\NET Shared</Filter>
-    </ClInclude>
     <ClInclude Include="object_broker.h">
       <Filter>Core\Common\ObjectBroker</Filter>
     </ClInclude>
@@ -5966,6 +5963,9 @@
     </ClInclude>
     <ClInclude Include="Server_space.h">
       <Filter>Core\Server</Filter>
+    </ClInclude>
+    <ClInclude Include="Messages.h">
+      <Filter>Core\Common\NET Shared</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -7767,9 +7767,6 @@
       <Filter>Physics\Base</Filter>
     </ClCompile>
     <ClCompile Include="PHWorld.cpp">
-      <Filter>Physics\Base</Filter>
-    </ClCompile>
-    <ClCompile Include="PHWorldScript.cpp">
       <Filter>Physics\Base</Filter>
     </ClCompile>
     <ClCompile Include="Physics.cpp">

@@ -7,9 +7,10 @@
 ////////////////////////////////////////////////////////////////////////////
 
 #include "stdafx.h"
+
 #include "server_entity_wrapper.h"
 #include "xrServer_Objects.h"
-#include "xrmessages.h"
+#include "Messages.h"
 #include "../ENGINE/net_utils.h"
 
 struct ISE_Abstract;

@@ -1,7 +1,7 @@
 #include "stdafx.h"
 
 #include "ActorInputHandler.h"
-#include "actor.h"
+#include "Actor.h"
 #include "Level.h"
 
 void CActorInputHandler::reinit( )

@@ -1,7 +1,7 @@
 #include "stdafx.h"
 
 #include "actorcondition.h"
-#include "actor.h"
+#include "Actor.h"
 #include "actorEffector.h"
 #include "inventory.h"
 #include "Level.h"

@@ -1,6 +1,6 @@
 #include "stdafx.h"
 
-#include "actor.h"
+#include "Actor.h"
 #include "Actor_Flags.h"
 #include "inventory.h"
 #include "xrserver_objects_alife_monsters.h"

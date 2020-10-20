@@ -12,7 +12,7 @@
 
 #include "../ENGINE/net_utils.h"
 #include "xrServer_Objects_Abstract.h"
-#include "xrMessages.h"
+#include "Messages.h"
 
 ////////////////////////////////////////////////////////////////////////////
 // CSE_Visual

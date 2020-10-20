@@ -1,6 +1,6 @@
 #include "stdafx.h"
 
-#include "actor.h"
+#include "Actor.h"
 #include "..\ENGINE\CameraBase.h"
 
 #include "ActorEffector.h"

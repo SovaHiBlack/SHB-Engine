@@ -267,7 +267,7 @@ bool	 rendered;
 		rendered=true;
 	}
 };
-void _cdecl DBG_OutText(LPCSTR s,...)
+void _cdecl DBG_OutText(const char* s,...)
 {
 	string64 t;
 	va_list   marker;
@@ -663,11 +663,11 @@ bool CFunctionGraph::IsActive()
 	return !!m_stat_graph;
 }
 
-LPCSTR PH_DBG_ObjectTrack()
+const char* PH_DBG_ObjectTrack()
 {
 	return dbg_trace_object;
 }
-void PH_DBG_SetTrackObject(LPCSTR obj)
+void PH_DBG_SetTrackObject(const char* obj)
 {
 	strcpy( s_dbg_tsrace_obj,obj);
 	dbg_trace_object=s_dbg_tsrace_obj;

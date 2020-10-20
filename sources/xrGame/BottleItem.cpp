@@ -3,7 +3,7 @@
 #include "stdafx.h"
 
 #include "BottleItem.h"//==>
-#include "xrmessages.h"
+#include "Messages.h"
 #include "../ENGINE/net_utils.h"
 #include "entity_alive.h"
 #include "EntityCondition.h"

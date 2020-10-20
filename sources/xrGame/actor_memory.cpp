@@ -7,8 +7,9 @@
 ////////////////////////////////////////////////////////////////////////////
 
 #include "stdafx.h"
+
 #include "actor_memory.h"
-#include "actor.h"
+#include "Actor.h"
 #include "..\ENGINE\camerabase.h"
 #include "gamepersistent.h"
 

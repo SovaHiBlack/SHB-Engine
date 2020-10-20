@@ -4,7 +4,7 @@
 #include "hit.h"
 #include "PHDestroyable.h"
 #include "PhysicsShellHolder.h"
-#include "xrMessages.h"
+#include "Messages.h"
 #include "ObjectFactory.h"
 #include "xrServer_Objects_ALife.h"
 #include "Level.h"

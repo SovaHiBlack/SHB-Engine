@@ -20,7 +20,7 @@
 #include "movement_manager.h"
 #include "entity_alive.h"
 #include "WeaponMagazined.h"
-#include "xrmessages.h"
+#include "Messages.h"
 #include "inventory.h"
 #include "script_ini_file.h"
 #include "..\ENGINE\skeletoncustom.h"

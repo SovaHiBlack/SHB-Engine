@@ -1,7 +1,7 @@
 #include "stdafx.h"
 
 #include "Server.h"
-#include "xrmessages.h"
+#include "Messages.h"
 #include "xrserver_objects.h"
 
 void CServer::Perform_transfer(NET_Packet &PR, NET_Packet &PT,	CSE_Abstract* what, CSE_Abstract* from, CSE_Abstract* to)

@@ -8,7 +8,7 @@
 
 #pragma once
 
-#include "xrMessages.h"
+#include "Messages.h"
 #include "xrServer_Object_Base.h"
 #include "PHNetState.h"
 

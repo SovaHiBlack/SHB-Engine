@@ -7,10 +7,11 @@
 ////////////////////////////////////////////////////////////////////////////
 
 #include "stdafx.h"
+
 #include "ai_stalker.h"
 #include "../../Pda.h"
 #include "../../inventory.h"
-#include "../../xrmessages.h"
+#include "..\..\Messages.h"
 #include "..\..\ShootingObject.h"
 #include "../../../ENGINE/net_utils.h"
 #include "../../level.h"

@@ -7,7 +7,7 @@
 #include "xr_level_controller.h"
 #include "inventory.h"
 #include "level.h"
-#include "actor.h"
+#include "Actor.h"
 
 CWeaponShotgun::CWeaponShotgun(void) : CWeaponCustomPistol("TOZ34")
 {

@@ -21,7 +21,7 @@
 #include "memory_manager.h"
 #include "AI_PhraseDialogManager.h"
 #include "../ENGINE/net_utils.h"
-#include "xrMessages.h"
+#include "Messages.h"
 #include "custommonster.h"
 #include "memory_manager.h"
 #include "visual_memory_manager.h"

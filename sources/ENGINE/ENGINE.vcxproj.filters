@@ -252,9 +252,6 @@
     <ClInclude Include="Fmesh.h">
       <Filter>Render\Visuals</Filter>
     </ClInclude>
-    <ClInclude Include="ParticleCustom.h">
-      <Filter>Render\Visuals</Filter>
-    </ClInclude>
     <ClInclude Include="EnnumerateVertices.h">
       <Filter>Render\Visuals\Skeleton</Filter>
     </ClInclude>
@@ -504,6 +501,9 @@
     <ClInclude Include="IGameObjectPool.h">
       <Filter>Game API\Objects</Filter>
     </ClInclude>
+    <ClInclude Include="IParticleCustom.h">
+      <Filter>Render\Visuals</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="defines.cpp">
@@ -609,12 +609,6 @@
       <Filter>Render\Visuals</Filter>
     </ClCompile>
     <ClCompile Include="FHierrarhyVisual.cpp">
-      <Filter>Render\Visuals</Filter>
-    </ClCompile>
-    <ClCompile Include="fmesh.cpp">
-      <Filter>Render\Visuals</Filter>
-    </ClCompile>
-    <ClCompile Include="ParticleCustom.cpp">
       <Filter>Render\Visuals</Filter>
     </ClCompile>
     <ClCompile Include="SkeletonAnimated.cpp">
@@ -865,6 +859,12 @@
     </ClCompile>
     <ClCompile Include="IGameObjectPool.cpp">
       <Filter>Game API\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="IParticleCustom.cpp">
+      <Filter>Render\Visuals</Filter>
+    </ClCompile>
+    <ClCompile Include="Fmesh.cpp">
+      <Filter>Render\Visuals</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -6,7 +6,7 @@
 #include "WeaponAmmo.h"
 #include "object_broker.h"
 #include "ai_sounds.h"
-#include "actor.h"
+#include "Actor.h"
 #include "actorEffector.h"
 #include "camerafirsteye.h"
 #include "xr_level_controller.h"

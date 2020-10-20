@@ -7,11 +7,12 @@
 ////////////////////////////////////////////////////////////////////////////
 
 #include "stdafx.h"
+
 #include "autosave_manager.h"
 #include "date_time.h"
 #include "ai_space.h"
 #include "level.h"
-#include "xrMessages.h"
+#include "Messages.h"
 #include "HUDManager.h"//
 #include "ui/UIGameCustom.h"//
 #include "Actor.h"

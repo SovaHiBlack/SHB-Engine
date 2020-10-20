@@ -1,7 +1,7 @@
 #include "stdafx.h"
 
 #include "Server.h"
-#include "xrmessages.h"
+#include "Messages.h"
 
 #if 1//def DEBUG
 #	define USE_DESIGNER_KEY

@@ -11,7 +11,7 @@
 #include "actor.h"
 #include "actoreffector.h"
 #include "Missile.h"
-#include "xrmessages.h"
+#include "Messages.h"
 #include "level.h"
 #include "inventory.h"
 #include "..\ENGINE\CameraBase.h"

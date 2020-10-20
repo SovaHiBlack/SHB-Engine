@@ -15,7 +15,7 @@
 #include "level_path_manager.h"
 #include "detail_path_manager.h"
 #include "patrol_path_manager.h"
-#include "xrmessages.h"
+#include "Messages.h"
 #include "ai_object_location.h"
 #include "custommonster.h"
 #include "location_manager.h"

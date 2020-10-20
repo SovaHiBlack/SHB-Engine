@@ -1,6 +1,6 @@
 #include "stdafx.h"
 
-#include "actor.h"
+#include "Actor.h"
 #include "ui/UIGameSP.h"//
 #include "Pda.h"
 #include "HUDManager.h"//

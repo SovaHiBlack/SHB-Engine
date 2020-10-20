@@ -8,7 +8,7 @@
 #include "stdafx.h"
 
 #include "game_sv_base.h"
-#include "xrMessages.h"
+#include "Messages.h"
 #include "ui/UIInventoryUtilities.h"//
 #include "xr_time.h"
 #include "../ENGINE/net_utils.h"

@@ -6,7 +6,7 @@
 
 #include "InventoryOwner.h"
 #include "GameObject.h"
-#include "xrMessages.h"
+#include "Messages.h"
 #include "ai_space.h"
 #include "ai_debug.h"
 #include "alife_simulator.h"

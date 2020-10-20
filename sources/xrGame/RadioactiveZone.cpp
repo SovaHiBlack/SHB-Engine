@@ -3,7 +3,7 @@
 #include "RadioactiveZone.h"
 #include "HUDManager.h"//
 #include "level.h"
-#include "xrmessages.h"
+#include "Messages.h"
 #include "..\ENGINE\bone.h"
 #include "clsid_game.h"
 #include "game_base_space.h"

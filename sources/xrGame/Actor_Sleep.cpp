@@ -1,11 +1,11 @@
 #include "stdafx.h"
 /*
-#include "actor.h"
+#include "Actor.h"
 #include "SleepEffector.h"
 #include "game_sv_single.h"
 #include "alife_simulator.h"
 #include "Level.h"
-#include "xrmessages.h"
+#include "Messages.h"
 #include "game_cl_base.h"
 #include "Server.h"
 #include "autosave_manager.h"

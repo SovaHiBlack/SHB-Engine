@@ -9,7 +9,7 @@
 #include "../state_manager.h"
 #include "../../../PHMovementControl.h"
 #include "../../../characterphysicssupport.h"
-#include "../../../actor.h"
+#include "..\..\..\Actor.h"
 
 #ifdef DEBUG
 CBaseMonster::SDebugInfo CBaseMonster::show_debug_info()

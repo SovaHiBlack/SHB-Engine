@@ -3,7 +3,7 @@
 #include "WeaponMounted.h"
 #include "xrServer_Objects_ALife.h"
 #include "camerafirsteye.h"
-#include "actor.h"
+#include "Actor.h"
 #include "WeaponAmmo.h"
 
 #include "actoreffector.h"

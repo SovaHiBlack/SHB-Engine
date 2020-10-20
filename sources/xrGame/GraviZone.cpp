@@ -15,7 +15,7 @@
 #include "PhysicsShell.h"
 #include "entity_alive.h"
 #include "PHMovementControl.h"
-#include "xrmessages.h"
+#include "Messages.h"
 #include "PhysicsShellHolder.h"
 #include "Level.h"
 #include "CharacterPhysicsSupport.h"

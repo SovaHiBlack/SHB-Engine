@@ -66,5 +66,5 @@ BOOL APIENTRY DllMain(HANDLE hModule, u32 ul_reason_for_call, LPVOID lpReserved)
 		}
 	}
 
-	return (TRUE);
+	return TRUE;
 }

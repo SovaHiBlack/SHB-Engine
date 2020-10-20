@@ -76,7 +76,7 @@ struct SActorMotions
 };
 
 //vehicle anims
-struct	SVehicleAnimCollection
+struct SVehicleAnimCollection
 {
 	static const u16 MAX_IDLES = 3;
 	u16				idles_num;

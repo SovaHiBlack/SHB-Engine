@@ -1,7 +1,7 @@
 //---------------------------------------------------------------------------
 #pragma once
 
-#include "..\ENGINE\ParticleCustom.h"
+#include "..\ENGINE\IParticleCustom.h"
 
 namespace PS
 {

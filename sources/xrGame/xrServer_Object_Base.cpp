@@ -9,7 +9,7 @@
 #include "stdafx.h"
 
 #include "xrServer_Objects.h"
-#include "xrMessages.h"
+#include "Messages.h"
 #include "game_base_space.h"
 #include "script_value_container_impl.h"
 #include "clsid_game.h"

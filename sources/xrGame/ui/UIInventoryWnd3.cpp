@@ -1,7 +1,7 @@
 #include "stdafx.h"
 
 #include "UIInventoryWnd.h"//
-#include "../actor.h"
+#include "..\Actor.h"
 #include "..\GrenadeLauncher.h"
 #include "..\Scope.h"
 #include "..\Silencer.h"

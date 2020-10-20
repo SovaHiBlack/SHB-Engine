@@ -5,7 +5,7 @@
 #include "PHDestroyable.h"
 #include "Mincer.h"
 #include "HUDManager.h"//
-#include "xrmessages.h"
+#include "Messages.h"
 #include "level.h"
 #include "CustomZone.h"
 #include "clsid_game.h"

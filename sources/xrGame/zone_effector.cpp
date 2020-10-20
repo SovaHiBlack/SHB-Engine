@@ -5,7 +5,7 @@
 #include "clsid_game.h"
 //#include "..\ENGINE\Object.h"
 #include "..\ENGINE\cameramanager.h"
-#include "actor.h"
+#include "Actor.h"
 #include "actoreffector.h"
 #include "postprocessanimator.h"
 

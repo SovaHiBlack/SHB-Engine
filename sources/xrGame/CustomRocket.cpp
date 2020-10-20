@@ -10,7 +10,7 @@
 #include "PhysicsShell.h"
 #include "ExtendedGeom.h"
 #include "level.h"
-#include "xrMessages.h"
+#include "Messages.h"
 #include "gamemtllib.h"
 #include "tri-colliderknoopc/dTriList.h"
 #include "..\ENGINE\fbasicvisual.h"

@@ -2,7 +2,7 @@
 #pragma once
 
 #include "..\ENGINE\FBasicVisual.h"
-#include "..\ENGINE\ParticleCustom.h"
+#include "..\ENGINE\IParticleCustom.h"
 
 namespace PAPI
 {

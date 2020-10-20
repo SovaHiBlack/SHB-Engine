@@ -1472,7 +1472,7 @@
     <ClInclude Include="wrapper_abstract_inline.h" />
     <ClInclude Include="XML_IdToIndex.h" />
     <ClInclude Include="xrEProps.h" />
-    <ClInclude Include="xrMessages.h" />
+    <ClInclude Include="Messages.h" />
     <ClInclude Include="Server.h" />
     <ClInclude Include="xrServer_Objects.h" />
     <ClInclude Include="xrServer_Objects_Abstract.h" />
@@ -1995,7 +1995,6 @@
     <ClCompile Include="PHStaticGeomShell.cpp" />
     <ClCompile Include="PHSynchronize.cpp" />
     <ClCompile Include="PHWorld.cpp" />
-    <ClCompile Include="PHWorldScript.cpp" />
     <ClCompile Include="PhysicObject.cpp" />
     <ClCompile Include="Physics.cpp" />
     <ClCompile Include="PhysicsGamePars.cpp" />

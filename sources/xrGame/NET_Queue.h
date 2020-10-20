@@ -1,6 +1,6 @@
 #pragma once
 
-#include "xrMessages.h"
+#include "Messages.h"
 
 extern bool		g_bCheckTime;
 static int g_dwEventDelay = 0;

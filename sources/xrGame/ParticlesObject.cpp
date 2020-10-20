@@ -6,7 +6,7 @@
 #include "ParticlesObject.h"
 //#include "..\ENGINE\defines.h"
 #include "..\ENGINE\fbasicvisual.h"
-#include "..\ENGINE\ParticleCustom.h"
+#include "..\ENGINE\IParticleCustom.h"
 #include "..\ENGINE\render.h"
 #include "..\ENGINE\IGamePersistent.h"//==>
 

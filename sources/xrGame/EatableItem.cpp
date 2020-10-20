@@ -1,7 +1,7 @@
 #include "stdafx.h"
 
 #include "EatableItem.h"
-#include "xrmessages.h"
+#include "Messages.h"
 #include "../ENGINE/net_utils.h"
 #include "physic_item.h"
 #include "Level.h"

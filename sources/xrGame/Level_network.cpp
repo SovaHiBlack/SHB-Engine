@@ -3,7 +3,7 @@
 #include "Level.h"
 #include "Level_Bullet_Manager.h"
 #include "Server.h"
-#include "xrmessages.h"
+#include "Messages.h"
 #include "game_cl_base.h"
 #include "PHCommander.h"
 #include "net_queue.h"

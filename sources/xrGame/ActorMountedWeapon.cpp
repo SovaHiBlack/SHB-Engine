@@ -1,10 +1,11 @@
 #include "stdafx.h"
 
-#include "actor.h"
+#include "Actor.h"
 #include "WeaponMounted.h"
 #include "..\ENGINE\CameraBase.h"
 #include "ActorEffector.h"
 #include "CharacterPhysicsSupport.h"
+
 bool CActor::use_MountedWeapon(CHolderCustom* object)
 {
 //	CHolderCustom* wpn	=smart_cast<CHolderCustom*>(object);

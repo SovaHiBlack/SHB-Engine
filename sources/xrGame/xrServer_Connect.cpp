@@ -2,7 +2,7 @@
 
 #include "Server.h"
 #include "game_sv_single.h"
-#include "xrMessages.h"
+#include "Messages.h"
 #include "game_cl_single.h"
 #include "MainMenu.h"
 

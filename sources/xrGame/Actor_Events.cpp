@@ -1,6 +1,6 @@
 #include "stdafx.h"
 
-#include "actor.h"
+#include "Actor.h"
 #include "CustomDetector.h"
 #include "ui/UIGameSP.h"//
 #include "HUDManager.h"//

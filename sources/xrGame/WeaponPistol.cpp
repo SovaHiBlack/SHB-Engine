@@ -3,7 +3,7 @@
 #include "WeaponPistol.h"
 #include "WeaponHUD.h"
 #include "ParticlesObject.h"
-#include "actor.h"
+#include "Actor.h"
 
 CWeaponPistol::CWeaponPistol(const char* name) : CWeaponCustomPistol(name)
 {

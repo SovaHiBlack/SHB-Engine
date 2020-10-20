@@ -5,7 +5,7 @@
 #include "..\ENGINE\customhud.h"
 #include "..\ENGINE\DemoRecord.h"
 #include "..\ENGINE\DemoPlay.h"
-#include "xrMessages.h"
+#include "Messages.h"
 #include "Server.h"
 #include "level.h"
 #include "script_debugger.h"

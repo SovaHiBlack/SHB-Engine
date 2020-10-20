@@ -12,7 +12,7 @@
 #include "..\MapLocation.h"
 #include "..\MapManager.h""
 #include "../level.h"
-#include "../actor.h"
+#include "..\Actor.h"
 #include "..\GameTaskManager.h"
 
 CUITaskItem::CUITaskItem			(CUIEventsWnd* w)

@@ -6,7 +6,7 @@
 #include "level.h"
 #include "hit.h"
 #include "PHDestroyable.h"
-#include "xrmessages.h"
+#include "Messages.h"
 #include "..\ENGINE\SkeletonCustom.h"
 #include "PHWorld.h"
 
