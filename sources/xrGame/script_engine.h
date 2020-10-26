@@ -8,9 +8,9 @@
 
 #pragma once
 
-#include "script_storage.h"
+#include "ScriptStorage.h"
 #include "script_export_space.h"
-#include "script_space_forward.h"
+//#include "script_space_forward.h"
 #include "associative_vector.h"
 
 extern "C" {
@@ -18,7 +18,6 @@ extern "C" {
 	#include "..\..\xrLua\src\luajit.h"
 	#include "..\..\xrLua\src\lcoco.h"
 };
-//#define DBG_DISABLE_SCRIPTS
 
 #include "script_engine_space.h"
 

@@ -15,6 +15,7 @@ class GameEventQueue
 	xrCriticalSection		cs;
 	xr_deque<GameEvent*>	ready;
 	xr_vector<GameEvent*>	unused;
+
 public:
 	GameEventQueue();
 	~GameEventQueue();

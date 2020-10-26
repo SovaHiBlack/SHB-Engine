@@ -1120,8 +1120,8 @@
     <ClInclude Include="script_sound_type.h" />
     <ClInclude Include="script_space_forward.h" />
     <ClInclude Include="script_stack_tracker.h" />
-    <ClInclude Include="script_storage.h" />
-    <ClInclude Include="script_storage_inline.h" />
+    <ClInclude Include="ScriptStorage.h" />
+    <ClInclude Include="ScriptStorage_inline.h" />
     <ClInclude Include="script_storage_space.h" />
     <ClInclude Include="script_thread.h" />
     <ClInclude Include="script_thread_inline.h" />
@@ -2104,7 +2104,7 @@
     <ClCompile Include="script_stack_tracker.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="script_storage.cpp" />
+    <ClCompile Include="ScriptStorage.cpp" />
     <ClCompile Include="script_thread.cpp" />
     <ClCompile Include="script_token_list.cpp" />
     <ClCompile Include="script_watch_action.cpp" />

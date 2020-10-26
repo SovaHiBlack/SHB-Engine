@@ -189,10 +189,14 @@ CLASS_ID game_GameState::getCLASS_ID(const char* game_type_name, bool isServer)
 
 	if (isServer)
 		if (!xr_strcmp(game_type_name, "single"))
+		{
 			return TEXT2CLSID("SV_SINGL");
+		}
 
 	if (!xr_strcmp(game_type_name, "single"))
+	{
 		return TEXT2CLSID("CL_SINGL");
+	}
 
 	FATAL("Unsupportet game type!");
 }

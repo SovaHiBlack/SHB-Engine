@@ -1,5 +1,5 @@
 ////////////////////////////////////////////////////////////////////////////
-//	Module 		: script_storage_inline.h
+//	Module 		: ScriptStorage_inline.h
 //	Created 	: 01.04.2004
 //  Modified 	: 01.04.2004
 //	Author		: Dmitriy Iassenev

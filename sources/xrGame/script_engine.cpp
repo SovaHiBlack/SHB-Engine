@@ -199,7 +199,7 @@ void CScriptEngine::remove_script_process	(const EScriptProcessors &process_id)
 
 void CScriptEngine::load_common_scripts()
 {
-#ifdef DBG_DISABLE_SCRIPTS
+#ifdef DEBUG_DISABLE_SCRIPTS
 	return;
 #endif
 	string_path		S;
@@ -272,7 +272,7 @@ void CScriptEngine::process_file	(LPCSTR file_name, bool reload_modules)
 
 void CScriptEngine::register_script_classes		()
 {
-#ifdef DBG_DISABLE_SCRIPTS
+#ifdef DEBUG_DISABLE_SCRIPTS
 	return;
 #endif
 	string_path					S;

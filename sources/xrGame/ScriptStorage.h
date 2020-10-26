@@ -1,5 +1,5 @@
 ////////////////////////////////////////////////////////////////////////////
-//	Module 		: script_storage.h
+//	Module 		: ScriptStorage.h
 //	Created 	: 01.04.2004
 //  Modified 	: 01.04.2004
 //	Author		: Dmitriy Iassenev
@@ -14,10 +14,10 @@
 struct lua_State;
 class CScriptThread;
 
-#ifdef	DEBUG
-	#ifndef ENGINE_BUILD
-	#	define	USE_DEBUGGER
-	#endif
+#ifdef DEBUG
+#	ifndef ENGINE_BUILD
+#		define USE_DEBUGGER
+#	endif
 #endif
 
 using namespace ScriptStorage;
@@ -71,4 +71,4 @@ public:
 #endif // DEBUG
 };
 
-#include "script_storage_inline.h"
+#include "ScriptStorage_inline.h"

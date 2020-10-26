@@ -16,8 +16,6 @@
 #include "GameObject.h"
 #include "level.h"
 
-//#define DBG_DISABLE_SCRIPTS
-
 CScriptBinder::CScriptBinder		()
 {
 	init					();
@@ -63,7 +61,7 @@ void CScriptBinder::Load			(LPCSTR section)
 void CScriptBinder::reload			(LPCSTR section)
 {
 
-#ifndef DBG_DISABLE_SCRIPTS
+#ifndef DEBUG_DISABLE_SCRIPTS
 	VERIFY					(!m_object);
 	if (!pSettings->line_exist(section,"script_binding"))
 		return;

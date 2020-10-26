@@ -4332,12 +4332,6 @@
     <ClInclude Include="script_process_inline.h">
       <Filter>AI\AScript\ScriptProcess</Filter>
     </ClInclude>
-    <ClInclude Include="script_storage.h">
-      <Filter>AI\AScript\ScriptStorage</Filter>
-    </ClInclude>
-    <ClInclude Include="script_storage_inline.h">
-      <Filter>AI\AScript\ScriptStorage</Filter>
-    </ClInclude>
     <ClInclude Include="script_storage_space.h">
       <Filter>AI\AScript\ScriptStorage</Filter>
     </ClInclude>
@@ -5967,6 +5961,12 @@
     <ClInclude Include="Messages.h">
       <Filter>Core\Common\NET Shared</Filter>
     </ClInclude>
+    <ClInclude Include="ScriptStorage.h">
+      <Filter>AI\AScript\ScriptStorage</Filter>
+    </ClInclude>
+    <ClInclude Include="ScriptStorage_inline.h">
+      <Filter>AI\AScript\ScriptStorage</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="action_base_script.cpp">
@@ -7057,9 +7057,6 @@
     </ClCompile>
     <ClCompile Include="script_process.cpp">
       <Filter>AI\AScript\ScriptProcess</Filter>
-    </ClCompile>
-    <ClCompile Include="script_storage.cpp">
-      <Filter>AI\AScript\ScriptStorage</Filter>
     </ClCompile>
     <ClCompile Include="script_thread.cpp">
       <Filter>AI\AScript\ScriptThread</Filter>
@@ -8629,6 +8626,9 @@
     </ClCompile>
     <ClCompile Include="Server_Disconnect.cpp">
       <Filter>Core\Server\Games\server\single\ServerConnect</Filter>
+    </ClCompile>
+    <ClCompile Include="ScriptStorage.cpp">
+      <Filter>AI\AScript\ScriptStorage</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

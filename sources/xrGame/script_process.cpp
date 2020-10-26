@@ -63,7 +63,7 @@ void CScriptProcess::run_scripts()
 //		changed log-output to stack-based buffer (avoid persistent 4K storage)
 void CScriptProcess::update()
 {
-#ifdef DBG_DISABLE_SCRIPTS
+#ifdef DEBUG_DISABLE_SCRIPTS
 	m_scripts_to_run.clear();
 	return;
 #endif

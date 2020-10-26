@@ -5,7 +5,6 @@
 #include "alife_space.h"
 
 #pragma pack(push,1)
-
 struct	game_PlayerState;//fw
 class	NET_Packet;
 
@@ -72,6 +71,7 @@ struct	game_PlayerState
 	MONEY_BONUS	m_aBonusMoney;
 	bool		m_bPayForSpawn;
 	u32			m_online_time;
+
 public:
 					game_PlayerState		();
 					~game_PlayerState		();
@@ -116,8 +116,6 @@ struct	game_TeamState
 
 	game_TeamState();
 };
-
-
 #pragma pack(pop)
 
 class	game_GameState : public DLL_Pure
@@ -159,8 +157,8 @@ private:
 	u64								m_qwEStartGameTime;
 	float							m_fETimeFactor;
 	//-------------------------------------------------------
-public:
 
+public:
 	virtual		ALife::_TIME_ID		GetGameTime				();	
 	virtual		float				GetGameTimeFactor		();	
 				void				SetGameTimeFactor		(ALife::_TIME_ID GameTime, const float fTimeFactor);
