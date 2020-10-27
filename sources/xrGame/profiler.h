@@ -20,12 +20,12 @@
 #pragma pack(push,4)
 struct CProfileResultPortion {
 	u64				m_time;
-	LPCSTR			m_timer_id;
+	const char* m_timer_id;
 };
 #pragma pack(pop)
 
 struct CProfilePortion : public CProfileResultPortion {
-	IC				CProfilePortion		(LPCSTR timer_id);
+	IC				CProfilePortion		(const char* timer_id);
 	IC				~CProfilePortion	();
 };
 
@@ -62,8 +62,8 @@ protected:
 	u32					m_call_count;
 
 protected:
-			void		setup_timer			(LPCSTR timer_id, const u64 &timer_time, const u32 &call_count);
-	IC		void		convert_string		(LPCSTR str, shared_str &out, u32 max_string_size);
+			void		setup_timer			(const char* timer_id, const u64 &timer_time, const u32 &call_count);
+	IC		void		convert_string		(const char* str, shared_str &out, u32 max_string_size);
 
 public:
 						CProfiler			();

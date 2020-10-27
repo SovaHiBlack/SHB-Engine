@@ -81,7 +81,7 @@ public:
 
 	virtual void			PHGetLinearVell		(Fvector& velocity);
 	virtual void			PHSetLinearVell		(Fvector& velocity);
-	virtual void			PHSetMaterial		(LPCSTR m);
+	virtual void			PHSetMaterial		(const char* m);
 	virtual void			PHSetMaterial		(u16 m);
 			void			PHSaveState			(NET_Packet &P);
 			void			PHLoadState			(IReader &P);

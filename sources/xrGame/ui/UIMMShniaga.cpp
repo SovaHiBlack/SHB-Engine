@@ -64,7 +64,7 @@ CUIMMShniaga::~CUIMMShniaga( )
 	delete_data(m_buttons_new);
 }
 
-void CUIMMShniaga::Init(CUIXml& xml_doc, LPCSTR path)
+void CUIMMShniaga::Init(CUIXml& xml_doc, const char* path)
 {
 	string256 _path;
 
@@ -140,7 +140,7 @@ void CUIMMShniaga::OnDeviceReset( )
 
 extern CActor* g_actor;
 
-void CUIMMShniaga::CreateList(xr_vector<CUIStatic*>& lst, CUIXml& xml_doc, LPCSTR path)
+void CUIMMShniaga::CreateList(xr_vector<CUIStatic*>& lst, CUIXml& xml_doc, const char* path)
 {
 	CGameFont* pF;
 	u32	color;

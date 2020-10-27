@@ -28,11 +28,10 @@ CProjector::~CProjector()
 	glow_render.destroy		();
 }
 
-void CProjector::Load(LPCSTR section)
+void CProjector::Load(const char* section)
 {
 	inherited::Load(section);
 }
-
 
 void  CProjector::BoneCallbackX(CBoneInstance *B)
 {

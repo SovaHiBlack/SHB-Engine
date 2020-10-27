@@ -16,7 +16,7 @@
 
 static float min_deficit_factor = .3f;
 
-void CPurchaseList::process	(CIniFile&ini_file, LPCSTR section, CInventoryOwner &owner)
+void CPurchaseList::process	(CIniFile&ini_file, const char* section, CInventoryOwner &owner)
 {
 	owner.sell_useless_items();
 

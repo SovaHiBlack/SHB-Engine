@@ -55,9 +55,9 @@ protected:
 public:
 									CObjectHandler		();
 	virtual							~CObjectHandler		();
-	virtual	void					Load				(LPCSTR section);
+	virtual	void					Load				(const char* section);
 	virtual	void					reinit				(CStalker *object);
-	virtual	void					reload				(LPCSTR section);
+	virtual	void					reload				(const char* section);
 	virtual BOOL					net_Spawn			(CSE_Abstract* DC);
 	virtual	void					update				();
 	virtual void					OnItemTake			(CInventoryItem *inventory_item);

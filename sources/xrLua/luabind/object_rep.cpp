@@ -29,7 +29,7 @@
 #ifdef TEST_GARBAGE_COLLECTOR
 #	include "stdafx.h"
 	string256	debug_test_constructor, debug_test_destructor;
-	LPCSTR		debug_class = "AttackError";//"stateAttackThreaten";
+	const char* debug_class = "AttackError";//"stateAttackThreaten";
 #endif
 
 namespace luabind { namespace detail

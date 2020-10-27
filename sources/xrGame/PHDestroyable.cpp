@@ -48,7 +48,7 @@ CPHDestroyable::CPHDestroyable()
 	m_depended_objects=0;
 }
 /////////spawn object representing destroyed item//////////////////////////////////////////////////////////////////////////////////
-void CPHDestroyable::GenSpawnReplace(u16 ref_id,LPCSTR section,shared_str visual_name)
+void CPHDestroyable::GenSpawnReplace(u16 ref_id, const char* section,shared_str visual_name)
 {
 
 	CSE_Abstract				*D	= F_entity_Create(section);//*cNameSect()
@@ -136,7 +136,7 @@ void CPHDestroyable::PhysicallyRemovePart(CPHDestroyableNotificate *dn)
 							s					->DisableCollision			()		;
 }
 
-void CPHDestroyable::Destroy(u16 source_id, LPCSTR section)
+void CPHDestroyable::Destroy(u16 source_id, const char* section)
 {
 	if(!CanDestroy())return ;
 	m_notificate_objects.clear();
@@ -159,7 +159,7 @@ void CPHDestroyable::Destroy(u16 source_id, LPCSTR section)
 	return;
 }
 
-void CPHDestroyable::Load(CIniFile* ini,LPCSTR section)
+void CPHDestroyable::Load(CIniFile* ini, const char* section)
 {
 	m_flags.set(fl_destroyable,FALSE);
 	if(ini->line_exist(section,"destroyed_vis_name")){
@@ -172,7 +172,8 @@ void CPHDestroyable::Load(CIniFile* ini,LPCSTR section)
 			if(I->first.size())		m_destroyed_obj_visual_names.push_back(I->first);
 	}
 }
-void CPHDestroyable::Load(LPCSTR section)
+
+void CPHDestroyable::Load(const char* section)
 {
 	m_flags.set(fl_destroyable,FALSE);
 

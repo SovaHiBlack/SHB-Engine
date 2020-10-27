@@ -11,28 +11,28 @@ CUIOptionsItem::~CUIOptionsItem()
 	m_optionsManager.UnRegisterItem(this);
 }
 
-void CUIOptionsItem::Register(LPCSTR entry, LPCSTR group)
+void CUIOptionsItem::Register(const char* entry, const char* group)
 {
 	m_optionsManager.RegisterItem	(this, group);
 	m_entry							= entry;	
 }
 
-void CUIOptionsItem::SendMessage2Group(LPCSTR group, LPCSTR message)
+void CUIOptionsItem::SendMessage2Group(const char* group, const char* message)
 {
 	m_optionsManager.SendMessage2Group(group,message);
 }
 
-void CUIOptionsItem::OnMessage(LPCSTR message)
+void CUIOptionsItem::OnMessage(const char* message)
 {
 	// do nothing
 }
 
-LPCSTR CUIOptionsItem::GetOptStringValue()
+const char* CUIOptionsItem::GetOptStringValue()
 {
 	return Console->GetString(m_entry.c_str());
 }
 
-void CUIOptionsItem::SaveOptStringValue(LPCSTR val)
+void CUIOptionsItem::SaveOptStringValue(const char* val)
 {
 	xr_string command	= m_entry;
 	command				+= " ";
@@ -88,7 +88,7 @@ xr_token* CUIOptionsItem::GetOptToken()
 	return Console->GetXRToken(m_entry.c_str());
 }
 
-void CUIOptionsItem::SaveOptTokenValue(LPCSTR val){
+void CUIOptionsItem::SaveOptTokenValue(const char* val){
 	SaveOptStringValue(val);
 }
 

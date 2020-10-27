@@ -33,7 +33,7 @@ void CUITimeWnd::SetFont(CGameFont* pFont){
 	this->m_staticString.SetFont(pFont);
 }
 
-void CUITimeWnd::SetText(LPCSTR str){
+void CUITimeWnd::SetText(const char* str){
 	this->m_staticString.SetText(str);
 }
 

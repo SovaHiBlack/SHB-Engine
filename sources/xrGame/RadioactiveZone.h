@@ -10,7 +10,7 @@ public:
 	CRadioactiveZone(void);
 	virtual ~CRadioactiveZone(void);
 
-	virtual void Load			(LPCSTR section);
+	virtual void Load			(const char* section);
 	virtual void Affect			(SZoneObjectInfo* O);
 	virtual bool EnableEffector	()	{return true;}
 

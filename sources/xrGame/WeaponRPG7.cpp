@@ -14,7 +14,7 @@ CWeaponRPG7::CWeaponRPG7( ) : CWeaponCustomPistol("RPG7")
 CWeaponRPG7::~CWeaponRPG7( )
 { }
 
-void CWeaponRPG7::Load	(LPCSTR section)
+void CWeaponRPG7::Load	(const char* section)
 {
 	inherited::Load			(section);
 	CRocketLauncher::Load	(section);

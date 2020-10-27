@@ -31,7 +31,7 @@ void CWeaponShotgun::net_Destroy()
 	inherited::net_Destroy();
 }
 
-void CWeaponShotgun::Load	(LPCSTR section)
+void CWeaponShotgun::Load	(const char* section)
 {
 	inherited::Load		(section);
 

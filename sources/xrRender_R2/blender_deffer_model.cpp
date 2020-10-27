@@ -49,7 +49,8 @@ void	CBlender_deffer_model::Compile(CBlender_Compile& C)
 
 	if (bForward)			{
 		// forward rendering
-		LPCSTR	vsname,psname;
+		const char* vsname;
+		const char* psname;
 		switch(C.iElement) 
 		{
 		case 0: 	//

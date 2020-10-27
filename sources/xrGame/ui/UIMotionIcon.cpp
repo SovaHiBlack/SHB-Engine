@@ -4,7 +4,7 @@
 #include "UIMotionIcon.h"//
 #include "UIXmlInit.h"//
 
-const LPCSTR MOTION_ICON_XML = "motion_icon.xml";
+const char* MOTION_ICON_XML = "motion_icon.xml";
 
 CUIMotionIcon::CUIMotionIcon( )
 {

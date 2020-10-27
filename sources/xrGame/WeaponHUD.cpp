@@ -25,12 +25,12 @@ BOOL weapon_hud_value::load(const shared_str& section, CHudItem* owner)
 	m_offset.translate_over		(pos);
 
 	// Visual
-	LPCSTR visual_name			= pSettings->r_string(section, "visual");
+	const char* visual_name			= pSettings->r_string(section, "visual");
 	m_animations				= smart_cast<CKinematicsAnimated*>(::Render->model_Create(visual_name));
 
 	// fire bone	
 	if(smart_cast<CWeapon*>(owner)){
-		LPCSTR fire_bone		= pSettings->r_string					(section,"fire_bone");
+		const char* fire_bone		= pSettings->r_string					(section,"fire_bone");
 		m_fire_bone				= m_animations->LL_BoneID	(fire_bone);
 		if (m_fire_bone>=m_animations->LL_BoneCount())	
 			Debug.fatal	(DEBUG_INFO,"There is no '%s' bone for weapon '%s'.",fire_bone, *section);
@@ -71,7 +71,7 @@ u32 shared_weapon_hud::motion_length(MotionID M)
 	return				0;
 }
 
-MotionID shared_weapon_hud::motion_id(LPCSTR name)
+MotionID shared_weapon_hud::motion_id(const char* name)
 {
 	return p_->m_animations->ID_Cycle_Safe(name);
 }
@@ -87,10 +87,9 @@ CWeaponHUD::CWeaponHUD			(CHudItem* pHudItem)
 }
 
 CWeaponHUD::~CWeaponHUD()
-{
-}
+{ }
 
-void CWeaponHUD::Load(LPCSTR section)
+void CWeaponHUD::Load(const char* section)
 {
 	m_shared_data.create		(section,m_pParentWeapon);
 }
@@ -100,7 +99,6 @@ void  CWeaponHUD::Init()
 	m_bStopAtEndAnimIsRunning	= false;
 	m_pCallbackItem				= NULL;
 }
-
 
 void  CWeaponHUD::net_DestroyHud()
 {
@@ -115,7 +113,7 @@ void CWeaponHUD::UpdatePosition(const Fmatrix& trans)
 	VERIFY						(!fis_zero(DET(m_Transform)));
 }
 
-MotionID CWeaponHUD::animGet(LPCSTR name)
+MotionID CWeaponHUD::animGet(const char* name)
 {
 	return m_shared_data.motion_id	(name);
 }

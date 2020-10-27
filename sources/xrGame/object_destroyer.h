@@ -9,7 +9,7 @@
 #pragma once
 
 struct CDestroyer {
-	IC	static void delete_data(LPCSTR data)
+	IC	static void delete_data(const char* data)
 	{
 	}
 

@@ -12,7 +12,7 @@ CUINewsItemWnd::CUINewsItemWnd( )
 CUINewsItemWnd::~CUINewsItemWnd( )
 { }
 
-void CUINewsItemWnd::Init(LPCSTR xml_name, LPCSTR start_from)
+void CUINewsItemWnd::Init(const char* xml_name, const char* start_from)
 {
 	CUIXml uiXml;
 	bool xml_result = uiXml.Init("$game_config$", "ui", xml_name);

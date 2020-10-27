@@ -3,7 +3,7 @@
 class CBlender_deffer_flat : public IBlender  
 {
 public:
-	virtual		LPCSTR		getComment()	{ return "LEVEL: defer-base-normal";	}
+	virtual		const char* getComment()	{ return "LEVEL: defer-base-normal";	}
 	virtual		BOOL		canBeDetailed()	{ return TRUE;	}
 	virtual		BOOL		canBeLMAPped()	{ return FALSE;	}
 

@@ -79,7 +79,7 @@ void CWalmarkManager::PlaceWallmark(const Fvector& dir, const Fvector& start_pos
 void CWalmarkManager::PlaceWallmarks( const Fvector& start_pos)
 {
 	m_pos				= start_pos;
-//.	LPCSTR				sect				= pSettings->r_string(m_owner->cNameSect(), "wallmark_section");
+//.	const char*				sect				= pSettings->r_string(m_owner->cNameSect(), "wallmark_section");
 	Load				("explosion_marks");
 
 //.	Device.seqParallel.push_back	(fastdelegate::FastDelegate0<>(this,&CWalmarkManager::StartWorkflow));
@@ -91,7 +91,7 @@ float Distance (const Fvector& rkPoint, const Fvector rkTri[3], float& pfSParam,
 
 void CWalmarkManager::StartWorkflow()
 {
-	LPCSTR				sect				= "explosion_marks";
+	const char* sect				= "explosion_marks";
 	float				m_trace_dist		= pSettings->r_float(sect,"dist");
 	float				m_wallmark_size		= pSettings->r_float(sect,"size");
 	u32					max_wallmarks_count = pSettings->r_u32(sect,"max_count");
@@ -200,14 +200,14 @@ void CWalmarkManager::PlaceWallmarks(const Fvector& start_pos,CObject* ignore_ob
 }
 */
 
-void CWalmarkManager::Load (LPCSTR section)
+void CWalmarkManager::Load (const char* section)
 {
 //.	m_trace_dist	= pSettings->r_float(section,"dist");
 //.	m_wallmark_size	= pSettings->r_float(section,"size");
 	
 	//кровавые отметки на стенах
 	string256	tmp;
-	LPCSTR wallmarks_name = pSettings->r_string(section, "wallmarks"); 
+	const char* wallmarks_name = pSettings->r_string(section, "wallmarks");
 
 	int cnt		=_GetItemCount(wallmarks_name);
 	VERIFY		(cnt);

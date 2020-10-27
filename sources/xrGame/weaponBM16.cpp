@@ -8,7 +8,7 @@ CWeaponBM16::~CWeaponBM16()
 	HUD_SOUND::DestroySound(m_sndReload1);
 }
 
-void CWeaponBM16::Load	(LPCSTR section)
+void CWeaponBM16::Load	(const char* section)
 {
 	inherited::Load		(section);
 

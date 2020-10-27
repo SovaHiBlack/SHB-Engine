@@ -60,7 +60,7 @@ void CWeaponStatMgun::ResetBoneCallbacks()
 	m_pPhysicsShell->EnabledCallbacks(TRUE);
 }
 
-void CWeaponStatMgun::Load(LPCSTR section)
+void CWeaponStatMgun::Load(const char* section)
 {
 	inheritedPH::Load(section);
 	inheritedShooting::Load	(section);

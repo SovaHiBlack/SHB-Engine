@@ -14,11 +14,9 @@ public:
 	CUIPointerGage	();
 	virtual ~CUIPointerGage	();
 
-	virtual void Init		(LPCSTR tex_name, 
-							float x, float y, float width, float height);
+	virtual void Init		(const char* tex_name, float x, float y, float width, float height);
 
-	virtual void InitPointer(LPCSTR arrow_tex_name,  float arrow_offset_x, float arrow_offset_y,
-		                     float angle_min, float angle_max);
+	virtual void InitPointer(const char* arrow_tex_name,  float arrow_offset_x, float arrow_offset_y, float angle_min, float angle_max);
 	
 	virtual void Update		();
 	virtual void Draw		();

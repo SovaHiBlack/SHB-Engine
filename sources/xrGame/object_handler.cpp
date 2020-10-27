@@ -40,7 +40,7 @@ CObjectHandler::~CObjectHandler		()
 	xr_delete					(m_planner);
 }
 
-void CObjectHandler::Load			(LPCSTR section)
+void CObjectHandler::Load			(const char* section)
 {
 	inherited::Load				(section);
 }
@@ -60,7 +60,7 @@ void CObjectHandler::reinit			(CStalker *object)
 	m_clutched_hammer_enabled	= false;
 }
 
-void CObjectHandler::reload			(LPCSTR section)
+void CObjectHandler::reload			(const char* section)
 {
 	inherited::reload			(section);
 }

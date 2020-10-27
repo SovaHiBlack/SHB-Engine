@@ -62,7 +62,7 @@ CPhysicsShell*				P_build_Shell			(CGameObject* obj,bool not_active_state,BONE_P
 	return pPhysicsShell;
 }
 
-void	fix_bones(LPCSTR	fixed_bones,CPhysicsShell* shell )
+void	fix_bones(const char* fixed_bones,CPhysicsShell* shell )
 {
 		VERIFY(fixed_bones);
 		VERIFY(shell);
@@ -80,14 +80,13 @@ void	fix_bones(LPCSTR	fixed_bones,CPhysicsShell* shell )
 				E->Fix();
 		}
 }
-CPhysicsShell*				P_build_Shell			(CGameObject* obj,bool not_active_state,BONE_P_MAP* p_bone_map,LPCSTR	fixed_bones)
+
+CPhysicsShell*				P_build_Shell			(CGameObject* obj,bool not_active_state,BONE_P_MAP* p_bone_map, const char* fixed_bones)
 {
 	CPhysicsShell* pPhysicsShell;
 	CKinematics* pKinematics=smart_cast<CKinematics*>(obj->Visual());
 	if(fixed_bones)
 	{
-
-
 		int count =					_GetItemCount(fixed_bones);
 		for (int i=0 ;i<count; ++i) 
 		{
@@ -118,7 +117,7 @@ CPhysicsShell*				P_build_Shell			(CGameObject* obj,bool not_active_state,BONE_P
 	return pPhysicsShell;
 }
 
-CPhysicsShell*				P_build_Shell			(CGameObject* obj,bool not_active_state,LPCSTR	fixed_bones)
+CPhysicsShell*				P_build_Shell			(CGameObject* obj,bool not_active_state, const char* fixed_bones)
 {
 	U16Vec f_bones;
 	if(fixed_bones){

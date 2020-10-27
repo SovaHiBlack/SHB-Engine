@@ -57,7 +57,7 @@ void CMaterialManager::reinit		()
 	}
 }
 
-void CMaterialManager::reload		(LPCSTR section)
+void CMaterialManager::reload		(const char* section)
 {
 }
 

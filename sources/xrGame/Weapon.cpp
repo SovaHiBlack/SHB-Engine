@@ -34,7 +34,7 @@
 // Construction/Destruction
 //////////////////////////////////////////////////////////////////////
 
-CWeapon::CWeapon(LPCSTR name)
+CWeapon::CWeapon(const char* name)
 {
 	SetState				(eHidden);
 	SetNextState			(eHidden);
@@ -241,7 +241,7 @@ void CWeapon::ForceUpdateFireParticles()
 	}
 }
 
-void CWeapon::Load		(LPCSTR section)
+void CWeapon::Load		(const char* section)
 {
 	inherited::Load					(section);
 	CShootingObject::Load			(section);
@@ -274,7 +274,7 @@ void CWeapon::Load		(LPCSTR section)
 
 	// load ammo classes
 	m_ammoTypes.clear	(); 
-	LPCSTR				S = pSettings->r_string(section,"ammo_class");
+	const char* S = pSettings->r_string(section,"ammo_class");
 	if (S && S[0]) 
 	{
 		string128		_ammoItem;
@@ -409,7 +409,7 @@ void CWeapon::Load		(LPCSTR section)
 	}
 }
 
-void CWeapon::LoadFireParams		(LPCSTR section, LPCSTR prefix)
+void CWeapon::LoadFireParams		(const char* section, const char* prefix)
 {
 	camDispersion		= pSettings->r_float		(section,"cam_dispersion"	); 
 	camDispersion		= deg2rad					(camDispersion);
@@ -425,7 +425,7 @@ void CWeapon::LoadFireParams		(LPCSTR section, LPCSTR prefix)
 	CShootingObject::LoadFireParams(section, prefix);
 };
 
-void CWeapon::LoadZoomOffset (LPCSTR section, LPCSTR prefix)
+void CWeapon::LoadZoomOffset (const char* section, const char* prefix)
 {
 	string256 full_name;
 	m_pHUD->SetZoomOffset(pSettings->r_fvector3	(hud_sect, strconcat(sizeof(full_name),full_name, prefix, "zoom_offset")));
@@ -436,7 +436,7 @@ void CWeapon::LoadZoomOffset (LPCSTR section, LPCSTR prefix)
 		m_fZoomRotateTime = pSettings->r_float(hud_sect,"zoom_rotate_time");
 }
 /*
-void CWeapon::animGet	(MotionSVec& lst, LPCSTR prefix)
+void CWeapon::animGet	(MotionSVec& lst, const char* prefix)
 {
 	const MotionID		&M = m_pHUD->animGet(prefix);
 	if (M)				lst.push_back(M);
@@ -831,7 +831,7 @@ bool CWeapon::Action(int cmd, u32 flags)
 	return false;
 }
 
-void CWeapon::SpawnAmmo(u32 boxCurr, LPCSTR ammoSect, u32 ParentID) 
+void CWeapon::SpawnAmmo(u32 boxCurr, const char* ammoSect, u32 ParentID)
 {
 	if(!m_ammoTypes.size())			return;
 	if (OnClient())					return;
@@ -904,7 +904,7 @@ int CWeapon::GetAmmoCurrent(bool use_item_to_spawn) const
 
 	for(int i = 0; i < (int)m_ammoTypes.size(); ++i) 
 	{
-		LPCSTR l_ammoType = *m_ammoTypes[i];
+		const char* l_ammoType = *m_ammoTypes[i];
 
 		for(TIItemContainer::iterator l_it = m_pCurrentInventory->m_belt.begin(); m_pCurrentInventory->m_belt.end() != l_it; ++l_it) 
 		{
@@ -1013,10 +1013,10 @@ bool CWeapon::SilencerAttachable()
 	return (CSE_ALifeItemWeapon::eAddonAttachable == m_eSilencerStatus);
 }
 
-LPCSTR wpn_scope				= "wpn_scope";
-LPCSTR wpn_silencer				= "wpn_silencer";
-LPCSTR wpn_grenade_launcher		= "wpn_grenade_launcher";
-LPCSTR wpn_launcher				= "wpn_launcher";
+const char* wpn_scope				= "wpn_scope";
+const char* wpn_silencer				= "wpn_silencer";
+const char* wpn_grenade_launcher		= "wpn_grenade_launcher";
+const char* wpn_launcher				= "wpn_launcher";
 
 void CWeapon::UpdateHUDAddonsVisibility()
 {//actor only
@@ -1227,7 +1227,7 @@ void CWeapon::reinit			()
 	CHudItemObject::reinit			();
 }
 
-void CWeapon::reload			(LPCSTR section)
+void CWeapon::reload			(const char* section)
 {
 	CShootingObject::reload		(section);
 	CHudItemObject::reload			(section);
@@ -1469,7 +1469,7 @@ bool CWeapon::unlimited_ammo()
 	return psActorFlags.test(AF_UNLIMITEDAMMO) && m_DefaultCartridge.m_flags.test(CCartridge::cfCanBeUnlimited); 
 };
 
-LPCSTR	CWeapon::GetCurrentAmmo_ShortName	()
+const char* CWeapon::GetCurrentAmmo_ShortName	()
 {
 	if (m_magazine.empty()) return ("");
 	CCartridge &l_cartridge = m_magazine.back();

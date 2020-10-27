@@ -48,15 +48,15 @@ public:
 	};
 	Flags8							flags;
 public:
-									CSE_Visual		(LPCSTR name=0);
+									CSE_Visual		(const char* name=0);
 	virtual							~CSE_Visual		();
 
 	void							visual_read		(NET_Packet& P, u16 version);
 	void							visual_write	(NET_Packet& P);
 
-    void							set_visual		(LPCSTR name, bool load=true);
-	LPCSTR							get_visual		() const {return *visual_name;};
-	virtual void					FillProps		(LPCSTR pref, PropItemVec &items);
+    void							set_visual		(const char* name, bool load=true);
+	const char* get_visual		() const {return *visual_name;};
+	virtual void					FillProps		(const char* pref, PropItemVec &items);
 
 	virtual CSE_Visual* __stdcall	visual			() = 0;
 };
@@ -68,16 +68,16 @@ SERVER_ENTITY_DECLARE_BEGIN0(CSE_Motion)
 public:
 	shared_str						motion_name;
 public:
-									CSE_Motion 		(LPCSTR name=0);
+									CSE_Motion 		(const char* name=0);
 	virtual							~CSE_Motion		();
 
 	void							motion_read		(NET_Packet& P);
 	void							motion_write	(NET_Packet& P);
 
-    void							set_motion		(LPCSTR name);
-	LPCSTR							get_motion		() const {return *motion_name;};
+    void							set_motion		(const char* name);
+	const char* get_motion		() const {return *motion_name;};
 
-	virtual void					FillProps		(LPCSTR pref, PropItemVec &items);
+	virtual void					FillProps		(const char* pref, PropItemVec &items);
 
 	virtual CSE_Motion* __stdcall	motion			() = 0;
 };
@@ -85,7 +85,7 @@ add_to_type_list(CSE_Motion)
 #define script_type_list save_type_list(CSE_Motion)
 
 struct ISE_AbstractLEOwner{
-	virtual void		__stdcall	get_bone_xform	(LPCSTR name, Fmatrix& xform) = 0;
+	virtual void		__stdcall	get_bone_xform	(const char* name, Fmatrix& xform) = 0;
 };
 
 struct ISE_Abstract {
@@ -102,11 +102,11 @@ public:
 public:
 	virtual void		__stdcall	Spawn_Write		(NET_Packet &tNetPacket, BOOL bLocal) = 0;
 	virtual BOOL		__stdcall	Spawn_Read		(NET_Packet &tNetPacket) = 0;
-	virtual void		__stdcall	FillProp		(LPCSTR pref, PropItemVec &items) = 0;
-	virtual LPCSTR		__stdcall	name			() const = 0;
-	virtual void		__stdcall	set_name		(LPCSTR) = 0;
-	virtual LPCSTR		__stdcall	name_replace	() const = 0;
-	virtual void		__stdcall	set_name_replace(LPCSTR) = 0;
+	virtual void		__stdcall	FillProp		(const char* pref, PropItemVec &items) = 0;
+	virtual const char* __stdcall	name			() const = 0;
+	virtual void		__stdcall	set_name		(const char*) = 0;
+	virtual const char* __stdcall	name_replace	() const = 0;
+	virtual void		__stdcall	set_name_replace(const char*) = 0;
 	virtual Fvector&	__stdcall	position		() = 0;
 	virtual Fvector&	__stdcall	angle			() = 0;
 	virtual Flags16&	__stdcall	flags			() = 0;

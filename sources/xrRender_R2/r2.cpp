@@ -23,7 +23,7 @@ public:
 	virtual void					set_position		(const Fvector& P)			{ }
 	virtual void					set_direction		(const Fvector& D)			{ }
 	virtual void					set_radius			(float R)					{ }
-	virtual void					set_texture			(LPCSTR name)				{ }
+	virtual void					set_texture			(const char* name)				{ }
 	virtual void					set_color			(const Fcolor& C)			{ }
 	virtual void					set_color			(float r, float g, float b)	{ }
 };
@@ -298,8 +298,8 @@ void CRender::OnFrame()
 // Implementation
 IRender_ObjectSpecific*	CRender::ros_create				(IRenderable* parent)				{ return xr_new<CROS_impl>();			}
 void					CRender::ros_destroy			(IRender_ObjectSpecific* &p)		{ xr_delete(p);							}
-IRender_Visual*			CRender::model_Create			(LPCSTR name, IReader* data)		{ return Models->Create(name,data);		}
-IRender_Visual*			CRender::model_CreateChild		(LPCSTR name, IReader* data)		{ return Models->CreateChild(name,data);}
+IRender_Visual*			CRender::model_Create			(const char* name, IReader* data)		{ return Models->Create(name,data);		}
+IRender_Visual*			CRender::model_CreateChild		(const char* name, IReader* data)		{ return Models->CreateChild(name,data);}
 IRender_Visual*			CRender::model_Duplicate		(IRender_Visual* V)					{ return Models->Instance_Duplicate(V);	}
 void					CRender::model_Delete			(IRender_Visual* &V, BOOL bDiscard)	{ Models->Delete(V, bDiscard);			}
 IRender_DetailModel*	CRender::model_CreateDM			(IReader*	F)
@@ -318,17 +318,19 @@ void					CRender::model_Delete			(IRender_DetailModel* & F)
 		F				= NULL;
 	}
 }
-IRender_Visual*			CRender::model_CreatePE			(LPCSTR name)	
+IRender_Visual*			CRender::model_CreatePE			(const char* name)
 { 
-	PS::CPEDef*	SE			= PSLibrary.FindPED	(name);		R_ASSERT3(SE,"Particle effect doesn't exist",name);
+	PS::CPEDef*	SE			= PSLibrary.FindPED	(name);	
+	R_ASSERT3(SE,"Particle effect doesn't exist",name);
 	return					Models->CreatePE	(SE);
 }
-IRender_Visual*			CRender::model_CreateParticles	(LPCSTR name)	
+IRender_Visual*			CRender::model_CreateParticles	(const char* name)
 { 
 	PS::CPEDef*	SE			= PSLibrary.FindPED	(name);
 	if (SE) return			Models->CreatePE	(SE);
 	else{
-		PS::CPGDef*	SG		= PSLibrary.FindPGD	(name);		R_ASSERT3(SG,"Particle effect or group doesn't exist",name);
+		PS::CPGDef*	SG		= PSLibrary.FindPGD	(name);	
+		R_ASSERT3(SG,"Particle effect or group doesn't exist",name);
 		return				Models->CreatePG	(SG);
 	}
 }
@@ -451,18 +453,18 @@ void	CRender::Statistics	(CGameFont* _F)
 /*
 extern "C"
 {
-LPCSTR WINAPI	D3DXGetPixelShaderProfile	(LPDIRECT3DDEVICE9  pDevice);
-LPCSTR WINAPI	D3DXGetVertexShaderProfile	(LPDIRECT3DDEVICE9	pDevice);
+const char* WINAPI	D3DXGetPixelShaderProfile	(LPDIRECT3DDEVICE9  pDevice);
+const char* WINAPI	D3DXGetVertexShaderProfile	(LPDIRECT3DDEVICE9	pDevice);
 };
 */
 HRESULT	CRender::shader_compile			(
-	LPCSTR							name,
-	LPCSTR                          pSrcData,
+	const char* name,
+	const char* pSrcData,
 	UINT                            SrcDataLen,
 	void*							_pDefines,
 	void*							_pInclude,
-	LPCSTR                          pFunctionName,
-	LPCSTR                          pTarget,
+	const char* pFunctionName,
+	const char* pTarget,
 	DWORD                           Flags,
 	void*							_ppShader,
 	void*							_ppErrorMsgs,

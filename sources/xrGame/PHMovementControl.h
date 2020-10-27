@@ -137,7 +137,7 @@ public:
 	void				DeleteCharacterObject			()														;
 	void				CreateCharacter					()														;		
 	void				DestroyCharacter				()														;
-	void				Load							(LPCSTR section)										;
+	void				Load							(const char* section)										;
 #ifdef DEBUG
 	void				dbg_Draw(){
 		if(m_character)

@@ -25,7 +25,7 @@ struct CComparer {
 		}
 	};
 
-	IC	static bool compare(LPCSTR _1, LPCSTR _2, const P &p)
+	IC	static bool compare(const char* _1, const char* _2, const P &p)
 	{
 		return						(p(_1,_2));
 	}
@@ -160,13 +160,13 @@ struct CComparer {
 };
 
 template <typename P>
-IC	bool compare(LPCSTR p0, char* p1, const P &p)
+IC	bool compare(const char* p0, char* p1, const P &p)
 {
 	return			(p(p0,p1));
 }
 
 template <typename P>
-IC	bool compare(char* p0, LPCSTR p1, const P &p)
+IC	bool compare(char* p0, const char* p1, const P &p)
 {
 	return			(p(p0,p1));
 }
@@ -184,10 +184,10 @@ namespace object_comparer {
 			template <typename T>
 			IC	bool operator() (const T &_1, const T &_2)	const	{return(P<T>()		(_1,_2));}
 			IC	bool operator() ()							const	{return(P<bool>()	(false,true));}
-			IC	bool operator() (LPCSTR _1, LPCSTR _2)		const	{return(P<int>()	(xr_strcmp(_1,_2),0));}
+			IC	bool operator() (const char* _1, const char* _2)		const	{return(P<int>()	(xr_strcmp(_1,_2),0));}
 			IC	bool operator() (char* _1, char* _2)		const	{return(P<int>()	(xr_strcmp(_1,_2),0));}
-			IC	bool operator() (LPCSTR _1, char* _2)		const	{return(P<int>()	(xr_strcmp(_1,_2),0));}
-			IC	bool operator() (char* _1, LPCSTR _2)		const	{return(P<int>()	(xr_strcmp(_1,_2),0));}
+			IC	bool operator() (const char* _1, char* _2)		const	{return(P<int>()	(xr_strcmp(_1,_2),0));}
+			IC	bool operator() (char* _1, const char* _2)		const	{return(P<int>()	(xr_strcmp(_1,_2),0));}
 		};
 	};
 };

@@ -30,7 +30,7 @@ template<class _Effector>
 class CPPEffectorCustomController {
 public:
 					CPPEffectorCustomController	();
-IC	virtual void	load						(LPCSTR section);
+IC	virtual void	load						(const char* section);
 IC	virtual bool	active						() {return (m_effector != 0);}
 
 protected:
@@ -45,7 +45,7 @@ CPPEffectorCustomController<_Effector>::CPPEffectorCustomController()
 }
 
 template<class _Effector>
-void CPPEffectorCustomController<_Effector>::load(LPCSTR section)
+void CPPEffectorCustomController<_Effector>::load(const char* section)
 {
 	m_state.duality.h			= pSettings->r_float(section,"duality_h");
 	m_state.duality.v			= pSettings->r_float(section,"duality_v");

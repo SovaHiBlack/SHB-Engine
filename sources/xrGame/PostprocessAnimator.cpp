@@ -60,7 +60,7 @@ void CPostprocessAnimator::Clear( )
 		xr_delete(m_Params[a]);
 }
 
-void CPostprocessAnimator::Load(LPCSTR name)
+void CPostprocessAnimator::Load(const char* name)
 {
 	m_Name = name;
 	string_path full_path;
@@ -72,7 +72,7 @@ void CPostprocessAnimator::Load(LPCSTR name)
 		}
 	}
 
-	LPCSTR  ext = strext(full_path);
+	const char* ext = strext(full_path);
 	if (ext)
 	{
 		if (!xr_strcmp(ext, POSTPROCESS_FILE_EXTENSION))

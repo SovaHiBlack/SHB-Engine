@@ -136,6 +136,6 @@ void CUISleepWnd::SetRestTime(u8 hours, u8 minutes)
 	UIStaticRestAmount->SetText	(buf);
 }
 
-void CUISleepWnd::SetText(LPCSTR str){
+void CUISleepWnd::SetText(const char* str){
 	this->UIRestBtn->SetText(str);
 }

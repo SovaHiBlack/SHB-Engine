@@ -144,7 +144,7 @@ void CUITalkDialogWnd::ClearQuestions()
 }
 
 
-void CUITalkDialogWnd::AddQuestion(LPCSTR str, LPCSTR value)
+void CUITalkDialogWnd::AddQuestion(const char* str, const char* value)
 {
 	CUIQuestionItem* itm			= xr_new<CUIQuestionItem>(m_uiXml,"question_item");
 	itm->Init						(value, str);
@@ -153,7 +153,7 @@ void CUITalkDialogWnd::AddQuestion(LPCSTR str, LPCSTR value)
 	Register						(itm);
 }
 
-void CUITalkDialogWnd::AddAnswer(LPCSTR SpeakerName, LPCSTR str, bool bActor)
+void CUITalkDialogWnd::AddAnswer(const char* SpeakerName, const char* str, bool bActor)
 {
 	CUIAnswerItem* itm				= xr_new<CUIAnswerItem>(m_uiXml,bActor?"actor_answer_item":"other_answer_item");
 	itm->Init						(str, SpeakerName);
@@ -180,7 +180,7 @@ void CUITalkDialogWnd::AddAnswer(LPCSTR SpeakerName, LPCSTR str, bool bActor)
 	Actor()->game_news_registry->registry().objects().push_back(news_data);
 }
 
-void CUITalkDialogWnd::AddIconedAnswer(LPCSTR text, LPCSTR texture_name, Frect texture_rect, LPCSTR templ_name)
+void CUITalkDialogWnd::AddIconedAnswer(const char* text, const char* texture_name, Frect texture_rect, const char* templ_name)
 {
 	CUIAnswerItemIconed* itm				= xr_new<CUIAnswerItemIconed>(m_uiXml,templ_name);
 	itm->Init								(text, texture_name, texture_rect);
@@ -205,7 +205,7 @@ void CUIQuestionItem::SendMessage				(CUIWindow* pWnd, s16 msg, void* pData)
 	CUIWndCallback::OnEvent(pWnd, msg, pData);
 }
 
-CUIQuestionItem::CUIQuestionItem			(CUIXml* xml_doc, LPCSTR path)
+CUIQuestionItem::CUIQuestionItem			(CUIXml* xml_doc, const char* path)
 {
 	m_text							= xr_new<CUI3tButton>();m_text->SetAutoDelete(true);
 	AttachChild						(m_text);
@@ -227,7 +227,7 @@ CUIQuestionItem::CUIQuestionItem			(CUIXml* xml_doc, LPCSTR path)
 
 }
 
-void CUIQuestionItem::Init			(LPCSTR val, LPCSTR text)
+void CUIQuestionItem::Init			(const char* val, const char* text)
 {
 	m_s_value						= val;
 	m_text->SetText					(text);
@@ -242,7 +242,7 @@ void	CUIQuestionItem::OnTextClicked(CUIWindow* w, void*)
 }
 
 
-CUIAnswerItem::CUIAnswerItem			(CUIXml* xml_doc, LPCSTR path)
+CUIAnswerItem::CUIAnswerItem			(CUIXml* xml_doc, const char* path)
 {
 	m_text							= xr_new<CUIStatic>();m_text->SetAutoDelete(true);
 	m_name							= xr_new<CUIStatic>();m_name->SetAutoDelete(true);
@@ -265,7 +265,7 @@ CUIAnswerItem::CUIAnswerItem			(CUIXml* xml_doc, LPCSTR path)
 	SetAutoDelete					(true);
 }
 
-void CUIAnswerItem::Init			(LPCSTR text, LPCSTR name)
+void CUIAnswerItem::Init			(const char* text, const char* name)
 {
 	m_name->SetText					(name);
 	m_text->SetText					(text);
@@ -275,7 +275,7 @@ void CUIAnswerItem::Init			(LPCSTR text, LPCSTR name)
 	SetHeight						(new_h);
 }
 
-CUIAnswerItemIconed::CUIAnswerItemIconed		(CUIXml* xml_doc, LPCSTR path)
+CUIAnswerItemIconed::CUIAnswerItemIconed		(CUIXml* xml_doc, const char* path)
 :CUIAnswerItem(xml_doc, path)
 {
 	m_icon							= xr_new<CUIStatic>();m_icon->SetAutoDelete(true);
@@ -288,7 +288,7 @@ CUIAnswerItemIconed::CUIAnswerItemIconed		(CUIXml* xml_doc, LPCSTR path)
 	xml_init.InitStatic				(*xml_doc, str, 0, m_icon);
 }
 
-void CUIAnswerItemIconed::Init		(LPCSTR text, LPCSTR texture_name, Frect texture_rect)
+void CUIAnswerItemIconed::Init		(const char* text, const char* texture_name, Frect texture_rect)
 {
 	inherited::Init					(text,"");
 	m_icon->CreateShader			(texture_name,"hud\\default");

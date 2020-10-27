@@ -703,7 +703,7 @@ void CPHMovementControl::SetActorRestrictorRadius(CPHCharacter::ERestrictionType
 	if(m_character&&eCharacterType==actor)
 		static_cast<CPHActorCharacter*>(m_character)->SetRestrictorRadius(rt,r);
 }
-void CPHMovementControl::Load					(LPCSTR section){
+void CPHMovementControl::Load					(const char* section){
 
 	//capture
 	

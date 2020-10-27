@@ -18,12 +18,12 @@
 #define NEWS_TO_SHOW 50
 
 CUINewsWnd::CUINewsWnd()
-{}
+{ }
 
 CUINewsWnd::~CUINewsWnd()
-{}
+{ }
 
-void CUINewsWnd::Init(LPCSTR xml_name, LPCSTR start_from)
+void CUINewsWnd::Init(const char* xml_name, const char* start_from)
 {
 	string512 pth;
 

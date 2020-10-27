@@ -40,7 +40,7 @@ public:
 	}
 	CKinematicsAnimated*	animations				(){return p_->m_animations;}
 	u32					motion_length			(MotionID M);
-	MotionID			motion_id				(LPCSTR name);
+	MotionID			motion_id				(const char* name);
 };
 //---------------------------------------------------------------------------
 
@@ -78,7 +78,7 @@ public:
 						~CWeaponHUD		();
 
 	// misc
-	void				Load			(LPCSTR section);
+	void				Load			(const char* section);
 	void				net_DestroyHud	();
 	void				Init			();
 
@@ -100,7 +100,7 @@ public:
 	// Animations
 	void				animPlay		(MotionID M, BOOL bMixIn/*=TRUE*/, CHudItem*  W /*=0*/, u32 state);
 	void				animDisplay		(MotionID M, BOOL bMixIn);
-	MotionID			animGet			(LPCSTR name);
+	MotionID			animGet			(const char* name);
 	
 	void				UpdatePosition	(const Fmatrix& transform);
 

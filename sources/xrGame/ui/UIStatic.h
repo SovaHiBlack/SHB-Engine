@@ -54,8 +54,8 @@ public:
 	virtual void		SetColor					(u32 color)					{ m_UIStaticItem.SetColor(color);		}
 	u32					GetColor					() const					{ return m_UIStaticItem.GetColor();		}
 	u32&				GetColorRef					()							{ return m_UIStaticItem.GetColorRef();	}
-	virtual void		InitTexture					(LPCSTR tex_name);
-	virtual void		InitTextureEx				(LPCSTR tex_name, LPCSTR sh_name="hud\\default");
+	virtual void		InitTexture					(const char* tex_name);
+	virtual void		InitTextureEx				(const char* tex_name, const char* sh_name="hud\\default");
 	CUIStaticItem*		GetStaticItem				()							{return &m_UIStaticItem;}
 			void		SetOriginalRect				(float x, float y, float width, float height)	{m_UIStaticItem.SetOriginalRect(x,y,width,height);}
 			void		SetHeadingPivot				(const Fvector2& p)			{m_UIStaticItem.SetHeadingPivot(p);}
@@ -70,14 +70,14 @@ public:
 	// own
 	virtual void		SetHighlightColor			(const u32 uColor)	{ m_HighlightColor = uColor; }
 			void		EnableTextHighlighting		(bool value)		{ m_bEnableTextHighlighting = value; }
-			void		SetClrLightAnim				(LPCSTR lanim, bool bCyclic, bool bOnlyAlpha, bool bTextColor, bool bTextureColor);
-			void		SetXformLightAnim			(LPCSTR lanim, bool bCyclic);
+			void		SetClrLightAnim				(const char* lanim, bool bCyclic, bool bOnlyAlpha, bool bTextColor, bool bTextureColor);
+			void		SetXformLightAnim			(const char* lanim, bool bCyclic);
 			void		ResetClrAnimation			();
 			void		ResetXformAnimation			();
 			bool		IsClrAnimStoped				();
 			void		SetClrAnimDelay				(float delay);
-	virtual void		Init						(LPCSTR tex_name, float x, float y, float width, float height);	
-			void		InitEx						(LPCSTR tex_name, LPCSTR sh_name, float x, float y, float width, float height);
+	virtual void		Init						(const char* tex_name, float x, float y, float width, float height);
+			void		InitEx						(const char* tex_name, const char* sh_name, float x, float y, float width, float height);
 
 	virtual void		DrawTexture					();
 	virtual void		DrawText					();
@@ -87,9 +87,9 @@ public:
 	virtual void		OnFocusLost					();
 
 	//IUITextControl
-	virtual void			SetText					(LPCSTR str);
-			void			SetTextST				(LPCSTR str_id);
-	virtual LPCSTR			GetText					();
+	virtual void			SetText					(const char* str);
+			void			SetTextST				(const char* str_id);
+	virtual const char* GetText					();
 	virtual void			SetTextColor			(u32 color);
 	virtual u32				GetTextColor			();
 	virtual void			SetFont					(CGameFont* pFont);

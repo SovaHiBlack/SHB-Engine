@@ -178,8 +178,8 @@ public:
 
 	// Name of the window
 	const shared_str		WindowName			() const					{ return m_windowName; }
-	void					SetWindowName		(LPCSTR wn)					{ m_windowName = wn; }
-	LPCSTR					WindowName_script	()							{return *m_windowName;}
+	void					SetWindowName		(const char* wn)					{ m_windowName = wn; }
+	const char* WindowName_script	()							{return *m_windowName;}
 	CUIWindow*				FindChild			(const shared_str name);
 
 	IC bool					CursorOverWindow	() const					{ return m_bCursorOverWindow; }

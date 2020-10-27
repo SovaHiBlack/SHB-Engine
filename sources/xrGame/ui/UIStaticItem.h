@@ -30,14 +30,14 @@ public:
 	virtual			~CUIStaticItem	();
 
 			void	SetAlphaRef		(int val)											{alpha_ref=val;};
-	virtual void	CreateShader	(LPCSTR tex, LPCSTR sh = "hud\\default");
+	virtual void	CreateShader	(const char* tex, const char* sh = "hud\\default");
 	virtual void	SetShader		(const ref_shader& sh);
 	virtual void	SetTextureColor	(u32 color)											{SetColor(color);}
 	virtual u32		GetTextureColor	()											const	{return GetColor();}
 	virtual	void	SetOriginalRect	(const Frect& r)									{iOriginalRect = r; uFlags|=flValidOriginalRect;}
 	virtual void	SetOriginalRectEx(const Frect& r)									{iOriginalRect = r; uFlags|=flValidOriginalRect; SetRect(0,0,r.width(),r.height());}
 
-	void			Init			(LPCSTR tex, LPCSTR sh, float left, float top, u32 align);
+	void			Init			(const char* tex, const char* sh, float left, float top, u32 align);
 
 	void			Render			();
 	void			Render			(float angle);

@@ -26,13 +26,13 @@ public:
 		MESSAGEBOX_QUIT_GAME 
 	} E_MESSAGEBOX_STYLE;
 
-			void Init				(LPCSTR box_template);
+			void Init				(const char* box_template);
 			void Clear				();
-	virtual void SetText			(LPCSTR str);
-	virtual LPCSTR GetText			();
-	LPCSTR		 GetHost			();
-	LPCSTR		 GetPassword		();
-	LPCSTR		 GetUserPassword	();
+	virtual void SetText			(const char* str);
+	virtual const char* GetText			();
+	const char* GetHost			();
+	const char* GetPassword		();
+	const char* GetUserPassword	();
 	void		 SetUserPasswordMode(bool);
 	void		 SetPasswordMode	(bool);
 

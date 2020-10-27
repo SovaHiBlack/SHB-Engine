@@ -31,7 +31,7 @@ void CUIPropertiesBox::Init(float x, float y, float width, float height)
 	CUIXml					xml_doc;
 	xml_doc.Init			("$game_config$", "ui", "inventory_new.xml");
 
-	LPCSTR t = xml_doc.Read	("properties_box:texture", 0, "");
+	const char* t = xml_doc.Read	("properties_box:texture", 0, "");
 	R_ASSERT				(t);
 	InitTexture				(t);
 

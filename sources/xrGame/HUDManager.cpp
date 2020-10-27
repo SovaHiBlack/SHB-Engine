@@ -49,7 +49,7 @@ void CFontManager::InitializeFonts()
 	InitializeFont(pFontStat				,"stat_font",					CGameFont::fsDeviceIndependent);
 }
 
-LPCSTR CFontManager::GetFontTexName (const char* section)
+const char* CFontManager::GetFontTexName (const char* section)
 {
 	static char* tex_names[]={"texture800","texture","texture1600"};
 	int def_idx		= 1;//default 1024x768

@@ -24,7 +24,7 @@ class CMailSlotMsg {
 public:
 	CMailSlotMsg(){Reset();};
 	inline void  Reset(){ m_len=0; m_pos=0; _memset(m_buff,0,2048);};
-	inline void  SetBuffer(LPCSTR b, int sz){Reset(); _memcpy(m_buff,b,sz); m_len=sz; m_pos=0;};
+	inline void  SetBuffer(const char* b, int sz){Reset(); _memcpy(m_buff,b,sz); m_len=sz; m_pos=0;};
 	inline void* GetBuffer(){return m_buff;};
 	inline void	 SetLen(DWORD l){m_len=l;};
 	inline DWORD GetLen()const{return m_len;};
@@ -36,7 +36,7 @@ public:
 		return TRUE;
 	};
 
-	inline BOOL	w_string(LPCSTR dst){
+	inline BOOL	w_string(const char* dst){
 		size_t sz = _strlen(dst);
 		w_int((int)sz);
 		Write(dst,(int)(sz+1)); return TRUE;

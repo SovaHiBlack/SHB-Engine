@@ -12,13 +12,13 @@
 
 const Fvector zero_vel		= {0.f,0.f,0.f};
 
-CParticlesObject::CParticlesObject	(LPCSTR p_name, BOOL bAutoRemove, bool destroy_on_game_load) :
+CParticlesObject::CParticlesObject	(const char* p_name, BOOL bAutoRemove, bool destroy_on_game_load) :
 	inherited				(destroy_on_game_load)
 {
 	Init					(p_name,0,bAutoRemove);
 }
 
-void CParticlesObject::Init	(LPCSTR p_name, IRender_Sector* S, BOOL bAutoRemove)
+void CParticlesObject::Init	(const char* p_name, IRender_Sector* S, BOOL bAutoRemove)
 {
 	m_bLooped				= false;
 	m_bStopping				= false;

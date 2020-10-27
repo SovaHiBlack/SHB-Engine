@@ -15,6 +15,6 @@ CUIStatic*				m_UIImage;
 public:
 					CUINewsItemWnd					();
 	virtual			~CUINewsItemWnd					();
-			void	Init							(LPCSTR xml_name, LPCSTR start_from);
+			void	Init							(const char* xml_name, const char* start_from);
 			void	Setup							(GAME_NEWS_DATA& news_data);
 };

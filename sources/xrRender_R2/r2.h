@@ -154,7 +154,7 @@ public:
 	FSlideWindowItem*				getSWI						(int id);
 	IRender_Portal*					getPortal					(int id);
 	IRender_Sector*					getSectorActive				();
-	IRender_Visual*					model_CreatePE				(LPCSTR name);
+	IRender_Visual*					model_CreatePE				(const char* name);
 	IRender_Sector*					detectSector				(const Fvector& P, Fvector& D);
 
 	// HW-occlusion culling
@@ -199,15 +199,15 @@ public:
 	virtual	void					level_Load					(IReader*);
 	virtual void					level_Unload				();
 
-	virtual IDirect3DBaseTexture9*	texture_load			(LPCSTR	fname, u32& msize);
+	virtual IDirect3DBaseTexture9*	texture_load			(const char* fname, u32& msize);
 	virtual HRESULT					shader_compile			(
-		LPCSTR							name,
-		LPCSTR                          pSrcData,
+		const char* name,
+		const char* pSrcData,
 		UINT                            SrcDataLen,
 		void*							pDefines,
 		void*							pInclude,
-		LPCSTR                          pFunctionName,
-		LPCSTR                          pTarget,
+		const char* pFunctionName,
+		const char* pTarget,
 		DWORD                           Flags,
 		void*							ppShader,
 		void*							ppErrorMsgs,
@@ -215,7 +215,7 @@ public:
 
 	// Information
 	virtual void					Statistics					(CGameFont* F);
-	virtual LPCSTR					getShaderPath				()									{ return "r2\\";	}
+	virtual const char* getShaderPath				()									{ return "r2\\";	}
 	virtual ref_shader				getShader					(int id);
 	virtual IRender_Sector*			getSector					(int id);
 	virtual IRender_Visual*			getVisual					(int id);
@@ -248,10 +248,10 @@ public:
 	virtual IRender_Glow*			glow_create					();
 
 	// Models
-	virtual IRender_Visual*			model_CreateParticles		(LPCSTR name);
+	virtual IRender_Visual*			model_CreateParticles		(const char* name);
 	virtual IRender_DetailModel*	model_CreateDM				(IReader* F);
-	virtual IRender_Visual*			model_Create				(LPCSTR name, IReader* data=0);
-	virtual IRender_Visual*			model_CreateChild			(LPCSTR name, IReader* data);
+	virtual IRender_Visual*			model_Create				(const char* name, IReader* data=0);
+	virtual IRender_Visual*			model_CreateChild			(const char* name, IReader* data);
 	virtual IRender_Visual*			model_Duplicate				(IRender_Visual*	V);
 	virtual void					model_Delete				(IRender_Visual* &	V, BOOL bDiscard);
 	virtual void 					model_Delete				(IRender_DetailModel* & F);

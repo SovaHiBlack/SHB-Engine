@@ -17,7 +17,7 @@ public:
 						CUIMessagesWindow				();
 	virtual				~CUIMessagesWindow				();
 
-	void				AddIconedPdaMessage				(LPCSTR textureName, Frect originalRect, LPCSTR message, int iDelay);
+	void				AddIconedPdaMessage				(const char* textureName, Frect originalRect, const char* message, int iDelay);
 
 	void				AddLogMessage					(const shared_str& msg);
 

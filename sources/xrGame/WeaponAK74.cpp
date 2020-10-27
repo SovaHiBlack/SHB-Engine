@@ -3,7 +3,7 @@
 #include "WeaponAK74.h"
 #include "WeaponHUD.h"
 
-CWeaponAK74::CWeaponAK74(LPCSTR name, ESoundTypes eSoundType) : CWeaponMagazinedWGrenade(name, eSoundType)
+CWeaponAK74::CWeaponAK74(const char* name, ESoundTypes eSoundType) : CWeaponMagazinedWGrenade(name, eSoundType)
 { }
 
 CWeaponAK74::~CWeaponAK74()

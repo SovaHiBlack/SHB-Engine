@@ -18,5 +18,5 @@ public:
 	virtual void			SetItem					(CUICellItem* itm, Ivector2 cell_pos); // start at cell
 	virtual CUICellItem*	RemoveItem				(CUICellItem* itm, bool force_root);
 	virtual	void			Draw					();
-			void			SetDefaultOutfit		(LPCSTR default_outfit);
+			void			SetDefaultOutfit		(const char* default_outfit);
 };

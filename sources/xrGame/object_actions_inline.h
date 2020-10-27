@@ -15,7 +15,7 @@
 //////////////////////////////////////////////////////////////////////////
 
 template <typename _item_type>
-IC	CObjectActionBase<_item_type>::CObjectActionBase(_item_type *item, CStalker *owner, CPropertyStorage *storage, LPCSTR action_name) :
+IC	CObjectActionBase<_item_type>::CObjectActionBase(_item_type *item, CStalker *owner, CPropertyStorage *storage, const char* action_name) :
 	inherited				(owner,action_name),
 	m_item					(item)
 {
@@ -49,7 +49,7 @@ IC	CStalker &CObjectActionBase<_item_type>::object	() const
 //////////////////////////////////////////////////////////////////////////
 
 template <typename _item_type>
-IC	CObjectActionMember<_item_type>::CObjectActionMember	(_item_type *item, CStalker *owner, CPropertyStorage *storage, _condition_type condition_id, _value_type value, LPCSTR action_name) :
+IC	CObjectActionMember<_item_type>::CObjectActionMember	(_item_type *item, CStalker *owner, CPropertyStorage *storage, _condition_type condition_id, _value_type value, const char* action_name) :
 	inherited				(item,owner,storage,action_name),
 	m_condition_id			(condition_id),
 	m_value					(value)

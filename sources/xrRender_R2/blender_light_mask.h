@@ -3,7 +3,7 @@
 class CBlender_accum_direct_mask : public IBlender  
 {
 public:
-	virtual		LPCSTR		getComment()	{ return "INTERNAL: mask direct light";	}
+	virtual		const char* getComment()	{ return "INTERNAL: mask direct light";	}
 	virtual		BOOL		canBeDetailed()	{ return FALSE;	}
 	virtual		BOOL		canBeLMAPped()	{ return FALSE;	}
 

@@ -41,12 +41,12 @@ void CPhysicItem::reinit	()
 	m_ready_to_destroy		= false;
 }
 
-void CPhysicItem::Load		(LPCSTR section)
+void CPhysicItem::Load		(const char* section)
 {
 	inherited::Load			(section);
 }
 
-void CPhysicItem::reload	(LPCSTR section)
+void CPhysicItem::reload	(const char* section)
 {
 	inherited::reload		(section);
 }

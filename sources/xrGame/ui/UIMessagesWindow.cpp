@@ -38,7 +38,7 @@ void CUIMessagesWindow::Init(float x, float y, float width, float height){
 	CUIXmlInit::InitScrollView(xml, "sp_log_list", 0, m_pGameLog);
 }
 
-void CUIMessagesWindow::AddIconedPdaMessage(LPCSTR textureName, Frect originalRect, LPCSTR message, int iDelay){
+void CUIMessagesWindow::AddIconedPdaMessage(const char* textureName, Frect originalRect, const char* message, int iDelay){
 	
 	CUIPdaMsgListItem *pItem			= m_pGameLog->AddPdaMessage(message, float(iDelay));
 	pItem->SetTextComplexMode			(true);

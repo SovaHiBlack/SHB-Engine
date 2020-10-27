@@ -37,7 +37,7 @@ public:
 	IC								COperatorAbstract	();
 	IC								COperatorAbstract	(const CSConditionState &conditions, const CSConditionState &effects);
 	virtual							~COperatorAbstract	();
-	virtual	void					Load				(LPCSTR section);
+	virtual	void					Load				(const char* section);
 	virtual void					setup				(bool *actuality);
 	IC		const CSConditionState	&conditions			() const;
 	IC		const CSConditionState	&effects			() const;

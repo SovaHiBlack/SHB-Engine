@@ -12,7 +12,7 @@ class CWeaponRG6 : public CRocketLauncher, public CWeaponShotgun
 public:
 	virtual			~CWeaponRG6				();
 	virtual BOOL	net_Spawn				(CSE_Abstract* DC);
-	virtual void	Load					(LPCSTR section);
+	virtual void	Load					(const char* section);
 	virtual void	OnEvent					(NET_Packet& P, u16 type);
 
 protected:

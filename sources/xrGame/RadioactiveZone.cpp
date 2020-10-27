@@ -15,7 +15,7 @@ CRadioactiveZone::CRadioactiveZone(void)
 CRadioactiveZone::~CRadioactiveZone(void) 
 {}
 
-void CRadioactiveZone::Load(LPCSTR section) 
+void CRadioactiveZone::Load(const char* section)
 {
 	inherited::Load(section);
 }

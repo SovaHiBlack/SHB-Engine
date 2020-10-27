@@ -20,7 +20,7 @@
 #ifndef XRGAME_EXPORTS
 #	include "bone.h"
 //#	include "defines.h"
-	LPCSTR GAME_CONFIG = "game.ltx";
+const char* GAME_CONFIG = "game.ltx";
 #else
 #	include "..\ENGINE\bone.h"
 #	include "..\ENGINE\render.h"
@@ -44,7 +44,7 @@ struct story_name_predicate {
 	}
 };
 
-void CSE_ALifeTraderAbstract::FillProps	(LPCSTR pref, PropItemVec& items)
+void CSE_ALifeTraderAbstract::FillProps	(const char* pref, PropItemVec& items)
 {
 	PHelper().CreateU32			(items, PrepareKey(pref,*base()->s_name,"Money"), 	&m_dwMoney,	0, u32(-1));
 	PHelper().CreateFlag32		(items,	PrepareKey(pref,*base()->s_name,"Trader\\Infinite ammo"),&m_trader_flags, eTraderFlagInfiniteAmmo);
@@ -53,7 +53,7 @@ void CSE_ALifeTraderAbstract::FillProps	(LPCSTR pref, PropItemVec& items)
 ////////////////////////////////////////////////////////////////////////////
 // CSE_ALifeGraphPoint
 ////////////////////////////////////////////////////////////////////////////
-CSE_ALifeGraphPoint::CSE_ALifeGraphPoint	(LPCSTR caSection) : CSE_Abstract(caSection)
+CSE_ALifeGraphPoint::CSE_ALifeGraphPoint	(const char* caSection) : CSE_Abstract(caSection)
 {
 	s_gameid					= GAME_DUMMY;
 	m_tLocations[0]				= 0;
@@ -93,13 +93,13 @@ void CSE_ALifeGraphPoint::UPDATE_Read		(NET_Packet	&tNetPacket)
 void CSE_ALifeGraphPoint::UPDATE_Write		(NET_Packet	&tNetPacket)
 { }
 
-void CSE_ALifeGraphPoint::FillProps			(LPCSTR pref, PropItemVec& items)
+void CSE_ALifeGraphPoint::FillProps			(const char* pref, PropItemVec& items)
 { }
 
 ////////////////////////////////////////////////////////////////////////////
 // CSE_ALifeObject
 ////////////////////////////////////////////////////////////////////////////
-CSE_ALifeObject::CSE_ALifeObject			(LPCSTR caSection) : CSE_Abstract(caSection)
+CSE_ALifeObject::CSE_ALifeObject			(const char* caSection) : CSE_Abstract(caSection)
 {
 	m_bOnline					= false;
 	m_fDistance					= 0.0f;
@@ -235,7 +235,7 @@ void CSE_ALifeObject::UPDATE_Read			(NET_Packet &tNetPacket)
 {
 };
 
-void CSE_ALifeObject::FillProps				(LPCSTR pref, PropItemVec& items)
+void CSE_ALifeObject::FillProps				(const char* pref, PropItemVec& items)
 {
 	inherited::FillProps		(pref, 	items);
 	PHelper().CreateRText		(items,	PrepareKey(pref,*s_name,"Custom data"),&m_ini_string);
@@ -325,7 +325,7 @@ void CSE_ALifeObject::interactive			(bool value)
 ////////////////////////////////////////////////////////////////////////////
 // CSE_ALifeGroupAbstract
 ////////////////////////////////////////////////////////////////////////////
-CSE_ALifeGroupAbstract::CSE_ALifeGroupAbstract(LPCSTR caSection)
+CSE_ALifeGroupAbstract::CSE_ALifeGroupAbstract(const char* caSection)
 {
 	m_tpMembers.clear			();
 	m_bCreateSpawnPositions		= true;
@@ -372,7 +372,7 @@ void CSE_ALifeGroupAbstract::UPDATE_Write	(NET_Packet	&tNetPacket)
 	tNetPacket.w_u32			(m_bCreateSpawnPositions);
 };
 
-void CSE_ALifeGroupAbstract::FillProps		(LPCSTR pref, PropItemVec& items)
+void CSE_ALifeGroupAbstract::FillProps		(const char* pref, PropItemVec& items)
 {
 	PHelper().CreateU16			(items,	PrepareKey(pref, "ALife\\Count"),			&m_wCount,			0,0xff);
 };	
@@ -381,7 +381,7 @@ void CSE_ALifeGroupAbstract::FillProps		(LPCSTR pref, PropItemVec& items)
 // CSE_ALifeDynamicObject
 ////////////////////////////////////////////////////////////////////////////
 
-CSE_ALifeDynamicObject::CSE_ALifeDynamicObject(LPCSTR caSection) : CSE_ALifeObject(caSection)
+CSE_ALifeDynamicObject::CSE_ALifeDynamicObject(const char* caSection) : CSE_ALifeObject(caSection)
 {
 	m_tTimeID					= 0;
 	m_switch_counter			= u64(-1);
@@ -411,7 +411,7 @@ void CSE_ALifeDynamicObject::UPDATE_Read	(NET_Packet &tNetPacket)
 	inherited::UPDATE_Read		(tNetPacket);
 };
 
-void CSE_ALifeDynamicObject::FillProps	(LPCSTR pref, PropItemVec& values)
+void CSE_ALifeDynamicObject::FillProps	(const char* pref, PropItemVec& values)
 {
 	inherited::FillProps			(pref,values);
 }
@@ -419,7 +419,7 @@ void CSE_ALifeDynamicObject::FillProps	(LPCSTR pref, PropItemVec& values)
 ////////////////////////////////////////////////////////////////////////////
 // CSE_ALifeDynamicObjectVisual
 ////////////////////////////////////////////////////////////////////////////
-CSE_ALifeDynamicObjectVisual::CSE_ALifeDynamicObjectVisual(LPCSTR caSection) : CSE_ALifeDynamicObject(caSection), CSE_Visual()
+CSE_ALifeDynamicObjectVisual::CSE_ALifeDynamicObjectVisual(const char* caSection) : CSE_ALifeDynamicObject(caSection), CSE_Visual()
 {
 	if (pSettings->line_exist(caSection,"visual"))
 		set_visual				(pSettings->r_string(caSection,"visual"));
@@ -457,7 +457,7 @@ void CSE_ALifeDynamicObjectVisual::UPDATE_Read(NET_Packet &tNetPacket)
 	inherited1::UPDATE_Read		(tNetPacket);
 };
 
-void CSE_ALifeDynamicObjectVisual::FillProps	(LPCSTR pref, PropItemVec& items)
+void CSE_ALifeDynamicObjectVisual::FillProps	(const char* pref, PropItemVec& items)
 {
 	inherited1::FillProps		(pref,items);
 	inherited2::FillProps		(pref,items);
@@ -466,7 +466,7 @@ void CSE_ALifeDynamicObjectVisual::FillProps	(LPCSTR pref, PropItemVec& items)
 ////////////////////////////////////////////////////////////////////////////
 // CSE_ALifePHSkeletonObject
 ////////////////////////////////////////////////////////////////////////////
-CSE_ALifePHSkeletonObject::CSE_ALifePHSkeletonObject(LPCSTR caSection) : CSE_ALifeDynamicObjectVisual(caSection),CSE_PHSkeleton(caSection)
+CSE_ALifePHSkeletonObject::CSE_ALifePHSkeletonObject(const char* caSection) : CSE_ALifeDynamicObjectVisual(caSection),CSE_PHSkeleton(caSection)
 {
 	m_flags.set					(flUseSwitches,FALSE);
 	m_flags.set					(flSwitchOffline,FALSE);
@@ -520,7 +520,7 @@ bool CSE_ALifePHSkeletonObject::used_ai_locations () const
 	return false;
 }
 
-void CSE_ALifePHSkeletonObject::FillProps(LPCSTR pref, PropItemVec& items)
+void CSE_ALifePHSkeletonObject::FillProps(const char* pref, PropItemVec& items)
 {
 	inherited1::FillProps			(pref,items);
 	inherited2::FillProps			(pref,items);
@@ -529,7 +529,7 @@ void CSE_ALifePHSkeletonObject::FillProps(LPCSTR pref, PropItemVec& items)
 ////////////////////////////////////////////////////////////////////////////
 // CSE_ALifeSpaceRestrictor
 ////////////////////////////////////////////////////////////////////////////
-CSE_ALifeSpaceRestrictor::CSE_ALifeSpaceRestrictor	(LPCSTR caSection) : CSE_ALifeDynamicObject(caSection)
+CSE_ALifeSpaceRestrictor::CSE_ALifeSpaceRestrictor	(const char* caSection) : CSE_ALifeDynamicObject(caSection)
 {
 	m_flags.set					(flUseSwitches,FALSE);
 	m_space_restrictor_type		= RestrictionSpace::eDefaultRestrictorTypeNone;
@@ -590,7 +590,7 @@ xr_token defaul_retrictor_types[]={
 	{ 0,							0}
 };
 
-void CSE_ALifeSpaceRestrictor::FillProps		(LPCSTR pref, PropItemVec& items)
+void CSE_ALifeSpaceRestrictor::FillProps		(const char* pref, PropItemVec& items)
 {
 	inherited1::FillProps		(pref,items);
 	PHelper().CreateToken8		(items, PrepareKey(pref,*s_name,"restrictor type"),		&m_space_restrictor_type,	defaul_retrictor_types);
@@ -600,7 +600,7 @@ void CSE_ALifeSpaceRestrictor::FillProps		(LPCSTR pref, PropItemVec& items)
 ////////////////////////////////////////////////////////////////////////////
 // CSE_ALifeLevelChanger
 ////////////////////////////////////////////////////////////////////////////
-CSE_ALifeLevelChanger::CSE_ALifeLevelChanger(LPCSTR caSection) : CSE_ALifeSpaceRestrictor(caSection)
+CSE_ALifeLevelChanger::CSE_ALifeLevelChanger(const char* caSection) : CSE_ALifeSpaceRestrictor(caSection)
 {
 	m_tNextGraphID				= GameGraph::_GRAPH_ID(-1);
 	m_dwNextNodeID				= u32(-1);
@@ -662,7 +662,7 @@ void CSE_ALifeLevelChanger::UPDATE_Write	(NET_Packet	&tNetPacket)
 	inherited::UPDATE_Write		(tNetPacket);
 }
 
-void CSE_ALifeLevelChanger::FillProps		(LPCSTR pref, PropItemVec& items)
+void CSE_ALifeLevelChanger::FillProps		(const char* pref, PropItemVec& items)
 {
 	inherited::FillProps		(pref,items);
 
@@ -674,7 +674,7 @@ void CSE_ALifeLevelChanger::FillProps		(LPCSTR pref, PropItemVec& items)
 ////////////////////////////////////////////////////////////////////////////
 // CSE_ALifeObjectPhysic
 ////////////////////////////////////////////////////////////////////////////
-CSE_ALifeObjectPhysic::CSE_ALifeObjectPhysic(LPCSTR caSection) : CSE_ALifeDynamicObjectVisual(caSection),CSE_PHSkeleton(caSection)
+CSE_ALifeObjectPhysic::CSE_ALifeObjectPhysic(const char* caSection) : CSE_ALifeDynamicObjectVisual(caSection),CSE_PHSkeleton(caSection)
 {
 	type 						= epotSkeleton;
 	mass 						= 10.f;
@@ -772,7 +772,7 @@ xr_token po_types[]={
 	{ 0,				0				}
 };
 
-void CSE_ALifeObjectPhysic::FillProps		(LPCSTR pref, PropItemVec& values) 
+void CSE_ALifeObjectPhysic::FillProps		(const char* pref, PropItemVec& values)
 {
 	inherited1::FillProps		(pref,	 values);
 	inherited2::FillProps		(pref,	 values);
@@ -798,7 +798,7 @@ bool CSE_ALifeObjectPhysic::can_save			() const
 ////////////////////////////////////////////////////////////////////////////
 // CSE_ALifeObjectHangingLamp
 ////////////////////////////////////////////////////////////////////////////
-CSE_ALifeObjectHangingLamp::CSE_ALifeObjectHangingLamp(LPCSTR caSection) : CSE_ALifeDynamicObjectVisual(caSection),CSE_PHSkeleton(caSection)
+CSE_ALifeObjectHangingLamp::CSE_ALifeObjectHangingLamp(const char* caSection) : CSE_ALifeDynamicObjectVisual(caSection),CSE_PHSkeleton(caSection)
 {
 	flags.assign				(flTypeSpot|flR1|flR2);
 
@@ -945,7 +945,7 @@ void CSE_ALifeObjectHangingLamp::OnChangeFlag(PropValue* sender)
 	set_editor_flag				(flUpdateProperties);
 }
 
-void CSE_ALifeObjectHangingLamp::FillProps	(LPCSTR pref, PropItemVec& values)
+void CSE_ALifeObjectHangingLamp::FillProps	(const char* pref, PropItemVec& values)
 {
 	inherited1::FillProps		(pref,values);
 	inherited2::FillProps		(pref,values);
@@ -1045,7 +1045,7 @@ bool CSE_ALifeObjectHangingLamp::match_configuration() const
 // CSE_ALifeObjectSearchlight
 ////////////////////////////////////////////////////////////////////////////
 
-CSE_ALifeObjectProjector::CSE_ALifeObjectProjector(LPCSTR caSection) : CSE_ALifeDynamicObjectVisual(caSection)
+CSE_ALifeObjectProjector::CSE_ALifeObjectProjector(const char* caSection) : CSE_ALifeDynamicObjectVisual(caSection)
 {
 	m_flags.set					(flUseSwitches,FALSE);
 	m_flags.set					(flSwitchOffline,FALSE);
@@ -1075,7 +1075,7 @@ void CSE_ALifeObjectProjector::UPDATE_Write(NET_Packet	&tNetPacket)
 	inherited::UPDATE_Write		(tNetPacket);
 }
 
-void CSE_ALifeObjectProjector::FillProps			(LPCSTR pref, PropItemVec& values)
+void CSE_ALifeObjectProjector::FillProps			(const char* pref, PropItemVec& values)
 {
 	inherited::FillProps			(pref,	 values);
 }
@@ -1089,7 +1089,7 @@ bool CSE_ALifeObjectProjector::used_ai_locations() const
 // CSE_ALifeSchedulable
 ////////////////////////////////////////////////////////////////////////////
 
-CSE_ALifeSchedulable::CSE_ALifeSchedulable	(LPCSTR caSection)
+CSE_ALifeSchedulable::CSE_ALifeSchedulable	(const char* caSection)
 {
 	m_tpCurrentBestWeapon		= 0;
 	m_tpBestDetector			= 0;
@@ -1142,7 +1142,7 @@ u32	 CSE_ALifeSchedulable::ef_detector_type	() const
 // CSE_ALifeHelicopter
 ////////////////////////////////////////////////////////////////////////////
 
-CSE_ALifeHelicopter::CSE_ALifeHelicopter	(LPCSTR caSection) : CSE_ALifeDynamicObjectVisual(caSection), CSE_Motion(),CSE_PHSkeleton(caSection)
+CSE_ALifeHelicopter::CSE_ALifeHelicopter	(const char* caSection) : CSE_ALifeDynamicObjectVisual(caSection), CSE_Motion(),CSE_PHSkeleton(caSection)
 {
 	m_flags.set					(flUseSwitches,		FALSE);
 	m_flags.set					(flSwitchOffline,	FALSE);
@@ -1201,7 +1201,7 @@ bool CSE_ALifeHelicopter::can_save() const
 	return						CSE_PHSkeleton::need_save();
 }
 
-void CSE_ALifeHelicopter::FillProps(LPCSTR pref, PropItemVec& values)
+void CSE_ALifeHelicopter::FillProps(const char* pref, PropItemVec& values)
 {
 	inherited1::FillProps		(pref,	values);
 	inherited2::FillProps		(pref,	values);
@@ -1218,7 +1218,7 @@ bool CSE_ALifeHelicopter::used_ai_locations	() const
 ////////////////////////////////////////////////////////////////////////////
 // CSE_ALifeCar
 ////////////////////////////////////////////////////////////////////////////
-CSE_ALifeCar::CSE_ALifeCar				(LPCSTR caSection) : CSE_ALifeDynamicObjectVisual(caSection),CSE_PHSkeleton(caSection)
+CSE_ALifeCar::CSE_ALifeCar				(const char* caSection) : CSE_ALifeDynamicObjectVisual(caSection),CSE_PHSkeleton(caSection)
 {
 
 	if (pSettings->section_exist(caSection) && pSettings->line_exist(caSection,"visual"))
@@ -1350,7 +1350,7 @@ void CSE_ALifeCar::SWheelState::write(NET_Packet& P)
 	P.w_float(health);
 }
 
-void CSE_ALifeCar::FillProps				(LPCSTR pref, PropItemVec& values)
+void CSE_ALifeCar::FillProps				(const char* pref, PropItemVec& values)
 {
   	inherited1::FillProps			(pref,values);
 	inherited2::FillProps			(pref,values);
@@ -1360,7 +1360,7 @@ void CSE_ALifeCar::FillProps				(LPCSTR pref, PropItemVec& values)
 ////////////////////////////////////////////////////////////////////////////
 // CSE_ALifeObjectBreakable
 ////////////////////////////////////////////////////////////////////////////
-CSE_ALifeObjectBreakable::CSE_ALifeObjectBreakable	(LPCSTR caSection) : CSE_ALifeDynamicObjectVisual(caSection)
+CSE_ALifeObjectBreakable::CSE_ALifeObjectBreakable	(const char* caSection) : CSE_ALifeDynamicObjectVisual(caSection)
 {
 	m_health					= 1.f;
 	m_flags.set					(flUseSwitches,FALSE);
@@ -1393,7 +1393,7 @@ void CSE_ALifeObjectBreakable::UPDATE_Write	(NET_Packet	&tNetPacket)
 	inherited::UPDATE_Write		(tNetPacket);
 }
 
-void CSE_ALifeObjectBreakable::FillProps		(LPCSTR pref, PropItemVec& values)
+void CSE_ALifeObjectBreakable::FillProps		(const char* pref, PropItemVec& values)
 {
   	inherited::FillProps			(pref,values);
 	PHelper().CreateFloat		(values, PrepareKey(pref,*s_name,"Health"),			&m_health,			0.f, 100.f);
@@ -1412,7 +1412,7 @@ bool CSE_ALifeObjectBreakable::can_switch_offline	() const
 ////////////////////////////////////////////////////////////////////////////
 // CSE_ALifeObjectClimable
 ////////////////////////////////////////////////////////////////////////////
-CSE_ALifeObjectClimable::CSE_ALifeObjectClimable	(LPCSTR caSection) : CSE_Shape(), CSE_ALifeDynamicObject(caSection)
+CSE_ALifeObjectClimable::CSE_ALifeObjectClimable	(const char* caSection) : CSE_Shape(), CSE_ALifeDynamicObject(caSection)
 {
 	//m_health					= 100.f;
 	//m_flags.set					(flUseSwitches,FALSE);
@@ -1458,7 +1458,7 @@ void CSE_ALifeObjectClimable::UPDATE_Write	(NET_Packet	&tNetPacket)
 	//inherited2::UPDATE_Write		(tNetPacket);
 }
 
-void CSE_ALifeObjectClimable::FillProps		(LPCSTR pref, PropItemVec& values)
+void CSE_ALifeObjectClimable::FillProps		(const char* pref, PropItemVec& values)
 {
 	//inherited1::FillProps			(pref,values);
 	inherited2::FillProps			(pref,values);
@@ -1478,13 +1478,11 @@ bool CSE_ALifeObjectClimable::can_switch_offline	() const
 ////////////////////////////////////////////////////////////////////////////
 // CSE_ALifeMountedWeapon
 ////////////////////////////////////////////////////////////////////////////
-CSE_ALifeMountedWeapon::CSE_ALifeMountedWeapon	(LPCSTR caSection) : CSE_ALifeDynamicObjectVisual(caSection)
-{             
-}
+CSE_ALifeMountedWeapon::CSE_ALifeMountedWeapon	(const char* caSection) : CSE_ALifeDynamicObjectVisual(caSection)
+{ }
 
 CSE_ALifeMountedWeapon::~CSE_ALifeMountedWeapon	()
-{
-}
+{ }
 
 void CSE_ALifeMountedWeapon::STATE_Read			(NET_Packet	&tNetPacket, u16 size)
 {
@@ -1506,13 +1504,13 @@ void CSE_ALifeMountedWeapon::UPDATE_Write		(NET_Packet	&tNetPacket)
 	inherited::UPDATE_Write		(tNetPacket);
 }
 
-void CSE_ALifeMountedWeapon::FillProps			(LPCSTR pref, PropItemVec& values)
+void CSE_ALifeMountedWeapon::FillProps			(const char* pref, PropItemVec& values)
 {
 	inherited::FillProps			(pref,values);
 }
 
 
-CSE_ALifeStationaryMgun::CSE_ALifeStationaryMgun	(LPCSTR caSection) : CSE_ALifeDynamicObjectVisual(caSection)
+CSE_ALifeStationaryMgun::CSE_ALifeStationaryMgun	(const char* caSection) : CSE_ALifeDynamicObjectVisual(caSection)
 {}
 
 CSE_ALifeStationaryMgun::~CSE_ALifeStationaryMgun	()
@@ -1543,7 +1541,7 @@ void CSE_ALifeStationaryMgun::STATE_Write		(NET_Packet	&tNetPacket)
 	inherited::STATE_Write		(tNetPacket);
 }
 
-void CSE_ALifeStationaryMgun::FillProps			(LPCSTR pref, PropItemVec& values)
+void CSE_ALifeStationaryMgun::FillProps			(const char* pref, PropItemVec& values)
 {
 	inherited::FillProps			(pref,values);
 }
@@ -1551,7 +1549,7 @@ void CSE_ALifeStationaryMgun::FillProps			(LPCSTR pref, PropItemVec& values)
 ////////////////////////////////////////////////////////////////////////////
 // CSE_ALifeTeamBaseZone
 ////////////////////////////////////////////////////////////////////////////
-CSE_ALifeTeamBaseZone::CSE_ALifeTeamBaseZone(LPCSTR caSection) : CSE_ALifeSpaceRestrictor(caSection)
+CSE_ALifeTeamBaseZone::CSE_ALifeTeamBaseZone(const char* caSection) : CSE_ALifeSpaceRestrictor(caSection)
 {
 	m_team						= 0;
 }
@@ -1582,7 +1580,7 @@ void CSE_ALifeTeamBaseZone::UPDATE_Write	(NET_Packet	&tNetPacket)
 	inherited::UPDATE_Write		(tNetPacket);
 }
 
-void CSE_ALifeTeamBaseZone::FillProps		(LPCSTR pref, PropItemVec& items)
+void CSE_ALifeTeamBaseZone::FillProps		(const char* pref, PropItemVec& items)
 {
 	inherited::FillProps		(pref,items);
 	PHelper().CreateU8			(items, PrepareKey(pref,*s_name,"team"),			&m_team,			0, 16);
@@ -1592,7 +1590,7 @@ void CSE_ALifeTeamBaseZone::FillProps		(LPCSTR pref, PropItemVec& items)
 // CSE_ALifeSmartZone
 ////////////////////////////////////////////////////////////////////////////
 
-CSE_ALifeSmartZone::CSE_ALifeSmartZone	(LPCSTR caSection) : CSE_ALifeSpaceRestrictor(caSection), CSE_ALifeSchedulable(caSection)
+CSE_ALifeSmartZone::CSE_ALifeSmartZone	(const char* caSection) : CSE_ALifeSpaceRestrictor(caSection), CSE_ALifeSchedulable(caSection)
 {
 }
 
@@ -1637,7 +1635,7 @@ void CSE_ALifeSmartZone::UPDATE_Write	(NET_Packet	&tNetPacket)
 	inherited1::UPDATE_Write	(tNetPacket);
 }
 
-void CSE_ALifeSmartZone::FillProps		(LPCSTR pref, PropItemVec& items)
+void CSE_ALifeSmartZone::FillProps		(const char* pref, PropItemVec& items)
 {
 	inherited1::FillProps		(pref,items);
 }

@@ -58,7 +58,7 @@ CUIStatic::~ CUIStatic()
 	xr_delete(m_pLines);
 }
 
-void CUIStatic::SetXformLightAnim(LPCSTR lanim, bool bCyclic)
+void CUIStatic::SetXformLightAnim(const char* lanim, bool bCyclic)
 {
 	if(lanim && lanim[0]!=0)
 		m_lanim_xform.m_lanim	= LALib.FindItem(lanim);
@@ -70,7 +70,7 @@ void CUIStatic::SetXformLightAnim(LPCSTR lanim, bool bCyclic)
 	m_lanim_xform.m_lanimFlags.set		(LA_CYCLIC,			bCyclic);
 }
 
-void CUIStatic::SetClrLightAnim(LPCSTR lanim, bool bCyclic, bool bOnlyAlpha, bool bTextColor, bool bTextureColor)
+void CUIStatic::SetClrLightAnim(const char* lanim, bool bCyclic, bool bOnlyAlpha, bool bTextColor, bool bTextureColor)
 {
 	if(lanim && lanim[0]!=0)
 		m_lanim_clr.m_lanim	= LALib.FindItem(lanim);
@@ -85,13 +85,13 @@ void CUIStatic::SetClrLightAnim(LPCSTR lanim, bool bCyclic, bool bOnlyAlpha, boo
 	m_lanim_clr.m_lanimFlags.set		(LA_TEXTURECOLOR,	bTextureColor);
 }
 
-void CUIStatic::Init(LPCSTR tex_name, float x, float y, float width, float height)
+void CUIStatic::Init(const char* tex_name, float x, float y, float width, float height)
 {
 	Init(x, y, width, height);
 	InitTexture(tex_name);
 }
 
-void CUIStatic::InitEx(LPCSTR tex_name, LPCSTR sh_name, float x, float y, float width, float height)
+void CUIStatic::InitEx(const char* tex_name, const char* sh_name, float x, float y, float width, float height)
 {
 	Init(x, y, width, height);
 	InitTextureEx(tex_name, sh_name);	
@@ -102,7 +102,7 @@ void CUIStatic::Init(float x, float y, float width, float height){
 	m_xxxRect.set(x,y,x+width,y+height);
 }
 
-void CUIStatic::InitTexture(LPCSTR texture){
+void CUIStatic::InitTexture(const char* texture){
 	InitTextureEx(texture);
 }
 
@@ -123,7 +123,7 @@ u32 CUIStatic::GetTextureColor() const{
 	return m_UIStaticItem.GetColor();
 }
 
-void CUIStatic::InitTextureEx(LPCSTR tex_name, LPCSTR sh_name)
+void CUIStatic::InitTextureEx(const char* tex_name, const char* sh_name)
 {
 
 	string_path buff;
@@ -410,7 +410,7 @@ void  CUIStatic::SetShader(const ref_shader& sh)
 	m_bAvailableTexture = true;
 }
 
-LPCSTR CUIStatic::GetText(){
+const char* CUIStatic::GetText(){
 	static const char empty = 0;
 	if (m_pLines)
 		return m_pLines->GetText();
@@ -432,7 +432,7 @@ u32& CUIStatic::GetTextColorRef(){
 	return m_pLines->GetTextColorRef();
 }
 
-void CUIStatic::SetText(LPCSTR str)
+void CUIStatic::SetText(const char* str)
 {
 	if (!str ) 
 		return;
@@ -597,7 +597,7 @@ void CUIStatic::RescaleRelative2Rect(const Frect& r){
 	SetWndRect(my_r);
 }
 
-void CUIStatic::SetTextST				(LPCSTR str_id)
+void CUIStatic::SetTextST				(const char* str_id)
 {
 	SetText					(*CStringTable().translate(str_id));
 }

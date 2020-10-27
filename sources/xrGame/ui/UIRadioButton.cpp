@@ -20,7 +20,7 @@ void CUIRadioButton::Init(float x, float y, float width, float height)
 	m_pLines->Init(x, y, width, m_background.GetE( )->GetStaticItem( )->GetRect( ).height( ));
 }
 
-void CUIRadioButton::InitTexture(LPCSTR tex_name)
+void CUIRadioButton::InitTexture(const char* tex_name)
 {
 	// do nothing
 }

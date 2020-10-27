@@ -35,7 +35,7 @@ public:
 	virtual void	OnStateSwitch				(EZoneState new_state);
 	virtual	BOOL	feel_touch_contact			(CObject* O);
 	virtual void	feel_touch_new				(CObject* O);
-	virtual void	Load						(LPCSTR section);
+	virtual void	Load						(const char* section);
 	virtual bool	BlowoutState				();
 	virtual void	AffectPullDead				(CPhysicsShellHolder* GO,const Fvector& throw_in_dir,float dist){}
 	virtual void	AffectPullAlife				(CEntityAlive* EA,const Fvector& throw_in_dir,float dist);

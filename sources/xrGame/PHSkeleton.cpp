@@ -133,7 +133,7 @@ bool CPHSkeleton::Spawn(CSE_Abstract *D)
 	return false;
 }
 
-void CPHSkeleton::Load(LPCSTR section)
+void CPHSkeleton::Load(const char* section)
 {
 		existence_time= pSettings->r_u32(section,"remove_time")*1000;
 }

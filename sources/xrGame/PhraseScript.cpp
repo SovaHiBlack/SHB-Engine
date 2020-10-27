@@ -33,14 +33,13 @@ void CPhraseScript::Load		(CUIXml* uiXml, XML_NODE* phrase_node)
 }
 
 template<class T> 
-void  CPhraseScript::LoadSequence (CUIXml* uiXml, XML_NODE* phrase_node, 
-								  LPCSTR tag, T&  str_vector)
+void  CPhraseScript::LoadSequence (CUIXml* uiXml, XML_NODE* phrase_node, const char* tag, T&  str_vector)
 {
 	int tag_num = uiXml->GetNodesNum(phrase_node, tag);
 	str_vector.clear();
 	for(int i=0; i<tag_num; i++)
 	{
-		LPCSTR tag_text = uiXml->Read(phrase_node, tag, i, NULL);
+		const char* tag_text = uiXml->Read(phrase_node, tag, i, NULL);
 		str_vector.push_back(tag_text);
 	}
 }
@@ -99,7 +98,7 @@ void  CPhraseScript::TransferInfo	(const CInventoryOwner* pOwner) const
 		Actor()->TransferInfo(m_DisableInfo[i], false);
 }
 
-bool CPhraseScript::Precondition(const CGameObject* pSpeakerGO, LPCSTR dialog_id, LPCSTR phrase_id) const 
+bool CPhraseScript::Precondition(const CGameObject* pSpeakerGO, const char* dialog_id, const char* phrase_id) const
 {
 	bool predicate_result = true;
 
@@ -130,9 +129,8 @@ bool CPhraseScript::Precondition(const CGameObject* pSpeakerGO, LPCSTR dialog_id
 	return predicate_result;
 }
 
-void CPhraseScript::Action(const CGameObject* pSpeakerGO, LPCSTR dialog_id, LPCSTR phrase_id) const 
+void CPhraseScript::Action(const CGameObject* pSpeakerGO, const char* dialog_id, const char* phrase_id) const
 {
-
 	for(u32 i = 0; i<Actions().size(); ++i)
 	{
 		luabind::functor<void>	lua_function;
@@ -141,14 +139,15 @@ void CPhraseScript::Action(const CGameObject* pSpeakerGO, LPCSTR dialog_id, LPCS
 		THROW3(functor_exists, "Cannot find phrase dialog script function", *Actions()[i]);
 		lua_function		(pSpeakerGO->lua_game_object(), dialog_id);
 	}
+
 	TransferInfo(smart_cast<const CInventoryOwner*>(pSpeakerGO));
 }
 
 bool CPhraseScript::Precondition	(	const CGameObject* pSpeakerGO1, 
 										const CGameObject* pSpeakerGO2, 
-										LPCSTR dialog_id, 
-										LPCSTR phrase_id,
-										LPCSTR next_phrase_id) const 
+									 const char* dialog_id,
+									 const char* phrase_id,
+									 const char* next_phrase_id) const
 {
 	bool predicate_result = true;
 
@@ -178,7 +177,7 @@ bool CPhraseScript::Precondition	(	const CGameObject* pSpeakerGO1,
 	return predicate_result;
 }
 
-void CPhraseScript::Action(const CGameObject* pSpeakerGO1, const CGameObject* pSpeakerGO2, LPCSTR dialog_id, LPCSTR phrase_id) const 
+void CPhraseScript::Action(const CGameObject* pSpeakerGO1, const CGameObject* pSpeakerGO2, const char* dialog_id, const char* phrase_id) const
 {
 	TransferInfo(smart_cast<const CInventoryOwner*>(pSpeakerGO1));
 

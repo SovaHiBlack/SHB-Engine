@@ -23,7 +23,7 @@ void CUITextureMaster::WriteLog( )
 
 }
 
-void CUITextureMaster::ParseShTexInfo(LPCSTR xml_file)
+void CUITextureMaster::ParseShTexInfo(const char* xml_file)
 {
 	CUIXml xml;
 	xml.Init("$game_config$", "ui", xml_file);

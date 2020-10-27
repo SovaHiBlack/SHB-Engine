@@ -21,7 +21,7 @@ protected:
 	bool				m_equality;
 
 public:
-						CPropertyEvaluatorMember(CPropertyStorage *storage, _condition_type condition_id, _value_type value, bool equality = true, LPCSTR evaluator_name = "");
+						CPropertyEvaluatorMember(CPropertyStorage *storage, _condition_type condition_id, _value_type value, bool equality = true, const char* evaluator_name = "");
 	virtual void		setup					(_object_type *object, CPropertyStorage *storage);
 	virtual _value_type	evaluate				();
 };

@@ -20,12 +20,11 @@ void CUIMessageBoxEx::Init(LPCSTR xml_template){
 	m_pMessageBox->Init(xml_template);
 }
 
-void CUIMessageBoxEx::SetText(LPCSTR text){
+void CUIMessageBoxEx::SetText(const char* text){
 	m_pMessageBox->SetText(text);
-
 }
 
-LPCSTR CUIMessageBoxEx::GetText ()
+const char* CUIMessageBoxEx::GetText ()
 {
 	return m_pMessageBox->GetText();
 }
@@ -52,10 +51,10 @@ void CUIMessageBoxEx::SendMessage(CUIWindow* pWnd, s16 msg, void* pData){
 	
 }
 
-LPCSTR CUIMessageBoxEx::GetHost(){
+const char* CUIMessageBoxEx::GetHost(){
 	return m_pMessageBox->GetHost();
 }
 
-LPCSTR CUIMessageBoxEx::GetPassword(){
+const char* CUIMessageBoxEx::GetPassword(){
 	return m_pMessageBox->GetPassword();
 }

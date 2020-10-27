@@ -15,13 +15,13 @@ protected:
 	shared_str									m_script_clsid;
 
 public:
-	IC											CObjectItemAbstract	(const CLASS_ID &clsid, LPCSTR script_clsid);
+	IC											CObjectItemAbstract	(const CLASS_ID &clsid, const char* script_clsid);
 	IC		const CLASS_ID						&clsid				() const;
 	IC		shared_str							script_clsid		() const;
 #ifndef NO_XR_GAME
 	virtual ObjectFactory::CLIENT_BASE_CLASS	*client_object		() const = 0;
 #endif
-	virtual ObjectFactory::SERVER_BASE_CLASS	*server_object		(LPCSTR section) const = 0;
+	virtual ObjectFactory::SERVER_BASE_CLASS	*server_object		(const char* section) const = 0;
 };
 
 #include "ObjectItemAbstract_inline.h"

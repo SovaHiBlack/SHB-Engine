@@ -27,7 +27,7 @@ CWeaponKnife::~CWeaponKnife()
 	HUD_SOUND::DestroySound(m_sndShot);
 }
 
-void CWeaponKnife::Load	(LPCSTR section)
+void CWeaponKnife::Load	(const char* section)
 {
 	// verify class
 	inherited::Load		(section);
@@ -241,7 +241,7 @@ bool CWeaponKnife::Action(int cmd, u32 flags)
 	return false;
 }
 
-void CWeaponKnife::LoadFireParams(LPCSTR section, LPCSTR prefix)
+void CWeaponKnife::LoadFireParams(const char* section, const char* prefix)
 {
 	inherited::LoadFireParams(section, prefix);
 

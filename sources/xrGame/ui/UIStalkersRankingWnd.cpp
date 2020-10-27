@@ -223,7 +223,7 @@ CUIStalkerRankingInfoItem::CUIStalkerRankingInfoItem(CUIStalkersRankingWnd* w)
 :m_StalkersRankingWnd(w),m_humanID(u16(-1))
 { }
 
-void CUIStalkerRankingInfoItem::Init	(CUIXml* xml, LPCSTR path, int idx)
+void CUIStalkerRankingInfoItem::Init	(CUIXml* xml, const char* path, int idx)
 {
 	XML_NODE* _stored_root					= xml->GetLocalRoot();
 

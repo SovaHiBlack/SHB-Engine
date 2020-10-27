@@ -35,10 +35,9 @@ CUIStaticItem::CUIStaticItem()
 }
 
 CUIStaticItem::~CUIStaticItem()
-{
-}
+{ }
 
-void CUIStaticItem::CreateShader(LPCSTR tex, LPCSTR sh)
+void CUIStaticItem::CreateShader(const char* tex, const char* sh)
 {
 	hShader.create(sh,tex);
 
@@ -53,7 +52,7 @@ void CUIStaticItem::SetShader(const ref_shader& sh)
 	hShader = sh;
 }
 
-void CUIStaticItem::Init(LPCSTR tex, LPCSTR sh, float left, float top, u32 align)
+void CUIStaticItem::Init(const char* tex, const char* sh, float left, float top, u32 align)
 {
 	uFlags &= !flValidRect;
 

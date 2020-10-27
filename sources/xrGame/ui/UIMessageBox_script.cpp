@@ -29,7 +29,7 @@ void CUIMessageBox::script_register(lua_State *L)
 ///			value("STYLE_YES_NO",				int(CUIMessageBox::MESSAGEBOX_YES_NO)),
 //			value("STYLE_YES_NO_CANCEL",		int(CUIMessageBox::MESSAGEBOX_YES_NO_CANCEL))
 //		]
-//		.def("SetText",					(void(CUIMessageBox::*)(LPCSTR))&CUIMessageBox::SetText)
+//		.def("SetText",					(void(CUIMessageBox::*)(const char*))&CUIMessageBox::SetText)
 //		.def("Show",					(void(CUIMessageBox::*)(void))&CUIMessageBox::Show)
 //		.def("Hide",					&CUIMessageBox::Hide)
 //		.def("AutoCenter",				&CUIMessageBox::AutoCenter)

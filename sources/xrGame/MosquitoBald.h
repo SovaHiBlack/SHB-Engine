@@ -12,7 +12,7 @@ public:
 	CMosquitoBald(void);
 	virtual ~CMosquitoBald(void);
 
-	virtual void Load(LPCSTR section);
+	virtual void Load(const char* section);
 	virtual void Postprocess(float val);
 	virtual bool EnableEffector() {return true;}
 

@@ -22,11 +22,11 @@ static const float SQUARE_SOUND_EFFECT_DIST = SOUND_EFFECT_DIST * SOUND_EFFECT_D
 
 class CPHParticlesPlayCall : public CPHAction
 {
-	LPCSTR ps_name;
+	const char* ps_name;
 	dContactGeom c;
 
 public:
-	CPHParticlesPlayCall(const dContactGeom& contact, bool invert_n, LPCSTR psn)
+	CPHParticlesPlayCall(const dContactGeom& contact, bool invert_n, const char* psn)
 	{
 		ps_name = psn;
 		c = contact;
@@ -152,7 +152,7 @@ void TContactShotMark(CDB::TRI* T, dContactGeom* c)
 			{
 				if (vel_cret > Pars::vel_cret_particles && !mtl_pair->CollideParticles.empty( ))
 				{
-					LPCSTR ps_name = *mtl_pair->CollideParticles[::Random.randI(0, mtl_pair->CollideParticles.size( ))];
+					const char* ps_name = *mtl_pair->CollideParticles[::Random.randI(0, mtl_pair->CollideParticles.size( ))];
 					//отыграть партиклы столкновения материалов
 					Level( ).ph_commander( ).add_call(xr_new<CPHOnesCondition>( ), xr_new<CPHParticlesPlayCall>(*c, b_invert_normal, ps_name));
 				}

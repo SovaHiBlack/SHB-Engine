@@ -19,7 +19,7 @@ CPhrase::CPhrase( )
 CPhrase::~CPhrase( )
 { }
 
-LPCSTR CPhrase::GetText( ) const
+const char* CPhrase::GetText( ) const
 {
 	return m_text.c_str( );
 }

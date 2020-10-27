@@ -13,9 +13,9 @@ public:
 	virtual ~CUIMoneyIndicator();
 	virtual void Update();
 			void InitFromXML(CUIXml& xml_doc);
-			void SetMoneyAmount(LPCSTR money);
-			void SetMoneyChange(LPCSTR money);
-			//void SetMoneyBonus(LPCSTR money);
+			void SetMoneyAmount(const char* money);
+			void SetMoneyChange(const char* money);
+			//void SetMoneyBonus(const char* money);
 
 protected:
 	CUIStatic	m_back;

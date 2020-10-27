@@ -13,7 +13,7 @@ void CUIVideoPlayerWnd::SendMessage(CUIWindow* pWnd, s16 msg, void* pData)
 	CUIWndCallback::OnEvent(pWnd, msg, pData);
 }
 
-void CUIVideoPlayerWnd::Init	(LPCSTR file_name)
+void CUIVideoPlayerWnd::Init	(const char* file_name)
 {
 	CUIXml uiXml;
 	bool xml_result					= uiXml.Init("$game_config$", "ui", "video_templ.xml");
@@ -22,7 +22,7 @@ void CUIVideoPlayerWnd::Init	(LPCSTR file_name)
 	SetFile							(file_name);
 }
 
-void CUIVideoPlayerWnd::Init			(CUIXml* doc, LPCSTR start_from)
+void CUIVideoPlayerWnd::Init			(CUIXml* doc, const char* start_from)
 {
 	m_flags.zero					();
 	CUIXmlInit						xml_init;
@@ -54,7 +54,7 @@ void CUIVideoPlayerWnd::Init			(CUIXml* doc, LPCSTR start_from)
 	Hide							();
 }
 
-void CUIVideoPlayerWnd::SetFile		(LPCSTR fn)
+void CUIVideoPlayerWnd::SetFile		(const char* fn)
 {
 	m_fn = fn;
 	if(fn && fn[0]){

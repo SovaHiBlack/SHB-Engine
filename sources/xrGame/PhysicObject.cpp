@@ -96,38 +96,34 @@ void CPhysicObject::CreateSkeleton(CSE_ALifeObjectPhysic* po)
 {
 	if(m_pPhysicsShell) return;
 	if(!Visual()) return;
-	LPCSTR	fixed_bones=*po->fixed_bones;
+	const char* fixed_bones=*po->fixed_bones;
 	m_pPhysicsShell=P_build_Shell(this,!po->_flags.test(CSE_PHSkeleton::flActive),fixed_bones);
 	ApplySpawnIniToPhysicShell(&po->spawn_ini(),m_pPhysicsShell,fixed_bones[0]!='\0');
 	ApplySpawnIniToPhysicShell(smart_cast<CKinematics*>(Visual())->LL_UserData(),m_pPhysicsShell,fixed_bones[0]!='\0');
 }
 
-void CPhysicObject::Load(LPCSTR section)
+void CPhysicObject::Load(const char* section)
 {
 	inherited::Load(section);
 	CPHSkeleton::Load(section);
 }
 
-
 void CPhysicObject::shedule_Update		(u32 dt)
 {
 	inherited::shedule_Update(dt);
 	CPHSkeleton::Update(dt);
-
 }
+
 void CPhysicObject::UpdateCL()
 {
 	inherited::UpdateCL();
-
 	PHObjectPositionUpdate();
 }
+
 void CPhysicObject::PHObjectPositionUpdate	()
 {
-	
 	if(m_pPhysicsShell)
 	{
-
-
 		if(m_type==epotBox) 
 		{
 			m_pPhysicsShell->Update();
@@ -136,8 +132,6 @@ void CPhysicObject::PHObjectPositionUpdate	()
 		else
 			m_pPhysicsShell->InterpolateGlobalTransform(&XFORM());
 	}
-
-
 }
 
 void CPhysicObject::AddElement(CPhysicsElement* root_e, int id)
@@ -268,7 +262,7 @@ bool					CPhysicObject::	set_collision_hit_callback	(SCollisionHitCallback *cc)
 
 //////////////////////////////////////////////////////////////////////////
 /*
-DEFINE_MAP_PRED	(LPCSTR,	CPhysicsJoint*,	JOINT_P_MAP,	JOINT_P_PAIR_IT,	pred_str);
+DEFINE_MAP_PRED	(const char*,	CPhysicsJoint*,	JOINT_P_MAP,	JOINT_P_PAIR_IT,	pred_str);
 
 JOINT_P_MAP			*l_tpJointMap = xr_new<JOINT_P_MAP>();
 
