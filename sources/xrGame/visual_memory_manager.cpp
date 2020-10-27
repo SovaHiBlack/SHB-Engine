@@ -8,7 +8,7 @@
 #include "stdafx.h"
 
 #include "visual_memory_manager.h"
-#include "ai/stalker/ai_stalker.h"
+#include "ai/stalker/Stalker.h"
 #include "memory_space_impl.h"
 #include "..\ENGINE\skeletoncustom.h"
 #include "clsid_game.h"
@@ -83,7 +83,7 @@ CVisualMemoryManager::CVisualMemoryManager		(CCustomMonster *object)
 	initialize			();
 }
 
-CVisualMemoryManager::CVisualMemoryManager		(CAI_Stalker *stalker)
+CVisualMemoryManager::CVisualMemoryManager		(CStalker *stalker)
 {
 	m_object			= stalker;
 	m_stalker			= stalker;

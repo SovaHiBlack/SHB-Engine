@@ -7,8 +7,9 @@
 ////////////////////////////////////////////////////////////////////////////
 
 #include "stdafx.h"
+
 #include "stalker_danger_unknown_actions.h"
-#include "ai/stalker/ai_stalker.h"
+#include "ai/stalker/Stalker.h"
 #include "script_game_object.h"
 #include "stalker_movement_manager.h"
 #include "sight_manager.h"
@@ -33,7 +34,7 @@ const u32	DANGER_INTERVAL = 120000;
 // CStalkerActionDangerUnknownTakeCover
 //////////////////////////////////////////////////////////////////////////
 
-CStalkerActionDangerUnknownTakeCover::CStalkerActionDangerUnknownTakeCover	(CAI_Stalker *object, LPCSTR action_name) :
+CStalkerActionDangerUnknownTakeCover::CStalkerActionDangerUnknownTakeCover	(CStalker *object, LPCSTR action_name) :
 	inherited				(object,action_name)
 { }
 
@@ -91,7 +92,7 @@ void CStalkerActionDangerUnknownTakeCover::finalize							()
 // CStalkerActionDangerUnknownLookAround
 //////////////////////////////////////////////////////////////////////////
 
-CStalkerActionDangerUnknownLookAround::CStalkerActionDangerUnknownLookAround	(CAI_Stalker *object, LPCSTR action_name) :
+CStalkerActionDangerUnknownLookAround::CStalkerActionDangerUnknownLookAround	(CStalker *object, LPCSTR action_name) :
 	inherited				(object,action_name)
 { }
 
@@ -134,7 +135,7 @@ void CStalkerActionDangerUnknownLookAround::finalize							()
 // CStalkerActionDangerUnknownSearch
 //////////////////////////////////////////////////////////////////////////
 
-CStalkerActionDangerUnknownSearch::CStalkerActionDangerUnknownSearch	(CAI_Stalker *object, LPCSTR action_name) :
+CStalkerActionDangerUnknownSearch::CStalkerActionDangerUnknownSearch	(CStalker *object, LPCSTR action_name) :
 	inherited				(object,action_name)
 { }
 

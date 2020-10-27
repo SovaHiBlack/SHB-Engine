@@ -48,7 +48,7 @@
 
 #ifdef DEBUG
 #	include "level_debug.h"
-#	include "ai/stalker/ai_stalker.h"
+#	include "ai/stalker/Stalker.h"
 #	include "debug_renderer.h"
 #	include "PhysicObject.h"
 #endif
@@ -484,7 +484,7 @@ void CLevel::OnRender()
 	if (ai().get_level_graph())
 		ai().level_graph().render();
 
-	CAI_Stalker				*stalker = smart_cast<CAI_Stalker*>(Level().CurrentEntity());
+	CStalker				*stalker = smart_cast<CStalker*>(Level().CurrentEntity());
 	if (stalker)
 		stalker->OnRender	();
 
@@ -549,7 +549,7 @@ void CLevel::OnRender()
 	if (psAI_Flags.is(aiVision)) {
 		for (u32 I=0; I < Level().Objects.o_count(); I++) {
 			CObject						*object = Objects.o_get_by_iterator(I);
-			CAI_Stalker					*stalker = smart_cast<CAI_Stalker*>(object);
+			CStalker					*stalker = smart_cast<CStalker*>(object);
 			if (!stalker)
 				continue;
 			stalker->dbg_draw_vision	();
@@ -560,7 +560,7 @@ void CLevel::OnRender()
 	if (psAI_Flags.test(aiDrawVisibilityRays)) {
 		for (u32 I=0; I < Level().Objects.o_count(); I++) {
 			CObject						*object = Objects.o_get_by_iterator(I);
-			CAI_Stalker					*stalker = smart_cast<CAI_Stalker*>(object);
+			CStalker					*stalker = smart_cast<CStalker*>(object);
 			if (!stalker)
 				continue;
 

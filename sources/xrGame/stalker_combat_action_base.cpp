@@ -8,7 +8,7 @@
 #include "stdafx.h"
 
 #include "stalker_combat_action_base.h"
-#include "ai/stalker/ai_stalker.h"
+#include "ai/stalker/Stalker.h"
 #include "script_game_object.h"
 #include "sound_player.h"
 #include "ai/stalker/ai_stalker_space.h"
@@ -25,7 +25,7 @@ using namespace StalkerSpace;
 
 const float start_fire_angle_difference	= PI_DIV_8;
 
-CStalkerActionCombatBase::CStalkerActionCombatBase	(CAI_Stalker *object, LPCSTR action_name) :
+CStalkerActionCombatBase::CStalkerActionCombatBase	(CStalker *object, LPCSTR action_name) :
 	inherited	(object,action_name)
 { }
 

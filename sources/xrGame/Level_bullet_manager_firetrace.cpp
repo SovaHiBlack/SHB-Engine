@@ -15,7 +15,7 @@
 #include "clsid_game.h"
 #include "..\ENGINE\skeletoncustom.h"
 #include "Actor.h"
-#include "AI/Stalker/ai_stalker.h"
+#include "AI/Stalker/Stalker.h"
 #include "character_info.h"
 #include "game_cl_base_weapon_usage_statistic.h"
 #include "..\ENGINE\xr_collide_defs.h"
@@ -49,7 +49,7 @@ BOOL CBulletManager::test_callback(const collide::ray_defs& rd, CObject* object,
 			ICollisionForm*	cform	= entity->collidable.model;
 			if ((NULL!=cform) && (cftObject==cform->Type())){
 				CActor* actor		= smart_cast<CActor*>(entity);
-				CAI_Stalker* stalker= smart_cast<CAI_Stalker*>(entity);
+				CStalker* stalker= smart_cast<CStalker*>(entity);
 				// в кого попали?
 				if (actor || stalker){
 					// попали в актера или сталкера
@@ -78,7 +78,7 @@ BOOL CBulletManager::test_callback(const collide::ray_defs& rd, CObject* object,
 							}
 #	else
 							float					game_difficulty_hit_probability = actor->HitProbability();
-							CAI_Stalker				*stalker = smart_cast<CAI_Stalker*>(initiator);
+							CStalker				*stalker = smart_cast<CStalker*>(initiator);
 							if (stalker)
 								hpf					= stalker->SpecificCharacter().hit_probability_factor();
 
@@ -96,7 +96,7 @@ BOOL CBulletManager::test_callback(const collide::ray_defs& rd, CObject* object,
 							ahp						= dist_factor*game_difficulty_hit_probability + (1.f-dist_factor)*1.f;
 #	endif
 #else
-							CAI_Stalker* i_stalker	= smart_cast<CAI_Stalker*>(initiator);
+							CStalker* i_stalker	= smart_cast<CStalker*>(initiator);
 							// если стрелял сталкер, учитываем - hit_probability_factor сталкерa иначе - 1.0
 							if (i_stalker) {
 								hpf					= i_stalker->SpecificCharacter().hit_probability_factor();

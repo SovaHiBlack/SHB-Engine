@@ -1857,8 +1857,8 @@ C++ class CAI_PseudoDog : CGameObject {
     function use(CGameObject*);
 };
 
-C++ class CAI_Stalker : CGameObject {
-    CAI_Stalker ();
+C++ class CStalker : CGameObject {
+    CStalker ();
 
     function Visual();
     function _construct();

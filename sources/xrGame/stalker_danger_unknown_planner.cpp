@@ -7,8 +7,9 @@
 ////////////////////////////////////////////////////////////////////////////
 
 #include "stdafx.h"
+
 #include "stalker_danger_unknown_planner.h"
-#include "ai/stalker/ai_stalker.h"
+#include "ai/stalker/Stalker.h"
 #include "ai/stalker/ai_stalker_space.h"
 #include "script_game_object.h"
 #include "stalker_danger_property_evaluators.h"
@@ -18,11 +19,11 @@
 
 using namespace StalkerDecisionSpace;
 
-CStalkerDangerUnknownPlanner::CStalkerDangerUnknownPlanner	(CAI_Stalker *object, LPCSTR action_name) :
+CStalkerDangerUnknownPlanner::CStalkerDangerUnknownPlanner	(CStalker *object, LPCSTR action_name) :
 	inherited				(object,action_name)
 { }
 
-void CStalkerDangerUnknownPlanner::setup					(CAI_Stalker *object, CPropertyStorage *storage)
+void CStalkerDangerUnknownPlanner::setup					(CStalker *object, CPropertyStorage *storage)
 {
 	inherited::setup		(object,storage);
 	clear					();

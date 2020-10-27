@@ -9,7 +9,7 @@
 #include "stdafx.h"
 
 #include "stalker_alife_task_actions.h"
-#include "ai/stalker/ai_stalker.h"
+#include "ai/stalker/Stalker.h"
 #include "ai/trader/ai_trader.h"
 #include "inventory_item.h"
 #include "Weapon.h"
@@ -46,7 +46,7 @@ using namespace StalkerDecisionSpace;
 // CStalkerActionSolveZonePuzzle
 //////////////////////////////////////////////////////////////////////////
 
-CStalkerActionSolveZonePuzzle::CStalkerActionSolveZonePuzzle	(CAI_Stalker *object, LPCSTR action_name) :
+CStalkerActionSolveZonePuzzle::CStalkerActionSolveZonePuzzle	(CStalker *object, LPCSTR action_name) :
 	inherited				(object,action_name)
 { }
 
@@ -165,7 +165,7 @@ void CStalkerActionSolveZonePuzzle::execute		()
 // CStalkerActionSmartTerrain
 //////////////////////////////////////////////////////////////////////////
 
-CStalkerActionSmartTerrain::CStalkerActionSmartTerrain	(CAI_Stalker *object, LPCSTR action_name) :
+CStalkerActionSmartTerrain::CStalkerActionSmartTerrain	(CStalker *object, LPCSTR action_name) :
 	inherited				(object,action_name)
 {
 	set_inertia_time		(30000);

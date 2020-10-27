@@ -13,7 +13,7 @@
 //#define DESTROYING_BINDED_OBJECT_LOG
 
 //script
-#define DEBUG_DISABLE_SCRIPTS
+//#define DEBUG_DISABLE_SCRIPTS
 
 
 #endif // DEBUG

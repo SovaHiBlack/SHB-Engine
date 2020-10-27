@@ -33,7 +33,7 @@
 #include "InfoPortion.h"
 #include "AI/Monsters/BaseMonster/BaseMonster.h"
 #include "WeaponMagazined.h"
-#include "ai/stalker/ai_stalker.h"
+#include "ai/stalker/Stalker.h"
 #include "GameTaskManager.h"
 
 bool CScriptGameObject::GiveInfoPortion(LPCSTR info_id)
@@ -265,7 +265,7 @@ void CScriptGameObject::UnloadMagazine		()
 		return;
 	}
 
-	CAI_Stalker				*stalker = smart_cast<CAI_Stalker*>(weapon_magazined->H_Parent());
+	CStalker				*stalker = smart_cast<CStalker*>(weapon_magazined->H_Parent());
 	if (stalker && stalker->hammer_is_clutched())
 		return;
 

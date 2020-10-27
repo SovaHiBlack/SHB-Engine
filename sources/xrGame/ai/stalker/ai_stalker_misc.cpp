@@ -7,7 +7,7 @@
 ////////////////////////////////////////////////////////////////////////////
 #include "stdafx.h"
 
-#include "ai_stalker.h"
+#include "Stalker.h"
 #include "ai_stalker_space.h"
 #include "..\..\Bolt.h"
 #include "../../inventory.h"
@@ -36,7 +36,7 @@ const float FRIENDLY_GRENADE_ALARM_DIST		= 5.f;
 const u32 DANGER_INFINITE_INTERVAL			= 60000000;
 const float DANGER_EXPLOSIVE_DISTANCE		= 10.f;
 
-bool CAI_Stalker::useful		(const CItemManager *manager, const CGameObject *object) const
+bool CStalker::useful		(const CItemManager *manager, const CGameObject *object) const
 {
 	const CExplosive	*explosive = smart_cast<const CExplosive*>(object);
 
@@ -57,7 +57,7 @@ bool CAI_Stalker::useful		(const CItemManager *manager, const CGameObject *objec
 	if (!inventory_item || !inventory_item->useful_for_NPC())
 		return			(false);
 
-	if (!const_cast<CAI_Stalker*>(this)->can_take(inventory_item))
+	if (!const_cast<CStalker*>(this)->can_take(inventory_item))
 		return			(false);
 
 	const CBolt			*bolt = smart_cast<const CBolt*>(object);
@@ -72,14 +72,14 @@ bool CAI_Stalker::useful		(const CItemManager *manager, const CGameObject *objec
 	return				(true);
 }
 
-float CAI_Stalker::evaluate		(const CItemManager *manager, const CGameObject *object) const
+float CStalker::evaluate		(const CItemManager *manager, const CGameObject *object) const
 {
 	float				distance = Position().distance_to_sqr(object->Position());
 	distance			= !fis_zero(distance) ? distance : EPS_L;
 	return				(distance);
 }
 
-bool CAI_Stalker::useful		(const CEnemyManager *manager, const CEntityAlive *object) const
+bool CStalker::useful		(const CEnemyManager *manager, const CEntityAlive *object) const
 {
 	if (!agent_manager().enemy().useful_enemy(object,this))
 		return			(false);
@@ -87,7 +87,7 @@ bool CAI_Stalker::useful		(const CEnemyManager *manager, const CEntityAlive *obj
 	return				(memory().enemy().useful(object));
 }
 
-ALife::ERelationType CAI_Stalker::tfGetRelationType	(const CEntityAlive *tpEntityAlive) const
+ALife::ERelationType CStalker::tfGetRelationType	(const CEntityAlive *tpEntityAlive) const
 {
 	const CInventoryOwner* pOtherIO = smart_cast<const CInventoryOwner*>(tpEntityAlive);
 	
@@ -102,7 +102,7 @@ ALife::ERelationType CAI_Stalker::tfGetRelationType	(const CEntityAlive *tpEntit
 		return inherited::tfGetRelationType(tpEntityAlive);
 }
 
-void CAI_Stalker::react_on_grenades		()
+void CStalker::react_on_grenades		()
 {
 	CMemberOrder::CGrenadeReaction	&reaction = agent_manager().member().member(this).grenade_reaction();
 	if (!reaction.m_processing)
@@ -130,7 +130,7 @@ void CAI_Stalker::react_on_grenades		()
 	reaction.clear				();
 }
 
-void CAI_Stalker::react_on_member_death	()
+void CStalker::react_on_member_death	()
 {
 	CMemberOrder::CMemberDeathReaction	&reaction = agent_manager().member().member(this).member_death_reaction();
 	if (!reaction.m_processing)
@@ -145,7 +145,7 @@ void CAI_Stalker::react_on_member_death	()
 	reaction.clear				();
 }
 
-void CAI_Stalker::process_enemies		()
+void CStalker::process_enemies		()
 {
 	if (memory().enemy().selected())
 		return;
@@ -161,7 +161,7 @@ void CAI_Stalker::process_enemies		()
 		if (!(*I).visible(mask))
 			continue;
 
-		const CAI_Stalker		*member = smart_cast<const CAI_Stalker*>((*I).m_object);
+		const CStalker		*member = smart_cast<const CStalker*>((*I).m_object);
 		if (!member)
 			continue;
 

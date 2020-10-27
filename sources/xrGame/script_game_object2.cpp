@@ -34,7 +34,7 @@
 #include "actor.h"
 #include "..\ENGINE\skeletonanimated.h"
 #include "..\ENGINE\CameraBase.h"
-#include "ai/stalker/ai_stalker.h"
+#include "ai/stalker/Stalker.h"
 #include "Car.h"
 #include "movement_manager.h"
 #include "detail_path_manager.h"
@@ -70,7 +70,7 @@ bool CScriptGameObject::active_zone_contact		(u16 id)
 
 CScriptGameObject *CScriptGameObject::best_weapon()
 {
-	CObjectHandler	*object_handler = smart_cast<CAI_Stalker*>(&object());
+	CObjectHandler	*object_handler = smart_cast<CStalker*>(&object());
 	if (!object_handler) {
 		ai().script_engine().script_log			(ScriptStorage::eLuaMessageTypeError,"CScriptEntity : cannot access class member best_weapon!");
 		return			(0);
@@ -83,7 +83,7 @@ CScriptGameObject *CScriptGameObject::best_weapon()
 
 void CScriptGameObject::set_item		(MonsterSpace::EObjectAction object_action)
 {
-	CObjectHandler			*object_handler = smart_cast<CAI_Stalker*>(&object());
+	CObjectHandler			*object_handler = smart_cast<CStalker*>(&object());
 	if (!object_handler)
 		ai().script_engine().script_log					(ScriptStorage::eLuaMessageTypeError,"CObjectHandler : cannot access class member set_item!");
 	else
@@ -92,7 +92,7 @@ void CScriptGameObject::set_item		(MonsterSpace::EObjectAction object_action)
 
 void CScriptGameObject::set_item		(MonsterSpace::EObjectAction object_action, CScriptGameObject *lua_game_object)
 {
-	CObjectHandler			*object_handler = smart_cast<CAI_Stalker*>(&object());
+	CObjectHandler			*object_handler = smart_cast<CStalker*>(&object());
 	if (!object_handler)
 		ai().script_engine().script_log					(ScriptStorage::eLuaMessageTypeError,"CObjectHandler : cannot access class member set_item!");
 	else
@@ -101,7 +101,7 @@ void CScriptGameObject::set_item		(MonsterSpace::EObjectAction object_action, CS
 
 void CScriptGameObject::set_item(MonsterSpace::EObjectAction object_action, CScriptGameObject *lua_game_object, u32 queue_size)
 {
-	CObjectHandler			*object_handler = smart_cast<CAI_Stalker*>(&object());
+	CObjectHandler			*object_handler = smart_cast<CStalker*>(&object());
 	if (!object_handler)
 		ai().script_engine().script_log					(ScriptStorage::eLuaMessageTypeError,"CObjectHandler : cannot access class member set_item!");
 	else
@@ -110,7 +110,7 @@ void CScriptGameObject::set_item(MonsterSpace::EObjectAction object_action, CScr
 
 void CScriptGameObject::set_item(MonsterSpace::EObjectAction object_action, CScriptGameObject *lua_game_object, u32 queue_size, u32 queue_interval)
 {
-	CObjectHandler			*object_handler = smart_cast<CAI_Stalker*>(&object());
+	CObjectHandler			*object_handler = smart_cast<CStalker*>(&object());
 	if (!object_handler)
 		ai().script_engine().script_log					(ScriptStorage::eLuaMessageTypeError,"CObjectHandler : cannot access class member set_item!");
 	else
@@ -352,9 +352,9 @@ CHolderCustom* CScriptGameObject::get_current_holder()
 
 void CScriptGameObject::set_ignore_monster_threshold	(float ignore_monster_threshold)
 {
-	CAI_Stalker			*stalker = smart_cast<CAI_Stalker*>(&object());
+	CStalker			*stalker = smart_cast<CStalker*>(&object());
 	if (!stalker) {
-		ai().script_engine().script_log		(ScriptStorage::eLuaMessageTypeError,"CAI_Stalker : cannot access class member set_ignore_monster_threshold!");
+		ai().script_engine().script_log		(ScriptStorage::eLuaMessageTypeError,"CStalker : cannot access class member set_ignore_monster_threshold!");
 		return;
 	}
 	clamp				(ignore_monster_threshold,0.f,1.f);
@@ -363,9 +363,9 @@ void CScriptGameObject::set_ignore_monster_threshold	(float ignore_monster_thres
 
 void CScriptGameObject::restore_ignore_monster_threshold	()
 {
-	CAI_Stalker			*stalker = smart_cast<CAI_Stalker*>(&object());
+	CStalker			*stalker = smart_cast<CStalker*>(&object());
 	if (!stalker) {
-		ai().script_engine().script_log		(ScriptStorage::eLuaMessageTypeError,"CAI_Stalker : cannot access class member restore_ignore_monster_threshold!");
+		ai().script_engine().script_log		(ScriptStorage::eLuaMessageTypeError,"CStalker : cannot access class member restore_ignore_monster_threshold!");
 		return;
 	}
 	stalker->memory().enemy().restore_ignore_monster_threshold	();
@@ -373,9 +373,9 @@ void CScriptGameObject::restore_ignore_monster_threshold	()
 
 float CScriptGameObject::ignore_monster_threshold		() const
 {
-	CAI_Stalker			*stalker = smart_cast<CAI_Stalker*>(&object());
+	CStalker			*stalker = smart_cast<CStalker*>(&object());
 	if (!stalker) {
-		ai().script_engine().script_log		(ScriptStorage::eLuaMessageTypeError,"CAI_Stalker : cannot access class member ignore_monster_threshold!");
+		ai().script_engine().script_log		(ScriptStorage::eLuaMessageTypeError,"CStalker : cannot access class member ignore_monster_threshold!");
 		return			(0.f);
 	}
 	return				(stalker->memory().enemy().ignore_monster_threshold());
@@ -383,9 +383,9 @@ float CScriptGameObject::ignore_monster_threshold		() const
 
 void CScriptGameObject::set_max_ignore_monster_distance	(const float &max_ignore_monster_distance)
 {
-	CAI_Stalker			*stalker = smart_cast<CAI_Stalker*>(&object());
+	CStalker			*stalker = smart_cast<CStalker*>(&object());
 	if (!stalker) {
-		ai().script_engine().script_log		(ScriptStorage::eLuaMessageTypeError,"CAI_Stalker : cannot access class member set_max_ignore_monster_distance!");
+		ai().script_engine().script_log		(ScriptStorage::eLuaMessageTypeError,"CStalker : cannot access class member set_max_ignore_monster_distance!");
 		return;
 	}
 	stalker->memory().enemy().max_ignore_monster_distance	(max_ignore_monster_distance);
@@ -393,9 +393,9 @@ void CScriptGameObject::set_max_ignore_monster_distance	(const float &max_ignore
 
 void CScriptGameObject::restore_max_ignore_monster_distance	()
 {
-	CAI_Stalker			*stalker = smart_cast<CAI_Stalker*>(&object());
+	CStalker			*stalker = smart_cast<CStalker*>(&object());
 	if (!stalker) {
-		ai().script_engine().script_log		(ScriptStorage::eLuaMessageTypeError,"CAI_Stalker : cannot access class member restore_max_ignore_monster_distance!");
+		ai().script_engine().script_log		(ScriptStorage::eLuaMessageTypeError,"CStalker : cannot access class member restore_max_ignore_monster_distance!");
 		return;
 	}
 	stalker->memory().enemy().restore_max_ignore_monster_distance	();
@@ -403,9 +403,9 @@ void CScriptGameObject::restore_max_ignore_monster_distance	()
 
 float CScriptGameObject::max_ignore_monster_distance	() const
 {
-	CAI_Stalker			*stalker = smart_cast<CAI_Stalker*>(&object());
+	CStalker			*stalker = smart_cast<CStalker*>(&object());
 	if (!stalker) {
-		ai().script_engine().script_log		(ScriptStorage::eLuaMessageTypeError,"CAI_Stalker : cannot access class member max_ignore_monster_distance!");
+		ai().script_engine().script_log		(ScriptStorage::eLuaMessageTypeError,"CStalker : cannot access class member max_ignore_monster_distance!");
 		return			(0.f);
 	}
 	return				(stalker->memory().enemy().max_ignore_monster_distance());
@@ -424,9 +424,9 @@ CCar* CScriptGameObject::get_car	()
 #ifdef DEBUG
 void CScriptGameObject::debug_planner				(const script_planner *planner)
 {
-	CAI_Stalker		*stalker = smart_cast<CAI_Stalker*>(&object());
+	CStalker		*stalker = smart_cast<CStalker*>(&object());
 	if (!stalker) {
-		ai().script_engine().script_log			(ScriptStorage::eLuaMessageTypeError,"CAI_Stalker : cannot access class member debug_planner!");
+		ai().script_engine().script_log			(ScriptStorage::eLuaMessageTypeError,"CStalker : cannot access class member debug_planner!");
 		return;
 	}
 
@@ -437,13 +437,13 @@ void CScriptGameObject::debug_planner				(const script_planner *planner)
 u32 CScriptGameObject::location_on_path				(float distance, Fvector *location)
 {
 	if (!location) {
-		ai().script_engine().script_log		(ScriptStorage::eLuaMessageTypeError,"CAI_Stalker : location_on_path -> specify destination location!");
+		ai().script_engine().script_log		(ScriptStorage::eLuaMessageTypeError,"CStalker : location_on_path -> specify destination location!");
 		return								(u32(-1));
 	}
 
 	CCustomMonster							*monster = smart_cast<CCustomMonster*>(&object());
 	if (!monster) {
-		ai().script_engine().script_log		(ScriptStorage::eLuaMessageTypeError,"CAI_Stalker : cannot access class member location_on_path!");
+		ai().script_engine().script_log		(ScriptStorage::eLuaMessageTypeError,"CStalker : cannot access class member location_on_path!");
 		return								(u32(-1));
 	}
 

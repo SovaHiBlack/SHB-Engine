@@ -9,7 +9,7 @@
 #include "stdafx.h"
 
 #include "stalker_animation_manager.h"
-#include "ai/stalker/ai_stalker.h"
+#include "ai/stalker/Stalker.h"
 #include "inventory.h"
 #include "FoodItem.h"
 #include "property_storage.h"
@@ -24,7 +24,7 @@ using namespace StalkerSpace;
 
 void CStalkerAnimationManager::global_play_callback			(CBlend *blend)
 {
-	CAI_Stalker				*object = (CAI_Stalker*)blend->CallbackParam;
+	CStalker				*object = (CStalker*)blend->CallbackParam;
 	VERIFY					(object);
 
 	CStalkerAnimationPair	&pair = object->animation().global();

@@ -22,7 +22,7 @@ private:
 			bool		fire						() const;
 
 public:
-						CStalkerActionDead			(CAI_Stalker *object, LPCSTR action_name = "");
+						CStalkerActionDead			(CStalker *object, LPCSTR action_name = "");
 	virtual void		initialize					();
 	virtual void		execute						();
 };

@@ -9,7 +9,7 @@
 #include "stdafx.h"
 
 #include "stalker_animation_manager.h"
-#include "ai/stalker/ai_stalker.h"
+#include "ai/stalker/Stalker.h"
 #include "sight_manager.h"
 #include "stalker_movement_manager.h"
 #include "GameObject_space.h"
@@ -43,7 +43,7 @@ typedef detail	<  50, 100,   0,   0>	head;
 TEMPLATE_SPECIALIZATION
 void _detail::callback		(CBoneInstance *B)
 {
-	CAI_Stalker*			A = static_cast<CAI_Stalker*>(B->Callback_Param);
+	CStalker*			A = static_cast<CStalker*>(B->Callback_Param);
 	VERIFY					(_valid(B->mTransform));
 	Fvector c				= B->mTransform.c;
 	Fmatrix					spin;

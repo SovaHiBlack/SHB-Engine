@@ -7,8 +7,9 @@
 ////////////////////////////////////////////////////////////////////////////
 
 #include "stdafx.h"
+
 #include "stalker_base_action.h"
-#include "ai/stalker/ai_stalker.h"
+#include "ai/stalker/Stalker.h"
 #include "script_game_object.h"
 #include "stalker_animation_manager.h"
 #include "stalker_planner.h"
@@ -16,7 +17,7 @@
 
 using namespace StalkerSpace;
 
-CStalkerActionBase::CStalkerActionBase		(CAI_Stalker *object, LPCSTR action_name) :
+CStalkerActionBase::CStalkerActionBase		(CStalker *object, LPCSTR action_name) :
 	inherited				(object,action_name)
 { }
 

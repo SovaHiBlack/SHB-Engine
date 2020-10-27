@@ -8,7 +8,7 @@
 #include "stdafx.h"
 
 #include "stalker_danger_planner.h"
-#include "ai/stalker/ai_stalker.h"
+#include "ai/stalker/Stalker.h"
 #include "ai/stalker/ai_stalker_space.h"
 #include "sound_player.h"
 #include "script_game_object.h"
@@ -31,11 +31,11 @@
 using namespace StalkerSpace;
 using namespace StalkerDecisionSpace;
 
-CStalkerDangerPlanner::CStalkerDangerPlanner	(CAI_Stalker *object, LPCSTR action_name) :
+CStalkerDangerPlanner::CStalkerDangerPlanner	(CStalker *object, LPCSTR action_name) :
 	inherited									(object,action_name)
 { }
 
-void CStalkerDangerPlanner::setup				(CAI_Stalker *object, CPropertyStorage *storage)
+void CStalkerDangerPlanner::setup				(CStalker *object, CPropertyStorage *storage)
 {
 	inherited::setup		(object,storage);
 
@@ -82,7 +82,7 @@ void CStalkerDangerPlanner::add_evaluators		()
 
 void CStalkerDangerPlanner::add_actions			()
 {
-	CActionPlannerActionScript<CAI_Stalker>		*action;
+	CActionPlannerActionScript<CStalker>		*action;
 
 	action					= xr_new<CStalkerDangerUnknownPlanner>	(m_object,"danger unknown planner");
 	add_condition			(action,eWorldPropertyDangerUnknown,true);

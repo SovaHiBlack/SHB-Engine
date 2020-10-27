@@ -8,7 +8,7 @@
 #include "stdafx.h"
 
 #include "stalker_alife_actions.h"
-#include "ai/stalker/ai_stalker.h"
+#include "ai/stalker/Stalker.h"
 #include "inventory_item.h"
 #include "script_game_object.h"
 #include "inventory.h"
@@ -39,7 +39,7 @@ using namespace StalkerSpace;
 // CStalkerActionNoALife
 //////////////////////////////////////////////////////////////////////////
 
-CStalkerActionNoALife::CStalkerActionNoALife	(CAI_Stalker *object, LPCSTR action_name) :
+CStalkerActionNoALife::CStalkerActionNoALife	(CStalker *object, LPCSTR action_name) :
 	inherited				(object,action_name)
 { }
 
@@ -106,7 +106,7 @@ void CStalkerActionNoALife::execute		()
 // CStalkerActionGatherItems
 //////////////////////////////////////////////////////////////////////////
 
-CStalkerActionGatherItems::CStalkerActionGatherItems	(CAI_Stalker *object, LPCSTR action_name) :
+CStalkerActionGatherItems::CStalkerActionGatherItems	(CStalker *object, LPCSTR action_name) :
 	inherited				(object,action_name)
 { }
 

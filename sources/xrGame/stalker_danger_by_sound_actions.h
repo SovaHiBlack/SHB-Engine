@@ -19,7 +19,7 @@ protected:
 	typedef CStalkerActionCombatBase inherited;
 
 public:
-						CStalkerActionDangerBySoundListenTo	(CAI_Stalker *object, LPCSTR action_name = "");
+						CStalkerActionDangerBySoundListenTo	(CStalker *object, LPCSTR action_name = "");
 	virtual void		initialize							();
 	virtual void		execute								();
 	virtual void		finalize							();
@@ -34,7 +34,7 @@ protected:
 	typedef CStalkerActionCombatBase inherited;
 
 public:
-						CStalkerActionDangerBySoundCheck	(CAI_Stalker *object, LPCSTR action_name = "");
+						CStalkerActionDangerBySoundCheck	(CStalker *object, LPCSTR action_name = "");
 	virtual void		initialize							();
 	virtual void		execute								();
 	virtual void		finalize							();
@@ -49,7 +49,7 @@ protected:
 	typedef CStalkerActionCombatBase inherited;
 
 public:
-						CStalkerActionDangerBySoundTakeCover(CAI_Stalker *object, LPCSTR action_name = "");
+						CStalkerActionDangerBySoundTakeCover(CStalker *object, LPCSTR action_name = "");
 	virtual void		initialize							();
 	virtual void		execute								();
 	virtual void		finalize							();
@@ -64,7 +64,7 @@ protected:
 	typedef CStalkerActionCombatBase inherited;
 
 public:
-						CStalkerActionDangerBySoundLookOut	(CAI_Stalker *object, LPCSTR action_name = "");
+						CStalkerActionDangerBySoundLookOut	(CStalker *object, LPCSTR action_name = "");
 	virtual void		initialize							();
 	virtual void		execute								();
 	virtual void		finalize							();
@@ -79,7 +79,7 @@ protected:
 	typedef CStalkerActionCombatBase inherited;
 
 public:
-						CStalkerActionDangerBySoundLookAround	(CAI_Stalker *object, LPCSTR action_name = "");
+						CStalkerActionDangerBySoundLookAround	(CStalker *object, LPCSTR action_name = "");
 	virtual void		initialize								();
 	virtual void		execute									();
 	virtual void		finalize								();

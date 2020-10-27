@@ -8,7 +8,7 @@
 
 #include "stdafx.h"
 
-#include "ai_stalker.h"
+#include "Stalker.h"
 #include "../../Pda.h"
 #include "../../inventory.h"
 #include "..\..\Messages.h"
@@ -22,7 +22,7 @@ using namespace MonsterSpace;
 
 #define SILENCE
 
-void CAI_Stalker::OnEvent		(NET_Packet& P, u16 type)
+void CStalker::OnEvent		(NET_Packet& P, u16 type)
 {
 	inherited::OnEvent			(P,type);
 	CInventoryOwner::OnEvent	(P,type);
@@ -89,7 +89,7 @@ void CAI_Stalker::OnEvent		(NET_Packet& P, u16 type)
 	}
 }
 
-void CAI_Stalker::feel_touch_new				(CObject* O)
+void CStalker::feel_touch_new				(CObject* O)
 {
 //	Msg					("FEEL_TOUCH::NEW : %s",*O->cName());
 	if (!g_Alive())		return;
@@ -110,7 +110,7 @@ void CAI_Stalker::feel_touch_new				(CObject* O)
 	}
 }
 
-void CAI_Stalker::DropItemSendMessage(CObject *O)
+void CStalker::DropItemSendMessage(CObject *O)
 {
 	if (!O || !O->H_Parent() || (this != O->H_Parent()))
 		return;
@@ -129,13 +129,13 @@ void CAI_Stalker::DropItemSendMessage(CObject *O)
 //PDA functions
 /////////////////////////
 /*
-void CAI_Stalker::ReceivePdaMessage(u16 who, EPdaMsg msg, shared_str info_id)
+void CStalker::ReceivePdaMessage(u16 who, EPdaMsg msg, shared_str info_id)
 {
 	CInventoryOwner::ReceivePdaMessage(who, msg, info_id);
 }*/
 
 
-void CAI_Stalker::UpdateAvailableDialogs(CPhraseDialogManager* partner)
+void CStalker::UpdateAvailableDialogs(CPhraseDialogManager* partner)
 {
 /*	m_AvailableDialogs.clear();
 	m_CheckedDialogs.clear();

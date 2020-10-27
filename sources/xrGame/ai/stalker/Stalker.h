@@ -1,5 +1,5 @@
 ////////////////////////////////////////////////////////////////////////////
-//	Module 		: ai_stalker.h
+//	Module 		: Stalker.h
 //	Created 	: 25.02.2003
 //  Modified 	: 25.02.2003
 //	Author		: Dmitriy Iassenev
@@ -75,7 +75,7 @@ struct SBoneProtections;
 class CDangerLocation;
 class CRestrictedObject;
 
-class CAI_Stalker : 
+class CStalker : 
 	public CCustomMonster, 
 	public CObjectHandler,
 	public CAI_PhraseDialogManager,
@@ -149,8 +149,8 @@ public:
 	bool							m_wounded;
 
 public:
-										CAI_Stalker					();
-	virtual								~CAI_Stalker				();
+										CStalker					();
+	virtual								~CStalker					();
 
 public:
 	virtual	CCharacterPhysicsSupport*	character_physics_support	()						{return m_pPhysics_support;}
@@ -163,7 +163,7 @@ public:
 	virtual CPhysicsShellHolder*		cast_physics_shell_holder	()						{return this;}
 	virtual CParticlesPlayer*			cast_particles_player		()						{return this;}
 	virtual	Feel::Sound*				dcast_FeelSound				()						{return this;}
-	virtual CAI_Stalker*				cast_stalker				()						{return this;}
+	virtual CStalker*					cast_stalker				()						{return this;}
 	virtual CCustomMonster*				cast_custom_monster			()						{return this;}
 	virtual CScriptEntity*				cast_script_entity			()						{return this;}
 
@@ -524,8 +524,8 @@ public:
 
 private:
 			bool						can_cry_enemy_is_wounded					() const;
-			void						on_critical_wound_initiator					(const CAI_Stalker *critically_wounded);
-			void						on_enemy_wounded_or_killed					(const CAI_Stalker *wounded_or_killed);
+			void						on_critical_wound_initiator					(const CStalker *critically_wounded);
+			void						on_enemy_wounded_or_killed					(const CStalker *wounded_or_killed);
 			void						notify_on_wounded_or_killed					(CObject *object);
 			void						notify_on_wounded_or_killed					();
 			void	xr_stdcall			remove_critical_hit							();
@@ -551,8 +551,8 @@ public:
 	DECLARE_SCRIPT_REGISTER_FUNCTION
 };
 
-add_to_type_list(CAI_Stalker)
+add_to_type_list(CStalker)
 #undef script_type_list
-#define script_type_list save_type_list(CAI_Stalker)
+#define script_type_list save_type_list(CStalker)
 
 #include "ai_stalker_inline.h"

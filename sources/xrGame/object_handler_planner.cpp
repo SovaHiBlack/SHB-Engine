@@ -13,7 +13,7 @@
 #include "object_actions.h"
 #include "ai_monster_space.h"
 #include "object_handler_space.h"
-#include "ai/stalker/ai_stalker.h"
+#include "ai/stalker/Stalker.h"
 #include "inventory.h"
 #include "object_handler_planner_impl.h"
 #include "WeaponMagazined.h"
@@ -246,10 +246,10 @@ void CObjectHandlerPlanner::init_storage	()
 	m_storage.set_property		(eWorldPropertyStrapped2Idle,false);
 }
 
-void CObjectHandlerPlanner::setup	(CAI_Stalker *object)
+void CObjectHandlerPlanner::setup	(CStalker *object)
 {
 	inherited::setup			(object);
-	CActionBase<CAI_Stalker>	*action;
+	CActionBase<CStalker>	*action;
 
 	m_min_queue_size			= 0;
 	m_max_queue_size			= 0;

@@ -19,7 +19,7 @@
 #include "StringTable.h"
 
 #ifdef DEBUG
-#	include "ai\stalker\ai_stalker.h"
+#	include "ai\stalker\Stalker.h"
 #	include "object_handler_planner.h"
 #endif // def DEBUG
 
@@ -760,7 +760,7 @@ void CWeaponMagazined::switch2_Fire( )
 
 	if (!(io && (ii == io->inventory( ).ActiveItem( ))))
 	{
-		CAI_Stalker* stalker = smart_cast<CAI_Stalker*>(H_Parent( ));
+		CStalker* stalker = smart_cast<CStalker*>(H_Parent( ));
 		if (stalker)
 		{
 			stalker->planner( ).show( );

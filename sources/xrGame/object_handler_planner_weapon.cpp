@@ -14,7 +14,7 @@
 #include "object_handler_space.h"
 #include "Weapon.h"
 #include "object_handler_planner_impl.h"
-#include "ai/stalker/ai_stalker.h"
+#include "ai/stalker/Stalker.h"
 
 using namespace ObjectHandlerSpace;
 
@@ -64,7 +64,7 @@ void CObjectHandlerPlanner::add_evaluators		(CWeapon *weapon)
 void CObjectHandlerPlanner::add_operators		(CWeapon *weapon)
 {
 	u16					id = weapon->ID(), ff = 0xffff;
-	CActionBase<CAI_Stalker>	*action;
+	CActionBase<CStalker>	*action;
 	
 	// show
 	action				= xr_new<CObjectActionShow>(weapon,m_object,&m_storage,"show");

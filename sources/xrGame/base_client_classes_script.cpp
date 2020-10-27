@@ -12,7 +12,7 @@
 #include "..\ENGINE\feel_sound.h"
 #include "..\ENGINE\fbasicvisual.h"
 #include "..\ENGINE\skeletonanimated.h"
-#include "ai/stalker/ai_stalker.h"
+#include "ai/stalker/Stalker.h"
 #include "..\ENGINE/net_utils.h"
 
 using namespace luabind;
@@ -146,7 +146,7 @@ void CObjectScript::script_register		(lua_State *L)
 //		,class_<CCustomMonster,CEntityAlive>("CCustomMonster")
 //			.def(constructor<>())
 
-//		,class_<CAI_Stalker,CCustomMonster>("CAI_Stalker")
+//		,class_<CStalker,CCustomMonster>("CStalker")
 	];
 }
 

@@ -8,7 +8,7 @@
 #include "stdafx.h"
 
 #ifdef DEBUG
-#include "ai_stalker.h"
+#include "Stalker.h"
 #include "../../HUDManager.h"//
 #include "../../memory_manager.h"
 #include "../../visual_memory_manager.h"
@@ -65,12 +65,12 @@ void try_change_current_entity()
 	g_SpatialSpace->q_frustum			(ISpatialResult, 0, STYPE_COLLIDEABLE, frustum);
 
 	float								maxlen = 1000.0f;
-	CAI_Stalker*						nearest_agent = 0;
+	CStalker*						nearest_agent = 0;
 
 	OBJECTS::const_iterator				I = ISpatialResult.begin();
 	OBJECTS::const_iterator				E = ISpatialResult.end();
 	for ( ; I != E; ++I) {
-		CAI_Stalker						*current = smart_cast<CAI_Stalker*>(*I);
+		CStalker						*current = smart_cast<CStalker*>(*I);
 		if (!current)					continue;
 		if (Level().CurrentEntity()==current) continue;
 
@@ -175,7 +175,7 @@ void draw_planner						(const planner_type &brain, const char* start_indent, con
 	}
 }
 
-const char* animation_name(CAI_Stalker *self, const MotionID &animation)
+const char* animation_name(CStalker *self, const MotionID &animation)
 {
 	if (!animation)
 		return			("");
@@ -223,12 +223,12 @@ const char* danger_type(const CDangerObject::EDangerType &danger_type)
 	return				("");
 }
 
-void CAI_Stalker::debug_planner			(const script_planner *planner)
+void CStalker::debug_planner			(const script_planner *planner)
 {
 	m_debug_planner						= planner;
 }
 
-void CAI_Stalker::OnHUDDraw				(CCustomHUD *hud)
+void CStalker::OnHUDDraw				(CCustomHUD *hud)
 {
 	inherited::OnHUDDraw				(hud);
 
@@ -800,7 +800,7 @@ void CAI_Stalker::OnHUDDraw				(CCustomHUD *hud)
 	}
 }
 
-void CAI_Stalker::OnRender			()
+void CStalker::OnRender			()
 {
 	if (inventory().ActiveItem()) {
 		Fvector					position, direction, temp;
@@ -894,7 +894,7 @@ void CAI_Stalker::OnRender			()
 	}
 }
 
-void CAI_Stalker::dbg_draw_vision	()
+void CStalker::dbg_draw_vision	()
 {
 	VERIFY						(!!psAI_Flags.is(aiVision));
 
@@ -1048,7 +1048,7 @@ void draw_visiblity_rays	(CCustomMonster *self, const CObject *object, collide::
 	Level().debug_renderer().draw_aabb	(points.back(),size.x,size.y,size.z,D3DCOLOR_XRGB(255,0,0));
 }
 
-void CAI_Stalker::dbg_draw_visibility_rays	()
+void CStalker::dbg_draw_visibility_rays	()
 {
 	if (!g_Alive())
 		return;

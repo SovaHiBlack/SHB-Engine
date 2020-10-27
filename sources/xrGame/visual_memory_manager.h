@@ -12,12 +12,12 @@
 #include "memory_space.h"
 
 class CCustomMonster;
-class CAI_Stalker;
+class CStalker;
 class vision_client;
 
 class CVisualMemoryManager {
 #ifdef DEBUG
-	friend class CAI_Stalker;
+	friend class CStalker;
 #endif
 public:
 	typedef MemorySpace::CVisibleObject			CVisibleObject;
@@ -37,7 +37,7 @@ private:
 
 private:
 	CCustomMonster		*m_object;
-	CAI_Stalker			*m_stalker;
+	CStalker			*m_stalker;
 	vision_client		*m_client;
 
 private:
@@ -81,7 +81,7 @@ private:
 
 public:
 					CVisualMemoryManager	(CCustomMonster *object);
-					CVisualMemoryManager	(CAI_Stalker *stalker);
+					CVisualMemoryManager	(CStalker *stalker);
 					CVisualMemoryManager	(vision_client *client);
 	virtual			~CVisualMemoryManager	();
 	virtual	void	reinit					();

@@ -5,7 +5,7 @@
 #include "PhysicsCommon.h"
 #include "GameObject.h"
 #include "PhysicsShellHolder.h"
-#include "ai/stalker/ai_stalker.h"
+#include "ai/stalker/Stalker.h"
 #include "Actor.h"
 #include "GameMtlLib.h"
 #include "level.h"

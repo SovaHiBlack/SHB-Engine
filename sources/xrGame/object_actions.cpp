@@ -10,7 +10,7 @@
 
 #include "object_actions.h"
 #include "inventory.h"
-#include "ai/stalker/ai_stalker.h"
+#include "ai/stalker/Stalker.h"
 #include "xr_level_controller.h"
 #include "Messages.h"
 #include "FoodItem.h"
@@ -25,7 +25,7 @@
 // CObjectActionCommand
 //////////////////////////////////////////////////////////////////////////
 
-CObjectActionCommand::CObjectActionCommand(CInventoryItem *item, CAI_Stalker *owner, CPropertyStorage *storage, u32 command, LPCSTR action_name) :
+CObjectActionCommand::CObjectActionCommand(CInventoryItem *item, CStalker *owner, CPropertyStorage *storage, u32 command, LPCSTR action_name) :
 	inherited			(item,owner,storage,action_name),
 	m_command			(command)
 {
@@ -41,7 +41,7 @@ void CObjectActionCommand::initialize	()
 // CObjectActionShow
 //////////////////////////////////////////////////////////////////////////
 
-CObjectActionShow::CObjectActionShow	(CInventoryItem *item, CAI_Stalker *owner, CPropertyStorage *storage, LPCSTR action_name) :
+CObjectActionShow::CObjectActionShow	(CInventoryItem *item, CStalker *owner, CPropertyStorage *storage, LPCSTR action_name) :
 	inherited		(item,owner,storage,action_name)
 {
 	m_weapon						= smart_cast<CWeapon*>(item);
@@ -88,7 +88,7 @@ void CObjectActionShow::execute		()
 // CObjectActionHide
 //////////////////////////////////////////////////////////////////////////
 
-CObjectActionHide::CObjectActionHide	(CInventoryItem *item, CAI_Stalker *owner, CPropertyStorage *storage, LPCSTR action_name) :
+CObjectActionHide::CObjectActionHide	(CInventoryItem *item, CStalker *owner, CPropertyStorage *storage, LPCSTR action_name) :
 	inherited		(item,owner,storage,action_name)
 {
 }
@@ -105,7 +105,7 @@ void CObjectActionHide::execute		()
 // CObjectActionReload
 //////////////////////////////////////////////////////////////////////////
 
-CObjectActionReload::CObjectActionReload	(CInventoryItem *item, CAI_Stalker *owner, CPropertyStorage *storage, _condition_type type, LPCSTR action_name) :
+CObjectActionReload::CObjectActionReload	(CInventoryItem *item, CStalker *owner, CPropertyStorage *storage, _condition_type type, LPCSTR action_name) :
 	inherited		(item,owner,storage,action_name),
 	m_type			(type)
 {
@@ -143,7 +143,7 @@ void CObjectActionReload::execute			()
 // CObjectActionFire
 //////////////////////////////////////////////////////////////////////////
 
-CObjectActionFire::CObjectActionFire	(CInventoryItem *item, CAI_Stalker *owner, CPropertyStorage *storage, _condition_type type, LPCSTR action_name) :
+CObjectActionFire::CObjectActionFire	(CInventoryItem *item, CStalker *owner, CPropertyStorage *storage, _condition_type type, LPCSTR action_name) :
 	inherited		(item,owner,storage,action_name),
 	m_type			(type)
 {
@@ -190,7 +190,7 @@ void CObjectActionFire::finalize		()
 // CObjectActionStrapping
 //////////////////////////////////////////////////////////////////////////
 
-CObjectActionStrapping::CObjectActionStrapping	(CInventoryItem *item, CAI_Stalker *owner, CPropertyStorage *storage, LPCSTR action_name) :
+CObjectActionStrapping::CObjectActionStrapping	(CInventoryItem *item, CStalker *owner, CPropertyStorage *storage, LPCSTR action_name) :
 	inherited		(item,owner,storage,action_name)
 {
 	m_callback_removed			= true;
@@ -300,7 +300,7 @@ void CObjectActionStrapping::finalize		()
 // CObjectActionStrappingToIdle
 //////////////////////////////////////////////////////////////////////////
 
-CObjectActionStrappingToIdle::CObjectActionStrappingToIdle	(CInventoryItem *item, CAI_Stalker *owner, CPropertyStorage *storage, LPCSTR action_name) :
+CObjectActionStrappingToIdle::CObjectActionStrappingToIdle	(CInventoryItem *item, CStalker *owner, CPropertyStorage *storage, LPCSTR action_name) :
 	inherited		(item,owner,storage,action_name)
 {
 	m_callback_removed			= true;
@@ -407,7 +407,7 @@ void CObjectActionStrappingToIdle::finalize		()
 // CObjectActionUnstrapping
 //////////////////////////////////////////////////////////////////////////
 
-CObjectActionUnstrapping::CObjectActionUnstrapping	(CInventoryItem *item, CAI_Stalker *owner, CPropertyStorage *storage, LPCSTR action_name) :
+CObjectActionUnstrapping::CObjectActionUnstrapping	(CInventoryItem *item, CStalker *owner, CPropertyStorage *storage, LPCSTR action_name) :
 	inherited		(item,owner,storage,action_name)
 {
 	m_callback_removed			= true;
@@ -516,7 +516,7 @@ void CObjectActionUnstrapping::finalize		()
 // CObjectActionUnstrappingToIdle
 //////////////////////////////////////////////////////////////////////////
 
-CObjectActionUnstrappingToIdle::CObjectActionUnstrappingToIdle	(CInventoryItem *item, CAI_Stalker *owner, CPropertyStorage *storage, LPCSTR action_name) :
+CObjectActionUnstrappingToIdle::CObjectActionUnstrappingToIdle	(CInventoryItem *item, CStalker *owner, CPropertyStorage *storage, LPCSTR action_name) :
 	inherited		(item,owner,storage,action_name)
 {
 	m_callback_removed			= true;
@@ -623,7 +623,7 @@ void CObjectActionUnstrappingToIdle::finalize		()
 // CObjectActionQueueWait
 //////////////////////////////////////////////////////////////////////////
 
-CObjectActionQueueWait::CObjectActionQueueWait	(CInventoryItem *item, CAI_Stalker *owner, CPropertyStorage *storage, _condition_type type, LPCSTR action_name) :
+CObjectActionQueueWait::CObjectActionQueueWait	(CInventoryItem *item, CStalker *owner, CPropertyStorage *storage, _condition_type type, LPCSTR action_name) :
 	inherited				(item,owner,storage,action_name),
 	m_type					(type)
 {
@@ -667,7 +667,7 @@ void CObjectActionQueueWait::finalize		()
 // CObjectActionSwitch
 //////////////////////////////////////////////////////////////////////////
 
-CObjectActionSwitch::CObjectActionSwitch	(CInventoryItem *item, CAI_Stalker *owner, CPropertyStorage *storage, _condition_type type, LPCSTR action_name) :
+CObjectActionSwitch::CObjectActionSwitch	(CInventoryItem *item, CStalker *owner, CPropertyStorage *storage, _condition_type type, LPCSTR action_name) :
 	inherited		(item,owner,storage,action_name),
 	m_type			(type)
 {
@@ -700,7 +700,7 @@ void CObjectActionSwitch::finalize		()
 // CObjectActionDrop
 //////////////////////////////////////////////////////////////////////////
 
-CObjectActionDrop::CObjectActionDrop	(CInventoryItem *item, CAI_Stalker *owner, CPropertyStorage *storage, LPCSTR action_name) :
+CObjectActionDrop::CObjectActionDrop	(CInventoryItem *item, CStalker *owner, CPropertyStorage *storage, LPCSTR action_name) :
 	inherited		(item,owner,storage,action_name)
 {
 }
@@ -721,7 +721,7 @@ void CObjectActionDrop::initialize		()
 // CObjectActionThreaten
 //////////////////////////////////////////////////////////////////////////
 
-CObjectActionThreaten::CObjectActionThreaten	(CAI_Stalker *item, CAI_Stalker *owner, CPropertyStorage *storage, LPCSTR action_name) :
+CObjectActionThreaten::CObjectActionThreaten	(CStalker *item, CStalker *owner, CPropertyStorage *storage, LPCSTR action_name) :
 	inherited				(item,owner,storage,action_name)
 {
 }
@@ -737,7 +737,7 @@ void CObjectActionThreaten::execute			()
 // CObjectActionAim
 //////////////////////////////////////////////////////////////////////////
 
-CObjectActionAim::CObjectActionAim			(CInventoryItem *item, CAI_Stalker *owner, CPropertyStorage *storage, _condition_type condition_id, _value_type value, LPCSTR action_name) :
+CObjectActionAim::CObjectActionAim			(CInventoryItem *item, CStalker *owner, CPropertyStorage *storage, _condition_type condition_id, _value_type value, LPCSTR action_name) :
 	inherited							(item,owner,storage,condition_id,value,action_name)
 {
 	m_weapon					= smart_cast<CWeaponMagazined*>(m_item);
@@ -769,7 +769,7 @@ void CObjectActionAim::execute				()
 // CObjectActionIdle
 //////////////////////////////////////////////////////////////////////////
 
-CObjectActionIdle::CObjectActionIdle(CInventoryItem *item, CAI_Stalker *owner, CPropertyStorage *storage, LPCSTR action_name) :
+CObjectActionIdle::CObjectActionIdle(CInventoryItem *item, CStalker *owner, CPropertyStorage *storage, LPCSTR action_name) :
 	inherited			(item,owner,storage,action_name)
 {
 }

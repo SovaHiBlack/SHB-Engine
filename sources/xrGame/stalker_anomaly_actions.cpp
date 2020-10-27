@@ -8,7 +8,7 @@
 #include "stdafx.h"
 
 #include "stalker_anomaly_actions.h"
-#include "ai/stalker/ai_stalker.h"
+#include "ai/stalker/Stalker.h"
 #include "script_game_object.h"
 #include "stalker_decision_space.h"
 #include "CustomZone.h"
@@ -33,7 +33,7 @@ using namespace StalkerDecisionSpace;
 // CStalkerActionGetOutOfAnomaly
 //////////////////////////////////////////////////////////////////////////
 
-CStalkerActionGetOutOfAnomaly::CStalkerActionGetOutOfAnomaly	(CAI_Stalker *object, LPCSTR action_name) :
+CStalkerActionGetOutOfAnomaly::CStalkerActionGetOutOfAnomaly	(CStalker *object, LPCSTR action_name) :
 	inherited				(object,action_name)
 { }
 
@@ -101,7 +101,7 @@ void CStalkerActionGetOutOfAnomaly::execute	()
 // CStalkerActionDetectAnomaly
 //////////////////////////////////////////////////////////////////////////
 
-CStalkerActionDetectAnomaly::CStalkerActionDetectAnomaly	(CAI_Stalker *object, LPCSTR action_name) :
+CStalkerActionDetectAnomaly::CStalkerActionDetectAnomaly	(CStalker *object, LPCSTR action_name) :
 	inherited				(object,action_name)
 { }
 

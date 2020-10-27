@@ -14,7 +14,7 @@
 #include "HUDManager.h"//
 #include "PhysicsCommon.h"
 
-#include "ai/stalker/ai_stalker.h"
+#include "ai/stalker/Stalker.h"
 #include "CustomZone.h"
 #include "MathUtils.h"
 #include "group_hierarchy_holder.h"
@@ -724,7 +724,7 @@ void	CHelicopter::Hit(SHit* pHDS)
 	};
 	if (pHDS->who &&
 		(pHDS->who->CLS_ID == CLSID_OBJECT_ACTOR ||
-		 smart_cast<CAI_Stalker*>(pHDS->who) ||
+		 smart_cast<CStalker*>(pHDS->who) ||
 		 smart_cast<CCustomZone*>(pHDS->who))
 		)
 	{

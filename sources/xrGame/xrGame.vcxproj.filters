@@ -3699,9 +3699,6 @@
     <ClInclude Include="ai\trader\trader_animation.h">
       <Filter>AI\AMonsters\humans\trader</Filter>
     </ClInclude>
-    <ClInclude Include="Ai\Stalker\ai_stalker.h">
-      <Filter>AI\AMonsters\humans\stalker</Filter>
-    </ClInclude>
     <ClInclude Include="ai\stalker\ai_stalker_impl.h">
       <Filter>AI\AMonsters\humans\stalker</Filter>
     </ClInclude>
@@ -5967,6 +5964,9 @@
     <ClInclude Include="ScriptStorage_inline.h">
       <Filter>AI\AScript\ScriptStorage</Filter>
     </ClInclude>
+    <ClInclude Include="Ai\Stalker\Stalker.h">
+      <Filter>AI\AMonsters\humans\stalker</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="action_base_script.cpp">
@@ -6655,9 +6655,6 @@
     </ClCompile>
     <ClCompile Include="ai\trader\trader_animation.cpp">
       <Filter>AI\AMonsters\humans\trader</Filter>
-    </ClCompile>
-    <ClCompile Include="Ai\Stalker\ai_stalker.cpp">
-      <Filter>AI\AMonsters\humans\stalker</Filter>
     </ClCompile>
     <ClCompile Include="stalker_animation_callbacks.cpp">
       <Filter>AI\AMonsters\humans\stalker\AnimationManager</Filter>
@@ -8629,6 +8626,9 @@
     </ClCompile>
     <ClCompile Include="ScriptStorage.cpp">
       <Filter>AI\AScript\ScriptStorage</Filter>
+    </ClCompile>
+    <ClCompile Include="Ai\Stalker\Stalker.cpp">
+      <Filter>AI\AMonsters\humans\stalker</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

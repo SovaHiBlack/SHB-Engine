@@ -13,7 +13,7 @@
 #include "stalker_decision_space.h"
 #include "stalker_property_evaluators.h"
 #include "script_game_object.h"
-#include "ai/stalker/ai_stalker.h"
+#include "ai/stalker/Stalker.h"
 #include "stalker_movement_manager.h"
 #include "memory_manager.h"
 #include "enemy_manager.h"
@@ -21,14 +21,14 @@
 using namespace StalkerSpace;
 using namespace StalkerDecisionSpace;
 
-CStalkerKillWoundedPlanner::CStalkerKillWoundedPlanner	(CAI_Stalker *object, LPCSTR action_name) :
+CStalkerKillWoundedPlanner::CStalkerKillWoundedPlanner	(CStalker *object, LPCSTR action_name) :
 	inherited			(object,action_name)
 { }
 
 CStalkerKillWoundedPlanner::~CStalkerKillWoundedPlanner	()
 { }
 
-void CStalkerKillWoundedPlanner::setup					(CAI_Stalker *object, CPropertyStorage *storage)
+void CStalkerKillWoundedPlanner::setup					(CStalker *object, CPropertyStorage *storage)
 {
 	inherited::setup		(object,storage);
 

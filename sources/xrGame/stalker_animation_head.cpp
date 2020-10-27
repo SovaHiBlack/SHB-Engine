@@ -7,15 +7,16 @@
 ////////////////////////////////////////////////////////////////////////////
 
 #include "stdafx.h"
+
 #include "stalker_animation_manager.h"
-#include "ai/stalker/ai_stalker.h"
+#include "ai/stalker/Stalker.h"
 #include "ai/stalker/ai_stalker_space.h"
 #include "sound_player.h"
 #include "stalker_animation_data.h"
 
 void CStalkerAnimationManager::head_play_callback		(CBlend *blend)
 {
-	CAI_Stalker				*object = (CAI_Stalker*)blend->CallbackParam;
+	CStalker				*object = (CStalker*)blend->CallbackParam;
 	VERIFY					(object);
 
 	CStalkerAnimationPair	&pair = object->animation().head();

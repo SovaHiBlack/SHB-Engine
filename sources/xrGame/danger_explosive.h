@@ -13,17 +13,17 @@
 
 class CExplosive;
 class CGameObject;
-class CAI_Stalker;
+class CStalker;
 
 class CDangerExplosive {
 public:
 	const CExplosive	*m_grenade;
 	const CGameObject	*m_game_object;
-	CAI_Stalker			*m_reactor;
+	CStalker			*m_reactor;
 	u32					m_time;
 
 public:
-	IC					CDangerExplosive	(const CExplosive *grenade, const CGameObject *game_object, CAI_Stalker *reactor, u32 time);
+	IC					CDangerExplosive	(const CExplosive *grenade, const CGameObject *game_object, CStalker *reactor, u32 time);
 	IC	bool			operator==			(const CExplosive *grenade) const;
 		bool			operator==			(const u16 &id) const;
 };

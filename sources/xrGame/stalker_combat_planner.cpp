@@ -12,7 +12,7 @@
 #include "stalker_danger_property_evaluators.h"
 #include "stalker_decision_space.h"
 #include "stalker_property_evaluators.h"
-#include "ai/stalker/ai_stalker.h"
+#include "ai/stalker/Stalker.h"
 #include "ai/stalker/ai_stalker_impl.h"
 #include "script_game_object.h"
 #include "cover_evaluators.h"
@@ -37,13 +37,13 @@
 using namespace StalkerSpace;
 using namespace StalkerDecisionSpace;
 
-CStalkerCombatPlanner::CStalkerCombatPlanner	(CAI_Stalker *object, LPCSTR action_name) :
+CStalkerCombatPlanner::CStalkerCombatPlanner	(CStalker *object, LPCSTR action_name) :
 	inherited									(object,action_name)
 { }
 
 CStalkerCombatPlanner::~CStalkerCombatPlanner	()
 {
-	CAI_Stalker::on_best_cover_changed_delegate	temp;
+	CStalker::on_best_cover_changed_delegate	temp;
 	temp.bind									(this,&CStalkerCombatPlanner::on_best_cover_changed);
 	object().unsubscribe_on_best_cover_changed	(temp);
 }
@@ -56,7 +56,7 @@ void CStalkerCombatPlanner::on_best_cover_changed(const CCoverPoint *new_cover, 
 	CScriptActionPlanner::m_storage.set_property(eWorldPropertyEnemyDetoured,	false);
 }
 
-void CStalkerCombatPlanner::setup				(CAI_Stalker *object, CPropertyStorage *storage)
+void CStalkerCombatPlanner::setup				(CStalker *object, CPropertyStorage *storage)
 {
 	inherited::setup			(object,storage);
 
@@ -74,7 +74,7 @@ void CStalkerCombatPlanner::setup				(CAI_Stalker *object, CPropertyStorage *sto
 	add_evaluators			();
 	add_actions				();
 
-	CAI_Stalker::on_best_cover_changed_delegate		temp;
+	CStalker::on_best_cover_changed_delegate		temp;
 	temp.bind										(this,&CStalkerCombatPlanner::on_best_cover_changed);
 	this->object().subscribe_on_best_cover_changed	(temp);
 }
@@ -93,7 +93,7 @@ void CStalkerCombatPlanner::update				()
 
 //	const CEntityAlive				*enemy = object().memory().enemy().selected();
 //	VERIFY							(enemy);
-//	const CAI_Stalker				*stalker = smart_cast<const CAI_Stalker*>(enemy);
+//	const CStalker				*stalker = smart_cast<const CStalker*>(enemy);
 //	m_last_wounded					= stalker && stalker->wounded();
 }
 

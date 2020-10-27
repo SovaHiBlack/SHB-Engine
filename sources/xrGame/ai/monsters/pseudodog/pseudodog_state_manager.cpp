@@ -1,4 +1,5 @@
 #include "stdafx.h"
+
 #include "pseudodog.h"
 #include "pseudodog_state_manager.h"
 
@@ -8,7 +9,7 @@
 #include "../control_path_builder_base.h"
 
 #include "../../../actor.h"
-#include "../../stalker/ai_stalker.h"
+#include "../../stalker/Stalker.h"
 #include "../states/monster_state_rest.h"
 #include "../states/monster_state_attack.h"
 #include "../states/monster_state_panic.h"

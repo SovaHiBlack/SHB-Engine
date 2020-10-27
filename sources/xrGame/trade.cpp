@@ -2,7 +2,7 @@
 
 #include "Trade.h"
 #include "actor.h"
-#include "ai/stalker/ai_stalker.h"
+#include "ai/stalker/Stalker.h"
 #include "ai/trader/ai_trader.h"
 #include "Artefact.h"
 #include "inventory.h"
@@ -30,7 +30,7 @@ CTrade::CTrade(CInventoryOwner *p_io)
 	// Заполнить pThis
 	CAI_Trader *pTrader;
 	CActor *pActor;
-	CAI_Stalker *pStalker;
+	CStalker *pStalker;
 
 	// Определяем потомка этого экземпляра класса
 	pTrader = smart_cast<CAI_Trader *>(p_io);
@@ -43,7 +43,7 @@ CTrade::CTrade(CInventoryOwner *p_io)
 			pThis.Set(TT_ACTOR, pActor, p_io);
 		else 
 		{
-			pStalker = smart_cast<CAI_Stalker *>(p_io);
+			pStalker = smart_cast<CStalker *>(p_io);
 			if (pStalker) pThis.Set(TT_STALKER, pStalker, p_io);
 		}
 	}
@@ -78,7 +78,7 @@ bool CTrade::SetPartner(CEntity *p)
 {
 	CAI_Trader *pTrader;
 	CActor *pActor;
-	CAI_Stalker *pStalker;
+	CStalker *pStalker;
 
 	pTrader = smart_cast<CAI_Trader *>(p);
 	if (pTrader && (pTrader != pThis.base))  
@@ -90,7 +90,7 @@ bool CTrade::SetPartner(CEntity *p)
 			pPartner.Set(TT_ACTOR, pActor, pActor);
 		else 
 		{
-			pStalker = smart_cast<CAI_Stalker *>(p);
+			pStalker = smart_cast<CStalker *>(p);
 			if (pStalker && (pStalker != pThis.base)) 
 				pPartner.Set(TT_STALKER, pStalker, pStalker);
 			else return false;

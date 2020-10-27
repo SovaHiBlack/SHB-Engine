@@ -7,8 +7,9 @@
 ////////////////////////////////////////////////////////////////////////////
 
 #include "stdafx.h"
+
 #include "stalker_danger_in_direction_actions.h"
-#include "ai/stalker/ai_stalker.h"
+#include "ai/stalker/Stalker.h"
 #include "script_game_object.h"
 #include "stalker_movement_manager.h"
 #include "sight_manager.h"
@@ -30,13 +31,13 @@
 
 using namespace StalkerDecisionSpace;
 
-extern float current_cover	(CAI_Stalker *object);
+extern float current_cover	(CStalker *object);
 
 //////////////////////////////////////////////////////////////////////////
 // CStalkerActionDangerInDirectionTakeCover
 //////////////////////////////////////////////////////////////////////////
 
-CStalkerActionDangerInDirectionTakeCover::CStalkerActionDangerInDirectionTakeCover	(CAI_Stalker *object, LPCSTR action_name) :
+CStalkerActionDangerInDirectionTakeCover::CStalkerActionDangerInDirectionTakeCover	(CStalker *object, LPCSTR action_name) :
 	inherited				(object,action_name)
 { }
 
@@ -99,7 +100,7 @@ void CStalkerActionDangerInDirectionTakeCover::finalize							()
 // CStalkerActionDangerInDirectionLookOut
 //////////////////////////////////////////////////////////////////////////
 
-CStalkerActionDangerInDirectionLookOut::CStalkerActionDangerInDirectionLookOut	(CAI_Stalker *object, LPCSTR action_name) :
+CStalkerActionDangerInDirectionLookOut::CStalkerActionDangerInDirectionLookOut	(CStalker *object, LPCSTR action_name) :
 	inherited				(object,action_name)
 {
 	m_crouch_look_out_random.seed				(u32(CPU::QPC() & 0xffffffff));
@@ -177,7 +178,7 @@ void CStalkerActionDangerInDirectionLookOut::finalize							()
 // CStalkerActionDangerInDirectionHoldPosition
 //////////////////////////////////////////////////////////////////////////
 
-CStalkerActionDangerInDirectionHoldPosition::CStalkerActionDangerInDirectionHoldPosition	(CAI_Stalker *object, LPCSTR action_name) :
+CStalkerActionDangerInDirectionHoldPosition::CStalkerActionDangerInDirectionHoldPosition	(CStalker *object, LPCSTR action_name) :
 	inherited				(object,action_name)
 { }
 
@@ -238,7 +239,7 @@ void CStalkerActionDangerInDirectionHoldPosition::finalize						()
 // CStalkerActionDangerInDirectionDetour
 //////////////////////////////////////////////////////////////////////////
 
-CStalkerActionDangerInDirectionDetour::CStalkerActionDangerInDirectionDetour	(CAI_Stalker *object, LPCSTR action_name) :
+CStalkerActionDangerInDirectionDetour::CStalkerActionDangerInDirectionDetour	(CStalker *object, LPCSTR action_name) :
 	inherited				(object,action_name)
 { }
 
@@ -305,7 +306,7 @@ void CStalkerActionDangerInDirectionDetour::finalize							()
 // CStalkerActionDangerInDirectionSearch
 //////////////////////////////////////////////////////////////////////////
 
-CStalkerActionDangerInDirectionSearch::CStalkerActionDangerInDirectionSearch	(CAI_Stalker *object, LPCSTR action_name) :
+CStalkerActionDangerInDirectionSearch::CStalkerActionDangerInDirectionSearch	(CStalker *object, LPCSTR action_name) :
 	inherited				(object,action_name)
 { }
 

@@ -12,7 +12,7 @@
 #include "ai_space.h"
 #include "alife_simulator.h"
 
-#include "ai/stalker/ai_stalker.h"
+#include "ai/stalker/Stalker.h"
 #include "stalker_movement_manager.h"
 
 #include "sight_manager_space.h"
@@ -34,7 +34,7 @@ bool CScriptGameObject::is_body_turning		() const
 		return			(false);
 	}
 
-	CAI_Stalker			*stalker = smart_cast<CAI_Stalker*>(monster);
+	CStalker			*stalker = smart_cast<CStalker*>(monster);
 	if (!stalker)
 		return			(!fsimilar(monster->movement().body_orientation().target.yaw,monster->movement().body_orientation().current.yaw));
 	else
@@ -156,9 +156,9 @@ int CScriptGameObject::active_sound_count		()
 
 bool CScriptGameObject::wounded					() const
 {
-	const CAI_Stalker			*stalker = smart_cast<const CAI_Stalker *>(&object());
+	const CStalker			*stalker = smart_cast<const CStalker *>(&object());
 	if (!stalker) {
-		ai().script_engine().script_log		(ScriptStorage::eLuaMessageTypeError,"CAI_Stalker : cannot access class member wounded!");
+		ai().script_engine().script_log		(ScriptStorage::eLuaMessageTypeError,"CStalker : cannot access class member wounded!");
 		return					(false);
 	}
 
@@ -167,9 +167,9 @@ bool CScriptGameObject::wounded					() const
 
 void CScriptGameObject::wounded					(bool value)
 {
-	CAI_Stalker					*stalker = smart_cast<CAI_Stalker *>(&object());
+	CStalker					*stalker = smart_cast<CStalker *>(&object());
 	if (!stalker) {
-		ai().script_engine().script_log		(ScriptStorage::eLuaMessageTypeError,"CAI_Stalker : cannot access class member wounded!");
+		ai().script_engine().script_log		(ScriptStorage::eLuaMessageTypeError,"CStalker : cannot access class member wounded!");
 		return;
 	}
 
@@ -178,9 +178,9 @@ void CScriptGameObject::wounded					(bool value)
 
 CSightParams CScriptGameObject::sight_params	()
 {
-	CAI_Stalker						*stalker = smart_cast<CAI_Stalker*>(&object());
+	CStalker						*stalker = smart_cast<CStalker*>(&object());
 	if (!stalker) {
-		ai().script_engine().script_log			(ScriptStorage::eLuaMessageTypeError,"CAI_Stalker : cannot access class member sight_params!");
+		ai().script_engine().script_log			(ScriptStorage::eLuaMessageTypeError,"CStalker : cannot access class member sight_params!");
 
 		CSightParams				result;
 		result.m_object				= 0;

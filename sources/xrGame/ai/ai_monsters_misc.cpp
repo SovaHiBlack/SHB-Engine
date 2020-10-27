@@ -23,7 +23,7 @@
 #include "..\Level.h"
 #include "../agent_manager.h"
 #include "../agent_member_manager.h"
-#include "stalker/ai_stalker.h"
+#include "stalker/Stalker.h"
 
 bool bfGetActionSuccessProbability(GroupHierarchyHolder::MEMBER_REGISTRY &Members, const xr_vector<const CEntityAlive *> &VisibleEnemies, float fMinProbability, CBaseFunction &fSuccessProbabilityFunction)
 {
@@ -100,7 +100,7 @@ u32 dwfChooseAction(u32 dwActionRefreshRate, float fMinProbability0, float fMinP
 
 	const CCustomMonster					*monster = smart_cast<const CCustomMonster*>(tpEntity);
 	VERIFY									(monster);
-	const CAI_Stalker						*stalker = smart_cast<const CAI_Stalker*>(monster);
+	const CStalker						*stalker = smart_cast<const CStalker*>(monster);
 	const xr_vector<const CEntityAlive*>	&VisibleEnemies = monster->memory().enemy().objects();
 
 	GroupHierarchyHolder::MEMBER_REGISTRY	Members;
@@ -119,7 +119,7 @@ u32 dwfChooseAction(u32 dwActionRefreshRate, float fMinProbability0, float fMinP
 						continue;
 					}
 
-					const CAI_Stalker		*member = smart_cast<CAI_Stalker*>(Group.members()[k]);
+					const CStalker		*member = smart_cast<CStalker*>(Group.members()[k]);
 					if (!member) {
 						Members.push_back	(Group.members()[k]);
 						continue;

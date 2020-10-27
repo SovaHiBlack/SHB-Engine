@@ -7,23 +7,24 @@
 ////////////////////////////////////////////////////////////////////////////
 
 #include "stdafx.h"
+
 #include "stalker_anomaly_planner.h"
 #include "stalker_anomaly_actions.h"
 #include "stalker_decision_space.h"
 #include "stalker_property_evaluators.h"
-#include "ai/stalker/ai_stalker.h"
+#include "ai/stalker/Stalker.h"
 #include "script_game_object.h"
 
 using namespace StalkerDecisionSpace;
 
-CStalkerAnomalyPlanner::CStalkerAnomalyPlanner	(CAI_Stalker *object, LPCSTR action_name) :
+CStalkerAnomalyPlanner::CStalkerAnomalyPlanner	(CStalker *object, LPCSTR action_name) :
 	inherited									(object,action_name)
 { }
 
 CStalkerAnomalyPlanner::~CStalkerAnomalyPlanner	()
 { }
 
-void CStalkerAnomalyPlanner::setup				(CAI_Stalker *object, CPropertyStorage *storage)
+void CStalkerAnomalyPlanner::setup				(CStalker *object, CPropertyStorage *storage)
 {
 	inherited::setup		(object,storage);
 
