@@ -46,8 +46,7 @@ CUICustomEdit::CUICustomEdit()
 }
 
 CUICustomEdit::~CUICustomEdit()
-{
-}
+{ }
 
 void CUICustomEdit::SetTextColor(u32 color){
 	m_textColor[0] = color;
@@ -62,7 +61,7 @@ void CUICustomEdit::Init(float x, float y, float width, float height){
 	m_lines.SetWndSize(m_wndSize);
 }
 
-void CUICustomEdit::SetLightAnim(LPCSTR lanim)
+void CUICustomEdit::SetLightAnim(const char* lanim)
 {
 	if(lanim&&xr_strlen(lanim))
 		m_lanim	= LALib.FindItem(lanim);
@@ -387,12 +386,12 @@ void  CUICustomEdit::Draw()
 	}
 }
 
-void CUICustomEdit::SetText(LPCSTR str)
+void CUICustomEdit::SetText(const char* str)
 {
 	CUILinesOwner::SetText(str);
 }
 
-LPCSTR CUICustomEdit::GetText(){
+const char* CUICustomEdit::GetText(){
 	return CUILinesOwner::GetText();
 }
 

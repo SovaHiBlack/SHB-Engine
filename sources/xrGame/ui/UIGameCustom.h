@@ -23,7 +23,7 @@ struct SDrawStaticStruct :public IPureDestroyableObject{
 	void			Update();
 	CUIStatic*		wnd()		{return m_static;}
 	bool			IsActual();
-	bool operator ==(LPCSTR str){
+	bool operator ==(const char* str){
 		return (m_name == str);
 	}
 };
@@ -86,14 +86,14 @@ public:
 	virtual void		ReInitShownUI			() = 0;
 	virtual void		HideShownDialogs		(){};
 
-			void		AddCustomMessage		(LPCSTR id, float x, float y, float font_size, CGameFont *pFont, u16 alignment, u32 color);
-			void		AddCustomMessage		(LPCSTR id, float x, float y, float font_size, CGameFont *pFont, u16 alignment, u32 color/*, LPCSTR def_text*/, float flicker );
-			void		CustomMessageOut		(LPCSTR id, LPCSTR msg, u32 color);
-			void		RemoveCustomMessage		(LPCSTR id);
+			void		AddCustomMessage		(const char* id, float x, float y, float font_size, CGameFont *pFont, u16 alignment, u32 color);
+			void		AddCustomMessage		(const char* id, float x, float y, float font_size, CGameFont *pFont, u16 alignment, u32 color/*, const char* def_text*/, float flicker );
+			void		CustomMessageOut		(const char* id, const char* msg, u32 color);
+			void		RemoveCustomMessage		(const char* id);
 
-			SDrawStaticStruct*	AddCustomStatic		(LPCSTR id, bool bSingleInstance);
-			SDrawStaticStruct*	GetCustomStatic		(LPCSTR id);
-			void				RemoveCustomStatic	(LPCSTR id);
+			SDrawStaticStruct*	AddCustomStatic		(const char* id, bool bSingleInstance);
+			SDrawStaticStruct*	GetCustomStatic		(const char* id);
+			void				RemoveCustomStatic	(const char* id);
 
 	virtual	shared_str	shedule_Name				() const		{ return shared_str("CUIGameCustom"); };
 	virtual bool		shedule_Needed			()					{return true;};

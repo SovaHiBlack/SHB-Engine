@@ -25,7 +25,7 @@ using namespace StalkerSpace;
 
 const float start_fire_angle_difference	= PI_DIV_8;
 
-CStalkerActionCombatBase::CStalkerActionCombatBase	(CStalker *object, LPCSTR action_name) :
+CStalkerActionCombatBase::CStalkerActionCombatBase	(CStalker *object, const char* action_name) :
 	inherited	(object,action_name)
 { }
 

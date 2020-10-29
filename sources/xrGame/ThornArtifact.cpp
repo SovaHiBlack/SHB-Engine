@@ -16,7 +16,7 @@ CThornArtefact::~CThornArtefact(void)
 {
 }
 
-void CThornArtefact::Load(LPCSTR section) 
+void CThornArtefact::Load(const char* section)
 {
 	inherited::Load(section);
 }

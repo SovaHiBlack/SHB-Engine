@@ -16,10 +16,10 @@ public:
 					CUIEditKeyBind			(bool bPrim);
 	virtual			~CUIEditKeyBind			();
 	// options item
-	virtual void	Register				(LPCSTR entry, LPCSTR group);
+	virtual void	Register				(const char* entry, const char* group);
 	virtual void	SetCurrentValue			();
 	virtual void	SaveValue				();
-	virtual	void	OnMessage				(LPCSTR message);
+	virtual	void	OnMessage				(const char* message);
 	virtual bool	IsChanged				();
 
 	// CUIWindow methods
@@ -29,11 +29,11 @@ public:
 	virtual void	OnFocusLost				();
 	virtual bool	OnKeyboard				(int dik, EUIMessages keyboard_action);
 	// IUITextControl
-	virtual void	SetText					(LPCSTR text);
+	virtual void	SetText					(const char* text);
 
 protected:
 	void			BindAction2Key			();
-	virtual void	InitTexture				(LPCSTR texture, bool horizontal = true);
+	virtual void	InitTexture				(const char* texture, bool horizontal = true);
 
 	bool		m_bEditMode;
 	bool		m_bChanged;

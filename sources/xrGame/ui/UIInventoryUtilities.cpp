@@ -16,12 +16,12 @@
 #include "../game_base_space.h"
 #include "../actor.h"
 
-#define EQUIPMENT_ICONS  "ui\\ui_icon_equipment"
+#define EQUIPMENT_ICONS "ui\\ui_icon_equipment"
 
-const LPCSTR relationsLtxSection	= "game_relations";
-const LPCSTR ratingField			= "rating_names";
-const LPCSTR reputationgField		= "reputation_names";
-const LPCSTR goodwillField			= "goodwill_names";
+const char* relationsLtxSection	= "game_relations";
+const char* ratingField			= "rating_names";
+const char* reputationgField		= "reputation_names";
+const char* goodwillField			= "goodwill_names";
 
 //ref_shader	g_BuyMenuShader			= NULL;
 ref_shader	g_EquipmentIconsShader	= NULL;
@@ -245,7 +245,7 @@ const shared_str InventoryUtilities::GetDateAsString(ALife::_TIME_ID date, EDate
 	return bufDate;
 }
 
-LPCSTR InventoryUtilities::GetTimePeriodAsString(char* _buff, u32 buff_sz, ALife::_TIME_ID _from, ALife::_TIME_ID _to)
+const char* InventoryUtilities::GetTimePeriodAsString(char* _buff, u32 buff_sz, ALife::_TIME_ID _from, ALife::_TIME_ID _to)
 {
 	u32 year1,month1,day1,hours1,mins1,secs1,milisecs1;
 	u32 year2,month2,day2,hours2,mins2,secs2,milisecs2;
@@ -317,11 +317,11 @@ void InventoryUtilities::UpdateWeight(CUIStatic &wnd, bool withPrefix)
 
 //////////////////////////////////////////////////////////////////////////
 
-void LoadStrings(CharInfoStrings *container, LPCSTR section, LPCSTR field)
+void LoadStrings(CharInfoStrings *container, const char* section, const char* field)
 {
 	R_ASSERT(container);
 
-	LPCSTR				cfgRecord	= pSettings->r_string(section, field);
+	const char* cfgRecord	= pSettings->r_string(section, field);
 	u32					count		= _GetItemCount(cfgRecord);
 	R_ASSERT3			(count%2, "there're must be an odd number of elements", field);
 	string64			singleThreshold;
@@ -389,7 +389,7 @@ void InventoryUtilities::ClearCharacterInfoStrings()
 
 //////////////////////////////////////////////////////////////////////////
 
-LPCSTR InventoryUtilities::GetRankAsText(CHARACTER_RANK_VALUE rankID)
+const char* InventoryUtilities::GetRankAsText(CHARACTER_RANK_VALUE rankID)
 {
 	InitCharacterInfoStrings();
 	CharInfoStrings::const_iterator cit = charInfoRankStrings->upper_bound(rankID);
@@ -400,7 +400,7 @@ LPCSTR InventoryUtilities::GetRankAsText(CHARACTER_RANK_VALUE rankID)
 
 //////////////////////////////////////////////////////////////////////////
 
-LPCSTR InventoryUtilities::GetReputationAsText(CHARACTER_REPUTATION_VALUE rankID)
+const char* InventoryUtilities::GetReputationAsText(CHARACTER_REPUTATION_VALUE rankID)
 {
 	InitCharacterInfoStrings();
 
@@ -413,7 +413,7 @@ LPCSTR InventoryUtilities::GetReputationAsText(CHARACTER_REPUTATION_VALUE rankID
 
 //////////////////////////////////////////////////////////////////////////
 
-LPCSTR InventoryUtilities::GetGoodwillAsText(CHARACTER_GOODWILL goodwill)
+const char* InventoryUtilities::GetGoodwillAsText(CHARACTER_GOODWILL goodwill)
 {
 	InitCharacterInfoStrings();
 
@@ -424,11 +424,10 @@ LPCSTR InventoryUtilities::GetGoodwillAsText(CHARACTER_GOODWILL goodwill)
 	return cit->second.c_str();
 }
 
-
 //////////////////////////////////////////////////////////////////////////
 // специальная функция для передачи info_portions при нажатии кнопок UI 
 // (для tutorial)
-void InventoryUtilities::SendInfoToActor(LPCSTR info_id)
+void InventoryUtilities::SendInfoToActor(const char* info_id)
 {
 	CActor* actor = smart_cast<CActor*>(Level().CurrentEntity());
 	if(actor)

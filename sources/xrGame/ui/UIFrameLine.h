@@ -37,8 +37,8 @@ protected:
 
 public:
 	CUIFrameLine( );
-	void		Init(LPCSTR base_name, float x, float y, float size, bool horizontal, DWORD align);
-	void		InitTexture(LPCSTR texture);
+	void		Init(const char* base_name, float x, float y, float size, bool horizontal, DWORD align);
+	void		InitTexture(const char* texture);
 	void		SetColor(u32 cl);
 	IC void		SetPos(float left, float top)
 	{

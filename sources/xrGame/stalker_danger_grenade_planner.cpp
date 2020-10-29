@@ -17,7 +17,7 @@
 
 using namespace StalkerDecisionSpace;
 
-CStalkerDangerGrenadePlanner::CStalkerDangerGrenadePlanner	(CStalker *object, LPCSTR action_name) :
+CStalkerDangerGrenadePlanner::CStalkerDangerGrenadePlanner	(CStalker *object, const char* action_name) :
 	inherited				(object,action_name)
 { }
 

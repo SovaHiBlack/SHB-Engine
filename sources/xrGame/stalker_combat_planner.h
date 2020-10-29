@@ -34,7 +34,7 @@ public:
 			void xr_stdcall	on_best_cover_changed	(const CCoverPoint *new_cover, const CCoverPoint *old_cover);
 
 public:
-						CStalkerCombatPlanner		(CStalker *object = 0, LPCSTR action_name = "");
+						CStalkerCombatPlanner		(CStalker *object = 0, const char* action_name = "");
 	virtual				~CStalkerCombatPlanner		();
 	virtual	void		setup						(CStalker *object, CPropertyStorage *storage);
 	virtual void		update						();

@@ -15,7 +15,7 @@ CUIFrameLine::CUIFrameLine( ) : uFlags(0), iSize(0), bHorizontalOrientation(true
 	iPos.set(0, 0);
 }
 
-void CUIFrameLine::Init(LPCSTR base_name, float x, float y, float size, bool horizontal, DWORD align)
+void CUIFrameLine::Init(const char* base_name, float x, float y, float size, bool horizontal, DWORD align)
 {
 	SetPos(x, y);
 	SetSize(size);
@@ -25,7 +25,7 @@ void CUIFrameLine::Init(LPCSTR base_name, float x, float y, float size, bool hor
 	InitTexture(base_name);
 }
 
-void CUIFrameLine::InitTexture(LPCSTR texture)
+void CUIFrameLine::InitTexture(const char* texture)
 {
 	string256 buf;
 

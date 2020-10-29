@@ -24,7 +24,7 @@ public:
 	virtual ~CUIInteractiveBackground();
 
 	virtual void Init(float x, float y, float width, float height);
-	virtual void Init(LPCSTR texture_e, float x, float y, float width, float height);
+	virtual void Init(const char* texture_e, float x, float y, float width, float height);
 			T*	 CreateE();
 			T*	 CreateD();
 			T*	 CreateT();
@@ -33,10 +33,10 @@ public:
 			T*	 GetD();
 			T*	 GetT();
 			T*	 GetH();
-	virtual void InitEnabledState(LPCSTR texture_e);
-	virtual void InitDisabledState(LPCSTR texture_d);
-	virtual void InitHighlightedState(LPCSTR texture_h);
-	virtual void InitTouchedState(LPCSTR texture_t);
+	virtual void InitEnabledState(const char* texture_e);
+	virtual void InitDisabledState(const char* texture_d);
+	virtual void InitHighlightedState(const char* texture_h);
+	virtual void InitTouchedState(const char* texture_t);
 	virtual void SetState(UIState state);
 	virtual void Draw();
 
@@ -71,7 +71,7 @@ void CUIInteractiveBackground<T>::Init(float x, float y, float width, float heig
 }
 
 template <class T>
-void CUIInteractiveBackground<T>::Init(LPCSTR texture_e, float x, float y, float width, float height){
+void CUIInteractiveBackground<T>::Init(const char* texture_e, float x, float y, float width, float height){
 	CUIWindow::Init(x, y, width, height);
 
 	InitEnabledState(texture_e);
@@ -154,7 +154,7 @@ T*	 CUIInteractiveBackground<T>::GetH(){
 }
 
 template <class T>
-void CUIInteractiveBackground<T>::InitEnabledState(LPCSTR texture_e){
+void CUIInteractiveBackground<T>::InitEnabledState(const char* texture_e){
 	Frect r = GetWndRect();
 
 	if (!m_stateEnabled)
@@ -170,7 +170,7 @@ void CUIInteractiveBackground<T>::InitEnabledState(LPCSTR texture_e){
 }
 
 template <class T>
-void CUIInteractiveBackground<T>::InitDisabledState(LPCSTR texture_d){
+void CUIInteractiveBackground<T>::InitDisabledState(const char* texture_d){
 	Frect r = GetWndRect();
 
 	if (!m_stateDisabled)
@@ -184,7 +184,7 @@ void CUIInteractiveBackground<T>::InitDisabledState(LPCSTR texture_d){
 }
 
 template <class T>
-void CUIInteractiveBackground<T>::InitHighlightedState(LPCSTR texture_h){
+void CUIInteractiveBackground<T>::InitHighlightedState(const char* texture_h){
 	Frect r = GetWndRect();
     
 	if (!m_stateHighlighted)
@@ -198,7 +198,7 @@ void CUIInteractiveBackground<T>::InitHighlightedState(LPCSTR texture_h){
 }
 
 template <class T>
-void CUIInteractiveBackground<T>::InitTouchedState(LPCSTR texture_d){
+void CUIInteractiveBackground<T>::InitTouchedState(const char* texture_d){
 	Frect r = GetWndRect();
 
     if (!m_stateTouched)

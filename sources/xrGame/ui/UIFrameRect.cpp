@@ -15,7 +15,7 @@ CUIFrameRect::CUIFrameRect()
 }
 //--------------------------------------------------------------------
 
-void CUIFrameRect::Init(LPCSTR texture, float x, float y, float w, float h)//, DWORD align)
+void CUIFrameRect::Init(const char* texture, float x, float y, float w, float h)//, DWORD align)
 {
 	//SetPos			(x,y);
 	//SetSize			(w,h);
@@ -24,7 +24,7 @@ void CUIFrameRect::Init(LPCSTR texture, float x, float y, float w, float h)//, D
 	InitTexture(texture);
 }
 
-void CUIFrameRect::InitTexture(LPCSTR texture){
+void CUIFrameRect::InitTexture(const char* texture){
 	string_path		fn,buf;
 	strcpy			(buf,texture); if (strext(buf)) *strext(buf)=0;
 
@@ -32,7 +32,7 @@ void CUIFrameRect::InitTexture(LPCSTR texture){
 		Fvector4	v;
 		//uFlags.set	(flSingleTex,TRUE);
 		CIniFile* ini= CIniFile::Create(fn,TRUE);
-		LPCSTR sh	= ini->r_string("frame","shader");
+		const char* sh	= ini->r_string("frame","shader");
 		frame[fmBK].CreateShader(texture,sh);
 		frame[fmL].CreateShader	(texture,sh);
 		frame[fmR].CreateShader	(texture,sh);

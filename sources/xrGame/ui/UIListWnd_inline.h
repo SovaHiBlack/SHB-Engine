@@ -4,8 +4,7 @@
 #pragma once
 
 template <class Element>
-bool CUIListWnd::AddItem(LPCSTR  str, const float shift, void* pData,
-						 int value, int insertBeforeIdx)
+bool CUIListWnd::AddItem(const char* str, const float shift, void* pData, int value, int insertBeforeIdx)
 {
 	//создать новый элемент и добавить его в список
 	Element* pItem = NULL;

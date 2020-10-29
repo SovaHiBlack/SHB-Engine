@@ -37,7 +37,7 @@ CUIItemInfo::~CUIItemInfo()
 	xr_delete					(UIArtefactParams);
 }
 
-void CUIItemInfo::Init(LPCSTR xml_name){
+void CUIItemInfo::Init(const char* xml_name){
 
 	CUIXml						uiXml;
 	bool xml_result				= uiXml.Init("$game_config$", "ui", xml_name);
@@ -125,7 +125,7 @@ void CUIItemInfo::Init(LPCSTR xml_name){
 	xml_init.InitAutoStaticGroup	(uiXml, "auto", 0, this);
 }
 
-void CUIItemInfo::Init(float x, float y, float width, float height, LPCSTR xml_name)
+void CUIItemInfo::Init(float x, float y, float width, float height, const char* xml_name)
 {
 	inherited::Init	(x, y, width, height);
     Init			(xml_name);

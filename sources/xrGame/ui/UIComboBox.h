@@ -26,7 +26,7 @@ public:
 	virtual void 		SeveBackUpValue( );
 	virtual void 		Undo( );
 
-	LPCSTR		GetText( );
+	const char* GetText( );
 
 	// methods
 	CUIListBox* GetListWnd( );
@@ -35,8 +35,8 @@ public:
 	{
 		m_list.SetFixedScrollBar(bVScroll);
 	};
-//.	virtual void		AddItem					(LPCSTR str, bool bSelected);
-	CUIListBoxItem* AddItem_(LPCSTR str, int _data);
+//.	virtual void		AddItem					(const char* str, bool bSelected);
+	CUIListBoxItem* AddItem_(const char* str, int _data);
 	virtual void		Init(float x, float y, float width);
 	void		SetItem(int i);
 

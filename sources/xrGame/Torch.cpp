@@ -76,7 +76,7 @@ IC bool CTorch::can_use_dynamic_lights	()
 	return					(owner->can_use_dynamic_lights());
 }
 
-void CTorch::Load(LPCSTR section) 
+void CTorch::Load(const char* section)
 {
 	inherited::Load			(section);
 	light_trace_bone		= pSettings->r_string(section,"light_trace_bone");
@@ -123,8 +123,8 @@ void CTorch::SwitchNightVision(bool vision_on)
 	if(!pA)					return;
 	bool bPlaySoundFirstPerson = (pA == Level().CurrentViewEntity());
 
-	LPCSTR disabled_names	= pSettings->r_string(cNameSect(),"disabled_maps");
-	LPCSTR curr_map			= *Level().name();
+	const char* disabled_names	= pSettings->r_string(cNameSect(),"disabled_maps");
+	const char* curr_map			= *Level().name();
 	u32 cnt					= _GetItemCount(disabled_names);
 	bool b_allow			= true;
 	string512				tmp;

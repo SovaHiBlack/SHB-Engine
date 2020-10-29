@@ -68,7 +68,7 @@ void DoStackTrace ( LPTSTR szString  ,
 
 // The function that does the real assertions.
 BOOL __stdcall RealAssert  ( DWORD  dwOverrideOpts  ,
-                             LPCSTR szMsg           ,
+                            const char* szMsg           ,
                              BOOL   bAllowHalts      ) ;
 
 /*//////////////////////////////////////////////////////////////////////
@@ -105,8 +105,8 @@ BOOL  __stdcall
 
 BOOL  __stdcall
     DiagAssertA ( DWORD  dwOverrideOpts ,
-                  LPCSTR szMsg          ,
-                  LPCSTR szFile         ,
+                 const char* szMsg          ,
+                 const char* szFile         ,
                   DWORD  dwLine          )
 {
     // First, save off the last error value.
@@ -131,7 +131,7 @@ BOOL  __stdcall
 BOOL  __stdcall
     DiagAssertW ( DWORD     dwOverrideOpts  ,
                   LPCWSTR   szMsg           ,
-                  LPCSTR    szFile          ,
+                 const char* szFile          ,
                   DWORD     dwLine           )
 {
     // First, save off the last error value.
@@ -156,7 +156,7 @@ BOOL  __stdcall
 BOOL  __stdcall
     DiagAssertVB ( DWORD   dwOverrideOpts  ,
                    BOOL    bAllowHalts     ,
-                   LPCSTR  szMsg            )
+                  const char* szMsg            )
 {
     return ( RealAssert ( dwOverrideOpts , szMsg , bAllowHalts ) ) ;
 }
@@ -166,7 +166,7 @@ BOOL  __stdcall
 
 // The code that does the real assertion work.
 BOOL __stdcall RealAssert  ( DWORD  dwOverrideOpts  ,
-                             LPCSTR szMsg           ,
+                            const char* szMsg           ,
                              BOOL   bAllowHalts      )
 {
     // The buffer used for the final message text.
@@ -339,7 +339,7 @@ HANDLE  __stdcall
 }
 
 void 
-    DiagOutputA ( LPCSTR szFmt , ... )
+    DiagOutputA (const char* szFmt , ... )
 {
     // Never corrupt the last error value.
     DWORD dwLastError = GetLastError ( ) ;
@@ -401,7 +401,7 @@ void
 }
 
 void  __stdcall
-    DiagOutputVB ( LPCSTR szMsg )
+    DiagOutputVB (const char* szMsg )
 {
     DiagOutputA ( szMsg ) ;
 }

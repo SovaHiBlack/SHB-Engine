@@ -851,14 +851,13 @@ bool CUIMainIngameWnd::OnKeyboardPress(int dik)
 	return false;
 }
 
-
 void CUIMainIngameWnd::RenderQuickInfos()
 {
 	if (!m_pActor)
 		return;
 
 	static CGameObject *pObject			= NULL;
-	LPCSTR actor_action					= m_pActor->GetDefaultActionForObject();
+	const char* actor_action					= m_pActor->GetDefaultActionForObject();
 	UIStaticQuickHelp.Show				(NULL!=actor_action);
 
 	if(NULL!=actor_action){
@@ -942,7 +941,6 @@ void CUIMainIngameWnd::TurnOffWarningIcon(EWarningIcons icon)
 	SetWarningIconColor(icon, 0x00ffffff);
 }
 
-
 void CUIMainIngameWnd::SetFlashIconState_(EFlashingIcons type, bool enable)
 {
 	// ¬ключаем анимацию требуемой иконки
@@ -953,7 +951,7 @@ void CUIMainIngameWnd::SetFlashIconState_(EFlashingIcons type, bool enable)
 
 void CUIMainIngameWnd::InitFlashingIcons(CUIXml* node)
 {
-	LPCSTR const flashingIconNodeName = "flashing_icon";
+	const char* flashingIconNodeName = "flashing_icon";
 	int staticsCount = node->GetNodesNum("", 0, flashingIconNodeName);
 
 	CUIXmlInit xml_init;
@@ -1182,7 +1180,7 @@ void test_key	(int dik)
 }
 /*
 D3DCOLOR _clr	= D3DXCOLOR( 1.0f, 0.0f, 0.0f, 1.0f );
-LPCSTR _str		= "This is a trivial call to ID3DXFont::DrawText";
+const char* _str		= "This is a trivial call to ID3DXFont::DrawText";
 int _len		= 43;
 */
 void test_draw	()

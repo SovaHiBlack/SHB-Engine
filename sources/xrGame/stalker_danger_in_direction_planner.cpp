@@ -19,7 +19,7 @@
 
 using namespace StalkerDecisionSpace;
 
-CStalkerDangerInDirectionPlanner::CStalkerDangerInDirectionPlanner	(CStalker *object, LPCSTR action_name) :
+CStalkerDangerInDirectionPlanner::CStalkerDangerInDirectionPlanner	(CStalker *object, const char* action_name) :
 	inherited				(object,action_name)
 { }
 

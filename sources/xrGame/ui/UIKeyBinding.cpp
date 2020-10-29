@@ -16,7 +16,7 @@ CUIKeyBinding::CUIKeyBinding()
 	AttachChild			(&m_frame);
 }
 
-void CUIKeyBinding::InitFromXml(CUIXml& xml_doc, LPCSTR path)
+void CUIKeyBinding::InitFromXml(CUIXml& xml_doc, const char* path)
 {
 	CUIXmlInit::InitWindow		(xml_doc, path, 0, this);
 	string256					buf;
@@ -31,7 +31,7 @@ void CUIKeyBinding::InitFromXml(CUIXml& xml_doc, LPCSTR path)
 	FillUpList					(xml_doc, path);
 }
 
-void CUIKeyBinding::FillUpList(CUIXml& xml_doc_ui, LPCSTR path_ui)
+void CUIKeyBinding::FillUpList(CUIXml& xml_doc_ui, const char* path_ui)
 {
 	string256		buf;
 	CUIXml			xml_doc;
@@ -105,7 +105,7 @@ void CUIKeyBinding::CheckStructure(CUIXml& xml_doc)
 	
 	for (int i=0; true; i++)
 	{
-		LPCSTR action_name = actions[i].action_name;
+		const char* action_name = actions[i].action_name;
 		if (action_name)
 		{
 			if (IsActionExist(action_name, xml_doc))
@@ -134,7 +134,7 @@ void CUIKeyBinding::CheckStructure(CUIXml& xml_doc)
 	}
 }
 
-bool CUIKeyBinding::IsActionExist(LPCSTR action, CUIXml& xml_doc)
+bool CUIKeyBinding::IsActionExist(const char* action, CUIXml& xml_doc)
 {
 	bool ret = false;
 	int groupsCount = xml_doc.GetNodesNum("",0,"group");

@@ -143,7 +143,7 @@ HMODULE * /**/ __stdcall
 typedef struct tag_HOOKFUNCDESCA
 {
     // The name of the function to hook.
-    LPCSTR szFunc   ;
+    const char* szFunc   ;
     // The procedure to blast in.
     PROC   pProc    ;
 } HOOKFUNCDESCA , * LPHOOKFUNCDESCA ;
@@ -209,7 +209,7 @@ RETURNS         :
 ----------------------------------------------------------------------*/
 BOOL  __stdcall
         HookImportedFunctionsByName ( HMODULE         hModule     ,
-                                      LPCSTR          szImportMod ,
+                                     const char* szImportMod ,
                                       UINT            uiCount     ,
                                       LPHOOKFUNCDESCA paHookArray ,
                                       PROC *          paOrigFuncs ,

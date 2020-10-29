@@ -22,7 +22,7 @@ private:
 	bool				m_direction_sight;
 
 public:
-						CStalkerActionDangerUnknownTakeCover	(CStalker *object, LPCSTR action_name = "");
+						CStalkerActionDangerUnknownTakeCover	(CStalker *object, const char* action_name = "");
 	virtual void		initialize								();
 	virtual void		execute									();
 	virtual void		finalize								();
@@ -37,7 +37,7 @@ protected:
 	typedef CStalkerActionCombatBase inherited;
 
 public:
-						CStalkerActionDangerUnknownLookAround	(CStalker *object, LPCSTR action_name = "");
+						CStalkerActionDangerUnknownLookAround	(CStalker *object, const char* action_name = "");
 	virtual void		initialize								();
 	virtual void		execute									();
 	virtual void		finalize								();
@@ -52,7 +52,7 @@ protected:
 	typedef CStalkerActionCombatBase inherited;
 
 public:
-						CStalkerActionDangerUnknownSearch	(CStalker *object, LPCSTR action_name = "");
+						CStalkerActionDangerUnknownSearch	(CStalker *object, const char* action_name = "");
 	virtual void		initialize							();
 	virtual void		execute								();
 	virtual void		finalize							();

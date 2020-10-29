@@ -81,7 +81,7 @@ void CUIComboBox::Init(float x, float y, float width, float height)
 	this->Init(x, y, width);
 }
 
-CUIListBoxItem* CUIComboBox::AddItem_(LPCSTR str, int _data)
+CUIListBoxItem* CUIComboBox::AddItem_(const char* str, int _data)
 {
 	R_ASSERT2(m_bInited, "Can't add item to ComboBox before Initialization");
 	CUIListBoxItem* itm = m_list.AddItem(str);
@@ -117,7 +117,7 @@ void CUIComboBox::SetCurrentValue( )
 		tok++;
 	}
 
-	LPCSTR cur_val = *CStringTable( ).translate(GetOptTokenValue( ));
+	const char* cur_val = *CStringTable( ).translate(GetOptTokenValue( ));
 	m_text.SetText(cur_val);
 	m_list.SetSelectedText(cur_val);
 
@@ -153,7 +153,7 @@ bool CUIComboBox::IsChanged( )
 */
 }
 
-LPCSTR CUIComboBox::GetText( )
+const char* CUIComboBox::GetText( )
 {
 	return m_text.GetText( );
 }
@@ -330,7 +330,7 @@ void CUIComboBox::script_register(lua_State* L)
 		.def("CurrentID", &CUIComboBox::CurrentID)
 		.def("SetCurrentID", &CUIComboBox::SetItem)
 
-//		.def("AddItem",				(void (CUIComboBox::*)(LPCSTR, bool)) CUIComboBox::AddItem)
-//		.def("AddItem",				(void (CUIComboBox::*)(LPCSTR)) CUIComboBox::AddItem)
+//		.def("AddItem",				(void (CUIComboBox::*)(const char*, bool)) CUIComboBox::AddItem)
+//		.def("AddItem",				(void (CUIComboBox::*)(const char*)) CUIComboBox::AddItem)
 		];
 }

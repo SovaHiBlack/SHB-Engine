@@ -19,7 +19,7 @@ protected:
 	typedef CStalkerActionCombatBase inherited;
 
 public:
-						CStalkerActionReachWounded	(CStalker *object, LPCSTR action_name = "");
+						CStalkerActionReachWounded	(CStalker *object, const char* action_name = "");
 	virtual void		initialize					();
 	virtual void		execute						();
 	virtual void		finalize					();
@@ -37,7 +37,7 @@ private:
 //	float				m_speed;
 
 public:
-						CStalkerActionAimWounded	(CStalker *object, LPCSTR action_name = "");
+						CStalkerActionAimWounded	(CStalker *object, const char* action_name = "");
 	virtual void		initialize					();
 	virtual void		execute						();
 	virtual void		finalize					();
@@ -52,7 +52,7 @@ protected:
 	typedef CStalkerActionCombatBase inherited;
 
 public:
-						CStalkerActionPrepareWounded(CStalker *object, LPCSTR action_name = "");
+						CStalkerActionPrepareWounded(CStalker *object, const char* action_name = "");
 	virtual void		initialize					();
 	virtual void		execute						();
 	virtual void		finalize					();
@@ -67,7 +67,7 @@ protected:
 	typedef CStalkerActionCombatBase inherited;
 
 public:
-						CStalkerActionKillWounded	(CStalker *object, LPCSTR action_name = "");
+						CStalkerActionKillWounded	(CStalker *object, const char* action_name = "");
 	virtual void		initialize					();
 	virtual void		execute						();
 	virtual void		finalize					();
@@ -82,7 +82,7 @@ protected:
 	typedef CStalkerActionCombatBase inherited;
 
 public:
-						CStalkerActionPauseAfterKill(CStalker *object, LPCSTR action_name = "");
+						CStalkerActionPauseAfterKill(CStalker *object, const char* action_name = "");
 	virtual void		initialize					();
 	virtual void		execute						();
 };

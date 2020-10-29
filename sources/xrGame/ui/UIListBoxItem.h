@@ -24,8 +24,8 @@ public:
 			void		SetData(void* data);
 			void*		GetData();
 
-		CUIStatic*		AddField(LPCSTR txt, float len, LPCSTR key = "");
-		LPCSTR			GetField(LPCSTR key);
+		CUIStatic*		AddField(const char* txt, float len, const char* key = "");
+		const char* GetField(const char* key);
 
 protected:
 			float		FieldsLength();

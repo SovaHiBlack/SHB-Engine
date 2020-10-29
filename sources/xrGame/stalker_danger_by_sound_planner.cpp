@@ -17,7 +17,7 @@
 
 using namespace StalkerDecisionSpace;
 
-CStalkerDangerBySoundPlanner::CStalkerDangerBySoundPlanner	(CStalker *object, LPCSTR action_name) :
+CStalkerDangerBySoundPlanner::CStalkerDangerBySoundPlanner	(CStalker *object, const char* action_name) :
 	inherited				(object,action_name)
 { }
 

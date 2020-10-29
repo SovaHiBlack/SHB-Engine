@@ -67,7 +67,7 @@ bool should_process	(CStalker &object, const CEntityAlive *enemy)
 // CStalkerActionReachWounded
 //////////////////////////////////////////////////////////////////////////
 
-CStalkerActionReachWounded::CStalkerActionReachWounded		(CStalker *object, LPCSTR action_name) :
+CStalkerActionReachWounded::CStalkerActionReachWounded		(CStalker *object, const char* action_name) :
 	inherited				(object, action_name)
 { }
 
@@ -148,7 +148,7 @@ void CStalkerActionReachWounded::execute					()
 // CStalkerActionAimWounded
 //////////////////////////////////////////////////////////////////////////
 
-CStalkerActionAimWounded::CStalkerActionAimWounded	(CStalker *object, LPCSTR action_name) :
+CStalkerActionAimWounded::CStalkerActionAimWounded	(CStalker *object, const char* action_name) :
 	inherited				(object, action_name)
 { }
 
@@ -212,7 +212,7 @@ void CStalkerActionAimWounded::finalize					()
 // CStalkerActionPrepareWounded
 //////////////////////////////////////////////////////////////////////////
 
-CStalkerActionPrepareWounded::CStalkerActionPrepareWounded	(CStalker *object, LPCSTR action_name) :
+CStalkerActionPrepareWounded::CStalkerActionPrepareWounded	(CStalker *object, const char* action_name) :
 	inherited				(object, action_name)
 { }
 
@@ -267,7 +267,7 @@ void CStalkerActionPrepareWounded::execute					()
 // CStalkerActionKillWounded
 //////////////////////////////////////////////////////////////////////////
 
-CStalkerActionKillWounded::CStalkerActionKillWounded		(CStalker *object, LPCSTR action_name) :
+CStalkerActionKillWounded::CStalkerActionKillWounded		(CStalker *object, const char* action_name) :
 	inherited				(object, action_name)
 { }
 
@@ -327,7 +327,7 @@ void CStalkerActionKillWounded::execute					()
 // CStalkerActionPauseAfterKill
 //////////////////////////////////////////////////////////////////////////
 
-CStalkerActionPauseAfterKill::CStalkerActionPauseAfterKill	(CStalker *object, LPCSTR action_name) :
+CStalkerActionPauseAfterKill::CStalkerActionPauseAfterKill	(CStalker *object, const char* action_name) :
 	inherited				(object, action_name)
 { }
 

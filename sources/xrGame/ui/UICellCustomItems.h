@@ -37,7 +37,7 @@ protected:
 	void						CreateIcon					(eAddonType);
 	void						DestroyIcon					(eAddonType);
 	CUIStatic*					GetIcon						(eAddonType);
-	void						InitAddon					(CUIStatic* s, LPCSTR section, Fvector2 offset);
+	void						InitAddon					(CUIStatic* s, const char* section, Fvector2 offset);
 	bool						is_scope					();
 	bool						is_silencer					();
 	bool						is_launcher					();
@@ -59,6 +59,6 @@ class CBuyItemCustomDrawCell :public ICustomDrawCell
 	string16			m_string;
 
 public:
-						CBuyItemCustomDrawCell	(LPCSTR str, CGameFont* pFont);
+						CBuyItemCustomDrawCell	(const char* str, CGameFont* pFont);
 	virtual void		OnDraw					(CUICellItem* cell);
 };

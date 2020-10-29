@@ -21,7 +21,7 @@ protected:
 			void		add_actions						();
 
 public:
-						CStalkerDangerBySoundPlanner	(CStalker *object = 0, LPCSTR action_name = "");
+						CStalkerDangerBySoundPlanner	(CStalker *object = 0, const char* action_name = "");
 	virtual	void		setup							(CStalker *object, CPropertyStorage *storage);
 	virtual void		initialize						();
 	virtual void		update							();

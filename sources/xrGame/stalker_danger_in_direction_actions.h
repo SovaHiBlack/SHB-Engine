@@ -22,7 +22,7 @@ private:
 	bool				m_direction_sight;
 
 public:
-						CStalkerActionDangerInDirectionTakeCover	(CStalker *object, LPCSTR action_name = "");
+						CStalkerActionDangerInDirectionTakeCover	(CStalker *object, const char* action_name = "");
 	virtual void		initialize									();
 	virtual void		execute										();
 	virtual void		finalize									();
@@ -40,7 +40,7 @@ private:
 	CRandom32			m_crouch_look_out_random;
 
 public:
-						CStalkerActionDangerInDirectionLookOut		(CStalker *object, LPCSTR action_name = "");
+						CStalkerActionDangerInDirectionLookOut		(CStalker *object, const char* action_name = "");
 	virtual void		initialize									();
 	virtual void		execute										();
 	virtual void		finalize									();
@@ -55,7 +55,7 @@ protected:
 	typedef CStalkerActionCombatBase inherited;
 
 public:
-						CStalkerActionDangerInDirectionHoldPosition	(CStalker *object, LPCSTR action_name = "");
+						CStalkerActionDangerInDirectionHoldPosition	(CStalker *object, const char* action_name = "");
 	virtual void		initialize									();
 	virtual void		execute										();
 	virtual void		finalize									();
@@ -70,7 +70,7 @@ protected:
 	typedef CStalkerActionCombatBase inherited;
 
 public:
-						CStalkerActionDangerInDirectionDetour		(CStalker *object, LPCSTR action_name = "");
+						CStalkerActionDangerInDirectionDetour		(CStalker *object, const char* action_name = "");
 	virtual void		initialize									();
 	virtual void		execute										();
 	virtual void		finalize									();
@@ -85,7 +85,7 @@ protected:
 	typedef CStalkerActionCombatBase inherited;
 
 public:
-						CStalkerActionDangerInDirectionSearch	(CStalker *object, LPCSTR action_name = "");
+						CStalkerActionDangerInDirectionSearch	(CStalker *object, const char* action_name = "");
 	virtual void		initialize								();
 	virtual void		execute									();
 	virtual void		finalize								();

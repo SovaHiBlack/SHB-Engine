@@ -145,12 +145,12 @@ CStalkerMovementManager::CStalkerMovementManager	(CStalker *object) :
 CStalkerMovementManager::~CStalkerMovementManager	()
 { }
 
-void CStalkerMovementManager::Load					(LPCSTR section)
+void CStalkerMovementManager::Load					(const char* section)
 {
 	inherited::Load				(section);
 }
 
-void CStalkerMovementManager::reload				(LPCSTR section)
+void CStalkerMovementManager::reload				(const char* section)
 {
 	inherited::reload			(section);
 	m_velocities				= &stalker_velocity_holder().collection(pSettings->r_string(section,"movement_speeds"));

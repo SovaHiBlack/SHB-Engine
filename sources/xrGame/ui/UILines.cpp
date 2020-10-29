@@ -66,7 +66,7 @@ void CUILines::Init(float x, float y, float width, float heigt){
 	CUISimpleWindow::Init(x, y, width, heigt);
 }
 
-void CUILines::SetText(LPCSTR text){
+void CUILines::SetText(const char* text){
 	
 	if (!m_pFont)
         m_pFont = UI()->Font()->pFontLetterica16Russian;
@@ -115,7 +115,7 @@ void CUILines::DelLeftChar(){
 	}	
 }
 
-LPCSTR CUILines::GetText(){
+const char* CUILines::GetText(){
 	return m_text.c_str();
 }
 
@@ -201,7 +201,7 @@ void CUILines::ParseText(){
 		VERIFY( vsz );
 		if ( ( vsz > 1 ) && ( ! bNewLines ) ) { // only colored line, pizdets
 			for ( int i = 0 ; i < vsz ; i++ ) {
-				LPCSTR pszText = line->m_subLines[i].m_text.c_str();
+				const char* pszText = line->m_subLines[i].m_text.c_str();
 				const u32 tcolor = line->m_subLines[i].m_color;
 				VERIFY( pszText );
 				tmp_line.AddSubLine( pszText , tcolor );
@@ -210,7 +210,7 @@ void CUILines::ParseText(){
 			tmp_line.Clear();
 		} else {
 			for ( int i = 0 ; i < vsz ; i++ ) {
-				LPCSTR pszText = line->m_subLines[i].m_text.c_str();
+				const char* pszText = line->m_subLines[i].m_text.c_str();
 				const u32 tcolor = line->m_subLines[i].m_color;
 				u16 uFrom = 0 , uPartLen = 0;
 				VERIFY( pszText );

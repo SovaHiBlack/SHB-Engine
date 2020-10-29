@@ -25,8 +25,8 @@ public:
 	virtual void	Draw			();
 
 			void	CaptureFocus	(bool bCapture) { m_bInputFocus = bCapture; }
-	virtual	void	SetText			(LPCSTR str);
-	virtual LPCSTR GetText();
+	virtual	void	SetText			(const char* str);
+	virtual const char* GetText();
 			void	SetMaxCharCount	(u32 cnt)			{m_max_symb_count = cnt;}
 	virtual void	Enable			(bool status);
 			void	SetNumbersOnly	(bool status);
@@ -35,10 +35,9 @@ public:
 			void	SetDbClickMode	(bool mode = true)	{m_bFocusByDbClick = mode;}
 			void	SetCursorColor	(u32 color)			{m_lines.SetCursorColor(color);}
 			
-			void	SetLightAnim			(LPCSTR lanim);
+			void	SetLightAnim			(const char* lanim);
 
 protected:
-
 	bool KeyPressed(int dik);
 	bool KeyReleased(int dik);
 

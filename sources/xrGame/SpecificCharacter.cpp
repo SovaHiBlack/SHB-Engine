@@ -270,7 +270,7 @@ CHARACTER_REPUTATION_VALUE CSpecificCharacter::Reputation	() const
 	return data()->m_Reputation;
 }
 
-LPCSTR CSpecificCharacter::Visual		() const 
+const char* CSpecificCharacter::Visual		() const
 {
 	return data()->m_sVisual.c_str();
 }

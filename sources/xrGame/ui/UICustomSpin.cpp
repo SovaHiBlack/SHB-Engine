@@ -165,7 +165,7 @@ void CUICustomSpin::Update()
 	}
 }
 
-LPCSTR CUICustomSpin::GetText()
+const char* CUICustomSpin::GetText()
 {
 	return m_pLines->GetText();
 }

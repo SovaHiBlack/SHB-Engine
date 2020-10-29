@@ -21,7 +21,7 @@ private:
 			void	add_actions					();
 
 public:
-					CStalkerKillWoundedPlanner	(CStalker *object = 0, LPCSTR action_name = "");
+					CStalkerKillWoundedPlanner	(CStalker *object = 0, const char* action_name = "");
 	virtual			~CStalkerKillWoundedPlanner	();
 	virtual	void	setup						(CStalker *object, CPropertyStorage *storage);
 	virtual void	update						();

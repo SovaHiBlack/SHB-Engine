@@ -23,7 +23,7 @@ bool isdigit( int ch )
 }
 
 
-long atol(LPCSTR nptr )
+long atol(const char* nptr )
 {	
 	int c;              /* current char */
 	long total = 0;         /* current total */

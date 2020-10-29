@@ -37,7 +37,7 @@ extern float current_cover	(CStalker *object);
 // CStalkerActionDangerInDirectionTakeCover
 //////////////////////////////////////////////////////////////////////////
 
-CStalkerActionDangerInDirectionTakeCover::CStalkerActionDangerInDirectionTakeCover	(CStalker *object, LPCSTR action_name) :
+CStalkerActionDangerInDirectionTakeCover::CStalkerActionDangerInDirectionTakeCover	(CStalker *object, const char* action_name) :
 	inherited				(object,action_name)
 { }
 
@@ -100,7 +100,7 @@ void CStalkerActionDangerInDirectionTakeCover::finalize							()
 // CStalkerActionDangerInDirectionLookOut
 //////////////////////////////////////////////////////////////////////////
 
-CStalkerActionDangerInDirectionLookOut::CStalkerActionDangerInDirectionLookOut	(CStalker *object, LPCSTR action_name) :
+CStalkerActionDangerInDirectionLookOut::CStalkerActionDangerInDirectionLookOut	(CStalker *object, const char* action_name) :
 	inherited				(object,action_name)
 {
 	m_crouch_look_out_random.seed				(u32(CPU::QPC() & 0xffffffff));
@@ -178,7 +178,7 @@ void CStalkerActionDangerInDirectionLookOut::finalize							()
 // CStalkerActionDangerInDirectionHoldPosition
 //////////////////////////////////////////////////////////////////////////
 
-CStalkerActionDangerInDirectionHoldPosition::CStalkerActionDangerInDirectionHoldPosition	(CStalker *object, LPCSTR action_name) :
+CStalkerActionDangerInDirectionHoldPosition::CStalkerActionDangerInDirectionHoldPosition	(CStalker *object, const char* action_name) :
 	inherited				(object,action_name)
 { }
 
@@ -239,7 +239,7 @@ void CStalkerActionDangerInDirectionHoldPosition::finalize						()
 // CStalkerActionDangerInDirectionDetour
 //////////////////////////////////////////////////////////////////////////
 
-CStalkerActionDangerInDirectionDetour::CStalkerActionDangerInDirectionDetour	(CStalker *object, LPCSTR action_name) :
+CStalkerActionDangerInDirectionDetour::CStalkerActionDangerInDirectionDetour	(CStalker *object, const char* action_name) :
 	inherited				(object,action_name)
 { }
 
@@ -306,7 +306,7 @@ void CStalkerActionDangerInDirectionDetour::finalize							()
 // CStalkerActionDangerInDirectionSearch
 //////////////////////////////////////////////////////////////////////////
 
-CStalkerActionDangerInDirectionSearch::CStalkerActionDangerInDirectionSearch	(CStalker *object, LPCSTR action_name) :
+CStalkerActionDangerInDirectionSearch::CStalkerActionDangerInDirectionSearch	(CStalker *object, const char* action_name) :
 	inherited				(object,action_name)
 { }
 

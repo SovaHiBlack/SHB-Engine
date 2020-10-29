@@ -28,15 +28,15 @@ typedef enum {
 class IUITextControl : public IUIFontControl{
 public:
 	virtual ~IUITextControl()											 {};
-	virtual void SetText(LPCSTR text)								= 0;
-	virtual LPCSTR GetText()										= 0;
+	virtual void SetText(const char* text)								= 0;
+	virtual const char* GetText()										= 0;
 };
 
 // Texture controls
 class IUISimpleTextureControl{
 public:
 	virtual ~IUISimpleTextureControl() {}
-	virtual void		CreateShader(LPCSTR tex, LPCSTR sh = "hud\\default")	= 0;
+	virtual void		CreateShader(const char* tex, const char* sh = "hud\\default")	= 0;
 	virtual void		SetShader(const ref_shader& sh)									= 0;
 	virtual void		SetTextureColor(u32 color)										= 0;
 	virtual u32			GetTextureColor()										const	= 0;
@@ -47,7 +47,7 @@ public:
 class IUIMultiTextureOwner{
 public:
 	virtual ~IUIMultiTextureOwner() {}	
-	virtual void		InitTexture(LPCSTR texture)								= 0;
+	virtual void		InitTexture(const char* texture)								= 0;
 	virtual bool		GetTextureAvailability()										= 0;
 	virtual void		SetTextureVisible(bool vis)										= 0;
 	virtual bool		GetTextureVisible()												= 0;
@@ -66,7 +66,7 @@ protected:
 
 class IUISingleTextureOwner : public CUIMultiTextureOwner, public IUISimpleTextureControl{
 public:	
-	virtual void		InitTextureEx(LPCSTR texture, LPCSTR shader)			= 0;
+	virtual void		InitTextureEx(const char* texture, const char* shader)			= 0;
 	virtual void		SetStretchTexture(bool stretch)									= 0;
 	virtual bool		GetStretchTexture()												= 0;	
 };

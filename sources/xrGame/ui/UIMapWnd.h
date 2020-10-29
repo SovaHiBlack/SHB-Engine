@@ -79,7 +79,7 @@ public:
 								CUIMapWnd				();
 	virtual						~CUIMapWnd				();
 
-	virtual void				Init					(LPCSTR xml_name, LPCSTR start_from);
+	virtual void				Init					(const char* xml_name, const char* start_from);
 	virtual void				Show					(bool status);
 	virtual void				Draw					();
 	virtual void				Reset					();
@@ -87,7 +87,7 @@ public:
 			float				GetZoom					()	{return m_currentZoom;}
 			void				SetZoom					(float value);
 
-			void				ShowHint				(CUIWindow* parent, LPCSTR text);
+			void				ShowHint				(CUIWindow* parent, const char* text);
 			void				HideHint				(CUIWindow* parent);
 			void				Hint					(const shared_str& text);
 	virtual bool				OnMouse					(float x, float y, EUIMessages mouse_action);

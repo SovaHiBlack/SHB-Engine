@@ -20,7 +20,7 @@ CUIArtefactParams::~CUIArtefactParams()
 	}
 }
 
-LPCSTR af_item_sect_names[] = {
+const char* af_item_sect_names[] = {
 	"health_restore_speed",
 	"radiation_restore_speed",
 	"satiety_restore_speed",
@@ -38,7 +38,7 @@ LPCSTR af_item_sect_names[] = {
 	"fire_wound_immunity",
 };
 
-LPCSTR af_item_param_names[] = {
+const char* af_item_param_names[] = {
 	"ui_inv_health",
 	"ui_inv_radiation",
 	"ui_inv_satiety",
@@ -67,7 +67,7 @@ const char* af_actor_param_names[ ] =
 
 void CUIArtefactParams::InitFromXml(CUIXml& xml_doc)
 {
-	LPCSTR _base				= "af_params";
+	const char* _base				= "af_params";
 	if (!xml_doc.NavigateToNode(_base, 0))	return;
 
 	string256					_buff;
@@ -115,14 +115,14 @@ void CUIArtefactParams::SetInfo(const shared_str& af_section)
 			_val				*= 100.0f;
 
 		}
-		LPCSTR _sn = "%";
+		const char* _sn = "%";
 		if(i==_item_radiation_restore_speed || i==_item_power_restore_speed)
 		{
 			_val				/= 100.0f;
 			_sn					= "";
 		}
 
-		LPCSTR _color = (_val>0)?"%c[green]":"%c[red]";
+		const char* _color = (_val>0)?"%c[green]":"%c[red]";
 		
 		if(i==_item_bleeding_restore_speed)
 			_val		*=	-1.0f;

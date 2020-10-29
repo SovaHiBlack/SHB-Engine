@@ -22,7 +22,7 @@ public:
 
 	// own
 	CUILabel();
-			void			SetLightAnim			(LPCSTR lanim);
+			void			SetLightAnim			(const char* lanim);
 
 protected:
 //	Fvector2 m_textPos;

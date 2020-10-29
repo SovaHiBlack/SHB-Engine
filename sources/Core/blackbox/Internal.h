@@ -45,7 +45,7 @@ DWORD __stdcall NTGetModuleFileNameEx ( DWORD     dwPID        ,
 // module.
 PIMAGE_IMPORT_DESCRIPTOR
                      GetNamedImportDescriptor ( HMODULE hModule     ,
-                                                LPCSTR  szImportMod  ) ;
+                                               const char* szImportMod  ) ;
 
 // A useful macro.
 #define MakePtr( cast , ptr , AddValue ) \

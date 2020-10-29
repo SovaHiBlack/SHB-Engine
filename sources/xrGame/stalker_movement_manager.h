@@ -56,9 +56,9 @@ private:
 public:
 					CStalkerMovementManager			(CStalker *object);
 	virtual			~CStalkerMovementManager		();
-	virtual	void	Load							(LPCSTR section);
+	virtual	void	Load							(const char* section);
 	virtual	void	reinit							();
-	virtual	void	reload							(LPCSTR section);
+	virtual	void	reload							(const char* section);
 	virtual	void	update							(u32 time_delta);
 	virtual void	on_travel_point_change			(const u32 &previous_travel_point_index);
 	virtual	void	on_restrictions_change			();

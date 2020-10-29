@@ -23,7 +23,7 @@ CUIEditKeyBind::~CUIEditKeyBind()
 	delete_data(m_pAnimation);
 }
 
-u32 cut_string_by_length(CGameFont* pFont, LPCSTR src, char* dst, u32 dst_size, float length)
+u32 cut_string_by_length(CGameFont* pFont, const char* src, char* dst, u32 dst_size, float length)
 {
 	if ( pFont->IsMultibyte() ) {
 		u16 nPos = pFont->GetCutLengthPos( length, src );
@@ -50,7 +50,7 @@ u32 cut_string_by_length(CGameFont* pFont, LPCSTR src, char* dst, u32 dst_size, 
 	}
 }
 
-void CUIEditKeyBind::SetText(LPCSTR text)
+void CUIEditKeyBind::SetText(const char* text)
 {
 	if (!text || 0 == xr_strlen(text))
 		CUILabel::SetText("---");
@@ -69,7 +69,7 @@ void CUIEditKeyBind::Init(float x, float y, float width, float height)
 	InitTexture				("ui_options_string");
 }
 
-void CUIEditKeyBind::InitTexture(LPCSTR texture, bool bHorizontal)
+void CUIEditKeyBind::InitTexture(const char* texture, bool bHorizontal)
 {
 	CUILabel::InitTexture(texture,bHorizontal);
 }
@@ -141,10 +141,9 @@ void CUIEditKeyBind::Update()
 		m_pAnimation->Update();
 		m_lines.SetTextColor((subst_alpha(m_lines.GetTextColor(), color_get_A(m_pAnimation->GetColor()))));
 	}
-	
 }
 
-void CUIEditKeyBind::Register(LPCSTR entry, LPCSTR group)
+void CUIEditKeyBind::Register(const char* entry, const char* group)
 {
 	CUIOptionsItem::Register				(entry, group);
 	m_action		= action_name_to_ptr	(entry);
@@ -196,7 +195,7 @@ bool CUIEditKeyBind::IsChanged(){
 	return m_bChanged;
 }
 
-void CUIEditKeyBind::OnMessage(LPCSTR message){
+void CUIEditKeyBind::OnMessage(const char* message){
 	// message = "command=key"
 	int eq	= (int)strcspn(message,"=");
 	

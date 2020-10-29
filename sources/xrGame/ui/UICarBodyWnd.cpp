@@ -400,7 +400,7 @@ void CUICarBodyWnd::ActivatePropertiesBox()
 	CBottleItem*			pBottleItem		= smart_cast<CBottleItem*>		(CurrentIItem());
     bool					b_show			= false;
 	
-	LPCSTR _action				= NULL;
+	const char* _action				= NULL;
 	if(pMedkit || pAntirad)
 	{
 		_action						= "st_use";

@@ -4,8 +4,8 @@
 #include "UICarPanel.h"//
 #include "UIXmlInit.h"//
 
-const LPCSTR CAR_PANEL_XML = "car_panel.xml";
-const LPCSTR POINTER_ARROW_TEX = "ui\\hud_map_arrow";
+const char* CAR_PANEL_XML = "car_panel.xml";
+const char* POINTER_ARROW_TEX = "ui\\hud_map_arrow";
 
 void CUICarPanel::Init			(float x, float y, float width, float height)
 {

@@ -22,7 +22,7 @@ bool isspace( int ch );
 
 bool isdigit( int ch );
 
-long atol(LPCSTR nptr );
+long atol(const char* nptr );
 
 };
 

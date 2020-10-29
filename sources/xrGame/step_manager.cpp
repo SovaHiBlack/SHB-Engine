@@ -23,10 +23,10 @@ DLL_Pure *CStepManager::_construct	()
 	return				(m_object);
 }
 
-void CStepManager::reload(LPCSTR section)
+void CStepManager::reload(const char* section)
 {
 	m_legs_count		= pSettings->r_u8		(section, "LegsCount");
-	LPCSTR anim_section = pSettings->r_string	(section, "step_params");
+	const char* anim_section = pSettings->r_string	(section, "step_params");
 
 	if (!pSettings->section_exist(anim_section)) return;
 	VERIFY((m_legs_count>=MIN_LEGS_COUNT) && (m_legs_count<=MAX_LEGS_COUNT));
@@ -34,7 +34,8 @@ void CStepManager::reload(LPCSTR section)
 	SStepParam			param; 
 	param.step[0].time = 0.1f;	// avoid warning
 
-	LPCSTR				anim_name, val;
+	const char* anim_name;
+	const char* val;
 	string16			cur_elem;
 
 	CKinematicsAnimated	*skeleton_animated = smart_cast<CKinematicsAnimated*>(m_object->Visual());
@@ -131,7 +132,7 @@ void CStepManager::update()
 
 			// Играть партиклы
 			if (!mtl_pair->CollideParticles.empty())	{
-				LPCSTR ps_name = *mtl_pair->CollideParticles[::Random.randI(0,mtl_pair->CollideParticles.size())];
+				const char* ps_name = *mtl_pair->CollideParticles[::Random.randI(0,mtl_pair->CollideParticles.size())];
 
 				//отыграть партиклы столкновения материалов
 				CParticlesObject* ps = CParticlesObject::Create(ps_name,TRUE);

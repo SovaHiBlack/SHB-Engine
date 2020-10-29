@@ -1,4 +1,5 @@
-<?xml version="1.0" encoding="windows-1251" ?>
+<?xml version="1.0" encoding="utf-8"?>
+
 <map_spots>
 
 #include "ui\map_spots_escape.xml"
@@ -80,8 +81,8 @@
 	</red_mini_spot>
 
 	<eliminate_lager_location>
-		<level_map spot="eliminate_lager_spot"		pointer="quest_pointer"/>
-		<mini_map spot="eliminate_lager_spot_mini"	pointer="quest_pointer"/>
+		<level_map spot="eliminate_lager_spot" pointer="quest_pointer"/>
+		<mini_map spot="eliminate_lager_spot_mini" pointer="quest_pointer"/>
 	</eliminate_lager_location>
 	<eliminate_lager_spot x="0" y="0" width="32" height="32" stretch="1" alignment="c" xform_anim="map_spot_new_xform" xform_anim_cyclic="0">
 		<texture>ui_mapQuest_camp_destroy</texture>
@@ -93,8 +94,8 @@
 	</eliminate_lager_spot_mini>
 
 	<defend_lager_location>
-		<level_map spot="defend_lager_spot"		pointer="quest_pointer"/>
-		<mini_map spot="defend_lager_spot_mini"	pointer="quest_pointer"/>
+		<level_map spot="defend_lager_spot" pointer="quest_pointer"/>
+		<mini_map spot="defend_lager_spot_mini" pointer="quest_pointer"/>
 	</defend_lager_location>
 	<defend_lager_spot  x="0" y="0" width="32" height="32" stretch="1" alignment="c" xform_anim="map_spot_new_xform" xform_anim_cyclic="0">
 		<texture>ui_mapQuest_camp_defend</texture>
@@ -106,8 +107,8 @@
 	</defend_lager_spot_mini>
 
 	<artefact_location>
-		<level_map spot="artefact_spot"		pointer="quest_pointer"/>
-		<mini_map spot="artefact_spot_mini"	pointer="quest_pointer"/>
+		<level_map spot="artefact_spot" pointer="quest_pointer"/>
+		<mini_map spot="artefact_spot_mini" pointer="quest_pointer"/>
 	</artefact_location>
 	<artefact_spot  x="0" y="0" width="32" height="32" stretch="1" alignment="c" xform_anim="map_spot_new_xform" xform_anim_cyclic="0">
 		<texture>ui_mapQuest_artefact</texture>
@@ -119,8 +120,8 @@
 	</artefact_spot_mini>
 
 	<kill_stalker_location>
-		<level_map spot="kill_stalker_spot"		pointer="quest_pointer"/>
-		<mini_map spot="kill_stalker_spot_mini"	pointer="quest_pointer"/>
+		<level_map spot="kill_stalker_spot" pointer="quest_pointer"/>
+		<mini_map spot="kill_stalker_spot_mini" pointer="quest_pointer"/>
 	</kill_stalker_location>
 	<kill_stalker_spot  x="0" y="0" width="32" height="32" stretch="1" alignment="c" xform_anim="map_spot_new_xform" xform_anim_cyclic="0">
 		<texture>ui_mapQuest_stalker_destroy</texture>
@@ -132,8 +133,8 @@
 	</kill_stalker_spot_mini>
 
 	<monster_part_location>
-		<level_map spot="monster_part_spot"		pointer="quest_pointer"/>
-		<mini_map spot="monster_part_spot_mini"	pointer="quest_pointer"/>
+		<level_map spot="monster_part_spot" pointer="quest_pointer"/>
+		<mini_map spot="monster_part_spot_mini" pointer="quest_pointer"/>
 	</monster_part_location>
 	<monster_part_spot  x="0" y="0" width="32" height="32" stretch="1" alignment="c" xform_anim="map_spot_new_xform" xform_anim_cyclic="0">
 		<texture>ui_mapQuest_monster_find</texture>
@@ -145,8 +146,8 @@
 	</monster_part_spot_mini>
 
 	<find_item_location>
-		<level_map spot="find_item_spot"		pointer="quest_pointer"/>
-		<mini_map spot="find_item_spot_mini"	pointer="quest_pointer"/>
+		<level_map spot="find_item_spot" pointer="quest_pointer"/>
+		<mini_map spot="find_item_spot_mini" pointer="quest_pointer"/>
 	</find_item_location>
 	<find_item_spot  x="0" y="0" width="32" height="32" stretch="1" alignment="c" xform_anim="map_spot_new_xform" xform_anim_cyclic="0">
 		<texture>ui_mapQuest_item</texture>
@@ -156,10 +157,6 @@
 		<texture_below r="0" g="255" b="0">ui_mini_sn_spot_below</texture_below>
 		<texture_above r="0" g="255" b="0">ui_mini_sn_spot_above</texture_above>
 	</find_item_spot_mini>
-
-
-
-
 
 	<level_map_spot_border x="0" y="0" width="36" height="36" alignment="c" stretch="1">
 		<texture x="728" y="576" width="51" height="51" r="200" g="200" b="200">ui\ui_common</texture>

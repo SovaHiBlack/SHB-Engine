@@ -24,10 +24,9 @@ void CUIMapHint::Init		()
 	m_text				= xr_new<CUIStatic>();m_text->SetAutoDelete(true);
 	AttachChild			(m_text);
 	xml_init.InitStatic	(uiXml,"hint_item:description",0,m_text);
-
 }
 
-void CUIMapHint::SetText		(LPCSTR text)
+void CUIMapHint::SetText		(const char* text)
 {
 	m_text->SetTextST			(text);
 	m_text->AdjustHeightToText	();
@@ -36,6 +35,7 @@ void CUIMapHint::SetText		(LPCSTR text)
 	m_border->SetWidth			(GetWndSize().x);
 	m_border->SetHeight			(GetWndSize().y);
 }
+
 void CUIMapHint::Draw_		()
 {
 	inherited::Draw			();
