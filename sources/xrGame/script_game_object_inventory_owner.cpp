@@ -36,7 +36,7 @@
 #include "ai/stalker/Stalker.h"
 #include "GameTaskManager.h"
 
-bool CScriptGameObject::GiveInfoPortion(LPCSTR info_id)
+bool CScriptGameObject::GiveInfoPortion(const char* info_id)
 {
 	CInventoryOwner* pInventoryOwner = smart_cast<CInventoryOwner*>(&object());
 	if(!pInventoryOwner) return false;
@@ -44,7 +44,7 @@ bool CScriptGameObject::GiveInfoPortion(LPCSTR info_id)
 	return			true;
 }
 
-bool CScriptGameObject::DisableInfoPortion(LPCSTR info_id)
+bool CScriptGameObject::DisableInfoPortion(const char* info_id)
 {
 	CInventoryOwner* pInventoryOwner = smart_cast<CInventoryOwner*>(&object());
 	if(!pInventoryOwner) return false;
@@ -52,9 +52,9 @@ bool CScriptGameObject::DisableInfoPortion(LPCSTR info_id)
 	return true;
 }
 
-void _AddIconedTalkMessage(LPCSTR text, LPCSTR texture_name, const Frect& tex_rect, LPCSTR templ_name);
+void _AddIconedTalkMessage(const char* text, const char* texture_name, const Frect& tex_rect, const char* templ_name);
 
-void  CScriptGameObject::AddIconedTalkMessage		(LPCSTR text, LPCSTR texture_name, Frect tex_rect, LPCSTR templ_name)
+void  CScriptGameObject::AddIconedTalkMessage		(const char* text, const char* texture_name, Frect tex_rect, const char* templ_name)
 {
 	return _AddIconedTalkMessage	(text,
 									texture_name, 
@@ -62,7 +62,7 @@ void  CScriptGameObject::AddIconedTalkMessage		(LPCSTR text, LPCSTR texture_name
 									templ_name); 
 }
 
-void _AddIconedTalkMessage(LPCSTR text, LPCSTR texture_name, const Frect& tex_rect, LPCSTR templ_name)
+void _AddIconedTalkMessage(const char* text, const char* texture_name, const Frect& tex_rect, const char* templ_name)
 {
 	CUIGame* pGame = smart_cast<CUIGame*>(HUD().GetUI()->UIGame());
 	if(!pGame) return;
@@ -71,9 +71,9 @@ void _AddIconedTalkMessage(LPCSTR text, LPCSTR texture_name, const Frect& tex_re
 		pGame->TalkMenu->AddIconedMessage(text, texture_name, tex_rect, templ_name?templ_name:"iconed_answer_item" );
 }
 
-bool _give_news	(LPCSTR news, LPCSTR texture_name, const Frect& tex_rect, int delay, int show_time);
+bool _give_news	(const char* news, const char* texture_name, const Frect& tex_rect, int delay, int show_time);
 
-bool  CScriptGameObject::GiveGameNews		(LPCSTR news, LPCSTR texture_name, Frect tex_rect, int delay, int show_time)
+bool  CScriptGameObject::GiveGameNews		(const char* news, const char* texture_name, Frect tex_rect, int delay, int show_time)
 {
 	return _give_news				(news,
 									texture_name, 
@@ -82,7 +82,7 @@ bool  CScriptGameObject::GiveGameNews		(LPCSTR news, LPCSTR texture_name, Frect 
 									show_time);
 }
 
-bool _give_news	(LPCSTR text, LPCSTR texture_name, const Frect& tex_rect, int delay, int show_time)
+bool _give_news	(const char* text, const char* texture_name, const Frect& tex_rect, int delay, int show_time)
 {
 	GAME_NEWS_DATA				news_data;
 	news_data.news_text			= text;
@@ -102,7 +102,7 @@ bool _give_news	(LPCSTR text, LPCSTR texture_name, const Frect& tex_rect, int de
 	return true;
 }
 
-bool  CScriptGameObject::HasInfo				(LPCSTR info_id)
+bool  CScriptGameObject::HasInfo				(const char* info_id)
 {
 	CInventoryOwner* pInventoryOwner = smart_cast<CInventoryOwner*>(&object());
 	if(!pInventoryOwner) return false;
@@ -110,7 +110,7 @@ bool  CScriptGameObject::HasInfo				(LPCSTR info_id)
 	return pInventoryOwner->HasInfo(info_id);
 }
 
-bool  CScriptGameObject::DontHasInfo			(LPCSTR info_id)
+bool  CScriptGameObject::DontHasInfo			(const char* info_id)
 {
 	CInventoryOwner* pInventoryOwner = smart_cast<CInventoryOwner*>(&object());
 	if(!pInventoryOwner) return true;
@@ -118,7 +118,7 @@ bool  CScriptGameObject::DontHasInfo			(LPCSTR info_id)
 	return !pInventoryOwner->HasInfo(info_id);
 }
 
-xrTime CScriptGameObject::GetInfoTime			(LPCSTR info_id)
+xrTime CScriptGameObject::GetInfoTime			(const char* info_id)
 {
 	CInventoryOwner* pInventoryOwner = smart_cast<CInventoryOwner*>(&object());
 	if(!pInventoryOwner) return xrTime(0);
@@ -421,7 +421,7 @@ int	CScriptGameObject::GetAttitude			(CScriptGameObject* pToWho)
 
 //////////////////////////////////////////////////////////////////////////
 
-LPCSTR CScriptGameObject::ProfileName			()
+const char* CScriptGameObject::ProfileName			()
 {
 	CInventoryOwner* pInventoryOwner = smart_cast<CInventoryOwner*>(&object());
 	if (!pInventoryOwner) {
@@ -436,7 +436,7 @@ LPCSTR CScriptGameObject::ProfileName			()
 		return *profile_id;
 }
 
-LPCSTR CScriptGameObject::CharacterName			()
+const char* CScriptGameObject::CharacterName			()
 {
 	CInventoryOwner* pInventoryOwner = smart_cast<CInventoryOwner*>(&object());
 
@@ -506,7 +506,7 @@ void CScriptGameObject::ChangeCharacterReputation		(int char_rep)
 	pInventoryOwner->ChangeReputation(char_rep);
 }
 
-LPCSTR CScriptGameObject::CharacterCommunity	()
+const char* CScriptGameObject::CharacterCommunity	()
 {
 	CInventoryOwner* pInventoryOwner = smart_cast<CInventoryOwner*>(&object());
 
@@ -517,7 +517,7 @@ LPCSTR CScriptGameObject::CharacterCommunity	()
 	return *pInventoryOwner->CharacterInfo().Community().id();
 }
 
-void CScriptGameObject::SetCharacterCommunity	(LPCSTR comm, int squad, int group)
+void CScriptGameObject::SetCharacterCommunity	(const char* comm, int squad, int group)
 {
 	CInventoryOwner*	pInventoryOwner = smart_cast<CInventoryOwner*>(&object());
 	CEntity*			entity			= smart_cast<CEntity*>(&object());
@@ -532,7 +532,7 @@ void CScriptGameObject::SetCharacterCommunity	(LPCSTR comm, int squad, int group
 	entity->ChangeTeam(community.team(), squad, group);
 }
 
-LPCSTR CScriptGameObject::sound_voice_prefix () const
+const char* CScriptGameObject::sound_voice_prefix () const
 {
 	CInventoryOwner* pInventoryOwner = smart_cast<CInventoryOwner*>(&object());
 	if (!pInventoryOwner) {
@@ -543,7 +543,7 @@ LPCSTR CScriptGameObject::sound_voice_prefix () const
 	return pInventoryOwner->SpecificCharacter().sound_voice_prefix();
 }
 
-ETaskState CScriptGameObject::GetGameTaskState	(LPCSTR task_id, int objective_num)
+ETaskState CScriptGameObject::GetGameTaskState	(const char* task_id, int objective_num)
 {
 /*	CActor* pActor = smart_cast<CActor*>(&object());
 	if (!pActor) {
@@ -562,7 +562,7 @@ ETaskState CScriptGameObject::GetGameTaskState	(LPCSTR task_id, int objective_nu
 	return t->m_Objectives[objective_num].TaskState();
 }
 
-void CScriptGameObject::SetGameTaskState	(ETaskState state, LPCSTR task_id, int objective_num)
+void CScriptGameObject::SetGameTaskState	(ETaskState state, const char* task_id, int objective_num)
 {
 	shared_str shared_name = task_id;
 	Actor()->GameTaskManager().SetTaskState(shared_name, (u16)objective_num, state);
@@ -636,7 +636,7 @@ void construct_restriction_vector(shared_str restrictions, xr_vector<ALife::_OBJ
 	}
 }
 
-void CScriptGameObject::add_restrictions		(LPCSTR out, LPCSTR in)
+void CScriptGameObject::add_restrictions		(const char* out, const char* in)
 {
 	CCustomMonster	*monster = smart_cast<CCustomMonster*>(&object());
 	if (!monster) {
@@ -660,7 +660,7 @@ void CScriptGameObject::add_restrictions		(LPCSTR out, LPCSTR in)
 	monster->movement().restrictions().add_restrictions(out,in);
 }
 
-void CScriptGameObject::remove_restrictions		(LPCSTR out, LPCSTR in)
+void CScriptGameObject::remove_restrictions		(const char* out, const char* in)
 {
 	CCustomMonster	*monster = smart_cast<CCustomMonster*>(&object());
 	if (!monster) {
@@ -687,7 +687,7 @@ void CScriptGameObject::remove_all_restrictions	()
 	monster->movement().restrictions().remove_all_restrictions	();
 }
 
-LPCSTR CScriptGameObject::in_restrictions	()
+const char* CScriptGameObject::in_restrictions	()
 {
 	CCustomMonster	*monster = smart_cast<CCustomMonster*>(&object());
 	if (!monster) {
@@ -697,7 +697,7 @@ LPCSTR CScriptGameObject::in_restrictions	()
 	return									(*monster->movement().restrictions().in_restrictions());
 }
 
-LPCSTR CScriptGameObject::out_restrictions	()
+const char* CScriptGameObject::out_restrictions	()
 {
 	CCustomMonster	*monster = smart_cast<CCustomMonster*>(&object());
 	if (!monster) {
@@ -707,7 +707,7 @@ LPCSTR CScriptGameObject::out_restrictions	()
 	return									(*monster->movement().restrictions().out_restrictions());
 }
 
-LPCSTR CScriptGameObject::base_in_restrictions	()
+const char* CScriptGameObject::base_in_restrictions	()
 {
 	CCustomMonster	*monster = smart_cast<CCustomMonster*>(&object());
 	if (!monster) {
@@ -717,7 +717,7 @@ LPCSTR CScriptGameObject::base_in_restrictions	()
 	return									(*monster->movement().restrictions().base_in_restrictions());
 }
 
-LPCSTR CScriptGameObject::base_out_restrictions	()
+const char* CScriptGameObject::base_out_restrictions	()
 {
 	CCustomMonster	*monster = smart_cast<CCustomMonster*>(&object());
 	if (!monster) {

@@ -117,7 +117,7 @@ void CScriptGameObject::set_item(MonsterSpace::EObjectAction object_action, CScr
 		object_handler->set_goal(object_action,lua_game_object ? &lua_game_object->object() : 0, queue_size, queue_size, queue_interval, queue_interval);
 }
 
-void CScriptGameObject::play_cycle(LPCSTR anim, bool mix_in)
+void CScriptGameObject::play_cycle(const char* anim, bool mix_in)
 {
 	CKinematicsAnimated* sa=smart_cast<CKinematicsAnimated*>(object().Visual());
 	if(sa){
@@ -134,7 +134,7 @@ void CScriptGameObject::play_cycle(LPCSTR anim, bool mix_in)
 	}
 }
 
-void CScriptGameObject::play_cycle(LPCSTR anim)
+void CScriptGameObject::play_cycle(const char* anim)
 {
 	play_cycle	(anim,true);
 }
@@ -296,7 +296,7 @@ void CScriptGameObject::restore_sound_threshold	()
 	monster->memory().sound().restore_threshold	();
 }
 
-void CScriptGameObject::SetStartDialog(LPCSTR dialog_id)
+void CScriptGameObject::SetStartDialog(const char* dialog_id)
 {
 	CAI_PhraseDialogManager* pDialogManager = smart_cast<CAI_PhraseDialogManager*>(&object());
 	if(!pDialogManager) return;

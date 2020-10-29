@@ -149,7 +149,7 @@ public:
 			void 					play_delayed_callbacks	();
 
 public:
-			void					add_script_animation	(LPCSTR animation, bool hand_usage = false, bool use_movement_controller = false);
+			void					add_script_animation	(const char* animation, bool hand_usage = false, bool use_movement_controller = false);
 	IC		void					clear_script_animations	();
 	IC		void					pop_script_animation	();
 	IC		const SCRIPT_ANIMATIONS	&script_animations		() const;

@@ -20,7 +20,7 @@ class CScriptSound {
 	friend class CScriptSoundAction;
 
 public:
-								CScriptSound		(LPCSTR caSoundName, ESoundTypes sound_type = SOUND_TYPE_NO_SOUND);
+								CScriptSound		(const char* caSoundName, ESoundTypes sound_type = SOUND_TYPE_NO_SOUND);
 	virtual						~CScriptSound		();
 	IC		u32					Length				();
 	IC		void				Play				(CScriptGameObject *object);

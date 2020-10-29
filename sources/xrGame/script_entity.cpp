@@ -138,7 +138,7 @@ bool CScriptEntity::GetScriptControl() const
 	return				(m_bScriptControl);
 }
 
-LPCSTR CScriptEntity::GetScriptControlName() const
+const char* CScriptEntity::GetScriptControlName() const
 {
 	return				(*m_caScriptName);
 }
@@ -153,7 +153,7 @@ bool CScriptEntity::CheckObjectVisibility(const CGameObject *tpObject)
 
 //определяет видимость определенного типа объектов, 
 //заданного через section_name
-bool CScriptEntity::CheckTypeVisibility(LPCSTR section_name)
+bool CScriptEntity::CheckTypeVisibility(const char* section_name)
 {
 	if (!m_monster)
 		return			(false);
@@ -534,7 +534,7 @@ void CScriptEntity::net_Destroy()
 	m_initialized			= false;
 }
 
-LPCSTR CScriptEntity::GetPatrolPathName()
+const char* CScriptEntity::GetPatrolPathName()
 {
 
 #ifdef DEBUG
@@ -600,7 +600,7 @@ bool CScriptEntity::bfScriptAnimation()
 
 			m_tpScriptAnimation = m_tpNextAnimation;
 			CKinematicsAnimated	*skeleton_animated = smart_cast<CKinematicsAnimated*>(object().Visual());
-			LPCSTR				animation_id = *GetCurrentAction()->m_tAnimationAction.m_caAnimationToPlay;
+			const char* animation_id = *GetCurrentAction()->m_tAnimationAction.m_caAnimationToPlay;
 			MotionID			animation = skeleton_animated->ID_Cycle(animation_id);
 			CBlend				*result = 0;
 			for (u16 i=0; i<MAX_PARTS; ++i) {

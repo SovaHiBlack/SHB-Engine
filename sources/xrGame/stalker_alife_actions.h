@@ -19,7 +19,7 @@ protected:
 	typedef CStalkerActionBase inherited;
 
 public:
-						CStalkerActionGatherItems	(CStalker *object, LPCSTR action_name = "");
+						CStalkerActionGatherItems	(CStalker *object, const char* action_name = "");
 	virtual void		initialize					();
 	virtual void		execute						();
 	virtual void		finalize					();
@@ -37,7 +37,7 @@ protected:
 	u32					m_stop_weapon_handling_time;
 
 public:
-						CStalkerActionNoALife		(CStalker *object, LPCSTR action_name = "");
+						CStalkerActionNoALife		(CStalker *object, const char* action_name = "");
 	virtual void		initialize					();
 	virtual void		execute						();
 	virtual void		finalize					();

@@ -16,7 +16,7 @@ bool r_eof(IReader *self)
 	return			(!!self->eof());
 }
 
-LPCSTR r_stringZ(IReader *self)
+const char* r_stringZ(IReader *self)
 {
 	shared_str		temp;
 	self->r_stringZ	(temp);

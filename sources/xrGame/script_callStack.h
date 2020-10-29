@@ -10,7 +10,7 @@ class CScriptCallStack
 public:
 	CScriptDebugger*			m_debugger;
 	void GotoStackTraceLevel	(int nLevel);
-	void Add					(LPCSTR szDesc, LPCSTR szFile, int nLine);
+	void Add					(const char* szDesc, const char* szFile, int nLine);
 	void Clear					();
 	CScriptCallStack			(CScriptDebugger* d);
 	~CScriptCallStack			();

@@ -54,11 +54,10 @@ void CScriptBinder::reinit			()
 	}
 }
 
-void CScriptBinder::Load			(LPCSTR section)
-{
-}
+void CScriptBinder::Load			(const char* section)
+{ }
 
-void CScriptBinder::reload			(LPCSTR section)
+void CScriptBinder::reload			(const char* section)
 {
 
 #ifndef DEBUG_DISABLE_SCRIPTS

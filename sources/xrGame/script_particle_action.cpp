@@ -16,7 +16,7 @@ CScriptParticleAction::~CScriptParticleAction	()
 	//xr_delete			(m_tpParticleSystem);
 }
 
-void CScriptParticleAction::SetParticle			(LPCSTR caParticleToRun, bool bAutoRemove)
+void CScriptParticleAction::SetParticle			(const char* caParticleToRun, bool bAutoRemove)
 {
 	m_caParticleToRun	= caParticleToRun;
 	m_tGoalType			= eGoalTypeParticleAttached;

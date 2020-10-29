@@ -35,8 +35,8 @@ using namespace luabind;
 class_<CScriptGameObject> &script_register_game_object2(class_<CScriptGameObject> &instance)
 {
 	instance
-		.def("add_sound",					(u32 (CScriptGameObject::*)(LPCSTR,u32,ESoundTypes,u32,u32,u32))(&CScriptGameObject::add_sound))
-		.def("add_sound",					(u32 (CScriptGameObject::*)(LPCSTR,u32,ESoundTypes,u32,u32,u32,LPCSTR))(&CScriptGameObject::add_sound))
+		.def("add_sound",					(u32 (CScriptGameObject::*)(const char*,u32,ESoundTypes,u32,u32,u32))(&CScriptGameObject::add_sound))
+		.def("add_sound",					(u32 (CScriptGameObject::*)(const char*,u32,ESoundTypes,u32,u32,u32, const char*))(&CScriptGameObject::add_sound))
 		.def("remove_sound",				&CScriptGameObject::remove_sound)
 		.def("set_sound_mask",				&CScriptGameObject::set_sound_mask)
 		.def("play_sound",					(void (CScriptGameObject::*)(u32))(&CScriptGameObject::play_sound))
@@ -121,9 +121,9 @@ class_<CScriptGameObject> &script_register_game_object2(class_<CScriptGameObject
 
 		.def("give_info_portion",			&CScriptGameObject::GiveInfoPortion)
 		.def("disable_info_portion",		&CScriptGameObject::DisableInfoPortion)
-		.def("give_game_news",				(bool (CScriptGameObject::*)(LPCSTR,LPCSTR,Frect,int,int))(&CScriptGameObject::GiveGameNews))
+		.def("give_game_news",				(bool (CScriptGameObject::*)(const char*, const char*,Frect,int,int))(&CScriptGameObject::GiveGameNews))
 
-		.def("give_talk_message",			(void (CScriptGameObject::*)(LPCSTR,LPCSTR,Frect,LPCSTR))(&CScriptGameObject::AddIconedTalkMessage))
+		.def("give_talk_message",			(void (CScriptGameObject::*)(const char*, const char*,Frect, const char*))(&CScriptGameObject::AddIconedTalkMessage))
 		
 
 		.def("has_info",					&CScriptGameObject::HasInfo)
@@ -233,15 +233,15 @@ class_<CScriptGameObject> &script_register_game_object2(class_<CScriptGameObject
 
 		.def("make_object_visible_somewhen",&CScriptGameObject::make_object_visible_somewhen)
 
-		.def("buy_condition",				(void (CScriptGameObject::*)(CScriptIniFile*,LPCSTR))(&CScriptGameObject::buy_condition))
+		.def("buy_condition",				(void (CScriptGameObject::*)(CScriptIniFile*, const char*))(&CScriptGameObject::buy_condition))
 		.def("buy_condition",				(void (CScriptGameObject::*)(float,float))(&CScriptGameObject::buy_condition))
 		.def("show_condition",				&CScriptGameObject::show_condition)
-		.def("sell_condition",				(void (CScriptGameObject::*)(CScriptIniFile*,LPCSTR))(&CScriptGameObject::sell_condition))
+		.def("sell_condition",				(void (CScriptGameObject::*)(CScriptIniFile*, const char*))(&CScriptGameObject::sell_condition))
 		.def("sell_condition",				(void (CScriptGameObject::*)(float,float))(&CScriptGameObject::sell_condition))
 		.def("buy_supplies",				&CScriptGameObject::buy_supplies)
 
-		.def("sound_prefix",				(LPCSTR (CScriptGameObject::*)() const)(&CScriptGameObject::sound_prefix))
-		.def("sound_prefix",				(void (CScriptGameObject::*)(LPCSTR))(&CScriptGameObject::sound_prefix))
+		.def("sound_prefix",				(const char* (CScriptGameObject::*)() const)(&CScriptGameObject::sound_prefix))
+		.def("sound_prefix",				(void (CScriptGameObject::*)(const char*))(&CScriptGameObject::sound_prefix))
 
 		.def("location_on_path",			&CScriptGameObject::location_on_path)
 

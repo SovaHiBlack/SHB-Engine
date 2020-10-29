@@ -41,9 +41,9 @@ xr_string to_string					(luabind::object const& o)
 	return s.str().c_str();
 }
 
-void strreplaceall						(xr_string &str, LPCSTR S, LPCSTR N)
+void strreplaceall						(xr_string &str, const char* S, const char* N)
 {
-	LPCSTR	A;
+	const char* A;
 	int		S_len = xr_strlen(S);
 	while ((A = strstr(str.c_str(),S)) != 0)
 		str.replace(A - str.c_str(),S_len,N);
@@ -59,7 +59,7 @@ xr_string &process_signature				(xr_string &str)
 	return			(str);
 }
 
-xr_string member_to_string			(luabind::object const& e, LPCSTR function_signature)
+xr_string member_to_string			(luabind::object const& e, const char* function_signature)
 {
 #if !defined(LUABIND_NO_ERROR_CHECKING)
     using namespace luabind;
@@ -151,7 +151,7 @@ void print_class						(lua_State *L, luabind::detail::class_rep *crep)
 	// print class properties
 	{
 #ifndef USE_NATIVE_LUA_STRINGS
-		typedef std::map<LPCSTR, luabind::detail::class_rep::callback, luabind::detail::ltstr> PROPERTIES;
+		typedef std::map<const char*, luabind::detail::class_rep::callback, luabind::detail::ltstr> PROPERTIES;
 #else
 		typedef luabind::detail::class_rep::callback_map PROPERTIES;
 #endif
@@ -212,7 +212,7 @@ void print_class						(lua_State *L, luabind::detail::class_rep *crep)
 	Msg			("};\n");
 }
 
-void print_free_functions				(lua_State *L, const luabind::object &object, LPCSTR header, const xr_string &indent)
+void print_free_functions				(lua_State *L, const luabind::object &object, const char* header, const xr_string &indent)
 {
 	u32							count = 0;
 	luabind::object::iterator	I = object.begin();
@@ -258,7 +258,7 @@ void print_free_functions				(lua_State *L, const luabind::object &object, LPCST
 		while (lua_next(L, -2) != 0) {
 			if (lua_type(L, -1) == LUA_TTABLE) {
 				if (xr_strcmp("_G",lua_tostring(L, -2))) {
-					LPCSTR				S = lua_tostring(L, -2);
+					const char* S = lua_tostring(L, -2);
 					luabind::object		object(L);
 					object.set			();
 					if (!xr_strcmp("security",S)) {

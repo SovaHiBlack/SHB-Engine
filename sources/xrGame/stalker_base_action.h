@@ -23,7 +23,7 @@ protected:
 	typedef GraphEngineSpace::_solver_value_type		_value_type;
 
 public:
-						CStalkerActionBase			(CStalker *object, LPCSTR action_name = "");
+						CStalkerActionBase			(CStalker *object, const char* action_name = "");
 	virtual void		initialize					();
 	virtual void		execute						();
 	virtual void		finalize					();

@@ -24,8 +24,8 @@ protected:
 	virtual ~CShootingObject(void);
 
 	void	reinit	();
-	void	reload	(LPCSTR section) {};
-	void	Load	(LPCSTR section);
+	void	reload	(const char* section) {};
+	void	Load	(const char* section);
 
 	Fvector		m_vCurrentShootDir;
 	Fvector		m_vCurrentShootPos;
@@ -36,7 +36,7 @@ protected:
 // Fire Params
 //////////////////////////////////////////////////////////////////////////
 protected:
-	virtual void			LoadFireParams		(LPCSTR section, LPCSTR prefix);
+	virtual void			LoadFireParams		(const char* section, const char* prefix);
 	virtual bool			SendHitAllowed		(CObject* pUser);
 	virtual void			FireBullet			(const Fvector& pos, 
         										const Fvector& dir, 
@@ -103,7 +103,7 @@ protected:
 	void					Light_Start			();
 	void					Light_Render		(const Fvector& P);
 
-	virtual	void			LoadLights			(LPCSTR section, LPCSTR prefix);
+	virtual	void			LoadLights			(const char* section, const char* prefix);
 	virtual void			RenderLight			();
 	virtual void			UpdateLight			();
 	virtual void			StopLight			();
@@ -119,12 +119,12 @@ protected:
 	
 	////////////////////////////////////////////////
 	//общие функции для работы с партиклами оружия
-	virtual void			StartParticles		(CParticlesObject*& pParticles, LPCSTR particles_name, const Fvector& pos, const Fvector& vel = zero_vel, bool auto_remove_flag = false);
+	virtual void			StartParticles		(CParticlesObject*& pParticles, const char* particles_name, const Fvector& pos, const Fvector& vel = zero_vel, bool auto_remove_flag = false);
 	virtual void			StopParticles		(CParticlesObject*& pParticles);
 	virtual void			UpdateParticles		(CParticlesObject*& pParticles, const Fvector& pos, const  Fvector& vel = zero_vel);
 
-	virtual	void			LoadShellParticles	(LPCSTR section, LPCSTR prefix);
-	virtual	void			LoadFlameParticles	(LPCSTR section, LPCSTR prefix);
+	virtual	void			LoadShellParticles	(const char* section, const char* prefix);
+	virtual	void			LoadFlameParticles	(const char* section, const char* prefix);
 	
 	////////////////////////////////////////////////
 	//спецефические функции для партиклов

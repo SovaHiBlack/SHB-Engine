@@ -26,7 +26,7 @@ public:
 
 public:
 	typedef xr_vector<float>						ANIMATION_WEIGHTS;
-	typedef std::pair<LPCSTR,LPCSTR>				BLEND_ID;
+	typedef std::pair<const char*, const char*>				BLEND_ID;
 
 public:
 	typedef fastdelegate::FastDelegate0<>			CALLBACK_ID;
@@ -44,8 +44,8 @@ private:
 
 #ifdef DEBUG
 private:
-	LPCSTR					m_object_name;
-	LPCSTR					m_animation_type_name;
+	const char* m_object_name;
+	const char* m_animation_type_name;
 
 public:
 	bool					m_just_started;
@@ -83,7 +83,7 @@ public:
 
 #ifdef DEBUG
 public:
-	IC		void			set_dbg_info			(LPCSTR object_name, LPCSTR animation_type_name);
+	IC		void			set_dbg_info			(const char* object_name, const char* animation_type_name);
 			BLEND_ID		*blend_id				(CKinematicsAnimated *skeleton_animated, BLEND_ID &result) const;
 #endif // DEBUG
 

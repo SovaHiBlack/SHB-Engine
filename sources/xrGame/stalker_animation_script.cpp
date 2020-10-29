@@ -47,7 +47,7 @@ void CStalkerAnimationManager::script_play_callback(CBlend *blend)
 	pair.on_animation_end		();
 }
 
-void CStalkerAnimationManager::add_script_animation	(LPCSTR animation, bool hand_usage, bool use_movement_controller)
+void CStalkerAnimationManager::add_script_animation	(const char* animation, bool hand_usage, bool use_movement_controller)
 {
 	const MotionID					&motion = m_skeleton_animated->ID_Cycle_Safe(animation);
 	if (!motion) {

@@ -17,7 +17,7 @@
 
 using namespace StalkerSpace;
 
-CStalkerActionBase::CStalkerActionBase		(CStalker *object, LPCSTR action_name) :
+CStalkerActionBase::CStalkerActionBase		(CStalker *object, const char* action_name) :
 	inherited				(object,action_name)
 { }
 

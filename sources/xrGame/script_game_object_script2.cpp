@@ -95,8 +95,8 @@ class_<CScriptGameObject> &script_register_game_object1(class_<CScriptGameObject
 		.def("change_team",					(void (CScriptGameObject::*)(u8,u8,u8))(&CScriptGameObject::ChangeTeam))
 		.def("kill",						&CScriptGameObject::Kill)
 		.def("hit",							&CScriptGameObject::Hit)
-		.def("play_cycle",					(void (CScriptGameObject::*)(LPCSTR))(&CScriptGameObject::play_cycle))
-		.def("play_cycle",					(void (CScriptGameObject::*)(LPCSTR,bool))(&CScriptGameObject::play_cycle))
+		.def("play_cycle",					(void (CScriptGameObject::*)(const char*))(&CScriptGameObject::play_cycle))
+		.def("play_cycle",					(void (CScriptGameObject::*)(const char*,bool))(&CScriptGameObject::play_cycle))
 		.def("fov",							&CScriptGameObject::GetFOV)
 		.def("range",						&CScriptGameObject::GetRange)
 		.def("relation",					&CScriptGameObject::GetRelationType)
@@ -114,7 +114,7 @@ class_<CScriptGameObject> &script_register_game_object1(class_<CScriptGameObject
 		.def("command",						&CScriptGameObject::AddAction)
 		.def("action",						&CScriptGameObject::GetCurrentAction, adopt(result))
 		.def("object_count",				&CScriptGameObject::GetInventoryObjectCount)
-		.def("object",						(CScriptGameObject *(CScriptGameObject::*)(LPCSTR))(&CScriptGameObject::GetObjectByName))
+		.def("object",						(CScriptGameObject *(CScriptGameObject::*)(const char*))(&CScriptGameObject::GetObjectByName))
 		.def("object",						(CScriptGameObject *(CScriptGameObject::*)(int))(&CScriptGameObject::GetObjectByIndex))
 		.def("active_item",					&CScriptGameObject::GetActiveItem)
 		
@@ -144,7 +144,7 @@ class_<CScriptGameObject> &script_register_game_object1(class_<CScriptGameObject
 		.def("action_count",				&CScriptGameObject::GetActionCount)
 		.def("action_by_index",				&CScriptGameObject::GetActionByIndex)
 		
-		//.def("set_hear_callback",			(void (CScriptGameObject::*)(const luabind::object &, LPCSTR))(&CScriptGameObject::SetSoundCallback))
+		//.def("set_hear_callback",			(void (CScriptGameObject::*)(const luabind::object &, const char*))(&CScriptGameObject::SetSoundCallback))
 		//.def("set_hear_callback",			(void (CScriptGameObject::*)(const luabind::functor<void> &))(&CScriptGameObject::SetSoundCallback))
 		//.def("clear_hear_callback",		&CScriptGameObject::ClearSoundCallback)
 		
@@ -211,7 +211,7 @@ class_<CScriptGameObject> &script_register_game_object1(class_<CScriptGameObject
 		.def("level_vertex_id",				&CScriptGameObject::level_vertex_id)
 		.def("level_vertex_light",			&CScriptGameObject::level_vertex_light)
 		.def("game_vertex_id",				&CScriptGameObject::game_vertex_id)
-		.def("add_animation",				(void (CScriptGameObject::*)(LPCSTR, bool, bool))(&CScriptGameObject::add_animation))
+		.def("add_animation",				(void (CScriptGameObject::*)(const char*, bool, bool))(&CScriptGameObject::add_animation))
 		.def("clear_animations",			&CScriptGameObject::clear_animations)
 		.def("animation_count",				&CScriptGameObject::animation_count)
 		.def("animation_slot",				&CScriptGameObject::animation_slot)

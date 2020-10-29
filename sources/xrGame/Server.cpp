@@ -356,7 +356,7 @@ void CServer::SendUpdatesToAll()
 }
 
 xr_vector<shared_str>	_tmp_log;
-void console_log_cb(LPCSTR text)
+void console_log_cb(const char* text)
 {
 	_tmp_log.push_back	(text);
 }
@@ -657,7 +657,7 @@ void CServer::SendTo_LL			(ClientID ID, void* data, u32 size, u32 dwFlags, u32 d
 }
 
 //--------------------------------------------------------------------
-CSE_Abstract* CServer::entity_Create		(LPCSTR name)
+CSE_Abstract* CServer::entity_Create		(const char* name)
 {
 	return F_entity_Create(name);
 }
@@ -887,7 +887,7 @@ void CServer::GetServerInfo( CServerInfo* si )
 	string256 tmp256;
 
 	si->AddItem( "Server port", itoa( GetPort(), tmp, 10 ), RGB(128,128,255) );
-	LPCSTR time = InventoryUtilities::GetTimeAsString( Device.dwTimeGlobal, InventoryUtilities::etpTimeToSecondsAndDay ).c_str();
+	const char* time = InventoryUtilities::GetTimeAsString( Device.dwTimeGlobal, InventoryUtilities::etpTimeToSecondsAndDay ).c_str();
 	si->AddItem( "Uptime", time, RGB(255,228,0) );
 
 	strcpy_s( tmp256, get_token_name(game_types, game->Type() ) );

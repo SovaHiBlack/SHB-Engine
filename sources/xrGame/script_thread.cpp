@@ -20,7 +20,7 @@ extern "C" {
 #	include "script_debugger.h"
 #endif
 
-const LPCSTR main_function = "console_command_run_string_main_thread_function";
+const char* main_function = "console_command_run_string_main_thread_function";
 
 //void print_stack_(lua_State *L)
 //{
@@ -29,7 +29,7 @@ const LPCSTR main_function = "console_command_run_string_main_thread_function";
 //		Msg("%2d : %s",-i-1,lua_typename(L, lua_type(L, -i-1)));
 //}
 
-CScriptThread::CScriptThread(LPCSTR caNamespaceName, bool do_string, bool reload)
+CScriptThread::CScriptThread(const char* caNamespaceName, bool do_string, bool reload)
 {
 	m_virtual_machine		= 0;
 	m_active				= false;

@@ -13,7 +13,7 @@
 
 using namespace luabind;
 
-void LuaLog(LPCSTR caMessage)
+void LuaLog(const char* caMessage)
 {
 	ai().script_engine().script_log	(ScriptStorage::eLuaMessageTypeMessage,"%s",caMessage);
 #ifdef USE_DEBUGGER
@@ -23,7 +23,7 @@ void LuaLog(LPCSTR caMessage)
 #endif
 }
 
-void ErrorLog(LPCSTR caMessage)
+void ErrorLog(const char* caMessage)
 {
 	ai().script_engine().script_log	(ScriptStorage::eLuaMessageTypeError,"%s",caMessage);
 #ifdef USE_DEBUGGER
@@ -82,12 +82,12 @@ int bit_not(int i)
 	return			(~i);
 }
 
-LPCSTR user_name()
+const char* user_name()
 {
 	return			(Core.UserName);
 }
 
-void prefetch_module(LPCSTR file_name)
+void prefetch_module(const char* file_name)
 {
 	ai().script_engine().process_file(file_name);
 }
@@ -183,7 +183,7 @@ ICF	u32	script_time_global	()	{ return 0; }
 void CScriptEngine::script_register(lua_State *L)
 {
 	module(L)[
-		def("log", (void(*)(LPCSTR)) & Log),
+		def("log", (void(*)(const char*)) & Log),
 		class_<profile_timer_script>("profile_timer")
 			.def(constructor<>())
 			.def(constructor<profile_timer_script&>())

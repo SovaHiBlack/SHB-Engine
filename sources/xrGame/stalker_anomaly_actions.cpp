@@ -33,7 +33,7 @@ using namespace StalkerDecisionSpace;
 // CStalkerActionGetOutOfAnomaly
 //////////////////////////////////////////////////////////////////////////
 
-CStalkerActionGetOutOfAnomaly::CStalkerActionGetOutOfAnomaly	(CStalker *object, LPCSTR action_name) :
+CStalkerActionGetOutOfAnomaly::CStalkerActionGetOutOfAnomaly	(CStalker *object, const char* action_name) :
 	inherited				(object,action_name)
 { }
 
@@ -101,7 +101,7 @@ void CStalkerActionGetOutOfAnomaly::execute	()
 // CStalkerActionDetectAnomaly
 //////////////////////////////////////////////////////////////////////////
 
-CStalkerActionDetectAnomaly::CStalkerActionDetectAnomaly	(CStalker *object, LPCSTR action_name) :
+CStalkerActionDetectAnomaly::CStalkerActionDetectAnomaly	(CStalker *object, const char* action_name) :
 	inherited				(object,action_name)
 { }
 

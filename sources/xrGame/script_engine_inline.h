@@ -23,9 +23,10 @@ CScriptProcess *CScriptEngine::script_process	(const EScriptProcessors &process_
 	return									(0);
 }
 
-IC	void CScriptEngine::parse_script_namespace(LPCSTR function_to_call, char* name_space, char* function)
+IC	void CScriptEngine::parse_script_namespace(const char* function_to_call, char* name_space, char* function)
 {
-	LPCSTR					I = function_to_call, J = 0;
+	const char* I = function_to_call;
+	const char* J = 0;
 	for ( ; ; J=I,++I) {
 		I					= strchr(I,'.');
 		if (!I)
@@ -42,7 +43,7 @@ IC	void CScriptEngine::parse_script_namespace(LPCSTR function_to_call, char* nam
 }
 
 template <typename _result_type>
-IC	bool CScriptEngine::functor(LPCSTR function_to_call, luabind::functor<_result_type> &lua_function)
+IC	bool CScriptEngine::functor(const char* function_to_call, luabind::functor<_result_type> &lua_function)
 {
 	luabind::object			object;
 	if (!function_object(function_to_call,object))

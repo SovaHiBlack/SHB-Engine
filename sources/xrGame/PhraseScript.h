@@ -29,7 +29,7 @@ public:
 	virtual bool				Precondition	(const CGameObject* pSpeaker1, const CGameObject* pSpeaker2, const char* dialog_id, const char* phrase_id, const char* next_phrase_id) const;
 	virtual void				Action			(const CGameObject* pSpeaker1, const CGameObject* pSpeaker2, const char* dialog_id, const char* phrase_id) const;
 	//текст из скриптовой функции
-//	virtual LPCSTR Text			(LPCSTR original_text, const CGameObject* pSpeaker1, const CGameObject* pSpeaker2, LPCSTR dialog_id, int phrase_num) const;
+//	virtual const char* Text			(const char* original_text, const CGameObject* pSpeaker1, const CGameObject* pSpeaker2, const char* dialog_id, int phrase_num) const;
 //	virtual bool   HasText		() const {return *m_sScriptTextFunc!=NULL;}
 
 	DEFINE_VECTOR				(shared_str, PRECONDITION_VECTOR, PRECONDITION_VECTOR_IT);

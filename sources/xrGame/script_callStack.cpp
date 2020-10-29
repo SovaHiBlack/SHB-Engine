@@ -39,7 +39,7 @@ void CScriptCallStack::Clear()
 	m_files.clear();
 }
 
-void CScriptCallStack::Add(LPCSTR szDesc, LPCSTR szFile, int nLine)
+void CScriptCallStack::Add(const char* szDesc, const char* szFile, int nLine)
 {
 	m_lines.push_back(nLine);
 

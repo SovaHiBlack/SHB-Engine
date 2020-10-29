@@ -171,7 +171,7 @@ public:
 	virtual void			client_Destroy		(IClient* C);					// destroy client info
 
 	// utilities
-	CSE_Abstract*			entity_Create		(LPCSTR name);
+	CSE_Abstract*			entity_Create		(const char* name);
 	void					entity_Destroy		(CSE_Abstract *&P);
 	u32						GetEntitiesNum		()			{ return entities.size(); };
 	CSE_Abstract*			GetEntity			(u32 Num);

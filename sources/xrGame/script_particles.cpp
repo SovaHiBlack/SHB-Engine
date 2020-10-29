@@ -7,10 +7,11 @@
 ////////////////////////////////////////////////////////////////////////////
 
 #include "stdafx.h"
+
 #include "script_particles.h"
 #include "..\ENGINE\objectanimator.h"
 
-CScriptParticlesCustom::CScriptParticlesCustom(CScriptParticles* owner, LPCSTR caParticlesName):CParticlesObject(caParticlesName,FALSE,true)
+CScriptParticlesCustom::CScriptParticlesCustom(CScriptParticles* owner, const char* caParticlesName):CParticlesObject(caParticlesName,FALSE,true)
 {
 //	Msg							("CScriptParticlesCustom: 0x%08x",*(int*)&owner);
 	m_owner						= owner;
@@ -48,7 +49,7 @@ void CScriptParticlesCustom::shedule_Update(u32 _dt)
 	}
 }
 
-void CScriptParticlesCustom::LoadPath(LPCSTR caPathName)
+void CScriptParticlesCustom::LoadPath(const char* caPathName)
 {
 	if (!m_animator) m_animator	= xr_new<CObjectAnimator>();
 	if ((0==m_animator->Name())||(0!=xr_strcmp(m_animator->Name(),caPathName))){
@@ -75,7 +76,7 @@ void CScriptParticlesCustom::StopPath()
 	m_animator->Stop			();
 }
 
-CScriptParticles::CScriptParticles(LPCSTR caParticlesName)
+CScriptParticles::CScriptParticles(const char* caParticlesName)
 {
 	m_particles					= xr_new<CScriptParticlesCustom>(this, caParticlesName);
 }
@@ -134,7 +135,7 @@ bool CScriptParticles::IsLooped	() const
 	return m_particles->IsLooped();
 }
 
-void CScriptParticles::LoadPath(LPCSTR caPathName)
+void CScriptParticles::LoadPath(const char* caPathName)
 {
 	VERIFY						(m_particles);
 	m_particles->LoadPath		(caPathName);
@@ -162,7 +163,7 @@ void CScriptParticles::script_register(lua_State* L)
 	module(L)
 		[
 			class_<CScriptParticles>("particles_object")
-			.def(constructor<LPCSTR>( ))
+			.def(constructor<const char*>( ))
 		.def("play", &CScriptParticles::Play)
 		.def("play_at_pos", &CScriptParticles::PlayAtPos)
 		.def("stop", &CScriptParticles::Stop)

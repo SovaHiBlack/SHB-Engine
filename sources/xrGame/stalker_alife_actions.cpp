@@ -39,7 +39,7 @@ using namespace StalkerSpace;
 // CStalkerActionNoALife
 //////////////////////////////////////////////////////////////////////////
 
-CStalkerActionNoALife::CStalkerActionNoALife	(CStalker *object, LPCSTR action_name) :
+CStalkerActionNoALife::CStalkerActionNoALife	(CStalker *object, const char* action_name) :
 	inherited				(object,action_name)
 { }
 
@@ -106,7 +106,7 @@ void CStalkerActionNoALife::execute		()
 // CStalkerActionGatherItems
 //////////////////////////////////////////////////////////////////////////
 
-CStalkerActionGatherItems::CStalkerActionGatherItems	(CStalker *object, LPCSTR action_name) :
+CStalkerActionGatherItems::CStalkerActionGatherItems	(CStalker *object, const char* action_name) :
 	inherited				(object,action_name)
 { }
 

@@ -23,7 +23,7 @@ protected:
 	typedef CStalkerActionBase inherited;
 
 public:
-						CStalkerActionGetOutOfAnomaly	(CStalker *object, LPCSTR action_name = "");
+						CStalkerActionGetOutOfAnomaly	(CStalker *object, const char* action_name = "");
 	virtual void		initialize						();
 	virtual void		execute							();
 	virtual void		finalize						();
@@ -38,7 +38,7 @@ protected:
 	typedef CStalkerActionBase inherited;
 
 public:
-						CStalkerActionDetectAnomaly	(CStalker *object, LPCSTR action_name = "");
+						CStalkerActionDetectAnomaly	(CStalker *object, const char* action_name = "");
 	virtual void		initialize					();
 	virtual void		execute						();
 	virtual void		finalize					();

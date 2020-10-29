@@ -132,7 +132,7 @@ int CDbgLuaHelper::errormessageLua(lua_State* l)
 	lua_concat(L, lua_gettop(L));
 
 	OutputTop(L);
-	LPCSTR szSource=NULL;
+	const char* szSource=NULL;
 	if ( ar.source[0] == '@' )
 		szSource=ar.source+1;
 	m_pThis->debugger()->ErrorBreak(szSource, ar.currentline);
@@ -164,7 +164,7 @@ void CDbgLuaHelper::func_hook (lua_State *l, lua_Debug *ar)
 	lua_getinfo(L, "lnuS", ar);
 	m_pThis->m_pAr = ar;
 
-	LPCSTR szSource=NULL;
+	const char* szSource=NULL;
 	if ( ar->source[0] == '@' )
 	{
 		szSource=ar->source+1;
@@ -236,7 +236,7 @@ void CDbgLuaHelper::hookLua (lua_State *l, lua_Debug *ar)
 	VERIFY(top2==top1);
 }
 
-LPCSTR CDbgLuaHelper::GetSource()
+const char* CDbgLuaHelper::GetSource()
 { 
 	return m_pAr->source+1; 
 };
@@ -293,7 +293,7 @@ void CDbgLuaHelper::DrawLocalVariables()
 	if ( lua_getstack (L, nLevel, &ar) )
 	{
 		int i = 1;
-		LPCSTR name;
+		const char* name;
 		while ((name = lua_getlocal(L, &ar, i++)) != NULL) {
 				DrawVariable(L,name,true);
 
@@ -320,14 +320,14 @@ void CDbgLuaHelper::DrawGlobalVariables()
 	lua_pop(L, 1); // pop table of globals;
 };
 
-bool CDbgLuaHelper::GetCalltip(LPCSTR szWord, char *szCalltip, int sz_calltip)
+bool CDbgLuaHelper::GetCalltip(const char* szWord, char *szCalltip, int sz_calltip)
 {
 	int nLevel = debugger()->GetStackTraceLevel();
 	lua_Debug ar;
 	if ( lua_getstack (L, nLevel, &ar) )
 	{
 		int i = 1;
-		LPCSTR name;
+		const char* name;
 		while ((name = lua_getlocal(L, &ar, i++)) != NULL) {
 			if ( xr_strcmp(name, szWord)==0 )
 			{
@@ -347,7 +347,7 @@ bool CDbgLuaHelper::GetCalltip(LPCSTR szWord, char *szCalltip, int sz_calltip)
 	lua_pushnil(L);  /* first key */
 	while (lua_next(L, -2))
 	{
-		LPCSTR name = lua_tostring(L, -2);
+		const char* name = lua_tostring(L, -2);
 		if ( xr_strcmp(name, szWord)==0 )
 		{
 			char szRet[64];
@@ -366,7 +366,7 @@ bool CDbgLuaHelper::GetCalltip(LPCSTR szWord, char *szCalltip, int sz_calltip)
 	return false;
 }
 
-bool CDbgLuaHelper::Eval(LPCSTR szCode, char* szRet,int szret_size)
+bool CDbgLuaHelper::Eval(const char* szCode, char* szRet,int szret_size)
 {
 	CoverGlobals();
 
@@ -379,8 +379,8 @@ bool CDbgLuaHelper::Eval(LPCSTR szCode, char* szRet,int szret_size)
 		status = lua_pcall(L, 0, LUA_MULTRET, 0);  /* call main */
 		if ( status )
 		{
-			LPCSTR szErr = luaL_checkstring(L, -1);
-			LPCSTR szErr2 = strstr(szErr, ": ");
+			const char* szErr = luaL_checkstring(L, -1);
+			const char* szErr2 = strstr(szErr, ": ");
 			sprintf_s(szRet, szret_size, "%s", szErr2?(szErr2+2):szErr);
 		}
 		else
@@ -397,7 +397,7 @@ bool CDbgLuaHelper::Eval(LPCSTR szCode, char* szRet,int szret_size)
 void CDbgLuaHelper::Describe(char *szRet, int nIndex, int szRet_size)
 {
 	int ntype = lua_type(L, nIndex);
-	LPCSTR type = lua_typename(L, ntype);
+	const char* type = lua_typename(L, ntype);
 	char value[64];
 
 	switch(ntype)
@@ -427,7 +427,7 @@ void CDbgLuaHelper::CoverGlobals()
 	if ( lua_getstack (L, nLevel, &ar) )
 	{
 		int i = 1;
-		LPCSTR name;
+		const char* name;
 		while ((name = lua_getlocal(L, &ar, i++)) != NULL) { /* SAVE lvalue */
 			lua_pushstring(L, name);	/* SAVE lvalue name */						
 			lua_pushvalue(L, -1);	/* SAVE lvalue name name */
@@ -461,12 +461,12 @@ void CDbgLuaHelper::RestoreGlobals()
 	lua_pop(L, 1); // pop table of covered globals;
 }
 
-void CDbgLuaHelper::DrawVariable(lua_State * l, LPCSTR name, bool bOpenTable)
+void CDbgLuaHelper::DrawVariable(lua_State * l, const char* name, bool bOpenTable)
 {
 	Variable var;
 	strcpy(var.szName, name );
 
-	LPCSTR type;
+	const char* type;
 	int ntype = lua_type(l, -1);
 	type = lua_typename(l, ntype);
 	strcpy(var.szType, type);
@@ -517,7 +517,7 @@ void CDbgLuaHelper::DrawVariable(lua_State * l, LPCSTR name, bool bOpenTable)
 	debugger()->AddLocalVariable(var);
 }
 
-void CDbgLuaHelper::DrawTable(lua_State *l, LPCSTR S, bool bRecursive)
+void CDbgLuaHelper::DrawTable(lua_State *l, const char* S, bool bRecursive)
 {
 //	char		str[1024];
 

@@ -46,7 +46,7 @@ shared_str CSpaceRestrictionHolder::normalize_string		(shared_str space_restrict
 	char** string_current = strings;
 
 	char* temp_string = (char*)_alloca((n+1)*sizeof(char));
-	LPCSTR					I = *space_restrictors;
+	const char* I = *space_restrictors;
 	char* i = temp_string;
 	char* j = i;
 	for ( ; *I; ++I, ++i) {
