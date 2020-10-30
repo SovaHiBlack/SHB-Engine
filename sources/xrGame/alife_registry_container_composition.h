@@ -59,7 +59,6 @@ add_to_registry_type_list(CGameNewsRegistry)
 #define game_news define_constant(CGameNewsRegistry) 
 #define registry_type_list save_registry_type_list(CGameNewsRegistry)
 
-
 //список описаний персонажей, которые уже задействованы в игре
 typedef CALifeAbstractRegistry<shared_str, int > CSpecificCharacterRegistry;
 add_to_registry_type_list(CSpecificCharacterRegistry)

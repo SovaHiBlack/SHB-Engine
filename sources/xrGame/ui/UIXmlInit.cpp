@@ -363,11 +363,15 @@ bool CUIXmlInit::Init3tButton(CUIXml& xml_doc, const char* path, int index, CUI3
 
 	int r = xml_doc.ReadAttribInt(path, index, "check_mode", -1);
 	if (r != -1)
-	{pWnd->SetCheckMode((r == 1) ? true : false);
+	{
+		pWnd->SetCheckMode((r == 1) ? true : false);
+	}
 
 	const char* text_hint = xml_doc.ReadAttrib(path, index, "hint", NULL);
 	if (text_hint)
+	{
 		pWnd->m_hint_text = CStringTable( ).translate(text_hint);
+	}
 
 	return true;
 }
