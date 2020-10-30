@@ -48,7 +48,7 @@ public:
 	static bool InitEditBox(CUIXml& xml_doc, const char* paht, int index, CUIEditBox* pWnd);
 	static bool InitEditBoxEx(CUIXml& xml_doc, const char* paht, int index, CUIEditBoxEx* pWnd);
 	static bool InitStatic(CUIXml& xml_doc, const char* path, int index, CUIStatic* pWnd);
-	static bool	InitCheck(CUIXml& xml_doc, const char* path, int index, CUICheckButton* pWnd);
+	static bool InitCheck(CUIXml& xml_doc, const char* path, int index, CUICheckButton* pWnd);
 	static bool InitSpin(CUIXml& xml_doc, const char* path, int index, CUICustomSpin* pWnd);
 	static bool InitText(CUIXml& xml_doc, const char* path, int index, CUIStatic* pWnd);
 	static bool InitText(CUIXml& xml_doc, const char* path, int index, IUITextControl* pWnd);
@@ -72,13 +72,13 @@ public:
 	static bool InitTexture(CUIXml& xml_doc, const char* path, int index, IUIMultiTextureOwner* pWnd);
 	static bool InitTexture(CUIXml& xml_doc, const char* path, int index, IUISingleTextureOwner* pWnd);
 	static bool InitOptionsItem(CUIXml& xml_doc, const char* paht, int index, CUIOptionsItem* pWnd);
-//	static u32	GetARGB(CUIXml& xml_doc, const char* path, int index);
+//	static u32 GetARGB(CUIXml& xml_doc, const char* path, int index);
 	static bool InitScrollView(CUIXml& xml_doc, const char* path, int index, CUIScrollView* pWnd);
 	static bool InitListBox(CUIXml& xml_doc, const char* path, int index, CUIListBox* pWnd);
-	static bool	InitComboBox(CUIXml& xml_doc, const char* path, int index, CUIComboBox* pWnd);
-	static bool	InitTrackBar(CUIXml& xml_doc, const char* path, int index, CUITrackBar* pWnd);
+	static bool InitComboBox(CUIXml& xml_doc, const char* path, int index, CUIComboBox* pWnd);
+	static bool InitTrackBar(CUIXml& xml_doc, const char* path, int index, CUITrackBar* pWnd);
 	static Frect GetFRect(CUIXml& xml_doc, const char* path, int index);
-	static u32	GetColor(CUIXml& xml_doc, const char* path, int index, u32 def_clr);
+	static u32 GetColor(CUIXml& xml_doc, const char* path, int index, u32 def_clr);
 public:
 
 	// Функция чтения алайна из xml файла и применения его к координатам.
@@ -88,8 +88,8 @@ public:
 	// Автоматическая инициализация статических элеменитов
 	// Чтобы вернуть указатели на созданые статики (нам бывает необходимо прятать их, например)
 	// создадим тип - вектор указателей на статики
-	typedef		xr_vector<CUIStatic*>	StaticsVec;
-	typedef		StaticsVec::iterator	StaticsVec_it;
+	using StaticsVec = xr_vector<CUIStatic*>;
+	using StaticsVec_it = StaticsVec::iterator;
 
 	static StaticsVec InitAutoStatic(CUIXml& xml_doc, const char* tag_name, CUIWindow* pParentWnd);
 	static StaticsVec InitAutoStaticGroup(CUIXml& xml_doc, const char* path, int index, CUIWindow* pParentWnd);
@@ -119,5 +119,5 @@ public:
 	}
 
 private:
-	static	ColorDefs* m_pColorDefs;
+	static ColorDefs* m_pColorDefs;
 };

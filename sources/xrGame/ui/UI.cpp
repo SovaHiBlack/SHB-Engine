@@ -25,7 +25,6 @@ CUI::CUI(CHUDManager* p)
 	ShowGameIndicators( );
 	ShowCrosshair( );
 }
-//--------------------------------------------------------------------
 
 CUI::~CUI( )
 {
@@ -34,8 +33,6 @@ CUI::~CUI( )
 	xr_delete(UIMainIngameWnd);
 }
 
-//--------------------------------------------------------------------
-
 void CUI::Load(CUIGameCustom* pGameUI)
 {
 	if (pGameUI)
@@ -43,6 +40,7 @@ void CUI::Load(CUIGameCustom* pGameUI)
 		pGameUI->SetClGame(&Game( ));
 		return;
 	}
+
 	pUIGame = Game( ).createGameUI( );
 	R_ASSERT(pUIGame);
 }
@@ -53,7 +51,6 @@ void CUI::UnLoad( )
 	pUIGame = Game( ).createGameUI( );
 	R_ASSERT(pUIGame);
 }
-//--------------------------------------------------------------------
 
 void CUI::UIOnFrame( )
 {
@@ -78,7 +75,6 @@ void CUI::UIOnFrame( )
 
 	m_pMessagesWnd->Update( );
 }
-//--------------------------------------------------------------------
 
 bool CUI::Render( )
 {
@@ -133,37 +129,44 @@ bool CUI::Render( )
 
 	return false;
 }
-//.		if(HUD().GetUI())HUD().GetUI()->HideGameIndicators();
-//.		if(HUD().GetUI())HUD().GetUI()->ShowGameIndicators();
 
-bool	CUI::IR_OnMouseWheel(int direction)
+bool CUI::IR_OnMouseWheel(int direction)
 {
 	if (MainInputReceiver( ))
 	{
 		if (MainInputReceiver( )->IR_OnMouseWheel(direction))
+		{
 			return true;
+		}
 	}
 
 	if (pUIGame && pUIGame->IR_OnMouseWheel(direction))
+	{
 		return true;
+	}
 
 	if (MainInputReceiver( ))
+	{
 		return true;
+	}
 
 	return false;
 }
 
-//--------------------------------------------------------------------
 bool CUI::IR_OnKeyboardHold(int dik)
 {
 	if (MainInputReceiver( ))
 	{
 		if (MainInputReceiver( )->IR_OnKeyboardHold(dik))
+		{
 			return true;
+		}
 	}
 
 	if (MainInputReceiver( ))
+	{
 		return true;
+	}
 
 	return false;
 }
@@ -173,53 +176,71 @@ bool CUI::IR_OnKeyboardPress(int dik)
 	if (MainInputReceiver( ))
 	{
 		if (MainInputReceiver( )->IR_OnKeyboardPress(dik))
+		{
 			return true;
+		}
 	}
 
 	if (UIMainIngameWnd->OnKeyboardPress(dik))
+	{
 		return true;
+	}
 
 	if (pUIGame && pUIGame->IR_OnKeyboardPress(dik))
+	{
 		return true;
+	}
 
 	if (MainInputReceiver( ))
+	{
 		return true;
+	}
 
 	return false;
 }
-//--------------------------------------------------------------------
 
 bool CUI::IR_OnKeyboardRelease(int dik)
 {
 	if (MainInputReceiver( ))
 	{
 		if (MainInputReceiver( )->IR_OnKeyboardRelease(dik))
+		{
 			return true;
+		}
 	}
 
 	if (pUIGame && pUIGame->IR_OnKeyboardRelease(dik))
+	{
 		return true;
+	}
 
 	if (MainInputReceiver( ))
+	{
 		return true;
+	}
 
 	return false;
 }
-//--------------------------------------------------------------------
 
 bool CUI::IR_OnMouseMove(int dx, int dy)
 {
 	if (MainInputReceiver( ))
 	{
 		if (MainInputReceiver( )->IR_OnMouseMove(dx, dy))
+		{
 			return true;
+		}
 	}
 
 	if (pUIGame && pUIGame->IR_OnMouseMove(dx, dy))
+	{
 		return true;
+	}
 
 	if (MainInputReceiver( ))
+	{
 		return true;
+	}
 
 	return false;
 }
@@ -231,6 +252,7 @@ SDrawStaticStruct* CUI::AddInfoMessage(const char* message)
 	{
 		ss = pUIGame->AddCustomStatic(message, true);
 	}
+
 	return ss;
 }
 

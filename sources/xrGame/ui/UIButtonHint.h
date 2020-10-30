@@ -22,7 +22,7 @@ public:
 	}
 	void				Discard			( )
 	{
-		m_ownerWnd = NULL;
+		m_ownerWnd = nullptr;
 	};
 	virtual void		OnRender		( );
 	void				Draw_			( )

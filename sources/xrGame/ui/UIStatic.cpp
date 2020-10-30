@@ -10,7 +10,7 @@
 #include "..\StringTable.h"
 #include "ui_base.h"//
 
-const char * const	clDefault	= "default";
+const char* clDefault	= "default";
 
 #define CREATE_LINES if (!m_pLines) {m_pLines = xr_new<CUILines>(); m_pLines->SetTextAlignment(CGameFont::alLeft);}
 #define LA_CYCLIC			(1<<0)

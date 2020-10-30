@@ -142,7 +142,7 @@ end
 
 function save_dialog:OnButton_del_clicked()
 
-	local list		= self:GetListWnd		("list_window")	
+	local list		= self:GetListWnd		("list_window")
 	if list:GetSize()==0 then return end
 
 	local index		= list:GetSelectedItem	()
@@ -150,7 +150,7 @@ function save_dialog:OnButton_del_clicked()
 	if index == -1 then return end
 
 	self.mbox_mode = 2
-	self.message_box:Init("message_box_delete_file_name")		
+	self.message_box:Init("message_box_delete_file_name")
 	self:GetHolder():start_stop_menu(self.message_box, true)
 end
 
@@ -182,7 +182,7 @@ function save_dialog:OnButton_ok_clicked()
 	// check for empty name
 	if string.len(self.new_save) == 0 then
 		self.mbox_mode = 0
-		self.message_box:Init("message_box_empty_file_name")		
+		self.message_box:Init("message_box_empty_file_name")
 		self:GetHolder():start_stop_menu(self.message_box, true)
 		return
 	end
