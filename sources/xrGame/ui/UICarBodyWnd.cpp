@@ -63,7 +63,6 @@ void CUICarBodyWnd::Init()
 	AttachChild					(m_pUIStaticTop);
 	xml_init.InitStatic			(uiXml, "top_background", 0, m_pUIStaticTop);
 
-
 	m_pUIStaticBottom			= xr_new<CUIStatic>(); m_pUIStaticBottom->SetAutoDelete(true);
 	AttachChild					(m_pUIStaticBottom);
 	xml_init.InitStatic			(uiXml, "bottom_background", 0, m_pUIStaticBottom);
@@ -75,7 +74,6 @@ void CUICarBodyWnd::Init()
 	m_pUIOthersIcon				= xr_new<CUIStatic>(); m_pUIOthersIcon->SetAutoDelete(true);
 	AttachChild					(m_pUIOthersIcon);
 	xml_init.InitStatic			(uiXml, "static_icon", 1, m_pUIOthersIcon);
-
 
 	m_pUICharacterInfoLeft		= xr_new<CUICharacterInfo>(); m_pUICharacterInfoLeft->SetAutoDelete(true);
 	m_pUIOurIcon->AttachChild	(m_pUICharacterInfoLeft);
@@ -189,7 +187,7 @@ void CUICarBodyWnd::InitCarBody(CInventoryOwner* pOur, CInventoryOwner* pOthers)
 
 		KNOWN_INFO_VECTOR_IT it = known_info.begin();
 		for(int i=0;it!=known_info.end();++it,++i){
-			(*it).info_id;	
+			//(*it).info_id;	
 			NET_Packet		P;
 			CGameObject::u_EventGen		(P,GE_INFO_TRANSFER, our_id);
 			P.w_u16						(0);//not used
@@ -200,7 +198,7 @@ void CUICarBodyWnd::InitCarBody(CInventoryOwner* pOur, CInventoryOwner* pOthers)
 		known_info.clear	();
 		xr_delete			(known_info_registry);
 	}
-}  
+}
 
 void CUICarBodyWnd::UpdateLists_delayed()
 {

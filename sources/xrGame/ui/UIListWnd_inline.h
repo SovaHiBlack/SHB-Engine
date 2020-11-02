@@ -30,7 +30,6 @@ bool CUIListWnd::AddItem(Element* pItem, int insertBeforeIdx)
 	pItem->Init(pItem->GetWndRect().left, m_bVertFlip?GetHeight()-GetItemsCount()* m_iItemHeight-m_iItemHeight:GetItemsCount()* m_iItemHeight, 
 		m_iItemWidth, m_iItemHeight);
 
-
 	//добавление в конец или начало списка
 	if(-1 == insertBeforeIdx)
 	{
@@ -40,8 +39,10 @@ bool CUIListWnd::AddItem(Element* pItem, int insertBeforeIdx)
 	else
 	{
 		//изменить значения индексов уже добавленых элементов
-		if (!m_ItemList.empty())
-			R_ASSERT(static_cast<u32>(insertBeforeIdx) <= m_ItemList.size());
+		if (!m_ItemList.empty( ))
+		{
+			R_ASSERT(static_cast<u32>(insertBeforeIdx) <= m_ItemList.size( ));
+		}
 
 		LIST_ITEM_LIST_it it2 = m_ItemList.begin();
 		std::advance(it2, insertBeforeIdx);
@@ -49,6 +50,7 @@ bool CUIListWnd::AddItem(Element* pItem, int insertBeforeIdx)
 		{
 			(*it)->SetIndex((*it)->GetIndex()+1);
 		}
+
 		m_ItemList.insert(it2, pItem);
 		pItem->SetIndex(insertBeforeIdx);
 	}

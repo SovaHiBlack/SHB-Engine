@@ -162,9 +162,7 @@ void CUIEventsWnd::ReloadList(bool bClearOnly)
 			pTaskItem->SetGameTask			(task, i);
 			m_ListWnd->AddWindow			(pTaskItem,true);
 		}
-
 	}
-
 }
 
 void CUIEventsWnd::Show(bool status)
@@ -174,7 +172,6 @@ void CUIEventsWnd::Show(bool status)
 	m_UITaskInfoWnd->Show	(status);
 
 	ReloadList				(status == false);
-
 }
 
 bool CUIEventsWnd::Filter(CGameTask* t)
@@ -192,7 +189,6 @@ bool CUIEventsWnd::Filter(CGameTask* t)
 				)
 			);
 }
-
 
 void CUIEventsWnd::SetDescriptionMode		(bool bMap)
 {
@@ -229,13 +225,15 @@ void CUIEventsWnd::ShowDescription			(CGameTask* t, int idx)
 		if(Actor()->encyclopedia_registry->registry().objects_ptr())
 		{
 			string512	need_group;
-			if(0==idx){
+			if(0==idx)
+			{
 				strcpy(need_group,*t->m_ID);
-			}else
-			if(o.article_key.size())
+			}
+			else if(o.article_key.size())
 			{
 				sprintf_s(need_group, "%s/%s", *t->m_ID, *o.article_key);
-			}else
+			}
+			else
 			{
 				sprintf_s(need_group, "%s/%d", *t->m_ID, idx);
 			}

@@ -300,7 +300,7 @@ _DDS:
 		img_size				= S->length	();
 
 #ifdef LOADED_TEXTURE_LOG
-		Msg("* Loaded texture: [%s] %i byte", fn, S->length( ));
+		Msg("*debug -- Loaded texture: [%s] %i byte", fn, S->length( ));
 #endif // def LOADED_TEXTURE_LOG
 
 		R_ASSERT				(S);

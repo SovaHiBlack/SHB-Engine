@@ -44,8 +44,8 @@ private:
 	DEFINE_SET_PRED				(file,files_set,files_it,file_pred);
     DEFINE_VECTOR				(archive,archives_vec,archives_it);
 
-	DEFINE_VECTOR				(_finddata_t,FFVec,FFIt);
-	FFVec						rec_files;
+//	DEFINE_VECTOR				(_finddata_t,FFVec,FFIt);
+//	FFVec						rec_files;
 
     int							m_iLockRescan	; 
     void						rescan_path		(const char* full_path, BOOL bRecurse);
@@ -60,7 +60,7 @@ private:
 
 	void						Register		(const char* name, u32 vfs, u32 crc, u32 ptr, u32 size_real, u32 size_compressed, u32 modif);
 	void						ProcessArchive	(const char* path, const char* base_path=NULL);
-	void						ProcessOne		(const char* path, void* F);
+	void						ProcessOne		(const char* path,/* void* F */ const _finddata_t& F);
 	bool						Recurse			(const char* path);
 //	bool						CheckExistance	(const char* path);
 

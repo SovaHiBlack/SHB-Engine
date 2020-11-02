@@ -330,7 +330,6 @@ void CExplosive::Explode()
 	Sound->play_at_pos(sndExplode, 0, pos, false);
 	
 	//показываем эффекты
-
 	m_wallmark_manager.PlaceWallmarks		(pos);
 
 	Fvector									vel;

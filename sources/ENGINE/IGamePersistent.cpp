@@ -99,6 +99,8 @@ void IGamePersistent::Disconnect	()
 
 void IGamePersistent::OnGameStart()
 {
+//KRodin: префетчинг выключен ввиду своей бесполезности и прожорливости.
+/*
 	LoadTitle								("st_prefetching_objects");
 	if (strstr(Core.Params,"-noprefetch"))	return;
 
@@ -117,6 +119,7 @@ void IGamePersistent::OnGameStart()
 
 	Msg					("* [prefetch] time:    %d ms",	iFloor(p_time));
 	Msg					("* [prefetch] memory:  %dKb",	p_mem/1024);
+*/
 }
 
 void IGamePersistent::OnGameEnd	()

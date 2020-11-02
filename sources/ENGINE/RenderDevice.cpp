@@ -18,6 +18,7 @@
 #include "render.h"
 #include "IGameLevel.h"
 #include "ResourceManager.h"
+#include "Console.h"
 
 ENGINE_API CRenderDevice Device;
 ENGINE_API BOOL g_bRendering = FALSE; 
@@ -67,6 +68,12 @@ void CRenderDevice::Clear	()
 
 extern void CheckPrivilegySlowdown();
 
+void xrRender_apply_tf( )
+{
+	Console->Execute("r__tf_aniso");
+	Console->Execute("r2_tf_mipbias");
+}
+
 void CRenderDevice::End		(void)
 {
 	VERIFY	(HW.pDevice);
@@ -91,6 +98,7 @@ void CRenderDevice::End		(void)
 			Memory.mem_compact								();
 			Msg												("* MEMORY USAGE: %d K",Memory.mem_usage()/1024);
 			CheckPrivilegySlowdown							();
+			xrRender_apply_tf( ); //KRodin: вот это надо делать именно здесь, и нигде больше! Иначе не работает.
 		}
 	}
 

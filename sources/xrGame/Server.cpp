@@ -666,8 +666,8 @@ void			CServer::entity_Destroy	(CSE_Abstract *&P)
 {
 
 #ifdef ENTITY_DESTROY_LOG
-	Msg							("CServer::entity_Destroy : [%d][%s][%s]",P->ID,P->name(),P->name_replace());
-#endif // ENTITY_DESTROY_LOG
+	Msg("*debug -- CServer::entity_Destroy : [%d][%s][%s]", P->ID, P->name( ), P->name_replace( ));
+#endif // def ENTITY_DESTROY_LOG
 
 	R_ASSERT					(P);
 	entities.erase				(P->ID);

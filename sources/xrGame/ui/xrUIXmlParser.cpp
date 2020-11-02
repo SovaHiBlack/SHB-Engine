@@ -44,10 +44,10 @@ void dump_list_xmls( )
 		}
 	}
 }
-#else
+#else // def ALL_XMLS_LOG
 void dump_list_xmls( )
 { }
-#endif
+#endif // def ALL_XMLS_LOG
 
 CUIXml::CUIXml( )
 {
@@ -58,7 +58,7 @@ CUIXml::CUIXml( )
 	dbg_list_xmls.push_back(DBGList_( ));
 	dbg_list_xmls.back( ).num = m_dbg_id;
 	dbg_list_xmls.back( ).closed = false;
-#endif
+#endif // def ALL_XMLS_LOG
 
 }
 
@@ -89,6 +89,6 @@ CUIXml::~CUIXml( )
 	{
 		Msg("CUIXml::~CUIXml.[%d] cannot find xml in list", m_dbg_id);
 	}
-#endif
+#endif // def ALL_XMLS_LOG
 
 }

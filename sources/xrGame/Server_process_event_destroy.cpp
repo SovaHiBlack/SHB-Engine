@@ -28,15 +28,15 @@ void CServer::Process_event_destroy	(NET_Packet& P, ClientID sender, u32 time, u
 	u16								id_dest	= ID;
 
 #ifdef SERVER_DESTROY_OBJECT_LOG
-	Msg								("sv destroy object %s [%d]", ent_name_safe(id_dest).c_str(), Device.dwFrame);
-#endif //SERVER_DESTROY_OBJECT_LOG
+	Msg("*debug -- sv destroy object %s [%d]", ent_name_safe(id_dest).c_str(), Device.dwFrame);
+#endif // def SERVER_DESTROY_OBJECT_LOG
 
 	CSE_Abstract*					e_dest = game->get_entity_from_eid	(id_dest);	// кто должен быть уничтожен
-	if (!e_dest) 
+	if (!e_dest)
 	{
-		Msg							("!SV:ge_destroy: [%d] not found on server",id_dest);
+		Msg("!SV:ge_destroy: [%d] not found on server", id_dest);
 		return;
-	};
+	}
 
 	R_ASSERT						(e_dest);
 	xrClientData					*c_dest = e_dest->owner;				// клиент, чей юнит

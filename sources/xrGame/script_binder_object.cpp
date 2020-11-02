@@ -15,12 +15,14 @@ CScriptBinderObject::CScriptBinderObject	(CScriptGameObject *object)
 	m_object		= object;
 }
 
-CScriptBinderObject::~CScriptBinderObject	()
+CScriptBinderObject::~CScriptBinderObject( )
 {
+
 #ifdef DESTROYING_BINDED_OBJECT_LOG
 	if (m_object)
-		Msg			("Destroying binded object %s",m_object->Name());
-#endif // DESTROYING_BINDED_OBJECT_LOG
+		Msg("*debug -- Destroying binded object %s", m_object->Name( ));
+#endif // def DESTROYING_BINDED_OBJECT_LOG
+
 }
 
 void CScriptBinderObject::reinit			()

@@ -250,9 +250,13 @@ void CScriptEngine::process_file_if_exists	(const char* file_name, bool warn_if_
 			add_no_file		(file_name,string_length);
 			return;
 		}
+
 #ifndef MASTER_GOLD
-		Msg					("* loading script %s",S1);
-#endif // MASTER_GOLD
+#	ifdef LOADING_SCRIPT_LOG
+		Msg("*debug -- Loading script: [%s]", S1);
+#	endif // def LOADING_SCRIPT_LOG
+#endif // ndef MASTER_GOLD
+
 		m_reload_modules	= false;
 		load_file_into_namespace(S,*file_name ? file_name : "_G");
 	}

@@ -5574,9 +5574,6 @@
     <ClInclude Include="ui\UIComboBox.h">
       <Filter>UI\UIWindows\ComboBox</Filter>
     </ClInclude>
-    <ClInclude Include="ui\UI_IB_Static.h">
-      <Filter>UI\UIWindows\InteractiveBackground</Filter>
-    </ClInclude>
     <ClInclude Include="ui\UIInteractiveBackground.h">
       <Filter>UI\UIWindows\InteractiveBackground</Filter>
     </ClInclude>
@@ -5687,9 +5684,6 @@
     </ClInclude>
     <ClInclude Include="MapSpot.h">
       <Filter>UI\Common\MapWnd</Filter>
-    </ClInclude>
-    <ClInclude Include="ui\UILinestd.h">
-      <Filter>UI\UIWindows\Lines</Filter>
     </ClInclude>
     <ClInclude Include="ui\UI.h">
       <Filter>UI</Filter>
@@ -5966,6 +5960,12 @@
     </ClInclude>
     <ClInclude Include="Ai\Stalker\Stalker.h">
       <Filter>AI\AMonsters\humans\stalker</Filter>
+    </ClInclude>
+    <ClInclude Include="ui\UIInteractiveBackground_Static.h">
+      <Filter>UI\UIWindows\InteractiveBackground</Filter>
+    </ClInclude>
+    <ClInclude Include="ui\UILine_std.h">
+      <Filter>UI\UIWindows\Lines</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -8138,9 +8138,6 @@
     <ClCompile Include="ui\UIMessageBox.cpp">
       <Filter>UI\UIWindows\MessageBox</Filter>
     </ClCompile>
-    <ClCompile Include="ui\UIMessageBox_script.cpp">
-      <Filter>UI\UIWindows\MessageBox</Filter>
-    </ClCompile>
     <ClCompile Include="ui\UIMessageBoxEx.cpp">
       <Filter>UI\UIWindows\MessageBox</Filter>
     </ClCompile>
@@ -8230,9 +8227,6 @@
     </ClCompile>
     <ClCompile Include="ui\UIComboBox.cpp">
       <Filter>UI\UIWindows\ComboBox</Filter>
-    </ClCompile>
-    <ClCompile Include="ui\UI_IB_Static.cpp">
-      <Filter>UI\UIWindows\InteractiveBackground</Filter>
     </ClCompile>
     <ClCompile Include="ui\UITrackBar.cpp">
       <Filter>UI\UIWindows\TrackBar</Filter>
@@ -8629,6 +8623,12 @@
     </ClCompile>
     <ClCompile Include="Ai\Stalker\Stalker.cpp">
       <Filter>AI\AMonsters\humans\stalker</Filter>
+    </ClCompile>
+    <ClCompile Include="ui\UIInteractiveBackground_Static.cpp">
+      <Filter>UI\UIWindows\InteractiveBackground</Filter>
+    </ClCompile>
+    <ClCompile Include="ui\UIMessageBox_script.cpp">
+      <Filter>UI\UIWindows\MessageBox</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

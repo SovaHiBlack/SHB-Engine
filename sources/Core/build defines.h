@@ -11,10 +11,17 @@
 //#define SERVER_REJECT_LOG
 //#define DESTROYING_OBJECT_LOG
 //#define DESTROYING_BINDED_OBJECT_LOG
-#define ALL_XMLS_LOG
+
+//#define OBJECT_NET_REGISTER_LOG
+//#define OBJECT_NET_UNREGISTER_LOG
+
+//#define ALL_XMLS_LOG
+//#define ALL_LINES_LOG
+
+//#define WEATHER_LOGGING
 
 //script
 //#define DEBUG_DISABLE_SCRIPTS
-
+//#define LOADING_SCRIPT_LOG
 
 #endif // DEBUG

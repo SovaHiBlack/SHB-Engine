@@ -99,8 +99,8 @@ void CALifeSwitchManager::remove_online(CSE_ALifeDynamicObject *object, bool upd
 
 #ifdef DESTROYING_OBJECT_LOG
 	if (psAI_Flags.test(aiALife))
-		Msg						("[LSS] Destroying object [%s][%s][%d]",object->name_replace(),*object->s_name,object->ID);
-#endif // DESTROYING_OBJECT_LOG
+		Msg("*debug -- [LSS] Destroying object [%s][%s][%d]", object->name_replace( ), *object->s_name, object->ID);
+#endif // def DESTROYING_OBJECT_LOG
 
 	object->add_offline			(m_saved_chidren,update_registries);
 	STOP_PROFILE
@@ -112,7 +112,7 @@ void CALifeSwitchManager::switch_online(CSE_ALifeDynamicObject *object)
 
 #ifdef GOING_ONLINE_LOG
 //	if (psAI_Flags.test(aiALife))
-		Msg						("[LSS][%d] Going online [%d][%s][%d] ([%f][%f][%f] : [%f][%f][%f]), on '%s'",Device.dwFrame,Device.dwTimeGlobal,object->name_replace(), object->ID,VPUSH(graph().actor()->o_Position),VPUSH(object->o_Position), "*SERVER*");
+		Msg("*debug -- [LSS][%d] Going online [%d][%s][%d] ([%f][%f][%f] : [%f][%f][%f]), on '%s'",Device.dwFrame,Device.dwTimeGlobal,object->name_replace(), object->ID,VPUSH(graph().actor()->o_Position),VPUSH(object->o_Position), "*SERVER*");
 #endif // GOING_ONLINE_LOG
 
 	object->switch_online		();

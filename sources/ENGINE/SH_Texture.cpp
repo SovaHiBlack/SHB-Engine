@@ -282,7 +282,7 @@ void CTexture::Unload	()
 
 #ifdef UNLOADING_TEXTURE_LOG
 	string_path msg_buff;
-	sprintf_s(msg_buff, sizeof(msg_buff), "* Unloading texture [%s] pSurface RefCount=", cName.c_str());
+	sprintf_s(msg_buff, sizeof(msg_buff), "*debug -- Unloading texture [%s] pSurface RefCount=", cName.c_str());
 #endif // def UNLOADING_TEXTURE_LOG
 
 //.	if (flags.bLoaded)		Msg		("* Unloaded: %s",cName.c_str());

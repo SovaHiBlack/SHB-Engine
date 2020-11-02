@@ -3,6 +3,7 @@
 //////////////////////////////////////////////////////////////////////
 
 #include "stdafx.h"
+
 #include "Level.h"
 #include "Level_Bullet_Manager.h"
 #include "game_cl_base.h"
@@ -18,17 +19,13 @@
 #define HIT_POWER_EPSILON 0.05f
 #define WALLMARK_SIZE 0.04f
 
-float CBulletManager::m_fMinBulletSpeed = 2.f;
-
+float CBulletManager::m_fMinBulletSpeed = 2.0f;
 
 SBullet::SBullet()
-{
-}
+{ }
 
 SBullet::~SBullet()
-{
-}
-
+{ }
 
 void SBullet::Init(const Fvector& position,
 				   const Fvector& direction,
@@ -77,9 +74,6 @@ void SBullet::Init(const Fvector& position,
 
 	targetID			= 0;	
 }
-
-//////////////////////////////////////////////////////////
-//
 
 CBulletManager::CBulletManager()
 {
@@ -246,7 +240,7 @@ bool CBulletManager::CalcBullet (collide::rq_results & rq_storage, xr_vector<ISp
 	{
 		range						= (rq_storage.r_begin()+rq_storage.r_count()-1)->range;
 	}
-	range							= _max				(EPS_L,range);
+	range							= std::max				(EPS_L,range);
 
 	bullet->flags.skipped_frame = (Device.dwFrame >= bullet->frame_num);
 

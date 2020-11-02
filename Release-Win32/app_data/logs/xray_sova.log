@@ -1,0 +1,196 @@
+* Detected CPU: GenuineIntel P3 family, F6/M10/S7, 1995.00 mhz, 39-clk 'rdtsc'
+* CPU Features: RDTSC, MMX, SSE, SSE2
+
+Initializing File System...
+using fs-ltx fsgame.ltx
+FS: 28096 files cached, 4379Kb memory used.
+Init FileSystem 1.538439 sec
+'Core' build 7939, Nov  1 2020
+
+Initializing Engine...
+Executing config-script "user.ltx"...
+! Cannot open script file [user.ltx]
+Starting INPUT device...
+Loading DLL: xrRender_R1.dll
+Loading DLL: xrGame.dll
+* [win32]: free[4093000 K], reserved[26520 K], committed[74720 K]
+* [ D3D ]: textures[0 K]
+* [x-ray]: process heap[6299 K], game lua[0 K], engine lua[0 K], render[0 K]
+* [x-ray]: economy: strings[877 K], smem[0 K]
+Executing config-script "c:\engine\shb-engine\release-win32\..\gamedata\config\default_controls.ltx"...
+! cant convert dik_name for dik[144], prop=[
+[c:\engine\shb-engine\release-win32\..\gamedata\config\default_controls.ltx] successfully loaded.
+Executing config-script "user.ltx"...
+! Cannot open script file [user.ltx]
+SOUND: OpenAL: enumerate devices...
+SOUND: OpenAL: EnumerationExtension Present
+devices Generic Software
+SOUND: OpenAL: system  default SndDevice name is Generic Software
+SOUND: OpenAL: All available devices:
+1. Generic Software, Spec Version 1.1 (default)
+SOUND: OpenAL: SelectBestDevice is Generic Software 1.1
+SOUND: OpenAL: Required device: Generic Software. Created device: Generic Software.
+* sound: EAX 2.0 extension: absent
+* sound: EAX 2.0 deferred: absent
+* sound : cache: 32773 kb, 3805 lines, 8820 bpl
+Starting RENDER device...
+* GPU [vendor:10DE]-[device:1050]: NVIDIA GeForce GT 520M
+* GPU driver: 21.21.13.7654
+* CREATE: DeviceREF: 1
+* Vertex Processor: PURE HARDWARE
+*     Texture memory: 4036 M
+*          DDI-level: 9.0
+* GPU shading: vs(fffe0300/3.0/30), ps(ffff0300/3.0/30)
+* GPU vertex cache: recognized, 24
+* DVB created: 1536K
+* DIB created: 512K
+count of .thm files=0
+load time=131 ms
+* distortion: used, dev(30),need(14)
+* SSample: 1024x768
+* SSample: enabled
+Starting engine...
+* DVB created: 1536K
+* DIB created: 512K
+* SSample: 1024x768
+* SSample: enabled
+* GPU shading: vs(fffe0300/3.0/30), ps(ffff0300/3.0/30)
+* GPU vertex cache: recognized, 24
+*** RESET [103 ms]
+"c:\engine\shb-engine\release-win32\binaries\engine.exe" 
+* phase time: 2 ms
+* phase cmem: 61771 K
+Сервер: Старт...
+* phase time: 62 ms
+* phase cmem: 63022 K
+Сервер: Загрузка симуляции жизни...
+* phase time: 2 ms
+* phase cmem: 63936 K
+Создание новой игры...
+* Creating new game...
+* Loading spawn registry...
+* 8641 spawn points are successfully loaded
+* Saving spawns...
+* Saving objects...
+* 16842 objects are successfully saved
+* Game all.sav is successfully saved to file '..\app_data\savedgames\all.sav'
+* New game is successfully created!
+* phase time: 4459 ms
+* phase cmem: 93180 K
+Сервер: Соединяемся...
+* phase time: 85 ms
+* phase cmem: 93252 K
+Клиент: Соединение с localhost...
+# Player not found. New player created.
+* client : connection accepted - <>
+* phase time: 7 ms
+* phase cmem: 93261 K
+Открытие потока...
+* phase time: 31 ms
+* phase cmem: 93265 K
+Загрузка формы объектов...
+* phase time: 4754 ms
+* phase cmem: 165931 K
+Загрузка шейдеров...
+* phase time: 331 ms
+* phase cmem: 167445 K
+Загрузка геометрии...
+* [Loading VB] 65532 verts, 2047 Kb
+* [Loading VB] 65525 verts, 2047 Kb
+* [Loading VB] 65535 verts, 2047 Kb
+* [Loading VB] 65466 verts, 2045 Kb
+* [Loading VB] 17208 verts, 537 Kb
+* [Loading VB] 65533 verts, 2047 Kb
+* [Loading VB] 65534 verts, 2047 Kb
+* [Loading VB] 65534 verts, 2047 Kb
+* [Loading VB] 65531 verts, 2047 Kb
+* [Loading VB] 65535 verts, 2047 Kb
+* [Loading VB] 65535 verts, 2047 Kb
+* [Loading VB] 46595 verts, 1456 Kb
+* [Loading VB] 65534 verts, 2047 Kb
+* [Loading VB] 65533 verts, 2047 Kb
+* [Loading VB] 65535 verts, 2047 Kb
+* [Loading VB] 65532 verts, 2047 Kb
+* [Loading VB] 65533 verts, 2047 Kb
+* [Loading VB] 65533 verts, 2047 Kb
+* [Loading VB] 53181 verts, 1661 Kb
+* [Loading IB] 1048575 indices, 2047 Kb
+* [Loading IB] 1048572 indices, 2047 Kb
+* [Loading IB] 1048572 indices, 2047 Kb
+* [Loading IB] 1048572 indices, 2047 Kb
+* [Loading IB] 1048572 indices, 2047 Kb
+* [Loading IB] 1048572 indices, 2047 Kb
+* [Loading IB] 1048575 indices, 2047 Kb
+* [Loading IB] 1048572 indices, 2047 Kb
+* [Loading IB] 1048575 indices, 2047 Kb
+* [Loading IB] 228285 indices, 445 Kb
+* phase time: 367 ms
+* phase cmem: 223179 K
+Загрузка базы пространств...
+* phase time: 1963 ms
+* phase cmem: 227019 K
+Загрузка детальных объектов...
+* [DETAILS] VertexConsts(256), Batch(61)
+* [DETAILS] 40687 v(20), 26352 p
+* [DETAILS] Batch(61), VB(794K), IB(154K)
+* phase time: 49 ms
+* phase cmem: 228004 K
+Загрузка секторов и порталов...
+* Loading HOM: c:\engine\shb-engine\release-win32\..\gamedata\levels\l01_escape\level.hom
+* phase time: 11 ms
+* phase cmem: 228178 K
+Загрузка ИИ объектов...
+- Loading music tracks from 'l01_escape_musics'...
+* phase time: 19 ms
+* phase cmem: 228215 K
+Клиент: Создание...
+- Game configuring : Started 
+- Game configuring : Finished 
+* phase time: 225 ms
+* phase cmem: 235509 K
+Загрузка текстур...
+* t-report - base: 630, 168010 K
+* t-report - lmap: 10, 10241 K
+***FATAL***: Too many lmap-textures (limit: 8 textures or 32M).
+        Reduce pixel density (worse) or use more vertex lighting (better).
+* phase time: 1249 ms
+* phase cmem: 424572 K
+Клиент: Синхронизация...
+* phase time: 18 ms
+* phase cmem: 424572 K
+* [win32]: free[3517432 K], reserved[60368 K], committed[616440 K]
+* [ D3D ]: textures[178252 K]
+* [x-ray]: process heap[424572 K], game lua[29104 K], engine lua[245 K], render[0 K]
+* [x-ray]: economy: strings[2918 K], smem[0 K]
+* MEMORY USAGE: 542746 K
+~ Invalid syntax in call to 'r__tf_aniso'
+~ Valid arguments: integer value in range [1,16]
+part_3_jump
+part_4_crouch
+part_10_sprint
+- Disconnect
+- Destroying level
+DestroySingleton::RefCounter: 0
+DestroySingleton::RefCounter: 0
+DestroySingleton::RefCounter: 0
+DestroySingleton::RefCounter: 0
+DestroySingleton::RefCounter: 0
+Input:  1
+Config-file [..\app_data\user.ltx] saved successfully
+Destroying Direct3D...
+* RM_Dump: textures  : 0
+* RM_Dump: rtargets  : 0
+* RM_Dump: rtargetsc : 0
+* RM_Dump: vs        : 0
+* RM_Dump: ps        : 0
+* RM_Dump: dcl       : 0
+* RM_Dump: states    : 0
+* RM_Dump: tex_list  : 0
+* RM_Dump: matrices  : 0
+* RM_Dump: lst_constants: 0
+* RM_Dump: v_passes  : 0
+* RM_Dump: v_elements: 0
+* RM_Dump: v_shaders : 0
+refCount:pBaseZB 1
+refCount:pBaseRT 1
+DeviceREF: 1

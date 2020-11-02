@@ -276,10 +276,6 @@ void CObject::shedule_Update	( u32 T )
 	// Always make me crow on shedule-update 
 	// Makes sure that update-cl called at least with freq of shedule-update
 	MakeMeCrow					();	
-	/*
-	if (AlwaysTheCrow())																	MakeMeCrow	();
-	else if (Device.vCameraPosition.distance_to_sqr(Position()) < CROW_RADIUS*CROW_RADIUS)	MakeMeCrow	();
-	*/
 }
 
 void	CObject::spatial_register	()
@@ -376,9 +372,11 @@ void CObject::setDestroy			(BOOL _destroy)
 	if (_destroy)
 	{
 		g_pGameLevel->Objects.register_object_to_destroy	(this);
+
 #ifdef DEBUG
 		Msg("cl setDestroy [%d][%d]",ID(),Device.dwFrame);
 #endif
+
 	}
 	else
 	{

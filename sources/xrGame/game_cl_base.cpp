@@ -62,6 +62,7 @@ void	game_cl_GameState::net_import_GameTime(NET_Packet& P)
 // KRodin: закомментировано из-за бага с резкой сменой погоды при кручении таймфактора.
 //	u64 OldTime = Level().GetEnvironmentGameTime();
 	Level( ).SetEnvironmentGameTimeFactor(GameEnvironmentTime, EnvironmentTimeFactor);
+//KRodin: закомментировал для восттановления солнца. Внимание! Установку погоды теперь нужно делать не ранее,
 //	if (OldTime > GameEnvironmentTime)
 //		GamePersistent().Environment().Invalidate();
 }

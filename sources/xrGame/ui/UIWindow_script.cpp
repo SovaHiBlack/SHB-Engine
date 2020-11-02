@@ -47,10 +47,8 @@ CGameFont* GetFontGraffiti50Russian()
 CGameFont* GetFontLetterica25()
 {return mngr().pFontLetterica25;}
 
-
 int GetARGB(u16 a, u16 r, u16 g, u16 b)
 {return color_argb(a,r,g,b);}
-
 
 Frect	get_texture_rect(const char* icon_name)
 {
@@ -192,7 +190,7 @@ void CUIWindow::script_register(lua_State *L)
 				value("WINDOW_LBUTTON_DB_CLICK",		int(WINDOW_LBUTTON_DB_CLICK)),
 				value("WINDOW_KEY_PRESSED",				int(WINDOW_KEY_PRESSED)),
 				value("WINDOW_KEY_RELEASED",			int(WINDOW_KEY_RELEASED)),
-				value("WINDOW_MOUSE_CAPTURE_LOST ",		int(WINDOW_MOUSE_CAPTURE_LOST )),
+				value("WINDOW_MOUSE_CAPTURE_LOST",		int(WINDOW_MOUSE_CAPTURE_LOST )),
 				value("WINDOW_KEYBOARD_CAPTURE_LOST",	int(WINDOW_KEYBOARD_CAPTURE_LOST)),
 
 
@@ -218,7 +216,7 @@ void CUIWindow::script_register(lua_State *L)
 
 	// CUIdragDropItem
 				value("DRAG_DROP_ITEM_DRAG",			int(DRAG_DROP_ITEM_DRAG)),
-				value("DRAG_DROP_ITEM_DROP ",			int(DRAG_DROP_ITEM_DROP )),
+				value("DRAG_DROP_ITEM_DROP",			int(DRAG_DROP_ITEM_DROP )),
 				value("DRAG_DROP_ITEM_DB_CLICK",		int(DRAG_DROP_ITEM_DB_CLICK)),
 				value("DRAG_DROP_ITEM_RBUTTON_CLICK",	int(DRAG_DROP_ITEM_RBUTTON_CLICK)),
 
@@ -253,8 +251,6 @@ void CUIWindow::script_register(lua_State *L)
 				value("TALK_DIALOG_TRADE_BUTTON_CLICKED",	int(TALK_DIALOG_TRADE_BUTTON_CLICKED)),
 				value("TALK_DIALOG_QUESTION_CLICKED",		int(TALK_DIALOG_QUESTION_CLICKED)),
 
-
-
 	// CUIPdaDialogWnd
 				value("PDA_DIALOG_WND_BACK_BUTTON_CLICKED",			int(PDA_DIALOG_WND_BACK_BUTTON_CLICKED)),
 				value("PDA_DIALOG_WND_MESSAGE_BUTTON_CLICKED",		int(PDA_DIALOG_WND_MESSAGE_BUTTON_CLICKED)),
@@ -275,10 +271,10 @@ void CUIWindow::script_register(lua_State *L)
 	// CUIInventroyWnd
 				value("INVENTORY_DROP_ACTION",						int(INVENTORY_DROP_ACTION)),
 				value("INVENTORY_EAT_ACTION",						int(INVENTORY_EAT_ACTION)),
-				value("INVENTORY_TO_BELT_ACTION ",					int(INVENTORY_TO_BELT_ACTION )),
+				value("INVENTORY_TO_BELT_ACTION",					int(INVENTORY_TO_BELT_ACTION )),
 				value("INVENTORY_TO_SLOT_ACTION",					int(INVENTORY_TO_SLOT_ACTION)),
 				value("INVENTORY_TO_BAG_ACTION",					int(INVENTORY_TO_BAG_ACTION)),
-				value("INVENTORY_ATTACH_ADDON ",					int(INVENTORY_ATTACH_ADDON )),
+				value("INVENTORY_ATTACH_ADDON",					int(INVENTORY_ATTACH_ADDON )),
 				value("INVENTORY_DETACH_SCOPE_ADDON",				int(INVENTORY_DETACH_SCOPE_ADDON)),
 				value("INVENTORY_DETACH_SILENCER_ADDON",			int(INVENTORY_DETACH_SILENCER_ADDON)),
 				value("INVENTORY_DETACH_GRENADE_LAUNCHER_ADDON",	int(INVENTORY_DETACH_GRENADE_LAUNCHER_ADDON))

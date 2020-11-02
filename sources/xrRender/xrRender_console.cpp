@@ -384,15 +384,3 @@ void		xrRender_initconsole	()
 	tw_min.set			(0,0,0);	tw_max.set	(1,1,1);
 	CMD4(CCC_Vector3,	"r2_aa_weight",			&ps_r2_aa_weight,			tw_min, tw_max	);
 }
-
-void	xrRender_apply_tf		()
-{
-	Console->Execute	("r__tf_aniso"	);
-
-#if RENDER==R_R1
-	Console->Execute	("r1_tf_mipbias");
-#else
-	Console->Execute	("r2_tf_mipbias");
-#endif
-
-}

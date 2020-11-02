@@ -224,6 +224,11 @@ const char* CScriptGameObject::WhoHitSectionName()
 
 bool CScriptGameObject::CheckObjectVisibility(const CScriptGameObject *tpLuaGameObject)
 {
+	if (!tpLuaGameObject)
+	{
+		Log("!!CScriptGameObject : cannot check visibility null object!");
+		return false;
+	}
 	CEntityAlive		*entity_alive = smart_cast<CEntityAlive*>(&object());
 	if (entity_alive && !entity_alive->g_Alive()) {
 		ai().script_engine().script_log	(ScriptStorage::eLuaMessageTypeError,"CScriptGameObject : cannot check visibility of dead object!");
@@ -291,14 +296,24 @@ u32 CScriptGameObject::get_current_patrol_point_index()
 
 Fvector	CScriptGameObject::bone_position	(const char* bone_name) const
 {
+	CKinematics* k = smart_cast<CKinematics*>(object( ).Visual( ));
+	if (!k)
+	{
+		ai( ).script_engine( ).script_log(ScriptStorage::eLuaMessageTypeError, "CKinematics : cannot call bone_position!");
+		return			Fvector( );
+	}
+
 	u16					bone_id;
+
 	if (xr_strlen(bone_name))
-		bone_id			= smart_cast<CKinematics*>(object().Visual())->LL_BoneID(bone_name);
+		bone_id = k->LL_BoneID(bone_name);
 	else
-		bone_id			= smart_cast<CKinematics*>(object().Visual())->LL_GetBoneRoot();
+		bone_id = k->LL_GetBoneRoot( );
+
+	ASSERT_FMT(bone_id != BI_NONE, "model doesn't have bone %s", bone_name);
 
 	Fmatrix				matrix;
-	matrix.mul_43		(object().XFORM(),smart_cast<CKinematics*>(object().Visual())->LL_GetBoneInstance(bone_id).mTransform);
+	matrix.mul_43(object( ).XFORM( ), k->LL_GetBoneInstance(bone_id).mTransform);
 	return				(matrix.c);
 }
 

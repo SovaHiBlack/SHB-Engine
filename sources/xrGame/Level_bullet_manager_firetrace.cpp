@@ -276,7 +276,7 @@ NULL:*mtl_pair->CollideParticles[::Random.randI(0,mtl_pair->CollideParticles.siz
 void CBulletManager::StaticObjectHit	(CBulletManager::_event& E)
 {
 //	Fvector hit_normal;
-	FireShotmark(&E.bullet, E.bullet.dir,	E.point, E.R, E.tgt_material, E.normal);
+	FireShotmark(&E.bullet, E.bullet.dir, E.point, E.R, E.tgt_material, E.normal, (E.bullet.hit_type == ALife::eHitTypeFireWound || E.bullet.hit_type == ALife::eHitTypeWound || E.bullet.hit_type == ALife::eHitTypeWound_2));
 //	ObjectHit	(&E.bullet,					E.point, E.R, E.tgt_material, hit_normal);
 }
 
@@ -287,7 +287,7 @@ void CBulletManager::DynamicObjectHit	(CBulletManager::_event& E)
 	VERIFY(E.R.O);
 	if (g_clear) E.Repeated = false;
 	E.Repeated = false;
-	bool NeedShootmark = true;//!E.Repeated;
+	bool NeedShootmark = (E.bullet.hit_type == ALife::eHitTypeFireWound || E.bullet.hit_type == ALife::eHitTypeWound || E.bullet.hit_type == ALife::eHitTypeWound_2); //true;//!E.Repeated;
 	
 	if (E.R.O->CLS_ID == CLSID_OBJECT_ACTOR)
 	{

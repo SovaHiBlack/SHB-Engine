@@ -10,17 +10,16 @@ bool CServer::Process_event_reject	(NET_Packet& P, const ClientID sender, const 
 	CSE_Abstract*		e_entity	= game->get_entity_from_eid	(id_entity);
 	
 #ifdef SERVER_REJECT_LOG
-	Msg("sv reject. id_parent %s id_entity %s [%d]",ent_name_safe(id_parent).c_str(),ent_name_safe(id_entity).c_str(), Device.dwFrame);
-#endif // SERVER_REJECT_LOG
+	Msg("*debug -- sv reject. id_parent %s id_entity %s [%d]",ent_name_safe(id_parent).c_str(),ent_name_safe(id_entity).c_str(), Device.dwFrame);
+#endif // def SERVER_REJECT_LOG
 
 	R_ASSERT			(e_parent && e_entity);
 	game->OnDetach		(id_parent,id_entity);
 
-	if (0xffff == e_entity->ID_Parent) 
+	if (0xffff == e_entity->ID_Parent)
 	{
-		Msg	("~ ERROR: can't detach independant object. entity[%s:%d], parent[%s:%d], section[%s]",
-			e_entity->name_replace(),id_entity,e_parent->name_replace(),id_parent, *e_entity->s_name);
-		return			(false);
+		Msg("~ ERROR: can't detach independant object. entity[%s:%d], parent[%s:%d], section[%s]", e_entity->name_replace( ), id_entity, e_parent->name_replace( ), id_parent, *e_entity->s_name);
+		return false;
 	}
 
 	// Rebuild parentness

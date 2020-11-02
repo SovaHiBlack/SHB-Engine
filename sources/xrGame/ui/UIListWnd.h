@@ -20,6 +20,7 @@ private:
 
 	shared_str		m_scrollbar_profile;
 	void			DrawActiveBackFrame		(const Frect& rect, CUIListItem * itm);
+
 public:
 					CUIListWnd				();
 	virtual			~CUIListWnd				();
@@ -64,7 +65,6 @@ public:
 	void			SetAlwaysShowScroll		(bool flag = true)			{m_bAlwaysShowScroll = flag;}
 	void			EnableAlwaysShowScroll	(bool flag)					{m_bAlwaysShowScroll_enable = flag;}
 
-
 	int				GetItemsCount			()							{return m_ItemList.size();}
 
 	//подготовить все элементы заново
@@ -103,7 +103,6 @@ public:
 	void			ResetFocusCapture		()								{ m_bForceFocusedItem = false; }
 
 	int				GetListPosition			() const						{ return m_iFirstShownIndex; }
-
 
 protected:
 	void			create_active_back		();

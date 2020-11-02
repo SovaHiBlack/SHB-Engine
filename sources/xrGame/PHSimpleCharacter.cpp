@@ -535,20 +535,22 @@ void CPHSimpleCharacter::PhDataUpdate(dReal /**step/**/){
 	m_body_interpolation.UpdatePositions();
 }
 
-void CPHSimpleCharacter::PhTune(dReal step){
-
+void CPHSimpleCharacter::PhTune(dReal step)
+{
 	m_last_move.set(cast_fv(dBodyGetPosition(m_body)));
 	m_elevator_state.PhTune(step);
 	b_air_contact_state=!is_contact;
 
-
 #ifdef DEBUG
 	if(ph_dbg_draw_mask.test(phDbgCharacterControl))
 	{
-		if(b_air_contact_state)DBG_DrawPoint(cast_fv(dBodyGetPosition(m_body)),m_radius,D3DCOLOR_XRGB(255,0,0));
-		
+		if (b_air_contact_state)
+		{
+			DBG_DrawPoint(cast_fv(dBodyGetPosition(m_body)), m_radius, D3DCOLOR_XRGB(255, 0, 0));
+		}
 	}
 #endif
+
 	bool b_good_graund=b_valide_ground_contact&&m_ground_contact_normal[1]>M_SQRT1_2;
 
 	dxGeomUserData	*ud=dGeomGetUserData(m_wheel);
@@ -561,16 +563,12 @@ void CPHSimpleCharacter::PhTune(dReal step){
 		Fvector pos;pos.set(cast_fv(dBodyGetPosition(m_body)));
 		Fvector d;d.set(cast_fv(dBodyGetLinearVel(m_body)));d.mul(fixed_step);
 		pos.sub(d);
-		if(!ud->pushing_b_neg)
+		/*if(!ud->pushing_b_neg)
 		{
-			//Fvector movement;movement.sub(cast_fv(dGeomGetPosition(m_wheel)),cast_fv(ud->last_pos));
-
-			dVectorSet(m_death_position,cast_fp(pos));
-		}
-		else
-		{
-			dVectorSet(m_death_position,cast_fp(pos));
-		}
+			Fvector movement;movement.sub(cast_fv(dGeomGetPosition(m_wheel)),cast_fv(ud->last_pos));
+		}*/
+		
+		dVectorSet(m_death_position,cast_fp(pos));
 	}
 	
 	if(b_death_pos&&!(ud->pushing_neg||ud->pushing_b_neg))
@@ -1724,6 +1722,7 @@ void CPHSimpleCharacter::SCollisionDamageInfo::Reinit()
 	//float					m_dmc_signum;
 	//enum{ctStatic,ctObject}	m_dmc_type;
 }
+
 void CPHSimpleCharacter::GetSmothedVelocity(Fvector& vvel)
 {
 	if(!b_exist) {vvel.set(0,0,0);return;}
@@ -1739,13 +1738,15 @@ void CPHSimpleCharacter::GetSmothedVelocity(Fvector& vvel)
 	//	GetSavedVelocity(vvel);
 	//}
 }
+
 ALife::EHitType	CPHSimpleCharacter:: HitType	()const	
 {
-	if(GMLib.GetMaterialByIdx(LastMaterialIDX())->Flags.test(SGameMtl::flInjurious))
+	if (GMLib.GetMaterialByIdx(LastMaterialIDX( ))->Flags.test(SGameMtl::flInjurious))
 		return ALife::eHitTypeRadiation;
+	else
+		return ALife::eHitTypeStrike;
+}
 
-	return ALife::eHitTypeStrike;
-}//
 CElevatorState*	CPHSimpleCharacter::ElevatorState()
 {
 	return &m_elevator_state;

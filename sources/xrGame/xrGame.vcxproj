@@ -146,8 +146,7 @@
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <DisableSpecificWarnings>4237;%(DisableSpecificWarnings)</DisableSpecificWarnings>
       <AdditionalIncludeDirectories>..\third-party;..\third-party\dxsdk\include;..\third-party\loki;.\</AdditionalIncludeDirectories>
-      <ExceptionHandling>
-      </ExceptionHandling>
+      <ExceptionHandling>false</ExceptionHandling>
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -1335,7 +1334,7 @@
     <ClInclude Include="ui\UILabel.h" />
     <ClInclude Include="ui\UILine.h" />
     <ClInclude Include="ui\UILines.h" />
-    <ClInclude Include="ui\UILinestd.h" />
+    <ClInclude Include="ui\UILine_std.h" />
     <ClInclude Include="ui\UIListBox.h" />
     <ClInclude Include="ui\UIListBoxItem.h" />
     <ClInclude Include="ui\UIListItem.h" />
@@ -1421,7 +1420,7 @@
     <ClInclude Include="ui\UIArtefactParams.h" />
     <ClInclude Include="ui\UIZoneMap.h" />
     <ClInclude Include="ui\ui_base.h" />
-    <ClInclude Include="ui\UI_IB_Static.h" />
+    <ClInclude Include="ui\UIInteractiveBackground_Static.h" />
     <ClInclude Include="ui\xrUIXmlParser.h" />
     <ClInclude Include="UsableScriptObject.h" />
     <ClInclude Include="vertex_allocator_fixed.h" />
@@ -2236,6 +2235,7 @@
     <ClCompile Include="ui\UIGameCustom_script.cpp" />
     <ClCompile Include="ui\UIGameSP.cpp" />
     <ClCompile Include="ui\UIGame_custom_script.cpp" />
+    <ClCompile Include="ui\UIMessageBox_script.cpp" />
     <ClCompile Include="ui\UIStaticItem.cpp" />
     <ClCompile Include="ui\UIWpnParams.cpp" />
     <ClCompile Include="ui\UIMapHint.cpp" />
@@ -2299,7 +2299,6 @@
     <ClCompile Include="ui\UIMapWndActions.cpp" />
     <ClCompile Include="ui\UIMessageBox.cpp" />
     <ClCompile Include="ui\UIMessageBoxEx.cpp" />
-    <ClCompile Include="ui\UIMessageBox_script.cpp" />
     <ClCompile Include="ui\UIMessagesWindow.cpp" />
     <ClCompile Include="ui\UIMMShniaga.cpp" />
     <ClCompile Include="ui\UIMoneyIndicator.cpp">
@@ -2374,7 +2373,7 @@
     <ClCompile Include="ui\UIZoneMap.cpp" />
     <ClCompile Include="ui\ui_base.cpp" />
     <ClCompile Include="ui\ui_export_script.cpp" />
-    <ClCompile Include="ui\UI_IB_Static.cpp" />
+    <ClCompile Include="ui\UIInteractiveBackground_Static.cpp" />
     <ClCompile Include="ui\xrUIXmlParser.cpp" />
     <ClCompile Include="UsableScriptObject.cpp" />
     <ClCompile Include="vision_client.cpp" />

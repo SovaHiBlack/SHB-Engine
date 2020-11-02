@@ -132,7 +132,7 @@ public:
 	void		w_fvector2		(const char* S, const char* L, const Fvector2&	V, const char* comment=0 );
 	void		w_fvector3		(const char* S, const char* L, const Fvector3&	V, const char* comment=0 );
 	void		w_fvector4		(const char* S, const char* L, const Fvector4&	V, const char* comment=0 );
-	void		w_bool			(const char* S, const char* L, BOOL				V, const char* comment=0 );
+	void		w_bool			(const char* S, const char* L, bool V, const char* comment = 0);
 
     void		remove_line		(const char* S, const char* L );
 };

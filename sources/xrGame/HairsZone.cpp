@@ -80,10 +80,9 @@ void CHairsZone::Affect(SZoneObjectInfo* O)
 		::Random.randF(-.5f,.5f)); 
 	hit_dir.normalize();
 
-
 	Fvector position_in_bone_space;
 
-	P.y=0.f;
+	P.y = pGameObject->Position( ).y;
 	float power = Power(pGameObject->Position().distance_to(P));
 	float impulse = m_fHitImpulseScale*power*pGameObject->GetMass();
 

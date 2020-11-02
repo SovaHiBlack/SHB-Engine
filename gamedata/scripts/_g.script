@@ -186,7 +186,6 @@ function FSM:stop()
 	self:reset_script_control()
 end
 
-
 --  добавление указателя на булеву
 --  функциі условия перехода
 function FSM:set_transition(from_state_num, to_state_num, cond_func)
@@ -221,7 +220,6 @@ function FSM:run()
 						return nil
 				  end)
 end
-
 
 -- запуск бесконечного цикла FSM
 function FSM:run_loop()

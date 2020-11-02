@@ -128,6 +128,12 @@ void CSoundRender_Source::load(const char* name)
 	strconcat			(sizeof(fn),fn,N,".ogg");
 	if (!FS.exist("$level$",fn))	FS.update_path	(fn,"$game_sounds$",fn);
 
+	if (!FS.exist(fn))
+	{
+		Msg("! Can't find sound '%s.ogg'", N);
+		FS.update_path(fn, "$game_sounds$", "$no_sound.ogg");
+	}
+
 	LoadWave			(fn);		//.R_ASSERT(wave);
 	SoundRender->cache.cat_create	(CAT, dwBytesTotal);
 

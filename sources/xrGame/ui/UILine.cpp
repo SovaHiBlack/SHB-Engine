@@ -4,13 +4,12 @@
 #include "stdafx.h"
 
 #include "UILine.h"//
-#include "UILinestd.h"//
+#include "UILine_std.h"//
 #include "UIColorAnimatorWrapper.h"//
 
 CUIColorAnimatorWrapper CUILine::m_animation;
 
-//#define LOG_ALL_LINES
-#ifdef LOG_ALL_LINES
+#ifdef ALL_LINES_LOG
 	int ListLinesCount = 0;
 	struct DBGList{
 		CUILine*		wnd;
@@ -23,27 +22,28 @@ CUIColorAnimatorWrapper CUILine::m_animation;
 		for(;_it!=dbg_list_lines.end();++_it)
 			Msg("--leak detected ---- Line = %d",(*_it).num);
 	}
-#else
+#else // def ALL_LINES_LOG
 	void dump_list_lines(){}
-#endif
+#endif // def ALL_LINES_LOG
 
 CUILine::CUILine(){
 	m_tmpLine = NULL;
 	m_animation.SetColorAnimation("ui_map_area_anim");
 	m_animation.Cyclic(true);
 
-#ifdef LOG_ALL_LINES
+#ifdef ALL_LINES_LOG
 	ListLinesCount++;
 	dbg_list_lines.push_back(DBGList());
 	dbg_list_lines.back().wnd = this;
 	dbg_list_lines.back().num = ListLinesCount;
-#endif
+#endif // def ALL_LINES_LOG
+
 }
 
 CUILine::~CUILine(){
 	xr_delete(m_tmpLine);
 
-#ifdef LOG_ALL_LINES
+#ifdef ALL_LINES_LOG
 	xr_vector<DBGList>::iterator _it = dbg_list_lines.begin();
 	bool bOK = false;
 	for(;_it!=dbg_list_lines.end();++_it){
@@ -55,18 +55,21 @@ CUILine::~CUILine(){
 	}
 	if(!bOK)
 		Msg("CUILine::~CUILine()!!!!!!!!!!!!!!!!!!!!!!! cannot find window in list");
-#endif
+#endif // def ALL_LINES_LOG
+
 }
 
 CUILine::CUILine(const CUILine& other){
 	m_subLines = other.m_subLines;
 	m_tmpLine = NULL;
-#ifdef LOG_ALL_LINES
+
+#ifdef ALL_LINES_LOG
 	ListLinesCount++;
 	dbg_list_lines.push_back(DBGList());
 	dbg_list_lines.back().wnd = this;
 	dbg_list_lines.back().num = ListLinesCount;
-#endif
+#endif // def ALL_LINES_LOG
+
 }
 
 CUILine& CUILine::operator =(const CUILine& other){

@@ -221,7 +221,6 @@ void					CRender::create					()
 	R_CHK						(HW.pDevice->CreateQuery(D3DQUERYTYPE_EVENT,&q_sync_point[0]));
 	R_CHK						(HW.pDevice->CreateQuery(D3DQUERYTYPE_EVENT,&q_sync_point[1]));
 
-	xrRender_apply_tf			();
 	::PortalTraverser.initialize();
 }
 
@@ -268,8 +267,6 @@ void CRender::reset_end()
 	HWOCC.occq_create			(occq_size);
 
 	Target						=	xr_new<CRenderTarget>	();
-
-	xrRender_apply_tf			();
 }
 /*
 void CRender::OnFrame()

@@ -38,7 +38,7 @@ void _draw_cam_pos(CGameFont* pFont)
 	float sz		= pFont->GetHeight();
 	pFont->SetHeightI(0.02f);
 	pFont->SetColor	(0xffffffff);
-	pFont->Out		(10, 600, "CAMERA POSITION:  [%3.2f,%3.2f,%3.2f]",VPUSH(Device.vCameraPosition));
+	pFont->Out		(10, (float) Device.dwHeight - 30, "CAMERA POSITION:  [%3.2f,%3.2f,%3.2f]",VPUSH(Device.vCameraPosition));
 	pFont->SetHeight(sz);
 	pFont->OnRender	();
 }
@@ -247,13 +247,13 @@ void CStats::Show()
 		//////////////////////////////////////////////////////////////////////////
 		// Renderer specific
 		F.SetHeightI						(f_base_size);
-		F.OutSet						(200,0);
+		F.OutSet						((float) Device.dwWidth / 2.0f,0);
 		Render->Statistics				(&F);
 
 		//////////////////////////////////////////////////////////////////////////
 		// Game specific
 		F.SetHeightI						(f_base_size);
-		F.OutSet						(400,0);
+		F.OutSet						((float) Device.dwWidth - 200,0);
 		g_pGamePersistent->Statistics	(&F);
 
 		//////////////////////////////////////////////////////////////////////////
@@ -261,12 +261,13 @@ void CStats::Show()
 		F.SetHeightI						(f_base_size);
 		seqStats.Process				(rp_Stats);
 		pFont->OnRender					();
-	};
+	}
 
 	if( psDeviceFlags.test(rsStatistic) || psDeviceFlags.test(rsCameraPos) ){
 		_draw_cam_pos					(pFont);
 		pFont->OnRender					();
-	};
+	}
+
 #ifdef DEBUG
 	//////////////////////////////////////////////////////////////////////////
 	// PERF ALERT

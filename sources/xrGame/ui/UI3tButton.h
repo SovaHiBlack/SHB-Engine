@@ -4,7 +4,7 @@
 #pragma once
 
 #include "UIButton.h"//
-#include "UI_IB_Static.h"//
+#include "UIInteractiveBackground_Static.h"//
 
 class CUI3tButton : public CUIButton
 {
@@ -57,7 +57,7 @@ public:
 	}
 
 	CUIStatic		m_hint;
-	CUI_IB_Static	m_background;
+	CUIInteractiveBackground_Static	m_background;
 
 protected:
 	bool			m_bCheckMode;

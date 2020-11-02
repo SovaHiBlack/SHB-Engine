@@ -201,8 +201,8 @@ void CObjectList::Update		(bool bForce)
 //			Msg				("Object [%x]", O);
 
 #ifdef DESTROYING_OBJECT_LOG
-			Msg				("Destroying object[%x] [%d][%s] frame[%d]",O, O->ID(),*O->cName(), Device.dwFrame);
-#endif // DESTROYING_OBJECT_LOG
+			Msg("*debug -- Destroying object[%x] [%d][%s] frame[%d]", O, O->ID( ), *O->cName( ).c_str( ), Device.dwFrame);
+#endif // def DESTROYING_OBJECT_LOG
 
 			O->net_Destroy	( );
 			Destroy			(O);
@@ -214,8 +214,13 @@ void CObjectList::Update		(bool bForce)
 void CObjectList::net_Register(CObject* O)
 {
 	R_ASSERT(O);
+	ASSERT_FMT(map_NETID.find(O->ID( )) == map_NETID.end( ), "%s ID[%u] already registered", O->cName( ).c_str( ), O->ID( ));
 	map_NETID.insert(mk_pair(O->ID( ), O));
-	Msg("-------------------------------- Register: %s", O->cName( ));
+
+#ifdef OBJECT_NET_REGISTER_LOG
+	Msg("*debug -- CObjectList::net_Register: %s", O->cName( ).c_str( ));
+#endif // def OBJECT_NET_REGISTER_LOG
+
 }
 
 void CObjectList::net_Unregister(CObject* O)
@@ -223,7 +228,11 @@ void CObjectList::net_Unregister(CObject* O)
 	xr_map<u32, CObject*>::iterator	it = map_NETID.find(O->ID( ));
 	if ((it != map_NETID.end( )) && (it->second == O))
 	{
-		Msg("-------------------------------- Unregster: %s", O->cName( ));
+
+#ifdef OBJECT_NET_UNREGISTER_LOG
+		Msg("*debug -- CObjectList::net_Unregister: %s", O->cName( ).c_str( ));
+#endif // def OBJECT_NET_UNREGISTER_LOG
+
 		map_NETID.erase(it);
 	}
 }
@@ -316,10 +325,11 @@ void CObjectList::Unload	( )
 		CObject*	O	= objects_sleeping.back	();
 		Msg				("! [%x] s[%4d]-[%s]-[%s]", O, O->ID(), *O->cNameSect(), *O->cName());
 		O->setDestroy	( TRUE );
-		
+
 #ifdef DESTROYING_OBJECT_LOG
-		Msg				("Destroying object [%d][%s]",O->ID(),*O->cName());
-#endif // DESTROYING_OBJECT_LOG
+		Msg("*debug -- Destroying object [%d][%s]", O->ID( ), *O->cName( ).c_str( ));
+#endif // def DESTROYING_OBJECT_LOG
+
 		O->net_Destroy	(   );
 		Destroy			( O );
 	}
@@ -330,8 +340,8 @@ void CObjectList::Unload	( )
 		O->setDestroy	( TRUE );
 
 #ifdef DESTROYING_OBJECT_LOG
-		Msg				("Destroying object [%d][%s]",O->ID(),*O->cName());
-#endif // DESTROYING_OBJECT_LOG
+		Msg("*debug -- Destroying object [%d][%s]", O->ID( ), *O->cName( ).c_str( ));
+#endif // def DESTROYING_OBJECT_LOG
 
 		O->net_Destroy	(   );
 		Destroy			( O );

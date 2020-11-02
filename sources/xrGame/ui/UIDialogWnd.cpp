@@ -24,19 +24,19 @@ CUIDialogWnd::~ CUIDialogWnd()
 
 void CUIDialogWnd::Show()
 {
+	Fvector2 pos = GetUICursor( )->GetCursorPosition( );
+	GetUICursor( )->SetUICursorPosition(pos);
+
 	inherited::Enable(true);
 	inherited::Show(true);
 
 	ResetAll();
 }
 
-
 void CUIDialogWnd::Hide()
 {
-
 	inherited::Enable(false);
 	inherited::Show(false);
-	
 }
 
 bool CUIDialogWnd::IR_OnKeyboardHold(int dik)
@@ -145,7 +145,7 @@ bool CUIDialogWnd::IR_OnMouseMove(int dx, int dy)
 
 			IR->IR_OnMouseMove(dx,dy);
 		}
-	};
+	}
 
 	return true;
 }

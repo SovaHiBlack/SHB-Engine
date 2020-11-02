@@ -114,7 +114,6 @@ ref_shader& CUIStatic::GetShader(){
 	return m_UIStaticItem.GetShader();
 }
 
-
 void CUIStatic::SetTextureColor(u32 color){
 	m_UIStaticItem.SetColor(color);
 }
@@ -125,7 +124,6 @@ u32 CUIStatic::GetTextureColor() const{
 
 void CUIStatic::InitTextureEx(const char* tex_name, const char* sh_name)
 {
-
 	string_path buff;
 	u32		v_dev	= CAP_VERSION(HW.Caps.raster_major, HW.Caps.raster_minor);
 	u32		v_need	= CAP_VERSION(2,0);
@@ -143,7 +141,7 @@ void  CUIStatic::Draw()
 {
 	if(m_bClipper){
 		Frect clip_rect;
-		if (-1 == m_ClipRect.left && -1 == m_ClipRect.right && -1 == m_ClipRect.top && -1 == m_ClipRect.left){
+		if (-1 == m_ClipRect.left && -1 == m_ClipRect.right && -1 == m_ClipRect.top){
 			Frect			our_rect;
 			GetAbsoluteRect	(our_rect);
 			clip_rect		= our_rect;

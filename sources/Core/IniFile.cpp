@@ -629,9 +629,9 @@ void	CIniFile::w_fvector4	(const char* S, const char* L, const Fvector4&	V, cons
 	w_string	(S,L,temp,comment);
 }
 
-void	CIniFile::w_bool		(const char* S, const char* L, BOOL				V, const char* comment )
+void	CIniFile::w_bool(const char* S, const char* L, bool V, const char* comment)
 {
-	w_string	(S,L,V?"on":"off",comment);
+	w_string(S, L, V ? "true" : "false", comment);
 }
 
 void	CIniFile::remove_line	(const char* S, const char* L )

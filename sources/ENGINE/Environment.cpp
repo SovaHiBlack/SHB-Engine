@@ -20,7 +20,7 @@
 ENGINE_API	float			psVisDistance	= 1.f;
 static const float			MAX_NOISE_FREQ	= 0.03f;
 
-//#define WEATHER_LOGGING
+
 
 // real WEATHER->WFX transition time
 #define WFX_TRANS_TIME		5.f
@@ -32,14 +32,14 @@ CEnvironment::CEnvironment	()
 	bWFX					= false;
 	Current[0]				= 0;
 	Current[1]				= 0;
-    CurrentWeather			= 0;
-    CurrentWeatherName		= 0;
+	CurrentWeather			= 0;
+	CurrentWeatherName		= 0;
 	eff_Rain				= 0;
-    eff_LensFlare 			= 0;
-    eff_Thunderbolt			= 0;
+	eff_LensFlare 			= 0;
+	eff_Thunderbolt			= 0;
 	OnDeviceCreate			();
 	fGameTime				= 0.f;
-    fTimeFactor				= 12.f;
+	fTimeFactor				= 12.f;
 
 	wind_strength_factor	= 0.f;
 	wind_gust_factor		= 0.f;
@@ -116,13 +116,13 @@ void CEnvironment::SetWeather(shared_str name, bool forced)
 //.	if(bAlready)	return;
 	if (name.size())	{
 //.		bAlready = TRUE;
-        EnvsMapIt it		= WeatherCycles.find(name);
+		EnvsMapIt it		= WeatherCycles.find(name);
 		if (it == WeatherCycles.end())
 		{
 			Msg("! Invalid weather name: %s", name.c_str());
 			return;
 		}
-        R_ASSERT3			(it!=WeatherCycles.end(),"Invalid weather name.",*name);
+		R_ASSERT3			(it!=WeatherCycles.end(),"Invalid weather name.",*name);
 		CurrentCycleName	= it->first;
 		if (forced)			{Invalidate();			}
 		if (!bWFX){
@@ -130,12 +130,14 @@ void CEnvironment::SetWeather(shared_str name, bool forced)
 			CurrentWeatherName	= it->first;
 		}
 		if (forced)			{SelectEnvs(fGameTime);	}
+
 #ifdef WEATHER_LOGGING
-		Msg					("Starting Cycle: %s [%s]",*name,forced?"forced":"deferred");
-#endif
-    }else{
+		Msg("Starting Cycle: %s [%s]", *name, forced ? "forced" : "deferred");
+#endif // def WEATHER_LOGGING
+
+	}else{
 		FATAL				("! Empty weather name");
-    }
+	}
 }
 
 bool CEnvironment::SetWeatherFX(shared_str name)
@@ -182,11 +184,15 @@ bool CEnvironment::SetWeatherFX(shared_str name)
 
 		Current[0]			= C0;
 		Current[1]			= C1;
+
 #ifdef WEATHER_LOGGING
-		Msg					("Starting WFX: '%s' - %3.2f sec",*name,wfx_time);
-		for (EnvIt l_it=CurrentWeather->begin(); l_it!=CurrentWeather->end(); l_it++)
-			Msg				(". Env: '%s' Tm: %3.2f",*(*l_it)->sect_name,(*l_it)->exec_time);
-#endif
+		Msg("Starting WFX: '%s' - %3.2f sec", *name, wfx_time);
+		for (EnvIt l_it = CurrentWeather->begin( ); l_it != CurrentWeather->end( ); l_it++)
+		{
+			Msg(". Env: '%s' Tm: %3.2f", *(*l_it)->sect_name, (*l_it)->exec_time);
+		}
+#endif // def WEATHER_LOGGING
+
 	}else{
 		FATAL				("! Empty weather effect name");
 	}
@@ -200,9 +206,11 @@ void CEnvironment::StopWFX	()
 	SetWeather				(CurrentCycleName,false);
 	Current[0]				= WFX_end_desc[0];
 	Current[1]				= WFX_end_desc[1];
+
 #ifdef WEATHER_LOGGING
-	Msg						("WFX - end. Weather: '%s' Desc: '%s'/'%s' GameTime: %3.2f",CurrentWeatherName.c_str(),Current[0]->sect_name.c_str(),Current[1]->sect_name.c_str(),fGameTime);
-#endif
+	Msg("WFX - end. Weather: '%s' Desc: '%s'/'%s' GameTime: %3.2f", CurrentWeatherName.c_str( ), Current[0]->sect_name.c_str( ), Current[1]->sect_name.c_str( ), fGameTime);
+#endif // def WEATHER_LOGGING
+
 }
 
 IC bool lb_env_pred(const CEnvDescriptor* x, float val)
@@ -234,11 +242,11 @@ void CEnvironment::SelectEnvs(EnvVec* envs, CEnvDescriptor*& e0, CEnvDescriptor*
 void CEnvironment::SelectEnvs(float gt)
 {
 	VERIFY				(CurrentWeather);
-    if ((Current[0]==Current[1])&&(Current[0]==0)){
+	if ((Current[0]==Current[1])&&(Current[0]==0)){
 		VERIFY			(!bWFX);
 		// first or forced start
 		SelectEnvs		(CurrentWeather,Current[0],Current[1],gt);
-    }else{
+	}else{
 		bool bSelect	= false;
 		if (Current[0]->exec_time>Current[1]->exec_time){
 			// terminator
@@ -249,11 +257,13 @@ void CEnvironment::SelectEnvs(float gt)
 		if (bSelect){
 			Current[0]	= Current[1];
 			SelectEnv	(CurrentWeather,Current[1],gt);
+
 #ifdef WEATHER_LOGGING
-			Msg			("Weather: '%s' Desc: '%s' Time: %3.2f/%3.2f",CurrentWeatherName.c_str(),Current[1]->sect_name.c_str(),Current[1]->exec_time,fGameTime);
-#endif
+			Msg("Weather: '%s' Desc: '%s' Time: %3.2f/%3.2f", CurrentWeatherName.c_str( ), Current[1]->sect_name.c_str( ), Current[1]->exec_time, fGameTime);
+#endif // def WEATHER_LOGGING
+
 		}
-    }
+	}
 }
 
 int get_ref_count(IUnknown* ii)
@@ -274,7 +284,7 @@ void CEnvironment::OnFrame()
 	if (bWFX&&(wfx_time<=0.f)) StopWFX();
 
 	SelectEnvs				(fGameTime);
-    VERIFY					(Current[0]&&Current[1]);
+	VERIFY					(Current[0]&&Current[1]);
 
 	float current_weight	= TimeWeight(fGameTime,Current[0]->exec_time,Current[1]->exec_time);
 
@@ -293,6 +303,11 @@ void CEnvironment::OnFrame()
 
 	// final lerp
 	CurrentEnv.lerp				(this,*Current[0],*Current[1],current_weight,EM,mpower);
+		// Igor. Dynamic sun position.
+	//AVO: allow sun to move as defined in configs
+	calculate_dynamic_sun_dir( );
+	//-AVO
+/*
 	if(CurrentEnv.sun_dir.y>0)
 	{
 		Log("CurrentEnv.sun_dir", CurrentEnv.sun_dir);
@@ -301,8 +316,8 @@ void CEnvironment::OnFrame()
 
 		Log("Current[0]->sun_dir", Current[0]->sun_dir);
 		Log("Current[1]->sun_dir", Current[1]->sun_dir);
-
 	}
+*/
 	VERIFY2						(CurrentEnv.sun_dir.y<0,"Invalid sun direction settings in lerp");
 
 	if (::Render->get_generation()==IRender_interface::GENERATION_R2){
@@ -330,10 +345,10 @@ void CEnvironment::OnFrame()
 	PerlinNoise1D->SetFrequency		(wind_gust_factor*MAX_NOISE_FREQ);
 	wind_strength_factor			= clampr(PerlinNoise1D->GetContinious(Device.fTimeGlobal)+0.5f,0.f,1.f); 
 
-    int l_id							=	(current_weight<0.5f)?Current[0]->lens_flare_id:Current[1]->lens_flare_id;
+	int l_id							=	(current_weight<0.5f)?Current[0]->lens_flare_id:Current[1]->lens_flare_id;
 	eff_LensFlare->OnFrame				(l_id);
 	int t_id							=	(current_weight<0.5f)?Current[0]->tb_id:Current[1]->tb_id;
-    eff_Thunderbolt->OnFrame			(t_id,CurrentEnv.bolt_period,CurrentEnv.bolt_duration);
+	eff_Thunderbolt->OnFrame			(t_id,CurrentEnv.bolt_period,CurrentEnv.bolt_duration);
 	eff_Rain->OnFrame					();
 
 	// ******************** Environment params (setting)
@@ -342,3 +357,70 @@ void CEnvironment::OnFrame()
 	CHK_DX(HW.pDevice->SetRenderState( D3DRS_FOGEND,	*(u32 *)(&CurrentEnv.fog_far)	));
 }
 
+void CEnvironment::calculate_dynamic_sun_dir( )
+{
+	float g = (360.0f / 365.25f) * (180.0f + fGameTime / DAY_LENGTH);
+
+	g = deg2rad(g);
+
+	// Declination
+	float D = 0.396372f - 22.91327f * _cos(g) + 4.02543f * _sin(g) - 0.387205f * _cos(2 * g) +
+		0.051967f * _sin(2 * g) - 0.154527f * _cos(3 * g) + 0.084798f * _sin(3 * g);
+
+	// Now calculate the time correction for solar angle:
+	float TC = 0.004297f + 0.107029f * _cos(g) - 1.837877f * _sin(g) - 0.837378f * _cos(2 * g) -
+		2.340475f * _sin(2 * g);
+
+	// IN degrees
+	float Longitude = -30.4f;
+
+	float SHA = (fGameTime / (DAY_LENGTH / 24) - 12) * 15 + Longitude + TC;
+
+	// Need this to correctly determine SHA sign
+	if (SHA > 180) SHA -= 360;
+	if (SHA < -180) SHA += 360;
+
+	// IN degrees
+	float const Latitude = 50.27f;
+	float const LatitudeR = deg2rad(Latitude);
+
+	// Now we can calculate the Sun Zenith Angle (SZA):
+	float cosSZA = _sin(LatitudeR)
+		* _sin(deg2rad(D)) + _cos(LatitudeR) *
+		_cos(deg2rad(D)) * _cos(deg2rad(SHA));
+
+	clamp(cosSZA, -1.0f, 1.0f);
+
+	float SZA = acosf(cosSZA);
+	float SEA = PI / 2 - SZA;
+
+	// To finish we will calculate the Azimuth Angle (AZ):
+	float cosAZ = 0.f;
+	float const sin_SZA = _sin(SZA);
+	float const cos_Latitude = _cos(LatitudeR);
+	float const sin_SZA_X_cos_Latitude = sin_SZA * cos_Latitude;
+	if (!fis_zero(sin_SZA_X_cos_Latitude))
+		cosAZ = (_sin(deg2rad(D)) - _sin(LatitudeR) * _cos(SZA)) / sin_SZA_X_cos_Latitude;
+
+	clamp(cosAZ, -1.0f, 1.0f);
+	float AZ = acosf(cosAZ) + PI; // AVO: sun direction fix
+
+	const Fvector2 minAngle = Fvector2( ).set(deg2rad(1.0f), deg2rad(3.0f));
+
+	if (SEA < minAngle.x) SEA = minAngle.x;
+
+	float fSunBlend = (SEA - minAngle.x) / (minAngle.y - minAngle.x);
+	clamp(fSunBlend, 0.0f, 1.0f);
+
+	SEA = -SEA;
+
+	if (SHA < 0)
+		AZ = 2 * PI - AZ;
+
+	R_ASSERT(_valid(AZ));
+	R_ASSERT(_valid(SEA));
+	CurrentEnv.sun_dir.setHP(AZ, SEA);
+	R_ASSERT(_valid(CurrentEnv.sun_dir));
+
+	CurrentEnv.sun_color.mul(fSunBlend);
+}
