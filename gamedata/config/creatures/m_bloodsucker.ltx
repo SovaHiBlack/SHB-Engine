@@ -1,6 +1,9 @@
 ;===========================================================================
 ; BLOODSUCKER
 ;===========================================================================
+;***************************************************************************
+; BASE PROFILES
+;***************************************************************************
 [m_bloodsucker_e]:monster_base
 ;GroupControlSection			 = spawn_group
 SpaceRestrictionSection		 = space_restrictor,zone_mosquito_bald,zone_witches_galantine,zone_burning_fuzz1,zone_mincer,zone_gravi_zone
@@ -450,9 +453,9 @@ ce_amplitude		= 15;12.0
 ce_period_number	= 2.0;3.0 
 ce_power			= 3.0 ;0.7 ; power
 
-;*********************************************************************************
-; BASE PROFILES
-;*********************************************************************************
+;******************************************************************************
+; WEAK PROFILE
+;******************************************************************************
 [bloodsucker_weak]:m_bloodsucker_e
 $spawn				= "monsters\bloodsuckers\bloodsucker_01_weak"
 visual				= monsters\krovosos\krovosos
@@ -475,9 +478,6 @@ chemical_burn_immunity	= 1.0
 explosion_immunity		= 0.7
 fire_wound_immunity		= 0.18
 
-;*********************************************************************************
-; WEAK PROFILE
-;*********************************************************************************
 [bloodsucker_attack_params_weak]
 ;---------------------------------------------------------------------------------------------------------------------------------------------
 ;	anim			| time[0..1] | hit_power | impulse | impulse_dir (x,y,z)  |	Field of hit_test  (left,right, top, bottom) |	Test Dist
@@ -497,6 +497,9 @@ stand_attack_run_0 =	bloodsucker_weak_run_attack_sect
 value1			= 0.20,		0.1,		    150,        0.0, 0.5, 1.50,		  -1.2, 1.2, -1.2, 1.2,				  2.2
 value2			= 0.60,		0.2,		    200,        0.0, 0.5, 1.50,		  -1.2, 1.2, -1.2, 1.2,				  2.2
 
+;******************************************************************************
+; NORMAL PROFILE
+;******************************************************************************
 [bloodsucker_normal]:m_bloodsucker_e
 $spawn				= "monsters\bloodsuckers\bloodsucker_02_normal"
 visual				= monsters\krovosos\krovosos
@@ -519,9 +522,6 @@ chemical_burn_immunity	= 1.0
 explosion_immunity		= 0.5
 fire_wound_immunity		= 0.12
 
-;*********************************************************************************
-; NORMAL PROFILE
-;*********************************************************************************
 [bloodsucker_attack_params_normal]
 ;---------------------------------------------------------------------------------------------------------------------------------------------
 ;	anim			| time[0..1] | hit_power | impulse | impulse_dir (x,y,z)  |	Field of hit_test  (left,right, top, bottom) |	Test Dist
@@ -541,6 +541,9 @@ stand_attack_run_0 =	bloodsucker_normal_run_attack_sect
 value1			= 0.20,		0.2,		    250,        0.0, 0.5, 3.00,		  -1.2, 1.2, -1.2, 1.2,				  2.2
 value2			= 0.60,		0.4,		    300,        0.0, 0.5, 3.00,		  -1.2, 1.2, -1.2, 1.2,				  2.2
 
+;******************************************************************************
+; STRONG PROFILE
+;******************************************************************************
 [bloodsucker_strong]:m_bloodsucker_e
 $spawn				= "monsters\bloodsuckers\bloodsucker_03_strong"
 visual				= monsters\krovosos\krovosos_strong
@@ -564,9 +567,6 @@ chemical_burn_immunity	= 1.0
 explosion_immunity		= 0.3
 fire_wound_immunity		= 0.09
 
-;*********************************************************************************
-; STRONG PROFILE
-;*********************************************************************************
 [bloodsucker_attack_params_strong]
 ;---------------------------------------------------------------------------------------------------------------------------------------------
 ;	anim			| time[0..1] | hit_power | impulse | impulse_dir (x,y,z)  |	Field of hit_test  (left,right, top, bottom) |	Test Dist
