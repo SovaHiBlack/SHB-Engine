@@ -116,6 +116,7 @@ public:
 	{
 		return !m_pPhysicsShell;
 	}
+
 protected:
 	virtual void							SpawnInitPhysics(CSE_Abstract* D);
 	virtual CPhysicsShellHolder* PPhysicsShellHolder( )

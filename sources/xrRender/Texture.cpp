@@ -288,9 +288,13 @@ IDirect3DBaseTexture9*	CRender::texture_load(const char* fRName, u32& ret_msize)
 	if (FS.exist(fn,"$game_saves$",		fname,	".dds"))							goto _DDS;
 	if (FS.exist(fn,"$game_textures$",	fname,	".dds"))							goto _DDS;
 
-	Debug.fatal(DEBUG_INFO,"Can't find texture '%s'",fname);
+	Msg("! Can't find texture '%s'", fname);
+	R_ASSERT(FS.exist(fn, "$game_textures$", "ed\\ed_not_existing_texture", ".dds"));
+	goto _DDS;
 
-	return 0;
+//	Debug.fatal(DEBUG_INFO,"Can't find texture '%s'",fname);
+
+//	return 0;
 
 _DDS:
 	{
