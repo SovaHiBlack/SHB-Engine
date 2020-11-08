@@ -15,7 +15,7 @@
 #include "GameObject_space.h"
 
 #ifdef DEBUG
-#	include "level.h"
+#	include "Level.h"
 #	include "debug_renderer.h"
 #endif
 

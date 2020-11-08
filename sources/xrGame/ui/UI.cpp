@@ -4,13 +4,13 @@
 #include "..\Entity.h"
 #include "..\HUDManager.h"//
 #include "UIGameSP.h"//
-#include "..\actor.h"
-#include "..\level.h"
+#include "..\Actor.h"
+#include "..\Level.h"
 #include "..\game_cl_base.h"
 #include "UIMainIngameWnd.h"//
 #include "UIMessagesWindow.h"//
 #include "UIPdaWnd.h"//
-#include "..\inventory.h"
+#include "..\Inventory.h"
 #include "..\HudItem.h"
 
 CUI::CUI(CHUDManager* p)

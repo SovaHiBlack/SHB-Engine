@@ -1,6 +1,6 @@
 #pragma once
 
-#include "CameraDefs.h"
+#include "Camera_defs.h"
 
 class ENGINE_API		CEffectorCam
 {
@@ -9,6 +9,7 @@ protected:
 	
 	friend class		CCameraManager;
 	float				fLifeTime;
+
 public:
 						CEffectorCam	(ECameraEffectorType type, float tm)	{eType=type; fLifeTime=tm;};
 						CEffectorCam	()									{eType=(ECameraEffectorType)0; fLifeTime=0.0f;};

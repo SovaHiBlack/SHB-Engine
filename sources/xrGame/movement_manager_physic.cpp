@@ -11,7 +11,7 @@
 #include "movement_manager.h"
 #include "PHMovementControl.h"
 #include "detail_path_manager.h"
-#include "level.h"
+#include "Level.h"
 #include "custommonster.h"
 #include "ICollisionDamageInfo.h"
 #include "Profiler.h"

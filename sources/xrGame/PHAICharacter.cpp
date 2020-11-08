@@ -10,7 +10,7 @@
 
 #ifdef DEBUG
 #	include "PHDebug.h"
-#	include "level.h"
+#	include "Level.h"
 #	include "debug_renderer.h"
 #endif
 

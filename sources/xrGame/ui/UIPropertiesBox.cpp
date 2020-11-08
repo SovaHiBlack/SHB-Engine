@@ -2,7 +2,7 @@
 
 #include "UIPropertiesBox.h"
 #include "../HUDManager.h"//
-#include "../level.h"
+#include "..\Level.h"
 #include "UIListBoxItem.h"//
 #include "UIXmlInit.h"//
 

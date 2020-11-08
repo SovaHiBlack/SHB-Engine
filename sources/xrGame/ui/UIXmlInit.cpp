@@ -3,7 +3,7 @@
 #include "UIXmlInit.h"//
 #include "../HUDManager.h"//
 //#include "UI.h"
-#include "../level.h"
+#include "..\Level.h"
 #include "UICustomItem.h"//
 
 #include "..\StringTable.h"

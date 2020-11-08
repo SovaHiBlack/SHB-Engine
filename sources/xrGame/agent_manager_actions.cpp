@@ -17,7 +17,7 @@
 #include "agent_enemy_manager.h"
 #include "ai/stalker/Stalker.h"
 #include "sight_action.h"
-#include "inventory.h"
+#include "Inventory.h"
 
 //////////////////////////////////////////////////////////////////////////
 // CAgentManagerActionNoOrders

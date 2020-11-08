@@ -13,7 +13,7 @@
 #		include "../ENGINE\fbasicvisual.h"
 #		include "alife_space.h"
 #		include "hit.h"
-#		include "actor.h"
+#		include "Actor.h"
 #		include "custommonster.h"
 #		include "ai/stalker/Stalker.h"
 #		include "ui/UIWindow.h"//

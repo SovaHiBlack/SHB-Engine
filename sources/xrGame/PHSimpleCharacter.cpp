@@ -9,8 +9,8 @@
 #include "ui/UIStatic.h"//
 #include "SpaceUtils.h"
 #include "PhysicsGamePars.h"
-#include "MathUtils.h" 
-#include "level.h"
+#include "MathUtils.h"
+#include "Level.h"
 #include "gamemtllib.h"
 #include "GameObject.h"
 #include "PhysicsShellHolder.h"

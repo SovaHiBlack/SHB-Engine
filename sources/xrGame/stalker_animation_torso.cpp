@@ -10,7 +10,7 @@
 
 #include "stalker_animation_manager.h"
 #include "ai/stalker/Stalker.h"
-#include "inventory.h"
+#include "Inventory.h"
 #include "Weapon.h"
 #include "Missile.h"
 #include "clsid_game.h"

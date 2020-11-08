@@ -3,7 +3,7 @@
 #include "bloodsucker.h"
 #include "bloodsucker_state_manager.h"
 #include "../../../..\ENGINE\skeletoncustom.h"
-#include "../../../actor.h"
+#include "..\..\..\Actor.h"
 #include "../../../ActorEffector.h"
 #include "../../../..\ENGINE\skeletonanimated.h"
 #include "..\..\..\Level.h"

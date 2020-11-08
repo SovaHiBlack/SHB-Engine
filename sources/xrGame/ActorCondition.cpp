@@ -3,7 +3,7 @@
 #include "actorcondition.h"
 #include "Actor.h"
 #include "actorEffector.h"
-#include "inventory.h"
+#include "Inventory.h"
 #include "Level.h"
 #include "sleepeffector.h"
 #include "game_base_space.h"

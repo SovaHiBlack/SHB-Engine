@@ -9,7 +9,7 @@
 #include "UIScrollView.h"//
 
 #include "..\StringTable.h"
-#include "../Inventory_Item.h"
+//#include "..\InventoryItem.h"
 #include "UIInventoryUtilities.h"//
 #include "..\PhysicsShellHolder.h"
 #include "UIWpnParams.h"//

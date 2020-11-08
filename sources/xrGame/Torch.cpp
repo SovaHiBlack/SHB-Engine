@@ -2,17 +2,17 @@
 
 #include "torch.h"
 #include "entity.h"
-#include "actor.h"
+#include "Actor.h"
 #include "..\ENGINE\LightAnimLibrary.h"
 #include "PhysicsShell.h"
 #include "xrserver_objects_alife_items.h"
 #include "ai_sounds.h"
 
 #include "HUDManager.h"//
-#include "level.h"
+#include "Level.h"
 #include "..\ENGINE\skeletoncustom.h"
 #include "..\ENGINE\camerabase.h"
-#include "inventory.h"
+#include "Inventory.h"
 #include "game_base_space.h"
 
 #include "ui/UIGameCustom.h"//

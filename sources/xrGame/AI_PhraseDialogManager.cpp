@@ -12,7 +12,7 @@
 #include "relation_registry.h"
 #include "ui/UIGameSP.h"//
 #include "HUDManager.h"//
-#include "level.h"
+#include "Level.h"
 #include "ui/UItalkWnd.h"//
 
 CAI_PhraseDialogManager::CAI_PhraseDialogManager	(void)

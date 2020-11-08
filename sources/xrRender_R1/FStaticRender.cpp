@@ -12,7 +12,7 @@
 #include "..\ENGINE\fmesh.h"
 #include "..\ENGINE\SkeletonCustom.h"
 #include "..\xrRender\lighttrack.h"
- 
+
 using	namespace		R_dsgraph;
 
 CRender													RImplementation;

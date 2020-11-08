@@ -9,7 +9,7 @@
 #pragma once
 
 #include "physic_item.h"
-#include "inventory_item.h"
+#include "InventoryItem.h"
 
 class CInventoryItemObject : 
 			public CInventoryItem, 
@@ -35,7 +35,7 @@ public:
 	virtual void	Load					(const char* section);
 	virtual const char* Name					();
 	virtual const char* NameShort				();
-//.	virtual const char*	NameComplex				();
+
 	virtual	void	Hit						(SHit* pHDS);
 
 	virtual void	OnH_B_Independent		(bool just_before_destroy);

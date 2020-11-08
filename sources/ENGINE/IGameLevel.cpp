@@ -4,7 +4,7 @@
 #include "IGamePersistent.h"//==>
 #include "Application.h"
 #include "std_classes.h"
-#include "customHUD.h"
+#include "CustomHUD.h"
 #include "render.h"
 #include "gamefont.h"
 #include "xrLevel.h"

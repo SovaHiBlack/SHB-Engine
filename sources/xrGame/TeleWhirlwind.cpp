@@ -3,7 +3,7 @@
 #include "telewhirlwind.h"
 #include "PhysicsShell.h"
 #include "PhysicsShellHolder.h"
-#include "level.h"
+#include "Level.h"
 #include "hit.h"
 #include "PHDestroyable.h"
 #include "Messages.h"

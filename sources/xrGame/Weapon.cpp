@@ -9,14 +9,14 @@
 #include "HUDManager.h"//
 #include "WeaponHUD.h"
 #include "entity_alive.h"
-#include "inventory_item_impl.h"
+//#include "InventoryItem_impl.h"
 
-#include "inventory.h"
+#include "Inventory.h"
 #include "xrserver_objects_alife_items.h"
 
 #include "Actor.h"
 #include "actoreffector.h"
-#include "level.h"
+#include "Level.h"
 
 #include "xr_level_controller.h"
 #include "game_cl_base.h"

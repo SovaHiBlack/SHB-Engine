@@ -2,8 +2,8 @@
 
 #include "alife_registry_wrappers.h"
 #include "inventoryowner.h"
-#include "level.h"
-#include "actor.h"
+#include "Level.h"
+#include "Actor.h"
 #include "relation_registry.h"
 #include "GameObject.h"
 #include "MapLocation.h"

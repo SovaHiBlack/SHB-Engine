@@ -3,7 +3,7 @@
 #include "MosquitoBald.h"
 #include "HUDManager.h"//
 #include "ParticlesObject.h"
-#include "level.h"
+#include "Level.h"
 #include "PhysicsShellHolder.h"
 
 CMosquitoBald::CMosquitoBald(void) 
@@ -15,18 +15,15 @@ CMosquitoBald::CMosquitoBald(void)
 }
 
 CMosquitoBald::~CMosquitoBald(void) 
-{
-}
+{ }
 
 void CMosquitoBald::Load(const char* section)
 {
 	inherited::Load(section);
 }
 
-
 void CMosquitoBald::Postprocess(float /**val/**/)
-{
-}
+{ }
 
 bool CMosquitoBald::BlowoutState()
 {
@@ -66,7 +63,6 @@ void CMosquitoBald::Affect(SZoneObjectInfo* O)
 		::Random.randF(.0f,1.f), 
 		::Random.randF(-.5f,.5f)); 
 	hit_dir.normalize();
-
 
 	Fvector position_in_bone_space;
 

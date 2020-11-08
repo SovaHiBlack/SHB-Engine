@@ -12,7 +12,7 @@
 
 #include "stdafx.h"
 
-#include "envelope.h"
+#include "Envelope.h"
 
 //======================================================================
 //range()

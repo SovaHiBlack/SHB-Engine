@@ -1,8 +1,8 @@
 #include "stdafx.h"
 
 #include "UIGameSP.h"//
-#include "..\actor.h"
-#include "..\level.h"
+#include "..\Actor.h"
+#include "..\Level.h"
 
 #include "..\game_cl_Single.h"
 #include "UIPdaAux.h"//

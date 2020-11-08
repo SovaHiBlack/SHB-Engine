@@ -1,5 +1,5 @@
 ////////////////////////////////////////////////////////////////////////////
-//	Module 		: inventory_item_impl.h
+//	Module 		: InventoryItem_impl.h
 //	Created 	: 18.08.2005
 //  Modified 	: 18.08.2005
 //	Author		: Dmitriy Iassenev
@@ -8,7 +8,7 @@
 
 #pragma once
 
-#include "inventory.h"
+#include "Inventory.h"
 
 IC	CInventoryOwner &CInventoryItem::inventory_owner	() const
 {

@@ -8,7 +8,7 @@
 #include "Level_Bullet_Manager.h"
 #include "entity.h"
 #include "gamemtllib.h"
-#include "level.h"
+#include "Level.h"
 #include "gamepersistent.h"
 #include "game_cl_base.h"
 #include "Messages.h"

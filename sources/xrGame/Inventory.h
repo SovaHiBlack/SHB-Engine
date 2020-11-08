@@ -1,6 +1,6 @@
 #pragma once
 
-#include "inventory_item.h"
+#include "InventoryItem.h"
 
 class CInventory;
 class CInventoryItem;

@@ -36,7 +36,7 @@
 #include "../anomaly_detector.h"
 #include "../monster_cover_manager.h"
 #include "../monster_home.h"
-#include "../../../inventory.h"
+#include "..\..\..\Inventory.h"
 #include "..\..\..\Server.h"
 #include "../ai_monster_squad.h"
 #include "..\..\..\Actor.h"

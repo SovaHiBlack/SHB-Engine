@@ -8,9 +8,9 @@
 
 #include "stdafx.h"
 
-#include "inventory_item.h"
-#include "inventory_item_impl.h"
-#include "inventory.h"
+//#include "InventoryItem.h"
+#include "InventoryItem_impl.h"
+#include "Inventory.h"
 #include "Physics.h"
 #include "xrserver_objects_alife.h"
 #include "xrserver_objects_alife_items.h"
@@ -126,14 +126,12 @@ void CInventoryItem::Load(const char* section)
 	m_name				= CStringTable().translate( pSettings->r_string(section, "inv_name") );
 	m_nameShort			= CStringTable().translate( pSettings->r_string(section, "inv_name_short"));
 
-//.	NameComplex			();
 	m_weight			= pSettings->r_float(section, "inv_weight");
 	R_ASSERT			(m_weight>=0.f);
 
 	m_cost				= pSettings->r_u32(section, "cost");
 
 	m_slot				= READ_IF_EXISTS(pSettings,r_u32,section,"slot", NO_ACTIVE_SLOT);
-
 
 	// Description
 	if ( pSettings->line_exist(section, "description") )

@@ -10,8 +10,8 @@
 #include "Messages.h"
 #include "character_info.h"
 #include "GameTask.h"
-#include "actor.h"
-#include "level.h"
+#include "Actor.h"
+#include "Level.h"
 #include "date_time.h"
 #include "ui/UIGameSP.h"//
 #include "HUDManager.h"//
@@ -29,7 +29,7 @@
 #include "HudItem.h"
 #include "ui/UItalkWnd.h"//
 #include "ui/UITradeWnd.h"//
-#include "inventory.h"
+#include "Inventory.h"
 #include "InfoPortion.h"
 #include "AI/Monsters/BaseMonster/BaseMonster.h"
 #include "WeaponMagazined.h"

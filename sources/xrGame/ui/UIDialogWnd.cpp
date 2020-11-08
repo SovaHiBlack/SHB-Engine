@@ -8,7 +8,7 @@
 #include "../HUDManager.h"//
 #include "../xr_level_controller.h"
 #include "..\..\ENGINE\Console.h"
-#include "../level.h"
+#include "..\Level.h"
 #include "../GameObject.h"
 
 CUIDialogWnd:: CUIDialogWnd()

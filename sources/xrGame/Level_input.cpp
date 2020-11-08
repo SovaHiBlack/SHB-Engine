@@ -9,7 +9,7 @@
 #include "alife_simulator_header.h"
 #include "level_graph.h"
 //#include "..\ENGINE\DemoRecord.h"
-#include "level.h"
+#include "Level.h"
 #include "xr_level_controller.h"
 #include "game_cl_base.h"
 #include "stalker_movement_manager.h"
@@ -18,7 +18,7 @@
 #include "Server.h"
 #include "autosave_manager.h"
 
-#include "actor.h"
+#include "Actor.h"
 #include "HudItem.h"
 #include "ui/UIDialogWnd.h"//
 #include "clsid_game.h"

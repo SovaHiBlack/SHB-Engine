@@ -3,10 +3,10 @@
 #include "bloodsucker_alien.h"
 #include "bloodsucker.h"
 #include "..\..\..\Level.h"
-#include "../../../actor.h"
-#include "../../../inventory.h"
+#include "..\..\..\Actor.h"
+#include "..\..\..\Inventory.h"
 #include "../../../HudItem.h"
-#include "../../../..\ENGINE\CustomHUD.h"
+#include "..\..\..\..\ENGINE\CustomHUD.h"
 #include "../../../..\ENGINE\effector.h"
 #include "../../../..\ENGINE\effectorPP.h"
 

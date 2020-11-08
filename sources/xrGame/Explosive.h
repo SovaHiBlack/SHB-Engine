@@ -8,7 +8,7 @@
 
 #include "..\ENGINE\Render.h"
 #include "..\ENGINE\feel_touch.h"
-#include "inventory_item.h"
+#include "InventoryItem.h"
 #include "ai_sounds.h"
 #include "script_export_space.h"
 #include "IDamageSource.h"

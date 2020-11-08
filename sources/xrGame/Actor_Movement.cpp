@@ -4,7 +4,7 @@
 #include "stdafx.h"
 
 #include "Actor.h"
-#include "inventory.h"
+#include "Inventory.h"
 #include "Weapon.h"
 #include "..\ENGINE\CameraBase.h"
 #include "Messages.h"

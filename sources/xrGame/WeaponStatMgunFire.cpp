@@ -1,7 +1,7 @@
 #include "stdafx.h"
 
 #include "WeaponStatMgun.h"
-#include "level.h"
+#include "Level.h"
 #include "entity_alive.h"
 #include "HudSound.h"
 #include "Actor.h"

@@ -13,7 +13,7 @@
 #include "hit.h"
 #include "Actor.h"
 #include "HUDManager.h"//
-#include "level.h"
+#include "Level.h"
 #include "Server.h"
 #include "game_cl_base.h"
 #include "clsid_game.h"

@@ -8,7 +8,7 @@
 
 #include "GraviArtifact.h"
 #include "PhysicsShell.h"
-#include "level.h"
+#include "Level.h"
 #include "Messages.h"
 #include "game_cl_base.h"
 #include "..\ENGINE\skeletoncustom.h"

@@ -10,7 +10,7 @@
 
 #include "car_memory.h"
 #include "Car.h"
-#include "actor.h"
+#include "Actor.h"
 
 car_memory::car_memory					(CCar *object) :
 	inherited		(

@@ -3,18 +3,18 @@
 #include "Missile.h"
 #include "WeaponHUD.h"
 #include "PhysicsShell.h"
-#include "actor.h"
+#include "Actor.h"
 #include "..\ENGINE\CameraBase.h"
 #include "xrserver_objects_alife.h"
 #include "ActorEffector.h"
-#include "level.h"
+#include "Level.h"
 #include "xr_level_controller.h"
 #include "..\ENGINE\skeletoncustom.h"
 #include "ai_object_location.h"
 #include "ExtendedGeom.h"
 #include "MathUtils.h"
 #include "characterphysicssupport.h"
-#include "inventory.h"
+#include "Inventory.h"
 #include "..\ENGINE\IGamePersistent.h"//==>
 
 #ifdef DEBUG

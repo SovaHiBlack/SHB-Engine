@@ -10,7 +10,7 @@
 #include "UIScrollView.h"//
 #include "UICharacterInfo.h"//
 #include "../InventoryOwner.h"
-#include "../Level.h"
+#include "..\Level.h"
 #include "../Pda.h"
 #include "..\Actor.h"
 #include "../xrServer_Objects_ALife_Monsters.h"

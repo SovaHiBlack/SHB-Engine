@@ -4,11 +4,11 @@
 #include "CustomZone.h"
 #include "HUDManager.h"//
 #include "Artefact.h"
-#include "inventory.h"
-#include "level.h"
+#include "Inventory.h"
+#include "Level.h"
 #include "MapManager.h"
 #include "cameraEffector.h"
-#include "actor.h"
+#include "Actor.h"
 #include "ai_sounds.h"
 
 ZONE_INFO::ZONE_INFO	()

@@ -17,14 +17,11 @@
 #define ARTEFACT_SLOT		10
 #define SLOTS_TOTAL			11
 
-//#define RUCK_HEIGHT			280
-//#define RUCK_WIDTH			7
-
 class CInventoryItem;
 class CInventory;
 
-typedef CInventoryItem*				PIItem;
-typedef xr_vector<PIItem>			TIItemContainer;
+using PIItem = CInventoryItem*;
+using TIItemContainer = xr_vector<PIItem>;
 
 enum EItemPlace
 {			

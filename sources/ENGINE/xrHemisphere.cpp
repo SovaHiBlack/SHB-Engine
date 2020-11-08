@@ -542,19 +542,19 @@ void xrHemisphereBuild	(int quality, float energy, xrHemisphereIterator* iterato
 {
 	const Fvector* hemi=0;
 	int h_count		= xrHemisphereVertices(quality,hemi); VERIFY(h_count>0);
-    // Calculate energy
-    float total		= (float)h_count;
-    float E			= 1.f/total;
+	// Calculate energy
+	float total		= (float)h_count;
+	float E			= 1.f/total;
 		
-    // Iterate
-    for (int i=0; i<h_count; i++){
-        float x		=	-float	(hemi[i][0]);
-        float y		=	-float	(hemi[i][1]);
-        float z		=	-float	(hemi[i][2]);
-        float mag	=	_sqrt	(x*x + y*y + z*z);
-        x /= mag;	y /= mag;	z /= mag;
-        iterator	(x,y,z,E*energy,param);
-    }
+	// Iterate
+	for (int i=0; i<h_count; i++){
+		float x		=	-float	(hemi[i][0]);
+		float y		=	-float	(hemi[i][1]);
+		float z		=	-float	(hemi[i][2]);
+		float mag	=	_sqrt	(x*x + y*y + z*z);
+		x /= mag;	y /= mag;	z /= mag;
+		iterator	(x,y,z,E*energy,param);
+	}
 }
 
 int xrHemisphereVertices	(int quality, const Fvector*& verts)

@@ -10,13 +10,13 @@
 #include "ExplosiveRocket.h"
 #include "Actor_Flags.h"
 #include "xr_level_controller.h"
-#include "level.h"
+#include "Level.h"
 #include "..\ENGINE\skeletoncustom.h"
 #include "object_broker.h"
 #include "game_base_space.h"
 #include "MathUtils.h"
 #include "clsid_game.h"
-#include "inventory.h"
+#include "Inventory.h"
 #include "inventoryOwner.h"
 
 #ifdef DEBUG

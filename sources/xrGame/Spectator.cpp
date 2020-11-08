@@ -6,11 +6,11 @@
 #include "effectorfall.h"
 #include "CameraLook.h"
 #include "CameraFirstEye.h"
-#include "actor.h"
+#include "Actor.h"
 #include "HUDManager.h"//
 #include "xrServer_Objects.h"
 #include "game_cl_base.h"
-#include "level.h"
+#include "Level.h"
 #include "xr_level_controller.h"
 #include "seniority_hierarchy_holder.h"
 #include "team_hierarchy_holder.h"

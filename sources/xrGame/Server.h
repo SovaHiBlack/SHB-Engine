@@ -77,6 +77,7 @@ private:
 	u32							OnDelayedMessage		(NET_Packet& P, ClientID sender);			// Non-Zero means broadcasting with "flags" as returned
 
 	void						SendUpdatesToAll		();
+
 private:
 	typedef 
 		CID_Generator<
@@ -104,7 +105,7 @@ public:
 	void					Export_game_type		(IClient* CL);
 	void					Perform_game_export		();
 	BOOL					PerformRP				(CSE_Abstract* E);
-	void					PerformMigration		(CSE_Abstract* E, xrClientData* from, xrClientData* to);
+//	void					PerformMigration		(CSE_Abstract* E, xrClientData* from, xrClientData* to);
 	
 	IC void					clear_ids				()
 	{

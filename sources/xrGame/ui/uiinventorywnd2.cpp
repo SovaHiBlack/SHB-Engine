@@ -2,11 +2,11 @@
 
 #include "UIInventoryWnd.h"//
 //#include "UISleepWnd.h"
-#include "../level.h"
+#include "..\Level.h"
 #include "..\Actor.h"
 #include "../ActorCondition.h"
 #include "../HUDManager.h"//
-#include "../inventory.h"
+#include "..\Inventory.h"
 #include "UIInventoryUtilities.h"//
 
 #include "UICellItem.h"//

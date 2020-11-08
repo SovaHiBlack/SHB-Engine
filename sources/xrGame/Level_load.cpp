@@ -7,7 +7,7 @@
 #include "script_process.h"
 #include "script_engine.h"
 #include "script_engine_space.h"
-#include "level.h"
+#include "Level.h"
 #include "game_cl_base.h"
 //#include "..\ENGINE\Application.h"
 #include "gamemtllib.h"

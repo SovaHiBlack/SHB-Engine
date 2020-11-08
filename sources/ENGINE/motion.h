@@ -1,4 +1,3 @@
-//----------------------------------------------------
 #pragma once
 
 #include "bone.h"
@@ -47,10 +46,11 @@ protected:
 	EMotionType		mtype;
 	int				iFrameStart, iFrameEnd;
 	float			fFPS;
+
 public:
 	shared_str		name;
-public:
-					CCustomMotion	();
+
+	CCustomMotion	();
 					CCustomMotion	(CCustomMotion* src);
 	virtual			~CCustomMotion	();
 
@@ -70,7 +70,6 @@ public:
 	virtual bool	LoadMotion		(const char* buf)=0;
 };
 
-//--------------------------------------------------------------------------
 class ENGINE_API COMotion: public CCustomMotion
 {
 	CEnvelope*		envs			[ctMaxChannel];
@@ -88,8 +87,6 @@ public:
 	virtual void	SaveMotion		(const char* buf);
 	virtual bool	LoadMotion		(const char* buf);
 };
-
-//--------------------------------------------------------------------------
 
 enum ESMFlags{
     esmFX		= 1<<0,
@@ -132,7 +129,7 @@ public:
     
     float			fx_power;
     float			length;
-public:
+
 	virtual void	Save	(IWriter& F);
 	virtual bool	Load	(IReader& F);
     bool			Equal	(CClip* c);

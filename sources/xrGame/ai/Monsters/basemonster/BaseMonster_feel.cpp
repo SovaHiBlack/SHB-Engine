@@ -8,7 +8,7 @@
 #include "stdafx.h"
 
 #include "BaseMonster.h"
-#include "../../../actor.h"
+#include "..\..\..\Actor.h"
 #include "../../../ActorEffector.h"
 #include "../ai_monster_effector.h"
 #include "../../../HUDManager.h"//

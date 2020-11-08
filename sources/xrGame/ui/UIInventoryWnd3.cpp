@@ -9,7 +9,7 @@
 //#include "../EatableItem.h"
 #include "../BottleItem.h"//
 #include "..\WeaponMagazined.h"
-#include "../inventory.h"
+#include "..\Inventory.h"
 #include "../game_base.h"
 #include "../game_cl_base.h"
 #include "../xr_level_controller.h"

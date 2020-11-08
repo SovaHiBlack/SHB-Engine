@@ -201,9 +201,6 @@
     <ClInclude Include="CameraBase.h">
       <Filter>Game API\Cameras</Filter>
     </ClInclude>
-    <ClInclude Include="CameraDefs.h">
-      <Filter>Game API\Cameras</Filter>
-    </ClInclude>
     <ClInclude Include="CameraManager.h">
       <Filter>Game API\Cameras</Filter>
     </ClInclude>
@@ -223,9 +220,6 @@
       <Filter>Game API\Collision</Filter>
     </ClInclude>
     <ClInclude Include="bone.h">
-      <Filter>Game API\Animator</Filter>
-    </ClInclude>
-    <ClInclude Include="envelope.h">
       <Filter>Game API\Animator</Filter>
     </ClInclude>
     <ClInclude Include="motion.h">
@@ -503,6 +497,12 @@
     </ClInclude>
     <ClInclude Include="IParticleCustom.h">
       <Filter>Render\Visuals</Filter>
+    </ClInclude>
+    <ClInclude Include="Envelope.h">
+      <Filter>Game API\Animator</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera_defs.h">
+      <Filter>Game API\Cameras</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

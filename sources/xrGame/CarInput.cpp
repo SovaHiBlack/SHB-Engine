@@ -9,13 +9,13 @@
 #include "hit.h"
 #include "PHDestroyable.h"
 #include "Car.h"
-#include "actor.h"
+#include "Actor.h"
 #include "CameraLook.h"
 #include "camerafirsteye.h"
 #include "script_entity_action.h"
 #include "xr_level_controller.h"
 #include "..\ENGINE\skeletoncustom.h"
-#include "level.h"
+#include "Level.h"
 #include "CarWeapon.h"
 
 void	CCar::OnMouseMove(int dx, int dy)

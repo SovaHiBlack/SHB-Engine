@@ -10,7 +10,7 @@
 #include "UIGameSP.h"//
 #include "../Pda.h"
 #include "../character_info.h"
-#include "../level.h"
+#include "..\Level.h"
 
 #include "..\PhraseDialog.h"
 #include "..\PhraseDialogManager.h"

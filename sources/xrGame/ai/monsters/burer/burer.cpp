@@ -3,7 +3,7 @@
 #include "burer.h"
 #include "../../../PhysicsShell.h"
 #include "../../../characterphysicssupport.h"
-#include "../../../actor.h"
+#include "..\..\..\Actor.h"
 #include "burer_state_manager.h"
 #include "../../../..\ENGINE\skeletonanimated.h"
 #include "../../../sound_player.h"

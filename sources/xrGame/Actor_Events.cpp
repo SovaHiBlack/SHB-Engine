@@ -9,7 +9,7 @@
 #include "GrenadeLauncher.h"
 #include "Scope.h"
 #include "Silencer.h"
-#include "inventory.h"
+#include "Inventory.h"
 #include "Level.h"
 #include "xr_level_controller.h"
 #include "FoodItem.h"

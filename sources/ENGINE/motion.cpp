@@ -1,7 +1,7 @@
 #include "stdafx.h"
 
 #include "motion.h"
-#include "envelope.h"
+#include "Envelope.h"
 
 #define EOBJ_OMOTION   			0x1100
 #define EOBJ_SMOTION   			0x1200

@@ -1,13 +1,12 @@
 #pragma once
-#include "../Level.h"
+
+#include "..\Level.h"
 #include "../ode_include.h"
 #include "../ExtendedGeom.h"
 #include "dTriColliderMath.h"
 
-
 extern xr_vector< flags8 >			gl_cl_tries_state	;
 extern xr_vector<int>::iterator		I,E,B				;
-
 
 #define CONTACT(Ptr, Stride) ((dContactGeom*) (((byte*)Ptr) + (Stride)))
 #define SURFACE(Ptr, Stride) ((dSurfaceParameters*) (((byte*)Ptr) + (Stride-sizeof(dSurfaceParameters))))

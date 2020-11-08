@@ -7,18 +7,18 @@
 #include "..\ENGINE\skeletoncustom.h"
 #include "Profiler.h"
 #include "MainMenu.h"
-#include "ui/UICursor.h"//
+//#include "ui\UICursor.h"//
 #include "game_base_space.h"
-#include "level.h"
+#include "Level.h"
 #include "ParticlesObject.h"
-#include "actor.h"
+#include "Actor.h"
 #include "game_base_space.h"
 #include "WeaponHUD.h"
 #include "stalker_animation_data_storage.h"
 #include "stalker_velocity_holder.h"
 
 #include "..\ENGINE\CameraManager.h"
-#include "actor.h"
+#include "Actor.h"
 #include "HolderCustom.h"
 
 #ifndef MASTER_GOLD
@@ -31,6 +31,7 @@
 #include "..\ENGINE\Application.h"
 #include "game_sv_single.h"
 #include "Server.h"
+#include "xr_level_controller.h"
 
 static void*	ode_alloc	(size_t size)								{ return xr_malloc(size);			}
 static void*	ode_realloc	(void *ptr, size_t oldsize, size_t newsize)	{ return xr_realloc(ptr,newsize);	}
@@ -48,10 +49,12 @@ CGamePersistent::CGamePersistent(void)
 	m_pMainMenu					= NULL;
 	m_intro						= NULL;
 	m_intro_event.bind			(this,&CGamePersistent::start_logo_intro);
+
 #ifdef DEBUG
 	m_frame_counter				= 0;
 	m_last_stats_frame			= u32(-2);
 #endif
+
 	// 
 	dSetAllocHandler			(ode_alloc		);
 	dSetReallocHandler			(ode_realloc	);
@@ -78,7 +81,6 @@ CGamePersistent::CGamePersistent(void)
 	CWeaponHUD::CreateSharedContainer();
 
 	eQuickLoad					= Engine.Event.Handler_Attach("Game:QuickLoad",this);
-
 }
 
 CGamePersistent::~CGamePersistent(void)
@@ -126,7 +128,6 @@ void CGamePersistent::OnAppStart()
 	m_pMainMenu					= xr_new<CMainMenu>();
 }
 
-
 void CGamePersistent::OnAppEnd	()
 {
 	if(m_pMainMenu->IsActive())
@@ -140,7 +141,6 @@ void CGamePersistent::OnAppEnd	()
 	clean_game_globals			();
 
 	GMLib.Unload				();
-
 }
 
 void CGamePersistent::Start		(const char* op)
@@ -162,14 +162,11 @@ void CGamePersistent::Disconnect()
 	m_game_params.m_e_game_type	= GAME_ANY;
 }
 
-#include "xr_level_controller.h"
-
 void CGamePersistent::OnGameStart()
 {
 	__super::OnGameStart		();
 	
 	UpdateGameType				();
-
 }
 
 void CGamePersistent::UpdateGameType			()
@@ -245,8 +242,6 @@ void CGamePersistent::WeathersUpdate()
 	}
 }
 
-
-
 void CGamePersistent::start_logo_intro		()
 {
 	// пока отключил
@@ -302,6 +297,7 @@ void CGamePersistent::start_game_intro		()
 //	}
 //	*/
 }
+
 void CGamePersistent::update_game_intro			()
 {
 	if(m_intro && (false==m_intro->IsActive())){
@@ -327,6 +323,7 @@ void CGamePersistent::OnFrame	()
 #ifdef DEBUG
 	++m_frame_counter;
 #endif
+
 	if (!m_intro_event.empty())	m_intro_event();
 
 	if( !m_pMainMenu->IsActive() )
@@ -404,6 +401,7 @@ void CGamePersistent::OnFrame	()
 	if ((m_last_stats_frame + 1) < m_frame_counter)
 		profiler().clear		();
 #endif
+
 }
 
 void CGamePersistent::OnEvent(EVENT E, u64 P1, u64 P2)
@@ -445,6 +443,7 @@ float CGamePersistent::MtlTransparent(u32 mtl_idx)
 {
 	return GMLib.GetMaterialByIdx((u16)mtl_idx)->fVisTransparencyFactor;
 }
+
 static BOOL bRestorePause	= FALSE;
 static BOOL bEntryFlag		= TRUE;
 

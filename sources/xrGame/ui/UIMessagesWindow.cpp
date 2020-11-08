@@ -4,7 +4,7 @@
 #include "stdafx.h"
 
 #include "UIMessagesWindow.h"//
-#include "../level.h"
+#include "..\Level.h"
 #include "UIGameLog.h"//
 #include "xrUIXmlParser.h"//
 #include "UIXmlInit.h"//

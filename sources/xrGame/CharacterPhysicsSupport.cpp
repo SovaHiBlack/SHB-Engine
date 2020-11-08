@@ -12,7 +12,7 @@
 #include "CustomZone.h"
 #include "Extendedgeom.h"
 #include "Physics.h"
-#include "level.h"
+#include "Level.h"
 #include "PHActivationShape.h"//
 #include "IKLimbsController.h"
 #include "PHCapture.h"

@@ -3,7 +3,7 @@
 #include "Helicopter.h"////
 #include "xrserver_objects_alife.h"
 #include "PhysicsShell.h"////
-#include "level.h"////
+#include "Level.h"////
 #include "ai_sounds.h"
 #include "clsid_game.h"////
 #include "..\ENGINE\skeletonanimated.h"////

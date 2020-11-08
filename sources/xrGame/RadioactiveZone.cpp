@@ -2,12 +2,13 @@
 
 #include "RadioactiveZone.h"
 #include "HUDManager.h"//
-#include "level.h"
+#include "Level.h"
 #include "Messages.h"
 #include "..\ENGINE\bone.h"
 #include "clsid_game.h"
 #include "game_base_space.h"
 #include "Hit.h"
+#include "Actor.h"
 
 CRadioactiveZone::CRadioactiveZone(void) 
 {}
@@ -67,7 +68,6 @@ void CRadioactiveZone::feel_touch_new					(CObject* O	)
 	inherited::feel_touch_new(O);
 };
 
-#include "actor.h"
 BOOL CRadioactiveZone::feel_touch_contact(CObject* O)
 {
 

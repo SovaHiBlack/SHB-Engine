@@ -1,7 +1,6 @@
 #include "stdafx.h"
 
-#include "../level.h"
-//.#include "../LevelFogOfWar.h"
+#include "..\Level.h"
 #include "..\MapLocation.h"
 #include "..\MapManager.h"
 #include "../MapSpot.h"//

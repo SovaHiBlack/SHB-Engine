@@ -12,7 +12,7 @@
 #include "../../stalker_animation_manager.h"
 #include "../../script_entity_action.h"
 #include "../../torch.h"
-#include "../../inventory.h"
+#include "..\..\Inventory.h"
 #include "..\..\Weapon.h"
 #include "..\..\WeaponMagazined.h"
 #include "../../..\ENGINE\skeletoncustom.h"

@@ -1,7 +1,7 @@
 #include "stdafx.h"
 
 #include "zone_effector.h"
-#include "level.h"
+#include "Level.h"
 #include "clsid_game.h"
 //#include "..\ENGINE\Object.h"
 #include "..\ENGINE\cameramanager.h"

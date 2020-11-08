@@ -7,7 +7,7 @@
 #include "Weapon.h"
 #include "inventoryowner.h"
 #include "Actor.h"
-#include "inventory_item_impl.h"
+//#include "InventoryItem_impl.h"
 
 #include "actoreffector.h"
 #include "effectorshot.h"

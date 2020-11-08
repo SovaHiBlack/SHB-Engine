@@ -12,8 +12,8 @@
 #include "UIListWnd.h"//
 #include "UITreeViewItem.h"//
 #include "UIEncyclopediaArticleWnd.h"//
-#include "../level.h"
-#include "../actor.h"
+#include "..\Level.h"
+#include "..\Actor.h"
 #include "../alife_registry_wrappers.h"
 #include "..\EncyclopediaArticle.h"
 //#include "UIVideoPlayerWnd.h"//

@@ -1,6 +1,6 @@
 #include "stdafx.h"
 
-#include "envelope.h"
+#include "Envelope.h"
 
 CEnvelope::~CEnvelope()
 {

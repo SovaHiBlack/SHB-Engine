@@ -10,11 +10,11 @@
 
 #include "Stalker.h"
 #include "../../Pda.h"
-#include "../../inventory.h"
+#include "..\..\Inventory.h"
 #include "..\..\Messages.h"
 #include "..\..\ShootingObject.h"
 #include "../../../ENGINE/net_utils.h"
-#include "../../level.h"
+#include "..\..\Level.h"
 #include "../../ai_monster_space.h"
 
 using namespace StalkerSpace;

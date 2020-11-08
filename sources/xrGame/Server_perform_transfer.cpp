@@ -13,7 +13,7 @@ void CServer::Perform_transfer(NET_Packet &PR, NET_Packet &PT,	CSE_Abstract* wha
 	u32			time		= Device.dwTimeGlobal;
 
 	// 1. Perform migration if need it
-	if (from->owner != to->owner)	PerformMigration(what,from->owner,to->owner);
+//	if (from->owner != to->owner)	PerformMigration(what,from->owner,to->owner);
 	//Log						("B");
 
 	// 2. Detach "FROM"
@@ -35,7 +35,6 @@ void CServer::Perform_transfer(NET_Packet &PR, NET_Packet &PT,	CSE_Abstract* wha
 	PT.w_u16				(GE_OWNERSHIP_TAKE);
 	PT.w_u16				(to->ID);
 	PT.w_u16				(what->ID);
-
 }
 
 void CServer::Perform_reject(CSE_Abstract* what, CSE_Abstract* from, int delta)

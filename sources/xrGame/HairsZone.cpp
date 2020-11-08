@@ -2,7 +2,7 @@
 
 #include "HairsZone.h"
 #include "HUDManager.h"//
-#include "level.h"
+#include "Level.h"
 #include "PhysicsShellHolder.h"
 #include "entity_alive.h"
 #include "PHMovementControl.h"

@@ -3,7 +3,7 @@
 #include "HUDManager.h"//
 #include "HUDTarget.h"//
 
-#include "actor.h"
+#include "Actor.h"
 //#include "..\ENGINE\IGameLevel.h"
 #include "clsid_game.h"
 #include "GamePersistent.h"

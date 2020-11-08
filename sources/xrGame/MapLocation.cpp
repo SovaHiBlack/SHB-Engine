@@ -4,7 +4,7 @@
 #include "MapManager.h"
 #include "MapSpot.h"//
 
-#include "level.h"
+#include "Level.h"
 //#include "..\ENGINE\Object.h"
 #include "ai_space.h"
 #include "game_graph.h"
@@ -14,7 +14,7 @@
 #include "ui/UIMap.h"//
 #include "alife_simulator.h"
 #include "GraphEngine.h"
-#include "actor.h"
+#include "Actor.h"
 #include "ai_object_location.h"
 #include "alife_object_registry.h"
 #include "relation_registry.h"

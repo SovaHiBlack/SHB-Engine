@@ -9,7 +9,7 @@
 #include "stdafx.h"
 
 #include "object_actions.h"
-#include "inventory.h"
+#include "Inventory.h"
 #include "ai/stalker/Stalker.h"
 #include "xr_level_controller.h"
 #include "Messages.h"

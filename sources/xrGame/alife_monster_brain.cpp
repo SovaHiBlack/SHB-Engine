@@ -7,6 +7,7 @@
 ////////////////////////////////////////////////////////////////////////////
 
 #include "stdafx.h"
+
 #include "alife_monster_brain.h"
 #include "object_broker.h"
 #include "xrServer_Objects_ALife_Monsters.h"
@@ -25,7 +26,7 @@
 #	include "alife_time_manager.h"
 #	include "date_time.h"
 #	ifdef DEBUG
-#		include "level.h"
+#		include "Level.h"
 #		include "MapLocation.h"
 #		include "MapManager.h"
 #	endif

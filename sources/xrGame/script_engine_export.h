@@ -43,7 +43,7 @@
 #	include "ai/stalker/Stalker.h"
 #	include "script_effector.h"
 #	include "ParticlesObject.h"
-#	include "level.h"
+#	include "Level.h"
 #	include "memory_space.h"
 #	include "script_render_device.h"
 #	include "script_game_object.h"

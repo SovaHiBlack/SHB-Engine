@@ -3,7 +3,7 @@
 #include "game_base.h"
 #include "ai_space.h"
 #include "script_engine.h"
-#include "level.h"
+#include "Level.h"
 #include "Messages.h"
 
 u64		g_qwStartGameTime		= 12*60*60*1000;

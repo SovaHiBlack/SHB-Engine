@@ -19,7 +19,7 @@
 #include "agent_manager.h"
 #include "agent_member_manager.h"
 #include "agent_enemy_manager.h"
-#include "inventory_item.h"
+#include "InventoryItem.h"
 
 using namespace StalkerSpace;
 

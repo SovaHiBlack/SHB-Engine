@@ -10,7 +10,7 @@
 #include "Stalker.h"
 #include "ai_stalker_impl.h"
 #include "../../script_entity_action.h"
-#include "../../inventory.h"
+#include "..\..\Inventory.h"
 #include "../../ef_storage.h"
 #include "../../stalker_decision_space.h"
 #include "../../script_game_object.h"
@@ -49,7 +49,7 @@
 #include "../../stalker_planner.h"
 #include "../../stalker_decision_space.h"
 #include "../../script_game_object.h"
-#include "../../inventory.h"
+#include "..\..\Inventory.h"
 
 using namespace StalkerSpace;
 

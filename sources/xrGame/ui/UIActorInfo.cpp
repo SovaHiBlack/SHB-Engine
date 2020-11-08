@@ -3,8 +3,8 @@
 #include "UIActorInfo.h"//
 #include "UIXmlInit.h"//
 #include "UIPdaAux.h"//
-#include "../Level.h"
-#include "../actor.h"
+#include "..\Level.h"
+#include "..\Actor.h"
 
 #include "UIInventoryUtilities.h"//
 #include "UIFrameWindow.h"//

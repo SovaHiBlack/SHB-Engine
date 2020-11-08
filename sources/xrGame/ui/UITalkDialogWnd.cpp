@@ -8,7 +8,7 @@
 #include "UI.h"//
 #include "UIInventoryUtilities.h"//
 #include "../game_news.h"
-#include "../level.h"
+#include "..\Level.h"
 #include "..\Actor.h"
 #include "../alife_registry_wrappers.h"
 

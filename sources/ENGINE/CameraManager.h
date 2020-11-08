@@ -1,6 +1,6 @@
 #pragma once
 
-#include "CameraDefs.h"
+#include "Camera_defs.h"
 
 struct ENGINE_API SPPInfo {
 	struct SColor{
@@ -107,6 +107,7 @@ class ENGINE_API CCameraManager
 	bool					m_bAutoApply;
 	SPPInfo					pp_affected;
 	void					UpdateDeffered();
+
 public:
 
 #ifdef DEBUG	
@@ -136,6 +137,7 @@ public:
 							CCameraManager		(bool bApplyOnUpdate);
 							~CCameraManager		();
 };
+
 ENGINE_API extern SPPInfo					pp_identity;
 ENGINE_API extern SPPInfo					pp_zero;
 

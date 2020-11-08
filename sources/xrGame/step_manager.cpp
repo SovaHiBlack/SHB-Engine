@@ -4,7 +4,7 @@
 #include "step_manager_defs.h"
 #include "step_manager.h"
 #include "entity_alive.h"
-#include "level.h"
+#include "Level.h"
 #include "gamepersistent.h"
 #include "MaterialManager.h"
 #include "Profiler.h"

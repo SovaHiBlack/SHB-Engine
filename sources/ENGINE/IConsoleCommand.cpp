@@ -9,7 +9,7 @@
 #include "cameramanager.h"
 #include "environment.h"
 //#include "Input.h"
-#include "CustomHUD.h"
+//#include "CustomHUD.h"
 #include "SkeletonAnimated.h"
 #include "ResourceManager.h"
 //#include "Object.h"

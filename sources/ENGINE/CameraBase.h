@@ -1,11 +1,9 @@
 // CameraBase.h: interface for the CCameraBase class.
-//
-//////////////////////////////////////////////////////////////////////
+
 #pragma once
 
-#include "CameraDefs.h"
+#include "Camera_defs.h"
 
-// refs
 class CObject;
 
 class ENGINE_API	CCameraBase

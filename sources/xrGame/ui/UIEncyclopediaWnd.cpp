@@ -20,7 +20,7 @@
 #include "UIEncyclopediaArticleWnd.h"//
 #include "..\EncyclopediaArticle.h"
 #include "../alife_registry_wrappers.h"
-#include "../actor.h"
+#include "..\Actor.h"
 #include "../object_broker.h"
 #include "..\StringTable.h"
 

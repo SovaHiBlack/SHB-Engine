@@ -1,6 +1,6 @@
 #include "stdafx.h"
-#include "level.h"
+
+#include "Level.h"
 
 void	CLevel::net_Load				(const char* name)		// Game Load
-{
-}
+{ }

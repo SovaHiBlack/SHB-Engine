@@ -31,7 +31,7 @@
 #include "item_manager.h"
 #include "danger_manager.h"
 #include "memory_space.h"
-#include "actor.h"
+#include "Actor.h"
 #include "..\ENGINE\skeletonanimated.h"
 #include "..\ENGINE\CameraBase.h"
 #include "ai/stalker/Stalker.h"

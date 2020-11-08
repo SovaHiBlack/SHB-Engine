@@ -1,6 +1,6 @@
 #pragma once
 
-#include "..\ENGINE\envelope.h"
+#include "..\ENGINE\Envelope.h"
 #include "..\ENGINE\EffectorPP.h"
 #include "..\ENGINE\cameramanager.h"
 

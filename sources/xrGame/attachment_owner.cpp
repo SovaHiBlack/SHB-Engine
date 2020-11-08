@@ -11,7 +11,7 @@
 #include "attachment_owner.h"
 #include "attachable_item.h"
 #include "..\ENGINE\skeletoncustom.h"
-#include "inventory_item.h"
+#include "InventoryItem.h"
 #include "PhysicsShellHolder.h"
 
 CAttachmentOwner::~CAttachmentOwner()

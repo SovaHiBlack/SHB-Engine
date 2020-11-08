@@ -6,7 +6,7 @@
 #include "UIXmlInit.h"//
 #include "..\StringTable.h"
 
-#include "../actor.h"
+#include "..\Actor.h"
 #include "UIGameSP.h"//
 #include "../HUDManager.h"//
 
@@ -17,14 +17,14 @@
 #include "../script_process.h"
 
 //#include "../EatableItem.h"
-#include "../inventory.h"
+#include "..\Inventory.h"
 
 #include "UIInventoryUtilities.h"//
 
 using namespace InventoryUtilities;
 
 #include "..\InfoPortion.h"
-#include "../level.h"
+#include "..\Level.h"
 #include "../game_base_space.h"
 #include "../entitycondition.h"
 

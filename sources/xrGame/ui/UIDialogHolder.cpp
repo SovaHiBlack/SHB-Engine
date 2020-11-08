@@ -3,8 +3,8 @@
 #include "UIDialogHolder.h"//
 #include "UIDialogWnd.h"//
 #include "UICursor.h"//
-#include "..\level.h"
-#include "..\actor.h"
+#include "..\Level.h"
+#include "..\Actor.h"
 #include "..\xr_level_controller.h"
 #include "..\HUDManager.h"//
 

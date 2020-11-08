@@ -17,7 +17,7 @@
 #include "alife_object_registry.h"
 #include "ef_storage.h"
 #include "Server.h"
-#include "level.h"
+#include "Level.h"
 #include "GraphEngine.h"
 //#include "..\ENGINE\Application.h"
 #include "restriction_space.h"

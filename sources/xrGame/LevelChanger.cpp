@@ -10,9 +10,9 @@
 
 #include "LevelChanger.h"
 #include "hit.h"
-#include "actor.h"
+#include "Actor.h"
 #include "xrserver_objects_alife.h"
-#include "level.h"
+#include "Level.h"
 #include "ai_object_location.h"
 #include "ai_space.h"
 #include "level_graph.h"

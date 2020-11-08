@@ -6,8 +6,8 @@
 #include "MapLocation.h"
 #include "MapManager.h"
 
-#include "level.h"
-#include "actor.h"
+#include "Level.h"
+#include "Actor.h"
 #include "script_engine.h"
 #include "script_callback_ex.h"
 #include "script_game_object.h"

@@ -5,16 +5,16 @@
 #include "UIStaticItem.h"//
 #include "UIStatic.h"//
 //#include "../EatableItem.h"
-#include "../Level.h"
+#include "..\Level.h"
 #include "../HUDManager.h"//
 #include "../date_time.h"
 #include "..\StringTable.h"
-#include "../Inventory.h"
+#include "..\Inventory.h"
 #include "../InventoryOwner.h"
 
 #include "..\InfoPortion.h"
 #include "../game_base_space.h"
-#include "../actor.h"
+#include "..\Actor.h"
 
 #define EQUIPMENT_ICONS "ui\\ui_icon_equipment"
 

@@ -8,8 +8,8 @@
 #include "..\xrRender\LightTrack.h"
 #include "..\ENGINE\Object.h"
 #include "..\ENGINE\fbasicvisual.h"
-#include "..\ENGINE\CustomHUD.h"
- 
+//#include "..\ENGINE\CustomHUD.h"
+
 const	float		S_distance		= 48;
 const	float		S_distance2		= S_distance*S_distance;
 const	float		S_ideal_size	= 4.f;		// ideal size for the object

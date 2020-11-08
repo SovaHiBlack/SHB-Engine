@@ -232,8 +232,6 @@ typedef IRenderableWrapper<IRenderable,luabind::wrap_base> CIRenderableWrapper;
 //	virtual void			net_Import			(NET_Packet& P);
 //	virtual	void			net_ImportInput		(NET_Packet& P);
 //	virtual BOOL			net_Relevant		();
-//	virtual void			net_MigrateInactive	(NET_Packet& P);
-//	virtual void			net_MigrateActive	(NET_Packet& P);
 //	virtual void			net_Relcase			(CObject* O);
 //	virtual	SavedPosition	ps_Element			(u32 ID) const;
 //	virtual void			ForceTransform		(const Fmatrix& m);

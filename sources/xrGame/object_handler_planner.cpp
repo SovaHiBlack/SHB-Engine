@@ -14,7 +14,7 @@
 #include "ai_monster_space.h"
 #include "object_handler_space.h"
 #include "ai/stalker/Stalker.h"
-#include "inventory.h"
+#include "Inventory.h"
 #include "object_handler_planner_impl.h"
 #include "WeaponMagazined.h"
 #include "Missile.h"

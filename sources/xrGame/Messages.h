@@ -12,11 +12,6 @@ enum
 	M_SV_CONFIG_GAME,
 	M_SV_CONFIG_FINISHED,
 
-	M_MIGRATE_DEACTIVATE,			// TO:   Changing server, just deactivate
-	M_MIGRATE_ACTIVATE,				// TO:   Changing server, full state
-
-	M_CHAT,							// DUAL:
-
 	M_EVENT,						// Game Event
 	M_CL_INPUT,						// Client Input Data
 	//----------- for E3 -----------------------------
@@ -36,17 +31,12 @@ enum
 	M_EVENT_PACK,					// Pack of M_EVENT
 
 	//-----------------------------------------------------
-//	M_GAMESPY_CDKEY_VALIDATION_CHALLENGE,
-//	M_GAMESPY_CDKEY_VALIDATION_CHALLENGE_RESPOND,
 	M_CLIENT_CONNECT_RESULT,
 	M_CLIENT_REQUEST_CONNECTION_DATA,
 
 	M_CHAT_MESSAGE,
 	M_CLIENT_WARN,
 	M_CHANGE_LEVEL_GAME,
-//-----------------------------------------------------
-//	M_CL_PING_CHALLENGE,
-//	M_CL_PING_CHALLENGE_RESPOND,
 	//-----------------------------------------------------
 	M_AUTH_CHALLENGE,
 	M_CL_AUTH,
@@ -63,7 +53,6 @@ enum
 	M_CHANGE_SELF_NAME,
 	M_REMOTE_CONTROL_AUTH,
 	M_REMOTE_CONTROL_CMD,
-//	M_MAP_SYNC,
 
 	MSG_FORCEDWORD = u32(-1)
 };
@@ -72,7 +61,7 @@ enum
 {
 	GE_RESPAWN,
 	GE_OWNERSHIP_TAKE,			// DUAL: Client request for ownership of an item
-	GE_OWNERSHIP_TAKE_MP_FORCED,
+//	GE_OWNERSHIP_TAKE_MP_FORCED,
 	GE_OWNERSHIP_REJECT,		// DUAL: Client request ownership rejection
 	GE_TRANSFER_AMMO,			// DUAL: Take ammo out of weapon for our weapon
 	GE_HIT,						//

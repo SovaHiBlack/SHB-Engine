@@ -5,8 +5,10 @@
 #include "xrserver_objects_alife_items.h"
 #include "ExplosiveRocket.h"
 #include "entity.h"
-#include "level.h"
+#include "Level.h"
 #include "..\ENGINE\skeletoncustom.h"
+#include "Inventory.h"
+#include "inventoryOwner.h"
 
 CWeaponRPG7::CWeaponRPG7( ) : CWeaponCustomPistol("RPG7")
 { }
@@ -27,7 +29,6 @@ void CWeaponRPG7::Load	(const char* section)
 	m_sRocketSection		= pSettings->r_string	(section,"rocket_class");
 }
 
-
 void CWeaponRPG7::UpdateMissileVisibility()
 {
 	bool vis_hud,vis_weap;
@@ -45,7 +46,6 @@ void CWeaponRPG7::UpdateMissileVisibility()
 	pWeaponVisual->CalculateBones_Invalidate();
 	pWeaponVisual->CalculateBones();
 }
-
 
 BOOL CWeaponRPG7::net_Spawn(CSE_Abstract* DC) 
 {
@@ -81,6 +81,7 @@ void CWeaponRPG7::ReloadMagazine()
 		CRocketLauncher::SpawnRocket(*m_sRocketSection, this);
 	}
 }
+
 void CWeaponRPG7::SwitchState(u32 S) 
 {
 	inherited::SwitchState(S);
@@ -91,8 +92,6 @@ void CWeaponRPG7::FireStart()
 	inherited::FireStart();
 }
 
-#include "inventory.h"
-#include "inventoryOwner.h"
 void CWeaponRPG7::switch2_Fire	()
 {
 	m_iShotNum = 0;

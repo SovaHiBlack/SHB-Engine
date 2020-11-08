@@ -7,6 +7,7 @@
 ////////////////////////////////////////////////////////////////////////////
 
 #include "stdafx.h"
+
 #include "alife_storage_manager.h"
 #include "alife_simulator_header.h"
 #include "alife_time_manager.h"
@@ -16,7 +17,7 @@
 #include "alife_group_registry.h"
 #include "alife_registry_container.h"
 #include "Server.h"
-#include "level.h"
+#include "Level.h"
 //#include "..\ENGINE\Application.h"
 #include "saved_game_wrapper.h"
 #include "StringTable.h"

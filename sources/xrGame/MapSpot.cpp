@@ -5,7 +5,7 @@
 
 #include "ui/UIXmlInit.h"//
 #include "ui/UIMapWnd.h"//
-#include "level.h"
+#include "Level.h"
 //#include "..\ENGINE\Object.h"
 #include "object_broker.h"
 #include "ui/UITextureMaster.h"//

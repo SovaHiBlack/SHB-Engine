@@ -4584,12 +4584,6 @@
     <ClInclude Include="eatable_item_object.h">
       <Filter>Core\Client\Objects\inventory\EatableItemObject</Filter>
     </ClInclude>
-    <ClInclude Include="inventory_item.h">
-      <Filter>Core\Client\Objects\inventory\InventoryItem</Filter>
-    </ClInclude>
-    <ClInclude Include="inventory_item_impl.h">
-      <Filter>Core\Client\Objects\inventory\InventoryItem</Filter>
-    </ClInclude>
     <ClInclude Include="inventory_item_inline.h">
       <Filter>Core\Client\Objects\inventory\InventoryItem</Filter>
     </ClInclude>
@@ -5967,6 +5961,12 @@
     <ClInclude Include="ui\UILine_std.h">
       <Filter>UI\UIWindows\Lines</Filter>
     </ClInclude>
+    <ClInclude Include="InventoryItem.h">
+      <Filter>Core\Client\Objects\inventory\InventoryItem</Filter>
+    </ClInclude>
+    <ClInclude Include="InventoryItem_impl.h">
+      <Filter>Core\Client\Objects\inventory\InventoryItem</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="action_base_script.cpp">
@@ -7301,9 +7301,6 @@
     <ClCompile Include="eatable_item_object.cpp">
       <Filter>Core\Client\Objects\inventory\EatableItemObject</Filter>
     </ClCompile>
-    <ClCompile Include="inventory_item.cpp">
-      <Filter>Core\Client\Objects\inventory\InventoryItem</Filter>
-    </ClCompile>
     <ClCompile Include="inventory_item_object.cpp">
       <Filter>Core\Client\Objects\inventory\InventoryItemObject</Filter>
     </ClCompile>
@@ -8594,9 +8591,6 @@
     <ClCompile Include="Server_perform_GameExport.cpp">
       <Filter>Core\Server\ServerPerform</Filter>
     </ClCompile>
-    <ClCompile Include="Server_perform_migration.cpp">
-      <Filter>Core\Server\ServerPerform</Filter>
-    </ClCompile>
     <ClCompile Include="Server_perform_RPgen.cpp">
       <Filter>Core\Server\ServerPerform</Filter>
     </ClCompile>
@@ -8629,6 +8623,9 @@
     </ClCompile>
     <ClCompile Include="ui\UIMessageBox_script.cpp">
       <Filter>UI\UIWindows\MessageBox</Filter>
+    </ClCompile>
+    <ClCompile Include="InventoryItem.cpp">
+      <Filter>Core\Client\Objects\inventory\InventoryItem</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

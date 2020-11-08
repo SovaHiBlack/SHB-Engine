@@ -8,7 +8,7 @@
 #include "Weapon.h"
 #include "..\ENGINE\Motion.h"
 #include "..\ENGINE\skeletonanimated.h"
-#include "level.h"
+#include "Level.h"
 #include "MathUtils.h"
 
 weapon_hud_container* g_pWeaponHUDContainer=0;

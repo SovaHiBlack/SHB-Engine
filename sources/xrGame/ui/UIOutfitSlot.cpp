@@ -6,6 +6,8 @@
 #include "../CustomOutfit.h"
 #include "..\Actor.h"
 #include "UIInventoryUtilities.h"//
+#include "..\Level.h"
+#include "../game_base_space.h"
 
 CUIOutfitDragDropList::CUIOutfitDragDropList()
 {
@@ -18,9 +20,6 @@ CUIOutfitDragDropList::CUIOutfitDragDropList()
 CUIOutfitDragDropList::~CUIOutfitDragDropList()
 {
 }
-
-#include "../level.h"
-#include "../game_base_space.h"
 
 void CUIOutfitDragDropList::SetOutfit(CUICellItem* itm)
 {

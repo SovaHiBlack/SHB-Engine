@@ -3,14 +3,17 @@
 #include "Server.h"
 #include "xrServer_Objects.h"
 
-int	g_Dump_Update_Read = 0;
+int g_Dump_Update_Read = 0;
 
 void CServer::Process_update(NET_Packet& P, ClientID sender)
 {
 	xrClientData* CL		= ID_to_client(sender);
 	R_ASSERT2				(CL,"Process_update client not found");
 
-	if (g_Dump_Update_Read) Msg("---- UPDATE_Read --- ");
+	if (g_Dump_Update_Read)
+	{
+		Msg("---- UPDATE_Read --- ");
+	}
 
 	R_ASSERT(CL->flags.bLocal);
 	// while has information
@@ -25,24 +28,34 @@ void CServer::Process_update(NET_Packet& P, ClientID sender)
 		u32	_pos		= P.r_tell();
 		CSE_Abstract	*E	= ID_to_entity(ID);
 		
-		if (E) {
+		if (E)
+		{
 			//Msg				("sv_import: %d '%s'",E->ID,E->name_replace());
 			E->net_Ready	= TRUE;
 			E->UPDATE_Read	(P);
 
-			if (g_Dump_Update_Read) Msg("* %s : %d - %d", E->name(), size, P.r_tell() - _pos);
+			if (g_Dump_Update_Read)
+			{
+				Msg("* %s : %d - %d", E->name( ), size, P.r_tell( ) - _pos);
+			}
 
-			if ((P.r_tell()-_pos) != size)	{
+			if ((P.r_tell()-_pos) != size)
+			{
 				string16	tmp;
 				CLSID2TEXT	(E->m_tClassID,tmp);
 				Debug.fatal	(DEBUG_INFO,"Beer from the creator of '%s'",tmp);
 			}
 		}
 		else
-			P.r_advance	(size);
+		{
+			P.r_advance(size);
+		}
 	}
-	if (g_Dump_Update_Read) Msg("-------------------- ");
 
+	if (g_Dump_Update_Read)
+	{
+		Msg("-------------------- ");
+	}
 }
 
 void CServer::Process_save(NET_Packet& P, ClientID sender)
@@ -54,8 +67,7 @@ void CServer::Process_save(NET_Packet& P, ClientID sender)
 	R_ASSERT(CL->flags.bLocal);
 	// while has information
 	while (!P.r_eof())
-	{
-		// find entity
+	{	// find entity
 		u16				ID;
 		u16				size;
 
@@ -64,15 +76,20 @@ void CServer::Process_save(NET_Packet& P, ClientID sender)
 		int				_pos_start	= P.r_tell	();
 		CSE_Abstract	*E	= ID_to_entity(ID);
 
-		if (E) {
+		if (E)
+		{
 			E->net_Ready = TRUE;
 			E->load		(P);
 		}
 		else
-			P.r_advance	(size);
+		{
+			P.r_advance(size);
+		}
+
 		int				_pos_end	= P.r_tell	();
 		int				_size		= size;
-		if				(_size != (_pos_end-_pos_start))	{
+		if				(_size != (_pos_end-_pos_start))
+		{
 			Msg			("! load/save mismatch, object: '%s'",E?E->name_replace():"unknown");
 			int			_rollback	= _pos_start+_size;
 			P.r_seek	(_rollback);

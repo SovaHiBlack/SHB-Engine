@@ -6,7 +6,7 @@
 #include "ExtendedGeom.h"
 #include "PHCapture.h"
 #include "Entity.h"
-#include "inventory_item.h"
+//#include "InventoryItem.h"
 #include "..\ENGINE\skeletoncustom.h"
 #include "Actor.h"
 #include "Inventory.h"

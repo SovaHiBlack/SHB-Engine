@@ -9,9 +9,9 @@
 
 #include "stalker_alife_actions.h"
 #include "ai/stalker/Stalker.h"
-#include "inventory_item.h"
+//#include "InventoryItem.h"
 #include "script_game_object.h"
-#include "inventory.h"
+#include "Inventory.h"
 #include "WeaponMagazined.h"
 #include "movement_manager_space.h"
 #include "detail_path_manager_space.h"

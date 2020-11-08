@@ -16,10 +16,10 @@
 
 // client entities includes
 #include "..\ENGINE\std_classes.h"
-#include "level.h"
+#include "Level.h"
 #include "gamepersistent.h"
 #include "HUDManager.h"//
-#include "actor.h"
+#include "Actor.h"
 #include "Spectator.h"
 
 #include "ai/monsters/flesh/flesh.h"

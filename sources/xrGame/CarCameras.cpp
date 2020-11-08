@@ -10,10 +10,10 @@
 #include "hit.h"
 #include "PHDestroyable.h"
 #include "Car.h"
-#include "actor.h"
+#include "Actor.h"
 #include "CameraLook.h"
 #include "camerafirsteye.h"
-#include "level.h"
+#include "Level.h"
 #include "..\ENGINE\cameramanager.h"
 
 bool CCar::HUDView() const		

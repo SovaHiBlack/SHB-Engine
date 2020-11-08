@@ -9,13 +9,13 @@
 #include "ParticlesObject.h"
 #include "PhysicsShell.h"
 #include "ExtendedGeom.h"
-#include "level.h"
+#include "Level.h"
 #include "Messages.h"
 #include "gamemtllib.h"
 #include "tri-colliderknoopc/dTriList.h"
 #include "..\ENGINE\fbasicvisual.h"
 #include "CalculateTriangle.h"
-#include "actor.h"
+#include "Actor.h"
 
 #ifdef DEBUG
 #	include "PHDebug.h"

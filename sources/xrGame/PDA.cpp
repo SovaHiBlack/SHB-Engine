@@ -4,11 +4,11 @@
 #include "HUDManager.h"//
 #include "PhysicsShell.h"
 #include "Entity.h"
-#include "actor.h"
+#include "Actor.h"
 
 #include "Server.h"
 #include "xrServer_Objects_ALife_Items.h"
-#include "level.h"
+#include "Level.h"
 
 //#include "SpecificCharacter.h"
 #include "alife_registry_wrappers.h"

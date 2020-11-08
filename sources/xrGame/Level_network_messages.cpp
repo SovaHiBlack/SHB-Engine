@@ -2,7 +2,7 @@
 
 #include "entity.h"
 #include "xrserver_objects.h"
-#include "level.h"
+#include "Level.h"
 #include "Messages.h"
 #include "game_cl_base.h"
 #include "net_queue.h"
@@ -15,16 +15,16 @@
 #include "level_graph.h"
 #include "clsid_game.h"
 
-void CLevel::ClientReceive()
+void CLevel::ClientReceive( )
 {
-	Demo_StartFrame();
+	Demo_StartFrame			( );
 
-	Demo_Update();
+	Demo_Update				( );
 
-	m_dwRPC = 0;
-	m_dwRPS = 0;
+	m_dwRPC					= 0;
+	m_dwRPS					= 0;
 
-	for (NET_Packet* P = net_msg_Retreive(); P; P=net_msg_Retreive())
+	for (NET_Packet* P = net_msg_Retreive( ); P; P = net_msg_Retreive( ))
 	{
 		//-----------------------------------------------------
 		m_dwRPC++;
@@ -32,220 +32,266 @@ void CLevel::ClientReceive()
 		//-----------------------------------------------------
 		u16			m_type;
 		u16			ID;
-		P->r_begin	(m_type);
+		P->r_begin(m_type);
 		switch (m_type)
 		{
-		case M_SPAWN:			
+			case M_SPAWN:
 			{
-				if (!m_bGameConfigStarted || !bReady) 
+				if (!m_bGameConfigStarted || !bReady)
 				{
-					Msg ("Unconventional M_SPAWN received : cgf[%s] | bReady[%s]",
-						(m_bGameConfigStarted) ? "true" : "false",
-						(bReady) ? "true" : "false");
+					Msg("Unconventional M_SPAWN received : cgf[%s] | bReady[%s]", (m_bGameConfigStarted) ? "true" : "false", (bReady) ? "true" : "false");
 					break;
 				}
-				/*/
-				cl_Process_Spawn(*P);
-				/*/
-				game_events->insert		(*P);
-				if (g_bDebugEvents)		ProcessGameEvents();
-				//*/
+
+				game_events->insert(*P);
+				if (g_bDebugEvents)
+				{
+					ProcessGameEvents( );
+				}
 			}
 			break;
-		case M_EVENT:
-			game_events->insert		(*P);
-			if (g_bDebugEvents)		ProcessGameEvents();
-			break;
-		case M_EVENT_PACK:
-			NET_Packet	tmpP;
-			while (!P->r_eof())
+			case M_EVENT:
 			{
-				tmpP.B.count = P->r_u8();
-				P->r(&tmpP.B.data, tmpP.B.count);
-				tmpP.timeReceive = P->timeReceive;
+				game_events->insert(*P);
+				if (g_bDebugEvents)
+				{
+					ProcessGameEvents( );
+				}
+			}
+			break;
+			case M_EVENT_PACK:
+			{
+				NET_Packet	tmpP;
+				while (!P->r_eof( ))
+				{
+					tmpP.B.count = P->r_u8( );
+					P->r(&tmpP.B.data, tmpP.B.count);
+					tmpP.timeReceive = P->timeReceive;
 
-				game_events->insert		(tmpP);
-				if (g_bDebugEvents)		ProcessGameEvents();
-			};			
+					game_events->insert(tmpP);
+					if (g_bDebugEvents)
+					{
+						ProcessGameEvents( );
+					}
+				};
+			}
 			break;
-		case M_UPDATE:
+			case M_UPDATE:
 			{
-				game->net_import_update	(*P);
+				game->net_import_update(*P);
 				//-------------------------------------------
-				if (OnServer()) break;
+				if (OnServer( ))
+				{
+					break;
+				}
 				//-------------------------------------------
-			};	// ни в коем случае нельзя здесь ставить break, т.к. в случае если все объекты не влазят в пакет M_UPDATE,
-				// они досылаются через M_UPDATE_OBJECTS
-		case M_UPDATE_OBJECTS:
+			};
+			// ни в коем случае нельзя здесь ставить break, т.к. в случае если все объекты не влазят в пакет M_UPDATE, они досылаются через M_UPDATE_OBJECTS
+			case M_UPDATE_OBJECTS:
 			{
-			FATAL(""); //Это не должно быть вызвано
-			}break;
+				FATAL(""); //Это не должно быть вызвано
+			}
+			break;
 		//----------- for E3 -----------------------------
-		case M_CL_UPDATE:
+			case M_CL_UPDATE:
 			{
-				if (OnClient()) break;
-				P->r_u16		(ID);
-				u32 Ping = P->r_u32();
-				CGameObject*	O	= smart_cast<CGameObject*>(Objects.net_Find		(ID));
-				if (0 == O)		break;
+				if (OnClient( ))
+				{
+					break;
+				}
+
+				P->r_u16(ID);
+				u32 Ping = P->r_u32( );
+				CGameObject* O = smart_cast<CGameObject*>(Objects.net_Find(ID));
+				if (0 == O)
+				{
+					break;
+				}
+
 				O->net_Import(*P);
-		//---------------------------------------------------
-				UpdateDeltaUpd(timeServer());
-				if (pObjects4CrPr.empty() && pActors4CrPr.empty())
+				//---------------------------------------------------
+				UpdateDeltaUpd(timeServer( ));
+				if (pObjects4CrPr.empty( ) && pActors4CrPr.empty( ))
+				{
 					break;
+				}
+
 				if (O->CLS_ID != CLSID_OBJECT_ACTOR)
+				{
 					break;
+				}
 
 				u32 dTime = 0;
-				if ((Level().timeServer() + Ping) < P->timeReceive)
+				if ((Level( ).timeServer( ) + Ping) < P->timeReceive)
 				{
+
 #ifdef DEBUG
 //					Msg("! TimeServer[%d] < TimeReceive[%d]", Level().timeServer(), P->timeReceive);
-#endif
+#endif // def DEBUG
+
 					dTime = Ping;
 				}
-				else					
-					dTime = Level().timeServer() - P->timeReceive + Ping;
+				else
+				{
+					dTime = Level( ).timeServer( ) - P->timeReceive + Ping;
+				}
+
 				u32 NumSteps = ph_world->CalcNumSteps(dTime);
 				SetNumCrSteps(NumSteps);
 
 				O->CrPr_SetActivationStep(u32(ph_world->m_steps_num) - NumSteps);
 				AddActor_To_Actors4CrPr(O);
-
-			}break;
-		case M_MOVE_PLAYERS:
+			}
+			break;
+			case M_MOVE_PLAYERS:
 			{
-				u8 Count = P->r_u8();
-				for (u8 i=0; i<Count; i++)
+				u8 Count = P->r_u8( );
+				for (u8 i = 0; i < Count; i++)
 				{
-					u16 ID = P->r_u16();					
+					u16 ID = P->r_u16( );
 					Fvector NewPos, NewDir;
 					P->r_vec3(NewPos);
 					P->r_vec3(NewDir);
 
-					CActor*	OActor	= smart_cast<CActor*>(Objects.net_Find		(ID));
-					if (0 == OActor)		break;
+					CActor* OActor = smart_cast<CActor*>(Objects.net_Find(ID));
+					if (0 == OActor)
+					{
+						break;
+					}
+
 					OActor->MoveActor(NewPos, NewDir);
 				};
 
 				NET_Packet PRespond;
 				PRespond.w_begin(M_MOVE_PLAYERS_RESPOND);
 				Send(PRespond, net_flags(TRUE, TRUE));
-			}break;
-		//------------------------------------------------
-		case M_CL_INPUT:
+			}
+			break;
+			//------------------------------------------------
+			case M_CL_INPUT:
 			{
-				P->r_u16		(ID);
-				CObject*	O	= Objects.net_Find		(ID);
-				if (0 == O)		break;
+				P->r_u16(ID);
+				CObject* O = Objects.net_Find(ID);
+				if (0 == O)
+				{
+					break;
+				}
+
 				O->net_ImportInput(*P);
-			}break;
-		//---------------------------------------------------
-		case 	M_SV_CONFIG_NEW_CLIENT:
-			InitializeClientGame(*P);
-			break;
-		case M_SV_CONFIG_GAME:
-			game->net_import_state	(*P);
-			break;
-		case M_SV_CONFIG_FINISHED:
-			game_configured			= TRUE;
-			Msg("- Game configuring : Finished ");
-			break;		
-		case M_MIGRATE_DEACTIVATE:	// TO:   Changing server, just deactivate
-			{
-				P->r_u16		(ID);
-				CObject*	O	= Objects.net_Find		(ID);
-				if (0 == O)		break;
-				O->net_MigrateInactive	(*P);
-				if (bDebug)		Log("! MIGRATE_DEACTIVATE",*O->cName());
 			}
 			break;
-		case M_MIGRATE_ACTIVATE:	// TO:   Changing server, full state
+			//---------------------------------------------------
+			case M_SV_CONFIG_NEW_CLIENT:
 			{
-				P->r_u16		(ID);
-				CObject*	O	= Objects.net_Find		(ID);
-				if (0 == O)		break;
-				O->net_MigrateActive	(*P);
-				if (bDebug)		Log("! MIGRATE_ACTIVATE",*O->cName());
+				InitializeClientGame(*P);
 			}
 			break;
-		case M_CHAT:
+			case M_SV_CONFIG_GAME:
 			{
-				char	buffer[256];
-				P->r_stringZ(buffer);
-				Msg		("- %s",buffer);
+				game->net_import_state(*P);
 			}
 			break;
-		case M_GAMEMESSAGE:
+			case M_SV_CONFIG_FINISHED:
 			{
-				if (!game) break;
-				Game().OnGameMessage(*P);
-			}break;
-		case M_RELOAD_GAME:
-		case M_LOAD_GAME:
-		case M_CHANGE_LEVEL:
+				game_configured = TRUE;
+				Msg("- Game configuring : Finished ");
+			}
+			break;
+			case M_GAMEMESSAGE:
 			{
-				if(m_type==M_LOAD_GAME)
+				if (!game)
+				{
+					break;
+				}
+
+				Game( ).OnGameMessage(*P);
+			}
+			break;
+			case M_RELOAD_GAME:
+			case M_LOAD_GAME:
+			case M_CHANGE_LEVEL:
+			{
+				if (m_type == M_LOAD_GAME)
 				{
 					string256						saved_name;
-					P->r_stringZ					(saved_name);
-					if(xr_strlen(saved_name) && ai().get_alife())
+					P->r_stringZ(saved_name);
+					if (xr_strlen(saved_name) && ai( ).get_alife( ))
 					{
 						CSavedGameWrapper			wrapper(saved_name);
-						if (wrapper.level_id() == ai().level_graph().level_id()) 
+						if (wrapper.level_id( ) == ai( ).level_graph( ).level_id( ))
 						{
-							Engine.Event.Defer	("Game:QuickLoad", size_t(xr_strdup(saved_name)), 0);
-
+							Engine.Event.Defer("Game:QuickLoad", size_t(xr_strdup(saved_name)), 0);
 							break;
 						}
 					}
 				}
-				Engine.Event.Defer	("KERNEL:disconnect");
-				Engine.Event.Defer	("KERNEL:start",size_t(xr_strdup(*m_caServerOptions)),size_t(xr_strdup(*m_caClientOptions)));
-			}break;
-		case M_SAVE_GAME:
+
+				Engine.Event.Defer("KERNEL:disconnect");
+				Engine.Event.Defer("KERNEL:start", size_t(xr_strdup(*m_caServerOptions)), size_t(xr_strdup(*m_caClientOptions)));
+			}
+			break;
+			case M_SAVE_GAME:
 			{
-				ClientSave			();
-			}break;
-		case M_AUTH_CHALLENGE:
+				ClientSave( );
+			}
+			break;
+			case M_AUTH_CHALLENGE:
 			{
-				OnBuildVersionChallenge();
-			}break;
-		case M_CLIENT_CONNECT_RESULT:
+				OnBuildVersionChallenge( );
+			}
+			break;
+			case M_CLIENT_CONNECT_RESULT:
 			{
 				OnConnectResult(P);
-			}break;
-		case M_CHAT_MESSAGE:
+			}
+			break;
+			case M_CHAT_MESSAGE:
 			{
-				if (!game) break;
-				Game().OnChatMessage(P);
-			}break;
-		case M_CLIENT_WARN:
+				if (!game)
+				{
+					break;
+				}
+
+				Game( ).OnChatMessage(P);
+			}
+			break;
+			case M_CLIENT_WARN:
 			{
-				if (!game) break;
-				Game().OnWarnMessage(P);
-			}break;
-		case M_REMOTE_CONTROL_AUTH:
-		case M_REMOTE_CONTROL_CMD:
+				if (!game)
+				{
+					break;
+				}
+
+				Game( ).OnWarnMessage(P);
+			}
+			break;
+			case M_REMOTE_CONTROL_AUTH:
+			case M_REMOTE_CONTROL_CMD:
 			{
-				Game().OnRadminMessage(m_type, P);
-			}break;
-		case M_CHANGE_LEVEL_GAME:
+				Game( ).OnRadminMessage(m_type, P);
+			}
+			break;
+			case M_CHANGE_LEVEL_GAME:
 			{
 				Msg("- M_CHANGE_LEVEL_GAME Received");
 
-				if (OnClient())
+				if (OnClient( ))
 				{
-					Engine.Event.Defer	("KERNEL:disconnect");
-					Engine.Event.Defer	("KERNEL:start",m_caServerOptions.size() ? size_t( xr_strdup(*m_caServerOptions)) : 0,m_caClientOptions.size() ? size_t(xr_strdup(*m_caClientOptions)) : 0);
+					Engine.Event.Defer("KERNEL:disconnect");
+					Engine.Event.Defer("KERNEL:start", m_caServerOptions.size( ) ? size_t(xr_strdup(*m_caServerOptions)) : 0, m_caClientOptions.size( ) ? size_t(xr_strdup(*m_caClientOptions)) : 0);
 				}
 				else
 				{
-					const char* m_SO = m_caServerOptions.c_str();
+					const char* m_SO = m_caServerOptions.c_str( );
 //					const char* m_CO = m_caClientOptions.c_str();
 
-					m_SO = strchr(m_SO, '/'); if (m_SO) m_SO++;
-					m_SO = strchr(m_SO, '/'); 
+					m_SO = strchr(m_SO, '/');
+					if (m_SO)
+					{
+						m_SO++;
+					}
+
+					m_SO = strchr(m_SO, '/');
 
 					string128 LevelName = "";
 					string128 GameType = "";
@@ -256,25 +302,31 @@ void CLevel::ClientReceive()
 					string4096 NewServerOptions = "";
 					sprintf_s(NewServerOptions, "%s/%s", LevelName, GameType);
 
-					if (m_SO) strcat(NewServerOptions, m_SO);
+					if (m_SO)
+					{
+						strcat(NewServerOptions, m_SO);
+					}
+
 					m_caServerOptions = NewServerOptions;
 
-					Engine.Event.Defer	("KERNEL:disconnect");
-					Engine.Event.Defer	("KERNEL:start",size_t(xr_strdup(*m_caServerOptions)),size_t(xr_strdup(*m_caClientOptions)));
-				};
-			}break;
-		case M_CHANGE_SELF_NAME:
+					Engine.Event.Defer("KERNEL:disconnect");
+					Engine.Event.Defer("KERNEL:start", size_t(xr_strdup(*m_caServerOptions)), size_t(xr_strdup(*m_caClientOptions)));
+				}
+			}
+			break;
+			case M_CHANGE_SELF_NAME:
 			{
 				net_OnChangeSelfName(P);
-			}break;
-		default:
+			}
+			break;
+			default:
+			{
+			}
 			break;
 		}
 
-		net_msg_Release();
-	}	
-
-//	if (!g_bDebugEvents) ProcessGameSpawns();
+		net_msg_Release( );
+	}
 }
 
 void				CLevel::OnMessage				(void* data, u32 size)

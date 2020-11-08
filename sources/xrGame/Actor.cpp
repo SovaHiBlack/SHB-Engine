@@ -38,7 +38,7 @@
 #include "ai_sounds.h"
 #include "ai_space.h"
 #include "Trade.h"
-#include "inventory.h"
+#include "Inventory.h"
 #include "Physics.h"
 #include "Level.h"
 #include "GamePersistent.h"

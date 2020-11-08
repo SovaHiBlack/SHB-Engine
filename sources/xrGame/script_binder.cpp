@@ -14,7 +14,7 @@
 #include "script_binder_object.h"
 #include "script_game_object.h"
 #include "GameObject.h"
-#include "level.h"
+#include "Level.h"
 
 CScriptBinder::CScriptBinder		()
 {

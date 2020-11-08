@@ -2,7 +2,7 @@
 
 #include "ParticlesObject.h"
 #include "gamemtllib.h"
-#include "level.h"
+#include "Level.h"
 #include "gamepersistent.h"
 #include "Extendedgeom.h"
 #include "PhysicsGamePars.h"

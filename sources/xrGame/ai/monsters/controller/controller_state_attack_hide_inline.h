@@ -6,7 +6,6 @@
 #include "..\..\..\Level.h"
 #include "../../../level_debug.h"
 
-
 #define TEMPLATE_SPECIALIZATION template <\
 	typename _Object\
 >

@@ -12,7 +12,7 @@
 #include "../Pda.h"
 #include "..\WeaponHUD.h"
 #include "../character_info.h"
-#include "../inventory.h"
+#include "..\Inventory.h"
 #include "UIGameSP.h"//
 #include "..\WeaponMagazined.h"
 #include "..\Missile.h"
@@ -21,7 +21,7 @@
 #include "../alife_simulator.h"
 #include "../alife_object_registry.h"
 #include "../game_cl_base.h"
-#include "../level.h"
+#include "..\Level.h"
 #include "../seniority_hierarchy_holder.h"
 
 #include "../date_time.h"

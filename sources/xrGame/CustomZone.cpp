@@ -4,12 +4,12 @@
 #include "CustomZone.h"
 #include "hit.h"
 #include "PHDestroyable.h"
-#include "actor.h"
+#include "Actor.h"
 #include "HUDManager.h"//
 #include "ParticlesObject.h"
 #include "xrserver_objects_alife_monsters.h"
 #include "..\ENGINE\LightAnimLibrary.h"
-#include "level.h"
+#include "Level.h"
 #include "game_cl_base.h"
 #include "..\ENGINE\IGamePersistent.h"//==>
 #include "Artefact.h"

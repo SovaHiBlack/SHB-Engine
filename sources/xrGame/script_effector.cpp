@@ -7,8 +7,9 @@
 ////////////////////////////////////////////////////////////////////////////
 
 #include "stdafx.h"
+
 #include "script_effector.h"
-#include "actor.h"
+#include "Actor.h"
 #include "..\ENGINE\cameramanager.h"
 
 CScriptEffector::~CScriptEffector	()

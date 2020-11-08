@@ -169,7 +169,5 @@ void game_sv_GameState::script_register(lua_State *L)
 //			value("GAME_EVENT_SKIN_MENU_CLOSED",				int(GAME_EVENT_SKIN_MENU_CLOSED)),
 			value("GAME_EVENT_SCRIPT_BEGINS_FROM",				int(GAME_EVENT_SCRIPT_BEGINS_FROM))
 		]
-
-	
 	];
 }

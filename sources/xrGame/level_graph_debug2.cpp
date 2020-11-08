@@ -9,7 +9,7 @@
 
 #ifdef DEBUG
 #include "level_graph.h"
-#include "..\ENGINE\customhud.h"
+//#include "..\ENGINE\CustomHUD.h"
 #include "ai_space.h"
 #include "HUDManager.h"//
 #include "game_graph.h"
@@ -33,7 +33,7 @@
 #include "memory_manager.h"
 #include "enemy_manager.h"
 #include "memory_space.h"
-#include "level.h"
+#include "Level.h"
 #include "ai_object_location.h"
 #include "movement_manager.h"
 #include "GraphEngine.h"

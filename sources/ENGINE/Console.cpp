@@ -1,22 +1,20 @@
 // Console.cpp: implementation of the CConsole class.
-//
-//////////////////////////////////////////////////////////////////////
 
 #include "stdafx.h"
 
 #include "IGameLevel.h"
-#include "IGamePersistent.h"//==>
+#include "IGamePersistent.h"
 //#include "Application.h"
 #include "Console.h"
 #include "IConsoleCommand.h"
 #include "Input.h"
 #include "GameFont.h"
-#include "CustomHUD.h"
+//#include "CustomHUD.h"
 
 #define LDIST 0.05f
 
 ENGINE_API CConsole* Console = nullptr;
-const char* ioc_prompt = "| ";
+const char* ioc_prompt = ">>> ";
 
 void CConsole::AddCommand(IConsoleCommand* C)
 {
@@ -31,6 +29,7 @@ void CConsole::RemoveCommand(IConsoleCommand* C)
 		Commands.erase(it);
 	}
 }
+
 void CConsole::Reset( )
 {
 	if (pFont)
@@ -52,7 +51,7 @@ void CConsole::Initialize( )
 	rep_time = 0;
 	pFont = 0;
 	last_mm_timer = 0;
-	// Commands
+	//Commands
 	extern void CCC_Register( );
 	CCC_Register( );
 }
@@ -150,7 +149,7 @@ void CConsole::OnRender( )
 
 	VERIFY(HW.pDevice);
 
-	//*** Shadow
+	//Shadow
 	D3DRECT R = { 0, 0, Device.dwWidth, Device.dwHeight };
 	if (bGame)
 	{
@@ -160,7 +159,6 @@ void CConsole::OnRender( )
 	CHK_DX(HW.pDevice->Clear(1, &R, D3DCLEAR_TARGET, D3DCOLOR_XRGB(32, 32, 32), 1, 0));
 
 	float dwMaxY = float(Device.dwHeight);
-	// float dwMaxX=float(Device.dwWidth/2);
 	if (bGame)
 	{
 		fMaxY = 0.0f;
@@ -201,28 +199,40 @@ void CConsole::OnRender( )
 		switch (ls[0])
 		{
 			case '~':
+			{
 				pFont->SetColor(color_rgba(255, 255, 0, 255));
 				out_font(pFont, &ls[2], ypos);
-				break;
+			}
+			break;
 			case '!':
+			{
 				pFont->SetColor(color_rgba(255, 0, 0, 255));
 				out_font(pFont, &ls[2], ypos);
-				break;
+			}
+			break;
 			case '*':
+			{
 				pFont->SetColor(color_rgba(128, 128, 128, 255));
 				out_font(pFont, &ls[2], ypos);
-				break;
+			}
+			break;
 			case '-':
+			{
 				pFont->SetColor(color_rgba(0, 255, 0, 255));
 				out_font(pFont, &ls[2], ypos);
-				break;
+			}
+			break;
 			case '#':
+			{
 				pFont->SetColor(color_rgba(0, 222, 205, 145));
 				out_font(pFont, &ls[2], ypos);
-				break;
+			}
+			break;
 			default:
+			{
 				pFont->SetColor(color_rgba(255, 255, 255, 255));
 				out_font(pFont, ls, ypos);
+			}
 		}
 	}
 
@@ -580,8 +590,10 @@ void CConsole::IR_OnKeyboardRelease(int dik)
 	{
 		case DIK_LSHIFT:
 		case DIK_RSHIFT:
+		{
 			bShift = false;
-			break;
+		}
+		break;
 	}
 }
 
@@ -602,7 +614,9 @@ void CConsole::ExecuteCommand( )
 	char	first_word[MAX_LEN];
 	char	last_word[MAX_LEN];
 	char	converted[MAX_LEN];
-	int		i, j, len;
+	int		i;
+	int		j;
+	int		len;
 
 	scroll_delta = 0;
 	cmd_delta = 0;
@@ -623,20 +637,25 @@ void CConsole::ExecuteCommand( )
 		switch (editor[i])
 		{
 			case ' ':
+			{
 				if (editor[i + 1] == ' ')
 				{
 					continue;
 				}
+
 				if (i == len - 1)
 				{
 					goto outloop;
 				}
-				break;
+			}
+			break;
 	//.		case ';':
 	//.			goto outloop;
 		}
+
 		converted[j++] = editor[i];
 	}
+
 outloop:
 	converted[j] = 0;
 	if (converted[0] == ' ')
@@ -647,16 +666,18 @@ outloop:
 	{
 		strcpy_s(editor, converted);
 	}
+
 	if (editor[0] == 0)
 	{
 		return;
 	}
+
 	if (bRecordCommands)
 	{
 		Log("~", editor);
 	}
 
-	// split into cmd/params
+	//split into cmd/params
 	editor[j++] = ' ';
 	editor[len = j] = 0;
 	for (i = 0; i < len; i++)
@@ -666,7 +687,7 @@ outloop:
 			first_word[i] = editor[i];
 		}
 		else
-		{	// last 'word' - exit
+		{	//last 'word' - exit
 			strcpy_s(last_word, editor + i + 1);
 			break;
 		}
@@ -678,7 +699,7 @@ outloop:
 		last_word[xr_strlen(last_word) - 1] = 0;
 	}
 
-	// search
+	//search
 	vecCMD_IT I = Commands.find(first_word);
 	if (I != Commands.end( ))
 	{
@@ -753,7 +774,8 @@ void CConsole::Hide( )
 
 void CConsole::SelectCommand( )
 {
-	int		p, k;
+	int		p;
+	int		k;
 	BOOL	found = false;
 	for (p = LogFile->size( ) - 1, k = 0; p >= 0; p--)
 	{

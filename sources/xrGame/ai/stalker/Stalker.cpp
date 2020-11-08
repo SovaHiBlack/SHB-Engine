@@ -16,7 +16,7 @@
 #include "../../script_entity_action.h"
 #include "../../game_level_cross_table.h"
 #include "../../game_graph.h"
-#include "../../inventory.h"
+#include "..\..\Inventory.h"
 #include "../../Artefact.h"
 #include "../../PHMovementControl.h"
 #include "../../xrserver_objects_alife_monsters.h"
@@ -27,7 +27,7 @@
 #include "../../clsid_game.h"
 #include "../../..\ENGINE\skeletoncustom.h"
 #include "../../character_info.h"
-#include "../../actor.h"
+#include "..\..\Actor.h"
 #include "../../relation_registry.h"
 #include "../../stalker_animation_manager.h"
 #include "../../stalker_planner.h"///
@@ -63,7 +63,7 @@
 #ifdef DEBUG
 #	include "../../alife_simulator.h"
 #	include "../../alife_object_registry.h"
-#	include "../../level.h"
+#	include "..\..\Level.h"
 #	include "..\..\MapLocation.h"
 #	include "..\..\MapManager.h"
 #endif // DEBUG

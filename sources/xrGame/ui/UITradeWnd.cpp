@@ -14,8 +14,8 @@
 #include "UIInventoryUtilities.h"//
 #include "../inventoryowner.h"
 //#include "../EatableItem.h"
-#include "../inventory.h"
-#include "../level.h"
+#include "..\Inventory.h"
+#include "..\Level.h"
 #include "..\StringTable.h"
 #include "../character_info.h"
 #include "UIMultiTextStatic.h"//

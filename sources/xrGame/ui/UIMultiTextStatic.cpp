@@ -5,7 +5,7 @@
 #include "stdafx.h"
 
 #include "UIMultiTextStatic.h"//
-#include "../..\ENGINE\CustomHUD.h"
+#include "..\..\ENGINE\CustomHUD.h"
 #include "..\StringTable.h"
 
 //////////////////////////////////////////////////////////////////////////

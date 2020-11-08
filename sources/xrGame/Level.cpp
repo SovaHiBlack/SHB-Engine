@@ -18,7 +18,6 @@
 #include "PHdynamicdata.h"
 #include "Physics.h"
 #include "ShootingObject.h"
-//.#include "LevelFogOfWar.h"
 #include "Level_Bullet_Manager.h"
 #include "script_process.h"
 #include "script_engine.h"
@@ -218,10 +217,6 @@ CLevel::~CLevel()
 	xr_delete					(game);
 	xr_delete					(game_events);
 
-
-	//by Dandy
-	//destroy fog of war
-//	xr_delete					(m_pFogOfWar);
 	//destroy bullet manager
 	xr_delete					(m_pBulletManager);
 	//-----------------------------------------------------------
@@ -242,7 +237,6 @@ CLevel::~CLevel()
 #endif
 	//-----------------------------------------------------------
 	xr_delete					(m_map_manager);
-//	xr_delete					(m_pFogOfWarMngr);
 	//-----------------------------------------------------------
 	Demo_Clear					();
 	m_aDemoData.clear			();
@@ -304,7 +298,6 @@ int	CLevel::get_RPID(const char* /**name/**/)
 
 BOOL		g_bDebugEvents = FALSE	;
 
-
 void CLevel::cl_Process_Event				(u16 dest, u16 type, NET_Packet& P)
 {
 	//			Msg				("--- event[%d] for [%d]",type,dest);
@@ -350,7 +343,7 @@ void CLevel::cl_Process_Event				(u16 dest, u16 type, NET_Packet& P)
 		{
 			Game().OnDestroy(GD);
 			GD->OnEvent	(P,GE_DESTROY);
-		};
+		}
 	}
 };
 
@@ -446,7 +439,7 @@ void CLevel::OnFrame	()
 
 		pStatGraphR->AppendItem(float(m_dwRPC)*fRPC_Mult, 0xffff0000, 1);
 		pStatGraphR->AppendItem(float(m_dwRPS)*fRPS_Mult, 0xff00ff00, 0);
-	};
+	}
 }
 
 int		psLUA_GCSTEP					= 10			;
@@ -474,7 +467,6 @@ void CLevel::OnRender()
 	HUD().RenderUI();
 
 	draw_wnds_rects();
-
 
 #ifdef DEBUG
 	ph_world->OnRender	();
@@ -505,7 +497,6 @@ void CLevel::OnRender()
 			CTeamBaseZone	*team_base_zone = smart_cast<CTeamBaseZone*>(_O);
 			if (team_base_zone)
 				team_base_zone->OnRender();
-			
 			
 			if (dbg_net_Draw_Flags.test(1<<11)) //draw skeleton
 			{
@@ -556,7 +547,6 @@ void CLevel::OnRender()
 		}
 	}
 
-
 	if (psAI_Flags.test(aiDrawVisibilityRays)) {
 		for (u32 I=0; I < Level().Objects.o_count(); I++) {
 			CObject						*object = Objects.o_get_by_iterator(I);
@@ -601,8 +591,8 @@ void	CLevel::AddObject_To_Objects4CrPr	(CGameObject* pObj)
 		if (*OIt == pObj) return;
 	}
 	pObjects4CrPr.push_back(pObj);
-
 }
+
 void	CLevel::AddActor_To_Actors4CrPr		(CGameObject* pActor)
 {
 	if (!pActor) return;
@@ -698,7 +688,7 @@ void CLevel::make_NetCorrectionPrediction	()
 			if (!pObj) continue;
 			pObj->PH_A_CrPr();
 		};
-	};
+	}
 	ph_world->UnFreeze();
 
 	ph_world->m_steps_num = NumPhSteps;
@@ -854,12 +844,10 @@ u32	GameID()
 }
 
 GlobalFeelTouch::GlobalFeelTouch()
-{
-}
+{ }
 
 GlobalFeelTouch::~GlobalFeelTouch()
-{
-}
+{ }
 
 struct delete_predicate_by_time : public std::binary_function<Feel::Touch::DenyTouch, DWORD, bool>
 {
@@ -870,6 +858,7 @@ struct delete_predicate_by_time : public std::binary_function<Feel::Touch::DenyT
 		return false;
 	};
 };
+
 struct objects_ptrs_equal : public std::binary_function<Feel::Touch::DenyTouch, CObject const *, bool>
 {
 	bool operator() (Feel::Touch::DenyTouch const & left, CObject const * const right) const

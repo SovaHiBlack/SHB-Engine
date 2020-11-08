@@ -9,7 +9,7 @@
 
 #include "stalker_kill_wounded_actions.h"
 #include "ai/stalker/Stalker.h"
-#include "inventory.h"
+#include "Inventory.h"
 #include "WeaponMagazined.h"
 #include "stalker_movement_manager.h"
 #include "movement_manager_space.h"

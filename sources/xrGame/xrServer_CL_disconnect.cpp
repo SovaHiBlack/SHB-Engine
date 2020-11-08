@@ -5,7 +5,7 @@
 #include "game_sv_single.h"
 #include "alife_simulator.h"
 #include "xrserver_objects.h"
-#include "level.h"
+#include "Level.h"
 
 void CServer::OnCL_Disconnected(IClient* CL)
 {
@@ -28,9 +28,10 @@ void CServer::OnCL_Disconnected(IClient* CL)
 		game->AddDelayedEvent(P, GAME_EVENT_PLAYER_DISCONNECTED, 0, clientID);
 	}
 
-	xrS_entities::iterator I = entities.begin( ), E = entities.end( );
+//	xrS_entities::iterator I = entities.begin( ), E = entities.end( );
 	if (client_Count( ) > 1 && !CL->flags.bLocal)
-	{	// Migrate entities
+	{
+		/*// Migrate entities
 		for (; I != E; ++I)
 		{
 			CSE_Abstract* entity = I->second;
@@ -41,7 +42,7 @@ void CServer::OnCL_Disconnected(IClient* CL)
 		}
 	}
 	else
-	{	// Destroy entities
+	{*/	// Destroy entities
 		while (!entities.empty( ))
 		{
 			CSE_Abstract* entity = entities.begin( )->second;

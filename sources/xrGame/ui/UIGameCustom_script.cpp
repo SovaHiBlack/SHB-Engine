@@ -1,7 +1,7 @@
 #include "stdafx.h"
 
 #include "UIGameCustom.h"//
-#include "..\level.h"
+#include "..\Level.h"
 #include "..\HUDManager.h"//
 #include "UIStatic.h"//
 

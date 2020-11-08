@@ -7,7 +7,7 @@
 #include "PHMovementControl.h"
 #include "AmebaZone.h"
 #include "HUDManager.h"//
-#include "level.h"
+#include "Level.h"
 #include "entity_alive.h"
 #include "CharacterPhysicsSupport.h"
 

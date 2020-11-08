@@ -21,7 +21,7 @@
 #include "entity_alive.h"
 #include "WeaponMagazined.h"
 #include "Messages.h"
-#include "inventory.h"
+#include "Inventory.h"
 #include "script_ini_file.h"
 #include "..\ENGINE\skeletoncustom.h"
 #include "HangingLamp.h"
@@ -32,7 +32,7 @@
 #include "SpaceRestrictor.h"
 #include "detail_path_manager.h"
 #include "level_graph.h"
-#include "actor.h"
+#include "Actor.h"
 #include "actor_memory.h"
 #include "visual_memory_manager.h"
 

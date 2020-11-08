@@ -2,7 +2,7 @@
 
 #include "level_debug.h"
 //#include "..\ENGINE\Object.h"
-#include "level.h"
+#include "Level.h"
 #include "HUDManager.h"//
 
 #ifdef DEBUG
@@ -12,12 +12,10 @@
 #ifdef DEBUG
 
 CLevelDebug::CLevelDebug()
-{
-
-}
+{ }
 
 CLevelDebug::~CLevelDebug()
-{	
+{
 	free_mem();
 }
 
@@ -25,7 +23,6 @@ CLevelDebug::CObjectInfo &CLevelDebug::object_info(CObject *obj, const char* cla
 {
 	OBJECT_INFO_MAP_IT	obj_it = m_objects_info.find(obj);
 	if (obj_it != m_objects_info.end()) {
-
 		CLASS_INFO_MAP_IT	class_it = 	obj_it->second.find(class_name);
 
 		if (class_it != obj_it->second.end()) {
@@ -73,7 +70,6 @@ CLevelDebug::CLevelInfo &CLevelDebug::level_info(void *class_ptr, const char* cl
 		return (*(new_info));
 	}
 }
-
 
 void CLevelDebug::free_mem()
 {
@@ -136,8 +132,6 @@ void CLevelDebug::draw_object_info()
 
 			delta_height = start_y - y;
 		}
-
-
 	}
 }
 
@@ -160,8 +154,6 @@ void CLevelDebug::draw_level_info()
 //////////////////////////////////////////////////////////////////////////
 // CObjectInfo
 //////////////////////////////////////////////////////////////////////////
-
-
 void CLevelDebug::CObjectInfo::add_item	(const char* text, u32 color, u32 id)
 {
 	inherited::add_item(SInfoItem(text, color, id));
@@ -193,11 +185,9 @@ void CLevelDebug::CObjectInfo::draw_info	(float x, float &y)
 	y					= pred.y;
 }
 
-
 //////////////////////////////////////////////////////////////////////////
 // CTextInfo
 //////////////////////////////////////////////////////////////////////////
-
 void CLevelDebug::CTextInfo::add_item	(const char* text, float x, float y, u32 color, u32 id)
 {
 	inherited::add_item(STextItem(text, x, y, color, id));
@@ -221,7 +211,6 @@ void CLevelDebug::CTextInfo::draw_text	()
 //////////////////////////////////////////////////////////////////////////
 // CLevelInfo
 //////////////////////////////////////////////////////////////////////////
-
 void CLevelDebug::CLevelInfo::add_item(const Fvector &pos, u32 color, u32 id)
 {
 	inherited::add_item(SLevelItem(pos, color, id));

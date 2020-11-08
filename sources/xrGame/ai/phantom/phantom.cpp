@@ -2,7 +2,7 @@
 
 #include "phantom.h"
 #include "../../../ENGINE/net_utils.h"
-#include "../../level.h"
+#include "..\..\Level.h"
 #include "../../xrServer_Objects_ALife_Monsters.h"
 #include "../../..\ENGINE\motion.h"
 

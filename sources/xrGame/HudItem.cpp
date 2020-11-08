@@ -8,12 +8,12 @@
 #include "HudItem.h"
 #include "physic_item.h"
 #include "WeaponHUD.h"
-#include "actor.h"
+#include "Actor.h"
 #include "actoreffector.h"
 #include "Missile.h"
 #include "Messages.h"
-#include "level.h"
-#include "inventory.h"
+#include "Level.h"
+#include "Inventory.h"
 #include "..\ENGINE\CameraBase.h"
 
 

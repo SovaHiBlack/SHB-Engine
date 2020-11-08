@@ -32,7 +32,7 @@ void CServer::Process_event_ownership(NET_Packet& P, ClientID sender, u32 time, 
 	}
 
 	xrClientData*		c_parent		= e_parent->owner;
-	xrClientData*		c_entity		= e_entity->owner;
+//	xrClientData*		c_entity		= e_entity->owner;
 	xrClientData*		c_from			= ID_to_client	(sender);
 
 	if ( (GetServerClient() != c_from) && (c_parent != c_from) )
@@ -46,7 +46,7 @@ void CServer::Process_event_ownership(NET_Packet& P, ClientID sender, u32 time, 
 	{
 
 		// Perform migration if needed
-		if (c_parent != c_entity)		PerformMigration(e_entity,c_entity,c_parent);
+//		if (c_parent != c_entity)		PerformMigration(e_entity,c_entity,c_parent);
 
 		// Rebuild parentness
 		e_entity->ID_Parent			= id_parent;

@@ -21,7 +21,7 @@
 #include "game_graph.h"
 #include "ai_debug.h"
 //#include "..\ENGINE\IGameLevel.h"
-#include "level.h"
+#include "Level.h"
 #include "../ENGINE/net_utils.h"
 #include "script_callback_ex.h"
 #include "MathUtils.h"

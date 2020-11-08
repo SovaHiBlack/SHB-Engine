@@ -39,12 +39,6 @@ const char* CInventoryItemObject::NameShort		()
 {
 	return						(CInventoryItem::NameShort());
 }
-/*
-const char* CInventoryItemObject::NameComplex	()
-{
-	return						(CInventoryItem::NameComplex());
-}
-*/
 
 void				CInventoryItemObject::Hit					(SHit* pHDS)
 {
