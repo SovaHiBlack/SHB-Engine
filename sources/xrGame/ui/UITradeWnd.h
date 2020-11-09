@@ -1,7 +1,7 @@
 #pragma once
 
 #include "UIWindow.h"//
-#include "../inventory_space.h"
+#include "..\Inventory_space.h"
 
 class CInventoryOwner;
 class CEatableItem;

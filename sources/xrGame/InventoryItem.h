@@ -8,7 +8,7 @@
 
 #pragma once
 
-#include "inventory_space.h"
+#include "Inventory_space.h"
 #include "hit_immunity.h"
 #include "attachable_item.h"
 

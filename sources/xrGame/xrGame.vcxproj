@@ -806,7 +806,7 @@
     <ClInclude Include="inventory_item_inline.h" />
     <ClInclude Include="inventory_item_object.h" />
     <ClInclude Include="inventory_owner_inline.h" />
-    <ClInclude Include="inventory_space.h" />
+    <ClInclude Include="Inventory_space.h" />
     <ClInclude Include="ItemListTypes.h" />
     <ClInclude Include="item_manager.h" />
     <ClInclude Include="item_manager_inline.h" />

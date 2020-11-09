@@ -2,26 +2,26 @@
 
 #include "Inventory.h"
 #include "Actor.h"
-#include "Trade.h"
+//#include "Trade.h"
 #include "Weapon.h"
 
 #include "ui/UIInventoryUtilities.h"//
 
 #include "EatableItem.h"
-#include "script_engine.h"
-#include "Messages.h"
+//#include "script_engine.h"
+//#include "Messages.h"
 //#include "game_cl_base.h"
 #include "xr_level_controller.h"
-#include "Level.h"
-#include "ai_space.h"
-#include "entitycondition.h"
-#include "game_base_space.h"
+//#include "Level.h"
+//#include "ai_space.h"
+//#include "entitycondition.h"
+//#include "game_base_space.h"
 #include "clsid_game.h"
 
 #include "GameObject_space.h"
 #include "script_callback_ex.h"
 #include "script_game_object.h"
-#include "WeaponHUD.h"
+//#include "WeaponHUD.h"
 
 using namespace InventoryUtilities;
 

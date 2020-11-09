@@ -4566,9 +4566,6 @@
     <ClInclude Include="Inventory.h">
       <Filter>Core\Client\Objects\inventory</Filter>
     </ClInclude>
-    <ClInclude Include="inventory_space.h">
-      <Filter>Core\Client\Objects\inventory</Filter>
-    </ClInclude>
     <ClInclude Include="attachable_item.h">
       <Filter>Core\Client\Objects\inventory\AttachableItem</Filter>
     </ClInclude>
@@ -5966,6 +5963,9 @@
     </ClInclude>
     <ClInclude Include="InventoryItem_impl.h">
       <Filter>Core\Client\Objects\inventory\InventoryItem</Filter>
+    </ClInclude>
+    <ClInclude Include="Inventory_space.h">
+      <Filter>Core\Client\Objects\inventory</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

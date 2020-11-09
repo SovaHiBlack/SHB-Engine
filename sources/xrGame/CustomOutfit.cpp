@@ -2,7 +2,7 @@
 
 #include "CustomOutfit.h"
 #include "PhysicsShell.h"
-#include "inventory_space.h"
+//#include "Inventory_space.h"
 #include "Inventory.h"
 #include "Actor.h"
 #include "game_cl_base.h"

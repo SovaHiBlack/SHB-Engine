@@ -10,7 +10,7 @@
 
 #include "xrServer_Objects_ALife.h"
 #include "PHSynchronize.h"
-#include "inventory_space.h"
+#include "Inventory_space.h"
 
 #include "character_info_defs.h"
 #include "InfoPortion_defs.h"

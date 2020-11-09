@@ -1,7 +1,7 @@
 #pragma once
 
-#define CMD_START	(1<<0)
-#define CMD_STOP	(1<<1)
+#define CMD_START			(1<<0)
+#define CMD_STOP			(1<<1)
 
 #define NO_ACTIVE_SLOT		0xffffffff
 #define KNIFE_SLOT			0
@@ -20,19 +20,19 @@
 class CInventoryItem;
 class CInventory;
 
-using PIItem = CInventoryItem*;
-using TIItemContainer = xr_vector<PIItem>;
+using PIItem				= CInventoryItem*;
+using TIItemContainer		= xr_vector<PIItem>;
 
 enum EItemPlace
-{			
+{
 	eItemPlaceUndefined,
 	eItemPlaceSlot,
 	eItemPlaceBelt,
 	eItemPlaceRuck
 };
 
-extern u32	INV_STATE_LADDER;
-extern u32	INV_STATE_CAR;
-extern u32	INV_STATE_BLOCK_ALL;
-extern u32	INV_STATE_INV_WND;
-extern u32	INV_STATE_BUY_MENU;
+extern u32					INV_STATE_LADDER;
+extern u32					INV_STATE_CAR;
+extern u32					INV_STATE_BLOCK_ALL;
+extern u32					INV_STATE_INV_WND;
+extern u32					INV_STATE_BUY_MENU;
