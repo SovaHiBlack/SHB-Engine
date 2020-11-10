@@ -8,7 +8,7 @@
 
 #pragma once
 
-#include "physic_item.h"
+#include "PhysicItem.h"
 #include "EatableItem.h"
 
 class CEatableItemObject : 

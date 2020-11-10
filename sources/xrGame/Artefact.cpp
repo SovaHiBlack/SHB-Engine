@@ -12,6 +12,9 @@
 #include "PHWorld.h"
 #include "restriction_space.h"
 #include "..\ENGINE\IGamePersistent.h"//==>
+#include "inventoryOwner.h"
+#include "Entity_alive.h"
+#include "xr_level_controller.h"
 
 #define	FASTMODE_DISTANCE (50.f)	//distance to camera from sphere, when zone switches to fast update sequence
 
@@ -58,8 +61,7 @@ struct SArtefactActivation{
 	void						PhDataUpdate					(dReal step);
 };
 
-
-CArtefact::CArtefact(void) 
+CArtefact::CArtefact( )
 {
 	shedule.t_min				= 20;
 	shedule.t_max				= 50;
@@ -69,42 +71,41 @@ CArtefact::CArtefact(void)
 }
 
 
-CArtefact::~CArtefact(void) 
-{}
+CArtefact::~CArtefact( )
+{ }
 
 void CArtefact::Load(const char* section)
 {
-	inherited::Load			(section);
-
+	inherited::Load(section);
 
 	if (pSettings->line_exist(section, "particles"))
-		m_sParticlesName	= pSettings->r_string(section, "particles");
+		m_sParticlesName = pSettings->r_string(section, "particles");
 
-	m_bLightsEnabled		= !!pSettings->r_bool(section, "lights_enabled");
-	if(m_bLightsEnabled){
-		sscanf(pSettings->r_string(section,"trail_light_color"), "%f,%f,%f", 
-			&m_TrailLightColor.r, &m_TrailLightColor.g, &m_TrailLightColor.b);
-		m_fTrailLightRange	= pSettings->r_float(section,"trail_light_range");
-	}
-
-
+	m_bLightsEnabled = !!pSettings->r_bool(section, "lights_enabled");
+	if (m_bLightsEnabled)
 	{
-		m_fHealthRestoreSpeed = pSettings->r_float		(section,"health_restore_speed"		);
-		m_fRadiationRestoreSpeed = pSettings->r_float	(section,"radiation_restore_speed"	);
-		m_fSatietyRestoreSpeed = pSettings->r_float		(section,"satiety_restore_speed"	);
-		m_fPowerRestoreSpeed = pSettings->r_float		(section,"power_restore_speed"		);
-		m_fBleedingRestoreSpeed = pSettings->r_float	(section,"bleeding_restore_speed"	);
-		if(pSettings->section_exist(/**cNameSect(), */pSettings->r_string(section,"hit_absorbation_sect")))
-			m_ArtefactHitImmunities.LoadImmunities(pSettings->r_string(section,"hit_absorbation_sect"),pSettings);
+		sscanf(pSettings->r_string(section, "trail_light_color"), "%f,%f,%f",
+			   &m_TrailLightColor.r, &m_TrailLightColor.g, &m_TrailLightColor.b);
+		m_fTrailLightRange = pSettings->r_float(section, "trail_light_range");
 	}
+
+	m_fHealthRestoreSpeed = pSettings->r_float(section, "health_restore_speed");
+	m_fRadiationRestoreSpeed = pSettings->r_float(section, "radiation_restore_speed");
+	m_fSatietyRestoreSpeed = pSettings->r_float(section, "satiety_restore_speed");
+	m_fPowerRestoreSpeed = pSettings->r_float(section, "power_restore_speed");
+	m_fBleedingRestoreSpeed = pSettings->r_float(section, "bleeding_restore_speed");
+	if (pSettings->section_exist(pSettings->r_string(section, "hit_absorbation_sect")))
+	{
+		m_ArtefactHitImmunities.LoadImmunities(pSettings->r_string(section, "hit_absorbation_sect"), pSettings);
+	}
+
 	m_bCanSpawnZone = !!pSettings->line_exist("artefact_spawn_zones", section);
 
-
-	animGet				(m_anim_idle,					pSettings->r_string(*hud_sect,"anim_idle"));
-	animGet				(m_anim_idle_sprint,			pSettings->r_string(*hud_sect,"anim_idle_sprint"));
-	animGet				(m_anim_hide,					pSettings->r_string(*hud_sect,"anim_hide"));
-	animGet				(m_anim_show,					pSettings->r_string(*hud_sect,"anim_show"));
-	animGet				(m_anim_activate,				pSettings->r_string(*hud_sect,"anim_activate"));
+	animGet(m_anim_idle, pSettings->r_string(*hud_sect, "anim_idle"));
+	animGet(m_anim_idle_sprint, pSettings->r_string(*hud_sect, "anim_idle_sprint"));
+	animGet(m_anim_hide, pSettings->r_string(*hud_sect, "anim_hide"));
+	animGet(m_anim_show, pSettings->r_string(*hud_sect, "anim_show"));
+	animGet(m_anim_activate, pSettings->r_string(*hud_sect, "anim_activate"));
 }
 
 BOOL CArtefact::net_Spawn(CSE_Abstract* DC) 
@@ -192,6 +193,7 @@ void CArtefact::UpdateWorkload		(u32 dt)
 		CPhysicsShellHolder* pPhysicsShellHolder = smart_cast<CPhysicsShellHolder*>(H_Parent());
 		if(pPhysicsShellHolder) pPhysicsShellHolder->PHGetLinearVell(vel);
 	}
+
 	CParticlesPlayer::SetParentVel	(vel);
 
 	// 
@@ -222,7 +224,6 @@ void CArtefact::shedule_Update		(u32 dt)
 	}
 	if (!o_fastmode)		UpdateWorkload	(dt);
 }
-
 
 void CArtefact::create_physic_shell	()
 {
@@ -266,7 +267,6 @@ void CArtefact::ActivateArtefact	()
 	VERIFY( H_Parent() );
 	m_activationObj = xr_new<SArtefactActivation>(this,H_Parent()->ID());
 	m_activationObj->Start();
-
 }
 
 void CArtefact::PhDataUpdate	(dReal step)
@@ -290,8 +290,7 @@ void CArtefact::Show()
 {
 	SwitchState(eShowing);
 }
-#include "inventoryOwner.h"
-#include "Entity_alive.h"
+
 void CArtefact::UpdateXForm()
 {
 	if (Device.dwFrame!=dwXF_Frame)
@@ -335,7 +334,7 @@ void CArtefact::UpdateXForm()
 		XFORM().mul			(mRes,offset());
 	}
 }
-#include "xr_level_controller.h"
+
 bool CArtefact::Action(int cmd, u32 flags)
 {
 	switch (cmd)
@@ -419,14 +418,10 @@ void CArtefact::OnAnimationEnd		(u32 state)
 	};
 }
 
-
-
 u16	CArtefact::bone_count_to_synchronize	() const
 {
 	return CInventoryItem::object().PHGetSyncItemsNumber();
 }
-
-
 
 //---SArtefactActivation----
 SArtefactActivation::SArtefactActivation(CArtefact* af,u32 owner_id)
@@ -437,10 +432,10 @@ SArtefactActivation::SArtefactActivation(CArtefact* af,u32 owner_id)
 	m_light->set_shadow(true);
 	m_owner_id		= owner_id;
 }
+
 SArtefactActivation::~SArtefactActivation()
 {
 	m_light.destroy();
-
 }
 
 void SArtefactActivation::Load()
@@ -450,12 +445,10 @@ void SArtefactActivation::Load()
 
 	const char* activation_seq = pSettings->r_string(*m_af->cNameSect(),"artefact_activation_seq");
 
-
 	m_activation_states[(int)eStarting].Load(activation_seq,	"starting");
 	m_activation_states[(int)eFlying].Load(activation_seq,		"flying");
 	m_activation_states[(int)eBeforeSpawn].Load(activation_seq,	"idle_before_spawning");
 	m_activation_states[(int)eSpawnZone].Load(activation_seq,	"spawning");
-
 }
 
 void SArtefactActivation::Start()
@@ -494,13 +487,11 @@ void SArtefactActivation::UpdateActivation()
 		m_cur_state_time	= 0.0f;
 		ChangeEffects				();
 
-
 	if(m_cur_activation_state==eSpawnZone && OnServer())
 		SpawnAnomaly	();
-
 	}
-	UpdateEffects				();
 
+	UpdateEffects				();
 }
 
 void SArtefactActivation::PhDataUpdate(dReal step)
@@ -512,8 +503,8 @@ void SArtefactActivation::PhDataUpdate(dReal step)
 			m_af->m_pPhysicsShell->applyGravityAccel(dir);
 		}
 	}
-
 }
+
 void SArtefactActivation::ChangeEffects()
 {
 	VERIFY(!ph_world->Processing());
@@ -525,7 +516,7 @@ void SArtefactActivation::ChangeEffects()
 	if(state_def.m_snd.size()){
 		m_snd.create			(*state_def.m_snd,st_Effect,sg_SourceType);
 		m_snd.play_at_pos		(m_af,	m_af->Position());
-	};
+	}
 
 	m_light->set_range		(	state_def.m_light_range);
 	m_light->set_color		(	state_def.m_light_color.r,
@@ -540,12 +531,12 @@ void SArtefactActivation::ChangeEffects()
 												dir,
 												m_af->ID(),
 												iFloor(state_def.m_time*1000) );
-	};
+	}
+
 	if(state_def.m_animation.size()){
 		CKinematicsAnimated	*K=smart_cast<CKinematicsAnimated*>(m_af->Visual());
 		if(K)K->PlayCycle(*state_def.m_animation);
 	}
-
 }
 
 void SArtefactActivation::UpdateEffects()
@@ -608,13 +599,12 @@ shared_str clear_brackets(const char* src)
 	if	('"'==_original[_len-1])	_original[_len-1]=0;					// skip end
 	if	('"'==_original[0])			return	shared_str(&_original[0] + 1);	// skip begin
 	return									shared_str(_original);
-
 }
+
 void SArtefactActivation::SStateDef::Load(const char* section, const char* name)
 {
 	const char* str = pSettings->r_string(section,name);
 	VERIFY(_GetItemCount(str)==8);
-
 
 	string128 tmp;
 
@@ -630,5 +620,4 @@ void SArtefactActivation::SStateDef::Load(const char* section, const char* name)
 
 	m_particle		= clear_brackets(	_GetItem(str,6,tmp) );
 	m_animation		= clear_brackets(	_GetItem(str,7,tmp) );
-
 }

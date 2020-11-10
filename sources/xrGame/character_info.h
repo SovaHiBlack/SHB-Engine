@@ -21,7 +21,6 @@ class NET_Packet;
 	class CSE_ALifeTraderAbstract;
 #endif
 
-
 //////////////////////////////////////////////////////////////////////////
 // SCharacterProfile: данные профиля персонажа
 //////////////////////////////////////////////////////////////////////////
@@ -40,7 +39,6 @@ struct SCharacterProfile : CSharedResource
 	CHARACTER_REPUTATION_VALUE		m_Reputation;
 };
 
-
 class CInventoryOwner;
 class CSE_ALifeTraderAbstract;
 
@@ -54,10 +52,8 @@ private:
 	friend id_to_index;
 	friend CInventoryOwner;
 	friend CSE_ALifeTraderAbstract;
+
 public:
-
-
-
 								CCharacterInfo		();
 								~CCharacterInfo		();
 
@@ -123,10 +119,10 @@ public:
 
 protected:
 
-
 #ifdef XRGAME_EXPORTS
 	CHARACTER_RANK					m_CurrentRank;
 	CHARACTER_REPUTATION			m_CurrentReputation;
 	CHARACTER_COMMUNITY				m_CurrentCommunity;
 #endif
+
 };

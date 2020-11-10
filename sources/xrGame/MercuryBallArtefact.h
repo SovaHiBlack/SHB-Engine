@@ -1,6 +1,6 @@
 ///////////////////////////////////////////////////////////////
-// MercuryBall.h	Ртутный шар
-// MercuryBall - переливающийся и колыхающийся шар
+// MercuryBallArtefact.h	Ртутный шар
+// MercuryBallArtefact - переливающийся и колыхающийся шар
 // перекатывается с места на место
 ///////////////////////////////////////////////////////////////
 
@@ -8,17 +8,19 @@
 
 #include "Artefact.h"
 
-class CMercuryBall : public CArtefact 
+class CMercuryBallArtefact : public CArtefact
 {
 private:
 	typedef CArtefact inherited;
-public:
-	CMercuryBall(void);
-	virtual ~CMercuryBall(void);
 
-	virtual void Load				(const char* section);
+public:
+	CMercuryBallArtefact( );
+	virtual ~CMercuryBallArtefact( );
+
+	virtual void Load(const char* section);
+
 protected:
-	virtual void	UpdateCLChild	();
+	virtual void	UpdateCLChild( );
 
 	//время последнего обновления поведения шара
 	ALife::_TIME_ID m_timeLastUpdate;

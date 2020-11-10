@@ -1,20 +1,18 @@
 ///////////////////////////////////////////////////////////////
-// RustyHairArtifact.h
-// RustyHairArtefact - артефакт ржавые волосы
+// BlackDropsArtefact.h
+// BlackDropsArtefact - черные капли
 ///////////////////////////////////////////////////////////////
 
 #pragma once
 #include "Artefact.h"
 
-class CRustyHairArtefact : public CArtefact 
+class CBlackDropsArtefact : public CArtefact
 {
 private:
 	typedef CArtefact inherited;
 public:
-	CRustyHairArtefact(void);
-	virtual ~CRustyHairArtefact(void);
+	CBlackDropsArtefact( );
+	virtual ~CBlackDropsArtefact( );
 
 	virtual void Load				(const char* section);
-
-protected:
 };

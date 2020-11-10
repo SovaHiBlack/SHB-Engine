@@ -43,6 +43,7 @@ private:
 	int							m_current_index;
 
 	static	void				InitIdToIndex	();
+
 public:
 	//отношение между репутациями
 	static CHARACTER_GOODWILL	relation			(int from, int to);

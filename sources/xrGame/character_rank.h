@@ -44,6 +44,7 @@ private:
 	int							m_current_index;
 
 	static	void				InitIdToIndex	();
+
 public:
 	//отношение между рангами
 	static CHARACTER_GOODWILL	relation			(int from, int to);

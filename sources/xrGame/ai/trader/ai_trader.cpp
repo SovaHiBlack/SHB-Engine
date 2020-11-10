@@ -13,7 +13,7 @@
 #include "../../script_game_object.h"
 #include "..\..\Inventory.h"
 #include "../../xrserver_objects_alife_monsters.h"
-#include "../../Artefact.h"
+#include "..\..\Artefact.h"
 #include "..\..\Server.h"
 #include "../../relation_registry.h"
 #include "../../object_broker.h"

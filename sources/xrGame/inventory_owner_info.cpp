@@ -41,16 +41,15 @@ void  CInventoryOwner::OnEvent (NET_Packet& P, u16 type)
 	}
 }
 
-
 class CFindByIDPred
 {
 public:
 	CFindByIDPred(shared_str element_to_find) {element = element_to_find;}
 	bool operator () (const INFO_DATA& data) const {return data.info_id == element;}
+
 private:
 	shared_str element;
 };
-
 
 bool CInventoryOwner::OnReceiveInfo(shared_str info_id) const
 {
@@ -74,7 +73,6 @@ bool CInventoryOwner::OnReceiveInfo(shared_str info_id) const
 
 //	SCRIPT_CALLBACK_EXECUTE_2(*m_pInfoCallback, pThisGameObject->lua_game_object(), info_index);
 //	pThisGameObject->callback(GameObject::eInventoryInfo)(pThisGameObject->lua_game_object(), *info_id);
-	
 
 	CInfoPortion info_portion;
 	info_portion.Load(info_id);
@@ -86,9 +84,9 @@ bool CInventoryOwner::OnReceiveInfo(shared_str info_id) const
 	for(u32 i=0; i<info_portion.DisableInfos().size(); i++)
 		TransferInfo(info_portion.DisableInfos()[i], false);
 
-
 	return true;
 }
+
 #ifdef DEBUG
 void CInventoryOwner::DumpInfo() const
 {
@@ -100,8 +98,7 @@ void CInventoryOwner::DumpInfo() const
 	for(int i=0;it!=known_info.end();++it,++i){
 		Msg("known info[%d]:%s",i,*(*it).info_id);	
 	}
-	Msg("------------------------------------------");	
-
+	Msg("------------------------------------------");
 }
 #endif
 

@@ -3,7 +3,7 @@
 #include "EatableItem.h"
 #include "Messages.h"
 #include "../ENGINE/net_utils.h"
-#include "physic_item.h"
+#include "PhysicItem.h"
 #include "Level.h"
 #include "entity_alive.h"
 #include "EntityCondition.h"

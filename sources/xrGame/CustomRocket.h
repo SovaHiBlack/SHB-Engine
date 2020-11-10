@@ -2,7 +2,7 @@
 
 #pragma once
 
-#include "physic_item.h"
+#include "PhysicItem.h"
 #include "PHObject.h"
 
 class CRocketLauncher;

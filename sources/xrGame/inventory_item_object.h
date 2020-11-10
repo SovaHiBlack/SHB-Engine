@@ -8,19 +8,16 @@
 
 #pragma once
 
-#include "physic_item.h"
+#include "PhysicItem.h"
 #include "InventoryItem.h"
 
-class CInventoryItemObject : 
-			public CInventoryItem, 
-			public CPhysicItem
+class CInventoryItemObject : public CInventoryItem, public CPhysicItem
 {
 public:
 							CInventoryItemObject	();
 	virtual					~CInventoryItemObject	();
 	virtual DLL_Pure		*_construct				();
 
-public:
 	virtual CPhysicsShellHolder*cast_physics_shell_holder	()	{return this;}
 	virtual CInventoryItem	*cast_inventory_item			()	{return this;}
 	virtual CAttachableItem	*cast_attachable_item			()	{return this;}
@@ -31,12 +28,11 @@ public:
 	virtual CWeaponAmmo		*cast_weapon_ammo				()	{return 0;}
 	virtual CGameObject		*cast_game_object				()  {return this;};
 
-public:
 	virtual void	Load					(const char* section);
 	virtual const char* Name					();
 	virtual const char* NameShort				();
 
-	virtual	void	Hit						(SHit* pHDS);
+	virtual void	Hit						(SHit* pHDS);
 
 	virtual void	OnH_B_Independent		(bool just_before_destroy);
 	virtual void	OnH_A_Independent		();
@@ -56,8 +52,8 @@ public:
 	virtual void	reinit					();
 	virtual void	activate_physic_shell	();
 	virtual void	on_activate_physic_shell();
-	virtual	void	modify_holder_params			(float &range, float &fov) const;
-public:
+	virtual void	modify_holder_params			(float &range, float &fov) const;
+
 	////////// network //////////////////////////////////////////////////
 	virtual void	make_Interpolation		();
 	virtual void	PH_B_CrPr				(); // actions & operations before physic correction-prediction steps
@@ -76,7 +72,6 @@ protected:
 public:
 	virtual bool	Useful					() const;
 
-public:
 	virtual u32		ef_weapon_type			() const;
 };
 

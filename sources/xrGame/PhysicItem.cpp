@@ -7,11 +7,13 @@
 ////////////////////////////////////////////////////////////////////////////
 
 #include "stdafx.h"
-#include "physic_item.h"
+
+#include "PhysicItem.h"
 #include "PhysicsShell.h"
 #include "xrserver_objects.h"
 #include "..\ENGINE\fbasicvisual.h"
 #include "..\ENGINE\SkeletonCustom.h"
+
 #define CHOOSE_MAX(x,inst_x,y,inst_y,z,inst_z)\
 	if(x>y)\
 	if(x>z){inst_x;}\
@@ -97,7 +99,6 @@ BOOL CPhysicItem::net_Spawn			(CSE_Abstract* DC)
 void CPhysicItem::net_Destroy		()
 {
 	inherited::net_Destroy	();
-
 }
 
 void CPhysicItem::UpdateCL()
@@ -155,9 +156,7 @@ void CPhysicItem::create_box_physic_shell	()
 	m_pPhysicsShell = P_create_Shell(); 
 	R_ASSERT(m_pPhysicsShell);
 	m_pPhysicsShell->add_Element(E);
-	m_pPhysicsShell->setDensity(2000.f);
-	
-
+	m_pPhysicsShell->setDensity(2000.0f);
 }
 
 void CPhysicItem::create_box2sphere_physic_shell()

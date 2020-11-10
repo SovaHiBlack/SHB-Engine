@@ -6,7 +6,7 @@
 #include "stdafx.h"
 
 #include "HudItem.h"
-#include "physic_item.h"
+//#include "PhysicItem.h"
 #include "WeaponHUD.h"
 #include "Actor.h"
 #include "actoreffector.h"

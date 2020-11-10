@@ -4,7 +4,7 @@
 #include "UIInventoryUtilities.h"//
 #include "UIXmlInit.h"//
 
-#include "../Artefact.h"
+#include "..\Artefact.h"
 
 using namespace InventoryUtilities;
 

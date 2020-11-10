@@ -1,16 +1,16 @@
 ///////////////////////////////////////////////////////////////
-// RustyHairArtifact.cpp
+// RustyHairArtefact.cpp
 // RustyHairArtefact - артефакт ржавые волосы
 ///////////////////////////////////////////////////////////////
 
 #include "stdafx.h"
-#include "RustyHairArtifact.h"
 
+#include "RustyHairArtefact.h"
 
-CRustyHairArtefact::CRustyHairArtefact(void) 
+CRustyHairArtefact::CRustyHairArtefact( )
 { }
 
-CRustyHairArtefact::~CRustyHairArtefact(void) 
+CRustyHairArtefact::~CRustyHairArtefact( )
 { }
 
 void CRustyHairArtefact::Load(const char* section)

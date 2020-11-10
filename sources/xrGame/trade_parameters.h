@@ -15,23 +15,19 @@ public:
 	struct _buy_parameters		{};
 	typedef _buy_parameters*	action_buy;
 
-public:
 	struct _sell_parameters		{};
 	typedef _sell_parameters*	action_sell;
 
-public:
 	struct _show_parameters		{};
 	typedef _show_parameters*	action_show;
 
 private:
 	static CTradeParameters		*m_instance;
 
-private:
 	CTradeActionParameters		m_buy;
 	CTradeActionParameters		m_sell;
 	CTradeBoolParameters		m_show;
 
-private:
 	IC	const CTradeActionParameters	&action			(action_buy) const;
 	IC	const CTradeActionParameters	&action			(action_sell) const;
 	IC	const CTradeBoolParameters		&action			(action_show) const;
@@ -43,11 +39,9 @@ public:
 	IC									CTradeParameters(const shared_str &section = "trade");
 	IC	void							clear			();
 
-public:
 	IC	static CTradeParameters			&instance		();
 	IC	static void						clean			();
 
-public:
 	template <typename _action_type>
 	IC	bool							enabled			(_action_type type, const shared_str &section) const;
 

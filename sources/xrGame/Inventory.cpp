@@ -41,8 +41,7 @@ CInventorySlot::CInventorySlot()
 }
 
 CInventorySlot::~CInventorySlot() 
-{
-}
+{ }
 
 bool CInventorySlot::CanBeActivated() const 
 {
@@ -85,16 +84,14 @@ CInventory::CInventory()
 	m_bSlotsUseful								= true;
 	m_bBeltUseful								= false;
 
-	m_fTotalWeight								= -1.f;
+	m_fTotalWeight								= -1.0f;
 	m_dwModifyFrame								= 0;
 	m_drop_last_frame							= false;
 	m_iLoadActiveSlotFrame						= u32(-1);
 }
 
-
 CInventory::~CInventory() 
-{
-}
+{ }
 
 void CInventory::Clear()
 {
@@ -106,7 +103,6 @@ void CInventory::Clear()
 	{
 		m_slots[i].m_pIItem				= NULL;
 	}
-	
 
 	m_pOwner							= NULL;
 
@@ -273,7 +269,6 @@ bool CInventory::Slot(PIItem pIItem, bool bNotActivate)
 		return false;
 	}
 
-
 	m_slots[pIItem->GetSlot()].m_pIItem = pIItem;
 
 	//удалить из рюкзака или пояса
@@ -281,8 +276,6 @@ bool CInventory::Slot(PIItem pIItem, bool bNotActivate)
 	if(m_ruck.end() != it) m_ruck.erase(it);
 	it = std::find(m_belt.begin(), m_belt.end(), pIItem);
 	if(m_belt.end() != it) m_belt.erase(it);
-
-
 
 	if (( (m_iActiveSlot==pIItem->GetSlot())||(m_iActiveSlot==NO_ACTIVE_SLOT) && m_iNextActiveSlot==NO_ACTIVE_SLOT) && (!bNotActivate))
 		Activate				(pIItem->GetSlot());
@@ -338,15 +331,14 @@ bool CInventory::Ruck(PIItem pIItem)
 	if(!CanPutInRuck(pIItem)) return false;
 	
 	bool in_slot = InSlot(pIItem);
-	//вещь была в слоте
+	
 	if(in_slot) 
-	{
+	{	//вещь была в слоте
 		if(m_iActiveSlot == pIItem->GetSlot()) Activate(NO_ACTIVE_SLOT);
 		m_slots[pIItem->GetSlot()].m_pIItem = NULL;
 	}
 	else
-	{
-		//вещь была на поясе или вообще только поднята с земли
+	{	//вещь была на поясе или вообще только поднята с земли
 		TIItemContainer::iterator it = std::find(m_belt.begin(), m_belt.end(), pIItem); 
 		if(m_belt.end() != it) m_belt.erase(it);
 	}
@@ -420,7 +412,6 @@ void  CInventory::ActivateNextItemInActiveSlot()
 	P.w_u32								(new_item->GetSlot());
 	new_item->object().u_EventSend		(P);
 
-
 	Msg("CHANGE");
 }
 
@@ -431,16 +422,17 @@ bool CInventory::Activate(u32 slot, EActivationReason reason, bool bForce)
 
 	bool res = false;
 
-	if(Device.dwFrame == m_iLoadActiveSlotFrame) 
+	if (Device.dwFrame == m_iLoadActiveSlotFrame)
 	{
-		 if( (m_iLoadActiveSlot == slot) && m_slots[slot].m_pIItem )
+		if ((m_iLoadActiveSlot == slot) && m_slots[slot].m_pIItem)
+		{
 			m_iLoadActiveSlotFrame = u32(-1);
-		 else
-			{
-			 res = false;
-			 goto _finish;
-			}
-
+		}
+		else
+		{
+			res = false;
+			goto _finish;
+		}
 	}
 
 	if( (slot!=NO_ACTIVE_SLOT && m_slots[slot].IsBlocked()) && !bForce)
@@ -519,13 +511,12 @@ bool CInventory::Activate(u32 slot, EActivationReason reason, bool bForce)
 		goto _finish;
 	}
 
-	_finish:
+_finish:
 
 	if(res)
 		m_ActivationSlotReason	= reason;
 	return res;
 }
-
 
 PIItem CInventory::ItemFromSlot(u32 slot) const
 {
@@ -564,7 +555,7 @@ bool CInventory::Action(int cmd, u32 flags)
 				pActor->SetZoomRndSeed();
 			}break;
 		};
-	};
+	}
 
 	if (g_pGameLevel && OnClient() && pActor) {
 		switch(cmd)
@@ -595,7 +586,6 @@ bool CInventory::Action(int cmd, u32 flags)
 		}
 	}
 
-
 	if (m_iActiveSlot < m_slots.size() && 
 			m_slots[m_iActiveSlot].m_pIItem && 
 			m_slots[m_iActiveSlot].m_pIItem->Action(cmd, flags)) 
@@ -609,10 +599,10 @@ bool CInventory::Action(int cmd, u32 flags)
 	case kWPN_4:
 	case kWPN_5:
 	case kWPN_6:
-       {
+	   {
 			if(flags&CMD_START)
 			{
-                if((int)m_iActiveSlot == cmd - kWPN_1 &&
+				if((int)m_iActiveSlot == cmd - kWPN_1 &&
 					m_slots[m_iActiveSlot].m_pIItem )
 				{
 					b_send_event = Activate(NO_ACTIVE_SLOT);
@@ -629,14 +619,13 @@ bool CInventory::Action(int cmd, u32 flags)
 	return false;
 }
 
-
 void CInventory::Update() 
 {
 	bool bActiveSlotVisible;
 	
 	if(m_iActiveSlot == NO_ACTIVE_SLOT || 
 		!m_slots[m_iActiveSlot].m_pIItem ||
-        m_slots[m_iActiveSlot].m_pIItem->IsHidden())
+		m_slots[m_iActiveSlot].m_pIItem->IsHidden())
 	{ 
 		bActiveSlotVisible = false;
 	}
@@ -715,8 +704,7 @@ PIItem CInventory::Same(const PIItem pIItem, bool bSearchRuck) const
 	return NULL;
 }
 
-//ищем на поясе вещь для слота 
-
+//ищем на поясе вещь для слота
 PIItem CInventory::SameSlot(const u32 slot, PIItem pIItem, bool bSearchRuck) const
 {
 	if(slot == NO_ACTIVE_SLOT) 	return NULL;
@@ -799,10 +787,9 @@ PIItem CInventory::item(CLASS_ID cls_id) const
 
 float CInventory::TotalWeight() const
 {
-	VERIFY(m_fTotalWeight>=0.f);
+	VERIFY(m_fTotalWeight>=0.0f);
 	return m_fTotalWeight;
 }
-
 
 float CInventory::CalcTotalWeight()
 {
@@ -822,7 +809,7 @@ u32 CInventory::dwfGetSameItemCount(const char* caSection, bool SearchAll)
 	{
 		PIItem	l_pIItem = *l_it;
 		if (l_pIItem && !xr_strcmp(l_pIItem->object().cNameSect(), caSection))
-            ++l_dwCount;
+			++l_dwCount;
 	}
 	
 	return		(l_dwCount);
@@ -866,8 +853,7 @@ CInventoryItem *CInventory::get_object_by_id(ALife::_OBJECT_ID tObjectID)
 	return		(0);
 }
 
-//скушать предмет 
-
+//скушать предмет
 bool CInventory::Eat(PIItem pIItem)
 {
 	R_ASSERT(pIItem->m_pCurrentInventory==this);
@@ -905,17 +891,18 @@ bool CInventory::InSlot(PIItem pIItem) const
 		return true;
 	return false;
 }
+
 bool CInventory::InBelt(PIItem pIItem) const
 {
 	if(Get(pIItem->object().ID(), false)) return true;
 	return false;
 }
+
 bool CInventory::InRuck(PIItem pIItem) const
 {
 	if(Get(pIItem->object().ID(), true)) return true;
 	return false;
 }
-
 
 bool CInventory::CanPutInSlot(PIItem pIItem) const
 {
@@ -929,6 +916,7 @@ bool CInventory::CanPutInSlot(PIItem pIItem) const
 	
 	return false;
 }
+
 //проверяет можем ли поместить вещь на пояс,
 //при этом реально ничего не меняется
 bool CInventory::CanPutInBelt(PIItem pIItem)
@@ -940,6 +928,7 @@ bool CInventory::CanPutInBelt(PIItem pIItem)
 
 	return FreeRoom_inBelt(m_belt, pIItem, BeltWidth(), 1);
 }
+
 //проверяет можем ли поместить вещь в рюкзак,
 //при этом реально ничего не меняется
 bool CInventory::CanPutInRuck(PIItem pIItem) const
@@ -948,7 +937,7 @@ bool CInventory::CanPutInRuck(PIItem pIItem) const
 	return true;
 }
 
-u32	CInventory::dwfGetObjectCount()
+u32 CInventory::dwfGetObjectCount()
 {
 	return		(m_all.size());
 }
@@ -960,7 +949,7 @@ CInventoryItem	*CInventory::tpfGetObjectByIndex(int iIndex)
 		int			i = 0;
 		for(TIItemContainer::iterator l_it = l_list.begin(); l_list.end() != l_it; ++l_it, ++i) 
 			if (i == iIndex)
-                return	(*l_it);
+				return	(*l_it);
 	}
 	else {
 		ai().script_engine().script_log	(ScriptStorage::eLuaMessageTypeError,"invalid inventory index!");
@@ -984,7 +973,6 @@ CInventoryItem	*CInventory::GetItemFromInventory(const char* caItemName)
 	return	(0);
 }
 
-
 bool CInventory::CanTakeItem(CInventoryItem *inventory_item) const
 {
 	if (inventory_item->object().getDestroy()) return false;
@@ -1002,7 +990,6 @@ bool CInventory::CanTakeItem(CInventoryItem *inventory_item) const
 
 	return	true;
 }
-
 
 u32  CInventory::BeltWidth() const
 {
@@ -1094,6 +1081,7 @@ void CInventory::SetSlotsBlocked(u16 mask, bool bBlock)
 				bChanged = true;
 		}
 	}
+
 	if(bChanged)
 	{
 		u32 ActiveSlot		= GetActiveSlot();

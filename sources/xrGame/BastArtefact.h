@@ -20,34 +20,34 @@ private:
 	typedef CArtefact inherited;
 
 public:
-					CBastArtefact			( );
-	virtual			~CBastArtefact			( );
+	CBastArtefact( );
+	virtual			~CBastArtefact( );
 
-	virtual void	Load					(const char* section);
-	virtual void	shedule_Update			(u32 dt);
+	virtual void	Load(const char* section);
+	virtual void	shedule_Update(u32 dt);
 
-	virtual BOOL	net_Spawn				(CSE_Abstract* DC);
-	virtual void	net_Destroy				( );
+	virtual BOOL	net_Spawn(CSE_Abstract* DC);
+	virtual void	net_Destroy( );
 
-	virtual void	Hit						(SHit* pHDS);
+	virtual void	Hit(SHit* pHDS);
 
-	virtual bool	Useful					( ) const;
+	virtual bool	Useful( ) const;
 
-	virtual void	feel_touch_new			(CObject* O);
-	virtual void	feel_touch_delete		(CObject* O);
-	virtual BOOL	feel_touch_contact		(CObject* O);
+	virtual void	feel_touch_new(CObject* O);
+	virtual void	feel_touch_delete(CObject* O);
+	virtual BOOL	feel_touch_contact(CObject* O);
 
-	bool			IsAttacking				( )
+	bool			IsAttacking( )
 	{
 		return NULL != m_AttakingEntity;
 	}
 
 protected:
-	virtual void	UpdateCLChild			( );
+	virtual void	UpdateCLChild( );
 
-	static void		ObjectContactCallback	(bool& do_colide, bool bo1, dContact& c, SGameMtl* material_1, SGameMtl* material_2);
+	static void		ObjectContactCallback(bool& do_colide, bool bo1, dContact& c, SGameMtl* material_1, SGameMtl* material_2);
 	//столкновение мочалки с сущностью
-	void			BastCollision			(CEntityAlive* pEntityAlive);
+	void			BastCollision(CEntityAlive* pEntityAlive);
 
 	//параметры артефакта
 
@@ -68,10 +68,10 @@ protected:
 	//список живых существ в зоне дос€гаемости артефакта
 	ALIVE_LIST		m_AliveList;
 	//то, что мы ударили
-	CEntityAlive*	m_pHitedEntity;
+	CEntityAlive* m_pHitedEntity;
 	//то что атакуем
-	CEntityAlive*	m_AttakingEntity;
+	CEntityAlive* m_AttakingEntity;
 
 public:
-	virtual void	setup_physic_shell		( );
+	virtual void	setup_physic_shell( );
 };

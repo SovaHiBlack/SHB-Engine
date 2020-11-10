@@ -10,12 +10,10 @@
 #include "inventory_item_object.h"
 
 CInventoryItemObject::CInventoryItemObject	()
-{
-}
+{ }
 
 CInventoryItemObject::~CInventoryItemObject	()
-{
-}
+{ }
 
 DLL_Pure *CInventoryItemObject::_construct	()
 {
@@ -79,7 +77,6 @@ void CInventoryItemObject::OnH_A_Independent()
 	CPhysicItem::OnH_A_Independent		();
 }
 
-
 void CInventoryItemObject::OnH_B_Chield		()
 {
 	CPhysicItem::OnH_B_Chield			();
@@ -118,12 +115,12 @@ void CInventoryItemObject::net_Destroy		()
 }
 
 void CInventoryItemObject::net_Import		(NET_Packet& P) 
-{	
+{
 	CInventoryItem::net_Import			(P);
 }
 
 void CInventoryItemObject::net_Export		(NET_Packet& P) 
-{	
+{
 	CInventoryItem::net_Export			(P);
 }
 
@@ -175,12 +172,12 @@ void CInventoryItemObject::make_Interpolation	()
 void CInventoryItemObject::PH_B_CrPr		()
 {
 	CInventoryItem::PH_B_CrPr			();
-}	
+}
 
 void CInventoryItemObject::PH_I_CrPr		()
 {
 	CInventoryItem::PH_I_CrPr			();
-} 
+}
 
 #ifdef DEBUG
 void CInventoryItemObject::PH_Ch_CrPr		()

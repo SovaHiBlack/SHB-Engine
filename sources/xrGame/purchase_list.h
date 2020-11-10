@@ -20,13 +20,11 @@ public:
 private:
 	DEFICITS				m_deficits;
 
-private:
 			void			process			(const CGameObject &owner, const shared_str &name, const u32 &count, const float &probability);
 
 public:
 			void			process			(CIniFile&ini_file, const char* section, CInventoryOwner &owner);
 
-public:
 	IC		void			deficit			(const shared_str &section, const float &deficit);
 	IC		float			deficit			(const shared_str &section) const;
 	IC		const DEFICITS	&deficits		() const;

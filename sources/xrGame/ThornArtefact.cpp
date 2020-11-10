@@ -4,17 +4,16 @@
 ///////////////////////////////////////////////////////////////
 
 #include "stdafx.h"
-#include "ThornArtifact.h"
-#include "PhysicsShell.h"
+
+#include "ThornArtefact.h"
+//#include "PhysicsShell.h"
 
 
-CThornArtefact::CThornArtefact(void) 
-{
-}
+CThornArtefact::CThornArtefact( )
+{ }
 
-CThornArtefact::~CThornArtefact(void) 
-{
-}
+CThornArtefact::~CThornArtefact( )
+{ }
 
 void CThornArtefact::Load(const char* section)
 {

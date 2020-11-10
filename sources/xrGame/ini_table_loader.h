@@ -6,7 +6,6 @@
 
 #pragma once
 
-
 //T_ITEM		-	тип элемента таблицы
 //					
 //T_INI_LOADER	-	тип класса CIni_IdToIndex, 
@@ -15,11 +14,9 @@
 //					если мы хотим сгененрировать несколько таблиц с одинаковыми
 //					T_ITEM и T_INI_LOADER
 
-
 #define TEMPLATE_SPECIALIZATION		template<typename T_ITEM, typename T_INI_LOADER, u16 TABLE_INDEX >
 #define TEMPLATE_SPECIALIZATION_D	template<typename T_ITEM, typename T_INI_LOADER, u16 TABLE_INDEX = 0>
 #define CSIni_Table	CIni_Table<T_ITEM, T_INI_LOADER, TABLE_INDEX>
-
 
 TEMPLATE_SPECIALIZATION_D
 class CIni_Table
@@ -30,7 +27,6 @@ public:
 
 	typedef						xr_vector<T_ITEM>						ITEM_VECTOR;
 	typedef						xr_vector<ITEM_VECTOR>					ITEM_TABLE;
-
 
 	ITEM_TABLE&			table			();
 	void				clear			();

@@ -1,18 +1,17 @@
 ///////////////////////////////////////////////////////////////
-// DummyArtifact.cpp
+// DummyArtefact.cpp
 // DummyArtefact - артефакт пустышка
 ///////////////////////////////////////////////////////////////
 
 #include "stdafx.h"
 
-#include "DummyArtifact.h"
-#include "PhysicsShell.h"
+#include "DummyArtefact.h"
+//#include "PhysicsShell.h"
 
-
-CDummyArtefact::CDummyArtefact(void) 
+CDummyArtefact::CDummyArtefact( )
 { }
 
-CDummyArtefact::~CDummyArtefact(void) 
+CDummyArtefact::~CDummyArtefact( )
 { }
 
 void CDummyArtefact::Load(const char* section)

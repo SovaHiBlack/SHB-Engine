@@ -1,16 +1,20 @@
 ///////////////////////////////////////////////////////////////
-// Needles.h
-// Needles - артефакт иголки
+// ThornArtefact.h
+// ThornArtefact - артефакт колючка
 ///////////////////////////////////////////////////////////////
 
 #pragma once
+
 #include "Artefact.h"
 
-class CNeedles: public CArtefact 
+class CThornArtefact : public CArtefact
 {
 private:
 	typedef CArtefact inherited;
+
 public:
-	CNeedles(void);
-	virtual ~CNeedles(void);
+	CThornArtefact( );
+	virtual ~CThornArtefact( );
+
+	virtual void Load(const char* section);
 };

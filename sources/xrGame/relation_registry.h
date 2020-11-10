@@ -25,8 +25,6 @@ public:
 	RELATION_REGISTRY  ();
 	virtual ~RELATION_REGISTRY ();
 
-public:	
-
 	template<typename T>
 	ALife::ERelationType GetRelationBetween			(T char1,T char2) const;
 
@@ -61,10 +59,8 @@ private:
 	CHARACTER_GOODWILL	 GetRankRelation			(CHARACTER_RANK_VALUE, CHARACTER_RANK_VALUE) const;
 	CHARACTER_GOODWILL	 GetReputationRelation		(CHARACTER_REPUTATION_VALUE, CHARACTER_REPUTATION_VALUE) const;
 
-
 	//реакцией на действия персонажей и соответствующее изменение отношения
 public:
-	
 	//список действий актера, за которые начисляются
 	//очки рейтинга, репутации или меняется отношения персонажа
 	//к группировке
@@ -78,8 +74,6 @@ public:
 	};
 	void Action (CEntityAlive* from, CEntityAlive* to, ERelationAction action);
 	
-public:	
-
 	struct FIGHT_DATA
 	{
 		FIGHT_DATA			();
@@ -112,10 +106,12 @@ private:
 	
 	FIGHT_DATA*									FindFight(u16 object_id, bool by_attacker/* = true*/);
 	static RELATION_MAP_SPOTS*					m_spot_names;
+
 public:
 	const shared_str&							GetSpotName			(ALife::ERelationType& type);
 	static CRelationRegistryWrapper&			relation_registry();
 	static void									clear_relation_registry();
+
 private:
 	static CRelationRegistryWrapper				*m_relation_registry;
 };

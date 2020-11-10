@@ -4,17 +4,15 @@
 ///////////////////////////////////////////////////////////////
 
 #include "stdafx.h"
-#include "ZudaArtifact.h"
-#include "PhysicsShell.h"
 
+#include "ZudaArtefact.h"
+//#include "PhysicsShell.h"
 
-CZudaArtefact::CZudaArtefact(void) 
-{
-}
+CZudaArtefact::CZudaArtefact( )
+{ }
 
-CZudaArtefact::~CZudaArtefact(void) 
-{
-}
+CZudaArtefact::~CZudaArtefact( )
+{ }
 
 void CZudaArtefact::Load(const char* section)
 {
