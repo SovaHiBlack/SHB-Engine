@@ -13,7 +13,7 @@
 #include "agent_location_manager.h"
 #include "agent_member_manager.h"
 #include "Missile.h"
-#include "explosive.h"
+#include "Explosive.h"
 #include "member_order.h"
 #include "ai/stalker/Stalker.h"
 #include "memory_manager.h"

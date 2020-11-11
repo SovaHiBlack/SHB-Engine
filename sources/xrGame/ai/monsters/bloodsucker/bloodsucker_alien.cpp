@@ -5,7 +5,7 @@
 #include "..\..\..\Level.h"
 #include "..\..\..\Actor.h"
 #include "..\..\..\Inventory.h"
-#include "../../../HudItem.h"
+//#include "..\..\..\HudItem.h"
 #include "..\..\..\..\ENGINE\CustomHUD.h"
 #include "../../../..\ENGINE\effector.h"
 #include "../../../..\ENGINE\effectorPP.h"

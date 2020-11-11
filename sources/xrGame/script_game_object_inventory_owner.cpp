@@ -26,7 +26,7 @@
 #include "movement_manager.h"
 #include "actorcondition.h"
 #include "level_graph.h"
-#include "HudItem.h"
+//#include "HudItem.h"
 #include "ui/UItalkWnd.h"//
 #include "ui/UITradeWnd.h"//
 #include "Inventory.h"

@@ -1435,7 +1435,7 @@
     <ClInclude Include="visual_memory_manager.h" />
     <ClInclude Include="visual_memory_manager_inline.h" />
     <ClInclude Include="visual_memory_params.h" />
-    <ClInclude Include="wallmark_manager.h" />
+    <ClInclude Include="WalmarkManager.h" />
     <ClInclude Include="Weapon.h" />
     <ClInclude Include="WeaponAK74.h" />
     <ClInclude Include="WeaponAmmo.h" />
@@ -1807,7 +1807,6 @@
     <ClCompile Include="Explosive.cpp" />
     <ClCompile Include="ExplosiveItem.cpp" />
     <ClCompile Include="ExplosiveRocket.cpp" />
-    <ClCompile Include="ExplosiveScript.cpp" />
     <ClCompile Include="GrenadeF1.cpp" />
     <ClCompile Include="FadedBallArtefact.cpp" />
     <ClCompile Include="FoodItem.cpp" />
@@ -2377,7 +2376,7 @@
     <ClCompile Include="vision_client.cpp" />
     <ClCompile Include="visual_memory_manager.cpp" />
     <ClCompile Include="visual_memory_params.cpp" />
-    <ClCompile Include="wallmark_manager.cpp" />
+    <ClCompile Include="WalmarkManager.cpp" />
     <ClCompile Include="Weapon.cpp" />
     <ClCompile Include="WeaponAK74.cpp" />
     <ClCompile Include="WeaponAmmo.cpp" />

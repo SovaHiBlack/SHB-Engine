@@ -103,7 +103,7 @@
 #include "BottleItem.h"//
 #include "explosiveitem.h"
 
-#include "infodocument.h"
+#include "InfoDocument.h"
 #include "attachable_item.h"
 
 #include "ScientificOutfit.h"
@@ -131,7 +131,7 @@
 #include "NoGravityZone.h"
 #include "SimpleDetector.h"
 
-#include "torch.h"
+#include "Torch.h"
 #include "Pda.h"
 
 #include "Projector.h"

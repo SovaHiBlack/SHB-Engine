@@ -13,7 +13,7 @@
 #include "PHMovementControl.h"
 //#include "Messages.h"
 //#include "PhysicsShellHolder.h"
-#include "explosive.h"
+#include "Explosive.h"
 #include "../ENGINE/net_utils.h"
 #include "PHWorld.h"
 #include "CharacterPhysicsSupport.h"

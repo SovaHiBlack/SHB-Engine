@@ -27,6 +27,7 @@
 #include "ui/UIStatic.h"//
 #include "CharacterPhysicsSupport.h"
 #include "InventoryBox.h"
+#include "HudItem.h"
 
 bool g_bAutoClearCrouch = true;
 
@@ -264,7 +265,7 @@ void CActor::IR_OnMouseMove(int dx, int dy)
 		cam_Active()->Move((d>0)?kUP:kDOWN, _abs(d));
 	}
 }
-#include "HudItem.h"
+
 bool CActor::use_Holder				(CHolderCustom* holder)
 {
 

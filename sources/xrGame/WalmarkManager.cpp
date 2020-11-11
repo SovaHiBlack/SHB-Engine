@@ -1,6 +1,6 @@
 #include "stdafx.h"
 
-#include "wallmark_manager.h"
+#include "WalmarkManager.h"
 #include "Level.h"
 #include "GameMtlLib.h"
 #include "CalculateTriangle.h"
@@ -50,39 +50,10 @@ void CWalmarkManager::AddWallmark(const Fvector& dir, const Fvector& start_pos,
 	}
 }
 
-/*
-void CWalmarkManager::PlaceWallmark(const Fvector& dir, const Fvector& start_pos, 
-									  float trace_dist, float wallmark_size,
-									  SHADER_VECTOR& wallmarks_vector,CObject* ignore_obj)
-{
-	collide::rq_result	result;
-	BOOL				reach_wall = 
-		Level().ObjectSpace.RayPick(
-		start_pos,
-		dir,
-		trace_dist, 
-		collide::rqtBoth,
-		result,
-		ignore_obj
-		)
-		&&
-		!result.O;
-
-	//если кровь долетела до статического объекта
-	if(reach_wall)
-	{
-		AddWallmark(dir,start_pos,result.range,wallmark_size,wallmarks_vector,result.element);
-	}
-}
-*/
-
 void CWalmarkManager::PlaceWallmarks( const Fvector& start_pos)
 {
 	m_pos				= start_pos;
-//.	const char*				sect				= pSettings->r_string(m_owner->cNameSect(), "wallmark_section");
 	Load				("explosion_marks");
-
-//.	Device.seqParallel.push_back	(fastdelegate::FastDelegate0<>(this,&CWalmarkManager::StartWorkflow));
 
 	StartWorkflow		();
 }
@@ -96,7 +67,6 @@ void CWalmarkManager::StartWorkflow()
 	float				m_wallmark_size		= pSettings->r_float(sect,"size");
 	u32					max_wallmarks_count = pSettings->r_u32(sect,"max_count");
 
-
 	XRC.box_options							(0);
 	XRC.box_query							(Level().ObjectSpace.GetStaticModel(),m_pos,Fvector().set(m_trace_dist,m_trace_dist,m_trace_dist));
 
@@ -108,7 +78,6 @@ void CWalmarkManager::StartWorkflow()
 //.	float			ndist					= dInfinity;
 //.	Fvector			npoint;
 	u32				wm_count	= 0;
-
 
 	u32 _ray_test		= 0;
 //	u32 _tri_behind		= 0;
@@ -146,7 +115,6 @@ void CWalmarkManager::StartWorkflow()
 		_tri[2]						= V_array[_t->verts[2]];
 
 		float dist					= Distance (m_pos, _tri, pfSParam, pfTParam, end_point, pdir);
-
 
 /*		
 		if (c==tdBehind){
@@ -192,13 +160,6 @@ void CWalmarkManager::StartWorkflow()
 	DBG_ClosedCashedDraw	(10000);
 */
 }
-/*
-void CWalmarkManager::PlaceWallmarks(const Fvector& start_pos,CObject* ignore_obj)
-{
-	if(m_wallmarks)
-			PlaceWallmarks(start_pos,m_trace_dist,m_wallmark_size,*m_wallmarks,ignore_obj);
-}
-*/
 
 void CWalmarkManager::Load (const char* section)
 {
@@ -218,9 +179,6 @@ void CWalmarkManager::Load (const char* section)
 		m_wallmarks.push_back	(s);
 	}
 }
-
-
-
 
 float Distance (const Fvector& rkPoint, const Fvector rkTri[3], float& pfSParam, float& pfTParam, Fvector& closest, Fvector& dir)
 {

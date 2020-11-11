@@ -5,6 +5,6 @@
 class CSimpleDetector : public CCustomDetector
 {
 public:
-				CSimpleDetector		( );
-	virtual		~CSimpleDetector	( );
+	CSimpleDetector( );
+	virtual		~CSimpleDetector( );
 };

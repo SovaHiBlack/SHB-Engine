@@ -18,7 +18,7 @@
 #include "ef_pattern.h"
 #include "ai/stalker/Stalker.h"
 #include "Inventory.h"
-#include "torch.h"
+#include "Torch.h"
 #include "..\ENGINE\skeletoncustom.h"
 #include "memory_manager.h"
 #include "enemy_manager.h"

@@ -4824,9 +4824,6 @@
     <ClInclude Include="ExplosiveItem.h">
       <Filter>Core\Client\Objects\items &amp; weapons\Explosives</Filter>
     </ClInclude>
-    <ClInclude Include="wallmark_manager.h">
-      <Filter>Core\Client\Objects\items &amp; weapons\Explosives</Filter>
-    </ClInclude>
     <ClInclude Include="CustomZone.h">
       <Filter>Core\Client\Objects\zones\CustomZone</Filter>
     </ClInclude>
@@ -5960,6 +5957,9 @@
     </ClInclude>
     <ClInclude Include="BlackDropsArtefact.h">
       <Filter>Core\Client\Objects\items &amp; weapons\Artefacts\BlackDropsArtefact</Filter>
+    </ClInclude>
+    <ClInclude Include="WalmarkManager.h">
+      <Filter>Core\Client\Objects\items &amp; weapons\Explosives</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -7508,12 +7508,6 @@
     <ClCompile Include="ExplosiveItem.cpp">
       <Filter>Core\Client\Objects\items &amp; weapons\Explosives</Filter>
     </ClCompile>
-    <ClCompile Include="ExplosiveScript.cpp">
-      <Filter>Core\Client\Objects\items &amp; weapons\Explosives</Filter>
-    </ClCompile>
-    <ClCompile Include="wallmark_manager.cpp">
-      <Filter>Core\Client\Objects\items &amp; weapons\Explosives</Filter>
-    </ClCompile>
     <ClCompile Include="CustomZone.cpp">
       <Filter>Core\Client\Objects\zones\CustomZone</Filter>
     </ClCompile>
@@ -8617,6 +8611,9 @@
     </ClCompile>
     <ClCompile Include="BlackDropsArtefact.cpp">
       <Filter>Core\Client\Objects\items &amp; weapons\Artefacts\BlackDropsArtefact</Filter>
+    </ClCompile>
+    <ClCompile Include="WalmarkManager.cpp">
+      <Filter>Core\Client\Objects\items &amp; weapons\Explosives</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
