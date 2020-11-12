@@ -48,7 +48,7 @@ typedef fastdelegate::FastDelegate1<PropItem*> 					TOnClick;
 
 class PropValue
 {
-	friend class		CPropHelper;
+//	friend class		CPropHelper;
     friend class		PropItem;
 protected:
 	PropItem*			m_Owner;
@@ -115,7 +115,7 @@ public:
 
 class PropItem
 {
-	friend class		CPropHelper;
+//	friend class		CPropHelper;
     friend class		TProperties;
     shared_str			key;
     EPropType			type;

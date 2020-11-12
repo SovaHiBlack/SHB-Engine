@@ -23,23 +23,22 @@ class CActorCondition;
 class CCustomOutfit;
 class CKnownContactsRegistryWrapper;
 class CEncyclopediaRegistryWrapper;
-class CGameTaskRegistryWrapper;
+//class CGameTaskRegistryWrapper;
 class CGameNewsRegistryWrapper;
 class CCharacterPhysicsSupport;
 // refs
 class ENGINE_API CCameraBase;
 class ENGINE_API CBoneInstance;
 class ENGINE_API CBlend;
-class CWeaponList;
+//class CWeaponList;
 class CEffectorBobbing;
 class CHolderCustom;
 class CUsableScriptObject;
 
-struct SShootingEffector;
+//struct SShootingEffector;
 struct SSleepEffector;
 class CSleepEffectorPP;
 class CInventoryBox;
-//class CActorEffector;
 
 class CHudItem;
 class CArtefact;
@@ -48,7 +47,7 @@ struct SActorMotions;
 struct SActorVehicleAnims;
 class  CActorCondition;
 class SndShockEffector;
-class CActorFollowerMngr;
+
 class CGameTaskManager;
 
 class CCameraShotEffector;
@@ -383,13 +382,8 @@ public:
 	CGameObject*			ObjectWeLookingAt			() {return m_pObjectWeLookingAt;}
 	CInventoryOwner*		PersonWeLookingAt			() {return m_pPersonWeLookingAt;}
 	const char* GetDefaultActionForObject	() {return *m_sDefaultObjAction;}
-//.	void					AddFollower					(u16 id);
-//.	void					RemoveFollower				(u16 id);
-//.	void					SendCmdToFollowers			(int cmd);
+
 protected:
-//.	void					DestroyFollowerInternal();//hack
-//.	CActorFollowerMngr&		Followers	();
-//.	CActorFollowerMngr*		m_followers;
 	CUsableScriptObject*	m_pUsableObject;
 	// Person we're looking at
 	CInventoryOwner*		m_pPersonWeLookingAt;

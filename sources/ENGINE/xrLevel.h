@@ -100,8 +100,8 @@ public:
 	}
 
 	friend class	CLevelGraph;
-	friend struct	CNodePositionCompressor;
-	friend struct	CNodePositionConverter;
+//	friend struct	CNodePositionCompressor;
+//	friend struct	CNodePositionConverter;
 };
 
 struct NodeCompressed
@@ -189,9 +189,9 @@ public:
 	}
 
 	friend class	CLevelGraph;
-	friend struct	CNodeCompressed;
-	friend class	CNodeRenumberer;
-	friend class	CRenumbererConverter;
+//	friend struct	CNodeCompressed;
+//	friend class	CNodeRenumberer;
+//	friend class	CRenumbererConverter;
 };									// 2+2+5+12 = 21b
 
 struct SNodePositionOld

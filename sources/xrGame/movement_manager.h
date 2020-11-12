@@ -34,14 +34,14 @@ template <
 	typename _index_type
 >
 class CBasePathManager;
-
+/*
 template <
 	typename _dist_type,
 	typename _index_type,
 	typename _iteration_type
 >
 struct SVertexType;
-
+*/
 template <
 	typename _dist_type,
 	typename _index_type,

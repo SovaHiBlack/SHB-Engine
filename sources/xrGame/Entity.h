@@ -10,7 +10,7 @@ class	ENGINE_API C3DSound;
 class	ENGINE_API CMotionDef;
 class	ENGINE_API CKinematics;
 class	ENGINE_API CBoneInstance;
-class	CWeaponList;
+//class	CWeaponList;
 class   CPHMovementControl;
 class	CHudItem;
 

@@ -320,14 +320,11 @@ float CUIGlobalMap::CalcOpenRect(const Fvector2& center_point, Frect& map_desire
 CUILevelMap::CUILevelMap(CUIMapWnd* p)
 {
 	m_mapWnd			= p;
-//	m_anomalies_map		= NULL;
 	Show				(false);
 }
 
 CUILevelMap::~CUILevelMap()
-{
-//	xr_delete			(m_anomalies_map);
-}
+{ }
 
 void CUILevelMap::Draw()
 {
@@ -361,18 +358,6 @@ void CUILevelMap::Init	(shared_str name, CIniFile& gameLtx, const char* sh_name)
 	}
 #endif
 //	Msg("Succesfully loaded map %s. Zoom=%f",*name, kw);
-/*	
-	if(gameLtx.line_exist(MapName(),"anomalies_texture")){
-		const char* texture						= gameLtx.r_string	(MapName(),"anomalies_texture");
-		Fvector4 tmp						= gameLtx.r_fvector4(MapName(),"anomalies_texture_rect"); //lt,wh
-		Frect rect; rect.set				(tmp.x,tmp.y,tmp.x+tmp.z,tmp.y+tmp.w);
-		m_anomalies_map						= xr_new<CUIStatic>();
-		m_anomalies_map->Init				(texture,0.0f,0.0f,0.0f,0.0f);
-		m_anomalies_map->GetUIStaticItem().SetOriginalRect(rect);
-		m_anomalies_map->SetStretchTexture	(true);
-		m_anomalies_map->SetAutoDelete		(false);
-	}
-*/
 }
 
 void CUILevelMap::UpdateSpots		()
@@ -382,13 +367,7 @@ void CUILevelMap::UpdateSpots		()
 	Frect _r;
 	GetAbsoluteRect(_r);
 	if( FALSE==MapWnd()->ActiveMapRect().intersected(_r)) return;
-/*
-	if(m_anomalies_map){
-		m_anomalies_map->SetWndPos	(0.0f,0.0f);
-		m_anomalies_map->SetWndSize	(GetWndSize());
-		AttachChild					(m_anomalies_map);
-	}
-*/
+
 	Locations& ls =Level().MapManager().Locations();
 	for(Locations_it it=ls.begin(); it!=ls.end(); ++it){
 		if ((*it).location->Update())

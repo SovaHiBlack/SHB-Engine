@@ -23,9 +23,10 @@ namespace LevelGraph {
 
 class CCoverPoint;
 
-class CLevelGraph {
-private:
-	friend class CRenumbererConverter;
+class CLevelGraph
+{
+//private:
+//	friend class CRenumbererConverter;
 
 public:
 	typedef LevelGraph::CPosition	CPosition;

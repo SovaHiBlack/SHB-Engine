@@ -12,7 +12,7 @@ namespace PAPI
 	struct ParticleAction;
 	DEFINE_VECTOR(ParticleAction*,PAVec,PAVecIt);
 }
-struct EParticleAction;        
+//struct EParticleAction;        
 
 namespace PS
 {

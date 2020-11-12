@@ -2,7 +2,7 @@
 
 #include "PHSimpleCharacter.h"
 
-class CPhysicShellHolder;
+//class CPhysicShellHolder;
 
 struct SPHCharacterRestrictor
 {

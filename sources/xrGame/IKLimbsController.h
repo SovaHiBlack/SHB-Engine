@@ -1,12 +1,11 @@
 #pragma once
 
-
 #include "IK/IKLimb.h"
 
 class CKinematicsAnimated;
 class CGameObject	;
 class CBlend		;
-struct SIKCrlCalcData;
+//struct SIKCrlCalcData;
 
 class CIKLimbsController {
 public:

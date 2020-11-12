@@ -29,7 +29,7 @@ class CUIAnimatedStatic;
 class CUIOptionsItem;
 class CUIScrollView;
 class CUIListBox;
-class CUIStatsPlayerList;
+//class CUIStatsPlayerList;
 class CUIDragDropListEx;
 class CUIComboBox;
 class CUITrackBar;

@@ -10,7 +10,7 @@
 class CUILines : public IUITextControl, public CUISimpleWindow, public CDeviceResetNotifier
 {
 	friend class CUICustomEdit;
-	friend class CUICDkey;
+//	friend class CUICDkey;
 
 public:
 	CUILines( );

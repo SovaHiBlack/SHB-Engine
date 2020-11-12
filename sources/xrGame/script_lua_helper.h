@@ -3,7 +3,7 @@
 struct lua_State;
 struct Proto;
 struct lua_Debug;
-class CScriptFile;
+//class CScriptFile;
 class CScriptDebugger;
 
 class CDbgLuaHelper  

@@ -13,11 +13,9 @@
 class NET_Packet;
 
 class CALifeStorageManager : public virtual CALifeSimulatorBase {
-	friend class CALifeUpdatePredicate;
 protected:
 	typedef CALifeSimulatorBase inherited;
 
-protected:
 	string_path		m_save_name;
 	const char* m_section;
 

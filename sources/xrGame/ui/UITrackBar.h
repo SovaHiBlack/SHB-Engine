@@ -5,11 +5,11 @@
 
 class CUI3tButton;
 class CUIFrameLineWnd;
-class CUITrackButton;
+//class CUITrackButton;
 
 class CUITrackBar : public CUIWindow, public CUIOptionsItem 
 {
-	friend class CUITrackButton;
+//	friend class CUITrackButton;
 public:
 					CUITrackBar				();
 	// CUIOptionsItem

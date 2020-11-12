@@ -16,7 +16,7 @@
 
 class CScriptGameObject;
 class CLAItem;
-class CHelicopterMovManager;
+//class CHelicopterMovManager;
 class CHelicopter;
 
 enum EHeliHuntState{eEnemyNone,eEnemyPoint,eEnemyEntity};

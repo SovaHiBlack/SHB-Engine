@@ -30,7 +30,7 @@ class CMonsterCorpseCoverEvaluator;
 class CCoverEvaluatorFarFromEnemy;
 class CCoverEvaluatorCloseToEnemy;
 class CMonsterEventManager;
-class CJumping;
+//class CJumping;
 class CControlledEntityBase;
 class CMovementManager;
 class IStateManagerBase;

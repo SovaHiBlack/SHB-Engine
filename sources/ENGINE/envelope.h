@@ -148,7 +148,7 @@ struct st_Key
 using KeyVec = xr_vector<st_Key*>;
 using KeyIt = KeyVec::iterator;
 
-class CExporter;
+//class CExporter;
 
 class ENGINE_API CEnvelope
 {

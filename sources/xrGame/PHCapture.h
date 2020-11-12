@@ -4,7 +4,7 @@
 #include "GameObject.h"
 #include "PhysicsShellHolder.h"
 
-class CPhysicShellHolder;
+//class CPhysicShellHolder;
 class CPHCharacter;
 
 class CPHCapture : public CPHUpdateObject

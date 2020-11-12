@@ -10,8 +10,8 @@
 
 namespace LevelGraph {
 	class CHeader : private hdrNODES {
-	private:
-		friend class CRenumbererConverter;
+	//private:
+	//	friend class CRenumbererConverter;
 
 	public:
 		ICF	u32				version					() const;
@@ -25,8 +25,8 @@ namespace LevelGraph {
 	typedef NodePosition	CPosition;
 
 	class CVertex : private NodeCompressed {
-	private:
-		friend class CRenumbererConverter;
+	//private:
+	//	friend class CRenumbererConverter;
 
 	public:
 		ICF	u32				link					(int i) const;

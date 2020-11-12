@@ -3,7 +3,6 @@
 #include "UIStatic.h"//
 #include "UIWndCallback.h"
 
-class CUIGlobalMapSpot;
 class CUIMapWnd;
 
 class CUICustomMap : public CUIStatic, public CUIWndCallback
@@ -34,7 +33,6 @@ public:
 	virtual void	OptimalFit						(const Frect& r);
 
 	shared_str		MapName							() {return m_name;}
-	virtual CUIGlobalMapSpot*	GlobalMapSpot		() {return NULL;}
 
 	virtual void	Update							();
 	virtual void	SendMessage						(CUIWindow* pWnd, s16 msg, void* pData);
@@ -47,7 +45,6 @@ public:
 protected:
 	virtual void	UpdateSpots						() {};
 };
-
 
 class CUIGlobalMap: public CUICustomMap{
 	typedef  CUICustomMap inherited;
@@ -85,7 +82,6 @@ class CUILevelMap: public CUICustomMap{
 	typedef  CUICustomMap inherited;
 	CUIMapWnd*					m_mapWnd;
 	Frect						m_GlobalRect;			// virtual map size (meters)
-//	CUIStatic*					m_anomalies_map;
 
 private:
 								CUILevelMap			(const CUILevelMap &obj) {}
