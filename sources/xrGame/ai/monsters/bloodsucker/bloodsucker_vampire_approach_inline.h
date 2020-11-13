@@ -36,4 +36,3 @@ void CStateBloodsuckerVampireApproachAbstract::execute()
 	object->path().set_distance_to_end				(0.1f);
 	object->set_state_sound							(MonsterSound::eMonsterSoundAggressive);
 }
-

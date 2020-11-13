@@ -2094,18 +2094,6 @@
     <ClInclude Include="action_base_inline.h">
       <Filter>AI\AComponents\DecisionManagement\ActionManagement\ActionBase</Filter>
     </ClInclude>
-    <ClInclude Include="action_script_base.h">
-      <Filter>AI\AComponents\DecisionManagement\ActionManagement\ActionBase\ActionScriptBase</Filter>
-    </ClInclude>
-    <ClInclude Include="action_script_base_inline.h">
-      <Filter>AI\AComponents\DecisionManagement\ActionManagement\ActionBase\ActionScriptBase</Filter>
-    </ClInclude>
-    <ClInclude Include="script_action_wrapper.h">
-      <Filter>AI\AComponents\DecisionManagement\ActionManagement\ActionBase\ScriptActionWrapper</Filter>
-    </ClInclude>
-    <ClInclude Include="script_action_wrapper_inline.h">
-      <Filter>AI\AComponents\DecisionManagement\ActionManagement\ActionBase\ScriptActionWrapper</Filter>
-    </ClInclude>
     <ClInclude Include="action_planner.h">
       <Filter>AI\AComponents\DecisionManagement\ActionManagement\ActionPlanner</Filter>
     </ClInclude>
@@ -2650,9 +2638,6 @@
       <Filter>AI\ALife\interaction_manager\server_entities\human\object_handler</Filter>
     </ClInclude>
     <ClInclude Include="alife_human_object_handler_inline.h">
-      <Filter>AI\ALife\interaction_manager\server_entities\human\object_handler</Filter>
-    </ClInclude>
-    <ClInclude Include="alife_human_object_handler_save.h">
       <Filter>AI\ALife\interaction_manager\server_entities\human\object_handler</Filter>
     </ClInclude>
     <ClInclude Include="alife_monster_brain.h">
@@ -3386,9 +3371,6 @@
     </ClInclude>
     <ClInclude Include="ai\Monsters\Bloodsucker\bloodsucker_vampire_inline.h">
       <Filter>AI\AMonsters\monsters\Bloodsucker\Vampire State</Filter>
-    </ClInclude>
-    <ClInclude Include="ai\Monsters\Bloodsucker\bloodsucker_alien.h">
-      <Filter>AI\AMonsters\monsters\Bloodsucker\Alien Feature</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\Bloodsucker\bloodsucker_predator.h">
       <Filter>AI\AMonsters\monsters\Bloodsucker\Predator State</Filter>
@@ -5961,13 +5943,25 @@
     <ClInclude Include="WalmarkManager.h">
       <Filter>Core\Client\Objects\items &amp; weapons\Explosives</Filter>
     </ClInclude>
+    <ClInclude Include="ActionScriptBase_inline.h">
+      <Filter>AI\AComponents\DecisionManagement\ActionManagement\ActionBase\ActionScriptBase</Filter>
+    </ClInclude>
+    <ClInclude Include="ActionScriptBase.h">
+      <Filter>AI\AComponents\DecisionManagement\ActionManagement\ActionBase\ActionScriptBase</Filter>
+    </ClInclude>
+    <ClInclude Include="ScriptActionWrapper_inline.h">
+      <Filter>AI\AComponents\DecisionManagement\ActionManagement\ActionBase\ScriptActionWrapper</Filter>
+    </ClInclude>
+    <ClInclude Include="ScriptActionWrapper.h">
+      <Filter>AI\AComponents\DecisionManagement\ActionManagement\ActionBase\ScriptActionWrapper</Filter>
+    </ClInclude>
+    <ClInclude Include="ai\Monsters\Bloodsucker\BloodsuckerAlien.h">
+      <Filter>AI\AMonsters\monsters\Bloodsucker\Alien Feature</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="action_base_script.cpp">
       <Filter>AI\AComponents\DecisionManagement\ActionManagement\ActionBase</Filter>
-    </ClCompile>
-    <ClCompile Include="script_action_wrapper.cpp">
-      <Filter>AI\AComponents\DecisionManagement\ActionManagement\ActionBase\ScriptActionWrapper</Filter>
     </ClCompile>
     <ClCompile Include="action_planner_script.cpp">
       <Filter>AI\AComponents\DecisionManagement\ActionManagement\ActionPlanner</Filter>
@@ -6514,9 +6508,6 @@
     </ClCompile>
     <ClCompile Include="ai\Monsters\Bloodsucker\bloodsucker_vampire_effector.cpp">
       <Filter>AI\AMonsters\monsters\Bloodsucker</Filter>
-    </ClCompile>
-    <ClCompile Include="ai\Monsters\Bloodsucker\bloodsucker_alien.cpp">
-      <Filter>AI\AMonsters\monsters\Bloodsucker\Alien Feature</Filter>
     </ClCompile>
     <ClCompile Include="AI\Crow\ai_crow.cpp">
       <Filter>AI\AMonsters\monsters\Crow</Filter>
@@ -8614,6 +8605,12 @@
     </ClCompile>
     <ClCompile Include="WalmarkManager.cpp">
       <Filter>Core\Client\Objects\items &amp; weapons\Explosives</Filter>
+    </ClCompile>
+    <ClCompile Include="ScriptActionWrapper.cpp">
+      <Filter>AI\AComponents\DecisionManagement\ActionManagement\ActionBase\ScriptActionWrapper</Filter>
+    </ClCompile>
+    <ClCompile Include="ai\Monsters\Bloodsucker\BloodsuckerAlien.cpp">
+      <Filter>AI\AMonsters\monsters\Bloodsucker\Alien Feature</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -4,12 +4,13 @@
 
 class CBoar;
 
-class CBoarStateManager : public CMonsterStateManager<CBoar> {
+class CBoarStateManager : public CMonsterStateManager<CBoar>
+{
 	typedef CMonsterStateManager<CBoar> inherited;
 
 public:
 
-	CBoarStateManager(CBoar*monster);
+	CBoarStateManager(CBoar* monster);
 
-	virtual void	execute				();
+	virtual void	execute( );
 };

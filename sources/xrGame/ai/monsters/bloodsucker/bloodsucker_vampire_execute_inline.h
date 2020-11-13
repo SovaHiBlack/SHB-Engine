@@ -166,4 +166,3 @@ void CStateBloodsuckerVampireExecuteAbstract::look_head()
 
 #undef TEMPLATE_SPECIALIZATION
 #undef CStateBloodsuckerVampireExecuteAbstract
-

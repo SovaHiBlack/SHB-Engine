@@ -8,7 +8,7 @@
 
 #pragma once
 
-#include "action_script_base.h"
+#include "ActionScriptBase.h"
 
 class CStalker;
 

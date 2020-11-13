@@ -117,8 +117,6 @@ void CBloodsuckerStateAttackAbstract::execute()
 	//////////////////////////////////////////////////////////////////////////
 }
 
-
-
 TEMPLATE_SPECIALIZATION
 void CBloodsuckerStateAttackAbstract::update_invisibility()
 {
@@ -204,4 +202,3 @@ void CBloodsuckerStateAttackAbstract::setup_substates()
 
 #undef TEMPLATE_SPECIALIZATION
 #undef CBloodsuckerStateAttackAbstract
-

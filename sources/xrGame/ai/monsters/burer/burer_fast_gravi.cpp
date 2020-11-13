@@ -1,4 +1,5 @@
 #include "stdafx.h"
+
 #include "burer_fast_gravi.h"
 #include "burer.h"
 #include "../control_animation_base.h"
@@ -7,7 +8,7 @@
 
 bool CBurerFastGravi::check_start_conditions()
 {
-	if (is_active())				return false;	
+	if (is_active())				return false;
 	if (m_man->is_captured_pure())	return false;
 	if (!m_object->EnemyMan.get_enemy()) return false;
 	
@@ -44,4 +45,3 @@ void CBurerFastGravi::process_hit()
 {
 	m_object->HitEntity(m_object->EnemyMan.get_enemy(), 1.f, 100.f, m_object->Direction());
 }
-

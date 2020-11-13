@@ -1,7 +1,5 @@
 #pragma once
 
-#pragma once
-
 #include "../states/state_move_to_point.h"
 #include "bloodsucker_predator_lite.h"
 
@@ -108,7 +106,6 @@ void CBloodsuckerStateAttackHideAbstract::setup_substates()
 		state->fill_data_with(&data, sizeof(SStateDataMoveToPointEx));
 		return;
 	}
-
 }
 
 TEMPLATE_SPECIALIZATION
@@ -140,10 +137,8 @@ void CBloodsuckerStateAttackHideAbstract::select_camp_point()
 	if (m_target_node == u32(-1)) 
 		m_target_node = object->ai_location().level_vertex_id();
 
-
 	monster_squad().get_squad(object)->lock_cover(m_target_node);
 }
 
 #undef TEMPLATE_SPECIALIZATION
 #undef CBloodsuckerStateAttackHideAbstract
-

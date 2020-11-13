@@ -9,9 +9,10 @@
 class CCharacterPhysicsSupport;
 class CBurerFastGravi;
 
-class CBurer :	public CBaseMonster,
-				public CTelekinesis,
-				public CScanningAbility<CBurer> {
+class CBurer : public CBaseMonster,
+	public CTelekinesis,
+	public CScanningAbility<CBurer>
+{
 
 	typedef		CBaseMonster				inherited;
 
@@ -24,13 +25,14 @@ public:
 
 	static		bool	can_scan;
 
-				u32		last_hit_frame;
-				u32		time_last_scan;
-	
+	u32		last_hit_frame;
+	u32		time_last_scan;
+
 
 	typedef		CTelekinesis				TTelekinesis;
 
-	struct	GraviObject {
+	struct	GraviObject
+	{
 		bool		active;
 		Fvector		cur_pos;
 		Fvector		target_pos;
@@ -38,24 +40,26 @@ public:
 
 		u32			time_last_update;
 
-		const CEntityAlive *enemy;
-		
-		GraviObject() {
+		const CEntityAlive* enemy;
+
+		GraviObject( )
+		{
 			active = false;
 			enemy = 0;
 		}
-		
-		
-		void		activate(const CEntityAlive *e, const Fvector &cp, const Fvector &tp) {
-			active				= true;
-			from_pos			= cp;
-			cur_pos				= cp;
-			target_pos			= tp;
-			time_last_update	= Device.dwTimeGlobal;
-			enemy				= e;
+
+		void		activate(const CEntityAlive* e, const Fvector& cp, const Fvector& tp)
+		{
+			active = true;
+			from_pos = cp;
+			cur_pos = cp;
+			target_pos = tp;
+			time_last_update = Device.dwTimeGlobal;
+			enemy = e;
 		}
 
-		void		deactivate() {
+		void		deactivate( )
+		{
 			active = false;
 		}
 
@@ -69,19 +73,18 @@ public:
 	// Sounds
 	ref_sound	sound_gravi_wave;
 	ref_sound	sound_scan;
-	
+
 	ref_sound	sound_tele_hold;
 	ref_sound	sound_tele_throw;
 
-	enum EBurerSounds {
-		eAdditionalSounds			= MonsterSound::eMonsterSoundCustom,
+	enum EBurerSounds
+	{
+		eAdditionalSounds = MonsterSound::eMonsterSoundCustom,
 
-		eMonsterSoundGraviAttack	= eAdditionalSounds | 0,
-		eMonsterSoundTeleAttack		= eAdditionalSounds | 1,
-	};	
+		eMonsterSoundGraviAttack = eAdditionalSounds | 0,
+		eMonsterSoundTeleAttack = eAdditionalSounds | 1,
+	};
 	//////////////////////////////////////////////////////////////////////////
-
-
 
 	u32		m_gravi_speed;
 	u32		m_gravi_step;
@@ -90,7 +93,7 @@ public:
 	float	m_gravi_impulse_to_objects;
 	float	m_gravi_impulse_to_enemy;
 	float	m_gravi_hit_power;
-	
+
 
 	u32		m_tele_max_handled_objects;
 	u32		m_tele_time_to_hold;
@@ -102,42 +105,51 @@ public:
 	bool	m_shield_active;
 	const char* particle_fire_shield;
 
-	CBurerFastGravi	*m_fast_gravi;
+	CBurerFastGravi* m_fast_gravi;
 
 public:
-					CBurer				();
-	virtual			~CBurer				();	
+	CBurer( );
+	virtual			~CBurer( );
 
 
-	virtual void	reinit				();
-	virtual void	reload				(const char* section);
+	virtual void	reinit( );
+	virtual void	reload(const char* section);
 
-	virtual void	Load				(const char* section);
+	virtual void	Load(const char* section);
 
-	virtual void	net_Destroy			();
-	virtual void	net_Relcase			(CObject *O);
-	virtual	void	shedule_Update		(u32 dt);
-	virtual void	UpdateCL			();
-	virtual	void	Hit					(SHit* pHDS);
-	virtual void	Die					(CObject* who);
-			void	ProcessTurn			();
-	virtual void	CheckSpecParams		(u32 spec_params);
+	virtual void	net_Destroy( );
+	virtual void	net_Relcase(CObject* O);
+	virtual	void	shedule_Update(u32 dt);
+	virtual void	UpdateCL( );
+	virtual	void	Hit(SHit* pHDS);
+	virtual void	Die(CObject* who);
+	void	ProcessTurn( );
+	virtual void	CheckSpecParams(u32 spec_params);
 
-			void	UpdateGraviObject	();
+	void	UpdateGraviObject( );
 
-			void	StartGraviPrepare	();
-			void	StopGraviPrepare	();
+	void	StartGraviPrepare( );
+	void	StopGraviPrepare( );
 
-			void	StartTeleObjectParticle(CGameObject *pO);
-			void	StopTeleObjectParticle(CGameObject *pO);
+	void	StartTeleObjectParticle(CGameObject* pO);
+	void	StopTeleObjectParticle(CGameObject* pO);
 
-			void	ActivateShield		() {m_shield_active = true;}
-			void	DeactivateShield	() {m_shield_active = false;}
+	void	ActivateShield( )
+	{
+		m_shield_active = true;
+	}
+	void	DeactivateShield( )
+	{
+		m_shield_active = false;
+	}
 
-	virtual bool	ability_distant_feel() {return true;}
+	virtual bool	ability_distant_feel( )
+	{
+		return true;
+	}
 
-	virtual void	on_scanning			();
-	virtual void	on_scan_success		();
+	virtual void	on_scanning( );
+	virtual void	on_scan_success( );
 
 public:
 	SAnimationTripleData	anim_triple_gravi;
@@ -145,7 +157,7 @@ public:
 
 
 #ifdef DEBUG
-	virtual CBaseMonster::SDebugInfo show_debug_info();
+	virtual CBaseMonster::SDebugInfo show_debug_info( );
 #endif
 
 

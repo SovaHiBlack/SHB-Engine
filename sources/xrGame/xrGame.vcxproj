@@ -183,8 +183,8 @@
     <ClInclude Include="action_planner_inline.h" />
     <ClInclude Include="action_planner_script.h" />
     <ClInclude Include="action_planner_script_inline.h" />
-    <ClInclude Include="action_script_base.h" />
-    <ClInclude Include="action_script_base_inline.h" />
+    <ClInclude Include="ActionScriptBase.h" />
+    <ClInclude Include="ActionScriptBase_inline.h" />
     <ClInclude Include="Actor.h" />
     <ClInclude Include="ActorCondition.h" />
     <ClInclude Include="ActorEffector.h" />
@@ -231,7 +231,7 @@
     <ClInclude Include="ai\Monsters\BaseMonster\BaseMonster.h" />
     <ClInclude Include="ai\Monsters\BaseMonster\BaseMonster_inline.h" />
     <ClInclude Include="ai\Monsters\Bloodsucker\bloodsucker.h" />
-    <ClInclude Include="ai\Monsters\Bloodsucker\bloodsucker_alien.h" />
+    <ClInclude Include="ai\Monsters\Bloodsucker\BloodsuckerAlien.h" />
     <ClInclude Include="ai\Monsters\Bloodsucker\bloodsucker_attack_state.h" />
     <ClInclude Include="ai\Monsters\Bloodsucker\bloodsucker_attack_state_hide.h" />
     <ClInclude Include="ai\Monsters\Bloodsucker\bloodsucker_attack_state_hide_inline.h" />
@@ -525,7 +525,6 @@
     <ClInclude Include="alife_human_brain_save.h" />
     <ClInclude Include="alife_human_object_handler.h" />
     <ClInclude Include="alife_human_object_handler_inline.h" />
-    <ClInclude Include="alife_human_object_handler_save.h" />
     <ClInclude Include="alife_interaction_manager.h" />
     <ClInclude Include="alife_level_registry.h" />
     <ClInclude Include="alife_level_registry_inline.h" />
@@ -1046,8 +1045,8 @@
     <ClInclude Include="script_action_planner_action_wrapper.h" />
     <ClInclude Include="script_action_planner_action_wrapper_inline.h" />
     <ClInclude Include="script_action_planner_wrapper.h" />
-    <ClInclude Include="script_action_wrapper.h" />
-    <ClInclude Include="script_action_wrapper_inline.h" />
+    <ClInclude Include="ScriptActionWrapper.h" />
+    <ClInclude Include="ScriptActionWrapper_inline.h" />
     <ClInclude Include="script_animation_action.h" />
     <ClInclude Include="script_animation_action_inline.h" />
     <ClInclude Include="script_binder.h" />
@@ -1546,7 +1545,7 @@
     <ClCompile Include="ai\Monsters\BaseMonster\BaseMonster_startup.cpp" />
     <ClCompile Include="ai\Monsters\BaseMonster\BaseMonster_think.cpp" />
     <ClCompile Include="ai\Monsters\Bloodsucker\bloodsucker.cpp" />
-    <ClCompile Include="ai\Monsters\Bloodsucker\bloodsucker_alien.cpp" />
+    <ClCompile Include="ai\Monsters\Bloodsucker\BloodsuckerAlien.cpp" />
     <ClCompile Include="ai\Monsters\Bloodsucker\bloodsucker_state_manager.cpp" />
     <ClCompile Include="ai\Monsters\Bloodsucker\bloodsucker_vampire_effector.cpp" />
     <ClCompile Include="ai\monsters\boar\Boar.cpp" />
@@ -2029,7 +2028,7 @@
     <ClCompile Include="script_action_condition_script.cpp" />
     <ClCompile Include="script_action_planner_action_wrapper.cpp" />
     <ClCompile Include="script_action_planner_wrapper.cpp" />
-    <ClCompile Include="script_action_wrapper.cpp" />
+    <ClCompile Include="ScriptActionWrapper.cpp" />
     <ClCompile Include="script_animation_action.cpp" />
     <ClCompile Include="script_animation_action_script.cpp" />
     <ClCompile Include="script_binder.cpp" />

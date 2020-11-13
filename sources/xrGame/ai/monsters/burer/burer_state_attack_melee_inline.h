@@ -10,27 +10,25 @@
 #define MAX_DIST_MELEE_ATTACK	9.f
 
 TEMPLATE_SPECIALIZATION
-CStateBurerAttackMeleeAbstract::CStateBurerAttackMelee(_Object *obj) : inherited(obj)
-{
-}
+CStateBurerAttackMeleeAbstract::CStateBurerAttackMelee(_Object* obj) : inherited(obj)
+{ }
 
 TEMPLATE_SPECIALIZATION
-bool CStateBurerAttackMeleeAbstract::check_start_conditions()
+bool CStateBurerAttackMeleeAbstract::check_start_conditions( )
 {
-	float dist = object->Position().distance_to(object->EnemyMan.get_enemy()->Position());
+	float dist = object->Position( ).distance_to(object->EnemyMan.get_enemy( )->Position( ));
 	if (dist > MIN_DIST_MELEE_ATTACK) return false;
 
 	return true;
 }
 
 TEMPLATE_SPECIALIZATION
-bool CStateBurerAttackMeleeAbstract::check_completion()
+bool CStateBurerAttackMeleeAbstract::check_completion( )
 {
-	float dist = object->Position().distance_to(object->EnemyMan.get_enemy()->Position());
+	float dist = object->Position( ).distance_to(object->EnemyMan.get_enemy( )->Position( ));
 	if (dist < MAX_DIST_MELEE_ATTACK) return false;
 
 	return true;
-
 }
 
 #undef TEMPLATE_SPECIALIZATION

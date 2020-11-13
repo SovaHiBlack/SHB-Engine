@@ -11,7 +11,6 @@
 #include "../../../actor_memory.h"
 #include "../../../visual_memory_manager.h"
 
-
 #define TEMPLATE_SPECIALIZATION template <\
 	typename _Object\
 >

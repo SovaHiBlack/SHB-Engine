@@ -11,9 +11,9 @@
 class CDamageManager
 {
 protected:
-	float				m_default_hit_factor;
-	float				m_default_wound_factor;
-	CObject*			m_object;
+	float								m_default_hit_factor;
+	float								m_default_wound_factor;
+	CObject*							m_object;
 
 public:
 						CDamageManager	( );
@@ -26,6 +26,6 @@ public:
 
 private:
 	void				load_section	(const char* section, CIniFile* ini);
-	// init default params
+	//init default params
 	void				init_bones		(const char* section, CIniFile* ini);
 };

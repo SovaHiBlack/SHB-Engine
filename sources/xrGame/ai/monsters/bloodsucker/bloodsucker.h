@@ -5,7 +5,7 @@
 #include "../controlled_actor.h"
 #include "../anim_triple.h"
 #include "../../../script_export_space.h"
-#include "bloodsucker_alien.h"
+#include "BloodsuckerAlien.h"
 
 class CAI_Bloodsucker : public CBaseMonster, 
 						public CControlledActor {
@@ -47,7 +47,6 @@ private:
 			void			vfAssignBones			();
 			void			LookDirection			(Fvector to_dir, float bone_turn_speed);
 
-
 	bonesManipulation		Bones;
 
 	CBoneInstance			*bone_spine;
@@ -56,7 +55,6 @@ private:
 	//--------------------------------------------------------------------
 	// Invisibility
 	//--------------------------------------------------------------------
-private:
 	SMotionVel				invisible_vel;
 	const char* invisible_particle_name;
 
@@ -67,8 +65,6 @@ public:
 	//--------------------------------------------------------------------
 	// Vampire
 	//--------------------------------------------------------------------
-public:
-
 	u32						m_vampire_min_delay;
 	SAnimationTripleData	anim_triple_vampire;
 
@@ -95,11 +91,9 @@ public:
 
 			void			set_alien_control		(bool val);
 
-
 	//--------------------------------------------------------------------
 	// Predator
 	//--------------------------------------------------------------------
-public:
 	shared_str				m_visual_default;
 	const char* m_visual_predator;
 	bool					m_predator;
@@ -112,8 +106,6 @@ public:
 	//--------------------------------------------------------------------
 	// Sounds
 	//--------------------------------------------------------------------
-public:
-
 	enum EBloodsuckerSounds {
 		eAdditionalSounds		= MonsterSound::eMonsterSoundCustom,
 
@@ -130,8 +122,6 @@ public:
 	};
 
 	//--------------------------------------------------------------------
-
-public:
 			void	set_manual_control	(bool value) {}
 			void	manual_activate		();
 			void	manual_deactivate	();

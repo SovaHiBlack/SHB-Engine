@@ -80,7 +80,6 @@ void CStateBloodsuckerVampireAbstract::check_force_state()
 	}
 }
 
-
 TEMPLATE_SPECIALIZATION
 void CStateBloodsuckerVampireAbstract::finalize()
 {
@@ -137,14 +136,12 @@ bool CStateBloodsuckerVampireAbstract::check_completion()
 	return false;
 }
 
-
 TEMPLATE_SPECIALIZATION
 void CStateBloodsuckerVampireAbstract::setup_substates()
 {
 	state_ptr state = get_state_current();
 
 	if (current_substate == eStateVampire_RunAway) {
-
 		SStateHideFromPoint		data;
 		data.point				= object->EnemyMan.get_enemy_position();
 		data.accelerated		= true;
@@ -164,4 +161,3 @@ void CStateBloodsuckerVampireAbstract::setup_substates()
 
 #undef TEMPLATE_SPECIALIZATION
 #undef CStateBloodsuckerVampireAbstract
-

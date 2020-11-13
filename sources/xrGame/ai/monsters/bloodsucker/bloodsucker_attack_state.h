@@ -1,4 +1,5 @@
 #pragma once
+
 #include "../states/monster_state_attack.h"
 
 template<typename _Object>

@@ -7,7 +7,7 @@
 ////////////////////////////////////////////////////////////////////////////
 #include "stdafx.h"
 
-#include "script_action_wrapper.h"
+#include "ScriptActionWrapper.h"
 #include "script_game_object.h"
 
 using namespace luabind;
