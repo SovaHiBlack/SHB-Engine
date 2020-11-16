@@ -21,8 +21,8 @@ class CStateBurerAttackGravi : public CState<_Object>
 public:
 	CStateBurerAttackGravi(_Object* obj);
 
-	virtual	void		initialize( );
-	virtual	void		execute( );
+	virtual void		initialize( );
+	virtual void		execute( );
 	virtual void		finalize( );
 	virtual void		critical_finalize( );
 

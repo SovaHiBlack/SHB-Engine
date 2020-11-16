@@ -104,7 +104,11 @@ void CBoar::Load(const char* section)
 void CBoar::reinit( )
 {
 	inherited::reinit( );
-	if (CCustomMonster::use_simplified_visual( ))	return;
+	if (CCustomMonster::use_simplified_visual( ))
+	{
+		return;
+	}
+
 	com_man( ).add_rotation_jump_data("stand_jump_left_0", 0, "stand_jump_right_0", 0, PI - PI_DIV_6, SControlRotationJumpData::eStopAtOnce | SControlRotationJumpData::eRotateOnce);
 }
 
@@ -112,7 +116,10 @@ void CBoar::BoneCallback(CBoneInstance* B)
 {
 	CBoar* P = static_cast<CBoar*>(B->Callback_Param);
 
-	if (!P->look_at_enemy) return;
+	if (!P->look_at_enemy)
+	{
+		return;
+	}
 
 	Fmatrix M;
 	M.setHPB(0.0f, -P->_cur_delta, 0.0f);
