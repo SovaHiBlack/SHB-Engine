@@ -1,10 +1,5 @@
-////////////////////////////////////////////////////////////////////////////
-//	Module 		: ef_primary.h
-//	Created 	: 13.06.2003
-//	Modified 	: 13.06.2003
-//	Author		: Dmitriy Iassenev
-//	Description : Primary function classes
-////////////////////////////////////////////////////////////////////////////
+//	Module		: ef_primary.h
+//	Description	: Primary function classes
 
 #pragma once
 

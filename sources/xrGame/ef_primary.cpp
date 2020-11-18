@@ -1,10 +1,5 @@
-////////////////////////////////////////////////////////////////////////////
-//	Module 		: ef_primary.cpp
-//	Created 	: 13.06.2003
-//  Modified 	: 13.06.2003
-//	Author		: Dmitriy Iassenev
-//	Description : Primary evaluation function classes
-////////////////////////////////////////////////////////////////////////////
+//	Module		: ef_primary.cpp
+//	Description	: Primary evaluation function classes
 
 #include "stdafx.h"
 
