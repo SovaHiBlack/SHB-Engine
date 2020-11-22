@@ -7,8 +7,9 @@
 ////////////////////////////////////////////////////////////////////////////
 
 #include "stdafx.h"
+
 #include "agent_memory_manager.h"
-#include "agent_manager.h"
+#include "AgentManager.h"
 #include "agent_member_manager.h"
 #include "ai_object_location.h"
 #include "level_graph.h"

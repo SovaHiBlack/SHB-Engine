@@ -9,7 +9,7 @@
 #pragma once
 
 #include "ai/stalker/ai_stalker_impl.h"
-#include "agent_manager.h"
+#include "AgentManager.h"
 #include "agent_location_manager.h"
 
 class CStalker;

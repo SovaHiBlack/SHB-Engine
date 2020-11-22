@@ -8,9 +8,9 @@
 #include "stdafx.h"
 
 #include "agent_manager_properties.h"
-#include "agent_manager.h"
+#include "AgentManager.h"
 #include "agent_member_manager.h"
-#include "agent_manager_space.h"
+#include "AgentManager_space.h"
 #include "ai/stalker/Stalker.h"
 #include "memory_manager.h"
 #include "item_manager.h"

@@ -7,8 +7,9 @@
 ////////////////////////////////////////////////////////////////////////////
 
 #include "stdafx.h"
-#include "agent_manager.h"
-#include "agent_manager_space.h"
+
+#include "AgentManager.h"
+#include "AgentManager_space.h"
 #include "agent_manager_actions.h"
 #include "agent_manager_properties.h"
 #include "agent_manager_planner.h"

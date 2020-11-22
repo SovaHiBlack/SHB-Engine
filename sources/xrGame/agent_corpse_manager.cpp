@@ -13,7 +13,7 @@
 #include "ai/stalker/Stalker.h"
 #include "memory_manager.h"
 #include "visual_memory_manager.h"
-#include "agent_manager.h"
+#include "AgentManager.h"
 #include "agent_member_manager.h"
 
 struct CRemoveMemberCorpsesPredicate {

@@ -16,7 +16,7 @@
 #include "level_graph.h"
 #include "stalker_movement_manager.h"
 #include "gamemtllib.h"
-#include "agent_manager.h"
+#include "AgentManager.h"
 #include "agent_member_manager.h"
 #include "ai_space.h"
 #include "Profiler.h"

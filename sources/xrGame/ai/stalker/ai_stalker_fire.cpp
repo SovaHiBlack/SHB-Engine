@@ -16,7 +16,7 @@
 #include "../../script_game_object.h"
 #include "..\..\CustomZone.h"
 #include "../../..\ENGINE\skeletonanimated.h"
-#include "../../agent_manager.h"
+#include "..\..\AgentManager.h"
 #include "../../stalker_animation_manager.h"
 #include "../../stalker_planner.h"
 #include "../../ef_pattern.h"

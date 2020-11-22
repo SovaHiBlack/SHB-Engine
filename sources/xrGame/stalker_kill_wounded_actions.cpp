@@ -25,7 +25,7 @@
 #include "sound_player.h"
 #include "ai/stalker/ai_stalker_space.h"
 #include "stalker_decision_space.h"
-#include "agent_manager.h"
+#include "AgentManager.h"
 #include "agent_enemy_manager.h"
 
 const u32 MIN_QUEUE		= 0;

@@ -8,7 +8,7 @@
 
 #pragma once
 
-#include "member_corpse.h"
+#include "MemberCorpse.h"
 
 class CAgentManager;
 class CMemberOrder;

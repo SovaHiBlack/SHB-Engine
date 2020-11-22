@@ -17,7 +17,7 @@
 #include "ai_object_location.h"
 #include "level_graph.h"
 #include "sound_user_data_visitor.h"
-#include "agent_manager.h"
+#include "AgentManager.h"
 #include "agent_member_manager.h"
 #include "ai/stalker/Stalker.h"
 #include "Profiler.h"

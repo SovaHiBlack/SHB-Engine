@@ -20,7 +20,7 @@
 #include "memory_manager.h"
 #include "danger_manager.h"
 #include "cover_point.h"
-#include "agent_manager.h"
+#include "AgentManager.h"
 #include "agent_member_manager.h"
 #include "Inventory.h"
 #include "Weapon.h"

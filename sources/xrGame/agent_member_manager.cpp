@@ -11,7 +11,7 @@
 #include "agent_member_manager.h"
 #include "ai/stalker/Stalker.h"
 #include "object_broker.h"
-#include "agent_manager.h"
+#include "AgentManager.h"
 #include "agent_memory_manager.h"
 #include "Explosive.h"
 #include "sound_player.h"

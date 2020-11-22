@@ -1,14 +1,10 @@
-////////////////////////////////////////////////////////////////////////////
-//	Module 		: agent_manager_space.h
-//	Created 	: 25.05.2004
-//  Modified 	: 25.05.2004
-//	Author		: Dmitriy Iassenev
-//	Description : Agent manager space
-////////////////////////////////////////////////////////////////////////////
+//	Module		: AgentManager_space.h
+//	Description	: Agent manager space
 
 #pragma once
 
-namespace AgentManager {
+namespace AgentManager
+{
 	enum EProperties
 	{
 		ePropertyOrders = u32(0),

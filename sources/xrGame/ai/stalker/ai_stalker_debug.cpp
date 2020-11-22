@@ -35,7 +35,7 @@
 #include "../../ai_object_location.h"
 #include "../../entitycondition.h"
 #include "../ai_monsters_misc.h"
-#include "../../agent_manager.h"
+#include "..\..\AgentManager.h"
 #include "../../agent_member_manager.h"
 #include "../../agent_enemy_manager.h"
 #include "../../agent_corpse_manager.h"

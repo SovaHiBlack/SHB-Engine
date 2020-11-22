@@ -14,7 +14,7 @@
 #include "stalker_danger_in_direction_actions.h"
 #include "stalker_decision_space.h"
 #include "stalker_danger_property_evaluators.h"
-#include "agent_manager.h"
+#include "AgentManager.h"
 #include "agent_member_manager.h"
 
 using namespace StalkerDecisionSpace;

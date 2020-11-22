@@ -24,7 +24,7 @@
 #include "Actor.h"
 #include "ai/stalker/Stalker.h"
 #include "movement_manager.h"
-#include "agent_manager.h"
+#include "AgentManager.h"
 #include "agent_enemy_manager.h"
 
 static const u32 ENEMY_INERTIA_TIME_TO_SOMEBODY	= 3000;

@@ -10,7 +10,7 @@
 #include "stalker_sound_data_visitor.h"
 #include "ai/stalker/Stalker.h"
 #include "stalker_sound_data.h"
-#include "agent_manager.h"
+#include "AgentManager.h"
 #include "agent_member_manager.h"
 #include "memory_manager.h"
 #include "hit_memory_manager.h"

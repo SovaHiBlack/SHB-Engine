@@ -19,7 +19,7 @@
 #include "stalker_decision_space.h"
 #include "memory_manager.h"
 #include "danger_manager.h"
-#include "agent_manager.h"
+#include "AgentManager.h"
 #include "agent_member_manager.h"
 #include "agent_location_manager.h"
 #include "cover_point.h"

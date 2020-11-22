@@ -8,7 +8,7 @@
 
 #pragma once
 
-#include "agent_manager_space.h"
+#include "AgentManager.h"
 #include "stalker_decision_space.h"
 #include "GraphEngine_space.h"
 #include "condition_state.h"

@@ -9,7 +9,7 @@
 #include "stdafx.h"
 
 #include "agent_location_manager.h"
-#include "agent_manager.h"
+#include "AgentManager.h"
 #include "agent_member_manager.h"
 #include "agent_enemy_manager.h"
 #include "ai/stalker/Stalker.h"

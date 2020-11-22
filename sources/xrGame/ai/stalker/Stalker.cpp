@@ -33,7 +33,7 @@
 #include "../../stalker_planner.h"///
 #include "../../script_game_object.h"///
 #include "../../detail_path_manager.h"
-#include "../../agent_manager.h"
+#include "..\..\AgentManager.h"
 #include "../../agent_corpse_manager.h"
 #include "../../object_handler_planner.h"
 #include "../../object_handler_space.h"

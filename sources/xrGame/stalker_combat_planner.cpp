@@ -26,7 +26,7 @@
 #include "sound_player.h"
 #include "Missile.h"
 #include "Explosive.h"
-#include "agent_manager.h"
+#include "AgentManager.h"
 #include "agent_member_manager.h"
 #include "member_order.h"
 #include "ai/stalker/ai_stalker_space.h"
