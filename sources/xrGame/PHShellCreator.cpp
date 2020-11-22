@@ -2,7 +2,7 @@
 
 #include "PHShellCreator.h"
 #include "PhysicsShell.h"
-#include "GameObject.h"
+//#include "GameObject.h"
 #include "PhysicsShellHolder.h"
 #include "..\ENGINE\skeletoncustom.h"
 

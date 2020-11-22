@@ -2,21 +2,21 @@
 
 #include "PHWorld.h"
 #include "tri-colliderknoopc/dTriList.h"
-#include "PhysicsCommon.h"
+//#include "PhysicsCommon.h"
 #include "Level.h"
-#include "ExtendedGeom.h"
+//#include "ExtendedGeom.h"
 #include "draymotions.h"
 #include "PHCollideValidator.h"
-#include "gamemtllib.h"
+//#include "gamemtllib.h"
 
 #ifdef DEBUG
 #	include "PHDebug.h"
 #endif
 
-#include "PHCommander.h"
+//#include "PHCommander.h"
 #include "PHSimpleCalls.h"
 #include "PHSynchronize.h"
-#include "PHNetState.h"
+//#include "PHNetState.h"
 
 //////////////////////////////////////////////////////////////
 //////////////CPHMesh///////////////////////////////////////////

@@ -1,18 +1,18 @@
 #include "stdafx.h"
 
-#include "PHDynamicData.h"
+//#include "PHDynamicData.h"
 #include "Physics.h"
-#include "tri-colliderknoopc/dTriList.h"
-#include "PHShellSplitter.h"
-#include "PHFracture.h"
-#include "PHJointDestroyInfo.h"
-#include "PHCollideValidator.h"
+//#include "tri-colliderknoopc/dTriList.h"
+//#include "PHShellSplitter.h"
+//#include "PHFracture.h"
+//#include "PHJointDestroyInfo.h"
+//#include "PHCollideValidator.h"
 #include "Level.h"
-#include "PhysicsShellHolder.h"
+//#include "PhysicsShellHolder.h"
 
-#include "ExtendedGeom.h"
+//#include "ExtendedGeom.h"
 
-#include "PHElement.h"
+//#include "PHElement.h"
 #include "PHShell.h"
 
 void CPHShell::activate(bool disable)
@@ -20,8 +20,8 @@ void CPHShell::activate(bool disable)
 	PresetActive();
 	if(!CPHObject::is_active()) vis_update_deactivate();
 	if(!disable)EnableObject(0);
-
 }
+
 void CPHShell::Activate(const Fmatrix &m0,float dt01,const Fmatrix &m2,bool disable){
 
 	if(isActive())return;
@@ -66,8 +66,6 @@ void CPHShell::Activate(const Fmatrix &m0,float dt01,const Fmatrix &m2,bool disa
 	set_LinearVel(lin_vel);
 }
 
-
-
 void CPHShell::Activate(const Fmatrix &transform,const Fvector& lin_vel,const Fvector& ang_vel,bool disable){
 
 	if(isActive())return;
@@ -102,8 +100,6 @@ void CPHShell::Activate(const Fmatrix &transform,const Fvector& lin_vel,const Fv
 
 }
 
-
-
 void CPHShell::Activate(bool disable)
 { 
 	if(isActive())return;
@@ -126,9 +122,7 @@ void CPHShell::Activate(bool disable)
 	spatial_register();
 	m_flags.set(flActivating,TRUE);
 	m_flags.set(flActive,TRUE);
-
 }
-
 
 void CPHShell::Build(bool disable/*false*/)
 {
@@ -149,15 +143,13 @@ void CPHShell::Build(bool disable/*false*/)
 	{
 		JOINT_I i=joints.begin(),e=joints.end();
 		for(;i!=e;++i) (*i)->Create();
-	}	
-	
+	}
 }
 
 void CPHShell::RunSimulation(bool place_current_forms/*true*/)
 {
 	if(!CPHObject::is_active()) vis_update_deactivate();
 	EnableObject(0);
-
 
 	dSpaceSetCleanup(m_space,0);
 
@@ -181,7 +173,6 @@ void CPHShell::AfterSetActive()
 	m_flags.set(flActive,TRUE);
 	ELEMENT_I i=elements.begin(),e=elements.end();
 	for(;i!=e;++i)(*i)->PresetActive();
-
 }
 
 void CPHShell::PureActivate()
@@ -202,11 +193,8 @@ void CPHShell::PresetActive()
 	{
 		m_space=dSimpleSpaceCreate(0);
 		dSpaceSetCleanup(m_space,0);
-
 	}
 }
-
-
 
 void CPHShell::Deactivate(){
 	if(!isActive())return;
@@ -235,7 +223,6 @@ void CPHShell::Deactivate(){
 	//}
 	DisableObject();
 	CPHObject::remove_from_recently_deactivated();
-	
 
 	ELEMENT_I i;
 	for(i=elements.begin();elements.end() != i;++i)
@@ -244,8 +231,6 @@ void CPHShell::Deactivate(){
 	JOINT_I j;
 	for(j=joints.begin();joints.end() != j;++j)
 		(*j)->Deactivate();
-
-	
 
 	if(m_space) {
 		dSpaceDestroy(m_space);

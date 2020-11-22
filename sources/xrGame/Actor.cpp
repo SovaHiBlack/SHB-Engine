@@ -73,19 +73,10 @@ const float		respawn_auto	= 7.f;
 static float IReceived = 0;
 static float ICoincidenced = 0;
 
-
 //skeleton
-
-
-
 static Fbox		bbStandBox;
 static Fbox		bbCrouchBox;
-static Fvector	vFootCenter;
-static Fvector	vFootExt;
-
 Flags32			psActorFlags={0};
-
-
 
 CActor::CActor() : CEntityAlive()
 {
@@ -289,12 +280,6 @@ void CActor::Load	(const char* section )
 	vBOX_size	= pSettings->r_fvector3	(section,"ph_box0_size"		);
 	bb.set	(vBOX_center,vBOX_center); bb.grow(vBOX_size);
 	character_physics_support()->movement()->SetBox		(0,bb);
-
-	//// m_PhysicMovementControl: Foots
-	//Fvector	vFOOT_center= pSettings->r_fvector3	(section,"ph_foot_center"	);
-	//Fvector	vFOOT_size	= pSettings->r_fvector3	(section,"ph_foot_size"		);
-	//bb.set	(vFOOT_center,vFOOT_center); bb.grow(vFOOT_size);
-	////m_PhysicMovementControl->SetFoots	(vFOOT_center,vFOOT_size);
 
 	// m_PhysicMovementControl: Crash speed and mass
 	float	cs_min		= pSettings->r_float	(section,"ph_crash_speed_min"	);

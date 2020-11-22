@@ -2,7 +2,7 @@
 
 #include "PHStaticGeomShell.h"
 #include "SpaceUtils.h"
-#include "GameObject.h"
+//#include "GameObject.h"
 #include "PhysicsShellHolder.h"
 #include "..\ENGINE\skeletoncustom.h"
 #include "PHCollideValidator.h"

@@ -1,8 +1,9 @@
 #include "stdafx.h"
+
 #include "PHInterpolation.h"
-#include "PHDynamicData.h"
+//#include "PHDynamicData.h"
 #include "Physics.h"
-#include "MathUtils.h"
+//#include "MathUtils.h"
 
 extern CPHWorld* ph_world;
 
