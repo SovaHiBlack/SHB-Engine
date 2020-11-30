@@ -4,8 +4,9 @@
 
 class CPsyDogPhantom;
 
-class CPsyDog : public CAI_PseudoDog {
-	typedef CAI_PseudoDog inherited;
+class CPsyDog : public CPseudoDog
+{
+	typedef CPseudoDog inherited;
 
 	friend class CPsyDogPhantom;
 	friend class CPsyDogAura;
@@ -63,8 +64,9 @@ add_to_type_list(CPsyDog)
 // Phantom Psy Dog
 //////////////////////////////////////////////////////////////////////////
 
-class CPsyDogPhantom : public CAI_PseudoDog {
-	typedef CAI_PseudoDog inherited;
+class CPsyDogPhantom : public CPseudoDog
+{
+	typedef CPseudoDog inherited;
 	
 	CPsyDog			*m_parent;
 

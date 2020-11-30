@@ -307,7 +307,7 @@ void CActor::UpdateDefferedMessages()
 
 bool CActor::OnDialogSoundHandlerStart(CInventoryOwner *inv_owner, const char* phrase)
 {
-	CAI_Trader *trader = smart_cast<CAI_Trader*>(inv_owner);
+	CTrader* trader = smart_cast<CTrader*>(inv_owner);
 	if (!trader) return false;
 
 	trader->dialog_sound_start(phrase);
@@ -316,7 +316,7 @@ bool CActor::OnDialogSoundHandlerStart(CInventoryOwner *inv_owner, const char* p
 
 bool CActor::OnDialogSoundHandlerStop(CInventoryOwner *inv_owner)
 {
-	CAI_Trader *trader = smart_cast<CAI_Trader*>(inv_owner);
+	CTrader* trader = smart_cast<CTrader*>(inv_owner);
 	if (!trader) return false;
 
 	trader->dialog_sound_stop();

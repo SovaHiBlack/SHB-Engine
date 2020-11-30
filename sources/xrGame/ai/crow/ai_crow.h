@@ -12,7 +12,7 @@ class CMotionDef;
 class CBlend;
 class CKinematicsAnimated;
 
-class CAI_Crow : public CEntity
+class CCrow : public CEntity
 {
 	typedef	CEntity inherited;
 	enum ECrowStates
@@ -106,8 +106,8 @@ public:
 	u32				o_workload_rframe	;
 
 public:
-					CAI_Crow();
-	virtual			~CAI_Crow();
+	CCrow();
+	virtual			~CCrow();
 	virtual void	Load						(const char* section );
 			void	init						();
 	virtual BOOL	net_Spawn					( CSE_Abstract* DC );

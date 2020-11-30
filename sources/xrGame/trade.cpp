@@ -28,12 +28,12 @@ CTrade::CTrade(CInventoryOwner *p_io)
 	m_bNeedToUpdateArtefactTasks = false;
 
 	// Заполнить pThis
-	CAI_Trader *pTrader;
+	CTrader* pTrader;
 	CActor *pActor;
 	CStalker *pStalker;
 
 	// Определяем потомка этого экземпляра класса
-	pTrader = smart_cast<CAI_Trader *>(p_io);
+	pTrader = smart_cast<CTrader*>(p_io);
 	if (pTrader) 
 		pThis.Set(TT_TRADER, pTrader, p_io);
 	else 
@@ -76,11 +76,11 @@ void CTrade::RemovePartner()
 //
 bool CTrade::SetPartner(CEntity *p)
 {
-	CAI_Trader *pTrader;
+	CTrader* pTrader;
 	CActor *pActor;
 	CStalker *pStalker;
 
-	pTrader = smart_cast<CAI_Trader *>(p);
+	pTrader = smart_cast<CTrader*>(p);
 	if (pTrader && (pTrader != pThis.base))  
 		pPartner.Set(TT_TRADER, pTrader, pTrader);
 	else 
@@ -137,7 +137,7 @@ void CTrade::StartTrade()
 	m_dwLastTradeTime =  Level().timeServer();
 	m_bNeedToUpdateArtefactTasks = false;
 
-//	if (pThis.type == TT_TRADER) smart_cast<CAI_Trader*>(pThis.base)->OnStartTrade();
+//	if (pThis.type == TT_TRADER) smart_cast<CTrader*>(pThis.base)->OnStartTrade();
 }
 
 void CTrade::StartTrade(CInventoryOwner* pInvOwner)
@@ -148,16 +148,16 @@ void CTrade::StartTrade(CInventoryOwner* pInvOwner)
 void CTrade::TradeCB(bool bStart)
 {
 	if(bStart){
-		if (pThis.type == TT_TRADER) smart_cast<CAI_Trader*>(pThis.base)->OnStartTrade();
+		if (pThis.type == TT_TRADER) smart_cast<CTrader*>(pThis.base)->OnStartTrade();
 	}else
-		if (pThis.type == TT_TRADER) smart_cast<CAI_Trader*>(pThis.base)->OnStopTrade();
+		if (pThis.type == TT_TRADER) smart_cast<CTrader*>(pThis.base)->OnStopTrade();
 
 }
 
 void CTrade::OnPerformTrade(u32 money_get, u32 money_put)
 {
 	if (pThis.type == TT_TRADER) 
-		smart_cast<CAI_Trader*>(pThis.base)->callback(GameObject::eTradePerformTradeOperation)(money_get, money_put);
+		smart_cast<CTrader*>(pThis.base)->callback(GameObject::eTradePerformTradeOperation)(money_get, money_put);
 }
 
 void CTrade::StopTrade()
@@ -166,15 +166,15 @@ void CTrade::StopTrade()
 	m_dwLastTradeTime = 0;
 //	Msg("--TRADE:: [%s]: Trade stopped...",*pThis.base->cName());
 
-	CAI_Trader* pTrader = NULL;
+	CTrader* pTrader = nullptr;
 	if (pThis.type == TT_TRADER)
 	{
-		//pTrader = smart_cast<CAI_Trader*>(pThis.base);
+		//pTrader = smart_cast<CTrader*>(pThis.base);
 		//pTrader->OnStopTrade();
 	}
 	else if (pPartner.type == TT_TRADER)
 	{
-		pTrader = smart_cast<CAI_Trader*>(pPartner.base);
+		pTrader = smart_cast<CTrader*>(pPartner.base);
 	}
 
 	RemovePartner();
@@ -275,14 +275,14 @@ void CTrade::TransferItem(CInventoryItem* pItem, bool bBuying)
 		pPartner.inv_owner->set_money(pPartner.inv_owner->get_money( ) - dwTransferMoney, false);
 
 
-	CAI_Trader* pTrader = NULL;
+	CTrader* pTrader = nullptr;
 
 	if (pThis.type == TT_TRADER && bBuying)
 	{
 		CArtefact* pArtefact = smart_cast<CArtefact*>(pItem);
 		if (pArtefact)
 		{
-			pTrader = smart_cast<CAI_Trader*>(pThis.base);
+			pTrader = smart_cast<CTrader*>(pThis.base);
 			m_bNeedToUpdateArtefactTasks |= pTrader->BuyArtefact(pArtefact);
 		}
 	}
@@ -325,7 +325,7 @@ u32	CTrade::GetItemPrice(PIItem pItem, bool b_buying)
 	float					base_cost;
 	if (pArtefact && (pThis.type == TT_ACTOR) && (pPartner.type == TT_TRADER))
 	{
-		CAI_Trader* pTrader = smart_cast<CAI_Trader*>(pPartner.inv_owner);
+		CTrader* pTrader = smart_cast<CTrader*>(pPartner.inv_owner);
 		VERIFY(pTrader);
 		base_cost = (float) pTrader->ArtefactPrice(pArtefact);
 	}

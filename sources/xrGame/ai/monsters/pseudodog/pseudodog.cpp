@@ -21,25 +21,25 @@
 #	include "..\..\..\Server.h"
 #endif
 
-CAI_PseudoDog::CAI_PseudoDog()
+CPseudoDog::CPseudoDog()
 {
 	com_man().add_ability(ControlCom::eControlJump);
 	com_man().add_ability(ControlCom::eControlRotationJump);
 }
 
-DLL_Pure *CAI_PseudoDog::_construct()
+DLL_Pure * CPseudoDog::_construct()
 {
 	inherited::_construct			();
 	StateMan = create_state_manager	();
 	return							(this);
 }
 
-CAI_PseudoDog::~CAI_PseudoDog()
+CPseudoDog::~CPseudoDog()
 {
 	xr_delete(StateMan);
 }
 
-void CAI_PseudoDog::reinit()
+void CPseudoDog::reinit()
 {
 	inherited::reinit();
 
@@ -50,7 +50,7 @@ void CAI_PseudoDog::reinit()
 	com_man().add_rotation_jump_data	("1","2","3","4", deg(90));
 }
 
-void CAI_PseudoDog::Load(const char* section)
+void CPseudoDog::Load(const char* section)
 {
 	inherited::Load	(section);
 
@@ -135,7 +135,7 @@ void CAI_PseudoDog::Load(const char* section)
 
 }
 
-void CAI_PseudoDog::reload(const char* section)
+void CPseudoDog::reload(const char* section)
 {
 	inherited::reload			(section);
 
@@ -148,7 +148,7 @@ void CAI_PseudoDog::reload(const char* section)
 	com_man().load_jump_data			(0,"run_jamp_0", "run_jamp_1", "run_jamp_2", MonsterMovement::eVelocityParameterRunNormal,MonsterMovement::eVelocityParameterRunNormal,0);
 }
 
-void CAI_PseudoDog::CheckSpecParams(u32 spec_params)
+void CPseudoDog::CheckSpecParams(u32 spec_params)
 {
 	if ((spec_params & ASP_PSI_ATTACK) == ASP_PSI_ATTACK) {
 		com_man().seq_run(anim().get_motion_id(eAnimAttackPsi));
@@ -159,19 +159,19 @@ void CAI_PseudoDog::CheckSpecParams(u32 spec_params)
 	}
 }
 
-void CAI_PseudoDog::HitEntityInJump		(const CEntity *pEntity) 
+void CPseudoDog::HitEntityInJump		(const CEntity *pEntity)
 {
 	SAAParam &params	= anim().AA_GetParams("run_jamp_1");
 	HitEntity			(pEntity, params.hit_power, params.impulse, params.impulse_dir);
 }
 
 #ifdef _DEBUG
-void CAI_PseudoDog::debug_on_key(int key)
+void CPseudoDog::debug_on_key(int key)
 {
 }
 #endif
 
-IStateManagerBase *CAI_PseudoDog::create_state_manager()
+IStateManagerBase * CPseudoDog::create_state_manager()
 {
 	return xr_new<CStateManagerPseudodog>(this);
 }
@@ -179,11 +179,11 @@ IStateManagerBase *CAI_PseudoDog::create_state_manager()
 using namespace luabind;
 
 #pragma optimize("s",on)
-void CAI_PseudoDog::script_register(lua_State* L)
+void CPseudoDog::script_register(lua_State* L)
 {
 	module(L)
 		[
-			class_<CAI_PseudoDog, CGameObject>("CAI_PseudoDog")
+			class_<CPseudoDog, CGameObject>("CPseudoDog")
 			.def(constructor<>( ))
 		];
 }

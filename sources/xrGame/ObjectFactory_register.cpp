@@ -180,13 +180,13 @@ void CObjectFactory::register_classes	()
 	// client and server entities
 	ADD(CSpectator				,CSE_Spectator					,CLSID_SPECTATOR				,"spectator");
 
-	ADD(CAI_Flesh				,CSE_ALifeMonsterBase			,CLSID_AI_FLESH					,"flesh");
+	ADD(CFlesh,					CSE_ALifeMonsterBase			,CLSID_AI_FLESH					,"flesh");
 	ADD(CChimera				,CSE_ALifeMonsterBase			,CLSID_AI_CHIMERA				,"chimera");
-	ADD(CAI_Dog					,CSE_ALifeMonsterBase			,CLSID_AI_DOG_RED				,"dog_red");
+	ADD(CDog					,CSE_ALifeMonsterBase			,CLSID_AI_DOG_RED				,"dog_red");
 	ADD(CStalker				,CSE_ALifeHumanStalker			,CLSID_AI_STALKER				,"stalker");
-	ADD(CAI_Bloodsucker			,CSE_ALifeMonsterBase			,CLSID_AI_BLOODSUCKER			,"bloodsucker");
+	ADD(CBloodsucker,			CSE_ALifeMonsterBase			,CLSID_AI_BLOODSUCKER			,"bloodsucker");
 	ADD(CBoar,					CSE_ALifeMonsterBase			,CLSID_AI_BOAR					,"boar");
-	ADD(CAI_PseudoDog			,CSE_ALifeMonsterBase			,CLSID_AI_DOG_BLACK				,"dog_black");
+	ADD(CPseudoDog,				CSE_ALifeMonsterBase			,CLSID_AI_DOG_BLACK				,"dog_black");
 	ADD(CPsyDog					,CSE_ALifeMonsterBase			,CLSID_AI_DOG_PSY				,"psy_dog");
 	ADD(CPsyDogPhantom			,CSE_ALifePsyDogPhantom			,CLSID_AI_DOG_PSY_PHANTOM		,"psy_dog_phantom");
 	ADD(CBurer					,CSE_ALifeMonsterBase			,CLSID_AI_BURER					,"burer");
@@ -202,9 +202,9 @@ void CObjectFactory::register_classes	()
 	ADD(CPhantom				,CSE_ALifeCreaturePhantom		,CLSID_AI_PHANTOM				,"phantom");
 
 	// Trader
-	ADD(CAI_Trader				,CSE_ALifeTrader				,CLSID_AI_TRADER				,"trader");
+	ADD(CTrader,				CSE_ALifeTrader					,CLSID_AI_TRADER				,"trader");
 
-	ADD(CAI_Crow				,CSE_ALifeCreatureCrow			,CLSID_AI_CROW					,"crow");
+	ADD(CCrow,					CSE_ALifeCreatureCrow			,CLSID_AI_CROW					,"crow");
 	ADD(CCar					,CSE_ALifeCar					,CLSID_CAR						,"car");
 
 	ADD(CHelicopter				,CSE_ALifeHelicopter			,CLSID_VEHICLE_HELICOPTER		,"helicopter");

@@ -1,8 +1,8 @@
 #pragma once
 
-#define CLSID_OBJECT_ACTOR			MK_CLSID('O','_','A','C','T','O','R',' ')
-#define CLSID_OBJECT_HLAMP			MK_CLSID('O','_','H','L','A','M','P',' ')
-#define CLSID_ENTITY				MK_CLSID('E','N','T','I','T','Y',' ',' ')
+#define CLSID_OBJECT_ACTOR			MK_CLSID('O','_','A','C','T','O','R',' ')//
+#define CLSID_OBJECT_HLAMP			MK_CLSID('O','_','H','L','A','M','P',' ')//
+//#define CLSID_ENTITY				MK_CLSID('E','N','T','I','T','Y',' ',' ')
 #define CLSID_SPECTATOR				MK_CLSID('S','P','E','C','T',' ',' ',' ')
 #define CLSID_OBJECT_PROJECTOR		MK_CLSID('O','_','S','E','A','R','C','H')
 

@@ -82,14 +82,14 @@ class CAlienEffector : public CEffectorCam
 	Fvector	dangle_target;
 	Fvector dangle_current;
 
-	CAI_Bloodsucker* monster;
+	CBloodsucker* monster;
 
 	float		m_current_fov;
 	Fmatrix		m_prev_eye_matrix;
 	float		m_inertion;
 
 public:
-	CAlienEffector(ECameraEffectorType type, CAI_Bloodsucker* obj);
+	CAlienEffector(ECameraEffectorType type, CBloodsucker* obj);
 	virtual BOOL	Process(Fvector& p, Fvector& d, Fvector& n, float& fFov, float& fFar, float& fAspect);
 };
 
@@ -103,7 +103,7 @@ public:
 #define FOV_SPEED			80.0f
 #define MAX_CAMERA_DIST		3.5f
 
-CAlienEffector::CAlienEffector(ECameraEffectorType type, CAI_Bloodsucker* obj) : inherited(type, flt_max)
+CAlienEffector::CAlienEffector(ECameraEffectorType type, CBloodsucker* obj) : inherited(type, flt_max)
 {
 	dangle_target.set(angle_normalize(Random.randFs(DELTA_ANGLE_X)), angle_normalize(Random.randFs(DELTA_ANGLE_Y)), angle_normalize(Random.randFs(DELTA_ANGLE_Z)));
 	dangle_current.set(0.0f, 0.0f, 0.0f);
@@ -196,7 +196,7 @@ CBloodsuckerAlien::CBloodsuckerAlien( )
 CBloodsuckerAlien::~CBloodsuckerAlien( )
 { }
 
-void CBloodsuckerAlien::init_external(CAI_Bloodsucker* obj)
+void CBloodsuckerAlien::init_external(CBloodsucker* obj)
 {
 	m_object = obj;
 }

@@ -31,7 +31,7 @@
 #include <dinput.h>
 #endif
 
-CAI_Bloodsucker::CAI_Bloodsucker()
+CBloodsucker::CBloodsucker()
 {
 	StateMan						= xr_new<CStateManagerBloodsucker>	(this);
 	m_alien_control.init_external	(this);
@@ -44,12 +44,12 @@ CAI_Bloodsucker::CAI_Bloodsucker()
 	EnemyMemory.init_external		(this, 40000);
 }
 
-CAI_Bloodsucker::~CAI_Bloodsucker()
+CBloodsucker::~CBloodsucker()
 {
 	xr_delete	(StateMan);
 }
 
-void CAI_Bloodsucker::Load(const char* section)
+void CBloodsucker::Load(const char* section)
 {
 	inherited::Load(section);
 
@@ -149,7 +149,7 @@ void CAI_Bloodsucker::Load(const char* section)
 	invisible_particle_name			= pSettings->r_string(section,"Particle_Invisible");
 }
 
-void CAI_Bloodsucker::reinit()
+void CBloodsucker::reinit()
 {
 	inherited::reinit			();
 	CControlledActor::reinit	();
@@ -174,7 +174,7 @@ void CAI_Bloodsucker::reinit()
 	m_predator					= false;
 }
 
-void CAI_Bloodsucker::reload(const char* section)
+void CBloodsucker::reload(const char* section)
 {
 	inherited::reload(section);
 
@@ -187,7 +187,7 @@ void CAI_Bloodsucker::reload(const char* section)
 	sound().add(pSettings->r_string(section,"Sound_Alien"),						DEFAULT_SAMPLE_COUNT,	SOUND_TYPE_MONSTER_ATTACKING, MonsterSound::eCriticalPriority,	u32(MonsterSound::eCaptureAllChannels),	eAlien,				"bip01_head");
 }
 
-void CAI_Bloodsucker::LoadVampirePPEffector(const char* section)
+void CBloodsucker::LoadVampirePPEffector(const char* section)
 {
 	pp_vampire_effector.duality.h			= pSettings->r_float(section,"duality_h");
 	pp_vampire_effector.duality.v			= pSettings->r_float(section,"duality_v");
@@ -203,14 +203,14 @@ void CAI_Bloodsucker::LoadVampirePPEffector(const char* section)
 	sscanf(pSettings->r_string(section,"color_add"),	"%f,%f,%f", &pp_vampire_effector.color_add.r,  &pp_vampire_effector.color_add.g,  &pp_vampire_effector.color_add.b);
 }
 
-void  CAI_Bloodsucker::BoneCallback(CBoneInstance *B)
+void  CBloodsucker::BoneCallback(CBoneInstance *B)
 {
-	CAI_Bloodsucker*	this_class = static_cast<CAI_Bloodsucker*> (B->Callback_Param);
+	CBloodsucker*	this_class = static_cast<CBloodsucker*> (B->Callback_Param);
 
 	this_class->Bones.Update(B, Device.dwTimeGlobal);
 }
 
-void CAI_Bloodsucker::vfAssignBones()
+void CBloodsucker::vfAssignBones()
 {
 	// Установка callback на кости
 
@@ -230,7 +230,7 @@ void CAI_Bloodsucker::vfAssignBones()
 
 //#define MAX_BONE_ANGLE PI_DIV_4
 
-void CAI_Bloodsucker::LookDirection(Fvector to_dir, float bone_turn_speed)
+void CBloodsucker::LookDirection(Fvector to_dir, float bone_turn_speed)
 {
 	//// получаем вектор направления к источнику звука и его мировые углы
 	//float		yaw,pitch;
@@ -264,13 +264,13 @@ void CAI_Bloodsucker::LookDirection(Fvector to_dir, float bone_turn_speed)
 	//Bones.SetMotion(bone_head,	AXIS_Y, pitch, bone_turn_speed, 100);	
 }
 
-void CAI_Bloodsucker::ActivateVampireEffector()
+void CBloodsucker::ActivateVampireEffector()
 {
 	Actor()->Cameras().AddCamEffector(xr_new<CVampireCameraEffector>(6.0f, get_head_position(this), get_head_position(Actor())));
 	Actor()->Cameras().AddPPEffector(xr_new<CVampirePPEffector>(pp_vampire_effector, 6.0f));
 }
 
-void CAI_Bloodsucker::CheckSpecParams(u32 spec_params)
+void CBloodsucker::CheckSpecParams(u32 spec_params)
 {
 	if ((spec_params & ASP_CHECK_CORPSE) == ASP_CHECK_CORPSE) {
 		com_man().seq_run(anim().get_motion_id(eAnimCheckCorpse));
@@ -287,7 +287,7 @@ void CAI_Bloodsucker::CheckSpecParams(u32 spec_params)
 	}
 }
 
-BOOL CAI_Bloodsucker::net_Spawn (CSE_Abstract* DC) 
+BOOL CBloodsucker::net_Spawn (CSE_Abstract* DC)
 {
 	if (!inherited::net_Spawn(DC))
 		return(FALSE);
@@ -297,7 +297,7 @@ BOOL CAI_Bloodsucker::net_Spawn (CSE_Abstract* DC)
 	return(TRUE);
 }
 
-void CAI_Bloodsucker::UpdateCL()
+void CBloodsucker::UpdateCL()
 {
 	inherited::UpdateCL				();
 	CControlledActor::frame_update	();
@@ -307,7 +307,7 @@ void CAI_Bloodsucker::UpdateCL()
 	clamp(m_vampire_want_value,0.f,1.f);
 }
 
-void CAI_Bloodsucker::shedule_Update(u32 dt)
+void CBloodsucker::shedule_Update(u32 dt)
 {
 	inherited::shedule_Update(dt);
 	
@@ -316,13 +316,13 @@ void CAI_Bloodsucker::shedule_Update(u32 dt)
 	if (m_alien_control.active())	sound().play(eAlien);
 }
 
-void CAI_Bloodsucker::Die(CObject* who)
+void CBloodsucker::Die(CObject* who)
 {
 	predator_stop				();
 	inherited::Die				(who);
 }
 
-void CAI_Bloodsucker::post_fsm_update()
+void CBloodsucker::post_fsm_update()
 {
 	inherited::post_fsm_update();
 	
@@ -335,7 +335,7 @@ void CAI_Bloodsucker::post_fsm_update()
 
 }
 
-bool CAI_Bloodsucker::check_start_conditions(ControlCom::EControlType type)
+bool CBloodsucker::check_start_conditions(ControlCom::EControlType type)
 {
 	if (!inherited::check_start_conditions(type))	return false;
 
@@ -345,12 +345,12 @@ bool CAI_Bloodsucker::check_start_conditions(ControlCom::EControlType type)
 	return true;
 }
 
-void CAI_Bloodsucker::set_alien_control(bool val)
+void CBloodsucker::set_alien_control(bool val)
 {
 	val ? m_alien_control.activate() : m_alien_control.deactivate();
 }
 
-void CAI_Bloodsucker::predator_start()
+void CBloodsucker::predator_start()
 {
 	if (m_predator)					return;
 	cNameVisual_set					(m_visual_predator);
@@ -359,13 +359,13 @@ void CAI_Bloodsucker::predator_start()
 	control().animation().restart	();
 	
 	CParticlesPlayer::StartParticles(invisible_particle_name,Fvector().set(0.0f,0.1f,0.0f),ID());		
-	sound().play					(CAI_Bloodsucker::eChangeVisibility);
+	sound().play					(CBloodsucker::eChangeVisibility);
 
 	m_predator						= true;
 	state_invisible					= false;
 }
 
-void CAI_Bloodsucker::predator_stop()
+void CBloodsucker::predator_stop()
 {
 	if (!m_predator)				return;
 	
@@ -377,21 +377,21 @@ void CAI_Bloodsucker::predator_stop()
 	control().animation().restart	();
 	
 	CParticlesPlayer::StartParticles(invisible_particle_name,Fvector().set(0.0f,0.1f,0.0f),ID());		
-	sound().play					(CAI_Bloodsucker::eChangeVisibility);
+	sound().play					(CBloodsucker::eChangeVisibility);
 	m_predator						= false;
 }
 
-void CAI_Bloodsucker::predator_freeze()
+void CBloodsucker::predator_freeze()
 {
 	control().animation().freeze	();
 }
 
-void CAI_Bloodsucker::predator_unfreeze()
+void CBloodsucker::predator_unfreeze()
 {
 	control().animation().unfreeze();
 }
 
-void CAI_Bloodsucker::move_actor_cam()
+void CBloodsucker::move_actor_cam()
 {
 	float turn_angle = PI_DIV_3;
 	if (Actor()->cam_Active()) {
@@ -400,7 +400,7 @@ void CAI_Bloodsucker::move_actor_cam()
 	}
 }
 
-void CAI_Bloodsucker::HitEntity(const CEntity *pEntity, float fDamage, float impulse, Fvector &dir)
+void CBloodsucker::HitEntity(const CEntity *pEntity, float fDamage, float impulse, Fvector &dir)
 {
 	inherited::HitEntity(pEntity,fDamage,impulse,dir);
 
@@ -415,32 +415,32 @@ void CAI_Bloodsucker::HitEntity(const CEntity *pEntity, float fDamage, float imp
 	}
 }
 
-void CAI_Bloodsucker::start_invisible_predator()
+void CBloodsucker::start_invisible_predator()
 {
 	state_invisible				= true;
 	predator_start				();
 }
 
-void CAI_Bloodsucker::stop_invisible_predator()
+void CBloodsucker::stop_invisible_predator()
 {
 	state_invisible				= false;
 	predator_stop				();
 }
 
-void CAI_Bloodsucker::manual_activate()
+void CBloodsucker::manual_activate()
 {
 	state_invisible = true;
 	setVisible		(FALSE);
 }
 
-void CAI_Bloodsucker::manual_deactivate()
+void CBloodsucker::manual_deactivate()
 {
 	state_invisible = false;
 	setVisible		(TRUE);
 }
 
 #ifdef DEBUG
-CBaseMonster::SDebugInfo CAI_Bloodsucker::show_debug_info()
+CBaseMonster::SDebugInfo CBloodsucker::show_debug_info()
 {
 	CBaseMonster::SDebugInfo info = inherited::show_debug_info();
 	if (!info.active) return CBaseMonster::SDebugInfo();
@@ -454,7 +454,7 @@ CBaseMonster::SDebugInfo CAI_Bloodsucker::show_debug_info()
 }
 
 #ifdef _DEBUG
-void CAI_Bloodsucker::debug_on_key(int key)
+void CBloodsucker::debug_on_key(int key)
 {
 	switch (key){
 	case DIK_MINUS:
@@ -474,11 +474,11 @@ void CAI_Bloodsucker::debug_on_key(int key)
 using namespace luabind;
 
 #pragma optimize("s",on)
-void CAI_Bloodsucker::script_register(lua_State* L)
+void CBloodsucker::script_register(lua_State* L)
 {
 	module(L)
 		[
-			class_<CAI_Bloodsucker, CGameObject>("CAI_Bloodsucker")
+			class_<CBloodsucker, CGameObject>("CBloodsucker")
 			.def(constructor<>( ))
 		];
 }

@@ -2,14 +2,14 @@
 
 #include "..\..\..\ENGINE\SkeletonAnimated.h"
 
-class CAI_Trader;
+class CTrader;
 
 namespace MonsterSpace {
 	enum EMonsterHeadAnimType;
 };
 
 class CTraderAnimation {
-	CAI_Trader			*m_trader;
+	CTrader* m_trader;
 
 	const char* m_anim_global;
 	const char* m_anim_head;
@@ -22,7 +22,8 @@ class CTraderAnimation {
 	bool				m_external_sound;
 
 public:
-					CTraderAnimation		(CAI_Trader *trader) : m_trader(trader) {}
+	CTraderAnimation(CTrader* trader) : m_trader(trader)
+	{ }
 
 	void			reinit					();
 

@@ -7,14 +7,14 @@
 #include "../../../script_export_space.h"
 #include "BloodsuckerAlien.h"
 
-class CAI_Bloodsucker : public CBaseMonster, 
+class CBloodsucker : public CBaseMonster,
 						public CControlledActor {
 
 	typedef		CBaseMonster	inherited;
 	
 public:
-							CAI_Bloodsucker	();
-	virtual					~CAI_Bloodsucker();	
+	CBloodsucker();
+	virtual					~CBloodsucker();
 
 	virtual void			reinit					();
 	virtual	void			reload					(const char* section);
@@ -138,6 +138,6 @@ public:
 	DECLARE_SCRIPT_REGISTER_FUNCTION
 };
 
-add_to_type_list(CAI_Bloodsucker)
+add_to_type_list(CBloodsucker)
 #undef script_type_list
-#define script_type_list save_type_list(CAI_Bloodsucker)
+#define script_type_list save_type_list(CBloodsucker)

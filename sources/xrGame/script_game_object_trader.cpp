@@ -10,7 +10,7 @@
 
 void CScriptGameObject::set_trader_global_anim(const char* anim)
 {
-	CAI_Trader *trader = smart_cast<CAI_Trader *>(&object());
+	CTrader* trader = smart_cast<CTrader*>(&object( ));
 	if (!trader) {
 		ai().script_engine().script_log		(ScriptStorage::eLuaMessageTypeError,"Cannot cast sctipt game object to trader!");
 		return;
@@ -20,7 +20,7 @@ void CScriptGameObject::set_trader_global_anim(const char* anim)
 
 void CScriptGameObject::set_trader_head_anim(const char* anim)
 {
-	CAI_Trader *trader = smart_cast<CAI_Trader *>(&object());
+	CTrader* trader = smart_cast<CTrader*>(&object( ));
 	if (!trader) {
 		ai().script_engine().script_log		(ScriptStorage::eLuaMessageTypeError,"Cannot cast sctipt game object to trader!");
 		return;
@@ -30,7 +30,7 @@ void CScriptGameObject::set_trader_head_anim(const char* anim)
 
 void CScriptGameObject::set_trader_sound(const char* sound, const char* anim)
 {
-	CAI_Trader *trader = smart_cast<CAI_Trader *>(&object());
+	CTrader* trader = smart_cast<CTrader*>(&object( ));
 	if (!trader) {
 		ai().script_engine().script_log		(ScriptStorage::eLuaMessageTypeError,"Cannot cast sctipt game object to trader!");
 		return;
@@ -40,7 +40,7 @@ void CScriptGameObject::set_trader_sound(const char* sound, const char* anim)
 
 void CScriptGameObject::external_sound_start(const char* sound)
 {
-	CAI_Trader *trader = smart_cast<CAI_Trader *>(&object());
+	CTrader* trader = smart_cast<CTrader*>(&object( ));
 	if (!trader) {
 		ai().script_engine().script_log		(ScriptStorage::eLuaMessageTypeError,"Cannot cast sctipt game object to trader!");
 		return;
@@ -50,7 +50,7 @@ void CScriptGameObject::external_sound_start(const char* sound)
 
 void CScriptGameObject::external_sound_stop()
 {
-	CAI_Trader *trader = smart_cast<CAI_Trader *>(&object());
+	CTrader*trader = smart_cast<CTrader*>(&object());
 	if (!trader) {
 		ai().script_engine().script_log		(ScriptStorage::eLuaMessageTypeError,"Cannot cast sctipt game object to trader!");
 		return;

@@ -22,7 +22,7 @@ class CBlend;
 class CSoundPlayer;
 class CTraderAnimation;
 
-class CAI_Trader : public CEntityAlive, 
+class CTrader : public CEntityAlive,
 	public CInventoryOwner, 
 	public CScriptEntity,
 	public CAI_PhraseDialogManager
@@ -34,8 +34,8 @@ private:
 	bool				m_busy_now;
 
 public:
-	CAI_Trader		();
-	virtual				~CAI_Trader		();
+	CTrader();
+	virtual				~CTrader();
 
 	virtual CAttachmentOwner*			cast_attachment_owner	()						{return this;}
 	virtual CInventoryOwner*			cast_inventory_owner	()						{return this;}
@@ -139,6 +139,6 @@ public:
 	DECLARE_SCRIPT_REGISTER_FUNCTION
 };
 
-add_to_type_list(CAI_Trader)
+add_to_type_list(CTrader)
 #undef script_type_list
-#define script_type_list save_type_list(CAI_Trader)
+#define script_type_list save_type_list(CTrader)

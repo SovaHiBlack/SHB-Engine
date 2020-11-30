@@ -212,7 +212,7 @@ public:
 			CScriptGameObject	*GetFood			() const;
 			CScriptGameObject	*GetMedikit			() const;
 
-	// CAI_Bloodsucker
+	// CBloodsucker
 	
 			void				set_invisible			(bool val);
 			bool				get_invisible			();
@@ -231,7 +231,7 @@ public:
 			void				set_custom_panic_threshold	(float value);
 			void				set_default_panic_threshold	();
 
-	// CAI_Trader
+	// CTrader
 			void				set_trader_global_anim	(const char* anim);
 			void				set_trader_head_anim	(const char* anim);
 			void				set_trader_sound		(const char* sound, const char* anim);

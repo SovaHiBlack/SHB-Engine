@@ -24,18 +24,18 @@
 #include "../../clsid_game.h"
 #include "trader_animation.h"
 
-CAI_Trader::CAI_Trader()
+CTrader::CTrader()
 {
 	AnimMan			= xr_new<CTraderAnimation>(this);
 } 
 
-CAI_Trader::~CAI_Trader()
+CTrader::~CTrader()
 {
 	xr_delete		(m_sound_player);
 	xr_delete		(AnimMan);
 }
 
-void CAI_Trader::Load(const char* section)
+void CTrader::Load(const char* section)
 {
 	//	setEnabled						(FALSE);
 	inherited::Load					(section);
@@ -49,7 +49,7 @@ void CAI_Trader::Load(const char* section)
 	inventory().CalcTotalWeight();
 }
 
-void CAI_Trader::reinit	()
+void CTrader::reinit	()
 {
 	CScriptEntity::reinit	();
 	CEntityAlive::reinit	();
@@ -60,14 +60,14 @@ void CAI_Trader::reinit	()
 	m_busy_now				= false;
 }
 
-void CAI_Trader::reload	(const char* section)
+void CTrader::reload	(const char* section)
 {
 	CEntityAlive::reload	(section);
 	CInventoryOwner::reload	(section);
 	sound().reload			(section);
 }
 
-bool CAI_Trader::bfAssignSound(CScriptEntityAction *tpEntityAction)
+bool CTrader::bfAssignSound(CScriptEntityAction *tpEntityAction)
 {
 	if (!CScriptEntity::bfAssignSound(tpEntityAction)) {
 		//m_cur_head_anim_type	= MonsterSpace::eHeadAnimNone;
@@ -83,14 +83,14 @@ bool CAI_Trader::bfAssignSound(CScriptEntityAction *tpEntityAction)
 //////////////////////////////////////////////////////////////////////////
 // Look At Actor
 //////////////////////////////////////////////////////////////////////////
-void CAI_Trader::BoneCallback(CBoneInstance *B)
+void CTrader::BoneCallback(CBoneInstance *B)
 {
-	CAI_Trader*	this_class = static_cast<CAI_Trader*>(B->Callback_Param);
+	CTrader*	this_class = static_cast<CTrader*>(B->Callback_Param);
 
 	this_class->LookAtActor(B);
 }
 
-void CAI_Trader::LookAtActor(CBoneInstance *B)
+void CTrader::LookAtActor(CBoneInstance *B)
 {
 	Fvector dir;
 	dir.sub(Level().CurrentEntity()->Position(),Position());
@@ -112,7 +112,7 @@ void CAI_Trader::LookAtActor(CBoneInstance *B)
 
 //////////////////////////////////////////////////////////////////////////
 
-BOOL CAI_Trader::net_Spawn			(CSE_Abstract* DC)
+BOOL CTrader::net_Spawn			(CSE_Abstract* DC)
 {
 	CSE_Abstract			*e	= (CSE_Abstract*)(DC);
 	CSE_ALifeTrader			*l_tpTrader = smart_cast<CSE_ALifeTrader*>(e);
@@ -140,7 +140,7 @@ BOOL CAI_Trader::net_Spawn			(CSE_Abstract* DC)
 	return					(TRUE);
 }
 
-void CAI_Trader::net_Export		(NET_Packet& P)
+void CTrader::net_Export		(NET_Packet& P)
 {
 	R_ASSERT						(Local());
 
@@ -148,7 +148,7 @@ void CAI_Trader::net_Export		(NET_Packet& P)
 	//	P.w_u32							(m_dwMoney);
 }
 
-void CAI_Trader::net_Import		(NET_Packet& P)
+void CTrader::net_Import		(NET_Packet& P)
 {
 	R_ASSERT						(Remote());
 
@@ -160,7 +160,7 @@ void CAI_Trader::net_Import		(NET_Packet& P)
 	setEnabled						(TRUE);
 }
 
-void CAI_Trader::OnEvent		(NET_Packet& P, u16 type)
+void CTrader::OnEvent		(NET_Packet& P, u16 type)
 {
 	inherited::OnEvent			(P,type);
 	CInventoryOwner::OnEvent	(P,type);
@@ -199,7 +199,7 @@ void CAI_Trader::OnEvent		(NET_Packet& P, u16 type)
 	}
 }
 
-void CAI_Trader::feel_touch_new				(CObject* O)
+void CTrader::feel_touch_new				(CObject* O)
 {
 	if (!g_Alive())		return;
 	if (Remote())		return;
@@ -216,7 +216,7 @@ void CAI_Trader::feel_touch_new				(CObject* O)
 	}
 }
 
-void CAI_Trader::DropItemSendMessage(CObject *O)
+void CTrader::DropItemSendMessage(CObject *O)
 {
 	if (!O || !O->H_Parent() || (this != O->H_Parent()))
 		return;
@@ -229,7 +229,7 @@ void CAI_Trader::DropItemSendMessage(CObject *O)
 	u_EventSend				(P);
 }
 
-void CAI_Trader::shedule_Update	(u32 dt)
+void CTrader::shedule_Update	(u32 dt)
 {
 	inherited::shedule_Update	(dt);
 	UpdateInventoryOwner(dt);
@@ -238,7 +238,7 @@ void CAI_Trader::shedule_Update	(u32 dt)
 	else Think();
 }
 
-void CAI_Trader::g_WeaponBones	(int &L, int &R1, int &R2)
+void CTrader::g_WeaponBones	(int &L, int &R1, int &R2)
 {
 	CKinematics *V	= smart_cast<CKinematics*>(Visual());
 	R1				= V->LL_BoneID("bip01_r_hand");
@@ -246,7 +246,7 @@ void CAI_Trader::g_WeaponBones	(int &L, int &R1, int &R2)
 	L				= V->LL_BoneID("bip01_l_finger1");
 }
 
-void CAI_Trader::g_fireParams(const CHudItem* pHudItem, Fvector& P, Fvector& D)
+void CTrader::g_fireParams(const CHudItem* pHudItem, Fvector& P, Fvector& D)
 {
 	VERIFY			(inventory().ActiveItem());
 	if (g_Alive() && inventory().ActiveItem()) {
@@ -256,21 +256,21 @@ void CAI_Trader::g_fireParams(const CHudItem* pHudItem, Fvector& P, Fvector& D)
 	}
 }
 
-void CAI_Trader::Think()
+void CTrader::Think()
 { }
 
-void CAI_Trader::Die (CObject* who)
+void CTrader::Die (CObject* who)
 {
 	inherited::Die (who);
 }
 
-void CAI_Trader::net_Destroy()
+void CTrader::net_Destroy()
 {
 	inherited::net_Destroy		();
 	CScriptEntity::net_Destroy ();
 }
 
-void CAI_Trader::UpdateCL()
+void CTrader::UpdateCL()
 { 
 	inherited::UpdateCL		();
 	sound().update			(Device.fTimeDelta);
@@ -280,18 +280,18 @@ void CAI_Trader::UpdateCL()
 		animation().update_frame();
 }
 
-BOOL CAI_Trader::UsedAI_Locations()
+BOOL CTrader::UsedAI_Locations()
 {
 	return					(TRUE);
 }
 
-void CAI_Trader::OnStartTrade()
+void CTrader::OnStartTrade()
 {
 	m_busy_now			= true;
 	callback(GameObject::eTradeStart)();
 }
 
-void CAI_Trader::OnStopTrade()
+void CTrader::OnStopTrade()
 {
 	m_busy_now			= false;
 	callback(GameObject::eTradeStop)();
@@ -299,48 +299,48 @@ void CAI_Trader::OnStopTrade()
 
 ////////////////////////////////////////////////////////////////////////////////////////////
 
-bool CAI_Trader::can_attach				(const CInventoryItem *inventory_item) const
+bool CTrader::can_attach				(const CInventoryItem *inventory_item) const
 {
 	return				(false);
 }
 
-bool CAI_Trader::use_bolts				() const
+bool CTrader::use_bolts				() const
 {
 	return				(false);
 }
 
-void CAI_Trader::spawn_supplies			()
+void CTrader::spawn_supplies			()
 {
 	inherited::spawn_supplies		();
 	CInventoryOwner::spawn_supplies	();
 }
 
-void CAI_Trader::save (NET_Packet &output_packet)
+void CTrader::save (NET_Packet &output_packet)
 {
 	inherited::save(output_packet);
 	CInventoryOwner::save(output_packet);
 }
 
-void CAI_Trader::load (IReader &input_packet)
+void CTrader::load (IReader &input_packet)
 {
 	inherited::load(input_packet);
 	CInventoryOwner::load(input_packet);
 }
 
 //проверяет список артефактов в заказах
-u32 CAI_Trader::ArtefactPrice (CArtefact* pArtefact)
+u32 CTrader::ArtefactPrice (CArtefact* pArtefact)
 {
 	return pArtefact->Cost();
 }
 
 //продажа артефакта, с последуещим изменением списка заказов (true - если артефакт был в списке)
-bool CAI_Trader::BuyArtefact (CArtefact* pArtefact)
+bool CTrader::BuyArtefact (CArtefact* pArtefact)
 {
 	VERIFY(pArtefact);
 	return false;
 }
 
-ALife::ERelationType  CAI_Trader::tfGetRelationType	(const CEntityAlive *tpEntityAlive) const
+ALife::ERelationType  CTrader::tfGetRelationType	(const CEntityAlive *tpEntityAlive) const
 {
 	const CInventoryOwner* pOtherIO = smart_cast<const CInventoryOwner*>(tpEntityAlive);
 
@@ -355,7 +355,7 @@ ALife::ERelationType  CAI_Trader::tfGetRelationType	(const CEntityAlive *tpEntit
 		return inherited::tfGetRelationType(tpEntityAlive);
 }
 
-DLL_Pure *CAI_Trader::_construct	()
+DLL_Pure * CTrader::_construct	()
 {
 	m_sound_player				= xr_new<CSoundPlayer>(this);
 	
@@ -366,7 +366,7 @@ DLL_Pure *CAI_Trader::_construct	()
 	return						(this);
 }
 
-bool CAI_Trader::AllowItemToTrade 	(CInventoryItem const * item, EItemPlace place) const
+bool CTrader::AllowItemToTrade 	(CInventoryItem const * item, EItemPlace place) const
 {
 	if (!g_Alive())
 		return					(true);
@@ -377,23 +377,23 @@ bool CAI_Trader::AllowItemToTrade 	(CInventoryItem const * item, EItemPlace plac
 	return						(CInventoryOwner::AllowItemToTrade(item,place));
 }
 
-void CAI_Trader::dialog_sound_start(const char* phrase)
+void CTrader::dialog_sound_start(const char* phrase)
 {
 	animation().external_sound_start(phrase);
 }
 
-void CAI_Trader::dialog_sound_stop()
+void CTrader::dialog_sound_stop()
 {
 	animation().external_sound_stop();
 }
 using namespace luabind;
 
 #pragma optimize("s",on)
-void CAI_Trader::script_register(lua_State* L)
+void CTrader::script_register(lua_State* L)
 {
 	module(L)
 		[
-			class_<CAI_Trader, CGameObject>("CAI_Trader")
+			class_<CTrader, CGameObject>("CTrader")
 			.def(constructor<>( ))
 		];
 }

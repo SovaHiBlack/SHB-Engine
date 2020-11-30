@@ -14,7 +14,7 @@
 #include "..\..\Level.h"
 #include "../../..\ENGINE\skeletonanimated.h"
 
-void CAI_Crow::SAnim::Load	(CKinematicsAnimated* visual, const char* prefix)
+void CCrow::SAnim::Load	(CKinematicsAnimated* visual, const char* prefix)
 {
 	const MotionID		&M = visual->ID_Cycle_Safe(prefix);
 	if (M)				m_Animations.push_back(M);
@@ -27,7 +27,7 @@ void CAI_Crow::SAnim::Load	(CKinematicsAnimated* visual, const char* prefix)
 	R_ASSERT			(m_Animations.size());
 }
 
-void CAI_Crow::SSound::Load	(const char* prefix)
+void CCrow::SSound::Load	(const char* prefix)
 {
 	string_path	fn;
 	if (FS.exist(fn,"$game_sounds$",prefix,".ogg")){
@@ -45,14 +45,14 @@ void CAI_Crow::SSound::Load	(const char* prefix)
 	R_ASSERT(m_Sounds.size());
 }
 
-void CAI_Crow::SSound::SetPosition	(const Fvector& pos)
+void CCrow::SSound::SetPosition	(const Fvector& pos)
 {
 	for (int i=0; i<(int)m_Sounds.size(); ++i)
 		if (m_Sounds[i]._feedback())
 			m_Sounds[i].set_position(pos);
 }
 
-void CAI_Crow::SSound::Unload		()
+void CCrow::SSound::Unload		()
 {
 	for (int i=0; i<(int)m_Sounds.size(); ++i)
 		::Sound->destroy	(m_Sounds[i]);
@@ -60,26 +60,26 @@ void CAI_Crow::SSound::Unload		()
 
 void cb_OnHitEndPlaying			(CBlend* B)
 {
-	((CAI_Crow*)B->CallbackParam)->OnHitEndPlaying(B);
+	((CCrow*)B->CallbackParam)->OnHitEndPlaying(B);
 }
 
-void CAI_Crow::OnHitEndPlaying	(CBlend* /**B/**/)
+void CCrow::OnHitEndPlaying	(CBlend* /**B/**/)
 {
 	bPlayDeathIdle				= true;
 }
 
-CAI_Crow::CAI_Crow		()
+CCrow::CCrow()
 {
 	init				();
 }
 
-CAI_Crow::~CAI_Crow		()
+CCrow::~CCrow()
 {
 	// removing all data no more being neded 
 	m_Sounds.m_idle.Unload		();
 }
 
-void CAI_Crow::init		()
+void CCrow::init		()
 {
 	st_current			= eUndef;
 	st_target			= eFlyIdle;
@@ -98,7 +98,7 @@ void CAI_Crow::init		()
 	bPlayDeathIdle		= false;
 }
 
-void CAI_Crow::Load(const char* section )
+void CCrow::Load(const char* section )
 {
 	inherited::Load				(section);
 	//////////////////////////////////////////////////////////////////////////
@@ -122,7 +122,7 @@ void CAI_Crow::Load(const char* section )
 	fIdleSoundTime				= fIdleSoundDelta+fIdleSoundDelta*Random.randF(-.5f,.5f);
 }
 
-BOOL CAI_Crow::net_Spawn		(CSE_Abstract* DC)
+BOOL CCrow::net_Spawn		(CSE_Abstract* DC)
 {
 	BOOL R		= inherited::net_Spawn	(DC);
 	setVisible	(TRUE);
@@ -142,7 +142,7 @@ BOOL CAI_Crow::net_Spawn		(CSE_Abstract* DC)
 	return		R;
 }
 
-void CAI_Crow::net_Destroy		()
+void CCrow::net_Destroy		()
 {
 	inherited::net_Destroy					();
 
@@ -154,17 +154,17 @@ void CAI_Crow::net_Destroy		()
 }
 
 // crow update
-void CAI_Crow::switch2_FlyUp()
+void CCrow::switch2_FlyUp()
 {
 	smart_cast<CKinematicsAnimated*>(Visual())->PlayCycle	(m_Anims.m_fly.GetRandom());
 }
 
-void CAI_Crow::switch2_FlyIdle()
+void CCrow::switch2_FlyIdle()
 {
 	smart_cast<CKinematicsAnimated*>(Visual())->PlayCycle	(m_Anims.m_idle.GetRandom());
 }
 
-void CAI_Crow::switch2_DeathDead()
+void CCrow::switch2_DeathDead()
 {
 	// AI need to pickup this
 	ISpatial*		self				=	smart_cast<ISpatial*> (this);
@@ -173,7 +173,7 @@ void CAI_Crow::switch2_DeathDead()
 	smart_cast<CKinematicsAnimated*>(Visual())->PlayCycle	(m_Anims.m_death_dead.GetRandom());
 }
 
-void CAI_Crow::switch2_DeathFall()
+void CCrow::switch2_DeathFall()
 {
 	Fvector V;
 	V.mul(XFORM().k,fSpeed);
@@ -181,7 +181,7 @@ void CAI_Crow::switch2_DeathFall()
 	smart_cast<CKinematicsAnimated*>(Visual())->PlayCycle	(m_Anims.m_death.GetRandom(),TRUE,cb_OnHitEndPlaying,this);
 }
 
-void CAI_Crow::state_Flying		(float fdt)
+void CCrow::state_Flying		(float fdt)
 {
 	// Update position and orientation of the planes
 	float fAT = fASpeed * fdt		;
@@ -226,7 +226,7 @@ void CAI_Crow::state_Flying		(float fdt)
 }
 
 static Fvector vV={0,0,0};
-void CAI_Crow::state_DeathFall()
+void CCrow::state_DeathFall()
 {
 	Fvector tAcceleration	;
 	tAcceleration.set		(0,-10.f,0);
@@ -242,7 +242,7 @@ void CAI_Crow::state_DeathFall()
 	}
 }
 
-void CAI_Crow::Die				(CObject* who)
+void CCrow::Die				(CObject* who)
 {
 	inherited::Die	(who)	;
 	processing_activate	()	;	// enable UpdateCL for dead crows - especially for physics support
@@ -251,7 +251,7 @@ void CAI_Crow::Die				(CObject* who)
 	
 };
 
-void CAI_Crow::UpdateWorkload	(float fdt)
+void CCrow::UpdateWorkload	(float fdt)
 {
 	if (o_workload_frame	==	Device.dwFrame)	return;
 	o_workload_frame		=	Device.dwFrame	;
@@ -266,7 +266,7 @@ void CAI_Crow::UpdateWorkload	(float fdt)
 	}
 }
 
-void CAI_Crow::UpdateCL		()
+void CCrow::UpdateCL		()
 {
 	inherited::UpdateCL		();
 	if (m_pPhysicsShell)	{
@@ -275,14 +275,14 @@ void CAI_Crow::UpdateCL		()
 	}
 }
 
-void CAI_Crow::renderable_Render	()
+void CCrow::renderable_Render	()
 {
 	UpdateWorkload					(Device.fTimeDelta);
 	inherited::renderable_Render	();
 	o_workload_rframe				= Device.dwFrame	;
 }
 
-void CAI_Crow::shedule_Update		(u32 DT)
+void CCrow::shedule_Update		(u32 DT)
 {
 	float fDT				= float(DT)/1000.F;
 	spatial.type			&=~STYPE_VISIBLEFORAI;
@@ -331,7 +331,7 @@ void CAI_Crow::shedule_Update		(u32 DT)
 }
 
 // Core events
-void CAI_Crow::net_Export	(NET_Packet& P)					// export to server
+void CCrow::net_Export	(NET_Packet& P)					// export to server
 {
 	// export 
 	R_ASSERT			(Local());
@@ -357,7 +357,7 @@ void CAI_Crow::net_Export	(NET_Packet& P)					// export to server
 	P.w_u8				(u8(g_Group()));
 }
 //---------------------------------------------------------------------
-void CAI_Crow::net_Import	(NET_Packet& P)
+void CCrow::net_Import	(NET_Packet& P)
 {
 	// import
 	R_ASSERT			(Remote());
@@ -391,7 +391,7 @@ void CAI_Crow::net_Import	(NET_Packet& P)
 	XFORM().setHPB		(yaw,pitch,bank);
 }
 //---------------------------------------------------------------------
-void CAI_Crow::HitSignal	(float /**HitAmount/**/, Fvector& /**local_dir/**/, CObject* who, s16 /**element/**/)
+void CCrow::HitSignal	(float /**HitAmount/**/, Fvector& /**local_dir/**/, CObject* who, s16 /**element/**/)
 {
 	//bool				first_time = !!g_Alive(); 
 //	bool				first_time = !PPhysicsShell(); 
@@ -405,18 +405,18 @@ void CAI_Crow::HitSignal	(float /**HitAmount/**/, Fvector& /**local_dir/**/, COb
 	else smart_cast<CKinematicsAnimated*>(Visual())->PlayCycle(m_Anims.m_death_dead.GetRandom());
 }
 //---------------------------------------------------------------------
-void CAI_Crow::HitImpulse	(float	/**amount/**/,		Fvector& /**vWorldDir/**/, Fvector& /**vLocalDir/**/)
+void CCrow::HitImpulse	(float	/**amount/**/,		Fvector& /**vWorldDir/**/, Fvector& /**vLocalDir/**/)
 {
 }
 //---------------------------------------------------------------------
-void CAI_Crow::CreateSkeleton()
+void CCrow::CreateSkeleton()
 {
 	m_pPhysicsShell=P_build_SimpleShell(this,0.3f,false);
 	m_pPhysicsShell->SetMaterial(smart_cast<CKinematics*>(Visual())->LL_GetData(smart_cast<CKinematics*>(Visual())->LL_GetBoneRoot()).game_mtl_idx);
 }
 
-//void CAI_Crow::Hit	(float P, Fvector &dir, CObject* who, s16 element,Fvector p_in_object_space, float impulse, ALife::EHitType hit_type)
-void	CAI_Crow::Hit							(SHit* pHDS)
+//void CCrow::Hit	(float P, Fvector &dir, CObject* who, s16 element,Fvector p_in_object_space, float impulse, ALife::EHitType hit_type)
+void	CCrow::Hit							(SHit* pHDS)
 {
 //	inherited::Hit	(P,dir,who,element,p_in_object_space,impulse/100.f, hit_type);
 	SHit	HDS = *pHDS;
@@ -424,12 +424,12 @@ void	CAI_Crow::Hit							(SHit* pHDS)
 	inherited::Hit(&HDS);
 }
 
-BOOL CAI_Crow::UsedAI_Locations()
+BOOL CCrow::UsedAI_Locations()
 {
 	return		(FALSE);
 }
 
-void CAI_Crow::create_physic_shell()
+void CCrow::create_physic_shell()
 {
 	// do not delete!!!
 }
