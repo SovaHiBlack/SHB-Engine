@@ -190,8 +190,6 @@ hit_mark_texture					= ui\ui_hud_hit_mark
 ; inventory items
 ;------------------------------------------------------------------------------
 [document]
-;GroupControlSection				= spawn_group
-;discovery_dependency				= 
 $spawn								= "documents\document 01"
 ;$prefetch							= 32
 class								= II_DOC
@@ -216,8 +214,6 @@ class								= SPECT
 ;class								= EVENT
 
 [m_car]
-;GroupControlSection				= spawn_group
-;discovery_dependency				= 
 $spawn								= "vehicles\car"
 cform								= skeleton
 class								= SCRPTCAR
@@ -393,8 +389,6 @@ snd_new_contact						= detectors\contact_1
 ;snd_new_contact1					= detectors\contact_8
 
 [attachable_item]
-;GroupControlSection				= spawn_group
-;discovery_dependency				= 
 $spawn								= "equipment\attachable_item"
 cform								= skeleton
 class								= II_ATTCH
@@ -410,27 +404,7 @@ attach_angle_offset					= 0, -3.14, 1.6
 attach_position_offset				= 0.105, 0.00, 0.085
 attach_bone_name					= bip01_head
 
-;[new_attachable_item]
-;GroupControlSection				= spawn_group
-;discovery_dependency				= 
-;$spawn								= "equipment\new_attachable_item"
-;cform								= skeleton
-;class								= II_BTTCH
-;cost								= 100
-;inv_name							= "Attachable item"
-;inv_name_short						= "Attachable item"
-;inv_weight							= 0.5
-;inv_grid_width						= 2
-;inv_grid_height					= 1
-;inv_grid_x							= 16
-;inv_grid_y							= 12
-;attach_angle_offset				= 0, -3.14, 1.6
-;attach_position_offset				= 0.105, 0.00, 0.085
-;attach_bone_name					= bip01_head
-
 [hand_radio]:identity_immunities
-;GroupControlSection				= spawn_group
-;discovery_dependency				= 
 $spawn								= "equipment\hand_radio"
 cform								= skeleton
 class								= II_ATTCH
@@ -503,25 +477,6 @@ schedule_max						= 999
 [agent_manager]
 schedule_min						= 100
 schedule_max						= 1000
-
-;[custom_script_object]
-;GroupControlSection				= spawn_group
-;discovery_dependency				= 
-;$spawn								= "scripts\custom_object"
-;cform								= skeleton
-;class								= NW_ATTCH
-;visual								= equipments\item_fmradio.ogf
-;cost								= 0
-;inv_name							= "custom_script_object"
-;inv_name_short						= "custom_script_object"
-;inv_weight							= 0.5
-;inv_grid_width						= 2
-;inv_grid_height					= 1
-;inv_grid_x							= 16
-;inv_grid_y							= 12
-;attach_angle_offset				= 0, 0, 0
-;attach_position_offset				= 0.08, 0.04, 0.03
-;attach_bone_name					= bip01_r_hand
 
 [ph_skeleton_object]
 class								= P_SKELET

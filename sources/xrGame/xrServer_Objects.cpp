@@ -140,59 +140,6 @@ void CSE_Temporary::FillProps				(const char* pref, PropItemVec& values)
 {
 };
 
-/**
-////////////////////////////////////////////////////////////////////////////
-// CSE_SpawnGroup
-////////////////////////////////////////////////////////////////////////////
-
-CSE_SpawnGroup::CSE_SpawnGroup				(const char* caSection) : CSE_Abstract(caSection)
-{
-}
-
-CSE_SpawnGroup::~CSE_SpawnGroup				()
-{
-}
-
-void CSE_SpawnGroup::STATE_Read				(NET_Packet	&tNetPacket, u16 size)
-{
-	if (m_wVersion < 84)
-		tNetPacket.r_float		(m_spawn_probability);
-
-	if (m_wVersion > 80) {
-		if (m_wVersion < 84) {
-			tNetPacket.r_float	();
-			tNetPacket.r_float	();
-			m_spawn_flags.assign(tNetPacket.r_u32());
-			tNetPacket.r_stringZ(m_spawn_control);
-		}
-		else {
-			if (m_wVersion < 85) {
-				tNetPacket.r_u64		(m_min_spawn_interval);
-				tNetPacket.r_u64		(m_max_spawn_interval);
-			}
-		}
-	}
-}
-
-void CSE_SpawnGroup::STATE_Write			(NET_Packet	&tNetPacket)
-{
-}
-
-void CSE_SpawnGroup::UPDATE_Read			(NET_Packet	&tNetPacket)
-{
-}
-
-void CSE_SpawnGroup::UPDATE_Write			(NET_Packet	&tNetPacket)
-{
-}
-
-void CSE_SpawnGroup::FillProps				(const char* pref, PropItemVec& values)
-{
-	inherited::FillProps		(pref,values);
-	PHelper().CreateFlag32		(values,PrepareKey(pref,*s_name,"Spawn\\spawn single item only"),	&m_spawn_flags,	flSpawnSingleItemOnly);
-}
-/**/
-
 ////////////////////////////////////////////////////////////////////////////
 // CSE_PHSkeleton
 ////////////////////////////////////////////////////////////////////////////
