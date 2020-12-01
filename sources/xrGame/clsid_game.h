@@ -3,28 +3,28 @@
 #define CLSID_OBJECT_ACTOR			MK_CLSID('O','_','A','C','T','O','R',' ')//
 #define CLSID_OBJECT_HLAMP			MK_CLSID('O','_','H','L','A','M','P',' ')//
 //#define CLSID_ENTITY				MK_CLSID('E','N','T','I','T','Y',' ',' ')
-#define CLSID_SPECTATOR				MK_CLSID('S','P','E','C','T',' ',' ',' ')
-#define CLSID_OBJECT_PROJECTOR		MK_CLSID('O','_','S','E','A','R','C','H')
+#define CLSID_SPECTATOR				MK_CLSID('S','P','E','C','T',' ',' ',' ')//
+#define CLSID_OBJECT_PROJECTOR		MK_CLSID('O','_','S','E','A','R','C','H')//
 
 // all the monsters
-#define CLSID_LEVEL_POINT			MK_CLSID('L','V','L','P','O','I','N','T')
-#define CLSID_SCRIPT_OBJECT			MK_CLSID('S','C','R','P','T','O','B','J')
-#define CLSID_AI_GRAPH				MK_CLSID('A','I','_','G','R','A','P','H')
-#define CLSID_AI_CROW				MK_CLSID('A','I','_','C','R','O','W',' ')
+//#define CLSID_LEVEL_POINT			MK_CLSID('L','V','L','P','O','I','N','T')
+#define CLSID_SCRIPT_OBJECT			MK_CLSID('S','C','R','P','T','O','B','J')//
+#define CLSID_AI_GRAPH				MK_CLSID('A','I','_','G','R','A','P','H')//
+#define CLSID_AI_CROW				MK_CLSID('A','I','_','C','R','O','W',' ')//
 
-#define CLSID_AI_ZOMBIE				MK_CLSID('A','I','_','Z','O','M',' ',' ')
-#define CLSID_AI_POLTERGEIST		MK_CLSID('A','I','_','P','O','L','T','R')
+#define CLSID_AI_ZOMBIE				MK_CLSID('A','I','_','Z','O','M',' ',' ')//?SM_ZOMBI
+#define CLSID_AI_POLTERGEIST		MK_CLSID('A','I','_','P','O','L','T','R')//?SM_POLTR
 
-#define CLSID_AI_FLESH				MK_CLSID('A','I','_','F','L','E','S','H')
-#define CLSID_AI_FLESH_GROUP		MK_CLSID('A','I','_','F','L','E','_','G')
+#define CLSID_AI_FLESH				MK_CLSID('A','I','_','F','L','E','S','H')//?SM_FLESH
+#define CLSID_AI_FLESH_GROUP		MK_CLSID('A','I','_','F','L','E','_','G')//
 
-#define CLSID_AI_PHANTOM			MK_CLSID('A','I','_','P','H','A','N','T')
-#define CLSID_AI_SPONGER			MK_CLSID('A','I','_','S','P','O','N','G')
-#define CLSID_AI_CONTROLLER			MK_CLSID('A','I','_','C','O','N','T','R')
-#define CLSID_AI_BLOODSUCKER		MK_CLSID('A','I','_','B','L','O','O','D')
-#define CLSID_AI_STALKER			MK_CLSID('A','I','_','S','T','L',' ',' ')
-#define CLSID_AI_BURER				MK_CLSID('A','I','_','B','U','R','E','R')
-#define CLSID_AI_GIANT				MK_CLSID('A','I','_','G','I','A','N','T')
+#define CLSID_AI_PHANTOM			MK_CLSID('A','I','_','P','H','A','N','T')//
+//#define CLSID_AI_SPONGER			MK_CLSID('A','I','_','S','P','O','N','G')
+#define CLSID_AI_CONTROLLER			MK_CLSID('A','I','_','C','O','N','T','R')//?SM_CONTR
+#define CLSID_AI_BLOODSUCKER		MK_CLSID('A','I','_','B','L','O','O','D')//?SM_BLOOD
+#define CLSID_AI_STALKER			MK_CLSID('A','I','_','S','T','L',' ',' ')//
+#define CLSID_AI_BURER				MK_CLSID('A','I','_','B','U','R','E','R')//?SM_BURER
+#define CLSID_AI_GIANT				MK_CLSID('A','I','_','G','I','A','N','T')//?SM_GIANT
 #define CLSID_AI_CHIMERA			MK_CLSID('A','I','_','H','I','M','E','R')
 #define CLSID_AI_FRACTURE			MK_CLSID('A','I','_','F','R','A','C','T')
 #define CLSID_AI_DOG_BLACK			MK_CLSID('A','I','_','D','O','G','_','B')
@@ -38,13 +38,13 @@
 #define CLSID_AI_TUSHKANO			MK_CLSID('A','I','_','T','U','S','H',' ')
 
 // vehicles
-#define CLSID_CAR					MK_CLSID('C','_','N','I','V','A',' ',' ')
-#define CLSID_VEHICLE_HELICOPTER	MK_CLSID('C','_','H','L','C','P','T','R')
+#define CLSID_CAR					MK_CLSID('C','_','N','I','V','A',' ',' ')//?SCRPTCAR
+#define CLSID_VEHICLE_HELICOPTER	MK_CLSID('C','_','H','L','C','P','T','R')//?C_HLCP_S
 
-#define CLSID_EVENT					MK_CLSID('E','V','E','N','T',' ',' ',' ')
-#define CLSID_OBJECT_FLYER			MK_CLSID('O','_','F','L','Y','E','R',' ')
-#define CLSID_OBJECT_DOOR			MK_CLSID('O','_','D','O','O','R',' ',' ')
-#define CLSID_OBJECT_LIFT			MK_CLSID('O','_','L','I','F','T',' ',' ')
+//#define CLSID_EVENT				MK_CLSID('E','V','E','N','T',' ',' ',' ')
+//#define CLSID_OBJECT_FLYER		MK_CLSID('O','_','F','L','Y','E','R',' ')
+//#define CLSID_OBJECT_DOOR			MK_CLSID('O','_','D','O','O','R',' ',' ')
+//#define CLSID_OBJECT_LIFT			MK_CLSID('O','_','L','I','F','T',' ',' ')
 
 // Artefacts
 #define CLSID_AF_MERCURY_BALL		MK_CLSID('A','F','_','M','B','A','L','L')
@@ -116,15 +116,15 @@
 #define CLSID_OBJECT_TRIGGER		MK_CLSID('O','_','T','R','I','G','E','R')
 
 // Targets
-#define CLSID_TARGET				MK_CLSID('T','_','B','A','S','E',' ',' ')
-#define CLSID_TARGET_ASSAULT		MK_CLSID('T','_','A','S','S',' ',' ',' ')
-#define CLSID_TARGET_CS_BASE		MK_CLSID('T','_','C','S','B','A','S','E')
+//#define CLSID_TARGET				MK_CLSID('T','_','B','A','S','E',' ',' ')
+//#define CLSID_TARGET_ASSAULT		MK_CLSID('T','_','A','S','S',' ',' ',' ')
+//#define CLSID_TARGET_CS_BASE		MK_CLSID('T','_','C','S','B','A','S','E')
 #define CLSID_TARGET_CS				MK_CLSID('T','_','C','S',' ',' ',' ',' ')
 #define CLSID_TARGET_CS_CASK		MK_CLSID('T','_','C','S','C','A','S','K')
 
 // Standard level object
-#define CLSID_OBJECT_ITEM_STD		MK_CLSID('O','_','I','T','E','M',' ',' ')
-#define CLSID_OBJECT_BREAKABLE		MK_CLSID('O','_','B','R','K','B','L',' ')
+//#define CLSID_OBJECT_ITEM_STD		MK_CLSID('O','_','I','T','E','M',' ',' ')
+#define CLSID_OBJECT_BREAKABLE		MK_CLSID('O','_','B','R','K','B','L',' ')//
 #define CLSID_OBJECT_CLIMABLE		MK_CLSID('O','_','C','L','M','B','L',' ')
 
 //
