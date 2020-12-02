@@ -1,14 +1,9 @@
-function register(object_factory)
---		object_factory:register ("game_last_sv.game_sv_LastStanding","SV_LAST","game_sv_LastStanding")
---		object_factory:register ("game_last_cl.game_cl_LastStanding","CL_LAST","game_cl_LastStanding")
-end
-
 function get_game_clsid(game_type_option, is_server)
-	if (is_server == true) then
+	if is_server == true then
 		return "SV_SINGL"
 	end
 
-	if (is_server == false) then
+	if is_server == false then
 		return "CL_SINGL"
 	end
 end

@@ -1,92 +1,5 @@
-[zone_campfire_mp_nolight]
-;GroupControlSection			= spawn_group_zone
-$spawn 						= "zones\campfire_mp_nolight"
-$prefetch 					= 16
-class						= Z_MBALD
-
-hit_impulse_scale			= 0.00
-effective_radius			= 1.3 ;размер радиуса в процентах от оригинального, где действует зона
-
-ef_anomaly_type				= 1
-ef_weapon_type				= 13
-
-sound						= 
-postprocess					= postprocess_flame
-	
-artefacts					= 
-BirthProbability 			= 0.0
-
-;----------- Anomaly settings -----------------------
-min_start_power		= 0.99
-max_start_power		= 1.00
-attenuation			= 1
-period				= 1
-min_artefact_count	= 0
-max_artefact_count	= 0
-
-idle_particles				= explosions\campfire_05
-blowout_particles			= explosions\campfire_blowout
-
-hit_small_particles			= damage_fx\burn_creatures00
-hit_big_particles			= damage_fx\burn_creatures00
-
-idle_small_particles		= damage_fx\burn_creatures00
-idle_big_particles			= damage_fx\burn_creatures00
-
-idle_particles_dont_stop	= true;
-
-idle_sound					= ambient\fire2		;постоянный звук
-blowout_sound				= ambient\fire2		;во время выброса(удара) в центре аномалии	
-hit_sound					= ambient\fire2		;на персонаже, когда тот получает хит
-entrance_sound				= ambient\fire2		;при попадании объекта в аномалию
-
-hit_type					= burn
-
-disable_time				= 10000	;время игнорирования неживого объекта в зоне (-1 если не нужно)
-disable_time_small			= -1	;время игнорирования маленького неживого объекта в зоне (-1 если не нужно)
-disable_idle_time			= 50000	;время отключения idle партиклов
-
-ignore_nonalive				= false
-ignore_small				= true
-ignore_artefacts			= true
-
-blowout_light				= on
-light_color		    		= 1.8,1.7,1.4
-light_animation             = koster
-light_range		    		= 4
-light_time 		    		= 0.35
-light_height				= 0.75			;подъем источника света на высоту
-
-
-idle_light					= off
-idle_light_range			= 8.0
-idle_light_range_delta 		= 0.25
-idle_light_anim				= koster_00
-idle_light_height			= 0.70			;подъем источника света на высоту
-
-awaking_time				= 0
-blowout_time				= 1000	
-accamulate_time				= 0
-
-visible_by_detector 		= off
-
-blowout_wind				= off
-
-blowout_wind_time_start 	= 0
-blowout_wind_time_peak  	= 600
-blowout_wind_time_end		= 899
-blowout_wind_power			= 0.5			;сила поднимаего ветра (от 0 до 1), в момент blowout_wind_time_peak 
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;рождение артефактов во время срабатывания
-spawn_blowout_artefacts = off
-
-
-
 [zone_campfire_grill]
-;GroupControlSection			= spawn_group_zone
 $spawn 						= "zones\campfire_grill"
-$prefetch 					= 16
 class						= Z_MBALD
 
 hit_impulse_scale			= 0.00
@@ -168,9 +81,7 @@ spawn_blowout_artefacts = off
 
 
 [zone_flame]
-;GroupControlSection	= spawn_group_zone
 $spawn 			= "zones\flame"
-$prefetch 		= 16
 class			= Z_MBALD
 hit_impulse_scale	= 0.0
 effective_radius	= 1.3 ;размер радиуса в процентах от оригинального, где действует зона
@@ -244,9 +155,7 @@ spawn_blowout_artefacts = off
 
 
 [zone_zhar]
-;GroupControlSection	= spawn_group_zone
 $spawn 			= "zones\zhar"
-$prefetch 		= 16
 class			= Z_MBALD
 hit_impulse_scale	= 0.0
 effective_radius	= 1.3 ;?acia? ?aaeona a i?ioaioao io i?eaeiaeuiiai, aaa aaenoaoao ciia
@@ -314,15 +223,13 @@ visible_by_detector = off
 blowout_wind		= off
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;?i?aaiea a?oaoaeoia ai a?aiy n?aaaouaaiey
+;;рождение артефактов во время срабатывания
 spawn_blowout_artefacts = off
 
 
 
 [zone_emi]
-;GroupControlSection	= spawn_group_zone
 $spawn 			= "zones\emi"
-$prefetch 		= 16
 class			= Z_MBALD
 hit_impulse_scale	= .01
 effective_radius	= 1 ;размер радиуса в процентах от оригинального, где действует зона
@@ -396,9 +303,7 @@ spawn_blowout_artefacts = off
 
 
 [zone_flame_small]
-;GroupControlSection			= spawn_group_zone
 $spawn 						= "zones\campfire"
-$prefetch 					= 16
 class						= Z_MBALD
 
 hit_impulse_scale			= 0.0

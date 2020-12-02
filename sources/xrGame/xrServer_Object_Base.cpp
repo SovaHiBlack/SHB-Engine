@@ -369,25 +369,7 @@ xr_token game_types[]={
 };
 
 void CSE_Abstract::FillProps				(const char* pref, PropItemVec& items)
-{
-	/*
-#ifdef XRGAME_EXPORTS
-#	ifdef DEBUG
-	PHelper().CreateToken8		(items,	PrepareKey(pref,"Game Type"),			&s_gameid,		game_types);
-    PHelper().CreateU16			(items,	PrepareKey(pref, "Respawn Time (s)"),	&RespawnTime,	0,43200);
-
-//	const char*						gcs = pSettings->r_string(s_name,"GroupControlSection");
-//	PHelper().CreateChoose		(items,PrepareKey(pref,*s_name,"Spawn\\group control"),				&m_spawn_control,		smSpawnItem,	0,	(void*)gcs,	16);
-	PHelper().CreateFlag32		(items,PrepareKey(pref,*s_name,"Spawn\\enabled"),					&m_spawn_flags,			flSpawnEnabled);
-//	PHelper().CreateFloat		(items,PrepareKey(pref,*s_name,"Spawn\\probability"),				&m_spawn_probability,	0.f,			1.f);
-//	PHelper().CreateFlag32		(items,PrepareKey(pref,*s_name,"Spawn\\spawn on surge only"),		&m_spawn_flags,			flSpawnOnSurgeOnly);
-//	PHelper().CreateFlag32		(items,PrepareKey(pref,*s_name,"Spawn\\spawn if destroyed only"),	&m_spawn_flags,			flSpawnIfDestroyedOnly);
-//	PHelper().CreateFlag32		(items,PrepareKey(pref,*s_name,"Spawn\\spawn infinite count"),		&m_spawn_flags,			flSpawnInfiniteCount);
-//	PHelper().CreateFlag32		(items,PrepareKey(pref,*s_name,"Spawn\\auto destroy on spawn"),		&m_spawn_flags,			flSpawnDestroyOnSpawn);
-#	endif // DEBUG
-#endif // XRGAME_EXPORTS
-	*/
-}
+{ }
 
 void CSE_Abstract::FillProp					(const char* pref, PropItemVec &items)
 {

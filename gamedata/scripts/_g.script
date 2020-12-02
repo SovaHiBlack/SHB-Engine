@@ -17,7 +17,7 @@ end
 --' ===========================================================================
 --' Вывод сообщения в Log
 function printf(fmt, ...)
---	log(string.format(fmt, ...))
+	log(string.format(fmt, ...))
 end
 --' ===========================================================================
 
@@ -28,6 +28,16 @@ function abort(fmt, ...)
 	assert("ERROR: " .. reason)
 	printf("ERROR: " .. reason)
 	printf("%s")
+end
+--' ===========================================================================
+
+--' ===========================================================================
+function start_game_callback()
+	printf("start_game_callback called")
+	task_manager.clear_task_manager()
+	treasure_manager.clear_treasure_manager()
+	xr_sound.clear_all_sound_object()
+	dialog_manager.fill_phrase_table()
 end
 --' ===========================================================================
 
@@ -1227,14 +1237,6 @@ function get_texture_info(id_name, id_default)
 	r.x2 = r.x2 - r.x1
 	r.y2 = r.y2 - r.y1
 	return task_info:get_file_name(), r
-end
-
-function start_game_callback()
---	printf("start_game_callback called")
-	task_manager.clear_task_manager()
-	treasure_manager.clear_treasure_manager()
-	xr_sound.clear_all_sound_object()
-	dialog_manager.fill_phrase_table()
 end
 
 ammo_section = {}

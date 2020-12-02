@@ -441,9 +441,6 @@
     <None Include="config\models\vehicles\veh_zaz_u_01.ltx" />
     <None Include="config\models\vehicles\veh_zaz_u_01_part0.ltx" />
     <None Include="config\models\weapons\mounted_wpn_pkm.ltx" />
-    <None Include="config\prefetch\prefetch.ltx" />
-    <None Include="config\prefetch\prefetch_globals.ltx" />
-    <None Include="config\prefetch\prefetch_single.ltx" />
     <None Include="config\rspec_default.ltx" />
     <None Include="config\rspec_extreme.ltx" />
     <None Include="config\rspec_high.ltx" />
