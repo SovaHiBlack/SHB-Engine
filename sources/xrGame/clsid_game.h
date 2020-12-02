@@ -2,12 +2,10 @@
 
 #define CLSID_OBJECT_ACTOR			MK_CLSID('O','_','A','C','T','O','R',' ')//
 #define CLSID_OBJECT_HLAMP			MK_CLSID('O','_','H','L','A','M','P',' ')//
-//#define CLSID_ENTITY				MK_CLSID('E','N','T','I','T','Y',' ',' ')
 #define CLSID_SPECTATOR				MK_CLSID('S','P','E','C','T',' ',' ',' ')//
 #define CLSID_OBJECT_PROJECTOR		MK_CLSID('O','_','S','E','A','R','C','H')//
 
 // all the monsters
-//#define CLSID_LEVEL_POINT			MK_CLSID('L','V','L','P','O','I','N','T')
 #define CLSID_SCRIPT_OBJECT			MK_CLSID('S','C','R','P','T','O','B','J')//
 #define CLSID_AI_GRAPH				MK_CLSID('A','I','_','G','R','A','P','H')//
 #define CLSID_AI_CROW				MK_CLSID('A','I','_','C','R','O','W',' ')//
@@ -19,7 +17,6 @@
 #define CLSID_AI_FLESH_GROUP		MK_CLSID('A','I','_','F','L','E','_','G')//
 
 #define CLSID_AI_PHANTOM			MK_CLSID('A','I','_','P','H','A','N','T')//
-//#define CLSID_AI_SPONGER			MK_CLSID('A','I','_','S','P','O','N','G')
 #define CLSID_AI_CONTROLLER			MK_CLSID('A','I','_','C','O','N','T','R')//?SM_CONTR
 #define CLSID_AI_BLOODSUCKER		MK_CLSID('A','I','_','B','L','O','O','D')//?SM_BLOOD
 #define CLSID_AI_STALKER			MK_CLSID('A','I','_','S','T','L',' ',' ')//
@@ -40,10 +37,6 @@
 // vehicles
 #define CLSID_CAR					MK_CLSID('C','_','N','I','V','A',' ',' ')//?SCRPTCAR
 #define CLSID_VEHICLE_HELICOPTER	MK_CLSID('C','_','H','L','C','P','T','R')//?C_HLCP_S
-
-//#define CLSID_OBJECT_FLYER		MK_CLSID('O','_','F','L','Y','E','R',' ')
-//#define CLSID_OBJECT_DOOR			MK_CLSID('O','_','D','O','O','R',' ',' ')
-//#define CLSID_OBJECT_LIFT			MK_CLSID('O','_','L','I','F','T',' ',' ')
 
 // Artefacts
 #define CLSID_AF_MERCURY_BALL		MK_CLSID('A','F','_','M','B','A','L','L')
@@ -90,13 +83,14 @@
 
 #define CLSID_OBJECT_W_MOUNTED		MK_CLSID('W','_','M','O','U','N','T','D')
 #define CLSID_OBJECT_W_STATMGUN		MK_CLSID('W','_','S','T','M','G','U','N')
+
 // Weapons Ammo
 #define CLSID_OBJECT_AMMO			MK_CLSID('A','M','M','O',' ',' ',' ',' ')
-//-----------------------------------------------------------------------------
+
 #define CLSID_OBJECT_A_VOG25		MK_CLSID('A','_','V','O','G','2','5',' ')
 #define CLSID_OBJECT_A_OG7B			MK_CLSID('A','_','O','G','7','B',' ',' ')
 #define CLSID_OBJECT_A_M209			MK_CLSID('A','_','M','2','0','9',' ',' ')
-//-----------------------------------------------------------------------------
+
 // Weapons Add-ons
 #define CLSID_OBJECT_W_SCOPE		MK_CLSID('W','_','S','C','O','P','E',' ')
 #define CLSID_OBJECT_W_SILENCER		MK_CLSID('W','_','S','I','L','E','N','C')
@@ -111,7 +105,6 @@
 #define CLSID_OBJECT_ARMOR			MK_CLSID('O','_','A','R','M','O','R',' ')
 
 // Standard level object
-//#define CLSID_OBJECT_ITEM_STD		MK_CLSID('O','_','I','T','E','M',' ',' ')
 #define CLSID_OBJECT_BREAKABLE		MK_CLSID('O','_','B','R','K','B','L',' ')//
 #define CLSID_OBJECT_CLIMABLE		MK_CLSID('O','_','C','L','M','B','L',' ')//
 
@@ -125,20 +118,20 @@
 #define CLSID_ZONE					MK_CLSID('Z','_','Z','O','N','E',' ',' ')
 #define CLSID_Z_MBALD				MK_CLSID('Z','_','M','B','A','L','D',' ')
 #define CLSID_Z_MINCER				MK_CLSID('Z','_','M','I','N','C','E','R')
-#define CLSID_Z_ACIDF 				MK_CLSID('Z','_','A','C','I','D','F',' ')
+#define CLSID_Z_ACIDF				MK_CLSID('Z','_','A','C','I','D','F',' ')
 #define CLSID_Z_GALANT				MK_CLSID('Z','_','G','A','L','A','N','T')
 #define CLSID_Z_RADIO				MK_CLSID('Z','_','R','A','D','I','O',' ')
 #define CLSID_Z_BFUZZ				MK_CLSID('Z','_','B','F','U','Z','Z',' ')
 #define CLSID_Z_RUSTYH				MK_CLSID('Z','_','R','U','S','T','Y','H')
 #define CLSID_Z_AMEBA				MK_CLSID('Z','_','A','M','E','B','A',' ')
 #define CLSID_Z_NOGRAVITY			MK_CLSID('Z','_','N','O','G','R','A','V')
-#define CLSID_Z_FRYUP  				MK_CLSID('Z','_','F','R','Y','U','P ',' ')
-#define CLSID_Z_DEAD  				MK_CLSID('Z','_','D','E','A','D',' ',' ')
+#define CLSID_Z_FRYUP				MK_CLSID('Z','_','F','R','Y','U','P ',' ')
+#define CLSID_Z_DEAD				MK_CLSID('Z','_','D','E','A','D',' ',' ')
 #define CLSID_LEVEL_CHANGER			MK_CLSID('L','V','L','_','C','H','N','G')
 #define CLSID_SCRIPT_ZONE			MK_CLSID('S','C','R','I','P','T','Z','N')
-#define CLSID_Z_TEAM_BASE  			MK_CLSID('Z','_','T','E','A','M','B','S')
-#define CLSID_Z_TORRID  			MK_CLSID('Z','_','T','O','R','R','I','D')
-#define CLSID_SPACE_RESTRICTOR 		MK_CLSID('S','P','A','C','E','_','R','S')
+#define CLSID_Z_TEAM_BASE			MK_CLSID('Z','_','T','E','A','M','B','S')
+#define CLSID_Z_TORRID				MK_CLSID('Z','_','T','O','R','R','I','D')
+#define CLSID_SPACE_RESTRICTOR		MK_CLSID('S','P','A','C','E','_','R','S')
 #define CLSID_SMART_ZONE			MK_CLSID('S','M','R','T','Z','O','N','E')
 
 // Detectors

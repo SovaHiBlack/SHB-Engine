@@ -3,7 +3,7 @@
 #include "GameFont.h"
 #include "Render.h"
 
-extern ENGINE_API BOOL g_bRendering;
+extern ENGINE_API BOOL	g_bRendering;
 ENGINE_API Fvector2		g_current_font_scale = { 1.0f,1.0f };
 
 CGameFont::CGameFont(const char* section, u32 flags)
