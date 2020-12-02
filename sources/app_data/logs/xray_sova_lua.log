@@ -1,0 +1,12 @@
+[ERROR]       SCRIPT RUNTIME ERROR
+[ERROR]        0 : [C] [C](-1) : 
+[ERROR]        1 : [Lua] ...\debug-win32\..\gamedata\scripts\ui_main_menu.script(195) : 
+[ERROR]       ...\debug-win32\..\gamedata\scripts\ui_main_menu.script:195: attempt to index global 'ui_mm_opt_main' (a nil value)
+[ERROR]       SCRIPT RUNTIME ERROR
+[ERROR]       attempt to index global 'ui_mm_opt_main' (a nil value)
+[ERROR]       SCRIPT RUNTIME ERROR
+[ERROR]        0 : [C] [C](-1) : 
+[ERROR]        1 : [Lua] ...\debug-win32\..\gamedata\scripts\ui_main_menu.script(195) : 
+[ERROR]       ...\debug-win32\..\gamedata\scripts\ui_main_menu.script:195: attempt to index global 'ui_mm_opt_main' (a nil value)
+[ERROR]       SCRIPT RUNTIME ERROR
+[ERROR]       attempt to index global 'ui_mm_opt_main' (a nil value)

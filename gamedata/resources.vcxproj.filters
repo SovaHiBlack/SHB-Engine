@@ -2256,9 +2256,6 @@
     <None Include="scripts\deadcity_tasks.script">
       <Filter>scripts\hide</Filter>
     </None>
-    <None Include="scripts\death_manager.script">
-      <Filter>scripts\hide</Filter>
-    </None>
     <None Include="scripts\debug_test.script">
       <Filter>scripts\hide</Filter>
     </None>
@@ -2367,9 +2364,6 @@
     <None Include="scripts\game_last_ui.script">
       <Filter>scripts\hide</Filter>
     </None>
-    <None Include="scripts\game_stats.script">
-      <Filter>scripts\hide</Filter>
-    </None>
     <None Include="scripts\game_types.script">
       <Filter>scripts\hide</Filter>
     </None>
@@ -2436,9 +2430,6 @@
     <None Include="scripts\level_psy_antenna.script">
       <Filter>scripts\hide</Filter>
     </None>
-    <None Include="scripts\level_tasks.script">
-      <Filter>scripts\hide</Filter>
-    </None>
     <None Include="scripts\level_tips.script">
       <Filter>scripts\hide</Filter>
     </None>
@@ -2460,22 +2451,10 @@
     <None Include="scripts\mob_alife_control.script">
       <Filter>scripts\hide</Filter>
     </None>
-    <None Include="scripts\mob_sound.script">
-      <Filter>scripts\hide</Filter>
-    </None>
-    <None Include="scripts\mob_state_mgr.script">
-      <Filter>scripts\hide</Filter>
-    </None>
     <None Include="scripts\monster_script.script">
       <Filter>scripts\hide</Filter>
     </None>
     <None Include="scripts\monster_test.script">
-      <Filter>scripts\hide</Filter>
-    </None>
-    <None Include="scripts\move_mgr.script">
-      <Filter>scripts\hide</Filter>
-    </None>
-    <None Include="scripts\news_manager.script">
       <Filter>scripts\hide</Filter>
     </None>
     <None Include="scripts\p.script">
@@ -2607,9 +2586,6 @@
     <None Include="scripts\sound_prefetch.script">
       <Filter>scripts\hide</Filter>
     </None>
-    <None Include="scripts\sound_theme.script">
-      <Filter>scripts\hide</Filter>
-    </None>
     <None Include="scripts\ssss.script">
       <Filter>scripts\hide</Filter>
     </None>
@@ -2625,31 +2601,7 @@
     <None Include="scripts\state_lib.script">
       <Filter>scripts\hide</Filter>
     </None>
-    <None Include="scripts\state_mgr_animation.script">
-      <Filter>scripts\hide</Filter>
-    </None>
     <None Include="scripts\state_mgr_animation_list.script">
-      <Filter>scripts\hide</Filter>
-    </None>
-    <None Include="scripts\state_mgr_animstate.script">
-      <Filter>scripts\hide</Filter>
-    </None>
-    <None Include="scripts\state_mgr_bodystate.script">
-      <Filter>scripts\hide</Filter>
-    </None>
-    <None Include="scripts\state_mgr_direction.script">
-      <Filter>scripts\hide</Filter>
-    </None>
-    <None Include="scripts\state_mgr_goap.script">
-      <Filter>scripts\hide</Filter>
-    </None>
-    <None Include="scripts\state_mgr_mental.script">
-      <Filter>scripts\hide</Filter>
-    </None>
-    <None Include="scripts\state_mgr_movement.script">
-      <Filter>scripts\hide</Filter>
-    </None>
-    <None Include="scripts\state_mgr_weapon.script">
       <Filter>scripts\hide</Filter>
     </None>
     <None Include="scripts\task_1.script">
@@ -2820,13 +2772,7 @@
     <None Include="scripts\thread_test.script">
       <Filter>scripts\hide</Filter>
     </None>
-    <None Include="scripts\ui_base_dialog.script">
-      <Filter>scripts\hide</Filter>
-    </None>
     <None Include="scripts\ui_game_over.script">
-      <Filter>scripts\hide</Filter>
-    </None>
-    <None Include="scripts\ui_load_dialog.script">
       <Filter>scripts\hide</Filter>
     </None>
     <None Include="scripts\ui_main_base_tab.script">
@@ -2839,24 +2785,6 @@
       <Filter>scripts\hide</Filter>
     </None>
     <None Include="scripts\ui_main_new_tab.script">
-      <Filter>scripts\hide</Filter>
-    </None>
-    <None Include="scripts\ui_mm_opt_controls.script">
-      <Filter>scripts\hide</Filter>
-    </None>
-    <None Include="scripts\ui_mm_opt_gameplay.script">
-      <Filter>scripts\hide</Filter>
-    </None>
-    <None Include="scripts\ui_mm_opt_main.script">
-      <Filter>scripts\hide</Filter>
-    </None>
-    <None Include="scripts\ui_mm_opt_sound.script">
-      <Filter>scripts\hide</Filter>
-    </None>
-    <None Include="scripts\ui_mm_opt_video.script">
-      <Filter>scripts\hide</Filter>
-    </None>
-    <None Include="scripts\ui_mm_opt_video_adv.script">
       <Filter>scripts\hide</Filter>
     </None>
     <None Include="scripts\ui_numpad.script">
@@ -2884,9 +2812,6 @@
       <Filter>scripts\hide</Filter>
     </None>
     <None Include="scripts\ui_registrator.script">
-      <Filter>scripts\hide</Filter>
-    </None>
-    <None Include="scripts\ui_save_dialog.script">
       <Filter>scripts\hide</Filter>
     </None>
     <None Include="scripts\ui_spawn_dialog.script">
@@ -2937,16 +2862,10 @@
     <None Include="scripts\x18.script">
       <Filter>scripts\hide</Filter>
     </None>
-    <None Include="scripts\xr_actions_id.script">
-      <Filter>scripts\hide</Filter>
-    </None>
     <None Include="scripts\xr_assistance.script">
       <Filter>scripts\hide</Filter>
     </None>
     <None Include="scripts\xr_bodyguard.script">
-      <Filter>scripts\hide</Filter>
-    </None>
-    <None Include="scripts\xr_box.script">
       <Filter>scripts\hide</Filter>
     </None>
     <None Include="scripts\xr_combat_camper.script">
@@ -2964,16 +2883,10 @@
     <None Include="scripts\xr_companion.script">
       <Filter>scripts\hide</Filter>
     </None>
-    <None Include="scripts\xr_conditions.script">
-      <Filter>scripts\hide</Filter>
-    </None>
     <None Include="scripts\xr_conditions_impl.script">
       <Filter>scripts\hide</Filter>
     </None>
     <None Include="scripts\xr_dialogs.script">
-      <Filter>scripts\hide</Filter>
-    </None>
-    <None Include="scripts\xr_effects.script">
       <Filter>scripts\hide</Filter>
     </None>
     <None Include="scripts\xr_guide.script">
@@ -3012,13 +2925,7 @@
     <None Include="scripts\xr_sounds_id.script">
       <Filter>scripts\hide</Filter>
     </None>
-    <None Include="scripts\xr_spawner.script">
-      <Filter>scripts\hide</Filter>
-    </None>
     <None Include="scripts\xr_state.script">
-      <Filter>scripts\hide</Filter>
-    </None>
-    <None Include="scripts\xr_statistic.script">
       <Filter>scripts\hide</Filter>
     </None>
     <None Include="scripts\xr_talker.script">
@@ -3418,6 +3325,99 @@
       <Filter>scripts</Filter>
     </None>
     <None Include="scripts\actor_proxy.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\sound_theme.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\xr_box.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\xr_actions_id.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\xr_statistic.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\xr_spawner.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\xr_effects.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\xr_conditions.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\ui_save_dialog.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\ui_mm_opt_video_adv.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\ui_mm_opt_video.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\ui_mm_opt_sound.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\ui_mm_opt_main.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\ui_mm_opt_gameplay.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\ui_mm_opt_controls.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\ui_load_dialog.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\ui_base_dialog.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\state_mgr_weapon.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\state_mgr_movement.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\state_mgr_mental.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\state_mgr_goap.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\state_mgr_direction.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\state_mgr_bodystate.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\state_mgr_animstate.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\state_mgr_animation.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\news_manager.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\move_mgr.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\mob_state_mgr.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\mob_sound.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\level_tasks.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\game_stats.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\death_manager.script">
       <Filter>scripts</Filter>
     </None>
   </ItemGroup>

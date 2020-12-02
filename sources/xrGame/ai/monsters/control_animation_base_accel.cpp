@@ -151,5 +151,3 @@ bool CControlAnimationBase::accel_check_braking(float before_interval, float nom
 
 	return (braking_mode = false);
 }
-
-

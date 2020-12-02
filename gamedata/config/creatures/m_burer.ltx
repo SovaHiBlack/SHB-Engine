@@ -62,7 +62,6 @@ Velocity_Drag			= 1.0,		3.0,			3.0,		1,		1
 Velocity_Steal			= 1.5,		3.0,			3.0,		1,		1
 
 ; acceleration
-;Accel_Generic			= 1.5
 Accel_Calm				= 1.5
 Accel_Aggressive		= 200 ;6.5
 
@@ -101,12 +100,6 @@ bleeding_v						= 0.05				;потеря крови при номинальной ране в секунду
 wound_incarnation_v				= 0.04				;крутизна кривой заживления (какой процент раны останется после заживления в игровую секунду)
 min_wound_size					= 0.01
 
-;sleep_health					= 1.0		;1.5	;коэффициенты скоростей изменения параметров во время сна
-;sleep_power						= 1.0		;1.5
-;sleep_satiety					= 1.0		;0.8
-;sleep_radiation					= 1.0		;1.1
-;sleep_psy_health				= 1.0
-
 eat_freq						= 5.0				;частота укусов в сек
 eat_slice						= 0.01				;увеличение сытости при 1 укусе
 eat_slice_weight				= 10.0				;уменьшение еды у трупа
@@ -143,11 +136,9 @@ idle_sound_delay		= 55000;5000
 eat_sound_delay			= 3000
 attack_sound_delay		= 14000;4000
 
-
 sound_distant_idle			= monsters\burer\burer_idle_
 distant_idle_sound_delay	= 80000
-distant_idle_sound_range	= 100.0	
-
+distant_idle_sound_range	= 100.0
 
 SoundThreshold			= 0.06             ; range [0..1]
 max_hear_dist			= 60
@@ -259,6 +250,7 @@ damage					= m_burer_damage
 
 ;species of monster
 species					= burer
+
 rank					= 0
 spec_rank				= weak
 community				= burer
