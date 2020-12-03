@@ -1,26 +1,26 @@
 	<!-- Eliminate Lager -->
 	<!-- Trader -->
-	<article id="tm_eliminate_camp_1_descr" name="eliminate_lager"  article_type="task">
+	<article id="tm_eliminate_camp_1_descr" name="eliminate_lager" article_type="task">
 		<text>tm_eliminate_camp_1_descr</text>
 	</article>
 
-	<article id="tm_eliminate_camp_2_descr" name="eliminate_lager"  article_type="task">
+	<article id="tm_eliminate_camp_2_descr" name="eliminate_lager" article_type="task">
 		<text>tm_eliminate_camp_2_descr</text>
 	</article>
 
-	<article id="tm_eliminate_camp_3_descr" name="eliminate_lager"  article_type="task">
+	<article id="tm_eliminate_camp_3_descr" name="eliminate_lager" article_type="task">
 		<text>tm_eliminate_camp_3_descr</text>
 	</article>
 
-	<article id="tm_eliminate_camp_4_descr" name="eliminate_lager"  article_type="task">
+	<article id="tm_eliminate_camp_4_descr" name="eliminate_lager" article_type="task">
 		<text>tm_eliminate_camp_4_descr</text>
 	</article>
 
-	<article id="tm_eliminate_camp_5_descr" name="eliminate_lager"  article_type="task">
+	<article id="tm_eliminate_camp_5_descr" name="eliminate_lager" article_type="task">
 		<text>tm_eliminate_camp_5_descr</text>
 	</article>
 
-	<article id="tm_eliminate_camp_6_descr" name="eliminate_lager"  article_type="task">
+	<article id="tm_eliminate_camp_6_descr" name="eliminate_lager" article_type="task">
 		<text>tm_eliminate_camp_6_descr</text>
 	</article>
 

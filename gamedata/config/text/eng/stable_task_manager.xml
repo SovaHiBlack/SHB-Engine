@@ -1,5 +1,217 @@
-<?xml version="1.0" encoding="windows-1251" ?>
+<?xml version="1.0" encoding="windows-1251"?>
+
 <string_table>
+	<string id="tm_eliminate_camp_1">
+		<text>Destroy the bandit camp at the Garbage.</text>
+	</string>
+	<string id="tm_eliminate_camp_1_text">
+		<text>The bandits have rallied lately, getting in the way of honest people trading... So make a beeline for the Garbage, I've been told these scumbags have settled down near the scrapyard. You look into this matter, and everyone will be grateful to you, and I'll be generous with the reward. Agreed?</text>
+	</string>
+	<string id="tm_eliminate_camp_1_descr">
+		<text>Eliminate the bandits at the Garbage who rob stalkers on the way back from the Zone. The trader will be happy.</text>
+	</string>
+
+	<string id="tm_eliminate_camp_2">
+		<text>Destroy the bandit camp at the bus station.</text>
+	</string>
+	<string id="tm_eliminate_camp_2_text">
+		<text>The bandits have been hanging around the bus station again. So did you guess already what the job is about? Well then… jump to it! Pass our warmest greetings to them and come back, I'll thank you then. Deal?</text>
+	</string>
+	<string id="tm_eliminate_camp_2_descr">
+		<text>Eliminate the bandits at the factory. Apparently, they're new to the Zone, so the job is gonna be easy.</text>
+	</string>
+
+	<string id="tm_eliminate_camp_3">
+		<text>Eliminate the bandits by the Agroprom Research Institute.</text>
+	</string>
+	<string id="tm_eliminate_camp_3_text">
+		<text>Some bandits turned up by the Agroprom Research Institute. They're disturbing my diggers when they sort through the rubbish. You solve the problem, I'll owe you.</text>
+	</string>
+	<string id="tm_eliminate_camp_3_descr">
+		<text>Eliminate the bandits by the Agroprom Research Institute. Better stay on friendly terms with the trader.</text>
+	</string>
+
+	<string id="tm_eliminate_camp_4">
+		<text>Purge the area from mutants.</text>
+	</string>
+	<string id="tm_eliminate_camp_4_text">
+		<text>There is one thing, pretty easy. They want to bring some foreign tourist over. He paid some dough to my homies to get to look at the zone. And the area where they're gonna show him around needs to be cleared of mutants. Will you do it?</text>
+	</string>
+	<string id="tm_eliminate_camp_4_descr">
+		<text>Purge the area from mutants.</text>
+	</string>
+
+	<string id="tm_eliminate_camp_5">
+		<text>Eliminate two bandits at the Dump.</text>
+	</string>
+	<string id="tm_eliminate_camp_5_text">
+		<text>Recently one of the best places in the Zone became inaccessible for lovers of the wonderful. At the Dump…yeah, the Dump, there's a quaint little place like nothing else, where all your sadness leaves you, where you forget about the dirt, about money, about blood. Forgot, that is, because now there are two dirty freaks sitting there, who threaten to kill anyone who doesn't pay them for being able to enter the place. Get rid of them - I have no other place to take the tourists.</text>
+	</string>
+	<string id="tm_eliminate_camp_5_descr">
+		<text>Make the road to one of the best places in the Zone accessible to all.</text>
+	</string>
+
+	<string id="tm_eliminate_camp_6">
+		<text>Kill the bloodsucker in the Dark Valley</text>
+	</string>
+	<string id="tm_eliminate_camp_6_text">
+		<text>They say that the troops left the Dark Valley. And then monsters started pouring out of every crevice. The stalkers already spotted a bloodsucker there, and an extraordinary one at that - he's not afraid of open spaces. Any way, once word gets around to the scientist, they'll definitely want to study this bloodsucker. And I want to be the person who hands them over the body. Your job is to kill the bloodsucker, and I'll take care of the rest.</text>
+	</string>
+	<string id="tm_eliminate_camp_6_descr">
+		<text>Kill the bloodsucker in the Dark Valley</text>
+	</string>
+
+	<string id="tm_defend_camp_1">
+		<text>Cover the Duty detachment from the attack of the bandits in the Dark Valley</text>
+	</string>
+	<string id="tm_defend_camp_1_text">
+		<text>I finally managed to get it into the thick heads of the dutyers that it's high time to purge the Dump from bandits. The Duty will get to enlarge its territory and they won't damage my regular clients as often. Well, here's the deal - the leadership of the Duty decided, for starters, to cut off the flow of bandits from the Dark Valley. So they sent out a blockade detachment and discovered that the bandits didn't like that. Who would have thought! So what I'm wondering is, could you help them secure the entrance to the Valley? I'll thank you handsomely. </text>
+	</string>
+	<string id="tm_defend_camp_1_descr">
+		<text>Cover the Duty detachment from the attack of the bandits in the Dark Valley</text>
+	</string>
+
+	<string id="tm_find_artefact_1">
+		<text>Find the Jellyfish artifact</text>
+	</string>
+	<string id="tm_find_artefact_1_text">
+		<text>Some guy from the Big Land asked for a Jellyfish. It's not a lot of money, but it's a milk run. Take it!</text>
+	</string>
+	<string id="tm_find_artefact_1_descr">
+		<text>Find the Jellyfish artifact formed in the Springboard anomaly</text>
+	</string>
+
+	<string id="tm_find_artefact_2">
+		<text>Find the Stone Flower artifact</text>
+	</string>
+	<string id="tm_find_artefact_2_text">
+		<text>I have a request for the Stone Flower. The order is from the jewellers, by the way, so let's try to make the pretty ladies happy, eh? If you get it, you'll get the money and a bottle to drink to their health…</text>
+	</string>
+	<string id="tm_find_artefact_2_descr">
+		<text>Find the Stone Flower artifact formed in the Springboard anomaly. The pay is supposed to be pretty good.</text>
+	</string>
+
+	<string id="tm_find_artefact_3">
+		<text>Find the Night Star artifact</text>
+	</string>
+	<string id="tm_find_artefact_3_text">
+		<text>There is this one little job... rather unpleasant. Apparently, it's coming from the military, they're working on some new protection. Anyway, there's an order for the Night Star. It's quite a rare artifact, but it provides pretty good protection from bullets... So will you do it? I'll pay you well! </text>
+	</string>
+	<string id="tm_find_artefact_3_descr">
+		<text>Find the Night Star, a rare and expensive artifact.</text>
+	</string>
+
+	<string id="tm_find_artefact_4">
+		<text>Find the artifact called Chunk of Meat</text>
+	</string>
+	<string id="tm_find_artefact_4_text">
+		<text>There's an order for an artifact, the kind that heals wounds, called Chunk of Meat! They have a clinic of some sort. If you get it you'll get paid and help people at the same time.</text>
+	</string>
+	<string id="tm_find_artefact_4_descr">
+		<text>Find the wound-healing artifact called Chunk of Meat</text>
+	</string>
+
+	<string id="tm_kill_stalker_1">
+		<text>Kill the bandit leader</text>
+	</string>
+	<string id="tm_kill_stalker_1_text">
+		<text>You'll have to finish off this one dandy, one of the bandit leaders. The other day the bandits, by his order, intercepted my courier and shook him up and I don't waste words with those who touch my people... In a word, if you get it done, I'll return the favor. So are you up for it? </text>
+	</string>
+	<string id="tm_kill_stalker_1_descr">
+		<text>Kill the bandit leader who crossed the trader. Most likely he won't be alone... Tough job, but the pay covers it all. The Dark Valley is the place to look for him.</text>
+	</string>
+
+	<string id="tm_kill_stalker_2">
+		<text>Kill the trader stalker</text>
+	</string>
+	<string id="tm_kill_stalker_2_text">
+		<text>I'm having a confrontation with this one trader. Well, if he doesn't want to cooperate, the hell with him! But I won't let anyone start filthy rumors. In short, he needs to be wasted so the others don't get out of hand. Let them all know who's the boss here... </text>
+	</string>
+	<string id="tm_kill_stalker_2_descr">
+		<text>Kill a stalker… Well, that's not the best job, lifting a hand against a fellow worker. But the pay is pretty good, and this may be what matters the most.</text>
+	</string>
+
+	<string id="tm_kill_stalker_3">
+		<text>Kill the rookie stalker</text>
+	</string>
+	<string id="tm_kill_stalker_3_text">
+		<text>There's this one guy here loafing about, pretending to be a rookie, but he's rather weird… So anyway, if he suddenly disappears, you'll be doing me a great favor. You know what I mean? </text>
+	</string>
+	<string id="tm_kill_stalker_3_descr">
+		<text>Finish off a rookie stalker, who may not be a rookie at all… Then who is he? Ah, who cares! As long as the job's not messy.</text>
+	</string>
+
+	<string id="tm_kill_stalker_4">
+		<text>Kill the stalker called Fiend</text>
+	</string>
+	<string id="tm_kill_stalker_4_text">
+		<text>The Fiend, aka Oleg Gusarov... used to serve in Spetsnaz. As long as he minded his own business, I had nothing against him, a loner is a loner. But I hear he's mustering a gang to crush down the cordon and take control over smuggling operations from the Zone. Now this is a major problem and it has to be solved quick. So will you do it? </text>
+	</string>
+	<string id="tm_kill_stalker_4_descr">
+		<text>Eliminate one of the trader Sidorovich's rivals, a stalker called Fiend. </text>
+	</string>
+
+	<string id="tm_kill_stalker_5">
+		<text>Kill Father Diodor</text>
+	</string>
+	<string id="tm_kill_stalker_5_text">
+		<text>I always said business and religion can't go together, they can never cross, and should never ever meddle in the other's affairs! It's just this padre, Lord forgive me, Diodor... well... he just can't see this simple truth. He keeps raving about artifact hunting, says that trading in them drives people to sin not just in the Zone, but in the whole world, on and on along those lines. Get this, he preaches the destruction of artifacts altogether!! See what he is up to? The worst bit is that he's actually got some converts! I've tried to approach this Diodor this way and other, but he just keeps at it. Here's the deal: you're going to send him upstairs wher he can preach all he likes... you get the point, right? And I'll give you a cool artifact. So, we've got a deal? </text>
+	</string>
+	<string id="tm_kill_stalker_5_descr">
+		<text>To kill a man preaching in the Zone against gathering and selling artifacts? Exactly. </text>
+	</string>
+
+	<string id="tm_kill_stalker_6">
+		<text>Kill the "sales representative"</text>
+	</string>
+	<string id="tm_kill_stalker_6_text">
+		<text>Imagine this: there's some weirdo running around here who introduces himself to my sales representatives, uses my reputation, and then tries to hand off second-rate stuff! Broken barrells, the armor that's falling apart, expired canned goods. I've already had to deal with a few unhappy clients. Bottom line, I need a man to have a little chat with that "sales representative", whatever it takes.</text>
+	</string>
+	<string id="tm_kill_stalker_6_descr">
+		<text>Kill the "sales representative". The merchant is looking after his reputation</text>
+	</string>
+
+	<string id="tm_find_item_1">
+		<text>Find the perfected pistol</text>
+	</string>
+	<string id="tm_find_item_1_text">
+		<text>Man, now there's a fad about using rigged weapons and nobody wants to shoot from normal weapons anymore, not even the newbies! Anyway, there's an order for an improved machine gun. Rumor has it the commander of the soldiers, the one who collects money for passing under the bridge, has a "Fort" with a fat cartridge clip. Will you get it?</text>
+	</string>
+	<string id="tm_find_item_1_descr">
+		<text>Obtain the gun called Fort that has, rumor has it, a larger amount of cartridges in its magazine. Its last known owner was the commander of the military checkpoint under the broken down bridge.</text>
+	</string>
+
+	<string id="tm_monster_part_1">
+		<text>Bring the jaw of the bloodsucker</text>
+	</string>
+	<string id="tm_monster_part_1_text">
+		<text>I heard a superstition that the tooth of a bloodsucker brings good luck. As if the one who wears that tooth around his neck gets past the anomalies, and artifacts fall right into his hands. Anyway, it's all bullshit, but there are some dopes who believe it all and are ready to pay well for it. If you bring the jaw of a bloodsucker, I'll pay you well.</text>
+	</string>
+	<string id="tm_monster_part_1_descr">
+		<text>So the tooth of the bloodsucker brings good luck? Let's see if it'll bring luck to the bloodsucker</text>
+	</string>
+
+	<string id="tm_monster_part_2">
+		<text>Bring over the tail of the pseudodog</text>
+	</string>
+	<string id="tm_monster_part_2_text">
+		<text>Winter's coming soon. And what do chicks like to wear there on the Big Earth during winter? That's right - furs. So now there's a new fashion going around, making various accessories from the tails of pseudodogs. It's some sort of special fur! Bottom line, there's an order for such a tail. Will you take it?</text>
+	</string>
+	<string id="tm_monster_part_2_descr">
+		<text>Bring over the tail of the pseudodog</text>
+	</string>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	<string id="artefact">
 		<text>Get the artifact.</text>
 	</string>
@@ -756,15 +968,9 @@
 	<string id="tm_Barkeep_list_job">
 		<text>Look what we've got now:</text>
 	</string>
-	<string id="tm_defend_camp_1">
-		<text>Cover the Duty detachment from the attack of the bandits in the Dark Valley</text>
-	</string>
-	<string id="tm_defend_camp_1_descr">
-		<text>Cover the Duty detachment from the attack of the bandits in the Dark Valley</text>
-	</string>
-	<string id="tm_defend_camp_1_text">
-		<text>I finally managed to get it into the thick heads of the dutyers that it's high time to purge the Dump from bandits. The Duty will get to enlarge its territory and they won't damage my regular clients as often. Well, here's the deal - the leadership of the Duty decided, for starters, to cut off the flow of bandits from the Dark Valley. So they sent out a blockade detachment and discovered that the bandits didn't like that. Who would have thought! So what I'm wondering is, could you help them secure the entrance to the Valley? I'll thank you handsomely. </text>
-	</string>
+
+
+
 	<string id="tm_dolg_has_no_job">
 		<text>There are no jobs available right now.</text>
 	</string>
@@ -810,105 +1016,39 @@
 	<string id="tm_ecolog_list_job">
 		<text>Here's what I can offer: </text>
 	</string>
-	<string id="tm_eliminate_camp_1">
-		<text>Destroy the bandit camp at the Garbage.</text>
-	</string>
-	<string id="tm_eliminate_camp_1_descr">
-		<text>Eliminate the bandits at the Garbage who rob stalkers on the way back from the Zone. The trader will be happy.</text>
-	</string>
-	<string id="tm_eliminate_camp_1_text">
-		<text>The bandits have rallied lately, getting in the way of honest people trading... So make a beeline for the Garbage, I've been told these scumbags have settled down near the scrapyard. You look into this matter, and everyone will be grateful to you, and I'll be generous with the reward. Agreed?</text>
-	</string>
-	<string id="tm_eliminate_camp_2">
-		<text>Destroy the bandit camp at the bus station.</text>
-	</string>
-	<string id="tm_eliminate_camp_2_descr">
-		<text>Eliminate the bandits at the factory. Apparently, they're new to the Zone, so the job is gonna be easy.</text>
-	</string>
-	<string id="tm_eliminate_camp_2_text">
-		<text>The bandits have been hanging around the bus station again. So did you guess already what the job is about? Well then… jump to it! Pass our warmest greetings to them and come back, I'll thank you then. Deal?</text>
-	</string>
-	<string id="tm_eliminate_camp_3">
-		<text>Eliminate the bandits by the Agroprom Research Institute.</text>
-	</string>
-	<string id="tm_eliminate_camp_3_descr">
-		<text>Eliminate the bandits by the Agroprom Research Institute. Better stay on friendly terms with the trader.</text>
-	</string>
-	<string id="tm_eliminate_camp_3_text">
-		<text>Some bandits turned up by the Agroprom Research Institute. They're disturbing my diggers when they sort through the rubbish. You solve the problem, I'll owe you.</text>
-	</string>
-	<string id="tm_eliminate_camp_4">
-		<text>Purge the area from mutants.</text>
-	</string>
-	<string id="tm_eliminate_camp_4_descr">
-		<text>Purge the area from mutants.</text>
-	</string>
-	<string id="tm_eliminate_camp_4_text">
-		<text>There is one thing, pretty easy. They want to bring some foreign tourist over. He paid some dough to my homies to get to look at the zone. And the area where they're gonna show him around needs to be cleared of mutants. Will you do it?</text>
-	</string>
-	<string id="tm_eliminate_camp_5">
-		<text>Eliminate two bandits at the Dump.</text>
-	</string>
-	<string id="tm_eliminate_camp_5_descr">
-		<text>Make the road to one of the best places in the Zone accessible to all.</text>
-	</string>
-	<string id="tm_eliminate_camp_5_text">
-		<text>Recently one of the best places in the Zone became inaccessible for lovers of the wonderful. At the Dump…yeah, the Dump, there's a quaint little place like nothing else, where all your sadness leaves you, where you forget about the dirt, about money, about blood. Forgot, that is, because now there are two dirty freaks sitting there, who threaten to kill anyone who doesn't pay them for being able to enter the place. Get rid of them - I have no other place to take the tourists.</text>
-	</string>
-	<string id="tm_eliminate_camp_6">
-		<text>Kill the bloodsucker in the Dark Valley</text>
-	</string>
-	<string id="tm_eliminate_camp_6_descr">
-		<text>Kill the bloodsucker in the Dark Valley</text>
-	</string>
-	<string id="tm_eliminate_camp_6_text">
-		<text>They say that the troops left the Dark Valley. And then monsters started pouring out of every crevice. The stalkers already spotted a bloodsucker there, and an extraordinary one at that - he's not afraid of open spaces. Any way, once word gets around to the scientist, they'll definitely want to study this bloodsucker. And I want to be the person who hands them over the body. Your job is to kill the bloodsucker, and I'll take care of the rest.</text>
-	</string>
-	<string id="tm_find_artefact_1">
-		<text>Find the Jellyfish artifact</text>
-	</string>
-	<string id="tm_find_artefact_1_descr">
-		<text>Find the Jellyfish artifact formed in the Springboard anomaly</text>
-	</string>
-	<string id="tm_find_artefact_1_text">
-		<text>Some guy from the Big Land asked for a Jellyfish. It's not a lot of money, but it's a milk run. Take it!</text>
-	</string>
-	<string id="tm_find_artefact_2">
-		<text>Find the Stone Flower artifact</text>
-	</string>
-	<string id="tm_find_artefact_2_descr">
-		<text>Find the Stone Flower artifact formed in the Springboard anomaly. The pay is supposed to be pretty good.</text>
-	</string>
-	<string id="tm_find_artefact_2_text">
-		<text>I have a request for the Stone Flower. The order is from the jewellers, by the way, so let's try to make the pretty ladies happy, eh? If you get it, you'll get the money and a bottle to drink to their health…</text>
-	</string>
-	<string id="tm_find_artefact_3">
-		<text>Find the Night Star artifact</text>
-	</string>
-	<string id="tm_find_artefact_3_descr">
-		<text>Find the Night Star, a rare and expensive artifact.</text>
-	</string>
-	<string id="tm_find_artefact_3_text">
-		<text>There is this one little job... rather unpleasant. Apparently, it's coming from the military, they're working on some new protection. Anyway, there's an order for the Night Star. It's quite a rare artifact, but it provides pretty good protection from bullets... So will you do it? I'll pay you well! </text>
-	</string>
-	<string id="tm_find_artefact_4">
-		<text>Find the artifact called Chunk of Meat</text>
-	</string>
-	<string id="tm_find_artefact_4_descr">
-		<text>Find the wound-healing artifact called Chunk of Meat</text>
-	</string>
-	<string id="tm_find_artefact_4_text">
-		<text>There's an order for an artifact, the kind that heals wounds, called Chunk of Meat! They have a clinic of some sort. If you get it you'll get paid and help people at the same time.</text>
-	</string>
-	<string id="tm_find_item_1">
-		<text>Find the perfected pistol</text>
-	</string>
-	<string id="tm_find_item_1_descr">
-		<text>Obtain the gun called Fort that has, rumor has it, a larger amount of cartridges in its magazine. Its last known owner was the commander of the military checkpoint under the broken down bridge.</text>
-	</string>
-	<string id="tm_find_item_1_text">
-		<text>Man, now there's a fad about using rigged weapons and nobody wants to shoot from normal weapons anymore, not even the newbies! Anyway, there's an order for an improved machine gun. Rumor has it the commander of the soldiers, the one who collects money for passing under the bridge, has a "Fort" with a fat cartridge clip. Will you get it?</text>
-	</string>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	<string id="tm_freedom_has_no_job">
 		<text>There's no job right now, really…</text>
 	</string>
@@ -945,60 +1085,24 @@
 	<string id="tm_job_refuse">
 		<text>I refuse to do this job.</text>
 	</string>
-	<string id="tm_kill_stalker_1">
-		<text>Kill the bandit leader</text>
-	</string>
-	<string id="tm_kill_stalker_1_descr">
-		<text>Kill the bandit leader who crossed the trader. Most likely he won't be alone... Tough job, but the pay covers it all. The Dark Valley is the place to look for him.</text>
-	</string>
-	<string id="tm_kill_stalker_1_text">
-		<text>You'll have to finish off this one dandy, one of the bandit leaders. The other day the bandits, by his order, intercepted my courier and shook him up and I don't waste words with those who touch my people... In a word, if you get it done, I'll return the favor. So are you up for it? </text>
-	</string>
-	<string id="tm_kill_stalker_2">
-		<text>Kill the trader stalker</text>
-	</string>
-	<string id="tm_kill_stalker_2_descr">
-		<text>Kill a stalker… Well, that's not the best job, lifting a hand against a fellow worker. But the pay is pretty good, and this may be what matters the most.</text>
-	</string>
-	<string id="tm_kill_stalker_2_text">
-		<text>I'm having a confrontation with this one trader. Well, if he doesn't want to cooperate, the hell with him! But I won't let anyone start filthy rumors. In short, he needs to be wasted so the others don't get out of hand. Let them all know who's the boss here... </text>
-	</string>
-	<string id="tm_kill_stalker_3">
-		<text>Kill the rookie stalker</text>
-	</string>
-	<string id="tm_kill_stalker_3_descr">
-		<text>Finish off a rookie stalker, who may not be a rookie at all… Then who is he? Ah, who cares! As long as the job's not messy.</text>
-	</string>
-	<string id="tm_kill_stalker_3_text">
-		<text>There's this one guy here loafing about, pretending to be a rookie, but he's rather weird… So anyway, if he suddenly disappears, you'll be doing me a great favor. You know what I mean? </text>
-	</string>
-	<string id="tm_kill_stalker_4">
-		<text>Kill the stalker called Fiend</text>
-	</string>
-	<string id="tm_kill_stalker_4_descr">
-		<text>Eliminate one of the trader Sidorovich's rivals, a stalker called Fiend. </text>
-	</string>
-	<string id="tm_kill_stalker_4_text">
-		<text>The Fiend, aka Oleg Gusarov... used to serve in Spetsnaz. As long as he minded his own business, I had nothing against him, a loner is a loner. But I hear he's mustering a gang to crush down the cordon and take control over smuggling operations from the Zone. Now this is a major problem and it has to be solved quick. So will you do it? </text>
-	</string>
-	<string id="tm_kill_stalker_5">
-		<text>Kill Father Diodor</text>
-	</string>
-	<string id="tm_kill_stalker_5_descr">
-		<text>To kill a man preaching in the Zone against gathering and selling artifacts? Exactly. </text>
-	</string>
-	<string id="tm_kill_stalker_5_text">
-		<text>I always said business and religion can't go together, they can never cross, and should never ever meddle in the other's affairs! It's just this padre, Lord forgive me, Diodor... well... he just can't see this simple truth. He keeps raving about artifact hunting, says that trading in them drives people to sin not just in the Zone, but in the whole world, on and on along those lines. Get this, he preaches the destruction of artifacts altogether!! See what he is up to? The worst bit is that he's actually got some converts! I've tried to approach this Diodor this way and other, but he just keeps at it. Here's the deal: you're going to send him upstairs wher he can preach all he likes... you get the point, right? And I'll give you a cool artifact. So, we've got a deal? </text>
-	</string>
-	<string id="tm_kill_stalker_6">
-		<text>Kill the "sales representative"</text>
-	</string>
-	<string id="tm_kill_stalker_6_descr">
-		<text>Kill the "sales representative". The merchant is looking after his reputation</text>
-	</string>
-	<string id="tm_kill_stalker_6_text">
-		<text>Imagine this: there's some weirdo running around here who introduces himself to my sales representatives, uses my reputation, and then tries to hand off second-rate stuff! Broken barrells, the armor that's falling apart, expired canned goods. I've already had to deal with a few unhappy clients. Bottom line, I need a man to have a little chat with that "sales representative", whatever it takes.</text>
-	</string>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	<string id="tm_lisiy_has_no_job">
 		<text>For the moment there's nothing.</text>
 	</string>
@@ -1029,24 +1133,12 @@
 	<string id="tm_Mercenary_list_job">
 		<text>There is something:</text>
 	</string>
-	<string id="tm_monster_part_1">
-		<text>Bring the jaw of the bloodsucker</text>
-	</string>
-	<string id="tm_monster_part_1_descr">
-		<text>So the tooth of the bloodsucker brings good luck? Let's see if it'll bring luck to the bloodsucker</text>
-	</string>
-	<string id="tm_monster_part_1_text">
-		<text>I heard a superstition that the tooth of a bloodsucker brings good luck. As if the one who wears that tooth around his neck gets past the anomalies, and artifacts fall right into his hands. Anyway, it's all bullshit, but there are some dopes who believe it all and are ready to pay well for it. If you bring the jaw of a bloodsucker, I'll pay you well.</text>
-	</string>
-	<string id="tm_monster_part_2">
-		<text>Bring over the tail of the pseudodog</text>
-	</string>
-	<string id="tm_monster_part_2_descr">
-		<text>Bring over the tail of the pseudodog</text>
-	</string>
-	<string id="tm_monster_part_2_text">
-		<text>Winter's coming soon. And what do chicks like to wear there on the Big Earth during winter? That's right - furs. So now there's a new fashion going around, making various accessories from the tails of pseudodogs. It's some sort of special fur! Bottom line, there's an order for such a tail. Will you take it?</text>
-	</string>
+
+
+
+
+
+
 	<string id="tm_petrenko_has_no_job">
 		<text>For the moment there's nothing.</text>
 	</string>

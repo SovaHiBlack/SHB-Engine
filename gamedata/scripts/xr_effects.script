@@ -66,7 +66,7 @@ function run_cam_effector(actor, npc, p)
         end
         
         --level.add_pp_effector(p[1] .. ".ppe", num, loop)
-	    level.add_cam_effector("camera_effects\\" .. p[1] .. ".anm", num, loop, "")	                  
+	    level.add_cam_effector("camera_effects\\" .. p[1] .. ".anm", num, loop, "")
     end
 end
 
@@ -196,13 +196,13 @@ function play_particle_on_path(actor, npc, p)
         if math.random(100) <= point_prob then
             particle:play_at_pos(path:point(a))
         end
-    end   
+    end
 end
 
 
 -----------------------------------------------------------------------------
 function monster_berserk(actor, npc)
-    npc:berserk()
+	npc:berserk()
 end
 
 function activate_bolt(actor, npc)
