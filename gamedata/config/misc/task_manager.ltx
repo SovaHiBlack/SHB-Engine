@@ -462,18 +462,18 @@
 	time				= 86400
 	prior				= 1
 
-[tm_find_item_1]
-	type				= find_item
-	community			= actor
-	condlist			= {+agroprom_military_case_done}
-	text				= tm_find_item_1_text
-	description			= tm_find_item_1_descr
-	parent				= trader
-	target				= wpn_fort_m1
-	reward_money		= 2000
-	reward_reputation	= +15
-	reward_rank			= 3
-	time				= 86400
+;[tm_find_item_1]
+;	type				= find_item
+;	community			= actor
+;	condlist			= {+agroprom_military_case_done}
+;	text				= tm_find_item_1_text
+;	description			= tm_find_item_1_descr
+;	parent				= trader
+;	target				= wpn_fort_m1
+;	reward_money		= 2000
+;	reward_reputation	= +15
+;	reward_rank			= 3
+;	time				= 86400
 
 [tm_monster_part_1]
 	type				= monster_part
@@ -607,134 +607,159 @@
 	time				= 86400
 	prior				= 5
 
+[barmen_defend_camp_1]
+	type				= defend_lager
+	community			= actor
+	text				= barmen_defend_camp_1_text
+	description			= barmen_defend_camp_1_descr
+	init_condition		= {=actor_on_level(l02_garbage) =gulag_state(gar_smart_bandit_large_lager:1)}
+	parent				= barman
+	target				= gar_smart_garage
+	reward_reputation	= +45
+	reward_relation		= dolg, 30
+	reward_rank			= 10
+	reward_item			= af_gravi
+	time				= 86400
+
+[barmen_defend_camp_2]
+	type				= defend_lager
+	community			= actor
+	text				= barmen_defend_camp_2_text
+	description			= barmen_defend_camp_2_descr
+	init_condition		= {=actor_on_level(l03_agroprom) =gulag_state(agr2_bandit_st:1)}
+	parent				= barman
+	target				= agr2_st_factory
+	reward_reputation	= +35
+	reward_relation		= dolg, 50
+	reward_rank			= 8
+	reward_item			= af_ameba_slug
+	time				= 86400
 
 [barmen_find_artefact_1]
-type = artefact
-community = actor
-text = barmen_find_artefact_1_text
-description = barmen_find_artefact_1_descr
-parent = barman
-target = af_mincer_meat
-reward_money = 2500
-reward_reputation = +35
-reward_rank = 5
-reward_item = medkit_scientic, medkit_scientic
-time = 86400
-prior = 1
-
+	type				= artefact
+	community			= actor
+	text				= barmen_find_artefact_1_text
+	description			= barmen_find_artefact_1_descr
+	parent				= barman
+	target				= af_mincer_meat
+	reward_money		= 2500
+	reward_reputation	= +35
+	reward_rank			= 5
+	reward_item			= medkit_scientic, medkit_scientic
+	time				= 86400
+	prior				= 1
 
 [barmen_find_artefact_2]
-type = artefact
-community = actor
-condlist = {+bar_darklab_document_done}
-text = barmen_find_artefact_2_text
-description = barmen_find_artefact_2_descr
-parent = barman
-target = af_rusty_kristall
-reward_money = 2500
-reward_reputation = +25
-reward_rank = 6
-reward_item = medkit_scientic, medkit_scientic, antirad, antirad
-time = 86400
-prior = 3
-
+	type				= artefact
+	community			= actor
+	condlist			= {+bar_darklab_document_done}
+	text				= barmen_find_artefact_2_text
+	description			= barmen_find_artefact_2_descr
+	parent				= barman
+	target				= af_rusty_kristall
+	reward_money		= 2500
+	reward_reputation	= +25
+	reward_rank			= 6
+	reward_item			= medkit_scientic, medkit_scientic, antirad, antirad
+	time				= 86400
+	prior				= 3
 
 [barmen_find_artefact_3]
-type = artefact
-community = actor
-;condlist = {+yan_kill_brain_done}
-text = barmen_find_artefact_3_text
-description = barmen_find_artefact_3_descr
-parent = barman
-target = af_night_star
-reward_reputation = +60
-reward_rank = 7
-reward_item = specops_outfit, grenade_f1, grenade_f1, grenade_f1
-time = 86400
-prior = 4
+	type				= artefact
+	community			= actor
+;	condlist			= {+yan_kill_brain_done}
+	text				= barmen_find_artefact_3_text
+	description			= barmen_find_artefact_3_descr
+	parent				= barman
+	target				= af_night_star
+	reward_reputation	= +60
+	reward_rank			= 7
+	reward_item			= specops_outfit, grenade_f1, grenade_f1, grenade_f1
+	time				= 86400
+	prior				= 4
 
 [barmen_find_artefact_4]
-type = artefact
-community = actor
-condlist = {+bar_darklab_document_done}
-text = barmen_find_artefact_4_text
-description = barmen_find_artefact_4_descr
-parent = barman
-target = af_electra_flash
-reward_money = 5000
-reward_reputation = +20
-reward_rank = 4
-time = 86400
-prior = 2
+	type				= artefact
+	community			= actor
+	condlist			= {+bar_darklab_document_done}
+	text				= barmen_find_artefact_4_text
+	description			= barmen_find_artefact_4_descr
+	parent				= barman
+	target				= af_electra_flash
+	reward_money		= 5000
+	reward_reputation	= +20
+	reward_rank			= 4
+	time				= 86400
+	prior				= 2
 
 [barmen_find_artefact_5]
-type = artefact
-community = actor
-condlist = {+yan_kill_brain_done}
-text = barmen_find_artefact_5_text
-description = barmen_find_artefact_5_descr
-parent = barman
-target = af_gold_fish
-reward_reputation = +40
-reward_rank = 7
-time = 86400
-reward_item = wpn_lr300, wpn_addon_grenade_launcher_m203, wpn_addon_scope_susat, wpn_addon_silencer
-prior = 5
+	type				= artefact
+	community			= actor
+	condlist			= {+yan_kill_brain_done}
+	text				= barmen_find_artefact_5_text
+	description			= barmen_find_artefact_5_descr
+	parent				= barman
+	target				= af_gold_fish
+	reward_reputation	= +40
+	reward_rank			= 7
+	time				= 86400
+	reward_item			= wpn_lr300, wpn_addon_grenade_launcher_m203, wpn_addon_scope_susat, wpn_addon_silencer
+	prior				= 5
 
 [barmen_kill_stalker_1]
-type = kill_stalker
-community = actor
-text = barmen_kill_stalker_1_text
-description = barmen_kill_stalker_1_descr
-parent = barman
-target = agr_ratcatcher
-reward_reputation = +15
-;reward_relation = dolg, -5
-reward_rank = 5
-reward_item = af_ameba_slug
-time = 86400
-prior = 1
+	type				= kill_stalker
+	community			= actor
+	text				= barmen_kill_stalker_1_text
+	description			= barmen_kill_stalker_1_descr
+	parent				= barman
+	target				= agr_ratcatcher
+	reward_reputation	= +15
+;	reward_relation		= dolg, -5
+	reward_rank			= 5
+	reward_item			= af_ameba_slug
+	time				= 86400
+	prior				= 1
 
 [barmen_kill_stalker_2]
-type = kill_stalker
-community = actor
-condlist = {+bar_darklab_document_done}
-text = barmen_kill_stalker_2_text
-description = barmen_kill_stalker_2_descr
-parent = barman
-target = sim_stalker_veteran
-reward_reputation = -45
-reward_rank = 6
-reward_item = af_soul
-time = 86400
-prior = 3
+	type				= kill_stalker
+	community			= actor
+	condlist			= {+bar_darklab_document_done}
+	text				= barmen_kill_stalker_2_text
+	description			= barmen_kill_stalker_2_descr
+	parent				= barman
+	target				= sim_stalker_veteran
+	reward_reputation	= -45
+	reward_rank			= 6
+	reward_item			= af_soul
+	time				= 86400
+	prior				= 3
 
 [barmen_kill_stalker_3]
-type = kill_stalker
-community = actor
-init_condition = {=actor_on_level(l10_radar) +yan_kill_brain_done}
-need_return = false
-text = barmen_kill_stalker_3_text
-description = barmen_kill_stalker_3_descr
-parent = barman
-target = rad_monolith_master
-reward_money = 10000
-reward_reputation = +200
-reward_rank = 20
-time = 86400
+	type				= kill_stalker
+	community			= actor
+	init_condition		= {=actor_on_level(l10_radar) +yan_kill_brain_done}
+	need_return			= false
+	text				= barmen_kill_stalker_3_text
+	description			= barmen_kill_stalker_3_descr
+	parent				= barman
+	target				= rad_monolith_master
+	reward_money		= 10000
+	reward_reputation	= +200
+	reward_rank			= 20
+	time				= 86400
 
 [barmen_kill_stalker_4]
-type = kill_stalker
-community = actor
-text = barmen_kill_stalker_4_text
-description = barmen_kill_stalker_4_descr
-parent = barman
-target = sim_stalker_general_upir
-reward_reputation = +5
-reward_rank = 4
-reward_item = af_fireball
-time = 86400
-prior = 2
+	type				= kill_stalker
+	community			= actor
+	text				= barmen_kill_stalker_4_text
+	description			= barmen_kill_stalker_4_descr
+	parent				= barman
+	target				= sim_stalker_general_upir
+	reward_reputation	= +5
+	reward_rank			= 4
+	reward_item			= af_fireball
+	time				= 86400
+	prior				= 2
 
 [barmen_kill_stalker_5]
 type = kill_stalker
@@ -810,33 +835,9 @@ reward_rank = 5
 time = 86400
 prior = 2
 
-[barmen_defend_camp_1]
-type = defend_lager
-community = actor
-text = barmen_defend_camp_1_text
-description = barmen_defend_camp_1_descr
-init_condition = {=actor_on_level(l02_garbage) =gulag_state(gar_smart_bandit_large_lager:1)}
-parent = barman
-target = gar_smart_garage
-reward_reputation = +45
-reward_relation = dolg, 30
-reward_rank = 10
-reward_item = af_gravi
-time = 86400
 
-[barmen_defend_camp_2]
-type = defend_lager
-community = actor
-text = barmen_defend_camp_2_text
-description = barmen_defend_camp_2_descr
-init_condition = {=actor_on_level(l03_agroprom) =gulag_state(agr2_bandit_st:1)}
-parent = barman
-target = agr2_st_factory
-reward_reputation = +35
-reward_relation = dolg, 50
-reward_rank = 8
-reward_item = af_ameba_slug
-time = 86400
+
+
 
 
 ;--------------------Ecolog-----------------------------
