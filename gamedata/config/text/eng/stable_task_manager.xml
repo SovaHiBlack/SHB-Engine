@@ -200,6 +200,78 @@
 	<string id="tm_monster_part_2_descr">
 		<text>Bring over the tail of the pseudodog</text>
 	</string>
+
+	<string id="barmen_eliminate_camp_1">
+		<text>Eliminate the bandits at the Dump.</text>
+	</string>
+	<string id="barmen_eliminate_camp_1_text">
+		<text>A job, eh? Let’s see what we’ve got… Aha! Here you go: can you knock out that pack of bandits at the Dump? The Duty, with all their speeches about law and order, just can’t get down to it. Those are some rare scumbags, so they won't last long anyway. But the guy who gets them first will score big… and the booze is on me, of course.</text>
+	</string>
+	<string id="barmen_eliminate_camp_1_descr">
+		<text>Wipe out the bandit gang that settled at the Dump. It has to be a quick and efficient operation.</text>
+	</string>
+
+	<string id="barmen_eliminate_camp_2">
+		<text>Eliminate the Mercs and bandits in Rostok.</text>
+	</string>
+	<string id="barmen_eliminate_camp_2_text">
+		<text>There’s a gang of Mercs not far away, in Rostok. They hit it off with the bandits, so now they’re scheming to block the passage through the plant. I don’t need to tell you what a nuisance it is, it’s got to be resolved straight away. The Duty guys and some of the old-timers have already gone to teach them a lessons, but we haven’t heard from them in a while… So why don’t you… eh… go and check on them. The money's good, too.</text>
+	</string>
+	<string id="barmen_eliminate_camp_2_descr">
+		<text>Destroy the group of Mercs and bandits that block the passage through Rostok.</text>
+	</string>
+<!--
+	<string id="barmen_eliminate_camp_3">
+		<text>Eliminate the bandits at the farmstead.</text>
+	</string>
+	<string id="barmen_eliminate_camp_3_text">
+		<text>There’s the farmstead by the old warehouses. Used to be a perfect place for a rendezvous, to exchange goods, you know… that sort of thing. But now the bandits have occupied it and, by the looks of it, they are not about to make off. Now, that doesn’t suit me at all. I need this farmstead asap. I don’t care what happens to the lodgers.</text>
+	</string>
+	<string id="barmen_eliminate_camp_3_descr">
+		<text>It's all simple: clear the farmstead of bandits.</text>
+	</string>
+-->
+	<string id="barmen_eliminate_camp_4">
+		<text>Purge the bandits' camp at Wild Territory</text>
+	</string>
+	<string id="barmen_eliminate_camp_4_text">
+		<text>There are bandits at the Wild Territory. We can't let these dregs of society breed insanitariness right near the bar. It's essential to wipe out their camp.</text>
+	</string>
+	<string id="barmen_eliminate_camp_4_descr">
+		<text>Purge the bandits' camp at Wild Territory</text>
+	</string>
+
+	<string id="barmen_eliminate_camp_5">
+		<text>Destroy the lair of wild mutant dogs at the Wild Territory</text>
+	</string>
+	<string id="barmen_eliminate_camp_5_text">
+		<text>A few of our guys went on an expedition, came back alone. All torn up, bloody, glassy eyes. Ran into dogs, most likely. There's a whole pack of them there. So, find their lair and kill every last one of them.</text>
+	</string>
+	<string id="barmen_eliminate_camp_5_descr">
+		<text>Destroy the lair of wild mutant dogs at the Wild Territory</text>
+	</string>
+
+	<string id="barmen_eliminate_camp_6">
+		<text>Destroy the group of bandits at the Agroprom.</text>
+	</string>
+	<string id="barmen_eliminate_camp_6_text">
+		<text>I remember how in '94 the racketeers latched on to me - cough it up, they said. Man, I went through hell then, I had a restaurant and all. Back then there was no case against them! And here I find out that the same gang's working in the Agroprom, making a profit off of the artifacts they find there. But here I can do something. I even know exactly where they're hiding. Do me a favor, punish them. </text>
+	</string>
+	<string id="barmen_eliminate_camp_6_descr">
+		<text>Destroy the group of bandits at the Agroprom.</text>
+	</string>
+
+	<string id="barmen_eliminate_camp_7">
+		<text>Destroy the lair of snoroks in the Dark Valley</text>
+	</string>
+	<string id="barmen_eliminate_camp_7_text">
+		<text>Yeah…It seems that the ones who say that the zone is expanding are right. They spotted a few snoroks in the Dark Valley, but before they never saw them there. And here some started to panic. The Dolgovzi promised to destroy the snoroks, but they can't seem to get around to doing it. Will you take it on?</text>
+	</string>
+	<string id="barmen_eliminate_camp_7_descr">
+		<text>Destroy the lair of snoroks in the Dark Valley</text>
+	</string>	
+	
+	
 	
 	
 	
@@ -233,69 +305,7 @@
 	<string id="barmen_defend_camp_2_text">
 		<text>So here's the deal. Recently a group of stalkers went to Agroprom. The last time they contacted, they said that there was something valuable in the underground, but they were pressed hard by the badits. They're holding on, but they can't clear out. Will you help them out?</text>
 	</string>
-	<string id="barmen_eliminate_camp_1">
-		<text>Eliminate the bandits at the Dump.</text>
-	</string>
-	<string id="barmen_eliminate_camp_1_descr">
-		<text>Wipe out the bandit gang that settled at the Dump. It has to be a quick and efficient operation.</text>
-	</string>
-	<string id="barmen_eliminate_camp_1_text">
-		<text>A job, eh? Let’s see what we’ve got… Aha! Here you go: can you knock out that pack of bandits at the Dump? The Duty, with all their speeches about law and order, just can’t get down to it. Those are some rare scumbags, so they won't last long anyway. But the guy who gets them first will score big… and the booze is on me, of course.</text>
-	</string>
-	<string id="barmen_eliminate_camp_2">
-		<text>Eliminate the Mercs and bandits in Rostok.</text>
-	</string>
-	<string id="barmen_eliminate_camp_2_descr">
-		<text>Destroy the group of Mercs and bandits that block the passage through Rostok.</text>
-	</string>
-	<string id="barmen_eliminate_camp_2_text">
-		<text>There’s a gang of Mercs not far away, in Rostok. They hit it off with the bandits, so now they’re scheming to block the passage through the plant. I don’t need to tell you what a nuisance it is, it’s got to be resolved straight away. The Duty guys and some of the old-timers have already gone to teach them a lessons, but we haven’t heard from them in a while… So why don’t you… eh… go and check on them. The money's good, too.</text>
-	</string>
-	<string id="barmen_eliminate_camp_3">
-		<text>Eliminate the bandits at the farmstead.</text>
-	</string>
-	<string id="barmen_eliminate_camp_3_descr">
-		<text>It's all simple: clear the farmstead of bandits.</text>
-	</string>
-	<string id="barmen_eliminate_camp_3_text">
-		<text>There’s the farmstead by the old warehouses. Used to be a perfect place for a rendezvous, to exchange goods, you know… that sort of thing. But now the bandits have occupied it and, by the looks of it, they are not about to make off. Now, that doesn’t suit me at all. I need this farmstead asap. I don’t care what happens to the lodgers.</text>
-	</string>
-	<string id="barmen_eliminate_camp_4">
-		<text>Purge the bandits' camp at Wild Territory</text>
-	</string>
-	<string id="barmen_eliminate_camp_4_descr">
-		<text>Purge the bandits' camp at Wild Territory</text>
-	</string>
-	<string id="barmen_eliminate_camp_4_text">
-		<text>There are bandits at the Wild Territory. We can't let these dregs of society breed insanitariness right near the bar. It's essential to wipe out their camp.</text>
-	</string>
-	<string id="barmen_eliminate_camp_5">
-		<text>Destroy the lair of wild mutant dogs at the Wild Territory</text>
-	</string>
-	<string id="barmen_eliminate_camp_5_descr">
-		<text>Destroy the lair of wild mutant dogs at the Wild Territory</text>
-	</string>
-	<string id="barmen_eliminate_camp_5_text">
-		<text>A few of our guys went on an expedition, came back alone. All torn up, bloody, glassy eyes. Ran into dogs, most likely. There's a whole pack of them there. So, find their lair and kill every last one of them.</text>
-	</string>
-	<string id="barmen_eliminate_camp_6">
-		<text>Destroy the group of bandits at the Agroprom.</text>
-	</string>
-	<string id="barmen_eliminate_camp_6_descr">
-		<text>Destroy the group of bandits at the Agroprom.</text>
-	</string>
-	<string id="barmen_eliminate_camp_6_text">
-		<text>I remember how in '94 the racketeers latched on to me - cough it up, they said. Man, I went through hell then, I had a restaurant and all. Back then there was no case against them! And here I find out that the same gang's working in the Agroprom, making a profit off of the artifacts they find there. But here I can do something. I even know exactly where they're hiding. Do me a favor, punish them. </text>
-	</string>
-	<string id="barmen_eliminate_camp_7">
-		<text>Destroy the lair of snoroks in the Dark Valley</text>
-	</string>
-	<string id="barmen_eliminate_camp_7_descr">
-		<text>Destroy the lair of snoroks in the Dark Valley</text>
-	</string>
-	<string id="barmen_eliminate_camp_7_text">
-		<text>Yeah…It seems that the ones who say that the zone is expanding are right. They spotted a few snoroks in the Dark Valley, but before they never saw them there. And here some started to panic. The Dolgovzi promised to destroy the snoroks, but they can't seem to get around to doing it. Will you take it on?</text>
-	</string>
+
 	<string id="barmen_find_artefact_1">
 		<text>Find the Mean chunk artifact</text>
 	</string>

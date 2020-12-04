@@ -505,108 +505,107 @@
 	prior				= 1
 
 ;========== Barmen ==========
-
 [barmen_eliminate_camp_1]
-type = eliminate_lager
-community = actor
-text = barmen_eliminate_camp_1_text
-description = barmen_eliminate_camp_1_descr
-parent = barman
-target = gar_smart_bandit
-reward_money = 2000
-reward_reputation = +25
-reward_relation = dolg, 10
-reward_rank = 4
-reward_item = vodka, grenade_f1
-time = 86400
-prior = 1
+	type				= eliminate_lager
+	community			= actor
+	text				= barmen_eliminate_camp_1_text
+	description			= barmen_eliminate_camp_1_descr
+	parent				= barman
+	target				= gar_smart_bandit
+	reward_money		= 2000
+	reward_reputation	= +25
+	reward_relation		= dolg, 10
+	reward_rank			= 4
+	reward_item			= vodka, grenade_f1
+	time				= 86400
+	prior				= 1
 
 [barmen_eliminate_camp_2]
-type = eliminate_lager
-community = actor
-init_condition = {=actor_on_level(l06_rostok)}
-text = barmen_eliminate_camp_2_text
-description = barmen_eliminate_camp_2_descr
-parent = barman
-target = ros_smart_killers1
-reward_money = 2500
-reward_reputation = +35
-reward_relation = dolg, 15
-reward_rank = 6
-reward_item = grenade_f1
-time = 86400
+	type				= eliminate_lager
+	community			= actor
+	init_condition		= {=actor_on_level(l06_rostok)}
+	text				= barmen_eliminate_camp_2_text
+	description			= barmen_eliminate_camp_2_descr
+	parent				= barman
+	target				= ros_smart_killers1
+	reward_money		= 2500
+	reward_reputation	= +35
+	reward_relation		= dolg, 15
+	reward_rank			= 6
+	reward_item			= grenade_f1
+	time				= 86400
 
-;--[barmen_eliminate_camp_3]
-;--type = eliminate_lager
-;--community = actor
-;--text = barmen_eliminate_camp_3_text
-;--description = barmen_eliminate_camp_3_descr
-;--parent = barman
-;--target = mil_bandit
-;--reward_money = 7000
-;--reward_reputation = +40
-;--reward_rank = 7
+;[barmen_eliminate_camp_3]
+;	type				= eliminate_lager
+;	community			= actor
+;	text				= barmen_eliminate_camp_3_text
+;	description			= barmen_eliminate_camp_3_descr
+;	parent				= barman
+;	target				= mil_bandit
+;	reward_money		= 7000
+;	reward_reputation	= +40
+;	reward_rank			= 7
 
 [barmen_eliminate_camp_4]
-type = eliminate_lager
-community = actor
-text = barmen_eliminate_camp_4_text
-description = barmen_eliminate_camp_4_descr
-parent = barman
-target = ros_smart_stalker2
-reward_money = 2500
-reward_reputation = +40
-reward_relation = dolg, 25
-reward_rank = 7
-reward_item = grenade_f1
-time = 86400
-prior = 4
+	type				= eliminate_lager
+	community			= actor
+	text				= barmen_eliminate_camp_4_text
+	description			= barmen_eliminate_camp_4_descr
+	parent				= barman
+	target				= ros_smart_stalker2
+	reward_money		= 2500
+	reward_reputation	= +40
+	reward_relation		= dolg, 25
+	reward_rank			= 7
+	reward_item			= grenade_f1
+	time				= 86400
+	prior				= 4
 
 [barmen_eliminate_camp_5]
-type = eliminate_lager
-community = actor
-init_condition = {=actor_on_level(l06_rostok)}
-text = barmen_eliminate_camp_5_text
-description = barmen_eliminate_camp_5_descr
-parent = barman
-target = ros_smart_monster1
-reward_money = 2500
-reward_reputation = +35
-reward_relation = dolg, 14
-reward_rank = 5
-reward_item = grenade_f1
-time = 86400
-prior = 3
+	type				= eliminate_lager
+	community			= actor
+	init_condition		= {=actor_on_level(l06_rostok)}
+	text				= barmen_eliminate_camp_5_text
+	description			= barmen_eliminate_camp_5_descr
+	parent				= barman
+	target				= ros_smart_monster1
+	reward_money		= 2500
+	reward_reputation	= +35
+	reward_relation		= dolg, 14
+	reward_rank			= 5
+	reward_item			= grenade_f1
+	time				= 86400
+	prior				= 3
 
 [barmen_eliminate_camp_6]
-type = eliminate_lager
-community = actor
-text = barmen_eliminate_camp_6_text
-description = barmen_eliminate_camp_6_descr
-parent = barman
-target = agr2_bandit_st
-reward_money = 2500
-reward_reputation = +35
-reward_relation = dolg, 20
-reward_rank = 7
-reward_item = grenade_f1
-time = 86400
-prior = 2
+	type				= eliminate_lager
+	community			= actor
+	text				= barmen_eliminate_camp_6_text
+	description			= barmen_eliminate_camp_6_descr
+	parent				= barman
+	target				= agr2_bandit_st
+	reward_money		= 2500
+	reward_reputation	= +35
+	reward_relation		= dolg, 20
+	reward_rank			= 7
+	reward_item			= grenade_f1
+	time				= 86400
+	prior				= 2
 
 [barmen_eliminate_camp_7]
-type = eliminate_lager
-community = actor
-text = barmen_eliminate_camp_7_text
-description = barmen_eliminate_camp_7_descr
-parent = barman
-target = val_snork_lair_1
-reward_money = 2500
-reward_reputation = +35
-reward_relation = dolg, 15
-reward_rank = 6
-reward_item = grenade_f1, grenade_f1
-time = 86400
-prior = 5
+	type				= eliminate_lager
+	community			= actor
+	text				= barmen_eliminate_camp_7_text
+	description			= barmen_eliminate_camp_7_descr
+	parent				= barman
+	target				= val_snork_lair_1
+	reward_money		= 2500
+	reward_reputation	= +35
+	reward_relation		= dolg, 15
+	reward_rank			= 6
+	reward_item			= grenade_f1, grenade_f1
+	time				= 86400
+	prior				= 5
 
 
 [barmen_find_artefact_1]

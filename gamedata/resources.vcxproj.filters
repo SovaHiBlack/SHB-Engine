@@ -148,9 +148,6 @@
     <Filter Include="config\creatures\stalkers">
       <UniqueIdentifier>{8da75464-aa94-48d6-9cd9-20e66c5bfcb5}</UniqueIdentifier>
     </Filter>
-    <Filter Include="scripts\hide">
-      <UniqueIdentifier>{82d48a2f-a2b0-4b8e-ab3c-42631e37f0e0}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="config\creatures\actor.ltx">
