@@ -380,6 +380,107 @@
 	<string id="barmen_kill_stalker_4_descr">
 		<text>Find and kill the stalker called Vampire.</text>
 	</string>
+
+	<string id="barmen_kill_stalker_5">
+		<text>Kill the stalker called Sparrow</text>
+	</string>
+	<string id="barmen_kill_stalker_5_text">
+		<text>Damn musketeers! Playing D'Artagnan, assholes! As if surfing around anomalies and bowing to bullets is not enough, the oafs have now taken to fighting duels! Get this: there was this rowЕ no one can even remember any more what started it. So these two dumbheads decided to shed some blood. And there you go, one dropped deadЕ a fine stalker he was, too! And the other one, Sparrow, beetled off, because IТd be the first one to put a bullet in his head. Find him. IТm sure heТs still in the Zone. Will you do it?</text>
+	</string>
+	<string id="barmen_kill_stalker_5_descr">
+		<text>Find Sparrow and avenge the death of another stalker.</text>
+	</string>
+<!--
+	<string id="barmen_find_item_1">
+		<text>Ќайти пси-костюм</text>
+	</string>
+	<string id="barmen_find_item_1_text">
+		<text>In those labs in the Dark Valley, they were trying to find a way to protect human brains from psi-emissions. They were taking their time, thatТs for sureЕ Anyway, one of their attempts actually was a success, and thereТs supposed to be this suit somewhere that you can wear and even kiss the controller. Yep, itТs that good. So if you get me this doodah, IТll never forget it.</text>
+	</string>
+	<string id="barmen_find_item_1_descr">
+		<text>Find the suit that provides efficient protection against psi-emissions. The place to look for it is the deserted labs in the Dark Valley.</text>
+	</string>
+
+	<string id="barmen_find_item_2">
+		<text>Find the foreigner's gun.</text>
+	</string>
+	<string id="barmen_find_item_2_text">
+		<text>There once was this foreigner in our neck of the woodsЕ Gordon was his name? His whole manner gave out an experienced stalker, but he said heТd never been to the Zone. But anyway, thatТs not the point. He did vanish somewhere in the Zone eventually. But he had this rather curious thing, the Black Kite. If I could just take a closer look at itЕ</text>
+	</string>
+	<string id="barmen_find_item_2_descr">
+		<text>An interesting assignment. The name rings a bellЕ but where do I know him from?</text>
+	</string>
+
+	<string id="barmen_find_item_3">
+		<text>Find the modified Vintar</text>
+	</string>
+	<string id="barmen_find_item_3_text">
+		<text>There was this odd story. This one fellow pops up, pockets full of dough, and sets off hiring himself a gang, not the old-timers though, but more of the nippy type. Bought tons of gearЕ I had this one brand new Vintra, a marvelous gun! - so I was fool enough to sell it to him. I wonТt lie to you, I made quite a bit of moneyЕ except this whole crew got knocked out close to the Red Forest. What can I say, they died for nothingЕ well, a good lesson for all to learn: you canТt pave your way through the Zone with money. But anywayЕ I can't stop thinking about that Vintar, such a bang-up gun rusting somewhere! WonТt you find it for me? IТm paying good money!</text>
+	</string>
+	<string id="barmen_find_item_3_descr">
+		<text>Find the modified Vintra. Apparently, the place to look is the Red Forest area. </text>
+	</string>
+-->
+	<string id="barmen_monster_part_1">
+		<text>Obtain the flesh's eye</text>
+	</string>
+	<string id="barmen_monster_part_1_text">
+		<text>Soon we're having a party, there'll be a fancy dinner, and certain local gourmets who are in especially high spirits (we don't need to point fingers) will definitely want to try my special recipie - eyes of "ploti" under a pork sauce. That is, in its own juices under mayonnaise. Basically, I need the eye of that beast, and quickly. </text>
+	</string>
+	<string id="barmen_monster_part_1_descr">
+		<text>Obtain the flesh's eye</text>
+	</string>
+
+	<string id="barmen_monster_part_2">
+		<text>Bring the hoof of a boar</text>
+	</string>
+	<string id="barmen_monster_part_2_text">
+		<text>Do you know that we prepare horns and hooves? This is a big rarity. They make great jewelry from the local mutated hooves - I know a jeweler, he's interested. So go on ahead, find the boar's hoof, and there'll be cash in your pocket.</text>
+	</string>
+	<string id="barmen_monster_part_2_descr">
+		<text>Bring the hoof of a boar</text>
+	</string>
+
+	<string id="ecolog_eliminate_lager_1">
+		<text>Purge the lair of the snoroks</text>
+	</string>
+	<string id="ecolog_eliminate_lager_1_text">
+		<text>I want to offer you a small amout of money that you'll receive if the snoroks living in the swamps will stop bothering me and my colleagues. Sometimes when we're carrying out our experiments, we can't even concentrate. </text>
+	</string>
+	<string id="ecolog_eliminate_lager_1_descr">
+		<text>Destroy the lair of the snoroks at Amber</text>
+	</string>
+
+	<string id="ecolog_eliminate_lager_2">
+		<text>Destroy the lair of wild dogs</text>
+	</string>
+	<string id="ecolog_eliminate_lager_2_text">
+		<text>Ќа "ƒикой территории" есть логово собак-мутантов, € хочу, чтобы ¬ы отправились и зачистили его. Ёти мутанты опасны дл€ наших экспедиций. я знаю, зоологи мен€ не поддержат, но здесь, согласитесь, не зоопарк. “акие твари разнос€т бешенство, чуму и еще Ѕог знает что.</text>
+	</string>
+	<string id="ecolog_eliminate_lager_2_descr">
+		<text>Purge the lair or wild dogs in the Wild Territory</text>
+	</string>
+
+	<string id="ecolog_find_artefact_1">
+		<text>Bring the Fireball artifact</text>
+	</string>
+	<string id="ecolog_find_artefact_1_text">
+		<text>We've managed to obtain the artifact in laboratory conditions! This is a breakthrough! Now all the world will hear about our success. And the Nobel Prize will be close at hand! This is the unique artifact - "Pellicle", it's main quality is to protect from the chemical burns. Do you want me to give it to you on behalf of science. However, I do have one request - in return I need the artifact "Fireball", do you know about such? Unique thermal qualities of its surface require thorough research. </text>
+	</string>
+	<string id="ecolog_find_artefact_1_descr">
+		<text>Bring the Fireball artifact to the scientists for researches</text>
+	</string>
+
+	<string id="ecolog_find_artefact_2">
+		<text>Find the "Gravi" artifact</text>
+	</string>
+	<string id="ecolog_find_artefact_2_text">
+		<text>We've approached closely to the comprehension of the nature of gravitation, practically, soon enough we'll be able to create a new generation of engines on the antigravity basis, and quite probably the path to the stars will open to us. For that, we need "Gravi" artifact, and fast.</text>
+	</string>
+	<string id="ecolog_find_artefact_2_descr">
+		<text>Bring the "Gravi" artifact to the hands of the scientists.</text>
+	</string>
+	
 	
 	
 	
@@ -400,64 +501,6 @@
 		<text>Get the artifact.</text>
 	</string>
 
-	<string id="barmen_find_item_1">
-		<text>Ќайти пси-костюм</text>
-	</string>
-	<string id="barmen_find_item_1_descr">
-		<text>Find the suit that provides efficient protection against psi-emissions. The place to look for it is the deserted labs in the Dark Valley.</text>
-	</string>
-	<string id="barmen_find_item_1_text">
-		<text>In those labs in the Dark Valley, they were trying to find a way to protect human brains from psi-emissions. They were taking their time, thatТs for sureЕ Anyway, one of their attempts actually was a success, and thereТs supposed to be this suit somewhere that you can wear and even kiss the controller. Yep, itТs that good. So if you get me this doodah, IТll never forget it.</text>
-	</string>
-	<string id="barmen_find_item_2">
-		<text>Find the foreigner's gun.</text>
-	</string>
-	<string id="barmen_find_item_2_descr">
-		<text>An interesting assignment. The name rings a bellЕ but where do I know him from?</text>
-	</string>
-	<string id="barmen_find_item_2_text">
-		<text>There once was this foreigner in our neck of the woodsЕ Gordon was his name? His whole manner gave out an experienced stalker, but he said heТd never been to the Zone. But anyway, thatТs not the point. He did vanish somewhere in the Zone eventually. But he had this rather curious thing, the Black Kite. If I could just take a closer look at itЕ</text>
-	</string>
-	<string id="barmen_find_item_3">
-		<text>Find the modified Vintar</text>
-	</string>
-	<string id="barmen_find_item_3_descr">
-		<text>Find the modified Vintra. Apparently, the place to look is the Red Forest area. </text>
-	</string>
-	<string id="barmen_find_item_3_text">
-		<text>There was this odd story. This one fellow pops up, pockets full of dough, and sets off hiring himself a gang, not the old-timers though, but more of the nippy type. Bought tons of gearЕ I had this one brand new Vintra, a marvelous gun! - so I was fool enough to sell it to him. I wonТt lie to you, I made quite a bit of moneyЕ except this whole crew got knocked out close to the Red Forest. What can I say, they died for nothingЕ well, a good lesson for all to learn: you canТt pave your way through the Zone with money. But anywayЕ I can't stop thinking about that Vintar, such a bang-up gun rusting somewhere! WonТt you find it for me? IТm paying good money!</text>
-	</string>
-
-
-
-
-	<string id="barmen_kill_stalker_5">
-		<text>Kill the stalker called Sparrow</text>
-	</string>
-	<string id="barmen_kill_stalker_5_descr">
-		<text>Find Sparrow and avenge the death of another stalker.</text>
-	</string>
-	<string id="barmen_kill_stalker_5_text">
-		<text>Damn musketeers! Playing D'Artagnan, assholes! As if surfing around anomalies and bowing to bullets is not enough, the oafs have now taken to fighting duels! Get this: there was this rowЕ no one can even remember any more what started it. So these two dumbheads decided to shed some blood. And there you go, one dropped deadЕ a fine stalker he was, too! And the other one, Sparrow, beetled off, because IТd be the first one to put a bullet in his head. Find him. IТm sure heТs still in the Zone. Will you do it?</text>
-	</string>
-	<string id="barmen_monster_part_1">
-		<text>Obtain the flesh's eye</text>
-	</string>
-	<string id="barmen_monster_part_1_descr">
-		<text>Obtain the flesh's eye</text>
-	</string>
-	<string id="barmen_monster_part_1_text">
-		<text>Soon we're having a party, there'll be a fancy dinner, and certain local gourmets who are in especially high spirits (we don't need to point fingers) will definitely want to try my special recipie - eyes of "ploti" under a pork sauce. That is, in its own juices under mayonnaise. Basically, I need the eye of that beast, and quickly. </text>
-	</string>
-	<string id="barmen_monster_part_2">
-		<text>Bring the hoof of a boar</text>
-	</string>
-	<string id="barmen_monster_part_2_descr">
-		<text>Bring the hoof of a boar</text>
-	</string>
-	<string id="barmen_monster_part_2_text">
-		<text>Do you know that we prepare horns and hooves? This is a big rarity. They make great jewelry from the local mutated hooves - I know a jeweler, he's interested. So go on ahead, find the boar's hoof, and there'll be cash in your pocket.</text>
-	</string>
 	<string id="dolg_defend_lager_1">
 		<text>Protect the security post of the Duty</text>
 	</string>
@@ -620,42 +663,7 @@
 	<string id="drunk_dolg_find_item_text">
 		<text>Shouldn't have freaked out like that. How the zone messes with your head. Thought I had good nerves, never afraid of anything, and here this. This howling in the ears. Everything was going as usual. There was a scouting expedition to the Dark Valley, we got down into the trench with Krivoi to cover the rest of the group, and then once I heard the howling, I was gripped by fear. Damn, I don't even remember how I got to the coordinate. When I returned to the base, Voronin almost shot me on the spot: he had just given me an enhanced canon, for good service, so to speak. And here...I paniced and took off so fast that I left the canon there. Could you bring it back for me, else where will I go now without a decent weapon.  </text>
 	</string>
-	<string id="ecolog_eliminate_lager_1">
-		<text>Purge the lair of the snoroks</text>
-	</string>
-	<string id="ecolog_eliminate_lager_1_descr">
-		<text>Destroy the lair of the snoroks at Amber</text>
-	</string>
-	<string id="ecolog_eliminate_lager_1_text">
-		<text>I want to offer you a small amout of money that you'll receive if the snoroks living in the swamps will stop bothering me and my colleagues. Sometimes when we're carrying out our experiments, we can't even concentrate. </text>
-	</string>
-	<string id="ecolog_eliminate_lager_2">
-		<text>Destroy the lair of wild dogs</text>
-	</string>
-	<string id="ecolog_eliminate_lager_2_descr">
-		<text>Purge the lair or wild dogs in the Wild Territory</text>
-	</string>
-	<string id="ecolog_eliminate_lager_2_text">
-		<text>Ќа "ƒикой территории" есть логово собак-мутантов, € хочу, чтобы ¬ы отправились и зачистили его. Ёти мутанты опасны дл€ наших экспедиций. я знаю, зоологи мен€ не поддержат, но здесь, согласитесь, не зоопарк. “акие твари разнос€т бешенство, чуму и еще Ѕог знает что.</text>
-	</string>
-	<string id="ecolog_find_artefact_1">
-		<text>Bring the Fireball artifact</text>
-	</string>
-	<string id="ecolog_find_artefact_1_descr">
-		<text>Bring the Fireball artifact to the scientists for researches</text>
-	</string>
-	<string id="ecolog_find_artefact_1_text">
-		<text>We've managed to obtain the artifact in laboratory conditions! This is a breakthrough! Now all the world will hear about our success. And the Nobel Prize will be close at hand! This is the unique artifact - "Pellicle", it's main quality is to protect from the chemical burns. Do you want me to give it to you on behalf of science. However, I do have one request - in return I need the artifact "Fireball", do you know about such? Unique thermal qualities of its surface require thorough research. </text>
-	</string>
-	<string id="ecolog_find_artefact_2">
-		<text>Find the "Gravi" artifact</text>
-	</string>
-	<string id="ecolog_find_artefact_2_descr">
-		<text>Bring the "Gravi" artifact to the hands of the scientists.</text>
-	</string>
-	<string id="ecolog_find_artefact_2_text">
-		<text>We've approached closely to the comprehension of the nature of gravitation, practically, soon enough we'll be able to create a new generation of engines on the antigravity basis, and quite probably the path to the stars will open to us. For that, we need "Gravi" artifact, and fast.</text>
-	</string>
+
 	<string id="ecolog_find_artefact_3">
 		<text>Find the "Jellyfish" artifact</text>
 	</string>

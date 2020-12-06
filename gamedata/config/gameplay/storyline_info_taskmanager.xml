@@ -309,11 +309,14 @@
 
 	<!-- Find Item -->
 	<!-- Trader -->
+<!--
 	<article id="tm_find_item_1_descr" name="find_item" article_type="task">
 		<text>tm_find_item_1_descr</text>
 	</article>
+-->
 
 	<!-- Barmen -->
+<!--
 	<article id="barmen_find_item_1_descr" name="find_item" article_type="task">
 		<text>barmen_find_item_1_descr</text>
 	</article>
@@ -325,7 +328,7 @@
 	<article id="barmen_find_item_3_descr" name="find_item" article_type="task">
 		<text>barmen_find_item_3_descr</text>
 	</article>
-
+-->
 	<!-- Dolg -->
 	<article id="dolg_find_item_1_descr" name="find_item" article_type="task">
 		<text>dolg_find_item_1_descr</text>
@@ -361,11 +364,11 @@
 
 	<!-- Barmen -->
 	<article id="barmen_monster_part_1_descr" name="monster_part" article_type="task">
-		<text>tm_monster_part_1_descr</text>
+		<text>barmen_monster_part_1_descr</text>
 	</article>
 
 	<article id="barmen_monster_part_2_descr" name="monster_part" article_type="task">
-		<text>tm_monster_part_2_descr</text>
+		<text>barmen_monster_part_2_descr</text>
 	</article>
 	<!-- Ecolog -->
 	<article id="ecolog_monster_part_1_descr" name="monster_part" article_type="task">

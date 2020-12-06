@@ -2,168 +2,168 @@
 
 <encyclopedia>
 
-	<!-- ARTIFACTS -->
+	<!-- ARTEFACTS -->
 
 	<!-- af-medusa -->
-	<article id="zone_artifact_af-medusa" name="af-medusa" group="Artifacts">
+	<article id="zone_af-medusa" name="af-medusa" group="Artefacts">
 		<ltx>af_medusa</ltx>
-		<text>enc_zone_artifact_af-medusa</text>
+		<text>enc_zone_af-medusa</text>
 	</article>
 
 	<!-- af-cristall-flower -->
-	<article id="zone_artifact_af-cristall-flower" name="af-cristall-flower" group="Artifacts">
+	<article id="zone_af-cristall-flower" name="af-cristall-flower" group="Artefacts">
 		<ltx>af_cristall_flower</ltx>
-		<text>enc_zone_artifact_af-cristall-flower</text>
+		<text>enc_zone_af-cristall-flower</text>
 	</article>
 
 	<!-- af-night-star -->
-	<article id="zone_artifact_af-night-star" name="af-night-star" group="Artifacts">
+	<article id="zone_af-night-star" name="af-night-star" group="Artefacts">
 		<ltx>af_night_star</ltx>
-		<text>enc_zone_artifact_af-night-star</text>
+		<text>enc_zone_af-night-star</text>
 	</article>
 
 	<!-- af-vyvert -->
-	<article id="zone_artifact_af-vyvert" name="af-vyvert" group="Artifacts">
+	<article id="zone_af-vyvert" name="af-vyvert" group="Artefacts">
 		<ltx>af_vyvert</ltx>
-		<text>enc_zone_artifact_af-vyvert</text>
+		<text>enc_zone_af-vyvert</text>
 	</article>
 
 	<!-- af-gravi -->
-	<article id="zone_artifact_af-gravi" name="af-gravi" group="Artifacts">
+	<article id="zone_af-gravi" name="af-gravi" group="Artefacts">
 		<ltx>af_gravi</ltx>
-		<text>enc_zone_artifact_af-gravi</text>
+		<text>enc_zone_af-gravi</text>
 	</article>
 
 	<!-- af-gold-fish -->
-	<article id="zone_artifact_af-gold-fish" name="af-gold-fish" group="Artifacts">
+	<article id="zone_af-gold-fish" name="af-gold-fish" group="Artefacts">
 		<ltx>af_gold_fish</ltx>
-		<text>enc_zone_artifact_af-gold-fish</text>
+		<text>enc_zone_af-gold-fish</text>
 	</article>
 
 	<!-- af-blood -->
-	<article id="zone_artifact_af-blood" name="af-blood" group="Artifacts">
+	<article id="zone_af-blood" name="af-blood" group="Artefacts">
 		<ltx>af_blood</ltx>
-		<text>enc_zone_artifact_af-blood</text>
+		<text>enc_zone_af-blood</text>
 	</article>
 
 	<!-- af-mincer-meat -->
-	<article id="zone_artifact_af-mincer-meat" name="af-mincer-meat" group="Artifacts">
+	<article id="zone_af-mincer-meat" name="af-mincer-meat" group="Artefacts">
 		<ltx>af_mincer_meat</ltx>
-		<text>enc_zone_artifact_af-mincer-meat</text>
+		<text>enc_zone_af-mincer-meat</text>
 	</article>
 
 	<!-- af-soul -->
-	<article id="zone_artifact_af-soul" name="af-soul" group="Artifacts">
+	<article id="zone_af-soul" name="af-soul" group="Artefacts">
 		<ltx>af_soul</ltx>
-		<text>enc_zone_artifact_af-soul</text>
+		<text>enc_zone_af-soul</text>
 	</article>
 
 	<!-- af-drops -->
-	<article id="zone_artifact_af-drops" name="af-drops" group="Artifacts">
+	<article id="zone_af-drops" name="af-drops" group="Artefacts">
 		<ltx>af_drops</ltx>
-		<text>enc_zone_artifact_af-drops</text>
+		<text>enc_zone_af-drops</text>
 	</article>
 
 	<!-- af-fireball -->
-	<article id="zone_artifact_af-fireball" name="af-fireball" group="Artifacts">
+	<article id="zone_af-fireball" name="af-fireball" group="Artefacts">
 		<ltx>af_fireball</ltx>
-		<text>enc_zone_artifact_af-fireball</text>
+		<text>enc_zone_af-fireball</text>
 	</article>
 
 	<!-- af-cristall -->
-	<article id="zone_artifact_af-cristall" name="af-cristall" group="Artifacts">
+	<article id="zone_af-cristall" name="af-cristall" group="Artefacts">
 		<ltx>af_cristall</ltx>
-		<text>enc_zone_artifact_af-cristall</text>
+		<text>enc_zone_af-cristall</text>
 	</article>
 
 	<!-- af-electra-sparkler -->
-	<article id="zone_artifact_af-electra-sparkler" name="af-electra-sparkler" group="Artifacts">
+	<article id="zone_af-electra-sparkler" name="af-electra-sparkler" group="Artefacts">
 		<ltx>af_electra_sparkler</ltx>
-		<text>enc_zone_artifact_af-electra-sparkler</text>
+		<text>enc_zone_af-electra-sparkler</text>
 	</article>
 
 	<!-- af-electra-flash -->
-	<article id="zone_artifact_af-electra-flash" name="af-electra-flash" group="Artifacts">
+	<article id="zone_af-electra-flash" name="af-electra-flash" group="Artefacts">
 		<ltx>af_electra_flash</ltx>
-		<text>enc_zone_artifact_af-electra-flash</text>
+		<text>enc_zone_af-electra-flash</text>
 	</article>
 
 	<!-- af-electra-moonlight -->
-	<article id="zone_artifact_af-electra-moonlight" name="af-electra-moonlight" group="Artifacts">
+	<article id="zone_af-electra-moonlight" name="af-electra-moonlight" group="Artefacts">
 		<ltx>af_electra_moonlight</ltx>
-		<text>enc_zone_artifact_af-electra-moonlight</text>
+		<text>enc_zone_af-electra-moonlight</text>
 	</article>
 
 	<!-- af-rusty-thorn -->
-	<article id="zone_artifact_af-rusty-thorn" name="af-rusty-thorn" group="Artifacts">
+	<article id="zone_af-rusty-thorn" name="af-rusty-thorn" group="Artefacts">
 		<ltx>af_rusty_thorn</ltx>
-		<text>enc_zone_artifact_af-rusty-thorn</text>
+		<text>enc_zone_af-rusty-thorn</text>
 	</article>
 
 	<!-- af-rusty-kristall -->
-	<article id="zone_artifact_af-rusty-kristall" name="af-rusty-kristall" group="Artifacts">
+	<article id="zone_af-rusty-kristall" name="af-rusty-kristall" group="Artefacts">
 		<ltx>af_rusty_kristall</ltx>
-		<text>enc_zone_artifact_af-rusty-kristall</text>
+		<text>enc_zone_af-rusty-kristall</text>
 	</article>
 
 	<!-- af-rusty-sea-urchin -->
-	<article id="zone_artifact_af-rusty-sea-urchin" name="af-rusty-sea-urchin" group="Artifacts">
+	<article id="zone_af-rusty-sea-urchin" name="af-rusty-sea-urchin" group="Artefacts">
 		<ltx>af_rusty_sea-urchin</ltx>
-		<text>enc_zone_artifact_af-rusty-sea-urchin</text>
+		<text>enc_zone_af-rusty-sea-urchin</text>
 	</article>
 
 	<!-- af-fuzz-kolobok -->
-	<article id="zone_artifact_af-fuzz-kolobok" name="af-fuzz-kolobok" group="Artifacts">
+	<article id="zone_af-fuzz-kolobok" name="af-fuzz-kolobok" group="Artefacts">
 		<ltx>af_fuzz_kolobok</ltx>
-		<text>enc_zone_artifact_af-fuzz-kolobok</text>
+		<text>enc_zone_af-fuzz-kolobok</text>
 	</article>
 
 	<!-- af-ameba-slime -->
-	<article id="zone_artifact_af-ameba-slime" name="af-ameba-slime" group="Artifacts">
+	<article id="zone_af-ameba-slime" name="af-ameba-slime" group="Artefacts">
 		<ltx>af_ameba_slime</ltx>
-		<text>enc_zone_artifact_af-ameba-slime</text>
+		<text>enc_zone_af-ameba-slime</text>
 	</article>
 
 	<!-- af-ameba-slug -->
-	<article id="zone_artifact_af-ameba-slug" name="af-ameba-slug" group="Artifacts">
+	<article id="zone_af-ameba-slug" name="af-ameba-slug" group="Artefacts">
 		<ltx>af_ameba_slug</ltx>
-		<text>enc_zone_artifact_af-ameba-slug</text>
+		<text>enc_zone_af-ameba-slug</text>
 	</article>
 
 	<!-- af-ameba-mica -->
-	<article id="zone_artifact_af-ameba-mica" name="af-ameba-mica" group="Artifacts">
+	<article id="zone_af-ameba-mica" name="af-ameba-mica" group="Artefacts">
 		<ltx>af_ameba_mica</ltx>
-		<text>enc_zone_artifact_af-ameba-mica</text>
+		<text>enc_zone_af-ameba-mica</text>
 	</article>
 
 	<!-- af-dummy-glassbeads -->
-	<article id="zone_artifact_af-dummy-glassbeads" name="af-dummy-glassbeads" group="Artifacts">
+	<article id="zone_af-dummy-glassbeads" name="af-dummy-glassbeads" group="Artefacts">
 		<ltx>af_dummy_glassbeads</ltx>
-		<text>enc_zone_artifact_af-dummy-glassbeads</text>
+		<text>enc_zone_af-dummy-glassbeads</text>
 	</article>
 
 	<!-- af-dummy-pellicle -->
-	<article id="zone_artifact_af-dummy-pellicle" name="af-dummy-pellicle" group="Artifacts">
+	<article id="zone_af-dummy-pellicle" name="af-dummy-pellicle" group="Artefacts">
 		<ltx>af_dummy_pellicle</ltx>
-		<text>enc_zone_artifact_af-dummy-pellicle</text>
+		<text>enc_zone_af-dummy-pellicle</text>
 	</article>
 
 	<!-- af-dummy-battery -->
-	<article id="zone_artifact_af-dummy-battery" name="af-dummy-battery" group="Artifacts">
+	<article id="zone_af-dummy-battery" name="af-dummy-battery" group="Artefacts">
 		<ltx>af_dummy_battery</ltx>
-		<text>enc_zone_artifact_af-dummy-battery</text>
+		<text>enc_zone_af-dummy-battery</text>
 	</article>
 
 	<!-- af-dummy-dummy -->
-	<article id="zone_artifact_af-dummy-dummy" name="af-dummy-dummy" group="Artifacts">
+	<article id="zone_af-dummy-dummy" name="af-dummy-dummy" group="Artefacts">
 		<ltx>af_dummy_dummy</ltx>
-		<text>enc_zone_artifact_af-dummy-dummy</text>
+		<text>enc_zone_af-dummy-dummy</text>
 	</article>
 
 	<!-- af-dummy-spring -->
-	<article id="zone_artifact_af-dummy-spring" name="af-dummy-spring" group="Artifacts">
+	<article id="zone_af-dummy-spring" name="af-dummy-spring" group="Artefacts">
 		<ltx>af_dummy_spring</ltx>
-		<text>enc_zone_artifact_af-dummy-spring</text>
+		<text>enc_zone_af-dummy-spring</text>
 	</article>
 
 	<!-- ANOMALIES -->

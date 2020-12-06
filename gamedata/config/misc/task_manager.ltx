@@ -399,7 +399,7 @@
 	description			= tm_kill_stalker_2_descr
 	parent				= trader
 	target				= sim_stalker_general
-	;reward_money		= 2500
+;	reward_money		= 2500
 	reward_reputation	= -15
 	reward_item			= af_gravi
 	reward_rank			= 5
@@ -762,116 +762,140 @@
 	prior				= 2
 
 [barmen_kill_stalker_5]
-type = kill_stalker
-community = actor
-condlist = {+bar_darklab_document_done}
-text = barmen_kill_stalker_5_text
-description = barmen_kill_stalker_5_descr
-parent = barman
-target = sim_stalker_veteran_vorobey
-reward_reputation = -35
-reward_rank = 5
-reward_item = af_electra_moonlight
-time = 86400
-prior = 4
+	type				= kill_stalker
+	community			= actor
+	condlist			= {+bar_darklab_document_done}
+	text				= barmen_kill_stalker_5_text
+	description			= barmen_kill_stalker_5_descr
+	parent				= barman
+	target				= sim_stalker_veteran_vorobey
+	reward_reputation	= -35
+	reward_rank			= 5
+	reward_item			= af_electra_moonlight
+	time				= 86400
+	prior				= 4
 
-;--[barmen_find_item_1]
-;--type = find_item
-;--community = actor
-;--text = barmen_find_item_1_text
-;--description = barmen_find_item_1_descr
-;--parent = barman
-;--target = outfit_monolith_m1
-;--reward_money = 5000
-;--reward_reputation = +30
-;--reward_rank = 5
+;[barmen_find_item_1]
+;	type				= find_item
+;	community			= actor
+;	text				= barmen_find_item_1_text
+;	description			= barmen_find_item_1_descr
+;	parent				= barman
+;	target				= outfit_monolith_m1
+;	reward_money		= 5000
+;	reward_reputation	= +30
+;	reward_rank			= 5
 
-;--[barmen_find_item_2]
-;--type = find_item
-;--community = actor
-;--text = barmen_find_item_2_text
-;--description = barmen_find_item_2_descr
-;--parent = barman
-;--target = wpn_deserteagle_coll
-;--reward_money = 6000
-;--reward_reputation = +35
-;--reward_rank = 6
+;[barmen_find_item_2]
+;	type				= find_item
+;	community			= actor
+;	text				= barmen_find_item_2_text
+;	description			= barmen_find_item_2_descr
+;	parent				= barman
+;	target				= wpn_deserteagle_coll
+;	reward_money		= 6000
+;	reward_reputation	= +35
+;	reward_rank			= 6
 
-;--[barmen_find_item_3]
-;--type = find_item
-;--community = actor
-;--text = barmen_find_item_3_text
-;--description = barmen_find_item_3_descr
-;--parent = barman
-;--target = wpn_vintorez_coll
-;--reward_money = 8500
-;--reward_reputation = +40
-;--reward_rank = 8
+;[barmen_find_item_3]
+;	type				= find_item
+;	community			= actor
+;	text				= barmen_find_item_3_text
+;	description			= barmen_find_item_3_descr
+;	parent				= barman
+;	target				= wpn_vintorez_coll
+;	reward_money		= 8500
+;	reward_reputation	= +40
+;	reward_rank			= 8
 
 [barmen_monster_part_1]
-type = monster_part
-community = actor
-text = barmen_monster_part_1_text
-description = barmen_monster_part_1_descr
-parent = barman
-target = mutant_flesh_eye
-reward_money = 500
-reward_reputation = +20
-reward_rank = 5
-reward_item = conserva, conserva, conserva
-time = 86400
-prior = 1
+	type				= monster_part
+	community			= actor
+	text				= barmen_monster_part_1_text
+	description			= barmen_monster_part_1_descr
+	parent				= barman
+	target				= mutant_flesh_eye
+	reward_money		= 500
+	reward_reputation	= +20
+	reward_rank			= 5
+	reward_item			= conserva, conserva, conserva
+	time				= 86400
+	prior				= 1
 
 [barmen_monster_part_2]
-type = monster_part
-community = actor
-text = barmen_monster_part_2_text
-description = barmen_monster_part_2_descr
-parent = barman
-target = mutant_boar_leg
-reward_money = 1500
-reward_reputation = +20
-reward_rank = 5
-time = 86400
-prior = 2
+	type				= monster_part
+	community			= actor
+	text				= barmen_monster_part_2_text
+	description			= barmen_monster_part_2_descr
+	parent				= barman
+	target				= mutant_boar_leg
+	reward_money		= 1500
+	reward_reputation	= +20
+	reward_rank			= 5
+	time				= 86400
+	prior				= 2
 
-
-
-
-
-
-;--------------------Ecolog-----------------------------
-
+;========== Ecolog ==========
 [ecolog_eliminate_lager_1]
-type = eliminate_lager
-community = actor
-init_condition = {=actor_on_level(l08_yantar) +yan_kill_brain_done}
-text = ecolog_eliminate_lager_1_text
-description = ecolog_eliminate_lager_1_descr
-parent = ecolog
-target = yantar2_snork_small4
-reward_money = 3000
-reward_reputation = +20
-reward_relation = ecolog, 20
-reward_rank = 4
-reward_item = medkit_scientic, medkit_scientic
-time = 86400
-prior = 1
+	type				= eliminate_lager
+	community			= actor
+	init_condition		= {=actor_on_level(l08_yantar) +yan_kill_brain_done}
+	text				= ecolog_eliminate_lager_1_text
+	description			= ecolog_eliminate_lager_1_descr
+	parent				= ecolog
+	target				= yantar2_snork_small4
+	reward_money		= 3000
+	reward_reputation	= +20
+	reward_relation		= ecolog, 20
+	reward_rank			= 4
+	reward_item			= medkit_scientic, medkit_scientic
+	time				= 86400
+	prior				= 1
 
 [ecolog_eliminate_lager_2]
-type = eliminate_lager
-community = actor
-init_condition = {=actor_on_level(l06_rostok) +yan_kill_brain_done}
-text = ecolog_eliminate_lager_2_text
-description = ecolog_eliminate_lager_2_descr
-parent = ecolog
-target = ros_smart_monster2
-reward_money = 3000
-reward_reputation = +20
-reward_relation = ecolog, 20
-reward_rank = 4
-reward_item = medkit_scientic, medkit_scientic
-time = 86400
+	type				= eliminate_lager
+	community			= actor
+	init_condition		= {=actor_on_level(l06_rostok) +yan_kill_brain_done}
+	text				= ecolog_eliminate_lager_2_text
+	description			= ecolog_eliminate_lager_2_descr
+	parent				= ecolog
+	target				= ros_smart_monster2
+	reward_money		= 3000
+	reward_reputation	= +20
+	reward_relation		= ecolog, 20
+	reward_rank			= 4
+	reward_item			= medkit_scientic, medkit_scientic
+	time				= 86400
+
+[ecolog_find_artefact_1]
+	type				= artefact
+	community			= actor
+	text				= ecolog_find_artefact_1_text
+	description			= ecolog_find_artefact_1_descr
+	parent				= ecolog
+	target				= af_fireball
+	reward_reputation	= +10
+	reward_rank			= 5
+	reward_relation		= ecolog, +25
+	reward_item			= af_dummy_pellicle
+	time				= 86400
+	prior				= 3
+
+[ecolog_find_artefact_2]
+	type				= artefact
+	community			= actor
+	text				= ecolog_find_artefact_2_text
+	description			= ecolog_find_artefact_2_descr
+	parent				= ecolog
+	target				= af_gravi
+	reward_money		= 5000
+	reward_reputation	= +10
+	reward_relation		= ecolog, +25
+	reward_rank			= 5
+	reward_item			= medkit_scientic
+	time				= 86400
+	prior				= 1
+
 
 [ecolog_find_item_1]
 type = find_item
@@ -963,34 +987,8 @@ time = 86400
 prior = 5
 
 ;------Artefact---------------
-[ecolog_find_artefact_1]
-type = artefact
-community = actor
-text = ecolog_find_artefact_1_text
-description = ecolog_find_artefact_1_descr
-parent = ecolog
-target = af_fireball
-reward_reputation = +10
-reward_rank = 5
-reward_relation = ecolog, +25
-reward_item = af_dummy_pellicle
-time = 86400
-prior = 3
 
-[ecolog_find_artefact_2]
-type = artefact
-community = actor
-text = ecolog_find_artefact_2_text
-description = ecolog_find_artefact_2_descr
-parent = ecolog
-target = af_gravi
-reward_money = 5000
-reward_reputation = +10
-reward_relation = ecolog, +25
-reward_rank = 5
-reward_item = medkit_scientic
-time = 86400
-prior = 1
+
 
 [ecolog_find_artefact_3]
 type = artefact

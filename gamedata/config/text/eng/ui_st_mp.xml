@@ -7,10 +7,10 @@
 		<text>The artifact spawned. Bring it to the base to score a point.</text>
 	</string>
 	<string id="mp_artefacts">
-		<text>Artifacts </text>
+		<text>Artefacts </text>
 	</string>
 	<string id="mp_artefacts_upcase">
-		<text>Artifacts</text>
+		<text>Artefacts</text>
 	</string>
 	<string id="mp_auto_select">
 		<text>Autoselect</text>

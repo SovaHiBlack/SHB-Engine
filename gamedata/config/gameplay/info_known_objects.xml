@@ -3,33 +3,33 @@
 <game_information_portions>
 
 	<info_portion id="encyclopedy">
-		<article>zone_artifact_af-medusa</article>
-		<article>zone_artifact_af-cristall-flower</article>
-		<article>zone_artifact_af-night-star</article>
-		<article>zone_artifact_af-vyvert</article>
-		<article>zone_artifact_af-gravi</article>
-		<article>zone_artifact_af-gold-fish</article>
-		<article>zone_artifact_af-blood</article>
-		<article>zone_artifact_af-mincer-meat</article>
-		<article>zone_artifact_af-soul</article>
-		<article>zone_artifact_af-drops</article>
-		<article>zone_artifact_af-fireball</article>
-		<article>zone_artifact_af-cristall</article>
-		<article>zone_artifact_af-electra-sparkler</article>
-		<article>zone_artifact_af-electra-flash</article>
-		<article>zone_artifact_af-electra-moonlight</article>
-		<article>zone_artifact_af-rusty-thorn</article>
-		<article>zone_artifact_af-rusty-kristall</article>
-		<article>zone_artifact_af-rusty-sea-urchin</article>
-		<article>zone_artifact_af-fuzz-kolobok</article>
-		<article>zone_artifact_af-ameba-slime</article>
-		<article>zone_artifact_af-ameba-slug</article>
-		<article>zone_artifact_af-ameba-mica</article>
-		<article>zone_artifact_af-dummy-glassbeads</article>
-		<article>zone_artifact_af-dummy-pellicle</article>
-		<article>zone_artifact_af-dummy-battery</article>
-		<article>zone_artifact_af-dummy-dummy</article>
-		<article>zone_artifact_af-dummy-spring</article>
+		<article>zone_af-medusa</article>
+		<article>zone_af-cristall-flower</article>
+		<article>zone_af-night-star</article>
+		<article>zone_af-vyvert</article>
+		<article>zone_af-gravi</article>
+		<article>zone_af-gold-fish</article>
+		<article>zone_af-blood</article>
+		<article>zone_af-mincer-meat</article>
+		<article>zone_af-soul</article>
+		<article>zone_af-drops</article>
+		<article>zone_af-fireball</article>
+		<article>zone_af-cristall</article>
+		<article>zone_af-electra-sparkler</article>
+		<article>zone_af-electra-flash</article>
+		<article>zone_af-electra-moonlight</article>
+		<article>zone_af-rusty-thorn</article>
+		<article>zone_af-rusty-kristall</article>
+		<article>zone_af-rusty-sea-urchin</article>
+		<article>zone_af-fuzz-kolobok</article>
+		<article>zone_af-ameba-slime</article>
+		<article>zone_af-ameba-slug</article>
+		<article>zone_af-ameba-mica</article>
+		<article>zone_af-dummy-glassbeads</article>
+		<article>zone_af-dummy-pellicle</article>
+		<article>zone_af-dummy-battery</article>
+		<article>zone_af-dummy-dummy</article>
+		<article>zone_af-dummy-spring</article>
 		<article>zone_zone-story_story-2006</article>
 		<article>zone_zone-story_story-2008</article>
 		<article>zone_zone-story_story-2010</article>
@@ -88,111 +88,111 @@
 	</info_portion>
 
 	<info_portion id="encyclopedy_zone_artifact_af-medusa">
-		<article>zone_artifact_af-medusa</article>
+		<article>zone_af-medusa</article>
 	</info_portion>
 
 	<info_portion id="encyclopedy_zone_artifact_af-cristall-flower">
-		<article>zone_artifact_af-cristall-flower</article>
+		<article>zone_af-cristall-flower</article>
 	</info_portion>
 
 	<info_portion id="encyclopedy_zone_artifact_af-night-star">
-		<article>zone_artifact_af-night-star</article>
+		<article>zone_af-night-star</article>
 	</info_portion>
 
 	<info_portion id="encyclopedy_zone_artifact_af-vyvert">
-		<article>zone_artifact_af-vyvert</article>
+		<article>zone_af-vyvert</article>
 	</info_portion>
 
 	<info_portion id="encyclopedy_zone_artifact_af-gravi">
-		<article>zone_artifact_af-gravi</article>
+		<article>zone_af-gravi</article>
 	</info_portion>
 
 	<info_portion id="encyclopedy_zone_artifact_af-gold-fish">
-		<article>zone_artifact_af-gold-fish</article>
+		<article>zone_af-gold-fish</article>
 	</info_portion>
 
 	<info_portion id="encyclopedy_zone_artifact_af-blood">
-		<article>zone_artifact_af-blood</article>
+		<article>zone_af-blood</article>
 	</info_portion>
 
 	<info_portion id="encyclopedy_zone_artifact_af-mincer-meat">
-		<article>zone_artifact_af-mincer-meat</article>
+		<article>zone_af-mincer-meat</article>
 	</info_portion>
 
 	<info_portion id="encyclopedy_zone_artifact_af-soul">
-		<article>zone_artifact_af-soul</article>
+		<article>zone_af-soul</article>
 	</info_portion>
 
 	<info_portion id="encyclopedy_zone_artifact_af-drops">
-		<article>zone_artifact_af-drops</article>
+		<article>zone_af-drops</article>
 	</info_portion>
 
 	<info_portion id="encyclopedy_zone_artifact_af-fireball">
-		<article>zone_artifact_af-fireball</article>
+		<article>zone_af-fireball</article>
 	</info_portion>
 
 	<info_portion id="encyclopedy_zone_artifact_af-cristall">
-		<article>zone_artifact_af-cristall</article>
+		<article>zone_af-cristall</article>
 	</info_portion>
 
 	<info_portion id="encyclopedy_zone_artifact_af-electra-sparkler">
-		<article>zone_artifact_af-electra-sparkler</article>
+		<article>zone_af-electra-sparkler</article>
 	</info_portion>
 
 	<info_portion id="encyclopedy_zone_artifact_af-electra-flash">
-		<article>zone_artifact_af-electra-flash</article>
+		<article>zone_af-electra-flash</article>
 	</info_portion>
 
 	<info_portion id="encyclopedy_zone_artifact_af-electra-moonlight">
-		<article>zone_artifact_af-electra-moonlight</article>
+		<article>zone_af-electra-moonlight</article>
 	</info_portion>
 
 	<info_portion id="encyclopedy_zone_artifact_af-rusty-thorn">
-		<article>zone_artifact_af-rusty-thorn</article>
+		<article>zone_af-rusty-thorn</article>
 	</info_portion>
 
 	<info_portion id="encyclopedy_zone_artifact_af-rusty-kristall">
-		<article>zone_artifact_af-rusty-kristall</article>
+		<article>zone_af-rusty-kristall</article>
 	</info_portion>
 
 	<info_portion id="encyclopedy_zone_artifact_af-rusty-sea-urchin">
-		<article>zone_artifact_af-rusty-sea-urchin</article>
+		<article>zone_af-rusty-sea-urchin</article>
 	</info_portion>
 
 	<info_portion id="encyclopedy_zone_artifact_af-fuzz-kolobok">
-		<article>zone_artifact_af-fuzz-kolobok</article>
+		<article>zone_af-fuzz-kolobok</article>
 	</info_portion>
 
 	<info_portion id="encyclopedy_zone_artifact_af-ameba-slime">
-		<article>zone_artifact_af-ameba-slime</article>
+		<article>zone_af-ameba-slime</article>
 	</info_portion>
 
 	<info_portion id="encyclopedy_zone_artifact_af-ameba-slug">
-		<article>zone_artifact_af-ameba-slug</article>
+		<article>zone_af-ameba-slug</article>
 	</info_portion>
 
 	<info_portion id="encyclopedy_zone_artifact_af-ameba-mica">
-		<article>zone_artifact_af-ameba-mica</article>
+		<article>zone_af-ameba-mica</article>
 	</info_portion>
 
 	<info_portion id="encyclopedy_zone_artifact_af-dummy-glassbeads">
-		<article>zone_artifact_af-dummy-glassbeads</article>
+		<article>zone_af-dummy-glassbeads</article>
 	</info_portion>
 
 	<info_portion id="encyclopedy_zone_artifact_af-dummy-pellicle">
-		<article>zone_artifact_af-dummy-pellicle</article>
+		<article>zone_af-dummy-pellicle</article>
 	</info_portion>
 
 	<info_portion id="encyclopedy_zone_artifact_af-dummy-battery">
-		<article>zone_artifact_af-dummy-battery</article>
+		<article>zone_af-dummy-battery</article>
 	</info_portion>
 
 	<info_portion id="encyclopedy_zone_artifact_af-dummy-dummy">
-		<article>zone_artifact_af-dummy-dummy</article>
+		<article>zone_af-dummy-dummy</article>
 	</info_portion>
 
 	<info_portion id="encyclopedy_zone_artifact_af-dummy-spring">
-		<article>zone_artifact_af-dummy-spring</article>
+		<article>zone_af-dummy-spring</article>
 	</info_portion>
 
 	<info_portion id="encyclopedy_zone_zone-story_story-2006">
