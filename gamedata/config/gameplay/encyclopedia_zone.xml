@@ -7,19 +7,19 @@
 	<!-- af-medusa -->
 	<article id="zone_af-medusa" name="af-medusa" group="Artefacts">
 		<ltx>af_medusa</ltx>
-		<text>enc_zone_af-medusa</text>
+		<text>enc_af-medusa</text>
 	</article>
 
 	<!-- af-cristall-flower -->
 	<article id="zone_af-cristall-flower" name="af-cristall-flower" group="Artefacts">
 		<ltx>af_cristall_flower</ltx>
-		<text>enc_zone_af-cristall-flower</text>
+		<text>enc_af-cristall-flower</text>
 	</article>
 
 	<!-- af-night-star -->
 	<article id="zone_af-night-star" name="af-night-star" group="Artefacts">
 		<ltx>af_night_star</ltx>
-		<text>enc_zone_af-night-star</text>
+		<text>enc_af-night-star</text>
 	</article>
 
 	<!-- af-vyvert -->

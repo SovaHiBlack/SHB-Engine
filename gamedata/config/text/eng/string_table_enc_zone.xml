@@ -156,7 +156,7 @@
 	<string id="enc_zone_af-cristall">
 		<text>Is created when heavy metals fall into the Stirfry anomaly. This artifact eliminates radiation wonderfully. It is highly valued by stalkers and hard to find.</text>
 	</string>
-	<string id="enc_zone_af-cristall-flower">
+	<string id="enc_af-cristall-flower">
 		<text>Born in the Springboard anomaly. This artifact is found in only a few areas of the Zone. The bits of metallic compounds create a beautiful light play. It is very calming to study this artifact at night by the fire. </text>
 	</string>
 	<string id="enc_zone_af-drops">
@@ -198,13 +198,13 @@
 	<string id="enc_zone_af-gravi">
 		<text>Can spot it near anomalies such as "Vortex" or in the hands of another stalker. While wearing it a certain amount of radiation is stored in the body while the rest of it is scattered in the radial direction away from the body. A good price.</text>
 	</string>
-	<string id="enc_zone_af-medusa">
+	<string id="enc_af-medusa">
 		<text>Is formed in the Trampolineanomaly. Forms a weak protective field whose side effect is a slight radiation. The artifact is widespread and notvery valuable.</text>
 	</string>
 	<string id="enc_zone_af-mincer-meat">
 		<text>Manufactured by the Merry-go-Round anomaly. Causes increased cell growth. On the other hand, the newly formed cells are much more receptive to the effects of physical uranium. The artifact doesn't show up very often, but it's hard to call it rare.</text>
 	</string>
-	<string id="enc_zone_af-night-star">
+	<string id="enc_af-night-star">
 		<text>This wonderful artifact is formed by the anomaly Trampoline. The use of the artifact demands the neutralization of deadly radiation. Expensive and rare, this artifact is extremely interesting for scientific expeditions and other research activity in the Zone.</text>
 	</string>
 	<string id="enc_zone_af-rusty-kristall">

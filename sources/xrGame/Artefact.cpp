@@ -443,12 +443,12 @@ void SArtefactActivation::Load()
 	for(int i=0; i<(int)eMax; ++i)
 		m_activation_states.push_back(SStateDef());
 
-	const char* activation_seq = pSettings->r_string(*m_af->cNameSect(),"artefact_activation_seq");
+	const char* activation_sect = pSettings->r_string(*m_af->cNameSect(),"artefact_activation_sect");
 
-	m_activation_states[(int)eStarting].Load(activation_seq,	"starting");
-	m_activation_states[(int)eFlying].Load(activation_seq,		"flying");
-	m_activation_states[(int)eBeforeSpawn].Load(activation_seq,	"idle_before_spawning");
-	m_activation_states[(int)eSpawnZone].Load(activation_seq,	"spawning");
+	m_activation_states[(int)eStarting].Load(activation_sect, "starting");
+	m_activation_states[(int)eFlying].Load(activation_sect, "flying");
+	m_activation_states[(int)eBeforeSpawn].Load(activation_sect, "idle_before_spawning");
+	m_activation_states[(int)eSpawnZone].Load(activation_sect, "spawning");
 }
 
 void SArtefactActivation::Start()
