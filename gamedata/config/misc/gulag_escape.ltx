@@ -343,13 +343,13 @@ meet = meet@wolf
 danger = danger_condition@shustryi
 
 [meet@wolf]
-meet_state		= 15|guard@wait
-meet_state_wpn	= 15|backoff@threat_weap
-victim		= 15|actor
-victim_wpn		= 15|actor
-use			= true
-use_wpn		= false
-syndata		= backoff@threat_weap
+meet_state = 15|guard@wait
+meet_state_wpn = 15|backoff@threat_weap
+victim = 15|actor
+victim_wpn = 15|actor
+use = true
+use_wpn = false
+syndata = backoff@threat_weap
 meet_dialog = {-agroprom_military_case_have} escape_lager_volk_talk, escape_lager_leader_hello
 
 [death@wolf]
@@ -460,13 +460,13 @@ path_look  = guard_look1
 meet = meet@zoneguard_novice_lager1
 
 [meet@zoneguard_novice_lager1]
-meet_state 		= 10| wait@talk_hello
-meet_state_wpn 	= 10| threat@threat_weap
-victim 			= 10| actor
-victim_wpn 		= 10| actor
-use			= true
-use_wpn		= true
-meet_dialog		= escape_lager_guard_start_dialog
+meet_state = 10| wait@talk_hello
+meet_state_wpn = 10| threat@threat_weap
+victim = 10| actor
+victim_wpn = 10| actor
+use = true
+use_wpn = true
+meet_dialog = escape_lager_guard_start_dialog
 
 
 [logic@esc_lager_zoneguard2]
@@ -478,13 +478,13 @@ path_look  = guard_look2
 meet = meet@zoneguard_novice_lager2
 
 [meet@zoneguard_novice_lager2]
-meet_state 		= 10| wait@talk_hello
-meet_state_wpn 	= 10| threat@threat_weap
-victim 			= 10| actor
-victim_wpn 		= 10| actor
-use			= true
-use_wpn		= true
-meet_dialog		= escape_lager_guard_start_dialog
+meet_state = 10| wait@talk_hello
+meet_state_wpn = 10| threat@threat_weap
+victim = 10| actor
+victim_wpn = 10| actor
+use = true
+use_wpn = true
+meet_dialog = escape_lager_guard_start_dialog
 
 
 [logic@esc_lager_walker1]
@@ -1142,14 +1142,14 @@ combat_ignore_cond = {-esc_bridge_pass_fire =fighting_actor =is_alive(032)}
 
 
 [meet@sold_zoneguard]
-meet_state 		= 30| {+esc_bridge_pass_on} guard, guard@ {+esc_bridge_pass_on} talk_hello, wait
-meet_state_wpn 	= 30| {+esc_bridge_pass_on} guard, guard@ {+esc_bridge_pass_on} talk_hello, wait
-victim 			= 30| actor
-victim_wpn 		= 30| actor
-use			= true
-use_wpn		= true
-;zone			= esc_bridge_kill_zone|{-esc_bridge_pass_on} true@ {-esc_bridge_pass_on} esc_bridge_soldiers
-meet_dialog		= esc_bridge_soldiers_start
+meet_state = 30| {+esc_bridge_pass_on} guard, guard@ {+esc_bridge_pass_on} talk_hello, wait
+meet_state_wpn = 30| {+esc_bridge_pass_on} guard, guard@ {+esc_bridge_pass_on} talk_hello, wait
+victim = 30| actor
+victim_wpn = 30| actor
+use = true
+use_wpn = true
+;zone = esc_bridge_kill_zone|{-esc_bridge_pass_on} true@ {-esc_bridge_pass_on} esc_bridge_soldiers
+meet_dialog = esc_bridge_soldiers_start
 precond = visibility
 
 [combat_ignore@esc_bridge]
@@ -1441,12 +1441,12 @@ hp_fight = 100|false
 help_dialog = tutorial_wounded_give_medkit
 
 [meet@esc_corps_wounded]
-meet_state		= 2|wait@wait
-meet_state_wpn	= 2|wait@wait
-victim			= 2|actor
-victim_wpn		= 2|actor
-use				= true
-use_wpn			= true
+meet_state = 2|wait@wait
+meet_state_wpn = 2|wait@wait
+victim = 2|actor
+victim_wpn = 2|actor
+use = true
+use_wpn = true
 
 
 [danger_condition@tolik]
@@ -1870,11 +1870,11 @@ meet = no_meet
 wounded = wounded@petruha
 
 [wounded@petruha]
-hp_state        = 0|wounded_heavy@help_heavy
-hp_state_see    = 0|wounded_heavy@help_heavy
-hp_victim       = 0|nil
-hp_fight        = 0|false
-hp_cover        = 0|false
+hp_state = 0|wounded_heavy@help_heavy
+hp_state_see = 0|wounded_heavy@help_heavy
+hp_victim = 0|nil
+hp_fight = 0|false
+hp_cover = 0|false
 
 [logic@esc_assault_fight1]
 active = walker@esc_assault_fight1
@@ -1995,13 +1995,13 @@ meet = meet@friend
 ignore_distance = 0
 
 [meet@attacker]
-meet_state	= 5|guard@wait
-meet_state_wpn	= 5|guard@wait
-victim		= 5|actor
-victim_wpn	= 5|actor
-use		= true
-use_wpn		= true
-meet_dialog	= escape_factory_assault_start
+meet_state = 5|guard@wait
+meet_state_wpn = 5|guard@wait
+victim = 5|actor
+victim_wpn = 5|actor
+use = true
+use_wpn = true
+meet_dialog = escape_factory_assault_start
 
 ;---------------------------------
 ;-------- Ћагерь у Ћиса ----------
@@ -2075,25 +2075,22 @@ ignore_distance = 20
 
 
 [meet@esc_stalker_fox]
-meet_state	= 3|wait@wait
-meet_state_wpn	= 3|wait@wait
-victim		= 3|actor
-victim_wpn	= 3|actor
-use		= true
-use_wpn		= true
-meet_dialog     = escape_fox_hello_dialog
+meet_state = 3|wait@wait
+meet_state_wpn = 3|wait@wait
+victim = 3|actor
+victim_wpn = 3|actor
+use = true
+use_wpn = true
+meet_dialog = escape_fox_hello_dialog
 
 [meet@esc_stalker_fox_2]
-meet_state	= 3|guard@wait
-meet_state_wpn	= 3|guard@wait
-victim		= 3|actor
-victim_wpn	= 3|actor
-use		= true
-use_wpn		= true
-meet_dialog     = escape_fox_hello_dialog
-
-
-
+meet_state = 3|guard@wait
+meet_state_wpn = 3|guard@wait
+victim = 3|actor
+victim_wpn = 3|actor
+use = true
+use_wpn = true
+meet_dialog = escape_fox_hello_dialog
 
 [logic@esc_stalker_camp1]
 active = kamp@esc_stalker_camp1
@@ -2115,4 +2112,3 @@ active = walker@esc_stalker_camp3
 [walker@esc_stalker_camp3]
 path_walk = walk
 path_look = look
-
