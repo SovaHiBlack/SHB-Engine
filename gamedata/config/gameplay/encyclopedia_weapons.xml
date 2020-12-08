@@ -165,7 +165,7 @@
 	<!-- wpn-fort -->
 	<article id="weapons1_wpn-fort" name="wpn-fort" group="Weapons1">
 		<ltx>wpn_fort</ltx>
-		<text>enc_weapons1_wpn-fort</text>
+		<text>deskr_wpn-fort</text>
 	</article>
 
 	<!-- wpn-walther -->
@@ -177,7 +177,7 @@
 	<!-- wpn-beretta -->
 	<article id="weapons1_wpn-beretta" name="wpn-beretta" group="Weapons1">
 		<ltx>wpn_beretta</ltx>
-		<text>enc_weapons1_wpn-beretta</text>
+		<text>descr_wpn-beretta</text>
 	</article>
 
 	<!-- wpn-sig220 -->
@@ -189,7 +189,7 @@
 	<!-- wpn-colt1911 -->
 	<article id="weapons1_wpn-colt1911" name="wpn-colt1911" group="Weapons1">
 		<ltx>wpn_colt1911</ltx>
-		<text>enc_weapons1_wpn-colt1911</text>
+		<text>descr_wpn-colt1911</text>
 	</article>
 
 	<!-- wpn-toz34 -->
@@ -201,7 +201,7 @@
 	<!-- wpn-bm16 -->
 	<article id="weapons1_wpn-bm16" name="wpn-bm16" group="Weapons1">
 		<ltx>wpn_bm16</ltx>
-		<text>enc_weapons1_wpn-bm16</text>
+		<text>descr_wpn-bm16</text>
 	</article>
 
 	<!-- wpn-spas12 -->
@@ -225,13 +225,13 @@
 	<!-- wpn-ak74 -->
 	<article id="weapons1_wpn-ak74" name="wpn-ak74" group="Weapons1">
 		<ltx>wpn_ak74</ltx>
-		<text>enc_weapons1_wpn-ak74</text>
+		<text>descr_wpn-ak74</text>
 	</article>
 
 	<!-- wpn-ak74u -->
 	<article id="weapons1_wpn-ak74u" name="wpn-ak74u" group="Weapons1">
 		<ltx>wpn_ak74u</ltx>
-		<text>enc_weapons1_wpn-ak74u</text>
+		<text>descr_wpn-ak74u</text>
 	</article>
 
 	<!-- wpn-vintorez -->
@@ -255,7 +255,7 @@
 	<!-- wpn-abakan -->
 	<article id="weapons1_wpn-abakan" name="wpn-abakan" group="Weapons1">
 		<ltx>wpn_abakan</ltx>
-		<text>enc_weapons1_wpn-abakan</text>
+		<text>descr_wpn-abakan</text>
 	</article>
 
 	<!-- wpn-lr300 -->
@@ -267,7 +267,7 @@
 	<!-- wpn-fn2000 -->
 	<article id="weapons1_wpn-fn2000" name="wpn-fn2000" group="Weapons1">
 		<ltx>wpn_fn2000</ltx>
-		<text>enc_weapons1_wpn-fn2000</text>
+		<text>descr_wpn-fn2000</text>
 	</article>
 
 	<!-- wpn-l85 -->
@@ -279,7 +279,7 @@
 	<!-- wpn-g36 -->
 	<article id="weapons1_wpn-g36" name="wpn-g36" group="Weapons1">
 		<ltx>wpn_g36</ltx>
-		<text>enc_weapons1_wpn-g36</text>
+		<text>descr_wpn-g36</text>
 	</article>
 
 	<!-- wpn-sig550 -->
@@ -333,7 +333,7 @@
 	<!-- grenade-f1 -->
 	<article id="weapons1_grenade-f1" name="grenade-f1" group="Weapons1">
 		<ltx>grenade_f1</ltx>
-		<text>enc_weapons1_grenade-f1</text>
+		<text>descr_grenade-f1</text>
 	</article>
 
 	<!-- grenade-rgd5 -->

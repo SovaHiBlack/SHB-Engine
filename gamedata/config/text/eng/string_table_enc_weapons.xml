@@ -219,7 +219,7 @@
 	<string id="enc_weapons1_ammo_ammo-vog-25p">
 		<text>A grenade for the GP-25 Kostyer grenade launcher, the integrated grenade launcher of the Tunder S14 and the Bulldog 6 revolver grenade launcher. Prior explosion the grenade leaps up about one meter increasing its killing effect.</text>
 	</string>
-	<string id="enc_weapons1_grenade-f1">
+	<string id="descr_grenade-f1">
 		<text>A defensive hand grenade with a large radius of splinter damage. It is recommended to throw it only from behind cover.</text>
 	</string>
 	<string id="enc_weapons1_grenade-gd05">
@@ -228,7 +228,7 @@
 	<string id="enc_weapons1_grenade-rgd5">
 		<text>An offensive hand grenade with a small radius of splinter damage.</text>
 	</string>
-	<string id="enc_weapons1_wpn-abakan">
+	<string id="descr_wpn-abakan">
 		<text>The weapon of the elite troops in the Russian army. It was designed as a replacement for the outdated AK-74. Not only the Abakan’s internal mechanisms but also its receiver and its barrel are movable, which decreases the recoil and increases accuracy.\n Ammunition:\n standard 5.45x39 mm,\n armor-piercing 5.45x39 mm BP.</text>
 	</string>
 	<string id="enc_weapons1_wpn-abakan_m1">
@@ -252,28 +252,28 @@
 	<string id="enc_weapons1_wpn-addon-silencer">
 		<text>An effective silencer made by Zone gunsmiths. The kit includes a set of adapters for weapons of any calibre.</text>
 	</string>
-	<string id="enc_weapons1_wpn-ak74">
+	<string id="descr_wpn-ak74">
 		<text>Kalashnikov assault rifle with a folding butt, 1974 model, uses 5.45x39 mm ammunition. It is a simple and reliable weapon, but the cheapness of its production affected its ergonomy and accuracy. In the Zone, it is the main weapon of the military stalkers and of many solo fighters.\n Ammunition:\n standard 5.45x39 mm,\n armor-piercing 5.45x39 mm BP.</text>
 	</string>
 	<string id="enc_weapons1_wpn-ak74_m1">
 		<text>The modified closing system increases the speed of shooting</text>
 	</string>
-	<string id="enc_weapons1_wpn-ak74u">
+	<string id="descr_wpn-ak74u">
 		<text>The weight and size of the AKS-74U are similar to those of a submachine gun, but its operation mode and the ammunition it uses place it into the class of the assault rifles. Its advantages are its small dimensions very useful when fighting inside a building or in a thick forest and a relatively high piercing capabilities. Its main disadvantages are a limited accuracy range and quick overheating when firing bursts.\n Ammunition:\n standard 5.45x39 mm,\n armor-piercing 5.45x39 mm BP.</text>
 	</string>
 	<string id="enc_weapons1_wpn-ak74u_m1">
 		<text>Enhanced machine gun. Comes with a non-replaceable muffler. </text>
 	</string>
-	<string id="enc_weapons1_wpn-beretta">
+	<string id="descr_wpn-beretta">
 		<text>Adopted by the American army and police, as well as many military and police units all over the world. It is also very popular among the criminals for its high-powered round and its high-capacity magazine.\n Ammunition:\n standard 9x19 mm Parabellum,\n improved 9x19 mm PB1sP.</text>
 	</string>
-	<string id="enc_weapons1_wpn-bm16">
+	<string id="descr_wpn-bm16">
 		<text>A sawn-off BM-16 rifle. It is lighter and more compact then the original two-barrel rifle, but it is effective only at a close range. One of the weapons most commonly used by beginners.\n Ammunition:\n 12x70 shot,\n 12x76 slug,\n 12x76 dart.</text>
 	</string>
 	<string id="enc_weapons1_wpn-colt_m1">
 		<text>Weapon of hired assassins. Good old reliable colt, comes with a non-replaceable muffler. </text>
 	</string>
-	<string id="enc_weapons1_wpn-colt1911">
+	<string id="descr_wpn-colt1911">
 		<text>A classical automatic Colt which present in all the conflicts of the 20th century with honor and entered the new century with confidence. Its small-size magazine is partially compensated by the use of a high-powered round.\n Ammunition:\n standard .45 ACP,\n improved .45 ACP Hydro-Shock.</text>
 	</string>
 	<string id="enc_weapons1_wpn-desert-eagle">
@@ -285,7 +285,7 @@
 	<string id="enc_weapons1_wpn-FT 200M">
 		<text>An assault rifle combined with a grenade launcher. It is equipped with an electronic fire control module and a 40-mm grenade launcher.\n Ammunition:\n standard 5.56x45 mm SS109,\n armor-piercing 5.56x45 mm ÀÐ.</text>
 	</string>
-	<string id="enc_weapons1_wpn-fort">
+	<string id="deskr_wpn-fort">
 		<text>A police pistol of Ukrainian production, replaced the PMm. In comparison with the Makarov pistol, it has improved accuracy, ergonomics and a larger magazine, but it is less reliable.\n Ammunition:\n standard 9x18 mm,\n improved 9x18 mm +P+.</text>
 	</string>
 	<string id="enc_weapons1_wpn-fort_m1">
