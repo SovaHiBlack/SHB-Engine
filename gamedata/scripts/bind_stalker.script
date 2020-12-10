@@ -1,33 +1,33 @@
-function init    (obj)
+function init(obj)
 	xr_motivator.AddToMotivator(obj)
 end
 
-function actor_init    (npc)
+function actor_init(npc)
 	npc:bind_object(actor_binder(npc))
 end
 
-local game_difficulty_by_num = {
+local game_difficulty_by_num =
+{
 	[0] = "gd_novice",
 	[1] = "gd_stalker",
 	[2] = "gd_veteran",
 	[3] = "gd_master"
-	}
+}
 
-lasthealth  = 0
-lasttime	= 0
 post_process = 0
 local weapon_hide = false
+
 ----------------------------------------------------------------------------------------------------------------------
 class "actor_binder" (object_binder)
 ----------------------------------------------------------------------------------------------------------------------
-function actor_binder:__init (obj) super(obj)
+function actor_binder:__init(obj) super(obj)
 	self.bCheckStart = false
 	self.weather_manager = level_weathers.WeatherManager()
 	self.actor_detector = xr_detector.actor_detector()
 end
 ----------------------------------------------------------------------------------------------------------------------
 function actor_binder:net_spawn(data)
-	printf("actor net spawn")		
+	printf("actor net spawn")
 
 	level.show_indicators()
 
@@ -40,7 +40,7 @@ function actor_binder:net_spawn(data)
 	end
 
 	db.add_actor(self.object)
-	
+
 	if self.st.disable_input_time == nil then
 		level.enable_input()
 	end
@@ -62,10 +62,11 @@ function actor_binder:net_destroy()
 	if(actor_stats.remove_from_ranking~=nil)then
 		actor_stats.remove_from_ranking(self.object:id())
 	end
+
 --	game_stats.shutdown ()
 	db.del_actor(self.object)
 
-    sr_light.clean_up ()
+	sr_light.clean_up ()
 
 	self.object:set_callback(callback.inventory_info, nil)
 	self.object:set_callback(callback.article_info, nil)
@@ -157,12 +158,12 @@ function actor_binder:info_callback(npc, info_id)
 	level_tasks.process_info_portion(info_id)
 end
 ----------------------------------------------------------------------------------------------------------------------
-function actor_binder:on_trade (item, sell_bye, money)
-    if sell_bye == true then
-       game_stats.money_trade_update (money)
-    else       
-       game_stats.money_trade_update (-money) 
-    end   
+function actor_binder:on_trade(item, sell_bye, money)
+	if sell_bye == true then
+		game_stats.money_trade_update(money)
+	else
+		game_stats.money_trade_update(-money)
+	end
 end
 ----------------------------------------------------------------------------------------------------------------------
 function actor_binder:article_callback(npc, group, name)
@@ -177,8 +178,8 @@ function actor_binder:article_callback(npc, group, name)
 end
 ----------------------------------------------------------------------------------------------------------------------
 function actor_binder:on_item_take (obj)
-    level_tasks.proceed(self.object)
-    --game_stats.update_take_item (obj, self.object)
+	level_tasks.proceed(self.object)
+	--game_stats.update_take_item (obj, self.object)
 end
 ----------------------------------------------------------------------------------------------------------------------
 function actor_binder:on_item_drop (obj)
@@ -230,15 +231,6 @@ function actor_binder:update(delta)
 	-- апдейт звуковой схемы актера
 	xr_sound.update_actor()
 	
-	--' Проверка потери жизни
---[[
-	if self.object.health - lasthealth > 0.001 or
-	   self.object.health - lasthealth < -0.001 then
-		printf("%f | %f", self.object.health, self.object.health - lasthealth, game.time() - lasttime)
-		lasthealth = self.object.health
-		lasttime = game.time()
-	end
-]]	
 	-- Обновление отключения ввода с клавиатуры.
 	if self.st.disable_input_time ~= nil and
 	   game.get_game_time():diffSec(self.st.disable_input_time) >= self.st.disable_input_idle 

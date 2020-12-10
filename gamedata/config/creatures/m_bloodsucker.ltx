@@ -5,164 +5,164 @@
 ; BASE PROFILES
 ;***************************************************************************
 [m_bloodsucker_e]:monster_base
-SpaceRestrictionSection		 = space_restrictor,zone_mosquito_bald,zone_witches_galantine,zone_burning_fuzz1,zone_mincer,zone_gravi_zone
-;$spawn               		 = "monsters\bloodsuckers\bloodsucker_base"		; option for Level Editor
-$npc			     		 = on							; option for Level Editor
-visual						 = monsters\krovosos\krovosos
-corpse_visual				 = monsters\krovosos\krovosos_dead
-icon						 = ui_npc_monster_krovosos
-MaxHealthValue		 		 = 2.0							; range [0..200]
+SpaceRestrictionSection				= space_restrictor,zone_mosquito_bald,zone_witches_galantine,zone_burning_fuzz1,zone_mincer,zone_gravi_zone
+;$spawn								= "monsters\bloodsuckers\bloodsucker_base"		; option for Level Editor
+$npc								= on											; option for Level Editor
+visual								= monsters\krovosos\krovosos
+corpse_visual						= monsters\krovosos\krovosos_dead
+icon								= ui_npc_monster_krovosos
+MaxHealthValue						= 2.0											; range [0..200]
 
-ef_creature_type			 = 13							; option for evaluation functions
-ef_weapon_type				 = 3
-ef_detector_type			 = 1
-panic_threshold				 = 0.1
+ef_creature_type					= 13											; option for evaluation functions
+ef_weapon_type						= 3
+ef_detector_type					= 1
+panic_threshold						= 0.1
 
-cform               		 = skeleton						; collision class
-class                		 = SM_BLOOD						; AI class
+cform								= skeleton										; collision class
+class								= SM_BLOOD										; AI class
 
-script_binding				= bind_monster.bind
+script_binding						= bind_monster.bind
 
-bone_head					 = bip01_head					; bone name
-bone_fire					 = bip01_head
-weapon_usage				 = 0							; boolean
+bone_head							= bip01_head									; bone name
+bone_fire							= bip01_head
+weapon_usage						= 0												; boolean
 
-Spawn_Inventory_Item_Section = mutant_krovosos_jaw
-Spawn_Inventory_Item_Probability = 0.2
+Spawn_Inventory_Item_Section		= mutant_krovosos_jaw
+Spawn_Inventory_Item_Probability	= 0.2
 
 ;------------------------------------------------------------------------
 ; Offline Alife
 ;------------------------------------------------------------------------
-Scheduled						= on							; option for ALife Simulator
-Human							= off							; option for ALife Simulator
-Health							= 400							; option for ALife Simulator
-MinSpeed						= 2.0	;1.0					; option for ALife Simulator
-MaxSpeed						= 4.5	;1.5					; option for ALife Simulator
-going_speed						= 2.0	;1.0					; option for ALife Simulator
-current_level_going_speed		= 1;2							; option for ALife Simulator
-search_speed					= .5							; option for ALife Simulator
-smart_terrain_choose_interval	= 00:15:00
+Scheduled							= on							; option for ALife Simulator
+Human								= off							; option for ALife Simulator
+Health								= 400							; option for ALife Simulator
+MinSpeed							= 2.0							; option for ALife Simulator
+MaxSpeed							= 4.5							; option for ALife Simulator
+going_speed							= 2.0							; option for ALife Simulator
+current_level_going_speed			= 1								; option for ALife Simulator
+search_speed						= 0.5							; option for ALife Simulator
+smart_terrain_choose_interval		= 00:15:00
 
 ;---------------------------------------------------------------------
 ; Physics
 ;---------------------------------------------------------------------
-ph_box0_center 					= 0.0,  0.9,  0.0
-ph_box0_size 		 			= 0.35, 0.9,  0.35
-ph_box1_center 		 			= 0.0,  0.6,  0.0
-ph_box1_size 		 			= 0.40, 0.6,  0.40
-ph_foot_size 		  			= 0.20, 0.23, 0.20
-ph_crash_speed_min				= 100
-ph_crash_speed_max				= 200
-ph_collision_damage_factor		= 0.1
-ph_mass 						= 150;120
+ph_box0_center						= 0.0,  0.9,  0.0
+ph_box0_size						= 0.35, 0.9,  0.35
+ph_box1_center						= 0.0,  0.6,  0.0
+ph_box1_size						= 0.40, 0.6,  0.40
+ph_foot_size						= 0.20, 0.23, 0.20
+ph_crash_speed_min					= 100
+ph_crash_speed_max					= 200
+ph_collision_damage_factor			= 0.1
+ph_mass								= 150
 
-destroyed_vis_name				= physics\Dead_Body\trupik_crash
+destroyed_vis_name					= physics\Dead_Body\trupik_crash
 
 ;---------------------------------------------------------------------
-ph_skeleton_airr_lin_factor   = 2.0 ;550.0 (изменно из-за того, что убрано домножение коэффициент 0.002 из кода)
-ph_skeleton_airr_ang_factor   = 0.0 ;0.0 (изменно из-за того, что убрано домножение на коэффициент 0.3 из кода (0.0*0.3=0.0))
-ph_skeleton_hinger_factor1    = 1.0 ;1.0 (изменно из-за того, что убрано домножение на коэффициент 5.0 из кода)
-ph_skeleton_ddelay	     	  = 15.0 ;Время изменения значения трения в суставе с момента создания шелла, сек
+ph_skeleton_airr_lin_factor			= 2.0 ;550.0 (изменно из-за того, что убрано домножение коэффициент 0.002 из кода)
+ph_skeleton_airr_ang_factor			= 0.0 ;0.0 (изменно из-за того, что убрано домножение на коэффициент 0.3 из кода (0.0*0.3=0.0))
+ph_skeleton_hinger_factor1			= 1.0 ;1.0 (изменно из-за того, что убрано домножение на коэффициент 5.0 из кода)
+ph_skeleton_ddelay					= 15.0 ;Время изменения значения трения в суставе с момента создания шелла, сек
 
-ph_skel_fatal_impulse_factor  = 12.0
-ph_after_death_velocity_factor= 0.75
-ph_skel_shot_up_factor        = 0.25
+ph_skel_fatal_impulse_factor		= 12.0
+ph_after_death_velocity_factor		= 0.75
+ph_skel_shot_up_factor				= 0.25
 ;---------------------------------------------------------------------
 
 ;----------------------------------------------------------------------------
 ; Movement::Velocities & Acceleration
 ;----------------------------------------------------------------------------
-; speed factors			linear | angular_real | angular_path | min	 |  max
-Velocity_Stand			= 0,		3.05,		3.05,			1,		1	
-Velocity_WalkFwdNormal	= 2.15,		3.5,		3.5,			0.2,	2.0
-Velocity_WalkFwdDamaged	= 1.4,		4.0,		4.0,			0.2,	2.0
-Velocity_RunFwdNormal	= 5.84,		4.0,		4.0,			0.5,	1	
-Velocity_RunFwdDamaged	= 1.90,		3.0,		3.0,			0.5,	1
-Velocity_Drag			= 1.5,		3.0,		3.0,			1,		1
-Velocity_Steal			= 0.7,		3.0,		3.0,			1,		1
+; speed factors						linear | angular_real | angular_path | min	 | max
+Velocity_Stand						= 0,		3.05,		3.05,			1,		1
+Velocity_WalkFwdNormal				= 2.15,		3.5,		3.5,			0.2,	2.0
+Velocity_WalkFwdDamaged				= 1.4,		4.0,		4.0,			0.2,	2.0
+Velocity_RunFwdNormal				= 5.84,		4.0,		4.0,			0.5,	1
+Velocity_RunFwdDamaged				= 1.90,		3.0,		3.0,			0.5,	1
+Velocity_Drag						= 1.5,		3.0,		3.0,			1,		1
+Velocity_Steal						= 0.7,		3.0,		3.0,			1,		1
 
 ; Speed factors while invisible
-Velocity_Invisible_Linear		= 8.0 
-Velocity_Invisible_Angular		= 4.62
+Velocity_Invisible_Linear			= 8.0
+Velocity_Invisible_Angular			= 4.62
 
 ; acceleration
-Accel_Calm						= 2.5
-Accel_Aggressive				= 20.0
+Accel_Calm							= 2.5
+Accel_Aggressive					= 20.0
 
 ;--------------------------------------------------------------------------
 ; Attack parameters
 ;--------------------------------------------------------------------------
-MinAttackDist					= 2.3 	;2.4
-MaxAttackDist					= 2.8	;3.8
-EffectDistance					= 20.0
-hit_type						= wound					; type of attack 
-as_min_dist						= 1.7
-as_step				 			= 0.3
+MinAttackDist						= 2.3
+MaxAttackDist						= 2.8
+EffectDistance						= 20.0
+hit_type							= wound					; type of attack 
+as_min_dist							= 1.7
+as_step								= 0.3
 
-Run_Attack_Dist					= 3.5,		4.5
-Run_Attack_Delay				= 1000,		3000
+Run_Attack_Dist						= 3.5, 4.5
+Run_Attack_Delay					= 1000, 3000
 
-attack_params					= m_bloodsucker_attack_params
+attack_params						= m_bloodsucker_attack_params
 
-attack_effector					= m_bloodsucker_attack_effector
-vampire_effector				= m_bloodsucker_vampire_effector
+attack_effector						= m_bloodsucker_attack_effector
+vampire_effector					= m_bloodsucker_vampire_effector
 
-Melee_Rotation_Factor	= 2.0
-berserk_always			= true
+Melee_Rotation_Factor				= 2.0
+berserk_always						= true
 
 ;------------------------------------------------------------------------------
 ;----------------------------- Entity Conditions ------------------------------
 ;------------------------------------------------------------------------------
-satiety_v				= 0.0001			;скорость уменьшения сытости со временем [0...1]
-satiety_power_v			= 0.005				;увеличение силы при уменьшении сытости [0...1]
-satiety_health_v		= 0.001				;увеличение здоровья при уменьшении сытости [0...1]
-radiation_v				= 0.00001			;скорость уменьшения радиации [0...1]
-radiation_health_v		= 0.0				;уменьшение здоровья при воздействии радиации [0...1]
-morale_v				= 0.01				;скорость восстановления морали [0...1]
-psy_health_v			= 0.1				;скорость восстановления psy-здоровья
+satiety_v							= 0.0001					;скорость уменьшения сытости со временем [0...1]
+satiety_power_v						= 0.005						;увеличение силы при уменьшении сытости [0...1]
+satiety_health_v					= 0.001						;увеличение здоровья при уменьшении сытости [0...1]
+radiation_v							= 0.00001					;скорость уменьшения радиации [0...1]
+radiation_health_v					= 0.0						;уменьшение здоровья при воздействии радиации [0...1]
+morale_v							= 0.01						;скорость восстановления морали [0...1]
+psy_health_v						= 0.1						;скорость восстановления psy-здоровья
 
-health_hit_part 			= 1.0		;0.8			;процент хита, уходящий на отнимание здоровья [0...1]
-power_hit_part 				= 1.0		;0.9			;процент хита, уходящий на отнимание силы [0...1]
+health_hit_part						= 1.0		;0.8			;процент хита, уходящий на отнимание здоровья [0...1]
+power_hit_part						= 1.0		;0.9			;процент хита, уходящий на отнимание силы [0...1]
 
-immunities_sect				= bloodsucker_immunities
+immunities_sect						= bloodsucker_immunities
 
 ;открытые раны
-bleeding_v					= 0.04						;потеря крови при номинальной ране в секунду
-wound_incarnation_v			= 0.05						;крутизна кривой заживления (какой процент раны останется после заживления в игровую секунду)
-min_wound_size				= 0.01
+bleeding_v							= 0.04						;потеря крови при номинальной ране в секунду
+wound_incarnation_v					= 0.05						;крутизна кривой заживления (какой процент раны останется после заживления в игровую секунду)
+min_wound_size						= 0.01
 
 ;Health from which to play injured animation
-DamagedThreshold			= 0.1
+DamagedThreshold					= 0.1
 
 ; Eat settings
-eat_freq					= 5.0						;частота укусов в сек
-eat_slice					= 0.05						;увеличение сытости при 1 укусе
-eat_slice_weight			= 10.0						;уменьшение еды у трупа
+eat_freq							= 5.0						;частота укусов в сек
+eat_slice							= 0.05						;увеличение сытости при 1 укусе
+eat_slice_weight					= 10.0						;уменьшение еды у трупа
 
-satiety_threshold			= 0.2						; below this value monster fill hunger
+satiety_threshold					= 0.2						; below this value monster fill hunger
 
 ;---------------------------------------------------------
 ; Sounds and sound parameters
 ;---------------------------------------------------------
-sound_idle					= monsters\bloodsucker\idle_
-sound_eat					= monsters\bloodsucker\eat_
-sound_aggressive			= monsters\bloodsucker\sucker_breath_mix_
-sound_attack_hit			= monsters\bloodsucker\attack_hit_
-sound_take_damage			= monsters\bloodsucker\hit_
-sound_die					= monsters\bloodsucker\die_
-sound_panic					= monsters\bloodsucker\hit_
-sound_die_in_anomaly		= monsters\bloodsucker\die_
+sound_idle							= monsters\bloodsucker\idle_
+sound_eat							= monsters\bloodsucker\eat_
+sound_aggressive					= monsters\bloodsucker\sucker_breath_mix_
+sound_attack_hit					= monsters\bloodsucker\attack_hit_
+sound_take_damage					= monsters\bloodsucker\hit_
+sound_die							= monsters\bloodsucker\die_
+sound_panic							= monsters\bloodsucker\hit_
+sound_die_in_anomaly				= monsters\bloodsucker\die_
 
-sound_distant_idle			= monsters\bloodsucker\idle_
-distant_idle_sound_delay	= 80000
-distant_idle_sound_range	= 100.0
+sound_distant_idle					= monsters\bloodsucker\idle_
+distant_idle_sound_delay			= 80000
+distant_idle_sound_range			= 100.0
 
-killer_clsids				= Z_MINCER,Z_GALANT,ZS_BFUZZ,ZS_MBALD,ZS_GALAN,ZS_MINCE
+killer_clsids						= Z_MINCER,Z_GALANT,ZS_BFUZZ,ZS_MBALD,ZS_GALAN,ZS_MINCE
 
 ;Frequency of sounds to be played
-idle_sound_delay			= 95000
-eat_sound_delay				= 3000
-attack_sound_delay			= 1000 ;6000
+idle_sound_delay					= 95000
+eat_sound_delay						= 3000
+attack_sound_delay					= 1000 ;6000
 
 Sound_Invisibility_Change_State		= monsters\bloodsucker\invisible
 Sound_Vampire_Grasp					= monsters\bloodsucker\vampire_grasp
@@ -172,116 +172,116 @@ Sound_Vampire_StartHunt				= monsters\bloodsucker\vampire_grasp
 Sound_Growl							= monsters\bloodsucker\sucker_growl_
 Sound_Alien							= monsters\bloodsucker\sucker_breath_
 
-SoundThreshold		 		= 0.05					       ; range [0..1]
-max_hear_dist				= 80 
+SoundThreshold						= 0.05				; range [0..1]
+max_hear_dist						= 80
 
 ;-------------------------------------------------------------------------
 ; Vision
 ;-------------------------------------------------------------------------
-eye_fov						= 110	;150
-eye_range					= 80	;120
+eye_fov								= 110
+eye_range							= 80
 
-DynamicObjectsCount	 		= 32
+DynamicObjectsCount					= 32
 
-min_view_distance   		= 0.4				; коэффициент, который множится на eye_range, в зависимости от угла
-max_view_distance	 		= 1.0				; коэффициент, который множится на eye_range, в зависимости от угла
-visibility_threshold	 	= 100.0				; значение, при достижении суммой которого объект считается видимым
-always_visible_distance 	= 0.3
-time_quant					= 0.001
-decrease_value				= 0.01				; значение, на которое уменьшается вес, если объект попал в фрустум, но отсёкся по каким-то причинам
-velocity_factor		     	= 0.5
-luminocity_factor			= 0.5 				; фактор освещения (только для Актёра)
-transparency_threshold		= 0.25
+min_view_distance					= 0.4				; коэффициент, который множится на eye_range, в зависимости от угла
+max_view_distance					= 1.0				; коэффициент, который множится на eye_range, в зависимости от угла
+visibility_threshold				= 100.0				; значение, при достижении суммой которого объект считается видимым
+always_visible_distance				= 0.3
+time_quant							= 0.001
+decrease_value						= 0.01				; значение, на которое уменьшается вес, если объект попал в фрустум, но отсёкся по каким-то причинам
+velocity_factor						= 0.5
+luminocity_factor					= 0.5 				; фактор освещения (только для Актёра)
+transparency_threshold				= 0.25
 
 ;-------------------------------------------------------------------------
 ; Morale
 ;-------------------------------------------------------------------------
-Morale_Hit_Quant				= 0.1
-Morale_Attack_Success_Quant		= 0.1
-Morale_Take_Heart_Speed			= 0.1
-Morale_Despondent_Speed			= 0.01
-Morale_Stable_Speed				= 0.01
-Morale_Despondent_Threashold	= 0.5
+Morale_Hit_Quant					= 0.1
+Morale_Attack_Success_Quant			= 0.1
+Morale_Take_Heart_Speed				= 0.1
+Morale_Despondent_Speed				= 0.01
+Morale_Stable_Speed					= 0.01
+Morale_Despondent_Threashold		= 0.5
 
 ;-------------------------------------------------------------------------
 ; Damages
 ;-------------------------------------------------------------------------
-damage					= m_bloodsucker_damage
+damage								= m_bloodsucker_damage
 
-critical_wound_threshold		= -1; 1.1 ;1.1
-critical_wound_decrease_quant	= 0.
+critical_wound_threshold			= -1; 1.1 ;1.1
+critical_wound_decrease_quant		= 0.
 
-critical_wound_anim_head	= critical_hit_torso_0
-critical_wound_bones_head	= bloodsucker_critical_wound_bones_head
+critical_wound_anim_head			= critical_hit_torso_0
+critical_wound_bones_head			= bloodsucker_critical_wound_bones_head
 
-critical_wound_anim_torso	= critical_hit_torso_0
-critical_wound_bones_torso	= bloodsucker_critical_wound_bones_torso
+critical_wound_anim_torso			= critical_hit_torso_0
+critical_wound_bones_torso			= bloodsucker_critical_wound_bones_torso
 
-critical_wound_anim_legs	= critical_hit_torso_0
-critical_wound_bones_legs	= bloodsucker_critical_wound_bones_legs
+critical_wound_anim_legs			= critical_hit_torso_0
+critical_wound_bones_legs			= bloodsucker_critical_wound_bones_legs
 
 ;-------------------------------------------------------------------------
 ; Other Stuff (refactoring needed)
 ;-------------------------------------------------------------------------
-DayTime_Begin					= 6			;6			; начала дня для монстра
-DayTime_End						= 23					; конец дня для монстра
-Min_Satiety						= 0.000055 	;0.06		; мин. норма сытости (меньше - уже голодный)
-Max_Satiety						= 1.0	;0.9			; макс. норма сытости (больше - очень сытый)
-distance_to_corpse				= 0.8					; дист. до трупа, при которой он переходит в состояние еды
+DayTime_Begin						= 6						; начала дня для монстра
+DayTime_End							= 23					; конец дня для монстра
+Min_Satiety							= 0.000055				; мин. норма сытости (меньше - уже голодный)
+Max_Satiety							= 1.0					; макс. норма сытости (больше - очень сытый)
+distance_to_corpse					= 0.8					; дист. до трупа, при которой он переходит в состояние еды
 
 ; spin spin sugar
-bone_spin						= bip01_spine1
+bone_spin							= bip01_spine1
 
-;									fSearchRange,fOptEnemyDistance,fOptEnemyDistanceWeight,fMinEnemyDistance,fMinEnemyDistanceWeight,fMaxEnemyDistance,fMaxEnemyDistanceWeight
-selector_approach				=      20.0,            1.0,           1000.0,             0.0,               0.0,              1000.0,				10000.0,      
+;									fSearchRange | fOptEnemyDistance | fOptEnemyDistanceWeight | fMinEnemyDistance | fMinEnemyDistanceWeight | fMaxEnemyDistance | fMaxEnemyDistanceWeight
+selector_approach					= 20.0,			1.0,				1000.0,						0.0,				0.0,					1000.0,					10000.0
 
-terrain							= bloodsucker_terrain
-material						= creatures\medium
+terrain								= bloodsucker_terrain
+material							= creatures\medium
 
-step_params						= m_bloodsucker_step_params
-LegsCount						= 2
+step_params							= m_bloodsucker_step_params
+LegsCount							= 2
 
 ;species of monster
-species							= bloodsucker
+species								= bloodsucker
 
 ;-------------------------------------------------------------------------
 ; Invisible Ability
 ;-------------------------------------------------------------------------
-Particle_Invisible				= anomaly2\bloodsucker_shield
-Particles_Invisible_Tracks		= monsters\bloodsucker_step
-Particles_Invisible_Tracks_Freq	= 70;100
+Particle_Invisible					= anomaly2\bloodsucker_shield
+Particles_Invisible_Tracks			= monsters\bloodsucker_step
+Particles_Invisible_Tracks_Freq		= 70;100
 
-Invisibility_BlinkTime								= 300
-Invisibility_BlinkMicroInterval  					= 30
-Invisibility_EnergySpeed							= 0.05
+Invisibility_BlinkTime				= 300
+Invisibility_BlinkMicroInterval		= 30
+Invisibility_EnergySpeed			= 0.05
 
 ;-------------------------------------------------------------------------
 ; Vampire Ability
 ;-------------------------------------------------------------------------
-Vampire_Delay			= 100000
-Vampire_Want_Speed		= 0.01
-Vampire_Wound			= 0.2
+Vampire_Delay						= 100000
+Vampire_Want_Speed					= 0.01
+Vampire_Wound						= 0.2
 
 ;-------------------------------------------------------------------------
 ; Predator Ability
 ;-------------------------------------------------------------------------
-Predator_Visual	= monsters\krovosos\krovosos_xray
+Predator_Visual						= monsters\krovosos\krovosos_xray
 
 ;=================================================================================
 ; Bloodsucker Damage
 ;=================================================================================
 [m_bloodsucker_damage]
-;bone_name		 = <hit_scale>,-1,<wound_scale>
-;<hit_scale>	- коэфф. изменения хита (уменьшения здоровья) 
+;bone_name							= <hit_scale>,-1,<wound_scale>
+;<hit_scale>	- коэфф. изменения хита (уменьшения здоровья)
 ;<wound_scale>	- коэфф. изменения величины открытой раны
 
-default				= 1.0, -1, 0.5
-bip01_spine 		= 1.0, -1, 0.5
-bip01_spine1 		= 1.0, -1, 0.5
-bip01_spine2 		= 1.0, -1, 0.5
-bip01_spine3 		= 1.0, -1, 0.5
-bip01_neck 			= 1.0, -1, 1.5
-bip01_head 			= 2.0, -1, 0.5, 10
+default								= 1.0, -1, 0.5
+bip01_spine							= 1.0, -1, 0.5
+bip01_spine1						= 1.0, -1, 0.5
+bip01_spine2						= 1.0, -1, 0.5
+bip01_spine3						= 1.0, -1, 0.5
+bip01_neck							= 1.0, -1, 1.5
+bip01_head							= 2.0, -1, 0.5, 10
 
 [bloodsucker_critical_wound_bones_head]
 bip01_neck
@@ -362,219 +362,219 @@ bip01_r_toe1
 [m_bloodsucker_step_params]
 ; order: front_left, front_right
 ;--------------------------------------------------------------------------
-;	anim			Cycles	| time1 | power1 | time2 | power2 | 
+;	anim							Cycles | time1 | power1 | time2 | power2 |
 ;--------------------------------------------------------------------------
-stand_run_0			=	1,    0.15,    1.0,	   0.70,     1.0,
-stand_run_dmg_0		=	1,	  0.15,    1.0,	   0.40,     1.0,
-stand_walk_fwd_0	=	1,	  0.05,    1.0,    0.50,     1.0 
-stand_walk_dmg_0	=   1,	  0.05,    1.0,	   0.60,     1.0,
-stand_steal_0		=	2,	  0.15,    0.2,    0.50,     0.2,
-;stand_drag_0		=	1,	  0.2,	   1.0,	   0.25,     0.7,
+stand_run_0							= 1,	0.15,	1.0,	0.70,		1.0
+stand_run_dmg_0						= 1,	0.15,	1.0,	0.40,		1.0
+stand_walk_fwd_0					= 1,	0.05,	1.0,	0.50,		1.0
+stand_walk_dmg_0					= 1,	0.05,	1.0,	0.60,		1.0
+stand_steal_0						= 2,	0.15,	0.2,	0.50,		0.2
+;stand_drag_0						= 1,	0.2,	1.0,	0.25,		0.7
 
 ;===========================================================================
 ; Attack Animation Parameters
 ;===========================================================================
 [m_bloodsucker_attack_params]
 ;---------------------------------------------------------------------------------------------------------------------------------------------
-;	anim			| time[0..1] | hit_power | impulse | impulse_dir (x,y,z)  |	Field of hit_test  (left,right, top, bottom) |	Test Dist
+; anim								| time[0..1] | hit_power | impulse | impulse_dir (x,y,z) | Field of hit_test (left,right, top, bottom) | Test Dist
 ;---------------------------------------------------------------------------------------------------------------------------------------------
 ;Left hand Strike
-stand_attack_0 =	  	0.30,		0.15,		    150,        3.5, 2.0, 0.5,		 -0.6, 0.6, -0.6, 0.6,				  2.2
+stand_attack_0						=	0.30,		0.15,		150,		3.5, 2.0, 0.5,		-0.6, 0.6, -0.6, 0.6,							2.2
 ;Both hands Strike
-stand_attack_1 =	  	0.30,		0.25,		    160,        0.0, 2.0, 4.0,		 -0.6, 0.6, -0.6, 0.6,				  2.2
+stand_attack_1						=	0.30,		0.25,		160,		0.0, 2.0, 4.0,		-0.6, 0.6, -0.6, 0.6,							2.2
 ;Right hand Strike
-stand_attack_2 =	  	0.30,		0.15,		    150,        -4.0, 2.5, 0.50,	 -0.6, 0.6, -0.6, 0.6,				  2.2
+stand_attack_2						=	0.30,		0.15,		150,		-4.0, 2.5, 0.50,	-0.6, 0.6, -0.6, 0.6,							2.2
 ;Right hand Strike
-vampire_2		=	  	0.60,		0.5,		    550,        0.0, 2.5, 4.50,		  -1.2, 1.2, -1.2, 1.2,				  4.5
+vampire_2							=	0.60,		0.5,		550,		0.0, 2.5, 4.50,		-1.2, 1.2, -1.2, 1.2,							4.5
 ;Right hand Strike
-stand_attack_run_0 =	bloodsucker_run_attack_sect
+stand_attack_run_0					= bloodsucker_run_attack_sect
 
 [bloodsucker_run_attack_sect]
-value1			= 0.20,		0.1,		    550,        0.0, 2.5, 4.50,		  -1.2, 1.2, -1.2, 1.2,				  4.5
-value2			= 0.60,		0.2,		    550,        0.0, 2.5, 4.50,		  -1.2, 1.2, -1.2, 1.2,				  4.5
+value1								=	0.20,		0.1,		550,		0.0, 2.5, 4.50,		-1.2, 1.2, -1.2, 1.2,							4.5
+value2								=	0.60,		0.2,		550,		0.0, 2.5, 4.50,		-1.2, 1.2, -1.2, 1.2,							4.5
 
 ;===========================================================================
 ; Immunities
 ;===========================================================================
 [bloodsucker_immunities]
-burn_immunity			= 1.0
-strike_immunity			= 1.0
-shock_immunity			= 1.0
-wound_immunity 				= 0.4	;0.75	;1.0
-radiation_immunity 			= 0.0	;0.5
-telepatic_immunity 			= 1.0
-chemical_burn_immunity		= 0.5
-explosion_immunity 			= 0.4
-fire_wound_immunity  		= 0.07
+burn_immunity						= 1.0
+strike_immunity						= 1.0
+shock_immunity						= 1.0
+wound_immunity						= 0.4
+radiation_immunity					= 0.0
+telepatic_immunity					= 1.0
+chemical_burn_immunity				= 0.5
+explosion_immunity					= 0.4
+fire_wound_immunity					= 0.07
 
 ;===========================================================================
 ; SPECIAL EFFECTORS
 ;===========================================================================
 [m_bloodsucker_vampire_effector]
-duality_h			= 0.08
-duality_v			= 0.06
-blur				= 0.71
-gray				= 0.5
-noise_intensity 	= 0.5
-noise_grain			= 0.3 
-noise_fps			= 30
-color_base			= 0.255,0.0,0.0
-color_gray			= 0.333,0.333,0.333
-color_add			= 0,0,0
+duality_h							= 0.08
+duality_v							= 0.06
+blur								= 0.71
+gray								= 0.5
+noise_intensity						= 0.5
+noise_grain							= 0.3
+noise_fps							= 30
+color_base							= 0.255, 0.0, 0.0
+color_gray							= 0.333, 0.333, 0.333
+color_add							= 0, 0, 0
 
 [m_bloodsucker_attack_effector]
-duality_h			= 0.08
-duality_v			= 0.06
-blur				= 0.01
-gray				= 0.5
-noise_intensity 	= 0.0
-noise_grain			= 0.1 ;1.0
-noise_fps			= 30
-color_base			= 0.255,0.0,0.0
-color_gray			= 0.333,0.333,0.333
-color_add			= 0,0,0
-time				= 0.65 ;0.3
-time_attack			= 0.1		; fade in
-time_release		= 0.45		; fade out
+duality_h							= 0.08
+duality_v							= 0.06
+blur								= 0.01
+gray								= 0.5
+noise_intensity						= 0.0
+noise_grain							= 0.1
+noise_fps							= 30
+color_base							= 0.255, 0.0, 0.0
+color_gray							= 0.333, 0.333, 0.333
+color_add							= 0,0,0
+time								= 0.65
+time_attack							= 0.1		; fade in
+time_release						= 0.45		; fade out
 
 ; camera effects
-ce_time				= 0.65 ;time 
-ce_amplitude		= 15;12.0 
-ce_period_number	= 2.0;3.0 
-ce_power			= 3.0 ;0.7 ; power
+ce_time								= 0.65		;time
+ce_amplitude						= 15.0
+ce_period_number					= 2.0
+ce_power							= 3.0		; power
 
 ;******************************************************************************
 ; WEAK PROFILE
 ;******************************************************************************
 [bloodsucker_weak]:m_bloodsucker_e
-$spawn				= "monsters\bloodsuckers\bloodsucker_01_weak"
-visual				= monsters\krovosos\krovosos
-icon				= ui_npc_monster_krovosos
-panic_threshold		= 0.5
-rank				= 0
-immunities_sect		= bloodsucker_immunities_weak
-attack_params		= bloodsucker_attack_params_weak
-spec_rank			= weak
-community			= bloodsucker
+$spawn								= "monsters\bloodsuckers\bloodsucker_01_weak"
+visual								= monsters\krovosos\krovosos
+icon								= ui_npc_monster_krovosos
+panic_threshold						= 0.5
+rank								= 0
+immunities_sect						= bloodsucker_immunities_weak
+attack_params						= bloodsucker_attack_params_weak
+spec_rank							= weak
+community							= bloodsucker
 
 [bloodsucker_immunities_weak]
-burn_immunity			= 1.0
-strike_immunity			= 1.0
-shock_immunity			= 1.0
-wound_immunity			= 0.1	;0.50
-radiation_immunity		= 0.0
-telepatic_immunity		= 1.0
-chemical_burn_immunity	= 1.0
-explosion_immunity		= 0.7
-fire_wound_immunity		= 0.18
+burn_immunity						= 1.0
+strike_immunity						= 1.0
+shock_immunity						= 1.0
+wound_immunity						= 0.1
+radiation_immunity					= 0.0
+telepatic_immunity					= 1.0
+chemical_burn_immunity				= 1.0
+explosion_immunity					= 0.7
+fire_wound_immunity					= 0.18
 
 [bloodsucker_attack_params_weak]
 ;---------------------------------------------------------------------------------------------------------------------------------------------
-;	anim			| time[0..1] | hit_power | impulse | impulse_dir (x,y,z)  |	Field of hit_test  (left,right, top, bottom) |	Test Dist
+;	anim							| time[0..1] | hit_power | impulse | impulse_dir (x,y,z) | Field of hit_test (left,right, top, bottom) | Test Dist
 ;---------------------------------------------------------------------------------------------------------------------------------------------
 ;Left hand Strike
-stand_attack_0 =	  	0.30,		0.15,		    150,        3.5, 2.0, 0.5,		 -1.0, 1.0, -1.0, 1.0,				  2.5
+stand_attack_0						=	0.30,		0.15,		150,		3.5, 2.0, 0.5,		-1.0, 1.0, -1.0, 1.0,							2.5
 ;Both hands Strike
-stand_attack_1 =	  	0.30,		0.25,		    160,        0.0, 2.0, 4.0,		 -0.8, 0.8, -1.2, 1.2,				  2.5
+stand_attack_1						=	0.30,		0.25,		160,		0.0, 2.0, 4.0,		-0.8, 0.8, -1.2, 1.2,							2.5
 ;Right hand Strike
-stand_attack_2 =	  	0.30,		0.15,		    150,        -4.0, 2.5, 0.50,	 -1.0, 1.0, -1.0, 1.0,				  2.5
+stand_attack_2						=	0.30,		0.15,		150,		-4.0, 2.5, 0.50,	-1.0, 1.0, -1.0, 1.0,							2.5
 ;Right hand Strike
-vampire_2		=	  	0.60,		0.3,		    750,        0.0, 2.5, 4.50,		  -1.2, 1.2, -1.2, 1.2,				  4.5
+vampire_2							=	0.60,		0.3,		750,		0.0, 2.5, 4.50,		-1.2, 1.2, -1.2, 1.2,							4.5
 ;Right hand Strike
-stand_attack_run_0 =	bloodsucker_weak_run_attack_sect
+stand_attack_run_0					=	bloodsucker_weak_run_attack_sect
 
 [bloodsucker_weak_run_attack_sect]
-value1			= 0.20,		0.1,		    150,        0.0, 0.5, 1.50,		  -1.2, 1.2, -1.2, 1.2,				  2.2
-value2			= 0.60,		0.2,		    200,        0.0, 0.5, 1.50,		  -1.2, 1.2, -1.2, 1.2,				  2.2
+value1								=	0.20,		0.1,		150,		0.0, 0.5, 1.50,		-1.2, 1.2, -1.2, 1.2,							2.2
+value2								=	0.60,		0.2,		200,		0.0, 0.5, 1.50,		-1.2, 1.2, -1.2, 1.2,							2.2
 
 ;******************************************************************************
 ; NORMAL PROFILE
 ;******************************************************************************
 [bloodsucker_normal]:m_bloodsucker_e
-$spawn				= "monsters\bloodsuckers\bloodsucker_02_normal"
-visual				= monsters\krovosos\krovosos
-icon				= ui_npc_monster_krovosos
-panic_threshold		= 0.2
-rank				= 401
-immunities_sect		= bloodsucker_immunities_normal
-attack_params		= bloodsucker_attack_params_normal
-spec_rank			= normal
-community			= bloodsucker
+$spawn								= "monsters\bloodsuckers\bloodsucker_02_normal"
+visual								= monsters\krovosos\krovosos
+icon								= ui_npc_monster_krovosos
+panic_threshold						= 0.2
+rank								= 401
+immunities_sect						= bloodsucker_immunities_normal
+attack_params						= bloodsucker_attack_params_normal
+spec_rank							= normal
+community							= bloodsucker
 
 [bloodsucker_immunities_normal]
-burn_immunity			= 1.0
-strike_immunity			= 1.0
-shock_immunity			= 1.0
-wound_immunity			= 0.1
-radiation_immunity		= 0.0
-telepatic_immunity		= 1.0
-chemical_burn_immunity	= 1.0
-explosion_immunity		= 0.5
-fire_wound_immunity		= 0.12
+burn_immunity						= 1.0
+strike_immunity						= 1.0
+shock_immunity						= 1.0
+wound_immunity						= 0.1
+radiation_immunity					= 0.0
+telepatic_immunity					= 1.0
+chemical_burn_immunity				= 1.0
+explosion_immunity					= 0.5
+fire_wound_immunity					= 0.12
 
 [bloodsucker_attack_params_normal]
 ;---------------------------------------------------------------------------------------------------------------------------------------------
-;	anim			| time[0..1] | hit_power | impulse | impulse_dir (x,y,z)  |	Field of hit_test  (left,right, top, bottom) |	Test Dist
+; anim								| time[0..1] | hit_power | impulse | impulse_dir (x,y,z) | Field of hit_test (left,right, top, bottom) | Test Dist
 ;---------------------------------------------------------------------------------------------------------------------------------------------
 ;Left hand Strike
-stand_attack_0 =	  	0.30,		0.3,		    150,        3.5, 2.0, 0.5,		 -1.0, 1.0, -1.0, 1.0,				  2.5
+stand_attack_0						=	0.30,		0.3,		150,		3.5, 2.0, 0.5,		-1.0, 1.0, -1.0, 1.0,							2.5
 ;Both hands Strike
-stand_attack_1 =	  	0.30,		0.4,		    160,        0.0, 2.0, 4.0,		 -0.8, 0.8, -1.2, 1.2,				  2.5
+stand_attack_1						=	0.30,		0.4,		160,		0.0, 2.0, 4.0,		-0.8, 0.8, -1.2, 1.2,							2.5
 ;Right hand Strike
-stand_attack_2 =	  	0.30,		0.3,		    150,        -4.0, 2.5, 0.50,	 -1.0, 1.0, -1.0, 1.0,				  2.5
+stand_attack_2						=	0.30,		0.3,		150,		-4.0, 2.5, 0.50,	-1.0, 1.0, -1.0, 1.0,							2.5
 ;Right hand Strike
-vampire_2		=	  	0.60,		0.5,			750,        0.0, 2.5, 4.50,		  -1.2, 1.2, -1.2, 1.2,				  4.5
+vampire_2							=	0.60,		0.5,		750,		0.0, 2.5, 4.50,		-1.2, 1.2, -1.2, 1.2,							4.5
 ;Right hand Strike
-stand_attack_run_0 =	bloodsucker_normal_run_attack_sect
+stand_attack_run_0					= bloodsucker_normal_run_attack_sect
 
 [bloodsucker_normal_run_attack_sect]
-value1			= 0.20,		0.2,		    250,        0.0, 0.5, 3.00,		  -1.2, 1.2, -1.2, 1.2,				  2.2
-value2			= 0.60,		0.4,		    300,        0.0, 0.5, 3.00,		  -1.2, 1.2, -1.2, 1.2,				  2.2
+value1								=	0.20,		0.2,		250,		0.0, 0.5, 3.00,		-1.2, 1.2, -1.2, 1.2,							2.2
+value2								=	0.60,		0.4,		300,		0.0, 0.5, 3.00,		-1.2, 1.2, -1.2, 1.2,							2.2
 
 ;******************************************************************************
 ; STRONG PROFILE
 ;******************************************************************************
 [bloodsucker_strong]:m_bloodsucker_e
-$spawn				= "monsters\bloodsuckers\bloodsucker_03_strong"
-visual				= monsters\krovosos\krovosos_strong
-icon				= ui_npc_monster_krovosos_strong
-Predator_Visual		= monsters\krovosos\krovosos_strong_xray
-panic_threshold		= 0.05
-rank				= 401
-immunities_sect		= bloodsucker_immunities_strong
-attack_params		= bloodsucker_attack_params_strong
-spec_rank			= strong
-community			= bloodsucker
+$spawn								= "monsters\bloodsuckers\bloodsucker_03_strong"
+visual								= monsters\krovosos\krovosos_strong
+icon								= ui_npc_monster_krovosos_strong
+Predator_Visual						= monsters\krovosos\krovosos_strong_xray
+panic_threshold						= 0.05
+rank								= 401
+immunities_sect						= bloodsucker_immunities_strong
+attack_params						= bloodsucker_attack_params_strong
+spec_rank							= strong
+community							= bloodsucker
 
 [bloodsucker_immunities_strong]
-burn_immunity			= 1.0
-strike_immunity			= 1.0
-shock_immunity			= 1.0
-wound_immunity			= 0.10
-radiation_immunity		= 0.0
-telepatic_immunity		= 1.0
-chemical_burn_immunity	= 1.0
-explosion_immunity		= 0.3
-fire_wound_immunity		= 0.09
+burn_immunity						= 1.0
+strike_immunity						= 1.0
+shock_immunity						= 1.0
+wound_immunity						= 0.10
+radiation_immunity					= 0.0
+telepatic_immunity					= 1.0
+chemical_burn_immunity				= 1.0
+explosion_immunity					= 0.3
+fire_wound_immunity					= 0.09
 
 [bloodsucker_attack_params_strong]
 ;---------------------------------------------------------------------------------------------------------------------------------------------
-;	anim			| time[0..1] | hit_power | impulse | impulse_dir (x,y,z)  |	Field of hit_test  (left,right, top, bottom) |	Test Dist
+; anim								| time[0..1] | hit_power | impulse | impulse_dir (x,y,z) | Field of hit_test (left,right, top, bottom) | Test Dist
 ;---------------------------------------------------------------------------------------------------------------------------------------------
 ;Left hand Strike
-stand_attack_0 =	  	0.30,		0.4,		    150,        3.5, 2.0, 0.5,		 -1.0, 1.0, -1.0, 1.0,				  2.5
+stand_attack_0						=	0.30,		0.4,		150,		3.5, 2.0, 0.5,		-1.0, 1.0, -1.0, 1.0,							2.5
 ;Both hands Strike
-stand_attack_1 =	  	0.30,		0.6,		160,        0.0, 2.0, 4.0,		 -0.8, 0.8, -1.2, 1.2,				  2.5
+stand_attack_1						=	0.30,		0.6,		160,		0.0, 2.0, 4.0,		-0.8, 0.8, -1.2, 1.2,							2.5
 ;Right hand Strike
-stand_attack_2 =	  	0.30,		0.4,		    150,        -4.0, 2.5, 0.50,	 -1.0, 1.0, -1.0, 1.0,				  2.5
+stand_attack_2						=	0.30,		0.4,		150,		-4.0, 2.5, 0.50,	-1.0, 1.0, -1.0, 1.0,							2.5
 ;Right hand Strike
-vampire_2		=	  	0.60,		0.7,	    750,        0.0, 2.5, 4.50,		  -1.2, 1.2, -1.2, 1.2,				  4.5
+vampire_2							=	0.60,		0.7,		750,		0.0, 2.5, 4.50,		-1.2, 1.2, -1.2, 1.2,							4.5
 ;Right hand Strike
-stand_attack_run_0 =	bloodsucker_strong_run_attack_sect
+stand_attack_run_0					= bloodsucker_strong_run_attack_sect
 
 [bloodsucker_strong_run_attack_sect]
-value1			= 0.20,		0.4,		    350,        0.0, 0.5, 4.50,		  -1.2, 1.2, -1.2, 1.2,				  2.2
-value2			= 0.60,		0.8,		    400,        0.0, 0.5, 4.50,		  -1.2, 1.2, -1.2, 1.2,				  2.2
+value1								= 0.20,			0.4,		350,		0.0, 0.5, 4.50,		-1.2, 1.2, -1.2, 1.2,							2.2
+value2								= 0.60,			0.8,		400,		0.0, 0.5, 4.50,		-1.2, 1.2, -1.2, 1.2,							2.2
 
 ;*********************************************************************************
 ; CUSTOM PROFILES
@@ -585,14 +585,14 @@ value2			= 0.60,		0.8,		    400,        0.0, 0.5, 4.50,		  -1.2, 1.2, -1.2, 1.2,
 ;   - use custom immunities section to set custom immunity params
 ;-------------------------------------------------------------------------------------------
 [bloodsucker_arena]:bloodsucker_strong
-$spawn				= "monsters\bloodsuckers\arena\bloodsucker_arena"
-visual				= monsters\krovosos\krovosos
-icon				= ui_npc_monster_krovosos
-panic_threshold		= 0.05
-species				= arena_monstr
+$spawn								= "monsters\bloodsuckers\arena\bloodsucker_arena"
+visual								= monsters\krovosos\krovosos
+icon								= ui_npc_monster_krovosos
+panic_threshold						= 0.05
+species								= arena_monstr
 
 [bloodsucker_mil]:bloodsucker_strong
-$spawn				= "monsters\military\bloodsucker_mil"
-visual				= monsters\krovosos\krovosos
-icon				= ui_npc_monster_krovosos
-panic_threshold		= 0.05
+$spawn								= "monsters\military\bloodsucker_mil"
+visual								= monsters\krovosos\krovosos
+icon								= ui_npc_monster_krovosos
+panic_threshold						= 0.05

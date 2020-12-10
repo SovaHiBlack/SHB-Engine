@@ -5,54 +5,54 @@
 ; BASE PROFILES
 ;******************************************************************************
 [m_boar_e]:monster_base
-SpaceRestrictionSection = space_restrictor,zone_mosquito_bald
-;$spawn					= "monsters\boars\boar_base"		 ; option for Level Editor
-$npc					= on								 ; option for Level Editor
-visual					= monsters\mutant_boar\mutant_boar
-corpse_visual			= monsters\mutant_boar\mutant_boar_dead
-icon					= ui_npc_monster_mutant_boar
+SpaceRestrictionSection				= space_restrictor,zone_mosquito_bald
+;$spawn								= "monsters\boars\boar_base"		 ; option for Level Editor
+$npc								= on								 ; option for Level Editor
+visual								= monsters\mutant_boar\mutant_boar
+corpse_visual						= monsters\mutant_boar\mutant_boar_dead
+icon								= ui_npc_monster_mutant_boar
 
 ;------------------------------------------------------------------------
 ; Offline Alife
 ;------------------------------------------------------------------------
-Scheduled					= on								; option for ALife Simulator
-Human						= off								; option for ALife Simulator
-Health						= 400								; option for ALife Simulator
-MinSpeed					= 1.0								; option for ALife Simulator
-MaxSpeed					= 5.0								; option for ALife Simulator
-going_speed					= 2;4.5								; option for ALife Simulator
-current_level_going_speed	= 1;2								; option for ALife Simulator
-search_speed				= 1.5								; option for ALife Simulator
+Scheduled							= on								; option for ALife Simulator
+Human								= off								; option for ALife Simulator
+Health								= 400								; option for ALife Simulator
+MinSpeed							= 1.0								; option for ALife Simulator
+MaxSpeed							= 5.0								; option for ALife Simulator
+going_speed							= 2									; option for ALife Simulator
+current_level_going_speed			= 1									; option for ALife Simulator
+search_speed						= 1.5								; option for ALife Simulator
 
-MaxHealthValue		    = 200								 ; range [0..200]
-DynamicObjectsCount		= 32
-smart_terrain_choose_interval	= 00:15:00
-Spawn_Inventory_Item_Section = mutant_boar_leg
-Spawn_Inventory_Item_Probability = 0.2
+MaxHealthValue						= 200								 ; range [0..200]
+DynamicObjectsCount					= 32
+smart_terrain_choose_interval		= 00:15:00
+Spawn_Inventory_Item_Section		= mutant_boar_leg
+Spawn_Inventory_Item_Probability	= 0.2
 
 ;------------------------------------------------------------------------
 ; Physics
 ;------------------------------------------------------------------------
-ph_box0_center 			= 0.0,  0.6,  0.0
-ph_box0_size 			= 0.55, 0.6,  0.55
-ph_box1_center 			= 0.0,  0.6,  0.0
-ph_box1_size 			= 0.55, 0.6,  0.55
-ph_crash_speed_min			= 10
-ph_crash_speed_max			= 30
-ph_collision_damage_factor	= 0.1
-ph_mass 				= 250	;110
+ph_box0_center						= 0.0,  0.6,  0.0
+ph_box0_size						= 0.55, 0.6,  0.55
+ph_box1_center						= 0.0,  0.6,  0.0
+ph_box1_size						= 0.55, 0.6,  0.55
+ph_crash_speed_min					= 10
+ph_crash_speed_max					= 30
+ph_collision_damage_factor			= 0.1
+ph_mass								= 250
 
-destroyed_vis_name	 	= physics\dead_body\skelet_crash_monster
+destroyed_vis_name					= physics\dead_body\skelet_crash_monster
 
 ;---------------------------------------------------------------------
-ph_skeleton_airr_lin_factor   = 2.0 ;550.0 (изменно из-за того, что убрано домножение коэффициент 0.002 из кода)
-ph_skeleton_airr_ang_factor   = 0.0 ;0.0 (изменно из-за того, что убрано домножение на коэффициент 0.3 из кода (0.0*0.3=0.0))
-ph_skeleton_hinger_factor1    = 1.0 ;1.0 (изменно из-за того, что убрано домножение на коэффициент 5.0 из кода)
-ph_skeleton_ddelay	     	  = 15.0 ;Время изменения значения трения в суставе с момента создания шелла, сек
+ph_skeleton_airr_lin_factor			= 2.0 ;550.0 (изменно из-за того, что убрано домножение коэффициент 0.002 из кода)
+ph_skeleton_airr_ang_factor			= 0.0 ;0.0 (изменно из-за того, что убрано домножение на коэффициент 0.3 из кода (0.0*0.3=0.0))
+ph_skeleton_hinger_factor1			= 1.0 ;1.0 (изменно из-за того, что убрано домножение на коэффициент 5.0 из кода)
+ph_skeleton_ddelay					= 15.0 ;Время изменения значения трения в суставе с момента создания шелла, сек
 
-ph_skel_fatal_impulse_factor  = 12.0
-ph_after_death_velocity_factor= 0.75
-ph_skel_shot_up_factor        = 0.25
+ph_skel_fatal_impulse_factor		= 12.0
+ph_after_death_velocity_factor		= 0.75
+ph_skel_shot_up_factor				= 0.25
 ;---------------------------------------------------------------------
 
 ;------------------------------------------------------------------------

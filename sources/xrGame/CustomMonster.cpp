@@ -162,8 +162,8 @@ void CCustomMonster::reload(const char* section)
 	movement( ).reload(section);
 	load_killer_clsids(section);
 
-	m_far_plane_factor = READ_IF_EXISTS(pSettings, r_float, section, "far_plane_factor", 1.f);
-	m_fog_density_factor = READ_IF_EXISTS(pSettings, r_float, section, "fog_density_factor", .05f);
+	m_far_plane_factor = READ_IF_EXISTS(pSettings, r_float, section, "far_plane_factor", 1.0f);
+	m_fog_density_factor = READ_IF_EXISTS(pSettings, r_float, section, "fog_density_factor", 0.05f);
 
 	m_panic_threshold = pSettings->r_float(section, "panic_threshold");
 }
@@ -511,23 +511,7 @@ void CCustomMonster::update_range_fov(float& new_range, float& new_fov, float st
 	// 300=standart, 50=super-fog
 
 	new_fov = start_fov;
-	new_range =
-		start_range
-		*
-		(
-			_min(m_far_plane_factor * current_far_plane, standard_far_plane)
-			/
-			standard_far_plane
-			)
-		*
-		(
-			1.f
-			/
-			(
-				1.f + m_fog_density_factor * current_fog_density
-				)
-			)
-		;
+	new_range = start_range * (_min(m_far_plane_factor * current_far_plane, standard_far_plane) / standard_far_plane) * (1.0f / (1.0f + m_fog_density_factor * current_fog_density));
 }
 
 void CCustomMonster::eye_pp_s1( )
@@ -805,9 +789,11 @@ void CCustomMonster::load_killer_clsids(const char* section)
 {
 	m_killer_clsids.clear( );
 	const char* killers = pSettings->r_string(section, "killer_clsids");
-	string16						temp;
+	string16 temp;
 	for (u32 i = 0, n = _GetItemCount(killers); i < n; ++i)
+	{
 		m_killer_clsids.push_back(TEXT2CLSID(_GetItem(killers, i, temp)));
+	}
 }
 
 bool CCustomMonster::is_special_killer(CObject* obj)

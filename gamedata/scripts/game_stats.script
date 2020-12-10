@@ -12,7 +12,7 @@ local   actor_item_take =   2
 local   actor_item_use  =   3
 local   actor_update_task = 4
 local   actor_money_trade = 5
-local   actor_money_quest = 6  
+local   actor_money_quest = 6
 local   actor_money_total = 7
 ----------------------------------------------------------
 function initialize ()

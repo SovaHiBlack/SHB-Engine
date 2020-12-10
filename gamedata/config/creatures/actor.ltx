@@ -2,14 +2,15 @@
 	255,255,000,255
 
 [actor]:common_ph_friction_params_on_npc_death
-	$spawn 					= "actor"
-	$ed_icon				= ed\ed_actor
-	$player 				= on
-	cform                   = skeleton
-	class                   = O_ACTOR
-	money					= 40;
-	rank					= 3;
-	script_binding			= bind_stalker.actor_init
+	$spawn								= "actor"
+	$ed_icon							= ed\ed_actor
+	$player								= on
+
+	cform								= skeleton
+	class								= O_ACTOR
+	money								= 40;
+	rank								= 3;
+	script_binding						= bind_stalker.actor_init
 	visual					= actors\hero\stalker_novice.ogf
 	destroyed_vis_name		= physics\Dead_Body\skelet_crash
 
