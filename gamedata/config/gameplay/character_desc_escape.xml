@@ -41,7 +41,7 @@
 
 		<rank>434</rank>
 		<reputation>5</reputation>
-		
+
 		<money min="600" max="2000" infinitive="0"/>
 
 		<snd_config>characters_voice\human_01\stalker\</snd_config>
@@ -80,7 +80,7 @@
 
 		<rank>502</rank>
 		<reputation>10</reputation>
-		
+
 		<money min="600" max="2000" infinitive="0"/>
 
 		<snd_config>characters_voice\human_01\stalker\</snd_config>
@@ -151,7 +151,7 @@
 
 		<rank>196</rank>
 		<reputation>6</reputation>
-		
+
 		<money min="200" max="600" infinitive="0"/>
 
 		<snd_config>characters_voice\human_02\newbie\</snd_config>
@@ -184,7 +184,7 @@
 
 		<rank>196</rank>
 		<reputation>6</reputation>
-		
+
 		<money min="200" max="600" infinitive="0"/>
 
 		<snd_config>characters_voice\human_02\newbie\</snd_config>
@@ -381,7 +381,7 @@
 
 		<rank>127</rank>
 		<reputation>-8</reputation>
-		
+
 		<money min="200" max="600" infinitive="0"/>
 
 		<snd_config>characters_voice\human_01\newbie\</snd_config>
@@ -414,7 +414,7 @@
 
 		<rank>214</rank>
 		<reputation>9</reputation>
-		
+
 		<money min="200" max="600" infinitive="0"/>
 
 		<snd_config>characters_voice\human_01\stalker\</snd_config>
@@ -446,7 +446,7 @@
 
 		<rank>175</rank>
 		<reputation>8</reputation>
-		
+
 		<money min="200" max="600" infinitive="0"/>
 
 		<snd_config>characters_voice\human_01\stalker\</snd_config>
@@ -478,7 +478,7 @@
 
 		<rank>268</rank>
 		<reputation>-10</reputation>
-		
+
 		<money min="200" max="600" infinitive="0"/>
 
 		<snd_config>characters_voice\human_02\newbie\</snd_config>
@@ -511,7 +511,7 @@
 
 		<rank>133</rank>
 		<reputation>6</reputation>
-		
+
 		<money min="200" max="600" infinitive="0"/>
 
 		<snd_config>characters_voice\human_02\newbie\</snd_config>
@@ -544,7 +544,7 @@
 
 		<rank>224</rank>
 		<reputation>18</reputation>
-		
+
 		<money min="200" max="600" infinitive="0"/>
 
 		<snd_config>characters_voice\human_02\stalker\</snd_config>
@@ -577,7 +577,7 @@
 
 		<rank>58</rank>
 		<reputation>-2</reputation>
-		
+
 		<money min="200" max="600" infinitive="0"/>
 
 		<snd_config>characters_voice\human_02\stalker\</snd_config>
@@ -612,7 +612,7 @@
 
 		<rank>279</rank>
 		<reputation>16</reputation>
-		
+
 		<money min="200" max="600" infinitive="0"/>
 
 		<snd_config>characters_voice\human_01\stalker\</snd_config>
@@ -698,7 +698,7 @@
 		</supplies>
 
 		#include "gameplay\character_criticals_5.xml"
-		
+
 		#include "gameplay\character_dialogs.xml"
 		<start_dialog>hello_dialog</start_dialog>
 	</specific_character>
@@ -732,7 +732,7 @@
 		</supplies>
 
 		#include "gameplay\character_criticals_5.xml"
-		
+
 		#include "gameplay\character_dialogs.xml"
 		<start_dialog>hello_dialog</start_dialog>
 	</specific_character>
@@ -765,7 +765,7 @@
 		</supplies>
 
 		#include "gameplay\character_criticals_5.xml"
-		
+
 		#include "gameplay\character_dialogs.xml"
 		<start_dialog>hello_dialog</start_dialog>
 	</specific_character>
@@ -800,7 +800,7 @@
 		</supplies>
 
 		#include "gameplay\character_criticals_5.xml"
-		
+
 		#include "gameplay\character_dialogs.xml"
 		<start_dialog>hello_dialog</start_dialog>
 	</specific_character>
@@ -865,7 +865,7 @@
 		</supplies>
 
 		#include "gameplay\character_criticals_5.xml"
-		
+
 		#include "gameplay\character_dialogs.xml"
 		<start_dialog>hello_dialog</start_dialog>
 	</specific_character>
@@ -898,7 +898,7 @@
 		</supplies>
 
 		#include "gameplay\character_criticals_5.xml"
-		
+
 		#include "gameplay\character_dialogs.xml"
 		<start_dialog>hello_dialog</start_dialog>
 	</specific_character>
@@ -1059,7 +1059,7 @@
 		</supplies>
 
 		#include "gameplay\character_criticals_4.xml"
-		
+
 		#include "gameplay\character_dialogs.xml"
 		<start_dialog>hello_dialog</start_dialog>
 	</specific_character>
