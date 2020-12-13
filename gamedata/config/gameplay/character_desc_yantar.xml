@@ -6,7 +6,6 @@
 	<specific_character id="yan_general_ecolog" team_default = "1">
 		<name>yan_saharov_name</name>
 		<icon>ui_npc_u_ucheniy_2</icon>
-		<map_icon x="7" y="0"></map_icon>
 		<bio>yan_saharov_bio</bio>
 
 		<class>yan_general_ecolog</class>
@@ -36,7 +35,6 @@
 	<specific_character id="yan_ecolog_help" team_default = "1">
 		<name>ros_kruglov_name</name>
 		<icon>ui_npc_u_stalker_ecolog_military</icon>
-		<map_icon x="0" y="6"></map_icon>
 		<bio>yan_kruglov_bio</bio>
 
 		<class>yan_ecolog_help</class>
@@ -67,7 +65,6 @@
 	<specific_character id="yan_Semenov" team_default = "1">
 		<name>yan_semenov_name</name>
 		<icon>ui_npc_u_stalker_ecolog</icon>
-		<map_icon x="0" y="6"></map_icon>
 		<bio>yan_semenov_bio</bio>
 
 		<class>yan_Semenov</class>
@@ -97,7 +94,6 @@
 	<specific_character id="yan_ecolog_vasilyev" team_default = "1">
 		<name>yan_vasilyev_name</name>
 		<icon>ui_npc_u_stalker_ecolog</icon>
-		<map_icon x="0" y="6"></map_icon>
 		<bio>yan_semenov_bio</bio>
 
 		<class>yan_Ecolog_vasilyev</class>
@@ -126,7 +122,6 @@
 	<specific_character id="yan_ghost" team_default = "1">
 		<name>yan_ghost_name</name>
 		<icon>ui_npc_u_stalker_prizrak</icon>
-		<map_icon x="0" y="6"></map_icon>
 		<bio>sim_stalker_veteran_bio</bio>
 
 		<class>yan_ghost</class>
@@ -152,7 +147,6 @@
 	<specific_character id="yan_ecolog_default1" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_ecolog</icon>
-		<map_icon x="0" y="6"></map_icon>
 		<bio>ros_ecolog_guard_bio</bio>
 
 		<class>yan_Ecolog</class>
@@ -178,7 +172,6 @@
 	<specific_character id="yan_ecolog_default2" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_ecolog_military</icon>
-		<map_icon x="1" y="6"></map_icon>
 		<bio>ros_ecolog_guard_bio</bio>
 
 		<class>yan_Ecolog</class>
@@ -205,7 +198,6 @@
 	<specific_character id="yan_zombied_default1" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_zombie1</icon>
-		<map_icon x="7" y="0"></map_icon>
 		<bio>sim_zombied_veteran_bio</bio>
 
 		<class>yan_Zombied</class>
@@ -232,7 +224,6 @@
 	<specific_character id="yan_zombied_default2" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_zombie2</icon>
-		<map_icon x="7" y="0"></map_icon>
 		<bio>sim_zombied_veteran_bio</bio>
 
 		<class>yan_Zombied</class>
@@ -259,7 +250,6 @@
 	<specific_character id="yan_zombied_default3" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_zombie3</icon>
-		<map_icon x="7" y="0"></map_icon>
 		<bio>sim_zombied_veteran_bio</bio>
 
 		<class>yan_Zombied</class>
@@ -288,7 +278,6 @@
 	<specific_character id="yan_zombied_default4" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_zombie4</icon>
-		<map_icon x="7" y="0"></map_icon>
 		<bio>sim_zombied_veteran_bio</bio>
 
 		<class>yan_Zombied</class>
@@ -317,7 +306,6 @@
 	<specific_character id="yan_zombied_default5" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_zombie5</icon>
-		<map_icon x="7" y="0"></map_icon>
 		<bio>sim_zombied_veteran_bio</bio>
 
 		<class>yan_Zombied</class>
@@ -346,7 +334,6 @@
 	<specific_character id="yan_zombied_default6" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_zombie7</icon>
-		<map_icon x="7" y="0"></map_icon>
 		<bio>sim_zombied_veteran_bio</bio>
 
 		<class>yan_Zombied</class>
@@ -375,7 +362,6 @@
 	<specific_character id="yan_zombied_default7" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_zombie8</icon>
-		<map_icon x="7" y="0"></map_icon>
 		<bio>sim_zombied_veteran_bio</bio>
 
 		<class>yan_Zombied</class>
@@ -405,7 +391,6 @@
 	<specific_character id="yan_zombied_veteran_default1" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_zombie2</icon>
-		<map_icon x="7" y="0"></map_icon>
 		<bio>sim_zombied_veteran_bio</bio>
 
 		<class>yan_Zombied_veteran</class>
@@ -437,7 +422,6 @@
 	<specific_character id="yan_zombied_veteran_default2" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_zombie3</icon>
-		<map_icon x="7" y="0"></map_icon>
 		<bio>sim_zombied_veteran_bio</bio>
 
 		<class>yan_Zombied_veteran</class>
@@ -466,7 +450,6 @@
 	<specific_character id="yan_zombied_veteran_default3" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_zombie4</icon>
-		<map_icon x="7" y="0"></map_icon>
 		<bio>sim_zombied_veteran_bio</bio>
 
 		<class>yan_Zombied_veteran</class>
@@ -495,7 +478,6 @@
 	<specific_character id="yan_zombied_veteran_default4" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_zombie5</icon>
-		<map_icon x="7" y="0"></map_icon>
 		<bio>sim_zombied_veteran_bio</bio>
 
 		<class>yan_Zombied_veteran</class>
@@ -525,7 +507,6 @@
 	<specific_character id="yan_zombied_veteran_default5" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_zombie6</icon>
-		<map_icon x="7" y="0"></map_icon>
 		<bio>sim_zombied_veteran_bio</bio>
 
 		<class>yan_Zombied_veteran</class>
@@ -555,7 +536,6 @@
 	<specific_character id="yan_zombied_ambush_default1" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_zombie2</icon>
-		<map_icon x="7" y="0"></map_icon>
 		<bio>sim_zombied_veteran_bio</bio>
 
 		<class>yan_Zombied_ambush</class>
@@ -587,7 +567,6 @@
 	<specific_character id="yan_zombied_ambush_default2" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_zombie3</icon>
-		<map_icon x="7" y="0"></map_icon>
 		<bio>sim_zombied_veteran_bio</bio>
 
 		<class>yan_Zombied_ambush</class>
@@ -617,7 +596,6 @@
 	<specific_character id="yan_zombied_master_1" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_zombie3</icon>
-		<map_icon x="7" y="0"></map_icon>
 		<bio>sim_zombied_master_bio</bio>
 
 		<class>yan_Zombied_master</class>
@@ -648,7 +626,6 @@
 	<specific_character id="yan_zombied_dolg" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_zombie2</icon>
-		<map_icon x="7" y="0"></map_icon>
 		<bio>sim_zombied_veteran_bio</bio>
 
 		<class>yan_zombied_dolg</class>
@@ -678,7 +655,6 @@
 	<specific_character id="yan_fresh_Zombied_stalker_1" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_zombie_fresh_0</icon>
-		<map_icon x="7" y="0"></map_icon>
 		<bio>sim_fresh_Zombied_bio</bio>
 
 		<class>yan_fresh_Zombied</class>
@@ -707,7 +683,6 @@
 	<specific_character id="yan_fresh_Zombied_stalker_2" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_zombie_fresh_0</icon>
-		<map_icon x="7" y="0"></map_icon>
 		<bio>sim_fresh_Zombied_bio</bio>
 
 		<class>yan_fresh_Zombied</class>
@@ -736,7 +711,6 @@
 	<specific_character id="yan_fresh_Zombied_stalker_3" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_zombie_fresh_2</icon>
-		<map_icon x="7" y="0"></map_icon>
 		<bio>sim_fresh_Zombied_bio</bio>
 
 		<class>yan_fresh_Zombied</class>

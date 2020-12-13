@@ -268,8 +268,6 @@ void CHangingLamp::TurnOff	()
 		
 }
 
-//void CHangingLamp::Hit(float P,Fvector &dir, CObject* who,s16 element,
-//					   Fvector p_in_object_space, float impulse, ALife::EHitType hit_type)
 void	CHangingLamp::Hit					(SHit* pHDS)
 {
 	SHit	HDS = *pHDS;

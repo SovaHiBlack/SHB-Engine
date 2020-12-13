@@ -274,7 +274,7 @@
     <None Include="config\creatures\m_dog.ltx" />
     <None Include="config\creatures\m_flesh.ltx" />
     <None Include="config\creatures\m_fracture.ltx" />
-    <None Include="config\creatures\m_giant.ltx" />
+    <None Include="config\creatures\m_gigant.ltx" />
     <None Include="config\creatures\m_person.ltx" />
     <None Include="config\creatures\m_phantom.ltx" />
     <None Include="config\creatures\m_poltergeist.ltx" />
@@ -297,7 +297,7 @@
     <None Include="config\game_graphs.ltx" />
     <None Include="config\game_levels.ltx" />
     <None Include="config\game_levels_music.ltx" />
-    <None Include="config\game_maps_single.ltx" />
+    <None Include="config\game_maps.ltx" />
     <None Include="config\game_spawn_story_ids.ltx" />
     <None Include="config\game_story_ids.ltx" />
     <None Include="config\localization.ltx" />

@@ -1,7 +1,27 @@
+;==============================================================================
+; POLTERGEIST
+;==============================================================================
+;******************************************************************************
+; BASE PROFILES
+;******************************************************************************
 [m_poltergeist_e]:monster_base
 SpaceRestrictionSection = space_restrictor,zone_mosquito_bald,zone_radioactive
 $spawn               = "monsters\old\poltergeist"		; option for Level Editor
 $npc			     = on						; option for Level Editor
+visual				 = monsters\poltergeist\poltergeist
+corpse_visual		 = monsters\poltergeist\poltergeyst_dead
+icon				 = ui_npc_monster_poltergeist
+MaxHealthValue		 = 150			; range [0..200]
+
+ef_creature_type	 = 5 	;10					; option for evaluation functions
+
+
+
+
+
+;------------------------------------------------------------------------------
+; Offline Alife
+;------------------------------------------------------------------------------
 Scheduled		     = on						; option for ALife Simulator
 Human		     	 = off						; option for ALife Simulator
 Health			     = 250						; option for ALife Simulator
@@ -10,17 +30,17 @@ MaxSpeed		     = 1.5						; option for ALife Simulator
 going_speed          = 2.0                      ; option for ALife Simulator
 current_level_going_speed		= 1;2					; option for ALife Simulator
 search_speed         = .5                       ; option for ALife Simulator
-visual				 = monsters\poltergeist\poltergeist
-corpse_visual		 = monsters\poltergeist\poltergeyst_dead
-icon				 = ui_npc_monster_poltergeist
-MaxHealthValue		 = 150			; range [0..200]
+
+
+
+
 DynamicObjectsCount	 = 32
 smart_terrain_choose_interval	= 00:15:00
 
 cform                = skeleton					; collision class
 class                = SM_POLTR					; AI class
 
-ef_creature_type	 = 5 	;10					; option for evaluation functions
+
 ef_weapon_type		 = 12	;3
 ef_detector_type	 = 1
 panic_threshold		= 0.1
@@ -60,39 +80,45 @@ ph_after_death_velocity_factor= 0.75
 ph_skel_shot_up_factor        = 0.25
 ;---------------------------------------------------------------------
 
-;----------------------------------------------------------------------------
-; Movement::Velocities & Acceleration
-;----------------------------------------------------------------------------
-; speed factors			linear | angular_real | angular_path | min |  max
-Velocity_Stand			= 0,		5.0,			5.0,		0.2,	0.5
-Velocity_WalkFwdNormal	= 1.7,		2.0,			2.0,		0.2,	2.0
-Velocity_WalkFwdDamaged	= 1.5,		3.0,			3.0,		0.8,	2.0
-Velocity_RunFwdNormal	= 4.0,		3.0,			3.0,		0.4,	1.0
-Velocity_RunFwdDamaged	= 2.5,  	3.2,			3.2,		0.4,	1
-Velocity_Drag			= 0.6,		3.0,			3.0,		1,		1
-Velocity_Steal			= 1.5,		3.0,			3.0,		1,		1
+;------------------------------------------------------------------------------
+; Movement: Velocities & Acceleration
+;------------------------------------------------------------------------------
+; speed factors						linear | angular_real | angular_path | min	 | max
+Velocity_Stand						= 0,		5.0,			5.0,		0.2,	0.5
+Velocity_WalkFwdNormal				= 1.7,		2.0,			2.0,		0.2,	2.0
+Velocity_RunFwdNormal				= 4.0,		3.0,			3.0,		0.4,	1.0
+Velocity_WalkFwdDamaged				= 1.5,		3.0,			3.0,		0.8,	2.0
+Velocity_RunFwdDamaged				= 2.5,		3.2,			3.2,		0.4,	1
+Velocity_Steal						= 1.5,		3.0,			3.0,		1,		1
+Velocity_Drag						= 0.6,		3.0,			3.0,		1,		1
 
-; Speed factors while invisible
-Velocity_Invisible_Linear		= 5.0
-Velocity_Invisible_Angular		= 3.5
+; speed factors while invisible
+Velocity_Invisible_Linear			= 5.0
+Velocity_Invisible_Angular			= 3.5
 
 ; acceleration
-Accel_Calm				= 2.5
-Accel_Aggressive		= 3.0
+Accel_Calm							= 2.5
+Accel_Aggressive					= 3.0
 
-;--------------------------------------------------------------------------
+;------------------------------------------------------------------------------
 ; Attack parameters
-;--------------------------------------------------------------------------
-;attack parameters
-MinAttackDist		= 0.5	;2.1
-MaxAttackDist		= 2.0
-
+;------------------------------------------------------------------------------
 as_min_dist				= 0.1
 as_step					= 0.3
 
-;-------------------------------------------------------------------------
-; Entity Conditions
-;-------------------------------------------------------------------------
+MinAttackDist		= 0.5	;2.1
+MaxAttackDist		= 2.0
+
+hit_type = strike
+
+attack_params			= m_poltergeist_attack_params
+attack_effector			= m_poltergeist_attack_effector
+
+
+
+
+
+
 DayTime_Begin		= 0			; начала дня для монстра
 DayTime_End			= 21		; конец дня для монстра
 Min_Satiety			= 0.7		; мин. норма сытости (меньше - уже голодный)
@@ -101,8 +127,6 @@ Max_Satiety			= 0.95		; макс. норма сытости (больше - очень сытый)
 distance_to_corpse	= 1.8		; дист. до трупа, при которой он переходит в состояние еды
 
 terrain				 = poltergeist_terrain
-
-hit_type = strike
 
 ;------------------------------------------------------------------------------
 ;----------------------------- Entity Conditions ------------------------------
@@ -195,10 +219,6 @@ DamagedThreshold		= 0.4
 
 material				= creatures\large	;objects\bullet
 
-squad_attack_algorithm	= 1
-attack_effector			= m_poltergeist_attack_effector
-
-attack_params			= m_poltergeist_attack_params
 step_params				= m_poltergeist_step_params
 
 anger_hunger_threshold	= 0.1

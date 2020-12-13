@@ -12,8 +12,8 @@
 
 #include "../../../step_manager.h"
 #include "../monster_event_manager.h"
-#include "../melee_checker.h"
-#include "../monster_morale.h"
+#include "..\MeleeChecker.h"
+#include "..\MonsterMorale.h"
 
 #include "../control_manager.h"
 #include "../control_sequencer.h"

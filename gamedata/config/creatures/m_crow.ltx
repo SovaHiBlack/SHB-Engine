@@ -1,10 +1,18 @@
+;==============================================================================
+; CROW
+;==============================================================================
 [m_crow]
 $spawn                   = "monsters\crow"		; option for Level Editor
+visual                   = monsters\crow\crow.ogf
+corpse_visual			 = monsters\crow\crow.ogf
+
+ef_creature_type		 = -1
+
 spawn 	                 = on	;
 cform                    = skeleton
 class                    = AI_CROW
-visual                   = monsters\crow\crow.ogf
-corpse_visual			 = monsters\crow\crow.ogf
+
+
 speed                    = 6.0	
 angular_speed            = 0.1	
 goal_change_delta        = 5.0
@@ -12,7 +20,7 @@ min_height	             = 35	;40	;20
 goal_variability		 = 10.0, 15.0, 200.0
 idle_sound_delta		 = 400.f;100.f
 
-ef_creature_type		 = -1
+
 
 ; movement params
 ph_box0_center 	         = 0.0,  0.025, 0.0

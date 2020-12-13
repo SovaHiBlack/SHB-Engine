@@ -188,8 +188,6 @@ void			CStalker::Hit					(SHit* pHDS)
 	if (invulnerable())
 		return;
 
-//	pHDS->power						*= .1f;
-
 	//хит может меняться в зависимости от ранга (новички получают больше хита, чем ветераны)
 	SHit							HDS = *pHDS;
 	HDS.power						*= m_fRankImmunity;

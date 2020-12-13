@@ -30,9 +30,9 @@ weapon_usage						= 0												; boolean
 Spawn_Inventory_Item_Section		= mutant_krovosos_jaw
 Spawn_Inventory_Item_Probability	= 0.2
 
-;------------------------------------------------------------------------
+;------------------------------------------------------------------------------
 ; Offline Alife
-;------------------------------------------------------------------------
+;------------------------------------------------------------------------------
 Scheduled							= on							; option for ALife Simulator
 Human								= off							; option for ALife Simulator
 Health								= 400							; option for ALife Simulator
@@ -69,19 +69,19 @@ ph_after_death_velocity_factor		= 0.75
 ph_skel_shot_up_factor				= 0.25
 ;---------------------------------------------------------------------
 
-;----------------------------------------------------------------------------
-; Movement::Velocities & Acceleration
-;----------------------------------------------------------------------------
+;------------------------------------------------------------------------------
+; Movement: Velocities & Acceleration
+;------------------------------------------------------------------------------
 ; speed factors						linear | angular_real | angular_path | min	 | max
-Velocity_Stand						= 0,		3.05,		3.05,			1,		1
-Velocity_WalkFwdNormal				= 2.15,		3.5,		3.5,			0.2,	2.0
-Velocity_WalkFwdDamaged				= 1.4,		4.0,		4.0,			0.2,	2.0
-Velocity_RunFwdNormal				= 5.84,		4.0,		4.0,			0.5,	1
-Velocity_RunFwdDamaged				= 1.90,		3.0,		3.0,			0.5,	1
-Velocity_Drag						= 1.5,		3.0,		3.0,			1,		1
-Velocity_Steal						= 0.7,		3.0,		3.0,			1,		1
+Velocity_Stand						= 0,		3.05,			3.05,		1,		1
+Velocity_WalkFwdNormal				= 2.15,		3.5,			3.5,		0.2,	2.0
+Velocity_RunFwdNormal				= 5.84,		4.0,			4.0,		0.5,	1
+Velocity_WalkFwdDamaged				= 1.4,		4.0,			4.0,		0.2,	2.0
+Velocity_RunFwdDamaged				= 1.90,		3.0,			3.0,		0.5,	1
+Velocity_Steal						= 0.7,		3.0,			3.0,		1,		1
+Velocity_Drag						= 1.5,		3.0,			3.0,		1,		1
 
-; Speed factors while invisible
+; speed factors while invisible
 Velocity_Invisible_Linear			= 8.0
 Velocity_Invisible_Angular			= 4.62
 
@@ -89,26 +89,32 @@ Velocity_Invisible_Angular			= 4.62
 Accel_Calm							= 2.5
 Accel_Aggressive					= 20.0
 
-;--------------------------------------------------------------------------
+;------------------------------------------------------------------------------
 ; Attack parameters
-;--------------------------------------------------------------------------
-MinAttackDist						= 2.3
-MaxAttackDist						= 2.8
-EffectDistance						= 20.0
-hit_type							= wound					; type of attack 
+;------------------------------------------------------------------------------
 as_min_dist							= 1.7
 as_step								= 0.3
 
-Run_Attack_Dist						= 3.5, 4.5
-Run_Attack_Delay					= 1000, 3000
+MinAttackDist						= 2.3
+MaxAttackDist						= 2.8
+
+hit_type							= wound					; type of attack
 
 attack_params						= m_bloodsucker_attack_params
-
 attack_effector						= m_bloodsucker_attack_effector
-vampire_effector					= m_bloodsucker_vampire_effector
+
+EffectDistance						= 20.0
 
 Melee_Rotation_Factor				= 2.0
 berserk_always						= true
+
+; run attack
+Run_Attack_Dist						= 3.5, 4.5
+Run_Attack_Delay					= 1000, 3000
+
+
+
+
 
 ;------------------------------------------------------------------------------
 ;----------------------------- Entity Conditions ------------------------------
@@ -258,6 +264,7 @@ Invisibility_EnergySpeed			= 0.05
 ;-------------------------------------------------------------------------
 ; Vampire Ability
 ;-------------------------------------------------------------------------
+vampire_effector					= m_bloodsucker_vampire_effector
 Vampire_Delay						= 100000
 Vampire_Want_Speed					= 0.01
 Vampire_Wound						= 0.2

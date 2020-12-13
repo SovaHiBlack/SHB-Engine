@@ -689,15 +689,15 @@ void CExplosive::ExplodeWaveProcessObject(collide::rq_results& storage, CPhysics
 		l_dir.mul(1.f / rmag);//перенормировка
 		NET_Packet		P;
 		SHit	HS;
-		HS.GenHeader(GE_HIT, l_pGO->ID( ));			//		cast_game_object()->u_EventGen		(P,GE_HIT,l_pGO->ID());
-		HS.whoID = Initiator( );						//		P.w_u16			(Initiator());
-		HS.weaponID = cast_game_object( )->ID( );		//		P.w_u16			(cast_game_object()->ID());
-		HS.dir = l_dir;								//		P.w_dir			(l_dir);
-		HS.power = l_hit;							//		P.w_float		(l_hit);
-		HS.p_in_bone_space = l_goPos;				//		P.w_vec3		(l_goPos);
-		HS.impulse = l_impuls;						//		P.w_float		(l_impuls);
-		HS.hit_type = (m_eHitTypeBlast);			//		P.w_u16			(u16(m_eHitTypeBlast));
-		HS.boneID = 0;								//		P.w_s16			(0);
+		HS.GenHeader(GE_HIT, l_pGO->ID( ));
+		HS.whoID = Initiator( );
+		HS.weaponID = cast_game_object( )->ID( );
+		HS.dir = l_dir;
+		HS.power = l_hit;
+		HS.p_in_bone_space = l_goPos;
+		HS.impulse = l_impuls;
+		HS.hit_type = (m_eHitTypeBlast);
+		HS.boneID = 0;
 		HS.Write_Packet(P);
 		cast_game_object( )->u_EventSend(P);
 	}

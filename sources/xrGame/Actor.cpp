@@ -493,16 +493,14 @@ void	CActor::Hit							(SHit* pHDS)
 	if (GodMode())//psActorFlags.test(AF_GODMODE))
 	{
 		HDS.power = 0.0f;
-//		inherited::Hit(0.f,dir,who,element,position_in_bone_space,impulse, hit_type);
 		inherited::Hit(&HDS);
 		return;
 	}
-	else 
+	else
 	{
-//		inherited::Hit(hit_power,dir,who,element,position_in_bone_space, impulse, hit_type);
 		HDS.power = hit_power;
 		inherited::Hit(&HDS);
-	};
+	}
 }
 
 void CActor::HitMark	(float P, 
@@ -692,11 +690,9 @@ void CActor::g_Physics(Fvector& _accel, float jump, float dt)
 			const ICollisionDamageInfo* di=character_physics_support()->movement()->CollisionDamageInfo();
 			Fvector hdir;di->HitDir(hdir);
 			SetHitInfo(this, NULL, 0, Fvector().set(0, 0, 0), hdir);
-			//				Hit	(m_PhysicMovementControl->gcontact_HealthLost,hdir,di->DamageInitiator(),m_PhysicMovementControl->ContactBone(),di->HitPos(),0.f,ALife::eHitTypeStrike);//s16(6 + 2*::Random.randI(0,2))
 			if (Level().CurrentControlEntity() == this)
 			{
 				SHit HDS = SHit(character_physics_support()->movement()->gcontact_HealthLost,hdir,di->DamageInitiator(),character_physics_support()->movement()->ContactBone(),di->HitPos(),0.f,di->HitType());
-//				Hit(&HDS);
 
 				NET_Packet	l_P;
 				HDS.GenHeader(GE_HIT, ID());

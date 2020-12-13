@@ -152,7 +152,6 @@ void CBaseMonster::Die(CObject* who)
 	if (m_controlled)			m_controlled->on_die();
 }
 
-//void CBaseMonster::Hit(float P,Fvector &dir,CObject*who,s16 element,Fvector p_in_object_space,float impulse, ALife::EHitType hit_type)
 void	CBaseMonster::Hit							(SHit* pHDS)
 {
 	if (ignore_collision_hit && (pHDS->hit_type == ALife::eHitTypeStrike)) return;
@@ -164,7 +163,6 @@ void	CBaseMonster::Hit							(SHit* pHDS)
 		if (!critically_wounded()) 
 			update_critical_wounded(pHDS->boneID,pHDS->power);
 
-//	inherited::Hit(P,dir,who,element,p_in_object_space,impulse,hit_type);
 	inherited::Hit(pHDS);
 }
 

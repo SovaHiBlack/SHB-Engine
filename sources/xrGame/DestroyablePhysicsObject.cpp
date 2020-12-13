@@ -71,7 +71,6 @@ BOOL CDestroyablePhysicsObject::net_Spawn(CSE_Abstract* DC)
 	return res;
 }
 
-//void CDestroyablePhysicsObject::Hit							(float P,Fvector &dir,CObject *who,s16 element,Fvector p_in_object_space, float impulse,  ALife::EHitType hit_type)
 void	CDestroyablePhysicsObject::Hit					(SHit* pHDS)
 {
 	SHit	HDS = *pHDS;
@@ -86,12 +85,10 @@ void	CDestroyablePhysicsObject::Hit					(SHit* pHDS)
 	float hit_scale=1.f,wound_scale=1.f;
 	CDamageManager::HitScale(HDS.bone(),hit_scale,wound_scale);
 	HDS.power*=hit_scale;
-//	inherited::Hit(P,dir,who,element,p_in_object_space,impulse,hit_type);
 	inherited::Hit(&HDS);
 	m_fHealth-=HDS.power;
 	if(m_fHealth<=0.f)
 	{
-//		CPHDestroyable::SetFatalHit(SHit(P,dir,who,element,p_in_object_space,impulse,hit_type));
 		CPHDestroyable::SetFatalHit(HDS);
 		if(CPHDestroyable::CanDestroy())Destroy();
 	}

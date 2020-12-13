@@ -1410,9 +1410,6 @@
     <None Include="config\game_levels_music.ltx">
       <Filter>config</Filter>
     </None>
-    <None Include="config\game_maps_single.ltx">
-      <Filter>config</Filter>
-    </None>
     <None Include="config\game_spawn_story_ids.ltx">
       <Filter>config</Filter>
     </None>
@@ -2083,9 +2080,6 @@
       <Filter>config\creatures\monsters</Filter>
     </None>
     <None Include="config\creatures\m_burer.ltx">
-      <Filter>config\creatures\monsters</Filter>
-    </None>
-    <None Include="config\creatures\m_giant.ltx">
       <Filter>config\creatures\monsters</Filter>
     </None>
     <None Include="config\creatures\m_controller.ltx">
@@ -3417,6 +3411,12 @@
     <None Include="scripts\zone_spawner.script">
       <Filter>scripts</Filter>
     </None>
+    <None Include="config\game_maps.ltx">
+      <Filter>config</Filter>
+    </None>
+    <None Include="config\creatures\m_gigant.ltx">
+      <Filter>config\creatures\monsters</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Xml Include="config\text\eng\dialogs_escape_1_string.xml">
@@ -4403,9 +4403,6 @@
     <Xml Include="config\gameplay\game_tasks_by_vendor.xml">
       <Filter>config\gameplay\game_tasks</Filter>
     </Xml>
-    <Xml Include="config\gameplay\npc_profile.xml">
-      <Filter>config\gameplay\profiles</Filter>
-    </Xml>
     <Xml Include="config\gameplay\character_desc_general.xml">
       <Filter>config\gameplay\profiles\specific_characters</Filter>
     </Xml>
@@ -4726,6 +4723,9 @@
     </Xml>
     <Xml Include="config\ui\maingame_pda_msg.xml">
       <Filter>config\ui\window</Filter>
+    </Xml>
+    <Xml Include="config\gameplay\npc_profile.xml">
+      <Filter>config\gameplay\profiles</Filter>
     </Xml>
   </ItemGroup>
 </Project>

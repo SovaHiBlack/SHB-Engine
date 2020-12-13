@@ -505,10 +505,6 @@ IC	size_t				CurrentTransmission					(){return m_current_transmission_num;}
 
 	void					OnCameraChange				(int type);
 
-
-
-
-
 	bool					HUDview						( ) { return IsFocused(); }
 
 	static void				cb_Steer					(CBoneInstance* B);

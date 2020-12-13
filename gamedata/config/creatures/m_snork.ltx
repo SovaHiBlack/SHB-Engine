@@ -1,3 +1,9 @@
+;==============================================================================
+; SNORK
+;==============================================================================
+;******************************************************************************
+; BASE PROFILES
+;******************************************************************************
 [m_snork_e]:monster_base
 SpaceRestrictionSection = space_restrictor,zone_mosquito_bald
 ;$spawn					= "monsters\snork"					 ; option for Level Editor
@@ -5,12 +11,25 @@ $npc					= on								 ; option for Level Editor
 visual					= monsters\snork\snork
 corpse_visual			= monsters\snork\snork_dead
 icon					= ui_npc_monster_snork
+MaxHealthValue					= 200			; range [0..200]
+
+ef_creature_type		= 11						; option for evaluation functions
+
+
+
+
+
+
+
+
 DynamicObjectsCount		= 32
 
 Spawn_Inventory_Item_Section = mutant_snork_leg
 Spawn_Inventory_Item_Probability = 0.2
 
-;---OFFLINE ALIFE------------------------------------------------------------------
+;------------------------------------------------------------------------------
+; Offline Alife
+;------------------------------------------------------------------------------
 Scheduled						= on			; option for ALife Simulator
 Human		     				= off			; option for ALife Simulator
 Health							= 400			; option for ALife Simulator
@@ -19,13 +38,13 @@ MaxSpeed						= 5.0			; option for ALife Simulator
 going_speed						= 2;4.5			; option for ALife Simulator
 current_level_going_speed		= 1;2					; option for ALife Simulator
 search_speed					= 1.5			; option for ALife Simulator
-MaxHealthValue					= 200			; range [0..200]
+
 smart_terrain_choose_interval	= 00:15:00
 ;-----------------------------------------------------------------------------------
 
 script_binding       = bind_monster.bind
 
-ef_creature_type		= 11						; option for evaluation functions
+
 ef_weapon_type			= 2
 ef_detector_type		= 1
 panic_threshold		= 0.1
@@ -63,32 +82,38 @@ ph_after_death_velocity_factor= 0.75
 ph_skel_shot_up_factor        = 0.25
 ;---------------------------------------------------------------------
 
-;----------------------------------------------------------------------------
-; Movement::Velocities & Acceleration
-;----------------------------------------------------------------------------
-; speed factors			linear | angular_real | angular_path | min	 |  max
-Velocity_Stand			= 0,		2.4,			2.4,		1,		1
-Velocity_WalkFwdNormal	= 1.05,		1.0,			1.0,		0.02,	2.0
-Velocity_WalkFwdDamaged	= 0.9,		1.0,			1.0,		0.02,	2.0			
-Velocity_RunFwdNormal	= 3.2,		3.5,			3.5,		0.4,	1	
-Velocity_RunFwdDamaged	= 1.7,		2.0,			2.0,		0.2,	1
-Velocity_Drag			= 1.0,		1.0,			1.0,		1,		1
-Velocity_Steal			= 1.5,		3.0,			3.0,		1,		1
-Velocity_JumpGround		= 9.0,		3.0,			0.01,		0.4,	1
-Velocity_Jump_Stand     = 9.0,		3.0,			0.01,		0.4,	1
+;------------------------------------------------------------------------------
+; Movement: Velocities & Acceleration
+;------------------------------------------------------------------------------
+; speed factors						linear | angular_real | angular_path | min	 | max
+Velocity_Stand						= 0,		2.4,			2.4,		1,		1
+Velocity_WalkFwdNormal				= 1.05,		1.0,			1.0,		0.02,	2.0
+Velocity_RunFwdNormal				= 3.2,		3.5,			3.5,		0.4,	1
+Velocity_WalkFwdDamaged				= 0.9,		1.0,			1.0,		0.02,	2.0
+Velocity_RunFwdDamaged				= 1.7,		2.0,			2.0,		0.2,	1
+Velocity_Steal						= 1.5,		3.0,			3.0,		1,		1
+Velocity_Drag						= 1.0,		1.0,			1.0,		1,		1
+
+Velocity_JumpGround					= 9.0,		3.0,			0.01,		0.4,	1
 
 ; acceleration
-Accel_Calm				= 2.5
-Accel_Aggressive		= 12.0
+Accel_Calm							= 2.5
+Accel_Aggressive					= 12.0
 
-;--------------------------------------------------------------------------
+;------------------------------------------------------------------------------
 ; Attack parameters
-;--------------------------------------------------------------------------
-MinAttackDist			= 1.9	;0.5
-MaxAttackDist			= 2.9	;3.8
+;------------------------------------------------------------------------------
 as_min_dist				= 1.5
 as_step					= 0.4
+
+MinAttackDist			= 1.9	;0.5
+MaxAttackDist			= 2.9	;3.8
+
 hit_type				= wound				; type of attack
+
+attack_effector			= m_snork_attack_effector
+
+
 
 terrain					 = snork_terrain
 
@@ -186,8 +211,6 @@ transparency_threshold		= 0.25
 ;-------------------------------------------------------------------------
 material				= creatures\medium
 DynamicObjectsCount		= 32
-
-attack_effector			= m_snork_attack_effector
 
 step_params				= m_snork_step_params
 damage					= m_snork_damage

@@ -86,29 +86,23 @@ void CActor::net_Export	(NET_Packet& P)					// export to server
 	P.w_u32				(Level().timeServer());
 	P.w_u8				(flags);
 	Fvector				p = Position();
-	P.w_vec3			(p);//Position());
+	P.w_vec3			(p);
 
-	P.w_float /*w_angle8*/			(angle_normalize(r_model_yaw)); //Device.vCameraDirection.getH());//
-	P.w_float /*w_angle8*/			(angle_normalize(unaffected_r_torso.yaw));//(r_torso.yaw);
-	P.w_float /*w_angle8*/			(angle_normalize(unaffected_r_torso.pitch));//(r_torso.pitch);
-	P.w_float /*w_angle8*/			(angle_normalize(unaffected_r_torso.roll));//(r_torso.roll);
+	P.w_float			(angle_normalize(r_model_yaw));
+	P.w_float			(angle_normalize(unaffected_r_torso.yaw));
+	P.w_float			(angle_normalize(unaffected_r_torso.pitch));
+	P.w_float			(angle_normalize(unaffected_r_torso.roll));
 	P.w_u8				(u8(g_Team()));
 	P.w_u8				(u8(g_Squad()));
 	P.w_u8				(u8(g_Group()));
 
 
-	//CSE_ALifeCreatureTrader
-//	P.w_float			(inventory().TotalWeight());
-//	P.w_u32				(m_dwMoney);
-
 	//CSE_ALifeCreatureActor
-	
 	u16 ms	= (u16)(mstate_real & 0x0000ffff);
 	P.w_u16				(u16(ms));
 	P.w_sdir			(NET_SavedAccel);
 	Fvector				v = character_physics_support()->movement()->GetVelocity();
-	P.w_sdir			(v);//m_PhysicMovementControl.GetVelocity());
-//	P.w_float_q16		(fArmor,-500,1000);
+	P.w_sdir			(v);
 	P.w_float			(g_Radiation());
 
 	P.w_u8				(u8(inventory().GetActiveSlot()));
@@ -144,7 +138,7 @@ void CActor::net_Export	(NET_Packet& P)					// export to server
 	else
 	{
 		net_ExportDeadBody(P);
-	};
+	}
 };
 
 static void w_vec_q8(NET_Packet& P,const Fvector& vec,const Fvector& min,const Fvector& max)

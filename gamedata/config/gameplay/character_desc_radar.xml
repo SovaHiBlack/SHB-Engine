@@ -6,7 +6,6 @@
 	<specific_character id="rad_monolit_regular_default1" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_mo_head_1</icon>
-		<map_icon x="3" y="0"></map_icon>
 		<bio>rad_monolith_general_bio</bio>
 
 		<class>rad_Monolit_regular</class>
@@ -38,7 +37,6 @@
 	<specific_character id="rad_monolit_regular_default2" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_mo_head_1</icon>
-		<map_icon x="3" y="0"></map_icon>
 		<bio>rad_monolith_general_bio</bio>
 
 		<class>rad_Monolit_regular</class>
@@ -70,7 +68,6 @@
 	<specific_character id="rad_monolit_regular_default3" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_mo_mask</icon>
-		<map_icon x="3" y="0"></map_icon>
 		<bio>rad_monolith_general_bio</bio>
 
 		<class>rad_Monolit_regular</class>
@@ -102,7 +99,6 @@
 	<specific_character id="rad_monolit_regular_default4" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_mo_mask</icon>
-		<map_icon x="3" y="0"></map_icon>
 		<bio>rad_monolith_general_bio</bio>
 
 		<class>rad_Monolit_regular</class>
@@ -133,7 +129,6 @@
 	<specific_character id="rad_monolit_regular_default5" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_mo_head_1</icon>
-		<map_icon x="3" y="0"></map_icon>
 		<bio>rad_monolith_general_bio</bio>
 
 		<class>rad_Monolit_regular</class>
@@ -164,7 +159,6 @@
 	<specific_character id="rad_monolit_regular_default6" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_mo_head_1</icon>
-		<map_icon x="3" y="0"></map_icon>
 		<bio>rad_monolith_general_bio</bio>
 
 		<class>rad_Monolit_regular</class>
@@ -196,7 +190,6 @@
 	<specific_character id="rad_monolit_regular_default7" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_mo_head_1</icon>
-		<map_icon x="3" y="0"></map_icon>
 		<bio>rad_monolith_general_bio</bio>
 
 		<class>rad_Monolit_regular</class>
@@ -228,7 +221,6 @@
 	<specific_character id="rad_monolit_regular_default8" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_mo_head_1</icon>
-		<map_icon x="3" y="0"></map_icon>
 		<bio>rad_monolith_general_bio</bio>
 
 		<class>rad_Monolit_regular</class>
@@ -259,7 +251,6 @@
 	<specific_character id="rad_monolit_bunker_default1" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_mo_head_1</icon>
-		<map_icon x="3" y="0"></map_icon>
 		<bio>rad_monolith_general_bio</bio>
 
 		<class>rad_Monolit_regular</class>
@@ -292,7 +283,6 @@
 	<specific_character id="rad_monolit_bunker_default2" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_mo_head_1</icon>
-		<map_icon x="3" y="0"></map_icon>
 		<bio>rad_monolith_general_bio</bio>
 
 		<class>rad_Monolit_regular</class>
@@ -325,7 +315,6 @@
 	<specific_character id="rad_monolit_bunker_default3" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_mo_mask</icon>
-		<map_icon x="3" y="0"></map_icon>
 		<bio>rad_monolith_general_bio</bio>
 
 		<class>rad_Monolit_regular</class>
@@ -358,7 +347,6 @@
 	<specific_character id="rad_monolit_bunker_default4" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_mo_mask</icon>
-		<map_icon x="3" y="0"></map_icon>
 		<bio>rad_monolith_general_bio</bio>
 
 		<class>rad_Monolit_regular</class>
@@ -390,7 +378,6 @@
 	<specific_character id="rad_monolit_bunker_default5" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_mo_head_1</icon>
-		<map_icon x="3" y="0"></map_icon>
 		<bio>rad_monolith_general_bio</bio>
 
 		<class>rad_Monolit_regular</class>
@@ -422,7 +409,6 @@
 	<specific_character id="rad_monolit_bunker_default6" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_mo_head_1</icon>
-		<map_icon x="3" y="0"></map_icon>
 		<bio>rad_monolith_general_bio</bio>
 
 		<class>rad_Monolit_regular</class>
@@ -455,7 +441,6 @@
 	<specific_character id="rad_monolit_bunker_default7" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_mo_head_1</icon>
-		<map_icon x="3" y="0"></map_icon>
 		<bio>rad_monolith_general_bio</bio>
 
 		<class>rad_Monolit_regular</class>
@@ -488,7 +473,6 @@
 	<specific_character id="rad_monolit_bunker_default8" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_mo_head_1</icon>
-		<map_icon x="3" y="0"></map_icon>
 		<bio>rad_monolith_general_bio</bio>
 
 		<class>rad_Monolit_regular</class>
@@ -520,7 +504,6 @@
 	<specific_character id="rad_monolit_strong_default1" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_mo_head_1</icon>
-		<map_icon x="3" y="0"></map_icon>
 		<bio>rad_monolith_general_bio</bio>
 
 		<class>rad_Monolit_regular</class>
@@ -552,7 +535,6 @@
 	<specific_character id="rad_monolit_strong_default2" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_mo_head_1</icon>
-		<map_icon x="3" y="0"></map_icon>
 		<bio>rad_monolith_general_bio</bio>
 
 		<class>rad_Monolit_regular</class>
@@ -584,7 +566,6 @@
 	<specific_character id="rad_monolit_strong_default3" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_mo_mask</icon>
-		<map_icon x="3" y="0"></map_icon>
 		<bio>rad_monolith_general_bio</bio>
 
 		<class>rad_Monolit_regular</class>
@@ -616,7 +597,6 @@
 	<specific_character id="rad_monolit_strong_default4" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_mo_mask</icon>
-		<map_icon x="3" y="0"></map_icon>
 		<bio>rad_monolith_general_bio</bio>
 
 		<class>rad_Monolit_regular</class>
@@ -647,7 +627,6 @@
 	<specific_character id="rad_monolit_strong_default5" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_mo_head_1</icon>
-		<map_icon x="3" y="0"></map_icon>
 		<bio>rad_monolith_general_bio</bio>
 
 		<class>rad_Monolit_regular</class>
@@ -678,7 +657,6 @@
 	<specific_character id="rad_monolit_strong_default6" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_mo_head_1</icon>
-		<map_icon x="3" y="0"></map_icon>
 		<bio>rad_monolith_general_bio</bio>
 
 		<class>rad_Monolit_regular</class>
@@ -710,7 +688,6 @@
 	<specific_character id="rad_monolit_strong_default7" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_mo_head_1</icon>
-		<map_icon x="3" y="0"></map_icon>
 		<bio>rad_monolith_general_bio</bio>
 
 		<class>rad_Monolit_regular</class>
@@ -742,7 +719,6 @@
 	<specific_character id="rad_monolit_strong_default8" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_mo_head_1</icon>
-		<map_icon x="3" y="0"></map_icon>
 		<bio>rad_monolith_general_bio</bio>
 
 		<class>rad_Monolit_regular</class>
@@ -774,7 +750,6 @@
 	<specific_character id="rad_monolit_sniper_default1" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_mo_mask</icon>
-		<map_icon x="3" y="0"></map_icon>
 		<bio>rad_monolith_general_bio</bio>
 
 		<class>rad_Monolit_sniper</class>
@@ -805,7 +780,6 @@
 	<specific_character id="rad_monolit_sniper_default2" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_mo_head_1</icon>
-		<map_icon x="3" y="0"></map_icon>
 		<bio>rad_monolith_general_bio</bio>
 
 		<class>rad_Monolit_sniper</class>
@@ -837,7 +811,6 @@
 	<specific_character id="rad_monolit_specnaz_default1" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_mo_hood_9</icon>
-		<map_icon x="3" y="0"></map_icon>
 		<bio>rad_monolith_specnaz_bio</bio>
 
 		<class>rad_Monolit_specnaz</class>
@@ -868,7 +841,6 @@
 	<specific_character id="rad_monolit_specnaz_default2" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_mo_hood_9</icon>
-		<map_icon x="3" y="0"></map_icon>
 		<bio>rad_monolith_specnaz_bio</bio>
 
 		<class>rad_Monolit_specnaz</class>
@@ -899,7 +871,6 @@
 	<specific_character id="rad_monolit_specnaz_default3" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_mo_hood_9</icon>
-		<map_icon x="3" y="0"></map_icon>
 		<bio>rad_monolith_specnaz_bio</bio>
 
 		<class>rad_Monolit_specnaz</class>
@@ -930,7 +901,6 @@
 	<specific_character id="rad_monolit_specnaz_default4" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_mo_hood_9</icon>
-		<map_icon x="3" y="0"></map_icon>
 		<bio>rad_monolith_specnaz_bio</bio>
 
 		<class>rad_Monolit_specnaz</class>
@@ -961,7 +931,6 @@
 	<specific_character id="rad_monolit_master" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_mo_exo</icon>
-		<map_icon x="3" y="0"></map_icon>
 		<bio>mil_Monolit_master_bio</bio>
 
 		<class>rad_monolit_master</class>
@@ -996,7 +965,6 @@
 	<specific_character id="rad_monolit_rpg_default1" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_mo_head_1</icon>
-		<map_icon x="3" y="0"></map_icon>
 		<bio>rad_monolith_general_bio</bio>
 
 		<class>rad_Monolit_rpg</class>
@@ -1027,7 +995,6 @@
 	<specific_character id="rad_monolit_rpg_default2" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_mo_mask</icon>
-		<map_icon x="3" y="0"></map_icon>
 		<bio>rad_monolith_general_bio</bio>
 
 		<class>rad_Monolit_rpg</class>
@@ -1059,7 +1026,6 @@
 	<specific_character id="rad_zombied_default1" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_zombie1</icon>
-		<map_icon x="7" y="0"></map_icon>
 		<bio>rad_zombied_general_bio</bio>
 
 		<class>rad_Zombied</class>
@@ -1090,7 +1056,6 @@
 	<specific_character id="rad_zombied_default2" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_zombie2</icon>
-		<map_icon x="7" y="0"></map_icon>
 		<bio>rad_zombied_general_bio</bio>
 
 		<class>rad_Zombied</class>
@@ -1121,7 +1086,6 @@
 	<specific_character id="rad_zombied_default3" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_zombie3</icon>
-		<map_icon x="7" y="0"></map_icon>
 		<bio>rad_zombied_general_bio</bio>
 
 		<class>rad_Zombied</class>
@@ -1152,7 +1116,6 @@
 	<specific_character id="rad_zombied_default4" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_zombie4</icon>
-		<map_icon x="7" y="0"></map_icon>
 		<bio>rad_zombied_general_bio</bio>
 
 		<class>rad_Zombied</class>
@@ -1183,7 +1146,6 @@
 	<specific_character id="rad_zombied_default5" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_zombie5</icon>
-		<map_icon x="7" y="0"></map_icon>
 		<bio>rad_zombied_general_bio</bio>
 
 		<class>rad_Zombied</class>
@@ -1214,7 +1176,6 @@
 	<specific_character id="rad_zombied_default6" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_zombie6</icon>
-		<map_icon x="7" y="0"></map_icon>
 		<bio>rad_zombied_general_bio</bio>
 
 		<class>rad_Zombied</class>
@@ -1245,7 +1206,6 @@
 	<specific_character id="rad_zombied_default7" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_zombie7</icon>
-		<map_icon x="7" y="0"></map_icon>
 		<bio>rad_zombied_general_bio</bio>
 
 		<class>rad_Zombied</class>
@@ -1276,7 +1236,6 @@
 	<specific_character id="rad_zombied_default8" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_zombie8</icon>
-		<map_icon x="7" y="0"></map_icon>
 		<bio>rad_zombied_general_bio</bio>
 
 		<class>rad_Zombied</class>
@@ -1308,7 +1267,6 @@
 	<specific_character id="rad_zombied_veteran_default1" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_zombie_exoskeleton</icon>
-		<map_icon x="7" y="0"></map_icon>
 		<bio>rad_zombied_general_bio</bio>
 
 		<class>rad_Zombied_veteran</class>
@@ -1340,7 +1298,6 @@
 	<specific_character id="rad_zombied_veteran_default2" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_zombie_exoskeleton</icon>
-		<map_icon x="7" y="0"></map_icon>
 		<bio>rad_zombied_general_bio</bio>
 
 		<class>rad_Zombied_veteran</class>
@@ -1372,7 +1329,6 @@
 	<specific_character id="rad_zombied_veteran_default3" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_zombie_exoskeleton</icon>
-		<map_icon x="7" y="0"></map_icon>
 		<bio>rad_zombied_general_bio</bio>
 
 		<class>rad_Zombied_veteran</class>
@@ -1404,7 +1360,6 @@
 	<specific_character id="rad_zombied_veteran_default4" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_zombie_exoskeleton</icon>
-		<map_icon x="7" y="0"></map_icon>
 		<bio>rad_zombied_general_bio</bio>
 
 		<class>rad_Zombied_veteran</class>
@@ -1437,7 +1392,6 @@
 	<specific_character id="rad_stalker_veteran_default1" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_neytral_hood_9</icon>
-		<map_icon x="1" y="0"></map_icon>
 		<bio>rad_stalker_veteran_bio</bio>
 
 		<class>rad_Stalker_veteran</class>
@@ -1470,7 +1424,6 @@
 	<specific_character id="rad_stalker_veteran_default2" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_neytral_hood_8</icon>
-		<map_icon x="1" y="0"></map_icon>
 		<bio>rad_stalker_veteran_bio</bio>
 
 		<class>rad_Stalker_veteran</class>
@@ -1503,7 +1456,6 @@
 	<specific_character id="rad_stalker_veteran_default3" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_neytral_rukzak_2</icon>
-		<map_icon x="1" y="0"></map_icon>
 		<bio>rad_stalker_veteran_bio</bio>
 
 		<class>rad_Stalker_veteran</class>
@@ -1536,7 +1488,6 @@
 	<specific_character id="rad_stalker_veteran_default4" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_neytral_hood_9</icon>
-		<map_icon x="1" y="0"></map_icon>
 		<bio>rad_stalker_veteran_bio</bio>
 
 		<class>rad_Stalker_veteran</class>
@@ -1569,7 +1520,6 @@
 	<specific_character id="rad_stalker_veteran_default5" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_neytral_nauchniy</icon>
-		<map_icon x="1" y="0"></map_icon>
 		<bio>rad_stalker_veteran_bio</bio>
 
 		<class>rad_Stalker_veteran</class>
@@ -1603,7 +1553,6 @@
 	<specific_character id="rad_stalker_master_default1" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_neytral_exoskeleton</icon>
-		<map_icon x="1" y="0"></map_icon>
 		<bio>rad_stalker_master_bio</bio>
 
 		<class>rad_Stalker_master</class>
@@ -1635,7 +1584,6 @@
 	<specific_character id="rad_stalker_master_default2" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_neytral_exoskeleton</icon>
-		<map_icon x="1" y="0"></map_icon>
 		<bio>rad_stalker_master_bio</bio>
 
 		<class>rad_Stalker_master</class>
@@ -1667,7 +1615,6 @@
 	<specific_character id="rad_stalker_master_default3" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_neytral_exoskeleton</icon>
-		<map_icon x="1" y="0"></map_icon>
 		<bio>rad_stalker_master_bio</bio>
 
 		<class>rad_Stalker_master</class>
@@ -1699,7 +1646,6 @@
 	<specific_character id="rad_stalker_master_default4" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_neytral_exoskeleton</icon>
-		<map_icon x="1" y="0"></map_icon>
 		<bio>rad_stalker_master_bio</bio>
 
 		<class>rad_Stalker_master</class>
@@ -1731,7 +1677,6 @@
 	<specific_character id="rad_stalker_master_default5" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_neytral_exoskeleton</icon>
-		<map_icon x="1" y="0"></map_icon>
 		<bio>rad_stalker_master_bio</bio>
 
 		<class>rad_Stalker_master</class>
@@ -1765,7 +1710,6 @@
 	<specific_character id="rad_soldier_specnaz_default1" team_default = "1">
 		<name>GENERATE_NAME_lieutenant</name>
 		<icon>ui_npc_u_soldier_spetsnaz</icon>
-		<map_icon x="2" y="2"></map_icon>
 		<bio>rad_specnaz_bio</bio>
 
 		<class>rad_soldier_specnaz</class>
@@ -1799,7 +1743,6 @@
 	<specific_character id="rad_soldier_specnaz_default2" team_default = "1">
 		<name>GENERATE_NAME_lieutenant</name>
 		<icon>ui_npc_u_soldier_spetsnaz</icon>
-		<map_icon x="2" y="2"></map_icon>
 		<bio>rad_specnaz_bio</bio>
 
 		<class>rad_soldier_specnaz</class>
@@ -1833,7 +1776,6 @@
 	<specific_character id="rad_soldier_specnaz_default3" team_default = "1">
 		<name>GENERATE_NAME_lieutenant</name>
 		<icon>ui_npc_u_soldier_spetsnaz</icon>
-		<map_icon x="2" y="2"></map_icon>
 		<bio>rad_specnaz_bio</bio>
 
 		<class>rad_soldier_specnaz</class>
@@ -1869,7 +1811,6 @@
 	<specific_character id="rad_Svoboda_master1" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_sv_exoskeleton</icon>
-		<map_icon x="5" y="0"></map_icon>
 		<bio>rad_svoboda_master_bio</bio>
 
 		<class>rad_Svoboda_master</class>
@@ -1902,7 +1843,6 @@
 	<specific_character id="rad_Svoboda_master2" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_sv_exoskeleton</icon>
-		<map_icon x="5" y="0"></map_icon>
 		<bio>rad_svoboda_master_bio</bio>
 
 		<class>rad_Svoboda_master</class>
@@ -1935,7 +1875,6 @@
 	<specific_character id="rad_Svoboda_master3" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_sv_exoskeleton</icon>
-		<map_icon x="5" y="0"></map_icon>
 		<bio>rad_svoboda_master_bio</bio>
 
 		<class>rad_Svoboda_master</class>
@@ -1969,7 +1908,6 @@
 	<specific_character id="rad_dolg_master_default1" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_do_exoskeleton</icon>
-		<map_icon x="4" y="0"></map_icon>
 		<bio>rad_dolg_master_bio</bio>
 
 		<class>rad_Dolg_master</class>
@@ -2002,7 +1940,6 @@
 	<specific_character id="rad_dolg_master_default2" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_do_exoskeleton</icon>
-		<map_icon x="4" y="0"></map_icon>
 		<bio>rad_dolg_master_bio</bio>
 
 		<class>rad_Dolg_master</class>
@@ -2037,7 +1974,6 @@
 	<specific_character id="rad_dolg_master_default3" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_do_exoskeleton</icon>
-		<map_icon x="4" y="0"></map_icon>
 		<bio>rad_dolg_master_bio</bio>
 
 		<class>rad_Dolg_master</class>
@@ -2070,7 +2006,6 @@
 	<specific_character id="rad_dolg_master_default4" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_do_exoskeleton</icon>
-		<map_icon x="4" y="0"></map_icon>
 		<bio>rad_dolg_master_bio</bio>
 
 		<class>rad_Dolg_master</class>
@@ -2105,7 +2040,6 @@
 	<specific_character id="rad_ecolog_default1" team_default = "1">
 		<name>rad_ecolog_name</name>
 		<icon>ui_npc_u_stalker_ecolog</icon>
-		<map_icon x="0" y="6"></map_icon>
 		<bio>rad_ecolog_bio</bio>
 
 		<class>rad_Ecolog</class>
@@ -2135,7 +2069,6 @@
 	<specific_character id="rad_ecolog_default2" team_default = "1">
 		<name>rad_ecolog_guard_name</name>
 		<icon>ui_npc_u_stalker_ecolog_military</icon>
-		<map_icon x="0" y="6"></map_icon>
 		<bio>rad_ecolog_guard_bio</bio>
 
 		<class>rad_Ecolog</class>
@@ -2167,7 +2100,6 @@
 	<specific_character id="rad_ecolog_default3" team_default = "1">
 		<name>rad_ecolog_guard_name</name>
 		<icon>ui_npc_u_stalker_ecolog_military</icon>
-		<map_icon x="0" y="6"></map_icon>
 		<bio>rad_ecolog_guard_bio</bio>
 
 		<class>rad_Ecolog</class>

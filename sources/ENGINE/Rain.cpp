@@ -187,9 +187,7 @@ void	CEffect_Rain::Render	()
 		if (one.dwTime_Hit<Device.dwTimeGlobal)		Hit (one.Phit);
 		if (one.dwTime_Life<Device.dwTimeGlobal)	Born(one,source_radius);
 
-// последн€€ дельта ??
-//.		float xdt		= float(one.dwTime_Hit-Device.dwTimeGlobal)/1000.f;
-//.		float dt		= Device.fTimeDelta;//xdt<Device.fTimeDelta?xdt:Device.fTimeDelta;
+		// последн€€ дельта ??
 		float dt		= Device.fTimeDelta;
 		one.P.mad		(one.D,one.fSpeed*dt);
 

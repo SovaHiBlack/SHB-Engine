@@ -6,7 +6,6 @@
 	<specific_character id="agr_krot" team_default = "1">
 		<name>agr_krot_name</name>
 		<icon>ui_npc_u_stalker_neytral_rukzak_4</icon>
-		<map_icon x="0" y="0"></map_icon>
 		<bio>agr_krot_bio</bio>
 
 		<class>agr_krot</class>
@@ -43,7 +42,6 @@
 	<specific_character id="agr_ratcatcher" team_default = "1">
 		<name>GENERATE_NAME_private</name>
 		<icon>ui_npc_u_soldier_bandana_6</icon>
-		<map_icon x="0" y="0"></map_icon>
 		<bio>sim_soldier_regular_bio</bio>
 
 		<class>agr_ratcatcher</class>
@@ -78,7 +76,6 @@
 	<specific_character id="agr_nii_commander" team_default = "1">
 		<name>GENERATE_NAME_captain</name>
 		<icon>ui_npc_u_soldier_beret</icon>
-		<map_icon x="2" y="0"></map_icon>
 		<bio>sim_soldier_commander_bio</bio>
 
 		<class>agr_nii_commander</class>
@@ -113,7 +110,6 @@
 	<specific_character id="agr_stalker_general_default1" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_neytral_hood_uzor</icon>
-		<map_icon x="1" y="0"></map_icon>
 		<bio>sim_stalker_general_bio</bio>
 
 		<class>agr_Stalker_general</class>
@@ -148,7 +144,6 @@
 	<specific_character id="agr_stalker_general_default2" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_neytral_balon_8</icon>
-		<map_icon x="1" y="0"></map_icon>
 		<bio>sim_stalker_general_bio</bio>
 
 		<class>agr_Stalker_general</class>
@@ -183,7 +178,6 @@
 	<specific_character id="agr_stalker_general_default3" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_neytral_rukzak_2</icon>
-		<map_icon x="1" y="0"></map_icon>
 		<bio>sim_stalker_general_bio</bio>
 
 		<class>agr_Stalker_general</class>
@@ -218,7 +212,6 @@
 	<specific_character id="agr_stalker_general_default4" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_neytral_hood_2</icon>
-		<map_icon x="1" y="0"></map_icon>
 		<bio>sim_stalker_general_bio</bio>
 
 		<class>agr_Stalker_general</class>
@@ -253,7 +246,6 @@
 	<specific_character id="agr_stalker_general_default5" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_neytral_hood_8</icon>
-		<map_icon x="1" y="0"></map_icon>
 		<bio>sim_stalker_general_bio</bio>
 
 		<class>agr_Stalker_general</class>
@@ -288,7 +280,6 @@
 	<specific_character id="agr_stalker_general_default6" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_neytral_rukzak_2</icon>
-		<map_icon x="1" y="0"></map_icon>
 		<bio>sim_stalker_general_bio</bio>
 
 		<class>agr_Stalker_general</class>
@@ -324,7 +315,6 @@
 	<specific_character id="agr_soldier_regular_default1" team_default = "1">
 		<name>GENERATE_NAME_private</name>
 		<icon>ui_npc_u_soldier_bandana</icon>
-		<map_icon x="1" y="2"></map_icon>
 		<bio>sim_soldier_regular_bio</bio>
 
 		<class>agr_Soldier_regular</class>
@@ -358,7 +348,6 @@
 	<specific_character id="agr_soldier_regular_default2" team_default = "1">
 		<name>GENERATE_NAME_private</name>
 		<icon>ui_npc_u_soldier_bandana_5</icon>
-		<map_icon x="1" y="2"></map_icon>
 		<bio>sim_soldier_regular_bio</bio>
 
 		<class>agr_Soldier_regular</class>
@@ -392,7 +381,6 @@
 	<specific_character id="agr_soldier_regular_default3" team_default = "1">
 		<name>GENERATE_NAME_private</name>
 		<icon>ui_npc_u_soldier_obichniy</icon>
-		<map_icon x="1" y="2"></map_icon>
 		<bio>sim_soldier_regular_bio</bio>
 
 		<class>agr_Soldier_regular</class>
@@ -426,7 +414,6 @@
 	<specific_character id="agr_soldier_regular_default4" team_default = "1">
 		<name>GENERATE_NAME_private</name>
 		<icon>ui_npc_u_soldier_bandana</icon>
-		<map_icon x="1" y="2"></map_icon>
 		<bio>sim_soldier_regular_bio</bio>
 
 		<class>agr_Soldier_regular</class>
@@ -460,7 +447,6 @@
 	<specific_character id="agr_soldier_regular_default5" team_default = "1">
 		<name>GENERATE_NAME_sergeant</name>
 		<icon>ui_npc_u_soldier_obichniy</icon>
-		<map_icon x="1" y="2"></map_icon>
 		<bio>sim_soldier_regular_bio</bio>
 
 		<class>agr_Soldier_regular</class>
@@ -495,7 +481,6 @@
 	<specific_character id="agr_soldier_specnaz_default1" team_default = "1">
 		<name>GENERATE_NAME_sergeant</name>
 		<icon>ui_npc_u_soldier_spetsnaz</icon>
-		<map_icon x="2" y="2"></map_icon>
 		<bio>sim_soldier_specnaz_bio</bio>
 
 		<class>agr_Soldier_specnaz</class>
@@ -529,7 +514,6 @@
 	<specific_character id="agr_soldier_specnaz_default2" team_default = "1">
 		<name>GENERATE_NAME_lieutenant</name>
 		<icon>ui_npc_u_soldier_spetsnaz</icon>
-		<map_icon x="2" y="2"></map_icon>
 		<bio>sim_soldier_specnaz_bio</bio>
 
 		<class>agr_Soldier_specnaz</class>
@@ -564,7 +548,6 @@
 	<specific_character id="agr_soldier_commander1" team_default = "1">
 		<name>GENERATE_NAME_lieutenant</name>
 		<icon>ui_npc_u_soldier_beret</icon>
-		<map_icon x="2" y="0"></map_icon>
 		<bio>sim_soldier_commander_bio</bio>
 
 		<class>agr_Soldier_commander</class>
@@ -598,7 +581,6 @@
 	<specific_character id="agr_soldier_commander2" team_default = "1">
 		<name>GENERATE_NAME_lieutenant</name>
 		<icon>ui_npc_u_soldier_beret_3</icon>
-		<map_icon x="2" y="0"></map_icon>
 		<bio>sim_soldier_commander_bio</bio>
 
 		<class>agr_Soldier_commander</class>
@@ -633,7 +615,6 @@
 	<specific_character id="agr_soldier_sniper_default1" team_default = "1">
 		<name>GENERATE_NAME_sergeant</name>
 		<icon>ui_npc_u_soldier_obichniy</icon>
-		<map_icon x="1" y="2"></map_icon>
 		<bio>sim_soldier_sniper_bio</bio>
 
 		<class>agr_Soldier_sniper</class>
@@ -667,7 +648,6 @@
 	<specific_character id="agr_soldier_sniper_default2" team_default = "1">
 		<name>GENERATE_NAME_sergeant</name>
 		<icon>ui_npc_u_soldier_bandana</icon>
-		<map_icon x="1" y="2"></map_icon>
 		<bio>sim_soldier_sniper_bio</bio>
 
 		<class>agr_Soldier_sniper</class>
@@ -701,7 +681,6 @@
 	<specific_character id="agr_soldier_sniper_default3" team_default = "1">
 		<name>GENERATE_NAME_sergeant</name>
 		<icon>ui_npc_u_soldier_bandana_5</icon>
-		<map_icon x="1" y="2"></map_icon>
 		<bio>sim_soldier_sniper_bio</bio>
 
 		<class>agr_Soldier_sniper</class>
@@ -736,7 +715,6 @@
 	<specific_character id="agr_bandit_general_default1" team_default = "1">
 		<name>GENERATE_NAME_bandit</name>
 		<icon>ui_npc_u_stalker_bandit_3</icon>
-		<map_icon x="3" y="2"></map_icon>
 		<bio>sim_bandit_general_bio</bio>
 
 		<class>agr_bandit_general</class>
@@ -771,7 +749,6 @@
 	<specific_character id="agr_bandit_general_default2" team_default = "1">
 		<name>GENERATE_NAME_bandit</name>
 		<icon>ui_npc_u_stalker_bandit_4</icon>
-		<map_icon x="3" y="2"></map_icon>
 		<bio>sim_bandit_general_bio</bio>
 
 		<class>agr_bandit_general</class>
@@ -806,7 +783,6 @@
 	<specific_character id="agr_bandit_general_default3" team_default = "1">
 		<name>GENERATE_NAME_bandit</name>
 		<icon>ui_npc_u_stalker_bandit_5</icon>
-		<map_icon x="3" y="2"></map_icon>
 		<bio>sim_bandit_general_bio</bio>
 
 		<class>agr_bandit_general</class>

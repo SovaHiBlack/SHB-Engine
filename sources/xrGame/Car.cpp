@@ -294,8 +294,6 @@ void CCar::SaveNetState(NET_Packet& P)
 	P.w_float(GetfHealth());
 }
 
-
-
 void CCar::RestoreNetState(CSE_PHSkeleton* po)
 {
 	if(!po->_flags.test(CSE_PHSkeleton::flSavedData))return;
@@ -506,25 +504,13 @@ void	CCar::OnHUDDraw				(CCustomHUD* /**hud/**/)
 	HUD().Font().pFontStat->OutSet		(120,530);
 	HUD().Font().pFontStat->OutNext		("Position:      [%3.2f, %3.2f, %3.2f]",VPUSH(Position()));
 	HUD().Font().pFontStat->OutNext		("Velocity:      [%3.2f]",velocity.magnitude());
-
-
 #endif
 }
 
-//void CCar::Hit(float P,Fvector &dir,CObject * who,s16 element,Fvector p_in_object_space, float impulse, ALife::EHitType hit_type)
 void	CCar::Hit							(SHit* pHDS)
 {
-
 	SHit	HDS = *pHDS;
-	//if(CDelayedActionFuse::isActive()||Initiator()==u16(-1)&&HDS.hit_type==ALife::eHitTypeStrike)
-	//{
-	//	HDS.power=0.f;
-	//}
 
-	//if(HDS.who->ID()!=ID())
-	//{
-	//	CExplosive::SetInitiator(HDS.who->ID());
-	//}
 	WheelHit(HDS.damage(),HDS.bone(),HDS.hit_type);
 	DoorHit(HDS.damage(),HDS.bone(),HDS.hit_type);
 	float hitScale=1.f,woundScale=1.f;

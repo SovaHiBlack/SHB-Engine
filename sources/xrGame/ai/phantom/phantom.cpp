@@ -211,7 +211,6 @@ void CPhantom::OnFlyState()
 		Center				(vP);
 		if (vP.distance_to_sqr(vE)<_sqr(Radius()+m_enemy->Radius())){
 			SwitchToState	(stContact);
-//			Hit				(1000.f,Fvector().set(0,0,1),this,-1,Fvector().set(0,0,0),100.f,ALife::eHitTypeFireWound);
 			SHit HDS(1000.f,Fvector().set(0,0,1),this,BI_NONE,Fvector().set(0,0,0),100.f,ALife::eHitTypeFireWound);
 			Hit(&HDS);
 		}
@@ -257,13 +256,11 @@ void CPhantom::UpdateCL()
 }
 
 //---------------------------------------------------------------------
-//void CPhantom::Hit	(float P, Fvector &dir, CObject* who, s16 element,Fvector p_in_object_space, float impulse, ALife::EHitType hit_type)
 void	CPhantom::Hit							(SHit* pHDS)
 {
 	if (m_TgtState==stFly)	SwitchToState(stShoot);
 	if (g_Alive()){
 		SetfHealth		(-1.f);
-//		inherited::Hit	(P,dir,who,element,p_in_object_space,impulse/100.f, hit_type);
 		inherited::Hit	(pHDS);
 	}
 }
@@ -306,15 +303,15 @@ void CPhantom::PsyHit(const CObject *object, float value)
 {
 	NET_Packet			P;
 	SHit				HS;
-	HS.GenHeader		(GE_HIT, object->ID());				//				//	u_EventGen		(P,GE_HIT, object->ID());				
-	HS.whoID			= (ID());					// own			//	P.w_u16			(object->ID());							
-	HS.weaponID			= (ID());					// own			//	P.w_u16			(object->ID());							
-	HS.dir				= (Fvector().set(0.f,1.f,0.f));		// direction	//	P.w_dir			(Fvector().set(0.f,1.f,0.f));			
-	HS.power			= (value);							// hit value	//	P.w_float		(value);								
-	HS.boneID			= (BI_NONE);						// bone			//	P.w_s16			(BI_NONE);								
-	HS.p_in_bone_space	= (Fvector().set(0.f,0.f,0.f));						//	P.w_vec3		(Fvector().set(0.f,0.f,0.f));			
-	HS.impulse			= (0.f);											//	P.w_float		(0.f);									
-	HS.hit_type			= (ALife::eHitTypeTelepatic);						//	P.w_u16			(u16(ALife::eHitTypeTelepatic));
+	HS.GenHeader		(GE_HIT, object->ID());				//
+	HS.whoID			= (ID());					// own
+	HS.weaponID			= (ID());					// own
+	HS.dir				= (Fvector().set(0.f,1.f,0.f));		// direction
+	HS.power			= (value);							// hit value
+	HS.boneID			= (BI_NONE);						// bone
+	HS.p_in_bone_space	= (Fvector().set(0.f,0.f,0.f));
+	HS.impulse			= (0.f);
+	HS.hit_type			= (ALife::eHitTypeTelepatic);
 	HS.Write_Packet		(P);
 	
 	u_EventSend			(P);
@@ -347,10 +344,10 @@ void CPhantom::net_Export	(NET_Packet& P)					// export to server
 
 	float				yaw, pitch, bank;
 	XFORM().getHPB		(yaw,pitch,bank);
-	P.w_float /*w_angle8*/			(yaw);
-	P.w_float /*w_angle8*/			(yaw);
-	P.w_float /*w_angle8*/			(pitch);
-	P.w_float /*w_angle8*/			(0);
+	P.w_float			(yaw);
+	P.w_float			(yaw);
+	P.w_float			(pitch);
+	P.w_float			(0);
 	P.w_u8				(u8(g_Team()));
 	P.w_u8				(u8(g_Squad()));
 	P.w_u8				(u8(g_Group()));

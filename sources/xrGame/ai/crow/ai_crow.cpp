@@ -348,10 +348,10 @@ void CCrow::net_Export	(NET_Packet& P)					// export to server
 	
 	float				yaw, pitch, bank;
 	XFORM().getHPB		(yaw,pitch,bank);
-	P.w_float /*w_angle8*/			(yaw);
-	P.w_float /*w_angle8*/			(yaw);
-	P.w_float /*w_angle8*/			(pitch);
-	P.w_float /*w_angle8*/			(0);
+	P.w_float			(yaw);
+	P.w_float			(yaw);
+	P.w_float			(pitch);
+	P.w_float			(0);
 	P.w_u8				(u8(g_Team()));
 	P.w_u8				(u8(g_Squad()));
 	P.w_u8				(u8(g_Group()));
@@ -415,10 +415,8 @@ void CCrow::CreateSkeleton()
 	m_pPhysicsShell->SetMaterial(smart_cast<CKinematics*>(Visual())->LL_GetData(smart_cast<CKinematics*>(Visual())->LL_GetBoneRoot()).game_mtl_idx);
 }
 
-//void CCrow::Hit	(float P, Fvector &dir, CObject* who, s16 element,Fvector p_in_object_space, float impulse, ALife::EHitType hit_type)
 void	CCrow::Hit							(SHit* pHDS)
 {
-//	inherited::Hit	(P,dir,who,element,p_in_object_space,impulse/100.f, hit_type);
 	SHit	HDS = *pHDS;
 	HDS.impulse /= 100.f;
 	inherited::Hit(&HDS);

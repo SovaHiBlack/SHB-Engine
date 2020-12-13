@@ -341,8 +341,8 @@
     <ClInclude Include="ai\Monsters\Fracture\fracture.h" />
     <ClInclude Include="ai\Monsters\Fracture\fracture_state_manager.h" />
     <ClInclude Include="ai\Monsters\invisibility.h" />
-    <ClInclude Include="ai\Monsters\melee_checker.h" />
-    <ClInclude Include="ai\Monsters\melee_checker_inline.h" />
+    <ClInclude Include="ai\Monsters\MeleeChecker.h" />
+    <ClInclude Include="ai\Monsters\MeleeChecker_inline.h" />
     <ClInclude Include="ai\Monsters\monster_corpse_manager.h" />
     <ClInclude Include="ai\Monsters\monster_corpse_memory.h" />
     <ClInclude Include="ai\Monsters\monster_cover_manager.h" />
@@ -352,8 +352,8 @@
     <ClInclude Include="ai\Monsters\monster_event_manager_defs.h" />
     <ClInclude Include="ai\Monsters\monster_hit_memory.h" />
     <ClInclude Include="ai\Monsters\monster_home.h" />
-    <ClInclude Include="ai\Monsters\monster_morale.h" />
-    <ClInclude Include="ai\Monsters\monster_morale_inline.h" />
+    <ClInclude Include="ai\Monsters\MonsterMorale.h" />
+    <ClInclude Include="ai\Monsters\MonsterMorale_inline.h" />
     <ClInclude Include="ai\Monsters\monster_sound_defs.h" />
     <ClInclude Include="ai\Monsters\monster_sound_memory.h" />
     <ClInclude Include="ai\Monsters\monster_state_manager.h" />
@@ -1592,7 +1592,7 @@
     <ClCompile Include="ai\Monsters\Fracture\fracture.cpp" />
     <ClCompile Include="ai\Monsters\Fracture\fracture_state_manager.cpp" />
     <ClCompile Include="ai\Monsters\invisibility.cpp" />
-    <ClCompile Include="ai\Monsters\melee_checker.cpp" />
+    <ClCompile Include="ai\Monsters\MeleeChecker.cpp" />
     <ClCompile Include="ai\Monsters\monster_corpse_manager.cpp" />
     <ClCompile Include="ai\Monsters\monster_corpse_memory.cpp" />
     <ClCompile Include="ai\Monsters\monster_cover_manager.cpp" />
@@ -1601,7 +1601,7 @@
     <ClCompile Include="ai\Monsters\monster_event_manager.cpp" />
     <ClCompile Include="ai\Monsters\monster_hit_memory.cpp" />
     <ClCompile Include="ai\Monsters\monster_home.cpp" />
-    <ClCompile Include="ai\Monsters\monster_morale.cpp" />
+    <ClCompile Include="ai\Monsters\MonsterMorale.cpp" />
     <ClCompile Include="ai\Monsters\monster_sound_memory.cpp" />
     <ClCompile Include="ai\Monsters\Poltergeist\poltergeist.cpp" />
     <ClCompile Include="ai\Monsters\Poltergeist\poltergeist_ability.cpp" />

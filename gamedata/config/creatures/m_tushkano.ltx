@@ -1,36 +1,28 @@
-[m_tushkano_attack_params]
-;---------------------------------------------------------------------------------------------------------------------------------------------
-;	anim			| time[0..1] | hit_power | impulse | impulse_dir (x,y,z)  |	Field of hit_test  (left,right, bottom, top ) |	Test Dist
-;---------------------------------------------------------------------------------------------------------------------------------------------
-stand_attack_0 =	  	0.25,		0.10,		    20,        0.0, 1.0, 0.0,		 -1.2, 1.2, -1.6, 1.6,							  1.0
-stand_attack_1 =	  	0.25,		0.10,		    30,        0.0, 1.0, 0.0,		 -1.2, 1.2, -1.6, 1.6,							  1.0
-stand_attack_2 =	  	0.25,		0.10,		    35,        0.0, 1.0, 0.0,		 -1.2, 1.2, -1.6, 1.6,							  1.0
-
-[m_tushkano_step_params]
-;---------------------------------------------------------------------------
-;	anim			| Cycles | time1 | power1 | time2 | power2 |
-;---------------------------------------------------------------------------
-stand_walk_fwd_0 	=	1,	   0.2,     0.5,     0.7,    1,   
-stand_run_0	 		=	1,	   0.25,     1,	    0.25,    1,    
-
-;===========================================================================
-; IMMUNITIES
-;===========================================================================
-[tushkano_immunities]
-burn_immunity			= 1			;коэффициенты иммунитета 
-strike_immunity			= 1
-shock_immunity			= 1
-wound_immunity			= 0.5
-radiation_immunity		= 0.0
-telepatic_immunity		= 1.0
-chemical_burn_immunity	= 1
-explosion_immunity		= 1
-fire_wound_immunity		= 3
-
+;==============================================================================
+; SNORK
+;==============================================================================
+;******************************************************************************
+; BASE PROFILES
+;******************************************************************************
 [m_tushkano_e]:monster_base
 SpaceRestrictionSection = space_restrictor,zone_mosquito_bald
 $spawn               = "monsters\old\tushkano"				; option for Level Editor
 $npc			     = on						; option for Level Editor
+visual				 = monsters\tushkano\tushkano
+corpse_visual		 = monsters\tushkano\tushkano_dead
+icon				 = ui_npc_monster_tushkano
+MaxHealthValue		 = 100			; range [0..200]
+
+ef_creature_type	 = 2							; option for evaluation functions
+
+
+
+
+
+
+;------------------------------------------------------------------------------
+; Offline Alife
+;------------------------------------------------------------------------------
 Scheduled		     = on						; option for ALife Simulator
 Human		     	 = off						; option for ALife Simulator
 Health			     = 400						; option for ALife Simulator
@@ -39,15 +31,15 @@ MaxSpeed		     = 5.0						; option for ALife Simulator
 going_speed          = 3;4.5                      ; option for ALife Simulator
 current_level_going_speed		= 1;2					; option for ALife Simulator
 search_speed         = 1.5                       ; option for ALife Simulator
-visual				 = monsters\tushkano\tushkano
-corpse_visual		 = monsters\tushkano\tushkano_dead
-icon				 = ui_npc_monster_tushkano
-MaxHealthValue		 = 100			; range [0..200]
+
+
+
+
 DynamicObjectsCount	 = 32
 smart_terrain_choose_interval	= 00:15:00
 
 ;---EVALUATION FUNCTIONS----------------------------------------------
-ef_creature_type	 = 2							; option for evaluation functions
+
 ef_weapon_type		 = 2
 ef_detector_type	 = 1
 panic_threshold		= 0.1
@@ -90,30 +82,41 @@ eye_fov				 = 100;
 eye_range			 = 50	;30
 max_hear_dist		 = 50
 
-hit_power			 = 20.0;
-
 ImpulseMin			 = 20.0
 ImpulseMax			 = 35.0 
 
-; speed factors			linear | angular_real | angular_path | min |  max
-Velocity_Stand			= 0,		3.5,			3.5,		1,		1
-Velocity_WalkFwdNormal	= 1.0,		7.5,			7.5,		0.02,	1.8	
-Velocity_RunFwdNormal	= 5.0,		3.5,			3.5,		0.3,	1	
-Velocity_WalkFwdDamaged	= 1.0,		4.5,			4.5,		0.2,	1.8	
-Velocity_RunFwdDamaged	= 3.0,  	3.0,			3.0,		0.5,	1
-Velocity_Drag			= 1.0,		3.0,			3.0,		1,		1
-Velocity_Steal			= 1.5,		3.0,			3.0,		1,		1
+;------------------------------------------------------------------------------
+; Movement: Velocities & Acceleration
+;------------------------------------------------------------------------------
+; speed factors						linear | angular_real | angular_path | min	 | max
+Velocity_Stand						= 0,		3.5,			3.5,		1,		1
+Velocity_WalkFwdNormal				= 1.0,		7.5,			7.5,		0.02,	1.8
+Velocity_RunFwdNormal				= 5.0,		3.5,			3.5,		0.3,	1
+Velocity_WalkFwdDamaged				= 1.0,		4.5,			4.5,		0.2,	1.8
+Velocity_RunFwdDamaged				= 3.0,		3.0,			3.0,		0.5,	1
+Velocity_Steal						= 1.5,		3.0,			3.0,		1,		1
+Velocity_Drag						= 1.0,		3.0,			3.0,		1,		1
 
 ; acceleration
-Accel_Calm				= 2.5
-Accel_Aggressive		= 7.5
+Accel_Calm							= 2.5
+Accel_Aggressive					= 7.5
 
-;attack parameters
+;------------------------------------------------------------------------------
+; Attack parameters
+;------------------------------------------------------------------------------
+as_min_dist				= 0.25
+as_step					= 0.25
+
 MinAttackDist		= 1.2	;0.5
 MaxAttackDist		= 1.8	;3.8
 
-as_min_dist				= 0.25
-as_step					= 0.25
+hit_type = wound
+hit_power			 = 20.0;
+
+attack_params			= m_tushkano_attack_params
+attack_effector			= m_tushkano_attack_effector
+
+
 
 DayTime_Begin		= 0			; начала дня для монстра
 DayTime_End			= 21		; конец дня для монстра
@@ -121,7 +124,6 @@ Min_Satiety			= 0.4		; мин. норма сытости (меньше - уже голодный)
 Max_Satiety			= 1.0		; макс. норма сытости (больше - очень сытый)
 
 distance_to_corpse	= 1.2		; дист. до трупа, при которой он переходит в состояние еды
-
 
 min_view_distance   		= 0.8				; коэффициент, который множится на eye_range, в зависимости от угла
 max_view_distance	 		= 1.0				; коэффициент, который множится на eye_range, в зависимости от угла
@@ -133,10 +135,7 @@ velocity_factor		     	= 0.5
 luminocity_factor			= 0.5 				; фактор освещения (только для Актёра)
 transparency_threshold		= 0.25
 
-
 terrain				 = tushkan_terrain
-
-hit_type = wound
 
 ;------------------------------------------------------------------------------
 ;----------------------------- Entity Conditions ------------------------------
@@ -166,7 +165,9 @@ eat_slice_weight	= 10.0					;уменьшение еды у трупа
 
 satiety_threshold	= 0.5							; below this value monster fill hunger
 
+;-------------------------------------------------------------------------
 ; Morale
+;-------------------------------------------------------------------------
 Morale_Hit_Quant				= 0.1
 Morale_Attack_Success_Quant		= 0.1
 Morale_Take_Heart_Speed			= 0.1
@@ -206,12 +207,8 @@ critical_wound_decrease_quant	= 0.0
 material				= creatures\medium
 DynamicObjectsCount		= 32
 
-squad_attack_algorithm	= 1
-attack_effector			= small_monster_attack_effector
-
 LegsCount				= 2
 
-attack_params			= m_tushkano_attack_params
 step_params				= m_tushkano_step_params
 damage					= m_tushkano_damage
 
@@ -254,3 +251,53 @@ rank = 401
 spec_rank			= normal
 community			= tushkano
 panic_threshold		= 0.05
+
+[m_tushkano_attack_effector]
+duality_h		= 0.01
+duality_v		= 0.01
+blur			= 0.01
+gray			= 0.5
+noise_intensity = 0.01
+noise_grain		= 1
+noise_fps		= 30
+color_base		= 0.65,0.15,0.1
+color_gray		= 0.333,0.333,0.333
+color_add		= 0,0,0
+time			= 0.3
+time_attack		= 0.05		; fade in
+time_release	= 0.25		; fade out
+
+; camera effects
+ce_time				= 0.65
+ce_amplitude		= 12.0
+ce_period_number	= 1.0 ;2.0 
+ce_power			= 3.0 ;0.7
+
+[m_tushkano_attack_params]
+;---------------------------------------------------------------------------------------------------------------------------------------------
+;	anim			| time[0..1] | hit_power | impulse | impulse_dir (x,y,z)  |	Field of hit_test  (left,right, bottom, top ) |	Test Dist
+;---------------------------------------------------------------------------------------------------------------------------------------------
+stand_attack_0 =	  	0.25,		0.10,		    20,        0.0, 1.0, 0.0,		 -1.2, 1.2, -1.6, 1.6,							  1.0
+stand_attack_1 =	  	0.25,		0.10,		    30,        0.0, 1.0, 0.0,		 -1.2, 1.2, -1.6, 1.6,							  1.0
+stand_attack_2 =	  	0.25,		0.10,		    35,        0.0, 1.0, 0.0,		 -1.2, 1.2, -1.6, 1.6,							  1.0
+
+[m_tushkano_step_params]
+;---------------------------------------------------------------------------
+;	anim			| Cycles | time1 | power1 | time2 | power2 |
+;---------------------------------------------------------------------------
+stand_walk_fwd_0 	=	1,	   0.2,     0.5,     0.7,    1,   
+stand_run_0	 		=	1,	   0.25,     1,	    0.25,    1,    
+
+;===========================================================================
+; IMMUNITIES
+;===========================================================================
+[tushkano_immunities]
+burn_immunity			= 1			;коэффициенты иммунитета 
+strike_immunity			= 1
+shock_immunity			= 1
+wound_immunity			= 0.5
+radiation_immunity		= 0.0
+telepatic_immunity		= 1.0
+chemical_burn_immunity	= 1
+explosion_immunity		= 1
+fire_wound_immunity		= 3

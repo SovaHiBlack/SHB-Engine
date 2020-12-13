@@ -3225,18 +3225,6 @@
     <ClInclude Include="ai\Monsters\custom_events.h">
       <Filter>AI\AMonsters\common\components\Event Handler\Custom Events</Filter>
     </ClInclude>
-    <ClInclude Include="ai\Monsters\melee_checker.h">
-      <Filter>AI\AMonsters\common\components\Melee Checker</Filter>
-    </ClInclude>
-    <ClInclude Include="ai\Monsters\melee_checker_inline.h">
-      <Filter>AI\AMonsters\common\components\Melee Checker</Filter>
-    </ClInclude>
-    <ClInclude Include="ai\Monsters\monster_morale.h">
-      <Filter>AI\AMonsters\common\components\Morale</Filter>
-    </ClInclude>
-    <ClInclude Include="ai\Monsters\monster_morale_inline.h">
-      <Filter>AI\AMonsters\common\components\Morale</Filter>
-    </ClInclude>
     <ClInclude Include="ai\Monsters\controlled_actor.h">
       <Filter>AI\AMonsters\common\components\Actor Controller</Filter>
     </ClInclude>
@@ -5946,6 +5934,18 @@
     <ClInclude Include="AgentManager_space.h">
       <Filter>AI\AGroup\AgentManager</Filter>
     </ClInclude>
+    <ClInclude Include="ai\Monsters\MeleeChecker_inline.h">
+      <Filter>AI\AMonsters\common\components\Melee Checker</Filter>
+    </ClInclude>
+    <ClInclude Include="ai\Monsters\MeleeChecker.h">
+      <Filter>AI\AMonsters\common\components\Melee Checker</Filter>
+    </ClInclude>
+    <ClInclude Include="ai\Monsters\MonsterMorale_inline.h">
+      <Filter>AI\AMonsters\common\components\Morale</Filter>
+    </ClInclude>
+    <ClInclude Include="ai\Monsters\MonsterMorale.h">
+      <Filter>AI\AMonsters\common\components\Morale</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="action_base_script.cpp">
@@ -6394,12 +6394,6 @@
     </ClCompile>
     <ClCompile Include="ai\Monsters\monster_event_manager.cpp">
       <Filter>AI\AMonsters\common\components\Event Handler</Filter>
-    </ClCompile>
-    <ClCompile Include="ai\Monsters\melee_checker.cpp">
-      <Filter>AI\AMonsters\common\components\Melee Checker</Filter>
-    </ClCompile>
-    <ClCompile Include="ai\Monsters\monster_morale.cpp">
-      <Filter>AI\AMonsters\common\components\Morale</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\controlled_actor.cpp">
       <Filter>AI\AMonsters\common\components\Actor Controller</Filter>
@@ -8599,6 +8593,12 @@
     </ClCompile>
     <ClCompile Include="AgentManager.cpp">
       <Filter>AI\AGroup\AgentManager</Filter>
+    </ClCompile>
+    <ClCompile Include="ai\Monsters\MeleeChecker.cpp">
+      <Filter>AI\AMonsters\common\components\Melee Checker</Filter>
+    </ClCompile>
+    <ClCompile Include="ai\Monsters\MonsterMorale.cpp">
+      <Filter>AI\AMonsters\common\components\Morale</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

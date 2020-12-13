@@ -1,16 +1,24 @@
-[rat_group]
-$spawn               = "monsters\rat-group"		; option for Level Editor
-$npc			     = on				; option for Level Editor
-Human		     	 = off				; option for ALife Simulator
-class                = AI_RAT_G			; AI class
-monster_section      = m_rat_e
-
+;==============================================================================
+; RAT
+;==============================================================================
 [m_rat_e]:monster_base
 $spawn               = "monsters\rat"	; option for Level Editor
 $npc			     = on				; option for Level Editor
 visual				 = monsters\rat\rat_1
 corpse_visual		 = monsters\rat\rat_1
+MaxHealthValue		 = 15				; range [0..200]
 
+ef_creature_type	 = 1				; option for evaluation functions
+
+
+
+
+
+
+
+;------------------------------------------------------------------------------
+; Offline Alife
+;------------------------------------------------------------------------------
 Scheduled		     = on				; option for ALife Simulator
 Human		     	 = off				; option for ALife Simulator
 Health			     = 15				; option for ALife Simulator
@@ -20,7 +28,7 @@ going_speed          = 1.0				; option for ALife Simulator
 retreat_threshold	 = 0.2
 eye_fov				 = 170
 eye_range			 = 10
-MaxHealthValue		 = 15				; range [0..200]
+
 hit_power			 = 5
 hit_type			 = wound
 transparency_threshold	 = 1.0
@@ -31,7 +39,7 @@ smart_terrain_choose_interval	= 20:00:00
 
 killer_clsids			= Z_MINCER,Z_GALANT,ZS_BFUZZ,ZS_MBALD,ZS_GALAN,ZS_MINCE
 
-ef_creature_type	 = 1				; option for evaluation functions
+
 ef_weapon_type		 = 1
 ef_detector_type	 = 1
 panic_threshold		= 0.1
@@ -98,7 +106,6 @@ MoraleDeathDistance	     = 50				; meters
 SoundThreshold		     = 0.06             ; range [0..1]
 
 ActionRefreshRate	     = 500			; milliseconds
-MaxHealthValue		     = 15			; range [0..200]
 
 EatMemberCorpses	     = 1			; range {0,1}
 Cannibalism				 = 1			; range {0,1}
@@ -177,3 +184,10 @@ species						= rat
 	255,009,255,255 ;на всех уровнях, по подземельям
 	255,014,255,255 ;на всех уровнях, по железнодорожным насыпям
 	255,015,255,255 ;на всех уровнях, по искусственным заграждениям
+
+[rat_group]
+$spawn               = "monsters\rat-group"		; option for Level Editor
+$npc			     = on				; option for Level Editor
+Human		     	 = off				; option for ALife Simulator
+class                = AI_RAT_G			; AI class
+monster_section      = m_rat_e

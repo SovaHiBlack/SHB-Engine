@@ -1,6 +1,6 @@
 #pragma once
-#include "control_combase.h"
 
+#include "control_combase.h"
 
 class CControlDirectionBase : public CControl_ComBase {
 	typedef CControl_ComBase inherited;

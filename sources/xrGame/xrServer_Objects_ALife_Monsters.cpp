@@ -989,10 +989,10 @@ void CSE_ALifeCreatureAbstract::UPDATE_Write(NET_Packet &tNetPacket)
 	tNetPacket.w_u32			(timestamp		);
 	tNetPacket.w_u8				(flags			);
 	tNetPacket.w_vec3			(o_Position		);
-	tNetPacket.w_float /*w_angle8*/			(o_model		);
-	tNetPacket.w_float /*w_angle8*/			(o_torso.yaw	);
-	tNetPacket.w_float /*w_angle8*/			(o_torso.pitch	);
-	tNetPacket.w_float /*w_angle8*/			(o_torso.roll	);
+	tNetPacket.w_float			(o_model		);
+	tNetPacket.w_float			(o_torso.yaw	);
+	tNetPacket.w_float			(o_torso.pitch	);
+	tNetPacket.w_float			(o_torso.roll	);
 	tNetPacket.w_u8				(s_team);
 	tNetPacket.w_u8				(s_squad);
 	tNetPacket.w_u8				(s_group);

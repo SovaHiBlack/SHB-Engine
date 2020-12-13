@@ -691,8 +691,6 @@ float CHelicopter::GetRealAltitude( )
 
 void	CHelicopter::Hit(SHit* pHDS)
 {
-//	inherited::Hit(pHDS);
-
 	if (GetfHealth( ) < 0.005f)
 		return;
 
