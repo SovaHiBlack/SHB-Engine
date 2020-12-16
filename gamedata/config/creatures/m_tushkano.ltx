@@ -14,6 +14,25 @@ icon				 = ui_npc_monster_tushkano
 MaxHealthValue		 = 100			; range [0..200]
 
 ef_creature_type	 = 2							; option for evaluation functions
+ef_weapon_type		 = 2
+ef_detector_type	 = 1
+panic_threshold		= 0.1
+
+cform                = skeleton					; collision class
+class                = SM_TUSHK ;AI_TUSH					; AI class
+
+script_binding  	 = bind_monster.bind
+
+bone_head			 = bip01_head				; bone name
+bone_fire			 = bip01_head				; bone name
+bone_torso			 = bip01_spine1 			; bone name
+
+weapon_usage		 = 0						; boolean
+
+
+
+
+
 
 
 
@@ -38,19 +57,10 @@ search_speed         = 1.5                       ; option for ALife Simulator
 DynamicObjectsCount	 = 32
 smart_terrain_choose_interval	= 00:15:00
 
-;---EVALUATION FUNCTIONS----------------------------------------------
 
-ef_weapon_type		 = 2
-ef_detector_type	 = 1
-panic_threshold		= 0.1
 
-cform                = skeleton					; collision class
-class                = SM_TUSHK ;AI_TUSH					; AI class
 
-bone_torso			 = bip01_spine1 			; bone name
-bone_head			 = bip01_head				; bone name
-bone_fire			 = bip01_head				; bone name
-weapon_usage		 = 0						; boolean
+
 
 ph_box0_center 		 = 0.0,  0.9,  0.0
 ph_box0_size 		 = 0.35, 0.9,  0.35
@@ -62,8 +72,6 @@ ph_collision_damage_factor	= 0.1
 ph_mass 		     = 20
 
 destroyed_vis_name	 = physics\Dead_Body\trupik_crash
-
-script_binding  	 = bind_monster.bind
 
 ;---------------------------------------------------------------------
 ph_skeleton_airr_lin_factor   = 2.0 ;550.0 (изменно из-за того, что убрано домножение коэффициент 0.002 из кода)

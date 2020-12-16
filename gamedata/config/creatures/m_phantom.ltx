@@ -3,19 +3,21 @@
 ;==============================================================================
 [m_phantom]:monster_base
 $spawn                  = "monsters\phantom"		; option for Level Editor
-spawn 	                = on	;
-cform                   = skeleton
-class                   = AI_PHANT
+spawn 	                = on
 rank					= 0
 visuals                 = monsters\phantom\pseudodog_0 ,monsters\phantom\tushkano_0, monsters\phantom\mutant_boar_0, monsters\phantom\krovosos_0, monsters\phantom\snork_0
+
+ef_creature_type		= -1
+
+cform                   = skeleton
+class                   = AI_PHANT
+
+script_binding  		= phantom_manager.bind
 
 speed                   = 2.0
 angular_speed           = 3.5
 contact_hit				= 0.1
 
-ef_creature_type		= -1
-
-script_binding  		= phantom_manager.bind
 
 ; state BIRTH
 particles_birth 		= monsters\phantom_birth

@@ -9,6 +9,21 @@ corpse_visual		 = monsters\rat\rat_1
 MaxHealthValue		 = 15				; range [0..200]
 
 ef_creature_type	 = 1				; option for evaluation functions
+ef_weapon_type		 = 1
+ef_detector_type	 = 1
+panic_threshold		= 0.1
+
+cform                        = skeleton			; collision class
+class                        = AI_RAT			; AI class
+
+bone_head		     = bip01_head		; bone name
+bone_torso		     = bip01_spine1 		; bone name
+
+weapon_usage		     = 0			; boolean
+
+
+
+
 
 
 
@@ -39,14 +54,6 @@ smart_terrain_choose_interval	= 20:00:00
 
 killer_clsids			= Z_MINCER,Z_GALANT,ZS_BFUZZ,ZS_MBALD,ZS_GALAN,ZS_MINCE
 
-
-ef_weapon_type		 = 1
-ef_detector_type	 = 1
-panic_threshold		= 0.1
-
-cform                        = skeleton			; collision class
-class                        = AI_RAT			; AI class
-
 ph_box0_center 		     =   0.0,   0.11, -0.22
 ph_box0_size 		     =   0.085, 0.11, 0.525
 ph_box1_center 		     =   0.0,   0.11, -0.22
@@ -61,10 +68,6 @@ cost					= 5
 bleeding_v					= 0						;потеря крови при номинальной ране в секунду
 wound_incarnation_v			= 0.0				;крутизна кривой заживления (какой процент раны останется после заживления в игровую секунду)
 min_wound_size				= 0.01
-
-bone_torso		     = bip01_spine1 		; bone name
-bone_head		     = bip01_head		; bone name
-weapon_usage		     = 0			; boolean
 
 EyeYShift		     = .15			; meters
 
@@ -188,6 +191,6 @@ species						= rat
 [rat_group]
 $spawn               = "monsters\rat-group"		; option for Level Editor
 $npc			     = on				; option for Level Editor
-Human		     	 = off				; option for ALife Simulator
 class                = AI_RAT_G			; AI class
+Human		     	 = off				; option for ALife Simulator
 monster_section      = m_rat_e

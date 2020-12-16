@@ -14,6 +14,28 @@ icon				 = ui_npc_monster_pseudodog
 MaxHealthValue		     = 1.0			; range [0..200]
 
 ef_creature_type	 = 21							; option for evaluation functions
+ef_weapon_type		 = 3
+ef_detector_type	 = 1
+panic_threshold		= 0.1
+
+cform                = skeleton					; collision class
+class                = SM_P_DOG					; AI class
+
+script_binding       = bind_monster.bind
+
+bone_head			 = bip01_head				; bone name
+bone_fire			 = bip01_head				; bone name
+bone_torso			 = bip01_spine1 			; bone name
+
+weapon_usage		 = 0						; boolean
+
+Spawn_Inventory_Item_Section = mutant_psevdodog_tail
+
+
+
+
+
+
 
 
 
@@ -37,24 +59,8 @@ search_speed         = .5                       ; option for ALife Simulator
 DynamicObjectsCount	 = 32
 smart_terrain_choose_interval	= 00:15:00
 
-Spawn_Inventory_Item_Section = mutant_psevdodog_tail
+
 Spawn_Inventory_Item_Probability = 0.2
-
-
-ef_weapon_type		 = 3
-ef_detector_type	 = 1
-panic_threshold		= 0.1
-
-cform                = skeleton					; collision class
-class                = SM_P_DOG					; AI class
-
-script_binding       = bind_monster.bind
-
-bone_torso			 = bip01_spine1 			; bone name
-bone_head			 = bip01_head				; bone name
-bone_fire			 = bip01_head				; bone name
-
-weapon_usage		 = 0						; boolean
 
 ;---------------------------------------------------------------------
 ; Physics

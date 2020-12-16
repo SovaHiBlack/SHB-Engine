@@ -13,6 +13,27 @@ corpse_visual		 = monsters\chimera\chimera
 MaxHealthValue		     = 100			; range [0..200]
 
 ef_creature_type	= 20							; option for evaluation functions
+ef_weapon_type		= 3
+ef_detector_type			 = 1
+panic_threshold			= 0.1
+
+cform                = skeleton					; collision class
+class                = SM_CHIMS					; AI class
+
+script_binding  	= bind_monster.bind
+
+bone_head			 = bip01_head				; bone name
+bone_fire			 = bip01_head				; bone name
+bone_torso			 = bip01_spine1 			; bone name
+
+weapon_usage		 = 0						; boolean
+
+
+
+
+
+
+
 
 ;------------------------------------------------------------------------------
 ; Offline Alife
@@ -30,19 +51,10 @@ search_speed         = .5                       ; option for ALife Simulator
 DynamicObjectsCount	 = 32
 
 
-ef_weapon_type		= 3
-ef_detector_type			 = 1
-panic_threshold			= 0.1
 
-cform                = skeleton					; collision class
-class                = SM_CHIMS					; AI class
 
-script_binding  	= bind_monster.bind
 
-bone_torso			 = bip01_spine1 			; bone name
-bone_head			 = bip01_head				; bone name
-bone_fire			 = bip01_head				; bone name
-weapon_usage		 = 0						; boolean
+
 
 ph_box0_center 		 = 0.0,  0.9,  0.0
 ph_box0_size 		 = 0.35, 0.9,  0.35

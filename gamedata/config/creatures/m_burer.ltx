@@ -13,11 +13,33 @@ corpse_visual			= monsters\burer\burer
 MaxHealthValue		    = 100						; range [0..200]
 
 ef_creature_type		= 18							; option for evaluation functions
+ef_weapon_type			= 12
+ef_detector_type		= 1
+panic_threshold			= 0.1
 
+cform					= skeleton					; collision class
+class					= SM_BURER					; AI class
 
+script_binding  		= bind_monster.bind
 
+bone_head				= bip01_head				; bone name
+bone_fire				= bip01_head				; bone name
+bone_torso				= bip01_spine1 				; bone name
+
+weapon_usage			= 0							; boolean
 
 Spawn_Inventory_Item_Section = mutant_burer_hand
+
+
+
+
+
+
+
+
+
+
+
 Spawn_Inventory_Item_Probability = 0.2
 
 ;------------------------------------------------------------------------
@@ -235,19 +257,10 @@ critical_wound_threshold		= -1
 critical_wound_decrease_quant	= 0.
 
 
-ef_weapon_type			= 12
-ef_detector_type		= 1
-panic_threshold			= 0.1
 
-cform					= skeleton					; collision class
-class					= SM_BURER					; AI class
 
-script_binding  		= bind_monster.bind
 
-bone_torso				= bip01_spine1 				; bone name
-bone_head				= bip01_head				; bone name
-bone_fire				= bip01_head				; bone name
-weapon_usage			= 0							; boolean
+
 actor_restrictor		= medium_monster ;medium_monster,stalker,none
 
 distance_to_corpse		= 1.2		; дист. до трупа, при которой он переходит в состояние еды

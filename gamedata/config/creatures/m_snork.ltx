@@ -14,6 +14,22 @@ icon					= ui_npc_monster_snork
 MaxHealthValue					= 200			; range [0..200]
 
 ef_creature_type		= 11						; option for evaluation functions
+ef_weapon_type			= 2
+ef_detector_type		= 1
+panic_threshold		= 0.1
+
+cform					 = skeleton					; collision class
+class					 = SM_SNORK					; AI class
+
+script_binding       = bind_monster.bind
+
+bone_head				= bip01_head				; bone name
+bone_fire				= bip01_head				; bone name
+bone_torso				= bip01_spine1 			; bone name
+
+weapon_usage			= 0						; boolean
+
+Spawn_Inventory_Item_Section = mutant_snork_leg
 
 
 
@@ -24,7 +40,7 @@ ef_creature_type		= 11						; option for evaluation functions
 
 DynamicObjectsCount		= 32
 
-Spawn_Inventory_Item_Section = mutant_snork_leg
+
 Spawn_Inventory_Item_Probability = 0.2
 
 ;------------------------------------------------------------------------------
@@ -42,20 +58,6 @@ search_speed					= 1.5			; option for ALife Simulator
 smart_terrain_choose_interval	= 00:15:00
 ;-----------------------------------------------------------------------------------
 
-script_binding       = bind_monster.bind
-
-
-ef_weapon_type			= 2
-ef_detector_type		= 1
-panic_threshold		= 0.1
-
-cform					 = skeleton					; collision class
-class					 = SM_SNORK					; AI class
-
-bone_torso				= bip01_spine1 			; bone name
-bone_head				= bip01_head				; bone name
-bone_fire				= bip01_head				; bone name
-weapon_usage			= 0						; boolean
 
 ;---------------------------------------------------------------------
 ; Physics
