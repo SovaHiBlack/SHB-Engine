@@ -32,11 +32,11 @@
 	<article id="barmen_eliminate_camp_2_descr" name="eliminate_lager" article_type="task">
 		<text>barmen_eliminate_camp_2_descr</text>
 	</article>
-<!--
-	<article id="barmen_eliminate_camp_3_descr" name="eliminate_lager" article_type="task">
-		<text>barmen_eliminate_camp_3_descr</text>
-	</article>
--->
+	<!--
+		<article id="barmen_eliminate_camp_3_descr" name="eliminate_lager" article_type="task">
+			<text>barmen_eliminate_camp_3_descr</text>
+		</article>
+	-->
 	<article id="barmen_eliminate_camp_4_descr" name="eliminate_lager" article_type="task">
 		<text>barmen_eliminate_camp_4_descr</text>
 	</article>
@@ -309,26 +309,26 @@
 
 	<!-- Find Item -->
 	<!-- Trader -->
-<!--
-	<article id="tm_find_item_1_descr" name="find_item" article_type="task">
-		<text>tm_find_item_1_descr</text>
-	</article>
--->
+	<!--
+		<article id="tm_find_item_1_descr" name="find_item" article_type="task">
+			<text>tm_find_item_1_descr</text>
+		</article>
+	-->
 
 	<!-- Barmen -->
-<!--
-	<article id="barmen_find_item_1_descr" name="find_item" article_type="task">
-		<text>barmen_find_item_1_descr</text>
-	</article>
+	<!--
+		<article id="barmen_find_item_1_descr" name="find_item" article_type="task">
+			<text>barmen_find_item_1_descr</text>
+		</article>
 
-	<article id="barmen_find_item_2_descr" name="find_item" article_type="task">
-		<text>barmen_find_item_2_descr</text>
-	</article>
+		<article id="barmen_find_item_2_descr" name="find_item" article_type="task">
+			<text>barmen_find_item_2_descr</text>
+		</article>
 
-	<article id="barmen_find_item_3_descr" name="find_item" article_type="task">
-		<text>barmen_find_item_3_descr</text>
-	</article>
--->
+		<article id="barmen_find_item_3_descr" name="find_item" article_type="task">
+			<text>barmen_find_item_3_descr</text>
+		</article>
+	-->
 	<!-- Dolg -->
 	<article id="dolg_find_item_1_descr" name="find_item" article_type="task">
 		<text>dolg_find_item_1_descr</text>
