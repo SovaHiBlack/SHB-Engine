@@ -25,11 +25,14 @@ script_binding						= bind_monster.bind
 
 bone_head							= bip01_head									; bone name
 bone_fire							= bip01_head
+bone_spin							= bip01_spine1
 
 weapon_usage						= 0												; boolean
 
 Spawn_Inventory_Item_Section		= mutant_krovosos_jaw
 Spawn_Inventory_Item_Probability	= 0.2
+
+DayTime_Begin						= 6						; начала дня для монстра
 
 ;------------------------------------------------------------------------------
 ; Offline Alife
@@ -230,14 +233,11 @@ critical_wound_bones_legs			= bloodsucker_critical_wound_bones_legs
 ;-------------------------------------------------------------------------
 ; Other Stuff (refactoring needed)
 ;-------------------------------------------------------------------------
-DayTime_Begin						= 6						; начала дня для монстра
+
 DayTime_End							= 23					; конец дня для монстра
 Min_Satiety							= 0.000055				; мин. норма сытости (меньше - уже голодный)
 Max_Satiety							= 1.0					; макс. норма сытости (больше - очень сытый)
 distance_to_corpse					= 0.8					; дист. до трупа, при которой он переходит в состояние еды
-
-; spin spin sugar
-bone_spin							= bip01_spine1
 
 ;									fSearchRange | fOptEnemyDistance | fOptEnemyDistanceWeight | fMinEnemyDistance | fMinEnemyDistanceWeight | fMaxEnemyDistance | fMaxEnemyDistanceWeight
 selector_approach					= 20.0,			1.0,				1000.0,						0.0,				0.0,					1000.0,					10000.0

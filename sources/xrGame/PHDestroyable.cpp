@@ -115,11 +115,9 @@ void CPHDestroyable::PhysicallyRemoveSelf()
 	}
 	else
 	{
-
 		//obj->PPhysicsShell()->PureStep();
 		obj->PPhysicsShell()->Disable();
 		obj->PPhysicsShell()->DisableCollision();
-
 	}
 
 	obj->setVisible(FALSE);
@@ -161,25 +159,38 @@ void CPHDestroyable::Destroy(u16 source_id, const char* section)
 
 void CPHDestroyable::Load(CIniFile* ini, const char* section)
 {
-	m_flags.set(fl_destroyable,FALSE);
-	if(ini->line_exist(section,"destroyed_vis_name")){
-		m_flags.set(fl_destroyable,TRUE);
-		m_destroyed_obj_visual_names.push_back(ini->r_string(section,"destroyed_vis_name"));
-	}else{
-		CIniFile::Sect& data		= ini->r_section(section);
-		if(data.Data.size()>0) m_flags.set(fl_destroyable,TRUE);
-		for (CIniFile::SectCIt I=data.Data.begin(); I!=data.Data.end(); I++)
-			if(I->first.size())		m_destroyed_obj_visual_names.push_back(I->first);
+	m_flags.set(fl_destroyable, FALSE);
+	if (ini->line_exist(section, "destroyed_vis_name"))
+	{
+		m_flags.set(fl_destroyable, TRUE);
+		m_destroyed_obj_visual_names.push_back(ini->r_string(section, "destroyed_vis_name"));
+	}
+	else
+	{
+		CIniFile::Sect& data = ini->r_section(section);
+		if (data.Data.size( ) > 0)
+		{
+			m_flags.set(fl_destroyable, TRUE);
+		}
+
+		for (CIniFile::SectCIt I = data.Data.begin( ); I != data.Data.end( ); I++)
+		{
+			if (I->first.size( ))
+			{
+				m_destroyed_obj_visual_names.push_back(I->first);
+			}
+		}
 	}
 }
 
 void CPHDestroyable::Load(const char* section)
 {
-	m_flags.set(fl_destroyable,FALSE);
+	m_flags.set(fl_destroyable, FALSE);
 
-	if(pSettings->line_exist(section,"destroyed_vis_name")){
-		m_flags.set								(fl_destroyable,TRUE);
-		m_destroyed_obj_visual_names.push_back	(pSettings->r_string(section,"destroyed_vis_name"));
+	if (pSettings->line_exist(section, "destroyed_vis_name"))
+	{
+		m_flags.set(fl_destroyable, TRUE);
+		m_destroyed_obj_visual_names.push_back(pSettings->r_string(section, "destroyed_vis_name"));
 	}
 }
 
