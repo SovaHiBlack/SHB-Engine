@@ -32,6 +32,20 @@ Spawn_Inventory_Item_Section = mutant_burer_hand
 Spawn_Inventory_Item_Probability = 0.2
 
 DayTime_Begin			= 0							;начала дня для монстра
+DayTime_End				= 21						;конец дня для монстра
+
+material				= creatures\large
+
+species					= burer	;species of monster
+rank					= 0
+spec_rank				= weak
+community				= burer
+
+
+
+
+
+
 
 ;------------------------------------------------------------------------
 ; Offline Alife
@@ -133,7 +147,7 @@ eat_slice						= 0.01				;увеличение сытости при 1 укусе
 eat_slice_weight				= 10.0				;уменьшение еды у трупа
 
 
-DayTime_End				= 21						;конец дня для монстра
+
 Min_Satiety				= 0.6						;мин. норма сытости (меньше - уже голодный)
 Max_Satiety				= 0.9						;макс. норма сытости (больше - очень сытый)
 
@@ -261,17 +275,17 @@ terrain					= burer_terrain
 
 DamagedThreshold		= 0.5
 
-material				= creatures\large
+
 step_params				= m_burer_step_params
 LegsCount				= 2
 damage					= m_burer_damage
 
-;species of monster
-species					= burer
 
-rank					= 0
-spec_rank				= weak
-community				= burer
+
+
+
+
+
 monster_type			= indoor
 
 ;=================================================================================
@@ -382,8 +396,8 @@ $spawn			= "monsters\arena\burer_arena"
 visual				= monsters\burer\burer_1
 panic_threshold		= 0.05
 species				= arena_monstr
-spec_rank			= weak
 rank				= 0
+spec_rank			= weak
 community			= burer
 
 explosion_immunity		= 0.2
@@ -407,20 +421,22 @@ Tele_Find_Radius		 = 15	;7.0
 
 [m_burer_normal]:m_burer_e
 $spawn		= "monsters\burers\burer_normal"
-monster_type		= indoor
 rank				= 0
 spec_rank			= weak
 community			= burer
+
 Tele_Time_To_Hold	= 200
+monster_type		= indoor
 
 [m_burer_normal_black]:m_burer_e
 $spawn		= "monsters\burers\burer_normal_black"
 visual				= monsters\burer\burer_1
-monster_type		= indoor
 rank				= 0
 spec_rank			= weak
 community			= burer
+
 Tele_Time_To_Hold	= 200
+monster_type		= indoor
 
 [burer_indoor]:m_burer_normal
 $spawn			= "monsters\burers\burer_indoor"

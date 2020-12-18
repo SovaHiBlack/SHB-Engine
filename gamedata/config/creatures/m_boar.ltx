@@ -33,6 +33,18 @@ Spawn_Inventory_Item_Section		= mutant_boar_leg
 Spawn_Inventory_Item_Probability	= 0.2
 
 DayTime_Begin					= 0			; начала дня для монстра
+DayTime_End						= 21		; конец дня для монстра
+
+material				= creatures\hoof
+
+species				= boar	;species of monster
+
+
+
+
+
+
+
 
 ;------------------------------------------------------------------------
 ; Offline Alife
@@ -243,17 +255,17 @@ step_params				= m_boar_step_params
 LegsCount				= 4
 
 
-DayTime_End						= 21		; конец дня для монстра
+
 
 distance_to_corpse				= 2.1		; дист. до трупа, при которой он переходит в состояние еды
 
 terrain							= boar_terrain
 
-material				= creatures\hoof
+
 DynamicObjectsCount		= 32
 
-;species of monster
-species				= boar
+
+
 
 ;===========================================================================
 ; ATTACK PARAMS
@@ -412,10 +424,13 @@ visual				= monsters\mutant_boar\mutant_boar
 icon				= ui_npc_monster_mutant_boar
 panic_threshold		= 0.5
 rank				= 0
-immunities_sect		= boar_immunities_weak
-attack_params		= boar_attack_params_weak
 spec_rank			= weak
 community			= boar
+
+immunities_sect		= boar_immunities_weak
+attack_params		= boar_attack_params_weak
+
+
 
 [boar_immunities_weak]
 burn_immunity			= 1.0
@@ -449,10 +464,13 @@ visual				= monsters\mutant_boar\mutant_boar
 icon				= ui_npc_monster_mutant_boar
 panic_threshold		= 0.2
 rank				= 401
-immunities_sect		= boar_immunities_normal
-attack_params		= boar_attack_params_normal
 spec_rank			= normal
 community			= boar
+
+immunities_sect		= boar_immunities_normal
+attack_params		= boar_attack_params_normal
+
+
 
 [boar_immunities_normal]
 burn_immunity			= 1.0
@@ -486,10 +504,13 @@ visual				= monsters\mutant_boar\mutant_boar_strong
 icon				= ui_npc_monster_mutant_boar_strong
 panic_threshold		= 0.05
 rank				= 801
-immunities_sect		= boar_immunities_strong
-attack_params		= boar_attack_params_strong
 spec_rank			= strong
 community			= boar
+
+immunities_sect		= boar_immunities_strong
+attack_params		= boar_attack_params_strong
+
+
 
 [boar_immunities_strong]
 burn_immunity			= 1.0

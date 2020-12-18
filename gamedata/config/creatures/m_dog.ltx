@@ -33,6 +33,12 @@ Spawn_Inventory_Item_Section = mutant_dog_tail
 Spawn_Inventory_Item_Probability = 0.2
 
 DayTime_Begin		= 0	;6		; начала дня для монстра
+DayTime_End			= 21		; конец дня для монстра
+
+material				= creatures\medium
+
+species					= dog	;species of monster
+
 
 
 
@@ -244,7 +250,7 @@ critical_wound_bones_legs	= dog_critical_wound_bones_legs
 ; Other Stuff (refactoring needed)
 ;-------------------------------------------------------------------------
 
-DayTime_End			= 21		; конец дня для монстра
+
 Min_Satiety			= 0.5	;0.06 ; мин. норма сытости (меньше - уже голодный)
 Max_Satiety			= 1.0	;0.9 ; макс. норма сытости (больше - очень сытый)
 
@@ -252,15 +258,15 @@ distance_to_corpse	= 1.3		; дист. до трупа, при которой он переходит в состояние
 
 terrain				 = dogs_terrain
 
-material				= creatures\medium
+
 DynamicObjectsCount		= 32
 
 step_params			= m_dog_step_params
 
 LegsCount			= 4
 
-;species of monster
-species					= dog
+
+
 
 ;===========================================================================
 ; Attack Animation Parameters
@@ -400,10 +406,13 @@ corpse_visual		= monsters\dog\dog_dead
 icon				= ui_npc_monster_dog
 panic_threshold		= 0.2
 rank				= 0
-immunities_sect		= dog_immunities_weak
-attack_params		= dog_attack_params_weak
 spec_rank			= weak
 community			= dog
+
+immunities_sect		= dog_immunities_weak
+attack_params		= dog_attack_params_weak
+
+
 
 eye_fov				 = 100
 eye_range			 = 20
@@ -443,10 +452,13 @@ corpse_visual		= monsters\dog\dog_red_dead
 icon				= ui_npc_monster_dog_red
 panic_threshold		= 0.2
 rank				= 401
-immunities_sect		= dog_immunities_normal
-attack_params		= dog_attack_params_normal
 spec_rank			= normal
 community			= dog
+
+immunities_sect		= dog_immunities_normal
+attack_params		= dog_attack_params_normal
+
+
 
 
 [dog_immunities_normal]
@@ -481,10 +493,13 @@ corpse_visual		= monsters\dog\dog_white_dead
 icon				= ui_npc_monster_dog_white
 panic_threshold		= 0.2
 rank				= 801
-immunities_sect		= dog_immunities_strong
-attack_params		= dog_attack_params_strong
 spec_rank			= strong
 community			= dog
+
+immunities_sect		= dog_immunities_strong
+attack_params		= dog_attack_params_strong
+
+
 
 
 [dog_immunities_strong]

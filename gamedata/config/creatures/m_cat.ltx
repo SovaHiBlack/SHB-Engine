@@ -26,6 +26,20 @@ bone_torso			 = bip01_spine1 			; bone name
 weapon_usage		 = 0						; boolean
 
 DayTime_Begin		= 6			; начала дня для монстра
+DayTime_End			= 21		; конец дня для монстра
+
+material				= creatures\small
+
+species					= cat	;species of monster
+
+
+
+
+
+
+
+
+
 
 ;------------------------------------------------------------------------------
 ; Offline Alife
@@ -114,7 +128,7 @@ attack_effector			= m_cat_attack_effector
 
 
 
-DayTime_End			= 21		; конец дня для монстра
+
 Min_Satiety			= 0.4	;0.6	; мин. норма сытости (меньше - уже голодный)
 Max_Satiety			= 1.0		; макс. норма сытости (больше - очень сытый)
 
@@ -205,7 +219,7 @@ distant_idle_sound_range	= 100.0
 
 DamagedThreshold		= 0.5
 
-material				= creatures\small
+
 
 min_view_distance   		= 0.8				; коэффициент, который множится на eye_range, в зависимости от угла
 max_view_distance	 		= 1.0				; коэффициент, который множится на eye_range, в зависимости от угла
@@ -224,8 +238,8 @@ damage					= m_cat_damage
 
 LegsCount				= 4
 
-;species of monster
-species					= cat
+
+
 
 [m_cat_damage]
 ;bone_name		 = <hit_scale>,-1,<wound_scale>

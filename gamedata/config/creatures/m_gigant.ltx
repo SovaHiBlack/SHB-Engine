@@ -30,14 +30,14 @@ bone_torso			 = bip01_spine1 			; bone name
 weapon_usage		 = 0						; boolean
 
 DayTime_Begin		= 0			; начала дня для монстра
+DayTime_End			= 21		; конец дня для монстра
 
+material				= creatures\large
 
-
-
-
-
-
-
+species					= giant	;species of monster
+rank					= 401
+spec_rank				= normal
+community				= pseudo_gigant
 
 
 
@@ -126,7 +126,7 @@ Run_Attack_Delay		= 3000,		6000
 
 
 
-DayTime_End			= 21		; конец дня для монстра
+
 Min_Satiety			= 0.6		; мин. норма сытости (меньше - уже голодный)
 Max_Satiety			= 0.9		; макс. норма сытости (больше - очень сытый)
 
@@ -225,7 +225,7 @@ distant_idle_sound_range	= 100.0
 
 DamagedThreshold		= 0.0 ;0.05 ;0.2
 
-material				= creatures\large
+
 DynamicObjectsCount		= 32
 
 step_params				= m_gigant_step_params
@@ -234,11 +234,11 @@ threaten_effector		= pseudogigant_threaten_effector
 
 LegsCount			= 2
 
-;species of monster
-species					= giant
-rank					= 401
-spec_rank				= normal
-community				= pseudo_gigant
+
+
+
+
+
 
 ;-----------------------------
 ; step effector
@@ -390,7 +390,6 @@ fire_wound_immunity  	= 0.05
 ;---------------------------
 [m_gigant_normal]:m_gigant_e
 $spawn				= "monsters\old\gigant_normal_old"
-;---------------------------
 rank				= 401
 spec_rank			= normal
 community			= pseudo_gigant

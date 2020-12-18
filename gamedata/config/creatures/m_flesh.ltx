@@ -33,6 +33,13 @@ Spawn_Inventory_Item_Section = mutant_flesh_eye
 Spawn_Inventory_Item_Probability = 0.2
 
 DayTime_Begin		= 6			; начала дня для монстра
+DayTime_End			= 21		; конец дня для монстра
+
+material			= creatures\hoof
+
+species				= flesh		;species of monster
+
+
 
 
 
@@ -214,7 +221,7 @@ transparency_threshold		= 0.25
 ;---------------------------------------------------------
 
 
-DayTime_End			= 21		; конец дня для монстра
+
 Min_Satiety			= 0.4	;0.6	; мин. норма сытости (меньше - уже голодный)
 Max_Satiety			= 1.0		; макс. норма сытости (больше - очень сытый)
 
@@ -251,13 +258,13 @@ selector_approach	=      20.0,            1.0,                1000.0,           
 
 DamagedThreshold	= 0.2
 
-material			= creatures\hoof
+
 step_params			= m_flesh_step_params
 LegsCount			= 4
 damage				= m_flesh_damage
 
-;species of monster
-species				= flesh
+
+
 
 terrain				= flesh_terrain
 
@@ -370,10 +377,13 @@ corpse_visual			= monsters\flesh\flesh_dead
 icon					= ui_npc_monster_flesh
 panic_threshold			= 0.2
 rank					= 0
-immunities_sect			= flesh_immunities_weak
-attack_params			= flesh_attack_params_weak
 spec_rank			= weak
 community			= flesh
+
+immunities_sect			= flesh_immunities_weak
+attack_params			= flesh_attack_params_weak
+
+
 
 [flesh_immunities_weak]
 burn_immunity			= 1.0
@@ -408,10 +418,13 @@ corpse_visual		= monsters\flesh\flesh_dead
 icon				= ui_npc_monster_flesh
 panic_threshold		= 0.2
 rank				= 401
-immunities_sect		= flesh_immunities_normal
-attack_params		= flesh_attack_params_normal
 spec_rank			= normal
 community			= flesh
+
+immunities_sect		= flesh_immunities_normal
+attack_params		= flesh_attack_params_normal
+
+
 
 
 [flesh_immunities_normal]
@@ -447,10 +460,13 @@ visual				= monsters\flesh\flesh_strong
 icon				= ui_npc_monster_flesh_strong
 panic_threshold		= 0.05	
 rank				= 801
-immunities_sect		= flesh_immunities_strong
-attack_params		= flesh_attack_params_strong
 spec_rank			= strong
 community			= flesh
+
+immunities_sect		= flesh_immunities_strong
+attack_params		= flesh_attack_params_strong
+
+
 
 
 [flesh_immunities_strong]

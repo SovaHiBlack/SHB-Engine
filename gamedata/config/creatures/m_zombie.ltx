@@ -32,6 +32,13 @@ Spawn_Inventory_Item_Section = mutant_zombie_hand
 Spawn_Inventory_Item_Probability = 0.2
 
 DayTime_Begin		= 0			; начала дня для монстра
+DayTime_End			= 21		; конец дня для монстра
+
+material				= creatures\medium
+
+species					= zombie		;species of monster
+
+
 
 
 
@@ -127,7 +134,7 @@ Melee_Rotation_Factor	= 1.6
 
 
 
-DayTime_End			= 21		; конец дня для монстра
+
 Min_Satiety			= 0.4		; мин. норма сытости (меньше - уже голодный)
 Max_Satiety			= 1.0		; макс. норма сытости (больше - очень сытый)
 
@@ -213,7 +220,7 @@ critical_wound_decrease_quant	= 0.
 FakeDeathCount					= 4		; max count of fake death
 StartFakeDeathHealthThreshold	= 0.6
 
-material				= creatures\medium
+
 DynamicObjectsCount		= 32
 
 LegsCount				= 2
@@ -222,8 +229,8 @@ step_params				= m_zombie_step_params
 
 damage					= m_zombie_damage
 
-;species of monster
-species					= zombie
+
+
 
 [m_zombie_damage]
 ;bone_name		 = <hit_scale>,-1,<wound_scale>

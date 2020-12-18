@@ -29,11 +29,11 @@ bone_torso			 = bip01_spine1 			; bone name
 weapon_usage		 = 0						; boolean
 
 DayTime_Begin		= 0			; начала дня для монстра
+DayTime_End			= 21		; конец дня для монстра
 
+material				= creatures\medium
 
-
-
-
+species					= fracture			;species of monster
 
 
 
@@ -133,7 +133,7 @@ attack_effector			= m_fracture_attack_effector
 
 
 
-DayTime_End			= 21		; конец дня для монстра
+
 Min_Satiety			= 0.4		; мин. норма сытости (меньше - уже голодный)
 Max_Satiety			= 1.0		; макс. норма сытости (больше - очень сытый)
 
@@ -213,7 +213,7 @@ distant_idle_sound_range	= 100.0
 
 DamagedThreshold		= 0.5
 
-material				= creatures\medium
+
 DynamicObjectsCount		= 32
 
 LegsCount				= 2
@@ -221,8 +221,8 @@ LegsCount				= 2
 step_params				= m_fracture_step_params
 damage					= m_Fracture_damage
 
-;species of monster
-species					= fracture
+
+
 
 [m_Fracture_damage]
 ;bone_name		 = <hit_scale>,-1,<wound_scale>

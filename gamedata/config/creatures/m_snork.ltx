@@ -33,6 +33,18 @@ Spawn_Inventory_Item_Section = mutant_snork_leg
 Spawn_Inventory_Item_Probability = 0.2
 
 DayTime_Begin			= 0			; начала дня для монстра
+DayTime_End				= 21		; конец дня для монстра
+
+material				= creatures\medium
+
+species						= snork		;species of monster
+
+
+
+
+
+
+
 
 
 
@@ -211,7 +223,7 @@ transparency_threshold		= 0.25
 ;-------------------------------------------------------------------------
 ; Other Stuff (refactoring needed)
 ;-------------------------------------------------------------------------
-material				= creatures\medium
+
 DynamicObjectsCount		= 32
 
 step_params				= m_snork_step_params
@@ -222,7 +234,7 @@ critical_wound_decrease_quant	= 0.
 LegsCount				= 2
 
 
-DayTime_End				= 21		; конец дня для монстра
+
 Min_Satiety				= 0.4		; мин. норма сытости (меньше - уже голодный)
 Max_Satiety				= 1.0		; макс. норма сытости (больше - очень сытый)
 
@@ -241,8 +253,8 @@ jump_max_distance			= 10.0
 jump_max_angle				= 0.6
 jump_max_height				= 3.5
 
-;species of monster
-species						= snork
+
+
 
 ;=================================================================================
 ; SNORK Damage
@@ -318,10 +330,13 @@ visual				= monsters\snork\snork
 icon				= ui_npc_monster_snork
 panic_threshold		= 0.5
 rank				= 0
-immunities_sect		= snork_immunities_weak
-attack_params		= snork_attack_params_weak
 spec_rank			= weak
 community			= snork
+
+immunities_sect		= snork_immunities_weak
+attack_params		= snork_attack_params_weak
+
+
 
 [snork_immunities_weak]
 burn_immunity			= 0.4								;коэффициенты иммунитета 
@@ -356,10 +371,13 @@ visual				= monsters\snork\snork
 icon				= ui_npc_monster_snork
 panic_threshold		= 0.2
 rank				= 401
-immunities_sect		= snork_immunities_normal
-attack_params		= snork_attack_params_normal
 spec_rank			= normal
 community			= snork
+
+immunities_sect		= snork_immunities_normal
+attack_params		= snork_attack_params_normal
+
+
 
 
 [snork_immunities_normal]
@@ -395,10 +413,13 @@ visual				= monsters\snork\snork
 icon				= ui_npc_monster_snork
 panic_threshold		= 0.05
 rank				= 801
-immunities_sect		= snork_immunities_strong
-attack_params		= snork_attack_params_strong
 spec_rank			= strong
 community			= snork
+
+immunities_sect		= snork_immunities_strong
+attack_params		= snork_attack_params_strong
+
+
 
 [snork_immunities_strong]
 burn_immunity			= 0.4								;коэффициенты иммунитета 

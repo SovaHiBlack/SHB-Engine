@@ -33,6 +33,19 @@ Spawn_Inventory_Item_Section		= mutant_krovosos_jaw
 Spawn_Inventory_Item_Probability	= 0.2
 
 DayTime_Begin						= 6						; начала дня для монстра
+DayTime_End							= 23					; конец дня для монстра
+
+material							= creatures\medium
+
+species								= bloodsucker	;species of monster
+
+
+
+
+
+
+
+
 
 ;------------------------------------------------------------------------------
 ; Offline Alife
@@ -234,7 +247,7 @@ critical_wound_bones_legs			= bloodsucker_critical_wound_bones_legs
 ; Other Stuff (refactoring needed)
 ;-------------------------------------------------------------------------
 
-DayTime_End							= 23					; конец дня для монстра
+
 Min_Satiety							= 0.000055				; мин. норма сытости (меньше - уже голодный)
 Max_Satiety							= 1.0					; макс. норма сытости (больше - очень сытый)
 distance_to_corpse					= 0.8					; дист. до трупа, при которой он переходит в состояние еды
@@ -243,13 +256,13 @@ distance_to_corpse					= 0.8					; дист. до трупа, при которой он переходит в со
 selector_approach					= 20.0,			1.0,				1000.0,						0.0,				0.0,					1000.0,					10000.0
 
 terrain								= bloodsucker_terrain
-material							= creatures\medium
+
 
 step_params							= m_bloodsucker_step_params
 LegsCount							= 2
 
-;species of monster
-species								= bloodsucker
+
+
 
 ;-------------------------------------------------------------------------
 ; Invisible Ability
@@ -460,10 +473,13 @@ visual								= monsters\krovosos\krovosos
 icon								= ui_npc_monster_krovosos
 panic_threshold						= 0.5
 rank								= 0
-immunities_sect						= bloodsucker_immunities_weak
-attack_params						= bloodsucker_attack_params_weak
 spec_rank							= weak
 community							= bloodsucker
+
+immunities_sect						= bloodsucker_immunities_weak
+attack_params						= bloodsucker_attack_params_weak
+
+
 
 [bloodsucker_immunities_weak]
 burn_immunity						= 1.0
@@ -504,10 +520,13 @@ visual								= monsters\krovosos\krovosos
 icon								= ui_npc_monster_krovosos
 panic_threshold						= 0.2
 rank								= 401
-immunities_sect						= bloodsucker_immunities_normal
-attack_params						= bloodsucker_attack_params_normal
 spec_rank							= normal
 community							= bloodsucker
+
+immunities_sect						= bloodsucker_immunities_normal
+attack_params						= bloodsucker_attack_params_normal
+
+
 
 [bloodsucker_immunities_normal]
 burn_immunity						= 1.0
@@ -549,10 +568,13 @@ icon								= ui_npc_monster_krovosos_strong
 Predator_Visual						= monsters\krovosos\krovosos_strong_xray
 panic_threshold						= 0.05
 rank								= 401
-immunities_sect						= bloodsucker_immunities_strong
-attack_params						= bloodsucker_attack_params_strong
 spec_rank							= strong
 community							= bloodsucker
+
+immunities_sect						= bloodsucker_immunities_strong
+attack_params						= bloodsucker_attack_params_strong
+
+
 
 [bloodsucker_immunities_strong]
 burn_immunity						= 1.0

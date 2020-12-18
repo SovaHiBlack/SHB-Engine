@@ -33,10 +33,14 @@ Spawn_Inventory_Item_Section = mutant_psevdodog_tail
 Spawn_Inventory_Item_Probability = 0.2
 
 DayTime_Begin		= 0	;6			; начала дня для монстра
+DayTime_End			= 21			; конец дня для монстра
 
+material				= creatures\medium
 
-
-
+species					= pseudodog	;species of monster
+rank					= 0
+spec_rank				= weak
+community				= pseudodog
 
 
 
@@ -125,7 +129,7 @@ Melee_Rotation_Factor	= 2.6
 
 
 
-DayTime_End			= 21			; конец дня для монстра
+
 Min_Satiety			= 0.95	;0.3	;0.6		; мин. норма сытости (меньше - уже голодный)
 Max_Satiety			= 1.0			; макс. норма сытости (больше - очень сытый)
 
@@ -238,7 +242,7 @@ DamagedThreshold		= 0.2
 critical_wound_threshold		= -1
 critical_wound_decrease_quant	= 0.0
 
-material				= creatures\medium
+
 DynamicObjectsCount		= 32
 
 damage					= m_pseudodog_damage
@@ -250,11 +254,11 @@ LegsCount				= 4
 anger_hunger_threshold	= 0.1
 anger_loud_threshold	= 0.7
 
-;species of monster
-species					= pseudodog
-rank					= 0
-spec_rank				= weak
-community				= pseudodog
+
+
+
+
+
 
 [m_pseudodog_attack_params]
 ;---------------------------------------------------------------------------------------------------------------------------------------------
@@ -347,10 +351,13 @@ visual				= monsters\pseudodog\pseudodog
 icon				= ui_npc_monster_pseudodog
 panic_threshold		= 0.5
 rank				= 0
-immunities_sect		= pseudodog_immunities_weak
-attack_params		= pseudodog_attack_params_weak
 spec_rank			= weak
 community			= pseudodog
+
+immunities_sect		= pseudodog_immunities_weak
+attack_params		= pseudodog_attack_params_weak
+
+
 
 [pseudodog_immunities_weak]
 burn_immunity			= 1.0
@@ -381,10 +388,13 @@ visual				= monsters\pseudodog\pseudodog
 icon				= ui_npc_monster_pseudodog
 panic_threshold		= 0.2
 rank				= 401
-immunities_sect		= pseudodog_immunities_normal
-attack_params		= pseudodog_attack_params_normal
 spec_rank			= normal
 community			= pseudodog
+
+immunities_sect		= pseudodog_immunities_normal
+attack_params		= pseudodog_attack_params_normal
+
+
 
 [pseudodog_immunities_normal]
 burn_immunity			= 1.0
@@ -416,10 +426,13 @@ corpse_visual		= monsters\pseudodog\pseudodog_grey_dead
 icon				= ui_npc_monster_pseudodog_grey
 panic_threshold		= 0.05	
 rank				= 801
-immunities_sect		= pseudodog_immunities_strong
-attack_params		= pseudodog_attack_params_strong
 spec_rank			= strong
 community			= pseudodog
+
+immunities_sect		= pseudodog_immunities_strong
+attack_params		= pseudodog_attack_params_strong
+
+
 
 [pseudodog_immunities_strong]
 burn_immunity			= 1.0
