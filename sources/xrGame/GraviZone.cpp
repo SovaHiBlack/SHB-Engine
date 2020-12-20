@@ -16,7 +16,7 @@
 #include "entity_alive.h"
 #include "PHMovementControl.h"
 #include "Messages.h"
-#include "PhysicsShellHolder.h"
+#include "PHShellHolder.h"
 #include "Level.h"
 #include "CharacterPhysicsSupport.h"
 
@@ -94,7 +94,7 @@ bool CBaseGraviZone ::IdleState()
 		{
 			for(OBJECT_INFO_VEC_IT it = m_ObjectInfoMap.begin(); m_ObjectInfoMap.end() != it; ++it) 
 			{
-				CPhysicsShellHolder * GO = smart_cast<CPhysicsShellHolder *>( (*it).object );
+				CPHShellHolder* GO = smart_cast<CPHShellHolder*>( (*it).object );
 
 				if(GO && GO->PPhysicsShell() && Telekinesis().is_active_object(GO))
 				{
@@ -109,7 +109,7 @@ bool CBaseGraviZone ::IdleState()
 
 			for(OBJECT_INFO_VEC_IT it = m_ObjectInfoMap.begin(); m_ObjectInfoMap.end() != it; ++it) 
 			{
-				CPhysicsShellHolder * GO = smart_cast<CPhysicsShellHolder *>( (*it).object );
+				CPHShellHolder* GO = smart_cast<CPHShellHolder*>( (*it).object );
 
 				if(GO && GO->PPhysicsShell() && !Telekinesis().is_active_object(GO))
 				{
@@ -125,14 +125,14 @@ bool CBaseGraviZone ::IdleState()
 	return result;
 }
 
-bool CBaseGraviZone::CheckAffectField(CPhysicsShellHolder* GO,float dist_to_radius)
+bool CBaseGraviZone::CheckAffectField(CPHShellHolder* GO,float dist_to_radius)
 {
 	return dist_to_radius>BlowoutRadiusPercent(GO);
 }
 
 void CBaseGraviZone ::Affect(SZoneObjectInfo* O) 
 {
-	CPhysicsShellHolder* GO = smart_cast<CPhysicsShellHolder*>(O->object);
+	CPHShellHolder* GO = smart_cast<CPHShellHolder*>(O->object);
 	if(!GO) return;
 
 	//////////////////////////////////////////////////////////////////////////
@@ -183,7 +183,7 @@ void CBaseGraviZone ::  ThrowInCenter(Fvector& C)
 	Center(C);
 }
 
-void CBaseGraviZone ::	AffectPull(CPhysicsShellHolder* GO,const Fvector& throw_in_dir,float dist)
+void CBaseGraviZone ::	AffectPull(CPHShellHolder* GO,const Fvector& throw_in_dir,float dist)
 {
 	CEntityAlive* EA = smart_cast<CEntityAlive*>(GO);	
 	if(EA && EA->g_Alive())
@@ -208,12 +208,12 @@ void CBaseGraviZone ::	AffectPullAlife(CEntityAlive* EA,const Fvector& throw_in_
 			EA->character_physics_support()->movement()->AddControlVel(vel);
 }
 
-void CBaseGraviZone ::	AffectPullDead(CPhysicsShellHolder* GO,const Fvector& throw_in_dir,float dist)
+void CBaseGraviZone ::	AffectPullDead(CPHShellHolder* GO,const Fvector& throw_in_dir,float dist)
 {
 			GO->PPhysicsShell()->applyImpulse(throw_in_dir,dist * m_fThrowInImpulse*GO->GetMass()/100.f);
 }
 
-void CBaseGraviZone ::	AffectThrow(SZoneObjectInfo* O, CPhysicsShellHolder* GO,const Fvector& throw_in_dir,float dist)
+void CBaseGraviZone ::	AffectThrow(SZoneObjectInfo* O, CPHShellHolder* GO,const Fvector& throw_in_dir,float dist)
 {
 	Fvector position_in_bone_space;
 

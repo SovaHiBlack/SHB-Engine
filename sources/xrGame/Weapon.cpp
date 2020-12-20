@@ -1277,17 +1277,17 @@ void CWeapon::reload			(const char* section)
 
 void CWeapon::create_physic_shell()
 {
-	CPhysicsShellHolder::create_physic_shell();
+	CPHShellHolder::create_physic_shell();
 }
 
 void CWeapon::activate_physic_shell()
 {
-	CPhysicsShellHolder::activate_physic_shell();
+	CPHShellHolder::activate_physic_shell();
 }
 
 void CWeapon::setup_physic_shell()
 {
-	CPhysicsShellHolder::setup_physic_shell();
+	CPHShellHolder::setup_physic_shell();
 }
 
 int		g_iWeaponRemove = 1;

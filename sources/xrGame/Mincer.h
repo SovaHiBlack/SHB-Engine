@@ -10,7 +10,7 @@
 
 #include "GraviZone.h"
 #include "telewhirlwind.h"
-#include "PhysicsShellHolder.h"
+#include "PHShellHolder.h"
 #include "script_export_space.h"
 #include "PHDestroyable.h"
 
@@ -37,17 +37,18 @@ public:
 	virtual void	feel_touch_new				(CObject* O);
 	virtual void	Load						(const char* section);
 	virtual bool	BlowoutState				();
-	virtual void	AffectPullDead				(CPhysicsShellHolder* GO,const Fvector& throw_in_dir,float dist){}
+	virtual void	AffectPullDead				(CPHShellHolder* GO,const Fvector& throw_in_dir,float dist){}
 	virtual void	AffectPullAlife				(CEntityAlive* EA,const Fvector& throw_in_dir,float dist);
-	virtual void	AffectThrow					(SZoneObjectInfo* O, CPhysicsShellHolder* GO,const Fvector& throw_in_dir,float dist);
+	virtual void	AffectThrow					(SZoneObjectInfo* O, CPHShellHolder* GO,const Fvector& throw_in_dir,float dist);
 	virtual void	ThrowInCenter				(Fvector& C);
 	virtual BOOL	net_Spawn					(CSE_Abstract* DC);
 	virtual void	net_Destroy					();
 	virtual void	Center						(Fvector& C) const;
 	virtual	void	NotificateDestroy			(CPHDestroyableNotificate *dn);
-	virtual float	BlowoutRadiusPercent		(CPhysicsShellHolder* GO);
+	virtual float	BlowoutRadiusPercent		(CPHShellHolder* GO);
 
-	DECLARE_SCRIPT_REGISTER_FUNCTION
+public:
+	static void script_register(lua_State*);
 };
 
 add_to_type_list(CMincer)

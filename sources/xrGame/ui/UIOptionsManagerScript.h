@@ -13,7 +13,8 @@ public:
 	void	OptionsPostAccept	( );
 	void	SendMessage2Group	(const char* group, const char* message);
 
-	DECLARE_SCRIPT_REGISTER_FUNCTION
+public:
+	static void script_register(lua_State*);
 };
 
 add_to_type_list(CUIOptionsManagerScript)

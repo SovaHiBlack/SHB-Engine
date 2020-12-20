@@ -8,7 +8,7 @@
 
 #pragma once
 
-class CPhysicsShellHolder;
+class CPHShellHolder;
 class CInventoryItem;
 
 class CAttachableItem {
@@ -37,7 +37,7 @@ public:
 	virtual	void				afterAttach				();
 	virtual	void				afterDetach				();
 	IC		CInventoryItem		&item					() const;
-	IC		CPhysicsShellHolder	&object					() const;
+	IC		CPHShellHolder&object					() const;
 	IC		shared_str			bone_name				() const;
 	IC		u16					bone_id					() const;
 	IC		void				set_bone_id				(u16 bone_id);

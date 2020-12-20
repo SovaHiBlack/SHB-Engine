@@ -428,7 +428,7 @@ void CControlManagerCustom::check_jump_over_physics()
 		Level().ObjectSpace.GetNearest	(m_nearest,travel_point.position, m_object->Radius(), NULL);
 
 		for (u32 k=0;k<m_nearest.size();k++) {
-			CPhysicsShellHolder *obj = smart_cast<CPhysicsShellHolder *>(m_nearest[k]);
+			CPHShellHolder*obj = smart_cast<CPHShellHolder*>(m_nearest[k]);
 			if (!obj || !obj->PPhysicsShell() || !obj->PPhysicsShell()->isActive() || (obj->Radius() < 0.5f)) continue;
 			if (m_object->Position().distance_to(obj->Position()) < MAX_DIST_SUM / 2) continue;
 

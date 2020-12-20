@@ -28,7 +28,7 @@ void CMincer::OnStateSwitch(EZoneState new_state)
 		OBJECT_INFO_VEC_IT it;
 		for(it = m_ObjectInfoMap.begin(); m_ObjectInfoMap.end() != it; ++it) 
 		{
-			CPhysicsShellHolder * GO = smart_cast<CPhysicsShellHolder *>((*it).object);
+			CPHShellHolder* GO = smart_cast<CPHShellHolder*>((*it).object);
 			if (GO)					Telekinesis().activate(GO,m_fThrowInImpulse, m_fTeleHeight, 100000);
 		}
 	}
@@ -75,17 +75,17 @@ void CMincer::feel_touch_new				(CObject* O)
 	inherited::feel_touch_new(O);
 	if( m_eZoneState==eZoneStateBlowout && (m_dwBlowoutExplosionTime>(u32)m_iStateTime) )
 	{
-		CPhysicsShellHolder * GO = smart_cast<CPhysicsShellHolder *>(O);
+		CPHShellHolder* GO = smart_cast<CPHShellHolder*>(O);
 		Telekinesis().activate(GO, m_fThrowInImpulse, m_fTeleHeight, 100000);
 	}
 }
 
 BOOL	CMincer::feel_touch_contact				(CObject* O)
 {
-	return inherited::feel_touch_contact(O)&&smart_cast<CPhysicsShellHolder *>(O);
+	return inherited::feel_touch_contact(O)&&smart_cast<CPHShellHolder*>(O);
 }
 
-void CMincer:: AffectThrow	(SZoneObjectInfo* O, CPhysicsShellHolder* GO,const Fvector& throw_in_dir,float dist)
+void CMincer:: AffectThrow	(SZoneObjectInfo* O, CPHShellHolder* GO,const Fvector& throw_in_dir,float dist)
 {
 	inherited::AffectThrow(O,GO,throw_in_dir,dist);
 }
@@ -99,7 +99,7 @@ bool CMincer::BlowoutState	()
 	//{
 	//	CEntityAlive * EA = smart_cast<CEntityAlive *>(*it);
 	//	if(!EA)continue;
-	//	CPhysicsShellHolder * GO = smart_cast<CPhysicsShellHolder *>(*it);
+	//	CPHShellHolder * GO = smart_cast<CPHShellHolder *>(*it);
 	//	Telekinesis().activate(GO,m_fThrowInImpulse, m_fTeleHeight, 100000);
 
 	//}
@@ -128,7 +128,7 @@ void CMincer::NotificateDestroy			(CPHDestroyableNotificate *dn)
 	//if(!m_telekinetics.has_impacts()) return;
 
 	//CObject* obj=Level().Objects.net_Find(id);
-	CPhysicsShellHolder* obj=dn->PPhysicsShellHolder();
+	CPHShellHolder* obj=dn->PPhysicsShellHolder();
 	m_telekinetics.draw_out_impact(dir,impulse);
 	CParticlesPlayer* PP = smart_cast<CParticlesPlayer*>(obj);
 	if(PP && *m_torn_particles)
@@ -157,7 +157,7 @@ void CMincer::AffectPullAlife(CEntityAlive* EA,const Fvector& throw_in_dir,float
 	inherited::AffectPullAlife(EA,throw_in_dir,dist);
 }
 
-float CMincer::BlowoutRadiusPercent	(CPhysicsShellHolder* GO)
+float CMincer::BlowoutRadiusPercent	(CPHShellHolder* GO)
 {
 	return	(GO->CLS_ID!=CLSID_OBJECT_ACTOR? m_fBlowoutRadiusPercent:m_fActorBlowoutRadiusPercent);
 }

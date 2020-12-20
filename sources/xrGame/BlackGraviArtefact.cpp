@@ -12,7 +12,7 @@
 //#include "ParticlesObject.h"
 #include "PHMovementControl.h"
 //#include "Messages.h"
-//#include "PhysicsShellHolder.h"
+//#include "PHShellHolder.h"
 #include "Explosive.h"
 #include "../ENGINE/net_utils.h"
 #include "PHWorld.h"
@@ -65,12 +65,12 @@ BOOL CBlackGraviArtefact::net_Spawn(CSE_Abstract* DC)
 
 struct SRP
 {
-	const CPhysicsShellHolder* obj;
-	SRP(const CPhysicsShellHolder* O)
+	const CPHShellHolder* obj;
+	SRP(const CPHShellHolder* O)
 	{
 		obj = O;
 	}
-	bool operator	() (CPhysicsShellHolder* O) const
+	bool operator	() (CPHShellHolder* O) const
 	{
 		return obj == O;
 	}
@@ -80,10 +80,10 @@ void CBlackGraviArtefact::net_Relcase(CObject* O)
 {
 	inherited::net_Relcase(O);
 	//for vector
-	GAME_OBJECT_LIST_it I = std::remove_if(m_GameObjectList.begin( ), m_GameObjectList.end( ), SRP(smart_cast<CPhysicsShellHolder*>(O)));
+	GAME_OBJECT_LIST_it I = std::remove_if(m_GameObjectList.begin( ), m_GameObjectList.end( ), SRP(smart_cast<CPHShellHolder*>(O)));
 	m_GameObjectList.erase(I, m_GameObjectList.end( ));
 	//for list
-	//m_GameObjectList.remove_if(SRP(smart_cast<CPhysicsShellHolder*>(O)));
+	//m_GameObjectList.remove_if(SRP(smart_cast<CPHShellHolder*>(O)));
 }
 
 void CBlackGraviArtefact::UpdateCLChild( )
@@ -136,7 +136,7 @@ void	CBlackGraviArtefact::Hit(SHit* pHDS)
 
 void CBlackGraviArtefact::feel_touch_new(CObject* O)
 {
-	CPhysicsShellHolder* pGameObject = smart_cast<CPhysicsShellHolder*>(O);
+	CPHShellHolder* pGameObject = smart_cast<CPHShellHolder*>(O);
 	CArtefact* pArtefact = smart_cast<CArtefact*>(O);
 
 	if (pGameObject && !pArtefact)
@@ -180,7 +180,7 @@ void CBlackGraviArtefact::GraviStrike( )
 		 m_GameObjectList.end( ) != it;
 		 ++it)
 	{
-		CPhysicsShellHolder* pGameObject = *it;
+		CPHShellHolder* pGameObject = *it;
 
 		if (pGameObject->Visual( ))
 			pGameObject->Center(object_pos);

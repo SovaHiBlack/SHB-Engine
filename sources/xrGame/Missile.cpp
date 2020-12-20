@@ -628,7 +628,7 @@ void CMissile::activate_physic_shell( )
 //	m_pPhysicsShell->AddTracedGeom		();
 	m_pPhysicsShell->SetAllGeomTraced( );
 	m_pPhysicsShell->add_ObjectContactCallback(ExitContactCallback);
-	m_pPhysicsShell->set_CallbackData(smart_cast<CPhysicsShellHolder*>(entity_alive));
+	m_pPhysicsShell->set_CallbackData(smart_cast<CPHShellHolder*>(entity_alive));
 //	m_pPhysicsShell->remove_ObjectContactCallback	(ExitContactCallback);
 	m_pPhysicsShell->SetAirResistance(0.f, 0.f);
 	m_pPhysicsShell->set_DynamicScales(1.f, 1.f);
@@ -643,7 +643,7 @@ void	CMissile::net_Relcase(CObject* O)
 	inherited::net_Relcase(O);
 	if (PPhysicsShell( ) && PPhysicsShell( )->isActive( ))
 	{
-		if (O == smart_cast<CObject*>((CPhysicsShellHolder*) PPhysicsShell( )->get_CallbackData( )))
+		if (O == smart_cast<CObject*>((CPHShellHolder*) PPhysicsShell( )->get_CallbackData( )))
 		{
 			PPhysicsShell( )->remove_ObjectContactCallback(ExitContactCallback);
 			PPhysicsShell( )->set_CallbackData(NULL);
@@ -703,7 +703,7 @@ void	 CMissile::ExitContactCallback(bool& do_colide, bool bo1, dContact& c, SGam
 		gd2 = retrieveGeomUserData(c.geom.g1);
 		gd1 = retrieveGeomUserData(c.geom.g2);
 	}
-	if (gd1 && gd2 && (CPhysicsShellHolder*) gd1->callback_data == gd2->ph_ref_object)
+	if (gd1 && gd2 && (CPHShellHolder*) gd1->callback_data == gd2->ph_ref_object)
 		do_colide = false;
 }
 

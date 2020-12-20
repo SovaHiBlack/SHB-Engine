@@ -119,7 +119,7 @@ public:
 
 protected:
 	virtual void							SpawnInitPhysics(CSE_Abstract* D);
-	virtual CPhysicsShellHolder* PPhysicsShellHolder( )
+	virtual CPHShellHolder* PPhysicsShellHolder( )
 	{
 		return m_EntityAlife.PhysicsShellHolder( );
 	}

@@ -2,7 +2,7 @@
 
 #include "PHObject.h"
 #include "GameObject.h"
-#include "PhysicsShellHolder.h"
+#include "PHShellHolder.h"
 
 //class CPhysicShellHolder;
 class CPHCharacter;
@@ -10,8 +10,8 @@ class CPHCharacter;
 class CPHCapture : public CPHUpdateObject
 {
 public:
-					CPHCapture	(CPHCharacter     *a_character,CPhysicsShellHolder	  *a_taget_object);
-					CPHCapture	(CPHCharacter     *a_character,CPhysicsShellHolder	  *a_taget_object,u16 a_taget_elemrnt);
+					CPHCapture	(CPHCharacter     *a_character, CPHShellHolder*a_taget_object);
+					CPHCapture	(CPHCharacter     *a_character, CPHShellHolder*a_taget_object,u16 a_taget_elemrnt);
 virtual				~CPHCapture							();
 
 
@@ -21,7 +21,7 @@ void				net_Relcase							(CObject* O);
 protected:
 CPHCharacter		*m_character;
 CPhysicsElement*	m_taget_element;
-CPhysicsShellHolder*	m_taget_object;
+CPHShellHolder*	m_taget_object;
 dJointID			m_joint;
 dJointID			m_ajoint;
 dJointFeedback		m_joint_feedback;

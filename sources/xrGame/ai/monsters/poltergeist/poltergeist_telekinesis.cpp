@@ -1,7 +1,7 @@
 #include "stdafx.h"
 
 #include "poltergeist.h"
-#include "..\..\..\PhysicsShellHolder.h"
+#include "..\..\..\PHShellHolder.h"
 #include "..\..\..\Level.h"
 #include "../../../actor.h"
 
@@ -161,7 +161,7 @@ void CPolterTele::tele_find_objects(xr_vector<CObject*> &objects, const Fvector 
 	Level().ObjectSpace.GetNearest	(m_nearest, pos, m_pmt_radius, NULL);
 
 	for (u32 i=0;i<m_nearest.size();i++) {
-		CPhysicsShellHolder *obj			= smart_cast<CPhysicsShellHolder *>(m_nearest[i]);
+		CPHShellHolder*obj			= smart_cast<CPHShellHolder*>(m_nearest[i]);
 		CCustomMonster		*custom_monster	= smart_cast<CCustomMonster *>(m_nearest[i]);
 		if (!obj || 
 			!obj->PPhysicsShell() || 
@@ -221,7 +221,7 @@ bool CPolterTele::tele_raise_objects()
 
 	//// активировать
 	//for (u32 i=0; i<tele_objects.size(); i++) {
-	//	CPhysicsShellHolder *obj = smart_cast<CPhysicsShellHolder *>(tele_objects[i]);
+	//	CPHShellHolder *obj = smart_cast<CPHShellHolder *>(tele_objects[i]);
 
 	//	// применить телекинез на объект
 	//	bool	rotate = false;
@@ -230,7 +230,7 @@ bool CPolterTele::tele_raise_objects()
 	//}
 
 	if (!tele_objects.empty()) {
-		CPhysicsShellHolder *obj = smart_cast<CPhysicsShellHolder *>(tele_objects[0]);
+		CPHShellHolder*obj = smart_cast<CPHShellHolder*>(tele_objects[0]);
 
 		// применить телекинез на объект
 		bool	rotate = false;

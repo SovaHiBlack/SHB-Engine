@@ -76,7 +76,8 @@ public:
 	IC		const float	&walked_distance				() const;
 			Fvector		draw_level_position				() const;
 
-	DECLARE_SCRIPT_REGISTER_FUNCTION
+public:
+	static void script_register(lua_State*);
 };
 
 add_to_type_list(CALifeMonsterDetailPathManager)

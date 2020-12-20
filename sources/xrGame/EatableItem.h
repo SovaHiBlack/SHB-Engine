@@ -2,7 +2,7 @@
 
 #include "InventoryItem.h"
 
-class CPhysicItem;
+class CPHItem;
 class CEntityAlive;
 
 class CEatableItem : public CInventoryItem
@@ -11,7 +11,7 @@ private:
 	using inherited								= CInventoryItem;
 
 private:
-	CPhysicItem*								m_physic_item;
+	CPHItem*								m_physic_item;
 
 public:
 							CEatableItem		( );

@@ -209,7 +209,8 @@ public:
 	IC void							alife_evaluation(bool value);
 	IC CNonALifeParams& non_alife( );
 	IC CALifeParams& alife( );
-	DECLARE_SCRIPT_REGISTER_FUNCTION
+public:
+	static void script_register(lua_State*);
 };
 
 add_to_type_list(CEF_Storage)

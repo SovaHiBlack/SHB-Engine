@@ -3,7 +3,7 @@
 #include "alife_space.h"
 #include "hit.h"
 #include "PHDestroyable.h"
-#include "PhysicsShellHolder.h"
+#include "PHShellHolder.h"
 #include "Messages.h"
 #include "ObjectFactory.h"
 #include "xrServer_Objects_ALife.h"
@@ -72,19 +72,17 @@ void CPHDestroyable::GenSpawnReplace(u16 ref_id, const char* section,shared_str 
 		// Destroy
 		F_entity_Destroy	(D);
 		m_depended_objects++;
-	};
+	}
 };
 
 void CPHDestroyable::InitServerObject(CSE_Abstract* D)
 {
-	CPhysicsShellHolder	*obj	=PPhysicsShellHolder()		;
+	CPHShellHolder*obj	=PPhysicsShellHolder()		;
 	CSE_ALifeDynamicObjectVisual	*l_tpALifeDynamicObject = smart_cast<CSE_ALifeDynamicObjectVisual*>(D);
 	VERIFY							(l_tpALifeDynamicObject);
-	
 
 	l_tpALifeDynamicObject->m_tGraphID	=obj->ai_location().game_vertex_id();
 	l_tpALifeDynamicObject->m_tNodeID	= obj->ai_location().level_vertex_id();
-
 
 	//	l_tpALifePhysicObject->startup_animation=m_startup_anim;
 	
@@ -106,7 +104,7 @@ void CPHDestroyable::InitServerObject(CSE_Abstract* D)
 
 void CPHDestroyable::PhysicallyRemoveSelf()
 {
-	CPhysicsShellHolder	*obj	=PPhysicsShellHolder()		;
+	CPHShellHolder*obj	=PPhysicsShellHolder()		;
 
 	CActor				*A		=smart_cast<CActor*>(obj)	;
 	if(A)
@@ -126,7 +124,7 @@ void CPHDestroyable::PhysicallyRemoveSelf()
 
 void CPHDestroyable::PhysicallyRemovePart(CPHDestroyableNotificate *dn)
 {
-	CPhysicsShellHolder		*sh		=	dn		->PPhysicsShellHolder		()		;	
+	CPHShellHolder*sh		=	dn		->PPhysicsShellHolder		()		;
 	CPhysicsShell			*s		=	sh		->PPhysicsShell				()		;
 							sh					->setVisible				(FALSE)	;
 							sh					->setEnabled				(FALSE)	;
@@ -138,7 +136,7 @@ void CPHDestroyable::Destroy(u16 source_id, const char* section)
 {
 	if(!CanDestroy())return ;
 	m_notificate_objects.clear();
-	CPhysicsShellHolder	*obj	=PPhysicsShellHolder()		;
+	CPHShellHolder*obj	=PPhysicsShellHolder()		;
 	CPHSkeleton *phs= obj->PHSkeleton();
 	if(phs)phs->SetNotNeedSave();
 	if(obj->PPhysicsShell())	obj->PPhysicsShell()->Enable()	;
@@ -207,16 +205,16 @@ void CPHDestroyable::RespawnInit()
 	m_notificate_objects.clear();
 	m_depended_objects=0;
 }
+
 void CPHDestroyable::SheduleUpdate(u32 dt)
 {
 	if(!m_flags.test(fl_destroyed)||!m_flags.test(fl_released)) return;
-	CPhysicsShellHolder *obj=PPhysicsShellHolder();
+	CPHShellHolder*obj=PPhysicsShellHolder();
 
 	if( CanRemoveObject() )
 	{
 		if (obj->Local())	obj->DestroyObject();
 	}
-
 }
 
 void CPHDestroyable::NotificatePart(CPHDestroyableNotificate *dn)
@@ -281,7 +279,6 @@ void CPHDestroyable::NotificatePart(CPHDestroyableNotificate *dn)
 	}
 	//////////////////////////////////////////////////////////////////////////////////////////////////////
 
-
 		dBodyID own_body=own_shell->get_Element(ref_bone)->get_body()			;
 
 		u16 new_el_number = new_shell->get_ElementsNumber()									;
@@ -311,10 +308,6 @@ void CPHDestroyable::NotificatePart(CPHDestroyableNotificate *dn)
 			res_avell.mul(av_transition_factor);
 			e->set_AngularVel(res_avell);
 		}
-	
-
-
-
 
 	new_shell->Enable();
 	new_shell->EnableCollision();

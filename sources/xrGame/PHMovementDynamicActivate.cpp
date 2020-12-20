@@ -1,4 +1,3 @@
-
 #include "stdafx.h"
 
 #include "PHMovementControl.h"
@@ -8,7 +7,7 @@
 #include "Physics.h"
 #include "Level.h"
 #include "GameMtlLib.h"
-#include "PhysicsShellHolder.h"
+#include "PHShellHolder.h"
 
 extern CPHWorld* ph_world;
 

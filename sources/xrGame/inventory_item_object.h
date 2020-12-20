@@ -8,17 +8,17 @@
 
 #pragma once
 
-#include "PhysicItem.h"
+#include "PHItem.h"
 #include "InventoryItem.h"
 
-class CInventoryItemObject : public CInventoryItem, public CPhysicItem
+class CInventoryItemObject : public CInventoryItem, public CPHItem
 {
 public:
 							CInventoryItemObject	();
 	virtual					~CInventoryItemObject	();
 	virtual DLL_Pure		*_construct				();
 
-	virtual CPhysicsShellHolder*cast_physics_shell_holder	()	{return this;}
+	virtual CPHShellHolder*cast_physics_shell_holder	()	{return this;}
 	virtual CInventoryItem	*cast_inventory_item			()	{return this;}
 	virtual CAttachableItem	*cast_attachable_item			()	{return this;}
 	virtual CWeapon			*cast_weapon					()	{return 0;}

@@ -4455,12 +4455,6 @@
     <ClInclude Include="PHDestroyableNotificate.h">
       <Filter>Core\Client\Objects\physics\PhysicsSkeletonObject</Filter>
     </ClInclude>
-    <ClInclude Include="PhysicsSkeletonObject.h">
-      <Filter>Core\Client\Objects\physics\PhysicsSkeletonObject</Filter>
-    </ClInclude>
-    <ClInclude Include="PhysicsShellHolder.h">
-      <Filter>Core\Client\Objects\physics\PhysicsShellHolder</Filter>
-    </ClInclude>
     <ClInclude Include="ClimableObject.h">
       <Filter>Core\Client\Objects\physics\Climable</Filter>
     </ClInclude>
@@ -5865,9 +5859,6 @@
     <ClInclude Include="Inventory_space.h">
       <Filter>Core\Client\Objects\inventory</Filter>
     </ClInclude>
-    <ClInclude Include="PhysicItem.h">
-      <Filter>Core\Client\Objects\inventory\PhysicItem</Filter>
-    </ClInclude>
     <ClInclude Include="RustyHairArtefact.h">
       <Filter>Core\Client\Objects\items &amp; weapons\Artefacts\RustyHairArtefact</Filter>
     </ClInclude>
@@ -5945,6 +5936,15 @@
     </ClInclude>
     <ClInclude Include="ai\Monsters\MonsterMorale.h">
       <Filter>AI\AMonsters\common\components\Morale</Filter>
+    </ClInclude>
+    <ClInclude Include="PHItem.h">
+      <Filter>Core\Client\Objects\inventory\PhysicItem</Filter>
+    </ClInclude>
+    <ClInclude Include="PHShellHolder.h">
+      <Filter>Core\Client\Objects\physics\PhysicsShellHolder</Filter>
+    </ClInclude>
+    <ClInclude Include="PHSkeletonObject.h">
+      <Filter>Core\Client\Objects\physics\PhysicsSkeletonObject</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -7204,12 +7204,6 @@
     </ClCompile>
     <ClCompile Include="PHDestroyableNotificate.cpp">
       <Filter>Core\Client\Objects\physics\PhysicsSkeletonObject</Filter>
-    </ClCompile>
-    <ClCompile Include="PhysicsSkeletonObject.cpp">
-      <Filter>Core\Client\Objects\physics\PhysicsSkeletonObject</Filter>
-    </ClCompile>
-    <ClCompile Include="PhysicsShellHolder.cpp">
-      <Filter>Core\Client\Objects\physics\PhysicsShellHolder</Filter>
     </ClCompile>
     <ClCompile Include="ClimableObject.cpp">
       <Filter>Core\Client\Objects\physics\Climable</Filter>
@@ -8543,9 +8537,6 @@
     <ClCompile Include="InventoryItem.cpp">
       <Filter>Core\Client\Objects\inventory\InventoryItem</Filter>
     </ClCompile>
-    <ClCompile Include="PhysicItem.cpp">
-      <Filter>Core\Client\Objects\inventory\PhysicItem</Filter>
-    </ClCompile>
     <ClCompile Include="Artefact_script.cpp">
       <Filter>Core\Client\Objects\items &amp; weapons\Artefacts</Filter>
     </ClCompile>
@@ -8599,6 +8590,15 @@
     </ClCompile>
     <ClCompile Include="ai\Monsters\MonsterMorale.cpp">
       <Filter>AI\AMonsters\common\components\Morale</Filter>
+    </ClCompile>
+    <ClCompile Include="PHItem.cpp">
+      <Filter>Core\Client\Objects\inventory\PhysicItem</Filter>
+    </ClCompile>
+    <ClCompile Include="PHShellHolder.cpp">
+      <Filter>Core\Client\Objects\physics\PhysicsShellHolder</Filter>
+    </ClCompile>
+    <ClCompile Include="PHSkeletonObject.cpp">
+      <Filter>Core\Client\Objects\physics\PhysicsSkeletonObject</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

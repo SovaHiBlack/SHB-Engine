@@ -6,7 +6,7 @@
 #include "stdafx.h"
 
 #include "HudItem.h"
-//#include "PhysicItem.h"
+//#include "PHItem.h"
 #include "WeaponHUD.h"
 #include "Actor.h"
 #include "actoreffector.h"
@@ -34,7 +34,7 @@ CHudItem::~CHudItem( )
 
 DLL_Pure* CHudItem::_construct( )
 {
-	m_object = smart_cast<CPhysicItem*>(this);
+	m_object = smart_cast<CPHItem*>(this);
 	VERIFY(m_object);
 
 	m_item = smart_cast<CInventoryItem*>(this);

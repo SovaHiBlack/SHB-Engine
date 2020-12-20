@@ -18,7 +18,8 @@ public:
 	virtual void	Load				(const char* section);
 	virtual void	CheckSpecParams		(u32 spec_params);
 
-	DECLARE_SCRIPT_REGISTER_FUNCTION
+public:
+	static void script_register(lua_State*);
 };
 
 add_to_type_list(CTushkano)

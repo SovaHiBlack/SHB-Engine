@@ -2,7 +2,7 @@
 
 #include "Artefact.h"
 #include "PhysicsShell.h"
-#include "PhysicsShellHolder.h"
+#include "PHShellHolder.h"
 #include "game_cl_base.h"
 #include "..\ENGINE\skeletonanimated.h"
 #include "Inventory.h"
@@ -190,7 +190,7 @@ void CArtefact::UpdateWorkload		(u32 dt)
 	Fvector vel = {0, 0, 0};
 	if (H_Parent()) 
 	{
-		CPhysicsShellHolder* pPhysicsShellHolder = smart_cast<CPhysicsShellHolder*>(H_Parent());
+		CPHShellHolder* pPhysicsShellHolder = smart_cast<CPHShellHolder*>(H_Parent());
 		if(pPhysicsShellHolder) pPhysicsShellHolder->PHGetLinearVell(vel);
 	}
 

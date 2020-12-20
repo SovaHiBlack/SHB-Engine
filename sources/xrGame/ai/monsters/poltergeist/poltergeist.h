@@ -5,7 +5,7 @@
 #include "../energy_holder.h"
 #include "../../../script_export_space.h"
 
-class CPhysicsShellHolder;
+class CPHShellHolder;
 class CStateManagerPoltergeist;
 class CPoltergeisMovementManager;
 class CPolterSpecialAbility;
@@ -86,7 +86,8 @@ public:
 			virtual CBaseMonster::SDebugInfo show_debug_info();
 #endif
 
-	DECLARE_SCRIPT_REGISTER_FUNCTION
+public:
+	static void script_register(lua_State*);
 };
 
 add_to_type_list(CPoltergeist)

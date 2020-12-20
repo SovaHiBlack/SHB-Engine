@@ -28,7 +28,7 @@ struct SPHCharacterRestrictor
 				void					SetMaterial							(u16 material);
 				void					Create								(CPHCharacter* ch,dVector3 sizes);
 				void					Destroy								(void);
-				void					SetPhysicsRefObject					(CPhysicsShellHolder* ref_object);
+				void					SetPhysicsRefObject					(CPHShellHolder* ref_object);
 				void					SetRadius							(float r);
 };
 
@@ -102,7 +102,7 @@ public:
 	virtual void		SetMaterial							(u16 material);
 	virtual void		Create								(dVector3 sizes);
 	virtual void		Destroy								(void);
-	virtual void		SetPhysicsRefObject					(CPhysicsShellHolder* ref_object);
+	virtual void		SetPhysicsRefObject					(CPHShellHolder* ref_object);
 	virtual void		SetAcceleration						(Fvector accel);
 	virtual	void		Disable								();
 	virtual	void		Jump								(const Fvector& jump_velocity);

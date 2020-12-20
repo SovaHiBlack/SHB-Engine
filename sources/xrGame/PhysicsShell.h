@@ -12,7 +12,7 @@ class CPHFracture;
 class CPHJointDestroyInfo;
 class CODEGeom;
 class CPHSynchronize;
-class CPhysicsShellHolder;
+class CPHShellHolder;
 class CGameObject;
 class NET_Packet;
 struct SBoneShape;
@@ -83,7 +83,7 @@ public:
 	virtual		void			remove_ObjectContactCallback			(ObjectContactCallbackFun* callback)																					= 0;
 	virtual		void			set_CallbackData						(void * cd)																												= 0;
 	virtual		void			*get_CallbackData						()																														= 0;
-	virtual		void			set_PhysicsRefObject					(CPhysicsShellHolder* ref_object)																						= 0;
+	virtual		void			set_PhysicsRefObject					(CPHShellHolder* ref_object)																						= 0;
 	virtual		void			get_LinearVel							(Fvector& velocity)																										= 0;
 	virtual		void			get_AngularVel							(Fvector& velocity)																										= 0;
 	virtual		void			set_LinearVel							(const Fvector& velocity)																								= 0;
@@ -108,7 +108,7 @@ public:
 				u16								m_SelfID																						;
 	virtual		CPhysicsShell					*PhysicsShell							()																													= 0;		
 	virtual		void							set_ContactCallback						(ContactCallbackFun	*callback)																						= 0;
-	virtual		CPhysicsShellHolder				*PhysicsRefObject						()																													= 0;
+	virtual		CPHShellHolder*PhysicsRefObject						()																													= 0;
 	virtual		void							add_Sphere								(const Fsphere&		V)																								= 0;
 	virtual		void							add_Box									(const Fobb&		V)																								= 0;
 	virtual		void							add_Cylinder							(const Fcylinder&	V)																								= 0;
@@ -144,7 +144,8 @@ public:
 	virtual		bool							isFixed									()																													= 0;
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	virtual										~CPhysicsElement						()																													{};
-	DECLARE_SCRIPT_REGISTER_FUNCTION
+public:
+	static void script_register(lua_State*);
 };
 
 add_to_type_list(CPhysicsElement)
@@ -220,7 +221,8 @@ public:
 	virtual		void 					GetAxisDir					(int num,Fvector& axis,eVs& vs)									  				=0;
 	virtual		void 					GetAxisDirDynamic			(int num,Fvector& axis)											  				=0;
 	virtual		void 					GetAnchorDynamic			(Fvector& anchor)												  				=0;
-	DECLARE_SCRIPT_REGISTER_FUNCTION
+public:
+	static void script_register(lua_State*);
 };
 
 add_to_type_list(CPhysicsJoint)
@@ -236,7 +238,7 @@ protected:
 					CKinematics					*m_pKinematics																															;
 public:
 #ifdef DEBUG
-					CPhysicsShellHolder			*dbg_obj																																;
+	CPHShellHolder*dbg_obj																																;
 #endif
 public:
 IC					CKinematics					*PKinematics								()																{return m_pKinematics		;}
@@ -318,7 +320,8 @@ IC					CKinematics					*PKinematics								()																{return m_pKinemati
 	virtual			void						SetPrefereExactIntegration					()																							= 0;
 	virtual										~CPhysicsShell								()																							;
 	//build_FromKinematics		in returns elements  & joint pointers according bone IDs;
-	DECLARE_SCRIPT_REGISTER_FUNCTION
+public:
+	static void script_register(lua_State*);
 };
 
 add_to_type_list(CPhysicsShell)

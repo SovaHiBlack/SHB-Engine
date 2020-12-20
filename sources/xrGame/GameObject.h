@@ -17,7 +17,7 @@ class CEntity;
 class CEntityAlive;
 class CInventoryOwner;
 class CActor;
-class CPhysicsShellHolder;
+class CPHShellHolder;
 class CParticlesPlayer;
 class CCustomZone;
 class IInputReceiver;
@@ -74,7 +74,7 @@ public:
 	virtual CActor*						cast_actor					()						{return NULL;}
 	virtual CGameObject*				cast_game_object			()						{return this;}
 	virtual CCustomZone*				cast_custom_zone			()						{return NULL;}
-	virtual CPhysicsShellHolder*		cast_physics_shell_holder	()						{return NULL;}
+	virtual CPHShellHolder*		cast_physics_shell_holder	()						{return NULL;}
 	virtual IInputReceiver*				cast_input_receiver			()						{return NULL;}
 	virtual CParticlesPlayer*			cast_particles_player		()						{return NULL;}
 	virtual CArtefact*					cast_artefact				()						{return NULL;}

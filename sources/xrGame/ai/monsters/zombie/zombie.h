@@ -57,7 +57,8 @@ public:
 	virtual void	debug_on_key			(int key);
 #endif
 
-	DECLARE_SCRIPT_REGISTER_FUNCTION
+public:
+	static void script_register(lua_State*);
 };
 
 add_to_type_list(CZombie)

@@ -7,14 +7,14 @@
 #include "Level.h"
 #include "xrServer_Object_Base.h"
 //#include "..\ENGINE\Object.h"
-#include "PhysicsShellHolder.h"
+#include "PHShellHolder.h"
 #include "xrServer_Objects.h"
 
 void CPHDestroyableNotificate::spawn_notificate(CSE_Abstract* so)
 {
-	CPHDestroyableNotificator* D	= NULL;
-	CSE_PHSkeleton* po				= smart_cast<CSE_PHSkeleton*>(so);
-	u16 id							= u16(-1);
+	CPHDestroyableNotificator* D = NULL;
+	CSE_PHSkeleton* po = smart_cast<CSE_PHSkeleton*>(so);
+	u16 id = u16(-1);
 	if (po)
 	{
 		id = po->get_source_id( );

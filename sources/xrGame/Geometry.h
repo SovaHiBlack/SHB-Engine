@@ -94,7 +94,7 @@ virtual			void		set_local_form		(const Fmatrix& form)												=0;
 				void		remove_obj_contact_cb(ObjectContactCallbackFun* occb)									;
 				void		set_callback_data	(void *cd)															;
 				void		*get_callback_data	()																	;
-				void		set_ref_object		(CPhysicsShellHolder* ro)											;
+				void		set_ref_object		(CPHShellHolder* ro)											;
 				void		set_ph_object		(CPHObject* o)														;
 				
 	//build/destroy

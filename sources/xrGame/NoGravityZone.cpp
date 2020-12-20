@@ -30,7 +30,7 @@ void CNoGravityZone::UpdateWorkload(u32 dt)
 void CNoGravityZone::switchGravity(SZoneObjectInfo& io, bool val)
 {
 	if(io.object->getDestroy()) return;
-	CPhysicsShellHolder* sh= smart_cast<CPhysicsShellHolder*>(io.object);
+	CPHShellHolder* sh= smart_cast<CPHShellHolder*>(io.object);
 	if(!sh)return;
 	CPhysicsShell* shell=sh->PPhysicsShell();
 	if(shell&&shell->isActive())

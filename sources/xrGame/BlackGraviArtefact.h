@@ -8,9 +8,9 @@
 
 #include "GraviArtefact.h"
 #include "..\ENGINE\feel_touch.h"
-#include "PhysicsShellHolder.h"
+#include "PHShellHolder.h"
 
-DEFINE_VECTOR(CPhysicsShellHolder*, GAME_OBJECT_LIST, GAME_OBJECT_LIST_it);
+DEFINE_VECTOR(CPHShellHolder*, GAME_OBJECT_LIST, GAME_OBJECT_LIST_it);
 
 class CBlackGraviArtefact : public CGraviArtefact, public Feel::Touch
 {

@@ -6,10 +6,6 @@ float object_damage_factor								= 1.0f;		//times increace damage from object c
 float collide_volume_max								= 200.0f;	//max collide sound level
 float collide_volume_min								= 0.0f;		//min collide sound level
 
-//float vel_cret_sound									= 10.0f;	//min vel_cret for collide sound
-//float vel_cret_wallmark								= 30.0f;	//min vel_cret for wallmark
-//float vel_cret_particles								= 15.0f;	//min vel_cret for particles
-
 const float EffectPars::vel_cret_sound					= 10.0f;
 const float EffectPars::vel_cret_particles				= 15.0f;
 const float EffectPars::vel_cret_wallmark				= 30.0f;

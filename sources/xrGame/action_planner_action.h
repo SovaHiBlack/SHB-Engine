@@ -49,7 +49,8 @@ public:
 	virtual	void		save					(NET_Packet &packet) {inherited_planner::save(packet); inherited_action::save(packet);}
 	virtual	void		load					(IReader &packet)	 {inherited_planner::load(packet); inherited_action::load(packet);}
 
-	DECLARE_SCRIPT_REGISTER_FUNCTION
+public:
+	static void script_register(lua_State*);
 };
 typedef CActionPlannerAction<CScriptGameObject> CScriptActionPlannerAction;
 

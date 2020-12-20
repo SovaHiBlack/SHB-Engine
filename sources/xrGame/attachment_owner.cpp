@@ -12,11 +12,10 @@
 #include "attachable_item.h"
 #include "..\ENGINE\skeletoncustom.h"
 #include "InventoryItem.h"
-#include "PhysicsShellHolder.h"
+#include "PHShellHolder.h"
 
 CAttachmentOwner::~CAttachmentOwner()
-{
-}
+{ }
 
 void CAttachmentOwner::reload				(const char* section)
 {

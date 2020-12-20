@@ -27,8 +27,8 @@ class CPHMovementControl
 public:
 	CElevatorState*					ElevatorState							( );
 	void 							in_shedule_Update						(u32 DT);
-	void							PHCaptureObject							(CPhysicsShellHolder* object);
-	void							PHCaptureObject							(CPhysicsShellHolder* object, u16 element);
+	void							PHCaptureObject							(CPHShellHolder* object);
+	void							PHCaptureObject							(CPHShellHolder* object, u16 element);
 	CPHCapture*						PHCapture								( )
 	{
 		return m_capture;
@@ -38,8 +38,8 @@ public:
 		return m_character;
 	}
 	void							PHReleaseObject							( );
-	Fvector							PHCaptureGetNearestElemPos				(const CPhysicsShellHolder* object);
-	Fmatrix							PHCaptureGetNearestElemTransform		(CPhysicsShellHolder* object);
+	Fvector							PHCaptureGetNearestElemPos				(const CPHShellHolder* object);
+	Fmatrix							PHCaptureGetNearestElemTransform		(CPHShellHolder* object);
 	void							SetMaterial								(u16 material);
 	void							SetAirControlParam						(float param)
 	{
@@ -283,7 +283,7 @@ public:
 			m_character->SetVelocity(v);
 		}
 	}
-	void							SetPhysicsRefObject						(CPhysicsShellHolder* ref_object)
+	void							SetPhysicsRefObject						(CPHShellHolder* ref_object)
 	{
 		m_character->SetPhysicsRefObject(ref_object);
 	};

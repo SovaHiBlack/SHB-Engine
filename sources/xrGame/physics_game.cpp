@@ -8,7 +8,7 @@
 #include "PhysicsGamePars.h"
 //#include "PhysicsCommon.h"
 #include "PhSoundPlayer.h"
-#include "PhysicsShellHolder.h"
+#include "PHShellHolder.h"
 #include "PHCommander.h"
 //#include "MathUtils.h"
 #include "PHWorld.h"

@@ -100,7 +100,8 @@ public:
 	virtual	void				save					(NET_Packet &packet);
 	virtual	void				load					(IReader &packet);
 
-	DECLARE_SCRIPT_REGISTER_FUNCTION
+public:
+	static void script_register(lua_State*);
 };
 typedef CActionPlanner<CScriptGameObject> CScriptActionPlanner;
 

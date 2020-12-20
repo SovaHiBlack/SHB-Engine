@@ -132,10 +132,10 @@ void CObjectScript::script_register		(lua_State *L)
 			.def("getEnabled",			&CGameObject::getEnabled)
 //			.def("setEnabled",			&CGameObject::setEnabled)
 
-//		,class_<CPhysicsShellHolder,CGameObject>("CPhysicsShellHolder")
+//		,class_<CPHShellHolder,CGameObject>("CPHShellHolder")
 //			.def(constructor<>())
 
-//		,class_<CEntity,CPhysicsShellHolder,CEntityWrapper>("CEntity")
+//		,class_<CEntity,CPHShellHolder,CEntityWrapper>("CEntity")
 //			.def(constructor<>())
 //			.def("HitSignal",&CEntity::HitSignal,&CEntityWrapper::HitSignal_static)
 //			.def("HitImpulse",&CEntity::HitImpulse,&CEntityWrapper::HitImpulse_static)

@@ -6,67 +6,63 @@
 ;******************************************************************************
 [m_boar_e]:monster_base
 SpaceRestrictionSection				= space_restrictor,zone_mosquito_bald
-;$spawn								= "monsters\boars\boar_base"		 ; option for Level Editor
-$npc								= on								 ; option for Level Editor
+;$spawn								= "monsters\boars\boar_base"			; option for Level Editor
+$npc								= on									; option for Level Editor
 visual								= monsters\mutant_boar\mutant_boar
 corpse_visual						= monsters\mutant_boar\mutant_boar_dead
 icon								= ui_npc_monster_mutant_boar
-MaxHealthValue						= 200								 ; range [0..200]
+MaxHealthValue						= 200									; range [0..200]
 
-ef_creature_type		= 11						; option for evaluation functions
-ef_weapon_type			= 2
-ef_detector_type		= 1
-panic_threshold			= 0.1
+ef_creature_type					= 11									; option for evaluation functions
+ef_weapon_type						= 2
+ef_detector_type					= 1
+panic_threshold						= 0.1
 
-cform					 = skeleton					; collision class
-class					 = SM_BOARW					; AI class
+cform								= skeleton								; collision class
+class								= SM_BOARW								; AI class
 
-script_binding  		= bind_monster.bind
+script_binding						= bind_monster.bind
 
-bone_head				= bip01_head				; bone name
-bone_fire				= bip01_head				; bone name
-bone_torso				= bip01_spine1 			; bone name
+bone_head							= bip01_head							; bone name
+bone_fire							= bip01_head							; bone name
+bone_torso							= bip01_spine1							; bone name
 
-weapon_usage			= 0						; boolean
+weapon_usage						= 0										; boolean
 
 Spawn_Inventory_Item_Section		= mutant_boar_leg
 Spawn_Inventory_Item_Probability	= 0.2
 
-DayTime_Begin					= 0			; начала дня для монстра
-DayTime_End						= 21		; конец дня для монстра
+DayTime_Begin						= 0										; начала дня для монстра
+DayTime_End							= 21									; конец дня для монстра
 
-material				= creatures\hoof
+material							= creatures\hoof
 
-species				= boar	;species of monster
+species								= boar									;species of monster
 
+actor_restrictor					= medium_monster						;medium_monster,stalker,none
+terrain								= boar_terrain
 
+step_params							= m_boar_step_params
+LegsCount							= 4
 
-
-
-
-
-
-;------------------------------------------------------------------------
+;------------------------------------------------------------------------------
 ; Offline Alife
-;------------------------------------------------------------------------
-Scheduled							= on								; option for ALife Simulator
-Human								= off								; option for ALife Simulator
-Health								= 400								; option for ALife Simulator
-MinSpeed							= 1.0								; option for ALife Simulator
-MaxSpeed							= 5.0								; option for ALife Simulator
-going_speed							= 2									; option for ALife Simulator
-current_level_going_speed			= 1									; option for ALife Simulator
-search_speed						= 1.5								; option for ALife Simulator
+;------------------------------------------------------------------------------
+Scheduled							= on									; option for ALife Simulator
+Human								= off									; option for ALife Simulator
+Health								= 400									; option for ALife Simulator
+MinSpeed							= 1.0									; option for ALife Simulator
+MaxSpeed							= 5.0									; option for ALife Simulator
+going_speed							= 2										; option for ALife Simulator
+current_level_going_speed			= 1										; option for ALife Simulator
+search_speed						= 1.5									; option for ALife Simulator
 
-
-DynamicObjectsCount					= 32
 smart_terrain_choose_interval		= 00:15:00
+;------------------------------------------------------------------------------
 
-
-
-;------------------------------------------------------------------------
+;------------------------------------------------------------------------------
 ; Physics
-;------------------------------------------------------------------------
+;------------------------------------------------------------------------------
 ph_box0_center						= 0.0,  0.6,  0.0
 ph_box0_size						= 0.55, 0.6,  0.55
 ph_box1_center						= 0.0,  0.6,  0.0
@@ -78,16 +74,15 @@ ph_mass								= 250
 
 destroyed_vis_name					= physics\dead_body\skelet_crash_monster
 
-;---------------------------------------------------------------------
-ph_skeleton_airr_lin_factor			= 2.0 ;550.0 (изменно из-за того, что убрано домножение коэффициент 0.002 из кода)
-ph_skeleton_airr_ang_factor			= 0.0 ;0.0 (изменно из-за того, что убрано домножение на коэффициент 0.3 из кода (0.0*0.3=0.0))
-ph_skeleton_hinger_factor1			= 1.0 ;1.0 (изменно из-за того, что убрано домножение на коэффициент 5.0 из кода)
-ph_skeleton_ddelay					= 15.0 ;Время изменения значения трения в суставе с момента создания шелла, сек
+ph_skeleton_airr_lin_factor			= 2.0
+ph_skeleton_airr_ang_factor			= 0.0
+ph_skeleton_hinger_factor1			= 1.0
+ph_skeleton_ddelay					= 15.0									;Время изменения значения трения в суставе с момента создания шелла, сек
 
 ph_skel_fatal_impulse_factor		= 12.0
 ph_after_death_velocity_factor		= 0.75
 ph_skel_shot_up_factor				= 0.25
-;---------------------------------------------------------------------
+;------------------------------------------------------------------------------
 
 ;------------------------------------------------------------------------------
 ; Movement: Velocities & Acceleration
@@ -104,165 +99,142 @@ Velocity_Drag						= -1.0,		1.0,			1.0,		1,		1
 ; acceleration
 Accel_Calm							= 2.5
 Accel_Aggressive					= 6.5
+;------------------------------------------------------------------------------
 
 ;------------------------------------------------------------------------------
 ; Attack parameters
 ;------------------------------------------------------------------------------
-as_min_dist				= 1.4
-as_step					= 0.5
+as_min_dist							= 1.4
+as_step								= 0.5
 
-MinAttackDist			= 2.6
-MaxAttackDist			= 3.2
+MinAttackDist						= 2.6
+MaxAttackDist						= 3.2
 
-hit_type				= wound				; type of attack
+hit_type							= wound									; type of attack
 
-attack_params			= m_boar_attack_params
-attack_effector			= m_boar_attack_effector
+attack_params						= m_boar_attack_params
+attack_effector						= m_boar_attack_effector
 
-Melee_Rotation_Factor	= 2.2
+Melee_Rotation_Factor				= 2.2
 
 ; run attack
-Run_Attack_Dist			= 3.5,		4.0
-Run_Attack_Delay		= 1000,		3000
-
-
-
-
-
+Run_Attack_Dist						= 3.5, 4.0
+Run_Attack_Delay					= 1000, 3000
+;------------------------------------------------------------------------------
 
 ;------------------------------------------------------------------------------
-;----------------------------- Entity Conditions ------------------------------
+; Entity Conditions
 ;------------------------------------------------------------------------------
-satiety_v				= 0.0005			;скорость уменьшения сытости со временем [0...1]
-satiety_power_v			= 0.00001			;увеличение силы при уменьшении сытости 
-satiety_health_v		= 0.001				;увеличение здоровья при уменьшении сытости
-radiation_v				= 0.00001			;скорость уменьшения радиации [0...1]
-radiation_health_v		= 0.00				;уменьшение здоровья при воздействии радиации
-morale_v				= 0.01				;скорость восстановления морали [0...1]
-psy_health_v			= 0.1				;скорость восстановления psy-здоровья
+satiety_v							= 0.0005								;скорость уменьшения сытости со временем [0...1]
+satiety_power_v						= 0.00001								;увеличение силы при уменьшении сытости [0...1]
+satiety_health_v					= 0.001									;увеличение здоровья при уменьшении сытости [0...1]
+radiation_v							= 0.00001								;скорость уменьшения радиации [0...1]
+radiation_health_v					= 0.0									;уменьшение здоровья при воздействии радиации [0...1]
+morale_v							= 0.01									;скорость восстановления морали [0...1]
+psy_health_v						= 0.1									;скорость восстановления psy-здоровья [0...1]
 
+health_hit_part						= 1.0									;процент хита, уходящий на отнимание здоровья [0...1]
+power_hit_part						= 1.0									;процент хита, уходящий на отнимание силы [0...1]
 
-health_hit_part 		= 1.0		;0.8					;процент хита, уходящий на отнимание здоровья
-power_hit_part 			= 1.0		;0.9					;процент хита, уходящий на отнимание силы
-
-;Immunities 
-immunities_sect			= boar_immunities
+immunities_sect						= boar_immunities
 
 ;открытые раны
-bleeding_v					= 0.05						;потеря крови при номинальной ране в секунду
-wound_incarnation_v			= 0.04						;крутизна кривой заживления (какой процент раны останется после заживления в игровую секунду)
-min_wound_size				= 0.01
+bleeding_v							= 0.05									;потеря крови при номинальной ране в секунду
+wound_incarnation_v					= 0.04									;крутизна кривой заживления (какой процент раны останется после заживления в игровую секунду)
+min_wound_size						= 0.01
 
 ;Eat settings
-eat_freq				=	5.0							;частота укусов в сек
-eat_slice				=	0.01						;увеличение сытости при 1 укусе
-eat_slice_weight		=	10.0						;уменьшение еды у трупа
+eat_freq							= 5.0									;частота укусов в сек
+eat_slice							= 0.01									;увеличение сытости при 1 укусе
+eat_slice_weight					= 10.0									;уменьшение еды у трупа
 
-satiety_threshold		= 0.5							; below this value monster fill hunger
+distance_to_corpse					= 2.1									;дист. до трупа, при которой он переходит в состояние еды
 
-;------------------------------------------------------------------------
-; Sound
-;------------------------------------------------------------------------
+satiety_threshold					= 0.5									; below this value monster fill hunger
+;------------------------------------------------------------------------------
 
-sound_idle				= monsters\boar\boar_idle_			; idle_
-sound_eat				= monsters\boar\boar_eat_			; eat_
-sound_aggressive		= monsters\boar\boar_aggressive_	; attack_
-sound_attack_hit		= monsters\boar\boar_attack_
-sound_take_damage		= monsters\boar\boar_pain_			; hit_
-sound_die				= monsters\boar\boar_death_			; die_
-sound_bkgnd				= monsters\biting\def_
-sound_threaten			= monsters\boar\boar_threaten_
-sound_landing			= monsters\boar\landing_
-sound_steal				= monsters\biting\def_
-sound_panic				= monsters\boar\boar_panic_	
-sound_growling			= monsters\biting\def_
-sound_die_in_anomaly	= monsters\boar\boar_anomaly_
+;------------------------------------------------------------------------------
+; Sounds and sound parameters
+;------------------------------------------------------------------------------
+sound_idle							= monsters\boar\boar_idle_
+sound_distant_idle					= monsters\boar\boar_idle_
+sound_eat							= monsters\boar\boar_eat_
+sound_aggressive					= monsters\boar\boar_aggressive_
+sound_attack_hit					= monsters\boar\boar_attack_
+sound_take_damage					= monsters\boar\boar_pain_
+sound_die							= monsters\boar\boar_death_
+sound_die_in_anomaly				= monsters\boar\boar_anomaly_
+sound_threaten						= monsters\boar\boar_threaten_
+sound_steal							= monsters\biting\def_
+sound_panic							= monsters\boar\boar_panic_
 
-killer_clsids				= Z_MINCER,Z_GALANT,ZS_BFUZZ,ZS_MBALD,ZS_GALAN,ZS_MINCE
-
-sound_distant_idle			= monsters\boar\boar_idle_
-distant_idle_sound_delay	= 80000
-distant_idle_sound_range	= 100.0	
+killer_clsids						= Z_MINCER,Z_GALANT,ZS_BFUZZ,ZS_MBALD,ZS_GALAN,ZS_MINCE
 
 ;Frequency of sounds to be played
-idle_sound_delay		= 18000
-eat_sound_delay			= 5000
-attack_sound_delay		= 4000
+idle_sound_delay					= 18000
+eat_sound_delay						= 5000
+attack_sound_delay					= 4000
 
-SoundThreshold			= 0.06             ; range [0..1]
-max_hear_dist			= 60
+distant_idle_sound_delay			= 80000
+distant_idle_sound_range			= 100.0
 
-;------------------------------------------------------------------------
+SoundThreshold						= 0.06									; range [0..1]
+max_hear_dist						= 60
+;------------------------------------------------------------------------------
+
+;------------------------------------------------------------------------------
 ; Vision
-;------------------------------------------------------------------------
-eye_fov						= 110	;130
-eye_range					= 40	;60	
+;------------------------------------------------------------------------------
+eye_fov								= 110
+eye_range							= 40
 
-min_view_distance   		= 0.5				; коэффициент, который множится на eye_range, в зависимости от угла
-max_view_distance	 		= 1.0				; коэффициент, который множится на eye_range, в зависимости от угла
-visibility_threshold	 	= 100.0				; значение, при достижении суммой которого объект считается видимым
-always_visible_distance 	= 0.3
-time_quant					= 0.001
-decrease_value				= 0.01				; значение, на которое уменьшается вес, если объект попал в фрустум, но отсёкся по каким-то причинам
-velocity_factor		     	= 0.5
-luminocity_factor			= 0.5 				; фактор освещения (только для Актёра)
-transparency_threshold		= 0.25
+; number of visible objects monster can handle
+DynamicObjectsCount					= 32
 
-;-------------------------------------------------------------------------
+min_view_distance					= 0.5									; коэффициент, который множится на eye_range, в зависимости от угла
+max_view_distance					= 1.0									; коэффициент, который множится на eye_range, в зависимости от угла
+visibility_threshold				= 100.0									; значение, при достижении суммой которого объект считается видимым
+always_visible_distance				= 0.3
+time_quant							= 0.001
+decrease_value						= 0.01									; значение, на которое уменьшается вес, если объект попал в фрустум, но отсёкся по каким-то причинам
+velocity_factor						= 0.5
+luminocity_factor					= 0.5 									; фактор освещения (только для Актёра)
+transparency_threshold				= 0.25
+;------------------------------------------------------------------------------
+
+;------------------------------------------------------------------------------
 ; Morale
-;-------------------------------------------------------------------------
-Morale_Hit_Quant				= 0.02
-Morale_Attack_Success_Quant		= 0.1
-Morale_Take_Heart_Speed			= 0.1
-Morale_Despondent_Speed			= 0.1
-Morale_Stable_Speed				= 0.05
-Morale_Despondent_Threashold	= 0.5
+;------------------------------------------------------------------------------
+Morale_Hit_Quant					= 0.02
+Morale_Attack_Success_Quant			= 0.1
+Morale_Take_Heart_Speed				= 0.1
+Morale_Despondent_Speed				= 0.1
+Morale_Stable_Speed					= 0.05
+Morale_Despondent_Threashold		= 0.5
+;------------------------------------------------------------------------------
 
-;-------------------------------------------------------------------------
+;------------------------------------------------------------------------------
 ; Damages
-;-------------------------------------------------------------------------
+;------------------------------------------------------------------------------
 ;Health from which to play injured animation
-DamagedThreshold		= 0.2
-damage					= m_boar_damage
+DamagedThreshold					= 0.2
+
+damage								= m_boar_damage
+
+critical_wound_threshold			= 0.4
+critical_wound_decrease_quant		= 0.0
+
+critical_wound_anim_head			= critical_hit_head_0
+critical_wound_bones_head			= boar_critical_wound_bones_head
+
+critical_wound_anim_torso			= critical_hit_torso_0
+critical_wound_bones_torso			= boar_critical_wound_bones_torso
+
+critical_wound_anim_legs			= critical_hit_torso_0
+critical_wound_bones_legs			= boar_critical_wound_bones_legs
+;------------------------------------------------------------------------------
 
 
-critical_wound_threshold		= 0.4; 1.1
-critical_wound_decrease_quant	= 0.
-
-critical_wound_anim_head	= critical_hit_head_0
-critical_wound_bones_head	= boar_critical_wound_bones_head
-
-critical_wound_anim_torso	= critical_hit_torso_0
-critical_wound_bones_torso	= boar_critical_wound_bones_torso
-
-critical_wound_anim_legs	= critical_hit_torso_0
-critical_wound_bones_legs	= boar_critical_wound_bones_legs
-
-;------------------------------------------------------------------------
-; Other
-;------------------------------------------------------------------------
-
-
-
-
-
-
-
-
-actor_restrictor		= medium_monster ;medium_monster,stalker,none
-
-step_params				= m_boar_step_params
-LegsCount				= 4
-
-
-
-
-distance_to_corpse				= 2.1		; дист. до трупа, при которой он переходит в состояние еды
-
-terrain							= boar_terrain
-
-
-DynamicObjectsCount		= 32
 
 
 
@@ -286,7 +258,6 @@ stand_attack_run_0 =    0.50,		0.35,	      200,        0.0, 1.0, 2.0,	 -0.6, 0.6
 ; SPECIAL EFFECTORS
 ;===========================================================================
 [m_boar_attack_effector]
-
 duality_h			= 0.05;0.01
 duality_v			= 0.02;0.01
 blur				= 0.01
@@ -322,7 +293,6 @@ bip01_spine 		= 1, -1, 0.3
 bip01_spine1 		= 1, -1, 0.3
 bip01_neck 			= 1, -1, 1.5
 bip01_head 			= 2, -1, 0.3, 10
-
 
 [boar_critical_wound_bones_head]
 bip01_pelvis
@@ -384,12 +354,10 @@ bip01_tail1
 [boar_terrain]
 	255,000,255,255
 
-	
 ;===========================================================================
 ; Step Events
 ;===========================================================================
 [m_boar_step_params]
-   
 ;-------------------------------------------------------------------------------------------------------------
 ;	anim			| Cycles | time1 | power1 | time2 | power2 | time3 | power3 | time4 | power4 |
 ;-------------------------------------------------------------------------------------------------------------
@@ -399,7 +367,6 @@ stand_run_fwd_0	 	=  	  1,	0.01,   1,	     0.05,    0.7,    0.2,    1.0,     0.2
 stand_run_dmg_0		=	  4,	0.2,    1,	     0.25,    0.7,    0.7,    1.0,     0.7,   1.0
 stand_steal_0		=	  1,	0.2,    1,	     0.25,    0.7,    0.7,    1.0,     0.7,   1.0
 stand_drag_0		=	  1,	0.2,    1,	     0.25,    0.7,    0.7,    1.0,     0.7,   1.0
-
 
 ;===========================================================================
 ; IMMUNITIES
@@ -428,9 +395,8 @@ spec_rank			= weak
 community			= boar
 
 immunities_sect		= boar_immunities_weak
+
 attack_params		= boar_attack_params_weak
-
-
 
 [boar_immunities_weak]
 burn_immunity			= 1.0
@@ -468,9 +434,8 @@ spec_rank			= normal
 community			= boar
 
 immunities_sect		= boar_immunities_normal
+
 attack_params		= boar_attack_params_normal
-
-
 
 [boar_immunities_normal]
 burn_immunity			= 1.0
@@ -508,9 +473,8 @@ spec_rank			= strong
 community			= boar
 
 immunities_sect		= boar_immunities_strong
+
 attack_params		= boar_attack_params_strong
-
-
 
 [boar_immunities_strong]
 burn_immunity			= 1.0

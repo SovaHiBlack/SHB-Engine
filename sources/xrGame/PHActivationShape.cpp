@@ -104,7 +104,7 @@ CPHActivationShape::~CPHActivationShape		( )
 	VERIFY(!m_body && !m_geom);
 }
 
-void CPHActivationShape::Create				(const Fvector start_pos, const Fvector start_size, CPhysicsShellHolder* ref_obj, EType _type, u16 flags)
+void CPHActivationShape::Create				(const Fvector start_pos, const Fvector start_size, CPHShellHolder* ref_obj, EType _type, u16 flags)
 {
 	VERIFY(ref_obj);
 	m_body = dBodyCreate(0);

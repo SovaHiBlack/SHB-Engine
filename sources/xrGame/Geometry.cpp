@@ -293,7 +293,7 @@ void* CODEGeom::get_callback_data()
 		return dGeomGetUserData(m_geom_transform)->callback_data;
 	}
 }
-void CODEGeom::set_ref_object(CPhysicsShellHolder* ro)
+void CODEGeom::set_ref_object(CPHShellHolder* ro)
 {
 	if(!m_geom_transform) return;
 	if(geom())

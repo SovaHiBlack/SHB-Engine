@@ -8,7 +8,7 @@
 #include "PHJointDestroyInfo.h"
 #include "PHSplitedShell.h"
 #include "GameObject.h"
-#include "PhysicsShellHolder.h"
+#include "PHShellHolder.h"
 #include "..\ENGINE\skeletoncustom.h"
 
 extern CPHWorld* ph_world;
@@ -49,11 +49,11 @@ CPhysicsShell*				P_build_Shell			(CGameObject* obj,bool not_active_state,BONE_P
 
 	CPhysicsShell* pPhysicsShell		= P_create_Shell();
 #ifdef DEBUG
-	pPhysicsShell->dbg_obj=smart_cast<CPhysicsShellHolder*>(obj);
+	pPhysicsShell->dbg_obj=smart_cast<CPHShellHolder*>(obj);
 #endif
 	pPhysicsShell->build_FromKinematics(pKinematics,bone_map);
 
-	pPhysicsShell->set_PhysicsRefObject(smart_cast<CPhysicsShellHolder*>(obj));
+	pPhysicsShell->set_PhysicsRefObject(smart_cast<CPHShellHolder*>(obj));
 	pPhysicsShell->mXFORM.set(obj->XFORM());
 	pPhysicsShell->Activate(not_active_state);//,
 	//m_pPhysicsShell->SmoothElementsInertia(0.3f);
@@ -159,13 +159,13 @@ CPhysicsShell*	P_build_SimpleShell(CGameObject* obj,float mass,bool not_active_s
 {
 	CPhysicsShell* pPhysicsShell		= P_create_Shell();
 #ifdef DEBUG
-	pPhysicsShell->dbg_obj=smart_cast<CPhysicsShellHolder*>(obj);
+	pPhysicsShell->dbg_obj=smart_cast<CPHShellHolder*>(obj);
 #endif
 	Fobb obb; obj->Visual()->vis.box.get_CD(obb.m_translate,obb.m_halfsize); obb.m_rotate.identity();
 	CPhysicsElement* E = P_create_Element(); R_ASSERT(E); E->add_Box(obb);
 	pPhysicsShell->add_Element(E);
 	pPhysicsShell->setMass(mass);
-	pPhysicsShell->set_PhysicsRefObject(smart_cast<CPhysicsShellHolder*>(obj));
+	pPhysicsShell->set_PhysicsRefObject(smart_cast<CPHShellHolder*>(obj));
 	if(!obj->H_Parent())
 		pPhysicsShell->Activate(obj->XFORM(),0,obj->XFORM(),not_active_state);
 	return pPhysicsShell;

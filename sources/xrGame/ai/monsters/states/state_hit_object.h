@@ -6,7 +6,7 @@ class CStateMonsterHitObject : public CState<_Object> {
 	typedef CState<_Object> inherited;
 
 	xr_vector<CObject*>	m_nearest_objects;
-	CPhysicsShellHolder	*target;
+	CPHShellHolder*target;
 	bool				m_hitted;
 		
 public:

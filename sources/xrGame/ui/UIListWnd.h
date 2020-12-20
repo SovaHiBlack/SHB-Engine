@@ -156,7 +156,8 @@ protected:
 	// Текущий уникальный идентификатор
 	int		m_iLastUniqueID;
 
-	DECLARE_SCRIPT_REGISTER_FUNCTION
+	public:
+		static void script_register(lua_State*);
 };
 
 #include "UIListWnd_inline.h"//

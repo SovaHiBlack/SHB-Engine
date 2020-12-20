@@ -3,7 +3,7 @@
 #include "IKLimbsController.h"
 
 #include "IK/IKLimb.h"
-#include "PhysicsShellHolder.h"
+#include "PHShellHolder.h"
 
 #include "ik_anim_state.h"
 #include "..\ENGINE\EnnumerateVertices.h"
@@ -151,7 +151,7 @@ void CIKLimbsController::Calculate( )
 void CIKLimbsController::Destroy(CGameObject* O)
 {
 #ifdef _DEBUG
-	CPhysicsShellHolder*	Sh = smart_cast<CPhysicsShellHolder*>(O);
+	CPHShellHolder*	Sh = smart_cast<CPHShellHolder*>(O);
 	VERIFY(Sh);
 	CIKLimbsController* ik = Sh->character_ik_controller();
 	VERIFY(ik);
@@ -173,7 +173,7 @@ void _stdcall CIKLimbsController:: IKVisualCallback( CKinematics* K )
 #endif
 	
 	CGameObject* O=( ( CGameObject* )K->Update_Callback_Param );
-	CPhysicsShellHolder*	Sh = smart_cast<CPhysicsShellHolder*>( O );
+	CPHShellHolder*	Sh = smart_cast<CPHShellHolder*>( O );
 	VERIFY( Sh );
 	CIKLimbsController* ik = Sh->character_ik_controller( );
 	VERIFY( ik );

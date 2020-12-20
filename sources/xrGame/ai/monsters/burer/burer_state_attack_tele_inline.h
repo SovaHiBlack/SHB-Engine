@@ -154,7 +154,7 @@ void CStateBurerAttackTeleAbstract::FindFreeObjects(xr_vector<CObject*>& tpObjec
 
 	for (u32 i = 0; i < tpObjects.size( ); i++)
 	{
-		CPhysicsShellHolder* obj = smart_cast<CPhysicsShellHolder*>(tpObjects[i]);
+		CPHShellHolder* obj = smart_cast<CPHShellHolder*>(tpObjects[i]);
 		CCustomMonster* custom_monster = smart_cast<CCustomMonster*>(tpObjects[i]);
 		if (!obj ||
 			!obj->PPhysicsShell( ) ||
@@ -354,7 +354,7 @@ void CStateBurerAttackTeleAbstract::SelectObjects( )
 	// выбрать объект
 	for (u32 i = 0; i < tele_objects.size( ); i++)
 	{
-		CPhysicsShellHolder* obj = tele_objects[i];
+		CPHShellHolder* obj = tele_objects[i];
 
 		// применить телекинез на объект
 

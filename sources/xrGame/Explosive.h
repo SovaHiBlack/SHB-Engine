@@ -17,7 +17,7 @@
 
 class IRender_Light;
 
-DEFINE_VECTOR(CPhysicsShellHolder*, BLASTED_OBJECTS_V, BLASTED_OBJECTS_I);
+DEFINE_VECTOR(CPHShellHolder*, BLASTED_OBJECTS_V, BLASTED_OBJECTS_I);
 
 class CExplosive : public IDamageSource
 {
@@ -41,7 +41,7 @@ private:
 public:
 	virtual void 				ExplodeParams(const Fvector& pos, const Fvector& dir);
 
-	static float 				ExplosionEffect(collide::rq_results& storage, CExplosive* exp_obj, CPhysicsShellHolder* blasted_obj, const Fvector& expl_centre, const float expl_radius);
+	static float 				ExplosionEffect(collide::rq_results& storage, CExplosive* exp_obj, CPHShellHolder* blasted_obj, const Fvector& expl_centre, const float expl_radius);
 
 	virtual void 				OnEvent(NET_Packet& P, u16 type);//{inherited::OnEvent( P, type);}
 	virtual void				OnAfterExplosion( );
@@ -97,7 +97,7 @@ private:
 	void				PositionUpdate( );
 	static		void				GetRaySourcePos(CExplosive* exp_obj, const Fvector& expl_centre, Fvector& p);
 
-	void				ExplodeWaveProcessObject(collide::rq_results& storage, CPhysicsShellHolder* sh);
+	void				ExplodeWaveProcessObject(collide::rq_results& storage, CPHShellHolder* sh);
 	void				ExplodeWaveProcess( );
 	static		float				TestPassEffect(const	Fvector& source_p, const	Fvector& dir, float range, float ef_radius, collide::rq_results& storage, CObject* blasted_obj);
 	void				LightCreate( );
@@ -193,7 +193,8 @@ protected:
 		shared_str				file_name;*/
 		shared_str				effect_sect_name;
 	} effector;
-	DECLARE_SCRIPT_REGISTER_FUNCTION
+	public:
+		static void script_register(lua_State*);
 };
 
 add_to_type_list(CExplosive)

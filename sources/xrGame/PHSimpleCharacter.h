@@ -203,7 +203,7 @@ public:
 	virtual		float		&FrictionFactor						()					{return m_friction_factor;}
 	virtual		void		SetMas								(dReal mass)		;
 	virtual		float		Mass								()					{return m_mass;};
-	virtual		void		SetPhysicsRefObject					(CPhysicsShellHolder* ref_object);
+	virtual		void		SetPhysicsRefObject					(CPHShellHolder* ref_object);
 
 	virtual		void		CaptureObject						(dBodyID body,const dReal* anchor);
 	virtual		void		CapturedSetPosition					(const dReal* position);

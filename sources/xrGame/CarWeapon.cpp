@@ -2,7 +2,7 @@
 
 #include "CarWeapon.h"
 #include "PhysicsShell.h"
-#include "PhysicsShellHolder.h"
+#include "PHShellHolder.h"
 #include "..\ENGINE\skeletoncustom.h"
 #include "object_broker.h"
 #include "ai_sounds.h"
@@ -24,7 +24,7 @@ void CCarWeapon::BoneCallbackY		(CBoneInstance *B)
 	B->mTransform.mulB_43			(rY);
 }
 
-CCarWeapon::CCarWeapon(CPhysicsShellHolder* obj)
+CCarWeapon::CCarWeapon(CPHShellHolder* obj)
 {
 	m_bActive	= false;
 	m_bAutoFire	= false;

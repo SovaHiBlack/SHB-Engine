@@ -31,7 +31,7 @@ class CUIProgressBar;
 class CScriptXmlInit
 {
 public:
-	DECLARE_SCRIPT_REGISTER_FUNCTION
+	static void script_register(lua_State*);
 
 						CScriptXmlInit		( );
 						CScriptXmlInit		(const CScriptXmlInit& other);

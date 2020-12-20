@@ -129,9 +129,9 @@
 #		undef cast_type_list
 #		define cast_type_list save_cast_list	(CHudItem,			CInventoryItem)
 
-		DECLARE_SPECIALIZATION	(CPhysicsShellHolder,CGameObject,			cast_physics_shell_holder);
+		DECLARE_SPECIALIZATION	(CPHShellHolder,CGameObject,			cast_physics_shell_holder);
 #		undef cast_type_list
-#		define cast_type_list save_cast_list	(CPhysicsShellHolder,CGameObject)
+#		define cast_type_list save_cast_list	(CPHShellHolder,CGameObject)
 
 		DECLARE_SPECIALIZATION	(IInputReceiver,	CGameObject,			cast_input_receiver);
 #		undef cast_type_list

@@ -2,7 +2,7 @@
 
 #pragma once
 
-#include "PhysicItem.h"
+#include "PHItem.h"
 #include "PHObject.h"
 
 class CRocketLauncher;
@@ -18,10 +18,10 @@ struct SRoketContact
 	}
 };
 
-class CCustomRocket : public CPhysicItem, public CPHUpdateObject
+class CCustomRocket : public CPHItem, public CPHUpdateObject
 {
 private:
-	using inherited								= CPhysicItem;
+	using inherited								= CPHItem;
 	friend CRocketLauncher;
 
 public:

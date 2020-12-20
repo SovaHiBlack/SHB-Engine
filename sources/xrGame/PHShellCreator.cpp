@@ -3,12 +3,12 @@
 #include "PHShellCreator.h"
 #include "PhysicsShell.h"
 //#include "GameObject.h"
-#include "PhysicsShellHolder.h"
+#include "PHShellHolder.h"
 #include "..\ENGINE\skeletoncustom.h"
 
 void CPHShellSimpleCreator::CreatePhysicsShell()
 {
-	CPhysicsShellHolder* owner = smart_cast<CPhysicsShellHolder*>(this); VERIFY(owner);
+	CPHShellHolder* owner = smart_cast<CPHShellHolder*>(this); VERIFY(owner);
 	if (!owner->Visual()) return;
 	
 	CKinematics* pKinematics		= smart_cast<CKinematics*>(owner->Visual());

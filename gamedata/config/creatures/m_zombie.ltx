@@ -38,13 +38,10 @@ material				= creatures\medium
 
 species					= zombie		;species of monster
 
+terrain				 = zombie_terrain
 
-
-
-
-
-
-
+step_params				= m_zombie_step_params
+LegsCount				= 2
 
 ;------------------------------------------------------------------------------
 ; Offline Alife
@@ -57,16 +54,12 @@ MaxSpeed		     = 5.0						; option for ALife Simulator
 going_speed          = 2;4.5                      ; option for ALife Simulator
 search_speed         = 1.5                       ; option for ALife Simulator
 
-
-
-
-DynamicObjectsCount	 = 32
 smart_terrain_choose_interval	= 00:15:00
+;------------------------------------------------------------------------------
 
-
-
-
-
+;------------------------------------------------------------------------------
+; Physics
+;------------------------------------------------------------------------------
 ph_box0_center 		 = 0.0,  0.9,  0.0
 ph_box0_size 		 = 0.35, 0.9,  0.35
 ph_box1_center 		 = 0.0,  0.6,  0.0
@@ -75,9 +68,9 @@ ph_crash_speed_min			= 10
 ph_crash_speed_max			= 30
 ph_collision_damage_factor	= 0.1
 ph_mass 		     = 80
+
 destroyed_vis_name	 = physics\Dead_Body\trupik_crash
 
-;---------------------------------------------------------------------
 ph_skeleton_airr_lin_factor   = 1.1 ;550.0 (изменно из-за того, что убрано домножение коэффициент 0.002 из кода)
 ph_skeleton_airr_ang_factor   = 0.0 ;0.0 (изменно из-за того, что убрано домножение на коэффициент 0.3 из кода (0.0*0.3=0.0))
 ph_skeleton_hinger_factor1    = 5.0 ;1.0 (изменно из-за того, что убрано домножение на коэффициент 5.0 из кода)
@@ -86,14 +79,7 @@ ph_skeleton_ddelay	     	  = 5.0 ;Время изменения значения трения в суставе с мо
 ph_skel_fatal_impulse_factor  = 8.0
 ph_after_death_velocity_factor= 0.75
 ph_skel_shot_up_factor        = 0.25
-;---------------------------------------------------------------------
-
-SoundThreshold		 = 0.06             ; range [0..1]
-
-eye_fov				 = 80
-eye_range			 = 50
-max_hear_dist		 = 30
-
+;------------------------------------------------------------------------------
 
 ;------------------------------------------------------------------------------
 ; Movement: Velocities & Acceleration
@@ -110,6 +96,7 @@ Velocity_Drag						= 1.0,		3.0,			3.0,		1,		1
 ; acceleration
 Accel_Calm							= 2.5
 Accel_Aggressive					= 7.5
+;------------------------------------------------------------------------------
 
 ;------------------------------------------------------------------------------
 ; Attack parameters
@@ -126,19 +113,79 @@ attack_params			= m_zombie_attack_params
 attack_effector			= m_zombie_attack_effector
 
 Melee_Rotation_Factor	= 1.6
+;------------------------------------------------------------------------------
 
+;------------------------------------------------------------------------------
+; Entity Conditions
+;------------------------------------------------------------------------------
+satiety_v				= 0.00001			;скорость уменьшения сытости со временем [0...1]
+satiety_power_v			= 0.01				;увеличение силы при уменьшении сытости [0...1]
+satiety_health_v		= 0.005				;увеличение здоровья при уменьшении сытости [0...1]
+radiation_v				= 0.00001			;скорость уменьшения радиации [0...1]
+radiation_health_v		= 0.01				;уменьшение здоровья при воздействии радиации [0...1]
+morale_v				= 0.01				;скорость восстановления морали [0...1]
+psy_health_v			= 0.1				;скорость восстановления psy-здоровья [0...1]
 
+health_hit_part 		= 1.0		;0.8			;процент хита, уходящий на отнимание здоровья [0...1]
+power_hit_part 			= 1.0		;0.9			;процент хита, уходящий на отнимание силы [0...1]
 
+immunities_sect			= zombie_immunities
 
+;открытые раны
+bleeding_v				= 0							;потеря крови при номинальной ране в секунду
+wound_incarnation_v		= 0.01						;крутизна кривой заживления (какой процент раны останется после заживления в игровую секунду)
+min_wound_size			= 0.01
 
-
-
-
+;Eat settings
+eat_freq			=	5.0		;частота укусов в сек
+eat_slice			=	0.01	;увеличение сытости при 1 укусе
+eat_slice_weight	=	10.0	;уменьшение еды у трупа
 
 Min_Satiety			= 0.4		; мин. норма сытости (меньше - уже голодный)
 Max_Satiety			= 1.0		; макс. норма сытости (больше - очень сытый)
 
 distance_to_corpse	= 1.2		; дист. до трупа, при которой он переходит в состояние еды
+
+satiety_threshold	= 0.5							; below this value monster fill hunger
+;------------------------------------------------------------------------------
+
+;------------------------------------------------------------------------------
+; Sounds and sound parameters
+;------------------------------------------------------------------------------
+sound_idle				= monsters\zombie\zombie_idle_
+sound_distant_idle			= monsters\zombie\zombie_idle_
+sound_eat				= monsters\zombie\zombie_eat_ 
+sound_aggressive		= monsters\zombie\zombie_attack_
+sound_attack_hit		= monsters\zombie\zombie_attack_hit_
+sound_take_damage		= monsters\zombie\zombie_take_damage_
+sound_die				= monsters\zombie\zombie_die_
+sound_die_in_anomaly	= monsters\zombie\zombie_die_
+sound_threaten			= monsters\biting\def_
+sound_steal				= monsters\biting\def_
+sound_panic				= monsters\zombie\zombie_attack_
+
+killer_clsids			= Z_MINCER,Z_GALANT,ZS_BFUZZ,ZS_MBALD,ZS_GALAN,ZS_MINCE
+
+;Frequency of sounds to be played
+idle_sound_delay		= 20000
+eat_sound_delay			= 3000
+attack_sound_delay		= 24000
+
+distant_idle_sound_delay	= 80000
+distant_idle_sound_range	= 100.0
+
+SoundThreshold		 = 0.06             ; range [0..1]
+max_hear_dist		 = 30
+;------------------------------------------------------------------------------
+
+;------------------------------------------------------------------------------
+; Vision
+;------------------------------------------------------------------------------
+eye_fov				 = 80
+eye_range			 = 50
+
+; number of visible objects monster can handle
+DynamicObjectsCount	 = 32
 
 min_view_distance   		= 0.7				; коэффициент, который множится на eye_range, в зависимости от угла
 max_view_distance	 		= 1.0				; коэффициент, который множится на eye_range, в зависимости от угла
@@ -149,85 +196,48 @@ decrease_value				= 0.01				; значение, на которое уменьшается вес, если объект 
 velocity_factor		     	= 0.5
 luminocity_factor			= 0.5 				; фактор освещения (только для Актёра)
 transparency_threshold		= 0.25
-
-terrain				 = zombie_terrain
+;------------------------------------------------------------------------------
 
 ;------------------------------------------------------------------------------
-;----------------------------- Entity Conditions ------------------------------
-;------------------------------------------------------------------------------
-satiety_v				= 0.00001			;скорость уменьшения сытости со временем [0...1]
-satiety_power_v			= 0.01				;увеличение силы при уменьшении сытости 
-satiety_health_v		= 0.005				;увеличение здоровья при уменьшении сытости
-radiation_v				= 0.00001			;скорость уменьшения радиации [0...1]
-radiation_health_v		= 0.01				;уменьшение здоровья при воздействии радиации
-morale_v				= 0.01				;скорость восстановления морали [0...1]
-psy_health_v			= 0.1				;скорость восстановления psy-здоровья
-
-
-health_hit_part 		= 1.0		;0.8			;процент хита, уходящий на отнимание здоровья
-power_hit_part 			= 1.0		;0.9			;процент хита, уходящий на отнимание силы
-
-immunities_sect			= zombie_immunities
-
-;открытые раны
-bleeding_v				= 0							;потеря крови при номинальной ране в секунду
-wound_incarnation_v		= 0.01						;крутизна кривой заживления (какой процент раны останется после заживления в игровую секунду)
-min_wound_size			= 0.01
-
-eat_freq			=	5.0		;частота укусов в сек
-eat_slice			=	0.01	;увеличение сытости при 1 укусе
-eat_slice_weight	=	10.0	;уменьшение еды у трупа
-
-satiety_threshold	= 0.5							; below this value monster fill hunger
-
-;-------------------------------------------------------------------------
 ; Morale
-;-------------------------------------------------------------------------
+;------------------------------------------------------------------------------
 Morale_Hit_Quant				= 0.001
 Morale_Attack_Success_Quant		= 0.1
 Morale_Take_Heart_Speed			= 0.1
 Morale_Despondent_Speed			= 0.1
 Morale_Stable_Speed				= 0.01
 Morale_Despondent_Threashold	= 0.1
+;------------------------------------------------------------------------------
 
-sound_idle				= monsters\zombie\zombie_idle_ 
-sound_eat				= monsters\zombie\zombie_eat_ 
-sound_aggressive			= monsters\zombie\zombie_attack_
-sound_attack_hit		= monsters\zombie\zombie_attack_hit_
-sound_take_damage		= monsters\zombie\zombie_take_damage_
-sound_die				= monsters\zombie\zombie_die_
-sound_threaten			= monsters\biting\def_		
-sound_landing			= monsters\biting\def_
-sound_steal				= monsters\biting\def_
-sound_panic				= monsters\zombie\zombie_attack_
-sound_growling			= monsters\biting\def_
-sound_die_in_anomaly	= monsters\zombie\zombie_die_
-
-killer_clsids			= Z_MINCER,Z_GALANT,ZS_BFUZZ,ZS_MBALD,ZS_GALAN,ZS_MINCE
-
-idle_sound_delay		= 20000
-eat_sound_delay			= 3000
-attack_sound_delay		= 24000
-
-sound_distant_idle			= monsters\zombie\zombie_idle_
-distant_idle_sound_delay	= 80000
-distant_idle_sound_range	= 100.0	
-
+;------------------------------------------------------------------------------
+; Damages
+;------------------------------------------------------------------------------
+;Health from which to play injured animation
 DamagedThreshold		= 0.5
+
+damage					= m_zombie_damage
+
 critical_wound_threshold		= -1
 critical_wound_decrease_quant	= 0.
+;------------------------------------------------------------------------------
+
+
+
+
+
+
 
 FakeDeathCount					= 4		; max count of fake death
 StartFakeDeathHealthThreshold	= 0.6
 
 
-DynamicObjectsCount		= 32
 
-LegsCount				= 2
 
-step_params				= m_zombie_step_params
 
-damage					= m_zombie_damage
+
+
+
+
 
 
 
@@ -313,11 +323,14 @@ rank = 0
 spec_rank			= weak
 community			= zombie
 
+immunities_sect		= zombie_immunities_weak
+
+attack_params		= zombie_attack_params_weak
+
 FakeDeathCount					= 2		; max count of fake death
 StartFakeDeathHealthThreshold	= 0.4
 
-immunities_sect		= zombie_immunities_weak
-attack_params		= zombie_attack_params_weak
+
 
 [zombie_immunities_weak]
 burn_immunity			= 1.0
@@ -351,11 +364,13 @@ rank = 255
 spec_rank			= normal
 community			= zombie
 
+immunities_sect		= zombie_immunities_normal
+attack_params		= zombie_attack_params_normal
+
 FakeDeathCount					= 4		; max count of fake death
 StartFakeDeathHealthThreshold	= 0.6
 
-immunities_sect		= zombie_immunities_normal
-attack_params		= zombie_attack_params_normal
+
 
 [zombie_immunities_normal]
 burn_immunity			= 1.0
@@ -389,11 +404,13 @@ rank = 255
 spec_rank			= strong
 community			= zombie
 
+immunities_sect		= zombie_immunities_strong
+attack_params		= zombie_attack_params_strong
+
 FakeDeathCount					= 6		; max count of fake death
 StartFakeDeathHealthThreshold	= 0.8
 
-immunities_sect		= zombie_immunities_strong
-attack_params		= zombie_attack_params_strong
+
 
 [zombie_immunities_strong]
 burn_immunity			= 1.0

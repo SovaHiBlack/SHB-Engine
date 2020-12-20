@@ -272,7 +272,7 @@ public:
 	virtual void					load				(IReader &input_packet);
 
 	virtual void					SpawnInitPhysics	(CSE_Abstract	*D);
-	virtual CPhysicsShellHolder*	PPhysicsShellHolder	()						{return PhysicsShellHolder();}
+	virtual CPHShellHolder*	PPhysicsShellHolder	()						{return PhysicsShellHolder();}
 	virtual void					net_Save			(NET_Packet& P);
 	virtual	BOOL					net_SaveRelevant	()						{return (inherited::net_SaveRelevant() && BOOL(PPhysicsShell()!=NULL))||m_exploded;};					
 
@@ -347,7 +347,8 @@ public:
 	virtual void			OnRender						();
 #endif
 
-	DECLARE_SCRIPT_REGISTER_FUNCTION
+	public:
+		static void script_register(lua_State*);
 };
 
 add_to_type_list(CHelicopter)

@@ -8,7 +8,7 @@
 
 #include "stdafx.h"
 
-#include "PhysicsShellHolder.h"
+#include "PHShellHolder.h"
 #include "attachable_item.h"
 #include "inventoryowner.h"
 #include "Inventory.h"
@@ -17,7 +17,7 @@
 	CAttachableItem*	CAttachableItem::m_dbgItem = NULL;
 #endif
 
-IC	CPhysicsShellHolder &CAttachableItem::object	() const
+IC	CPHShellHolder&CAttachableItem::object	() const
 {
 	return				(item().object());
 }

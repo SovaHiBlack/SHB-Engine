@@ -1,6 +1,6 @@
 #include "stdafx.h"
 
-#include "..\..\PhysicsShellHolder.h"
+#include "..\..\PHShellHolder.h"
 #include "telekinetic_object.h"
 #include "../../PhysicsShell.h"
 #include "../../PHInterpolation.h"
@@ -25,9 +25,7 @@ CTelekineticObject::~CTelekineticObject()
 
 }
 
-
-
-bool CTelekineticObject::init(CTelekinesis* tele,CPhysicsShellHolder *obj, float s, float h, u32 ttk, bool rot) 
+bool CTelekineticObject::init(CTelekinesis* tele, CPHShellHolder*obj, float s, float h, u32 ttk, bool rot)
 {
 	if(!can_activate(obj)) return false;
 
@@ -268,7 +266,7 @@ void CTelekineticObject::rotate()
 	if (OnServer()) object->m_pPhysicsShell->applyImpulse(dir, 2.5f * object->m_pPhysicsShell->getMass());
 }
 
-bool CTelekineticObject::can_activate(CPhysicsShellHolder *obj)
+bool CTelekineticObject::can_activate(CPHShellHolder*obj)
 {
 	return (obj && obj->m_pPhysicsShell);
 }

@@ -121,7 +121,7 @@ public:
 	virtual		void				remove_ObjectContactCallback		(ObjectContactCallbackFun* callback);
 	virtual		void				set_CallbackData				(void * cd);
 	virtual		void				*get_CallbackData				();
-	virtual		void				set_PhysicsRefObject			(CPhysicsShellHolder* ref_object);
+	virtual		void				set_PhysicsRefObject			(CPHShellHolder* ref_object);
 	
 	//breakbable interface
 	virtual		bool				isBreakable						();

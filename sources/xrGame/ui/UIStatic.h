@@ -200,8 +200,8 @@ protected:
 private:
 	Frect	m_xxxRect; // need by RescaleRelative2Rect(Frect& r). it is initializes only once in Init(x,y,width,height)
 
-public:
-	DECLARE_SCRIPT_REGISTER_FUNCTION
+	public:
+		static void script_register(lua_State*);
 };
 
 add_to_type_list(CUIStatic)

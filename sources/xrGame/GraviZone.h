@@ -30,18 +30,18 @@ public:
 
 	//воздействие зоной на объект
 	virtual void	Affect(SZoneObjectInfo* O);
-	virtual void	AffectPull(CPhysicsShellHolder* GO,const Fvector& throw_in_dir,float dist);
+	virtual void	AffectPull(CPHShellHolder* GO,const Fvector& throw_in_dir,float dist);
 	virtual void	AffectPullAlife(CEntityAlive* EA,const Fvector& throw_in_dir,float dist);
-	virtual void	AffectPullDead(CPhysicsShellHolder* GO,const Fvector& throw_in_dir,float dist);
-	virtual void	AffectThrow(SZoneObjectInfo* O, CPhysicsShellHolder* GO,const Fvector& throw_in_dir,float dist);
+	virtual void	AffectPullDead(CPHShellHolder* GO,const Fvector& throw_in_dir,float dist);
+	virtual void	AffectThrow(SZoneObjectInfo* O, CPHShellHolder* GO,const Fvector& throw_in_dir,float dist);
 	virtual void	ThrowInCenter(Fvector& C);
-	virtual bool	CheckAffectField(CPhysicsShellHolder* GO,float dist_to_radius);
+	virtual bool	CheckAffectField(CPHShellHolder* GO,float dist_to_radius);
 	virtual void	shedule_Update		(u32 dt);
 	virtual bool	BlowoutState();
 	virtual bool	IdleState();
 
 	virtual float	RelativePower(float dist);
-	virtual float	BlowoutRadiusPercent(CPhysicsShellHolder* /*GO*/){return m_fBlowoutRadiusPercent;}
+	virtual float	BlowoutRadiusPercent(CPHShellHolder* /*GO*/){return m_fBlowoutRadiusPercent;}
 protected:
 	virtual CTelekinesis& Telekinesis()						=0;
 protected:

@@ -267,7 +267,7 @@ void CBurer::UpdateGraviObject( )
 
 	for (u32 i = 0; i < m_nearest.size( ); i++)
 	{
-		CPhysicsShellHolder* obj = smart_cast<CPhysicsShellHolder*>(m_nearest[i]);
+		CPHShellHolder* obj = smart_cast<CPHShellHolder*>(m_nearest[i]);
 		if (!obj || !obj->m_pPhysicsShell)
 		{
 			continue;

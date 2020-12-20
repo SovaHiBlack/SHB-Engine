@@ -66,7 +66,8 @@ public:
 	IC		CSE_ALifeSmartZone			&smart_terrain			();
 	IC		void						can_choose_alife_tasks	(bool value);
 
-	DECLARE_SCRIPT_REGISTER_FUNCTION
+public:
+	static void script_register(lua_State*);
 };
 
 add_to_type_list(CALifeMonsterBrain)

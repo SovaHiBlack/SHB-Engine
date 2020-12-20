@@ -60,7 +60,8 @@ public:
 	IC		void	SetSoundType		(const ESoundTypes sound_type);
 	IC		void	initialize			();
 
-	DECLARE_SCRIPT_REGISTER_FUNCTION
+public:
+	static void script_register(lua_State*);
 };
 
 add_to_type_list(CScriptSoundAction)

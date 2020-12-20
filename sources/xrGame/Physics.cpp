@@ -6,7 +6,7 @@
 //#include "PHContactBodyEffector.h"
 #include "gamemtllib.h"
 //#include "GameObject.h"
-//#include "PhysicsShellHolder.h"
+//#include "PHShellHolder.h"
 //#include "PHCollideValidator.h"
 
 #ifdef DEBUG
@@ -80,12 +80,15 @@ public:
 		pointer->Apply( );
 	}
 };
+
 /////////////////////////////////////////////////////////////////////////////
 IC void add_contact_body_effector(dBodyID body, const dContact& c, SGameMtl* material)
 {
 	CPHContactBodyEffector* effector = (CPHContactBodyEffector*) dBodyGetData(body);
 	if (effector)
+	{
 		effector->Merge(c, material);
+	}
 	else
 	{
 		effector = ContactEffectors.add( );
@@ -110,7 +113,10 @@ IC static int CollideIntoGroup(dGeomID o1, dGeomID o2, dJointGroupID jointGroup,
 	n = dCollide(o1, o2, N, &contacts[0].geom, sizeof(dContact));
 
 	if (n > N - 1)
+	{
 		n = N - 1;
+	}
+
 	int i;
 
 	for (i = 0; i < n; ++i)
@@ -127,21 +133,41 @@ IC static int CollideIntoGroup(dGeomID o1, dGeomID o2, dJointGroupID jointGroup,
 		u16				material_idx_1 = 0;
 		u16				material_idx_2 = 0;
 
-		surface.mu = 1.f;// 5000.f;
-		surface.soft_erp = 1.f;//ERP(world_spring,world_damping);
-		surface.soft_cfm = 1.f;//CFM(world_spring,world_damping);
+		surface.mu = 1.0f;// 5000.f;
+		surface.soft_erp = 1.0f;//ERP(world_spring,world_damping);
+		surface.soft_cfm = 1.0f;//CFM(world_spring,world_damping);
 		surface.bounce = 0.01f;//0.1f;
 		surface.bounce_vel = 1.5f;//0.005f;
 		usr_data_1 = retrieveGeomUserData(g1);
 		usr_data_2 = retrieveGeomUserData(g2);
 		///////////////////////////////////////////////////////////////////////////////////////////////////
-		if (usr_data_2)	material_idx_2 = usr_data_2->material;
-		if (usr_data_1)	material_idx_1 = usr_data_1->material;
+		if (usr_data_2)
+		{
+			material_idx_2 = usr_data_2->material;
+		}
+
+		if (usr_data_1)
+		{
+			material_idx_1 = usr_data_1->material;
+		}
+
 		bool is_tri_1 = dTriListClass == dGeomGetClass(g1);
 		bool is_tri_2 = dTriListClass == dGeomGetClass(g2);
-		if (!is_tri_2 && !is_tri_1) surface.mode = 0;
-		if (is_tri_1) material_idx_1 = (u16) surface.mode;
-		if (is_tri_2) material_idx_2 = (u16) surface.mode;
+		if (!is_tri_2 && !is_tri_1)
+		{
+			surface.mode = 0;
+		}
+
+		if (is_tri_1)
+		{
+			material_idx_1 = (u16) surface.mode;
+		}
+
+		if (is_tri_2)
+		{
+			material_idx_2 = (u16) surface.mode;
+		}
+
 		SGameMtl* material_1 = GMLib.GetMaterialByIdx(material_idx_1);
 		SGameMtl* material_2 = GMLib.GetMaterialByIdx(material_idx_2);
 		////////////////params can be changed in callbacks//////////////////////////////////////////////////////////////////////////
@@ -176,10 +202,13 @@ IC static int CollideIntoGroup(dGeomID o1, dGeomID o2, dJointGroupID jointGroup,
 						add_contact_body_effector(body, c, material_1);
 					}
 				}
-
 			}
+
 			if (material_1->Flags.test(SGameMtl::flPassable))
+			{
 				do_collide = false;
+			}
+
 		//	if(material_2->Flags.is(SGameMtl::flClimable)) 
 		//		do_collide=false;
 		}
@@ -204,8 +233,11 @@ IC static int CollideIntoGroup(dGeomID o1, dGeomID o2, dJointGroupID jointGroup,
 					}
 				}
 			}
+
 			if (material_2->Flags.test(SGameMtl::flPassable))
+			{
 				do_collide = false;
+			}
 		}
 
 		if (flags_1.test(SGameMtl::flBounceable) && flags_2.test(SGameMtl::flBounceable))
@@ -248,7 +280,10 @@ IC static int CollideIntoGroup(dGeomID o1, dGeomID o2, dJointGroupID jointGroup,
 		}
 
 		if (pushing_neg)
+		{
 			surface.mu = dInfinity;
+		}
+
 		if (do_collide && collided_contacts < MAX_CONTACTS)
 		{
 			++collided_contacts;
@@ -260,108 +295,37 @@ IC static int CollideIntoGroup(dGeomID o1, dGeomID o2, dJointGroupID jointGroup,
 			dJointAttach(contact_joint, dGeomGetBody(g1), dGeomGetBody(g2));
 		}
 	}
+
 	return collided_contacts;
 }
+
 void NearCallback(CPHObject* obj1, CPHObject* obj2, dGeomID o1, dGeomID o2)
 {
 	CPHIsland* island1 = obj1->DActiveIsland( );
 	CPHIsland* island2 = obj2->DActiveIsland( );
 	obj2->near_callback(obj1);
 	int MAX_CONTACTS = -1;
-	if (!island1->CanMerge(island2, MAX_CONTACTS)) return;
+	if (!island1->CanMerge(island2, MAX_CONTACTS))
+	{
+		return;
+	}
+
 	if (CollideIntoGroup(o1, o2, ContactGroup, island1, MAX_CONTACTS) != 0)
 	{
 		obj1->MergeIsland(obj2);
-		if (!obj2->is_active( ))obj2->EnableObject(obj1);
+		if (!obj2->is_active( ))
+		{
+			obj2->EnableObject(obj1);
+		}
 	}
 }
+
 void CollideStatic(dGeomID o2, CPHObject* obj2)
 {
 	CPHIsland* island2 = obj2->DActiveIsland( );
 	CollideIntoGroup(ph_world->GetMeshGeom( ), o2, ContactGroup, island2, island2->MaxJoints( ));
 }
 
-//half square time
-
-/*
-void BodyCutForce(dBodyID body)
-{
-dReal linear_limit=l_limit;
-//applyed force
-const dReal* force=	dBodyGetForce(body);
-
-//body mass
-dMass m;
-dBodyGetMass(body,&m);
-
-//accceleration correspondent to the force
-dVector3 a={force[0]/m.mass,force[1]/m.mass,force[2]/m.mass};
-
-//current velocity
-const dReal* start_vel=dBodyGetLinearVel(body);
-
-//velocity adding during one step
-dVector3 add_vel={a[0]*fixed_step,a[1]*fixed_step,a[2]*fixed_step};
-
-//result velocity
-dVector3 vel={start_vel[0]+add_vel[0],start_vel[1]+add_vel[1],start_vel[2]+add_vel[2]};
-
-//result velocity magnitude
-dReal speed=dSqrt(dDOT(vel,vel));
-
-if(speed>linear_limit) //then we need to cut applied force
-{
-//solve the triangle - cutted velocity - current veocity - add velocity
-//to find cutted adding velocity
-
-//add_vell magnitude
-dReal add_speed=dSqrt(dDOT(add_vel,add_vel));
-
-//current velocity magnitude
-dReal start_speed=dSqrt(dDOT(start_vel,start_vel));
-
-//cosinus of the angle between vel ang add_vell
-dReal cosinus1=dFabs(dDOT(add_vel,start_vel)/start_speed/add_speed);
-
-dReal cosinus1_2=cosinus1*cosinus1;
-if(cosinus1_2>1.f)
-cosinus1_2=1.f;
-dReal cutted_add_speed;
-if(cosinus1_2==1.f)
-cutted_add_speed=linear_limit-start_speed;
-else
-{
-//sinus
-dReal sinus1_2=1.f-cosinus1_2;
-
-dReal sinus1=dSqrt(sinus1_2);
-
-//sinus of the angle between cutted velocity and adding velociity (sinus theorem)
-dReal sinus2=sinus1/linear_limit*start_speed;
-dReal sinus2_2=sinus2*sinus2;
-if(sinus2_2>1.f)sinus2_2=1.f;
-
-dReal cosinus2_2=1.f-sinus2_2;
-dReal cosinus2=dSqrt(cosinus2_2);
-
-//sinus of 180-ang1-ang2
-dReal sinus3=sinus1*cosinus2+cosinus1*sinus2;
-
-//cutted adding velocity magnitude (sinus theorem)
-
-cutted_add_speed=linear_limit/sinus1*sinus3;
-}
-//substitude force
-
-dBodyAddForce(body,
-cutted_add_speed/add_speed/fixed_step*m.mass*add_vel[0]-force[0],
-cutted_add_speed/add_speed/fixed_step*m.mass*add_vel[1]-force[1],
-cutted_add_speed/add_speed/fixed_step*m.mass*add_vel[2]-force[2]
-);
-}
-
-}
-*/
 //limit for angular accel
 void dBodyAngAccelFromTorqu(const dBodyID body, dReal* ang_accel, const dReal* torque)
 {
@@ -371,6 +335,7 @@ void dBodyAngAccelFromTorqu(const dBodyID body, dReal* ang_accel, const dReal* t
 	dInvertPDMatrix(m.I, invI, 3);
 	dMULTIPLY1_333(ang_accel, invI, torque);
 }
+
 void FixBody(dBodyID body, float ext_param, float mass_param)
 {
 	dMass m;
@@ -383,6 +348,7 @@ void FixBody(dBodyID body, float ext_param, float mass_param)
 	dBodySetForce(body, 0, 0, 0);
 	dBodySetTorque(body, 0, 0, 0);
 }
+
 void FixBody(dBodyID body)
 {
 	FixBody(body, fix_ext_param, fix_mass_param);
@@ -480,7 +446,7 @@ float E_NLD(dBodyID b1, dBodyID b2, const dReal* norm)// norm - from 2 to 1
 	dReal vel_pr1 = dDOT(vel1, norm);
 	dReal vel_pr2 = dDOT(vel2, norm);
 
-	if (vel_pr1 > vel_pr2) return 0.f; //exit if the bodies are departing
+	if (vel_pr1 > vel_pr2) return 0.0f; //exit if the bodies are departing
 
 	dVector3 impuls1 = { vel1[0] * m1.mass,vel1[1] * m1.mass,vel1[2] * m1.mass };
 	dVector3 impuls2 = { vel2[0] * m2.mass,vel2[1] * m2.mass,vel2[2] * m2.mass };
@@ -496,15 +462,27 @@ float E_NLD(dBodyID b1, dBodyID b2, const dReal* norm)// norm - from 2 to 1
 
 	return (kin_energy_start - kin_energy_end);
 }
+
 float E_NL(dBodyID b1, dBodyID b2, const dReal* norm)
 {
 	VERIFY(b1 || b2);
 	if (b1)
 	{
-		if (b2)return E_NLD(b1, b2, norm); else return  E_NlS(b1, norm, 1);
+		if (b2)
+		{
+			return E_NLD(b1, b2, norm);
+		}
+		else
+		{
+			return  E_NlS(b1, norm, 1);
+		}
 	}
-	else return E_NlS(b2, norm, -1);
+	else
+	{
+		return E_NlS(b2, norm, -1);
+	}
 }
+
 void ApplyGravityAccel(dBodyID body, const dReal* accel)
 {
 	dMass m;

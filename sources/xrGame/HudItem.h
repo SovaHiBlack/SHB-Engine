@@ -6,7 +6,7 @@
 #pragma once
 
 class CSE_Abstract;
-class CPhysicItem;
+class CPHItem;
 class NET_Packet;
 struct HUD_SOUND;
 class CInventoryItem;
@@ -162,11 +162,11 @@ public:
 	}
 
 private:
-	CPhysicItem* m_object;
+	CPHItem* m_object;
 	CInventoryItem* m_item;
 
 public:
-	IC CPhysicItem& object( ) const
+	IC CPHItem& object( ) const
 	{
 		VERIFY(m_object); return(*m_object);
 	}

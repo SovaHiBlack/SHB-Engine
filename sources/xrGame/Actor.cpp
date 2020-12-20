@@ -725,7 +725,7 @@ void CActor::UpdateCL	()
 	{
 		for(xr_vector<CObject*>::iterator it = feel_touch.begin(); it != feel_touch.end(); it++)
 		{
-			CPhysicsShellHolder	*sh = smart_cast<CPhysicsShellHolder*>(*it);
+			CPHShellHolder*sh = smart_cast<CPHShellHolder*>(*it);
 			if(sh&&sh->character_physics_support())
 			{
 				sh->character_physics_support()->movement()->UpdateObjectBox(character_physics_support()->movement()->PHCharacter());

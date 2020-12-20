@@ -13,7 +13,7 @@
 //#include "Level.h"
 //#include "gamemtllib.h"
 //#include "GameObject.h"
-#include "PhysicsShellHolder.h"
+#include "PHShellHolder.h"
 #include "..\ENGINE\skeletoncustom.h"
 #include "PHSimpleCharacterInline.h"
 #include "IDamageSource.h"
@@ -1213,7 +1213,7 @@ EEnvironment CPHSimpleCharacter::CheckInvironment( )
 	return peOnGround;
 }
 
-void CPHSimpleCharacter::SetPhysicsRefObject(CPhysicsShellHolder* ref_object)
+void CPHSimpleCharacter::SetPhysicsRefObject(CPHShellHolder* ref_object)
 {
 	m_phys_ref_object = ref_object;
 	if (b_exist)
@@ -1774,7 +1774,7 @@ u16 CPHSimpleCharacter::DamageInitiatorID( )const
 {
 	u16 ret = u16(-1);//m_collision_damage_info.DamageInitiatorID();
 
-	CPhysicsShellHolder* object = static_cast<CPhysicsShellHolder*>(Level( ).Objects.net_Find(m_collision_damage_info.m_obj_id));
+	CPHShellHolder* object = static_cast<CPHShellHolder*>(Level( ).Objects.net_Find(m_collision_damage_info.m_obj_id));
 	if (object && !object->getDestroy( ))
 	{
 		IDamageSource* ds = object->cast_IDamageSource( );

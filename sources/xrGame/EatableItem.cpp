@@ -3,7 +3,7 @@
 #include "EatableItem.h"
 #include "Messages.h"
 #include "../ENGINE/net_utils.h"
-#include "PhysicItem.h"
+#include "PHItem.h"
 #include "Level.h"
 #include "entity_alive.h"
 #include "EntityCondition.h"
@@ -26,7 +26,7 @@ CEatableItem::~CEatableItem( )
 
 DLL_Pure* CEatableItem::_construct( )
 {
-	m_physic_item = smart_cast<CPhysicItem*>(this);
+	m_physic_item = smart_cast<CPHItem*>(this);
 	return			(inherited::_construct( ));
 }
 

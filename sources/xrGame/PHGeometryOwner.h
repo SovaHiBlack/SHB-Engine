@@ -16,7 +16,7 @@ protected:
 		bool					b_builded;
 		dSpaceID				m_group;					//e					//bl
 		Fvector					m_mass_center;				//e ??				//bl
-		CPhysicsShellHolder*	m_phys_ref_object;			//->to shell ??		//bl
+		CPHShellHolder*	m_phys_ref_object;			//->to shell ??		//bl
 		float					m_volume;					//e ??				//bl
 		u16						ul_material;				//e ??				//bl
 		ContactCallbackFun*			contact_callback;		//->to shell ??		//bt
@@ -37,8 +37,8 @@ public:
 		void						set_CallbackData						(void * cd);
 		void						*get_CallbackData						();
 		ObjectContactCallbackFun	*get_ObjectContactCallback				();
-		void						set_PhysicsRefObject					(CPhysicsShellHolder* ref_object);												//aux
-		CPhysicsShellHolder*		PhysicsRefObject						(){return m_phys_ref_object;}													//aux
+		void						set_PhysicsRefObject					(CPHShellHolder* ref_object);												//aux
+		CPHShellHolder*		PhysicsRefObject						(){return m_phys_ref_object;}													//aux
 		void						SetPhObjectInGeomData					(CPHObject* O);		
 
 		void						SetMaterial								(u16 m)		  ;

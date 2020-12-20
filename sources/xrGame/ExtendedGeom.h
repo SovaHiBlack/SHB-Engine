@@ -8,7 +8,7 @@
 #ifdef DEBUG
 extern	u32				dbg_total_saved_tries					;
 #endif
-class CPhysicsShellHolder;
+class CPHShellHolder;
 
 class CObjectContactCallback
 {
@@ -101,7 +101,7 @@ struct dxGeomUserData
 	bool						pushing_neg,pushing_b_neg,b_static_colide		;
 	CDB::TRI					*neg_tri,*b_neg_tri								;
 	CPHObject					*ph_object										;
-	CPhysicsShellHolder			*ph_ref_object									;
+	CPHShellHolder*ph_ref_object									;
 	u16							material										;
 	u16							tri_material									;
 	ContactCallbackFun			*callback										;
@@ -147,7 +147,7 @@ IC dxGeomUserData* retrieveGeomUserData(dGeomID geom)
 			//	return dGeomGetUserData(geom);
 }
 
-IC CPhysicsShellHolder* retrieveRefObject(dGeomID geom)
+IC CPHShellHolder* retrieveRefObject(dGeomID geom)
 {
 	dxGeomUserData* ud=dGeomGetUserData(retrieveGeom(geom));
 	if(ud)return ud->ph_ref_object;
@@ -206,7 +206,7 @@ IC void dGeomUserDataSetPhObject(dxGeom* geom,CPHObject* phObject)
 	(dGeomGetUserData(geom))->ph_object=phObject;
 }
 
-IC void dGeomUserDataSetPhysicsRefObject(dxGeom* geom,CPhysicsShellHolder* phRefObject)
+IC void dGeomUserDataSetPhysicsRefObject(dxGeom* geom, CPHShellHolder* phRefObject)
 {
 	(dGeomGetUserData(geom))->ph_ref_object=phRefObject;
 }

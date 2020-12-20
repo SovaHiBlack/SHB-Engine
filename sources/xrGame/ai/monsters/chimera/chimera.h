@@ -29,7 +29,8 @@ public:
 
 	IC		void	SetUpperState				(bool state = true) {b_upper_state = state;}
 	
-	DECLARE_SCRIPT_REGISTER_FUNCTION
+public:
+	static void script_register(lua_State*);
 };
 
 add_to_type_list(CChimera)

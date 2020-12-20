@@ -10,7 +10,7 @@
 //#include "PhysicsShell.h"
 #include "game_sv_single.h"
 #include "level_graph.h"
-#include "IPhysicShellCreator.h"
+//#include "IPhysicShellCreator.h"
 #include "script_game_object.h"
 #include "xrserver_objects_alife.h"
 #include "xrServer_Objects_ALife_Items.h"

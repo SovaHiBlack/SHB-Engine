@@ -1,28 +1,21 @@
-////////////////////////////////////////////////////////////////////////////
-//	Module 		: PhysicItem.h
-//	Created 	: 11.02.2004
-//  Modified 	: 11.02.2004
-//	Author		: Dmitriy Iassenev
+//	Module 		: PHItem.h
 //	Description : Physic item
-////////////////////////////////////////////////////////////////////////////
 
 #pragma once
 
 #include "GameObject.h"
 #include "PHShellCreator.h"
-#include "PhysicsShellHolder.h"
+#include "PHShellHolder.h"
 
-class CPhysicItem : 
-			public CPhysicsShellHolder,
-			public CPHShellSimpleCreator
+class CPHItem : public CPHShellHolder, public CPHShellSimpleCreator
 {
-	typedef CPhysicsShellHolder inherited;
+	using inherited = CPHShellHolder;
+
 public:
 	bool			m_ready_to_destroy;
 
-public:
-					CPhysicItem						();
-	virtual			~CPhysicItem					();
+	CPHItem();
+	virtual			~CPHItem();
 			void	init							();
 	virtual void	reinit							();
 	virtual void	Load							(const char* section);

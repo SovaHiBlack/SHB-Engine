@@ -813,7 +813,7 @@ void CInventoryItem::activate_physic_shell()
 
 	UpdateXForm();
 
-	object().CPhysicsShellHolder::activate_physic_shell();
+	object().CPHShellHolder::activate_physic_shell();
 }
 
 void CInventoryItem::UpdateXForm	()
@@ -957,7 +957,7 @@ void CInventoryItem::OnRender()
 
 DLL_Pure *CInventoryItem::_construct	()
 {
-	m_object	= smart_cast<CPhysicsShellHolder*>(this);
+	m_object	= smart_cast<CPHShellHolder*>(this);
 	VERIFY		(m_object);
 	return		(inherited::_construct());
 }

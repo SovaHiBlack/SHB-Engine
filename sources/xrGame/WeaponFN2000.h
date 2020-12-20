@@ -17,8 +17,10 @@ public:
 
 	virtual bool Action(int cmd, u32 flags);*/
 
-	DECLARE_SCRIPT_REGISTER_FUNCTION
+public:
+	static void script_register(lua_State*);
 };
+
 add_to_type_list(CWeaponFN2000)
 #undef script_type_list
 #define script_type_list save_type_list(CWeaponFN2000)

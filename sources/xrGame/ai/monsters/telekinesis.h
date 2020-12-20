@@ -18,7 +18,7 @@ public:
 			// allocates relevant TelekineticObject
 
 			// активировать объект
-virtual		CTelekineticObject*	activate(CPhysicsShellHolder *obj, float strength, float height, u32 max_time_keep, bool rot = true);
+virtual		CTelekineticObject*	activate(CPHShellHolder*obj, float strength, float height, u32 max_time_keep, bool rot = true);
 
 			// деактивировать все объекты
 			void	deactivate			();
@@ -29,24 +29,24 @@ virtual		CTelekineticObject*	activate(CPhysicsShellHolder *obj, float strength, 
 virtual		void	clear				();
 virtual		void	clear_notrelevant   ();
 			// деактивировать объект
-			void	deactivate			(CPhysicsShellHolder *obj);
+			void	deactivate			(CPHShellHolder*obj);
 			void	remove_object		(TELE_OBJECTS_IT it);
-			void	remove_object		(CPhysicsShellHolder *obj);
+			void	remove_object		(CPHShellHolder*obj);
 			// бросить все объекты в позицию 'target'
 			void	fire_all			(const Fvector &target);
 			
 			// бросить объект 'obj' в позицию 'target' с учетом коэф силы 
-			void	fire				(CPhysicsShellHolder *obj, const Fvector &target, float power);
+			void	fire				(CPHShellHolder*obj, const Fvector &target, float power);
 
 			// бросить объект 'obj' в позицию 'target' с учетом коэф силы 
-			void	fire_t				(CPhysicsShellHolder *obj, const Fvector &target, float time);
+			void	fire_t				(CPHShellHolder*obj, const Fvector &target, float time);
 
 
 			// вернуть активность телекинеза
 			bool	is_active			() {return active;}
 
 			// вернуть активность объекта		
-			bool	is_active_object	(CPhysicsShellHolder *obj);
+			bool	is_active_object	(CPHShellHolder*obj);
 			
 			// вернуть количество контролируемых объектов (в состоянии TS_Raise & TS_Keep)
 			u32		get_objects_count	();

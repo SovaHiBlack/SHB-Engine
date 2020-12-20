@@ -23,7 +23,8 @@ public:
 	IC		u32			size	();
 	IC		void		clear	();
 	IC		RTOKEN_LIST	&tokens	();
-	DECLARE_SCRIPT_REGISTER_FUNCTION
+public:
+	static void script_register(lua_State*);
 };
 
 add_to_type_list(CScriptRTokenList)

@@ -18,13 +18,13 @@ CInventoryItemObject::~CInventoryItemObject	()
 DLL_Pure *CInventoryItemObject::_construct	()
 {
 	CInventoryItem::_construct	();
-	CPhysicItem::_construct		();
+	CPHItem::_construct		();
 	return						(this);
 }
 
 void CInventoryItemObject::Load				(const char* section)
 {
-	CPhysicItem::Load			(section);
+	CPHItem::Load			(section);
 	CInventoryItem::Load		(section);
 }
 
@@ -40,49 +40,49 @@ const char* CInventoryItemObject::NameShort		()
 
 void				CInventoryItemObject::Hit					(SHit* pHDS)
 {
-	CPhysicItem::Hit(pHDS);
+	CPHItem::Hit(pHDS);
 	CInventoryItem::Hit(pHDS);
 }
 
 void CInventoryItemObject::OnH_B_Independent(bool just_before_destroy)
 {
 	CInventoryItem::OnH_B_Independent	(just_before_destroy);
-	CPhysicItem::OnH_B_Independent		(just_before_destroy);
+	CPHItem::OnH_B_Independent		(just_before_destroy);
 }
 
 void CInventoryItemObject::OnH_A_Independent()
 {
 	CInventoryItem::OnH_A_Independent	();
-	CPhysicItem::OnH_A_Independent		();
+	CPHItem::OnH_A_Independent		();
 }
 
 void CInventoryItemObject::OnH_B_Chield		()
 {
-	CPhysicItem::OnH_B_Chield			();
+	CPHItem::OnH_B_Chield			();
 	CInventoryItem::OnH_B_Chield		();
 }
 
 void CInventoryItemObject::OnH_A_Chield		()
 {
-	CPhysicItem::OnH_A_Chield			();
+	CPHItem::OnH_A_Chield			();
 	CInventoryItem::OnH_A_Chield		();
 }
 
 void CInventoryItemObject::UpdateCL			()
 {
-	CPhysicItem::UpdateCL				();
+	CPHItem::UpdateCL				();
 	CInventoryItem::UpdateCL			();
 }
 
 void CInventoryItemObject::OnEvent			(NET_Packet& P, u16 type)
 {
-	CPhysicItem::OnEvent				(P, type);
+	CPHItem::OnEvent				(P, type);
 	CInventoryItem::OnEvent				(P, type);
 }
 
 BOOL CInventoryItemObject::net_Spawn		(CSE_Abstract* DC)
 {
-	BOOL								res = CPhysicItem::net_Spawn(DC);
+	BOOL								res = CPHItem::net_Spawn(DC);
 	CInventoryItem::net_Spawn			(DC);
 	return								(res);
 }
@@ -90,7 +90,7 @@ BOOL CInventoryItemObject::net_Spawn		(CSE_Abstract* DC)
 void CInventoryItemObject::net_Destroy		()
 {
 	CInventoryItem::net_Destroy			();
-	CPhysicItem::net_Destroy			();
+	CPHItem::net_Destroy			();
 }
 
 void CInventoryItemObject::net_Import		(NET_Packet& P) 
@@ -105,32 +105,32 @@ void CInventoryItemObject::net_Export		(NET_Packet& P)
 
 void CInventoryItemObject::save				(NET_Packet &packet)
 {
-	CPhysicItem::save					(packet);
+	CPHItem::save					(packet);
 	CInventoryItem::save				(packet);
 }
 
 void CInventoryItemObject::load				(IReader &packet)
 {
-	CPhysicItem::load					(packet);
+	CPHItem::load					(packet);
 	CInventoryItem::load				(packet);
 }
 
 void CInventoryItemObject::renderable_Render()
 {
-	CPhysicItem::renderable_Render		();
+	CPHItem::renderable_Render		();
 	CInventoryItem::renderable_Render	();
 }
 
 void CInventoryItemObject::reload			(const char* section)
 {
-	CPhysicItem::reload					(section);
+	CPHItem::reload					(section);
 	CInventoryItem::reload				(section);
 }
 
 void CInventoryItemObject::reinit		()
 {
 	CInventoryItem::reinit				();
-	CPhysicItem::reinit					();
+	CPHItem::reinit					();
 }
 
 void CInventoryItemObject::activate_physic_shell	()
@@ -140,7 +140,7 @@ void CInventoryItemObject::activate_physic_shell	()
 
 void CInventoryItemObject::on_activate_physic_shell	()
 {
-	CPhysicItem::activate_physic_shell	();
+	CPHItem::activate_physic_shell	();
 }
 
 void CInventoryItemObject::make_Interpolation	()

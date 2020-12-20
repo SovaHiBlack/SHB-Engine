@@ -73,7 +73,8 @@ public:
 			void						register_script_class			(const char* client_class, const char* server_class, const char* clsid, const char* script_clsid);
 			void						register_script_class			(const char* unknown_class, const char* clsid, const char* script_clsid);
 			void						register_script_classes			();
-	DECLARE_SCRIPT_REGISTER_FUNCTION
+public:
+	static void script_register(lua_State*);
 };
 
 add_to_type_list(CObjectFactory)

@@ -4,7 +4,7 @@
 #include "Extendedgeom.h"
 #include "PhysicsCommon.h"
 #include "GameObject.h"
-#include "PhysicsShellHolder.h"
+#include "PHShellHolder.h"
 #include "ai/stalker/Stalker.h"
 #include "Actor.h"
 #include "GameMtlLib.h"
@@ -134,7 +134,7 @@ void SPHCharacterRestrictor::Destroy()
 	}
 	m_character=NULL;
 }
-void CPHActorCharacter::SetPhysicsRefObject(CPhysicsShellHolder* ref_object)
+void CPHActorCharacter::SetPhysicsRefObject(CPHShellHolder* ref_object)
 {
 	inherited::SetPhysicsRefObject(ref_object);
 	RESTRICTOR_I i=begin(m_restrictors),e=end(m_restrictors);
@@ -143,7 +143,7 @@ void CPHActorCharacter::SetPhysicsRefObject(CPhysicsShellHolder* ref_object)
 		(*i)->SetPhysicsRefObject(ref_object);
 	}
 }
-void SPHCharacterRestrictor::SetPhysicsRefObject(CPhysicsShellHolder* ref_object)
+void SPHCharacterRestrictor::SetPhysicsRefObject(CPHShellHolder* ref_object)
 {
 	if(m_character)
 		dGeomUserDataSetPhysicsRefObject(m_restrictor,ref_object);

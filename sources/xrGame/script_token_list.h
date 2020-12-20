@@ -62,8 +62,10 @@ public:
 	IC		const char* name				(int id);
 	IC		const TOKEN_LIST	&tokens				() const;
 	IC		TOKEN_LIST			&tokens				();
-	DECLARE_SCRIPT_REGISTER_FUNCTION
+public:
+	static void script_register(lua_State*);
 };
+
 add_to_type_list(CScriptTokenList)
 #undef script_type_list
 #define script_type_list save_type_list(CScriptTokenList)

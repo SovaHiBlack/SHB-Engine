@@ -26,7 +26,7 @@ class CMissile;
 class CHudItem;
 class CWeaponAmmo;
 class CWeapon;
-class CPhysicsShellHolder;
+class CPHShellHolder;
 class NET_Packet;
 class CEatableItem;
 struct SPHNetState;
@@ -320,7 +320,7 @@ public:
 
 public:
 	virtual DLL_Pure* _construct( );
-	IC CPhysicsShellHolder& object( ) const
+	IC CPHShellHolder& object( ) const
 	{
 		VERIFY(m_object);
 		return *m_object;
@@ -341,7 +341,7 @@ protected:
 	IC CInventoryOwner& inventory_owner( ) const;
 
 private:
-	CPhysicsShellHolder* m_object;
+	CPHShellHolder* m_object;
 
 public:
 	virtual CInventoryItem* cast_inventory_item( )
@@ -352,7 +352,7 @@ public:
 	{
 		return this;
 	}
-	virtual CPhysicsShellHolder* cast_physics_shell_holder( )
+	virtual CPHShellHolder* cast_physics_shell_holder( )
 	{
 		return 0;
 	}

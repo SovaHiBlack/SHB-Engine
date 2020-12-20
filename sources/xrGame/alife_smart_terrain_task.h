@@ -41,7 +41,8 @@ public:
 			u32						level_vertex_id			() const;
 			Fvector					position				() const;
 
-	DECLARE_SCRIPT_REGISTER_FUNCTION
+public:
+	static void script_register(lua_State*);
 };
 
 add_to_type_list(CALifeSmartTerrainTask)

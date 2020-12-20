@@ -23,7 +23,8 @@ public:
 	virtual	bool		process				(SPPInfo *pp);
 	virtual	void		Add					();
 	virtual	void		Remove				();
-	DECLARE_SCRIPT_REGISTER_FUNCTION
+public:
+	static void script_register(lua_State*);
 };
 
 add_to_type_list(CScriptEffector)

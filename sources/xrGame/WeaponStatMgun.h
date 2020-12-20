@@ -2,7 +2,7 @@
 
 #include "HolderCustom.h"
 #include "ShootingObject.h"
-#include "PhysicsShellHolder.h"
+#include "PHShellHolder.h"
 #include "HudSound.h"
 
 class CCartridge;
@@ -10,12 +10,12 @@ class CCameraBase;
 
 #define DESIRED_DIR 1
 
-class CWeaponStatMgun:	public CPhysicsShellHolder, 
+class CWeaponStatMgun:	public CPHShellHolder,
 						public CHolderCustom,
 						public CShootingObject
 {
 private:
-	typedef CPhysicsShellHolder inheritedPH;
+	typedef CPHShellHolder inheritedPH;
 	typedef CHolderCustom		inheritedHolder;
 	typedef CShootingObject		inheritedShooting;
 

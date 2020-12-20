@@ -43,7 +43,8 @@ public:
 	virtual void			Action				(int id, u32 flags)				{};
 	virtual void			SetParam			(int id, Fvector2 val)			{};
 	virtual void			SetParam			(int id, Fvector val)			{};
-	DECLARE_SCRIPT_REGISTER_FUNCTION
+public:
+	static void script_register(lua_State*);
 };
 
 add_to_type_list(CHolderCustom)

@@ -53,7 +53,8 @@ private:
 private:
 	xr_vector<CPsyDogPhantom*> m_storage;
 
-	DECLARE_SCRIPT_REGISTER_FUNCTION
+public:
+	static void script_register(lua_State*);
 };
 
 add_to_type_list(CPsyDog)
@@ -100,7 +101,8 @@ private:
 			void	try_to_register_to_parent	();
 			bool	is_wait_to_destroy_object	() {return (m_parent_id == 0xffff);}
 
-	DECLARE_SCRIPT_REGISTER_FUNCTION
+public:
+	static void script_register(lua_State*);
 };
 
 add_to_type_list(CPsyDogPhantom)

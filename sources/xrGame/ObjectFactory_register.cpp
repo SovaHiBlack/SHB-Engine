@@ -137,7 +137,7 @@
 #include "PhysicObject.h"
 #include "script_object.h"
 #include "BreakableObject.h"
-#include "PhysicsSkeletonObject.h"
+#include "PHSkeletonObject.h"
 #include "DestroyablePhysicsObject.h"
 
 #include "game_sv_single.h"
@@ -319,7 +319,7 @@ void CObjectFactory::register_classes( )
 	ADD(CScriptObject,				CSE_ALifeDynamicObjectVisual,		CLSID_SCRIPT_OBJECT,			"script_object");
 	ADD(CBreakableObject,			CSE_ALifeObjectBreakable,			CLSID_OBJECT_BREAKABLE,			"obj_breakable");
 	ADD(CClimableObject,			CSE_ALifeObjectClimable,			CLSID_OBJECT_CLIMABLE,			"obj_climable");
-	ADD(CPhysicsSkeletonObject,		CSE_ALifePHSkeletonObject,			CLSID_PH_SKELETON_OBJECT,		"obj_phskeleton");
+	ADD(CPHSkeletonObject,			CSE_ALifePHSkeletonObject,			CLSID_PH_SKELETON_OBJECT,		"obj_phskeleton");
 	ADD(CDestroyablePhysicsObject,	CSE_ALifeObjectPhysic,				CLSID_PHYSICS_DESTROYABLE,		"obj_phys_destroyable");
 
 	ADD(CInventoryBox,				CSE_InventoryBox,					CLSID_INVENTORY_BOX,			"inventory_box");

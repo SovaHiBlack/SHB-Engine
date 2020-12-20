@@ -9,7 +9,7 @@ enum ETelekineticState {
 };
 
 class CGameObject;
-class CPhysicsShellHolder;
+class CPHShellHolder;
 class CTelekineticObject;
 class CPHUpdateObject;
 class CTelekinesis;
@@ -17,7 +17,7 @@ class CTelekineticObject {
 
 	ETelekineticState	state;
 public:
-	CPhysicsShellHolder *object;
+	CPHShellHolder*object;
 	CTelekinesis		*telekinesis;
 	float				target_height;
 
@@ -40,7 +40,7 @@ public:
 								CTelekineticObject		();
 								~CTelekineticObject		();
 	
-virtual		bool				init					(CTelekinesis* tele,CPhysicsShellHolder *obj, float s, float h, u32 ttk, bool rot = true); 
+virtual		bool				init					(CTelekinesis* tele, CPHShellHolder*obj, float s, float h, u32 ttk, bool rot = true);
 			void				set_sound				(const ref_sound &snd_hold, const ref_sound &snd_throw);
 
 virtual		void				raise					(float step);
@@ -54,11 +54,11 @@ virtual		void				fire					(const Fvector &target, float power);
 			void				fire_t					(const Fvector &target, float time);
 virtual		void				fire_update				();
 virtual		void				update_state			();
-virtual		bool				can_activate			(CPhysicsShellHolder *obj);
+virtual		bool				can_activate			(CPHShellHolder*obj);
 			bool				is_released				(){return state==TS_None;}
 			ETelekineticState	get_state				() {return state;}
 virtual		void				switch_state			(ETelekineticState new_state);
-			CPhysicsShellHolder *get_object				() {return object;}
+CPHShellHolder*get_object				() {return object;}
 
 			bool				check_height			();
 			bool				check_raise_time_out	();
@@ -70,7 +70,7 @@ virtual		void				switch_state			(ETelekineticState new_state);
 
 			void				enable					();
 
-			bool				operator==				(const CPhysicsShellHolder *obj) {
+			bool				operator==				(const CPHShellHolder*obj) {
 				return (object == obj);
 			}
 

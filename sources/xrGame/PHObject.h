@@ -16,8 +16,7 @@ class CPHSynchronize;
 
 typedef void CollideCallback(CPHObject* obj1,CPHObject* obj2, dGeomID o1, dGeomID o2);
 
-class CPHObject :
-	public ISpatial 
+class CPHObject : public ISpatial
 {
 #ifdef DEBUG
 	friend void DBG_DrawPHObject(CPHObject* obj);

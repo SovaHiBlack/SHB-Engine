@@ -4,9 +4,9 @@
 #include "HUDManager.h"//
 #include "ParticlesObject.h"
 #include "Level.h"
-#include "PhysicsShellHolder.h"
+#include "PHShellHolder.h"
 
-CMosquitoBald::CMosquitoBald(void) 
+CMosquitoBald::CMosquitoBald( ) 
 {
 	m_dwDeltaTime			= 0;
 	m_fHitImpulseScale		= 1.f;
@@ -14,7 +14,7 @@ CMosquitoBald::CMosquitoBald(void)
 	m_bLastBlowoutUpdate	= false;
 }
 
-CMosquitoBald::~CMosquitoBald(void) 
+CMosquitoBald::~CMosquitoBald( ) 
 { }
 
 void CMosquitoBald::Load(const char* section)
@@ -44,7 +44,7 @@ bool CMosquitoBald::BlowoutState()
 
 void CMosquitoBald::Affect(SZoneObjectInfo* O) 
 {
-	CPhysicsShellHolder *pGameObject = smart_cast<CPhysicsShellHolder*>(O->object);
+	CPHShellHolder*pGameObject = smart_cast<CPHShellHolder*>(O->object);
 	if(!pGameObject) return;
 
 	if(O->zone_ignore) return;

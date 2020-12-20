@@ -8,7 +8,7 @@
 
 #include "stdafx.h"
 
-#include "PhysicItem.h"
+#include "PHItem.h"
 #include "PhysicsShell.h"
 #include "xrserver_objects.h"
 #include "..\ENGINE\fbasicvisual.h"
@@ -22,38 +22,38 @@
 	if(y>z){inst_y;}\
 		else{inst_z;}
 
-CPhysicItem::CPhysicItem	()
+CPHItem::CPHItem()
 {
 	init				();
 }
 
-CPhysicItem::~CPhysicItem	()
+CPHItem::~CPHItem()
 {
 	xr_delete			(m_pPhysicsShell);
 }
 
-void CPhysicItem::init		()
+void CPHItem::init		()
 {
 	m_pPhysicsShell			= 0;
 }
 
-void CPhysicItem::reinit	()
+void CPHItem::reinit	()
 {
 	inherited::reinit		();
 	m_ready_to_destroy		= false;
 }
 
-void CPhysicItem::Load		(const char* section)
+void CPHItem::Load		(const char* section)
 {
 	inherited::Load			(section);
 }
 
-void CPhysicItem::reload	(const char* section)
+void CPHItem::reload	(const char* section)
 {
 	inherited::reload		(section);
 }
 
-void CPhysicItem::OnH_B_Independent	(bool just_before_destroy)
+void CPHItem::OnH_B_Independent	(bool just_before_destroy)
 {
 	inherited::OnH_B_Independent(just_before_destroy);
 
@@ -67,7 +67,7 @@ void CPhysicItem::OnH_B_Independent	(bool just_before_destroy)
 		activate_physic_shell	();
 }
 
-void CPhysicItem::OnH_B_Chield		()
+void CPHItem::OnH_B_Chield		()
 {
 	inherited::OnH_B_Chield		();
 
@@ -77,7 +77,7 @@ void CPhysicItem::OnH_B_Chield		()
 	inherited::deactivate_physics_shell();
 }
 
-BOOL CPhysicItem::net_Spawn			(CSE_Abstract* DC)
+BOOL CPHItem::net_Spawn			(CSE_Abstract* DC)
 {
 	if (!inherited::net_Spawn(DC))
 		return				(FALSE);
@@ -96,12 +96,12 @@ BOOL CPhysicItem::net_Spawn			(CSE_Abstract* DC)
 	return					(TRUE);
 }
 
-void CPhysicItem::net_Destroy		()
+void CPHItem::net_Destroy		()
 {
 	inherited::net_Destroy	();
 }
 
-void CPhysicItem::UpdateCL()
+void CPHItem::UpdateCL()
 {
 //	if (!xr_strcmp("bolt",cName()))
 //		Log					("--- B - CBolt",renderable.xform);
@@ -114,7 +114,7 @@ void CPhysicItem::UpdateCL()
 //		Log						("--- D - CBolt",renderable.xform);
 }
 
-void CPhysicItem::activate_physic_shell()
+void CPHItem::activate_physic_shell()
 {
 	CObject						*object = smart_cast<CObject*>(H_Parent());
 	R_ASSERT					(object);
@@ -129,7 +129,7 @@ void CPhysicItem::activate_physic_shell()
 	///m_pPhysicsShell->Update		();	
 }
 
-void CPhysicItem::setup_physic_shell	()
+void CPHItem::setup_physic_shell	()
 {
 	inherited::setup_physic_shell();
 	CKinematics* K=smart_cast<CKinematics*>(Visual());
@@ -141,7 +141,7 @@ void CPhysicItem::setup_physic_shell	()
 	//m_pPhysicsShell->Update		();
 }
 
-void CPhysicItem::create_box_physic_shell	()
+void CPHItem::create_box_physic_shell	()
 {
 	// Physics (Box)
 	Fobb obb; 
@@ -159,7 +159,7 @@ void CPhysicItem::create_box_physic_shell	()
 	m_pPhysicsShell->setDensity(2000.0f);
 }
 
-void CPhysicItem::create_box2sphere_physic_shell()
+void CPHItem::create_box2sphere_physic_shell()
 {
 	// Physics (Box)
 	Fobb								obb;
@@ -197,7 +197,7 @@ void CPhysicItem::create_box2sphere_physic_shell()
 	m_pPhysicsShell->SetAirResistance();
 }
 
-void CPhysicItem::create_physic_shell()
+void CPHItem::create_physic_shell()
 {
 	///create_box_physic_shell();
 	inherited::create_physic_shell();

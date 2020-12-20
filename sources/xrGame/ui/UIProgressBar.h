@@ -45,11 +45,11 @@ public:
 	void				SetProgressPos				(float _Pos);
 	float				GetProgressPos				()							{ return m_ProgressPos.y; }
 
-
 	virtual void		Draw						();
 	virtual void		Update						();
 
-	DECLARE_SCRIPT_REGISTER_FUNCTION
+public:
+	static void script_register(lua_State*);
 };
 
 add_to_type_list(CUIProgressBar)

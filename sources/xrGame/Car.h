@@ -88,7 +88,7 @@ static	const u16				cAsCallsnum						=3;
 	virtual void						ChangeCondition				(float fDeltaCondition)	;
 	virtual void						StartTimerEffects			()						{};
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	virtual CPhysicsShellHolder*		PPhysicsShellHolder			()						{return static_cast<CPhysicsShellHolder*>(this);}
+	virtual CPHShellHolder*		PPhysicsShellHolder			()						{return static_cast<CPHShellHolder*>(this);}
 	virtual CPHCollisionDamageReceiver	*PHCollisionDamageReceiver	()						{return static_cast<CPHCollisionDamageReceiver*>(this);}
 
 ////////////////////////////////////////////////////////////////////////
@@ -617,7 +617,7 @@ private:
 	virtual	void reload			(const char* section);
 	virtual CGameObject			*cast_game_object			()	{return this;}
 	virtual CExplosive			*cast_explosive				()	{return this;}
-	virtual CPhysicsShellHolder	*cast_physics_shell_holder	()	{return this;}
+	virtual CPHShellHolder*cast_physics_shell_holder	()	{return this;}
 	virtual CParticlesPlayer	*cast_particles_player		()	{return this;}
 	virtual CScriptEntity		*cast_script_entity			()	{return this;}
 	virtual IDamageSource		*cast_IDamageSource			()	{return this;}
@@ -626,8 +626,8 @@ private:
 private:
 	car_memory	*m_memory;
 
-public:
-	DECLARE_SCRIPT_REGISTER_FUNCTION
+	public:
+		static void script_register(lua_State*);
 };
 
 add_to_type_list(CCar)

@@ -160,7 +160,7 @@ public:
 	virtual CEntityAlive*				cast_entity_alive			()						{return this;}
 	virtual CEntity*					cast_entity					()						{return this;}
 	virtual CGameObject*				cast_game_object			()						{return this;}
-	virtual CPhysicsShellHolder*		cast_physics_shell_holder	()						{return this;}
+	virtual CPHShellHolder*		cast_physics_shell_holder	()						{return this;}
 	virtual CParticlesPlayer*			cast_particles_player		()						{return this;}
 	virtual	Feel::Sound*				dcast_FeelSound				()						{return this;}
 	virtual CStalker*					cast_stalker				()						{return this;}
@@ -547,8 +547,8 @@ public:
 private:
 	bool	m_can_select_items;
 
-public:
-	DECLARE_SCRIPT_REGISTER_FUNCTION
+	public:
+		static void script_register(lua_State*);
 };
 
 add_to_type_list(CStalker)

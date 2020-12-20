@@ -62,7 +62,8 @@ public:
 	IC		_GRAPH_ID				vertex_id				(const CVertex *vertex) const;
 	IC		void					set_current_level		(const u32 &level_id);
 	IC		const _GRAPH_ID			&current_level_vertex	() const;
-	DECLARE_SCRIPT_REGISTER_FUNCTION
+public:
+	static void script_register(lua_State*);
 };
 
 add_to_type_list(CGameGraph)

@@ -297,7 +297,7 @@ void*	CPHGeometryOwner::get_CallbackData()
 		VERIFY(b_builded);
 		return (*m_geoms.begin())->get_callback_data	();
 }
-void CPHGeometryOwner::set_PhysicsRefObject(CPhysicsShellHolder* ref_object)
+void CPHGeometryOwner::set_PhysicsRefObject(CPHShellHolder* ref_object)
 {
 	m_phys_ref_object=ref_object;
 	if(!b_builded) return;

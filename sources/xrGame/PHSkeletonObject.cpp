@@ -1,19 +1,19 @@
 #include "stdafx.h"
 
-#include "PhysicsSkeletonObject.h"
+#include "PHSkeletonObject.h"
 #include "PhysicsShell.h"
 #include "PHSynchronize.h"
 #include "xrserver_objects_alife.h"
 #include "..\ENGINE\skeletoncustom.h"
 #include "..\ENGINE\xr_collide_form.h"
 
-CPhysicsSkeletonObject::CPhysicsSkeletonObject( )
+CPHSkeletonObject::CPHSkeletonObject( )
 { }
 
-CPhysicsSkeletonObject::~CPhysicsSkeletonObject( )
+CPHSkeletonObject::~CPHSkeletonObject( )
 { }
 
-BOOL CPhysicsSkeletonObject::net_Spawn(CSE_Abstract* DC)
+BOOL CPHSkeletonObject::net_Spawn(CSE_Abstract* DC)
 {
 	CSE_Abstract* e = (CSE_Abstract*) (DC);
 
@@ -31,7 +31,7 @@ BOOL CPhysicsSkeletonObject::net_Spawn(CSE_Abstract* DC)
 	return TRUE;
 }
 
-void CPhysicsSkeletonObject::SpawnInitPhysics(CSE_Abstract* D)
+void CPHSkeletonObject::SpawnInitPhysics(CSE_Abstract* D)
 {
 	CreatePhysicsShell(D);
 	CKinematics* K = smart_cast<CKinematics*>(Visual( ));
@@ -42,19 +42,19 @@ void CPhysicsSkeletonObject::SpawnInitPhysics(CSE_Abstract* D)
 	}
 }
 
-void CPhysicsSkeletonObject::net_Destroy( )
+void CPHSkeletonObject::net_Destroy( )
 {
 	inherited::net_Destroy( );
 	CPHSkeleton::RespawnInit( );
 }
 
-void CPhysicsSkeletonObject::Load(const char* section)
+void CPHSkeletonObject::Load(const char* section)
 {
 	inherited::Load(section);
 	CPHSkeleton::Load(section);
 }
 
-void CPhysicsSkeletonObject::CreatePhysicsShell(CSE_Abstract* e)
+void CPHSkeletonObject::CreatePhysicsShell(CSE_Abstract* e)
 {
 	CSE_PHSkeleton* po = smart_cast<CSE_PHSkeleton*>(e);
 	if (m_pPhysicsShell)
@@ -70,36 +70,36 @@ void CPhysicsSkeletonObject::CreatePhysicsShell(CSE_Abstract* e)
 	m_pPhysicsShell = P_build_Shell(this, !po->_flags.test(CSE_PHSkeleton::flActive));
 }
 
-void CPhysicsSkeletonObject::shedule_Update(u32 dt)
+void CPHSkeletonObject::shedule_Update(u32 dt)
 {
 	inherited::shedule_Update(dt);
 
 	CPHSkeleton::Update(dt);
 }
 
-void CPhysicsSkeletonObject::net_Save(NET_Packet& P)
+void CPHSkeletonObject::net_Save(NET_Packet& P)
 {
 	inherited::net_Save(P);
 	CPHSkeleton::SaveNetState(P);
 }
 
-BOOL CPhysicsSkeletonObject::net_SaveRelevant( )
+BOOL CPHSkeletonObject::net_SaveRelevant( )
 {
 	return TRUE;//!m_flags.test(CSE_ALifeObjectPhysic::flSpawnCopy);
 }
 
-BOOL CPhysicsSkeletonObject::UsedAI_Locations( )
+BOOL CPHSkeletonObject::UsedAI_Locations( )
 {
 	return FALSE;
 }
 
-void CPhysicsSkeletonObject::UpdateCL( )
+void CPHSkeletonObject::UpdateCL( )
 {
 	inherited::UpdateCL( );
 	PHObjectPositionUpdate( );
 }
 
-void CPhysicsSkeletonObject::PHObjectPositionUpdate( )
+void CPHSkeletonObject::PHObjectPositionUpdate( )
 {
 	if (m_pPhysicsShell)
 	{

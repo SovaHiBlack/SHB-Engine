@@ -4,7 +4,7 @@
 #include "poltergeist_state_manager.h"
 #include "../../../characterphysicssupport.h"
 #include "../../../PHMovementControl.h"
-#include "..\..\..\PhysicsShellHolder.h"
+#include "../../../PHShellHolder.h"
 #include "../../../ai_debug.h"
 #include "poltergeist_movement.h"
 #include "../../../detail_path_manager.h"

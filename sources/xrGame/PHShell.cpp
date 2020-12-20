@@ -8,7 +8,7 @@
 #include "PHJointDestroyInfo.h"
 #include "SpaceUtils.h"
 //#include "MathUtils.h"
-#include "PhysicsShellHolder.h"
+#include "PHShellHolder.h"
 #include "..\ENGINE\skeletoncustom.h"
 //#include "PHCollideValidator.h"
 #include "GameObject_space.h"
@@ -63,7 +63,7 @@ void CPHShell::EnableObject(CPHObject* obj)
 
 void CPHShell::DisableObject()
 {
-	CPhysicsShellHolder* ref_object=(*elements.begin())->PhysicsRefObject();
+	CPHShellHolder* ref_object=(*elements.begin())->PhysicsRefObject();
 //.	if (!ref_object) return;
 
 	if (ref_object)
@@ -112,7 +112,7 @@ void CPHShell::ReanableObject()
 void CPHShell::vis_update_activate()
 {
 	++m_active_count;
-	CPhysicsShellHolder* ref_object=(*elements.begin())->PhysicsRefObject();
+	CPHShellHolder* ref_object=(*elements.begin())->PhysicsRefObject();
 	if(ref_object&&m_active_count>0)
 	{
 		m_active_count=0;
@@ -123,7 +123,7 @@ void CPHShell::vis_update_activate()
 void CPHShell::vis_update_deactivate()
 {
 	--m_active_count;
-		//CPhysicsShellHolder* ref_object=(*elements.begin())->PhysicsRefObject();
+		//CPHShellHolder* ref_object=(*elements.begin())->PhysicsRefObject();
 		//if(ref_object&&!m_flags.test(flProcessigDeactivated))
 		//{
 		//	//ref_object->processing_deactivate();
@@ -408,7 +408,7 @@ void CPHShell::Enable()
 	EnableObject(0);
 }
 
-void CPHShell::set_PhysicsRefObject	 (CPhysicsShellHolder* ref_object)
+void CPHShell::set_PhysicsRefObject	 (CPHShellHolder* ref_object)
 {
  	if(elements.empty()) return;
 	if((*elements.begin())->PhysicsRefObject()==ref_object) return;
@@ -1150,7 +1150,7 @@ void CPHShell::InterpolateGlobalTransform(Fmatrix* m)
 	m->mulB_43	(m_object_in_root);
 	mXFORM.set(*m);
 	VERIFY2(_valid(*m),"not valide transform");
-	CPhysicsShellHolder* ref_object=(*elements.begin())->PhysicsRefObject();
+	CPHShellHolder* ref_object=(*elements.begin())->PhysicsRefObject();
 	if(ref_object&&m_active_count<0)
 	{
 		ref_object->processing_deactivate();

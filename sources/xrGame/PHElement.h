@@ -93,8 +93,8 @@ public:
 	virtual void						set_CallbackData						(void * cd);
 	virtual	void						*get_CallbackData						();
 	virtual	ObjectContactCallbackFun	*get_ObjectContactCallback				();
-	virtual void						set_PhysicsRefObject					(CPhysicsShellHolder* ref_object);												//aux
-	virtual CPhysicsShellHolder*		PhysicsRefObject						(){return m_phys_ref_object;}													//aux
+	virtual void						set_PhysicsRefObject					(CPHShellHolder* ref_object);												//aux
+	virtual CPHShellHolder*		PhysicsRefObject						(){return m_phys_ref_object;}													//aux
 	virtual void						SetMaterial								(u16 m);																		//aux
 	virtual void						SetMaterial								(const char* m){CPHGeometryOwner::SetMaterial(m);}									//aux
 	virtual u16							numberOfGeoms							();																				//aux

@@ -5,17 +5,15 @@
 
 #include "HudSound.h"
 #include "WeaponAmmo.h"
-#include "PhysicsShellHolder.h"
+#include "PHShellHolder.h"
 
-class CWeaponMounted :	public CPhysicsShellHolder, 
-						public CHolderCustom,
-						public CShootingObject
+class CWeaponMounted : public CPHShellHolder, public CHolderCustom, public CShootingObject
 {
 private:
 	//////////////////////////////////////////////////////////////////////////
 	//  General
 	//////////////////////////////////////////////////////////////////////////
-	typedef CPhysicsShellHolder inherited;
+	typedef CPHShellHolder inherited;
 	CCameraBase*			camera;
 	u16						fire_bone;
 	u16						actor_bone;

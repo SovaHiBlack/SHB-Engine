@@ -412,17 +412,17 @@ void CTorch::UpdateCL( )
 
 void CTorch::create_physic_shell( )
 {
-	CPhysicsShellHolder::create_physic_shell( );
+	CPHShellHolder::create_physic_shell( );
 }
 
 void CTorch::activate_physic_shell( )
 {
-	CPhysicsShellHolder::activate_physic_shell( );
+	CPHShellHolder::activate_physic_shell( );
 }
 
 void CTorch::setup_physic_shell( )
 {
-	CPhysicsShellHolder::setup_physic_shell( );
+	CPHShellHolder::setup_physic_shell( );
 }
 
 void CTorch::net_Export(NET_Packet& P)

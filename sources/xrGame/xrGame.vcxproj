@@ -993,9 +993,9 @@
     <ClInclude Include="PhysicsCommon.h" />
     <ClInclude Include="PhysicsGamePars.h" />
     <ClInclude Include="PhysicsShell.h" />
-    <ClInclude Include="PhysicsShellHolder.h" />
-    <ClInclude Include="PhysicsSkeletonObject.h" />
-    <ClInclude Include="PhysicItem.h" />
+    <ClInclude Include="PHShellHolder.h" />
+    <ClInclude Include="PHSkeletonObject.h" />
+    <ClInclude Include="PHItem.h" />
     <ClInclude Include="IPhysicShellCreator.h" />
     <ClInclude Include="PostprocessAnimator.h" />
     <ClInclude Include="pp_effector_custom.h" />
@@ -1990,11 +1990,11 @@
     <ClCompile Include="Physics.cpp" />
     <ClCompile Include="PhysicsGamePars.cpp" />
     <ClCompile Include="PhysicsShell.cpp" />
-    <ClCompile Include="PhysicsShellHolder.cpp" />
+    <ClCompile Include="PHShellHolder.cpp" />
     <ClCompile Include="PhysicsShellScript.cpp" />
-    <ClCompile Include="PhysicsSkeletonObject.cpp" />
+    <ClCompile Include="PHSkeletonObject.cpp" />
     <ClCompile Include="physics_game.cpp" />
-    <ClCompile Include="PhysicItem.cpp" />
+    <ClCompile Include="PHItem.cpp" />
     <ClCompile Include="PostprocessAnimator.cpp" />
     <ClCompile Include="pp_effector_custom.cpp" />
     <ClCompile Include="pp_effector_distance.cpp" />

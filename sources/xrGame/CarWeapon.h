@@ -3,7 +3,7 @@
 #include "ShootingObject.h"
 #include "HudSound.h"
 
-class CPhysicsShellHolder;
+class CPHShellHolder;
 
 class CCarWeapon :public CShootingObject
 {
@@ -20,7 +20,7 @@ protected:
 	virtual const Fvector&	get_CurrentFirePoint();
 	virtual const Fmatrix&	get_ParticlesXFORM	();
 	
-	CPhysicsShellHolder*	m_object;
+	CPHShellHolder*	m_object;
 	bool					m_bActive;
 	bool					m_bAutoFire;
 	float					m_weapon_h;
@@ -33,7 +33,7 @@ public:
 			eWpnAutoFire,
 			eWpnToDefaultDir,
 	};	
-							CCarWeapon			(CPhysicsShellHolder* obj);
+							CCarWeapon			(CPHShellHolder* obj);
 				virtual		~CCarWeapon			();
 	static void 			BoneCallbackX		(CBoneInstance *B);
 	static void				BoneCallbackY		(CBoneInstance *B);

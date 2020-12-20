@@ -1,6 +1,6 @@
 #pragma once
 
-#include "PhysicsShellHolder.h"
+#include "PHShellHolder.h"
 #include "DamageManager.h"
 #include "entitycondition.h"
 
@@ -14,13 +14,12 @@ class	ENGINE_API CBoneInstance;
 class   CPHMovementControl;
 class	CHudItem;
 
-class CEntity : 
-		public CPhysicsShellHolder,
-		public CDamageManager
+class CEntity : public CPHShellHolder, public CDamageManager
 {
 	friend class CEntityCondition;
+
 private:
-	typedef	CPhysicsShellHolder		inherited;			
+	typedef	CPHShellHolder		inherited;
 	CEntityConditionSimple*			m_entity_condition;
 
 protected:

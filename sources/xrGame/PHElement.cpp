@@ -6,7 +6,7 @@
 #include "PHFracture.h"
 #include "PHContactBodyEffector.h"
 #include "MathUtils.h"
-#include "PhysicsShellHolder.h"
+#include "PHShellHolder.h"
 #include "GameObject_space.h"
 //#include "..\ENGINE\skeletoncustom.h"
 #include "..\ENGINE\skeletonanimated.h"
@@ -414,7 +414,7 @@ void CPHElement::PhDataUpdate(dReal step){
 		Msg("x  %f,%f,%f",dBodyGetRotation(m_body)[0],dBodyGetRotation(m_body)[4],dBodyGetRotation(m_body)[8]);
 		Msg("y  %f,%f,%f",dBodyGetRotation(m_body)[1],dBodyGetRotation(m_body)[5],dBodyGetRotation(m_body)[9]);
 		Msg("z  %f,%f,%f",dBodyGetRotation(m_body)[2],dBodyGetRotation(m_body)[6],dBodyGetRotation(m_body)[10]);
-		CPhysicsShellHolder* ph=PhysicsRefObject();
+		CPHShellHolder* ph=PhysicsRefObject();
 		Msg("name visual %s",*ph->cNameVisual());
 		Msg("name obj %s",ph->Name());
 		Msg("name section %s",*ph->cNameSect());
@@ -841,7 +841,7 @@ bool CPHElement::AnimToVel(float dt, float l_limit,float a_limit )
 //
 //	Fmatrix bp;BoneGlPos(bp,BI);
 //
-	CPhysicsShellHolder	*ph = PhysicsRefObject();
+	CPHShellHolder*ph = PhysicsRefObject();
 	VERIFY(ph);
 	Fmatrix bpl;GetAnimBonePos(bpl);
 	Fmatrix bp;bp.mul_43(ph->XFORM(),bpl);
@@ -954,7 +954,7 @@ void CPHElement::BonesCallBack(CBoneInstance* B)
 
 }
 
-void CPHElement::set_PhysicsRefObject(CPhysicsShellHolder* ref_object)
+void CPHElement::set_PhysicsRefObject(CPHShellHolder* ref_object)
 {
 	CPHGeometryOwner::set_PhysicsRefObject(ref_object);
 }

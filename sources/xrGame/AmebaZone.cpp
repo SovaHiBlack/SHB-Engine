@@ -38,7 +38,7 @@ bool CAmebaZone::BlowoutState()
 
 void  CAmebaZone::Affect(SZoneObjectInfo* O) 
 {
-	CPhysicsShellHolder *pGameObject = smart_cast<CPhysicsShellHolder*>(O->object);
+	CPHShellHolder*pGameObject = smart_cast<CPHShellHolder*>(O->object);
 	if(!pGameObject) return;
 
 	if(O->zone_ignore) return;

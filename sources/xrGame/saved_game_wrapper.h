@@ -31,7 +31,8 @@ public:
 	IC	const _TIME_ID	&game_time			() const;
 	IC	const _LEVEL_ID	&level_id			() const;
 	IC	const float		&actor_health		() const;
-	DECLARE_SCRIPT_REGISTER_FUNCTION
+public:
+	static void script_register(lua_State*);
 };
 
 add_to_type_list(CSavedGameWrapper)

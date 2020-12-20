@@ -13,7 +13,7 @@
 #include "ai_space.h"
 #include "script_engine.h"
 #include "script_entity.h"
-#include "PhysicsShellHolder.h"
+#include "PHShellHolder.h"
 #include "Helicopter.h"
 #include "HolderCustom.h"
 #include "inventoryowner.h"
@@ -50,7 +50,7 @@ Fvector	CScriptGameObject::Center()
 
 BIND_FUNCTION10	(&object(),	CScriptGameObject::Position,			CGameObject,	Position,			Fvector,						Fvector());
 BIND_FUNCTION10	(&object(),	CScriptGameObject::Direction,			CGameObject,	Direction,			Fvector,						Fvector());
-BIND_FUNCTION10	(&object(),	CScriptGameObject::Mass,		CPhysicsShellHolder,	GetMass,			float,							float(-1));
+BIND_FUNCTION10	(&object(),	CScriptGameObject::Mass, CPHShellHolder,	GetMass,			float,							float(-1));
 BIND_FUNCTION10	(&object(),	CScriptGameObject::ID,					CGameObject,	ID,					u32,							u32(-1));
 BIND_FUNCTION10	(&object(),	CScriptGameObject::getVisible,			CGameObject,	getVisible,			BOOL,							FALSE);
 //BIND_FUNCTION01	(&object(),	CScriptGameObject::setVisible,			CGameObject,	setVisible,			BOOL,							BOOL);
@@ -156,7 +156,7 @@ const CScriptEntityAction *CScriptGameObject::GetActionByIndex(u32 action_index)
 
 CPhysicsShell* CScriptGameObject::get_physics_shell() const
 {
-	CPhysicsShellHolder* ph_shell_holder =smart_cast<CPhysicsShellHolder*>(&object());
+	CPHShellHolder* ph_shell_holder =smart_cast<CPHShellHolder*>(&object());
 	if(! ph_shell_holder) return NULL;
 	return ph_shell_holder->PPhysicsShell();
 }

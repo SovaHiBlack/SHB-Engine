@@ -8,12 +8,10 @@
 
 #pragma once
 
-#include "PhysicItem.h"
+#include "PHItem.h"
 #include "EatableItem.h"
 
-class CEatableItemObject : 
-			public CEatableItem, 
-			public CPhysicItem
+class CEatableItemObject : public CEatableItem, public CPHItem
 {
 public:
 							CEatableItemObject	();
@@ -21,7 +19,7 @@ public:
 	virtual DLL_Pure		*_construct			();
 
 public:
-	virtual CPhysicsShellHolder	*cast_physics_shell_holder	()	{return this;}
+	virtual CPHShellHolder*cast_physics_shell_holder	()	{return this;}
 	virtual CInventoryItem		*cast_inventory_item		()	{return this;}
 	virtual CAttachableItem		*cast_attachable_item		()	{return this;}
 	virtual CWeapon				*cast_weapon				()	{return 0;}

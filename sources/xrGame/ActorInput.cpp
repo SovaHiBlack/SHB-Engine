@@ -367,7 +367,7 @@ void CActor::ActorUse()
 		}
 
 		collide::rq_result& RQ = HUD().GetCurrentRayQuery();
-		CPhysicsShellHolder* object = smart_cast<CPhysicsShellHolder*>(RQ.O);
+		CPHShellHolder* object = smart_cast<CPHShellHolder*>(RQ.O);
 		u16 element = BI_NONE;
 		if(object) 
 			element = (u16)RQ.element;

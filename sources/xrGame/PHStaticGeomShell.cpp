@@ -3,7 +3,7 @@
 #include "PHStaticGeomShell.h"
 #include "SpaceUtils.h"
 //#include "GameObject.h"
-#include "PhysicsShellHolder.h"
+#include "PHShellHolder.h"
 #include "..\ENGINE\skeletoncustom.h"
 #include "PHCollideValidator.h"
 
@@ -50,7 +50,7 @@ void P_BuildStaticGeomShell(CPHStaticGeomShell* pUnbrokenObject,CGameObject* obj
 	pUnbrokenObject->add_Box	(b);
 	pUnbrokenObject->Activate	(obj->XFORM());
 
-	pUnbrokenObject->set_PhysicsRefObject(smart_cast<CPhysicsShellHolder*>(obj));
+	pUnbrokenObject->set_PhysicsRefObject(smart_cast<CPHShellHolder*>(obj));
 	//m_pUnbrokenObject->SetPhObjectInGeomData(m_pUnbrokenObject);
 	pUnbrokenObject->set_ObjectContactCallback(object_contact_callback);
 	CPHCollideValidator::SetNonDynamicObject(*pUnbrokenObject);

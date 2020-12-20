@@ -12,7 +12,8 @@ public:
 	virtual void					SetClGame					(game_cl_GameState* g){inherited::SetClGame(g);};
 	virtual	void					Init						(){};
 	virtual void					ReInitShownUI				(){};
-	DECLARE_SCRIPT_REGISTER_FUNCTION
+public:
+	static void script_register(lua_State*);
 };
 
 add_to_type_list(UIGame_custom_script)

@@ -71,7 +71,8 @@ public:
 			const u32				&target_level_vertex_id		() const;
 			const Fvector			&target_position			() const;
 
-	DECLARE_SCRIPT_REGISTER_FUNCTION
+public:
+	static void script_register(lua_State*);
 };
 
 add_to_type_list(CALifeMonsterPatrolPathManager)

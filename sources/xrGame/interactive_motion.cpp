@@ -2,7 +2,7 @@
 
 #include "interactive_motion.h"//ok
 #include "PhysicsShell.h"
-#include "PhysicsShellHolder.h"
+#include "PHShellHolder.h"
 #include "MathUtils.h"
 
 interactive_motion::interactive_motion( )
@@ -88,7 +88,7 @@ void interactive_motion::switch_to_free(CPhysicsShell* s)
 	//set to normal state
 	state_end(s);
 	//set all matrises valide
-	CPhysicsShellHolder* obj = s->get_ElementByStoreOrder(0)->PhysicsRefObject( );
+	CPHShellHolder* obj = s->get_ElementByStoreOrder(0)->PhysicsRefObject( );
 	VERIFY(obj);
 	s->InterpolateGlobalTransform(&obj->XFORM( ));
 	CKinematics* K = s->PKinematics( );

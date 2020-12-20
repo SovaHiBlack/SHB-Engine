@@ -58,7 +58,7 @@ public:
 	virtual CPHDestroyable*				ph_destroyable				();
 	virtual CEntityAlive*				cast_entity_alive			()	{return this;}
 	virtual CEntity*					cast_entity					()	{return this;}
-	virtual CPhysicsShellHolder*		cast_physics_shell_holder	()	{return this;}
+	virtual CPHShellHolder*		cast_physics_shell_holder	()	{return this;}
 	virtual CParticlesPlayer*			cast_particles_player		()	{return this;}
 	virtual CCustomMonster*				cast_custom_monster			()	{return this;}
 	virtual CScriptEntity*				cast_script_entity			()	{return this;}

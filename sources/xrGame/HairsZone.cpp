@@ -3,7 +3,7 @@
 #include "HairsZone.h"
 #include "HUDManager.h"//
 #include "Level.h"
-#include "PhysicsShellHolder.h"
+#include "PHShellHolder.h"
 #include "entity_alive.h"
 #include "PHMovementControl.h"
 #include "CharacterPhysicsSupport.h"
@@ -58,7 +58,7 @@ void CHairsZone::Load(const char* section)
 
 void CHairsZone::Affect(SZoneObjectInfo* O) 
 {
-	CPhysicsShellHolder *pGameObject = smart_cast<CPhysicsShellHolder*>(O->object);
+	CPHShellHolder*pGameObject = smart_cast<CPHShellHolder*>(O->object);
 	if(!pGameObject) return;
 
 	if(O->zone_ignore) return;

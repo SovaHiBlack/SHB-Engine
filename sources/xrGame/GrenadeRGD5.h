@@ -3,15 +3,16 @@
 #include "Grenade.h"
 #include "script_export_space.h"
 
-class CGrenadeRGD5 :
-	public CGrenade
+class CGrenadeRGD5 : public CGrenade
 {
 	typedef CGrenade inherited;
+
 public:
 	CGrenadeRGD5( );
 	virtual ~CGrenadeRGD5( );
 
-	DECLARE_SCRIPT_REGISTER_FUNCTION
+public:
+	static void script_register(lua_State*);
 };
 
 add_to_type_list(CGrenadeRGD5)

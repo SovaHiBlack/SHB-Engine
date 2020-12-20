@@ -11,7 +11,7 @@
 #include "..\StringTable.h"
 //#include "..\InventoryItem.h"
 #include "UIInventoryUtilities.h"//
-#include "..\PhysicsShellHolder.h"
+#include "..\PHShellHolder.h"
 #include "UIWpnParams.h"//
 #include "UIArtefactParams.h"//
 

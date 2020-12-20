@@ -1,6 +1,6 @@
 #include "stdafx.h"
 
-#include "PhysicsShellHolder.h"
+#include "PHShellHolder.h"
 #include "PhysicsShell.h"
 #include "Messages.h"
 #include "IPhysicShellCreator.h"
@@ -15,12 +15,12 @@
 #include "PHActivationShape.h"//
 #include "PHValide.h"
 
-CPhysicsShellHolder::CPhysicsShellHolder()
+CPHShellHolder::CPHShellHolder()
 {
 	init();
 }
 
-void CPhysicsShellHolder::net_Destroy()
+void CPHShellHolder::net_Destroy()
 {
 	//remove calls
 	CPHSriptReqGObjComparer cmpr(this);
@@ -39,8 +39,9 @@ static enum EEnableState
 	stDisable				,
 	stNotDefitnite		
 };
+
 static u8 st_enable_state=(u8)stNotDefitnite;
-BOOL CPhysicsShellHolder::net_Spawn				(CSE_Abstract*	DC)
+BOOL CPHShellHolder::net_Spawn				(CSE_Abstract*	DC)
 {
 	CParticlesPlayer::net_SpawnParticles		();
 	st_enable_state=(u8)stNotDefitnite;
@@ -59,34 +60,43 @@ BOOL CPhysicsShellHolder::net_Spawn				(CSE_Abstract*	DC)
 		ApplySpawnIniToPhysicShell(pSettings,PPhysicsShell(),false);
 		st_enable_state=(u8)stNotDefitnite;
 	}
+
 	return ret;
 }
 
-void	CPhysicsShellHolder::PHHit(float P,Fvector &dir, CObject *who,s16 element,Fvector p_in_object_space, float impulse, ALife::EHitType hit_type /* ALife::eHitTypeWound*/)
+void CPHShellHolder::PHHit(float P,Fvector &dir, CObject *who,s16 element,Fvector p_in_object_space, float impulse, ALife::EHitType hit_type /* ALife::eHitTypeWound*/)
 {
-	if(impulse>0)
-		if(m_pPhysicsShell) m_pPhysicsShell->applyHit(p_in_object_space,dir,impulse,element,hit_type);
+	if (impulse > 0)
+	{
+		if (m_pPhysicsShell)
+		{
+			m_pPhysicsShell->applyHit(p_in_object_space, dir, impulse, element, hit_type);
+		}
+	}
 }
 
-void	CPhysicsShellHolder::Hit					(SHit* pHDS)
+void CPHShellHolder::Hit					(SHit* pHDS)
 {
 	PHHit(pHDS->damage(),pHDS->dir,pHDS->who,pHDS->boneID,pHDS->p_in_bone_space,pHDS->impulse,pHDS->hit_type);
 }
 
-void CPhysicsShellHolder::create_physic_shell	()
+void CPHShellHolder::create_physic_shell	()
 {
 	VERIFY(!m_pPhysicsShell);
 	IPhysicShellCreator *shell_creator = smart_cast<IPhysicShellCreator*>(this);
 	if (shell_creator)
-		shell_creator->CreatePhysicsShell();
+	{
+		shell_creator->CreatePhysicsShell( );
+	}
 }
 
-void CPhysicsShellHolder::init			()
+void CPHShellHolder::init			()
 {
 	m_pPhysicsShell				=	NULL		;
 	b_sheduled					=	false		;
 }
-void CPhysicsShellHolder::correct_spawn_pos()
+
+void CPHShellHolder::correct_spawn_pos()
 {
 	VERIFY								(PPhysicsShell());
 
@@ -130,7 +140,7 @@ void CPhysicsShellHolder::correct_spawn_pos()
 	activation_shape.Destroy			();
 }
 
-void CPhysicsShellHolder::activate_physic_shell()
+void CPHShellHolder::activate_physic_shell()
 {
 	VERIFY						(!m_pPhysicsShell);
 	create_physic_shell			();
@@ -152,6 +162,7 @@ void CPhysicsShellHolder::activate_physic_shell()
 		smart_cast<CKinematics*>(H_Parent()->Visual())->CalculateBones_Invalidate	();
 		smart_cast<CKinematics*>(H_Parent()->Visual())->CalculateBones	();
 	}
+
 	smart_cast<CKinematics*>(Visual())->CalculateBones_Invalidate	();
 	smart_cast<CKinematics*>(Visual())->CalculateBones();
 //	XFORM().set					(l_p1);
@@ -161,7 +172,7 @@ m_pPhysicsShell->set_LinearVel(l_fw);
 	m_pPhysicsShell->GetGlobalTransformDynamic(&XFORM());
 }
 
-void CPhysicsShellHolder::setup_physic_shell	()
+void CPHShellHolder::setup_physic_shell	()
 {
 	VERIFY						(!m_pPhysicsShell);
 	create_physic_shell			();
@@ -171,95 +182,125 @@ void CPhysicsShellHolder::setup_physic_shell	()
 	m_pPhysicsShell->GetGlobalTransformDynamic(&XFORM());
 }
 
-void CPhysicsShellHolder::deactivate_physics_shell()
+void CPHShellHolder::deactivate_physics_shell()
 {
 	if (m_pPhysicsShell)
-		m_pPhysicsShell->Deactivate	();
+	{
+		m_pPhysicsShell->Deactivate( );
+	}
 	xr_delete(m_pPhysicsShell);
 }
-void CPhysicsShellHolder::PHSetMaterial(u16 m)
+
+void CPHShellHolder::PHSetMaterial(u16 m)
 {
-	if(m_pPhysicsShell)
+	if (m_pPhysicsShell)
+	{
 		m_pPhysicsShell->SetMaterial(m);
+	}
 }
 
-void CPhysicsShellHolder::PHSetMaterial(const char* m)
+void CPHShellHolder::PHSetMaterial(const char* m)
 {
-	if(m_pPhysicsShell)
+	if (m_pPhysicsShell)
+	{
 		m_pPhysicsShell->SetMaterial(m);
+	}
 }
 
-void CPhysicsShellHolder::PHGetLinearVell		(Fvector& velocity)
+void CPHShellHolder::PHGetLinearVell		(Fvector& velocity)
 {
 	if(!m_pPhysicsShell)
 	{
 		velocity.set(0,0,0);
 		return;
 	}
+
 	m_pPhysicsShell->get_LinearVel(velocity);
 }
 
-void CPhysicsShellHolder::PHSetLinearVell(Fvector& velocity)
+void CPHShellHolder::PHSetLinearVell(Fvector& velocity)
 {
 	if(!m_pPhysicsShell)
 	{
 		return;
 	}
+
 	m_pPhysicsShell->set_LinearVel(velocity);
 }
 
-
-
-float CPhysicsShellHolder::GetMass()
+float CPHShellHolder::GetMass()
 {
 	return m_pPhysicsShell ? m_pPhysicsShell->getMass() : 0;
 }
 
-u16	CPhysicsShellHolder::PHGetSyncItemsNumber()
+u16	CPHShellHolder::PHGetSyncItemsNumber()
 {
-	if(m_pPhysicsShell)	return m_pPhysicsShell->get_ElementsNumber();
-	else				return 0;
+	if (m_pPhysicsShell)
+	{
+		return m_pPhysicsShell->get_ElementsNumber( );
+	}
+	else
+	{
+		return 0;
+	}
 }
 
-CPHSynchronize*	CPhysicsShellHolder::PHGetSyncItem	(u16 item)
+CPHSynchronize* CPHShellHolder::PHGetSyncItem	(u16 item)
 {
-	if(m_pPhysicsShell) return m_pPhysicsShell->get_ElementSync(item);
-	else				return 0;
-}
-void	CPhysicsShellHolder::PHUnFreeze	()
-{
-	if(m_pPhysicsShell) m_pPhysicsShell->UnFreeze();
-}
-
-
-void	CPhysicsShellHolder::PHFreeze()
-{
-	if(m_pPhysicsShell) m_pPhysicsShell->Freeze();
+	if (m_pPhysicsShell)
+	{
+		return m_pPhysicsShell->get_ElementSync(item);
+	}
+	else
+	{
+		return 0;
+	}
 }
 
-void CPhysicsShellHolder::OnChangeVisual()
+void CPHShellHolder::PHUnFreeze	()
+{
+	if (m_pPhysicsShell)
+	{
+		m_pPhysicsShell->UnFreeze( );
+	}
+}
+
+void CPHShellHolder::PHFreeze()
+{
+	if (m_pPhysicsShell)
+	{
+		m_pPhysicsShell->Freeze( );
+	}
+}
+
+void CPHShellHolder::OnChangeVisual()
 {
 	inherited::OnChangeVisual();
 	if (0==renderable.visual) 
 	{
-		if(m_pPhysicsShell)m_pPhysicsShell->Deactivate();
+		if (m_pPhysicsShell)
+		{
+			m_pPhysicsShell->Deactivate( );
+		}
+
 		xr_delete(m_pPhysicsShell);
 		VERIFY(0==m_pPhysicsShell);
 	}
 }
 
-void CPhysicsShellHolder::UpdateCL	()
+void CPHShellHolder::UpdateCL	()
 {
 	inherited::UpdateCL	();
 	//обновить присоединенные партиклы
 	UpdateParticles		();
 }
-float CPhysicsShellHolder::EffectiveGravity()
+
+float CPHShellHolder::EffectiveGravity()
 {
 	return ph_world->Gravity();
 }
 
-void		CPhysicsShellHolder::	save				(NET_Packet &output_packet)
+void CPHShellHolder::	save				(NET_Packet &output_packet)
 {
 	inherited::save(output_packet);
 	u8 enable_state=(u8)stNotDefitnite;
@@ -267,19 +308,18 @@ void		CPhysicsShellHolder::	save				(NET_Packet &output_packet)
 	{
 		enable_state=u8(PPhysicsShell()->isEnabled() ? stEnable:stDisable);
 	}
+
 	output_packet.w_u8(enable_state);
 }
 
-void		CPhysicsShellHolder::	load				(IReader &input_packet)
+void CPHShellHolder::	load				(IReader &input_packet)
 {
 	inherited::load(input_packet);
 	st_enable_state=input_packet.r_u8();
-
 }
 
-void CPhysicsShellHolder::PHSaveState(NET_Packet &P)
+void CPHShellHolder::PHSaveState(NET_Packet &P)
 {
-
 	//CPhysicsShell* pPhysicsShell=PPhysicsShell();
 	CKinematics* K	=smart_cast<CKinematics*>(Visual());
 	//Flags8 lflags;
@@ -309,13 +349,35 @@ void CPhysicsShellHolder::PHSaveState(NET_Packet &P)
 		SPHNetState state;
 		PHGetSyncItem(i)->get_State(state);
 		Fvector& p=state.position;
-		if(p.x<min.x)min.x=p.x;
-		if(p.y<min.y)min.y=p.y;
-		if(p.z<min.z)min.z=p.z;
+		if (p.x < min.x)
+		{
+			min.x = p.x;
+		}
 
-		if(p.x>max.x)max.x=p.x;
-		if(p.y>max.y)max.y=p.y;
-		if(p.z>max.z)max.z=p.z;
+		if (p.y < min.y)
+		{
+			min.y = p.y;
+		}
+
+		if (p.z < min.z)
+		{
+			min.z = p.z;
+		}
+
+		if (p.x > max.x)
+		{
+			max.x = p.x;
+		}
+
+		if (p.y > max.y)
+		{
+			max.y = p.y;
+		}
+
+		if (p.z > max.z)
+		{
+			max.z = p.z;
+		}
 	}
 
 	min.sub(2.f*EPS_L);
@@ -334,8 +396,8 @@ void CPhysicsShellHolder::PHSaveState(NET_Packet &P)
 		state.net_Save(P,min,max);
 	}
 }
-void
-CPhysicsShellHolder::PHLoadState(IReader &P)
+
+void CPHShellHolder::PHLoadState(IReader &P)
 {
 	
 //	Flags8 lflags;
@@ -361,12 +423,12 @@ CPhysicsShellHolder::PHLoadState(IReader &P)
 	}
 }
 
-bool CPhysicsShellHolder::register_schedule	() const
+bool CPHShellHolder::register_schedule	() const
 {
 	return					(b_sheduled);
 }
 
-void CPhysicsShellHolder::on_physics_disable()
+void CPHShellHolder::on_physics_disable()
 {
 	return;
 }

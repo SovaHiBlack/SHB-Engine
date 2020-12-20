@@ -16,7 +16,7 @@ CTelekinesis::~CTelekinesis()
 	}
 }
 
-CTelekineticObject*	CTelekinesis::activate			(CPhysicsShellHolder *obj, float strength, float height, u32 max_time_keep, bool rot)
+CTelekineticObject*	CTelekinesis::activate			(CPHShellHolder*obj, float strength, float height, u32 max_time_keep, bool rot)
 {
 	active = true;
 
@@ -69,14 +69,14 @@ void CTelekinesis::clear_deactivate()
 
 struct SFindPred
 {
-	CPhysicsShellHolder *obj;
-	SFindPred(CPhysicsShellHolder *aobj){obj=aobj;}
+	CPHShellHolder*obj;
+	SFindPred(CPHShellHolder*aobj){obj=aobj;}
 	bool operator	() (CTelekineticObject * tele_obj)
 	{
 		return tele_obj->get_object()==obj;
 	}
 };
-void CTelekinesis::deactivate(CPhysicsShellHolder *obj)
+void CTelekinesis::deactivate(CPHShellHolder*obj)
 {
 	// найти объект
 	
@@ -90,7 +90,7 @@ void CTelekinesis::deactivate(CPhysicsShellHolder *obj)
 	remove_object(it);
 }
 
-void CTelekinesis::remove_object		(CPhysicsShellHolder *obj)
+void CTelekinesis::remove_object		(CPHShellHolder*obj)
 {
 	// найти объект
 	TELE_OBJECTS_IT it = std::find_if(objects.begin(), objects.end(), SFindPred(obj));
@@ -124,7 +124,7 @@ void CTelekinesis::fire_all(const Fvector &target)
 }
 
 // бросить объект 'obj' в позицию 'target' с учетом коэф силы 
-void CTelekinesis::fire(CPhysicsShellHolder *obj, const Fvector &target, float power)
+void CTelekinesis::fire(CPHShellHolder*obj, const Fvector &target, float power)
 {
 	// найти объект
 
@@ -135,7 +135,7 @@ void CTelekinesis::fire(CPhysicsShellHolder *obj, const Fvector &target, float p
 	(*it)->fire(target,power);
 }
 
-void CTelekinesis::fire_t(CPhysicsShellHolder *obj, const Fvector &target, float time)
+void CTelekinesis::fire_t(CPHShellHolder*obj, const Fvector &target, float time)
 {
 	TELE_OBJECTS_IT it = std::find_if(objects.begin(), objects.end(),SFindPred(obj));
 	if (it == objects.end()) return;
@@ -144,7 +144,7 @@ void CTelekinesis::fire_t(CPhysicsShellHolder *obj, const Fvector &target, float
 	(*it)->fire_t(target,time);
 }
 
-bool CTelekinesis::is_active_object(CPhysicsShellHolder *obj)
+bool CTelekinesis::is_active_object(CPHShellHolder*obj)
 {
 	// найти объект
 	TELE_OBJECTS_IT it = std::find_if(objects.begin(), objects.end(), SFindPred(obj));
@@ -227,5 +227,5 @@ u32 CTelekinesis::get_objects_count()
 // объект был удален - удалить все связи на объект
 void CTelekinesis::remove_links(CObject *O)
 {
-	remove_object(smart_cast<CPhysicsShellHolder *>(O));
+	remove_object(smart_cast<CPHShellHolder*>(O));
 }

@@ -955,7 +955,7 @@ void CPHMovementControl::AllocateCharacterObject(CharacterType type)
 
 }
 
-void CPHMovementControl::PHCaptureObject(CPhysicsShellHolder* object)
+void CPHMovementControl::PHCaptureObject(CPHShellHolder* object)
 {
 	if (m_capture)
 	{
@@ -970,7 +970,7 @@ void CPHMovementControl::PHCaptureObject(CPhysicsShellHolder* object)
 	m_capture = xr_new<CPHCapture>(m_character, object);
 }
 
-void CPHMovementControl::PHCaptureObject(CPhysicsShellHolder* object, u16 element)
+void CPHMovementControl::PHCaptureObject(CPHShellHolder* object, u16 element)
 {
 	if (m_capture)
 	{
@@ -985,7 +985,7 @@ void CPHMovementControl::PHCaptureObject(CPhysicsShellHolder* object, u16 elemen
 	m_capture = xr_new<CPHCapture>(m_character, object, element);
 }
 
-Fvector CPHMovementControl::PHCaptureGetNearestElemPos(const CPhysicsShellHolder* object)
+Fvector CPHMovementControl::PHCaptureGetNearestElemPos(const CPHShellHolder* object)
 {
 	R_ASSERT3((object->m_pPhysicsShell != NULL), "NO Phisics Shell for object ", *object->cName( ));
 
@@ -997,7 +997,7 @@ Fvector CPHMovementControl::PHCaptureGetNearestElemPos(const CPhysicsShellHolder
 	return v;
 }
 
-Fmatrix CPHMovementControl::PHCaptureGetNearestElemTransform(CPhysicsShellHolder* object)
+Fmatrix CPHMovementControl::PHCaptureGetNearestElemTransform(CPHShellHolder* object)
 {
 	CPhysicsElement* ph_elem = object->m_pPhysicsShell->NearestToPoint(vPosition);
 

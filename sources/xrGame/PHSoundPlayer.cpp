@@ -1,9 +1,9 @@
 #include "stdafx.h"
 
 #include "PHSoundPlayer.h"
-#include "PhysicsShellHolder.h"
+#include "PHShellHolder.h"
 
-CPHSoundPlayer::CPHSoundPlayer(CPhysicsShellHolder* obj)
+CPHSoundPlayer::CPHSoundPlayer(CPHShellHolder* obj)
 {
 	m_object = obj;
 }
@@ -22,7 +22,7 @@ void CPHSoundPlayer::Play(SGameMtlPair* mtl_pair, const Fvector& pos)
 		if (vel.square_magnitude( ) > 0.01f)
 		{
 			CLONE_MTL_SOUND(m_sound, mtl_pair, CollideSounds);
-			m_sound.play_at_pos(smart_cast<CPhysicsShellHolder*>(m_object), pos);
+			m_sound.play_at_pos(smart_cast<CPHShellHolder*>(m_object), pos);
 		}
 	}
 }

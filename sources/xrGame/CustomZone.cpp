@@ -532,7 +532,7 @@ void CCustomZone::shedule_Update(u32 dt)
 			if(m_iDisableIdleTime != -1 && (int)info.time_in_zone > m_iDisableIdleTime)
 			{
 				if(!pEntityAlive || !pEntityAlive->g_Alive())
-					StopObjectIdleParticles(smart_cast<CPhysicsShellHolder*>(pObject));
+					StopObjectIdleParticles(smart_cast<CPHShellHolder*>(pObject));
 			}
 
 			//если есть хотя бы один не дисабленый объект, то
@@ -793,7 +793,7 @@ void CCustomZone::PlayEntranceParticles(CGameObject* pObject)
 	}
 
 	Fvector vel;
-	CPhysicsShellHolder* shell_holder=smart_cast<CPhysicsShellHolder*>(pObject);
+	CPHShellHolder* shell_holder=smart_cast<CPHShellHolder*>(pObject);
 	if(shell_holder)
 		shell_holder->PHGetLinearVell(vel);
 	else 

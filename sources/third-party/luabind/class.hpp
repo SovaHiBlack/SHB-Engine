@@ -52,7 +52,7 @@
 	TODO:
 	------------------------------------------------------
 
- 	finish smart pointer support
+	finish smart pointer support
 		* the adopt policy should not be able to adopt pointers to held_types. This
 		must be prohibited.
 		* name_of_type must recognize holder_types and not return "custom"
@@ -690,7 +690,7 @@ namespace luabind
 		struct LUABIND_API class_base : scope
 		{
 		public:
-			class_base(char const* name);		
+			class_base(char const* name);
 
 			struct base_desc
 			{
@@ -732,7 +732,7 @@ namespace luabind
 #endif
 
 			void add_base(const base_desc& b);
-			void add_constructor(const detail::construct_rep::overload_t& o);	
+			void add_constructor(const detail::construct_rep::overload_t& o);
 			void add_method(const char* name, const detail::overload_rep& o);
 
 #ifndef LUABIND_NO_ERROR_CHECKING
@@ -760,12 +760,12 @@ namespace luabind
 			class_registration* m_registration;
 		};
 	
-        template<class T, class W>
-        struct adopt_function
+		template<class T, class W>
+		struct adopt_function
 		{
-		    static void execute(void* p)
-            {
-			    wrapped_self_t& self = wrap_access::ref(
+			static void execute(void* p)
+			{
+				wrapped_self_t& self = wrap_access::ref(
 					*static_cast<W*>(static_cast<T*>(p))
 				);
 
@@ -773,8 +773,8 @@ namespace luabind
 
 				self.get(self.state());
 				self.m_strong_ref.set(self.state());
-            }
-        };
+			}
+		};
 
 	} // namespace detail
 
@@ -793,17 +793,17 @@ namespace luabind
 
 		// WrappedType MUST inherit from T
 		typedef typename detail::extract_parameter<
-		    boost::mpl::vector3<X1,X2,X3>
+			boost::mpl::vector3<X1,X2,X3>
 		  , boost::is_base_and_derived<T, boost::mpl::_>
 		  , detail::null_type
 		>::type WrappedType;
 
 		typedef typename detail::extract_parameter<
-		    boost::mpl::list3<X1,X2,X3>
+			boost::mpl::list3<X1,X2,X3>
 		  , boost::mpl::not_<
-		        boost::mpl::or_<
-				    boost::mpl::or_<
-					    detail::is_bases<boost::mpl::_>
+				boost::mpl::or_<
+					boost::mpl::or_<
+						detail::is_bases<boost::mpl::_>
 					  , boost::is_base_and_derived<boost::mpl::_, T>
 					>
 				  , boost::is_base_and_derived<T, boost::mpl::_>
@@ -851,7 +851,7 @@ namespace luabind
 #ifndef NDEBUG
 			detail::check_link_compatibility();
 #endif
-		   	init(); 
+			init(); 
 		}
 
 		template<class F>
@@ -883,7 +883,7 @@ namespace luabind
 		template<BOOST_PP_ENUM_PARAMS(LUABIND_MAX_ARITY, class A)>
 		class_& def(constructor<BOOST_PP_ENUM_PARAMS(LUABIND_MAX_ARITY, A)> sig)
 		{
-            return this->def_constructor(
+			return this->def_constructor(
 				boost::is_same<WrappedType, detail::null_type>()
 			  , &sig
 			  , detail::null_type()
@@ -893,7 +893,7 @@ namespace luabind
 		template<BOOST_PP_ENUM_PARAMS(LUABIND_MAX_ARITY, class A), class Policies>
 		class_& def(constructor<BOOST_PP_ENUM_PARAMS(LUABIND_MAX_ARITY, A)> sig, const Policies& policies)
 		{
-            return this->def_constructor(
+			return this->def_constructor(
 				boost::is_same<WrappedType, detail::null_type>()
 			  , &sig
 			  , policies
@@ -1245,12 +1245,12 @@ namespace luabind
 			return *this;
 		}
 
-        template<class Signature, class Policies>
+		template<class Signature, class Policies>
 		class_& def_constructor(
 			boost::mpl::true_ /* HasWrapper */
-          , Signature*
-          , Policies const& policies)
-        {	
+		  , Signature*
+		  , Policies const& policies)
+		{	
 			detail::construct_rep::overload_t o;
 
 			o.set_constructor(
@@ -1262,24 +1262,24 @@ namespace luabind
 
 			o.set_match_fun(
 				&detail::constructor_match<
-				    Signature
-			      , 2
-			      , Policies
-			    >::apply);
+					Signature
+				  , 2
+				  , Policies
+				>::apply);
 
 #ifndef LUABIND_NO_ERROR_CHECKING
 			o.set_sig_fun(&detail::get_signature<Signature>::apply);
 #endif
 			o.set_arity(detail::calc_arity<Signature::arity>::apply(Signature(), (Policies*)0));
 			this->add_constructor(o);
-            return *this;
-        }
+			return *this;
+		}
 
-        template<class Signature, class Policies>
+		template<class Signature, class Policies>
 		class_& def_constructor(
 			boost::mpl::false_ /* !HasWrapper */
-          , Signature*
-          , Policies const& policies)
+		  , Signature*
+		  , Policies const& policies)
 		{
 			detail::construct_rep::overload_t o;
 
@@ -1293,18 +1293,18 @@ namespace luabind
 
 			o.set_match_fun(
 				&detail::constructor_match<
-				    Signature
-			      , 2
-			      , Policies
-			    >::apply);
+					Signature
+				  , 2
+				  , Policies
+				>::apply);
 
 #ifndef LUABIND_NO_ERROR_CHECKING
 			o.set_sig_fun(&detail::get_signature<Signature>::apply);
 #endif
 			o.set_arity(detail::calc_arity<Signature::arity>::apply(Signature(), (Policies*)0));
 			this->add_constructor(o);
-            return *this;
-        }
+			return *this;
+		}
 
 		void set_back_reference(detail::default_back_reference*)
 		{
@@ -1321,7 +1321,7 @@ namespace luabind
 		template<class W>
 		adopt_fun_t get_adopt_fun(W*)
 		{
-            return &detail::adopt_function<T, W>::execute;
+			return &detail::adopt_function<T, W>::execute;
 		}
 
 		adopt_fun_t get_adopt_fun(detail::null_type*)
