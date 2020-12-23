@@ -137,9 +137,9 @@ void game_sv_GameState::script_register(lua_State *L)
 			value("GAME_PHASE_NONE",							int(GAME_PHASE_NONE)),
 			value("GAME_PHASE_INPROGRESS",						int(GAME_PHASE_INPROGRESS)),
 			value("GAME_PHASE_PENDING",							int(GAME_PHASE_PENDING)),
-			value("GAME_PHASE_TEAM1_SCORES",					int(GAME_PHASE_TEAM1_SCORES)),
-			value("GAME_PHASE_TEAM2_SCORES",					int(GAME_PHASE_TEAM2_SCORES)),
-			value("GAME_PHASE_TEAMS_IN_A_DRAW",					int(GAME_PHASE_TEAMS_IN_A_DRAW)),
+//			value("GAME_PHASE_TEAM1_SCORES",					int(GAME_PHASE_TEAM1_SCORES)),
+//			value("GAME_PHASE_TEAM2_SCORES",					int(GAME_PHASE_TEAM2_SCORES)),
+//			value("GAME_PHASE_TEAMS_IN_A_DRAW",					int(GAME_PHASE_TEAMS_IN_A_DRAW)),
 			value("GAME_PHASE_SCRIPT_BEGINS_FROM",				int(GAME_PHASE_SCRIPT_BEGINS_FROM))
 		],
 

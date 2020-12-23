@@ -1,6 +1,9 @@
 #pragma once
 
 #include "../xr_level_controller.h"
+#include "UIMessages.h"
+#include "../script_export_space.h"
+#include "uiabstract.h"
 
 class CUIWindow;
 
@@ -107,12 +110,6 @@ public:
 		return (u32)__super::size( );
 	}
 };
-
-//////////////////////////////////////////////////////////////////////////
-
-#include "UIMessages.h"
-#include "../script_export_space.h"
-#include "uiabstract.h"
 
 class CUIWindow : public CUISimpleWindow
 {

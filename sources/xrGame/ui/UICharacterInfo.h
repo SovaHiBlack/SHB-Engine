@@ -1,6 +1,4 @@
 // UICharacterInfo.h:  окошко, с информацией о персонаже
-// 
-//////////////////////////////////////////////////////////////////////
 #pragma once
 
 #include "UIWindow.h"//
@@ -15,7 +13,7 @@ class CUIScrollView;
 class CUICharacterInfo : public CUIWindow
 {
 private:
-	using inherited = CUIWindow;
+	using inherited							= CUIWindow;
 
 protected:
 	void				SetRelation			(ALife::ERelationType relation, CHARACTER_GOODWILL goodwill);
@@ -26,13 +24,13 @@ protected:
 		return (m_ownerID != u16(-1));
 	}
 	// Biography
-	CUIScrollView*		pUIBio;
-	bool				m_bForceUpdate;
-	u16					m_ownerID;
+	CUIScrollView*							pUIBio;
+	bool									m_bForceUpdate;
+	u16										m_ownerID;
 
 	enum
 	{
-		eUIIcon = 0,
+		eUIIcon								= 0,
 		eUIName,
 		eUIRank,
 		eUIRankCaption,
@@ -45,8 +43,8 @@ protected:
 		eMaxCaption
 	};
 
-	CUIStatic*			m_icons[eMaxCaption];
-	shared_str			m_texture_name;
+	CUIStatic*								m_icons[eMaxCaption];
+	shared_str								m_texture_name;
 
 public:
 						CUICharacterInfo	( );

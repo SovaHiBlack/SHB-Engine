@@ -260,20 +260,7 @@ void remap_keys( )
 		++idx;
 	}
 }
-/*
-const char* id_to_action_name(EGameActions _id)
-{
-	int idx = 0;
-	while (actions[idx].action_name)
-	{
-		if (_id == actions[idx].id)
-			return actions[idx].action_name;
-		++idx;
-	}
-	Msg("! cant find corresponding [action_name] for id");
-	return			NULL;
-}
-*/
+
 EGameActions action_name_to_id(const char* _name)
 {
 	_action* action = action_name_to_ptr(_name);
