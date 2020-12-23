@@ -8270,9 +8270,6 @@
     <ClCompile Include="ui\UIGameCustom.cpp">
       <Filter>UI\GameTypes\GameCustom</Filter>
     </ClCompile>
-    <ClCompile Include="ui\UIGameCustom_script.cpp">
-      <Filter>UI\GameTypes\GameCustom</Filter>
-    </ClCompile>
     <ClCompile Include="ui\UIGameSP.cpp">
       <Filter>UI\GameTypes\Single</Filter>
     </ClCompile>

@@ -9,6 +9,7 @@
 #include "..\object_broker.h"
 //#include "..\StringTable.h"
 #include "UIGameTutorial.h"//
+#include "UIStatic.h"//
 
 struct predicate_remove_stat {
 	bool	operator() (SDrawStaticStruct& s) {
@@ -221,4 +222,34 @@ void SDrawStaticStruct::Update()
 		delete_data(m_static);
 	else
 		m_static->Update();
+}
+
+using namespace luabind;
+
+CUIGameCustom* get_hud( )
+{
+	return HUD( ).GetUI( )->UIGame( );
+}
+
+#pragma optimize("s",on)
+void CUIGameCustom::script_register(lua_State* L)
+{
+	module(L)
+		[
+			class_< SDrawStaticStruct >("SDrawStaticStruct")
+			.def_readwrite("m_endTime", &SDrawStaticStruct::m_endTime)
+		.def("wnd", &SDrawStaticStruct::wnd),
+
+		class_< CUIGameCustom >("CUIGameCustom")
+		.def("AddDialogToRender", &CUIGameCustom::AddDialogToRender)
+		.def("RemoveDialogToRender", &CUIGameCustom::RemoveDialogToRender)
+		.def("AddCustomMessage", (void(CUIGameCustom::*)(const char*, float, float, float, CGameFont*, u16, u32/*, const char**/)) & CUIGameCustom::AddCustomMessage)
+		.def("AddCustomMessage", (void(CUIGameCustom::*)(const char*, float, float, float, CGameFont*, u16, u32/*, const char**/, float)) & CUIGameCustom::AddCustomMessage)
+		.def("CustomMessageOut", &CUIGameCustom::CustomMessageOut)
+		.def("RemoveCustomMessage", &CUIGameCustom::RemoveCustomMessage)
+		.def("AddCustomStatic", &CUIGameCustom::AddCustomStatic)
+		.def("RemoveCustomStatic", &CUIGameCustom::RemoveCustomStatic)
+		.def("GetCustomStatic", &CUIGameCustom::GetCustomStatic),
+		def("get_hud", &get_hud)
+		];
 }

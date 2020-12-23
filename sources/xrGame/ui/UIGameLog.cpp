@@ -63,8 +63,7 @@ void CUIGameLog::SetTextAtrib(CGameFont* pFont, u32 color){
 void CUIGameLog::Update()
 {
 	CUIScrollView::Update();
-	toDelList.clear();	
-
+	toDelList.clear();
 
 	// REMOVE ITEMS WITH COMPLETED ANIMATION
 	WINDOW_LIST_it end_it = m_pad->GetChildWndList().end();
