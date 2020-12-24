@@ -6,20 +6,19 @@ class CUIWindow;
 class CUIWndCallback
 {
 public:
-	using void_function = fastdelegate::FastDelegate2<CUIWindow*, void*, void>;
+	using void_function						= fastdelegate::FastDelegate2<CUIWindow*, void*, void>;
 
 private:
-	using CALLBACKS = xr_vector<SCallbackInfo*>;
-	using CALLBACK_IT = CALLBACKS::iterator;
+	using CALLBACKS							= xr_vector<SCallbackInfo*>;
+	using CALLBACK_IT						= CALLBACKS::iterator;
 
-private:
-	CALLBACKS			m_callbacks;
-	SCallbackInfo* NewCallback( );
+	CALLBACKS								m_callbacks;
+	SCallbackInfo*		NewCallback			( );
 
 public:
-	virtual						~CUIWndCallback( );
-	virtual void				OnEvent(CUIWindow* pWnd, s16 msg, void* pData = nullptr);
-	void				Register(CUIWindow* pChild);
-	void				AddCallback(const char* control_id, s16 event, const void_function& f);
-	void				AddCallback(const shared_str& control_id, s16 event, const void_function& f);
+	virtual				~CUIWndCallback		( );
+	virtual void		OnEvent				(CUIWindow* pWnd, s16 msg, void* pData = nullptr);
+	void				Register			(CUIWindow* pChild);
+	void				AddCallback			(const char* control_id, s16 event, const void_function& f);
+	void				AddCallback			(const shared_str& control_id, s16 event, const void_function& f);
 };
