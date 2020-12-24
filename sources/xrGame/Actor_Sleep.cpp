@@ -11,7 +11,7 @@
 #include "autosave_manager.h"
 #include "ai_space.h"
 #include "actorcondition.h"
-#include "ui\UIVideoPlayerWnd.h"//
+//#include "ui\UIVideoPlayerWnd.h"//
 
 #define ONLINE_RADIUS				2.f
 #define MIN_SPRING_TO_SLEEP			0.8f	

@@ -10,7 +10,6 @@
 class CUILines : public IUITextControl, public CUISimpleWindow, public CDeviceResetNotifier
 {
 	friend class CUICustomEdit;
-//	friend class CUICDkey;
 
 public:
 	CUILines( );
@@ -75,7 +74,7 @@ public:
 	IC			void			SetWndSize_inline(const Fvector2& wnd_size);
 
 
-		// CDeviceResetNotifier methods
+	// CDeviceResetNotifier methods
 	virtual void			OnDeviceReset( );
 
 	// own methods
@@ -83,14 +82,15 @@ public:
 	void			ParseText( );
 	float			GetVisibleHeight( );
 
-// cursor control
+	// cursor control
 	int				m_iCursorPos;
 	void			IncCursorPos( );
 	void			DecCursorPos( );
+
 protected:
 	Ivector2		m_cursor_pos;
 	void			UpdateCursor( );
-		// %c[255,255,255,255]
+	// %c[255,255,255,255]
 	u32					GetColorFromText(const xr_string& str)							const;
 	float				GetIndentByAlign( )												const;
 	float				GetVIndentByAlign( );
@@ -134,7 +134,7 @@ public:
 	virtual					~CUILinesOwner( )
 	{ }
 
-// IUIFontControl{
+	// IUIFontControl{
 	virtual void			SetTextColor(u32 color)
 	{
 		m_lines.SetTextColor(color);
@@ -160,7 +160,7 @@ public:
 		return m_lines.GetTextAlignment( );
 	}
 
-// IUITextControl : public IUIFontControl{
+	// IUITextControl : public IUIFontControl{
 	virtual void			SetText(const char* text)
 	{
 		m_lines.SetText(text);
@@ -170,7 +170,7 @@ public:
 		return m_lines.GetText( );
 	}
 
-// own
+	// own
 	virtual void			SetTextPosX(float x)
 	{
 		m_textPos.x = x;

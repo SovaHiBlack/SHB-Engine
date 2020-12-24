@@ -5,7 +5,7 @@
 
 class CLAItem;
 
-class CUILabel : public CUIFrameLineWnd, public CUILinesOwner //IUITextControl 
+class CUILabel : public CUIFrameLineWnd, public CUILinesOwner
 {
 	CLAItem* m_lanim;
 	float					m_lainm_start_time;
@@ -23,7 +23,4 @@ public:
 	// own
 	CUILabel( );
 	void			SetLightAnim(const char* lanim);
-
-protected:
-//	Fvector2 m_textPos;
 };

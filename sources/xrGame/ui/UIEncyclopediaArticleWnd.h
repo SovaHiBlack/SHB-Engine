@@ -7,19 +7,19 @@ class CEncyclopediaArticle;
 
 class CUIEncyclopediaArticleWnd :public CUIWindow
 {
-typedef	CUIWindow		inherited;
+	using inherited											= CUIWindow;
 
-CUIStatic*				m_UIImage;
-CUIStatic*				m_UIText;
-CEncyclopediaArticle*	m_Article;
+	CUIStatic*												m_UIImage;
+	CUIStatic*												m_UIText;
+	CEncyclopediaArticle*									m_Article;
 
 protected:
-			void		AdjustLauout				();
+	void					AdjustLauout					( );
 
 public:
-					CUIEncyclopediaArticleWnd		();
-	virtual			~CUIEncyclopediaArticleWnd		();
-			void	Init							(const char* xml_name, const char* start_from);
-			void	SetArticle						(CEncyclopediaArticle*);
-			void	SetArticle						(const char*);
+							CUIEncyclopediaArticleWnd		( );
+	virtual					~CUIEncyclopediaArticleWnd		( );
+	void					Init							(const char* xml_name, const char* start_from);
+	void					SetArticle						(CEncyclopediaArticle*);
+	void					SetArticle						(const char*);
 };

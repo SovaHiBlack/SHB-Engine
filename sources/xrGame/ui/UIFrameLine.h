@@ -40,15 +40,15 @@ public:
 	void		Init(const char* base_name, float x, float y, float size, bool horizontal, DWORD align);
 	void		InitTexture(const char* texture);
 	void		SetColor(u32 cl);
-	IC void		SetPos(float left, float top)
+	inline void		SetPos(float left, float top)
 	{
 		iPos.set(left, top);	uFlags &= ~flValidSize;
 	}
-	IC void		SetSize(float size)
+	inline void		SetSize(float size)
 	{
 		iSize = size;			uFlags &= ~flValidSize;
 	}
-	IC void		SetOrientation(bool bIsHorizontal)
+	inline void		SetOrientation(bool bIsHorizontal)
 	{
 		bHorizontalOrientation = bIsHorizontal; uFlags &= ~flValidSize;
 	}

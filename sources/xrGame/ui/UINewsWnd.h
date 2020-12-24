@@ -5,24 +5,28 @@
 class CUIScrollView;
 struct GAME_NEWS_DATA;
 
-class CUINewsWnd: public CUIWindow
+class CUINewsWnd : public CUIWindow
 {
-	typedef CUIWindow inherited;
-	enum eFlag{eNeedAdd=(1<<0),};
-	Flags16			m_flags;
+	using inherited						= CUIWindow;
+	enum eFlag
+	{
+		eNeedAdd						= (1 << 0)
+	};
+	Flags16								m_flags;
+
 public:
-					CUINewsWnd	();
-	virtual			~CUINewsWnd	();
+						CUINewsWnd		( );
+	virtual				~CUINewsWnd		( );
 
-			void	Init		();
-			void	Init		(const char* xml_name, const char* start_from);
-	void			AddNews		();
-	virtual void	Show		(bool status);
-	virtual void	Update		();
+	void				Init			( );
+	void				Init			(const char* xml_name, const char* start_from);
+	void				AddNews			( );
+	virtual void		Show			(bool status);
+	virtual void		Update			( );
 
-	CUIScrollView*	UIScrollWnd;
+	CUIScrollView*						UIScrollWnd;
 
 private:
-	void			LoadNews		();
-	void			AddNewsItem	(GAME_NEWS_DATA& news_data);
+	void				LoadNews		( );
+	void				AddNewsItem		(GAME_NEWS_DATA& news_data);
 };

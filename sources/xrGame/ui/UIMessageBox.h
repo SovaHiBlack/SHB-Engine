@@ -10,6 +10,7 @@ class CUIMessageBox: public CUIStatic
 {
 private:
 	typedef CUIStatic inherited;
+
 public:
 				CUIMessageBox		();
 	virtual		~CUIMessageBox		();
@@ -39,7 +40,6 @@ public:
 	virtual bool OnMouse			(float x, float y, EUIMessages mouse_action);
 	virtual void SendMessage		(CUIWindow *pWnd, s16 msg, void *pData);
 
-
 protected:
 	xr_string	m_ret_val;
 	CUI3tButton* m_UIButtonYesOk;
@@ -56,6 +56,7 @@ protected:
 	CUIEditBox* m_UIEditUserPass;
 	 
 	E_MESSAGEBOX_STYLE m_eMessageBoxStyle;
+
 public:
 	static void script_register(lua_State*);
 };

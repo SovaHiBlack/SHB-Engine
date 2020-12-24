@@ -1768,9 +1768,6 @@
     <Filter Include="UI\Common\OutfitInfo">
       <UniqueIdentifier>{a20bdfea-9a33-4797-80c2-f006c1f1be31}</UniqueIdentifier>
     </Filter>
-    <Filter Include="UI\Common\TimeWnd">
-      <UniqueIdentifier>{a70b77da-aab5-4ad2-a63f-b70c5d543ea4}</UniqueIdentifier>
-    </Filter>
     <Filter Include="UI\Common\SleepWnd">
       <UniqueIdentifier>{1b913cc3-c5b2-4801-b8f5-3cd138f50ec2}</UniqueIdentifier>
     </Filter>
@@ -5349,9 +5346,6 @@
     <ClInclude Include="ui\UIOutfitInfo.h">
       <Filter>UI\Common\OutfitInfo</Filter>
     </ClInclude>
-    <ClInclude Include="ui\UITimeWnd.h">
-      <Filter>UI\Common\TimeWnd</Filter>
-    </ClInclude>
     <ClInclude Include="ui\UISleepWnd.h">
       <Filter>UI\Common\SleepWnd</Filter>
     </ClInclude>
@@ -7931,9 +7925,6 @@
     <ClCompile Include="ui\UICarBodyWnd.cpp">
       <Filter>UI\Common\CarBodyWnd</Filter>
     </ClCompile>
-    <ClCompile Include="ui\UIDiaryWnd2.cpp">
-      <Filter>UI\Common\DiaryWnd</Filter>
-    </ClCompile>
     <ClCompile Include="ui\UIEncyclopediaArticleWnd.cpp">
       <Filter>UI\Common\DiaryWnd</Filter>
     </ClCompile>
@@ -8021,9 +8012,6 @@
     <ClCompile Include="ui\UIOutfitInfo.cpp">
       <Filter>UI\Common\OutfitInfo</Filter>
     </ClCompile>
-    <ClCompile Include="ui\UITimeWnd.cpp">
-      <Filter>UI\Common\TimeWnd</Filter>
-    </ClCompile>
     <ClCompile Include="ui\UISleepWnd.cpp">
       <Filter>UI\Common\SleepWnd</Filter>
     </ClCompile>
@@ -8058,9 +8046,6 @@
       <Filter>UI\UIWindows\Static</Filter>
     </ClCompile>
     <ClCompile Include="ui\UIStatic.cpp">
-      <Filter>UI\UIWindows\Static</Filter>
-    </ClCompile>
-    <ClCompile Include="ui\UIStatic_script.cpp">
       <Filter>UI\UIWindows\Static</Filter>
     </ClCompile>
     <ClCompile Include="ui\UITextBanner.cpp">
@@ -8596,6 +8581,9 @@
     </ClCompile>
     <ClCompile Include="PHSkeletonObject.cpp">
       <Filter>Core\Client\Objects\physics\PhysicsSkeletonObject</Filter>
+    </ClCompile>
+    <ClCompile Include="ui\UIDiaryWnd.cpp">
+      <Filter>UI\Common\DiaryWnd</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

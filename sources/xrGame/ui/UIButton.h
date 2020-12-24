@@ -9,7 +9,7 @@ private:
 	typedef			CUIStatic				inherited;
 
 public:
-					CUIButton( );
+	CUIButton( );
 	virtual			~CUIButton( );
 
 	virtual bool	OnMouse(float x, float y, EUIMessages mouse_action);
@@ -108,7 +108,6 @@ public:
 	shared_str		m_hint_text;
 
 protected:
-
 	E_BUTTON_STATE	m_eButtonState;
 	bool			m_bIsSwitch;
 	bool			m_bButtonClicked;
@@ -117,8 +116,8 @@ protected:
 	int				m_uAccelerator[2];
 	Fvector2		m_ShadowOffset;
 
-	public:
-		static void script_register(lua_State*);
+public:
+	static void script_register(lua_State*);
 };
 
 add_to_type_list(CUIButton)

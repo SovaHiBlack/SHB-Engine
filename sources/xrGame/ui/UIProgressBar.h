@@ -8,6 +8,7 @@ class CUIProgressBar : public CUIWindow
 {
 	friend class		CUIXmlInit;
 	typedef CUIWindow	inherited;
+
 protected:
 	bool				m_bIsHorizontal;
 
@@ -26,15 +27,14 @@ public:
 	bool				m_bUseColor;
 	Fcolor				m_minColor;
 	Fcolor				m_maxColor;
-	float				m_inertion;	//
+	float				m_inertion;
+
 public:
 	CUIStatic			m_UIProgressItem;
 	CUIStatic			m_UIBackgroundItem;
 
-
 						CUIProgressBar				();
 	virtual				~CUIProgressBar				();
-
 
 	virtual void		Init						(float x, float y, float width, float height, bool bIsHorizontal);
 

@@ -57,7 +57,5 @@ protected:
 	int m_iKeyPressAndHold;
 	bool m_bHoldWaitMode;
 
-//	u32	m_cursorColor;
-
 	CLAItem*				m_lanim;
 };

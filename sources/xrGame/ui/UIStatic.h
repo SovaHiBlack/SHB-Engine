@@ -21,8 +21,8 @@ struct lanim_cont
 
 class CUIStatic : public CUIWindow, public CUISingleTextureOwner, public IUITextControl
 {
-	friend class CUIXmlInit;
-	friend class CUI3tButton;
+	friend class											CUIXmlInit;
+	friend class											CUI3tButton;
 
 private:
 	using inherited											= CUIWindow;
@@ -40,7 +40,7 @@ public:
 								CUIStatic					( );
 	virtual						~CUIStatic					( );
 
-	// IUISimpleWindow--------------------------------------------------------------------------------------
+	// IUISimpleWindow
 	virtual void				Init						(float x, float y, float width, float height);
 	virtual void				Draw						( );
 	virtual void				Update						( );

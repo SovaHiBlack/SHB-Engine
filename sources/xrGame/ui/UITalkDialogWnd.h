@@ -19,10 +19,10 @@ class CUITalkDialogWnd: public CUIWindow, public CUIWndCallback
 private:
 	typedef CUIWindow inherited;
 	CUIXml*			m_uiXml;
+
 public:
 	CUITalkDialogWnd();
 	virtual ~CUITalkDialogWnd();
-	
 
 	virtual void Init(float x, float y, float width, float height);
 	
@@ -61,6 +61,7 @@ public:
 	void				ClearQuestions		();
 
 	void				SetOsoznanieMode	(bool b);
+
 private:
 	CUIScrollView*			UIQuestionsList;
 	CUIScrollView*			UIAnswersList;
@@ -73,14 +74,13 @@ private:
 
 	void __stdcall		OnTradeClicked			(CUIWindow* w, void*);
 	void __stdcall		OnQuestionClicked		(CUIWindow* w, void*);
-	
 };
-
 
 class CUIQuestionItem :public CUIWindow, public CUIWndCallback
 {
 	typedef CUIWindow inherited;
 	float			m_min_height;
+
 public:
 	CUI3tButton*	m_text;
 	shared_str		m_s_value;
@@ -99,6 +99,7 @@ class CUIAnswerItem :public CUIWindow
 	float			m_bottom_footer;
 	CUIStatic*		m_text;
 	CUIStatic*		m_name;
+
 public:
 					CUIAnswerItem			(CUIXml* xml_doc, const char* path);
 	void			Init					(const char* text, const char* name);
@@ -112,5 +113,4 @@ class CUIAnswerItemIconed :public CUIAnswerItem
 public:
 					CUIAnswerItemIconed		(CUIXml* xml_doc, const char* path);
 	void			Init					(const char* text, const char* texture_name, Frect texture_rect);
-
 };

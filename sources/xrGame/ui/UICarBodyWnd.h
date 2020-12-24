@@ -64,7 +64,7 @@ protected:
 	CUIStatic*											m_pUIOurBagWnd;
 	CUIStatic*											m_pUIOthersBagWnd;
 
-	//информация о персонажах 
+	//информация о персонажах
 	CUIStatic*											m_pUIOurIcon;
 	CUIStatic*											m_pUIOthersIcon;
 	CUICharacterInfo*									m_pUICharacterInfoLeft;
@@ -79,16 +79,12 @@ protected:
 	void					ActivatePropertiesBox		( );
 	void					EatItem						( );
 
-//	bool					ToOurBag					( );
-//	bool					ToOthersBag					( );
-
 	void					SetCurrentItem				(CUICellItem* itm);
 	CUICellItem*			CurrentItem					( );
 	PIItem					CurrentIItem				( );
 
-	// Взять все
+	//Взять всё
 	void					TakeAll						( );
-
 
 	bool xr_stdcall			OnItemDrop					(CUICellItem* itm);
 	bool xr_stdcall			OnItemStartDrag				(CUICellItem* itm);

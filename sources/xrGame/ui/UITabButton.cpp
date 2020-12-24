@@ -7,26 +7,13 @@
 #include "../HUDManager.h"//
 
 CUITabButton::CUITabButton(){
-//.	this->m_pAssociatedWindow = NULL;
+
 }
 
 CUITabButton::~CUITabButton(){
 
 }
-/*
-void CUITabButton::AssociateWindow(CUIFrameWindow* pWindow){
-	this->m_pAssociatedWindow = pWindow;
-}
 
-CUIFrameWindow* CUITabButton::GetAssociatedWindow(){
-	return this->m_pAssociatedWindow;
-}
-
-void CUITabButton::ShowAssociatedWindow(bool bShow){
-	if (this->m_pAssociatedWindow)
-        this->m_pAssociatedWindow->Show(bShow);
-}
-*/
 bool CUITabButton::OnMouse(float x, float y, EUIMessages mouse_action){
 	return CUIWindow::OnMouse(x, y, mouse_action);
 }
@@ -54,13 +41,11 @@ void CUITabButton::SendMessage(CUIWindow* pWnd, s16 msg, void* pData){
 		if (this == pWnd)
 		{
             m_eButtonState = BUTTON_PUSHED;			
-//.			ShowAssociatedWindow(true);
 			OnClick();
 		}
 		else		
 		{
 			m_eButtonState = BUTTON_NORMAL;
-//.			ShowAssociatedWindow(false);
 		}
 		break;
 	default:

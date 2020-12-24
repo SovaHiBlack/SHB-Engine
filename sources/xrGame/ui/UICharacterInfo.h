@@ -23,7 +23,8 @@ protected:
 	{
 		return (m_ownerID != u16(-1));
 	}
-	// Biography
+
+	//Biography
 	CUIScrollView*							pUIBio;
 	bool									m_bForceUpdate;
 	u16										m_ownerID;

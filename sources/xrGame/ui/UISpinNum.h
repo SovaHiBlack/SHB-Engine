@@ -23,14 +23,13 @@ public:
 			void	SetMax				(int max)	{m_iMax=max;};
 			void	SetMin				(int min)	{m_iMin=min;};
 			int		Value				() const {return m_iVal;}
+
 protected:
 			void	SetValue			();
 	virtual bool	CanPressUp			();
 	virtual bool	CanPressDown		();
 	virtual void		IncVal			();
 	virtual void		DecVal			();
-
-
 
 	int		m_iMax;
 	int		m_iMin;
@@ -55,6 +54,7 @@ public:
 
 			void	SetMax				(float max);
 			void	SetMin				(float min);
+
 protected:
 			void	SetValue			();
 	virtual bool	CanPressUp			();
@@ -62,11 +62,8 @@ protected:
 	virtual void	IncVal				();
 	virtual void	DecVal				();
 
-
-
 	float		m_fMax;
 	float		m_fMin;
 	float		m_fStep;
 	float		m_fVal;
 };
-

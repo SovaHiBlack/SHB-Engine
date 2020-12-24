@@ -17,5 +17,5 @@ public:
 	void			FillUpList		( );
 
 protected:
-	CUIStatic		m_background;
+	CUIStatic						m_background;
 };

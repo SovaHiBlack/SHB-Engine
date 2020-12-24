@@ -46,7 +46,6 @@ protected:
 	bool 				ToOthersTrade				( );
 	bool 				ToOurBag					( );
 	bool 				ToOthersBag					( );
-//	void 				SendEvent_ItemDrop			(PIItem pItem);
 
 	u32					CalcItemsPrice				(CUIDragDropListEx* pList, CTrade* pTrade, bool bBuying);
 	float				CalcItemsWeight				(CUIDragDropListEx* pList);

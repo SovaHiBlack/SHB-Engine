@@ -1399,14 +1399,13 @@
     <ClInclude Include="ui\UITaskItem.h" />
     <ClInclude Include="ui\UITextBanner.h" />
     <ClInclude Include="ui\UITextureMaster.h" />
-    <ClInclude Include="ui\UITimeWnd.h">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
-    </ClInclude>
     <ClInclude Include="ui\UITrackBar.h" />
     <ClInclude Include="ui\UITradeWnd.h" />
     <ClInclude Include="ui\UITreeViewItem.h" />
-    <ClInclude Include="ui\UIVideoPlayerWnd.h" />
+    <ClInclude Include="ui\UIVideoPlayerWnd.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClInclude>
     <ClInclude Include="ui\UIWindow.h" />
     <ClInclude Include="ui\UIWndCallback.h" />
     <ClInclude Include="ui\UIWpnParams.h" />
@@ -2253,7 +2252,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="ui\UIDialogWnd.cpp" />
-    <ClCompile Include="ui\UIDiaryWnd2.cpp" />
+    <ClCompile Include="ui\UIDiaryWnd.cpp" />
     <ClCompile Include="ui\UIDragDropListEx.cpp" />
     <ClCompile Include="ui\UIEditBox.cpp" />
     <ClCompile Include="ui\UIEditBoxEx.cpp" />
@@ -2338,7 +2337,6 @@
     <ClCompile Include="ui\UISpinText.cpp" />
     <ClCompile Include="ui\UIStalkersRankingWnd.cpp" />
     <ClCompile Include="ui\UIStatic.cpp" />
-    <ClCompile Include="ui\UIStatic_script.cpp" />
     <ClCompile Include="ui\UISubLine.cpp" />
     <ClCompile Include="ui\UITabButton.cpp" />
     <ClCompile Include="ui\UITabControl.cpp" />
@@ -2348,14 +2346,13 @@
     <ClCompile Include="ui\UITaskItem.cpp" />
     <ClCompile Include="ui\UITextBanner.cpp" />
     <ClCompile Include="ui\UITextureMaster.cpp" />
-    <ClCompile Include="ui\UITimeWnd.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
-    </ClCompile>
     <ClCompile Include="ui\UITrackBar.cpp" />
     <ClCompile Include="ui\UITradeWnd.cpp" />
     <ClCompile Include="ui\UITreeViewItem.cpp" />
-    <ClCompile Include="ui\UIVideoPlayerWnd.cpp" />
+    <ClCompile Include="ui\UIVideoPlayerWnd.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="ui\UIWindow.cpp" />
     <ClCompile Include="ui\UIWindow_script.cpp" />
     <ClCompile Include="ui\UIWndCallback.cpp" />

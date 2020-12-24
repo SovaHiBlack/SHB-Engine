@@ -8,7 +8,8 @@
 class CUIPropertiesBox: public CUIFrameWindow
 {
 private:
-	typedef CUIFrameWindow inherited; 
+	typedef CUIFrameWindow inherited;
+
 public:
 						CUIPropertiesBox					();
 	virtual				~CUIPropertiesBox					();
