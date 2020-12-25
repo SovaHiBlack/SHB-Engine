@@ -14,103 +14,111 @@
 class CUIScrollView;
 class CUIXml;
 
-class CUITalkDialogWnd: public CUIWindow, public CUIWndCallback
+class CUITalkDialogWnd : public CUIWindow, public CUIWndCallback
 {
 private:
-	typedef CUIWindow inherited;
-	CUIXml*			m_uiXml;
+	using inherited								= CUIWindow;
+	CUIXml*										m_uiXml;
 
 public:
-	CUITalkDialogWnd();
-	virtual ~CUITalkDialogWnd();
+						CUITalkDialogWnd		( );
+	virtual				~CUITalkDialogWnd		( );
 
-	virtual void Init(float x, float y, float width, float height);
-	
-	virtual void SendMessage(CUIWindow* pWnd, s16 msg, void* pData = nullptr);
+	virtual void		Init					(float x, float y, float width, float height);
 
-	virtual void Show();
-	virtual void Hide();
+	virtual void		SendMessage				(CUIWindow* pWnd, s16 msg, void* pData = nullptr);
 
-	u32			GetHeaderColor()		{ return m_iNameTextColor; }
-	CGameFont *	GetHeaderFont()			{ return m_pNameTextFont; }
-	u32			GetOurReplicsColor()	{ return m_uOurReplicsColor; }
+	virtual void		Show					( );
+	virtual void		Hide					( );
 
-	shared_str			m_ClickedQuestionID;
+	u32					GetHeaderColor			( )
+	{
+		return m_iNameTextColor;
+	}
+	CGameFont*			GetHeaderFont			( )
+	{
+		return m_pNameTextFont;
+	}
+	u32					GetOurReplicsColor		( )
+	{
+		return m_uOurReplicsColor;
+	}
 
 	//список вопросов, которые мы можем задавать персонажу
+	shared_str									m_ClickedQuestionID;
 
 	//элементы интерфейса диалога
-	CUIFrameLineWnd		UIDialogFrame;
-	CUIFrameLineWnd		UIOurPhrasesFrame;
+	CUIFrameLineWnd								UIDialogFrame;
+	CUIFrameLineWnd								UIOurPhrasesFrame;
 
-	CUIStatic			UIStaticTop;
-	CUIStatic			UIStaticBottom;
+	CUIStatic									UIStaticTop;
+	CUIStatic									UIStaticBottom;
 
-	CUI3tButton			UIToTradeButton;
+	CUI3tButton									UIToTradeButton;
 
-	//информаци€ о персонажах 
-	CUIStatic			UIOurIcon;
-	CUIStatic			UIOthersIcon;
-	CUICharacterInfo	UICharacterInfoLeft;
-	CUICharacterInfo	UICharacterInfoRight;
+	//информаци€ о персонажах
+	CUIStatic									UIOurIcon;
+	CUIStatic									UIOthersIcon;
+	CUICharacterInfo							UICharacterInfoLeft;
+	CUICharacterInfo							UICharacterInfoRight;
 
-	void				AddQuestion			(const char* str, const char* value);
-	void				AddAnswer			(const char* SpeakerName, const char* str, bool bActor);
-	void				AddIconedAnswer		(const char* text, const char* texture_name, Frect texture_rect, const char* templ_name);
-	void				ClearAll			();
-	void				ClearQuestions		();
+	void				AddQuestion				(const char* str, const char* value);
+	void				AddAnswer				(const char* SpeakerName, const char* str, bool bActor);
+	void				AddIconedAnswer			(const char* text, const char* texture_name, Frect texture_rect, const char* templ_name);
+	void				ClearAll				( );
+	void				ClearQuestions			( );
 
-	void				SetOsoznanieMode	(bool b);
+	void				SetOsoznanieMode		(bool b);
 
 private:
-	CUIScrollView*			UIQuestionsList;
-	CUIScrollView*			UIAnswersList;
+	CUIScrollView*								UIQuestionsList;
+	CUIScrollView*								UIAnswersList;
 
-	// Ўрифт и цвет текста с именем персонажа
-	CGameFont			*m_pNameTextFont;
-	u32					m_iNameTextColor;
-	// ÷вет тeкста и шрифт наших реплик
-	u32					m_uOurReplicsColor;
+	//Ўрифт и цвет текста с именем персонажа
+	CGameFont*									m_pNameTextFont;
+	u32											m_iNameTextColor;
+	//÷вет тeкста и шрифт наших реплик
+	u32											m_uOurReplicsColor;
 
 	void __stdcall		OnTradeClicked			(CUIWindow* w, void*);
 	void __stdcall		OnQuestionClicked		(CUIWindow* w, void*);
 };
 
-class CUIQuestionItem :public CUIWindow, public CUIWndCallback
+class CUIQuestionItem : public CUIWindow, public CUIWndCallback
 {
-	typedef CUIWindow inherited;
-	float			m_min_height;
+	using inherited								= CUIWindow;
+	float										m_min_height;
 
 public:
-	CUI3tButton*	m_text;
-	shared_str		m_s_value;
-					CUIQuestionItem			(CUIXml* xml_doc, const char* path);
-	void			Init					(const char* val, const char* text);
+	CUI3tButton*								m_text;
+	shared_str									m_s_value;
+						CUIQuestionItem			(CUIXml* xml_doc, const char* path);
+	void				Init					(const char* val, const char* text);
 
-	virtual void	SendMessage				(CUIWindow* pWnd, s16 msg, void* pData = nullptr);
-	void __stdcall	OnTextClicked			(CUIWindow* w, void*);
+	virtual void		SendMessage				(CUIWindow* pWnd, s16 msg, void* pData = nullptr);
+	void __stdcall		OnTextClicked			(CUIWindow* w, void*);
 };
 
-class CUIAnswerItem :public CUIWindow
+class CUIAnswerItem : public CUIWindow
 {
-	typedef CUIWindow inherited;
+	using inherited								= CUIWindow;
 
-	float			m_min_height;
-	float			m_bottom_footer;
-	CUIStatic*		m_text;
-	CUIStatic*		m_name;
+	float										m_min_height;
+	float										m_bottom_footer;
+	CUIStatic*									m_text;
+	CUIStatic*									m_name;
 
 public:
-					CUIAnswerItem			(CUIXml* xml_doc, const char* path);
-	void			Init					(const char* text, const char* name);
+						CUIAnswerItem			(CUIXml* xml_doc, const char* path);
+	void				Init					(const char* text, const char* name);
 };
 
-class CUIAnswerItemIconed :public CUIAnswerItem
+class CUIAnswerItemIconed : public CUIAnswerItem
 {
-	typedef CUIAnswerItem inherited;
-	CUIStatic*		m_icon;
+	using inherited								= CUIAnswerItem;
+	CUIStatic*									m_icon;
 
 public:
-					CUIAnswerItemIconed		(CUIXml* xml_doc, const char* path);
-	void			Init					(const char* text, const char* texture_name, Frect texture_rect);
+						CUIAnswerItemIconed		(CUIXml* xml_doc, const char* path);
+	void				Init					(const char* text, const char* texture_name, Frect texture_rect);
 };

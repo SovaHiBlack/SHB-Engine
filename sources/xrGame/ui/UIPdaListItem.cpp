@@ -1,14 +1,14 @@
 #include "stdafx.h"
 
 #include "UIPdaListItem.h"//
-#include "..\Actor.h"
-#include "UIInventoryUtilities.h"//
+//#include "..\Actor.h"
+//#include "UIInventoryUtilities.h"//
 //#include "..\StringTable.h"
 
-#include "xrUIXmlParser.h"//
+//#include "xrUIXmlParser.h"//
 #include "UIXmlInit.h"//
 
-#include "../character_info.h"
+//#include "../character_info.h"
 
 #include "UIFrameWindow.h"//
 #include "..\InventoryOwner.h"
@@ -24,8 +24,7 @@ CUIPdaListItem::CUIPdaListItem()
 }
 
 CUIPdaListItem::~CUIPdaListItem()
-{
-}
+{ }
 
 void CUIPdaListItem::Init(float x, float y, float width, float height)
 {

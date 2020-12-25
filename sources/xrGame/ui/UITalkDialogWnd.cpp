@@ -1,14 +1,14 @@
 #include "stdafx.h"
 
 #include "UITalkDialogWnd.h"//
-#include "xrUIXmlParser.h"//
+//#include "xrUIXmlParser.h"//
 #include "UIXmlInit.h"//
 #include "UIScrollView.h"//
-#include "UI3tButton.h"//
-#include "UI.h"//
+//#include "UI3tButton.h"//
+//#include "UI.h"//
 #include "UIInventoryUtilities.h"//
-#include "../game_news.h"
-#include "..\Level.h"
+//#include "../game_news.h"
+//#include "..\Level.h"
 #include "..\Actor.h"
 #include "../alife_registry_wrappers.h"
 
