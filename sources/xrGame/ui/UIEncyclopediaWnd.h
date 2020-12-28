@@ -19,10 +19,12 @@ class CUIEncyclopediaWnd : public CUIWindow
 {
 private:
 	using inherited								= CUIWindow;
+
 	enum
 	{
 		eNeedReload								= (1 << 0)
 	};
+
 	Flags16										m_flags;
 
 public:

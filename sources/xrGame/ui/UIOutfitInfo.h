@@ -9,24 +9,24 @@ class CUIXml;
 
 class CUIOutfitInfo : public CUIWindow
 {
-	CCustomOutfit*					m_outfit;
+	CCustomOutfit*							m_outfit;
 
 public:
-				CUIOutfitInfo		( );
-	virtual		~CUIOutfitInfo		( );
+						CUIOutfitInfo		( );
+	virtual				~CUIOutfitInfo		( );
 
-	void		Update				(CCustomOutfit* outfit);
-	void		InitFromXml			(CUIXml& xml_doc);
+	void				Update				(CCustomOutfit* outfit);
+	void				InitFromXml			(CUIXml& xml_doc);
 
 protected:
-	void		SetItem				(u32 hitType, bool force_add);
+	void				SetItem				(u32 hitType, bool force_add);
 
-	CUIScrollView*					m_listWnd;
+	CUIScrollView*							m_listWnd;
 
 	enum
 	{
-		_item_start					= 0,
-		_item_burn_immunity			= _item_start,
+		_item_start							= 0,
+		_item_burn_immunity					= _item_start,
 		_item_strike_immunity,
 		_item_shock_immunity,
 		_item_wound_immunity,
@@ -39,5 +39,5 @@ protected:
 		_max_item_index
 	};
 
-	CUIStatic*						m_items[_max_item_index];
+	CUIStatic*								m_items[_max_item_index];
 };

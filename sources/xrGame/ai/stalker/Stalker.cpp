@@ -41,7 +41,7 @@
 #include "../../sight_manager.h"
 #include "../../ai_object_location.h"
 #include "../../stalker_movement_manager.h"
-#include "../../entitycondition.h"
+#include "../../EntityCondition.h"
 #include "../../script_engine.h"
 #include "ai_stalker_impl.h"
 #include "../../sound_player.h"

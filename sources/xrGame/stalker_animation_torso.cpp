@@ -17,7 +17,7 @@
 #include "object_handler_space.h"
 #include "object_handler_planner.h"
 #include "stalker_movement_manager.h"
-#include "entitycondition.h"
+#include "EntityCondition.h"
 #include "stalker_animation_data.h"
 #include "stalker_animation_manager_impl.h"
 

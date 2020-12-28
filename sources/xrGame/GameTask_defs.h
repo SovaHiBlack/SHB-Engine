@@ -5,8 +5,7 @@ enum ETaskState
 	eTaskStateFail = 0,
 	eTaskStateInProgress,
 	eTaskStateCompleted,
-//.	eTaskUserDefined,
-eTaskStateDummy = u32(-1)
+	eTaskStateDummy = u32(-1)
 };
 
 typedef shared_str		TASK_ID;

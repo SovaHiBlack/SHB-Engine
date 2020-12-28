@@ -12,7 +12,7 @@
 #include "..\ENGINE\skeletoncustom.h"
 #include "relation_registry.h"
 #include "monster_community.h"
-#include "entitycondition.h"
+#include "EntityCondition.h"
 #include "script_game_object.h"
 #include "hit.h"
 #include "PHDestroyable.h"

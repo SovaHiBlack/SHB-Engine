@@ -22,13 +22,13 @@
 
 CUITalkWnd::CUITalkWnd( )
 {
-	m_pActor = NULL;
+	m_pActor = nullptr;
 
-	m_pOurInvOwner = NULL;
-	m_pOthersInvOwner = NULL;
+	m_pOurInvOwner = nullptr;
+	m_pOthersInvOwner = nullptr;
 
-	m_pOurDialogManager = NULL;
-	m_pOthersDialogManager = NULL;
+	m_pOurDialogManager = nullptr;
+	m_pOthersDialogManager = nullptr;
 
 	ToTopicMode( );
 
@@ -193,7 +193,8 @@ void UpdateCameraDirection(CGameObject* pTo)
 
 	des_dir.sub(des_pt, cam->vPosition);
 
-	float p, h;
+	float p;
+	float h;
 	des_dir.getHP(h, p);
 
 	if (angle_difference(cam->yaw, -h) > 0.2)
@@ -263,7 +264,7 @@ void CUITalkWnd::Hide( )
 		m_pActor->StopTalk( );
 	}
 
-	m_pActor = NULL;
+	m_pActor = nullptr;
 }
 
 bool CUITalkWnd::TopicMode( )
@@ -283,7 +284,7 @@ void CUITalkWnd::AskQuestion( )
 		return;
 	}
 
-	shared_str					phrase_id;
+	shared_str phrase_id;
 
 	//игрок выбрал тему разговора
 	if (TopicMode( ))
@@ -349,7 +350,6 @@ void CUITalkWnd::SwitchToTrade( )
 {
 	if (m_pOurInvOwner->IsTradeEnabled( ) && m_pOthersInvOwner->IsTradeEnabled( ))
 	{
-
 		UITalkDialogWnd->Hide( );
 
 		UITradeWnd->InitTrade(m_pOurInvOwner, m_pOthersInvOwner);

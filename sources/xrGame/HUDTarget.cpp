@@ -71,7 +71,7 @@ void CHUDTarget::net_Relcase(CObject* O)
 {
 	if (RQ.O == O)
 	{
-		RQ.O = NULL;
+		RQ.O = nullptr;
 	}
 
 	RQR.r_clear( );
@@ -82,9 +82,9 @@ void CHUDTarget::Load( )
 	HUDCrosshair.Load( );
 }
 
-ICF static BOOL pick_trace_callback(collide::rq_result& result, LPVOID params)
+__forceinline static BOOL pick_trace_callback(collide::rq_result& result, LPVOID params)
 {
-	collide::rq_result* RQ = (collide::rq_result*)params;
+	collide::rq_result* RQ = (collide::rq_result*) params;
 	if (result.O)
 	{
 		*RQ = result;
@@ -106,8 +106,8 @@ ICF static BOOL pick_trace_callback(collide::rq_result& result, LPVOID params)
 
 void CHUDTarget::CursorOnFrame( )
 {
-	Fvector				p1;
-	Fvector				dir;
+	Fvector p1;
+	Fvector dir;
 
 	p1 = Device.vCameraPosition;
 	dir = Device.vCameraDirection;
@@ -153,11 +153,11 @@ void CHUDTarget::Render( )
 	//Render cursor
 	u32 C = C_DEFAULT;
 
-	FVF::TL				PT;
-	Fvector				p2;
+	FVF::TL PT;
+	Fvector p2;
 	p2.mad(p1, dir, RQ.range);
 	PT.transform(p2, Device.mFullTransform);
-	float				di_size = C_SIZE / powf(PT.p.w, .2f);
+	float di_size = C_SIZE / powf(PT.p.w, .2f);
 
 	CGameFont* F = HUD( ).Font( ).pFontGraffiti19Russian;
 	F->SetAligment(CGameFont::alCenter);
@@ -180,7 +180,6 @@ void CHUDTarget::Render( )
 			CInventoryOwner* our_inv_owner = smart_cast<CInventoryOwner*>(pCurEnt);
 			if (E && E->g_Alive( ) && !E->cast_base_monster( ))
 			{
-//.				CInventoryOwner* our_inv_owner = smart_cast<CInventoryOwner*>(pCurEnt);
 				CInventoryOwner* others_inv_owner = smart_cast<CInventoryOwner*>(E);
 
 				if (our_inv_owner && others_inv_owner)
@@ -237,18 +236,18 @@ void CHUDTarget::Render( )
 	//отрендерить кружочек или крестик
 	if (!m_bShowCrosshair)
 	{	//actual rendering
-		u32			vOffset;
-		FVF::TL* pv = (FVF::TL*)RCache.Vertex.Lock(4, hGeom.stride( ), vOffset);
+		u32 vOffset;
+		FVF::TL* pv = (FVF::TL*) RCache.Vertex.Lock(4, hGeom.stride( ), vOffset);
 
-		Fvector2		scr_size;
+		Fvector2 scr_size;
 		scr_size.set(float(Device.dwWidth), float(Device.dwHeight));
-		float			size_x = scr_size.x * di_size;
-		float			size_y = scr_size.y * di_size;
+		float size_x = scr_size.x * di_size;
+		float size_y = scr_size.y * di_size;
 
 		size_y = size_x;
 
-		float			w_2 = scr_size.x / 2.0f;
-		float			h_2 = scr_size.y / 2.0f;
+		float w_2 = scr_size.x / 2.0f;
+		float h_2 = scr_size.y / 2.0f;
 
 		//Convert to screen coords
 		float cx = (PT.p.x + 1) * w_2;

@@ -6,11 +6,12 @@
 #include "UIXmlInit.h"//
 #include "MMsound.h"//
 #include "../HUDManager.h"//
-#include "../game_base_space.h"
-#include "..\Level.h"
-#include "../object_broker.h"
+//#include "../game_base_space.h"
+//#include "..\Level.h"
+//#include "../object_broker.h"
 #include "..\Actor.h"
 #include "../saved_game_wrapper.h"
+#include <dinput.h>
 
 extern string_path g_last_saved_game;
 
@@ -34,13 +35,13 @@ CUIMMShniaga::CUIMMShniaga( )
 	m_anims[1] = xr_new<CUIStatic>( );
 	m_shniaga->AttachChild(m_anims[1]);
 
-	m_mag_pos = 0;
+	m_mag_pos = 0.0f;
 
-	m_selected = NULL;
+	m_selected = nullptr;
 
 	m_start_time = 0;
-	m_origin = 0;
-	m_destination = 0;
+	m_origin = 0.0f;
+	m_destination = 0.0f;
 	m_run_time = 0;
 
 	m_flags.zero( );
@@ -161,13 +162,6 @@ void CUIMMShniaga::CreateList(xr_vector<CUIStatic*>& lst, CUIXml& xml_doc, const
 
 	for (int i = 0; i < nodes_num; ++i)
 	{
-//		if (0 == xr_strcmp("btn_lastsave",xml_doc.ReadAttrib("btn", i, "name")))
-//		{
-//			if (g_actor && Actor()->g_Alive())
-//			{
-//				continue;
-//			}
-//		}
 		st = xr_new<CUIStatic>( );
 		st->Init(0, 0, m_view->GetDesiredChildWidth( ), height);
 		st->SetTextComplexMode(false);
@@ -176,9 +170,9 @@ void CUIMMShniaga::CreateList(xr_vector<CUIStatic*>& lst, CUIXml& xml_doc, const
 		{
 			st->SetFont(pF);
 		}
+
 		st->SetTextColor(color);
 		st->SetTextAlignment(CGameFont::alCenter);
-//		st->SetTextAlignment(CGameFont::alLeft);
 		st->SetVTextAlignment(valCenter);
 		st->SetWindowName(xml_doc.ReadAttrib("btn", i, "name"));
 		st->SetMessageTarget(this);
@@ -245,7 +239,7 @@ void CUIMMShniaga::SendMessage(CUIWindow* pWnd, s16 msg, void* pData)
 			{
 				SelectBtn(pWnd);
 			}
-				break;
+			break;
 		}
 	}
 }
@@ -297,10 +291,8 @@ void CUIMMShniaga::Draw( )
 
 void CUIMMShniaga::Update( )
 {
-//	static bool playing = false;
 	if (m_start_time > Device.dwTimeContinual - m_run_time)
 	{
-//		playing = true;
 		Fvector2 pos = m_shniaga->GetWndPos( );
 		float l = 2 * PI * m_anims[0]->GetHeight( ) / 2;
 		int n = iFloor(pos.y / l);
@@ -355,8 +347,6 @@ void CUIMMShniaga::OnBtnClick( )
 	}
 }
 
-#include <dinput.h>
-
 bool CUIMMShniaga::OnKeyboard(int dik, EUIMessages keyboard_action)
 {
 	if (WINDOW_KEY_PRESSED == keyboard_action)
@@ -369,6 +359,7 @@ bool CUIMMShniaga::OnKeyboard(int dik, EUIMessages keyboard_action)
 				{
 					SelectBtn(m_selected_btn - 1);
 				}
+
 				return true;
 			}
 			case DIK_DOWN:
@@ -377,6 +368,7 @@ bool CUIMMShniaga::OnKeyboard(int dik, EUIMessages keyboard_action)
 				{
 					SelectBtn(m_selected_btn + 1);
 				}
+
 				return true;
 			}
 			case DIK_RETURN:
@@ -390,6 +382,7 @@ bool CUIMMShniaga::OnKeyboard(int dik, EUIMessages keyboard_action)
 				{
 					ShowMain( );
 				}
+
 				return true;
 			}
 		}
@@ -473,9 +466,6 @@ void CUIMMShniaga::ProcessEvent(EVENT ev)
 			// calculate moving params
 			m_start_time = Device.dwTimeContinual;
 			m_origin = m_shniaga->GetWndPos( ).y;
-//				float border = GetHeight() - m_shniaga->GetHeight();
-//				float y = m_selected->GetWndPos().y;
-//				m_destination = (y < border) ? y : border;
 			m_destination = m_selected->GetWndPos( ).y - m_magnifier->GetWndPos( ).y;
 			m_destination += m_offset;
 			m_run_time = u32((log(1 + abs(m_origin - m_destination)) / log(GetHeight( ))) * 1000);
@@ -517,6 +507,5 @@ void CUIMMShniaga::ProcessEvent(EVENT ev)
 			m_sound->music_Update( );
 		}
 		break;
-
 	}
 }

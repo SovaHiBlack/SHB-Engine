@@ -14,7 +14,7 @@
 #include "xr_level_controller.h"
 //#include "Level.h"
 //#include "ai_space.h"
-//#include "entitycondition.h"
+//#include "EntityCondition.h"
 //#include "game_base_space.h"
 #include "clsid_game.h"
 

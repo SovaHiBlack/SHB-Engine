@@ -70,13 +70,17 @@ void CUIMotionIcon::Init( )
 
 void CUIMotionIcon::ShowState(EState state)
 {
-	if (m_curren_state == state)			return;
+	if (m_curren_state == state)
+	{
+		return;
+	}
+
 	if (m_curren_state != stLast)
 	{
-
 		m_states[m_curren_state].Show(false);
 		m_states[m_curren_state].Enable(false);
 	}
+
 	m_states[state].Show(true);
 	m_states[state].Enable(true);
 
@@ -111,11 +115,14 @@ void CUIMotionIcon::Update( )
 			SetLuminosity(m_npc_visibility.back( ).value);
 		}
 		else
+		{
 			SetLuminosity(m_luminosity_progress.GetRange_min( ));
+		}
 	}
+
 	inherited::Update( );
 
-	//m_luminosity_progress 
+	//m_luminosity_progress
 	{
 		float len = m_noise_progress.GetRange_max( ) - m_noise_progress.GetRange_min( );
 		float cur_pos = m_luminosity_progress.GetProgressPos( );
@@ -130,6 +137,7 @@ void CUIMotionIcon::Update( )
 			{
 				cur_pos -= _min(len * Device.fTimeDelta, _diff);
 			}
+
 			clamp(cur_pos, m_noise_progress.GetRange_min( ), m_noise_progress.GetRange_max( ));
 			m_luminosity_progress.SetProgressPos(cur_pos);
 		}
@@ -142,9 +150,7 @@ void CUIMotionIcon::SetActorVisibility(u16 who_id, float value)
 	value *= v;
 	value += m_luminosity_progress.GetRange_min( );
 
-	xr_vector<_npc_visibility>::iterator it = std::find(m_npc_visibility.begin( ),
-														m_npc_visibility.end( ),
-														who_id);
+	xr_vector<_npc_visibility>::iterator it = std::find(m_npc_visibility.begin( ), m_npc_visibility.end( ), who_id);
 
 	if (it == m_npc_visibility.end( ) && value != 0)
 	{
@@ -156,7 +162,9 @@ void CUIMotionIcon::SetActorVisibility(u16 who_id, float value)
 	else if (fis_zero(value))
 	{
 		if (it != m_npc_visibility.end( ))
+		{
 			m_npc_visibility.erase(it);
+		}
 	}
 	else
 	{

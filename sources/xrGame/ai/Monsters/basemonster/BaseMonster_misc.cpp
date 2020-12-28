@@ -9,7 +9,7 @@
 #include "stdafx.h"
 
 #include "BaseMonster.h"
-#include "../../../entitycondition.h"
+#include "../../../EntityCondition.h"
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 // ¬ходные воздействи€ 

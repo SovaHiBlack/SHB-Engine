@@ -5,16 +5,15 @@
 class CUIOptionsManagerScript
 {
 public:
-	void	SaveBackupValues	(const char* group);
-	void	SetCurrentValues	(const char* group);
-	void	SaveValues			(const char* group);
-	bool	IsGroupChanged		(const char* group);
-	void	UndoGroup			(const char* group);
-	void	OptionsPostAccept	( );
-	void	SendMessage2Group	(const char* group, const char* message);
+	void			SaveBackupValues		(const char* group);
+	void			SetCurrentValues		(const char* group);
+	void			SaveValues				(const char* group);
+	bool			IsGroupChanged			(const char* group);
+	void			UndoGroup				(const char* group);
+	void			OptionsPostAccept		( );
+	void			SendMessage2Group		(const char* group, const char* message);
 
-public:
-	static void script_register(lua_State*);
+	static void		script_register			(lua_State*);
 };
 
 add_to_type_list(CUIOptionsManagerScript)

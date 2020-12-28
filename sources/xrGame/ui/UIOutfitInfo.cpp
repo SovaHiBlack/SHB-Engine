@@ -52,7 +52,7 @@ void CUIOutfitInfo::InitFromXml(CUIXml& xml_doc)
 {
 	const char* _base = "outfit_info";
 
-	string256					_buff;
+	string256 _buff;
 	CUIXmlInit::InitWindow(xml_doc, _base, 0, this);
 
 	m_listWnd = xr_new<CUIScrollView>( ); m_listWnd->SetAutoDelete(true);
@@ -109,8 +109,6 @@ void CUIOutfitInfo::SetItem(u32 hitType, bool force_add)
 		return;
 	}
 
-//	const char*			_clr_outfit;
-//	const char* _clr_af;
 	const char* _imm_name = *CStringTable( ).translate(_imm_st_names[hitType]);
 
 	int _sz = sprintf_s(_buff, sizeof(_buff), "%s ", _imm_name);

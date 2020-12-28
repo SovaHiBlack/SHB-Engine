@@ -13,7 +13,7 @@ protected:
 	Flags16														m_flags;
 	enum EFlags
 	{
-		eLocked = (1 << 0)
+		eLocked													= (1 << 0)
 	};
 	float														m_pointer_dist;
 

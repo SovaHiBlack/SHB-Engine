@@ -40,19 +40,19 @@ void CUIOptionsManagerScript::SendMessage2Group(const char* group, const char* m
 	CUIOptionsItem::GetOptionsManager( )->SendMessage2Group(group, message);
 }
 
-#pragma optimize("s",on)
+#pragma optimize("s", on)
 void CUIOptionsManagerScript::script_register(lua_State* L)
 {
 	module(L)
 		[
 			class_<CUIOptionsManagerScript>("COptionsManager")
 			.def(constructor<>( ))
-		.def("SaveBackupValues", &CUIOptionsManagerScript::SaveBackupValues)
-		.def("SetCurrentValues", &CUIOptionsManagerScript::SetCurrentValues)
-		.def("SaveValues", &CUIOptionsManagerScript::SaveValues)
-		.def("IsGroupChanged", &CUIOptionsManagerScript::IsGroupChanged)
-		.def("UndoGroup", &CUIOptionsManagerScript::UndoGroup)
-		.def("OptionsPostAccept", &CUIOptionsManagerScript::OptionsPostAccept)
-		.def("SendMessage2Group", &CUIOptionsManagerScript::SendMessage2Group)
+			.def("SaveBackupValues",	&CUIOptionsManagerScript::SaveBackupValues)
+			.def("SetCurrentValues",	&CUIOptionsManagerScript::SetCurrentValues)
+			.def("SaveValues",			&CUIOptionsManagerScript::SaveValues)
+			.def("IsGroupChanged",		&CUIOptionsManagerScript::IsGroupChanged)
+			.def("UndoGroup",			&CUIOptionsManagerScript::UndoGroup)
+			.def("OptionsPostAccept",	&CUIOptionsManagerScript::OptionsPostAccept)
+			.def("SendMessage2Group",	&CUIOptionsManagerScript::SendMessage2Group)
 		];
 }

@@ -1,6 +1,6 @@
 #include "stdafx.h"
 
-#include "entitycondition.h"
+#include "EntityCondition.h"
 #include "inventoryowner.h"
 #include "CustomOutfit.h"
 #include "Inventory.h"

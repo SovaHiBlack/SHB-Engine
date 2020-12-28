@@ -8,20 +8,21 @@ class CUIFrameLineWnd;
 class CUIXml;
 class CEncyclopediaArticle;
 
-class CUITaskDescrWnd:public CUIWindow
+class CUITaskDescrWnd : public CUIWindow
 {
-	typedef CUIWindow			inherited;
+	using inherited							= CUIWindow;
+
 protected:
-	CUIScrollView*				m_UITaskInfoWnd;
-	CUIFrameWindow*				m_UIMainFrame;
-	CUIFrameLineWnd*			m_UIMainHeader;
+	CUIScrollView*							m_UITaskInfoWnd;
+	CUIFrameWindow*							m_UIMainFrame;
+	CUIFrameLineWnd*						m_UIMainHeader;
 
 public:
-				CUITaskDescrWnd				();
-	virtual		~CUITaskDescrWnd			();
-	virtual void Draw						();
-	void		Init						(CUIXml* doc, const char* start_from);
-	void		ClearAll					();
-	void		AddArticle					(const char* article);
-	void		AddArticle					(CEncyclopediaArticle* article);
+					CUITaskDescrWnd			( );
+	virtual			~CUITaskDescrWnd		( );
+	virtual void	Draw					( );
+	void			Init					(CUIXml* doc, const char* start_from);
+	void			ClearAll				( );
+	void			AddArticle				(const char* article);
+	void			AddArticle				(CEncyclopediaArticle* article);
 };

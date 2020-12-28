@@ -15,44 +15,44 @@
 #include "UICharacterInfo.h"//
 #include "UIStatic.h"//
 
-#define			PDA_CONTACT_CHAR		"pda_character.xml"
+#define PDA_CONTACT_CHAR		"pda_character.xml"
 
-CUIPdaListItem::CUIPdaListItem()
+CUIPdaListItem::CUIPdaListItem( )
 {
-	UIMask = NULL;
-	UIInfo = NULL;
+	UIMask = nullptr;
+	UIInfo = nullptr;
 }
 
-CUIPdaListItem::~CUIPdaListItem()
+CUIPdaListItem::~CUIPdaListItem( )
 { }
 
 void CUIPdaListItem::Init(float x, float y, float width, float height)
 {
-	inherited::Init								(x, y, width, height);
+	inherited::Init(x, y, width, height);
 
 	CUIXml uiXml;
-	bool xml_result = uiXml.Init				("$game_config$", "ui", PDA_CONTACT_CHAR);
-	R_ASSERT3									(xml_result, "xml file not found", PDA_CONTACT_CHAR);
+	bool xml_result = uiXml.Init("$game_config$", "ui", PDA_CONTACT_CHAR);
+	R_ASSERT3(xml_result, "xml file not found", PDA_CONTACT_CHAR);
 
 	CUIXmlInit xml_init;
-	UIInfo = xr_new<CUICharacterInfo>			();
-	UIInfo->SetAutoDelete						(true);
-	AttachChild									(UIInfo);
-	UIInfo->Init								(0, 0, width, height, PDA_CONTACT_CHAR);
+	UIInfo = xr_new<CUICharacterInfo>( );
+	UIInfo->SetAutoDelete(true);
+	AttachChild(UIInfo);
+	UIInfo->Init(0, 0, width, height, PDA_CONTACT_CHAR);
 
-	if (uiXml.NavigateToNode					("mask_frame_window", 0))
+	if (uiXml.NavigateToNode("mask_frame_window", 0))
 	{
-		UIMask = xr_new<CUIFrameWindow>			();
-		UIMask->SetAutoDelete					(true);
-		xml_init.InitFrameWindow				(uiXml, "mask_frame_window", 0, UIMask);
-		UIInfo->UIIcon().SetMask				(UIMask);
+		UIMask = xr_new<CUIFrameWindow>( );
+		UIMask->SetAutoDelete(true);
+		xml_init.InitFrameWindow(uiXml, "mask_frame_window", 0, UIMask);
+		UIInfo->UIIcon( ).SetMask(UIMask);
 	}
 
-	xml_init.InitAutoStaticGroup				(uiXml,"pda_char_auto_statics", 0, this);
+	xml_init.InitAutoStaticGroup(uiXml, "pda_char_auto_statics", 0, this);
 }
 
 void CUIPdaListItem::InitCharacter(CInventoryOwner* pInvOwner)
 {
-	VERIFY										(pInvOwner);
-	UIInfo->InitCharacter						(pInvOwner->object_id());
+	VERIFY(pInvOwner);
+	UIInfo->InitCharacter(pInvOwner->object_id( ));
 }

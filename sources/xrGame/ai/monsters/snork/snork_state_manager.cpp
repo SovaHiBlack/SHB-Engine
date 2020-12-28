@@ -21,7 +21,7 @@
 #include "../states/state_test_state.h"
 #include "../states/monster_state_help_sound.h"
 
-#include "../../../entitycondition.h"
+#include "../../../EntityCondition.h"
 
 CStateManagerSnork::CStateManagerSnork(CSnork *obj) : inherited(obj)
 {

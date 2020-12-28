@@ -14,18 +14,18 @@ class CInventoryOwner;
 class CUIPdaListItem : public CUIWindow
 {
 private:
-	typedef CUIWindow inherited;
+	using inherited							= CUIWindow;
 
 public:
-					CUIPdaListItem		();
-	virtual			~CUIPdaListItem		();
-	virtual void	Init				(float x, float y, float width, float height);
-	virtual void	InitCharacter		(CInventoryOwner* pInvOwner);
-	
-	void*					m_data;
+						CUIPdaListItem		( );
+	virtual				~CUIPdaListItem		( );
+	virtual void		Init				(float x, float y, float width, float height);
+	virtual void		InitCharacter		(CInventoryOwner* pInvOwner);
+
+	void*									m_data;
 
 protected:
 	//информация о персонаже
-	CUIFrameWindow*			UIMask;
-	CUICharacterInfo*		UIInfo;
+	CUIFrameWindow*							UIMask;
+	CUICharacterInfo*						UIInfo;
 };

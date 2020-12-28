@@ -1350,10 +1350,6 @@
       </ExcludedFromBuild>
     </ClInclude>
     <ClInclude Include="ui\UIMMShniaga.h" />
-    <ClInclude Include="ui\UIMoneyIndicator.h">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
-    </ClInclude>
     <ClInclude Include="ui\UIMotionIcon.h" />
     <ClInclude Include="ui\UIMultiTextStatic.h" />
     <ClInclude Include="ui\UINewsItemWnd.h" />
@@ -1368,10 +1364,6 @@
     <ClInclude Include="ui\UIPdaListItem.h" />
     <ClInclude Include="ui\UIPdaMsgListItem.h" />
     <ClInclude Include="ui\UIPdaWnd.h" />
-    <ClInclude Include="ui\UIPointerGage.h">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
-    </ClInclude>
     <ClInclude Include="ui\UIProgressBar.h" />
     <ClInclude Include="ui\UIProgressShape.h" />
     <ClInclude Include="ui\UIPropertiesBox.h" />
@@ -2291,10 +2283,6 @@
     <ClCompile Include="ui\UIMessageBoxEx.cpp" />
     <ClCompile Include="ui\UIMessagesWindow.cpp" />
     <ClCompile Include="ui\UIMMShniaga.cpp" />
-    <ClCompile Include="ui\UIMoneyIndicator.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
-    </ClCompile>
     <ClCompile Include="ui\UIMotionIcon.cpp" />
     <ClCompile Include="ui\UIMultiTextStatic.cpp" />
     <ClCompile Include="ui\UINewsItemWnd.cpp" />
@@ -2309,10 +2297,6 @@
     <ClCompile Include="ui\UIPdaListItem.cpp" />
     <ClCompile Include="ui\UIPdaMsgListItem.cpp" />
     <ClCompile Include="ui\UIPdaWnd.cpp" />
-    <ClCompile Include="ui\UIPointerGage.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
-    </ClCompile>
     <ClCompile Include="ui\UIProgressBar.cpp" />
     <ClCompile Include="ui\UIProgressShape.cpp" />
     <ClCompile Include="ui\UIPropertiesBox.cpp" />

@@ -27,163 +27,162 @@
 #include "UIMainIngameWnd.h"//
 #include "UITabButton.h"//
 
-#define		PDA_XML					"pda.xml"
-u32			g_pda_info_state		= 0;
+#define PDA_XML					"pda.xml"
+u32 g_pda_info_state = 0;
 
 void RearrangeTabButtons(CUITabControl* pTab, xr_vector<Fvector2>& vec_sign_places);
 
-CUIPdaWnd::CUIPdaWnd()
+CUIPdaWnd::CUIPdaWnd( )
 {
-	UIMapWnd				= NULL;
-	UIPdaContactsWnd		= NULL;
-	UIEncyclopediaWnd		= NULL;
-	UIDiaryWnd				= NULL;
-	UIActorInfo				= NULL;
-	UIStalkersRanking		= NULL;
-	UIEventsWnd				= NULL;
-	m_updatedSectionImage	= NULL;
-	m_oldSectionImage		= NULL;
-	Init					();
+	UIMapWnd = nullptr;
+	UIPdaContactsWnd = nullptr;
+	UIEncyclopediaWnd = nullptr;
+	UIDiaryWnd = nullptr;
+	UIActorInfo = nullptr;
+	UIStalkersRanking = nullptr;
+	UIEventsWnd = nullptr;
+	m_updatedSectionImage = nullptr;
+	m_oldSectionImage = nullptr;
+	Init( );
 }
 
-CUIPdaWnd::~CUIPdaWnd()
+CUIPdaWnd::~CUIPdaWnd( )
 {
-	delete_data		(UIMapWnd);
-	delete_data		(UIPdaContactsWnd);
-	delete_data		(UIEncyclopediaWnd);
-	delete_data		(UIDiaryWnd);
-	delete_data		(UIActorInfo);
-	delete_data		(UIStalkersRanking);
-	delete_data		(UIEventsWnd);
-	delete_data		(m_updatedSectionImage);
-	delete_data		(m_oldSectionImage);
+	delete_data(UIMapWnd);
+	delete_data(UIPdaContactsWnd);
+	delete_data(UIEncyclopediaWnd);
+	delete_data(UIDiaryWnd);
+	delete_data(UIActorInfo);
+	delete_data(UIStalkersRanking);
+	delete_data(UIEventsWnd);
+	delete_data(m_updatedSectionImage);
+	delete_data(m_oldSectionImage);
 }
 
 //////////////////////////////////////////////////////////////////////////
 
-void CUIPdaWnd::Init()
+void CUIPdaWnd::Init( )
 {
 	CUIXml uiXml;
-	bool xml_result			= uiXml.Init("$game_config$", "ui",PDA_XML);
-	R_ASSERT3				(xml_result, "xml file not found", PDA_XML);
+	bool xml_result = uiXml.Init("$game_config$", "ui", PDA_XML);
+	R_ASSERT3(xml_result, "xml file not found", PDA_XML);
 
 	CUIXmlInit xml_init;
-	
-	m_pActiveDialog			= NULL;
 
+	m_pActiveDialog = nullptr;
 
-	xml_init.InitWindow		(uiXml, "main", 0, this);
+	xml_init.InitWindow(uiXml, "main", 0, this);
 
-	UIMainPdaFrame			= xr_new<CUIStatic>(); UIMainPdaFrame->SetAutoDelete(true);
-	AttachChild				(UIMainPdaFrame);
-	xml_init.InitStatic		(uiXml, "background_static", 0, UIMainPdaFrame);
+	UIMainPdaFrame = xr_new<CUIStatic>( ); UIMainPdaFrame->SetAutoDelete(true);
+	AttachChild(UIMainPdaFrame);
+	xml_init.InitStatic(uiXml, "background_static", 0, UIMainPdaFrame);
 
 	//Ёлементы автоматического добавлени€
-	xml_init.InitAutoStatic	(uiXml, "auto_static", this);
+	xml_init.InitAutoStatic(uiXml, "auto_static", this);
 
 	// Main buttons background
-	UIMainButtonsBackground = xr_new<CUIFrameLineWnd>(); UIMainButtonsBackground->SetAutoDelete(true);
+	UIMainButtonsBackground = xr_new<CUIFrameLineWnd>( ); UIMainButtonsBackground->SetAutoDelete(true);
 	UIMainPdaFrame->AttachChild(UIMainButtonsBackground);
-	xml_init.InitFrameLine	(uiXml, "mbbackground_frame_line", 0, UIMainButtonsBackground);
+	xml_init.InitFrameLine(uiXml, "mbbackground_frame_line", 0, UIMainButtonsBackground);
 
 	// Timer background
-	UITimerBackground		= xr_new<CUIFrameLineWnd>(); UITimerBackground->SetAutoDelete(true);
+	UITimerBackground = xr_new<CUIFrameLineWnd>( ); UITimerBackground->SetAutoDelete(true);
 	UIMainPdaFrame->AttachChild(UITimerBackground);
-	xml_init.InitFrameLine	(uiXml, "timer_frame_line", 0, UITimerBackground);
+	xml_init.InitFrameLine(uiXml, "timer_frame_line", 0, UITimerBackground);
 
 	// Oкно карты
-	UIMapWnd				= xr_new<CUIMapWnd>();
-	UIMapWnd->Init			("pda_map.xml","map_wnd");
+	UIMapWnd = xr_new<CUIMapWnd>( );
+	UIMapWnd->Init("pda_map.xml", "map_wnd");
 
 	// Oкно коммуникaции
-	UIPdaContactsWnd		= xr_new<CUIPdaContactsWnd>();
-	UIPdaContactsWnd->Init	();
+	UIPdaContactsWnd = xr_new<CUIPdaContactsWnd>( );
+	UIPdaContactsWnd->Init( );
 
 	// Oкно новостей
-	UIDiaryWnd				= xr_new<CUIDiaryWnd>();
-	UIDiaryWnd->Init		();
+	UIDiaryWnd = xr_new<CUIDiaryWnd>( );
+	UIDiaryWnd->Init( );
 
 	// ќкно энциклопедии
-	UIEncyclopediaWnd		= xr_new<CUIEncyclopediaWnd>();
-	UIEncyclopediaWnd->Init	();
+	UIEncyclopediaWnd = xr_new<CUIEncyclopediaWnd>( );
+	UIEncyclopediaWnd->Init( );
 
 	// ќкно статистики о актере
-	UIActorInfo				= xr_new<CUIActorInfoWnd>();
-	UIActorInfo->Init		();
+	UIActorInfo = xr_new<CUIActorInfoWnd>( );
+	UIActorInfo->Init( );
 
 	// ќкно рейтинга сталкеров
-	UIStalkersRanking		= xr_new<CUIStalkersRankingWnd>();
-	UIStalkersRanking->Init	();
+	UIStalkersRanking = xr_new<CUIStalkersRankingWnd>( );
+	UIStalkersRanking->Init( );
 
-	UIEventsWnd				= xr_new<CUIEventsWnd>();
-	UIEventsWnd->Init		();
+	UIEventsWnd = xr_new<CUIEventsWnd>( );
+	UIEventsWnd->Init( );
 
 	// Tab control
-	UITabControl				= xr_new<CUITabControl>(); UITabControl->SetAutoDelete(true);
-	UIMainPdaFrame->AttachChild	(UITabControl);
-	xml_init.InitTabControl		(uiXml, "tab", 0, UITabControl);
+	UITabControl = xr_new<CUITabControl>( ); UITabControl->SetAutoDelete(true);
+	UIMainPdaFrame->AttachChild(UITabControl);
+	xml_init.InitTabControl(uiXml, "tab", 0, UITabControl);
 	UITabControl->SetMessageTarget(this);
 
-	m_updatedSectionImage			= xr_new<CUIStatic>();
-	xml_init.InitStatic				(uiXml, "updated_section_static", 0, m_updatedSectionImage);
+	m_updatedSectionImage = xr_new<CUIStatic>( );
+	xml_init.InitStatic(uiXml, "updated_section_static", 0, m_updatedSectionImage);
 
-	m_oldSectionImage				= xr_new<CUIStatic>();
-	xml_init.InitStatic				(uiXml, "old_section_static", 0, m_oldSectionImage);
+	m_oldSectionImage = xr_new<CUIStatic>( );
+	xml_init.InitStatic(uiXml, "old_section_static", 0, m_oldSectionImage);
 
-	m_pActiveSection				= eptNoActiveTab;
+	m_pActiveSection = eptNoActiveTab;
 
-	RearrangeTabButtons			(UITabControl, m_sign_places_main);
+	RearrangeTabButtons(UITabControl, m_sign_places_main);
 }
 
 void CUIPdaWnd::SendMessage(CUIWindow* pWnd, s16 msg, void* pData)
 {
-	if(pWnd == UITabControl)
+	if (pWnd == UITabControl)
 	{
 		if (TAB_CHANGED == msg)
 		{
-			SetActiveSubdialog	((EPdaTabs)UITabControl->GetActiveIndex());
+			SetActiveSubdialog((EPdaTabs) UITabControl->GetActiveIndex( ));
 		}
 	}
-	else 
+	else
 	{
 		R_ASSERT(m_pActiveDialog);
 		m_pActiveDialog->SendMessage(pWnd, msg, pData);
 	}
 }
 
-void CUIPdaWnd::Show()
+void CUIPdaWnd::Show( )
 {
 	InventoryUtilities::SendInfoToActor("ui_pda");
 
-	inherited::Show();
+	inherited::Show( );
 }
 
-void CUIPdaWnd::Hide()
+void CUIPdaWnd::Hide( )
 {
-	inherited::Hide();
+	inherited::Hide( );
 
 	InventoryUtilities::SendInfoToActor("ui_pda_hide");
-	HUD().GetUI()->UIMainIngameWnd->SetFlashIconState_(CUIMainIngameWnd::efiPdaTask, false);
+	HUD( ).GetUI( )->UIMainIngameWnd->SetFlashIconState_(CUIMainIngameWnd::efiPdaTask, false);
 }
 
-void CUIPdaWnd::UpdateDateTime()
+void CUIPdaWnd::UpdateDateTime( )
 {
 	static shared_str prevStrTime = " ";
 	xr_string strTime = *InventoryUtilities::GetGameTimeAsString(InventoryUtilities::etpTimeToMinutes);
-				strTime += " ";
-				strTime += *InventoryUtilities::GetGameDateAsString(InventoryUtilities::edpDateToDay);
+	strTime += " ";
+	strTime += *InventoryUtilities::GetGameDateAsString(InventoryUtilities::edpDateToDay);
 
-	if (xr_strcmp(strTime.c_str(), prevStrTime))
+	if (xr_strcmp(strTime.c_str( ), prevStrTime))
 	{
-		UITimerBackground->UITitleText.SetText(strTime.c_str());
-		prevStrTime = strTime.c_str();
+		UITimerBackground->UITitleText.SetText(strTime.c_str( ));
+		prevStrTime = strTime.c_str( );
 	}
 }
 
-void CUIPdaWnd::Update()
+void CUIPdaWnd::Update( )
 {
-	inherited::Update		();
-	UpdateDateTime			();
+	inherited::Update( );
+	UpdateDateTime( );
 }
 
 void CUIPdaWnd::SetActiveSubdialog(EPdaTabs section)
@@ -199,47 +198,63 @@ void CUIPdaWnd::SetActiveSubdialog(EPdaTabs section)
 		m_pActiveDialog->Show(false);
 	}
 
-	switch (section) 
+	switch (section)
 	{
-	case eptDiary:
-		m_pActiveDialog			= smart_cast<CUIWindow*>(UIDiaryWnd);
-		InventoryUtilities::SendInfoToActor("ui_pda_events");
-		g_pda_info_state		&= ~pda_section::diary;
+		case eptDiary:
+		{
+			m_pActiveDialog = smart_cast<CUIWindow*>(UIDiaryWnd);
+			InventoryUtilities::SendInfoToActor("ui_pda_events");
+			g_pda_info_state &= ~pda_section::diary;
+		}
 		break;
-	case eptContacts:
-		m_pActiveDialog			= smart_cast<CUIWindow*>(UIPdaContactsWnd);
-		InventoryUtilities::SendInfoToActor("ui_pda_contacts");
-		g_pda_info_state		&= ~pda_section::contacts;
+		case eptContacts:
+		{
+			m_pActiveDialog = smart_cast<CUIWindow*>(UIPdaContactsWnd);
+			InventoryUtilities::SendInfoToActor("ui_pda_contacts");
+			g_pda_info_state &= ~pda_section::contacts;
+		}
 		break;
-	case eptMap:
-		m_pActiveDialog			= smart_cast<CUIWindow*>(UIMapWnd);
-		g_pda_info_state		&= ~pda_section::map;
+		case eptMap:
+		{
+			m_pActiveDialog = smart_cast<CUIWindow*>(UIMapWnd);
+			g_pda_info_state &= ~pda_section::map;
+		}
 		break;
-	case eptEncyclopedia:
-		m_pActiveDialog			= smart_cast<CUIWindow*>(UIEncyclopediaWnd);
-		InventoryUtilities::SendInfoToActor("ui_pda_encyclopedia");
-		g_pda_info_state		&= ~pda_section::encyclopedia;
+		case eptEncyclopedia:
+		{
+			m_pActiveDialog = smart_cast<CUIWindow*>(UIEncyclopediaWnd);
+			InventoryUtilities::SendInfoToActor("ui_pda_encyclopedia");
+			g_pda_info_state &= ~pda_section::encyclopedia;
+		}
 		break;
-	case eptActorStatistic:
-		m_pActiveDialog			= smart_cast<CUIWindow*>(UIActorInfo);
-		InventoryUtilities::SendInfoToActor("ui_pda_actor_info");
-		g_pda_info_state		&= ~pda_section::statistics;
+		case eptActorStatistic:
+		{
+			m_pActiveDialog = smart_cast<CUIWindow*>(UIActorInfo);
+			InventoryUtilities::SendInfoToActor("ui_pda_actor_info");
+			g_pda_info_state &= ~pda_section::statistics;
+		}
 		break;
-	case eptRanking:
-		m_pActiveDialog			= smart_cast<CUIWindow*>(UIStalkersRanking);
-		g_pda_info_state		&= ~pda_section::ranking;
-		InventoryUtilities::SendInfoToActor("ui_pda_ranking");
+		case eptRanking:
+		{
+			m_pActiveDialog = smart_cast<CUIWindow*>(UIStalkersRanking);
+			g_pda_info_state &= ~pda_section::ranking;
+			InventoryUtilities::SendInfoToActor("ui_pda_ranking");
+		}
 		break;
-	case eptQuests:
-		m_pActiveDialog			= smart_cast<CUIWindow*>(UIEventsWnd);
-		g_pda_info_state		&= ~pda_section::quests;
+		case eptQuests:
+		{
+			m_pActiveDialog = smart_cast<CUIWindow*>(UIEventsWnd);
+			g_pda_info_state &= ~pda_section::quests;
+		}
 		break;
-	default:
-		Msg("not registered button identifier [%d]",UITabControl->GetActiveIndex());
+		default:
+		{
+			Msg("not registered button identifier [%d]", UITabControl->GetActiveIndex( ));
+		}
 	}
 
-	UIMainPdaFrame->AttachChild		(m_pActiveDialog);
-	m_pActiveDialog->Show			(true);
+	UIMainPdaFrame->AttachChild(m_pActiveDialog);
+	m_pActiveDialog->Show(true);
 
 	if (UITabControl->GetActiveIndex( ) != section)
 	{
@@ -249,14 +264,13 @@ void CUIPdaWnd::SetActiveSubdialog(EPdaTabs section)
 	m_pActiveSection = section;
 }
 
-
-void CUIPdaWnd::Draw()
+void CUIPdaWnd::Draw( )
 {
-	inherited::Draw									();
-	DrawUpdatedSections								();
+	inherited::Draw( );
+	DrawUpdatedSections( );
 }
 
-void CUIPdaWnd::PdaContentsChanged	(pda_section::part type)
+void CUIPdaWnd::PdaContentsChanged(pda_section::part type)
 {
 	bool b = true;
 
@@ -286,19 +300,19 @@ void CUIPdaWnd::PdaContentsChanged	(pda_section::part type)
 	}
 }
 
-void draw_sign		(CUIStatic* s, Fvector2& pos)
+void draw_sign(CUIStatic* s, Fvector2& pos)
 {
-	s->SetWndPos		(pos);
-	s->Draw				();
+	s->SetWndPos(pos);
+	s->Draw( );
 }
 
-void CUIPdaWnd::DrawUpdatedSections				()
+void CUIPdaWnd::DrawUpdatedSections( )
 {
-	m_updatedSectionImage->Update				();
-	m_oldSectionImage->Update					();
-	
-	Fvector2									tab_pos;
-	UITabControl->GetAbsolutePos				(tab_pos);
+	m_updatedSectionImage->Update( );
+	m_oldSectionImage->Update( );
+
+	Fvector2 tab_pos;
+	UITabControl->GetAbsolutePos(tab_pos);
 
 	Fvector2 pos;
 
@@ -380,9 +394,9 @@ void CUIPdaWnd::DrawUpdatedSections				()
 	}
 }
 
-void CUIPdaWnd::Reset()
+void CUIPdaWnd::Reset( )
 {
-	inherited::Reset		();
+	inherited::Reset( );
 	if (UIMapWnd)
 	{
 		UIMapWnd->Reset( );
@@ -421,42 +435,42 @@ void CUIPdaWnd::Reset()
 
 void RearrangeTabButtons(CUITabControl* pTab, xr_vector<Fvector2>& vec_sign_places)
 {
-	TABS_VECTOR *	btn_vec		= pTab->GetButtonsVector();
-	TABS_VECTOR::iterator it	= btn_vec->begin();
-	TABS_VECTOR::iterator it_e	= btn_vec->end();
-	vec_sign_places.clear		();
-	vec_sign_places.resize		(btn_vec->size());
+	TABS_VECTOR* btn_vec = pTab->GetButtonsVector( );
+	TABS_VECTOR::iterator it = btn_vec->begin( );
+	TABS_VECTOR::iterator it_e = btn_vec->end( );
+	vec_sign_places.clear( );
+	vec_sign_places.resize(btn_vec->size( ));
 
-	Fvector2					pos;
-	pos.set						((*it)->GetWndPos());
-	Fvector2					sign_sz;
-	sign_sz.set					(9.0f+3.0f, 11.0f);
-	u32 idx						= 0;
-	float	btn_text_len		= 0.0f;
-	CUIStatic* st				= NULL;
+	Fvector2 pos;
+	pos.set((*it)->GetWndPos( ));
+	Fvector2 sign_sz;
+	sign_sz.set(9.0f + 3.0f, 11.0f);
+	u32 idx = 0;
+	float btn_text_len = 0.0f;
+	CUIStatic* st = nullptr;
 
-	for(;it!=it_e;++it,++idx)
+	for (; it != it_e; ++it, ++idx)
 	{
-		if(idx!=0)
+		if (idx != 0)
 		{
-			st = xr_new<CUIStatic>(); st->SetAutoDelete(true);pTab->AttachChild(st);
-			st->SetFont((*it)->GetFont());
-			st->SetTextColor	(color_rgba(90,90,90,255));
+			st = xr_new<CUIStatic>( ); st->SetAutoDelete(true); pTab->AttachChild(st);
+			st->SetFont((*it)->GetFont( ));
+			st->SetTextColor(color_rgba(90, 90, 90, 255));
 			st->SetText("//");
-			st->SetWndSize		((*it)->GetWndSize());
-			st->AdjustWidthToText();
-			st->SetWndPos		(pos);
-			pos.x				+= st->GetWndSize().x;
+			st->SetWndSize((*it)->GetWndSize( ));
+			st->AdjustWidthToText( );
+			st->SetWndPos(pos);
+			pos.x += st->GetWndSize( ).x;
 		}
 
 		vec_sign_places[idx].set(pos);
-		vec_sign_places[idx].y	+= iFloor(((*it)->GetWndSize().y - sign_sz.y)/2.0f);
-		vec_sign_places[idx].y	= (float)iFloor(vec_sign_places[idx].y);
-		pos.x					+= sign_sz.x;
+		vec_sign_places[idx].y += iFloor(((*it)->GetWndSize( ).y - sign_sz.y) / 2.0f);
+		vec_sign_places[idx].y = (float) iFloor(vec_sign_places[idx].y);
+		pos.x += sign_sz.x;
 
-		(*it)->SetWndPos		(pos);
-		(*it)->AdjustWidthToText();
-		btn_text_len			= (*it)->GetWndSize().x;
-		pos.x					+= btn_text_len+3.0f;
+		(*it)->SetWndPos(pos);
+		(*it)->AdjustWidthToText( );
+		btn_text_len = (*it)->GetWndSize( ).x;
+		pos.x += btn_text_len + 3.0f;
 	}
 }

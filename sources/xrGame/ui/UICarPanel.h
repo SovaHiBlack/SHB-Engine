@@ -1,22 +1,19 @@
 #pragma once
 
 #include "UIWindow.h"//
-//#include "UIPointerGage.h"
 
 class CUICarPanel : public CUIWindow
 {
 private:
-	typedef CUIWindow inherited;
+	using inherited							= CUIWindow;
 
-	CUIStatic			UIStaticCarHealth;
-	CUIProgressBar		UICarHealthBar;
-//	CUIPointerGage		UISpeedometer;
-//	CUIPointerGage		UITachometer;
-public: 
+	CUIStatic								UIStaticCarHealth;
+	CUIProgressBar							UICarHealthBar;
 
-	// Установить 
-	void				SetCarHealth	(float value);
-	void				SetSpeed		(float speed);
-	void				SetRPM			(float rmp);
-	void				Init			(float x, float y, float width, float height);
+public:
+	// Установить
+	void				SetCarHealth		(float value);
+	void				SetSpeed			(float speed);
+	void				SetRPM				(float rmp);
+	void				Init				(float x, float y, float width, float height);
 };

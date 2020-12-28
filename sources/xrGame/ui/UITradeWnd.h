@@ -7,7 +7,6 @@ class CInventoryOwner;
 class CEatableItem;
 class CTrade;
 struct CUITradeInternal;
-
 class CUIDragDropListEx;
 class CUICellItem;
 
@@ -26,26 +25,26 @@ public:
 
 	void				InitTrade					(CInventoryOwner* pOur, CInventoryOwner* pOthers);
 
-	virtual void 		Draw						( );
-	virtual void 		Update						( );
-	virtual void 		Show						( );
-	virtual void 		Hide						( );
+	virtual void		Draw						( );
+	virtual void		Update						( );
+	virtual void		Show						( );
+	virtual void		Hide						( );
 
-	void 				DisableAll					( );
-	void 				EnableAll					( );
+	void				DisableAll					( );
+	void				EnableAll					( );
 
-	void 				SwitchToTalk				( );
-	void 				StartTrade					( );
-	void 				StopTrade					( );
+	void				SwitchToTalk				( );
+	void				StartTrade					( );
+	void				StopTrade					( );
 
 protected:
 	CUITradeInternal*								m_uidata;
 
-	bool				bStarted;
-	bool 				ToOurTrade					( );
-	bool 				ToOthersTrade				( );
-	bool 				ToOurBag					( );
-	bool 				ToOthersBag					( );
+	bool											bStarted;
+	bool				ToOurTrade					( );
+	bool				ToOthersTrade				( );
+	bool				ToOurBag					( );
+	bool				ToOthersBag					( );
 
 	u32					CalcItemsPrice				(CUIDragDropListEx* pList, CTrade* pTrade, bool bBuying);
 	float				CalcItemsWeight				(CUIDragDropListEx* pList);
@@ -67,7 +66,7 @@ protected:
 
 	void				FillList					(TIItemContainer& cont, CUIDragDropListEx& list, bool do_colorize);
 
-	bool				m_bDealControlsVisible;
+	bool											m_bDealControlsVisible;
 
 	bool				CanMoveToOther				(PIItem pItem);
 
@@ -81,7 +80,6 @@ protected:
 
 	u32												m_iOurTradePrice;
 	u32												m_iOthersTradePrice;
-
 
 	CUICellItem*									m_pCurrentCellItem;
 	TIItemContainer									ruck_list;

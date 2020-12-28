@@ -5280,16 +5280,10 @@
     <ClInclude Include="ui\UIMessagesWindow.h">
       <Filter>UI\Common\MainIngame</Filter>
     </ClInclude>
-    <ClInclude Include="ui\UIMoneyIndicator.h">
-      <Filter>UI\Common\MainIngame</Filter>
-    </ClInclude>
     <ClInclude Include="ui\UIMotionIcon.h">
       <Filter>UI\Common\MainIngame</Filter>
     </ClInclude>
     <ClInclude Include="ui\UIPdaMsgListItem.h">
-      <Filter>UI\Common\MainIngame</Filter>
-    </ClInclude>
-    <ClInclude Include="ui\UIPointerGage.h">
       <Filter>UI\Common\MainIngame</Filter>
     </ClInclude>
     <ClInclude Include="ui\UIColorAnimatorWrapper.h">
@@ -7949,16 +7943,10 @@
     <ClCompile Include="ui\UIMessagesWindow.cpp">
       <Filter>UI\Common\MainIngame</Filter>
     </ClCompile>
-    <ClCompile Include="ui\UIMoneyIndicator.cpp">
-      <Filter>UI\Common\MainIngame</Filter>
-    </ClCompile>
     <ClCompile Include="ui\UIMotionIcon.cpp">
       <Filter>UI\Common\MainIngame</Filter>
     </ClCompile>
     <ClCompile Include="ui\UIPdaMsgListItem.cpp">
-      <Filter>UI\Common\MainIngame</Filter>
-    </ClCompile>
-    <ClCompile Include="ui\UIPointerGage.cpp">
       <Filter>UI\Common\MainIngame</Filter>
     </ClCompile>
     <ClCompile Include="ui\UIColorAnimatorWrapper.cpp">

@@ -8,68 +8,73 @@
 
 #define C_DEFAULT	D3DCOLOR_XRGB(0xff,0xff,0xff)
 
-CUICursor::CUICursor()
+CUICursor::CUICursor( )
 {
-	bVisible					= false;
-	vPos.set				(0.f,0.f);
-	InitInternal			();
-	Device.seqRender.Add	(this,2);
-}
-//--------------------------------------------------------------------
-CUICursor::~CUICursor	()
-{
-	xr_delete					(m_static);
-	Device.seqRender.Remove		(this);
+	bVisible = false;
+	vPos.set(0.0f, 0.0f);
+	InitInternal( );
+	Device.seqRender.Add(this, 2);
 }
 
-void CUICursor::InitInternal()
+CUICursor::~CUICursor( )
 {
-	m_static					= xr_new<CUIStatic>();
-	m_static->InitTextureEx		("ui\\ui_ani_cursor", "hud\\cursor");
-	Frect						rect;
-	rect.set					(0.0f,0.0f,40.0f,40.0f);
-	m_static->SetOriginalRect	(rect);
-	Fvector2					sz;
-	sz.set						(rect.rb);
-	if(UI()->is_16_9_mode())
-		sz.x					/= 1.2f;
-
-	m_static->SetWndSize		(sz);
-	m_static->SetStretchTexture	(true);
+	xr_delete(m_static);
+	Device.seqRender.Remove(this);
 }
 
-//--------------------------------------------------------------------
-u32 last_render_frame			= 0;
-void CUICursor::OnRender	()
+void CUICursor::InitInternal( )
 {
-	if( !IsVisible() ) return;
+	m_static = xr_new<CUIStatic>( );
+	m_static->InitTextureEx("ui\\ui_ani_cursor", "hud\\cursor");
+	Frect rect;
+	rect.set(0.0f, 0.0f, 40.0f, 40.0f);
+	m_static->SetOriginalRect(rect);
+	Fvector2 sz;
+	sz.set(rect.rb);
+	if (UI( )->is_16_9_mode( ))
+	{
+		sz.x /= 1.2f;
+	}
+
+	m_static->SetWndSize(sz);
+	m_static->SetStretchTexture(true);
+}
+
+u32 last_render_frame = 0;
+void CUICursor::OnRender( )
+{
+	if (!IsVisible( ))
+	{
+		return;
+	}
+
 #ifdef DEBUG
 	VERIFY(last_render_frame != Device.dwFrame);
 	last_render_frame = Device.dwFrame;
 
-	if(bDebug)
+	if (bDebug)
 	{
-	CGameFont* F		= UI()->Font()->pFontDI;
-	F->SetAligment		(CGameFont::alCenter);
-	F->SetHeightI		(0.02f);
-	F->OutSetI			(0.f,-0.9f);
-	F->SetColor			(0xffffffff);
-	Fvector2			pt = GetCursorPosition();
-	F->OutNext			("%f-%f",pt.x, pt.y);
+		CGameFont* F = UI( )->Font( )->pFontDI;
+		F->SetAligment(CGameFont::alCenter);
+		F->SetHeightI(0.02f);
+		F->OutSetI(0.0f, -0.9f);
+		F->SetColor(0xffffffff);
+		Fvector2 pt = GetCursorPosition( );
+		F->OutNext("%f-%f", pt.x, pt.y);
 	}
-#endif
+#endif // def DEBUG
 
-	m_static->SetWndPos	(vPos);
-	m_static->Update	();
-	m_static->Draw		();
+	m_static->SetWndPos(vPos);
+	m_static->Update( );
+	m_static->Draw( );
 }
 
-Fvector2 CUICursor::GetCursorPosition()
+Fvector2 CUICursor::GetCursorPosition( )
 {
-	return  vPos;
+	return vPos;
 }
 
-Fvector2 CUICursor::GetCursorPositionDelta()
+Fvector2 CUICursor::GetCursorPositionDelta( )
 {
 	Fvector2 res_delta;
 
@@ -78,26 +83,26 @@ Fvector2 CUICursor::GetCursorPositionDelta()
 	return res_delta;
 }
 
-void CUICursor::UpdateCursorPosition()
+void CUICursor::UpdateCursorPosition( )
 {
-	POINT		p;
+	POINT p;
 	BOOL r = GetCursorPos(&p);
-	R_ASSERT	(r);
+	R_ASSERT(r);
 
 	vPrevPos = vPos;
 
-	vPos.x			= (float)p.x * (UI_BASE_WIDTH/(float)Device.dwWidth);
-	vPos.y			= (float)p.y * (UI_BASE_HEIGHT/(float)Device.dwHeight);
-	clamp			(vPos.x, 0.f, UI_BASE_WIDTH);
-	clamp			(vPos.y, 0.f, UI_BASE_HEIGHT);
+	vPos.x = (float) p.x * (UI_BASE_WIDTH / (float) Device.dwWidth);
+	vPos.y = (float) p.y * (UI_BASE_HEIGHT / (float) Device.dwHeight);
+	clamp(vPos.x, 0.0f, UI_BASE_WIDTH);
+	clamp(vPos.y, 0.0f, UI_BASE_HEIGHT);
 }
 
 void CUICursor::SetUICursorPosition(Fvector2 pos)
 {
 	vPos = pos;
-	POINT		p;
-	p.x			= iFloor(vPos.x / (UI_BASE_WIDTH/(float)Device.dwWidth));
-	p.y			= iFloor(vPos.y / (UI_BASE_HEIGHT/(float)Device.dwHeight));
+	POINT p;
+	p.x = iFloor(vPos.x / (UI_BASE_WIDTH / (float) Device.dwWidth));
+	p.y = iFloor(vPos.y / (UI_BASE_HEIGHT / (float) Device.dwHeight));
 
 	SetCursorPos(p.x, p.y);
 }

@@ -236,36 +236,51 @@ IC	Fvector CSoundPlayer::compute_sound_point(const CSoundSingle &sound)
 	return						(l_tMatrix.c);
 }
 
-CSoundPlayer::CSoundCollection::CSoundCollection	(const CSoundCollectionParams &params)
+CSoundPlayer::CSoundCollection::CSoundCollection(const CSoundCollectionParams& params)
 {
-	m_last_sound_id						= u32(-1);
+	m_last_sound_id = u32(-1);
 
-	seed								(u32(CPU::QPC() & 0xffffffff));
-	m_sounds.clear						();
-	for (int j=0, N = _GetItemCount(*params.m_sound_prefix); j<N; ++j) {
-		string_path						fn, s, temp;
-		char* S = (char*)&s;
-		_GetItem						(*params.m_sound_prefix,j,temp);
-		strconcat						(sizeof(s),S,*params.m_sound_player_prefix,temp);
-		if (FS.exist(fn,"$game_sounds$",S,".ogg")) {
-			ref_sound					*temp = add(params.m_type,S);
+	seed(u32(CPU::QPC( ) & 0xffffffff));
+	m_sounds.clear( );
+	for (int j = 0, N = _GetItemCount(*params.m_sound_prefix); j < N; ++j)
+	{
+		string_path fn;
+		string_path s;
+		string_path temp;
+		char* S = (char*) &s;
+		_GetItem(*params.m_sound_prefix, j, temp);
+		strconcat(sizeof(s), S, *params.m_sound_player_prefix, temp);
+		if (FS.exist(fn, "$game_sounds$", S, ".ogg"))
+		{
+			ref_sound* temp = add(params.m_type, S);
 			if (temp)
-				m_sounds.push_back		(temp);
+			{
+				m_sounds.push_back(temp);
+			}
 		}
-		for (u32 i=0; i<params.m_max_count; ++i){
-			string256					name;
-			sprintf_s						(name,"%s%d",S,i);
-			if (FS.exist(fn,"$game_sounds$",name,".ogg")) {
-				ref_sound				*temp = add(params.m_type,name);
+
+		for (u32 i = 0; i < params.m_max_count; ++i)
+		{
+			string256 name;
+			sprintf_s(name, "%s%d", S, i);
+			if (FS.exist(fn, "$game_sounds$", name, ".ogg"))
+			{
+				ref_sound* temp = add(params.m_type, name);
 				if (temp)
-					m_sounds.push_back	(temp);
+				{
+					m_sounds.push_back(temp);
+				}
 			}
 		}
 	}
+
 #ifdef DEBUG
-	if (m_sounds.empty())
-		Msg							("- There are no sounds with prefix %s",*params.m_sound_prefix);
-#endif
+	if (m_sounds.empty( ))
+	{
+		Msg("- There are no sounds with prefix %s", *params.m_sound_prefix);
+	}
+#endif // def DEBUG
+
 }
 
 CSoundPlayer::CSoundCollection::~CSoundCollection	()

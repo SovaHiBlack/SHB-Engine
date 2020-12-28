@@ -8,10 +8,12 @@ struct GAME_NEWS_DATA;
 class CUINewsWnd : public CUIWindow
 {
 	using inherited						= CUIWindow;
+
 	enum eFlag
 	{
 		eNeedAdd						= (1 << 0)
 	};
+
 	Flags16								m_flags;
 
 public:

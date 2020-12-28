@@ -23,7 +23,7 @@
 #include "../../../memory_manager.h"
 #include "../../../visual_memory_manager.h"
 #include "../monster_velocity_space.h"
-#include "../../../entitycondition.h"
+#include "../../../EntityCondition.h"
 #include "../../../sound_player.h"
 #include "..\..\..\Level.h"
 #include "../../../ui/UIMainIngameWnd.h"//

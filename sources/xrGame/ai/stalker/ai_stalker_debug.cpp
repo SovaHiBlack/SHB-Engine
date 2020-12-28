@@ -33,7 +33,7 @@
 #include "../../detail_path_manager.h"
 #include "../../sight_manager.h"
 #include "../../ai_object_location.h"
-#include "../../entitycondition.h"
+#include "../../EntityCondition.h"
 #include "../ai_monsters_misc.h"
 #include "..\..\AgentManager.h"
 #include "../../agent_member_manager.h"

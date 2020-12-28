@@ -279,7 +279,7 @@ function set_actor_sound(sound)
 	if actor_sound.theme ~= sound then
 		--' Туточки надобно распарсить имена тем в их id
 		if sound == nil then sound = "" end		
-		actor_sound.theme = sound
+		set_actor_sound.theme = sound
 		actor_sound.begin = nil
 		
 		this.set_actor_sound_factor(1)

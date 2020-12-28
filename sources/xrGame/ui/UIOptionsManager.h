@@ -4,35 +4,35 @@ class CUIOptionsItem;
 
 class CUIOptionsManager
 {
-	friend class CUIOptionsItem;
+	friend class								CUIOptionsItem;
 
 public:
-				CUIOptionsManager( );
+						CUIOptionsManager		( );
 
-	void		SeveBackupValues		(const char* group);
-	void		SetCurrentValues		(const char* group);
-	void		SaveValues				(const char* group);
-	bool		IsGroupChanged			(const char* group);
-	void		UndoGroup				(const char* group);
+	void				SeveBackupValues		(const char* group);
+	void				SetCurrentValues		(const char* group);
+	void				SaveValues				(const char* group);
+	bool				IsGroupChanged			(const char* group);
+	void				UndoGroup				(const char* group);
 
-	void		OptionsPostAccept		( );
-	void		DoVidRestart			( );
-	void		DoSndRestart			( );
+	void				OptionsPostAccept		( );
+	void				DoVidRestart			( );
+	void				DoSndRestart			( );
 
-	void		SendMessage2Group		(const char* group, const char* message);
+	void				SendMessage2Group		(const char* group, const char* message);
 
 protected:
-	void		RegisterItem			(CUIOptionsItem* item, const char* group);
-	void		UnRegisterGroup			(const char* group);
-	void		UnRegisterItem			(CUIOptionsItem* item);
+	void				RegisterItem			(CUIOptionsItem* item, const char* group);
+	void				UnRegisterGroup			(const char* group);
+	void				UnRegisterItem			(CUIOptionsItem* item);
 
-	using group_name					= xr_string;
-	using items_list					= xr_vector<CUIOptionsItem*>;
-	using groups						= xr_map<group_name, items_list>;
-	using groups_it						= xr_map<group_name, items_list>::iterator;
+	using group_name							= xr_string;
+	using items_list							= xr_vector<CUIOptionsItem*>;
+	using groups								= xr_map<group_name, items_list>;
+	using groups_it								= xr_map<group_name, items_list>::iterator;
 
-	groups								m_groups;
+	groups										m_groups;
 
-	bool								m_b_vid_restart;
-	bool								m_b_snd_restart;
+	bool										m_b_vid_restart;
+	bool										m_b_snd_restart;
 };

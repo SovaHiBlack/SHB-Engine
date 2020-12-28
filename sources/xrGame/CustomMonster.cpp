@@ -28,7 +28,7 @@
 #include "level_graph.h"
 #include "game_graph.h"
 #include "movement_manager.h"
-#include "entitycondition.h"
+#include "EntityCondition.h"
 #include "sound_player.h"
 #include "Level.h"
 #include "level_debug.h"
