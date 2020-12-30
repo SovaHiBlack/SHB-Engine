@@ -77,10 +77,11 @@
 		<class>esc_soldier_specnaz</class>
 	</character>
 
+<!--
 	<character id="esc_plemiannik">
 		<class>esc_plemiannik</class>
 	</character>
-
+-->
 	<character id="esc_provodnik">
 		<class>esc_provodnik</class>
 	</character>

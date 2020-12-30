@@ -7664,7 +7664,7 @@ namespace  {
     function log(string);
     function system_ini();
     function show_condition(ini_file*, string);
-    function GetFontLetterica25();
+    function GetFontLetterica25Russian();
     function GetFontMedium();
     function GetARGB(number, number, number, number);
     function flush();

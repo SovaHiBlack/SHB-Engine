@@ -1,5 +1,5 @@
 <ui_texture>
-	<file_name>ui\ui_mainMenu</file_name>
+	<file_name>ui\ui_mainmenu</file_name>
 	<texture id="ui_menu_backgraund" x="0" y="0" width="1024" height="768" />
 	<texture id="ui_menu_roll_L_01" x="0" y="768" width="55" height="55" />
 	<texture id="ui_menu_roll_L_02" x="55" y="768" width="55" height="55" />

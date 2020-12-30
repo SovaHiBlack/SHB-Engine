@@ -19,18 +19,17 @@ struct CFontManager : public pureDeviceReset
 	void					Render					( );
 
 	//hud font
+	CGameFont*										pFontSmall;
 	CGameFont*										pFontMedium;
 	CGameFont*										pFontDI;
-
 	CGameFont*										pFontArial14;
 	CGameFont*										pFontGraffiti19Russian;
 	CGameFont*										pFontGraffiti22Russian;
-	CGameFont*										pFontLetterica16Russian;
-	CGameFont*										pFontLetterica18Russian;
 	CGameFont*										pFontGraffiti32Russian;
 	CGameFont*										pFontGraffiti50Russian;
-	CGameFont*										pFontLetterica25;
-	CGameFont*										pFontStat;
+	CGameFont*										pFontLetterica16Russian;
+	CGameFont*										pFontLetterica18Russian;
+	CGameFont*										pFontLetterica25Russian;
 
 	void					InitializeFonts			( );
 	void					InitializeFont			(CGameFont*& F, const char* section, u32 flags = 0);

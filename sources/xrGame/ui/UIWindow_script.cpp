@@ -11,39 +11,75 @@
 #include "UITextureMaster.h"//
 #include "UIScrollView.h"//
 
-CFontManager& mngr(){
-	return *(UI()->Font());
+int GetARGB(u16 a, u16 r, u16 g, u16 b)
+{
+	return color_argb(a, r, g, b);
 }
 
-// hud font
-CGameFont* GetFontSmall()
-{return mngr().pFontStat;}
+CFontManager& mngr( )
+{
+	return *(UI( )->Font( ));
+}
 
-CGameFont* GetFontMedium()
-{return mngr().pFontMedium;}
-CGameFont* GetFontDI()
-{return mngr().pFontDI;}
+//hud font
+CGameFont* GetFontSmall( )
+{
+	return mngr( ).pFontSmall;
+}
+
+CGameFont* GetFontMedium( )
+{
+	return mngr( ).pFontMedium;
+}
+
+CGameFont* GetFontDI( )
+{
+	return mngr( ).pFontDI;
+}
 
 //רנטפעû הכÿ טםעונפויסא
-CGameFont* GetFontGraffiti19Russian()
-{return mngr().pFontGraffiti19Russian;}
-CGameFont* GetFontGraffiti22Russian()
-{return mngr().pFontGraffiti22Russian;}
-CGameFont* GetFontLetterica16Russian()
-{return mngr().pFontLetterica16Russian;}
-CGameFont* GetFontLetterica18Russian()
-{return mngr().pFontLetterica18Russian;}
-CGameFont* GetFontGraffiti32Russian()
-{return mngr().pFontGraffiti32Russian;}
-CGameFont* GetFontGraffiti50Russian()
-{return mngr().pFontGraffiti50Russian;}
-CGameFont* GetFontLetterica25()
-{return mngr().pFontLetterica25;}
+CGameFont* GetFontArial14( )
+{
+	return mngr( ).pFontArial14;
+}
 
-int GetARGB(u16 a, u16 r, u16 g, u16 b)
-{return color_argb(a,r,g,b);}
+CGameFont* GetFontGraffiti19Russian( )
+{
+	return mngr( ).pFontGraffiti19Russian;
+}
 
-Frect	get_texture_rect(const char* icon_name)
+CGameFont* GetFontGraffiti22Russian( )
+{
+	return mngr( ).pFontGraffiti22Russian;
+}
+
+CGameFont* GetFontGraffiti32Russian( )
+{
+	return mngr( ).pFontGraffiti32Russian;
+}
+
+CGameFont* GetFontGraffiti50Russian( )
+{
+	return mngr( ).pFontGraffiti50Russian;
+}
+
+CGameFont* GetFontLetterica16Russian( )
+{
+	return mngr( ).pFontLetterica16Russian;
+}
+
+CGameFont* GetFontLetterica18Russian( )
+{
+	return mngr( ).pFontLetterica18Russian;
+}
+
+CGameFont* GetFontLetterica25Russian( )
+{
+	return mngr( ).pFontLetterica25Russian;
+}
+
+
+Frect get_texture_rect(const char* icon_name)
 {
 	return CUITextureMaster::GetTextureRect(icon_name);
 }
@@ -53,7 +89,7 @@ const char* get_texture_name(const char* icon_name)
 	return CUITextureMaster::GetTextureFileName(icon_name);
 }
 
-TEX_INFO	get_texture_info(const char* name, const char* def_name)
+TEX_INFO get_texture_info(const char* name, const char* def_name)
 {
 	return CUITextureMaster::FindItem(name, def_name);
 }
@@ -65,17 +101,18 @@ void CUIWindow::script_register(lua_State *L)
 {
 	module(L)
 	[
-		def("GetARGB",					&GetARGB),
-		def("GetFontSmall",				&GetFontSmall),
-		def("GetFontMedium",			&GetFontMedium),
-		def("GetFontDI",				&GetFontDI),
-		def("GetFontGraffiti19Russian",	&GetFontGraffiti19Russian),
-		def("GetFontGraffiti22Russian",	&GetFontGraffiti22Russian),
-		def("GetFontLetterica16Russian",&GetFontLetterica16Russian),
-		def("GetFontLetterica18Russian",&GetFontLetterica18Russian),
-		def("GetFontGraffiti32Russian",	&GetFontGraffiti32Russian),
-		def("GetFontGraffiti50Russian",	&GetFontGraffiti50Russian),
-		def("GetFontLetterica25",		&GetFontLetterica25),
+		def("GetARGB",						&GetARGB),
+		def("GetFontSmall",					&GetFontSmall),
+		def("GetFontMedium",				&GetFontMedium),
+		def("GetFontDI",					&GetFontDI),
+		def("GetFontArial14",				&GetFontArial14),
+		def("GetFontGraffiti19Russian",		&GetFontGraffiti19Russian),
+		def("GetFontGraffiti22Russian",		&GetFontGraffiti22Russian),
+		def("GetFontGraffiti32Russian",		&GetFontGraffiti32Russian),
+		def("GetFontGraffiti50Russian",		&GetFontGraffiti50Russian),
+		def("GetFontLetterica16Russian",	&GetFontLetterica16Russian),
+		def("GetFontLetterica18Russian",	&GetFontLetterica18Russian),
+		def("GetFontLetterica25Russian",	&GetFontLetterica25Russian),
 
 		class_<TEX_INFO>("TEX_INFO")
 		.def("get_file_name",				&TEX_INFO::get_file_name)

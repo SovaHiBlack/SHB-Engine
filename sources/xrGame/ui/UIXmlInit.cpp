@@ -32,10 +32,11 @@
 
 extern int keyname_to_dik(const char* _name);
 
-#define ARIAL_FONT_NAME			"arial"
-
-#define MEDIUM_FONT_NAME		"medium"
 #define SMALL_FONT_NAME			"small"
+#define MEDIUM_FONT_NAME		"medium"
+#define DI_FONT_NAME			"di"
+
+#define ARIAL_FONT_NAME			"arial14"
 
 #define GRAFFITI19_FONT_NAME	"graffiti19"
 #define GRAFFITI22_FONT_NAME	"graffiti22"
@@ -46,14 +47,8 @@ extern int keyname_to_dik(const char* _name);
 #define LETTERICA18_FONT_NAME	"letterica18"
 #define LETTERICA25_FONT_NAME	"letterica25"
 
-#define DI_FONT_NAME			"di"
-
-//////////////////////////////////////////////////////////////////////////
-
 const char* COLOR_DEFINITIONS = "color_defs.xml";
 CUIXmlInit::ColorDefs* CUIXmlInit::m_pColorDefs = nullptr;
-
-//////////////////////////////////////////////////////////////////////////
 
 CUIXmlInit::CUIXmlInit( )
 {
@@ -663,7 +658,23 @@ bool CUIXmlInit::InitFont(CUIXml& xml_doc, const char* path, int index, u32& col
 
 	if (*font_name)
 	{
-		if (!xr_strcmp(*font_name, GRAFFITI19_FONT_NAME))
+		if (!xr_strcmp(*font_name, SMALL_FONT_NAME))
+		{
+			pFnt = UI( )->Font( )->pFontSmall;
+		}
+		else if (!xr_strcmp(*font_name, MEDIUM_FONT_NAME))
+		{
+			pFnt = UI( )->Font( )->pFontMedium;
+		}
+		else if (!xr_strcmp(*font_name, DI_FONT_NAME))
+		{
+			pFnt = UI( )->Font( )->pFontDI;
+		}
+		else if (!xr_strcmp(*font_name, ARIAL_FONT_NAME))
+		{
+			pFnt = UI( )->Font( )->pFontArial14;
+		}
+		else if (!xr_strcmp(*font_name, GRAFFITI19_FONT_NAME))
 		{
 			pFnt = UI( )->Font( )->pFontGraffiti19Russian;
 		}
@@ -679,18 +690,6 @@ bool CUIXmlInit::InitFont(CUIXml& xml_doc, const char* path, int index, u32& col
 		{
 			pFnt = UI( )->Font( )->pFontGraffiti50Russian;
 		}
-		else if (!xr_strcmp(*font_name, "arial_14"))
-		{
-			pFnt = UI( )->Font( )->pFontArial14;
-		}
-		else if (!xr_strcmp(*font_name, MEDIUM_FONT_NAME))
-		{
-			pFnt = UI( )->Font( )->pFontMedium;
-		}
-		else if (!xr_strcmp(*font_name, SMALL_FONT_NAME))
-		{
-			pFnt = UI( )->Font( )->pFontStat;
-		}
 		else if (!xr_strcmp(*font_name, LETTERICA16_FONT_NAME))
 		{
 			pFnt = UI( )->Font( )->pFontLetterica16Russian;
@@ -701,11 +700,7 @@ bool CUIXmlInit::InitFont(CUIXml& xml_doc, const char* path, int index, u32& col
 		}
 		else if (!xr_strcmp(*font_name, LETTERICA25_FONT_NAME))
 		{
-			pFnt = UI( )->Font( )->pFontLetterica25;
-		}
-		else if (!xr_strcmp(*font_name, DI_FONT_NAME))
-		{
-			pFnt = UI( )->Font( )->pFontDI;
+			pFnt = UI( )->Font( )->pFontLetterica25Russian;
 		}
 		else
 		{
@@ -713,6 +708,7 @@ bool CUIXmlInit::InitFont(CUIXml& xml_doc, const char* path, int index, u32& col
 			pFnt = NULL;
 		}
 	}
+
 	return true;
 }
 

@@ -1,14 +1,12 @@
-----------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 -- Script switching logic
-----------------------------------------------------------------------------------------------------
--- Разработчик: Andrey Fidrya (Zmey) af@svitonline.com
-----------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 --[[
 
-----------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 -- ФУНКЦИИ, КОТОРЫЕ РАЗРЕШЕНО ВЫЗЫВАТЬ ИЗ ДРУГИХ СКРИПТОВ
-----------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 	Активация схем производится с помощью функций:
 
 function gulag_activate(npc, ini, section, gulag_name, death, combat, actor_dialogs, trade, hit)
@@ -165,9 +163,7 @@ function configure_schemes(npc, ini, ini_filename, stype, section_logic, gulag_n
 	enable_generic_schemes(actual_ini, npc, stype, section_logic)
 
 	-- Инициализация торговли
-	if stype == modules.stype_stalker or
-	   npc:clsid() == clsid.script_trader
-	then
+	if stype == modules.stype_stalker or npc:clsid() == clsid.script_trader then
 		local trade_ini = utils.cfg_get_string(actual_ini, section_logic, "trade", npc, false, "", "misc\\trade_generic.ltx")
 		trade_manager.trade_init(npc, trade_ini)
 	end
@@ -278,8 +274,6 @@ function enable_generic_schemes(ini, npc, stype, section)
 			printf("combat_ignore_section= '%s'", combat_ignore_section )
 			xr_combat_ignore.set_combat_ignore_checker(npc, ini, "combat_ignore", combat_ignore_section)
 		end
-
-
 	elseif stype == modules.stype_mobile then
 		local combat_section = utils.cfg_get_string(ini, section, "on_combat", npc, false, "")
 		if combat_section then
@@ -756,7 +750,6 @@ function is_active(npc, st)
 	return is_act
 end
 
-
 function abort_syntax_error_in_cond(npc, section, field)
 	abort("object '%s': section '%s': field '%s': syntax error in switch condition",
 		npc:name(), section, field)
@@ -1007,7 +1000,6 @@ function add_condition(lst, at, cond)
 	return at
 end
 
-
 function cfg_get_switch_conditions(ini, section, npc)
 	local l = {}
 	local t
@@ -1070,7 +1062,6 @@ function cfg_get_overrides(ini, section, npc)
 	else
 		l.soundgroup		= utils.cfg_get_string(ini, section, "soundgroup", npc, false, "")
 	end
-
 
 	return l
 end
