@@ -148,6 +148,12 @@
     <Filter Include="config\creatures\stalkers">
       <UniqueIdentifier>{8da75464-aa94-48d6-9cd9-20e66c5bfcb5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="config\ui\systems">
+      <UniqueIdentifier>{b317c925-7fa9-4c23-8a0c-d9626f737bb5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="config\ui\OLD_hide">
+      <UniqueIdentifier>{7a5d5dd7-550e-4e41-8e73-991ceee51e1d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="config\creatures\actor.ltx">
@@ -4064,141 +4070,6 @@
     <Xml Include="config\text\test_string.xml">
       <Filter>config\text</Filter>
     </Xml>
-    <Xml Include="config\ui\actor_diary.xml">
-      <Filter>config\ui</Filter>
-    </Xml>
-    <Xml Include="config\ui\buy_menu_item.xml">
-      <Filter>config\ui</Filter>
-    </Xml>
-    <Xml Include="config\ui\carbody.xml">
-      <Filter>config\ui</Filter>
-    </Xml>
-    <Xml Include="config\ui\color_defs.xml">
-      <Filter>config\ui</Filter>
-    </Xml>
-    <Xml Include="config\ui\contracts.xml">
-      <Filter>config\ui</Filter>
-    </Xml>
-    <Xml Include="config\ui\contracts_character.xml">
-      <Filter>config\ui</Filter>
-    </Xml>
-    <Xml Include="config\ui\global_map.xml">
-      <Filter>config\ui</Filter>
-    </Xml>
-    <Xml Include="config\ui\ingame_msglog_mp.xml">
-      <Filter>config\ui</Filter>
-    </Xml>
-    <Xml Include="config\ui\ingame_msglog_sp.xml">
-      <Filter>config\ui</Filter>
-    </Xml>
-    <Xml Include="config\ui\inventory.xml">
-      <Filter>config\ui</Filter>
-    </Xml>
-    <Xml Include="config\ui\inventory_character.xml">
-      <Filter>config\ui</Filter>
-    </Xml>
-    <Xml Include="config\ui\inventorymp.xml">
-      <Filter>config\ui</Filter>
-    </Xml>
-    <Xml Include="config\ui\inventorymp_new.xml">
-      <Filter>config\ui</Filter>
-    </Xml>
-    <Xml Include="config\ui\inventorymp_new2.xml">
-      <Filter>config\ui</Filter>
-    </Xml>
-    <Xml Include="config\ui\jobs.xml">
-      <Filter>config\ui</Filter>
-    </Xml>
-    <Xml Include="config\ui\jobs_new.xml">
-      <Filter>config\ui</Filter>
-    </Xml>
-    <Xml Include="config\ui\maingame_character.xml">
-      <Filter>config\ui</Filter>
-    </Xml>
-    <Xml Include="config\ui\maingame_new.xml">
-      <Filter>config\ui</Filter>
-    </Xml>
-    <Xml Include="config\ui\map.xml">
-      <Filter>config\ui</Filter>
-    </Xml>
-    <Xml Include="config\ui\map_character.xml">
-      <Filter>config\ui</Filter>
-    </Xml>
-    <Xml Include="config\ui\map_desc.xml">
-      <Filter>config\ui</Filter>
-    </Xml>
-    <Xml Include="config\ui\map_desc_16.xml">
-      <Filter>config\ui</Filter>
-    </Xml>
-    <Xml Include="config\ui\map_spots_rostok.xml">
-      <Filter>config\ui</Filter>
-    </Xml>
-    <Xml Include="config\ui\news_templates.xml">
-      <Filter>config\ui</Filter>
-    </Xml>
-    <Xml Include="config\ui\pda_character_new.xml">
-      <Filter>config\ui</Filter>
-    </Xml>
-    <Xml Include="config\ui\pda_contacts.xml">
-      <Filter>config\ui</Filter>
-    </Xml>
-    <Xml Include="config\ui\pda_dialog.xml">
-      <Filter>config\ui</Filter>
-    </Xml>
-    <Xml Include="config\ui\pda_new.xml">
-      <Filter>config\ui</Filter>
-    </Xml>
-    <Xml Include="config\ui\scroll_bar.xml">
-      <Filter>config\ui</Filter>
-    </Xml>
-    <Xml Include="config\ui\sleep_dialog.xml">
-      <Filter>config\ui</Filter>
-    </Xml>
-    <Xml Include="config\ui\sleep_dialog_new.xml">
-      <Filter>config\ui</Filter>
-    </Xml>
-    <Xml Include="config\ui\spawn.xml">
-      <Filter>config\ui</Filter>
-    </Xml>
-    <Xml Include="config\ui\spawn_16.xml">
-      <Filter>config\ui</Filter>
-    </Xml>
-    <Xml Include="config\ui\statisticwnd.xml">
-      <Filter>config\ui</Filter>
-    </Xml>
-    <Xml Include="config\ui\stats.xml">
-      <Filter>config\ui</Filter>
-    </Xml>
-    <Xml Include="config\ui\stats_16.xml">
-      <Filter>config\ui</Filter>
-    </Xml>
-    <Xml Include="config\ui\trade_new.xml">
-      <Filter>config\ui</Filter>
-    </Xml>
-    <Xml Include="config\ui\ui_credits.xml">
-      <Filter>config\ui</Filter>
-    </Xml>
-    <Xml Include="config\ui\ui_game_over.xml">
-      <Filter>config\ui</Filter>
-    </Xml>
-    <Xml Include="config\ui\ui_keybinding.xml">
-      <Filter>config\ui</Filter>
-    </Xml>
-    <Xml Include="config\ui\ui_mapinfo.xml">
-      <Filter>config\ui</Filter>
-    </Xml>
-    <Xml Include="config\ui\ui_movies.xml">
-      <Filter>config\ui</Filter>
-    </Xml>
-    <Xml Include="config\ui\ui_numpad_wnd.xml">
-      <Filter>config\ui</Filter>
-    </Xml>
-    <Xml Include="config\ui\ui_videoplayer.xml">
-      <Filter>config\ui</Filter>
-    </Xml>
-    <Xml Include="config\ui\video_templ.xml">
-      <Filter>config\ui</Filter>
-    </Xml>
     <Xml Include="config\gameplay\info_portions.xml">
       <Filter>config\gameplay\info_portions</Filter>
     </Xml>
@@ -4703,9 +4574,6 @@
     <Xml Include="config\ui\carbody_item_16.xml">
       <Filter>config\ui\window</Filter>
     </Xml>
-    <Xml Include="config\ui\ui_custom_msgs.xml">
-      <Filter>config\ui</Filter>
-    </Xml>
     <Xml Include="config\ui\game_tutorials.xml">
       <Filter>config\ui\window</Filter>
     </Xml>
@@ -4726,6 +4594,144 @@
     </Xml>
     <Xml Include="config\gameplay\npc_profile.xml">
       <Filter>config\gameplay\profiles</Filter>
+    </Xml>
+    <Xml Include="config\ui\color_defs.xml">
+      <Filter>config\ui\systems</Filter>
+    </Xml>
+    <Xml Include="config\ui\scroll_bar.xml">
+      <Filter>config\ui\systems</Filter>
+    </Xml>
+    <Xml Include="config\ui\ui_keybinding.xml">
+      <Filter>config\ui\systems</Filter>
+    </Xml>
+    <Xml Include="config\ui\ui_movies.xml">
+      <Filter>config\ui\systems</Filter>
+    </Xml>
+    <Xml Include="config\ui\ui_credits.xml">
+      <Filter>config\ui\systems</Filter>
+    </Xml>
+    <Xml Include="config\ui\ui_custom_msgs.xml">
+      <Filter>config\ui\systems</Filter>
+    </Xml>
+    <Xml Include="config\ui\hide\actor_diary.xml">
+      <Filter>config\ui\OLD_hide</Filter>
+    </Xml>
+    <Xml Include="config\ui\hide\buy_menu_item.xml">
+      <Filter>config\ui\OLD_hide</Filter>
+    </Xml>
+    <Xml Include="config\ui\hide\carbody.xml">
+      <Filter>config\ui\OLD_hide</Filter>
+    </Xml>
+    <Xml Include="config\ui\hide\contracts.xml">
+      <Filter>config\ui\OLD_hide</Filter>
+    </Xml>
+    <Xml Include="config\ui\hide\contracts_character.xml">
+      <Filter>config\ui\OLD_hide</Filter>
+    </Xml>
+    <Xml Include="config\ui\hide\global_map.xml">
+      <Filter>config\ui\OLD_hide</Filter>
+    </Xml>
+    <Xml Include="config\ui\hide\ingame_msglog_mp.xml">
+      <Filter>config\ui\OLD_hide</Filter>
+    </Xml>
+    <Xml Include="config\ui\hide\ingame_msglog_sp.xml">
+      <Filter>config\ui\OLD_hide</Filter>
+    </Xml>
+    <Xml Include="config\ui\hide\inventory.xml">
+      <Filter>config\ui\OLD_hide</Filter>
+    </Xml>
+    <Xml Include="config\ui\hide\inventory_character.xml">
+      <Filter>config\ui\OLD_hide</Filter>
+    </Xml>
+    <Xml Include="config\ui\hide\inventorymp.xml">
+      <Filter>config\ui\OLD_hide</Filter>
+    </Xml>
+    <Xml Include="config\ui\hide\inventorymp_new.xml">
+      <Filter>config\ui\OLD_hide</Filter>
+    </Xml>
+    <Xml Include="config\ui\hide\inventorymp_new2.xml">
+      <Filter>config\ui\OLD_hide</Filter>
+    </Xml>
+    <Xml Include="config\ui\hide\jobs.xml">
+      <Filter>config\ui\OLD_hide</Filter>
+    </Xml>
+    <Xml Include="config\ui\hide\jobs_new.xml">
+      <Filter>config\ui\OLD_hide</Filter>
+    </Xml>
+    <Xml Include="config\ui\hide\maingame_character.xml">
+      <Filter>config\ui\OLD_hide</Filter>
+    </Xml>
+    <Xml Include="config\ui\hide\maingame_new.xml">
+      <Filter>config\ui\OLD_hide</Filter>
+    </Xml>
+    <Xml Include="config\ui\hide\map.xml">
+      <Filter>config\ui\OLD_hide</Filter>
+    </Xml>
+    <Xml Include="config\ui\hide\map_character.xml">
+      <Filter>config\ui\OLD_hide</Filter>
+    </Xml>
+    <Xml Include="config\ui\hide\map_desc.xml">
+      <Filter>config\ui\OLD_hide</Filter>
+    </Xml>
+    <Xml Include="config\ui\hide\map_desc_16.xml">
+      <Filter>config\ui\OLD_hide</Filter>
+    </Xml>
+    <Xml Include="config\ui\hide\map_spots_rostok.xml">
+      <Filter>config\ui\OLD_hide</Filter>
+    </Xml>
+    <Xml Include="config\ui\hide\news_templates.xml">
+      <Filter>config\ui\OLD_hide</Filter>
+    </Xml>
+    <Xml Include="config\ui\hide\pda_character_new.xml">
+      <Filter>config\ui\OLD_hide</Filter>
+    </Xml>
+    <Xml Include="config\ui\hide\pda_contacts.xml">
+      <Filter>config\ui\OLD_hide</Filter>
+    </Xml>
+    <Xml Include="config\ui\hide\pda_dialog.xml">
+      <Filter>config\ui\OLD_hide</Filter>
+    </Xml>
+    <Xml Include="config\ui\hide\pda_new.xml">
+      <Filter>config\ui\OLD_hide</Filter>
+    </Xml>
+    <Xml Include="config\ui\hide\sleep_dialog.xml">
+      <Filter>config\ui\OLD_hide</Filter>
+    </Xml>
+    <Xml Include="config\ui\hide\sleep_dialog_new.xml">
+      <Filter>config\ui\OLD_hide</Filter>
+    </Xml>
+    <Xml Include="config\ui\hide\spawn.xml">
+      <Filter>config\ui\OLD_hide</Filter>
+    </Xml>
+    <Xml Include="config\ui\hide\spawn_16.xml">
+      <Filter>config\ui\OLD_hide</Filter>
+    </Xml>
+    <Xml Include="config\ui\hide\statisticwnd.xml">
+      <Filter>config\ui\OLD_hide</Filter>
+    </Xml>
+    <Xml Include="config\ui\hide\stats.xml">
+      <Filter>config\ui\OLD_hide</Filter>
+    </Xml>
+    <Xml Include="config\ui\hide\stats_16.xml">
+      <Filter>config\ui\OLD_hide</Filter>
+    </Xml>
+    <Xml Include="config\ui\hide\trade_new.xml">
+      <Filter>config\ui\OLD_hide</Filter>
+    </Xml>
+    <Xml Include="config\ui\hide\ui_game_over.xml">
+      <Filter>config\ui\OLD_hide</Filter>
+    </Xml>
+    <Xml Include="config\ui\hide\ui_mapinfo.xml">
+      <Filter>config\ui\OLD_hide</Filter>
+    </Xml>
+    <Xml Include="config\ui\hide\ui_numpad_wnd.xml">
+      <Filter>config\ui\OLD_hide</Filter>
+    </Xml>
+    <Xml Include="config\ui\hide\ui_videoplayer.xml">
+      <Filter>config\ui\OLD_hide</Filter>
+    </Xml>
+    <Xml Include="config\ui\hide\video_templ.xml">
+      <Filter>config\ui\OLD_hide</Filter>
     </Xml>
   </ItemGroup>
 </Project>
