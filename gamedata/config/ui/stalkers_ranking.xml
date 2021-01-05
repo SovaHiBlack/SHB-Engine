@@ -1,5 +1,4 @@
-<?xml version='1.0' encoding="UTF-8"?>
-
+<?xml version="1.0" encoding="UTF-8"?>
 <window>
 	<main_wnd x="110" y="90" width="761" height="455"/>
 
@@ -112,12 +111,14 @@
 			<text_2/>
 			<text_3/>
 		</item_ellipsis>
+
 		<no_items width="400" height="40">
 			<text_1 x="30" y="0" width="300" height="40">
 				<text align="l" x="0" y="0" font="letterica18" r="180" g="180" b="180" a="160">...empty...</text>
 			</text_1>
 
 			<text_2/>
+
 			<text_3/>
 		</no_items>
 	</stalkers_list>

@@ -1,5 +1,4 @@
-<?xml version='1.0' encoding="UTF-8"?>
-
+<?xml version="1.0" encoding="UTF-8"?>
 <window>
 	<map_wnd>
 		<main_wnd x="110" y="90" width="761" height="475">
@@ -18,10 +17,12 @@
 						<window_name>global_map_btn</window_name>
 						<texture>ui_icons_newPDA_compas</texture>
 					</global_map_btn>
+
 					<actor_btn x="27" y="1" width="21" height="15"  hint="actor_btn_hint">
 						<window_name>actor_btn</window_name>
 						<texture>ui_icons_newPDA_showpers</texture>
 					</actor_btn>
+
 					<notused_add_spot_btn x="60" y="1" width="21" height="15" check_mode="1" hint="add_spot_btn_hint">
 						<window_name>add_spot_btn</window_name>
 						<texture>ui_icons_newPDA_perssign</texture>

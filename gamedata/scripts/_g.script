@@ -1161,6 +1161,7 @@ function on_actor_critical_power()
 	if has_alife_info("esc_trader_newbie") then
 		game.start_tutorial("part_11_weakness")
 	end
+
 	if not has_alife_info("encyclopedy_tutorial_weakness") then
 		db.actor:give_info_portion("encyclopedy_tutorial_weakness")
 	end
@@ -1174,6 +1175,7 @@ function on_actor_bleeding()
 	if has_alife_info("esc_trader_newbie") then
 		game.start_tutorial("part_8_wound")
 	end
+
 	if not has_alife_info("encyclopedy_tutorial_wound") then
 		db.actor:give_info_portion("encyclopedy_tutorial_wound")
 	end
@@ -1187,6 +1189,7 @@ function on_actor_radiation()
 	if has_alife_info("esc_trader_newbie") then
 		game.start_tutorial("part_6_radiation")
 	end
+
 	if not has_alife_info("encyclopedy_tutorial_radiation") then
 		db.actor:give_info_portion("encyclopedy_tutorial_radiation")
 	end
@@ -1197,6 +1200,7 @@ function on_actor_weapon_jammed()
 	if has_alife_info("esc_trader_newbie") then
 		game.start_tutorial("part_9_weapon")
 	end
+
 	if not has_alife_info("encyclopedy_tutorial_weapon") then
 		db.actor:give_info_portion("encyclopedy_tutorial_weapon")
 	end
@@ -1207,6 +1211,7 @@ function on_actor_cant_walk_weight()
 	if has_alife_info("esc_trader_newbie") then
 		game.start_tutorial("part_14_overload")
 	end
+
 	if not has_alife_info("encyclopedy_tutorial_overload") then
 		db.actor:give_info_portion("encyclopedy_tutorial_overload")
 	end

@@ -1,7 +1,6 @@
-<?xml version='1.0' encoding="UTF-8"?>
-
+<?xml version="1.0" encoding="UTF-8"?>
 <window x="0" y="0" w="640" h="480" r="227" g="121" b="222" texture="1">
-	<background  x="0" y="640" width="125" height="125">
+	<background x="0" y="640" width="125" height="125">
 		<texture>ui_hud_stamina_full</texture>
 	</background>
 
@@ -29,7 +28,7 @@
 		<texture>ui_hud_soldier_sprint</texture>
 	</state_sprint>
 
-	<power_progress  x="32" y="94" width="57" height="7" horz="1" min="0" max="100" pos="50">
+	<power_progress x="32" y="94" width="57" height="7" horz="1" min="0" max="100" pos="50">
 		<progress>
 			<texture>ui_hud_shk_stamina</texture>
 		</progress>

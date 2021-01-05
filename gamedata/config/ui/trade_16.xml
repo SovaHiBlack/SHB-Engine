@@ -1,7 +1,5 @@
-<?xml version='1.0' encoding="UTF-8"?>
-
+<?xml version="1.0" encoding="UTF-8"?>
 <window x="0" y="0" w="640" h="480" r="227" g="121" b="222" texture="1">
-
 	<static_icon x="27" y="22" width="150" height="220" stretch="1">
 		<texture>ui_charinfo_left</texture>
 		<texture_offset x="-11" y="0"/>
@@ -20,11 +18,11 @@
 		<texture>ui\ui_bottom_background</texture>
 	</bottom_background>
 
-	<button x="360" y="705" width="157" height="48"  hR="255" hB="83" hG="179" highlight_text="1">
+	<button x="360" y="705" width="157" height="48" hR="255" hB="83" hG="179" highlight_text="1">
 		<texture>ui_button_main01</texture>
 		<text font="graffiti22" r="238" g="153" b="26" align="c">ui_st_trade</text>
 	</button>
-	<button x="570" y="705" width="157" height="48"  hR="255" hB="83" hG="179" highlight_text="1">
+	<button x="570" y="705" width="157" height="48" hR="255" hB="83" hG="179" highlight_text="1">
 		<texture>ui_button_main01</texture>
 		<text font="graffiti22" r="238" g="153" b="26" align="c">ui_st_leave</text>
 	</button>
@@ -59,19 +57,13 @@
 		<texture width="350" height="210">ui\ui_trade_list_back</texture>
 	</static>
 
-	<dragdrop_list x="31" y="37" width="296" height="164"
-			cell_width = "31" cell_height="41"
-			rows_num="4" cols_num="9"
-			group_similar="1" unlimited="1"/>
+	<dragdrop_list x="31" y="37" width="296" height="164" cell_width = "31" cell_height="41" rows_num="4" cols_num="9" group_similar="1" unlimited="1"/>
 
 	<static x="350" y="480" width="333" height="212" stretch="1">
 		<texture width="350" height="210">ui\ui_trade_list_back</texture>
 	</static>
 
-	<dragdrop_list x="31" y="37" width="296" height="164"
-			cell_width = "31" cell_height="41"
-			rows_num="4" cols_num="9"
-			group_similar="1" unlimited="1"/>
+	<dragdrop_list x="31" y="37" width="296" height="164" cell_width = "31" cell_height="41" rows_num="4" cols_num="9" group_similar="1" unlimited="1"/>
 
 	<desc_frame_window x="350" y="22" width="320" height="230" stretch="1">
 		<texture>ui_frame_03</texture>

@@ -595,58 +595,66 @@ void CActor::HitSignal(float perc, Fvector& vLocalDir, CObject* who, s16 element
 		tpKinematics->PlayFX(motion_ID,power_factor);
 	}
 }
+
 void start_tutorial(const char* name);
 void CActor::Die(CObject* who)
 {
-	inherited::Die		(who);
+	inherited::Die(who);
 
-	if (OnServer())
-	{	
-		xr_vector<CInventorySlot>::iterator I = inventory().m_slots.begin();
-		xr_vector<CInventorySlot>::iterator E = inventory().m_slots.end();
+	if (OnServer( ))
+	{
+		xr_vector<CInventorySlot>::iterator I = inventory( ).m_slots.begin( );
+		xr_vector<CInventorySlot>::iterator E = inventory( ).m_slots.end( );
 
-
-		for (u32 slot_idx=0 ; I != E; ++I,++slot_idx)
+		for (u32 slot_idx = 0; I != E; ++I, ++slot_idx)
 		{
-			if (slot_idx == inventory().GetActiveSlot()) 
+			if (slot_idx == inventory( ).GetActiveSlot( ))
 			{
-				if((*I).m_pIItem)
+				if ((*I).m_pIItem)
 				{
 					(*I).m_pIItem->SetDropManual(TRUE);
-				};
-			continue;
+				}
+
+				continue;
 			}
 			else
 			{
-				CCustomOutfit *pOutfit = smart_cast<CCustomOutfit *> ((*I).m_pIItem);
-				if (pOutfit) continue;
-			};
-			if((*I).m_pIItem) 
-				inventory().Ruck((*I).m_pIItem);
-		};
+				CCustomOutfit* pOutfit = smart_cast<CCustomOutfit*> ((*I).m_pIItem);
+				if (pOutfit)
+				{
+					continue;
+				}
+			}
 
+			if ((*I).m_pIItem)
+			{
+				inventory( ).Ruck((*I).m_pIItem);
+			}
+		}
 
 		///!!! чистка пояса
-		TIItemContainer &l_blist = inventory().m_belt;
-		while (!l_blist.empty())	
-			inventory().Ruck(l_blist.front());		
-	};
+		TIItemContainer& l_blist = inventory( ).m_belt;
+		while (!l_blist.empty( ))
+		{
+			inventory( ).Ruck(l_blist.front( ));
+		}
+	}
 
-	cam_Set					(eacFreeLook);
-	mstate_wishful	&=		~mcAnyMove;
-	mstate_real		&=		~mcAnyMove;
+	cam_Set(eacFreeLook);
+	mstate_wishful &= ~mcAnyMove;
+	mstate_real &= ~mcAnyMove;
 
-	::Sound->play_at_pos	(sndDie[Random.randI(SND_DIE_COUNT)],this,Position());
+	::Sound->play_at_pos(sndDie[Random.randI(SND_DIE_COUNT)], this, Position( ));
 
-	m_HeavyBreathSnd.stop	();
-	m_BloodSnd.stop			();		
+	m_HeavyBreathSnd.stop( );
+	m_BloodSnd.stop( );
 
-	start_tutorial		("game_over");
+	start_tutorial("game_over");
 
-	xr_delete				(m_sndShockEffector);
+	xr_delete(m_sndShockEffector);
 }
 
-void	CActor::SwitchOutBorder(bool new_border_state)
+void CActor::SwitchOutBorder(bool new_border_state)
 {
 	if(new_border_state)
 	{
@@ -705,6 +713,7 @@ void CActor::g_Physics(Fvector& _accel, float jump, float dt)
 		}
 	}
 }
+
 float g_fov = 67.5f;
 
 float CActor::currentFOV()

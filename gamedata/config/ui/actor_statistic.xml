@@ -1,12 +1,13 @@
-<?xml version='1.0' encoding="UTF-8"?>
-
+<?xml version="1.0" encoding="UTF-8"?>
 <window>
 	<list x="20" y="87" width="420" height="370" item_height = "18">
 		<font font="letterica18" r="255" g="255" b="255"></font>
 	</list>
+
 	<article_header_static x="22" y="48" width="430" height="22">
 		<text font="letterica25" r="225" g="225" b="250">st_pda_player_statistic</text>
 	</article_header_static>
+
 	<mask_frame_window x="0" y="0" width="1" height="1">
 		<texture>ui_pda_frame2</texture>
 	</mask_frame_window>
@@ -48,12 +49,15 @@
 	<right_auto_static x="8" y="52" width="4" height="420">
 		<texture>ui\ui_pda_vertical_line_r_l</texture>
 	</right_auto_static>
+
 	<right_auto_static x="269" y="52" width="4" height="420">
 		<texture>ui\ui_pda_vertical_line_r_r</texture>
 	</right_auto_static>
+
 	<right_auto_static x="8" y="48" width="262" height="2" stretch="1">
 		<texture>ui\ui_pda_horizontal_line</texture>
 	</right_auto_static>
+
 	<right_auto_static x="14" y="189" width="249" height="2" stretch="1">
 		<texture>ui\ui_pda_horizontal_line</texture>
 	</right_auto_static>
@@ -61,9 +65,11 @@
 	<left_auto_static x="8" y="41" width="4" height="430">
 		<texture>ui\ui_pda_vertical_line_l_l</texture>
 	</left_auto_static>
+
 	<left_auto_static x="416" y="82" width="4" height="388">
 		<texture>ui\ui_pda_vertical_line_l_r</texture>
 	</left_auto_static>
+
 	<left_auto_static x="14" y="78" width="405" height="2" stretch="1">
 		<texture>ui\ui_pda_horizontal_line</texture>
 	</left_auto_static>

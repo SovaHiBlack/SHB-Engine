@@ -6,7 +6,7 @@
 #include "UIMessagesWindow.h"//
 #include "UIZoneMap.h"//
 
-//#include <dinput.h>
+#include <dinput.h>
 #include "..\Actor.h"
 #include "../HUDManager.h"//
 #include "../Pda.h"

@@ -412,9 +412,6 @@
     <Filter Include="AI\AMonsters\common\script\script_object">
       <UniqueIdentifier>{f89110a6-0225-49c8-a98b-cb9dc2d736ab}</UniqueIdentifier>
     </Filter>
-    <Filter Include="AI\AMonsters\common\base monster">
-      <UniqueIdentifier>{def054d2-448a-4f80-8b83-471e5a3d060f}</UniqueIdentifier>
-    </Filter>
     <Filter Include="AI\AMonsters\common\monster states">
       <UniqueIdentifier>{b2e31a19-9871-4a2e-ab50-c15a10b37cff}</UniqueIdentifier>
     </Filter>
@@ -2070,6 +2067,9 @@
     </Filter>
     <Filter Include="AI\AGroup\AgentManager\agent_planner\properties">
       <UniqueIdentifier>{b1947418-b7fc-4477-9c9b-975aced335b3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\AMonsters\common\BaseMonster">
+      <UniqueIdentifier>{def054d2-448a-4f80-8b83-471e5a3d060f}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -5650,10 +5650,10 @@
       <Filter>Core\Client\Objects\inventory\InventoryOwner\character_info</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\BaseMonster\BaseMonster.h">
-      <Filter>AI\AMonsters\common\base monster</Filter>
+      <Filter>AI\AMonsters\common\BaseMonster</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\BaseMonster\BaseMonster_inline.h">
-      <Filter>AI\AMonsters\common\base monster</Filter>
+      <Filter>AI\AMonsters\common\BaseMonster</Filter>
     </ClInclude>
     <ClInclude Include="ai\monsters\boar\Boar.h">
       <Filter>AI\AMonsters\monsters\Boar</Filter>
@@ -8295,34 +8295,34 @@
       <Filter>Core\Common\StringTable</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\BaseMonster\BaseMonster.cpp">
-      <Filter>AI\AMonsters\common\base monster</Filter>
+      <Filter>AI\AMonsters\common\BaseMonster</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\BaseMonster\BaseMonster_anim.cpp">
-      <Filter>AI\AMonsters\common\base monster</Filter>
+      <Filter>AI\AMonsters\common\BaseMonster</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\BaseMonster\BaseMonster_debug.cpp">
-      <Filter>AI\AMonsters\common\base monster</Filter>
+      <Filter>AI\AMonsters\common\BaseMonster</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\BaseMonster\BaseMonster_feel.cpp">
-      <Filter>AI\AMonsters\common\base monster</Filter>
+      <Filter>AI\AMonsters\common\BaseMonster</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\BaseMonster\BaseMonster_misc.cpp">
-      <Filter>AI\AMonsters\common\base monster</Filter>
+      <Filter>AI\AMonsters\common\BaseMonster</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\BaseMonster\BaseMonster_net.cpp">
-      <Filter>AI\AMonsters\common\base monster</Filter>
+      <Filter>AI\AMonsters\common\BaseMonster</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\BaseMonster\BaseMonster_path.cpp">
-      <Filter>AI\AMonsters\common\base monster</Filter>
+      <Filter>AI\AMonsters\common\BaseMonster</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\BaseMonster\BaseMonster_script.cpp">
-      <Filter>AI\AMonsters\common\base monster</Filter>
+      <Filter>AI\AMonsters\common\BaseMonster</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\BaseMonster\BaseMonster_startup.cpp">
-      <Filter>AI\AMonsters\common\base monster</Filter>
+      <Filter>AI\AMonsters\common\BaseMonster</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\BaseMonster\BaseMonster_think.cpp">
-      <Filter>AI\AMonsters\common\base monster</Filter>
+      <Filter>AI\AMonsters\common\BaseMonster</Filter>
     </ClCompile>
     <ClCompile Include="ai\monsters\boar\Boar.cpp">
       <Filter>AI\AMonsters\monsters\Boar</Filter>

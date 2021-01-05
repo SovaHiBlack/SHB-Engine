@@ -79,40 +79,48 @@ CUISequencer::CUISequencer()
 void CUISequencer::Start(const char* tutor_name)
 {
 	Msg(tutor_name);
-	VERIFY(m_items.size()==0);
-	Device.seqFrame.Add			(this, REG_PRIORITY_LOW-10000);
-	Device.seqRender.Add		(this, 3);
-	
-	m_UIWindow					= xr_new<CUIWindow>();
+	VERIFY(m_items.size( ) == 0);
+	Device.seqFrame.Add(this, REG_PRIORITY_LOW - 10000);
+	Device.seqRender.Add(this, 3);
+
+	m_UIWindow = xr_new<CUIWindow>( );
 
 	CUIXml uiXml;
-	uiXml.Init					(CONFIG_PATH, UI_PATH, "game_tutorials.xml");
-	
-	int items_count				= uiXml.GetNodesNum	(tutor_name,0,"item");
-	VERIFY(items_count>0);
-	uiXml.SetLocalRoot			(uiXml.NavigateToNode(tutor_name,0));
+	uiXml.Init(CONFIG_PATH, UI_PATH, "game_tutorials.xml");
 
-	m_bPlayEachItem				= !!uiXml.ReadInt("play_each_item",0,0);
+	int items_count = uiXml.GetNodesNum(tutor_name, 0, "item");
+	VERIFY(items_count > 0);
+	uiXml.SetLocalRoot(uiXml.NavigateToNode(tutor_name, 0));
+
+	m_bPlayEachItem = !!uiXml.ReadInt("play_each_item", 0, 0);
 
 	CUIXmlInit xml_init;
-	xml_init.InitWindow			(uiXml, "global_wnd", 0,	m_UIWindow);
+	xml_init.InitWindow(uiXml, "global_wnd", 0, m_UIWindow);
 //.	xml_init.InitAutoStaticGroup(uiXml, "global_wnd",		m_UIWindow);
 
-	for(int i=0;i<items_count;++i){
-		const char* _tp				= uiXml.ReadAttrib			("item",i,"type","");
-		bool bVideo				= 0==_stricmp(_tp,"video");
-		CUISequenceItem* pItem	= 0;
-		if (bVideo)	pItem		= xr_new<CUISequenceVideoItem>(this);
-		else		pItem		= xr_new<CUISequenceSimpleItem>(this);
-		m_items.push_back		(pItem);
-		pItem->Load				(&uiXml,i);
+	for (int i = 0; i < items_count; ++i)
+	{
+		const char* _tp = uiXml.ReadAttrib("item", i, "type", "");
+		bool bVideo = 0 == _stricmp(_tp, "video");
+		CUISequenceItem* pItem = 0;
+		if (bVideo)
+		{
+			pItem = xr_new<CUISequenceVideoItem>(this);
+		}
+		else
+		{
+			pItem = xr_new<CUISequenceSimpleItem>(this);
+		}
+
+		m_items.push_back(pItem);
+		pItem->Load(&uiXml, i);
 	}
 
-	CUISequenceItem* pCurrItem	= m_items.front();
-	pCurrItem->Start			();
-	m_pStoredInputReceiver		= pInput->CurrentIR();
-	IR_Capture					();
-	m_bActive					= true;
+	CUISequenceItem* pCurrItem = m_items.front( );
+	pCurrItem->Start( );
+	m_pStoredInputReceiver = pInput->CurrentIR( );
+	IR_Capture( );
+	m_bActive = true;
 }
 
 void CUISequencer::Destroy()

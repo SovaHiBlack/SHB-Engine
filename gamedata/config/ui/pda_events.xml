@@ -1,5 +1,4 @@
-<?xml version='1.0' encoding="utf-8"?>
-
+<?xml version="1.0" encoding="UTF-8"?>
 <window>
 	<main_wnd x="110" y="90" width="761" height="475">
 
@@ -18,7 +17,7 @@
 
 			<primary_or_all x="18" y="430" width="270" height="19" check_mode="1" hint="pda_show_general_or_all_tasks">
 				<texture>ui_PDA_checker</texture>
-				<text align="l"  x="20" y="0" font="letterica16" r="255" g="255" b="255">show_only_general_tasks</text>
+				<text align="l" x="20" y="0" font="letterica16" r="255" g="255" b="255">show_only_general_tasks</text>
 				<text_color_>
 					<t r="231" g="168" b="12"/>
 					<d r="181" g="170" b="148"/>
@@ -29,7 +28,7 @@
 
 			<filter_tab x="15" y="450" width = "293" height="18">
 				<button x="5" y="0" width="70" height="18" hint="pda_btn_active_hint">
-					<text align="l"  x="0" y="0" font="letterica18" r="255" g="255" b="255" complex_mode="0">pda_btn_active</text>
+					<text align="l" x="0" y="0" font="letterica18" r="255" g="255" b="255" complex_mode="0">pda_btn_active</text>
 					<text_color>
 						<t r="231" g="168" b="12"/>
 						<d r="181" g="170" b="148"/>
@@ -47,7 +46,7 @@
 					</text_color>
 				</button>
 				<button x="185" y="0" width="60" height="18" hint="pda_btn_failed_hint">
-					<text align="l"  x="0" y="0" font="letterica18" r="255" g="255" b="255" complex_mode="0">pda_btn_failed</text>
+					<text align="l" x="0" y="0" font="letterica18" r="255" g="255" b="255" complex_mode="0">pda_btn_failed</text>
 					<text_color>
 						<t r="231" g="168" b="12"/>
 						<d r="181" g="170" b="148"/>
@@ -56,7 +55,7 @@
 					</text_color>
 				</button>
 				<notused_button x="245" y="0" width="47" height="18" hint="pda_btn_own_hint">
-					<text align="l"  x="0" y="0" font="letterica18" r="255" g="255" b="255" complex_mode="0">pda_btn_own</text>
+					<text align="l" x="0" y="0" font="letterica18" r="255" g="255" b="255" complex_mode="0">pda_btn_own</text>
 					<text_color>
 						<t r="231" g="168" b="12"/>
 						<d r="181" g="170" b="148"/>

@@ -1,9 +1,8 @@
-<?xml version='1.0' encoding="UTF-8"?>
-
+<?xml version="1.0" encoding="UTF-8"?>
 <window>
 	<properties_box>
 		<texture>ui_cb_listbox</texture>
-		<list x="0" y="0" width="10" height="10" item_height="18"  always_show_scroll="0" can_select="1" bottom_indent="10" right_ident="10" left_ident="20">
+		<list x="0" y="0" width="10" height="10" item_height="18" always_show_scroll="0" can_select="1" bottom_indent="10" right_ident="10" left_ident="20">
 			<font_s r="218" g="217" b="213"/>
 			<font r="131" g="131" b="131" font="letterica16"/>
 		</list>
@@ -23,24 +22,15 @@
 		<texture>ui\ui_bottom_background</texture>
 	</bottom_static>
 
-	<dragdrop_bag x="22" y="33" width="310" height="442"
-            cell_width = "41" cell_height="41" rows_num="10" cols_num="7"
-            unlimited="1" group_similar="1"/>
+	<dragdrop_bag x="22" y="33" width="310" height="442" cell_width = "41" cell_height="41" rows_num="10" cols_num="7" unlimited="1" group_similar="1"/>
 
-	<dragdrop_belt x="645" y="136" width="410" height="60"
-            cell_width = "60" cell_height="60" rows_num="1" cols_num="5"/>
+	<dragdrop_belt x="645" y="136" width="410" height="60" cell_width = "60" cell_height="60" rows_num="1" cols_num="5"/>
 
-	<dragdrop_outfit x="858" y="290" width="104" height="260"
-            cell_width = "57" cell_height="57" rows_num="4" cols_num="4"
-            custom_placement="0"/>
+	<dragdrop_outfit x="858" y="290" width="104" height="260" cell_width = "57" cell_height="57" rows_num="4" cols_num="4" custom_placement="0"/>
 
-	<dragdrop_pistol x="38" y="118" width="156" height="104"
-            cell_width = "52" cell_height="52" rows_num="2" cols_num="3"
-            custom_placement="0"/>
+	<dragdrop_pistol x="38" y="118" width="156" height="104" cell_width = "52" cell_height="52" rows_num="2" cols_num="3" custom_placement="0"/>
 
-	<dragdrop_automatic x="237" y="118" width="312" height="104"
-            cell_width = "52" cell_height="52" rows_num="2" cols_num="6"
-            custom_placement="0"/>
+	<dragdrop_automatic x="237" y="118" width="312" height="104" cell_width = "52" cell_height="52" rows_num="2" cols_num="6" custom_placement="0"/>
 
 	<bag_static x="15" y="240" width="350" height="480" complex_mode="1">
 		<text x="30" y="8" font="graffiti22" r="231" g="153" b="22">ui_inv_bag</text>
@@ -117,7 +107,7 @@
 
 	<rank x="736" y="272" width="75" height="65">
 		<texture>ui_inventory_rank</texture>
-		<pic x="14" y="17" width="46" height="47" />
+		<pic x="14" y="17" width="46" height="47"/>
 	</rank>
 
 	<progress_background x="739" y="340" width="59" height="215">

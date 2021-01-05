@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-
+<?xml version="1.0" encoding="UTF-8"?>
 <window>
 	<back_video x="0" y="0" width="1024" height="430">
 		<texture x="0" y="0" width="1024" height="430">ui\ui_mm_window_back_crop</texture>
@@ -107,7 +106,7 @@
 				<d r="227" g="199" b="178"/>
 			</text_color>
 			<list_font_s r="240" g="217" b="182"/>
-			<list_font	 r="216" g="186" b="140" font="letterica16"/>
+			<list_font r="216" g="186" b="140" font="letterica16"/>
 		</list_renderer>
 
 		<cap_preset x="20" y="50" width="143" height="21">
@@ -121,7 +120,7 @@
 				<d r="227" g="199" b="178"/>
 			</text_color>
 			<list_font_s r="240" g="217" b="182"/>
-			<list_font	 r="216" g="186" b="140" font="letterica16"/>
+			<list_font r="216" g="186" b="140" font="letterica16"/>
 		</list_presets>
 
 		<cap_resolution x="20" y="80" width="143" height="21">
@@ -135,7 +134,7 @@
 				<d r="227" g="199" b="178"/>
 			</text_color>
 			<list_font_s r="240" g="217" b="182"/>
-			<list_font	 r="216" g="186" b="140" font="letterica16"/>
+			<list_font r="216" g="186" b="140" font="letterica16"/>
 		</list_resolution>
 
 		<cap_gamma x="20" y="110" width="143" height="21">
@@ -177,9 +176,7 @@
 	</tab_video>
 
 	<video_adv>
-		<scroll_v	x="0" y="10" width="457" height="313"
-					right_ident="0" left_ident="0" top_indent="0" bottom_indent="0"
-					vert_interval="0" always_show_scroll="0"/>
+		<scroll_v x="0" y="10" width="457" height="313" right_ident="0" left_ident="0" top_indent="0" bottom_indent="0" vert_interval="0" always_show_scroll="0"/>
 
 		<templ_item width="450" height="30"/>
 
@@ -207,7 +204,7 @@
 			<options_item entry="r__detail_density" group="mm_opt_video_adv"/>
 		</track_detail_density>
 
-		<cap_texture_lod x="20" y="0" width="143" height="21" >
+		<cap_texture_lod x="20" y="0" width="143" height="21">
 			<text font="letterica16" r="215" g="195" b="170">ui_mm_texture_quality</text>
 		</cap_texture_lod>
 
@@ -340,7 +337,7 @@
 				<e r="216" g="186" b="140"/>
 			</text_color>
 			<list_font_s r="240" g="217" b="182"/>
-			<list_font	 r="216" g="186" b="140" font="letterica16"/>
+			<list_font r="216" g="186" b="140" font="letterica16"/>
 		</list_difficulty>
 
 		<check_tips x="20" y="180" width="243" height="21">

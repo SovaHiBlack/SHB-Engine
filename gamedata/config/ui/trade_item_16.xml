@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <window>
 	<auto>
 		<auto_static x="160" y="43" width="50" height="18">
@@ -22,7 +22,7 @@
 		<text  align="l" x="0" y="0" font="graffiti22" r="240" g="215" b="185"/>
 	</static_cost>
 
-	<descr_list x="16" y="69" width="477" height="130"  left_ident="16" always_show_scroll="0">
+	<descr_list x="16" y="69" width="477" height="130" left_ident="16" always_show_scroll="0">
 		<font font="letterica16" r="240" g="217" b="182"/>
 	</descr_list>
 
@@ -33,6 +33,7 @@
 			<texture>ui_mg_progress_efficiency_full</texture>
 		</progress>
 	</condition_progress>
+
 	<wpn_params x="0" y="0" width="157" height="70">
 		<cap_accuracy x="0" y="8" width="121" height="8">
 			<text font="letterica16" r="124" g="119" b="115">ui_inv_accuracy</text>

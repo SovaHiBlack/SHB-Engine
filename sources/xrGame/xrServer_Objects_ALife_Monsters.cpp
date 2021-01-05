@@ -647,18 +647,6 @@ void CSE_ALifeCustomZone::UPDATE_Write	(NET_Packet	&tNetPacket)
 //	tNetPacket.w_u32			(m_owner_id);
 }
 
-//xr_token TokenAnomalyType[]={
-//	{ "Gravi",			eAnomalousZoneTypeGravi			},
-//	{ "Fog",			eAnomalousZoneTypeFog			},
-//	{ "Radioactive",	eAnomalousZoneTypeRadio			},
-//	{ "Plant",			eAnomalousZoneTypePlant			},
-//	{ "Gelatine",		eAnomalousZoneTypeGelatine		},
-//	{ "Fluff",			eAnomalousZoneTypeFluff			},
-//	{ "Rusty Hair",		eAnomalousZoneTypeRustyHair		},
-//	{ "RustyWhistlers",	eAnomalousZoneTypeRustyWhistlers},
-//	{ 0,				0}
-//};
-
 void CSE_ALifeCustomZone::FillProps		(const char* pref, PropItemVec& items)
 {
 	inherited::FillProps		(pref,items);

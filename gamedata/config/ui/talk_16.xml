@@ -1,5 +1,4 @@
-<?xml version='1.0' encoding="UTF-8"?>
-
+<?xml version="1.0" encoding="UTF-8"?>
 <window>
 	<left_character_icon x="15" y="32" width="150" height="220"  stretch="1">
 		<texture>ui_charinfo_left</texture>
@@ -20,7 +19,7 @@
 	<!-- BUTTONS -->
 	<button x="437" y="726" width="157" height="48" hR="255" hB="83" hG="179" highlight_text="1">
 		<texture>ui_button_main01</texture>
-		<text align="c"	font="graffiti22" r="238" g="153" b="26">ui_st_trade</text>
+		<text align="c" font="graffiti22" r="238" g="153" b="26">ui_st_trade</text>
 	</button>
 
 	<frame_line_window x="218" y="42" width="600" height="470" vertical="1">
@@ -79,8 +78,7 @@
 			<text font="letterica16" r="255" g="255" b="255"/>
 		</content_text>
 
-		<msg_icon x="20" y="3" width="49" height="29">
-		</msg_icon>
+		<msg_icon x="20" y="3" width="49" height="29"/>
 	</iconed_answer_item>
 
 	<iconed_trade_info x="0" y="0" width="557" height="0" min_height="20" bottom_footer="5">
@@ -90,7 +88,6 @@
 			<text font="letterica18" r="216" g="186" b="140"/>
 		</content_text>
 
-		<msg_icon x="20" y="0" width="34" height="20">
-		</msg_icon>
+		<msg_icon x="20" y="0" width="34" height="20"/>
 	</iconed_trade_info>
 </window>

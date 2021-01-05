@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-
+<?xml version="1.0" encoding="UTF-8"?>
 <window>
 	<back_video x="0" y="0" width="1024" height="430">
 		<texture x="0" y="0" width="1024" height="430">ui\ui_mm_window_back_crop</texture>
@@ -28,7 +27,6 @@
 
 		<edit x="65" y="55" width="257" height="23">
 			<texture>ui_linetext_e</texture>
-
 			<text font="letterica18" r="240" g="217" b="182"/>
 		</edit>
 

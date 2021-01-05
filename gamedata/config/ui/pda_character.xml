@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!-- CHARACTER INFO IN THE PDA CONTACT -->
 <window>
 	<name_static x="0" y="0" width="260" height="18">
@@ -48,6 +48,5 @@
 		<auto_static x="0" y="85" width="395" height="3" stretch="1">
 			<texture>ui\ui_pda_horizontal_line</texture>
 		</auto_static>
-
 	</pda_char_auto_statics>
 </window>
