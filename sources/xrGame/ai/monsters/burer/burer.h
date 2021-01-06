@@ -9,27 +9,22 @@
 class CCharacterPhysicsSupport;
 class CBurerFastGravi;
 
-class CBurer : public CBaseMonster,
-	public CTelekinesis,
-	public CScanningAbility<CBurer>
+class CBurer : public CBaseMonster, public CTelekinesis, public CScanningAbility<CBurer>
 {
-
-	typedef		CBaseMonster				inherited;
+	using inherited = CBaseMonster;
 
 private:
 	xr_vector<CObject*>	m_nearest;
 
 public:
-	typedef		CScanningAbility<CBurer>	TScanner;
-
+	using TScanner = CScanningAbility<CBurer>;
 
 	static		bool	can_scan;
 
 	u32		last_hit_frame;
 	u32		time_last_scan;
 
-
-	typedef		CTelekinesis				TTelekinesis;
+	using TTelekinesis = CTelekinesis;
 
 	struct	GraviObject
 	{
@@ -94,13 +89,11 @@ public:
 	float	m_gravi_impulse_to_enemy;
 	float	m_gravi_hit_power;
 
-
 	u32		m_tele_max_handled_objects;
 	u32		m_tele_time_to_hold;
 	float	m_tele_object_min_mass;
 	float	m_tele_object_max_mass;
 	float	m_tele_find_radius;
-
 
 	bool	m_shield_active;
 	const char* particle_fire_shield;
@@ -110,7 +103,6 @@ public:
 public:
 	CBurer( );
 	virtual			~CBurer( );
-
 
 	virtual void	reinit( );
 	virtual void	reload(const char* section);
@@ -154,14 +146,12 @@ public:
 	SAnimationTripleData	anim_triple_gravi;
 	SAnimationTripleData	anim_triple_tele;
 
-
 #ifdef DEBUG
 	virtual CBaseMonster::SDebugInfo show_debug_info( );
 #endif
 
-
-	public:
-		static void script_register(lua_State*);
+public:
+	static void script_register(lua_State*);
 };
 
 add_to_type_list(CBurer)

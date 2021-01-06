@@ -38,5 +38,6 @@ protected:
 
 		_max_item_index
 	};
+
 	CUIStatic*											m_info_items[_max_item_index];
 };

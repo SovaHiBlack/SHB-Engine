@@ -3,8 +3,10 @@
 #include "../BaseMonster/BaseMonster.h"
 #include "../../../script_export_space.h"
 
-class CCat : public CBaseMonster{
-	typedef		CBaseMonster	inherited;
+class CCat : public CBaseMonster
+{
+	using inherited = CBaseMonster;
+
 public:
 					CCat				();
 	virtual			~CCat				();	

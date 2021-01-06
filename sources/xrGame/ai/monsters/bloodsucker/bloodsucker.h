@@ -7,10 +7,9 @@
 #include "../../../script_export_space.h"
 #include "BloodsuckerAlien.h"
 
-class CBloodsucker : public CBaseMonster,
-						public CControlledActor {
-
-	typedef		CBaseMonster	inherited;
+class CBloodsucker : public CBaseMonster, public CControlledActor
+{
+	using inherited = CBaseMonster;
 	
 public:
 	CBloodsucker();
@@ -106,7 +105,8 @@ public:
 	//--------------------------------------------------------------------
 	// Sounds
 	//--------------------------------------------------------------------
-	enum EBloodsuckerSounds {
+	enum EBloodsuckerSounds 
+	{
 		eAdditionalSounds		= MonsterSound::eMonsterSoundCustom,
 
 		eVampireGrasp			= eAdditionalSounds | 0,
@@ -118,7 +118,7 @@ public:
 
 		eChangeVisibility		= eAdditionalSounds | 6,
 		
-		eAlien					= eAdditionalSounds | 7,
+		eAlien					= eAdditionalSounds | 7
 	};
 
 	//--------------------------------------------------------------------
@@ -135,8 +135,8 @@ public:
 
 #endif
 
-	public:
-		static void script_register(lua_State*);
+public:
+	static void script_register(lua_State*);
 };
 
 add_to_type_list(CBloodsucker)

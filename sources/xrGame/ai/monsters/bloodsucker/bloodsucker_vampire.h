@@ -3,9 +3,10 @@
 #include "../state.h"
 
 template<typename _Object>
-class	CStateBloodsuckerVampire : public CState<_Object> {
-	typedef CState<_Object>		inherited;
-	typedef CState<_Object>*	state_ptr;
+class	CStateBloodsuckerVampire : public CState<_Object>
+{
+	using inherited = CState<_Object>;
+	using state_ptr = CState<_Object>*;
 
 	u32					m_time_last_vampire;
 

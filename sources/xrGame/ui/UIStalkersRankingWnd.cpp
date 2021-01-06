@@ -40,35 +40,43 @@ void CUIStalkersRankingWnd::Init( )
 
 	xml_init.InitWindow(uiXml, "main_wnd", 0, this);
 
-	UICharIconFrame = xr_new<CUIFrameWindow>( ); UICharIconFrame->SetAutoDelete(true);
+	UICharIconFrame = xr_new<CUIFrameWindow>( );
+	UICharIconFrame->SetAutoDelete(true);
 	AttachChild(UICharIconFrame);
 	xml_init.InitFrameWindow(uiXml, "chicon_frame_window", 0, UICharIconFrame);
 
-	UICharIconHeader = xr_new<CUIFrameLineWnd>( ); UICharIconHeader->SetAutoDelete(true);
+	UICharIconHeader = xr_new<CUIFrameLineWnd>( );
+	UICharIconHeader->SetAutoDelete(true);
 	UICharIconFrame->AttachChild(UICharIconHeader);
 	xml_init.InitFrameLine(uiXml, "chicon_frame_line", 0, UICharIconHeader);
 
-	UIInfoFrame = xr_new<CUIFrameWindow>( ); UIInfoFrame->SetAutoDelete(true);
+	UIInfoFrame = xr_new<CUIFrameWindow>( );
+	UIInfoFrame->SetAutoDelete(true);
 	AttachChild(UIInfoFrame);
 	xml_init.InitFrameWindow(uiXml, "info_frame_window", 0, UIInfoFrame);
 
-	UIInfoHeader = xr_new<CUIFrameLineWnd>( ); UIInfoHeader->SetAutoDelete(true);
+	UIInfoHeader = xr_new<CUIFrameLineWnd>( );
+	UIInfoHeader->SetAutoDelete(true);
 	UIInfoFrame->AttachChild(UIInfoHeader);
 	xml_init.InitFrameLine(uiXml, "info_frame_line", 0, UIInfoHeader);
 
-	UIAnimatedIcon = xr_new<CUIAnimatedStatic>( ); UIAnimatedIcon->SetAutoDelete(true);
+	UIAnimatedIcon = xr_new<CUIAnimatedStatic>( );
+	UIAnimatedIcon->SetAutoDelete(true);
 	UIInfoHeader->AttachChild(UIAnimatedIcon);
 	xml_init.InitAnimatedStatic(uiXml, "a_static", 0, UIAnimatedIcon);
 
-	UIList = xr_new<CUIScrollView>( ); UIList->SetAutoDelete(true);
+	UIList = xr_new<CUIScrollView>( );
+	UIList->SetAutoDelete(true);
 	UIInfoFrame->AttachChild(UIList);
 	xml_init.InitScrollView(uiXml, "list", 0, UIList);
 
-	UICharacterWindow = xr_new<CUIWindow>( ); UICharacterWindow->SetAutoDelete(true);
+	UICharacterWindow = xr_new<CUIWindow>( );
+	UICharacterWindow->SetAutoDelete(true);
 	UICharIconFrame->AttachChild(UICharacterWindow);
 	xml_init.InitWindow(uiXml, "character_info", 0, UICharacterWindow);
 
-	UICharacterInfo = xr_new<CUICharacterInfo>( ); UICharacterInfo->SetAutoDelete(true);
+	UICharacterInfo = xr_new<CUICharacterInfo>( );
+	UICharacterInfo->SetAutoDelete(true);
 	UICharacterWindow->AttachChild(UICharacterInfo);
 	UICharacterInfo->Init(0, 0, UICharacterWindow->GetWidth( ), UICharacterWindow->GetHeight( ), STALKERS_RANKING_CHARACTER_XML);
 
@@ -246,15 +254,18 @@ void CUIStalkerRankingInfoItem::Init(CUIXml* xml, const char* path, int idx)
 
 	xml->SetLocalRoot(xml->NavigateToNode(path, idx));
 
-	m_text1 = xr_new<CUIStatic>( ); m_text1->SetAutoDelete(true);
+	m_text1 = xr_new<CUIStatic>( );
+	m_text1->SetAutoDelete(true);
 	AttachChild(m_text1);
 	xml_init.InitStatic(*xml, "text_1", 0, m_text1);
 
-	m_text2 = xr_new<CUIStatic>( ); m_text2->SetAutoDelete(true);
+	m_text2 = xr_new<CUIStatic>( );
+	m_text2->SetAutoDelete(true);
 	AttachChild(m_text2);
 	xml_init.InitStatic(*xml, "text_2", 0, m_text2);
 
-	m_text3 = xr_new<CUIStatic>( ); m_text3->SetAutoDelete(true);
+	m_text3 = xr_new<CUIStatic>( );
+	m_text3->SetAutoDelete(true);
 	AttachChild(m_text3);
 	xml_init.InitStatic(*xml, "text_3", 0, m_text3);
 

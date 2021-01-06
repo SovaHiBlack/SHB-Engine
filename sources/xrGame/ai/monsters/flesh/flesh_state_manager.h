@@ -4,11 +4,11 @@
 
 class CFlesh;
 
-class CStateManagerFlesh : public CMonsterStateManager<CFlesh> {
-	typedef CMonsterStateManager<CFlesh> inherited;
+class CStateManagerFlesh : public CMonsterStateManager<CFlesh>
+{
+	using inherited = CMonsterStateManager<CFlesh>;
 
 public:
-
 	CStateManagerFlesh(CFlesh* monster);
 	virtual void	execute				();
 };

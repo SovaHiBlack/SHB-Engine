@@ -183,7 +183,7 @@ void CMiniMapSpot::Draw( )
 			GetUIStaticItem( ).SetShader(m_icon_normal);
 			GetUIStaticItem( ).SetOriginalRect(m_tex_rect_normal.x1, m_tex_rect_normal.y1, m_tex_rect_normal.width( ), m_tex_rect_normal.height( ));
 		}
-	};
+	}
 
 	inherited::Draw( );
 }

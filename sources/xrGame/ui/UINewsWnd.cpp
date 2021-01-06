@@ -101,7 +101,7 @@ void CUINewsWnd::AddNewsItem(GAME_NEWS_DATA& news_data)
 			itm = _itm;
 		}
 		break;
-	};
+	}
 
 	UIScrollWnd->AddWindow(itm, true);
 }

@@ -34,39 +34,48 @@ void CUIActorInfoWnd::Init( )
 	xml_init.InitWindow(uiXml, "main_wnd", 0, this);
 
 	// Декоративное оформление
-	UICharIconFrame = xr_new<CUIFrameWindow>( );	UICharIconFrame->SetAutoDelete(true);
+	UICharIconFrame = xr_new<CUIFrameWindow>( );
+	UICharIconFrame->SetAutoDelete(true);
 	xml_init.InitFrameWindow(uiXml, "chicon_frame_window", 0, UICharIconFrame);
 	AttachChild(UICharIconFrame);
 
-	UICharIconHeader = xr_new<CUIFrameLineWnd>( );	UICharIconHeader->SetAutoDelete(true);
+	UICharIconHeader = xr_new<CUIFrameLineWnd>( );
+	UICharIconHeader->SetAutoDelete(true);
 	xml_init.InitFrameLine(uiXml, "chicon_frame_line", 0, UICharIconHeader);
 	UICharIconFrame->AttachChild(UICharIconHeader);
 
-	UIAnimatedIcon = xr_new<CUIAnimatedStatic>( );	UIAnimatedIcon->SetAutoDelete(true);
+	UIAnimatedIcon = xr_new<CUIAnimatedStatic>( );
+	UIAnimatedIcon->SetAutoDelete(true);
 	xml_init.InitAnimatedStatic(uiXml, "a_static", 0, UIAnimatedIcon);
 	UICharIconHeader->AttachChild(UIAnimatedIcon);
 
-	UIInfoFrame = xr_new<CUIFrameWindow>( ); UIInfoFrame->SetAutoDelete(true);
+	UIInfoFrame = xr_new<CUIFrameWindow>( );
+	UIInfoFrame->SetAutoDelete(true);
 	xml_init.InitFrameWindow(uiXml, "info_frame_window", 0, UIInfoFrame);
 	AttachChild(UIInfoFrame);
 
-	UIInfoHeader = xr_new<CUIFrameLineWnd>( ); UIInfoHeader->SetAutoDelete(true);
+	UIInfoHeader = xr_new<CUIFrameLineWnd>( );
+	UIInfoHeader->SetAutoDelete(true);
 	xml_init.InitFrameLine(uiXml, "info_frame_line", 0, UIInfoHeader);
 	UIInfoFrame->AttachChild(UIInfoHeader);
 
-	UIDetailList = xr_new<CUIScrollView>( ); UIDetailList->SetAutoDelete(true);
+	UIDetailList = xr_new<CUIScrollView>( );
+	UIDetailList->SetAutoDelete(true);
 	UIInfoFrame->AttachChild(UIDetailList);
 	xml_init.InitScrollView(uiXml, "detail_list", 0, UIDetailList);
 
-	UIMasterList = xr_new<CUIScrollView>( ); UIMasterList->SetAutoDelete(true);
+	UIMasterList = xr_new<CUIScrollView>( );
+	UIMasterList->SetAutoDelete(true);
 	UICharIconFrame->AttachChild(UIMasterList);
 	xml_init.InitScrollView(uiXml, "master_list", 0, UIMasterList);
 
-	UICharacterWindow = xr_new<CUIWindow>( ); UICharacterWindow->SetAutoDelete(true);
+	UICharacterWindow = xr_new<CUIWindow>( );
+	UICharacterWindow->SetAutoDelete(true);
 	UICharIconFrame->AttachChild(UICharacterWindow);
 	xml_init.InitWindow(uiXml, "character_info", 0, UICharacterWindow);
 
-	UICharacterInfo = xr_new<CUICharacterInfo>( ); UICharacterInfo->SetAutoDelete(true);
+	UICharacterInfo = xr_new<CUICharacterInfo>( );
+	UICharacterInfo->SetAutoDelete(true);
 	UICharacterWindow->AttachChild(UICharacterInfo);
 	UICharacterInfo->Init(0, 0, UICharacterWindow->GetWidth( ), UICharacterWindow->GetHeight( ), ACTOR_CHARACTER_XML);
 
@@ -189,7 +198,7 @@ void CUIActorInfoWnd::FillPointsDetail(const shared_str& id)
 		return;
 	}
 
-	string256									str;
+	string256 str;
 	sprintf_s(str, "st_detail_list_for_%s", id.c_str( ));
 	UIInfoHeader->GetTitleStatic( )->SetTextST(str);
 

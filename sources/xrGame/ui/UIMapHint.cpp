@@ -17,11 +17,13 @@ void CUIMapHint::Init( )
 
 	xml_init.InitWindow(uiXml, "hint_item", 0, this);
 
-	m_border = xr_new<CUIFrameWindow>( ); m_border->SetAutoDelete(true);
+	m_border = xr_new<CUIFrameWindow>( );
+	m_border->SetAutoDelete(true);
 	AttachChild(m_border);
 	xml_init.InitFrameWindow(uiXml, "hint_item:frame", 0, m_border);
 
-	m_text = xr_new<CUIStatic>( ); m_text->SetAutoDelete(true);
+	m_text = xr_new<CUIStatic>( );
+	m_text->SetAutoDelete(true);
 	AttachChild(m_text);
 	xml_init.InitStatic(uiXml, "hint_item:description", 0, m_text);
 }

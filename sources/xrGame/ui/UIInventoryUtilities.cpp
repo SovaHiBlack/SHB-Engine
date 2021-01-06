@@ -192,7 +192,13 @@ const shared_str InventoryUtilities::GetTimeAsString(ALife::_TIME_ID time, ETime
 
 	ZeroMemory(bufTime, sizeof(bufTime));
 
-	u32 year = 0, month = 0, day = 0, hours = 0, mins = 0, secs = 0, milisecs = 0;
+	u32 year = 0;
+	u32 month = 0;
+	u32 day = 0;
+	u32 hours = 0;
+	u32 mins = 0;
+	u32 secs = 0;
+	u32 milisecs = 0;
 
 	split_time(time, year, month, day, hours, mins, secs, milisecs);
 
@@ -223,7 +229,6 @@ const shared_str InventoryUtilities::GetTimeAsString(ALife::_TIME_ID time, ETime
 		{
 			int total_day = (int) (time / (1000 * 60 * 60 * 24));
 			sprintf_s(bufTime, sizeof(bufTime), "%dd %02i%c%02i%c%02i", total_day, hours, timeSeparator, mins, timeSeparator, secs);
-
 		}
 		break;
 		default:
@@ -241,7 +246,13 @@ const shared_str InventoryUtilities::GetDateAsString(ALife::_TIME_ID date, EDate
 
 	ZeroMemory(bufDate, sizeof(bufDate));
 
-	u32 year = 0, month = 0, day = 0, hours = 0, mins = 0, secs = 0, milisecs = 0;
+	u32 year = 0;
+	u32 month = 0;
+	u32 day = 0;
+	u32 hours = 0;
+	u32 mins = 0;
+	u32 secs = 0;
+	u32 milisecs = 0;
 
 	split_time(date, year, month, day, hours, mins, secs, milisecs);
 
@@ -522,7 +533,7 @@ u32 InventoryUtilities::GetReputationColor(CHARACTER_REPUTATION_VALUE rv)
 	return res;
 }
 
-u32	InventoryUtilities::GetRelationColor(ALife::ERelationType relation)
+u32 InventoryUtilities::GetRelationColor(ALife::ERelationType relation)
 {
 	switch (relation)
 	{
@@ -538,7 +549,7 @@ u32	InventoryUtilities::GetRelationColor(ALife::ERelationType relation)
 		break;
 		case ALife::eRelationTypeEnemy:
 		{
-			return  0xffff0000;
+			return 0xffff0000;
 		}
 		break;
 		default:

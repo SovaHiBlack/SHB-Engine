@@ -29,11 +29,12 @@ void CUIMessagesWindow::AddLogMessage(const shared_str& msg)
 
 void CUIMessagesWindow::Init(float x, float y, float width, float height)
 {
-	CUIXml		 xml;
+	CUIXml xml;
 
 	xml.Init("$game_config$", "ui", "messages_window.xml");
 
-	m_pGameLog = xr_new<CUIGameLog>( ); m_pGameLog->SetAutoDelete(true);
+	m_pGameLog = xr_new<CUIGameLog>( );
+	m_pGameLog->SetAutoDelete(true);
 	m_pGameLog->Show(true);
 	AttachChild(m_pGameLog);
 	CUIXmlInit::InitScrollView(xml, "sp_log_list", 0, m_pGameLog);

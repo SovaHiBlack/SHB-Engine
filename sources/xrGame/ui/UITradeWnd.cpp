@@ -646,7 +646,6 @@ bool CUITradeWnd::OnItemDbClick(CUICellItem* itm)
 	return true;
 }
 
-
 CUICellItem* CUITradeWnd::CurrentItem( )
 {
 	return m_pCurrentCellItem;

@@ -4,8 +4,9 @@
 
 class CBloodsucker;
 
-class CStateManagerBloodsucker : public CMonsterStateManager<CBloodsucker> {
-	typedef CMonsterStateManager<CBloodsucker> inherited;
+class CStateManagerBloodsucker : public CMonsterStateManager<CBloodsucker>
+{
+	using inherited = CMonsterStateManager<CBloodsucker>;
 
 public:
 	CStateManagerBloodsucker(CBloodsucker* monster);

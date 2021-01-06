@@ -22,13 +22,13 @@
 
 CStateManagerBloodsucker::CStateManagerBloodsucker(CBloodsucker* monster) : inherited(monster)
 {
-	add_state(eStateRest, xr_new<CStateMonsterRest<CBloodsucker> >(monster));
-	add_state(eStatePanic, xr_new<CStateMonsterPanic<CBloodsucker> >(monster));
-	add_state(eStateAttack, xr_new<CBloodsuckerStateAttack<CBloodsucker> >(monster));
-	add_state(eStateEat, xr_new<CStateMonsterEat<CBloodsucker> >(monster));
-	add_state(eStateHearInterestingSound, xr_new<CStateMonsterHearInterestingSound<CBloodsucker> >(monster));
-	add_state(eStateHitted, xr_new<CStateMonsterHitted<CBloodsucker> >(monster));
-	add_state(eStateCustom_Vampire, xr_new<CStateBloodsuckerVampire<CBloodsucker> >(monster));
+	add_state(eStateRest, xr_new<CStateMonsterRest<CBloodsucker>>(monster));
+	add_state(eStatePanic, xr_new<CStateMonsterPanic<CBloodsucker>>(monster));
+	add_state(eStateAttack, xr_new<CBloodsuckerStateAttack<CBloodsucker>>(monster));
+	add_state(eStateEat, xr_new<CStateMonsterEat<CBloodsucker>>(monster));
+	add_state(eStateHearInterestingSound, xr_new<CStateMonsterHearInterestingSound<CBloodsucker>>(monster));
+	add_state(eStateHitted, xr_new<CStateMonsterHitted<CBloodsucker>>(monster));
+	add_state(eStateCustom_Vampire, xr_new<CStateBloodsuckerVampire<CBloodsucker>>(monster));
 }
 
 void CStateManagerBloodsucker::execute( )

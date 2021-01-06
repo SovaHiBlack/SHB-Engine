@@ -8,13 +8,11 @@
 
 TEMPLATE_SPECIALIZATION
 CStateBloodsuckerVampireApproachAbstract::CStateBloodsuckerVampireApproach(_Object *obj) : inherited(obj)
-{
-}
+{ }
 
 TEMPLATE_SPECIALIZATION
 CStateBloodsuckerVampireApproachAbstract::~CStateBloodsuckerVampireApproach()
-{
-}
+{ }
 
 TEMPLATE_SPECIALIZATION
 void CStateBloodsuckerVampireApproachAbstract::initialize()

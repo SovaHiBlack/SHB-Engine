@@ -154,7 +154,10 @@ void CBloodsucker::reinit()
 	inherited::reinit			();
 	CControlledActor::reinit	();
 
-	if(CCustomMonster::use_simplified_visual())	return;
+	if (CCustomMonster::use_simplified_visual( ))
+	{
+		return;
+	}
 
 	Bones.Reset					();
 
@@ -290,11 +293,11 @@ void CBloodsucker::CheckSpecParams(u32 spec_params)
 BOOL CBloodsucker::net_Spawn (CSE_Abstract* DC)
 {
 	if (!inherited::net_Spawn(DC))
-		return(FALSE);
+		return FALSE;
 
 	vfAssignBones	();
 
-	return(TRUE);
+	return TRUE;
 }
 
 void CBloodsucker::UpdateCL()
@@ -311,9 +314,15 @@ void CBloodsucker::shedule_Update(u32 dt)
 {
 	inherited::shedule_Update(dt);
 	
-	if (!g_Alive())	setVisible(TRUE);
+	if (!g_Alive( ))
+	{
+		setVisible(TRUE);
+	}
 
-	if (m_alien_control.active())	sound().play(eAlien);
+	if (m_alien_control.active( ))
+	{
+		sound( ).play(eAlien);
+	}
 }
 
 void CBloodsucker::Die(CObject* who)
@@ -337,10 +346,15 @@ void CBloodsucker::post_fsm_update()
 
 bool CBloodsucker::check_start_conditions(ControlCom::EControlType type)
 {
-	if (!inherited::check_start_conditions(type))	return false;
+	if (!inherited::check_start_conditions(type))
+	{
+		return false;
+	}
 
 	if (type == ControlCom::eControlRunAttack)
+	{
 		return (!state_invisible);
+	}
 
 	return true;
 }
@@ -352,7 +366,11 @@ void CBloodsucker::set_alien_control(bool val)
 
 void CBloodsucker::predator_start()
 {
-	if (m_predator)					return;
+	if (m_predator)
+	{
+		return;
+	}
+
 	cNameVisual_set					(m_visual_predator);
 	CDamageManager::reload(*cNameSect(),"damage",pSettings);
 
@@ -367,7 +385,10 @@ void CBloodsucker::predator_start()
 
 void CBloodsucker::predator_stop()
 {
-	if (!m_predator)				return;
+	if (!m_predator)
+	{
+		return;
+	}
 	
 	cNameVisual_set					(*m_visual_default);
 	character_physics_support()->in_ChangeVisual();

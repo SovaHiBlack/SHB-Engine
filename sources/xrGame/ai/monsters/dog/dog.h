@@ -4,11 +4,10 @@
 #include "../controlled_entity.h"
 #include "../../../script_export_space.h"
 
-class CDog : public CBaseMonster,
-				public CControlledEntity<CDog> {
-	
-	typedef		CBaseMonster				inherited;
-	typedef		CControlledEntity<CDog>	CControlled;
+class CDog : public CBaseMonster, public CControlledEntity<CDog>
+{
+	using inherited = CBaseMonster;
+	using CControlled = CControlledEntity<CDog>;
 
 public:
 	CDog();

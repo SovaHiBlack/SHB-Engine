@@ -152,7 +152,7 @@ void CUIDiaryWnd::Reload(EDiaryFilter new_filter)
 			UnloadNewsTab( );
 		}
 		break;
-	};
+	}
 
 	m_currFilter = new_filter;
 
@@ -168,7 +168,7 @@ void CUIDiaryWnd::Reload(EDiaryFilter new_filter)
 			LoadNewsTab( );
 		}
 		break;
-	};
+	}
 }
 
 void CUIDiaryWnd::AddNews( )

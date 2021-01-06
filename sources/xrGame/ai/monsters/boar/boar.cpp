@@ -129,7 +129,9 @@ void CBoar::BoneCallback(CBoneInstance* B)
 BOOL CBoar::net_Spawn(CSE_Abstract* DC)
 {
 	if (!inherited::net_Spawn(DC))
-		return(FALSE);
+	{
+		return FALSE;
+	}
 
 	if (!PPhysicsShell( ))//нельзя ставить колбеки, если создан физ шел - у него стоят свои колбеки!!!
 	{

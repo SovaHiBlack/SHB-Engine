@@ -39,7 +39,6 @@ CUIItemInfo::~CUIItemInfo( )
 
 void CUIItemInfo::Init(const char* xml_name)
 {
-
 	CUIXml uiXml;
 	bool xml_result = uiXml.Init("$game_config$", "ui", xml_name);
 	R_ASSERT3(xml_result, "xml file not found", xml_name);

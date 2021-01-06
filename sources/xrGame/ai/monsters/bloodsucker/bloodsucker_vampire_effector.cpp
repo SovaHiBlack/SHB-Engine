@@ -6,8 +6,7 @@
 // Vampire Postprocess Effector
 //////////////////////////////////////////////////////////////////////////
 
-CVampirePPEffector::CVampirePPEffector(const SPPInfo& ppi, float life_time) :
-	inherited(EEffectorPostProcessType(eCEHit), life_time)
+CVampirePPEffector::CVampirePPEffector(const SPPInfo& ppi, float life_time) : inherited(EEffectorPostProcessType(eCEHit), life_time)
 {
 	state = ppi;
 	m_total = life_time;
@@ -55,8 +54,7 @@ BOOL CVampirePPEffector::Process(SPPInfo& pp)
 #define ANGLE_SPEED		0.2f	
 #define BEST_DISTANCE	0.3f
 
-CVampireCameraEffector::CVampireCameraEffector(float time, const Fvector& src, const Fvector& tgt) :
-	inherited(eCEVampire, time)
+CVampireCameraEffector::CVampireCameraEffector(float time, const Fvector& src, const Fvector& tgt) : inherited(eCEVampire, time)
 {
 	fLifeTime = time;
 	m_time_total = time;

@@ -4,11 +4,10 @@
 #include "../controlled_entity.h"
 #include "../../../script_export_space.h"
 
-class CFlesh : public CBaseMonster,
-				  public CControlledEntity<CFlesh> {
-
-	typedef		CBaseMonster					inherited;
-	typedef		CControlledEntity<CFlesh>	CControlled;
+class CFlesh : public CBaseMonster, public CControlledEntity<CFlesh>
+{
+	using inherited = CBaseMonster;
+	using CControlled = CControlledEntity<CFlesh>;
 
 public:
 	CFlesh();
@@ -22,8 +21,7 @@ public:
 	virtual bool	ability_can_drag		() {return true;}
 
 private:
-	bool	ConeSphereIntersection	(Fvector ConeVertex, float ConeAngle, Fvector ConeDir, 
-									Fvector SphereCenter, float SphereRadius);
+	bool	ConeSphereIntersection	(Fvector ConeVertex, float ConeAngle, Fvector ConeDir, Fvector SphereCenter, float SphereRadius);
 	
 public:
 	static void script_register(lua_State*);

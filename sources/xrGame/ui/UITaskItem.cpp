@@ -278,7 +278,7 @@ void CUITaskSubItem::SetGameTask(CGameTask* gt, u16 obj_idx)
 		{
 			NODEFAULT;
 		}
-	};
+	}
 }
 
 void CUITaskSubItem::Update( )

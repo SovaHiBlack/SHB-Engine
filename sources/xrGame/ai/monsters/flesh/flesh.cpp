@@ -24,7 +24,9 @@ CFlesh::~CFlesh()
 BOOL CFlesh::net_Spawn (CSE_Abstract* DC)
 {
 	if (!inherited::net_Spawn(DC))
-		return(FALSE);
+	{
+		return FALSE;
+	}
 
 	return TRUE;
 }
@@ -108,16 +110,25 @@ void CFlesh::Load(const char* section)
 // т.е. если активирована последовательность
 void CFlesh::CheckSpecParams(u32 spec_params)
 {
-	if ((spec_params & ASP_DRAG_CORPSE) == 	ASP_DRAG_CORPSE) anim().SetCurAnim(eAnimDragCorpse);
+	if ((spec_params & ASP_DRAG_CORPSE) == ASP_DRAG_CORPSE)
+	{
+		anim( ).SetCurAnim(eAnimDragCorpse);
+	}
 
-	if ((spec_params & ASP_CHECK_CORPSE) == ASP_CHECK_CORPSE) {
-		com_man().seq_run(anim().get_motion_id(eAnimCheckCorpse));	}
+	if ((spec_params & ASP_CHECK_CORPSE) == ASP_CHECK_CORPSE) 
+	{
+		com_man().seq_run(anim().get_motion_id(eAnimCheckCorpse));
+	}
 
-	if ((spec_params & ASP_BACK_ATTACK) == ASP_BACK_ATTACK) {
+	if ((spec_params & ASP_BACK_ATTACK) == ASP_BACK_ATTACK)
+	{
 		com_man().seq_run(anim().get_motion_id(eAnimAttackFromBack));
 	}
 
-	if ((spec_params & ASP_THREATEN) == ASP_THREATEN) anim().SetCurAnim(eAnimThreaten);
+	if ((spec_params & ASP_THREATEN) == ASP_THREATEN)
+	{
+		anim( ).SetCurAnim(eAnimThreaten);
+	}
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
@@ -139,16 +150,21 @@ bool CFlesh::ConeSphereIntersection(Fvector ConeVertex, float ConeAngle, Fvector
 
 	float fDSqrLen = kD.square_magnitude();
 	float fE = kD.dotproduct(ConeDir);
-	if ( fE > 0.0f && fE*fE >= fDSqrLen*fCosSqr ) {
-		
+	if ( fE > 0.0f && fE*fE >= fDSqrLen*fCosSqr )
+	{
 		float fSinSqr = _sin(ConeAngle)*_sin(ConeAngle);
 
 		fDSqrLen = kCmV.square_magnitude();
 		fE = -kCmV.dotproduct(ConeDir);
-		if ( fE > 0.0f && fE*fE >= fDSqrLen*fSinSqr ) {
+		if ( fE > 0.0f && fE*fE >= fDSqrLen*fSinSqr ) 
+		{
 			float fRSqr = SphereRadius*SphereRadius;
 			return fDSqrLen <= fRSqr;
-		} else return true;
+		}
+		else
+		{
+			return true;
+		}
 	}
 
 	return false;

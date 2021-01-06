@@ -110,23 +110,33 @@ void CUIInventoryWnd::Init( )
 	//Элементы автоматического добавления
 	xml_init.InitAutoStatic(uiXml, "auto_static", this);
 
-	m_pUIBagList = xr_new<CUIDragDropListEx>( ); UIBagWnd.AttachChild(m_pUIBagList); m_pUIBagList->SetAutoDelete(true);
+	m_pUIBagList = xr_new<CUIDragDropListEx>( );
+	UIBagWnd.AttachChild(m_pUIBagList);
+	m_pUIBagList->SetAutoDelete(true);
 	xml_init.InitDragDropListEx(uiXml, "dragdrop_bag", 0, m_pUIBagList);
 	BindDragDropListEnents(m_pUIBagList);
 
-	m_pUIBeltList = xr_new<CUIDragDropListEx>( ); AttachChild(m_pUIBeltList); m_pUIBeltList->SetAutoDelete(true);
+	m_pUIBeltList = xr_new<CUIDragDropListEx>( );
+	AttachChild(m_pUIBeltList);
+	m_pUIBeltList->SetAutoDelete(true);
 	xml_init.InitDragDropListEx(uiXml, "dragdrop_belt", 0, m_pUIBeltList);
 	BindDragDropListEnents(m_pUIBeltList);
 
-	m_pUIOutfitList = xr_new<CUIOutfitDragDropList>( ); AttachChild(m_pUIOutfitList); m_pUIOutfitList->SetAutoDelete(true);
+	m_pUIOutfitList = xr_new<CUIOutfitDragDropList>( );
+	AttachChild(m_pUIOutfitList);
+	m_pUIOutfitList->SetAutoDelete(true);
 	xml_init.InitDragDropListEx(uiXml, "dragdrop_outfit", 0, m_pUIOutfitList);
 	BindDragDropListEnents(m_pUIOutfitList);
 
-	m_pUIPistolList = xr_new<CUIDragDropListEx>( ); AttachChild(m_pUIPistolList); m_pUIPistolList->SetAutoDelete(true);
+	m_pUIPistolList = xr_new<CUIDragDropListEx>( );
+	AttachChild(m_pUIPistolList);
+	m_pUIPistolList->SetAutoDelete(true);
 	xml_init.InitDragDropListEx(uiXml, "dragdrop_pistol", 0, m_pUIPistolList);
 	BindDragDropListEnents(m_pUIPistolList);
 
-	m_pUIAutomaticList = xr_new<CUIDragDropListEx>( ); AttachChild(m_pUIAutomaticList); m_pUIAutomaticList->SetAutoDelete(true);
+	m_pUIAutomaticList = xr_new<CUIDragDropListEx>( );
+	AttachChild(m_pUIAutomaticList);
+	m_pUIAutomaticList->SetAutoDelete(true);
 	xml_init.InitDragDropListEx(uiXml, "dragdrop_automatic", 0, m_pUIAutomaticList);
 	BindDragDropListEnents(m_pUIAutomaticList);
 

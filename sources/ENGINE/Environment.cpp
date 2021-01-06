@@ -17,10 +17,8 @@
 //////////////////////////////////////////////////////////////////////
 // Construction/Destruction
 //////////////////////////////////////////////////////////////////////
-ENGINE_API	float			psVisDistance	= 1.f;
+ENGINE_API	float			psVisDistance	= 1.0f;
 static const float			MAX_NOISE_FREQ	= 0.03f;
-
-
 
 // real WEATHER->WFX transition time
 #define WFX_TRANS_TIME		5.f
@@ -403,7 +401,7 @@ void CEnvironment::calculate_dynamic_sun_dir( )
 		cosAZ = (_sin(deg2rad(D)) - _sin(LatitudeR) * _cos(SZA)) / sin_SZA_X_cos_Latitude;
 
 	clamp(cosAZ, -1.0f, 1.0f);
-	float AZ = acosf(cosAZ) + PI; // AVO: sun direction fix
+	float AZ = acosf(cosAZ) - PI; // AVO: sun direction fix
 
 	const Fvector2 minAngle = Fvector2( ).set(deg2rad(1.0f), deg2rad(3.0f));
 

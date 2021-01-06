@@ -799,7 +799,6 @@ bool CUIMainIngameWnd::OnKeyboardPress(int dik)
 			{
 				m_pWeapon->vLoadedShellPoint = tmpV;
 			}
-
 #endif // def DEBUG
 
 		}
@@ -1365,7 +1364,6 @@ void test_update( )
 
 void test_key(int dik)
 {
-
 	if (dik == DIK_K)
 	{
 		if (!pUIFrame)

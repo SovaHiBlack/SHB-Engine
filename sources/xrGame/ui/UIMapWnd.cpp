@@ -19,11 +19,11 @@
 #include "../HUDManager.h"//
 #include "..\..\ENGINE\Input.h"
 
-const int			SCROLLBARS_SHIFT = 5;
-const int			VSCROLLBAR_STEP = 20; // В пикселях
-const int			HSCROLLBAR_STEP = 20; // В пикселях
+const int SCROLLBARS_SHIFT = 5;
+const int VSCROLLBAR_STEP = 20; // В пикселях
+const int HSCROLLBAR_STEP = 20; // В пикселях
 
-static bool			MAP_FLY_MODE = true;
+static bool MAP_FLY_MODE = true;
 
 CUIMapWnd::CUIMapWnd( )
 {
@@ -444,7 +444,7 @@ bool CUIMapWnd::OnMouse(float x, float y, EUIMessages mouse_action)
 			}
 			break;
 		}
-	};
+	}
 
 	if (((mouse_action == WINDOW_LBUTTON_DOWN) && (m_flags.is_any(lmZoomIn + lmZoomOut))) || (mouse_action == WINDOW_MOUSE_WHEEL_DOWN) || (mouse_action == WINDOW_MOUSE_WHEEL_UP))
 	{
@@ -522,7 +522,6 @@ void CUIMapWnd::UpdateScroll( )
 	m_UIMainScrollV->SetScrollPos(iFloor(-w_pos.y));
 	m_UIMainScrollH->SetScrollPos(iFloor(-w_pos.x));
 }
-
 
 void CUIMapWnd::OnScrollV(CUIWindow*, void*)
 {

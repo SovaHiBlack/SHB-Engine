@@ -54,7 +54,13 @@ void CUINewsItemWnd::Setup(GAME_NEWS_DATA& news_data)
 	float h1 = m_UIText->GetWndPos( ).y + m_UIText->GetHeight( );
 
 	string128 _time;
-	u32 years, months, days, hours, minutes, seconds, milliseconds;
+	u32 years;
+	u32 months;
+	u32 days;
+	u32 hours;
+	u32 minutes;
+	u32 seconds;
+	u32 milliseconds;
 	split_time(news_data.receive_time, years, months, days, hours, minutes, seconds, milliseconds);
 	sprintf_s(_time, "%02i/%02i/%04i %02i:%02i", days, months, years, hours, minutes);
 

@@ -3,12 +3,12 @@
 #include "..\BaseMonster\BaseMonster.h"
 #include "../../../script_export_space.h"
 
-class CChimera : public CBaseMonster {
-	typedef		CBaseMonster	inherited;
+class CChimera : public CBaseMonster
+{
+	using inherited = CBaseMonster;
 
 	bool		b_upper_state;
-
-	
+							   	
 	SVelocityParam		m_fsVelocityWalkUpper;
 	SVelocityParam		m_fsVelocityJumpGround;
 	SVelocityParam		m_fsVelocityRunAttack;

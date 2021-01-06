@@ -1,10 +1,3 @@
-//-----------------------------------------------------------------------------
-// File: x_ray.cpp
-//
-// Programmers:
-//	Oles		- Oles Shishkovtsov
-//	AlexMX		- Alexander Maksimchuk
-//-----------------------------------------------------------------------------
 #include "stdafx.h"
 
 #include "IGameLevel.h"
@@ -414,7 +407,7 @@ int APIENTRY WinMain_impl(HINSTANCE hInstance,
 	}
 #endif
 
-	SetThreadAffinityMask		(GetCurrentThread(),1);
+//	SetThreadAffinityMask		(GetCurrentThread(),1);
 
 	// Title window
 	logoWindow					= CreateDialog(GetModuleHandle(NULL),	MAKEINTRESOURCE(IDD_STARTUP), 0, logDlgProc );
