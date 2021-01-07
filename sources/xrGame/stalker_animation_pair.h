@@ -1,10 +1,5 @@
-////////////////////////////////////////////////////////////////////////////
 //	Module 		: stalker_animation_pair.h
-//	Created 	: 25.02.2003
-//  Modified 	: 19.11.2004
-//	Author		: Dmitriy Iassenev
 //	Description : Stalker animation pair
-////////////////////////////////////////////////////////////////////////////
 
 #pragma once
 
@@ -26,7 +21,7 @@ public:
 
 public:
 	typedef xr_vector<float>						ANIMATION_WEIGHTS;
-	typedef std::pair<const char*, const char*>				BLEND_ID;
+	typedef std::pair<const char*, const char*>		BLEND_ID;
 
 public:
 	typedef fastdelegate::FastDelegate0<>			CALLBACK_ID;

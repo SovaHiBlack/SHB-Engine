@@ -67,14 +67,14 @@ bool SHit::is_valide( ) const
 	return hit_type != ALife::eHitTypeMax;
 }
 
-void	SHit::GenHeader(u16 PacketType, u16 ID)
+void SHit::GenHeader(u16 PacketType, u16 ID)
 {
 	DestID = ID;
 	PACKET_TYPE = PacketType;
 	Time = Level( ).timeServer( );
-};
+}
 
-void SHit::Read_Packet(NET_Packet	Packet)
+void SHit::Read_Packet(NET_Packet Packet)
 {
 	u16 type_dummy;
 	Packet.r_begin(type_dummy);
@@ -82,9 +82,9 @@ void SHit::Read_Packet(NET_Packet	Packet)
 	Packet.r_u16(PACKET_TYPE);
 	Packet.r_u16(DestID);
 	Read_Packet_Cont(Packet);
-};
+}
 
-void SHit::Read_Packet_Cont(NET_Packet	Packet)
+void SHit::Read_Packet_Cont(NET_Packet Packet)
 {
 	Packet.r_u16(whoID);
 	Packet.r_u16(weaponID);
@@ -95,7 +95,7 @@ void SHit::Read_Packet_Cont(NET_Packet	Packet)
 	Packet.r_float(impulse);
 	aim_bullet = Packet.r_u16( ) != 0;
 
-	hit_type = (ALife::EHitType)Packet.r_u16( );	//hit type
+	hit_type = (ALife::EHitType)Packet.r_u16( );
 
 	if (hit_type == ALife::eHitTypeFireWound)
 	{
@@ -140,7 +140,7 @@ void SHit::Write_Packet(NET_Packet& Packet)
 	Packet.w_u16(u16(DestID & 0xffff));
 
 	Write_Packet_Cont(Packet);
-};
+}
 
 #ifdef DEBUG
 void SHit::_dump( )

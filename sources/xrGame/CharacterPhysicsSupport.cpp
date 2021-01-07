@@ -511,8 +511,7 @@ void CCharacterPhysicsSupport::in_Hit(float P, Fvector& dir, CObject* who, s16 e
 	}
 }
 
-
-IC		void	CCharacterPhysicsSupport::UpdateDeathAnims( )
+IC void CCharacterPhysicsSupport::UpdateDeathAnims( )
 {
 	VERIFY(m_pPhysicsShell->isFullActive( ));
 
@@ -923,7 +922,7 @@ void CCharacterPhysicsSupport::DestroyIKController( )
 	xr_delete(m_ik_controller);
 }
 
-void		 CCharacterPhysicsSupport::in_NetRelcase(CObject* O)
+void CCharacterPhysicsSupport::in_NetRelcase(CObject* O)
 {
 	CPHCapture* c = m_PhysicMovementControl->PHCapture( );
 	if (c)
@@ -957,7 +956,7 @@ SCollisionHitCallback* CCharacterPhysicsSupport::get_collision_hit_callback( )
 	return m_collision_hit_callback;
 }
 
-void	StaticEnvironmentCB(bool& do_colide, bool bo1, dContact& c, SGameMtl* material_1, SGameMtl* material_2)
+void StaticEnvironmentCB(bool& do_colide, bool bo1, dContact& c, SGameMtl* material_1, SGameMtl* material_2)
 {
 	dJointID contact_joint = dJointCreateContact(0, ContactGroup, &c);
 
@@ -975,7 +974,7 @@ void	StaticEnvironmentCB(bool& do_colide, bool bo1, dContact& c, SGameMtl* mater
 	do_colide = false;
 }
 
-void						CCharacterPhysicsSupport::FlyTo(const	Fvector& disp)
+void CCharacterPhysicsSupport::FlyTo(const	Fvector& disp)
 {
 	VERIFY(m_pPhysicsShell);
 	float ammount = disp.magnitude( );
