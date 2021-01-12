@@ -2,13 +2,4 @@
 # Данный GITIGNORE-файл был автоматически создан Microsoft(R) Visual Studio.
 ################################################################################
 
-/sources/.vs/SHB-Engine/v16
-/Debug-Win32/binaries
-/Release-Win32/binaries
 /gamedata/levels
-/gamedata/sounds
-/gamedata/textures
-/Debug-Win32/intermediate
-/Debug-Win32/libraries
-/Release-Win32/libraries
-/Release-Win32/intermediate
