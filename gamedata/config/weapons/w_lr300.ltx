@@ -1,6 +1,9 @@
 [wpn_lr300]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency = 
 $spawn                   	= "weapons\lr-300"					; option for Level Editor
 $npc			 			= on				; option for Level Editor
+$prefetch 		 			= 8
 scheduled                	= off              ; option for ALife Simulator
 cform                    	= skeleton
 class                    	= WP_AK74
@@ -18,7 +21,9 @@ holder_fov_modifier		= 0.7              ; во сколько раз увеличивается eye_fov
 
 
 cost					 	= 5000
+weapon_class			 	= assault_rifle
 
+ammo_limit		 			= 210
 ammo_current		 		= 30
 ammo_elapsed		 		= 30
 
@@ -62,10 +67,10 @@ cam_max_angle			= 7	;максимальный угол отдачи
 cam_max_angle_horz		= 5.0	;(degree) maximum shot horizontal degree 
 cam_step_angle_horz		= 0.5;0.4	;(degree) size of step camera moved in horizontal position while shooting
 
-fire_dispersion_condition_factor = 5	;увеличение дисперсии в процентах при максимальном износе 
-misfire_probability 		= 0.003 ;вероятность осечки при максимальном износе
+fire_dispersion_condition_factor = 3	;увеличение дисперсии в процентах при максимальном износе 
+misfire_probability 		= 0.001 ;вероятность осечки при максимальном износе
 misfire_condition_k			= 0.05 
-condition_shot_dec 			= 0.0001 ;увеличение износа при каждом выстреле
+condition_shot_dec 			= 0.0004 ;увеличение износа при каждом выстреле
 ;-----------------------------------------------------------------------------------
 
 direction                	= 0, 0, 1
@@ -164,7 +169,7 @@ silencer_bullet_speed	 	= 600
 ;silencer_flame_particles 	= weapons\generic_weapon01
 silencer_smoke_particles 	= weapons\generic_shoot_00
 
-snd_silncer_shot			= weapons\w_ak74_shot1 
+snd_silncer_shot			= weapons\silencer4a, 0.6 
 
 silencer_light_color		= 0.58
 silencer_light_range		= 0.01
@@ -222,11 +227,6 @@ anim_reload_gl				= reload_w_gl
 anim_draw_gl				= draw_w_gl
 anim_holster_gl				= holster_w_gl
 anim_shoot_gl				= shoot1_w_gl
-
-;смещения HUD для режима приближения
-zoom_offset			= -0.156700,-0.015200,0.000000
-zoom_rotate_x		= 0.011600
-zoom_rotate_y		= 0.035500
 
 ;прячем перекрестие прицела в зуме
 zoom_hide_crosshair	= true

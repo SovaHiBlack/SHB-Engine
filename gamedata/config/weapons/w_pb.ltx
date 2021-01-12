@@ -1,7 +1,10 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 [wpn_pb]:identity_immunities
+GroupControlSection			= spawn_group
+discovery_dependency	 	= 
 $spawn          			= "weapons\pb"					; option for Level Editor
 $npc						= on		; option for Level Editor
+$prefetch 					= 8
 scheduled       	     	= off              ; option for ALife Simulator
 cform           	        = skeleton
 class           	        = WP_PM
@@ -18,6 +21,7 @@ holder_fov_modifier		= 1.0              ; во сколько раз увеличивается eye_fov
 
 cost						= 300
 
+ammo_limit			 		= 120
 ammo_current			 	= 96
 ammo_elapsed			 	= 8
 
@@ -57,10 +61,10 @@ cam_max_angle			= 20.0	;максимальный угол отдачи
 cam_max_angle_horz		= 10.0	;(degree) maximum shot horizontal degree 
 cam_step_angle_horz		= 1.5	;(degree) size of step camera moved in horizontal position while shooting
 
-fire_dispersion_condition_factor = 5	;увеличение дисперсии в процентах при максимальном износе 
-misfire_probability 		= 0.005	;вероятность осечки при максимальном износе
+fire_dispersion_condition_factor = 3	;увеличение дисперсии в процентах при максимальном износе 
+misfire_probability 		= 0.001	;вероятность осечки при максимальном износе
 misfire_condition_k			= 0.05 
-condition_shot_dec 			= 0.0003 ;увеличение износа при каждом выстреле
+condition_shot_dec 			= 0.0009 ;увеличение износа при каждом выстреле
 ;-----------------------------------------------------------------------------------
 
 direction           	    = 0, 0, 1
@@ -124,7 +128,7 @@ scope_zoom_factor	    	= 55
 ;звуки
 snd_draw					= weapons\pm_draw; weapons\generic_draw
 snd_holster					= weapons\generic_holster
-snd_shoot					= weapons\pb_shoot
+snd_shoot					= weapons\pb_shoot, 0.6
 snd_empty					= weapons\generic_empty
 snd_reload					= weapons\pm_reload, 0.8
 snd_close					= weapons\generic_close

@@ -12,17 +12,11 @@
 
 -- Оплата долговцем наших услуг по устранению снайпера
 function mil_dolg_payment (stalker, player)
-    if not has_alife_info("military_scull_give_reward_1") then
-	    dialogs.relocate_money(stalker, 4000, "in")
-        db.actor:give_info_portion("military_scull_give_reward_1")
-    end
+	dialogs.relocate_money(stalker, 4000, "in")
 end
 
 function mil_dolg_payment2 (stalker, player)
-    if not has_alife_info("military_scull_give_reward_2") then
-	    dialogs.relocate_money(stalker, 8000, "in")
-        db.actor:give_info_portion("military_scull_give_reward_2")
-    end
+	dialogs.relocate_money(stalker, 8000, "in")
 end
 
 function lukash_payment (stalker, player)
@@ -137,7 +131,8 @@ function send_artefact (npc, actor)
 end
 
 function send_desert_eagle (actor, npc)
-    dialogs.relocate_item_section(npc, "wpn_walther", "in") 
+    dialogs.relocate_item_section(npc, "wpn_desert_eagle", "in")
+    db.actor:give_info_portion("mil_max_owner_flash_get") 
 end
 
 function set_snipers_spots (npc, actor)
@@ -162,7 +157,7 @@ end
 
 
 function actor_set_freedom (actor, npc)
-    printf ("ACTOR NOW IN FREEDOM COMMUNITY")
+--    printf ("ACTOR NOW IN FREEDOM COMMUNITY")
     if db.actor then
        db.actor:set_character_community ("actor_freedom", 0, 0)
     end

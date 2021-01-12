@@ -127,7 +127,7 @@ public:
 		{
 			return false;
 		}
-		
+
 		return !!dBodyIsEnabled(m_body);
 	}
 	bool		ActorMovable( )

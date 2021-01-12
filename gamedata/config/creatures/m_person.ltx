@@ -2,7 +2,9 @@
 ; Trader
 ;-----------------------------------------------------------------------------------
 [m_trader]
+GroupControlSection	= spawn_group
 $spawn						= "monsters\trader"		; option for Level Editor
+$prefetch 					= 5
 cform						= skeleton
 class						= AI_TRD_S ;AI_TRADE
 visual						= actors\trader\trader
@@ -33,6 +35,7 @@ ph_crash_speed_max   = 16;30
 ph_mass 		     = 170.
 cost			     = 1
 
+
 Health				 = 100.0
 money				 = 1000000
 
@@ -40,7 +43,8 @@ immunities_sect				= trader_immunities
 condition_sect				= trader_condition
 
 ; attach params
-attachable_items		=
+attachable_items		= 
+
 
 ;species of monster
 species				= human
@@ -92,9 +96,11 @@ front_right	= bip01_r_foot
 	panic_stand_run_forward		= 6.5
 
 [m_osoznanie]:stalker
+GroupControlSection	= spawn_group
 SpaceRestrictionSection = space_restrictor
 $spawn               = "stalkers\osoznanie"	; option for Level Editor
 $npc			     = on			; option for Level Editor
+$prefetch 		     = 32
 immunities_sect		 = osoznanie_immunities
 need_osoznanie_mode  = true
 
@@ -109,10 +115,13 @@ chemical_burn_immunity 		= 0.0
 explosion_immunity 			= 0.0
 fire_wound_immunity  		= 0.0
 
+
 [m_barman]:stalker
+GroupControlSection	= spawn_group
 SpaceRestrictionSection = space_restrictor
 $spawn               = "stalkers\barman"	; option for Level Editor
 $npc			     = on			; option for Level Editor
+$prefetch 		     = 32
 money				 = 100000;
 
 visual				 = actors\barman\barman.ogf
@@ -140,15 +149,13 @@ front_right	= bip01_r_foot
 ;	animation				Cycles	| time1 | power1 | time2 | power2 | 
 ;--------------------------------------------------------------------------
 
+
 [m_izgoy]:common_ph_friction_params_on_npc_death
+GroupControlSection	= spawn_group
 SpaceRestrictionSection = space_restrictor
 $spawn               = "stalkers\izgoy"	; option for Level Editor
 $npc			     = on			; option for Level Editor
-
-
-;------------------------------------------------------------------------------
-; Offline Alife
-;------------------------------------------------------------------------------
+$prefetch 		     = 32
 Scheduled		     = on			; option for ALife Simulator
 Human		     	 = on			; option for ALife Simulator
 Health			     = 100			; option for ALife Simulator
@@ -189,6 +196,7 @@ ph_crash_speed_min       = 16
 ph_crash_speed_max       = 30
 ph_mass 				 = 80
 
+
 weapon_usage		     = 1			; boolean
 bone_torso_weapon	     = bip01_r_hand
 bone_head_weapon	     = bip01_l_finger1
@@ -199,6 +207,18 @@ bone_spin				 = bip01_spine1
 bone_model				 = bip01
 DynamicObjectsCount	     = 32
 DynamicSoundsCount	     = 32 
+
+; selectors
+;                           fSearchRange,fEnemySurround,fTotalCover,fTravelWeight,fLightWeight,fLaziness,fTotalViewVectorWeight,fCoverFromMemberWeight,fOptMemberDistance,fOptMemberDistanceWeight,fMinMemberDistance,fMinMemberDistanceWeight,fMaxMemberDistance,fMaxMemberDistanceWeight,fMemberViewDeviationWeight,fCoverFromEnemyWeight,fOptEnemyDistance,fOptEnemyDistanceWeight,fMinEnemyDistance,fMinEnemyDistanceWeight,fMaxEnemyDistance,fMaxEnemyDistanceWeight,fEnemyViewDeviationWeight
+selector_attack          =      20.0,        300.0,         50.0,         0.0,         10.0,       200.0,            100.0,                40.0,                 40.0,                  10.0,                 10.0,                  450.0,              80.0,                150.0,                     1000.0,                   300.0,               10.0,                1000.0,                10.0,                 500.0,           120.0,               100.0,                   2000.0
+;                           fSearchRange,fOptEnemyDistance,fOptEnemyDistanceWeight,fMinEnemyDistance,fMinEnemyDistanceWeight,fMaxEnemyDistance,fMaxEnemyDistanceWeight
+selector_free_hunting    =      20.0,            20.0,                 1000.0,                 0.0,               10000.0,               1000.0,               10000.0,      
+;                           fSearchRange,fCoverFromEnemyWeight
+selector_reload          =      20.0,              -2000.0,
+;                           fSearchRange,fCoverFromEnemyWeight,fOptMemberDistance,fOptMemberDistanceWeight,fMinEnemyDistance,fMinEnemyDistanceWeight,fMaxEnemyDistance,fMaxEnemyDistanceWeight,fOptEnemyDistance,fOptEnemyDistanceWeight,fMinEnemyDistance,fMinEnemyDistanceWeight,fMaxEnemyDistance,fMaxEnemyDistanceWeight
+selector_cover           =      20.0,            -1000.0,                30.0,                 0.0,                  0.0,              100000.0,             100000.0,               1000.0,
+;                           fSearchRange,fCoverFromEnemyWeight,fOptEnemyDistance,fOptEnemyDistanceWeight,fMinEnemyDistance,fMinEnemyDistanceWeight,fMaxEnemyDistance,fMaxEnemyDistanceWeight,fEnemyViewDeviationWeight
+selector_retreat         =      20.0,             -100.0,            1000.0,                 1000.0,                0.0,                   0.0,        100000.0,                 0.0,                   000.0
 
 ;-------VISIBILITY----------------------------------------------------
 eye_fov						= 170; 
@@ -225,9 +245,23 @@ step_params						= izgoy_step_manager
 LegsCount						= 2
 foot_bones						= izgoy_foot_bones
 
+CrouchFactor             =     0.33
+WalkFactor               =     1.2	;2.15
+WalkBackFactor           =     1.2	;2.15
+RunFactor                =     5.0
+RunBackFactor            =     1.5
+WalkFreeFactor           =     0.85      ;1.00
+RunFreeFactor            =     2.5
+PanicFactor              =     6.5
+DamagedWalkFactor        =     0.75
+DamagedRunFactor         =     1.4
+DamagedWalkFreeFactor    =     0.6
+DamagedRunFreeFactor     =     0
+DamagedPanicFactor       =     1.9
+
 ; fire params
 disp_walk_stand			 = 16	;12.0	;6.0	;4.0	;2.0
-disp_walk_crouch		 = 16	;8.0	;4.0	;3.0	;1.5
+disp_walk_crouch		 = 16	;8.0	;4.0	;3.0	;1.5	
 disp_run_stand			 = 16	;20.0	;10.0	;8.0	;4.0
 disp_run_crouch			 = 16	;12.0	;6.0	;4.0	;2.0
 disp_stand_stand		 = 16	;6.0	;3.0	;2.0	;1.0
@@ -252,6 +286,7 @@ sound_death			 = monsters\stalker\death\em1_killed
 sound_hit			 = monsters\human\combat\ukr\ukr1_damage,monsters\stalker\wound\wound
 sound_humming		 = monsters\stalker\humming\em1_humming,monsters\stalker\humming\em1_whistle
 sound_alarm			 = monsters\human\combat\ukr\alarm\ukr1_
+sound_attack		 = monsters\human\combat\ukr\attack\ukr1_attack
 sound_backup		 = monsters\human\combat\ukr\backup\ukr1_otstup
 sound_detour		 = monsters\human\combat\ukr\detour\ukr1_detour
 sound_search		 = monsters\human\combat\ukr\search\ukr1_finding
@@ -278,6 +313,7 @@ destroyed_vis_name	 = physics\Dead_Body\trupik_crash
 
 species				= human
 
+
 [trader_immunities]
 burn_immunity 				= 0.0				;коэффициенты иммунитета 
 strike_immunity 			= 0.0
@@ -290,18 +326,26 @@ explosion_immunity 			= 0.0
 fire_wound_immunity  		= 0.0
 
 [trader_condition]
-satiety_v					= 0.0				;скорость уменьшения сытости со временем [0...1]
+satiety_v					= 0.0				;скорость уменьшения сытости со временем
+radiation_v					= 1.0				;скорость уменьшения радиации
 satiety_power_v				= 1.0				;увеличение силы при уменьшении сытости 
-satiety_health_v			= 1.0				;увеличение здоровья при уменьшении сытости
-radiation_v					= 1.0				;скорость уменьшения радиации [0...1]
+satiety_health_v			= 1.0				;увеличение здоровья при уменьшении сытости 
+satiety_critical			= 0.0				;критическое значения сытости (в процентах от 0..1) когда здоровье начианает уменьшаться
 radiation_health_v			= 0.0				;уменьшение здоровья при воздействии радиации
-morale_v					= 0.0				;скорость восстановления морали [0...1]
-psy_health_v				= 0.1				;скорость восстановления psy-здоровья
-
+morale_v					= 0.0				;скорость восстановления морали 						
 health_hit_part				= 1.0				;процент хита, уходящий на отнимание здоровья
 power_hit_part				= 0.1				;процент хита, уходящий на отнимание силы
+psy_health_v				= 0.1				;скорость восстановления psy-здоровья
 
 ;открытые раны
 bleeding_v					= 0.0				;потеря крови при номинальной ране в секунду
 wound_incarnation_v			= 1.0				;крутизна кривой заживления (какой процент раны заживет в игровую секунду)
 min_wound_size				= 1.0				;минимальный размер раны, после которого она считается зажившей
+
+sleep_health				= 1.0		;1.5				;коэффициенты скоростей изменения параметров во время сна
+sleep_power					= 1.0		;1.5
+sleep_satiety				= 1.0		;0.8
+sleep_radiation				= 1.0		;1.1
+sleep_psy_health			= 1.0
+
+

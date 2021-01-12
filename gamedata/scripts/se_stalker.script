@@ -5,6 +5,8 @@
 	6 - сохранение поля death_droped
 ]]
 
+local tmp_stalkers = {}
+
 class "se_stalker"	(cse_alife_human_stalker)
 --------------------
 function se_stalker:__init (section) super (section)
@@ -31,6 +33,9 @@ function se_stalker:__init (section) super (section)
 
 	--' Test for dima
 	self.dont_spawn_online = false
+
+	--' Вызывался ли генератор ссылок на тайники.
+	self.treasure_processed = false
 end
 --------------------
 function se_stalker:get_ini()
@@ -102,9 +107,38 @@ function se_stalker:STATE_Write (packet)
 	end
 
 	packet:w_bool(self.was_in_smart_terrain)
-	packet:w_bool(self.death_droped )
+	--' Коряво, но желательна хоть такая совместимость.
+	local flags = 0
+	if self.death_droped then flags = bit_or(flags, 1) end
+	if self.treasure_processed then flags = bit_or(flags, 2) end
+	packet:w_u8(flags)
 end
+
 --------------------
+function check_tmp_table(arg)
+	for i=1, table.getn(tmp_stalkers), 1 do
+		if tmp_stalkers[i] == arg then 
+			return true
+		end
+	end
+	return false
+end
+
+function get_count_tmp_stalkers()
+	return	table.getn(tmp_stalkers)
+end
+
+function get_point_tmp_stalkers(arg)
+	local tmp_id = tmp_stalkers[arg]
+	return	tmp_id
+end
+
+function add_point_tmp_stalkers(arg)
+	if not check_tmp_table(arg) then
+		tmp_stalkers[table.getn(tmp_stalkers)+1] = arg
+	end
+end
+
 function se_stalker:STATE_Read (packet, size)
 	cse_alife_human_stalker.STATE_Read (self, packet, size)
 
@@ -128,7 +162,18 @@ function se_stalker:STATE_Read (packet, size)
 		self.was_in_smart_terrain = packet:r_bool()
 	end
 	if self.script_version >= 6 then
-		self.death_droped = packet:r_bool()
+		local flags = packet:r_u8()
+		self.death_droped = bit_and(flags, 1) ~= 0
+		self.treasure_processed = bit_and(flags, 2) ~= 0
+	end
+
+	if self:alive() then
+		local sim = alife()
+		if sim then
+			if self.id ~= 65535 then
+				add_point_tmp_stalkers(self.id)
+			end
+		end
 	end
 end
 --------------------

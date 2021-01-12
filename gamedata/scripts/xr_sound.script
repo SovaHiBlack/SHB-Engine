@@ -206,7 +206,7 @@ function play_sound(npc, themes, timeout)
 		then
 			if db.sound[npc_id].last_snd[snd.into_id] == snd.into_max - 1 then
 				if snd.into_cycled == true then
-					db.sound[npc_id].last_snd[snd.into_id] = nil 
+					db.sound[npc_id].last_snd[snd.into_id] = nil
 				else
 					return
 				end
@@ -279,7 +279,7 @@ function set_actor_sound(sound)
 	if actor_sound.theme ~= sound then
 		--' Туточки надобно распарсить имена тем в их id
 		if sound == nil then sound = "" end		
-		set_actor_sound.theme = sound
+		actor_sound.theme = sound
 		actor_sound.begin = nil
 		
 		this.set_actor_sound_factor(1)

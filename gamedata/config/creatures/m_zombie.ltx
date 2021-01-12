@@ -1,65 +1,42 @@
-;==============================================================================
-; ZOMBIE
-;==============================================================================
-;******************************************************************************
-; BASE PROFILES
-;******************************************************************************
 [m_zombie_e]:monster_base
+GroupControlSection	= spawn_group
 SpaceRestrictionSection = space_restrictor,zone_mosquito_bald,zone_witches_galantine,zone_burning_fuzz1,zone_mincer,zone_gravi_zone
 ;$spawn               = "monsters\zombies\zombie_base"		; option for Level Editor
 $npc			     = on						; option for Level Editor
+$prefetch 			 = 16
+Scheduled		     = on						; option for ALife Simulator
+Human		     	 = off						; option for ALife Simulator
+Health			     = 100						; option for ALife Simulator
+MinSpeed		     = 1.0						; option for ALife Simulator
+MaxSpeed		     = 5.0						; option for ALife Simulator
+going_speed          = 2;4.5                      ; option for ALife Simulator
+search_speed         = 1.5                       ; option for ALife Simulator
 visual				 = monsters\zombi\zombi_1
 corpse_visual		 = monsters\zombi\zombi_1
+icon = ui_npc_monster_zombie	
+
 MaxHealthValue		 = 100			; range [0..200]
+DynamicObjectsCount	 = 32
+smart_terrain_choose_interval	= 00:15:00
 
 ef_creature_type	 = 3				; option for evaluation functions
 ef_weapon_type		 = 1
 ef_detector_type	 = 1
 panic_threshold		= 0.1
 
+Spawn_Inventory_Item_Section = mutant_zombie_hand
+Spawn_Inventory_Item_Probability = 0.4
+
 cform                = skeleton					; collision class
 class                = SM_ZOMBI					; AI class
 
 script_binding  	= bind_monster.bind
 
+bone_torso			 = bip01_spine1 			; bone name
 bone_head			 = bip01_head				; bone name
 bone_fire			 = bip01_head				; bone name
-bone_torso			 = bip01_spine1 			; bone name
-
 weapon_usage		 = 0						; boolean
 
-Spawn_Inventory_Item_Section = mutant_zombie_hand
-Spawn_Inventory_Item_Probability = 0.2
-
-DayTime_Begin		= 0			; начала дня для монстра
-DayTime_End			= 21		; конец дня для монстра
-
-material				= creatures\medium
-
-species					= zombie		;species of monster
-
-terrain				 = zombie_terrain
-
-step_params				= m_zombie_step_params
-LegsCount				= 2
-
-;------------------------------------------------------------------------------
-; Offline Alife
-;------------------------------------------------------------------------------
-Scheduled		     = on						; option for ALife Simulator
-Human		     	 = off						; option for ALife Simulator
-Health			     = 400						; option for ALife Simulator
-MinSpeed		     = 1.0						; option for ALife Simulator
-MaxSpeed		     = 5.0						; option for ALife Simulator
-going_speed          = 2;4.5                      ; option for ALife Simulator
-search_speed         = 1.5                       ; option for ALife Simulator
-
-smart_terrain_choose_interval	= 00:15:00
-;------------------------------------------------------------------------------
-
-;------------------------------------------------------------------------------
-; Physics
-;------------------------------------------------------------------------------
 ph_box0_center 		 = 0.0,  0.9,  0.0
 ph_box0_size 		 = 0.35, 0.9,  0.35
 ph_box1_center 		 = 0.0,  0.6,  0.0
@@ -68,124 +45,54 @@ ph_crash_speed_min			= 10
 ph_crash_speed_max			= 30
 ph_collision_damage_factor	= 0.1
 ph_mass 		     = 80
-
 destroyed_vis_name	 = physics\Dead_Body\trupik_crash
 
-ph_skeleton_airr_lin_factor   = 1.1 ;550.0 (изменно из-за того, что убрано домножение коэффициент 0.002 из кода)
-ph_skeleton_airr_ang_factor   = 0.0 ;0.0 (изменно из-за того, что убрано домножение на коэффициент 0.3 из кода (0.0*0.3=0.0))
-ph_skeleton_hinger_factor1    = 5.0 ;1.0 (изменно из-за того, что убрано домножение на коэффициент 5.0 из кода)
-ph_skeleton_ddelay	     	  = 5.0 ;Время изменения значения трения в суставе с момента создания шелла, сек
-
-ph_skel_fatal_impulse_factor  = 8.0
+;---------------------------------------------------------------------
+ph_skeleton_airr_lin_factor   = -0.4
+ph_skeleton_airr_ang_factor   = -0.2
+ph_skeleton_hinger_factor1    = 1.0
+ph_skeleton_ddelay	      = 5.0
+ph_skel_fatal_impulse_factor  = 2.0
 ph_after_death_velocity_factor= 0.75
 ph_skel_shot_up_factor        = 0.25
-;------------------------------------------------------------------------------
+;---------------------------------------------------------------------
 
-;------------------------------------------------------------------------------
-; Movement: Velocities & Acceleration
-;------------------------------------------------------------------------------
-; speed factors						linear | angular_real | angular_path | min	 | max
-Velocity_Stand						= 0,		1.4,			1.4,		1,		1
-Velocity_WalkFwdNormal				= 0.9,		0.6,			0.6,		0.02,	2.0
-Velocity_RunFwdNormal				= 1.7,		3.0,			3.0,		0.4,	1
-Velocity_WalkFwdDamaged				= 0.7,		3.0,			0.8,		0.2,	2.0
-Velocity_RunFwdDamaged				= 1.5,		3.0,			3.0,		0.2,	1
-Velocity_Steal						= 1.5,		3.0,			3.0,		1,		1
-Velocity_Drag						= 1.0,		3.0,			3.0,		1,		1
+SoundThreshold		 = 0.06             ; range [0..1]
+
+eye_fov				 = 80
+eye_range			 = 50
+max_hear_dist		 = 30
+
+
+; speed factors			linear | angular_real | angular_path | min |  max
+Velocity_Stand			= 0,		1.4,			1.4,		1,		1
+Velocity_WalkFwdNormal	= 0.9,		0.6,			0.6,		0.02,	2.0	
+Velocity_RunFwdNormal	= 1.7,		3.0,			3.0,		0.4,	1	
+Velocity_WalkFwdDamaged	= 0.7,		3.0,			0.8,		0.2,	2.0	
+Velocity_RunFwdDamaged	= 1.5,  	3.0,			3.0,		0.2,	1
+Velocity_Drag			= 1.0,		3.0,			3.0,		1,		1
+Velocity_Steal			= 1.5,		3.0,			3.0,		1,		1
 
 ; acceleration
-Accel_Calm							= 2.5
-Accel_Aggressive					= 7.5
-;------------------------------------------------------------------------------
+Accel_Generic			= 1.5
+Accel_Calm			= 2.5
+Accel_Aggressive		= 7.5
 
-;------------------------------------------------------------------------------
-; Attack parameters
-;------------------------------------------------------------------------------
-as_min_dist				= 1.4
-as_step					= 0.1
-
+;attack parameters
 MinAttackDist		= 1.7	;0.5
 MaxAttackDist		= 2.3	;3.8
 
-hit_type = wound
-
-attack_params			= m_zombie_attack_params
-attack_effector			= m_zombie_attack_effector
-
 Melee_Rotation_Factor	= 1.6
-;------------------------------------------------------------------------------
 
-;------------------------------------------------------------------------------
-; Entity Conditions
-;------------------------------------------------------------------------------
-satiety_v				= 0.00001			;скорость уменьшения сытости со временем [0...1]
-satiety_power_v			= 0.01				;увеличение силы при уменьшении сытости [0...1]
-satiety_health_v		= 0.005				;увеличение здоровья при уменьшении сытости [0...1]
-radiation_v				= 0.00001			;скорость уменьшения радиации [0...1]
-radiation_health_v		= 0.01				;уменьшение здоровья при воздействии радиации [0...1]
-morale_v				= 0.01				;скорость восстановления морали [0...1]
-psy_health_v			= 0.1				;скорость восстановления psy-здоровья [0...1]
+as_min_dist				= 1.4
+as_step					= 0.1
 
-health_hit_part 		= 1.0		;0.8			;процент хита, уходящий на отнимание здоровья [0...1]
-power_hit_part 			= 1.0		;0.9			;процент хита, уходящий на отнимание силы [0...1]
+DayTime_Begin		= 0			; эрўрыр фэ  фы  ьюэёЄЁр
+DayTime_End			= 21		; ъюэхЎ фэ  фы  ьюэёЄЁр
+Min_Satiety			= 0.4		; ьшэ. эюЁьр ёvЄюёЄш (ьхэ№°х - єцх уюыюфэvщ)
+Max_Satiety			= 1.0		; ьръё. эюЁьр ёvЄюёЄш (сюы№°х - юўхэ№ ёvЄvщ)
 
-immunities_sect			= zombie_immunities
-
-;открытые раны
-bleeding_v				= 0							;потеря крови при номинальной ране в секунду
-wound_incarnation_v		= 0.01						;крутизна кривой заживления (какой процент раны останется после заживления в игровую секунду)
-min_wound_size			= 0.01
-
-;Eat settings
-eat_freq			=	5.0		;частота укусов в сек
-eat_slice			=	0.01	;увеличение сытости при 1 укусе
-eat_slice_weight	=	10.0	;уменьшение еды у трупа
-
-Min_Satiety			= 0.4		; мин. норма сытости (меньше - уже голодный)
-Max_Satiety			= 1.0		; макс. норма сытости (больше - очень сытый)
-
-distance_to_corpse	= 1.2		; дист. до трупа, при которой он переходит в состояние еды
-
-satiety_threshold	= 0.5							; below this value monster fill hunger
-;------------------------------------------------------------------------------
-
-;------------------------------------------------------------------------------
-; Sounds and sound parameters
-;------------------------------------------------------------------------------
-sound_idle				= monsters\zombie\zombie_idle_
-sound_distant_idle			= monsters\zombie\zombie_idle_
-sound_eat				= monsters\zombie\zombie_eat_ 
-sound_aggressive		= monsters\zombie\zombie_attack_
-sound_attack_hit		= monsters\zombie\zombie_attack_hit_
-sound_take_damage		= monsters\zombie\zombie_take_damage_
-sound_die				= monsters\zombie\zombie_die_
-sound_die_in_anomaly	= monsters\zombie\zombie_die_
-sound_threaten			= monsters\biting\def_
-sound_steal				= monsters\biting\def_
-sound_panic				= monsters\zombie\zombie_attack_
-
-killer_clsids			= Z_MINCER,Z_GALANT,ZS_BFUZZ,ZS_MBALD,ZS_GALAN,ZS_MINCE
-
-;Frequency of sounds to be played
-idle_sound_delay		= 20000
-eat_sound_delay			= 3000
-attack_sound_delay		= 24000
-
-distant_idle_sound_delay	= 80000
-distant_idle_sound_range	= 100.0
-
-SoundThreshold		 = 0.06             ; range [0..1]
-max_hear_dist		 = 30
-;------------------------------------------------------------------------------
-
-;------------------------------------------------------------------------------
-; Vision
-;------------------------------------------------------------------------------
-eye_fov				 = 80
-eye_range			 = 50
-
-; number of visible objects monster can handle
-DynamicObjectsCount	 = 32
+distance_to_corpse	= 1.2		; фшёЄ. фю ЄЁєяр, яЁш ъюЄюЁющ юэ яхЁхїюфшЄ т ёюёЄю эшх хфv
 
 min_view_distance   		= 0.7				; коэффициент, который множится на eye_range, в зависимости от угла
 max_view_distance	 		= 1.0				; коэффициент, который множится на eye_range, в зависимости от угла
@@ -196,50 +103,101 @@ decrease_value				= 0.01				; значение, на которое уменьшается вес, если объект 
 velocity_factor		     	= 0.5
 luminocity_factor			= 0.5 				; фактор освещения (только для Актёра)
 transparency_threshold		= 0.25
-;------------------------------------------------------------------------------
 
-;------------------------------------------------------------------------------
+
+
+terrain				 = zombie_terrain
+
+hit_type = wound
+
+;entity condition
+
+; entity condition
+satiety_v 				= 0.00001	;0.01			;скорость уменьшения сытости со временем
+radiation_v 			= 0.00001	;0.004			;скорость уменьшения радиации
+satiety_power_v 		= 0.01		;0.01			;увеличение силы при уменьшении сытости 
+satiety_health_v 		= 0.005		;0.03			;увеличение здоровья при уменьшении сытости 
+satiety_critical 		= -1.0			;0.25			;критическое значения сытости (в процентах от 0..1) когда здоровье начианает уменьшаться
+radiation_health_v 		= 0.01		;0.006			;уменьшение здоровья при воздействии радиации
+morale_v				= 0.01						;скорость восстановления морали
+health_hit_part 		= 1.0		;0.8			;процент хита, уходящий на отнимание здоровья
+power_hit_part 			= 1.0		;0.9			;процент хита, уходящий на отнимание силы
+psy_health_v			= 0.1						;скорость восстановления psy-здоровья
+
+immunities_sect			= zombie_immunities
+
+
+;открытые раны
+bleeding_v				= 0.01						;потеря крови при номинальной ране в секунду
+wound_incarnation_v		= 0.01				;крутизна кривой заживления (какой процент раны останется после заживления в игровую секунду)
+min_wound_size			= 0.01
+
+sleep_health			= 1.0		;1.5				;ъю¤ЇЇшЎшхэЄv ёъюЁюёЄхщ шчьхэхэш  ярЁрьхЄЁют тю тЁхь  ёэр
+sleep_power				= 1.0		;1.5
+sleep_satiety			= 1.0		;0.8
+sleep_radiation			= 1.0		;1.1
+sleep_psy_health		= 1.0
+
+eat_freq			=	5.0		; ўрёЄюЄр єъєёют т ёхъ
+eat_slice			=	0.01	; єтхышўхэшх ёvЄюёЄш яЁш 1 єъєёх
+eat_slice_weight	=	10.0	; єьхэ№°хэшх хфv є ЄЁєяр
+
+satiety_threshold	= 0.5							; below this value monster fill hunger
+
+
 ; Morale
-;------------------------------------------------------------------------------
 Morale_Hit_Quant				= 0.001
 Morale_Attack_Success_Quant		= 0.1
 Morale_Take_Heart_Speed			= 0.1
 Morale_Despondent_Speed			= 0.1
 Morale_Stable_Speed				= 0.01
 Morale_Despondent_Threashold	= 0.1
-;------------------------------------------------------------------------------
 
-;------------------------------------------------------------------------------
-; Damages
-;------------------------------------------------------------------------------
-;Health from which to play injured animation
+
+sound_idle				= monsters\zombie\zombie_idle_ 
+sound_eat				= monsters\zombie\zombie_eat_ 
+sound_aggressive			= monsters\zombie\zombie_attack_
+sound_attack_hit		= monsters\zombie\zombie_attack_hit_
+sound_take_damage		= monsters\zombie\zombie_take_damage_
+sound_die				= monsters\zombie\zombie_die_
+sound_threaten			= monsters\biting\def_		
+sound_landing			= monsters\biting\def_
+sound_steal				= monsters\biting\def_
+sound_panic				= monsters\zombie\zombie_attack_
+sound_growling			= monsters\biting\def_
+sound_die_in_anomaly	= monsters\zombie\zombie_die_
+
+killer_clsids			= Z_MINCER,Z_GALANT,ZS_BFUZZ,ZS_MBALD,ZS_GALAN,ZS_MINCE
+
+idle_sound_delay		= 20000
+eat_sound_delay			= 3000
+attack_sound_delay		= 24000
+
+sound_distant_idle			= monsters\zombie\zombie_idle_
+distant_idle_sound_delay	= 80000
+distant_idle_sound_range	= 100.0	
+
 DamagedThreshold		= 0.5
-
-damage					= m_zombie_damage
-
-critical_wound_threshold		= -1
+critical_wound_threshold		= 0.2
 critical_wound_decrease_quant	= 0.
-;------------------------------------------------------------------------------
-
-
-
-
-
-
 
 FakeDeathCount					= 4		; max count of fake death
 StartFakeDeathHealthThreshold	= 0.6
 
 
 
+material				= creatures\medium
 
+squad_attack_algorithm	= 1
+LegsCount				= 2
 
+attack_effector			= m_zombie_attack_effector
+step_params				= m_zombie_step_params
+attack_params			= m_zombie_attack_params
+damage					= m_zombie_damage
 
-
-
-
-
-
+;species of monster
+species					= zombie
 
 
 [m_zombie_damage]
@@ -249,14 +207,14 @@ StartFakeDeathHealthThreshold	= 0.6
 
 default				= 1.0, -1, 0.01
 
-bip01_pelvis 		= 1.0, -1, 0.01
-bip01_spine 		= 1.0, -1, 0.01
-bip01_spine1 		= 1.0, -1, 0.01
-bip01_neck 			= 1.0, -1, 0.01
+bip01_pelvis 		= 0.1, -1, 0.01
+bip01_spine 		= 0.1, -1, 0.01
+bip01_spine1 		= 0.1, -1, 0.01
+bip01_neck 			= 0.1, -1, 0.01
 bip01_head 			= 2.0, -1, 0.01
 
 [zombie_terrain]
-	255,000,255,255
+  255,000,255,255
 
 [m_zombie_attack_params]
 ;---------------------------------------------------------------------------------------------------------------------------------------------
@@ -272,6 +230,7 @@ stand_attack_2 =	  	0.30,		0.15,		    120,        0.0, 1.0, 0.0,		 -0.6, 0.6, -0
 stand_attack_3 =	  	0.30,		0.20,		    180,        0.0, 1.0, 0.0,		 -0.6, 0.6, -0.6, 0.6,							  2.0
 
 [m_zombie_attack_effector]
+
 duality_h		= 0.01
 duality_v		= 0.01
 blur			= 0.01
@@ -308,12 +267,12 @@ stand_run_dmg_0	 	=	    1,	   0.01,     1,	    0.25,    0.6,
 burn_immunity			= 0.3						;коэффициенты иммунитета 
 strike_immunity			= 0.8
 shock_immunity			= 0.8
-wound_immunity			= 0.8;1
+wound_immunity			= 0.3;1
 radiation_immunity		= 0.0	;0.5
 telepatic_immunity		= 1.0
 chemical_burn_immunity	= 0.3
-explosion_immunity		= 0.5
-fire_wound_immunity		= 0.3
+explosion_immunity		= 0.3
+fire_wound_immunity		= 0.1
 	
 [zombie_weak]:m_zombie_e
 $spawn				= "monsters\zombies\zombie_01_weak"
@@ -322,39 +281,14 @@ panic_threshold		= 0.5
 rank = 0
 spec_rank			= weak
 community			= zombie
+icon = ui_npc_monster_zombie_weak	
 
-immunities_sect		= zombie_immunities_weak
-
-attack_params		= zombie_attack_params_weak
-
-FakeDeathCount					= 2		; max count of fake death
+MaxHealthValue		 = 80
+FakeDeathCount					= 3		; max count of fake death
 StartFakeDeathHealthThreshold	= 0.4
 
-
-
-[zombie_immunities_weak]
-burn_immunity			= 1.0
-strike_immunity			= 1.0
-shock_immunity			= 1.0
-wound_immunity			= 0.20
-radiation_immunity		= 0.0
-telepatic_immunity		= 1.0
-chemical_burn_immunity	= 1.0
-explosion_immunity		= 0.55
-fire_wound_immunity		= 0.20
-
-[zombie_attack_params_weak]
-;---------------------------------------------------------------------------------------------------------------------------------------------
-;	anim			| time[0..1] | hit_power | impulse | impulse_dir (x,y,z)  |	Field of hit_test  (left,right, bottom, top ) |	Test Dist
-;---------------------------------------------------------------------------------------------------------------------------------------------
-;right hand strike
-stand_attack_0 =	  	0.30,		0.15,		    100,        0.0, 1.0, 0.0,		 -0.3, 1.0, -0.6, 0.6,							  2.0
-;left hand strike
-stand_attack_1 =	  	0.35,		0.15,		    100,        0.0, 1.0, 0.0,		 -1.8, 0.6, -0.6, 0.6,							  2.0
-;left hand strike2
-stand_attack_2 =	  	0.30,		0.15,		    120,        0.0, 1.0, 0.0,		 -0.6, 0.6, -1.0, 1.0,							  2.0
-;left hand strike3
-stand_attack_3 =	  	0.30,		0.15,		    180,        0.0, 1.0, 0.0,		 -1.0, 0.3, -0.6, 0.6,							  2.0
+immunities_sect		= zombie_immunities_normal
+attack_params		= zombie_attack_params_normal
 
 [zombie_normal]:m_zombie_e
 $spawn				= "monsters\zombies\zombie_02_normal"
@@ -363,25 +297,25 @@ panic_threshold		= 0.2
 rank = 255
 spec_rank			= normal
 community			= zombie
+icon = ui_npc_monster_zombie_normal
 
-immunities_sect		= zombie_immunities_normal
-attack_params		= zombie_attack_params_normal
-
+MaxHealthValue		 = 100
 FakeDeathCount					= 4		; max count of fake death
 StartFakeDeathHealthThreshold	= 0.6
 
-
+immunities_sect		= zombie_immunities_normal
+attack_params		= zombie_attack_params_normal
 
 [zombie_immunities_normal]
 burn_immunity			= 1.0
 strike_immunity			= 1.0
 shock_immunity			= 1.0
-wound_immunity			= 0.10
+wound_immunity			= 0.35
 radiation_immunity		= 0.0
 telepatic_immunity		= 1.0
 chemical_burn_immunity	= 1.0
-explosion_immunity		= 0.55
-fire_wound_immunity		= 0.10
+explosion_immunity		= 0.35
+fire_wound_immunity		= 0.2
 
 [zombie_attack_params_normal]
 ;---------------------------------------------------------------------------------------------------------------------------------------------
@@ -396,32 +330,34 @@ stand_attack_2 =	  	0.30,		0.35,		    120,        0.0, 1.0, 0.0,		 -0.6, 0.6, -1
 ;left hand strike3
 stand_attack_3 =	  	0.30,		0.35,		    180,        0.0, 1.0, 0.0,		 -1.0, 0.3, -0.6, 0.6,							  2.0
 
+
+
 [zombie_strong]:m_zombie_e
-$spawn				= "monsters\zombies\zombie_03_strong"
-visual				= monsters\zombi\zombi_trup
+$spawn				= "monsters\zombies\zombie_ghost"
+visual				= monsters\zombi\zombi_1_ghost
 panic_threshold		= 0.05	
 rank = 255
 spec_rank			= strong
 community			= zombie
+icon = ui_npc_monster_zombie_ghost
 
-immunities_sect		= zombie_immunities_strong
-attack_params		= zombie_attack_params_strong
-
+MaxHealthValue		 = 120
 FakeDeathCount					= 6		; max count of fake death
 StartFakeDeathHealthThreshold	= 0.8
 
-
+immunities_sect		= zombie_immunities_strong
+attack_params		= zombie_attack_params_strong
 
 [zombie_immunities_strong]
 burn_immunity			= 1.0
 strike_immunity			= 1.0
 shock_immunity			= 1.0
-wound_immunity			= 0.05
+wound_immunity			= 0.35
 radiation_immunity		= 0.0
 telepatic_immunity		= 1.0
 chemical_burn_immunity	= 1.0
-explosion_immunity		= 0.55
-fire_wound_immunity		= 0.05
+explosion_immunity		= 0.35
+fire_wound_immunity		= 0.15
 
 [zombie_attack_params_strong]
 ;---------------------------------------------------------------------------------------------------------------------------------------------
@@ -436,7 +372,129 @@ stand_attack_2 =	  	0.30,		0.50,		    120,        0.0, 1.0, 0.0,		 -0.6, 0.6, -1
 ;left hand strike3
 stand_attack_3 =	  	0.30,		0.50,		    180,        0.0, 1.0, 0.0,		 -1.0, 0.3, -0.6, 0.6,							  2.0
 
+
 [zombie_immortal]:zombie_strong
-$spawn				= "monsters\zombies\zombie_immortal"
-visual				= monsters\zombi\zombi_trup
+$spawn				= "monsters\zombies\zombie_03_strong"
+visual				= monsters\zombi\zombi_trup_2
 panic_threshold		= 0.05
+icon = ui_npc_monster_zombie_immortal
+	
+
+[zombie_ghost]:zombie_strong
+$spawn				= "monsters\zombies\zombie_03_strong"
+visual				= monsters\zombi\zombi_trup
+MaxHealthValue		 = 140			; range [0..200]
+icon = ui_npc_monster_zombie_strong
+
+[zombie_old]:zombie_normal
+$spawn				= "monsters\zombies\zombie_02_normal"
+visual				= monsters\zombi\zombi_3
+icon = ui_npc_monster_zombie_old
+
+
+[zombie_rusty]:zombie_strong
+$spawn				= "monsters\zombies\zombie_03_strong"
+visual				= monsters\zombi\zombi_x4
+icon = ui_npc_monster_zombie_rusty
+bones_particles			= zombie_rusty_particles
+sound_die				= $no_sound
+Health			     = 60
+MaxHealthValue		 = 60
+immunities_sect		= zombie_rusty_immunities
+FakeDeathCount			= 1
+StartFakeDeathHealthThreshold	= 0.001
+MinAttackDist		= 1.1
+;custom_data = scripts\zombie_rusty.ltx
+; speed factors			linear | angular_real |  angular_path  |  min  |  max
+Velocity_Stand			= 0,		1.4,			1.4,		1,		1
+Velocity_WalkFwdNormal		= 2.0,	0.6,			0.6,		0.02,		2.0	
+Velocity_RunFwdNormal		= 4.0,	3.0,			3.0,		0.4,		1	
+Velocity_WalkFwdDamaged		= 2.0,	3.0,			0.8,		0.2,		2.0	
+Velocity_RunFwdDamaged		= 3.5,  	3.0,			3.0,		0.2,		1
+Velocity_Drag			= 1.0,	3.0,			3.0,		1,		1
+Velocity_Steal			= 1.5,	3.0,			3.0,		1,		1
+;
+[zombie_rusty_immunities]
+burn_immunity			= 0.0
+strike_immunity			= 0.0
+shock_immunity			= 0.0
+wound_immunity			= 0.35
+radiation_immunity		= 0.0
+telepatic_immunity		= 0.0
+chemical_burn_immunity		= 0.0
+explosion_immunity		= 0.4
+fire_wound_immunity		= 0.35
+;
+[zombie_rusty_particles]
+zombie_rusty_particles_spine = zombie_rusty_particles_spine
+;
+[zombie_rusty_particles_spine]
+particle = ogsm\ogsm_distort
+sound = $no_sound
+bone = bip01_spine
+stop_on_death = true
+;
+[rad_zombie_rusty]:zombie_rusty
+Health			     = 80
+MaxHealthValue		 = 80
+
+
+[zombie_plague]:zombie_normal
+$spawn				= "monsters\zombies\zombie_02_normal"
+visual				= monsters\zombi\zombi_x3
+Health			     = 60
+icon = ui_npc_monster_zombie_plague
+FakeDeathCount			= 1
+StartFakeDeathHealthThreshold	= 0.001
+bones_particles			= zombie_plague_particles
+immunities_sect		= zombie_plague_immunities
+custom_data = scripts\zombie_plague.ltx
+;
+[zombie_plague_particles]
+zombie_plague_particles_spine = zombie_plague_particles_spine
+;
+[zombie_plague_particles_spine]
+particle = ogsm\ogsm_flies
+sound = anomaly\flies
+bone = bip01_head
+stop_on_death = true
+;
+[zombie_plague_immunities]
+burn_immunity			= 0.2
+strike_immunity			= 0.1
+shock_immunity			= 0.1
+wound_immunity			= 0.1
+radiation_immunity		= 0.1
+telepatic_immunity		= 0.1
+chemical_burn_immunity		= 0.1
+explosion_immunity		= 0.3
+fire_wound_immunity		= 0.1
+
+
+[arena_zombie_1]:zombie_weak
+panic_threshold		= 0.2
+rank = 255
+spec_rank			= normal
+community			= zombie
+custom_data = scripts\arena_mob_3.ltx
+
+[arena_zombie_2]:zombie_normal
+panic_threshold		= 0.2
+rank = 255
+spec_rank			= normal
+community			= zombie
+custom_data = scripts\arena_mob_4.ltx
+
+[arena_zombie_3]:zombie_ghost
+panic_threshold		= 0.2
+rank = 255
+spec_rank			= normal
+community			= zombie
+custom_data = scripts\arena_mob_5.ltx
+
+[arena_zombie_4]:zombie_immortal
+panic_threshold		= 0.2
+rank = 255
+spec_rank			= normal
+community			= zombie
+custom_data = scripts\arena_mob_6.ltx

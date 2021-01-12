@@ -1,0 +1,332 @@
+---------------- Схема поведения НПС при выбросе для OGSM 2.x -----------------
+
+------------------------- Copyright 2007-2008 DEXXX ---------------------------
+
+property_base = 12221
+property_blowout = property_base+1
+property_hideout_lost = property_base+2
+property_inhide = property_base+3
+act_base = 13332
+act_hideout = act_base+1
+act_psy_effect = act_base+2
+act_inhide = act_base+3
+
+local npc_psy = {}
+local npc_run = {}
+local npc_sit = {}
+local npc_go = {}
+
+function is_in_specific_zone(npc)
+	if ogsm_surge and 
+	 ( ogsm_surge.npc_in_zone(npc,"l01_escape",-256,-246,-137,-132,-25,-20) or		-- Бункер Сидора
+	   ogsm_surge.npc_in_zone(npc,"l03_agroprom",-198.31,-195.66,85.4,96.54,2,5.3) or	-- Вагон дезертира
+	   ogsm_surge.npc_in_zone(npc,"l04_darkvalley",30,50,-60,-25,-4,0) or			-- Тюрьма в Темной долине
+	   ogsm_surge.npc_in_zone(npc,"l05_bar",123,140,18,30,-6,0) or 				-- Бар
+	   ogsm_surge.npc_in_zone(npc,"l05_bar",118,121,34,41,-4,1) or 				-- Охранник Бара
+	   ogsm_surge.npc_in_zone(npc,"l05_bar",149,158,67,74,0,4) or 				-- Приемная Арни
+	   ogsm_surge.npc_in_zone(npc,"l05_bar",136,168,73,134,-22,-10) or			-- Арена
+	   ogsm_surge.npc_in_zone(npc,"l05_bar",208,234,120,139,-6,2) or				-- База Долга
+	   ogsm_surge.npc_in_zone(npc,"l06_rostok",-90,-87,125,151,0,6) or 			-- Блокпост наемников
+	   ogsm_surge.npc_in_zone(npc,"l07_military",-27,-16,-33,-14,-9,0) or 			-- База Свободы
+	   ogsm_surge.npc_in_zone(npc,"l08_yantar",23,40,-282,-269,-16,0) or			-- Бункер ученых
+	   ogsm_surge.npc_in_zone(npc,"l08_yantar",-265,-22,-218,-6,-20,-11) or			-- Кишка
+	   ogsm_surge.npc_in_zone(npc,"l11_pripyat",-16,-2,188,204,-5,0) ) then			-- Подвал ДК
+		return true
+	end
+	return false
+end
+
+function is_in_hide(npc)
+	if ogsm_surge and
+	 ( ogsm_surge.npc_in_zone(npc,"l01_escape",-211,-198,-132,-125,-23,-20) or 	-- Подвал 1 в лагере новичков
+	   ogsm_surge.npc_in_zone(npc,"l01_escape",-216,-209,-133,-120,-24,-20) or 	-- Подвал 2 в лагере новичков
+	   ogsm_surge.npc_in_zone(npc,"l02_garbage",-112,-57,-6,25,-9,90) or		-- Ангар на Свалке
+	   ogsm_surge.npc_in_zone(npc,"l05_bar",206,213,50,68,0,4) or			-- Магазин Петренко
+	   ogsm_surge.npc_in_zone(npc,"l06_rostok",-285,-235,78,112,-7,0) or 		-- Тоннель Фримена
+	   ogsm_surge.npc_in_zone(npc,"l10_radar",639,664,167,189,-45,-37) or 		-- Секретная база Монолита
+	   ogsm_surge.npc_in_zone(npc,"l10_radar",86.73,153,-27,-21.70,-10,-4.6) or 	-- Вход в бункер
+	   ogsm_surge.npc_in_zone(npc,"l11_pripyat",-18,-12,58,83,-6,-3) or		-- Подземный переход
+	   ogsm_surge.npc_in_zone(npc,"l11_pripyat",167,173,58,83,-6,-3) or		-- Подземный переход
+	   ogsm_surge.npc_in_zone(npc,"l11_pripyat",-24,55,116,122,-4,0) ) then		-- Канализация
+		return true
+	else
+		local hide = ogsm_respawn.get_nearest_hide(npc)
+		if hide then
+			if utils.npc_in_zone(npc, hide.obj) then
+				return true
+			end
+		end
+	end
+	return false
+end
+
+-- Создаем эвалуатор - проверяем, начался ли выброс
+class "evaluator_blowout" (property_evaluator)
+function evaluator_blowout:__init(name, storage) super (nil, name)
+	self.st = storage
+end
+function evaluator_blowout:evaluate()
+	if not self.object:best_enemy() and 
+	   db.Flag2==1 and db.Dead2==0 and 
+	   not (level.name()=="l11_pripyat" and self.object:character_community() == "monolith") and
+	   not is_in_hide(self.object) and not is_in_specific_zone(self.object) then
+		self.st.blowout = true
+	else
+		self.st.blowout = false
+	end
+	return self.st.blowout == true
+end
+
+-- Создаем эвалуатор - проверяем, потерял ли непись укрытие
+class "evaluator_hideout" (property_evaluator)
+function evaluator_hideout:__init(name, storage) super (nil, name)
+	self.st = storage
+end
+function evaluator_hideout:evaluate()
+	if db.Dead2==1 and not is_in_hide(self.object) and not is_in_specific_zone(self.object) then
+		self.st.hideout_lost = true
+	else
+		self.st.hideout_lost = false
+	end
+	return self.st.hideout_lost == true
+end
+
+-- Создаем эвалуатор - проверяем, сидит ли уже непись в укрытии
+class "evaluator_inhide" (property_evaluator)
+function evaluator_inhide:__init(name, storage) super (nil, name)
+	self.st = storage
+end
+function evaluator_inhide:evaluate()
+	if db.Flag2==1 and is_in_hide(self.object) then
+		self.st.inhide = true
+	else
+		self.st.inhide = false
+	end
+	return self.st.inhide == true
+end 
+
+
+-- Создаем оператор - направляем НПС в укрытие
+class "action_hideout" (action_base)
+function action_hideout:__init(name, storage) super (nil, name)
+	self.st = storage
+end
+function action_hideout:initialize()
+	local npc = self.object
+	npc:set_desired_position()
+	npc:set_desired_direction()
+	npc:clear_animations()
+	npc:set_detail_path_type(move.line)
+	npc:set_path_type(game_object.level_path)
+	npc:remove_all_restrictions()
+	if npc_run[npc:id()] ~= 1 then
+		self.hide = ogsm_respawn.get_nearest_hide(npc)
+		if self.hide then
+			npc:add_restrictions(self.hide.obj:name(), "")
+			state_mgr.set_state(npc, "assault")
+		else
+			npc:remove_all_restrictions()
+			state_mgr.set_state(npc, "hide")
+		end
+		npc_run[npc:id()] = 1
+	end
+end
+function action_hideout:execute()
+	local npc = self.object
+	npc:disable_talk()
+end
+function action_hideout:finalize()
+	action_base.finalize(self)
+	local npc = self.object
+	npc_run[npc:id()] = 0
+end
+
+-- Создаем оператор - колбасим НПС, если он не нашел укрытие
+class "action_raskolbas" (action_base)
+function action_raskolbas:__init(name, storage) super (nil, name)
+	self.st = storage
+end
+function action_raskolbas:initialize()
+	local npc = self.object
+	npc:set_desired_position()
+	npc:set_desired_direction()
+	npc:clear_animations()
+	npc:remove_all_restrictions()
+	local ran = math.random(1,2)
+	if npc_psy[npc:id()] ~= 1 then
+		if npc:character_community() == "monolith" then
+			state_mgr.set_state(npc, "trans_1")
+		else
+			if ran == 1 then
+				state_mgr.set_state(npc, "psycho_pain")
+			else
+				state_mgr.set_state(npc, "psy_pain")
+			end
+		end
+		npc_psy[npc:id()] = 1
+	end
+end
+function action_raskolbas:execute()
+	local npc=self.object
+	npc:disable_talk()
+end
+function action_raskolbas:finalize()
+	action_base.finalize(self)
+	local npc = self.object
+	npc_psy[npc:id()] = 0
+end
+
+-- Создаем оператор - усаживаем НПС, если он нашел укрытие
+class "action_inhide" (action_base)
+function action_inhide:__init(name, storage) super (nil, name)
+	self.st = storage
+end
+function action_inhide:initialize()
+	local npc = self.object
+	npc:set_desired_position()
+	npc:set_desired_direction()
+	npc:clear_animations()
+	npc:set_detail_path_type(move.line)
+	npc:set_path_type(game_object.level_path)
+	npc:remove_all_restrictions()
+	self.hide = ogsm_respawn.get_nearest_hide(npc)
+	if self.hide then
+		self.vertex = self.hide.obj:level_vertex_id()
+		self.offset = vector():set(math.random()*3-1, 0, math.random()*3-1)
+		self.offset:normalize()
+		self.radius = math.random(1, self.hide.rad-1)
+		self.lvid = npc:vertex_in_direction(self.vertex, self.offset, self.radius)
+		if npc:level_vertex_id()~=self.lvid then
+			state_mgr.set_state(npc,"raid")
+			utils.send_to_nearest_accessible_vertex(npc, self.lvid) 
+		else
+			state_mgr.set_state(npc,"hide")
+		end
+	else
+		state_mgr.set_state(npc,"hide")
+	end
+end
+function action_inhide:execute()
+	local npc = self.object
+	npc:disable_talk()
+	if npc:level_vertex_id()~=self.lvid then
+		if npc_go[npc:id()]~=1 then
+			state_mgr.set_state(npc,"raid")
+			utils.send_to_nearest_accessible_vertex(npc, self.lvid) 
+			npc_go[npc:id()] = 1
+			npc_sit[npc:id()] = 0
+		end
+	else
+		if npc_sit[npc:id()]~=1 then
+			if npc:character_community()=="monolith" then
+				state_mgr.set_state(npc,"trans_0")
+			else
+				state_mgr.set_state(npc,"hide")
+			end
+			npc_sit[npc:id()] = 1
+			npc_go[npc:id()] = 0
+		end
+	end
+end
+function action_inhide:finalize()
+	action_base.finalize(self)
+	local npc = self.object
+	npc_sit[npc:id()] = 0
+	npc_go[npc:id()] = 0
+	npc:remove_all_restrictions()
+end
+
+
+-- Добавляем в планировщик нашу схему
+function add_to_binder(object, char_ini, scheme, section, st)
+	local manager = object:motivation_action_manager()
+	local property_wounded = xr_evaluators_id.sidor_wounded_base
+
+	manager:remove_evaluator(property_blowout)
+	manager:add_evaluator(property_blowout, evaluator_blowout("evaluator_blowout", st))
+
+	manager:remove_evaluator(property_hideout_lost)
+	manager:add_evaluator(property_hideout_lost, evaluator_hideout("evaluator_hideout", st))
+
+	manager:remove_evaluator(property_inhide)
+	manager:add_evaluator(property_inhide, evaluator_inhide("evaluator_inhide", st))
+
+	local action = action_hideout("action_hideout", st)
+	action:add_precondition(world_property(stalker_ids.property_alive, true))
+	action:add_precondition(world_property(property_wounded, false))
+	action:add_precondition(world_property(stalker_ids.property_enemy, false))
+	action:add_precondition(world_property(stalker_ids.property_danger, false))
+	action:add_precondition(world_property(property_hideout_lost, false))
+	action:add_precondition(world_property(property_inhide, false))
+	if anomaly_evader then
+		action:add_precondition(world_property(1099, false))
+	end
+	action:add_precondition(world_property(property_blowout, true))
+	action:add_effect(world_property(property_blowout, false))
+	manager:add_action(act_hideout, action)
+
+	local action = action_raskolbas("action_raskolbas", st)
+	action:add_precondition(world_property(stalker_ids.property_alive, true))
+	action:add_precondition(world_property(property_wounded, false))
+	action:add_precondition(world_property(property_blowout, false))
+	action:add_precondition(world_property(property_inhide, false))
+	action:add_precondition(world_property(property_hideout_lost, true))
+	action:add_effect(world_property(property_hideout_lost, false))
+	manager:add_action(act_psy_effect, action)
+
+	local action = action_inhide("action_inhide", st)
+	action:add_precondition(world_property(stalker_ids.property_alive, true))
+	action:add_precondition(world_property(property_wounded, false))
+	action:add_precondition(world_property(stalker_ids.property_enemy, false))
+	action:add_precondition(world_property(stalker_ids.property_danger, false))
+	action:add_precondition(world_property(property_blowout, false))
+	action:add_precondition(world_property(property_hideout_lost, false))
+	action:add_precondition(world_property(property_inhide, true))
+	action:add_effect(world_property(property_inhide, false))
+	manager:add_action(act_inhide, action)
+
+	action = manager:action(stalker_ids.action_alife_planner)
+	action:add_precondition(world_property(property_blowout, false))
+	action:add_precondition(world_property(property_hideout_lost, false))
+	action:add_precondition(world_property(property_inhide, false))
+
+	action = manager:action(stalker_ids.action_combat_planner)
+	action:add_precondition(world_property(property_hideout_lost, false))
+
+	action = manager:action(stalker_ids.action_danger_planner)
+	action:add_precondition(world_property(property_hideout_lost, false))
+end
+
+
+-- Функции включения/выключения схемы
+function enable_scheme(npc, ini)
+	local st = xr_logic.assign_storage_and_bind(npc, ini, "ogsm_hideout")
+	st.enabled=true
+end
+function disable_scheme(npc, scheme)
+	local st = db.storage[npc:id()][scheme]
+	if st then
+		st.enabled = false
+	end
+end
+
+
+---------------- Схема поведения НПС при выбросе для OGSM 2.x -----------------
+
+------------------------- Copyright 2007-2008 DEXXX ---------------------------
+
+--[[
+
+If you're going to use the whole of this script or its parts in your own creative 
+developments for the S.T.A.L.K.E.R. game, please don't become such a goddamn 
+motherfucker like the notorious author of the ABC Mod - Carbrobro. Leave the 
+copyrights, note the real author(s) and don't claim others' ideas and their 
+realization to be your own ones. It's just simple Modmakers' Ethics. Thank you!
+
+Если вы собираетесь использовать данный скрипт целиком или частично в своих 
+разработках по игре S.T.A.L.K.E.R., пожалуйста не опускайтесь до уровня печально 
+известного автора ABC мода - Carbrobro. Не удаляйте копирайты, указывайте настоящего 
+автора(ов) и не выдавайте чужие идеи и их реализацию за свои. Ведь это элементарная 
+этика модостроителей! Спасибо за понимание.
+
+]]--

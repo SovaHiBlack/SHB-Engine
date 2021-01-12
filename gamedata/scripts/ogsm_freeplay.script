@@ -1,0 +1,258 @@
+----------------------- Функции фриплея для OGSM 2.x --------------------------
+
+------------------------- Copyright 2007-2008 DEXXX ---------------------------
+
+
+-- Спавним левел-чейнджер
+-- Level Changer Spawn.
+function spawn_level_changer(sid, from_pos, from_level, dest_pos, dest_level, hint, mode, dest_dir)
+
+local vertexes = {
+l01_escape = {lvid=594266, gvid=0},
+l04_darkvalley = {lvid=121712, gvid=815},
+l11_pripyat = {lvid=142116, gvid=2270},
+l12_stancia = {lvid=405348, gvid=2400},
+l12_stancia_2 = {lvid=9914, gvid=2517}
+-- l12_stancia_2 = {lvid=227423, gvid=2635}
+}
+
+local obj = alife():create("level_changer", from_pos, vertexes[from_level]["lvid"], vertexes[from_level]["gvid"])
+
+if obj then
+
+	level.map_add_object_spot(obj.id, "level_changer", hint)
+
+	local packet = net_packet()
+
+	obj:STATE_Write(packet)
+
+	-- свойства cse_alife_object
+	local game_vertex_id = packet:r_u16()
+	local cse_alife_object__unk1_f32 = packet:r_float()
+	local cse_alife_object__unk2_u32 = packet:r_s32()
+	local level_vertex_id = packet:r_s32()
+	local object_flags = packet:r_s32()
+	local custom_data = packet:r_stringZ()
+	local story_id = packet:r_s32()
+	local cse_alife_object__unk3_u32 = packet:r_s32()
+
+	-- свойства cse_shape
+	local shape_count = packet:r_u8()
+	local shape_type
+	local center
+	local radius
+
+	if shape_count == 0 then
+		shape_type = 0
+		center = vector():set(0,0,0)
+		radius = 10.0
+		shape_count = 1
+	else
+		for i=1,shape_count do
+			local shape_type = packet:r_u8()
+			if shape_type == 0 then
+				local center = packet:r_vec3()
+				local radius = packet:r_float()
+			else
+				local v1 = packet:r_vec3()
+				local v2 = packet:r_vec3()
+				local v3 = packet:r_vec3()
+				local v4 = packet:r_vec3()
+			end
+		end
+	end
+
+	-- свойства cse_alife_space_restrictor
+	local restrictor_type = packet:r_u8()
+
+	-- свойства cse_alife_level_changer
+	local dest_game_vertex_id = packet:r_u16()
+	local dest_level_vertex_id = packet:r_s32()
+	local dest_position = packet:r_vec3()
+	local dest_direction = packet:r_vec3()
+	local dest_level_name = packet:r_stringZ()
+	local dest_graph_point = packet:r_stringZ()
+	local silent_mode = packet:r_u8()
+
+	if packet:r_elapsed() ~= 0 then get_console():execute("left="..packet:r_elapsed()) end
+
+	-- свойства cse_alife_object
+	packet:w_u16(game_vertex_id)
+	packet:w_float(cse_alife_object__unk1_f32)
+	packet:w_s32(cse_alife_object__unk2_u32)
+	packet:w_s32(level_vertex_id)
+	packet:w_s32(object_flags)
+	packet:w_stringZ(custom_data)
+	packet:w_s32(sid)
+	packet:w_s32(cse_alife_object__unk3_u32)
+
+	-- свойства cse_shape
+	packet:w_u8(shape_count)
+
+	for i=1,shape_count do
+		packet:w_u8(shape_type)
+		if shape_type == 0 then
+			packet:w_vec3(vector():set(0,0,0))
+			packet:w_float(3)
+		else
+			packet:w_vec3(vector():set(3,0,0))
+			packet:w_vec3(vector():set(0,3,0))
+			packet:w_vec3(vector():set(0,0,3))
+			packet:w_vec3(vector():set(0,0,0))
+		end
+	end
+
+	-- свойства cse_alife_space_restrictor
+	packet:w_u8(restrictor_type)
+
+	-- свойства cse_alife_level_changer
+	packet:w_u16(vertexes[dest_level]["gvid"])
+	packet:w_s32(vertexes[dest_level]["lvid"])
+	packet:w_vec3(dest_pos)
+	if dest_dir then 
+		packet:w_vec3(dest_dir)
+	else
+		packet:w_vec3(dest_direction)
+	end
+	packet:w_stringZ(dest_level)
+	packet:w_stringZ(dest_graph_point)
+	packet:w_u8(mode)
+
+	obj:STATE_Read(packet, packet:w_tell()-packet:r_tell())
+
+end
+end
+
+
+-- Удаление левел-чейнджера в Саркофаг
+-- Deleting LC to Sarcofag.
+function disable_sar_entrance()
+for i=1,65535 do
+	local obj = alife():object(i)
+	if obj and obj:name()=="exit_to_sarcofag_01" then
+		alife():release(obj, true)
+	end
+end
+end
+
+
+-- Спавн всех нужных переходов
+-- Common LC spawn. Takes place after final credits. Actor teleports to NPP.
+function set_lc()
+
+if not db.actor or not has_alife_info("game_end") then
+	xr_effects.after_credits()
+else
+
+level.add_pp_effector("teleport.ppe", 2008, false)
+
+-- Кордон - Темная долина
+spawn_level_changer(6001, vector():set(368.9,15.17,-42.65), "l01_escape", vector():set(-44.77, 0.43, -541.35), "l04_darkvalley", "to_darkvalley", 0)
+
+-- ЧАЭС - Припять
+spawn_level_changer(6002, vector():set(918.1,-0.1,-401.96), "l12_stancia", vector():set(31.28,1.135,420.61), "l11_pripyat", "to_pripyat", 0, vector():set(0,-3.1,0))
+
+-- ЧАЭС2 - ЧАЭС
+-- spawn_level_changer(6003, vector():set(554.52,150,201), "l12_stancia_2", vector():set(117.6,-0.1,-76.3), "l12_stancia", "to_aes", 1, vector():set(0,-1.5,0))
+spawn_level_changer(6003, vector():set(-42.15,-0.02,56.03), "l12_stancia_2", vector():set(126,-0.1,-76.3), "l12_stancia", "to_aes", 0, vector():set(0,-1.5,0))
+
+-- ЧАЭС - ЧАЭС2
+spawn_level_changer(6004, vector():set(117.6,-0.1,-76.3), "l12_stancia", vector():set(-42.15,-0.02,64), "l12_stancia_2", "to_aes", 0)
+
+-- Удаление ЧАЭС - Саркофаг
+disable_sar_entrance()
+
+-- Перемещаем актора, засчитываем все задания
+db.actor:set_actor_position(vector():set(1035.12,-0.0999,229.564))
+set_complete_tasks()
+
+-- Ставим стандартную погоду
+level.set_weather("default")
+
+-- Спавним монстров
+ogsm_respawn.level_spawn()
+
+end
+
+end
+
+
+-- Отмечаем на карте новые точки перехода
+-- Making new map spots for LCs. Function is called from on_game_load() procedure.
+function mark_lc()
+local obj = alife():story_object(6001)
+if obj then
+	level.map_add_object_spot(obj.id, "level_changer", "to_darkvalley")
+end
+local obj = alife():story_object(6002)
+if obj then
+	level.map_add_object_spot(obj.id, "level_changer", "to_pripyat")
+end
+local obj = alife():story_object(6003)
+if obj then
+	level.map_add_object_spot(obj.id, "level_changer", "to_aes")
+end
+local obj = alife():story_object(6004)
+if obj then
+	level.map_add_object_spot(obj.id, "level_changer", "to_aes")
+end
+if level.name()=="l11_pripyat" and has_alife_info("freeplay") and not has_alife_info("pri_trader_first_talk") then
+	local obj
+	local id
+	for i=1,65535 do
+		obj = alife():object(i)
+		if obj and string.find(obj:name(), "pri_trader") then
+			id = obj.id
+		end
+	end
+	if id then
+		amk.send_tip("Здорово, Стрелок! Загляни ко мне, поболтаем... Даю координаты.","Сообщение",10,10,"stalker")
+		level.map_add_object_spot(id, "red_location", "talk_to_dealer")
+	end
+end
+end
+
+
+-- Засчитываем квестовые задания, удаляем квестовые предметы
+-- Completing storyline tasks.
+function set_complete_tasks()
+if has_alife_info("aes2_monolit_teleport_ready_final") and not has_alife_info("freeplay") and (level.name()=="l12_stancia" or level.name()=="l12_stancia_2") then
+	db.actor:iterate_inventory(del_q_items,db.actor)
+	db.actor:give_info_portion("cit_fail_first_task")
+	db.actor:give_info_portion("freeplay")
+	db.actor:disable_info_portion("game_end")
+	db.gameover_credits_started = false
+	amk.start_timer("fpl", 1)
+end
+end
+function del_q_items(npc, item)
+	if item==nil or alife():object(item:id())==nil then return end
+	local section = item:section()
+	if section=="gunslinger_flash" or 
+		section=="good_psy_helmet" or 
+		section=="bad_psy_helmet" or 
+		section=="decoder" or
+		section=="pri_decoder_documents" then
+			alife():release(alife():object(item:id()), true)
+	end
+end
+
+----------------------- Функции фриплея для OGSM 2.x --------------------------
+
+------------------------- Copyright 2007-2008 DEXXX ---------------------------
+
+--[[
+
+If you're going to use the whole of this script or its parts in your own creative 
+developments for the S.T.A.L.K.E.R. game, please don't become such a goddamn 
+motherfucker like the notorious author of the ABC Mod - Carbrobro. Leave the 
+copyrights, note the real author(s) and don't claim others' ideas and their 
+realization to be your own ones. It's just simple Modmakers' Ethics. Thank you!
+
+Если вы собираетесь использовать данный скрипт целиком или частично в своих 
+разработках по игре S.T.A.L.K.E.R., пожалуйста не опускайтесь до уровня печально 
+известного автора ABC мода - Carbrobro. Не удаляйте копирайты, указывайте настоящего 
+автора(ов) и не выдавайте чужие идеи и их реализацию за свои. Ведь это элементарная 
+этика модостроителей! Спасибо за понимание.
+
+]]--

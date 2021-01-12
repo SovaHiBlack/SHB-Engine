@@ -32,7 +32,7 @@ function options_video_tab:InitControls(x_pos, y_pos)
 	-- INIT DATA>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>	
 	-- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< CODE
 	-------- BUTTONS ------------------------------- 
-	-->> VIDEO
+	--------->> VIDEO
     local btn = CUIButton()
 	btn:SetAutoDelete(true)
 	btn:SetWindowName("btn_video")

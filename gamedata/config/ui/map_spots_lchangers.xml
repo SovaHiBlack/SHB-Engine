@@ -1,4 +1,5 @@
-	<!-- level changers -->
+
+<!-- level changers -->
 	<lchanger_up_location hint="lchanger_up">
 		<level_map  spot="lchanger_up_spot"></level_map>
 	</lchanger_up_location>

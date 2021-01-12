@@ -1,0 +1,240 @@
+------------------ Отладочные функции и фиксы для OGSM 2.x --------------------
+
+------------------------- Copyright 2007-2008 DEXXX ---------------------------
+
+local a = 0
+
+-- Вывод статистики
+function hud_stats()
+local hud = get_hud()
+local cs = hud:GetCustomStatic("cs_debug" )
+if cs == nil then
+	hud:AddCustomStatic("cs_debug", true)
+	cs = hud:GetCustomStatic("cs_debug" )
+end
+local lvid, gvid = db.actor:level_vertex_id(), db.actor:game_vertex_id()
+local pos = db.actor: position()
+local msg = string.format("lvid: %d, gvid: %d\\n", lvid, gvid) ..
+		string.format("pos: x=%f, y=%f, z=%f\\n", pos.x, pos.y, pos.z)
+if cs ~= nil then
+	cs:wnd():SetText(msg)
+end
+end
+
+-- Удаление шкалы радиации при использовании бинокля
+function check_binoc()
+  local act_it=db.actor:active_item()
+	if (ui_rad and db.actor.health>0) then
+		if act_it and act_it:section()=="wpn_binoc" then
+			local zoom=67.5/device().fov
+			zoom=(zoom-1)*1.5+1
+			if zoom<1.001 then zoom=1.001 end
+			if zoom > 1.3 then
+				ui_rad.update(false)
+			else
+				ui_rad.update(true)
+			end
+		else
+			ui_rad.update(true)
+		end
+	elseif (ui_rad) then
+		ui_rad.update(false)
+	end
+end
+
+-- Создание "убийственной зоны" на радаре
+function check_radar_off()
+	if (level.name() == "l10_radar") then
+		if not has_alife_info("bar_deactivate_radar_done") then
+			local pos = db.actor:position()
+			if pos.z>65 and pos.x>350 and pos.x<410 then
+				if amk.load_variable("rfx",0)==0 then
+					level.add_pp_effector("fire_hit.ppe", 1523, true)
+					level.set_pp_effector_factor(1523, 0.5)
+					amk.save_variable("rfx",1)
+					amk.start_timer("rfx",5)
+				end
+			end
+		end
+	end 
+end
+function radar_fix()
+	level.remove_pp_effector(1523)
+	local pos = db.actor:position()
+	if pos.z>65 and pos.x>350 and pos.x<410 then
+		db.actor:kill(db.actor)
+	end
+	amk.del_variable("rfx") 
+end
+
+-- Экстренная очистка хранилища актора
+function clean_pstor()
+	for k,v in pairs(ogsm_anomaly.loc) do
+		if k ~= level.name() then
+			amk.del_variable("an"..ogsm_anomaly.loc[k])
+		end
+	end
+
+	for i=1,100 do
+		amk.del_variable("rt"..i)
+		amk.del_variable("rt"..i.."d")
+		amk.del_variable("rt"..i.."p")
+		amk.del_variable("gt"..i)
+		amk.del_variable("gt"..i.."d")
+		amk.del_variable("gt"..i.."p")
+	end
+
+	amk.del_variable("rfx")
+	amk.del_variable("blt")
+	amk.del_variable("drnk")
+	amk.del_variable("slp")
+	amk.del_variable("nrg")
+	amk.del_variable("smn")
+
+	amk.del_variable("aem_team1")
+	amk.del_variable("aem_team2")
+	amk.del_variable("aem_cr")
+	amk.del_variable("aem_cm")
+	amk.del_variable("aem_rt")
+	amk.del_variable("aem_ct")
+
+	amk.del_variable("aem_lt")
+	amk.del_variable("aem_nt")
+	amk.del_variable("aem_it")
+	amk.del_variable("aem_mt")
+	amk.del_variable("aem_mk")
+
+	for i=1,5 do
+		amk.del_variable("snd"..i)
+	end
+
+	for i=1,65535 do
+		local obj = alife():object(i)
+		if obj and (obj:name()=="esc_tutorial_dead_novice" or 
+				obj:name()=="val_lager_bandits_borov" or 
+				obj:name()=="rostok_stalker") then
+			alife():release(obj, true)
+		end
+	end
+
+	db.actor:give_info_portion("val_actor_has_borov_key")
+
+	--amk.g_start_timer("bl1",0, 9+math.random(-1,1), 0)
+	--amk.g_start_timer("rsp",0, 5+math.random(-1,1), 0)
+
+	get_console():execute("Actor_storage_has_been_successfully_cleaned!")
+end
+
+-- Удаление трупов в Припяти во фриплее
+function clean_level()
+	if has_alife_info("freeplay") and level.name()=="l11_pripyat" and a==0 then 
+		for i=1,65535 do
+			local obj = level.object_by_id(i)
+			if obj and (IsStalker(obj) or IsMonster(obj)) and not obj:alive() then
+				alife():release(alife():object(obj:id()), true)
+			end
+		end
+		a = 1
+	end
+end
+
+-- Сохранение координат по массиву вертексов
+function log_hideouts()
+--local arr = {10136,46582,41963,268724,437657,411371,133789,109717,290783}
+--local arr = {135489,237602,110339}
+--local arr = {256750,278041,79088,88087,56704,92513}
+--local arr = {345170,325149,22718,297166,216848,165893,223238,217620,225406,232795}
+--local arr = {52736,44766,51205,56342,38428,33337,38939,36240}
+--local arr = {46715,48150,28448,1769,12634,19047,9490}
+--local arr = {54643}
+--local arr = {133097,102257,241561,382116,134714,3717,285439,316470,356438,235657}
+--local arr = {227066,21487,52087}
+--local arr = {196856,172091,63044,48522,95262,83833,253270,125990}
+
+local arr = {240966}
+
+for k,v in pairs(arr) do
+local pos = level.vertex_position(v)
+dbglog(pos.x..","..pos.y..","..pos.z)
+end
+
+end
+
+-- Сохранение текущих координат актора в форматированном фиде
+function log_coords()
+local lvid, gvid = db.actor:level_vertex_id(), db.actor:game_vertex_id()
+local pos = level.vertex_position(lvid)
+dbglog("("..pos.x..","..pos.y..","..pos.z.."),"..lvid..","..gvid)
+end
+
+-- Отметка укрытий на карте
+function mark_hideouts()
+for k,v in pairs(ogsm_respawn.restrictor_list) do
+local obj = level.object_by_id(v.id)
+level.map_add_object_spot(obj:id(), "red_location", obj:name())
+end
+end
+
+-- Удаление укрытий
+function del_hideouts()
+for k,v in pairs(ogsm_respawn.restrictor_list) do
+alife():release(v, true)
+end
+end
+
+-- Спавн новых монстров
+function test_spawn()
+alife():create("psy_dog", vector():set(-115.51, -26.59, -261.21), 1, 44)
+alife():create("burer_strong", vector():set(-115.51, -26.59, -261.21), 1, 44)
+alife():create("zombie_plague", vector():set(-59, -15.31, -181.13), 1, 44)
+alife():create("zombie_rusty", vector():set(-8.82, -13.17, -139.87), 1, 44)
+alife():create("esc_electro_chimera", vector():set(-109, -20, -217), 1, 44)
+end
+
+-- Вывод отладочной информации
+function dbglog(fmt,...)
+local msg = string.format(fmt, ...)
+local msg_no_ws = string.gsub(msg, "%s", "_")
+get_console():execute("dbg:" .. msg_no_ws)
+get_console():execute("flush")		
+end
+
+-- Читерский старт игры
+function cheat_start()
+amk.spawn_item_in_inv("military_stalker_commander_outfit")
+amk.spawn_item_in_inv("wpn_fn2000")
+amk.spawn_item_in_inv("af_electra_moonlight")
+amk.spawn_item_in_inv("af_electra_moonlight")
+amk.spawn_ammo_in_inv("ammo_5.56x45_ap", 300)
+db.actor:set_character_rank(650)
+db.actor:give_money(200000)
+end
+
+
+--[[
+Другие варианты логики рестрикторов для тестов:
+[logic] \nactive = sr_no_weapon \n[sr_no_weapon]
+[logic] \nactive = sr_light \n[sr_light] \nlight_on = true
+[logic] \nactive = sr_tip \n[sr_tip] \nname = tips_esc_trader_about_pda \ntype = tips \non_actor_inside = nil
+[logic] \nactive = sr_mapspot \n[sr_mapspot] \nhint = gar_swamp \nlocation = red_location
+]]--
+
+------------------ Отладочные функции и фиксы для OGSM 2.x --------------------
+
+------------------------- Copyright 2007-2008 DEXXX ---------------------------
+
+--[[
+
+If you're going to use the whole of this script or its parts in your own creative 
+developments for the S.T.A.L.K.E.R. game, please don't become such a goddamn 
+motherfucker like the notorious author of the ABC Mod - Carbrobro. Leave the 
+copyrights, note the real author(s) and don't claim others' ideas and their 
+realization to be your own ones. It's just simple Modmakers' Ethics. Thank you!
+
+Если вы собираетесь использовать данный скрипт целиком или частично в своих 
+разработках по игре S.T.A.L.K.E.R., пожалуйста не опускайтесь до уровня печально 
+известного автора ABC мода - Carbrobro. Не удаляйте копирайты, указывайте настоящего 
+автора(ов) и не выдавайте чужие идеи и их реализацию за свои. Ведь это элементарная 
+этика модостроителей! Спасибо за понимание.
+
+]]--

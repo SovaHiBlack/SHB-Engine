@@ -32,7 +32,7 @@ function options_dialog:InitControls()
 	ui_base_dialog.base_dialog.InitControls(self, "Options")
 
 	----- DATA ----
-		----- BUTTONS -->>>
+		----- BUTTONS --->>>
 	local btn_video_rect  = {x = self.left_align_x,
 							 y = self.top_align_y,
 							 width = self.btn_rect.width,
@@ -57,7 +57,7 @@ function options_dialog:InitControls()
 							 y = btn_control_rect.y + btn_control_rect.height + self.indent,
 							 width = self.btn_rect.width,
 							 height = self.btn_rect.height}
-		----- Bottom right align -->>>
+		----- Bottom right align --->>>
 	local btn_cancel_rect = {x = self.btn_special_rect.x,
 							 y = self.btn_special_rect.y,
 							 width = self.btn_special_rect.width,
@@ -71,7 +71,7 @@ function options_dialog:InitControls()
 	----- CODE -------
 
 -------- BUTTONS AND TABS ------------------------------- 
-	-->> VIDEO
+	--------->> VIDEO
     local btn = CUIButton()
 	btn:SetAutoDelete(true)
 	btn:SetWindowName("btn_video")
@@ -83,7 +83,7 @@ function options_dialog:InitControls()
 	self:Register(btn)
 	self.main_frame:AttachChild(btn)
 	
-	-->> SOUND
+	--------->> SOUND
 	btn = CUIButton()
 	btn:SetAutoDelete(true)
 	btn:SetWindowName("btn_sound")
@@ -95,7 +95,7 @@ function options_dialog:InitControls()
 	self:Register(btn)
 	self.main_frame:AttachChild(btn)
 	
-	-->> GAME
+	--------->> GAME
 	btn = CUIButton()
 	btn:SetAutoDelete(true)
 	btn:SetWindowName("btn_game")
@@ -107,7 +107,7 @@ function options_dialog:InitControls()
 	self:Register(btn)
 	self.main_frame:AttachChild(btn)
 	
-	-->> CONTROLS
+	--------->> CONTROLS
 	btn = CUIButton()
 	btn:SetAutoDelete(true)
 	btn:SetWindowName("btn_controls")
@@ -119,7 +119,7 @@ function options_dialog:InitControls()
 	self:Register(btn)
 	self.main_frame:AttachChild(btn)
 	
-	-->> PROFILES
+	--------->> PROFILES
 	btn = CUIButton()
 	btn:SetAutoDelete(true)
 	btn:SetWindowName("btn_profiles")
@@ -131,7 +131,7 @@ function options_dialog:InitControls()
 	self:Register(btn)
 	self.main_frame:AttachChild(btn)
 	
-	-->> BACK
+	--------->> BACK
 	btn = CUIButton()
 	btn:SetAutoDelete(true)
 	btn:SetWindowName("btn_cancel")

@@ -1,8 +1,10 @@
 [zone_burning_fuzz]
+GroupControlSection	= spawn_group_zone
 $spawn 			= "zones\burning fuzz"
+$prefetch 		= 16
 class			= ZS_BFUZZ
 hit_impulse_scale	= 0
-effective_radius	= 0.75 ;размер радиуса в процентах от оригинального, где действует зона
+effective_radius	= 50.0 ;0.75 ;размер радиуса в процентах от оригинального, где действует зона
 sound			= zone_mosquito_bald
 postprocess		= postprocess_fuzz
 
@@ -13,15 +15,17 @@ artefacts		=
 BirthProbability = 0.0
 
 ;----------- Anomaly settings -----------------------
-min_start_power		= 0.99
-max_start_power		= 1.0
+min_start_power		= 1 ;0.99
+max_start_power		= 5 ;1.0
 attenuation			= 1
 period				= 1
 min_artefact_count	= 0
 max_artefact_count	= 0
 
+
+
+
 hit_type		= chemical_burn
-hit_effect		= anomaly2\hit_metal_02
 
 idle_particles		= anomaly2\pux_idle
 blowout_particles	= anomaly2\pux_blast
@@ -42,9 +46,11 @@ disable_time				= 500	;время игнорирования неживого объекта в зоне (-1 если не н
 disable_time_small			= 500	;время игнорирования маленького неживого объекта в зоне (-1 если не нужно)
 disable_idle_time			= 1000	;время отключения idle партиклов
 
-awaking_time				= 100
-blowout_time				= 300	
-accamulate_time				= 5000
+awaking_time				= 10 ;100
+blowout_time				= 30 ;300	
+accamulate_time				= 500 ;5000
+
+throw_in_impulse_alive			= 1000
 
 attack_animation_start		= 10
 attack_animation_end		= 100
@@ -56,7 +62,7 @@ ignore_artefacts	= true
 blowout_light		= off
 idle_light			= off
 
-visible_by_detector = off
+visible_by_detector = on
 
 blowout_wind		= off
 
@@ -67,15 +73,17 @@ spawn_blowout_artefacts = off
 
 
 [zone_burning_fuzz1]
+GroupControlSection	= spawn_group_zone
 $spawn 			= "zones\burning fuzz1"
+$prefetch 		= 16
 class			= ZS_BFUZZ
 visual			= physics\anomaly\topolinypuh 
-min_speed_to_react = 7.01
+min_speed_to_react = 1.01
 ef_anomaly_type			= 6
 ef_weapon_type			= 18
 
-hit_impulse_scale	= 0.0
-effective_radius	= 0.75 ;размер радиуса в процентах от оригинального, где действует зона
+hit_impulse_scale	= 0
+effective_radius	= 50.0 ;0.75 ;размер радиуса в процентах от оригинального, где действует зона
 sound			= zone_mosquito_bald
 postprocess		= postprocess_fuzz
 
@@ -84,8 +92,8 @@ artefacts		=
 BirthProbability = 0.0
 
 ;----------- Anomaly settings -----------------------
-min_start_power		= 0.14
-max_start_power		= 0.15
+min_start_power		= 1 ;0.99 ;0.14
+max_start_power		= 5 ;1.0 ;0.15
 attenuation			= 1
 period				= 1
 min_artefact_count	= 0
@@ -93,7 +101,7 @@ max_artefact_count	= 0
 
 
 hit_type		= chemical_burn
-hit_effect		= anomaly2\hit_metal_02
+;hit_effect		= anomaly2\hit_metal_02
 
 idle_particles		= anomaly2\pux_idle
 blowout_particles	= anomaly2\pux_blast
@@ -114,12 +122,14 @@ disable_time		= 500	;время игнорирования неживого объекта в зоне (-1 если не нуж
 disable_time_small	= 500		;время игнорирования маленького неживого объекта в зоне (-1 если не нужно)
 disable_idle_time	= 1000	;время отключения idle партиклов
 
-awaking_time				= 50
-blowout_time				= 1000	
-accamulate_time				= 5000
+awaking_time				= 10 ;50
+blowout_time				= 30 ;1000	
+accamulate_time				= 500 ;5000
+
+throw_in_impulse_alive			= 1000
 
 attack_animation_start		= 10
-attack_animation_end		= 1000
+attack_animation_end		= 100
 
 ignore_nonalive		= false;
 ignore_small		= false;
@@ -142,8 +152,8 @@ $spawn 			= "zones\burning fuzz weak"
 
 min_speed_to_react = 4.00
 ;----------- Anomaly settings -----------------------
-min_start_power		= 0.59
-max_start_power		= 0.60
+min_start_power		= 1 ;0.99 ;0.59
+max_start_power		= 5 ;1.0 ;0.60
 attenuation			= 1
 period				= 1
 min_artefact_count	= 0
@@ -153,10 +163,10 @@ artefact_spawn_idle	= 24  ;насколько часто спонить артефакты в офлайне, в часах
 [zone_burning_fuzz_average]:zone_burning_fuzz1
 $spawn 			= "zones\burning fuzz average"
 
-min_speed_to_react = 3.00
+min_speed_to_react = 1.00
 ;----------- Anomaly settings -----------------------
-min_start_power		= 0.99
-max_start_power		= 1.00
+min_start_power		= 1 ;0.99
+max_start_power		= 5 ;1.00
 attenuation			= 1
 period				= 1
 min_artefact_count	= 0
@@ -167,10 +177,10 @@ artefact_spawn_idle	= 24  ;насколько часто спонить артефакты в офлайне, в часах
 [zone_burning_fuzz_strong]:zone_burning_fuzz1
 $spawn 			= "zones\burning fuzz strong"
 
-min_speed_to_react = 1.50  ;   1.00 < 2.00
+min_speed_to_react = 1.00  ;   1.00 < 2.00
 ;----------- Anomaly settings -----------------------
-min_start_power		= 1.99
-max_start_power		= 2.00
+min_start_power		= 2 ;1.99
+max_start_power		= 6 ;2.00
 attenuation			= 1
 period				= 1
 min_artefact_count	= 0
@@ -184,10 +194,10 @@ $spawn 			= "zones\burning fuzz bottom weak"
 artefacts		= af_rusty_thorn,0.8, af_rusty_kristall, 0.2, af_rusty_sea-urchin, 0.0
 BirthProbability = 0.2
 
-min_speed_to_react = 4.00
+min_speed_to_react = 1.00
 ;----------- Anomaly settings -----------------------
-min_start_power		= 0.59
-max_start_power		= 0.60
+min_start_power		= 1 ;0.99 ;0.59
+max_start_power		= 5 ;1.0 ;0.60
 attenuation			= 1
 period				= 1
 min_artefact_count	= 0
@@ -203,8 +213,8 @@ BirthProbability = 0.2
 
 min_speed_to_react = 3.00
 ;----------- Anomaly settings -----------------------
-min_start_power		= 0.99
-max_start_power		= 1.00
+min_start_power		= 1 ;0.99
+max_start_power		= 5 ;1.00
 attenuation			= 1
 period				= 1
 min_artefact_count	= 1
@@ -218,10 +228,10 @@ $spawn 			= "zones\burning fuzz bottom strong"
 artefacts		= af_rusty_thorn,0.2, af_rusty_kristall, 0.6, af_rusty_sea-urchin, 0.2
 BirthProbability = 0.2
 
-min_speed_to_react = 1.50  ;   1.00 < 2.00
+min_speed_to_react = 1.00  ;   1.00 < 2.00
 ;----------- Anomaly settings -----------------------
-min_start_power		= 1.99
-max_start_power		= 2.00
+min_start_power		= 2 ;1.99
+max_start_power		= 6 ;2.00
 attenuation			= 1
 period				= 1
 min_artefact_count	= 1

@@ -3,8 +3,12 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 [wpn_rpg7]:identity_immunities
+
+GroupControlSection			= spawn_group
+discovery_dependency 		= 
 $spawn                   	= "weapons\rpg-7"					; option for Level Editor
 $npc			 			= on		; option for Level Editor
+$prefetch 		 			= 8
 scheduled            		= off              ; option for ALife Simulator
 cform                    	= skeleton
 class                    	= WP_RPG7
@@ -22,7 +26,9 @@ holder_fov_modifier		= 0.3              ; во сколько раз увеличивается eye_fov
 ;-----------------------------------------------------------------------------------
 
 cost					 	= 10000
+weapon_class			 	= heavy_weapon
 
+ammo_limit		 			= 120
 ammo_current		 		= 96
 ammo_elapsed		 		= 12
 
@@ -62,9 +68,9 @@ cam_max_angle				= 8		;максимальный угол отдачи
 cam_max_angle_horz			= 5.0	;(degree) maximum shot horizontal degree 
 cam_step_angle_horz			= 0.5	;(degree) size of step camera moved in horizontal position while shooting
 
-fire_dispersion_condition_factor = 5	;увеличение дисперсии в процентах при максимальном износе 
-misfire_probability 		= 0.0001	;вероятность осечки при максимальном износе 
-condition_shot_dec 			= 0.00003	;увеличение износа при каждом выстреле
+fire_dispersion_condition_factor = 3	;увеличение дисперсии в процентах при максимальном износе 
+misfire_probability 		= 0.001	;вероятность осечки при максимальном износе 
+condition_shot_dec 			= 0.0009	;увеличение износа при каждом выстреле
 ;-----------------------------------------------------------------------------------
 
 direction                	= 0, 0, 1
@@ -140,7 +146,8 @@ grenade_bone				= grenade
 
 ;rocket launcher
 rocket_class				= wpn_rpg7_missile
-
+;wallmarks
+wallmark_section			= explosion_marks
 ;///////////////////////////////////////////////////////
 ;спавнить автоматически боеприпасы при подъеме оружия
 auto_spawn_ammo	= false
@@ -171,16 +178,12 @@ zoom_rotate_x				= 0.020000
 zoom_rotate_y				= 0.031400
 
 [wpn_rpg7_missile]:identity_immunities
+GroupControlSection			= spawn_group
+discovery_dependency 		= 
 visual                  	= weapons\rpg_7\wpn_rpg_7_grenade.ogf
 cform                    	= skeleton
 class                    	= G_RPG7
-
-inv_weight					= 0
-
-kill_msg_x			= 0
-kill_msg_y			= 85
-kill_msg_width		= 74
-kill_msg_height		= 19
+$prefetch 		 			= 32
 
 cost					 	= 200
 ;---------------------------------------------------------------
@@ -202,6 +205,7 @@ up_throw_factor				= 0.25
 ;---------------------------------------------------------------
 
 wm_size                  	= 0.1
+wallmark_section			= explosion_marks
 
 light_color		         = 1.9,1.4,0.5
 light_range		         = 24.0

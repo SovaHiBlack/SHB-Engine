@@ -1,26 +1,27 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding="UTF-8"?>
 <window>
+
+<!-- ------------------------------------------------------------------------- -->
 	<part_1_pda>
-		<global_wnd/>
-		<function_on_stop>xr_effects.esc_init_dialod</function_on_stop>
-		<!--
+	<global_wnd/>
+	<function_on_stop>xr_effects.esc_init_dialod</function_on_stop>
+<!--
 		<global_wnd x="0" y="0" width="1024" height="768">
 			<auto_static x=900 y="10" width="150" height="50">
 				<text font="graffiti22" r="255" g="0" b="0" a="255">pda_tutorial</text>
 			</auto_static>
 		</global_wnd>
-		-->
+-->	
 
-		<item>
-			<!--Это твой личный ПДА- полезная хреновина,
+		<item> <!--Это	твой личный ПДА- полезная хреновина,
 					которая будет помогать тебе не сдохнуть в Зоне. Ну а если и сдохнешь, то хоть
 					другие знать будут как и где. Хе-хе. Шучу. Давай напомню кратко, как
-					пользоваться…
-			-->
+					пользоваться…-->
 			<length_sec>17</length_sec>
 			<pause_state>off</pause_state>
 			<guard_key/>
-
+			
+			
 			<sound>characters_voice\scenario\trader\trader_tutorial_pda_1</sound>
 			<cursor_pos/>
 			<grab_input>1</grab_input>
@@ -28,9 +29,8 @@
 			<main_wnd/>
 		</item>
 
-		<item>
-			<!--Твои Задания расположены в первом разделе ПДА.-->
-			<length_sec>4</length_sec>
+		<item><!--Твои Задания расположены в первом разделе ПДА.-->
+			<length_sec>3</length_sec>
 			<pause_state>off</pause_state>
 			<guard_key/>
 			<cursor_pos/>
@@ -39,15 +39,14 @@
 			<pda_section>pda_quests</pda_section>
 
 			<main_wnd>
-				<auto_static start_time="0" length_sec="4" x="156" y="608" width="50" height="50" stretch="1" light_anim="tutor_rad_sign_clr" light_anim_cyclic="1" la_alpha="0" la_texture="1" xform_anim="tutor_rad_sign_xform" xform_anim_cyclic="1" alignment="c">
+				<auto_static start_time="0" length_sec="4" x="156" y="608" width="50" height="50"  stretch="1" light_anim="tutor_rad_sign_clr" light_anim_cyclic="1" la_alpha="0" la_texture="1" xform_anim="tutor_rad_sign_xform" xform_anim_cyclic="1" alignment="c">
 					<window_name>w2</window_name>
 					<texture>ui_highlight</texture>
 				</auto_static>
 			</main_wnd>
 		</item>
-
-		<item>
-			<!--Для большинства заданий есть кнопки переключения на дополнительную информацию к заданию…-->
+		
+		<item><!--Для большинства заданий есть кнопки переключения на дополнительную информацию к заданию…-->
 			<length_sec>6</length_sec>
 			<pause_state>off</pause_state>
 			<guard_key/>
@@ -57,16 +56,15 @@
 			<pda_section>pda_quests</pda_section>
 
 			<main_wnd>
-				<auto_static start_time="0" length_sec="6" x="404" y="186" width="50" height="50" stretch="1" light_anim="tutor_rad_sign_clr" light_anim_cyclic="1" la_alpha="0" la_texture="1" xform_anim="tutor_rad_sign_xform" xform_anim_cyclic="1" alignment="c">
+				<auto_static start_time="0" length_sec="6" x="404" y="186" width="50" height="50"  stretch="1" light_anim="tutor_rad_sign_clr" light_anim_cyclic="1" la_alpha="0" la_texture="1" xform_anim="tutor_rad_sign_xform" xform_anim_cyclic="1" alignment="c">
 					<window_name>w2</window_name>
 					<texture>ui_highlight</texture>
 				</auto_static>
 			</main_wnd>
 		</item>
-
-		<item>
-			<!--Запомни - каждое новое задание автоматически переключает целеуказание на мини-карте на себя-->
-			<length_sec>9</length_sec>
+		
+		<item><!--Запомни - каждое новое задание автоматически переключает целеуказание на мини-карте на себя-->
+			<length_sec>8</length_sec>
 			<pause_state>off</pause_state>
 			<guard_key/>
 			<sound>characters_voice\scenario\trader\trader_tutorial_pda_4</sound>
@@ -76,9 +74,8 @@
 			<main_wnd/>
 		</item>
 
-		<item>
-			<!--Дальше: Второй раздел ПДА - это Карта.-->
-			<length_sec>5</length_sec>
+		<item><!--Дальше: Второй раздел ПДА - это Карта.-->
+			<length_sec>4</length_sec>
 			<pause_state>off</pause_state>
 			<guard_key/>
 			<sound>characters_voice\scenario\trader\trader_tutorial_pda_5</sound>
@@ -86,16 +83,15 @@
 			<grab_input>1</grab_input>
 			<pda_section>pda_map</pda_section>
 			<main_wnd>
-				<auto_static start_time="0" length_sec="4" x="216" y="608" width="50" height="50" stretch="1" light_anim="tutor_rad_sign_clr" light_anim_cyclic="1" la_alpha="0" la_texture="1" xform_anim="tutor_rad_sign_xform" xform_anim_cyclic="1" alignment="c">
+				<auto_static start_time="0" length_sec="4" x="216" y="608" width="50" height="50"  stretch="1" light_anim="tutor_rad_sign_clr" light_anim_cyclic="1" la_alpha="0" la_texture="1" xform_anim="tutor_rad_sign_xform" xform_anim_cyclic="1" alignment="c">
 					<window_name>w1</window_name>
 					<texture>ui_highlight</texture>
 				</auto_static>
 			</main_wnd>
 		</item>
 
-		<item>
-			<!--…кнопки над картой позволят тебе увеличивать или уменьшать карту…кхе-->
-			<length_sec>5</length_sec>
+		<item><!--…кнопки над картой позволят тебе увеличивать или уменьшать карту…кхе-->
+			<length_sec>6</length_sec>
 			<pause_state>off</pause_state>
 			<guard_key/>
 			<sound>characters_voice\scenario\trader\trader_tutorial_pda_6</sound>
@@ -107,7 +103,7 @@
 					<window_name>w1</window_name>
 					<texture>ui_highlight</texture>
 				</auto_static>
-
+				
 				<auto_static start_time="2" length_sec="4" x="269" y="135" width="30" height="30" stretch="1" light_anim="tutor_rad_sign_clr" light_anim_cyclic="1" la_alpha="0" la_texture="1" xform_anim="tutor_rad_sign_xform" xform_anim_cyclic="1" alignment="c">
 					<window_name>w2</window_name>
 					<texture>ui_highlight</texture>
@@ -115,8 +111,7 @@
 			</main_wnd>
 		</item>
 
-		<item>
-			<!--…э-эээ… плюс отцентрировать карту по твоему месторасположению…что еще?-->
+		<item><!--…э-эээ… плюс отцентрировать карту по твоему месторасположению…что еще?-->
 			<length_sec>5</length_sec>
 			<pause_state>off</pause_state>
 			<guard_key/>
@@ -132,9 +127,8 @@
 			</main_wnd>
 		</item>
 
-		<delme_item>
-			<!--…Еще сможешь добавлять или убирать собственные пометки на карте... -->
-			<length_sec>6</length_sec>
+		<delme_item><!--…Еще сможешь добавлять или убирать собственные пометки на карте... -->
+			<length_sec>5</length_sec>
 			<pause_state>off</pause_state>
 			<guard_key/>
 			<sound>characters_voice\scenario\trader\trader_tutorial_pda_8</sound>
@@ -142,20 +136,21 @@
 			<grab_input>1</grab_input>
 			<pda_section>pda_quests</pda_section>
 			<main_wnd>
-				<auto_static start_time="1" length_sec="4" x="819" y="135" width="30" height="30" alignment="c" stretch="1" light_anim="ui_pda_contacts" la_cyclic="1" la_texture="1" la_alpha="1">
+				<auto_static start_time="1" length_sec="4" x="819" y="135" width="30" height="30" alignment="c" stretch="1"
+							light_anim="ui_pda_contacts" la_cyclic="1" la_texture="1" la_alpha="1">
 					<window_name>w1</window_name>
 					<texture>ui_icons_newPDA_CrclMiddle_h</texture>
 				</auto_static>
-				<auto_static start_time="1" length_sec="4" x="839" y="135" width="30" height="30" alignment="c" stretch="1" light_anim="ui_pda_contacts" la_cyclic="1" la_texture="1" la_alpha="1">
+				<auto_static start_time="1" length_sec="4" x="839" y="135" width="30" height="30" alignment="c" stretch="1"
+							light_anim="ui_pda_contacts" la_cyclic="1" la_texture="1" la_alpha="1">
 					<window_name>w2</window_name>
 					<texture>ui_icons_newPDA_CrclMiddle_h</texture>
 				</auto_static>
 			</main_wnd>
 		</delme_item>
 
-		<item>
-			<!--вобщем разберешься…там не сложно…В ПДА есть раздел Контакты -->
-			<length_sec>8</length_sec>
+		<item><!--вобщем разберешься…там не сложно…В ПДА есть раздел Контакты -->
+			<length_sec>7</length_sec>
 			<pause_state>off</pause_state>
 			<guard_key/>
 			<sound>characters_voice\scenario\trader\trader_tutorial_pda_9</sound>
@@ -165,8 +160,7 @@
 			<main_wnd/>
 		</item>
 
-		<item>
-			<!--В контактах список сталкеров, которые находятся в радиусе 50 метров. 
+		<item><!--В контактах список сталкеров, которые находятся в радиусе 50 метров. 
 					Плюс их короткое описание, ранг, группировка и вероятное отношение к тебе. 
 					Запомни, пока ты - нейтрал, и только от тебя зависит, как к тебе будут относится потом. 
 					Если поможешь кому, то обрати внимание, как изменится его отношение к тебе...  -->
@@ -182,7 +176,7 @@
 					<window_name>w1</window_name>
 					<texture>ui_highlight</texture>
 				</auto_static>
-
+				
 				<auto_static start_time="4" length_sec="19" x="202" y="211" width="50" height="50" stretch="1" light_anim="tutor_rad_sign_clr" light_anim_cyclic="1" la_alpha="0" la_texture="1" xform_anim="tutor_rad_sign_xform" xform_anim_cyclic="1" alignment="c">
 					<window_name>w2</window_name>
 					<texture>ui_highlight</texture>
@@ -190,11 +184,10 @@
 			</main_wnd>
 		</item>
 
-		<item>
-			<!--…Будь осторожен, если рядом враги, на визоре они отмечаются красным, 
+		<item><!--…Будь осторожен, если рядом враги, на визоре они отмечаются красным, 
 					друзья отмечены зеленым, нейтралы - желтым. А..ну и ПДА мертвых сталкеров подсвечиваются серым. 
 					В мародерстве помогает. гы-ыы…Что еще?...ах да есть Дневник…-->
-			<length_sec>22</length_sec>
+			<length_sec>21</length_sec>
 			<pause_state>off</pause_state>
 			<guard_key/>
 			<function_on_start>mob_trader.on_start_tutorial_item_1</function_on_start>
@@ -210,9 +203,8 @@
 				</auto_static>
 			</main_wnd>
 		</item>
-
-		<item>
-			<!--.. ну тут и говорить нечего - там записывается вся информация, которая тебе нужна, 
+		
+		<item><!--.. ну тут и говорить нечего - там записывается вся информация, которая тебе нужна, 
 					плюс новости…даже то, что я тебе сейчас втолковываю, ты там найдешь…Потом…В разделе ПДА 
 					под названием Рейтинг…кх-хх-->
 			<length_sec>16</length_sec>
@@ -230,8 +222,7 @@
 			</main_wnd>
 		</item>
 
-		<item>
-			<!--...увидишь лучшую двадцатку сталкеров, которых я знаю - я переодически обновляю эту 
+		<item><!--...увидишь лучшую двадцатку сталкеров, которых я знаю - я переодически обновляю эту 
 					информацию для поддержания соревновательного духа..гы-ыыы..Глядишь и ты когда-нить вырвешся в лидеры..
 					Кто знает?..Твои собственные успехи заносятся в раздел Статистика…-->
 			<length_sec>21</length_sec>
@@ -248,10 +239,9 @@
 				</auto_static>
 			</main_wnd>
 		</item>
-
-		<item>
-			<!--ну там все просто..э-эээ...Далее....Энциклопедия..К-хе-->
-			<length_sec>6</length_sec>
+		
+		<item><!--ну там все просто..э-эээ...Далее....Энциклопедия..К-хе-->
+			<length_sec>5</length_sec>
 			<pause_state>off</pause_state>
 			<guard_key/>
 			<sound>characters_voice\scenario\trader\trader_tutorial_pda_14_1</sound>
@@ -266,10 +256,9 @@
 			</main_wnd>
 		</item>
 
-		<item>
-			<!--В нее заносится информация о Зоне и советы по выживанию, которые ты найдешь или получишь 
+		<item><!--В нее заносится информация о Зоне и советы по выживанию, которые ты найдешь или получишь 
 					от сталкеров.... В принципе все.. -->
-			<length_sec>11</length_sec>
+			<length_sec>10</length_sec>
 			<pause_state>off</pause_state>
 			<guard_key/>
 			<sound>characters_voice\scenario\trader\trader_tutorial_pda_15</sound>
@@ -283,14 +272,12 @@
 				</auto_static>
 			</main_wnd>
 		</item>
-
-		<item>
-			<!--	А-аа..еще….В твоей моделе ПДА, есть сканер радиочастот широкого спектра, со встроенным 
+		<item><!--	А-аа..еще….В твоей моделе ПДА, есть сканер радиочастот широкого спектра, со встроенным 
 					дешифратором. Радиус метров 400, так что сможешь даже сообщения вояк ловить. 
 					Моя рация тянет в радиусе 30 километров и я тебя всегда найду. 
 					Будешь получать от меня задания и последние новости. А на первых порах помогу советом. 
 					Все ясно или повторить для тех кто в танке? Гы-гы.-->
-			<length_sec>31</length_sec>
+			<length_sec>30</length_sec>
 			<pause_state>off</pause_state>
 			<guard_key/>
 			<disabled_key>use</disabled_key>
@@ -301,6 +288,7 @@
 			<pda_section/>
 			<main_wnd/>
 		</item>
+
 	</part_1_pda>
 
 	<part_2_binocular>
@@ -315,7 +303,8 @@
 			<pda_section/>
 			<grab_input>0</grab_input>
 			<main_wnd>
-				<auto_static start_time="0" length_sec="5000" x="712" y="475" width="400" height="150" alignment="c" stretch="1" light_anim="" la_cyclic="1" la_texture="1" la_alpha="1">
+				<auto_static start_time="0" length_sec="5000" x="712" y="475" width="400" height="150" alignment="c" stretch="1"
+							light_anim="" la_cyclic="1" la_texture="1" la_alpha="1">
 					<window_name>w1</window_name>
 					<text font="graffiti22" r="225" g="225" b="250" a="255">binoc_tutorial</text>
 				</auto_static>
@@ -323,10 +312,12 @@
 		</item>
 	</part_2_binocular>
 
-	<!--Test-->
+	<!----------------------------------------------------------------------------------->
+	<!--Test----------------------------------------------------------------------------->
+	<!----------------------------------------------------------------------------------->
 	<test>
 		<global_wnd/>
-
+		
 		<item>
 			<length_sec>20</length_sec>
 			<pause_state>off</pause_state>
@@ -338,20 +329,21 @@
 			<grab_input>1</grab_input>
 			<pda_section>pda_closed</pda_section>
 			<main_wnd>
-				<auto_static start_time="0" length_sec="18" x="100" y="100" width="150" height="150" alignment="c" stretch="1" light_anim="ui_pda_contacts" la_cyclic="1" la_texture="1" la_alpha="1">
+				<auto_static start_time="0" length_sec="18" x="100" y="100" width="150" height="150" alignment="c" stretch="1"
+							light_anim="ui_pda_contacts" la_cyclic="1" la_texture="1" la_alpha="1">
 					<window_name>w1</window_name>
 					<texture>ui_icons_newPDA_CrclMiddle_h</texture>
 				</auto_static>
 			</main_wnd>
 		</item>
 	</test>
-
-	<part_3_jump>
-		<!--делаю новый туториал-->
+	<!----------------------------------------------------------------------------------->
+	
+	
+	<part_3_jump><!--делаю новый туториал-->
 		<global_wnd/>
 
-		<item>
-			<!--Для того чтобы перепрыгнуть невысокое препятствие - нажмите клавишу "пробел" $$ACTION_JUMP$$-->
+		<item><!--Для того чтобы перепрыгнуть невысокое препятствие - нажмите клавишу "пробел" $$ACTION_JUMP$$-->
 			<length_sec>5</length_sec>
 			<pause_state>off</pause_state>
 			<guard_key/>
@@ -360,20 +352,19 @@
 			<pda_section/>
 			<grab_input>0</grab_input>
 			<main_wnd>
-				<auto_static start_time="0" length_sec="5000" x="712" y="475" width="400" height="150" alignment="c" stretch="1" light_anim="" la_cyclic="1" la_texture="1" la_alpha="1">
+				<auto_static start_time="0" length_sec="5000" x="712" y="475" width="400" height="150" alignment="c" stretch="1"
+							light_anim="" la_cyclic="1" la_texture="1" la_alpha="1">
 					<window_name>w1</window_name>
 					<text font="graffiti22" r="225" g="225" b="250" a="255">jump_tutorial</text>
 				</auto_static>
 			</main_wnd>
 		</item>
 	</part_3_jump>
-
-	<part_4_crouch>
-		<!--делаю новый туториал-->
+	
+	<part_4_crouch><!--делаю новый туториал-->
 		<global_wnd/>
-
-		<item>
-			<!-- Для того чтобы пройти под невысоким препятствием - нажмите клавишу "ctrl" $$ACTION_CROUCH$$-->
+		
+		<item><!-- Для того чтобы пройти под невысоким препятствием - нажмите клавишу "ctrl" $$ACTION_CROUCH$$-->
 			<length_sec>5</length_sec>
 			<pause_state>off</pause_state>
 			<guard_key/>
@@ -382,20 +373,20 @@
 			<pda_section/>
 			<grab_input>0</grab_input>
 			<main_wnd>
-				<auto_static start_time="0" length_sec="5000" x="712" y="475" width="400" height="150" alignment="c" stretch="1" light_anim="" la_cyclic="1" la_texture="1" la_alpha="1">
+				<auto_static start_time="0" length_sec="5000" x="712" y="475" width="400" height="150" alignment="c" stretch="1"
+							light_anim="" la_cyclic="1" la_texture="1" la_alpha="1">
 					<window_name>w1</window_name>
 					<text font="graffiti22" r="225" g="225" b="250" a="255">crouch_tutorial</text>
 				</auto_static>
 			</main_wnd>
 		</item>
+
 	</part_4_crouch>
-
-	<part_5_crouch_down>
-		<!--делаю новый туториал-->
+	
+	<part_5_crouch_down><!--делаю новый туториал-->
 		<global_wnd/>
-
-		<item>
-			<!-- Для того чтобы пройти под низким препятствием - нажмите клавишу "ctrl+shift" $$ACTION_CROUCH_DOWN$$-->
+		
+		<item><!-- Для того чтобы пройти под низким препятствием - нажмите клавишу "ctrl+shift" $$ACTION_CROUCH_DOWN$$-->
 			<length_sec>5</length_sec>
 			<pause_state>off</pause_state>
 			<guard_key/>
@@ -404,20 +395,19 @@
 			<pda_section/>
 			<grab_input>0</grab_input>
 			<main_wnd>
-				<auto_static start_time="0" length_sec="5000" x="712" y="475" width="400" height="150" alignment="c" stretch="1" light_anim="" la_cyclic="1" la_texture="1" la_alpha="1">
+				<auto_static start_time="0" length_sec="5000" x="712" y="475" width="400" height="150" alignment="c" stretch="1"
+							light_anim="" la_cyclic="1" la_texture="1" la_alpha="1">
 					<window_name>w1</window_name>
 					<text font="graffiti22" r="225" g="225" b="250" a="255">crouch_down_tutorial</text>
 				</auto_static>
 			</main_wnd>
 		</item>
 	</part_5_crouch_down>
-
-	<part_6_radiation>
-		<!--делаю новый туториал-->
+	
+	<part_6_radiation><!--делаю новый туториал-->
 		<global_wnd/>
-
-		<item>
-			<!-- Радиация -->
+		
+		<item><!-- Радиация -->
 			<length_sec>10</length_sec>
 			<pause_state>off</pause_state>
 			<guard_key/>
@@ -426,21 +416,20 @@
 			<pda_section/>
 			<grab_input>0</grab_input>
 			<main_wnd>
-				<auto_static start_time="0" length_sec="10000" x="712" y="475" width="400" height="150" alignment="c" stretch="1" light_anim="" la_cyclic="1" la_texture="1" la_alpha="1">
+				<auto_static start_time="0" length_sec="10000" x="712" y="475" width="400" height="150" alignment="c" stretch="1"
+							light_anim="" la_cyclic="1" la_texture="1" la_alpha="1">
 					<window_name>w1</window_name>
 					<text font="graffiti22" r="225" g="225" b="250" a="255">radiation_tutorial</text>
 				</auto_static>
 			</main_wnd>
 		</item>
-	</part_6_radiation>
-
-	<part_7_psy>
-		<!--делаю новый туториал-->
+	</part_6_radiation>	
+		
+	<part_8_wound><!--делаю новый туториал-->
 		<global_wnd/>
-
-		<item>
-			<!-- Радиация -->
-			<length_sec>10</length_sec>
+		
+		<item><!-- Кровотечения -->
+			<length_sec>15</length_sec>
 			<pause_state>off</pause_state>
 			<guard_key/>
 			<sound/>
@@ -448,42 +437,19 @@
 			<pda_section/>
 			<grab_input>0</grab_input>
 			<main_wnd>
-				<auto_static start_time="0" length_sec="10000" x="712" y="475" width="400" height="150" alignment="c" stretch="1" light_anim="" la_cyclic="1" la_texture="1" la_alpha="1">
-					<window_name>w1</window_name>
-					<text font="graffiti22" r="225" g="225" b="250" a="255">radiation_tutorial</text>
-				</auto_static>
-			</main_wnd>
-		</item>
-	</part_7_psy>
-
-	<part_8_wound>
-		<!--делаю новый туториал-->
-		<global_wnd/>
-
-		<item>
-			<!-- Кровотечения -->
-			<length_sec>10</length_sec>
-			<pause_state>off</pause_state>
-			<guard_key/>
-			<sound/>
-			<cursor_pos/>
-			<pda_section/>
-			<grab_input>0</grab_input>
-			<main_wnd>
-				<auto_static start_time="0" length_sec="10000" x="712" y="475" width="400" height="150" alignment="c" stretch="1" light_anim="" la_cyclic="1" la_texture="1" la_alpha="1">
+				<auto_static start_time="0" length_sec="10000" x="712" y="475" width="400" height="150" alignment="c" stretch="1"
+							light_anim="" la_cyclic="1" la_texture="1" la_alpha="1">
 					<window_name>w1</window_name>
 					<text font="graffiti22" r="225" g="225" b="250" a="255">wound_tutorial</text>
 				</auto_static>
 			</main_wnd>
 		</item>
 	</part_8_wound>
-
-	<part_9_weapon>
-		<!--делаю новый туториал-->
+	
+	<part_9_weapon><!--делаю новый туториал-->
 		<global_wnd/>
-
-		<item>
-			<!-- Поломка оружия -->
+		
+		<item><!-- Поломка оружия -->
 			<length_sec>10</length_sec>
 			<pause_state>off</pause_state>
 			<guard_key/>
@@ -492,20 +458,19 @@
 			<pda_section/>
 			<grab_input>0</grab_input>
 			<main_wnd>
-				<auto_static start_time="0" length_sec="10000" x="712" y="475" width="400" height="150" alignment="c" stretch="1" light_anim="" la_cyclic="1" la_texture="1" la_alpha="1">
+				<auto_static start_time="0" length_sec="10000" x="712" y="475" width="400" height="150" alignment="c" stretch="1"
+							light_anim="" la_cyclic="1" la_texture="1" la_alpha="1">
 					<window_name>w1</window_name>
 					<text font="graffiti22" r="225" g="225" b="250" a="255">weapon_tutorial</text>
 				</auto_static>
 			</main_wnd>
 		</item>
 	</part_9_weapon>
-
-	<part_10_sprint>
-		<!--делаю новый туториал-->
+	
+	<part_10_sprint><!--делаю новый туториал-->
 		<global_wnd/>
-
-		<item>
-			<!-- Бег в спринте -->
+		
+		<item><!-- Бег в спринте -->
 			<length_sec>10</length_sec>
 			<pause_state>off</pause_state>
 			<guard_key/>
@@ -514,20 +479,19 @@
 			<pda_section/>
 			<grab_input>0</grab_input>
 			<main_wnd>
-				<auto_static start_time="0" length_sec="10000" x="712" y="475" width="400" height="150" alignment="c" stretch="1" light_anim="" la_cyclic="1" la_texture="1" la_alpha="1">
+				<auto_static start_time="0" length_sec="10000" x="712" y="475" width="400" height="150" alignment="c" stretch="1"
+							light_anim="" la_cyclic="1" la_texture="1" la_alpha="1">
 					<window_name>w1</window_name>
 					<text font="graffiti22" r="225" g="225" b="250" a="255">sprint_tutorial</text>
 				</auto_static>
 			</main_wnd>
 		</item>
 	</part_10_sprint>
-
-	<part_11_weakness>
-		<!--делаю новый туториал-->
+	
+	<part_11_weakness><!--делаю новый туториал-->
 		<global_wnd/>
-
-		<item>
-			<!-- Усталость -->
+		
+		<item><!-- Усталость -->
 			<length_sec>10</length_sec>
 			<pause_state>off</pause_state>
 			<guard_key/>
@@ -536,20 +500,19 @@
 			<pda_section/>
 			<grab_input>0</grab_input>
 			<main_wnd>
-				<auto_static start_time="0" length_sec="10000" x="712" y="475" width="400" height="150" alignment="c" stretch="1" light_anim="" la_cyclic="1" la_texture="1" la_alpha="1">
+				<auto_static start_time="0" length_sec="10000" x="712" y="475" width="400" height="150" alignment="c" stretch="1"
+							light_anim="" la_cyclic="1" la_texture="1" la_alpha="1">
 					<window_name>w1</window_name>
 					<text font="graffiti22" r="225" g="225" b="250" a="255">weakness_tutorial</text>
 				</auto_static>
 			</main_wnd>
 		</item>
 	</part_11_weakness>
-
-	<part_12_relations>
-		<!--делаю новый туториал-->
+	
+	<part_12_relations><!--делаю новый туториал-->
 		<global_wnd/>
-
-		<item>
-			<!-- отношение персонажей -->
+		
+		<item><!-- отношение персонажей -->
 			<length_sec>10</length_sec>
 			<pause_state>off</pause_state>
 			<guard_key/>
@@ -558,20 +521,19 @@
 			<pda_section/>
 			<grab_input>0</grab_input>
 			<main_wnd>
-				<auto_static start_time="0" length_sec="10000" x="712" y="475" width="400" height="150" alignment="c" stretch="1" light_anim="" la_cyclic="1" la_texture="1" la_alpha="1">
+				<auto_static start_time="0" length_sec="10000" x="712" y="475" width="400" height="150" alignment="c" stretch="1"
+							light_anim="" la_cyclic="1" la_texture="1" la_alpha="1">
 					<window_name>w1</window_name>
 					<text font="graffiti22" r="225" g="225" b="250" a="255">relation_tutorial</text>
 				</auto_static>
 			</main_wnd>
 		</item>
 	</part_12_relations>
-
-	<part_14_overload>
-		<!--делаю новый туториал-->
+		
+	<part_14_overload><!--делаю новый туториал-->
 		<global_wnd/>
-
-		<item>
-			<!-- перегрузка -->
+		
+		<item><!-- перегрузка -->
 			<length_sec>10</length_sec>
 			<pause_state>off</pause_state>
 			<guard_key/>
@@ -580,20 +542,19 @@
 			<pda_section/>
 			<grab_input>0</grab_input>
 			<main_wnd>
-				<auto_static start_time="0" length_sec="10000" x="712" y="475" width="400" height="150" alignment="c" stretch="1" light_anim="" la_cyclic="1" la_texture="1" la_alpha="1">
+				<auto_static start_time="0" length_sec="10000" x="712" y="475" width="400" height="150" alignment="c" stretch="1"
+							light_anim="" la_cyclic="1" la_texture="1" la_alpha="1">
 					<window_name>w1</window_name>
 					<text font="graffiti22" r="225" g="225" b="250" a="255">overload_tutorial</text>
 				</auto_static>
 			</main_wnd>
 		</item>
 	</part_14_overload>
-
-	<part_15_hide_weapon>
-		<!--делаю новый туториал-->
+	
+	<part_15_hide_weapon><!--делаю новый туториал-->
 		<global_wnd/>
-
-		<item>
-			<!-- спрятать/достать оружие -->
+		
+		<item><!-- спрятать/достать оружие -->
 			<length_sec>10</length_sec>
 			<pause_state>off</pause_state>
 			<guard_key/>
@@ -602,7 +563,8 @@
 			<pda_section/>
 			<grab_input>0</grab_input>
 			<main_wnd>
-				<auto_static start_time="0" length_sec="10000" x="712" y="475" width="400" height="150" alignment="c" stretch="1" light_anim="" la_cyclic="1" la_texture="1" la_alpha="1">
+				<auto_static start_time="0" length_sec="10000" x="712" y="475" width="400" height="150" alignment="c" stretch="1"
+							light_anim="" la_cyclic="1" la_texture="1" la_alpha="1">
 					<window_name>w1</window_name>
 					<text font="graffiti22" r="225" g="225" b="250" a="255">hide_weapon_tutorial</text>
 				</auto_static>
@@ -610,12 +572,12 @@
 		</item>
 	</part_15_hide_weapon>
 
-	<part_pda_diary>
-		<!--делаю новый туториал-->
-		<global_wnd/>
 
-		<item>
-			<!-- спрятать/достать оружие -->
+
+	<part_7_psy><!--����� ���� ���ਠ�-->
+		<global_wnd/>
+		
+		<item><!-- �� -->
 			<length_sec>10</length_sec>
 			<pause_state>off</pause_state>
 			<guard_key/>
@@ -624,7 +586,114 @@
 			<pda_section/>
 			<grab_input>0</grab_input>
 			<main_wnd>
-				<auto_static start_time="0" length_sec="10000" x="712" y="475" width="400" height="150" alignment="c" stretch="1" light_anim="" la_cyclic="1" la_texture="1" la_alpha="1">
+				<auto_static start_time="0" length_sec="10000" x="712" y="475" width="400" height="150" alignment="c" stretch="1"
+							light_anim="" la_cyclic="1" la_texture="1" la_alpha="1">
+					<window_name>w1</window_name>
+					<text font="graffiti22" r="225" g="225" b="250" a="255">psy1_tutorial</text>
+				</auto_static>
+			</main_wnd>
+		</item>
+	</part_7_psy>
+
+	<part_13_satiety><!--����� ���� ���ਠ�-->
+		<global_wnd/>
+		
+		<item><!-- ����� -->
+			<length_sec>12</length_sec>
+			<pause_state>off</pause_state>
+			<guard_key/>
+			<sound/>
+			<cursor_pos/>
+			<pda_section/>
+			<grab_input>0</grab_input>
+			<main_wnd>
+				<auto_static start_time="0" length_sec="10000" x="712" y="475" width="400" height="150" alignment="c" stretch="1"
+							light_anim="" la_cyclic="1" la_texture="1" la_alpha="1">
+					<window_name>w1</window_name>
+					<text font="graffiti22" r="225" g="225" b="250" a="255">satiety_tutorial</text>
+				</auto_static>
+			</main_wnd>
+		</item>
+	</part_13_satiety>	
+
+	<part_16_disguise><!--����� ���� ���ਠ�-->
+		<global_wnd/>
+		
+		<item><!-- ��᪨஢�� -->
+			<length_sec>15</length_sec>
+			<pause_state>off</pause_state>
+			<guard_key/>
+			<sound/>
+			<cursor_pos/>
+			<pda_section/>
+			<grab_input>0</grab_input>
+			<main_wnd>
+				<auto_static start_time="0" length_sec="10000" x="712" y="475" width="400" height="150" alignment="c" stretch="1"
+							light_anim="" la_cyclic="1" la_texture="1" la_alpha="1">
+					<window_name>w1</window_name>
+					<text font="graffiti22" r="225" g="225" b="250" a="255">disguise_tutorial</text>
+				</auto_static>
+			</main_wnd>
+		</item>
+	</part_16_disguise>	
+
+	<part_17_sleep><!--����� ���� ���ਠ�-->
+		<global_wnd/>
+		
+		<item><!-- ��� -->
+			<length_sec>15</length_sec>
+			<pause_state>off</pause_state>
+			<guard_key/>
+			<sound/>
+			<cursor_pos/>
+			<pda_section/>
+			<grab_input>0</grab_input>
+			<main_wnd>
+				<auto_static start_time="0" length_sec="10000" x="712" y="475" width="400" height="150" alignment="c" stretch="1"
+							light_anim="" la_cyclic="1" la_texture="1" la_alpha="1">
+					<window_name>w1</window_name>
+					<text font="graffiti22" r="225" g="225" b="250" a="255">sleep_tutorial</text>
+				</auto_static>
+			</main_wnd>
+		</item>
+	</part_17_sleep>
+
+	<part_19_activation><!--����� ���� ���ਠ�-->
+		<global_wnd/>
+		
+		<item><!-- ��⨢��� ���䠪⮢ -->
+			<length_sec>15</length_sec>
+			<pause_state>off</pause_state>
+			<guard_key/>
+			<sound/>
+			<cursor_pos/>
+			<pda_section/>
+			<grab_input>0</grab_input>
+			<main_wnd>
+				<auto_static start_time="0" length_sec="10000" x="712" y="475" width="400" height="150" alignment="c" stretch="1"
+							light_anim="" la_cyclic="1" la_texture="1" la_alpha="1">
+					<window_name>w1</window_name>
+					<text font="graffiti22" r="225" g="225" b="250" a="255">enc_zone_anomalies_activation_practice</text>
+				</auto_static>
+			</main_wnd>
+		</item>
+	</part_19_activation>
+
+
+	<part_pda_diary><!--делаю новый туториал-->
+		<global_wnd/>
+		
+		<item><!-- спрятать/достать оружие -->
+			<length_sec>10</length_sec>
+			<pause_state>off</pause_state>
+			<guard_key/>
+			<sound/>
+			<cursor_pos/>
+			<pda_section/>
+			<grab_input>0</grab_input>
+			<main_wnd>
+				<auto_static start_time="0" length_sec="10000" x="712" y="475" width="400" height="150" alignment="c" stretch="1"
+							light_anim="" la_cyclic="1" la_texture="1" la_alpha="1">
 					<window_name>w1</window_name>
 					<text font="graffiti22" r="225" g="225" b="250" a="255">pda_diary_tutorial</text>
 				</auto_static>
@@ -632,15 +701,126 @@
 		</item>
 	</part_pda_diary>
 
+	
+	<!-- !!!tutorials for presentation!!! -->
+	
+	<pripyat_tutorial>
+		<global_wnd/>
+		
+		<item>
+			<length_sec/>
+			<pause_state>on</pause_state>
+			<guard_key>use</guard_key>
+			<sound>characters_voice\scenario\radar\rad_barman_message</sound>
+			<cursor_pos/>
+			<pda_section/>
+			<function_on_stop>xr_effects.presentation_task</function_on_stop>
+			<grab_input>0</grab_input>
+			<main_wnd>
+				<auto_static start_time="0" length_sec="10000" x="500" y="400" width="600" height="150" alignment="c" stretch="1"
+							light_anim="" la_cyclic="1" la_texture="1" la_alpha="1">
+					<window_name>w1</window_name>
+					<text font="graffiti22" r="225" g="225" b="250" a="255">tutorial_for_pripyat</text>
+				</auto_static>
+				<auto_static start_time="0" length_sec="5000" x="500" y="550" width="550" height="150" alignment="c" stretch="1"
+							light_anim="ui_pda_contacts" la_cyclic="1" la_texture="1" la_alpha="1">
+					<window_name>w1</window_name>
+					<text font="graffiti22" r="225" g="225" b="250" a="255">tutorial_skip</text>
+				</auto_static>
+			</main_wnd>
+		</item>
+	</pripyat_tutorial>
+	
+	<agroprom_tutorial>
+		<global_wnd/>
+		
+		<item>
+			<length_sec/>
+			<pause_state>on</pause_state>
+			<guard_key>use</guard_key>
+			<sound>characters_voice\scenario\presentation\start_agr</sound>
+			<cursor_pos/>
+			<pda_section/>
+			<function_on_stop>xr_effects.presentation_task</function_on_stop>
+			<grab_input>0</grab_input>
+			<main_wnd>
+				<auto_static start_time="0" length_sec="10000" x="500" y="400" width="600" height="150" alignment="c" stretch="1"
+							light_anim="" la_cyclic="1" la_texture="1" la_alpha="1">
+					<window_name>w1</window_name>
+					<text font="graffiti22" r="225" g="225" b="250" a="255">tutorial_for_agroprom</text>
+				</auto_static>
+				<auto_static start_time="0" length_sec="5000" x="500" y="550" width="550" height="150" alignment="c" stretch="1"
+							light_anim="ui_pda_contacts" la_cyclic="1" la_texture="1" la_alpha="1">
+					<window_name>w1</window_name>
+					<text font="graffiti22" r="225" g="225" b="250" a="255">tutorial_skip</text>
+				</auto_static>
+			</main_wnd>
+		</item>
+	</agroprom_tutorial>
+	
+	<bar_tutorial>
+		<global_wnd/>
+		
+		<item>
+			<length_sec/>
+			<pause_state>on</pause_state>
+			<guard_key>use</guard_key>
+			<sound>characters_voice\scenario\presentation\start_bar</sound>
+			<cursor_pos/>
+			<pda_section/>
+			<function_on_stop>xr_effects.presentation_task</function_on_stop>
+			<grab_input>0</grab_input>
+			<main_wnd>
+				<auto_static start_time="0" length_sec="10000" x="500" y="400" width="600" height="150" alignment="c" stretch="1"
+							light_anim="" la_cyclic="1" la_texture="1" la_alpha="1">
+					<window_name>w1</window_name>
+					<text font="graffiti22" r="225" g="225" b="250" a="255">tutorial_for_bar</text>
+				</auto_static>
+				<auto_static start_time="0" length_sec="5000" x="500" y="550" width="550" height="150" alignment="c" stretch="1"
+							light_anim="ui_pda_contacts" la_cyclic="1" la_texture="1" la_alpha="1">
+					<window_name>w1</window_name>
+					<text font="graffiti22" r="225" g="225" b="250" a="255">tutorial_skip</text>
+				</auto_static>
+			</main_wnd>
+		</item>
+	</bar_tutorial>
+	
+	<yantar_tutorial>
+		<global_wnd/>
+		
+		<item>
+			<length_sec/>
+			<pause_state>on</pause_state>
+			<guard_key>use</guard_key>
+			<sound>characters_voice\scenario\presentation\start_yan</sound>
+			<cursor_pos/>
+			<pda_section/>
+			<grab_input>0</grab_input>
+			<function_on_stop>xr_effects.presentation_task</function_on_stop>
+			<main_wnd>
+				<auto_static start_time="0" length_sec="10000" x="500" y="400" width="600" height="150" alignment="c" stretch="1"
+							light_anim="" la_cyclic="1" la_texture="1" la_alpha="1">
+					<window_name>w1</window_name>
+					<text font="graffiti22" r="225" g="225" b="250" a="255">tutorial_for_yantar</text>
+				</auto_static>
+				<auto_static start_time="0" length_sec="5000" x="500" y="550" width="550" height="150" alignment="c" stretch="1"
+							light_anim="ui_pda_contacts" la_cyclic="1" la_texture="1" la_alpha="1">
+					<window_name>w1</window_name>
+					<text font="graffiti22" r="225" g="225" b="250" a="255">tutorial_skip</text>
+				</auto_static>
+			</main_wnd>
+		</item>
+	</yantar_tutorial>
+
 	<game_over>
 		<global_wnd/>
-
+		
 		<item>
 			<length_sec>4</length_sec>
 			<pause_state>off</pause_state>
 			<guard_key>jump</guard_key>
 			<function_on_stop>xr_effects.on_tutor_gameover_stop</function_on_stop>
-
+		
 			<sound/>
 			<cursor_pos/>
 			<pda_section/>
@@ -658,7 +838,25 @@
 		</item>
 	</game_over>
 
+<restore_sun>
+  <play_each_item>1</play_each_item>
+  <global_wnd x="0" y="0" width="1024" height="768">
+   <auto_static x="0" y="0" width="1024" height="768" stretch="1">
+    <window_name>back</window_name>
+    <texture>intro\intro_back</texture>
+   </auto_static>
+  </global_wnd>
+          
+  <item type="video">
+   <length_sec>1</length_sec>
+   <pause_state>on</pause_state>
+   <function_on_stop>amk.restore_sun</function_on_stop>
+   <video_wnd x="0" y="0" width="1024" height="768" stretch="1">
+    <texture x="0" y="0" width="1024" height="768">intro\intro_back</texture>
+   </video_wnd>
+  </item>
+</restore_sun>
+
 #include "ui\ui_credits.xml"
 #include "ui\ui_movies.xml"
-
 </window>

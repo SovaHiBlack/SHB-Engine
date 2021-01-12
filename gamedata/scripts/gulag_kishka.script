@@ -1,26 +1,27 @@
 local t = {}
 
 function load_job(sj, gname, type, squad, groups)
-	if type == "ds_kem4" then
+
+if type == "ds_kem4" then
 		t = { section = "logic@ds_kem4_camper1",
 			idle = 0,
 			prior = 1, state = {0},
 			in_rest = "", out_rest = ""
-			}
-		table.insert(sj, t)
-		t = { section = "logic@ds_kem4_camper2",
+		}
+       table.insert(sj, t)	
+       t = { section = "logic@ds_kem4_camper2",
 			idle = 0,
 			prior = 1, state = {0},
 			in_rest = "", out_rest = ""
-			}
-		table.insert(sj, t)
-		t = { section = "logic@ds_kem4_camper3",
+		}
+		table.insert(sj, t)	
+	   t = { section = "logic@ds_kem4_camper3",
 			idle = 0,
 			prior = 1, state = {0},
 			in_rest = "", out_rest = ""
-			}
-		table.insert(sj, t)
-	end
+		}
+		table.insert(sj, t)	
+  end
   
   if type == "ds_deb1" then
 		t = { section = "logic@ds_deb1_walker1",
@@ -28,8 +29,8 @@ function load_job(sj, gname, type, squad, groups)
 			prior = 1, state = {0},
 			in_rest = "", out_rest = ""
 		}
-	   table.insert(sj, t)	
-	   t = { section = "logic@ds_deb1_walker2",
+       table.insert(sj, t)	
+       t = { section = "logic@ds_deb1_walker2",
 			idle = 0,
 			prior = 1, state = {0},
 			in_rest = "", out_rest = ""
@@ -43,8 +44,8 @@ if type == "ds_kem3" then
 			prior = 1, state = {0},
 			in_rest = "", out_rest = ""
 		}
-	   table.insert(sj, t)	
-	   t = { section = "logic@ds_kem3_camper2",
+       table.insert(sj, t)	
+       t = { section = "logic@ds_kem3_camper2",
 			idle = 0,
 			prior = 1, state = {0},
 			in_rest = "", out_rest = ""
@@ -62,7 +63,7 @@ if type == "ds_kem3" then
 			in_rest = "", out_rest = ""
 		}
 		table.insert(sj, t)	
-	   end
+       end
 
 
 
@@ -72,8 +73,8 @@ if type == "ds_kem3" then
 			prior = 1, state = {0},
 			in_rest = "", out_rest = ""
 		}
-	   table.insert(sj, t)	
-	   t = { section = "logic@ds_kem1_camper2",
+       table.insert(sj, t)	
+       t = { section = "logic@ds_kem1_camper2",
 			idle = 0,
 			prior = 1, state = {0},
 			in_rest = "", out_rest = ""
@@ -85,16 +86,16 @@ if type == "ds_kem3" then
 			in_rest = "", out_rest = ""
 		}
 		table.insert(sj, t)	
-	   end
-	   
-	   if type == "ds_kem2" then
+       end
+       
+       if type == "ds_kem2" then
 		t = { section = "logic@ds_kem2_camper1",
 			idle = 0,
 			prior = 1, state = {0},
 			in_rest = "", out_rest = ""
 		}
-	   table.insert(sj, t)	
-	   t = { section = "logic@ds_kem2_camper2",
+       table.insert(sj, t)	
+       t = { section = "logic@ds_kem2_camper2",
 			idle = 0,
 			prior = 1, state = {0},
 			in_rest = "", out_rest = ""
@@ -106,9 +107,9 @@ if type == "ds_kem3" then
 			in_rest = "", out_rest = ""
 		}
 		table.insert(sj, t)	
-	   end
-	   
-	   if type == "ds_ptr" then
+       end
+       
+       if type == "ds_ptr" then
 		t = { section = "logic@ds_ptr_patrol1",
 			idle = 0,
 			prior = 1, state = {0},
@@ -116,15 +117,15 @@ if type == "ds_kem3" then
 		}
 		table.insert(sj, t)	
 
-	   t = { section = "logic@ds_ptr_patrol2",
+       t = { section = "logic@ds_ptr_patrol2",
 			idle = 0,
 			prior = 1, state = {0},
 			in_rest = "", out_rest = ""
 		}
 		table.insert(sj, t)	
-	   end
-	   
-	   if type == "ds_ptr2" then
+       end
+       
+       if type == "ds_ptr2" then
 		t = { section = "logic@ds_ptr2_patrol1",
 			idle = 0,
 			prior = 1, state = {0},
@@ -132,15 +133,15 @@ if type == "ds_kem3" then
 		}
 		table.insert(sj, t)	
 
-	   t = { section = "logic@ds_ptr2_patrol2",
+       t = { section = "logic@ds_ptr2_patrol2",
 			idle = 0,
 			prior = 1, state = {0},
 			in_rest = "", out_rest = ""
 		}
 		table.insert(sj, t)	
-	   end
-	   
-	   if type == "ds_ptr3" then
+       end
+       
+       if type == "ds_ptr3" then
 		t = { section = "logic@ds_ptr3_patrol1",
 			idle = 0,
 			prior = 1, state = {0},
@@ -148,15 +149,15 @@ if type == "ds_kem3" then
 		}
 		table.insert(sj, t)	
 
-	   t = { section = "logic@ds_ptr3_patrol2",
+       t = { section = "logic@ds_ptr3_patrol2",
 			idle = 0,
 			prior = 1, state = {0},
 			in_rest = "", out_rest = ""
 		}
 		table.insert(sj, t)	
-	   end
-	   
-	   if type == "ds_ptr4" then
+       end
+       
+       if type == "ds_ptr4" then
 		t = { section = "logic@ds_ptr4_patrol1",
 			idle = 0,
 			prior = 1, state = {0},
@@ -164,43 +165,43 @@ if type == "ds_kem3" then
 		}
 		table.insert(sj, t)	
 
-	   t = { section = "logic@ds_ptr4_patrol2",
+       t = { section = "logic@ds_ptr4_patrol2",
 			idle = 0,
 			prior = 1, state = {0},
 			in_rest = "", out_rest = ""
 		}
 		table.insert(sj, t)	
-	   end
-	   
-	   if type == "ds_snp1" then
+       end
+       
+       if type == "ds_snp1" then
 		t = { section = "logic@ds_snp1_sniper1",
 			idle = 0,
 			prior = 1, state = {0},
 			in_rest = "", out_rest = ""
 		}
 		table.insert(sj, t)	
-	  end
-	  
-	  if type == "ds_grverfer1" then
+      end
+      
+      if type == "ds_grverfer1" then
 		t = { section = "logic@ds_grverfer1_camper1",
 			idle = 0,
 			prior = 1, state = {0},
 			in_rest = "", out_rest = ""
 		}
-	   table.insert(sj, t)	
-	   end
-	   
-	   if type == "ds_grverfer2" then
+       table.insert(sj, t)	
+       end
+       
+       if type == "ds_grverfer2" then
 		t = { section = "logic@ds_grverfer1_camper1",
 			idle = 0,
 			prior = 1, state = {0},
 			in_rest = "", out_rest = ""
 		}
-	   table.insert(sj, t)	
-	   end
-	   
-	   
-	   if type == "ds_boars_nest" then
+       table.insert(sj, t)	
+       end
+       
+       
+       if type == "ds_boars_nest" then
 		t = { section = "logic@ds_boars_nest", 
 			idle = 0,
 			prior = 5, state = {0}, squad = squad, group = groups[0],

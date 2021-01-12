@@ -520,6 +520,14 @@ function se_smart_terrain:obj_accepts_smart_terrain( obj )
 			end
 		end
 
+		--' Если объекту запрещено переходить в online и эксклюзивные
+		--' смарты недоступны, то не пускаем его никуда. Это исключает
+		--' переброску отключенных до (или после) определённого события
+		--' людей и мутантов в другой неэксклюзивный смарт.
+		if obj:can_switch_online() == false then
+			return disagreed
+		end
+
 		--' Надо убедиться что эксклюзивный смарттеррейн доступен, прежде чем запрещать все остальные
 --'		if any_exclusive then
 --'			if obj:name() == "gar_bandit_agr_10" then
@@ -1133,11 +1141,13 @@ function on_death( obj_id )
 	local sim = alife()
 
 	if sim then
-		local obj     = sim:object( obj_id )
-		local strn_id = obj:smart_terrain_id()
+		local obj = sim:object( obj_id )
+		if obj then
+			local strn_id = obj:smart_terrain_id()
 
-		if strn_id ~= 65535 then
-			sim:object( strn_id ).gulag:clear_dead(obj_id)
+			if strn_id ~= 65535 then
+				sim:object( strn_id ).gulag:clear_dead(obj_id)
+			end
 		end
 	end
 end

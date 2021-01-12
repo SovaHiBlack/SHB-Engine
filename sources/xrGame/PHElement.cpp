@@ -84,12 +84,8 @@ void CPHElement::add_Cylinder	(const Fcylinder& V)
 
 void CPHElement::			build	(){
 
-	m_body=dBodyCreate(0);//phWorld
-	//m_saved_contacts=dJointGroupCreate (0);
-	//b_contacts_saved=false;
+	m_body=dBodyCreate(0);
 	dBodyDisable(m_body);
-	//dBodySetFiniteRotationMode(m_body,1);
-	//dBodySetFiniteRotationAxis(m_body,0,0,0);
 	VERIFY2(dMass_valide(&m_mass),"Element has bad mass");
 	if(m_geoms.empty())
 	{
@@ -547,10 +543,6 @@ void CPHElement::Disable()	{
 }
 
 void CPHElement::ReEnable(){
-
-	//dJointGroupEmpty(m_saved_contacts);
-	//b_contacts_saved=false;
-
 }
 
 void	CPHElement::Freeze()
@@ -560,6 +552,7 @@ void	CPHElement::Freeze()
 	m_flags.set(flWasEnabledBeforeFreeze,!!dBodyIsEnabled(m_body));
 	dBodyDisable(m_body);
 }
+
 void	CPHElement::UnFreeze()
 {
 	if(!m_body) return;
@@ -1331,11 +1324,10 @@ void CPHElement::CreateSimulBase()
 {
 	m_body=dBodyCreate(0);
 	m_shell->Island().AddBody(m_body);
-	//m_saved_contacts=dJointGroupCreate (0);
-	//b_contacts_saved=false;
 	dBodyDisable(m_body);
 	CPHGeometryOwner::CreateSimulBase();
 }
+
 void CPHElement::ReAdjustMassPositions(const Fmatrix &shift_pivot,float density)
 {
 

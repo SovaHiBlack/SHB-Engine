@@ -1,6 +1,6 @@
---local function printf				(fmt,...)
---	log								(string.format(fmt,...))
---end
+local function printf				(fmt,...)
+	log								(string.format(fmt,...))
+end
 
 local								Counters = {}
 local								Names = {}

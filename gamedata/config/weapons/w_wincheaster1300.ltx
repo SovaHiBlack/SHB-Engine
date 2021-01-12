@@ -1,6 +1,9 @@
 [wpn_wincheaster1300]:identity_immunities
+GroupControlSection			= spawn_group
+discovery_dependency 		= 
 $spawn                   	= "weapons\winchester1300"					; option for Level Editor
 $npc			 			= on				; option for Level Editor
+$prefetch 		 			= 8
 scheduled                	= off              ; option for ALife Simulator
 cform                    	= skeleton
 class                    	= WP_SHOTG
@@ -19,7 +22,10 @@ holder_fov_modifier		= 0.7              ; во сколько раз увеличивается eye_fov
 tri_state_reload			= on
 
 cost					 	= 2150	;1000
+weapon_class			 	= shotgun
 
+
+ammo_limit		 			= 60
 ammo_current		 		= 10
 ammo_elapsed		 		= 0
 
@@ -39,10 +45,10 @@ cam_max_angle				= 12	;максимальный угол отдачи
 cam_max_angle_horz	= 9.0	;(degree) maximum shot horizontal degree 
 cam_step_angle_horz	= 1.5	;(degree) size of step camera moved in horizontal position while shooting
 
-fire_dispersion_condition_factor = 5	;увеличение дисперсии в процентах при максимальном износе 
-misfire_probability 		= 0.005	    ;вероятность осечки при максимальном износе 
+fire_dispersion_condition_factor = 3	;увеличение дисперсии в процентах при максимальном износе 
+misfire_probability 		= 0.001	    ;вероятность осечки при максимальном износе 
 misfire_condition_k			= 0.05
-condition_shot_dec 			= 0.0005	;увеличение износа при каждом выстреле
+condition_shot_dec 			= 0.0015	;увеличение износа при каждом выстреле
 ;-----------------------------------------------------------------------------------
 
 hand_dependence 	 		= 1
@@ -88,8 +94,7 @@ hit_type 					= fire_wound
 
 fire_distance            	= 50
 bullet_speed			 	= 400			;начальная скорость пули
-rpm                      	= 100 ;70            ;60 = 1 секунда
-; end ttc
+rpm                      	= 46
 
 hud                      	= wpn_winchester1300_hud
 normal                   	= 0, 1, 0
@@ -126,18 +131,18 @@ scope_zoom_factor	    	= 55
 ;звуки
 snd_draw					= weapons\generic_draw
 snd_holster					= weapons\generic_holster
-snd_shoot					= weapons\tm_spas12_shot      ;toz34_shoot
+snd_shoot					= weapons\tm_winchester_shot      ;toz34_shoot
 snd_empty					= weapons\generic_empty
 snd_reload					= weapons\toz34_reload
 snd_shoot_duplet			= weapons\toz34_shoot_both
 
 snd_open_weapon				= weapons\w1300_open		;
-snd_add_cartridge			= weapons\w1300_load		;was gen_grenload
-snd_close_weapon			= weapons\w1300_close		;
+snd_add_cartridge			= weapons\w1300_load_2		;was gen_grenload
+snd_close_weapon			= weapons\w1300_close_2		;
  
 [wpn_winchester1300_hud]
 shell_point		 			= 0.0, 0.0, 0.0
-fire_point      			= 0.000000,0.125000,0.315000
+fire_point      			= 0.000000,0.25,-0.125
 fire_point2				    = 0.000000,0.125000,0.315000
 fire_bone                	= wpn_body
 orientation              	= 0, 0, 0
@@ -159,8 +164,8 @@ anim_add_cartridge			= reload2
 anim_close_weapon			= reload3
 
 ;смещения HUD для режима приближения
-zoom_offset			= -0.120200,0.049100,-0.002000
-zoom_rotate_x		= 0.063400
+zoom_offset			= -0.120200,0.046100,-0.002000
+zoom_rotate_x		= 0.053400
 zoom_rotate_y		= 0.000500
 ;время поворота HUD (сек)
 ;zoom_rotate_time			= 0.7

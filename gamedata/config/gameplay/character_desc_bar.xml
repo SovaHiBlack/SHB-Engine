@@ -5,23 +5,25 @@
 	<specific_character id="bar_barman" no_random = "1">
 		<name>bar_barmen_name</name>
 		<icon>ui_npc_u_barman</icon>
+		<map_icon x="1" y="4"></map_icon>
 		<bio>bar_barmen_bio</bio>
 
 		<class>bar_barman</class>
 		<community>trader</community>
 		<money min="100000" max="110000" infinitive="1"></money>
-
+		
 		<rank>700</rank>
 		<reputation>50</reputation>
 		<visual>actors\barman\barman</visual>
 		<snd_config>characters_voice\human_01\stalker\</snd_config>
 		<crouch_type>-1</crouch_type>
-
+		
 		<supplies>
 			[spawn] \n
 			stalker_outfit \n
+			
 		</supplies>
-
+					
 		<start_dialog>bar_bar_barmen_start</start_dialog>
 		<actor_dialog>bar_bar_barmen_talk_info</actor_dialog>
 		<!--actor_dialog>bar_bar_barmen_jobs</actor_dialog-->
@@ -33,21 +35,22 @@
 		<!--actor_dialog>bar_bar_barmen_jobs_room_complete</actor_dialog-->
 		<actor_dialog>tm_barman_dialog</actor_dialog>
 		<actor_dialog>tm_barman_reward</actor_dialog>
+		<actor_dialog>bar_trader_repair</actor_dialog>
 	</specific_character>
 
 	<specific_character id="bar_stalker_white_novice_1" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_green_stalker_1</icon>
+		<map_icon x="0" y="0"></map_icon>
 		<bio>sim_stalker_novice_bio</bio>
 
 		<class>bar_stalker_white_novice</class>
-		<community>stalker</community>
-		<terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
 		<money min="200" max="600" infinitive="0"></money>
-
+		
 		<rank>98</rank>
 		<reputation>0</reputation>
-
+ 
 		<visual>actors\novice\green_stalker_1</visual>
 		<snd_config>characters_voice\human_02\newbie\</snd_config>
 		<crouch_type>-1</crouch_type>
@@ -56,26 +59,29 @@
 			[spawn] \n
 			wpn_ak74 \n
 			ammo_5.45x39_fmj \n
+ammo_9x19_pbp=3 \n
+
 		</supplies>
 
 #include "gameplay\character_criticals_3.xml"
 
 		<start_dialog>bar_bar_visitors_3_start</start_dialog>
+#include "gameplay\character_dialogs.xml"
 	</specific_character>
-
+	
 	<specific_character id="bar_stalker_white_novice_2" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_green_stalker_7</icon>
+		<map_icon x="0" y="0"></map_icon>
 		<bio>sim_stalker_novice_bio</bio>
 
 		<class>bar_stalker_white_novice</class>
-		<community>stalker</community>
-		<terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
 		<money min="200" max="600" infinitive="0"></money>
-
+		
 		<rank>112</rank>
 		<reputation>0</reputation>
-
+ 
 		<visual>actors\novice\green_stalker_7</visual>
 		<snd_config>characters_voice\human_01\newbie\</snd_config>
 		<crouch_type>-1</crouch_type>
@@ -84,26 +90,28 @@
 			[spawn] \n
 			wpn_mp5 \n
 			ammo_9x19_pbp \n
+ammo_12x70_buck=2 \n
 		</supplies>
 
 #include "gameplay\character_criticals_3.xml"
 
 		<start_dialog>bar_bar_visitors_4_start</start_dialog>
+#include "gameplay\character_dialogs.xml"
 	</specific_character>
 
 	<specific_character id="bar_stalker_brown_novice_1" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_green_stalker_2</icon>
+		<map_icon x="0" y="0"></map_icon>
 		<bio>sim_stalker_novice_bio</bio>
 
 		<class>bar_stalker_brown_novice</class>
-		<community>stalker</community>
-		<terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
 		<money min="200" max="600" infinitive="0"></money>
-
+		
 		<rank>75</rank>
 		<reputation>0</reputation>
-
+ 
 		<visual>actors\novice\green_stalker_2</visual>
 		<snd_config>characters_voice\human_01\newbie\</snd_config>
 		<crouch_type>-1</crouch_type>
@@ -112,26 +120,28 @@
 			[spawn] \n
 			wpn_ak74u \n
 			ammo_5.45x39_fmj \n
+ammo_5.56x45_ss190=2 \n
 		</supplies>
 
 #include "gameplay\character_criticals_3.xml"
 
 		<start_dialog>bar_bar_visitors_5_start</start_dialog>
+#include "gameplay\character_dialogs.xml"
 	</specific_character>
-
+	
 	<specific_character id="bar_stalker_brown_novice_2" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_green_stalker_8</icon>
+		<map_icon x="0" y="0"></map_icon>
 		<bio>sim_stalker_novice_bio</bio>
 
 		<class>bar_stalker_brown_novice</class>
-		<community>stalker</community>
-		<terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
 		<money min="200" max="600" infinitive="0"></money>
-
+		
 		<rank>83</rank>
 		<reputation>0</reputation>
-
+ 
 		<visual>actors\novice\green_stalker_8</visual>
 		<snd_config>characters_voice\human_01\stalker\</snd_config>
 		<crouch_type>-1</crouch_type>
@@ -140,26 +150,28 @@
 			[spawn] \n
 			wpn_ak74u \n
 			ammo_5.45x39_fmj \n
+ammo_9x19_fmj=4 \n
 		</supplies>
 
 #include "gameplay\character_criticals_3.xml"
 
 		<start_dialog>bar_bar_visitors_6_start</start_dialog>
+#include "gameplay\character_dialogs.xml"
 	</specific_character>
 
 	<specific_character id="bar_stalker_general_1" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_neytral_hood_uzor</icon>
+		<map_icon x="0" y="0"></map_icon>
 		<bio>sim_stalker_general_bio</bio>
 
 		<class>bar_stalker_general</class>
-		<community>stalker</community>
-		<terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
 		<money min="600" max="2000" infinitive="0"></money>
-
+		
 		<rank>324</rank>
 		<reputation>0</reputation>
-
+ 
 		<visual>actors\neytral\stalker_neytral_hood_uzor</visual>
 		<snd_config>characters_voice\human_01\stalker\</snd_config>
 		<crouch_type>-1</crouch_type>
@@ -168,26 +180,28 @@
 			[spawn] \n
 			wpn_ak74 \n
 			ammo_5.45x39_fmj \n
+ammo_9x19_fmj=3 \n
 		</supplies>
 
 #include "gameplay\character_criticals_4.xml"
 
 		<start_dialog>bar_bar_visitors_7_start</start_dialog>
+#include "gameplay\character_dialogs.xml"
 	</specific_character>
 
 	<specific_character id="bar_stalker_general_2" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_neytral_hood_2</icon>
+		<map_icon x="0" y="0"></map_icon>
 		<bio>sim_stalker_general_bio</bio>
 
 		<class>bar_stalker_general</class>
-		<community>stalker</community>
-		<terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
 		<money min="600" max="2000" infinitive="0"></money>
-
+		
 		<rank>410</rank>
 		<reputation>0</reputation>
-
+ 
 		<visual>actors\neytral\stalker_neytral_hood_2</visual>
 		<snd_config>characters_voice\human_01\stalker\</snd_config>
 		<crouch_type>-1</crouch_type>
@@ -196,26 +210,28 @@
 			[spawn] \n
 			wpn_ak74 \n
 			ammo_5.45x39_fmj \n
+ammo_9x18_pmm=5 \n
 		</supplies>
 
 #include "gameplay\character_criticals_4.xml"
 
 		<start_dialog>bar_bar_visitors_8_start</start_dialog>
+#include "gameplay\character_dialogs.xml"
 	</specific_character>
 
 	<specific_character id="bar_stalker_dolg_1" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_do_mask_1</icon>
+		<map_icon x="0" y="0"></map_icon>
 		<bio>sim_dolg_regular_bio</bio>
 
 		<class>bar_stalker_dolg</class>
-		<community>dolg</community>
-		<terrain_sect>stalker_dolg_terrain</terrain_sect>
+		<community>dolg</community> <terrain_sect>stalker_dolg_terrain</terrain_sect>
 		<money min="200" max="600" infinitive="0"></money>
-
+		
 		<rank>307</rank>
 		<reputation>0</reputation>
-
+ 
 		<visual>actors\dolg\stalker_do_mask_1</visual>
 		<snd_config>characters_voice\human_01\dolg\</snd_config>
 		<crouch_type>-1</crouch_type>
@@ -226,26 +242,28 @@
 			ammo_9x19_fmj \n
 			wpn_abakan \n
 			ammo_5.45x39_fmj \n
+ammo_11.43x23_fmj=2 \n
 		</supplies>
-
+		
 #include "gameplay\character_criticals_6.xml"
 
 		<start_dialog>bar_bar_visitors_9_start</start_dialog>
+#include "gameplay\character_dialogs.xml"
 	</specific_character>
 
 	<specific_character id="bar_stalker_bandit_1" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_bandit_veteran</icon>
+		<map_icon x="0" y="0"></map_icon>
 		<bio>sim_bandit_general_bio</bio>
 
 		<class>bar_stalker_bandit</class>
-		<community>stalker</community>
-		<terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
 		<money min="600" max="2000" infinitive="0"></money>
-
+		
 		<rank>376</rank>
 		<reputation>0</reputation>
-
+ 
 		<visual>actors\bandit\stalker_bandit_veteran</visual>
 		<snd_config>characters_voice\human_01\stalker\</snd_config>
 		<crouch_type>1</crouch_type>
@@ -254,26 +272,28 @@
 			[spawn] \n
 			wpn_val \n
 			ammo_9x39_pab9 \n
+ammo_5.45x39_ap=3 \n
 		</supplies>
 
 #include "gameplay\character_criticals_4.xml"
 
 		<start_dialog>bar_bar_visitors_10_start</start_dialog>
+#include "gameplay\character_dialogs.xml"
 	</specific_character>
 
 	<specific_character id="bar_stalker_killer_1" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_ki_head_1</icon>
+		<map_icon x="0" y="0"></map_icon>
 		<bio>sim_killer_veteran_bio</bio>
 
 		<class>bar_stalker_killer</class>
-		<community>stalker</community>
-		<terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
 		<money min="600" max="2000" infinitive="0"></money>
-
+		
 		<rank>423</rank>
 		<reputation>0</reputation>
-
+ 
 		<visual>actors\killer\stalker_ki_head_1</visual>
 		<snd_config>characters_voice\human_01\stalker\</snd_config>
 		<crouch_type>-1</crouch_type>
@@ -282,26 +302,28 @@
 			[spawn] \n
 			wpn_lr300 \n
 			ammo_5.56x45_ss190 \n
+ammo_12x76_dart=2 \n
 		</supplies>
-
+		
 #include "gameplay\character_criticals_4.xml"
 
 		<start_dialog>bar_bar_visitors_13_start</start_dialog>
-	</specific_character>
+#include "gameplay\character_dialogs.xml"
+	</specific_character>	
 
 	<specific_character id="bar_stalker_guard" team_default = "1">
 		<name>bar_bar_guard_name</name>
 		<icon>ui_npc_u_stalker_bar_security</icon>
+		<map_icon x="0" y="0"></map_icon>
 		<bio>bar_bar_guard_bio</bio>
 
 		<class>bar_stalker_guard</class>
-		<community>stalker</community>
-		<terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
 		<money min="200" max="600" infinitive="0"></money>
 
 		<rank>247</rank>
 		<reputation>0</reputation>
-
+ 
 		<visual>actors\neytral\stalker_bar_security</visual>
 		<snd_config>characters_voice\human_01\stalker\</snd_config>
 		<crouch_type>-1</crouch_type>
@@ -310,26 +332,26 @@
 			[spawn] \n
 			wpn_ak74 \n
 			ammo_5.45x39_fmj \n
+ammo_12x76_zhekan=3 \n
 		</supplies>
 
 #include "gameplay\character_criticals_4.xml"
-
 #include "gameplay\character_dialogs.xml"
 	</specific_character>
 
 	<specific_character id="bar_stalker_guard2" team_default = "1">
 		<name>bar_bar_guard2_name</name>
 		<icon>ui_npc_u_stalker_bar_security</icon>
+		<map_icon x="0" y="0"></map_icon>
 		<bio>bar_bar_guard2_bio</bio>
 
 		<class>bar_stalker_guard2</class>
-		<community>stalker</community>
-		<terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
 		<money min="200" max="600" infinitive="0"></money>
 
 		<rank>180</rank>
 		<reputation>0</reputation>
-
+ 
 		<visual>actors\neytral\stalker_bar_security</visual>
 		<snd_config>characters_voice\human_01\stalker\</snd_config>
 		<crouch_type>-1</crouch_type>
@@ -338,27 +360,27 @@
 			[spawn] \n
 			wpn_ak74 \n
 			ammo_5.45x39_fmj \n
+ammo_9x18_pmm=4 \n
 		</supplies>
 
 #include "gameplay\character_criticals_4.xml"
-
 #include "gameplay\character_dialogs.xml"
 	</specific_character>
 
-	<!-- BAR OSVEDOMITEL -->
+	<!---------------------------BAR OSVEDOMITEL---------------------->
 	<specific_character id="bar_bar_osvedomitel" team_default = "1">
 		<name>bar_informer_name</name>
 		<icon>ui_npc_u_stalker_bandit_master</icon>
+		<map_icon x="0" y="0"></map_icon>
 		<bio>bar_informer_bio</bio>
 
 		<class>bar_stalker_osvedomitel</class>
-		<community>stalker</community>
-		<terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
 		<money min="600" max="2000" infinitive="0"></money>
-
+		
 		<rank>485</rank>
 		<reputation>0</reputation>
-
+ 
 		<visual>actors\bandit\stalker_bandit_master</visual>
 		<snd_config>characters_voice\human_01\stalker\</snd_config>
 		<crouch_type>-1</crouch_type>
@@ -368,29 +390,31 @@
 			ammo_5.56x45_ss190 \n
 			wpn_addon_grenade_launcher \n
 		</supplies>
-
+	
 #include "gameplay\character_criticals_4.xml"
-
+	
 		<start_dialog>bar_bar_osvedomitel_start</start_dialog>
 		<actor_dialog>bar_bar_osvedomitel_trade_info</actor_dialog>
 		<actor_dialog>tm_mercenary_dialog</actor_dialog>
 		<actor_dialog>tm_mercenary_reward</actor_dialog>
-	</specific_character>
 
-	<!-- BAR HUNTER -->
+#include "gameplay\character_dialogs.xml"				
+	</specific_character>	
+
+	<!---------------------------BAR HUNTER---------------------->
 	<specific_character id="bar_bar_hunter" team_default = "1">
 		<name>bar_hunter_name</name>
 		<icon>ui_npc_u_green_stalker_3</icon>
+		<map_icon x="0" y="0"></map_icon>
 		<bio>Добродушный весельчак, единственная его проблема это то, что умеет стрелять только из охотничьего ружья. Остальное даже не пробует. Недавно попал в передрягу на Дикой территории и потерял там свое фамильное ружье. Теперь околачивается в баре, надеется, что кто-то вернет ему его ружье.</bio>
 
 		<class>bar_stalker_hunter</class>
-		<community>stalker</community>
-		<terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
 		<money min="200" max="600" infinitive="0"></money>
-
+		
 		<rank>64</rank>
 		<reputation>0</reputation>
-
+ 
 		<visual>actors\novice\green_stalker_3</visual>
 		<snd_config>characters_voice\human_01\newbie\</snd_config>
 		<crouch_type>-1</crouch_type>
@@ -399,30 +423,33 @@
 			[spawn] \n
 			ammo_5.56x45_ss190 \n
 		</supplies>
-
+		
 #include "gameplay\character_criticals_3.xml"
-
+		
 		<start_dialog>bar_bar_hunter_start</start_dialog>
 		<actor_dialog>bar_bar_hunter_quest_start</actor_dialog>
 		<actor_dialog>bar_bar_hunter_quest_finish</actor_dialog>
 		<actor_dialog>tm_hunter_dialog</actor_dialog>
-		<actor_dialog>tm_hunter_reward</actor_dialog>
-	</specific_character>
+		<actor_dialog>tm_hunter_reward</actor_dialog>		
 
-	<!--BAR DRUNK DOLG-->
+#include "gameplay\character_dialogs.xml"
+
+	</specific_character>	
+
+	<!---------------------------BAR DRUNK DOLG---------------------->
 	<specific_character id="bar_bar_drunk_dolg" team_default = "1">
 		<name>bar_drunk_name</name>
 		<icon>ui_npc_u_stalker_do_balon_4</icon>
+		<map_icon x="0" y="0"></map_icon>
 		<bio>bar_drunk_bio</bio>
-
+		
 		<class>bar_stalker_drunk_dolg</class>
-		<community>stalker</community>
-		<terrain_sect>stalker_dolg_terrain</terrain_sect>
+		<community>stalker</community> <terrain_sect>stalker_dolg_terrain</terrain_sect>
 		<money min="600" max="2000" infinitive="0"></money>
-
+		
 		<rank>417</rank>
 		<reputation>0</reputation>
-
+ 
 		<visual>actors\dolg\stalker_do_balon_4</visual>
 		<snd_config>characters_voice\human_01\dolg\</snd_config>
 		<crouch_type>-1</crouch_type>
@@ -431,28 +458,31 @@
 			[spawn] \n
 			detector_advances \n
 		</supplies>
-
+		
 #include "gameplay\character_criticals_6.xml"
-
+		
 		<start_dialog>bar_bar_drunk_dolg_start</start_dialog>
-		<actor_dialog>tm_drunk_dolg_dialog</actor_dialog>
-		<actor_dialog>tm_drunk_dolg_reward</actor_dialog>
-	</specific_character>
+		<actor_dialog>tm_drunk_dolg_dialog</actor_dialog>	
+		<actor_dialog>tm_drunk_dolg_reward</actor_dialog>	
 
-	<!-- BAR LISIY -->
+#include "gameplay\character_dialogs.xml"
+		
+	</specific_character>	
+
+	<!---------------------------BAR LISIY---------------------->
 	<specific_character id="bar_bar_lisiy" team_default = "1">
 		<name>bar_lisiy_name</name>
 		<icon>ui_npc_u_stalker_neytral_balon_4</icon>
+		<map_icon x="0" y="0"></map_icon>
 		<bio>sim_stalker_general_bio</bio>
 
 		<class>bar_stalker_lisiy</class>
-		<community>stalker</community>
-		<terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
 		<money min="600" max="2000" infinitive="0"></money>
-
+		
 		<rank>388</rank>
 		<reputation>0</reputation>
-
+ 
 		<visual>actors\neytral\stalker_neytral_balon_4</visual>
 		<snd_config>characters_voice\human_01\stalker\</snd_config>
 		<crouch_type>-1</crouch_type>
@@ -460,25 +490,29 @@
 			[spawn] \n
 			wpn_ak74u \n
 			ammo_5.45x39_fmj \n
+ammo_7.62x54_7h1 \n
 		</supplies>
-
+		
 #include "gameplay\character_criticals_4.xml"
-
+		
 		<start_dialog>bar_bar_visitors_14_start</start_dialog>
 		<actor_dialog>tm_lisiy_dialog</actor_dialog>
 		<actor_dialog>tm_lisiy_reward</actor_dialog>
-	</specific_character>
+
+#include "gameplay\character_dialogs.xml"
+
+	</specific_character>	
 
 	<specific_character id="bar_psih" team_default = "1">
 		<name>bar_ryaboy_name</name>
 		<icon>ui_npc_u_stalker_zombie4</icon>
+		<map_icon x="0" y="0"></map_icon>
 		<bio>bar_ryaboy_bio</bio>
 
 		<class>Bar_psih</class>
-		<community>stalker</community>
-		<terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
 		<money min="600" max="2000" infinitive="0"></money>
-
+		
 		<rank>404</rank>
 		<reputation>30</reputation>
 		<visual>actors\stalker_zombi\stalker_zombie4</visual>
@@ -490,27 +524,30 @@
 			wpn_walther \n
 			ammo_9x19_fmj \n
 		</supplies>
-
+		
 #include "gameplay\character_criticals_1.xml"
-
+					
 		<start_dialog>bar_bar_psih_start_pain</start_dialog>
 		<actor_dialog>bar_bar_psih_talk_pain</actor_dialog>
 		<actor_dialog>bar_bar_psih_give_medkit</actor_dialog>
 		<actor_dialog>bar_bar_psih_talk_gorbun</actor_dialog>
 		<actor_dialog>bar_bar_psih_talk_lisiy</actor_dialog>
+		
+#include "gameplay\character_dialogs.xml"		
+		
 	</specific_character>
 
 	<!-- ******************* ARENA ********************** -->
 	<specific_character id="bar_arena_manager" team_default = "1">
 		<name>bar_arny_name</name>
 		<icon>ui_npc_u_stalker_neytral_balon_6</icon>
+		<map_icon x="1" y="6"></map_icon>
 		<bio>bar_arny_bio</bio>
 
 		<class>bar_arena_manager</class>
-		<community>stalker</community>
-		<terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
 		<money min="600" max="2000" infinitive="0"></money>
-
+		
 		<rank>531</rank>
 		<reputation>90</reputation>
 
@@ -524,27 +561,37 @@
 			ammo_5.56x45_ap = 1 \n
 #include "gameplay\character_food.xml" \n
 #include "gameplay\character_drugs.xml"
-		</supplies>
-
+		</supplies>		
+				
 #include "gameplay\character_criticals_4.xml"
-
+				
 		<start_dialog>bar_arena_man_start</start_dialog>
 		<actor_dialog>bar_arena_man_job</actor_dialog>
+
+		<!------------------------------------------------ARENA_EXTENSION_MOD------------------------------------------------>
+		<start_dialog>bar_arena_man_start</start_dialog>
+		<actor_dialog>bar_arena_man_job</actor_dialog>
+		<actor_dialog>bar_arena_man_fights</actor_dialog>
+		<actor_dialog>bar_arena_man_extra</actor_dialog>
+		<!------------------------------------------------ARENA_EXTENSION_MOD------------------------------------------------>
+
+#include "gameplay\character_dialogs.xml"
+
 	</specific_character>
 
 	<specific_character id="bar_arena_guard" team_default = "1">
 		<name>bar_lelik_name</name>
 		<icon>ui_npc_u_stalker_bar_security</icon>
+		<map_icon x="0" y="0"></map_icon>
 		<bio>bar_lelik_bio</bio>
 
 		<class>bar_arena_guard</class>
-		<community>stalker</community>
-		<terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
 		<money min="200" max="600" infinitive="0"></money>
-
+		
 		<rank>232</rank>
 		<reputation>0</reputation>
-
+ 
 		<visual>actors\neytral\stalker_bar_security</visual>
 		<snd_config>characters_voice\human_01\stalker\</snd_config>
 		<crouch_type>-1</crouch_type>
@@ -556,21 +603,21 @@
 #include "gameplay\character_food.xml" \n
 #include "gameplay\character_drugs.xml"
 		</supplies>
-
+					
 #include "gameplay\character_criticals_4.xml"
-
 #include "gameplay\character_dialogs.xml"
 	</specific_character>
 
 	<specific_character id="bar_arena_savage" team_default = "1">
 		<name>bar_beast_name</name>
 		<icon>ui_npc_u_zombie_exoskeleton</icon>
+		<map_icon x="2" y="0"></map_icon>
 		<bio>sim_zombied_master_bio</bio>
 
 		<class>bar_arena_savage</class>
 		<community>arena_enemy</community>
 		<money min="2000" max="5000" infinitive="0"></money>
-
+		
 		<rank>930</rank>
 		<reputation>0</reputation>
 
@@ -583,26 +630,25 @@
 			wpn_spas12 \n
 			ammo_12x70_buck \n
 		</supplies>
-
+				
 #include "gameplay\character_criticals_1.xml"
-
 #include "gameplay\character_dialogs.xml"
 	</specific_character>
 
-	<!--DOLG LEADER-->
+	<!---------------------------DOLG LEADER---------------------->
 	<specific_character id="bar_dolg_leader" team_default = "1">
 		<name>bar_voronin_name</name>
 		<icon>ui_npc_u_stalker_do_komandir</icon>
+		<map_icon x="0" y="0"></map_icon>
 		<bio>bar_voronin_bio</bio>
 
 		<class>bar_dolg_leader</class>
-		<community>dolg</community>
-		<terrain_sect>stalker_dolg_terrain</terrain_sect>
+		<community>dolg</community> <terrain_sect>stalker_dolg_terrain</terrain_sect>
 		<money min="5000" max="10000" infinitive="0"></money>
 
 		<rank>918</rank>
 		<reputation>0</reputation>
-
+ 
 		<visual>actors\dolg\stalker_do_komandir</visual>
 		<snd_config>characters_voice\human_01\dolg\</snd_config>
 		<crouch_type>0</crouch_type>
@@ -610,36 +656,41 @@
 		<supplies>
 			[spawn] \n
 			wpn_sig220 \n
-			ammo_11.43x23_hydro \n
+			ammo_11.43x23_hydro \n	
 			wpn_val \n
 			ammo_9x39_sp5 = 1 \n
+ammo_5.56x45_ap=2 \n
 #include "gameplay\character_food.xml" \n
 #include "gameplay\character_drugs.xml"
 		</supplies>
-
+		
 #include "gameplay\character_criticals_6.xml"
-
+		
 		<start_dialog>bar_dolg_leader_start</start_dialog>
 		<actor_dialog>bar_dolg_leader_join</actor_dialog>
 		<actor_dialog>bar_dolg_leader_quest_rg6_finish</actor_dialog>
 		<actor_dialog>tm_dolg_dialog</actor_dialog>
 		<actor_dialog>tm_dolg_reward</actor_dialog>
+		<actor_dialog>dolg_attach_community</actor_dialog>
+
+#include "gameplay\character_dialogs.xml"
+
 	</specific_character>
 
-	<!--DOLG PETRENKO-->
+	<!---------------------------DOLG PETRENKO---------------------->
 	<specific_character id="bar_dolg_petrenko" team_default = "1">
 		<name>bar_petrenko_name</name>
 		<icon>ui_npc_u_stalker_do_balon_3</icon>
+		<map_icon x="0" y="0"></map_icon>
 		<bio>bar_petrenko_bio</bio>
 
 		<class>bar_dolg_petrenko</class>
-		<community>dolg</community>
-		<terrain_sect>stalker_dolg_terrain</terrain_sect>
+		<community>dolg</community> <terrain_sect>stalker_dolg_terrain</terrain_sect>
 		<money min="100000" max="110000" infinitive="1"></money>
-
+		
 		<rank>459</rank>
 		<reputation>0</reputation>
-
+ 
 		<visual>actors\dolg\stalker_do_balon_3</visual>
 		<snd_config>characters_voice\human_01\dolg\</snd_config>
 		<crouch_type>0</crouch_type>
@@ -647,34 +698,38 @@
 		<supplies>
 			[spawn] \n
 			wpn_walther \n
-			ammo_9x19_fmj \n
+			ammo_9x19_fmj \n			
 			wpn_groza \n
-			ammo_9x39_ap \n
+			ammo_9x39_ap \n	
 #include "gameplay\character_food.xml" \n
 #include "gameplay\character_drugs.xml"
 		</supplies>
-
+		
 #include "gameplay\character_criticals_6.xml"
-
+		
 		<start_dialog>bar_dolg_petrenko_start</start_dialog>
+		
 		<actor_dialog>tm_petrenko_dialog</actor_dialog>
 		<actor_dialog>tm_petrenko_reward</actor_dialog>
-	</specific_character>
 
-	<!--DOLG IVANCOV-->
+#include "gameplay\character_dialogs.xml"
+
+</specific_character>	
+
+	<!---------------------------DOLG IVANCOV---------------------->
 	<specific_character id="bar_dolg_ivancov" team_default = "1">
 		<name>bar_ivancov_name</name>
 		<icon>ui_npc_u_stalker_do_balon_5</icon>
+		<map_icon x="0" y="0"></map_icon>
 		<bio>bar_ivancov_bio</bio>
 
 		<class>bar_dolg_ivancov</class>
-		<community>dolg</community>
-		<terrain_sect>stalker_dolg_terrain</terrain_sect>
+		<community>dolg</community> <terrain_sect>stalker_dolg_terrain</terrain_sect>
 		<money min="2000" max="5000" infinitive="0"></money>
 
 		<rank>603</rank>
 		<reputation>0</reputation>
-
+ 
 		<visual>actors\dolg\stalker_do_balon_5</visual>
 		<snd_config>characters_voice\human_01\dolg\</snd_config>
 		<crouch_type>0</crouch_type>
@@ -682,33 +737,34 @@
 		<supplies>
 			[spawn] \n
 			wpn_walther \n
-			ammo_9x19_fmj \n
+			ammo_9x19_fmj \n			
 			wpn_groza \n
-			ammo_9x39_ap \n
+			ammo_9x39_ap \n	
+ammo_5.45x39_ap=2 \n
 #include "gameplay\character_food.xml" \n
 #include "gameplay\character_drugs.xml"
 		</supplies>
-
+		
 #include "gameplay\character_criticals_6.xml"
-
+		
 		<start_dialog>bar_dolg_ivancov_start</start_dialog>
-#include "gameplay\character_dialogs.xml"
-	</specific_character>
+		#include "gameplay\character_dialogs.xml"
+	</specific_character>	
 
-	<!--DOLG Начальник Охраны-->
+	<!---------------------------DOLG Начальник Охраны---------------------->
 	<specific_character id="bar_dolg_guard_commander" team_default = "1">
 		<name>bar_plichko_name</name>
 		<icon>ui_npc_u_stalker_do_balon_1</icon>
+		<map_icon x="0" y="0"></map_icon>
 		<bio>bar_plichko_bio</bio>
 
 		<class>bar_dolg_guard_commander</class>
-		<community>dolg</community>
-		<terrain_sect>stalker_dolg_terrain</terrain_sect>
+		<community>dolg</community> <terrain_sect>stalker_dolg_terrain</terrain_sect>
 		<money min="600" max="2000" infinitive="0"></money>
 
 		<rank>470</rank>
 		<reputation>0</reputation>
-
+ 
 		<visual>actors\dolg\stalker_do_balon_1</visual>
 		<snd_config>characters_voice\human_01\dolg\</snd_config>
 		<crouch_type>0</crouch_type>
@@ -719,31 +775,36 @@
 			ammo_9x19_fmj \n
 			wpn_abakan \n
 			ammo_5.45x39_fmj \n
-			device_torch \n
+ammo_12x70_buck=2 \n
+			device_torch \n			
 #include "gameplay\character_food.xml" \n
 #include "gameplay\character_drugs.xml"
 		</supplies>
-
+		
 #include "gameplay\character_criticals_6.xml"
-
+		
 		<start_dialog>bar_dolg_base_guard_start</start_dialog>
 		<actor_dialog>bar_dolg_base_guard_talk</actor_dialog>
+		
 		<actor_dialog>bar_dolg_base_guard_rules</actor_dialog>
-	</specific_character>
+
+#include "gameplay\character_dialogs.xml"
+
+	</specific_character>	
 
 	<specific_character id="bar_zastava_commander_1" team_default = "1">
 		<name>bar_kicenko_name</name>
 		<icon>ui_npc_u_stalker_do_balon_1</icon>
+		<map_icon x="0" y="0"></map_icon>
 		<bio>sim_dolg_veteran_bio</bio>
 
 		<class>bar_zastava_commander</class>
-		<community>dolg</community>
-		<terrain_sect>stalker_dolg_terrain</terrain_sect>
+		<community>dolg</community> <terrain_sect>stalker_dolg_terrain</terrain_sect>
 		<money min="600" max="2000" infinitive="0"></money>
-
+		
 		<rank>382</rank>
 		<reputation>0</reputation>
-
+ 
 		<visual>actors\dolg\stalker_do_balon_1</visual>
 		<snd_config>characters_voice\human_01\dolg\</snd_config>
 		<crouch_type>0</crouch_type>
@@ -755,31 +816,34 @@
 			wpn_abakan \n
 			ammo_5.45x39_fmj \n
 			detector_advances \n
-			device_torch \n
+			device_torch \n			
 #include "gameplay\character_food.xml" \n
 #include "gameplay\character_drugs.xml"
 		</supplies>
-
+		
 #include "gameplay\character_criticals_6.xml"
-
+		
 		<start_dialog>bar_dolg_zastava</start_dialog>
 		<actor_dialog>bar_dolg_zastava_about_zastava</actor_dialog>
 		<actor_dialog>bar_dolg_zastava_talk</actor_dialog>
 		<actor_dialog>tm_zastava_commander_dialog</actor_dialog>
 		<actor_dialog>tm_zastava_commander_reward</actor_dialog>
-	</specific_character>
+
+#include "gameplay\character_dialogs.xml"		
+		
+	</specific_character>	
 
 	<!-- ******************* Helicopter scene ********************** -->
 	<specific_character id="bar_ecolog_professor" team_default = "1">
 		<name>ros_kruglov_name</name>
 		<icon>ui_npc_u_stalker_ecolog_military</icon>
+		<map_icon x="1" y="6"></map_icon>
 		<bio>ros_kruglov_bio</bio>
 
 		<class>bar_ecolog_professor</class>
-		<community>ecolog</community>
-		<terrain_sect>stalker_ecolog_terrain</terrain_sect>
+		<community>ecolog</community> <terrain_sect>stalker_ecolog_terrain</terrain_sect>
 		<money min="600" max="2000" infinitive="0"></money>
-
+		
 		<rank>450</rank>
 		<reputation>90</reputation>
 
@@ -791,27 +855,30 @@
 			[spawn] \n
 			wpn_walther \n
 			ammo_9x19_fmj \n
+ammo_5.56x45_ss190 \n
 			bar_ecolog_flash \n
 			hand_radio \n
 		</supplies>
-
+				
 #include "gameplay\character_criticals_3.xml"
-
+				
 		<start_dialog>bar_ecolog_crush_professor_start</start_dialog>
-		<actor_dialog>dm_help_wounded_medkit_dialog</actor_dialog>
 		<actor_dialog>bar_ecolog_crush_professor_give_info_dp</actor_dialog>
+
+#include "gameplay\character_dialogs.xml"
+
 	</specific_character>
 
 	<specific_character id="bar_svoboda_attack_commander" team_default = "1">
 		<name>ros_volkodav_name</name>
 		<icon>ui_npc_u_stalker_ki_head_5</icon>
+		<map_icon x="5" y="0"></map_icon>
 		<bio>ros_volkodav_bio</bio>
 
 		<class>bar_svoboda_attack_commander</class>
-		<community>killer</community>
-		<terrain_sect>stalker_killer_terrain</terrain_sect>
+		<community>killer</community> <terrain_sect>stalker_killer_terrain</terrain_sect>
 		<money min="600" max="2000" infinitive="0"></money>
-
+		
 		<rank>462</rank>
 		<panic_threshold>0.0</panic_threshold>
 		<reputation>40</reputation>
@@ -829,24 +896,27 @@
 #include "gameplay\character_food.xml" \n
 #include "gameplay\character_drugs.xml"
 		</supplies>
-
+			
 #include "gameplay\character_criticals_4.xml"
-
+			
 		<start_dialog>bar_svoboda_volkodav_start</start_dialog>
 		<actor_dialog>bar_svoboda_volkodav_info_dp</actor_dialog>
+
+#include "gameplay\character_dialogs.xml"
+
 	</specific_character>
 
 	<!-- ******************* KILLER AMBUSH ********************** -->
 	<specific_character id="bar_killer_ambush_tiran" team_default = "1">
 		<name>ros_tiran_name</name>
 		<icon>ui_npc_u_stalker_ki_exoskeleton</icon>
+		<map_icon x="5" y="0"></map_icon>
 		<bio>ros_tiran_bio</bio>
 
 		<class>bar_killer_ambush_tiran</class>
-		<community>killer</community>
-		<terrain_sect>stalker_killer_terrain</terrain_sect>
+		<community>killer</community> <terrain_sect>stalker_killer_terrain</terrain_sect>
 		<money min="2000" max="5000" infinitive="0"></money>
-
+		
 		<rank>910</rank>
 		<reputation>40</reputation>
 
@@ -864,9 +934,8 @@
 #include "gameplay\character_food.xml" \n
 #include "gameplay\character_drugs.xml"
 		</supplies>
-
+		
 #include "gameplay\character_criticals_2.xml"
-
 #include "gameplay\character_dialogs.xml"
 	</specific_character>
 
@@ -874,13 +943,13 @@
 	<specific_character id="bar_crazy_veterans_lucky" team_default = "1">
 		<name>ros_happy_name</name>
 		<icon>ui_npc_u_stalker_bandit_master</icon>
+		<map_icon x="5" y="0"></map_icon>
 		<bio>ros_happy_bio</bio>
 
 		<class>bar_crazy_veterans_lucky</class>
-		<community>bandit</community>
-		<terrain_sect>stalker_bandit_terrain</terrain_sect>
+		<community>bandit</community> <terrain_sect>stalker_bandit_terrain</terrain_sect>
 		<money min="600" max="2000" infinitive="0"></money>
-
+		
 		<rank>552</rank>
 		<reputation>-40</reputation>
 
@@ -898,22 +967,21 @@
 #include "gameplay\character_food.xml" \n
 #include "gameplay\character_drugs.xml"
 		</supplies>
-
+			
 #include "gameplay\character_criticals_4.xml"
-
 #include "gameplay\character_dialogs.xml"
 	</specific_character>
 
 	<specific_character id="bar_crazy_veterans_1" team_default = "1">
 		<name>GENERATE_NAME_bandit</name>
 		<icon>ui_npc_u_stalker_bandit_veteran</icon>
+		<map_icon x="5" y="0"></map_icon>
 		<bio>sim_bandit_veteran_bio</bio>
 
 		<class>bar_crazy_veterans</class>
-		<community>bandit</community>
-		<terrain_sect>stalker_bandit_terrain</terrain_sect>
+		<community>bandit</community> <terrain_sect>stalker_bandit_terrain</terrain_sect>
 		<money min="600" max="2000" infinitive="0"></money>
-
+		
 		<rank>420</rank>
 		<reputation>-40</reputation>
 
@@ -928,22 +996,21 @@
 #include "gameplay\character_food.xml" \n
 #include "gameplay\character_drugs.xml"
 		</supplies>
-
+			
 #include "gameplay\character_criticals_4.xml"
-
 #include "gameplay\character_dialogs.xml"
 	</specific_character>
-
+	
 	<specific_character id="bar_crazy_veterans_2" team_default = "1">
 		<name>GENERATE_NAME_bandit</name>
 		<icon>ui_npc_u_stalker_bandit_veteran</icon>
+		<map_icon x="5" y="0"></map_icon>
 		<bio>sim_bandit_veteran_bio</bio>
 
 		<class>bar_crazy_veterans</class>
-		<community>bandit</community>
-		<terrain_sect>stalker_bandit_terrain</terrain_sect>
+		<community>bandit</community> <terrain_sect>stalker_bandit_terrain</terrain_sect>
 		<money min="600" max="2000" infinitive="0"></money>
-
+		
 		<rank>393</rank>
 		<reputation>-40</reputation>
 
@@ -960,21 +1027,20 @@
 		</supplies>
 
 #include "gameplay\character_criticals_4.xml"
-
 #include "gameplay\character_dialogs.xml"
 	</specific_character>
 
-	<!-- ************************ Гордон Фримен *********************** -->
+	<!-- ************************ Гордон Фримен *********************** -->	
 	<specific_character id="bar_stalker_freeman" team_default = "1">
 		<name>ros_freeman_name</name>
 		<icon>ui_npc_u_green_stalker_7</icon>
+		<map_icon x="0" y="0"></map_icon>
 		<bio>ros_freeman_bio</bio>
 
 		<class>bar_stalker_freeman</class>
-		<community>stalker</community>
-		<terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect> <terrain_sect>stalker_terrain</terrain_sect>
 		<money min="200" max="600" infinitive="0"></money>
-
+		
 		<rank>201</rank>
 		<reputation>90</reputation>
 
@@ -987,23 +1053,24 @@
 			wpn_desert_eagle \n
 			ammo_11.43x23_fmj \n
 		</supplies>
-
+			
 #include "gameplay\character_criticals_3.xml"
-
 #include "gameplay\character_dialogs.xml"
 	</specific_character>
+	
 
-	<!--DOLG REGULAR-->
+
+<!---------------------------DOLG REGULAR----------------------->
 	<specific_character id="bar_dolg_regular_default1" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_do_mask</icon>
+		<map_icon x="4" y="0"></map_icon>
 		<bio>sim_dolg_regular_bio</bio>
 
 		<class>bar_Dolg_regular</class>
-		<community>dolg</community>
-		<terrain_sect>stalker_dolg_terrain</terrain_sect>
+		<community>dolg</community> <terrain_sect>stalker_dolg_terrain</terrain_sect>
 		<money min="200" max="600" infinitive="0"></money>
-
+		
 		<rank>310</rank>
 		<reputation>20</reputation>
 
@@ -1019,28 +1086,28 @@
 			ammo_9x19_fmj \n
 			wpn_abakan \n
 			ammo_5.45x39_fmj \n
-			device_torch \n
+ammo_5.56x45_ss190=2 \n
+			device_torch \n			
 #include "gameplay\character_items.xml"\n
 #include "gameplay\character_food.xml" \n
 #include "gameplay\character_drugs.xml"
 		</supplies>
 
 #include "gameplay\character_criticals_6.xml"
-
 #include "gameplay\character_dialogs.xml"
-		<actor_dialog>bar_dolg_base_guard_acces</actor_dialog>
+		<actor_dialog>bar_dolg_base_guard_acces</actor_dialog>	
 	</specific_character>
 
 	<specific_character id="bar_dolg_regular_default2" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_do_balon_8</icon>
+		<map_icon x="4" y="0"></map_icon>
 		<bio>sim_dolg_regular_bio</bio>
 
 		<class>bar_Dolg_regular</class>
-		<community>dolg</community>
-		<terrain_sect>stalker_dolg_terrain</terrain_sect>
+		<community>dolg</community> <terrain_sect>stalker_dolg_terrain</terrain_sect>
 		<money min="600" max="2000" infinitive="0"></money>
-
+		
 		<rank>311</rank>
 		<reputation>20</reputation>
 
@@ -1053,6 +1120,7 @@
 			ammo_9x19_fmj \n
 			wpn_abakan \n
 			ammo_5.45x39_fmj \n
+ammo_12x70_buck=3 \n
 			device_torch \n
 #include "gameplay\character_items.xml"\n
 #include "gameplay\character_food.xml" \n
@@ -1060,21 +1128,20 @@
 		</supplies>
 
 #include "gameplay\character_criticals_6.xml"
-
-#include "gameplay\character_dialogs.xml"
+#include "gameplay\character_dialogs.xml"		
 		<actor_dialog>bar_dolg_base_guard_acces</actor_dialog>
 	</specific_character>
 
 	<specific_character id="bar_dolg_regular_default3" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_do_mask_1</icon>
+		<map_icon x="4" y="0"></map_icon>
 		<bio>sim_dolg_regular_bio</bio>
-
+		
 		<class>bar_Dolg_regular</class>
-		<community>dolg</community>
-		<terrain_sect>stalker_dolg_terrain</terrain_sect>
+		<community>dolg</community> <terrain_sect>stalker_dolg_terrain</terrain_sect>
 		<money min="200" max="600" infinitive="0"></money>
-
+		
 		<rank>340</rank>
 		<reputation>20</reputation>
 
@@ -1087,29 +1154,29 @@
 			ammo_9x19_fmj \n
 			wpn_abakan \n
 			ammo_5.45x39_fmj \n
+ammo_12x70_buck=2 \n
 			device_torch \n
-#include "gameplay\character_items.xml" \n
+#include "gameplay\character_items.xml" \n			
 #include "gameplay\character_food.xml" \n
 #include "gameplay\character_drugs.xml"
 		</supplies>
 
 #include "gameplay\character_criticals_6.xml"
-
 #include "gameplay\character_dialogs.xml"
 		<actor_dialog>bar_dolg_base_guard_acces</actor_dialog>
 	</specific_character>
 
-	<!--DOLG SNIPER-->
+<!---------------------------DOLG SNIPER---------------------->
 	<specific_character id="bar_dolg_sniper_default1" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_do_balon_8</icon>
+		<map_icon x="4" y="0"></map_icon>
 		<bio>sim_dolg_sniper_bio</bio>
 
 		<class>bar_Dolg_sniper</class>
-		<community>dolg</community>
-		<terrain_sect>stalker_dolg_terrain</terrain_sect>
+		<community>dolg</community> <terrain_sect>stalker_dolg_terrain</terrain_sect>
 		<money min="600" max="2000" infinitive="0"></money>
-
+		
 		<rank>352</rank>
 		<reputation>20</reputation>
 
@@ -1122,27 +1189,27 @@
 			ammo_9x19_fmj = 1 \n
 			wpn_l85 \n
 			ammo_5.56x45_ap = 1 \n
+ammo_7.62x54_7h1=1 \n
 			device_torch \n
-#include "gameplay\character_items.xml" \n
+#include "gameplay\character_items.xml" \n	
 #include "gameplay\character_food.xml" \n
 #include "gameplay\character_drugs.xml"
 		</supplies>
 
-#include "gameplay\character_criticals_6.xml"
-
+#include "gameplay\character_criticals_6.xml"				
 #include "gameplay\character_dialogs.xml"
 	</specific_character>
 
 	<specific_character id="bar_dolg_sniper_default2" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_do_mask_1</icon>
+		<map_icon x="4" y="0"></map_icon>
 		<bio>sim_dolg_sniper_bio</bio>
 
 		<class>bar_Dolg_sniper</class>
-		<community>dolg</community>
-		<terrain_sect>stalker_dolg_terrain</terrain_sect>
+		<community>dolg</community> <terrain_sect>stalker_dolg_terrain</terrain_sect>
 		<money min="600" max="2000" infinitive="0"></money>
-
+		
 		<rank>421</rank>
 		<reputation>20</reputation>
 
@@ -1156,26 +1223,25 @@
 			wpn_l85 \n
 			ammo_5.56x45_ap = 1 \n
 			device_torch \n
-#include "gameplay\character_items.xml"\n
+#include "gameplay\character_items.xml"\n		
 #include "gameplay\character_food.xml" \n
 #include "gameplay\character_drugs.xml"
 		</supplies>
 
-#include "gameplay\character_criticals_6.xml"
-
+#include "gameplay\character_criticals_6.xml"				
 #include "gameplay\character_dialogs.xml"
 	</specific_character>
 
 	<specific_character id="bar_dolg_sniper_default3" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_do_mask</icon>
+		<map_icon x="4" y="0"></map_icon>
 		<bio>sim_dolg_sniper_bio</bio>
 
 		<class>bar_Dolg_sniper</class>
-		<community>dolg</community>
-		<terrain_sect>stalker_dolg_terrain</terrain_sect>
+		<community>dolg</community> <terrain_sect>stalker_dolg_terrain</terrain_sect>
 		<money min="600" max="2000" infinitive="0"></money>
-
+		
 		<rank>430</rank>
 		<reputation>20</reputation>
 
@@ -1188,28 +1254,28 @@
 			ammo_9x19_fmj = 1 \n
 			wpn_l85 \n
 			ammo_5.56x45_ap = 1 \n
+ammo_7.62x54_7h1=1 \n
 			device_torch \n
 #include "gameplay\character_items.xml"	\n
 #include "gameplay\character_food.xml" \n
 #include "gameplay\character_drugs.xml"
 		</supplies>
 
-#include "gameplay\character_criticals_6.xml"
-
+#include "gameplay\character_criticals_6.xml"				
 #include "gameplay\character_dialogs.xml"
-	</specific_character>
+		</specific_character>
 
-	<!--DOLG SPECNAZ-->
+<!---------------------------DOLG SPECNAZ---------------------->
 	<specific_character id="bar_dolg_veteran_default1" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_do_nauchniy</icon>
+		<map_icon x="4" y="0"></map_icon>
 		<bio>sim_dolg_veteran_bio</bio>
 
 		<class>bar_Dolg_specnaz</class>
-		<community>dolg</community>
-		<terrain_sect>stalker_dolg_terrain</terrain_sect>
+		<community>dolg</community> <terrain_sect>stalker_dolg_terrain</terrain_sect>
 		<money min="600" max="2000" infinitive="0"></money>
-
+		
 		<rank>580</rank>
 		<reputation>40</reputation>
 
@@ -1221,25 +1287,26 @@
 			wpn_walther \n
 			ammo_9x19_fmj \n
 			wpn_groza \n
-			ammo_9x39_ap \n
+			ammo_9x39_ap \n	
+ammo_5.45x39_ap=1 \n
 #include "gameplay\character_items.xml"	\n
 #include "gameplay\character_food.xml" \n
 #include "gameplay\character_drugs.xml"
-		</supplies>
+		</supplies>		
 
-#include "gameplay\character_criticals_6.xml"
-
+#include "gameplay\character_criticals_6.xml"			
 #include "gameplay\character_dialogs.xml"
+		
 	</specific_character>
 
 	<specific_character id="bar_dolg_veteran_default2" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_do_antigas</icon>
+		<map_icon x="4" y="0"></map_icon>
 		<bio>sim_dolg_veteran_bio</bio>
 
 		<class>bar_Dolg_specnaz</class>
-		<community>dolg</community>
-		<terrain_sect>stalker_dolg_terrain</terrain_sect>
+		<community>dolg</community> <terrain_sect>stalker_dolg_terrain</terrain_sect>
 		<money min="2000" max="5000" infinitive="0"></money>
 
 		<rank>624</rank>
@@ -1253,25 +1320,26 @@
 			wpn_walther \n
 			ammo_9x19_fmj \n
 			wpn_groza \n
-			ammo_9x39_ap \n
+			ammo_9x39_ap \n	
+ammo_5.45x39_ap=2 \n
 #include "gameplay\character_items.xml"	\n
 #include "gameplay\character_food.xml" \n
 #include "gameplay\character_drugs.xml"
-		</supplies>
+		</supplies>		
 
-#include "gameplay\character_criticals_6.xml"
-
+#include "gameplay\character_criticals_6.xml"			
 #include "gameplay\character_dialogs.xml"
+		
 	</specific_character>
 
 	<specific_character id="bar_dolg_veteran_default3" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_do_nauchniy</icon>
+		<map_icon x="4" y="0"></map_icon>
 		<bio>sim_dolg_veteran_bio</bio>
 
 		<class>bar_Dolg_specnaz</class>
-		<community>dolg</community>
-		<terrain_sect>stalker_dolg_terrain</terrain_sect>
+		<community>dolg</community> <terrain_sect>stalker_dolg_terrain</terrain_sect>
 		<money min="2000" max="5000" infinitive="0"></money>
 
 		<rank>634</rank>
@@ -1291,21 +1359,21 @@
 #include "gameplay\character_items.xml"	\n
 #include "gameplay\character_food.xml" \n
 #include "gameplay\character_drugs.xml"
-		</supplies>
+		</supplies>		
 
-#include "gameplay\character_criticals_6.xml"
-
+#include "gameplay\character_criticals_6.xml"			
 #include "gameplay\character_dialogs.xml"
+		
 	</specific_character>
 
 	<specific_character id="bar_dolg_veteran_default4" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_do_antigas</icon>
+		<map_icon x="4" y="0"></map_icon>
 		<bio>sim_dolg_veteran_bio</bio>
 
 		<class>bar_Dolg_specnaz</class>
-		<community>dolg</community>
-		<terrain_sect>stalker_dolg_terrain</terrain_sect>
+		<community>dolg</community> <terrain_sect>stalker_dolg_terrain</terrain_sect>
 		<money min="2000" max="5000" infinitive="0"></money>
 
 		<rank>713</rank>
@@ -1319,28 +1387,29 @@
 			wpn_walther \n
 			ammo_9x19_fmj \n
 			wpn_groza \n
-			ammo_9x39_ap \n
-#include "gameplay\character_items.xml" \n
+			ammo_9x39_ap \n	
+ammo_5.56x45_ss190=2 \n
+#include "gameplay\character_items.xml" \n	
 #include "gameplay\character_food.xml" \n
 #include "gameplay\character_drugs.xml"
-		</supplies>
+		</supplies>		
 
-#include "gameplay\character_criticals_6.xml"
-
+#include "gameplay\character_criticals_6.xml"			
 #include "gameplay\character_dialogs.xml"
+		
 	</specific_character>
-
-	<!--DOLG MASTER-->
+	
+<!---------------------------DOLG MASTER----------------------->
 	<specific_character id="bar_dolg_master_default1" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_do_exoskeleton</icon>
+		<map_icon x="4" y="0"></map_icon>
 		<bio>sim_dolg_master_bio</bio>
 
 		<class>bar_Dolg_master</class>
-		<community>dolg</community>
-		<terrain_sect>stalker_dolg_terrain</terrain_sect>
+		<community>dolg</community> <terrain_sect>stalker_dolg_terrain</terrain_sect>
 		<money min="2000" max="5000" infinitive="0"></money>
-
+		
 		<rank>914</rank>
 		<reputation>60</reputation>
 
@@ -1350,29 +1419,30 @@
 		<supplies>
 			[spawn] \n
 			wpn_sig220 \n
-			ammo_11.43x23_fmj \n
+			ammo_11.43x23_fmj \n		
 			wpn_val \n
 			ammo_9x39_sp5 = 1 \n
+ammo_5.56x45_ss190=3 \n
 #include "gameplay\character_items.xml" \n
 #include "gameplay\character_food.xml" \n
 #include "gameplay\character_drugs.xml"
-		</supplies>
+		</supplies>			
 
 #include "gameplay\character_criticals_2.xml"
-
 #include "gameplay\character_dialogs.xml"
+
 	</specific_character>
 
 	<specific_character id="bar_dolg_master_default2" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_do_nauchniy</icon>
+		<map_icon x="4" y="0"></map_icon>
 		<bio>sim_dolg_master_bio</bio>
-
+		
 		<class>bar_Dolg_master</class>
-		<community>dolg</community>
-		<terrain_sect>stalker_dolg_terrain</terrain_sect>
+		<community>dolg</community> <terrain_sect>stalker_dolg_terrain</terrain_sect>
 		<money min="2000" max="5000" infinitive="0"></money>
-
+		
 		<rank>820</rank>
 		<reputation>60</reputation>
 
@@ -1382,31 +1452,32 @@
 		<supplies>
 			[spawn] \n
 			wpn_sig220 \n
-			ammo_11.43x23_fmj \n
+			ammo_11.43x23_fmj \n		
 			wpn_groza \n
 			ammo_9x39_sp5 = 2 \n
 			ammo_vog-25p = 2 \n
 #include "gameplay\character_items.xml"	\n
 #include "gameplay\character_food.xml" \n
 #include "gameplay\character_drugs.xml"
-		</supplies>
+		</supplies>	
 
 #include "gameplay\character_criticals_6.xml"
-
 #include "gameplay\character_dialogs.xml"
+
 	</specific_character>
 
-	<!--STALKER NOVICE-->
+
+<!---------------------------STALKER NOVICE----------------------->
 	<specific_character id="bar_stalker_novice_default1" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_green_stalker_2</icon>
+		<map_icon x="0" y="0"></map_icon>
 		<bio>sim_stalker_novice_bio</bio>
 
 		<class>bar_Stalker_novice</class>
-		<community>stalker</community>
-		<terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect> <terrain_sect>stalker_terrain</terrain_sect>
 		<money min="200" max="600" infinitive="0"></money>
-
+		
 		<rank>41</rank>
 		<reputation>0</reputation>
 
@@ -1417,26 +1488,26 @@
 			[spawn] \n
 			wpn_pm \n
 			ammo_9x18_fmj = 1 \n
+ammo_12x70_buck=1 \n
 			device_torch \n
 #include "gameplay\character_food.xml" \n
 #include "gameplay\character_drugs.xml"
 		</supplies>
-
+		
 #include "gameplay\character_criticals_3.xml"
-
 #include "gameplay\character_dialogs.xml"
 	</specific_character>
 
 	<specific_character id="bar_stalker_novice_default2" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_green_stalker_3</icon>
+		<map_icon x="0" y="0"></map_icon>
 		<bio>sim_stalker_novice_bio</bio>
 
 		<class>bar_Stalker_novice</class>
-		<community>stalker</community>
-		<terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect> <terrain_sect>stalker_terrain</terrain_sect>
 		<money min="200" max="600" infinitive="0"></money>
-
+		
 		<rank>63</rank>
 		<reputation>0</reputation>
 
@@ -1447,26 +1518,27 @@
 			[spawn] \n
 			wpn_ak74u \n
 			ammo_5.45x39_fmj \n
+ammo_12x70_buck=1 \n
 			device_torch \n
 #include "gameplay\character_food.xml" \n
 #include "gameplay\character_drugs.xml"
 		</supplies>
 
 #include "gameplay\character_criticals_3.xml"
-
 #include "gameplay\character_dialogs.xml"
+
 	</specific_character>
 
 	<specific_character id="bar_stalker_novice_default3" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_green_stalker_4</icon>
+		<map_icon x="0" y="0"></map_icon>
 		<bio>sim_stalker_novice_bio</bio>
 
 		<class>bar_Stalker_novice</class>
-		<community>stalker</community>
-		<terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect> <terrain_sect>stalker_terrain</terrain_sect>
 		<money min="200" max="600" infinitive="0"></money>
-
+		
 		<rank>55</rank>
 		<reputation>0</reputation>
 
@@ -1477,26 +1549,26 @@
 			[spawn] \n
 			wpn_pb \n
 			ammo_9x18_fmj = 1 \n
+ammo_9x19_fmj=2 \n
 			device_torch \n
 #include "gameplay\character_food.xml" \n
 #include "gameplay\character_drugs.xml"
 		</supplies>
 
-#include "gameplay\character_criticals_3.xml"
-
+#include "gameplay\character_criticals_3.xml"					
 #include "gameplay\character_dialogs.xml"
 	</specific_character>
 
 	<specific_character id="bar_stalker_novice_default4" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_green_stalker_5</icon>
+		<map_icon x="0" y="0"></map_icon>
 		<bio>sim_stalker_novice_bio</bio>
 
 		<class>bar_Stalker_novice</class>
-		<community>stalker</community>
-		<terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect> <terrain_sect>stalker_terrain</terrain_sect>
 		<money min="200" max="600" infinitive="0"></money>
-
+		
 		<rank>49</rank>
 		<reputation>0</reputation>
 
@@ -1507,26 +1579,26 @@
 			[spawn] \n
 			wpn_mp5 \n
 			ammo_9x19_fmj \n
-			device_torch \n
+ammo_9x18_pmm=3 \n
+			device_torch \n		
 #include "gameplay\character_food.xml" \n
 #include "gameplay\character_drugs.xml"
 		</supplies>
 
 #include "gameplay\character_criticals_3.xml"
-
 #include "gameplay\character_dialogs.xml"
 	</specific_character>
 
 	<specific_character id="bar_stalker_novice_default5" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_green_stalker_6</icon>
+		<map_icon x="0" y="0"></map_icon>
 		<bio>sim_stalker_novice_bio</bio>
 
 		<class>bar_Stalker_novice</class>
-		<community>stalker</community>
-		<terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect> <terrain_sect>stalker_terrain</terrain_sect>
 		<money min="200" max="600" infinitive="0"></money>
-
+		
 		<rank>78</rank>
 		<reputation>0</reputation>
 
@@ -1537,26 +1609,26 @@
 			[spawn] \n
 			wpn_ak74 \n
 			ammo_5.45x39_fmj \n
+ammo_9x18_pmm=2 \n
 			device_torch \n
 #include "gameplay\character_food.xml" \n
 #include "gameplay\character_drugs.xml"
 		</supplies>
 
 #include "gameplay\character_criticals_3.xml"
-
 #include "gameplay\character_dialogs.xml"
 	</specific_character>
 
 	<specific_character id="bar_stalker_novice_default6" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_green_stalker_10</icon>
+		<map_icon x="0" y="0"></map_icon>
 		<bio>sim_stalker_novice_bio</bio>
 
 		<class>bar_Stalker_novice</class>
-		<community>stalker</community>
-		<terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect> <terrain_sect>stalker_terrain</terrain_sect>
 		<money min="200" max="600" infinitive="0"></money>
-
+		
 		<rank>67</rank>
 		<reputation>0</reputation>
 
@@ -1567,26 +1639,26 @@
 			[spawn] \n
 			wpn_ak74u \n
 			ammo_5.45x39_fmj \n
-			device_torch \n
+ammo_5.56x45_ap=1 \n
+			device_torch \n		
 #include "gameplay\character_food.xml" \n
 #include "gameplay\character_drugs.xml"
 		</supplies>
 
 #include "gameplay\character_criticals_3.xml"
-
 #include "gameplay\character_dialogs.xml"
 	</specific_character>
 
 	<specific_character id="bar_stalker_novice_default9" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_green_stalker_antigas</icon>
+		<map_icon x="0" y="0"></map_icon>
 		<bio>sim_stalker_novice_bio</bio>
 
 		<class>bar_Stalker_novice</class>
-		<community>stalker</community>
-		<terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect> <terrain_sect>stalker_terrain</terrain_sect>
 		<money min="200" max="600" infinitive="0"></money>
-
+		
 		<rank>58</rank>
 		<reputation>0</reputation>
 
@@ -1597,26 +1669,26 @@
 			[spawn] \n
 			wpn_pm \n
 			ammo_9x18_fmj = 1 \n
+ammo_11.43x23_fmj=2 \n
 			device_torch \n
 #include "gameplay\character_food.xml" \n
 #include "gameplay\character_drugs.xml"
 		</supplies>
-
+		
 #include "gameplay\character_criticals_4.xml"
-
 #include "gameplay\character_dialogs.xml"
 	</specific_character>
 
 	<specific_character id="bar_stalker_novice_default10" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_green_stalker_antigas</icon>
+		<map_icon x="0" y="0"></map_icon>
 		<bio>sim_stalker_novice_bio</bio>
 
 		<class>bar_Stalker_novice</class>
-		<community>stalker</community>
-		<terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect> <terrain_sect>stalker_terrain</terrain_sect>
 		<money min="200" max="600" infinitive="0"></money>
-
+		
 		<rank>46</rank>
 		<reputation>0</reputation>
 
@@ -1627,27 +1699,27 @@
 			[spawn] \n
 			wpn_pm \n
 			ammo_9x18_fmj = 1 \n
+ammo_12x76_zhekan=1 \n
 			device_torch \n
 #include "gameplay\character_food.xml" \n
 #include "gameplay\character_drugs.xml"
 		</supplies>
-
+			
 #include "gameplay\character_criticals_4.xml"
-
 #include "gameplay\character_dialogs.xml"
 	</specific_character>
 
-	<!--STALKER GENERAL-->
+<!---------------------------STALKER GENERAL---------------------->
 	<specific_character id="bar_stalker_general_default1" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_neytral_hood_uzor</icon>
+		<map_icon x="1" y="0"></map_icon>
 		<bio>sim_stalker_general_bio</bio>
 
 		<class>bar_Stalker_general</class>
-		<community>stalker</community>
-		<terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
 		<money min="200" max="600" infinitive="0"></money>
-
+		
 		<rank>216</rank>
 		<reputation>0</reputation>
 
@@ -1660,27 +1732,28 @@
 			ammo_9x18_pmm = 1 \n
 			wpn_bm16 \n
 			ammo_12x76_zhekan = 1 \n
+ammo_5.56x45_ss190=2 \n
 			device_torch \n
 #include "gameplay\character_items.xml"\n
 #include "gameplay\character_food.xml" \n
 #include "gameplay\character_drugs.xml"
 		</supplies>
-
+				
 #include "gameplay\character_criticals_4.xml"
-
 #include "gameplay\character_dialogs.xml"
+
 	</specific_character>
 
-	<specific_character id="bar_stalker_general_default2" team_default = "1">
+<specific_character id="bar_stalker_general_default2" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_neytral_balon_8</icon>
+		<map_icon x="1" y="0"></map_icon>
 		<bio>sim_stalker_general_bio</bio>
 
 		<class>bar_Stalker_general</class>
-		<community>stalker</community>
-		<terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
 		<money min="200" max="600" infinitive="0"></money>
-
+		
 		<rank>232</rank>
 		<reputation>0</reputation>
 
@@ -1693,6 +1766,7 @@
 			ammo_9x18_pmm = 1 \n
 			wpn_mp5 \n
 			ammo_9x19_fmj = 1 \n
+ammo_5.56x45_ss190=1 \n
 			device_torch \n
 #include "gameplay\character_items.xml" \n
 #include "gameplay\character_food.xml" \n
@@ -1700,20 +1774,19 @@
 		</supplies>
 
 #include "gameplay\character_criticals_4.xml"
-
 #include "gameplay\character_dialogs.xml"
-	</specific_character>
+</specific_character>
 
-	<specific_character id="bar_stalker_general_default3" team_default = "1">
+<specific_character id="bar_stalker_general_default3" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_neytral_hood_2</icon>
+		<map_icon x="1" y="0"></map_icon>
 		<bio>sim_stalker_general_bio</bio>
 
 		<class>bar_Stalker_general</class>
-		<community>stalker</community>
-		<terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
 		<money min="600" max="2000" infinitive="0"></money>
-
+		
 		<rank>308</rank>
 		<reputation>0</reputation>
 
@@ -1726,6 +1799,7 @@
 			ammo_9x18_fmj = 1 \n
 			wpn_mp5 \n
 			ammo_9x19_fmj = 1 \n
+ammo_5.45x39_fmj=3 \n
 			device_torch \n
 #include "gameplay\character_items.xml"\n
 #include "gameplay\character_food.xml" \n
@@ -1733,20 +1807,19 @@
 		</supplies>
 
 #include "gameplay\character_criticals_4.xml"
-
 #include "gameplay\character_dialogs.xml"
-	</specific_character>
+</specific_character>
 
 	<specific_character id="bar_stalker_general_default4" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_neytral_hood_8</icon>
+		<map_icon x="1" y="0"></map_icon>
 		<bio>sim_stalker_general_bio</bio>
 
 		<class>bar_Stalker_general</class>
-		<community>stalker</community>
-		<terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
 		<money min="200" max="600" infinitive="0"></money>
-
+				
 		<rank>279</rank>
 		<reputation>0</reputation>
 
@@ -1766,20 +1839,19 @@
 		</supplies>
 
 #include "gameplay\character_criticals_4.xml"
-
 #include "gameplay\character_dialogs.xml"
 	</specific_character>
-
+	
 	<specific_character id="bar_stalker_general_default5" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_neytral_hood_9</icon>
+		<map_icon x="1" y="0"></map_icon>
 		<bio>sim_stalker_general_bio</bio>
 
 		<class>bar_Stalker_general</class>
-		<community>stalker</community>
-		<terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
 		<money min="200" max="600" infinitive="0"></money>
-
+		
 		<rank>246</rank>
 		<reputation>0</reputation>
 
@@ -1792,6 +1864,7 @@
 			ammo_9x18_pmm \n
 			wpn_ak74 \n
 			ammo_5.45x39_fmj \n
+ammo_9x39_pab9=1 \n
 			device_torch \n
 #include "gameplay\character_items.xml"\n
 #include "gameplay\character_food.xml" \n
@@ -1799,21 +1872,20 @@
 		</supplies>
 
 #include "gameplay\character_criticals_4.xml"
-
 #include "gameplay\character_dialogs.xml"
 	</specific_character>
-
-	<!--STALKER VETERAN-->
+	
+<!---------------------------STALKER VETERAN---------------------->
 	<specific_character id="bar_stalker_veteran_default1" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_neytral_hood_9</icon>
+		<map_icon x="1" y="0"></map_icon>
 		<bio>sim_stalker_veteran_bio</bio>
 
 		<class>bar_Stalker_veteran</class>
-		<community>stalker</community>
-		<terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
 		<money min="600" max="2000" infinitive="0"></money>
-
+	
 		<rank>507</rank>
 		<reputation>0</reputation>
 
@@ -1826,6 +1898,7 @@
 			ammo_9x19_fmj \n
 			wpn_lr300 \n
 			ammo_5.56x45_ap = 1 \n
+ammo_9x39_pab9=2 \n
 			device_torch \n
 #include "gameplay\character_items.xml"\n
 #include "gameplay\character_food.xml" \n
@@ -1833,20 +1906,20 @@
 		</supplies>
 
 #include "gameplay\character_criticals_4.xml"
-
 #include "gameplay\character_dialogs.xml"
+
 	</specific_character>
 
 	<specific_character id="bar_stalker_veteran_default2" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_neytral_rukzak_2</icon>
+		<map_icon x="1" y="0"></map_icon>
 		<bio>sim_stalker_veteran_bio</bio>
 
 		<class>bar_Stalker_veteran</class>
-		<community>stalker</community>
-		<terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
 		<money min="600" max="2000" infinitive="0"></money>
-
+			
 		<rank>548</rank>
 		<reputation>0</reputation>
 
@@ -1866,20 +1939,20 @@
 		</supplies>
 
 #include "gameplay\character_criticals_4.xml"
-
 #include "gameplay\character_dialogs.xml"
+
 	</specific_character>
 
 	<specific_character id="bar_stalker_veteran_default3" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_neytral_nauchniy</icon>
+		<map_icon x="1" y="0"></map_icon>
 		<bio>sim_stalker_veteran_bio</bio>
 
 		<class>bar_Stalker_veteran</class>
-		<community>stalker</community>
-		<terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
 		<money min="2000" max="5000" infinitive="0"></money>
-
+		
 		<rank>618</rank>
 		<reputation>0</reputation>
 
@@ -1892,6 +1965,7 @@
 			ammo_9x19_fmj \n
 			wpn_lr300 \n
 			ammo_5.56x45_ap = 1 \n
+ammo_5.45x39_fmj=3 \n
 			device_torch \n
 #include "gameplay\character_items.xml"\n
 #include "gameplay\character_food.xml" \n
@@ -1899,20 +1973,20 @@
 		</supplies>
 
 #include "gameplay\character_criticals_4.xml"
-
 #include "gameplay\character_dialogs.xml"
+
 	</specific_character>
 
 	<specific_character id="bar_stalker_veteran_default4" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_neytral_hood_9</icon>
+		<map_icon x="1" y="0"></map_icon>
 		<bio>sim_stalker_veteran_bio</bio>
 
 		<class>bar_Stalker_veteran</class>
-		<community>stalker</community>
-		<terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
 		<money min="2000" max="5000" infinitive="0"></money>
-
+	
 		<rank>663</rank>
 		<reputation>0</reputation>
 
@@ -1932,20 +2006,20 @@
 		</supplies>
 
 #include "gameplay\character_criticals_4.xml"
-
 #include "gameplay\character_dialogs.xml"
+
 	</specific_character>
 
 	<specific_character id="bar_stalker_veteran_default5" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_neytral_hood_8</icon>
+		<map_icon x="1" y="0"></map_icon>
 		<bio>sim_stalker_veteran_bio</bio>
 
 		<class>bar_Stalker_veteran</class>
-		<community>stalker</community>
-		<terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
 		<money min="600" max="2000" infinitive="0"></money>
-
+					
 		<rank>591</rank>
 		<reputation>0</reputation>
 
@@ -1958,6 +2032,7 @@
 			ammo_9x19_fmj = 1 \n
 			wpn_lr300 \n
 			ammo_5.56x45_ss190 = 1 \n
+ammo_5.45x39_fmj=1 \n
 			device_torch \n
 #include "gameplay\character_items.xml"\n
 #include "gameplay\character_food.xml" \n
@@ -1965,21 +2040,22 @@
 		</supplies>
 
 #include "gameplay\character_criticals_4.xml"
-
 #include "gameplay\character_dialogs.xml"
+
 	</specific_character>
 
-	<!--ECOLOG GUARD-->
+
+<!---------------------------ECOLOG GUARD------------------------>
 	<specific_character id="bar_ecolog_guard_default1" team_default = "1">
 		<name>GENERATE_NAME_science</name>
 		<icon>ui_npc_u_stalker_ecolog</icon>
+		<map_icon x="0" y="6"></map_icon>
 		<bio>ros_ecolog_guard_bio</bio>
 
 		<class>bar_Ecolog_guard</class>
-		<community>ecolog</community>
-		<terrain_sect>stalker_ecolog_terrain</terrain_sect>
+		<community>ecolog</community> <terrain_sect>stalker_ecolog_terrain</terrain_sect>
 		<money min="2000" max="5000" infinitive="0"></money>
-
+		
 		<rank>870</rank>
 		<reputation>50</reputation>
 
@@ -1992,23 +2068,24 @@
 			ammo_9x19_fmj \n
 			wpn_l85 \n
 			ammo_5.56x45_ap = 1 \n
+ammo_5.45x39_fmj=4 \n
 		</supplies>
-
+			
 #include "gameplay\character_criticals_3.xml"
-
 #include "gameplay\character_dialogs.xml"
+		
 	</specific_character>
 
 	<specific_character id="bar_ecolog_guard_default2" team_default = "1">
 		<name>GENERATE_NAME_science</name>
 		<icon>ui_npc_u_stalker_ecolog</icon>
+		<map_icon x="1" y="6"></map_icon>
 		<bio>ros_ecolog_guard_bio</bio>
-
+		
 		<class>bar_ecolog_general</class>
-		<community>ecolog</community>
-		<terrain_sect>stalker_ecolog_terrain</terrain_sect>
+		<community>ecolog</community> <terrain_sect>stalker_ecolog_terrain</terrain_sect>
 		<money min="2000" max="5000" infinitive="0"></money>
-
+		
 		<rank>650</rank>
 		<reputation>50</reputation>
 
@@ -2021,24 +2098,26 @@
 			ammo_9x19_fmj \n
 			wpn_l85 \n
 			ammo_5.56x45_ap = 1 \n
+ammo_9x39_ap=2 \n
 		</supplies>
-
+				
 #include "gameplay\character_criticals_3.xml"
-
 #include "gameplay\character_dialogs.xml"
+		
 	</specific_character>
 
-	<!--KILLER REGULAR-->
+
+<!---------------------------KILLER REGULAR----------------------->
 	<specific_character id="bar_killer_regular_default1" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_ki_head_1</icon>
+		<map_icon x="2" y="0"></map_icon>
 		<bio>sim_killer_general_bio</bio>
-
+		
 		<class>bar_Killer_regular</class>
-		<community>killer</community>
-		<terrain_sect>stalker_killer_terrain</terrain_sect>
+		<community>killer</community> <terrain_sect>stalker_killer_terrain</terrain_sect>
 		<money min="600" max="2000" infinitive="0"></money>
-
+			
 		<rank>366</rank>
 		<reputation>-30</reputation>
 
@@ -2053,22 +2132,22 @@
 #include "gameplay\character_food.xml" \n
 #include "gameplay\character_drugs.xml"
 		</supplies>
-
+					
 #include "gameplay\character_criticals_4.xml"
-
 #include "gameplay\character_dialogs.xml"
+		
 	</specific_character>
 
 	<specific_character id="bar_killer_regular_default2" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_ki_mask</icon>
+		<map_icon x="2" y="0"></map_icon>
 		<bio>sim_killer_general_bio</bio>
-
+		
 		<class>bar_Killer_regular</class>
-		<community>killer</community>
-		<terrain_sect>stalker_killer_terrain</terrain_sect>
+		<community>killer</community> <terrain_sect>stalker_killer_terrain</terrain_sect>
 		<money min="600" max="2000" infinitive="0"></money>
-
+					
 		<rank>398</rank>
 		<reputation>-30</reputation>
 
@@ -2083,22 +2162,22 @@
 #include "gameplay\character_food.xml" \n
 #include "gameplay\character_drugs.xml"
 		</supplies>
-
+					
 #include "gameplay\character_criticals_4.xml"
-
 #include "gameplay\character_dialogs.xml"
+		
 	</specific_character>
 
 	<specific_character id="bar_killer_regular_default3" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_ki_antigas</icon>
+		<map_icon x="2" y="0"></map_icon>
 		<bio>sim_killer_general_bio</bio>
-
+		
 		<class>bar_Killer_regular</class>
-		<community>killer</community>
-		<terrain_sect>stalker_killer_terrain</terrain_sect>
+		<community>killer</community> <terrain_sect>stalker_killer_terrain</terrain_sect>
 		<money min="600" max="2000" infinitive="0"></money>
-
+					
 		<rank>434</rank>
 		<reputation>-30</reputation>
 
@@ -2113,21 +2192,21 @@
 #include "gameplay\character_food.xml" \n
 #include "gameplay\character_drugs.xml"
 		</supplies>
-
+					
 #include "gameplay\character_criticals_4.xml"
-
 #include "gameplay\character_dialogs.xml"
+		
 	</specific_character>
-
-	<!--KILLER SNIPER-->
+		
+<!---------------------------KILLER SNIPER---------------------->
 	<specific_character id="bar_killer_sniper_default1" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_ki_mask</icon>
+		<map_icon x="2" y="0"></map_icon>
 		<bio>sim_killer_sniper_bio</bio>
-
+		
 		<class>bar_Killer_sniper</class>
-		<community>killer</community>
-		<terrain_sect>stalker_killer_terrain</terrain_sect>
+		<community>killer</community> <terrain_sect>stalker_killer_terrain</terrain_sect>
 		<money min="600" max="2000" infinitive="0"></money>
 
 		<rank>405</rank>
@@ -2143,25 +2222,25 @@
 #include "gameplay\character_food.xml" \n
 #include "gameplay\character_drugs.xml"
 		</supplies>
-
+					
 #include "gameplay\character_criticals_4.xml"
-
 #include "gameplay\character_dialogs.xml"
+		
 	</specific_character>
 
-	<specific_character id="bar_killer_sniper_on_enter" team_default = "1">
+<specific_character id="bar_killer_sniper_on_enter" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_ki_antigas</icon>
+		<map_icon x="2" y="0"></map_icon>
 		<bio>sim_killer_sniper_bio</bio>
-
+		
 		<class>bar_Killer_sniper_on_enter</class>
-		<community>killer</community>
-		<terrain_sect>stalker_killer_terrain</terrain_sect>
+		<community>killer</community> <terrain_sect>stalker_killer_terrain</terrain_sect>
 		<money min="600" max="2000" infinitive="0"></money>
 
 		<rank>442</rank>
 		<reputation>-50</reputation>
-
+	
 		<visual>actors\killer\stalker_ki_antigas</visual>
 		<snd_config>characters_voice\human_03\killer\</snd_config>
 		<crouch_type>-1</crouch_type>
@@ -2172,25 +2251,25 @@
 #include "gameplay\character_food.xml" \n
 #include "gameplay\character_drugs.xml"
 		</supplies>
-
+					
 #include "gameplay\character_criticals_4.xml"
-
 #include "gameplay\character_dialogs.xml"
+		
 	</specific_character>
-
+	
 	<specific_character id="bar_killer_rpg" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_ki_antigas</icon>
+		<map_icon x="2" y="0"></map_icon>
 		<bio>sim_killer_sniper_bio</bio>
-
+		
 		<class>bar_killer_rpg</class>
-		<community>killer</community>
-		<terrain_sect>stalker_killer_terrain</terrain_sect>
+		<community>killer</community> <terrain_sect>stalker_killer_terrain</terrain_sect>
 		<money min="600" max="2000" infinitive="0"></money>
 
 		<rank>442</rank>
 		<reputation>-50</reputation>
-
+	
 		<visual>actors\killer\stalker_ki_antigas</visual>
 		<snd_config>characters_voice\human_03\killer\</snd_config>
 		<crouch_type>-1</crouch_type>
@@ -2203,21 +2282,21 @@
 #include "gameplay\character_food.xml" \n
 #include "gameplay\character_drugs.xml"
 		</supplies>
-
+					
 #include "gameplay\character_criticals_4.xml"
-
 #include "gameplay\character_dialogs.xml"
+		
 	</specific_character>
-
-	<!--KILLER SPECNAZ-->
+	
+<!---------------------------KILLER SPECNAZ---------------------->
 	<specific_character id="bar_killer_specnaz_default1" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_ki_nauchniy</icon>
+		<map_icon x="2" y="0"></map_icon>
 		<bio>sim_killer_veteran_bio</bio>
-
+		
 		<class>bar_Killer_specnaz</class>
-		<community>killer</community>
-		<terrain_sect>stalker_killer_terrain</terrain_sect>
+		<community>killer</community> <terrain_sect>stalker_killer_terrain</terrain_sect>
 		<money min="600" max="2000" infinitive="0"></money>
 
 		<rank>561</rank>
@@ -2235,22 +2314,21 @@
 #include "gameplay\character_food.xml" \n
 #include "gameplay\character_drugs.xml"
 		</supplies>
-
+					
 #include "gameplay\character_criticals_4.xml"
-
 #include "gameplay\character_dialogs.xml"
 	</specific_character>
 
 	<specific_character id="bar_killer_specnaz_default2" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_ki_nauchniy</icon>
+		<map_icon x="2" y="0"></map_icon>
 		<bio>sim_killer_veteran_bio</bio>
-
+		
 		<class>bar_Killer_specnaz</class>
-		<community>killer</community>
-		<terrain_sect>stalker_killer_terrain</terrain_sect>
+		<community>killer</community> <terrain_sect>stalker_killer_terrain</terrain_sect>
 		<money min="2000" max="5000" infinitive="0"></money>
-
+		
 		<rank>622</rank>
 		<reputation>-50</reputation>
 
@@ -2266,22 +2344,21 @@
 #include "gameplay\character_food.xml" \n
 #include "gameplay\character_drugs.xml"
 		</supplies>
-
+					
 #include "gameplay\character_criticals_4.xml"
-
-#include "gameplay\character_dialogs.xml"
+#include "gameplay\character_dialogs.xml"		
 	</specific_character>
 
 	<specific_character id="bar_killer_specnaz_default3" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_ki_nauchniy</icon>
+		<map_icon x="2" y="0"></map_icon>
 		<bio>sim_killer_veteran_bio</bio>
-
+		
 		<class>bar_Killer_specnaz</class>
-		<community>killer</community>
-		<terrain_sect>stalker_killer_terrain</terrain_sect>
+		<community>killer</community> <terrain_sect>stalker_killer_terrain</terrain_sect>
 		<money min="600" max="2000" infinitive="0"></money>
-
+		
 		<rank>480</rank>
 		<reputation>-50</reputation>
 
@@ -2298,22 +2375,21 @@
 #include "gameplay\character_food.xml" \n
 #include "gameplay\character_drugs.xml"
 		</supplies>
-
+					
 #include "gameplay\character_criticals_4.xml"
-
-#include "gameplay\character_dialogs.xml"
+#include "gameplay\character_dialogs.xml"		
 	</specific_character>
 
 	<specific_character id="bar_killer_specnaz_default4" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_ki_nauchniy</icon>
+		<map_icon x="2" y="0"></map_icon>
 		<bio>sim_killer_veteran_bio</bio>
-
+		
 		<class>bar_Killer_specnaz</class>
-		<community>killer</community>
-		<terrain_sect>stalker_killer_terrain</terrain_sect>
+		<community>killer</community> <terrain_sect>stalker_killer_terrain</terrain_sect>
 		<money min="600" max="2000" infinitive="0"></money>
-
+		
 		<rank>534</rank>
 		<reputation>-50</reputation>
 
@@ -2330,23 +2406,21 @@
 #include "gameplay\character_food.xml" \n
 #include "gameplay\character_drugs.xml"
 		</supplies>
-
+					
 #include "gameplay\character_criticals_4.xml"
-
-#include "gameplay\character_dialogs.xml"
+#include "gameplay\character_dialogs.xml"		
 	</specific_character>
-
-	<!--DELME:only for presentation-->
+<!-----------DELME:only for presentation--------------------->
 	<specific_character id="bar_arena_respawner_default1" team_default = "1">
 		<name>GENERATE_NAME_bandit</name>
 		<icon>ui_npc_u_stalker_bandit_3</icon>
+		<map_icon x="3" y="2"></map_icon>
 		<bio>sim_bandit_general_bio</bio>
-
+	
 		<class>bar_arena_respawner</class>
-		<community>bandit</community>
-		<terrain_sect>stalker_bandit_terrain</terrain_sect>
+		<community>bandit</community> <terrain_sect>stalker_bandit_terrain</terrain_sect>
 		<money min="600" max="2000" infinitive="0"></money>
-
+		
 		<rank>438</rank>
 		<reputation>-70</reputation>
 
@@ -2361,22 +2435,22 @@
 			device_torch \n
 #include "gameplay\character_drugs.xml"
 #include "gameplay\character_food.xml"
-#include "gameplay\character_items.xml"
+#include "gameplay\character_items.xml"			
 		</supplies>
-
+					
 #include "gameplay\character_criticals_3.xml"
-
-#include "gameplay\character_dialogs.xml"
+#include "gameplay\character_dialogs.xml"		
+		
 	</specific_character>
 
 	<specific_character id="bar_arena_respawner_default2" team_default = "1">
 		<name>GENERATE_NAME_bandit</name>
 		<icon>ui_npc_u_stalker_bandit_4</icon>
+		<map_icon x="3" y="2"></map_icon>
 		<bio>sim_bandit_general_bio</bio>
-
+		
 		<class>bar_arena_respawner</class>
-		<community>bandit</community>
-		<terrain_sect>stalker_bandit_terrain</terrain_sect>
+		<community>bandit</community> <terrain_sect>stalker_bandit_terrain</terrain_sect>
 		<money min="600" max="2000" infinitive="0"></money>
 
 		<rank>476</rank>
@@ -2393,24 +2467,24 @@
 			device_torch \n
 #include "gameplay\character_drugs.xml"
 #include "gameplay\character_food.xml"
-#include "gameplay\character_items.xml"
+#include "gameplay\character_items.xml"			
 		</supplies>
-
+					
 #include "gameplay\character_criticals_3.xml"
-
-#include "gameplay\character_dialogs.xml"
+#include "gameplay\character_dialogs.xml"		
+		
 	</specific_character>
 
 	<specific_character id="bar_arena_respawner_default3" team_default = "1">
 		<name>GENERATE_NAME_bandit</name>
 		<icon>ui_npc_u_stalker_bandit_5</icon>
+		<map_icon x="3" y="2"></map_icon>
 		<bio>sim_bandit_general_bio</bio>
-
+				
 		<class>bar_arena_respawner</class>
-		<community>bandit</community>
-		<terrain_sect>stalker_bandit_terrain</terrain_sect>
+		<community>bandit</community> <terrain_sect>stalker_bandit_terrain</terrain_sect>
 		<money min="600" max="2000" infinitive="0"></money>
-
+		
 		<rank>458</rank>
 		<reputation>-98</reputation>
 
@@ -2425,24 +2499,23 @@
 			device_torch \n
 #include "gameplay\character_drugs.xml"
 #include "gameplay\character_food.xml"
-#include "gameplay\character_items.xml"
+#include "gameplay\character_items.xml"			
 		</supplies>
-
+					
 #include "gameplay\character_criticals_3.xml"
-
-#include "gameplay\character_dialogs.xml"
+#include "gameplay\character_dialogs.xml"		
+		
 	</specific_character>
-
 	<specific_character id="bar_arena_respawner_default4" team_default = "1">
 		<name>GENERATE_NAME_bandit</name>
 		<icon>ui_npc_u_stalker_bandit_5</icon>
+		<map_icon x="3" y="2"></map_icon>
 		<bio>sim_bandit_general_bio</bio>
-
+				
 		<class>bar_arena_respawner</class>
-		<community>bandit</community>
-		<terrain_sect>stalker_bandit_terrain</terrain_sect>
+		<community>bandit</community> <terrain_sect>stalker_bandit_terrain</terrain_sect>
 		<money min="600" max="2000" infinitive="0"></money>
-
+		
 		<rank>458</rank>
 		<reputation>-98</reputation>
 
@@ -2457,24 +2530,23 @@
 			device_torch \n
 #include "gameplay\character_drugs.xml"
 #include "gameplay\character_food.xml"
-#include "gameplay\character_items.xml"
+#include "gameplay\character_items.xml"			
 		</supplies>
-
+					
 #include "gameplay\character_criticals_3.xml"
-
-#include "gameplay\character_dialogs.xml"
+#include "gameplay\character_dialogs.xml"		
+		
 	</specific_character>
-
 	<specific_character id="bar_arena_respawner_default5" team_default = "1">
 		<name>GENERATE_NAME_bandit</name>
 		<icon>ui_npc_u_stalker_bandit_5</icon>
+		<map_icon x="3" y="2"></map_icon>
 		<bio>sim_bandit_general_bio</bio>
-
+				
 		<class>bar_arena_respawner</class>
-		<community>bandit</community>
-		<terrain_sect>stalker_bandit_terrain</terrain_sect>
+		<community>bandit</community> <terrain_sect>stalker_bandit_terrain</terrain_sect>
 		<money min="600" max="2000" infinitive="0"></money>
-
+		
 		<rank>458</rank>
 		<reputation>-98</reputation>
 
@@ -2489,24 +2561,23 @@
 			device_torch \n
 #include "gameplay\character_drugs.xml"
 #include "gameplay\character_food.xml"
-#include "gameplay\character_items.xml"
+#include "gameplay\character_items.xml"			
 		</supplies>
-
+					
 #include "gameplay\character_criticals_3.xml"
-
-#include "gameplay\character_dialogs.xml"
+#include "gameplay\character_dialogs.xml"		
+		
 	</specific_character>
-
 	<specific_character id="bar_arena_respawner_default6" team_default = "1">
 		<name>GENERATE_NAME_bandit</name>
 		<icon>ui_npc_u_stalker_bandit_5</icon>
+		<map_icon x="3" y="2"></map_icon>
 		<bio>sim_bandit_general_bio</bio>
-
+				
 		<class>bar_arena_respawner</class>
-		<community>bandit</community>
-		<terrain_sect>stalker_bandit_terrain</terrain_sect>
+		<community>bandit</community> <terrain_sect>stalker_bandit_terrain</terrain_sect>
 		<money min="600" max="2000" infinitive="0"></money>
-
+		
 		<rank>458</rank>
 		<reputation>-98</reputation>
 
@@ -2521,12 +2592,12 @@
 			device_torch \n
 #include "gameplay\character_drugs.xml"
 #include "gameplay\character_food.xml"
-#include "gameplay\character_items.xml"
+#include "gameplay\character_items.xml"			
 		</supplies>
-
+					
 #include "gameplay\character_criticals_3.xml"
-
-#include "gameplay\character_dialogs.xml"
+#include "gameplay\character_dialogs.xml"		
+		
 	</specific_character>
 
 </xml>

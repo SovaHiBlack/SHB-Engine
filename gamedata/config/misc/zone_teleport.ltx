@@ -1,5 +1,7 @@
 [zone_teleport]
+GroupControlSection	= spawn_group_zone
 $spawn 			= "zones\teleport_horiz"
+$prefetch 		= 16
 class			= Z_MBALD
 
 ef_anomaly_type			= 1
@@ -99,12 +101,18 @@ blowout_wind_time_peak      = 800
 blowout_wind_time_end		= 1001; 2499
 blowout_wind_power			= 0.5			;сила поднимаего ветра (от 0 до 1), в момент blowout_wind_time_peak 
 
+
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;рождение артефактов во время срабатывания
 spawn_blowout_artefacts = off   ;on
 
+
+
 [zone_teleport_out]
+GroupControlSection	= spawn_group_zone
 $spawn 			= "zones\teleport_out"
+$prefetch 		= 16
 class			= Z_MBALD
 hit_impulse_scale	= 0.0;0.5 ;0.1
 effective_radius	= 0.85 ;размер радиуса в процентах от оригинального, где действует зона
@@ -116,6 +124,7 @@ ef_weapon_type			= 13
 sound			= monsters\biting\def_0
 
 postprocess		= postprocess_electra
+
 
 BirthProbability	= 0.0
 hit_type			= strike
@@ -199,7 +208,9 @@ blowout_wind_power			= 0.5			;сила поднимаего ветра (от 0 до 1), в момент blowou
 
 
 [zone_teleport_monolith]
+GroupControlSection	= spawn_group_zone
 $spawn 			= "zones\teleport_monolith"
+$prefetch 		= 16
 class			= Z_ZONE
 hit_impulse_scale	= 0.0;0.5 ;0.1
 effective_radius	= 0.85 ;размер радиуса в процентах от оригинального, где действует зона

@@ -3,18 +3,51 @@ local not_spawn_levels = {
 }
 
 function is_single_player_game	()
-	return	(true)
+	if (_G.alife == nil) then
+		return	(true)
+	end
+  
+	if (alife() ~= nil) then
+		return	(true)
+	end
+  
+	if (_G.IsGameTypeSingle == nil) then
+		return	(true)
+	end
+
+	if (IsGameTypeSingle() == true) then
+		return	(true)
+	end
+
+	return		(false)
 end
 
 class "se_zone_anom" (cse_anomalous_zone)
-function se_zone_anom:__init (section) super (section)	
+function se_zone_anom:__init (section) super (section)  
 end
-
 function se_zone_anom:on_register()
 	cse_anomalous_zone.on_register(self)
-	
+
 	self.artefact_spawn_idle = 60*60*1000*utils.cfg_get_number(system_ini(), self:section_name(), "artefact_spawn_idle", self, false, 24)
-	self.artefact_spawn_rnd = utils.cfg_get_number(system_ini(), self:section_name(), "artefact_spawn_rnd", self, false, 100)	
+	self.artefact_spawn_rnd = utils.cfg_get_number(system_ini(), self:section_name(), "artefact_spawn_rnd", self, false, 100) 
+end
+
+function get_count_tmp_anom()
+	return	table.getn(tmp_anomalies)
+end
+
+function get_point_tmp_anom(arg)
+	local tmp_id = tmp_anomalies[arg]
+	return	tmp_id
+end
+
+function get_count_tmp_caps()
+	return	table.getn(tmp_capsule)
+end
+
+function get_point_tmp_caps(arg)
+	local tmp_id = tmp_capsule[arg]
+	return	tmp_id
 end
 
 function se_zone_anom:update()
@@ -29,27 +62,64 @@ function se_zone_anom:update()
 		if math.random(100) <= self.artefact_spawn_rnd then
 			self:spawn_artefacts()
 		end
-	end
+	end	
+end
+
+function se_zone_anom:on_unregister()
+	anomaly_holder.remove_anomaly(self.id)
+	cse_anomalous_zone.on_unregister(self)
+end
+
+function se_zone_anom:move_offline()
+	cse_anomalous_zone.move_offline(self)
+end
+
+function se_zone_anom:move_offline(var)
+	cse_anomalous_zone.move_offline(self,var)
+end
+
+function se_zone_anom:on_spawn()
+	cse_anomalous_zone.on_spawn(self)
 end
 
 function se_zone_anom:STATE_Write(packet)
 	cse_anomalous_zone.STATE_Write(self, packet)
 
+	if (is_single_player_game() == false) then
+		return
+	end
+  
 	if self.last_spawn_time == nil then
 		packet:w_u8(0)
 	else
 		packet:w_u8(1)
 		utils.w_CTime(packet, self.last_spawn_time)
-	end	
+	end 
 end
 -- восстановление
 function se_zone_anom:STATE_Read( packet, size )
+	p1=packet:r_tell()
 	cse_anomalous_zone.STATE_Read( self, packet, size )
-	
+	p2=packet:r_tell()
+	packet:r_seek(p1+41)
+	local rad=packet:r_float()
+	packet:r_seek(p2)
+
+
+	if self.id~=65535 then
+		ogsm_anomaly.get_anom(self.id)
+		anomaly_holder.add_anomaly(self.id,self:clsid(),self:section_name(),rad)
+	end
+
+  
 	if editor() then
 		return
 	end
-	
+  
+	if (is_single_player_game() == false) then
+		return
+	end
+  
 	local flag = packet:r_u8()
 	if flag == 1 then
 		self.last_spawn_time = utils.r_CTime(packet)
@@ -62,9 +132,9 @@ function se_zone_visual:__init (section) super (section)
 end
 function se_zone_visual:on_register()
 	cse_zone_visual.on_register(self)
-	
+
 	self.artefact_spawn_idle = 60*60*1000*utils.cfg_get_number(system_ini(), self:section_name(), "artefact_spawn_idle", self, false, 24)
-	self.artefact_spawn_rnd = utils.cfg_get_number(system_ini(), self:section_name(), "artefact_spawn_rnd", self, false, 100)	
+	self.artefact_spawn_rnd = utils.cfg_get_number(system_ini(), self:section_name(), "artefact_spawn_rnd", self, false, 100) 
 end
 function se_zone_visual:update()
 	cse_zone_visual.update(self)
@@ -78,27 +148,35 @@ function se_zone_visual:update()
 		if math.random(100) <= self.artefact_spawn_rnd then
 			self:spawn_artefacts()
 		end
-	end	
+	end 
 end
 
 function se_zone_visual:STATE_Write(packet)
 	cse_zone_visual.STATE_Write(self, packet)
 
+	if (is_single_player_game() == false) then
+		return
+	end
+  
 	if self.last_spawn_time == nil then
 		packet:w_u8(0)
 	else
 		packet:w_u8(1)
 		utils.w_CTime(packet, self.last_spawn_time)
-	end	
+	end 
 end
 -- восстановление
 function se_zone_visual:STATE_Read( packet, size )
 	cse_zone_visual.STATE_Read( self, packet, size )
-	
+    
 	if editor() then
 		return
 	end
-	
+  
+	if (is_single_player_game() == false) then
+		return
+	end
+  
 	local flag = packet:r_u8()
 	if flag == 1 then
 		self.last_spawn_time = utils.r_CTime(packet)

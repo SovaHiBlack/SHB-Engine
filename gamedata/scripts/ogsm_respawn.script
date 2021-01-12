@@ -1,0 +1,970 @@
+------------- Спавн вырезанных монстров и укрытий для OGSM 2.x ----------------
+
+------------------------- Copyright 2007-2008 DEXXX ---------------------------
+
+local list_mob_ids = {}
+
+restrictor_list = {}
+
+psy_list = {}
+
+
+-- Получаем ближайшее к НПС укрытие его группировки
+function get_nearest_hide(npc)
+local hideout_list = {}
+for k,v in pairs(restrictor_list) do
+	local community, radius = get_community_hide(v)
+	local obj = level.object_by_id(v.id)
+	if obj and string.find(community, npc:character_community()) then
+		local npc_pos = npc:position()
+		local hide_pos = obj:position()
+		local distance = npc_pos:distance_to(hide_pos)
+		local hide = {obj = obj, rad = radius, dist = distance}
+		table.insert(hideout_list, hide)
+	end
+end
+table.sort(hideout_list, function(a,b) return a.dist < b.dist end)
+local nearest_hide = hideout_list[1]
+return nearest_hide
+end
+
+
+-- Считываем параметры укрытия
+function get_community_hide(obj)
+if not obj then return "none" end
+local packet = net_packet()
+obj:STATE_Write(packet)
+local game_vertex_id = packet:r_u16()
+local cse_alife_object__unk1_f32 = packet:r_float()
+local cse_alife_object__unk2_u32 = packet:r_s32()
+local level_vertex_id = packet:r_s32()
+local object_flags = packet:r_s32()
+local custom_data = packet:r_stringZ()
+local cd = parse_custom_data(custom_data)
+if not cd.parameters then return "none" end
+if not cd.parameters.community then return "none" end
+if not cd.parameters.radius then return "none" end
+return cd.parameters.community, cd.parameters.radius
+end
+
+
+-- Спавним укрытие как спейс-рестриктор
+function spawn_restrictor(p_level, p_vector, p_lv, p_gv, p_type, p_radius)
+
+local p_name
+
+if p_type == "pp" then
+	p_name = p_level.."_psy_restrictor"
+else
+	p_name = p_level.."_hide_restrictor"
+end
+
+local obj = alife():create(p_name, p_vector, p_lv, p_gv)
+
+local hide_name
+if string.find(p_type, "_") then hide_name = "ogsm_common_hide"
+else hide_name = "ogsm_"..p_type.."_hide" end
+
+local mapspot
+if p_radius < 4 then mapspot = "ogsm_hide_spot_min"
+elseif p_radius < 11 then mapspot = "ogsm_hide_spot_mdl"
+else mapspot = "ogsm_hide_spot_max" end
+
+local packet = net_packet()
+
+obj:STATE_Write(packet)
+
+-- свойства cse_alife_object
+local game_vertex_id = packet:r_u16()
+local cse_alife_object__unk1_f32 = packet:r_float()
+local cse_alife_object__unk2_u32 = packet:r_s32()
+local level_vertex_id = packet:r_s32()
+local object_flags = packet:r_s32()
+local custom_data = packet:r_stringZ()
+local story_id = packet:r_s32()
+local cse_alife_object__unk3_u32 = packet:r_s32()
+
+-- свойства cse_shape
+local shape_count = packet:r_u8()
+local shape_type
+local center
+local radius
+
+if shape_count == 0 then
+	shape_type = 0
+	center = vector():set(0,0,0)
+	radius = 10.0
+	shape_count = 1
+else
+for i=1,shape_count do
+	local shape_type = packet:r_u8()
+	if shape_type == 0 then
+		local center = packet:r_vec3()
+		local radius = packet:r_float()
+	else
+		local v1 = packet:r_vec3()
+		local v2 = packet:r_vec3()
+		local v3 = packet:r_vec3()
+		local v4 = packet:r_vec3()
+	end
+end
+end
+
+-- свойства cse_alife_space_restrictor
+local restrictor_type = packet:r_u8()
+
+-- свойства cse_alife_object
+packet:w_u16(game_vertex_id)
+packet:w_float(cse_alife_object__unk1_f32)
+packet:w_s32(cse_alife_object__unk2_u32)
+packet:w_s32(level_vertex_id)
+packet:w_s32(object_flags)
+
+if p_type == "pp" then
+	custom_data = "[logic] \nactive = ogsm_effector \n[ogsm_effector]"
+else
+	custom_data = "[logic] \nactive = sr_mapspot \n[sr_mapspot] \nhint = "..hide_name.." \nlocation = "..mapspot
+end
+
+local cd = parse_custom_data(custom_data)
+if not cd then cd={} end
+if not cd.parameters then cd.parameters = {} end
+cd.parameters.community = p_type
+cd.parameters.radius = p_radius
+custom_data = gen_custom_data(cd)
+
+packet:w_stringZ(custom_data)
+packet:w_s32(story_id)
+packet:w_s32(cse_alife_object__unk3_u32)
+
+-- свойства cse_shape
+packet:w_u8(shape_count)
+
+for i=1,shape_count do
+	packet:w_u8(shape_type)
+	if shape_type == 0 then
+		packet:w_vec3(center)
+		packet:w_float(p_radius)
+	else
+		packet:w_vec3(v1)
+		packet:w_vec3(v2)
+		packet:w_vec3(v3)
+		packet:w_vec3(v4)
+	end
+end
+
+-- свойства cse_alife_space_restrictor
+packet:w_u8(restrictor_type)
+
+obj:STATE_Read(packet, packet:w_tell()-packet:r_tell())
+
+return obj
+end
+
+
+-- Получение списка всех монстров и укрытий на текущей локации
+function get_level_mobs()
+for i=1,65535 do
+	local obj = alife():object(i)
+	if obj then
+		if string.find(get_monster_portion(obj.id), level.name()) then 
+			list_mob_ids[obj.id] = obj.id
+		end
+		if string.find(obj:name(), level.name().."_hide_restrictor") then
+			table.insert(restrictor_list, obj)
+		end
+		if string.find(obj:name(), level.name().."_psy_restrictor") then
+			table.insert(psy_list, obj)
+		end
+	end
+end
+end
+
+
+-- Удаление трупов монстров
+function remove_corpse(p_id)
+local obj = alife():object(p_id)
+if obj then
+	alife():release(obj, true)
+	list_mob_ids[p_id] = nil
+end
+end
+
+
+-- Парсинг и генерирование custom_data (c) xStream
+function parse_custom_data(str)
+ local t={}
+ if str then
+  for section, section_data in string.gfind(str,"%s*%[([^%]]*)%]%s*([^%[%z]*)%s*") do
+   section = trim(section)
+   t[section]={}
+   for line in string.gfind(trim(section_data), "([^\n]*)\n*") do
+    if string.find(line,"=")~=nil then
+     for k, v in string.gfind(line, "([^=]-)%s*=%s*(.*)") do
+      k = trim(k)
+      if k~=nil and k~='' and v~=nil then 
+       t[section][k]=trim(v) 
+      end
+     end
+    else
+     for k, v in string.gfind(line, "(.*)") do
+      k = trim(k)
+      if k~=nil and k~='' then
+       t[section][k]="<<no_value>>" 
+      end
+     end
+    end
+   end
+  end
+ end
+ return t
+end
+function gen_custom_data(tbl)
+ local str=''
+ for key, value in pairs(tbl) do
+  str = str.."["..key.."]\n"
+  for k, v in pairs(value) do
+   if v~="<<no_value>>" then
+    str=str..k.." = "..v.."\n"
+   else
+    str=str..k.."\n"
+   end
+  end
+ end
+ return str
+end
+function trim (s)
+ return (string.gsub(s, "^%s*(.-)%s*$", "%1"))
+end
+
+
+-- Обобщенная процедура спавна
+function proceed_spawn(p_name, p_vector, p_lv, p_gv, p_count, p_port, p_fake)
+local ind
+local cnt = 0
+
+for k,v in pairs(list_mob_ids) do
+	local obj = alife():object(k)
+	local portion = get_monster_portion(k)
+
+	if obj and portion==p_port then
+		if obj:alive() then
+			cnt = cnt+1
+		else
+			remove_corpse(k)
+		end
+	end
+end
+
+local qnt
+
+if cnt == 0 then qnt = p_count else qnt = vars.resp_index*p_count - cnt end
+
+if qnt>=1 then
+	for ind = 1, qnt do
+		local sp_ob = alife():create(p_name, p_vector, p_lv, p_gv)
+		mob_flags(sp_ob, p_port, p_fake)
+		local m_id = sp_ob.id
+		list_mob_ids[m_id] = m_id
+	end
+end
+
+end
+
+
+-- Получение custom_data из нэт-пакета о размещении монстра
+function get_monster_portion(p_obj_id)
+
+local obj = alife():object(p_obj_id)
+
+if not obj then return "none" end
+
+local packet = net_packet()
+obj:STATE_Write(packet)
+
+local game_vertex_id = packet:r_u16()
+local cse_alife_object__unk1_f32 = packet:r_float()
+local cse_alife_object__unk2_u32 = packet:r_s32()
+local level_vertex_id = packet:r_s32()
+local object_flags = packet:r_s32()
+local custom_data = packet:r_stringZ()
+
+local cd = parse_custom_data(custom_data)
+if not cd.creature_portion then return "none" end
+if not cd.creature_portion.portion then return "none" end
+return cd.creature_portion.portion
+
+end
+
+
+-- Запись новых свойств монстров через нет-пакет
+function mob_flags(p_obj, p_port, p_fake)
+
+local packet = net_packet()
+
+p_obj:STATE_Write(packet)
+
+-- свойства cse_alife_object
+local game_vertex_id = packet:r_u16()
+local cse_alife_object__unk1_f32 = packet:r_float()
+local cse_alife_object__unk2_u32 = packet:r_s32()
+local level_vertex_id = packet:r_s32()
+local object_flags = packet:r_s32()
+local custom_data = packet:r_stringZ()
+local story_id = packet:r_s32()
+local cse_alife_object__unk3_u32 = packet:r_s32()
+
+-- свойства cse_visual
+local model_visual = packet:r_stringZ()
+local visual_flags = packet:r_u8()
+
+-- свойства cse_alife_creature_abstract
+local g_team = packet:r_u8()
+local g_squad = packet:r_u8()
+local g_group = packet:r_u8()
+local health = packet:r_float()
+local cse_alife_creature_abstract__unk1_u16v = packet:r_vec3()
+local cse_alife_creature_abstract__unk2_u16v = packet:r_vec3()
+local killer_id = packet:r_u16()
+local game_death_time = packet:r_vec3()
+
+if packet:r_elapsed() ~= 0 then get_console():execute("left="..packet:r_elapsed()) end
+
+-- свойства cse_alife_object
+packet:w_u16(game_vertex_id)
+packet:w_float(cse_alife_object__unk1_f32)
+packet:w_s32(cse_alife_object__unk2_u32)
+packet:w_s32(level_vertex_id)
+packet:w_s32(object_flags)
+
+if p_fake~=nil and math.random()>0.5 then
+	custom_data = "[logic] \nactive = mob_fake_death \n[mob_fake_death] \non_actor_dist_le = 10 | nil\n" 
+end
+
+local cd = parse_custom_data(custom_data)
+if not cd then cd={} end
+if not cd.creature_portion then cd.creature_portion = {} end
+cd.creature_portion.portion = p_port
+custom_data = gen_custom_data(cd)
+
+packet:w_stringZ(custom_data)
+packet:w_s32(story_id)
+packet:w_s32(cse_alife_object__unk3_u32)
+
+-- свойства cse_visual
+packet:w_stringZ(model_visual)
+packet:w_u8(visual_flags)
+
+-- свойства cse_alife_creature_abstract
+packet:w_u8(g_team)
+packet:w_u8(g_squad)
+packet:w_u8(g_group)
+packet:w_float(health)
+packet:w_vec3(cse_alife_creature_abstract__unk1_u16v)
+packet:w_vec3(cse_alife_creature_abstract__unk2_u16v)
+packet:w_u16(killer_id)
+packet:w_vec3(game_death_time)
+
+p_obj:STATE_Read(packet, packet:w_tell()-packet:r_tell())
+
+end
+
+
+-- Спавн на всех локациях при первом запуске мода
+function first_run()
+
+local ind
+
+------------------------
+-- Укрытия на Кордоне --
+------------------------
+
+-- Бункер Сидора
+spawn_restrictor("l01_escape", vector():set(-249.9,-24.8,-134.4), 10136, 7, "fake_", 3)
+-- Лагерь новичков
+spawn_restrictor("l01_escape", vector():set(-206.5,-22.53,-128.1), 46582, 58, "stalker", 3)
+spawn_restrictor("l01_escape", vector():set(-211.4,-23.17,-129.5), 41963, 59, "stalker", 3)
+-- Ферма
+spawn_restrictor("l01_escape", vector():set(-8.4,0.64,258.3), 268724, 183, "stalker", 4)
+-- Заброшенный дом рядом с Лисом
+spawn_restrictor("l01_escape", vector():set(133.0,0.22,339.5), 437657, 232, "stalker_bandit", 3)
+-- АТП
+spawn_restrictor("l01_escape", vector():set(109.9,-7.48,7.7), 411371, 118, "stalker_bandit", 5)
+-- Блокпост
+spawn_restrictor("l01_escape", vector():set(-119.7,-30.04,-386.4), 133789, 27, "military", 4)
+spawn_restrictor("l01_escape", vector():set(-140.7,-29.68,-361.2), 109717, 18, "military", 4)
+-- Мельница
+spawn_restrictor("l01_escape", vector():set(13.3,2.7,98.7), 290783, 92, "military", 3)
+
+-----------------------
+-- Укрытия на Свалке --
+-----------------------
+
+-- Ангар - восточная часть
+spawn_restrictor("l02_garbage", vector():set(-61.6,0.75,9.1), 135489, 330, "stalker", 6)
+-- Изгородь
+spawn_restrictor("l02_garbage", vector():set(66.5,0.6,144.9), 237602, 364, "bandit", 2)
+-- Ангар - западная часть
+spawn_restrictor("l02_garbage", vector():set(-102.9,0.44,11.9), 110339, 328, "bandit", 6)
+
+--------------------------
+-- Укрытия на Агропроме --
+--------------------------
+
+-- Строение в районе Крота
+spawn_restrictor("l03_agroprom", vector():set(16.8,0,14), 256750, 693, "stalker_bandit_military", 6)
+-- Убежище Крота
+spawn_restrictor("l03_agroprom", vector():set(39.9,2.5,-10.5), 278041, 693, "stalker", 6)
+-- Казармы у подземелья
+spawn_restrictor("l03_agroprom", vector():set(-158.2,1.1,-151.2), 79088, 693, "military", 5)
+-- Казармы у НИИ
+spawn_restrictor("l03_agroprom", vector():set(-153.3,1.1,-166.6), 84356, 693, "military", 5)
+-- Строение у НИИ
+spawn_restrictor("l03_agroprom", vector():set(-179.9,0,-187.6), 56704, 693, "military", 6)
+-- НИИ Агропром
+spawn_restrictor("l03_agroprom", vector():set(-145.6,0,-200.9), 92513, 693, "military", 6)
+
+-----------------------------
+-- Укрытия в Темной долине --
+-----------------------------
+
+-- Строения над входом в Х18
+spawn_restrictor("l04_darkvalley", vector():set(146.3,0.22,-263.2), 345170, 813, "bandit_military_dolg", 15)
+spawn_restrictor("l04_darkvalley", vector():set(128.1,0.14,-294), 325149, 813, "bandit_military_dolg", 7)
+-- Ферма
+spawn_restrictor("l04_darkvalley", vector():set(-135.1,0.97,-511), 22718, 813, "stalker", 8)
+-- Бензоколонка
+spawn_restrictor("l04_darkvalley", vector():set(101.5,0.7,-7.7), 297166, 813, "stalker_", 6)
+-- Подвал рядом с ямой
+spawn_restrictor("l04_darkvalley", vector():set(34.3,-2.93,-0.7), 216848, 813, "bandit_dolg", 4)
+-- Элеватор
+spawn_restrictor("l04_darkvalley", vector():set(-7,0.11,-57.4), 165893, 813, "bandit", 4)
+-- Комната Борова
+spawn_restrictor("l04_darkvalley", vector():set(39.2,4.54,-84), 223238, 813, "bandit", 5)
+-- Холл
+spawn_restrictor("l04_darkvalley", vector():set(37.1,0.375,-66.5), 220567, 813, "bandit", 5)
+-- Над тюрьмой
+spawn_restrictor("l04_darkvalley", vector():set(40.6,1.01,-31.5), 225406, 813, "bandit", 7)
+
+--------------------
+-- Укрытия в Баре --
+--------------------
+
+-- Бункер на заставе
+spawn_restrictor("l05_bar", vector():set(214.2,-1.57,-18.9), 52736, 1233, "stalker_dolg", 3)
+-- Иди своей дорогой, сталкер...
+spawn_restrictor("l05_bar", vector():set(178.5,0.09,49.0), 44766, 1233, "stalker_dolg", 6)
+-- Магазин Петренко
+spawn_restrictor("l05_bar", vector():set(210.0,0.42,61.6), 51205, 1233, "dolg", 5)
+-- База Долга
+spawn_restrictor("l05_bar", vector():set(224.0,-5.26,130.9), 56342, 1233, "fake_", 8)
+-- Предбанник Арены
+spawn_restrictor("l05_bar", vector():set(142.8,0.09,93.1), 38428, 1233, "stalker_dolg", 6)
+-- Строения у Бара
+spawn_restrictor("l05_bar", vector():set(112.7,0.097,68.6), 33337, 1233, "stalker_dolg", 6)
+spawn_restrictor("l05_bar", vector():set(144.9,-0.012,40.6), 38939, 1233, "stalker_dolg", 6)
+-- Бар
+spawn_restrictor("l05_bar", vector():set(131.6,-4.83,23.8), 36240, 1233, "fake_", 10)
+
+-----------------------
+-- Укрытия на Ростке --
+-----------------------
+
+-- Блокпост наемников
+spawn_restrictor("l06_rostok", vector():set(-88.9,0,137.2), 46715, 1311, "stalker_dolg_killer_ecolog", 2)
+spawn_restrictor("l06_rostok", vector():set(-82.6,1.95,156.8), 48150, 1311, "stalker_dolg_killer_ecolog", 3)
+-- Ангар с пси-зоной
+spawn_restrictor("l06_rostok", vector():set(-191.8,0,130.9), 28448, 1311, "stalker_dolg_killer_ecolog", 6)
+-- Тоннель Фримена
+spawn_restrictor("l06_rostok", vector():set(-280,-6,109.2), 1769, 1311, "ecolog", 3)
+-- Засады наемников
+spawn_restrictor("l06_rostok", vector():set(-242.9,0,140), 12634, 1311, "killer", 2)
+spawn_restrictor("l06_rostok", vector():set(-228.2,0.13,141.4), 19047, 1311, "killer", 2)
+spawn_restrictor("l06_rostok", vector():set(-250.6,1.43,14), 9490, 1311, "killer", 2)
+
+------------------------
+-- Укрытия на Складах --
+------------------------
+
+-- База Долга
+spawn_restrictor("l07_military", vector():set(-191.8,-13,39.9), 133097, 1546, "dolg", 4)
+-- Деревня кровососов
+spawn_restrictor("l07_military", vector():set(-228.9,-21.78,196.7), 102257, 1546, "freedom", 4)
+-- Стоянка нейтралов
+spawn_restrictor("l07_military", vector():set(-71.4,-16.83,242.9), 240966, 1546, "stalker", 3)
+-- Барьер
+spawn_restrictor("l07_military", vector():set(84.7,-7,341.6), 382116, 1546, "freedom", 3)
+-- Хутор Павлика
+spawn_restrictor("l07_military", vector():set(-190.4,-16,371), 134714, 1546, "killer_freedom", 4)
+-- Штаб Свободы
+spawn_restrictor("l07_military", vector():set(-21.7,-4.12,-23.8), 285439, 1546, "fake_", 6)
+-- Казармы
+spawn_restrictor("l07_military", vector():set(9.1,-7.28,16.1), 316470, 1546, "freedom", 6)
+spawn_restrictor("l07_military", vector():set(57.4,-8.054,16.8), 356438, 1546, "freedom", 6)
+-- Кухня
+spawn_restrictor("l07_military", vector():set(-77,-11.34,30.1), 235657, 1546, "freedom", 6)
+
+-----------------------
+-- Укрытия на Янтаре --
+-----------------------
+
+-- Бункер ученых
+spawn_restrictor("l08_yantar", vector():set(31.5,-11.68,-272.3), 54643, 1459, "fake_", 6)
+
+-----------------------
+-- Укрытия на Радаре --
+-----------------------
+
+-- Секретная база Монолита
+spawn_restrictor("l10_radar", vector():set(650.955,-43.887,182.48), 226701, 1868, "dolg_freedom_stalker_military_monolith", 7)
+-- Вход в бункер
+spawn_restrictor("l10_radar", vector():set(147.35,-9.277,-24.21), 52689, 1868, "dolg_freedom_stalker_military_monolith", 4)
+-- Казармы на Радаре
+spawn_restrictor("l10_radar", vector():set(33.6,-3.38,-42), 21487, 1868, "dolg_freedom_stalker_military_monolith", 4)
+
+-----------------------
+-- Укрытия в Припяти --
+-----------------------
+
+-- Подземная автостоянка
+spawn_restrictor("l11_pripyat", vector():set(85.4,-7.39,20.3), 196856, 2269, "stalker_military_freedom_dolg_killer", 15)
+-- Сберкасса
+spawn_restrictor("l11_pripyat", vector():set(60.2,-1.74,33.6), 172091, 2269, "stalker_military_freedom_dolg_killer", 4)
+-- Милиция
+spawn_restrictor("l11_pripyat", vector():set(-35.7,-1.68,34.3), 63044, 2269, "stalker_military_freedom_dolg_killer", 6)
+-- Сельхозуправление
+spawn_restrictor("l11_pripyat", vector():set(-51.1,0,140), 48522, 2269, "stalker_military_freedom_dolg_killer", 12)
+-- Подвал Дома культуры
+spawn_restrictor("l11_pripyat", vector():set(-5.6,-5.169,193.2), 95262, 2269, "fake_", 6)
+-- Подземные переходы
+spawn_restrictor("l11_pripyat", vector():set(-15.4,-5.55,69.3), 83833, 2269, "stalker_military_freedom_dolg_killer", 3)
+spawn_restrictor("l11_pripyat", vector():set(170.8,-5.55,69.3), 253270, 2269, "stalker_military_freedom_dolg_killer", 3)
+-- Канализация
+spawn_restrictor("l11_pripyat", vector():set(19.6,-3.634,121.1), 125990, 2269, "stalker_military_freedom_dolg_killer", 2)
+
+
+------------------------
+-- Монстры на Кордоне --
+------------------------
+
+proceed_spawn("cat_weak", vector():set(275, 16, 45), 1, 44, 2, "l01_escape_cat_portion_2")
+proceed_spawn("cat_weak", vector():set(238, 5, 298), 1, 44, 2, "l01_escape_cat_portion_3")
+proceed_spawn("zombie_weak", vector():set(59, 1, 525), 1, 44, 1, "l01_escape_zombie_portion_1", "fake")
+proceed_spawn("zombie_normal", vector():set(65, 1, 535), 1, 44, 1, "l01_escape_zombie_portion_2", "fake")
+proceed_spawn("zombie_weak", vector():set(339, 16, 211), 1, 44, 1, "l01_escape_zombie_portion_3", "fake")
+proceed_spawn("zombie_normal", vector():set(339, 16, 211), 1, 44, 1, "l01_escape_zombie_portion_4", "fake")
+proceed_spawn("zombie_ghost", vector():set(131, -4, 30), 1, 44, 1, "l01_escape_zombie_portion_5", "fake")
+proceed_spawn("zombie_immortal", vector():set(-109, -20, -217), 1, 44, 1, "l01_escape_zombie_portion_6", "fake")
+proceed_spawn("tushkano_weak", vector():set(-11, 2, 265), 1, 44, 5, "l01_escape_tushkano_portion_1")
+proceed_spawn("esc_electro_chimera", vector():set(-80.56, 0.10, 154.78), 1, 44, 1, "l01_escape_chimera_portion_1")
+
+-----------------------
+-- Монстры на Свалке --
+-----------------------
+
+proceed_spawn("cat_weak", vector():set(95, 0, -263), 1, 265, 3, "l02_garbage_cat_portion_1")
+proceed_spawn("fracture_weak", vector():set(185, -1, 100), 1, 265, 1, "l02_garbage_fracture_portion_1")
+proceed_spawn("fracture_weak", vector():set(172, 2, -151), 1, 265, 2, "l02_garbage_fracture_portion_2")
+proceed_spawn("fracture_weak", vector():set(89, 1, 182), 1, 265, 2, "l02_garbage_fracture_portion_3")
+proceed_spawn("zombie_weak", vector():set(34, 2, -96), 1, 265, 1, "l02_garbage_zombie_portion_1", "fake")
+proceed_spawn("zombie_normal", vector():set(34, 2, -96), 1, 265, 1, "l02_garbage_zombie_portion_2", "fake")
+proceed_spawn("zombie_immortal", vector():set(271, 4, 137), 1, 265, 1, "l02_garbage_zombie_portion_3", "fake")
+proceed_spawn("zombie_old", vector():set(271, 4, 137), 1, 265, 1, "l02_garbage_zombie_portion_4", "fake")
+proceed_spawn("zombie_ghost", vector():set(-94, 2, 44), 1, 265, 1, "l02_garbage_zombie_portion_5", "fake")
+proceed_spawn("zombie_old", vector():set(-94, 2, 44), 1, 265, 1, "l02_garbage_zombie_portion_6", "fake")
+
+--------------------------
+-- Монстры на Агропроме --
+--------------------------
+
+proceed_spawn("fracture_weak", vector():set(-219, 9, 15), 1, 693, 1, "l03_agroprom_fracture_portion_1")
+proceed_spawn("fracture_weak", vector():set(-151, 4, 60), 1, 693, 1, "l03_agroprom_fracture_portion_2")
+proceed_spawn("zombie_strong", vector():set(138, 2, -248), 1, 693, 1, "l03_agroprom_zombie_portion_1", "fake")
+proceed_spawn("zombie_immortal", vector():set(138, 2, -248), 1, 693, 1, "l03_agroprom_zombie_portion_2", "fake")
+proceed_spawn("zombie_ghost", vector():set(184, 2, 45), 1, 693, 1, "l03_agroprom_zombie_portion_6", "fake")
+proceed_spawn("zombie_immortal", vector():set(184, 2, 45), 1, 693, 1, "l03_agroprom_zombie_portion_7", "fake")
+
+-----------------------------
+-- Монстры в Темной долине --
+-----------------------------
+
+proceed_spawn("chimera_weak", vector():set(87, 2, -432), 1, 813, 1, "l04_darkvalley_chimera_portion_1")
+proceed_spawn("zombie_weak", vector():set(95, 1, -67), 1, 813, 1, "l04_darkvalley_zombie_portion_2", "fake")
+proceed_spawn("zombie_immortal", vector():set(95, 1, -67), 1, 813, 1, "l04_darkvalley_zombie_portion_3", "fake")
+proceed_spawn("zombie_normal", vector():set(-6, 0, -138), 1, 813, 1, "l04_darkvalley_zombie_portion_4", "fake")
+proceed_spawn("zombie_plague", vector():set(-44, 2.5, -542), 1, 813, 5, "l04_darkvalley_zombie_portion_5")
+proceed_spawn("tushkano_weak", vector():set(114, 1, 58), 1, 813, 7, "l04_darkvalley_tushkano_portion_2")
+
+--------------------
+-- Монстры в Баре --
+--------------------
+
+proceed_spawn("cat_weak", vector():set(270, 2, -92), 1, 1233, 2, "l05_bar_cat_portion_1")
+proceed_spawn("cat_weak", vector():set(208, 5, -92), 1, 1233, 2, "l05_bar_cat_portion_2")
+proceed_spawn("chimera_weak", vector():set(275, 5, -152), 1, 1233, 1, "l05_bar_chimera_portion_1")
+
+-----------------------
+-- Монстры на Ростке --
+-----------------------
+
+proceed_spawn("ros_electro_chimera", vector():set(-267.51, -4.36, 105.68), 1, 1311, 1, "l06_rostok_chimera_portion_1")
+
+------------------------
+-- Монстры на Складах --
+------------------------
+
+proceed_spawn("chimera_weak", vector():set(56, -9, -244), 1, 1546, 1, "l07_military_chimera_portion_1")
+proceed_spawn("chimera_weak", vector():set(21, -14, 186), 1, 1546, 1, "l07_military_chimera_portion_2")
+proceed_spawn("chimera_weak", vector():set(-84, -7, 397), 1, 1546, 1, "l07_military_chimera_portion_3")
+proceed_spawn("zombie_normal", vector():set(-262, -20, 230), 1, 1546, 1, "l07_military_zombie_portion_1", "fake")
+proceed_spawn("zombie_old", vector():set(-262, -20, 230), 1, 1546, 1, "l07_military_zombie_portion_2", "fake")
+proceed_spawn("zombie_immortal", vector():set(-299, -21, 251), 1, 1546, 1, "l07_military_zombie_portion_3", "fake")
+proceed_spawn("zombie_weak", vector():set(-299, -21, 251), 1, 1546, 1, "l07_military_zombie_portion_4", "fake")
+proceed_spawn("zombie_ghost", vector():set(-314, -20, 274), 1, 1546, 1, "l07_military_zombie_portion_5", "fake")
+proceed_spawn("zombie_weak", vector():set(-314, -20, 274), 1, 1546, 1, "l07_military_zombie_portion_6", "fake")
+proceed_spawn("m_controller_old_fat", vector():set(-314, -20, 274), 1, 1546, 1, "l07_military_controller_portion_1")
+proceed_spawn("burer_weak", vector():set(85, -11, 59), 1, 1546, 1, "l07_military_burer_portion_1")
+
+-----------------------
+-- Монстры на Радаре --
+-----------------------
+
+proceed_spawn("zombie_weak", vector():set(337, -45, -208), 1, 1868, 1, "l10_radar_zombie_portion_1")
+proceed_spawn("zombie_normal", vector():set(337, -45, -208), 1, 1868, 1, "l10_radar_zombie_portion_2")
+proceed_spawn("zombie_ghost", vector():set(337, -45, -208), 1, 1868, 1, "l10_radar_zombie_portion_3")
+proceed_spawn("zombie_old", vector():set(337, -45, -208), 1, 1868, 1, "l10_radar_zombie_portion_4")
+proceed_spawn("zombie_immortal", vector():set(337, -45, -208), 1, 1868, 1, "l10_radar_zombie_portion_5")
+proceed_spawn("chimera_weak", vector():set(359, -47, -111), 1, 1868, 1, "l10_radar_chimera_portion_1")
+proceed_spawn("zombie_rusty", vector():set(558.89, -54.20, -254.15), 1, 1868, 2, "l10_radar_zombie_portion_6")
+proceed_spawn("zombie_rusty", vector():set(568.43, -58.45, -224.93), 1, 1868, 2, "l10_radar_zombie_portion_7")
+proceed_spawn("zombie_rusty", vector():set(558.66, -60.83, -200.60), 1, 1868, 2, "l10_radar_zombie_portion_8")
+proceed_spawn("zombie_rusty", vector():set(534.73, -38, 144.53), 1, 1868, 5, "l10_radar_zombie_portion_9")
+proceed_spawn("rad_zombie_rusty", vector():set(534.73, -38, 144.53), 1, 1868, 1, "l10_radar_zombie_portion_10")
+
+-----------------------
+-- Монстры в Припяти --
+-----------------------
+
+proceed_spawn("burer_weak", vector():set(-128, 3, 33), 1, 2269, 1, "l11_pripyat_burer_portion_1")
+proceed_spawn("psy_dog", vector():set(-109, 0, 37), 1, 2269, 1, "l11_pripyat_psydog_portion_1")
+proceed_spawn("zombie_plague", vector():set(103, 1, -27), 1, 2269, 6, "l11_pripyat_zombie_portion_1")
+proceed_spawn("zombie_weak", vector():set(-49, -1, -58), 1, 2269, 1, "l11_pripyat_zombie_portion_2", "fake")
+proceed_spawn("zombie_normal", vector():set(-49, -1, -58), 1, 2269, 1, "l11_pripyat_zombie_portion_3", "fake")
+proceed_spawn("zombie_ghost", vector():set(-49, -1, -58), 1, 2269, 1, "l11_pripyat_zombie_portion_4", "fake")
+proceed_spawn("zombie_immortal", vector():set(-49, -1, -58), 1, 2269, 1, "l11_pripyat_zombie_portion_5", "fake")
+proceed_spawn("pri_electro_chimera", vector():set(90.15, -0.63, 60.9), 1, 2269, 1, "l11_pripyat_chimera_portion_1")
+proceed_spawn("zombie_rusty", vector():set(121.22, 2.62, 314), 1, 2269, 3, "l11_pripyat_zombie_portion_10")
+proceed_spawn("zombie_rusty", vector():set(66, 2.62, 321.73), 1, 2269, 3, "l11_pripyat_zombie_portion_11")
+alife():create("pri_trader",vector():set(193.89999389648,2.8008966445923,196),260901,2219)
+
+------------------------
+-- Монстры на Станции --
+------------------------
+
+proceed_spawn("psy_dog", vector():set(916, 1, -336), 1, 2401, 1, "l12_stancia_dog_portion_1")
+proceed_spawn("gigant_strong", vector():set(916, 1, -218), 1, 2401, 1, "l12_stancia_gigant_portion_1")
+proceed_spawn("burer_strong", vector():set(362, 1, 28), 1, 2401, 1, "l12_stancia_burer_portion_1")
+proceed_spawn("chimera_weak", vector():set(893, 1, -112), 1, 2401, 1, "l12_stancia_chimera_portion_1")
+
+
+-------------------
+-- Монстры в Х18 --
+-------------------
+
+alife():create("burer_weak", vector():set(6, -9, -4.5), 1, 1109)
+alife():create("burer_weak", vector():set(-27, -9, -13.5), 1, 1109)
+
+-------------------
+-- Монстры в Х16 --
+-------------------
+
+alife():create("burer_strong", vector():set(95, 7, -27), 1, 1541)
+alife():create("burer_strong", vector():set(-9, 5, 12), 1, 1541)
+alife():create("burer_strong", vector():set(-9, 5, 12), 1, 1541)
+
+---------------------------
+-- Монстры на Выжигателе --
+---------------------------
+
+alife():create("burer_strong", vector():set(-21, 7, 6), 1, 2790)
+alife():create("burer_weak", vector():set(-55, -20, 32), 1, 2790)
+alife():create("burer_strong", vector():set(8.7, -21.9, 54.6), 7851, 2790)
+alife():create("zombie_strong", vector():set(-12.55, -7.35, 7.37), 4016, 2782)
+alife():create("zombie_strong", vector():set(-8.52, -7.35, -7.04), 4363, 2783)
+alife():create("zombie_strong", vector():set(0.44, -7.25, -0.06), 6148, 2691)
+alife():create("zombie_strong", vector():set(3.19, -7.37, -20.58), 6913, 2693)
+alife():create("zombie_strong", vector():set(-9.03, -7.38, -16.44), 4283, 2692)
+alife():create("zombie_strong", vector():set(-9, -7.38, -16.44), 4283, 2692)
+
+-------------------------
+-- Монстры на Монолите --
+-------------------------
+
+alife():create("burer_strong", vector():set(12, 1, 34), 1, 2404)
+alife():create("burer_weak", vector():set(66, 1, 8.5), 1, 2404)
+
+
+-------------------------
+-- Предметы на Складах --
+-------------------------
+
+--alife():create("wpn_vintorez", vector():set(41, -7, 385.5), 342418, 1806)
+for ind = 1, 3 do
+alife():create("ammo_9x39_sp5", vector():set(42, -7, 385.5), 342418, 1806)
+end
+
+end
+
+
+-- Спавн для каждого уровня (вызывается из респавнера)
+function level_spawn()
+local level_name = level.name()
+
+---- Кордон ----
+if level_name == "l01_escape" then
+	if has_alife_info("esc_bandits_assault") then 
+		proceed_spawn("cat_weak", vector():set(-17, -11, -114), 1, 44, 2, level_name.."_cat_portion_1")
+	end
+
+	proceed_spawn("cat_weak", vector():set(275, 16, 45), 1, 44, 2, level_name.."_cat_portion_2")
+	proceed_spawn("cat_weak", vector():set(238, 5, 298), 1, 44, 2, level_name.."_cat_portion_3")
+
+	proceed_spawn("zombie_weak", vector():set(59, 1, 525), 1, 44, 1, level_name.."_zombie_portion_1", "fake")
+	proceed_spawn("zombie_normal", vector():set(65, 1, 535), 1, 44, 1, level_name.."_zombie_portion_2", "fake")
+
+	proceed_spawn("zombie_weak", vector():set(339, 16, 211), 1, 44, 1, level_name.."_zombie_portion_3", "fake")
+	proceed_spawn("zombie_normal", vector():set(339, 16, 211), 1, 44, 1, level_name.."_zombie_portion_4", "fake")
+
+	proceed_spawn("zombie_ghost", vector():set(131, -4, 30), 1, 44, 1, level_name.."_zombie_portion_5", "fake")
+
+	proceed_spawn("zombie_immortal", vector():set(-109, -20, -217), 1, 44, 1, level_name.."_zombie_portion_6", "fake")
+
+	proceed_spawn("tushkano_weak", vector():set(-11, 2, 265), 1, 44, 5, level_name.."_tushkano_portion_1")
+
+	if has_alife_info("dar_document4") then
+		proceed_spawn("esc_electro_chimera", vector():set(-80.56, 0.10, 154.78), 1, 44, 1, level_name.."_chimera_portion_1")
+	end
+end
+
+
+---- Свалка ----
+if level_name == "l02_garbage" then
+	proceed_spawn("cat_weak", vector():set(95, 0, -263), 1, 265, 3, level_name.."_cat_portion_1")
+
+	proceed_spawn("fracture_weak", vector():set(185, -1, 100), 1, 265, 1, level_name.."_fracture_portion_1")
+	proceed_spawn("fracture_weak", vector():set(172, 2, -151), 1, 265, 2, level_name.."_fracture_portion_2")
+	proceed_spawn("fracture_weak", vector():set(89, 1, 182), 1, 265, 2, level_name.."_fracture_portion_3")
+
+	proceed_spawn("zombie_weak", vector():set(34, 2, -96), 1, 265, 1, level_name.."_zombie_portion_1", "fake")
+	proceed_spawn("zombie_normal", vector():set(34, 2, -96), 1, 265, 1, level_name.."_zombie_portion_2", "fake")
+
+	proceed_spawn("zombie_immortal", vector():set(271, 4, 137), 1, 265, 1, level_name.."_zombie_portion_3", "fake")
+	proceed_spawn("zombie_old", vector():set(271, 4, 137), 1, 265, 1, level_name.."_zombie_portion_4", "fake")
+
+	proceed_spawn("zombie_ghost", vector():set(-94, 2, 44), 1, 265, 1, level_name.."_zombie_portion_5", "fake")
+	proceed_spawn("zombie_old", vector():set(-94, 2, 44), 1, 265, 1, level_name.."_zombie_portion_6", "fake")
+end
+
+
+---- Агропром ----
+if level_name == "l03_agroprom" then
+	proceed_spawn("fracture_weak", vector():set(-219, 9, 15), 1, 693, 1, level_name.."_fracture_portion_1")
+	proceed_spawn("fracture_weak", vector():set(-151, 4, 60), 1, 693, 1, level_name.."_fracture_portion_2")
+
+	if has_alife_info("agr_krot_met") then
+		proceed_spawn("fracture_weak", vector():set(80, 2, -14), 1, 693, 1, level_name.."_fracture_portion_3")
+		proceed_spawn("zombie_strong", vector():set(110, 1, 21), 1, 693, 2, level_name.."_zombie_portion_3", "fake")
+		proceed_spawn("zombie_weak", vector():set(-47, 2, -37), 1, 693, 1, level_name.."_zombie_portion_4", "fake")
+		proceed_spawn("zombie_old", vector():set(-47, 2, -37), 1, 693, 1, level_name.."_zombie_portion_5", "fake")
+	end
+
+	proceed_spawn("zombie_strong", vector():set(138, 2, -248), 1, 693, 1, level_name.."_zombie_portion_1", "fake")
+	proceed_spawn("zombie_immortal", vector():set(138, 2, -248), 1, 693, 1, level_name.."_zombie_portion_2", "fake")
+
+	proceed_spawn("zombie_ghost", vector():set(184, 2, 45), 1, 693, 1, level_name.."_zombie_portion_6", "fake")
+	proceed_spawn("zombie_immortal", vector():set(184, 2, 45), 1, 693, 1, level_name.."_zombie_portion_7", "fake")
+end
+
+
+---- Темная долина ----
+if level_name == "l04_darkvalley" then
+	proceed_spawn("chimera_weak", vector():set(87, 2, -432), 1, 813, 1, level_name.."_chimera_portion_1")
+
+	if has_alife_info("val_escort_combat") then
+		proceed_spawn("burer_weak", vector():set(64, -2, -320), 1, 813, 1, level_name.."_burer_portion_1")
+		proceed_spawn("fracture_weak", vector():set(-16, -2, -282), 1, 813, 1, level_name.."_fracture_portion_1")
+		proceed_spawn("tushkano_weak", vector():set(-111, 1, -241), 1, 813, 7, level_name.."_tushkano_portion_1")
+		proceed_spawn("zombie_strong", vector():set(105, 2, -241), 1, 813, 1, level_name.."_zombie_portion_1")
+	end
+
+	proceed_spawn("zombie_weak", vector():set(95, 1, -67), 1, 813, 1, level_name.."_zombie_portion_2", "fake")
+	proceed_spawn("zombie_immortal", vector():set(95, 1, -67), 1, 813, 1, level_name.."_zombie_portion_3", "fake")
+
+	proceed_spawn("zombie_normal", vector():set(-6, 0, -138), 1, 813, 1, level_name.."_zombie_portion_4", "fake")
+
+	if has_alife_info("dar_document4") then
+		proceed_spawn("zombie_plague", vector():set(-44, 2.5, -542), 1, 813, 3, level_name.."_zombie_portion_5")
+	end
+
+	proceed_spawn("tushkano_weak", vector():set(114, 1, 58), 1, 813, 7, level_name.."_tushkano_portion_2")
+end
+
+
+---- Бар ----
+if level_name == "l05_bar" then
+	proceed_spawn("cat_weak", vector():set(270, 2, -92), 1, 1233, 2, level_name.."_cat_portion_1")
+	proceed_spawn("cat_weak", vector():set(208, 5, -92), 1, 1233, 2, level_name.."_cat_portion_2")
+
+	proceed_spawn("chimera_weak", vector():set(275, 5, -152), 1, 1233, 1, level_name.."_chimera_portion_1")
+end
+
+
+---- Дикая территория ----
+if level_name == "l06_rostok" then
+	if has_alife_info("bar_rescue_research_chasing_start") or has_alife_info("bar_rescue_research_fail") then
+		proceed_spawn("ros_electro_chimera", vector():set(-267.51, -4.36, 105.68), 1, 1311, 1, level_name.."_chimera_portion_1")
+	end
+
+	if has_alife_info("bar_fire_anomaly_forward") or has_alife_info("bar_rescue_research_fail") then
+		proceed_spawn("chimera_weak", vector():set(-213, 2, 25), 1, 1311, 1, level_name.."_chimera_portion_2")
+	end
+
+	proceed_spawn("zombie_strong", vector():set(-64, -11, -143), 1, 1311, 2, level_name.."_zombie_portion_1", "fake")
+	proceed_spawn("zombie_ghost", vector():set(-72, -12, -159), 1, 1311, 1, level_name.."_zombie_portion_2", "fake")
+
+	proceed_spawn("zombie_old", vector():set(-179, 2, 193), 1, 1311, 1, level_name.."_zombie_portion_3", "fake")
+	proceed_spawn("zombie_normal", vector():set(-179, 2, 193), 1, 1311, 1, level_name.."_zombie_portion_4", "fake")
+
+	proceed_spawn("zombie_ghost", vector():set(-72, -12, -159), 1, 1311, 1, level_name.."_zombie_portion_5", "fake")
+end
+
+
+---- Армейские склады ----
+if level_name == "l07_military" then
+	proceed_spawn("chimera_weak", vector():set(56, -9, -244), 1, 1546, 1, level_name.."_chimera_portion_1")
+	proceed_spawn("chimera_weak", vector():set(21, -14, 186), 1, 1546, 1, level_name.."_chimera_portion_2")
+	proceed_spawn("chimera_weak", vector():set(-84, -7, 397), 1, 1546, 1, level_name.."_chimera_portion_3")
+
+	proceed_spawn("zombie_normal", vector():set(-262, -20, 230), 1, 1546, 1, level_name.."_zombie_portion_1", "fake")
+	proceed_spawn("zombie_old", vector():set(-262, -20, 230), 1, 1546, 1, level_name.."_zombie_portion_2", "fake")
+
+	proceed_spawn("zombie_immortal", vector():set(-299, -21, 251), 1, 1546, 1, level_name.."_zombie_portion_3", "fake")
+	proceed_spawn("zombie_weak", vector():set(-299, -21, 251), 1, 1546, 1, level_name.."_zombie_portion_4", "fake")
+
+	proceed_spawn("zombie_ghost", vector():set(-314, -20, 274), 1, 1546, 1, level_name.."_zombie_portion_5", "fake")
+	proceed_spawn("zombie_weak", vector():set(-314, -20, 274), 1, 1546, 1, level_name.."_zombie_portion_6", "fake")
+
+	proceed_spawn("burer_weak", vector():set(85, -11, 59), 1, 1546, 1, level_name.."_burer_portion_1")
+end
+
+
+---- Радар ----
+if level_name == "l10_radar" then
+	proceed_spawn("zombie_weak", vector():set(337, -45, -208), 1, 1868, 1, level_name.."_zombie_portion_1")
+	proceed_spawn("zombie_normal", vector():set(337, -45, -208), 1, 1868, 1, level_name.."_zombie_portion_2")
+	proceed_spawn("zombie_ghost", vector():set(337, -45, -208), 1, 1868, 1, level_name.."_zombie_portion_3")
+	proceed_spawn("zombie_old", vector():set(337, -45, -208), 1, 1868, 1, level_name.."_zombie_portion_4")
+	proceed_spawn("zombie_immortal", vector():set(337, -45, -208), 1, 1868, 1, level_name.."_zombie_portion_5")
+
+	proceed_spawn("chimera_weak", vector():set(359, -47, -111), 1, 1868, 1, level_name.."_chimera_portion_1")
+
+	proceed_spawn("zombie_rusty", vector():set(558.89, -54.20, -254.15), 1, 1868, 1, level_name.."_zombie_portion_6")
+	proceed_spawn("zombie_rusty", vector():set(568.43, -58.45, -224.93), 1, 1868, 1, level_name.."_zombie_portion_7")
+	proceed_spawn("zombie_rusty", vector():set(558.66, -60.83, -200.60), 1, 1868, 1, level_name.."_zombie_portion_8")
+
+	if has_alife_info("bun_antenna_off") then
+		proceed_spawn("fracture_weak", vector():set(113, 2, -35), 1, 1868, 2, level_name.."_fracture_portion_1")
+		proceed_spawn("burer_weak", vector():set(320, -46, -24), 1, 1868, 1, level_name.."_burer_portion_1")
+		proceed_spawn("chimera_weak", vector():set(194, -11, 82), 1, 1868, 2, level_name.."_chimera_portion_2")
+		proceed_spawn("zombie_rusty", vector():set(534.73, -38, 144.53), 1, 1868, 3, level_name.."_zombie_portion_9")
+	end
+end
+
+
+---- Припять ----
+if level_name == "l11_pripyat" then
+	proceed_spawn("burer_weak", vector():set(-128, 3, 33), 1, 2269, 1, level_name.."_burer_portion_1")
+	proceed_spawn("burer_weak", vector():set(112, 1, 212), 1, 2269, 1, level_name.."_burer_portion_2")
+
+	proceed_spawn("psy_dog", vector():set(-109, 0, 37), 1, 2269, 1, level_name.."_psydog_portion_1")
+
+	proceed_spawn("zombie_plague", vector():set(103, 1, -27), 1, 2269, 4, level_name.."_zombie_portion_1")
+
+	proceed_spawn("zombie_weak", vector():set(-49, -1, -58), 1, 2269, 1, level_name.."_zombie_portion_2", "fake")
+	proceed_spawn("zombie_normal", vector():set(-49, -1, -58), 1, 2269, 1, level_name.."_zombie_portion_3", "fake")
+	proceed_spawn("zombie_ghost", vector():set(-49, -1, -58), 1, 2269, 1, level_name.."_zombie_portion_4", "fake")
+	proceed_spawn("zombie_immortal", vector():set(-49, -1, -58), 1, 2269, 1, level_name.."_zombie_portion_5", "fake")
+
+	proceed_spawn("zombie_weak", vector():set(-103, 0, 164), 1, 2269, 1, level_name.."_zombie_portion_6", "fake")
+	proceed_spawn("zombie_normal", vector():set(-103, 0, 164), 1, 2269, 1, level_name.."_zombie_portion_7", "fake")
+	proceed_spawn("zombie_ghost", vector():set(-103, 0, 164), 1, 2269, 1, level_name.."_zombie_portion_8", "fake")
+	proceed_spawn("zombie_immortal", vector():set(-103, 0, 164), 1, 2269, 1, level_name.."_zombie_portion_9", "fake")
+
+	proceed_spawn("fracture_weak", vector():set(8, 2, 105), 1, 2269, 1, level_name.."_fracture_portion_1")
+	proceed_spawn("fracture_weak", vector():set(-54, -1, 60), 1, 2269, 1, level_name.."_fracture_portion_2")
+
+	proceed_spawn("pri_electro_chimera", vector():set(90.15, -0.63, 60.9), 1, 2269, 1, level_name.."_chimera_portion_1")
+
+	proceed_spawn("zombie_rusty", vector():set(121.22, 2.62, 314), 1, 2269, 3, level_name.."_zombie_portion_10")
+	proceed_spawn("zombie_rusty", vector():set(66, 2.62, 321.73), 1, 2269, 3, level_name.."_zombie_portion_11")
+end
+
+---- ЧАЭС 1 ----
+if level_name == "l12_stancia" then
+	if has_alife_info("freeplay") then
+		proceed_spawn("psy_dog", vector():set(916, 1, -336), 1, 2401, 1, level_name.."_dog_portion_1")
+		proceed_spawn("gigant_strong", vector():set(916, 1, -218), 1, 2401, 1, level_name.."_gigant_portion_1")
+		proceed_spawn("burer_strong", vector():set(362, 1, 28), 1, 2401, 1, level_name.."_burer_portion_1")
+		proceed_spawn("chimera_weak", vector():set(893, 1, -112), 1, 2401, 1, level_name.."_chimera_portion_1")
+	end
+end
+
+---- ЧАЭС 2 ----
+if level_name == "l12_stancia_2" then
+	if has_alife_info("freeplay") then
+		proceed_spawn("gigant_strong", vector():set(374.5,-0.0086280405521393,352.79998779297),123988,2586, 1, level_name.."_gigant_portion_1")
+		proceed_spawn("zombie_rusty", vector():set(510.29995727539,-0.099319487810135,226.10000610352),161092,2622, 5, level_name.."_zombie_portion_1")
+		proceed_spawn("chimera_strong", vector():set(845.60003662109,-0.10687708854675,230.29998779297),215237,2640, 1, level_name.."_chimera_portion_1")
+		proceed_spawn("psy_dog", vector():set(163.79998779297,-0.11011606454849,233.79998779297),68502,2549, 1, level_name.."_dog_portion_1")
+		proceed_spawn("bloodsucker_strong", vector():set(-18.200000762939,-0.058292359113693,196),17511,2524, 2, level_name.."_bloodsucker_portion_1")
+		proceed_spawn("m_controller_old_fat", vector():set(272.29998779297,-0.097160130739212,151.19999694824),96396,2576, 1, level_name.."_controller_portion_1")
+	end
+end
+
+end
+
+
+-- Спавн бюреров в саркофаге
+function spawn_in_sar()
+-- Функция устарела. Оставить только для совместимости.
+end
+
+
+-- Спавн тушканов в тайнике Стрелка
+function spawn_in_agr()
+local ind
+for ind = 1, 8 do
+	alife():create("tushkano_weak", vector():set(-128.2, -2.8, -140.1), 12, 719) 
+end
+end
+
+
+------------- Спавн вырезанных монстров и укрытий для OGSM 2.x ----------------
+
+------------------------- Copyright 2007-2008 DEXXX ---------------------------
+
+--[[
+
+If you're going to use the whole of this script or its parts in your own creative 
+developments for the S.T.A.L.K.E.R. game, please don't become such a goddamn 
+motherfucker like the notorious author of the ABC Mod - Carbrobro. Leave the 
+copyrights, note the real author(s) and don't claim others' ideas and their 
+realization to be your own ones. It's just simple Modmakers' Ethics. Thank you!
+
+Если вы собираетесь использовать данный скрипт целиком или частично в своих 
+разработках по игре S.T.A.L.K.E.R., пожалуйста не опускайтесь до уровня печально 
+известного автора ABC мода - Carbrobro. Не удаляйте копирайты, указывайте настоящего 
+автора(ов) и не выдавайте чужие идеи и их реализацию за свои. Ведь это элементарная 
+этика модостроителей! Спасибо за понимание.
+
+]]--

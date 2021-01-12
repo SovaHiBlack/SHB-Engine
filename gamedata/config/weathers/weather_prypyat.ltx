@@ -1,57 +1,30 @@
 [sect_prypyat]
-01:00:00	   		=	prypyat_01
-02:00:00	   		=	prypyat_02
-03:00:00	   		=	prypyat_01
-04:00:00	   		=	prypyat_02
-05:00:00	   		=	prypyat_01
-05:00:00			=	prypyat_02
-06:00:00			=	prypyat_01
-07:00:00			=	prypyat_02
-08:00:00			=	prypyat_01
-09:00:00			=	prypyat_02
-10:00:00			=	prypyat_01
-11:00:00			=	prypyat_02
-12:00:00			=	prypyat_01
-13:00:00			=	prypyat_02
-14:00:00			=	prypyat_01
-15:00:00			=	prypyat_02
-16:00:00			=	prypyat_01
-17:00:00			=	prypyat_02
-18:00:00			=	prypyat_01
-19:00:00			=	prypyat_02
-20:00:00  			=	prypyat_01
-21:00:00	   		=	prypyat_02
-22:00:00	   		=	prypyat_01
-23:00:00	   		=	prypyat_02
-00:00:00	   		=	prypyat_01
+01:00:00	   		=	pripyat_01
+02:00:00	   		=	pripyat_02
+03:00:00	   		=	pripyat_03
+04:00:00	   		=	pripyat_04
+05:00:00	   		=	pripyat_05
+06:00:00			=	pripyat_06
+07:00:00			=	pripyat_07
+08:00:00			=	pripyat_08
+09:00:00			=	pripyat_09
+10:00:00			=	pripyat_10
+11:00:00			=	pripyat_11
+12:00:00			=	pripyat_12
+13:00:00			=	pripyat_13
+14:00:00			=	pripyat_14
+15:00:00			=	pripyat_15
+16:00:00			=	pripyat_16
+17:00:00			=	pripyat_17
+18:00:00			=	pripyat_18
+19:00:00			=	pripyat_19
+20:00:00  			=	pripyat_20
+21:00:00	   		=	pripyat_21
+22:00:00	   		=	pripyat_22
+23:00:00	   		=	pripyat_23
+00:00:00	   		=	pripyat_00
 
-[prypyat_01]
-flares			=
-sky_texture		=	sky\sky_9_cube
-sky_rotation	=	0
-sky_color		=	1.0,    1.0,  	1.0
-clouds_texture	=	sky\sky_oblaka
-clouds_color	=	0.333, 0.341, 0.431, 1.0, 1.7
-far_plane		=	550
-fog_distance	=	330
-fog_color		=	0.172, 0.176, 0.196
-fog_density		=	0.9
-rain_density	=	0.0
-rain_color		=	0.62, 0.66, 0.76
-thunderbolt		=
-bolt_period		=	5.f
-bolt_duration	=	0.25f
-wind_velocity	=	20.0
-wind_direction	=	0.0
-ambient			=	0.06, 0.0625, 0.065
-lmap_color		=	1.0,	1.0,	1.0
-hemi_color		=	0.6,   0.625,  	0.65,	1.0
-sun_color		=	0.0,    0.0,  	0.0
-sun_dir			=	-25.0, 291
-env_ambient		=	ambient_env_rain
-
-
-[prypyat_02]
+[pripyat_base]
 flares			=
 sky_texture		=	sky\sky_9_cube
 sky_rotation	=	0
@@ -75,3 +48,124 @@ hemi_color		=	0.6,   0.625,  	0.65,	1.0
 sun_color		=	0.0,    0.0,  	0.0
 sun_dir			=	-25.0, 291
 env_ambient		=	ambient_env_rain
+
+
+[pripyat_01]:pripyat_base
+sky_rotation	=	90
+thunderbolt		=	
+sun_dir			=	-120.0, 251
+
+[pripyat_02]:pripyat_base
+sky_rotation	=	110
+thunderbolt		=	thunderbolt_collection_default
+sun_dir			=	-120.0, 231
+
+[pripyat_03]:pripyat_base
+sky_rotation	=	130
+thunderbolt		=	
+sun_dir			=	-140.0, 201
+
+[pripyat_04]:pripyat_base
+sky_rotation	=	150
+thunderbolt		=	thunderbolt_collection_default
+sun_dir			=	-185.0, 171
+
+[pripyat_05]:pripyat_base
+sky_rotation	=	210
+thunderbolt		=	
+sun_dir			=	-180.0, 271
+
+[pripyat_06]:pripyat_base
+sky_rotation	=	210
+thunderbolt		=	thunderbolt_collection_default
+sun_dir			=	-170.0, 271
+
+[pripyat_07]:pripyat_base
+sky_rotation	=	200
+thunderbolt		=	
+sun_dir			=	-160.0, 271
+
+[pripyat_08]:pripyat_base
+sky_rotation	=	200
+thunderbolt		=	thunderbolt_collection_default
+sun_dir			=	-150.0, 271
+
+[pripyat_09]:pripyat_base
+sky_rotation	=	200
+thunderbolt		=	
+sun_dir			=	-140.0, 271
+
+[pripyat_10]:pripyat_base
+sky_rotation	=	190
+thunderbolt		=	thunderbolt_collection_default
+sun_dir			=	-130.0, 271
+
+[pripyat_11]:pripyat_base
+sky_rotation	=	155
+thunderbolt		=	
+sun_dir			=	-120.0, 271
+
+[pripyat_12]:pripyat_base
+sky_rotation	=	135
+thunderbolt		=	thunderbolt_collection_default
+sun_dir			=	-110.0, 271
+
+[pripyat_13]:pripyat_base
+sky_rotation	=	115
+thunderbolt		=	
+sun_dir			=	-80.0, 271
+
+[pripyat_14]:pripyat_base
+sky_rotation	=	100
+thunderbolt		=	thunderbolt_collection_default
+sun_dir			=	-70.0, 271
+
+[pripyat_15]:pripyat_base
+sky_rotation	=	90
+thunderbolt		=	
+sun_dir			=	-60.0, 271
+
+[pripyat_16]:pripyat_base
+sky_rotation	=	60
+thunderbolt		=	thunderbolt_collection_default
+sun_dir			=	-50.0, 271
+
+[pripyat_17]:pripyat_base
+sky_rotation	=	40
+thunderbolt		=	
+sun_dir			=	-50.0, 271
+
+[pripyat_18]:pripyat_base
+sky_rotation	=	15
+thunderbolt		=	thunderbolt_collection_default
+sun_dir			=	-40.0, 271
+
+[pripyat_19]:pripyat_base
+sky_rotation	=	10
+thunderbolt		=	
+sun_dir			=	-30.0, 271
+
+[pripyat_20]:pripyat_base
+sky_rotation	=	20
+thunderbolt		=	thunderbolt_collection_default
+sun_dir			=	-20.0, 271
+
+[pripyat_21]:pripyat_base
+sky_rotation	=	15
+thunderbolt		=	
+sun_dir			=	-10.0, 271
+
+[pripyat_22]:pripyat_base
+sky_rotation	=	20
+thunderbolt		=	thunderbolt_collection_default
+sun_dir			=	-6.0, 271
+
+[pripyat_23]:pripyat_base
+sky_rotation	=	40
+thunderbolt		=	
+sun_dir			=	-185.0, 271
+
+[pripyat_00]:pripyat_base
+sky_rotation	=	60
+thunderbolt		=	thunderbolt_collection_default
+sun_dir			=	-140.0, 271

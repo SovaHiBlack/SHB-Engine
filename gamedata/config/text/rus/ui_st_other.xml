@@ -231,7 +231,4 @@
 	<string id="ui_st_invalid_saved_game">
 		<text>Не совпадает версия сохранённой игры или сохранённая игра испорчена.</text>
 	</string>
-	<string id="ui_st_description">
-		<text>Описание</text>
-	</string>
 </string_table>

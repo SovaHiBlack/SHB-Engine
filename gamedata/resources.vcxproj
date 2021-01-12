@@ -10,104 +10,6 @@
       <Platform>Win32</Platform>
     </ProjectConfiguration>
   </ItemGroup>
-  <PropertyGroup Label="Globals">
-    <ProjectGuid>{15AF67F4-A374-405B-A79D-30B55014C81C}</ProjectGuid>
-    <SccProjectName />
-    <SccAuxPath />
-    <SccLocalPath />
-    <SccProvider />
-    <Keyword>Win32Proj</Keyword>
-    <WindowsTargetPlatformVersion>
-    </WindowsTargetPlatformVersion>
-  </PropertyGroup>
-  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
-    <ConfigurationType>
-    </ConfigurationType>
-    <PlatformToolset>
-    </PlatformToolset>
-    <CharacterSet>
-    </CharacterSet>
-    <UseOfMfc />
-    <CLRSupport />
-    <WholeProgramOptimization />
-    <WindowsAppContainer />
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
-    <ConfigurationType>
-    </ConfigurationType>
-    <PlatformToolset>
-    </PlatformToolset>
-    <CharacterSet>
-    </CharacterSet>
-    <UseOfMfc />
-    <CLRSupport />
-    <WholeProgramOptimization />
-    <WindowsAppContainer />
-  </PropertyGroup>
-  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
-  <ImportGroup Label="ExtensionSettings">
-  </ImportGroup>
-  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
-    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-  </ImportGroup>
-  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
-    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-  </ImportGroup>
-  <PropertyGroup Label="UserMacros" />
-  <PropertyGroup>
-    <_ProjectFileVersion>12.0.30501.0</_ProjectFileVersion>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <OutDir>
-    </OutDir>
-    <IntDir>
-    </IntDir>
-    <ExtensionsToDeleteOnClean>
-    </ExtensionsToDeleteOnClean>
-    <TargetName />
-    <EnableManagedIncrementalBuild />
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <OutDir>
-    </OutDir>
-    <IntDir>
-    </IntDir>
-    <LinkIncremental>false</LinkIncremental>
-    <TargetName />
-    <TargetExt />
-    <ExtensionsToDeleteOnClean />
-    <EnableManagedIncrementalBuild />
-  </PropertyGroup>
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <ClCompile>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
-      <PrecompiledHeader>Use</PrecompiledHeader>
-      <WarningLevel>Level3</WarningLevel>
-      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
-      <LanguageStandard />
-    </ClCompile>
-    <Link>
-      <OutputFile>$(OutDir)xrstalker.exe</OutputFile>
-      <GenerateDebugInformation>true</GenerateDebugInformation>
-      <SubSystem>Console</SubSystem>
-      <OptimizeReferences>true</OptimizeReferences>
-      <EnableCOMDATFolding>true</EnableCOMDATFolding>
-      <TargetMachine>MachineX86</TargetMachine>
-    </Link>
-    <BuildLog>
-      <Path />
-    </BuildLog>
-  </ItemDefinitionGroup>
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <BuildLog>
-      <Path />
-    </BuildLog>
-    <ClCompile>
-      <LanguageStandard />
-    </ClCompile>
-  </ItemDefinitionGroup>
   <ItemGroup>
     <None Include="ai\alife\anomalydetectprobability.efd" />
     <None Include="ai\alife\anomalyinteractprobability.efd" />
@@ -259,11 +161,15 @@
     <None Include="anims\yantar_underground_psi.ppe" />
     <None Include="config\alife.ltx" />
     <None Include="config\creatures\actor.ltx" />
+    <None Include="config\creatures\aem_monsters.ltx" />
+    <None Include="config\creatures\aem_stalkers.ltx" />
     <None Include="config\creatures\damages.ltx" />
     <None Include="config\creatures\game_relations.ltx" />
     <None Include="config\creatures\helicopter.ltx" />
     <None Include="config\creatures\immunities.ltx" />
     <None Include="config\creatures\monsters.ltx" />
+    <None Include="config\creatures\m_army.ltx" />
+    <None Include="config\creatures\m_bandit.ltx" />
     <None Include="config\creatures\m_bloodsucker.ltx" />
     <None Include="config\creatures\m_boar.ltx" />
     <None Include="config\creatures\m_burer.ltx" />
@@ -272,9 +178,11 @@
     <None Include="config\creatures\m_controller.ltx" />
     <None Include="config\creatures\m_crow.ltx" />
     <None Include="config\creatures\m_dog.ltx" />
+    <None Include="config\creatures\m_dog_.ltx" />
     <None Include="config\creatures\m_flesh.ltx" />
+    <None Include="config\creatures\m_fraction.ltx" />
     <None Include="config\creatures\m_fracture.ltx" />
-    <None Include="config\creatures\m_gigant.ltx" />
+    <None Include="config\creatures\m_giant.ltx" />
     <None Include="config\creatures\m_person.ltx" />
     <None Include="config\creatures\m_phantom.ltx" />
     <None Include="config\creatures\m_poltergeist.ltx" />
@@ -292,15 +200,19 @@
     <None Include="config\defines.ltx" />
     <None Include="config\evaluation.ltx" />
     <None Include="config\external.ltx" />
+    <None Include="config\extracontent.ltx" />
     <None Include="config\fonts.ltx" />
     <None Include="config\game.ltx" />
     <None Include="config\game_graphs.ltx" />
     <None Include="config\game_levels.ltx" />
     <None Include="config\game_levels_music.ltx" />
-    <None Include="config\game_maps.ltx" />
+    <None Include="config\game_maps_mp.ltx" />
+    <None Include="config\game_maps_single.ltx" />
     <None Include="config\game_spawn_story_ids.ltx" />
     <None Include="config\game_story_ids.ltx" />
     <None Include="config\localization.ltx" />
+    <None Include="config\medic.ltx" />
+    <None Include="config\misc\aem_manager.ltx" />
     <None Include="config\misc\artefacts.ltx" />
     <None Include="config\misc\death_generic.ltx" />
     <None Include="config\misc\death_items_by_communities.ltx" />
@@ -358,9 +270,12 @@
     <None Include="config\misc\trade_ecolog.ltx" />
     <None Include="config\misc\trade_freedom.ltx" />
     <None Include="config\misc\trade_generic.ltx" />
+    <None Include="config\misc\trade_povar.ltx" />
+    <None Include="config\misc\trade_pri.ltx" />
     <None Include="config\misc\trade_trader.ltx" />
     <None Include="config\misc\treasure_manager.ltx" />
     <None Include="config\misc\trigger.ltx" />
+    <None Include="config\misc\ui_rad.ltx" />
     <None Include="config\misc\unique_items.ltx" />
     <None Include="config\misc\zones.ltx" />
     <None Include="config\misc\zone_ameba.ltx" />
@@ -441,12 +356,73 @@
     <None Include="config\models\vehicles\veh_zaz_u_01.ltx" />
     <None Include="config\models\vehicles\veh_zaz_u_01_part0.ltx" />
     <None Include="config\models\weapons\mounted_wpn_pkm.ltx" />
+    <None Include="config\mp\artefacthunt_game.ltx" />
+    <None Include="config\mp\deathmatch_game.ltx" />
+    <None Include="config\mp\laststanding_game.ltx" />
+    <None Include="config\mp\lzo-dict.bin" />
+    <None Include="config\mp\map_list.ltx" />
+    <None Include="config\mp\mp_actor.ltx" />
+    <None Include="config\mp\mp_bonuses.ltx" />
+    <None Include="config\mp\mp_ranks.ltx" />
+    <None Include="config\mp\soundmessages\ahunt_snd_messages.ltx" />
+    <None Include="config\mp\soundmessages\dm_snd_messages.ltx" />
+    <None Include="config\mp\soundmessages\mp_snd_messages.ltx" />
+    <None Include="config\mp\soundmessages\tdm_snd_messages.ltx" />
+    <None Include="config\mp\teamdeathmatch_game.ltx" />
+    <None Include="config\mp\team_logo.ltx" />
+    <None Include="config\mp\weapons_mp\ammo_mp.ltx" />
+    <None Include="config\mp\weapons_mp\items_mp.ltx" />
+    <None Include="config\mp\weapons_mp\outfit_mp.ltx" />
+    <None Include="config\mp\weapons_mp\weapons_mp.ltx" />
+    <None Include="config\mp\weapons_mp\w_knife_mp.ltx" />
+    <None Include="config\prefetch.ltx" />
+    <None Include="config\prefetch\old_variant_prefetch_globals.ltx" />
+    <None Include="config\prefetch\old_variant_prefetch_single.ltx" />
+    <None Include="config\prefetch\prefetch.ltx" />
+    <None Include="config\prefetch\prefetch_globals.ltx" />
+    <None Include="config\prefetch\prefetch_mp.ltx" />
+    <None Include="config\prefetch\prefetch_single.ltx" />
     <None Include="config\rspec_default.ltx" />
     <None Include="config\rspec_extreme.ltx" />
     <None Include="config\rspec_high.ltx" />
     <None Include="config\rspec_low.ltx" />
+    <None Include="config\rspec_maximum.ltx" />
     <None Include="config\rspec_minimum.ltx" />
     <None Include="config\script.ltx" />
+    <None Include="config\scripts\actorsleep.ltx" />
+    <None Include="config\scripts\aem\mob_1.ltx" />
+    <None Include="config\scripts\aem\mob_10.ltx" />
+    <None Include="config\scripts\aem\mob_11.ltx" />
+    <None Include="config\scripts\aem\mob_12.ltx" />
+    <None Include="config\scripts\aem\mob_2.ltx" />
+    <None Include="config\scripts\aem\mob_3.ltx" />
+    <None Include="config\scripts\aem\mob_4.ltx" />
+    <None Include="config\scripts\aem\mob_5.ltx" />
+    <None Include="config\scripts\aem\mob_6.ltx" />
+    <None Include="config\scripts\aem\mob_7.ltx" />
+    <None Include="config\scripts\aem\mob_8.ltx" />
+    <None Include="config\scripts\aem\mob_9.ltx" />
+    <None Include="config\scripts\aem\npc_t1_1.ltx" />
+    <None Include="config\scripts\aem\npc_t1_10.ltx" />
+    <None Include="config\scripts\aem\npc_t1_11.ltx" />
+    <None Include="config\scripts\aem\npc_t1_12.ltx" />
+    <None Include="config\scripts\aem\npc_t1_2.ltx" />
+    <None Include="config\scripts\aem\npc_t1_3.ltx" />
+    <None Include="config\scripts\aem\npc_t1_4.ltx" />
+    <None Include="config\scripts\aem\npc_t1_5.ltx" />
+    <None Include="config\scripts\aem\npc_t1_6.ltx" />
+    <None Include="config\scripts\aem\npc_t1_7.ltx" />
+    <None Include="config\scripts\aem\npc_t1_8.ltx" />
+    <None Include="config\scripts\aem\npc_t1_9.ltx" />
+    <None Include="config\scripts\aem\npc_t2_1.ltx" />
+    <None Include="config\scripts\aem\npc_t2_2.ltx" />
+    <None Include="config\scripts\aem\npc_t2_3.ltx" />
+    <None Include="config\scripts\aem\npc_t2_4.ltx" />
+    <None Include="config\scripts\aem\npc_t2_5.ltx" />
+    <None Include="config\scripts\aem\npc_t2_6.ltx" />
+    <None Include="config\scripts\aem\sound.ltx" />
+    <None Include="config\scripts\aem\timer.ltx" />
+    <None Include="config\scripts\aem_admin.ltx" />
     <None Include="config\scripts\agr\agr_factory_assault_trigger.ltx" />
     <None Include="config\scripts\agr\agr_factory_radio_spammer.ltx" />
     <None Include="config\scripts\agr\agr_helicopter1.ltx" />
@@ -518,6 +494,7 @@
     <None Include="config\scripts\ds\heli.ltx" />
     <None Include="config\scripts\dummy.ltx" />
     <None Include="config\scripts\earthshake.ltx" />
+    <None Include="config\scripts\esc_electrochimera.ltx" />
     <None Include="config\scripts\esc_novice_attacker1.ltx" />
     <None Include="config\scripts\esc_novice_attacker2.ltx" />
     <None Include="config\scripts\esc_novice_attacker3.ltx" />
@@ -549,15 +526,19 @@
     <None Include="config\scripts\pri\pri_respawn_custom_data_freedom.ltx" />
     <None Include="config\scripts\pri\pri_respawn_custom_data_military.ltx" />
     <None Include="config\scripts\pri\pri_respawn_custom_data_neutral.ltx" />
+    <None Include="config\scripts\pri_electrochimera.ltx" />
     <None Include="config\scripts\pri_followers_leader.ltx" />
     <None Include="config\scripts\pri_followers_stalker1.ltx" />
     <None Include="config\scripts\pri_followers_stalker2.ltx" />
     <None Include="config\scripts\pri_followers_stalker3.ltx" />
     <None Include="config\scripts\pri_heli4.ltx" />
+    <None Include="config\scripts\pri_trader.ltx" />
     <None Include="config\scripts\pri_wave3_btr.ltx" />
     <None Include="config\scripts\proba.ltx" />
+    <None Include="config\scripts\qa.script" />
     <None Include="config\scripts\rad\rad_suicide_stalker.ltx" />
     <None Include="config\scripts\rostok_tunel_deep.ltx" />
+    <None Include="config\scripts\ros_electrochimera.ltx" />
     <None Include="config\scripts\sar_decoding.ltx" />
     <None Include="config\scripts\sar_door.ltx" />
     <None Include="config\scripts\sar_kristal_customdata.ltx" />
@@ -576,6 +557,7 @@
     <None Include="config\scripts\sincos.ltx" />
     <None Include="config\scripts\slide_box_small.ltx" />
     <None Include="config\scripts\slide_box_small_unlocked.ltx" />
+    <None Include="config\scripts\stories.ltx" />
     <None Include="config\scripts\teleport.ltx" />
     <None Include="config\scripts\test1.ltx" />
     <None Include="config\scripts\test_boar.ltx" />
@@ -642,8 +624,12 @@
     <None Include="config\scripts\yan_labx16_switcher2.ltx" />
     <None Include="config\scripts\yan_labx16_switcher3.ltx" />
     <None Include="config\scripts\yan_labx16_switcher_primary.ltx" />
+    <None Include="config\scripts\zombie_plague.ltx" />
+    <None Include="config\stalker_custom_data.ltx" />
     <None Include="config\system.ltx" />
     <None Include="config\text\eng\stable_dialogs_darkvalley.ltx" />
+    <None Include="config\text\eng\string_table_tasks_agroprom" />
+    <None Include="config\text\eng\string_table_tasks_pripyat" />
     <None Include="config\text\map_desc\fog_net.ltx" />
     <None Include="config\text\map_desc\testers_mp_agroprom.ltx" />
     <None Include="config\text\map_desc\testers_mp_atp.ltx" />
@@ -659,6 +645,7 @@
     <None Include="config\text\map_desc\testers_mp_rostok.ltx" />
     <None Include="config\text\map_desc\testers_mp_workshop.ltx" />
     <None Include="config\weapons\delayed_action_fuse.ltx" />
+    <None Include="config\weapons\grenadier.ltx" />
     <None Include="config\weapons\weapons.ltx" />
     <None Include="config\weapons\w_abakan.ltx" />
     <None Include="config\weapons\w_ak74.ltx" />
@@ -701,16 +688,19 @@
     <None Include="config\weathers\environment.ltx" />
     <None Include="config\weathers\env_ambient.ltx" />
     <None Include="config\weathers\flares.ltx" />
+    <None Include="config\weathers\ogsm_surge.ltx" />
     <None Include="config\weathers\thunderbolt.ltx" />
     <None Include="config\weathers\weather_default.ltx" />
     <None Include="config\weathers\weather_indoor.ltx" />
     <None Include="config\weathers\weather_map.ltx" />
     <None Include="config\weathers\weather_mp.ltx" />
+    <None Include="config\weathers\weather_ogsm.ltx" />
     <None Include="config\weathers\weather_prypyat.ltx" />
     <None Include="config\weathers\weather_radar.ltx" />
     <None Include="config\weathers\weather_rain.ltx" />
     <None Include="config\weathers\weather_sarkofag.ltx" />
     <None Include="config\weathers\weather_stancia.ltx" />
+    <None Include="config\weathers\weather_stancia2.ltx" />
     <None Include="config\weathers\weather_surge.ltx" />
     <None Include="config\weathers\weather_test.ltx" />
     <None Include="config\weathers\weather_yantar.ltx" />
@@ -719,14 +709,23 @@
     <None Include="scripts\a2.script" />
     <None Include="scripts\a3.script" />
     <None Include="scripts\actor_proxy.script" />
+    <None Include="scripts\aem_bind.script" />
+    <None Include="scripts\aem_grenade.script" />
+    <None Include="scripts\aem_lights.script" />
+    <None Include="scripts\aem_manager.script" />
     <None Include="scripts\agro.script" />
     <None Include="scripts\agroprom_dialog.script" />
     <None Include="scripts\agroprom_tasks.script" />
     <None Include="scripts\alife_test.script" />
+    <None Include="scripts\amk.script" />
+    <None Include="scripts\amk_particle.script" />
     <None Include="scripts\andy_test.script" />
     <None Include="scripts\anomaly.script" />
+    <None Include="scripts\anomaly_evader.script" />
+    <None Include="scripts\anomaly_holder.script" />
     <None Include="scripts\anomaly_player.script" />
     <None Include="scripts\arbug.script" />
+    <None Include="scripts\ar_sleep.script" />
     <None Include="scripts\avi_start.script" />
     <None Include="scripts\a_task_1.script" />
     <None Include="scripts\a_task_1_end.script" />
@@ -775,6 +774,7 @@
     <None Include="scripts\dialog_manager.script" />
     <None Include="scripts\dog_look1.script" />
     <None Include="scripts\dream.script" />
+    <None Include="scripts\dunin_ammo.script" />
     <None Include="scripts\enable.script" />
     <None Include="scripts\enemy.script" />
     <None Include="scripts\escape_dialog.script" />
@@ -787,6 +787,7 @@
     <None Include="scripts\escape_tasks.script" />
     <None Include="scripts\esc_test.script" />
     <None Include="scripts\explode_zone.script" />
+    <None Include="scripts\fake_net_packet.script" />
     <None Include="scripts\freedom.script" />
     <None Include="scripts\fs_test.script" />
     <None Include="scripts\fx_sound.script" />
@@ -872,6 +873,17 @@
     <None Include="scripts\monster_test.script" />
     <None Include="scripts\move_mgr.script" />
     <None Include="scripts\news_manager.script" />
+    <None Include="scripts\ogsm_anomaly.script" />
+    <None Include="scripts\ogsm_debug.script" />
+    <None Include="scripts\ogsm_effector.script" />
+    <None Include="scripts\ogsm_freeplay.script" />
+    <None Include="scripts\ogsm_hideout.script" />
+    <None Include="scripts\ogsm_mutants.script" />
+    <None Include="scripts\ogsm_psyzones.script" />
+    <None Include="scripts\ogsm_quests.script" />
+    <None Include="scripts\ogsm_repair.script" />
+    <None Include="scripts\ogsm_respawn.script" />
+    <None Include="scripts\ogsm_surge.script" />
     <None Include="scripts\p.script" />
     <None Include="scripts\particle_flame.script" />
     <None Include="scripts\particle_test.script" />
@@ -936,6 +948,7 @@
     <None Include="scripts\se_switcher.script" />
     <None Include="scripts\se_zones.script" />
     <None Include="scripts\sim_statistic.script" />
+    <None Include="scripts\sleep_manager.script" />
     <None Include="scripts\slowdown.script" />
     <None Include="scripts\smart_terrain.script" />
     <None Include="scripts\smart_terrain_params.script" />
@@ -1034,6 +1047,7 @@
     <None Include="scripts\trade_manager.script" />
     <None Include="scripts\treasure_manager.script" />
     <None Include="scripts\ui_base_dialog.script" />
+    <None Include="scripts\ui_cheat.script" />
     <None Include="scripts\ui_game_over.script" />
     <None Include="scripts\ui_load_dialog.script" />
     <None Include="scripts\ui_main_base_tab.script" />
@@ -1041,12 +1055,27 @@
     <None Include="scripts\ui_main_menu.script" />
     <None Include="scripts\ui_main_multi_tab.script" />
     <None Include="scripts\ui_main_new_tab.script" />
+    <None Include="scripts\ui_mm_mp_join.script" />
+    <None Include="scripts\ui_mm_mp_join.script~" />
+    <None Include="scripts\ui_mm_mp_options.script" />
+    <None Include="scripts\ui_mm_mp_server.script" />
     <None Include="scripts\ui_mm_opt_controls.script" />
     <None Include="scripts\ui_mm_opt_gameplay.script" />
     <None Include="scripts\ui_mm_opt_main.script" />
     <None Include="scripts\ui_mm_opt_sound.script" />
     <None Include="scripts\ui_mm_opt_video.script" />
     <None Include="scripts\ui_mm_opt_video_adv.script" />
+    <None Include="scripts\ui_mp_main.script" />
+    <None Include="scripts\ui_multiplayer_base.script" />
+    <None Include="scripts\ui_multiplayer_base_tab.script" />
+    <None Include="scripts\ui_multiplayer_create.script" />
+    <None Include="scripts\ui_multiplayer_create_base_tab.script" />
+    <None Include="scripts\ui_multiplayer_create_map_tab.script" />
+    <None Include="scripts\ui_multiplayer_dialog.script" />
+    <None Include="scripts\ui_multiplayer_find.script" />
+    <None Include="scripts\ui_multiplayer_gametype_tab.script" />
+    <None Include="scripts\ui_multiplayer_map_tab.script" />
+    <None Include="scripts\ui_multiplayer_options_tab.script" />
     <None Include="scripts\ui_numpad.script" />
     <None Include="scripts\ui_options_base_tab.script" />
     <None Include="scripts\ui_options_controls_tab.script" />
@@ -1055,12 +1084,14 @@
     <None Include="scripts\ui_options_profiles_tab.script" />
     <None Include="scripts\ui_options_sound_tab.script" />
     <None Include="scripts\ui_options_video_tab.script" />
+    <None Include="scripts\ui_rad.script" />
     <None Include="scripts\ui_registrator.script" />
     <None Include="scripts\ui_save_dialog.script" />
     <None Include="scripts\ui_spawn_dialog.script" />
     <None Include="scripts\ui_wpn_params.script" />
     <None Include="scripts\utils.script" />
     <None Include="scripts\val_test.script" />
+    <None Include="scripts\vars.script" />
     <None Include="scripts\version.script" />
     <None Include="scripts\vovan_script.script" />
     <None Include="scripts\walk.script" />
@@ -1074,6 +1105,10 @@
     <None Include="scripts\x5.script" />
     <None Include="scripts\x6.script" />
     <None Include="scripts\x7.script" />
+    <None Include="scripts\xrs_ai.script" />
+    <None Include="scripts\xrs_grenade.script" />
+    <None Include="scripts\xrs_medic.script" />
+    <None Include="scripts\xrs_utils.script" />
     <None Include="scripts\xr_abuse.script" />
     <None Include="scripts\xr_actions_id.script" />
     <None Include="scripts\xr_assistance.script" />
@@ -1478,65 +1513,69 @@
     <None Include="shaders\r2\wmark.vs" />
     <None Include="shaders\r2\yuv2rgb.ps" />
     <None Include="spawns\all.spawn" />
-    <None Include="spawns\unpack\af_spawn_places.ltx" />
-    <None Include="spawns\unpack\alife_l01_escape.ltx" />
-    <None Include="spawns\unpack\alife_l02_garbage.ltx" />
-    <None Include="spawns\unpack\alife_l03u_agr_underground.ltx" />
-    <None Include="spawns\unpack\alife_l03_agroprom.ltx" />
-    <None Include="spawns\unpack\alife_l04u_labx18.ltx" />
-    <None Include="spawns\unpack\alife_l04_darkvalley.ltx" />
-    <None Include="spawns\unpack\alife_l05_bar.ltx" />
-    <None Include="spawns\unpack\alife_l06_rostok.ltx" />
-    <None Include="spawns\unpack\alife_l07_military.ltx" />
-    <None Include="spawns\unpack\alife_l08u_brainlab.ltx" />
-    <None Include="spawns\unpack\alife_l08_yantar.ltx" />
-    <None Include="spawns\unpack\alife_l10u_bunker.ltx" />
-    <None Include="spawns\unpack\alife_l10_radar.ltx" />
-    <None Include="spawns\unpack\alife_l11_pripyat.ltx" />
-    <None Include="spawns\unpack\alife_l12u_control_monolith.ltx" />
-    <None Include="spawns\unpack\alife_l12u_sarcofag.ltx" />
-    <None Include="spawns\unpack\alife_l12_stancia.ltx" />
-    <None Include="spawns\unpack\alife_l12_stancia_2.ltx" />
-    <None Include="spawns\unpack\all.ltx" />
-    <None Include="spawns\unpack\l01_escape.sections" />
-    <None Include="spawns\unpack\l02_garbage.sections" />
-    <None Include="spawns\unpack\l03u_agr_underground.sections" />
-    <None Include="spawns\unpack\l03_agroprom.sections" />
-    <None Include="spawns\unpack\l04u_labx18.sections" />
-    <None Include="spawns\unpack\l04_darkvalley.sections" />
-    <None Include="spawns\unpack\l05_bar.sections" />
-    <None Include="spawns\unpack\l06_rostok.sections" />
-    <None Include="spawns\unpack\l07_military.sections" />
-    <None Include="spawns\unpack\l08u_brainlab.sections" />
-    <None Include="spawns\unpack\l08_yantar.sections" />
-    <None Include="spawns\unpack\l10u_bunker.sections" />
-    <None Include="spawns\unpack\l10_radar.sections" />
-    <None Include="spawns\unpack\l11_pripyat.sections" />
-    <None Include="spawns\unpack\l12u_control_monolith.sections" />
-    <None Include="spawns\unpack\l12u_sarcofag.sections" />
-    <None Include="spawns\unpack\l12_stancia.sections" />
-    <None Include="spawns\unpack\l12_stancia_2.sections" />
-    <None Include="spawns\unpack\way_l01_escape.ltx" />
-    <None Include="spawns\unpack\way_l02_garbage.ltx" />
-    <None Include="spawns\unpack\way_l03u_agr_underground.ltx" />
-    <None Include="spawns\unpack\way_l03_agroprom.ltx" />
-    <None Include="spawns\unpack\way_l04u_labx18.ltx" />
-    <None Include="spawns\unpack\way_l04_darkvalley.ltx" />
-    <None Include="spawns\unpack\way_l05_bar.ltx" />
-    <None Include="spawns\unpack\way_l06_rostok.ltx" />
-    <None Include="spawns\unpack\way_l07_military.ltx" />
-    <None Include="spawns\unpack\way_l08u_brainlab.ltx" />
-    <None Include="spawns\unpack\way_l08_yantar.ltx" />
-    <None Include="spawns\unpack\way_l10u_bunker.ltx" />
-    <None Include="spawns\unpack\way_l10_radar.ltx" />
-    <None Include="spawns\unpack\way_l11_pripyat.ltx" />
-    <None Include="spawns\unpack\way_l12u_control_monolith.ltx" />
-    <None Include="spawns\unpack\way_l12u_sarcofag.ltx" />
-    <None Include="spawns\unpack\way_l12_stancia.ltx" />
-    <None Include="spawns\unpack\way_l12_stancia_2.ltx" />
-    <None Include="spawns\unpack\way__level_unknown.ltx" />
+    <None Include="spawns\dec\alife_l01_escape.ltx" />
+    <None Include="spawns\dec\alife_l02_garbage.ltx" />
+    <None Include="spawns\dec\alife_l03u_agr_underground.ltx" />
+    <None Include="spawns\dec\alife_l03_agroprom.ltx" />
+    <None Include="spawns\dec\alife_l04u_labx18.ltx" />
+    <None Include="spawns\dec\alife_l04_darkvalley.ltx" />
+    <None Include="spawns\dec\alife_l05_bar.ltx" />
+    <None Include="spawns\dec\alife_l06_rostok.ltx" />
+    <None Include="spawns\dec\alife_l07_military.ltx" />
+    <None Include="spawns\dec\alife_l08u_brainlab.ltx" />
+    <None Include="spawns\dec\alife_l08_yantar.ltx" />
+    <None Include="spawns\dec\alife_l10u_bunker.ltx" />
+    <None Include="spawns\dec\alife_l10_radar.ltx" />
+    <None Include="spawns\dec\alife_l11_pripyat.ltx" />
+    <None Include="spawns\dec\alife_l12u_control_monolith.ltx" />
+    <None Include="spawns\dec\alife_l12u_sarcofag.ltx" />
+    <None Include="spawns\dec\alife_l12_stancia.ltx" />
+    <None Include="spawns\dec\alife_l12_stancia_2.ltx" />
+    <None Include="spawns\dec\all.ltx" />
+    <None Include="spawns\dec\l01_escape.sections" />
+    <None Include="spawns\dec\l02_garbage.sections" />
+    <None Include="spawns\dec\l03u_agr_underground.sections" />
+    <None Include="spawns\dec\l03_agroprom.sections" />
+    <None Include="spawns\dec\l04u_labx18.sections" />
+    <None Include="spawns\dec\l04_darkvalley.sections" />
+    <None Include="spawns\dec\l05_bar.sections" />
+    <None Include="spawns\dec\l06_rostok.sections" />
+    <None Include="spawns\dec\l07_military.sections" />
+    <None Include="spawns\dec\l08u_brainlab.sections" />
+    <None Include="spawns\dec\l08_yantar.sections" />
+    <None Include="spawns\dec\l10u_bunker.sections" />
+    <None Include="spawns\dec\l10_radar.sections" />
+    <None Include="spawns\dec\l11_pripyat.sections" />
+    <None Include="spawns\dec\l12u_control_monolith.sections" />
+    <None Include="spawns\dec\l12u_sarcofag.sections" />
+    <None Include="spawns\dec\l12_stancia.sections" />
+    <None Include="spawns\dec\l12_stancia_2.sections" />
+    <None Include="spawns\dec\section2.bin" />
+    <None Include="spawns\dec\way_l01_escape.ltx" />
+    <None Include="spawns\dec\way_l02_garbage.ltx" />
+    <None Include="spawns\dec\way_l03u_agr_underground.ltx" />
+    <None Include="spawns\dec\way_l03_agroprom.ltx" />
+    <None Include="spawns\dec\way_l04u_labx18.ltx" />
+    <None Include="spawns\dec\way_l04_darkvalley.ltx" />
+    <None Include="spawns\dec\way_l05_bar.ltx" />
+    <None Include="spawns\dec\way_l06_rostok.ltx" />
+    <None Include="spawns\dec\way_l07_military.ltx" />
+    <None Include="spawns\dec\way_l08u_brainlab.ltx" />
+    <None Include="spawns\dec\way_l08_yantar.ltx" />
+    <None Include="spawns\dec\way_l10u_bunker.ltx" />
+    <None Include="spawns\dec\way_l10_radar.ltx" />
+    <None Include="spawns\dec\way_l11_pripyat.ltx" />
+    <None Include="spawns\dec\way_l12u_control_monolith.ltx" />
+    <None Include="spawns\dec\way_l12u_sarcofag.ltx" />
+    <None Include="spawns\dec\way_l12_stancia.ltx" />
+    <None Include="spawns\dec\way_l12_stancia_2.ltx" />
+    <None Include="spawns\dec\way__level_unknown.ltx" />
   </ItemGroup>
   <ItemGroup>
+    <Xml Include="config\character_desc_general.xml" />
+    <Xml Include="config\gameplay\aem_characters.xml" />
+    <Xml Include="config\gameplay\aem_info.xml" />
+    <Xml Include="config\gameplay\aem_profile.xml" />
     <Xml Include="config\gameplay\character_criticals_1.xml" />
     <Xml Include="config\gameplay\character_criticals_2.xml" />
     <Xml Include="config\gameplay\character_criticals_3.xml" />
@@ -1544,24 +1583,36 @@
     <Xml Include="config\gameplay\character_criticals_5.xml" />
     <Xml Include="config\gameplay\character_criticals_6.xml" />
     <Xml Include="config\gameplay\character_desc_aes.xml" />
+    <Xml Include="config\gameplay\character_desc_aes2.xml" />
     <Xml Include="config\gameplay\character_desc_agroprom.xml" />
+    <Xml Include="config\gameplay\character_desc_bandit.xml" />
     <Xml Include="config\gameplay\character_desc_bar.xml" />
+    <Xml Include="config\gameplay\character_desc_dar.xml" />
     <Xml Include="config\gameplay\character_desc_darkvalley.xml" />
     <Xml Include="config\gameplay\character_desc_deadcity.xml" />
+    <Xml Include="config\gameplay\character_desc_dolg.xml" />
+    <Xml Include="config\gameplay\character_desc_ecolog.xml" />
     <Xml Include="config\gameplay\character_desc_escape.xml" />
     <Xml Include="config\gameplay\character_desc_garbage.xml" />
     <Xml Include="config\gameplay\character_desc_general.xml" />
+    <Xml Include="config\gameplay\character_desc_killer.xml" />
     <Xml Include="config\gameplay\character_desc_kishka.xml" />
     <Xml Include="config\gameplay\character_desc_military.xml" />
+    <Xml Include="config\gameplay\character_desc_monolit.xml" />
     <Xml Include="config\gameplay\character_desc_pripyat.xml" />
     <Xml Include="config\gameplay\character_desc_radar.xml" />
     <Xml Include="config\gameplay\character_desc_sarcofag.xml" />
     <Xml Include="config\gameplay\character_desc_simulation.xml" />
+    <Xml Include="config\gameplay\character_desc_soldier.xml" />
+    <Xml Include="config\gameplay\character_desc_stalker.xml" />
+    <Xml Include="config\gameplay\character_desc_svoboda.xml" />
     <Xml Include="config\gameplay\character_desc_yantar.xml" />
+    <Xml Include="config\gameplay\character_desc_zombied.xml" />
     <Xml Include="config\gameplay\character_dialogs.xml" />
     <Xml Include="config\gameplay\character_drugs.xml" />
     <Xml Include="config\gameplay\character_food.xml" />
     <Xml Include="config\gameplay\character_items.xml" />
+    <Xml Include="config\gameplay\dialogs old.xml" />
     <Xml Include="config\gameplay\dialogs.xml" />
     <Xml Include="config\gameplay\dialogs_aes.xml" />
     <Xml Include="config\gameplay\dialogs_agroprom.xml" />
@@ -1569,37 +1620,66 @@
     <Xml Include="config\gameplay\dialogs_darkvalley.xml" />
     <Xml Include="config\gameplay\dialogs_deadcity.xml" />
     <Xml Include="config\gameplay\dialogs_escape.xml" />
+    <Xml Include="config\gameplay\dialogs_escape_1.xml" />
+    <Xml Include="config\gameplay\dialogs_escape_1_string.xml" />
     <Xml Include="config\gameplay\dialogs_garbage.xml" />
     <Xml Include="config\gameplay\dialogs_labx18.xml" />
     <Xml Include="config\gameplay\dialogs_military.xml" />
     <Xml Include="config\gameplay\dialogs_pripyat.xml" />
     <Xml Include="config\gameplay\dialogs_radar.xml" />
+    <Xml Include="config\gameplay\dialogs_repair.xml" />
+    <Xml Include="config\gameplay\dialogs_test.xml" />
     <Xml Include="config\gameplay\dialogs_yantar.xml" />
     <Xml Include="config\gameplay\encyclopedia_equipment.xml" />
+    <Xml Include="config\gameplay\encyclopedia_infos.xml" />
     <Xml Include="config\gameplay\encyclopedia_mutants.xml" />
+    <Xml Include="config\gameplay\encyclopedia_new.xml" />
     <Xml Include="config\gameplay\encyclopedia_social.xml" />
     <Xml Include="config\gameplay\encyclopedia_tutorial.xml" />
+    <Xml Include="config\gameplay\encyclopedia_vehicles.xml" />
     <Xml Include="config\gameplay\encyclopedia_weapons.xml" />
     <Xml Include="config\gameplay\encyclopedia_zone.xml" />
     <Xml Include="config\gameplay\game_tasks.xml" />
     <Xml Include="config\gameplay\game_tasks_by_vendor.xml" />
+    <Xml Include="config\gameplay\info_escape.xml" />
     <Xml Include="config\gameplay\info_known_objects.xml" />
     <Xml Include="config\gameplay\info_l01escape.xml" />
     <Xml Include="config\gameplay\info_l02garbage.xml" />
     <Xml Include="config\gameplay\info_l03agroprom.xml" />
+    <Xml Include="config\gameplay\info_l04agroprom_u.xml" />
+    <Xml Include="config\gameplay\info_l04darkdolina.xml" />
     <Xml Include="config\gameplay\info_l05dark_valley.xml" />
+    <Xml Include="config\gameplay\info_l05rostok.xml" />
     <Xml Include="config\gameplay\info_l06dark_valley_u.xml" />
+    <Xml Include="config\gameplay\info_l06yantar.xml" />
+    <Xml Include="config\gameplay\info_l07military.xml" />
     <Xml Include="config\gameplay\info_l07rostok.xml" />
     <Xml Include="config\gameplay\info_l08deadcity.xml" />
+    <Xml Include="config\gameplay\info_l08rostok_bar.xml" />
     <Xml Include="config\gameplay\info_l08yantar.xml" />
+    <Xml Include="config\gameplay\info_l09marshes.xml" />
+    <Xml Include="config\gameplay\info_l09rostok_dolg.xml" />
     <Xml Include="config\gameplay\info_l10military.xml" />
     <Xml Include="config\gameplay\info_l10radar.xml" />
     <Xml Include="config\gameplay\info_l11pripyat.xml" />
+    <Xml Include="config\gameplay\info_l11yantar.xml" />
+    <Xml Include="config\gameplay\info_l12stanciya.xml" />
     <Xml Include="config\gameplay\info_l12u_sarcofag.xml" />
+    <Xml Include="config\gameplay\info_l12yantar_u.xml" />
+    <Xml Include="config\gameplay\info_l13deadcity.xml" />
+    <Xml Include="config\gameplay\info_l13generators.xml" />
+    <Xml Include="config\gameplay\info_l14swamp.xml" />
+    <Xml Include="config\gameplay\info_l15radar.xml" />
     <Xml Include="config\gameplay\info_l16radar_antena.xml" />
+    <Xml Include="config\gameplay\info_l17monolith_control.xml" />
+    <Xml Include="config\gameplay\info_l18pripyat.xml" />
     <Xml Include="config\gameplay\info_l19stanciya.xml" />
+    <Xml Include="config\gameplay\info_l20sarcofag.xml" />
+    <Xml Include="config\gameplay\info_l21generators.xml" />
+    <Xml Include="config\gameplay\info_l22warlab.xml" />
     <Xml Include="config\gameplay\info_lchanger_ico.xml" />
     <Xml Include="config\gameplay\info_level_tips.xml" />
+    <Xml Include="config\gameplay\info_news.xml" />
     <Xml Include="config\gameplay\info_portions.xml" />
     <Xml Include="config\gameplay\info_portions_light.xml" />
     <Xml Include="config\gameplay\info_portions_test.xml" />
@@ -1628,9 +1708,11 @@
     <Xml Include="config\gameplay\tasks_escape.xml" />
     <Xml Include="config\gameplay\tasks_garbage.xml" />
     <Xml Include="config\gameplay\tasks_military.xml" />
+    <Xml Include="config\gameplay\tasks_pripyat.xml" />
     <Xml Include="config\gameplay\tasks_radar.xml" />
     <Xml Include="config\gameplay\tasks_sarcofag.xml" />
     <Xml Include="config\gameplay\tasks_yantar.xml" />
+    <Xml Include="config\gameplay\test.xml" />
     <Xml Include="config\text\dialogs_escape_1_string.xml" />
     <Xml Include="config\text\eng\dialogs_escape_1_string.xml" />
     <Xml Include="config\text\eng\mp_st_speechmenu.xml" />
@@ -1734,6 +1816,7 @@
     <Xml Include="config\text\eng\ui_st_mp.xml" />
     <Xml Include="config\text\eng\ui_st_other.xml" />
     <Xml Include="config\text\eng\ui_st_pda.xml" />
+    <Xml Include="config\text\rus\aem_strings.xml" />
     <Xml Include="config\text\rus\mp_st_speechmenu.xml" />
     <Xml Include="config\text\rus\stable_bio_name.xml" />
     <Xml Include="config\text\rus\stable_dialogs.xml" />
@@ -1754,6 +1837,7 @@
     <Xml Include="config\text\rus\stable_game_credits.xml" />
     <Xml Include="config\text\rus\stable_generate_fnames.xml" />
     <Xml Include="config\text\rus\stable_generate_snames.xml" />
+    <Xml Include="config\text\rus\stable_repair_dialogs.xml" />
     <Xml Include="config\text\rus\stable_statistic_caption.xml" />
     <Xml Include="config\text\rus\stable_stories.xml" />
     <Xml Include="config\text\rus\stable_storyline_info_aes.xml" />
@@ -1846,70 +1930,56 @@
     <Xml Include="config\text\string_table_ui.xml" />
     <Xml Include="config\text\test_radar.xml" />
     <Xml Include="config\text\test_string.xml" />
+    <Xml Include="config\ui\actor_diary.xml" />
     <Xml Include="config\ui\actor_statistic.xml" />
+    <Xml Include="config\ui\aem_ui_npc.xml" />
     <Xml Include="config\ui\af_params.xml" />
     <Xml Include="config\ui\af_params_16.xml" />
+    <Xml Include="config\ui\buy_menu_item.xml" />
+    <Xml Include="config\ui\buy_mp_item.xml" />
+    <Xml Include="config\ui\carbody.xml" />
     <Xml Include="config\ui\carbody_item.xml" />
     <Xml Include="config\ui\carbody_item_16.xml" />
     <Xml Include="config\ui\carbody_new.xml" />
     <Xml Include="config\ui\carbody_new_16.xml" />
     <Xml Include="config\ui\car_panel.xml" />
     <Xml Include="config\ui\car_panel_16.xml" />
+    <Xml Include="config\ui\chat_mp.xml" />
     <Xml Include="config\ui\color_defs.xml" />
+    <Xml Include="config\ui\contracts.xml" />
+    <Xml Include="config\ui\contracts_character.xml" />
     <Xml Include="config\ui\encyclopedia.xml" />
     <Xml Include="config\ui\encyclopedia_item.xml" />
     <Xml Include="config\ui\events_new.xml" />
+    <Xml Include="config\ui\follower_character.xml" />
+    <Xml Include="config\ui\follower_panel.xml" />
     <Xml Include="config\ui\game_tutorials.xml" />
+    <Xml Include="config\ui\global_map.xml" />
     <Xml Include="config\ui\grenade.xml" />
-    <Xml Include="config\ui\hide\actor_diary.xml" />
-    <Xml Include="config\ui\hide\buy_menu_item.xml" />
-    <Xml Include="config\ui\hide\carbody.xml" />
-    <Xml Include="config\ui\hide\contracts.xml" />
-    <Xml Include="config\ui\hide\contracts_character.xml" />
-    <Xml Include="config\ui\hide\global_map.xml" />
-    <Xml Include="config\ui\hide\ingame_msglog_mp.xml" />
-    <Xml Include="config\ui\hide\ingame_msglog_sp.xml" />
-    <Xml Include="config\ui\hide\inventory.xml" />
-    <Xml Include="config\ui\hide\inventorymp.xml" />
-    <Xml Include="config\ui\hide\inventorymp_new.xml" />
-    <Xml Include="config\ui\hide\inventorymp_new2.xml" />
-    <Xml Include="config\ui\hide\inventory_character.xml" />
-    <Xml Include="config\ui\hide\jobs.xml" />
-    <Xml Include="config\ui\hide\jobs_new.xml" />
-    <Xml Include="config\ui\hide\maingame_character.xml" />
-    <Xml Include="config\ui\hide\maingame_new.xml" />
-    <Xml Include="config\ui\hide\map.xml" />
-    <Xml Include="config\ui\hide\map_character.xml" />
-    <Xml Include="config\ui\hide\map_desc.xml" />
-    <Xml Include="config\ui\hide\map_desc_16.xml" />
-    <Xml Include="config\ui\hide\map_spots_rostok.xml" />
-    <Xml Include="config\ui\hide\news_templates.xml" />
-    <Xml Include="config\ui\hide\pda_character_new.xml" />
-    <Xml Include="config\ui\hide\pda_contacts.xml" />
-    <Xml Include="config\ui\hide\pda_dialog.xml" />
-    <Xml Include="config\ui\hide\pda_new.xml" />
-    <Xml Include="config\ui\hide\sleep_dialog.xml" />
-    <Xml Include="config\ui\hide\sleep_dialog_new.xml" />
-    <Xml Include="config\ui\hide\spawn.xml" />
-    <Xml Include="config\ui\hide\spawn_16.xml" />
-    <Xml Include="config\ui\hide\statisticwnd.xml" />
-    <Xml Include="config\ui\hide\stats.xml" />
-    <Xml Include="config\ui\hide\stats_16.xml" />
-    <Xml Include="config\ui\hide\trade_new.xml" />
-    <Xml Include="config\ui\hide\ui_game_over.xml" />
-    <Xml Include="config\ui\hide\ui_mapinfo.xml" />
-    <Xml Include="config\ui\hide\ui_numpad_wnd.xml" />
-    <Xml Include="config\ui\hide\ui_videoplayer.xml" />
-    <Xml Include="config\ui\hide\video_templ.xml" />
     <Xml Include="config\ui\hint_item.xml" />
+    <Xml Include="config\ui\ingame_msglog_mp.xml" />
+    <Xml Include="config\ui\ingame_msglog_sp.xml" />
+    <Xml Include="config\ui\inventory.xml" />
+    <Xml Include="config\ui\inventorymp.xml" />
+    <Xml Include="config\ui\inventorymp_new.xml" />
+    <Xml Include="config\ui\inventorymp_new2.xml" />
+    <Xml Include="config\ui\inventory_character.xml" />
     <Xml Include="config\ui\inventory_item.xml" />
     <Xml Include="config\ui\inventory_item_16.xml" />
     <Xml Include="config\ui\inventory_new.xml" />
     <Xml Include="config\ui\inventory_new_16.xml" />
+    <Xml Include="config\ui\jobs.xml" />
+    <Xml Include="config\ui\jobs_new.xml" />
     <Xml Include="config\ui\job_item.xml" />
     <Xml Include="config\ui\maingame.xml" />
     <Xml Include="config\ui\maingame_16.xml" />
+    <Xml Include="config\ui\maingame_character.xml" />
+    <Xml Include="config\ui\maingame_new.xml" />
     <Xml Include="config\ui\maingame_pda_msg.xml" />
+    <Xml Include="config\ui\map.xml" />
+    <Xml Include="config\ui\map_character.xml" />
+    <Xml Include="config\ui\map_desc.xml" />
+    <Xml Include="config\ui\map_desc_16.xml" />
     <Xml Include="config\ui\map_spots.xml" />
     <Xml Include="config\ui\map_spots_agroprom.xml" />
     <Xml Include="config\ui\map_spots_bar.xml" />
@@ -1921,22 +1991,39 @@
     <Xml Include="config\ui\map_spots_mp.xml" />
     <Xml Include="config\ui\map_spots_radar.xml" />
     <Xml Include="config\ui\map_spots_relations.xml" />
+    <Xml Include="config\ui\map_spots_rostok.xml" />
     <Xml Include="config\ui\messages_window.xml" />
     <Xml Include="config\ui\message_box.xml" />
     <Xml Include="config\ui\motion_icon.xml" />
     <Xml Include="config\ui\motion_icon_16.xml" />
+    <Xml Include="config\ui\mp_buy_menu.xml" />
+    <Xml Include="config\ui\mp_buy_menu_buttons.xml" />
     <Xml Include="config\ui\news.xml" />
+    <Xml Include="config\ui\news_templates.xml" />
     <Xml Include="config\ui\pda.xml" />
     <Xml Include="config\ui\pda_character.xml" />
+    <Xml Include="config\ui\pda_character_new.xml" />
+    <Xml Include="config\ui\pda_contacts.xml" />
     <Xml Include="config\ui\pda_contacts_new.xml" />
+    <Xml Include="config\ui\pda_dialog.xml" />
     <Xml Include="config\ui\pda_dialog_character.xml" />
     <Xml Include="config\ui\pda_dialog_character_16.xml" />
     <Xml Include="config\ui\pda_events.xml" />
     <Xml Include="config\ui\pda_map.xml" />
+    <Xml Include="config\ui\pda_new.xml" />
     <Xml Include="config\ui\scroll_bar.xml" />
+    <Xml Include="config\ui\skin_selector.xml" />
+    <Xml Include="config\ui\skin_selector_16.xml" />
+    <Xml Include="config\ui\sleep_dialog.xml" />
+    <Xml Include="config\ui\sleep_dialog_new.xml" />
+    <Xml Include="config\ui\spawn.xml" />
+    <Xml Include="config\ui\spawn_16.xml" />
     <Xml Include="config\ui\stalkers_ranking.xml" />
     <Xml Include="config\ui\stalkers_ranking_character.xml" />
     <Xml Include="config\ui\stalkers_ranking_character_16.xml" />
+    <Xml Include="config\ui\statisticwnd.xml" />
+    <Xml Include="config\ui\stats.xml" />
+    <Xml Include="config\ui\stats_16.xml" />
     <Xml Include="config\ui\talk.xml" />
     <Xml Include="config\ui\talk_16.xml" />
     <Xml Include="config\ui\trade.xml" />
@@ -1945,11 +2032,20 @@
     <Xml Include="config\ui\trade_character_16.xml" />
     <Xml Include="config\ui\trade_item.xml" />
     <Xml Include="config\ui\trade_item_16.xml" />
+    <Xml Include="config\ui\trade_new.xml" />
     <Xml Include="config\ui\ui_asus_intro.xml" />
     <Xml Include="config\ui\ui_buy_menu.xml" />
+    <Xml Include="config\ui\ui_cheat_wnd.xml" />
     <Xml Include="config\ui\ui_common.xml" />
     <Xml Include="config\ui\ui_credits.xml" />
     <Xml Include="config\ui\ui_custom_msgs.xml" />
+    <Xml Include="config\ui\ui_game_ahunt.xml" />
+    <Xml Include="config\ui\ui_game_ahunt_16.xml" />
+    <Xml Include="config\ui\ui_game_dm.xml" />
+    <Xml Include="config\ui\ui_game_dm_16.xml" />
+    <Xml Include="config\ui\ui_game_over.xml" />
+    <Xml Include="config\ui\ui_game_tdm.xml" />
+    <Xml Include="config\ui\ui_game_tdm_16.xml" />
     <Xml Include="config\ui\ui_hud.xml" />
     <Xml Include="config\ui\ui_iconstotal.xml" />
     <Xml Include="config\ui\ui_icons_map.xml" />
@@ -1959,18 +2055,35 @@
     <Xml Include="config\ui\ui_inventory2.xml" />
     <Xml Include="config\ui\ui_keybinding.xml" />
     <Xml Include="config\ui\ui_mainmenu.xml" />
+    <Xml Include="config\ui\ui_mapinfo.xml" />
     <Xml Include="config\ui\ui_map_description.xml" />
     <Xml Include="config\ui\ui_mm_load_dlg.xml" />
     <Xml Include="config\ui\ui_mm_main.xml" />
+    <Xml Include="config\ui\ui_mm_mp.xml" />
+    <Xml Include="config\ui\ui_mm_mp_gs_ext.xml" />
+    <Xml Include="config\ui\ui_mm_mp_gs_ext_16.xml" />
+    <Xml Include="config\ui\ui_mm_mp_tabclient.xml" />
+    <Xml Include="config\ui\ui_mm_mp_taboptions.xml" />
+    <Xml Include="config\ui\ui_mm_mp_tabserver.xml" />
     <Xml Include="config\ui\ui_mm_opt.xml" />
     <Xml Include="config\ui\ui_mm_save_dlg.xml" />
+    <Xml Include="config\ui\ui_models_multiplayer.xml" />
     <Xml Include="config\ui\ui_movies.xml" />
+    <Xml Include="config\ui\ui_mp_icon_rank.xml" />
+    <Xml Include="config\ui\ui_mp_main.xml" />
     <Xml Include="config\ui\ui_npc_monster.xml" />
     <Xml Include="config\ui\ui_npc_unique.xml" />
     <Xml Include="config\ui\ui_numpad.xml" />
+    <Xml Include="config\ui\ui_numpad_wnd.xml" />
     <Xml Include="config\ui\ui_old_textures.xml" />
     <Xml Include="config\ui\ui_pda.xml" />
     <Xml Include="config\ui\ui_statistics.xml" />
+    <Xml Include="config\ui\ui_team_logo.xml" />
+    <Xml Include="config\ui\ui_team_logo_small.xml" />
+    <Xml Include="config\ui\ui_videoplayer.xml" />
+    <Xml Include="config\ui\video_templ.xml" />
+    <Xml Include="config\ui\voting_category.xml" />
+    <Xml Include="config\ui\voting_category_16.xml" />
     <Xml Include="config\ui\zone_map.xml" />
     <Xml Include="config\ui\zone_map_16.xml" />
   </ItemGroup>
@@ -2002,6 +2115,104 @@
     <ClInclude Include="shaders\shared\watermove.h" />
     <ClInclude Include="shaders\shared\wmark.h" />
   </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{15AF67F4-A374-405B-A79D-30B55014C81C}</ProjectGuid>
+    <SccProjectName />
+    <SccAuxPath />
+    <SccLocalPath />
+    <SccProvider />
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>
+    </WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>
+    </ConfigurationType>
+    <PlatformToolset>
+    </PlatformToolset>
+    <CharacterSet>
+    </CharacterSet>
+    <UseOfMfc />
+    <CLRSupport />
+    <WholeProgramOptimization />
+    <WindowsAppContainer />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>
+    </ConfigurationType>
+    <PlatformToolset>
+    </PlatformToolset>
+    <CharacterSet>
+    </CharacterSet>
+    <UseOfMfc />
+    <CLRSupport />
+    <WholeProgramOptimization />
+    <WindowsAppContainer />
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>12.0.30501.0</_ProjectFileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>
+    </OutDir>
+    <IntDir>
+    </IntDir>
+    <ExtensionsToDeleteOnClean>
+    </ExtensionsToDeleteOnClean>
+    <TargetName />
+    <EnableManagedIncrementalBuild />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>
+    </OutDir>
+    <IntDir>
+    </IntDir>
+    <LinkIncremental>false</LinkIncremental>
+    <TargetName />
+    <TargetExt />
+    <ExtensionsToDeleteOnClean />
+    <EnableManagedIncrementalBuild />
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <LanguageStandard />
+    </ClCompile>
+    <Link>
+      <OutputFile>$(OutDir)xrstalker.exe</OutputFile>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+    <BuildLog>
+      <Path />
+    </BuildLog>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <BuildLog>
+      <Path />
+    </BuildLog>
+    <ClCompile>
+      <LanguageStandard />
+    </ClCompile>
+  </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

@@ -1,0 +1,460 @@
+------------- Спавн динамических рандомных аномалий для OGSM 2.x --------------
+
+-------------------- Copyright 2007-2008 DEXXX & Offbar -----------------------
+
+
+local list_obj_id = {}
+local list_noart_anom = {}
+local list_orig_anom = {}
+local console = get_console()
+local check_game = 0
+
+loc={
+l01_escape = 1,
+l02_garbage = 2,
+l03_agroprom = 3,
+l04_darkvalley = 4,
+l06_rostok = 5,
+l07_military = 6,
+l10_radar = 7,
+l11_pripyat = 8,
+
+l03u_agr_underground = 0,
+l04u_labx18 = 0,
+l05_bar = 0,
+l08_yantar = 0,
+l08u_brainlab = 0,
+l10u_bunker = 0,
+l12_stancia = 0,
+l12u_sarcofag = 0,
+l12u_control_monolith = 0,
+l12_stancia_2 = 0
+}
+
+
+-- Проверяем, попадает ли аномалия в "bad-сектор"
+function bad_sector(p_vector)
+
+local k
+local bad_list = {} --формируется по принципу x1>x2, y2>y1
+
+-- Кордон
+if level.name()=="l01_escape" then
+bad_list.x1 = { -238, -164, -107, -160, 145, -65, 136,  35, 373, -146 }
+bad_list.x2 = { -259, -230, -150, -180,  90, -70, 125,  20, 346, -164 }
+bad_list.y1 = { -138, -173, -400, -360, -50, 115, 305, 670, -49, -341 }
+bad_list.y2 = { -125, -123, -350, -344,  12, 200, 325, 690, -15, -235 }
+end
+
+-- Свалка
+if level.name() == "l02_garbage" then
+bad_list.x1 = {   32,  -41,  68,   38, -230, 306,  -52 }
+bad_list.x2 = {   29, -146,  15,   32, -306, 291,  -72 }
+bad_list.y1 = { -269,   -9, 199, -323,  -32, 132, -224 }
+bad_list.y2 = { -260,   29, 262, -289,  -13, 154, -211 }
+end
+
+-- Темная долина
+if level.name() == "l04_darkvalley" then
+bad_list.x1 = { -140, -119,  -36,  191, 114,  51,  51, -29, -26, 20,   73,   62, }
+bad_list.x2 = { -217, -145,  -53,  106,  87, -12, -33, -73, -32,  8,   41,   50, }
+bad_list.y1 = { -194, -526, -547, -301, -15, -91,  25, -23, -22,  5, -249, -225, }
+bad_list.y2 = { -175, -478, -536, -223,  -1, -16,  50, -18,  25, 17, -233, -179, }
+end
+
+-- Агропром
+if level.name() == "l03_agroprom" then
+bad_list.x1 = {  67, -195, -101, -61, 291 }
+bad_list.x2 = { -53, -202, -200, -80, 265 }
+bad_list.y1 = { -36,   85, -229,   6,   0 }
+bad_list.y2 = {  58,   98, -124,  21,   5 }
+end
+
+-- Дикая территория
+if level.name() == "l06_rostok" then
+bad_list.x1 = {  -85, -226, -235, -218, -113 }
+bad_list.x2 = { -103, -235, -285, -242, -213 }
+bad_list.y1 = {  119,  135,   78,   29, -123 }
+bad_list.y2 = {  151,  165,  112,   64,  -49 }
+end
+
+-- Армейские склады
+if level.name() == "l07_military" then
+bad_list.x1 = { -305, -317, -209, -259, -340, -160,  -83,  96, 113, -218, -117, -43, -14, 77,  -2, -186 }
+bad_list.x2 = { -322, -347, -233, -277, -367, -195, -105,  89,  87, -242, -137, -84, -60,  0, -10, -202 }
+bad_list.y1 = {   55,   37,  190,  234,  373,  350,  207, 308, 160,   39,    7,   8, -34, 10,   0,   35 }
+bad_list.y2 = {   67,   50,  211,  249,  405,  391,  235, 318, 184,   58,   22,  41, -10, 23, 109,   46 }
+end
+
+-- Радар
+if level.name() == "l10_radar" then
+bad_list.x1 = { 149, 390, 664 }
+bad_list.x2 = {  75, 377, 609 }
+bad_list.y1 = { -35, 141, 167 }
+bad_list.y2 = { -20, 162, 200 }
+end
+
+-- Припять
+if level.name() == "l11_pripyat" then
+bad_list.x1 = {   31, 118, 115,  36,  18 }
+bad_list.x2 = {   11,  58,  96,  27, -17 }
+bad_list.y1 = { -296,  -2, 110, 280, 191 }
+bad_list.y2 = { -266,  33, 159, 301, 210 }
+end
+
+
+for k,v in pairs(bad_list.x1) do
+	if (p_vector.x >= bad_list.x2[k] and p_vector.x <= bad_list.x1[k]) and (p_vector.z >= bad_list.y1[k] and p_vector.z <= bad_list.y2[k]) then
+		return true
+	end
+end
+
+return false
+
+end
+
+
+-- Получаем список всех аномалий на уровне
+function get_anom(obj_id)
+list_obj_id[obj_id] = obj_id
+end
+
+
+-- Отключаем ненужные аномалии при загрузке
+function on_game_load()
+
+if check_game == 0 then
+
+if level.name() == "l03u_agr_underground" or
+	level.name() == "l04u_labx18" or
+	level.name() == "l05_bar" or
+	(level.name() == "l06_rostok" and not has_alife_info("bar_rescue_research_done") and not has_alife_info("bar_rescue_research_fail")) or
+	level.name() == "l08_yantar" or
+	level.name() == "l08u_brainlab" or
+	level.name() == "l10u_bunker" or
+	level.name() == "l12_stancia" or 
+	level.name() == "l12u_sarcofag" or
+	level.name() == "l12u_control_monolith" or
+	level.name() == "l12_stancia_2" then
+	return
+end
+
+if list_obj_id then
+	for k,v in pairs(list_obj_id) do
+		local obj = level.object_by_id(list_obj_id[k])
+		if obj and not string.find(obj:name(), "noartf_") and
+				not (string.find(obj:name(),"gar_zone_mincer") and level.name()=="l11_pripyat") and
+				not string.find(obj:name(),"no_gravity") and
+				not string.find(obj:name(),"pri_zone_witches_galantine_0004") and
+				not string.find(obj:name(),"pri_zone_witches_galantine_0005") and
+				not string.find(obj:name(),"pri_zone_witches_galantine_0006") and
+				not string.find(obj:name(),"pri_zone_witches_galantine_0007") and
+				not string.find(obj:name(),"rostok_zone_zharka_static") and
+				not string.find(obj:name(),"rostok_zone_witches_galantine_average") and
+				not string.find(obj:name(),"tutorial") and 
+				not string.find(obj:name(),"esc_zone_mincer_strong") and
+				not string.find(obj:name(),"esc_zone_witches") then
+				obj:disable_anomaly()
+		end
+
+		local mode = get_anomaly_mode(list_obj_id[k])
+		if obj and mode == "anom_off" then
+			obj:disable_anomaly()
+		end
+
+	end
+end
+
+check_game = 1
+
+end
+
+end
+
+
+-- Отключаем все текущие динамические аномалии и вызываем новую порцию
+function add_anom(param)
+local obj_id
+local gv_id
+local name_anom
+
+local list_noart_anom = {}
+local list_orig_anom = {}
+
+for k,v in pairs(list_obj_id) do
+	local ppp = level.object_by_id(list_obj_id[k])
+	if ppp then
+		if string.find(ppp:name(), "noartf_") then table.insert(list_noart_anom, v)
+		else table.insert(list_orig_anom, v) end
+	end
+end
+
+if not param then
+	for k,v in pairs(loc) do
+		if k == level.name() and not (level.name() == "l06_rostok" and not has_alife_info("bar_rescue_research_done") and not has_alife_info("bar_rescue_research_fail")) and not (level.name() == "l05_bar") and not (level.name() == "l08_yantar") then
+			amk.save_variable("an"..loc[level.name()], 1)
+		else
+			amk.del_variable("an"..loc[k])
+		end
+	end
+else
+	if not (level.name() == "l03u_agr_underground" or
+	   level.name() == "l04u_labx18" or
+	   level.name() == "l05_bar" or
+	   (level.name() == "l06_rostok" and not has_alife_info("bar_rescue_research_done") and not has_alife_info("bar_rescue_research_fail")) or
+	   level.name() == "l08_yantar" or
+	   level.name() == "l08u_brainlab" or
+	   level.name() == "l10u_bunker" or
+	   level.name() == "l12_stancia" or 
+	   level.name() == "l12u_sarcofag" or
+	   level.name() == "l12u_control_monolith" or
+	   level.name() == "l12_stancia_2") then
+		amk.save_variable("an"..loc[level.name()], 1)
+	end
+end
+
+if level.name() == "l03u_agr_underground" or
+	level.name() == "l04u_labx18" or
+	level.name() == "l05_bar" or
+	(level.name() == "l06_rostok" and not has_alife_info("bar_rescue_research_done") and not has_alife_info("bar_rescue_research_fail")) or
+	level.name() == "l08_yantar" or
+	level.name() == "l08u_brainlab" or
+	level.name() == "l10u_bunker" or
+	level.name() == "l12_stancia" or 
+	level.name() == "l12u_sarcofag" or
+	level.name() == "l12u_control_monolith" or
+	level.name() == "l12_stancia_2" then
+	return
+end
+
+if list_obj_id and list_noart_anom and list_orig_anom then
+
+  if table.getn(list_noart_anom) <= 500 then
+
+	for k,v in pairs(list_obj_id) do
+		local obj=level.object_by_id(list_obj_id[k])
+		if obj then
+			name_anom=obj:name()
+			lv_id=obj:level_vertex_id()
+			gv_id=obj:game_vertex_id()
+			if string.find(name_anom,"noartf_")~=nil then
+				obj:disable_anomaly()
+				create_anom(alife():object(list_obj_id[k]), math.random(2,4), "anom_off")
+				--level.map_remove_object_spot(list_obj_id[k], "green_location")
+			else
+
+				if not string.find(obj:name(),"rostok_zone_zharka_static") and
+				   not (string.find(obj:name(),"gar_zone_mincer") and level.name()=="l11_pripyat") and
+				   not string.find(obj:name(),"no_gravity") and
+				   not string.find(obj:name(),"pri_zone_witches_galantine_0004") and
+				   not string.find(obj:name(),"pri_zone_witches_galantine_0005") and
+				   not string.find(obj:name(),"pri_zone_witches_galantine_0006") and
+				   not string.find(obj:name(),"pri_zone_witches_galantine_0007") and
+				   not string.find(obj:name(),"rostok_zone_witches_galantine_average") then
+					anom_rand(lv_id, gv_id)
+				end
+			end
+		end
+	end
+
+  else
+	
+	for k,v in pairs(list_noart_anom) do
+		local obj=level.object_by_id(list_noart_anom[k])
+		if obj then
+			obj:disable_anomaly()
+			create_anom(alife():object(list_noart_anom[k]), math.random(2,4), "anom_off")
+			--level.map_remove_object_spot(list_noart_anom[k], "green_location")
+		end
+	end
+
+	for i=0, table.getn(list_orig_anom) do
+		local new_id = math.random(table.getn(list_noart_anom))
+		local obj = level.object_by_id(list_noart_anom[new_id])
+		if obj then
+			obj:enable_anomaly()
+			create_anom(alife():object(list_noart_anom[new_id]), math.random(2,4), "anom_on")
+			--level.map_add_object_spot(list_noart_anom[new_id], "green_location", obj:name())
+		end
+	end
+
+  end
+
+end
+
+end
+
+
+-- Рандомный выбор переменных для спавна
+function anom_rand(lv_id, gv_id)
+
+local lv_new
+local pos_new = vector()
+
+local level_vertexes={
+l01_escape = 595580,
+l02_garbage = 384039,
+l03_agroprom = 438379,
+l04_darkvalley = 392517,
+l06_rostok = 69283,
+l07_military = 915663,
+l10_radar = 796328,
+l11_pripyat = 295965
+}
+
+if math.random(0,1)>0.5 then lv_new = lv_id + math.random(1000,5000) 
+else lv_new = lv_id - math.random(1000,5000) end
+if lv_new < 1 or lv_new > level_vertexes[level.name()] then lv_new = math.random(1000,5000) end
+
+
+pos_new = level.vertex_position(lv_new)
+
+if not bad_sector(pos_new) then
+
+	local anom_types = {"noartf_mosquito_bald_weak", "noartf_mosquito_bald_average", 
+				  "noartf_gravi_zone_weak", "noartf_gravi_zone_average", 
+				  "noartf_witches_galantine_weak", "noartf_witches_galantine_average", 
+				  "noartf_zharka_static_weak", "noartf_zharka_static_average",
+				  "noartf_mincer_weak", "noartf_mincer_average"}
+
+	local name_new_anom = anom_types[math.random(10)]
+	local rad_new_anom = math.random(2,3)
+
+	local obj = alife():create(name_new_anom, pos_new, lv_new, gv_id)
+	create_anom(obj, rad_new_anom, "anom_on")
+	--level.map_add_object_spot(obj.id, "green_location", obj:name())
+else
+	
+	anom_rand(lv_id, gv_id)
+
+end
+
+end
+
+
+-- Получаем custom_data из нэт-пакета о вкл / выкл аномалии
+function get_anomaly_mode(p_obj_id)
+local obj = alife():object(p_obj_id)
+local packet = net_packet()
+obj:STATE_Write(packet)
+local game_vertex_id = packet:r_u16()
+local cse_alife_object__unk1_f32 = packet:r_float()
+local cse_alife_object__unk2_u32 = packet:r_s32()
+local level_vertex_id = packet:r_s32()
+local object_flags = packet:r_s32()
+local custom_data = packet:r_stringZ()
+return custom_data
+end
+
+
+-- Обновляем менеджер аномалий
+function anom_update()
+if amk.load_variable("an"..loc[level.name()],0) == 0 and
+   has_alife_info("first_blowout") and 
+   db.Flag2 == 0 then 
+	add_anom("param")
+end
+if amk.load_variable("an"..loc[level.name()],0) == 1 then
+	on_game_load()
+end
+end
+
+
+-- Спавним и записываем новые свойства аномалий через нет-пакет
+function create_anom(p_obj, rad_anom, mode)
+
+	local packet = net_packet()
+	p_obj:STATE_Write(packet)
+
+	local game_vertex_id = packet:r_u16()
+	local cse_alife_object__unk1_f32 = packet:r_float()
+	local cse_alife_object__unk2_u32 = packet:r_s32()
+	local level_vertex_id = packet:r_s32()
+	local object_flags = packet:r_s32()
+	local custom_data = packet:r_stringZ()
+	local story_id = packet:r_s32()
+	local cse_alife_object__unk3_u32 = packet:r_s32()
+
+	local shape_count = packet:r_u8()
+	for i=1,shape_count do
+		local shape_type = packet:r_u8()
+		if shape_type == 0 then
+			local center = packet:r_vec3()
+			local radius = packet:r_float()
+		else
+			local box = packet:r_matrix()
+		end
+	end
+
+	local restrictor_type = packet:r_u8()
+
+	local cse_alife_custom_zone__unk1_f32 = packet:r_float()
+	local cse_alife_custom_zone__unk2_u32 = packet:r_s32()
+	local on_off_mode_enabled_time = packet:r_s32()
+	local on_off_mode_disabled_time = packet:r_s32()
+	local on_off_mode_shift_time = packet:r_s32()
+
+	local offline_interactive_radius = packet:r_float()
+	local artefact_spawn_places_count = packet:r_u16()
+	local cse_alife_anomalous_zone__unk1_u32 = packet:r_s32()
+
+	local last_spawn_time_present = packet:r_u8()
+
+	if packet:r_elapsed() ~= 0 then abort("left=%d", packet:r_elapsed()) end
+
+	packet:w_u16(game_vertex_id)
+	packet:w_float(cse_alife_object__unk1_f32)
+	packet:w_s32(cse_alife_object__unk2_u32)
+	packet:w_s32(level_vertex_id)
+	packet:w_s32(object_flags)
+	if mode~=nil then custom_data = mode end
+	packet:w_stringZ(custom_data)
+	packet:w_s32(story_id)
+	packet:w_s32(cse_alife_object__unk3_u32)
+
+	packet:w_u8(1)
+	packet:w_u8(0)
+	local sphere_center = vector()
+	sphere_center:set(0, 0, 0)
+	packet:w_vec3(sphere_center)
+	radius = rad_anom
+	packet:w_float(radius)
+
+	packet:w_u8(restrictor_type)
+
+	packet:w_float(cse_alife_custom_zone__unk1_f32)
+	cse_alife_custom_zone__unk2_u32 = bit_not(0)
+	packet:w_s32(cse_alife_custom_zone__unk2_u32)
+	packet:w_s32(on_off_mode_enabled_time)
+	packet:w_s32(on_off_mode_disabled_time)
+	packet:w_s32(on_off_mode_shift_time)
+
+	packet:w_float(offline_interactive_radius)
+	packet:w_u16(artefact_spawn_places_count)
+	packet:w_s32(cse_alife_anomalous_zone__unk1_u32)
+
+	packet:w_u8(last_spawn_time_present)
+
+	p_obj:STATE_Read(packet, packet:w_tell()-packet:r_tell())
+	return p_obj
+end
+
+------------- Спавн динамических рандомных аномалий для OGSM 2.x --------------
+
+-------------------- Copyright 2007-2008 DEXXX & Offbar -----------------------
+
+--[[
+
+If you're going to use the whole of this script or its parts in your own creative 
+developments for the S.T.A.L.K.E.R. game, please don't become such a goddamn 
+motherfucker like the notorious author of the ABC Mod - Carbrobro. Leave the 
+copyrights, note the real author(s) and don't claim others' ideas and their 
+realization to be your own ones. It's just simple Modmakers' Ethics. Thank you!
+
+Если вы собираетесь использовать данный скрипт целиком или частично в своих 
+разработках по игре S.T.A.L.K.E.R., пожалуйста не опускайтесь до уровня печально 
+известного автора ABC мода - Carbrobro. Не удаляйте копирайты, указывайте настоящего 
+автора(ов) и не выдавайте чужие идеи и их реализацию за свои. Ведь это элементарная 
+этика модостроителей! Спасибо за понимание.
+
+]]--

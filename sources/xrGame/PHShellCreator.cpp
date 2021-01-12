@@ -8,17 +8,27 @@
 
 void CPHShellSimpleCreator::CreatePhysicsShell()
 {
-	CPHShellHolder* owner = smart_cast<CPHShellHolder*>(this); VERIFY(owner);
-	if (!owner->Visual()) return;
+	CPHShellHolder* owner = smart_cast<CPHShellHolder*>(this);
+	VERIFY(owner);
+	if (!owner->Visual( ))
+	{
+		return;
+	}
 	
 	CKinematics* pKinematics		= smart_cast<CKinematics*>(owner->Visual());
 	VERIFY							(pKinematics);
 
-	if(owner->PPhysicsShell())		return;
+	if (owner->PPhysicsShell( ))
+	{
+		return;
+	}
+
 	owner->PPhysicsShell()			= P_create_Shell();
+
 #ifdef DEBUG
 	owner->PPhysicsShell()->dbg_obj=owner;
-#endif
+#endif // def DEBUG
+
 	owner->m_pPhysicsShell->build_FromKinematics	(pKinematics,0);
 
 	owner->PPhysicsShell()->set_PhysicsRefObject	(owner);

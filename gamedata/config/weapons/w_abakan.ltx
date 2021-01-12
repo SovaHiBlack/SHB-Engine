@@ -1,13 +1,16 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 [wpn_abakan]:identity_immunities
+GroupControlSection		= spawn_group
+discovery_dependency	= 
 $spawn              	= "weapons\abakan"	; name and section in level editor
 $npc					= on				
+$prefetch 				= 8
 scheduled				= off               ;[] option for ALife Simulator
 cform               	= skeleton
 class               	= WP_AK74			; class of the weapon that corresponding to CPP class
 min_radius          	= 30				; [] for AI
 max_radius          	= 100				; [] for AI
-description				= descr_wpn-abakan
+description				= enc_weapons1_wpn-abakan
 	
 ef_main_weapon_type		= 2
 ef_weapon_type			= 6
@@ -17,8 +20,11 @@ holder_range_modifier	= 1.0		       ; во сколько раз увеличивается eye_range
 holder_fov_modifier		= 0.7              ; во сколько раз увеличивается eye_fov
 ;-----------------------------------------------------------------------------------
 
-cost					= 2500				; the price of the item
 
+cost					= 2500				; the price of the item
+weapon_class			= assault_rifle		; the type of the box that will be used in buy-menu in multiplayer mode	
+	
+ammo_limit				= 210				; obsolete
 ammo_elapsed			= 30				; obsolete
 	
 ammo_mag_size			= 30				; clip (magazine) size
@@ -76,9 +82,10 @@ cam_max_angle_horz			= 15.0		;(degree) maximum shot horizontal degree
 cam_step_angle_horz			= 0.9		;(degree) size of step camera moved in horizontal position while shooting
 
 
-fire_dispersion_condition_factor 	= 5	    	;увеличение дисперсии в процентах при максимальном износе 
-misfire_probability 			= 0.0050	;вероятность осечки при максимальном износе 
-condition_shot_dec 			= 0.0001	;увеличение износа при каждом выстреле
+fire_dispersion_condition_factor 	= 3	    	;увеличение дисперсии в процентах при максимальном износе 
+misfire_probability 			= 0.001	;вероятность осечки при максимальном износе 
+misfire_condition_k			= 0.05
+condition_shot_dec 			= 0.0004	;увеличение износа при каждом выстреле
 
 fire_point             		=  0,0.225,0.687			; position (3rd person view) for particles of fire 
 fire_point2            		=  0,0.148,0.558			; position (3rd person view) for particles of fire (when shooting with secondary fire)
@@ -137,8 +144,8 @@ ph_mass						= 5							; physic mass (kg)
 
 ;addons
 scope_status				= 2							; 0 - no addon
-silencer_status				= 0;2							; 1 - permanent
-grenade_launcher_status		= 0;2							; 2 - attachable
+silencer_status				= 2							; 1 - permanent
+grenade_launcher_status		= 2							; 2 - attachable
 
 zoom_enabled				= true						; (on,off)zoom mode (right mouse button)
 scope_zoom_factor	    	= 50						; fov for zoom mode
@@ -170,7 +177,7 @@ snd_switch					= weapons\groza_switch, 1.0, 0.5
 ;silencer_flame_particles 	= weapons\generic_weapon01
 silencer_smoke_particles 	= weapons\generic_shoot_00
 
-snd_silncer_shot			= weapons\w_ak74_shot1 
+snd_silncer_shot			= weapons\silencer4a, 0.6 
 
 silencer_light_color		= 0.6,0.5,0.3
 silencer_light_range		= 0.01

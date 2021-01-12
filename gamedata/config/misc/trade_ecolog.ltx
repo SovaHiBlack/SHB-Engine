@@ -5,6 +5,36 @@ buy_supplies = {+yan_kill_brain_done} supplies_after_brain, supplies_start
 
 
 [ecolog_generic_buy]
+;Броники
+novice_outfit			= 0.3,	0.1
+bandit_outfit			= 0.3,	0.1
+killer_outfit			= 0.3,	0.1
+monolit_outfit			= 0.3,	0.1
+soldier_outfit			= 0.3,	0.1
+specops_outfit			= 0.3,	0.1
+military_outfit			= 0.3,	0.1
+stalker_outfit			= 0.3,	0.1
+scientific_outfit		= 0.3,	0.1
+exo_outfit				= 0.3,	0.1
+svoboda_light_outfit	= 0.3,	0.1
+svoboda_heavy_outfit	= 0.3,	0.1
+dolg_outfit				= 0.3,	0.1
+dolg_scientific_outfit	= 0.3,	0.1
+ecolog_outfit			= 0.3,	0.1
+protection_outfit		= 0.3,	0.1
+killer_blue_exoskeleton = 0.3,	0.1
+dolg_black_exoskeleton = 0.3,	0.1
+svoboda_exoskeleton = 0.3,	0.1
+monolit_exoskeleton = 0.3,	0.1
+broken_exoskeleton = 0.3, 0.05
+neytral_exo_antigas_outfit = 0.3, 0.1
+bandit_veteran_outfit = 0.3,	0.1
+bandit_master_outfit = 0.3,	0.1
+military_stalker_commander_outfit = 0.3,	0.1
+freedom_scientific_outfit = 0.3,	0.1
+merc_scientific_outfit = 0.3,	0.1
+monolit_scientific_outfit = 0.3,	0.1
+
 ;Артефакты
 af_medusa				= 1.5,	0.5
 af_cristall_flower		= 1.5,	0.5
@@ -92,6 +122,8 @@ wpn_rg-6				= 0.3,	0.1
 wpn_rpg7				= 0.3,	0.1
 wpn_g36					= 0.3,	0.1
 wpn_fn2000				= 0.3,	0.1
+wpn_svu_m1				= 0.3,	0.1
+
 
 ;ADDONS
 wpn_addon_scope					= 0.3,	0.1
@@ -100,23 +132,6 @@ wpn_addon_silencer				= 0.3,	0.1
 wpn_addon_grenade_launcher		= 0.3,	0.1
 wpn_addon_grenade_launcher_m203 = 0.3,	0.1
 
-;Броники
-novice_outfit			= 1,	0.3
-bandit_outfit			= 1,	0.3
-killer_outfit			= 1,	0.3
-monolit_outfit			= 1,	0.3
-soldier_outfit			= 1,	0.3
-specops_outfit			= 1,	0.3
-military_outfit			= 1,	0.3
-stalker_outfit			= 1,	0.3
-scientific_outfit		= 1,	0.3
-exo_outfit				= 1,	0.3
-svoboda_light_outfit	= 1,	0.3
-svoboda_heavy_outfit	= 1,	0.3
-dolg_outfit				= 1,	0.3
-dolg_scientific_outfit	= 1,	0.3
-ecolog_outfit			= 1,	0.3
-protection_outfit		= 1,	0.3
 
 ;Медикаменты
 bandage					= 1,	0.5
@@ -143,14 +158,17 @@ vodka					= 0.3,	0.1
 energy_drink			= 0.3,	0.1
 
 ;Предметы
-device_torch			;NO TRADE
-detector_simple			;NO TRADE
-detector_advances		;NO TRADE
-detector_elite			;NO TRADE
-device_pda				;NO TRADE
-hand_radio				;NO TRADE
-guitar_a				;NO TRADE
-harmonica_a				;NO TRADE
+device_torch		= 1,	0.5
+detector_simple		= 1,	0.5
+detector_advances	= 1,	0.5
+detector_elite		= 1,	0.5
+device_pda		= 1,	0.5
+hand_radio		= 1,	0.5
+guitar_a			= 1,	0.5
+harmonica_a		= 1,	0.5
+explosive_tank	= 1, 0.5
+hand_radio_f		= 1,	0.5
+harmonica_f		= 1,	0.5
 
 ;Квестовые предметы
 gunslinger_flash		;NO TRADE
@@ -219,6 +237,12 @@ wpn_g36_arena			;NO TRADE
 
 
 [supplies_start]
+
+merc_scientific_outfit = 1, 1
+monolit_scientific_outfit = 1, 1
+military_outfit = 1, 1
+
+
 ammo_9x19_fmj			= 15,	0.5
 ammo_12x70_buck			= 10,	0.5
 ammo_5.45x39_fmj		= 15,	0.5
@@ -246,8 +270,19 @@ conserva				= 10,	0.5
 vodka					= 10,	0.3
 energy_drink			= 10,	0.3
 
+;Предметы
+detector_simple		= 1,	0.7
+detector_advances	= 1,	0.6
+detector_elite		= 1,	1
 
 [supplies_after_brain]
+
+merc_scientific_outfit = 1, 1
+monolit_scientific_outfit = 1, 1
+military_outfit = 1, 1
+military_stalker_commander_outfit = 1, 1
+monolit_exoskeleton = 1, 1
+
 ;Аммуниция
 ammo_9x19_fmj			= 15,	0.5
 ammo_12x70_buck			= 10,	0.5
@@ -281,8 +316,17 @@ conserva				= 10,	0.5
 vodka					= 10,	0.3
 energy_drink			= 10,	0.3
 
+;Предметы
+detector_simple		= 1,	0.5
+detector_advances	= 1,	0.6
+detector_elite		= 1,	1
 
 [ecolog_start_sell]
+
+merc_scientific_outfit = 1, 1
+monolit_scientific_outfit = 1, 1
+military_outfit = 1, 1
+
 ;Артефакты
 af_medusa				;NO TRADE
 af_cristall_flower		;NO TRADE
@@ -311,6 +355,7 @@ af_dummy_battery		;NO TRADE
 af_dummy_dummy			;NO TRADE
 af_dummy_spring			;NO TRADE
 af_fuzz_kolobok			;NO TRADE
+af_zombie_hand			;NO TRADE
 
 ;Аммуниция
 ammo_9x18_fmj			;NO TRADE
@@ -385,7 +430,6 @@ killer_outfit			;NO TRADE
 monolit_outfit			;NO TRADE
 soldier_outfit			;NO TRADE
 specops_outfit			;NO TRADE
-military_outfit			;NO TRADE
 stalker_outfit			;NO TRADE
 scientific_outfit		;NO TRADE
 exo_outfit				;NO TRADE
@@ -421,14 +465,14 @@ vodka					= 1,	3
 energy_drink			= 1,	3
 
 ;Предметы
-device_torch			;NO TRADE
-detector_simple			;NO TRADE
-detector_advances		;NO TRADE
-detector_elite			;NO TRADE
-device_pda				;NO TRADE
-hand_radio				;NO TRADE
-guitar_a				;NO TRADE
-harmonica_a				;NO TRADE
+device_torch		;NO TRADE
+detector_simple		= 1, 3
+detector_advances	= 1, 3
+detector_elite		= 3, 5
+device_pda		;NO TRADE
+hand_radio		;NO TRADE
+guitar_a			;NO TRADE
+harmonica_a		;NO TRADE
 
 ;Квестовые предметы
 gunslinger_flash		;NO TRADE
@@ -497,6 +541,13 @@ wpn_g36_arena			;NO TRADE
 
 
 [ecolog_after_brain_sell]
+
+merc_scientific_outfit = 1, 1
+monolit_scientific_outfit = 1, 1
+military_outfit = 1, 1
+military_stalker_commander_outfit = 1, 1
+monolit_exoskeleton = 1, 1
+
 ;Артефакты
 af_medusa				;NO TRADE
 af_cristall_flower		;NO TRADE
@@ -525,6 +576,7 @@ af_dummy_battery		;NO TRADE
 af_dummy_dummy			;NO TRADE
 af_dummy_spring			;NO TRADE
 af_fuzz_kolobok			;NO TRADE
+af_zombie_hand			;NO TRADE
 
 ;Аммуниция
 ammo_9x18_fmj			;NO TRADE
@@ -599,7 +651,6 @@ killer_outfit			;NO TRADE
 monolit_outfit			;NO TRADE
 soldier_outfit			;NO TRADE
 specops_outfit			;NO TRADE
-military_outfit			;NO TRADE
 stalker_outfit			;NO TRADE
 scientific_outfit		= 1,	2
 exo_outfit				;NO TRADE
@@ -608,7 +659,7 @@ svoboda_heavy_outfit	;NO TRADE
 dolg_outfit				;NO TRADE
 dolg_scientific_outfit	;NO TRADE
 ecolog_outfit			= 1,	2
-protection_outfit		= 3, 5
+protection_outfit		= 1, 3
 
 ;Медикаменты
 bandage					= 1,	2
@@ -635,14 +686,14 @@ vodka					= 1,	2
 energy_drink			= 1,	2
 
 ;Предметы
-device_torch			;NO TRADE
-detector_simple			;NO TRADE
-detector_advances		;NO TRADE
-detector_elite			;NO TRADE
-device_pda				;NO TRADE
-hand_radio				;NO TRADE
-guitar_a				;NO TRADE
-harmonica_a				;NO TRADE
+device_torch		;NO TRADE
+detector_simple		= 1,       3
+detector_advances	= 1, 3
+detector_elite		= 1, 3
+device_pda		;NO TRADE
+hand_radio		;NO TRADE
+guitar_a			;NO TRADE
+harmonica_a		;NO TRADE
 
 ;Квестовые предметы
 gunslinger_flash		;NO TRADE
@@ -708,3 +759,12 @@ wpn_val_arena			;NO TRADE
 wpn_groza_arena			;NO TRADE
 wpn_fn2000_arena		;NO TRADE
 wpn_g36_arena			;NO TRADE
+
+;xrs_medic
+yad					;NO TRADE
+
+;xrs_grenade
+grenade_f1_test			;NO TRADE
+grenade_rgd5_test			;NO TRADE
+grenade_f1_fake			;NO TRADE
+grenade_rgd5_fake			;NO TRADE

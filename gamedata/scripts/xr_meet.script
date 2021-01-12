@@ -15,6 +15,8 @@ end
 function evaluator_contact:evaluate()
 	if self.a.meet_set ~= true then return false end
 	
+	if xrs_armor and xrs_armor.pickupers[self.object:id()]==true then return false end
+
 	if db.actor then
 		if not db.actor:alive() then
 			return false
@@ -39,6 +41,32 @@ function evaluator_contact:evaluate()
 	end
 end
 
+
+-- Таблица запрещения попугаев
+local arastop={}
+
+-- Я попугай, слющай нехорошо, да?
+function am_i_ara(npc, sound)
+--	mylog("npc " .. tostring(npc:id()) .. " sound " .. tostring(sound))
+	if sound==nil then
+		return false
+	end
+	if arastop[npc:id()]==nil or 
+			arastop[npc:id()][sound]==nil or 
+			arastop[npc:id()][sound]<time_global() 
+			then
+		if arastop[npc:id()]==nil then
+			arastop[npc:id()]={}
+		end
+		arastop[npc:id()][sound]=time_global()+300000
+--		mylog("i am not ara")
+		return false
+	else
+--		mylog("i am ara")
+		return true
+	end
+end
+
 ----------------------------------------------------------------------------------------------------------------------
 --Actions
 ----------------------------------------------------------------------------------------------------------------------
@@ -59,7 +87,9 @@ function action_meet_wait:initialize()
 
 	-- Здороваемся.
 	if self.a.init_meet ~= "" then
-		xr_sound.set_sound_play(self.object, self.a.init_meet)
+		if not am_i_ara(self.a.meet_manager.npc, self.a.init_meet) then
+			xr_sound.set_sound_play(self.object, self.a.init_meet)
+		end
 	end
 end
 function action_meet_wait:execute ()
@@ -98,6 +128,13 @@ function action_meet_wait:execute ()
 				synsound = meet_manager.sound
 			end
 		end
+
+--' эта часть кажется не влияет на попугайность, но на всякий случай оставлю
+		if synsound then
+			if am_i_ara(meet_manager.npc,synsound) then
+				synsound=nil
+			end
+		end
 		
 		if meet_manager.emerg_state == true then
 			state_mgr.set_state(self.object, meet_manager.state, nil, nil, {look_object = victim}, {animation = true}, synsound)
@@ -117,7 +154,11 @@ function action_meet_wait:execute ()
 				if meet_manager.sound == "wait" then
 					idle_timeout = 10000
 				end
-				xr_sound.set_sound(self.object, meet_manager.sound, nil, idle_timeout)
+				if not am_i_ara(meet_manager.npc,meet_manager.sound) then
+					xr_sound.set_sound(self.object, meet_manager.sound, nil, idle_timeout)
+				else
+					xr_sound.set_sound(self.object, nil)
+				end
 			end
 		end
 	else
@@ -129,9 +170,11 @@ function action_meet_wait:execute ()
 	end
 
 	--' Туториал на спрятать оружие
-	if meet_manager.disable_talk_weapon == true and not has_alife_info("tutorial_part_15_hide_weapon") then
+	if meet_manager.disable_talk_weapon == true and 
+       not has_alife_info("encyclopedy_tutorial_hide_weapon") 
+	then
 		game.start_tutorial("part_15_hide_weapon")
-		db.actor:give_info_portion("tutorial_part_15_hide_weapon")
+		db.actor:give_info_portion("encyclopedy_tutorial_hide_weapon")		
 	end
 
 	local tt = db.storage[self.object:id()]
@@ -377,6 +420,13 @@ function add_to_binder(object, char_ini, scheme, section, st)
 	action:add_precondition		(world_property(properties["contact"], 		true))
 	action:add_precondition		(world_property(properties["wounded"], 		false))
 	action:add_precondition		(world_property(properties["abuse"],		false))
+
+	if ogsm_hideout then
+		action:add_precondition(world_property(ogsm_hideout.property_blowout, false))
+		action:add_precondition(world_property(ogsm_hideout.property_hideout_lost, false))
+		action:add_precondition(world_property(ogsm_hideout.property_inhide, false))
+	end
+
 	action:add_effect (world_property(properties["contact"], 			false))
 	manager:add_action (operators["contact"], action)
 

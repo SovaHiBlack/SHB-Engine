@@ -1,7 +1,3 @@
-----------------------------------------------------------------------------------------------------
--- Disable actor's weapon
-----------------------------------------------------------------------------------------------------
-
 local state_nowhere = 0 -- схема только что включилась
 local state_inside = 1 -- актер внутри
 local state_outside = 2 -- актер снаружи
@@ -57,12 +53,12 @@ end
 
 function action_no_weapon:zone_enter()
 	self.state = state_inside
-	bind_stalker.hide_weapon()
+//	bind_stalker.hide_weapon()
 end
 
 function action_no_weapon:zone_leave()
 	self.state = state_outside
-	bind_stalker.restore_weapon()
+//	bind_stalker.restore_weapon()
 end
 
 ---------------------------------------------------------------------------------------------------------------------

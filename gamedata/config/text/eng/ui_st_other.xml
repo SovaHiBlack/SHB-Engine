@@ -108,7 +108,4 @@
 	<string id="ui_st_params">
 		<text>Parameters</text>
 	</string>
-	<string id="ui_st_description">
-		<text>Description</text>
-	</string>
 </string_table>

@@ -1,3 +1,4 @@
+
 	<game_task id="garbage_meet_stalker" prio="482">
 		<title>garbage_meet_stalker</title>
 		<objective>
@@ -18,7 +19,7 @@
 			<infoportion_set_fail>garbage_meetstalker_end</infoportion_set_fail>
 		</objective>
 	</game_task>
-
+	
 	<game_task id="gar_kill_boars" prio="440">
 		<title>gar_kill_boars</title>
 		<objective>
@@ -40,10 +41,10 @@
 			<map_location_type hint="gar_kill_boars_2">green_location</map_location_type>
 			<object_story_id>gar_dolg_blockpost</object_story_id>
 			<infoportion_complete>gar_kill_boars_request</infoportion_complete>
-
+			
 		</objective>
 	</game_task>
-
+	
 	<game_task id="gar_help_dymon" prio="475">
 		<title>gar_help_dymon</title>
 		<objective>
@@ -70,7 +71,7 @@
 			<infoportion_complete>gar_hellcar_dialog_end</infoportion_complete>
 		</objective>
 	</game_task>
-
+	
 	<game_task id="gar_car_graveyard_quest" prio="480">
 		<title>gar_car_graveyard_quest</title>
 		<objective>
@@ -79,7 +80,7 @@
 			<map_location_type hint="gar_hellcar_alive">green_location</map_location_type>
 			<object_story_id>gar_hellcar</object_story_id>
 			<infoportion_complete>gar_hellcar_help</infoportion_complete>
-			<infoportion_fail>gar_hellcar_reject</infoportion_fail>
+    	<infoportion_fail>gar_hellcar_reject</infoportion_fail>
 			<function_fail>garbage_tasks.task_hellcar_fail2</function_fail>
 			<article>help_for_hellcar</article>
 		</objective>
@@ -90,3 +91,5 @@
 			<object_story_id>gar_hellcar</object_story_id>
 		</objective>
 	</game_task>
+	
+	

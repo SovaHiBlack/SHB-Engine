@@ -1,0 +1,354 @@
+---------------------- Квестовые функции для OGSM 2.x -------------------------
+
+------------------------- Copyright 2007-2008 DEXXX ---------------------------
+
+local vdk_cnt = 0
+local blood = 0
+local bl_sound = sound_object([[heart\2]])
+
+
+-- ГГ вступает в "Свободу"
+function set_freedom()
+db.actor:set_character_community("actor_freedom",0,0)
+db.actor:give_info_portion("mil_leader_attach_community")
+end
+
+
+-- ГГ вступает в "Долг"
+function set_dolg()
+db.actor:set_character_community("actor_dolg",0,0)
+end
+
+
+-- ГГ получает доступ в арсенал "Свободы"
+function allow_arsenal()
+db.actor:give_info_portion("mil_leader_attach_community2")
+end
+
+
+-- Функции квеста с рукой зомби
+function has_zombie_hand()
+if db.actor:object("af_zombie_hand") and not has_alife_info("zombie_hand_sold") then return true end
+return false
+end
+function zombie_hand_sold()
+if has_alife_info("zombie_hand_sold") and not has_alife_info("zombie_hand_research") then return true end
+return false
+end
+function sell_zombie_hand(first_speaker, second_speaker)
+dialogs.relocate_item_section(second_speaker, "af_zombie_hand", "out")
+db.actor:give_info_portion("zombie_hand_sold")
+end
+function zombie_hand_research(first_speaker, second_speaker)
+db.actor:give_info_portion("zombie_hand_research")
+dialogs.relocate_item_section(first_speaker, "wpn_svu_m1", "in")
+dialogs.relocate_item_section(first_speaker, "ammo_7.62x54_7h14", "in")
+dialogs.relocate_item_section(first_speaker, "ammo_7.62x54_7h14", "in")
+end
+
+
+-- Проверка, пьян ли актор, если да, то даем защиту от пси
+function check_drunk()
+if db.actor.psy_health < 0.99 then
+	local time = level.get_time_days()*60*24+level.get_time_hours()*60+level.get_time_minutes()
+	local end_time = amk.load_variable("drnk", 0)
+	if time < end_time then
+		db.actor.psy_health = 0.0015
+	else
+		amk.del_variable("drnk")
+	end
+end
+end
+
+-- Проверка наличия 10 бутылок для повара
+function has_ten_vodkas()
+if has_alife_info("povar_vodka_asked") then 
+	vdk_cnt = 0
+	db.actor:iterate_inventory(count_vodka, db.actor)
+	if vdk_cnt >= 10 then
+		return true 
+	else
+		return false
+	end
+else 
+	return false 
+end
+end
+
+-- Подсчет водки
+function count_vodka(npc, item)
+local section = item:section()
+if section == "vodka" then
+	vdk_cnt = vdk_cnt+1
+end
+end
+
+-- Удаление водки
+function del_vodka(npc, item)
+local section = item:section()
+if vdk_cnt > 0 then
+	if section == "vodka" then
+		alife():release(alife():object(item:id()), true)
+		vdk_cnt = vdk_cnt-1
+	end
+else
+	return
+end
+end
+
+-- Обмен с поваром
+function transfer_povar_items(first_speaker, second_speaker)
+vdk_cnt = 10
+db.actor:iterate_inventory(del_vodka, db.actor)
+for i=1,3 do
+	dialogs.relocate_item_section(first_speaker, "ammo_7.62x54_7h14", "in")
+end
+end
+
+
+-- Использование водки
+function use_vodka(pid)
+
+local start_time
+local cur_time
+local end_time
+
+if alife():object(pid)==nil then
+	start_time = level.get_time_days()*60*24+level.get_time_hours()*60+level.get_time_minutes()
+	cur_time = amk.load_variable("drnk", 0)
+	if cur_time ~= 0 then
+		if (cur_time - start_time) > 0 and (cur_time - start_time) < 15 then
+			end_time = cur_time + 5
+		else
+			end_time = cur_time
+		end
+	else
+		end_time = start_time + 5
+	end
+	amk.save_variable("drnk", end_time)
+end
+
+end
+
+-- Использование губной гармошки
+function use_harmonica(pid)
+
+local snd
+local length
+
+if alife():object(pid)==nil then
+	snd = sound_object("harmonica")
+	length = snd:length()
+	if not snd:playing() then
+		snd:play_no_feedback(db.actor,sound_object.s2d, 0, vector():set(0, 0, 0), 1.0)
+	end
+	amk.start_timer("spw",length/1000, "hrm")
+end
+
+end
+
+-- Использование рации
+function use_radio(pid)
+
+local snd
+local i
+local length
+
+if alife():object(pid)==nil then
+	if level.name() == "l03u_agr_underground" or
+	   level.name() == "l04u_labx18" or
+	   level.name() == "l08u_brainlab" or
+	   level.name() == "l10u_bunker" or
+	   level.name() == "l12u_sarcofag" or
+	   level.name() == "l12u_control_monolith" then
+		snd = sound_object("script_replics\\radio\\message\\radio_noise_2")
+		length = snd:length()
+	elseif level.name() == "l10_radar" and has_alife_info("bun_antenna_off") and not has_alife_info("secret_talk") then
+		snd = sound_object("script_replics\\radio\\message\\radio_voice_secret")
+		length = snd:length()
+		amk.start_timer("scr", length/1000)
+	else
+		if math.random()<0.45 then
+			i = math.random(1,12)
+			snd = sound_object("script_replics\\radio\\message\\radio_voice_"..i)
+			length = snd:length()
+		else
+			i = math.random(1,2)
+			snd = sound_object("script_replics\\radio\\message\\radio_noise_"..i)
+			length = snd:length()
+		end
+	end
+	if not snd:playing() then
+		snd:play_no_feedback(db.actor,sound_object.s2d, 0, vector():set(0, 0, 0), 1.0)
+	end
+	amk.start_timer("spw",length/1000, "rad")
+end
+
+end
+
+-- Функции вызываются на дроп предмета
+function check_use_vodka(p_obj)
+if p_obj and p_obj:section() == "vodka" then
+	amk.start_timer("vdk", 0.1, p_obj:id())
+end
+end
+function check_use_harmonica(p_obj)
+if p_obj and p_obj:section() == "harmonica_f" then
+	amk.start_timer("hrm", 0.1, p_obj:id())
+end
+end
+function check_use_radio(p_obj)
+if p_obj and p_obj:section() == "hand_radio_f" then
+	amk.start_timer("rad", 0.1, p_obj:id())
+end
+end
+
+
+-- Функции квеста с FN-2000
+function spawn_fn2000()
+alife():create("wpn_fn2000", vector():set(305.17,-38.7,-24.4), 68330, 1930)
+for i=1,3 do
+	alife():create("ammo_5.56x45_ap", vector():set(305.17,-39.4,-25), 68330, 1930)
+end
+end
+
+-- Помощь раненому
+function help_wounded(npc)
+local snd
+	if npc:name()~="esc_vagon_wounded" then
+		snd = xr_sound.get_safe_sound_object("characters_voice\\human_01\\newbie\\help\\wounded_thanx\\thanx_"..math.random(1,3))
+		snd:play_no_feedback(npc, sound_object.s3d, 0, npc:position(), 1.0)
+	else 
+		db.actor:give_info_portion("tutorial_wounded_heal")
+		db.actor:give_info_portion("tutorial_wounded_help")
+	end
+	if npc:relation(db.actor)==game_object.enemy and math.random() > 0.4 then
+		npc:set_character_community("stalker", 0, 0)
+		npc:set_relation(game_object.friend, db.actor)
+		npc:enable_talk()
+	elseif npc:relation(db.actor)~=game_object.enemy then
+		npc:set_relation(game_object.friend, db.actor)
+	end
+
+end
+
+-- Эффект от критического ранения
+function wounded_pp()
+	if db.actor.health<0.2 and blood==0 then
+		level.add_pp_effector("escape.ppe", 1999, true)
+		level.set_pp_effector_factor(1999, 5.0)
+		if not bl_sound:playing() then 
+			bl_sound:play_at_pos(db.actor, db.actor:position(), 1, sound_object.looped)
+		end
+		blood = 1
+	elseif db.actor.health>0.2 then
+		level.remove_pp_effector(1999)
+		if bl_sound:playing() then 
+			bl_sound:stop() 
+		end
+		blood = 0
+	elseif db.actor.health<0.2 and blood==1 and bl_sound:playing() then
+		bl_sound:set_position(db.actor:position())
+	end
+end
+
+
+-- Функции квестов Темного дилера
+function kill_arny_precondition()
+	if has_alife_info("pri_trader_first_talk") and not has_alife_info("pri_trader_arny_task") and
+	   not has_alife_info("aem_arny_dead") and not has_alife_info("aem_arny_spread_out") then
+		return true
+	else
+		return false
+	end
+end
+function kill_arny_reward_precondition()
+	if (has_alife_info("aem_arny_dead") or has_alife_info("aem_arny_spread_out")) and
+	   has_alife_info("pri_trader_arny_task") and not has_alife_info("pri_trader_arny_task_done") then
+		return true
+	else
+		return false
+	end
+end
+function kill_freedom_precondition()
+	if ( has_alife_info("pri_trader_arny_task_done") or (not has_alife_info("pri_trader_arny_task") and (has_alife_info("aem_arny_dead") or has_alife_info("aem_arny_spread_out"))) ) and
+	   ( not has_alife_info("sar2_death_49") or not has_alife_info("sar2_death_48") ) and
+	   not has_alife_info("pri_trader_freedom_task") then
+		return true
+	else
+		return false
+	end
+end
+function kill_dolg_precondition()
+	if ( has_alife_info("pri_trader_arny_task_done") or (not has_alife_info("pri_trader_arny_task") and (has_alife_info("aem_arny_dead") or has_alife_info("aem_arny_spread_out"))) ) and
+	   ( has_alife_info("pri_trader_freedom_task_done") or (not has_alife_info("pri_trader_freedom_task") and has_alife_info("sar2_death_49") and has_alife_info("sar2_death_48")) ) and
+	   ( not has_alife_info("bar_voronin_dead") or not has_alife_info("sar2_death_42") ) and
+	   not has_alife_info("pri_trader_dolg_task") then
+		return true
+	else
+		return false
+	end
+end
+function kill_arny_reward(first_speaker, second_speaker)
+	dialogs.relocate_money(second_speaker, 10000, "in")
+end
+function kill_freedom_reward(first_speaker, second_speaker)
+	dialogs.relocate_money(second_speaker, 30000, "in")
+end
+function kill_dolg_reward(first_speaker, second_speaker)
+	dialogs.relocate_money(second_speaker, 50000, "in")
+end
+function final_precondition()
+	if ( has_alife_info("pri_trader_arny_task_done") or (not has_alife_info("pri_trader_arny_task") and (has_alife_info("aem_arny_dead") or has_alife_info("aem_arny_spread_out"))) ) and
+	   ( has_alife_info("pri_trader_freedom_task_done") or (not has_alife_info("pri_trader_freedom_task") and has_alife_info("sar2_death_49") and has_alife_info("sar2_death_48")) ) and
+	   ( has_alife_info("pri_trader_dolg_task_done") or (not has_alife_info("pri_trader_dolg_task") and has_alife_info("bar_voronin_dead") and has_alife_info("sar2_death_42")) ) then
+		return true
+	else
+		return false
+	end
+end
+function remove_dealer_spot(fs,ss)
+	level.map_remove_object_spot(fs:id(), "red_location")
+end
+function release_dark_dealer()
+	local pos
+	for i=0, 65535 do
+		local obj = level.object_by_id(i)
+		if obj and string.find(obj:name(), "pri_trader") then
+			pos = obj:position()
+		end
+	end
+	if pos then
+		db.actor:hide_weapon()
+		level.disable_input()
+		level.add_cam_effector("camera_effects\\earthquake.anm", 2010, false, "")
+		local s = sound_object("ambient\\earthquake")
+		s:play_no_feedback(db.actor,sound_object.s2d, 0, vector():set(0, 0, 0), 1.0)
+		amk.start_timer("vd1", 2, pos)
+	end
+end
+function x18_laugh()
+	local s = sound_object("x18_laugh")
+	s:play_no_feedback(db.actor,sound_object.s2d, 0, vector():set(0, 0, 0), 1.0)
+end
+
+
+---------------------- Квестовые функции для OGSM 2.x -------------------------
+
+------------------------- Copyright 2007-2008 DEXXX ---------------------------
+
+--[[
+
+If you're going to use the whole of this script or its parts in your own creative 
+developments for the S.T.A.L.K.E.R. game, please don't become such a goddamn 
+motherfucker like the notorious author of the ABC Mod - Carbrobro. Leave the 
+copyrights, note the real author(s) and don't claim others' ideas and their 
+realization to be your own ones. It's just simple Modmakers' Ethics. Thank you!
+
+Если вы собираетесь использовать данный скрипт целиком или частично в своих 
+разработках по игре S.T.A.L.K.E.R., пожалуйста не опускайтесь до уровня печально 
+известного автора ABC мода - Carbrobro. Не удаляйте копирайты, указывайте настоящего 
+автора(ов) и не выдавайте чужие идеи и их реализацию за свои. Ведь это элементарная 
+этика модостроителей! Спасибо за понимание.
+
+]]--

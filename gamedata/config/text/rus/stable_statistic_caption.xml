@@ -1,3 +1,18 @@
+	<string id="chimera_weak">
+		<text>химера</text>
+	</string>
+	<string id="chimera_strong">
+		<text>электрохимера</text>
+	</string>
+	<string id="tushkano_normal">
+		<text>тушкан</text>
+	</string>
+	<string id="fracture_weak">
+		<text>излом</text>
+	</string>
+	<string id="cat_weak">
+		<text>кот-баюн</text>
+	</string>
 	<string id="bandit_experienced">
 		<text>бандит, опытный</text>
 	</string>
@@ -30,6 +45,9 @@
 	</string>
 	<string id="burer_weak">
 		<text>бюрер</text>
+	</string>
+	<string id="burer_strong">
+		<text>пси-бюрер</text>
 	</string>
 	<string id="controller_weak">
 		<text>контролер</text>
@@ -136,8 +154,8 @@
 	<string id="pseudodog_weak">
 		<text>псевдособака</text>
 	</string>
-	<string id="psy_dog">
-		<text>сумеречная псевдособака</text>
+	<string id="psy_dog_weak">
+		<text>чернобыльский пёс</text>
 	</string>
 	<string id="snork_normal">
 		<text>снорк падальщик</text>
@@ -151,14 +169,17 @@
 	<string id="tushkano_weak">
 		<text>тушкан</text>
 	</string>
-	<string id="zombie_normal">
-		<text>зарезать</text>
+	<string id="zombie_rusty">
+		<text>зомби-камикадзе</text>
+	</string>
+	<string id="zombie_plague">
+		<text>чумной зомби</text>
 	</string>
 	<string id="zombie_strong">
-		<text>зарезать</text>
+		<text>зомби-призрак</text>
 	</string>
 	<string id="zombie_weak">
-		<text>зарезать</text>
+		<text>гражданский зомби</text>
 	</string>
 	<string id="zombied_experienced">
 		<text>зомбированный, опытный</text>

@@ -40,7 +40,7 @@
 		<text>Документы из Х18 часть3</text>
 	</string>
 	<string id="item_doc_x18p4_name">
-		<text>Документы из Х18 часть4</text>
+		<text>Документы из Х-18</text>
 	</string>
 	<string id="item_doc_x18p5_name">
 		<text>Документы из Х18 часть5</text>
@@ -58,28 +58,28 @@
 		<text>Ящик с динамитом</text>
 	</string>
 	<string id="item_flash_crazy_mil_desc">
-		<text>Флеш-диск - удобное устройство для переноса информации.</text>
+		<text>Флэш-диск - удобное устройство для переноса информации.</text>
 	</string>
 	<string id="item_flash_crazy_mil_name">
-		<text>Флешка сумасшедшего</text>
+		<text>Флэшка сумасшедшего</text>
 	</string>
 	<string id="item_flash_eco_rost_desc">
-		<text>Флеш-диск - удобное устройство для переноса информации.</text>
+		<text>Флэш-диск - удобное устройство для переноса информации.</text>
 	</string>
 	<string id="item_flash_eco_rost_name">
-		<text>Флешка профессора Круглова</text>
+		<text>Флэшка профессора Круглова</text>
 	</string>
 	<string id="item_flash_esc_desc">
-		<text>Флеш-диск - удобное устройство для переноса информации.</text>
+		<text>Флэш-диск - удобное устройство для переноса информации.</text>
 	</string>
 	<string id="item_flash_esc_name">
-		<text>Флешка пленного</text>
+		<text>Флэшка пленного</text>
 	</string>
 	<string id="item_flash_gslinger_agro_desc">
-		<text>Флеш-диск - удобное устройство для переноса информации.</text>
+		<text>Флэш-диск - удобное устройство для переноса информации.</text>
 	</string>
 	<string id="item_flash_gslinger_agro_name">
-		<text>Флешка Стрелка</text>
+		<text>Флэшка Стрелка</text>
 	</string>
 	<string id="item_key_x18_desc">
 		<text>Электронный ключ от подземной лаборатории Х-18.</text>
@@ -88,7 +88,7 @@
 		<text>Ключ Борова</text>
 	</string>
 	<string id="item_krot_flash">
-		<text>Флешка Крота</text>
+		<text>Флэшка Крота</text>
 	</string>
 	<string id="item_PDA_lucky_desc">
 		<text>Карманный персональный компьютер. Незаменимое устройство в Зоне.</text>

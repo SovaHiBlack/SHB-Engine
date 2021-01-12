@@ -4,7 +4,7 @@
 -- Author: Jim
 -- Доработка: 2006 @ Oleg Kreptul (Haron) okreptul@yahoo.com
 ----------------------------------------------------------------------------------------------------
---function printf() end
+function printf() end
 
 
 class "codepad"

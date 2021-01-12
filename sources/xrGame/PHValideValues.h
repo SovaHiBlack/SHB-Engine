@@ -15,7 +15,7 @@ public:
 	{
 		m_safe_value = 0.0f;
 	}
-	IC void					new_val		(float& val)
+	inline void				new_val		(float& val)
 	{
 		if (_valid(val))
 		{
@@ -30,10 +30,10 @@ public:
 
 class CSafeVector3
 {
-	CSafeValue				m_safe_values[3];
+	CSafeValue							m_safe_values[3];
 
 public:
-	IC void					new_val		(float* val)
+	inline void				new_val		(float* val)
 	{
 		m_safe_values[0].new_val(val[0]);
 		m_safe_values[1].new_val(val[1]);
@@ -43,10 +43,10 @@ public:
 
 class CSafeVector4
 {
-	CSafeValue				m_safe_values[4];
+	CSafeValue							m_safe_values[4];
 
 public:
-	IC void					new_val		(float* val)
+	inline void				new_val		(float* val)
 	{
 		m_safe_values[0].new_val(val[0]);
 		m_safe_values[1].new_val(val[1]);
@@ -57,16 +57,16 @@ public:
 
 class CSafeBodyLinearState
 {
-	CSafeVector3			m_safe_position;
-	CSafeVector3			m_safe_linear_vel;
+	CSafeVector3						m_safe_position;
+	CSafeVector3						m_safe_linear_vel;
 
 public:
-	IC void					create		(dBodyID b)
+	inline void				create		(dBodyID b)
 	{
 		R_ASSERT(dBodyStateValide(b));
 		new_state(b);
 	}
-	IC void					new_state	(dBodyID b)
+	inline void				new_state	(dBodyID b)
 	{
 		dVector3 v;
 		dVectorSet(v, dBodyGetPosition(b));
@@ -81,15 +81,15 @@ public:
 
 class CSafeFixedRotationState
 {
-	CSafeBodyLinearState	m_safe_linear_state;
+	CSafeBodyLinearState				m_safe_linear_state;
 
 public:
-	IC void					create		(dBodyID b)
+	inline void				create		(dBodyID b)
 	{
 		R_ASSERT(dBodyStateValide(b));
 		new_state(b);
 	}
-	IC void					new_state	(dBodyID b)
+	inline void				new_state	(dBodyID b)
 	{
 		dMatrix3 m;
 		dRSetIdentity(m);
@@ -101,16 +101,16 @@ public:
 
 class CSafeBodyAngularState
 {
-	CSafeVector3 			m_safe_angular_vel;
-	CSafeVector4 			m_safe_quaternion;
+	CSafeVector3 						m_safe_angular_vel;
+	CSafeVector4 						m_safe_quaternion;
 
 public:
-	IC void					create		(dBodyID b)
+	inline void				create		(dBodyID b)
 	{
 		R_ASSERT(dBodyStateValide(b));
 		new_state(b);
 	}
-	IC void					new_state	(dBodyID b)
+	inline void				new_state	(dBodyID b)
 	{
 		dVector3 v;
 		dVectorSet(v, dBodyGetAngularVel(b));
@@ -126,16 +126,16 @@ public:
 
 class CSafeBodyState
 {
-	CSafeBodyLinearState	m_safe_linear_state;
-	CSafeBodyAngularState	m_safe_angular_state;
+	CSafeBodyLinearState				m_safe_linear_state;
+	CSafeBodyAngularState				m_safe_angular_state;
 
 public:
-	IC void					create		(dBodyID b)
+	inline void				create		(dBodyID b)
 	{
 		R_ASSERT(dBodyStateValide(b));
 		new_state(b);
 	}
-	IC void					new_state	(dBodyID b)
+	inline void				new_state	(dBodyID b)
 	{
 		m_safe_linear_state.new_state(b);
 		m_safe_angular_state.new_state(b);

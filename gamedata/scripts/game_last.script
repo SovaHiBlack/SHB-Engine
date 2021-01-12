@@ -59,6 +59,7 @@ function game_sv_LastStanding:OnPlayerConnect	(cl_id_who)
    rp.P:set(0,5,0)
    rp.A:set(0,0,0)
 --	self:SpawnPlayer(cl_id_who, "spectator", "", rp)
+--	self:SpawnPlayer(cl_id_who, "mp_actor", "", rp)
 	self:SpawnPlayer(cl_id_who, "spectator", "", rp)
 
    local P = net_packet()

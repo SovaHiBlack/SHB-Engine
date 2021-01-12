@@ -1,7 +1,10 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 [wpn_l85]:identity_immunities
+GroupControlSection		= spawn_group
+discovery_dependency	= 
 $spawn              	= "weapons\l85"		; option for Level Editor
 $npc					= on				; option for Level Editor
+$prefetch 				= 8
 scheduled				= off				; option for ALife Simulator
 cform               	= skeleton
 class               	= WP_AK74
@@ -19,9 +22,10 @@ holder_fov_modifier		= 0.3              ; во сколько раз увеличивается eye_fov
 
 
 cost					= 4000
-
+weapon_class			= assault_rifle	; Type of the weapon
 launch_speed = 0
 	
+ammo_limit				= 210
 ammo_current			= 180
 ammo_elapsed			= 30
 	
@@ -64,10 +68,10 @@ cam_max_angle				= 10.0	    	;максимальный угол отдачи
 cam_max_angle_horz			= 20.0		;(degree) maximum shot horizontal degree 
 cam_step_angle_horz			= 1.0		;(degree) size of step camera moved in horizontal position while shooting
 
-fire_dispersion_condition_factor 	= 5	    	;увеличение дисперсии в процентах при максимальном износе 
-misfire_probability 		= 0.003	;вероятность осечки при максимальном износе 
+fire_dispersion_condition_factor 	= 3	    	;увеличение дисперсии в процентах при максимальном износе 
+misfire_probability 		= 0.001	;вероятность осечки при максимальном износе 
 misfire_condition_k			= 0.05
-condition_shot_dec 			= 0.0002	;увеличение износа при каждом выстреле
+condition_shot_dec 			= 0.0004	;увеличение износа при каждом выстреле
 ;-----------------------------------------------------------------------------------
 ;parent dispersion modifiers
 PDM_disp_base 				= 1.0
@@ -167,7 +171,7 @@ snd_switch					= weapons\groza_switch, 1.0, 0.5
 ;silencer_flame_particles 	= weapons\generic_weapon01
 silencer_smoke_particles 	= weapons\generic_shoot_00
 
-snd_silncer_shot			= weapons\w_ak74_shot1 
+snd_silncer_shot			= weapons\silencer4a, 0.6 
 
 silencer_light_color		= 0.6,0.5,0.3
 silencer_light_range		= 0.01
@@ -216,10 +220,6 @@ anim_draw_gl				= draw_with_gl
 anim_holster_gl				= holster_with_gl
 anim_shoot_gl				= shoot_with_gl
 
-;смещения HUD для режима приближения
-zoom_offset					= -0.112500,0.015800,0.000000
-zoom_rotate_x				= 0.000400
-zoom_rotate_y				= 0.017200
 ;прячем перекрестие прицела в зуме
 zoom_hide_crosshair	= true
 

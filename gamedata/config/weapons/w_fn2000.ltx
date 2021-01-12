@@ -1,11 +1,14 @@
 [wpn_fn2000]:identity_immunities
-$spawn                   = "weapons\fn-2000
+GroupControlSection	= spawn_group
+discovery_dependency = 
+$spawn                   = "weapons\fn-2000"
+$prefetch 		         = 8
 scheduled                = off                              ; option for ALife Simulator
 cform                    = skeleton
 class                    = WP_GROZA
 min_radius               = 50
 max_radius               = 150
-description				= descr_wpn-fn2000
+description				= enc_weapons1_wpn-fn2000
 
 ef_main_weapon_type		 = 2
 ef_weapon_type			 = 6
@@ -16,7 +19,9 @@ holder_fov_modifier		= 0.3              ; во сколько раз увеличивается eye_fov
 ;-----------------------------------------------------------------------------------
 
 cost					 = 17000
+weapon_class			 = assault_rifle
 
+ammo_limit		         = 180
 ammo_current		     = 90
 ammo_elapsed		     = 30
 
@@ -60,10 +65,10 @@ cam_max_angle				= 8.5	;максимальный угол отдачи
 cam_max_angle_horz			= 9.0	;(degree) maximum shot horizontal degree 
 cam_step_angle_horz			= 0.6	;(degree) size of step camera moved in horizontal position while shooting
 
-fire_dispersion_condition_factor = 5	;увеличение дисперсии в процентах при максимальном износе 
-misfire_probability 		= 0.005	;вероятность осечки при максимальном износе
+fire_dispersion_condition_factor = 3	;увеличение дисперсии в процентах при максимальном износе 
+misfire_probability 		= 0.001	;вероятность осечки при максимальном износе
 misfire_condition_k			= 0.05 
-condition_shot_dec 			= 0.0002 ;увеличение износа при каждом выстреле
+condition_shot_dec 			= 0.0004 ;увеличение износа при каждом выстреле
 ;-----------------------------------------------------------------------------------
 
 direction                = 0, 0, 1
@@ -139,7 +144,6 @@ lens_texture_h		= 648
 silencer_name  				= wpn_addon_silencer
 silencer_x 					= 152						; offset in inventory icon
 silencer_y 					= 10
-zoom_enabled				= true
 scope_zoom_factor	    	= 33.3 			;1.8X		; fov for zoom mode
 
 ;звуки
@@ -159,7 +163,7 @@ snd_switch					= weapons\groza_switch, 1.0, 0.5
 ;silencer_flame_particles 	= weapons\generic_weapon01
 silencer_smoke_particles 	= weapons\generic_shoot_00
 
-snd_silncer_shot			= weapons\w_ak74_shot1 
+snd_silncer_shot			= weapons\silencer4a, 0.6 
 
 silencer_light_color		= 0.6,0.5,0.3
 silencer_light_range		= 0.01

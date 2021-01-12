@@ -19,9 +19,9 @@ module("modules")
 
 ----------------------------------------------------------------------
 
---function printf(fmt,...)
---    log(string.format(fmt,unpack(arg)))
---end
+function printf(fmt,...)
+    log(string.format(fmt,unpack(arg)))
+end
 
 function wait_game(time_to_wait)
     verify_if_thread_is_running()

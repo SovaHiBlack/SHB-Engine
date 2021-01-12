@@ -1,3 +1,4 @@
+
 	<tutorial_artefact_location hint="tutorial_artefact" store="1">
 		<level_map spot="tutorial_artefact_spot" pointer="quest_pointer"></level_map>
 		<mini_map  spot="tutorial_artefact_spot" pointer="quest_pointer"></mini_map>
@@ -47,11 +48,11 @@
 	<tutorial_artefact_spot x="0" y="0" width="32" height="32" alignment="c">
 		<texture x="64" y="128" width="32" height="32">ui\ui_icons_map</texture>
 	</tutorial_artefact_spot>
-
+	
 	<tutorial_wounded_spot x="0" y="0" width="32" height="32" alignment="c">
 		<texture x="224" y="64" width="32" height="32">ui\ui_icons_map</texture>
 	</tutorial_wounded_spot>
-
+	
 	<escape_trader_spot x="0" y="0" width="32" height="32" alignment="c">
 		<texture x="192" y="0" width="32" height="32">ui\ui_icons_map</texture>
 	</escape_trader_spot>
@@ -79,3 +80,4 @@
 	<esc_wolf_spot x="0" y="0" width="32" height="32" alignment="c">
 		<texture x="32" y="0" width="32" height="32">ui\ui_icons_map</texture>
 	</esc_wolf_spot>
+

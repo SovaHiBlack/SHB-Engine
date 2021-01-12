@@ -12,28 +12,31 @@ local i,k,v = 0,0,0
 -- “аблица ограничений на спаун: всего в симул€ции не должно быть больше, чем указано.
 local simMaxCount = {
 	stalker_novice = 43, stalker_regular = 48, stalker_veteran = 43, stalker_master = 20,
-	monolith_novice = 0, monolith_regular = 30, monolith_veteran = 35, monolith_master = 30,
-	military_novice = 0, military_regular = 32, military_veteran = 22, military_master = 5,
-	killer_novice = 0, killer_regular = 18, killer_veteran = 17, killer_master = 10,
+	monolith_novice = 20, monolith_regular = 30, monolith_veteran = 35, monolith_master = 30,
+	military_novice = 20, military_regular = 32, military_veteran = 52, military_master = 85,
+	killer_novice = 20, killer_regular = 38, killer_veteran = 47, killer_master = 70,
 	ecolog_novice = 1, ecolog_regular = 1, ecolog_veteran = 1, ecolog_master = 1,
-	dolg_novice = 0, dolg_regular = 33, dolg_veteran = 36, dolg_master = 17,
-	freedom_novice = 50, freedom_regular = 20, freedom_veteran = 26, freedom_master = 21,
+	dolg_novice = 20, dolg_regular = 33, dolg_veteran = 36, dolg_master = 77,
+	freedom_novice = 50, freedom_regular = 20, freedom_veteran = 26, freedom_master = 51,
 	bandit_novice = 40, bandit_regular = 50, bandit_veteran = 18, bandit_master = 10,
-	zombied_novice = 20, zombied_regular = 15, zombied_veteran = 10, zombied_master = 10,
+	zombied_novice = 30, zombied_regular = 45, zombied_veteran = 60, zombied_master = 90,
 	
 	rat_weak = 0,	
 	tushkano_weak = 150,
 	flesh_weak = 14, flesh_normal = 38, flesh_strong = 22,
 	boar_weak = 52, boar_normal = 38, boar_strong = 27,
-	dog_weak = 53, dog_normal = 126, dog_strong = 130,
+	dog_weak = 53, dog_normal = 66, dog_strong = 78,
+	cat_weak = 100,
 	pseudodog_weak = 59, pseudodog_normal = 80, pseudodog_strong = 60,
 	psy_dog_weak = 15, psy_dog_normal = 15, psy_dog_strong = 15,
-	zombie_weak = 61, zombie_normal = 50, zombie_strong = 35,
+	zombie_weak = 41, zombie_normal = 50, zombie_strong = 35,
 	snork_weak = 50, snork_normal = 61, snork_strong = 15,
 	poltergeist_weak = 10,
 	pseudo_gigant_weak = 23,
 	controller_weak = 18,
-	burer_weak = 20,
+	burer_weak = 50,
+	fracture_weak = 50,
+	chimera_weak = 50,
 	bloodsucker_weak = 7, bloodsucker_normal = 40, bloodsucker_strong = 15	
 }
 
@@ -379,6 +382,7 @@ function se_respawn:create(prob)
 		return true
 	end
 end
+
 -- ѕопытка спаунить объекты. јнализируетс€ сколько уже заспавнено и выбираетс€ один из механизмов - либо 
 -- мы доспавниваем до минимального количества, либо спавним с заданной веро€тностью
 function se_respawn:spawn()
@@ -393,8 +397,9 @@ function se_respawn:spawn()
 		
 		if obj ~= nil then
 			if (IsStalker(obj) or IsMonster(obj)) and obj:alive() ~= true then
-				table.remove(self.spawned_obj, k)
+			table.remove(self.spawned_obj, k)
 			end
+
 		else
 			table.remove(self.spawned_obj, k)
 		end
@@ -453,7 +458,7 @@ function se_respawn:execute()
 --		end
 
 		local idle_time = game.CTime()
-		idle_time:setHMSms( 0, 0, 0, math.random(self.idle_spawn_min, self.idle_spawn_max)*1000)
+		idle_time:setHMSms( vars.t_common, 0, 0, math.random(self.idle_spawn_min, self.idle_spawn_max)*1000)
 		self.respawn_time = game.get_game_time() + idle_time
 		-- ѕроизводим попытку заспаунить объекты		
 		self:spawn()

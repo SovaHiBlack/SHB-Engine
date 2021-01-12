@@ -1,4 +1,4 @@
---function printf() end
+function printf() end
 
 -- transfer key from doctor
 function take_key(npc, actor)

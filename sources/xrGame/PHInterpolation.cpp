@@ -48,8 +48,6 @@ void CPHInterpolation::InterpolatePosition(Fvector& pos)
 		//pos.lerp(*bkp_pos,bk_pos,ph_world->FrameTime(b_frame_mark)/fixed_step);
 }
 
-
-
 void CPHInterpolation::InterpolateRotation(Fmatrix& rot){
 	Fquaternion q;
 	float	t = ph_world->m_frame_time/fixed_step;

@@ -1,3 +1,66 @@
+[pri_trader]:stalker
+max_item_mass		= 10000.0
+inv_max_weight		= 10000.0
+panic_threshold		= 0.0
+use_single_item_rule	= off
+can_select_items	= on
+character_profile	= pri_trader_profile
+custom_data		= scripts\pri_trader.ltx
+damage			= pri_damage
+
+[pri_damage]
+default					= 0.01, -1, 0.01
+
+bip01_pelvis 				= 0.01, 2, 0.01
+bip01_spine 		 		= 0.01, 2, 0.01
+bip01_spine1 		 		= 0.01, 2, 0.01
+bip01_spine2 		 		= 0.01, 2, 0.01
+bip01_neck 			 	= 0.01, 0, 0.01
+bip01_head 			 	= 0.01, 0, 0.01, 0.01
+eyelid_1 			 	= 0.01, 0, 0.01, 0.01
+eye_left 			 	= 0.01, 0, 0.01, 0.01
+eye_right 			 	= 0.01, 0, 0.01, 0.01
+jaw_1 		 		 	= 0.01, 0, 0.01
+
+bip01_l_clavicle	 		= 0.01, 10, 0.01
+bip01_l_upperarm	 		= 0.01, 10, 0.01
+bip01_l_forearm	 	 		= 0.01, 10, 0.01
+bip01_l_hand	 	 	  	= 0.01, -1, 0.01
+bip01_l_finger0	 	 	    	= 0.01, -1, 0.01
+bip01_l_finger01	 		= 0.01, -1, 0.01
+bip01_l_finger02	 		= 0.01, -1, 0.01
+bip01_l_finger1	 	 	    	= 0.01, -1, 0.01
+bip01_l_finger11	 		= 0.01, -1, 0.01
+bip01_l_finger12	 		= 0.01, -1, 0.01
+bip01_l_finger2	 	 	    	= 0.01, -1, 0.01
+bip01_l_finger21	 		= 0.01, -1, 0.01
+bip01_l_finger22	 		= 0.01, -1, 0.01
+
+bip01_r_clavicle	 		= 0.01, 8, 0.01
+bip01_r_upperarm	 		= 0.01, 8, 0.01
+bip01_r_forearm	 	 		= 0.01, 8, 0.01
+bip01_r_hand	 	 		= 0.01, -1, 0.01
+bip01_r_finger0	 	 		= 0.01, -1, 0.01
+bip01_r_finger01	 		= 0.01, -1, 0.01
+bip01_r_finger02	 		= 0.01, -1, 0.01
+bip01_r_finger1	 	 		= 0.01, -1, 0.01
+bip01_r_finger11	 		= 0.01, -1, 0.01
+bip01_r_finger12	 		= 0.01, -1, 0.01
+bip01_r_finger2	 	 	 	= 0.01, -1, 0.01
+bip01_r_finger21	 		= 0.01, -1, 0.01
+bip01_r_finger22	 		= 0.01, -1, 0.01
+
+bip01_l_thigh	 	 		= 0.01, 4, 0.01
+bip01_l_calf	 	 		= 0.01, 4, 0.01
+bip01_l_foot	 	 		= 0.01, 4, 0.01
+bip01_l_toe0	 	 		= 0.01, -1, 0.01
+bip01_r_thigh	 	 		= 0.01, 6, 0.01
+bip01_r_calf	 	 		= 0.01, 6, 0.01
+bip01_r_foot	 	 		= 0.01, 6, 0.01
+bip01_r_toe0	 	 		= 0.01, -1, 0.01
+
+
+
 [dolg_regular]:stalker
 $spawn 				= "respawn\dolg_regular"
 character_profile	= bar_dolg_regular
@@ -248,7 +311,7 @@ spec_rank = regular
 community = bandit
 
 [esc_soldier_respawn_1]:stalker
-$spawn				=  "respawn\esc_soldier_respawn_1
+$spawn				=  "respawn\esc_soldier_respawn_1"
 character_profile	= sim_soldier_regular
 spec_rank = regular
 community = military
@@ -553,19 +616,6 @@ character_profile	= sar_monolith_guard
 spec_rank = master
 community = monolith
 custom_data = scripts\sar_kristal_customdata.ltx
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 [sim_freedom_master_quest]:stalker
 $spawn 				= "respawn\sim_freedom_master_quest"

@@ -1,3 +1,6 @@
+	<string id="pri_trader_name">
+		<text>Тёмный дилер</text>
+	</string>
 	<string id="lname_bandit_0">
 		<text>Сивый</text>
 	</string>
@@ -4832,5 +4835,5 @@
 		<text>Резкий</text>
 	</string>
 	<string id="Osoznanie">
-		<text>Представитель "Осознания"</text>
+		<text>Представитель "О-Cознания"</text>
 	</string>

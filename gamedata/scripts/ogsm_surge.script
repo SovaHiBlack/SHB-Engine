@@ -1,0 +1,458 @@
+------------------------ Модуль выброса для OGSM 2.x --------------------------
+
+------------------------- Copyright 2007-2008 DEXXX ---------------------------
+
+local sound_obj_right = xr_sound.get_safe_sound_object([[ambient\random\rnd_the_horror]])
+local sound_obj_left = xr_sound.get_safe_sound_object([[ambient\random\rnd_the_horror]])
+
+
+-- Проверка нахождения актора в особой зоне
+function actor_in_zone(pos_psy_x,pos_psy_y,size_psy_x,size_psy_y,z1,z2)
+local pos = db.actor:position()
+local x1 = pos_psy_x
+local x2 = pos_psy_y
+local y1 = size_psy_x
+local y2 = size_psy_y
+if (pos.x >= x1 and pos.x <= x2) and (pos.z >= y1 and pos.z <= y2) and (pos.y >= z1) and (pos.y <= z2) then
+	return 1
+end
+return 0
+end
+
+-- Проверка нахождения НПС в особой зоне
+function npc_in_zone(obj,lev,pos_psy_x,pos_psy_y,size_psy_x,size_psy_y,z1,z2)
+local level_name = level.name()
+if level_name ~= lev then
+	return false
+end
+local pos = obj:position()
+local x1 = pos_psy_x
+local x2 = pos_psy_y
+local y1 = size_psy_x
+local y2 = size_psy_y
+if (pos.x >= x1 and pos.x <= x2) and (pos.z >= y1 and pos.z <= y2) and (pos.y >= z1) and (pos.y <= z2) then
+	return true
+end
+return false
+end
+
+-- Проверка, является ли объект монстром
+function is_monster(object)
+local id = get_clsid (object)
+if id == clsid.boar_s or
+   id == clsid.bloodsucker_s or
+   id == clsid.dog_s or
+   id == clsid.flesh_s or
+   id == clsid.pseudodog_s or
+   id == clsid.psy_dog_s or
+   id == clsid.burer_s or
+   id == clsid.cat_s or
+   id == clsid.chimera_s or
+   id == clsid.controller_s or
+   id == clsid.fracture_s or
+   id == clsid.poltergeist_s or
+   id == clsid.gigant_s or
+   id == clsid.zombie_s or
+   id == clsid.tushkano_s or
+   id == clsid.snork_s then
+	return 1
+end
+return 0
+end
+
+-- Очистка гулагов монстров после выброса
+function kill_monsters(gulag1)
+if gulag1 ~= nil then
+	for k, v in pairs(gulag1.Object) do 	
+		if level.object_by_id(k) ~= nil then
+			obj = level.object_by_id(k)
+			if is_monster(obj) == 1 then
+				local id = get_clsid(obj)
+				if id ~= clsid.snork_s and id ~= clsid.bloodsucker_s and id ~= clsid.burer_s and id ~= clsid.gigant_s and id ~= clsid.chimera_s and id ~= clsid.controller_s and id ~= clsid.zombie_s then
+					obj:kill(obj)
+				end
+			end
+		end	
+	end
+end
+end
+
+-- Нанесение хита актору в смертельной стадии выброса
+function hit_actor()
+
+local psy_hit = hit()
+psy_hit.direction = vector():set(0,0,0)
+psy_hit.impulse = 0
+psy_hit.draftsman = db.actor
+
+if level.name() == "l01_escape" then
+	psy_hit.power = 0.0005
+	psy_hit.type = hit.radiation
+	db.actor:hit(psy_hit)
+end
+
+if level.name() == "l02_garbage" then
+	psy_hit.power = 0.0008
+	psy_hit.type = hit.radiation
+	db.actor:hit(psy_hit)
+end
+
+if level.name() == "l03_agroprom" then
+	psy_hit.power = 0.001
+	psy_hit.type = hit.radiation
+	db.actor:hit(psy_hit)
+end
+
+if level.name() == "l04_darkvalley" then
+	psy_hit.power = 0.0012
+	psy_hit.type = hit.radiation
+	db.actor:hit(psy_hit)
+end
+
+if level.name() == "l05_bar" then
+	psy_hit.power = 0.0015
+	psy_hit.type = hit.radiation
+	db.actor:hit(psy_hit)
+end
+
+if level.name() == "l06_rostok" then
+	psy_hit.power = 0.002
+	psy_hit.type = hit.radiation
+	db.actor:hit(psy_hit)
+end
+
+if level.name() == "l08_yantar" then
+	psy_hit.power = 0.003
+	psy_hit.type = hit.radiation
+	db.actor:hit(psy_hit)
+	psy_hit.power = 0.0001
+      psy_hit.type = hit.shock
+	db.actor:hit(psy_hit)
+end
+
+if level.name() == "l07_military" then
+	psy_hit.power = 0.005
+	psy_hit.type = hit.radiation
+	db.actor:hit(psy_hit)
+	psy_hit.power = 0.0002
+      psy_hit.type = hit.shock
+	db.actor:hit(psy_hit)
+end
+
+if level.name() == "l10_radar" then
+	psy_hit.power = 0.008
+	psy_hit.type = hit.radiation
+	db.actor:hit(psy_hit)
+	psy_hit.power = 0.0004
+	psy_hit.type = hit.shock
+	db.actor:hit(psy_hit)
+end
+
+if level.name() == "l11_pripyat" then
+	psy_hit.power = 0.01
+	psy_hit.type = hit.radiation
+	db.actor:hit(psy_hit)
+	psy_hit.power = 0.0007
+	psy_hit.type = hit.shock
+	db.actor:hit(psy_hit)
+end
+
+end
+
+-- Обобщенная процедура спавна артефактов
+function proceed_art_spawn(section, count)
+
+local lv
+
+local level_vertexes={
+l01_escape = {lvid=595580, gvid=44},
+l02_garbage = {lvid=384039, gvid=265},
+l03_agroprom = {lvid=438379, gvid=693},
+l04_darkvalley = {lvid=392517, gvid=813},
+l05_bar = {lvid=99538, gvid=1233},
+l06_rostok = {lvid=69283, gvid=1311},
+l07_military = {lvid=915663, gvid=1546},
+l08_yantar = {lvid=141470, gvid=1438},
+l10_radar = {lvid=796328, gvid=1868},
+l11_pripyat = {lvid=295965, gvid=2269}
+}
+
+if level.name() == "l07_military" or level.name() == "l10_radar" then lv = 200000 + math.random(-100000,100000)
+else lv = math.random(level_vertexes[level.name()]["lvid"]) end
+
+local gv = level_vertexes[level.name()]["gvid"]
+
+for ind = 1, count do
+	alife():create(section, level.vertex_position(lv), lv, gv)
+end
+
+end
+
+
+-- Вызов спавна артефактов для каждого уровня
+function spawn_arts()
+local level_name = level.name()
+
+if level_name ==  "l01_escape" then
+	proceed_art_spawn("af_medusa", 1)
+	proceed_art_spawn("af_vyvert", 1)
+	proceed_art_spawn("af_blood", 1)
+	proceed_art_spawn("af_electra_sparkler", 1)
+end
+
+if level_name ==  "l02_garbage" or level_name ==  "l03_agroprom" then
+	proceed_art_spawn("af_cristall_flower", 1)
+	proceed_art_spawn("af_gravi", 1)
+	proceed_art_spawn("af_rusty_thorn", 1)
+	proceed_art_spawn("af_mincer_meat", 1)
+end
+
+if level_name ==  "l04_darkvalley" then
+	proceed_art_spawn("af_dummy_glassbeads", 1)
+	proceed_art_spawn("af_electra_flash", 1)
+	proceed_art_spawn("af_fuzz_kolobok", 1)
+	proceed_art_spawn("af_fireball", 1)
+end
+
+if level_name ==  "l05_bar" or level_name ==  "l06_rostok" then
+	proceed_art_spawn("af_dummy_pellicle", 1)
+	proceed_art_spawn("af_ameba_slime", 1)
+	proceed_art_spawn("af_soul", 1)
+	proceed_art_spawn("af_rusty_kristall", 1)
+end
+
+if level_name ==  "l07_military" then 
+	proceed_art_spawn("af_dummy_battery", 1)
+	proceed_art_spawn("af_rusty_sea-urchin", 1)
+	proceed_art_spawn("af_electra_moonlight", 1)
+	proceed_art_spawn("af_ameba_slug", 1)
+end
+
+if level_name ==  "l08_yantar" then
+	proceed_art_spawn("af_dummy_battery", 1)
+	proceed_art_spawn("af_dummy_dummy", 1)
+	proceed_art_spawn("af_night_star", 1)
+	proceed_art_spawn("af_gold_fish", 1)
+end
+
+if level_name ==  "l10_radar" then
+	proceed_art_spawn("af_dummy_spring", 1)
+	proceed_art_spawn("af_rusty_sea-urchin", 1)
+	proceed_art_spawn("af_electra_moonlight", 1)
+	proceed_art_spawn("af_ameba_mica", 1)
+end
+
+if level_name ==  "l11_pripyat" then
+	proceed_art_spawn("af_dummy_spring", 1)
+	proceed_art_spawn("af_night_star", 1)
+	proceed_art_spawn("af_dummy_glassbeads", 1)
+	proceed_art_spawn("af_fuzz_kolobok", 1)
+end
+ 
+end
+
+-- Обновление менеджера выброса. Вызывается из актор-байндера
+function update_surge()
+local level_name = level.name()
+if (level_name ~= "l03u_agr_underground") and (level_name ~= "l08u_brainlab") and (level_name ~= "l10u_bunker") and (level_name ~= "l04u_labx18") and (level_name ~= "l12u_sarcofag") and (level_name ~= "l12u_control_monolith") and (level_name ~= "l12_stancia") and (level_name ~= "l12_stancia_2") then
+
+db.FlagEsc = 0
+
+if level_name == "l01_escape" then
+	if actor_in_zone(-211,-198,-132,-125,-23,-20) == 1 or			-- Подвал 1 в лагере новичков
+	   actor_in_zone(-256,-246,-137,-132,-25,-20) == 1 or			-- Бункер Сидора
+	   actor_in_zone(-216,-209,-133,-120,-24,-20) == 1 then		-- Подвал 2 в лагере новичков
+		db.FlagEsc = 1
+	end
+end
+
+if level_name == "l02_garbage" then
+	if actor_in_zone(-112,-57,-6,25,-9,90) == 1 then			-- Ангар на Свалке
+		db.FlagEsc = 1
+	end
+end
+
+if level_name == "l03_agroprom" then
+	if actor_in_zone(-198.31,-195.66,85.4,96.54,2,5.3) == 1 then	-- Вагон дезертира
+		db.FlagEsc = 1
+	end
+end
+
+if level_name == "l04_darkvalley" then
+	if actor_in_zone(30,50,-60,-25,-4,0) == 1 then				-- Тюрьма в Темной долине
+		db.FlagEsc = 1
+	end
+end
+
+if level_name == "l05_bar" then
+	if actor_in_zone(123,140,18,30,-6,0) == 1 or 				-- Бар
+	   actor_in_zone(206,213,50,68,0,4) == 1 or 				-- Магазин Петренко
+	   actor_in_zone(149,158,67,74,0,4) == 1 or 				-- Приемная Арни
+	   actor_in_zone(136,168,73,134,-22,-10) == 1 or			-- Арена
+	   actor_in_zone(208,234,120,139,-6,2) == 1 then			-- База Долга
+		db.FlagEsc = 1
+	end
+end
+
+if level_name == "l06_rostok" then
+	if actor_in_zone(-90,-87,125,151,0,6) == 1 or				-- Блокпост наемников
+	   actor_in_zone(-285,-235,78,112,-7,0) == 1 then			-- Тоннель Фримена
+		db.FlagEsc = 1
+	end
+end
+
+if level_name == "l07_military" then
+	if actor_in_zone(-27,-16,-33,-14,-9,0) == 1 then 			-- База Свободы
+		db.FlagEsc = 1
+	end
+end
+
+if level_name == "l08_yantar" then
+	if actor_in_zone(23,40,-282,-269,-16,0) == 1 or				-- Бункер ученых
+	   actor_in_zone(-265,-22,-218,-6,-20,-11) == 1 then			-- Кишка
+		db.FlagEsc = 1
+	end
+end
+
+if level_name == "l10_radar" then
+	if actor_in_zone(639,664,167,189,-45,-37) == 1 or			-- Секретная база Монолита
+	   actor_in_zone(86.73,153,-27,-21.70,-10,-4.6) == 1 then		-- Вход в бункер
+		db.FlagEsc = 1
+	end
+end
+
+if level_name == "l11_pripyat" then
+	if actor_in_zone(-18,-12,58,82,-6,-3) == 1 or 				-- Подземный переход
+	   actor_in_zone(167,173,58,83,-6,-3) == 1 or 				-- Подземный переход
+	   actor_in_zone(-16,-2,188,204,-5,0) == 1 or				-- Подвал ДК
+	   actor_in_zone(-24,55,116,122,-4,0) == 1 then				-- Канализация
+		db.FlagEsc = 1
+	end
+end
+
+
+for k,v in pairs(ogsm_respawn.restrictor_list) do
+	local obj = level.object_by_id(v.id)
+	if obj and utils.npc_in_zone(db.actor, obj) then
+		db.FlagEsc = 1
+	end
+end
+
+if db.Dead2 == 1 and db.FlagEsc == 0 then
+	g_R_Vibros:Run()
+	hit_actor()
+	play_sounds()
+	level.add_pp_effector("dead_zone.ppe", 1003, true)
+	level.set_pp_effector_factor(1003, 0.5)
+end
+
+if db.FlagEsc == 1 then
+	g_R_Vibros:Stop()
+end
+
+end
+end
+
+-- Спавн фантомов
+function play_phantoms()
+if math.random()<0.5 then
+	if phantom_manager:phantom_count()<5 then
+		local yaw = math.pi*2.0*math.random()
+		local radius = 30*(math.random()/2.0+0.5)
+		local height = 2.5*math.random()
+		local a_pos = db.actor:position()
+		local pos = vector():set(math.sin(yaw)*radius+a_pos.x,a_pos.y+height,math.cos(yaw)*radius+a_pos.z)
+		phantom_manager.spawn_phantom(pos)
+	end
+end
+end
+
+-- Проигрыш странных звуков
+function play_sounds()
+
+sound_obj_right.volume = 0.5
+sound_obj_left.volume = 0.5
+
+if not sound_obj_left:playing() then 
+	local i=math.random(1,4)
+	if i==1 then 
+		sound_obj_left = sound_object([[ambient\rnd_outdoor\rnd_dark4]])
+	elseif i==2 then
+		sound_obj_left = sound_object([[ambient\rnd_outdoor\rnd_moan1]])
+	elseif i==3 then
+		sound_obj_left = sound_object([[ambient\rnd_outdoor\rnd_moan2]])
+	elseif i==4 then
+		sound_obj_left = sound_object([[ambient\rnd_outdoor\rnd_dark6]])
+	end
+	sound_obj_left:play_at_pos (db.actor, vector():set(1, 0, 1), 0, sound_object.s2d) 
+end
+
+if not sound_obj_right:playing() then 
+	local j=math.random(1,4)
+	if j==1 then 
+		sound_obj_right = sound_object([[ambient\rnd_outdoor\rnd_dark4]])
+	elseif j==2 then
+		sound_obj_right = sound_object([[ambient\rnd_outdoor\rnd_moan1]])
+	elseif j==3 then
+		sound_obj_right = sound_object([[ambient\rnd_outdoor\rnd_moan1]])
+	elseif j==4 then
+		sound_obj_right = sound_object([[ambient\rnd_outdoor\rnd_dark6]])
+	end
+	sound_obj_right:play_at_pos (db.actor, vector():set(-1, 0, 1), 0, sound_object.s2d) 
+end
+
+end
+
+
+class "R_Vibros"
+function R_Vibros:__init()
+	self.work = 0
+end
+
+g_R_Vibros = R_Vibros()
+
+function R_Vibros:construct()
+end
+
+function R_Vibros:Run()
+	if self.work == 0 then
+		xr_sound.set_actor_sound("level_border_detector")
+		xr_sound.set_actor_sound_factor(0.01)
+		level.add_cam_effector("camera_effects\\fatigue.anm", 2004, true, "")
+		level.add_pp_effector("yantar_underground_psi.ppe", 299, true)
+		level.set_pp_effector_factor(299, 1.0)
+		self.work = 1
+	end
+end
+
+function R_Vibros:Stop()
+	if self.work == 1 then
+		level.remove_pp_effector(1003)
+		level.remove_cam_effector(2004)
+		level.remove_pp_effector(299)
+		xr_sound.set_actor_sound("")
+		self.work = 0
+	end
+end
+
+
+
+------------------------ Модуль выброса для OGSM 2.x --------------------------
+
+------------------------- Copyright 2007-2008 DEXXX ---------------------------
+
+--[[
+
+If you're going to use the whole of this script or its parts in your own creative 
+developments for the S.T.A.L.K.E.R. game, please don't become such a goddamn 
+motherfucker like the notorious author of the ABC Mod - Carbrobro. Leave the 
+copyrights, note the real author(s) and don't claim others' ideas and their 
+realization to be your own ones. It's just simple Modmakers' Ethics. Thank you!
+
+Если вы собираетесь использовать данный скрипт целиком или частично в своих 
+разработках по игре S.T.A.L.K.E.R., пожалуйста не опускайтесь до уровня печально 
+известного автора ABC мода - Carbrobro. Не удаляйте копирайты, указывайте настоящего 
+автора(ов) и не выдавайте чужие идеи и их реализацию за свои. Ведь это элементарная 
+этика модостроителей! Спасибо за понимание.
+
+]]--

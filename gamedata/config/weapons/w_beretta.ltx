@@ -1,12 +1,15 @@
 [wpn_beretta]:identity_immunities
+GroupControlSection			= spawn_group
+discovery_dependency 		= 
 $spawn                   	= "weapons\beretta"					; option for Level Editor
 $npc			 			= on		; option for Level Editor
+$prefetch 					= 8
 scheduled         		   	= off              ; option for ALife Simulator
 cform             		    = skeleton
 class                    	= WP_PM
 min_radius               	= 0
 max_radius               	= 50
-description					= descr_wpn-beretta
+description					= enc_weapons1_wpn-beretta
 
 ef_weapon_type				= 5
 
@@ -15,8 +18,9 @@ holder_range_modifier	= 1.0               ; во сколько раз увеличивается eye_ran
 holder_fov_modifier		= 1.0              ; во сколько раз увеличивается eye_fov
 ;-----------------------------------------------------------------------------------
 
-cost					 	= 900	;300
+cost					 	= 2000
 
+ammo_limit		 			= 120
 ammo_current		 		= 96
 ammo_elapsed		 		= 16
 
@@ -57,13 +61,13 @@ cam_max_angle			= 20.0		;максимальный угол отдачи
 cam_max_angle_horz		= 10.0		;(degree) maximum shot horizontal degree 
 cam_step_angle_horz		= 0.9		;(degree) size of step camera moved in horizontal position while shooting
 
-fire_dispersion_condition_factor = 5		;увеличение дисперсии в процентах при максимальном износе 
-misfire_probability 		= 0.005	    	;вероятность осечки при максимальном износе 
-condition_shot_dec 		= 0.00130	;увеличение износа при каждом выстреле
+fire_dispersion_condition_factor = 3		;увеличение дисперсии в процентах при максимальном износе 
+misfire_probability 		= 0.001	    	;вероятность осечки при максимальном износе 
+condition_shot_dec 		= 0.0020	;увеличение износа при каждом выстреле
 
 ;-----------------------------------------------------------------------------------
 ; ttc
-hit_power                	= 0.52
+hit_power                	= 0.60
 hit_impulse		 	= 125
 hit_type 			= fire_wound	
 
@@ -154,7 +158,7 @@ silencer_y 					= -18
 
 ;silencer_flame_particles 	= weapons\generic_weapon01
 silencer_smoke_particles 	= weapons\generic_shoot_00
-snd_silncer_shot			= weapons\w_ak74_shot1 
+snd_silncer_shot			= weapons\silencer4, 0.6 
 silencer_light_color		= 0.6,0.5,0.3
 silencer_light_range		= 0.01
 silencer_light_var_color	= 0.05

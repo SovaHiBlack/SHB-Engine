@@ -142,12 +142,11 @@ bool test_sides(const Fvector& center, const Fvector& side_dir, const Fvector& f
 	}
 
 	return true;
-
 }
 
 CPHSimpleCharacter::CPHSimpleCharacter( )
 {
-	m_object_contact_callback = NULL;
+	m_object_contact_callback = nullptr;
 
 	m_geom_shell = NULL;
 	m_wheel = NULL;
@@ -162,9 +161,9 @@ CPHSimpleCharacter::CPHSimpleCharacter( )
 	b_external_impulse = false;
 	m_ext_impuls_stop_step = u64(-1);
 	m_ext_imulse.set(0, 0, 0);
-	m_phys_ref_object = NULL;
+	m_phys_ref_object = nullptr;
 	b_on_object = false;
-	m_friction_factor = 1.f;
+	m_friction_factor = 1.0f;
 	dVectorSetZero(m_control_force);
 	dVectorSetZero(m_depart_position);
 	is_contact = false;
@@ -202,7 +201,7 @@ CPHSimpleCharacter::CPHSimpleCharacter( )
 void CPHSimpleCharacter::TestPathCallback(bool& do_colide, bool bo1, dContact& c, SGameMtl* /*material_1*/, SGameMtl* /*material_2*/)
 {
 	do_colide = false;
-	CPHSimpleCharacter* ch = NULL;
+	CPHSimpleCharacter* ch = nullptr;
 	if (bo1)
 	{
 		ch = static_cast<CPHSimpleCharacter*>(retrieveGeomUserData(c.geom.g1)->ph_object);
@@ -816,7 +815,7 @@ bool CPHSimpleCharacter::ValidateWalkOnObject( )
 	if (!m_elevator_state.Active( ) && b_valide_wall_contact && (m_contact_count > 1) && (m_wall_contact_normal[1] < M_SQRT1_2) && !b_side_contact) //&& dDOT(m_wall_contact_normal,m_ground_contact_normal)<.9f
 	{
 		if (((m_wall_contact_position[0] - m_ground_contact_position[0]) * m_control_force[0] +
-			 (m_wall_contact_position[2] - m_ground_contact_position[2]) * m_control_force[2]) > 0.05f &&
+			(m_wall_contact_position[2] - m_ground_contact_position[2]) * m_control_force[2]) > 0.05f &&
 			m_wall_contact_position[1] - m_ground_contact_position[1] > 0.01f)
 			b_clamb_jump = true;
 	}
@@ -824,7 +823,7 @@ bool CPHSimpleCharacter::ValidateWalkOnObject( )
 	if (b_valide_wall_contact && (m_contact_count > 1) && b_clamb_jump)
 		if (
 			dFabs((m_wall_contact_position[0] - m_ground_contact_position[0]) +		//*m_control_force[0]
-				  (m_wall_contact_position[2] - m_ground_contact_position[2])) > 0.05f &&//0.01f//*m_control_force[2]
+			(m_wall_contact_position[2] - m_ground_contact_position[2])) > 0.05f &&//0.01f//*m_control_force[2]
 			m_wall_contact_position[1] - m_ground_contact_position[1] > 0.01f)
 			dVectorSet(m_clamb_depart_position, dBodyGetPosition(m_body));
 	return b_clamb_jump;

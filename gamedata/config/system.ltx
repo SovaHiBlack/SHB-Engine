@@ -1,4 +1,5 @@
 #include "defines.ltx"
+#include "prefetch\prefetch.ltx"
 #include "weathers\environment.ltx"
 #include "creatures\monsters.ltx"
 #include "creatures\stalkers.ltx"
@@ -22,6 +23,22 @@
 
 #include "creatures\game_relations.ltx"
 
+#include "mp\mp_actor.ltx"
+#include "mp\team_logo.ltx"
+#include "mp\weapons_mp\ammo_mp.ltx"
+#include "mp\weapons_mp\weapons_mp.ltx"
+#include "mp\weapons_mp\outfit_mp.ltx"
+#include "mp\weapons_mp\items_mp.ltx"
+
+;Game types
+#include "mp\SoundMessages\mp_snd_messages.ltx"
+#include "mp\SoundMessages\ahunt_snd_messages.ltx"
+#include "mp\SoundMessages\dm_snd_messages.ltx"
+#include "mp\SoundMessages\tdm_snd_messages.ltx"
+#include "mp\deathmatch_game.ltx"
+#include "mp\teamdeathmatch_game.ltx"
+#include "mp\artefacthunt_game.ltx"
+
 #include "evaluation.ltx"
 #include "fonts.ltx"
 
@@ -34,131 +51,144 @@
 #include "misc\respawn.ltx"
 #include "creatures\spawn_sections.ltx"
 
+; Extra Content
+#include "extracontent.ltx"
+
 #include "localization.ltx"
 
 [sound]
-occlusion_scale						= 0.4
-snd_collide_min_volume				= 0.1
-snd_collide_max_volume				= 200.0
+occlusion_scale	= 0.4
+snd_collide_min_volume=0.1
+snd_collide_max_volume=200.
 
 [demo_record]
-speed0								= 0.3
-speed1								= 3.0
-speed2								= 15.0
-speed3								= 60.0
-ang_speed0							= 0.1
-ang_speed1							= 0.5
-ang_speed2							= 7.0
-ang_speed3							= 2.0
+speed0		= 0.3
+speed1		= 3.0
+speed2		= 15.0
+speed3		= 60.0
+ang_speed0	= 0.1
+ang_speed1	= 0.5
+ang_speed2	= 7.0
+ang_speed3	= 2.0
 
 [texture_desc]
-files								= ui_icons_map, ui_common, ui_old_textures, ui_ingame, ui_map_description, ui_mainmenu, ui_statistics, ui_hud, ui_numpad, ui_inventory, ui_inventory2, ui_iconstotal, ui_pda, ui_icons_npc, ui_npc_monster, ui_npc_unique, ui_buy_menu, ui_asus_intro
+files = ui_mp_icon_rank, ui_icons_map, ui_common, ui_old_textures, ui_ingame, ui_map_description, ui_models_multiplayer, ui_team_logo, ui_team_logo_small, ui_mainmenu, ui_mp_main, ui_statistics, ui_hud, ui_numpad, ui_inventory, ui_inventory2, ui_iconstotal, ui_pda, ui_icons_npc, ui_npc_monster, ui_npc_unique, ui_buy_menu, ui_asus_intro, aem_ui_npc
 
 [info_portions]
-;СЃРїРёСЃРѕРє xml С„Р°Р№Р»РѕРІ, СЃРѕРґРµСЂР¶Р°С‰РёС… game_information_portions
-files								= info_known_objects, info_l01escape, info_l02garbage, info_l03agroprom, info_l05dark_valley, info_l06dark_valley_u, info_l07rostok, info_l08deadcity, info_l08yantar, info_l10military, info_l10radar, info_l11pripyat, info_l12u_sarcofag, info_l16radar_antena, info_l19stanciya, info_lchanger_ico, info_level_tips, info_portions, info_portions_light, info_portions_test, info_stories
+;список xml файлов, содержащих info_portions
+files = info_portions, info_portions_light, info_portions_test, info_lchanger_ico, info_level_tips, info_known_objects, info_l01escape, info_l02garbage, info_l03agroprom, info_l04agroprom_u, info_l05dark_valley, info_l06dark_valley_u, info_l07rostok, info_l08yantar, info_l08deadcity, info_l08rostok_bar, info_l09marshes, info_l09rostok_dolg, info_l10military, info_l11pripyat, info_l11yantar, info_l12yantar_u, info_l13deadcity, info_l14swamp, info_l10radar, info_l16radar_antena, info_l17monolith_control, info_l19stanciya, info_l12u_sarcofag, info_l21generators, info_l22warlab, info_stories, aem_info
 
 [encyclopedia]
-files								= storyline_info_to_diary, encyclopedia_equipment, encyclopedia_mutants, encyclopedia_social, encyclopedia_tutorial, encyclopedia_weapons, encyclopedia_zone
+files = encyclopedia_infos, storyline_info_to_diary, encyclopedia_weapons, encyclopedia_mutants, encyclopedia_zone, encyclopedia_social, encyclopedia_equipment, encyclopedia_tutorial
 
 [dialogs]
-files								= dialogs, dialogs_escape, dialogs_garbage, dialogs_agroprom, dialogs_deadcity, dialogs_darkvalley, dialogs_pripyat, dialogs_bar, dialogs_yantar, dialogs_military, dialogs_labx18, dialogs_radar, dialogs_aes
+files = dialogs_test, dialogs, dialogs_escape, dialogs_garbage, dialogs_agroprom, dialogs_deadcity, dialogs_darkvalley, dialogs_pripyat, dialogs_bar, dialogs_yantar, dialogs_military, dialogs_labx18, dialogs_radar, dialogs_aes, dialogs_repair
 
 [profiles]
-;СЃРїРёСЃРѕРє xml С„Р°Р№Р»РѕРІ, СЃРѕРґРµСЂР¶Р°С‰РёС… РїСЂРѕС„РёР»Рё СЃС‚Р°Р»РєРµСЂРѕРІ Рё С‚РѕСЂРіРѕРІС†РµРІ
-files								= npc_profile
-;СЃРїРёСЃРѕРє xml С„Р°Р№Р»РѕРІ, СЃРѕРґРµСЂР¶Р°С‰РёС… РѕРїРёСЃР°РЅРёСЏ РєРѕРЅРєСЂРµС‚РЅС‹С… СЃС‚Р°Р»РєРµСЂРѕРІ Рё С‚РѕСЂРіРѕРІС†РµРІ
-specific_characters_files			= character_desc_general, character_desc_simulation,character_desc_escape, character_desc_garbage, character_desc_agroprom, character_desc_darkvalley, character_desc_deadcity, character_desc_bar, character_desc_yantar, character_desc_military, character_desc_radar, character_desc_pripyat, character_desc_aes, character_desc_kishka, character_desc_sarcofag
+;список xml файлов, содержащих профили сталкеров и торговцев
+files =  npc_profile, aem_profile
+;список xml файлов, содержащих описания конкретных сталкеров и торговцев
+specific_characters_files = character_desc_general, character_desc_simulation,character_desc_escape, character_desc_garbage, character_desc_agroprom, character_desc_darkvalley, character_desc_deadcity, character_desc_bar, character_desc_yantar, character_desc_military, character_desc_radar, character_desc_pripyat, character_desc_aes, character_desc_kishka, character_desc_sarcofag, aem_characters
 
 [artefacts_tasks]
-;РёРјСЏ СЃРєСЂРёРїС‚РѕРІРѕР№ С„СѓРЅРєС†РёРё, РєРѕС‚РѕСЂР°СЏ РІС‹Р·С‹РІР°РµС‚СЃСЏ РґР»СЏ СЃРѕР·РґР°РЅРёСЏ СЃРїРёСЃРєР° Р°СЂС‚РµС„Р°РєС‚РѕРІ
-script_func							= ;trader_job.artefacts_task_list_text
+;имя скриптовой функции, которая вызывается для создания
+;списка артефактов
+script_func = ;trader_job.artefacts_task_list_text
 
 [game_tasks]
-files								= game_tasks
+files = game_tasks
 
 [inventory]
-take_dist							= 2
-max_weight							= 50
-max_ruck							= 56
-max_belt							= 5 ;16
-slots								= 11
+take_dist		= 2
+max_weight              = 50
+max_ruck		= 56
+max_belt		= 6 //16
+slots			= 11
 
-slot_persistent_1					= true		;knife
-slot_persistent_2					= false		;pistol
-slot_persistent_3					= false		;automatic
-slot_persistent_4					= true		;grenades
-slot_persistent_5					= true		;binocular
-slot_persistent_6					= true		;bolt
-slot_persistent_7					= false		;outfit
-slot_persistent_8					= true		;pda
-slot_persistent_9					= true		;detector
-slot_persistent_10					= true		;torch
+slot_persistent_1  = true		;knife
+slot_persistent_2  = false		;pistol
+slot_persistent_3  = false		;automatic
+slot_persistent_4  = true		;grenades
+slot_persistent_5  = true		;binocular
+slot_persistent_6  = true		;bolt
+slot_persistent_7  = false		;outfit
+slot_persistent_8  = true		;pda
+slot_persistent_9  = true		;detector
+slot_persistent_10  = true		;torch
+
 
 [lights_hanging_lamp]
-$spawn								= "physics\hanging lamp"
-class								= O_HLAMP
-script_binding						= bind_physic_object.init
+GroupControlSection	= spawn_group
+$spawn 				= "physics\hanging lamp"
+class				= O_HLAMP
+script_binding      = bind_physic_object.init
 
 [physic_object]
-$spawn								= "physics\object"
-class								= O_PHYS_S
-remove_time							= 60; after this time unbreaked removable bone will be removed
-script_binding						= bind_physic_object.init
+GroupControlSection	= spawn_group
+$spawn 				= "physics\object"
+$prefetch 			= 8
+class				= O_PHYS_S
+remove_time			= 60; after this time  unbreaked removable bone will be removed
+script_binding      = bind_physic_object.init
 
 [physic_destroyable_object]
-$spawn								= "physics\destroyable_object"
-class								= P_DSTRBL
-remove_time							= 60; after this time unbreaked removable bone will be removed
-script_binding						= bind_physic_object.init
+GroupControlSection	= spawn_group
+$spawn 				= "physics\destroyable_object"
+;$prefetch 			= 8
+class				= P_DSTRBL
+remove_time			= 60; after this time  unbreaked removable bone will be removed
+script_binding      = bind_physic_object.init
 
 [search_light]
-$spawn								= "physics\search light"
-class								= O_SEARCH
-cform								= skeleton
-visual								= equipments\projector.ogf
-script_binding						= bind_physic_object.init
+GroupControlSection	= spawn_group
+$spawn 				= "physics\search light"
+class				= O_SEARCH
+cform				= skeleton
+visual				= equipments\projector.ogf
+script_binding      = bind_physic_object.init
 
 [explosion_marks]
-wallmarks							= wm\wm_grenade
-dist								= 0.5	;2.4	;
-size								= 0.6	;0.4	;
-max_count							= 5
+wallmarks			= wm\wm_grenade
+dist				= 0.5	;2.4	;
+size				= 0.6	;0.4	;
+max_count			= 5
 
 [bloody_marks]
-wallmarks							= wm\wm_blood_1,wm\wm_blood_2,wm\wm_blood_3
-dist								= 2.0	;2.4	;(Рј) max СЂР°СЃСЃС‚РѕВ¤РЅРёРµ РѕС‚Р»РµС‚Р° РєСЂРѕРІРё
-max_size							= 0.4	;0.3	;(Рј)СЂР°РґРёСѓСЃ РїСЏС‚РЅР° РїСЂРё С…РёС‚Рµ СЃРёР»РѕР№ nominal hit РїРѕ Р±РѕР»СЊС€РѕРјСѓ РѕР±СЉРµРєС‚Сѓ (РїРѕ РјР°Р»РµРЅСЊРєРѕРјСѓ *0.5)
-min_size							= 0.06			;(Рј)РјРёРЅРёРјР°Р»СЊРЅС‹Р№ СЂР°РґРёСѓСЃ РїСЏС‚РЅР°
-nominal_hit							= 0.5			;РІРµР»РёС‡РёРЅР° РЅРѕРјРёРЅР°Р»СЊРЅРѕРіРѕ С…РёС‚Р°, РїСЂРё РєРѕС‚РѕСЂРѕРј СЂР°Р·Р»РµС‚Р°РµС‚СЃСЏ РјР°РєСЃРёРјСѓРј РєСЂРѕРІРё (max_size)
+wallmarks			= wm\wm_blood_1,wm\wm_blood_2,wm\wm_blood_3,wm\wm_blood_4,wm\wm_blood_5,wm\wm_blood_6,wm\wm_blood_7,wm\wm_blood_8,wm\wm_blood_9
+dist				= 3	;2.4	;(м) max расстояние отлета крови
+max_size			= 0.8	;0.3	;(м)радиус пятна при хите силой nominal hit по большому объекту (по маленькому *0.5)
+min_size			= 0.1			;(м)минимальный радиус пятна
+nominal_hit			= 0.3			;величина номинального хита, при котором разлетается максимум крови (max_size)
 
-;РєР°РїР»Рё РєСЂРѕРІРё
-blood_drops							= wm\wm_blood_drop_1, wm\wm_blood_drop_2, wm\wm_blood_drop_3, wm\wm_blood_drop_4
-start_blood_size					= 0.4			;СЂР°Р·РјРµСЂ СЂР°РЅС‹ С‡С‚РѕР± РЅР°С‡Р°Р»Р° РєР°РїР°С‚СЊ РєСЂРѕРІСЊ
-stop_blood_size						= 0.025			;СЂР°Р·РјРµСЂ СЂР°РЅС‹ С‡С‚РѕР± РєСЂРѕРІСЊ РѕСЃС‚Р°РЅРѕРІРёР»Р°СЃСЊ (РґРѕР»Р¶РЅРѕ Р±С‹С‚СЊ РјРµРЅСЊС€Рµ start_blood_size)
+;капли крови
 
-;blood_drop_time					= 0.1			;OBSOLETE
-blood_drop_time_min					= 0.3			;
-blood_drop_time_max					= 2.0			;
-blood_drop_size						= 0.1			;СЂР°Р·РјРµСЂ РєР°РїР»Рё (Рј) РєСЂРѕРІРё, РєРѕС‚РѕСЂР°СЏ СѓРїР°Р»Р°
+blood_drops			= wm\wm_blood_drop_1,wm\wm_blood_drop_2,wm\wm_blood_drop_3,wm\wm_blood_drop_4
+start_blood_size	= 0.4			;размер раны чтоб начала капать кровь
+stop_blood_size		= 0.025			;размер раны чтоб кровь остановилась (должно быть меньше start_blood_size)
+
+blood_drop_time     = 0.1			;OBSOLETE
+blood_drop_time_min = 0.3			;
+blood_drop_time_max = 2.0			;
+blood_drop_size		= 0.2			;размер капли (м) крови, которая упала
+
 
 [entity_fire_particles]
-fire_particles						= damage_fx\burn_creatures
-start_burn_size						= 0.0003		;СЂР°Р·РјРµСЂ РѕР¶РµРіР° РїРѕСЃР»Рµ РєРѕС‚РѕСЂРѕРіРѕ РЅР°С‡Р°С‚СЊ РёРіСЂР°С‚СЊ РїР°СЂС‚РёРєР»С‹ РѕРіРЅСЏ
-stop_burn_size						= 0.0001		;СЂР°Р·РјРµСЂ РѕР¶РµРіР° РїРѕСЃР»Рµ РєРѕС‚РѕСЂРѕРіРѕ РѕСЃС‚Р°РЅРѕРІРёС‚СЊ РїР°СЂС‚РёРєР»С‹
-min_burn_time						= 10000			;РјРёРЅРёРјР°Р»СЊРЅРѕРµ РІСЂРµРјСЏ РѕС‚С‹РіСЂС‹С€Р° РїР°СЂС‚РёРєР»РѕРІ (РґР°Р¶Рµ РµСЃР»Рё СЂР°РЅР° СѓР¶Рµ Р·Р°Р¶РёР»Р°)
+fire_particles = damage_fx\burn_creatures
+start_burn_size	= 0.0003		;размер ожега после которого начать играть партиклы огня
+stop_burn_size	= 0.0001		;размер ожега после которого остановить партиклы
+min_burn_time	= 10000		;минимальное время отыгрыша партиклов (даже если рана уже зажила)
 
 [hud_cursor]
-;РІСЃРµ СЂР°Р·РјРµСЂС‹ РІ РїСЂРѕС†РµРЅС‚Р°С… РѕС‚ РґР»РёРЅС‹ СЌРєСЂР°РЅР°
-cross_length						= 0.015					;РґР»РёРЅР° "РїР°Р»РѕС‡РєРё" РїСЂРёС†РµР»Р°
-min_radius							= 0.0					;РјРёРЅРёРјР°Р»СЊРЅС‹Р№ СЂР°РґРёСѓСЃ РїСЂРёС†РµР»Р° (РїСЂРё РЅСѓР»РµРІРѕР№ РґРёСЃРїРµСЂСЃРёРё)
-max_radius							= 1.0					;РјР°РєСЃРёРјР°Р»СЊРЅС‹Р№ СЂР°РґРёСѓСЃ
-radius_lerp_speed					= 0.08					;СЃРєРѕСЂРѕСЃС‚СЊ РёРЅС‚РµСЂРїРѕР»СЏС†РёРё РїРѕР»РѕР¶РµРЅРёР№ РїСЂРёС†РµР»Р°
-cross_color							= 0.7, 0.7, 0.7, 1.0	;С†РІРµС‚ РїСЂРёС†РµР»Р°
-;disp_scale							= 0.08					;РјР°СЃС€С‚Р°Р± РїСЂРёС†РµР»Р° (РѕС‚РЅРѕСЃРёС‚РµР»СЊРЅРѕ СЂР°РґРёР°РЅ)
+;все размеры в процентах от длины экрана
+cross_length		= 0.015					;длина "палочки" прицела
+min_radius			= 0.0					;минимальный радиус прицела (при нулевой дисперсии)
+max_radius			= 1.0					;максимальный радиус
+radius_lerp_speed	= 0.08					;скорость интерполяции положений прицела
+cross_color			= 0.7,0.7,0.7,1.0		;цвет прицела
+disp_scale			= 0.08					;масштаб прицела (относительно радиан)
 
 [hud_hitmark]
-hit_mark_texture					= ui\ui_hud_hit_mark
+hit_mark_texture = ui\ui_hud_hit_mark_08
 ;ui\ui_hud_hit_mark
 ;ui\ui_hud_hit_mark_01
 ;ui\ui_hud_hit_mark_02
@@ -178,229 +208,262 @@ hit_mark_texture					= ui\ui_hud_hit_mark
 ;ui\ui_hud_hit_mark_16
 ;ui\ui_hud_hit_mark_17
 ;ui\ui_hud_hit_mark_18
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; inventory items
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;------------------------------------------------------------------------------
-; inventory items
-;------------------------------------------------------------------------------
+
 [document]
-$spawn								= "documents\document 01"
-class								= II_DOC
-cform								= skeleton
-visual								= equipments\item_document_01.ogf
+GroupControlSection	= spawn_group
+;discovery_dependency = 
+$spawn 				= "documents\document 01"
+;$prefetch 			= 32
+class				= II_DOC
+cform				= skeleton
+visual				= equipments\item_document_01.ogf
 
-inv_name							= Document
-inv_name_short						= Document
-inv_weight							= 1		;0.2
+inv_name			= Document
+inv_name_short		= Document
+inv_weight			= 1	;0.2
 
-inv_grid_width						= 1
-inv_grid_height						= 1
-inv_grid_x							= 0
-inv_grid_y							= 0
-cost								= 0
+inv_grid_width		= 1
+inv_grid_height		= 1
+inv_grid_x			= 0
+inv_grid_y			= 0
+cost				= 0
+
+
+
 
 [spectator]
-$player								= on
-class								= SPECT
+ $player 				= on
+class                   = SPECT
 
-;[??tg_event]
-;class								= EVENT
+      
+[tg_event]
+class 			 = EVENT
 
 [m_car]
-$spawn								= "vehicles\car"
-cform								= skeleton
-class								= SCRPTCAR
-inv_weight							= 1000
-cost								= 100000
-inv_grid_width						= 1
-inv_grid_height						= 1
-script_binding						= bind_physic_object.init
+GroupControlSection	= spawn_group
+discovery_dependency = 
+$spawn 			= "vehicles\car"
+cform                   = skeleton
+class                   = SCRPTCAR
+
+inv_weight				= 1000
+cost					= 100000
+inv_grid_width			= 1
+inv_grid_height			= 1
+
+script_binding  		= bind_physic_object.init
+
 
 [actor_firsteye_cam]
-lim_pitch							= -1.5, 1.5
-lim_yaw								= 0, 0
-rot_speed							= 3.14, 3.14, 0
+lim_pitch                = -1.5, 1.5
+lim_yaw                  = 0, 0
+rot_speed                = 3.14, 3.14, 0
 
 [actor_ladder_cam]
-lim_pitch							= -1.5, 1.5
-lim_yaw								= -1.0, 1.0
-rot_speed							= 3.14, 3.14, 0
+lim_pitch                = -1.5, 1.5
+lim_yaw                  = -1.0, 1.0
+rot_speed                = 3.14, 3.14, 0
 
 [actor_free_cam]
-lim_pitch							= -1.5, 1.5
-lim_yaw								= 0, 0
-lim_zoom							= 0.4, 10
-rot_speed							= 3.14, 1.0, 10
-
+;----------------
+lim_pitch                = -1.5, 1.5
+lim_yaw                  = 0, 0
+lim_zoom                 = 1, 2
+rot_speed                = 3.14, 1.0, 10
+ 
 [actor_look_cam]
-lim_pitch							= -0.7, 1
-lim_yaw								= 0, 0
-lim_zoom							= 1, 5
-rot_speed							= 3.14, 6.28, 10
+lim_pitch                = -0.7, 1
+lim_yaw                  = 0, 0
+lim_zoom                 = 1, 2
+rot_speed                = 3.14, 6.28, 10
 
 [actor_look_cam_psp]
-lim_pitch							= -0.7, 1
-lim_yaw								= 0, 0
-lim_zoom							= 1, 5
-rot_speed							= 2, 2, 2
-offset								= 0.4, 0.2, -1.1
-autoaim_speed_y						= 0.5, 3.14			;min, max speed
-autoaim_speed_x						= 0.5, 3.14
+lim_pitch                = -0.7, 1
+lim_yaw                  = 0, 0
+lim_zoom                 = 1, 5
+rot_speed                = 2, 2, 2
+offset					= 0.4,0.2,-1.1
+autoaim_speed_y			= 0.5, 3.14    ;min,max speed
+autoaim_speed_x			= 0.5, 3.14
 
 [mounted_weapon_cam]
-lim_pitch							= -0.5, 0.5
-lim_yaw								= -2.0, 2.0
-rot_speed							= 3.14, 1.0, 0
+lim_pitch                = -0.5, 0.5
+lim_yaw                  = -2.0, 2.0
+rot_speed                = 3.14, 1.0, 0
 
 [car_firsteye_cam]
-lim_pitch							= -0.5, 0.3
-lim_yaw								= -2.0, 2.0
-rot_speed							= 3.14, 1.0, 0
-
+lim_pitch                = -0.5, 0.3
+lim_yaw                  = -2.0, 2.0
+rot_speed                = 3.14, 1.0, 0
+ 
 [car_free_cam]
-lim_pitch							= -1, 1.56
-lim_yaw								= 0, 0
-lim_zoom							= 1, 10 ;1, 7
-rot_speed							= 3.14, 1.0, 10
+lim_pitch                = -1, 1.56 ;0, 1.56
+lim_yaw                  = 0, 0 ;0, 0
+lim_zoom                 = 1, 10 ;1, 7
+rot_speed                = 3.14, 1.0, 10 ;3.14, 1.0, 10
 
 [car_look_cam]
-lim_pitch							= 0, 1.56
-lim_yaw								= 0, 0
-lim_zoom							= 1, 7
-rot_speed							= 25, 1.0, 10
+lim_pitch                = 0, 1.56
+lim_yaw                  = 0	, 0
+lim_zoom                 = 1, 7
+rot_speed                = 25, 1.0, 10
 
 [heli_free_cam]
-lim_pitch							= -1.5, 1.5
-lim_yaw								= 0, 0
-lim_zoom							= 5, 25
-rot_speed							= 3.14, 1.0, 10
-
+lim_pitch                = -1.5, 1.5
+lim_yaw                  = 0, 0
+lim_zoom                 = 5, 25
+rot_speed                = 3.14, 1.0, 10
+ 
 [heli_front_cam]
-;lim_yaw							= -0.01,0.01
-lim_pitch							= -1.2, 1.2
-lim_yaw								= -1.5, 1.5
-rot_speed							= 3.14, 1.5, 0
-
+;lim_yaw		= -0.01,0.01
+lim_pitch                = -1.2, 1.2
+lim_yaw                  = -1.5, 1.5
+rot_speed                = 3.14, 1.5, 0
+ 
 [heli_look_cam]
-lim_pitch							= 0, 1.56
-lim_yaw								= 0, 0
-lim_zoom							= 5, 15
-rot_speed							= 3.14, 1.0, 10
-
+lim_pitch                = 0, 1.56
+lim_yaw                  = 0, 0
+lim_zoom                 = 5, 15
+rot_speed                = 3.14, 1.0, 10
+ 
 [interface]
-font_game							= font_game
-font_small							= font_small
+font_game                = font_game
+font_small               = font_small
+ 
 
 [graph_point]
-class								= AI_GRAPH
-$spawn								= "ai\graph point"
+class                = AI_GRAPH
+$spawn               = "ai\graph point"
 
-;------------------------------------------------------------------------------
+;-----------------------------------------------------------------
 ; Trade
-;------------------------------------------------------------------------------
+;-----------------------------------------------------------------
 [trade]
-;РєРѕСЌС„С„РёС†РёРµРЅС‚С‹ РёР·РјРµРЅРµРЅРёСЏ С†РµРЅС‹ РїСЂРё С‚РѕСЂРіРѕРІР»Рµ РІ Р·Р°РІРёСЃРёРјРѕСЃС‚Рё РѕС‚ РѕС‚РЅРѕС€РµРЅРёСЏ Рє РїРµСЂСЃРѕРЅР°Р¶Сѓ
-;Р»РёРЅРµР№РЅРѕ Р°РїСЂРѕРєСЃРёРјРёСЂСѓСЋС‚СЃСЏ РјРµР¶РґСѓ Р·РЅР°С‡РµРЅРёСЏРјРё
-buy_price_factor_hostile			= 1		;РєРѕСЌС„С„РёС†РёРµРЅС‚ РїРѕРєСѓРїРєРё РїСЂРё goodwill = -100
-buy_price_factor_friendly			= 1		;РєРѕСЌС„С„РёС†РёРµРЅС‚ РїРѕРєСѓРїРєРё РїСЂРё goodwill = 100
-sell_price_factor_hostile			= 1		;РєРѕСЌС„С„РёС†РёРµРЅС‚ РїСЂРѕРґР°Р¶Рё РїСЂРё goodwill = -100
-sell_price_factor_friendly			= 1		;РєРѕСЌС„С„РёС†РёРµРЅС‚ РїСЂРѕРґР°Р¶Рё РїСЂРё goodwill = 100
-;------------------------------------------------------------------------------
+;коэффициенты изменения цены при торговле в зависимости от отношения к персонажу
+;линейно апроксимируются между значения
+buy_price_factor_hostile	= 1		;коэффициент покупки при goodwill = -100
+buy_price_factor_friendly	= 1		;коэффициент покупки при goodwill = 100
+sell_price_factor_hostile	= 1		;коэффициент покупки при goodwill = -100
+sell_price_factor_friendly	= 1		;коэффициент покупки при goodwill = 100
+
+
+
+;-----------------------------------------------------------------
+
+[spawn_group_zone]
+GroupControlSection			= spawn_group_zone
+$spawn						= "ai\group zone"									; option for Level Editor
+class						= AI_SPGRP
+
+[spawn_group]
+GroupControlSection			= spawn_group
+$spawn						= "ai\spawn group"								; option for Level Editor
+class						= AI_SPGRP
 
 [level_changer]
-$spawn								= "ai\level changer"
-class								= LVL_CHNG
+GroupControlSection	= 
+$spawn 			= "ai\level changer"
+;$prefetch 		= 4
+class			= LVL_CHNG
 
 [script_zone]
-$spawn								= "ai\script zone"
-class								= SCRIPTZN
-script_binding						= xr_zones.bind
+GroupControlSection	= 
+$spawn 			= "ai\script zone"
+;$prefetch 		= 4
+class			= SCRIPTZN
+script_binding	= xr_zones.bind
 
 [physics]
-object_damage_factor				= 1.2
+object_damage_factor		= 1.2f
 
-;------------------------------------------------------------------------------
-; Р“Р•РќР•Р РђРўРћР Р« РРњР•Рќ
-;------------------------------------------------------------------------------
+;*****************************************
+; ГЕНЕРАТОРЫ ИМЕН
+;*****************************************
 [stalker_names_stalker]
-name_cnt							= 102
-last_name_cnt						= 599
+name_cnt		= 102
+last_name_cnt	= 599
 
 [stalker_names_bandit]
-name_cnt							= 36
-last_name_cnt						= 180
+name_cnt		= 36
+last_name_cnt	= 180
 
 [stalker_names_science]
-name_cnt							= 14
-last_name_cnt						= 27
+name_cnt		= 14
+last_name_cnt	= 27
 
 [stalker_names_private]
-name_cnt							= 1
-last_name_cnt						= 200
+name_cnt		= 1
+last_name_cnt	= 200
 
 [stalker_names_sergeant]
-name_cnt							= 1
-last_name_cnt						= 200
+name_cnt		= 1
+last_name_cnt	= 200
 
 [stalker_names_lieutenant]
-name_cnt							= 1
-last_name_cnt						= 200
+name_cnt		= 1
+last_name_cnt	= 200
 
 [stalker_names_captain]
-name_cnt							= 1
-last_name_cnt						= 200
+name_cnt		= 1
+last_name_cnt	= 200
+
 
 [script_object]
-$spawn								= "script\script object"	; option for Level Editor
-$npc								= on						; option for Level Editor
+GroupControlSection			= spawn_group
+$spawn						= "script\script object"						; option for Level Editor
+$npc						= on											; option for Level Editor
+; $prefetch 					= 32										;
+Scheduled					= on											; option for ALife Simulator
+Human		     			= off											; option for ALife Simulator
+cform                       = skeleton										; collision class
+class                       = SCRPTOBJ										; AI class
 
-;------------------------------------------------------------------------------
-; Offline Alife
-;------------------------------------------------------------------------------
-Scheduled							= on						; option for ALife Simulator
-Human								= off						; option for ALife Simulator
-cform								= skeleton					; collision class
-class								= SCRPTOBJ					; AI class
-
-;РїР°СЂР°РјРµС‚СЂС‹ РїРѕРєР°Р·С‹РІР°РЅРёСЏ РІС…РѕРґСЏС‰РёС… СЃРѕРѕР±С‰РµРЅРёР№ PDA РІ РіР»Р°РІРЅРѕРј РјРµРЅСЋ
+;параметры показывания входящих сообщений PDA в главном меню
 [maingame_ui]
-pda_msgs_max_show_time				= 20000
-info_msgs_max_show_time				= 10000
-snd_new_contact						= detectors\contact_1
-;snd_new_contact1					= detectors\contact_8
+pda_msgs_max_show_time = 20000
+info_msgs_max_show_time = 10000
+snd_new_contact					= detectors\contact_1
+snd_new_contact1				= detectors\contact_8
 
 [attachable_item]
-$spawn								= "equipment\attachable_item"
-cform								= skeleton
-class								= II_ATTCH
-cost								= 100
-inv_name							= "Attachable item"
-inv_name_short						= "Attachable item"
-inv_weight							= 0.5
-inv_grid_width						= 2
-inv_grid_height						= 1
-inv_grid_x							= 16
-inv_grid_y							= 12
-attach_angle_offset					= 0, -3.14, 1.6
-attach_position_offset				= 0.105, 0.00, 0.085
-attach_bone_name					= bip01_head
+GroupControlSection		= spawn_group
+discovery_dependency	= 
+$spawn					= "equipment\attachable_item"
+cform                   = skeleton
+class					= II_ATTCH
+cost					= 100
+inv_name				= "Attachable item"
+inv_name_short			= "Attachable item"
+inv_weight				= .5
+inv_grid_width			= 2
+inv_grid_height			= 1
+inv_grid_x				= 16
+inv_grid_y				= 12
+attach_angle_offset		= 0, -3.14, 1.6
+attach_position_offset	= 0.105, 0.00, 0.085
+attach_bone_name		= bip01_head
 
-[hand_radio]:identity_immunities
-$spawn								= "equipment\hand_radio"
-cform								= skeleton
-class								= II_ATTCH
-visual								= equipments\item_fmradio.ogf
-cost								= 0
-inv_name							= "hand_radio"
-inv_name_short						= "hand_radio"
-inv_weight							= 0.5
-inv_grid_width						= 2
-inv_grid_height						= 1
-inv_grid_x							= 16
-inv_grid_y							= 12
-attach_angle_offset					= -1.5708, 0.1919, 3.1416		;СѓСЃС‚Р°РЅР°РІР»РёРІР°РµС‚СЃСЏ РІ СЂР°РґРёР°РЅР°С… Angle*PI/180
-attach_position_offset				= 0.075, 0.066, 0.023
-attach_bone_name					= bip01_l_hand
-auto_attach							= false
+[new_attachable_item]
+GroupControlSection		= spawn_group
+discovery_dependency	= 
+$spawn					= "equipment\new_attachable_item"
+cform                   = skeleton
+class					= II_BTTCH
+cost					= 100
+inv_name				= "Attachable item"
+inv_name_short			= "Attachable item"
+inv_weight				= .5
+inv_grid_width			= 2
+inv_grid_height			= 1
+inv_grid_x				= 16
+inv_grid_y				= 12
+attach_angle_offset		= 0, -3.14, 1.6
+attach_position_offset	= 0.105, 0.00, 0.085
+attach_bone_name		= bip01_head
 
 [breakable_object]
 class						= O_BRKBL
@@ -412,64 +475,149 @@ immunity_factor				= 1.3	    ;hit power multiplier
 [climable_object]
 class						= O_CLMBL
 
+[zone_team_base]
+$spawn 			= "network\team base"
+class			= Z_TEAMBS
+GroupControlSection	= spawn_group_zone
+
+[multiplayer_skins]
+stalker_killer_head_1	= 0,380
+stalker_killer_antigas	= 128,380
+stalker_killer_head_3	= 256,380
+stalker_killer_mask		= 384,380
+stalker_killer_exoskeleton	= 512,380
+stalker_sci_killer		= 640,380
+stalker_killer_military = 768,380
+
+stalker_sv_balon_10		= 0,705
+stalker_sv_hood_9		= 128,705
+stalker_sv_rukzak_3		= 256,705
+stalker_sv_rukzak_2		= 384,705
+stalker_sv_exoskeleton	= 512,705
+stalker_sci_svoboda		= 640,705
+stalker_sv_military		= 768,705
+
 [main_ingame_indicators_thresholds]
-jammed								= 0.5, 0.6, 0.7, 0.8, 0.9
-radiation							= 0.1, 0.25, 0.4, 0.55, 0.7
-wounds								= 0.01, 0.2, 0.4, 0.6, 0.8
-starvation							= 0.5, 0.6, 0.7, 0.8, 0.9
-fatigue								= 0.3, 0.6, 0.7, 0.8, 0.9
+radiation				= 0.1,0.25,0.4,0.55,0.7
+wounds					= 0.01,0.2,0.4,0.6,0.8
+jammed					= 0.5,0.6,0.7,0.8,0.9
+starvation				= 0.5,0.6,0.7,0.8,0.9
+fatigue					= 0.3,0.6,0.7,0.8,0.9
 
 [tutorial_conditions_thresholds]
-power								= 0.1
-max_power							= 0.75
-bleeding							= 0.4
-satiety								= 0.5
-radiation							= 0.1
-weapon_jammed						= 0.9
-psy_health							= 0.5
+max_power				= 0.75
+power					= 0.1
+bleeding				= 0.4
+satiety					= 0.5
+radiation				= 0.1
+weapon_jammed			= 0.9
+psy_health				= 0.9
 
 [squad_manager]
-schedule_min						= 1
-schedule_max						= 999
+schedule_min			=   1
+schedule_max			= 999
 
 [agent_manager]
-schedule_min						= 100
-schedule_max						= 1000
+schedule_min			= 100
+schedule_max			= 1000
+
+[custom_script_object]
+GroupControlSection		= spawn_group
+discovery_dependency	= 
+$spawn					= "scripts\custom_object"
+cform                   = skeleton
+class					= NW_ATTCH
+visual                  = equipments\item_fmradio.ogf
+cost					= 0
+inv_name				= "custom_script_object"
+inv_name_short			= "custom_script_object"
+inv_weight				= .5
+inv_grid_width			= 2
+inv_grid_height			= 1
+inv_grid_x				= 16
+inv_grid_y				= 12
+attach_angle_offset		= 0, 0, 0
+attach_position_offset	= 0.08, 0.04, 0.03
+attach_bone_name		= bip01_r_hand
 
 [ph_skeleton_object]
-class								= P_SKELET
-remove_time							= 120
+class					= P_SKELET
+remove_time				= 120
 
 [script]
-current_server_entity_version		= 7
+current_server_entity_version = 7
 
 [space_restrictor]
-$spawn								= "ai\space_restrictor"
-class								= SPC_RS_S
-script_binding						= bind_restrictor.bind
+GroupControlSection		= spawn_group_restrictor
+$spawn					= "ai\space_restrictor"
+;$prefetch 				= 64
+class					= SPC_RS_S
+script_binding          = bind_restrictor.bind
+
+
+; OGSM Hide Restrictors
+[l01_escape_hide_restrictor]:space_restrictor
+
+[l02_garbage_hide_restrictor]:space_restrictor
+
+[l03_agroprom_hide_restrictor]:space_restrictor
+
+[l04_darkvalley_hide_restrictor]:space_restrictor
+
+[l05_bar_hide_restrictor]:space_restrictor
+
+[l06_rostok_hide_restrictor]:space_restrictor
+
+[l07_military_hide_restrictor]:space_restrictor
+
+[l08_yantar_hide_restrictor]:space_restrictor
+
+[l10_radar_hide_restrictor]:space_restrictor
+
+[l11_pripyat_hide_restrictor]:space_restrictor
+
+
+; OGSM Psy Restrictors
+[l01_escape_psy_restrictor]:space_restrictor
+
+[l02_garbage_psy_restrictor]:space_restrictor
+
+[l03_agroprom_psy_restrictor]:space_restrictor
+
+[l04_darkvalley_psy_restrictor]:space_restrictor
+
+[l06_rostok_psy_restrictor]:space_restrictor
+
+[l07_military_psy_restrictor]:space_restrictor
+
+[l08_yantar_psy_restrictor]:space_restrictor
+
+[l10_radar_psy_restrictor]:space_restrictor
+
+[l11_pripyat_psy_restrictor]:space_restrictor
+
 
 [collision_damage]
-bonce_damage_factor_for_objects		= 1.0
+bonce_damage_factor_for_objects = 1.
 
-; swing desc
 [details]
-; normal
-swing_normal_amp1					= 0.1
-swing_normal_amp2					= 0.05
-swing_normal_rot1					= 30.0
-swing_normal_rot2					= 1.0
-swing_normal_speed					= 2.0
-; fast
-swing_fast_amp1						= 0.35	;0.25
-swing_fast_amp2						= 0.2	;0.15
-swing_fast_rot1						= 5
-swing_fast_rot2						= 0.5	;0.75
-swing_fast_speed					= 0.5	;1
+swing_normal_amp1	= .1
+swing_normal_amp2	= .05
+swing_normal_rot1	= 30.0
+swing_normal_rot2	= 1.0
+swing_normal_speed	= 2.0
+// fast
+swing_fast_amp1		= 0.35;0.25
+swing_fast_amp2		= .20;0.15
+swing_fast_rot1		= 5
+swing_fast_rot2		= .5;0.75
+swing_fast_speed	= 0.5;1
 
 [ph_capture_visuals]
-;СЃРїРёСЃРѕРє РѕР±СЉРµРєС‚РѕРІ РєРѕС‚РѕСЂС‹Рµ РјРѕР¶РЅРѕ С‚Р°СЃРєР°С‚СЊ
 
-;bandit
+//Список объектов которые можно таскать.
+
+//bandit
 actors\bandit\stalker_bandit_1
 actors\bandit\stalker_bandit_2
 actors\bandit\stalker_bandit_3
@@ -484,7 +632,7 @@ actors\bandit\stalker_bandit_drunk
 actors\bandit\stalker_bandit_master
 actors\bandit\stalker_bandit_veteran
 
-;dolg
+//dolg
 actors\dolg\stalker_do_antigas
 actors\dolg\stalker_do_balon_1
 actors\dolg\stalker_do_balon_2
@@ -501,11 +649,11 @@ actors\dolg\stalker_do_mask
 actors\dolg\stalker_do_mask_1
 actors\dolg\stalker_do_nauchniy
 
-;ecolog
+//ecolog
 actors\ecolog\stalker_ecolog
 actors\ecolog\stalker_ecolog_military
 
-;killer
+//killer
 actors\killer\stalker_ki_antigas
 actors\killer\stalker_ki_exoskeleton
 actors\killer\stalker_ki_head_1
@@ -521,17 +669,17 @@ actors\killer\stalker_ki_nauchniy
 actors\killer\stalker_ki_temp
 actors\killer\stalker_ki_temp2
 
-;militari
+//militari
 actors\militari\stalker_militari_1
 actors\militari\stalker_militari_2
 actors\militari\stalker_militari_antigas_1
 actors\militari\stalker_militari_antigas_2
 
-;nauchniy
+//nauchniy
 actors\nauchniy\nauchniy_0
 actors\nauchniy\nauchniy_1
 
-;neytral
+//neytral
 actors\neytral\stalker_bar_security
 actors\neytral\stalker_neytral_balon_1
 actors\neytral\stalker_neytral_balon_2
@@ -562,7 +710,7 @@ actors\neytral\stalker_neytral_rukzak_6
 actors\neytral\stalker_neytral_rukzak_7
 actors\neytral\stalker_prizrak
 
-;novice
+//novice
 actors\novice\green_stalker_1
 actors\novice\green_stalker_10
 actors\novice\green_stalker_11
@@ -576,7 +724,7 @@ actors\novice\green_stalker_8
 actors\novice\green_stalker_9
 actors\novice\green_stalker_antigas
 
-;soldier
+//soldier
 actors\soldier\soldier_antigas
 actors\soldier\soldier_bandana
 actors\soldier\soldier_bandana_1
@@ -597,7 +745,7 @@ actors\soldier\soldier_spetsnaz
 actors\soldier\stalker_military_black
 actors\soldier\stalker_military_green
 
-;stalker_zombi
+//stalker_zombi
 actors\stalker_zombi\stalker_zombie_specnaz
 actors\stalker_zombi\stalker_zombie1
 actors\stalker_zombi\stalker_zombie2
@@ -612,7 +760,7 @@ actors\stalker_zombi\zombie_fresh_0
 actors\stalker_zombi\zombie_fresh_1
 actors\stalker_zombi\zombie_fresh_2
 
-;svoboda
+//svoboda
 actors\svoboda\stalker_sv_balon_1
 actors\svoboda\stalker_sv_balon_10
 actors\svoboda\stalker_sv_cook
@@ -628,16 +776,288 @@ actors\svoboda\stalker_sv_rukzak_2
 actors\svoboda\stalker_sv_rukzak_3
 actors\svoboda\stalker_sv_rukzak_3_1
 
-;ucheniy
+//ucheniy
 actors\ucheniy\ucheniy_1
 actors\ucheniy\ucheniy_2
 actors\ucheniy\ucheniy_3
 actors\ucheniy\ucheniy_4
 
-;monolith
+//Monolith
 actors\monolit\stalker_mo_exo
 actors\monolit\stalker_mo_head_1
 actors\monolit\stalker_mo_head1
 actors\monolit\stalker_mo_hood_9
 actors\monolit\stalker_mo_mask
 actors\monolit\stalker_mo_nauchniy
+
+//Monsters
+monsters\dog\dog
+monsters\dog\dog_bulterier
+monsters\dog\dog_bulterier_dead
+monsters\dog\dog_dead
+monsters\dog\dog_red
+monsters\dog\dog_red_dead
+monsters\dog\dog_white
+monsters\dog\dog_white_dead
+monsters\flesh\flesh
+monsters\flesh\flesh_dead
+monsters\flesh\flesh_strong
+monsters\kontroler\kontroler
+monsters\kontroler\kontroler_2
+monsters\kontroler\kontroler_3
+monsters\kontroler\kontroler_4
+monsters\kontroler\kontroler_5
+monsters\kontroler\kontroler_dead
+monsters\krovosos\krovosos
+monsters\krovosos\krovosos_dead
+monsters\krovosos\krovosos_strong
+monsters\krovosos\krovosos_strong_xray
+monsters\krovosos\krovosos_xray
+monsters\mutant_boar\mutant_boar
+monsters\mutant_boar\mutant_boar_dead
+monsters\mutant_boar\mutant_boar_strong
+monsters\poltergeist\poltergeist
+monsters\poltergeist\poltergeist_strong
+monsters\poltergeist\poltergeyst_dead
+monsters\pseudodog\pseudodog
+monsters\pseudodog\pseudodog_dead
+monsters\pseudodog\pseudodog_grey
+monsters\pseudodog\pseudodog_grey_dead
+monsters\psevdogigant\psevdogigant
+monsters\psevdogigant\psevdogigant_dead
+monsters\psevdogigant\psevdogigant_strong
+monsters\snork\snork
+monsters\snork\snork_dead
+monsters\stalker_zombi\stalker_zombi
+monsters\tushkano\tushkano
+monsters\tushkano\tushkano_dead
+monsters\burer\burer 
+monsters\burer\burer_1 
+monsters\cat\cat 
+monsters\chimera\chimera 
+monsters\crow\crow 
+monsters\dark_stalker\dark_stalker 
+monsters\izlom\izlom 
+monsters\rat\rat_1 
+monsters\rat\rat_2 
+monsters\rat\rat_3 
+monsters\topolinypuh\topolinypuh 
+monsters\topolinypuh\tp_bottom 
+monsters\zombi\zombi_1 
+monsters\zombi\zombi_1_ghost 
+monsters\zombi\zombi_2 
+monsters\zombi\zombi_4 
+monsters\zombi\zombi_trup 
+monsters\zombi\zombi_trup_2 
+
+monsters\chimera\chimera_strong
+monsters\zombi\zombi_x3
+monsters\zombi\zombi_x4
+monsters\zombi\zombi_3
+
+//Objects
+objects\dynamics\balon\balon_01
+objects\dynamics\balon\bidon
+objects\dynamics\balon\bochka_close_1
+objects\dynamics\balon\bochka_close_2
+objects\dynamics\balon\bochka_close_3
+objects\dynamics\balon\bochka_close_4
+objects\dynamics\balon\bochka_fuel
+objects\dynamics\balon\bochka_open_1
+objects\dynamics\balon\bochka_open_2
+objects\dynamics\balon\bochka_open_3
+objects\dynamics\balon\bochka_open_4
+objects\dynamics\balon\kanistra
+objects\dynamics\box\box_1a
+objects\dynamics\box\box_1b
+objects\dynamics\box\box_1c
+objects\dynamics\box\box_wood_01
+objects\dynamics\box\box_wood_tara
+objects\dynamics\box\prt\box_wood_01_prt1
+objects\dynamics\box\prt\box_wood_01_prt2
+objects\dynamics\box\prt\box_wood_01_prt3
+objects\dynamics\box\prt\box_wood_01_prt4
+objects\dynamics\box\prt\box_wood_01_prt5
+objects\dynamics\box\prt\box_wood_01_prt6
+objects\dynamics\box\prt\box_wood_01_prt7
+objects\dynamics\chair\lavochka_01
+objects\dynamics\chair\lavochka_02
+objects\dynamics\chair\stul_wood_01
+objects\dynamics\chair\taburet_wood_01
+objects\stul\lavochka_01
+objects\stul\lavochka_02
+objects\stul\stul_1a
+objects\stul\stul_1c
+objects\stul\stul_wood_01
+objects\stul\taburet_wood_01
+objects\dynamics\decor\tv_1_br
+objects\dynamics\decor\vedro_01
+objects\dynamics\plitka\plitka1
+objects\dynamics\plitka\plitka_br1
+physics\balon\balon_01
+physics\balon\balon_02
+physics\balon\bidon
+physics\balon\bochka_close_1
+physics\balon\bochka_close_2
+physics\balon\bochka_close_3
+physics\balon\bochka_close_4
+physics\balon\bochka_fuel
+physics\balon\bochka_open_1
+physics\balon\bochka_open_2
+physics\balon\bochka_open_3
+physics\balon\bochka_open_4
+physics\balon\bomb_01
+physics\balon\box_lab_03
+physics\balon\kanistra
+physics\box\box_1a
+physics\box\box_1b
+physics\box\box_1c
+physics\box\box_lab_01
+physics\box\box_lab_02
+physics\box\box_metall_01
+physics\box\box_pak_01
+physics\box\box_wood_01
+physics\box\box_wood_tara
+physics\box\expl_dinamit
+physics\box\konteyner_01
+physics\box\konteyner_02
+physics\box\konteyner_03
+physics\box\seif_01
+physics\box\prt\box_lab_02_prt1
+physics\box\prt\box_lab_02_prt2
+physics\box\prt\box_lab_02_prt3
+physics\box\prt\box_lab_02_prt4
+physics\box\prt\box_lab_02_prt5
+physics\box\prt\box_lab_02_prt6
+physics\box\prt\box_metall_01_prt1
+physics\box\prt\box_metall_01_prt2
+physics\box\prt\box_wood_01_prt1
+physics\box\prt\box_wood_01_prt2
+physics\box\prt\box_wood_01_prt3
+physics\box\prt\box_wood_01_prt4
+physics\box\prt\box_wood_01_prt5
+physics\box\prt\box_wood_01_prt6
+physics\box\prt\box_wood_01_prt7
+physics\decor\bag_01
+physics\decor\banka_kraski_1
+physics\decor\bottle_bar_1
+physics\decor\bottle_bar_stakan
+physics\decor\brain
+physics\decor\butilka_1
+physics\decor\butilka_2
+physics\decor\butilka_2a
+physics\decor\butilka_2b
+physics\decor\butilka_vodka_01
+physics\decor\butil_1
+physics\decor\butil_2
+physics\decor\butil_3
+physics\decor\fire_schit
+physics\decor\fire_vedro
+physics\decor\freezer
+physics\decor\kartina03
+physics\decor\kartina04
+physics\decor\kartina05
+physics\decor\kartina06
+physics\decor\kartina_01
+physics\decor\kartina_02
+physics\decor\kitchen_bludo
+physics\decor\kitchen_kastrula
+physics\decor\kitchen_kastrula_up
+physics\decor\kitchen_krujka
+physics\decor\kitchen_lojka
+physics\decor\kitchen_miska
+physics\decor\kitchen_tarelka1
+physics\decor\kitchen_tarelka2
+physics\decor\kiy
+physics\decor\kozel_01
+physics\decor\krisagenerator
+physics\decor\med_stoyka_01
+physics\decor\monolith_generator
+physics\decor\musor_konteyner_01
+physics\decor\mysor_korzina_1
+physics\decor\mysor_korzina_2
+physics\decor\ognetushitel
+physics\decor\plakat_01
+physics\decor\plakat_3x4
+physics\decor\plakat_map_gold_01
+physics\decor\plakat_prop_map_01
+physics\decor\pool_shar02
+physics\decor\priemnik_gorizont
+physics\decor\rupor
+physics\decor\sign_bar_logo_01
+physics\decor\sign_mine
+physics\decor\sign_radiation
+physics\decor\sign_stop
+physics\decor\switcher
+physics\decor\teapot_1
+physics\decor\tiski
+physics\decor\tomb_00
+physics\decor\tomb_01
+physics\decor\tomb_02
+physics\decor\tomb_03
+physics\decor\tomb_04
+physics\decor\tv_1
+physics\decor\tv_1_br
+physics\decor\tv_2_br
+physics\decor\vedro_01
+physics\decor\ventilator01_exp
+physics\decor\ventilator_01
+physics\decor\ventilator_mike
+physics\decor\ventilyator_lab
+physics\decor\vetrogenerator
+physics\decor\weapons_schit
+physics\decor\wetryak
+physics\equipment_cache\equipment_box_01_case
+physics\equipment_cache\equipment_box_02_case
+physics\equipment_cache\equipment_cross_1_case
+physics\equipment_cache\equipment_cross_2_case
+physics\equipment_cache\equipment_cross_3_case
+physics\equipment_cache\equipment_electric_box_01_case
+physics\equipment_cache\equipment_electric_box_02_case
+physics\equipment_cache\equipment_hatch_01_case
+physics\equipment_cache\equipment_hatch_02_case
+physics\equipment_cache\equipment_instrument_case_01_case
+physics\equipment_cache\equipment_pipe_01_case
+physics\equipment_cache\equipment_pipe_02_case
+physics\equipment_cache\equipment_pipe_valve_01_case
+physics\equipment_cache\equipment_rucksack_01_case
+physics\equipment_cache\equipment_rucksack_02_case
+physics\equipment_cache\equipment_seif_01_case
+physics\equipment_cache\equipment_seif_02_case
+physics\equipment_cache\equipment_seif_03_case
+physics\equipment_cache\equipment_trees_log_01_case
+physics\equipment_cache\equipment_trees_stump_01_case
+physics\equipment_cache\equipment_zaz968_case
+physics\stul\lavochka_01
+physics\stul\lavochka_02
+physics\stul\stul_1a
+physics\stul\stul_1c
+physics\stul\stul_wood_01
+physics\stul\taburet_wood_01
+
+;---------------------------------------------------------------ARENA_EXTENSION_MOD------------------------------------------------------------------
+#include "creatures\aem_monsters.ltx"
+#include "creatures\aem_stalkers.ltx"
+
+[aem_sound]:space_restrictor
+GroupControlSection		= spawn_group_restrictor
+$spawn				= ;"ai\space_restrictor"
+;$prefetch 			= 64
+class				= SPC_RS_S
+script_binding          	= bind_restrictor.bind
+custom_data			= scripts\aem\sound.ltx
+
+[aem_timer]:space_restrictor
+GroupControlSection		= spawn_group_restrictor
+$spawn				= ;"ai\space_restrictor"
+;$prefetch 			= 64
+class				= SPC_RS_S
+script_binding          	= bind_restrictor.bind
+custom_data			= scripts\aem\timer.ltx
+
+[aem_lamp]:lights_hanging_lamp
+class				= AEM_LAMP
+
+;---------------------------------------------------------------ARENA_EXTENSION_MOD------------------------------------------------------------------
+
+#include "medic.ltx"

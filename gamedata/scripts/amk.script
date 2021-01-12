@@ -1,0 +1,749 @@
+------------------- Библиотека служебных скриптов для OGSM 2.x ----------------
+
+---------------------- Copyright 2007-2008 xStream & DEXXX --------------------
+
+
+local npc_spawner={}
+local timers={}
+local g_timers={}
+local markers={}
+local x_objs={}
+local timer_trigger=nil
+wthr = level.get_weather()
+local wfx1 = "p_surge_day_"..tostring(level.get_time_hours())
+local wfx2 = "surge_day_"..tostring(level.get_time_hours())
+
+-- Переменные для типсов
+pda_news = xr_sound.get_safe_sound_object([[device\pda\pda_news]])
+pda_tips = xr_sound.get_safe_sound_object([[device\pda\pda_tip]])
+pda_task = xr_sound.get_safe_sound_object([[device\pda\pda_objective]])
+
+tips_icons = {
+	default  = { 82, 282},
+	trader   = { 332, 893},
+	dolg     = { 0, 658},
+	freedom  = { 0, 658},
+	ecolog   = { 498, 0},
+	arena    = { 332, 141},
+	stalker  = { 0, 658},
+	krot     = { 332, 47},
+	barman   = { 332, 235},
+	wolf	   = { 332, 940},
+	o_soznanie = { 498, 893},
+	monolith = { 0, 658},
+	saharov  = { 332, 470},
+	prizrak  = { 0, 658},
+	killer   = { 0, 658},
+	death    = { 0, 752}
+}
+
+
+-- Лог данных
+local bufferedmessages={}
+function mylog(msg)
+  if msg==nil then
+    return 
+  end
+  if db and db.actor then
+    if bufferedmessages then
+      for k,v in ipairs(bufferedmessages) do
+        db.actor:give_game_news(v, "ui\\ui_iconsTotal", Frect():set(0,658,83,47), 0, 15000)
+      end
+      bufferedmessages=nil
+    end
+  db.actor:give_game_news(msg, "ui\\ui_iconsTotal", Frect():set(0,658,83,47), 0, 15000)
+  else
+    if bufferedmessages then
+      table.insert(bufferedmessages,msg)
+    end
+  end
+  if get_console() then
+--	get_console():execute("load "..msg)
+--    get_console():execute("flush")
+  end
+end
+
+
+-- Показ типса
+function send_tip(news_text, header, timeout, showtime, sender, sound)
+	if news_text==nil then return end
+	if header==nil then header=game.translate_string("st_tip") end
+	if timeout == nil then timeout = 0 end
+	if showtime == nil then showtime = 5 end
+	
+	local player
+	if sound=="news" then
+		player=pda_news
+	elseif sound=="task" then
+		player=pda_task
+	else
+		player=pda_tips
+	end		
+	
+	--' Играем дефолтный звук
+	player:play(db.actor, timeout, sound_object.s2d)
+	
+	if sender == nil then
+		sender = "default"
+	end
+	local x = tips_icons[sender][1]
+	local y = tips_icons[sender][2]
+	
+	local news_text = "%c[255,160,160,160]"..header.."\\n".."%c[default]"..news_text
+	db.actor:give_game_news(news_text, "ui\\ui_iconsTotal", Frect():set(x,y,83,47), timeout*1000, showtime*1000)
+	return true
+end
+
+
+-- Старт таймера в реальном времени
+function start_timer(name,delay,action)
+	if not delay then
+		return false
+	end
+	
+	if not action then
+		action = ""
+	end
+
+	local time = game.time() --time in seconds since 1970
+	local a=1
+	while db.storage[db.actor:id()].pstor["rt"..a] do
+		a=a+1
+		if a>100 then 
+			return false 
+		end
+	end
+
+	save_variable("rt"..a, name)
+	save_variable("rt"..a.."d", time+delay*10000)
+	save_variable("rt"..a.."p", action)
+	
+	return true
+end
+
+
+-- Старт таймера в игровом времени
+function g_start_timer(name,delay_d,delay_h,delay_m,action)
+    local time = level.get_time_days()*60*24+level.get_time_hours()*60+level.get_time_minutes()  --time in game minutes
+	if delay_d==nil or delay_h==nil or delay_m==nil then
+		return false
+	end
+	
+	if action==nil then
+		action = ""
+	end
+
+	local a=1
+	while db.storage[db.actor:id()].pstor["gt"..a] do
+		a=a+1
+		if a>100 then 
+			return false 
+		end
+	end
+
+	save_variable("gt"..a, name)
+	save_variable("gt"..a.."d", time+delay_d*60*24+delay_h*60+delay_m)
+	save_variable("gt"..a.."p", action)
+
+	return true
+end
+
+
+-- Проверка таймеров, использует 3 следующие за ним функции для выбора действия
+function check_timers()
+	local tmp
+	for a=1,100,1 do
+		tmp=load_variable("rt"..a,nil)
+		if tmp~=nil then
+			__timer_found(a)	
+		end
+	end
+	
+	for a=1,100,1 do
+		tmp=load_variable("gt"..a,nil)
+		if tmp~=nil then
+			__g_timer_found(a)	
+		end
+	end
+end
+function __timer_found(idx)
+	local time = game.time() --time in seconds since 1970
+	local name,params
+	if load_variable("rt"..idx.."d", nil)<=time then
+		name=load_variable("rt"..idx, nil)
+		params=load_variable("rt"..idx.."p", nil)
+		del_variable("rt"..idx)
+		del_variable("rt"..idx.."d")
+		del_variable("rt"..idx.."p")
+		__do_timer_action(name,params)
+		return true
+	end
+	return false
+end
+function __g_timer_found(idx)
+    local gtime = level.get_time_days()*60*24+level.get_time_hours()*60+level.get_time_minutes()  --time in game minutes
+	local name,params
+	if load_variable("gt"..idx.."d", nil)<=gtime then
+		name=load_variable("gt"..idx, nil)
+		params=load_variable("gt"..idx.."p", nil)
+		del_variable("gt"..idx)
+		del_variable("gt"..idx.."d")
+		del_variable("gt"..idx.."p")
+		__do_timer_action(name,params)
+		return true
+	end
+	return false
+end
+function __do_timer_action(select_string,params_string)
+
+	local a
+
+	if select_string=="slp" then
+		sleep_manager.test_for_need_sleep()
+	end
+	if select_string=="nrg" then
+		sleep_manager.test_for_need_sleep_nrg(params_string)
+	end
+	if select_string=="mtr" then
+		sleep_manager.test_for_need_sleep_matras(params_string)
+	end
+	if select_string=="men" then
+		del_variable("smn")
+	end
+	if select_string=="rfx" then
+		ogsm_debug.radar_fix()
+	end
+
+	if select_string=="otf" then
+		a = level.object_by_id(tonumber(params_string))
+		if a ~= nil then a:set_condition((math.random(25)+40)/100) end
+	end
+
+	if select_string=="rsp" then
+		ogsm_respawn.level_spawn()
+		g_start_timer("rsp",0, vars.t_spawn+math.random(-1,1), 0)
+	end
+
+-- Начало алгоритма выброса --
+
+-- 1. Настало время выброса.
+	if select_string=="bl1" then
+		if ogsm_surge then
+			if (level.name() ~= "l03u_agr_underground") and (level.name() ~= "l08u_brainlab") and (level.name() ~= "l10u_bunker") and (level.name() ~= "l04u_labx18") and (level.name() ~= "l12u_sarcofag") and (level.name() ~= "l12u_control_monolith") and (level.name() ~= "l12_stancia") and (level.name() ~= "l12_stancia_2") then
+				if sleep_manager.is_sleep_active() then sleep_manager.stopper() end
+				start_timer("bl2",1)
+			else
+				g_start_timer("bl1",0,1,0)
+			end
+		else
+			g_start_timer("bl1",0,10,0)
+		end
+	end
+
+-- 2. Сирена, первые визуальные признаки выброса
+	if select_string=="bl2" then
+		db.Flag2 = 1
+		save_variable("blt", 1)
+		level.set_weather("stancia")
+		wfx1 = "p_surge_day_"..tostring(level.get_time_hours())
+		level.set_weather_fx(wfx1)
+		level.add_pp_effector("vibros_p.ppe", 1974, false)	
+		local snd_obj = xr_sound.get_safe_sound_object([[anomaly\dezodor]])
+		snd_obj:play_at_pos(db.actor, vector():set(0,0,0), 0, sound_object.s2d)
+		g_start_timer("bl3",0,0,8)
+	end
+
+-- 3. Проигрываем промежуточные эффекты
+	if select_string=="bl3" then
+		level.set_weather("stancia")
+		level.set_weather_fx(wfx1)
+		g_start_timer("bl4",0,0,5)
+	end
+
+-- 4. Спустя 5 минут затишья начинаем выброс
+	if select_string=="bl4" then
+		xr_sound.set_actor_sound("")
+		level.set_weather("stancia")
+		local snd_obj = xr_sound.get_safe_sound_object([[ambient\earthquake]])
+		snd_obj:play_at_pos(db.actor, vector():set(0,0,0), 0, sound_object.s2d)
+		level.add_cam_effector("camera_effects\\earthquake.anm", 1974, true, "")
+		wfx2 = "surge_day_"..tostring(level.get_time_hours())
+		level.set_weather_fx(wfx2)
+		level.add_pp_effector ("vibros.ppe", 1974, false)
+		local snd_obj = xr_sound.get_safe_sound_object([[anomaly\blowout]])
+		snd_obj:play_at_pos(db.actor, vector():set(0,0,0), 0, sound_object.s2d)
+		ogsm_surge.play_sounds()
+		g_start_timer("bl5",0,0,4)
+	end
+
+-- 5. Начинаем расколбас
+	if select_string=="bl5" then
+		save_variable("blt", 2)
+		level.remove_cam_effector(1974)
+		db.Dead2 = 1
+		if db.FlagEsc == 0 then
+			local snd_obj = xr_sound.get_safe_sound_object([[actor\pain_3]])
+			snd_obj:play_at_pos(db.actor, vector():set(0,0,0), 0, sound_object.s2d)
+			level.add_cam_effector("camera_effects\\head_shot.anm", 1975, false, "")
+			ogsm_surge.g_R_Vibros:Run()
+		end
+		g_start_timer("bl6",0,0,5)
+	end
+
+
+-- 6. Выброс близится к концу
+	if select_string=="bl6" then
+		level.set_weather_fx(wfx1)
+		g_start_timer("bl7",0,0,5)
+	end
+
+-- 7. Завершаем выброс, устанавливаем время следующего
+	if select_string=="bl7" then
+		ogsm_surge.g_R_Vibros:Stop()
+		if db.FlagEsc == 0 then
+			level.add_cam_effector("camera_effects\\shell_shock.anm", 1974, false, "")
+			local snd_obj = xr_sound.get_safe_sound_object([[actor\breath_1]])
+			snd_obj:play_at_pos(db.actor, vector():set(0,0,0), 0, sound_object.s2d)
+		end
+		level.add_pp_effector ("teleport.ppe", 2009, false)
+		local snd_obj2 = xr_sound.get_safe_sound_object([[ambient\earthquake]])
+		snd_obj2:play_at_pos(db.actor, vector():set(0,0,0), 0, sound_object.s2d)
+		if has_alife_info("freeplay") and (level.name()=="l11_pripyat" or level.name()=="l10_radar") then
+			level.set_weather("default")
+		else
+			level.set_weather(wthr)
+		end
+		del_variable("blt")
+		g_start_timer("bl1",0, vars.t_surge+math.random(-4,4), 0)
+		ogsm_anomaly.add_anom()
+		ogsm_surge.spawn_arts()
+		ogsm_respawn.level_spawn()
+		if ogsm_psyzones then ogsm_psyzones.spawn_psy() end
+		db.Dead2 = 0
+		db.Flag2 = 0
+		if not has_alife_info("first_blowout") then db.actor:give_info_portion("first_blowout") end
+	end
+
+
+-- Конец алгоритма выброса --
+
+
+	if select_string=="vdk" then
+		ogsm_quests.use_vodka(params_string)
+	end
+
+	if select_string=="hrm" then
+		ogsm_quests.use_harmonica(params_string)
+	end
+
+	if select_string=="rad" then
+		ogsm_quests.use_radio(params_string)
+	end
+
+	if select_string=="spw" then
+		if params_string == "rad" then spawn_item_in_inv("hand_radio_f")
+		elseif params_string == "hrm" then spawn_item_in_inv("harmonica_f") end
+	end
+
+	if select_string=="scr" then
+		ogsm_quests.spawn_fn2000()
+		db.actor:give_info_portion("secret_talk")
+	end
+
+	if select_string=="fpl" then
+		level_tasks.set_task_state(task.completed, "sar_warlab", 0)
+		level_tasks.set_task_state(task.completed, "sar_warlab", 1)
+	end
+
+	if select_string=="oso" then
+		level.add_pp_effector("deadcity_wake.ppe", 2008, false)
+		local point = patrol("mon_jump_aes2_walk")
+		local look = patrol("mon_jump_aes2_look")
+		db.actor:set_actor_position(point:point(0))
+		local dir = look:point(0):sub(point:point(0))
+		db.actor:set_actor_direction(-dir:getH())
+	end
+
+	if select_string=="vd1" then
+		local p = particles_object("anomaly2\\teleport_out_00")
+		p:play_at_pos(params_string)
+		local s = sound_object("anomaly\\teleport_incoming")
+		s:play_no_feedback(db.actor,sound_object.s2d, 0, vector():set(0, 0, 0), 1.0)
+		start_timer("vd2", 2)
+	end
+
+	if select_string=="vd2" then
+		level.add_pp_effector("teleport.ppe", 2009, false)
+		local s = sound_object("anomaly\\teleport_work_2")
+		s:play_at_pos(db.actor, vector():set(0, 0, 0), 0, sound_object.s2d)
+		db.actor:give_info_portion("pri_trader_vanish")
+		start_timer("vd3", 2)
+	end
+
+	if select_string=="vd3" then
+		local s = sound_object("x18_laugh")
+		s:play_no_feedback(db.actor,sound_object.s2d, 0, vector():set(0, 0, 0), 1.0)
+		level.enable_input()
+		db.actor:restore_weapon()
+	end
+
+end
+
+
+-- Спавним объекты на карту
+-- Для спавна неписей смотрим config\creatures\spawn_sections.ltx 
+-- Там написаны имена секций для разных типов неписей
+function spawn_item(spawn_item, pos)
+	return alife():create(spawn_item, pos, 1, db.actor:game_vertex_id())
+end
+
+
+-- Спавним объекты в инвентарь
+function spawn_item_in_inv(spawn_item,npc)
+	if npc==nil then 
+		npc=db.actor 
+	end
+	return alife():create(spawn_item,	
+			npc:position(),
+			npc:level_vertex_id(),	
+			npc:game_vertex_id(),
+			npc:id())
+end
+
+
+-- Спавним патроны в инвентарь
+function spawn_ammo_in_inv(spawn_item,number,npc)
+	if npc==nil then 
+		npc=db.actor 
+	end
+	if number > 0 then
+		return se_respawn.create_ammo(spawn_item,	
+				npc:position(),
+				npc:level_vertex_id(),	
+				npc:game_vertex_id(),
+				npc:id(),
+				number)
+	end
+end
+
+
+-- Удаляем объект из игры
+function remove_item(remove_item)
+	if remove_item~=nil then
+		alife():release(alife():object(remove_item:id()), true)
+		return true
+	end
+	return false
+end
+
+
+-- Выбрасываем объект из инвентаря, применимо к ГГ
+function drop_item(npc,item)
+	if item~=nil then
+	    npc:mark_item_dropped(item)
+	end
+end
+
+
+-- Убиваем непися
+function make_suicide(npc)
+	npc:kill(npc)
+end
+
+
+-- Узнаем отношение одного непися к другому
+function get_npc_relation(obj,target)
+	local rel = obj:relation(target)
+	local relation
+	if rel==game_object.neutral then
+		relation="neutral"
+	elseif rel==game_object.friend then
+		relation="friend"
+	elseif rel==game_object.enemy then
+		relation="enemy"
+	else
+		return false
+	end
+	return relation
+end
+
+
+-- Задаем отношение одного непися к другому
+function set_npc_relation(obj,target,relation)
+	local rel
+	if relation=="neutral" then
+		rel=game_object.neutral
+	elseif relation=="friend" then
+		rel=game_object.friend
+	elseif relation=="enemy" then
+		rel=game_object.enemy
+	else
+		return false
+	end	
+	obj:set_relation(rel,target)
+	return true
+end
+
+
+-- Узнаем группировку непися, применимо к ГГ
+function get_npc_community(npc)
+	return npc:community()
+end
+
+
+-- Выставляем группировку непися, можно ГГ
+function set_npc_community(npc,community_string)
+	--значения для community_string можно узнать в config\creatures\game_relations.ltx
+	return npc:set_character_community(community_string, 0, 0)
+end
+
+
+-- Удаляем предмет из инвентаря
+function remove_item_from_inventory_by_name(remove_item_name,npc)
+	return remove_item_from_inventory(npc:object(remove_item_name),npc)
+end
+function remove_item_from_inventory(remove_item,npc)
+	if npc==nil then npc=db.actor end
+	if remove_item~=nil then
+	    npc:mark_item_dropped(remove_item)
+		alife():release(alife():object(remove_item:id()), true)
+		return true
+	end
+	return false
+end
+
+
+-- Создаем "ожидатели" для неписей нужно для корректной работы с объектами, созданными внутри скрипта
+function create_waiter_for_npc(npc,select_string)
+	npc_spawner[npc.id]=select_string
+end
+
+
+-- Очищаем инвентарь непися, можно ГГ, использует следующую фунцию для удаления предмета
+function clear_npc_inventory(npc)
+    npc:iterate_inventory(__del_item, npc)
+end
+function __del_item(npc, item)
+    local section = item:section()
+
+    if section == "bolt" or section == "device_torch" then
+        return
+    end
+    npc:mark_item_dropped(item)
+    alife():release(alife():object(item:id()), true)
+end
+
+
+-- Проверка, запущена ли игра
+function check_game()
+	if level.present() and (db.actor ~= nil) and db.actor:alive() then
+		return true
+	end
+	return false
+end
+
+-- Записываем переменную
+function save_variable(variable_name, value)
+	xr_logic.pstor_store(db.actor, variable_name, value)
+end
+
+-- Загружаем переменную
+function load_variable(variable_name, value_if_not_found)
+	return xr_logic.pstor_retrieve(db.actor, variable_name, value_if_not_found)
+end
+
+-- Удаляем переменную
+function del_variable(variable_name)
+	if db.storage[db.actor:id()].pstor[variable_name] then
+		db.storage[db.actor:id()].pstor[variable_name] = nil
+	end
+end
+
+
+-- Определяем находится ли ГГ в определенной зоне
+function check_npc_in_box(npc, p1,p2)
+	local pos=npc:position()
+	if is_point_inside_interval(pos.x,p1.x,p2.x) and
+		is_point_inside_interval(pos.y,p1.y,p2.y) and
+		is_point_inside_interval(pos.z,p1.z,p2.z) then
+		return true
+	else
+		return false	
+	end
+end
+function is_point_inside_interval(x,p1,p2)
+	if p1>p2 then 
+		p1,p2 = p2,p1 
+	end
+	
+	if x>p1 and x<p2 then 
+		return true
+	else 
+		return false
+	end
+end
+
+
+-- Получаем инвентарное название объекта
+function get_inv_name(section)
+	return system_ini():r_string(section,"inv_name")
+end
+
+
+-- Колбэк на потерю предмета из инвентаря ГГ
+function on_item_drop(obj)
+	sleep_manager.check_sleep_item(obj)
+	ogsm_quests.check_use_vodka(obj)
+	ogsm_quests.check_use_harmonica(obj)
+	ogsm_quests.check_use_radio(obj)
+end
+
+-- Колбэк на апдейт ГГ
+function on_actor_update(obj)
+
+	-- Очищаем уровни от трупов во фриплее
+	ogsm_debug.clean_level() 
+
+	-- Обновление арены
+	aem_manager.get_aem():update()
+
+	-- Обновление таймеров
+	if not timer_trigger then 
+		timer_trigger=game.time() 
+	end
+	if timer_trigger<=game.time() then
+		timer_trigger=game.time()+5000
+		check_timers()
+	end
+
+	-- Багфикс радара
+	ogsm_debug.check_radar_off()
+
+	-- Обновление шкалы радиации при использовании бинокля
+	ogsm_debug.check_binoc()
+
+	-- Обновление статистики
+	-- ogsm_debug.hud_stats()
+
+	-- Обновление менеджера выброса и аномалий
+	if ogsm_surge then 
+		ogsm_surge.update_surge()
+		ogsm_anomaly.anom_update()
+	end
+
+	-- Проверка, пьян ли актор
+	ogsm_quests.check_drunk()
+
+	-- Проверка, ранен ли актор
+	ogsm_quests.wounded_pp()
+
+end
+
+
+-- Загружаем все переменные, которые нужно, вызывается загрузке игры автоматически
+function on_game_load()
+
+	-- Восстанавливаем солнце
+	wthr = level.get_weather()
+	level.set_weather("ogsm",true)
+	game.start_tutorial("restore_sun")
+
+	-- Создаем хранилище актора
+	if db.storage[db.actor:id()].pstor == nil then
+		db.storage[db.actor:id()].pstor = {}
+	end
+
+	-- Первый запуск мода
+	if load_variable("frn",true) then
+		g_start_timer("slp",0,0,6)
+		g_start_timer("bl1",0, 9+math.random(-1,1), 0)
+		g_start_timer("rsp",0, 5+math.random(-1,1), 0)
+		spawn_item_in_inv("matras")
+		spawn_item_in_inv("harmonica_f")
+		ogsm_respawn.first_run()
+		save_variable("frn",false)
+	end
+
+	-- Проверяем сонность
+	sleep_manager.test_sleep_pp()
+
+	-- Получаем список всех монстров и укрытий
+	ogsm_respawn.get_level_mobs()
+
+	-- Спавним, если надо, пси-зоны
+	if ogsm_psyzones then ogsm_psyzones.spawn_on_load() end
+
+	-- Отмечаем на карте новые точки перехода
+	ogsm_freeplay.mark_lc()
+
+end
+
+
+-- Парсинг ини-файла в массив
+function parse_ini_section_to_array(ini,section)
+	local tmp={}
+	if ini:section_exist(section) then
+		local result, id, value = nil, nil, nil
+		for a=0,ini:line_count(section)-1 do
+			result, id, value = ini:r_line(section,a,"","")
+			if id~=nil and trim(id)~="" and trim(id)~=nil then
+				tmp[trim(id)]=trim(value)
+			end
+		end
+	end
+	return tmp
+end
+function trim (s)
+	return (string.gsub(s, "^%s*(.-)%s*$", "%1"))
+end
+
+
+-- Туториал на пси-воздействие
+function on_my_psy()
+	if not has_alife_info("encyclopedy_tutorial_psy") then
+		game.start_tutorial("part_7_psy")
+		db.actor:give_info_portion("encyclopedy_tutorial_psy")
+	end
+end
+
+
+-- Восстановление солнца и погоды, вызывается из туториала
+function restore_sun()
+
+if load_variable("blt",0) == 1 then
+	level.set_weather("stancia")
+	db.Flag2 = 1
+elseif load_variable("blt",0) == 2 then
+	level.set_weather("stancia")
+	db.Flag2 = 1
+	db.Dead2 = 1
+else
+	if has_alife_info("freeplay") and (level.name()=="l12_stancia" or level.name()=="l12_stancia_2" or level.name()=="l11_pripyat" or level.name()=="l10_radar") then
+		level.set_weather("default")
+	else
+		level.set_weather(wthr)
+	end
+end
+
+end
+
+
+------------------- Библиотека служебных скриптов для OGSM 2.x ----------------
+
+---------------------- Copyright 2007-2008 xStream & DEXXX --------------------
+
+--[[
+
+If you're going to use the whole of this script or its parts in your own creative 
+developments for the S.T.A.L.K.E.R. game, please don't become such a goddamn 
+motherfucker like the notorious author of the ABC Mod - Carbrobro. Leave the 
+copyrights, note the real author(s) and don't claim others' ideas and their 
+realization to be your own ones. It's just simple Modmakers' Ethics. Thank you!
+
+Если вы собираетесь использовать данный скрипт целиком или частично в своих 
+разработках по игре S.T.A.L.K.E.R., пожалуйста не опускайтесь до уровня печально 
+известного автора ABC мода - Carbrobro. Не удаляйте копирайты, указывайте настоящего 
+автора(ов) и не выдавайте чужие идеи и их реализацию за свои. Ведь это элементарная 
+этика модостроителей! Спасибо за понимание.
+
+]]--

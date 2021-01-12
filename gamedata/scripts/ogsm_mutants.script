@@ -1,0 +1,341 @@
+---------------------- Обработчик монстров для OGSM 2.x -----------------------
+
+------------------------- Copyright 2007-2008 DEXXX ---------------------------
+
+class "MutantManager"
+
+function MutantManager:__init()
+end
+
+function MutantManager:update(param)
+
+self.object = param
+
+-- Взрыв зомби-камикадзе при его приближении к врагу
+
+if string.find(self.object:section(), "zombie_rusty") and self.object:alive() then
+	local posit = self.object:position()
+	local enemy = self.object:best_enemy()
+
+	if enemy and posit:distance_to(enemy:position()) < 1.2 and self.object:see(enemy) then
+		blow_zombie(self.object)
+	end
+end
+
+-- Разряд электрохимеры при её приближении к врагу
+
+if (string.find(self.object:section(), "electro_chimera") or string.find(self.object:section(), "chimera_strong")) and self.object:alive() then
+	local posit = self.object:position()
+	local enemy = self.object:best_enemy()
+
+	if enemy and posit:distance_to(enemy:position()) < 3 and self.object:see(enemy) then
+		charge_chimera(self.object)
+	end
+end
+
+-- Атака насекомых при приближении к чумному зомби
+
+if self.object:section()=="zombie_plague" and self.object:alive() then
+	local posit = self.object:position()
+
+	if posit:distance_to(db.actor:position()) < 8 then
+		level.add_pp_effector("dead_zone.ppe", 1001, true)
+		level.set_pp_effector_factor(1001, 0.0005)
+		zombie_insect(self.object)
+	end
+else
+	level.remove_pp_effector(1001)
+end
+
+-- Эффект при приближении к пси-бюреру
+
+if self.object:section()=="burer_strong" and self.object:alive() then
+	local posit = self.object:position()
+
+	if posit:distance_to(db.actor:position()) < 20 then
+		level.add_pp_effector("dead_zone.ppe", 1002, true)
+		psy_burer(self.object)
+	end
+else
+	level.remove_pp_effector(1002)
+end
+
+end
+
+
+function MutantManager:on_death(param)
+
+self.object = param
+
+-- Выдача статей энциклопедии при убийстве монстров
+
+	if string.find(self.object:section(),"zombie_rusty") then
+		blow_zombie(self.object)
+		if self.object:who_hit_name()=="single_player" then
+			if not has_alife_info("zombie_rusty_dead") then 
+				db.actor:give_info_portion("zombie_rusty_dead") 
+				local obj = alife():create("secret_treasure", vector():set(-347.58, -22.4, 194.8), 8132, 1839)
+				if obj then alife():create("af_zombie_hand", vector():set(-347.58, -22.4, 194.8), 8132, 1839, obj.id) end
+			end
+		end
+	end
+
+if self.object:who_hit_name()=="single_player" then
+
+	if self.object:section()=="zombie_plague" then
+		if not has_alife_info("zombie_plague_dead") then db.actor:give_info_portion("zombie_plague_dead") end
+	end
+
+	if self.object:section()=="burer_strong" then
+		if not has_alife_info("psy_burer_dead") then db.actor:give_info_portion("psy_burer_dead") end
+	end
+
+	if string.find(self.object:section(), "electro_chimera") then
+		if not has_alife_info("electrochimera_dead") then db.actor:give_info_portion("electrochimera_dead") end
+	end
+
+	if string.find(self.object:section(), "psy_dog") then
+		if not has_alife_info("psy_dog_dead") then db.actor:give_info_portion("psy_dog_dead") end
+	end
+
+	if self.object:section() == "dog_weak" or self.object:section() == "dog_normal" or self.object:section() == "dog_strong" then
+		if not has_alife_info("dog_dead") then db.actor:give_info_portion("dog_dead") end
+	end
+
+	if string.find(self.object:section(), "pseudodog") then
+		if not has_alife_info("pseudodog_dead") then db.actor:give_info_portion("pseudodog_dead") end
+	end
+
+	if string.find(self.object:section(), "flesh") then
+		if not has_alife_info("flesh_dead") then db.actor:give_info_portion("flesh_dead") end
+	end
+
+	if string.find(self.object:section(), "boar") then
+		if not has_alife_info("boar_dead") then db.actor:give_info_portion("boar_dead") end
+	end
+
+	if string.find(self.object:section(), "snork") then
+		if not has_alife_info("snork_dead") then db.actor:give_info_portion("snork_dead") end
+	end
+
+	if string.find(self.object:section(), "bloodsucker") then
+		if not has_alife_info("bloodsucker_dead") then db.actor:give_info_portion("bloodsucker_dead") end
+	end
+
+	if string.find(self.object:section(), "controller") then
+		if not has_alife_info("controller_dead") then db.actor:give_info_portion("controller_dead") end
+	end
+
+	if string.find(self.object:section(), "gigant") then
+		if not has_alife_info("pseudogiant_dead") then db.actor:give_info_portion("pseudogiant_dead") end
+	end
+
+	if string.find(self.object:section(), "poltergeist") then
+		if not has_alife_info("poltergeist_dead") then db.actor:give_info_portion("poltergeist_dead") end
+	end
+
+	if self.object:section() == "zombie_weak" or self.object:section() == "zombie_normal" or self.object:section() == "zombie_old" or self.object:section() == "zombie_immortal" or self.object:section() == "zombie_ghost" then
+		if not has_alife_info("zombie_dead") then db.actor:give_info_portion("zombie_dead") end		
+	end
+
+	if self.object:section() == "zombie_strong" then
+		if not has_alife_info("zombie_ghost_dead") then db.actor:give_info_portion("zombie_ghost_dead") end
+	end
+
+	if string.find(self.object:section(), "cat") then
+		if not has_alife_info("cat_dead") then db.actor:give_info_portion("cat_dead") end
+	end
+
+	if string.find(self.object:section(), "fracture") then
+		if not has_alife_info("fracture_dead") then db.actor:give_info_portion("fracture_dead") end
+	end
+
+	if string.find(self.object:section(), "tushkano") then
+		if not has_alife_info("tushkano_dead") then db.actor:give_info_portion("tushkano_dead") end
+	end
+
+	if string.find(self.object:section(), "chimera_weak") then
+		if not has_alife_info("chimera_dead") then db.actor:give_info_portion("chimera_dead") end
+	end
+
+	if string.find(self.object:section(), "burer_weak") then
+		if not has_alife_info("burer_dead") then db.actor:give_info_portion("burer_dead") end
+	end
+end
+
+end
+
+
+local zombie_particle = particles_object("ogsm\\ogsm_zombieblow")
+local zombie_sound1 = sound_object([[anomaly\anomaly_body_tear_1]])
+local zombie_sound2 = sound_object([[weapons\f1_explode_]])
+
+local chimera_particle = particles_object("anomaly2\\electra2_blast_00")
+local chimera_sound = sound_object([[anomaly\electra_blast]])
+
+local insect_particle = particles_object("ogsm\\ogsm_flies_00")
+local insect_sound = sound_object([[anomaly\flies]])
+
+local sound_obj_right = sound_object([[ambient\random\rnd_moan1]])
+local sound_obj_left = sound_object([[ambient\random\rnd_moan2]])
+
+
+-- Взрыв зомби-камикадзе
+function blow_zombie(p_obj)
+if p_obj then
+	local posit = p_obj:position()
+	local enemy = p_obj:best_enemy()
+	local zh = hit()
+	zh.type = hit.explosion
+	zh:bone("pelvis")
+	zh.power = 3
+	zh.impulse = 5
+
+	zombie_particle:play_at_pos(p_obj:position())
+
+	zombie_sound1:play_at_pos(p_obj, p_obj:position(), 0)
+	zombie_sound2:play_at_pos(p_obj, p_obj:position(), 0)
+
+	if enemy and posit:distance_to(enemy:position()) < 5 then 
+		zh.draftsman = enemy
+		zh.direction = p_obj:position():sub(enemy:position())
+		enemy:hit(zh)
+	end
+
+	if not enemy and posit:distance_to(db.actor:position()) < 5 then
+		zh.draftsman = db.actor
+		zh.direction = p_obj:position():sub(db.actor:position())
+		db.actor:hit(zh)
+	end
+
+	if p_obj:section() == "rad_zombie_rusty" then
+		alife():create("af_zombie_hand", p_obj:position(), p_obj:level_vertex_id(), p_obj:game_vertex_id())
+	end
+
+	alife():release(alife():object(p_obj:id()))
+end
+end
+
+
+-- Разряд электрохимеры
+function charge_chimera(p_obj)
+if p_obj then
+	local posit = p_obj:position()
+	local enemy = p_obj:best_enemy()
+
+	if not chimera_particle:playing() then chimera_particle:play_at_pos(p_obj:position()) end
+	if not chimera_sound:playing() then 
+		chimera_sound:play_at_pos(p_obj, p_obj:position(), 0)
+		local zh = hit()
+		zh.draftsman = enemy
+		zh.type = hit.shock
+		zh.direction = p_obj:position():sub(enemy:position())
+		zh:bone("pelvis")
+		zh.power = 0.2
+		zh.impulse = 0.1
+		enemy:hit(zh)
+	end
+end
+end
+
+
+-- Атака насекомых чумного зомби
+function zombie_insect(p_obj)
+if p_obj then
+
+	local posit = p_obj:position()
+	local actor = db.actor:position()
+	local zh = hit()
+	zh.draftsman = db.actor
+	zh.type = hit.wound
+	zh.direction = p_obj:position():sub(actor)
+	zh:bone("pelvis")
+	zh.power = 0.35
+	zh.impulse = 0.1
+
+	if not insect_particle:playing() then 
+
+		insect_particle:play_at_pos(vector():set(actor.x, actor.y+1.8, actor.z))
+
+		if not insect_sound:playing() then 
+			insect_sound:play_at_pos(db.actor, actor)
+			db.actor:hit(zh)
+		else
+			insect_sound:set_position(actor)
+		end
+
+	else
+
+		insect_particle:move_to(vector():set(actor.x, actor.y+1.8, actor.z),vector():set(actor.x, actor.y+1.8, actor.z))
+
+		if not insect_sound:playing() then 
+			insect_sound:play_at_pos(db.actor, actor)
+			db.actor:hit(zh)
+		else
+			insect_sound:set_position(actor)
+		end
+	end
+end
+end
+
+
+-- Аура пси-бюрера
+function psy_burer(p_obj)
+
+sound_obj_right.volume = 0.5
+sound_obj_left.volume = 0.5
+
+local zh = hit()
+zh.draftsman = db.actor
+zh.type = hit.telepatic
+zh.direction = p_obj:position():sub(db.actor:position())
+zh:bone("pelvis")
+zh.power = 0.1
+
+if not sound_obj_left:playing() then 
+	local i=math.random(1,4)
+	if i==1 then sound_obj_left = sound_object([[ambient\random\rnd_moan1]])
+	elseif i==2 then sound_obj_left = sound_object([[ambient\random\rnd_moan2]])
+	elseif i==3 then sound_obj_left = sound_object([[ambient\random\rnd_moan4]])
+	elseif i==4 then sound_obj_left = sound_object([[ambient\random\rnd_moan5]])
+	end
+
+	sound_obj_left:play_at_pos(db.actor, vector():set(1, 0, 1), 0, sound_object.s2d)
+
+	db.actor:hit(zh)
+end
+
+if not sound_obj_right:playing() then
+	local j=math.random(1,4)
+	if j==1 then sound_obj_right = sound_object([[ambient\random\rnd_moan1]])
+	elseif j==2 then sound_obj_right = sound_object([[ambient\random\rnd_moan2]])
+	elseif j==3 then sound_obj_right = sound_object([[ambient\random\rnd_moan4]])
+	elseif j==4 then sound_obj_right = sound_object([[ambient\random\rnd_moan5]])
+	end
+
+	sound_obj_right:play_at_pos(db.actor, vector():set(-1, 0, 1), 0, sound_object.s2d) 
+
+	db.actor:hit(zh)
+end
+
+end
+
+---------------------- Обработчик монстров для OGSM 2.x -----------------------
+
+------------------------- Copyright 2007-2008 DEXXX ---------------------------
+
+--[[
+
+If you're going to use the whole of this script or its parts in your own creative 
+developments for the S.T.A.L.K.E.R. game, please don't become such a goddamn 
+motherfucker like the notorious author of the ABC Mod - Carbrobro. Leave the 
+copyrights, note the real author(s) and don't claim others' ideas and their 
+realization to be your own ones. It's just simple Modmakers' Ethics. Thank you!
+
+Если вы собираетесь использовать данный скрипт целиком или частично в своих 
+разработках по игре S.T.A.L.K.E.R., пожалуйста не опускайтесь до уровня печально 
+известного автора ABC мода - Carbrobro. Не удаляйте копирайты, указывайте настоящего 
+автора(ов) и не выдавайте чужие идеи и их реализацию за свои. Ведь это элементарная 
+этика модостроителей! Спасибо за понимание.
+
+]]--

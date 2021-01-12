@@ -1,8 +1,9 @@
-<?xml version="1.0" encoding="windows-1251"?>
+<?xml version='1.0' encoding="windows-1251"?>
 
 <game_information_portions>
-
-	<info_portion id="yan_kill_brain_task_start"></info_portion>
+	<info_portion id="yan_kill_brain_task_start">
+		
+	</info_portion>
 	<info_portion id="yan_find_scientist_start">
 		<task>yan_find_scientist</task>
 	</info_portion>
@@ -17,11 +18,13 @@
 	<info_portion id="yan_find_vasilyev_end">
 		<article>yan_vasilyev_info</article>
 	</info_portion>
-	<info_portion id="yan_find_laboratory_end"></info_portion>
+	<info_portion id="yan_find_laboratory_end">
+	</info_portion>
 	<info_portion id="yantar_vasilyev_info">
 		<task>yan_kill_brain_task</task>
 	</info_portion>
 	<info_portion id="yantar_find_ghost_task_end">
+	  
 		<article>journal_after_find_ghost</article>
 		<task>yan_kill_brain_task_2</task>
 	</info_portion>
@@ -31,7 +34,7 @@
 	<info_portion id="yan_scientist_return_task">
 		<task>yan_scientist_return_task</task>
 	</info_portion>
-	<info_portion id="yantar_hello_scientist"></info_portion>
+	<info_portion id="yantar_hello_scientist"></info_portion>	
 	<info_portion id="yan_find_vasilyev_done"></info_portion>
 	<info_portion id="yan_scientist_start_research"></info_portion>
 	<info_portion id="yan_scientist_return_to_bunker"></info_portion>
@@ -60,7 +63,8 @@
 	<info_portion id="yantar_scientist_talk_good_quest_1"></info_portion>
 	<info_portion id="yantar_scientist_talk_semenov_die_1"></info_portion>
 	<info_portion id="yantar_scientist_talk_semenov_die"></info_portion>
-
+	
+	
 	<info_portion id="yan_zombie_on_actor_wake"></info_portion>
 	<info_portion id="yan_bunker_door_1_open"></info_portion>
 	<info_portion id="yan_bunker_door_1_close"></info_portion>
@@ -84,6 +88,7 @@
 	<info_portion id="yan_zombied_respawn_08"></info_portion>
 	<info_portion id="yan_spawn_ghost"></info_portion>
 	<info_portion id="yantar_scientist_talk_helmet"></info_portion>
+	
 
 	<!-- Yantar zombied after braindead -->
 	<info_portion id="yantar_attack_start"></info_portion>
@@ -107,7 +112,7 @@
 	<info_portion id="yan_labx16_switcher_2_off"></info_portion>
 	<info_portion id="yan_labx16_switcher_3_off"></info_portion>
 	<info_portion id="yan_labx16_switcher_primary_off"></info_portion>
-
+	
 	<info_portion id="yan_labx16_switcher_1_end"></info_portion>
 	<info_portion id="yan_labx16_switcher_2_end"></info_portion>
 	<info_portion id="yan_labx16_switcher_3_end"></info_portion>
@@ -119,6 +124,7 @@
 	<info_portion id="yan_has_ghost_pda"></info_portion>
 	<info_portion id="yan_test_info"></info_portion>
 
+
 	<info_portion id="yan_controller_respawn_01"></info_portion>
 	<info_portion id="brain_snork_respawn_01"></info_portion>
 
@@ -127,16 +133,16 @@
 	<info_portion id="x16_zasada_2"></info_portion>
 	<info_portion id="x16_zasada_3"></info_portion>
 	<info_portion id="x16_zasada_4"></info_portion>
-
+	
 	<info_portion id="yan_tonnel_snork_spawn_1"></info_portion>
 	<info_portion id="yan_tonnel_snork_spawn_2"></info_portion>
 	<info_portion id="yan_tonnel_snork_spawn_3"></info_portion>
 	<info_portion id="yan_tonnel_snork_spawn_4"></info_portion>
 	<info_portion id="yan_tonnel_snork_spawn_5"></info_portion>
 
-	<info_portion id="scientist_job">
+    <info_portion id="scientist_job">
 		<task>yan_scientist_job</task>
-	</info_portion>
-	<info_portion id="yantar_ecolog_give_reward"></info_portion>
+    </info_portion>
+<info_portion id="yantar_ecolog_give_reward"></info_portion>
 
 </game_information_portions>

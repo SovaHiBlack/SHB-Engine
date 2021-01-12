@@ -2,14 +2,17 @@
 ;;	FOOD
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 [bread_a]:identity_immunities
+GroupControlSection		= spawn_group
+discovery_dependency	=
 $spawn					= "food and drugs\bread_a"
 cform                   = skeleton
 class					= II_ATTCH
 visual                  = weapons\bred\bred.ogf
+description			= enc_equipment_food_bread1
 cost					= 20
-inv_name				= "bread"
-inv_name_short			= "bread"
-inv_weight				= .3
+inv_name				= Bread
+inv_name_short			= Bread
+inv_weight				= 0.3
 inv_grid_width			= 1
 inv_grid_height			= 1
 inv_grid_x				= 11
@@ -20,13 +23,16 @@ attach_position_offset	= 0.096910, -0.013594, 0.107925
 attach_bone_name		= bip01_r_hand
 auto_attach				= false
 
-; should be deleted after update
+// should be deleted after update
 bone_name				= bip01_r_hand
 position_offset			 = 0.0,0.0,0.0
 angle_offset			 = 1.570790,1.570790,3.92699
 
 [bread]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency =
 $spawn 				= "food and drugs\bread"
+;$prefetch 			= 32
 class				= II_FOOD
 cform				= skeleton
 visual				= weapons\bred\bred.ogf
@@ -47,13 +53,13 @@ attach_position_offset	= 0.096910, -0.013594, 0.107925
 attach_bone_name		= bip01_r_hand
 auto_attach				= false
 
-; should be deleted after update
+// should be deleted after update
 bone_name				= bip01_r_hand
 position_offset			 = 0.0,0.0,0.0
 angle_offset			 = 1.570790,1.570790,3.92699
 
 ; eatable item
-eat_health = 0.05
+eat_health = 0.00
 eat_satiety = 0.2
 eat_power = 0
 eat_radiation = 0
@@ -69,7 +75,10 @@ hud = wpn_vodka_hud
 
 
 [kolbasa]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency =
 $spawn 				= "food and drugs\kolbasa"
+$prefetch 			= 8
 class				= II_FOOD
 cform				= skeleton
 visual				= weapons\kolbasa\kolbasa.ogf
@@ -90,13 +99,13 @@ attach_position_offset	= 0.104196, -0.010821, 0.076969
 attach_bone_name		= bip01_r_hand
 auto_attach				= false
 
-; should be deleted after update
+// should be deleted after update
 bone_name				= bip01_r_hand
 position_offset			 = 0.0,0.0,0.0
 angle_offset			 = 1.570790,1.570790,3.92699
 
 ; eatable item
-eat_health = 0.1
+eat_health = 0.0
 eat_satiety = 0.3
 eat_power = 0
 eat_radiation = 0
@@ -111,6 +120,8 @@ animation_slot		= 4
 hud = wpn_vodka_hud
 
 [kolbasa_a]:identity_immunities
+GroupControlSection		= spawn_group
+discovery_dependency	=
 $spawn					= "food and drugs\kolbasa_a"
 cform                   = skeleton
 class					= II_ATTCH
@@ -129,13 +140,16 @@ attach_position_offset	= 0.104196, -0.010821, 0.076969
 attach_bone_name		= bip01_r_hand
 auto_attach				= false
 
-; should be deleted after update
+// should be deleted after update
 bone_name				= bip01_r_hand
 position_offset			 = 0.0,0.0,0.0
 angle_offset			 = 1.570790,1.570790,3.92699
 
 [conserva]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency =
 $spawn 				= "food and drugs\conserva"
+;$prefetch 			= 32
 class				= II_FOOD
 cform				= skeleton
 visual				= food\conserv1.ogf
@@ -152,7 +166,7 @@ inv_grid_y			= 13
 cost				= 100
 
 ; eatable item
-eat_health = 0.15
+eat_health = 0.0
 eat_satiety = 0.4
 eat_power = 0
 eat_radiation = 0
@@ -171,12 +185,14 @@ attach_position_offset	= 0.104196, -0.010821, 0.076969
 attach_bone_name		= bip01_r_hand
 auto_attach				= false
 
-; should be deleted after update
+// should be deleted after update
 bone_name				= bip01_r_hand
 position_offset			 = 0.0,0.0,0.0
 angle_offset			 = 1.570790,1.570790,3.92699
 
 [vodka_a]:identity_immunities
+GroupControlSection		= spawn_group
+discovery_dependency	=
 $spawn					= "food and drugs\vodka_a"
 cform                   = skeleton
 class					= II_ATTCH
@@ -195,13 +211,16 @@ attach_position_offset	= 0.087266, -0.078540, 0.052360
 attach_bone_name		= bip01_r_hand
 auto_attach				= false
 
-; should be deleted after update
+// should be deleted after update
 bone_name				= bip01_r_hand
 position_offset			 = 0.0,0.0,0.0
 angle_offset			 = 1.570790,1.570790,3.92699
 
 [vodka]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency =
 $spawn 				= "food and drugs\vodka"
+;$prefetch 			= 32
 class				= II_BOTTL
 cform				= skeleton
 visual				= weapons\vodka\vodka
@@ -224,15 +243,13 @@ attach_position_offset	= 0.087266, -0.078540, 0.052360
 attach_bone_name		= bip01_r_hand
 auto_attach				= false
 
-; should be deleted after update
+// should be deleted after update
 bone_name				= bip01_r_hand
 position_offset			 = 0.0,0.0,0.0
 angle_offset			 = 1.570790,1.570790,3.92699
 
-slot				= 4
-
 ; eatable item
-eat_health		= 0.01
+eat_health		= 0.00
 eat_satiety		= 0.01
 eat_power		= 0
 eat_radiation	= -0.3
@@ -252,13 +269,16 @@ break_sound			= material\bottle\collide\bottle_break_1
 
 
 [guitar_a]:identity_immunities
+GroupControlSection		= spawn_group
+discovery_dependency	=
 $spawn					= "food and drugs\guitar_a"
 cform                   = skeleton
 class					= II_ATTCH
 visual                  = Equipments\item_guitar.ogf
-cost					= 35
-inv_name				= "guitar"
-inv_name_short			= "guitar"
+description			= enc_equipment_food_guitar1
+cost					= 500
+inv_name				= guitar
+inv_name_short			= guitar
 inv_weight				= 1.5
 inv_grid_width			= 4
 inv_grid_height			= 2
@@ -270,13 +290,16 @@ attach_bone_name		= bip01_l_hand
 auto_attach				= false
 
 [harmonica_a]:identity_immunities
+GroupControlSection		= spawn_group
+discovery_dependency	=
 $spawn					= "food and drugs\harmonica_a"
 cform                   = skeleton
 class					= II_ATTCH
 visual                  = Equipments\item_harmonica.ogf
-cost					= 35
-inv_name				= "harmonica"
-inv_name_short			= "harmonica"
+description                     = enc_equipment_food_harmonica1
+cost					= 200
+inv_name				= harmonica
+inv_name_short			= harmonica
 inv_weight				= 0.35
 inv_grid_width			= 1
 inv_grid_height			= 1
@@ -287,11 +310,43 @@ attach_position_offset	= 0.081856, -0.035081, 0.011694
 attach_bone_name		= bip01_l_hand
 auto_attach				= false
 
+[harmonica_f]:identity_immunities
+GroupControlSection		= spawn_group
+discovery_dependency	=
+$spawn					= "food and drugs\antirad"
+cform                   = skeleton
+class					= II_ANTIR
+visual                  = equipments\item_harmonica.ogf
+description                     = enc_equipment_food_harmonica1
+cost					= 200
+inv_name				= harmonica
+inv_name_short			= harmonica
+inv_weight				= 0.35
+inv_grid_width			= 1
+inv_grid_height			= 1
+inv_grid_x				= 11
+inv_grid_y				= 2
+; eatable item
+eat_health = 0
+eat_satiety = 0
+eat_power = 0
+eat_radiation = 0
+eat_alcohol = 0
+wounds_heal_perc = 0
+eat_portions_num = 1
+; food item
+animation_slot  = 4
+;hud item
+hud = wpn_vodka_hud
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;	MEDICAL
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 [antirad]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency =
 $spawn 			= "food and drugs\antirad"
+$prefetch 		= 32
 class			= II_ANTIR
 cform           = skeleton
 visual          = equipments\item_antirad.ogf
@@ -319,426 +374,600 @@ eat_portions_num = 1
 animation_slot		= 4
 
 ;hud item
-hud								= wpn_vodka_hud
+hud = wpn_vodka_hud
+
 
 [medkit]:identity_immunities
-$spawn							= "food and drugs\medkit"
-class							= II_MEDKI
-cform							= skeleton
-visual							= equipments\item_aptechka.ogf
-description						= enc_equipment_medi_medkit1
-inv_name						= Medkit
-inv_name_short					= Medkit
-inv_weight						= 0.3	;0.2
+GroupControlSection	= spawn_group
+discovery_dependency =
+$spawn 				= "food and drugs\medkit"
+$prefetch 			= 8
+class				= II_MEDKI
+cform				= skeleton
+visual				= equipments\item_aptechka.ogf
+description			= enc_equipment_medi_medkit1
+inv_name			= Medkit
+inv_name_short		= Medkit
+inv_weight			= 0.3	;0.2
 
-inv_grid_width					= 2
-inv_grid_height					= 1
-inv_grid_x						= 6
-inv_grid_y						= 14
-cost							= 150
+inv_grid_width		= 2
+inv_grid_height		= 1
+inv_grid_x			= 6
+inv_grid_y			= 14
+cost				= 150
 
 ; eatable item
-eat_health						= 0.6
-eat_satiety						= 0
-eat_power						= 0.0
-eat_radiation					= -0.1
-wounds_heal_perc				= 0.3
-eat_portions_num				= 1
-eat_max_power					= 0.1
+eat_health			= 0.6
+eat_satiety			= 0
+eat_power			= 0.0
+eat_radiation		= -0.1
+wounds_heal_perc	= 0.3
+eat_portions_num	= 1
+eat_max_power		= 0.1
 
 ; food item
-animation_slot					= 4
+animation_slot		= 4
 
 ;hud item
-hud								= wpn_vodka_hud
+hud = wpn_vodka_hud
 
 [medkit_army]:identity_immunities
-$spawn							= "food and drugs\medkit_army"
-class							= II_MEDKI
-cform							= skeleton
-visual							= equipments\item_aptechka3.ogf
-description						= enc_equipment_medi_medkit2
-inv_name						= Medkit_army
-inv_name_short					= Medkit_army
-inv_weight						= 0.3	;0.2
+GroupControlSection	= spawn_group
+discovery_dependency =
+$spawn 				= "food and drugs\medkit_army"
+$prefetch 			= 8
+class				= II_MEDKI
+cform				= skeleton
+visual				= equipments\item_aptechka3.ogf
+description			= enc_equipment_medi_medkit2
+inv_name			= Medkit_army
+inv_name_short		= Medkit_army
+inv_weight			= 0.3	;0.2
 
-inv_grid_width					= 2
-inv_grid_height					= 1
-inv_grid_x						= 16
-inv_grid_y						= 20
-cost							= 220
+inv_grid_width		= 2
+inv_grid_height		= 1
+inv_grid_x			= 16
+inv_grid_y			= 20
+cost				= 220
 
 ; eatable item
-eat_health						= 1.0
-eat_satiety						= 0
-eat_power						= 0.0
-eat_radiation					= -0.1
-wounds_heal_perc				= 1.0
-eat_portions_num				= 1
-eat_max_power					= 0.1
+eat_health			= 1.0
+eat_satiety			= 0
+eat_power			= 0.0
+eat_radiation		= -0.1
+wounds_heal_perc	= 1.0
+eat_portions_num	= 1
+eat_max_power		= 0.1
 
 ; food item
-animation_slot					= 4
+animation_slot		= 4
 
 ;hud item
-hud								= wpn_vodka_hud
+hud = wpn_vodka_hud
 
 [medkit_scientic]:identity_immunities
-$spawn							= "food and drugs\medkit_scientic"
-class							= II_MEDKI
-cform							= skeleton
-visual							= equipments\item_aptechka2.ogf
-description						= enc_equipment_medi_medkit3
-inv_name						= Medkit_scientific
-inv_name_short					= Medkit_scientific
-inv_weight						= 0.3	;0.2
+GroupControlSection	= spawn_group
+discovery_dependency =
+$spawn 				= "food and drugs\medkit_scientic"
+$prefetch 			= 8
+class				= II_MEDKI
+cform				= skeleton
+visual				= equipments\item_aptechka2.ogf
+description			= enc_equipment_medi_medkit3
+inv_name			= Medkit_scientific
+inv_name_short		= Medkit_scientific
+inv_weight			= 0.3	;0.2
 
-inv_grid_width					= 2
-inv_grid_height					= 1
-inv_grid_x						= 14
-inv_grid_y						= 20
-cost							= 200
+inv_grid_width		= 2
+inv_grid_height		= 1
+inv_grid_x			= 14
+inv_grid_y			= 20
+cost				= 200
 
 ; eatable item
-eat_health						= 1.0
-eat_satiety						= 0
-eat_power						= 0.0
-eat_radiation					= -1.0
-wounds_heal_perc				= 0.3
-eat_portions_num				= 1
-eat_max_power					= 0.1
+eat_health			= 1.0
+eat_satiety			= 0
+eat_power			= 0.0
+eat_radiation		= -1.0
+wounds_heal_perc	= 0.3
+eat_portions_num	= 1
+eat_max_power		= 0.1
 
 ; food item
-animation_slot					= 4
+animation_slot		= 4
 
 ;hud item
-hud								= wpn_vodka_hud
+hud = wpn_vodka_hud
+
 
 [energy_drink]:vodka
-$spawn							= "food and drugs\energy_drink"
-inv_name						= energy_drink_name
-inv_name_short					= energy_drink_short_name
-visual							= equipments\drink_nonstop.ogf ;equipments\drink_stalker.ogf
-description						= enc_equipment_energydrink
-cost							= 75
+$spawn 				= "food and drugs\energy_drink"
+inv_name			= energy_drink_name
+inv_name_short		= energy_drink_short_name
+visual				= equipments\drink_nonstop.ogf ;equipments\drink_stalker.ogf
+description			= enc_equipment_energydrink
+cost				= 75
 
-inv_grid_width					= 1
-inv_grid_height					= 1
-inv_grid_x						= 19
-inv_grid_y						= 7
-inv_weight						= 0.3
+inv_grid_width		= 1
+inv_grid_height		= 1
+inv_grid_x			= 19 ;19 ;11
+inv_grid_y			= 7 ;7  ;0
+inv_weight			= 0.3
 
-eat_health						= 0
-eat_satiety						= 0
-eat_power						= 1.0
-eat_alcohol						= 0
-eat_radiation					= 0
-wounds_heal_perc				= 0
-eat_portions_num				= 1
-eat_max_power					= 0.2
+eat_health			= 0
+eat_satiety			= 0
+eat_power			= 1.0
+eat_alcohol			= 0
+eat_radiation		= 0
+wounds_heal_perc	= 0
+eat_portions_num	= 1
+eat_max_power		= 0.2
 
-attach_angle_offset				= 0.000000, 0.000000, 0.000000
-attach_position_offset			= 0.087266, -0.078540, 0.052360
-attach_bone_name				= bip01_r_hand
-auto_attach						= false
+attach_angle_offset		= 0.000000, 0.000000, 0.000000
+attach_position_offset	= 0.087266, -0.078540, 0.052360
+attach_bone_name		= bip01_r_hand
+auto_attach				= false
+
 
 [bandage]:identity_immunities
-$spawn							= "food and drugs\bandage"
-class							= II_BANDG
-cform							= skeleton
-visual							= equipments\item_bandage.ogf
-description						= enc_equipment_medi_bandage1
+GroupControlSection	= spawn_group
+discovery_dependency =
+$spawn 				= "food and drugs\bandage"
+$prefetch 			= 8
+class				= II_BANDG
+cform				= skeleton
+visual				= equipments\item_bandage.ogf
+description			= enc_equipment_medi_bandage1
 
-inv_name						= bandage
-inv_name_short					= bandage
-inv_weight						= 0.1	;0.2
+inv_name			= bandage
+inv_name_short		= bandage
+inv_weight			= 0.1	;0.2
 
-inv_grid_width					= 1
-inv_grid_height					= 1
-inv_grid_x						= 3
-inv_grid_y						= 18
-cost							= 20
+inv_grid_width		= 1
+inv_grid_height		= 1
+inv_grid_x			= 3
+inv_grid_y			= 18
+cost				= 20
 
 ; eatable item
-eat_health						= 0.1
-eat_satiety						= 0
-eat_power						= 0.0
-eat_radiation					= 0.0
-wounds_heal_perc				= 1.0
-eat_portions_num				= 1	;100
+eat_health = 	0.1
+eat_satiety = 	0
+eat_power = 	0.0
+eat_radiation = 0.0
+wounds_heal_perc = 1.0
+eat_portions_num = 1	;100
 
 ; food item
-animation_slot					= 4
+animation_slot		= 4
 
 ;hud item
-hud								= wpn_vodka_hud
+hud = wpn_vodka_hud
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; DEVICES
+;;	DEVICES
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 [binocular_a]:identity_immunities
-$spawn							= "devices\binocular_a"
-cform							= skeleton
-class							= II_ATTCH
-visual							= weapons\binoculars\wpn_binoculars.ogf
-cost							= 0
-inv_name						= "binocular"
-inv_name_short					= "binocular"
-inv_weight						= 0.5
-inv_grid_width					= 2
-inv_grid_height					= 1
-inv_grid_x						= 16
-inv_grid_y						= 12
-attach_angle_offset				= 3.080506, -1.493053, -1.202040   ;устанавливается в радианах Angle*PI/180
-attach_position_offset			= 0.080000, 0.021273, 0.100000
-attach_bone_name				= bip01_r_hand
-auto_attach						= false
+GroupControlSection		= spawn_group
+discovery_dependency	=
+$spawn					= "devices\binocular_a"
+cform                   = skeleton
+class					= II_ATTCH
+visual                  = weapons\binoculars\wpn_binoculars.ogf
+cost					= 0
+inv_name				= "binocular"
+inv_name_short			= "binocular"
+inv_weight				= .5
+inv_grid_width			= 2
+inv_grid_height			= 1
+inv_grid_x				= 16
+inv_grid_y				= 12
+attach_angle_offset		= 3.080506,-1.493053,-1.202040   ;устанавливается в радианах Angle*PI/180
+attach_position_offset	= 0.080000,0.021273,0.100000
+attach_bone_name		= bip01_r_hand
+auto_attach				= false
+
+[hand_radio]:identity_immunities
+GroupControlSection		= spawn_group
+discovery_dependency	= 
+$spawn					= "equipment\hand_radio"
+cform                   = skeleton
+class					= II_ATTCH
+visual                  = equipments\item_fmradio.ogf
+description                     = enc_equipment_devic_hand_radio1
+cost					= 100
+inv_name				= hand_radio1
+inv_name_short			= hand_radio1
+inv_weight				= 0.2
+inv_grid_width			= 1
+inv_grid_height			= 1
+inv_grid_x				= 8
+inv_grid_y				= 14
+attach_angle_offset		= -1.5708,0.1919,3.1416    ;устанавливается в радианах Angle*PI/180
+attach_position_offset	= 0.075, 0.066, 0.023
+attach_bone_name		= bip01_l_hand
+auto_attach				= false
+
+[hand_radio_f]:identity_immunities
+GroupControlSection		= spawn_group
+discovery_dependency	= 
+$spawn					= "food and drugs\antirad"
+$prefetch   = 32
+class					= II_ANTIR
+cform                   = skeleton
+visual                  = equipments\item_fmradio.ogf
+description                     = enc_equipment_devic_hand_radio
+
+inv_name				= hand_radio
+inv_name_short			= hand_radio
+inv_weight				= 0.2
+
+inv_grid_width			= 1
+inv_grid_height			= 1
+inv_grid_x				= 8
+inv_grid_y				= 14
+
+cost					= 600
+
+; eatable item
+eat_health = 0
+eat_satiety = 0
+eat_power = 0
+eat_radiation = 0
+eat_alcohol = 0
+wounds_heal_perc = 0
+eat_portions_num = 1
+
+; food item
+animation_slot  = 4
+
+;hud item
+hud = wpn_vodka_hud
 
 [device_pda]:identity_immunities
-$spawn							= "devices\pda"
-class							= D_PDA
-cform							= skeleton
-visual							= equipments\item_pda.ogf
-description						= enc_equipment_devic_device-pda1
-radius							= 50;0 ;75
-slot							= 7
+GroupControlSection	= spawn_group
+discovery_dependency=
+$spawn 				= "devices\pda"
+$prefetch 			= 16
+class				= D_PDA
+cform				= skeleton
+visual				= equipments\item_pda.ogf
+description			= enc_equipment_devic_device-pda1
+radius				= 50;0 ;75
+slot				= 7
 
-inv_name						= PDA
-inv_name_short					= PDA
-inv_weight						= 0.3	;0.2
+inv_name			= PDA
+inv_name_short		= PDA
+inv_weight			= 0.3	;0.2
 
-inv_grid_width					= 2
-inv_grid_height					= 1
-inv_grid_x						= 6
-inv_grid_y						= 13
-cost							= 20
-attach_angle_offset				= 3.080506, -1.493053, -1.202040   ;устанавливается в радианах Angle*PI/180
-attach_position_offset			= 0.080000, 0.021273, 0.100000
-attach_bone_name				= bip01_r_hand
-auto_attach						= false
+inv_grid_width		= 2
+inv_grid_height		= 1
+inv_grid_x			= 6
+inv_grid_y			= 13
+cost				= 20
+attach_angle_offset		= 3.080506,-1.493053,-1.202040   ;устанавливается в радианах Angle*PI/180
+attach_position_offset	= 0.080000,0.021273,0.100000
+attach_bone_name		= bip01_r_hand
+auto_attach				= false
+
 
 [device_torch]:identity_immunities
-$spawn							= "devices\torch"
-class							= TORCH_S
-cform							= skeleton
-visual							= equipments\light_night.ogf
-description						= enc_equipment_devic_device-torch1
-cost							= 100
-inv_name						= device-torch
-inv_name_short					= device-torch
-inv_weight						= 0
-inv_grid_width					= 2
-inv_grid_height					= 1
-inv_grid_x						= 16
-inv_grid_y						= 12
+GroupControlSection	= spawn_group
+discovery_dependency =
+$spawn				= "devices\torch"
+$prefetch 			= 32
+class				= TORCH_S
+cform				= skeleton
+visual				= equipments\light_night.ogf
+description			= enc_equipment_devic_device-torch1
+cost				= 100
+inv_name			= device-torch
+inv_name_short		= device-torch
+inv_weight			= 0
+inv_grid_width		= 2
+inv_grid_height		= 1
+inv_grid_x			= 16
+inv_grid_y			= 12
 
 ;вещью нельзя торговать
-can_trade						= true
+can_trade			= true
 
-position						= 0.35,0.25,0.0
-light_trace_bone				= cone_bone
-attach_angle_offset				= 0, -3.14, 1.6
-attach_position_offset			= 0.115, 0.00, 0.07
-attach_bone_name				= bip01_head
-auto_attach						= false
+position			= 0.35,0.25,0.0
+light_trace_bone	= cone_bone
+attach_angle_offset		= 0, -3.14, 1.6
+attach_position_offset	= 0.115, 0.00, 0.07
+attach_bone_name		= bip01_head
+auto_attach				= false
 
-night_vision					= on
-night_vision_texture			= wpn\wpn_night
-night_vision_effector			= postprocess_night
+night_vision				= on
+night_vision_texture		= wpn\wpn_night
+night_vision_effector		= postprocess_night
 
-snd_night_vision_on				= weapons\nv_start
-snd_night_vision_off			= weapons\nv_off
-snd_night_vision_idle			= weapons\nv_loop
-snd_night_vision_broken			= weapons\nv_off
+snd_night_vision_on			= weapons\nv_start
+snd_night_vision_off		= weapons\nv_off
+snd_night_vision_idle		= weapons\nv_loop
+snd_night_vision_broken		= weapons\nv_off
 
-night_vision_recharge_time		= 6		;(c) время зарядки аккамулятора
-night_vision_recharge_time_min	= 2		;(c) мин. время зарядки аккамулятора, после которого уст-во уже может работать
-night_vision_discharge_time		= 20	;(c) время разрядки (работы) устройства после полной зарядки
-slot							= 9
-disabled_maps					= ai_test,ai_test2, andy_test_
+night_vision_recharge_time			= 6		;(c) время зарядки аккамулятора
+night_vision_recharge_time_min		= 2		;(c) мин. время зарядки аккамулятора, после которого уст-во уже может работать
+night_vision_discharge_time			= 20	;(c) время разрядки (работы) устройства после полной зарядки
+slot								= 9
+disabled_maps						= ai_test,ai_test2, andy_test_
 
 [detector_simple]:identity_immunities
-$spawn							= "devices\detector_simple"
-class							= D_SIMDET
-cform							= skeleton
-visual							= equipments\item_datchik1.ogf
-description						= enc_equipment_devic_detect1
-radius							= 10	;15
-buzzer_radius					= 1.5
-noise							= zone_mosquito_bald       ;detectors\geiger_noise_loop
-buzzer							= zone_mosquito_bald       ;detectors\DA-2_alarm_loop
-slot							= 8
-ef_detector_type				= 1
+GroupControlSection	= spawn_group
+discovery_dependency =
+$spawn 				= "devices\detector_simple"
+$prefetch 			= 32
+class				= D_SIMDET
+cform				= skeleton
+visual				= equipments\item_datchik1.ogf
+description			= enc_equipment_devic_detect1
+radius				= 10	;15
+buzzer_radius		= 1.5
+noise				= zone_mosquito_bald       ;detectors\geiger_noise_loop
+buzzer				= zone_mosquito_bald       ;detectors\DA-2_alarm_loop
+slot				= 12
+ef_detector_type	= 1
 
-inv_name						= Detector
-inv_name_short					= Detector
-inv_weight						= 0
+inv_name			= detect
+inv_name_short		= detect
+inv_weight			= 0.4
 
-inv_grid_width					= 1
-inv_grid_height					= 1
-inv_grid_x						= 9
-inv_grid_y						= 14
-cost							= 500	;30
-;belt							= true;
-default_to_ruck					= false
+inv_grid_width		= 1
+inv_grid_height		= 1
+inv_grid_x			= 9
+inv_grid_y			= 14
+cost				= 1000
+belt				= true
+default_to_ruck		= true
+
 
 ;описание распознаваемых детектором зон
-zone_class_1					= zone_mosquito_bald
+zone_class_1		= zone_mosquito_bald
+zone_sound_1_		= $no_sound
+zone_min_freq_1		= 0.1	;0.5
+zone_max_freq_1		= 40
 
-zone_sound_1_					= detectors\DA-2_beep1
-zone_sound_1_1					= detectors\DA-2_beep1
-zone_sound_1_2					= detectors\DA-2_beep1
-zone_sound_1_3					= detectors\DA-2_beep1
+zone_class_2		= zone_mincer
+zone_sound_2_		= $no_sound
+zone_min_freq_2		= 0.1
+zone_max_freq_2		= 20
 
-zone_min_freq_1					= 0.1	;0.5
-zone_max_freq_1					= 40
+zone_class_3		= zone_radioactive
+;zone_sound_3_		= detectors\DA-2_beep1
+zone_sound_3_		= detectors\geiger_1
+zone_sound_3_1		= detectors\geiger_2
+zone_sound_3_2		= detectors\geiger_3
+zone_sound_3_3		= detectors\geiger_4
+zone_sound_3_4		= detectors\geiger_5
+zone_sound_3_5		= detectors\geiger_6
+zone_sound_3_6		= detectors\geiger_1
+zone_sound_3_7		= detectors\geiger_1
+zone_sound_3_8		= detectors\geiger_1
+zone_min_freq_3		= 1
+zone_max_freq_3		= 20
 
-zone_class_2					= zone_mincer
-zone_sound_2_					= detectors\DA-2_beep1
-zone_min_freq_2					= 0.1
-zone_max_freq_2					= 20
+zone_class_4		= zone_gravi_zone
+zone_sound_4_		= $no_sound
+zone_min_freq_4		= 0.5
+zone_max_freq_4		= 30
 
-zone_class_3					= zone_radioactive
-; zone_sound_3_					= detectors\DA-2_beep1
-zone_sound_3_					= detectors\geiger_1
-zone_sound_3_1					= detectors\geiger_2
-zone_sound_3_2					= detectors\geiger_3
-zone_sound_3_3					= detectors\geiger_4
-zone_sound_3_4					= detectors\geiger_5
-zone_sound_3_5					= detectors\geiger_6
-zone_sound_3_6					= detectors\geiger_1
-zone_sound_3_7					= detectors\geiger_1
-zone_sound_3_8					= detectors\geiger_1
-zone_min_freq_3					= 1
-zone_max_freq_3					= 20
+zone_class_5		= zone_zharka_static
+zone_sound_5_		= $no_sound
+zone_min_freq_5		= 0.5
+zone_max_freq_5		= 30
 
-zone_class_4					= zone_gravi_zone
-zone_sound_4_					= detectors\DA-2_beep1
-zone_min_freq_4					= 0.5
-zone_max_freq_4					= 30
+zone_class_6		= zone_buzz
+zone_sound_6_		= $no_sound
+zone_min_freq_6		= 0.5
+zone_max_freq_6		= 30
+
+zone_class_7		= zone_burning_fuzz
+zone_sound_7_		= $no_sound
+zone_min_freq_7		= 0.5
+zone_max_freq_7		= 30
 
 [detector_advances]:identity_immunities
-$spawn							= "devices\detector_advanced"
-class							= D_SIMDET
-cform							= skeleton
-visual							= equipments\item_datchik2.ogf
-radius							= 10	;15
-buzzer_radius					= 1.5
-noise							= zone_mosquito_bald       ;detectors\geiger_noise_loop
-buzzer							= zone_mosquito_bald       ;detectors\DA-2_alarm_loop
+GroupControlSection	= spawn_group
+discovery_dependency =
+$spawn 				= "devices\detector_advanced"
+$prefetch 			= 32
+class				= D_SIMDET
+cform				= skeleton
+visual				= equipments\item_datchik2.ogf
+description			= enc_equipment_devic_st_detector1
+radius				= 10	;15
+buzzer_radius		= 1.5
+noise				= zone_mosquito_bald       ;detectors\geiger_noise_loop
+buzzer				= zone_mosquito_bald       ;detectors\DA-2_alarm_loop
 
-ef_detector_type				= 1
-
-night_vision_particle			= damage_fx\heli_burn
+ef_detector_type	= 1
 
 ;описание распознаваемых детектором зон
-zone_class_1					= zone_mosquito_bald
-zone_sound_1_					= detectors\DA-2_beep1
-zone_min_freq_1					= 0.1	;0.5
-zone_max_freq_1					= 40
-zone_map_location_1				= anomaly_zone_location
+zone_class_1		= zone_mosquito_bald
+zone_sound_1_		= detectors\DA-2_beep1
+zone_min_freq_1		= 0.1	;0.5
+zone_max_freq_1		= 40
 
-zone_class_2					= zone_mincer
-zone_sound_2_					= detectors\DA-2_beep1
-zone_min_freq_2					= 0.1
-zone_max_freq_2					= 20
-zone_map_location_2				= anomaly_zone_location
+zone_class_2		= zone_mincer
+zone_sound_2_		= detectors\DA-2_beep1
+zone_min_freq_2		= 0.1
+zone_max_freq_2		= 20
 
-zone_class_3					= zone_radioactive
-zone_sound_3_					= detectors\DA-2_beep1
-zone_min_freq_3					= 1
-zone_max_freq_3					= 20
-zone_map_location_3				= anomaly_zone_location
+zone_class_3		= zone_radioactive
+zone_sound_3_		= detectors\geiger_1
+zone_sound_3_1		= detectors\geiger_2
+zone_sound_3_2		= detectors\geiger_3
+zone_sound_3_3		= detectors\geiger_4
+zone_sound_3_4		= detectors\geiger_5
+zone_sound_3_5		= detectors\geiger_6
+zone_sound_3_6		= detectors\geiger_1
+zone_sound_3_7		= detectors\geiger_1
+zone_sound_3_8		= detectors\geiger_1
+zone_min_freq_3		= 1
+zone_max_freq_3		= 20
 
-zone_class_4					= zone_gravi_zone
-zone_sound_4_					= detectors\DA-2_beep1
-zone_min_freq_4					= 0.5
-zone_max_freq_4					= 30
-zone_map_location_4				= anomaly_zone_location
+zone_class_4		= zone_gravi_zone
+zone_sound_4_		= detectors\DA-2_beep1
+zone_min_freq_4		= 0.5
+zone_max_freq_4		= 30
 
-inv_name						= Detector
-inv_name_short					= Detector
-inv_weight						= 0
+inv_name			= st_detector
+inv_name_short		= st_detector
+inv_weight			= 0.2
 
-inv_grid_width					= 1
-inv_grid_height					= 1
-inv_grid_x						= 15
-inv_grid_y						= 7
-cost							= 1000	;30
-;belt							= true;
-default_to_ruck					= false
-slot							= 8
+inv_grid_width		= 1
+inv_grid_height		= 1
+inv_grid_x			= 15
+inv_grid_y			= 7
+cost				= 5000
+belt				= true
+default_to_ruck		= true
+slot				= 12
+
 
 [detector_elite]:identity_immunities
-$spawn							= "devices\detector_elite"
-class							= D_SIMDET
-cform							= skeleton
-visual							= equipments\item_datchik3.ogf
-radius							= 10	;15
-buzzer_radius					= 1.5
-noise							= zone_mosquito_bald       ;detectors\geiger_noise_loop
-buzzer							= zone_mosquito_bald       ;detectors\DA-2_alarm_loop
+GroupControlSection	= spawn_group
+discovery_dependency =
+$spawn 				= "devices\detector_elite"
+$prefetch 			= 32
+class				= D_SIMDET
+cform				= skeleton
+visual				= equipments\item_datchik3.ogf
+description                     = enc_equipment_devic_detector1
+radius				= 10	;15
+buzzer_radius		= 1.5
+noise				= zone_mosquito_bald       ;detectors\geiger_noise_loop
+buzzer				= zone_mosquito_bald       ;detectors\DA-2_alarm_loop
 
-ef_detector_type				= 1
-night_vision_particle			= damage_fx\heli_burn
+ef_detector_type	= 1
+
 
 ;описание распознаваемых детектором зон
-zone_class_1					= zone_mosquito_bald
-zone_sound_1_					= detectors\DA-2_beep1
-zone_min_freq_1					= 0.1
-zone_max_freq_1					= 40
-zone_map_location_1				= anomaly_zone_location
+zone_class_1		= zone_mosquito_bald
+zone_sound_1_		= $no_sound
+zone_min_freq_1		= 1
+zone_max_freq_1		= 2
+zone_map_location_1 = anomaly_zone_location
 
-zone_class_2					= zone_mincer
-zone_sound_2_					= detectors\DA-2_beep1
-zone_min_freq_2					= 0.1
-zone_max_freq_2					= 20
-zone_map_location_2				= anomaly_zone_location
+zone_class_2		= zone_mincer
+zone_sound_2_		= $no_sound
+zone_min_freq_2		= 1
+zone_max_freq_2		= 2
+zone_map_location_2 = anomaly_zone_location
 
-zone_class_3					= zone_radioactive
-zone_sound_3_					= detectors\geiger_click3
-zone_min_freq_3					= 1
-zone_max_freq_3					= 20
-zone_map_location_3				= anomaly_zone_location
+zone_class_3		= zone_radioactive
+zone_sound_3_		= detectors\geiger_1
+zone_sound_3_1		= detectors\geiger_2
+zone_sound_3_2		= detectors\geiger_3
+zone_sound_3_3		= detectors\geiger_4
+zone_sound_3_4		= detectors\geiger_5
+zone_sound_3_5		= detectors\geiger_6
+zone_sound_3_6		= detectors\geiger_1
+zone_sound_3_7		= detectors\geiger_1
+zone_sound_3_8		= detectors\geiger_1
+zone_min_freq_3		= 1
+zone_max_freq_3		= 20
+zone_map_location_3 = radio_zone_location
 
-zone_class_4					= zone_gravi_zone
-zone_sound_4_					= detectors\DA-2_beep1
-zone_min_freq_4					= 0.5
-zone_max_freq_4					= 30
-zone_map_location_4				= anomaly_zone_location
+zone_class_4		= zone_gravi_zone
+zone_sound_4_		= $no_sound
+zone_min_freq_4		= 1
+zone_max_freq_4		= 2
+zone_map_location_4 = anomaly_zone_location
 
-inv_name						= st_detector
-inv_name_short					= st_detector
-description						= st_detector_descr
+zone_class_5		= zone_zharka_static
+zone_sound_5_		= $no_sound
+zone_min_freq_5		= 1
+zone_max_freq_5		= 2
+zone_map_location_5 = anomaly_zone_location
 
-inv_weight						= 0
+zone_class_6		= zone_buzz
+zone_sound_6_		= $no_sound
+zone_min_freq_6		= 1
+zone_max_freq_6		= 2
+zone_map_location_6 = anomaly_zone_location
 
-inv_grid_width					= 1
-inv_grid_height					= 1
-inv_grid_x						= 5
-inv_grid_y						= 14
-cost							= 1500
-;belt							= true
-slot							= 8
+zone_class_7		= zone_burning_fuzz
+zone_sound_7_		= $no_sound
+zone_min_freq_7		= 1
+zone_max_freq_7		= 2
+zone_map_location_7 = anomaly_zone_location
 
-attach_angle_offset				= -0.160570, -1.425061, -0.361283
-attach_position_offset			= 0.160570, -0.060214, 0.020071
-attach_bone_name				= bip01_l_hand
-auto_attach						= false
+
+inv_name			= detector
+inv_name_short		= detector
+inv_weight			= 0.3
+
+inv_grid_width		= 1
+inv_grid_height		= 1
+inv_grid_x			= 5
+inv_grid_y			= 14
+cost				= 10000
+belt				= true
+slot				= 12
+
+attach_angle_offset		= -0.160570,-1.425061,-0.361283
+attach_position_offset	= 0.160570,-0.060214,0.020071
+attach_bone_name		= bip01_l_hand
+auto_attach				= false
+
+
+
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; OTHERS
+;;	OTHERS
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 [wpn_vodka_hud]:identity_immunities
-fire_point						= 0.0, 0.0, 0.06
-fire_bone						= bip01_head
-orientation						= 0, 0, 0
-position						= 0, 0, 0
-visual							= weapons\vodka\vodka_hud.ogf
+fire_point               = 0.0, 0.0, 0.06
+fire_bone                = bip01_head
+orientation              = 0, 0, 0
+position                 = 0, 0, 0
+visual                   = weapons\vodka\vodka_hud.ogf
 
-anim_idle						= vodka_2
-anim_show						= vodka_1
-anim_hide						= vodka_4
-anim_play						= vodka_5
-anim_prepare					= vodka_5
-anim_eat						= vodka_3
+anim_idle			= vodka_2
+anim_show			= vodka_1
+anim_hide			= vodka_4
+anim_play			= vodka_5
+anim_prepare		= vodka_5
+anim_eat			= vodka_3
+
+
+[matras]:identity_immunities
+GroupControlSection = spawn_group
+discovery_dependency =
+$spawn    = "food and drugs\antirad"
+$prefetch   = 32
+class   = II_ANTIR
+cform           = skeleton
+visual          = equipments\item_rukzak.ogf
+description  = enc_amk_matras
+
+quest_item			= true
+
+inv_name   = amk_matras
+inv_name_short  = amk_matras_s
+inv_weight   = 1
+
+inv_grid_width  = 2
+inv_grid_height  = 2
+inv_grid_x   = 16
+inv_grid_y   = 32
+cost    = 0
+
+; eatable item
+eat_health = 0
+eat_satiety = 0
+eat_power = 0
+eat_radiation = 0
+eat_alcohol = 0
+wounds_heal_perc = 0
+eat_portions_num = 1
+
+; food item
+animation_slot  = 4
+
+;hud item
+hud = wpn_vodka_hud

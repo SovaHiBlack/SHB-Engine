@@ -85,6 +85,7 @@ function load_job(sj, gname, type, squad, groups, st)
 			it = it + 1
 		end
 
+
 		-- Проверяем наличие путей брожения внутри лагеря.
 		it = 1
 		while level.patrol_path_exists(gname.."_walker_"..it.."_walk") do
@@ -233,15 +234,15 @@ function load_job(sj, gname, type, squad, groups, st)
 				in_rest = "", out_rest = "",
 				predicate = function(npc_info)
 								return npc_info.is_sniper == true
-							end
-				}
+				            end
+			}
 			table.insert(sj, t)
 
 			-- добавляем описание должности в лтх.
 			local job_ltx = "[logic@"..way_name.."]\n"..
 							"active = camper@"..way_name.."\n"..
 
-							"[camper@"..way_name.."]\n"..
+							"[camper@"..way_name.."]\n"..							
 							"path_walk = sniper_"..it.."_walk\n"..
 							"path_look = sniper_"..it.."_look\n"..
 							"sniper = true\n"
@@ -358,7 +359,7 @@ function load_job(sj, gname, type, squad, groups, st)
 				table.insert(sj, t)
 			end
 
-			-- добавляем описание должности в ltx.
+			-- добавляем описание должности в лтх.
 			local job_ltx = "[logic@"..way_name.."]\n"..
 							"active = mob_home@"..way_name.."\n"..
 
@@ -369,66 +370,73 @@ function load_job(sj, gname, type, squad, groups, st)
 			ltx = ltx..job_ltx
 			it = it + 1
 		end
+
+
 	end
 end
 
 function load_states(gname, type)
 	if type == "general_lager" then
 		return function(gulag)
-					if gulag.state == 0 then
-						if gulag.population_comed == 0 then
-							return 0
-						end
-
-						if xr_logic.pick_section_from_condlist(db.actor, gulag.smrttrn, gulag.state_switch_1) ~= nil then
---							level.map_add_object_spot(gulag.smrttrn.id, "alife_presentation_smart_ready", "Ready")
-							return 1
-						end
-
-						return 0
-					elseif gulag.state == 1 then
-						if gulag.population_comed == 0 then
-							return 0
-						end
-
-						if xr_logic.pick_section_from_condlist(db.actor, gulag.smrttrn, gulag.state_switch_0) ~= nil then
---							level.map_remove_object_spot(gulag.smrttrn.id, "alife_presentation_smart_ready")
-							return 0
-						end
-
-						return 1
-					end
+			if gulag.state == 0 then
+				if gulag.population_comed == 0 then
+					return 0
 				end
+				if xr_logic.pick_section_from_condlist(db.actor, gulag.smrttrn, gulag.state_switch_1) ~= nil then
+
+					--level.map_add_object_spot(gulag.smrttrn.id, "alife_presentation_smart_ready", "Ready")	
+		
+					return 1
+				end
+				return 0
+			elseif gulag.state == 1 then
+				-- Если гулаг не на этой локации, то остальное проверять бессмысленно, так как
+				-- 1) упомянутые в switch_0 гулаги элементарно не найдутся по имени;
+				-- 2) пришедшее население может оказаться равным нулю из-за другой схемы его подсчёта.
+				if not db.zone_by_name[gulag.name] then
+					return 1
+				end
+				if gulag.population_comed == 0 then
+					return 0
+				end
+				if xr_logic.pick_section_from_condlist(db.actor, gulag.smrttrn, gulag.state_switch_0) ~= nil then
+					
+					--level.map_remove_object_spot(gulag.smrttrn.id, "alife_presentation_smart_ready")
+					return 0
+				end
+				return 1
+			end
+		end
 	end
 
 	if type == "general_lair" then
-		return function(gulag)
-					if gulag.state == 0 then
-						if gulag.population_comed == 0 then
-							return 0
-						end
-
-						if xr_logic.pick_section_from_condlist(db.actor, gulag.object, gulag.state_switch_1) ~= nil then
---							level.map_add_object_spot(gulag.smrttrn.id, "alife_presentation_smart_ready", "Ready")
-							return 1
-						end
-
-						return 0
-					elseif gulag.state == 1 then
-						if gulag.population_comed == 0 then
-							return 0
-						end
-
-						if xr_logic.pick_section_from_condlist(db.actor, gulag.object, gulag.state_switch_0) ~= nil then
---							level.map_remove_object_spot(gulag.smrttrn.id, "alife_presentation_smart_ready")
-							return 0
-						end
-
-					return 1
-					end
+		return function(gulag) 
+			if gulag.state == 0 then
+				if gulag.population_comed == 0 then
+					return 0
 				end
+
+				if xr_logic.pick_section_from_condlist(db.actor, gulag.object, gulag.state_switch_1) ~= nil then
+					
+					--level.map_add_object_spot(gulag.smrttrn.id, "alife_presentation_smart_ready", "Ready")	
+					return 1
+				end
+				return 0
+			elseif gulag.state == 1 then
+				if gulag.population_comed == 0 then
+					return 0
+				end
+				if xr_logic.pick_section_from_condlist(db.actor, gulag.object, gulag.state_switch_0) ~= nil then
+
+					--level.map_remove_object_spot(gulag.smrttrn.id, "alife_presentation_smart_ready")
+					return 0
+				end
+				return 1
+			end
+		end
 	end
 end
+
 
 function checkStalker(npc_community, type, npc_rank, se_obj, preset_name)
 	return type == "general_lager"
@@ -438,17 +446,16 @@ function checkMonster(npc_community, type, npc_rank, se_obj, preset_name)
 	return type == "general_lair"
 end
 
---' ---------------------------------------------------------------------------
---' Dynamic ltx
---' ---------------------------------------------------------------------------
+
+--------------------------------------------------------------------------
+-- Dynamic ltx
+--------------------------------------------------------------------------
 function load_ltx(gname, type)
 	if type == "general_lager" then
 		return ltx
 	end
-
 	if type == "general_lair" then
 		return ltx
 	end
-
 	return nil
 end

@@ -2,8 +2,8 @@
 
 #include "IPhysicShellCreator.h"
 
-class CPHShellSimpleCreator: public IPhysicShellCreator
+class CPHShellSimpleCreator : public IPhysicShellCreator
 {
 public:
-	virtual void CreatePhysicsShell();
+	virtual void CreatePhysicsShell( );
 };

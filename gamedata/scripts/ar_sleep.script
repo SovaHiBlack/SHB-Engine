@@ -1,0 +1,62 @@
+-- Модуль сна $DreamMod
+-- --------------------
+
+class "ar_sleep" (cse_alife_creature_actor)
+
+function ar_sleep:__init(actor, storage)
+	self.actor = actor
+	self.st = storage
+--	get_console():execute("init_done")
+end
+
+function ar_sleep:reset_scheme()
+	local st = xr_logic.assign_storage_and_bind(actor, ini, scheme, section)
+--	st.logic = xr_logic.cfg_get_switch_conditions(actor, section, npc)	
+--	get_console():execute("reset_done")
+end
+
+function ar_sleep:update()
+--	get_console():execute("update_start")
+	local ini = ini_file ("scripts\\actorsleep.ltx")
+	if db.storage[db.actor:id()].active_section ~= death then
+--		get_console():execute("G_set")
+		_G[schemes["ar_sleep"]].set_scheme(self.actor, ini, "ar_sleep", death)
+		db.storage[db.actor:id()].active_section = death
+		db.storage[db.actor:id()].active_scheme = "ar_sleep"
+	end
+	local cond = xr_logic.cfg_get_condlist(ini, "death", "on_info", self.actor)
+	xr_logic.pick_section_from_condlist(self.actor, self.actor, cond.condlist)
+--	get_console():execute("update_done")
+end
+
+function ar_sleep:death_callback(victim, who)
+--	get_console():execute("death_callback")
+	cse_alife_creature_actor.on_death(self, -1)
+	sleep_manager.stopper()
+--	get_console():execute("death_callback_done")
+end
+-------------------------------------------------------------------------------
+function add_to_binder(actor, ini, scheme, section, storage)
+
+	local new_action = ar_sleep(actor, storage)
+
+	-- Регистрируем все actions, в которых будет вызван метод update()
+	xr_logic.subscribe_action_for_events(actor, storage, new_action)
+--	get_console():execute("add_done")	
+end
+
+function set_scheme(actor, ini, scheme, section)
+	local st = xr_logic.assign_storage_and_bind(actor, ini, scheme, section)
+--	st.logic = xr_logic.cfg_get_switch_conditions(actor, section, npc)
+	db.storage[db.actor:id()].active_scheme = "ar_sleep"
+--	xr_death.set_death(actor, ini, scheme, death)
+--	get_console():execute("set_done")
+end
+
+function disable_scheme()
+	db.storage[db.actor:id()]["ar_sleep"] = nil
+	db.storage[db.actor:id()].active_scheme = nil
+	db.storage[db.actor:id()].active_section = nil
+--	get_console():execute("disable_done")
+end
+-------------------------------------------------------------------------------

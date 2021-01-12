@@ -1062,6 +1062,14 @@ function bar_dolg_alarm(actor,npc)
 	end
 	return false
 end
+function bar_hostile_npc(actor,npc)
+	-- на бармена забьём, всё равно его не убить.
+	local c = npc:character_community()
+	if c == "stalker" or c == "dolg" or c == "ecolog" then
+		return false
+	end
+	return true
+end
 
 
 function is_courier_time (actor, npc)
@@ -1072,20 +1080,6 @@ function is_controller_dead (actor, npc)
     local c = level_object_by_sid (729)
     if c == nil then return false end
     return not c:alive ()
-end
-
-function bar_actor_rank_stalker (actor,npc)
-	local actor = db.actor
-	if actor:character_rank() > 300 then
-		return true
-	end
-end
-
-function bar_actor_rank_veteran (actor,npc)
-	local actor = db.actor
-	if actor:character_rank() > 600 then
-		return true
-	end
 end
 
 function bar_arena_fight_3_end ()
@@ -1213,9 +1207,10 @@ function agr_factory_hold_inactive (actor, npc)
 	local val = 0
 	
 	for k,v in pairs(gulag.Object) do
-		if (v == true or ( v:alive() and
-		   not(xr_wounded.is_heavy_wounded_by_id(k) or
-		       xr_wounded.is_psy_wounded_by_id(k)))) and
+		if (v == true or (v:alive() and 
+			not xr_wounded.is_heavy_wounded_by_id(k) and 
+			not xr_wounded.is_psy_wounded_by_id(k) and
+			v:character_community()~="stalker")) and 
 			gulag.Object_begin_job[k] == true
 		then
 			val = val + 1
@@ -1357,3 +1352,59 @@ function can_send_tutorial(actor, npc, p)
 	end
 	return true
 end
+
+---------------------------------------------------------------ARENA_EXTENSION_MOD------------------------------------------------------------------
+
+function bar_actor_rank_stalker (actor,npc)
+	local actor = db.actor
+	if actor:character_rank() > 300 or
+		actor:has_info("bar_arena_fight_8_done") then
+		return true
+	end
+end
+
+function bar_actor_rank_veteran (actor,npc)
+	local actor = db.actor
+	if actor:character_rank() > 600 or
+		actor:has_info("bar_arena_fight_8_done") then
+		return true
+	end
+end
+
+function aem_group(actor, npc, p)
+	return aem_manager.get_aem():is_group_name(p[1])
+end
+
+function aem_intro(actor, npc, p)
+	return aem_manager.get_aem():is_intro_name(p[1])
+end
+
+function aem_extro(actor, npc, p)
+	return aem_manager.get_aem():is_extro_name(p[1])
+end
+
+function aem_check_blow()
+	if db.Flag2==1 then
+		return true
+	end
+	return false
+end
+
+function aem_evil()
+	return aem_manager.get_aem():is_stalkers_evil()
+end
+
+function aem_kind()
+	return not aem_manager.get_aem():is_stalkers_evil()
+end
+
+function aem_on_place(actor, npc)
+	-- позиция нпс - bar_arena_man_look
+	local pos = npc:position()
+	if (pos.x>148.8 and pos.x<157.7) and (pos.z>68.3 and pos.z<69.9) then
+		return true
+	end
+	return false
+end
+
+---------------------------------------------------------------ARENA_EXTENSION_MOD------------------------------------------------------------------

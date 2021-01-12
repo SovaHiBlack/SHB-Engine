@@ -1,6 +1,9 @@
 [wpn_knife]:identity_immunities
+GroupControlSection			= spawn_group
+discovery_dependency 		= 
 $spawn              		= "weapons\knife"
 $npc                		= off
+$prefetch 		    		= 8
 scheduled           		= off
 cform						= skeleton
 description					= enc_weapons1_wpn-knife
@@ -63,15 +66,15 @@ flame_particles			 	=
 rpm_empty_click 	     	= 200
 
 ; ttc	
-hit_power                	= 1.80, 2.00, 2.20, 2.40
-hit_impulse		         	= 120
+hit_power                	= 2.00, 2.20, 2.40, 2.60
+hit_impulse		         	= 140
 hit_type				 	= wound
 
-hit_power_2                	= 1.80, 2.00, 2.20, 2.40
-hit_impulse_2	         	= 120
+hit_power_2                	= 2.10, 2.30, 2.50, 2.70
+hit_impulse_2	         	= 140
 hit_type_2				 	= wound_2
 
-fire_distance            	= 1.4;1.8
+fire_distance            	= 1.8;1.8
 bullet_speed			 	= 1000;500			;начальная скорость пули
 rpm                      	= 1000;600
 ; end ttc
@@ -86,6 +89,7 @@ light_disabled				= true
 
 ph_mass			         	= 4
 
+ammo_limit		         	= 180
 ammo_current		     	= 90
 ammo_elapsed		     	= 0
 	

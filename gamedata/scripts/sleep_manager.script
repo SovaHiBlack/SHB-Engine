@@ -1,0 +1,201 @@
+---------------------------- Модуль сна для OGSM 2.x --------------------------
+
+------------------ Copyright 2007-2008 xStream, Ab@dDon & DEXXX ---------------
+
+
+local nrg,med,cnt
+
+-- Функции, относящиеся ко сну
+function reduce_need_sleep(time)
+	local tmp=amk.load_variable("slp",0)
+	tmp=tmp-time*120
+	if tmp<0 then tmp=0 end
+	amk.del_variable("nrg")
+	amk.del_variable("smn")
+	amk.save_variable("slp",tmp)
+	test_sleep_pp()
+end
+function test_for_need_sleep()
+	if sleep_manager.is_sleep_active() == false then 
+		amk.save_variable("slp",amk.load_variable("slp",0)+1) 
+		test_sleep_pp()
+	end
+	amk.g_start_timer("slp",0,0,6)
+end
+function test_sleep_pp()
+	local tmp=amk.load_variable("slp",0)
+	if tmp>360 then
+		sleep_manager.main(5+amk.load_variable("nrg",0))
+	end
+	if tmp>300 then
+		level.add_pp_effector("yantar_underground_psi.ppe", 999, true)
+		level.set_pp_effector_factor(999, 5.0)
+		if not has_alife_info("encyclopedy_tutorial_sleep") then
+			db.actor:give_info_portion("encyclopedy_tutorial_sleep")
+			game.start_tutorial("part_17_sleep")	
+		end
+	end
+	if tmp<=300 then
+		level.remove_pp_effector(999)
+	end
+end
+function check_sleep_item(obj)
+	local section = obj:section()
+	local stype=nil
+	if section=="energy_drink" then
+		stype="nrg"
+	elseif section=="matras" then
+		stype="mtr"
+	end
+	if stype~=nil then
+		amk.start_timer(stype,0.1,obj:id())
+	end
+end
+function test_for_need_sleep_nrg(oid)
+	if alife():object(oid)==nil then
+		local n=amk.load_variable("nrg",0)
+		if n<3 then
+			amk.save_variable("nrg",n+1)
+			amk.save_variable("slp",amk.load_variable("slp",0)-30+n*10) 
+			test_sleep_pp()
+		end
+		amk.g_start_timer("men",0,1,0)
+		amk.save_variable("smn",1)
+	end
+end
+function test_for_need_sleep_matras(oid)
+	if alife():object(oid)==nil then
+		local enemy=false
+		for a=0,65534 do
+			local obj=level.object_by_id(a)
+			if obj then
+				if ((IsStalker(obj) and amk.get_npc_relation(obj,db.actor)=="enemy") or IsMonster(obj)) 
+				   and obj:position():distance_to(db.actor:position())<40 
+					and obj:see(db.actor) then
+					enemy=true
+					break
+				end
+			end
+		end
+		if enemy==true then
+			amk.send_tip("Вы не можете спать, когда кругом враги","Сообщение",nil,5)
+		else
+			if db.Flag2 == 1 then 
+				amk.send_tip("Вы не можете спать во время выброса", "Сообщение", nil, 5) 
+			else
+				if amk.load_variable("smn",0)==0 then
+					local spwn=ui_cheat.cheat(get_hud())
+					level.start_stop_menu(spwn,true)
+				else
+					amk.send_tip("Вы не можете спать из-за действия энергетика","Сообщение",nil,5)
+				end
+			end
+		end
+		amk.spawn_item_in_inv("matras")
+	end
+end
+
+
+function sleep_one_hour()
+	sleep_manager.main (1)
+end
+function sleep_three_hours()
+	sleep_manager.main (3)
+end
+function sleep_nine_hours()
+	sleep_manager.main (5)
+end
+function sleep_unlim(scale)
+	local sleep_time = (1 - db.actor.health)*6
+      	sleep_manager.main (sleep_time)
+end
+
+function main(scale)
+	reduce_need_sleep(scale)
+--	get_console():execute("_main_")	
+	local sleep_ltx = ini_file ("scripts\\actorsleep.ltx")
+	schemes["ar_sleep"] = "ar_sleep"
+	ar_sleep.set_scheme(db.actor, sleep_ltx, "ar_sleep", logic)
+--	get_console():execute("_main_set_sheme")
+	db.actor:stop_talk()
+	db.actor:hide_weapon()
+	level.disable_input()
+	sleep_manager.hp_corrector(scale)
+--	get_console():execute("_main_done")
+	sleep_manager.starter (scale)
+end
+
+function starter(scale)
+	local factor = scale * 2650
+	game.start_tutorial("time_scaling")
+	level.add_pp_effector("teleport.ppe", 2006, false)
+	level.set_time_factor(factor)
+--	get_console():execute("scaling_done")
+end
+
+function dreamer()
+	level.set_time_factor(10)
+	if sleep_manager.is_sleep_active() then
+		sleep_manager.hp_corrector(0)
+		local dream = dream.sleep_video_name_callback ()
+--		get_console():execute(dream)
+		if dream ~= "" then game.start_tutorial(dream)
+		else game.start_tutorial("without_dream") end
+	end
+end
+
+function stopper()
+--	get_console():execute("stoping")
+	level.set_time_factor(10)
+	ar_sleep.disable_scheme()
+	if not db.actor:alive() then
+--
+	else 
+		level.add_cam_effector("camera_effects\\prison_1.anm", 25, false, "")
+		level.add_pp_effector("yantar_underground_psi.ppe", 2007, false)
+		level.add_pp_effector("total_recall.ppe", 2008, false)
+		db.actor:restore_weapon()
+		local snd_obj = xr_sound.get_safe_sound_object([[characters_voice\human_01\stalker\states\breath\breath_2]])
+		snd_obj:play_no_feedback(db.actor, sound_object.s2d, 0, vector(), 15.0)
+	    level.add_cam_effector("camera_effects\\hit_back_left.anm", 26, false, "")
+	end
+	level.enable_input()	
+--	get_console():execute("stoped")
+end
+
+function hp_corrector(fr)
+	if fr ~= 0 then
+		hp = fr/6 + db.actor.health
+		if hp > 1 then hp = 1 end
+		return
+	elseif db.actor.health > hp then 
+		db.actor.health = hp - db.actor.health
+	end
+end
+
+function is_sleep_active()
+	if db.storage[db.actor:id()].active_scheme == "ar_sleep" then 
+		return true 
+	end
+	return false
+end
+
+---------------------------- Модуль сна для OGSM 2.x --------------------------
+
+------------------ Copyright 2007-2008 xStream, Ab@dDon & DEXXX ---------------
+
+--[[
+
+If you're going to use the whole of this script or its parts in your own creative 
+developments for the S.T.A.L.K.E.R. game, please don't become such a goddamn 
+motherfucker like the notorious author of the ABC Mod - Carbrobro. Leave the 
+copyrights, note the real author(s) and don't claim others' ideas and their 
+realization to be your own ones. It's just simple Modmakers' Ethics. Thank you!
+
+Если вы собираетесь использовать данный скрипт целиком или частично в своих 
+разработках по игре S.T.A.L.K.E.R., пожалуйста не опускайтесь до уровня печально 
+известного автора ABC мода - Carbrobro. Не удаляйте копирайты, указывайте настоящего 
+автора(ов) и не выдавайте чужие идеи и их реализацию за свои. Ведь это элементарная 
+этика модостроителей! Спасибо за понимание.
+
+]]--

@@ -46,9 +46,9 @@ function CAbuseManager:__init(npc, storage)
 	self.npc = npc
 	self.a = storage
 	self.enable = true
-	self.abuse_rate = 1
-	self.abuse_value = 0
-	self.abuse_threshold = 5
+	self.abuse_rate = 3
+	self.abuse_value = 1
+	self.abuse_threshold = 3
 	self.last_update = nil
 end
 function CAbuseManager:SetAbuseRate(rate)

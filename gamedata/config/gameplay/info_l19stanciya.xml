@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="windows-1251"?>
+<?xml version='1.0' encoding="windows-1251"?>
 
 <game_information_portions>
 
@@ -77,16 +77,19 @@
 	<info_portion id="aes_timer_20000"></info_portion>
 	<info_portion id="aes_timer_5000"></info_portion>
 	<info_portion id="aes_sniper_talk_1"></info_portion>
-
+	
 	<info_portion id="aes_arrive_to"></info_portion>
 	<info_portion id="aes_found_sarcofag"></info_portion>
 	<info_portion id="aes_get_soldier_map">
 		<article>aes_soldier_info</article>
 	</info_portion>
-
+	
 	<info_portion id="aes_activate_zone"></info_portion>
 	<info_portion id="aes_activate_sound"></info_portion>
 	<info_portion id="aes_activate_zone_immediate"></info_portion>
+	
+
+
 
 	<info_portion id="aes2_sniper_ambush1"></info_portion>
 	<info_portion id="aes2_sniper_ambush2"></info_portion>
@@ -154,9 +157,10 @@
 	<info_portion id="m9_ready"></info_portion>
 	<info_portion id="aes2_monolit_first_ambush"></info_portion>
 	<info_portion id="aes2_monolit_first_ambush_2"></info_portion>
-
+	
 	<info_portion id="aes2_monolit_teleport_final_1"></info_portion>
 	<info_portion id="aes2_monolit_teleport_ready_final"></info_portion>
+
 
 	<!-- OSOZNANIE -->
 	<info_portion id="oso_who_are_you"></info_portion>
@@ -166,7 +170,66 @@
 	<info_portion id="oso_chernobyl_crush"></info_portion>
 	<info_portion id="oso_stalker"></info_portion>
 	<info_portion id="oso_death_truck"></info_portion>
-	<info_portion id="oso_what_next"></info_portion>
+	<info_portion id="oso_what_next"></info_portion>	
 	<info_portion id="oso_question"></info_portion>
+   
+
+	<!-- OGSM Specific Infoportions -->
+	<info_portion id="mil_leader_attach_community2"></info_portion>
+
+	<info_portion id="electrochimera_dead"><article>enc_electrochimera</article></info_portion>
+	<info_portion id="psy_burer_dead"><article>enc_psy_burer</article></info_portion>
+	<info_portion id="zombie_rusty_dead"><article>enc_zombie_rusty</article></info_portion>
+	<info_portion id="zombie_plague_dead"><article>enc_zombie_plague</article></info_portion>
+	<info_portion id="psy_dog_dead"><article>enc_psydog</article></info_portion>
+
+	<info_portion id="zombie_dead"><article>mutant_zombie_general</article></info_portion>
+	<info_portion id="zombie_ghost_dead"><article>mutant_zombieg_general</article></info_portion>
+	<info_portion id="cat_dead"><article>mutant_cat_general</article></info_portion>
+	<info_portion id="fracture_dead"><article>mutant_fracture_general</article></info_portion>
+	<info_portion id="tushkano_dead"><article>mutant_tushkano</article></info_portion>
+	<info_portion id="chimera_dead"><article>mutant_chimera_general</article></info_portion>
+	<info_portion id="burer_dead"><article>mutant_burer_general</article></info_portion>
+
+	<info_portion id="dog_dead"><article>mutant_blind_general</article></info_portion>
+	<info_portion id="pseudodog_dead"><article>mutant_pseudodog_general</article></info_portion>
+	<info_portion id="flesh_dead"><article>mutant_flesh_general</article></info_portion>
+	<info_portion id="boar_dead"><article>mutant_boar_general</article></info_portion>
+	<info_portion id="snork_dead"><article>mutant_snork_general</article></info_portion>
+	<info_portion id="bloodsucker_dead"><article>mutant_bloodsucker_general</article></info_portion>
+	<info_portion id="controller_dead"><article>mutant_controller_general</article></info_portion>
+	<info_portion id="pseudogiant_dead"><article>mutant_pseudogiant_general</article></info_portion>
+	<info_portion id="poltergeist_dead"><article>mutant_poltergeist_general</article></info_portion>
+
+	<info_portion id="zombie_hand_sold"></info_portion>
+	<info_portion id="zombie_hand_research"><article>rusty_zombie_research</article></info_portion>
+
+	<info_portion id="povar_vodka_asked"></info_portion>
+	<info_portion id="povar_vodka_done"></info_portion>
+
+	<info_portion id="secret_talk"><article>rad_code_door_info</article></info_portion>
+
+	<info_portion id="freeplay"><article>freeplay_info</article></info_portion>
+	<info_portion id="game_end"></info_portion>
+
+	<info_portion id="pri_trader_dead"></info_portion>
+	<info_portion id="pri_trader_vanish"></info_portion>
+	<info_portion id="pri_trader_first_talk"></info_portion>
+
+	<info_portion id="pri_trader_arny_task">
+		<task>pri_kill_arny</task>
+	</info_portion>
+	<info_portion id="pri_trader_arny_task_done"></info_portion>
+	<info_portion id="pri_trader_freedom_task">
+		<task>pri_kill_freedom</task>
+	</info_portion>
+	<info_portion id="pri_trader_freedom_task_done"></info_portion>
+	<info_portion id="pri_trader_dolg_task">
+		<task>pri_kill_dolg</task>
+	</info_portion>
+	<info_portion id="pri_trader_dolg_task_done"></info_portion>
+
+	<info_portion id="first_blowout"></info_portion>
+
 
 </game_information_portions>

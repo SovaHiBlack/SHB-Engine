@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<window>
+<?xml version='1.0' encoding="UTF-8"?>
+<w>
 	<!-- CAR_HEALTH -->
 	<car_health_static x="0" y="0" width="155" height="34">
 		<texture>ui_hud_shkala_car</texture>
@@ -14,4 +14,5 @@
 			<texture>ui_hud_shk_car</texture>
 		</progress>
 	</car_health_progress_bar>
-</window>
+	
+</w>

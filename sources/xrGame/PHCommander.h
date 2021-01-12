@@ -59,10 +59,10 @@ public:
 DEFINE_VECTOR(CPHCall*,PHCALL_STORAGE,PHCALL_I);
 class CPHCommander
 {
-	
 	PHCALL_STORAGE	m_calls;
 	PHCALL_STORAGE	m_calls_as_add_buffer;
 	PHCALL_STORAGE	m_calls_as_remove_buffer;
+
 public:
 						~CPHCommander				()																;
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -79,12 +79,12 @@ public:
 	void				add_call_unique_as			(CPHCondition* condition,CPHReqComparerV* cmp_condition,CPHAction* action,CPHReqComparerV* cmp_action);
 	void				add_call_as					(CPHCondition* condition,CPHAction* action)						;
 
-	void				remove_call_as				(PHCALL_I i)													;
+//	void				remove_call_as				(PHCALL_I i)													;
 	PHCALL_I			find_call_as				(CPHReqComparerV* cmp_condition,CPHReqComparerV* cmp_action)	;				
-	void				remove_call_as				(CPHReqComparerV* cmp_condition,CPHReqComparerV* cmp_action)	;
-	void				remove_calls_as				(CPHReqComparerV* cmp_object)									;
+//.	void				remove_call_as				(CPHReqComparerV* cmp_condition,CPHReqComparerV* cmp_action)	;
+//	void				remove_calls_as				(CPHReqComparerV* cmp_object)									;
 
-	void				update_as  					()																;
+//	void				update_as  					()																;
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	void				clear						()																;
 private:

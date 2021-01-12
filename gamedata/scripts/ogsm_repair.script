@@ -1,0 +1,141 @@
+---------------------- Модуль ремонта вещей для OGSM 2.x ----------------------
+
+--------------------- Copyright 2007-2008 Ab@dDon & DEXXX ---------------------
+
+
+local weapon_profit_margin = 2.5
+local armor_profit_margin = 3
+local set_cond1 = 0
+local set_cond2 = 0
+local set_cond6 = 0
+
+function trader_repair_precond(trader, actor)
+	local item_in_slot_1 = db.actor:item_in_slot(1)
+	local item_in_slot_2 = db.actor:item_in_slot(2)
+	local item_in_slot_6 = db.actor:item_in_slot(6)
+
+	if item_in_slot_1 then if item_in_slot_1:condition()>=0.6 then set_cond1 = 1 else set_cond1 = 0.8 end end
+	if item_in_slot_2 then if item_in_slot_2:condition()>=0.6 then set_cond2 = 1 else set_cond2 = 0.8 end end
+	if item_in_slot_6 then if item_in_slot_6:condition()>=0.6 then set_cond6 = 1 else set_cond6 = 0.8 end end
+
+	if item_in_slot_1 and item_in_slot_1:condition() < 0.99 and item_in_slot_1:condition() > 0.35 then return true
+	elseif item_in_slot_2 and item_in_slot_2:condition() < 0.99 and item_in_slot_2:condition() > 0.35 then return true
+	elseif item_in_slot_6 and item_in_slot_6:condition() < 0.99 and item_in_slot_6:condition() > 0.35 then return true
+	else return false
+	end	 
+end
+
+function trader_check_money_s1(trader, actor)
+	local item_in_slot = db.actor:item_in_slot(1)
+	if item_in_slot then 
+		local item_repair_cost = math.floor((set_cond1-item_in_slot:condition()) * item_in_slot:cost() * weapon_profit_margin )
+		if item_repair_cost > 0 and db.actor:money() >= item_repair_cost and item_in_slot:condition() < 1 and item_in_slot:condition() > 0.35 then
+			return true
+		end 
+	end
+	return false
+end
+
+function trader_check_money_s2(trader, actor)
+	local item_in_slot = db.actor:item_in_slot(2)
+	if item_in_slot then 
+		local item_repair_cost = math.floor((set_cond2-item_in_slot:condition()) * item_in_slot:cost() * weapon_profit_margin )
+		if item_repair_cost > 0 and db.actor:money() >= item_repair_cost and item_in_slot:condition() < 1 and item_in_slot:condition() > 0.35 then
+			return true
+		end 
+	end
+	return false
+end
+
+function trader_check_money_s6(trader, actor)
+	local item_in_slot = db.actor:item_in_slot(6)
+	if item_in_slot then 
+		local item_repair_cost = math.floor((set_cond6-item_in_slot:condition()) * item_in_slot:cost() * armor_profit_margin )
+		if item_repair_cost > 0 and db.actor:money() >= item_repair_cost and item_in_slot:condition() < 1 and item_in_slot:condition() > 0.35 then
+			return true
+		end 
+	end
+	return false
+end
+
+function trader_repiar_weapon_s1(trader, actor)
+	local item_in_slot = db.actor:item_in_slot(1)
+	if item_in_slot then
+		local item_repair_cost = math.floor((set_cond1-item_in_slot:condition()) * item_in_slot:cost() * weapon_profit_margin)
+		item_in_slot:set_condition(set_cond1)
+		dialogs.relocate_money(actor, item_repair_cost, "out")
+	end
+end
+
+function trader_repiar_weapon_s2(trader, actor)
+	local item_in_slot = db.actor:item_in_slot(2)
+	if item_in_slot then
+		local item_repair_cost = math.floor((set_cond2-item_in_slot:condition()) * item_in_slot:cost() * weapon_profit_margin)
+		item_in_slot:set_condition(set_cond2)
+		dialogs.relocate_money(actor, item_repair_cost, "out")
+	end
+end
+
+function trader_repiar_armor_s6(trader, actor)
+	local item_in_slot = db.actor:item_in_slot(6)
+	if item_in_slot then
+		local item_repair_cost = math.floor((set_cond6-item_in_slot:condition()) * item_in_slot:cost() * armor_profit_margin)
+		item_in_slot:set_condition(set_cond6)
+		dialogs.relocate_money(actor, item_repair_cost, "out")
+	end	
+end
+
+function repair_costs(first_speaker, second_speaker)
+	local task_texture, task_rect = get_texture_info("ui_iconsTotal_lost_money")
+	
+	local item_name_and_price = ""
+	local item_repair_cost = 0
+	if db.actor then 
+		local item_in_slot_1 = db.actor:item_in_slot(1)
+		local item_in_slot_2 = db.actor:item_in_slot(2)
+		local item_in_slot_6 = db.actor:item_in_slot(6)
+	
+		if item_in_slot_1 then 
+			item_repair_cost = math.floor((set_cond1-item_in_slot_1:condition()) * item_in_slot_1:cost() * weapon_profit_margin)
+			if item_repair_cost > 0 and item_in_slot_1:condition() > 0.35 then
+				item_name_and_price = game.translate_string("list_trader_repair_0").." %c[255,238,155,23]"..item_repair_cost.." руб.%c[default]"
+				db.actor:give_talk_message(item_name_and_price, task_texture, task_rect, "iconed_trade_info")
+			end
+		end
+		if item_in_slot_2 then
+			item_repair_cost = math.floor((set_cond2-item_in_slot_2:condition()) * item_in_slot_2:cost() * weapon_profit_margin)
+			if item_repair_cost > 0 and item_in_slot_2:condition() > 0.35 then
+				item_name_and_price = game.translate_string("list_trader_repair_1").." %c[255,238,155,23]"..item_repair_cost.." руб.%c[default]"
+				db.actor:give_talk_message(item_name_and_price, task_texture, task_rect, "iconed_trade_info")
+			end
+		end
+		if item_in_slot_6 then
+			item_repair_cost = math.floor((set_cond6-item_in_slot_6:condition()) * item_in_slot_6:cost() * armor_profit_margin)
+			if item_repair_cost > 0 and item_in_slot_6:condition() > 0.35 then
+				item_name_and_price = game.translate_string("list_trader_repair_2").." %c[255,238,155,23]"..item_repair_cost.." руб.%c[default]"
+				db.actor:give_talk_message(item_name_and_price, task_texture, task_rect, "iconed_trade_info")
+			end
+		end
+	end
+end
+
+
+---------------------- Модуль ремонта вещей для OGSM 2.x ----------------------
+
+--------------------- Copyright 2007-2008 Ab@dDon & DEXXX ---------------------
+
+--[[
+
+If you're going to use the whole of this script or its parts in your own creative 
+developments for the S.T.A.L.K.E.R. game, please don't become such a goddamn 
+motherfucker like the notorious author of the ABC Mod - Carbrobro. Leave the 
+copyrights, note the real author(s) and don't claim others' ideas and their 
+realization to be your own ones. It's just simple Modmakers' Ethics. Thank you!
+
+Если вы собираетесь использовать данный скрипт целиком или частично в своих 
+разработках по игре S.T.A.L.K.E.R., пожалуйста не опускайтесь до уровня печально 
+известного автора ABC мода - Carbrobro. Не удаляйте копирайты, указывайте настоящего 
+автора(ов) и не выдавайте чужие идеи и их реализацию за свои. Ведь это элементарная 
+этика модостроителей! Спасибо за понимание.
+
+]]--
