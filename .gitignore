@@ -3,11 +3,15 @@
 ################################################################################
 
 /gamedata/levels
-/gamedata/meshes/equipments/exoskelet_killer.ogf
-/Debug-Win32/binaries/eax.dll
+/gamedata/meshes
 /gamedata/sounds
 /gamedata/textures
+
 /sources/.vs/SHB-Engine/v16
+
 /Debug-Win32/binaries
 /Debug-Win32/intermediate
 /Debug-Win32/libraries
+/Release-Win32/binaries
+/Release-Win32/intermediate
+/Release-Win32/libraries
