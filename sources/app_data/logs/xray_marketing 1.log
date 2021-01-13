@@ -1,0 +1,170 @@
+* Detected CPU: GenuineIntel P3 family, F6/M10/S9, 2693.00 mhz, 29-clk 'rdtsc'
+* CPU Features: RDTSC, MMX, SSE, SSE2
+
+Initializing File System...
+using fs-ltx fsgame.ltx
+FS: 30075 files cached, 4620Kb memory used.
+Init FileSystem 27.791599 sec
+'Core' build 8012, Jan 13 2021
+
+CRT heap 0x00e10000
+Process heap 0x00e10000
+Initializing Engine...
+Executing config-script "user.ltx"...
+! Cannot open script file [user.ltx]
+Starting INPUT device...
+Loading DLL: xrRender_R1.dll
+Loading DLL: xrGame.dll
+* [win32]: free[4057840 K], reserved[35440 K], committed[100960 K]
+* [ D3D ]: textures[0 K]
+* [x-ray]: process heap[7901 K]
+* [x-ray]: economy: strings[2006 K], smem[0 K]
+* [x-ray]: file mapping: memory[0 K], count[0]
+* active file mappings (0):
+Executing config-script "d:\engine\shb-engine\debug-win32\..\gamedata\config\default_controls.ltx"...
+! cant convert dik_name for dik[16], prop=[
+! cant convert dik_name for dik[17], prop=[
+! cant convert dik_name for dik[18], prop=[
+! cant convert dik_name for dik[19], prop=[
+! cant convert dik_name for dik[20], prop=[
+! cant convert dik_name for dik[21], prop=[
+! cant convert dik_name for dik[22], prop=[
+! cant convert dik_name for dik[23], prop=[
+! cant convert dik_name for dik[24], prop=[
+! cant convert dik_name for dik[25], prop=[
+! cant convert dik_name for dik[26], prop=[
+! cant convert dik_name for dik[27], prop=[
+! cant convert dik_name for dik[30], prop=[
+! cant convert dik_name for dik[31], prop=[
+! cant convert dik_name for dik[32], prop=[
+! cant convert dik_name for dik[33], prop=[
+! cant convert dik_name for dik[34], prop=[
+! cant convert dik_name for dik[35], prop=[
+! cant convert dik_name for dik[36], prop=[
+! cant convert dik_name for dik[37], prop=[
+! cant convert dik_name for dik[38], prop=[
+! cant convert dik_name for dik[39], prop=[
+! cant convert dik_name for dik[40], prop=[
+! cant convert dik_name for dik[41], prop=[
+! cant convert dik_name for dik[44], prop=[
+! cant convert dik_name for dik[45], prop=[
+! cant convert dik_name for dik[46], prop=[
+! cant convert dik_name for dik[47], prop=[
+! cant convert dik_name for dik[48], prop=[
+! cant convert dik_name for dik[49], prop=[
+! cant convert dik_name for dik[50], prop=[
+! cant convert dik_name for dik[51], prop=[
+! cant convert dik_name for dik[52], prop=[
+! cant convert dik_name for dik[144], prop=[
+! cant find corresponding [id] for action_name artefact
+! cant find corresponding [id] for action_name team_menu
+! cant find corresponding [id] for action_name skin_menu
+! cant find corresponding [id] for action_name speech_menu_1
+! cant find corresponding [id] for action_name speech_menu_0
+! cant find corresponding [id] for action_name buy_menu
+! cant find corresponding [id] for action_name chat
+! cant find corresponding [id] for action_name chat_team
+! cant find corresponding [id] for action_name vote_begin
+! cant find corresponding [id] for action_name vote
+! cant find corresponding [id] for action_name vote_yes
+! cant find corresponding [id] for action_name vote_no
+[d:\engine\shb-engine\debug-win32\..\gamedata\config\default_controls.ltx] successfully loaded.
+Executing config-script "user.ltx"...
+! Cannot open script file [user.ltx]
+SOUND: OpenAL: enumerate devices...
+SOUND: OpenAL: EnumerationExtension Present
+devices Generic Hardware
+SOUND: OpenAL: system  default SndDevice name is Generic Hardware
+SOUND: OpenAL: default SndDevice name set to Generic Software
+SOUND: OpenAL: All available devices:
+1. Generic Software, Spec Version 1.1 (default)
+2. Generic Software, Spec Version 1.1 (default)
+SOUND: OpenAL: SelectBestDevice is Generic Software 1.1
+SOUND: OpenAL: Required device: Generic Software. Created device: Generic Software.
+* sound: EAX 2.0 extension: absent
+* sound: EAX 2.0 deferred: absent
+* sound : cache: 32773 kb, 3805 lines, 8820 bpl
+Starting RENDER device...
+* GPU [vendor:8086]-[device:152]: Intel(R) HD Graphics
+* GPU driver: 10.18.10.4276
+Available video modes[13]:
+[800x600]
+[1024x768]
+[1152x864]
+[1280x600]
+[1280x720]
+[1280x768]
+[1280x800]
+[1280x960]
+[1280x1024]
+[1360x768]
+[1366x768]
+[1440x900]
+[1600x900]
+* CREATE: DeviceREF: 1
+* Vertex Processor: PURE HARDWARE
+*     Texture memory: 1783 M
+*          DDI-level: 9.0
+* GPU shading: vs(fffe0300/3.0/30), ps(ffff0300/3.0/30)
+* GPU vertex cache: recognized, 32
+* DVB created: 1536K
+* DIB created: 512K
+count of .thm files=1
+load time=209 ms
+* distortion: used, dev(30),need(14)
+* SSample: 1024x768
+* created RT($user$rendertarget), 1024x768
+* created RT($user$distort), 1024x768
+* SSample: enabled
+Script debugger succesfully restarted.
+! [LUA] Cannot register class CAI_Stalker
+! [LUA]  0 : [C  ] register
+! [LUA]  1 : [Lua] ...g-win32\..\gamedata\scripts\class_registrator.script(4) : cs_register
+! [LUA]  2 : [Lua] ...g-win32\..\gamedata\scripts\class_registrator.script(20) : 
+! [LUA] Cannot register class CAI_Trader
+! [LUA]  0 : [C  ] register
+! [LUA]  1 : [Lua] ...g-win32\..\gamedata\scripts\class_registrator.script(4) : cs_register
+! [LUA]  2 : [Lua] ...g-win32\..\gamedata\scripts\class_registrator.script(21) : 
+! [LUA] Cannot register class CElectricBall
+! [LUA]  0 : [C  ] register
+! [LUA]  1 : [Lua] ...g-win32\..\gamedata\scripts\class_registrator.script(4) : cs_register
+! [LUA]  2 : [Lua] ...g-win32\..\gamedata\scripts\class_registrator.script(28) : 
+! [LUA] Cannot register class CAI_Bloodsucker
+! [LUA]  0 : [C  ] register
+! [LUA]  1 : [Lua] ...g-win32\..\gamedata\scripts\class_registrator.script(4) : cs_register
+! [LUA]  2 : [Lua] ...g-win32\..\gamedata\scripts\class_registrator.script(32) : 
+! [LUA] Cannot register class CAI_Boar
+! [LUA]  0 : [C  ] register
+! [LUA]  1 : [Lua] ...g-win32\..\gamedata\scripts\class_registrator.script(4) : cs_register
+! [LUA]  2 : [Lua] ...g-win32\..\gamedata\scripts\class_registrator.script(33) : 
+! [LUA] Cannot register class CAI_Dog
+! [LUA]  0 : [C  ] register
+! [LUA]  1 : [Lua] ...g-win32\..\gamedata\scripts\class_registrator.script(4) : cs_register
+! [LUA]  2 : [Lua] ...g-win32\..\gamedata\scripts\class_registrator.script(34) : 
+! [LUA] Cannot register class CAI_Flesh
+! [LUA]  0 : [C  ] register
+! [LUA]  1 : [Lua] ...g-win32\..\gamedata\scripts\class_registrator.script(4) : cs_register
+! [LUA]  2 : [Lua] ...g-win32\..\gamedata\scripts\class_registrator.script(35) : 
+! [LUA] Cannot register class CAI_PseudoDog
+! [LUA]  0 : [C  ] register
+! [LUA]  1 : [Lua] ...g-win32\..\gamedata\scripts\class_registrator.script(4) : cs_register
+! [LUA]  2 : [Lua] ...g-win32\..\gamedata\scripts\class_registrator.script(36) : 
+! [LUA] SCRIPT RUNTIME ERROR
+! [LUA]  0 : [C  ] register
+! [LUA]  1 : [Lua] ...ug-win32\..\gamedata\scripts\game_registrator.script(3) : 
+! [LUA] expected class to derive from or a newline
+! [LUA] SCRIPT RUNTIME ERROR
+! [LUA]  0 : [C  ] register
+! [LUA]  1 : [Lua] ...ug-win32\..\gamedata\scripts\game_registrator.script(4) : 
+! [LUA] expected class to derive from or a newline
+Starting engine...
+ 
+FATAL ERROR
+ 
+[error]Expression    : sun_dir.y<0
+[error]Function      : CEnvDescriptor::load
+[error]File          : Environment_misc.cpp
+[error]Line          : 155
+[error]Description   : Invalid sun direction settings while loading
+ 
+
