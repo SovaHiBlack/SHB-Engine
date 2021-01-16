@@ -80,9 +80,9 @@
     <texture id="ui_inv_icon_bleeding_restore_speed" x="498" y="170" width="18" height="18" />
     <texture id="ui_inv_icon_power_restore_speed" x="498" y="190" width="18" height="18" />
 
-    <texture id="ui_inv_icon_strike_immunity" x="518" y="110" width="18" height="18" />
+    <texture id="ui_inv_icon_shock_immunity" x="518" y="110" width="18" height="18" />
     <texture id="ui_inv_icon_burn_immunity" x="518" y="130" width="18" height="18" />
-    <texture id="ui_inv_icon_shock_immunity" x="518" y="150" width="18" height="18" />
+    <texture id="ui_inv_icon_strike_immunity" x="518" y="150" width="18" height="18" />
     <texture id="ui_inv_icon_wound_immunity" x="518" y="170" width="18" height="18" />
     <texture id="ui_inv_icon_radiation_immunity" x="518" y="190" width="18" height="18" />
     <texture id="ui_inv_icon_telepatic_immunity" x="538" y="110" width="18" height="18" />

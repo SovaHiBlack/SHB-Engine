@@ -12,7 +12,7 @@ ef_weapon_type			= 13
 
 sound			= zone_mosquito_bald
 
-;postprocess		= mosquito_bald
+postprocess		= mosquito_bald
 
 
 BirthProbability	= 0.1
@@ -26,7 +26,7 @@ period				= 1
 min_artefact_count	= 0
 max_artefact_count	= 0
 
-idle_particles		= anomaly2\group_items\gravity_idle_dist_00
+idle_particles		= anomaly2\bold_idle
 blowout_particles	= anomaly2\gravity_blast_01
 
 hit_small_particles			= hit_fx\hit_metal_02
@@ -170,6 +170,7 @@ blowout_wind_power			= 0.5
 $spawn 			= "zones\mosquito bald_strong"
 awaking_time		= 30
 blowout_time		= 500	
+accamulate_time		= 49
 
 hit_impulse_scale	= 0.2
 effective_radius	= 0.8 
@@ -303,30 +304,3 @@ blowout_wind_time_start     = 0
 blowout_wind_time_peak      = 300
 blowout_wind_time_end		= 501; 899
 blowout_wind_power			= 0.5			;сила поднимаего ветра (от 0 до 1), в момент blowout_wind_time_peak 
-
-[noartf_mosquito_bald_weak]:zone_mosquito_bald_weak
-$spawn 				= "zones\mosquito_bald_weak_noartf"
-;artefacts			= af_medusa,0.0, af_cristall_flower, 0.0, af_night_star, 0.0
-BirthProbability		= 0
-spawn_blowout_artefacts 	= off
-min_artefact_count		= 0
-max_artefact_count		= 0
-artefact_spawn_rnd		= 0
-
-[noartf_mosquito_bald_average]:zone_mosquito_bald_average
-$spawn 				= "zones\mosquito_bald_average_noartf"
-;artefacts			= af_medusa,0.0, af_cristall_flower, 0.0, af_night_star, 0.0
-BirthProbability		= 0
-spawn_blowout_artefacts 	= off
-min_artefact_count		= 0
-max_artefact_count		= 0
-artefact_spawn_rnd		= 0
-
-[noartf_mosquito_bald_strong]:zone_mosquito_bald_strong
-$spawn 				= "zones\mosquito_bald_strong_noartf"
-;artefacts			= af_medusa,0.0, af_cristall_flower, 0.0, af_night_star, 0.0
-BirthProbability		= 0
-spawn_blowout_artefacts 	= off
-min_artefact_count		= 0
-max_artefact_count		= 0
-artefact_spawn_rnd		= 0

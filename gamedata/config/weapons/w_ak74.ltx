@@ -79,10 +79,10 @@ cam_max_angle				= 10.0	    	;максимальный угол отдачи
 cam_max_angle_horz			= 20.0		;(degree) maximum shot horizontal degree 
 cam_step_angle_horz			= 1.1;1		;(degree) size of step camera moved in horizontal position while shooting
 
-fire_dispersion_condition_factor 	= 3	    	;увеличение дисперсии в процентах при максимальном износе 
-misfire_probability 		= 0.001	;вероятность осечки при максимальном износе 
+fire_dispersion_condition_factor 	= 5	    	;увеличение дисперсии в процентах при максимальном износе 
+misfire_probability 		= 0.003	;вероятность осечки при максимальном износе 
 misfire_condition_k			= 0.05
-condition_shot_dec 			= 0.0004	;увеличение износа при каждом выстреле
+condition_shot_dec 			= 0.0001	;увеличение износа при каждом выстреле
 ;-----------------------------------------------------------------------------------
 
 fire_point             		=  0,0.216,0.638			; position (3rd person view) for particles of fire 
@@ -143,7 +143,7 @@ ph_mass						= 5							; physic mass (kg)
 
 ;addons
 scope_status				= 2							; 0 - no addon
-silencer_status				= 2							; 1 - permanent
+silencer_status				= 0;2							; 1 - permanent
 grenade_launcher_status		= 2							; 2 - attachable
 
 zoom_enabled				= true						; (on,off)zoom mode (right mouse button)
@@ -165,7 +165,7 @@ snd_holster					= weapons\generic_holster
 snd_shoot					= weapons\ak74_shot_0
 snd_shoot1					= weapons\ak74_shot_1
 snd_shoot2					= weapons\ak74_shot_2
-snd_shoot3					= weapons\ak74_shot_3
+snd_shoot3					= weapons\ak74_shot_3		
 snd_empty					= weapons\gen_empty, 0.5
 snd_reload					= weapons\ak74_reload, 0.7, 0.35
 snd_shoot_grenade			= weapons\gen_grenshoot
@@ -179,7 +179,7 @@ snd_switch					= weapons\groza_switch, 1.0, 0.5
 ;silencer_flame_particles 	= weapons\generic_weapon01
 silencer_smoke_particles 	= weapons\generic_shoot_00
 
-snd_silncer_shot			= weapons\silencer4a, 0.6 
+snd_silncer_shot			= weapons\w_ak74_shot1 
 
 silencer_light_color		= 0.6,0.5,0.3
 silencer_light_range		= 0.01

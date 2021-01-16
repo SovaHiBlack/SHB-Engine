@@ -31,11 +31,7 @@
 	<info_portion id="sar_monolith_damaged"></info_portion>
 	<info_portion id="sar_monolith_heavy_damaged"></info_portion>
 	<info_portion id="sar_monolith_destroy"></info_portion>
-	<info_portion id="sar_monolith_off">
-		<task>sar_warlab</task>
-		<article>zones_mystery</article>
-		<article>sl_monolith_off</article>
-	</info_portion>
+	<info_portion id="sar_monolith_off"></info_portion>
 	
 	<info_portion id="sar_monolith_down_1"></info_portion>
 	<info_portion id="sar_monolith_down_2"></info_portion>

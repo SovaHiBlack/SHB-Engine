@@ -22,15 +22,8 @@ function action_mapspot:update(delta)
 		return
 	end
 
-	if level.map_has_object_spot(self.object:id(), self.st.location) == 0 then
-		if db.Flag2==1 then
-			level.map_add_object_spot(self.object:id(), self.st.location, self.st.hint)
-		end
-	end
-	if level.map_has_object_spot(self.object:id(), self.st.location) == 1 then
-		if db.Flag2==0 then
-			level.map_remove_object_spot(self.object:id(), self.st.location)
-		end
+	if level.map_has_object_spot(self.object:id(), self.st.location) == 0 and self.object:inside(actor:position()) then
+		level.map_add_object_spot(self.object:id(), self.st.location, self.st.hint)
 	end
 
 	if xr_logic.try_switch_to_another_section(self.object, self.st, actor) then

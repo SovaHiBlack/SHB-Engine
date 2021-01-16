@@ -20,14 +20,6 @@ function printf(fmt,...)
 	log(string.format(fmt,...))
 end
 
-local bufferedmessages={}
-
-function dbglog(fmt,...)
-	local msg = string.format(fmt, ...)
-	local msg_no_ws = string.gsub(msg, "%s", "_")
-	get_console():execute("ERROR:" .. msg_no_ws)
-end
-
 ----------------------------------------------------------------------
 if nil == time_global then
 	time_global = function () return device():time_global() end
@@ -1119,7 +1111,6 @@ end
 -- Крешнуть игру (после вывода сообщения об ошибке в лог)
 function abort(fmt, ...)
 	local reason = string.format(fmt, ...)
-	dbglog("%s", reason)
 	assert("ERROR: " .. reason)
 	printf("ERROR: " .. reason)
 	printf("%s")
@@ -1155,74 +1146,62 @@ end
 
 --' Усталость
 function on_actor_critical_power()
---'	if has_alife_info("esc_trader_newbie") then
---'		game.start_tutorial("part_11_weakness")
---'	end
-	if not has_alife_info("encyclopedy_tutorial_weakness") then
+	if has_alife_info("esc_trader_newbie") then
 		game.start_tutorial("part_11_weakness")
+	end
+	if not has_alife_info("encyclopedy_tutorial_weakness") then
 		db.actor:give_info_portion("encyclopedy_tutorial_weakness")
 	end
 end
-
 
 function on_actor_critical_max_power()
 end
 
 --' Кровотечение
 function on_actor_bleeding()
---	if has_alife_info("esc_trader_newbie") then
---		game.start_tutorial("part_8_wound")
---	end
-	if not has_alife_info("encyclopedy_tutorial_wound") then
+	if has_alife_info("esc_trader_newbie") then
 		game.start_tutorial("part_8_wound")
+	end
+	if not has_alife_info("encyclopedy_tutorial_wound") then
 		db.actor:give_info_portion("encyclopedy_tutorial_wound")
 	end
 end
 
 function on_actor_satiety()
-if not sleep_manager.is_sleep_active() then
-	if not has_alife_info("encyclopedy_tutorial_satiety") then
-		game.start_tutorial("part_13_satiety")
-		db.actor:give_info_portion("encyclopedy_tutorial_satiety")
-	end
-end
 end
 
 --' Радиация
 function on_actor_radiation()
---	if has_alife_info("esc_trader_newbie") then
---		game.start_tutorial("part_6_radiation")
---	end
-	if not has_alife_info("encyclopedy_tutorial_radiation") then
+	if has_alife_info("esc_trader_newbie") then
 		game.start_tutorial("part_6_radiation")
+	end
+	if not has_alife_info("encyclopedy_tutorial_radiation") then
 		db.actor:give_info_portion("encyclopedy_tutorial_radiation")
 	end
 end
 
 --' Заклинило оружие
 function on_actor_weapon_jammed()
---	if has_alife_info("esc_trader_newbie") then
---		game.start_tutorial("part_9_weapon")
---	end
-	if not has_alife_info("encyclopedy_tutorial_weapon") then
+	if has_alife_info("esc_trader_newbie") then
 		game.start_tutorial("part_9_weapon")
+	end
+	if not has_alife_info("encyclopedy_tutorial_weapon") then
 		db.actor:give_info_portion("encyclopedy_tutorial_weapon")
 	end
 end
 
 --' не может ходить изза веса
 function on_actor_cant_walk_weight()
---	if has_alife_info("esc_trader_newbie") then
---		game.start_tutorial("part_14_overload")
---	end
-	if not has_alife_info("encyclopedy_tutorial_psy") then
-		game.start_tutorial("part_7_psy")
-		db.actor:give_info_portion("encyclopedy_tutorial_psy")
+	if has_alife_info("esc_trader_newbie") then
+		game.start_tutorial("part_14_overload")
+	end
+	if not has_alife_info("encyclopedy_tutorial_overload") then
+		db.actor:give_info_portion("encyclopedy_tutorial_overload")
 	end
 end
 
 --' пси воздействие
-function on_actor_psy()	
+function on_actor_psy()
 end
 
 function set_actor_rank(rank)

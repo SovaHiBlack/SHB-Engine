@@ -53,39 +53,8 @@
 		<text>Поговорить с поваром</text>
 	</string>
 	<string id="mil_rg6_hint3">
-		<text>Забрать РГ-6 из схрона в деревне</text>
+		<text>Забрать Бульдог-6 из схрона в деревне</text>
 	</string>
 	<string id="mil_watertower_hint">
 		<text>Водонапорная башня</text>
-	</string>
-
-	<string id="ogsm_stalker_hide">
-		<text>Укрытие сталкеров</text>
-	</string>
-	<string id="ogsm_bandit_hide">
-		<text>Укрытие бандитов</text>
-	</string>
-	<string id="ogsm_military_hide">
-		<text>Укрытие военных</text>
-	</string>
-	<string id="ogsm_killer_hide">
-		<text>Укрытие наемников</text>
-	</string>
-	<string id="ogsm_dolg_hide">
-		<text>Укрытие "Долга"</text>
-	</string>
-	<string id="ogsm_freedom_hide">
-		<text>Укрытие "Свободы"</text>
-	</string>
-	<string id="ogsm_monolith_hide">
-		<text>Укрытие "Монолита"</text>
-	</string>
-	<string id="ogsm_ecolog_hide">
-		<text>Укрытие экологов</text>
-	</string>
-	<string id="ogsm_common_hide">
-		<text>Укрытие</text>
-	</string>
-	<string id="talk_to_dealer">
-		<text>Кто-то обратился ко мне как к Стрелку... Надо разведать...</text>
 	</string>

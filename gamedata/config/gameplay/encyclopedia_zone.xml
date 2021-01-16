@@ -7,32 +7,6 @@
     <!------------------------------------------------------------------->
 
 
-    <!-------------------------------- Activation - Basic ----------------------------->
-
-    <article id="zone_anomalies_activation_basic" name="zone_anomalies_activation-basic" group="Anomalies">
-	<texture x="500" y="150" width="100" height="100">ui\ui_icon_photo</texture>
-        <text>enc_zone_anomalies_activation_basic</text>
-    </article>
-
-    <!-------------------------------- Activation - Practice ----------------------------->
-
-    <article id="zone_anomalies_activation_practice" name="zone_anomalies_activation-practice" group="tutorial">
-        <text>enc_zone_anomalies_activation_practice</text>
-    </article>
-
-<!-------------------------------- Surge ----------------------------->
-
-    <article id="zone_surge" name="Surge" group="Anomalies">
-	<texture x="500" y="150" width="100" height="100">ui\ui_icon_photo</texture>
-        <text>enc_zone_phenomena_surge_general</text>
-    </article>
-
-    <article id="zone_psy" name="psy" group="Anomalies">
-	<texture x="500" y="150" width="100" height="100">ui\ui_icon_photo</texture>
-        <text>enc_zone_phenomena_psy_general</text>
-    </article>
-
-
     <!-------------------------------- af-medusa ----------------------------->
 
     <article id="zone_artifact_af-medusa" name="af-medusa" group="Artifacts">
@@ -342,7 +316,7 @@
     <!-------------------------------- Darkdolina ----------------------------->
 
     <article id="zone_locations_darkdolina" name="Darkdolina" group="Locations">
-        <texture x="750" y="250" width="150" height="100">ui\ui_icon_photo</texture>
+        <texture x="500" y="150" width="100" height="100">ui\ui_icon_photo</texture>
         <text>enc_zone_locations_darkdolina</text>
     </article>
 
@@ -358,7 +332,7 @@
     <!-------------------------------- Bar ----------------------------->
 
     <article id="zone_locations_bar" name="Bar" group="Locations">
-        <texture x="1200" y="450" width="150" height="100">ui\ui_icon_photo</texture>
+        <texture x="500" y="150" width="100" height="100">ui\ui_icon_photo</texture>
         <text>enc_zone_locations_bar</text>
     </article>
 
@@ -366,7 +340,7 @@
     <!-------------------------------- Rostok ----------------------------->
 
     <article id="zone_locations_rostok" name="Rostok" group="Locations">
-        <texture x="1350" y="450" width="150" height="100">ui\ui_icon_photo</texture>
+        <texture x="500" y="150" width="100" height="100">ui\ui_icon_photo</texture>
         <text>enc_zone_locations_rostok</text>
     </article>
 
@@ -374,7 +348,7 @@
     <!-------------------------------- Yantar ----------------------------->
 
     <article id="zone_locations_yantar" name="Yantar" group="Locations">
-        <texture x="1200" y="550" width="150" height="100">ui\ui_icon_photo</texture>
+        <texture x="500" y="150" width="100" height="100">ui\ui_icon_photo</texture>
         <text>enc_zone_locations_yantar</text>
     </article>
 
@@ -382,7 +356,7 @@
     <!-------------------------------- Military-loc ----------------------------->
 
     <article id="zone_locations_military-loc" name="Military-loc" group="Locations">
-        <texture x="1350" y="550" width="150" height="100">ui\ui_icon_photo</texture>
+        <texture x="500" y="150" width="100" height="100">ui\ui_icon_photo</texture>
         <text>enc_zone_locations_military-loc</text>
     </article>
 

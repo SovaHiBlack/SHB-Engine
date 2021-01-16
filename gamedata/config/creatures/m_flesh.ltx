@@ -18,13 +18,13 @@ search_speed         = .5                       ; option for ALife Simulator
 visual				 = monsters\flesh\flesh
 corpse_visual		 = monsters\flesh\flesh_dead
 icon				 = ui_npc_monster_flesh
-MaxHealthValue		     = 200			; range [0..200]
+MaxHealthValue		     = 1.0			; range [0..200]
 DynamicObjectsCount	 = 32
 smart_terrain_choose_interval	= 00:15:00
 
 
 Spawn_Inventory_Item_Section = mutant_flesh_eye
-Spawn_Inventory_Item_Probability = 0.3
+Spawn_Inventory_Item_Probability = 0.2
 
 ef_creature_type	 = 7				; option for evaluation functions
 ef_weapon_type		 = 2
@@ -52,16 +52,17 @@ ph_box1_size 		 = 0.40, 0.6,  0.40
 ph_crash_speed_min			= 10
 ph_crash_speed_max			= 30
 ph_collision_damage_factor	= 0.1
-ph_mass 		     = 200
+ph_mass 		     = 200;100						; also it's the food
 
 destroyed_vis_name	 = physics\dead_body\skelet_crash_monster
 
 ;----------------------------------------------------------------------------
-ph_skeleton_airr_lin_factor   = -0.4
-ph_skeleton_airr_ang_factor   = -0.2
-ph_skeleton_hinger_factor1    = 1.0
-ph_skeleton_ddelay	      = 5.0
-ph_skel_fatal_impulse_factor  = 2.0
+ph_skeleton_airr_lin_factor   = 2.0 ;550.0 (изменно из-за того, что убрано домножение коэффициент 0.002 из кода)
+ph_skeleton_airr_ang_factor   = 0.0 ;0.0 (изменно из-за того, что убрано домножение на коэффициент 0.3 из кода (0.0*0.3=0.0))
+ph_skeleton_hinger_factor1    = 1.0 ;1.0 (изменно из-за того, что убрано домножение на коэффициент 5.0 из кода)
+ph_skeleton_ddelay	     	  = 15.0 ;Время изменения значения трения в суставе с момента создания шелла, сек
+
+ph_skel_fatal_impulse_factor  = 12.0
 ph_after_death_velocity_factor= 0.75
 ph_skel_shot_up_factor        = 0.25
 ;----------------------------------------------------------------------------
@@ -71,7 +72,7 @@ ph_skel_shot_up_factor        = 0.25
 ;----------------------------------------------------------------------------
 
 ; speed factors			linear | angular_real | angular_path | min |  max
-Velocity_Stand			= 0,		1.79,			1.79,		1,		1
+Velocity_Stand			= 0,		1.79,			1.79		1,		1
 Velocity_WalkFwdNormal	= 1.5,		2.0,			2.0,		0.2,	2.0
 Velocity_WalkFwdDamaged	= 1.2,		1.14,			1.14,		0.2,	2.0	
 Velocity_RunFwdNormal	= 5.2,		2.5,			2.5,		0.2,	1	
@@ -170,6 +171,9 @@ distant_idle_sound_range	= 100.0
 
 eye_fov					= 100
 eye_range				= 30	;60	;30
+
+; number of visible objects monster can handle
+DynamicObjectsCount		= 32		
 
 min_view_distance   		= 0.4				; коэффициент, который множится на eye_range, в зависимости от угла
 max_view_distance	 		= 1.0				; коэффициент, который множится на eye_range, в зависимости от угла
@@ -358,7 +362,7 @@ radiation_immunity		= 0.0
 telepatic_immunity		= 1.0
 chemical_burn_immunity	= 1.0
 explosion_immunity		= 0.5
-fire_wound_immunity		= 0.3
+fire_wound_immunity		= 0.6
 
 [flesh_attack_params_weak]
 ;---------------------------------------------------------------------------------------------------------------------------------------------
@@ -397,7 +401,7 @@ radiation_immunity		= 0.0
 telepatic_immunity		= 1.0
 chemical_burn_immunity	= 1.0
 explosion_immunity		= 0.5
-fire_wound_immunity		= 0.2
+fire_wound_immunity		= 0.4
 
 [flesh_attack_params_normal]
 ;---------------------------------------------------------------------------------------------------------------------------------------------
@@ -436,7 +440,7 @@ radiation_immunity		= 0.0
 telepatic_immunity		= 1.0
 chemical_burn_immunity	= 1.0
 explosion_immunity		= 0.5
-fire_wound_immunity		= 0.1
+fire_wound_immunity		= 0.3
 
 [flesh_attack_params_strong]
 ;---------------------------------------------------------------------------------------------------------------------------------------------

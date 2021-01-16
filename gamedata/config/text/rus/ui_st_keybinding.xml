@@ -28,7 +28,7 @@
 		<text>Консоль</text>
 	</string>
 	<string id="kb_contacts">
-		<text>Контакты</text>
+		<text>Контакты в КПК</text>
 	</string>
 	<string id="kb_crouch">
 		<text>Присесть</text>
@@ -40,16 +40,16 @@
 		<text>Вниз</text>
 	</string>
 	<string id="kb_drop">
-		<text>Выкинуть</text>
+		<text>Выложить</text>
 	</string>
 	<string id="kb_fire">
 		<text>Огонь</text>
 	</string>
 	<string id="kb_firemode_next">
-		<text>Следующий режим стрельбы </text>
+		<text>Режим стрельбы след.</text>
 	</string>
 	<string id="kb_firemode_prev">
-		<text>Предыдущий режим стрельбы</text>
+		<text>Режим стрельбы пред.</text>
 	</string>
 	<string id="kb_forward">
 		<text>Вперед</text>
@@ -91,10 +91,10 @@
 		<text>Шаг влево</text>
 	</string>
 	<string id="kb_map">
-		<text>Карта</text>
+		<text>Карта в КПК</text>
 	</string>
 	<string id="kb_next_slot">
-		<text>Следующее оружие</text>
+		<text>Оружие из следующего слота</text>
 	</string>
 	<string id="kb_night_vision">
 		<text>Прибор ночного видения</text>
@@ -106,10 +106,10 @@
 		<text>КПК</text>
 	</string>
 	<string id="kb_prev_slot">
-		<text>Предыдущее оружие</text>
+		<text>Оружие из предыдущего слота</text>
 	</string>
 	<string id="kb_quit">
-		<text>Меню</text>
+		<text>Выход</text>
 	</string>
 	<string id="kb_reload">
 		<text>Перезарядить</text>
@@ -142,7 +142,10 @@
 		<text>Меню выбора команды</text>
 	</string>
 	<string id="kb_torch">
-		<text>Фонарь</text>
+		<text>Фонарик</text>
+	</string>
+	<string id="kb_turn_engine">
+		<text>Включить</text>
 	</string>
 	<string id="kb_up">
 		<text>Вверх</text>
@@ -151,10 +154,10 @@
 		<text>Использовать</text>
 	</string>
 	<string id="kb_use_bandage">
-		<text>Использовать бинт</text>
+		<text>Быстрое использ. бинта</text>
 	</string>
 	<string id="kb_use_medkit">
-		<text>Использовать аптечку</text>
+		<text>Быстрое использ. аптечки</text>
 	</string>
 	<string id="kb_vote_begin">
 		<text>Начать голосование</text>
@@ -169,22 +172,22 @@
 		<text>Проголосовать "Да"</text>
 	</string>
 	<string id="kb_weapon1">
-		<text>Нож</text>
+		<text>Оружие 1</text>
 	</string>
 	<string id="kb_weapon2">
-		<text>Пистолет</text>
+		<text>Оружие 2</text>
 	</string>
 	<string id="kb_weapon3">
-		<text>Тяжелое оружие</text>
+		<text>Оружие 3</text>
 	</string>
 	<string id="kb_weapon4">
-		<text>Гранаты</text>
+		<text>Оружие 4</text>
 	</string>
 	<string id="kb_weapon5">
-		<text>Бинокль</text>
+		<text>Оружие 5</text>
 	</string>
 	<string id="kb_weapon6">
-		<text>Болты</text>
+		<text>Оружие 6</text>
 	</string>
 	<string id="kb_wpn_next">
 		<text>Сменить тип патронов</text>
@@ -200,14 +203,5 @@
 	</string>
 	<string id="speech_menu_personal">
 		<text>Голосовые сообщения (2)</text>
-	</string>
-	<string id="kb_cam_1">
-		<text>Вид от 1-го лица</text>
-	</string>
-	<string id="kb_cam_2">
-		<text>Вид от 3-го лица (фикс. камера)</text>
-	</string>
-	<string id="kb_cam_3">
-		<text>Вид от 3-го лица (вращ. камера)</text>
 	</string>
 </string_table>

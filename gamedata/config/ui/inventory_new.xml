@@ -27,7 +27,7 @@
             unlimited="1" group_similar="1"/>
 
     <dragdrop_belt x="645" y="136" width="410" height="60"
-            cell_width = "50" cell_height="50" rows_num="1" cols_num="6"/>
+            cell_width = "60" cell_height="60" rows_num="1" cols_num="5"/>
 
     <dragdrop_outfit x="858" y="290" width="104" height="260" 
             cell_width = "57" cell_height="57" rows_num="4" cols_num="4" 

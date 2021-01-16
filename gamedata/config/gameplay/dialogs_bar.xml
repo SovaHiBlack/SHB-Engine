@@ -1899,374 +1899,68 @@
             </phrase>
         </phrase_list>
     </dialog>
-<!------------------------------------------------ARENA_EXTENSION_MOD------------------------------------------------>
-
-	<dialog id="bar_arena_man_start">
-		<phrase_list>
-			<phrase id="0">
-				<text />
-				<next>1</next>
-				<next>2</next>
-				<next>5</next>
-				<next>4</next>
-				<next>3</next>
-				<next>6</next>
-				<next>7</next>
-				<next>8</next>
-				<next>9</next>
-			</phrase>
-			<phrase id="1">
-				<text />
-				<dont_has_info>aem_startup</dont_has_info>
-				<precondition>bar_dialogs.arena_hasnt_reward</precondition>
-				<dont_has_info>bar_arena_pause</dont_has_info>
-				<dont_has_info>bar_arena_fight_8_done</dont_has_info>
-				<dont_has_info>bar_arena_rank_false</dont_has_info>
-				<next>11</next>
-			</phrase>
-			<phrase id="11">
-				<text>bar_arena_man_start_11</text>
-			</phrase>
-			<phrase id="2">
-				<text />
-				<dont_has_info>aem_startup</dont_has_info>
-				<precondition>bar_dialogs.arena_hasnt_reward</precondition>
-				<dont_has_info>bar_arena_rank_false</dont_has_info>
-				<has_info>bar_arena_pause</has_info>
-				<next>21</next>
-			</phrase>
-			<phrase id="21">
-				<text>bar_arena_man_start_21</text>
-			</phrase>
-			<phrase id="5">
-				<text />
-				<dont_has_info>aem_startup</dont_has_info>
-				<precondition>bar_dialogs.arena_hasnt_reward</precondition>
-				<has_info>bar_arena_rank_false</has_info>
-				<next>51</next>
-			</phrase>
-			<phrase id="51">
-				<text>bar_arena_man_start_51</text>
-			</phrase>
-
-			<phrase id="4">
-				<text />
-				<dont_has_info>aem_startup</dont_has_info>
-				<precondition>bar_dialogs.arena_has_reward</precondition>
-				<action>bar_dialogs.arena_give_reward</action>
-				<next>41</next>
-				<next>42</next>
-			</phrase>
-			<phrase id="41">
-				<text>bar_arena_man_start_41</text>
-				<dont_has_info>bar_arena_fight_8_done</dont_has_info>
-			</phrase>
-			<phrase id="42">
-				<text>bar_arena_man_start_41</text>
-				<has_info>bar_arena_fight_8_done</has_info>
-				<next>421</next>
-			</phrase>
-			<phrase id="421">
-				<text>aem_start_421</text>
-				<has_info>bar_arena_fight_8_done</has_info>
-				<next>4211</next>
-			</phrase>
-			<phrase id="4211">
-				<text>aem_start_4211</text>
-				<next>42111</next>
-			</phrase>
-			<phrase id="42111">
-				<text>aem_start_42111</text>
-				<next>421111</next>
-			</phrase>
-			<phrase id="421111">
-				<text>aem_start_421111</text>
-				<action>aem_manager.startup</action>
-				<next>4211111</next>
-			</phrase>
-			<phrase id="4211111">
-				<text>aem_start_4211111</text>
-				<action>dialogs.break_dialog</action>
-			</phrase>
-
-			<phrase id="3">
-				<text />
-				<dont_has_info>aem_startup</dont_has_info>
-				<precondition>bar_dialogs.arena_hasnt_reward</precondition>
-				<precondition>bar_dialogs.arena_rank_check_false</precondition>
-				<dont_has_info>bar_arena_rank_false</dont_has_info>
-				<has_info>bar_arena_fight_8_done</has_info>
-				<next>31</next>
-			</phrase>
-			<phrase id="31">
-				<text>aem_start_31</text>
-				<next>311</next>
-			</phrase>
-			<phrase id="311">
-				<text>aem_start_311</text>
-				<next>3111</next>
-			</phrase>
-			<phrase id="3111">
-				<text>aem_start_3111</text>
-				<action>aem_manager.startup</action>
-				<next>31111</next>
-			</phrase>
-			<phrase id="31111">
-				<text>aem_start_31111</text>
-				<action>dialogs.break_dialog</action>
-			</phrase>
-
-			<phrase id="6">
-				<text />
-				<has_info>aem_startup</has_info>
-				<has_info>aem_fight_done</has_info>
-				<next>60</next>
-			</phrase>
-			<phrase id="60">
-				<text />
-				<next>61</next>
-				<next>62</next>
-				<next>63</next>
-				<next>64</next>
-				<next>65</next>
-				<next>66</next>
-			</phrase>
-			<phrase id="61">
-				<text />
-				<precondition>aem_manager.is_reward_stake_win</precondition>
-				<next>611</next>
-			</phrase>
-			<phrase id="62">
-				<text />
-				<precondition>aem_manager.is_reward_stake_fail</precondition>
-				<next>621</next>
-			</phrase>
-			<phrase id="63">
-				<text />
-				<precondition>aem_manager.is_reward_nostake_unlimit</precondition>
-				<next>631</next>
-			</phrase>
-			<phrase id="64">
-				<text />
-				<precondition>aem_manager.is_reward_nostake_bonus</precondition>
-				<next>641</next>
-			</phrase>
-			<phrase id="65">
-				<text />
-				<precondition>aem_manager.is_reward_nostake_timeover</precondition>
-				<next>651</next>
-			</phrase>
-			<phrase id="66">
-				<text />
-				<precondition>aem_manager.is_reward_nostake_foul</precondition>
-				<next>661</next>
-			</phrase>
-			<phrase id="611">
-				<text>aem_start_611</text>
-				<action>aem_manager.close_fight</action>
-			</phrase>
-			<phrase id="621">
-				<text>aem_start_621</text>
-				<action>aem_manager.close_fight</action>
-			</phrase>
-			<phrase id="631">
-				<text>aem_start_631</text>
-				<action>aem_manager.close_fight</action>
-			</phrase>
-			<phrase id="641">
-				<text>aem_start_641</text>
-				<action>aem_manager.close_fight</action>
-			</phrase>
-			<phrase id="651">
-				<text>aem_start_651</text>
-				<action>aem_manager.close_fight</action>
-			</phrase>
-			<phrase id="661">
-				<text>aem_start_661</text>
-				<action>aem_manager.close_fight</action>
-			</phrase>
-
-			<phrase id="7">
-				<text />
-				<has_info>aem_startup</has_info>
-				<dont_has_info>aem_fight_done</dont_has_info>
-				<has_info>aem_open</has_info>
-				<dont_has_info>aem_ready</dont_has_info>
-				<next>70</next>
-			</phrase>
-			<phrase id="70">
-				<text />
-				<next>71</next>
-				<next>72</next>
-				<next>73</next>
-				<next>74</next>
-			</phrase>
-			<phrase id="71">
-				<text />
-				<precondition>aem_manager.is_init_first</precondition>
-				<next>711</next>
-			</phrase>
-			<phrase id="72">
-				<text />
-				<precondition>aem_manager.is_init_not_first</precondition>
-				<precondition>aem_manager.is_init_stalkers</precondition>
-				<next>721</next>
-			</phrase>
-			<phrase id="73">
-				<text />
-				<precondition>aem_manager.is_init_not_first</precondition>
-				<precondition>aem_manager.is_init_not_stalkers</precondition>
-				<precondition>aem_manager.is_init_mutants</precondition>
-				<next>731</next>
-			</phrase>
-			<phrase id="74">
-				<text />
-				<precondition>aem_manager.is_init_not_first</precondition>
-				<precondition>aem_manager.is_init_not_stalkers</precondition>
-				<precondition>aem_manager.is_init_not_mutants</precondition>
-				<next>741</next>
-			</phrase>
-			<phrase id="711">
-				<text>aem_start_711</text>
-				<action>aem_manager.reinit</action>
-			</phrase>
-			<phrase id="721">
-				<text>aem_start_721</text>
-				<action>aem_manager.reinit</action>
-				<next>7211</next>
-			</phrase>
-			<phrase id="7211">
-				<text>aem_start_7211</text>
-				<next>72111</next>
-			</phrase>
-			<phrase id="72111">
-				<text>aem_start_72111</text>
-			</phrase>
-			<phrase id="731">
-				<text>aem_start_731</text>
-				<action>aem_manager.reinit</action>
-				<next>7311</next>
-			</phrase>
-			<phrase id="7311">
-				<text>aem_start_7311</text>
-				<next>73111</next>
-			</phrase>
-			<phrase id="73111">
-				<text>aem_start_73111</text>
-			</phrase>
-			<phrase id="741">
-				<text>aem_start_741</text>
-				<action>aem_manager.reinit</action>
-			</phrase>
-
-			<phrase id="8">
-				<text />
-				<has_info>aem_startup</has_info>
-				<dont_has_info>aem_fight_done</dont_has_info>
-				<dont_has_info>aem_open</dont_has_info>
-				<next>81</next>
-			</phrase>
-			<phrase id="81">
-				<text>aem_start_81</text>
-			</phrase>
-
-			<phrase id="9">
-				<text />
-				<has_info>aem_startup</has_info>
-				<dont_has_info>aem_fight_done</dont_has_info>
-				<has_info>aem_open</has_info>
-				<has_info>aem_ready</has_info>
-				<next>91</next>
-			</phrase>
-			<phrase id="91">
-				<text>aem_start_91</text>
-			</phrase>
-		</phrase_list>
-	</dialog>
-
-	<dialog id="bar_arena_man_fights" priority="0">
-		<has_info>aem_startup</has_info>
-		<init_func>aem_manager.dlg_init</init_func>
-	</dialog>
-
-	<dialog id="bar_arena_man_extra" priority="-1">
-		<has_info>aem_startup</has_info>
-		<phrase_list>
-			<phrase id="0">
-				<text>aem_extra_0</text>
-				<next>1</next>
-			</phrase>
-			<phrase id="1">
-				<text>aem_extra_1</text>
-				<next>2</next>
-				<next>3</next>
-				<!---<next>4</next>--->
-				<!---<next>5</next>--->
-				<!---<next>6</next>--->
-				<next>9</next>
-			</phrase>
-			<phrase id="2">
-				<text>aem_extra_2</text>
-				<dont_has_info>aem_spam</dont_has_info>
-				<next>21</next>
-			</phrase>
-			<phrase id="21">
-				<text>aem_extra_21</text>
-				<give_info>aem_spam</give_info>
-			</phrase>
-			<phrase id="3">
-				<text>aem_extra_3</text>
-				<has_info>aem_spam</has_info>
-				<next>31</next>
-			</phrase>
-			<phrase id="31">
-				<text>aem_extra_31</text>
-				<disable_info>aem_spam</disable_info>
-			</phrase>
-			<phrase id="4">
-				<text>aem_extra_4</text>
-				<dont_has_info>aem_lights</dont_has_info>
-				<next>41</next>
-			</phrase>
-			<phrase id="41">
-				<text>aem_extra_41</text>
-				<action>aem_manager.lights_on</action>
-				<give_info>aem_lights</give_info>
-			</phrase>
-			<phrase id="5">
-				<text>aem_extra_5</text>
-				<has_info>aem_lights</has_info>
-				<next>51</next>
-			</phrase>
-			<phrase id="51">
-				<text>aem_extra_51</text>
-				<action>aem_manager.lights_off</action>
-				<disable_info>aem_lights</disable_info>
-			</phrase>
-			<phrase id="6">
-				<text>aem_extra_6</text>
-				<next>61</next>
-			</phrase>
-			<phrase id="61">
-				<text>aem_extra_61</text>
-				<next>611</next>
-				<next>612</next>
-			</phrase>
-			<phrase id="611">
-				<text>aem_extra_611</text>
-				<action>aem_manager.cleanup</action>
-				<action>dialogs.break_dialog</action>
-			</phrase>
-			<phrase id="612">
-				<text>aem_extra_612</text>
-			</phrase>
-			<phrase id="9">
-				<text>aem_extra_9</text>
-			</phrase>
-		</phrase_list>
-	</dialog>
-
-<!------------------------------------------------ARENA_EXTENSION_MOD------------------------------------------------>
+    <dialog id="bar_arena_man_start">
+        <phrase_list>
+            <phrase id="31">
+                <text>bar_arena_man_start_31</text>
+            </phrase>
+            <phrase id="21">
+                <text>bar_arena_man_start_21</text>
+            </phrase>
+            <phrase id="51">
+                <text>bar_arena_man_start_51</text>
+            </phrase>
+            <phrase id="41">
+                <text>bar_arena_man_start_41</text>
+            </phrase>
+            <phrase id="5">
+                <text />
+                <precondition>bar_dialogs.arena_hasnt_reward</precondition>
+                <has_info>bar_arena_rank_false</has_info>
+                <next>51</next>
+            </phrase>
+            <phrase id="4">
+                <text />
+                <precondition>bar_dialogs.arena_has_reward</precondition>
+                <action>bar_dialogs.arena_give_reward</action>
+                <next>41</next>
+            </phrase>
+            <phrase id="3">
+                <text />
+                <precondition>bar_dialogs.arena_hasnt_reward</precondition>
+                <precondition>bar_dialogs.arena_rank_check_false</precondition>
+                <dont_has_info>bar_arena_rank_false</dont_has_info>
+                <has_info>bar_arena_fight_8_done</has_info>
+                <next>31</next>
+            </phrase>
+            <phrase id="2">
+                <text />
+                <precondition>bar_dialogs.arena_hasnt_reward</precondition>
+                <dont_has_info>bar_arena_rank_false</dont_has_info>
+                <has_info>bar_arena_pause</has_info>
+                <next>21</next>
+            </phrase>
+            <phrase id="11">
+                <text>bar_arena_man_start_11</text>
+            </phrase>
+            <phrase id="1">
+                <text />
+                <precondition>bar_dialogs.arena_hasnt_reward</precondition>
+                <dont_has_info>bar_arena_pause</dont_has_info>
+                <dont_has_info>bar_arena_fight_8_done</dont_has_info>
+                <dont_has_info>bar_arena_rank_false</dont_has_info>
+                <next>11</next>
+            </phrase>
+            <phrase id="0">
+                <text />
+                <next>1</next>
+                <next>2</next>
+                <next>3</next>
+                <next>4</next>
+                <next>5</next>
+            </phrase>
+        </phrase_list>
+    </dialog>
     <dialog id="bar_bar_hunter_quest_finish">
         <precondition>bar_dialogs.have_hunters_toz</precondition>
         <has_info>bar_bar_hunter_quest_start</has_info>
@@ -4159,7 +3853,54 @@
             </phrase>
         </phrase_list>
     </dialog>
-
+    <dialog id="bar_dolg_leader_prisyaga">
+        <has_info>bar_svoboda_rg6_done</has_info>
+        <dont_has_info>bar_dolg_community_leader_done</dont_has_info>
+        <phrase_list>
+            <phrase id="1">
+                <text>bar_dolg_leader_prisyaga_1</text>
+                <next>2</next>
+            </phrase>
+            <phrase id="2">
+                <text>bar_dolg_leader_prisyaga_2</text>
+                <next>3</next>
+            </phrase>
+            <phrase id="3">
+                <text>bar_dolg_leader_prisyaga_3</text>
+                <next>4</next>
+            </phrase>
+            <phrase id="4">
+                <text>bar_dolg_leader_prisyaga_4</text>
+                <next>5</next>
+            </phrase>
+            <phrase id="5">
+                <text>bar_dolg_leader_prisyaga_5</text>
+                <next>6</next>
+            </phrase>
+            <phrase id="6">
+                <text>bar_dolg_leader_prisyaga_6</text>
+                <next>7</next>
+            </phrase>
+            <phrase id="7">
+                <text>bar_dolg_leader_prisyaga_7</text>
+                <next>8</next>
+            </phrase>
+            <phrase id="9">
+                <text>bar_dolg_leader_prisyaga_9</text>
+            </phrase>
+            <phrase id="8">
+                <text>bar_dolg_leader_prisyaga_8</text>
+                <action>bar_dialogs.enter_to_dolg</action>
+                <action>dialogs.actor_set_dolg</action>
+                <give_info>bar_dolg_community_leader_done</give_info>
+                <next>9</next>
+            </phrase>
+            <phrase id="0">
+                <text>bar_dolg_leader_prisyaga_0</text>
+                <next>1</next>
+            </phrase>
+        </phrase_list>
+    </dialog>
     <dialog id="bar_dolg_leader_join">
         <dont_has_info>bar_svoboda_rg6_start</dont_has_info>
         <phrase_list>
@@ -4241,8 +3982,6 @@
             <phrase id="1">
                 <text>bar_dolg_leader_quest_rg6_finish_1</text>
                 <action>bar_dialogs.enter_to_dolg</action>
-			<next>31111</next>
-			<next>31112</next>
             </phrase>
             <phrase id="0">
                 <text>bar_dolg_leader_quest_rg6_finish_0</text>
@@ -4250,110 +3989,10 @@
                 <give_info>bar_svoboda_rg6_done</give_info>
                 <next>1</next>
             </phrase>
-            <phrase id="31113">
-                <text>bar_dolg_leader_prisyaga_1</text>
-                <next>31114</next>
-            </phrase>
-            <phrase id="31114">
-                <text>bar_dolg_leader_prisyaga_2</text>
-                <next>31115</next>
-            </phrase>
-            <phrase id="31115">
-                <text>bar_dolg_leader_prisyaga_3</text>
-                <next>31116</next>
-            </phrase>
-            <phrase id="31116">
-                <text>bar_dolg_leader_prisyaga_4</text>
-                <next>31117</next>
-            </phrase>
-            <phrase id="31117">
-                <text>bar_dolg_leader_prisyaga_5</text>
-                <next>31118</next>
-            </phrase>
-            <phrase id="31118">
-                <text>bar_dolg_leader_prisyaga_6</text>
-                <next>31119</next>
-            </phrase>
-            <phrase id="31119">
-                <text>bar_dolg_leader_prisyaga_7</text>
-                <next>311110</next>
-            </phrase>
-            <phrase id="311111">
-                <text>bar_dolg_leader_prisyaga_9</text>
-            </phrase>
-            <phrase id="311110">
-                <text>bar_dolg_leader_prisyaga_8</text>
-                <action>ogsm_quests.set_dolg</action>
-                <give_info>bar_dolg_community_leader_done</give_info>
-                <next>311111</next>
-            </phrase>
-            <phrase id="311112">
-                <text>bar_dolg_leader_prisyaga_00</text>
-            </phrase>
-
-            <phrase id="31111">
-                <text>bar_dolg_leader_prisyaga_0</text>
-                <next>31113</next>
-            </phrase>
-            <phrase id="31112">
-                <text>bar_dolg_leader_prisyaga_01</text>
-                <next>311112</next>
-            </phrase>
         </phrase_list>
     </dialog>
     <dialog id="bar_dolg_leader_start">
         <phrase_list>
-
-            <phrase id="31113">
-                <text>bar_dolg_leader_prisyaga_1</text>
-                <next>31114</next>
-            </phrase>
-            <phrase id="31114">
-                <text>bar_dolg_leader_prisyaga_2</text>
-                <next>31115</next>
-            </phrase>
-            <phrase id="31115">
-                <text>bar_dolg_leader_prisyaga_3</text>
-                <next>31116</next>
-            </phrase>
-            <phrase id="31116">
-                <text>bar_dolg_leader_prisyaga_4</text>
-                <next>31117</next>
-            </phrase>
-            <phrase id="31117">
-                <text>bar_dolg_leader_prisyaga_5</text>
-                <next>31118</next>
-            </phrase>
-            <phrase id="31118">
-                <text>bar_dolg_leader_prisyaga_6</text>
-                <next>31119</next>
-            </phrase>
-            <phrase id="31119">
-                <text>bar_dolg_leader_prisyaga_7</text>
-                <next>311110</next>
-            </phrase>
-            <phrase id="311111">
-                <text>bar_dolg_leader_prisyaga_9</text>
-            </phrase>
-            <phrase id="311110">
-                <text>bar_dolg_leader_prisyaga_8</text>
-                <action>ogsm_quests.set_dolg</action>
-                <give_info>bar_dolg_community_leader_done</give_info>
-                <next>311111</next>
-            </phrase>
-            <phrase id="311112">
-                <text>bar_dolg_leader_prisyaga_00</text>
-            </phrase>
-
-            <phrase id="31111">
-                <text>bar_dolg_leader_prisyaga_0</text>
-                <next>31113</next>
-            </phrase>
-            <phrase id="31112">
-                <text>bar_dolg_leader_prisyaga_01</text>
-                <next>311112</next>
-            </phrase>
-
             <phrase id="8">
                 <text></text>
                 <has_info>bar_kill_svoboda_leader_done</has_info>
@@ -4401,8 +4040,6 @@
             <phrase id="3111">
                 <text>bar_dolg_leader_start_3111</text>
                 <action>bar_dialogs.enter_to_dolg</action>
-		    <next>31111</next>
-		    <next>31112</next>
             </phrase>
             <phrase id="0">
                 <text></text>
@@ -4431,53 +4068,4 @@
             </phrase>
         </phrase_list>
     </dialog>
-
-    <dialog id="dolg_attach_community">
-	<has_info>bar_svoboda_rg6_done</has_info>
-	<dont_has_info>bar_dolg_community_leader_done</dont_has_info>
-        <phrase_list>
-            <phrase id="0">
-                <text>hochu_vstupit</text>
-                <next>31113</next>
-            </phrase>
-            <phrase id="31113">
-                <text>bar_dolg_leader_prisyaga_1</text>
-                <next>31114</next>
-            </phrase>
-            <phrase id="31114">
-                <text>bar_dolg_leader_prisyaga_2</text>
-                <next>31115</next>
-            </phrase>
-            <phrase id="31115">
-                <text>bar_dolg_leader_prisyaga_3</text>
-                <next>31116</next>
-            </phrase>
-            <phrase id="31116">
-                <text>bar_dolg_leader_prisyaga_4</text>
-                <next>31117</next>
-            </phrase>
-            <phrase id="31117">
-                <text>bar_dolg_leader_prisyaga_5</text>
-                <next>31118</next>
-            </phrase>
-            <phrase id="31118">
-                <text>bar_dolg_leader_prisyaga_6</text>
-                <next>31119</next>
-            </phrase>
-            <phrase id="31119">
-                <text>bar_dolg_leader_prisyaga_7</text>
-                <next>311110</next>
-            </phrase>
-            <phrase id="311111">
-                <text>bar_dolg_leader_prisyaga_9</text>
-            </phrase>
-            <phrase id="311110">
-                <text>bar_dolg_leader_prisyaga_8</text>
-                <action>ogsm_quests.set_dolg</action>
-                <give_info>bar_dolg_community_leader_done</give_info>
-                <next>311111</next>
-            </phrase>
-        </phrase_list>
-    </dialog>
-
 </game_dialogs>

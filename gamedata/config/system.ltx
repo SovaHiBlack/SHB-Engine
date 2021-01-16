@@ -72,23 +72,23 @@ ang_speed2	= 7.0
 ang_speed3	= 2.0
 
 [texture_desc]
-files = ui_mp_icon_rank, ui_icons_map, ui_common, ui_old_textures, ui_ingame, ui_map_description, ui_models_multiplayer, ui_team_logo, ui_team_logo_small, ui_mainmenu, ui_mp_main, ui_statistics, ui_hud, ui_numpad, ui_inventory, ui_inventory2, ui_iconstotal, ui_pda, ui_icons_npc, ui_npc_monster, ui_npc_unique, ui_buy_menu, ui_asus_intro, aem_ui_npc
+files = ui_mp_icon_rank, ui_icons_map, ui_common, ui_old_textures, ui_ingame, ui_map_description, ui_models_multiplayer, ui_team_logo, ui_team_logo_small, ui_mainmenu, ui_mp_main, ui_statistics, ui_hud, ui_numpad, ui_inventory, ui_inventory2, ui_iconstotal, ui_pda, ui_icons_npc, ui_npc_monster, ui_npc_unique, ui_buy_menu, ui_asus_intro
 
 [info_portions]
 ;список xml файлов, содержащих info_portions
-files = info_portions, info_portions_light, info_portions_test, info_lchanger_ico, info_level_tips, info_known_objects, info_l01escape, info_l02garbage, info_l03agroprom, info_l04agroprom_u, info_l05dark_valley, info_l06dark_valley_u, info_l07rostok, info_l08yantar, info_l08deadcity, info_l08rostok_bar, info_l09marshes, info_l09rostok_dolg, info_l10military, info_l11pripyat, info_l11yantar, info_l12yantar_u, info_l13deadcity, info_l14swamp, info_l10radar, info_l16radar_antena, info_l17monolith_control, info_l19stanciya, info_l12u_sarcofag, info_l21generators, info_l22warlab, info_stories, aem_info
+files = info_portions, info_portions_light, info_portions_test, info_lchanger_ico, info_level_tips, info_known_objects, info_l01escape, info_l02garbage, info_l03agroprom, info_l04agroprom_u, info_l05dark_valley, info_l06dark_valley_u, info_l07rostok, info_l08yantar, info_l08deadcity, info_l08rostok_bar, info_l09marshes, info_l09rostok_dolg, info_l10military, info_l11pripyat, info_l11yantar, info_l12yantar_u, info_l13deadcity, info_l14swamp, info_l10radar, info_l16radar_antena, info_l17monolith_control, info_l19stanciya, info_l12u_sarcofag, info_l21generators, info_l22warlab, info_stories
 
 [encyclopedia]
 files = encyclopedia_infos, storyline_info_to_diary, encyclopedia_weapons, encyclopedia_mutants, encyclopedia_zone, encyclopedia_social, encyclopedia_equipment, encyclopedia_tutorial
 
 [dialogs]
-files = dialogs_test, dialogs, dialogs_escape, dialogs_garbage, dialogs_agroprom, dialogs_deadcity, dialogs_darkvalley, dialogs_pripyat, dialogs_bar, dialogs_yantar, dialogs_military, dialogs_labx18, dialogs_radar, dialogs_aes, dialogs_repair
+files = dialogs_test, dialogs, dialogs_escape, dialogs_garbage, dialogs_agroprom, dialogs_deadcity, dialogs_darkvalley, dialogs_pripyat, dialogs_bar, dialogs_yantar, dialogs_military, dialogs_labx18, dialogs_radar, dialogs_aes
 
 [profiles]
 ;список xml файлов, содержащих профили сталкеров и торговцев
-files =  npc_profile, aem_profile
+files =  npc_profile
 ;список xml файлов, содержащих описания конкретных сталкеров и торговцев
-specific_characters_files = character_desc_general, character_desc_simulation,character_desc_escape, character_desc_garbage, character_desc_agroprom, character_desc_darkvalley, character_desc_deadcity, character_desc_bar, character_desc_yantar, character_desc_military, character_desc_radar, character_desc_pripyat, character_desc_aes, character_desc_kishka, character_desc_sarcofag, aem_characters
+specific_characters_files = character_desc_general, character_desc_simulation,character_desc_escape, character_desc_garbage, character_desc_agroprom, character_desc_darkvalley, character_desc_deadcity, character_desc_bar, character_desc_yantar, character_desc_military, character_desc_radar, character_desc_pripyat, character_desc_aes, character_desc_kishka, character_desc_sarcofag
 
 [artefacts_tasks]
 ;имя скриптовой функции, которая вызывается для создания
@@ -100,9 +100,9 @@ files = game_tasks
 
 [inventory]
 take_dist		= 2
-max_weight              = 50
+max_weight		= 50
 max_ruck		= 56
-max_belt		= 6 //16
+max_belt		= 5 //16
 slots			= 11
 
 slot_persistent_1  = true		;knife
@@ -154,11 +154,11 @@ size				= 0.6	;0.4	;
 max_count			= 5
 
 [bloody_marks]
-wallmarks			= wm\wm_blood_1,wm\wm_blood_2,wm\wm_blood_3,wm\wm_blood_4,wm\wm_blood_5,wm\wm_blood_6,wm\wm_blood_7,wm\wm_blood_8,wm\wm_blood_9
-dist				= 3	;2.4	;(м) max расстояние отлета крови
-max_size			= 0.8	;0.3	;(м)радиус пятна при хите силой nominal hit по большому объекту (по маленькому *0.5)
-min_size			= 0.1			;(м)минимальный радиус пятна
-nominal_hit			= 0.3			;величина номинального хита, при котором разлетается максимум крови (max_size)
+wallmarks			= wm\wm_blood_1,wm\wm_blood_2,wm\wm_blood_3
+dist				= 2.0	;2.4	;(м) max расстояние отлета крови
+max_size			= 0.4	;0.3	;(м)радиус пятна при хите силой nominal hit по большому объекту (по маленькому *0.5)
+min_size			= 0.06			;(м)минимальный радиус пятна
+nominal_hit			= 0.5			;величина номинального хита, при котором разлетается максимум крови (max_size)
 
 ;капли крови
 
@@ -169,7 +169,7 @@ stop_blood_size		= 0.025			;размер раны чтоб кровь остановилась (должно быть мен
 blood_drop_time     = 0.1			;OBSOLETE
 blood_drop_time_min = 0.3			;
 blood_drop_time_max = 2.0			;
-blood_drop_size		= 0.2			;размер капли (м) крови, которая упала
+blood_drop_size		= 0.1			;размер капли (м) крови, которая упала
 
 
 [entity_fire_particles]
@@ -188,7 +188,7 @@ cross_color			= 0.7,0.7,0.7,1.0		;цвет прицела
 disp_scale			= 0.08					;масштаб прицела (относительно радиан)
 
 [hud_hitmark]
-hit_mark_texture = ui\ui_hud_hit_mark_08
+hit_mark_texture = ui\ui_hud_hit_mark
 ;ui\ui_hud_hit_mark
 ;ui\ui_hud_hit_mark_01
 ;ui\ui_hud_hit_mark_02
@@ -240,7 +240,7 @@ cost				= 0
 class                   = SPECT
 
       
-[tg_event]
+[??tg_event]
 class 			 = EVENT
 
 [m_car]
@@ -272,13 +272,13 @@ rot_speed                = 3.14, 3.14, 0
 ;----------------
 lim_pitch                = -1.5, 1.5
 lim_yaw                  = 0, 0
-lim_zoom                 = 1, 2
+lim_zoom                 = 0.4, 10
 rot_speed                = 3.14, 1.0, 10
  
 [actor_look_cam]
 lim_pitch                = -0.7, 1
 lim_yaw                  = 0, 0
-lim_zoom                 = 1, 2
+lim_zoom                 = 1, 5
 rot_speed                = 3.14, 6.28, 10
 
 [actor_look_cam_psp]
@@ -465,6 +465,26 @@ attach_angle_offset		= 0, -3.14, 1.6
 attach_position_offset	= 0.105, 0.00, 0.085
 attach_bone_name		= bip01_head
 
+[hand_radio]:identity_immunities
+GroupControlSection		= spawn_group
+discovery_dependency	= 
+$spawn					= "equipment\hand_radio"
+cform                   = skeleton
+class					= II_ATTCH
+visual                  = equipments\item_fmradio.ogf
+cost					= 0
+inv_name				= "hand_radio"
+inv_name_short			= "hand_radio"
+inv_weight				= .5
+inv_grid_width			= 2
+inv_grid_height			= 1
+inv_grid_x				= 16
+inv_grid_y				= 12
+attach_angle_offset		= -1.5708,0.1919,3.1416    ;устанавливается в радианах Angle*PI/180
+attach_position_offset	= 0.075, 0.066, 0.023
+attach_bone_name		= bip01_l_hand
+auto_attach				= false
+
 [breakable_object]
 class						= O_BRKBL
 remove_time					= 10	    ;after remove_time seconds object will be removed after it is breaked
@@ -511,7 +531,7 @@ bleeding				= 0.4
 satiety					= 0.5
 radiation				= 0.1
 weapon_jammed			= 0.9
-psy_health				= 0.9
+psy_health				= 0.5
 
 [squad_manager]
 schedule_min			=   1
@@ -553,49 +573,6 @@ $spawn					= "ai\space_restrictor"
 ;$prefetch 				= 64
 class					= SPC_RS_S
 script_binding          = bind_restrictor.bind
-
-
-; OGSM Hide Restrictors
-[l01_escape_hide_restrictor]:space_restrictor
-
-[l02_garbage_hide_restrictor]:space_restrictor
-
-[l03_agroprom_hide_restrictor]:space_restrictor
-
-[l04_darkvalley_hide_restrictor]:space_restrictor
-
-[l05_bar_hide_restrictor]:space_restrictor
-
-[l06_rostok_hide_restrictor]:space_restrictor
-
-[l07_military_hide_restrictor]:space_restrictor
-
-[l08_yantar_hide_restrictor]:space_restrictor
-
-[l10_radar_hide_restrictor]:space_restrictor
-
-[l11_pripyat_hide_restrictor]:space_restrictor
-
-
-; OGSM Psy Restrictors
-[l01_escape_psy_restrictor]:space_restrictor
-
-[l02_garbage_psy_restrictor]:space_restrictor
-
-[l03_agroprom_psy_restrictor]:space_restrictor
-
-[l04_darkvalley_psy_restrictor]:space_restrictor
-
-[l06_rostok_psy_restrictor]:space_restrictor
-
-[l07_military_psy_restrictor]:space_restrictor
-
-[l08_yantar_psy_restrictor]:space_restrictor
-
-[l10_radar_psy_restrictor]:space_restrictor
-
-[l11_pripyat_psy_restrictor]:space_restrictor
-
 
 [collision_damage]
 bonce_damage_factor_for_objects = 1.
@@ -789,275 +766,3 @@ actors\monolit\stalker_mo_head1
 actors\monolit\stalker_mo_hood_9
 actors\monolit\stalker_mo_mask
 actors\monolit\stalker_mo_nauchniy
-
-//Monsters
-monsters\dog\dog
-monsters\dog\dog_bulterier
-monsters\dog\dog_bulterier_dead
-monsters\dog\dog_dead
-monsters\dog\dog_red
-monsters\dog\dog_red_dead
-monsters\dog\dog_white
-monsters\dog\dog_white_dead
-monsters\flesh\flesh
-monsters\flesh\flesh_dead
-monsters\flesh\flesh_strong
-monsters\kontroler\kontroler
-monsters\kontroler\kontroler_2
-monsters\kontroler\kontroler_3
-monsters\kontroler\kontroler_4
-monsters\kontroler\kontroler_5
-monsters\kontroler\kontroler_dead
-monsters\krovosos\krovosos
-monsters\krovosos\krovosos_dead
-monsters\krovosos\krovosos_strong
-monsters\krovosos\krovosos_strong_xray
-monsters\krovosos\krovosos_xray
-monsters\mutant_boar\mutant_boar
-monsters\mutant_boar\mutant_boar_dead
-monsters\mutant_boar\mutant_boar_strong
-monsters\poltergeist\poltergeist
-monsters\poltergeist\poltergeist_strong
-monsters\poltergeist\poltergeyst_dead
-monsters\pseudodog\pseudodog
-monsters\pseudodog\pseudodog_dead
-monsters\pseudodog\pseudodog_grey
-monsters\pseudodog\pseudodog_grey_dead
-monsters\psevdogigant\psevdogigant
-monsters\psevdogigant\psevdogigant_dead
-monsters\psevdogigant\psevdogigant_strong
-monsters\snork\snork
-monsters\snork\snork_dead
-monsters\stalker_zombi\stalker_zombi
-monsters\tushkano\tushkano
-monsters\tushkano\tushkano_dead
-monsters\burer\burer 
-monsters\burer\burer_1 
-monsters\cat\cat 
-monsters\chimera\chimera 
-monsters\crow\crow 
-monsters\dark_stalker\dark_stalker 
-monsters\izlom\izlom 
-monsters\rat\rat_1 
-monsters\rat\rat_2 
-monsters\rat\rat_3 
-monsters\topolinypuh\topolinypuh 
-monsters\topolinypuh\tp_bottom 
-monsters\zombi\zombi_1 
-monsters\zombi\zombi_1_ghost 
-monsters\zombi\zombi_2 
-monsters\zombi\zombi_4 
-monsters\zombi\zombi_trup 
-monsters\zombi\zombi_trup_2 
-
-monsters\chimera\chimera_strong
-monsters\zombi\zombi_x3
-monsters\zombi\zombi_x4
-monsters\zombi\zombi_3
-
-//Objects
-objects\dynamics\balon\balon_01
-objects\dynamics\balon\bidon
-objects\dynamics\balon\bochka_close_1
-objects\dynamics\balon\bochka_close_2
-objects\dynamics\balon\bochka_close_3
-objects\dynamics\balon\bochka_close_4
-objects\dynamics\balon\bochka_fuel
-objects\dynamics\balon\bochka_open_1
-objects\dynamics\balon\bochka_open_2
-objects\dynamics\balon\bochka_open_3
-objects\dynamics\balon\bochka_open_4
-objects\dynamics\balon\kanistra
-objects\dynamics\box\box_1a
-objects\dynamics\box\box_1b
-objects\dynamics\box\box_1c
-objects\dynamics\box\box_wood_01
-objects\dynamics\box\box_wood_tara
-objects\dynamics\box\prt\box_wood_01_prt1
-objects\dynamics\box\prt\box_wood_01_prt2
-objects\dynamics\box\prt\box_wood_01_prt3
-objects\dynamics\box\prt\box_wood_01_prt4
-objects\dynamics\box\prt\box_wood_01_prt5
-objects\dynamics\box\prt\box_wood_01_prt6
-objects\dynamics\box\prt\box_wood_01_prt7
-objects\dynamics\chair\lavochka_01
-objects\dynamics\chair\lavochka_02
-objects\dynamics\chair\stul_wood_01
-objects\dynamics\chair\taburet_wood_01
-objects\stul\lavochka_01
-objects\stul\lavochka_02
-objects\stul\stul_1a
-objects\stul\stul_1c
-objects\stul\stul_wood_01
-objects\stul\taburet_wood_01
-objects\dynamics\decor\tv_1_br
-objects\dynamics\decor\vedro_01
-objects\dynamics\plitka\plitka1
-objects\dynamics\plitka\plitka_br1
-physics\balon\balon_01
-physics\balon\balon_02
-physics\balon\bidon
-physics\balon\bochka_close_1
-physics\balon\bochka_close_2
-physics\balon\bochka_close_3
-physics\balon\bochka_close_4
-physics\balon\bochka_fuel
-physics\balon\bochka_open_1
-physics\balon\bochka_open_2
-physics\balon\bochka_open_3
-physics\balon\bochka_open_4
-physics\balon\bomb_01
-physics\balon\box_lab_03
-physics\balon\kanistra
-physics\box\box_1a
-physics\box\box_1b
-physics\box\box_1c
-physics\box\box_lab_01
-physics\box\box_lab_02
-physics\box\box_metall_01
-physics\box\box_pak_01
-physics\box\box_wood_01
-physics\box\box_wood_tara
-physics\box\expl_dinamit
-physics\box\konteyner_01
-physics\box\konteyner_02
-physics\box\konteyner_03
-physics\box\seif_01
-physics\box\prt\box_lab_02_prt1
-physics\box\prt\box_lab_02_prt2
-physics\box\prt\box_lab_02_prt3
-physics\box\prt\box_lab_02_prt4
-physics\box\prt\box_lab_02_prt5
-physics\box\prt\box_lab_02_prt6
-physics\box\prt\box_metall_01_prt1
-physics\box\prt\box_metall_01_prt2
-physics\box\prt\box_wood_01_prt1
-physics\box\prt\box_wood_01_prt2
-physics\box\prt\box_wood_01_prt3
-physics\box\prt\box_wood_01_prt4
-physics\box\prt\box_wood_01_prt5
-physics\box\prt\box_wood_01_prt6
-physics\box\prt\box_wood_01_prt7
-physics\decor\bag_01
-physics\decor\banka_kraski_1
-physics\decor\bottle_bar_1
-physics\decor\bottle_bar_stakan
-physics\decor\brain
-physics\decor\butilka_1
-physics\decor\butilka_2
-physics\decor\butilka_2a
-physics\decor\butilka_2b
-physics\decor\butilka_vodka_01
-physics\decor\butil_1
-physics\decor\butil_2
-physics\decor\butil_3
-physics\decor\fire_schit
-physics\decor\fire_vedro
-physics\decor\freezer
-physics\decor\kartina03
-physics\decor\kartina04
-physics\decor\kartina05
-physics\decor\kartina06
-physics\decor\kartina_01
-physics\decor\kartina_02
-physics\decor\kitchen_bludo
-physics\decor\kitchen_kastrula
-physics\decor\kitchen_kastrula_up
-physics\decor\kitchen_krujka
-physics\decor\kitchen_lojka
-physics\decor\kitchen_miska
-physics\decor\kitchen_tarelka1
-physics\decor\kitchen_tarelka2
-physics\decor\kiy
-physics\decor\kozel_01
-physics\decor\krisagenerator
-physics\decor\med_stoyka_01
-physics\decor\monolith_generator
-physics\decor\musor_konteyner_01
-physics\decor\mysor_korzina_1
-physics\decor\mysor_korzina_2
-physics\decor\ognetushitel
-physics\decor\plakat_01
-physics\decor\plakat_3x4
-physics\decor\plakat_map_gold_01
-physics\decor\plakat_prop_map_01
-physics\decor\pool_shar02
-physics\decor\priemnik_gorizont
-physics\decor\rupor
-physics\decor\sign_bar_logo_01
-physics\decor\sign_mine
-physics\decor\sign_radiation
-physics\decor\sign_stop
-physics\decor\switcher
-physics\decor\teapot_1
-physics\decor\tiski
-physics\decor\tomb_00
-physics\decor\tomb_01
-physics\decor\tomb_02
-physics\decor\tomb_03
-physics\decor\tomb_04
-physics\decor\tv_1
-physics\decor\tv_1_br
-physics\decor\tv_2_br
-physics\decor\vedro_01
-physics\decor\ventilator01_exp
-physics\decor\ventilator_01
-physics\decor\ventilator_mike
-physics\decor\ventilyator_lab
-physics\decor\vetrogenerator
-physics\decor\weapons_schit
-physics\decor\wetryak
-physics\equipment_cache\equipment_box_01_case
-physics\equipment_cache\equipment_box_02_case
-physics\equipment_cache\equipment_cross_1_case
-physics\equipment_cache\equipment_cross_2_case
-physics\equipment_cache\equipment_cross_3_case
-physics\equipment_cache\equipment_electric_box_01_case
-physics\equipment_cache\equipment_electric_box_02_case
-physics\equipment_cache\equipment_hatch_01_case
-physics\equipment_cache\equipment_hatch_02_case
-physics\equipment_cache\equipment_instrument_case_01_case
-physics\equipment_cache\equipment_pipe_01_case
-physics\equipment_cache\equipment_pipe_02_case
-physics\equipment_cache\equipment_pipe_valve_01_case
-physics\equipment_cache\equipment_rucksack_01_case
-physics\equipment_cache\equipment_rucksack_02_case
-physics\equipment_cache\equipment_seif_01_case
-physics\equipment_cache\equipment_seif_02_case
-physics\equipment_cache\equipment_seif_03_case
-physics\equipment_cache\equipment_trees_log_01_case
-physics\equipment_cache\equipment_trees_stump_01_case
-physics\equipment_cache\equipment_zaz968_case
-physics\stul\lavochka_01
-physics\stul\lavochka_02
-physics\stul\stul_1a
-physics\stul\stul_1c
-physics\stul\stul_wood_01
-physics\stul\taburet_wood_01
-
-;---------------------------------------------------------------ARENA_EXTENSION_MOD------------------------------------------------------------------
-#include "creatures\aem_monsters.ltx"
-#include "creatures\aem_stalkers.ltx"
-
-[aem_sound]:space_restrictor
-GroupControlSection		= spawn_group_restrictor
-$spawn				= ;"ai\space_restrictor"
-;$prefetch 			= 64
-class				= SPC_RS_S
-script_binding          	= bind_restrictor.bind
-custom_data			= scripts\aem\sound.ltx
-
-[aem_timer]:space_restrictor
-GroupControlSection		= spawn_group_restrictor
-$spawn				= ;"ai\space_restrictor"
-;$prefetch 			= 64
-class				= SPC_RS_S
-script_binding          	= bind_restrictor.bind
-custom_data			= scripts\aem\timer.ltx
-
-[aem_lamp]:lights_hanging_lamp
-class				= AEM_LAMP
-
-;---------------------------------------------------------------ARENA_EXTENSION_MOD------------------------------------------------------------------
-
-#include "medic.ltx"

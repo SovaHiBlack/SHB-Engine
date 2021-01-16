@@ -17,25 +17,11 @@ trader				= nil
 info_restr          = {}
 strn_by_respawn     = {}
 
-creature			= {}	-- true - человек, false - животное (исключая торговца)
-
-FlagEsc = 0
-Flag2 = 0
-Dead2 = 0
-
 function add_obj( obj )
-	if IsStalker(obj) then
-		creature[obj:id()] = true
-	elseif IsMonster(obj) then
-		creature[obj:id()] = false
-	end
 end
 
 function del_obj( obj )
 	storage   [obj:id()] = nil
-	if IsStalker(obj) or IsMonster(obj) then
-		creature[obj:id()] = nil
-	end
 end
 
 
@@ -65,16 +51,6 @@ function add_actor( obj )
 	actor = obj
 	actor_proxy:net_spawn( obj )
 	add_obj( obj )
-
-	--' Разбудим Кочергу. Дурацкое место для это кода, конечно. Куда бы его переместить?
-	if has_alife_info("val_actor_has_borov_key") and not has_alife_info("val_borov_dead") then
-		actor:give_info_portion("val_borov_dead")
-	end
-	--' Включим гулаг кабанов на Свалке. По-хорошему надо исправлять
-	--' условия активации в логике рестриктора gar_boars_territory2.
-	if has_alife_info("agroprom_military_case_done") and not has_alife_info("gar_kill_boars_done") then
-		actor:give_info_portion("gar_kill_boars_done")
-	end
 end
 
 function del_actor()

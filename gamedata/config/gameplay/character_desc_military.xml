@@ -28,7 +28,6 @@
 			ammo_11.43x23_hydro = 1 \n
 			wpn_sig550 = 1 \n
 			ammo_5.56x45_ap = 1 \n
-ammo_5.45x39_fmj=4 \n
 #include "gameplay\character_items.xml" \n
 #include "gameplay\character_drugs.xml" \n
 #include "gameplay\character_food.xml"			
@@ -64,7 +63,6 @@ ammo_5.45x39_fmj=4 \n
 			wpn_sig550 = 1 \n
 			ammo_5.56x45_ap = 1 \n
 			wpn_addon_scope = 1 \n
-ammo_5.45x39_fmj=5 \n
 #include "gameplay\character_items.xml" \n
 #include "gameplay\character_drugs.xml" \n
 #include "gameplay\character_food.xml"			
@@ -101,7 +99,6 @@ ammo_5.45x39_fmj=5 \n
 			ammo_9x19_fmj \n
 			wpn_lr300 \n
 			ammo_5.56x45_ss190 = 1 \n
-ammo_9x39_pab9=3 \n
 			device_torch \n
 #include "gameplay\character_items.xml" \n
 #include "gameplay\character_drugs.xml" \n
@@ -134,9 +131,8 @@ ammo_9x39_pab9=3 \n
 			[spawn] \n
 			wpn_sig220 \n
 			ammo_11.43x23_hydro = 1 \n
-            	wpn_svu \n
-            	ammo_7.62x54_ap = 1 \n
-ammo_9x39_ap=1 \n
+            wpn_svu \n
+            ammo_7.62x54_ap = 1 \n
 #include "gameplay\character_items.xml" \n
 #include "gameplay\character_drugs.xml" \n
 #include "gameplay\character_food.xml"				
@@ -204,7 +200,6 @@ ammo_9x39_ap=1 \n
 			ammo_11.43x23_hydro = 1 \n
 			wpn_sig550 = 1 \n
 			ammo_5.56x45_ap = 1 \n
-ammo_9x18_pmm=4 \n
 #include "gameplay\character_items.xml" \n
 #include "gameplay\character_drugs.xml" \n
 #include "gameplay\character_food.xml"			
@@ -242,7 +237,6 @@ ammo_9x18_pmm=4 \n
 			ammo_11.43x23_hydro = 1 \n
 			wpn_wincheaster1300 \n
 			ammo_12x76_zhekan = 1 \n
-ammo_9x18_pmm=6 \n
 #include "gameplay\character_items.xml" \n
 #include "gameplay\character_drugs.xml" \n
 #include "gameplay\character_food.xml"			
@@ -276,7 +270,6 @@ ammo_9x18_pmm=6 \n
 			ammo_11.43x23_hydro = 1 \n
 			wpn_g36 \n
 			ammo_5.56x45_ap = 1 \n
-ammo_9x39_sp5=3 \n
 #include "gameplay\character_items.xml" \n
 #include "gameplay\character_drugs.xml" \n
 #include "gameplay\character_food.xml"			
@@ -287,7 +280,6 @@ ammo_9x39_sp5=3 \n
 		<start_dialog>hello_dialog</start_dialog>
 		<actor_dialog>tm_freedom_dialog</actor_dialog>
 		<actor_dialog>tm_freedom_reward</actor_dialog>
-		<actor_dialog>freedom_attach_community</actor_dialog>
 #include "gameplay\character_dialogs.xml"
 	</specific_character>	
 
@@ -302,7 +294,7 @@ ammo_9x39_sp5=3 \n
 		
 		<class>mil_Svoboda_trader</class>
 		<community>freedom</community> <terrain_sect>stalker_freedom_terrain</terrain_sect>
-		<money min="100000" max="110000" infinitive="1"></money>
+
         <snd_config>characters_voice\human_02\freedom\</snd_config>
 		<crouch_type>-1</crouch_type>
 
@@ -321,7 +313,6 @@ ammo_9x39_sp5=3 \n
 #include "gameplay\character_criticals_5.xml"
 
 		<start_dialog>mil_trader_dialog</start_dialog>
-		<actor_dialog>mil_trader_repair</actor_dialog>
 #include "gameplay\character_dialogs.xml"
 	</specific_character>
 <!---------------------------SVOBODA MASTER MAX----------------------->
@@ -349,9 +340,8 @@ ammo_9x39_sp5=3 \n
 			wpn_usp  \n
 			ammo_11.43x23_hydro = 1 \n
 			wpn_svu \n
-			ammo_7.62x54_7h1 = 1 \n
+			ammo_7.62x54_7h14 = 1 \n
 			wpn_walther \n
-ammo_5.45x39_ap=5 \n
 #include "gameplay\character_items.xml" \n
 #include "gameplay\character_drugs.xml" \n
 #include "gameplay\character_food.xml"			
@@ -387,7 +377,6 @@ ammo_5.45x39_ap=5 \n
 			ammo_11.43x23_hydro = 1 \n
 			wpn_g36 \n
 			ammo_5.56x45_ap = 1 \n
-ammo_9x19_pbp=4 \n
 #include "gameplay\character_items.xml" \n
 #include "gameplay\character_drugs.xml" \n
 #include "gameplay\character_food.xml"			
@@ -428,24 +417,18 @@ ammo_9x19_pbp=4 \n
 #include "gameplay\character_criticals_5.xml"
 			
 		<start_dialog>hello_dialog</start_dialog>
-
-		<actor_dialog>povar_svu_dialog_1</actor_dialog>
-		<actor_dialog>povar_svu_dialog_2</actor_dialog>
-
 		<actor_dialog>mil_cook_common1</actor_dialog>
 		<actor_dialog>mil_cook_common2</actor_dialog>
 		<actor_dialog>mil_cook_common3</actor_dialog>
 		<actor_dialog>mil_cook_common4</actor_dialog>
 		<actor_dialog>mil_cook_common5</actor_dialog>
 		<actor_dialog>mil_cook_common6</actor_dialog>
-
-		<actor_dialog>mil_cook_drink_for_rg6_1</actor_dialog>
-		<actor_dialog>mil_cook_drink_for_rg6_2</actor_dialog>
-		<actor_dialog>mil_cook_drink_for_rg6_3</actor_dialog>
-		<actor_dialog>mil_cook_drunk_question_about_rg6_1</actor_dialog>
-		<actor_dialog>mil_cook_drunk_question_about_rg6_2</actor_dialog>
-		<actor_dialog>mil_cook_drunk_question_about_rg6_3</actor_dialog>
-
+ 		<actor_dialog>mil_cook_drink_for_rg6_1</actor_dialog>
+        <actor_dialog>mil_cook_drink_for_rg6_2</actor_dialog>
+        <actor_dialog>mil_cook_drink_for_rg6_3</actor_dialog>
+        <actor_dialog>mil_cook_drunk_question_about_rg6_1</actor_dialog>
+        <actor_dialog>mil_cook_drunk_question_about_rg6_2</actor_dialog>
+        <actor_dialog>mil_cook_drunk_question_about_rg6_3</actor_dialog>
 #include "gameplay\character_dialogs.xml"        
 
 	</specific_character>
@@ -474,7 +457,6 @@ ammo_9x19_pbp=4 \n
 			ammo_11.43x23_hydro = 1 \n
 			wpn_g36 \n
 			ammo_5.56x45_ap = 1 \n
-ammo_9x19_pbp=6 \n
 #include "gameplay\character_items.xml" \n
 #include "gameplay\character_drugs.xml" \n
 #include "gameplay\character_food.xml"	
@@ -510,7 +492,6 @@ ammo_9x19_pbp=6 \n
 			ammo_11.43x23_hydro = 1 \n
 			wpn_g36 \n
 			ammo_5.56x45_ap = 1 \n
-ammo_9x39_sp5=3 \n
 #include "gameplay\character_items.xml" \n
 #include "gameplay\character_drugs.xml" \n
 #include "gameplay\character_food.xml"			
@@ -549,8 +530,7 @@ ammo_9x39_sp5=3 \n
 			wpn_walther \n
 			ammo_9x19_pbp \n
 			wpn_groza \n
-			ammo_9x39_sp5 \n
-ammo_5.45x39_fmj=6 \n	
+			ammo_9x39_sp5 \n	
 #include "gameplay\character_items.xml" \n
 #include "gameplay\character_drugs.xml" \n
 #include "gameplay\character_food.xml"				
@@ -584,7 +564,6 @@ ammo_5.45x39_fmj=6 \n
 			ammo_9x19_pbp \n
 			wpn_groza \n
 			ammo_9x39_sp5 \n
-ammo_5.45x39_fmj=7 \n
 #include "gameplay\character_items.xml" \n
 #include "gameplay\character_drugs.xml" \n
 #include "gameplay\character_food.xml"
@@ -620,7 +599,6 @@ ammo_5.45x39_fmj=7 \n
 			ammo_11.43x23_hydro \n	
 			wpn_val \n
 			ammo_9x39_pab9 = 1 \n
-ammo_12x76_zhekan=5 \n
 #include "gameplay\character_items.xml" \n
 #include "gameplay\character_drugs.xml" \n
 #include "gameplay\character_food.xml"	
@@ -665,7 +643,6 @@ ammo_12x76_zhekan=5 \n
 #include "gameplay\character_criticals_4.xml"
 				
 		<start_dialog>hello_dialog</start_dialog>
-#include "gameplay\character_dialogs.xml"
 	</specific_character>
 <!---------------------------KILLER SPECNAZ---------------------->
 	<specific_character id="mil_Killer_specnaz" team_default = "1">
@@ -798,7 +775,6 @@ ammo_12x76_zhekan=5 \n
 			wpn_val \n
 			ammo_9x39_sp5 = 1 \n
 			device_torch \n
-ammo_5.56x45_ss190=4 \n
 #include "gameplay\character_items.xml" \n
 #include "gameplay\character_drugs.xml" \n
 #include "gameplay\character_food.xml"	
@@ -830,7 +806,6 @@ ammo_5.56x45_ss190=4 \n
 			ammo_9x19_fmj \n
 			wpn_lr300 \n
 			ammo_5.56x45_ap = 1 \n
-ammo_5.45x39_ap=5 \n
 			device_torch \n
 #include "gameplay\character_items.xml" \n
 #include "gameplay\character_drugs.xml" \n
@@ -902,7 +877,6 @@ ammo_5.45x39_ap=5 \n
 #include "gameplay\character_criticals_1.xml"
 	
 		<start_dialog>hello_dialog</start_dialog>
-#include "gameplay\character_dialogs.xml"
   </specific_character>
 
 <!---------------------------MONOLIT MASTER----------------------->
@@ -940,7 +914,6 @@ ammo_5.45x39_ap=5 \n
 	
 		<start_dialog>hello_dialog</start_dialog>
 		<actor_dialog>esc_stalker_talk_level</actor_dialog>
-#include "gameplay\character_dialogs.xml"
   </specific_character>
 	
 </xml>

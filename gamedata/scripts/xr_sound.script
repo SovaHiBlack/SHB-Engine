@@ -206,7 +206,7 @@ function play_sound(npc, themes, timeout)
 		then
 			if db.sound[npc_id].last_snd[snd.into_id] == snd.into_max - 1 then
 				if snd.into_cycled == true then
-					db.sound[npc_id].last_snd[snd.into_id] = nil
+					db.sound[npc_id].last_snd[snd.into_id] = nil 
 				else
 					return
 				end

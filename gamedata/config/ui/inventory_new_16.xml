@@ -22,8 +22,8 @@
             cell_width = "31" cell_height="41" rows_num="10" cols_num="9" 
             unlimited="1" group_similar="1"/>
 
-    <dragdrop_belt x="600" y="136" width="235" height="60"
-            cell_width = "39" cell_height="53" rows_num="1" cols_num="6"/>
+    <dragdrop_belt x="600" y="136" width="225" height="60"
+            cell_width = "45" cell_height="60" rows_num="1" cols_num="5"/>
 
     <dragdrop_outfit x="858" y="290" width="78" height="260" 
             cell_width = "43" cell_height="57" rows_num="4" cols_num="4" 

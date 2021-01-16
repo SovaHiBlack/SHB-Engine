@@ -23,10 +23,9 @@
 			ammo_9x18_fmj = 1 \n
 			wpn_spas12 \n
 			ammo_12x70_buck = 1 \n
-ammo_5.56x45_ss190=2 \n
 		</supplies>
 				
-#include "gameplay\character_dialogs.xml"
+		<start_dialog>hello_dialog</start_dialog>
 		<actor_dialog>general_pda_talk</actor_dialog>
 		<actor_dialog>esc_stalker_talk_level</actor_dialog>
 	</specific_character>
@@ -52,10 +51,9 @@ ammo_5.56x45_ss190=2 \n
 			ammo_9x18_fmj = 1 \n
 			wpn_mp5 \n
 			ammo_9x19_fmj = 1 \n
-ammo_5.56x45_ss190=1 \n
 		</supplies>
 				
-#include "gameplay\character_dialogs.xml"
+		<start_dialog>hello_dialog</start_dialog>
 		<actor_dialog>general_pda_talk</actor_dialog>
 		<actor_dialog>esc_stalker_talk_level</actor_dialog>
 	</specific_character>
@@ -83,10 +81,9 @@ ammo_5.56x45_ss190=1 \n
 			ammo_11.43x23_fmj = 1 \n
 			wpn_l85 \n
 			ammo_5.56x45_ss190 = 1 \n
-ammo_5.45x39_ap = 3 \n
 		</supplies>
 			
-#include "gameplay\character_dialogs.xml"
+		<start_dialog>hello_dialog</start_dialog>
 		<actor_dialog>general_pda_talk</actor_dialog>
 		<actor_dialog>esc_stalker_talk_level</actor_dialog>
 	</specific_character>
@@ -114,7 +111,7 @@ ammo_5.45x39_ap = 3 \n
 			ammo_5.56x45_ss190 = 1 \n
 		</supplies>
 				
-#include "gameplay\character_dialogs.xml"
+		<start_dialog>hello_dialog</start_dialog>
 		<actor_dialog>general_pda_talk</actor_dialog>
 		<actor_dialog>esc_stalker_talk_level</actor_dialog>
 	</specific_character>

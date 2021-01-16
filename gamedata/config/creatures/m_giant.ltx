@@ -18,7 +18,7 @@ search_speed         = 1.5                       ; option for ALife Simulator
 visual				 = monsters\psevdogigant\psevdogigant
 corpse_visual	     = monsters\psevdogigant\psevdogigant_dead
 icon				 = ui_npc_monster_psevdogigant
-MaxHealthValue		     = 300			; range [0..200]
+MaxHealthValue		     = 200			; range [0..200]
 DynamicObjectsCount	 = 32
 smart_terrain_choose_interval	= 00:15:00
 
@@ -47,16 +47,17 @@ ph_box1_size 		 = 0.40, 0.6,  0.40
 ph_crash_speed_min			= 100
 ph_crash_speed_max			= 300
 ph_collision_damage_factor	= 0.1
-ph_mass 		     = 1000
+ph_mass 		     = 1500		;370
 
-destroyed_vis_name	 = physics\Dead_Body\skelet_crash_monster
+destroyed_vis_name	 = physics\Dead_Body\trupik_crash
 
 ;---------------------------------------------------------------------
-ph_skeleton_airr_lin_factor   = -0.4
-ph_skeleton_airr_ang_factor   = -0.2
-ph_skeleton_hinger_factor1    = 1.0
-ph_skeleton_ddelay	      = 5.0
-ph_skel_fatal_impulse_factor  = 2.0
+ph_skeleton_airr_lin_factor   = 2.0 ;550.0 (изменно из-за того, что убрано домножение коэффициент 0.002 из кода)
+ph_skeleton_airr_ang_factor   = 0.0 ;0.0 (изменно из-за того, что убрано домножение на коэффициент 0.3 из кода (0.0*0.3=0.0))
+ph_skeleton_hinger_factor1    = 1.0 ;1.0 (изменно из-за того, что убрано домножение на коэффициент 5.0 из кода)
+ph_skeleton_ddelay	     	  = 15.0 ;Время изменения значения трения в суставе с момента создания шелла, сек
+
+ph_skel_fatal_impulse_factor  = 12.0
 ph_after_death_velocity_factor= 0.75
 ph_skel_shot_up_factor        = 0.25
 ;---------------------------------------------------------------------
@@ -83,8 +84,8 @@ Accel_Aggressive	= 15.5
 ;--------------------------------------------------------------------------
 ; Attack parameters
 ;--------------------------------------------------------------------------
-MinAttackDist		= 2.5	;2.6	;0.5
-MaxAttackDist		= 3.5	;3.5	;3.8
+MinAttackDist		= 1.5	;2.6	;0.5
+MaxAttackDist		= 3.0	;3.5	;3.8
 
 as_min_dist				= 2.0
 as_step					= 0.3
@@ -121,7 +122,7 @@ satiety_health_v 	= 0.001				;увеличение здоровья при уменьшении сытости
 satiety_critical 	= -1.0	;0.25		;критическое значения сытости (в процентах от 0..1) когда здоровье начианает уменьшаться
 radiation_health_v 	= 0.01	;0.006		;уменьшение здоровья при воздействии радиации
 morale_v			= 0.01				;скорость восстановления морали
-health_hit_part 	= 0.8	;0.8			;процент хита, уходящий на отнимание здоровья
+health_hit_part 	= 1	;0.8			;процент хита, уходящий на отнимание здоровья
 power_hit_part 		= 1	;0.9			;процент хита, уходящий на отнимание силы
 psy_health_v		= 0.1				;скорость восстановления psy-здоровья
 
@@ -210,9 +211,10 @@ distant_idle_sound_delay	= 80000
 distant_idle_sound_range	= 100.0	
 
 
-DamagedThreshold		= 0.2 ;0.05 ;0.2
+DamagedThreshold		= 0.0 ;0.05 ;0.2
 
 material				= creatures\large
+DynamicObjectsCount		= 32
 
 squad_attack_algorithm	= 1
 attack_effector			= m_giant_attack_effector
@@ -254,10 +256,10 @@ jump_max_angle				= 0.3
 Anomaly_Detect_Radius			= 15.0
 Anomaly_Detect_Time_Remember	= 10000
 
-HugeKick_Damage				= 1.5
+HugeKick_Damage				= 1.2
 HugeKick_Particles			= monsters\gigant_wave
-HugeKick_MinMaxDist			= 15,30	;10, 20
-HugeKick_MinMaxDelay		= 10000, 22000 ;10000, 30000
+HugeKick_MinMaxDist			= 5,20	;10, 20
+HugeKick_MinMaxDelay		= 13000, 22000 ;10000, 30000
 HugeKick_Time_SlowDown		= 4000
 
 monster_type				= outdoor
@@ -291,11 +293,11 @@ bip01_head 			= 2, -1, 0.2, 10
 ;	anim			| time[0..1] | hit_power | impulse | impulse_dir (x,y,z)   |	Field of hit_test  (left,right, top, bottom) |	Test Dist
 ;---------------------------------------------------------------------------------------------------------------------------------------------
 ;Bite
-stand_attack_0 =	  	0.25,		0.550,	    150,        0.5, 1.0, 0.5,		 -0.8, 0.8, -1.8, 1.8,					  2.6
+stand_attack_0 =	  	0.25,		0.50,	    150,        0.5, 1.0, 0.5,		 -0.8, 0.8, -1.8, 1.8,					  2.6
 ;Left leg Strike
-stand_attack_1 =	  	0.40,		0.550,	    200,        5.0, 2.5, 4.0,		 -0.6, 0.6, -1.8, 1.8,					  3.2
+stand_attack_1 =	  	0.40,		0.50,	    200,        5.0, 2.5, 4.0,		 -0.6, 0.6, -1.8, 1.8,					  3.2
 ;Bite2
-stand_attack_2 =	  	0.25,		0.550,	    150,        0.5, 1.0, 5.0,		 -0.8, 0.8, -1.8, 1.8,					  2.6
+stand_attack_2 =	  	0.25,		0.50,	    150,        0.5, 1.0, 5.0,		 -0.8, 0.8, -1.8, 1.8,					  2.6
 stand_attack_run_0=     0.5,		0.70,	    550,        0.5, 1.0, 5.0,		 -0.6, 1.3, -1.8, 1.8,					  3.3
 jump_attack_1	=		0.1,		2.00,		1550,       0.5, 1.0, 5.0,		 -1.0, 1.3, -1.6, 1.6,					  3.5
 
@@ -407,24 +409,3 @@ rank				= 801
 spec_rank			= strong
 community			= pseudo_gigant
 
-
-[arena_gigant_1]:m_gigant_e
-$spawn        = "monsters\gigants\gigant_normal"
-visual        = monsters\psevdogigant\psevdogigant
-icon        = ui_npc_monster_psevdogigant
-rank        = 401
-spec_rank     = normal
-community     = pseudo_gigant
-immunities_sect       = giant_immunities_arena
-custom_data = scripts\arena_mob_1.ltx
-
-[giant_immunities_arena]
-burn_immunity       = 0.006     ;коэффициенты иммунитета 
-strike_immunity     = 0.008
-shock_immunity      = 0.008
-wound_immunity      = 0.006   
-radiation_immunity    = 0.0
-telepatic_immunity    = 1.0
-chemical_burn_immunity  = 0.06
-explosion_immunity    = 0.005
-fire_wound_immunity   = 0.005

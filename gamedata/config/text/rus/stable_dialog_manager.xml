@@ -600,24 +600,6 @@
 	<string id="dm_intro_help_12">
 		<text>На помощь! Я умираю!</text>
 	</string>
-	<string id="dm_intro_help_13">
-		<text>Сталкер... дай аптечку... умираю... Помоги - и я помогу тебе...</text>
-	</string>
-	<string id="dm_intro_help_14">
-		<text>Сталкер... дай аптечку... умираю... Помоги - и я помогу тебе...</text>
-	</string>
-	<string id="dm_intro_help_15">
-		<text>Сталкер... дай аптечку... умираю... Помоги - и я помогу тебе...</text>
-	</string>
-	<string id="dm_intro_help_16">
-		<text>Сталкер... дай аптечку... умираю... Помоги - и я помогу тебе...</text>
-	</string>
-	<string id="dm_intro_help_17">
-		<text>Сталкер... дай аптечку... умираю... Помоги - и я помогу тебе...</text>
-	</string>
-	<string id="dm_intro_help_18">
-		<text>Сталкер... дай аптечку... умираю... Помоги - и я помогу тебе...</text>
-	</string>
 	<string id="dm_intro_help_2">
 		<text>Ребята, аптечку!</text>
 	</string>
@@ -641,8 +623,5 @@
 	</string>
 	<string id="dm_intro_help_9">
 		<text>Поделись аптекой, приятель, а?</text>
-	</string>
-	<string id="dm_sleep_request_0">
-		<text>Валяй. Сейчас-то оно побезопаснее будет. Да и я может поболтаюсь в округе часок-другой, но не особо на это расчитывай - и без тебя проблем хватает.</text>
 	</string>
 </string_table>

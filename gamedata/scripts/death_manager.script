@@ -19,54 +19,54 @@ local death_ini = ini_file("misc\\death_generic.ltx")
 
 
 function init_drop_settings()
-	local community_list = {"trader", "stalker", "dolg", "freedom", "bandit", "military", "zombied", "ecolog", "killer", "monolith", "arena_enemy", "actor_dolg" }	
+  local community_list = { "stalker", "dolg", "freedom", "bandit", "military", "zombied", "ecolog", "killer", "monolith", "arena_enemy", "actor_dolg" } 
 
     for k,v in pairs(community_list) do
         --' Необходимо заполнить таблицу
         item_by_community[v] = {}
         if death_ini:section_exist(v) then
-		    local n = death_ini:line_count(v)
-		    local id, value = "", ""
-		    for i=0,n-1 do
-			    result, id, value	= death_ini:r_line(v,i,"","")
+        local n = death_ini:line_count(v)
+        local id, value = "", ""
+        for i=0,n-1 do
+          result, id, value = death_ini:r_line(v,i,"","")
                 item_by_community[v][id] = 100*tonumber(value)
-		    end
+        end
         end
     end
 
     --' Заполняем таблицу зависимостей
-	local n = death_ini:line_count("item_dependence")
-	local id, value = "", ""
-	for i=0,n-1 do
-		result, id, value	= death_ini:r_line("item_dependence",i,"","")
-		item_dependence[id] = {}
-		local vvv = parse_names(value)
-		for k,v in pairs(vvv) do
-			item_dependence[id][v] = true
-		end
-	end
+  local n = death_ini:line_count("item_dependence")
+  local id, value = "", ""
+  for i=0,n-1 do
+    result, id, value = death_ini:r_line("item_dependence",i,"","")
+    item_dependence[id] = {}
+    local vvv = parse_names(value)
+    for k,v in pairs(vvv) do
+      item_dependence[id][v] = true
+    end
+  end
 
-	--' Множители и минимаксы для выпадения вещей в зависимости от уровня
+  --' Множители и минимаксы для выпадения вещей в зависимости от уровня
     local level_name = level.name()
-	
-	if not death_ini:section_exist(level_name) then
-		level_name = "default"
-	end
+  
+  if not death_ini:section_exist(level_name) then
+    level_name = "default"
+  end
 
     local n = death_ini:line_count(level_name)
-	local id, value = "", ""
-	for i=0,n-1 do
-		result, id, value	= death_ini:r_line(level_name,i,"","")
+  local id, value = "", ""
+  for i=0,n-1 do
+    result, id, value = death_ini:r_line(level_name,i,"","")
         mul_by_level[id] = tonumber(value)
-	end        
+  end        
 
     local item_count_section = "item_count_" .. level.get_game_difficulty()
     local n = death_ini:line_count(item_count_section)
-	for i=0,n-1 do
-		result, id, value	= death_ini:r_line(item_count_section,i,"","")
+  for i=0,n-1 do
+    result, id, value = death_ini:r_line(item_count_section,i,"","")
         --' Нужно распарсить value в два значения
         local t = parse_nums(value)
-		if t[1] == nil then
+    if t[1] == nil then
             abort("Error on [death_ini] declaration. Section [%s], line [%s]", item_count_section, tostring(id))
         end
         local min = t[1]
@@ -83,45 +83,40 @@ function init_drop_settings()
         max = tonumber(max) * mul_by_level[id]
 
         count_by_level[id] = {min = min, max = max}
-	end        
+  end        
 
- 	--' Предметы, которые нельзя удалять (квестовые например)
+  --' Предметы, которые нельзя удалять (квестовые например)
     local n = death_ini:line_count("keep_items")
-	for i=0,n-1 do
-		result, id, value	= death_ini:r_line("keep_items",i,"","")
+  for i=0,n-1 do
+    result, id, value = death_ini:r_line("keep_items",i,"","")
         if value == "true" then
             always_keep_item[id] = true
         end
     end
 
-	--' Предметы, относящиеся к патронам. Их надо спаунить другим методом.
+  --' Предметы, относящиеся к патронам. Их надо спаунить другим методом.
     ammo_sections = {}
     local n = death_ini:line_count("ammo_sections")
-	local id, value = "", ""
-	for i=0,n-1 do
-		result, id, value	= death_ini:r_line("ammo_sections",i,"","")
+  local id, value = "", ""
+  for i=0,n-1 do
+    result, id, value = death_ini:r_line("ammo_sections",i,"","")
         ammo_sections[id] = true
-	end
+  end        
 end
 
 
 
 class "drop_manager"
 function drop_manager:__init(npc)
-	self.npc = npc
+  self.npc = npc
 end
-
 function drop_manager:create_release_item()
-
-local otf
-local sect
-
-	--' Спрашиваем у серверного объекта генерились ли предметы
-	local se_obj = alife():object(self.npc:id())
-	if se_obj.death_droped == true then
-		return
-	end
-	se_obj.death_droped = true
+  --' Спрашиваем у серверного объекта генерились ли предметы
+  local se_obj = alife():object(self.npc:id())
+  if se_obj.death_droped == true then
+    return
+  end
+  se_obj.death_droped = true
 
     --' Запускаем итератор на удаление предметов
     self.npc:iterate_inventory(keep_item, self.npc)
@@ -138,107 +133,18 @@ local sect
 
     local spawn_items = item_by_community[self.npc:character_community()]    
     for k,v in pairs(spawn_items) do
-        --' По каждому объекту необходимо получить зависимости		
+        --' По каждому объекту необходимо получить зависимости    
         if check_item_dependence(self.npc, k) == true then
             --' По каждому объекту необходимо получить количество
             local number = math.ceil(math.random(count_by_level[k].min, count_by_level[k].max))
             --' Необходимо заспавнить нужное количество.
-
-		if not string.find(self.npc:section(),"arena") and not string.find(self.npc:section(),"aem") and
-		self.npc:character_community()~="arena_enemy" then 
-			create_items(self.npc, k, number, v) 
-		end
-	  end
+            create_items(self.npc, k, number, v)
+        end
     end
-
-if self.npc:character_community()=="stalker" then
-	if self.npc:character_rank()>=0 and self.npc:character_rank()<300 then sect = "novice_outfit" end
-	if self.npc:character_rank()>=300 and self.npc:character_rank()<900 then sect = "stalker_outfit" end
-	if self.npc:character_rank()>=900 then sect = "exo_outfit" end
-end
-
-if self.npc:character_community()=="bandit" then
-	if self.npc:character_rank()>=0 and self.npc:character_rank()<600 then sect = "bandit_outfit" end
-	if self.npc:character_rank()>=600 and self.npc:character_rank()<900 then sect = "bandit_veteran_outfit" end
-	if self.npc:character_rank()>=900 then sect = "bandit_master_outfit" end
-end
-
-if self.npc:character_community()=="military" then
-	if self.npc:character_rank()>=0 and self.npc:character_rank()<600 then sect = "soldier_outfit" end
-	if self.npc:character_rank()>=600 and self.npc:character_rank()<900 then sect = "specops_outfit" end
-	if self.npc:character_rank()>=900 then sect = "military_outfit" end
-end
-
-if self.npc:character_community()=="killer" then
-	if self.npc:character_rank()>=0 and self.npc:character_rank()<900 then sect = "killer_outfit" end
-	if self.npc:character_rank()>=900 then sect = "killer_blue_exoskeleton" end
-end
-
-if self.npc:character_community()=="dolg" then
-	if self.npc:character_rank()>=0 and self.npc:character_rank()<900 then sect = "dolg_outfit" end
-	if self.npc:character_rank()>=900 then sect = "dolg_black_exoskeleton" end
-end
-
-if self.npc:character_community()=="freedom" then
-	if self.npc:character_rank()>=0 and self.npc:character_rank()<300 then sect = "svoboda_light_outfit" end
-	if self.npc:character_rank()>=300 and self.npc:character_rank()<900 then sect = "svoboda_heavy_outfit" end
-	if self.npc:character_rank()>=900 then sect = "svoboda_exoskeleton" end
-end
-
-if self.npc:character_community()=="monolith" then
-	if self.npc:character_rank()>=0 and self.npc:character_rank()<600 then sect = "monolit_outfit" end
-	if self.npc:character_rank()>=600 and self.npc:character_rank()<900 then sect = "monolit_scientific_outfit" end
-	if self.npc:character_rank()>=900 then sect = "monolit_exoskeleton" end
-end
-
-if self.npc:character_community()=="ecolog" then
-	if self.npc:character_rank()>=0 and self.npc:character_rank()<900 then sect = "ecolog_outfit" end
-	if self.npc:character_rank()>=900 then sect = "protection_outfit" end
-end
-
-if sect~=nil and not string.find(self.npc:section(),"arena") and 
-not string.find(self.npc:section(),"aem") and 
-self.npc:character_community()~="arena_enemy" and 
-self.npc:name()~="esc_novice_attacker1" and
-self.npc:name()~="esc_blokpost_commander" and
-self.npc:name()~="agr_ratcatcher" and
-self.npc:name()~="val_lager_bandits_borov" and
-not string.find(self.npc:name(),"gar_dm_bandit") and
-self.npc:name()~="gar_wounded_bandit" and
-self.npc:name()~="bar_dolg_leader" and
-self.npc:name()~="bar_dolg_petrenko" and
-self.npc:name()~="mil_freedom_member0012" and
-self.npc:name()~="mil_freedom_member0018" and
-self.npc:name()~="mil_stalker0012" and
-self.npc:name()~="mil_stalker0023" and
-self.npc:name()~="mil_ara" and
-self.npc:name()~="mil_blockpost_freedomstalker001" and
-self.npc:name()~="bar_ecolog_professor" and
-self.npc:name()~="yan_scientist_help" and
-self.npc:name()~="yan_specnaz_dead" and
-self.npc:name()~="x16_stalker_ghost" and
-self.npc:name()~="yantar_semenov" then 
-	otf = create_items(self.npc, sect, 1, 40)
-	if otf~= nil then 
-		amk.start_timer("otf",1,otf.id) 
-	end
-end
-
-if has_alife_info("pri_trader_arny_task") and string.find(self.npc:name(), "aem_arny") then 
-	amk.spawn_item_in_inv("zapiska", self.npc) 
-end
-if has_alife_info("pri_trader_dolg_task") and self.npc:name()=="bar_dolg_leader" then 
-	amk.spawn_item_in_inv("zapiska_m1", self.npc) 
-end
-if has_alife_info("pri_trader_freedom_task") and self.npc:name()=="mil_freedom_member0012" then 
-	amk.spawn_item_in_inv("zapiska_m2", self.npc) 
-end
-
 end
 
 --' Функция вызывается для каждого предмета, если вернет false то предмет удалится.
 function keep_item(npc, item)
-    if item==nil or alife():object(item:id())==nil then return end
     local section = item:section()
 
     if section == "bolt" then
@@ -255,8 +161,8 @@ function keep_item(npc, item)
        item_in_slot:id() == item_id
     then
         item:unload_magazine()
-		--' Тут надо уменьшить кондишн оружия
-		item:set_condition((math.random(15)+75)*item:condition()/100)
+    --' Тут надо уменьшить кондишн оружия
+		item:set_condition((math.random(15)+75)/100)
         return true
     end
     item_in_slot = npc:item_in_slot(2)
@@ -264,8 +170,8 @@ function keep_item(npc, item)
        item_in_slot:id() == item_id
     then
         item:unload_magazine()
-		--' Тут надо уменьшить кондишн оружия
-		item:set_condition((math.random(15)+75)*item:condition()/100)
+    --' Тут надо уменьшить кондишн оружия
+		item:set_condition((math.random(15)+75)/100)
         return true
     end
     alife():release(alife():object(item:id()), true)
@@ -273,26 +179,26 @@ end
 
 --' Функция спавнит необходимое число предметов
 function create_items(npc, section, number, rnd)
---'    printf("create %s of %s", tostring(number), tostring(section))
+    --'printf("create %s of %s", tostring(number), tostring(section))
     if ammo_sections[section] == true then
         if number > 0 then
-            se_respawn.create_ammo(section,	
-				    npc:position(),
-				    npc:level_vertex_id(),	
-				    npc:game_vertex_id(),
-				    npc:id(),
+            se_respawn.create_ammo(section, 
+            npc:position(),
+            npc:level_vertex_id(),  
+            npc:game_vertex_id(),
+            npc:id(),
                     number)
         end
     else
         for i=1,number do
-			--' Проверяем вероятность появить каждый объект в отдельности
+      --' Проверяем вероятность появить каждый объект в отдельности
             if math.random(100) <=  rnd then
-				return alife():create(section,	
-					    npc:position(),
-						npc:level_vertex_id(),	
-						npc:game_vertex_id(),
-						npc:id())
-		end
+			alife():create(section, 
+            npc:position(),
+            npc:level_vertex_id(),  
+            npc:game_vertex_id(),
+            npc:id())
+			end
         end
     end    
 end
@@ -300,9 +206,9 @@ end
 
 --' Функция проверяет есть ли хоть один из зависимых объектов у персонажа
 function check_item_dependence(npc, section)
-	if item_dependence[section] == nil then
-		return true
-	end
+  if item_dependence[section] == nil then
+    return true
+  end
 
     local d_flag = true
     for k,v in pairs(item_dependence[section]) do

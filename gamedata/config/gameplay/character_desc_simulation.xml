@@ -249,7 +249,6 @@
 		<start_dialog>hello_dialog</start_dialog>
 		
 		<actor_dialog>esc_stalker_talk_level</actor_dialog>
-#include "gameplay\character_dialogs.xml"
 	</specific_character>
 
 	<specific_character id="sim_bandit_veteran_default2" team_default = "1">
@@ -432,8 +431,6 @@
 			[spawn] \n
 			wpn_pm \n
 			ammo_9x18_fmj = 1 \n
-ammo_9x19_fmj=3 \n
-ammo_12x70_buck \n
 			device_torch \n
 #include "gameplay\character_items.xml" \n
 #include "gameplay\character_food.xml"
@@ -490,8 +487,6 @@ ammo_12x70_buck \n
 			[spawn] \n
 			wpn_pm \n
 			ammo_9x18_fmj = 1 \n
-ammo_9x19_fmj=2 \n
-ammo_12x70_buck=2 \n
 #include "gameplay\character_items.xml" \n
 #include "gameplay\character_food.xml"
 		</supplies>
@@ -519,7 +514,6 @@ ammo_12x70_buck=2 \n
 			[spawn] \n
 			wpn_pm \n
 			ammo_9x18_fmj = 1 \n
-ammo_12x70_buck \n
 			device_torch \n		
 #include "gameplay\character_items.xml" \n
 #include "gameplay\character_food.xml"
@@ -548,8 +542,6 @@ ammo_12x70_buck \n
 			[spawn] \n
 			wpn_pm \n
 			ammo_9x18_fmj = 1 \n
-ammo_9x19_fmj=3 \n
-ammo_5.45x39_fmj \n
 			device_torch \n
 #include "gameplay\character_items.xml" \n
 #include "gameplay\character_food.xml"
@@ -581,7 +573,6 @@ ammo_5.45x39_fmj \n
 			device_torch \n
 			wpn_bm16 \n
 			ammo_12x70_buck \n	
-ammo_9x19_fmj \n
 #include "gameplay\character_items.xml"	\n
 #include "gameplay\character_drugs.xml" \n
 #include "gameplay\character_food.xml"
@@ -610,7 +601,6 @@ ammo_9x19_fmj \n
 			[spawn] \n
 			wpn_pm \n
 			ammo_9x18_fmj = 1 \n
-ammo_11.43x23_fmj=2 \n
 			device_torch \n
 #include "gameplay\character_items.xml" \n
 #include "gameplay\character_drugs.xml" \n
@@ -640,7 +630,6 @@ ammo_11.43x23_fmj=2 \n
 			[spawn] \n
 			wpn_pm \n
 			ammo_9x18_fmj = 1 \n
-ammo_12x76_dart=2 \n
 			device_torch \n
 #include "gameplay\character_items.xml" \n
 #include "gameplay\character_drugs.xml" \n
@@ -674,8 +663,6 @@ ammo_12x76_dart=2 \n
 				ammo_9x18_pmm = 1 \n
 				wpn_bm16 \n
 				ammo_12x70_buck = 1\n
-ammo_5.45x39_fmj=3 \n
-ammo_5.56x45_ss190 \n
 				device_torch \n
 	#include "gameplay\character_drugs.xml"
 	#include "gameplay\character_food.xml"
@@ -708,8 +695,6 @@ ammo_5.56x45_ss190 \n
 			ammo_9x18_fmj \n
 			wpn_mp5 \n
 			ammo_9x19_fmj = 1 \n
-ammo_5.45x39_fmj=2 \n
-ammo_5.56x45_ss190=3 \n
 			device_torch \n
 #include "gameplay\character_drugs.xml"
 #include "gameplay\character_food.xml"
@@ -741,7 +726,6 @@ ammo_5.56x45_ss190=3 \n
 			ammo_9x18_fmj \n
 			wpn_mp5 \n
 			ammo_9x19_pbp = 1 \n
-ammo_5.56x45_ss190 \n
 			device_torch \n
 #include "gameplay\character_drugs.xml"
 #include "gameplay\character_food.xml"
@@ -773,7 +757,6 @@ ammo_5.56x45_ss190 \n
 			ammo_9x18_fmj \n
 			wpn_ak74u \n
 			ammo_5.45x39_fmj = 1 \n
-ammo_5.56x45_ss190=3 \n
 			device_torch \n
 #include "gameplay\character_drugs.xml"
 #include "gameplay\character_food.xml"
@@ -805,8 +788,6 @@ ammo_5.56x45_ss190=3 \n
 			ammo_9x18_fmj \n
 			wpn_ak74u \n
 			ammo_5.45x39_fmj \n
-ammo_12x70_buck \n
-ammo_12x76_zhekan \n
 			device_torch \n
 #include "gameplay\character_drugs.xml"
 #include "gameplay\character_food.xml"
@@ -838,7 +819,6 @@ ammo_12x76_zhekan \n
 			ammo_9x18_fmj \n
 			wpn_ak74u \n
 			ammo_5.45x39_fmj \n
-ammo_5.45x39_fmj=2 \n
 			device_torch \n
 #include "gameplay\character_drugs.xml"
 #include "gameplay\character_food.xml"
@@ -871,7 +851,6 @@ ammo_5.45x39_fmj=2 \n
 			ammo_9x19_fmj \n
 			wpn_lr300 \n
 			ammo_5.56x45_ap = 1 \n
-ammo_5.45x39_fmj=6 \n
 			device_torch \n
 #include "gameplay\character_items.xml"\n
 #include "gameplay\character_food.xml" \n
@@ -903,7 +882,6 @@ ammo_5.45x39_fmj=6 \n
 			ammo_9x19_fmj = 1 \n
 			wpn_ak74 \n
 			ammo_5.45x39_ap = 1 \n
-ammo_9x39_pab9=3 \n
 			device_torch \n
 #include "gameplay\character_items.xml"\n
 #include "gameplay\character_food.xml" \n
@@ -935,7 +913,6 @@ ammo_9x39_pab9=3 \n
 			ammo_9x18_pmm = 1 \n
 			wpn_l85 \n
 			ammo_5.56x45_ss190 = 1 \n
-ammo_9x39_pab9=4 \n
 			device_torch \n
 #include "gameplay\character_items.xml"\n
 #include "gameplay\character_food.xml" \n
@@ -967,7 +944,6 @@ ammo_9x39_pab9=4 \n
 			ammo_9x19_fmj = 1 \n
 			wpn_lr300 \n
 			ammo_5.56x45_ss190 = 1 \n
-ammo_9x18_fmj=10 \n
 			device_torch \n
 #include "gameplay\character_items.xml"\n
 #include "gameplay\character_food.xml" \n
@@ -999,7 +975,6 @@ ammo_9x18_fmj=10 \n
 			ammo_9x19_fmj = 1 \n
 			wpn_l85 \n
 			ammo_5.56x45_ss190 = 1 \n
-ammo_9x18_fmj=9 \n
 			device_torch \n
 #include "gameplay\character_items.xml"\n
 #include "gameplay\character_food.xml" \n
@@ -1034,8 +1009,6 @@ ammo_9x18_fmj=9 \n
 			ammo_9x19_fmj \n
 			wpn_val \n
 			ammo_9x39_sp5 = 1 \n
-ammo_5.45x39_ap=9 \n
-ammo_5.56x45_ap=3 \n
 			device_torch \n
 #include "gameplay\character_items.xml"\n
 #include "gameplay\character_food.xml" \n
@@ -1067,7 +1040,6 @@ ammo_5.56x45_ap=3 \n
 			ammo_9x19_fmj \n
 			wpn_val \n
 			ammo_9x39_sp5 = 1 \n
-ammo_5.56x45_ap=6 \n
 			device_torch \n
 #include "gameplay\character_items.xml"\n
 #include "gameplay\character_food.xml" \n
@@ -1100,8 +1072,7 @@ ammo_5.56x45_ap=6 \n
 			wpn_walther \n
 			ammo_9x19_fmj = 1 \n
 			wpn_svd \n
-			ammo_7.62x54_7h1 = 1 \n
-ammo_5.45x39_ap=3 \n
+			ammo_7.62x54_7h14 = 1 \n
 			device_torch \n
 #include "gameplay\character_items.xml"\n
 #include "gameplay\character_food.xml" \n
@@ -1139,8 +1110,6 @@ ammo_5.45x39_ap=3 \n
 			ammo_9x19_fmj \n
 			wpn_abakan \n
 			ammo_5.45x39_fmj \n
-ammo_5.56x45_ap=6 \n
-ammo_12x70_buck \n
 			device_torch \n
 #include "gameplay\character_items.xml"\n
 #include "gameplay\character_food.xml" \n
@@ -1172,7 +1141,6 @@ ammo_12x70_buck \n
 			ammo_9x19_fmj \n
 			wpn_abakan \n
 			ammo_5.45x39_fmj \n
-ammo_9x18_pmm=9 \n
 			device_torch \n
 #include "gameplay\character_items.xml"\n
 #include "gameplay\character_food.xml" \n
@@ -1204,7 +1172,6 @@ ammo_9x18_pmm=9 \n
 			ammo_9x19_fmj \n
 			wpn_abakan \n
 			ammo_5.45x39_fmj \n
-ammo_9x18_pmm=12 \n
 			device_torch \n
 #include "gameplay\character_items.xml" \n			
 #include "gameplay\character_food.xml" \n
@@ -1237,7 +1204,6 @@ ammo_9x18_pmm=12 \n
 			ammo_9x19_fmj \n
 			wpn_groza \n
 			ammo_9x39_ap \n	
-ammo_7.62x54_ap \n
 #include "gameplay\character_items.xml"	\n
 #include "gameplay\character_food.xml" \n
 #include "gameplay\character_drugs.xml"
@@ -1300,7 +1266,6 @@ ammo_7.62x54_ap \n
 			ammo_9x39_ap = 1 \n
 			ammo_9x39_sp5 = 1 \n
 			ammo_vog-25p = 2 \n
-ammo_12x70_buck=6 \n
 #include "gameplay\character_items.xml"	\n
 #include "gameplay\character_food.xml" \n
 #include "gameplay\character_drugs.xml"
@@ -1331,7 +1296,6 @@ ammo_12x70_buck=6 \n
 			ammo_9x19_fmj \n
 			wpn_groza \n
 			ammo_9x39_sp5 \n	
-ammo_12x70_buck=6 \n
 #include "gameplay\character_items.xml" \n	
 #include "gameplay\character_food.xml" \n
 #include "gameplay\character_drugs.xml"
@@ -1364,7 +1328,6 @@ ammo_12x70_buck=6 \n
 			ammo_9x19_fmj \n		
 			wpn_val \n
 			ammo_9x39_sp5 = 1 \n
-ammo_7.62x54_ap \n
 #include "gameplay\character_items.xml" \n
 #include "gameplay\character_food.xml" \n
 #include "gameplay\character_drugs.xml"
@@ -1396,7 +1359,6 @@ ammo_7.62x54_ap \n
 			wpn_groza \n
 			ammo_9x39_sp5 = 2 \n
 			ammo_vog-25p = 2 \n
-ammo_9x19_pbp=120 \n
 #include "gameplay\character_items.xml"	\n
 #include "gameplay\character_food.xml" \n
 #include "gameplay\character_drugs.xml"
@@ -1428,7 +1390,6 @@ ammo_9x19_pbp=120 \n
 			ammo_9x19_fmj = 1 \n
 			wpn_svu \n
 			ammo_7.62x54_ap = 1 \n
-ammo_12x76_zhekan=2 \n
 			device_torch \n
 #include "gameplay\character_items.xml" \n	
 #include "gameplay\character_food.xml" \n
@@ -1460,7 +1421,6 @@ ammo_12x76_zhekan=2 \n
 			ammo_9x18_pmm = 1 \n
 			wpn_svu \n
 			ammo_7.62x54_ap = 1 \n
-ammo_12x76_zhekan \n
 			device_torch \n
 #include "gameplay\character_items.xml"\n		
 #include "gameplay\character_food.xml" \n
@@ -1531,7 +1491,6 @@ ammo_12x76_zhekan \n
 			ammo_9x19_fmj \n
 			wpn_l85 \n
 			ammo_5.56x45_ss190 = 1 \n
-ammo_5.45x39_ap=3 \n
 			device_torch \n
 #include "gameplay\character_items.xml"	\n
 #include "gameplay\character_food.xml" \n
@@ -1567,8 +1526,6 @@ ammo_5.45x39_ap=3 \n
 			ammo_11.43x23_hydro = 1 \n
 			wpn_lr300 \n
 			ammo_5.56x45_ap = 1 \n
-ammo_5.45x39_ap=6 \n
-ammo_12x70_buck \n
 #include "gameplay\character_items.xml"	\n
 #include "gameplay\character_food.xml" \n
 #include "gameplay\character_drugs.xml"			
@@ -1603,8 +1560,6 @@ ammo_12x70_buck \n
 			ammo_11.43x23_hydro = 1 \n
 			wpn_sig550 \n
 			ammo_5.56x45_ap = 1 \n
-ammo_5.45x39_ap=9 \n
-ammo_12x70_buck=2 \n
 #include "gameplay\character_items.xml"	\n
 #include "gameplay\character_food.xml" \n
 #include "gameplay\character_drugs.xml"			
@@ -1638,7 +1593,6 @@ ammo_12x70_buck=2 \n
 			ammo_11.43x23_hydro = 1 \n
             wpn_svd \n
             ammo_7.62x54_ap = 1 \n
-ammo_12x70_buck \n
 #include "gameplay\character_items.xml"	\n
 #include "gameplay\character_food.xml" \n
 #include "gameplay\character_drugs.xml"		
@@ -2132,7 +2086,7 @@ ammo_12x70_buck \n
 			wpn_sig220 \n
 			ammo_11.43x23_hydro \n	
 			wpn_svd \n
-			ammo_7.62x54_7h1 = 1 \n
+			ammo_7.62x54_7h14 = 1 \n
 #include "gameplay\character_drugs.xml"
         </supplies>
         
@@ -2166,7 +2120,6 @@ ammo_12x70_buck \n
 			[spawn] \n
 			wpn_sig220 \n
 			ammo_11.43x23_hydro \n
-ammo_5.56x45_ap=5 \n
 #include "gameplay\character_food.xml"
 #include "gameplay\character_drugs.xml"
 		</supplies>
@@ -2195,7 +2148,6 @@ ammo_5.56x45_ap=5 \n
 			[spawn] \n
 			wpn_sig220 \n
 			ammo_11.43x23_hydro \n
-ammo_5.56x45_ap=9 \n
 #include "gameplay\character_food.xml"
 #include "gameplay\character_drugs.xml"
 		</supplies>
@@ -2654,7 +2606,7 @@ ammo_5.56x45_ap=9 \n
 #include "gameplay\character_criticals_5.xml"
 					
 		<start_dialog>hello_dialog</start_dialog>
-#include "gameplay\character_dialogs.xml"		
+		
 	</specific_character>
 
 	<specific_character id="sim_soldier_regular_default2" team_default = "1">
@@ -2686,7 +2638,7 @@ ammo_5.56x45_ap=9 \n
 #include "gameplay\character_criticals_5.xml"
 					
 		<start_dialog>hello_dialog</start_dialog>
-#include "gameplay\character_dialogs.xml"		
+		
 	</specific_character>
 
 	<specific_character id="sim_soldier_regular_default3" team_default = "1">
@@ -2718,7 +2670,7 @@ ammo_5.56x45_ap=9 \n
 #include "gameplay\character_criticals_5.xml"
 					
 		<start_dialog>hello_dialog</start_dialog>
-		#include "gameplay\character_dialogs.xml"
+		
 	</specific_character>
 
 	<specific_character id="sim_soldier_regular_default4" team_default = "1">
@@ -2750,7 +2702,7 @@ ammo_5.56x45_ap=9 \n
 #include "gameplay\character_criticals_5.xml"	
 					
 		<start_dialog>hello_dialog</start_dialog>
-		#include "gameplay\character_dialogs.xml"
+		
 	</specific_character>
 
 	<specific_character id="sim_soldier_regular_default5" team_default = "1">
@@ -2782,7 +2734,7 @@ ammo_5.56x45_ap=9 \n
 #include "gameplay\character_criticals_5.xml"	
 					
 		<start_dialog>hello_dialog</start_dialog>
-		#include "gameplay\character_dialogs.xml"
+		
 	</specific_character>
 
 
@@ -2817,7 +2769,7 @@ ammo_5.56x45_ap=9 \n
 #include "gameplay\character_criticals_6.xml"
 					
 		<start_dialog>hello_dialog</start_dialog>
-		#include "gameplay\character_dialogs.xml"
+		
 	</specific_character>
 
 	<specific_character id="sim_soldier_specnaz_default2" team_default = "1">
@@ -2851,7 +2803,6 @@ ammo_5.56x45_ap=9 \n
 #include "gameplay\character_criticals_6.xml"
 		
 		<start_dialog>hello_dialog</start_dialog>		
-#include "gameplay\character_dialogs.xml"
 	</specific_character>
 
 	<!--------------------------- SOLDIER COMMANDERS ----------------------->
@@ -2885,7 +2836,7 @@ ammo_5.56x45_ap=9 \n
 #include "gameplay\character_criticals_5.xml"
 					
 		<start_dialog>hello_dialog</start_dialog>
-		#include "gameplay\character_dialogs.xml"
+		
 	</specific_character>
 
 	<specific_character id="sim_soldier_commander2" team_default = "1">
@@ -2917,7 +2868,6 @@ ammo_5.56x45_ap=9 \n
 #include "gameplay\character_criticals_5.xml"
 					
 		<start_dialog>hello_dialog</start_dialog>		
-#include "gameplay\character_dialogs.xml"
 	</specific_character>
 
 <!---------------------------SOLDIER SNIPER---------------------->
@@ -2950,7 +2900,7 @@ ammo_5.56x45_ap=9 \n
 #include "gameplay\character_criticals_5.xml"	
 					
 		<start_dialog>hello_dialog</start_dialog>
-		#include "gameplay\character_dialogs.xml"
+		
 	</specific_character>
 
 	<specific_character id="sim_soldier_sniper_default2" team_default = "1">
@@ -2982,7 +2932,7 @@ ammo_5.56x45_ap=9 \n
 #include "gameplay\character_criticals_5.xml"
 					
 		<start_dialog>hello_dialog</start_dialog>
-		#include "gameplay\character_dialogs.xml"
+		
 	</specific_character>
 
 	<specific_character id="sim_soldier_sniper_default3" team_default = "1">
@@ -3014,7 +2964,7 @@ ammo_5.56x45_ap=9 \n
 #include "gameplay\character_criticals_5.xml"
 					
 		<start_dialog>hello_dialog</start_dialog>
-		#include "gameplay\character_dialogs.xml"
+		
 	</specific_character>
 
 <!---------------------------SOLDIER MASTER----------------------->
@@ -3050,7 +3000,6 @@ ammo_5.56x45_ap=9 \n
 					
 		<start_dialog>hello_dialog</start_dialog>
 		<actor_dialog>esc_stalker_talk_level</actor_dialog>
-#include "gameplay\character_dialogs.xml"
 	</specific_character>
 
 
@@ -3079,7 +3028,6 @@ ammo_5.56x45_ap=9 \n
 			ammo_9x19_fmj \n	
 			wpn_abakan_m1 = 1 \n
 			ammo_5.45x39_fmj = 1 \n
-ammo_9x39_sp5=6 \n
 			device_torch \n
 #include "gameplay\character_items.xml"\n
 #include "gameplay\character_food.xml" \n
@@ -3148,7 +3096,6 @@ ammo_9x39_sp5=6 \n
 			ammo_9x19_fmj \n
 			wpn_l85_m1 \n
 			ammo_5.56x45_ap = 1 \n
-ammo_9x39_sp5=3 \n
 			device_torch \n
 #include "gameplay\character_items.xml"\n
 #include "gameplay\character_food.xml" \n
@@ -3183,7 +3130,6 @@ ammo_9x39_sp5=3 \n
 			ammo_9x18_pmm = 1 \n
 			wpn_mp5_m2 \n
 			ammo_9x19_pbp = 1\n
-ammo_12x70_buck=3 \n
 			device_torch \n
 #include "gameplay\character_drugs.xml"
 #include "gameplay\character_food.xml"
@@ -3217,7 +3163,6 @@ ammo_12x70_buck=3 \n
 			ammo_11.43x23_hydro = 1 \n
 			wpn_winchester_m1 = 1 \n
 			ammo_12x76_dart = 1 \n
-ammo_5.45x39_ap=6 \n
 			device_torch \n
 #include "gameplay\character_items.xml"\n
 #include "gameplay\character_food.xml" \n
@@ -3347,7 +3292,6 @@ ammo_5.45x39_ap=6 \n
 			ammo_11.43x23_hydro = 1 \n
 			wpn_groza_m1 \n
 			ammo_5.45x39_ap = 1 \n
-ammo_9x39_pab9=6 \n
 			ammo_vog-25 = 2 \n
 #include "gameplay\character_items.xml"	\n
 #include "gameplay\character_food.xml" \n
@@ -3381,8 +3325,6 @@ ammo_9x39_pab9=6 \n
 			ammo_11.43x23_hydro \n
 			wpn_abakan \n
 			ammo_5.45x39_fmj = 1 \n
-ammo_9x39_pab9 \n
-ammo_9x18_pmm=12 \n
 			device_torch \n
 #include "gameplay\character_items.xml"\n
 #include "gameplay\character_food.xml" \n
@@ -3416,7 +3358,6 @@ ammo_9x18_pmm=12 \n
 			ammo_9x19_fmj \n
 			wpn_l85_m2 \n
 			ammo_5.56x45_ap = 1 \n
-ammo_9x18_pmm=9 \n
 			device_torch \n
 #include "gameplay\character_items.xml"\n
 #include "gameplay\character_food.xml" \n
@@ -3518,7 +3459,6 @@ ammo_9x18_pmm=9 \n
 			ammo_9x19_fmj \n
 			wpn_ak74 = 1, scope \n
 			ammo_5.45x39_fmj = 1 \n
-ammo_11.43x23_hydro=6 \n
 			device_torch \n
 #include "gameplay\character_items.xml"\n
 #include "gameplay\character_food.xml" \n
@@ -3622,7 +3562,6 @@ ammo_11.43x23_hydro=6 \n
 		</supplies>
 		
 #include "gameplay\character_criticals_3.xml"			
-#include "gameplay\character_dialogs.xml"
 	</specific_character>
 
 ;-----------------STALKER 2----------------------------------
@@ -3649,7 +3588,6 @@ ammo_11.43x23_hydro=6 \n
 		</supplies>
 		
 #include "gameplay\character_criticals_4.xml"
-#include "gameplay\character_dialogs.xml"
 	</specific_character>
 
 ;--------------------STALKER 3_1 and 3_2----------------------
@@ -3676,7 +3614,6 @@ ammo_11.43x23_hydro=6 \n
 		</supplies>
 		
 #include "gameplay\character_criticals_4.xml"
-#include "gameplay\character_dialogs.xml"
 	</specific_character>
 
 <specific_character id="bar_arena_stalker_3_2" team_default = "1">
@@ -3702,7 +3639,6 @@ ammo_11.43x23_hydro=6 \n
 		</supplies>
 		
 #include "gameplay\character_criticals_4.xml"
-#include "gameplay\character_dialogs.xml"
 	</specific_character>
 
 
@@ -3732,7 +3668,6 @@ ammo_11.43x23_hydro=6 \n
 		</supplies>
 		
 #include "gameplay\character_criticals_4.xml"
-#include "gameplay\character_dialogs.xml"
 	</specific_character>
 
 <specific_character id="bar_arena_stalker_4_2" team_default = "1">
@@ -3758,7 +3693,6 @@ ammo_11.43x23_hydro=6 \n
 		</supplies>
 		
 #include "gameplay\character_criticals_4.xml"
-#include "gameplay\character_dialogs.xml"
 	</specific_character>
 
 <specific_character id="bar_arena_stalker_4_3" team_default = "1">
@@ -3784,7 +3718,6 @@ ammo_11.43x23_hydro=6 \n
 		</supplies>
 		
 #include "gameplay\character_criticals_4.xml"
-#include "gameplay\character_dialogs.xml"
 	</specific_character>
 	
 ;----friends----
@@ -3813,7 +3746,6 @@ ammo_11.43x23_hydro=6 \n
 		</supplies>
 		
 #include "gameplay\character_criticals_3.xml"				
-#include "gameplay\character_dialogs.xml"
 	</specific_character>
 
 	<specific_character id="bar_arena_stalker_4_5" team_default = "1">
@@ -3840,7 +3772,6 @@ ammo_11.43x23_hydro=6 \n
 		</supplies>
 		
 #include "gameplay\character_criticals_3.xml"
-#include "gameplay\character_dialogs.xml"
 	</specific_character>
 
 
@@ -3870,7 +3801,6 @@ ammo_11.43x23_hydro=6 \n
 		</supplies>
 		
 #include "gameplay\character_criticals_6.xml"
-#include "gameplay\character_dialogs.xml"
 	</specific_character>
 
 	<specific_character id="bar_arena_stalker_5_2" team_default = "1">
@@ -3897,7 +3827,6 @@ ammo_11.43x23_hydro=6 \n
 		</supplies>
 		
 #include "gameplay\character_criticals_6.xml"
-#include "gameplay\character_dialogs.xml"
 	</specific_character>
 
 
@@ -3926,7 +3855,6 @@ ammo_11.43x23_hydro=6 \n
 		</supplies>
 		
 #include "gameplay\character_criticals_3.xml"
-#include "gameplay\character_dialogs.xml"
 	</specific_character>
 
 <specific_character id="bar_arena_stalker_6_2" team_default = "1">
@@ -3952,7 +3880,6 @@ ammo_11.43x23_hydro=6 \n
 		</supplies>
 		
 #include "gameplay\character_criticals_3.xml"
-#include "gameplay\character_dialogs.xml"
 	</specific_character>
 
 <specific_character id="bar_arena_stalker_6_3" team_default = "1">
@@ -3978,7 +3905,6 @@ ammo_11.43x23_hydro=6 \n
 		</supplies>
 		
 #include "gameplay\character_criticals_3.xml"
-#include "gameplay\character_dialogs.xml"
 	</specific_character>
 	
 <specific_character id="bar_arena_stalker_6_4" team_default = "1">
@@ -4004,7 +3930,6 @@ ammo_11.43x23_hydro=6 \n
 		</supplies>
 		
 #include "gameplay\character_criticals_3.xml"
-#include "gameplay\character_dialogs.xml"
 	</specific_character>
 	
 <specific_character id="bar_arena_stalker_6_5" team_default = "1">
@@ -4030,7 +3955,6 @@ ammo_11.43x23_hydro=6 \n
 		</supplies>
 		
 #include "gameplay\character_criticals_4.xml"
-#include "gameplay\character_dialogs.xml"
 	</specific_character>
 	
 <specific_character id="bar_arena_stalker_6_6" team_default = "1">
@@ -4056,7 +3980,6 @@ ammo_11.43x23_hydro=6 \n
 		</supplies>
 		
 #include "gameplay\character_criticals_4.xml"
-#include "gameplay\character_dialogs.xml"
 	</specific_character>
 	
 	
@@ -4086,7 +4009,6 @@ ammo_11.43x23_hydro=6 \n
 		</supplies>
 		
 #include "gameplay\character_criticals_2.xml"
-#include "gameplay\character_dialogs.xml"
 	</specific_character>	
 
 
@@ -4117,7 +4039,6 @@ ammo_11.43x23_hydro=6 \n
 		</supplies>
 		
 #include "gameplay\character_criticals_2.xml"
-#include "gameplay\character_dialogs.xml"
 	</specific_character>
 
 <specific_character id="bar_arena_stalker_8_2" team_default = "1">
@@ -4143,7 +4064,6 @@ ammo_11.43x23_hydro=6 \n
 		</supplies>
 		
 #include "gameplay\character_criticals_2.xml"
-#include "gameplay\character_dialogs.xml"
 	</specific_character>
 
 <specific_character id="bar_arena_stalker_8_3" team_default = "1">
@@ -4169,7 +4089,6 @@ ammo_11.43x23_hydro=6 \n
 		</supplies>
 		
 #include "gameplay\character_criticals_2.xml"
-#include "gameplay\character_dialogs.xml"
 	</specific_character>
 	
 <specific_character id="bar_arena_stalker_8_4" team_default = "1">
@@ -4195,9 +4114,7 @@ ammo_11.43x23_hydro=6 \n
 		</supplies>
 		
 #include "gameplay\character_criticals_2.xml"
-#include "gameplay\character_dialogs.xml"
 	</specific_character>
-
 	<!---------------------------Test profiles for level selo_face----------------------->
 
 	<specific_character id="sim_test_000" team_default = "1">

@@ -68,7 +68,7 @@ function CRandomTask:__init()
 
 		self.task_info[tostring(id)]			= {}
 		local curr_task_info					= self.task_info[tostring(id)]
-
+		
 		if not self.task_ini:line_exist(id, "type") then
 			abort("Task manager error: no type in section [%s]", id)
 		end
@@ -203,10 +203,10 @@ end
 function CRandomTask:load(p)
 	printf("^^^ LOAD")
 	--' Считаем количество записей
-
+	
 	local i = p:r_u8()
 	for k = 1,i do
-		local id = p:r_stringZ() 
+		local id = p:r_stringZ()
 		self.task_info[id].enabled = p:r_bool()
 		self.task_info[id].enabled_props = p:r_bool()
 		self.task_info[id].status = p:r_stringZ()
@@ -216,18 +216,15 @@ function CRandomTask:load(p)
 			self.task_info[id].selected_target = selected_target
 		end
 		self.task_info[id].last_task_time = utils.r_CTime(p)
-
-		if self.task_info[id].type == "defend_lager" then
-
-			local defend_object = alife():object(self.task_info[id].selected_target)
-			local sm_ini = defend_object:spawn_ini()
-
+		
+		if self.task_info[id].type == "defend_lager" then                                                           
+			local defend_object = alife():object(self.task_info[id].selected_target)                                  
+			local sm_ini = defend_object:spawn_ini()                                                                  
 			self.task_info[id].defend_target = utils.cfg_get_number(sm_ini, "random_task", "defend_target", nil, true)
-		end
-
+		end                                                                                                         
 
 	end
-
+	
 	
 	
 	
@@ -774,7 +771,7 @@ function CRandomTask:task_reward(npc, actor, p1, p2)
 				end
 
 				if task_desc.reward_reputation ~= nil then
-					db.actor:change_character_reputation(task_desc.reward_reputation)
+					db.actor:change_character_reputation(db.actor:character_reputation() + task_desc.reward_reputation)
 				end
 
 				if task_desc.reward_relation ~= nil then
@@ -799,7 +796,7 @@ function CRandomTask:task_reward_storyline(task)
 	end
 
 	if task_desc.reward_reputation ~= nil then
-		db.actor:change_character_reputation(task_desc.reward_reputation)
+		db.actor:change_character_reputation(db.actor:character_reputation() + task_desc.reward_reputation)
 	end
 
 	if task_desc.reward_relation ~= nil then

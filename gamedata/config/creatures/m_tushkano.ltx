@@ -2,9 +2,9 @@
 ;---------------------------------------------------------------------------------------------------------------------------------------------
 ;	anim			| time[0..1] | hit_power | impulse | impulse_dir (x,y,z)  |	Field of hit_test  (left,right, bottom, top ) |	Test Dist
 ;---------------------------------------------------------------------------------------------------------------------------------------------
-stand_attack_0 =	  	0.25,		0.05,		    20,        0.0, 1.0, 0.0,		 -1.2, 1.2, -1.6, 1.6,							  1.0
-stand_attack_1 =	  	0.25,		0.05,		    30,        0.0, 1.0, 0.0,		 -1.2, 1.2, -1.6, 1.6,							  1.0
-stand_attack_2 =	  	0.25,		0.05,		    35,        0.0, 1.0, 0.0,		 -1.2, 1.2, -1.6, 1.6,							  1.0
+stand_attack_0 =	  	0.25,		0.10,		    20,        0.0, 1.0, 0.0,		 -1.2, 1.2, -1.6, 1.6,							  1.0
+stand_attack_1 =	  	0.25,		0.10,		    30,        0.0, 1.0, 0.0,		 -1.2, 1.2, -1.6, 1.6,							  1.0
+stand_attack_2 =	  	0.25,		0.10,		    35,        0.0, 1.0, 0.0,		 -1.2, 1.2, -1.6, 1.6,							  1.0
 
 [m_tushkano_step_params]
 ;---------------------------------------------------------------------------
@@ -25,7 +25,7 @@ radiation_immunity		= 0.0
 telepatic_immunity		= 1.0
 chemical_burn_immunity	= 1
 explosion_immunity		= 1
-fire_wound_immunity		= 1
+fire_wound_immunity		= 3
 
 
 [m_tushkano_e]:monster_base
@@ -36,16 +36,16 @@ $npc			     = on						; option for Level Editor
 $prefetch 			 = 16
 Scheduled		     = on						; option for ALife Simulator
 Human		     	 = off						; option for ALife Simulator
-Health			     = 20						; option for ALife Simulator
+Health			     = 400						; option for ALife Simulator
 MinSpeed		     = 1.0						; option for ALife Simulator
 MaxSpeed		     = 5.0						; option for ALife Simulator
-going_speed          = 5;4.5                      ; option for ALife Simulator
+going_speed          = 3;4.5                      ; option for ALife Simulator
 current_level_going_speed		= 1;2					; option for ALife Simulator
 search_speed         = 1.5                       ; option for ALife Simulator
 visual				 = monsters\tushkano\tushkano
 corpse_visual		 = monsters\tushkano\tushkano_dead
 icon				 = ui_npc_monster_tushkano
-MaxHealthValue		 = 20			; range [0..200]
+MaxHealthValue		 = 100			; range [0..200]
 DynamicObjectsCount	 = 32
 smart_terrain_choose_interval	= 00:15:00
 
@@ -53,7 +53,7 @@ smart_terrain_choose_interval	= 00:15:00
 ef_creature_type	 = 2							; option for evaluation functions
 ef_weapon_type		 = 2
 ef_detector_type	 = 1
-panic_threshold		= 0.0
+panic_threshold		= 0.1
 
 cform                = skeleton					; collision class
 class                = SM_TUSHK ;AI_TUSH					; AI class
@@ -71,27 +71,29 @@ ph_crash_speed_min			= 10
 ph_crash_speed_max			= 30
 ph_collision_damage_factor	= 0.1
 ph_mass 		     = 20
-actor_restrictor	 = medium_monster ;medium_monster,stalker,none
 
-destroyed_vis_name	 = physics\dead_body\skelet_crash_monster
+destroyed_vis_name	 = physics\Dead_Body\trupik_crash
 
 script_binding  	 = bind_monster.bind
 
 ;---------------------------------------------------------------------
-ph_skeleton_airr_lin_factor   = -0.4
-ph_skeleton_airr_ang_factor   = -0.2
-ph_skeleton_hinger_factor1    = 1.0
-ph_skeleton_ddelay	      = 5.0
-ph_skel_fatal_impulse_factor  = 2.0
+ph_skeleton_airr_lin_factor   = 2.0 ;550.0 (изменно из-за того, что убрано домножение коэффициент 0.002 из кода)
+ph_skeleton_airr_ang_factor   = 0.0 ;0.0 (изменно из-за того, что убрано домножение на коэффициент 0.3 из кода (0.0*0.3=0.0))
+ph_skeleton_hinger_factor1    = 1.0 ;1.0 (изменно из-за того, что убрано домножение на коэффициент 5.0 из кода)
+ph_skeleton_ddelay	     	  = 15.0 ;Время изменения значения трения в суставе с момента создания шелла, сек
+
+ph_skel_fatal_impulse_factor  = 6.0
 ph_after_death_velocity_factor= 0.75
 ph_skel_shot_up_factor        = 0.25
 ;---------------------------------------------------------------------
 
 SoundThreshold		 = 0.06             ; range [0..1]
 
+eye_fov				 = 100;
+eye_range			 = 50	;30
 max_hear_dist		 = 50
 
-hit_power			 = 1;
+hit_power			 = 20.0;
 
 ImpulseMin			 = 20.0
 ImpulseMax			 = 35.0 
@@ -125,19 +127,15 @@ Max_Satiety			= 1.0		; ьръё. эюЁьр ёvЄюёЄш (сюы№°х - юўхэ№ ёvЄvщ)
 distance_to_corpse	= 1.2		; фшёЄ. фю ЄЁєяр, яЁш ъюЄюЁющ юэ яхЁхїюфшЄ т ёюёЄю эшх хфv
 
 
-eye_fov				 = 110	;140
-eye_range			 = 30	;50	;40;
-
-min_view_distance   		= 0.7				; коэффициент, который множится на eye_range, в зависимости от угла
+min_view_distance   		= 0.8				; коэффициент, который множится на eye_range, в зависимости от угла
 max_view_distance	 		= 1.0				; коэффициент, который множится на eye_range, в зависимости от угла
 visibility_threshold	 	= 100.0				; значение, при достижении суммой которого объект считается видимым
-always_visible_distance 	= 0.4
+always_visible_distance 	= 0.3
 time_quant					= 0.001
 decrease_value				= 0.01				; значение, на которое уменьшается вес, если объект попал в фрустум, но отсёкся по каким-то причинам
 velocity_factor		     	= 0.5
 luminocity_factor			= 0.5 				; фактор освещения (только для Актёра)
 transparency_threshold		= 0.25
-
 
 
 terrain				 = tushkan_terrain
@@ -217,6 +215,7 @@ critical_wound_decrease_quant	= 0.
 
 
 material				= creatures\medium
+DynamicObjectsCount		= 32
 
 squad_attack_algorithm	= 1
 attack_effector			= small_monster_attack_effector
@@ -265,94 +264,4 @@ $spawn				= "monsters\tushkanos\tushkano_normal"
 rank = 401
 spec_rank			= normal
 community			= tushkano
-
-[tushkano_weak]:m_tushkano_e
-$spawn				= "monsters\tushkanos\tushkano_normal"
-rank = 101
-spec_rank			= weak
-community			= tushkano
-
-
-[arena_tushkano_1]:m_tushkano_e
-$spawn				= "monsters\tushkanos\tushkano_normal"
-rank = 401
-spec_rank			= normal
-community			= tushkano
-custom_data = scripts\arena_mob_1.ltx
-
-[arena_tushkano_2]:m_tushkano_e
-$spawn				= "monsters\tushkanos\tushkano_normal"
-rank = 401
-spec_rank			= normal
-community			= tushkano
-custom_data = scripts\arena_mob_2.ltx
-
-[arena_tushkano_3]:m_tushkano_e
-$spawn				= "monsters\tushkanos\tushkano_normal"
-rank = 401
-spec_rank			= normal
-community			= tushkano
-custom_data = scripts\arena_mob_3.ltx
-
-[arena_tushkano_4]:m_tushkano_e
-$spawn				= "monsters\tushkanos\tushkano_normal"
-rank = 401
-spec_rank			= normal
-community			= tushkano
-custom_data = scripts\arena_mob_4.ltx
-
-[arena_tushkano_5]:m_tushkano_e
-$spawn				= "monsters\tushkanos\tushkano_normal"
-rank = 401
-spec_rank			= normal
-community			= tushkano
-custom_data = scripts\arena_mob_5.ltx
-
-[arena_tushkano_6]:m_tushkano_e
-$spawn				= "monsters\tushkanos\tushkano_normal"
-rank = 401
-spec_rank			= normal
-community			= tushkano
-custom_data = scripts\arena_mob_6.ltx
-
-[arena_tushkano_7]:m_tushkano_e
-$spawn				= "monsters\tushkanos\tushkano_normal"
-rank = 401
-spec_rank			= normal
-community			= tushkano
-custom_data = scripts\arena_mob_7.ltx
-
-[arena_tushkano_8]:m_tushkano_e
-$spawn				= "monsters\tushkanos\tushkano_normal"
-rank = 401
-spec_rank			= normal
-community			= tushkano
-custom_data = scripts\arena_mob_8.ltx
-
-[arena_tushkano_9]:m_tushkano_e
-$spawn				= "monsters\tushkanos\tushkano_normal"
-rank = 401
-spec_rank			= normal
-community			= tushkano
-custom_data = scripts\arena_mob_9.ltx
-
-[arena_tushkano_10]:m_tushkano_e
-$spawn				= "monsters\tushkanos\tushkano_normal"
-rank = 401
-spec_rank			= normal
-community			= tushkano
-custom_data = scripts\arena_mob_10.ltx
-
-[arena_tushkano_11]:m_tushkano_e
-$spawn				= "monsters\tushkanos\tushkano_normal"
-rank = 401
-spec_rank			= normal
-community			= tushkano
-custom_data = scripts\arena_mob_11.ltx
-
-[arena_tushkano_12]:m_tushkano_e
-$spawn				= "monsters\tushkanos\tushkano_normal"
-rank = 401
-spec_rank			= normal
-community			= tushkano
-custom_data = scripts\arena_mob_12.ltx
+panic_threshold		= 0.05

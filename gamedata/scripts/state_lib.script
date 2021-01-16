@@ -71,13 +71,6 @@ states = {
 				animstate = "stand",
 				animation = nil
 			},			
-	count = {	weapon = "unstrapped",
-				movement = move.walk,
-				mental = anim.danger,
-				bodystate = move.crouch,
-				animstate = "stand",
-				animation = nil
-			},			
 	sneak_run = {	weapon = "unstrapped",
 				movement = move.run,
 				mental = anim.danger,
@@ -604,7 +597,7 @@ states = {
 			},
 
 	-- ѕси раненый
-	psy_pain = {weapon = "strapped",
+	psy_pain = {weapon = "drop",
 				movement = move.stand,
 				mental = anim.free,
 				bodystate = move.standing,

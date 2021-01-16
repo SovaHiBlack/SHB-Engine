@@ -706,10 +706,31 @@ end
 function military_dolg_dead (actor, npc)
     -- если нет актера, то вылетаем с грохотом и треском
     if actor == nil then return end
+    -- если данные не существуют, то создадим
+    local id = actor:id ()
+    if db.storage[id] == nil then
+       db.storage[id] = {}
+    end    
+    
+    if db.storage[id].mil_dolg_killed == nil then
+       db.storage[id].mil_dolg_killed = 0
+       db.storage[id].mil_dolg_killed_by_actor = false
+    end    
     -- проапдейтим количество мертвых долговцев
-    local mil_dolg_killed = xr_logic.pstor_retrieve(actor, "mil_dolg_killed", 0) + 1
-    xr_logic.pstor_store(actor, "mil_dolg_killed", mil_dolg_killed)
-    if mil_dolg_killed == 8 then
+    db.storage[id].mil_dolg_killed = db.storage[id].mil_dolg_killed + 1
+
+    --printf ("!!! DOLG STALKER IS DEAD, KILLED %d STALKERS !!!", db.storage[db.actor:id ()].mil_dolg["killed"])
+
+    -- взведем флажок, что мужика замочили мы (нужно для Свободы) 
+    local st = db.storage[npc:id ()]
+    if st.death.killer == -1 then return end
+    if id == st.death.killer then 
+       db.storage[id].mil_dolg_killed_by_actor = true
+    end
+    
+    -- если все умерли и была задача мочить снайпера, но сообщать не кому, то
+    -- ставим задачу, как не выполненую
+    if db.storage[id].mil_dolg_killed == 8 then
        actor:give_info_portion ("mil_dolg_dead")
     end   
     
@@ -869,8 +890,8 @@ function bar_territory_logic(actor, npc)
 				xr_gulag.setGulagEnemy("bar_dolg_general", db.actor)
 				xr_gulag.setGulagEnemy("bar_dolg_veterans", db.actor)
 				xr_gulag.setGulagEnemy("bar_dolg_bunker", db.actor)
-				xr_gulag.setGulagEnemy("bar_zastava", db.actor)
-				xr_gulag.setGulagEnemy("bar_zastava_2", db.actor)
+				xr_gulag.setGulagEnemy("bar_dolg_zastava", db.actor)
+				xr_gulag.setGulagEnemy("bar_dolg_zastava_2", db.actor)
 				xr_gulag.setGulagEnemy("bar_visitors", db.actor)
 				return
 			end
@@ -879,8 +900,8 @@ function bar_territory_logic(actor, npc)
 				xr_gulag.setGulagEnemy("bar_dolg_general", db.actor)
 				xr_gulag.setGulagEnemy("bar_dolg_veterans", db.actor)
 				xr_gulag.setGulagEnemy("bar_dolg_bunker", db.actor)
-				xr_gulag.setGulagEnemy("bar_zastava", db.actor)
-				xr_gulag.setGulagEnemy("bar_zastava_2", db.actor)
+				xr_gulag.setGulagEnemy("bar_dolg_zastava", db.actor)
+				xr_gulag.setGulagEnemy("bar_dolg_zastava_2", db.actor)
 				return
 			end
 			if has_alife_info("bar_dolg_territory_2_hit") then
@@ -898,8 +919,8 @@ function bar_territory_logic(actor, npc)
 				xr_gulag.setGulagEnemy("bar_dolg_general", db.actor)
 				xr_gulag.setGulagEnemy("bar_dolg_veterans", db.actor)
 				xr_gulag.setGulagEnemy("bar_dolg_bunker", db.actor)
-				xr_gulag.setGulagEnemy("bar_zastava", db.actor)
-				xr_gulag.setGulagEnemy("bar_zastava_2", db.actor)
+				xr_gulag.setGulagEnemy("bar_dolg_zastava", db.actor)
+				xr_gulag.setGulagEnemy("bar_dolg_zastava_2", db.actor)
 				xr_gulag.setGulagEnemy("bar_visitors", db.actor)
 				return
 			end
@@ -909,8 +930,8 @@ function bar_territory_logic(actor, npc)
 				xr_gulag.setGulagEnemy("bar_dolg_general", db.actor)
 				xr_gulag.setGulagEnemy("bar_dolg_veterans", db.actor)
 				xr_gulag.setGulagEnemy("bar_dolg_bunker", db.actor)
-				xr_gulag.setGulagEnemy("bar_zastava", db.actor)
-				xr_gulag.setGulagEnemy("bar_zastava_2", db.actor)
+				xr_gulag.setGulagEnemy("bar_dolg_zastava", db.actor)
+				xr_gulag.setGulagEnemy("bar_dolg_zastava_2", db.actor)
 				xr_gulag.setGulagEnemy("bar_visitors", db.actor)
 				return
 			end
@@ -1691,7 +1712,7 @@ function set_sidorovich_animation (npc)
     end
     --sidor:clear_animations ()
     sidor:play_cycle ("wonder", true)
-    --sidor:add_animation ("idle_looped")
+    --sidor:add_animation ("idle_looped", true, false)
 end
 
 function aes_zombie_hit1 (npc)
@@ -1807,11 +1828,10 @@ end
 
 -- постпроцесс и влияние удара в морду
 function aes_earthshake (npc)
-if not has_alife_info("freeplay") then
 	local snd_obj = xr_sound.get_safe_sound_object([[ambient\earthquake]])
 	snd_obj:play_no_feedback(db.actor, sound_object.s2d, 0, vector(), 1.0)
 	level.add_cam_effector("camera_effects\\earthquake.anm", 1974, false, "")
-end
+    --set_postprocess ("scripts\\earthshake.ltx")
 end
 
 function vovan_camera_test (npc)
@@ -1926,7 +1946,6 @@ function end_x18_dream(actor, npc)
 end
 
 function aes_final_movie(actor, npc)
-	db.actor:give_info_portion("game_end")
 	game.start_tutorial("mov_refuse_osoznanie")
 end
 ------------------------------------------------------------------------------------
@@ -1980,7 +1999,7 @@ function sar_monolith_miracle(actor, npc)
 	end
 
 	--' Много денег
-	if db.actor:money() >= 100000 then
+	if db.actor:money() >= 50000 then
 		game.start_tutorial("mov_desire_2")	
 		return
 	end
@@ -2087,40 +2106,3 @@ function on_tutor_gameover_stop()
 	printf("main_menu on console command is executed")
 	c:execute("main_menu on")
 end
-
-function actor_stop_sleeping()
-	sleep_manager.stopper()
-end
-
-
-------------------------------------------------------- ARENA_EXTENSION_MOD--------------------------------------------------------
-
-function aem_draw()
-	db.actor:set_character_community("trader",0,0)
-	aem_lights.draw()
-end
-
-function aem_win()
-	aem_lights.win()
-end
-
-function aem_foul()
-	aem_lights.foul()
-end
-
-function aem_death(actor, npc, p)
-	aem_manager.get_aem():on_death(npc, p[1])
-end
-
-function aem_finish()
-	aem_manager.get_aem():finish()
-end
-
-function switch(actor, npc)
-	if db.actor:has_info("aem_go_bar") then
-		npc:add_restrictions("bar_restrictor", "")
-	else
-		npc:remove_all_restrictions()
-	end
-end
-------------------------------------------------------- ARENA_EXTENSION_MOD--------------------------------------------------------

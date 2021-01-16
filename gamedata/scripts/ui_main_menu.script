@@ -32,10 +32,8 @@ function main_menu:InitControls()
 	self:Register(self.message_box, "msg_box")	
 	
 	local _ver = xml:InitStatic		("static_version",self)
-	local ogsm_ver = xml:InitStatic		("ogsm_version",self)
 	local mm						= _G.main_menu.get_main_menu()
-	_ver:SetText					("S.T.A.L.K.E.R. v" .. mm:GetGSVer())
-	ogsm_ver:SetText					("Old Good Stalker Mod v2.3.1 Ultimate")
+	_ver:SetText					("ver. " .. mm:GetGSVer())
 	
 end
 
@@ -273,55 +271,8 @@ function main_menu:OnKeyboard(dik, keyboard_action)  --virtual function
 		if dik == DIK_keys.DIK_Q then
 			self:OnMessageQuitWin()
 		end
-
-		if level.present() and (db.actor ~= nil) and db.actor:alive() then
-			if dik == DIK_keys.DIK_NUMPAD3 then
-				--acc_time()
-			end
-		end
-		
-		if level.present() and (db.actor ~= nil) and db.actor:alive() then
-			if dik == DIK_keys.DIK_NUMPAD2 then
-				--ret_time()
-			end
-		end
-		
-		if level.present() and (db.actor ~= nil) and db.actor:alive() then
-			if dik == DIK_keys.DIK_NUMPAD1 then
-				--dec_time()
-			end
-		end
 	
 	end
    
 	return true
-end
-
-
-k = 1000
-
-function acc_time()
-	t = xr_logic.pstor_retrieve(db.actor, "t", 0)
-	t = t + k
-	level.set_time_factor(t)
-	xr_logic.pstor_store(db.actor, "t", t)
-	news_manager.send_tip(db.actor, "%c[25,240,25,25]Таймфактор увеличен до "..t.."", nil, nil, 20000)
-end
-
-function ret_time()
-	level.set_time_factor(10)
-	xr_logic.pstor_store(db.actor, "t", 0)
-	news_manager.send_tip(db.actor, "%c[0,0,255,25]Таймфактор стандартный", nil, nil, 20000)
-end
-
-function dec_time()
-	t = xr_logic.pstor_retrieve(db.actor, "t", 0)
-	t = t - k
-	if t <= 0 then
-		ret_time()
-	else
-		level.set_time_factor (t)
-		xr_logic.pstor_store(db.actor, "t", t)
-		news_manager.send_tip(db.actor, "%c[255,240,155,25]Таймфактор уменьшен до "..t.."", nil, nil, 20000)
-	end	
 end

@@ -219,33 +219,6 @@ function move_mgr:reset(path_walk, path_walk_info, path_look, path_look_info, te
 	self:setup_movement_by_patrol_path()
 end
 
--- Red75 --
-local safe_pp=
-{
-  l01_escape="esc_specnaz_way3",
-  l02_garbage="gar_psevdowounded_gar_way_spy"
-}
-
--- Проверяем доступность хоть одной точки на пути. Иначе возвращаем другой путь
-function validate_accessibility(npc,ppname)
-  local pp=patrol(ppname)
-  local valid=false
-  if pp then
-    for i=0,pp:count()-1 do
-      if npc:accessible(pp:level_vertex_id(i)) then
-        valid=true
-        break
-      end
-    end
-  end
-  if valid then
-    return true,ppname
-  else
-    return false,safe_pp[level.name()] or "none"
-  end
-end
--- Red75 --
-
 --' продолжить движение со следующей точки, а не с ближайшей.
 --' состояние move manager-a не сбрасывается.
 function move_mgr:continue()
@@ -254,30 +227,15 @@ function move_mgr:continue()
 end
 
 function move_mgr:setup_movement_by_patrol_path()
--- Red75 --
-  local valid=validate_accessibility(self.object,self.path_walk)
-  if valid then
-    self.object:set_path_type(game_object.patrol_path)
-  else
-    self.object:set_path_type(game_object.level_path)
-  end
+	self.object:set_path_type(game_object.patrol_path)
 	self.object:set_detail_path_type(move.line)
 
-  if valid then
-  	if self.current_point_index then
-  		self.object:set_start_point(self.current_point_index)
-  		self.object:set_patrol_path(self.path_walk, patrol.next,    patrol.continue, true)
-  	else
-  		self.object:set_patrol_path(self.path_walk, patrol.nearest, patrol.continue, true)
-  	end
-  else
-    -- путь недоступен. отправляем в ближайшую доступную точку
-    pp=patrol(self.path_walk)
-    if pp and pp:count()>0 then
-      utils.send_to_nearest_accessible_vertex(self.object,pp:level_vertex_id(0))
-    end
-  end
--- Red75 --
+	if self.current_point_index then
+		self.object:set_start_point(self.current_point_index)
+		self.object:set_patrol_path(self.path_walk, patrol.next,    patrol.continue, true)
+	else
+		self.object:set_patrol_path(self.path_walk, patrol.nearest, patrol.continue, true)
+	end
 
 	self.state = state_moving
 

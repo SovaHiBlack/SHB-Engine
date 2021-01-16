@@ -1,33 +1,11 @@
 [sect_stancia]
-01:00:00		=	stancia_01
-02:00:00		=	stancia_02
-03:00:00		=	stancia_03
-04:00:00		=	stancia_04
-05:00:00		=	stancia_05
-06:00:00		=	stancia_06
-07:00:00		=	stancia_07
-08:00:00		=	stancia_08
-09:00:00		=	stancia_09
-10:00:00		=	stancia_10
-11:00:00		=	stancia_11
-12:00:00		=	stancia_12
-13:00:00		=	stancia_13
-14:00:00		=	stancia_14
-15:00:00		=	stancia_15
-16:00:00		=	stancia_16
-17:00:00		=	stancia_17
-18:00:00		=	stancia_18
-19:00:00		=	stancia_19
-20:00:00		=	stancia_20
-21:00:00		=	stancia_21
-22:00:00		=	stancia_22
-23:00:00		=	stancia_23
-00:00:00		=	stancia_00
+00:00:00		=	stancia_01
+12:00:00		=	stancia_02
 
-[stancia_base]
-flares			= 	
+[stancia_01]
+flares			= 	flares_gradient1
 sky_texture		=	sky\sky_9_cube
-sky_rotation	=	90
+sky_rotation	=	0
 sky_color		=	1.0,    1.0,  	1.0
 clouds_texture	=	sky\sky_oblaka
 clouds_color	=	0.333, 0.341, 0.431, 1.0, 1.7
@@ -46,105 +24,34 @@ ambient			=	0.06, 0.065, 0.07
 lmap_color		=	1.0,	1.0,	1.0
 hemi_color		=	0.7,   0.725,  	0.75,	1.0
 sun_color		=	0.0,    0.0,  	0.0
-sun_dir			=	-120.0, 251
+sun_dir			=	-25.0, 291
 env_ambient		=	ambient_env_stancia1
 
-[stancia_01]:stancia_base
-sky_rotation	=	90
-sun_dir			=	-120.0, 251
 
-[stancia_02]:stancia_base
-sky_rotation	=	110
-sun_dir			=	-120.0, 231
-
-[stancia_03]:stancia_base
-sky_rotation	=	130
-sun_dir			=	-140.0, 201
-
-[stancia_04]:stancia_base
-sky_rotation	=	150
-sun_dir			=	-185.0, 171
-
-[stancia_05]:stancia_base
-sky_rotation	=	210
-sun_dir			=	-180.0, 271
-
-[stancia_06]:stancia_base
-sky_rotation	=	210
-sun_dir			=	-170.0, 271
-
-[stancia_07]:stancia_base
-sky_rotation	=	200
-sun_dir			=	-160.0, 271
-
-[stancia_08]:stancia_base
-sky_rotation	=	200
-sun_dir			=	-150.0, 271
-
-[stancia_09]:stancia_base
-sky_rotation	=	200
-sun_dir			=	-140.0, 271
-
-[stancia_10]:stancia_base
-sky_rotation	=	190
-sun_dir			=	-130.0, 271
-
-[stancia_11]:stancia_base
-sky_rotation	=	155
-sun_dir			=	-120.0, 271
-
-[stancia_12]:stancia_base
-sky_rotation	=	135
-sun_dir			=	-110.0, 271
-
-[stancia_13]:stancia_base
-sky_rotation	=	115
-sun_dir			=	-80.0, 271
-
-[stancia_14]:stancia_base
-sky_rotation	=	100
-sun_dir			=	-70.0, 271
-
-[stancia_15]:stancia_base
-sky_rotation	=	90
-sun_dir			=	-60.0, 271
-
-[stancia_16]:stancia_base
-sky_rotation	=	60
-sun_dir			=	-50.0, 271
-
-[stancia_17]:stancia_base
-sky_rotation	=	40
-sun_dir			=	-50.0, 271
-
-[stancia_18]:stancia_base
-sky_rotation	=	15
-sun_dir			=	-40.0, 271
-
-[stancia_19]:stancia_base
-sky_rotation	=	10
-sun_dir			=	-30.0, 271
-
-[stancia_20]:stancia_base
-sky_rotation	=	20
-sun_dir			=	-20.0, 271
-
-[stancia_21]:stancia_base
-sky_rotation	=	15
-sun_dir			=	-10.0, 271
-
-[stancia_22]:stancia_base
-sky_rotation	=	20
-sun_dir			=	-6.0, 271
-
-[stancia_23]:stancia_base
-sky_rotation	=	40
-sun_dir			=	-185.0, 271
-
-[stancia_00]:stancia_base
-sky_rotation	=	60
-sun_dir			=	-140.0, 271
-
+[stancia_02]
+flares			= 	flares_gradient1
+sky_texture		=	sky\sky_9_cube
+sky_rotation	=	0
+sky_color		=	1.0,    1.0,  	1.0
+clouds_texture	=	sky\sky_oblaka
+clouds_color	=	0.333, 0.341, 0.431, 1.0, 1.7
+far_plane		=	250
+fog_distance	=	230
+fog_color		=	0.172, 0.176, 0.196
+fog_density		=	0.9
+rain_density	=	0.0
+rain_color		=	0.62, 0.66, 0.76
+thunderbolt		=	thunderbolt_collection_stancia
+bolt_period		=	5.f
+bolt_duration	=	0.25f
+wind_velocity	=	20.0
+wind_direction	=	0.0
+ambient			=	0.06, 0.065, 0.07
+lmap_color		=	1.0,	1.0,	1.0
+hemi_color		=	0.7,   0.725,  	0.75,	1.0
+sun_color		=	0.0,    0.0,  	0.0
+sun_dir			=	-25.0, 291
+env_ambient		=	ambient_env_stancia1
 
 [sect_stancia2]
 00:00:00		=	stancia2_01

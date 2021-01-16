@@ -235,26 +235,10 @@ function send_treasure(name)
 	pda_news:play(db.actor, 0, sound_object.s2d)
 	
 	local task_texture, task_rect = get_texture_info("ui_iconsTotal_found_thing")
-
-	local location
-	if string.find(name,"esc_") then location = " на Кордоне"
-	elseif string.find(name,"gar_") then location = " на Свалке"
-	elseif string.find(name,"agr_u_") then location = " в подземелье Агропрома"
-	elseif string.find(name,"agr_") then location = " на Агропроме"
-	elseif string.find(name,"val_") then location = " в Тёмной долине"
-	elseif string.find(name,"mil_") then location = " на Армейских складах"
-	elseif string.find(name,"yan_") then location = " на Янтаре"
-	elseif string.find(name,"x16_") then location = " в Х-16"
-	elseif string.find(name,"rad_") then location = " на Радаре"
-	elseif string.find(name,"pri_") then location = " в Припяти"
-	elseif string.find(name,"x18_") then location = " в Х-18"
-	elseif string.find(name,"bar_") then location = " в Баре"
-	elseif string.find(name,"ros_") then location = " на Дикой территории"
-	else location = "" end
 	
-	local news_text = "%c[255,160,160,160]"..game.translate_string("st_found_new_treasure")..location..":\\n".."%c[default]"..game.translate_string(name)
+	local news_text = "%c[255,160,160,160]"..game.translate_string("st_found_new_treasure").."\\n".."%c[default]"..game.translate_string(name)
 	
-	db.actor:give_game_news(news_text, task_texture, task_rect, 0, 7000)
+	db.actor:give_game_news(news_text, task_texture, task_rect, 0, 3000)
 end
 
 function get_inv_name(section)

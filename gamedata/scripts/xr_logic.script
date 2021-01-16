@@ -213,15 +213,6 @@ end
 ------------------------------------------------------------------------------------------------------------
 function disable_generic_schemes(npc, stype)
 	if stype == modules.stype_stalker then
-
-		if ogsm_hideout then
-			ogsm_hideout.disable_scheme(npc, "ogsm_hideout")
-		end
-
-		if xrs_ai then 
-			xrs_ai.disable_schemes(npc, stype) 
-		end
-
 		xr_combat.disable_scheme(npc, "combat")
 		xr_use.disable_scheme(npc, "use")
 		xr_hit.disable_scheme(npc, "hit")
@@ -243,15 +234,6 @@ end
 ------------------------------------------------------------------------------------------------------------
 function enable_generic_schemes(ini, npc, stype, section)
 	if stype == modules.stype_stalker then
-
-		if ogsm_hideout then
-			ogsm_hideout.enable_scheme(npc, ini, "ogsm_hideout", section)
-		end
-
-		if xrs_ai then 
-			xrs_ai.enable_schemes(ini, npc, stype, section) 
-		end
-
 		--xr_reactions.set_reactions(npc, ini, "reactions", section)
 		xr_danger.set_danger(npc, ini, "danger", "danger")
 
@@ -282,10 +264,6 @@ function enable_generic_schemes(ini, npc, stype, section)
 
 		xr_abuse.set_abuse(npc, ini, "abuse", section)
 
-		if anomaly_evader then
-			anomaly_evader.set_evade(npc,ini,"evader",section)
-		end
-
 		local meet_section = utils.cfg_get_string (ini, section, "meet", npc, false, "")
 		xr_meet.set_meet (npc, ini, "meet", meet_section)
 
@@ -300,6 +278,7 @@ function enable_generic_schemes(ini, npc, stype, section)
 			printf("combat_ignore_section= '%s'", combat_ignore_section )
 			xr_combat_ignore.set_combat_ignore_checker(npc, ini, "combat_ignore", combat_ignore_section)
 		end
+
 
 	elseif stype == modules.stype_mobile then
 		local combat_section = utils.cfg_get_string(ini, section, "on_combat", npc, false, "")
@@ -1229,7 +1208,7 @@ function pstor_save_all(obj, packet)
 	packet:w_u32(ctr)
 
 	for k, v in pairs(pstor) do
---		printf("_bp: pstor_save_all: saving [%s]='%s'", utils.to_str(k), utils.to_str(v))
+		printf("_bp: pstor_save_all: saving [%s]='%s'", utils.to_str(k), utils.to_str(v))
  		packet:w_stringZ(k)
 		local tv = type(v)
 		if tv == "number" then
@@ -1268,7 +1247,7 @@ function pstor_load_all(obj, reader)
 		else
 			abort("xr_logic: pstor_load_all: not registered type N %d encountered", tn)
 		end
---		printf("_bp: pstor_load_all: loaded [%s]='%s'", varname, utils.to_str(pstor[varname]))
+		printf("_bp: pstor_load_all: loaded [%s]='%s'", varname, utils.to_str(pstor[varname]))
 	end
 end
 

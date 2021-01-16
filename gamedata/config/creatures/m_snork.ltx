@@ -10,7 +10,7 @@ icon					= ui_npc_monster_snork
 DynamicObjectsCount		= 32
 
 Spawn_Inventory_Item_Section = mutant_snork_leg
-Spawn_Inventory_Item_Probability = 0.3
+Spawn_Inventory_Item_Probability = 0.2
 
 ;---OFFLINE ALIFE------------------------------------------------------------------
 Scheduled						= on			; option for ALife Simulator
@@ -50,16 +50,17 @@ ph_box1_size 			= 0.40, 0.6,  0.40
 ph_crash_speed_min			= 100
 ph_crash_speed_max			= 300
 ph_collision_damage_factor	= 0.1
-ph_mass 				= 70
+ph_mass 				= 90
 
 destroyed_vis_name	 = physics\Dead_Body\trupik_crash
 
 ;---------------------------------------------------------------------
-ph_skeleton_airr_lin_factor   = -0.4
-ph_skeleton_airr_ang_factor   = -0.2
-ph_skeleton_hinger_factor1    = 1.0
-ph_skeleton_ddelay	      = 5.0
-ph_skel_fatal_impulse_factor  = 2.0
+ph_skeleton_airr_lin_factor   = 2.0 ;550.0 (изменно из-за того, что убрано домножение коэффициент 0.002 из кода)
+ph_skeleton_airr_ang_factor   = 0.0 ;0.0 (изменно из-за того, что убрано домножение на коэффициент 0.3 из кода (0.0*0.3=0.0))
+ph_skeleton_hinger_factor1    = 1.0 ;1.0 (изменно из-за того, что убрано домножение на коэффициент 5.0 из кода)
+ph_skeleton_ddelay	     	  = 15.0 ;Время изменения значения трения в суставе с момента создания шелла, сек
+
+ph_skel_fatal_impulse_factor  = 6.0
 ph_after_death_velocity_factor= 0.75
 ph_skel_shot_up_factor        = 0.25
 ;---------------------------------------------------------------------
@@ -196,6 +197,7 @@ transparency_threshold		= 0.25
 ; Other Stuff (refactoring needed)
 ;-------------------------------------------------------------------------
 material				= creatures\medium
+DynamicObjectsCount		= 32
 
 attack_effector			= m_snork_attack_effector
 
@@ -467,29 +469,3 @@ jump_factor					= 1.2
 jump_min_distance			= 3
 jump_max_distance			= 30
 jump_max_angle				= 0.8
-
-
-
-[arena_snork_1]:snork_strong
-$spawn				= "monsters\arena\snork_arena"
-visual				= monsters\snork\snork
-icon				= ui_npc_monster_snork
-panic_threshold		= 0.05
-species				= arena_monstr
-custom_data = scripts\arena_mob_1.ltx
-
-[arena_snork_2]:snork_strong
-$spawn				= "monsters\arena\snork_arena"
-visual				= monsters\snork\snork
-icon				= ui_npc_monster_snork
-panic_threshold		= 0.05
-species				= arena_monstr
-custom_data = scripts\arena_mob_2.ltx
-
-[arena_snork_3]:snork_strong
-$spawn				= "monsters\arena\snork_arena"
-visual				= monsters\snork\snork
-icon				= ui_npc_monster_snork
-panic_threshold		= 0.05
-species				= arena_monstr
-custom_data = scripts\arena_mob_3.ltx

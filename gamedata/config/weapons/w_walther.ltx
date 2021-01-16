@@ -61,10 +61,10 @@ cam_max_angle			= 20.0	;максимальный угол отдачи
 cam_max_angle_horz		= 10.0	;(degree) maximum shot horizontal degree 
 cam_step_angle_horz		= 0.7	;(degree) size of step camera moved in horizontal position while shooting
 
-fire_dispersion_condition_factor = 3	;увеличение дисперсии в процентах при максимальном износе 
-misfire_probability 	= 0.001	;вероятность осечки при максимальном износе 
+fire_dispersion_condition_factor = 5	;увеличение дисперсии в процентах при максимальном износе 
+misfire_probability 	= 0.005	;вероятность осечки при максимальном износе 
 misfire_condition_k		= 0.05
-condition_shot_dec 		= 0.0009 ;увеличение износа при каждом выстреле
+condition_shot_dec 		= 0.0003 ;увеличение износа при каждом выстреле
 ;-----------------------------------------------------------------------------------
 
 direction           	    = 0, 0, 1
@@ -127,7 +127,7 @@ ph_mass			 			= 1
 
 ;addons
 scope_status				= 0							; 0 - no addon
-silencer_status				= 2							; 1 - permanent
+silencer_status				= 0;2							; 1 - permanent
 grenade_launcher_status		= 0							; 2 - attachable
 
 zoom_enabled				= true
@@ -154,7 +154,7 @@ silencer_y 					= -16
 
 ;silencer_flame_particles 	= weapons\generic_weapon01
 silencer_smoke_particles 	= weapons\generic_shoot_00
-snd_silncer_shot			= weapons\pb_shoot, 0.6
+snd_silncer_shot			= weapons\pb_shoot
 silencer_light_color		= 0.6,0.5,0.3
 silencer_light_range		= 0.01
 silencer_light_var_color	= 0.05

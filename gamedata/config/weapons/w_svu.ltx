@@ -27,7 +27,7 @@ ammo_current			= 10
 ammo_elapsed		 	= 0
 
 ammo_mag_size		 	= 10
-ammo_class		 		= ammo_7.62x54_7h1, ammo_7.62x54_ap 
+ammo_class		 		= ammo_7.62x54_7h1, ammo_7.62x54_7h14, ammo_7.62x54_ap 
 
 sprint_allowed			= false
 ;-----------------------------------------------------------------------------------
@@ -45,10 +45,10 @@ cam_max_angle			= 12.0	;максимальный угол отдачи
 cam_max_angle_horz		= 3.0	;(degree) maximum shot horizontal degree 
 cam_step_angle_horz		= 0.6	;(degree) size of step camera moved in horizontal position while shooting
 
-fire_dispersion_condition_factor = 3	;увеличение дисперсии в процентах при максимальном износе 
-misfire_probability 	= 0.001	;вероятность осечки при максимальном износе 
+fire_dispersion_condition_factor = 5	;увеличение дисперсии в процентах при максимальном износе 
+misfire_probability 	= 0.005	;вероятность осечки при максимальном износе 
 misfire_condition_k		= 0.05
-condition_shot_dec 		= 0.0007 ;увеличение износа при каждом выстреле
+condition_shot_dec 		= 0.0002 ;увеличение износа при каждом выстреле
 ;-----------------------------------------------------------------------------------
 
 hand_dependence 		= 1
@@ -126,6 +126,7 @@ ph_mass			 		= 3
 scope_status			= 1
 silencer_status			= 0
 grenade_launcher_status	= 0
+zoom_enabled			= true
 
 scope_texture			= wpn\wpn_crosshair
 zoom_enabled			= true
@@ -152,6 +153,7 @@ orientation             = 0, 0, 0
 position                = 0, 0, 0
 visual                  = weapons\svu\wpn_svu_hud.ogf
 
+anim_holster			= holster
 anim_idle				= idle
 anim_idle_aim			= idle
 anim_reload				= reload

@@ -26,7 +26,6 @@
 		<start_dialog>hello_dialog</start_dialog>
 		<actor_dialog>general_pda_talk</actor_dialog>
 		<actor_dialog>esc_stalker_talk_level</actor_dialog>
-#include "gameplay\character_dialogs.xml"
 	</specific_character>
 	
 <!---------------------------KILLER REGULAR----------------------->
@@ -57,7 +56,6 @@
 		<start_dialog>hello_dialog</start_dialog>
 		<actor_dialog>general_pda_talk</actor_dialog>
 		<actor_dialog>esc_stalker_talk_level</actor_dialog>
-#include "gameplay\character_dialogs.xml"
 	</specific_character>
 
 	<specific_character id="killer_regular_default2" team_default = "1">
@@ -87,7 +85,6 @@
 		<start_dialog>hello_dialog</start_dialog>
 		<actor_dialog>general_pda_talk</actor_dialog>
 		<actor_dialog>esc_stalker_talk_level</actor_dialog>
-#include "gameplay\character_dialogs.xml"
 	</specific_character>
 
 	<specific_character id="killer_regular_default3" team_default = "1">
@@ -117,7 +114,6 @@
 		<start_dialog>hello_dialog</start_dialog>
 		<actor_dialog>general_pda_talk</actor_dialog>
 		<actor_dialog>esc_stalker_talk_level</actor_dialog>
-#include "gameplay\character_dialogs.xml"
 	</specific_character>
 		
 <!---------------------------KILLER SNIPER---------------------->
@@ -147,7 +143,6 @@
 		<start_dialog>hello_dialog</start_dialog>
 		<actor_dialog>general_pda_talk</actor_dialog>
 		<actor_dialog>esc_stalker_talk_level</actor_dialog>
-#include "gameplay\character_dialogs.xml"
 	</specific_character>
 
 	
@@ -178,7 +173,6 @@
 		<start_dialog>hello_dialog</start_dialog>
 		<actor_dialog>general_pda_talk</actor_dialog>
 		<actor_dialog>esc_stalker_talk_level</actor_dialog>
-#include "gameplay\character_dialogs.xml"
 	</specific_character>
 
 	<specific_character id="killer_specnaz_default2" team_default = "1">
@@ -207,7 +201,6 @@
 		<start_dialog>hello_dialog</start_dialog>
 		<actor_dialog>general_pda_talk</actor_dialog>
 		<actor_dialog>esc_stalker_talk_level</actor_dialog>
-#include "gameplay\character_dialogs.xml"
 	</specific_character>
 
 	<specific_character id="killer_specnaz_default3" team_default = "1">
@@ -237,7 +230,6 @@
 		<start_dialog>hello_dialog</start_dialog>
 		<actor_dialog>general_pda_talk</actor_dialog>
 		<actor_dialog>esc_stalker_talk_level</actor_dialog>
-#include "gameplay\character_dialogs.xml"
 	</specific_character>
 
 	<specific_character id="killer_specnaz_default4" team_default = "1">
@@ -267,7 +259,6 @@
 		<start_dialog>hello_dialog</start_dialog>
 		<actor_dialog>general_pda_talk</actor_dialog>
 		<actor_dialog>esc_stalker_talk_level</actor_dialog>
-#include "gameplay\character_dialogs.xml"
 	</specific_character>
 			
 <!---------------------------KILLER MASTER----------------------->
@@ -300,7 +291,6 @@
 		<start_dialog>hello_dialog</start_dialog>
 		<actor_dialog>general_pda_talk</actor_dialog>
 		<actor_dialog>esc_stalker_talk_level</actor_dialog>
-#include "gameplay\character_dialogs.xml"
 	</specific_character>
 
 	<specific_character id="killer_master_default2" team_default = "1">
@@ -332,7 +322,6 @@
 		<start_dialog>hello_dialog</start_dialog>
 		<actor_dialog>general_pda_talk</actor_dialog>
 		<actor_dialog>esc_stalker_talk_level</actor_dialog>
-#include "gameplay\character_dialogs.xml"
 	</specific_character>
 
 <!---------------------------KILLER SPECNAZ STUKACH---------------------->
@@ -362,7 +351,6 @@
 		<start_dialog>hello_dialog</start_dialog>
 		<actor_dialog>general_pda_talk</actor_dialog>
 		<actor_dialog>esc_stalker_talk_level</actor_dialog>
-#include "gameplay\character_dialogs.xml"
 	</specific_character>
 		
 <!---------------------------KILLER IHFORMATOR---------------------->
@@ -393,7 +381,6 @@
 		<start_dialog>hello_dialog</start_dialog>
 		<actor_dialog>general_pda_talk</actor_dialog>
 		<actor_dialog>esc_stalker_talk_level</actor_dialog>
-#include "gameplay\character_dialogs.xml"
 	</specific_character>
 
 </xml>

@@ -1,85 +1,5 @@
 <?xml version="1.0" encoding="windows-1251" ?>
 <game_dialogs>
-
-    <dialog id="povar_svu_dialog_1">
-      <has_info>zombie_hand_research</has_info>
-      <dont_has_info>povar_vodka_asked</dont_has_info>
-        <phrase_list>
-            <phrase id="0">
-                <text>kakie_dela_s_ecologami</text>
-                <next>1</next>
-            </phrase>
-            <phrase id="1">
-                <text>ty_o_chem</text>
-                <next>2</next>
-            </phrase>
-            <phrase id="2">
-                <text>sahar_rasskazal</text>
-                <next>3</next>
-            </phrase>
-            <phrase id="3">
-                <text>moi_gromoboi</text>
-                <next>4</next>
-            </phrase>
-            <phrase id="4">
-                <text>takoi_zaebatelskiy</text>
-                <next>5</next>
-            </phrase>
-            <phrase id="5">
-                <text>da_takoi</text>
-                <next>6</next>
-            </phrase>
-            <phrase id="6">
-                <text>nea_ne_videl</text>
-                <next>7</next>
-            </phrase>
-            <phrase id="7">
-                <text>fuck</text>
-                <next>8</next>
-            </phrase>
-            <phrase id="8">
-                <text>chto_dash</text>
-                <next>9</next>
-            </phrase>
-            <phrase id="9">
-                <text>patronov_dam</text>
-                <next>10</next>
-                <next>11</next>
-            </phrase>
-            <phrase id="10">
-                <text>horosho_prinesu</text>
-		    <give_info>povar_vodka_asked</give_info>
-                <action>dialogs.break_dialog</action>
-            </phrase>
-            <phrase id="11">
-                <text>idi_nafig</text>
-                <action>dialogs.break_dialog</action>
-            </phrase>
-        </phrase_list>
-    </dialog>
-
-    <dialog id="povar_svu_dialog_2">
-	<precondition>ogsm_quests.has_ten_vodkas</precondition>
-      <dont_has_info>povar_vodka_done</dont_has_info>
-        <phrase_list>
-            <phrase id="0">
-                <text>poluchi_vodku</text>
-                <next>1</next>
-            </phrase>
-            <phrase id="1">
-                <text>oi_spasibo</text>
-                <action>ogsm_quests.transfer_povar_items</action>
-		    <give_info>povar_vodka_done</give_info>
-                <next>2</next>
-            </phrase>
-            <phrase id="2">
-                <text>ne_peite_bolshe</text>
-                <action>dialogs.break_dialog</action>
-            </phrase>
-        </phrase_list>
-    </dialog>
-
-
     <dialog id="mil_screw_dialog">
         <phrase_list>
             <phrase id="0">
@@ -1780,7 +1700,6 @@
             </phrase>
             <phrase id="2003">
                 <text>mil_guard_arsenal_dialog_2003</text>
-                <action>ogsm_quests.allow_arsenal</action>
                 <action>dialogs.break_dialog</action>
             </phrase>
             <phrase id="0">
@@ -2116,6 +2035,7 @@
             <phrase id="10001">
                 <text>mil_leader_start_dialog_10001</text>
                 <action>dialogs_military.mil_dolg_payment</action>
+                <action>dialogs_military.actor_set_freedom</action>
             </phrase>
             <phrase id="11000">
                 <text />
@@ -2155,6 +2075,7 @@
             </phrase>
             <phrase id="8004">
                 <text>mil_leader_start_dialog_8004</text>
+                <action>dialogs_military.actor_set_freedom</action>
                 <next>8005</next>
             </phrase>
             <phrase id="8005">
@@ -2342,54 +2263,13 @@
                 <has_info>mil_courier_dead</has_info>
                 <has_info>mil_ara_dead</has_info>
                 <has_info>mil_courier_call</has_info>
-                <next>5011</next>
+                <next>5001</next>
             </phrase>
-
             <phrase id="5002">
                 <text>mil_leader_start_dialog_5002</text>
                 <give_info>mil_leader_quest2_complete</give_info>
                 <next>7003</next>
             </phrase>
-
-<phrase id="5017">
-<text>mil_freedom_7</text>
-<next>5002</next>
-</phrase>
-
-<phrase id="5016">
-<text>mil_freedom_6</text>
-<next>5002</next>
-</phrase>
-
-<phrase id="5015">
-<text>mil_freedom_5</text>
-<next>5016</next>
-</phrase>
-
-<phrase id="5014">
-<text>mil_freedom_4</text>
-<action>ogsm_quests.set_freedom</action>
-<next>5015</next>
-</phrase>
-
-<phrase id="5013">
-<text>mil_freedom_3</text>
-<next>5017</next>
-</phrase>
-
-<phrase id="5012">
-<text>mil_freedom_2</text>
-<next>5014</next>
-</phrase>
-
-<phrase id="5011">
-<text>mil_freedom_1</text>
-<action>dialogs_military.lukash_payment</action>
-<next>5012</next>
-<next>5013</next>
-</phrase>
-
-
             <phrase id="5001">
                 <text>mil_leader_start_dialog_5001</text>
                 <action>dialogs_military.lukash_payment</action>
@@ -2684,6 +2564,7 @@
             </phrase>
             <phrase id="3008">
                 <text>mil_trader_dialog_3008</text>
+                <dont_has_info>mil_freedom_cook_rg6_ask</dont_has_info>
                 <dont_has_info>mil_after_hunt_talked</dont_has_info>
                 <give_info>mil_miser_task</give_info>
                 <next>3009</next>
@@ -2764,23 +2645,4 @@
             </phrase>
         </phrase_list>
     </dialog>
-
-    <dialog id="freedom_attach_community">
-      <has_info>mil_leader_quest2_complete</has_info>
-      <dont_has_info>mil_leader_attach_community</dont_has_info>
-        <phrase_list>
-
-		<phrase id="0">
-		<text>hochu_v_svobodu</text>
-		<next>1</next>
-		</phrase>
-
-		<phrase id="1">
-		<text>aha_odumalsa</text>
-		<action>ogsm_quests.set_freedom</action>
-		</phrase>
-
-        </phrase_list>
-    </dialog>
-
 </game_dialogs>

@@ -24,7 +24,6 @@
 		<actor_dialog>tm_trader_dialog</actor_dialog>
 		<actor_dialog>tm_trader_reward</actor_dialog>
 		<actor_dialog>escape_trader_done_blockpost_box</actor_dialog>
-		<actor_dialog>escape_trader_repair</actor_dialog>
 	</specific_character>
 <!---------------------------------------esc_wolf----------------------------------------------------->
 	<specific_character id="esc_wolf" team_default = "1">
@@ -49,7 +48,6 @@
 			ammo_9x18_fmj = 1 \n
 			wpn_ak74u \n
 			ammo_5.45x39_fmj \n
-ammo_12x70_buck=3 \n
 			device_torch \n
 			hand_radio \n
 		</supplies>
@@ -87,7 +85,6 @@ ammo_12x70_buck=3 \n
 			ammo_9x18_fmj = 1 \n
 			wpn_ak74u \n
 			ammo_5.45x39_fmj \n
-ammo_12x70_buck=4 \n
 		</supplies>
 				
 #include "gameplay\character_criticals_4.xml"
@@ -120,7 +117,6 @@ ammo_12x70_buck=4 \n
 			ammo_9x18_fmj = 1 \n
 			wpn_bm16 \n
 			ammo_12x70_buck \n
-ammo_9x19_fmj=2 \n
 			device_torch \n
 		</supplies>
 				
@@ -183,7 +179,6 @@ ammo_9x19_fmj=2 \n
 			[spawn] \n
 			wpn_pm \n
 			ammo_9x18_fmj = 1 \n
-ammo_9x19_fmj=2 \n
 			esc_wounded_flash \n
 		</supplies>
 
@@ -227,7 +222,7 @@ ammo_9x19_fmj=2 \n
 
 #include "gameplay\character_criticals_4.xml"
 	
-#include "gameplay\character_dialogs.xml"
+		<start_dialog>hello_dialog</start_dialog>
 	</specific_character>
 	
 	<!---------------------------BANDIT NOVICE----------------------->
@@ -258,7 +253,7 @@ ammo_9x19_fmj=2 \n
 		
 #include "gameplay\character_criticals_3.xml"
 					
-#include "gameplay\character_dialogs.xml"
+		<start_dialog>hello_dialog</start_dialog>
 </specific_character>
 <!------------------------------------------------------------------------------------------>
 	<specific_character id="esc_bandit_novice_default2" team_default = "1">
@@ -347,7 +342,6 @@ ammo_9x19_fmj=2 \n
 			[spawn] \n
 			wpn_bm16 \n
 			ammo_12x70_buck \n
-ammo_9x18_fmj=5 \n
 #include "gameplay\character_items.xml" \n
 #include "gameplay\character_food.xml"
 		</supplies>
@@ -378,7 +372,6 @@ ammo_9x18_fmj=5 \n
 			[spawn] \n
 			wpn_pm \n
 			ammo_9x18_fmj = 1 \n
-ammo_9x18_fmj=2 \n
 			device_torch \n
 #include "gameplay\character_items.xml" \n
 #include "gameplay\character_food.xml"
@@ -410,7 +403,6 @@ ammo_9x18_fmj=2 \n
 			[spawn] \n
 			wpn_bm16 \n
 			ammo_12x70_buck \n
-ammo_9x18_pmm=3 \n
 #include "gameplay\character_items.xml" \n
 #include "gameplay\character_food.xml"
 		</supplies>
@@ -441,7 +433,6 @@ ammo_9x18_pmm=3 \n
 			[spawn] \n
 			wpn_pm \n
 			ammo_9x18_fmj = 1 \n
-ammo_9x18_pmm=2 \n
 #include "gameplay\character_items.xml" \n
 #include "gameplay\character_food.xml"
 		</supplies>
@@ -472,7 +463,6 @@ ammo_9x18_pmm=2 \n
 			[spawn] \n
 			wpn_bm16 \n
 			ammo_12x70_buck \n
-ammo_9x19_fmj = 2 \n
 			device_torch \n
 #include "gameplay\character_items.xml" \n
 #include "gameplay\character_food.xml"
@@ -503,8 +493,7 @@ ammo_9x19_fmj = 2 \n
 		<supplies>
 			[spawn] \n
 			wpn_bm16 \n
-			ammo_12x70_buck \n
-ammo_9x19_fmj=1 \n		
+			ammo_12x70_buck \n		
 #include "gameplay\character_items.xml"	\n
 #include "gameplay\character_drugs.xml" \n
 #include "gameplay\character_food.xml"
@@ -536,7 +525,6 @@ ammo_9x19_fmj=1 \n
 			[spawn] \n
 			wpn_pm \n
 			ammo_9x18_fmj = 1 \n
-ammo_9x19_fmj=3 \n
 #include "gameplay\character_items.xml" \n
 #include "gameplay\character_drugs.xml" \n
 #include "gameplay\character_food.xml"
@@ -568,7 +556,6 @@ ammo_9x19_fmj=3 \n
 			[spawn] \n
 			wpn_pm \n
 			ammo_9x18_fmj = 1 \n
-ammo_12x76_zhekan=1 \n
 			device_torch \n
 #include "gameplay\character_items.xml" \n
 #include "gameplay\character_drugs.xml" \n
@@ -644,7 +631,8 @@ ammo_12x76_zhekan=1 \n
 #include "gameplay\character_criticals_5.xml"
 										
 		<start_dialog>esc_bridge_soldiers_start</start_dialog>
-#include "gameplay\character_dialogs.xml"
+		<start_dialog>dm_hello_dialog</start_dialog>
+		<actor_dialog>dm_help_wounded_medkit_dialog</actor_dialog>
 	</specific_character>
 <!-------------------------------------soldier_regular----------------------------------------------------->	
 	<specific_character id="esc_soldier_regular_default1" team_default = "1">
@@ -797,7 +785,7 @@ ammo_12x76_zhekan=1 \n
 		</supplies>		
 		
 #include "gameplay\character_criticals_5.xml"
-#include "gameplay\character_dialogs.xml"		
+		
 		<start_dialog>hello_dialog</start_dialog>
 	</specific_character>
 <!-------------------------------------blockpost_commander----------------------------------------------------->	
@@ -887,7 +875,7 @@ ammo_12x76_zhekan=1 \n
 		</supplies>	
 
 #include "gameplay\character_criticals_5.xml"
-#include "gameplay\character_dialogs.xml"
+
 		<start_dialog>hello_dialog</start_dialog>
 	</specific_character>
 <!-------------------------------------soldier_blokpost----------------------------------------------------->	
@@ -917,7 +905,7 @@ ammo_12x76_zhekan=1 \n
 		</supplies>	
 		
 #include "gameplay\character_criticals_5.xml"
-#include "gameplay\character_dialogs.xml"					
+					
 		<start_dialog>hello_dialog</start_dialog>
 	</specific_character>
 <!-------------------------------------soldier_specnaz----------------------------------------------------->	
@@ -947,7 +935,7 @@ ammo_12x76_zhekan=1 \n
 		</supplies>		
 					
 #include "gameplay\character_criticals_6.xml"
-#include "gameplay\character_dialogs.xml"					
+					
 		<start_dialog>hello_dialog</start_dialog>
 	</specific_character>
 <!-------------------------------------soldier_specnaz----------------------------------------------------->
@@ -977,7 +965,7 @@ ammo_12x76_zhekan=1 \n
 		</supplies>		
 		
 #include "gameplay\character_criticals_6.xml"
-#include "gameplay\character_dialogs.xml"					
+					
 		<start_dialog>hello_dialog</start_dialog>
 	</specific_character>
 	
@@ -1034,7 +1022,6 @@ ammo_12x76_zhekan=1 \n
 			ammo_9x18_fmj = 1 \n
 			wpn_mp5 \n
 			ammo_9x19_fmj = 1 \n
-ammo_7.62x54_ap=2 \n
 			device_torch \n
 #include "gameplay\character_drugs.xml" \n
 #include "gameplay\character_food.xml"				

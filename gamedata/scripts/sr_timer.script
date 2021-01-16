@@ -10,11 +10,7 @@ function action_timer:__init(obj, storage)
 	self.st = storage
 end
 function action_timer:update(delta)
-if not has_alife_info("freeplay") then
 	local actor = db.actor
-
-	if level.name()=="l12_stancia" then self.st.start_value = vars.aes_timer*60000 end
-
 	if xr_logic.try_switch_to_another_section(self.object, self.st, actor) then
 		return
 	end
@@ -49,14 +45,11 @@ if not has_alife_info("freeplay") then
 		end
 	end
 end
-end
 function action_timer:deactivate(delta)
-if not has_alife_info("freeplay") then
 	self.st.ui:RemoveCustomStatic(self.st.timer_id)
 	if self.st.string ~= nil then
 		self.st.ui:RemoveCustomStatic("hud_timer_text")
 	end
-end
 end
 --function action_timer:save()
 --	xr_logic.pstor_store( self.object, "timer_value", self.state )	
@@ -75,7 +68,6 @@ function add_to_binder(obj, ini, scheme, section, storage)
 	xr_logic.subscribe_action_for_events(obj, storage, action)
 end
 function set_scheme(obj, ini, scheme, section, gulag_name)
-if not has_alife_info("freeplay") then
 	local st = xr_logic.assign_storage_and_bind(obj, ini, scheme, section)
 	st.logic = xr_logic.cfg_get_switch_conditions(ini, section, obj)
 	st.type = utils.cfg_get_string( ini, section, "type", obj, false, "", "inc")
@@ -102,7 +94,6 @@ if not has_alife_info("freeplay") then
 		local timer_text = st.ui:GetCustomStatic("hud_timer_text"):wnd()
 		timer_text:SetTextST(st.string)
 	end
-end
 end
 
 function parse_data(npc,s)

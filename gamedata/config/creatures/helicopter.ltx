@@ -8,6 +8,9 @@ class					= C_HLCP_S
 script_binding          = bind_heli.bind
 visual                  = physics\vehicles\mi24\veh_mi24_u_01.ogf
 
+;wallmarks
+wallmark_section		= explosion_marks
+
 //параметры построения пути
 path_linear_acc_fw				=  6;8; 3;5; 3.0 ;m/s  ; линейное ускорение при разгоне
 path_linear_acc_bk				=  4;2;4; 0.5; 3;  3.5;3 ;8.0 ;m/s	; линейное ускорение торможения
@@ -69,7 +72,9 @@ forget_timeout				= 60  ; в течении этого времени (в сек) вертолёт помнит врага,
 ; ------------------------------------------------------------------
 
 ; light, particles etc
+light_range							= 10.0
 light_brightness					= 5.0
+light_color							= 0.9,0.9,0.5
 light_color_animmator				= koster_00
 
 smoke_particle						= damage_fx\heli_burn			;партиклы при ранении
@@ -108,6 +113,7 @@ wallmark_section		= explosion_marks
 ;------------------------------коэффициенты иммунитета 
 immunities_sect			= sect_heli_immunities
 
+
 [sect_heli_immunities]
 burn_immunity			= 0.1	
 strike_immunity			= 1
@@ -116,8 +122,8 @@ wound_immunity			= 0.0
 radiation_immunity		= 0.0
 telepatic_immunity		= 0.0
 chemical_burn_immunity	= 0.0
-fire_wound_immunity		= 0.001
-explosion_immunity		= 0.1
+fire_wound_immunity		= 0.01
+explosion_immunity		= 0.2
 
 
 [helicopter_missile]
@@ -158,7 +164,6 @@ light_time 		    = 0.5
 
 
 ph_mass				= 7
-
 engine_f			= 530
 engine_u			= 90
 

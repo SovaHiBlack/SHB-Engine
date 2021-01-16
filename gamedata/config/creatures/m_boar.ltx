@@ -27,7 +27,7 @@ MaxHealthValue		    = 200								 ; range [0..200]
 DynamicObjectsCount		= 32
 smart_terrain_choose_interval	= 00:15:00
 Spawn_Inventory_Item_Section = mutant_boar_leg
-Spawn_Inventory_Item_Probability = 0.4
+Spawn_Inventory_Item_Probability = 0.2
 
 ;------------------------------------------------------------------------
 ; Physics
@@ -39,16 +39,17 @@ ph_box1_size 			= 0.55, 0.6,  0.55
 ph_crash_speed_min			= 10
 ph_crash_speed_max			= 30
 ph_collision_damage_factor	= 0.1
-ph_mass 				= 250
+ph_mass 				= 250	;110
 
 destroyed_vis_name	 	= physics\dead_body\skelet_crash_monster
 
 ;---------------------------------------------------------------------
-ph_skeleton_airr_lin_factor   = -0.4
-ph_skeleton_airr_ang_factor   = -0.2
-ph_skeleton_hinger_factor1    = 1.0
-ph_skeleton_ddelay	      = 5.0
-ph_skel_fatal_impulse_factor  = 2.0
+ph_skeleton_airr_lin_factor   = 2.0 ;550.0 (изменно из-за того, что убрано домножение коэффициент 0.002 из кода)
+ph_skeleton_airr_ang_factor   = 0.0 ;0.0 (изменно из-за того, что убрано домножение на коэффициент 0.3 из кода (0.0*0.3=0.0))
+ph_skeleton_hinger_factor1    = 1.0 ;1.0 (изменно из-за того, что убрано домножение на коэффициент 5.0 из кода)
+ph_skeleton_ddelay	     	  = 15.0 ;Время изменения значения трения в суставе с момента создания шелла, сек
+
+ph_skel_fatal_impulse_factor  = 12.0
 ph_after_death_velocity_factor= 0.75
 ph_skel_shot_up_factor        = 0.25
 ;---------------------------------------------------------------------
@@ -241,6 +242,7 @@ terrain							= boar_terrain
 
 
 material				= creatures\hoof
+DynamicObjectsCount		= 32
 
 ;species of monster
 species				= boar
@@ -384,9 +386,9 @@ stand_drag_0		=	  1,	0.2,    1,	     0.25,    0.7,    0.7,    1.0,     0.7,   1.
 ;===========================================================================
 [boar_immunities]
 burn_immunity			= 1.0								;коэффициенты иммунитета 
-strike_immunity			= 0.5
-shock_immunity			= 0.5
-wound_immunity			= 0.3
+strike_immunity			= 0.8
+shock_immunity			= 0.8
+wound_immunity			= 0.5
 radiation_immunity		= 0.0
 telepatic_immunity		= 1.0
 chemical_burn_immunity	= 0.8
@@ -415,12 +417,12 @@ community			= boar
 burn_immunity			= 1.0
 strike_immunity			= 1.0
 shock_immunity			= 1.0
-wound_immunity			= 0.3
+wound_immunity			= 0.70
 radiation_immunity		= 0.0
 telepatic_immunity		= 1.0
 chemical_burn_immunity	= 1.0
 explosion_immunity		= 0.55
-fire_wound_immunity		= 0.12
+fire_wound_immunity		= 0.25
 
 [boar_attack_params_weak]
 ;---------------------------------------------------------------------------------------------------------------------------------------------
@@ -454,12 +456,12 @@ community			= boar
 burn_immunity			= 1.0
 strike_immunity			= 1.0
 shock_immunity			= 1.0
-wound_immunity			= 0.2
+wound_immunity			= 0.50
 radiation_immunity		= 0.0
 telepatic_immunity		= 1.0
 chemical_burn_immunity	= 1.0
 explosion_immunity		= 0.55
-fire_wound_immunity		= 0.1
+fire_wound_immunity		= 0.2
 
 [boar_attack_params_normal]
 ;---------------------------------------------------------------------------------------------------------------------------------------------
@@ -493,12 +495,12 @@ community			= boar
 burn_immunity			= 1.0
 strike_immunity			= 1.0
 shock_immunity			= 1.0
-wound_immunity			= 0.1
+wound_immunity			= 0.30
 radiation_immunity		= 0.0
 telepatic_immunity		= 1.0
 chemical_burn_immunity	= 1.0
 explosion_immunity		= 0.55
-fire_wound_immunity		= 0.07
+fire_wound_immunity		= 0.15
 
 [boar_attack_params_strong]
 ;---------------------------------------------------------------------------------------------------------------------------------------------

@@ -6,7 +6,7 @@ $npc			     = on						; option for Level Editor
 $prefetch 			 = 16
 Scheduled		     = on						; option for ALife Simulator
 Human		     	 = off						; option for ALife Simulator
-Health			     = 400						; option for ALife Simulator
+Health			     = 200						; option for ALife Simulator
 MinSpeed		     = 1.0						; option for ALife Simulator
 MaxSpeed		     = 5.0						; option for ALife Simulator
 going_speed          = 5;4.5                      ; option for ALife Simulator
@@ -15,7 +15,7 @@ search_speed         = 1.5                       ; option for ALife Simulator
 visual				 = monsters\kontroler\kontroler
 corpse_visual		 = monsters\kontroler\kontroler_dead
 icon				 = ui_npc_monster_kontroler
-MaxHealthValue		     = 400			; range [0..200]
+MaxHealthValue		     = 200			; range [0..200]
 DynamicObjectsCount	 = 32
 smart_terrain_choose_interval	= 00:15:00
 
@@ -47,16 +47,17 @@ ph_box1_size 		 = 0.45, 0.6,  0.45
 ph_crash_speed_min			= 100
 ph_crash_speed_max			= 300
 ph_collision_damage_factor	= 0.1
-ph_mass 		     = 90
+ph_mass 		     = 90; 170.
 
 destroyed_vis_name	 = physics\Dead_Body\trupik_crash
 
 ;---------------------------------------------------------------------
-ph_skeleton_airr_lin_factor   = -0.4
-ph_skeleton_airr_ang_factor   = -0.2
-ph_skeleton_hinger_factor1    = 1.0
-ph_skeleton_ddelay	      = 5.0
-ph_skel_fatal_impulse_factor  = 2.0
+ph_skeleton_airr_lin_factor   = 2.0 ;550.0 (изменно из-за того, что убрано домножение коэффициент 0.002 из кода)
+ph_skeleton_airr_ang_factor   = 0.0 ;0.0 (изменно из-за того, что убрано домножение на коэффициент 0.3 из кода (0.0*0.3=0.0))
+ph_skeleton_hinger_factor1    = 1.0 ;1.0 (изменно из-за того, что убрано домножение на коэффициент 5.0 из кода)
+ph_skeleton_ddelay	     	  = 15.0 ;Время изменения значения трения в суставе с момента создания шелла, сек
+
+ph_skel_fatal_impulse_factor  = 6.0
 ph_after_death_velocity_factor= 0.75
 ph_skel_shot_up_factor        = 0.25
 ;---------------------------------------------------------------------
@@ -75,6 +76,7 @@ Velocity_WalkFwdDamaged	= 0.7,		6.0,			6.0,		0.5,	2.0
 Velocity_RunFwdDamaged	= 4.0,  	4.0,			4.0,		0.2,	1
 Velocity_Drag			= -5.0,		0.01,			0.01,		1,		1
 Velocity_Steal			= 0.7,		1.3,			1.3,		1,		1
+Velocity_Drag			= -5.0,		0.01,			0.01,		1,		1
 Velocity_MoveFwd		= 5.0,		0.01,			0.01,		1,		1
 Velocity_MoveBkwd		= -5.0,		0.01,			0.01,		1,		1
 
@@ -86,7 +88,7 @@ Accel_Aggressive		= 12.5
 ;--------------------------------------------------------------------------
 ; Attack parameters
 ;--------------------------------------------------------------------------
-MinAttackDist		= 0.1	;0.5
+MinAttackDist		= 1.5	;0.5
 MaxAttackDist		= 2.9	;3.8
 
 as_min_dist				= 0.3
@@ -163,7 +165,7 @@ Morale_Despondent_Threashold	= 0.5
 ;---------------------------------------------------------
 sound_idle				= monsters\controller\controller_idle_
 sound_eat				= monsters\controller\controller_eat_
-sound_aggressive		= monsters\controller\bet_laugh1
+sound_aggressive		= monsters\controller\controller_attack_
 sound_attack_hit		= monsters\controller\controller_attack_hit_
 sound_take_damage		= monsters\controller\controller_hit_
 sound_die				= monsters\controller\controller_die_
@@ -228,6 +230,7 @@ critical_wound_bones_legs	= controller_critical_wound_bones_legs
 DamagedThreshold		= 0.1
 
 material				= creatures\medium
+DynamicObjectsCount		= 32
 
 attack_effector			= m_controller_attack_effector
 
@@ -237,10 +240,10 @@ step_params				= m_controller_step_params
 LegsCount				= 2
 damage					= m_controller_damage
 
-psy_hit_damage			= 0.4;
+psy_hit_damage			= 0.15;
 tube_damage				= 0.50;
-tube_at_once			= true
-tube_min_dist			= 1
+tube_at_once			= false
+tube_min_dist			= 10
 
 control_fx_texture		= act\act_controller_hit
 control_fx_texture2		= act\act_controller_hit1
@@ -403,10 +406,10 @@ color_add		= 0.00,0.00,0.015
 ;	anim			| time[0..1] | hit_power | impulse | impulse_dir (x,y,z)  |	Field of hit_test  (left,right, bottom, top ) |	Test Dist
 ;---------------------------------------------------------------------------------------------------------------------------------------------
 ;Right hand Strike
-stand_attack_0 =	  	0.45,		0.45,		    60,        0.0, 1.0, 0.0,		 -1.6, 1.6, -1.6, 1.6,				  3.5
+stand_attack_0 =	  	0.45,		0.15,		    60,        0.0, 1.0, 0.0,		 -1.6, 1.6, -1.6, 1.6,				  3.5
 ;RightLeft combo strike
-stand_attack_1 =	  	0.25,		0.40,		    60,        0.0, 1.0, 0.0,		 -1.6, 1.6, -1.6, 1.6,				  3.5
-;stand_attack_1 =	  	0.45,		0.50,		    200,        0.0, 1.0, 0.0,		 -1.6, 1.6, -1.6, 1.6,				  3.5
+stand_attack_1 =	  	0.25,		0.20,		    60,        0.0, 1.0, 0.0,		 -1.6, 1.6, -1.6, 1.6,				  3.5
+;stand_attack_1 =	  	0.45,		0.30,		    200,        0.0, 1.0, 0.0,		 -1.6, 1.6, -1.6, 1.6,				  3.5
 
 ;=================================================================================
 ; Terrain
@@ -445,8 +448,6 @@ community			= controller
 $spawn              = "monsters\old\controller_normal_fat"
 visual				= monsters\kontroler\kontroler_5
 icon				= ui_npc_monster_kontroler_5
-tube_at_once		= true
-tube_damage			= 0.50
 spec_rank			= normal
 rank				= 401
 community			= controller
@@ -455,18 +456,14 @@ community			= controller
 $spawn              = "monsters\old\controller_old"
 visual				= monsters\kontroler\kontroler_3
 icon				= ui_npc_monster_kontroler_3
-tube_at_once		= true
-tube_damage			= 0.50
 spec_rank			= strong
 rank				= 801
 community			= controller
 
-[m_controller_old_fat]:m_controller_normal
+[m_controller_old_fat]:m_controller_e
 $spawn              = "monsters\old\controller_old_fat"
 visual				= monsters\kontroler\kontroler_4
 icon				= ui_npc_monster_kontroler_4
-tube_at_once		= true
-tube_damage			= 0.50
 spec_rank			= strong
 rank				= 801
 community			= controller
@@ -536,15 +533,3 @@ bip01_r_thigh
 bip01_r_calf
 bip01_r_foot
 bip01_r_toe1
-
-
-[arena_controller_1]:m_controller_e
-$spawn              = "monsters\old\controller_normal_fat"
-visual				= monsters\kontroler\kontroler_5
-icon				= ui_npc_monster_kontroler_5
-spec_rank			= normal
-tube_at_once		= true
-tube_damage			= 0.50
-rank				= 401
-community			= controller
-custom_data = scripts\arena_mob_1.ltx

@@ -8,7 +8,7 @@ nstl = 64
 snd_ini = ini_file("misc\\script_sound.ltx")
 
 theme = {}
-ph_snd_themes = {}
+ph_snd_themes = {}           
 ph_snd_themes["music"] = {  "characters_voice\\scenario\\megafon\\megafon_music_1",
 	                        "characters_voice\\scenario\\megafon\\megafon_music_2",
 	                        "characters_voice\\scenario\\megafon\\megafon_music_3"
@@ -65,41 +65,6 @@ ph_snd_themes["dolg_speech"]		= {[[characters_voice\scenario\bar\barman_megafon\
 									   [[characters_voice\scenario\megafon\megafon_music_1]],
 									   [[characters_voice\scenario\megafon\megafon_music_2]],
 									   [[characters_voice\scenario\megafon\megafon_music_3]]}
-
--- -------------------------------------------------------------ARENA_EXTENSION_MOD------------------------------------------------------------------
-ph_snd_themes["arena_fight_10_sec"] = {[[characters_voice\scenario\bar\arena_megafon\mega_arena_10_sec]]}
-ph_snd_themes["arena_fight_20_sec"] = {[[characters_voice\scenario\bar\arena_megafon\mega_arena_20_sec]]}
-ph_snd_themes["arena_fight_30_sec"] = {[[characters_voice\scenario\bar\arena_megafon\mega_arena_30_sec]]}
-ph_snd_themes["arena_fight_40_sec"] = {[[characters_voice\scenario\bar\arena_megafon\mega_arena_40_sec]]}
-ph_snd_themes["arena_fight_50_sec"] = {[[characters_voice\scenario\bar\arena_megafon\mega_arena_50_sec]]}
-
-ph_snd_themes["aem_beast"] = {[[aem_snd\aem_beast]]}
-ph_snd_themes["aem_bloodsucker"] = {[[aem_snd\aem_bloodsucker]]}
-ph_snd_themes["aem_burer"] = {[[aem_snd\aem_burer]]}
-ph_snd_themes["aem_fight_begin"] = {[[aem_snd\aem_fight_begin]]}
-ph_snd_themes["aem_foul"] = {[[aem_snd\aem_foul]]}
-ph_snd_themes["aem_no_chance"] = {[[aem_snd\aem_no_chance]]}
-ph_snd_themes["aem_out_of_time"] = {[[aem_snd\aem_out_of_time]]}
-ph_snd_themes["aem_pseudodog"] = {[[aem_snd\aem_pseudodog]]}
-ph_snd_themes["aem_snork"] = {[[aem_snd\aem_snork]]}
-ph_snd_themes["aem_special"] = {[[aem_snd\aem_special]]}
-ph_snd_themes["aem_victory"] = {[[aem_snd\aem_victory]]}
-
-ph_snd_themes["dolg_matugalnik"]		= {[[characters_voice\scenario\bar\barman_megafon\megaphone_barman_1]],
-									   [[characters_voice\scenario\bar\arena_megafon\mega_arena_new_fight]],
-									   [[characters_voice\scenario\bar\barman_megafon\megaphone_barman_2]],
-									   [[characters_voice\scenario\bar\dolg_megafon\mega_duty_propaganda_1]],
-									   [[characters_voice\scenario\bar\arena_megafon\mega_arena_new_fight]],
-									   [[characters_voice\scenario\bar\dolg_megafon\mega_duty_propaganda_2]],
-									   [[characters_voice\scenario\bar\dolg_megafon\mega_duty_propaganda_3]],
-									   [[characters_voice\scenario\bar\arena_megafon\mega_arena_new_fight]],
-									   [[characters_voice\scenario\bar\dolg_megafon\mega_duty_propaganda_4]],
-									   [[characters_voice\scenario\bar\dolg_megafon\mega_duty_propaganda_5]],
-									   [[characters_voice\scenario\bar\arena_megafon\mega_arena_new_fight]]}
-
--- -------------------------------------------------------------ARENA_EXTENSION_MOD------------------------------------------------------------------
-
-
 ph_snd_themes["dolg_alarm"]			= {[[characters_voice\scenario\bar\dolg_megafon\megaphone_duty_alarm]]}
 ph_snd_themes["dolg_megafon_1_hit"] = {[[characters_voice\scenario\bar\dolg_megafon\duty_gunfire_mega_1]]}
 ph_snd_themes["dolg_megafon_2_hit"] = {[[characters_voice\scenario\bar\dolg_megafon\duty_gunfire_mega_2]]}
@@ -136,8 +101,8 @@ ph_snd_themes["sar_monolith_call"]			= {[[characters_voice\scenario\sarcofag\mon
 
 ph_snd_themes["gar_seryi_shooting"]	= {[[characters_voice\scenario\garbage\distance_shooting]]}
 ph_snd_themes["gar_seryi_shooting_2"]	= {[[characters_voice\scenario\bandits\bandit_replic_2]]}
-ph_snd_themes["aes_battle1"] =        {"$no_sound"}
-ph_snd_themes["aes_battle2"] =        {"$no_sound"}
+ph_snd_themes["aes_battle1"] =        {"ambient\\battle_1"}
+ph_snd_themes["aes_battle2"] =        {"ambient\\battle_2"}
 ph_snd_themes["gar_bandits_seryi"] =   {[[characters_voice\scenario\garbage\grey_bandit_1]],      
 										[[characters_voice\scenario\garbage\grey_bandit_2]],
 										[[characters_voice\scenario\garbage\grey_bandit_3]],
@@ -275,7 +240,7 @@ theme = {
 
 	-- состояния тела
 	state = {	exec = sound_theme.combat_class, 
-				types = {state	= {min_snd = 600, max_snd = 900, rnd = 25, prior = 5, rnd_id = id(), into_id = id(), max_ids = {}}} },
+				types = {state	= {min_snd = 60, max_snd = 90, rnd = 25, prior = 5, rnd_id = id(), into_id = id(), max_ids = {}}} },
 	
 
 	sleep				= {min_snd = 10, max_snd = 15, rnd = 75, prior = 5, rnd_id = id(), into_id = id(), max_ids = {}},
@@ -318,8 +283,8 @@ theme = {
 	reac_joke				= {min_snd = 1, max_snd = 2, rnd = 100, prior = 5, rnd_id = id(), into_id = id(), max_ids = {}},
 
 	-- болтовня
-	talk_hello				= {min_snd = 60, max_snd = 120, rnd = 100, prior = 5, rnd_id = id(), into_id = id(), max_ids = {}},
-	talk_hello_friend		= {min_snd = 60, max_snd = 120, rnd = 100, prior = 5, rnd_id = id(), into_id = id(), max_ids = {}},
+	talk_hello				= {min_snd = 5, max_snd = 7, rnd = 100, prior = 5, rnd_id = id(), into_id = id(), max_ids = {}},
+	talk_hello_friend		= {min_snd = 3, max_snd = 5, rnd = 100, prior = 5, rnd_id = id(), into_id = id(), max_ids = {}},
 	talk_bye				= {min_snd = 3, max_snd = 5, rnd = 100, prior = 5, rnd_id = id(), into_id = id(), max_ids = {}},
 	talk_accept				= {min_snd = 3, max_snd = 5, rnd = 100, prior = 5, rnd_id = id(), into_id = id(), max_ids = {}},
 	talk_reject				= {min_snd = 3, max_snd = 5, rnd = 100, prior = 5, rnd_id = id(), into_id = id(), max_ids = {}},
@@ -540,20 +505,20 @@ theme = {
 	bar_dolg_base_guard_backoff		= {min_snd = 3, max_snd = 5, rnd = 100, prior = 5, rnd_id = id(), into_id = id(), max_ids = {}},
 	bar_dolg_base_guard_no_talk		= {min_snd = 3, max_snd = 5, rnd = 100, prior = 5, rnd_id = id(), into_id = id(), max_ids = {}},
 	bar_bar_osvedomitel_hello		= {min_snd = 15, max_snd = 15, rnd = 100, prior = 5, rnd_id = id(), into_id = id(), max_ids = {}},
-	bar_bar_barmen_hello			= {min_snd = 60, max_snd = 120, rnd = 100, prior = 5, rnd_id = id(), into_id = id(), max_ids = {}},
-	bar_bar_barmen_hello_room		= {min_snd = 60, max_snd = 120, rnd = 100, prior = 5, rnd_id = id(), into_id = id(), max_ids = {}},
-	bar_dolg_leader_hello			= {min_snd = 60, max_snd = 120, rnd = 100, prior = 5, rnd_id = id(), into_id = id(), max_ids = {}},
+	bar_bar_barmen_hello			= {min_snd = 2, max_snd = 15, rnd = 100, prior = 5, rnd_id = id(), into_id = id(), max_ids = {}},
+	bar_bar_barmen_hello_room		= {min_snd = 10, max_snd = 15, rnd = 100, prior = 5, rnd_id = id(), into_id = id(), max_ids = {}},
+	bar_dolg_leader_hello			= {min_snd = 10, max_snd = 15, rnd = 100, prior = 5, rnd_id = id(), into_id = id(), max_ids = {}},
 
 	-- Bar dolg guard
 	bar_dolg_guard_stop				= {min_snd = 15, max_snd = 20, rnd = 100, prior = 5, rnd_id = id(), into_id = id(), max_ids = {}},
-	bar_guard_prohodi				= {min_snd = 60, max_snd = 120, rnd = 100, prior = 5, rnd_id = id(), into_id = id(), max_ids = {}},
+	bar_guard_prohodi				= {min_snd = 7, max_snd = 20, rnd = 100, prior = 5, rnd_id = id(), into_id = id(), max_ids = {}},
 	bar_dolg_guard_busy				= {min_snd = 7, max_snd = 20, rnd = 100, prior = 5, rnd_id = id(), into_id = id(), max_ids = {}},
 	
 	-- Bar dolg hangar bridge
 	bar_dolg_hangar_bridge_hello	= {min_snd = 16, max_snd = 25, rnd = 100, prior = 5, rnd_id = id(), into_id = id(), max_ids = {}},
 
-	bar_guard_enter					= {min_snd = 60, max_snd = 120, rnd = 100, prior = 5, rnd_id = id(), into_id = id(), max_ids = {}},      
-	bar_guard_stop					= {min_snd = 60, max_snd = 120, rnd = 100, prior = 5, rnd_id = id(), into_id = id(), max_ids = {}},      
+	bar_guard_enter					= {min_snd = 6, max_snd = 10, rnd = 100, prior = 5, rnd_id = id(), into_id = id(), max_ids = {}},      
+	bar_guard_stop					= {min_snd = 6, max_snd = 10, rnd = 100, prior = 5, rnd_id = id(), into_id = id(), max_ids = {}},      
 
 	-- Bar dolg Petrenko
 	bar_dolg_petrenko_hello			= {min_snd = 3, max_snd = 15, rnd = 100, prior = 5, rnd_id = id(), into_id = id(), max_ids = {}},
@@ -583,7 +548,7 @@ theme = {
 	kruglov_stop_enemy_2                        = {min_snd = 1, max_snd = 1, rnd = 100, prior = 5, rnd_id = id(), into_id = id(), max_ids = {}},
 	
 	--yantar sounds
-	yantar_professor_idle						= {min_snd = 20, max_snd = 50, rnd = 100, prior = 5, rnd_id = id(), into_id = id(), max_ids = {}},
+	yantar_professor_idle						= {min_snd = 1, max_snd = 1, rnd = 100, prior = 5, rnd_id = id(), into_id = id(), max_ids = {}},
 	yantar_professor_to_kruglov_1				= {min_snd = 1, max_snd = 1, rnd = 100, prior = 5, rnd_id = id(), into_id = id(), max_ids = {}},
 	yantar_professor_to_kruglov_2				= {min_snd = 1, max_snd = 1, rnd = 100, prior = 5, rnd_id = id(), into_id = id(), max_ids = {}},
 	yantar_kruglov_to_professor_1				= {min_snd = 1, max_snd = 1, rnd = 100, prior = 5, rnd_id = id(), into_id = id(), max_ids = {}},
@@ -592,7 +557,7 @@ theme = {
 	yantar_dream_talk_1							= {min_snd = 1, max_snd = 1, rnd = 100, prior = 5, rnd_id = id(), into_id = id(), max_ids = {}},
 	yantar_dream_talk_2							= {min_snd = 1, max_snd = 1, rnd = 100, prior = 5, rnd_id = id(), into_id = id(), max_ids = {}},
 	yantar_dream_talk_3							= {min_snd = 1, max_snd = 1, rnd = 100, prior = 5, rnd_id = id(), into_id = id(), max_ids = {}},
-	yantar_professor_talk_1						= {min_snd = 120, max_snd = 300, rnd = 100, prior = 5, rnd_id = id(), into_id = id(), max_ids = {}},
+	yantar_professor_talk_1						= {min_snd = 1, max_snd = 1, rnd = 100, prior = 5, rnd_id = id(), into_id = id(), max_ids = {}},
 	yantar_professor_radiation_quest_1			= {min_snd = 1, max_snd = 1, rnd = 100, prior = 5, rnd_id = id(), into_id = id(), max_ids = {}},
 	yantar_professor_radiation_quest_2			= {min_snd = 1, max_snd = 1, rnd = 100, prior = 5, rnd_id = id(), into_id = id(), max_ids = {}},
     yantar_kruglov_radiation_quest_1			= {min_snd = 1, max_snd = 1, rnd = 100, prior = 5, rnd_id = id(), into_id = id(), max_ids = {}},

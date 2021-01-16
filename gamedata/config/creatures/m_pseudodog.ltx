@@ -20,7 +20,7 @@ DynamicObjectsCount	 = 32
 smart_terrain_choose_interval	= 00:15:00
 
 Spawn_Inventory_Item_Section = mutant_psevdodog_tail
-Spawn_Inventory_Item_Probability = 0.4
+Spawn_Inventory_Item_Probability = 0.2
 
 ef_creature_type	 = 21							; option for evaluation functions
 ef_weapon_type		 = 3
@@ -49,16 +49,17 @@ ph_box1_size 		 = 0.50, 0.4,  0.50
 ph_crash_speed_min			= 100
 ph_crash_speed_max			= 300
 ph_collision_damage_factor	= 0.1
-ph_mass 		     = 50
+ph_mass 		     = 75;50					; also it's the food
 
 destroyed_vis_name	 = physics\dead_body\skelet_crash_monster
 
 ;---------------------------------------------------------------------
-ph_skeleton_airr_lin_factor   = -0.4
-ph_skeleton_airr_ang_factor   = -0.2
-ph_skeleton_hinger_factor1    = 1.0
-ph_skeleton_ddelay	      = 5.0
-ph_skel_fatal_impulse_factor  = 2.0
+ph_skeleton_airr_lin_factor   = 2.0 ;550.0 (изменно из-за того, что убрано домножение коэффициент 0.002 из кода)
+ph_skeleton_airr_ang_factor   = 0.0 ;0.0 (изменно из-за того, что убрано домножение на коэффициент 0.3 из кода (0.0*0.3=0.0))
+ph_skeleton_hinger_factor1    = 1.0 ;1.0 (изменно из-за того, что убрано домножение на коэффициент 5.0 из кода)
+ph_skeleton_ddelay	     	  = 15.0 ;Время изменения значения трения в суставе с момента создания шелла, сек
+
+ph_skel_fatal_impulse_factor  = 6.0
 ph_after_death_velocity_factor= 0.75
 ph_skel_shot_up_factor        = 0.25
 ;---------------------------------------------------------------------
@@ -219,6 +220,7 @@ critical_wound_decrease_quant	= 0.
 
 
 material				= creatures\medium
+DynamicObjectsCount		= 32
 
 squad_attack_algorithm	= 1
 
@@ -276,7 +278,7 @@ ce_power			= 1.0 ;0.7 ; power
 ;===========================================================================
 ; Step Events
 ;===========================================================================
-[m_pseudodog_step_params]                ;left             right            right           left
+[m_pseudodog_step_params]                left             right            right           left
 ;------------------------------------------------------------------------------------------------------------------
 ;	anim					cycles |	time1 | power1 |	time2 | power2 | time3 | power3 | time4     | power4 |
 ;-----------------------------------------------------------------------------------------------------------------
@@ -466,7 +468,7 @@ $spawn				= "monsters\psy_dog\psy_dog"
 visual				= monsters\pseudodog\pseudodog_grey
 icon				= ui_npc_monster_pseudodog_grey
 class               = SM_DOG_P	
-;custom_data = scripts\psy_dog.ltx
+
 aura_effector		= psy_dog_aura_effector
 Max_Phantoms_Count	= 4
 Min_Phantoms_Count	= 1
@@ -530,19 +532,3 @@ Max_Phantoms_Count	= 4
 Min_Phantoms_Count	= 2
 Time_Phantom_Appear = 5000
 
-
-[arena_pseudodog_1]:pseudodog_strong
-$spawn				= "monsters\arena\pseudodog_arena"
-visual				= monsters\pseudodog\pseudodog_grey
-icon				= ui_npc_monster_pseudodog_grey
-panic_threshold		= 0.05
-species				= arena_monstr
-custom_data = scripts\arena_mob_1.ltx
-
-[arena_pseudodog_2]:pseudodog_strong
-$spawn				= "monsters\arena\pseudodog_arena"
-visual				= monsters\pseudodog\pseudodog
-icon				= ui_npc_monster_pseudodog
-panic_threshold		= 0.05
-species				= arena_monstr
-custom_data = scripts\arena_mob_2.ltx

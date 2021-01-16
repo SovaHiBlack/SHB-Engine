@@ -5,8 +5,7 @@ local intro_id = 100
 phrase = {
 	intro = {},
 	cool_info = {},
-	help_thanks = {},
-	sleep_request = {}
+	help_thanks = {}
 	}
 
 function gen_phrase_id_str()
@@ -102,7 +101,6 @@ end
 
 -- Необходимо создать диалог актера, с разветвлением на втором уровне, где каждая фраза будет иметь
 -- одну и ту же функцию в прекондишне.
--- *ModDed*
 function init_cool_info_dialog(dlg)
 	local phr = dlg:AddPhrase("dm_general_cool_info","0","",-10000)
 	
@@ -131,40 +129,6 @@ function init_cool_info_dialog(dlg)
 	end
 end
 
-function init_sleep_request_dialog(dlg)
-	local phr = dlg:AddPhrase("dm_general_sleep_request",0,-1,-10000)
-
-	local k,v = 0,0
-	for k,v in pairs(phrase.sleep_request) do
-		phr = dlg:AddPhrase(v.name,v.phr_id,0,-10000)
-		if phr then
-			phrase_script = phr:GetPhraseScript()
-			phrase_script:AddPrecondition("dialog_manager.precondition_sleep_request")
-		end
-		phr = dlg:AddPhrase("dm_general_sleep_1",1,v.phr_id,-10000)
-		phrase_script = phr:GetPhraseScript()
-		phrase_script:AddAction("sleep_manager.sleep_one_hour")
-		phr = dlg:AddPhrase("dm_general_sleep_3",2,v.phr_id,-10000)
-		phrase_script = phr:GetPhraseScript()
-		phrase_script:AddAction("sleep_manager.sleep_three_hours")
-		phr = dlg:AddPhrase("dm_general_sleep_5",3,v.phr_id,-10000)
-		phrase_script = phr:GetPhraseScript()
-		phrase_script:AddAction("sleep_manager.sleep_five_hours")
-		phr = dlg:AddPhrase("dm_general_sleep_7",4,v.phr_id,-10000)
-		phrase_script = phr:GetPhraseScript()
-		phrase_script:AddAction("sleep_manager.sleep_seven_hours")
-		phr = dlg:AddPhrase("dm_general_sleep_9",5,v.phr_id,-10000)
-		phrase_script = phr:GetPhraseScript()
-		phrase_script:AddAction("sleep_manager.sleep_nine_hours")
-		phr = dlg:AddPhrase("dm_general_sleep_unlim",6,v.phr_id,-10000)
-		phrase_script = phr:GetPhraseScript()
-		phrase_script:AddPrecondition("dialog_manager.precondition_sleep_unlim")
-		phrase_script:AddAction("sleep_manager.sleep_unlim")
-		phr = dlg:AddPhrase("dm_general_sleep_no",7,v.phr_id,-10000)
-	end
-	local phr = dlg:AddPhrase("dm_general_sleep_whatever",8,7,-10000)
-end
-
 -- Диалоги помощи раненным
 function init_help_wounded_medkit_dialog(dlg)
 	local phr = dlg:AddPhrase("dm_general_help_medkit","0","",-10000)
@@ -188,8 +152,7 @@ local show_tbl = {}
 selected_phrase_by_id = {
 	intro = {},
 	cool_info = {},
-	action_info = {},
-	sleep_request = {}
+	action_info = {}
 }
 
 function phrase_action_intro(npc, actor, p1, p2)
@@ -241,13 +204,6 @@ end
 
 function precondition_help_thanks(npc, actor, p1, p2, p3)
 	return precondition(npc, actor, phrase.help_thanks, nil, p1, p2, p3)
-end
-function precondition_sleep_request(npc, actor, p1, p2, p3)
-	return true
-end
-function precondition_sleep_unlim(npc, actor, p1, p2, p3)
-	if db.actor.health <= 0.9 then return true end
-	return false
 end
 
 function get_t_size(t)
@@ -302,7 +258,7 @@ function precondition(npc, actor, tbl, sel_tbl, p1, p2, p3)
 			printf("*** restore memory phrase")
 			sel_tbl[npc:id()] = nil
 		end
-	end
+	end	
 
 	--' Получить фразу по номеру:
 	local phrase = tbl[p3]

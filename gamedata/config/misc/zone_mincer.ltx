@@ -8,7 +8,7 @@ ef_anomaly_type				= 2
 ef_weapon_type				= 14
 
 sound						= zone_mosquito_bald
-;postprocess					= postprocess_gravi
+postprocess					= postprocess_gravi
 hit_effect					= explosions\expl_02_sparks
 
 artefacts					= af_blood,0.7, af_mincer_meat, 0.25,af_soul, 0.05
@@ -24,7 +24,7 @@ max_artefact_count	= 0
 
 tearing_particles			=anomaly2\body_tear_00
 torn_particles				=anomaly2\gravi_anomaly_shield_00
-idle_particles				= anomaly2\group_items\gravity_shield_dist
+idle_particles				= anomaly2\mincer_idle
 accum_particles				= anomaly2\gravi_zaxvat_myasorubka
 awake_particles				= anomaly2\gravi_zaxvat_myasorubka
 blowout_particles			= anomaly2\gravi_zaxvat_myasorubka ;gravity_blast_03
@@ -210,30 +210,3 @@ min_artefact_count	= 1
 max_artefact_count	= 2
 artefact_spawn_idle	= 24  ;насколько часто спонить артефакты в офлайне, в часах
 artefact_spawn_rnd	= 90  ;вероятность заспавнить артефакт в процентах.
-
-[noartf_mincer_weak]:zone_mincer_weak
-$spawn 				= "zones\mincer_weak_noartf"
-;artefacts			= af_blood, 0.0, af_mincer_meat, 0.0, af_soul, 0.0
-BirthProbability		= 0
-spawn_blowout_artefacts 	= off
-min_artefact_count		= 0
-max_artefact_count		= 0
-artefact_spawn_rnd		= 0
-
-[noartf_mincer_average]:zone_mincer_average
-$spawn 				= "zones\mincer_average_noartf"
-;artefacts			= af_blood, 0.0, af_mincer_meat, 0.0, af_soul, 0.0
-BirthProbability		= 0
-spawn_blowout_artefacts 	= off
-min_artefact_count		= 0
-max_artefact_count		= 0
-artefact_spawn_rnd		= 0
-
-[noartf_mincer_strong]:zone_mincer_strong
-$spawn 				= "zones\mincer_strong_noartf"
-;artefacts			= af_blood, 0.0, af_mincer_meat, 0.0, af_soul, 0.0
-BirthProbability		= 0
-spawn_blowout_artefacts 	= off
-min_artefact_count		= 0
-max_artefact_count		= 0
-artefact_spawn_rnd		= 0

@@ -78,6 +78,4 @@ function register(object_factory)
 	cs_register	(object_factory, "CMosquitoBald",	"se_zones.se_zone_anom",	"ZS_MBALD",	"zone_mbald_s")
 	cs_register	(object_factory, "CMincer",			"se_zones.se_zone_anom",	"ZS_GALAN",	"zone_galant_s")
 	cs_register	(object_factory, "CMincer",			"se_zones.se_zone_anom",	"ZS_MINCE",	"zone_mincer_s")
-
-	cs_register	(object_factory, "hanging_lamp", "aem_lights.se_lamp", "AEM_LAMP", "aem_lamp")
 end

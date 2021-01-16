@@ -29,9 +29,7 @@
 		<start_dialog>yantar_general_ucheniy_talk_start</start_dialog>
 		<actor_dialog>tm_ecolog_dialog</actor_dialog>
 		<actor_dialog>tm_ecolog_reward</actor_dialog>
-		<actor_dialog>yantar_trader_repair</actor_dialog>
-		<actor_dialog>yantar_zombie_hand</actor_dialog>
-		<actor_dialog>yantar_zombie_hand_comeback</actor_dialog>
+
 	</specific_character>
 
 <!---------------------------RESCUE_ECOLOG------------------------>
@@ -55,14 +53,13 @@
 			[spawn] \n
 			wpn_walther \n
 			ammo_9x19_fmj \n
-ammo_12x70_buck=9 \n
 			kruglov_flash \n			
 		</supplies>
 		
 #include "gameplay\character_criticals_3.xml"
 			
 		<start_dialog>yantar_help_scientist</start_dialog>
-#include "gameplay\character_dialogs.xml"
+		<actor_dialog>dm_help_wounded_medkit_dialog</actor_dialog>
 		<actor_dialog>yantar_wounded_scientist</actor_dialog>
 		
 	</specific_character>
@@ -87,14 +84,13 @@ ammo_12x70_buck=9 \n
 			[spawn] \n
 			wpn_walther \n
 			ammo_9x19_fmj \n
-ammo_5.45x39_ap=3 \n
 			kruglov_flash \n			
 		</supplies>
 		
 #include "gameplay\character_criticals_3.xml"
 			
 		<start_dialog>yantar_help_scientist</start_dialog>
-#include "gameplay\character_dialogs.xml"
+		<actor_dialog>dm_help_wounded_medkit_dialog</actor_dialog>
 	</specific_character>
 	
 	<specific_character id="yan_ecolog_vasilyev" team_default = "1">
@@ -122,7 +118,7 @@ ammo_5.45x39_ap=3 \n
 #include "gameplay\character_criticals_3.xml"
 			
 		<start_dialog>yantar_help_scientist</start_dialog>
-#include "gameplay\character_dialogs.xml"
+		<actor_dialog>dm_help_wounded_medkit_dialog</actor_dialog>
 		<actor_dialog>yantar_wounded_scientist</actor_dialog>
 		
 	</specific_character>

@@ -33,7 +33,6 @@ function action_postprocess:__init (obj, storage)
 end
 -------------------
 function action_postprocess:reset_scheme ()
-if not has_alife_info("freeplay") then
     self.actor_inside = false
 -- ----------------------------------------------------------------------------------------
 -- postprocess
@@ -62,20 +61,17 @@ if not has_alife_info("freeplay") then
 	self.gray  = 1
 	self.noise = noise (1.0, 0.3, 30)
 end
-end
 -------------------
 function action_postprocess:deactivate()
-if not has_alife_info("freeplay") then
 	if self.state == state_inside then
        self.pp:finish 	    ()
 	   level.set_snd_volume (self.snd_volume)
 	   self:zone_leave      ()
 	end
 end
-end
 -------------------
 function action_postprocess:update_params ()
-if not has_alife_info("freeplay") then    
+    
 	local c_time = (time_global () - self.old_time) * 0.001
 	self.old_time = time_global ()
 	
@@ -103,7 +99,6 @@ if not has_alife_info("freeplay") then
 	self.pp.params.noise				= noise (self.noise_var.intensity * self.intensity, self.noise_var.grain, self.noise_var.fps);
 	self.pp.params.dual                 = duality (0.01 * self.intensity, 0.01 * self.intensity);
 end
-end
 -------------------
 function action_postprocess:update (delta)
 	if xr_logic.try_switch_to_another_section (self.object, self.st, db.actor) then
@@ -121,8 +116,6 @@ function action_postprocess:update (delta)
 end
 -------------------
 function action_postprocess:update_hit		(delta)
-if not has_alife_info("freeplay") then    
-
     if self.actor_inside == false then
        self.hit_power = 0
        return
@@ -143,8 +136,7 @@ if not has_alife_info("freeplay") then
 	
 	h.type = hit.shock
 	db.actor:hit (h)
-
-end	
+	
 end
 -------------------
 

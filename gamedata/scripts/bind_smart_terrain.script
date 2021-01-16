@@ -64,8 +64,4 @@ function smart_terrain_binder:update( delta )
 	object_binder.update( self, delta )
 
 	self.se_smart_terrain:update()
-
-	if ogsm_surge and db.Dead2 == 1 then
-		ogsm_surge.kill_monsters(self.se_smart_terrain.gulag)
-	end 
 end

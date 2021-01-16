@@ -8,14 +8,15 @@
 	</info_portion>
 
 	<info_portion id="rad_code_door">
-	  
 		<article>rad_code_door_info</article>
 	</info_portion>
 	<info_portion id="rad_code_door_found">
 	</info_portion>
-	<info_portion id="rad_code_door_unlocked"></info_portion>
+	<info_portion id="rad_code_door_unlocked">
+	</info_portion>
 
-	<info_portion id="rad_lab_door_unlocked"></info_portion>
+	<info_portion id="rad_lab_door_unlocked">
+	</info_portion>
 
 	<info_portion id="rad_find_stalkers_reward_start">
 		<task>rad_find_stalkers</task>
@@ -64,7 +65,8 @@
 	<info_portion id="rad_after_antenna_turned_off">
 	</info_portion>
 
-	<info_portion id="rad_start_svoboda_vs_dolg"></info_portion>
+	<info_portion id="rad_start_svoboda_vs_dolg">
+	</info_portion>
 	
 	<info_portion id="rad_here_i_come">
 	</info_portion>	
@@ -115,7 +117,8 @@
 	<info_portion id="rad_pre_start_monolith_vs_military">
 	</info_portion>		
 	
-	<info_portion id="rad_start_monolith_vs_military"></info_portion>	
+	<info_portion id="rad_start_monolith_vs_military">
+	</info_portion>	
 	
 	<info_portion id="rad_start_snork1_jumping">
 	</info_portion>	

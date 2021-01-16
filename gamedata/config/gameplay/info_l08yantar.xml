@@ -24,7 +24,6 @@
 		<task>yan_kill_brain_task</task>
 	</info_portion>
 	<info_portion id="yantar_find_ghost_task_end">
-	  
 		<article>journal_after_find_ghost</article>
 		<task>yan_kill_brain_task_2</task>
 	</info_portion>
@@ -143,6 +142,6 @@
     <info_portion id="scientist_job">
 		<task>yan_scientist_job</task>
     </info_portion>
-<info_portion id="yantar_ecolog_give_reward"></info_portion>
+  <info_portion id="yantar_ecolog_give_reward"></info_portion>
 
 </game_information_portions>

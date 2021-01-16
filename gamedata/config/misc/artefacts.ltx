@@ -6,38 +6,20 @@
 ;Артефакты, которые при активизации создают аномальные зоны
 ;формат: {секция_артефакта} = {секция_зоны},Radius,Power
 [artefact_spawn_zones]
-
-af_ameba_slime = zone_buzz, 3, 50
-af_ameba_slug = zone_buzz, 4, 75
-af_ameba_mica = zone_buzz, 5, 100
-
-af_medusa = zone_mosquito_bald_weak, 3.0, 50.0
+af_medusa = zone_mosquito_bald_weak, 2.0, 30.0
 af_cristall_flower = zone_mosquito_bald_weak, 3.0, 50.0
 af_night_star = zone_mosquito_bald_weak, 5.0, 100.0
-
-af_dummy_pellicle = zone_death, 3.0, 75.0
-
-af_electra_sparkler = zone_witches_galantine, 2, 30.0
-af_electra_flash = zone_witches_galantine, 3, 50.0
-af_electra_moonlight = zone_witches_galantine, 5, 100.0
-
-af_fuzz_kolobok = zone_no_gravity, 5, 150
-
 af_vyvert = zone_gravi_zone_weak, 2.0, 30.0
 af_gravi = zone_gravi_zone_weak, 3.0, 50.0
 af_gold_fish = zone_gravi_zone_weak, 5.0, 100.0
-
-af_rusty_thorn = zone_radioactive_weak, 2.0, 30
-af_rusty_sea-urchin = zone_radioactive_weak, 3.0, 50
-af_rusty_kristall = zone_radioactive_weak, 4.0, 100
-
+af_cristall = torrid_zone, 3.0, 50.0
 af_blood = zone_mincer_weak, 2, 30.0
 af_mincer_meat = zone_mincer_weak, 3, 50.0
-af_soul = zone_mincer_weak, 3, 100.0
-
-af_drops = zone_zharka_static_weak, 3, 50
-af_fireball = zone_zharka_static_weak, 4, 75
-af_cristall = zone_zharka_static_weak, 5, 100
+af_soul = zone_mincer_weak, 5, 100.0
+af_electra_sparkler = zone_witches_galantine, 2, 30.0
+af_electra_flash = zone_witches_galantine, 3, 50.0
+af_electra_moonlight = zone_witches_galantine, 5, 100.0
+mp_af_electra_flash = zone_witches_galantine, 3, 50.0
 
 [af_activation_gravi]
 ;----------------------------------------------------------------------------------------------------------------------------------------
@@ -75,11 +57,12 @@ flying						=	2.0,		anomaly\electra_idle1,	1.0, 1.0, 1.0,  	5.0,			"anomaly2\art
 idle_before_spawning		=	0.0,		"",	                	1.0, 1.0, 2.5,  	0,		    	"",	"idle"				
 spawning					=	2,		    "anomaly\pux_blast",	1.0, 1.0, 1.5,  	5.0,			"anomaly2\artefact_electra_blast_finished",		"idle"
 
+
 [af_base]:identity_immunities
 hud							= artefact_hud
 animation_slot				= 11
 allow_inertion				= true
-slot						= 1
+;slot						= 10
 attach_angle_offset			= 0,0,0
 attach_position_offset		= -0.1,-0.1,0
 attach_bone_name			= bip01_root
@@ -98,54 +81,6 @@ anim_idle_sprint			= idle_sprint
 anim_hide					= holster
 anim_show					= draw
 anim_activate				= activate
-
-
-; Рука зомби-камикадзе
-[af_zombie_hand]:af_base
-GroupControlSection	= spawn_group
-$spawn				= "artifacts\moscito medusa"
-
-$prefetch 			= 64
-cform				= skeleton
-class				= ARTEFACT
-
-visual				= equipments\art_zombie_hand.ogf  
-description			= enc_zone_artifact_zombie_hand
-inv_name			= af-zombie-hand
-inv_name_short		= 
-inv_weight			= 0.5
-
-inv_grid_x			= 10
-inv_grid_y			= 25
-
-cost				= 5000
-
-jump_height			= .1
-
-particles			= anomaly2\artefact\artefact_zharka
-lights_enabled = true
-trail_light_color = 0.9,0.7,0.5
-trail_light_range = 1.5
-
-health_restore_speed		= 0.0005			
-radiation_restore_speed		= -0.005
-satiety_restore_speed		= 0.0
-power_restore_speed		= 0.0
-bleeding_restore_speed		= 0.012
-hit_absorbation_sect		= af_zombie_absorbation
-
-[af_zombie_absorbation]
-burn_immunity = 1.0
-strike_immunity = 1.0
-shock_immunity = 1.0
-wound_immunity = 1.0		
-radiation_immunity = 1.0
-telepatic_immunity = 1.0
-chemical_burn_immunity = 1.0
-explosion_immunity = 1.0
-fire_wound_immunity  = 1.0
-
-
 
 ; Артефакты для аномалии "Комариная плешь"
 [af_medusa]:af_base
@@ -476,7 +411,6 @@ lights_enabled = true	;true			;???? ??????
 trail_light_color = 0.6,0.7,0.5
 trail_light_range = 0.5
 
-artefact_activation_seq		= af_activation_bold
 
 ;скорости увеличения (уменьшения) 
 health_restore_speed = 0.0
@@ -529,7 +463,6 @@ lights_enabled = true	;true			;???? ??????
 trail_light_color = 0.9,0.5,0.5
 trail_light_range = 3.0
 
-artefact_activation_seq		= af_activation_bold
 
 ;скорости увеличения (уменьшения) 
 health_restore_speed = 0.0			
@@ -577,7 +510,7 @@ trail_light_color = 0.9,0.5,0.5
 trail_light_range = 3.0
 
 
-artefact_activation_seq		= af_activation_bold
+artefact_activation_seq		= af_activation_mincer
 
 ;скорости увеличения (уменьшения) 
 health_restore_speed = 0.0			
@@ -922,7 +855,6 @@ particles			= anomaly2\artefact\artefact_ameba
 
 lights_enabled = false
 
-artefact_activation_seq		= af_activation_bold
 
 ;скорости увеличения (уменьшения) 
 health_restore_speed = 0.0			
@@ -972,7 +904,6 @@ lights_enabled = true	;true			;???? ??????
 trail_light_color = 0.6,0.6,0.5
 trail_light_range = 1.0
 
-artefact_activation_seq		= af_activation_bold
 
 ;скорости увеличения (уменьшения) 
 health_restore_speed = 0.0			
@@ -1021,7 +952,6 @@ lights_enabled = true	;true			;???? ??????
 trail_light_color = 0.6,0.7,0.6
 trail_light_range = 1
 
-artefact_activation_seq		= af_activation_bold
 
 ;скорости увеличения (уменьшения) 
 health_restore_speed = 0.0			
@@ -1067,8 +997,6 @@ jump_height			= .2
 
 lights_enabled = false			;???? ?????? ??????, ?? ????? ??????
 
-artefact_activation_seq		= af_activation_electra
-
 
 ;скорости увеличения (уменьшения) 
 health_restore_speed = 0.0			
@@ -1101,7 +1029,7 @@ class   		= ARTEFACT
 
 visual				= physics\anomaly\artefact_pustishka1.ogf
 description			= enc_zone_artifact_af-dummy-dummy
-inv_name			= af-dummy-dummy
+inv_name			= af-dummy-battery
 inv_name_short		= 
 inv_weight			= 0.5
 
@@ -1112,7 +1040,6 @@ jump_height			= .0
 
 lights_enabled = false			;???? ?????? ??????, ?? ????? ??????
 
-artefact_activation_seq		= af_activation_electra
 
 ;скорости увеличения (уменьшения) 
 health_restore_speed = 0.0			
@@ -1159,7 +1086,6 @@ particles			= anomaly2\artefact\artefact_gravi
 
 lights_enabled = false			;???? ?????? ??????, ?? ????? ??????
 
-artefact_activation_seq		= af_activation_electra
 
 ;скорости увеличения (уменьшения) 
 health_restore_speed = 0.0		
@@ -1205,7 +1131,6 @@ particles			= anomaly2\artefact\artefact_ameba
 
 lights_enabled = false			;???? ?????? ??????, ?? ????? ??????
 
-artefact_activation_seq		= af_activation_gravi
 
 ;скорости увеличения (уменьшения) 
 health_restore_speed = 0.0			
@@ -1252,8 +1177,6 @@ particles			= anomaly2\artefact\artefact_mincer
 
 lights_enabled = false
 
-artefact_activation_seq		= af_activation_mincer
-
 
 ;скорости увеличения (уменьшения) 
 health_restore_speed = 0.0			
@@ -1297,8 +1220,6 @@ jump_height			= .3
 
 lights_enabled = false			;???? ?????? ??????, ?? ????? ??????
 
-artefact_activation_seq		= af_activation_bold
-
 ;скорости увеличения (уменьшения) 
 health_restore_speed = 0.0			
 radiation_restore_speed = -0.001
@@ -1340,7 +1261,6 @@ jump_height			= .4
 
 lights_enabled = false			;???? ?????? ??????, ?? ????? ??????
 
-artefact_activation_seq		= af_activation_bold
 
 ;скорости увеличения (уменьшения) 
 health_restore_speed = 0.0			
@@ -1382,8 +1302,6 @@ cost				= 5000
 jump_height			= .5
 
 lights_enabled = false
-
-artefact_activation_seq		= af_activation_bold
 
 
 ;скорости увеличения (уменьшения) 
@@ -1431,7 +1349,6 @@ jump_height			= .5
 particles			= anomaly2\artefact\artefact_puxx
 lights_enabled = false
 
-artefact_activation_seq		= af_activation_electra
 
 ;скорости увеличения (уменьшения) 
 health_restore_speed = 0.0			

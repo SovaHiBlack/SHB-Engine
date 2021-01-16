@@ -110,10 +110,6 @@
         <object_story_id>bar_darklab_documents</object_story_id>
         <function_complete>darkvalley_tasks.has_darklab_documents</function_complete>
         <infoportion_set_complete>bar_darklab_document_gain</infoportion_set_complete>
-        <infoportion_set_complete>dar_document1</infoportion_set_complete>
-        <infoportion_set_complete>dar_document2</infoportion_set_complete>
-        <infoportion_set_complete>dar_document3</infoportion_set_complete>
-        <infoportion_set_complete>dar_document4</infoportion_set_complete>
         <infoportion_set_complete>dar_document5</infoportion_set_complete>
         <infoportion_set_complete>val_raid_start</infoportion_set_complete>
     </objective>

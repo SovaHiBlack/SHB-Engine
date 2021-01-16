@@ -9,7 +9,7 @@ Human		     	 = off						; option for ALife Simulator
 Health			     = 100						; option for ALife Simulator
 MinSpeed		     = 1.0						; option for ALife Simulator
 MaxSpeed		     = 1.5						; option for ALife Simulator
-going_speed          = 5.0                      ; option for ALife Simulator
+going_speed          = 2.0                      ; option for ALife Simulator
 current_level_going_speed		= 1;2					; option for ALife Simulator
 search_speed         = .5                       ; option for ALife Simulator
 visual				 = monsters\dog\dog
@@ -20,7 +20,7 @@ DynamicObjectsCount	 = 32
 smart_terrain_choose_interval	= 00:15:00
 
 Spawn_Inventory_Item_Section = mutant_dog_tail
-Spawn_Inventory_Item_Probability = 0.3
+Spawn_Inventory_Item_Probability = 0.2
 
 cform                = skeleton					; collision class
 class                = SM_DOG_S					; AI class
@@ -28,7 +28,7 @@ class                = SM_DOG_S					; AI class
 ef_creature_type	 = 6				; option for evaluation functions
 ef_weapon_type		 = 2
 ef_detector_type			 = 1
-panic_threshold		= 0.07
+panic_threshold		= 0.1
 
 
 script_binding  	= bind_monster.bind
@@ -48,16 +48,17 @@ ph_box1_size 		 = 0.35, 0.4,  0.35
 ph_crash_speed_min			= 10
 ph_crash_speed_max			= 30
 ph_collision_damage_factor	= 0.1
-ph_mass 		     = 50
+ph_mass 		     = 40	;70
 actor_restrictor	 = medium_monster ;medium_monster,stalker,none
 destroyed_vis_name	 = physics\dead_body\skelet_crash_monster
 
 ;---------------------------------------------------------------------
-ph_skeleton_airr_lin_factor   = -0.4
-ph_skeleton_airr_ang_factor   = -0.2
-ph_skeleton_hinger_factor1    = 1.0
-ph_skeleton_ddelay	      = 5.0
-ph_skel_fatal_impulse_factor  = 2.0
+ph_skeleton_airr_lin_factor   = 2.0 ;550.0 (изменно из-за того, что убрано домножение коэффициент 0.002 из кода)
+ph_skeleton_airr_ang_factor   = 0.0 ;0.0 (изменно из-за того, что убрано домножение на коэффициент 0.3 из кода (0.0*0.3=0.0))
+ph_skeleton_hinger_factor1    = 1.0 ;1.0 (изменно из-за того, что убрано домножение на коэффициент 5.0 из кода)
+ph_skeleton_ddelay	     	  = 15.0 ;Время изменения значения трения в суставе с момента создания шелла, сек
+
+ph_skel_fatal_impulse_factor  = 6.0
 ph_after_death_velocity_factor= 0.75
 ph_skel_shot_up_factor        = 0.25
 ;---------------------------------------------------------------------
@@ -110,7 +111,7 @@ satiety_health_v 	= 0.005	;0.03			;увеличение здоровья при уменьшении сытости
 satiety_critical 	= -1.0		;0.25			;критическое значения сытости (в процентах от 0..1) когда здоровье начианает уменьшаться
 radiation_health_v 	= 0.01	;0.006			;уменьшение здоровья при воздействии радиации
 morale_v		= 0.01					;скорость восстановления морали
-health_hit_part 	=0.8
+health_hit_part 	= 1.0		;0.8			;процент хита, уходящий на отнимание здоровья
 power_hit_part 		= 1.0		;0.9			;процент хита, уходящий на отнимание силы
 psy_health_v		= 0.1						;скорость восстановления psy-здоровья
 
@@ -132,11 +133,6 @@ eat_slice			=	0.01	; єтхышўхэшх ёvЄюёЄш яЁш 1 єъєёх
 eat_slice_weight	=	10.0	; єьхэ№°хэшх хфv є ЄЁєяр
 
 satiety_threshold		= 0.5							; below this value monster fill hunger
-
-
-EatMemberCorpses	 = 1			; range {0,1}
-Cannibalism		 = 1			; range {0,1}
-EatCorpseInterval	 = 30000		; milliseconds
 
 ;-------------------------------------------------------------------------
 ; Morale
@@ -233,6 +229,7 @@ terrain				 = dogs_terrain
 
 
 material				= creatures\medium
+DynamicObjectsCount		= 32
 
 squad_attack_algorithm	= 1
 
@@ -287,7 +284,7 @@ ce_power		= 0.7 ; power
 ;===========================================================================
 ; Step Events
 ;===========================================================================
-[m_dog_step_params]			    ;fwdleftleg	    fwdrightleg     backrightleg     backleftleg
+[m_dog_step_params]			    fwdleftleg	    fwdrightleg     backrightleg     backleftleg
 ;------------------------------------------------------------------------------------------------------------
 ;	anim			Cycles 	| time1 | power1 | time2 | power2 | time3 | power3 | time4 | power4 |
 ;------------------------------------------------------------------------------------------------------------
@@ -495,56 +492,3 @@ stand_attack_0 =	  	0.35,		0.20,	    300,        .0, 0.1, 01.0,		 -0.5, 0.5, -1.
 stand_attack_1 =	  	0.45,		0.20,	    500,        .0, 0.1, 01.0,		 -0.5, 0.5, -1.0, 1.0,				 1.8
 stand_attack_2 =	  	0.45,		0.20,	    500,        .0, 0.1, 01.0,		 -0.5, 0.5, -1.0, 1.0,				 1.8
 stand_attack_3 =	  	0.45,		0.20,	    500,        .0, 0.1, 01.0,		 -0.5, 0.5, -1.0, 1.0,				 1.8
-
-
-[arena_dog_1]:m_dog_e
-$spawn				= "monsters\dogs\dog_02_normal"
-visual				= monsters\dog\dog_red
-corpse_visual		= monsters\dog\dog_red_dead
-icon				= ui_npc_monster_dog_red
-panic_threshold		= 0.2
-rank				= 401
-immunities_sect		= dog_immunities_strong
-attack_params		= dog_attack_params_strong
-spec_rank			= normal
-community			= dog
-custom_data = scripts\arena_mob_3.ltx
-
-[arena_dog_2]:m_dog_e
-$spawn				= "monsters\dogs\dog_03_strong"
-visual				= monsters\dog\dog_white
-corpse_visual		= monsters\dog\dog_white_dead
-icon				= ui_npc_monster_dog_white
-panic_threshold		= 0.2
-rank				= 801
-immunities_sect		= dog_immunities_strong
-attack_params		= dog_attack_params_strong
-spec_rank			= strong
-community			= dog
-custom_data = scripts\arena_mob_4.ltx
-
-[arena_dog_3]:m_dog_e
-$spawn				= "monsters\dogs\dog_01_weak"
-visual				= monsters\dog\dog
-corpse_visual		= monsters\dog\dog_dead
-icon				= ui_npc_monster_dog
-panic_threshold		= 0.2
-rank				= 0
-immunities_sect		= dog_immunities_strong
-attack_params		= dog_attack_params_strong
-spec_rank			= weak
-community			= dog
-custom_data = scripts\arena_mob_5.ltx
-
-[arena_dog_4]:m_dog_e
-$spawn				= "monsters\dogs\dog_02_normal"
-visual				= monsters\dog\dog_red
-corpse_visual		= monsters\dog\dog_red_dead
-icon				= ui_npc_monster_dog_red
-panic_threshold		= 0.2
-rank				= 401
-immunities_sect		= dog_immunities_strong
-attack_params		= dog_attack_params_strong
-spec_rank			= normal
-community			= dog
-custom_data = scripts\arena_mob_6.ltx

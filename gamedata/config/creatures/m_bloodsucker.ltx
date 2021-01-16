@@ -10,7 +10,7 @@ $npc			     		 = on							; option for Level Editor
 visual						 = monsters\krovosos\krovosos
 corpse_visual				 = monsters\krovosos\krovosos_dead
 icon						 = ui_npc_monster_krovosos
-MaxHealthValue		 		 = 200							; range [0..200]
+MaxHealthValue		 		 = 2.0							; range [0..200]
 
 
 ef_creature_type			 = 13							; option for evaluation functions
@@ -28,7 +28,7 @@ bone_fire					 = bip01_head
 weapon_usage				 = 0							; boolean
 
 Spawn_Inventory_Item_Section = mutant_krovosos_jaw
-Spawn_Inventory_Item_Probability = 0.4
+Spawn_Inventory_Item_Probability = 0.2
 
 ;------------------------------------------------------------------------
 ; Offline Alife
@@ -54,16 +54,17 @@ ph_foot_size 		  			= 0.20, 0.23, 0.20
 ph_crash_speed_min				= 100
 ph_crash_speed_max				= 200
 ph_collision_damage_factor		= 0.1
-ph_mass 						= 100
+ph_mass 						= 150;120
 
 destroyed_vis_name				= physics\Dead_Body\trupik_crash
 
 ;---------------------------------------------------------------------
-ph_skeleton_airr_lin_factor   = -0.4
-ph_skeleton_airr_ang_factor   = -0.2
-ph_skeleton_hinger_factor1    = 1.0
-ph_skeleton_ddelay	      = 5.0
-ph_skel_fatal_impulse_factor  = 2.0
+ph_skeleton_airr_lin_factor   = 2.0 ;550.0 (изменно из-за того, что убрано домножение коэффициент 0.002 из кода)
+ph_skeleton_airr_ang_factor   = 0.0 ;0.0 (изменно из-за того, что убрано домножение на коэффициент 0.3 из кода (0.0*0.3=0.0))
+ph_skeleton_hinger_factor1    = 1.0 ;1.0 (изменно из-за того, что убрано домножение на коэффициент 5.0 из кода)
+ph_skeleton_ddelay	     	  = 15.0 ;Время изменения значения трения в суставе с момента создания шелла, сек
+
+ph_skel_fatal_impulse_factor  = 12.0
 ph_after_death_velocity_factor= 0.75
 ph_skel_shot_up_factor        = 0.25
 ;---------------------------------------------------------------------
@@ -574,6 +575,7 @@ attack_params		= bloodsucker_attack_params_strong
 spec_rank			= strong
 community			= bloodsucker
 
+
 [bloodsucker_immunities_strong]
 burn_immunity			= 1.0
 strike_immunity			= 1.0
@@ -629,24 +631,3 @@ $spawn				= "monsters\military\bloodsucker_mil"
 visual				= monsters\krovosos\krovosos
 icon				= ui_npc_monster_krovosos
 panic_threshold		= 0.05
-
-
-[arena_bloodsucker_1]:bloodsucker_strong
-$spawn				= "monsters\bloodsuckers\arena\bloodsucker_arena"
-visual				= monsters\krovosos\krovosos
-icon				= ui_npc_monster_krovosos
-panic_threshold		= 0.05
-species				= arena_monstr
-immunities_sect		= bloodsucker_immunities_arena
-custom_data = scripts\arena_mob_1.ltx
-
-[bloodsucker_immunities_arena]
-burn_immunity			= 0.06
-strike_immunity			= 0.06
-shock_immunity			= 0.06
-wound_immunity			= 0.06
-radiation_immunity		= 0.0
-telepatic_immunity		= 1.0
-chemical_burn_immunity	= 1.0
-explosion_immunity		= 0.03
-fire_wound_immunity		= 0.03

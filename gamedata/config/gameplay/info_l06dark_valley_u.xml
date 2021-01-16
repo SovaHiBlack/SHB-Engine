@@ -17,19 +17,17 @@
 
 
 <!-- Игрок нашел флешку с паролем -->
-
 <info_portion id="dar_password_info1">
-<article>dar_password_info1</article>
-<article>dar_password_info11</article>
+	<article>dar_password_info1</article>
+	<article>dar_password_info11</article>
 </info_portion>
 
 <info_portion id="dar_password_info1_know"></info_portion>
 
 <!-- Игрок нашел документы с паролем -->
-
 <info_portion id="dar_password_info2">
-<article>dar_password_info2</article>
-<article>dar_password_info22</article>
+	<article>dar_password_info2</article>
+	<article>dar_password_info22</article>
 </info_portion>
 
 <info_portion id="dar_password_info2_know"></info_portion>
@@ -60,10 +58,14 @@
 </info_portion>
 
 <!-- Игрок нашел документы 5 -->
-
 <info_portion id="dar_document5">
-<article>dar_document5</article>
+<!--	<article>dar_document1</article>
+	<article>dar_document2</article>
+	<article>dar_document3</article>
+	<article>dar_document4</article> -->
+	<article>dar_document5</article> 
 </info_portion>
+
 
 <!-- Начался квест на документы -->
 <info_portion id="dar_run_quest">
@@ -72,12 +74,9 @@
 
 <!-- Вспомогательные инфопоршены -->
 <info_portion id="x18_door2"></info_portion>
-
 <info_portion id="x18_door2_knock_stop"></info_portion>
-
 <info_portion id="dar_open_door1"></info_portion>
-<info_portion id="dar_open_door2"><action>ogsm_quests.x18_laugh</action></info_portion>
-
+<info_portion id="dar_open_door2"></info_portion>
 <info_portion id="info_knock"></info_portion>
 <info_portion id="dar_podval"></info_portion>
 
