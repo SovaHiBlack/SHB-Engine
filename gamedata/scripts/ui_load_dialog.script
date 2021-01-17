@@ -116,8 +116,6 @@ function load_dialog:InitCallBacks()
 
 	self:AddCallback("list_window", ui_events.LIST_ITEM_CLICKED, 			  self.OnListItemClicked,		self)
 	self:AddCallback("list_window", ui_events.WINDOW_LBUTTON_DB_CLICK,		  self.OnListItemDbClicked,		self)
-	
-	
 end
 
 function file_exist(fname)

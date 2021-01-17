@@ -159,18 +159,6 @@
 	<string id="kb_use_medkit">
 		<text>Быстрое использ. аптечки</text>
 	</string>
-	<string id="kb_vote_begin">
-		<text>Начать голосование</text>
-	</string>
-	<string id="kb_vote_menu">
-		<text>Проголосовать</text>
-	</string>
-	<string id="kb_vote_no">
-		<text>Проголосовать "Нет"</text>
-	</string>
-	<string id="kb_vote_yes">
-		<text>Проголосовать "Да"</text>
-	</string>
 	<string id="kb_weapon1">
 		<text>Оружие 1</text>
 	</string>

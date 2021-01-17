@@ -21,8 +21,7 @@
 		<_texture>ui\ui_options_menu_static</_texture>
 		<_texture_offset x="-29" y="-19"/>
 		<texture>ui_menu_options_dlg</texture>
-		
-		
+
 		<caption x="65" y="10" width="500" height="25" complex_mode="0">
 			<text font="graffiti22" r="184" g="168" b="131">ui_mm_load_game</text>
 		</caption>
@@ -35,10 +34,7 @@
 			<_texture>ui\ui_static_loadgameinfo</_texture>
 			<texture x="0" y="768" width="497" height="171">ui\ui_static_mm_back_04</texture>
 		</file_info>
-		
-		
-		
-		
+
 		<file_caption x="299" y="109" width="512" height="20" complex_mode="1">
 			<text font="letterica18" r="238" g="155" b="23"/>
 		</file_caption>
