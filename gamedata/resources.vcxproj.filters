@@ -645,12 +645,6 @@
     <None Include="config\creatures\immunities.ltx">
       <Filter>config\creatures</Filter>
     </None>
-    <None Include="config\creatures\m_army.ltx">
-      <Filter>config\creatures</Filter>
-    </None>
-    <None Include="config\creatures\m_bandit.ltx">
-      <Filter>config\creatures</Filter>
-    </None>
     <None Include="config\creatures\m_bloodsucker.ltx">
       <Filter>config\creatures</Filter>
     </None>
@@ -679,9 +673,6 @@
       <Filter>config\creatures</Filter>
     </None>
     <None Include="config\creatures\m_flesh.ltx">
-      <Filter>config\creatures</Filter>
-    </None>
-    <None Include="config\creatures\m_fraction.ltx">
       <Filter>config\creatures</Filter>
     </None>
     <None Include="config\creatures\m_fracture.ltx">
@@ -730,9 +721,6 @@
       <Filter>config\creatures</Filter>
     </None>
     <None Include="config\creatures\stalkers.ltx">
-      <Filter>config\creatures</Filter>
-    </None>
-    <None Include="config\creatures\vssver.scc">
       <Filter>config\creatures</Filter>
     </None>
     <None Include="config\misc\artefacts.ltx">

@@ -255,9 +255,7 @@
 	<string id="mp_your_rank">
 		<text>Your rank is now</text>
 	</string>
-	<string id="ui_st_description">
-		<text>Description</text>
-	</string>
+
 	<string id="ui_st_team1_name">
 		<text>Freedom</text>
 	</string>
