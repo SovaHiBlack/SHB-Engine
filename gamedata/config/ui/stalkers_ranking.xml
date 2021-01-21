@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <window>
 
 	<main_wnd x="110" y="90" width="761" height="455"/>
@@ -12,7 +12,7 @@
 	</chicon_frame_window>
 
 	<chicon_frame_line x="8" y="17" width="284" height="21">
-        <texture>ui_string_03</texture>		
+		<texture>ui_string_03</texture>		
 	</chicon_frame_line>
 
 	<info_frame_window x="0" y="0" width="448" height="475" a="80">
@@ -24,7 +24,7 @@
 		</title>
 		<texture>ui_string_02</texture>		
 	</info_frame_line>
-    <left_auto>
+	<left_auto>
 		<auto_static x="8" y="52" width="4" height="388">
 			<texture>ui\ui_pda_vertical_line_r_l</texture>
 		</auto_static>
@@ -46,7 +46,7 @@
 		<auto_static x="300" y="50" width="100" height="20" >
 			<text align="r" font="letterica18" r="180" g="180" b="180">Rank</text>
 		</auto_static>
-    </left_auto>
+	</left_auto>
 
 
 
@@ -54,8 +54,8 @@
 		<texture>ui\ui_pda_anims_03</texture>
 	</a_static>
 
-    
-    <right_auto>
+	
+	<right_auto>
 		<auto_static x="8" y="52" width="4" height="420">
 			<texture>ui\ui_pda_vertical_line_r_l</texture>
 		</auto_static>
@@ -68,7 +68,7 @@
 		<auto_static x="14" y="189" width="249" height="2" stretch="1">
 			<texture>ui\ui_pda_horizontal_line</texture>
 		</auto_static>
-    </right_auto>
+	</right_auto>
 
 
 	<stalkers_list>

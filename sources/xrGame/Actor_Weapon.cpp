@@ -110,7 +110,7 @@ static	u16 BestWeaponSlots [] = {
 	KNIFE_SLOT		,		// 0
 };
 
-#define ENEMY_HIT_SPOT	"mp_hit_sector_location"
+#define ENEMY_HIT_SPOT	"hit_sector_location"
 BOOL	g_bShowHitSectors	= TRUE;
 
 void	CActor::HitSector(CObject* who, CObject* weapon)
