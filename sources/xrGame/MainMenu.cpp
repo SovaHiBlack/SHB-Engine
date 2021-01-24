@@ -16,11 +16,11 @@
 
 #include "object_broker.h"
 
-string128 ErrMsgBoxTemplate[ ] =
-{
-	"message_box_session_full",
-	"message_box_error_loading"
-};
+//string128 ErrMsgBoxTemplate[ ] =
+//{
+//	"message_box_session_full",
+//	"message_box_error_loading"
+//};
 
 extern bool b_shniaganeed_pp;
 
@@ -30,7 +30,7 @@ CMainMenu* MainMenu( )
 };
 
 //----------------------------------------------------------------------------------
-#define INIT_MSGBOX(_box, _template)	{ _box = xr_new<CUIMessageBoxEx>(); _box->Init(_template);}
+//#define INIT_MSGBOX(_box, _template)	{ _box = xr_new<CUIMessageBoxEx>(); _box->Init(_template);}
 //----------------------------------------------------------------------------------
 
 CMainMenu::CMainMenu( )
@@ -55,12 +55,12 @@ CMainMenu::CMainMenu( )
 
 	g_btnHint = xr_new<CUIButtonHint>( );
 
-	for (u32 i = 0; i < u32(ErrMax); i++)
-	{
-		CUIMessageBoxEx* pNewErrDlg;
-		INIT_MSGBOX(pNewErrDlg, ErrMsgBoxTemplate[i]);
-		m_pMB_ErrDlgs.push_back(pNewErrDlg);
-	}
+	//for (u32 i = 0; i < u32(ErrMax); i++)
+	//{
+	//	CUIMessageBoxEx* pNewErrDlg;
+	//	INIT_MSGBOX(pNewErrDlg, ErrMsgBoxTemplate[i]);
+	//	m_pMB_ErrDlgs.push_back(pNewErrDlg);
+	//}
 }
 
 CMainMenu::~CMainMenu( )

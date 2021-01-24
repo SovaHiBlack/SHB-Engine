@@ -1,4 +1,3 @@
-
 	<intro_logo>
 		<global_wnd x="0" y="0" width="1024" height="768">
 			<auto_static x="0" y="0" width="1024" height="768" stretch="1">
@@ -15,6 +14,7 @@
 				<texture x="0" y="1" width="720" height="484">intro\thq_logo_hyuv</texture>
 			</video_wnd>
 		</item>
+
 		<item type="video">
 			<delay>1</delay>
 			<pause_state>on</pause_state>
@@ -37,103 +37,104 @@
 			<length_sec>9</length_sec>
 			<pause_state>on</pause_state>
 			<main_wnd>
-				<auto_static start_time="0" length_sec="4"  x="0" y="0" width="1024" height="768" stretch="1" light_anim="asus_logo_01" light_anim_cyclic="0" la_alpha="1" la_texture="1">
+				<auto_static start_time="0" length_sec="4" x="0" y="0" width="1024" height="768" stretch="1" light_anim="asus_logo_01" light_anim_cyclic="0" la_alpha="1" la_texture="1">
 					<window_name>w1</window_name>
 					<texture>ui_asus_01</texture>
 				</auto_static>
-				<auto_static start_time="4" length_sec="4"  x="0" y="0" width="1024" height="768" stretch="1" light_anim="asus_logo_01" light_anim_cyclic="0" la_alpha="1" la_texture="1">
+				<auto_static start_time="4" length_sec="4" x="0" y="0" width="1024" height="768" stretch="1" light_anim="asus_logo_01" light_anim_cyclic="0" la_alpha="1" la_texture="1">
 					<window_name>w2</window_name>
 					<texture>ui_asus_02</texture>
 				</auto_static>
 			</main_wnd>
 		</item>
+
 		<item type="image">
 			<length_sec>5</length_sec>
 			<pause_state>on</pause_state>
 			<main_wnd>
-				<auto_static start_time="0" length_sec="4"  x="0" y="0" width="1024" height="768" stretch="1" light_anim="asus_logo_01" light_anim_cyclic="0" la_alpha="1" la_texture="1">
+				<auto_static start_time="0" length_sec="4" x="0" y="0" width="1024" height="768" stretch="1" light_anim="asus_logo_01" light_anim_cyclic="0" la_alpha="1" la_texture="1">
 					<window_name>w1</window_name>
 					<texture>ui\ui_nvidia_intro</texture>
 				</auto_static>
 			</main_wnd>
 		</item>
-<!--  TEST, DONT DELETE this block
-		<item type="video">
-			<sound>characters_voice\scenario\video\intro_stalker</sound>
-			<pause_state>on</pause_state>
-			<video_wnd x="0" y="0" width="1024" height="768" stretch="1">
-				<texture x="0" y="1" width="512" height="286">intro\intro_stalker</texture>
-			</video_wnd>
-		</item>
-		<item type="video">
-			<sound>characters_voice\scenario\video\dream_rats</sound>
-			<pause_state>on</pause_state>
-			<video_wnd x="0" y="0" width="1024" height="768" stretch="1">
-				<texture x="0" y="1" width="512" height="286">intro\dream_rats</texture>
-			</video_wnd>
-		</item>
-		<item type="video">
-			<sound>characters_voice\scenario\video\dream_sarcofag</sound>
-			<pause_state>on</pause_state>
-			<video_wnd x="0" y="0" width="1024" height="768" stretch="1">
-				<texture x="0" y="1" width="512" height="286">intro\dream_sarcofag</texture>
-			</video_wnd>
-		</item>
-		<item type="video">
-			<pause_state>on</pause_state>
-			<video_wnd x="0" y="0" width="1024" height="768" stretch="1">
-				<texture x="0" y="1" width="512" height="286">intro\dream_doctor</texture>
-			</video_wnd>
-		</item>
-		<item type="video">
-			<sound>characters_voice\scenario\video\final_blind</sound>
-			<pause_state>on</pause_state>
-			<video_wnd x="0" y="0" width="1024" height="768" stretch="1">
-				<texture x="0" y="1" width="512" height="286">intro\final_blind</texture>
-			</video_wnd>
-		</item>
-		<item type="video">
-			<sound>characters_voice\scenario\video\final_gold</sound>
-			<pause_state>on</pause_state>
-			<video_wnd x="0" y="0" width="1024" height="768" stretch="1">
-				<texture x="0" y="1" width="512" height="286">intro\final_gold</texture>
-			</video_wnd>
-		</item>
-		<item type="video">
-			<sound>characters_voice\scenario\video\final_to_monolith</sound>
-			<pause_state>on</pause_state>
-			<video_wnd x="0" y="0" width="1024" height="768" stretch="1">
-				<texture x="0" y="1" width="512" height="286">intro\final_to_monolith</texture>
-			</video_wnd>
-		</item>
-		<item type="video">
-			<sound>characters_voice\scenario\video\final_apocal</sound>
-			<pause_state>on</pause_state>
-			<video_wnd x="0" y="0" width="1024" height="768" stretch="1">
-				<texture x="0" y="1" width="512" height="286">intro\final_apocal</texture>
-			</video_wnd>
-		</item>
-		<item type="video">
-			<sound>characters_voice\scenario\video\final_immortal</sound>
-			<pause_state>on</pause_state>
-			<video_wnd x="0" y="0" width="1024" height="768" stretch="1">
-				<texture x="0" y="1" width="512" height="286">intro\final_immortal</texture>
-			</video_wnd>
-		</item>
-		<item type="video">
-			<pause_state>on</pause_state>
-			<video_wnd x="0" y="0" width="1024" height="768" stretch="1">
-				<texture x="0" y="1" width="512" height="286">intro\dream_doctor_2</texture>
-			</video_wnd>
-		</item>
-		<item type="video">
-			<sound>characters_voice\scenario\video\final_peace</sound>
-			<pause_state>on</pause_state>
-			<video_wnd x="0" y="0" width="1024" height="768" stretch="1">
-				<texture x="0" y="1" width="512" height="286">intro\final_peace</texture>
-			</video_wnd>
-		</item>
--->
+		<!-- TEST, DONT DELETE this block
+				<item type="video">
+					<sound>characters_voice\scenario\video\intro_stalker</sound>
+					<pause_state>on</pause_state>
+					<video_wnd x="0" y="0" width="1024" height="768" stretch="1">
+						<texture x="0" y="1" width="512" height="286">intro\intro_stalker</texture>
+					</video_wnd>
+				</item>
+				<item type="video">
+					<sound>characters_voice\scenario\video\dream_rats</sound>
+					<pause_state>on</pause_state>
+					<video_wnd x="0" y="0" width="1024" height="768" stretch="1">
+						<texture x="0" y="1" width="512" height="286">intro\dream_rats</texture>
+					</video_wnd>
+				</item>
+				<item type="video">
+					<sound>characters_voice\scenario\video\dream_sarcofag</sound>
+					<pause_state>on</pause_state>
+					<video_wnd x="0" y="0" width="1024" height="768" stretch="1">
+						<texture x="0" y="1" width="512" height="286">intro\dream_sarcofag</texture>
+					</video_wnd>
+				</item>
+				<item type="video">
+					<pause_state>on</pause_state>
+					<video_wnd x="0" y="0" width="1024" height="768" stretch="1">
+						<texture x="0" y="1" width="512" height="286">intro\dream_doctor</texture>
+					</video_wnd>
+				</item>
+				<item type="video">
+					<sound>characters_voice\scenario\video\final_blind</sound>
+					<pause_state>on</pause_state>
+					<video_wnd x="0" y="0" width="1024" height="768" stretch="1">
+						<texture x="0" y="1" width="512" height="286">intro\final_blind</texture>
+					</video_wnd>
+				</item>
+				<item type="video">
+					<sound>characters_voice\scenario\video\final_gold</sound>
+					<pause_state>on</pause_state>
+					<video_wnd x="0" y="0" width="1024" height="768" stretch="1">
+						<texture x="0" y="1" width="512" height="286">intro\final_gold</texture>
+					</video_wnd>
+				</item>
+				<item type="video">
+					<sound>characters_voice\scenario\video\final_to_monolith</sound>
+					<pause_state>on</pause_state>
+					<video_wnd x="0" y="0" width="1024" height="768" stretch="1">
+						<texture x="0" y="1" width="512" height="286">intro\final_to_monolith</texture>
+					</video_wnd>
+				</item>
+				<item type="video">
+					<sound>characters_voice\scenario\video\final_apocal</sound>
+					<pause_state>on</pause_state>
+					<video_wnd x="0" y="0" width="1024" height="768" stretch="1">
+						<texture x="0" y="1" width="512" height="286">intro\final_apocal</texture>
+					</video_wnd>
+				</item>
+				<item type="video">
+					<sound>characters_voice\scenario\video\final_immortal</sound>
+					<pause_state>on</pause_state>
+					<video_wnd x="0" y="0" width="1024" height="768" stretch="1">
+						<texture x="0" y="1" width="512" height="286">intro\final_immortal</texture>
+					</video_wnd>
+				</item>
+				<item type="video">
+					<pause_state>on</pause_state>
+					<video_wnd x="0" y="0" width="1024" height="768" stretch="1">
+						<texture x="0" y="1" width="512" height="286">intro\dream_doctor_2</texture>
+					</video_wnd>
+				</item>
+				<item type="video">
+					<sound>characters_voice\scenario\video\final_peace</sound>
+					<pause_state>on</pause_state>
+					<video_wnd x="0" y="0" width="1024" height="768" stretch="1">
+						<texture x="0" y="1" width="512" height="286">intro\final_peace</texture>
+					</video_wnd>
+				</item>
+		-->
 	</intro_logo>
 
 	<intro_game>
@@ -153,7 +154,6 @@
 			</video_wnd>
 		</item>
 	</intro_game>
-
 
 	<x18_dream>
 		<play_each_item>1</play_each_item>

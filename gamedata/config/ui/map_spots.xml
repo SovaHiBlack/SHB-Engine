@@ -13,7 +13,7 @@
 #include "ui\map_spots_lchangers.xml"
 
 	<hit_sector_location hint="hit_sector" ttl="3" pos_to_actor="1">
-		<mini_map  spot="hit_sector_mini_spot"/>
+		<mini_map spot="hit_sector_mini_spot"/>
 	</hit_sector_location>
 	<hit_sector_mini_spot x="0" y="0" width="80" height="256" heading="1" alignment="c">
 		<texture x="305" y="762" width="80" height="256">ui\ui_hud</texture>
@@ -29,21 +29,21 @@
 	<crlc_big>
 		<level_map spot="crlc_big_spot" pointer="quest_pointer"/>
 	</crlc_big>
-	<crlc_big_spot  x="0" y="0" width="15" height="15" alignment="c" scale="1" stretch = "1">
+	<crlc_big_spot x="0" y="0" width="15" height="15" alignment="c" scale="1" stretch="1">
 		<texture x="730" y="456" width="115" height="115">ui\ui_common</texture>
 	</crlc_big_spot>
 
 	<crlc_mdl>
 		<level_map spot="crlc_mdl_spot" pointer="quest_pointer"/>
 	</crlc_mdl>
-	<crlc_mdl_spot  x="0" y="0" width="8" height="8" alignment="c" scale="1" stretch = "1">
+	<crlc_mdl_spot x="0" y="0" width="8" height="8" alignment="c" scale="1" stretch="1">
 		<texture x="858" y="392" width="62" height="62">ui\ui_common</texture>
 	</crlc_mdl_spot>
 
 	<crlc_small>
 		<level_map spot="crlc_small_spot" pointer="quest_pointer"/>
 	</crlc_small>
-	<crlc_small_spot  x="0" y="0" width="4" height="4" alignment="c" scale="1" stretch = "1">
+	<crlc_small_spot x="0" y="0" width="4" height="4" alignment="c" scale="1" stretch="1">
 		<texture x="633" y="789" width="31" height="31">ui\ui_common</texture>
 	</crlc_small_spot>
 
@@ -80,7 +80,7 @@
 	<red_spot x="0" y="0" width="32" height="32" stretch="1" alignment="c" xform_anim="map_spot_new_xform" xform_anim_cyclic="0">
 		<texture>ui_icons_mapPDA_mark_t</texture>
 	</red_spot>
-	<red_mini_spot  x="0" y="0" width="11" height="11" stretch="1" alignment="c" xform_anim="map_spot_new_xform" xform_anim_cyclic="0">
+	<red_mini_spot x="0" y="0" width="11" height="11" stretch="1" alignment="c" xform_anim="map_spot_new_xform" xform_anim_cyclic="0">
 		<texture>ui_icons_newPDA_SmallRed</texture>
 		<texture_below r="255" g="0" b="0">ui_mini_sn_spot_below</texture_below>
 		<texture_above r="255" g="0" b="0">ui_mini_sn_spot_above</texture_above>
@@ -93,7 +93,7 @@
 	<eliminate_lager_spot x="0" y="0" width="32" height="32" stretch="1" alignment="c" xform_anim="map_spot_new_xform" xform_anim_cyclic="0">
 		<texture>ui_mapQuest_camp_destroy</texture>
 	</eliminate_lager_spot>
-	<eliminate_lager_spot_mini  x="0" y="0" width="11" height="11" stretch="1" alignment="c" xform_anim="map_spot_new_xform" xform_anim_cyclic="0">
+	<eliminate_lager_spot_mini x="0" y="0" width="11" height="11" stretch="1" alignment="c" xform_anim="map_spot_new_xform" xform_anim_cyclic="0">
 		<texture>ui_sm_mapQuest_camp_destroy</texture>
 		<texture_below r="0" g="255" b="0">ui_mini_sn_spot_below</texture_below>
 		<texture_above r="0" g="255" b="0">ui_mini_sn_spot_above</texture_above>
@@ -103,10 +103,10 @@
 		<level_map spot="defend_lager_spot" pointer="quest_pointer"/>
 		<mini_map spot="defend_lager_spot_mini" pointer="quest_pointer"/>
 	</defend_lager_location>
-	<defend_lager_spot  x="0" y="0" width="32" height="32" stretch="1" alignment="c" xform_anim="map_spot_new_xform" xform_anim_cyclic="0">
+	<defend_lager_spot x="0" y="0" width="32" height="32" stretch="1" alignment="c" xform_anim="map_spot_new_xform" xform_anim_cyclic="0">
 		<texture>ui_mapQuest_camp_defend</texture>
 	</defend_lager_spot>
-	<defend_lager_spot_mini  x="0" y="0" width="11" height="11" stretch="1" alignment="c" xform_anim="map_spot_new_xform" xform_anim_cyclic="0">
+	<defend_lager_spot_mini x="0" y="0" width="11" height="11" stretch="1" alignment="c" xform_anim="map_spot_new_xform" xform_anim_cyclic="0">
 		<texture>ui_sm_mapQuest_camp_defend</texture>
 		<texture_below r="0" g="255" b="0">ui_mini_sn_spot_below</texture_below>
 		<texture_above r="0" g="255" b="0">ui_mini_sn_spot_above</texture_above>
@@ -210,7 +210,7 @@
 	</general_wounded_spot>
 
 	<anomaly_zone_location hint="anomaly_zone">
-		<mini_map  spot="anomaly_zone_mini_spot"/>
+		<mini_map spot="anomaly_zone_mini_spot"/>
 	</anomaly_zone_location>
 
 	<anomaly_zone_mini_spot x="0" y="0" width="16" height="16" alignment="c" stretch="1">
@@ -333,21 +333,21 @@
 		<level_map spot="alife_presentation_stalker_spot"/>
 	</alife_presentation_stalker>
 	<alife_presentation_stalker_spot x="0" y="0" width="3" height="3" alignment="c" stretch="1" scale="1">
-		<texture r="128" g="0" b="255" >ui_minimap_point</texture>
+		<texture r="128" g="0" b="255">ui_minimap_point</texture>
 	</alife_presentation_stalker_spot>
 
 	<alife_presentation_actor_dolg>
 		<level_map spot="alife_presentation_actor_dolg_spot"/>
 	</alife_presentation_actor_dolg>
 	<alife_presentation_actor_dolg_spot x="0" y="0" width="3" height="3" alignment="c" stretch="1" scale="1">
-		<texture r="128" g="0" b="255" >ui_minimap_point</texture>
+		<texture r="128" g="0" b="255">ui_minimap_point</texture>
 	</alife_presentation_actor_dolg_spot>
 
 	<alife_presentation_zombied>
 		<level_map spot="alife_presentation_zombied_spot"/>
 	</alife_presentation_zombied>
 	<alife_presentation_zombied_spot x="0" y="0" width="3" height="3" alignment="c" stretch="1" scale="1">
-		<texture r="255" g="255" b="0" >ui_minimap_point</texture>
+		<texture r="255" g="255" b="0">ui_minimap_point</texture>
 	</alife_presentation_zombied_spot>
 
 	<alife_presentation_trader>

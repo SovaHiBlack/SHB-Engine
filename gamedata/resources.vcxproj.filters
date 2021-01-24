@@ -2058,9 +2058,6 @@
     <None Include="config\fonts.ltx">
       <Filter>config</Filter>
     </None>
-    <None Include="config\fonts.ltx~">
-      <Filter>config</Filter>
-    </None>
     <None Include="config\game.ltx">
       <Filter>config</Filter>
     </None>
@@ -2071,9 +2068,6 @@
       <Filter>config</Filter>
     </None>
     <None Include="config\game_levels_music.ltx">
-      <Filter>config</Filter>
-    </None>
-    <None Include="config\game_maps_mp.ltx">
       <Filter>config</Filter>
     </None>
     <None Include="config\game_maps_single.ltx">
@@ -5176,9 +5170,6 @@
       <Filter>config\ui</Filter>
     </Xml>
     <Xml Include="config\ui\map_spots_lchangers.xml">
-      <Filter>config\ui</Filter>
-    </Xml>
-    <Xml Include="config\ui\map_spots_mp.xml">
       <Filter>config\ui</Filter>
     </Xml>
     <Xml Include="config\ui\map_spots_radar.xml">

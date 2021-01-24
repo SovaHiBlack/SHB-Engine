@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <window>
-	<list x="20" y="87" width="420" height="370" item_height = "18">
+	<list x="20" y="87" width="420" height="370" item_height="18">
 		<font font="letterica18" r="255" g="255" b="255"></font>
 	</list>
 
@@ -28,7 +28,6 @@
 		<title x="10" y="1" width="435" height="18">
 			<text font="letterica16">st_pda_detail_info</text>
 		</title>
-
 		<texture>ui_string_03</texture>
 	</info_frame_line>
 
@@ -40,7 +39,6 @@
 		<title x="15" y="1" width="250" height="27">
 			<text font="letterica25" r="225" g="225" b="250"/>
 		</title>
-
 		<texture>ui_string_02</texture>
 	</chicon_frame_line>
 
@@ -77,17 +75,6 @@
 	</left_auto_static>
 
 	<actor_stats_wnd>
-<!--
-		<master_part x="0" y="0" width="250" height="55" id="reputation">
-			<text_1 x="0" y="0" width="150" height="20" highlight_text="1" hA="255" hR="255" hB="255" hG="255">
-				<text align="l" x="0" y="0" font="letterica25" r="180" g="180" b="180" a="160">st_pda_statistic_reputation</text>
-			</text_1>
-
-			<text_2 x="150" y="0" width="100" height="20">
-				<text align="r" x="0" y="0" font="letterica25" a="200"/>
-			</text_2>
-		</master_part>
--->
 		<master_part x="0" y="0" width="250" height="55" id="foo">
 			<text_1 x="0" y="20" width="200" height="20">
 				<text align="l" x="0" y="0" font="letterica25" r="230" g="230" b="200" a="230">st_pda_statistic_score</text>
@@ -143,23 +130,7 @@
 				</auto_static>
 			</auto>
 		</master_part>
-<!--
-		<master_part x="0" y="0" width="250" height="25" id="artefacts">
-			<text_1 x="0" y="0" width="200" height="20" highlight_text="1" hA="255" hR="255" hB="255" hG="255">
-				<text align="l" x="0" y="0" font="letterica18" r="170" g="170" b="170" a="160">st_pda_artefacts</text>
-			</text_1>
 
-			<text_2 x="210" y="0" width="25" height="20">
-				<text align="r" x="0" y="0" font="letterica18"/>
-			</text_2>
-
-			<auto>
-				<auto_static x="0" y="20" width="250" height="3" stretch="1">
-					<texture>ui\ui_pda_horizontal_line</texture>
-				</auto_static>
-			</auto>
-		</master_part>
--->
 		<master_part x="0" y="0" width="250" height="45" id="total">
 			<text_1 x="0" y="20" width="200" height="20">
 				<text align="l" x="0" y="0" font="letterica18" r="180" g="180" b="180" a="230">st_pda_total</text>

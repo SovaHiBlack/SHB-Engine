@@ -210,12 +210,10 @@
     <None Include="config\external.ltx" />
     <None Include="config\extracontent.ltx" />
     <None Include="config\fonts.ltx" />
-    <None Include="config\fonts.ltx~" />
     <None Include="config\game.ltx" />
     <None Include="config\game_graphs.ltx" />
     <None Include="config\game_levels.ltx" />
     <None Include="config\game_levels_music.ltx" />
-    <None Include="config\game_maps_mp.ltx" />
     <None Include="config\game_maps_single.ltx" />
     <None Include="config\game_spawn_story_ids.ltx" />
     <None Include="config\game_story_ids.ltx" />
@@ -1981,7 +1979,6 @@
     <Xml Include="config\ui\map_spots_escape.xml" />
     <Xml Include="config\ui\map_spots_garbage.xml" />
     <Xml Include="config\ui\map_spots_lchangers.xml" />
-    <Xml Include="config\ui\map_spots_mp.xml" />
     <Xml Include="config\ui\map_spots_radar.xml" />
     <Xml Include="config\ui\map_spots_relations.xml" />
     <Xml Include="config\ui\messages_window.xml" />

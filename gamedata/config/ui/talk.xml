@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <window>
-
 	<left_character_icon x="15" y="32" width="200" height="218">
 		<texture>ui_charinfo_left</texture>
 		<texture_offset x="-11" y="0"/>
@@ -39,8 +38,7 @@
 
 	<questions_list x="30" y="100" width="547" height="120" right_ident="5" always_show_scroll="0"/>
 
-	<answers_list	x="33" y="46" width="544" height="377" right_ident="0" always_show_scroll="0"/>
-
+	<answers_list x="33" y="46" width="544" height="377" right_ident="0" always_show_scroll="0"/>
 
 	<question_item x="0" y="0" width="527" height="20" min_height="13">
 		<content_text x="0" y="0" width="520" height="20">
@@ -50,7 +48,6 @@
 				<e r="255" g="232" b="208"/>
 				<h r="255" g="255" b="255"/>
 			</text_color>
-
 		</content_text>
 	</question_item>
 
@@ -81,10 +78,8 @@
 			<text font="letterica16" r="255" g="255" b="255"/>
 		</content_text>
 
-		<msg_icon x="20" y="3" width="49" height="29">
-		</msg_icon>
+		<msg_icon x="20" y="3" width="49" height="29"/>
 	</iconed_answer_item>
-
 
 	<iconed_trade_info x="0" y="0" width="527" height="0" min_height="20" bottom_footer="5">
 		<name_caption x="0" y="0" width="0" height="0"/>
@@ -93,8 +88,6 @@
 			<text font="letterica18" r="216" g="186" b="140"/>
 		</content_text>
 
-		<msg_icon x="20" y="0" width="34" height="20">
-		</msg_icon>
+		<msg_icon x="20" y="0" width="34" height="20"/>
 	</iconed_trade_info>
-
 </window>

@@ -1,6 +1,6 @@
 	<!-- level changers -->
 	<lchanger_up_location hint="lchanger_up">
-		<level_map  spot="lchanger_up_spot"></level_map>
+		<level_map spot="lchanger_up_spot"></level_map>
 	</lchanger_up_location>
 	<lchanger_up_spot x="0" y="0" width="32" height="32" heading="1" alignment="c">
 		<texture x="96" y="160" width="32" height="32">ui\ui_icons_map</texture>

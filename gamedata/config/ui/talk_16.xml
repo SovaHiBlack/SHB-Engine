@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <window>
-
-	<left_character_icon x="15" y="32" width="150" height="220"  stretch="1">
+	<left_character_icon x="15" y="32" width="150" height="220" stretch="1">
 		<texture>ui_charinfo_left</texture>
 		<texture_offset x="-11" y="0"/>
 	</left_character_icon>
@@ -17,7 +16,7 @@
 	<bottom_background x="0" y="736" width="1024" height="32">
 		<texture>ui\ui_bottom_background</texture>
 	</bottom_background>
-	<!-- BUTTONS -->
+
 	<button x="437" y="726" width="157" height="48" hR="255" hB="83" hG="179" highlight_text="1">
 		<texture>ui_button_main01</texture>
 		<text align="c"	font="graffiti22" r="238" g="153" b="26">ui_st_trade</text>
@@ -41,7 +40,6 @@
 
 	<answers_list x="20" y="46" width="557" height="377" right_ident="0" always_show_scroll="0"/>
 
-
 	<question_item x="0" y="0" width="557" height="20" min_height="13">
 		<content_text x="0" y="0" width="550" height="20">
 			<text font="letterica18" r="255" g="232" b="208" align="l"/>
@@ -50,7 +48,6 @@
 				<e r="255" g="232" b="208"/>
 				<h r="255" g="255" b="255"/>
 			</text_color>
-
 		</content_text>
 	</question_item>
 
@@ -81,10 +78,8 @@
 			<text font="letterica16" r="255" g="255" b="255"/>
 		</content_text>
 
-		<msg_icon x="20" y="3" width="49" height="29">
-		</msg_icon>
+		<msg_icon x="20" y="3" width="49" height="29"/>
 	</iconed_answer_item>
-
 
 	<iconed_trade_info x="0" y="0" width="557" height="0" min_height="20" bottom_footer="5">
 		<name_caption x="0" y="0" width="0" height="0"/>
@@ -93,8 +88,6 @@
 			<text font="letterica18" r="216" g="186" b="140"/>
 		</content_text>
 
-		<msg_icon x="20" y="0" width="34" height="20">
-		</msg_icon>
+		<msg_icon x="20" y="0" width="34" height="20"/>
 	</iconed_trade_info>
-
 </window>
