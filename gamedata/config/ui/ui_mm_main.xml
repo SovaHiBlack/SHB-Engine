@@ -13,7 +13,7 @@
 	</fire_movie>
 
 	<shniaga_wnd x="590" y="419" width="392" height="280">
-		<buttons_region	x="110" y="0" width="164" height="280" always_show_scroll="false"/>
+		<buttons_region x="110" y="0" width="164" height="280" always_show_scroll="false"/>
 
 		<shniaga x="9" y="0" width="392" height="73">
 			<texture>ui_menu_move</texture>
