@@ -52,15 +52,6 @@
     <Filter Include="config\models\weapons">
       <UniqueIdentifier>{43fb21bb-5478-40cc-bc6c-a8f846f9f928}</UniqueIdentifier>
     </Filter>
-    <Filter Include="config\mp">
-      <UniqueIdentifier>{e54a5bcf-df9c-473c-a302-17c38c172ab8}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="config\mp\soundmessages">
-      <UniqueIdentifier>{1cc4f7eb-722c-4808-89d3-2ae4d1787d0c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="config\mp\weapons_mp">
-      <UniqueIdentifier>{050b90d8-d750-45c3-911d-81c82bddd0a0}</UniqueIdentifier>
-    </Filter>
     <Filter Include="config\prefetch">
       <UniqueIdentifier>{81318035-9e9e-46be-9f6e-c6f4815d019f}</UniqueIdentifier>
     </Filter>
@@ -912,9 +903,6 @@
     <None Include="config\misc\unique_items.ltx">
       <Filter>config\misc</Filter>
     </None>
-    <None Include="config\misc\vssver.scc">
-      <Filter>config\misc</Filter>
-    </None>
     <None Include="config\misc\zone_ameba.ltx">
       <Filter>config\misc</Filter>
     </None>
@@ -1152,63 +1140,6 @@
     <None Include="config\models\niva_engine.ltx">
       <Filter>config\models</Filter>
     </None>
-    <None Include="config\mp\weapons_mp\ammo_mp.ltx">
-      <Filter>config\mp\weapons_mp</Filter>
-    </None>
-    <None Include="config\mp\weapons_mp\items_mp.ltx">
-      <Filter>config\mp\weapons_mp</Filter>
-    </None>
-    <None Include="config\mp\weapons_mp\outfit_mp.ltx">
-      <Filter>config\mp\weapons_mp</Filter>
-    </None>
-    <None Include="config\mp\weapons_mp\w_knife_mp.ltx">
-      <Filter>config\mp\weapons_mp</Filter>
-    </None>
-    <None Include="config\mp\weapons_mp\weapons_mp.ltx">
-      <Filter>config\mp\weapons_mp</Filter>
-    </None>
-    <None Include="config\mp\soundmessages\ahunt_snd_messages.ltx">
-      <Filter>config\mp\soundmessages</Filter>
-    </None>
-    <None Include="config\mp\soundmessages\dm_snd_messages.ltx">
-      <Filter>config\mp\soundmessages</Filter>
-    </None>
-    <None Include="config\mp\soundmessages\mp_snd_messages.ltx">
-      <Filter>config\mp\soundmessages</Filter>
-    </None>
-    <None Include="config\mp\soundmessages\tdm_snd_messages.ltx">
-      <Filter>config\mp\soundmessages</Filter>
-    </None>
-    <None Include="config\mp\artefacthunt_game.ltx">
-      <Filter>config\mp</Filter>
-    </None>
-    <None Include="config\mp\deathmatch_game.ltx">
-      <Filter>config\mp</Filter>
-    </None>
-    <None Include="config\mp\laststanding_game.ltx">
-      <Filter>config\mp</Filter>
-    </None>
-    <None Include="config\mp\lzo-dict.bin">
-      <Filter>config\mp</Filter>
-    </None>
-    <None Include="config\mp\map_list.ltx">
-      <Filter>config\mp</Filter>
-    </None>
-    <None Include="config\mp\mp_actor.ltx">
-      <Filter>config\mp</Filter>
-    </None>
-    <None Include="config\mp\mp_bonuses.ltx">
-      <Filter>config\mp</Filter>
-    </None>
-    <None Include="config\mp\mp_ranks.ltx">
-      <Filter>config\mp</Filter>
-    </None>
-    <None Include="config\mp\team_logo.ltx">
-      <Filter>config\mp</Filter>
-    </None>
-    <None Include="config\mp\teamdeathmatch_game.ltx">
-      <Filter>config\mp</Filter>
-    </None>
     <None Include="config\weathers\env_ambient.ltx">
       <Filter>config\weathers</Filter>
     </None>
@@ -1228,9 +1159,6 @@
       <Filter>config\weathers</Filter>
     </None>
     <None Include="config\weathers\weather_map.ltx">
-      <Filter>config\weathers</Filter>
-    </None>
-    <None Include="config\weathers\weather_mp.ltx">
       <Filter>config\weathers</Filter>
     </None>
     <None Include="config\weathers\weather_prypyat.ltx">
@@ -2016,26 +1944,14 @@
     <None Include="config\scripts\yan_labx16_switcher3.ltx">
       <Filter>config\scripts</Filter>
     </None>
-    <None Include="config\prefetch\old_variant_prefetch_globals.ltx">
-      <Filter>config\prefetch</Filter>
-    </None>
-    <None Include="config\prefetch\old_variant_prefetch_single.ltx">
-      <Filter>config\prefetch</Filter>
-    </None>
     <None Include="config\prefetch\prefetch.ltx">
       <Filter>config\prefetch</Filter>
     </None>
     <None Include="config\prefetch\prefetch_globals.ltx">
       <Filter>config\prefetch</Filter>
     </None>
-    <None Include="config\prefetch\prefetch_mp.ltx">
-      <Filter>config\prefetch</Filter>
-    </None>
     <None Include="config\prefetch\prefetch_single.ltx">
       <Filter>config\prefetch</Filter>
-    </None>
-    <None Include="config\_prefetch.ltx">
-      <Filter>config</Filter>
     </None>
     <None Include="config\alife.ltx">
       <Filter>config</Filter>
@@ -2082,9 +1998,6 @@
     <None Include="config\localization.ltx">
       <Filter>config</Filter>
     </None>
-    <None Include="config\prefetch.ltx">
-      <Filter>config</Filter>
-    </None>
     <None Include="config\rspec_default.ltx">
       <Filter>config</Filter>
     </None>
@@ -2095,9 +2008,6 @@
       <Filter>config</Filter>
     </None>
     <None Include="config\rspec_low.ltx">
-      <Filter>config</Filter>
-    </None>
-    <None Include="config\rspec_maximum.ltx">
       <Filter>config</Filter>
     </None>
     <None Include="config\rspec_minimum.ltx">
@@ -3190,9 +3100,6 @@
       <Filter>scripts</Filter>
     </None>
     <None Include="scripts\ui_options_video_tab.script">
-      <Filter>scripts</Filter>
-    </None>
-    <None Include="scripts\ui_registrator.script">
       <Filter>scripts</Filter>
     </None>
     <None Include="scripts\ui_save_dialog.script">
@@ -4657,7 +4564,6 @@
     <None Include="senvironment.xr" />
     <None Include="shaders.xr" />
     <None Include="shaders_xrlc.xr" />
-    <None Include="stalkergame.inf" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="anims\postprocess editor_stohe.log">
@@ -5928,9 +5834,6 @@
     <Xml Include="config\text\eng\ui_st_pda.xml">
       <Filter>config\text\eng</Filter>
     </Xml>
-    <Xml Include="config\character_desc_general.xml">
-      <Filter>config</Filter>
-    </Xml>
     <Xml Include="config\ui\hide\actor_diary.xml">
       <Filter>config\ui\hide</Filter>
     </Xml>
@@ -6269,6 +6172,5 @@
     <ClInclude Include="shaders\r1\skin.h">
       <Filter>shaders\r1</Filter>
     </ClInclude>
-    <ClInclude Include="resource.h" />
   </ItemGroup>
 </Project>

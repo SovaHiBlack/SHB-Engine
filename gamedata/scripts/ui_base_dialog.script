@@ -93,12 +93,12 @@ function base_dialog:InitControls(caption)
 	self.caption_text_rect = {x = self.indent*2, y = -7, width = 500, height = 50 }
 	
 	-- Fonts
-	self.caption_font = GetFontLetterica25()
-	self.edit_font    = GetFontLetterica25()
-	self.button_font  = GetFontLetterica25()
+	self.caption_font = GetFontLetterica25Russian()
+	self.edit_font    = GetFontLetterica25Russian()
+	self.button_font  = GetFontLetterica25Russian()
 	self.list_file_font = GetFontMedium()
 	self.list_date_font = GetFontMedium()
-	self.message_box_font = GetFontLetterica25()
+	self.message_box_font = GetFontLetterica25Russian()
 	
 	-- Message Box
 	self.message_rect = {x = 0, y = 0, width = 550, height = 300}

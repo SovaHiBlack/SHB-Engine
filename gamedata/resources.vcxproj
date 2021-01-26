@@ -280,7 +280,6 @@
     <None Include="config\misc\treasure_manager.ltx" />
     <None Include="config\misc\trigger.ltx" />
     <None Include="config\misc\unique_items.ltx" />
-    <None Include="config\misc\vssver.scc" />
     <None Include="config\misc\zones.ltx" />
     <None Include="config\misc\zone_ameba.ltx" />
     <None Include="config\misc\zone_burningfuzz.ltx" />
@@ -360,37 +359,13 @@
     <None Include="config\models\vehicles\veh_zaz_u_01.ltx" />
     <None Include="config\models\vehicles\veh_zaz_u_01_part0.ltx" />
     <None Include="config\models\weapons\mounted_wpn_pkm.ltx" />
-    <None Include="config\mp\artefacthunt_game.ltx" />
-    <None Include="config\mp\deathmatch_game.ltx" />
-    <None Include="config\mp\laststanding_game.ltx" />
-    <None Include="config\mp\lzo-dict.bin" />
-    <None Include="config\mp\map_list.ltx" />
-    <None Include="config\mp\mp_actor.ltx" />
-    <None Include="config\mp\mp_bonuses.ltx" />
-    <None Include="config\mp\mp_ranks.ltx" />
-    <None Include="config\mp\soundmessages\ahunt_snd_messages.ltx" />
-    <None Include="config\mp\soundmessages\dm_snd_messages.ltx" />
-    <None Include="config\mp\soundmessages\mp_snd_messages.ltx" />
-    <None Include="config\mp\soundmessages\tdm_snd_messages.ltx" />
-    <None Include="config\mp\teamdeathmatch_game.ltx" />
-    <None Include="config\mp\team_logo.ltx" />
-    <None Include="config\mp\weapons_mp\ammo_mp.ltx" />
-    <None Include="config\mp\weapons_mp\items_mp.ltx" />
-    <None Include="config\mp\weapons_mp\outfit_mp.ltx" />
-    <None Include="config\mp\weapons_mp\weapons_mp.ltx" />
-    <None Include="config\mp\weapons_mp\w_knife_mp.ltx" />
-    <None Include="config\prefetch.ltx" />
-    <None Include="config\prefetch\old_variant_prefetch_globals.ltx" />
-    <None Include="config\prefetch\old_variant_prefetch_single.ltx" />
     <None Include="config\prefetch\prefetch.ltx" />
     <None Include="config\prefetch\prefetch_globals.ltx" />
-    <None Include="config\prefetch\prefetch_mp.ltx" />
     <None Include="config\prefetch\prefetch_single.ltx" />
     <None Include="config\rspec_default.ltx" />
     <None Include="config\rspec_extreme.ltx" />
     <None Include="config\rspec_high.ltx" />
     <None Include="config\rspec_low.ltx" />
-    <None Include="config\rspec_maximum.ltx" />
     <None Include="config\rspec_minimum.ltx" />
     <None Include="config\script.ltx" />
     <None Include="config\scripts\agr\agr_factory_assault_trigger.ltx" />
@@ -655,7 +630,6 @@
     <None Include="config\weathers\weather_default.ltx" />
     <None Include="config\weathers\weather_indoor.ltx" />
     <None Include="config\weathers\weather_map.ltx" />
-    <None Include="config\weathers\weather_mp.ltx" />
     <None Include="config\weathers\weather_prypyat.ltx" />
     <None Include="config\weathers\weather_radar.ltx" />
     <None Include="config\weathers\weather_rain.ltx" />
@@ -664,7 +638,6 @@
     <None Include="config\weathers\weather_surge.ltx" />
     <None Include="config\weathers\weather_test.ltx" />
     <None Include="config\weathers\weather_yantar.ltx" />
-    <None Include="config\_prefetch.ltx" />
     <None Include="game.graph" />
     <None Include="gamemtl.xr" />
     <None Include="lanims.xr" />
@@ -1025,7 +998,6 @@
     <None Include="scripts\ui_options_profiles_tab.script" />
     <None Include="scripts\ui_options_sound_tab.script" />
     <None Include="scripts\ui_options_video_tab.script" />
-    <None Include="scripts\ui_registrator.script" />
     <None Include="scripts\ui_save_dialog.script" />
     <None Include="scripts\ui_spawn_dialog.script" />
     <None Include="scripts\ui_wpn_params.script" />
@@ -1518,7 +1490,6 @@
     <None Include="spawns\unpack\way_l12_stancia.ltx" />
     <None Include="spawns\unpack\way_l12_stancia_2.ltx" />
     <None Include="spawns\unpack\way__level_unknown.ltx" />
-    <None Include="stalkergame.inf" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="anims\postprocess editor_stohe.log" />
@@ -1528,7 +1499,6 @@
     <Text Include="shaders\r2\test\p30_yuv2rgb.ps.log" />
   </ItemGroup>
   <ItemGroup>
-    <Xml Include="config\character_desc_general.xml" />
     <Xml Include="config\gameplay\character_criticals_1.xml" />
     <Xml Include="config\gameplay\character_criticals_2.xml" />
     <Xml Include="config\gameplay\character_criticals_3.xml" />
@@ -2034,7 +2004,6 @@
     <Xml Include="config\ui\zone_map_16.xml" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="resource.h" />
     <ClInclude Include="shaders\r1\common.h" />
     <ClInclude Include="shaders\r1\shared\cloudconfig.h" />
     <ClInclude Include="shaders\r1\shared\common.h" />

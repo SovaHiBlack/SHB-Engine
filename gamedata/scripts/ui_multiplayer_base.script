@@ -42,10 +42,10 @@ function multiplayer_base:InitControls()
 					  height = 33  }
 		
 	-- Fonts
-	self.caption_font = GetFontLetterica25()
+	self.caption_font = GetFontLetterica25Russian()
 	self.text_font    = GetFontArialN21Russian()
-	self.edit_font    = GetFontLetterica25()
-	self.button_font  = GetFontLetterica25()
+	self.edit_font    = GetFontLetterica25Russian()
+	self.button_font  = GetFontLetterica25Russian()
 	
 	-- init controls cordinates
 	local s_player_rect = {x = self.left_align_x, y = self.top_align_y, width = 90, height = 33}
