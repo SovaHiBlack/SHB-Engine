@@ -24,7 +24,6 @@ function del_obj( obj )
 	storage   [obj:id()] = nil
 end
 
-
 function add_zone( zone )
 	zone_by_name[zone:name()] = zone
 	add_obj( zone )

@@ -1,23 +1,23 @@
-* Detected CPU: GenuineIntel P3 family, F6/M10/S9, 2694.00 mhz, 27-clk 'rdtsc'
+* Detected CPU: GenuineIntel P3 family, F6/M10/S9, 2695.00 mhz, 27-clk 'rdtsc'
 * CPU Features: RDTSC, MMX, SSE, SSE2
 
 Initializing File System...
 using fs-ltx fsgame.ltx
-FS: 29453 files cached, 4508Kb memory used.
-Init FileSystem 9.758819 sec
+FS: 29455 files cached, 4524Kb memory used.
+Init FileSystem 2.356800 sec
 'Core' build 8012, Jan 13 2021
 
-CRT heap 0x01990000
-Process heap 0x01990000
+CRT heap 0x00ad0000
+Process heap 0x00ad0000
 Initializing Engine...
 Executing config-script "user.ltx"...
 [..\app_data\user.ltx] successfully loaded.
 Starting INPUT device...
 Loading DLL: xrRender_R1.dll
 Loading DLL: xrGame.dll
-* [win32]: free[4064828 K], reserved[24412 K], committed[105000 K]
+* [win32]: free[4064828 K], reserved[24408 K], committed[105004 K]
 * [ D3D ]: textures[0 K]
-* [x-ray]: process heap[6736 K]
+* [x-ray]: process heap[6718 K]
 * [x-ray]: economy: strings[909 K], smem[0 K]
 * [x-ray]: file mapping: memory[0 K], count[0]
 * active file mappings (0):
@@ -102,7 +102,7 @@ Available video modes[13]:
 * DVB created: 1536K
 * DIB created: 512K
 count of .thm files=1
-load time=171 ms
+load time=134 ms
 * distortion: used, dev(30),need(14)
 * SSample: 800x600
 * created RT($user$rendertarget), 800x600

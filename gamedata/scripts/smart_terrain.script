@@ -611,8 +611,7 @@ end
 -- добавить npc в smart terrain.
 -- если места нету или нету свободных подходящих работ, то
 -- вытолкнуть из этого smart terrain с подходящей работы объект, который попал в него не эксклюзивно.
-function se_smart_terrain:register_npc( obj )
-
+function se_smart_terrain:register_npc(obj)
 	printf( "[smart_terrain %s] register called obj=%s gulag_type=%s", self:name(), obj:name(), self.gparams.type )
 
 	local npc_info = {
@@ -660,7 +659,6 @@ function se_smart_terrain:register_npc( obj )
 	sim_statistic.add( obj )
 
 	self.gulag:update()
-
 
 --	printf( "[smart_terrain %s] added %s to gulag type=%s", self:name(), obj:name(), self.gparams.type )
 end
@@ -788,6 +786,7 @@ function se_smart_terrain:is_gulag_available()
 		return true
 	end
 end
+
 function se_smart_terrain:show_smart_debug_spot(avail)
 	if sim_statistic.show_smart_spot == true then
 		--' Показать отметку
@@ -826,6 +825,7 @@ function se_smart_terrain:show_smart_debug_spot(avail)
 		end		
 	end
 end
+
 -- установка/снятие блокировки приёма персонажей
 function se_smart_terrain:lock_population( need_lock )
 	self.population_locked = need_lock
@@ -991,8 +991,6 @@ function se_smart_terrain:register_if_needed()
 	-- Регистрация в таскменеджере
 	task_manager.get_random_task():register_target(self)
 end
-
-
 
 -- дерегистрация объекта в симуляторе.
 -- вызывается симулятором.

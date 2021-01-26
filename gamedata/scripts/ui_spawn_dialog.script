@@ -195,6 +195,3 @@ function spawn_dialog:AddItemToList(file_name, date_time)
 	list_box:AddItem	(_itm)
 	
 end
-
-
-
