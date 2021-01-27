@@ -3199,27 +3199,6 @@
     <None Include="scripts\hide\bar_rostok_tasks.script">
       <Filter>scripts\hide</Filter>
     </None>
-    <None Include="scripts\hide\bind_heli.script">
-      <Filter>scripts\hide</Filter>
-    </None>
-    <None Include="scripts\hide\bind_monster.script">
-      <Filter>scripts\hide</Filter>
-    </None>
-    <None Include="scripts\hide\bind_physic_object.script">
-      <Filter>scripts\hide</Filter>
-    </None>
-    <None Include="scripts\hide\bind_respawn.script">
-      <Filter>scripts\hide</Filter>
-    </None>
-    <None Include="scripts\hide\bind_restrictor.script">
-      <Filter>scripts\hide</Filter>
-    </None>
-    <None Include="scripts\hide\bind_smart_terrain.script">
-      <Filter>scripts\hide</Filter>
-    </None>
-    <None Include="scripts\hide\bind_stalker.script">
-      <Filter>scripts\hide</Filter>
-    </None>
     <None Include="scripts\hide\bug_test.script">
       <Filter>scripts\hide</Filter>
     </None>
@@ -3260,9 +3239,6 @@
       <Filter>scripts\hide</Filter>
     </None>
     <None Include="scripts\hide\deadcity_tasks.script">
-      <Filter>scripts\hide</Filter>
-    </None>
-    <None Include="scripts\hide\death_manager.script">
       <Filter>scripts\hide</Filter>
     </None>
     <None Include="scripts\hide\debug_test.script">
@@ -3346,9 +3322,6 @@
     <None Include="scripts\hide\fs_test.script">
       <Filter>scripts\hide</Filter>
     </None>
-    <None Include="scripts\hide\fx_sound.script">
-      <Filter>scripts\hide</Filter>
-    </None>
     <None Include="scripts\hide\game_last.script">
       <Filter>scripts\hide</Filter>
     </None>
@@ -3376,9 +3349,6 @@
     <None Include="scripts\hide\game_last_ui.script">
       <Filter>scripts\hide</Filter>
     </None>
-    <None Include="scripts\hide\game_stats.script">
-      <Filter>scripts\hide</Filter>
-    </None>
     <None Include="scripts\hide\game_types.script">
       <Filter>scripts\hide</Filter>
     </None>
@@ -3401,12 +3371,6 @@
       <Filter>scripts\hide</Filter>
     </None>
     <None Include="scripts\hide\h.script">
-      <Filter>scripts\hide</Filter>
-    </None>
-    <None Include="scripts\hide\heli_combat.script">
-      <Filter>scripts\hide</Filter>
-    </None>
-    <None Include="scripts\hide\heli_move.script">
       <Filter>scripts\hide</Filter>
     </None>
     <None Include="scripts\hide\heli_snd.script">
@@ -3457,13 +3421,7 @@
     <None Include="scripts\hide\level_psy_antenna.script">
       <Filter>scripts\hide</Filter>
     </None>
-    <None Include="scripts\hide\level_tasks.script">
-      <Filter>scripts\hide</Filter>
-    </None>
     <None Include="scripts\hide\level_tips.script">
-      <Filter>scripts\hide</Filter>
-    </None>
-    <None Include="scripts\hide\level_weathers.script">
       <Filter>scripts\hide</Filter>
     </None>
     <None Include="scripts\hide\lua_help.script">
@@ -3484,67 +3442,10 @@
     <None Include="scripts\hide\mob_alife_control.script">
       <Filter>scripts\hide</Filter>
     </None>
-    <None Include="scripts\hide\mob_alife_mgr.script">
-      <Filter>scripts\hide</Filter>
-    </None>
-    <None Include="scripts\hide\mob_camp.script">
-      <Filter>scripts\hide</Filter>
-    </None>
-    <None Include="scripts\hide\mob_combat.script">
-      <Filter>scripts\hide</Filter>
-    </None>
-    <None Include="scripts\hide\mob_death.script">
-      <Filter>scripts\hide</Filter>
-    </None>
-    <None Include="scripts\hide\mob_eluder.script">
-      <Filter>scripts\hide</Filter>
-    </None>
-    <None Include="scripts\hide\mob_fake_death.script">
-      <Filter>scripts\hide</Filter>
-    </None>
-    <None Include="scripts\hide\mob_home.script">
-      <Filter>scripts\hide</Filter>
-    </None>
-    <None Include="scripts\hide\mob_jump.script">
-      <Filter>scripts\hide</Filter>
-    </None>
-    <None Include="scripts\hide\mob_kicker.script">
-      <Filter>scripts\hide</Filter>
-    </None>
-    <None Include="scripts\hide\mob_panic.script">
-      <Filter>scripts\hide</Filter>
-    </None>
-    <None Include="scripts\hide\mob_remark.script">
-      <Filter>scripts\hide</Filter>
-    </None>
-    <None Include="scripts\hide\mob_sound.script">
-      <Filter>scripts\hide</Filter>
-    </None>
-    <None Include="scripts\hide\mob_state_mgr.script">
-      <Filter>scripts\hide</Filter>
-    </None>
-    <None Include="scripts\hide\mob_trade.script">
-      <Filter>scripts\hide</Filter>
-    </None>
-    <None Include="scripts\hide\mob_trader.script">
-      <Filter>scripts\hide</Filter>
-    </None>
-    <None Include="scripts\hide\mob_walker.script">
-      <Filter>scripts\hide</Filter>
-    </None>
-    <None Include="scripts\hide\modules.script">
-      <Filter>scripts\hide</Filter>
-    </None>
     <None Include="scripts\hide\monster_script.script">
       <Filter>scripts\hide</Filter>
     </None>
     <None Include="scripts\hide\monster_test.script">
-      <Filter>scripts\hide</Filter>
-    </None>
-    <None Include="scripts\hide\move_mgr.script">
-      <Filter>scripts\hide</Filter>
-    </None>
-    <None Include="scripts\hide\news_manager.script">
       <Filter>scripts\hide</Filter>
     </None>
     <None Include="scripts\hide\p.script">
@@ -3572,48 +3473,6 @@
       <Filter>scripts\hide</Filter>
     </None>
     <None Include="scripts\hide\petruxa4.script">
-      <Filter>scripts\hide</Filter>
-    </None>
-    <None Include="scripts\hide\ph_appforce.script">
-      <Filter>scripts\hide</Filter>
-    </None>
-    <None Include="scripts\hide\ph_button.script">
-      <Filter>scripts\hide</Filter>
-    </None>
-    <None Include="scripts\hide\ph_camera.script">
-      <Filter>scripts\hide</Filter>
-    </None>
-    <None Include="scripts\hide\ph_car.script">
-      <Filter>scripts\hide</Filter>
-    </None>
-    <None Include="scripts\hide\ph_code.script">
-      <Filter>scripts\hide</Filter>
-    </None>
-    <None Include="scripts\hide\ph_death.script">
-      <Filter>scripts\hide</Filter>
-    </None>
-    <None Include="scripts\hide\ph_door.script">
-      <Filter>scripts\hide</Filter>
-    </None>
-    <None Include="scripts\hide\ph_gate.script">
-      <Filter>scripts\hide</Filter>
-    </None>
-    <None Include="scripts\hide\ph_hit.script">
-      <Filter>scripts\hide</Filter>
-    </None>
-    <None Include="scripts\hide\ph_idle.script">
-      <Filter>scripts\hide</Filter>
-    </None>
-    <None Include="scripts\hide\ph_impulse.script">
-      <Filter>scripts\hide</Filter>
-    </None>
-    <None Include="scripts\hide\ph_on_hit.script">
-      <Filter>scripts\hide</Filter>
-    </None>
-    <None Include="scripts\hide\ph_oscillate.script">
-      <Filter>scripts\hide</Filter>
-    </None>
-    <None Include="scripts\hide\ph_sound.script">
       <Filter>scripts\hide</Filter>
     </None>
     <None Include="scripts\hide\ph_test.script">
@@ -3718,60 +3577,6 @@
     <None Include="scripts\hide\sound_prefetch.script">
       <Filter>scripts\hide</Filter>
     </None>
-    <None Include="scripts\hide\sound_theme.script">
-      <Filter>scripts\hide</Filter>
-    </None>
-    <None Include="scripts\hide\sr_aes_deadzone.script">
-      <Filter>scripts\hide</Filter>
-    </None>
-    <None Include="scripts\hide\sr_cutscene.script">
-      <Filter>scripts\hide</Filter>
-    </None>
-    <None Include="scripts\hide\sr_danger.script">
-      <Filter>scripts\hide</Filter>
-    </None>
-    <None Include="scripts\hide\sr_idle.script">
-      <Filter>scripts\hide</Filter>
-    </None>
-    <None Include="scripts\hide\sr_light.script">
-      <Filter>scripts\hide</Filter>
-    </None>
-    <None Include="scripts\hide\sr_mapspot.script">
-      <Filter>scripts\hide</Filter>
-    </None>
-    <None Include="scripts\hide\sr_no_weapon.script">
-      <Filter>scripts\hide</Filter>
-    </None>
-    <None Include="scripts\hide\sr_particle.script">
-      <Filter>scripts\hide</Filter>
-    </None>
-    <None Include="scripts\hide\sr_postprocess.script">
-      <Filter>scripts\hide</Filter>
-    </None>
-    <None Include="scripts\hide\sr_psy_antenna.script">
-      <Filter>scripts\hide</Filter>
-    </None>
-    <None Include="scripts\hide\sr_sleep.script">
-      <Filter>scripts\hide</Filter>
-    </None>
-    <None Include="scripts\hide\sr_sound.script">
-      <Filter>scripts\hide</Filter>
-    </None>
-    <None Include="scripts\hide\sr_sound2d.script">
-      <Filter>scripts\hide</Filter>
-    </None>
-    <None Include="scripts\hide\sr_teleport.script">
-      <Filter>scripts\hide</Filter>
-    </None>
-    <None Include="scripts\hide\sr_territory.script">
-      <Filter>scripts\hide</Filter>
-    </None>
-    <None Include="scripts\hide\sr_timer.script">
-      <Filter>scripts\hide</Filter>
-    </None>
-    <None Include="scripts\hide\sr_tip.script">
-      <Filter>scripts\hide</Filter>
-    </None>
     <None Include="scripts\hide\ssss.script">
       <Filter>scripts\hide</Filter>
     </None>
@@ -3787,9 +3592,6 @@
     <None Include="scripts\hide\state_lib.script">
       <Filter>scripts\hide</Filter>
     </None>
-    <None Include="scripts\hide\state_mgr.script">
-      <Filter>scripts\hide</Filter>
-    </None>
     <None Include="scripts\hide\state_mgr_animation.script">
       <Filter>scripts\hide</Filter>
     </None>
@@ -3797,24 +3599,6 @@
       <Filter>scripts\hide</Filter>
     </None>
     <None Include="scripts\hide\state_mgr_animstate.script">
-      <Filter>scripts\hide</Filter>
-    </None>
-    <None Include="scripts\hide\state_mgr_bodystate.script">
-      <Filter>scripts\hide</Filter>
-    </None>
-    <None Include="scripts\hide\state_mgr_direction.script">
-      <Filter>scripts\hide</Filter>
-    </None>
-    <None Include="scripts\hide\state_mgr_goap.script">
-      <Filter>scripts\hide</Filter>
-    </None>
-    <None Include="scripts\hide\state_mgr_mental.script">
-      <Filter>scripts\hide</Filter>
-    </None>
-    <None Include="scripts\hide\state_mgr_movement.script">
-      <Filter>scripts\hide</Filter>
-    </None>
-    <None Include="scripts\hide\state_mgr_weapon.script">
       <Filter>scripts\hide</Filter>
     </None>
     <None Include="scripts\hide\task_1.script">
@@ -3985,9 +3769,6 @@
     <None Include="scripts\hide\thread_test.script">
       <Filter>scripts\hide</Filter>
     </None>
-    <None Include="scripts\hide\trade_manager.script">
-      <Filter>scripts\hide</Filter>
-    </None>
     <None Include="scripts\hide\ui_game_over.script">
       <Filter>scripts\hide</Filter>
     </None>
@@ -4111,34 +3892,13 @@
     <None Include="scripts\hide\x18.script">
       <Filter>scripts\hide</Filter>
     </None>
-    <None Include="scripts\hide\xr_abuse.script">
-      <Filter>scripts\hide</Filter>
-    </None>
-    <None Include="scripts\hide\xr_actions_id.script">
-      <Filter>scripts\hide</Filter>
-    </None>
     <None Include="scripts\hide\xr_assistance.script">
-      <Filter>scripts\hide</Filter>
-    </None>
-    <None Include="scripts\hide\xr_attendant.script">
       <Filter>scripts\hide</Filter>
     </None>
     <None Include="scripts\hide\xr_bodyguard.script">
       <Filter>scripts\hide</Filter>
     </None>
-    <None Include="scripts\hide\xr_box.script">
-      <Filter>scripts\hide</Filter>
-    </None>
-    <None Include="scripts\hide\xr_camper.script">
-      <Filter>scripts\hide</Filter>
-    </None>
-    <None Include="scripts\hide\xr_combat.script">
-      <Filter>scripts\hide</Filter>
-    </None>
     <None Include="scripts\hide\xr_combat_camper.script">
-      <Filter>scripts\hide</Filter>
-    </None>
-    <None Include="scripts\hide\xr_combat_ignore.script">
       <Filter>scripts\hide</Filter>
     </None>
     <None Include="scripts\hide\xr_combat_monolith.script">
@@ -4153,25 +3913,10 @@
     <None Include="scripts\hide\xr_companion.script">
       <Filter>scripts\hide</Filter>
     </None>
-    <None Include="scripts\hide\xr_conditions.script">
-      <Filter>scripts\hide</Filter>
-    </None>
     <None Include="scripts\hide\xr_conditions_impl.script">
       <Filter>scripts\hide</Filter>
     </None>
-    <None Include="scripts\hide\xr_danger.script">
-      <Filter>scripts\hide</Filter>
-    </None>
-    <None Include="scripts\hide\xr_death.script">
-      <Filter>scripts\hide</Filter>
-    </None>
-    <None Include="scripts\hide\xr_detector.script">
-      <Filter>scripts\hide</Filter>
-    </None>
     <None Include="scripts\hide\xr_dialogs.script">
-      <Filter>scripts\hide</Filter>
-    </None>
-    <None Include="scripts\hide\xr_evaluators_id.script">
       <Filter>scripts\hide</Filter>
     </None>
     <None Include="scripts\hide\xr_guide.script">
@@ -4180,28 +3925,10 @@
     <None Include="scripts\hide\xr_heli.script">
       <Filter>scripts\hide</Filter>
     </None>
-    <None Include="scripts\hide\xr_heli_hunter.script">
-      <Filter>scripts\hide</Filter>
-    </None>
-    <None Include="scripts\hide\xr_hit.script">
-      <Filter>scripts\hide</Filter>
-    </None>
     <None Include="scripts\hide\xr_info.script">
       <Filter>scripts\hide</Filter>
     </None>
-    <None Include="scripts\hide\xr_kamp.script">
-      <Filter>scripts\hide</Filter>
-    </None>
     <None Include="scripts\hide\xr_light.script">
-      <Filter>scripts\hide</Filter>
-    </None>
-    <None Include="scripts\hide\xr_meet.script">
-      <Filter>scripts\hide</Filter>
-    </None>
-    <None Include="scripts\hide\xr_motivator.script">
-      <Filter>scripts\hide</Filter>
-    </None>
-    <None Include="scripts\hide\xr_patrol.script">
       <Filter>scripts\hide</Filter>
     </None>
     <None Include="scripts\hide\xr_punch.script">
@@ -4213,19 +3940,7 @@
     <None Include="scripts\hide\xr_reach_task.script">
       <Filter>scripts\hide</Filter>
     </None>
-    <None Include="scripts\hide\xr_reactions.script">
-      <Filter>scripts\hide</Filter>
-    </None>
-    <None Include="scripts\hide\xr_remark.script">
-      <Filter>scripts\hide</Filter>
-    </None>
-    <None Include="scripts\hide\xr_rest.script">
-      <Filter>scripts\hide</Filter>
-    </None>
     <None Include="scripts\hide\xr_robbers.script">
-      <Filter>scripts\hide</Filter>
-    </None>
-    <None Include="scripts\hide\xr_sleeper.script">
       <Filter>scripts\hide</Filter>
     </None>
     <None Include="scripts\hide\xr_sos.script">
@@ -4237,28 +3952,10 @@
     <None Include="scripts\hide\xr_sounds_id.script">
       <Filter>scripts\hide</Filter>
     </None>
-    <None Include="scripts\hide\xr_spawner.script">
-      <Filter>scripts\hide</Filter>
-    </None>
     <None Include="scripts\hide\xr_state.script">
       <Filter>scripts\hide</Filter>
     </None>
-    <None Include="scripts\hide\xr_statistic.script">
-      <Filter>scripts\hide</Filter>
-    </None>
     <None Include="scripts\hide\xr_talker.script">
-      <Filter>scripts\hide</Filter>
-    </None>
-    <None Include="scripts\hide\xr_test.script">
-      <Filter>scripts\hide</Filter>
-    </None>
-    <None Include="scripts\hide\xr_use.script">
-      <Filter>scripts\hide</Filter>
-    </None>
-    <None Include="scripts\hide\xr_walker.script">
-      <Filter>scripts\hide</Filter>
-    </None>
-    <None Include="scripts\hide\xr_wounded.script">
       <Filter>scripts\hide</Filter>
     </None>
     <None Include="scripts\hide\xr_zoneguard.script">
@@ -4445,6 +4142,309 @@
       <Filter>scripts</Filter>
     </None>
     <None Include="scripts\xr_sound.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\bind_heli.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\bind_monster.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\bind_physic_object.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\bind_respawn.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\bind_restrictor.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\bind_smart_terrain.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\bind_stalker.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\death_manager.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\fx_sound.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\game_stats.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\heli_combat.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\heli_move.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\level_tasks.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\level_weathers.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\mob_alife_mgr.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\mob_camp.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\mob_combat.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\mob_death.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\mob_eluder.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\mob_fake_death.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\mob_home.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\mob_jump.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\mob_kicker.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\mob_panic.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\mob_remark.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\mob_sound.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\mob_state_mgr.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\mob_trade.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\mob_trader.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\mob_walker.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\modules.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\move_mgr.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\news_manager.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\ph_appforce.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\ph_button.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\ph_camera.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\ph_car.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\ph_code.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\ph_death.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\ph_door.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\ph_gate.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\ph_hit.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\ph_idle.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\ph_impulse.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\ph_on_hit.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\ph_oscillate.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\ph_sound.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\sound_theme.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\sr_aes_deadzone.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\sr_cutscene.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\sr_danger.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\sr_idle.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\sr_light.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\sr_mapspot.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\sr_no_weapon.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\sr_particle.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\sr_postprocess.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\sr_psy_antenna.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\sr_sleep.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\sr_sound.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\sr_sound2d.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\sr_teleport.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\sr_territory.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\sr_timer.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\sr_tip.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\state_mgr.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\state_mgr_bodystate.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\state_mgr_direction.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\state_mgr_goap.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\state_mgr_mental.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\state_mgr_movement.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\state_mgr_weapon.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\trade_manager.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\xr_abuse.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\xr_actions_id.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\xr_attendant.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\xr_box.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\xr_camper.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\xr_combat.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\xr_combat_ignore.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\xr_conditions.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\xr_danger.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\xr_death.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\xr_detector.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\xr_evaluators_id.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\xr_heli_hunter.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\xr_hit.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\xr_kamp.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\xr_meet.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\xr_motivator.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\xr_patrol.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\xr_reactions.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\xr_remark.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\xr_rest.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\xr_sleeper.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\xr_spawner.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\xr_statistic.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\xr_test.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\xr_use.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\xr_walker.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\xr_wounded.script">
       <Filter>scripts</Filter>
     </None>
   </ItemGroup>

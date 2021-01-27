@@ -1,0 +1,1877 @@
+* Detected CPU: GenuineIntel P3 family, F6/M10/S9, 2693.00 mhz, 29-clk 'rdtsc'
+* CPU Features: RDTSC, MMX, SSE, SSE2
+
+Initializing File System...
+using fs-ltx fsgame.ltx
+FS: 29418 files cached, 4524Kb memory used.
+Init FileSystem 1.919972 sec
+'Core' build 8026, Jan 27 2021
+
+CRT heap 0x009a0000
+Process heap 0x009a0000
+Initializing Engine...
+Executing config-script "user.ltx"...
+[..\app_data\user.ltx] successfully loaded.
+Starting INPUT device...
+Loading DLL: xrRender_R1.dll
+Loading DLL: xrGame.dll
+* [win32]: free[4064840 K], reserved[25904 K], committed[103496 K]
+* [ D3D ]: textures[0 K]
+* [x-ray]: process heap[6720 K]
+* [x-ray]: economy: strings[909 K], smem[0 K]
+* [x-ray]: file mapping: memory[0 K], count[0]
+* active file mappings (0):
+Executing config-script "d:\engine\shb-engine\debug-win32\..\gamedata\config\default_controls.ltx"...
+! cant convert dik_name for dik[16], prop=[
+! cant convert dik_name for dik[17], prop=[
+! cant convert dik_name for dik[18], prop=[
+! cant convert dik_name for dik[19], prop=[
+! cant convert dik_name for dik[20], prop=[
+! cant convert dik_name for dik[21], prop=[
+! cant convert dik_name for dik[22], prop=[
+! cant convert dik_name for dik[23], prop=[
+! cant convert dik_name for dik[24], prop=[
+! cant convert dik_name for dik[25], prop=[
+! cant convert dik_name for dik[26], prop=[
+! cant convert dik_name for dik[27], prop=[
+! cant convert dik_name for dik[30], prop=[
+! cant convert dik_name for dik[31], prop=[
+! cant convert dik_name for dik[32], prop=[
+! cant convert dik_name for dik[33], prop=[
+! cant convert dik_name for dik[34], prop=[
+! cant convert dik_name for dik[35], prop=[
+! cant convert dik_name for dik[36], prop=[
+! cant convert dik_name for dik[37], prop=[
+! cant convert dik_name for dik[38], prop=[
+! cant convert dik_name for dik[39], prop=[
+! cant convert dik_name for dik[40], prop=[
+! cant convert dik_name for dik[41], prop=[
+! cant convert dik_name for dik[44], prop=[
+! cant convert dik_name for dik[45], prop=[
+! cant convert dik_name for dik[46], prop=[
+! cant convert dik_name for dik[47], prop=[
+! cant convert dik_name for dik[48], prop=[
+! cant convert dik_name for dik[49], prop=[
+! cant convert dik_name for dik[50], prop=[
+! cant convert dik_name for dik[51], prop=[
+! cant convert dik_name for dik[52], prop=[
+! cant convert dik_name for dik[144], prop=[
+[d:\engine\shb-engine\debug-win32\..\gamedata\config\default_controls.ltx] successfully loaded.
+Executing config-script "user.ltx"...
+Executing config-script "d:\engine\shb-engine\debug-win32\..\gamedata\config\rspec_minimum.ltx"...
+[d:\engine\shb-engine\debug-win32\..\gamedata\config\rspec_minimum.ltx] successfully loaded.
+Executing config-script "d:\engine\shb-engine\debug-win32\..\gamedata\config\default_controls.ltx"...
+[d:\engine\shb-engine\debug-win32\..\gamedata\config\default_controls.ltx] successfully loaded.
+[..\app_data\user.ltx] successfully loaded.
+SOUND: OpenAL: enumerate devices...
+SOUND: OpenAL: EnumerationExtension Present
+devices Generic Hardware
+SOUND: OpenAL: system  default SndDevice name is Generic Hardware
+SOUND: OpenAL: default SndDevice name set to Generic Software
+SOUND: OpenAL: All available devices:
+1. Generic Software, Spec Version 1.1 (default)
+2. Generic Software, Spec Version 1.1 (default)
+SOUND: OpenAL: SelectBestDevice is Generic Software 1.1
+SOUND: OpenAL: Required device: Generic Software. Created device: Generic Software.
+* sound: EAX 2.0 extension: absent
+* sound: EAX 2.0 deferred: absent
+* sound : cache: 32773 kb, 3805 lines, 8820 bpl
+Starting RENDER device...
+* GPU [vendor:8086]-[device:152]: Intel(R) HD Graphics
+* GPU driver: 10.18.10.4276
+Available video modes[13]:
+[800x600]
+[1024x768]
+[1152x864]
+[1280x600]
+[1280x720]
+[1280x768]
+[1280x800]
+[1280x960]
+[1280x1024]
+[1360x768]
+[1366x768]
+[1440x900]
+[1600x900]
+* CREATE: DeviceREF: 1
+* Vertex Processor: PURE HARDWARE
+*     Texture memory: 1788 M
+*          DDI-level: 9.0
+* GPU shading: vs(fffe0300/3.0/30), ps(ffff0300/3.0/30)
+* GPU vertex cache: recognized, 32
+* DVB created: 1536K
+* DIB created: 512K
+count of .thm files=0
+load time=115 ms
+* distortion: used, dev(30),need(14)
+* SSample: 800x600
+* created RT($user$rendertarget), 800x600
+* created RT($user$distort), 800x600
+* SSample: enabled
+Script debugger succesfully restarted.
+Starting engine...
+pause [ON] timer=[OFF] sound=[ON] reason=mm_activate1
+snd_emitters_[true] 2
+pause [ON] timer=[ON] sound=[OFF] reason=mm_activate2
+pause [OFF] timer=[ON] sound=[OFF] reason=mm_deactivate1
+pause [OFF] timer=[OFF] sound=[ON] reason=mm_deactivate2
+snd_emitters_[false] 1
+*ref -CRenderDevice::ResetTotal: DeviceREF: 93
+* DVB created: 1536K
+* DIB created: 512K
+* SSample: 800x600
+* created RT($user$rendertarget), 800x600
+* created RT($user$distort), 800x600
+* SSample: enabled
+* GPU shading: vs(fffe0300/3.0/30), ps(ffff0300/3.0/30)
+* GPU vertex cache: recognized, 32
+*** RESET [32 ms]
+*ref +CRenderDevice::ResetTotal: DeviceREF: 92
+"d:\engine\shb-engine\sources\..\debug-win32\binaries\engine.exe" 
+* phase time: 6 ms
+* phase cmem: 64203 K
+Сервер: Старт...
+* sv_Connect: all/single/alife/new
+* Created server_game single
+* Initializing game script process
+* phase time: 436 ms
+* phase cmem: 65743 K
+Сервер: Загрузка симуляции жизни...
+* phase time: 16 ms
+* phase cmem: 65743 K
+Создание новой игры...
+* Creating new game...
+* Loading spawn registry...
+* 8641 spawn points are successfully loaded
+* Loading ai space is successfully completed (0.453s,  13.157 Mb)
+* Saving spawns...
+* Saving objects...
+* 16811 objects are successfully saved
+* Game all.sav is successfully saved to file '..\app_data\savedgames\all.sav' (3551051 bytes compressed to 895222)
+* New game is successfully created!
+* Loading alife simulator is successfully completed ( 56.818 Mb)
+* phase time: 38366 ms
+* phase cmem: 123925 K
+Сервер: Соединяемся...
+* phase time: 99 ms
+* phase cmem: 124020 K
+Клиент: Соединение с localhost...
+# Player not found. New player created.
+* client : connection accepted - <>
+* phase time: 14 ms
+* phase cmem: 124028 K
+Открытие потока...
+* phase time: 4 ms
+* phase cmem: 124028 K
+Загрузка формы объектов...
+* phase time: 12204 ms
+* phase cmem: 196696 K
+Загрузка шейдеров...
+* created RT($user$shadow), 512x512
+* created RT($user$temp), 512x512
+* created RT($user$projector), 512x512
+* phase time: 1167 ms
+* phase cmem: 197892 K
+Загрузка геометрии...
+* [Loading VB] 65532 verts, 2047 Kb
+* [Loading VB] 65525 verts, 2047 Kb
+* [Loading VB] 65535 verts, 2047 Kb
+* [Loading VB] 65466 verts, 2045 Kb
+* [Loading VB] 17208 verts, 537 Kb
+* [Loading VB] 65533 verts, 2047 Kb
+* [Loading VB] 65534 verts, 2047 Kb
+* [Loading VB] 65534 verts, 2047 Kb
+* [Loading VB] 65531 verts, 2047 Kb
+* [Loading VB] 65535 verts, 2047 Kb
+* [Loading VB] 65535 verts, 2047 Kb
+* [Loading VB] 46595 verts, 1456 Kb
+* [Loading VB] 65534 verts, 2047 Kb
+* [Loading VB] 65533 verts, 2047 Kb
+* [Loading VB] 65535 verts, 2047 Kb
+* [Loading VB] 65532 verts, 2047 Kb
+* [Loading VB] 65533 verts, 2047 Kb
+* [Loading VB] 65533 verts, 2047 Kb
+* [Loading VB] 53181 verts, 1661 Kb
+* [Loading IB] 1048575 indices, 2047 Kb
+* [Loading IB] 1048572 indices, 2047 Kb
+* [Loading IB] 1048572 indices, 2047 Kb
+* [Loading IB] 1048572 indices, 2047 Kb
+* [Loading IB] 1048572 indices, 2047 Kb
+* [Loading IB] 1048572 indices, 2047 Kb
+* [Loading IB] 1048575 indices, 2047 Kb
+* [Loading IB] 1048572 indices, 2047 Kb
+* [Loading IB] 1048575 indices, 2047 Kb
+* [Loading IB] 228285 indices, 445 Kb
+* phase time: 68 ms
+* phase cmem: 253571 K
+Загрузка базы пространств...
+* phase time: 17737 ms
+* phase cmem: 257301 K
+Загрузка детальных объектов...
+* [DETAILS] VertexConsts(256), Batch(61)
+* [DETAILS] 40687 v(20), 26352 p
+* [DETAILS] Batch(61), VB(794K), IB(154K)
+* phase time: 145 ms
+* phase cmem: 258277 K
+Загрузка секторов и порталов...
+* Loading HOM: d:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\level.hom
+* phase time: 120 ms
+* phase cmem: 258436 K
+Загрузка ИИ объектов...
+- Loading music tracks from 'l01_escape_musics'...
+* Initializing level script process
+* phase time: 16 ms
+* phase cmem: 258507 K
+Клиент: Создание...
+_our = 0
+_him = 0
+- Game configuring : Started 
+- Game configuring : Finished 
+ --incorrect global rect definition for map [l08u_brainlab]  kw=0.006669 kh=0.031627
+ --try x2=181.484863 or  y2=1612.421753
+ --error-incorrect map definition global rect of map [l01_escape] intersects with [l04_darkvalley]
+ --error-incorrect map definition global rect of map [l03_agroprom] intersects with [l03u_agr_underground]
+ --error-incorrect map definition global rect of map [l05_bar] intersects with [l06_rostok]
+ --error-incorrect map definition global rect of map [l07_military] intersects with [l10_radar]
+ --error-incorrect map definition global rect of map [l08_yantar] intersects with [l08u_brainlab]
+ --error-incorrect map definition global rect of map [l10_radar] intersects with [l10u_bunker]
+ --error-incorrect map definition global rect of map [l12_stancia] intersects with [l12_stancia_2]
+ --error-incorrect map definition global rect of map [l12_stancia] intersects with [l12u_sarcofag]
+ --error-incorrect map definition global rect of map [l12_stancia] intersects with [l12u_control_monolith]
+ --error-incorrect map definition global rect of map [l12_stancia_2] intersects with [l12u_sarcofag]
+ --error-incorrect map definition global rect of map [l12_stancia_2] intersects with [l12u_control_monolith]
+ --error-incorrect map definition global rect of map [l12u_sarcofag] intersects with [l12u_control_monolith]
+ --incorrect global rect definition for map [l08u_brainlab]  kw=0.006669 kh=0.031627
+ --try x2=181.484863 or  y2=1612.421753
+ --error-incorrect map definition global rect of map [l01_escape] intersects with [l04_darkvalley]
+ --error-incorrect map definition global rect of map [l03_agroprom] intersects with [l03u_agr_underground]
+ --error-incorrect map definition global rect of map [l05_bar] intersects with [l06_rostok]
+ --error-incorrect map definition global rect of map [l07_military] intersects with [l10_radar]
+ --error-incorrect map definition global rect of map [l08_yantar] intersects with [l08u_brainlab]
+ --error-incorrect map definition global rect of map [l10_radar] intersects with [l10u_bunker]
+ --error-incorrect map definition global rect of map [l12_stancia] intersects with [l12_stancia_2]
+ --error-incorrect map definition global rect of map [l12_stancia] intersects with [l12u_sarcofag]
+ --error-incorrect map definition global rect of map [l12_stancia] intersects with [l12u_control_monolith]
+ --error-incorrect map definition global rect of map [l12_stancia_2] intersects with [l12u_sarcofag]
+ --error-incorrect map definition global rect of map [l12_stancia_2] intersects with [l12u_control_monolith]
+ --error-incorrect map definition global rect of map [l12u_sarcofag] intersects with [l12u_control_monolith]
+* phase time: 2323 ms
+* phase cmem: 266225 K
+Загрузка текстур...
+* t-report - base: 630, 41976 K
+* t-report - lmap: 10, 10241 K
+***FATAL***: Too many lmap-textures (limit: 8 textures or 32M).
+        Reduce pixel density (worse) or use more vertex lighting (better).
+* phase time: 429 ms
+* phase cmem: 318073 K
+Клиент: Синхронизация...
+* phase time: 16 ms
+* phase cmem: 318073 K
+* [win32]: free[3624920 K], reserved[65612 K], committed[503708 K]
+* [ D3D ]: textures[52217 K]
+* [x-ray]: process heap[318073 K]
+* [x-ray]: economy: strings[3081 K], smem[0 K]
+* [x-ray]: file mapping: memory[31835 K], count[4]
+* active file mappings (4):
+* [0x0a020000][8128486][d:\engine\shb-engine\debug-win32\..\gamedata\game.graph]
+* [0x0bfc0000][3573054][d:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\level.gct]
+* [0x11000000][12505535][d:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\level.ai]
+* [0x191e0000][8392388][d:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\level.details]
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\meshes\actors\hero\stalker_novice.ogf
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#0.ogf
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#1.ogf
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#2.ogf
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#3.ogf
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#4.ogf
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#5.ogf
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#6.ogf
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#7.ogf
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#8.ogf
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#9.ogf
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#10.ogf
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#11.ogf
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#12.ogf
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#13.ogf
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#14.ogf
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#15.ogf
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#16.ogf
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#17.ogf
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#18.ogf
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#19.ogf
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#20.ogf
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#21.ogf
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#22.ogf
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#23.ogf
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#24.ogf
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#25.ogf
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#26.ogf
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#27.ogf
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#28.ogf
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#29.ogf
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#30.ogf
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#31.ogf
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#32.ogf
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#33.ogf
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#34.ogf
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#35.ogf
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#36.ogf
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#37.ogf
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#38.ogf
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#39.ogf
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#40.ogf
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#41.ogf
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#42.ogf
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#43.ogf
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#44.ogf
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#45.ogf
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#46.ogf
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#47.ogf
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#48.ogf
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\meshes\equipments\item_datchik1.ogf
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\meshes\equipments\light_night.ogf
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\meshes\equipments\novice_suit.ogf
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\meshes\weapons\binoculars\wpn_binoculars.ogf
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\meshes\weapons\binoculars\wpn_binoculars_hud.ogf
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\meshes\equipments\item_pda.ogf
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\meshes\physics\decor\ventilator_01.ogf
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\meshes\physics\decor\priemnik_gorizont.ogf
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\meshes\physics\box\box_1a.ogf
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\meshes\physics\balon\balon_01.ogf
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\meshes\weapons\groza\wpn_groza.ogf
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\meshes\equipments\item_transiver.ogf
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\meshes\equipments\stalker_killer_suit.ogf
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\meshes\physics\decor\tv_1.ogf
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\meshes\physics\decor\tiski.ogf
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\meshes\physics\door\door_trader.ogf
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\meshes\physics\door\door_traders_box.ogf
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\meshes\physics\light\lampa_01_on.ogf
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\meshes\actors\trader\trader.ogf
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\meshes\weapons\ammo\ammo_9x18_fmj.ogf
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\meshes\weapons\pm\wpn_pm.ogf
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\meshes\weapons\pm\wpn_pm_hud.ogf
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\meshes\weapons\knife\wpn_knife.ogf
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\meshes\weapons\knife\wpn_knife_hud.ogf
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\meshes\equipments\item_notebook.ogf
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\meshes\monsters\flesh\flesh.ogf
+correction attempts 1
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\meshes\actors\novice\green_stalker_4.ogf
+- There are no sounds with prefix fight\death\anomaly_
+- There are no sounds with prefix fight\friendly_grenade\friendly_grenade_
+! [LUA] SCRIPT RUNTIME ERROR
+! [LUA]  0 : [C] [C](-1) : 
+! [LUA]  1 : [Lua] ...ebug-win32\..\gamedata\scripts\state_mgr_goap.script(115) : goap_graph
+! [LUA]  2 : [Lua] ...ine\debug-win32\..\gamedata\scripts\state_mgr.script(293) : 
+! [LUA]  3 : [C  ] state_manager
+! [LUA]  4 : [Lua] ...ine\debug-win32\..\gamedata\scripts\state_mgr.script(464) : bind_manager
+! [LUA]  5 : [Lua] ...\debug-win32\..\gamedata\scripts\xr_motivator.script(56) : 
+! [LUA] ...ebug-win32\..\gamedata\scripts\state_mgr_goap.script:115: attempt to index global 'state_mgr_direction' (a nil value)
+correction attempts 1
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\meshes\weapons\ammo\ammo_12x70_buck.ogf
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\meshes\equipments\item_guitar.ogf
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\meshes\weapons\bm_16\wpn_bm-16.ogf
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\meshes\weapons\bm_16\wpn_bm-16_hud.ogf
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\meshes\food\conserv1.ogf
+! [LUA] SCRIPT RUNTIME ERROR
+! [LUA]  0 : [C] [C](-1) : 
+! [LUA]  1 : [Lua] ...ebug-win32\..\gamedata\scripts\state_mgr_goap.script(115) : goap_graph
+! [LUA]  2 : [Lua] ...ine\debug-win32\..\gamedata\scripts\state_mgr.script(293) : 
+! [LUA]  3 : [C  ] state_manager
+! [LUA]  4 : [Lua] ...ine\debug-win32\..\gamedata\scripts\state_mgr.script(464) : bind_manager
+! [LUA]  5 : [Lua] ...\debug-win32\..\gamedata\scripts\xr_motivator.script(56) : 
+! [LUA] ...ebug-win32\..\gamedata\scripts\state_mgr_goap.script:115: attempt to index global 'state_mgr_direction' (a nil value)
+correction attempts 1
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\meshes\equipments\drink_nonstop.ogf
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\meshes\weapons\kolbasa\kolbasa.ogf
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\meshes\equipments\item_bandage.ogf
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\meshes\actors\novice\green_stalker_5.ogf
+- There are no sounds with prefix fight\death\anomaly_
+- There are no sounds with prefix fight\friendly_grenade\friendly_grenade_
+! [LUA] SCRIPT RUNTIME ERROR
+! [LUA]  0 : [C] [C](-1) : 
+! [LUA]  1 : [Lua] ...ebug-win32\..\gamedata\scripts\state_mgr_goap.script(115) : goap_graph
+! [LUA]  2 : [Lua] ...ine\debug-win32\..\gamedata\scripts\state_mgr.script(293) : 
+! [LUA]  3 : [C  ] state_manager
+! [LUA]  4 : [Lua] ...ine\debug-win32\..\gamedata\scripts\state_mgr.script(464) : bind_manager
+! [LUA]  5 : [Lua] ...\debug-win32\..\gamedata\scripts\xr_motivator.script(56) : 
+! [LUA] ...ebug-win32\..\gamedata\scripts\state_mgr_goap.script:115: attempt to index global 'state_mgr_direction' (a nil value)
+correction attempts 1
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\meshes\weapons\bred\bred.ogf
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\meshes\actors\novice\green_stalker_3.ogf
+- There are no sounds with prefix fight\death\anomaly_
+- There are no sounds with prefix fight\friendly_grenade\friendly_grenade_
+! [LUA] SCRIPT RUNTIME ERROR
+! [LUA]  0 : [C] [C](-1) : 
+! [LUA]  1 : [Lua] ...ebug-win32\..\gamedata\scripts\state_mgr_goap.script(115) : goap_graph
+! [LUA]  2 : [Lua] ...ine\debug-win32\..\gamedata\scripts\state_mgr.script(293) : 
+! [LUA]  3 : [C  ] state_manager
+! [LUA]  4 : [Lua] ...ine\debug-win32\..\gamedata\scripts\state_mgr.script(464) : bind_manager
+! [LUA]  5 : [Lua] ...\debug-win32\..\gamedata\scripts\xr_motivator.script(56) : 
+! [LUA] ...ebug-win32\..\gamedata\scripts\state_mgr_goap.script:115: attempt to index global 'state_mgr_direction' (a nil value)
+correction attempts 1
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\meshes\equipments\item_harmonica.ogf
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\meshes\weapons\vodka\vodka.ogf
+! [LUA] SCRIPT RUNTIME ERROR
+! [LUA]  0 : [C] [C](-1) : 
+! [LUA]  1 : [Lua] ...ebug-win32\..\gamedata\scripts\state_mgr_goap.script(115) : goap_graph
+! [LUA]  2 : [Lua] ...ine\debug-win32\..\gamedata\scripts\state_mgr.script(293) : 
+! [LUA]  3 : [C  ] state_manager
+! [LUA]  4 : [Lua] ...ine\debug-win32\..\gamedata\scripts\state_mgr.script(464) : bind_manager
+! [LUA]  5 : [Lua] ...\debug-win32\..\gamedata\scripts\xr_motivator.script(56) : 
+! [LUA] ...ebug-win32\..\gamedata\scripts\state_mgr_goap.script:115: attempt to index global 'state_mgr_direction' (a nil value)
+correction attempts 1
+! [LUA] SCRIPT RUNTIME ERROR
+! [LUA]  0 : [C] [C](-1) : 
+! [LUA]  1 : [Lua] ...ebug-win32\..\gamedata\scripts\state_mgr_goap.script(115) : goap_graph
+! [LUA]  2 : [Lua] ...ine\debug-win32\..\gamedata\scripts\state_mgr.script(293) : 
+! [LUA]  3 : [C  ] state_manager
+! [LUA]  4 : [Lua] ...ine\debug-win32\..\gamedata\scripts\state_mgr.script(464) : bind_manager
+! [LUA]  5 : [Lua] ...\debug-win32\..\gamedata\scripts\xr_motivator.script(56) : 
+! [LUA] ...ebug-win32\..\gamedata\scripts\state_mgr_goap.script:115: attempt to index global 'state_mgr_direction' (a nil value)
+correction attempts 1
+! [LUA] SCRIPT RUNTIME ERROR
+! [LUA]  0 : [C] [C](-1) : 
+! [LUA]  1 : [Lua] ...ebug-win32\..\gamedata\scripts\state_mgr_goap.script(115) : goap_graph
+! [LUA]  2 : [Lua] ...ine\debug-win32\..\gamedata\scripts\state_mgr.script(293) : 
+! [LUA]  3 : [C  ] state_manager
+! [LUA]  4 : [Lua] ...ine\debug-win32\..\gamedata\scripts\state_mgr.script(464) : bind_manager
+! [LUA]  5 : [Lua] ...\debug-win32\..\gamedata\scripts\xr_motivator.script(56) : 
+! [LUA] ...ebug-win32\..\gamedata\scripts\state_mgr_goap.script:115: attempt to index global 'state_mgr_direction' (a nil value)
+correction attempts 1
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\meshes\actors\neytral\stalker_neytral_balon_1.ogf
+! [LUA] SCRIPT RUNTIME ERROR
+! [LUA]  0 : [C] [C](-1) : 
+! [LUA]  1 : [Lua] ...ebug-win32\..\gamedata\scripts\state_mgr_goap.script(115) : goap_graph
+! [LUA]  2 : [Lua] ...ine\debug-win32\..\gamedata\scripts\state_mgr.script(293) : 
+! [LUA]  3 : [C  ] state_manager
+! [LUA]  4 : [Lua] ...ine\debug-win32\..\gamedata\scripts\state_mgr.script(464) : bind_manager
+! [LUA]  5 : [Lua] ...\debug-win32\..\gamedata\scripts\xr_motivator.script(56) : 
+! [LUA] ...ebug-win32\..\gamedata\scripts\state_mgr_goap.script:115: attempt to index global 'state_mgr_direction' (a nil value)
+correction attempts 1
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\meshes\weapons\ammo\ammo_545x39_fmj.ogf
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\meshes\equipments\item_fmradio.ogf
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\meshes\weapons\ak-74u\ak74u.ogf
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\meshes\weapons\ak-74u\wpn_ak74u_hud.ogf
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\meshes\physics\decor\vedro_01.ogf
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\meshes\physics\small_trash\doski_br_02.ogf
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\meshes\physics\vehicles\mi24\veh_mi24_u_01.ogf
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\meshes\physics\large_trash\poddon.ogf
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\meshes\physics\dead_body\skelet_combine_pose_06.ogf
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\meshes\physics\rope\rope_01.ogf
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\meshes\physics\stul\stul_wood_01.ogf
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\meshes\physics\decor\teapot_1.ogf
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\meshes\actors\soldier\soldier_spetsnaz.ogf
+- There are no sounds with prefix fight\death\anomaly_
+- There are no sounds with prefix fight\friendly_grenade\friendly_grenade_
+! [LUA] SCRIPT RUNTIME ERROR
+! [LUA]  0 : [C] [C](-1) : 
+! [LUA]  1 : [Lua] ...ebug-win32\..\gamedata\scripts\state_mgr_goap.script(115) : goap_graph
+! [LUA]  2 : [Lua] ...ine\debug-win32\..\gamedata\scripts\state_mgr.script(293) : 
+! [LUA]  3 : [C  ] state_manager
+! [LUA]  4 : [Lua] ...ine\debug-win32\..\gamedata\scripts\state_mgr.script(464) : bind_manager
+! [LUA]  5 : [Lua] ...\debug-win32\..\gamedata\scripts\xr_motivator.script(56) : 
+! [LUA] ...ebug-win32\..\gamedata\scripts\state_mgr_goap.script:115: attempt to index global 'state_mgr_direction' (a nil value)
+correction attempts 1
+! [LUA] SCRIPT RUNTIME ERROR
+! [LUA]  0 : [C] [C](-1) : 
+! [LUA]  1 : [Lua] ...ebug-win32\..\gamedata\scripts\state_mgr_goap.script(115) : goap_graph
+! [LUA]  2 : [Lua] ...ine\debug-win32\..\gamedata\scripts\state_mgr.script(293) : 
+! [LUA]  3 : [C  ] state_manager
+! [LUA]  4 : [Lua] ...ine\debug-win32\..\gamedata\scripts\state_mgr.script(464) : bind_manager
+! [LUA]  5 : [Lua] ...\debug-win32\..\gamedata\scripts\xr_motivator.script(56) : 
+! [LUA] ...ebug-win32\..\gamedata\scripts\state_mgr_goap.script:115: attempt to index global 'state_mgr_direction' (a nil value)
+correction attempts 1
+! [LUA] SCRIPT RUNTIME ERROR
+! [LUA]  0 : [C] [C](-1) : 
+! [LUA]  1 : [Lua] ...ebug-win32\..\gamedata\scripts\state_mgr_goap.script(115) : goap_graph
+! [LUA]  2 : [Lua] ...ine\debug-win32\..\gamedata\scripts\state_mgr.script(293) : 
+! [LUA]  3 : [C  ] state_manager
+! [LUA]  4 : [Lua] ...ine\debug-win32\..\gamedata\scripts\state_mgr.script(464) : bind_manager
+! [LUA]  5 : [Lua] ...\debug-win32\..\gamedata\scripts\xr_motivator.script(56) : 
+! [LUA] ...ebug-win32\..\gamedata\scripts\state_mgr_goap.script:115: attempt to index global 'state_mgr_direction' (a nil value)
+correction attempts 1
+! [LUA] SCRIPT RUNTIME ERROR
+! [LUA]  0 : [C] [C](-1) : 
+! [LUA]  1 : [Lua] ...ebug-win32\..\gamedata\scripts\state_mgr_goap.script(115) : goap_graph
+! [LUA]  2 : [Lua] ...ine\debug-win32\..\gamedata\scripts\state_mgr.script(293) : 
+! [LUA]  3 : [C  ] state_manager
+! [LUA]  4 : [Lua] ...ine\debug-win32\..\gamedata\scripts\state_mgr.script(464) : bind_manager
+! [LUA]  5 : [Lua] ...\debug-win32\..\gamedata\scripts\xr_motivator.script(56) : 
+! [LUA] ...ebug-win32\..\gamedata\scripts\state_mgr_goap.script:115: attempt to index global 'state_mgr_direction' (a nil value)
+correction attempts 1
+! [LUA] SCRIPT RUNTIME ERROR
+! [LUA]  0 : [C] [C](-1) : 
+! [LUA]  1 : [Lua] ...ebug-win32\..\gamedata\scripts\state_mgr_goap.script(115) : goap_graph
+! [LUA]  2 : [Lua] ...ine\debug-win32\..\gamedata\scripts\state_mgr.script(293) : 
+! [LUA]  3 : [C  ] state_manager
+! [LUA]  4 : [Lua] ...ine\debug-win32\..\gamedata\scripts\state_mgr.script(464) : bind_manager
+! [LUA]  5 : [Lua] ...\debug-win32\..\gamedata\scripts\xr_motivator.script(56) : 
+! [LUA] ...ebug-win32\..\gamedata\scripts\state_mgr_goap.script:115: attempt to index global 'state_mgr_direction' (a nil value)
+correction attempts 1
+! [LUA] SCRIPT RUNTIME ERROR
+! [LUA]  0 : [C] [C](-1) : 
+! [LUA]  1 : [Lua] ...ebug-win32\..\gamedata\scripts\state_mgr_goap.script(115) : goap_graph
+! [LUA]  2 : [Lua] ...ine\debug-win32\..\gamedata\scripts\state_mgr.script(293) : 
+! [LUA]  3 : [C  ] state_manager
+! [LUA]  4 : [Lua] ...ine\debug-win32\..\gamedata\scripts\state_mgr.script(464) : bind_manager
+! [LUA]  5 : [Lua] ...\debug-win32\..\gamedata\scripts\xr_motivator.script(56) : 
+! [LUA] ...ebug-win32\..\gamedata\scripts\state_mgr_goap.script:115: attempt to index global 'state_mgr_direction' (a nil value)
+correction attempts 1
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\meshes\equipments\item_aptechka.ogf
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\meshes\actors\soldier\soldier_obichniy.ogf
+- There are no sounds with prefix fight\death\anomaly_
+- There are no sounds with prefix fight\friendly_grenade\friendly_grenade_
+! [LUA] SCRIPT RUNTIME ERROR
+! [LUA]  0 : [C] [C](-1) : 
+! [LUA]  1 : [Lua] ...ebug-win32\..\gamedata\scripts\state_mgr_goap.script(115) : goap_graph
+! [LUA]  2 : [Lua] ...ine\debug-win32\..\gamedata\scripts\state_mgr.script(293) : 
+! [LUA]  3 : [C  ] state_manager
+! [LUA]  4 : [Lua] ...ine\debug-win32\..\gamedata\scripts\state_mgr.script(464) : bind_manager
+! [LUA]  5 : [Lua] ...\debug-win32\..\gamedata\scripts\xr_motivator.script(56) : 
+! [LUA] ...ebug-win32\..\gamedata\scripts\state_mgr_goap.script:115: attempt to index global 'state_mgr_direction' (a nil value)
+correction attempts 1
+! [LUA] SCRIPT RUNTIME ERROR
+! [LUA]  0 : [C] [C](-1) : 
+! [LUA]  1 : [Lua] ...ebug-win32\..\gamedata\scripts\state_mgr_goap.script(115) : goap_graph
+! [LUA]  2 : [Lua] ...ine\debug-win32\..\gamedata\scripts\state_mgr.script(293) : 
+! [LUA]  3 : [C  ] state_manager
+! [LUA]  4 : [Lua] ...ine\debug-win32\..\gamedata\scripts\state_mgr.script(464) : bind_manager
+! [LUA]  5 : [Lua] ...\debug-win32\..\gamedata\scripts\xr_motivator.script(56) : 
+! [LUA] ...ebug-win32\..\gamedata\scripts\state_mgr_goap.script:115: attempt to index global 'state_mgr_direction' (a nil value)
+correction attempts 1
+! [LUA] SCRIPT RUNTIME ERROR
+! [LUA]  0 : [C] [C](-1) : 
+! [LUA]  1 : [Lua] ...ebug-win32\..\gamedata\scripts\state_mgr_goap.script(115) : goap_graph
+! [LUA]  2 : [Lua] ...ine\debug-win32\..\gamedata\scripts\state_mgr.script(293) : 
+! [LUA]  3 : [C  ] state_manager
+! [LUA]  4 : [Lua] ...ine\debug-win32\..\gamedata\scripts\state_mgr.script(464) : bind_manager
+! [LUA]  5 : [Lua] ...\debug-win32\..\gamedata\scripts\xr_motivator.script(56) : 
+! [LUA] ...ebug-win32\..\gamedata\scripts\state_mgr_goap.script:115: attempt to index global 'state_mgr_direction' (a nil value)
+correction attempts 1
+! [LUA] SCRIPT RUNTIME ERROR
+! [LUA]  0 : [C] [C](-1) : 
+! [LUA]  1 : [Lua] ...ebug-win32\..\gamedata\scripts\state_mgr_goap.script(115) : goap_graph
+! [LUA]  2 : [Lua] ...ine\debug-win32\..\gamedata\scripts\state_mgr.script(293) : 
+! [LUA]  3 : [C  ] state_manager
+! [LUA]  4 : [Lua] ...ine\debug-win32\..\gamedata\scripts\state_mgr.script(464) : bind_manager
+! [LUA]  5 : [Lua] ...\debug-win32\..\gamedata\scripts\xr_motivator.script(56) : 
+! [LUA] ...ebug-win32\..\gamedata\scripts\state_mgr_goap.script:115: attempt to index global 'state_mgr_direction' (a nil value)
+correction attempts 1
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\meshes\actors\soldier\soldier_bandana.ogf
+! [LUA] SCRIPT RUNTIME ERROR
+! [LUA]  0 : [C] [C](-1) : 
+! [LUA]  1 : [Lua] ...ebug-win32\..\gamedata\scripts\state_mgr_goap.script(115) : goap_graph
+! [LUA]  2 : [Lua] ...ine\debug-win32\..\gamedata\scripts\state_mgr.script(293) : 
+! [LUA]  3 : [C  ] state_manager
+! [LUA]  4 : [Lua] ...ine\debug-win32\..\gamedata\scripts\state_mgr.script(464) : bind_manager
+! [LUA]  5 : [Lua] ...\debug-win32\..\gamedata\scripts\xr_motivator.script(56) : 
+! [LUA] ...ebug-win32\..\gamedata\scripts\state_mgr_goap.script:115: attempt to index global 'state_mgr_direction' (a nil value)
+correction attempts 1
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\meshes\actors\soldier\soldier_bandana_5.ogf
+! [LUA] SCRIPT RUNTIME ERROR
+! [LUA]  0 : [C] [C](-1) : 
+! [LUA]  1 : [Lua] ...ebug-win32\..\gamedata\scripts\state_mgr_goap.script(115) : goap_graph
+! [LUA]  2 : [Lua] ...ine\debug-win32\..\gamedata\scripts\state_mgr.script(293) : 
+! [LUA]  3 : [C  ] state_manager
+! [LUA]  4 : [Lua] ...ine\debug-win32\..\gamedata\scripts\state_mgr.script(464) : bind_manager
+! [LUA]  5 : [Lua] ...\debug-win32\..\gamedata\scripts\xr_motivator.script(56) : 
+! [LUA] ...ebug-win32\..\gamedata\scripts\state_mgr_goap.script:115: attempt to index global 'state_mgr_direction' (a nil value)
+correction attempts 1
+! [LUA] SCRIPT RUNTIME ERROR
+! [LUA]  0 : [C] [C](-1) : 
+! [LUA]  1 : [Lua] ...ebug-win32\..\gamedata\scripts\state_mgr_goap.script(115) : goap_graph
+! [LUA]  2 : [Lua] ...ine\debug-win32\..\gamedata\scripts\state_mgr.script(293) : 
+! [LUA]  3 : [C  ] state_manager
+! [LUA]  4 : [Lua] ...ine\debug-win32\..\gamedata\scripts\state_mgr.script(464) : bind_manager
+! [LUA]  5 : [Lua] ...\debug-win32\..\gamedata\scripts\xr_motivator.script(56) : 
+! [LUA] ...ebug-win32\..\gamedata\scripts\state_mgr_goap.script:115: attempt to index global 'state_mgr_direction' (a nil value)
+correction attempts 1
+! [LUA] SCRIPT RUNTIME ERROR
+! [LUA]  0 : [C] [C](-1) : 
+! [LUA]  1 : [Lua] ...ebug-win32\..\gamedata\scripts\state_mgr_goap.script(115) : goap_graph
+! [LUA]  2 : [Lua] ...ine\debug-win32\..\gamedata\scripts\state_mgr.script(293) : 
+! [LUA]  3 : [C  ] state_manager
+! [LUA]  4 : [Lua] ...ine\debug-win32\..\gamedata\scripts\state_mgr.script(464) : bind_manager
+! [LUA]  5 : [Lua] ...\debug-win32\..\gamedata\scripts\xr_motivator.script(56) : 
+! [LUA] ...ebug-win32\..\gamedata\scripts\state_mgr_goap.script:115: attempt to index global 'state_mgr_direction' (a nil value)
+correction attempts 1
+! [LUA] SCRIPT RUNTIME ERROR
+! [LUA]  0 : [C] [C](-1) : 
+! [LUA]  1 : [Lua] ...ebug-win32\..\gamedata\scripts\state_mgr_goap.script(115) : goap_graph
+! [LUA]  2 : [Lua] ...ine\debug-win32\..\gamedata\scripts\state_mgr.script(293) : 
+! [LUA]  3 : [C  ] state_manager
+! [LUA]  4 : [Lua] ...ine\debug-win32\..\gamedata\scripts\state_mgr.script(464) : bind_manager
+! [LUA]  5 : [Lua] ...\debug-win32\..\gamedata\scripts\xr_motivator.script(56) : 
+! [LUA] ...ebug-win32\..\gamedata\scripts\state_mgr_goap.script:115: attempt to index global 'state_mgr_direction' (a nil value)
+correction attempts 1
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\meshes\actors\soldier\soldier_beret_1.ogf
+! [LUA] SCRIPT RUNTIME ERROR
+! [LUA]  0 : [C] [C](-1) : 
+! [LUA]  1 : [Lua] ...ebug-win32\..\gamedata\scripts\state_mgr_goap.script(115) : goap_graph
+! [LUA]  2 : [Lua] ...ine\debug-win32\..\gamedata\scripts\state_mgr.script(293) : 
+! [LUA]  3 : [C  ] state_manager
+! [LUA]  4 : [Lua] ...ine\debug-win32\..\gamedata\scripts\state_mgr.script(464) : bind_manager
+! [LUA]  5 : [Lua] ...\debug-win32\..\gamedata\scripts\xr_motivator.script(56) : 
+! [LUA] ...ebug-win32\..\gamedata\scripts\state_mgr_goap.script:115: attempt to index global 'state_mgr_direction' (a nil value)
+correction attempts 1
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\meshes\physics\decor\rupor.ogf
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\meshes\actors\bandit\stalker_bandit_3.ogf
+- There are no sounds with prefix fight\fire\fire_,fight\threat\threat_distant_
+- There are no sounds with prefix fight\threat\threat_distant_
+- There are no sounds with prefix fight\enemy_hit\enemy_hit_
+- There are no sounds with prefix fight\enemy_down\enemy_down_
+! [LUA] SCRIPT RUNTIME ERROR
+! [LUA]  0 : [C] [C](-1) : 
+! [LUA]  1 : [Lua] ...ebug-win32\..\gamedata\scripts\state_mgr_goap.script(115) : goap_graph
+! [LUA]  2 : [Lua] ...ine\debug-win32\..\gamedata\scripts\state_mgr.script(293) : 
+! [LUA]  3 : [C  ] state_manager
+! [LUA]  4 : [Lua] ...ine\debug-win32\..\gamedata\scripts\state_mgr.script(464) : bind_manager
+! [LUA]  5 : [Lua] ...\debug-win32\..\gamedata\scripts\xr_motivator.script(56) : 
+! [LUA] ...ebug-win32\..\gamedata\scripts\state_mgr_goap.script:115: attempt to index global 'state_mgr_direction' (a nil value)
+shell for esc_stalker_corpse[569] created in 1.276823 ms
+correction attempts 1
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\meshes\actors\novice\green_stalker_2.ogf
+- There are no sounds with prefix fight\death\anomaly_
+- There are no sounds with prefix fight\friendly_grenade\friendly_grenade_
+! [LUA] SCRIPT RUNTIME ERROR
+! [LUA]  0 : [C] [C](-1) : 
+! [LUA]  1 : [Lua] ...ebug-win32\..\gamedata\scripts\state_mgr_goap.script(115) : goap_graph
+! [LUA]  2 : [Lua] ...ine\debug-win32\..\gamedata\scripts\state_mgr.script(293) : 
+! [LUA]  3 : [C  ] state_manager
+! [LUA]  4 : [Lua] ...ine\debug-win32\..\gamedata\scripts\state_mgr.script(464) : bind_manager
+! [LUA]  5 : [Lua] ...\debug-win32\..\gamedata\scripts\xr_motivator.script(56) : 
+! [LUA] ...ebug-win32\..\gamedata\scripts\state_mgr_goap.script:115: attempt to index global 'state_mgr_direction' (a nil value)
+shell for esc_tutorial_dead_novice[654] created in 1.222466 ms
+correction attempts 1
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\meshes\monsters\crow\crow.ogf
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\meshes\physics\decor\bottle_bar_stakan.ogf
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\meshes\physics\decor\butilka_vodka_01.ogf
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\meshes\equipments\drink_nonstop_old.ogf
+! [LUA] SCRIPT RUNTIME ERROR
+! [LUA]  0 : [C] [C](-1) : 
+! [LUA]  1 : [Lua] ...ebug-win32\..\gamedata\scripts\state_mgr_goap.script(115) : goap_graph
+! [LUA]  2 : [Lua] ...ine\debug-win32\..\gamedata\scripts\state_mgr.script(293) : 
+! [LUA]  3 : [C  ] state_manager
+! [LUA]  4 : [Lua] ...ine\debug-win32\..\gamedata\scripts\state_mgr.script(464) : bind_manager
+! [LUA]  5 : [Lua] ...\debug-win32\..\gamedata\scripts\xr_motivator.script(56) : 
+! [LUA] ...ebug-win32\..\gamedata\scripts\state_mgr_goap.script:115: attempt to index global 'state_mgr_direction' (a nil value)
+shell for esc_stalker_corps1[803] created in 1.252115 ms
+correction attempts 1
+! [LUA] SCRIPT RUNTIME ERROR
+! [LUA]  0 : [C] [C](-1) : 
+! [LUA]  1 : [Lua] ...ebug-win32\..\gamedata\scripts\state_mgr_goap.script(115) : goap_graph
+! [LUA]  2 : [Lua] ...ine\debug-win32\..\gamedata\scripts\state_mgr.script(293) : 
+! [LUA]  3 : [C  ] state_manager
+! [LUA]  4 : [Lua] ...ine\debug-win32\..\gamedata\scripts\state_mgr.script(464) : bind_manager
+! [LUA]  5 : [Lua] ...\debug-win32\..\gamedata\scripts\xr_motivator.script(56) : 
+! [LUA] ...ebug-win32\..\gamedata\scripts\state_mgr_goap.script:115: attempt to index global 'state_mgr_direction' (a nil value)
+shell for esc_stalker_corps1_0000[805] created in 1.293548 ms
+correction attempts 1
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\meshes\actors\neytral\stalker_neytral_hood_2.ogf
+! [LUA] SCRIPT RUNTIME ERROR
+! [LUA]  0 : [C] [C](-1) : 
+! [LUA]  1 : [Lua] ...ebug-win32\..\gamedata\scripts\state_mgr_goap.script(115) : goap_graph
+! [LUA]  2 : [Lua] ...ine\debug-win32\..\gamedata\scripts\state_mgr.script(293) : 
+! [LUA]  3 : [C  ] state_manager
+! [LUA]  4 : [Lua] ...ine\debug-win32\..\gamedata\scripts\state_mgr.script(464) : bind_manager
+! [LUA]  5 : [Lua] ...\debug-win32\..\gamedata\scripts\xr_motivator.script(56) : 
+! [LUA] ...ebug-win32\..\gamedata\scripts\state_mgr_goap.script:115: attempt to index global 'state_mgr_direction' (a nil value)
+shell for esc_stalker_corps1_0001[807] created in 1.250595 ms
+correction attempts 1
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\meshes\actors\novice\green_stalker_1.ogf
+! [LUA] SCRIPT RUNTIME ERROR
+! [LUA]  0 : [C] [C](-1) : 
+! [LUA]  1 : [Lua] ...ebug-win32\..\gamedata\scripts\state_mgr_goap.script(115) : goap_graph
+! [LUA]  2 : [Lua] ...ine\debug-win32\..\gamedata\scripts\state_mgr.script(293) : 
+! [LUA]  3 : [C  ] state_manager
+! [LUA]  4 : [Lua] ...ine\debug-win32\..\gamedata\scripts\state_mgr.script(464) : bind_manager
+! [LUA]  5 : [Lua] ...\debug-win32\..\gamedata\scripts\xr_motivator.script(56) : 
+! [LUA] ...ebug-win32\..\gamedata\scripts\state_mgr_goap.script:115: attempt to index global 'state_mgr_direction' (a nil value)
+correction attempts 1
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\meshes\equipments\item_minipda.ogf
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\meshes\actors\bandit\stalker_bandit_4.ogf
+! [LUA] SCRIPT RUNTIME ERROR
+! [LUA]  0 : [C] [C](-1) : 
+! [LUA]  1 : [Lua] ...ebug-win32\..\gamedata\scripts\state_mgr_goap.script(115) : goap_graph
+! [LUA]  2 : [Lua] ...ine\debug-win32\..\gamedata\scripts\state_mgr.script(293) : 
+! [LUA]  3 : [C  ] state_manager
+! [LUA]  4 : [Lua] ...ine\debug-win32\..\gamedata\scripts\state_mgr.script(464) : bind_manager
+! [LUA]  5 : [Lua] ...\debug-win32\..\gamedata\scripts\xr_motivator.script(56) : 
+! [LUA] ...ebug-win32\..\gamedata\scripts\state_mgr_goap.script:115: attempt to index global 'state_mgr_direction' (a nil value)
+shell for esc_trup_bratka[850] created in 1.291648 ms
+correction attempts 1
+! [LUA] SCRIPT RUNTIME ERROR
+! [LUA]  0 : [C] [C](-1) : 
+! [LUA]  1 : [Lua] ...ebug-win32\..\gamedata\scripts\state_mgr_goap.script(115) : goap_graph
+! [LUA]  2 : [Lua] ...ine\debug-win32\..\gamedata\scripts\state_mgr.script(293) : 
+! [LUA]  3 : [C  ] state_manager
+! [LUA]  4 : [Lua] ...ine\debug-win32\..\gamedata\scripts\state_mgr.script(464) : bind_manager
+! [LUA]  5 : [Lua] ...\debug-win32\..\gamedata\scripts\xr_motivator.script(56) : 
+! [LUA] ...ebug-win32\..\gamedata\scripts\state_mgr_goap.script:115: attempt to index global 'state_mgr_direction' (a nil value)
+shell for esc_stalker_0000[979] created in 1.250215 ms
+correction attempts 1
+! [LUA] SCRIPT RUNTIME ERROR
+! [LUA]  0 : [C] [C](-1) : 
+! [LUA]  1 : [Lua] ...ebug-win32\..\gamedata\scripts\state_mgr_goap.script(115) : goap_graph
+! [LUA]  2 : [Lua] ...ine\debug-win32\..\gamedata\scripts\state_mgr.script(293) : 
+! [LUA]  3 : [C  ] state_manager
+! [LUA]  4 : [Lua] ...ine\debug-win32\..\gamedata\scripts\state_mgr.script(464) : bind_manager
+! [LUA]  5 : [Lua] ...\debug-win32\..\gamedata\scripts\xr_motivator.script(56) : 
+! [LUA] ...ebug-win32\..\gamedata\scripts\state_mgr_goap.script:115: attempt to index global 'state_mgr_direction' (a nil value)
+shell for esc_trup_scene[988] created in 1.237671 ms
+correction attempts 1
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\meshes\physics\anomaly\artefact_blackdrip.ogf
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\meshes\weapons\artefact\wpn_artefact_hud.ogf
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\meshes\physics\door\cabinet_village_140x210_ph_door_l.ogf
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\meshes\physics\door\cabinet_village_140x210_ph_door_r.ogf
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\meshes\physics\box\expl_dinamit.ogf
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\meshes\physics\equipment_cache\equipment_instrument_case_01_case.ogf
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\meshes\physics\equipment_cache\equipment_box_01_case.ogf
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\meshes\physics\equipment_cache\equipment_rucksack_01_case.ogf
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\meshes\physics\box\box_wood_01.ogf
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\meshes\physics\box\box_metall_01.ogf
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\meshes\physics\box\box_wood_tara.ogf
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\meshes\physics\decor\tv_1_br.ogf
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\meshes\physics\decor\ognetushitel.ogf
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\meshes\physics\balon\bochka_close_3.ogf
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\meshes\physics\balon\bochka_close_1.ogf
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\meshes\physics\balon\balon_02.ogf
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\meshes\physics\decor\kitchen_lojka.ogf
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\meshes\physics\decor\kitchen_krujka.ogf
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\meshes\physics\small_trash\wood_board_br_01.ogf
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\meshes\physics\small_trash\wood_board_br_01a.ogf
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\meshes\physics\small_trash\wood_board_br_01b.ogf
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\meshes\physics\decor\fire_vedro.ogf
+Game Task [storyline_eliminate_gunslinger] has no priority
+* xrSheduler: too much time consumed by object [alife_simulator] (305ms)
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\meshes\weapons\bolt\wpn_bolt.ogf
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\meshes\weapons\bolt\wpn_bolt_hud.ogf
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\meshes\weapons\rpg_7\wpn_rpg_7_grenade.ogf
+* xrSheduler: too much time consumed by object [esc_lager6] (23ms)
+* xrSheduler: too much time consumed by object [device_pda0068] (17ms)
+* xrSheduler: too much time consumed by object [escape_trader] (65ms)
+cl setDestroy [90][349]
+cl setDestroy [91][349]
+cl setDestroy [93][349]
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\meshes\equipments\item_antirad.ogf
+* WARNING: c_EVENT[18] to [91]: unknown dest
+* MEMORY USAGE: 385574 K
+~ Invalid syntax in call to 'r__tf_aniso'
+~ Valid arguments: integer value in range [1,16]
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\meshes\physics\decor\prt\bottle_bar_1_prt0.ogf
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\meshes\physics\decor\prt\bottle_bar_1_prt1.ogf
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\meshes\monsters\dog\dog.ogf
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\meshes\monsters\dog\dog_white.ogf
+correction attempts 1
+- Uncached model loading: d:\engine\shb-engine\debug-win32\..\gamedata\meshes\monsters\dog\dog_bulterier.ogf
+correction attempts 1
+correction attempts 1
+correction attempts 1
+cl setDestroy [799][1291]
+cl setDestroy [798][1292]
+cl setDestroy [796][1424]
+cl setDestroy [795][1424]
+* xrSheduler: too much time consumed by object [esc_dog_swarm_0002] (23ms)
+* xrSheduler: too much time consumed by object [esc_matugalnik] (24ms)
+- Play music track: music\amb01
+[LSS][2590] Going offline [199418][esc_dog_swarm_0001][578] ([-246.726303][-24.793291][-134.433868] : [52.586243][-0.610537][525.702942]), on '*SERVER*'
+[LSS][2590] Going offline [199418][esc_dog_swarm_0002][579] ([-246.726303][-24.793291][-134.433868] : [51.498619][1.474005][514.759949]), on '*SERVER*'
+[LSS][2590] Going offline [199418][esc_dog_swarm_0004][580] ([-246.726303][-24.793291][-134.433868] : [95.584534][6.286982][587.780151]), on '*SERVER*'
+[LSS][2590] Going offline [199418][esc_dog_swarm_0007][581] ([-246.726303][-24.793291][-134.433868] : [96.658318][5.794913][584.586365]), on '*SERVER*'
+cl setDestroy [578][2591]
+cl setDestroy [579][2591]
+cl setDestroy [580][2591]
+cl setDestroy [581][2591]
+dumping client spawn manager stuff for object with id 581
+dumping client spawn manager stuff for object with id 580
+dumping client spawn manager stuff for object with id 579
+dumping client spawn manager stuff for object with id 578
+correction attempts 1
+correction attempts 1
+correction attempts 1
+correction attempts 1
+* xrSheduler: too much time consumed by object [esc_dog_swarm_0001] (27ms)
+* xrSheduler: too much time consumed by object [esc_dog_swarm_0007] (48ms)
+* xrSheduler: too much time consumed by object [esc_matugalnik] (27ms)
+[LSS][5376] Going offline [293107][esc_dog_swarm_0001][578] ([-246.726303][-24.793289][-134.433868] : [96.609192][2.359322][411.564758]), on '*SERVER*'
+[LSS][5376] Going offline [293107][esc_dog_swarm_0002][579] ([-246.726303][-24.793289][-134.433868] : [139.463364][2.765162][406.489288]), on '*SERVER*'
+[LSS][5376] Going offline [293107][esc_dog_swarm_0004][580] ([-246.726303][-24.793289][-134.433868] : [112.929367][3.215622][409.849243]), on '*SERVER*'
+[LSS][5376] Going offline [293107][esc_dog_swarm_0007][581] ([-246.726303][-24.793289][-134.433868] : [126.141266][2.763368][419.770996]), on '*SERVER*'
+cl setDestroy [578][5377]
+cl setDestroy [579][5377]
+cl setDestroy [580][5377]
+cl setDestroy [581][5377]
+dumping client spawn manager stuff for object with id 581
+dumping client spawn manager stuff for object with id 580
+dumping client spawn manager stuff for object with id 579
+dumping client spawn manager stuff for object with id 578
+* xrSheduler: too much time consumed by object [esc_matugalnik] (61ms)
+correction attempts 1
+correction attempts 1
+correction attempts 1
+correction attempts 1
+* xrSheduler: too much time consumed by object [esc_matugalnik] (30ms)
+* xrSheduler: too much time consumed by object [esc_dog_swarm_0007] (27ms)
+[LSS][11436] Going offline [480162][esc_dog_swarm_0001][578] ([-246.726318][-24.793289][-134.433868] : [81.753853][0.060666][530.456726]), on '*SERVER*'
+[LSS][11436] Going offline [480162][esc_dog_swarm_0002][579] ([-246.726318][-24.793289][-134.433868] : [65.663155][0.329199][554.581726]), on '*SERVER*'
+[LSS][11436] Going offline [480162][esc_dog_swarm_0004][580] ([-246.726318][-24.793289][-134.433868] : [76.113747][-1.516133][516.295166]), on '*SERVER*'
+[LSS][11436] Going offline [480162][esc_dog_swarm_0007][581] ([-246.726318][-24.793289][-134.433868] : [57.823353][-1.109877][531.213562]), on '*SERVER*'
+cl setDestroy [578][11437]
+cl setDestroy [579][11437]
+cl setDestroy [580][11437]
+cl setDestroy [581][11437]
+dumping client spawn manager stuff for object with id 581
+dumping client spawn manager stuff for object with id 580
+dumping client spawn manager stuff for object with id 579
+dumping client spawn manager stuff for object with id 578
+correction attempts 1
+correction attempts 1
+correction attempts 1
+correction attempts 1
+* xrSheduler: too much time consumed by object [esc_matugalnik] (29ms)
+* xrSheduler: too much time consumed by object [trader_physic_object0001] (16ms)
+pause [ON] timer=[OFF] sound=[ON] reason=mm_activate1
+snd_emitters_[true] 2
+pause [ON] timer=[ON] sound=[OFF] reason=mm_activate2
+- Disconnect
+cl setDestroy [16811][12761]
+cl setDestroy [68][12761]
+cl setDestroy [67][12761]
+cl setDestroy [66][12761]
+cl setDestroy [65][12761]
+cl setDestroy [64][12761]
+cl setDestroy [0][12761]
+cl setDestroy [1][12761]
+cl setDestroy [2][12761]
+cl setDestroy [3][12761]
+cl setDestroy [4][12761]
+cl setDestroy [5][12761]
+cl setDestroy [6][12761]
+cl setDestroy [7][12761]
+cl setDestroy [8][12761]
+cl setDestroy [9][12761]
+cl setDestroy [10][12761]
+cl setDestroy [11][12761]
+cl setDestroy [12][12761]
+cl setDestroy [13][12761]
+cl setDestroy [14][12761]
+cl setDestroy [15][12761]
+cl setDestroy [16][12761]
+cl setDestroy [17][12761]
+cl setDestroy [18][12761]
+cl setDestroy [19][12761]
+cl setDestroy [20][12761]
+cl setDestroy [21][12761]
+cl setDestroy [22][12761]
+cl setDestroy [23][12761]
+cl setDestroy [24][12761]
+cl setDestroy [25][12761]
+cl setDestroy [26][12761]
+cl setDestroy [27][12761]
+cl setDestroy [28][12761]
+cl setDestroy [29][12761]
+cl setDestroy [30][12761]
+cl setDestroy [31][12761]
+cl setDestroy [32][12761]
+cl setDestroy [33][12761]
+cl setDestroy [34][12761]
+cl setDestroy [35][12761]
+cl setDestroy [36][12761]
+cl setDestroy [37][12761]
+cl setDestroy [38][12761]
+cl setDestroy [39][12761]
+cl setDestroy [40][12761]
+cl setDestroy [41][12761]
+cl setDestroy [42][12761]
+cl setDestroy [43][12761]
+cl setDestroy [44][12761]
+cl setDestroy [45][12761]
+cl setDestroy [46][12761]
+cl setDestroy [47][12761]
+cl setDestroy [48][12761]
+cl setDestroy [49][12761]
+cl setDestroy [50][12761]
+cl setDestroy [51][12761]
+cl setDestroy [52][12761]
+cl setDestroy [53][12761]
+cl setDestroy [54][12761]
+cl setDestroy [55][12761]
+cl setDestroy [56][12761]
+cl setDestroy [57][12761]
+cl setDestroy [58][12761]
+cl setDestroy [59][12761]
+cl setDestroy [60][12761]
+cl setDestroy [61][12761]
+cl setDestroy [62][12761]
+cl setDestroy [63][12761]
+cl setDestroy [69][12761]
+cl setDestroy [70][12761]
+cl setDestroy [71][12761]
+cl setDestroy [72][12761]
+cl setDestroy [73][12761]
+cl setDestroy [74][12761]
+cl setDestroy [75][12761]
+cl setDestroy [76][12761]
+cl setDestroy [77][12761]
+cl setDestroy [78][12761]
+cl setDestroy [79][12761]
+cl setDestroy [80][12761]
+cl setDestroy [81][12761]
+cl setDestroy [82][12761]
+cl setDestroy [83][12761]
+cl setDestroy [84][12761]
+cl setDestroy [85][12761]
+cl setDestroy [86][12761]
+cl setDestroy [87][12761]
+cl setDestroy [88][12761]
+cl setDestroy [16877][12761]
+cl setDestroy [16876][12761]
+cl setDestroy [16875][12761]
+cl setDestroy [16874][12761]
+cl setDestroy [16873][12761]
+cl setDestroy [16872][12761]
+cl setDestroy [16871][12761]
+cl setDestroy [16870][12761]
+cl setDestroy [16869][12761]
+cl setDestroy [16868][12761]
+cl setDestroy [16867][12761]
+cl setDestroy [16866][12761]
+cl setDestroy [16865][12761]
+cl setDestroy [16864][12761]
+cl setDestroy [16863][12761]
+cl setDestroy [16862][12761]
+cl setDestroy [16861][12761]
+cl setDestroy [16860][12761]
+cl setDestroy [16859][12761]
+cl setDestroy [16858][12761]
+cl setDestroy [16857][12761]
+cl setDestroy [16856][12761]
+cl setDestroy [16855][12761]
+cl setDestroy [16854][12761]
+cl setDestroy [16853][12761]
+cl setDestroy [16852][12761]
+cl setDestroy [16851][12761]
+cl setDestroy [16850][12761]
+cl setDestroy [16849][12761]
+cl setDestroy [92][12761]
+cl setDestroy [89][12761]
+cl setDestroy [94][12761]
+cl setDestroy [95][12761]
+cl setDestroy [96][12761]
+cl setDestroy [97][12761]
+cl setDestroy [98][12761]
+cl setDestroy [99][12761]
+cl setDestroy [100][12761]
+cl setDestroy [101][12761]
+cl setDestroy [16812][12761]
+cl setDestroy [108][12761]
+cl setDestroy [107][12761]
+cl setDestroy [106][12761]
+cl setDestroy [105][12761]
+cl setDestroy [104][12761]
+cl setDestroy [103][12761]
+cl setDestroy [102][12761]
+cl setDestroy [16813][12761]
+cl setDestroy [117][12761]
+cl setDestroy [116][12761]
+cl setDestroy [115][12761]
+cl setDestroy [114][12761]
+cl setDestroy [113][12761]
+cl setDestroy [112][12761]
+cl setDestroy [111][12761]
+cl setDestroy [110][12761]
+cl setDestroy [109][12761]
+cl setDestroy [16814][12761]
+cl setDestroy [124][12761]
+cl setDestroy [123][12761]
+cl setDestroy [122][12761]
+cl setDestroy [121][12761]
+cl setDestroy [120][12761]
+cl setDestroy [119][12761]
+cl setDestroy [118][12761]
+cl setDestroy [16815][12761]
+cl setDestroy [132][12761]
+cl setDestroy [131][12761]
+cl setDestroy [130][12761]
+cl setDestroy [129][12761]
+cl setDestroy [128][12761]
+cl setDestroy [127][12761]
+cl setDestroy [126][12761]
+cl setDestroy [125][12761]
+cl setDestroy [16816][12761]
+cl setDestroy [140][12761]
+cl setDestroy [139][12761]
+cl setDestroy [138][12761]
+cl setDestroy [137][12761]
+cl setDestroy [136][12761]
+cl setDestroy [135][12761]
+cl setDestroy [134][12761]
+cl setDestroy [133][12761]
+cl setDestroy [16817][12761]
+cl setDestroy [145][12761]
+cl setDestroy [144][12761]
+cl setDestroy [143][12761]
+cl setDestroy [142][12761]
+cl setDestroy [141][12761]
+cl setDestroy [16818][12761]
+cl setDestroy [154][12761]
+cl setDestroy [153][12761]
+cl setDestroy [152][12761]
+cl setDestroy [151][12761]
+cl setDestroy [150][12761]
+cl setDestroy [149][12761]
+cl setDestroy [148][12761]
+cl setDestroy [147][12761]
+cl setDestroy [146][12761]
+cl setDestroy [16819][12761]
+cl setDestroy [162][12761]
+cl setDestroy [161][12761]
+cl setDestroy [160][12761]
+cl setDestroy [159][12761]
+cl setDestroy [158][12761]
+cl setDestroy [157][12761]
+cl setDestroy [156][12761]
+cl setDestroy [155][12761]
+cl setDestroy [163][12761]
+cl setDestroy [164][12761]
+cl setDestroy [165][12761]
+cl setDestroy [166][12761]
+cl setDestroy [171][12761]
+cl setDestroy [16823][12761]
+cl setDestroy [16822][12761]
+cl setDestroy [16821][12761]
+cl setDestroy [16820][12761]
+cl setDestroy [172][12761]
+cl setDestroy [173][12761]
+cl setDestroy [201][12761]
+cl setDestroy [262][12761]
+cl setDestroy [269][12761]
+cl setDestroy [270][12761]
+cl setDestroy [271][12761]
+cl setDestroy [272][12761]
+cl setDestroy [291][12761]
+cl setDestroy [299][12761]
+cl setDestroy [304][12761]
+cl setDestroy [305][12761]
+cl setDestroy [306][12761]
+cl setDestroy [307][12761]
+cl setDestroy [308][12761]
+cl setDestroy [309][12761]
+cl setDestroy [310][12761]
+cl setDestroy [311][12761]
+cl setDestroy [312][12761]
+cl setDestroy [313][12761]
+cl setDestroy [314][12761]
+cl setDestroy [315][12761]
+cl setDestroy [316][12761]
+cl setDestroy [317][12761]
+cl setDestroy [318][12761]
+cl setDestroy [319][12761]
+cl setDestroy [320][12761]
+cl setDestroy [321][12761]
+cl setDestroy [322][12761]
+cl setDestroy [323][12761]
+cl setDestroy [324][12761]
+cl setDestroy [371][12761]
+cl setDestroy [16824][12761]
+cl setDestroy [378][12761]
+cl setDestroy [377][12761]
+cl setDestroy [376][12761]
+cl setDestroy [375][12761]
+cl setDestroy [374][12761]
+cl setDestroy [373][12761]
+cl setDestroy [372][12761]
+cl setDestroy [16825][12761]
+cl setDestroy [386][12761]
+cl setDestroy [385][12761]
+cl setDestroy [384][12761]
+cl setDestroy [383][12761]
+cl setDestroy [382][12761]
+cl setDestroy [381][12761]
+cl setDestroy [380][12761]
+cl setDestroy [379][12761]
+cl setDestroy [16826][12761]
+cl setDestroy [394][12761]
+cl setDestroy [393][12761]
+cl setDestroy [392][12761]
+cl setDestroy [391][12761]
+cl setDestroy [390][12761]
+cl setDestroy [389][12761]
+cl setDestroy [388][12761]
+cl setDestroy [387][12761]
+cl setDestroy [16827][12761]
+cl setDestroy [401][12761]
+cl setDestroy [400][12761]
+cl setDestroy [399][12761]
+cl setDestroy [398][12761]
+cl setDestroy [397][12761]
+cl setDestroy [396][12761]
+cl setDestroy [395][12761]
+cl setDestroy [16828][12761]
+cl setDestroy [409][12761]
+cl setDestroy [408][12761]
+cl setDestroy [407][12761]
+cl setDestroy [406][12761]
+cl setDestroy [405][12761]
+cl setDestroy [404][12761]
+cl setDestroy [403][12761]
+cl setDestroy [402][12761]
+cl setDestroy [16829][12761]
+cl setDestroy [417][12761]
+cl setDestroy [416][12761]
+cl setDestroy [415][12761]
+cl setDestroy [414][12761]
+cl setDestroy [413][12761]
+cl setDestroy [412][12761]
+cl setDestroy [411][12761]
+cl setDestroy [410][12761]
+cl setDestroy [16830][12761]
+cl setDestroy [426][12761]
+cl setDestroy [425][12761]
+cl setDestroy [424][12761]
+cl setDestroy [423][12761]
+cl setDestroy [422][12761]
+cl setDestroy [421][12761]
+cl setDestroy [420][12761]
+cl setDestroy [419][12761]
+cl setDestroy [418][12761]
+cl setDestroy [16831][12761]
+cl setDestroy [436][12761]
+cl setDestroy [435][12761]
+cl setDestroy [434][12761]
+cl setDestroy [433][12761]
+cl setDestroy [432][12761]
+cl setDestroy [431][12761]
+cl setDestroy [430][12761]
+cl setDestroy [429][12761]
+cl setDestroy [428][12761]
+cl setDestroy [427][12761]
+cl setDestroy [16832][12761]
+cl setDestroy [446][12761]
+cl setDestroy [445][12761]
+cl setDestroy [444][12761]
+cl setDestroy [443][12761]
+cl setDestroy [442][12761]
+cl setDestroy [441][12761]
+cl setDestroy [440][12761]
+cl setDestroy [439][12761]
+cl setDestroy [438][12761]
+cl setDestroy [437][12761]
+cl setDestroy [16833][12761]
+cl setDestroy [455][12761]
+cl setDestroy [454][12761]
+cl setDestroy [453][12761]
+cl setDestroy [452][12761]
+cl setDestroy [451][12761]
+cl setDestroy [450][12761]
+cl setDestroy [449][12761]
+cl setDestroy [448][12761]
+cl setDestroy [447][12761]
+cl setDestroy [16834][12761]
+cl setDestroy [463][12761]
+cl setDestroy [462][12761]
+cl setDestroy [461][12761]
+cl setDestroy [460][12761]
+cl setDestroy [459][12761]
+cl setDestroy [458][12761]
+cl setDestroy [457][12761]
+cl setDestroy [456][12761]
+cl setDestroy [16835][12761]
+cl setDestroy [472][12761]
+cl setDestroy [471][12761]
+cl setDestroy [470][12761]
+cl setDestroy [469][12761]
+cl setDestroy [468][12761]
+cl setDestroy [467][12761]
+cl setDestroy [466][12761]
+cl setDestroy [465][12761]
+cl setDestroy [464][12761]
+cl setDestroy [16836][12761]
+cl setDestroy [480][12761]
+cl setDestroy [479][12761]
+cl setDestroy [478][12761]
+cl setDestroy [477][12761]
+cl setDestroy [476][12761]
+cl setDestroy [475][12761]
+cl setDestroy [474][12761]
+cl setDestroy [473][12761]
+cl setDestroy [16837][12761]
+cl setDestroy [490][12761]
+cl setDestroy [489][12761]
+cl setDestroy [488][12761]
+cl setDestroy [487][12761]
+cl setDestroy [486][12761]
+cl setDestroy [485][12761]
+cl setDestroy [484][12761]
+cl setDestroy [483][12761]
+cl setDestroy [482][12761]
+cl setDestroy [481][12761]
+cl setDestroy [16838][12761]
+cl setDestroy [501][12761]
+cl setDestroy [500][12761]
+cl setDestroy [499][12761]
+cl setDestroy [498][12761]
+cl setDestroy [497][12761]
+cl setDestroy [496][12761]
+cl setDestroy [495][12761]
+cl setDestroy [494][12761]
+cl setDestroy [493][12761]
+cl setDestroy [492][12761]
+cl setDestroy [491][12761]
+cl setDestroy [16839][12761]
+cl setDestroy [510][12761]
+cl setDestroy [509][12761]
+cl setDestroy [508][12761]
+cl setDestroy [507][12761]
+cl setDestroy [506][12761]
+cl setDestroy [505][12761]
+cl setDestroy [504][12761]
+cl setDestroy [503][12761]
+cl setDestroy [502][12761]
+cl setDestroy [511][12761]
+cl setDestroy [512][12761]
+cl setDestroy [519][12761]
+cl setDestroy [520][12761]
+cl setDestroy [16840][12761]
+cl setDestroy [573][12761]
+cl setDestroy [572][12761]
+cl setDestroy [571][12761]
+cl setDestroy [570][12761]
+cl setDestroy [569][12761]
+cl setDestroy [574][12761]
+cl setDestroy [575][12761]
+cl setDestroy [577][12761]
+cl setDestroy [578][12761]
+cl setDestroy [579][12761]
+cl setDestroy [580][12761]
+cl setDestroy [581][12761]
+cl setDestroy [582][12761]
+cl setDestroy [583][12761]
+cl setDestroy [584][12761]
+cl setDestroy [585][12761]
+cl setDestroy [586][12761]
+cl setDestroy [587][12761]
+cl setDestroy [588][12761]
+cl setDestroy [589][12761]
+cl setDestroy [590][12761]
+cl setDestroy [591][12761]
+cl setDestroy [592][12761]
+cl setDestroy [593][12761]
+cl setDestroy [594][12761]
+cl setDestroy [595][12761]
+cl setDestroy [596][12761]
+cl setDestroy [597][12761]
+cl setDestroy [598][12761]
+cl setDestroy [599][12761]
+cl setDestroy [600][12761]
+cl setDestroy [601][12761]
+cl setDestroy [602][12761]
+cl setDestroy [603][12761]
+cl setDestroy [604][12761]
+cl setDestroy [605][12761]
+cl setDestroy [606][12761]
+cl setDestroy [607][12761]
+cl setDestroy [608][12761]
+cl setDestroy [609][12761]
+cl setDestroy [610][12761]
+cl setDestroy [611][12761]
+cl setDestroy [612][12761]
+cl setDestroy [613][12761]
+cl setDestroy [614][12761]
+cl setDestroy [615][12761]
+cl setDestroy [616][12761]
+cl setDestroy [617][12761]
+cl setDestroy [618][12761]
+cl setDestroy [619][12761]
+cl setDestroy [620][12761]
+cl setDestroy [621][12761]
+cl setDestroy [622][12761]
+cl setDestroy [627][12761]
+cl setDestroy [628][12761]
+cl setDestroy [629][12761]
+cl setDestroy [630][12761]
+cl setDestroy [631][12761]
+cl setDestroy [632][12761]
+cl setDestroy [633][12761]
+cl setDestroy [634][12761]
+cl setDestroy [635][12761]
+cl setDestroy [636][12761]
+cl setDestroy [637][12761]
+cl setDestroy [638][12761]
+cl setDestroy [639][12761]
+cl setDestroy [640][12761]
+cl setDestroy [641][12761]
+cl setDestroy [642][12761]
+cl setDestroy [643][12761]
+cl setDestroy [644][12761]
+cl setDestroy [645][12761]
+cl setDestroy [646][12761]
+cl setDestroy [647][12761]
+cl setDestroy [648][12761]
+cl setDestroy [649][12761]
+cl setDestroy [650][12761]
+cl setDestroy [652][12761]
+cl setDestroy [653][12761]
+cl setDestroy [16841][12761]
+cl setDestroy [655][12761]
+cl setDestroy [654][12761]
+cl setDestroy [656][12761]
+cl setDestroy [657][12761]
+cl setDestroy [658][12761]
+cl setDestroy [659][12761]
+cl setDestroy [660][12761]
+cl setDestroy [661][12761]
+cl setDestroy [662][12761]
+cl setDestroy [663][12761]
+cl setDestroy [664][12761]
+cl setDestroy [673][12761]
+cl setDestroy [674][12761]
+cl setDestroy [675][12761]
+cl setDestroy [676][12761]
+cl setDestroy [677][12761]
+cl setDestroy [678][12761]
+cl setDestroy [679][12761]
+cl setDestroy [680][12761]
+cl setDestroy [681][12761]
+cl setDestroy [682][12761]
+cl setDestroy [683][12761]
+cl setDestroy [684][12761]
+cl setDestroy [685][12761]
+cl setDestroy [686][12761]
+cl setDestroy [687][12761]
+cl setDestroy [688][12761]
+cl setDestroy [689][12761]
+cl setDestroy [690][12761]
+cl setDestroy [691][12761]
+cl setDestroy [692][12761]
+cl setDestroy [693][12761]
+cl setDestroy [694][12761]
+cl setDestroy [695][12761]
+cl setDestroy [696][12761]
+cl setDestroy [697][12761]
+cl setDestroy [698][12761]
+cl setDestroy [699][12761]
+cl setDestroy [700][12761]
+cl setDestroy [701][12761]
+cl setDestroy [702][12761]
+cl setDestroy [703][12761]
+cl setDestroy [704][12761]
+cl setDestroy [705][12761]
+cl setDestroy [706][12761]
+cl setDestroy [707][12761]
+cl setDestroy [708][12761]
+cl setDestroy [709][12761]
+cl setDestroy [710][12761]
+cl setDestroy [711][12761]
+cl setDestroy [712][12761]
+cl setDestroy [713][12761]
+cl setDestroy [714][12761]
+cl setDestroy [715][12761]
+cl setDestroy [716][12761]
+cl setDestroy [717][12761]
+cl setDestroy [718][12761]
+cl setDestroy [719][12761]
+cl setDestroy [720][12761]
+cl setDestroy [721][12761]
+cl setDestroy [722][12761]
+cl setDestroy [723][12761]
+cl setDestroy [724][12761]
+cl setDestroy [725][12761]
+cl setDestroy [726][12761]
+cl setDestroy [727][12761]
+cl setDestroy [728][12761]
+cl setDestroy [729][12761]
+cl setDestroy [730][12761]
+cl setDestroy [731][12761]
+cl setDestroy [732][12761]
+cl setDestroy [733][12761]
+cl setDestroy [734][12761]
+cl setDestroy [735][12761]
+cl setDestroy [736][12761]
+cl setDestroy [737][12761]
+cl setDestroy [738][12761]
+cl setDestroy [739][12761]
+cl setDestroy [740][12761]
+cl setDestroy [741][12761]
+cl setDestroy [751][12761]
+cl setDestroy [752][12761]
+cl setDestroy [753][12761]
+cl setDestroy [754][12761]
+cl setDestroy [755][12761]
+cl setDestroy [756][12761]
+cl setDestroy [757][12761]
+cl setDestroy [758][12761]
+cl setDestroy [759][12761]
+cl setDestroy [760][12761]
+cl setDestroy [761][12761]
+cl setDestroy [762][12761]
+cl setDestroy [763][12761]
+cl setDestroy [771][12761]
+cl setDestroy [772][12761]
+cl setDestroy [773][12761]
+cl setDestroy [774][12761]
+cl setDestroy [775][12761]
+cl setDestroy [776][12761]
+cl setDestroy [777][12761]
+cl setDestroy [778][12761]
+cl setDestroy [779][12761]
+cl setDestroy [780][12761]
+cl setDestroy [781][12761]
+cl setDestroy [797][12761]
+cl setDestroy [800][12761]
+cl setDestroy [801][12761]
+cl setDestroy [802][12761]
+cl setDestroy [16842][12761]
+cl setDestroy [804][12761]
+cl setDestroy [803][12761]
+cl setDestroy [16843][12761]
+cl setDestroy [806][12761]
+cl setDestroy [805][12761]
+cl setDestroy [16844][12761]
+cl setDestroy [808][12761]
+cl setDestroy [807][12761]
+cl setDestroy [810][12761]
+cl setDestroy [811][12761]
+cl setDestroy [812][12761]
+cl setDestroy [813][12761]
+cl setDestroy [814][12761]
+cl setDestroy [815][12761]
+cl setDestroy [816][12761]
+cl setDestroy [817][12761]
+cl setDestroy [818][12761]
+cl setDestroy [819][12761]
+cl setDestroy [820][12761]
+cl setDestroy [824][12761]
+cl setDestroy [829][12761]
+cl setDestroy [830][12761]
+cl setDestroy [831][12761]
+cl setDestroy [832][12761]
+cl setDestroy [16845][12761]
+cl setDestroy [837][12761]
+cl setDestroy [836][12761]
+cl setDestroy [835][12761]
+cl setDestroy [834][12761]
+cl setDestroy [833][12761]
+cl setDestroy [840][12761]
+cl setDestroy [846][12761]
+cl setDestroy [847][12761]
+cl setDestroy [16846][12761]
+cl setDestroy [851][12761]
+cl setDestroy [850][12761]
+cl setDestroy [852][12761]
+cl setDestroy [853][12761]
+cl setDestroy [854][12761]
+cl setDestroy [855][12761]
+cl setDestroy [864][12761]
+cl setDestroy [865][12761]
+cl setDestroy [866][12761]
+cl setDestroy [867][12761]
+cl setDestroy [868][12761]
+cl setDestroy [869][12761]
+cl setDestroy [870][12761]
+cl setDestroy [871][12761]
+cl setDestroy [872][12761]
+cl setDestroy [873][12761]
+cl setDestroy [874][12761]
+cl setDestroy [875][12761]
+cl setDestroy [876][12761]
+cl setDestroy [877][12761]
+cl setDestroy [878][12761]
+cl setDestroy [879][12761]
+cl setDestroy [880][12761]
+cl setDestroy [881][12761]
+cl setDestroy [882][12761]
+cl setDestroy [884][12761]
+cl setDestroy [885][12761]
+cl setDestroy [886][12761]
+cl setDestroy [887][12761]
+cl setDestroy [888][12761]
+cl setDestroy [889][12761]
+cl setDestroy [890][12761]
+cl setDestroy [891][12761]
+cl setDestroy [892][12761]
+cl setDestroy [893][12761]
+cl setDestroy [894][12761]
+cl setDestroy [895][12761]
+cl setDestroy [896][12761]
+cl setDestroy [897][12761]
+cl setDestroy [898][12761]
+cl setDestroy [899][12761]
+cl setDestroy [900][12761]
+cl setDestroy [901][12761]
+cl setDestroy [902][12761]
+cl setDestroy [903][12761]
+cl setDestroy [904][12761]
+cl setDestroy [905][12761]
+cl setDestroy [906][12761]
+cl setDestroy [907][12761]
+cl setDestroy [908][12761]
+cl setDestroy [909][12761]
+cl setDestroy [910][12761]
+cl setDestroy [911][12761]
+cl setDestroy [912][12761]
+cl setDestroy [913][12761]
+cl setDestroy [914][12761]
+cl setDestroy [915][12761]
+cl setDestroy [916][12761]
+cl setDestroy [917][12761]
+cl setDestroy [918][12761]
+cl setDestroy [919][12761]
+cl setDestroy [920][12761]
+cl setDestroy [921][12761]
+cl setDestroy [922][12761]
+cl setDestroy [923][12761]
+cl setDestroy [924][12761]
+cl setDestroy [925][12761]
+cl setDestroy [926][12761]
+cl setDestroy [927][12761]
+cl setDestroy [928][12761]
+cl setDestroy [929][12761]
+cl setDestroy [930][12761]
+cl setDestroy [931][12761]
+cl setDestroy [932][12761]
+cl setDestroy [933][12761]
+cl setDestroy [934][12761]
+cl setDestroy [935][12761]
+cl setDestroy [936][12761]
+cl setDestroy [937][12761]
+cl setDestroy [938][12761]
+cl setDestroy [939][12761]
+cl setDestroy [940][12761]
+cl setDestroy [941][12761]
+cl setDestroy [948][12761]
+cl setDestroy [949][12761]
+cl setDestroy [950][12761]
+cl setDestroy [951][12761]
+cl setDestroy [952][12761]
+cl setDestroy [953][12761]
+cl setDestroy [954][12761]
+cl setDestroy [955][12761]
+cl setDestroy [956][12761]
+cl setDestroy [957][12761]
+cl setDestroy [958][12761]
+cl setDestroy [959][12761]
+cl setDestroy [960][12761]
+cl setDestroy [961][12761]
+cl setDestroy [962][12761]
+cl setDestroy [963][12761]
+cl setDestroy [964][12761]
+cl setDestroy [965][12761]
+cl setDestroy [16847][12761]
+cl setDestroy [987][12761]
+cl setDestroy [986][12761]
+cl setDestroy [985][12761]
+cl setDestroy [984][12761]
+cl setDestroy [983][12761]
+cl setDestroy [982][12761]
+cl setDestroy [981][12761]
+cl setDestroy [980][12761]
+cl setDestroy [979][12761]
+cl setDestroy [16848][12761]
+cl setDestroy [989][12761]
+cl setDestroy [988][12761]
+cl setDestroy [990][12761]
+cl setDestroy [993][12761]
+cl setDestroy [994][12761]
+cl setDestroy [995][12761]
+cl setDestroy [996][12761]
+cl setDestroy [999][12761]
+cl setDestroy [1000][12761]
+cl setDestroy [1002][12761]
+cl setDestroy [1003][12761]
+cl setDestroy [1005][12761]
+cl setDestroy [1006][12761]
+cl setDestroy [1008][12761]
+cl setDestroy [1009][12761]
+cl setDestroy [1011][12761]
+cl setDestroy [1012][12761]
+cl setDestroy [1014][12761]
+cl setDestroy [1015][12761]
+cl setDestroy [1017][12761]
+cl setDestroy [1018][12761]
+cl setDestroy [1019][12761]
+cl setDestroy [1020][12761]
+cl setDestroy [1021][12761]
+cl setDestroy [1022][12761]
+cl setDestroy [1023][12761]
+cl setDestroy [1024][12761]
+cl setDestroy [1026][12761]
+cl setDestroy [1027][12761]
+cl setDestroy [1030][12761]
+cl setDestroy [1031][12761]
+cl setDestroy [1037][12761]
+cl setDestroy [1045][12761]
+cl setDestroy [1046][12761]
+cl setDestroy [1047][12761]
+cl setDestroy [1048][12761]
+cl setDestroy [1049][12761]
+cl setDestroy [1050][12761]
+cl setDestroy [1051][12761]
+cl setDestroy [1063][12761]
+cl setDestroy [1064][12761]
+cl setDestroy [1065][12761]
+cl setDestroy [1071][12761]
+cl setDestroy [1075][12761]
+cl setDestroy [1078][12761]
+cl setDestroy [1079][12761]
+cl setDestroy [1080][12761]
+cl setDestroy [1081][12761]
+cl setDestroy [1082][12761]
+cl setDestroy [1083][12761]
+cl setDestroy [1084][12761]
+cl setDestroy [1085][12761]
+cl setDestroy [1086][12761]
+cl setDestroy [1087][12761]
+cl setDestroy [1088][12761]
+cl setDestroy [1089][12761]
+cl setDestroy [1090][12761]
+cl setDestroy [1091][12761]
+cl setDestroy [1092][12761]
+cl setDestroy [1093][12761]
+cl setDestroy [1094][12761]
+cl setDestroy [1095][12761]
+cl setDestroy [1096][12761]
+cl setDestroy [1097][12761]
+cl setDestroy [1098][12761]
+cl setDestroy [1099][12761]
+cl setDestroy [1100][12761]
+cl setDestroy [1101][12761]
+cl setDestroy [1102][12761]
+cl setDestroy [1103][12761]
+cl setDestroy [1104][12761]
+cl setDestroy [1105][12761]
+cl setDestroy [1106][12761]
+cl setDestroy [1107][12761]
+cl setDestroy [1108][12761]
+cl setDestroy [1109][12761]
+cl setDestroy [1110][12761]
+cl setDestroy [1111][12761]
+cl setDestroy [1112][12761]
+cl setDestroy [1113][12761]
+cl setDestroy [1114][12761]
+cl setDestroy [1115][12761]
+cl setDestroy [1116][12761]
+cl setDestroy [1117][12761]
+cl setDestroy [1118][12761]
+cl setDestroy [1119][12761]
+cl setDestroy [1120][12761]
+cl setDestroy [1121][12761]
+cl setDestroy [1122][12761]
+cl setDestroy [1123][12761]
+cl setDestroy [1124][12761]
+cl setDestroy [1125][12761]
+cl setDestroy [1126][12761]
+cl setDestroy [1127][12761]
+cl setDestroy [1128][12761]
+cl setDestroy [1129][12761]
+cl setDestroy [1130][12761]
+cl setDestroy [1131][12761]
+cl setDestroy [1132][12761]
+cl setDestroy [1133][12761]
+cl setDestroy [1134][12761]
+cl setDestroy [1135][12761]
+cl setDestroy [1136][12761]
+cl setDestroy [1137][12761]
+cl setDestroy [1138][12761]
+cl setDestroy [1139][12761]
+cl setDestroy [1140][12761]
+cl setDestroy [1141][12761]
+cl setDestroy [1142][12761]
+cl setDestroy [1143][12761]
+cl setDestroy [1144][12761]
+cl setDestroy [1145][12761]
+cl setDestroy [1146][12761]
+cl setDestroy [1147][12761]
+cl setDestroy [1148][12761]
+cl setDestroy [1149][12761]
+cl setDestroy [1151][12761]
+cl setDestroy [1152][12761]
+cl setDestroy [1153][12761]
+cl setDestroy [1154][12761]
+cl setDestroy [1155][12761]
+cl setDestroy [1156][12761]
+cl setDestroy [1157][12761]
+cl setDestroy [1158][12761]
+cl setDestroy [1159][12761]
+cl setDestroy [1160][12761]
+cl setDestroy [1161][12761]
+cl setDestroy [1162][12761]
+cl setDestroy [1163][12761]
+cl setDestroy [1164][12761]
+cl setDestroy [1165][12761]
+cl setDestroy [1166][12761]
+cl setDestroy [1167][12761]
+cl setDestroy [1168][12761]
+cl setDestroy [1169][12761]
+cl setDestroy [1170][12761]
+cl setDestroy [1171][12761]
+cl setDestroy [1172][12761]
+cl setDestroy [1173][12761]
+cl setDestroy [1174][12761]
+cl setDestroy [1175][12761]
+cl setDestroy [1176][12761]
+cl setDestroy [1177][12761]
+cl setDestroy [1178][12761]
+cl setDestroy [1179][12761]
+cl setDestroy [1181][12761]
+cl setDestroy [1188][12761]
+cl setDestroy [1189][12761]
+cl setDestroy [1190][12761]
+cl setDestroy [1191][12761]
+cl setDestroy [1192][12761]
+cl setDestroy [1193][12761]
+cl setDestroy [1194][12761]
+cl setDestroy [1195][12761]
+cl setDestroy [1196][12761]
+cl setDestroy [1197][12761]
+cl setDestroy [1198][12761]
+cl setDestroy [1199][12761]
+cl setDestroy [1200][12761]
+cl setDestroy [1201][12761]
+cl setDestroy [1202][12761]
+cl setDestroy [1203][12761]
+cl setDestroy [1204][12761]
+cl setDestroy [1205][12761]
+cl setDestroy [1206][12761]
+cl setDestroy [1207][12761]
+cl setDestroy [1208][12761]
+cl setDestroy [1209][12761]
+cl setDestroy [1210][12761]
+cl setDestroy [1211][12761]
+cl setDestroy [1212][12761]
+cl setDestroy [1213][12761]
+cl setDestroy [1214][12761]
+cl setDestroy [1215][12761]
+cl setDestroy [1216][12761]
+cl setDestroy [1217][12761]
+cl setDestroy [1218][12761]
+cl setDestroy [1219][12761]
+cl setDestroy [1220][12761]
+cl setDestroy [1221][12761]
+cl setDestroy [1222][12761]
+cl setDestroy [1224][12761]
+cl setDestroy [1225][12761]
+cl setDestroy [1226][12761]
+cl setDestroy [1227][12761]
+cl setDestroy [1228][12761]
+cl setDestroy [1229][12761]
+cl setDestroy [1230][12761]
+cl setDestroy [1231][12761]
+cl setDestroy [1232][12761]
+cl setDestroy [1233][12761]
+cl setDestroy [1234][12761]
+cl setDestroy [1235][12761]
+cl setDestroy [1236][12761]
+cl setDestroy [1237][12761]
+cl setDestroy [1239][12761]
+cl setDestroy [1240][12761]
+cl setDestroy [1244][12761]
+cl setDestroy [1245][12761]
+cl setDestroy [1246][12761]
+cl setDestroy [1247][12761]
+cl setDestroy [1258][12761]
+cl setDestroy [1259][12761]
+cl setDestroy [1260][12761]
+cl setDestroy [1261][12761]
+cl setDestroy [1262][12761]
+cl setDestroy [1263][12761]
+cl setDestroy [1265][12761]
+cl setDestroy [1266][12761]
+cl setDestroy [16878][12761]
+cl setDestroy [16879][12761]
+cl setDestroy [16880][12761]
+cl setDestroy [16881][12761]
+cl setDestroy [16882][12761]
+cl setDestroy [16883][12761]
+cl setDestroy [16884][12761]
+cl setDestroy [16885][12761]
+dumping client spawn manager stuff for object with id 988
+dumping client spawn manager stuff for object with id 979
+dumping client spawn manager stuff for object with id 850
+dumping client spawn manager stuff for object with id 833
+dumping client spawn manager stuff for object with id 807
+dumping client spawn manager stuff for object with id 805
+dumping client spawn manager stuff for object with id 803
+dumping client spawn manager stuff for object with id 654
+dumping client spawn manager stuff for object with id 581
+dumping client spawn manager stuff for object with id 580
+dumping client spawn manager stuff for object with id 579
+dumping client spawn manager stuff for object with id 578
+dumping client spawn manager stuff for object with id 569
+dumping client spawn manager stuff for object with id 502
+dumping client spawn manager stuff for object with id 491
+dumping client spawn manager stuff for object with id 481
+dumping client spawn manager stuff for object with id 473
+dumping client spawn manager stuff for object with id 464
+dumping client spawn manager stuff for object with id 456
+dumping client spawn manager stuff for object with id 447
+dumping client spawn manager stuff for object with id 437
+dumping client spawn manager stuff for object with id 427
+dumping client spawn manager stuff for object with id 418
+dumping client spawn manager stuff for object with id 410
+dumping client spawn manager stuff for object with id 402
+dumping client spawn manager stuff for object with id 395
+dumping client spawn manager stuff for object with id 387
+dumping client spawn manager stuff for object with id 379
+dumping client spawn manager stuff for object with id 372
+dumping client spawn manager stuff for object with id 155
+dumping client spawn manager stuff for object with id 146
+dumping client spawn manager stuff for object with id 141
+dumping client spawn manager stuff for object with id 133
+dumping client spawn manager stuff for object with id 125
+dumping client spawn manager stuff for object with id 118
+dumping client spawn manager stuff for object with id 109
+dumping client spawn manager stuff for object with id 102
+dumping client spawn manager stuff for object with id 99
+* WARNING: c_EVENT[18] to [107]: unknown dest
+* WARNING: c_EVENT[18] to [116]: unknown dest
+* WARNING: c_EVENT[18] to [123]: unknown dest
+* WARNING: c_EVENT[18] to [132]: unknown dest
+* WARNING: c_EVENT[18] to [139]: unknown dest
+* WARNING: c_EVENT[18] to [145]: unknown dest
+* WARNING: c_EVENT[18] to [154]: unknown dest
+* WARNING: c_EVENT[18] to [161]: unknown dest
+* WARNING: c_EVENT[18] to [377]: unknown dest
+* WARNING: c_EVENT[18] to [385]: unknown dest
+* WARNING: c_EVENT[18] to [393]: unknown dest
+* WARNING: c_EVENT[18] to [400]: unknown dest
+* WARNING: c_EVENT[18] to [408]: unknown dest
+* WARNING: c_EVENT[18] to [416]: unknown dest
+* WARNING: c_EVENT[18] to [425]: unknown dest
+* WARNING: c_EVENT[18] to [435]: unknown dest
+* WARNING: c_EVENT[18] to [445]: unknown dest
+* WARNING: c_EVENT[18] to [454]: unknown dest
+* WARNING: c_EVENT[18] to [462]: unknown dest
+* WARNING: c_EVENT[18] to [471]: unknown dest
+* WARNING: c_EVENT[18] to [479]: unknown dest
+* WARNING: c_EVENT[18] to [489]: unknown dest
+* WARNING: c_EVENT[18] to [500]: unknown dest
+* WARNING: c_EVENT[18] to [509]: unknown dest
+* WARNING: c_EVENT[18] to [837]: unknown dest
+- Destroying level
+pause [OFF] timer=[ON] sound=[OFF] reason=mm_deactivate1
+pause [OFF] timer=[OFF] sound=[ON] reason=mm_deactivate2
+snd_emitters_[false] 1
+DestroySingleton::RefCounter: 0
+DestroySingleton::RefCounter: 0
+DestroySingleton::RefCounter: 0
+DestroySingleton::RefCounter: 0
+Input:  1
+Config-file [..\app_data\user.ltx] saved successfully
+Destroying Direct3D...
+* RM_Dump: textures  : 0
+* RM_Dump: rtargets  : 0
+* RM_Dump: rtargetsc : 0
+* RM_Dump: vs        : 0
+* RM_Dump: ps        : 0
+* RM_Dump: dcl       : 0
+* RM_Dump: states    : 0
+* RM_Dump: tex_list  : 0
+* RM_Dump: matrices  : 0
+* RM_Dump: lst_constants: 0
+* RM_Dump: v_passes  : 0
+* RM_Dump: v_elements: 0
+* RM_Dump: v_shaders : 0
+refCount:pBaseZB 1
+refCount:pBaseRT 1
+refCount:dwDebugSB 1
+DeviceREF: 1
