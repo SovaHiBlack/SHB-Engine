@@ -88,9 +88,6 @@
     <Filter Include="config\text">
       <UniqueIdentifier>{055878bb-37af-42e4-b01c-9df9ba8352bd}</UniqueIdentifier>
     </Filter>
-    <Filter Include="config\text\map_desc">
-      <UniqueIdentifier>{96d6ef3e-c973-472e-b4cf-403ef5bbba5f}</UniqueIdentifier>
-    </Filter>
     <Filter Include="config\text\rus">
       <UniqueIdentifier>{771bb816-8dd6-4f5a-b19f-34204194482f}</UniqueIdentifier>
     </Filter>
@@ -420,9 +417,6 @@
     <None Include="anims\path\zone_path.anm">
       <Filter>anims\path</Filter>
     </None>
-    <None Include="anims\agr_u_fade.bak">
-      <Filter>anims</Filter>
-    </None>
     <None Include="anims\agr_u_fade.ppe">
       <Filter>anims</Filter>
     </None>
@@ -435,16 +429,10 @@
     <None Include="anims\arena.anm">
       <Filter>anims</Filter>
     </None>
-    <None Include="anims\arg_u_fade.bak">
-      <Filter>anims</Filter>
-    </None>
     <None Include="anims\blink.ppe">
       <Filter>anims</Filter>
     </None>
     <None Include="anims\controller_hit.ppe">
-      <Filter>anims</Filter>
-    </None>
-    <None Include="anims\dead_zone.bak">
       <Filter>anims</Filter>
     </None>
     <None Include="anims\dead_zone.ppe">
@@ -454,12 +442,6 @@
       <Filter>anims</Filter>
     </None>
     <None Include="anims\deadcity_wake_old.ppe">
-      <Filter>anims</Filter>
-    </None>
-    <None Include="anims\deadcity_wake1.bak">
-      <Filter>anims</Filter>
-    </None>
-    <None Include="anims\duality_circle.bak">
       <Filter>anims</Filter>
     </None>
     <None Include="anims\duality_circle.ppe">
@@ -475,9 +457,6 @@
       <Filter>anims</Filter>
     </None>
     <None Include="anims\escape.ppe">
-      <Filter>anims</Filter>
-    </None>
-    <None Include="anims\fire_hit.bak">
       <Filter>anims</Filter>
     </None>
     <None Include="anims\fire_hit.ppe">
@@ -531,9 +510,6 @@
     <None Include="anims\monolith_off.ppe">
       <Filter>anims</Filter>
     </None>
-    <None Include="anims\nightvision.bak">
-      <Filter>anims</Filter>
-    </None>
     <None Include="anims\nightvision.ppe">
       <Filter>anims</Filter>
     </None>
@@ -555,9 +531,6 @@
     <None Include="anims\pl_test_doc.anm">
       <Filter>anims</Filter>
     </None>
-    <None Include="anims\proba.bak">
-      <Filter>anims</Filter>
-    </None>
     <None Include="anims\proba.ppe">
       <Filter>anims</Filter>
     </None>
@@ -570,9 +543,6 @@
     <None Include="anims\proba2.ppe">
       <Filter>anims</Filter>
     </None>
-    <None Include="anims\psy_antenna.bak">
-      <Filter>anims</Filter>
-    </None>
     <None Include="anims\psy_antenna.ppe">
       <Filter>anims</Filter>
     </None>
@@ -582,13 +552,7 @@
     <None Include="anims\punch_effector.anm">
       <Filter>anims</Filter>
     </None>
-    <None Include="anims\radar_psi.bak">
-      <Filter>anims</Filter>
-    </None>
     <None Include="anims\radar_psi.ppe">
-      <Filter>anims</Filter>
-    </None>
-    <None Include="anims\radar_stop.bak">
       <Filter>anims</Filter>
     </None>
     <None Include="anims\radar_stop.ppe">
@@ -600,13 +564,7 @@
     <None Include="anims\radiation.ppe">
       <Filter>anims</Filter>
     </None>
-    <None Include="anims\snd_shock.bak">
-      <Filter>anims</Filter>
-    </None>
     <None Include="anims\snd_shock.ppe">
-      <Filter>anims</Filter>
-    </None>
-    <None Include="anims\teleport.bak">
       <Filter>anims</Filter>
     </None>
     <None Include="anims\teleport.ppe">
@@ -820,9 +778,6 @@
       <Filter>config\misc</Filter>
     </None>
     <None Include="config\misc\gulag_radar_u.ltx">
-      <Filter>config\misc</Filter>
-    </None>
-    <None Include="config\misc\gulag_radar_u.script">
       <Filter>config\misc</Filter>
     </None>
     <None Include="config\misc\gulag_sarcofag.ltx">
@@ -1308,48 +1263,6 @@
     <None Include="config\weapons\weapons.ltx">
       <Filter>config\weapons</Filter>
     </None>
-    <None Include="config\text\map_desc\fog_net.ltx">
-      <Filter>config\text\map_desc</Filter>
-    </None>
-    <None Include="config\text\map_desc\testers_mp_agroprom.ltx">
-      <Filter>config\text\map_desc</Filter>
-    </None>
-    <None Include="config\text\map_desc\testers_mp_atp.ltx">
-      <Filter>config\text\map_desc</Filter>
-    </None>
-    <None Include="config\text\map_desc\testers_mp_bath.ltx">
-      <Filter>config\text\map_desc</Filter>
-    </None>
-    <None Include="config\text\map_desc\testers_mp_factory.ltx">
-      <Filter>config\text\map_desc</Filter>
-    </None>
-    <None Include="config\text\map_desc\testers_mp_garbage.ltx">
-      <Filter>config\text\map_desc</Filter>
-    </None>
-    <None Include="config\text\map_desc\testers_mp_lost_village.ltx">
-      <Filter>config\text\map_desc</Filter>
-    </None>
-    <None Include="config\text\map_desc\testers_mp_military_1.ltx">
-      <Filter>config\text\map_desc</Filter>
-    </None>
-    <None Include="config\text\map_desc\testers_mp_military_2.ltx">
-      <Filter>config\text\map_desc</Filter>
-    </None>
-    <None Include="config\text\map_desc\testers_mp_pool.ltx">
-      <Filter>config\text\map_desc</Filter>
-    </None>
-    <None Include="config\text\map_desc\testers_mp_prypiat.ltx">
-      <Filter>config\text\map_desc</Filter>
-    </None>
-    <None Include="config\text\map_desc\testers_mp_railroad.ltx">
-      <Filter>config\text\map_desc</Filter>
-    </None>
-    <None Include="config\text\map_desc\testers_mp_rostok.ltx">
-      <Filter>config\text\map_desc</Filter>
-    </None>
-    <None Include="config\text\map_desc\testers_mp_workshop.ltx">
-      <Filter>config\text\map_desc</Filter>
-    </None>
     <None Include="config\text\eng\stable_dialogs_darkvalley.ltx">
       <Filter>config\text\eng</Filter>
     </None>
@@ -1720,9 +1633,6 @@
       <Filter>config\scripts</Filter>
     </None>
     <None Include="config\scripts\proba.ltx">
-      <Filter>config\scripts</Filter>
-    </None>
-    <None Include="config\scripts\qa.script">
       <Filter>config\scripts</Filter>
     </None>
     <None Include="config\scripts\rostok_tunel_deep.ltx">
@@ -2139,9 +2049,6 @@
     <None Include="shaders\r2\bloom_luminance_3.ps">
       <Filter>shaders\r2</Filter>
     </None>
-    <None Include="shaders\r2\c.cmd">
-      <Filter>shaders\r2</Filter>
-    </None>
     <None Include="shaders\r2\clouds.ps">
       <Filter>shaders\r2</Filter>
     </None>
@@ -2517,15 +2424,6 @@
     <None Include="shaders\r2\models_xwindows.s">
       <Filter>shaders\r2</Filter>
     </None>
-    <None Include="shaders\r2\p.bat">
-      <Filter>shaders\r2</Filter>
-    </None>
-    <None Include="shaders\r2\p1.bat">
-      <Filter>shaders\r2</Filter>
-    </None>
-    <None Include="shaders\r2\p3.bat">
-      <Filter>shaders\r2</Filter>
-    </None>
     <None Include="shaders\r2\particle.ps">
       <Filter>shaders\r2</Filter>
     </None>
@@ -2619,12 +2517,6 @@
     <None Include="shaders\r2\sky2.vs">
       <Filter>shaders\r2</Filter>
     </None>
-    <None Include="shaders\r2\t.bat">
-      <Filter>shaders\r2</Filter>
-    </None>
-    <None Include="shaders\r2\v.bat">
-      <Filter>shaders\r2</Filter>
-    </None>
     <None Include="shaders\r2\vert.ps">
       <Filter>shaders\r2</Filter>
     </None>
@@ -2677,9 +2569,6 @@
       <Filter>shaders\r1</Filter>
     </None>
     <None Include="shaders\r1\blur4.s">
-      <Filter>shaders\r1</Filter>
-    </None>
-    <None Include="shaders\r1\c.cmd">
       <Filter>shaders\r1</Filter>
     </None>
     <None Include="shaders\r1\clouds.ps">
@@ -2901,12 +2790,6 @@
     <None Include="shaders\r1\models_xwindows.s">
       <Filter>shaders\r1</Filter>
     </None>
-    <None Include="shaders\r1\p.bat">
-      <Filter>shaders\r1</Filter>
-    </None>
-    <None Include="shaders\r1\p14.bat">
-      <Filter>shaders\r1</Filter>
-    </None>
     <None Include="shaders\r1\particle.ps">
       <Filter>shaders\r1</Filter>
     </None>
@@ -3013,9 +2896,6 @@
       <Filter>shaders\r1</Filter>
     </None>
     <None Include="shaders\r1\tree_wave_spot.vs">
-      <Filter>shaders\r1</Filter>
-    </None>
-    <None Include="shaders\r1\v.bat">
       <Filter>shaders\r1</Filter>
     </None>
     <None Include="shaders\r1\vert.ps">
@@ -4567,23 +4447,6 @@
     <None Include="scripts\xr_sound.script">
       <Filter>scripts</Filter>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="anims\postprocess editor_stohe.log">
-      <Filter>anims</Filter>
-    </Text>
-    <Text Include="shaders\r2\test\p2b_accum_sun_far.ps.log">
-      <Filter>shaders\r2\test</Filter>
-    </Text>
-    <Text Include="shaders\r2\test\p2b_yuv2rgb.ps.log">
-      <Filter>shaders\r2\test</Filter>
-    </Text>
-    <Text Include="shaders\r2\test\p30_accum_sun_far.ps.log">
-      <Filter>shaders\r2\test</Filter>
-    </Text>
-    <Text Include="shaders\r2\test\p30_yuv2rgb.ps.log">
-      <Filter>shaders\r2\test</Filter>
-    </Text>
   </ItemGroup>
   <ItemGroup>
     <Xml Include="config\gameplay\character_criticals_1.xml">
