@@ -24,7 +24,7 @@ public:
 		u32						ptr;			// pointer inside vfs
 		u32						size_real;		// 
 		u32						size_compressed;// if (size_real==size_compressed) - uncompressed
-        u32						modif;			// for editor
+		u32						modif;			// for editor
 	};
 private:
 	struct	file_pred: public 	std::binary_function<file&, file&, bool> 
@@ -42,17 +42,17 @@ private:
 	PathMap						pathes;
 
 	DEFINE_SET_PRED				(file,files_set,files_it,file_pred);
-    DEFINE_VECTOR				(archive,archives_vec,archives_it);
+	DEFINE_VECTOR				(archive,archives_vec,archives_it);
 
 //	DEFINE_VECTOR				(_finddata_t,FFVec,FFIt);
 //	FFVec						rec_files;
 
-    int							m_iLockRescan	; 
-    void						rescan_path		(const char* full_path, BOOL bRecurse);
-    void						check_pathes	();
+	int							m_iLockRescan	; 
+	void						rescan_path		(const char* full_path, BOOL bRecurse);
+	void						check_pathes	();
 
 	files_set					files			;
-    archives_vec				archives		;
+	archives_vec				archives		;
 	BOOL						bNoRecurse		;
 
 	xrCriticalSection			m_auth_lock		;
@@ -126,29 +126,29 @@ public:
 	const file*					exist			(string_path& fn, const char* path, const char* name);
 	const file*					exist			(string_path& fn, const char* path, const char* name, const char* ext);
 
-    BOOL 						can_write_to_folder	(const char* path);
-    BOOL 						can_write_to_alias	(const char* path);
-    BOOL						can_modify_file	(const char* fname);
-    BOOL						can_modify_file	(const char* path, const char* name);
+	BOOL 						can_write_to_folder	(const char* path);
+	BOOL 						can_write_to_alias	(const char* path);
+	BOOL						can_modify_file	(const char* fname);
+	BOOL						can_modify_file	(const char* path, const char* name);
 
-    BOOL 						dir_delete			(const char* path, const char* nm,BOOL remove_files);
-    BOOL 						dir_delete			(const char* full_path,BOOL remove_files){return dir_delete(0,full_path,remove_files);}
-    void 						file_delete			(const char* path, const char* nm);
-    void 						file_delete			(const char* full_path){file_delete(0,full_path);}
+	BOOL 						dir_delete			(const char* path, const char* nm,BOOL remove_files);
+	BOOL 						dir_delete			(const char* full_path,BOOL remove_files){return dir_delete(0,full_path,remove_files);}
+	void 						file_delete			(const char* path, const char* nm);
+	void 						file_delete			(const char* full_path){file_delete(0,full_path);}
 	void 						file_copy			(const char* src, const char* dest);
 	void 						file_rename			(const char* src, const char* dest,bool bOwerwrite=true);
-    int							file_length			(const char* src);
+	int							file_length			(const char* src);
 
-    u32  						get_file_age		(const char* nm);
-    void 						set_file_age		(const char* nm, u32 age);
+	u32  						get_file_age		(const char* nm);
+	void 						set_file_age		(const char* nm, u32 age);
 
 	xr_vector<char*>*			file_list_open		(const char* initial, const char* folder,	u32 flags=FS_ListFiles);
 	xr_vector<char*>*			file_list_open		(const char* path,					u32 flags=FS_ListFiles);
 	void						file_list_close		(xr_vector<char*>* &lst);
-                                                     
-    bool						path_exist			(const char* path);
-    FS_Path*					get_path			(const char* path);
-    FS_Path*					append_path			(const char* path_alias, const char* root, const char* add, BOOL recursive);
+													 
+	bool						path_exist			(const char* path);
+	FS_Path*					get_path			(const char* path);
+	FS_Path*					append_path			(const char* path_alias, const char* root, const char* add, BOOL recursive);
 	const char* update_path			(string_path& dest, const char* initial, const char* src);
 
 	int							file_list			(FS_FileSet& dest, const char* path, u32 flags=FS_ListFiles, const char* mask=0);

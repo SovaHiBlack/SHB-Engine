@@ -37,7 +37,6 @@ function parse_spawns(line)
 	return ret_table
 end
 
-
 class "CTreasure"
 function CTreasure:__init()
 	--' На конструкторе вычитываем LTX и создаем заготовки квестов.
@@ -69,7 +68,6 @@ function CTreasure:__init()
 			self.treasure_info[id].community[v] = true
 		end
 
-
 		if self.treasure_info[id].items == nil then
 			abort("cant find 'items' in %s", id)
 		end
@@ -89,6 +87,7 @@ function CTreasure:__init()
 		self.treasure_by_target[v.target] = k	
 	end
 end
+
 --' Юзание инициатора (возможность выдать тайник)
 function CTreasure:use(npc)
 	printf("TREASURE USE")
@@ -133,6 +132,7 @@ function CTreasure:use(npc)
 		end
 	end
 end
+
 --' Сохранение
 function CTreasure:check()
 	--' Проверка тайников
@@ -141,6 +141,7 @@ function CTreasure:check()
 		self:give_treasure(k)
 	end
 end
+
 --' Выдача тайника
 function CTreasure:give_treasure(k)
 	local v = self.treasure_info[k]
@@ -148,7 +149,7 @@ function CTreasure:give_treasure(k)
 	if obj ~= nil then
 		news_manager.send_treasure(v.name)
 
-		--' Пометить на карте		
+		--' Пометить на карте
 		local text = "%c[255,238,155,23]"..game.translate_string(v.name).."\\n".."%c[default]"..game.translate_string(v.description)
 		level.map_add_object_spot_ser(obj.id, "treasure", text)
 
@@ -179,6 +180,7 @@ function CTreasure:give_treasure(k)
 		printf("TREASURE %s, target doesnt exist", k)
 	end
 end
+
 --' Снимаем отметку с тайника
 function CTreasure:treasure_empty(box, box_story_id)
 	printf("!!! treasure empty")
@@ -191,6 +193,7 @@ function CTreasure:treasure_empty(box, box_story_id)
 	self.treasure_info[k].active = false
 	level.map_remove_object_spot(box:id(), "treasure")
 end
+
 --' Сохранение
 function CTreasure:save(p)
 	--' Сохраняем размер таблицы
@@ -205,6 +208,7 @@ function CTreasure:save(p)
 		p:w_bool(v.done)
 	end
 end
+
 --' Загрузка
 function CTreasure:load(p)
 	local t = p:r_u16()
@@ -214,7 +218,6 @@ function CTreasure:load(p)
 		self.treasure_info[k].done = p:r_bool()
 	end
 end
-
 
 function get_treasure_manager()
 	if treasure_manager == nil then
@@ -233,9 +236,11 @@ end
 function save(p)
 	get_treasure_manager():save(p)
 end
+
 function load(p)
 	get_treasure_manager():load(p)
 end
+
 function clear_treasure_manager()
 	treasure_manager = nil
 end

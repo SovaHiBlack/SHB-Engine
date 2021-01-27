@@ -6,12 +6,12 @@
 class CORE_API EFS_Utils {
 	DEFINE_MAP	(xr_string,void*,HANDLEMap,HANDLEPairIt);
 
-    HANDLEMap 	m_LockFiles;
+	HANDLEMap 	m_LockFiles;
 public:
 				EFS_Utils		();
 	virtual 	~EFS_Utils		();
 	void 		_initialize		(){}
-    void 		_destroy		(){}
+	void 		_destroy		(){}
 
 	const char* GenerateName	(const char* base_path, const char* base_name, const char* def_ext, char* out_name);
 
@@ -21,13 +21,13 @@ public:
 	const char* AppendFolderToName(char* tex_name, int depth, BOOL full_name);
 	const char* AppendFolderToName(const char* src_name, char* dest_name, int depth, BOOL full_name);
 
-    xr_string	ChangeFileExt	(const char* src, const char* ext);
-    xr_string	ChangeFileExt	(const xr_string& src, const char* ext);
+	xr_string	ChangeFileExt	(const char* src, const char* ext);
+	xr_string	ChangeFileExt	(const xr_string& src, const char* ext);
 
-    xr_string	ExtractFileName		(const char* src);
-    xr_string	ExtractFilePath		(const char* src);
-    xr_string	ExtractFileExt		(const char* src);
-    xr_string	ExcludeBasePath		(const char* full_path, const char* excl_path);
+	xr_string	ExtractFileName		(const char* src);
+	xr_string	ExtractFilePath		(const char* src);
+	xr_string	ExtractFileExt		(const char* src);
+	xr_string	ExcludeBasePath		(const char* full_path, const char* excl_path);
 };
 
 extern CORE_API	EFS_Utils*	xr_EFS;

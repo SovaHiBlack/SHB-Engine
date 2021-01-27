@@ -40,8 +40,6 @@ local return_task_by_type = {
 	monster_part = "return_for_reward_bring",
 	find_item = "return_for_reward_bring"}
 
-
-
 class "CRandomTask"
 function CRandomTask:__init()
 	--' На конструкторе вычитываем LTX и создаем заготовки квестов.
@@ -73,7 +71,7 @@ function CRandomTask:__init()
 			abort("Task manager error: no type in section [%s]", id)
 		end
 
-		curr_task_info.type			= self.task_ini:r_string(id, "type")			
+		curr_task_info.type			= self.task_ini:r_string(id, "type")
 
 		curr_task_info.name			= id
 		if self.task_ini:line_exist(id, "parent") then
@@ -90,7 +88,7 @@ function CRandomTask:__init()
 			curr_task_info.text			= self.task_ini:r_string(id, "text")
 		end
 		if self.task_ini:line_exist(id, "description") then
-			curr_task_info.description	= self.task_ini:r_string(id, "description")				
+			curr_task_info.description	= self.task_ini:r_string(id, "description")
 		end
 		curr_task_info.time				= utils.cfg_get_number(self.task_ini, id, "time", nil, false)
 

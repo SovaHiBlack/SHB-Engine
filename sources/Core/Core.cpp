@@ -40,20 +40,20 @@ void CCore::_initialize	(const char* _ApplicationName, LogCallback cb, BOOL init
 		string_path		fn,dr,di;
 
 		// application path
-        GetModuleFileName(GetModuleHandle(MODULE_NAME),fn,sizeof(fn));
-        _splitpath		(fn,dr,di,0,0);
-        strconcat		(sizeof(ApplicationPath),ApplicationPath,dr,di);
+		GetModuleFileName(GetModuleHandle(MODULE_NAME),fn,sizeof(fn));
+		_splitpath		(fn,dr,di,0,0);
+		strconcat		(sizeof(ApplicationPath),ApplicationPath,dr,di);
 
 		strcpy_s		(g_application_path,sizeof(g_application_path),ApplicationPath);
 
 		// working path
-        if( strstr(Params,"-wf") )
-        {
-            string_path				c_name;
-            sscanf					(strstr(Core.Params,"-wf ")+4,"%[^ ] ",c_name);
-            SetCurrentDirectory     (c_name);
+		if( strstr(Params,"-wf") )
+		{
+			string_path				c_name;
+			sscanf					(strstr(Core.Params,"-wf ")+4,"%[^ ] ",c_name);
+			SetCurrentDirectory     (c_name);
+		}
 
-        }
 		GetCurrentDirectory(sizeof(WorkingPath),WorkingPath);
 
 		// User/Comp Name
@@ -144,5 +144,5 @@ BOOL WINAPI DllMain(HINSTANCE hinstDLL, DWORD ul_reason_for_call, LPVOID lpvRese
 #endif // USE_MEMORY_MONITOR
 		break;
 	}
-    return TRUE;
+	return TRUE;
 }

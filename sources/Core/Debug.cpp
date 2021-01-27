@@ -11,9 +11,8 @@
 extern bool shared_str_initialized;
 
 #define DEBUG_INVOKE	__asm int 3
-static BOOL			bException = FALSE;
 
-#	pragma comment(lib,"dxerr.lib")
+#pragma comment(lib, "dxerr.lib")
 
 #include <dbghelp.h>						// MiniDump flags
 #include <new.h>							// for _set_new_mode
@@ -21,25 +20,27 @@ static BOOL			bException = FALSE;
 
 #if 0//def DEBUG
 #	define USE_OWN_ERROR_MESSAGE_WINDOW
-#else // DEBUG
 #	define USE_OWN_MINI_DUMP
 #endif // DEBUG
 
-CORE_API	CDebug		Debug;
+CORE_API CDebug		Debug;
 
-static bool	error_after_dialog = false;
-
+static bool error_after_dialog = false;
 extern void copy_to_clipboard(const char* string);
 
 void copy_to_clipboard(const char* string)
 {
 	if (IsDebuggerPresent( ))
+	{
 		return;
+	}
 
 	if (!OpenClipboard(0))
+	{
 		return;
+	}
 
-	HGLOBAL				handle = GlobalAlloc(GHND | GMEM_DDESHARE, (strlen(string) + 1) * sizeof(char));
+	HGLOBAL handle = GlobalAlloc(GHND | GMEM_DDESHARE, (strlen(string) + 1) * sizeof(char));
 	if (!handle)
 	{
 		CloseClipboard( );
@@ -56,14 +57,19 @@ void copy_to_clipboard(const char* string)
 
 void update_clipboard(const char* string)
 {
+
 #ifdef DEBUG
 	if (IsDebuggerPresent( ))
+	{
 		return;
+	}
 
 	if (!OpenClipboard(0))
+	{
 		return;
+	}
 
-	HGLOBAL				handle = GetClipboardData(CF_TEXT);
+	HGLOBAL handle = GetClipboardData(CF_TEXT);
 	if (!handle)
 	{
 		CloseClipboard( );
@@ -72,8 +78,8 @@ void update_clipboard(const char* string)
 	}
 
 	char* memory = (char*) GlobalLock(handle);
-	u32					memory_length = xr_strlen(memory);
-	u32					string_length = xr_strlen(string);
+	u32 memory_length = xr_strlen(memory);
+	u32 string_length = xr_strlen(string);
 	char* buffer = (char*) _alloca((memory_length + string_length + 1) * sizeof(char));
 	strcpy(buffer, memory);
 	GlobalUnlock(handle);
@@ -81,7 +87,8 @@ void update_clipboard(const char* string)
 	strcat(buffer, string);
 	CloseClipboard( );
 	copy_to_clipboard(buffer);
-#endif // DEBUG
+#endif // def DEBUG
+
 }
 
 extern void BuildStackTrace( );
@@ -91,14 +98,18 @@ extern int	g_stackTraceCount;
 void LogStackTrace(const char* header)
 {
 	if (!shared_str_initialized)
+	{
 		return;
+	}
 
 	BuildStackTrace( );
 
 	Msg("%s", header);
 
 	for (int i = 1; i < g_stackTraceCount; ++i)
+	{
 		Msg("%s", g_stackTrace[i]);
+	}
 }
 
 void gather_info(const char* expression, const char* description, const char* argument0, const char* argument1, const char* file, int line, const char* function, char* assertion_info)
@@ -110,7 +121,10 @@ void gather_info(const char* expression, const char* description, const char* ar
 	for (int i = 0; i < 2; ++i)
 	{
 		if (!i)
+		{
 			buffer += sprintf(buffer, "%sFATAL ERROR%s%s", endline, endline, endline);
+		}
+
 		buffer += sprintf(buffer, "%sExpression    : %s%s", prefix, expression, endline);
 		buffer += sprintf(buffer, "%sFunction      : %s%s", prefix, function, endline);
 		buffer += sprintf(buffer, "%sFile          : %s%s", prefix, file, endline);
@@ -119,14 +133,6 @@ void gather_info(const char* expression, const char* description, const char* ar
 		if (extended_description)
 		{
 			buffer += sprintf(buffer, "%s%s%s", endline, description, endline);
-			/*if (argument0) { //Этот код не выполнится. См. условие extended_description
-				if (argument1) {
-					buffer += sprintf(buffer, "%s%s", argument0, endline);
-					buffer += sprintf(buffer, "%s%s", argument1, endline);
-				}
-				else
-					buffer += sprintf(buffer, "%s%s", argument0, endline);
-			}*/
 		}
 		else
 		{
@@ -139,7 +145,9 @@ void gather_info(const char* expression, const char* description, const char* ar
 					buffer += sprintf(buffer, "%sArgument 1    : %s%s", prefix, argument1, endline);
 				}
 				else
+				{
 					buffer += sprintf(buffer, "%sArguments     : %s%s", prefix, argument0, endline);
+				}
 			}
 		}
 
@@ -151,6 +159,7 @@ void gather_info(const char* expression, const char* description, const char* ar
 				Msg("%s", assertion_info);
 				FlushLog( );
 			}
+
 			buffer = assertion_info;
 			endline = "\r\n";
 			prefix = "";
@@ -160,31 +169,37 @@ void gather_info(const char* expression, const char* description, const char* ar
 #ifdef USE_MEMORY_MONITOR
 	memory_monitor::flush_each_time(true);
 	memory_monitor::flush_each_time(false);
-#endif // USE_MEMORY_MONITOR
+#endif // def USE_MEMORY_MONITOR
 
 	if (!IsDebuggerPresent( ) && !strstr(GetCommandLine( ), "-no_call_stack_assert"))
 	{
 		if (shared_str_initialized)
+		{
 			Msg("stack trace:\n");
+		}
 
 #ifdef USE_OWN_ERROR_MESSAGE_WINDOW
 		buffer += sprintf(buffer, "stack trace:%s%s", endline, endline);
-#endif // USE_OWN_ERROR_MESSAGE_WINDOW
+#endif // def USE_OWN_ERROR_MESSAGE_WINDOW
 
 		BuildStackTrace( );
 
 		for (int i = 2; i < g_stackTraceCount; ++i)
 		{
 			if (shared_str_initialized)
+			{
 				Msg("%s", g_stackTrace[i]);
+			}
 
 #ifdef USE_OWN_ERROR_MESSAGE_WINDOW
 			buffer += sprintf(buffer, "%s%s", g_stackTrace[i], endline);
-#endif // USE_OWN_ERROR_MESSAGE_WINDOW
+#endif // def USE_OWN_ERROR_MESSAGE_WINDOW
 		}
 
 		if (shared_str_initialized)
+		{
 			FlushLog( );
+		}
 
 		copy_to_clipboard(assertion_info);
 	}
@@ -200,12 +215,11 @@ void CDebug::do_exit(const std::string& message)
 void CDebug::backend(const char* expression, const char* description, const char* argument0, const char* argument1, const char* file, int line, const char* function, bool& ignore_always)
 {
 	static xrCriticalSection CS;
-
 	CS.Enter( );
 
 	error_after_dialog = true;
 
-	string4096			assertion_info;
+	string4096 assertion_info;
 	gather_info(expression, description, argument0, argument1, file, line, function, assertion_info);
 
 #ifdef USE_OWN_ERROR_MESSAGE_WINDOW
@@ -214,22 +228,20 @@ void CDebug::backend(const char* expression, const char* description, const char
 	buffer += sprintf(buffer, "%sPress CANCEL to abort execution%s", endline, endline);
 	buffer += sprintf(buffer, "Press TRY AGAIN to continue execution%s", endline);
 	buffer += sprintf(buffer, "Press CONTINUE to continue execution and ignore all the errors of this type%s%s", endline, endline);
-#endif // USE_OWN_ERROR_MESSAGE_WINDOW
+#endif // def USE_OWN_ERROR_MESSAGE_WINDOW
 
 	if (handler)
+	{
 		handler( );
+	}
 
 	if (get_on_dialog( ))
+	{
 		get_on_dialog( )	(true);
+	}
 
-#	ifdef USE_OWN_ERROR_MESSAGE_WINDOW
-	int					result =
-		MessageBox(
-			GetTopWindow(NULL),
-			assertion_info,
-			"Fatal Error",
-			MB_CANCELTRYCONTINUE | MB_ICONERROR | MB_SYSTEMMODAL
-		);
+#ifdef USE_OWN_ERROR_MESSAGE_WINDOW
+	int result = MessageBox(GetTopWindow(NULL), assertion_info, "Fatal Error", MB_CANCELTRYCONTINUE | MB_ICONERROR | MB_SYSTEMMODAL);
 
 	switch (result)
 	{
@@ -251,13 +263,15 @@ void CDebug::backend(const char* expression, const char* description, const char
 		}
 		default: NODEFAULT;
 	}
-#	else // USE_OWN_ERROR_MESSAGE_WINDOW
+#else // def USE_OWN_ERROR_MESSAGE_WINDOW
 	DEBUG_INVOKE;
-#	endif // USE_OWN_ERROR_MESSAGE_WINDOW
+#endif // def USE_OWN_ERROR_MESSAGE_WINDOW
 
 
 	if (get_on_dialog( ))
+	{
 		get_on_dialog( )	(false);
+	}
 
 	CS.Leave( );
 }
@@ -265,7 +279,7 @@ void CDebug::backend(const char* expression, const char* description, const char
 const char* CDebug::error2string(long code)
 {
 	const char* result = 0;
-	static	string1024	desc_storage;
+	static string1024 desc_storage;
 
 	result = DXGetErrorDescription(code);
 
@@ -274,7 +288,8 @@ const char* CDebug::error2string(long code)
 		FormatMessage(FORMAT_MESSAGE_FROM_SYSTEM, 0, code, 0, desc_storage, sizeof(desc_storage) - 1, 0);
 		result = desc_storage;
 	}
-	return		result;
+
+	return result;
 }
 
 void CDebug::error(long hr, const char* expr, const char* file, int line, const char* function, bool& ignore_always)
@@ -314,14 +329,14 @@ void CDebug::fail(const char* e1, const char* e2, const char* e3, const char* e4
 
 void __cdecl CDebug::fatal(const char* file, int line, const char* function, const char* F, ...)
 {
-	string1024	buffer;
+	string1024 buffer;
 
-	va_list		p;
+	va_list p;
 	va_start(p, F);
 	vsprintf(buffer, F, p);
 	va_end(p);
 
-	bool		ignore_always = true;
+	bool ignore_always = true;
 
 	backend("fatal error", "<no expression>", buffer, 0, file, line, function, ignore_always);
 }
@@ -329,9 +344,9 @@ void __cdecl CDebug::fatal(const char* file, int line, const char* function, con
 int out_of_memory_handler(size_t size)
 {
 	Memory.mem_compact( );
-	u32						process_heap = mem_usage_impl(nullptr, nullptr);
-	u32						eco_strings = g_pStringContainer->stat_economy( );
-	u32						eco_smem = g_pSharedMemoryContainer->stat_economy( );
+	u32 process_heap = mem_usage_impl(nullptr, nullptr);
+	u32 eco_strings = g_pStringContainer->stat_economy( );
+	u32 eco_smem = g_pSharedMemoryContainer->stat_economy( );
 	Msg("* [x-ray]: process heap[%d K]", process_heap / 1024);
 	Msg("* [x-ray]: economy: strings[%d K], smem[%d K]", eco_strings / 1024, eco_smem);
 	Debug.fatal(DEBUG_INFO, "Out of memory. Memory request: %d K", size / 1024);
@@ -339,9 +354,6 @@ int out_of_memory_handler(size_t size)
 }
 
 extern const char* log_name( );
-
-void CALLBACK PreErrorHandler(INT_PTR)
-{ }
 
 #if 1
 extern void BuildStackTrace(struct _EXCEPTION_POINTERS* pExceptionInfo);
@@ -473,8 +485,8 @@ void save_mini_dump(_EXCEPTION_POINTERS* pExceptionInfo)
 
 void format_message(char* buffer, const u32& buffer_size)
 {
-	LPVOID		message;
-	DWORD		error_code = GetLastError( );
+	LPVOID message;
+	DWORD error_code = GetLastError( );
 
 	if (!error_code)
 	{
@@ -482,16 +494,7 @@ void format_message(char* buffer, const u32& buffer_size)
 		return;
 	}
 
-	FormatMessage(
-		FORMAT_MESSAGE_ALLOCATE_BUFFER |
-		FORMAT_MESSAGE_FROM_SYSTEM,
-		NULL,
-		error_code,
-		MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT),
-		(char*) &message,
-		0,
-		NULL
-	);
+	FormatMessage(FORMAT_MESSAGE_ALLOCATE_BUFFER | FORMAT_MESSAGE_FROM_SYSTEM, NULL, error_code, MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT), (char*) &message, 0, NULL);
 
 	sprintf(buffer, "[error][%8d]    : %s", error_code, message);
 	LocalFree(message);
@@ -499,24 +502,30 @@ void format_message(char* buffer, const u32& buffer_size)
 
 LONG WINAPI UnhandledFilter(_EXCEPTION_POINTERS* pExceptionInfo)
 {
-	string256				error_message;
+	string256 error_message;
 	format_message(error_message, sizeof(error_message));
 
 	if (!error_after_dialog && !strstr(GetCommandLine( ), "-no_call_stack_assert"))
 	{
-		CONTEXT				save = *pExceptionInfo->ContextRecord;
+		CONTEXT save = *pExceptionInfo->ContextRecord;
 		BuildStackTrace(pExceptionInfo);
 		*pExceptionInfo->ContextRecord = save;
 
 		if (shared_str_initialized)
+		{
 			Msg("stack trace:\n");
+		}
+
 		copy_to_clipboard("stack trace:\r\n\r\n");
 
-		string4096			buffer;
+		string4096 buffer;
 		for (int i = 0; i < g_stackTraceCount; ++i)
 		{
 			if (shared_str_initialized)
+			{
 				Msg("%s", g_stackTrace[i]);
+			}
+
 			sprintf(buffer, "%s\r\n", g_stackTrace[i]);
 			update_clipboard(buffer);
 		}
@@ -524,7 +533,9 @@ LONG WINAPI UnhandledFilter(_EXCEPTION_POINTERS* pExceptionInfo)
 		if (*error_message)
 		{
 			if (shared_str_initialized)
+			{
 				Msg("\n%s", error_message);
+			}
 
 			strcat(error_message, "\r\n");
 			update_clipboard(error_message);
@@ -532,7 +543,9 @@ LONG WINAPI UnhandledFilter(_EXCEPTION_POINTERS* pExceptionInfo)
 	}
 
 	if (shared_str_initialized)
+	{
 		FlushLog( );
+	}
 
 #ifndef USE_OWN_ERROR_MESSAGE_WINDOW
 #	ifdef USE_OWN_MINI_DUMP
@@ -577,9 +590,11 @@ _CRTIMP _PNH	__cdecl _set_new_handler(_PNH);
 void _terminate( )
 {
 	if (strstr(GetCommandLine( ), "-silent_error_mode"))
+	{
 		exit(-1);
+	}
 
-	string4096				assertion_info;
+	string4096 assertion_info;
 
 	gather_info(
 		"<no expression>",
@@ -604,7 +619,6 @@ void _terminate( )
 	);
 
 	exit(-1);
-//	FATAL					("Unexpected application termination");
 }
 
 void debug_on_thread_spawn( )
@@ -639,36 +653,36 @@ static void invalid_parameter_handler(
 	string4096						function_;
 	string4096						file_;
 	size_t							converted_chars = 0;
-//		errno_t							err = 
+
 	if (expression)
 		wcstombs_s(
-			&converted_chars,
-			expression_,
-			sizeof(expression_),
-			expression,
-			(wcslen(expression) + 1) * 2 * sizeof(char)
+		&converted_chars,
+		expression_,
+		sizeof(expression_),
+		expression,
+		(wcslen(expression) + 1) * 2 * sizeof(char)
 		);
 	else
 		strcpy_s(expression_, "");
 
 	if (function)
 		wcstombs_s(
-			&converted_chars,
-			function_,
-			sizeof(function_),
-			function,
-			(wcslen(function) + 1) * 2 * sizeof(char)
+		&converted_chars,
+		function_,
+		sizeof(function_),
+		function,
+		(wcslen(function) + 1) * 2 * sizeof(char)
 		);
 	else
 		strcpy_s(function_, __FUNCTION__);
 
 	if (file)
 		wcstombs_s(
-			&converted_chars,
-			file_,
-			sizeof(file_),
-			file,
-			(wcslen(file) + 1) * 2 * sizeof(char)
+		&converted_chars,
+		file_,
+		sizeof(file_),
+		file,
+		(wcslen(file) + 1) * 2 * sizeof(char)
 		);
 	else
 	{
@@ -698,13 +712,6 @@ static void pure_call_handler( )
 	handler_base("pure virtual function call");
 }
 
-#ifdef CS_USE_EXCEPTIONS
-static void unexpected_handler( )
-{
-	handler_base("unexpected program termination");
-}
-#endif // CS_USE_EXCEPTIONS
-
 static void abort_handler(int signal)
 {
 	handler_base("application is aborting");
@@ -720,17 +727,12 @@ static void illegal_instruction_handler(int signal)
 	handler_base("illegal instruction");
 }
 
-//	static void storage_access_handler		(int signal)
-//	{
-//		handler_base					("illegal storage access");
-//	}
-
 static void termination_handler(int signal)
 {
 	handler_base("termination with exit code 3");
 }
 
-void	CDebug::_initialize( )
+void CDebug::_initialize( )
 {
 	debug_on_thread_spawn( );
 
@@ -740,7 +742,6 @@ void	CDebug::_initialize( )
 	signal(SIGFPE, floating_point_handler);
 	signal(SIGILL, illegal_instruction_handler);
 	signal(SIGINT, 0);
-//		signal							(SIGSEGV,		storage_access_handler);
 	signal(SIGTERM, termination_handler);
 
 	_set_invalid_parameter_handler(&invalid_parameter_handler);
@@ -751,25 +752,5 @@ void	CDebug::_initialize( )
 
 	_set_purecall_handler(&pure_call_handler);
 
-#if 0// should be if we use exceptions
-	std::set_unexpected(_terminate);
-#endif
-
 	previous_filter = ::SetUnhandledExceptionFilter(UnhandledFilter);	// exception handler to all "unhandled" exceptions
-
-#if 0
-	struct foo
-	{
-		static void	recurs(const u32& count)
-		{
-			if (!count)
-				return;
-
-			_alloca(4096);
-			recurs(count - 1);
-		}
-	};
-	foo::recurs(u32(-1));
-	std::terminate( );
-#endif // 0
 }

@@ -32,8 +32,8 @@ function loadJob(sj, gname, type, squad, groups, gulag)
 			prior = 0, state = {0},
 			predicate = function(obj_info)
 --							printf( "test1: sleeper1 predicate called" )
-			            	return true
-			            end,
+							return true
+						end,
 			in_rest = "", out_rest = ""
 		}
 		table.insert(sj, t)
@@ -42,8 +42,8 @@ function loadJob(sj, gname, type, squad, groups, gulag)
 			prior = 1, state = {0},
 			predicate = function(obj_info)
 --							printf( "test1: walker1 predicate called" )
-			            	return true
-			            end,
+							return true
+						end,
 			in_rest = "", out_rest = ""
 		}
 		table.insert(sj, t)
@@ -84,20 +84,20 @@ function loadJob(sj, gname, type, squad, groups, gulag)
 	end
 
 	if type == "test_restr_changer" then
-	    local i
-	    for i = 1, 6 do
-		    t = { section = "logic@test_restr_changer_walker",
-			    idle = 0,
-			    prior = 0, state = {0},
-			    in_rest = "", out_rest = "test_restr_changer_restr1"
-		    }
-		    table.insert(sj, t)
-		    t = { section = "logic@test_restr_changer_walker",
-			    idle = 0,
-			    prior = 0, state = {1},
-			    in_rest = "", out_rest = "test_restr_changer_restr2"
-		    }
-		    table.insert(sj, t)
+		local i
+		for i = 1, 6 do
+			t = { section = "logic@test_restr_changer_walker",
+				idle = 0,
+				prior = 0, state = {0},
+				in_rest = "", out_rest = "test_restr_changer_restr1"
+			}
+			table.insert(sj, t)
+			t = { section = "logic@test_restr_changer_walker",
+				idle = 0,
+				prior = 0, state = {1},
+				in_rest = "", out_rest = "test_restr_changer_restr2"
+			}
+			table.insert(sj, t)
 		end
 	end
 
@@ -116,9 +116,9 @@ function loadJob(sj, gname, type, squad, groups, gulag)
 		table.insert(sj, t)
 	end
 
-    for k, v in pairs(level_gulags) do
-        v.load_job(sj, gname, type, squad, groups, gulag)
-    end
+	for k, v in pairs(level_gulags) do
+		v.load_job(sj, gname, type, squad, groups, gulag)
+	end
 end
 
 function loadStates(gname, type)
@@ -134,25 +134,25 @@ function loadStates(gname, type)
 
 	if type == "test_restr_changer" then
 		return function(gulag)
-		    local state, tg
-		    local inv = {[0] = 1, [1] = 0}
-		    return inv[gulag.state]
+			local state, tg
+			local inv = {[0] = 1, [1] = 0}
+			return inv[gulag.state]
 
-		    --[[
-		    state = gulag.state
-		    tg = time_global()
-		    if not gulag.haron_prev_time then
-		        gulag.haron_prev_time = tg
-		        return 0
-		    else
-		        if tg - gulag.haron_prev_time > 1000 then
-		            gulag.haron_prev_time = tg
-		            return inv[state]
-		        else
-		            return state
-		        end
-		    end
-		    ]]
+			--[[
+			state = gulag.state
+			tg = time_global()
+			if not gulag.haron_prev_time then
+				gulag.haron_prev_time = tg
+				return 0
+			else
+				if tg - gulag.haron_prev_time > 1000 then
+					gulag.haron_prev_time = tg
+					return inv[state]
+				else
+					return state
+				end
+			end
+			]]
 		end
 	end
 
@@ -170,12 +170,12 @@ function loadStates(gname, type)
 
 	local f
 
-    for k, v in pairs(level_gulags) do
-	    f = v.load_states(gname, type)
-	    if f then
-		    return f
-	    end
-    end
+	for k, v in pairs(level_gulags) do
+		f = v.load_states(gname, type)
+		if f then
+			return f
+		end
+	end
 
 	abort("ERROR: unrecognized gulag's type '%s'", type)
 end
@@ -202,10 +202,10 @@ function loadLtx(name, type)
 
 				return dltx, h
 			end
-    	end
+		end
 
-	    return nil, nil
-    end
+		return nil, nil
+	end
 end
 
 function get_megafone(type, name)

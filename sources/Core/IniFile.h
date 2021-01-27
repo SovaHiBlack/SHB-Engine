@@ -32,15 +32,11 @@ public:
 	typedef xr_vector<Item>				Items;
 	typedef Items::const_iterator		SectCIt;
 	typedef Items::iterator				SectIt_;
-    struct CORE_API	Sect {
+	struct CORE_API	Sect {
 		shared_str		Name;
 		Items			Data;
 
-//.		IC SectCIt		begin()		{ return Data.begin();	}
-//.		IC SectCIt		end()		{ return Data.end();	}
-//.		IC size_t		size()		{ return Data.size();	}
-//.		IC void			clear()		{ Data.clear();			}
-	    BOOL			line_exist	(const char* L, const char** val=0);
+		BOOL			line_exist	(const char* L, const char** val=0);
 	};
 	typedef	xr_vector<Sect*>		Root;
 	typedef Root::iterator			RootIt;
@@ -48,19 +44,19 @@ public:
 	// factorisation
 	static CIniFile*	Create		(const char* szFileName, BOOL ReadOnly=TRUE);
 	static void			Destroy		(CIniFile*);
-    static IC BOOL		IsBOOL		(const char* B)	{ return (xr_strcmp(B,"on")==0 || xr_strcmp(B,"yes")==0 || xr_strcmp(B,"true")==0 || xr_strcmp(B,"1")==0);}
+	static IC BOOL		IsBOOL		(const char* B)	{ return (xr_strcmp(B,"on")==0 || xr_strcmp(B,"yes")==0 || xr_strcmp(B,"true")==0 || xr_strcmp(B,"1")==0);}
 private:
 	char* fName;
 	Root		DATA;
 	BOOL		bReadOnly;
 	void		Load			(IReader* F, const char* path);
 public:
-    BOOL		bSaveAtEnd;
+	BOOL		bSaveAtEnd;
 public:
 	CIniFile( IReader* F, const char* path=0 );
 	CIniFile(const char* szFileName, BOOL ReadOnly=TRUE, BOOL bLoadAtStart=TRUE, BOOL SaveAtEnd=TRUE);
 	virtual 	~CIniFile( );
-    bool		save_as         (const char* new_fname=0 );
+	bool		save_as         (const char* new_fname=0 );
 
 	const char* fname			( ) { return fName; };
 
@@ -116,17 +112,17 @@ public:
 	BOOL		r_line			(const char* S, int L, const char** N, const char** V );
 	BOOL		r_line			( const shared_str& S, int L, const char** N, const char** V );
 
-    void		w_string		(const char* S, const char* L, const char* V, const char* comment=0 );
+	void		w_string		(const char* S, const char* L, const char* V, const char* comment=0 );
 	void		w_u8			(const char* S, const char* L, u8				V, const char* comment=0 );
 	void		w_u16			(const char* S, const char* L, u16				V, const char* comment=0 );
 	void		w_u32			(const char* S, const char* L, u32				V, const char* comment=0 );
-    void		w_s8			(const char* S, const char* L, s8				V, const char* comment=0 );
+	void		w_s8			(const char* S, const char* L, s8				V, const char* comment=0 );
 	void		w_s16			(const char* S, const char* L, s16				V, const char* comment=0 );
 	void		w_s32			(const char* S, const char* L, int				V, const char* comment=0 );
 	void		w_float			(const char* S, const char* L, float				V, const char* comment=0 );
-    void		w_fcolor		(const char* S, const char* L, const Fcolor&		V, const char* comment=0 );
-    void		w_color			(const char* S, const char* L, u32				V, const char* comment=0 );
-    void		w_ivector2		(const char* S, const char* L, const Ivector2&	V, const char* comment=0 );
+	void		w_fcolor		(const char* S, const char* L, const Fcolor&		V, const char* comment=0 );
+	void		w_color			(const char* S, const char* L, u32				V, const char* comment=0 );
+	void		w_ivector2		(const char* S, const char* L, const Ivector2&	V, const char* comment=0 );
 	void		w_ivector3		(const char* S, const char* L, const Ivector3&	V, const char* comment=0 );
 	void		w_ivector4		(const char* S, const char* L, const Ivector4&	V, const char* comment=0 );
 	void		w_fvector2		(const char* S, const char* L, const Fvector2&	V, const char* comment=0 );
@@ -134,7 +130,7 @@ public:
 	void		w_fvector4		(const char* S, const char* L, const Fvector4&	V, const char* comment=0 );
 	void		w_bool			(const char* S, const char* L, bool V, const char* comment = 0);
 
-    void		remove_line		(const char* S, const char* L );
+	void		remove_line		(const char* S, const char* L );
 };
 
 // Main configuration file

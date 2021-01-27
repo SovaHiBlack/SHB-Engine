@@ -4405,6 +4405,168 @@
     <None Include="scripts\hide\zone_spawner.script">
       <Filter>scripts\hide</Filter>
     </None>
+    <None Include="scripts\_g.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\actor_proxy.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\ce_switcher.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\class_registrator.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\db.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\dialog_manager.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\game_registrator.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\gulag_agroprom.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\gulag_agroprom_underground.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\gulag_bar.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\gulag_dark_valley.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\gulag_escape.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\gulag_garbage.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\gulag_general.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\gulag_labx18.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\gulag_military.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\gulag_pripyat.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\gulag_radar.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\gulag_radar_u.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\gulag_sarcofag.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\gulag_tasks.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\gulag_yantar.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\ranks.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\se_artefact.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\se_car.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\se_item.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\se_monster.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\se_respawn.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\se_stalker.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\se_switcher.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\se_zones.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\sim_statistic.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\smart_terrain.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\smart_terrain_params.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\task_manager.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\treasure_manager.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\ui_base_dialog.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\ui_load_dialog.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\ui_main_menu.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\ui_mm_opt_controls.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\ui_mm_opt_gameplay.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\ui_mm_opt_main.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\ui_mm_opt_sound.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\ui_mm_opt_video.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\ui_mm_opt_video_adv.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\ui_numpad.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\ui_save_dialog.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\ui_spawn_dialog.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\ui_wpn_params.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\utils.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\xr_effects.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\xr_gulag.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\xr_logic.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\xr_sound.script">
+      <Filter>scripts</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Text Include="anims\postprocess editor_stohe.log">

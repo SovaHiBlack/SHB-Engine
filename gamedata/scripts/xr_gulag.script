@@ -1,21 +1,32 @@
---' Диденко Руслан (Stohe), Чугай Александр (Chugai)
-
---function printf()
---end
-
 --' в работах поле object хранит id объекта
 
-level_gulags = {gulag_general, gulag_escape, gulag_garbage, gulag_agroprom, gulag_agroprom_underground, gulag_dark_valley, gulag_labx18, gulag_bar,
-                gulag_military, gulag_radar, gulag_radar_u, gulag_yantar, gulag_pripyat, gulag_sarcofag}
+level_gulags =
+{
+	gulag_general,
+	gulag_escape,
+	gulag_garbage,
+	gulag_agroprom,
+	gulag_agroprom_underground,
+	gulag_dark_valley,
+	gulag_labx18,
+	gulag_bar,
+	gulag_military,
+	gulag_radar,
+	gulag_radar_u,
+	gulag_yantar,
+	gulag_pripyat,
+	gulag_sarcofag
+}
 -- вырезал гулаги  gulag_kishka, gulag_deadcity
+
 level_groups = {l01_escape = 1, l02_garbage = 2, l03_agroprom = 3, l03u_agr_underground = 4,
-                l04_darkvalley = 5, l04u_labx18 = 6, l05_bar = 7, l06_rostok = 8,
-                l07_military = 9, l08_yantar = 10, l08u_brainlab = 11, l10_radar = 12,
-                l10u_bunker = 13, l11_pripyat = 14, l12_stancia = 15, l12u_sarcofag = 16, 
-                l12u_control_monolith = 17, l12_stancia_2 = 18}
+				l04_darkvalley = 5, l04u_labx18 = 6, l05_bar = 7, l06_rostok = 8,
+				l07_military = 9, l08_yantar = 10, l08u_brainlab = 11, l10_radar = 12,
+				l10u_bunker = 13, l11_pripyat = 14, l12_stancia = 15, l12u_sarcofag = 16, 
+				l12u_control_monolith = 17, l12_stancia_2 = 18}
 
 local gulag_tasks_file_name  = "misc\\gulag_tasks.ltx"
-local gulag_tasks_ltx        = ini_file( gulag_tasks_file_name )
+local gulag_tasks_ltx        = ini_file(gulag_tasks_file_name)
 
 local job_position_threshold = 120 --'50  -- расстояние до места работы при котором персонаж в онлайне считается достигшим места работы
 local job_idle_after_death   = 600 -- в течении такого периода времени после смерти персонажа его работа будет недоступна
@@ -43,8 +54,6 @@ function gulag:__init(smrttrn, type, squad, groups, npc_info, capacity)
 	self.population = 0					-- Население гулага
 	self.population_comed = 0			-- Уже пришедшее население гулага
 	self.population_non_exclusive = 0	-- Неэксклюзивное население
-
-
 
 	self.Object                 = {} -- объекты по id. Значения: nil-нету такого, true-есть в офлайне, game_object-есть в онлайн
 	self.Object_begin_job       = {} -- по id. true/nil достиг ли объект места своей работы
@@ -785,7 +794,7 @@ function gulag:print()
 	local npc_info, going
 
 	printf("***  %s -- State: %d -- Total population: %d/%d -- Non exclusive population: %d/%d",
-	         self.name, self.state, self:get_population(), self.capacity, self:get_non_exclusive_population(), self.capacity_non_exclusive)
+			 self.name, self.state, self:get_population(), self.capacity, self:get_non_exclusive_population(), self.capacity_non_exclusive)
 
 	if true then
 		return
@@ -1347,7 +1356,7 @@ end
 -----------------------------------------------------------------------------------------------------------------
 
 function checkStalker(npc_community, gulag_type, npc_rank, se_obj)
-    --printf ("CHECKSTALKER, COMMUNITY = %s, TYPE = %s", npc_community, gulag_type)
+	--printf ("CHECKSTALKER, COMMUNITY = %s, TYPE = %s", npc_community, gulag_type)
 	if gulag_type == "test" or gulag_type == "test1" or gulag_type == "test_restr_changer" or gulag_type == "test_out"  then
 		return true
 	end
@@ -1374,9 +1383,9 @@ function checkMonster(npc_community, gulag_type, npc_rank, se_obj)
 		return true
 	end
 
-    for i, v in pairs( level_gulags ) do
+	for i, v in pairs( level_gulags ) do
 		if v.checkMonster(npc_community, gulag_type, npc_rank, se_obj) then
-		    return true
+			return true
 		end
 	end
 

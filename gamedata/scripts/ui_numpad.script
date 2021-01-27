@@ -1,14 +1,6 @@
--- File:		UI_NUMPAD.SCRIPT
--- Description:		Numpad for password input
--- Created:		23.02.2005
--- Author:		Serge Vynnychenko
---
--- Copyright 2004 GSC Game World
-
-
 function main()
 	super_dlg = ui_numpad.numpad()
-	level.start_stop_menu(super_dlg,true)
+	level.start_stop_menu(super_dlg, true)
 end
 
 class "numpad" (CUIScriptWnd)
@@ -20,54 +12,51 @@ function numpad:__init(owner) super()
 end
 
 function numpad:__finalize()
-
 end
 
 function numpad:InitControls()
+	self:Init(342, 199, 339, 369)
+	local xml = CScriptXmlInit()
+	xml:ParseFile("ui_numpad_wnd.xml")
 
-	self:Init(342,199,339,369)			  
-    local xml = CScriptXmlInit()
-    xml:ParseFile("ui_numpad_wnd.xml")
-	
 	local t;
-     
+
 	xml:InitStatic("background", self)
 	t = xml:InitStatic("edit_box", self)
 	t:SetWindowName("edit_window")
-	self:Register(xml:Init3tButton("btn_0", self),"btn_0")
-	self:Register(xml:Init3tButton("btn_1", self),"btn_1")
-	self:Register(xml:Init3tButton("btn_2", self),"btn_2")
-	self:Register(xml:Init3tButton("btn_3", self),"btn_3")
-	self:Register(xml:Init3tButton("btn_4", self),"btn_4")
-	self:Register(xml:Init3tButton("btn_5", self),"btn_5")
-	self:Register(xml:Init3tButton("btn_6", self),"btn_6")
-	self:Register(xml:Init3tButton("btn_7", self),"btn_7")
-	self:Register(xml:Init3tButton("btn_8", self),"btn_8")
-	self:Register(xml:Init3tButton("btn_9", self),"btn_9")	
-	
+	self:Register(xml:Init3tButton("btn_0",			self),	"btn_0")
+	self:Register(xml:Init3tButton("btn_1",			self),	"btn_1")
+	self:Register(xml:Init3tButton("btn_2",			self),	"btn_2")
+	self:Register(xml:Init3tButton("btn_3",			self),	"btn_3")
+	self:Register(xml:Init3tButton("btn_4",			self),	"btn_4")
+	self:Register(xml:Init3tButton("btn_5",			self),	"btn_5")
+	self:Register(xml:Init3tButton("btn_6",			self),	"btn_6")
+	self:Register(xml:Init3tButton("btn_7",			self),	"btn_7")
+	self:Register(xml:Init3tButton("btn_8",			self),	"btn_8")
+	self:Register(xml:Init3tButton("btn_9",			self),	"btn_9")
+
 	self:Register(xml:Init3tButton("btn_c",			self),	"btn_c")
 	self:Register(xml:Init3tButton("btn_backspase",	self),	"btn_backspase")
 	self:Register(xml:Init3tButton("btn_enter",		self),	"btn_enter")
 	self:Register(xml:Init3tButton("btn_cancel",	self),	"btn_cancel")
 end
 
-
 function numpad:InitCallBacks()
-	-- new game
-	self:AddCallback("btn_enter",	ui_events.BUTTON_CLICKED,	self.OnButton_OK_clicked,		self)
-	self:AddCallback("btn_cancel",	ui_events.BUTTON_CLICKED,	self.OnButton_CANCEL_clicked,	self)
-	
-	self:AddCallback("btn_0",		ui_events.BUTTON_CLICKED,	self.OnButton_0_clicked,		self)
-	self:AddCallback("btn_1",		ui_events.BUTTON_CLICKED,	self.OnButton_1_clicked,		self)
-	self:AddCallback("btn_2",		ui_events.BUTTON_CLICKED,	self.OnButton_2_clicked,		self)
-	self:AddCallback("btn_3",		ui_events.BUTTON_CLICKED,	self.OnButton_3_clicked,		self)
-	self:AddCallback("btn_4",		ui_events.BUTTON_CLICKED,	self.OnButton_4_clicked,		self)
-	self:AddCallback("btn_5",		ui_events.BUTTON_CLICKED,	self.OnButton_5_clicked,		self)
-	self:AddCallback("btn_6",		ui_events.BUTTON_CLICKED,	self.OnButton_6_clicked,		self)
-	self:AddCallback("btn_7",		ui_events.BUTTON_CLICKED,	self.OnButton_7_clicked,		self)
-	self:AddCallback("btn_8",		ui_events.BUTTON_CLICKED,	self.OnButton_8_clicked,		self)
-	self:AddCallback("btn_9",		ui_events.BUTTON_CLICKED,	self.OnButton_9_clicked,		self)
-	
+	--' new game
+	self:AddCallback("btn_enter",		ui_events.BUTTON_CLICKED,	self.OnButton_OK_clicked,			self)
+	self:AddCallback("btn_cancel",		ui_events.BUTTON_CLICKED,	self.OnButton_CANCEL_clicked,		self)
+
+	self:AddCallback("btn_0",			ui_events.BUTTON_CLICKED,	self.OnButton_0_clicked,			self)
+	self:AddCallback("btn_1",			ui_events.BUTTON_CLICKED,	self.OnButton_1_clicked,			self)
+	self:AddCallback("btn_2",			ui_events.BUTTON_CLICKED,	self.OnButton_2_clicked,			self)
+	self:AddCallback("btn_3",			ui_events.BUTTON_CLICKED,	self.OnButton_3_clicked,			self)
+	self:AddCallback("btn_4",			ui_events.BUTTON_CLICKED,	self.OnButton_4_clicked,			self)
+	self:AddCallback("btn_5",			ui_events.BUTTON_CLICKED,	self.OnButton_5_clicked,			self)
+	self:AddCallback("btn_6",			ui_events.BUTTON_CLICKED,	self.OnButton_6_clicked,			self)
+	self:AddCallback("btn_7",			ui_events.BUTTON_CLICKED,	self.OnButton_7_clicked,			self)
+	self:AddCallback("btn_8",			ui_events.BUTTON_CLICKED,	self.OnButton_8_clicked,			self)
+	self:AddCallback("btn_9",			ui_events.BUTTON_CLICKED,	self.OnButton_9_clicked,			self)
+
 	self:AddCallback("btn_c",			ui_events.BUTTON_CLICKED,	self.OnButton_c_clicked,			self)
 	self:AddCallback("btn_backspase",	ui_events.BUTTON_CLICKED,	self.OnButton_backspace_clicked,	self)
 end
@@ -75,39 +64,38 @@ end
 function numpad:AddNumber(number)
 	local edit_window = self:GetStatic("edit_window")
 	local text = edit_window:GetText()
-	
+
 	if text == nil then
 		text = "" .. number
 	else
 		if (string.len(text) > 12) then
 			return
 		end
-		
+
 		text = text .. number
 	end
-	
+
 	edit_window:SetText(text)
 end
-
 
 function numpad:OnButton_backspace_clicked()
 	local edit_window = self:GetStatic("edit_window")
 	local text = edit_window:GetText()
-	
+
 	if text == nil then
 		return
 	end
-	
+
 	local b = 1
 	local e = string.len(text) - 1
-	
+
 	text = string.sub(text, b, e)
-	
+
 	edit_window:SetText(text)
 end
 
 function numpad:OnButton_c_clicked()
-	local edit_window = self:GetStatic("edit_window")	
+	local edit_window = self:GetStatic("edit_window")
 	edit_window:SetText("")
 end
 
@@ -165,12 +153,12 @@ end
 
 function numpad:OnKeyboard(dik, keyboard_action)  --virtual function
 	CUIScriptWnd.OnKeyboard(self,dik,keyboard_action)
-	
+
 	if keyboard_action == ui_events.WINDOW_KEY_PRESSED then
 		if dik == DIK_keys.DIK_ESCAPE then
 			self:GetHolder():start_stop_menu(self,true)
 		end
-		
+
 		if dik == DIK_keys.DIK_0 or dik == DIK_keys.DIK_NUMPAD0 then
 			self:AddNumber(0)
 		elseif dik == DIK_keys.DIK_1 or dik == DIK_keys.DIK_NUMPAD1 then
@@ -199,7 +187,6 @@ function numpad:OnKeyboard(dik, keyboard_action)  --virtual function
 			self:OnButton_c_clicked()
 		end
 	end
-	
+
 	return true
 end
-

@@ -2,11 +2,9 @@
 
 #include "rt_lzo1x.h"
 
-#define HEAP_ALLOC(var,size) \
-	lzo_align_t __LZO_MMODEL var [ ((size) + (sizeof(lzo_align_t) - 1)) / sizeof(lzo_align_t) ]
+#define HEAP_ALLOC(var,size)	lzo_align_t __LZO_MMODEL var [ ((size) + (sizeof(lzo_align_t) - 1)) / sizeof(lzo_align_t) ]
 
 __declspec(thread) HEAP_ALLOC(rtc_wrkmem,LZO1X_1_MEM_COMPRESS);
-
 
 void	rtc_initialize	()
 {
@@ -39,5 +37,3 @@ u32		rtc_decompress	(void *dst, u32 dst_len, const void* src, u32 src_len)
 	VERIFY	(r==LZO_E_OK);
 	return	out_size;
 }
-
-

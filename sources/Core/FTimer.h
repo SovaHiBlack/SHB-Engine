@@ -30,7 +30,7 @@ public:
 	IC	float	GetElapsed_sec	()const	{
 
 		FPU::m64r	()			;
-       
+	   
 		float		_result		=		float(double(GetElapsed_ticks())/double(CPU::qpc_freq )	)	;
 
 		FPU::m24r	()			;
@@ -109,7 +109,7 @@ public:
 	float			GetElapsed_sec	() const
 	{
 		FPU::m64r		();
-        
+		
 		float			result = float(double(GetElapsed_ticks())/double(CPU::qpc_freq )	)	;
 
 		FPU::m24r		();
@@ -171,7 +171,7 @@ public:
 	IC	float	GetElapsed_sec	()const	{
 
 		FPU::m64r	()			;
-      
+	  
 		float		_result		=		float(double(GetElapsed_ticks())/double(CPU::qpc_freq )	)	;
 
 		FPU::m24r	()			;

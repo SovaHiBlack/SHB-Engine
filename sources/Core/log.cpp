@@ -16,13 +16,13 @@ void FlushLog			(const char* file_name)
 	logCS.Enter			();
 	
 	IWriter				*f = FS.w_open(file_name);
-    if (f) {
-        for (u32 it=0; it<LogFile->size(); it++)	{
+	if (f) {
+		for (u32 it=0; it<LogFile->size(); it++)	{
 			const char* s	= *((*LogFile)[it]);
 			f->w_string	(s?s:"");
 		}
-        FS.w_close		(f);
-    }
+		FS.w_close		(f);
+	}
 
 	logCS.Leave			();
 }
@@ -82,7 +82,7 @@ void __cdecl Msg		(const char* format, ...)
 	string1024	buf;
 	va_start	(mark, format );
 	int sz		= _vsnprintf(buf, sizeof(buf)-1, format, mark ); buf[sizeof(buf)-1]=0;
-    va_end		(mark);
+	va_end		(mark);
 	if (sz)		Log(buf);
 }
 
@@ -155,24 +155,24 @@ void InitLog()
 
 void CreateLog			(BOOL nl)
 {
-    no_log				= nl;
+	no_log				= nl;
 	strconcat			(sizeof(logFName),logFName,Core.ApplicationName,"_",Core.UserName,".log");
 	if (FS.path_exist("$logs$"))
 		FS.update_path	(logFName,"$logs$",logFName);
 	if (!no_log){
-        IWriter *f		= FS.w_open	(logFName);
-        if (f==NULL){
-        	MessageBox	(NULL,"Can't create log file.","Error",MB_ICONERROR);
-        	abort();
-        }
-        FS.w_close		(f);
-    }
+		IWriter *f		= FS.w_open	(logFName);
+		if (f==NULL){
+			MessageBox	(NULL,"Can't create log file.","Error",MB_ICONERROR);
+			abort();
+		}
+		FS.w_close		(f);
+	}
 	LogFile->reserve		(128);
 }
 
 void CloseLog(void)
 {
 	FlushLog		();
- 	LogFile->clear	();
+	LogFile->clear	();
 	xr_delete		(LogFile);
 }

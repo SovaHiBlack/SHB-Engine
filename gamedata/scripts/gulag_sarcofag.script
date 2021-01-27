@@ -158,20 +158,20 @@ function load_states(gname, type)
 		return function(gulag)
 			return 0
 		end
-    end
-    if type == "sar_monolith_sklad" then
+	end
+	if type == "sar_monolith_sklad" then
 		return function(gulag)
 			return 0
 		end
-    end
-    if type == "sar_monolith_guard" then
+	end
+	if type == "sar_monolith_guard" then
 		return function(gulag)
 			if has_alife_info("mon_door_unlocked") then
 				return 1
 			end
 			return 0
 		end
-    end
+	end
 end
 
 --------------------------------------------------------------------------

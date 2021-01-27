@@ -1,9 +1,7 @@
-
 --[[
 ОПИСАНИЕ ФУНКЦИЙ
 
--- Выводит отладочное сообщение в лог, если скрипт активен (активный скрипт выбирается с помощью
--- переменной debug_info.trace_script). 
+-- Выводит отладочное сообщение в лог, если скрипт активен (активный скрипт выбирается с помощью переменной debug_info.trace_script).
 function trace(script_name, fmt, ...)
 
 -- Переводит переменную любого типа (включая nil) в строку. Используется для отладочного вывода информации.
@@ -22,13 +20,9 @@ function stalker_at_waypoint(stalker, patrol_path, path_point)
 
 -- Послать stalker в заданную точку patrol_path(path_point)
 function stalker_go_to_waypoint(stalker, patrol_path, path_point)
-
 --]]
 
-----------------------------------------------------------------------------------------------------
-
--- Выводит отладочное сообщение в лог, если скрипт активен (активный скрипт выбирается с помощью
--- переменной debug_info.trace_script). 
+-- Выводит отладочное сообщение в лог, если скрипт активен (активный скрипт выбирается с помощью переменной debug_info.trace_script).
 --function trace(script_name, fmt, ...)
 --	if debug_info.trace_script == script_name then
 --		log(string.format("[TRACE] " .. script_name .. ".script: " .. fmt, unpack(arg)))
@@ -44,19 +38,15 @@ function to_str(what)
 	end
 end
 
-
 --' Сравнивает два вектора
 function vector_cmp(a, b)
-    return a.x == b.x and a.y == b.y and a.z == b.z
+	return a.x == b.x and a.y == b.y and a.z == b.z
 end
 
 --' Сравнивает два вектора с заданной погрешностью
 function vector_cmp_prec(a, b, d)
-    return math.abs(a.x - b.x) <= d and 
-           math.abs(a.y - b.y) <= d and 
-           math.abs(a.z - b.z) <= d
+	return math.abs(a.x - b.x) <= d and math.abs(a.y - b.y) <= d and math.abs(a.z - b.z) <= d
 end
-
 
 -- Создает и возвращает копию вектора
 function vector_copy_by_val(vec)
@@ -71,36 +61,38 @@ function vector_copy_by_val(vec)
 end
 
 -- Настройка параметра типа bool у игрового объекта.
--- 
+
 -- char_ini - указатель на customdata (обычно object:spawn_ini())
 -- section - имя секции в customdata
 -- field - имя поля в customdata
 -- object - игровой объект, от которого будет взято имя для сообщения об ошибке
 -- mandatory - поле обязательно должно быть задано
---
+
 -- Возвращает true или false
 function cfg_get_bool(char_ini, section, field, object, mandatory, default_val)
 	if mandatory == nil then
 		abort("section '%s': wrong arguments order in call to cfg_get_bool", section)
 	end
-	
-	--printf("DEBUG: conf_get_bool: section='%s', field='%s'", section, field)
+
+--	printf("DEBUG: conf_get_bool: section='%s', field='%s'", section, field)
 	if section and char_ini:section_exist(section) and char_ini:line_exist(section, field) then
 		local ret = char_ini:r_bool(section, field)
 		return ret
 	end
+
 	if not mandatory then
 		if default_val then
 			if default_val ~= false and default_val ~= true then
-				abort("object '%s': section '%s': field '%s': default value is " ..
-					"not boolean", object:name(), section, field)
+				abort("object '%s': section '%s': field '%s': default value is " .. "not boolean", object:name(), section, field)
 			end
+
 			return default_val
 		end
+
 		return false
 	end
-	abort("object '%s': attempt to read a non-existant boolean field '%s' in " ..
-		"section '%s'", object:name(), field, section)
+
+	abort("object '%s': attempt to read a non-existant boolean field '%s' in " .. "section '%s'", object:name(), field, section)
 end
 
 function cfg_get_string(char_ini, section, field, object, mandatory, gulag_name, default_val)
@@ -108,8 +100,7 @@ function cfg_get_string(char_ini, section, field, object, mandatory, gulag_name,
 		abort("section '%s': wrong arguments order in call to cfg_get_string", section)
 	end
 
-
-	--printf("DEBUG: conf_get_string: section='%s', field='%s'", section, field)
+--	printf("DEBUG: conf_get_string: section='%s', field='%s'", section, field)
 	if section and char_ini:section_exist(section) and char_ini:line_exist(section, field) then
 		if gulag_name and gulag_name ~= "" then
 			return gulag_name .. "_" .. char_ini:r_string(section, field)
@@ -117,11 +108,12 @@ function cfg_get_string(char_ini, section, field, object, mandatory, gulag_name,
 			return char_ini:r_string(section, field)
 		end
 	end
+
 	if not mandatory then
 		return default_val
 	end
-	local err = "object name '" .. object:name() .. "': attempt to read a non-existant string field '" ..
-		field .. "' in section '" .. section .. "'";
+
+	local err = "object name '" .. object:name() .. "': attempt to read a non-existant string field '" .. field .. "' in section '" .. section .. "'"
 	abort("%s", err)
 end
 
@@ -130,16 +122,16 @@ function cfg_get_number(char_ini, section, field, object, mandatory, default_val
 		abort("section '%s': wrong arguments order in call to cfg_get_number", section)
 	end
 
-	--printf("DEBUG: conf_get_number: section='%s', field='%s'", section, field)
+--	printf("DEBUG: conf_get_number: section='%s', field='%s'", section, field)
 	if section and char_ini:section_exist(section) and char_ini:line_exist(section, field) then
 		return char_ini:r_float(section, field)
 	end
+
 	if not mandatory then
 		return default_val
 	end
-	-- local err = "object name '" .. object:name() .. "': attempt to read a non-existant numeric field '" ..
-	--	field .. "' in section '" .. section .. "'";
-	-- abort("%s", err)
+--	local err = "object name '" .. object:name() .. "': attempt to read a non-existant numeric field '" .. field .. "' in section '" .. section .. "'";
+--	abort("%s", err)
 end
 
 function mob_get_string(char_ini, section, field, override, object, mandatory, default_val)
@@ -166,7 +158,7 @@ function mob_get_bool(char_ini, section, field, override, object, mandatory, def
 	return cfg_get_bool(char_ini, section, field, object, mandatory, default_val)
 end
 
--- Проверяет, находится ли stalker рядом с точкой path_point пути patrol_path
+--' Проверяет, находится ли stalker рядом с точкой path_point пути patrol_path
 function stalker_at_waypoint(stalker, patrol_path, path_point)
 --	return stalker:level_vertex_id() == patrol_path:level_vertex_id(path_point)
 
@@ -175,8 +167,8 @@ function stalker_at_waypoint(stalker, patrol_path, path_point)
 	if distance <= 0.13 then
 		return true
 	end
-	return false
 
+	return false
 end
 
 -- Послать stalker в заданную точку patrol_path(path_point)
@@ -218,8 +210,8 @@ end
 
 --[[
 function stalker_look_at_stalker_angle(stalker, whom, angle)
-    --stalker - killer
-    --whom - killed :)
+	--stalker - killer
+	--whom - killed :)
 	local look_pt = this.vector_copy_by_val(whom:position()):sub(stalker:position())
 	stalker:set_sight (look.direction, vector_rotate_y (look_pt, angle), 0)
 end
@@ -227,8 +219,8 @@ end
 
 --[[
 function stalker_look_firepoint_angle(stalker, whom, angle)
-    --stalker - killer
-    --whom - killed :)
+	--stalker - killer
+	--whom - killed :)
 	local look_pt = this.vector_copy_by_val(whom:position()):sub(stalker:position())
 	stalker:set_sight (look.fire_point, vector_rotate_y (look_pt, angle), 0)
 end
@@ -243,8 +235,7 @@ local function door_default_callback(door, actor)
 	low_limit, hi_limit = joint:get_limits(low_limit, hi_limit, 0)
 
 	local angle = joint:get_axis_angle(0)
-	if angle-low_limit > hi_limit - angle 
-	then
+	if angle-low_limit > hi_limit - angle then
 		joint:set_max_force_and_velocity(100, -1.5, 0)
 	else
 		joint:set_max_force_and_velocity(100, 1.5, 0)
@@ -270,7 +261,7 @@ function door_close_then_lock(door, callback_fn)
 		joint:set_max_force_and_velocity(1000000, 0, 0)
 	end
 end
-	
+
 --unlock_then_open(door) -- дверь разлочится и импульсом откроется
 --locked(door) -- true, если дверь закрыта и залочена
 
@@ -309,15 +300,14 @@ function parse_waypoint_data(pathname, wpflags, wpname)
 				elseif fld_num == 2 then
 					val = v
 				else
-					abort("path '%s': waypoint '%s': syntax error while parsing the param '%s'",
-						pathname, wpname, param)
+					abort("path '%s': waypoint '%s': syntax error while parsing the param '%s'", pathname, wpname, param)
 				end
+
 				fld_num = fld_num + 1
 			end
 
 			if not fld or fld == "" then
-				abort("path '%s': waypoint '%s': syntax error while parsing the param '%s': no field specified",
-					pathname, wpname, param)
+				abort("path '%s': waypoint '%s': syntax error while parsing the param '%s': no field specified", pathname, wpname, param)
 			end
 
 			if not val or val == "" then
@@ -326,6 +316,7 @@ function parse_waypoint_data(pathname, wpflags, wpname)
 
 			rslt[fld] = val
 		end
+
 		par_num = par_num + 1
 	end
 	return rslt
@@ -347,7 +338,6 @@ function path_parse_waypoints(pathname)
 		if not rslt[pt] then
 			abort("error while parsing point %d of path '%s'", pt, pathname)
 		end
-
 	end
 
 	return rslt
@@ -376,6 +366,7 @@ function path_parse_waypoints_from_arglist(pathname, num_points, ...)
 		if not cur_arg then
 			abort("script error [1] while processing point %d of path '%s'", pt, pathname)
 		end
+
 		fl = flags32()
 		fl:assign(cur_arg[1])
 		rslt[pt] = parse_waypoint_data(pathname, fl, cur_arg[2])
@@ -398,8 +389,9 @@ function action2(obj,...)
 		end
 		i = i + 1
 	end
+
 	if (obj ~= nil) then
-		obj:command(act,false)
+		obj:command(act, false)
 	end
 	return  entity_action(act)
 end
@@ -432,14 +424,15 @@ end
 
 -- a | b | c  ==>  { 1 = "a", 2 = "b", 3 = "c" }
 function parse_params(params)
-	--printf("_bp: parse_params: params=%s", params)
+--	printf("_bp: parse_params: params=%s", params)
 	local rslt = {}
 	local n = 1
 	for fld in string.gfind(params, "%s*([^|]+)%s*") do
-		--printf("_bp: parse_params iter=%d, fld=%s", n, fld)
+--		printf("_bp: parse_params iter=%d, fld=%s", n, fld)
 		rslt[n] = fld
 		n = n + 1
 	end
+
 	return rslt
 end
 
@@ -448,7 +441,7 @@ function is_day()
 end
 
 function electro_art_enabled ()
-    return level.get_time_hours() >= 0 and level.get_time_hours() < 5
+	return level.get_time_hours() >= 0 and level.get_time_hours() < 5
 end
 
 function no_need_to_rotate(npc, target_pos)
@@ -512,10 +505,11 @@ function get_nearest_waypoint(obj, pathname, ptr, cnt)
 			pt_chosen = i
 		end
 	end
+
 	if not pt_chosen then
-		abort("object '%s': path '%s': get_nearest_waypoint: unable to choose a nearest waypoint (path has no waypoints?)",
-			obj:name(), pathname)
+		abort("object '%s': path '%s': get_nearest_waypoint: unable to choose a nearest waypoint (path has no waypoints?)", obj:name(), pathname)
 	end
+
 	return pt_chosen
 end
 
@@ -526,9 +520,7 @@ end
 ------------------------- запись/загрузка CTime ---------------------------
 local CTime_0
 
-if not editor() then
-	CTime_0 = game.CTime()
-end
+CTime_0 = game.CTime()
 
 -- запись CTime в пакет. если t=nil, то запишет один нулевой байт
 function w_CTime( p, t )
@@ -565,14 +557,13 @@ end
 
 -- отослать в ближайшую разрешённую ноду по направлению к заданной.
 -- возвращает vertex_id, в которое отправил персонажа
-function send_to_nearest_accessible_vertex( npc, v_id )
-	if not npc:accessible( v_id ) then
+function send_to_nearest_accessible_vertex(npc, v_id)
+	if not npc:accessible(v_id) then
 		local vtemp = vector()
-		v_id, vtemp = npc:accessible_nearest( level.vertex_position( v_id ), vtemp )
+		v_id, vtemp = npc:accessible_nearest(level.vertex_position(v_id), vtemp)
 	end
 
-	npc:set_dest_level_vertex_id( v_id )
-
+	npc:set_dest_level_vertex_id(v_id)
 	return v_id
 end
 
@@ -593,24 +584,24 @@ end
 function parse_data_1v(npc,s)
 	local t = {}
 
-    if s then
+	if s then
 		for name in string.gfind( s, "(%|*%d+%|[^%|]+)%p*" ) do
 --			printf("[%s]", utils.to_str(name))
-			local dat = {	dist = nil,
-							state = nil}	
-			
-			local t_pos = string.find( name, "|", 1, true )
-						
-			local dist = string.sub( name, 1, t_pos - 1 )
-			local state	= string.sub( name, t_pos + 1)
+			local dat = { dist = nil, state = nil }
+			local t_pos = string.find(name, "|", 1, true)
+
+			local dist = string.sub(name, 1, t_pos - 1)
+			local state = string.sub(name, t_pos + 1)
 		
 --			printf("	[%s]=[%s][%s]", utils.to_str(dist), utils.to_str(state), utils.to_str(sound))
 			dat.dist = tonumber(dist)
 			if state then
 				dat.state = xr_logic.parse_condlist(npc, dist, state, state)
 			end
+
 			t[tonumber(dist)] = dat
 		end
 	end
-    return t
+
+	return t
 end

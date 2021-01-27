@@ -13,26 +13,25 @@ class CORE_API FS_Path
 {
 public:
 	enum{
-    	flRecurse	= (1<<0),
-    	flNotif		= (1<<1),
-    	flNeedRescan= (1<<2)
-    };
-public:
+		flRecurse	= (1<<0),
+		flNotif		= (1<<1),
+		flNeedRescan= (1<<2)
+	};
+
 	char* m_Path;
 	char* m_Root;
 	char* m_Add;
 	char* m_DefExt;
 	char* m_FilterCaption;
-    Flags32		m_Flags;
-public:
+	Flags32		m_Flags;
+
 				FS_Path		(const char* _Root, const char* _Add, const char* _DefExt=0, const char* _FilterString=0, u32 flags=0);
 				~FS_Path	();
 				const char* _update		(string_path& dest, const char* src) const;
-//.	void		_update		(xr_string& dest, const char* src) const;
 	void		_set		(char* add);
 	void		_set_root	(char* root);
 
-    void __stdcall rescan_path_cb	();
+	void __stdcall rescan_path_cb	();
 };
 
 struct 				_finddata64i32_t;

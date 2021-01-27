@@ -207,40 +207,40 @@ function load_job(sj, gname, type, squad, groups)
 	if type == "yan_scientist" then
 		t = { section = "logic@scientist_offline",
 			idle = 0,
-            online = false,
+			online = false,
 			prior = 9, state = {0,1,2}, squad = squad, group = groups[2],
 			in_rest = "", out_rest = "yantar_bunker_space_restrictor",
-            predicate = function(obj_info) 
-                       			return obj_info.story_id == 900
+			predicate = function(obj_info) 
+								return obj_info.story_id == 900
 						 end
-        }
+		}
 		table.insert(sj, t)	
 		t = { section = "logic@scientist_offline",
 			idle = 0,
-            online = false,
+			online = false,
 			prior = 9, state = {3,4,5}, squad = squad, group = groups[2],
 			in_rest = "", out_rest = "yantar_bunker_space_restrictor",
-            predicate = function(obj_info) 
-                       			return obj_info.story_id == 905
+			predicate = function(obj_info) 
+								return obj_info.story_id == 905
 						 end
-        }
+		}
 		table.insert(sj, t)	
-        t = { section = "logic@scientist_out_rest",
+		t = { section = "logic@scientist_out_rest",
 			idle = 0,
 			prior = 5, state = {0}, squad = squad, group = groups[2],
 			in_rest = "", out_rest = "yantar_bunker_space_restrictor",
-            predicate = function(obj_info) 
-                       			return obj_info.story_id == 905
+			predicate = function(obj_info) 
+								return obj_info.story_id == 905
 						 end
 		}
 		table.insert(sj, t)	
 		t = { section = "logic@scientist_not_in_rest",
 			idle = 0,
 			prior = 5, state = {1}, squad = squad, group = groups[2],
-		    online = true,
+			online = true,
 			in_rest = "yantar_bunker_space_restrictor", out_rest = "",
-            predicate = function(obj_info) 
-                       			return obj_info.story_id == 905
+			predicate = function(obj_info) 
+								return obj_info.story_id == 905
 						 end
 		}
 		table.insert(sj, t)		    
@@ -248,27 +248,27 @@ function load_job(sj, gname, type, squad, groups)
 			idle = 0,
 			prior = 5, state = {2}, squad = squad, group = groups[2],
 			in_rest = "", out_rest = "yantar_bunker_space_restrictor",
-            predicate = function(obj_info) 
-                       			return obj_info.story_id == 905
+			predicate = function(obj_info) 
+								return obj_info.story_id == 905
 						 end
 		}
 		table.insert(sj, t)
-        t = { section = "logic@scientist_out_rest",
+		t = { section = "logic@scientist_out_rest",
 			idle = 0,
 			prior = 5, state = {3}, squad = squad, group = groups[2],
 			in_rest = "", out_rest = "yantar_bunker_space_restrictor",
-            predicate = function(obj_info) 
-                       			return obj_info.story_id == 900
+			predicate = function(obj_info) 
+								return obj_info.story_id == 900
 						 end
 		}
 		table.insert(sj, t)	
 		t = { section = "logic@scientist_not_in_rest",
 			idle = 0,
 			prior = 5, state = {4}, squad = squad, group = groups[2],
-		    online = true,
+			online = true,
 			in_rest = "yantar_bunker_space_restrictor", out_rest = "",
-            predicate = function(obj_info) 
-                       			return obj_info.story_id == 900
+			predicate = function(obj_info) 
+								return obj_info.story_id == 900
 						 end
 		}
 		table.insert(sj, t)		    
@@ -276,8 +276,8 @@ function load_job(sj, gname, type, squad, groups)
 			idle = 0,
 			prior = 5, state = {5}, squad = squad, group = groups[2],
 			in_rest = "", out_rest = "yantar_bunker_space_restrictor",
-            predicate = function(obj_info) 
-                       			return obj_info.story_id == 900
+			predicate = function(obj_info) 
+								return obj_info.story_id == 900
 						 end
 		}
 		table.insert(sj, t)
@@ -379,12 +379,12 @@ function load_job(sj, gname, type, squad, groups)
 end
 
 function load_states(gname, type)
-    if type == "yantar_zombies" then
+	if type == "yantar_zombies" then
 		return function(gulag)
 			return 0
 		end
-    end
-    if type == "yan_scientist" then
+	end
+	if type == "yan_scientist" then
 		return function(gulag)
 			local t
 
@@ -403,7 +403,7 @@ function load_states(gname, type)
 			
 			return t
 		end
-    end
+	end
 	
 	if type == "yan_tonnel_snorks" then
 		return function(gulag)
