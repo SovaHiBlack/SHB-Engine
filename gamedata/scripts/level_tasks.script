@@ -4,10 +4,10 @@ local level_scripts = {
 	tasks_agroprom,
 	tasks_darkvalley,
 	tasks_bar,
-    yantar_tasks,
-    mil_tasks,
-	radar_tasks,
-	pripyat_tasks
+	tasks_yantar,
+	tasks_military,
+	tasks_radar,
+	tasks_pripyat
 }
 
 

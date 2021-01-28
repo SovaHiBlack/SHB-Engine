@@ -3373,9 +3373,6 @@
     <None Include="scripts\hide\h.script">
       <Filter>scripts\hide</Filter>
     </None>
-    <None Include="scripts\hide\heli_snd.script">
-      <Filter>scripts\hide</Filter>
-    </None>
     <None Include="scripts\hide\i1.script">
       <Filter>scripts\hide</Filter>
     </None>
@@ -3428,9 +3425,6 @@
       <Filter>scripts\hide</Filter>
     </None>
     <None Include="scripts\hide\memusage.script">
-      <Filter>scripts\hide</Filter>
-    </None>
-    <None Include="scripts\hide\mil_tasks.script">
       <Filter>scripts\hide</Filter>
     </None>
     <None Include="scripts\hide\mil_test.script">
@@ -3488,9 +3482,6 @@
       <Filter>scripts\hide</Filter>
     </None>
     <None Include="scripts\hide\pripyat.script">
-      <Filter>scripts\hide</Filter>
-    </None>
-    <None Include="scripts\hide\pripyat_tasks.script">
       <Filter>scripts\hide</Filter>
     </None>
     <None Include="scripts\hide\profiler.script">
@@ -3553,9 +3544,6 @@
     <None Include="scripts\hide\rad_dialogs.script">
       <Filter>scripts\hide</Filter>
     </None>
-    <None Include="scripts\hide\radar_tasks.script">
-      <Filter>scripts\hide</Filter>
-    </None>
     <None Include="scripts\hide\radar_test.script">
       <Filter>scripts\hide</Filter>
     </None>
@@ -3580,25 +3568,10 @@
     <None Include="scripts\hide\ssss.script">
       <Filter>scripts\hide</Filter>
     </None>
-    <None Include="scripts\hide\stalker_generic.script">
-      <Filter>scripts\hide</Filter>
-    </None>
     <None Include="scripts\hide\stalker_test.script">
       <Filter>scripts\hide</Filter>
     </None>
     <None Include="scripts\hide\start.script">
-      <Filter>scripts\hide</Filter>
-    </None>
-    <None Include="scripts\hide\state_lib.script">
-      <Filter>scripts\hide</Filter>
-    </None>
-    <None Include="scripts\hide\state_mgr_animation.script">
-      <Filter>scripts\hide</Filter>
-    </None>
-    <None Include="scripts\hide\state_mgr_animation_list.script">
-      <Filter>scripts\hide</Filter>
-    </None>
-    <None Include="scripts\hide\state_mgr_animstate.script">
       <Filter>scripts\hide</Filter>
     </None>
     <None Include="scripts\hide\task_1.script">
@@ -3898,13 +3871,7 @@
     <None Include="scripts\hide\xr_bodyguard.script">
       <Filter>scripts\hide</Filter>
     </None>
-    <None Include="scripts\hide\xr_combat_camper.script">
-      <Filter>scripts\hide</Filter>
-    </None>
     <None Include="scripts\hide\xr_combat_monolith.script">
-      <Filter>scripts\hide</Filter>
-    </None>
-    <None Include="scripts\hide\xr_combat_zombied.script">
       <Filter>scripts\hide</Filter>
     </None>
     <None Include="scripts\hide\xr_comm_ptr.script">
@@ -3923,9 +3890,6 @@
       <Filter>scripts\hide</Filter>
     </None>
     <None Include="scripts\hide\xr_heli.script">
-      <Filter>scripts\hide</Filter>
-    </None>
-    <None Include="scripts\hide\xr_info.script">
       <Filter>scripts\hide</Filter>
     </None>
     <None Include="scripts\hide\xr_light.script">
@@ -3961,16 +3925,10 @@
     <None Include="scripts\hide\xr_zoneguard.script">
       <Filter>scripts\hide</Filter>
     </None>
-    <None Include="scripts\hide\xr_zones.script">
-      <Filter>scripts\hide</Filter>
-    </None>
     <None Include="scripts\hide\xr_zones_sound.script">
       <Filter>scripts\hide</Filter>
     </None>
     <None Include="scripts\hide\yantar_dialog.script">
-      <Filter>scripts\hide</Filter>
-    </None>
-    <None Include="scripts\hide\yantar_tasks.script">
       <Filter>scripts\hide</Filter>
     </None>
     <None Include="scripts\hide\yantar_test.script">
@@ -4445,6 +4403,93 @@
       <Filter>scripts</Filter>
     </None>
     <None Include="scripts\xr_wounded.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\dialogs.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\dialogs_aes.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\dialogs_agroprom.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\dialogs_bar.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\dialogs_darkvalley.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\dialogs_escape.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\dialogs_garbage.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\dialogs_military.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\dialogs_radar.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\dialogs_yantar.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\tasks_agroprom.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\tasks_bar.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\tasks_darkvalley.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\tasks_escape.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\tasks_garbage.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\tasks_military.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\tasks_pripyat.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\tasks_radar.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\tasks_yantar.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\heli_snd.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\stalker_generic.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\state_lib.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\state_mgr_animation.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\state_mgr_animation_list.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\state_mgr_animstate.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\xr_combat_camper.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\xr_combat_zombied.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\xr_info.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\xr_zones.script">
       <Filter>scripts</Filter>
     </None>
   </ItemGroup>
