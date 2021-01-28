@@ -654,11 +654,11 @@ function actor_enemy(actor, npc)
 end
 
 function give_all_quests(actor, npc)
-	--bar_dialogs.quests()
+	--dialogs_bar.quests()
 end
 
 function give_rostok_quests(actor, npc)
-	bar_dialogs.rostok_quests()
+	dialogs_bar.rostok_quests()
 end
 
 
@@ -1392,7 +1392,7 @@ function agr_krot_sos_1_2( actor, npc )
 	if not has_alife_info( "agr_help_krot_start" ) and
 	   not has_alife_info( "agr_help_krot_done" ) and
 	   not has_alife_info( "agr_krot_skirmish_start" ) and
-	   not has_alife_info( "agr_krot_dead" ) and not(agroprom_tasks.agr_actor_enemy())
+	   not has_alife_info( "agr_krot_dead" ) and not(tasks_agroprom.agr_actor_enemy())
 	then
 		actor:give_info_portion( "agr_help_krot_start" )
 		news_manager.send_tip( actor, "tips_agr_krot_sos1", 0, "krot", 10000 )

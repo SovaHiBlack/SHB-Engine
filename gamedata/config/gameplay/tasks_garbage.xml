@@ -50,8 +50,8 @@
 		<objective>
 			<text>gar_defend_garbage</text>
 			<icon>ui_iconsTotal_gar_help_dymon</icon>
-			<function_complete>garbage_tasks.task_hellcar_complete</function_complete>
-			<function_fail>garbage_tasks.task_hellcar_fail</function_fail>
+			<function_complete>tasks_garbage.task_hellcar_complete</function_complete>
+			<function_fail>tasks_garbage.task_hellcar_fail</function_fail>
 			<article>graveyard_raid</article>
 		</objective>
 		<objective>
@@ -81,7 +81,7 @@
 			<object_story_id>gar_hellcar</object_story_id>
 			<infoportion_complete>gar_hellcar_help</infoportion_complete>
     	<infoportion_fail>gar_hellcar_reject</infoportion_fail>
-			<function_fail>garbage_tasks.task_hellcar_fail2</function_fail>
+			<function_fail>tasks_garbage.task_hellcar_fail2</function_fail>
 			<article>help_for_hellcar</article>
 		</objective>
 		<objective>

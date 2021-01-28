@@ -1,15 +1,3 @@
--------------------------------------------------------------------------
---	created:	2005/02/12
---	created:	12:2:2005   12:59
---	filename: 	x:\gamedata\scripts\dialogs_military.script
---	file path:	x:\gamedata\scripts
---	file base:	dialogs_military
---	file ext:	script
---	author:		Tunduk Vladimir aka Sidorovich
---	
---	purpose:	dialog support for military
--------------------------------------------------------------------------
-
 -- Оплата долговцем наших услуг по устранению снайпера
 function mil_dolg_payment (stalker, player)
     if not has_alife_info("military_scull_give_reward_1") then

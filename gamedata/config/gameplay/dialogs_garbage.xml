@@ -274,7 +274,7 @@
             </phrase>
             <phrase id="311111">
                 <text>gar_hellcar_start_311111</text>
-                <action>garbage_dialogs.hellcar_payment</action>
+                <action>dialogs_garbage.hellcar_payment</action>
                 <next>3111111</next>
             </phrase>
         </phrase_list>
@@ -362,14 +362,14 @@
             </phrase>
             <phrase id="2211">
                 <text>gar_seriy_start_2211</text>
-                <action>garbage_dialogs.seryi_payment</action>
+                <action>dialogs_garbage.seryi_payment</action>
                 <give_info>agr_can_ask_krot_about_gunslinger</give_info>
                 <give_info>agr_krot_band_start</give_info>
                 <next>2212</next>
             </phrase>
             <phrase id="2221">
                 <text>gar_seriy_start_2221</text>
-                <action>garbage_dialogs.seryi_payment</action>
+                <action>dialogs_garbage.seryi_payment</action>
                 <give_info>agr_krot_band_start</give_info>
                 <give_info>agr_can_ask_krot_about_gunslinger</give_info>
                 <next>2222</next>
@@ -435,8 +435,8 @@
             </phrase>
             <phrase id="1111211">
                 <text>gar_dolg_blokpost_1111211</text>
-                <precondition>garbage_dialogs.has_dolg_bribe</precondition>
-                <action>garbage_dialogs.give_dolg_bribe</action>
+                <precondition>dialogs_garbage.has_dolg_bribe</precondition>
+                <action>dialogs_garbage.give_dolg_bribe</action>
                 <give_info>gar_free_pass</give_info>
                 <next>11112111</next>
             </phrase>
@@ -485,7 +485,7 @@
             </phrase>
             <phrase id="3">
                 <text></text>
-                <precondition>garbage_dialogs.blokpost_pass</precondition>
+                <precondition>dialogs_garbage.blokpost_pass</precondition>
                 <next>33</next>
             </phrase>
             <phrase id="33">

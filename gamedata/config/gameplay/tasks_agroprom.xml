@@ -10,8 +10,8 @@
 		<text>agroprom_get_military_documents_1</text>
 		<map_location_type hint="agr_take_case_hint">green_location</map_location_type>
 		<object_story_id>agr_military_documents</object_story_id>
-		<function_complete>agroprom_tasks.have_quest_case_02</function_complete>
-		<function_call_complete>agroprom_tasks.agr_trader_documents</function_call_complete>
+		<function_complete>tasks_agroprom.have_quest_case_02</function_complete>
+		<function_call_complete>tasks_agroprom.agr_trader_documents</function_call_complete>
 		<infoportion_set_complete>agroprom_military_case_have</infoportion_set_complete>
 	</objective>
 	<objective>
@@ -28,7 +28,7 @@
 		<icon>ui_iconsTotal_agr_meet_krot_band</icon>
 		<infoportion_complete>agr_krot_task_complete</infoportion_complete>
 		<infoportion_set_complete>agr_krot_band_done</infoportion_set_complete>
-		<function_fail>agroprom_tasks.agr_actor_enemy</function_fail>
+		<function_fail>tasks_agroprom.agr_actor_enemy</function_fail>
 		<infoportion_fail>agr_find_gunslinger_cache_found</infoportion_fail>
 		<article>storyline_seriy_flash_info</article>
 	</objective>
@@ -66,8 +66,8 @@
 	<objective>
 		<text>agroprom_find_gunslinger_cache_2</text>
 		<icon x="100" y="50" width="50" height="50">ui\ui_icons_task</icon>
-		<function_complete>agroprom_tasks.have_gunslingers_flash</function_complete>
-		<function_call_complete>agroprom_tasks.ghost_tips</function_call_complete>
+		<function_complete>tasks_agroprom.have_gunslingers_flash</function_complete>
+		<function_call_complete>tasks_agroprom.ghost_tips</function_call_complete>
 	</objective>
 	<objective>
 		<text>agroprom_find_gunslinger_cache_3</text>
@@ -96,7 +96,7 @@
 		<icon>ui_iconsTotal_eliminate_lager</icon>
 		<infoportion_complete>agr_help_stalkers_assault_dead</infoportion_complete>
 		<infoportion_fail>agr_help_stalkers_defence_dead</infoportion_fail>
-		<function_fail>agroprom_tasks.agr_actor_enemy</function_fail>
+		<function_fail>tasks_agroprom.agr_actor_enemy</function_fail>
 		<article>article_agr_krot_sos</article>
 	</objective>
 	<objective>
@@ -116,7 +116,7 @@
 		<infoportion_complete>agr_find_gunslinger_cache_start</infoportion_complete>
 		<infoportion_fail>agr_krot_dead</infoportion_fail>
 		<infoportion_set_fail>agr_help_krot_done</infoportion_set_fail>
-		<function_fail>agroprom_tasks.agr_actor_enemy</function_fail>
+		<function_fail>tasks_agroprom.agr_actor_enemy</function_fail>
 		<article>article_agr_krot_sos1</article>
 	</objective>
 	<objective>

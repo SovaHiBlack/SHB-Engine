@@ -41,7 +41,7 @@
 		<objective>
 			<text>esc_help_wounded_from_raid_0</text>
 			<icon>ui_iconsTotal_esc_help_wounded_from_raid</icon>
-			<function_complete>escape_tasks.task_fox_complete</function_complete>
+			<function_complete>tasks_escape.task_fox_complete</function_complete>
 			<infoportion_set_complete>garbage_meetstalker_start</infoportion_set_complete>			
 			<article>esc_fox_help</article>
 		</objective>
@@ -89,13 +89,13 @@
 			<icon>ui_iconsTotal_esc_dinamit_to_volk</icon>
 			<infoportion_complete>esc_kill_bandits_quest_done</infoportion_complete>
 			<infoportion_fail>esc_wolf_dead</infoportion_fail>
-<!--			<function_fail>escape_tasks.is_actor_enemy_lager</function_fail> -->
+<!--			<function_fail>tasks_escape.is_actor_enemy_lager</function_fail> -->
 		</objective>
 		<objective>
 			<text>esc_dinamit_to_volk_1</text>
 			<map_location_type hint="wolfs_rangers">green_location</map_location_type>
 			<object_story_id>Escape_bridge_stalkers</object_story_id>
-			<function_complete>escape_tasks.petruha_talk</function_complete>			
+			<function_complete>tasks_escape.petruha_talk</function_complete>			
 			<infoportion_fail>esc_petruha_die</infoportion_fail>
 		</objective>		
 		<objective>
@@ -117,9 +117,9 @@
 		<objective>
 			<text>esc_defend_lager_from_killers_0</text>
 			<icon>ui_iconsTotal_esc_defend_lager</icon>
-			<function_complete>escape_tasks.task_lager_complete</function_complete>
+			<function_complete>tasks_escape.task_lager_complete</function_complete>
 			<infoportion_fail>esc_lager_destroyed</infoportion_fail>
-			<function_fail>escape_tasks.is_actor_enemy_lager</function_fail>
+			<function_fail>tasks_escape.is_actor_enemy_lager</function_fail>
 		</objective>
 		<objective>
 			<text>esc_defend_lager_from_killers_1</text>
@@ -166,14 +166,14 @@
 			<map_location_type hint="volk">green_location</map_location_type>
 			<object_story_id>Escape_novice_lager_volk</object_story_id>
 			<infoportion_complete>esc_kill_bandits_quest_have</infoportion_complete>
-			<function_fail>escape_tasks.task_volk_fail</function_fail>
+			<function_fail>tasks_escape.task_volk_fail</function_fail>
 		</objective>
 		<objective>
 			<text>esc_dinamit_to_volk_1</text>
 			<map_location_type hint="wolfs_rangers">green_location</map_location_type>
 			<object_story_id>Escape_bridge_stalkers</object_story_id>
 			<map_location_hidden>1</map_location_hidden>
-			<function_complete>escape_tasks.petruha_talk</function_complete>			
+			<function_complete>tasks_escape.petruha_talk</function_complete>			
 			<infoportion_fail>esc_petruha_die</infoportion_fail>
 		</objective>
 		<objective>

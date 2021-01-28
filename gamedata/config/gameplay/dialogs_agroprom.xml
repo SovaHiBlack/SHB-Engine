@@ -50,7 +50,7 @@
             </phrase>
             <phrase id="13">
                 <text>agr_stalker_talk_about_ratcatcher1_13</text>
-                <precondition>agroprom_dialog.not_has_30_money</precondition>
+                <precondition>dialogs_agroprom.not_has_30_money</precondition>
                 <action>dialogs.break_dialog</action>
                 <dont_has_info>agr_sold_about_ratcatcher</dont_has_info>
             </phrase>
@@ -61,7 +61,7 @@
             </phrase>
             <phrase id="12">
                 <text>agr_stalker_talk_about_ratcatcher1_12</text>
-                <precondition>agroprom_dialog.not_has_30_money</precondition>
+                <precondition>dialogs_agroprom.not_has_30_money</precondition>
                 <give_info>agr_sold_about_ratcatcher</give_info>
                 <has_info>agr_sold_about_ratcatcher</has_info>
                 <next>121</next>
@@ -89,8 +89,8 @@
             </phrase>
             <phrase id="11">
                 <text>agr_stalker_talk_about_ratcatcher1_11</text>
-                <precondition>agroprom_dialog.has_30_money</precondition>
-                <action>agroprom_dialog.give_30_money_to_stalker_for_info_about_ratcatcher</action>
+                <precondition>dialogs_agroprom.has_30_money</precondition>
+                <action>dialogs_agroprom.give_30_money_to_stalker_for_info_about_ratcatcher</action>
                 <dont_has_info>agr_sold_about_ratcatcher</dont_has_info>
                 <give_info>agr_sold_about_ratcatcher</give_info>
                 <next>111</next>
@@ -149,8 +149,8 @@
             </phrase>
             <phrase id="130">
                 <text>agr_stalker_talk_about_ratcatcher_130</text>
-                <precondition>agroprom_dialog.has_30_money</precondition>
-                <action>agroprom_dialog.give_30_money_to_stalker_for_info_about_ratcatcher</action>
+                <precondition>dialogs_agroprom.has_30_money</precondition>
+                <action>dialogs_agroprom.give_30_money_to_stalker_for_info_about_ratcatcher</action>
                 <dont_has_info>agr_sold_about_ratcatcher</dont_has_info>
                 <give_info>agr_sold_about_ratcatcher</give_info>
                 <next>40</next>
@@ -312,7 +312,7 @@
             </phrase>
             <phrase id="400">
                 <text>agr_krot_actor_hasnot_met_seriy_400</text>
-                <action>agroprom_dialog.krot_give_flash</action>
+                <action>dialogs_agroprom.krot_give_flash</action>
                 <next>4000</next>
             </phrase>
             <phrase id="200">
@@ -486,7 +486,7 @@
             </phrase>
             <phrase id="250">
                 <text>agr_krot_actor_met_seriy_250</text>
-                <action>agroprom_dialog.krot_give_flash</action>
+                <action>dialogs_agroprom.krot_give_flash</action>
                 <next>2500</next>
             </phrase>
             <phrase id="2500">
@@ -523,7 +523,7 @@
             </phrase>
             <phrase id="4001">
                 <text>agr_krot_actor_hasnot_met_seriy_400</text>
-                <action>agroprom_dialog.krot_give_flash</action>
+                <action>dialogs_agroprom.krot_give_flash</action>
             </phrase>
             <phrase id="35001">
                 <text>agr_krot_actor_hasnot_met_seriy_3500</text>
@@ -531,7 +531,7 @@
             </phrase>
             <phrase id="2502">
                 <text>agr_krot_actor_met_seriy_250</text>
-                <action>agroprom_dialog.krot_give_flash</action>
+                <action>dialogs_agroprom.krot_give_flash</action>
             </phrase>
             <phrase id="20002">
                 <text>agr_krot_actor_met_seriy_2000</text>
@@ -591,7 +591,7 @@
             </phrase>
             <phrase id="15001">
                 <text>agr_factory_krot_start_15001</text>
-                <action>agroprom_dialog.give_krot_reward</action>
+                <action>dialogs_agroprom.give_krot_reward</action>
                 <give_info>agr_krot_secret_info</give_info>
                 <next>3001</next>
             </phrase>
