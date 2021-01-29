@@ -1,0 +1,753 @@
+* Detected CPU: GenuineIntel P3 family, F6/M10/S7, 1994.00 mhz, 28-clk 'rdtsc'
+* CPU Features: RDTSC, MMX, SSE, SSE2
+
+Initializing File System...
+using fs-ltx fsgame.ltx
+FS: 28226 files cached, 4316Kb memory used.
+Init FileSystem 3.158358 sec
+'Core' build 8026, Jan 27 2021
+
+CRT heap 0x00c80000
+Process heap 0x00c80000
+Initializing Engine...
+Executing config-script "user.ltx"...
+[..\app_data\user.ltx] successfully loaded.
+Starting INPUT device...
+Loading DLL: xrRender_R1.dll
+Loading DLL: xrGame.dll
+* [win32]: free[4034804 K], reserved[42884 K], committed[116552 K]
+* [ D3D ]: textures[0 K]
+* [x-ray]: process heap[6745 K]
+* [x-ray]: economy: strings[909 K], smem[0 K]
+* [x-ray]: file mapping: memory[0 K], count[0]
+* active file mappings (0):
+Executing config-script "c:\engine\shb-engine\debug-win32\..\gamedata\config\default_controls.ltx"...
+! cant convert dik_name for dik[144], prop=[
+[c:\engine\shb-engine\debug-win32\..\gamedata\config\default_controls.ltx] successfully loaded.
+Executing config-script "user.ltx"...
+Executing config-script "c:\engine\shb-engine\debug-win32\..\gamedata\config\rspec_minimum.ltx"...
+[c:\engine\shb-engine\debug-win32\..\gamedata\config\rspec_minimum.ltx] successfully loaded.
+Executing config-script "c:\engine\shb-engine\debug-win32\..\gamedata\config\default_controls.ltx"...
+[c:\engine\shb-engine\debug-win32\..\gamedata\config\default_controls.ltx] successfully loaded.
+[..\app_data\user.ltx] successfully loaded.
+SOUND: OpenAL: enumerate devices...
+SOUND: OpenAL: EnumerationExtension Present
+devices Generic Software
+SOUND: OpenAL: system  default SndDevice name is Generic Software
+SOUND: OpenAL: All available devices:
+1. Generic Software, Spec Version 1.1 (default)
+SOUND: OpenAL: SelectBestDevice is Generic Software 1.1
+SOUND: OpenAL: Required device: Generic Software. Created device: Generic Software.
+* sound: EAX 2.0 extension: absent
+* sound: EAX 2.0 deferred: absent
+* sound : cache: 32773 kb, 3805 lines, 8820 bpl
+Starting RENDER device...
+* GPU [vendor:10DE]-[device:1050]: NVIDIA GeForce GT 520M
+* GPU driver: 21.21.13.7654
+Available video modes[4]:
+[800x600]
+[1024x768]
+[1280x720]
+[1366x768]
+* CREATE: DeviceREF: 1
+* Vertex Processor: PURE HARDWARE
+*     Texture memory: 4092 M
+*          DDI-level: 9.0
+* GPU shading: vs(fffe0300/3.0/30), ps(ffff0300/3.0/30)
+* GPU vertex cache: recognized, 24
+* DVB created: 1536K
+* DIB created: 512K
+count of .thm files=1
+load time=173 ms
+* distortion: used, dev(30),need(14)
+* SSample: 800x600
+* created RT($user$rendertarget), 800x600
+* created RT($user$distort), 800x600
+* SSample: enabled
+Script debugger succesfully restarted.
+Starting engine...
+pause [ON] timer=[OFF] sound=[ON] reason=mm_activate1
+snd_emitters_[true] 2
+pause [ON] timer=[ON] sound=[OFF] reason=mm_activate2
+pause [OFF] timer=[ON] sound=[OFF] reason=mm_deactivate1
+pause [OFF] timer=[OFF] sound=[ON] reason=mm_deactivate2
+snd_emitters_[false] 1
+*ref -CRenderDevice::ResetTotal: DeviceREF: 93
+* DVB created: 1536K
+* DIB created: 512K
+* SSample: 800x600
+* created RT($user$rendertarget), 800x600
+* created RT($user$distort), 800x600
+* SSample: enabled
+* GPU shading: vs(fffe0300/3.0/30), ps(ffff0300/3.0/30)
+* GPU vertex cache: recognized, 24
+*** RESET [39 ms]
+*ref +CRenderDevice::ResetTotal: DeviceREF: 92
+"c:\engine\shb-engine\sources\..\debug-win32\binaries\engine.exe" 
+* phase time: 14 ms
+* phase cmem: 62645 K
+Сервер: Старт...
+* sv_Connect: all/single/alife/new
+* Created server_game single
+* Initializing game script process
+* phase time: 699 ms
+* phase cmem: 64179 K
+Сервер: Загрузка симуляции жизни...
+* phase time: 16 ms
+* phase cmem: 64179 K
+Создание новой игры...
+* Creating new game...
+* Loading spawn registry...
+* 8641 spawn points are successfully loaded
+* Loading ai space is successfully completed (0.798s,  13.157 Mb)
+* Saving spawns...
+* Saving objects...
+* 16818 objects are successfully saved
+* Game all.sav is successfully saved to file '..\app_data\savedgames\all.sav' (3551468 bytes compressed to 894226)
+* New game is successfully created!
+* Loading alife simulator is successfully completed ( 56.793 Mb)
+* phase time: 53958 ms
+* phase cmem: 122335 K
+Сервер: Соединяемся...
+* phase time: 184 ms
+* phase cmem: 122448 K
+Клиент: Соединение с localhost...
+# Player not found. New player created.
+* client : connection accepted - <>
+* phase time: 188 ms
+* phase cmem: 122456 K
+Открытие потока...
+* phase time: 26 ms
+* phase cmem: 122456 K
+Загрузка формы объектов...
+* phase time: 19326 ms
+* phase cmem: 195134 K
+Загрузка шейдеров...
+* created RT($user$shadow), 512x512
+* created RT($user$temp), 512x512
+* created RT($user$projector), 512x512
+* phase time: 2118 ms
+* phase cmem: 196380 K
+Загрузка геометрии...
+* [Loading VB] 65532 verts, 2047 Kb
+* [Loading VB] 65525 verts, 2047 Kb
+* [Loading VB] 65535 verts, 2047 Kb
+* [Loading VB] 65466 verts, 2045 Kb
+* [Loading VB] 17208 verts, 537 Kb
+* [Loading VB] 65533 verts, 2047 Kb
+* [Loading VB] 65534 verts, 2047 Kb
+* [Loading VB] 65534 verts, 2047 Kb
+* [Loading VB] 65531 verts, 2047 Kb
+* [Loading VB] 65535 verts, 2047 Kb
+* [Loading VB] 65535 verts, 2047 Kb
+* [Loading VB] 46595 verts, 1456 Kb
+* [Loading VB] 65534 verts, 2047 Kb
+* [Loading VB] 65533 verts, 2047 Kb
+* [Loading VB] 65535 verts, 2047 Kb
+* [Loading VB] 65532 verts, 2047 Kb
+* [Loading VB] 65533 verts, 2047 Kb
+* [Loading VB] 65533 verts, 2047 Kb
+* [Loading VB] 53181 verts, 1661 Kb
+* [Loading IB] 1048575 indices, 2047 Kb
+* [Loading IB] 1048572 indices, 2047 Kb
+* [Loading IB] 1048572 indices, 2047 Kb
+* [Loading IB] 1048572 indices, 2047 Kb
+* [Loading IB] 1048572 indices, 2047 Kb
+* [Loading IB] 1048572 indices, 2047 Kb
+* [Loading IB] 1048575 indices, 2047 Kb
+* [Loading IB] 1048572 indices, 2047 Kb
+* [Loading IB] 1048575 indices, 2047 Kb
+* [Loading IB] 228285 indices, 445 Kb
+* phase time: 410 ms
+* phase cmem: 252121 K
+Загрузка базы пространств...
+* phase time: 27042 ms
+* phase cmem: 255988 K
+Загрузка детальных объектов...
+* [DETAILS] VertexConsts(256), Batch(61)
+* [DETAILS] 40687 v(20), 26352 p
+* [DETAILS] Batch(61), VB(794K), IB(154K)
+* phase time: 255 ms
+* phase cmem: 256975 K
+Загрузка секторов и порталов...
+* Loading HOM: c:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\level.hom
+* phase time: 207 ms
+* phase cmem: 257134 K
+Загрузка ИИ объектов...
+- Loading music tracks from 'l01_escape_musics'...
+* Initializing level script process
+* phase time: 263 ms
+* phase cmem: 257190 K
+Клиент: Создание...
+_our = 0
+_him = 0
+- Game configuring : Started 
+- Game configuring : Finished 
+ --incorrect global rect definition for map [l08u_brainlab]  kw=0.006669 kh=0.031627
+ --try x2=181.484863 or  y2=1612.421753
+ --error-incorrect map definition global rect of map [l12u_control_monolith] intersects with [l12_stancia]
+ --error-incorrect map definition global rect of map [l12u_control_monolith] intersects with [l12_stancia_2]
+ --error-incorrect map definition global rect of map [l12u_control_monolith] intersects with [l12u_sarcofag]
+ --error-incorrect map definition global rect of map [l03u_agr_underground] intersects with [l03_agroprom]
+ --error-incorrect map definition global rect of map [l01_escape] intersects with [l04_darkvalley]
+ --error-incorrect map definition global rect of map [l05_bar] intersects with [l06_rostok]
+ --error-incorrect map definition global rect of map [l07_military] intersects with [l10_radar]
+ --error-incorrect map definition global rect of map [l08_yantar] intersects with [l08u_brainlab]
+ --error-incorrect map definition global rect of map [l10_radar] intersects with [l10u_bunker]
+ --error-incorrect map definition global rect of map [l12_stancia] intersects with [l12_stancia_2]
+ --error-incorrect map definition global rect of map [l12_stancia] intersects with [l12u_sarcofag]
+ --error-incorrect map definition global rect of map [l12_stancia_2] intersects with [l12u_sarcofag]
+ --incorrect global rect definition for map [l08u_brainlab]  kw=0.006669 kh=0.031627
+ --try x2=181.484863 or  y2=1612.421753
+ --error-incorrect map definition global rect of map [l12u_control_monolith] intersects with [l12_stancia]
+ --error-incorrect map definition global rect of map [l12u_control_monolith] intersects with [l12_stancia_2]
+ --error-incorrect map definition global rect of map [l12u_control_monolith] intersects with [l12u_sarcofag]
+ --error-incorrect map definition global rect of map [l03u_agr_underground] intersects with [l03_agroprom]
+ --error-incorrect map definition global rect of map [l01_escape] intersects with [l04_darkvalley]
+ --error-incorrect map definition global rect of map [l05_bar] intersects with [l06_rostok]
+ --error-incorrect map definition global rect of map [l07_military] intersects with [l10_radar]
+ --error-incorrect map definition global rect of map [l08_yantar] intersects with [l08u_brainlab]
+ --error-incorrect map definition global rect of map [l10_radar] intersects with [l10u_bunker]
+ --error-incorrect map definition global rect of map [l12_stancia] intersects with [l12_stancia_2]
+ --error-incorrect map definition global rect of map [l12_stancia] intersects with [l12u_sarcofag]
+ --error-incorrect map definition global rect of map [l12_stancia_2] intersects with [l12u_sarcofag]
+* phase time: 3798 ms
+* phase cmem: 264893 K
+Загрузка текстур...
+* t-report - base: 630, 41968 K
+* t-report - lmap: 10, 10241 K
+***FATAL***: Too many lmap-textures (limit: 8 textures or 32M).
+        Reduce pixel density (worse) or use more vertex lighting (better).
+* phase time: 10107 ms
+* phase cmem: 328473 K
+Клиент: Синхронизация...
+* phase time: 88 ms
+* phase cmem: 328473 K
+* [win32]: free[3483640 K], reserved[188600 K], committed[522000 K]
+* [ D3D ]: textures[52209 K]
+* [x-ray]: process heap[328473 K]
+* [x-ray]: economy: strings[3081 K], smem[0 K]
+* [x-ray]: file mapping: memory[31835 K], count[4]
+* active file mappings (4):
+* [0x0dbe0000][8128486][c:\engine\shb-engine\debug-win32\..\gamedata\game.graph]
+* [0x0ed20000][3573054][c:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\level.gct]
+* [0x15fd0000][12505535][c:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\level.ai]
+* [0x1fa50000][8392388][c:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\level.details]
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\actors\hero\stalker_novice.ogf
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#0.ogf
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#1.ogf
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#2.ogf
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#3.ogf
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#4.ogf
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#5.ogf
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#6.ogf
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#7.ogf
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#8.ogf
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#9.ogf
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#10.ogf
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#11.ogf
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#12.ogf
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#13.ogf
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#14.ogf
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#15.ogf
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#16.ogf
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#17.ogf
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#18.ogf
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#19.ogf
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#20.ogf
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#21.ogf
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#22.ogf
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#23.ogf
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#24.ogf
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#25.ogf
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#26.ogf
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#27.ogf
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#28.ogf
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#29.ogf
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#30.ogf
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#31.ogf
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#32.ogf
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#33.ogf
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#34.ogf
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#35.ogf
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#36.ogf
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#37.ogf
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#38.ogf
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#39.ogf
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#40.ogf
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#41.ogf
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#42.ogf
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#43.ogf
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#44.ogf
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#45.ogf
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#46.ogf
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#47.ogf
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#48.ogf
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\equipments\item_datchik1.ogf
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\equipments\light_night.ogf
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\equipments\novice_suit.ogf
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\weapons\binoculars\wpn_binoculars.ogf
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\weapons\binoculars\wpn_binoculars_hud.ogf
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\equipments\item_pda.ogf
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\physics\decor\ventilator_01.ogf
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\physics\decor\priemnik_gorizont.ogf
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\physics\box\box_1a.ogf
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\physics\balon\balon_01.ogf
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\weapons\groza\wpn_groza.ogf
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\equipments\item_transiver.ogf
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\equipments\stalker_killer_suit.ogf
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\physics\decor\tv_1.ogf
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\physics\decor\tiski.ogf
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\physics\door\door_trader.ogf
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\physics\door\door_traders_box.ogf
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\physics\light\lampa_01_on.ogf
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\actors\trader\trader.ogf
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\weapons\ammo\ammo_9x18_fmj.ogf
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\weapons\pm\wpn_pm.ogf
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\weapons\pm\wpn_pm_hud.ogf
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\weapons\knife\wpn_knife.ogf
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\weapons\knife\wpn_knife_hud.ogf
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\equipments\item_notebook.ogf
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\monsters\flesh\flesh.ogf
+correction attempts 1
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\equipments\item_flesh_eye.ogf
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\actors\novice\green_stalker_3.ogf
+- There are no sounds with prefix fight\death\anomaly_
+- There are no sounds with prefix fight\friendly_grenade\friendly_grenade_
+- There are no sounds with prefix talk\stories\legend005_part_
+- There are no sounds with prefix reactions\story\disbelief_story_
+- There are no sounds with prefix talk\use\yes_sleep_
+- There are no sounds with prefix reactions\story\old_story_
+- There are no sounds with prefix weather\bad_weather\bad_weather_
+- There are no sounds with prefix reactions\story\action_wrong_
+- There are no sounds with prefix reactions\story\disbelief_teller_
+- There are no sounds with prefix reactions\see_something\see_
+- There are no sounds with prefix reactions\story\continue_
+- There are no sounds with prefix talk\stories\legend003_part_
+- There are no sounds with prefix help\wounded_psy\psy_
+- There are no sounds with prefix threat\stop\stop_
+- There are no sounds with prefix talk\trade\no\no_
+- There are no sounds with prefix reactions\story\wonder_
+- There are no sounds with prefix reactions\story\cool_teller_
+- There are no sounds with prefix reactions\story\advice_sceptic_
+- There are no sounds with prefix talk\stories\legend002_part_
+- There are no sounds with prefix talk\stories\story006_part_
+- There are no sounds with prefix reactions\story\yes_
+- There are no sounds with prefix talk\stories\story002_part_
+- There are no sounds with prefix help\wounded_not_see_helper\help_
+- There are no sounds with prefix help\wounded_see_helper\help_
+- There are no sounds with prefix help\wounded_psy\suicide_
+- There are no sounds with prefix reactions\story\disbelief_
+- There are no sounds with prefix reactions\nothing\nothing_
+- There are no sounds with prefix talk\stories\legend001_part_
+- There are no sounds with prefix talk\use\yes_default_
+- There are no sounds with prefix talk\stories\story005_part_
+- There are no sounds with prefix hail\deleted_
+- There are no sounds with prefix reactions\story\final_happy_
+- There are no sounds with prefix talk\stories\legend004_part_
+- There are no sounds with prefix reactions\story\cool_info_
+- There are no sounds with prefix talk\use\yes_fight_
+- There are no sounds with prefix reactions\story\final_tragic_
+- There are no sounds with prefix waiting\wait_
+- There are no sounds with prefix talk\stories\story003_part_
+- There are no sounds with prefix reactions\story\belief_story_
+- There are no sounds with prefix reactions\story\fear_
+- There are no sounds with prefix talk\stories\story001_part_
+- There are no sounds with prefix reactions\story\action_right_
+- There are no sounds with prefix scenario\bar\barman\bar_barman_psycho_
+- There are no sounds with prefix talk\rejection\rejection_2
+- There are no sounds with prefix help\not_wounded\help_
+- There are no sounds with prefix reactions\story\uncertain_
+- There are no sounds with prefix reactions\story\doubt_
+- There are no sounds with prefix reactions\story\advice_support_
+- There are no sounds with prefix talk\stories\story004_part_
+- There are no sounds with prefix talk\use\yes_kamp_
+- There are no sounds with prefix talk\trade\yes\yes_
+correction attempts 1
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\weapons\ammo\ammo_12x70_buck.ogf
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\equipments\drink_nonstop.ogf
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\equipments\item_harmonica.ogf
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\weapons\kolbasa\kolbasa.ogf
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\weapons\bm_16\wpn_bm-16.ogf
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\weapons\bm_16\wpn_bm-16_hud.ogf
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\food\conserv1.ogf
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\actors\novice\green_stalker_4.ogf
+- There are no sounds with prefix fight\death\anomaly_
+- There are no sounds with prefix fight\friendly_grenade\friendly_grenade_
+- There are no sounds with prefix reactions\story\disbelief_story_
+- There are no sounds with prefix talk\use\yes_sleep_
+- There are no sounds with prefix reactions\story\old_story_
+- There are no sounds with prefix weather\bad_weather\bad_weather_
+- There are no sounds with prefix reactions\story\action_wrong_
+- There are no sounds with prefix reactions\story\disbelief_teller_
+- There are no sounds with prefix reactions\story\continue_
+- There are no sounds with prefix fight\attack\attack_5
+- There are no sounds with prefix reactions\story\wonder_
+- There are no sounds with prefix reactions\story\cool_teller_
+- There are no sounds with prefix reactions\story\advice_sceptic_
+- There are no sounds with prefix reactions\story\yes_
+- There are no sounds with prefix reactions\story\disbelief_
+- There are no sounds with prefix talk\use\yes_default_
+- There are no sounds with prefix hail\deleted_
+- There are no sounds with prefix reactions\story\final_happy_
+- There are no sounds with prefix reactions\story\cool_info_
+- There are no sounds with prefix talk\use\yes_fight_
+- There are no sounds with prefix reactions\story\final_tragic_
+- There are no sounds with prefix reactions\story\belief_story_
+- There are no sounds with prefix reactions\story\fear_
+- There are no sounds with prefix reactions\story\action_right_
+- There are no sounds with prefix reactions\story\uncertain_
+- There are no sounds with prefix reactions\story\doubt_
+- There are no sounds with prefix reactions\story\advice_support_
+- There are no sounds with prefix talk\use\yes_kamp_
+correction attempts 1
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\equipments\item_bandage.ogf
+correction attempts 1
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\weapons\bred\bred.ogf
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\equipments\item_guitar.ogf
+correction attempts 1
+correction attempts 1
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\weapons\vodka\vodka.ogf
+correction attempts 1
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\actors\novice\green_stalker_5.ogf
+- There are no sounds with prefix fight\death\anomaly_
+- There are no sounds with prefix fight\friendly_grenade\friendly_grenade_
+- There are no sounds with prefix talk\stories\legend005_part_
+- There are no sounds with prefix reactions\story\disbelief_story_
+- There are no sounds with prefix talk\use\yes_sleep_
+- There are no sounds with prefix reactions\story\old_story_
+- There are no sounds with prefix weather\bad_weather\bad_weather_
+- There are no sounds with prefix reactions\story\action_wrong_
+- There are no sounds with prefix reactions\story\disbelief_teller_
+- There are no sounds with prefix reactions\see_something\see_
+- There are no sounds with prefix reactions\story\continue_
+- There are no sounds with prefix talk\stories\legend003_part_
+- There are no sounds with prefix fight\attack\attack_5
+- There are no sounds with prefix help\wounded_psy\psy_
+- There are no sounds with prefix threat\stop\stop_
+- There are no sounds with prefix talk\trade\no\no_
+- There are no sounds with prefix reactions\story\wonder_
+- There are no sounds with prefix reactions\story\cool_teller_
+- There are no sounds with prefix reactions\story\advice_sceptic_
+- There are no sounds with prefix talk\stories\legend002_part_
+- There are no sounds with prefix talk\stories\story006_part_
+- There are no sounds with prefix reactions\story\yes_
+- There are no sounds with prefix talk\stories\story002_part_
+- There are no sounds with prefix help\wounded_not_see_helper\help_
+- There are no sounds with prefix help\wounded_see_helper\help_
+- There are no sounds with prefix help\wounded_psy\suicide_
+- There are no sounds with prefix reactions\story\disbelief_
+- There are no sounds with prefix reactions\nothing\nothing_
+- There are no sounds with prefix talk\stories\legend001_part_
+- There are no sounds with prefix talk\use\yes_default_
+- There are no sounds with prefix talk\stories\story005_part_
+- There are no sounds with prefix hail\deleted_
+- There are no sounds with prefix reactions\story\final_happy_
+- There are no sounds with prefix talk\stories\legend004_part_
+- There are no sounds with prefix reactions\story\cool_info_
+- There are no sounds with prefix talk\use\yes_fight_
+- There are no sounds with prefix reactions\story\final_tragic_
+- There are no sounds with prefix waiting\wait_
+- There are no sounds with prefix talk\stories\story003_part_
+- There are no sounds with prefix reactions\story\belief_story_
+- There are no sounds with prefix reactions\story\fear_
+- There are no sounds with prefix talk\stories\story001_part_
+- There are no sounds with prefix reactions\story\action_right_
+- There are no sounds with prefix talk\rejection\rejection_2
+- There are no sounds with prefix help\not_wounded\help_
+- There are no sounds with prefix reactions\story\uncertain_
+- There are no sounds with prefix reactions\story\doubt_
+- There are no sounds with prefix reactions\story\advice_support_
+- There are no sounds with prefix talk\stories\story004_part_
+- There are no sounds with prefix talk\use\yes_kamp_
+- There are no sounds with prefix talk\trade\yes\yes_
+correction attempts 1
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\actors\neytral\stalker_neytral_balon_1.ogf
+correction attempts 1
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\weapons\ammo\ammo_545x39_fmj.ogf
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\equipments\item_fmradio.ogf
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\weapons\ak-74u\ak74u.ogf
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\weapons\ak-74u\wpn_ak74u_hud.ogf
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\physics\decor\vedro_01.ogf
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\physics\small_trash\doski_br_02.ogf
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\physics\vehicles\mi24\veh_mi24_u_01.ogf
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\physics\large_trash\poddon.ogf
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\physics\dead_body\skelet_combine_pose_06.ogf
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\physics\rope\rope_01.ogf
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\physics\stul\stul_wood_01.ogf
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\physics\decor\teapot_1.ogf
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\actors\soldier\soldier_spetsnaz.ogf
+- There are no sounds with prefix fight\death\anomaly_
+- There are no sounds with prefix fight\friendly_grenade\friendly_grenade_
+- There are no sounds with prefix reactions\box\box_
+- There are no sounds with prefix weather\bad_weather\bad_weather_
+- There are no sounds with prefix fight\attack\attack_5
+- There are no sounds with prefix hail\deleted_
+- There are no sounds with prefix help\wounded_thanx\thanx_
+correction attempts 1
+correction attempts 1
+correction attempts 1
+correction attempts 1
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\equipments\item_aptechka.ogf
+correction attempts 1
+correction attempts 1
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\actors\soldier\soldier_obichniy.ogf
+- There are no sounds with prefix fight\death\anomaly_
+- There are no sounds with prefix fight\friendly_grenade\friendly_grenade_
+- There are no sounds with prefix reactions\box\box_
+- There are no sounds with prefix weather\bad_weather\bad_weather_
+- There are no sounds with prefix fight\attack\attack_5
+- There are no sounds with prefix hail\deleted_
+- There are no sounds with prefix help\wounded_thanx\thanx_
+correction attempts 1
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\actors\soldier\soldier_bandana_5.ogf
+correction attempts 1
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\actors\soldier\soldier_bandana.ogf
+correction attempts 1
+correction attempts 1
+correction attempts 1
+correction attempts 1
+correction attempts 1
+correction attempts 1
+correction attempts 1
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\actors\soldier\soldier_beret_1.ogf
+correction attempts 1
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\physics\decor\rupor.ogf
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\actors\bandit\stalker_bandit_3.ogf
+- There are no sounds with prefix fight\fire\fire_,fight\threat\threat_distant_
+- There are no sounds with prefix fight\threat\threat_distant_
+- There are no sounds with prefix fight\enemy_hit\enemy_hit_
+- There are no sounds with prefix fight\enemy_down\enemy_down_
+shell for esc_stalker_corpse[572] created in 1.761700 ms
+correction attempts 1
+shell for esc_tutorial_dead_novice[658] created in 2.016800 ms
+correction attempts 1
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\monsters\crow\crow.ogf
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\physics\decor\bottle_bar_stakan.ogf
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\physics\decor\butilka_vodka_01.ogf
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\equipments\drink_nonstop_old.ogf
+shell for esc_stalker_corps1[808] created in 1.716400 ms
+correction attempts 1
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\actors\novice\green_stalker_2.ogf
+- There are no sounds with prefix fight\death\anomaly_
+- There are no sounds with prefix fight\friendly_grenade\friendly_grenade_
+shell for esc_stalker_corps1_0000[810] created in 1.863400 ms
+correction attempts 1
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\actors\neytral\stalker_neytral_balon_8.ogf
+shell for esc_stalker_corps1_0001[812] created in 1.724800 ms
+correction attempts 1
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\actors\novice\green_stalker_1.ogf
+correction attempts 1
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\equipments\item_minipda.ogf
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\actors\bandit\stalker_bandit_4.ogf
+shell for esc_trup_bratka[855] created in 1.821400 ms
+correction attempts 1
+shell for esc_stalker_0000[981] created in 2.065400 ms
+correction attempts 1
+shell for esc_trup_scene[989] created in 1.726600 ms
+correction attempts 1
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\physics\anomaly\artefact_blackdrip.ogf
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\weapons\artefact\wpn_artefact_hud.ogf
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\physics\door\cabinet_village_140x210_ph_door_l.ogf
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\physics\door\cabinet_village_140x210_ph_door_r.ogf
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\physics\box\expl_dinamit.ogf
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\physics\equipment_cache\equipment_instrument_case_01_case.ogf
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\physics\equipment_cache\equipment_box_01_case.ogf
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\physics\equipment_cache\equipment_rucksack_01_case.ogf
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\physics\box\box_wood_01.ogf
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\physics\box\box_metall_01.ogf
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\physics\box\box_wood_tara.ogf
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\physics\decor\tv_1_br.ogf
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\physics\decor\ognetushitel.ogf
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\physics\balon\bochka_close_3.ogf
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\physics\balon\bochka_close_1.ogf
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\physics\balon\balon_02.ogf
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\physics\decor\kitchen_lojka.ogf
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\physics\decor\kitchen_krujka.ogf
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\physics\small_trash\wood_board_br_01.ogf
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\physics\small_trash\wood_board_br_01a.ogf
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\physics\small_trash\wood_board_br_01b.ogf
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\physics\decor\fire_vedro.ogf
+Game Task [storyline_eliminate_gunslinger] has no priority
+* xrSheduler: too much time consumed by object [alife_simulator] (474ms)
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\weapons\bolt\wpn_bolt.ogf
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\weapons\bolt\wpn_bolt_hud.ogf
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\weapons\rpg_7\wpn_rpg_7_grenade.ogf
+* xrSheduler: too much time consumed by object [esc_blokpost_soldier3] (67ms)
+* xrSheduler: too much time consumed by object [device_pda0068] (30ms)
+* xrSheduler: too much time consumed by object [esc_lager5] (48ms)
+cl setDestroy [659][866]
+* xrSheduler: too much time consumed by object [esc_specnaz3] (60ms)
+* xrSheduler: too much time consumed by object [level_prefix_inventory_box_0017] (23ms)
+* xrSheduler: too much time consumed by object [level_prefix_physic_destroyable_object_0005] (33ms)
+* MEMORY USAGE: 402925 K
+~ Invalid syntax in call to 'r__tf_aniso'
+~ Valid arguments: integer value in range [1,16]
+- Play music track: music\amb01
+* xrSheduler: too much time consumed by object [esc_stalker_0000] (36ms)
+cl setDestroy [990][879]
+cl setDestroy [982][879]
+cl setDestroy [983][879]
+cl setDestroy [984][879]
+cl setDestroy [985][879]
+cl setDestroy [986][879]
+cl setDestroy [987][879]
+* xrSheduler: too much time consumed by object [esc_stalker_corpse] (17ms)
+cl setDestroy [573][881]
+cl setDestroy [574][881]
+cl setDestroy [575][881]
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\weapons\grenade\wpn_rgd_5.ogf
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\weapons\grenade\wpn_rgd_5_hud.ogf
+* xrSheduler: too much time consumed by object [esc_matugalnik] (46ms)
+* xrSheduler: too much time consumed by object [escape_trader] (104ms)
+cl setDestroy [90][884]
+cl setDestroy [91][884]
+cl setDestroy [93][884]
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\equipments\item_antirad.ogf
+* WARNING: c_EVENT[18] to [91]: unknown dest
+* xrSheduler: too much time consumed by object [esc_heli] (23ms)
+* xrSheduler: too much time consumed by object [door0002] (17ms)
+cl setDestroy [856][890]
+cl setDestroy [813][892]
+cl setDestroy [811][893]
+cl setDestroy [809][893]
+* xrSheduler: too much time consumed by object [esc_lager6] (21ms)
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\monsters\dog\dog.ogf
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\monsters\dog\dog_white.ogf
+correction attempts 1
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\monsters\dog\dog_bulterier.ogf
+correction attempts 1
+correction attempts 1
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\equipments\item_dog_tail.ogf
+correction attempts 1
+* xrSheduler: too much time consumed by object [escape_trader] (46ms)
+* xrSheduler: too much time consumed by object [esc_shustryi] (44ms)
+* xrSheduler: too much time consumed by object [esc_matugalnik] (33ms)
+* xrSheduler: too much time consumed by object [esc_blokpost_soldier5] (17ms)
+* xrSheduler: too much time consumed by object [escape_trader] (20ms)
+* xrSheduler: too much time consumed by object [esc_lager6] (33ms)
+* xrSheduler: too much time consumed by object [esc_matugalnik] (19ms)
+[LSS][1716] Going offline [304582][esc_dog_swarm_0001][581] ([-246.726288][-24.793287][-134.433868] : [77.444466][-0.567289][530.399902]), on '*SERVER*'
+[LSS][1716] Going offline [304582][esc_dog_swarm_0002][582] ([-246.726288][-24.793287][-134.433868] : [77.450630][-1.047186][520.904724]), on '*SERVER*'
+[LSS][1716] Going offline [304582][esc_dog_swarm_0004][583] ([-246.726288][-24.793287][-134.433868] : [64.440071][-1.394388][529.610168]), on '*SERVER*'
+[LSS][1716] Going offline [304582][mutant_dog_tail0584][584] with parent [583][esc_dog_swarm_0004] on '*SERVER*'
+[LSS][1716] Going offline [304582][esc_dog_swarm_0007][585] ([-246.726288][-24.793287][-134.433868] : [77.590843][-1.223264][517.728638]), on '*SERVER*'
+[LSS][1716] Going offline [304582][mutant_dog_tail0586][586] with parent [585][esc_dog_swarm_0007] on '*SERVER*'
+cl setDestroy [581][1717]
+cl setDestroy [582][1717]
+cl setDestroy [584][1717]
+cl setDestroy [583][1717]
+cl setDestroy [586][1717]
+cl setDestroy [585][1717]
+dumping client spawn manager stuff for object with id 585
+dumping client spawn manager stuff for object with id 583
+dumping client spawn manager stuff for object with id 582
+dumping client spawn manager stuff for object with id 581
+* xrSheduler: too much time consumed by object [esc_blokpost_soldier4] (16ms)
+* xrSheduler: too much time consumed by object [esc_matugalnik] (20ms)
+* xrSheduler: too much time consumed by object [esc_lager7] (34ms)
+correction attempts 1
+correction attempts 1
+correction attempts 1
+correction attempts 1
+* xrSheduler: too much time consumed by object [esc_matugalnik] (20ms)
+* xrSheduler: too much time consumed by object [esc_wolf] (16ms)
+* xrSheduler: too much time consumed by object [esc_matugalnik] (22ms)
+[LSS][2587] Going offline [398118][esc_dog_swarm_0001][581] ([-246.726303][-24.793287][-134.433868] : [138.273071][2.875328][402.424377]), on '*SERVER*'
+[LSS][2587] Going offline [398118][esc_dog_swarm_0002][582] ([-246.726303][-24.793287][-134.433868] : [130.879333][3.255275][397.668884]), on '*SERVER*'
+[LSS][2587] Going offline [398118][esc_dog_swarm_0004][583] ([-246.726303][-24.793287][-134.433868] : [143.535919][2.419213][423.941467]), on '*SERVER*'
+[LSS][2587] Going offline [398118][mutant_dog_tail0584][584] with parent [583][esc_dog_swarm_0004] on '*SERVER*'
+[LSS][2587] Going offline [398118][esc_dog_swarm_0007][585] ([-246.726303][-24.793287][-134.433868] : [144.077499][2.401237][423.363739]), on '*SERVER*'
+[LSS][2587] Going offline [398118][mutant_dog_tail0586][586] with parent [585][esc_dog_swarm_0007] on '*SERVER*'
+cl setDestroy [581][2588]
+cl setDestroy [582][2588]
+cl setDestroy [584][2588]
+cl setDestroy [583][2588]
+cl setDestroy [586][2588]
+cl setDestroy [585][2588]
+dumping client spawn manager stuff for object with id 585
+dumping client spawn manager stuff for object with id 583
+dumping client spawn manager stuff for object with id 582
+dumping client spawn manager stuff for object with id 581
+* xrSheduler: too much time consumed by object [particle_instance] (18ms)
+* xrSheduler: too much time consumed by object [esc_matugalnik] (23ms)
+* xrSheduler: too much time consumed by object [escape_trader] (37ms)
+correction attempts 1
+correction attempts 1
+correction attempts 1
+correction attempts 1
+* xrSheduler: too much time consumed by object [esc_matugalnik] (22ms)
+* xrSheduler: too much time consumed by object [esc_dogs_swarm] (20ms)
+* xrSheduler: too much time consumed by object [esc_blokpost_soldier4] (42ms)
+* xrSheduler: too much time consumed by object [esc_surprise_box_013_0003] (35ms)
+* xrSheduler: too much time consumed by object [esc_matugalnik] (22ms)
+* xrSheduler: too much time consumed by object [esc_specnaz2] (17ms)
+[LSS][4360] Going offline [582534][esc_dog_swarm_0001][581] ([-246.726303][-24.793289][-134.433868] : [76.466309][2.493369][564.714905]), on '*SERVER*'
+[LSS][4360] Going offline [582534][esc_dog_swarm_0002][582] ([-246.726303][-24.793289][-134.433868] : [79.847412][4.131675][577.149414]), on '*SERVER*'
+[LSS][4360] Going offline [582534][esc_dog_swarm_0004][583] ([-246.726303][-24.793289][-134.433868] : [70.829056][5.351418][587.760925]), on '*SERVER*'
+[LSS][4360] Going offline [582534][mutant_dog_tail0584][584] with parent [583][esc_dog_swarm_0004] on '*SERVER*'
+[LSS][4360] Going offline [582534][esc_dog_swarm_0007][585] ([-246.726303][-24.793289][-134.433868] : [74.388252][3.963254][577.080322]), on '*SERVER*'
+[LSS][4360] Going offline [582534][mutant_dog_tail0586][586] with parent [585][esc_dog_swarm_0007] on '*SERVER*'
+cl setDestroy [581][4361]
+cl setDestroy [582][4361]
+cl setDestroy [584][4361]
+cl setDestroy [583][4361]
+cl setDestroy [586][4361]
+cl setDestroy [585][4361]
+dumping client spawn manager stuff for object with id 585
+dumping client spawn manager stuff for object with id 583
+dumping client spawn manager stuff for object with id 582
+dumping client spawn manager stuff for object with id 581
+* xrSheduler: too much time consumed by object [esc_matugalnik] (21ms)
+correction attempts 1
+correction attempts 1
+correction attempts 1
+correction attempts 1
+* xrSheduler: too much time consumed by object [esc_dog_swarm_0001] (40ms)
+* xrSheduler: too much time consumed by object [esc_lager1] (41ms)
+* xrSheduler: too much time consumed by object [esc_dog_swarm_0001] (41ms)
+[0]=[dm_hello_dialog]
+[1]=[dm_trade_info_dialog]
+[2]=[dm_action_info_dialog]
+[3]=[dm_cool_info_dialog]
+[4]=[dm_help_wounded_medkit_dialog]
+[5]=[tm_trader_dialog]
+[6]=[tm_trader_reward]
+[7]=[tm_barman_dialog]
+[8]=[tm_barman_reward]
+[9]=[tm_ecolog_dialog]
+[10]=[tm_ecolog_reward]
+[11]=[tm_dolg_dialog]
+[12]=[tm_dolg_reward]
+[13]=[tm_freedom_dialog]
+[14]=[tm_freedom_reward]
+[15]=[tm_shustriy_dialog]
+[16]=[tm_shustriy_reward]
+[17]=[tm_wolf_dialog]
+[18]=[tm_wolf_reward]
+[19]=[tm_lisiy_dialog]
+[20]=[tm_lisiy_reward]
+[21]=[tm_mercenary_dialog]
+[22]=[tm_mercenary_reward]
+[23]=[tm_drunk_dolg_dialog]
+[24]=[tm_drunk_dolg_reward]
+[25]=[tm_hunter_dialog]
+[26]=[tm_hunter_reward]
+[27]=[tm_petrenko_dialog]
+[28]=[tm_petrenko_reward]
+[29]=[tm_zastava_commander_dialog]
+[30]=[tm_zastava_commander_reward]
+[31]=[hello_dialog]
+[32]=[actor_help_wounded]
+[33]=[actor_break_dialog]
+ 
+FATAL ERROR
+ 
+[error]Expression    : no_assert
+[error]Function      : CXML_IdToIndex<class CPhraseDialog>::GetById
+[error]File          : c:\engine\shb-engine\sources\xrgame\XML_IdToIndex.h
+[error]Line          : 111
+[error]Description   : item not found, id
+[error]Arguments     : escape_trader_start_dialog
+ 
+

@@ -1,7 +1,6 @@
 <?xml version='1.0' encoding="windows-1251"?>
-
 <xml>
-	<!-------------------------------------- Уникальные профиля --------------------------->
+	<!-- Уникальные профиля -->
 
 	<specific_character id="agr_krot" team_default = "1">
 		<name>agr_krot_name</name>
@@ -14,9 +13,9 @@
 
 		<rank>507</rank>
 		<reputation>49</reputation>
-		
+
 		<money min="600" max="2000" infinitive="0"></money>
-		
+
 		<panic_threshold>0.0</panic_threshold>
 
 		<visual>actors\neytral\stalker_neytral_rukzak_4</visual>
@@ -30,13 +29,13 @@
 			wpn_ak74 = 1\n
 			ammo_5.45x39_ap \n
 			device_torch \n
-		#include "gameplay\character_food.xml"
+			#include "gameplay\character_food.xml"
 		</supplies>
-		
-#include "gameplay\character_criticals_4.xml"
+
+		#include "gameplay\character_criticals_4.xml"
 
 		<start_dialog>agr_krot_help</start_dialog>
-#include "gameplay\character_dialogs.xml"		
+		#include "gameplay\character_dialogs.xml"
 	</specific_character>
 
 	<specific_character id="agr_ratcatcher" team_default = "1">
@@ -48,7 +47,7 @@
 		<class>agr_ratcatcher</class>
 		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
 		<money min="200" max="600" infinitive="0"></money>
-		
+
 		<rank>200</rank>
 		<reputation>-29</reputation>
 
@@ -63,16 +62,16 @@
 			wpn_ak74u \n
 			ammo_5.45x39_fmj = 1 \n
 			device_torch \n
-#include "gameplay\character_drugs.xml" \n
-#include "gameplay\character_food.xml"
+			#include "gameplay\character_drugs.xml" \n
+			#include "gameplay\character_food.xml"
 		</supplies>
-		
-#include "gameplay\character_criticals_4.xml"
-#include "gameplay\character_dialogs.xml"
+
+		#include "gameplay\character_criticals_4.xml"
+		#include "gameplay\character_dialogs.xml"
 		<actor_dialog>agr_swamp_ratcatcher_talks</actor_dialog>
-	
+
 	</specific_character>
-	
+
 	<specific_character id="agr_nii_commander" team_default = "1">
 		<name>GENERATE_NAME_captain</name>
 		<icon>ui_npc_u_soldier_beret</icon>
@@ -86,29 +85,29 @@
 		<rank>950</rank>
 		<reputation>-20</reputation>
 
-		<visual>actors\soldier\soldier_beret</visual>		
+		<visual>actors\soldier\soldier_beret</visual>
 		<snd_config>characters_voice\human_02\military\</snd_config>
 		<crouch_type>0</crouch_type>
 
 		<supplies>
 			[spawn] \n
 			wpn_pm \n
-			ammo_9x18_pmm = 1 \n	
+			ammo_9x18_pmm = 1 \n
 			wpn_ak74u \n
 			ammo_5.45x39_ap = 1 \n
 			device_torch \n
-#include "gameplay\character_drugs.xml"
-#include "gameplay\character_food.xml"
+			#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_food.xml"
 		</supplies>
-		
-#include "gameplay\character_criticals_5.xml"
-#include "gameplay\character_dialogs.xml"		
-		
+
+		#include "gameplay\character_criticals_5.xml"
+		#include "gameplay\character_dialogs.xml"
+
 	</specific_character>
-	
-	
-	
-	<!---------------------------STALKER GENERAL---------------------->
+
+
+
+	<!--STALKER GENERAL-->
 
 	<specific_character id="agr_stalker_general_default1" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
@@ -118,11 +117,11 @@
 
 		<class>agr_Stalker_general</class>
 		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
-		
+
 		<rank>423</rank>
 		<reputation>27</reputation>
 		<money min="600" max="2000" infinitive="0"></money>
-		
+
 		<visual>actors\neytral\stalker_neytral_hood_uzor</visual>
 		<snd_config>characters_voice\human_01\stalker\</snd_config>
 		<crouch_type>-1</crouch_type>
@@ -134,16 +133,16 @@
 			wpn_mp5 \n
 			ammo_9x19_fmj \n
 			device_torch \n
-#include "gameplay\character_drugs.xml"
-#include "gameplay\character_food.xml"
-#include "gameplay\character_items.xml"
+			#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_food.xml"
+			#include "gameplay\character_items.xml"
 		</supplies>
 
-#include "gameplay\character_criticals_4.xml"				
-#include "gameplay\character_dialogs.xml"
+		#include "gameplay\character_criticals_4.xml"
+		#include "gameplay\character_dialogs.xml"
 	</specific_character>
 
-<specific_character id="agr_stalker_general_default2" team_default = "1">
+	<specific_character id="agr_stalker_general_default2" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_neytral_balon_8</icon>
 		<map_icon x="1" y="0"></map_icon>
@@ -151,11 +150,11 @@
 
 		<class>agr_Stalker_general</class>
 		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
-		
+
 		<rank>462</rank>
 		<reputation>42</reputation>
 		<money min="600" max="2000" infinitive="0"></money>
-		
+
 		<visual>actors\neytral\stalker_neytral_balon_8</visual>
 		<snd_config>characters_voice\human_02\stalker\</snd_config>
 		<crouch_type>-1</crouch_type>
@@ -167,16 +166,16 @@
 			wpn_mp5 \n
 			ammo_9x19_fmj = 1 \n
 			device_torch \n
-#include "gameplay\character_drugs.xml"
-#include "gameplay\character_food.xml"
-#include "gameplay\character_items.xml"
+			#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_food.xml"
+			#include "gameplay\character_items.xml"
 		</supplies>
 
-#include "gameplay\character_criticals_4.xml"				
-#include "gameplay\character_dialogs.xml"		
-</specific_character>
+		#include "gameplay\character_criticals_4.xml"
+		#include "gameplay\character_dialogs.xml"
+	</specific_character>
 
-<specific_character id="agr_stalker_general_default3" team_default = "1">
+	<specific_character id="agr_stalker_general_default3" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_neytral_rukzak_2</icon>
 		<map_icon x="1" y="0"></map_icon>
@@ -184,11 +183,11 @@
 
 		<class>agr_Stalker_general</class>
 		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
-		
+
 		<rank>482</rank>
 		<reputation>18</reputation>
 		<money min="600" max="2000" infinitive="0"></money>
-		
+
 		<visual>actors\neytral\stalker_neytral_rukzak_2</visual>
 		<snd_config>characters_voice\human_01\stalker\</snd_config>
 		<crouch_type>-1</crouch_type>
@@ -200,14 +199,14 @@
 			wpn_mp5 \n
 			ammo_9x19_pbp = 1 \n
 			device_torch \n
-#include "gameplay\character_drugs.xml"
-#include "gameplay\character_food.xml"
-#include "gameplay\character_items.xml"
+			#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_food.xml"
+			#include "gameplay\character_items.xml"
 		</supplies>
 
-#include "gameplay\character_criticals_4.xml"
-#include "gameplay\character_dialogs.xml"
-</specific_character>
+		#include "gameplay\character_criticals_4.xml"
+		#include "gameplay\character_dialogs.xml"
+	</specific_character>
 
 	<specific_character id="agr_stalker_general_default4" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
@@ -217,11 +216,11 @@
 
 		<class>agr_Stalker_general</class>
 		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
-		
+
 		<rank>466</rank>
 		<reputation>36</reputation>
 		<money min="600" max="2000" infinitive="0"></money>
-		
+
 		<visual>actors\neytral\stalker_neytral_hood_2</visual>
 		<snd_config>characters_voice\human_02\stalker\</snd_config>
 		<crouch_type>-1</crouch_type>
@@ -233,15 +232,15 @@
 			wpn_ak74u \n
 			ammo_5.45x39_ap = 1 \n
 			device_torch \n
-#include "gameplay\character_drugs.xml"
-#include "gameplay\character_food.xml"
-#include "gameplay\character_items.xml"
+			#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_food.xml"
+			#include "gameplay\character_items.xml"
 		</supplies>
 
-#include "gameplay\character_criticals_4.xml"
-#include "gameplay\character_dialogs.xml"
+		#include "gameplay\character_criticals_4.xml"
+		#include "gameplay\character_dialogs.xml"
 	</specific_character>
-	
+
 	<specific_character id="agr_stalker_general_default5" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_neytral_hood_8</icon>
@@ -250,11 +249,11 @@
 
 		<class>agr_Stalker_general</class>
 		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
-		
+
 		<rank>423</rank>
 		<reputation>23</reputation>
 		<money min="600" max="2000" infinitive="0"></money>
-		
+
 		<visual>actors\neytral\stalker_neytral_hood_8</visual>
 		<snd_config>characters_voice\human_02\stalker\</snd_config>
 		<crouch_type>-1</crouch_type>
@@ -266,13 +265,13 @@
 			wpn_ak74u \n
 			ammo_5.45x39_fmj \n
 			device_torch \n
-#include "gameplay\character_drugs.xml"
-#include "gameplay\character_food.xml"
-#include "gameplay\character_items.xml"
+			#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_food.xml"
+			#include "gameplay\character_items.xml"
 		</supplies>
 
-#include "gameplay\character_criticals_4.xml"
-#include "gameplay\character_dialogs.xml"
+		#include "gameplay\character_criticals_4.xml"
+		#include "gameplay\character_dialogs.xml"
 	</specific_character>
 
 	<specific_character id="agr_stalker_general_default6" team_default = "1">
@@ -283,11 +282,11 @@
 
 		<class>agr_Stalker_general</class>
 		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
-		
+
 		<rank>447</rank>
 		<reputation>33</reputation>
 		<money min="600" max="2000" infinitive="0"></money>
-		
+
 		<visual>actors\neytral\stalker_neytral_rukzak_2</visual>
 		<snd_config>characters_voice\human_01\stalker\</snd_config>
 		<crouch_type>-1</crouch_type>
@@ -299,17 +298,17 @@
 			wpn_mp5 \n
 			ammo_9x19_fmj \n
 			device_torch \n
-#include "gameplay\character_drugs.xml"
-#include "gameplay\character_food.xml"
-#include "gameplay\character_items.xml"
+			#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_food.xml"
+			#include "gameplay\character_items.xml"
 		</supplies>
 
-#include "gameplay\character_criticals_4.xml"
-#include "gameplay\character_dialogs.xml"
+		#include "gameplay\character_criticals_4.xml"
+		#include "gameplay\character_dialogs.xml"
 	</specific_character>
-	
 
-<!---------------------------SOLDIER PRIVATE----------------------->
+
+	<!--SOLDIER PRIVATE-->
 	<specific_character id="agr_soldier_regular_default1" team_default = "1">
 		<name>GENERATE_NAME_private</name>
 		<icon>ui_npc_u_soldier_bandana</icon>
@@ -318,12 +317,12 @@
 
 		<class>agr_Soldier_regular</class>
 		<community>military</community> <terrain_sect>stalker_military_terrain</terrain_sect>
-		
+
 		<rank>211</rank>
 		<reputation>-9</reputation>
 		<money min="200" max="600" infinitive="0"></money>
-		
-		<visual>actors\soldier\soldier_bandana</visual>		
+
+		<visual>actors\soldier\soldier_bandana</visual>
 		<snd_config>characters_voice\human_01\military\</snd_config>
 		<crouch_type>0</crouch_type>
 
@@ -334,13 +333,13 @@
 			wpn_ak74 \n
 			ammo_5.45x39_fmj = 1 \n
 			device_torch \n
-#include "gameplay\character_drugs.xml"
-#include "gameplay\character_food.xml"
-		</supplies>	
+			#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_food.xml"
+		</supplies>
 
-#include "gameplay\character_criticals_5.xml"					
-#include "gameplay\character_dialogs.xml"		
-		
+		#include "gameplay\character_criticals_5.xml"
+		#include "gameplay\character_dialogs.xml"
+
 	</specific_character>
 
 	<specific_character id="agr_soldier_regular_default2" team_default = "1">
@@ -351,12 +350,12 @@
 
 		<class>agr_Soldier_regular</class>
 		<community>military</community> <terrain_sect>stalker_military_terrain</terrain_sect>
-		
+
 		<rank>216</rank>
 		<reputation>-6</reputation>
 		<money min="200" max="600" infinitive="0"></money>
-		
-		<visual>actors\soldier\soldier_bandana_5</visual>		
+
+		<visual>actors\soldier\soldier_bandana_5</visual>
 		<snd_config>characters_voice\human_01\military\</snd_config>
 		<crouch_type>0</crouch_type>
 
@@ -367,13 +366,13 @@
 			wpn_ak74 \n
 			ammo_5.45x39_fmj = 1 \n
 			device_torch \n
-#include "gameplay\character_drugs.xml"
-#include "gameplay\character_food.xml"
+			#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_food.xml"
 		</supplies>
 
-#include "gameplay\character_criticals_5.xml"					
-#include "gameplay\character_dialogs.xml"		
-		
+		#include "gameplay\character_criticals_5.xml"
+		#include "gameplay\character_dialogs.xml"
+
 	</specific_character>
 
 	<specific_character id="agr_soldier_regular_default3" team_default = "1">
@@ -385,11 +384,11 @@
 		<class>agr_Soldier_regular</class>
 		<community>military</community> <terrain_sect>stalker_military_terrain</terrain_sect>
 		<money min="200" max="600" infinitive="0"></money>
-		
+
 		<rank>218</rank>
 		<reputation>-3</reputation>
 
-		<visual>actors\soldier\soldier_obichniy</visual>		
+		<visual>actors\soldier\soldier_obichniy</visual>
 		<snd_config>characters_voice\human_01\military\</snd_config>
 		<crouch_type>0</crouch_type>
 
@@ -400,13 +399,13 @@
 			wpn_ak74 \n
 			ammo_5.45x39_fmj = 1 \n
 			device_torch \n
-#include "gameplay\character_drugs.xml"
-#include "gameplay\character_food.xml"
+			#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_food.xml"
 		</supplies>
 
-#include "gameplay\character_criticals_5.xml"					
-#include "gameplay\character_dialogs.xml"		
-		
+		#include "gameplay\character_criticals_5.xml"
+		#include "gameplay\character_dialogs.xml"
+
 	</specific_character>
 
 	<specific_character id="agr_soldier_regular_default4" team_default = "1">
@@ -418,7 +417,7 @@
 		<class>agr_Soldier_regular</class>
 		<community>military</community> <terrain_sect>stalker_military_terrain</terrain_sect>
 		<money min="200" max="600" infinitive="0"></money>
-		
+
 		<rank>210</rank>
 		<reputation>-7</reputation>
 
@@ -433,13 +432,13 @@
 			wpn_ak74 \n
 			ammo_5.45x39_fmj = 1 \n
 			device_torch \n
-#include "gameplay\character_drugs.xml"
-#include "gameplay\character_food.xml"
-		</supplies>		
+			#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_food.xml"
+		</supplies>
 
-#include "gameplay\character_criticals_5.xml"					
-#include "gameplay\character_dialogs.xml"		
-		
+		#include "gameplay\character_criticals_5.xml"
+		#include "gameplay\character_dialogs.xml"
+
 	</specific_character>
 
 	<specific_character id="agr_soldier_regular_default5" team_default = "1">
@@ -451,11 +450,11 @@
 		<class>agr_Soldier_regular</class>
 		<community>military</community> <terrain_sect>stalker_military_terrain</terrain_sect>
 		<money min="600" max="2000" infinitive="0"></money>
-		
+
 		<rank>460</rank>
 		<reputation>-9</reputation>
 
-		<visual>actors\soldier\soldier_obichniy</visual>		
+		<visual>actors\soldier\soldier_obichniy</visual>
 		<snd_config>characters_voice\human_02\military\</snd_config>
 		<crouch_type>0</crouch_type>
 
@@ -466,16 +465,16 @@
 			wpn_ak74 \n
 			ammo_5.45x39_fmj = 1 \n
 			device_torch \n
-#include "gameplay\character_drugs.xml"
-#include "gameplay\character_food.xml"
-		</supplies>		
+			#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_food.xml"
+		</supplies>
 
-#include "gameplay\character_criticals_5.xml"
-#include "gameplay\character_dialogs.xml"		
-		
+		#include "gameplay\character_criticals_5.xml"
+		#include "gameplay\character_dialogs.xml"
+
 	</specific_character>
 
-	<!---------------------------SOLDIER SPECNAZ---------------------->
+	<!--SOLDIER SPECNAZ-->
 
 	<specific_character id="agr_soldier_specnaz_default1" team_default = "1">
 		<name>GENERATE_NAME_sergeant</name>
@@ -486,11 +485,11 @@
 		<class>agr_Soldier_specnaz</class>
 		<community>military</community> <terrain_sect>stalker_military_terrain</terrain_sect>
 		<money min="600" max="2000" infinitive="0"></money>
-		
+
 		<rank>490</rank>
 		<reputation>-70</reputation>
 
-		<visual>actors\soldier\soldier_spetsnaz</visual>		
+		<visual>actors\soldier\soldier_spetsnaz</visual>
 		<snd_config>characters_voice\human_01\military\</snd_config>
 		<crouch_type>0</crouch_type>
 
@@ -501,13 +500,13 @@
 			wpn_abakan \n
 			ammo_5.45x39_fmj \n
 			device_torch \n
-#include "gameplay\character_drugs.xml"
-#include "gameplay\character_food.xml"
-		</supplies>		
+			#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_food.xml"
+		</supplies>
 
-#include "gameplay\character_criticals_6.xml"
-#include "gameplay\character_dialogs.xml"
-		
+		#include "gameplay\character_criticals_6.xml"
+		#include "gameplay\character_dialogs.xml"
+
 	</specific_character>
 
 	<specific_character id="agr_soldier_specnaz_default2" team_default = "1">
@@ -519,11 +518,11 @@
 		<class>agr_Soldier_specnaz</class>
 		<community>military</community> <terrain_sect>stalker_military_terrain</terrain_sect>
 		<money min="2000" max="5000" infinitive="0"></money>
-		
+
 		<rank>764</rank>
 		<reputation>-83</reputation>
 
-		<visual>actors\soldier\soldier_spetsnaz</visual>		
+		<visual>actors\soldier\soldier_spetsnaz</visual>
 		<snd_config>characters_voice\human_01\military\</snd_config>
 		<crouch_type>0</crouch_type>
 
@@ -534,17 +533,17 @@
 			wpn_abakan \n
 			ammo_5.45x39_fmj \n
 			device_torch \n
-#include "gameplay\character_drugs.xml"
-#include "gameplay\character_food.xml"
-		</supplies>		
+			#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_food.xml"
+		</supplies>
 
-#include "gameplay\character_criticals_6.xml"
-#include "gameplay\character_dialogs.xml"		
-		
+		#include "gameplay\character_criticals_6.xml"
+		#include "gameplay\character_dialogs.xml"
+
 	</specific_character>
 
-	<!--------------------------- SOLDIER COMMANDERS ----------------------->
-	
+	<!-- SOLDIER COMMANDERS -->
+
 	<specific_character id="agr_soldier_commander1" team_default = "1">
 		<name>GENERATE_NAME_lieutenant</name>
 		<icon>ui_npc_u_soldier_beret</icon>
@@ -554,11 +553,11 @@
 		<class>agr_Soldier_commander</class>
 		<community>military</community> <terrain_sect>stalker_military_terrain</terrain_sect>
 		<money min="2000" max="5000" infinitive="0"></money>
-		
+
 		<rank>774</rank>
 		<reputation>-20</reputation>
 
-		<visual>actors\soldier\soldier_beret</visual>		
+		<visual>actors\soldier\soldier_beret</visual>
 		<snd_config>characters_voice\human_02\military\</snd_config>
 		<crouch_type>0</crouch_type>
 
@@ -569,13 +568,13 @@
 			wpn_ak74 \n
 			ammo_5.45x39_fmj \n
 			device_torch \n
-#include "gameplay\character_drugs.xml"
-#include "gameplay\character_food.xml"
-		</supplies>	
+			#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_food.xml"
+		</supplies>
 
-#include "gameplay\character_criticals_5.xml"
-#include "gameplay\character_dialogs.xml"		
-		
+		#include "gameplay\character_criticals_5.xml"
+		#include "gameplay\character_dialogs.xml"
+
 	</specific_character>
 
 	<specific_character id="agr_soldier_commander2" team_default = "1">
@@ -587,11 +586,11 @@
 		<class>agr_Soldier_commander</class>
 		<community>military</community> <terrain_sect>stalker_military_terrain</terrain_sect>
 		<money min="2000" max="5000" infinitive="0"></money>
-		
+
 		<rank>799</rank>
 		<reputation>-19</reputation>
 
-		<visual>actors\soldier\soldier_beret_3</visual>		
+		<visual>actors\soldier\soldier_beret_3</visual>
 		<snd_config>characters_voice\human_02\military\</snd_config>
 		<crouch_type>0</crouch_type>
 
@@ -602,16 +601,16 @@
 			wpn_ak74 \n
 			ammo_5.45x39_fmj \n
 			device_torch \n
-#include "gameplay\character_drugs.xml"
-#include "gameplay\character_food.xml"
-		</supplies>	
+			#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_food.xml"
+		</supplies>
 
-#include "gameplay\character_criticals_5.xml"
-#include "gameplay\character_dialogs.xml"		
-		
+		#include "gameplay\character_criticals_5.xml"
+		#include "gameplay\character_dialogs.xml"
+
 	</specific_character>
 
-<!---------------------------SOLDIER SNIPER---------------------->
+	<!--SOLDIER SNIPER-->
 	<specific_character id="agr_soldier_sniper_default1" team_default = "1">
 		<name>GENERATE_NAME_sergeant</name>
 		<icon>ui_npc_u_soldier_obichniy</icon>
@@ -625,7 +624,7 @@
 		<rank>487</rank>
 		<reputation>-15</reputation>
 
-		<visual>actors\soldier\soldier_obichniy</visual>		
+		<visual>actors\soldier\soldier_obichniy</visual>
 		<snd_config>characters_voice\human_01\military\</snd_config>
 		<crouch_type>0</crouch_type>
 
@@ -636,13 +635,13 @@
 			wpn_ak74 = 1, scope \n
 			ammo_5.45x39_fmj = 1 \n
 			device_torch \n
-#include "gameplay\character_drugs.xml"
-#include "gameplay\character_food.xml"
-		</supplies>		
+			#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_food.xml"
+		</supplies>
 
-#include "gameplay\character_criticals_5.xml"
-#include "gameplay\character_dialogs.xml"		
-		
+		#include "gameplay\character_criticals_5.xml"
+		#include "gameplay\character_dialogs.xml"
+
 	</specific_character>
 
 	<specific_character id="agr_soldier_sniper_default2" team_default = "1">
@@ -658,7 +657,7 @@
 		<rank>486</rank>
 		<reputation>-15</reputation>
 
-		<visual>actors\soldier\soldier_bandana</visual>		
+		<visual>actors\soldier\soldier_bandana</visual>
 		<snd_config>characters_voice\human_01\military\</snd_config>
 		<crouch_type>0</crouch_type>
 
@@ -669,13 +668,13 @@
 			wpn_ak74 = 1, scope \n
 			ammo_5.45x39_fmj = 1 \n
 			device_torch \n
-#include "gameplay\character_drugs.xml"
-#include "gameplay\character_food.xml"
-		</supplies>		
+			#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_food.xml"
+		</supplies>
 
-#include "gameplay\character_criticals_5.xml"
-#include "gameplay\character_dialogs.xml"		
-		
+		#include "gameplay\character_criticals_5.xml"
+		#include "gameplay\character_dialogs.xml"
+
 	</specific_character>
 
 	<specific_character id="agr_soldier_sniper_default3" team_default = "1">
@@ -691,7 +690,7 @@
 		<rank>497</rank>
 		<reputation>-7</reputation>
 
-		<visual>actors\soldier\soldier_bandana_5</visual>		
+		<visual>actors\soldier\soldier_bandana_5</visual>
 		<snd_config>characters_voice\human_01\military\</snd_config>
 		<crouch_type>0</crouch_type>
 
@@ -702,27 +701,27 @@
 			wpn_ak74 = 1, scope \n
 			ammo_5.45x39_fmj = 1 \n
 			device_torch \n
-#include "gameplay\character_drugs.xml"
-#include "gameplay\character_food.xml"
-		</supplies>		
+			#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_food.xml"
+		</supplies>
 
-#include "gameplay\character_criticals_5.xml"
-#include "gameplay\character_dialogs.xml"		
-		
-	</specific_character>	
+		#include "gameplay\character_criticals_5.xml"
+		#include "gameplay\character_dialogs.xml"
 
-	<!---------------------------BANDIT general----------------------->
-	
+	</specific_character>
+
+	<!--BANDIT general-->
+
 	<specific_character id="agr_bandit_general_default1" team_default = "1">
 		<name>GENERATE_NAME_bandit</name>
 		<icon>ui_npc_u_stalker_bandit_3</icon>
 		<map_icon x="3" y="2"></map_icon>
 		<bio>sim_bandit_general_bio</bio>
-	
+
 		<class>agr_bandit_general</class>
 		<community>bandit</community> <terrain_sect>stalker_bandit_terrain</terrain_sect>
 		<money min="600" max="2000" infinitive="0"></money>
-		
+
 		<rank>438</rank>
 		<reputation>-70</reputation>
 
@@ -737,14 +736,14 @@
 			wpn_bm16 \n
 			ammo_12x70_buck \n
 			device_torch \n
-#include "gameplay\character_drugs.xml"
-#include "gameplay\character_food.xml"
-#include "gameplay\character_items.xml"			
+			#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_food.xml"
+			#include "gameplay\character_items.xml"
 		</supplies>
-		
-#include "gameplay\character_criticals_3.xml"
-#include "gameplay\character_dialogs.xml"		
-		
+
+		#include "gameplay\character_criticals_3.xml"
+		#include "gameplay\character_dialogs.xml"
+
 	</specific_character>
 
 	<specific_character id="agr_bandit_general_default2" team_default = "1">
@@ -752,7 +751,7 @@
 		<icon>ui_npc_u_stalker_bandit_4</icon>
 		<map_icon x="3" y="2"></map_icon>
 		<bio>sim_bandit_general_bio</bio>
-		
+
 		<class>agr_bandit_general</class>
 		<community>bandit</community> <terrain_sect>stalker_bandit_terrain</terrain_sect>
 		<money min="600" max="2000" infinitive="0"></money>
@@ -771,14 +770,14 @@
 			wpn_mp5 \n
 			ammo_9x19_fmj = 1 \n
 			device_torch \n
-#include "gameplay\character_drugs.xml"
-#include "gameplay\character_food.xml"
-#include "gameplay\character_items.xml"			
+			#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_food.xml"
+			#include "gameplay\character_items.xml"
 		</supplies>
 
-#include "gameplay\character_criticals_3.xml"
-#include "gameplay\character_dialogs.xml"		
-		
+		#include "gameplay\character_criticals_3.xml"
+		#include "gameplay\character_dialogs.xml"
+
 	</specific_character>
 
 	<specific_character id="agr_bandit_general_default3" team_default = "1">
@@ -786,11 +785,11 @@
 		<icon>ui_npc_u_stalker_bandit_5</icon>
 		<map_icon x="3" y="2"></map_icon>
 		<bio>sim_bandit_general_bio</bio>
-				
+
 		<class>agr_bandit_general</class>
 		<community>bandit</community> <terrain_sect>stalker_bandit_terrain</terrain_sect>
 		<money min="600" max="2000" infinitive="0"></money>
-		
+
 		<rank>458</rank>
 		<reputation>-98</reputation>
 
@@ -805,14 +804,12 @@
 			wpn_ak74u = 1 \n
 			ammo_5.45x39_fmj = 1 \n
 			device_torch \n
-#include "gameplay\character_drugs.xml"
-#include "gameplay\character_food.xml"
-#include "gameplay\character_items.xml"			
+			#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_food.xml"
+			#include "gameplay\character_items.xml"
 		</supplies>
 
-#include "gameplay\character_criticals_3.xml"
-#include "gameplay\character_dialogs.xml"		
-		
+		#include "gameplay\character_criticals_3.xml"
+		#include "gameplay\character_dialogs.xml"
 	</specific_character>
-
 </xml>

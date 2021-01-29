@@ -1,8 +1,6 @@
 <?xml version='1.0' encoding="windows-1251"?>
-
 <xml>
-
-<!----------------glavniy ucheniy-------------->
+	<!--glavniy ucheniy-->
 	<specific_character id="yan_general_ecolog" team_default = "1">
 		<name>yan_saharov_name</name>
 		<icon>ui_npc_u_ucheniy_2</icon>
@@ -10,9 +8,10 @@
 		<bio>yan_saharov_bio</bio>
 
 		<class>yan_general_ecolog</class>
-		<community>ecolog</community> <terrain_sect>stalker_ecolog_terrain</terrain_sect>
+		<community>ecolog</community>
+		<terrain_sect>stalker_ecolog_terrain</terrain_sect>
 		<money min="100000" max="110000" infinitive="1"></money>
-		
+
 		<rank>44</rank>
 		<reputation>50</reputation>
 
@@ -32,8 +31,8 @@
 
 	</specific_character>
 
-<!---------------------------RESCUE_ECOLOG------------------------>
-<specific_character id="yan_ecolog_help" team_default = "1">
+	<!--RESCUE_ECOLOG-->
+	<specific_character id="yan_ecolog_help" team_default = "1">
 		<name>ros_kruglov_name</name>
 		<icon>ui_npc_u_stalker_ecolog_military</icon>
 		<map_icon x="0" y="6"></map_icon>
@@ -42,7 +41,7 @@
 		<class>yan_ecolog_help</class>
 		<community>ecolog</community> <terrain_sect>stalker_ecolog_terrain</terrain_sect>
 		<money min="2000" max="5000" infinitive="0"></money>
-		
+
 		<rank>698</rank>
 		<reputation>50</reputation>
 
@@ -53,18 +52,18 @@
 			[spawn] \n
 			wpn_walther \n
 			ammo_9x19_fmj \n
-			kruglov_flash \n			
+			kruglov_flash \n
 		</supplies>
-		
-#include "gameplay\character_criticals_3.xml"
-			
+
+		#include "gameplay\character_criticals_3.xml"
+
 		<start_dialog>yantar_help_scientist</start_dialog>
 		<actor_dialog>dm_help_wounded_medkit_dialog</actor_dialog>
 		<actor_dialog>yantar_wounded_scientist</actor_dialog>
-		
+
 	</specific_character>
 
-<specific_character id="yan_Semenov" team_default = "1">
+	<specific_character id="yan_Semenov" team_default = "1">
 		<name>yan_semenov_name</name>
 		<icon>ui_npc_u_stalker_ecolog</icon>
 		<map_icon x="0" y="6"></map_icon>
@@ -73,7 +72,7 @@
 		<class>yan_Semenov</class>
 		<community>ecolog</community> <terrain_sect>stalker_ecolog_terrain</terrain_sect>
 		<money min="600" max="2000" infinitive="0"></money>
-		
+
 		<rank>440</rank>
 		<reputation>50</reputation>
 
@@ -84,15 +83,15 @@
 			[spawn] \n
 			wpn_walther \n
 			ammo_9x19_fmj \n
-			kruglov_flash \n			
+			kruglov_flash \n
 		</supplies>
-		
-#include "gameplay\character_criticals_3.xml"
-			
+
+		#include "gameplay\character_criticals_3.xml"
+
 		<start_dialog>yantar_help_scientist</start_dialog>
 		<actor_dialog>dm_help_wounded_medkit_dialog</actor_dialog>
 	</specific_character>
-	
+
 	<specific_character id="yan_ecolog_vasilyev" team_default = "1">
 		<name>yan_vasilyev_name</name>
 		<icon>ui_npc_u_stalker_ecolog</icon>
@@ -101,8 +100,8 @@
 
 		<class>yan_Ecolog_vasilyev</class>
 		<community>ecolog</community> <terrain_sect>stalker_ecolog_terrain</terrain_sect>
-		
-		
+
+
 		<rank>32</rank>
 		<reputation>50</reputation>
 
@@ -114,25 +113,26 @@
 			wpn_walther \n
 			ammo_9x19_fmj \n
 		</supplies>
-		
-#include "gameplay\character_criticals_3.xml"
-			
+
+		#include "gameplay\character_criticals_3.xml"
+
 		<start_dialog>yantar_help_scientist</start_dialog>
 		<actor_dialog>dm_help_wounded_medkit_dialog</actor_dialog>
 		<actor_dialog>yantar_wounded_scientist</actor_dialog>
-		
+
 	</specific_character>
 
-<specific_character id="yan_ghost" team_default = "1">
+	<specific_character id="yan_ghost" team_default = "1">
 		<name>yan_ghost_name</name>
 		<icon>ui_npc_u_stalker_prizrak</icon>
 		<map_icon x="0" y="6"></map_icon>
 		<bio>sim_stalker_veteran_bio</bio>
 
 		<class>yan_ghost</class>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 
-		
+
 		<rank>721</rank>
 		<reputation>50</reputation>
 
@@ -146,9 +146,9 @@
 			lab_x16_documents \n
 			outfit_stalker_m1 \n
 		</supplies>
-</specific_character>
+	</specific_character>
 
-<!---------------------------ECOLOG------------------------>
+	<!--ECOLOG-->
 	<specific_character id="yan_ecolog_default1" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_ecolog</icon>
@@ -158,7 +158,7 @@
 		<class>yan_Ecolog</class>
 		<community>ecolog</community> <terrain_sect>stalker_ecolog_terrain</terrain_sect>
 
-		
+
 		<rank>10</rank>
 		<reputation>50</reputation>
 
@@ -170,9 +170,9 @@
 			wpn_walther \n
 			ammo_9x19_fmj \n
 		</supplies>
-		
-#include "gameplay\character_criticals_3.xml"	
-#include "gameplay\character_dialogs.xml"
+
+		#include "gameplay\character_criticals_3.xml"
+		#include "gameplay\character_dialogs.xml"
 	</specific_character>
 
 
@@ -181,10 +181,10 @@
 		<icon>ui_npc_u_stalker_ecolog_military</icon>
 		<map_icon x="1" y="6"></map_icon>
 		<bio>ros_ecolog_guard_bio</bio>
-		
+
 		<class>yan_Ecolog</class>
 		<community>ecolog</community> <terrain_sect>stalker_ecolog_terrain</terrain_sect>
-		
+
 		<rank>10</rank>
 		<reputation>50</reputation>
 
@@ -196,22 +196,22 @@
 			wpn_walther \n
 			ammo_9x19_fmj \n
 		</supplies>
-				
-#include "gameplay\character_criticals_3.xml"
-#include "gameplay\character_dialogs.xml"
-	</specific_character>
-	
 
-<!---------------------------ZOMBIED----------------------->
+		#include "gameplay\character_criticals_3.xml"
+		#include "gameplay\character_dialogs.xml"
+	</specific_character>
+
+
+	<!--ZOMBIED-->
 	<specific_character id="yan_zombied_default1" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_zombie1</icon>
 		<map_icon x="7" y="0"></map_icon>
 		<bio>sim_zombied_veteran_bio</bio>
-		
+
 		<class>yan_Zombied</class>
 		<community>zombied</community> <terrain_sect>stalker_zombied_terrain</terrain_sect>
-		
+
 		<rank>100</rank>
 		<reputation>20</reputation>
 
@@ -224,9 +224,9 @@
 			ammo_9x19_fmj \n
 			device_torch \n
 		</supplies>
-			
-#include "gameplay\character_criticals_1.xml"
-#include "gameplay\character_dialogs.xml"
+
+		#include "gameplay\character_criticals_1.xml"
+		#include "gameplay\character_dialogs.xml"
 	</specific_character>
 
 	<specific_character id="yan_zombied_default2" team_default = "1">
@@ -237,7 +237,7 @@
 
 		<class>yan_Zombied</class>
 		<community>zombied</community> <terrain_sect>stalker_zombied_terrain</terrain_sect>
-	
+
 		<rank>100</rank>
 		<reputation>20</reputation>
 
@@ -251,8 +251,8 @@
 			device_torch \n
 		</supplies>
 
-#include "gameplay\character_criticals_1.xml"
-#include "gameplay\character_dialogs.xml"
+		#include "gameplay\character_criticals_1.xml"
+		#include "gameplay\character_dialogs.xml"
 	</specific_character>
 
 	<specific_character id="yan_zombied_default3" team_default = "1">
@@ -263,7 +263,7 @@
 
 		<class>yan_Zombied</class>
 		<community>zombied</community> <terrain_sect>stalker_zombied_terrain</terrain_sect>
-		
+
 		<rank>100</rank>
 		<reputation>-20</reputation>
 
@@ -279,8 +279,8 @@
 			device_torch \n
 		</supplies>
 
-#include "gameplay\character_criticals_1.xml"
-#include "gameplay\character_dialogs.xml"
+		#include "gameplay\character_criticals_1.xml"
+		#include "gameplay\character_dialogs.xml"
 	</specific_character>
 
 	<specific_character id="yan_zombied_default4" team_default = "1">
@@ -291,7 +291,7 @@
 
 		<class>yan_Zombied</class>
 		<community>zombied</community> <terrain_sect>stalker_zombied_terrain</terrain_sect>
-		
+
 		<rank>100</rank>
 		<reputation>-20</reputation>
 
@@ -307,8 +307,8 @@
 			device_torch \n
 		</supplies>
 
-#include "gameplay\character_criticals_1.xml"
-#include "gameplay\character_dialogs.xml"
+		#include "gameplay\character_criticals_1.xml"
+		#include "gameplay\character_dialogs.xml"
 	</specific_character>
 
 	<specific_character id="yan_zombied_default5" team_default = "1">
@@ -319,7 +319,7 @@
 
 		<class>yan_Zombied</class>
 		<community>zombied</community> <terrain_sect>stalker_zombied_terrain</terrain_sect>
-		
+
 		<rank>100</rank>
 		<reputation>50</reputation>
 
@@ -335,8 +335,8 @@
 			device_torch \n
 		</supplies>
 
-#include "gameplay\character_criticals_1.xml"
-#include "gameplay\character_dialogs.xml"
+		#include "gameplay\character_criticals_1.xml"
+		#include "gameplay\character_dialogs.xml"
 	</specific_character>
 
 	<specific_character id="yan_zombied_default6" team_default = "1">
@@ -347,7 +347,7 @@
 
 		<class>yan_Zombied</class>
 		<community>zombied</community> <terrain_sect>stalker_zombied_terrain</terrain_sect>
-	
+
 		<rank>100</rank>
 		<reputation>50</reputation>
 
@@ -363,8 +363,8 @@
 			device_torch \n
 		</supplies>
 
-#include "gameplay\character_criticals_1.xml"
-#include "gameplay\character_dialogs.xml"
+		#include "gameplay\character_criticals_1.xml"
+		#include "gameplay\character_dialogs.xml"
 	</specific_character>
 
 	<specific_character id="yan_zombied_default7" team_default = "1">
@@ -375,7 +375,7 @@
 
 		<class>yan_Zombied</class>
 		<community>zombied</community> <terrain_sect>stalker_zombied_terrain</terrain_sect>
-		
+
 		<rank>100</rank>
 		<reputation>-50</reputation>
 
@@ -391,11 +391,11 @@
 			device_torch \n
 		</supplies>
 
-#include "gameplay\character_criticals_1.xml"
-#include "gameplay\character_dialogs.xml"
+		#include "gameplay\character_criticals_1.xml"
+		#include "gameplay\character_dialogs.xml"
 	</specific_character>
 
-<!---------------------------ZOMBIED VETERANS----------------------->
+	<!--ZOMBIED VETERANS-->
 	<specific_character id="yan_zombied_veteran_default1" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_zombie2</icon>
@@ -404,7 +404,7 @@
 
 		<class>yan_Zombied_veteran</class>
 		<community>zombied</community> <terrain_sect>stalker_zombied_terrain</terrain_sect>
-		
+
 		<rank>200</rank>
 		<reputation>-50</reputation>
 
@@ -423,8 +423,8 @@
 			device_torch \n
 		</supplies>
 
-#include "gameplay\character_criticals_1.xml"
-#include "gameplay\character_dialogs.xml"
+		#include "gameplay\character_criticals_1.xml"
+		#include "gameplay\character_dialogs.xml"
 	</specific_character>
 
 	<specific_character id="yan_zombied_veteran_default2" team_default = "1">
@@ -435,7 +435,7 @@
 
 		<class>yan_Zombied_veteran</class>
 		<community>zombied</community> <terrain_sect>stalker_zombied_terrain</terrain_sect>
-		
+
 		<rank>200</rank>
 		<reputation>-50</reputation>
 
@@ -451,8 +451,8 @@
 			device_torch \n
 		</supplies>
 
-#include "gameplay\character_criticals_1.xml"
-#include "gameplay\character_dialogs.xml"
+		#include "gameplay\character_criticals_1.xml"
+		#include "gameplay\character_dialogs.xml"
 	</specific_character>
 
 	<specific_character id="yan_zombied_veteran_default3" team_default = "1">
@@ -463,7 +463,7 @@
 
 		<class>yan_Zombied_veteran</class>
 		<community>zombied</community> <terrain_sect>stalker_zombied_terrain</terrain_sect>
-		
+
 		<rank>200</rank>
 		<reputation>-50</reputation>
 
@@ -478,9 +478,9 @@
 			wpn_pm \n
 			ammo_9x18_fmj = 1 \n
 		</supplies>
-			
-#include "gameplay\character_criticals_1.xml"
-#include "gameplay\character_dialogs.xml"
+
+		#include "gameplay\character_criticals_1.xml"
+		#include "gameplay\character_dialogs.xml"
 	</specific_character>
 
 	<specific_character id="yan_zombied_veteran_default4" team_default = "1">
@@ -491,7 +491,7 @@
 
 		<class>yan_Zombied_veteran</class>
 		<community>zombied</community> <terrain_sect>stalker_zombied_terrain</terrain_sect>
-		
+
 		<rank>200</rank>
 		<reputation>-50</reputation>
 
@@ -508,8 +508,8 @@
 			ammo_9x18_fmj = 1 \n
 		</supplies>
 
-#include "gameplay\character_criticals_1.xml"
-#include "gameplay\character_dialogs.xml"
+		#include "gameplay\character_criticals_1.xml"
+		#include "gameplay\character_dialogs.xml"
 	</specific_character>
 
 	<specific_character id="yan_zombied_veteran_default5" team_default = "1">
@@ -520,7 +520,7 @@
 
 		<class>yan_Zombied_veteran</class>
 		<community>zombied</community> <terrain_sect>stalker_zombied_terrain</terrain_sect>
-		
+
 		<rank>200</rank>
 		<reputation>-50</reputation>
 
@@ -535,14 +535,14 @@
 			wpn_pm \n
 			ammo_9x18_fmj = 1 \n
 		</supplies>
-		
-#include "gameplay\character_criticals_1.xml"
-#include "gameplay\character_dialogs.xml"
+
+		#include "gameplay\character_criticals_1.xml"
+		#include "gameplay\character_dialogs.xml"
 	</specific_character>
 
 
 
-<!---------------------------ZOMBIED AMBUSH----------------------->
+	<!--ZOMBIED AMBUSH-->
 	<specific_character id="yan_zombied_ambush_default1" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_zombie2</icon>
@@ -551,7 +551,7 @@
 
 		<class>yan_Zombied_ambush</class>
 		<community>zombied</community> <terrain_sect>stalker_zombied_terrain</terrain_sect>
-		
+
 		<rank>200</rank>
 		<reputation>-50</reputation>
 
@@ -570,8 +570,8 @@
 			device_torch \n
 		</supplies>
 
-#include "gameplay\character_criticals_1.xml"
-#include "gameplay\character_dialogs.xml"
+		#include "gameplay\character_criticals_1.xml"
+		#include "gameplay\character_dialogs.xml"
 	</specific_character>
 
 	<specific_character id="yan_zombied_ambush_default2" team_default = "1">
@@ -582,7 +582,7 @@
 
 		<class>yan_Zombied_ambush</class>
 		<community>zombied</community> <terrain_sect>stalker_zombied_terrain</terrain_sect>
-		
+
 		<rank>200</rank>
 		<reputation>-50</reputation>
 
@@ -598,12 +598,12 @@
 			device_torch \n
 		</supplies>
 
-#include "gameplay\character_criticals_1.xml"
-#include "gameplay\character_dialogs.xml"
+		#include "gameplay\character_criticals_1.xml"
+		#include "gameplay\character_dialogs.xml"
 	</specific_character>
 
 
-<!---------------------------ZOMBIED MASTER----------------------->
+	<!--ZOMBIED MASTER-->
 	<specific_character id="yan_zombied_master_1" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_zombie3</icon>
@@ -612,7 +612,7 @@
 
 		<class>yan_Zombied_master</class>
 		<community>zombied</community> <terrain_sect>stalker_zombied_terrain</terrain_sect>
-		
+
 		<rank>300</rank>
 		<reputation>-50</reputation>
 
@@ -629,12 +629,12 @@
 			device_torch \n
 		</supplies>
 
-#include "gameplay\character_criticals_1.xml"
-#include "gameplay\character_dialogs.xml"
+		#include "gameplay\character_criticals_1.xml"
+		#include "gameplay\character_dialogs.xml"
 	</specific_character>
 
-<!---------------------------ZOMBIED dolg----------------------->
-<specific_character id="yan_zombied_dolg" team_default = "1">
+	<!--ZOMBIED dolg-->
+	<specific_character id="yan_zombied_dolg" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_zombie2</icon>
 		<map_icon x="7" y="0"></map_icon>
@@ -642,7 +642,7 @@
 
 		<class>yan_zombied_dolg</class>
 		<community>zombied</community> <terrain_sect>stalker_zombied_terrain</terrain_sect>
-	
+
 		<rank>100</rank>
 		<reputation>20</reputation>
 
@@ -658,11 +658,11 @@
 			device_torch \n
 		</supplies>
 
-#include "gameplay\character_criticals_1.xml"
-#include "gameplay\character_dialogs.xml"
+		#include "gameplay\character_criticals_1.xml"
+		#include "gameplay\character_dialogs.xml"
 	</specific_character>
 
-<!---------------------------СВЕЖЕZOMBIED STALKER----------------------->
+	<!--СВЕЖЕZOMBIED STALKER-->
 	<specific_character id="yan_fresh_Zombied_stalker_1" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_zombie_fresh_0</icon>
@@ -671,7 +671,7 @@
 
 		<class>yan_fresh_Zombied</class>
 		<community>zombied</community> <terrain_sect>stalker_zombied_terrain</terrain_sect>
-		
+
 		<rank>400</rank>
 		<reputation>-50</reputation>
 
@@ -687,8 +687,8 @@
 			device_torch \n
 		</supplies>
 
-#include "gameplay\character_criticals_1.xml"
-#include "gameplay\character_dialogs.xml"
+		#include "gameplay\character_criticals_1.xml"
+		#include "gameplay\character_dialogs.xml"
 	</specific_character>
 
 
@@ -700,12 +700,12 @@
 
 		<class>yan_fresh_Zombied</class>
 		<community>zombied</community> <terrain_sect>stalker_zombied_terrain</terrain_sect>
-		
+
 		<rank>400</rank>
 		<reputation>-50</reputation>
 
 		<visual>actors\stalker_zombi\zombie_fresh_0</visual>
-		<snd_config>characters_voice\human_01\zombied\</snd_config>		
+		<snd_config>characters_voice\human_01\zombied\</snd_config>
 		<crouch_type>0</crouch_type>
 		<supplies>
 			[spawn] \n
@@ -716,8 +716,8 @@
 			device_torch \n
 		</supplies>
 
-#include "gameplay\character_criticals_1.xml"
-#include "gameplay\character_dialogs.xml"
+		#include "gameplay\character_criticals_1.xml"
+		#include "gameplay\character_dialogs.xml"
 	</specific_character>
 
 
@@ -729,7 +729,7 @@
 
 		<class>yan_fresh_Zombied</class>
 		<community>zombied</community> <terrain_sect>stalker_zombied_terrain</terrain_sect>
-		
+
 		<rank>400</rank>
 		<reputation>-50</reputation>
 
@@ -746,8 +746,7 @@
 			device_torch \n
 		</supplies>
 
-#include "gameplay\character_criticals_1.xml"
-#include "gameplay\character_dialogs.xml"
+		#include "gameplay\character_criticals_1.xml"
+		#include "gameplay\character_dialogs.xml"
 	</specific_character>
-	
 </xml>
