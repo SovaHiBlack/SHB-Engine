@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="windows-1251"?>
+<?xml version="1.0" encoding="utf-8"?>
 <game_dialogs>
 	<dialog id="bar_bar_visitors_7_start">
 		<phrase_list>
@@ -131,6 +131,7 @@
 			</phrase>
 		</phrase_list>
 	</dialog>
+
 	<dialog id="bar_bar_visitors_5_start">
 		<phrase_list>
 			<phrase id="21">
@@ -262,6 +263,7 @@
 			</phrase>
 		</phrase_list>
 	</dialog>
+
 	<dialog id="bar_bar_visitors_4_start">
 		<phrase_list>
 			<phrase id="21">
@@ -393,6 +395,7 @@
 			</phrase>
 		</phrase_list>
 	</dialog>
+
 	<dialog id="bar_bar_visitors_3_start">
 		<phrase_list>
 			<phrase id="21">
@@ -524,6 +527,7 @@
 			</phrase>
 		</phrase_list>
 	</dialog>
+
 	<dialog id="bar_bar_visitors_12_start">
 		<phrase_list>
 			<phrase id="1">
@@ -655,6 +659,7 @@
 			</phrase>
 		</phrase_list>
 	</dialog>
+
 	<dialog id="bar_bar_visitors_10_start">
 		<phrase_list>
 			<phrase id="1">
@@ -786,6 +791,7 @@
 			</phrase>
 		</phrase_list>
 	</dialog>
+
 	<dialog id="bar_bar_visitors_13_start">
 		<phrase_list>
 			<phrase id="21">
@@ -917,6 +923,7 @@
 			</phrase>
 		</phrase_list>
 	</dialog>
+
 	<dialog id="bar_bar_visitors_14_start">
 		<phrase_list>
 			<phrase id="4">
@@ -1101,6 +1108,7 @@
 			</phrase>
 		</phrase_list>
 	</dialog>
+
 	<dialog id="bar_bar_barman_ecolog_flash_done">
 		<precondition>dialogs_bar.actor_have_research</precondition>
 		<phrase_list>
@@ -1132,6 +1140,7 @@
 			</phrase>
 		</phrase_list>
 	</dialog>
+
 	<dialog id="bar_bar_barmen_talk_info">
 		<dont_has_info>bar_barman_stay_room</dont_has_info>
 		<phrase_list>
@@ -1247,6 +1256,7 @@
 			</phrase>
 		</phrase_list>
 	</dialog>
+
 	<dialog id="bar_bar_visitors_1_start">
 		<phrase_list>
 			<phrase id="111">
@@ -1378,6 +1388,7 @@
 			</phrase>
 		</phrase_list>
 	</dialog>
+
 	<dialog id="bar_dolg_guard_bunker_start">
 		<phrase_list>
 			<phrase id="1">
@@ -1413,6 +1424,7 @@
 			</phrase>
 		</phrase_list>
 	</dialog>
+
 	<dialog id="bar_dolg_base_guard_talk">
 		<phrase_list>
 			<phrase id="3">
@@ -1432,6 +1444,7 @@
 			</phrase>
 		</phrase_list>
 	</dialog>
+
 	<dialog id="bar_dolg_veteran_start">
 		<phrase_list>
 			<phrase id="0">
@@ -1447,6 +1460,7 @@
 			</phrase>
 		</phrase_list>
 	</dialog>
+
 	<dialog id="bar_dolg_zastava">
 		<phrase_list>
 			<phrase id="0">
@@ -1472,6 +1486,7 @@
 			</phrase>
 		</phrase_list>
 	</dialog>
+
 	<dialog id="bar_dolg_zastava_talk">
 		<phrase_list>
 			<phrase id="214">
@@ -1537,6 +1552,7 @@
 			</phrase>
 		</phrase_list>
 	</dialog>
+
 	<dialog id="bar_dolg_zavskald_reward">
 		<precondition>dialogs_bar.actor_need_reward</precondition>
 		<phrase_list>
@@ -1597,6 +1613,7 @@
 			</phrase>
 		</phrase_list>
 	</dialog>
+
 	<dialog id="bar_ecolog_crush_professor_give_info_dp">
 		<has_info>bar_rescue_research_done</has_info>
 		<phrase_list>
@@ -1664,6 +1681,7 @@
 			</phrase>
 		</phrase_list>
 	</dialog>
+
 	<dialog id="bar_ecolog_dialog">
 		<phrase_list>
 			<phrase id="0">
@@ -1689,6 +1707,7 @@
 			</phrase>
 		</phrase_list>
 	</dialog>
+
 	<dialog id="bar_ecolog_crush_professor_start">
 		<phrase_list>
 			<phrase id="21">
@@ -1874,6 +1893,7 @@
 			</phrase>
 		</phrase_list>
 	</dialog>
+
 	<dialog id="bar_bar_barman_veterans_finish">
 		<precondition>dialogs_bar.have_lucky_pda</precondition>
 		<has_info>bar_kill_veteran_start</has_info>
@@ -1899,6 +1919,7 @@
 			</phrase>
 		</phrase_list>
 	</dialog>
+
 	<dialog id="bar_arena_man_start">
 		<phrase_list>
 			<phrase id="31">
@@ -1961,6 +1982,7 @@
 			</phrase>
 		</phrase_list>
 	</dialog>
+
 	<dialog id="bar_bar_hunter_quest_finish">
 		<precondition>dialogs_bar.have_hunters_toz</precondition>
 		<has_info>bar_bar_hunter_quest_start</has_info>
@@ -1979,6 +2001,7 @@
 			</phrase>
 		</phrase_list>
 	</dialog>
+
 	<dialog id="bar_bar_osvedomitel_start">
 		<phrase_list>
 			<phrase id="1">
@@ -2012,6 +2035,7 @@
 			</phrase>
 		</phrase_list>
 	</dialog>
+
 	<dialog id="bar_bar_osvedomitel_talk">
 		<has_info>bar_volkodav_have_reward</has_info>
 		<phrase_list>
@@ -2024,6 +2048,7 @@
 			</phrase>
 		</phrase_list>
 	</dialog>
+
 	<dialog id="bar_bar_osvedomitel_talk_about_freedom">
 		<has_info>bar_volkodav_have_reward</has_info>
 		<phrase_list>
@@ -2048,6 +2073,7 @@
 			</phrase>
 		</phrase_list>
 	</dialog>
+
 	<dialog id="bar_bar_osvedomitel_trade_info">
 		<phrase_list>
 			<phrase id="1">
@@ -2154,6 +2180,7 @@
 			</phrase>
 		</phrase_list>
 	</dialog>
+
 	<dialog id="bar_dolg_zastava_about_zastava">
 		<phrase_list>
 			<phrase id="0">
@@ -2165,6 +2192,7 @@
 			</phrase>
 		</phrase_list>
 	</dialog>
+
 	<dialog id="bar_bar_barman_killer_ambush">
 		<precondition>dialogs_bar.have_bar_tiran_pda</precondition>
 		<has_info>bar_kill_svoboda_ambush_start</has_info>
@@ -2190,6 +2218,7 @@
 			</phrase>
 		</phrase_list>
 	</dialog>
+
 	<dialog id="bar_bar_barmen_jobs">
 		<has_info>agroprom_military_case_done</has_info>
 		<dont_has_info>bar_kill_veteran_start</dont_has_info>
@@ -2510,6 +2539,7 @@
 			</phrase>
 		</phrase_list>
 	</dialog>
+
 	<dialog id="bar_dolg_base_guard_acces">
 		<precondition>dialogs.dialog_allowed</precondition>
 		<dont_has_info>bar_dolg_base_pass</dont_has_info>
@@ -2571,6 +2601,7 @@
 			</phrase>
 		</phrase_list>
 	</dialog>
+
 	<dialog id="bar_dolg_base_guard_rules">
 		<has_info>bar_dolg_base_rules_start</has_info>
 		<has_info>bar_deactivate_radar_start</has_info>
@@ -2599,6 +2630,7 @@
 			</phrase>
 		</phrase_list>
 	</dialog>
+
 	<dialog id="bar_bar_hunter_start">
 		<phrase_list>
 			<phrase id="2">
@@ -2635,6 +2667,7 @@
 			</phrase>
 		</phrase_list>
 	</dialog>
+
 	<dialog id="bar_dolg_petrenko_start">
 		<phrase_list>
 			<phrase id="11">
@@ -2670,6 +2703,7 @@
 			</phrase>
 		</phrase_list>
 	</dialog>
+
 	<dialog id="bar_dolg_novice_start">
 		<phrase_list>
 			<phrase id="41">
@@ -2713,6 +2747,7 @@
 			</phrase>
 		</phrase_list>
 	</dialog>
+
 	<dialog id="bar_dolg_newbie_start">
 		<phrase_list>
 			<phrase id="21">
@@ -2738,6 +2773,7 @@
 			</phrase>
 		</phrase_list>
 	</dialog>
+
 	<dialog id="bar_dolg_base_guard_start">
 		<phrase_list>
 			<phrase id="21">
@@ -2772,6 +2808,7 @@
 			</phrase>
 		</phrase_list>
 	</dialog>
+
 	<dialog id="bar_bar_visitors_9_start">
 		<phrase_list>
 			<phrase id="51">
@@ -2903,6 +2940,7 @@
 			</phrase>
 		</phrase_list>
 	</dialog>
+
 	<dialog id="bar_bar_visitors_8_start">
 		<phrase_list>
 			<phrase id="21">
@@ -3033,6 +3071,7 @@
 			</phrase>
 		</phrase_list>
 	</dialog>
+
 	<dialog id="bar_bar_visitors_6_start">
 		<phrase_list>
 			<phrase id="21">
@@ -3164,6 +3203,7 @@
 			</phrase>
 		</phrase_list>
 	</dialog>
+
 	<dialog id="bar_bar_visitors_2_start">
 		<phrase_list>
 			<phrase id="611">
@@ -3295,6 +3335,7 @@
 			</phrase>
 		</phrase_list>
 	</dialog>
+
 	<dialog id="bar_bar_drunk_dolg_start">
 		<phrase_list>
 			<phrase id="0">
@@ -3334,6 +3375,7 @@
 			</phrase>
 		</phrase_list>
 	</dialog>
+
 	<dialog id="bar_bar_barmen_start">
 		<phrase_list>
 			<phrase id="1731">
@@ -3625,6 +3667,7 @@
 			</phrase>
 		</phrase_list>
 	</dialog>
+
 	<dialog id="bar_arena_man_job">
 		<dont_has_info>bar_arena_pause</dont_has_info>
 		<dont_has_info>bar_arena_fight_8_done</dont_has_info>
@@ -3778,6 +3821,7 @@
 			</phrase>
 		</phrase_list>
 	</dialog>
+
 	<dialog id="bar_bar_hunter_quest_start">
 		<dont_has_info>bar_bar_hunter_quest_start</dont_has_info>
 		<dont_has_info>bar_bar_hunter_quest_finish</dont_has_info>
@@ -3818,6 +3862,7 @@
 			</phrase>
 		</phrase_list>
 	</dialog>
+
 	<dialog id="bar_dolg_ivancov_start">
 		<phrase_list>
 			<phrase id="11">
@@ -3853,6 +3898,7 @@
 			</phrase>
 		</phrase_list>
 	</dialog>
+
 	<dialog id="bar_dolg_leader_prisyaga">
 		<has_info>bar_svoboda_rg6_done</has_info>
 		<dont_has_info>bar_dolg_community_leader_done</dont_has_info>
@@ -3901,6 +3947,7 @@
 			</phrase>
 		</phrase_list>
 	</dialog>
+
 	<dialog id="bar_dolg_leader_join">
 		<dont_has_info>bar_svoboda_rg6_start</dont_has_info>
 		<phrase_list>
@@ -3939,6 +3986,7 @@
 			</phrase>
 		</phrase_list>
 	</dialog>
+
 	<dialog id="bar_dolg_leader_job">
 		<has_info>bar_dolg_community_leader_done</has_info>
 		<phrase_list>
@@ -3951,6 +3999,7 @@
 			</phrase>
 		</phrase_list>
 	</dialog>
+
 	<dialog id="bar_bar_osvedomitel_reward">
 		<has_info>bar_get_research_done</has_info>
 		<dont_has_info>bar_volkodav_have_reward</dont_has_info>
@@ -3974,6 +4023,7 @@
 			</phrase>
 		</phrase_list>
 	</dialog>
+
 	<dialog id="bar_dolg_leader_quest_rg6_finish">
 		<precondition>dialogs_bar.have_rg6</precondition>
 		<has_info>bar_svoboda_rg6_start</has_info>
@@ -3991,6 +4041,7 @@
 			</phrase>
 		</phrase_list>
 	</dialog>
+
 	<dialog id="bar_dolg_leader_start">
 		<phrase_list>
 			<phrase id="8">

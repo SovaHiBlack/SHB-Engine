@@ -1,4 +1,3 @@
-
 	<game_task id="storyline_eliminate_gunslinger">
 		<title>storyline_escape_eliminate_gunslinger</title>
 		<objective>
@@ -19,7 +18,7 @@
 		<title>tutorial_find_artefact</title>
 		<objective>
 			<text>tutorial_find_artefact_0</text>
-			<icon>ui_iconsTotal_tutorial_find_artefact</icon>			
+			<icon>ui_iconsTotal_tutorial_find_artefact</icon>
 			<infoportion_complete>tutorial_artefact_done</infoportion_complete>
 		</objective>
 		<objective>
@@ -42,7 +41,7 @@
 			<text>esc_help_wounded_from_raid_0</text>
 			<icon>ui_iconsTotal_esc_help_wounded_from_raid</icon>
 			<function_complete>tasks_escape.task_fox_complete</function_complete>
-			<infoportion_set_complete>garbage_meetstalker_start</infoportion_set_complete>			
+			<infoportion_set_complete>garbage_meetstalker_start</infoportion_set_complete>
 			<article>esc_fox_help</article>
 		</objective>
 		<objective>
@@ -59,7 +58,6 @@
 			<infoportion_complete>escape_stalker_done</infoportion_complete>
 		</objective>
 	</game_task>
-
 
 	<game_task id="esc_blockpost_case_to_trader" prio="390">
 		<title>esc_blockpost_case_to_trader</title>
@@ -78,7 +76,7 @@
 			<text>esc_blockpost_case_to_trader_2</text>
 			<map_location_type hint="escape_trader">blue_location</map_location_type>
 			<object_story_id>Escape_Trader</object_story_id>
-			<infoportion_complete>escape_blockpost_case_done</infoportion_complete>			
+			<infoportion_complete>escape_blockpost_case_done</infoportion_complete>
 		</objective>
 	</game_task>
 
@@ -89,15 +87,15 @@
 			<icon>ui_iconsTotal_esc_dinamit_to_volk</icon>
 			<infoportion_complete>esc_kill_bandits_quest_done</infoportion_complete>
 			<infoportion_fail>esc_wolf_dead</infoportion_fail>
-<!--			<function_fail>tasks_escape.is_actor_enemy_lager</function_fail> -->
+			<!--			<function_fail>tasks_escape.is_actor_enemy_lager</function_fail> -->
 		</objective>
 		<objective>
 			<text>esc_dinamit_to_volk_1</text>
 			<map_location_type hint="wolfs_rangers">green_location</map_location_type>
 			<object_story_id>Escape_bridge_stalkers</object_story_id>
-			<function_complete>tasks_escape.petruha_talk</function_complete>			
+			<function_complete>tasks_escape.petruha_talk</function_complete>
 			<infoportion_fail>esc_petruha_die</infoportion_fail>
-		</objective>		
+		</objective>
 		<objective>
 			<text>esc_dinamit_to_volk_2</text>
 			<map_location_type hint="escape_dinamit">green_location</map_location_type>
@@ -126,7 +124,7 @@
 			<map_location_type hint="killers_team">green_location</map_location_type>
 			<object_story_id>esc_leader_killers</object_story_id>
 			<infoportion_complete>escape_lager_killers_die</infoportion_complete>
-		</objective>		
+		</objective>
 		<objective>
 			<text>esc_defend_lager_from_killers_2</text>
 			<map_location_type hint="novice_leader">green_location</map_location_type>
@@ -135,7 +133,7 @@
 			<infoportion_fail>esc_fanat_die</infoportion_fail>
 		</objective>
 	</game_task>
-	
+
 	<game_task id="doctor_meet">
 		<title>meet_with_doctor</title>
 		<objective>
@@ -147,12 +145,11 @@
 		<objective>
 			<text>meet_with_doctor_2</text>
 			<map_location_type hint="meet_with_doctor_2">green_location</map_location_type>
-			<object_story_id>agr_doctor_spot</object_story_id>			
+			<object_story_id>agr_doctor_spot</object_story_id>
 		</objective>
 	</game_task>
-	
-	<!----------------------------- NEW: first task from trader----------------------------------->
-	
+
+	<!-- NEW: first task from trader -->
 	<game_task id="esc_flash_task" prio="495">
 		<title>tutorial_help_wounded</title>
 		<objective>
@@ -173,7 +170,7 @@
 			<map_location_type hint="wolfs_rangers">green_location</map_location_type>
 			<object_story_id>Escape_bridge_stalkers</object_story_id>
 			<map_location_hidden>1</map_location_hidden>
-			<function_complete>tasks_escape.petruha_talk</function_complete>			
+			<function_complete>tasks_escape.petruha_talk</function_complete>
 			<infoportion_fail>esc_petruha_die</infoportion_fail>
 		</objective>
 		<objective>
@@ -197,7 +194,7 @@
 			<infoportion_complete>esc_serious_talk</infoportion_complete>
 		</objective>
 	</game_task>
-	
+
 	<game_task id="esc_trader_job" prio="0">
 		<title>esc_trader_job</title>
 		<objective>

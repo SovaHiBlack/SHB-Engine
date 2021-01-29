@@ -132,6 +132,7 @@
 			</phrase>
 		</phrase_list>
 	</dialog>
+
 	<dialog id="mil_zoneguard_dialog">
 		<phrase_list>
 			<phrase id="100">
@@ -424,6 +425,7 @@
 			</phrase>
 		</phrase_list>
 	</dialog>
+
 	<dialog id="mil_patrol_dialog1">
 		<phrase_list>
 			<phrase id="2">
@@ -448,6 +450,7 @@
 			</phrase>
 		</phrase_list>
 	</dialog>
+
 	<dialog id="mil_zoneguard_common2">
 		<dont_has_info>mil_lukash_question_already</dont_has_info>
 		<phrase_list>
@@ -473,6 +476,7 @@
 			</phrase>
 		</phrase_list>
 	</dialog>
+
 	<dialog id="mil_patrol_dialog2">
 		<phrase_list>
 			<phrase id="1">
@@ -529,6 +533,7 @@
 			</phrase>
 		</phrase_list>
 	</dialog>
+
 	<dialog id="mil_cook_drunk_question_about_rg6_2">
 		<has_info>mil_freedom_cook_drink_2</has_info>
 		<has_info>mil_freedom_rg6_task</has_info>
@@ -557,6 +562,7 @@
 			</phrase>
 		</phrase_list>
 	</dialog>
+
 	<dialog id="mil_cook_drunk_question_about_rg6_3">
 		<has_info>mil_freedom_cook_drink_3</has_info>
 		<has_info>mil_freedom_rg6_task</has_info>
@@ -579,6 +585,7 @@
 			</phrase>
 		</phrase_list>
 	</dialog>
+
 	<dialog id="mil_cook_common6">
 		<precondition>dialogs.dialog_allowed</precondition>
 		<has_info>mil_freedom_cook_rg6_4</has_info>
@@ -602,6 +609,7 @@
 			</phrase>
 		</phrase_list>
 	</dialog>
+
 	<dialog id="mil_cook_common1">
 		<precondition>dialogs.dialog_allowed</precondition>
 		<dont_has_info>mil_cook_dialog1</dont_has_info>
@@ -656,6 +664,7 @@
 			</phrase>
 		</phrase_list>
 	</dialog>
+
 	<dialog id="mil_cook_common2">
 		<precondition>dialogs.dialog_allowed</precondition>
 		<dont_has_info>mil_cook_dialog2</dont_has_info>
@@ -686,6 +695,7 @@
 			</phrase>
 		</phrase_list>
 	</dialog>
+
 	<dialog id="mil_cook_common3">
 		<precondition>dialogs.dialog_allowed</precondition>
 		<dont_has_info>mil_cook_dialog3</dont_has_info>
@@ -732,6 +742,7 @@
 			</phrase>
 		</phrase_list>
 	</dialog>
+
 	<dialog id="mil_cook_common4">
 		<precondition>dialogs.dialog_allowed</precondition>
 		<dont_has_info>mil_cook_dialog4</dont_has_info>
@@ -786,6 +797,7 @@
 			</phrase>
 		</phrase_list>
 	</dialog>
+
 	<dialog id="mil_cook_common5">
 		<precondition>dialogs.dialog_allowed</precondition>
 		<dont_has_info>mil_cook_dialog5</dont_has_info>
@@ -816,6 +828,7 @@
 			</phrase>
 		</phrase_list>
 	</dialog>
+
 	<dialog id="mil_cook_drunk_question_about_rg6_1">
 		<has_info>mil_freedom_cook_drink_1</has_info>
 		<has_info>mil_freedom_rg6_task</has_info>
@@ -852,6 +865,7 @@
 			</phrase>
 		</phrase_list>
 	</dialog>
+
 	<dialog id="mil_cook_drink_for_rg6_2">
 		<precondition>dialogs_military.have_a_vodka</precondition>
 		<has_info>mil_freedom_cook_drink_1</has_info>
@@ -888,6 +902,7 @@
 			</phrase>
 		</phrase_list>
 	</dialog>
+
 	<dialog id="mil_cook_drink_for_rg6_3">
 		<precondition>dialogs_military.have_a_vodka</precondition>
 		<has_info>mil_freedom_cook_drink_1</has_info>
@@ -915,6 +930,7 @@
 			</phrase>
 		</phrase_list>
 	</dialog>
+
 	<dialog id="mil_cook_drink_for_rg6_1">
 		<precondition>dialogs_military.have_a_vodka</precondition>
 		<has_info>mil_cook_dialog5</has_info>
@@ -956,6 +972,7 @@
 			</phrase>
 		</phrase_list>
 	</dialog>
+
 	<dialog id="mil_max_dialog">
 		<phrase_list>
 			<phrase id="3005">
@@ -1196,6 +1213,7 @@
 			</phrase>
 		</phrase_list>
 	</dialog>
+
 	<dialog id="mil_dolg_skull_dialog">
 		<phrase_list>
 			<phrase id="130">
@@ -1495,6 +1513,7 @@
 			</phrase>
 		</phrase_list>
 	</dialog>
+
 	<dialog id="mil_dolg_soldier_dialog">
 		<phrase_list>
 			<phrase id="22">
@@ -1551,6 +1570,7 @@
 			</phrase>
 		</phrase_list>
 	</dialog>
+
 	<dialog id="mil_freedom_commander">
 		<phrase_list>
 			<phrase id="1007">
@@ -1639,6 +1659,7 @@
 			</phrase>
 		</phrase_list>
 	</dialog>
+
 	<dialog id="mil_freedom_commander_common2">
 		<phrase_list>
 			<phrase id="2">
@@ -1674,6 +1695,7 @@
 			</phrase>
 		</phrase_list>
 	</dialog>
+
 	<dialog id="mil_guard_arsenal_dialog">
 		<phrase_list>
 			<phrase id="1">
@@ -1708,6 +1730,7 @@
 			</phrase>
 		</phrase_list>
 	</dialog>
+
 	<dialog id="mil_hunter_dialog">
 		<phrase_list>
 			<phrase id="80">
@@ -2002,6 +2025,7 @@
 			</phrase>
 		</phrase_list>
 	</dialog>
+
 	<dialog id="mil_leader_start_dialog">
 		<phrase_list>
 			<phrase id="8001">
@@ -2335,6 +2359,7 @@
 			</phrase>
 		</phrase_list>
 	</dialog>
+
 	<dialog id="mil_bodyguard_dialog">
 		<phrase_list>
 			<phrase id="5">
@@ -2364,6 +2389,7 @@
 			</phrase>
 		</phrase_list>
 	</dialog>
+
 	<dialog id="mil_cook_dialog">
 		<phrase_list>
 			<phrase id="0">
@@ -2371,6 +2397,7 @@
 			</phrase>
 		</phrase_list>
 	</dialog>
+
 	<dialog id="mil_trader_dialog">
 		<phrase_list>
 			<phrase id="1006">

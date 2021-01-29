@@ -35,6 +35,7 @@
 			</phrase>
 		</phrase_list>
 	</dialog>
+
 	<dialog id="rad_find_stalkers_dialog_1">
 		<phrase_list>
 			<phrase id="0">
@@ -54,6 +55,7 @@
 			</phrase>
 		</phrase_list>
 	</dialog>
+
 	<dialog id="rad_find_stalkers_dialog_2">
 		<phrase_list>
 			<phrase id="0">
@@ -73,6 +75,7 @@
 			</phrase>
 		</phrase_list>
 	</dialog>
+
 	<dialog id="rad_found_stalkers_dialog_2">
 		<has_info>rad_find_stalkers_reward_start</has_info>
 		<dont_has_info>rad_find_stalkers_reward_found</dont_has_info>
@@ -86,6 +89,7 @@
 			</phrase>
 		</phrase_list>
 	</dialog>
+
 	<dialog id="rad_find_stalkers_dialog_4">
 		<dont_has_info>rad_find_stalkers_reward_start</dont_has_info>
 		<dont_has_info>rad_find_stalkers_free_start</dont_has_info>
@@ -133,6 +137,7 @@
 			</phrase>
 		</phrase_list>
 	</dialog>
+
 	<dialog id="rad_chief_start_dialog">
 		<phrase_list>
 			<phrase id="100">
@@ -144,6 +149,7 @@
 			</phrase>
 		</phrase_list>
 	</dialog>
+
 	<dialog id="rad_find_deputy_dialog_1">
 		<has_info>rad_find_stalkers_done</has_info>
 		<dont_has_info>rad_find_treasurer_start</dont_has_info>
@@ -162,6 +168,7 @@
 			</phrase>
 		</phrase_list>
 	</dialog>
+
 	<dialog id="rad_found_stalkers_dialog_1">
 		<has_info>rad_find_stalkers_found</has_info>
 		<dont_has_info>rad_find_stalkers_done</dont_has_info>
@@ -190,6 +197,7 @@
 			</phrase>
 		</phrase_list>
 	</dialog>
+
 	<dialog id="rad_found_deputy_dialog_2">
 		<has_info>rad_find_treasurer_start</has_info>
 		<phrase_list>
@@ -202,6 +210,7 @@
 			</phrase>
 		</phrase_list>
 	</dialog>
+
 	<dialog id="rad_found_deputy_dialog_1">
 		<has_info>rad_find_treasurer_start</has_info>
 		<phrase_list>

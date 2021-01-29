@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="windows-1251"?>
+<?xml version="1.0" encoding="utf-8"?>
 <game_dialogs>
 	<dialog id="oso_chernobyl_crush">
 		<has_info>oso_why_chernobyl</has_info>
@@ -14,6 +14,7 @@
 			</phrase>
 		</phrase_list>
 	</dialog>
+
 	<dialog id="oso_death_truck">
 		<has_info>oso_what_about_me</has_info>
 		<dont_has_info>oso_death_truck</dont_has_info>
@@ -28,6 +29,7 @@
 			</phrase>
 		</phrase_list>
 	</dialog>
+
 	<dialog id="oso_no">
 		<has_info>oso_question</has_info>
 		<phrase_list>
@@ -37,6 +39,7 @@
 			</phrase>
 		</phrase_list>
 	</dialog>
+
 	<dialog id="oso_osoznanie_start">
 		<phrase_list>
 			<phrase id="2">
@@ -62,6 +65,7 @@
 			</phrase>
 		</phrase_list>
 	</dialog>
+
 	<dialog id="oso_stalker">
 		<has_info>oso_what_about_me</has_info>
 		<dont_has_info>oso_stalker</dont_has_info>
@@ -76,6 +80,7 @@
 			</phrase>
 		</phrase_list>
 	</dialog>
+
 	<dialog id="oso_what_about_me">
 		<has_info>oso_what_is_the_zone</has_info>
 		<dont_has_info>oso_what_about_me</dont_has_info>
@@ -90,6 +95,7 @@
 			</phrase>
 		</phrase_list>
 	</dialog>
+
 	<dialog id="oso_what_is_the_zone">
 		<has_info>oso_who_are_you</has_info>
 		<dont_has_info>oso_what_is_the_zone</dont_has_info>
@@ -104,6 +110,7 @@
 			</phrase>
 		</phrase_list>
 	</dialog>
+
 	<dialog id="oso_what_next">
 		<has_info>oso_death_truck</has_info>
 		<has_info>oso_stalker</has_info>
@@ -120,6 +127,7 @@
 			</phrase>
 		</phrase_list>
 	</dialog>
+
 	<dialog id="oso_who_are_you">
 		<dont_has_info>oso_who_are_you</dont_has_info>
 		<phrase_list>
@@ -133,6 +141,7 @@
 			</phrase>
 		</phrase_list>
 	</dialog>
+
 	<dialog id="oso_why_chernobyl">
 		<has_info>oso_what_is_the_zone</has_info>
 		<dont_has_info>oso_why_chernobyl</dont_has_info>
@@ -147,6 +156,7 @@
 			</phrase>
 		</phrase_list>
 	</dialog>
+
 	<dialog id="oso_yes">
 		<has_info>oso_question</has_info>
 		<phrase_list>

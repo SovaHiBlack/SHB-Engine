@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="windows-1251"?>
+<?xml version="1.0" encoding="utf-8"?>
 <game_dialogs>
 	<dialog id="tutorial_wounded_give_medkit">
 		<phrase_list>
@@ -92,6 +92,7 @@
 			</phrase>
 		</phrase_list>
 	</dialog>
+	
 	<dialog id="escape_factory_assault_start">
 		<phrase_list>
 			<phrase id="311">
@@ -176,6 +177,7 @@
 			</phrase>
 		</phrase_list>
 	</dialog>
+	
 	<dialog id="esc_stalker_talk_level" priority="2">
 		<phrase_list>
 			<phrase id="1">
@@ -204,6 +206,7 @@
 			</phrase>
 		</phrase_list>
 	</dialog>
+	
 	<dialog id="escape_trader_talk_level" priority="2">
 		<precondition>dialogs_escape.trader_alredy_give_job</precondition>
 		<has_info>tutorial_end</has_info>
@@ -258,6 +261,7 @@
 			</phrase>
 		</phrase_list>
 	</dialog>
+	
 	<dialog id="esc_provodnik_start">
 		<phrase_list>
 			<phrase id="2">
@@ -304,6 +308,7 @@
 			</phrase>
 		</phrase_list>
 	</dialog>
+	
 	<dialog id="escape_lager_guard_start_dialog">
 		<phrase_list>
 			<phrase id="21">
@@ -370,6 +375,7 @@
 			</phrase>
 		</phrase_list>
 	</dialog>
+	
 	<dialog id="escape_lager_leader_hello">
 		<phrase_list>
 			<phrase id="21">
@@ -477,6 +483,7 @@
 			</phrase>
 		</phrase_list>
 	</dialog>
+	
 	<dialog id="esc_lager_no_talk">
 		<phrase_list>
 			<phrase id="111">
@@ -517,6 +524,7 @@
 			</phrase>
 		</phrase_list>
 	</dialog>
+	
 	<dialog id="escape_shustryi_start">
 		<phrase_list>
 			<phrase id="21">
@@ -577,6 +585,7 @@
 			</phrase>
 		</phrase_list>
 	</dialog>
+	
 	<dialog id="escape_trader_done_blockpost_box" priority="10">
 		<precondition>dialogs_escape.have_blockpost_case</precondition>
 		<has_info>escape_blockpost_case_have</has_info>
@@ -593,6 +602,7 @@
 			</phrase>
 		</phrase_list>
 	</dialog>
+	
 	<dialog id="escape_trader_talk_info">
 		<precondition>dialogs_escape.trader_alredy_give_job</precondition>
 		<has_info>tutorial_end</has_info>
@@ -765,6 +775,7 @@
 			</phrase>
 		</phrase_list>
 	</dialog>
+	
 	<dialog id="escape_trader_jobs" priority="5">
 		<has_info>esc_serious_talk</has_info>
 		<phrase_list>
@@ -854,6 +865,7 @@
 			</phrase>
 		</phrase_list>
 	</dialog>
+	
 	<dialog id="escape_trader_start_dialog">
 		<phrase_list>
 			<phrase id="521211">
@@ -1120,6 +1132,7 @@
 			</phrase>
 		</phrase_list>
 	</dialog>
+	
 	<dialog id="escape_fox_hello_dialog">
 		<phrase_list>
 			<phrase id="21">
@@ -1231,6 +1244,7 @@
 			</phrase>
 		</phrase_list>
 	</dialog>
+	
 	<dialog id="esc_bridge_soldiers_start">
 		<precondition>dialogs.is_not_wounded</precondition>
 		<phrase_list>
@@ -1284,6 +1298,7 @@
 			</phrase>
 		</phrase_list>
 	</dialog>
+	
 	<dialog id="escape_lager_volk_info">
 		<dont_has_info>escape_blockpost_case_done</dont_has_info>
 		<phrase_list>
@@ -1378,6 +1393,7 @@
 			</phrase>
 		</phrase_list>
 	</dialog>
+	
 	<dialog id="escape_lager_volk_talk">
 		<phrase_list>
 			<phrase id="111111121">

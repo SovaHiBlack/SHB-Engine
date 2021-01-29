@@ -20,6 +20,7 @@
 			</phrase>
 		</phrase_list>
 	</dialog>
+
 	<dialog id="gar_dramm_novice_start">
 		<phrase_list>
 			<phrase id="1">
@@ -76,6 +77,7 @@
 			</phrase>
 		</phrase_list>
 	</dialog>
+
 	<dialog id="gar_stalker_about_level">
 		<precondition>dialogs.level_garbage</precondition>
 		<phrase_list>
@@ -88,6 +90,7 @@
 			</phrase>
 		</phrase_list>
 	</dialog>
+
 	<dialog id="gar_hellcar_start">
 		<phrase_list>
 			<phrase id="111121">
@@ -279,6 +282,7 @@
 			</phrase>
 		</phrase_list>
 	</dialog>
+
 	<dialog id="gar_seriy_start">
 		<phrase_list>
 			<phrase id="1">
@@ -376,6 +380,7 @@
 			</phrase>
 		</phrase_list>
 	</dialog>
+
 	<dialog id="gar_dolg_blokpost">
 		<phrase_list>
 			<phrase id="111122">

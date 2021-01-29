@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding="windows-1251"?>
+<?xml version="1.0" encoding="windows-1251"?>
 <game_tasks_data>
 #include "gameplay\tasks_escape.xml"
 #include "gameplay\tasks_garbage.xml"
@@ -6,7 +6,7 @@
 #include "gameplay\tasks_bar.xml"
 #include "gameplay\tasks_military.xml"
 #include "gameplay\tasks_darkvalley.xml"
-#include "gameplay\tasks_deadcity.xml"
+;#include "gameplay\tasks_deadcity.xml"
 #include "gameplay\tasks_radar.xml"
 #include "gameplay\tasks_aes.xml"
 #include "gameplay\tasks_yantar.xml"
@@ -20,9 +20,8 @@
 			<icon x="350" y="50" width="50" height="50">ui\ui_icons_task</icon>
 		</objective>
 	</game_task>
-	
-	<!----------DELME:for andy-------------------->
-	
+
+	<!-- DELME:for andy -->
 	<game_task id="pl_task_1" prio="3">
 		<title>task_1</title>
 		<objective>
@@ -39,6 +38,7 @@
 			<infoportion_complete>yan_labx16_switcher_2_off</infoportion_complete>
 		</objective>
 	</game_task>
+
 	<game_task id="pl_task_2" prio="2">
 		<title>task_2</title>
 		<objective>
@@ -53,6 +53,7 @@
 			<infoportion_complete>yan_labx16_switcher_2_off</infoportion_complete>
 		</objective>
 	</game_task>
+
 	<game_task id="pl_task_3" prio="1">
 		<title>task_3</title>
 		<objective>
@@ -68,7 +69,7 @@
 		</objective>
 	</game_task>
 
-<!-- temporary for andy, do not delete !!! -->
+	<!-- temporary for andy, do not delete !!! -->
 	<game_task id="task_1" prio="1">
 		<title>task_1_title</title>
 		<objective>
@@ -122,5 +123,4 @@
 			<object_story_id>Escape_dinamite</object_story_id>
 		</objective>
 	</game_task>
-
 </game_tasks_data>

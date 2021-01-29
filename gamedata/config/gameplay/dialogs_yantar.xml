@@ -45,6 +45,7 @@
 			</phrase>
 		</phrase_list>
 	</dialog>
+
 	<dialog id="yantar_help_scientist">
 		<phrase_list>
 			<phrase id="4">
@@ -202,6 +203,7 @@
 			</phrase>
 		</phrase_list>
 	</dialog>
+
 	<dialog id="yantar_general_ucheniy_talk_start">
 		<phrase_list>
 			<phrase id="211144">

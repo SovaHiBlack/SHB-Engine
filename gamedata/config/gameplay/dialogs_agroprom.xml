@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="windows-1251"?>
+<?xml version="1.0" encoding="utf-8"?>
 <game_dialogs>
 	<dialog id="agr_krot_about_agroprom">
 		<has_info>agr_help_krot_done</has_info>
@@ -26,6 +26,7 @@
 			</phrase>
 		</phrase_list>
 	</dialog>
+
 	<dialog id="agr_stalker_talk_about_ratcatcher1">
 		<precondition>dialogs.level_agroprom</precondition>
 		<phrase_list>
@@ -110,6 +111,7 @@
 			</phrase>
 		</phrase_list>
 	</dialog>
+
 	<dialog id="agr_stalker_esc" priority="7">
 		<precondition>dialogs.dialog_allowed</precondition>
 		<dont_has_info>agr_warning_recieved</dont_has_info>
@@ -133,6 +135,7 @@
 			</phrase>
 		</phrase_list>
 	</dialog>
+
 	<dialog id="agr_stalker_talk_about_ratcatcher" priority="6">
 		<precondition>dialogs.level_agroprom</precondition>
 		<phrase_list>
@@ -190,6 +193,7 @@
 			</phrase>
 		</phrase_list>
 	</dialog>
+
 	<dialog id="agr_stalker_talk_level" priority="5">
 		<precondition>dialogs.level_agroprom</precondition>
 		<phrase_list>
@@ -234,6 +238,7 @@
 			</phrase>
 		</phrase_list>
 	</dialog>
+
 	<dialog id="agr_swamp_ratcatcher_talks1">
 		<phrase_list>
 			<phrase id="123">
@@ -301,6 +306,7 @@
 			</phrase>
 		</phrase_list>
 	</dialog>
+
 	<dialog id="agr_krot_actor_hasnot_met_seriy" priority="1">
 		<has_info>agr_help_krot_done</has_info>
 		<dont_has_info>agr_krot_band_start</dont_has_info>
@@ -363,6 +369,7 @@
 			</phrase>
 		</phrase_list>
 	</dialog>
+
 	<dialog id="agr_factory_stalker_about">
 		<precondition>dialogs.dialog_allowed</precondition>
 		<phrase_list>
@@ -375,6 +382,7 @@
 			</phrase>
 		</phrase_list>
 	</dialog>
+
 	<dialog id="agr_krot_help">
 		<dont_has_info>agr_help_krot_done</dont_has_info>
 		<phrase_list>
@@ -389,6 +397,7 @@
 			</phrase>
 		</phrase_list>
 	</dialog>
+
 	<dialog id="agr_factory_stalker_start">
 		<phrase_list>
 			<phrase id="0">
@@ -396,6 +405,7 @@
 			</phrase>
 		</phrase_list>
 	</dialog>
+
 	<dialog id="agr_swamp_ratcatcher_talks">
 		<dont_has_info>agr_collector_entrance_info</dont_has_info>
 		<phrase_list>
@@ -452,6 +462,7 @@
 			</phrase>
 		</phrase_list>
 	</dialog>
+
 	<dialog id="agr_ratcatcher_start">
 		<phrase_list>
 			<phrase id="0">
@@ -459,6 +470,7 @@
 			</phrase>
 		</phrase_list>
 	</dialog>
+
 	<dialog id="agr_krot_actor_met_seriy" priority="1">
 		<has_info>agr_help_krot_done</has_info>
 		<has_info>agr_krot_band_start</has_info>
@@ -503,6 +515,7 @@
 			</phrase>
 		</phrase_list>
 	</dialog>
+
 	<dialog id="agr_factory_krot_start">
 		<phrase_list>
 			<phrase id="2501">
