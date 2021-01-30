@@ -1,7 +1,5 @@
-<?xml version='1.0' encoding="windows-1251"?>
-
+<?xml version="1.0" encoding="windows-1251"?>
 <game_information_portions>
-
 	<info_portion id="aes_desant_wave1"></info_portion>
 	<info_portion id="aes_desant_wave2"></info_portion>
 	<info_portion id="aes_desant_wave3"></info_portion>
@@ -77,19 +75,16 @@
 	<info_portion id="aes_timer_20000"></info_portion>
 	<info_portion id="aes_timer_5000"></info_portion>
 	<info_portion id="aes_sniper_talk_1"></info_portion>
-	
+
 	<info_portion id="aes_arrive_to"></info_portion>
 	<info_portion id="aes_found_sarcofag"></info_portion>
 	<info_portion id="aes_get_soldier_map">
 		<article>aes_soldier_info</article>
 	</info_portion>
-	
+
 	<info_portion id="aes_activate_zone"></info_portion>
 	<info_portion id="aes_activate_sound"></info_portion>
 	<info_portion id="aes_activate_zone_immediate"></info_portion>
-	
-
-
 
 	<info_portion id="aes2_sniper_ambush1"></info_portion>
 	<info_portion id="aes2_sniper_ambush2"></info_portion>
@@ -157,12 +152,9 @@
 	<info_portion id="m9_ready"></info_portion>
 	<info_portion id="aes2_monolit_first_ambush"></info_portion>
 	<info_portion id="aes2_monolit_first_ambush_2"></info_portion>
-	
+
 	<info_portion id="aes2_monolit_teleport_final_1"></info_portion>
 	<info_portion id="aes2_monolit_teleport_ready_final"></info_portion>
-
-
-
 
 	<!-- OSOZNANIE -->
 	<info_portion id="oso_who_are_you"></info_portion>
@@ -172,10 +164,6 @@
 	<info_portion id="oso_chernobyl_crush"></info_portion>
 	<info_portion id="oso_stalker"></info_portion>
 	<info_portion id="oso_death_truck"></info_portion>
-	<info_portion id="oso_what_next"></info_portion>	
+	<info_portion id="oso_what_next"></info_portion>
 	<info_portion id="oso_question"></info_portion>
-   
-
-
 </game_information_portions>
-

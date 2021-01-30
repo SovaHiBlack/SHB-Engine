@@ -1962,7 +1962,8 @@
 	<string id="st_thanks_chernobyl2">
 		<text>заместителю технического директора по безопасности ЧАЭС Александру Новикову</text>
 	</string>
-	<string id="st_thanks_chernobyl3">">
+	<string id="st_thanks_chernobyl3">
+		">
 		<text>а также остальному персоналу и администрации Чернобыльской Электростанции за поддержку</text>
 	</string>
 	<string id="st_thanks_administration">
@@ -1990,7 +1991,7 @@
 	<string id="st_line_vert">
 		<text>|</text>
 	</string>
- 	<string id="st_thanks_naumov">
+	<string id="st_thanks_naumov">
 		<text>Александру Наумову за огромный информационный  </text>
 	</string>
 	<string id="st_thanks_naumov2">
@@ -2159,7 +2160,7 @@
 		<text>nVidia</text>
 	</string>
 
-        <string id="st_ui_art">
+	<string id="st_ui_art">
 		<text>Интерфейс</text>
 	</string>
 	<string id="st_ui_art2">

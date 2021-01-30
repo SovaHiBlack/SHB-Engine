@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="windows-1251" ?>
+<?xml version="1.0" encoding="windows-1251"?>
 <encyclopedia>
 #include "gameplay\storyline_info_escape.xml"
 #include "gameplay\storyline_info_garbage.xml"
@@ -11,8 +11,7 @@
 #include "gameplay\storyline_info_aes.xml"
 #include "gameplay\storyline_info_pripyat.xml"
 #include "gameplay\storyline_info_sarcofag.xml"
-#include "gameplay\storyline_info_yantar.xml"    
+#include "gameplay\storyline_info_yantar.xml"
 #include "gameplay\storyline_info_taskmanager.xml"
 #include "gameplay\stories.xml"
-
 </encyclopedia>

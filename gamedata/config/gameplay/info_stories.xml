@@ -1,8 +1,5 @@
-<?xml version='1.0' encoding="windows-1251"?>
-
+<?xml version="1.0" encoding="windows-1251"?>
 <game_information_portions>
-
-
 	<info_portion id="stalker_story_1">
 		<article>stalker_story_1</article>
 	</info_portion>
@@ -50,7 +47,7 @@
 	<info_portion id="stalker_story_12">
 		<article>stalker_story_12</article>
 	</info_portion>
-	
+
 	<info_portion id="stalker_story_13">
 		<article>stalker_story_13</article>
 	</info_portion>
@@ -82,8 +79,4 @@
 	<info_portion id="stalker_story_20">
 		<article>stalker_story_20</article>
 	</info_portion>
-
-
-
-	
 </game_information_portions>

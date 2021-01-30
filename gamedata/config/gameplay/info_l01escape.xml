@@ -1,11 +1,8 @@
-<?xml version='1.0' encoding="windows-1251"?>
-
+<?xml version="1.0" encoding="windows-1251"?>
 <game_information_portions>
-
-
 	<!-- Tutorial artefact -->
 	<info_portion id="tutorial_artefact_start">
-	<!-- 	<task>esc_flash_task</task>
+		<!-- 	<task>esc_flash_task</task>
 		<article>zone_anomalies_meat</article>
 		<article>zone_artifact_af-blood</article>
 		<article>tutorial_artefact</article> -->
@@ -18,7 +15,6 @@
 	<info_portion id="tutorial_alarm_start"></info_portion>
 	<info_portion id="tutorial_alarm_played"></info_portion>
 
-
 	<info_portion id="esc_kill_gunslinger">
 		<task>storyline_eliminate_gunslinger</task>
 		<article>about_enciclopedia</article>
@@ -27,8 +23,9 @@
 
 	<!-- Tutorial wounded -->
 	<info_portion id="tutorial_wounded_start">
-	 	<task>esc_flash_task</task>
-		<article>sl_first_opinions</article>   <!--commented -->
+		<task>esc_flash_task</task>
+		<article>sl_first_opinions</article>
+		<!--commented -->
 	</info_portion>
 	<info_portion id="esc_first_novice_dead"></info_portion>
 	<info_portion id="esc_second_novice_dead"></info_portion>
@@ -65,20 +62,19 @@
 	<info_portion id="escape_stalker_help"></info_portion>
 	<info_portion id="escape_fox_heal"></info_portion>
 	<info_portion id="escape_stalker_spawn"></info_portion>
-	<info_portion id="escape_stalker_dog_spawn"></info_portion>	
-	<info_portion id="escape_stalker_dog_die"></info_portion>	
+	<info_portion id="escape_stalker_dog_spawn"></info_portion>
+	<info_portion id="escape_stalker_dog_die"></info_portion>
 	<info_portion id="escape_stalker_meet">
 		<task>esc_help_wounded_from_raid</task>
 		<article>sl_usefull_info</article>
 	</info_portion>
-	<info_portion id="escape_stalker_give">	
+	<info_portion id="escape_stalker_give">
 		<article>storyline_seryi_info</article>
-	</info_portion>	
+	</info_portion>
 	<info_portion id="escape_stalker_done"></info_portion>
 	<info_portion id="esc_dogs_return"></info_portion>
 	<info_portion id="esc_fox_thanks"></info_portion>
-	
-	
+
 	<!-- Blokpost_case -->
 	<info_portion id="escape_blockpost_case">
 		<task>esc_blockpost_case_to_trader</task>
@@ -87,10 +83,10 @@
 	<info_portion id="escape_blockpost_case_have"></info_portion>
 	<info_portion id="escape_blockpost_case_done"></info_portion>
 	<info_portion id="esc_matugalnik_off"></info_portion>
-	
+
 	<!-- Dinamyte -->
 	<info_portion id="escape_dynamite_start">
-<!--		<task>esc_dinamit_to_volk</task>
+		<!--		<task>esc_dinamit_to_volk</task>
 		<article>esc_volk_dynamite</article> -->
 	</info_portion>
 	<info_portion id="escape_dynamite_meet"></info_portion>
@@ -121,7 +117,7 @@
 	<info_portion id="esc_lager_destroyed"></info_portion>
 	<info_portion id="esc_wolf_dead"></info_portion>
 	<info_portion id="esc_assault_to_lager"></info_portion>
-	
+
 	<!-- Порядок фраз торговца -->
 	<info_portion id="esc_trader_talked_about_zone"></info_portion>
 	<info_portion id="esc_trader_talked_about_me"></info_portion>
@@ -150,7 +146,7 @@
 	<!-- Приветствия торговца -->
 	<info_portion id="esc_trader_hello_played"></info_portion>
 	<info_portion id="esc_trader_bye_played"></info_portion>
-	
+
 	<info_portion id="tutorial_volk_acquainted"></info_portion>
 
 	<info_portion id="tutorial_heli_attack"></info_portion>
@@ -166,7 +162,7 @@
 	</info_portion>
 	<info_portion id="esc_kolyan_found"></info_portion>
 	<info_portion id="esc_prison"></info_portion>
-	
+
 	<!-- infoportions for raid -->
 	<info_portion id="esc_raid1_start"></info_portion>
 
@@ -198,11 +194,10 @@
 	<info_portion id="test_info_3"></info_portion>
 	<info_portion id="test_info_4"></info_portion>
 	<info_portion id="test_info_5"></info_portion>
-	
-	
+
 	<!-- trader bandits on factory -->
 	<info_portion id="esc_kill_bandits_quest_have">
-	<!--	<task>esc_dinamit_to_volk</task>
+		<!--	<task>esc_dinamit_to_volk</task>
 		<article>kill_factory_bandits</article> -->
 	</info_portion>
 	<info_portion id="esc_kill_bandits_quest_kill"></info_portion>
@@ -211,22 +206,20 @@
 	<info_portion id="esc_assault_start"></info_portion>
 	<info_portion id="esc_assault_charge"></info_portion>
 	<info_portion id="esc_heli_go"></info_portion>
-	
 
 	<!-- интересные места -->
 	<info_portion id="esc_tutorial_secret_place">
 		<article>tutorial_secret_place</article>
 	</info_portion>
 	<info_portion id="esc_tutorial_secret_place_found"></info_portion>
-	
+
 	<!-- труп у аномалии -->
 	<info_portion id="esc_tutorial_dead_novice">
 		<article>tutorial_moving_anomaly</article>
 	</info_portion>
-	
-	
+
 	<info_portion id="esc_zombie_rise2"></info_portion>
-		
+
 	<!-- проводник -->
 	<info_portion id="esc_find_doctor_start">
 		<task>doctor_meet</task>
@@ -234,10 +227,10 @@
 		<article>sl_provodnik</article>
 	</info_portion>
 	<info_portion id="esc_find_doctor_done"></info_portion>
-	
+
 	<!-- Коррумпированый пост на мосту -->
 	<info_portion id="esc_bridge_soldiers"></info_portion>
-	
+
 	<info_portion id="esc_dog_spawn"></info_portion>
 
 	<info_portion id="esc_find_railroad_passage_start">
@@ -247,11 +240,9 @@
 	<info_portion id="esc_find_railroad_passage_done"></info_portion>
 
 	<info_portion id="esc_tutorial_start"></info_portion>
-	
+
 	<info_portion id="trader_job">
 		<task>esc_trader_job</task>
 	</info_portion>
 	<info_portion id="esc_fanat_dead"></info_portion>
-	
-	
 </game_information_portions>

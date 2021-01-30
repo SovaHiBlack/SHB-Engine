@@ -1,6 +1,6 @@
-<?xml version='1.0' encoding="UTF-8"?>
+<?xml version="1.0" encoding="windows-1251"?>
 <xml>
-	<!-- ÐÐžÐ’Ð«Ð• ÐŸÐ ÐžÐ¤Ð˜Ð›Ð¯ -->
+	<!-- ÍÎÂÛÅ ÏÐÎÔÈËß -->
 	<character id="actor">
 		<class>Actor</class>
 		<specific_character>actor</specific_character>
@@ -246,7 +246,7 @@
 	</character>
 
 	<!-- Darkscape -->
-<!--	<character id="ds_bandit_1">
+	<!--	<character id="ds_bandit_1">
 		<class>ds_bandit_1</class>
 	</character>
 	<character id="ds_bandit_2">
@@ -563,7 +563,7 @@
 
 	<!-- DeadCity -->
 	<!-- Doctor -->
-<!--	<character id="cit_doctor">
+	<!--	<character id="cit_doctor">
 		<class>cit_doctor</class>
 		<specific_character>cit_doctor</specific_character>
 	</character>
