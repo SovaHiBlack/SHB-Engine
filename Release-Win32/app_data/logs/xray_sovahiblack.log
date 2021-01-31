@@ -1,0 +1,2120 @@
+* Detected CPU: GenuineIntel P3 family, F6/M10/S7, 1994.00 mhz, 28-clk 'rdtsc'
+* CPU Features: RDTSC, MMX, SSE, SSE2
+
+Initializing File System...
+using fs-ltx fsgame.ltx
+FS: 28183 files cached, 4396Kb memory used.
+Init FileSystem 1.753065 sec
+'Core' build 8029, Jan 30 2021
+
+Initializing Engine...
+Executing config-script "user.ltx"...
+! Cannot open script file [user.ltx]
+Starting INPUT device...
+Loading DLL: xrRender_R1.dll
+Loading DLL: xrGame.dll
+* [win32]: free[4063768 K], reserved[42840 K], committed[87632 K]
+* [ D3D ]: textures[0 K]
+* [x-ray]: process heap[6537 K], game lua[0 K], engine lua[0 K], render[0 K]
+* [x-ray]: economy: strings[909 K], smem[0 K]
+Executing config-script "c:\engine\shb-engine\release-win32\..\gamedata\config\default_controls.ltx"...
+! cant convert dik_name for dik[144], prop=[
+[c:\engine\shb-engine\release-win32\..\gamedata\config\default_controls.ltx] successfully loaded.
+Executing config-script "user.ltx"...
+! Cannot open script file [user.ltx]
+SOUND: OpenAL: enumerate devices...
+SOUND: OpenAL: EnumerationExtension Present
+devices Generic Software
+SOUND: OpenAL: system  default SndDevice name is Generic Software
+SOUND: OpenAL: All available devices:
+1. Generic Software, Spec Version 1.1 (default)
+SOUND: OpenAL: SelectBestDevice is Generic Software 1.1
+SOUND: OpenAL: Required device: Generic Software. Created device: Generic Software.
+* sound: EAX 2.0 extension: absent
+* sound: EAX 2.0 deferred: absent
+* sound : cache: 32773 kb, 3805 lines, 8820 bpl
+Starting RENDER device...
+* GPU [vendor:10DE]-[device:1050]: NVIDIA GeForce GT 520M
+* GPU driver: 21.21.13.7654
+* CREATE: DeviceREF: 1
+* Vertex Processor: PURE HARDWARE
+*     Texture memory: 4087 M
+*          DDI-level: 9.0
+* GPU shading: vs(fffe0300/3.0/30), ps(ffff0300/3.0/30)
+* GPU vertex cache: unrecognized, 16
+* DVB created: 1536K
+* DIB created: 512K
+count of .thm files=1
+load time=42 ms
+* distortion: used, dev(30),need(14)
+* SSample: 1024x768
+* SSample: enabled
+Starting engine...
+* DVB created: 1536K
+* DIB created: 512K
+* SSample: 1024x768
+* SSample: enabled
+* GPU shading: vs(fffe0300/3.0/30), ps(ffff0300/3.0/30)
+* GPU vertex cache: recognized, 24
+*** RESET [50 ms]
+"c:\engine\shb-engine\release-win32\binaries\engine.exe" 
+* phase time: 5 ms
+* phase cmem: 61383 K
+Сервер: Старт...
+* phase time: 54 ms
+* phase cmem: 62640 K
+Сервер: Загрузка симуляции жизни...
+* phase time: 3 ms
+* phase cmem: 62719 K
+Создание новой игры...
+* Creating new game...
+* Loading spawn registry...
+* 8641 spawn points are successfully loaded
+* Saving spawns...
+* Saving objects...
+* 14925 objects are successfully saved
+* Game all.sav is successfully saved to file '..\app_data\savedgames\all.sav'
+* New game is successfully created!
+* phase time: 4693 ms
+* phase cmem: 91831 K
+Сервер: Соединяемся...
+* phase time: 19 ms
+* phase cmem: 91910 K
+Клиент: Соединение с localhost...
+# Player not found. New player created.
+* client : connection accepted - <>
+* phase time: 6 ms
+* phase cmem: 91934 K
+Открытие потока...
+* phase time: 4 ms
+* phase cmem: 91934 K
+Загрузка формы объектов...
+* phase time: 4894 ms
+* phase cmem: 164603 K
+Загрузка шейдеров...
+* phase time: 326 ms
+* phase cmem: 166120 K
+Загрузка геометрии...
+* [Loading VB] 65532 verts, 2047 Kb
+* [Loading VB] 65525 verts, 2047 Kb
+* [Loading VB] 65535 verts, 2047 Kb
+* [Loading VB] 65466 verts, 2045 Kb
+* [Loading VB] 17208 verts, 537 Kb
+* [Loading VB] 65533 verts, 2047 Kb
+* [Loading VB] 65534 verts, 2047 Kb
+* [Loading VB] 65534 verts, 2047 Kb
+* [Loading VB] 65531 verts, 2047 Kb
+* [Loading VB] 65535 verts, 2047 Kb
+* [Loading VB] 65535 verts, 2047 Kb
+* [Loading VB] 46595 verts, 1456 Kb
+* [Loading VB] 65534 verts, 2047 Kb
+* [Loading VB] 65533 verts, 2047 Kb
+* [Loading VB] 65535 verts, 2047 Kb
+* [Loading VB] 65532 verts, 2047 Kb
+* [Loading VB] 65533 verts, 2047 Kb
+* [Loading VB] 65533 verts, 2047 Kb
+* [Loading VB] 53181 verts, 1661 Kb
+* [Loading IB] 1048575 indices, 2047 Kb
+* [Loading IB] 1048572 indices, 2047 Kb
+* [Loading IB] 1048572 indices, 2047 Kb
+* [Loading IB] 1048572 indices, 2047 Kb
+* [Loading IB] 1048572 indices, 2047 Kb
+* [Loading IB] 1048572 indices, 2047 Kb
+* [Loading IB] 1048575 indices, 2047 Kb
+* [Loading IB] 1048572 indices, 2047 Kb
+* [Loading IB] 1048575 indices, 2047 Kb
+* [Loading IB] 228285 indices, 445 Kb
+* phase time: 72 ms
+* phase cmem: 221858 K
+Загрузка базы пространств...
+* phase time: 1543 ms
+* phase cmem: 225762 K
+Загрузка детальных объектов...
+* [DETAILS] VertexConsts(256), Batch(61)
+* [DETAILS] 40687 v(20), 26352 p
+* [DETAILS] Batch(61), VB(794K), IB(154K)
+* phase time: 40 ms
+* phase cmem: 226765 K
+Загрузка секторов и порталов...
+* Loading HOM: c:\engine\shb-engine\release-win32\..\gamedata\levels\l01_escape\level.hom
+* phase time: 21 ms
+* phase cmem: 226922 K
+Загрузка ИИ объектов...
+- Loading music tracks from 'l01_escape_musics'...
+* phase time: 22 ms
+* phase cmem: 226959 K
+Клиент: Создание...
+- Game configuring : Started 
+- Game configuring : Finished 
+* phase time: 220 ms
+* phase cmem: 234157 K
+Загрузка текстур...
+* t-report - base: 630, 168010 K
+* t-report - lmap: 10, 10241 K
+***FATAL***: Too many lmap-textures (limit: 8 textures or 32M).
+        Reduce pixel density (worse) or use more vertex lighting (better).
+* phase time: 629 ms
+* phase cmem: 426967 K
+Клиент: Синхронизация...
+* phase time: 18 ms
+* phase cmem: 426967 K
+* [win32]: free[3397848 K], reserved[162732 K], committed[633660 K]
+* [ D3D ]: textures[178252 K]
+* [x-ray]: process heap[426967 K], game lua[25041 K], engine lua[236 K], render[0 K]
+* [x-ray]: economy: strings[2884 K], smem[0 K]
+* MEMORY USAGE: 546180 K
+~ Invalid syntax in call to 'r__tf_aniso'
+~ Valid arguments: integer value in range [1,16]
+* DVB created: 1536K
+* DIB created: 512K
+* SSample: 1024x768
+* SSample: enabled
+* GPU shading: vs(fffe0300/3.0/30), ps(ffff0300/3.0/30)
+* GPU vertex cache: recognized, 24
+*** RESET [0 ms]
+* MEMORY USAGE: 556709 K
+~ Invalid syntax in call to 'r__tf_aniso'
+~ Valid arguments: integer value in range [1,16]
+* DVB created: 1536K
+* DIB created: 512K
+* SSample: 1024x768
+* SSample: enabled
+* GPU shading: vs(fffe0300/3.0/30), ps(ffff0300/3.0/30)
+* GPU vertex cache: recognized, 24
+*** RESET [105 ms]
+* MEMORY USAGE: 540552 K
+~ Invalid syntax in call to 'r__tf_aniso'
+~ Valid arguments: integer value in range [1,16]
+part_3_jump
+part_4_crouch
+part_10_sprint
+~ g_god 1
+part_2_binocular
+part_12_relations
+!SV:ge_destroy: [200] not found on server
+!SV:ge_destroy: [21770] not found on server
+!SV:ge_destroy: [187] not found on server
+!SV:ge_destroy: [22020] not found on server
+!SV:ge_destroy: [191] not found on server
+!SV:ge_destroy: [219] not found on server
+!SV:ge_destroy: [210] not found on server
+!SV:ge_destroy: [205] not found on server
+!SV:ge_destroy: [31008] not found on server
+* DVB created: 1536K
+* DIB created: 512K
+* SSample: 1024x768
+* SSample: enabled
+* GPU shading: vs(fffe0300/3.0/30), ps(ffff0300/3.0/30)
+* GPU vertex cache: recognized, 24
+*** RESET [0 ms]
+* MEMORY USAGE: 593587 K
+~ Invalid syntax in call to 'r__tf_aniso'
+~ Valid arguments: integer value in range [1,16]
+* DVB created: 1536K
+* DIB created: 512K
+* SSample: 1024x768
+* SSample: enabled
+* GPU shading: vs(fffe0300/3.0/30), ps(ffff0300/3.0/30)
+* GPU vertex cache: recognized, 24
+*** RESET [158 ms]
+* MEMORY USAGE: 555609 K
+~ Invalid syntax in call to 'r__tf_aniso'
+~ Valid arguments: integer value in range [1,16]
+sv !ownership (entity already has parent) new_parent [0][actor:single_player] id_parent [0][actor:single_player] id_entity [928][outfit_bandit_m1:esc_outfit_bandit_m1] [92138]
+* DVB created: 1536K
+* DIB created: 512K
+* SSample: 1024x768
+* SSample: enabled
+* GPU shading: vs(fffe0300/3.0/30), ps(ffff0300/3.0/30)
+* GPU vertex cache: recognized, 24
+*** RESET [480 ms]
+* MEMORY USAGE: 554580 K
+~ Invalid syntax in call to 'r__tf_aniso'
+~ Valid arguments: integer value in range [1,16]
+sv !ownership (entity already has parent) new_parent [0][actor:single_player] id_parent [0][actor:single_player] id_entity [723][bandage:esc_bandage_0002] [136156]
+part_pda_diary
+!SV:ge_destroy: [46082] not found on server
+!SV:ge_destroy: [23561] not found on server
+!SV:ge_destroy: [59392] not found on server
+!SV:ge_destroy: [228] not found on server
+!SV:ge_destroy: [235] not found on server
+* Saving spawns...
+* Saving objects...
+* 15488 objects are successfully saved
+* Game SovaHiBlack_autosave.sav is successfully saved to file '..\app_data\savedgames\sovahiblack_autosave.sav'
+- Disconnect
+- Destroying level
+* DVB created: 1536K
+* DIB created: 512K
+* SSample: 1024x768
+* SSample: enabled
+* GPU shading: vs(fffe0300/3.0/30), ps(ffff0300/3.0/30)
+* GPU vertex cache: recognized, 24
+*** RESET [238 ms]
+"c:\engine\shb-engine\release-win32\binaries\engine.exe" 
+* phase time: 2 ms
+* phase cmem: 300975 K
+Сервер: Старт...
+* phase time: 322 ms
+* phase cmem: 284685 K
+Сервер: Загрузка симуляции жизни...
+* phase time: 38 ms
+* phase cmem: 284683 K
+Загрузка игры "sovahiblack_autosave.sav"...
+* Loading spawn registry...
+* 8641 spawn points are successfully loaded
+* Loading objects...
+* 15488 objects are successfully loaded
+* Game sovahiblack_autosave is successfully loaded from file '..\app_data\savedgames\sovahiblack_autosave.sav' (4.226s)
+* phase time: 4225 ms
+* phase cmem: 289667 K
+Сервер: Соединяемся...
+* phase time: 50 ms
+* phase cmem: 289670 K
+Клиент: Соединение с localhost...
+# Player not found. New player created.
+* client : connection accepted - <>
+* phase time: 60 ms
+* phase cmem: 289678 K
+Открытие потока...
+* phase time: 66 ms
+* phase cmem: 289678 K
+Загрузка формы объектов...
+* phase time: 5891 ms
+* phase cmem: 354661 K
+Загрузка шейдеров...
+* phase time: 593 ms
+* phase cmem: 355752 K
+Загрузка геометрии...
+* [Loading VB] 65531 verts, 2047 Kb
+* [Loading VB] 65532 verts, 2047 Kb
+* [Loading VB] 65530 verts, 2047 Kb
+* [Loading VB] 24512 verts, 766 Kb
+* [Loading VB] 65535 verts, 2047 Kb
+* [Loading VB] 65534 verts, 2047 Kb
+* [Loading VB] 65533 verts, 2047 Kb
+* [Loading VB] 65534 verts, 2047 Kb
+* [Loading VB] 65502 verts, 2046 Kb
+* [Loading VB] 65535 verts, 2047 Kb
+* [Loading VB] 65533 verts, 2047 Kb
+* [Loading VB] 65534 verts, 2047 Kb
+* [Loading VB] 51552 verts, 1611 Kb
+* [Loading VB] 65530 verts, 2047 Kb
+* [Loading VB] 62255 verts, 1945 Kb
+* [Loading IB] 1048572 indices, 2047 Kb
+* [Loading IB] 1048572 indices, 2047 Kb
+* [Loading IB] 1048575 indices, 2047 Kb
+* [Loading IB] 1048575 indices, 2047 Kb
+* [Loading IB] 1048575 indices, 2047 Kb
+* [Loading IB] 1048572 indices, 2047 Kb
+* [Loading IB] 1048572 indices, 2047 Kb
+* [Loading IB] 438036 indices, 855 Kb
+* phase time: 406 ms
+* phase cmem: 400170 K
+Загрузка базы пространств...
+* phase time: 741 ms
+* phase cmem: 401862 K
+Загрузка детальных объектов...
+* [DETAILS] VertexConsts(256), Batch(61)
+* [DETAILS] 40687 v(20), 26352 p
+* [DETAILS] Batch(61), VB(794K), IB(154K)
+* phase time: 106 ms
+* phase cmem: 402849 K
+Загрузка секторов и порталов...
+* Loading HOM: c:\engine\shb-engine\release-win32\..\gamedata\levels\l02_garbage\level.hom
+* phase time: 80 ms
+* phase cmem: 402915 K
+Загрузка ИИ объектов...
+- Loading music tracks from 'l02_garbage_musics'...
+* phase time: 62 ms
+* phase cmem: 402928 K
+Клиент: Создание...
+- Game configuring : Started 
+- Game configuring : Finished 
+* phase time: 53 ms
+* phase cmem: 407282 K
+Загрузка текстур...
+* t-report - base: 688, 192399 K
+* t-report - lmap: 6, 6144 K
+* phase time: 4589 ms
+* phase cmem: 509715 K
+Клиент: Синхронизация...
+* phase time: 35 ms
+* phase cmem: 509715 K
+* [win32]: free[3219912 K], reserved[249988 K], committed[724340 K]
+* [ D3D ]: textures[198543 K]
+* [x-ray]: process heap[509715 K], game lua[21215 K], engine lua[171 K], render[1999 K]
+* [x-ray]: economy: strings[28172 K], smem[8715 K]
+* MEMORY USAGE: 527907 K
+~ Invalid syntax in call to 'r__tf_aniso'
+~ Valid arguments: integer value in range [1,16]
+!SV:ge_destroy: [1208] not found on server
+!SV:ge_destroy: [1192] not found on server
+!SV:ge_destroy: [1202] not found on server
+!SV:ge_destroy: [1197] not found on server
+sv !ownership (entity already has parent) new_parent [0][actor:single_player] id_parent [0][actor:single_player] id_entity [1209][wpn_pb:wpn_pb1209] [260645]
+!SV:ge_destroy: [26629] not found on server
+!SV:ge_destroy: [1281] not found on server
+!SV:ge_destroy: [1274] not found on server
+!SV:ge_destroy: [26894] not found on server
+!SV:ge_destroy: [1262] not found on server
+!SV:ge_destroy: [27144] not found on server
+!SV:ge_destroy: [1267] not found on server
+!SV:ge_destroy: [27152] not found on server
+!SV:ge_destroy: [1230] not found on server
+!SV:ge_destroy: [27145] not found on server
+!SV:ge_destroy: [27415] not found on server
+!SV:ge_destroy: [27656] not found on server
+!SV:ge_destroy: [1215] not found on server
+!SV:ge_destroy: [28161] not found on server
+~ jump_to_level l01_escape
+* Saving spawns...
+* Saving objects...
+* 15628 objects are successfully saved
+* Game SovaHiBlack_autosave.sav is successfully saved to file '..\app_data\savedgames\sovahiblack_autosave.sav'
+- Disconnect
+- Destroying level
+* DVB created: 1536K
+* DIB created: 512K
+* SSample: 1024x768
+* SSample: enabled
+* GPU shading: vs(fffe0300/3.0/30), ps(ffff0300/3.0/30)
+* GPU vertex cache: recognized, 24
+*** RESET [256 ms]
+"c:\engine\shb-engine\release-win32\binaries\engine.exe" 
+* phase time: 3 ms
+* phase cmem: 288412 K
+Сервер: Старт...
+* phase time: 345 ms
+* phase cmem: 288480 K
+Сервер: Загрузка симуляции жизни...
+* phase time: 85 ms
+* phase cmem: 288482 K
+Загрузка игры "sovahiblack_autosave.sav"...
+* Loading spawn registry...
+* 8641 spawn points are successfully loaded
+* Loading objects...
+* 15628 objects are successfully loaded
+* Game sovahiblack_autosave is successfully loaded from file '..\app_data\savedgames\sovahiblack_autosave.sav' (5.403s)
+* phase time: 5401 ms
+* phase cmem: 295059 K
+Сервер: Соединяемся...
+* phase time: 70 ms
+* phase cmem: 295057 K
+Клиент: Соединение с localhost...
+# Player not found. New player created.
+* client : connection accepted - <>
+* phase time: 44 ms
+* phase cmem: 295065 K
+Открытие потока...
+* phase time: 46 ms
+* phase cmem: 295065 K
+Загрузка формы объектов...
+* phase time: 7323 ms
+* phase cmem: 367720 K
+Загрузка шейдеров...
+* phase time: 615 ms
+* phase cmem: 368787 K
+Загрузка геометрии...
+* [Loading VB] 65532 verts, 2047 Kb
+* [Loading VB] 65525 verts, 2047 Kb
+* [Loading VB] 65535 verts, 2047 Kb
+* [Loading VB] 65466 verts, 2045 Kb
+* [Loading VB] 17208 verts, 537 Kb
+* [Loading VB] 65533 verts, 2047 Kb
+* [Loading VB] 65534 verts, 2047 Kb
+* [Loading VB] 65534 verts, 2047 Kb
+* [Loading VB] 65531 verts, 2047 Kb
+* [Loading VB] 65535 verts, 2047 Kb
+* [Loading VB] 65535 verts, 2047 Kb
+* [Loading VB] 46595 verts, 1456 Kb
+* [Loading VB] 65534 verts, 2047 Kb
+* [Loading VB] 65533 verts, 2047 Kb
+* [Loading VB] 65535 verts, 2047 Kb
+* [Loading VB] 65532 verts, 2047 Kb
+* [Loading VB] 65533 verts, 2047 Kb
+* [Loading VB] 65533 verts, 2047 Kb
+* [Loading VB] 53181 verts, 1661 Kb
+* [Loading IB] 1048575 indices, 2047 Kb
+* [Loading IB] 1048572 indices, 2047 Kb
+* [Loading IB] 1048572 indices, 2047 Kb
+* [Loading IB] 1048572 indices, 2047 Kb
+* [Loading IB] 1048572 indices, 2047 Kb
+* [Loading IB] 1048572 indices, 2047 Kb
+* [Loading IB] 1048575 indices, 2047 Kb
+* [Loading IB] 1048572 indices, 2047 Kb
+* [Loading IB] 1048575 indices, 2047 Kb
+* [Loading IB] 228285 indices, 445 Kb
+* phase time: 131 ms
+* phase cmem: 424499 K
+Загрузка базы пространств...
+* phase time: 2279 ms
+* phase cmem: 426657 K
+Загрузка детальных объектов...
+* [DETAILS] VertexConsts(256), Batch(61)
+* [DETAILS] 40687 v(20), 26352 p
+* [DETAILS] Batch(61), VB(794K), IB(154K)
+* phase time: 88 ms
+* phase cmem: 427644 K
+Загрузка секторов и порталов...
+* Loading HOM: c:\engine\shb-engine\release-win32\..\gamedata\levels\l01_escape\level.hom
+* phase time: 50 ms
+* phase cmem: 427785 K
+Загрузка ИИ объектов...
+- Loading music tracks from 'l01_escape_musics'...
+* phase time: 39 ms
+* phase cmem: 427785 K
+Клиент: Создание...
+- Game configuring : Started 
+- Game configuring : Finished 
+* phase time: 71 ms
+* phase cmem: 436489 K
+Загрузка текстур...
+* t-report - base: 738, 201173 K
+* t-report - lmap: 10, 10241 K
+***FATAL***: Too many lmap-textures (limit: 8 textures or 32M).
+        Reduce pixel density (worse) or use more vertex lighting (better).
+* phase time: 593 ms
+* phase cmem: 551072 K
+Клиент: Синхронизация...
+* phase time: 40 ms
+* phase cmem: 551072 K
+* [win32]: free[3173188 K], reserved[234296 K], committed[786756 K]
+* [ D3D ]: textures[211414 K]
+* [x-ray]: process heap[551072 K], game lua[21140 K], engine lua[189 K], render[2084 K]
+* [x-ray]: economy: strings[39279 K], smem[8717 K]
+* MEMORY USAGE: 572175 K
+~ Invalid syntax in call to 'r__tf_aniso'
+~ Valid arguments: integer value in range [1,16]
+!SV:ge_destroy: [47618] not found on server
+!SV:ge_destroy: [61705] not found on server
+~ jump_to_level l02_garbage
+* Saving spawns...
+* Saving objects...
+* 15682 objects are successfully saved
+* Game SovaHiBlack_autosave.sav is successfully saved to file '..\app_data\savedgames\sovahiblack_autosave.sav'
+- Disconnect
+- Destroying level
+* DVB created: 1536K
+* DIB created: 512K
+* SSample: 1024x768
+* SSample: enabled
+* GPU shading: vs(fffe0300/3.0/30), ps(ffff0300/3.0/30)
+* GPU vertex cache: recognized, 24
+*** RESET [213 ms]
+"c:\engine\shb-engine\release-win32\binaries\engine.exe" 
+* phase time: 2 ms
+* phase cmem: 288854 K
+Сервер: Старт...
+* phase time: 189 ms
+* phase cmem: 288894 K
+Сервер: Загрузка симуляции жизни...
+* phase time: 39 ms
+* phase cmem: 288883 K
+Загрузка игры "sovahiblack_autosave.sav"...
+* Loading spawn registry...
+* 8641 spawn points are successfully loaded
+* Loading objects...
+* 15682 objects are successfully loaded
+* Game sovahiblack_autosave is successfully loaded from file '..\app_data\savedgames\sovahiblack_autosave.sav' (4.081s)
+* phase time: 4080 ms
+* phase cmem: 293825 K
+Сервер: Соединяемся...
+* phase time: 49 ms
+* phase cmem: 293828 K
+Клиент: Соединение с localhost...
+# Player not found. New player created.
+* client : connection accepted - <>
+* phase time: 38 ms
+* phase cmem: 293836 K
+Открытие потока...
+* phase time: 34 ms
+* phase cmem: 293836 K
+Загрузка формы объектов...
+* phase time: 5715 ms
+* phase cmem: 358819 K
+Загрузка шейдеров...
+* phase time: 531 ms
+* phase cmem: 359910 K
+Загрузка геометрии...
+* [Loading VB] 65531 verts, 2047 Kb
+* [Loading VB] 65532 verts, 2047 Kb
+* [Loading VB] 65530 verts, 2047 Kb
+* [Loading VB] 24512 verts, 766 Kb
+* [Loading VB] 65535 verts, 2047 Kb
+* [Loading VB] 65534 verts, 2047 Kb
+* [Loading VB] 65533 verts, 2047 Kb
+* [Loading VB] 65534 verts, 2047 Kb
+* [Loading VB] 65502 verts, 2046 Kb
+* [Loading VB] 65535 verts, 2047 Kb
+* [Loading VB] 65533 verts, 2047 Kb
+* [Loading VB] 65534 verts, 2047 Kb
+* [Loading VB] 51552 verts, 1611 Kb
+* [Loading VB] 65530 verts, 2047 Kb
+* [Loading VB] 62255 verts, 1945 Kb
+* [Loading IB] 1048572 indices, 2047 Kb
+* [Loading IB] 1048572 indices, 2047 Kb
+* [Loading IB] 1048575 indices, 2047 Kb
+* [Loading IB] 1048575 indices, 2047 Kb
+* [Loading IB] 1048575 indices, 2047 Kb
+* [Loading IB] 1048572 indices, 2047 Kb
+* [Loading IB] 1048572 indices, 2047 Kb
+* [Loading IB] 438036 indices, 855 Kb
+* phase time: 103 ms
+* phase cmem: 404329 K
+Загрузка базы пространств...
+* phase time: 806 ms
+* phase cmem: 406020 K
+Загрузка детальных объектов...
+* [DETAILS] VertexConsts(256), Batch(61)
+* [DETAILS] 40687 v(20), 26352 p
+* [DETAILS] Batch(61), VB(794K), IB(154K)
+* phase time: 89 ms
+* phase cmem: 407007 K
+Загрузка секторов и порталов...
+* Loading HOM: c:\engine\shb-engine\release-win32\..\gamedata\levels\l02_garbage\level.hom
+* phase time: 39 ms
+* phase cmem: 407073 K
+Загрузка ИИ объектов...
+- Loading music tracks from 'l02_garbage_musics'...
+* phase time: 33 ms
+* phase cmem: 407073 K
+Клиент: Создание...
+- Game configuring : Started 
+- Game configuring : Finished 
+* phase time: 57 ms
+* phase cmem: 411547 K
+Загрузка текстур...
+* t-report - base: 692, 193466 K
+* t-report - lmap: 6, 6144 K
+* phase time: 488 ms
+* phase cmem: 513743 K
+Клиент: Синхронизация...
+* phase time: 41 ms
+* phase cmem: 513746 K
+* [win32]: free[3158640 K], reserved[295104 K], committed[740496 K]
+* [ D3D ]: textures[199611 K]
+* [x-ray]: process heap[513746 K], game lua[21268 K], engine lua[196 K], render[2120 K]
+* [x-ray]: economy: strings[53101 K], smem[8717 K]
+* MEMORY USAGE: 540959 K
+~ Invalid syntax in call to 'r__tf_aniso'
+~ Valid arguments: integer value in range [1,16]
+~ jump_to_level l03_agroprom
+* Saving spawns...
+* Saving objects...
+* 15682 objects are successfully saved
+* Game SovaHiBlack_autosave.sav is successfully saved to file '..\app_data\savedgames\sovahiblack_autosave.sav'
+- Disconnect
+- Destroying level
+* DVB created: 1536K
+* DIB created: 512K
+* SSample: 1024x768
+* SSample: enabled
+* GPU shading: vs(fffe0300/3.0/30), ps(ffff0300/3.0/30)
+* GPU vertex cache: recognized, 24
+*** RESET [149 ms]
+"c:\engine\shb-engine\release-win32\binaries\engine.exe" 
+* phase time: 2 ms
+* phase cmem: 288691 K
+Сервер: Старт...
+* phase time: 170 ms
+* phase cmem: 288864 K
+Сервер: Загрузка симуляции жизни...
+* phase time: 43 ms
+* phase cmem: 288852 K
+Загрузка игры "sovahiblack_autosave.sav"...
+* Loading spawn registry...
+* 8641 spawn points are successfully loaded
+* Loading objects...
+* 15682 objects are successfully loaded
+* Game sovahiblack_autosave is successfully loaded from file '..\app_data\savedgames\sovahiblack_autosave.sav' (4.743s)
+* phase time: 4742 ms
+* phase cmem: 294185 K
+Сервер: Соединяемся...
+* phase time: 49 ms
+* phase cmem: 294188 K
+Клиент: Соединение с localhost...
+# Player not found. New player created.
+* client : connection accepted - <>
+* phase time: 44 ms
+* phase cmem: 294196 K
+Открытие потока...
+* phase time: 69 ms
+* phase cmem: 294196 K
+Загрузка формы объектов...
+* phase time: 4801 ms
+* phase cmem: 346867 K
+Загрузка шейдеров...
+* phase time: 677 ms
+* phase cmem: 347970 K
+Загрузка геометрии...
+* [Loading VB] 65506 verts, 2047 Kb
+* [Loading VB] 65362 verts, 2042 Kb
+* [Loading VB] 21425 verts, 669 Kb
+* [Loading VB] 65535 verts, 2047 Kb
+* [Loading VB] 65533 verts, 2047 Kb
+* [Loading VB] 65534 verts, 2047 Kb
+* [Loading VB] 65534 verts, 2047 Kb
+* [Loading VB] 65533 verts, 2047 Kb
+* [Loading VB] 65535 verts, 2047 Kb
+* [Loading VB] 65533 verts, 2047 Kb
+* [Loading VB] 50456 verts, 1576 Kb
+* [Loading VB] 65535 verts, 2047 Kb
+* [Loading VB] 65533 verts, 2047 Kb
+* [Loading VB] 65534 verts, 2047 Kb
+* [Loading VB] 65532 verts, 2047 Kb
+* [Loading VB] 7538 verts, 235 Kb
+* [Loading IB] 1048575 indices, 2047 Kb
+* [Loading IB] 1048575 indices, 2047 Kb
+* [Loading IB] 1048575 indices, 2047 Kb
+* [Loading IB] 1048572 indices, 2047 Kb
+* [Loading IB] 1048572 indices, 2047 Kb
+* [Loading IB] 1048569 indices, 2047 Kb
+* [Loading IB] 340623 indices, 665 Kb
+* phase time: 377 ms
+* phase cmem: 390260 K
+Загрузка базы пространств...
+* phase time: 627 ms
+* phase cmem: 391580 K
+Загрузка детальных объектов...
+* [DETAILS] VertexConsts(256), Batch(61)
+* [DETAILS] 40687 v(20), 26352 p
+* [DETAILS] Batch(61), VB(794K), IB(154K)
+* phase time: 129 ms
+* phase cmem: 392567 K
+Загрузка секторов и порталов...
+* Loading HOM: c:\engine\shb-engine\release-win32\..\gamedata\levels\l03_agroprom\level.hom
+* phase time: 63 ms
+* phase cmem: 392661 K
+Загрузка ИИ объектов...
+- Loading music tracks from 'l03_agroprom_musics'...
+* phase time: 160 ms
+* phase cmem: 392674 K
+Клиент: Создание...
+- Game configuring : Started 
+- Game configuring : Finished 
+* phase time: 57 ms
+* phase cmem: 396446 K
+Загрузка текстур...
+* t-report - base: 710, 189906 K
+* t-report - lmap: 12, 12289 K
+***FATAL***: Too many lmap-textures (limit: 8 textures or 32M).
+        Reduce pixel density (worse) or use more vertex lighting (better).
+* phase time: 3069 ms
+* phase cmem: 501785 K
+Клиент: Синхронизация...
+* phase time: 37 ms
+* phase cmem: 501785 K
+* [win32]: free[3207680 K], reserved[258152 K], committed[728408 K]
+* [ D3D ]: textures[202195 K]
+* [x-ray]: process heap[501785 K], game lua[21256 K], engine lua[217 K], render[2133 K]
+* [x-ray]: economy: strings[54326 K], smem[8717 K]
+* MEMORY USAGE: 510307 K
+~ Invalid syntax in call to 'r__tf_aniso'
+~ Valid arguments: integer value in range [1,16]
+* Saving spawns...
+* Saving objects...
+* 15693 objects are successfully saved
+* Game SovaHiBlack_autosave.sav is successfully saved to file '..\app_data\savedgames\sovahiblack_autosave.sav'
+- Disconnect
+- Destroying level
+* DVB created: 1536K
+* DIB created: 512K
+* SSample: 1024x768
+* SSample: enabled
+* GPU shading: vs(fffe0300/3.0/30), ps(ffff0300/3.0/30)
+* GPU vertex cache: recognized, 24
+*** RESET [135 ms]
+"c:\engine\shb-engine\release-win32\binaries\engine.exe" 
+* phase time: 2 ms
+* phase cmem: 294231 K
+Сервер: Старт...
+* phase time: 172 ms
+* phase cmem: 294397 K
+Сервер: Загрузка симуляции жизни...
+* phase time: 37 ms
+* phase cmem: 294406 K
+Загрузка игры "sovahiblack_autosave.sav"...
+* Loading spawn registry...
+* 8641 spawn points are successfully loaded
+* Loading objects...
+* 15693 objects are successfully loaded
+* Game sovahiblack_autosave is successfully loaded from file '..\app_data\savedgames\sovahiblack_autosave.sav' (4.309s)
+* phase time: 4308 ms
+* phase cmem: 299306 K
+Сервер: Соединяемся...
+* phase time: 46 ms
+* phase cmem: 299309 K
+Клиент: Соединение с localhost...
+# Player not found. New player created.
+* client : connection accepted - <>
+* phase time: 35 ms
+* phase cmem: 299317 K
+Открытие потока...
+* phase time: 35 ms
+* phase cmem: 299317 K
+Загрузка формы объектов...
+* phase time: 5589 ms
+* phase cmem: 364300 K
+Загрузка шейдеров...
+* phase time: 533 ms
+* phase cmem: 365391 K
+Загрузка геометрии...
+* [Loading VB] 65531 verts, 2047 Kb
+* [Loading VB] 65532 verts, 2047 Kb
+* [Loading VB] 65530 verts, 2047 Kb
+* [Loading VB] 24512 verts, 766 Kb
+* [Loading VB] 65535 verts, 2047 Kb
+* [Loading VB] 65534 verts, 2047 Kb
+* [Loading VB] 65533 verts, 2047 Kb
+* [Loading VB] 65534 verts, 2047 Kb
+* [Loading VB] 65502 verts, 2046 Kb
+* [Loading VB] 65535 verts, 2047 Kb
+* [Loading VB] 65533 verts, 2047 Kb
+* [Loading VB] 65534 verts, 2047 Kb
+* [Loading VB] 51552 verts, 1611 Kb
+* [Loading VB] 65530 verts, 2047 Kb
+* [Loading VB] 62255 verts, 1945 Kb
+* [Loading IB] 1048572 indices, 2047 Kb
+* [Loading IB] 1048572 indices, 2047 Kb
+* [Loading IB] 1048575 indices, 2047 Kb
+* [Loading IB] 1048575 indices, 2047 Kb
+* [Loading IB] 1048575 indices, 2047 Kb
+* [Loading IB] 1048572 indices, 2047 Kb
+* [Loading IB] 1048572 indices, 2047 Kb
+* [Loading IB] 438036 indices, 855 Kb
+* phase time: 104 ms
+* phase cmem: 409809 K
+Загрузка базы пространств...
+* phase time: 791 ms
+* phase cmem: 411500 K
+Загрузка детальных объектов...
+* [DETAILS] VertexConsts(256), Batch(61)
+* [DETAILS] 40687 v(20), 26352 p
+* [DETAILS] Batch(61), VB(794K), IB(154K)
+* phase time: 88 ms
+* phase cmem: 412487 K
+Загрузка секторов и порталов...
+* Loading HOM: c:\engine\shb-engine\release-win32\..\gamedata\levels\l02_garbage\level.hom
+* phase time: 37 ms
+* phase cmem: 412552 K
+Загрузка ИИ объектов...
+- Loading music tracks from 'l02_garbage_musics'...
+* phase time: 35 ms
+* phase cmem: 412552 K
+Клиент: Создание...
+- Game configuring : Started 
+- Game configuring : Finished 
+* phase time: 61 ms
+* phase cmem: 417557 K
+Загрузка текстур...
+* t-report - base: 698, 195557 K
+* t-report - lmap: 6, 6144 K
+* phase time: 503 ms
+* phase cmem: 518836 K
+Клиент: Синхронизация...
+* phase time: 41 ms
+* phase cmem: 518836 K
+* [win32]: free[3222856 K], reserved[227636 K], committed[743748 K]
+* [ D3D ]: textures[201702 K]
+* [x-ray]: process heap[518836 K], game lua[21277 K], engine lua[226 K], render[2138 K]
+* [x-ray]: economy: strings[55000 K], smem[8713 K]
+* MEMORY USAGE: 538981 K
+~ Invalid syntax in call to 'r__tf_aniso'
+~ Valid arguments: integer value in range [1,16]
+!SV:ge_destroy: [1572] not found on server
+!SV:ge_destroy: [29184] not found on server
+!SV:ge_destroy: [1359] not found on server
+!SV:ge_destroy: [1365] not found on server
+!SV:ge_destroy: [1419] not found on server
+!SV:ge_destroy: [1426] not found on server
+!SV:ge_destroy: [29702] not found on server
+!SV:ge_destroy: [29696] not found on server
+!SV:ge_destroy: [29971] not found on server
+!SV:ge_destroy: [30464] not found on server
+!SV:ge_destroy: [30725] not found on server
+!SV:ge_destroy: [30726] not found on server
+!SV:ge_destroy: [1565] not found on server
+!SV:ge_destroy: [1586] not found on server
+!SV:ge_destroy: [1578] not found on server
+sv !ownership (entity already has parent) new_parent [0][actor:single_player] id_parent [0][actor:single_player] id_entity [1277][wpn_bm16:wpn_bm161277] [383230]
+* Saving spawns...
+* Saving objects...
+* 15807 objects are successfully saved
+* Game SovaHiBlack_autosave.sav is successfully saved to file '..\app_data\savedgames\sovahiblack_autosave.sav'
+- Disconnect
+- Destroying level
+* DVB created: 1536K
+* DIB created: 512K
+* SSample: 1024x768
+* SSample: enabled
+* GPU shading: vs(fffe0300/3.0/30), ps(ffff0300/3.0/30)
+* GPU vertex cache: recognized, 24
+*** RESET [194 ms]
+"c:\engine\shb-engine\release-win32\binaries\engine.exe" 
+* phase time: 3 ms
+* phase cmem: 295684 K
+Сервер: Старт...
+* phase time: 241 ms
+* phase cmem: 295770 K
+Сервер: Загрузка симуляции жизни...
+* phase time: 66 ms
+* phase cmem: 295770 K
+Загрузка игры "sovahiblack_autosave.sav"...
+* Loading spawn registry...
+* 8641 spawn points are successfully loaded
+* Loading objects...
+* 15807 objects are successfully loaded
+* Game sovahiblack_autosave is successfully loaded from file '..\app_data\savedgames\sovahiblack_autosave.sav' (4.563s)
+* phase time: 4562 ms
+* phase cmem: 301141 K
+Сервер: Соединяемся...
+* phase time: 51 ms
+* phase cmem: 301132 K
+Клиент: Соединение с localhost...
+# Player not found. New player created.
+* client : connection accepted - <>
+* phase time: 40 ms
+* phase cmem: 301140 K
+Открытие потока...
+* phase time: 35 ms
+* phase cmem: 301140 K
+Загрузка формы объектов...
+* phase time: 4551 ms
+* phase cmem: 353811 K
+Загрузка шейдеров...
+* phase time: 685 ms
+* phase cmem: 354914 K
+Загрузка геометрии...
+* [Loading VB] 65506 verts, 2047 Kb
+* [Loading VB] 65362 verts, 2042 Kb
+* [Loading VB] 21425 verts, 669 Kb
+* [Loading VB] 65535 verts, 2047 Kb
+* [Loading VB] 65533 verts, 2047 Kb
+* [Loading VB] 65534 verts, 2047 Kb
+* [Loading VB] 65534 verts, 2047 Kb
+* [Loading VB] 65533 verts, 2047 Kb
+* [Loading VB] 65535 verts, 2047 Kb
+* [Loading VB] 65533 verts, 2047 Kb
+* [Loading VB] 50456 verts, 1576 Kb
+* [Loading VB] 65535 verts, 2047 Kb
+* [Loading VB] 65533 verts, 2047 Kb
+* [Loading VB] 65534 verts, 2047 Kb
+* [Loading VB] 65532 verts, 2047 Kb
+* [Loading VB] 7538 verts, 235 Kb
+* [Loading IB] 1048575 indices, 2047 Kb
+* [Loading IB] 1048575 indices, 2047 Kb
+* [Loading IB] 1048575 indices, 2047 Kb
+* [Loading IB] 1048572 indices, 2047 Kb
+* [Loading IB] 1048572 indices, 2047 Kb
+* [Loading IB] 1048569 indices, 2047 Kb
+* [Loading IB] 340623 indices, 665 Kb
+* phase time: 106 ms
+* phase cmem: 397201 K
+Загрузка базы пространств...
+* phase time: 683 ms
+* phase cmem: 398517 K
+Загрузка детальных объектов...
+* [DETAILS] VertexConsts(256), Batch(61)
+* [DETAILS] 40687 v(20), 26352 p
+* [DETAILS] Batch(61), VB(794K), IB(154K)
+* phase time: 103 ms
+* phase cmem: 399504 K
+Загрузка секторов и порталов...
+* Loading HOM: c:\engine\shb-engine\release-win32\..\gamedata\levels\l03_agroprom\level.hom
+* phase time: 41 ms
+* phase cmem: 399598 K
+Загрузка ИИ объектов...
+- Loading music tracks from 'l03_agroprom_musics'...
+* phase time: 35 ms
+* phase cmem: 399600 K
+Клиент: Создание...
+- Game configuring : Started 
+- Game configuring : Finished 
+* phase time: 55 ms
+* phase cmem: 404760 K
+Загрузка текстур...
+* t-report - base: 718, 192254 K
+* t-report - lmap: 12, 12289 K
+***FATAL***: Too many lmap-textures (limit: 8 textures or 32M).
+        Reduce pixel density (worse) or use more vertex lighting (better).
+* phase time: 526 ms
+* phase cmem: 509181 K
+Клиент: Синхронизация...
+* phase time: 39 ms
+* phase cmem: 509181 K
+* [win32]: free[3238884 K], reserved[219696 K], committed[735660 K]
+* [ D3D ]: textures[204543 K]
+* [x-ray]: process heap[509181 K], game lua[21251 K], engine lua[247 K], render[2409 K]
+* [x-ray]: economy: strings[75914 K], smem[8713 K]
+* MEMORY USAGE: 534721 K
+~ Invalid syntax in call to 'r__tf_aniso'
+~ Valid arguments: integer value in range [1,16]
+!SV:ge_destroy: [2306] not found on server
+!SV:ge_destroy: [2292] not found on server
+!SV:ge_destroy: [2278] not found on server
+!SV:ge_destroy: [2433] not found on server
+!SV:ge_destroy: [2299] not found on server
+!SV:ge_destroy: [2265] not found on server
+!SV:ge_destroy: [2440] not found on server
+sv !ownership (entity already has parent) new_parent [0][actor:single_player] id_parent [0][actor:single_player] id_entity [2723][af_medusa:af_medusa2723] [396577]
+!SV:ge_destroy: [2285] not found on server
+!SV:ge_destroy: [34054] not found on server
+!SV:ge_destroy: [34055] not found on server
+!SV:ge_destroy: [34314] not found on server
+sv !ownership (entity already has parent) new_parent [0][actor:single_player] id_parent [0][actor:single_player] id_entity [2354][wpn_ak74:wpn_ak742354] [401527]
+!SV:ge_destroy: [33808] not found on server
+* Saving spawns...
+* Saving objects...
+* 15904 objects are successfully saved
+* Game SovaHiBlack_autosave.sav is successfully saved to file '..\app_data\savedgames\sovahiblack_autosave.sav'
+- Disconnect
+- Destroying level
+* DVB created: 1536K
+* DIB created: 512K
+* SSample: 1024x768
+* SSample: enabled
+* GPU shading: vs(fffe0300/3.0/30), ps(ffff0300/3.0/30)
+* GPU vertex cache: recognized, 24
+*** RESET [219 ms]
+"c:\engine\shb-engine\release-win32\binaries\engine.exe" 
+* phase time: 4 ms
+* phase cmem: 298416 K
+Сервер: Старт...
+* phase time: 244 ms
+* phase cmem: 298492 K
+Сервер: Загрузка симуляции жизни...
+* phase time: 66 ms
+* phase cmem: 298492 K
+Загрузка игры "sovahiblack_autosave.sav"...
+* Loading spawn registry...
+* 8641 spawn points are successfully loaded
+* Loading objects...
+* 15904 objects are successfully loaded
+* Game sovahiblack_autosave is successfully loaded from file '..\app_data\savedgames\sovahiblack_autosave.sav' (4.499s)
+* phase time: 4498 ms
+* phase cmem: 300494 K
+Сервер: Соединяемся...
+* phase time: 47 ms
+* phase cmem: 300485 K
+Клиент: Соединение с localhost...
+# Player not found. New player created.
+* client : connection accepted - <>
+* phase time: 42 ms
+* phase cmem: 300493 K
+Открытие потока...
+* phase time: 70 ms
+* phase cmem: 300493 K
+Загрузка формы объектов...
+* phase time: 1500 ms
+* phase cmem: 318614 K
+Загрузка шейдеров...
+* phase time: 335 ms
+* phase cmem: 319556 K
+Загрузка геометрии...
+* [Loading VB] 4188 verts, 130 Kb
+* [Loading VB] 65500 verts, 2046 Kb
+* [Loading VB] 65535 verts, 2047 Kb
+* [Loading VB] 65534 verts, 2047 Kb
+* [Loading VB] 65534 verts, 2047 Kb
+* [Loading VB] 65535 verts, 2047 Kb
+* [Loading VB] 65535 verts, 2047 Kb
+* [Loading VB] 65525 verts, 2047 Kb
+* [Loading VB] 65387 verts, 2043 Kb
+* [Loading VB] 65355 verts, 2042 Kb
+* [Loading VB] 8137 verts, 254 Kb
+* [Loading VB] 2246 verts, 70 Kb
+* [Loading IB] 1048575 indices, 2047 Kb
+* [Loading IB] 1048575 indices, 2047 Kb
+* [Loading IB] 1048575 indices, 2047 Kb
+* [Loading IB] 1048572 indices, 2047 Kb
+* [Loading IB] 1048572 indices, 2047 Kb
+* [Loading IB] 1048569 indices, 2047 Kb
+* [Loading IB] 508791 indices, 993 Kb
+* phase time: 303 ms
+* phase cmem: 351762 K
+Загрузка базы пространств...
+* phase time: 40 ms
+* phase cmem: 352648 K
+Загрузка детальных объектов...
+* phase time: 30 ms
+* phase cmem: 352648 K
+Загрузка секторов и порталов...
+* Loading HOM: c:\engine\shb-engine\release-win32\..\gamedata\levels\l03u_agr_underground\level.hom
+* phase time: 67 ms
+* phase cmem: 352747 K
+Загрузка ИИ объектов...
+- Loading music tracks from 'l03u_agr_underground_musics'...
+* phase time: 260 ms
+* phase cmem: 352762 K
+Клиент: Создание...
+- Game configuring : Started 
+- Game configuring : Finished 
+* phase time: 54 ms
+* phase cmem: 357010 K
+Загрузка текстур...
+* t-report - base: 552, 138225 K
+* t-report - lmap: 6, 6144 K
+* phase time: 1101 ms
+* phase cmem: 393634 K
+Клиент: Синхронизация...
+* phase time: 48 ms
+* phase cmem: 393634 K
+* [win32]: free[3332352 K], reserved[237072 K], committed[624816 K]
+* [ D3D ]: textures[144369 K]
+* [x-ray]: process heap[393634 K], game lua[21162 K], engine lua[256 K], render[2502 K]
+* [x-ray]: economy: strings[85240 K], smem[8711 K]
+* MEMORY USAGE: 411542 K
+~ Invalid syntax in call to 'r__tf_aniso'
+~ Valid arguments: integer value in range [1,16]
+!SV:ge_destroy: [3009] not found on server
+!SV:ge_destroy: [3002] not found on server
+!SV:ge_destroy: [35079] not found on server
+!SV:ge_destroy: [2995] not found on server
+!SV:ge_destroy: [34827] not found on server
+!SV:ge_destroy: [3030] not found on server
+!SV:ge_destroy: [3037] not found on server
+!SV:ge_destroy: [3187] not found on server
+!SV:ge_destroy: [35386] not found on server
+!SV:ge_destroy: [3093] not found on server
+!SV:ge_destroy: [3194] not found on server
+!SV:ge_destroy: [3086] not found on server
+!SV:ge_destroy: [3079] not found on server
+!SV:ge_destroy: [3072] not found on server
+!SV:ge_destroy: [3065] not found on server
+!SV:ge_destroy: [3058] not found on server
+!SV:ge_destroy: [46607] not found on server
+sv !ownership (entity already has parent) new_parent [0][actor:single_player] id_parent [0][actor:single_player] id_entity [3068][wpn_ak74:wpn_ak743068] [521090]
+!SV:ge_destroy: [46854] not found on server
+* Saving spawns...
+* Saving objects...
+* 15978 objects are successfully saved
+* Game SovaHiBlack_autosave.sav is successfully saved to file '..\app_data\savedgames\sovahiblack_autosave.sav'
+- Disconnect
+- Destroying level
+* DVB created: 1536K
+* DIB created: 512K
+* SSample: 1024x768
+* SSample: enabled
+* GPU shading: vs(fffe0300/3.0/30), ps(ffff0300/3.0/30)
+* GPU vertex cache: recognized, 24
+*** RESET [252 ms]
+"c:\engine\shb-engine\release-win32\binaries\engine.exe" 
+* phase time: 2 ms
+* phase cmem: 307019 K
+Сервер: Старт...
+* phase time: 220 ms
+* phase cmem: 307136 K
+Сервер: Загрузка симуляции жизни...
+* phase time: 47 ms
+* phase cmem: 307130 K
+Загрузка игры "sovahiblack_autosave.sav"...
+* Loading spawn registry...
+* 8641 spawn points are successfully loaded
+* Loading objects...
+* 15978 objects are successfully loaded
+* Game sovahiblack_autosave is successfully loaded from file '..\app_data\savedgames\sovahiblack_autosave.sav' (5.268s)
+* phase time: 5267 ms
+* phase cmem: 312550 K
+Сервер: Соединяемся...
+* phase time: 60 ms
+* phase cmem: 312553 K
+Клиент: Соединение с localhost...
+# Player not found. New player created.
+* client : connection accepted - <>
+* phase time: 46 ms
+* phase cmem: 312561 K
+Открытие потока...
+* phase time: 46 ms
+* phase cmem: 312561 K
+Загрузка формы объектов...
+* phase time: 5060 ms
+* phase cmem: 365232 K
+Загрузка шейдеров...
+* phase time: 760 ms
+* phase cmem: 366335 K
+Загрузка геометрии...
+* [Loading VB] 65506 verts, 2047 Kb
+* [Loading VB] 65362 verts, 2042 Kb
+* [Loading VB] 21425 verts, 669 Kb
+* [Loading VB] 65535 verts, 2047 Kb
+* [Loading VB] 65533 verts, 2047 Kb
+* [Loading VB] 65534 verts, 2047 Kb
+* [Loading VB] 65534 verts, 2047 Kb
+* [Loading VB] 65533 verts, 2047 Kb
+* [Loading VB] 65535 verts, 2047 Kb
+* [Loading VB] 65533 verts, 2047 Kb
+* [Loading VB] 50456 verts, 1576 Kb
+* [Loading VB] 65535 verts, 2047 Kb
+* [Loading VB] 65533 verts, 2047 Kb
+* [Loading VB] 65534 verts, 2047 Kb
+* [Loading VB] 65532 verts, 2047 Kb
+* [Loading VB] 7538 verts, 235 Kb
+* [Loading IB] 1048575 indices, 2047 Kb
+* [Loading IB] 1048575 indices, 2047 Kb
+* [Loading IB] 1048575 indices, 2047 Kb
+* [Loading IB] 1048572 indices, 2047 Kb
+* [Loading IB] 1048572 indices, 2047 Kb
+* [Loading IB] 1048569 indices, 2047 Kb
+* [Loading IB] 340623 indices, 665 Kb
+* phase time: 107 ms
+* phase cmem: 408623 K
+Загрузка базы пространств...
+* phase time: 758 ms
+* phase cmem: 409943 K
+Загрузка детальных объектов...
+* [DETAILS] VertexConsts(256), Batch(61)
+* [DETAILS] 40687 v(20), 26352 p
+* [DETAILS] Batch(61), VB(794K), IB(154K)
+* phase time: 105 ms
+* phase cmem: 410930 K
+Загрузка секторов и порталов...
+* Loading HOM: c:\engine\shb-engine\release-win32\..\gamedata\levels\l03_agroprom\level.hom
+* phase time: 46 ms
+* phase cmem: 411024 K
+Загрузка ИИ объектов...
+- Loading music tracks from 'l03_agroprom_musics'...
+* phase time: 41 ms
+* phase cmem: 411026 K
+Клиент: Создание...
+- Game configuring : Started 
+- Game configuring : Finished 
+* phase time: 65 ms
+* phase cmem: 419638 K
+Загрузка текстур...
+* t-report - base: 729, 196609 K
+* t-report - lmap: 12, 12289 K
+***FATAL***: Too many lmap-textures (limit: 8 textures or 32M).
+        Reduce pixel density (worse) or use more vertex lighting (better).
+* phase time: 572 ms
+* phase cmem: 523713 K
+Клиент: Синхронизация...
+* phase time: 48 ms
+* phase cmem: 523716 K
+* [win32]: free[3226836 K], reserved[205924 K], committed[761480 K]
+* [ D3D ]: textures[208898 K]
+* [x-ray]: process heap[523716 K], game lua[21162 K], engine lua[221 K], render[2559 K]
+* [x-ray]: economy: strings[117167 K], smem[10247 K]
+* MEMORY USAGE: 556454 K
+~ Invalid syntax in call to 'r__tf_aniso'
+~ Valid arguments: integer value in range [1,16]
+!SV:ge_destroy: [34816] not found on server
+!SV:ge_destroy: [36151] not found on server
+!SV:ge_destroy: [2117] not found on server
+!SV:ge_destroy: [36624] not found on server
+!SV:ge_destroy: [36871] not found on server
+!SV:ge_destroy: [37139] not found on server
+!SV:ge_destroy: [2145] not found on server
+!SV:ge_destroy: [2138] not found on server
+!SV:ge_destroy: [2082] not found on server
+!SV:ge_destroy: [2667] not found on server
+!SV:ge_destroy: [37640] not found on server
+!SV:ge_destroy: [37894] not found on server
+!SV:ge_destroy: [2646] not found on server
+!SV:ge_destroy: [38172] not found on server
+!SV:ge_destroy: [38410] not found on server
+!SV:ge_destroy: [38662] not found on server
+!SV:ge_destroy: [38918] not found on server
+!SV:ge_destroy: [2191] not found on server
+!SV:ge_destroy: [2785] not found on server
+!SV:ge_destroy: [2583] not found on server
+!SV:ge_destroy: [33308] not found on server
+!SV:ge_destroy: [34307] not found on server
+!SV:ge_destroy: [33809] not found on server
+!SV:ge_destroy: [2398] not found on server
+!SV:ge_destroy: [50176] not found on server
+!SV:ge_destroy: [50688] not found on server
+!SV:ge_destroy: [51200] not found on server
+!SV:ge_destroy: [50949] not found on server
+!SV:ge_destroy: [51471] not found on server
+!SV:ge_destroy: [51726] not found on server
+part_15_hide_weapon
+sv !ownership (entity already has parent) new_parent [0][actor:single_player] id_parent [0][actor:single_player] id_entity [2933][killer_outfit:agr_killer_outfit] [585521]
+sv !ownership (entity already has parent) new_parent [0][actor:single_player] id_parent [0][actor:single_player] id_entity [2579][wpn_mp5:wpn_mp52579] [589383]
+sv !ownership (entity already has parent) new_parent [0][actor:single_player] id_parent [0][actor:single_player] id_entity [2586][wpn_ak74u:wpn_ak74u2586] [591200]
+!SV:ge_destroy: [2793] not found on server
+!SV:ge_destroy: [62215] not found on server
+!SV:ge_destroy: [62470] not found on server
+* Saving spawns...
+* Saving objects...
+* 16119 objects are successfully saved
+* Game SovaHiBlack_autosave.sav is successfully saved to file '..\app_data\savedgames\sovahiblack_autosave.sav'
+- Disconnect
+- Destroying level
+* DVB created: 1536K
+* DIB created: 512K
+* SSample: 1024x768
+* SSample: enabled
+* GPU shading: vs(fffe0300/3.0/30), ps(ffff0300/3.0/30)
+* GPU vertex cache: recognized, 24
+*** RESET [267 ms]
+"c:\engine\shb-engine\release-win32\binaries\engine.exe" 
+* phase time: 28 ms
+* phase cmem: 311085 K
+Сервер: Старт...
+* phase time: 283 ms
+* phase cmem: 311094 K
+Сервер: Загрузка симуляции жизни...
+* phase time: 64 ms
+* phase cmem: 311415 K
+Загрузка игры "sovahiblack_autosave.sav"...
+* Loading spawn registry...
+* 8641 spawn points are successfully loaded
+* Loading objects...
+* 16119 objects are successfully loaded
+* Game sovahiblack_autosave is successfully loaded from file '..\app_data\savedgames\sovahiblack_autosave.sav' (5.045s)
+* phase time: 5044 ms
+* phase cmem: 316126 K
+Сервер: Соединяемся...
+* phase time: 104 ms
+* phase cmem: 316129 K
+Клиент: Соединение с localhost...
+# Player not found. New player created.
+* client : connection accepted - <>
+* phase time: 62 ms
+* phase cmem: 316137 K
+Открытие потока...
+* phase time: 55 ms
+* phase cmem: 316137 K
+Загрузка формы объектов...
+* phase time: 7299 ms
+* phase cmem: 381120 K
+Загрузка шейдеров...
+* phase time: 804 ms
+* phase cmem: 382211 K
+Загрузка геометрии...
+* [Loading VB] 65531 verts, 2047 Kb
+* [Loading VB] 65532 verts, 2047 Kb
+* [Loading VB] 65530 verts, 2047 Kb
+* [Loading VB] 24512 verts, 766 Kb
+* [Loading VB] 65535 verts, 2047 Kb
+* [Loading VB] 65534 verts, 2047 Kb
+* [Loading VB] 65533 verts, 2047 Kb
+* [Loading VB] 65534 verts, 2047 Kb
+* [Loading VB] 65502 verts, 2046 Kb
+* [Loading VB] 65535 verts, 2047 Kb
+* [Loading VB] 65533 verts, 2047 Kb
+* [Loading VB] 65534 verts, 2047 Kb
+* [Loading VB] 51552 verts, 1611 Kb
+* [Loading VB] 65530 verts, 2047 Kb
+* [Loading VB] 62255 verts, 1945 Kb
+* [Loading IB] 1048572 indices, 2047 Kb
+* [Loading IB] 1048572 indices, 2047 Kb
+* [Loading IB] 1048575 indices, 2047 Kb
+* [Loading IB] 1048575 indices, 2047 Kb
+* [Loading IB] 1048575 indices, 2047 Kb
+* [Loading IB] 1048572 indices, 2047 Kb
+* [Loading IB] 1048572 indices, 2047 Kb
+* [Loading IB] 438036 indices, 855 Kb
+* phase time: 138 ms
+* phase cmem: 426629 K
+Загрузка базы пространств...
+* phase time: 1204 ms
+* phase cmem: 428320 K
+Загрузка детальных объектов...
+* [DETAILS] VertexConsts(256), Batch(61)
+* [DETAILS] 40687 v(20), 26352 p
+* [DETAILS] Batch(61), VB(794K), IB(154K)
+* phase time: 118 ms
+* phase cmem: 429307 K
+Загрузка секторов и порталов...
+* Loading HOM: c:\engine\shb-engine\release-win32\..\gamedata\levels\l02_garbage\level.hom
+* phase time: 51 ms
+* phase cmem: 429372 K
+Загрузка ИИ объектов...
+- Loading music tracks from 'l02_garbage_musics'...
+* phase time: 51 ms
+* phase cmem: 429372 K
+Клиент: Создание...
+- Game configuring : Started 
+- Game configuring : Finished 
+* phase time: 85 ms
+* phase cmem: 439746 K
+Загрузка текстур...
+* t-report - base: 715, 201044 K
+* t-report - lmap: 6, 6144 K
+* phase time: 649 ms
+* phase cmem: 540729 K
+Клиент: Синхронизация...
+* phase time: 54 ms
+* phase cmem: 540729 K
+* [win32]: free[3184596 K], reserved[222024 K], committed[787620 K]
+* [ D3D ]: textures[207189 K]
+* [x-ray]: process heap[540729 K], game lua[20967 K], engine lua[230 K], render[2623 K]
+* [x-ray]: economy: strings[151618 K], smem[11117 K]
+* MEMORY USAGE: 567863 K
+~ Invalid syntax in call to 'r__tf_aniso'
+~ Valid arguments: integer value in range [1,16]
+!SV:ge_destroy: [32529] not found on server
+!SV:ge_destroy: [28461] not found on server
+!SV:ge_destroy: [15380] not found on server
+!SV:ge_destroy: [36877] not found on server
+!SV:ge_destroy: [15400] not found on server
+!SV:ge_destroy: [15405] not found on server
+!SV:ge_destroy: [38681] not found on server
+!SV:ge_destroy: [15387] not found on server
+!SV:ge_destroy: [15374] not found on server
+!SV:ge_destroy: [39438] not found on server
+!SV:ge_destroy: [38674] not found on server
+!SV:ge_destroy: [39711] not found on server
+!SV:ge_destroy: [39710] not found on server
+!SV:ge_destroy: [1480] not found on server
+!SV:ge_destroy: [1472] not found on server
+* Saving spawns...
+* Saving objects...
+* 16181 objects are successfully saved
+* Game SovaHiBlack_autosave.sav is successfully saved to file '..\app_data\savedgames\sovahiblack_autosave.sav'
+- Disconnect
+- Destroying level
+* DVB created: 1536K
+* DIB created: 512K
+* SSample: 1024x768
+* SSample: enabled
+* GPU shading: vs(fffe0300/3.0/30), ps(ffff0300/3.0/30)
+* GPU vertex cache: recognized, 24
+*** RESET [258 ms]
+"c:\engine\shb-engine\release-win32\binaries\engine.exe" 
+* phase time: 5 ms
+* phase cmem: 315648 K
+Сервер: Старт...
+* phase time: 266 ms
+* phase cmem: 315675 K
+Сервер: Загрузка симуляции жизни...
+* phase time: 70 ms
+* phase cmem: 315669 K
+Загрузка игры "sovahiblack_autosave.sav"...
+* Loading spawn registry...
+* 8641 spawn points are successfully loaded
+* Loading objects...
+* 16181 objects are successfully loaded
+* Game sovahiblack_autosave is successfully loaded from file '..\app_data\savedgames\sovahiblack_autosave.sav' (5.006s)
+* phase time: 5005 ms
+* phase cmem: 320797 K
+Сервер: Соединяемся...
+* phase time: 60 ms
+* phase cmem: 320800 K
+Клиент: Соединение с localhost...
+# Player not found. New player created.
+* client : connection accepted - <>
+* phase time: 46 ms
+* phase cmem: 320808 K
+Открытие потока...
+* phase time: 74 ms
+* phase cmem: 320808 K
+Загрузка формы объектов...
+* phase time: 4643 ms
+* phase cmem: 370150 K
+Загрузка шейдеров...
+* phase time: 713 ms
+* phase cmem: 371253 K
+Загрузка геометрии...
+* [Loading VB] 65530 verts, 2047 Kb
+* [Loading VB] 65525 verts, 2047 Kb
+* [Loading VB] 61226 verts, 1913 Kb
+* [Loading VB] 65535 verts, 2047 Kb
+* [Loading VB] 65535 verts, 2047 Kb
+* [Loading VB] 65534 verts, 2047 Kb
+* [Loading VB] 65535 verts, 2047 Kb
+* [Loading VB] 65533 verts, 2047 Kb
+* [Loading VB] 65533 verts, 2047 Kb
+* [Loading VB] 65534 verts, 2047 Kb
+* [Loading VB] 65534 verts, 2047 Kb
+* [Loading VB] 65534 verts, 2047 Kb
+* [Loading VB] 65535 verts, 2047 Kb
+* [Loading VB] 65534 verts, 2047 Kb
+* [Loading VB] 65535 verts, 2047 Kb
+* [Loading VB] 65535 verts, 2047 Kb
+* [Loading VB] 65534 verts, 2047 Kb
+* [Loading VB] 2002 verts, 62 Kb
+* [Loading VB] 30140 verts, 941 Kb
+* [Loading IB] 1048575 indices, 2047 Kb
+* [Loading IB] 1048575 indices, 2047 Kb
+* [Loading IB] 1048575 indices, 2047 Kb
+* [Loading IB] 1048575 indices, 2047 Kb
+* [Loading IB] 1048575 indices, 2047 Kb
+* [Loading IB] 1048575 indices, 2047 Kb
+* [Loading IB] 1048572 indices, 2047 Kb
+* [Loading IB] 915879 indices, 1788 Kb
+* phase time: 505 ms
+* phase cmem: 423355 K
+Загрузка базы пространств...
+* phase time: 950 ms
+* phase cmem: 425069 K
+Загрузка детальных объектов...
+* [DETAILS] VertexConsts(256), Batch(61)
+* [DETAILS] 40687 v(20), 26352 p
+* [DETAILS] Batch(61), VB(794K), IB(154K)
+* phase time: 130 ms
+* phase cmem: 426056 K
+Загрузка секторов и порталов...
+* Loading HOM: c:\engine\shb-engine\release-win32\..\gamedata\levels\l04_darkvalley\level.hom
+* phase time: 61 ms
+* phase cmem: 426161 K
+Загрузка ИИ объектов...
+- Loading music tracks from 'l04_darkvalley_musics'...
+* phase time: 113 ms
+* phase cmem: 426187 K
+Клиент: Создание...
+- Game configuring : Started 
+- Game configuring : Finished 
+* phase time: 64 ms
+* phase cmem: 436201 K
+Загрузка текстур...
+* t-report - base: 740, 203141 K
+* t-report - lmap: 16, 16386 K
+***FATAL***: Too many lmap-textures (limit: 8 textures or 32M).
+        Reduce pixel density (worse) or use more vertex lighting (better).
+* phase time: 3307 ms
+* phase cmem: 548363 K
+Клиент: Синхронизация...
+* phase time: 41 ms
+* phase cmem: 548363 K
+* [win32]: free[3187896 K], reserved[209940 K], committed[796404 K]
+* [ D3D ]: textures[219527 K]
+* [x-ray]: process heap[548363 K], game lua[20710 K], engine lua[245 K], render[2643 K]
+* [x-ray]: economy: strings[171781 K], smem[11121 K]
+* MEMORY USAGE: 573110 K
+~ Invalid syntax in call to 'r__tf_aniso'
+~ Valid arguments: integer value in range [1,16]
+!SV:ge_destroy: [3843] not found on server
+!SV:ge_destroy: [3836] not found on server
+!SV:ge_destroy: [3970] not found on server
+!SV:ge_destroy: [3971] not found on server
+~ cannot remove restriction with id [4283][val_zone_witches_galantine] to the entity with id [3414][val_dog_strong], because it is not added
+!SV:ge_destroy: [32261] not found on server
+!SV:ge_destroy: [32262] not found on server
+!SV:ge_destroy: [4005] not found on server
+!SV:ge_destroy: [3935] not found on server
+!SV:ge_destroy: [3991] not found on server
+!SV:ge_destroy: [32806] not found on server
+!SV:ge_destroy: [3914] not found on server
+!SV:ge_destroy: [3915] not found on server
+!SV:ge_destroy: [3928] not found on server
+!SV:ge_destroy: [4026] not found on server
+!SV:ge_destroy: [3921] not found on server
+!SV:ge_destroy: [3909] not found on server
+!SV:ge_destroy: [3898] not found on server
+!SV:ge_destroy: [3566] not found on server
+!SV:ge_destroy: [3977] not found on server
+!SV:ge_destroy: [3978] not found on server
+!SV:ge_destroy: [3963] not found on server
+!SV:ge_destroy: [48403] not found on server
+!SV:ge_destroy: [48404] not found on server
+!SV:ge_destroy: [4019] not found on server
+!SV:ge_destroy: [4020] not found on server
+!SV:ge_destroy: [3956] not found on server
+!SV:ge_destroy: [3957] not found on server
+!SV:ge_destroy: [3950] not found on server
+!SV:ge_destroy: [48683] not found on server
+!SV:ge_destroy: [3552] not found on server
+sv !ownership (entity already has parent) new_parent [0][actor:single_player] id_parent [0][actor:single_player] id_entity [4042][energy_drink:val_energy_drink] [709127]
+!SV:ge_destroy: [52481] not found on server
+!SV:ge_destroy: [3561] not found on server
+!SV:ge_destroy: [3562] not found on server
+!SV:ge_destroy: [4012] not found on server
+!SV:ge_destroy: [3942] not found on server
+sv !ownership (entity already has parent) new_parent [0][actor:single_player] id_parent [0][actor:single_player] id_entity [4029][wpn_ak74:wpn_ak744029] [740566]
+* Saving spawns...
+* Saving objects...
+* 16426 objects are successfully saved
+* Game SovaHiBlack_autosave.sav is successfully saved to file '..\app_data\savedgames\sovahiblack_autosave.sav'
+- Disconnect
+- Destroying level
+* DVB created: 1536K
+* DIB created: 512K
+* SSample: 1024x768
+* SSample: enabled
+* GPU shading: vs(fffe0300/3.0/30), ps(ffff0300/3.0/30)
+* GPU vertex cache: recognized, 24
+*** RESET [269 ms]
+"c:\engine\shb-engine\release-win32\binaries\engine.exe" 
+* phase time: 2 ms
+* phase cmem: 326642 K
+Сервер: Старт...
+* phase time: 265 ms
+* phase cmem: 326685 K
+Сервер: Загрузка симуляции жизни...
+* phase time: 51 ms
+* phase cmem: 326674 K
+Загрузка игры "sovahiblack_autosave.sav"...
+* Loading spawn registry...
+* 8641 spawn points are successfully loaded
+* Loading objects...
+* 16426 objects are successfully loaded
+* Game sovahiblack_autosave is successfully loaded from file '..\app_data\savedgames\sovahiblack_autosave.sav' (4.390s)
+* phase time: 4389 ms
+* phase cmem: 331796 K
+Сервер: Соединяемся...
+* phase time: 75 ms
+* phase cmem: 331800 K
+Клиент: Соединение с localhost...
+# Player not found. New player created.
+* client : connection accepted - <>
+* phase time: 51 ms
+* phase cmem: 331808 K
+Открытие потока...
+* phase time: 43 ms
+* phase cmem: 331808 K
+Загрузка формы объектов...
+* phase time: 6109 ms
+* phase cmem: 396790 K
+Загрузка шейдеров...
+* phase time: 621 ms
+* phase cmem: 397881 K
+Загрузка геометрии...
+* [Loading VB] 65531 verts, 2047 Kb
+* [Loading VB] 65532 verts, 2047 Kb
+* [Loading VB] 65530 verts, 2047 Kb
+* [Loading VB] 24512 verts, 766 Kb
+* [Loading VB] 65535 verts, 2047 Kb
+* [Loading VB] 65534 verts, 2047 Kb
+* [Loading VB] 65533 verts, 2047 Kb
+* [Loading VB] 65534 verts, 2047 Kb
+* [Loading VB] 65502 verts, 2046 Kb
+* [Loading VB] 65535 verts, 2047 Kb
+* [Loading VB] 65533 verts, 2047 Kb
+* [Loading VB] 65534 verts, 2047 Kb
+* [Loading VB] 51552 verts, 1611 Kb
+* [Loading VB] 65530 verts, 2047 Kb
+* [Loading VB] 62255 verts, 1945 Kb
+* [Loading IB] 1048572 indices, 2047 Kb
+* [Loading IB] 1048572 indices, 2047 Kb
+* [Loading IB] 1048575 indices, 2047 Kb
+* [Loading IB] 1048575 indices, 2047 Kb
+* [Loading IB] 1048575 indices, 2047 Kb
+* [Loading IB] 1048572 indices, 2047 Kb
+* [Loading IB] 1048572 indices, 2047 Kb
+* [Loading IB] 438036 indices, 855 Kb
+* phase time: 123 ms
+* phase cmem: 442300 K
+Загрузка базы пространств...
+* phase time: 887 ms
+* phase cmem: 443991 K
+Загрузка детальных объектов...
+* [DETAILS] VertexConsts(256), Batch(61)
+* [DETAILS] 40687 v(20), 26352 p
+* [DETAILS] Batch(61), VB(794K), IB(154K)
+* phase time: 107 ms
+* phase cmem: 444978 K
+Загрузка секторов и порталов...
+* Loading HOM: c:\engine\shb-engine\release-win32\..\gamedata\levels\l02_garbage\level.hom
+* phase time: 45 ms
+* phase cmem: 445043 K
+Загрузка ИИ объектов...
+- Loading music tracks from 'l02_garbage_musics'...
+* phase time: 42 ms
+* phase cmem: 445043 K
+Клиент: Создание...
+- Game configuring : Started 
+- Game configuring : Finished 
+* phase time: 74 ms
+* phase cmem: 457816 K
+Загрузка текстур...
+* t-report - base: 732, 206451 K
+* t-report - lmap: 6, 6144 K
+* phase time: 527 ms
+* phase cmem: 558564 K
+Клиент: Синхронизация...
+* phase time: 46 ms
+* phase cmem: 558567 K
+* [win32]: free[3124380 K], reserved[252924 K], committed[816936 K]
+* [ D3D ]: textures[212595 K]
+* [x-ray]: process heap[558567 K], game lua[20784 K], engine lua[267 K], render[2883 K]
+* [x-ray]: economy: strings[237702 K], smem[11926 K]
+* MEMORY USAGE: 585377 K
+~ Invalid syntax in call to 'r__tf_aniso'
+~ Valid arguments: integer value in range [1,16]
+!SV:ge_destroy: [39712] not found on server
+!SV:ge_destroy: [40230] not found on server
+!SV:ge_destroy: [39719] not found on server
+~ jump_to_level l05_bar
+* Saving spawns...
+* Saving objects...
+* 16436 objects are successfully saved
+* Game SovaHiBlack_autosave.sav is successfully saved to file '..\app_data\savedgames\sovahiblack_autosave.sav'
+- Disconnect
+- Destroying level
+* DVB created: 1536K
+* DIB created: 512K
+* SSample: 1024x768
+* SSample: enabled
+* GPU shading: vs(fffe0300/3.0/30), ps(ffff0300/3.0/30)
+* GPU vertex cache: recognized, 24
+*** RESET [160 ms]
+"c:\engine\shb-engine\release-win32\binaries\engine.exe" 
+* phase time: 2 ms
+* phase cmem: 326569 K
+Сервер: Старт...
+* phase time: 204 ms
+* phase cmem: 326692 K
+Сервер: Загрузка симуляции жизни...
+* phase time: 47 ms
+* phase cmem: 326680 K
+Загрузка игры "sovahiblack_autosave.sav"...
+* Loading spawn registry...
+* 8641 spawn points are successfully loaded
+* Loading objects...
+* 16436 objects are successfully loaded
+* Game sovahiblack_autosave is successfully loaded from file '..\app_data\savedgames\sovahiblack_autosave.sav' (4.305s)
+* phase time: 4304 ms
+* phase cmem: 329575 K
+Сервер: Соединяемся...
+* phase time: 67 ms
+* phase cmem: 329578 K
+Клиент: Соединение с localhost...
+# Player not found. New player created.
+* client : connection accepted - <>
+* phase time: 52 ms
+* phase cmem: 329586 K
+Открытие потока...
+* phase time: 193 ms
+* phase cmem: 329586 K
+Загрузка формы объектов...
+* phase time: 4203 ms
+* phase cmem: 374491 K
+Загрузка шейдеров...
+* phase time: 673 ms
+* phase cmem: 375557 K
+Загрузка геометрии...
+* [Loading VB] 65435 verts, 2044 Kb
+* [Loading VB] 65236 verts, 2038 Kb
+* [Loading VB] 65530 verts, 2047 Kb
+* [Loading VB] 65534 verts, 2047 Kb
+* [Loading VB] 65535 verts, 2047 Kb
+* [Loading VB] 65532 verts, 2047 Kb
+* [Loading VB] 65535 verts, 2047 Kb
+* [Loading VB] 65534 verts, 2047 Kb
+* [Loading VB] 65535 verts, 2047 Kb
+* [Loading VB] 65533 verts, 2047 Kb
+* [Loading VB] 65535 verts, 2047 Kb
+* [Loading VB] 57122 verts, 1785 Kb
+* [Loading VB] 65535 verts, 2047 Kb
+* [Loading VB] 65533 verts, 2047 Kb
+* [Loading VB] 65534 verts, 2047 Kb
+* [Loading VB] 65534 verts, 2047 Kb
+* [Loading VB] 65535 verts, 2047 Kb
+* [Loading VB] 43641 verts, 1363 Kb
+* [Loading IB] 1048575 indices, 2047 Kb
+* [Loading IB] 1048575 indices, 2047 Kb
+* [Loading IB] 1048575 indices, 2047 Kb
+* [Loading IB] 1048575 indices, 2047 Kb
+* [Loading IB] 1048575 indices, 2047 Kb
+* [Loading IB] 1048575 indices, 2047 Kb
+* [Loading IB] 780369 indices, 1524 Kb
+* phase time: 445 ms
+* phase cmem: 425509 K
+Загрузка базы пространств...
+* phase time: 407 ms
+* phase cmem: 426416 K
+Загрузка детальных объектов...
+* [DETAILS] VertexConsts(256), Batch(61)
+* [DETAILS] 40687 v(20), 26352 p
+* [DETAILS] Batch(61), VB(794K), IB(154K)
+* phase time: 139 ms
+* phase cmem: 427403 K
+Загрузка секторов и порталов...
+* Loading HOM: c:\engine\shb-engine\release-win32\..\gamedata\levels\l05_bar\level.hom
+* phase time: 74 ms
+* phase cmem: 427583 K
+Загрузка ИИ объектов...
+* phase time: 240 ms
+* phase cmem: 427597 K
+Клиент: Создание...
+- Game configuring : Started 
+- Game configuring : Finished 
+* phase time: 61 ms
+* phase cmem: 437465 K
+Загрузка текстур...
+* t-report - base: 778, 197338 K
+* t-report - lmap: 8, 8193 K
+* phase time: 3530 ms
+* phase cmem: 531652 K
+Клиент: Синхронизация...
+* phase time: 41 ms
+* phase cmem: 531652 K
+* [win32]: free[3160576 K], reserved[244316 K], committed[789348 K]
+* [ D3D ]: textures[205531 K]
+* [x-ray]: process heap[531652 K], game lua[20914 K], engine lua[179 K], render[2890 K]
+* [x-ray]: economy: strings[242782 K], smem[11926 K]
+* MEMORY USAGE: 558644 K
+~ Invalid syntax in call to 'r__tf_aniso'
+~ Valid arguments: integer value in range [1,16]
+!SV:ge_destroy: [5868] not found on server
+* Saving spawns...
+* Saving objects...
+* 16600 objects are successfully saved
+* Game gsfg.sav is successfully saved to file '..\app_data\savedgames\gsfg.sav'
+* Saving spawns...
+* Saving objects...
+* 16762 objects are successfully saved
+* Game SovaHiBlack_autosave.sav is successfully saved to file '..\app_data\savedgames\sovahiblack_autosave.sav'
+- Disconnect
+- Destroying level
+* DVB created: 1536K
+* DIB created: 512K
+* SSample: 1024x768
+* SSample: enabled
+* GPU shading: vs(fffe0300/3.0/30), ps(ffff0300/3.0/30)
+* GPU vertex cache: recognized, 24
+*** RESET [250 ms]
+"c:\engine\shb-engine\release-win32\binaries\engine.exe" 
+* phase time: 11 ms
+* phase cmem: 371667 K
+Сервер: Старт...
+* phase time: 329 ms
+* phase cmem: 354705 K
+Сервер: Загрузка симуляции жизни...
+* phase time: 63 ms
+* phase cmem: 354704 K
+Загрузка игры "sovahiblack_autosave.sav"...
+* Loading spawn registry...
+* 8641 spawn points are successfully loaded
+* Loading objects...
+* 16762 objects are successfully loaded
+* Game sovahiblack_autosave is successfully loaded from file '..\app_data\savedgames\sovahiblack_autosave.sav' (6.003s)
+* phase time: 6002 ms
+* phase cmem: 359878 K
+Сервер: Соединяемся...
+* phase time: 80 ms
+* phase cmem: 359881 K
+Клиент: Соединение с localhost...
+# Player not found. New player created.
+* client : connection accepted - <>
+* phase time: 60 ms
+* phase cmem: 359890 K
+Открытие потока...
+* phase time: 53 ms
+* phase cmem: 359890 K
+Загрузка формы объектов...
+* phase time: 7347 ms
+* phase cmem: 424872 K
+Загрузка шейдеров...
+* phase time: 768 ms
+* phase cmem: 425963 K
+Загрузка геометрии...
+* [Loading VB] 65531 verts, 2047 Kb
+* [Loading VB] 65532 verts, 2047 Kb
+* [Loading VB] 65530 verts, 2047 Kb
+* [Loading VB] 24512 verts, 766 Kb
+* [Loading VB] 65535 verts, 2047 Kb
+* [Loading VB] 65534 verts, 2047 Kb
+* [Loading VB] 65533 verts, 2047 Kb
+* [Loading VB] 65534 verts, 2047 Kb
+* [Loading VB] 65502 verts, 2046 Kb
+* [Loading VB] 65535 verts, 2047 Kb
+* [Loading VB] 65533 verts, 2047 Kb
+* [Loading VB] 65534 verts, 2047 Kb
+* [Loading VB] 51552 verts, 1611 Kb
+* [Loading VB] 65530 verts, 2047 Kb
+* [Loading VB] 62255 verts, 1945 Kb
+* [Loading IB] 1048572 indices, 2047 Kb
+* [Loading IB] 1048572 indices, 2047 Kb
+* [Loading IB] 1048575 indices, 2047 Kb
+* [Loading IB] 1048575 indices, 2047 Kb
+* [Loading IB] 1048575 indices, 2047 Kb
+* [Loading IB] 1048572 indices, 2047 Kb
+* [Loading IB] 1048572 indices, 2047 Kb
+* [Loading IB] 438036 indices, 855 Kb
+* phase time: 154 ms
+* phase cmem: 470381 K
+Загрузка базы пространств...
+* phase time: 1225 ms
+* phase cmem: 472072 K
+Загрузка детальных объектов...
+* [DETAILS] VertexConsts(256), Batch(61)
+* [DETAILS] 40687 v(20), 26352 p
+* [DETAILS] Batch(61), VB(794K), IB(154K)
+* phase time: 128 ms
+* phase cmem: 473059 K
+Загрузка секторов и порталов...
+* Loading HOM: c:\engine\shb-engine\release-win32\..\gamedata\levels\l02_garbage\level.hom
+* phase time: 58 ms
+* phase cmem: 473124 K
+Загрузка ИИ объектов...
+- Loading music tracks from 'l02_garbage_musics'...
+* phase time: 56 ms
+* phase cmem: 473124 K
+Клиент: Создание...
+- Game configuring : Started 
+- Game configuring : Finished 
+* phase time: 81 ms
+* phase cmem: 482360 K
+Загрузка текстур...
+* t-report - base: 752, 215099 K
+* t-report - lmap: 6, 6144 K
+* phase time: 651 ms
+* phase cmem: 582806 K
+Клиент: Синхронизация...
+* phase time: 50 ms
+* phase cmem: 582809 K
+* [win32]: free[3121132 K], reserved[230800 K], committed[842308 K]
+* [ D3D ]: textures[221244 K]
+* [x-ray]: process heap[582809 K], game lua[21169 K], engine lua[190 K], render[3079 K]
+* [x-ray]: economy: strings[302792 K], smem[26173 K]
+* MEMORY USAGE: 602730 K
+~ Invalid syntax in call to 'r__tf_aniso'
+~ Valid arguments: integer value in range [1,16]
+* DVB created: 1536K
+* DIB created: 512K
+* SSample: 1024x768
+* SSample: enabled
+* GPU shading: vs(fffe0300/3.0/30), ps(ffff0300/3.0/30)
+* GPU vertex cache: recognized, 24
+*** RESET [560 ms]
+* MEMORY USAGE: 592630 K
+~ Invalid syntax in call to 'r__tf_aniso'
+~ Valid arguments: integer value in range [1,16]
+~ jump_to_level l04_darkvalley
+* Saving spawns...
+* Saving objects...
+* 16774 objects are successfully saved
+* Game SovaHiBlack_autosave.sav is successfully saved to file '..\app_data\savedgames\sovahiblack_autosave.sav'
+- Disconnect
+- Destroying level
+* DVB created: 1536K
+* DIB created: 512K
+* SSample: 1024x768
+* SSample: enabled
+* GPU shading: vs(fffe0300/3.0/30), ps(ffff0300/3.0/30)
+* GPU vertex cache: recognized, 24
+*** RESET [159 ms]
+"c:\engine\shb-engine\release-win32\binaries\engine.exe" 
+* phase time: 33 ms
+* phase cmem: 353735 K
+Сервер: Старт...
+* phase time: 236 ms
+* phase cmem: 353883 K
+Сервер: Загрузка симуляции жизни...
+* phase time: 70 ms
+* phase cmem: 353883 K
+Загрузка игры "sovahiblack_autosave.sav"...
+* Loading spawn registry...
+* 8641 spawn points are successfully loaded
+* Loading objects...
+* 16774 objects are successfully loaded
+* Game sovahiblack_autosave is successfully loaded from file '..\app_data\savedgames\sovahiblack_autosave.sav' (4.165s)
+* phase time: 4164 ms
+* phase cmem: 359141 K
+Сервер: Соединяемся...
+* phase time: 61 ms
+* phase cmem: 359133 K
+Клиент: Соединение с localhost...
+# Player not found. New player created.
+* client : connection accepted - <>
+* phase time: 41 ms
+* phase cmem: 359141 K
+Открытие потока...
+* phase time: 37 ms
+* phase cmem: 359141 K
+Загрузка формы объектов...
+* phase time: 4189 ms
+* phase cmem: 408553 K
+Загрузка шейдеров...
+* phase time: 731 ms
+* phase cmem: 409655 K
+Загрузка геометрии...
+* [Loading VB] 65530 verts, 2047 Kb
+* [Loading VB] 65525 verts, 2047 Kb
+* [Loading VB] 61226 verts, 1913 Kb
+* [Loading VB] 65535 verts, 2047 Kb
+* [Loading VB] 65535 verts, 2047 Kb
+* [Loading VB] 65534 verts, 2047 Kb
+* [Loading VB] 65535 verts, 2047 Kb
+* [Loading VB] 65533 verts, 2047 Kb
+* [Loading VB] 65533 verts, 2047 Kb
+* [Loading VB] 65534 verts, 2047 Kb
+* [Loading VB] 65534 verts, 2047 Kb
+* [Loading VB] 65534 verts, 2047 Kb
+* [Loading VB] 65535 verts, 2047 Kb
+* [Loading VB] 65534 verts, 2047 Kb
+* [Loading VB] 65535 verts, 2047 Kb
+* [Loading VB] 65535 verts, 2047 Kb
+* [Loading VB] 65534 verts, 2047 Kb
+* [Loading VB] 2002 verts, 62 Kb
+* [Loading VB] 30140 verts, 941 Kb
+* [Loading IB] 1048575 indices, 2047 Kb
+* [Loading IB] 1048575 indices, 2047 Kb
+* [Loading IB] 1048575 indices, 2047 Kb
+* [Loading IB] 1048575 indices, 2047 Kb
+* [Loading IB] 1048575 indices, 2047 Kb
+* [Loading IB] 1048575 indices, 2047 Kb
+* [Loading IB] 1048572 indices, 2047 Kb
+* [Loading IB] 915879 indices, 1788 Kb
+* phase time: 131 ms
+* phase cmem: 461757 K
+Загрузка базы пространств...
+* phase time: 956 ms
+* phase cmem: 463471 K
+Загрузка детальных объектов...
+* [DETAILS] VertexConsts(256), Batch(61)
+* [DETAILS] 40687 v(20), 26352 p
+* [DETAILS] Batch(61), VB(794K), IB(154K)
+* phase time: 93 ms
+* phase cmem: 464458 K
+Загрузка секторов и порталов...
+* Loading HOM: c:\engine\shb-engine\release-win32\..\gamedata\levels\l04_darkvalley\level.hom
+* phase time: 47 ms
+* phase cmem: 464563 K
+Загрузка ИИ объектов...
+- Loading music tracks from 'l04_darkvalley_musics'...
+* phase time: 42 ms
+* phase cmem: 464558 K
+Клиент: Создание...
+- Game configuring : Started 
+- Game configuring : Finished 
+* phase time: 71 ms
+* phase cmem: 473172 K
+Загрузка текстур...
+* t-report - base: 770, 215125 K
+* t-report - lmap: 16, 16386 K
+***FATAL***: Too many lmap-textures (limit: 8 textures or 32M).
+        Reduce pixel density (worse) or use more vertex lighting (better).
+* phase time: 497 ms
+* phase cmem: 584462 K
+Клиент: Синхронизация...
+* phase time: 46 ms
+* phase cmem: 584462 K
+* [win32]: free[3109236 K], reserved[244280 K], committed[840724 K]
+* [ D3D ]: textures[231511 K]
+* [x-ray]: process heap[584462 K], game lua[20979 K], engine lua[206 K], render[3079 K]
+* [x-ray]: economy: strings[305950 K], smem[26172 K]
+* MEMORY USAGE: 631215 K
+~ Invalid syntax in call to 'r__tf_aniso'
+~ Valid arguments: integer value in range [1,16]
+!SV:ge_destroy: [40250] not found on server
+!SV:ge_destroy: [52531] not found on server
+!SV:ge_destroy: [40255] not found on server
+!SV:ge_destroy: [40244] not found on server
+!SV:ge_destroy: [52505] not found on server
+!SV:ge_destroy: [4217] not found on server
+!SV:ge_destroy: [4238] not found on server
+!SV:ge_destroy: [4245] not found on server
+* Saving spawns...
+* Saving objects...
+* 16841 objects are successfully saved
+* Game SovaHiBlack_autosave.sav is successfully saved to file '..\app_data\savedgames\sovahiblack_autosave.sav'
+- Disconnect
+- Destroying level
+* DVB created: 1536K
+* DIB created: 512K
+* SSample: 1024x768
+* SSample: enabled
+* GPU shading: vs(fffe0300/3.0/30), ps(ffff0300/3.0/30)
+* GPU vertex cache: recognized, 24
+*** RESET [231 ms]
+"c:\engine\shb-engine\release-win32\binaries\engine.exe" 
+* phase time: 3 ms
+* phase cmem: 354301 K
+Сервер: Старт...
+* phase time: 224 ms
+* phase cmem: 354414 K
+Сервер: Загрузка симуляции жизни...
+* phase time: 60 ms
+* phase cmem: 354402 K
+Загрузка игры "sovahiblack_autosave.sav"...
+* Loading spawn registry...
+* 8641 spawn points are successfully loaded
+* Loading objects...
+* 16841 objects are successfully loaded
+* Game sovahiblack_autosave is successfully loaded from file '..\app_data\savedgames\sovahiblack_autosave.sav' (4.143s)
+* phase time: 4143 ms
+* phase cmem: 356628 K
+Сервер: Соединяемся...
+* phase time: 52 ms
+* phase cmem: 356631 K
+Клиент: Соединение с localhost...
+# Player not found. New player created.
+* client : connection accepted - <>
+* phase time: 58 ms
+* phase cmem: 356639 K
+Открытие потока...
+* phase time: 74 ms
+* phase cmem: 356639 K
+Загрузка формы объектов...
+* phase time: 1495 ms
+* phase cmem: 374047 K
+Загрузка шейдеров...
+* phase time: 327 ms
+* phase cmem: 374937 K
+Загрузка геометрии...
+* [Loading VB] 65535 verts, 2047 Kb
+* [Loading VB] 65534 verts, 2047 Kb
+* [Loading VB] 65533 verts, 2047 Kb
+* [Loading VB] 65533 verts, 2047 Kb
+* [Loading VB] 65534 verts, 2047 Kb
+* [Loading VB] 65534 verts, 2047 Kb
+* [Loading VB] 65535 verts, 2047 Kb
+* [Loading VB] 65533 verts, 2047 Kb
+* [Loading VB] 46432 verts, 1451 Kb
+* [Loading VB] 34176 verts, 1068 Kb
+* [Loading IB] 1048572 indices, 2047 Kb
+* [Loading IB] 1048575 indices, 2047 Kb
+* [Loading IB] 1048575 indices, 2047 Kb
+* [Loading IB] 1048575 indices, 2047 Kb
+* [Loading IB] 1048575 indices, 2047 Kb
+* [Loading IB] 391536 indices, 764 Kb
+* phase time: 298 ms
+* phase cmem: 404883 K
+Загрузка базы пространств...
+* phase time: 56 ms
+* phase cmem: 405467 K
+Загрузка детальных объектов...
+* phase time: 42 ms
+* phase cmem: 405467 K
+Загрузка секторов и порталов...
+* Loading HOM: c:\engine\shb-engine\release-win32\..\gamedata\levels\l04u_labx18\level.hom
+* phase time: 91 ms
+* phase cmem: 405632 K
+Загрузка ИИ объектов...
+* phase time: 203 ms
+* phase cmem: 405732 K
+Клиент: Создание...
+- Game configuring : Started 
+- Game configuring : Finished 
+* phase time: 66 ms
+* phase cmem: 414377 K
+Загрузка текстур...
+* t-report - base: 630, 152563 K
+* t-report - lmap: 4, 4096 K
+* phase time: 999 ms
+* phase cmem: 445096 K
+Клиент: Синхронизация...
+* phase time: 49 ms
+* phase cmem: 445096 K
+* [win32]: free[3233804 K], reserved[237332 K], committed[723104 K]
+* [ D3D ]: textures[156660 K]
+* [x-ray]: process heap[445096 K], game lua[20954 K], engine lua[233 K], render[3106 K]
+* [x-ray]: economy: strings[338545 K], smem[26173 K]
+* MEMORY USAGE: 471032 K
+~ Invalid syntax in call to 'r__tf_aniso'
+~ Valid arguments: integer value in range [1,16]
+* Saving spawns...
+* Saving objects...
+* 16879 objects are successfully saved
+* Game gsfg.sav is successfully saved to file '..\app_data\savedgames\gsfg.sav'
+- Disconnect
+- Destroying level
+DestroySingleton::RefCounter: 0
+DestroySingleton::RefCounter: 0
+DestroySingleton::RefCounter: 0
+DestroySingleton::RefCounter: 0
+DestroySingleton::RefCounter: 0
+Input:  1
+Config-file [..\app_data\user.ltx] saved successfully
+Destroying Direct3D...
+* RM_Dump: textures  : 0
+* RM_Dump: rtargets  : 0
+* RM_Dump: rtargetsc : 0
+* RM_Dump: vs        : 0
+* RM_Dump: ps        : 0
+* RM_Dump: dcl       : 0
+* RM_Dump: states    : 0
+* RM_Dump: tex_list  : 0
+* RM_Dump: matrices  : 0
+* RM_Dump: lst_constants: 0
+* RM_Dump: v_passes  : 0
+* RM_Dump: v_elements: 0
+* RM_Dump: v_shaders : 0
+refCount:pBaseZB 1
+refCount:pBaseRT 1
+DeviceREF: 1

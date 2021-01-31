@@ -151,6 +151,10 @@
 	<character id="agr_ratcatcher">
 		<class>agr_ratcatcher</class>
 	</character>
+	<character id="cit_doctor">
+		<class>cit_doctor</class>
+		<specific_character>cit_doctor</specific_character>
+	</character>
 	<!-- stalkers -->
 
 	<character id="agr_stalker_general">
@@ -174,7 +178,6 @@
 	<character id="agr_bandit_general">
 		<class>agr_bandit_general</class>
 	</character>
-
 
 	<!-- Darkvalley -->
 	<!-- Bandits -->
@@ -563,16 +566,13 @@
 
 	<!-- DeadCity -->
 	<!-- Doctor -->
-	<!--	<character id="cit_doctor">
-		<class>cit_doctor</class>
-		<specific_character>cit_doctor</specific_character>
-	</character>
-	<!-- Vasya --
+	<!--	
+	Vasya
 	<character id="cit_vp">
 		<class>cit_vp</class>
 	</character>
 
-	<!-- Killers --
+	Killers
 	<character id="cit_killer_general">
 		<class>cit_killer_general</class>
 	</character>
@@ -593,7 +593,7 @@
 		<specific_character>cit_killer_leader</specific_character>
 	</character>
 
-	<!-- Bandits --
+	Bandits
 	<character id="cit_bandit_drunk">
 		<class>cit_bandit_drunk</class>
 	</character>
