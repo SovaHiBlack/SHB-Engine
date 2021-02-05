@@ -212,7 +212,7 @@ void game_cl_GameState::TranslateGameMessage(u32 msg, NET_Packet& P)
 			R_ASSERT2(0, "Unknown Game Message");
 		}
 		break;
-	};
+	}
 }
 
 void	game_cl_GameState::OnGameMessage(NET_Packet& P)
@@ -222,7 +222,7 @@ void	game_cl_GameState::OnGameMessage(NET_Packet& P)
 	P.r_u32(msg);
 
 	TranslateGameMessage(msg, P);
-};
+}
 
 game_PlayerState* game_cl_GameState::GetPlayerByGameID(u32 GameID)
 {
@@ -236,10 +236,10 @@ game_PlayerState* game_cl_GameState::GetPlayerByGameID(u32 GameID)
 		{
 			return P;
 		}
-	};
+	}
 
 	return nullptr;
-};
+}
 
 game_PlayerState* game_cl_GameState::GetPlayerByOrderID(u32 idx)
 {
@@ -282,7 +282,7 @@ void game_cl_GameState::shedule_Update(u32 dt)
 			m_game_ui_custom = HUD( ).GetUI( )->UIGame( );
 		}
 	}
-};
+}
 
 void game_cl_GameState::StartStopMenu(CUIDialogWnd* pDialog, bool bDoHideIndicators)
 {
@@ -361,7 +361,7 @@ void				game_cl_GameState::OnSwitchPhase(u32 old_phase, u32 new_phase)
 		{
 		}
 		break;
-	};
+	}
 
 	switch (new_phase)
 	{
@@ -383,7 +383,7 @@ void				game_cl_GameState::SendPickUpEvent(u16 ID_who, u16 ID_what)
 	u_EventGen(P, GE_OWNERSHIP_TAKE, ID_who);
 	P.w_u16(ID_what);
 	u_EventSend(P);
-};
+}
 
 void game_cl_GameState::set_type_name(const char* s)
 {
@@ -393,7 +393,7 @@ void game_cl_GameState::set_type_name(const char* s)
 		strcpy(g_pGamePersistent->m_game_params.m_game_type, *m_game_type_name);
 		g_pGamePersistent->OnGameStart( );
 	}
-};
+}
 
 void game_cl_GameState::reset_ui( )
 {

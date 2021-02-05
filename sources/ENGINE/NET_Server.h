@@ -127,7 +127,7 @@ public:
 	IC int					GetPort					()				{ return 0; };
 	
 	virtual bool			Check_ServerAccess( IClient* CL, string512& reason )	{ return true; }
-	virtual void			Assign_ServerType( string512& res ) {};
+//	virtual void			Assign_ServerType( string512& res ) {};
 	virtual void			GetServerInfo( CServerInfo* si ) {};
 
 	IClient*				GetServerClient		()			{ return SV_Client; };

@@ -1468,7 +1468,7 @@
     <ClInclude Include="xrServer_script_macroses.h" />
     <ClInclude Include="Server_space.h" />
     <ClInclude Include="xr_level_controller.h" />
-    <ClInclude Include="xr_time.h" />
+    <ClInclude Include="xrTime.h" />
     <ClInclude Include="ZoneVisual.h" />
     <ClInclude Include="zone_effector.h" />
     <ClInclude Include="ZudaArtefact.h" />
@@ -2419,7 +2419,7 @@
     <ClCompile Include="Server_process_update.cpp" />
     <ClCompile Include="Server_sls_clear.cpp" />
     <ClCompile Include="xr_level_controller.cpp" />
-    <ClCompile Include="xr_time.cpp" />
+    <ClCompile Include="xrTime.cpp" />
     <ClCompile Include="ZoneVisual.cpp" />
     <ClCompile Include="zone_effector.cpp" />
     <ClCompile Include="ZudaArtefact.cpp" />

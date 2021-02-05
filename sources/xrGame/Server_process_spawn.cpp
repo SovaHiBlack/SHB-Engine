@@ -87,7 +87,7 @@ CSE_Abstract* CServer::Process_spawn(NET_Packet& P, ClientID sender, BOOL bSpawn
 		{
 			// Clone from Phantom
 			E->ID					=	PerformIDgen(0xffff);
-			E->owner				=	CL;//		= SelectBestClientToMigrateTo	(E);
+			E->owner				=	CL;
 			E->s_flags.set			(M_SPAWN_OBJECT_PHANTOM,FALSE);
 			entities.insert			(mk_pair(E->ID,E));
 		} 

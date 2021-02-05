@@ -4911,9 +4911,6 @@
     <ClInclude Include="game_sv_event_queue.h">
       <Filter>Core\Server\Games\server</Filter>
     </ClInclude>
-    <ClInclude Include="xr_time.h">
-      <Filter>Core\Server\Games\server</Filter>
-    </ClInclude>
     <ClInclude Include="game_sv_single.h">
       <Filter>Core\Server\Games\server\single</Filter>
     </ClInclude>
@@ -5933,6 +5930,9 @@
     </ClInclude>
     <ClInclude Include="PHSkeletonObject.h">
       <Filter>Core\Client\Objects\physics\PhysicsSkeletonObject</Filter>
+    </ClInclude>
+    <ClInclude Include="xrTime.h">
+      <Filter>Core\Server\Games\server</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -7604,9 +7604,6 @@
     <ClCompile Include="game_sv_event_queue.cpp">
       <Filter>Core\Server\Games\server</Filter>
     </ClCompile>
-    <ClCompile Include="xr_time.cpp">
-      <Filter>Core\Server\Games\server</Filter>
-    </ClCompile>
     <ClCompile Include="game_sv_single.cpp">
       <Filter>Core\Server\Games\server\single</Filter>
     </ClCompile>
@@ -8572,6 +8569,9 @@
     </ClCompile>
     <ClCompile Include="ui\UIDiaryWnd.cpp">
       <Filter>UI\Common\DiaryWnd</Filter>
+    </ClCompile>
+    <ClCompile Include="xrTime.cpp">
+      <Filter>Core\Server\Games\server</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -34,7 +34,7 @@ class	CDebugRenderer;
 extern float g_fov;
 
 const int maxRP = 64;
-const int maxTeams = 32;
+//const int maxTeams = 32;
 
 class CBulletManager;
 class CMapManager;
@@ -331,7 +331,7 @@ protected:
 	CBulletManager* m_pBulletManager;
 
 public:
-	IC CBulletManager& BulletManager( )
+	inline CBulletManager& BulletManager( )
 	{
 		return *m_pBulletManager;
 	}
@@ -349,7 +349,7 @@ public:
 	virtual u32				GetRealPing( )
 	{
 		return m_dwRealPing;
-	};
+	}
 
 public:
 	void			remove_objects( );
@@ -363,81 +363,80 @@ add_to_type_list(CLevel)
 #undef script_type_list
 #define script_type_list save_type_list(CLevel)
 
-IC CLevel& Level( )
+inline CLevel& Level( )
 {
 	return *((CLevel*) g_pGameLevel);
 }
 
-IC game_cl_GameState& Game( )
+inline game_cl_GameState& Game( )
 {
 	return *Level( ).game;
 }
 
 u32					GameID( );
 
-IC CHUDManager& HUD( )
+inline CHUDManager& HUD( )
 {
 	return *((CHUDManager*) Level( ).pHUD);
 }
 
 #ifdef DEBUG
-IC CLevelDebug& DBG( )
+inline CLevelDebug& DBG( )
 {
 	return *((CLevelDebug*) Level( ).m_level_debug);
 }
 #endif
 
-IC CSpaceRestrictionManager& CLevel::space_restriction_manager( )
+inline CSpaceRestrictionManager& CLevel::space_restriction_manager( )
 {
 	VERIFY(m_space_restriction_manager);
 	return *m_space_restriction_manager;
 }
 
-IC CSeniorityHierarchyHolder& CLevel::seniority_holder( )
+inline CSeniorityHierarchyHolder& CLevel::seniority_holder( )
 {
 	VERIFY(m_seniority_hierarchy_holder);
 	return *m_seniority_hierarchy_holder;
 }
 
-IC CClientSpawnManager& CLevel::client_spawn_manager( )
+inline CClientSpawnManager& CLevel::client_spawn_manager( )
 {
 	VERIFY(m_client_spawn_manager);
 	return *m_client_spawn_manager;
 }
 
-IC CAutosaveManager& CLevel::autosave_manager( )
+inline CAutosaveManager& CLevel::autosave_manager( )
 {
 	VERIFY(m_autosave_manager);
 	return *m_autosave_manager;
 }
 
 #ifdef DEBUG
-IC CDebugRenderer& CLevel::debug_renderer( )
+inline CDebugRenderer& CLevel::debug_renderer( )
 {
 	VERIFY(m_debug_renderer);
 	return *m_debug_renderer;
 }
 #endif // def DEBUG
 
-IC CPHCommander& CLevel::ph_commander( )
+inline CPHCommander& CLevel::ph_commander( )
 {
 	VERIFY(m_ph_commander);
 	return *m_ph_commander;
 }
 
-IC CPHCommander& CLevel::ph_commander_scripts( )
+inline CPHCommander& CLevel::ph_commander_scripts( )
 {
 	VERIFY(m_ph_commander_scripts);
 	return *m_ph_commander_scripts;
 }
 
-
-IC bool					OnServer( )
+inline bool					OnServer( )
 {
 	return Level( ).IsServer( );
 }
 
-IC bool					OnClient( )
+inline bool					OnClient( )
 {
 	return Level( ).IsClient( );
 }

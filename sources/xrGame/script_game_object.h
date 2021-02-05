@@ -11,7 +11,7 @@
 #include "script_space_forward.h"
 #include "script_bind_macroses.h"
 #include "script_export_space.h"
-#include "xr_time.h"
+#include "xrTime.h"
 #include "character_info_defs.h"
 
 enum EPdaMsg;

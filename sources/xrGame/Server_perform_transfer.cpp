@@ -12,11 +12,7 @@ void CServer::Perform_transfer(NET_Packet &PR, NET_Packet &PT,	CSE_Abstract* wha
 	R_ASSERT	(what->ID_Parent == from->ID);
 	u32			time		= Device.dwTimeGlobal;
 
-	// 1. Perform migration if need it
-//	if (from->owner != to->owner)	PerformMigration(what,from->owner,to->owner);
-	//Log						("B");
-
-	// 2. Detach "FROM"
+	// Detach "FROM"
 	xr_vector<u16>& C			= from->children;
 	xr_vector<u16>::iterator c	= std::find	(C.begin(),C.end(),what->ID);
 	R_ASSERT				(C.end()!=c);
@@ -27,7 +23,7 @@ void CServer::Perform_transfer(NET_Packet &PR, NET_Packet &PT,	CSE_Abstract* wha
 	PR.w_u16				(from->ID);
 	PR.w_u16				(what->ID);
 
-	// 3. Attach "TO"
+	// Attach "TO"
 	what->ID_Parent			= to->ID;
 	to->children.push_back	(what->ID);
 	PT.w_begin				(M_EVENT);

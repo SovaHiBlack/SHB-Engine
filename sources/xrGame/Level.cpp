@@ -66,9 +66,9 @@ CLevel::CLevel():IPureClient	(Device.GetTimerGlobal())
 {
 	g_bDebugEvents				= strstr(Core.Params,"-debug_ge")?TRUE:FALSE;
 
-	Server						= NULL;
+	Server						= nullptr;
 
-	game						= NULL;
+	game						= nullptr;
 //	game						= xr_new<game_cl_GameState>();
 	game_events					= xr_new<NET_Queue_Event>();
 
@@ -112,13 +112,13 @@ CLevel::CLevel():IPureClient	(Device.GetTimerGlobal())
 	m_bSynchronization			= false;
 #endif	
 	//---------------------------------------------------------
-	pStatGraphR = NULL;
-	pStatGraphS = NULL;
+	pStatGraphR = nullptr;
+	pStatGraphS = nullptr;
 	//---------------------------------------------------------
 	pObjects4CrPr.clear();
 	pActors4CrPr.clear();
 	//---------------------------------------------------------
-	pCurrentControlEntity = NULL;
+	pCurrentControlEntity = nullptr;
 
 	//---------------------------------------------------------
 	m_dwCL_PingLastSendTime = 0;
@@ -129,8 +129,8 @@ CLevel::CLevel():IPureClient	(Device.GetTimerGlobal())
 	m_sDemoName[0] = 0;
 	m_bDemoSaveMode = FALSE;
 	m_dwStoredDemoDataSize = 0;
-	m_pStoredDemoData = NULL;
-	m_pOldCrashHandler = NULL;
+	m_pStoredDemoData = nullptr;
+	m_pOldCrashHandler = nullptr;
 	m_we_used_old_crach_handler	= false;
 
 //	if ( !strstr( Core.Params, "-tdemo " ) && !strstr(Core.Params,"-tdemof "))
@@ -187,8 +187,11 @@ CLevel::~CLevel()
 	}
 
 	// destroy PSs
-	for (POIt p_it=m_StaticParticles.begin(); m_StaticParticles.end()!=p_it; ++p_it)
+	for (POIt p_it = m_StaticParticles.begin( ); m_StaticParticles.end( ) != p_it; ++p_it)
+	{
 		CParticlesObject::Destroy(*p_it);
+	}
+
 	m_StaticParticles.clear		();
 
 	// Unload sounds
@@ -247,7 +250,9 @@ CLevel::~CLevel()
 	CTradeParameters::clean		();
 
 	if (m_we_used_old_crach_handler)
-		Debug.set_crashhandler	(m_pOldCrashHandler);
+	{
+		Debug.set_crashhandler(m_pOldCrashHandler);
+	}
 }
 
 shared_str	CLevel::name		() const
@@ -266,13 +271,19 @@ void CLevel::PrefetchSound		(const char* name)
 	string_path					tmp;
 	strcpy_s					(tmp,name);
 	xr_strlwr					(tmp);
-	if (strext(tmp))			*strext(tmp)=0;
+	if (strext(tmp))
+	{
+		*strext(tmp) = 0;
+	}
+
 	shared_str	snd_name		= tmp;
 	// find in registry
 	SoundRegistryMapIt it		= sound_registry.find(snd_name);
 	// if find failed - preload sound
-	if (it==sound_registry.end())
-		sound_registry[snd_name].create(snd_name.c_str(),st_Effect,sg_SourceType);
+	if (it == sound_registry.end( ))
+	{
+		sound_registry[snd_name].create(snd_name.c_str( ), st_Effect, sg_SourceType);
+	}
 }
 
 // Game interface ////////////////////////////////////////////////////
@@ -316,7 +327,10 @@ void CLevel::cl_Process_Event				(u16 dest, u16 type, NET_Packet& P)
 	if (type != GE_DESTROY_REJECT)
 	{
 		if (type == GE_DESTROY)
-			Game().OnDestroy(GO);
+		{
+			Game( ).OnDestroy(GO);
+		}
+
 		GO->OnEvent		(P,type);
 	}
 	else { // handle GE_DESTROY_REJECT here
@@ -402,7 +416,10 @@ void CLevel::OnFrame	()
 
 	ProcessGameEvents	();
 
-	if (m_bNeed_CrPr)					make_NetCorrectionPrediction();
+	if (m_bNeed_CrPr)
+	{
+		make_NetCorrectionPrediction( );
+	}
 
 	MapManager().Update		();
 	// Inherited update
@@ -422,10 +439,14 @@ void CLevel::OnFrame	()
 	Device.Statistic->TEST0.End			();
 
 	// update static sounds
-	if (g_mt_config.test(mtLevelSounds)) 
-		Device.seqParallel.push_back	(fastdelegate::FastDelegate0<>(m_level_sound_manager,&CLevelSoundManager::Update));
-	else								
-		m_level_sound_manager->Update	();
+	if (g_mt_config.test(mtLevelSounds))
+	{
+		Device.seqParallel.push_back(fastdelegate::FastDelegate0<>(m_level_sound_manager, &CLevelSoundManager::Update));
+	}
+	else
+	{
+		m_level_sound_manager->Update( );
+	}
 
 	// deffer LUA-GC-STEP
 	if (g_mt_config.test(mtLUA_GC))	Device.seqParallel.push_back	(fastdelegate::FastDelegate0<>(this,&CLevel::script_gc));
