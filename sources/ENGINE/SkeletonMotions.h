@@ -25,7 +25,7 @@ enum{
 struct ENGINE_API CKey
 {
 	Fquaternion	Q;			// rotation
-	Fvector		T;			// translation
+	Fvector3		T;			// translation
 };
 struct ENGINE_API CKeyQR
 {
@@ -47,8 +47,8 @@ class ENGINE_API		CMotion
 public:
 	ref_smem<CKeyQR>	_keysR;
 	ref_smem<CKeyQT>	_keysT;
-	Fvector				_initT;
-	Fvector				_sizeT;
+	Fvector3				_initT;
+	Fvector3				_sizeT;
 public:    
 	void				set_flags			(u8 val)			{_flags=val;}
 	void				set_flag			(u8 mask, u8 val)	{if (val)_flags|=mask; else _flags&=~mask;}
@@ -104,10 +104,10 @@ public:
 	void					Load				(IReader* MP, u32 fl, u16 vers);
 	u32						mem_usage			(){ return sizeof(*this);}
 
-	ICF float				Accrue				(){return fQuantizerRangeExt*Dequantize(accrue);}
-	ICF float				Falloff				(){return fQuantizerRangeExt*Dequantize(falloff);}
-	ICF float				Speed				(){return Dequantize(speed);}
-	ICF float				Power				(){return Dequantize(power);}
+	__forceinline float				Accrue				(){return fQuantizerRangeExt*Dequantize(accrue);}
+	__forceinline float				Falloff				(){return fQuantizerRangeExt*Dequantize(falloff);}
+	__forceinline float				Speed				(){return Dequantize(speed);}
+	__forceinline float				Power				(){return Dequantize(power);}
 	bool					StopAtEnd			();
 };
 struct accel_str_pred : public std::binary_function<shared_str, shared_str, bool>	{	

@@ -43,23 +43,23 @@
 
 		// Arithmetic operators
 		//! Operator for Point Negate = - Point
-		ICF	Point		operator-()							const		{ return Point(-x, -y, -z);							}
+		__forceinline	Point		operator-()							const		{ return Point(-x, -y, -z);							}
 
 		//! Operator for Point Plus = Point + Point.
-		ICF	Point		operator+(const Point& p)			const		{ return Point(x + p.x, y + p.y, z + p.z);			}
+		__forceinline	Point		operator+(const Point& p)			const		{ return Point(x + p.x, y + p.y, z + p.z);			}
 		//! Operator for Point Minus = Point - Point.
-		ICF	Point		operator-(const Point& p)			const		{ return Point(x - p.x, y - p.y, z - p.z);			}
+		__forceinline	Point		operator-(const Point& p)			const		{ return Point(x - p.x, y - p.y, z - p.z);			}
 		//! Operator for Point Scale = Point * float.
-		ICF	Point		operator*(float s)					const		{ return Point(x * s,   y * s,   z * s );			}
+		__forceinline	Point		operator*(float s)					const		{ return Point(x * s,   y * s,   z * s );			}
 		//! Operator for Point Scale = float * Point.
 		friend			Point		operator*(float s, const Point& p)				{ return Point(s * p.x, s * p.y, s * p.z);			}
 		//! Operator for Point Scale = Point / float.
-		ICF	Point		operator/(float s)					const		{ s = 1.0f / s; return Point(x * s, y * s, z * s);	}
+		__forceinline	Point		operator/(float s)					const		{ s = 1.0f / s; return Point(x * s, y * s, z * s);	}
 
 		//! Operator for float DotProd = Point | Point.
-		ICF	float		operator|(const Point& p)			const		{ return x*p.x + y*p.y + z*p.z;						}
+		__forceinline	float		operator|(const Point& p)			const		{ return x*p.x + y*p.y + z*p.z;						}
 		//! Operator for Point VecProd = Point ^ Point.
-		ICF	Point		operator^(const Point& p)			const
+		__forceinline	Point		operator^(const Point& p)			const
 						{
 							return Point(
 							y * p.z - z * p.y,
@@ -68,18 +68,18 @@
 						}
 
 		//! Operator for Point += Point.
-		ICF	Point&		operator+=(const Point& p)						{ x += p.x; y += p.y; z += p.z;	return *this;		}
+		__forceinline	Point&		operator+=(const Point& p)						{ x += p.x; y += p.y; z += p.z;	return *this;		}
 		//! Operator for Point += float.
-		ICF	Point&		operator+=(float s)								{ x += s;   y += s;   z += s;	return *this;		}
+		__forceinline	Point&		operator+=(float s)								{ x += s;   y += s;   z += s;	return *this;		}
 
 		//! Operator for Point -= Point.
-		ICF	Point&		operator-=(const Point& p)						{ x -= p.x; y -= p.y; z -= p.z;	return *this;		}
+		__forceinline	Point&		operator-=(const Point& p)						{ x -= p.x; y -= p.y; z -= p.z;	return *this;		}
 		//! Operator for Point -= float.
-		ICF	Point&		operator-=(float s)								{ x -= s;   y -= s;   z -= s;	return *this;		}
+		__forceinline	Point&		operator-=(float s)								{ x -= s;   y -= s;   z -= s;	return *this;		}
 		//! Operator for Point *= float.
-		ICF	Point&		operator*=(float s)								{ x *= s; y *= s; z *= s;		return *this;		}
+		__forceinline	Point&		operator*=(float s)								{ x *= s; y *= s; z *= s;		return *this;		}
 		//! Operator for Point /= float.
-		ICF	Point&		operator/=(float s)								{ s = 1.0f/s; x *= s; y *= s; z *= s; return *this; }
+		__forceinline	Point&		operator/=(float s)								{ s = 1.0f/s; x *= s; y *= s; z *= s; return *this; }
 
 		// Arithmetic operators
 		//! Operator for Point Mul = Point * Matrix3x3.
@@ -92,9 +92,9 @@
 	//					Point&		operator*=(const Matrix4x4& mat);
 
 		//! Access as array
-		ICF				operator	const	float*() const	{ return &x; }
+		__forceinline				operator	const	float*() const	{ return &x; }
 		//! Access as array
-		ICF				operator			float*()		{ return &x; }
+		__forceinline				operator			float*()		{ return &x; }
 
 		public:
 						float		x;		//!< x coordinate
@@ -118,7 +118,7 @@ using namespace Opcode;
 	if(x0>max&&x1>max&&x2>max)return false;
 
 //! TO BE DOCUMENTED
-ICF bool planeBoxOverlap_slow(const Point& normal, const float d, const Point& maxbox)
+__forceinline bool planeBoxOverlap_slow(const Point& normal, const float d, const Point& maxbox)
 {
 	Point vmin, vmax;
 	if(normal[0]>0.0f)	{ vmin[0] =-maxbox[0]; vmax[0]= maxbox[0]; }
@@ -132,7 +132,7 @@ ICF bool planeBoxOverlap_slow(const Point& normal, const float d, const Point& m
 	return	false		;
 }
 
-ICF bool planeBoxOverlap(const Point& normal, const float d, const Point& maxbox)
+__forceinline bool planeBoxOverlap(const Point& normal, const float d, const Point& maxbox)
 {
 	float norm_box_proj=_abs(maxbox.x*normal.x)+_abs(maxbox.y*normal.y)+_abs(maxbox.z*normal.z);
 	if(d>-norm_box_proj&&d<norm_box_proj)return true;

@@ -23,25 +23,25 @@ IC const CLevelGraph::CHeader &CLevelGraph::header	() const
 	return				(*m_header);
 }
 
-ICF bool CLevelGraph::valid_vertex_id	(u32 id) const
+__forceinline bool CLevelGraph::valid_vertex_id	(u32 id) const
 {
 	bool				b = id < header().vertex_count();
 	return				(b);
 }
 
-ICF	CLevelGraph::CVertex	*CLevelGraph::vertex(const u32 vertex_id) const
+__forceinline	CLevelGraph::CVertex	*CLevelGraph::vertex(const u32 vertex_id) const
 {
 	VERIFY				(valid_vertex_id(vertex_id));
 	return				(m_nodes + vertex_id);
 }
 
-ICF	u32	CLevelGraph::vertex	(const CVertex *vertex_p) const
+__forceinline	u32	CLevelGraph::vertex	(const CVertex *vertex_p) const
 {
 	VERIFY				((vertex_p >= m_nodes) && valid_vertex_id(u32(vertex_p - m_nodes)));
 	return				(u32(vertex_p - m_nodes));
 }
 
-ICF	u32	CLevelGraph::vertex	(const CVertex &vertex_r) const
+__forceinline	u32	CLevelGraph::vertex	(const CVertex &vertex_r) const
 {
 	return				(vertex(&vertex_r));
 }
@@ -81,7 +81,7 @@ IC	void CLevelGraph::unpack_xz(const CLevelGraph::CVertex *vertex, T &x, T &z) c
 	unpack_xz			(*vertex,x,z);
 }
 
-ICF	const Fvector CLevelGraph::vertex_position	(const CLevelGraph::CPosition &source_position) const
+__forceinline	const Fvector CLevelGraph::vertex_position	(const CLevelGraph::CPosition &source_position) const
 {
 	Fvector				dest_position;
 	unpack_xz			(source_position,dest_position.x,dest_position.z);
@@ -89,7 +89,7 @@ ICF	const Fvector CLevelGraph::vertex_position	(const CLevelGraph::CPosition &so
 	return				(dest_position);
 }
 
-ICF	const Fvector &CLevelGraph::vertex_position	(Fvector &dest_position, const CLevelGraph::CPosition &source_position) const
+__forceinline	const Fvector &CLevelGraph::vertex_position	(Fvector &dest_position, const CLevelGraph::CPosition &source_position) const
 {
 	return				(dest_position = vertex_position(source_position));
 }
@@ -244,72 +244,72 @@ IC float CLevelGraph::vertex_plane_y	(const u32 vertex_id) const
 	return				(vertex_plane_y(vertex(vertex_id)));
 }
 
-ICF u32	CLevelGraph::CHeader::version() const
+__forceinline u32	CLevelGraph::CHeader::version() const
 {
 	return				(hdrNODES::version);
 }
 
-ICF u32	CLevelGraph::CHeader::vertex_count() const
+__forceinline u32	CLevelGraph::CHeader::vertex_count() const
 {
 	return				(count);
 }
 
-ICF float	CLevelGraph::CHeader::cell_size() const
+__forceinline float	CLevelGraph::CHeader::cell_size() const
 {
 	return				(size);
 }
 
-ICF float	CLevelGraph::CHeader::factor_y() const
+__forceinline float	CLevelGraph::CHeader::factor_y() const
 {
 	return				(size_y);
 }
 
-ICF const Fbox &CLevelGraph::CHeader::box() const
+__forceinline const Fbox &CLevelGraph::CHeader::box() const
 {
 	return				(aabb);
 }
 
-ICF const xrGUID &CLevelGraph::CHeader::guid() const
+__forceinline const xrGUID &CLevelGraph::CHeader::guid() const
 {
 	return				(hdrNODES::guid);
 }
 
-ICF u8	CLevelGraph::CVertex::light() const
+__forceinline u8	CLevelGraph::CVertex::light() const
 {
 	return				(NodeCompressed::light());
 }
 
-ICF u32	CLevelGraph::CVertex::link(int index) const
+__forceinline u32	CLevelGraph::CVertex::link(int index) const
 {
 	return				(NodeCompressed::link(u8(index)));
 }
 
-ICF u16	CLevelGraph::CVertex::cover(u8 index) const
+__forceinline u16	CLevelGraph::CVertex::cover(u8 index) const
 {
 	return				(NodeCompressed::cover(index));
 }
 
-ICF u16	CLevelGraph::CVertex::plane() const
+__forceinline u16	CLevelGraph::CVertex::plane() const
 {
 	return				(NodeCompressed::plane);
 }
 
-ICF const CLevelGraph::CPosition &CLevelGraph::CVertex::position() const
+__forceinline const CLevelGraph::CPosition &CLevelGraph::CVertex::position() const
 {
 	return				(p);
 }
 
-ICF bool CLevelGraph::CVertex::operator<	(const CLevelGraph::CVertex &vertex) const
+__forceinline bool CLevelGraph::CVertex::operator<	(const CLevelGraph::CVertex &vertex) const
 {
 	return				(position().xz() < vertex.position().xz());
 }
 
-ICF bool CLevelGraph::CVertex::operator>	(const CLevelGraph::CVertex &vertex) const
+__forceinline bool CLevelGraph::CVertex::operator>	(const CLevelGraph::CVertex &vertex) const
 {
 	return				(position().xz() > vertex.position().xz());
 }
 
-ICF bool CLevelGraph::CVertex::operator==	(const CLevelGraph::CVertex &vertex) const
+__forceinline bool CLevelGraph::CVertex::operator==	(const CLevelGraph::CVertex &vertex) const
 {
 	return				(position().xz() == vertex.position().xz());
 }

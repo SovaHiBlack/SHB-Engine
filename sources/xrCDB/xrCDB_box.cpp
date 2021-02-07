@@ -15,7 +15,7 @@ using namespace Opcode;
 	if(x2>max) max=x2;
 
 //! TO BE DOCUMENTED
-ICF bool planeBoxOverlap(const Point& normal, const float d, const Point& maxbox)
+__forceinline bool planeBoxOverlap(const Point& normal, const float d, const Point& maxbox)
 {
 	Point vmin, vmax;
 	for(udword q=0;q<=2;q++)
@@ -84,14 +84,15 @@ class box_collider
 public:
 	COLLIDER*		dest;
 	TRI*			tris;
-	Fvector*		verts;
+	Fvector3*		verts;
 	
-	Fvector			b_min, b_max;
+	Fvector3			b_min;
+	Fvector3 b_max;
 	Point			center, extents;
 
 	Point			mLeafVerts	[3];
 	
-	IC void			_init		(COLLIDER* CL, Fvector* V, TRI* T, const Fvector& C, const Fvector& E)
+	IC void			_init		(COLLIDER* CL, Fvector3* V, TRI* T, const Fvector3& C, const Fvector3& E)
 	{
 		dest		= CL;
 		verts		= V;
@@ -101,7 +102,7 @@ public:
 		b_min.sub	(C,E);
 		b_max.add	(C,E);
 	}
-	ICF	bool		_box		(const Fvector& C, const Fvector& E)
+	__forceinline	bool		_box		(const Fvector3& C, const Fvector3& E)
 	{
 		if( b_max.x < C.x-E.x )	return false;
 		if( b_max.y < C.y-E.y )	return false;
@@ -111,7 +112,7 @@ public:
 		if( b_min.z > C.z+E.z )	return false;
 		return true;
 	};
-	ICF	bool		_tri		()
+	__forceinline	bool		_tri		()
 	{
 		// move everything so that the boxcenter is in (0,0,0) 
 		Point v0, v1, v2;
@@ -188,9 +189,9 @@ public:
 	void			_prim		(DWORD prim)
 	{
 		TRI&	T	= tris[prim];
-		Fvector& v0	= verts[ T.verts[0] ];	mLeafVerts[0].x = v0.x;	mLeafVerts[0].y = v0.y;	mLeafVerts[0].z = v0.z;
-		Fvector& v1	= verts[ T.verts[1] ];	mLeafVerts[1].x = v1.x;	mLeafVerts[1].y = v1.y;	mLeafVerts[1].z = v1.z;
-		Fvector& v2	= verts[ T.verts[2] ];	mLeafVerts[2].x = v2.x;	mLeafVerts[2].y = v2.y;	mLeafVerts[2].z = v2.z;
+		Fvector3& v0	= verts[ T.verts[0] ];	mLeafVerts[0].x = v0.x;	mLeafVerts[0].y = v0.y;	mLeafVerts[0].z = v0.z;
+		Fvector3& v1	= verts[ T.verts[1] ];	mLeafVerts[1].x = v1.x;	mLeafVerts[1].y = v1.y;	mLeafVerts[1].z = v1.z;
+		Fvector3& v2	= verts[ T.verts[2] ];	mLeafVerts[2].x = v2.x;	mLeafVerts[2].y = v2.y;	mLeafVerts[2].z = v2.z;
 		if (!_tri())			return;
 		RESULT& R	= dest->r_add();
 		R.id		= prim;
@@ -217,7 +218,7 @@ public:
 	}
 };
 
-void COLLIDER::box_query(const MODEL *m_def, const Fvector& b_center, const Fvector& b_dim)
+void COLLIDER::box_query(const MODEL *m_def, const Fvector3& b_center, const Fvector3& b_dim)
 {
 	m_def->syncronize		();
 

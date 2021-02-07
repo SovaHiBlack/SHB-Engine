@@ -14,7 +14,7 @@ struct		CORE_API	str_value
 	char				value		[]	;
 };
 struct		CORE_API	str_value_cmp	{ // less
-	IC bool		operator ()	(const str_value* A, const str_value* B) const	{ return A->dwCRC<B->dwCRC;	};
+	inline bool		operator ()	(const str_value* A, const str_value* B) const	{ return A->dwCRC<B->dwCRC;	};
 };
 #pragma warning(default : 4200)
 
@@ -85,21 +85,21 @@ public:
 // ptr != const res_ptr
 // res_ptr < res_ptr
 // res_ptr > res_ptr
-IC bool operator	==	(shared_str const & a, shared_str const & b)		{ return a._get() == b._get();					}
-IC bool operator	!=	(shared_str const & a, shared_str const & b)		{ return a._get() != b._get();					}
-IC bool operator	<	(shared_str const & a, shared_str const & b)		{ return a._get() <  b._get();					}
-IC bool operator	>	(shared_str const & a, shared_str const & b)		{ return a._get() >  b._get();					}
+inline bool operator	==	(shared_str const & a, shared_str const & b)		{ return a._get() == b._get();					}
+inline bool operator	!=	(shared_str const & a, shared_str const & b)		{ return a._get() != b._get();					}
+inline bool operator	<	(shared_str const & a, shared_str const & b)		{ return a._get() <  b._get();					}
+inline bool operator	>	(shared_str const & a, shared_str const & b)		{ return a._get() >  b._get();					}
 
 // externally visible standart functionality
-IC void swap			(shared_str & lhs, shared_str & rhs)				{ lhs.swap(rhs);		}
-IC u32	xr_strlen		(shared_str & a)									{ return a.size();		}
-IC int	xr_strcmp		(const shared_str & a, const char* b)				{ return xr_strcmp(*a,b);	}
-IC int	xr_strcmp		(const char* a, const shared_str & b)				{ return xr_strcmp(a,*b);	}
-IC int	xr_strcmp		(const shared_str & a, const shared_str & b)		{ 
+inline void swap			(shared_str & lhs, shared_str & rhs)				{ lhs.swap(rhs);		}
+inline u32	xr_strlen		(shared_str & a)									{ return a.size();		}
+inline int	xr_strcmp		(const shared_str & a, const char* b)				{ return xr_strcmp(*a,b);	}
+inline int	xr_strcmp		(const char* a, const shared_str & b)				{ return xr_strcmp(a,*b);	}
+inline int	xr_strcmp		(const shared_str & a, const shared_str & b)		{
 	if (a.equal(b))		return 0;
 	else				return xr_strcmp(*a,*b);
 }
-IC void	xr_strlwr		(xr_string& src)									{ for(xr_string::iterator it=src.begin(); it!=src.end(); it++) *it=xr_string::value_type(tolower(*it));}
-IC void	xr_strlwr		(shared_str& src)									{ if (*src){ char* lp=xr_strdup(*src); xr_strlwr(lp); src=lp; xr_free(lp);} }
+inline void	xr_strlwr		(xr_string& src)									{ for(xr_string::iterator it=src.begin(); it!=src.end(); it++) *it=xr_string::value_type(tolower(*it));}
+inline void	xr_strlwr		(shared_str& src)									{ if (*src){ char* lp=xr_strdup(*src); xr_strlwr(lp); src=lp; xr_free(lp);} }
 
 #pragma pack(pop)

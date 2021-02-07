@@ -70,7 +70,7 @@ void COMotion::Clear()
 	for (int ch=0; ch<ctMaxChannel; ch++) xr_delete(envs[ch]);
 }
 
-void COMotion::_Evaluate(float t, Fvector& T, Fvector& R)
+void COMotion::_Evaluate(float t, Fvector3& T, Fvector3& R)
 {
 	T.x = envs[ctPositionX]->Evaluate(t);
 	T.y = envs[ctPositionY]->Evaluate(t);

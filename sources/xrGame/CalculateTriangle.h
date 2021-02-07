@@ -5,14 +5,14 @@
 #include "Geometry.h"
 #include "tri-colliderknoopc/dtricollidermath.h"
 
-ICF void GetNormal(CDB::TRI* XTri, Fvector& n)
+__forceinline void GetNormal(CDB::TRI* XTri, Fvector& n)
 {
 	const Fvector* V_array = Level( ).ObjectSpace.GetStaticVerts( );
 	Fvector sd1; sd1.sub(V_array[XTri->verts[1]], V_array[XTri->verts[0]]);
 	Fvector sd2; sd2.sub(V_array[XTri->verts[2]], V_array[XTri->verts[1]]);
 	n.crossproduct(sd1, sd2);
 }
-ICF	void InitTriangle(CDB::TRI* XTri, Triangle& triangle)
+__forceinline	void InitTriangle(CDB::TRI* XTri, Triangle& triangle)
 {
 	const Fvector* V_array = Level( ).ObjectSpace.GetStaticVerts( );
 	const float* VRT[3] = { (dReal*) &V_array[XTri->verts[0]],(dReal*) &V_array[XTri->verts[1]],(dReal*) &V_array[XTri->verts[2]] };
@@ -23,12 +23,12 @@ ICF	void InitTriangle(CDB::TRI* XTri, Triangle& triangle)
 	cast_fv(triangle.norm).normalize( );
 	triangle.pos = dDOT(VRT[0], triangle.norm);
 }
-ICF void CalculateTriangle(CDB::TRI* XTri, const float* pos, Triangle& triangle)
+__forceinline void CalculateTriangle(CDB::TRI* XTri, const float* pos, Triangle& triangle)
 {
 	InitTriangle(XTri, triangle);
 	triangle.dist = dDOT(pos, triangle.norm) - triangle.pos;
 }
-ICF void CalculateTriangle(CDB::TRI* XTri, dGeomID g, Triangle& triangle)
+__forceinline void CalculateTriangle(CDB::TRI* XTri, dGeomID g, Triangle& triangle)
 {
 	dVector3	v;
 	dMatrix3	m;
@@ -68,12 +68,12 @@ inline bool  TriContainPoint(const dReal* v0, const dReal* v1, const dReal* v2,
 	return true;
 }
 
-ICF bool  TriContainPoint(const dReal* v0, const dReal* v1, const dReal* v2, const dReal* triAx, const dReal* triSideAx0, const dReal* triSideAx1, const dReal* pos, u16& c)
+__forceinline bool  TriContainPoint(const dReal* v0, const dReal* v1, const dReal* v2, const dReal* triAx, const dReal* triSideAx0, const dReal* triSideAx1, const dReal* pos, u16& c)
 {
 	dVector3 triSideAx2 = { v0[0] - v2[0],v0[1] - v2[1],v0[2] - v2[2] };
 	return TriContainPoint(v0, v1, v2, triSideAx0, triSideAx1, triSideAx2, triAx, pos, c);
 }
-ICF bool TriContainPoint(Triangle* T, const float* pos, u16& c)
+__forceinline bool TriContainPoint(Triangle* T, const float* pos, u16& c)
 {
 	//TriContainPoint(const dReal* v0,const dReal* v1,const dReal* v2,const dReal* triAx,const dReal* triSideAx0,const dReal* triSideAx1, const dReal* pos)
 	const Fvector* V_array = Level( ).ObjectSpace.GetStaticVerts( );
@@ -119,7 +119,7 @@ IC float DistToFragmenton(const dReal* point, const dReal* pt1, const dReal* pt2
 	dVectorSet(to_point, Dc);
 	return dSqrt(dDOT(Dc, Dc));
 }
-ICF float DistToTri(Triangle* T, const float* pos, float* dir, float* p, ETriDist& c, const Fvector* V_array)
+__forceinline float DistToTri(Triangle* T, const float* pos, float* dir, float* p, ETriDist& c, const Fvector* V_array)
 {
 	if (!TriPlaneContainPoint(T))
 	{

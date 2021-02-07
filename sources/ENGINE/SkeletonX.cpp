@@ -287,13 +287,13 @@ BOOL CSkeletonX::has_visible_bones( )
 //-----------------------------------------------------------------------------------------------------
 // Wallmarks
 //-----------------------------------------------------------------------------------------------------
-BOOL CSkeletonX::_PickBoneSoft1W(Fvector& normal, float& dist, const Fvector& S, const Fvector& D, u16* indices, CBoneData::FacesVec& faces)
+BOOL CSkeletonX::_PickBoneSoft1W(Fvector3& normal, float& dist, const Fvector3& S, const Fvector3& D, u16* indices, CBoneData::FacesVec& faces)
 {
 	VERIFY(*Vertices1W);
 	bool intersect = false;
 	for (CBoneData::FacesVecIt it = faces.begin( ); it != faces.end( ); it++)
 	{
-		Fvector p[3];
+		Fvector3 p[3];
 		u32 idx = (*it) * 3;
 		for (u32 k = 0; k < 3; k++)
 		{
@@ -316,18 +316,18 @@ BOOL CSkeletonX::_PickBoneSoft1W(Fvector& normal, float& dist, const Fvector& S,
 	return intersect;
 }
 
-BOOL CSkeletonX::_PickBoneSoft2W(Fvector& normal, float& dist, const Fvector& S, const Fvector& D, u16* indices, CBoneData::FacesVec& faces)
+BOOL CSkeletonX::_PickBoneSoft2W(Fvector3& normal, float& dist, const Fvector3& S, const Fvector3& D, u16* indices, CBoneData::FacesVec& faces)
 {
 	VERIFY(*Vertices2W);
 	bool intersect = false;
 	for (CBoneData::FacesVecIt it = faces.begin( ); it != faces.end( ); it++)
 	{
-		Fvector p[3];
+		Fvector3 p[3];
 		u32 idx = (*it) * 3;
 		for (u32 k = 0; k < 3; k++)
 		{
-			Fvector P0;
-			Fvector P1;
+			Fvector3 P0;
+			Fvector3 P1;
 			vertBoned2W& vert = Vertices2W[indices[idx + k]];
 			Fmatrix& xform0 = Parent->LL_GetBoneInstance(vert.matrix0).mRenderTransform;
 			Fmatrix& xform1 = Parent->LL_GetBoneInstance(vert.matrix1).mRenderTransform;
@@ -351,12 +351,12 @@ BOOL CSkeletonX::_PickBoneSoft2W(Fvector& normal, float& dist, const Fvector& S,
 }
 
 // Fill Vertices
-void CSkeletonX::_FillVerticesSoft1W(const Fmatrix& view, CSkeletonWallmark& wm, const Fvector& normal, float size, u16* indices, CBoneData::FacesVec& faces)
+void CSkeletonX::_FillVerticesSoft1W(const Fmatrix& view, CSkeletonWallmark& wm, const Fvector3& normal, float size, u16* indices, CBoneData::FacesVec& faces)
 {
 	VERIFY(*Vertices1W);
 	for (CBoneData::FacesVecIt it = faces.begin( ); it != faces.end( ); it++)
 	{
-		Fvector p[3];
+		Fvector3 p[3];
 		u32 idx = (*it) * 3;
 		CSkeletonWallmark::WMFace F;
 		for (u32 k = 0; k < 3; k++)
@@ -370,7 +370,7 @@ void CSkeletonX::_FillVerticesSoft1W(const Fmatrix& view, CSkeletonWallmark& wm,
 			xform.transform_tiny(p[k], F.vert[k]);
 		}
 
-		Fvector test_normal;
+		Fvector3 test_normal;
 		test_normal.mknormal(p[0], p[1], p[2]);
 		float cosa = test_normal.dotproduct(normal);
 		if (cosa < EPS)
@@ -380,7 +380,7 @@ void CSkeletonX::_FillVerticesSoft1W(const Fmatrix& view, CSkeletonWallmark& wm,
 
 		if (CDB::TestSphereTri(wm.ContactPoint( ), size, p))
 		{
-			Fvector UV;
+			Fvector3 UV;
 			for (u32 k = 0; k < 3; k++)
 			{
 				Fvector2& uv = F.uv[k];
@@ -394,18 +394,18 @@ void CSkeletonX::_FillVerticesSoft1W(const Fmatrix& view, CSkeletonWallmark& wm,
 	}
 }
 
-void CSkeletonX::_FillVerticesSoft2W(const Fmatrix& view, CSkeletonWallmark& wm, const Fvector& normal, float size, u16* indices, CBoneData::FacesVec& faces)
+void CSkeletonX::_FillVerticesSoft2W(const Fmatrix& view, CSkeletonWallmark& wm, const Fvector3& normal, float size, u16* indices, CBoneData::FacesVec& faces)
 {
 	VERIFY(*Vertices2W);
 	for (CBoneData::FacesVecIt it = faces.begin( ); it != faces.end( ); it++)
 	{
-		Fvector p[3];
+		Fvector3 p[3];
 		u32 idx = (*it) * 3;
 		CSkeletonWallmark::WMFace F;
 		for (u32 k = 0; k < 3; k++)
 		{
-			Fvector P0;
-			Fvector P1;
+			Fvector3 P0;
+			Fvector3 P1;
 			vertBoned2W& vert = Vertices2W[indices[idx + k]];
 			F.bone_id[k][0] = vert.matrix0;
 			F.bone_id[k][1] = vert.matrix1;
@@ -418,7 +418,7 @@ void CSkeletonX::_FillVerticesSoft2W(const Fmatrix& view, CSkeletonWallmark& wm,
 			p[k].lerp(P0, P1, F.weight[k]);
 		}
 
-		Fvector test_normal;
+		Fvector3 test_normal;
 		test_normal.mknormal(p[0], p[1], p[2]);
 		float cosa = test_normal.dotproduct(normal);
 		if (cosa < EPS)
@@ -428,7 +428,7 @@ void CSkeletonX::_FillVerticesSoft2W(const Fmatrix& view, CSkeletonWallmark& wm,
 
 		if (CDB::TestSphereTri(wm.ContactPoint( ), size, p))
 		{
-			Fvector UV;
+			Fvector3 UV;
 			for (u32 k = 0; k < 3; k++)
 			{
 				Fvector2& uv = F.uv[k];

@@ -34,7 +34,7 @@ protected:
 	float					fCurrentY;
 	Fvector2				vInterval;
 
-	Fvector*				TCMap;
+	Fvector3*				TCMap;
 	float					fHeight;
 	float					fXStep;
 	float					fYStep;
@@ -60,7 +60,7 @@ public:
 	};
 
 protected:
-	IC const Fvector&		GetCharTC			(u16 c)
+	IC const Fvector3&		GetCharTC			(u16 c)
 	{
 		return TCMap[c];
 	}

@@ -55,7 +55,7 @@ IC void	CBackend::set_ZB				(IDirect3DSurface9* ZB)
 	}
 }
 
-ICF void	CBackend::set_States		(IDirect3DStateBlock9* _state)
+__forceinline void	CBackend::set_States		(IDirect3DStateBlock9* _state)
 {
 	if (state!=_state)
 	{
@@ -99,7 +99,7 @@ IC void CBackend::set_Element			(ShaderElement* S, u32	pass)
 	set_Textures	(P.T);
 }
 
-ICF void CBackend::set_Format			(IDirect3DVertexDeclaration9* _decl)
+__forceinline void CBackend::set_Format			(IDirect3DVertexDeclaration9* _decl)
 {
 	if (decl!=_decl)
 	{
@@ -114,7 +114,7 @@ ICF void CBackend::set_Format			(IDirect3DVertexDeclaration9* _decl)
 	}
 }
 
-ICF void CBackend::set_PS				(IDirect3DPixelShader9* _ps, const char* _n)
+__forceinline void CBackend::set_PS				(IDirect3DPixelShader9* _ps, const char* _n)
 {
 	if (ps!=_ps)
 	{
@@ -130,7 +130,7 @@ ICF void CBackend::set_PS				(IDirect3DPixelShader9* _ps, const char* _n)
 	}
 }
 
-ICF void CBackend::set_VS				(IDirect3DVertexShader9* _vs, const char* _n)
+__forceinline void CBackend::set_VS				(IDirect3DVertexShader9* _vs, const char* _n)
 {
 	if (vs!=_vs)
 	{
@@ -146,7 +146,7 @@ ICF void CBackend::set_VS				(IDirect3DVertexShader9* _vs, const char* _n)
 	}
 }
 
-ICF void CBackend::set_Vertices			(IDirect3DVertexBuffer9* _vb, u32 _vb_stride)
+__forceinline void CBackend::set_Vertices			(IDirect3DVertexBuffer9* _vb, u32 _vb_stride)
 {
 	if ((vb!=_vb) || (vb_stride!=_vb_stride))
 	{
@@ -162,7 +162,7 @@ ICF void CBackend::set_Vertices			(IDirect3DVertexBuffer9* _vb, u32 _vb_stride)
 	}
 }
 
-ICF void CBackend::set_Indices			(IDirect3DIndexBuffer9* _ib)
+__forceinline void CBackend::set_Indices			(IDirect3DIndexBuffer9* _ib)
 {
 	if (ib!=_ib)
 	{
@@ -177,7 +177,7 @@ ICF void CBackend::set_Indices			(IDirect3DIndexBuffer9* _ib)
 	}
 }
 
-ICF void CBackend::Render				(D3DPRIMITIVETYPE T, u32 baseV, u32 startV, u32 countV, u32 startI, u32 PC)
+__forceinline void CBackend::Render				(D3DPRIMITIVETYPE T, u32 baseV, u32 startV, u32 countV, u32 startI, u32 PC)
 {
 	stat.calls			++;
 	stat.verts			+= countV;
@@ -187,7 +187,7 @@ ICF void CBackend::Render				(D3DPRIMITIVETYPE T, u32 baseV, u32 startV, u32 cou
 	PGO					(Msg("PGO:DIP:%dv/%df",countV,PC));
 }
 
-ICF void CBackend::Render				(D3DPRIMITIVETYPE T, u32 startV, u32 PC)
+__forceinline void CBackend::Render				(D3DPRIMITIVETYPE T, u32 startV, u32 PC)
 {
 	stat.calls			++;
 	stat.verts			+= 3*PC;
@@ -197,7 +197,7 @@ ICF void CBackend::Render				(D3DPRIMITIVETYPE T, u32 startV, u32 PC)
 	PGO					(Msg("PGO:DIP:%dv/%df",3*PC,PC));
 }
 
-ICF void CBackend::set_Shader			(Shader* S, u32 pass)
+__forceinline void CBackend::set_Shader			(Shader* S, u32 pass)
 {
 	set_Element			(S->E[0],pass);
 }
@@ -244,7 +244,7 @@ IC void	CBackend::set_ColorWriteEnable	(u32 _mask )
 		CHK_DX(HW.pDevice->SetRenderState	( D3DRS_COLORWRITEENABLE3,	_mask	));	
 	}
 }
-ICF void	CBackend::set_CullMode		(u32 _mode)
+__forceinline void	CBackend::set_CullMode		(u32 _mode)
 {
 	if (cull_mode		!= _mode)		{ cull_mode = _mode;			CHK_DX(HW.pDevice->SetRenderState	( D3DRS_CULLMODE,			_mode				)); }
 }

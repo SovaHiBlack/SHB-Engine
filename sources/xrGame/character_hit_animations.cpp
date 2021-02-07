@@ -28,7 +28,7 @@ void character_hit_animation_controller::SetupHitMotions(CKinematicsAnimated& ca
 	}
 }
 
-ICF int sign(float x)
+__forceinline int sign(float x)
 {
 	return x < 0 ? -1 : 1;
 }

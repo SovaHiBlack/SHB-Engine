@@ -30,7 +30,7 @@ void CBackend::dbg_Draw			(D3DPRIMITIVETYPE T, FVF::L* pVerts, int pcnt)
 }
 
 #define RGBA_GETALPHA(rgb)      ((rgb) >> 24)
-void CBackend::dbg_DrawOBB		(Fmatrix& T, Fvector& half_dim, u32 C)
+void CBackend::dbg_DrawOBB		(Fmatrix& T, Fvector3& half_dim, u32 C)
 {
 	Fmatrix mL2W_Transform,mScaleTransform;
 
@@ -53,7 +53,7 @@ void CBackend::dbg_DrawOBB		(Fmatrix& T, Fvector& half_dim, u32 C)
 	set_xform_world	(mL2W_Transform);
 	dbg_Draw(D3DPT_LINELIST,aabb,8,aabb_id,12);
 }
-void CBackend::dbg_DrawTRI	(Fmatrix& T, Fvector& p1, Fvector& p2, Fvector& p3, u32 C)
+void CBackend::dbg_DrawTRI	(Fmatrix& T, Fvector3& p1, Fvector3& p2, Fvector3& p3, u32 C)
 {
 	FVF::L	tri[3];
 	tri[0].p = p1; tri[0].color = C;
@@ -63,7 +63,7 @@ void CBackend::dbg_DrawTRI	(Fmatrix& T, Fvector& p1, Fvector& p2, Fvector& p3, u
 	set_xform_world	(T);
 	dbg_Draw(D3DPT_TRIANGLESTRIP,tri,1);
 }
-void CBackend::dbg_DrawLINE(Fmatrix& T, Fvector& p1, Fvector& p2, u32 C)
+void CBackend::dbg_DrawLINE(Fmatrix& T, Fvector3& p1, Fvector3& p2, u32 C)
 {
 	FVF::L	line[2];
 	line[0].p = p1; line[0].color = C;

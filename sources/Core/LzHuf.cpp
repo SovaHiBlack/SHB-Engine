@@ -60,11 +60,11 @@ private:
 	u8*			out_end;
 	u8*			out_iterator;
 public:
-	IC int		_getb() {
+	inline int		_getb() {
 		if (in_iterator==in_end) return EOF;
 		return *in_iterator++;
 	}
-	IC void		_putb(int c) {
+	inline void		_putb(int c) {
 		if (out_iterator==out_end) {
 			u32	out_size= u32(out_end-out_start);
 			out_start	= (u8*) xr_realloc(out_start,out_size+1024);
@@ -79,7 +79,7 @@ public:
 		out_start	= out_end	= out_iterator = 0;
 	}
 	
-	IC void		Init_Input(u8* _start, u8* _end) {
+	inline void		Init_Input(u8* _start, u8* _end) {
 		// input
 		in_start	= _start;
 		in_end		= _end;
@@ -88,28 +88,28 @@ public:
 		// bitwise input/output
 		getbuf = getlen = putbuf = putlen = 0;
 	}
-	IC void		Init_Output(int _rsize) {
+	inline void		Init_Output(int _rsize) {
 		// output
 		out_start	= (u8*)xr_malloc(_rsize);
 		out_end		= out_start + _rsize;
 		out_iterator= out_start;
 	}
-	IC u32		InputSize	() {
+	inline u32		InputSize	() {
 		return u32(in_end-in_start);
 	}
-	IC u32		OutSize		() {
+	inline u32		OutSize		() {
 		return u32(out_iterator-out_start);
 	}
-	IC u8*		OutPointer	() {
+	inline u8*		OutPointer	() {
 		return out_start;
 	}
-	IC void		OutRelease	() {
+	inline void		OutRelease	() {
 		xr_free		(out_start);
 		out_start	= 0; 
 		out_end		= 0; 
 		out_iterator= 0;
 	}
-	IC int		GetBit(void)    /* get one bit */
+	inline int		GetBit(void)    /* get one bit */
 	{
 		unsigned i;
 		
@@ -124,7 +124,7 @@ public:
 		return (int)((i & 0x8000) >> 15);
 	}
 	
-	IC int		GetByte(void)   /* get one byte */
+	inline int		GetByte(void)   /* get one byte */
 	{
 		unsigned i;
 		
@@ -139,7 +139,7 @@ public:
 		return (int)((i & 0xff00) >> 8);
 	}
 	
-	IC void		PutCode(int l, unsigned c)     /* output c bits of code */
+	inline void		PutCode(int l, unsigned c)     /* output c bits of code */
 	{
 		putbuf |= c >> putlen;
 		if ((putlen += l) >= 8) {
@@ -155,7 +155,7 @@ public:
 			}
 		}
 	}
-	IC void		PutFlush()
+	inline void		PutFlush()
 	{
 		if (putlen) {
 			_putb(putbuf >> 8);
@@ -165,46 +165,46 @@ public:
 };
 static LZfs fs;
 //************************** Internal FS
-IC void InitTree(void)  /* initialize trees */
+inline void InitTree(void)  /* initialize trees */
 {
-    int  i;
+	int  i;
 	
-    for (i = N + 1; i <= N + 256; i++)	        rson[i] = NIL;        /* root */
-    for (i = 0; i < N; i++)						dad[i] = NIL;         /* node */
+	for (i = N + 1; i <= N + 256; i++)	        rson[i] = NIL;        /* root */
+	for (i = 0; i < N; i++)						dad[i] = NIL;         /* node */
 }
 
 void InsertNode(int r)  /* insert to tree */
 {
-    int				i, p, cmp;
-    u8			*key;
-    unsigned		c;
+	int				i, p, cmp;
+	u8			*key;
+	unsigned		c;
 	
-    cmp = 1;
-    key = &text_buf[r];
-    p = N + 1 + key[0];
-    rson[r] = lson[r] = NIL;
-    match_length = 0;
-    for ( ; ; ) {
-        if (cmp >= 0) {
-            if (rson[p] != NIL)
-                p = rson[p];
-            else {
-                rson[p] = r;
-                dad[r] = p;
-                return;
-            }
-        } else {
-            if (lson[p] != NIL)
-                p = lson[p];
-            else {
-                lson[p] = r;
-                dad[r] = p;
-                return;
-            }
-        }
-        for (i = 1; i < F; i++)
-            if ((cmp = key[i] - text_buf[p + i]) != 0)
-                break;
+	cmp = 1;
+	key = &text_buf[r];
+	p = N + 1 + key[0];
+	rson[r] = lson[r] = NIL;
+	match_length = 0;
+	for ( ; ; ) {
+		if (cmp >= 0) {
+			if (rson[p] != NIL)
+				p = rson[p];
+			else {
+				rson[p] = r;
+				dad[r] = p;
+				return;
+			}
+		} else {
+			if (lson[p] != NIL)
+				p = lson[p];
+			else {
+				lson[p] = r;
+				dad[r] = p;
+				return;
+			}
+		}
+		for (i = 1; i < F; i++)
+			if ((cmp = key[i] - text_buf[p + i]) != 0)
+				break;
 			if (i > THRESHOLD) {
 				if (i > match_length) {
 					match_position = ((r - p) & (N - 1)) - 1;
@@ -217,27 +217,27 @@ void InsertNode(int r)  /* insert to tree */
 					}
 				}
 			}
-    }
-    dad[r]  = dad[p];
-    lson[r] = lson[p];
-    rson[r] = rson[p];
-    dad[lson[p]] = r;
-    dad[rson[p]] = r;
-    if (rson[dad[p]] == p)
-        rson[dad[p]] = r;
-    else
-        lson[dad[p]] = r;
-    dad[p] = NIL; /* remove p */
+	}
+	dad[r]  = dad[p];
+	lson[r] = lson[p];
+	rson[r] = rson[p];
+	dad[lson[p]] = r;
+	dad[rson[p]] = r;
+	if (rson[dad[p]] == p)
+		rson[dad[p]] = r;
+	else
+		lson[dad[p]] = r;
+	dad[p] = NIL; /* remove p */
 }
 
 void DeleteNode(int p)  /* remove from tree */
 {
-    int  q;
+	int  q;
 	
-    if (dad[p] == NIL)	return;	/* not registered */
-    if (rson[p] == NIL)
+	if (dad[p] == NIL)	return;	/* not registered */
+	if (rson[p] == NIL)
 		q = lson[p];
-    else 
+	else 
 	{
 		if (lson[p] == NIL)
 		{
@@ -273,7 +273,7 @@ void DeleteNode(int p)  /* remove from tree */
 /* table for encoding and decoding the upper 6 bits of position */
 /* for encoding */
 u8 p_len[64] = {
-    0x03, 0x04, 0x04, 0x04, 0x05, 0x05, 0x05, 0x05,
+	0x03, 0x04, 0x04, 0x04, 0x05, 0x05, 0x05, 0x05,
 	0x05, 0x05, 0x05, 0x05, 0x06, 0x06, 0x06, 0x06,
 	0x06, 0x06, 0x06, 0x06, 0x06, 0x06, 0x06, 0x06,
 	0x07, 0x07, 0x07, 0x07, 0x07, 0x07, 0x07, 0x07,
@@ -284,7 +284,7 @@ u8 p_len[64] = {
 };
 
 u8 p_code[64] = {
-    0x00, 0x20, 0x30, 0x40, 0x50, 0x58, 0x60, 0x68,
+	0x00, 0x20, 0x30, 0x40, 0x50, 0x58, 0x60, 0x68,
 	0x70, 0x78, 0x80, 0x88, 0x90, 0x94, 0x98, 0x9C,
 	0xA0, 0xA4, 0xA8, 0xAC, 0xB0, 0xB4, 0xB8, 0xBC,
 	0xC0, 0xC2, 0xC4, 0xC6, 0xC8, 0xCA, 0xCC, 0xCE,
@@ -296,7 +296,7 @@ u8 p_code[64] = {
 
 /* for decoding */
 u8 d_code[256] = {
-    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
 	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
 	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
 	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
@@ -331,7 +331,7 @@ u8 d_code[256] = {
 };
 
 u8 d_len[256] = {
-    0x03, 0x03, 0x03, 0x03, 0x03, 0x03, 0x03, 0x03,
+	0x03, 0x03, 0x03, 0x03, 0x03, 0x03, 0x03, 0x03,
 	0x03, 0x03, 0x03, 0x03, 0x03, 0x03, 0x03, 0x03,
 	0x03, 0x03, 0x03, 0x03, 0x03, 0x03, 0x03, 0x03,
 	0x03, 0x03, 0x03, 0x03, 0x03, 0x03, 0x03, 0x03,
@@ -370,267 +370,267 @@ u8 d_len[256] = {
 
 void StartHuff(void)
 {
-    int i, j;
+	int i, j;
 	
-    for (i = 0; i < N_CHAR; i++) {
-        freq[i]		= 1;
-        son	[i]		= i + T;
-        prnt[i + T] = i;
-    }
-    i = 0; j = N_CHAR;
-    while (j <= R) {
-        freq[j]		= freq[i] + freq[i + 1];
-        son[j]		= i;
-        prnt[i]		= prnt[i + 1] = j;
-        i += 2; j++;
-    }
-    freq[T] = 0xffff;
-    prnt[R] = 0;
+	for (i = 0; i < N_CHAR; i++) {
+		freq[i]		= 1;
+		son	[i]		= i + T;
+		prnt[i + T] = i;
+	}
+	i = 0; j = N_CHAR;
+	while (j <= R) {
+		freq[j]		= freq[i] + freq[i + 1];
+		son[j]		= i;
+		prnt[i]		= prnt[i + 1] = j;
+		i += 2; j++;
+	}
+	freq[T] = 0xffff;
+	prnt[R] = 0;
 }
 
 
 /* reconstruction of tree */
 void reconst(void)
 {
-    int			i, j, k;
-    unsigned	f, l;
+	int			i, j, k;
+	unsigned	f, l;
 	
-    /* collect leaf nodes in the first half of the table */
-    /* and replace the freq by (freq + 1) / 2. */
-    j = 0;
-    for (i = 0; i < T; i++) {
-        if (son[i] >= T) {
-            freq[j] = (freq[i] + 1) / 2;
-            son[j] = son[i];
-            j++;
-        }
-    }
-    /* begin constructing tree by connecting sons */
-    for (i = 0, j = N_CHAR; j < T; i += 2, j++) {
-        k = i + 1;
-        f = freq[j] = freq[i] + freq[k];
-        for (k = j - 1; f < freq[k]; k--);
-        k++;
-        l = (j - k) * sizeof(unsigned);
-        memmove	(&freq[k + 1], &freq[k], l);
-        freq[k] = f;
-        memmove	(&son[k + 1], &son[k], l);
-        son[k] = i;
-    }
-    /* connect prnt */
-    for (i = 0; i < T; i++) {
-        if ((k = son[i]) >= T) {
-            prnt[k] = i;
-        } else {
-            prnt[k] = prnt[k + 1] = i;
-        }
-    }
+	/* collect leaf nodes in the first half of the table */
+	/* and replace the freq by (freq + 1) / 2. */
+	j = 0;
+	for (i = 0; i < T; i++) {
+		if (son[i] >= T) {
+			freq[j] = (freq[i] + 1) / 2;
+			son[j] = son[i];
+			j++;
+		}
+	}
+	/* begin constructing tree by connecting sons */
+	for (i = 0, j = N_CHAR; j < T; i += 2, j++) {
+		k = i + 1;
+		f = freq[j] = freq[i] + freq[k];
+		for (k = j - 1; f < freq[k]; k--);
+		k++;
+		l = (j - k) * sizeof(unsigned);
+		memmove	(&freq[k + 1], &freq[k], l);
+		freq[k] = f;
+		memmove	(&son[k + 1], &son[k], l);
+		son[k] = i;
+	}
+	/* connect prnt */
+	for (i = 0; i < T; i++) {
+		if ((k = son[i]) >= T) {
+			prnt[k] = i;
+		} else {
+			prnt[k] = prnt[k + 1] = i;
+		}
+	}
 }
 
 
 /* increment frequency of given code by one, and update tree */
 void update(int c)
 {
-    int i, j, k, l;
+	int i, j, k, l;
 	
-    if (freq[R] == MAX_FREQ) {
-        reconst();
-    }
-    c = prnt[c + T];
-    do {
-        k = ++freq[c];
+	if (freq[R] == MAX_FREQ) {
+		reconst();
+	}
+	c = prnt[c + T];
+	do {
+		k = ++freq[c];
 		
-        /* if the order is disturbed, exchange nodes */
-        if ((unsigned)k > freq[l = c + 1]) {
-            while ((unsigned)k > freq[++l]);
-            l--;
-            freq[c] = freq[l];
-            freq[l] = k;
+		/* if the order is disturbed, exchange nodes */
+		if ((unsigned)k > freq[l = c + 1]) {
+			while ((unsigned)k > freq[++l]);
+			l--;
+			freq[c] = freq[l];
+			freq[l] = k;
 			
-            i = son[c];
-            prnt[i] = l;
-            if (i < T) prnt[i + 1] = l;
+			i = son[c];
+			prnt[i] = l;
+			if (i < T) prnt[i + 1] = l;
 			
-            j = son[l];
-            son[l] = i;
+			j = son[l];
+			son[l] = i;
 			
-            prnt[j] = c;
-            if (j < T) prnt[j + 1] = c;
-            son[c] = j;
+			prnt[j] = c;
+			if (j < T) prnt[j + 1] = c;
+			son[c] = j;
 			
-            c = l;
-        }
-    } while ((c = prnt[c]) != 0); /* repeat up to root */
+			c = l;
+		}
+	} while ((c = prnt[c]) != 0); /* repeat up to root */
 }
 
 void EncodeChar(unsigned c)
 {
-    unsigned i;
-    int j, k;
+	unsigned i;
+	int j, k;
 	
-    i = 0;
-    j = 0;
-    k = prnt[c + T];
+	i = 0;
+	j = 0;
+	k = prnt[c + T];
 	
-    /* travel from leaf to root */
-    do {
-        i >>= 1;
+	/* travel from leaf to root */
+	do {
+		i >>= 1;
 		
-        /* if node's address is odd-numbered, choose bigger brother node */
-        if (k & 1) i += 0x8000;
+		/* if node's address is odd-numbered, choose bigger brother node */
+		if (k & 1) i += 0x8000;
 		
-        j++;
+		j++;
 		k = prnt[k];
-    } while (k != R);
-    fs.PutCode(j, i);
-    code = i;
-    len = j;
-    update(c);
+	} while (k != R);
+	fs.PutCode(j, i);
+	code = i;
+	len = j;
+	update(c);
 }
 
 void EncodePosition(unsigned c)
 {
-    unsigned i;
+	unsigned i;
 	
-    /* output upper 6 bits by table lookup */
-    i = c >> 6;
-    fs.PutCode(p_len[i], (unsigned)p_code[i] << 8);
+	/* output upper 6 bits by table lookup */
+	i = c >> 6;
+	fs.PutCode(p_len[i], (unsigned)p_code[i] << 8);
 	
-    /* output lower 6 bits verbatim */
-    fs.PutCode(6, (c & 0x3f) << 10);
+	/* output lower 6 bits verbatim */
+	fs.PutCode(6, (c & 0x3f) << 10);
 }
 
 int DecodeChar(void)
 {
-    unsigned c;
+	unsigned c;
 	
-    c = son[R];
+	c = son[R];
 	
-    /* travel from root to leaf, */
-    /* choosing the smaller child node (son[]) if the read bit is 0, */
-    /* the bigger (son[]+1} if 1 */
-    while (c < T) {
-        c += fs.GetBit();
-        c = son[c];
-    }
-    c -= T;
-    update(c);
-    return (int)c;
+	/* travel from root to leaf, */
+	/* choosing the smaller child node (son[]) if the read bit is 0, */
+	/* the bigger (son[]+1} if 1 */
+	while (c < T) {
+		c += fs.GetBit();
+		c = son[c];
+	}
+	c -= T;
+	update(c);
+	return (int)c;
 }
 
 int DecodePosition(void)
 {
-    unsigned i, j, c;
+	unsigned i, j, c;
 	
-    /* recover upper 6 bits from table */
-    i = fs.GetByte();
-    c = (unsigned)d_code[i] << 6;
-    j = d_len[i];
+	/* recover upper 6 bits from table */
+	i = fs.GetByte();
+	c = (unsigned)d_code[i] << 6;
+	j = d_len[i];
 	
-    /* read lower 6 bits verbatim */
-    j -= 2;
-    while (j--) {
-        i = (i << 1) + fs.GetBit();
-    }
-    return (int)(c | (i & 0x3f));
+	/* read lower 6 bits verbatim */
+	j -= 2;
+	while (j--) {
+		i = (i << 1) + fs.GetBit();
+	}
+	return (int)(c | (i & 0x3f));
 }
 
 /* compression */
 void Encode(void)  /* compression */
 {
-    int  i, c, len, r, s, last_match_length;
+	int  i, c, len, r, s, last_match_length;
 	
-    textsize = fs.InputSize();
+	textsize = fs.InputSize();
 	fs.Init_Output(textsize);
 	fs._putb((textsize & 0xff));
 	fs._putb((textsize & 0xff00) >> 8);
 	fs._putb((textsize & 0xff0000L) >> 16);
 	fs._putb((textsize & 0xff000000L) >> 24);
-    if (textsize == 0)
-        return;
-    textsize = 0;           /* rewind and re-read */
-    StartHuff();
-    InitTree();
-    s = 0;
-    r = N - F;
-    for (i = s; i < r; i++)
-        text_buf[i] = 0x20;
-    for (len = 0; len < F && (c = fs._getb()) != EOF; len++)
-        text_buf[r + len] = (unsigned char)c;
-    textsize = len;
-    for (i = 1; i <= F; i++)
-        InsertNode(r - i);
-    InsertNode(r);
-    do {
-        if (match_length > len)
-            match_length = len;
-        if (match_length <= THRESHOLD) {
-            match_length = 1;
+	if (textsize == 0)
+		return;
+	textsize = 0;           /* rewind and re-read */
+	StartHuff();
+	InitTree();
+	s = 0;
+	r = N - F;
+	for (i = s; i < r; i++)
+		text_buf[i] = 0x20;
+	for (len = 0; len < F && (c = fs._getb()) != EOF; len++)
+		text_buf[r + len] = (unsigned char)c;
+	textsize = len;
+	for (i = 1; i <= F; i++)
+		InsertNode(r - i);
+	InsertNode(r);
+	do {
+		if (match_length > len)
+			match_length = len;
+		if (match_length <= THRESHOLD) {
+			match_length = 1;
 			// textsize==56158    - FATAL :(
-            EncodeChar(text_buf[r]);
-        } else {
-            EncodeChar(255 - THRESHOLD + match_length);
-            EncodePosition(match_position);
-        }
-        last_match_length = match_length;
-        for (i = 0; i < last_match_length &&
+			EncodeChar(text_buf[r]);
+		} else {
+			EncodeChar(255 - THRESHOLD + match_length);
+			EncodePosition(match_position);
+		}
+		last_match_length = match_length;
+		for (i = 0; i < last_match_length &&
 			(c = fs._getb()) != EOF; i++) {
-            DeleteNode(s);
-            text_buf[s] = (unsigned char)c;
-            if (s < F - 1)
-                text_buf[s + N] = (unsigned char)c;
-            s = (s + 1) & (N - 1);
-            r = (r + 1) & (N - 1);
-            InsertNode(r);
-        }
+			DeleteNode(s);
+			text_buf[s] = (unsigned char)c;
+			if (s < F - 1)
+				text_buf[s + N] = (unsigned char)c;
+			s = (s + 1) & (N - 1);
+			r = (r + 1) & (N - 1);
+			InsertNode(r);
+		}
 		textsize += i;
-        while (i++ < last_match_length) {
-            DeleteNode(s);
-            s = (s + 1) & (N - 1);
-            r = (r + 1) & (N - 1);
-            if (--len) InsertNode(r);
-        }
-    } while (len > 0);
-    fs.PutFlush();
+		while (i++ < last_match_length) {
+			DeleteNode(s);
+			s = (s + 1) & (N - 1);
+			r = (r + 1) & (N - 1);
+			if (--len) InsertNode(r);
+		}
+	} while (len > 0);
+	fs.PutFlush();
 	tim_size = textsize;
 }
 
 void Decode(void)  /* recover */
 {
-    int  i, j, k, r, c;
-    unsigned int  count;
+	int  i, j, k, r, c;
+	unsigned int  count;
 	
-    textsize =  (fs._getb());
-    textsize |= (fs._getb() << 8);
-    textsize |= (fs._getb() << 16);
-    textsize |= (fs._getb() << 24);
-    if (textsize == 0) return;
+	textsize =  (fs._getb());
+	textsize |= (fs._getb() << 8);
+	textsize |= (fs._getb() << 16);
+	textsize |= (fs._getb() << 24);
+	if (textsize == 0) return;
 	
 	fs.Init_Output(textsize);
 	
-    StartHuff();
-    for (i = 0; i < N - F; i++)
-        text_buf[i] = 0x20;
-    r = N - F;
-    for (count = 0; count < textsize; ) {
-        c = DecodeChar();
-        if (c < 256) {
-            fs._putb(c);
-            text_buf[r++] = (unsigned char)c;
-            r &= (N - 1);
-            count++;
-        } else {
-            i = (r - DecodePosition() - 1) & (N - 1);
-            j = c - 255 + THRESHOLD;
-            for (k = 0; k < j; k++) {
-                c = text_buf[(i + k) & (N - 1)];
-                fs._putb(c);
-                text_buf[r++] = (unsigned char)c;
-                r &= (N - 1);
-                count++;
-            }
-        }
-    }
+	StartHuff();
+	for (i = 0; i < N - F; i++)
+		text_buf[i] = 0x20;
+	r = N - F;
+	for (count = 0; count < textsize; ) {
+		c = DecodeChar();
+		if (c < 256) {
+			fs._putb(c);
+			text_buf[r++] = (unsigned char)c;
+			r &= (N - 1);
+			count++;
+		} else {
+			i = (r - DecodePosition() - 1) & (N - 1);
+			j = c - 255 + THRESHOLD;
+			for (k = 0; k < j; k++) {
+				c = text_buf[(i + k) & (N - 1)];
+				fs._putb(c);
+				text_buf[r++] = (unsigned char)c;
+				r &= (N - 1);
+				count++;
+			}
+		}
+	}
 	tim_size = count;
 }
 
@@ -640,7 +640,7 @@ unsigned _writeLZ	(int hf, void* d, unsigned size)
 	fs.Init_Input(start,start+size);
 	
 	// Actual compression
-    Encode			();
+	Encode			();
 	// Flush cache
 	int size_out = fs.OutSize();
 	if (size_out) _write(hf,fs.OutPointer(),size_out);
@@ -652,7 +652,7 @@ void _compressLZ	(u8** dest, unsigned* dest_sz, void* src, unsigned src_sz)
 {
 	u8*	start = (u8*) src;
 	fs.Init_Input(start,start+src_sz);
-    Encode();
+	Encode();
 	*dest		= fs.OutPointer();
 	*dest_sz	= fs.OutSize();
 }
@@ -661,7 +661,7 @@ void _decompressLZ	(u8** dest, unsigned* dest_sz, void* src, unsigned src_sz)
 {
 	u8*	start = (u8*) src;
 	fs.Init_Input(start,start+src_sz);
-    Decode();
+	Decode();
 	*dest		= fs.OutPointer();
 	*dest_sz	= fs.OutSize();
 }
@@ -675,7 +675,7 @@ unsigned _readLZ	(int hf, void* &d, unsigned size)
 	fs.Init_Input(data,data+size);
 	
 	// Actual compression
-    Decode();
+	Decode();
 	
 	// Flush cache
 	xr_free	(data);

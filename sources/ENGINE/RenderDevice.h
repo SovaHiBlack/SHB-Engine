@@ -90,10 +90,10 @@ public:
 	u32										dwTimeContinual;
 
 	// Cameras & projection
-	Fvector									vCameraPosition;
-	Fvector									vCameraDirection;
-	Fvector									vCameraTop;
-	Fvector									vCameraRight;
+	Fvector3									vCameraPosition;
+	Fvector3									vCameraDirection;
+	Fvector3									vCameraTop;
+	Fvector3									vCameraRight;
 	Fmatrix									mView;
 	Fmatrix									mProject;
 	Fmatrix									mFullTransform;
@@ -156,7 +156,7 @@ public:
 	xrCriticalSection	mt_csLeave;
 	volatile BOOL		mt_bMustExit;
 
-	ICF		void			remove_from_seq_parallel	(const fastdelegate::FastDelegate0<> &delegate)
+	__forceinline		void			remove_from_seq_parallel	(const fastdelegate::FastDelegate0<> &delegate)
 	{
 		xr_vector<fastdelegate::FastDelegate0<> >::iterator I = std::find(
 			seqParallel.begin(),

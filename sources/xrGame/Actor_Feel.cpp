@@ -73,7 +73,7 @@ void CActor::PickupModeOff()
 	m_bPickupMode = false;
 }
 
-ICF static BOOL info_trace_callback(collide::rq_result& result, LPVOID params)
+__forceinline static BOOL info_trace_callback(collide::rq_result& result, LPVOID params)
 {
 	BOOL& bOverlaped	= *(BOOL*)params;
 	if(result.O){

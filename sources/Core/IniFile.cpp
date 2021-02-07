@@ -426,7 +426,7 @@ Ivector2 CIniFile::r_ivector2(const char* S, const char* L )
 Ivector3 CIniFile::r_ivector3(const char* S, const char* L )
 {
 	const char* C = r_string(S,L);
-	Ivector		V={0,0,0};
+	Ivector3		V={0,0,0};
 	sscanf		(C,"%d,%d,%d",&V.x,&V.y,&V.z);
 	return V;
 }

@@ -22,8 +22,8 @@ CDemoRecord::CDemoRecord(const char* name, float life_time) : CEffectorCam(cetDe
 		m_Camera.invert(Device.mView);
 
 		// parse yaw
-		Fvector& dir = m_Camera.k;
-		Fvector DYaw;
+		Fvector3& dir = m_Camera.k;
+		Fvector3 DYaw;
 		DYaw.set(dir.x, 0.0f, dir.z);
 		DYaw.normalize_safe( );
 		if (DYaw.x < 0)
@@ -79,8 +79,8 @@ CDemoRecord::~CDemoRecord( )
 }
 
 //									+X,					-X,					+Y,					-Y,					+Z,					-Z
-static Fvector cmNorm[6] = { { 0.0f, 1.0f, 0.0f }, { 0.0f, 1.0f, 0.0f }, { 0.0f, 0.0f, -1.0f }, { 0.0f, 0.0f, 1.0f }, { 0.0f, 1.0f, 0.0f }, { 0.0f, 1.0f, 0.0f } };
-static Fvector cmDir[6] = { { 1.0f, 0.0f, 0.0f }, { -1.0f, 0.0f, 0.0f }, { 0.0f, 1.0f, 0.0f }, { 0.0f, -1.0f, 0.0f }, { 0.0f, 0.0f, 1.0f }, { 0.0f, 0.0f, -1.0f } };
+static Fvector3 cmNorm[6] = { { 0.0f, 1.0f, 0.0f }, { 0.0f, 1.0f, 0.0f }, { 0.0f, 0.0f, -1.0f }, { 0.0f, 0.0f, 1.0f }, { 0.0f, 1.0f, 0.0f }, { 0.0f, 1.0f, 0.0f } };
+static Fvector3 cmDir[6] = { { 1.0f, 0.0f, 0.0f }, { -1.0f, 0.0f, 0.0f }, { 0.0f, 1.0f, 0.0f }, { 0.0f, -1.0f, 0.0f }, { 0.0f, 0.0f, 1.0f }, { 0.0f, 0.0f, -1.0f } };
 
 static Flags32 s_hud_flag = { 0 };
 static Flags32 s_dev_flags = { 0 };
@@ -110,8 +110,8 @@ void CDemoRecord::MakeScreenshotFace( )
 INT g_bDR_LM_UsePointsBBox = 0;
 INT g_bDR_LM_4Steps = 0;
 INT g_iDR_LM_Step = 0;
-Fvector g_DR_LM_Min;
-Fvector g_DR_LM_Max;
+Fvector3 g_DR_LM_Min;
+Fvector3 g_DR_LM_Max;
 
 void GetLM_BBox(Fbox& bb, INT Step)
 {
@@ -237,7 +237,7 @@ void CDemoRecord::MakeLevelMapProcess( )
 	m_Stage++;
 }
 
-void CDemoRecord::MakeCubeMapFace(Fvector& D, Fvector& N)
+void CDemoRecord::MakeCubeMapFace(Fvector3& D, Fvector3& N)
 {
 	string32 buf;
 	switch (m_Stage)
@@ -275,7 +275,7 @@ void CDemoRecord::MakeCubeMapFace(Fvector& D, Fvector& N)
 	m_Stage++;
 }
 
-BOOL CDemoRecord::Process(Fvector& P, Fvector& D, Fvector& N, float& fFov, float& fFar, float& fAspect)
+BOOL CDemoRecord::Process(Fvector3& P, Fvector3& D, Fvector3& N, float& fFov, float& fFar, float& fAspect)
 {
 	if (0 == file)
 	{
@@ -357,7 +357,7 @@ BOOL CDemoRecord::Process(Fvector& P, Fvector& D, Fvector& N, float& fFov, float
 		m_HPB.z += m_vR.z;
 
 		// move
-		Fvector vmove;
+		Fvector3 vmove;
 
 		vmove.set(m_Camera.k);
 		vmove.normalize_safe( );

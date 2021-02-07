@@ -4,12 +4,12 @@ struct xrGUID
 {
 	u64	g[2];
 
-	ICF	bool operator==	(const xrGUID &o) const
+	__forceinline	bool operator==	(const xrGUID &o) const
 	{
 		return	((g[0] == o.g[0]) && (g[1] == o.g[1]));
 	}
 
-	ICF	bool operator!=	(const xrGUID &o) const
+	__forceinline	bool operator!=	(const xrGUID &o) const
 	{
 		return	!(*this == o);
 	}
@@ -83,19 +83,19 @@ struct	hdrNODES
 class NodePosition {
 	u8	data[5];
 	
-	ICF	void xz	(u32 value)	{ CopyMemory	(data,&value,3);		}
-	ICF	void y	(u16 value)	{ CopyMemory	(data + 3,&value,2);	}
+	__forceinline	void xz	(u32 value)	{ CopyMemory	(data,&value,3);		}
+	__forceinline	void y	(u16 value)	{ CopyMemory	(data + 3,&value,2);	}
 public:
-	ICF	u32	xz	() const	{
+	__forceinline	u32	xz	() const	{
 		return			((*((u32*)data)) & 0x00ffffff);
 	}
-	ICF	u32	x	(u32 row) const		{
+	__forceinline	u32	x	(u32 row) const		{
 		return			(xz() / row);
 	}
-	ICF	u32	z	(u32 row) const		{
+	__forceinline	u32	z	(u32 row) const		{
 		return			(xz() % row);
 	}
-	ICF	u32	y	() const			{
+	__forceinline	u32	y	() const			{
 		return			(*((u16*)(data + 3)));
 	}
 
@@ -110,7 +110,7 @@ public:
 	u8				data[12];
 private:
 	
-	ICF	void link(u8 link_index, u32 value)
+	__forceinline	void link(u8 link_index, u32 value)
 	{
 		value			&= 0x007fffff;
 		switch (link_index) {
@@ -140,7 +140,7 @@ private:
 		}
 	}
 	
-	ICF	void light(u8 value)
+	__forceinline	void light(u8 value)
 	{
 		data[11]		&= 0x0f;
 		data[11]		|= value << 4;
@@ -155,7 +155,7 @@ public:
 	NodePosition	p;
 	// 4 + 4 + 4 + 4 + 16 + 40 + 96 = 168 bits = 21 byte
 
-	ICF	u32	link(u8 index) const
+	__forceinline	u32	link(u8 index) const
 	{
 		switch (index) {
 			case 0 :	return	((*(u32*)data) & 0x007fffff);
@@ -169,12 +169,12 @@ public:
 #endif
 	}
 	
-	ICF	u8	light() const
+	__forceinline	u8	light() const
 	{
 		return			(data[11] >> 4);
 	}
 	
-	ICF	u16	cover(u8 index) const
+	__forceinline	u16	cover(u8 index) const
 	{
 		switch (index) {
 			case 0 : return(cover0);

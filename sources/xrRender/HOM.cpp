@@ -134,12 +134,12 @@ public:
 public:
 	pred_fb		(occTri* _t) : m_pTris(_t)	{}
 	pred_fb		(occTri* _t, Fvector& _c) : m_pTris(_t), camera(_c)	{}
-	ICF bool	operator()		(const CDB::RESULT& _1, const CDB::RESULT& _2) const {
+	__forceinline bool	operator()		(const CDB::RESULT& _1, const CDB::RESULT& _2) const {
 		occTri&	t0	= m_pTris	[_1.id];
 		occTri&	t1	= m_pTris	[_2.id];
 		return	camera.distance_to_sqr(t0.center) < camera.distance_to_sqr(t1.center);
 	}
-	ICF bool	operator()		(const CDB::RESULT& _1)	const {
+	__forceinline bool	operator()		(const CDB::RESULT& _1)	const {
 		occTri&	T	= m_pTris	[_1.id];
 		return	T.skip>Device.dwFrame;
 	}
@@ -235,7 +235,7 @@ void CHOM::Render		(CFrustum& base)
 	Device.Statistic->RenderCALC_HOM.End	();
 }
 
-ICF	BOOL	xform_b0	(Fvector2& min, Fvector2& max, float& minz, Fmatrix& X, float _x, float _y, float _z)
+__forceinline	BOOL	xform_b0	(Fvector2& min, Fvector2& max, float& minz, Fmatrix& X, float _x, float _y, float _z)
 {
 	float z		= _x*X._13 + _y*X._23 + _z*X._33 + X._43;			if (z<EPS) return TRUE;
 	float iw	= 1.f/(_x*X._14 + _y*X._24 + _z*X._34 + X._44);		
@@ -244,7 +244,7 @@ ICF	BOOL	xform_b0	(Fvector2& min, Fvector2& max, float& minz, Fmatrix& X, float 
 	minz		= 0.f+z*iw;
 	return FALSE;
 }
-ICF	BOOL	xform_b1	(Fvector2& min, Fvector2& max, float& minz, Fmatrix& X, float _x, float _y, float _z)
+__forceinline	BOOL	xform_b1	(Fvector2& min, Fvector2& max, float& minz, Fmatrix& X, float _x, float _y, float _z)
 {
 	float t;
 	float z		= _x*X._13 + _y*X._23 + _z*X._33 + X._43;		if (z<EPS)	return TRUE;

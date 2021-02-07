@@ -17,16 +17,16 @@ private:
 
 private:
 			void			map					(const u32 &new_offset);
-	IC		void			unmap				();
-	IC		void			remap				(const u32 &new_offset);
+			inline		void			unmap				();
+			inline		void			remap				(const u32 &new_offset);
 
 private:
 	// should not be called
-	IC						CStreamReader		(const CStreamReader &object);
-	IC		CStreamReader	&operator=			(const CStreamReader &);
+	inline						CStreamReader		(const CStreamReader &object);
+	inline		CStreamReader	&operator=			(const CStreamReader &);
 
 public:
-	IC						CStreamReader		();
+	inline						CStreamReader		();
 
 public:
 	virtual	void			construct			(
@@ -39,12 +39,12 @@ public:
 	virtual	void			destroy				();
 
 public:
-	IC		const HANDLE	&file_mapping_handle() const;
-	IC		u32				elapsed				() const;
-	IC		const u32		&length				() const;
-	IC		void			seek				(const int &offset);
-	IC		u32				tell				() const;
-	IC		void			close				();
+	inline		const HANDLE	&file_mapping_handle() const;
+	inline		u32				elapsed				() const;
+	inline		const u32		&length				() const;
+	inline		void			seek				(const int &offset);
+	inline		u32				tell				() const;
+	inline		void			close				();
 
 public:
 			void			advance				(const int &offset);

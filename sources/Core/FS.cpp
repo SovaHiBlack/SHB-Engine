@@ -116,7 +116,7 @@ void* FileDownload(const char* fn, u32* pdwSize)
 }
 
 typedef char MARK[9];
-IC void mk_mark(MARK& M, const char* S)
+inline void mk_mark(MARK& M, const char* S)
 {	strncpy(M,S,8); }
 
 void  FileCompress	(const char* fn, const char* sign, void* data, u32 size)
@@ -236,9 +236,9 @@ void	IWriter::w_chunk(u32 type, void* data, u32 size)
 	else							w			(data,size);
 	close_chunk	();
 }
-void 	IWriter::w_sdir	(const Fvector& D) 
+void 	IWriter::w_sdir	(const Fvector3& D)
 {
-	Fvector C;
+	Fvector3 C;
 	float mag		= D.magnitude();
 	if (mag>EPS_S)	{
 		C.div		(D,mag);
@@ -321,8 +321,8 @@ void	IReader::r	(void *p,int cnt)
 #endif
 };
 
-IC BOOL			is_term		(char a) { return (a==13)||(a==10); };
-IC u32	IReader::advance_term_string()
+inline BOOL			is_term		(char a) { return (a==13)||(a==10); };
+inline u32	IReader::advance_term_string()
 {
 	u32 sz		= 0;
 	char *src 	= (char *) data;

@@ -391,7 +391,7 @@
 		//! Operator for float DotProd = Point | Point.
 		inline_	float			operator|(const Point& p)			const		{ return x*p.x + y*p.y + z*p.z;						}
 		//! Operator for Point VecProd = Point ^ Point.
-		ICF		Point			operator^(const Point& p)			const
+		__forceinline		Point			operator^(const Point& p)			const
 								{
 									return Point(
 									y * p.z - z * p.y,

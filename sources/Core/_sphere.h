@@ -16,7 +16,7 @@ public:
 		fcv_forcedword = u32(-1)
 	};
 	// Ray-sphere intersection
-	ICF ERP_Result intersect (const _vector3<T>& S, const _vector3<T>& D, T range, int& quantity, T afT[2]) const
+	__forceinline ERP_Result intersect (const _vector3<T>& S, const _vector3<T>& D, T range, int& quantity, T afT[2]) const
 	{
 		// set up quadratic Q(t) = a*t^2 + 2*b*t + c
 		_vector3<T> kDiff;  kDiff.sub	(S,P);
@@ -57,7 +57,7 @@ public:
 					range2			=range*range; 
 				}
 */
-	ICF ERP_Result intersect_full	(const _vector3<T>& start, const _vector3<T>& dir, T& dist) const
+	__forceinline ERP_Result intersect_full	(const _vector3<T>& start, const _vector3<T>& dir, T& dist) const
 	{
 		int				quantity;
 		float			afT[2];
@@ -72,7 +72,7 @@ public:
 		return			result;
 	}
 
-	ICF ERP_Result intersect	(const _vector3<T>& start, const _vector3<T>& dir, T& dist) const
+	__forceinline ERP_Result intersect	(const _vector3<T>& start, const _vector3<T>& dir, T& dist) const
 	{
 		int				quantity;
 		T				afT[2];
@@ -106,7 +106,7 @@ public:
 		}
 		return rpNone;
 	}
-	ICF BOOL		intersect(const _vector3<T>& S, const _vector3<T>& D) const	
+	__forceinline BOOL		intersect(const _vector3<T>& S, const _vector3<T>& D) const
 	{
 		_vector3<T> Q;	Q.sub(P,S);
 	
@@ -115,7 +115,7 @@ public:
 		T d = R*R - (c*c - v*v);
 		return (d > 0);
 	}
-	ICF BOOL		intersect(const _sphere<T>& S) const
+	__forceinline BOOL		intersect(const _sphere<T>& S) const
 	{	
 		T SumR = R+S.R;
 		return P.distance_to_sqr(S.P) < SumR*SumR;
@@ -148,4 +148,4 @@ typedef _sphere<double> Dsphere;
 template <class T>
 BOOL	_valid			(const _sphere<T>& s)		{ return _valid(s.P) && _valid(s.R);	}
 
-void	CORE_API		Fsphere_compute		(Fsphere& dest, const Fvector *verts, int count);
+void	CORE_API		Fsphere_compute		(Fsphere& dest, const Fvector3* verts, int count);

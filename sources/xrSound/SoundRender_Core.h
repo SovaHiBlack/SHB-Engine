@@ -76,22 +76,22 @@ public:
 	virtual void						stop_emitters			( );
 	virtual int							pause_emitters			( bool val );
 
-	virtual void						play					( ref_sound& S, CObject* O,								u32 flags=0, float delay=0.f);
-	virtual void						play_at_pos				( ref_sound& S, CObject* O,		const Fvector &pos,		u32 flags=0, float delay=0.f);
-	virtual void						play_no_feedback		( ref_sound& S, CObject* O,	u32 flags=0, float delay=0.f, Fvector* pos=0, float* vol=0, float* freq=0, Fvector2* range=0);
+	virtual void						play					( ref_sound& S, CObject* O,								u32 flags=0, float delay=0.0f);
+	virtual void						play_at_pos				( ref_sound& S, CObject* O,		const Fvector3& pos,		u32 flags=0, float delay=0.0f);
+	virtual void						play_no_feedback		( ref_sound& S, CObject* O,	u32 flags=0, float delay=0.0f, Fvector3* pos=0, float* vol=0, float* freq=0, Fvector2* range=0);
 	virtual void						set_master_volume		( float			f )=0;
 	virtual void						set_geometry_env		( IReader*		I );
 	virtual void						set_geometry_som		( IReader*		I );
 	virtual void						set_geometry_occ		( CDB::MODEL*	M );
 	virtual void						set_handler				( sound_event*	E );
 
-	virtual void						update					( const Fvector& P, const Fvector& D, const Fvector& N );
+	virtual void						update					( const Fvector3& P, const Fvector3& D, const Fvector3& N );
 	virtual void						update_events			( );
 	virtual void						statistic				( CSound_stats*  dest, CSound_stats_ext*  ext );
 
 	// listener
-//	virtual const Fvector&				listener_position		( )=0;
-	virtual void						update_listener			(const Fvector& P, const Fvector& D, const Fvector& N, float dt)=0;
+//	virtual const Fvector3&				listener_position		( )=0;
+	virtual void						update_listener			(const Fvector3& P, const Fvector3& D, const Fvector3& N, float dt)=0;
 	// eax listener
 	void								i_eax_commit_setting	();
 	void								i_eax_listener_set		(CSound_environment* E);
@@ -109,9 +109,9 @@ public:
 
 	virtual void						object_relcase			( CObject* obj );
 
-	virtual float						get_occlusion_to		( const Fvector& hear_pt, const Fvector& snd_pt, float dispersion=0.2f );
-	float								get_occlusion			( Fvector& P, float R, Fvector* occ );
-	CSoundRender_Environment*			get_environment			( const Fvector& P );
+	virtual float						get_occlusion_to		( const Fvector3& hear_pt, const Fvector3& snd_pt, float dispersion=0.2f );
+	float								get_occlusion			(Fvector3& P, float R, Fvector3* occ );
+	CSoundRender_Environment*			get_environment			( const Fvector3& P );
 
 	void								env_load				();
 	void								env_unload				();

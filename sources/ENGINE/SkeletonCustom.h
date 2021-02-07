@@ -82,7 +82,7 @@ public:
 	u16					game_mtl_idx;
 	SJointIKData		IK_data;
 	float				mass;
-	Fvector				center_of_mass;
+	Fvector3				center_of_mass;
 
 	DEFINE_VECTOR(u16, FacesVec, FacesVecIt);
 	DEFINE_VECTOR(FacesVec, ChildFacesVec, ChildFacesVecIt);
@@ -156,7 +156,7 @@ public:
 public:
 	Fsphere				m_Bounds;		// 16		world space
 public:
-	CSkeletonWallmark(CKinematics* p, const Fmatrix* m, ref_shader s, const Fvector& cp, float ts) :
+	CSkeletonWallmark(CKinematics* p, const Fmatrix* m, ref_shader s, const Fvector3& cp, float ts) :
 		m_Parent(p), m_XForm(m), m_Shader(s), m_fTimeStart(ts), m_ContactPoint(cp)
 	{
 #ifdef DEBUG
@@ -180,7 +180,7 @@ public:
 	{
 		return m_Faces.size( ) * 3;
 	}
-	IC bool				Similar(ref_shader& sh, const Fvector& cp, float eps)
+	IC bool				Similar(ref_shader& sh, const Fvector3& cp, float eps)
 	{
 		return (m_Shader == sh) && m_ContactPoint.similar(cp, eps);
 	}
@@ -288,7 +288,7 @@ public:
 	void						ClearWallmarks( );
 public:
 
-	bool			PickBone(const Fmatrix& parent_xform, Fvector& normal, float& dist, const Fvector& start, const Fvector& dir, u16 bone_id);
+	bool			PickBone(const Fmatrix& parent_xform, Fvector3& normal, float& dist, const Fvector3& start, const Fvector3& dir, u16 bone_id);
 	virtual		void			EnumBoneVertices(SEnumVerticesCallback& C, u16 bone_id);
 public:
 	CKinematics( );
@@ -307,7 +307,7 @@ public:
 	{
 		return bone_map_N;
 	}
-	ICF CBoneInstance& LL_GetBoneInstance(u16 bone_id)
+	__forceinline CBoneInstance& LL_GetBoneInstance(u16 bone_id)
 	{
 		VERIFY(bone_id < LL_BoneCount( )); VERIFY(bone_instances); return bone_instances[bone_id];
 	}
@@ -323,11 +323,11 @@ public:
 	{
 		u64 F = visimask.flags & ((u64(1) << u64(LL_BoneCount( ))) - 1); return (u16) btwCount1(F);
 	}
-	ICF Fmatrix& LL_GetTransform(u16 bone_id)
+	__forceinline Fmatrix& LL_GetTransform(u16 bone_id)
 	{
 		return LL_GetBoneInstance(bone_id).mTransform;
 	}
-	ICF Fmatrix& LL_GetTransform_R(u16 bone_id)
+	__forceinline Fmatrix& LL_GetTransform_R(u16 bone_id)
 	{
 		return LL_GetBoneInstance(bone_id).mRenderTransform;
 	}	// rendering only

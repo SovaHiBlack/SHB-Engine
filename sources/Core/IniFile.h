@@ -44,7 +44,7 @@ public:
 	// factorisation
 	static CIniFile*	Create		(const char* szFileName, BOOL ReadOnly=TRUE);
 	static void			Destroy		(CIniFile*);
-	static IC BOOL		IsBOOL		(const char* B)	{ return (xr_strcmp(B,"on")==0 || xr_strcmp(B,"yes")==0 || xr_strcmp(B,"true")==0 || xr_strcmp(B,"1")==0);}
+	static inline BOOL		IsBOOL		(const char* B)	{ return (xr_strcmp(B,"on")==0 || xr_strcmp(B,"yes")==0 || xr_strcmp(B,"true")==0 || xr_strcmp(B,"1")==0);}
 private:
 	char* fName;
 	Root		DATA;

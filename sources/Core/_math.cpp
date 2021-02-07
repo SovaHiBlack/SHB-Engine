@@ -282,7 +282,7 @@ void	thread_spawn	(thread_t*	entry, const char* name, unsigned	stack, void* argl
 	_beginthread		(thread_entry,stack,startup);
 }
 
-void spline1	( float t, Fvector *p, Fvector *ret )
+void spline1	( float t, Fvector3* p, Fvector3* ret )
 {
 	float     t2  = t * t;
 	float     t3  = t2 * t;
@@ -304,7 +304,7 @@ void spline1	( float t, Fvector *p, Fvector *ret )
 	}
 }
 
-void spline2( float t, Fvector *p, Fvector *ret )
+void spline2( float t, Fvector3* p, Fvector3* ret )
 {
 	float	s= 1.0f - t;
 	float   t2 = t * t;
@@ -324,7 +324,7 @@ void spline2( float t, Fvector *p, Fvector *ret )
 #define beta1 1.0f
 #define beta2 0.8f
 
-void spline3( float t, Fvector *p, Fvector *ret )
+void spline3( float t, Fvector3* p, Fvector3* ret )
 {
 	float	s= 1.0f - t;
 	float   t2 = t * t;

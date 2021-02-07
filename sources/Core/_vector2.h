@@ -291,12 +291,11 @@ public:
 	}
 };
 
-using Ivector2 = _vector2<int>;
-using Fvector2 = _vector2<float>;
-using Dvector2 = _vector2<double>;
+using Ivector2									= _vector2<int>;
+using Fvector2									= _vector2<float>;
 
 template <class T>
-BOOL _valid(const _vector2<T>& v)
+BOOL					_valid					(const _vector2<T>& v)
 {
 	return _valid((T) v.x) && _valid((T) v.y);
 }

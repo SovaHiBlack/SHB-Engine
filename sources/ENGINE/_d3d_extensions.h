@@ -8,8 +8,8 @@ public:
     Fcolor          diffuse;          /* Diffuse color of light */
     Fcolor          specular;         /* Specular color of light */
     Fcolor          ambient;          /* Ambient color of light */
-    Fvector         position;         /* Position in world space */
-    Fvector         direction;        /* Direction in world space */
+	Fvector3         position;         /* Position in world space */
+	Fvector3         direction;        /* Direction in world space */
     float		    range;            /* Cutoff range */
     float	        falloff;          /* Falloff */
     float	        attenuation0;     /* Constant attenuation */

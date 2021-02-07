@@ -145,18 +145,3 @@ BOOL CRenderTarget::enable_scissor		(light* L)		// true if intersects near plane
 	return near_intersect;
 #endif
 }
-/*
-{
-	Fmatrix& M						= RCache.xforms.m_wvp;
-	BOOL	bIntersect				= FALSE;
-	for (u32 vit=0; vit<DU_CONE_NUMVERTEX; vit++)	{
-		Fvector&	v	= du_cone_vertices[vit];
-		float _z = v.x*M._13 + v.y*M._23 + v.z*M._33 + M._43;
-		float _w = v.x*M._14 + v.y*M._24 + v.z*M._34 + M._44;
-		if (_z<=0 || _w<=0)	{
-			bIntersect	= TRUE;
-			break;
-		}
-	}
-}
-*/

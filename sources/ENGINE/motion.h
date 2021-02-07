@@ -80,7 +80,7 @@ public:
 
 	void			Clear			();
 
-	void			_Evaluate		(float t, Fvector& T, Fvector& R);
+	void			_Evaluate		(float t, Fvector3& T, Fvector3& R);
 	virtual void	Save			(IWriter& F);
 	virtual bool	Load			(IReader& F);
 

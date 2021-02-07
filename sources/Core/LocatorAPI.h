@@ -29,7 +29,7 @@ public:
 private:
 	struct	file_pred: public 	std::binary_function<file&, file&, bool> 
 	{	
-		IC bool operator()	(const file& x, const file& y) const
+		inline bool operator()	(const file& x, const file& y) const
 		{	return xr_strcmp(x.name,y.name)<0;	}
 	};
 	struct	archive
@@ -101,7 +101,7 @@ private:
 			bool				check_for_file		(const char* path, const char* _fname, string_path& fname, const file *&desc);
 	
 	template <typename T>
-	IC		T					*r_open_impl		(const char* path, const char* _fname);
+	inline		T					*r_open_impl		(const char* path, const char* _fname);
 			void				ProcessExternalArch	();
 public:
 								CLocatorAPI		();
@@ -111,14 +111,14 @@ public:
 
 	CStreamReader*				rs_open			(const char* initial, const char* N);
 	IReader*					r_open			(const char* initial, const char* N);
-	IC IReader*					r_open			(const char* N){return r_open(0,N);}
+	inline IReader*					r_open			(const char* N){return r_open(0,N);}
 	void						r_close			(IReader* &S);
 	void						r_close			(CStreamReader* &fs);
 
 	IWriter*					w_open			(const char* initial, const char* N);
-	IC IWriter*					w_open			(const char* N){return w_open(0,N);}
+	inline IWriter*					w_open			(const char* N){return w_open(0,N);}
 	IWriter*					w_open_ex		(const char* initial, const char* N);
-	IC IWriter*					w_open_ex		(const char* N){return w_open_ex(0,N);}
+	inline IWriter*					w_open_ex		(const char* N){return w_open_ex(0,N);}
 	void						w_close			(IWriter* &S);
 
 	const file*					exist			(const char* N);

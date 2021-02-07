@@ -161,7 +161,7 @@ public:
 	volatile u32					m_frame_rendered;
 
 	void	__stdcall				MT_CALC			() ;
-	ICF	void						MT_SYNC			() {
+	__forceinline	void						MT_SYNC			() {
 		if (m_frame_calc == Device.dwFrame)
 			return;
 

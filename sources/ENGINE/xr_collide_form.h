@@ -18,7 +18,7 @@ const u32	clCOARSE			= (1<<7);	// coarse test (triangles vs obb)
 
 struct clQueryTri
 {
-	Fvector				p[3];
+	Fvector3				p[3];
 	const CDB::TRI		*T;
 };
 
@@ -36,7 +36,7 @@ struct clQueryCollision
 		boxes.clear		();
 		spheres.clear	();
 	}
-	IC void				AddTri( const Fmatrix& m, const CDB::TRI* one, const Fvector* verts ) 
+	IC void				AddTri( const Fmatrix& m, const CDB::TRI* one, const Fvector3* verts )
 	{
 		clQueryTri	T;
 		m.transform_tiny	(T.p[0],verts[one->verts[0]]);
@@ -45,7 +45,7 @@ struct clQueryCollision
 		T.T					= one;
 		tris.push_back		(T);
 	}
-	IC void				AddTri(const CDB::TRI* one, const Fvector* verts ) 
+	IC void				AddTri(const CDB::TRI* one, const Fvector3* verts )
 	{
 		clQueryTri			T;
 		T.p[0]				= verts[one->verts[0]];
@@ -57,7 +57,7 @@ struct clQueryCollision
 	IC void				AddBox(const Fmatrix& M, const Fbox& B)
 	{
 		Fobb			box;
-		Fvector			c;
+		Fvector3			c;
 		B.getcenter		(c);
 		B.getradius		(box.m_halfsize);
 		
@@ -111,7 +111,7 @@ public:
 		union{
 			struct{
 				Fmatrix	b_IM;		// world 2 bone xform
-				Fvector	b_hsize;
+				Fvector3	b_hsize;
 			};
 			struct{
 				Fsphere	s_sphere;
@@ -126,7 +126,7 @@ public:
 						SElement	()				:elem_id(u16(-1)),type(0)	{}
 						SElement	(u16 id, u16 t)	:elem_id(id),type(t)		{}
 		BOOL			valid		() const									{return (elem_id!=(u16(-1)))&&(type!=0);}
-		void			center		(Fvector& center) const;
+		void			center		(Fvector3& center) const;
 	};
 	DEFINE_VECTOR		(SElement,ElementVec,ElementVecIt);
 private:
@@ -142,7 +142,7 @@ public:
 						CCF_Skeleton	( CObject* _owner );
 
 	virtual BOOL		_RayQuery		( const collide::ray_defs& Q, collide::rq_results& R);
-	bool				_ElementCenter	(u16 elem_id, Fvector& e_center);
+	bool				_ElementCenter	(u16 elem_id, Fvector3& e_center);
 	const ElementVec&	_GetElements	() {return elements;}
 #ifdef DEBUG
 	void				_dbg_refresh	(){BuildTopLevel();BuildState();}

@@ -9,46 +9,46 @@ class ENGINE_API CLensFlareDescriptor
 public:
 	struct SFlare
 	{
-    	float			fOpacity;
-	    float			fRadius;
-    	float			fPosition;
-        shared_str			texture;
-        shared_str			shader;
-        ref_shader		hShader;
-    	SFlare()		{ fOpacity = fRadius = fPosition = 0; }
+		float			fOpacity;
+		float			fRadius;
+		float			fPosition;
+		shared_str			texture;
+		shared_str			shader;
+		ref_shader		hShader;
+		SFlare()		{ fOpacity = fRadius = fPosition = 0; }
 	};
-    struct SSource: public SFlare
-    {
-    	BOOL			ignore_color;
-    };
-    DEFINE_VECTOR		(SFlare,FlareVec,FlareIt);
-    FlareVec			m_Flares;
+	struct SSource: public SFlare
+	{
+		BOOL			ignore_color;
+	};
+	DEFINE_VECTOR		(SFlare,FlareVec,FlareIt);
+	FlareVec			m_Flares;
 
 	enum {
-    	flFlare 		= (1<<0),
-    	flSource		= (1<<1),
-    	flGradient 		= (1<<2)
-    };
+		flFlare 		= (1<<0),
+		flSource		= (1<<1),
+		flGradient 		= (1<<2)
+	};
 	Flags32				m_Flags;
-    
+	
 	// source
-    SSource				m_Source;
-    
+	SSource				m_Source;
+	
 	// gradient
-    SFlare				m_Gradient;
+	SFlare				m_Gradient;
 
-    float				m_StateBlendUpSpeed;
-    float				m_StateBlendDnSpeed;
-    
+	float				m_StateBlendUpSpeed;
+	float				m_StateBlendDnSpeed;
+	
 	void				SetGradient		(float fMaxRadius, float fOpacity, const char* tex_name, const char* sh_name);
-    void				SetSource		(float fRadius, BOOL ign_color, const char* tex_name, const char* sh_name);
-    void				AddFlare		(float fRadius, float fOpacity, float fPosition, const char* tex_name, const char* sh_name);
-    ref_shader			CreateShader	(const char* tex_name, const char* sh_name);
+	void				SetSource		(float fRadius, BOOL ign_color, const char* tex_name, const char* sh_name);
+	void				AddFlare		(float fRadius, float fOpacity, float fPosition, const char* tex_name, const char* sh_name);
+	ref_shader			CreateShader	(const char* tex_name, const char* sh_name);
 
 	shared_str			section;
 public:
-    					CLensFlareDescriptor(){m_Flags.zero();section=0;m_StateBlendUpSpeed=m_StateBlendDnSpeed=0.1f;}
-    void				load				(CIniFile* pIni, const char* section);
+						CLensFlareDescriptor(){m_Flags.zero();section=0;m_StateBlendUpSpeed=m_StateBlendDnSpeed=0.1f;}
+	void				load				(CIniFile* pIni, const char* section);
 	void 				OnDeviceCreate	();
 	void 				OnDeviceDestroy	();
 };
@@ -64,28 +64,32 @@ protected:
 	float				fBlend;
 	u32					dwFrame;
 
-	Fvector				vSunDir;
-	Fvector				vecLight;
-	Fvector				vecX, vecY, vecDir, vecAxis, vecCenter;
+	Fvector3				vSunDir;
+	Fvector3				vecLight;
+	Fvector3				vecX;
+	Fvector3 vecY;
+	Fvector3 vecDir;
+	Fvector3 vecAxis;
+	Fvector3 vecCenter;
 	BOOL				bRender;
 
 	// variable
-    Fcolor				LightColor;
+	Fcolor				LightColor;
 	float				fGradientValue;
 
 	ref_geom			hGeom;
 
-    LensFlareDescVec	m_Palette;
+	LensFlareDescVec	m_Palette;
 	CLensFlareDescriptor* m_Current;
 
-    enum LFState{
-        lfsNone,
-        lfsIdle,
-    	lfsHide,
-        lfsShow,
-    };
-    LFState				m_State;
-    float				m_StateBlend;
+	enum LFState{
+		lfsNone,
+		lfsIdle,
+		lfsHide,
+		lfsShow,
+	};
+	LFState				m_State;
+	float				m_StateBlend;
 
 public:
 	collide::ray_cache	m_ray_cache;
@@ -95,11 +99,11 @@ public:
 	virtual				~CLensFlare		();
 
 	void				OnFrame			(int id);
-    void __fastcall		Render			(BOOL bSun, BOOL bFlares, BOOL bGradient);
+	void __fastcall		Render			(BOOL bSun, BOOL bFlares, BOOL bGradient);
 	void 				OnDeviceCreate	();         
 	void 				OnDeviceDestroy	();
 
-    int					AppendDef		(CIniFile* pIni, const char* sect);
+	int					AppendDef		(CIniFile* pIni, const char* sect);
 
 	void				Invalidate		(){m_State=lfsNone;}
 };

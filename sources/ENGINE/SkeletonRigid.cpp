@@ -53,9 +53,10 @@ void CKinematics::CalculateBones			(BOOL bForceExact)
 			Fmatrix&	Mbone	= bone_instances[b].mTransform;
 			Fmatrix		Mbox;	obb.xform_get(Mbox);
 			Fmatrix		X;		X.mul_43(Mbone,Mbox);
-			Fvector&	S		= obb.m_halfsize;
+			Fvector3&	S		= obb.m_halfsize;
 
-			Fvector			P,A;
+			Fvector3			P;
+			Fvector3 A;
 			A.set( -S.x,	-S.y,	-S.z ); X.transform_tiny(P,A); Box.modify(P);
 			A.set( -S.x,	-S.y,	 S.z ); X.transform_tiny(P,A); Box.modify(P);
 			A.set(  S.x,	-S.y,	 S.z ); X.transform_tiny(P,A); Box.modify(P);

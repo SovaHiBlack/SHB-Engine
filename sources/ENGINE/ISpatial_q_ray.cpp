@@ -27,10 +27,10 @@ struct ray_segment_t {
 	float		t_near,t_far;
 };
 
-ICF u32&	uf			(float &x)	{ return (u32&)x; }
-ICF BOOL	isect_fpu	(const Fvector& min, const Fvector& max, const ray_t &ray, Fvector& coord)
+__forceinline u32&	uf			(float &x)	{ return (u32&)x; }
+__forceinline BOOL	isect_fpu	(const Fvector3& min, const Fvector3& max, const ray_t &ray, Fvector3& coord)
 {
-	Fvector				MaxT;
+	Fvector3				MaxT;
 	MaxT.x=MaxT.y=MaxT.z=-1.0f;
 	BOOL Inside			= TRUE;
 
@@ -119,7 +119,7 @@ static const float _MM_ALIGN16
 ps_cst_plus_inf	[4]	=	{  flt_plus_inf,  flt_plus_inf,  flt_plus_inf,  flt_plus_inf },
 ps_cst_minus_inf[4]	=	{ -flt_plus_inf, -flt_plus_inf, -flt_plus_inf, -flt_plus_inf };
 
-ICF BOOL isect_sse			(const aabb_t &box, const ray_t &ray, float &dist)	{
+__forceinline BOOL isect_sse			(const aabb_t &box, const ray_t &ray, float &dist)	{
 	// you may already have those values hanging around somewhere
 	const __m128
 		plus_inf	= loadps(ps_cst_plus_inf),
@@ -168,7 +168,7 @@ ICF BOOL isect_sse			(const aabb_t &box, const ray_t &ray, float &dist)	{
 	return  ret;
 }
 
-extern Fvector	c_spatial_offset[8];
+extern Fvector3	c_spatial_offset[8];
 
 template <bool b_use_sse, bool b_first, bool b_nearest>
 class	_MM_ALIGN16			walker
@@ -180,7 +180,7 @@ public:
 	float			range2;
 	ISpatial_DB*	space;
 public:
-	walker					(ISpatial_DB*	_space, u32 _mask, const Fvector& _start, const Fvector&	_dir, float _range)
+	walker					(ISpatial_DB*	_space, u32 _mask, const Fvector3& _start, const Fvector3&	_dir, float _range)
 	{
 		mask			= _mask;
 		ray.pos.set		(_start);
@@ -197,7 +197,7 @@ public:
 		space	= _space;
 	}
 	// fpu
-	ICF BOOL		_box_fpu	(const Fvector& n_C, const float n_R, Fvector& coord)
+	__forceinline BOOL		_box_fpu	(const Fvector3& n_C, const float n_R, Fvector3& coord)
 	{
 		// box
 		float		n_vR	=		2*n_R;
@@ -205,7 +205,7 @@ public:
 		return 		isect_fpu		(BB.min,BB.max,ray,coord);
 	}
 	// sse
-	ICF BOOL		_box_sse	(const Fvector& n_C, const float n_R, float&  dist )
+	__forceinline BOOL		_box_sse	(const Fvector3& n_C, const float n_R, float&  dist )
 	{
 		aabb_t		box;
 		float		n_vR	=		2*n_R;
@@ -213,7 +213,7 @@ public:
 		box.max.set	(n_C.x+n_vR, n_C.y+n_vR, n_C.z+n_vR);	box.max.pad = 0;
 		return 		isect_sse		(box,ray,dist);
 	}
-	void			walk		(ISpatial_NODE* N, Fvector& n_C, float n_R)
+	void			walk		(ISpatial_NODE* N, Fvector3& n_C, float n_R)
 	{
 		// Actual ray/aabb test
 		if (b_use_sse)		{
@@ -223,7 +223,7 @@ public:
 			if (d>range)							return;
 		} else {
 			// use FPU
-			Fvector		P;
+			Fvector3		P;
 			if (!_box_fpu(n_C,n_R,P))				return;
 			if (P.distance_to_sqr(ray.pos)>range2)	return;
 		}
@@ -258,14 +258,15 @@ public:
 		for (u32 octant=0; octant<8; octant++)
 		{
 			if (0==N->children[octant])	continue;
-			Fvector		c_C;			c_C.mad	(n_C,c_spatial_offset[octant],c_R);
+			Fvector3		c_C;
+			c_C.mad	(n_C,c_spatial_offset[octant],c_R);
 			walk						(N->children[octant],c_C,c_R);
 			if (b_first && !space->q_result->empty())	return;
 		}
 	}
 };
 
-void	ISpatial_DB::q_ray	(xr_vector<ISpatial*>& R, u32 _o, u32 _mask_and, const Fvector&	_start,  const Fvector&	_dir, float _range)
+void	ISpatial_DB::q_ray	(xr_vector<ISpatial*>& R, u32 _o, u32 _mask_and, const Fvector3& _start,  const Fvector3& _dir, float _range)
 {
 	cs.Enter						();
 	q_result						= &R;

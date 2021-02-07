@@ -8,15 +8,15 @@ class ENGINE_API CDemoRecord : public CEffectorCam, public IInputReceiver
 private:
 	int										iCount;
 	IWriter*								file;
-	Fvector									m_HPB;
-	Fvector									m_Position;
+	Fvector3								m_HPB;
+	Fvector3								m_Position;
 	Fmatrix									m_Camera;
 	u32										m_Stage;
 
-	Fvector									m_vT;
-	Fvector									m_vR;
-	Fvector									m_vVelocity;
-	Fvector									m_vAngularVelocity;
+	Fvector3								m_vT;
+	Fvector3								m_vR;
+	Fvector3								m_vVelocity;
+	Fvector3								m_vAngularVelocity;
 
 	bool									m_bMakeCubeMap;
 	bool									m_bMakeScreenshot;
@@ -32,7 +32,7 @@ private:
 	float									m_fAngSpeed2;
 	float									m_fAngSpeed3;
 
-	void			MakeCubeMapFace			(Fvector& D, Fvector& N);
+	void			MakeCubeMapFace			(Fvector3& D, Fvector3& N);
 	void			MakeLevelMapProcess		( );
 	void			MakeScreenshotFace		( );
 	void			RecordKey				( );
@@ -53,5 +53,5 @@ public:
 	{
 		return m_bOverlapped;
 	}
-	virtual BOOL	Process					(Fvector& p, Fvector& d, Fvector& n, float& fFov, float& fFar, float& fAspect);
+	virtual BOOL	Process					(Fvector3& p, Fvector3& d, Fvector3& n, float& fFov, float& fFar, float& fAspect);
 };

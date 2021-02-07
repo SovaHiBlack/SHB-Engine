@@ -112,7 +112,7 @@ public:
 		}
 		return false;
 	};
-	ICF BOOL pick_exact	( const Tvector& start, const Tvector& dir ){
+	__forceinline BOOL pick_exact	( const Tvector& start, const Tvector& dir ){
 		T		alpha,xt,yt;
 		Tvector rvmin,rvmax;
 

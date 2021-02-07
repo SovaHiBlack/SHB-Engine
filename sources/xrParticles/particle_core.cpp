@@ -8,7 +8,7 @@ using namespace PAPI;
 // To offset [0 .. 1] vectors to [-.5 .. .5]
 static pVector vHalf(0.5, 0.5, 0.5);
 
-ICF pVector RandVec()
+__forceinline pVector RandVec()
 {
 	return pVector(drand48(), drand48(), drand48());
 }

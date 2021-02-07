@@ -65,7 +65,7 @@ public:
 								else					return geometry_transform();
 								
 							}
-	ICF	static	bool		is_transform(dGeomID g)
+	__forceinline	static	bool		is_transform(dGeomID g)
 							{
 								return dGeomGetClass(g)==dGeomTransformClass;
 							}

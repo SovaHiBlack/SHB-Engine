@@ -27,7 +27,7 @@ ICollisionForm::~ICollisionForm( )
 }
 
 //----------------------------------------------------------------------------------
-void CCF_Skeleton::SElement::center(Fvector& center) const
+void CCF_Skeleton::SElement::center(Fvector3& center) const
 {
 	switch (type){
 	case SBoneShape::stBox:
@@ -48,7 +48,7 @@ void CCF_Skeleton::SElement::center(Fvector& center) const
 bool	pred_find_elem(const CCF_Skeleton::SElement& E, u16 elem){
 	return E.elem_id<elem;
 }
-bool CCF_Skeleton::_ElementCenter(u16 elem_id, Fvector& e_center)
+bool CCF_Skeleton::_ElementCenter(u16 elem_id, Fvector3& e_center)
 {
 	ElementVecIt it = std::lower_bound(elements.begin(),elements.end(),elem_id,pred_find_elem);
 	if (it->elem_id==elem_id){
@@ -58,11 +58,13 @@ bool CCF_Skeleton::_ElementCenter(u16 elem_id, Fvector& e_center)
 	return false;
 }
 
-IC bool RAYvsOBB(const Fmatrix& IM, const Fvector& b_hsize, const Fvector &S, const Fvector &D, float &R, BOOL bCull)
+IC bool RAYvsOBB(const Fmatrix& IM, const Fvector3& b_hsize, const Fvector3& S, const Fvector3& D, float &R, BOOL bCull)
 {
 	Fbox E	= {-b_hsize.x, -b_hsize.y, -b_hsize.z,	b_hsize.x,	b_hsize.y,	b_hsize.z};
 	// XForm world-2-local
-	Fvector	SL,DL,PL;
+	Fvector3	SL;
+	Fvector3 DL;
+	Fvector3 PL;
 	IM.transform_tiny	(SL,S);
 	IM.transform_dir	(DL,D);
 
@@ -78,13 +80,13 @@ IC bool RAYvsOBB(const Fmatrix& IM, const Fvector& b_hsize, const Fvector &S, co
 	}
 	return false;
 }
-IC bool RAYvsSPHERE(const Fsphere& s_sphere, const Fvector &S, const Fvector &D, float &R, BOOL bCull)
+IC bool RAYvsSPHERE(const Fsphere& s_sphere, const Fvector3& S, const Fvector3& D, float &R, BOOL bCull)
 {
 	Fsphere::ERP_Result rp_res = s_sphere.intersect(S,D,R);
 	VERIFY				(R>=0.f);
 	return				((rp_res==Fsphere::rpOriginOutside)||(!bCull&&(rp_res==Fsphere::rpOriginInside)));
 }
-IC bool RAYvsCYLINDER(const Fcylinder& c_cylinder, const Fvector &S, const Fvector &D, float &R, BOOL bCull)
+IC bool RAYvsCYLINDER(const Fcylinder& c_cylinder, const Fvector3& S, const Fvector3& D, float &R, BOOL bCull)
 {
 	// Actual test
 	Fcylinder::ERP_Result rp_res = c_cylinder.intersect(S,D,R);
@@ -232,7 +234,8 @@ BOOL CCF_Skeleton::_RayQuery( const collide::ray_defs& Q, collide::rq_results& R
 //----------------------------------------------------------------------------------
 CCF_EventBox::CCF_EventBox( CObject* O ) : ICollisionForm(O,cftShape)
 {
-	Fvector A[8],B[8];
+	Fvector3 A[8];
+	Fvector3 B[8];
 	A[0].set( -1, -1, -1);
 	A[1].set( -1, -1, +1);
 	A[2].set( -1, +1, +1);
@@ -248,7 +251,8 @@ CCF_EventBox::CCF_EventBox( CObject* O ) : ICollisionForm(O,cftShape)
 		T.transform_tiny(B[i],A[i]);
 	}
 	bv_box.set		(-.5f,-.5f,-.5f,+.5f,+.5f,+.5f);
-	Fvector R; R.set(bv_box.min);
+	Fvector3 R;
+	R.set(bv_box.min);
 	T.transform_dir	(R);
 	bv_sphere.R		= R.magnitude();
 
@@ -263,10 +267,10 @@ CCF_EventBox::CCF_EventBox( CObject* O ) : ICollisionForm(O,cftShape)
 BOOL CCF_EventBox::Contact(CObject* O)
 {
 	IRender_Visual*	V		= O->Visual();
-	Fvector&		P	= V->vis.sphere.P;
+	Fvector3&		P	= V->vis.sphere.P;
 	float			R	= V->vis.sphere.R;
 	
-	Fvector			PT;
+	Fvector3			PT;
 	O->XFORM().transform_tiny(PT,P);
 	
 	for (int i=0; i<6; i++) {
@@ -290,7 +294,8 @@ CCF_Shape::CCF_Shape(CObject* _owner) : ICollisionForm(_owner,cftShape)
 BOOL CCF_Shape::_RayQuery(const collide::ray_defs& Q, collide::rq_results& R)
 {	
 	// Convert ray into local model space
-	Fvector dS, dD;
+	Fvector3 dS;
+	Fvector3 dD;
 	Fmatrix temp; 
 	temp.invert			(owner->XFORM());
 	temp.transform_tiny	(dS,Q.start);
@@ -321,7 +326,9 @@ BOOL CCF_Shape::_RayQuery(const collide::ray_defs& Q, collide::rq_results& R)
 				Fbox				box;
 				box.identity		();
 				Fmatrix& B			= shape.data.ibox;
-				Fvector				S1,D1,P;
+				Fvector3				S1;
+				Fvector3 D1;
+				Fvector3  P;
 				B.transform_tiny	(S1,dS);
 				B.transform_dir		(D1,dD);
 				Fbox::ERP_Result	rp_res 	= box.Pick2(S1,D1,P);
@@ -371,7 +378,7 @@ void CCF_Shape::ComputeBounds()
 		case 0: // sphere
 			{
 				Fsphere		T		= shapes[el].data.sphere;
-				Fvector		P;
+				Fvector3		P;
 				P.set		(T.P);	P.sub(T.R);	bv_box.modify(P);
 				P.set		(T.P);	P.add(T.R);	bv_box.modify(P);
 				bv_sphere	= T;
@@ -379,7 +386,8 @@ void CCF_Shape::ComputeBounds()
 			break;
 		case 1:	// box
 			{
-				Fvector		A,B;
+			Fvector3		A;
+			Fvector3 B;
 				Fmatrix&	T		= shapes[el].data.box;
 				
 				// Build points
@@ -436,7 +444,8 @@ BOOL CCF_Shape::Contact		( CObject* O )
 				Q.mul_43			( XF,T);
 
 				// Build points
-				Fvector A,B[8];
+				Fvector3 A;
+				Fvector3 B[8];
 				Fplane  P;
 				A.set(-.5f, -.5f, -.5f);	Q.transform_tiny(B[0],A);
 				A.set(-.5f, -.5f, +.5f);	Q.transform_tiny(B[1],A);

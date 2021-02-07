@@ -24,10 +24,10 @@ protected:
 	BOOL		bPause			;
 public:
 				CTimerBase		()		: qwStartTime(0),qwPausedTime(0),qwPauseAccum(0),bPause(FALSE)		{ }
-	ICF	void	Start			()		{	if(bPause) return;	qwStartTime = CPU::QPC()-qwPauseAccum;		}
-	ICF u64		GetElapsed_ticks()const	{	if(bPause) return	qwPausedTime; else return CPU::QPC()-qwStartTime-CPU::qpc_overhead-qwPauseAccum; }
-	IC	u32		GetElapsed_ms	()const	{	return u32(GetElapsed_ticks()*u64(1000)/CPU::qpc_freq );	}
-	IC	float	GetElapsed_sec	()const	{
+				__forceinline	void	Start			()		{	if(bPause) return;	qwStartTime = CPU::QPC()-qwPauseAccum;		}
+				__forceinline u64		GetElapsed_ticks()const	{	if(bPause) return	qwPausedTime; else return CPU::QPC()-qwStartTime-CPU::qpc_overhead-qwPauseAccum; }
+	inline	u32		GetElapsed_ms	()const	{	return u32(GetElapsed_ticks()*u64(1000)/CPU::qpc_freq );	}
+	inline	float	GetElapsed_sec	()const	{
 
 		FPU::m64r	()			;
 	   
@@ -37,7 +37,7 @@ public:
 
 		return		_result		;
 	}
-	IC	void	Dump			() const
+	inline	void	Dump			() const
 	{
 		Msg("* Elapsed time (sec): %f",GetElapsed_sec());
 	}
@@ -53,7 +53,7 @@ private:
 	u64					m_ticks;
 
 private:
-	IC	u64				GetElapsed_ticks(const u64 &current_ticks) const
+	inline	u64				GetElapsed_ticks(const u64 &current_ticks) const
 	{
 		u64				delta = current_ticks - m_real_ticks;
 		double			delta_d = (double)delta;
@@ -64,9 +64,9 @@ private:
 	}
 
 public:
-	IC					CTimer			() : m_time_factor(1.f), m_real_ticks(0), m_ticks(0) {}
+	inline					CTimer			() : m_time_factor(1.f), m_real_ticks(0), m_ticks(0) {}
 
-	ICF	void			Start			()
+	__forceinline	void			Start			()
 	{
 		if (bPause)
 			return;
@@ -77,12 +77,12 @@ public:
 		m_ticks			= 0;
 	}
 
-	IC	const float		&time_factor	() const
+	inline	const float		&time_factor	() const
 	{
 		return			(m_time_factor);
 	}
 
-	IC	void			time_factor		(const float &time_factor)
+	inline	void			time_factor		(const float &time_factor)
 	{
 		u64				current = inherited::GetElapsed_ticks();
 		m_ticks			= GetElapsed_ticks(current);
@@ -90,7 +90,7 @@ public:
 		m_time_factor	= time_factor;
 	}
 
-	IC	u64				GetElapsed_ticks() const
+	inline	u64				GetElapsed_ticks() const
 	{
 		FPU::m64r		();
 
@@ -128,8 +128,8 @@ class CORE_API CTimer_paused_ex : public CTimer		{
 public:
 	CTimer_paused_ex			()		{ }
 	virtual ~CTimer_paused_ex	()		{ }
-	IC BOOL		Paused			()const	{ return bPause;				}
-	IC void		Pause			(BOOL b){
+	inline BOOL		Paused			()const	{ return bPause;				}
+	inline void		Pause			(BOOL b){
 		if(bPause==b)			return	;
 
 		u64		_current		=		CPU::QPC()-CPU::qpc_overhead	;
@@ -162,13 +162,13 @@ public:
 	void		FrameStart		();
 	void		FrameEnd		();
 
-	ICF void	Begin			()		{	if (!g_bEnableStatGather) return;	count++; T.Start();				}
-	ICF void	End				()		{	if (!g_bEnableStatGather) return;	accum += T.GetElapsed_ticks();	}
+	__forceinline void	Begin			()		{	if (!g_bEnableStatGather) return;	count++; T.Start();				}
+	__forceinline void	End				()		{	if (!g_bEnableStatGather) return;	accum += T.GetElapsed_ticks();	}
 
-	ICF u64		GetElapsed_ticks()const	{	return accum;					}
+	__forceinline u64		GetElapsed_ticks()const	{	return accum;					}
 
-	IC	u32		GetElapsed_ms	()const	{	return u32(GetElapsed_ticks()*u64(1000)/CPU::qpc_freq );	}
-	IC	float	GetElapsed_sec	()const	{
+	inline	u32		GetElapsed_ms	()const	{	return u32(GetElapsed_ticks()*u64(1000)/CPU::qpc_freq );	}
+	inline	float	GetElapsed_sec	()const	{
 
 		FPU::m64r	()			;
 	  

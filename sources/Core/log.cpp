@@ -116,7 +116,7 @@ void Log				(const char* msg, float dop) {
 	Log		(buf);
 }
 
-void Log				(const char* msg, const Fvector &dop) {
+void Log				(const char* msg, const Fvector3& dop) {
 	char buf[1024];
 
 	sprintf_s	(buf,sizeof(buf),"%s (%f,%f,%f)",msg,dop.x,dop.y,dop.z);

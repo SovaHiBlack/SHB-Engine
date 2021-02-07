@@ -282,7 +282,7 @@ extern float		r_ssaLOD_A,			r_ssaLOD_B;
 extern float		r_ssaGLOD_start,	r_ssaGLOD_end;
 extern float		r_ssaHZBvsTEX;
 
-ICF bool			pred_sp_sort		(ISpatial* _1, ISpatial* _2)
+__forceinline bool			pred_sp_sort		(ISpatial* _1, ISpatial* _2)
 {
 	float	d1		= _1->spatial.sphere.P.distance_to_sqr(Device.vCameraPosition);
 	float	d2		= _2->spatial.sphere.P.distance_to_sqr(Device.vCameraPosition);

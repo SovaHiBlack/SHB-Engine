@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "ISpatial.h"
 
-extern Fvector	c_spatial_offset[8];
+extern Fvector3	c_spatial_offset[8];
 
 class	walker
 {
@@ -14,7 +14,7 @@ public:
 		o_count	= 0;
 		n_count	= 0;
 	}
-	void		walk		(ISpatial_NODE* N, Fvector& n_C, float n_R)
+	void		walk		(ISpatial_NODE* N, Fvector3& n_C, float n_R)
 	{
 		// test items
 		n_count			+=		1;
@@ -25,7 +25,8 @@ public:
 		for (u32 octant=0; octant<8; octant++)
 		{
 			if (0==N->children[octant])	continue;
-			Fvector		c_C;			c_C.mad	(n_C,c_spatial_offset[octant],c_R);
+			Fvector3		c_C;
+			c_C.mad	(n_C,c_spatial_offset[octant],c_R);
 			walk						(N->children[octant],c_C,c_R);
 		}
 	}

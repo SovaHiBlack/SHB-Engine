@@ -80,7 +80,9 @@ void	CRenderTarget::phase_combine	()
 		// sun-params
 		{
 			light*		fuckingsun		= (light*)RImplementation.Lights.sun_adapted._get()	;
-			Fvector		L_dir,L_clr;	float L_spec;
+			Fvector3 L_dir;
+			Fvector3 L_clr;
+			float L_spec;
 			L_clr.set					(fuckingsun->color.r,fuckingsun->color.g,fuckingsun->color.b);
 			L_spec						= u_diffuse2s	(L_clr);
 			Device.mView.transform_dir	(L_dir,fuckingsun->direction);
@@ -234,15 +236,20 @@ void	CRenderTarget::phase_combine	()
 	if (1) for (u32 it=0; it<dbg_planes.size(); it++)
 	{
 		Fplane&		P	=	dbg_planes[it];
-		Fvector		zero	;
+		Fvector3		zero	;
 		zero.mul	(P.n,P.d);
 		
-		Fvector             L_dir,L_up=P.n,L_right;
+		Fvector3 L_dir;
+		Fvector3 L_up = P.n;
+		Fvector3 L_right;
 		L_dir.set           (0,0,1);                if (_abs(L_up.dotproduct(L_dir))>.99f)  L_dir.set(1,0,0);
 		L_right.crossproduct(L_up,L_dir);           L_right.normalize       ();
 		L_dir.crossproduct  (L_right,L_up);         L_dir.normalize         ();
 
-		Fvector				p0,p1,p2,p3;
+		Fvector3				p0;
+		Fvector3 p1;
+		Fvector3 p2;
+		Fvector3 p3;
 		float				sz	= 100.f;
 		p0.mad				(zero,L_right,sz).mad	(L_dir,sz);
 		p1.mad				(zero,L_right,sz).mad	(L_dir,-sz);

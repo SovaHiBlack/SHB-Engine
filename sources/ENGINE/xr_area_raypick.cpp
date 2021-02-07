@@ -13,7 +13,7 @@ using namespace	collide;
 //--------------------------------------------------------------------------------
 // RayTest - Occluded/No
 //--------------------------------------------------------------------------------
-BOOL CObjectSpace::RayTest	( const Fvector &start, const Fvector &dir, float range, collide::rq_target tgt, collide::ray_cache* cache, CObject* ignore_object)
+BOOL CObjectSpace::RayTest	( const Fvector3& start, const Fvector3& dir, float range, collide::rq_target tgt, collide::ray_cache* cache, CObject* ignore_object)
 {
 	Lock.Enter		();
 	BOOL	_ret	= _RayTest(start,dir,range,tgt,cache,ignore_object);
@@ -21,7 +21,7 @@ BOOL CObjectSpace::RayTest	( const Fvector &start, const Fvector &dir, float ran
 	Lock.Leave		();
 	return			_ret;
 }
-BOOL CObjectSpace::_RayTest	( const Fvector &start, const Fvector &dir, float range, collide::rq_target tgt, collide::ray_cache* cache, CObject* ignore_object)
+BOOL CObjectSpace::_RayTest	( const Fvector3& start, const Fvector3& dir, float range, collide::rq_target tgt, collide::ray_cache* cache, CObject* ignore_object)
 {
 	VERIFY					(_abs(dir.magnitude()-1)<EPS);
 	r_temp.r_clear			();
@@ -73,7 +73,7 @@ BOOL CObjectSpace::_RayTest	( const Fvector &start, const Fvector &dir, float ra
 				cache->set		(start,dir,range,TRUE);
 				CDB::RESULT*	R	= xrc.r_begin();
 				CDB::TRI&		T	= Static.get_tris() [ R->id ];
-				Fvector*		V	= Static.get_verts();
+				Fvector3*		V	= Static.get_verts();
 				cache->verts[0].set	(V[T.verts[0]]);
 				cache->verts[1].set	(V[T.verts[1]]);
 				cache->verts[2].set	(V[T.verts[2]]);
@@ -90,7 +90,7 @@ BOOL CObjectSpace::_RayTest	( const Fvector &start, const Fvector &dir, float ra
 //--------------------------------------------------------------------------------
 // RayPick
 //--------------------------------------------------------------------------------
-BOOL CObjectSpace::RayPick	( const Fvector &start, const Fvector &dir, float range, rq_target tgt, rq_result& R, CObject* ignore_object)
+BOOL CObjectSpace::RayPick	( const Fvector3& start, const Fvector3& dir, float range, rq_target tgt, rq_result& R, CObject* ignore_object)
 {
 	Lock.Enter		();
 	BOOL	_res	= _RayPick(start,dir,range,tgt,R,ignore_object);
@@ -98,7 +98,7 @@ BOOL CObjectSpace::RayPick	( const Fvector &start, const Fvector &dir, float ran
 	Lock.Leave		();
 	return	_res;
 }
-BOOL CObjectSpace::_RayPick	( const Fvector &start, const Fvector &dir, float range, rq_target tgt, rq_result& R, CObject* ignore_object)
+BOOL CObjectSpace::_RayPick	( const Fvector3& start, const Fvector3& dir, float range, rq_target tgt, rq_result& R, CObject* ignore_object)
 {
 	r_temp.r_clear			();
 	R.O		= 0; R.range = range; R.element = -1;

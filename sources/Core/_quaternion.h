@@ -311,11 +311,11 @@ public:
 	}
 
 	// makes unit rotation
-	IC	SelfRef	rotationYawPitchRoll(const Fvector &ypr)
+	IC	SelfRef	rotationYawPitchRoll(const Fvector3& ypr)
 	{	return rotationYawPitchRoll(ypr.x,ypr.y,ypr.z);	}
 
 	// set a quaternion from an axis and a rotation around the axis
-	IC	SelfRef	rotation(Fvector &axis, T angle)
+	IC	SelfRef	rotation(Fvector3& axis, T angle)
 	{
 		T	sinTheta;
 
@@ -330,7 +330,7 @@ public:
 	// gets an axis and angle of rotation around the axis from a quaternion
 	// returns TRUE if there is an axis.
 	// returns FALSE if there is no axis (and Axis is set to 0,0,0, and Theta is 0)
-	IC	BOOL	get_axis_angle(Fvector &axis, T &angle)
+	IC	BOOL	get_axis_angle(Fvector3& axis, T &angle)
 	{
 		T OneOverSinTheta;
 
@@ -354,7 +354,7 @@ public:
 	// with t==0 being all q0, and t==1 being all q1.
 	// returns a quaternion with a positive W - always takes shortest route
 	// through the positive W domain.
-	ICF	SelfRef	slerp(SelfCRef Q0, SelfCRef Q1, T tm)
+	__forceinline	SelfRef	slerp(SelfCRef Q0, SelfCRef Q1, T tm)
 	{
 		T Scale0,Scale1,sign;
 

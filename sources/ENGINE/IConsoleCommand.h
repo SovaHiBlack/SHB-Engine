@@ -235,12 +235,12 @@ public:
 class ENGINE_API CCC_Vector3 : public IConsoleCommand
 {
 protected:
-	Fvector*			value;
-	Fvector				min;
-	Fvector				max;
+	Fvector3*			value;
+	Fvector3				min;
+	Fvector3				max;
 
 public:
-						CCC_Vector3			(const char* N, Fvector* V, const Fvector _min, const Fvector _max) : IConsoleCommand(N), value(V)
+						CCC_Vector3			(const char* N, Fvector3* V, const Fvector3 _min, const Fvector3 _max) : IConsoleCommand(N), value(V)
 	{
 		min.set								(_min);
 		max.set								(_max);
@@ -248,7 +248,7 @@ public:
 
 	virtual void		Execute				(const char* args)
 	{
-		Fvector v;
+		Fvector3 v;
 		if (3 != sscanf(args, "%f,%f,%f", &v.x, &v.y, &v.z))
 		{
 			InvalidSyntax					( );

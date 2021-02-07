@@ -172,7 +172,7 @@ struct SExpQParams
 	float		shoot_factor;
 };
 //проверка на попадание "осколком" по объекту
-ICF static BOOL grenade_hit_callback(collide::rq_result& result, LPVOID params)
+__forceinline static BOOL grenade_hit_callback(collide::rq_result& result, LPVOID params)
 {
 	SExpQParams& ep = *(SExpQParams*) params;
 	u16 mtl_idx = GAMEMTL_NONE_IDX;

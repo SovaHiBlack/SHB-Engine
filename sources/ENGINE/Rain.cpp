@@ -59,15 +59,15 @@ CEffect_Rain::~CEffect_Rain()
 // Born
 void	CEffect_Rain::Born		(Item& dest, float radius)
 {
-	Fvector		axis;	
-    axis.set			(0,-1,0);
+	Fvector3		axis;
+	axis.set			(0,-1,0);
 	float gust			= g_pGamePersistent->Environment().wind_strength_factor/10.f;
 	float k				= g_pGamePersistent->Environment().CurrentEnv.wind_velocity*gust/drop_max_wind_vel;
 	clamp				(k,0.f,1.f);
 	float	pitch		= drop_max_angle*k-PI_DIV_2;
-    axis.setHP			(g_pGamePersistent->Environment().CurrentEnv.wind_direction,pitch);
-    
-	Fvector&	view	= Device.vCameraPosition;
+	axis.setHP			(g_pGamePersistent->Environment().CurrentEnv.wind_direction,pitch);
+	
+	Fvector3&	view	= Device.vCameraPosition;
 	float		angle	= ::Random.randF	(0,PI_MUL_2);
 	float		dist	= ::Random.randF	(); dist = _sqrt(dist)*radius; 
 	float		x		= dist*_cos		(angle);
@@ -81,22 +81,22 @@ void	CEffect_Rain::Born		(Item& dest, float radius)
 	RenewItem			(dest,height,RayPick(dest.P,dest.D,height,collide::rqtBoth));
 }
 
-BOOL CEffect_Rain::RayPick(const Fvector& s, const Fvector& d, float& range, collide::rq_target tgt)
+BOOL CEffect_Rain::RayPick(const Fvector3& s, const Fvector3& d, float& range, collide::rq_target tgt)
 {
 	BOOL bRes 			= TRUE;
 
 	collide::rq_result	RQ;
 	CObject* E 			= g_pGameLevel->CurrentViewEntity();
 	bRes 				= g_pGameLevel->ObjectSpace.RayPick( s,d,range,tgt,RQ,E);	
-    if (bRes) range 	= RQ.range;
+	if (bRes) range 	= RQ.range;
 
-    return bRes;
+	return bRes;
 }
 
 void CEffect_Rain::RenewItem(Item& dest, float height, BOOL bHit)
 {
 	dest.uv_set			= Random.randI(2);
-    if (bHit){
+	if (bHit){
 		dest.dwTime_Life= Device.dwTimeGlobal + iFloor(1000.f*height/dest.fSpeed) - Device.dwTimeDelta;
 		dest.dwTime_Hit	= Device.dwTimeGlobal + iFloor(1000.f*height/dest.fSpeed) - Device.dwTimeDelta;
 		dest.Phit.mad	(dest.P,dest.D,height);
@@ -138,8 +138,8 @@ void	CEffect_Rain::OnFrame	()
 
 	// ambient sound
 	if (snd_Ambient._feedback()){
-		Fvector					sndP;
-		sndP.mad				(Device.vCameraPosition,Fvector().set(0,1,0),source_offset);
+		Fvector3					sndP;
+		sndP.mad				(Device.vCameraPosition, Fvector3().set(0,1,0),source_offset);
 		snd_Ambient.set_position(sndP);
 		snd_Ambient.set_volume	(1.1f*factor*hemi_factor);
 	}
@@ -170,16 +170,17 @@ void	CEffect_Rain::Render	()
 	}
 
 	// build source plane
-    Fplane src_plane;
-    Fvector norm	={0.f,-1.f,0.f};
-    Fvector upper; 	upper.set(Device.vCameraPosition.x,Device.vCameraPosition.y+source_offset,Device.vCameraPosition.z);
-    src_plane.build(upper,norm);
+	Fplane src_plane;
+	Fvector3 norm	={0.f,-1.f,0.f};
+	Fvector3 upper;
+	upper.set(Device.vCameraPosition.x,Device.vCameraPosition.y+source_offset,Device.vCameraPosition.z);
+	src_plane.build(upper,norm);
 	
 	// perform update
 	u32			vOffset;
 	FVF::LIT	*verts		= (FVF::LIT	*) RCache.Vertex.Lock(desired_items*4,hGeom_Rain->vb_stride,vOffset);
 	FVF::LIT	*start		= verts;
-	const Fvector&	vEye	= Device.vCameraPosition;
+	const Fvector3&	vEye	= Device.vCameraPosition;
 	for (u32 I=0; I<items.size(); I++){
 		// physics and time control
 		Item&	one		=	items[I];
@@ -192,7 +193,8 @@ void	CEffect_Rain::Render	()
 		one.P.mad		(one.D,one.fSpeed*dt);
 
 		Device.Statistic->TEST1.Begin();
-		Fvector	wdir;	wdir.set(one.P.x-vEye.x,0,one.P.z-vEye.z);
+		Fvector3 wdir;
+		wdir.set(one.P.x-vEye.x,0,one.P.z-vEye.z);
 		float	wlen	= wdir.square_magnitude();
 		if (wlen>b_radius_wrap_sqr)	{
 			wlen		= _sqrt(wlen);
@@ -201,7 +203,8 @@ void	CEffect_Rain::Render	()
 				// need born
 				one.invalidate();
 			}else{
-				Fvector		inv_dir, src_p;
+				Fvector3 inv_dir;
+				Fvector3 src_p;
 				inv_dir.invert(one.D);
 				wdir.div	(wlen);
 				one.P.mad	(one.P, wdir, -(wlen+source_radius));
@@ -231,11 +234,14 @@ void	CEffect_Rain::Render	()
 		Device.Statistic->TEST1.End();
 
 		// Build line
-		Fvector&	pos_head	= one.P;
-		Fvector		pos_trail;	pos_trail.mad	(pos_head,one.D,-drop_length*factor_visual);
+		Fvector3& pos_head = one.P;
+		Fvector3 pos_trail;
+		pos_trail.mad	(pos_head,one.D,-drop_length*factor_visual);
 		
 		// Culling
-		Fvector sC,lineD;	float sR; 
+		Fvector3 sC;
+		Fvector3 lineD;
+		float sR;
 		sC.sub			(pos_head,pos_trail);
 		lineD.normalize	(sC);
 		sC.mul			(.5f);
@@ -249,7 +255,9 @@ void	CEffect_Rain::Render	()
 		};
 
 		// Everything OK - build vertices
-		Fvector	P,lineTop,camDir;
+		Fvector3 P;
+		Fvector3 lineTop;
+		Fvector3 camDir;
 		camDir.sub			(sC,vEye);
 		camDir.normalize	();
 		lineTop.crossproduct(camDir,lineD);
@@ -347,7 +355,7 @@ void	CEffect_Rain::Render	()
 }
 
 // startup _new_ particle system
-void	CEffect_Rain::Hit		(Fvector& pos)
+void	CEffect_Rain::Hit		(Fvector3& pos)
 {
 	if (0!=::Random.randI(2))	return;
 	Particle*	P	= p_allocate();

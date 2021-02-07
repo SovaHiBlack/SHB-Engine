@@ -51,7 +51,7 @@ public:
 	};
 
 	// Class members
-	ICF	SelfRef	set			(const Self &a) 
+	__forceinline	SelfRef	set			(const Self &a)
 	{
 		i.set(a.i); _14_=a._14;
 		j.set(a.j); _24_=a._24;
@@ -59,7 +59,7 @@ public:
 		c.set(a.c); _44_=a._44;
 		return *this;
 	}
-	ICF	SelfRef	set			(const Tvector& R,const Tvector& N,const Tvector& D,const Tvector& C) 
+	__forceinline	SelfRef	set			(const Tvector& R,const Tvector& N,const Tvector& D,const Tvector& C)
 	{
 		i.set(R); _14_=0;
 		j.set(N); _24_=0;
@@ -67,7 +67,7 @@ public:
 		c.set(C); _44_=1;
 		return *this;
 	}
-	ICF	SelfRef	identity	(void) 
+	__forceinline	SelfRef	identity	(void)
 	{
 		_11=1; _12=0; _13=0; _14=0;
 		_21=0; _22=1; _23=0; _24=0;
@@ -76,10 +76,10 @@ public:
 		return *this;
 	}
 	IC	SelfRef	rotation	(const _quaternion<T> &Q);
-	ICF	SelfRef	mk_xform	(const _quaternion<T> &Q, const Tvector &V);
+	__forceinline	SelfRef	mk_xform	(const _quaternion<T> &Q, const Tvector &V);
 
 	// Multiply RES = A[4x4]*B[4x4] (WITH projection)
-	ICF	SelfRef	mul			(const Self &A,const Self &B)
+	__forceinline	SelfRef	mul			(const Self &A,const Self &B)
 	{
 		VERIFY	((this!=&A)&&(this!=&B));
 		m[0][0] = A.m[0][0] * B.m[0][0] + A.m[1][0] * B.m[0][1] + A.m[2][0] * B.m[0][2] + A.m[3][0] * B.m[0][3];
@@ -105,7 +105,7 @@ public:
 	}
 
 	// Multiply RES = A[4x3]*B[4x3] (no projection), faster than ordinary multiply
-	ICF	SelfRef	mul_43		(const Self &A,const Self &B)
+	__forceinline	SelfRef	mul_43		(const Self &A,const Self &B)
 	{
 		VERIFY	((this!=&A)&&(this!=&B));
 		m[0][0] = A.m[0][0] * B.m[0][0] + A.m[1][0] * B.m[0][1] + A.m[2][0] * B.m[0][2];
@@ -139,12 +139,12 @@ public:
 		Self A; A.set( *this ); 	mul		( A, B );
 		return *this;
 	};
-	ICF	SelfRef	mulA_43		( const Self &A )			// mul after (no projection)
+	__forceinline SelfRef	mulA_43		( const Self &A )			// mul after (no projection)
 	{
     	Self B; B.set( *this ); 	mul_43	( A, B );
 		return *this;
     };
-	ICF	SelfRef	mulB_43		( const Self &B )			// mul before (no projection)
+	__forceinline SelfRef	mulB_43		( const Self &B )			// mul before (no projection)
 	{
 		Self A; A.set( *this ); 	mul_43	( A, B );
 		return *this;
@@ -493,24 +493,24 @@ public:
 		}
 		return *this; 
 	}
-	ICF	void	transform_tiny		(Tvector &dest, const Tvector &v)	const // preferred to use
+	__forceinline	void	transform_tiny		(Tvector &dest, const Tvector &v)	const // preferred to use
 	{
 		dest.x = v.x*_11 + v.y*_21 + v.z*_31 + _41;
 		dest.y = v.x*_12 + v.y*_22 + v.z*_32 + _42;
 		dest.z = v.x*_13 + v.y*_23 + v.z*_33 + _43;
 	}
-	ICF	void	transform_tiny32	(Fvector2 &dest, const Tvector &v)	const // preferred to use
+	__forceinline	void	transform_tiny32	(Fvector2 &dest, const Tvector &v)	const // preferred to use
 	{
 		dest.x = v.x*_11 + v.y*_21 + v.z*_31 + _41;
 		dest.y = v.x*_12 + v.y*_22 + v.z*_32 + _42;
 	}
-	ICF	void	transform_tiny23	(Tvector &dest, const Fvector2 &v)	const // preferred to use
+	__forceinline	void	transform_tiny23	(Tvector &dest, const Fvector2 &v)	const // preferred to use
 	{
 		dest.x = v.x*_11 + v.y*_21 + _41;
 		dest.y = v.x*_12 + v.y*_22 + _42;
 		dest.z = v.x*_13 + v.y*_23 + _43;
 	}
-	ICF	void	transform_dir		(Tvector &dest, const Tvector &v)	const 	// preferred to use
+	__forceinline	void	transform_dir		(Tvector &dest, const Tvector &v)	const 	// preferred to use
 	{
 		dest.x = v.x*_11 + v.y*_21 + v.z*_31;
 		dest.y = v.x*_12 + v.y*_22 + v.z*_32;
@@ -531,7 +531,7 @@ public:
 		dest.z	= (v.x*_13 + v.y*_23 + v.z*_33 + _43)*iw;
 	}
 
-	ICF	void	transform_tiny		(Tvector &v) const
+	__forceinline	void	transform_tiny		(Tvector &v) const
 	{
 		Tvector			res;
 		transform_tiny	(res,v);
@@ -543,13 +543,13 @@ public:
 		transform		(res,v);
 		v.set			(res);
 	}
-	ICF	void	transform_dir		(Tvector &v) const
+	__forceinline void	transform_dir		(Tvector &v) const
 	{
 		Tvector			res;
 		transform_dir	(res,v);
 		v.set			(res);
 	}
-	ICF	SelfRef	setHPB	(T h, T p, T b)
+	__forceinline SelfRef	setHPB	(T h, T p, T b)
 	{
         T _ch, _cp, _cb, _sh, _sp, _sb, _cc, _cs, _sc, _ss;
 

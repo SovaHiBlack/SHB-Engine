@@ -4,30 +4,30 @@
 #pragma pack(push,4)
 namespace FVF {
 	struct L {
-		Fvector		p;
+		Fvector3		p;
 		u32			color;
 		IC void		set(const L& src) {*this = src;};
 		IC void		set(float x, float y, float z, u32 C) { p.set(x,y,z); color=C; }
-		IC void		set(const Fvector& _p, u32 C) { p.set(_p); color=C; }
+		IC void		set(const Fvector3& _p, u32 C) { p.set(_p); color=C; }
 	};
 	const u32 F_L		= D3DFVF_XYZ | D3DFVF_DIFFUSE;
 
 	struct V {
-		Fvector		p;
+		Fvector3		p;
 		Fvector2	t;
 		IC void		set(const V& src) {*this = src;};
 		IC void		set(float x, float y, float z, float u, float v)	{ p.set(x,y,z); t.set(u,v);}
-		IC void		set(const Fvector& _p,float u, float v)				{ p.set(_p);	t.set(u,v);}
+		IC void		set(const Fvector3& _p,float u, float v)				{ p.set(_p);	t.set(u,v);}
 	};
 	const u32 F_V		= D3DFVF_XYZ | D3DFVF_TEX1;
 
 	struct LIT {
-		Fvector		p;
+		Fvector3		p;
 		u32			color;
 		Fvector2	t;
 		IC void		set(const LIT& src) {*this = src;};
 		IC void		set(float x, float y, float z, u32 C, float u, float v) { p.set(x,y,z); color=C; t.set(u,v);}
-		IC void		set(const Fvector& _p, u32 C, float u, float v) { p.set(_p); color=C; t.set(u,v);}
+		IC void		set(const Fvector3& _p, u32 C, float u, float v) { p.set(_p); color=C; t.set(u,v);}
 	};
 	const u32 F_LIT	= D3DFVF_XYZ | D3DFVF_DIFFUSE | D3DFVF_TEX1;
 
@@ -42,7 +42,7 @@ namespace FVF {
 		{	set	(float(x),float(y),.0001f,.9999f,c); };
 		IC void	set	(float x, float y, float z, float w, u32 c)
 		{	p.set	(x,y,z,w); color = c; };
-		IC void transform(const Fvector &v,const Fmatrix &matSet)
+		IC void transform(const Fvector3& v,const Fmatrix &matSet)
 		{
 			// Transform it through the matrix set. Takes in mean projection.
 			// Finally, scale the vertices to screen coords.
@@ -70,7 +70,7 @@ namespace FVF {
 		{	set	(float(x),float(y),.0001f,.9999f,c,u,v); };
 		IC void	set	(float x, float y, float z, float w, u32 c, float u, float v)
 		{	p.set	(x,y,z,w); color = c;	uv.x=u; uv.y=v;	};
-		IC void transform(const Fvector &v,const Fmatrix &matSet)
+		IC void transform(const Fvector3& v,const Fmatrix &matSet)
 		{
 			// Transform it through the matrix set. Takes in mean projection.
 			// Finally, scale the vertices to screen coords.
@@ -100,7 +100,7 @@ namespace FVF {
 		{	set	(float(x),float(y),.0001f,.9999f,c,u,v,u2,v2); };
 		IC void	set	(float x, float y, float z, float w, u32 c, float u, float v, float u2, float v2)
 		{	p.set	(x,y,z,w); color = c; uv[0].x=u; uv[0].y=v;	uv[1].x=u2; uv[1].y=v2;	};
-		IC void transform(const Fvector &v,const Fmatrix &matSet)
+		IC void transform(const Fvector3& v,const Fmatrix &matSet)
 		{
 			// Transform it through the matrix set. Takes in mean projection.
 			// Finally, scale the vertices to screen coords.

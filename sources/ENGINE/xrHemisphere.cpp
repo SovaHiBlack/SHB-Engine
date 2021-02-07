@@ -9,7 +9,7 @@
 #define HEMI3_VERTS	196
 
 #pragma warning (disable:4305)
-const Fvector hemi_1[HEMI1_VERTS] = {
+const Fvector3 hemi_1[HEMI1_VERTS] = {
 	{ 0.525730,	 0.850655,	-0.000000},
 	{ 0.162460,	 0.850655,	 0.500000},
 	{ 0.000000,	 1.000000,	-0.000000},
@@ -80,7 +80,7 @@ const u16 hemi_1v[HEMI1_FACES*3] = {
 	24,		25,		10,
 };
 
-const Fvector hemi_2[HEMI2_VERTS] = 
+const Fvector3 hemi_2[HEMI2_VERTS] =
 {
 	{ 0.273268,	 0.961937,	-0.000000},
 	{ 0.084444,	 0.961937,	 0.259892},
@@ -337,7 +337,7 @@ const u16 hemi_2v[HEMI2_FACES*3] = {
 	90,		80,		79,
 };
 
-const Fvector hemi_3[HEMI3_VERTS] = 
+const Fvector3 hemi_3[HEMI3_VERTS] =
 {					   	
 	{+0.0000,	+0.5000,	+0.0000	},
 	{+0.2629,	+0.4253,	+0.0000	},
@@ -540,7 +540,7 @@ const Fvector hemi_3[HEMI3_VERTS] =
 
 void xrHemisphereBuild	(int quality, float energy, xrHemisphereIterator* iterator, LPVOID param)
 {
-	const Fvector* hemi=0;
+	const Fvector3* hemi=0;
 	int h_count		= xrHemisphereVertices(quality,hemi); VERIFY(h_count>0);
 	// Calculate energy
 	float total		= (float)h_count;
@@ -557,7 +557,7 @@ void xrHemisphereBuild	(int quality, float energy, xrHemisphereIterator* iterato
 	}
 }
 
-int xrHemisphereVertices	(int quality, const Fvector*& verts)
+int xrHemisphereVertices	(int quality, const Fvector3*& verts)
 {
 	// SELECT table
 	int				h_count	= 0;

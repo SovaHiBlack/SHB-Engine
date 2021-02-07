@@ -2,7 +2,7 @@
 #include "ISpatial.h"
 #include "frustum.h"
 
-extern Fvector	c_spatial_offset[8];
+extern Fvector3	c_spatial_offset[8];
 
 class	walker
 {
@@ -17,7 +17,7 @@ public:
 		F		= (CFrustum*)_F;
 		space	= _space;
 	}
-	void		walk		(ISpatial_NODE* N, Fvector& n_C, float n_R, u32 fmask)
+	void		walk		(ISpatial_NODE* N, Fvector3& n_C, float n_R, u32 fmask)
 	{
 		// box
 		float	n_vR	=		2*n_R;
@@ -32,7 +32,7 @@ public:
 			ISpatial*		S	= *_it;
 			if (0==(S->spatial.type&mask))	continue;
 
-			Fvector&		sC		= S->spatial.sphere.P;
+			Fvector3&		sC		= S->spatial.sphere.P;
 			float			sR		= S->spatial.sphere.R;
 			u32				tmask	= fmask;
 			if (fcvNone==F->testSphere(sC,sR,tmask))	continue;
@@ -45,7 +45,8 @@ public:
 		for (u32 octant=0; octant<8; octant++)
 		{
 			if (0==N->children[octant])	continue;
-			Fvector		c_C;			c_C.mad	(n_C,c_spatial_offset[octant],c_R);
+			Fvector3		c_C;
+			c_C.mad	(n_C,c_spatial_offset[octant],c_R);
 			walk						(N->children[octant],c_C,c_R,fmask);
 		}
 	}

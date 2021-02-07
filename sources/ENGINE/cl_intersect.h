@@ -11,9 +11,9 @@ namespace CDB
 	//         sR - radius of sphere
 	// Notes : Normalized directional vectors expected
 	// -----------------------------------------------------------------------
-	IC bool IntersectRaySphere(const Fvector& rO, const Fvector& rV, const Fvector& sO, float sR)
+	IC bool IntersectRaySphere(const Fvector3& rO, const Fvector3& rV, const Fvector3& sO, float sR)
 	{
-		Fvector Q;
+		Fvector3 Q;
 		Q.sub(sO,rO);
 
 		float c = Q.magnitude();
@@ -25,9 +25,13 @@ namespace CDB
 	}
 
 	//-- Ray-Triangle : 2nd level of indirection --------------------------------
-	IC bool TestRayTri(const Fvector& C, const Fvector& D, Fvector** p, float& u, float& v, float& range, bool bCull)
+	IC bool TestRayTri(const Fvector3& C, const Fvector3& D, Fvector3** p, float& u, float& v, float& range, bool bCull)
 	{
-		Fvector edge1, edge2, tvec, pvec, qvec;
+		Fvector3 edge1;
+		Fvector3 edge2;
+		Fvector3 tvec;
+		Fvector3 pvec;
+		Fvector3 qvec;
 		float det,inv_det;
 		// find vectors for two edges sharing vert0
 		edge1.sub(*p[1], *p[0]);
@@ -63,9 +67,13 @@ namespace CDB
 		return true;
 	}
 	//-- Ray-Triangle : 1st level of indirection --------------------------------
-	IC bool TestRayTri(const Fvector& C, const Fvector& D, Fvector* p, float& u, float& v, float& range, bool bCull)
+	IC bool TestRayTri(const Fvector3& C, const Fvector3& D, Fvector3* p, float& u, float& v, float& range, bool bCull)
 	{
-		Fvector edge1, edge2, tvec, pvec, qvec;
+		Fvector3 edge1;
+		Fvector3 edge2;
+		Fvector3 tvec;
+		Fvector3 pvec;
+		Fvector3 qvec;
 		float det,inv_det;
 		// find vectors for two edges sharing vert0
 		edge1.sub(p[1], p[0]);
@@ -102,9 +110,13 @@ namespace CDB
 	}
 
 	//-- Ray-Triangle(always return range) : 1st level of indirection --------------------------------
-	IC bool TestRayTri2(const Fvector& C, const Fvector& D, Fvector* p, float& range)
+	IC bool TestRayTri2(const Fvector3& C, const Fvector3& D, Fvector3* p, float& range)
 	{
-		Fvector edge1, edge2, tvec, pvec, qvec;
+		Fvector3 edge1;
+		Fvector3 edge2;
+		Fvector3 tvec;
+		Fvector3 pvec;
+		Fvector3 qvec;
 		float det,inv_det,u,v;
 
 		// find vectors for two edges sharing vert0
@@ -126,9 +138,13 @@ namespace CDB
 		if (v < 0.0f || u + v > 1.0f) return false;
 		return true;
 	}
-	IC bool TestRayTri2(const Fvector& C, const Fvector& D, Fvector** p, float& range)
+	IC bool TestRayTri2(const Fvector3& C, const Fvector3& D, Fvector3** p, float& range)
 	{
-		Fvector edge1, edge2, tvec, pvec, qvec;
+		Fvector3 edge1;
+		Fvector3 edge2;
+		Fvector3 tvec;
+		Fvector3 pvec;
+		Fvector3 qvec;
 		float det,inv_det,u,v;
 
 		// find vectors for two edges sharing vert0
@@ -206,9 +222,11 @@ namespace CDB
 	}
 	//---------------------------------------------------------------------------
 
-	IC bool TestBBoxTri(const Fmatrix33& A, const Fvector& T, const Fvector& extA, Fvector** p, BOOL bCulling){
+	IC bool TestBBoxTri(const Fmatrix33& A, const Fvector3& T, const Fvector3& extA, Fvector3** p, BOOL bCulling){
 		// construct triangle normal, difference of center and vertex (18 ops)
-		Fvector D, E[2], N;
+		Fvector3 D;
+		Fvector3 E[2];
+		Fvector3 N;
 		E[0].sub(*p[1],*p[0]);
 		E[1].sub(*p[2],*p[0]);
 		N.crossproduct(E[0],E[1]);
@@ -244,14 +262,14 @@ namespace CDB
 		TESTV1(A2dD,A2dE0,A2dE1,extA.z); //AXIS_A2
 
 		// axis C+t*A0xE0
-		Fvector A0xE0;
+		Fvector3 A0xE0;
 		A0xE0.crossproduct(A.i,E[0]);
 		float A0xE0dD = A0xE0.dotproduct(D);
 		R = _abs(extA.y*A2dE0)+_abs(extA.z*A1dE0);
 		TESTV2(A0xE0dD,A0dN,R); //AXIS_A0xE0
 
 		// axis C+t*A0xE1
-		Fvector A0xE1;
+		Fvector3 A0xE1;
 		A0xE1.crossproduct(A.i,E[1]);
 		float A0xE1dD = A0xE1.dotproduct(D);
 		R = _abs(extA.y*A2dE1)+_abs(extA.z*A1dE1);
@@ -265,14 +283,14 @@ namespace CDB
 		TESTV2(A0xE2dD,-A0dN,R); //AXIS_A0xE2
 
 		// axis C+t*A1xE0
-		Fvector A1xE0;
+		Fvector3 A1xE0;
 		A1xE0.crossproduct(A.j,E[0]);
 		float A1xE0dD = A1xE0.dotproduct(D);
 		R = _abs(extA.x*A2dE0)+_abs(extA.z*A0dE0);
 		TESTV2(A1xE0dD,A1dN,R); //AXIS_A1xE0
 
 		// axis C+t*A1xE1
-		Fvector A1xE1;
+		Fvector3 A1xE1;
 		A1xE1.crossproduct(A.j,E[1]);
 		float A1xE1dD = A1xE1.dotproduct(D);
 		R = _abs(extA.x*A2dE1)+_abs(extA.z*A0dE1);
@@ -285,14 +303,14 @@ namespace CDB
 		TESTV2(A1xE2dD,-A1dN,R); //AXIS_A1xE2
 
 		// axis C+t*A2xE0
-		Fvector A2xE0;
+		Fvector3 A2xE0;
 		A2xE0.crossproduct(A.k,E[0]);
 		float A2xE0dD = A2xE0.dotproduct(D);
 		R = _abs(extA.x*A1dE0)+_abs(extA.y*A0dE0);
 		TESTV2(A2xE0dD,A2dN,R); //AXIS_A2xE0
 
 		// axis C+t*A2xE1
-		Fvector A2xE1;
+		Fvector3 A2xE1;
 		A2xE1.crossproduct(A.k,E[1]);
 		float A2xE1dD = A2xE1.dotproduct(D);
 		R = _abs(extA.x*A1dE1)+_abs(extA.y*A0dE1);
@@ -306,9 +324,11 @@ namespace CDB
 		// intersection occurs
 		return true;
 	}
-	IC bool TestBBoxTri(const Fmatrix33& A, const Fvector& T, const Fvector& extA, Fvector* p, BOOL bCulling){
+	IC bool TestBBoxTri(const Fmatrix33& A, const Fvector3& T, const Fvector3& extA, Fvector3* p, BOOL bCulling){
 		// construct triangle normal, difference of center and vertex (18 ops)
-		Fvector D, E[2], N;
+		Fvector3 D;
+		Fvector3 E[2];
+		Fvector3 N;
 		E[0].sub(p[1],p[0]);
 		E[1].sub(p[2],p[0]);
 		N.crossproduct(E[0],E[1]);
@@ -344,14 +364,14 @@ namespace CDB
 		TESTV1(A2dD,A2dE0,A2dE1,extA.z); //AXIS_A2
 
 		// axis C+t*A0xE0
-		Fvector A0xE0;
+		Fvector3 A0xE0;
 		A0xE0.crossproduct(A.i,E[0]);
 		float A0xE0dD = A0xE0.dotproduct(D);
 		R = _abs(extA.y*A2dE0)+_abs(extA.z*A1dE0);
 		TESTV2(A0xE0dD,A0dN,R); //AXIS_A0xE0
 
 		// axis C+t*A0xE1
-		Fvector A0xE1;
+		Fvector3 A0xE1;
 		A0xE1.crossproduct(A.i,E[1]);
 		float A0xE1dD = A0xE1.dotproduct(D);
 		R = _abs(extA.y*A2dE1)+_abs(extA.z*A1dE1);
@@ -365,14 +385,14 @@ namespace CDB
 		TESTV2(A0xE2dD,-A0dN,R); //AXIS_A0xE2
 
 		// axis C+t*A1xE0
-		Fvector A1xE0;
+		Fvector3 A1xE0;
 		A1xE0.crossproduct(A.j,E[0]);
 		float A1xE0dD = A1xE0.dotproduct(D);
 		R = _abs(extA.x*A2dE0)+_abs(extA.z*A0dE0);
 		TESTV2(A1xE0dD,A1dN,R); //AXIS_A1xE0
 
 		// axis C+t*A1xE1
-		Fvector A1xE1;
+		Fvector3 A1xE1;
 		A1xE1.crossproduct(A.j,E[1]);
 		float A1xE1dD = A1xE1.dotproduct(D);
 		R = _abs(extA.x*A2dE1)+_abs(extA.z*A0dE1);
@@ -385,14 +405,14 @@ namespace CDB
 		TESTV2(A1xE2dD,-A1dN,R); //AXIS_A1xE2
 
 		// axis C+t*A2xE0
-		Fvector A2xE0;
+		Fvector3 A2xE0;
 		A2xE0.crossproduct(A.k,E[0]);
 		float A2xE0dD = A2xE0.dotproduct(D);
 		R = _abs(extA.x*A1dE0)+_abs(extA.y*A0dE0);
 		TESTV2(A2xE0dD,A2dN,R); //AXIS_A2xE0
 
 		// axis C+t*A2xE1
-		Fvector A2xE1;
+		Fvector3 A2xE1;
 		A2xE1.crossproduct(A.k,E[1]);
 		float A2xE1dD = A2xE1.dotproduct(D);
 		R = _abs(extA.x*A1dE1)+_abs(extA.y*A0dE1);
@@ -409,9 +429,9 @@ namespace CDB
 	//---------------------------------------------------------------------------}
 
 	//----------------------------------------------------------------------------
-	IC float MgcSqrDistance (const Fvector& rkPoint, const Fvector& orig, const Fvector& e0,const Fvector& e1){
+	IC float MgcSqrDistance (const Fvector3& rkPoint, const Fvector3& orig, const Fvector3& e0,const Fvector3& e1){
 
-		Fvector kDiff;
+		Fvector3 kDiff;
 		kDiff.sub(orig,rkPoint);
 
 		float fA00 = e0.square_magnitude();
@@ -575,12 +595,10 @@ namespace CDB
 		stInside	= 2,
 	};
 
-	IC EST_Result TestSphereTri(const Fvector& sphereOrigin, float sphereRadius,
-						const Fvector& orig, const Fvector& e0,const Fvector& e1)
+	IC EST_Result TestSphereTri(const Fvector3& sphereOrigin, float sphereRadius, const Fvector3& orig, const Fvector3& e0,const Fvector3& e1)
 	{
-
 		float fRSqr = sphereRadius*sphereRadius;
-		Fvector kV0mC;
+		Fvector3 kV0mC;
 		kV0mC.sub(orig, sphereOrigin);
 
 		// count the number of triangle vertices inside the sphere
@@ -591,7 +609,7 @@ namespace CDB
 			iInside++;
 
 		// test if v1 is inside the sphere
-		Fvector kDiff;
+		Fvector3 kDiff;
 		kDiff.add(kV0mC, e0);
 		if ( kDiff.square_magnitude() <= fRSqr )
 			iInside++;
@@ -614,17 +632,19 @@ namespace CDB
 		return (fSqrDist < fRSqr)?stIntersect:stNone;
 	}
 	//---------------------------------------------------------------------------
-	IC EST_Result TestSphereTri(const Fvector& sphereOrigin, float sphereRadius, Fvector* p)
+	IC EST_Result TestSphereTri(const Fvector3& sphereOrigin, float sphereRadius, Fvector3* p)
 	{
-		Fvector e0, e1;
+		Fvector3 e0;
+		Fvector3 e1;
 		// find vectors for two edges sharing vert0
 		e0.sub(p[1], p[0]);
 		e1.sub(p[2], p[0]);
 		return TestSphereTri(sphereOrigin,sphereRadius,p[0],e0,e1);
 	}
-	IC EST_Result TestSphereTri(const Fvector& sphereOrigin, float sphereRadius, Fvector** p)
+	IC EST_Result TestSphereTri(const Fvector3& sphereOrigin, float sphereRadius, Fvector3** p)
 	{
-		Fvector e0, e1;
+		Fvector3 e0;
+		Fvector3 e1;
 		// find vectors for two edges sharing vert0
 		e0.sub(*p[1], *p[0]);
 		e1.sub(*p[2], *p[0]);

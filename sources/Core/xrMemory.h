@@ -67,33 +67,33 @@ extern CORE_API	xrMemory	Memory;
 // generic "C"-like allocations/deallocations
 #ifdef DEBUG_MEMORY_NAME
 	template <class T>
-	IC T*		xr_alloc	(u32 count)				{	return  (T*)Memory.mem_alloc(count*sizeof(T),typeid(T).name());	}
+	inline T*		xr_alloc	(u32 count)				{	return  (T*)Memory.mem_alloc(count*sizeof(T),typeid(T).name());	}
 	template <class T>
-	IC void		xr_free		(T* &P)					{	if (P) { Memory.mem_free((void*)P); P=NULL;	};	}
-	IC void*	xr_malloc	(size_t size)			{	return	Memory.mem_alloc(size,"xr_malloc");				}
-	IC void*	xr_realloc	(void* P, size_t size)	{	return Memory.mem_realloc(P,size,"xr_realloc");			}
+	inline void		xr_free		(T* &P)					{	if (P) { Memory.mem_free((void*)P); P=NULL;	};	}
+	inline void*	xr_malloc	(size_t size)			{	return	Memory.mem_alloc(size,"xr_malloc");				}
+	inline void*	xr_realloc	(void* P, size_t size)	{	return Memory.mem_realloc(P,size,"xr_realloc");			}
 #else // DEBUG_MEMORY_NAME
 	template <class T>
-	IC T*		xr_alloc	(u32 count)				{	return  (T*)Memory.mem_alloc(count*sizeof(T));	}
+	inline T*		xr_alloc	(u32 count)				{	return  (T*)Memory.mem_alloc(count*sizeof(T));	}
 	template <class T>
-	IC void		xr_free		(T* &P)					{	if (P) { Memory.mem_free((void*)P); P=NULL;	};	}
-	IC void*	xr_malloc	(size_t size)			{	return	Memory.mem_alloc(size);					}
-	IC void*	xr_realloc	(void* P, size_t size)	{	return Memory.mem_realloc(P,size);				}
+	inline void		xr_free		(T* &P)					{	if (P) { Memory.mem_free((void*)P); P=NULL;	};	}
+	inline void*	xr_malloc	(size_t size)			{	return	Memory.mem_alloc(size);					}
+	inline void*	xr_realloc	(void* P, size_t size)	{	return Memory.mem_realloc(P,size);				}
 #endif // DEBUG_MEMORY_NAME
 
 CORE_API	char* 	xr_strdup	(const char* string);
 
 #ifdef DEBUG_MEMORY_NAME
 // Global new/delete override
-	IC void*	operator new		(size_t size)		{	return Memory.mem_alloc(size?size:1, "C++ NEW");	}
-	IC void		operator delete		(void *p)			{	xr_free(p);											}
-	IC void*	operator new[]		(size_t size)		{	return Memory.mem_alloc(size?size:1, "C++ NEW");	}
-	IC void		operator delete[]	(void* p)			{	xr_free(p);											}
+inline void*	operator new		(size_t size)		{	return Memory.mem_alloc(size?size:1, "C++ NEW");	}
+inline void		operator delete		(void *p)			{	xr_free(p);											}
+inline void*	operator new[]		(size_t size)		{	return Memory.mem_alloc(size?size:1, "C++ NEW");	}
+inline void		operator delete[]	(void* p)			{	xr_free(p);											}
 #else // DEBUG_MEMORY_NAME
-	IC void*	operator new		(size_t size)		{	return Memory.mem_alloc(size?size:1);				}
-	IC void		operator delete		(void *p)			{	xr_free(p);											}
-	IC void*	operator new[]		(size_t size)		{	return Memory.mem_alloc(size?size:1);				}
-	IC void		operator delete[]	(void* p)			{	xr_free(p);											}
+inline void*	operator new		(size_t size)		{	return Memory.mem_alloc(size?size:1);				}
+inline void		operator delete		(void *p)			{	xr_free(p);											}
+inline void*	operator new[]		(size_t size)		{	return Memory.mem_alloc(size?size:1);				}
+inline void		operator delete[]	(void* p)			{	xr_free(p);											}
 #endif // DEBUG_MEMORY_NAME
 
 // POOL-ing

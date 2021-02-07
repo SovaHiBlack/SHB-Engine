@@ -19,8 +19,8 @@ public:
 	virtual	BOOL		Valid			()									{return fLifeTime>0.0f;}
 	IC virtual BOOL		Overlapped		()									{return FALSE;}
 
-	virtual	BOOL		Process			(Fvector &p, Fvector &d, Fvector &n, float& fFov, float& fFar, float& fAspect){fLifeTime-=Device.fTimeDelta; return Valid();};
+	virtual	BOOL		Process			(Fvector3& p, Fvector3& d, Fvector3& n, float& fFov, float& fFar, float& fAspect){fLifeTime-=Device.fTimeDelta; return Valid();};
 
-	virtual	void		ProcessIfInvalid(Fvector &p, Fvector &d, Fvector &n, float& fFov, float& fFar, float& fAspect){};
+	virtual	void		ProcessIfInvalid(Fvector3& p, Fvector3& d, Fvector3& n, float& fFov, float& fFar, float& fAspect){};
 	virtual BOOL		AllowProcessingIfInvalid()							{return FALSE;}
 };

@@ -110,14 +110,14 @@ IC float viewport_near(float& w, float& h)
 	return	_max(_max(VIEWPORT_NEAR,_max(w,h)),c);
 }
 
-ICF void calc_point(Fvector& pt, float radius, float depth, float alpha)
+__forceinline void calc_point(Fvector& pt, float radius, float depth, float alpha)
 {
 	pt.x	= radius*_sin(alpha);
 	pt.y	= radius+radius*_cos(alpha);
 	pt.z	= depth;
 }
 
-ICF BOOL test_point(xrXRC& xrc, const Fmatrix& xform, const Fmatrix33& mat, const Fvector& ext, float radius, float angle)
+__forceinline BOOL test_point(xrXRC& xrc, const Fmatrix& xform, const Fmatrix33& mat, const Fvector& ext, float radius, float angle)
 {
 	Fvector				pt;
 	calc_point			(pt,radius,VIEWPORT_NEAR/2,angle);

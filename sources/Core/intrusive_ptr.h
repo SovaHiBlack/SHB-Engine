@@ -17,12 +17,12 @@
 struct intrusive_base {
 	u32		m_ref_count;
 
-	IC			intrusive_base	() : m_ref_count(0)
+	inline			intrusive_base	() : m_ref_count(0)
 	{
 	}
 
 	template <typename T>
-	IC	void	_release		(T*object)
+	inline	void	_release		(T*object)
 	{
 		try {
 			xr_delete	(object);
@@ -53,42 +53,41 @@ private:
 	object_type					*m_object;
 
 protected:
-	IC		void				dec				();
+	inline		void				dec				();
 
 public:
-	IC							intrusive_ptr	();
-	IC							intrusive_ptr	(object_type *rhs);
-	IC							intrusive_ptr	(self_type const &rhs);
-	IC							~intrusive_ptr	();
-	IC		self_type			&operator=		(object_type* rhs);
-	IC		self_type			&operator=		(self_type const &rhs);
-	IC		object_type			&operator*		() const;
-	IC		object_type			*operator->		() const;
-	IC		bool				operator!		() const;
-	IC							operator unspecified_bool_type () const {	return(!m_object? 0: &intrusive_ptr::get);}
-	IC		u32					size			();
-	IC		void				swap			(self_type &rhs);
-	IC		bool				equal			(const self_type & rhs)	const;
-	IC		void				set				(object_type* rhs);
-	IC		void				set				(self_type const &rhs);
-	IC		const object_type	*get			()	const;
+	inline							intrusive_ptr	();
+	inline							intrusive_ptr	(object_type *rhs);
+	inline							intrusive_ptr	(self_type const &rhs);
+	inline							~intrusive_ptr	();
+	inline		self_type			&operator=		(object_type* rhs);
+	inline		self_type			&operator=		(self_type const &rhs);
+	inline		object_type			&operator*		() const;
+	inline		object_type			*operator->		() const;
+	inline		bool				operator!		() const;
+	inline							operator unspecified_bool_type () const {	return(!m_object? 0: &intrusive_ptr::get);}
+	inline		u32					size			();
+	inline		void				swap			(self_type &rhs);
+	inline		bool				equal			(const self_type & rhs)	const;
+	inline		void				set				(object_type* rhs);
+	inline		void				set				(self_type const &rhs);
+	inline		const object_type	*get			()	const;
 };
 
 template <typename object_type, typename base_type>
-IC			bool				operator==		(intrusive_ptr<object_type,base_type> const & a, intrusive_ptr<object_type,base_type> const & b);
+inline			bool				operator==		(intrusive_ptr<object_type,base_type> const & a, intrusive_ptr<object_type,base_type> const & b);
 
 template <typename object_type, typename base_type>
-IC			bool				operator!=		(intrusive_ptr<object_type,base_type> const & a, intrusive_ptr<object_type,base_type> const & b);
+inline			bool				operator!=		(intrusive_ptr<object_type,base_type> const & a, intrusive_ptr<object_type,base_type> const & b);
 
 template <typename object_type, typename base_type>
-IC			bool				operator<		(intrusive_ptr<object_type,base_type> const & a, intrusive_ptr<object_type,base_type> const & b);
+inline			bool				operator<		(intrusive_ptr<object_type,base_type> const & a, intrusive_ptr<object_type,base_type> const & b);
 
 template <typename object_type, typename base_type>
-IC			bool				operator>		(intrusive_ptr<object_type,base_type> const & a, intrusive_ptr<object_type,base_type> const & b);
+inline			bool				operator>		(intrusive_ptr<object_type,base_type> const & a, intrusive_ptr<object_type,base_type> const & b);
 
 template <typename object_type, typename base_type>
-IC			void				swap			(intrusive_ptr<object_type,base_type> & lhs, intrusive_ptr<object_type,base_type> & rhs);
-
+inline			void				swap			(intrusive_ptr<object_type,base_type> & lhs, intrusive_ptr<object_type,base_type> & rhs);
 
 #include "intrusive_ptr_inline.h"
 

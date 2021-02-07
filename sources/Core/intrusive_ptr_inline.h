@@ -12,34 +12,34 @@
 #define _intrusive_ptr intrusive_ptr<object_type,base_type>
 
 TEMPLATE_SPECIALIZATION
-IC	_intrusive_ptr::intrusive_ptr	()
+inline	_intrusive_ptr::intrusive_ptr	()
 {
 	m_object		= 0;
 }
 
 TEMPLATE_SPECIALIZATION
-IC	_intrusive_ptr::intrusive_ptr	(object_type* rhs)
-{
-	m_object		= 0;
-	set				(rhs);
-}
-
-TEMPLATE_SPECIALIZATION
-IC	_intrusive_ptr::intrusive_ptr	(self_type const &rhs)
+inline	_intrusive_ptr::intrusive_ptr	(object_type* rhs)
 {
 	m_object		= 0;
 	set				(rhs);
 }
 
 TEMPLATE_SPECIALIZATION
-IC	_intrusive_ptr::~intrusive_ptr	()
+inline	_intrusive_ptr::intrusive_ptr	(self_type const &rhs)
+{
+	m_object		= 0;
+	set				(rhs);
+}
+
+TEMPLATE_SPECIALIZATION
+inline	_intrusive_ptr::~intrusive_ptr	()
 {
 	STATIC_CHECK	(result,Class_MUST_Be_Derived_From_The_Base);
 	dec				();
 }
 
 TEMPLATE_SPECIALIZATION
-IC	void _intrusive_ptr::dec		()
+inline	void _intrusive_ptr::dec		()
 {
 	if (!m_object)
 		return;
@@ -50,41 +50,41 @@ IC	void _intrusive_ptr::dec		()
 }
 
 TEMPLATE_SPECIALIZATION
-IC	typename _intrusive_ptr::self_type &_intrusive_ptr::operator=	(object_type* rhs)
+inline	typename _intrusive_ptr::self_type &_intrusive_ptr::operator=	(object_type* rhs)
 {
 	set				(rhs);
 	return			((self_type&)*this);
 }
 
 TEMPLATE_SPECIALIZATION
-IC	typename _intrusive_ptr::self_type &_intrusive_ptr::operator=	(self_type const &rhs)
+inline	typename _intrusive_ptr::self_type &_intrusive_ptr::operator=	(self_type const &rhs)
 {
 	set				(rhs);
 	return			((self_type&)*this);
 }
 
 TEMPLATE_SPECIALIZATION
-IC	typename _intrusive_ptr::object_type &_intrusive_ptr::operator*	() const
+inline	typename _intrusive_ptr::object_type &_intrusive_ptr::operator*	() const
 {
 	VERIFY			(m_object);
 	return			(*m_object);
 }
 
 TEMPLATE_SPECIALIZATION
-IC	typename _intrusive_ptr::object_type *_intrusive_ptr::operator->() const
+inline	typename _intrusive_ptr::object_type *_intrusive_ptr::operator->() const
 {
 	VERIFY			(m_object);
 	return			(m_object);
 }
 
 TEMPLATE_SPECIALIZATION
-IC	bool _intrusive_ptr::operator!	() const
+inline	bool _intrusive_ptr::operator!	() const
 {
 	return			(!m_object);
 }
 
 TEMPLATE_SPECIALIZATION
-IC	void _intrusive_ptr::swap		(self_type & rhs)
+inline	void _intrusive_ptr::swap		(self_type & rhs)
 {
 	object_type		*tmp = m_object; 
 	m_object		= rhs.m_object; 
@@ -92,13 +92,13 @@ IC	void _intrusive_ptr::swap		(self_type & rhs)
 }
 
 TEMPLATE_SPECIALIZATION
-IC	bool _intrusive_ptr::equal		(const self_type & rhs)	const
+inline	bool _intrusive_ptr::equal		(const self_type & rhs)	const
 {
 	return			(m_object == rhs.m_object);
 }
 
 TEMPLATE_SPECIALIZATION
-IC	void _intrusive_ptr::set		(object_type* rhs)
+inline	void _intrusive_ptr::set		(object_type* rhs)
 {
 	if (m_object == rhs)
 		return;
@@ -110,7 +110,7 @@ IC	void _intrusive_ptr::set		(object_type* rhs)
 }
 
 TEMPLATE_SPECIALIZATION
-IC	void _intrusive_ptr::set		(self_type const &rhs)
+inline	void _intrusive_ptr::set		(self_type const &rhs)
 {
 	if (m_object == rhs.m_object)
 		return;
@@ -122,37 +122,37 @@ IC	void _intrusive_ptr::set		(self_type const &rhs)
 }
 
 TEMPLATE_SPECIALIZATION
-IC	const typename _intrusive_ptr::object_type* _intrusive_ptr::get	()	const
+inline	const typename _intrusive_ptr::object_type* _intrusive_ptr::get	()	const
 {
 	return			(m_object);
 }
 
 TEMPLATE_SPECIALIZATION
-IC bool operator==					(_intrusive_ptr const &a, _intrusive_ptr const &b)		
+inline bool operator==					(_intrusive_ptr const &a, _intrusive_ptr const &b)
 {
 	return			(a.get() == b.get());
 }
 
 TEMPLATE_SPECIALIZATION
-IC bool operator	!=				(_intrusive_ptr const &a, _intrusive_ptr const &b)
+inline bool operator	!=				(_intrusive_ptr const &a, _intrusive_ptr const &b)
 {
 	return			(a.get() != b.get());
 }
 
 TEMPLATE_SPECIALIZATION
-IC bool operator<					(_intrusive_ptr const &a, _intrusive_ptr const &b)
+inline bool operator<					(_intrusive_ptr const &a, _intrusive_ptr const &b)
 {
 	return			(a.get() <  b.get());
 }
 
 TEMPLATE_SPECIALIZATION
-IC bool operator>					(_intrusive_ptr const &a, _intrusive_ptr const &b)
+inline bool operator>					(_intrusive_ptr const &a, _intrusive_ptr const &b)
 {
 	return			(a.get() >  b.get());
 }
 
 TEMPLATE_SPECIALIZATION
-IC void swap						(_intrusive_ptr &lhs, _intrusive_ptr &rhs)
+inline void swap						(_intrusive_ptr &lhs, _intrusive_ptr &rhs)
 {
 	lhs.swap		(rhs);
 }

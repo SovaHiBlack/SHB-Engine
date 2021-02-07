@@ -1,19 +1,19 @@
 #include "stdafx.h"
 #include "ISpatial.h"
 
-extern Fvector	c_spatial_offset[8];
+extern Fvector3	c_spatial_offset[8];
 
 template <bool b_first>
 class	walker
 {
 public:
 	u32				mask;
-	Fvector			center;
-	Fvector			size;
+	Fvector3			center;
+	Fvector3			size;
 	Fbox			box;
 	ISpatial_DB*	space;
 public:
-	walker					(ISpatial_DB*	_space, u32 _mask, const Fvector& _center, const Fvector&	_size)
+	walker					(ISpatial_DB*	_space, u32 _mask, const Fvector3& _center, const Fvector3& _size)
 	{
 		mask	= _mask;
 		center	= _center;
@@ -21,7 +21,7 @@ public:
 		box.setb(center,size);
 		space	= _space;
 	}
-	void		walk		(ISpatial_NODE* N, Fvector& n_C, float n_R)
+	void		walk		(ISpatial_NODE* N, Fvector3& n_C, float n_R)
 	{
 		// box
 		float	n_vR	=		2*n_R;
@@ -36,7 +36,7 @@ public:
 			ISpatial*		S	= *_it;
 			if (0==(S->spatial.type&mask))	continue;
 
-			Fvector&		sC		= S->spatial.sphere.P;
+			Fvector3&		sC		= S->spatial.sphere.P;
 			float			sR		= S->spatial.sphere.R;
 			Fbox			sB;		sB.set	(sC.x-sR, sC.y-sR, sC.z-sR, sC.x+sR, sC.y+sR, sC.z+sR);
 			if (!sB.intersect(box))	continue;
@@ -50,14 +50,15 @@ public:
 		for (u32 octant=0; octant<8; octant++)
 		{
 			if (0==N->children[octant])	continue;
-			Fvector		c_C;			c_C.mad	(n_C,c_spatial_offset[octant],c_R);
+			Fvector3		c_C;
+			c_C.mad	(n_C,c_spatial_offset[octant],c_R);
 			walk						(N->children[octant],c_C,c_R);
 			if (b_first && !space->q_result->empty())	return;
 		}
 	}
 };
 
-void	ISpatial_DB::q_box			(xr_vector<ISpatial*>& R, u32 _o, u32 _mask, const Fvector& _center, const Fvector& _size)
+void	ISpatial_DB::q_box			(xr_vector<ISpatial*>& R, u32 _o, u32 _mask, const Fvector3& _center, const Fvector3& _size)
 {
 	cs.Enter			();
 	q_result			= &R;
@@ -67,8 +68,8 @@ void	ISpatial_DB::q_box			(xr_vector<ISpatial*>& R, u32 _o, u32 _mask, const Fve
 	cs.Leave			();
 }
 
-void	ISpatial_DB::q_sphere		(xr_vector<ISpatial*>& R, u32 _o, u32 _mask, const Fvector& _center, const float _radius)
+void	ISpatial_DB::q_sphere		(xr_vector<ISpatial*>& R, u32 _o, u32 _mask, const Fvector3& _center, const float _radius)
 {
-	Fvector			_size			= {_radius,_radius,_radius};
+	Fvector3			_size			= {_radius,_radius,_radius};
 	q_box							(R,_o,_mask,_center,_size);
 }

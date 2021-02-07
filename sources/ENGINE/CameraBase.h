@@ -24,11 +24,11 @@ public:
 
 	ECameraStyle	style;
 	Fvector2		lim_yaw,lim_pitch,lim_roll;
-	Fvector			rot_speed;
+	Fvector3			rot_speed;
 
-	Fvector			vPosition;
-	Fvector			vDirection;
-	Fvector			vNormal;
+	Fvector3			vPosition;
+	Fvector3			vDirection;
+	Fvector3			vNormal;
 	float			f_fov;
 	float			f_aspect;
 
@@ -41,9 +41,9 @@ public:
 	virtual	void	OnActivate		( CCameraBase* old_cam )					{;}
 	virtual	void	OnDeactivate	( )											{;}
 	virtual void	Move			( int cmd, float val=0, float factor=1.0f)	{;}
-	virtual void	Update			( Fvector& point, Fvector& noise_angle )	{;}
-	virtual void	Get				( Fvector& P, Fvector& D, Fvector& N )		{P.set(vPosition);D.set(vDirection);N.set(vNormal);}
-	virtual void	Set				( const Fvector& P, const Fvector& D, const Fvector& N ){vPosition.set(P);vDirection.set(D);vNormal.set(N);}
+	virtual void	Update			(Fvector3& point, Fvector3& noise_angle )	{;}
+	virtual void	Get				(Fvector3& P, Fvector3& D, Fvector3& N )		{P.set(vPosition);D.set(vDirection);N.set(vNormal);}
+	virtual void	Set				( const Fvector3& P, const Fvector3& D, const Fvector3& N ){vPosition.set(P);vDirection.set(D);vNormal.set(N);}
 	virtual void	Set				( float Y, float P, float R )				{yaw=Y;pitch=P;roll=R;}
 	
 	virtual float	GetWorldYaw		( )	{ return 0; };

@@ -12,7 +12,7 @@ struct		CORE_API	smem_value
 	u8					value		[]	;
 };
 // generic predicate for "less"
-IC bool					smem_sort		(const smem_value* A, const smem_value* B)	{
+inline bool					smem_sort		(const smem_value* A, const smem_value* B)	{
 	if (A->dwCRC < B->dwCRC)			return		true;
 	if (A->dwCRC > B->dwCRC)			return		false;
 	if (A->dwLength < B->dwLength)		return		true;
@@ -21,14 +21,14 @@ IC bool					smem_sort		(const smem_value* A, const smem_value* B)	{
 };
 
 // predicate for insertion - just a quick estimate
-IC bool					smem_search		(const smem_value* A, const smem_value* B)	{
+inline bool					smem_search		(const smem_value* A, const smem_value* B)	{
 	if (A->dwCRC < B->dwCRC)			return		true;
 	if (A->dwCRC > B->dwCRC)			return		false;
 	return	A->dwLength < B->dwLength;
 };
 
 // predicate for exact (byte level) comparition
-IC bool					smem_equal		(const smem_value* A, u32 dwCRC, u32 dwLength, u8* ptr)
+inline bool					smem_equal		(const smem_value* A, u32 dwCRC, u32 dwLength, u8* ptr)
 {
 	if (A->dwCRC !=		dwCRC)			return		false;
 	if (A->dwLength !=	dwLength)		return		false;
@@ -98,16 +98,16 @@ const T&				operator[]	(size_t id)	const				{	return ((T*)(p_->value))[id];					
 // res_ptr < res_ptr
 // res_ptr > res_ptr
 template<class T>
-IC bool operator	==	(ref_smem<T> const & a, ref_smem<T> const & b)	{ return a._get() == b._get();	}
+inline bool operator	==	(ref_smem<T> const & a, ref_smem<T> const & b)	{ return a._get() == b._get();	}
 template<class T>
-IC bool operator	!=	(ref_smem<T> const & a, ref_smem<T> const & b)	{ return a._get() != b._get();	}
+inline bool operator	!=	(ref_smem<T> const & a, ref_smem<T> const & b)	{ return a._get() != b._get();	}
 template<class T>
-IC bool operator	<	(ref_smem<T> const & a, ref_smem<T> const & b)	{ return a._get() <  b._get();	}
+inline bool operator	<	(ref_smem<T> const & a, ref_smem<T> const & b)	{ return a._get() <  b._get();	}
 template<class T>
-IC bool operator	>	(ref_smem<T> const & a, ref_smem<T> const & b)	{ return a._get() >  b._get();	}
+inline bool operator	>	(ref_smem<T> const & a, ref_smem<T> const & b)	{ return a._get() >  b._get();	}
 
 // externally visible standart functionality
 template<class T>
-IC void swap			(ref_smem<T> & lhs, ref_smem<T> & rhs)			{ lhs.swap(rhs);				}
+inline void swap			(ref_smem<T> & lhs, ref_smem<T> & rhs)			{ lhs.swap(rhs);				}
 
 #pragma pack(pop)

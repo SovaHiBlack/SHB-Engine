@@ -397,7 +397,7 @@ void CLocatorAPI::ProcessOne	(const char* path,/* void* _F */ const _finddata_t&
 	}
 }
 
-IC bool pred_str_ff(const _finddata_t& x, const _finddata_t& y)
+inline bool pred_str_ff(const _finddata_t& x, const _finddata_t& y)
 {	
 	return xr_strcmp(x.name,y.name)<0;	
 }

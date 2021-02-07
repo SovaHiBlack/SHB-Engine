@@ -162,7 +162,7 @@ public:
 	IC void							occq_end					(u32&	ID		)	{ HWOCC.occq_end	(ID);			}
 	IC u32							occq_get					(u32&	ID		)	{ return HWOCC.occq_get		(ID);	}
 
-	ICF void						apply_object				(IRenderable*	O)
+	__forceinline void						apply_object				(IRenderable*	O)
 	{
 		if (0==O)					return;
 		if (0==O->renderable_ROS())	return;

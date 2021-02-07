@@ -27,7 +27,7 @@ IC void CCustomMonster::vfNormalizeSafe(Fvector& Vector)
 	}
 }
 
-ICF	bool left_angle(float y1, float y2)
+__forceinline	bool left_angle(float y1, float y2)
 {
 	return			(_sin(y1)*_cos(y2) - _sin(y2)*_cos(y1) <= 0.f);
 }
