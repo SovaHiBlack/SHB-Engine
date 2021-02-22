@@ -17,18 +17,16 @@
 #include "character_info.h"
 //#include "SpecificCharacter.h"
 
-#ifdef XRGAME_EXPORTS
-#	include "ef_storage.h"
-#	include "game_graph.h"
-#	include "alife_simulator.h"
-#	include "alife_registry_container.h"
-#	include "ef_primary.h"
-#	include "StringTable.h"
-#	include "alife_online_offline_group_brain.h"
-#	include "alife_simulator.h"
-#	include "alife_object_registry.h"
-#	include "date_time.h"
-#endif
+#include "ef_storage.h"
+#include "game_graph.h"
+#include "alife_simulator.h"
+#include "alife_registry_container.h"
+#include "ef_primary.h"
+#include "StringTable.h"
+#include "alife_online_offline_group_brain.h"
+#include "alife_simulator.h"
+#include "alife_object_registry.h"
+#include "date_time.h"
 
 void setup_location_types_section(GameGraph::TERRAIN_VECTOR &m_vertex_types, CIniFile*ini, const char* section)
 {
@@ -122,11 +120,9 @@ CSE_ALifeTraderAbstract::CSE_ALifeTraderAbstract(const char* caSection)
 	m_sCharacterProfile			= READ_IF_EXISTS(pSettings,r_string,caSection,"character_profile","default");
 	m_SpecificCharacter			= NULL;
 
-#ifdef XRGAME_EXPORTS
 	m_community_index			= NO_COMMUNITY_INDEX;
 	m_rank						= NO_RANK;
 	m_reputation				= NO_REPUTATION;
-#endif
 
 	m_trader_flags.zero			();
 	m_trader_flags.set			(eTraderFlagInfiniteAmmo,FALSE);
@@ -149,26 +145,15 @@ void CSE_ALifeTraderAbstract::STATE_Write	(NET_Packet &tNetPacket)
 {
 	tNetPacket.w_u32			(m_dwMoney);
 
-#ifdef XRGAME_EXPORTS
 	tNetPacket.w_stringZ		(m_SpecificCharacter);
-#else
-	shared_str s;
-	tNetPacket.w_stringZ		(s);
-#endif
 
 	tNetPacket.w_u32			(m_trader_flags.get());
 //	tNetPacket.w_s32			(m_iCharacterProfile);
 	tNetPacket.w_stringZ		(m_sCharacterProfile);
 
-#ifdef XRGAME_EXPORTS
 	tNetPacket.w_s32			(m_community_index);
 	tNetPacket.w_s32			(m_rank);
 	tNetPacket.w_s32			(m_reputation);
-#else
-	tNetPacket.w_s32			(NO_COMMUNITY_INDEX);
-	tNetPacket.w_s32			(NO_RANK);
-	tNetPacket.w_s32			(NO_REPUTATION);
-#endif
 
 	save_data					(m_character_name, tNetPacket);
 }
@@ -226,10 +211,7 @@ void CSE_ALifeTraderAbstract::STATE_Read	(NET_Packet &tNetPacket, u16 size)
 		}
 	}
 
-#ifdef XRGAME_EXPORTS
 	specific_character			();
-#endif
-
 }
 
 void CSE_ALifeTraderAbstract::OnChangeProfile(PropValue* sender)
@@ -241,10 +223,8 @@ void CSE_ALifeTraderAbstract::OnChangeProfile(PropValue* sender)
 	base()->set_editor_flag		(ISE_Abstract::flVisualChange);
 }
 
-#ifdef XRGAME_EXPORTS
 #include "game_base_space.h"
 #include "Level.h"
-#endif
 
 shared_str CSE_ALifeTraderAbstract::specific_character()
 {
@@ -296,29 +276,22 @@ shared_str CSE_ALifeTraderAbstract::specific_character()
 				{
 					if(char_info.data()->m_Reputation == NO_REPUTATION || _abs(spec_char.Reputation() - char_info.data()->m_Reputation)<REPUTATION_DELTA)
 					{
-#ifdef XRGAME_EXPORTS
 						int* count = NULL;
 						if(ai().get_alife())
 							count = ai().alife().registry(specific_characters).object(id, true);
 						//если индекс еще не был использован
 						if(NULL == count)
-#endif
 							m_CheckedCharacters.push_back(id);
 					}
 				}
 			}
 		}
-		R_ASSERT3(!m_DefaultCharacters.empty(), 
-			"no default specific character set for class", *char_info.data()->m_Class);
+		R_ASSERT3(!m_DefaultCharacters.empty(), "no default specific character set for class", *char_info.data()->m_Class);
 
-#ifdef XRGAME_EXPORTS
 		if(m_CheckedCharacters.empty())
 			char_info.m_SpecificCharacterId = m_DefaultCharacters[Random.randI(m_DefaultCharacters.size())];
 		else
 			char_info.m_SpecificCharacterId = m_CheckedCharacters[Random.randI(m_CheckedCharacters.size())];
-#else
-			char_info.m_SpecificCharacterId = m_DefaultCharacters[Random.randI(m_DefaultCharacters.size())];
-#endif
 
 		set_specific_character(char_info.m_SpecificCharacterId);
 		return m_SpecificCharacter;
@@ -329,25 +302,21 @@ void CSE_ALifeTraderAbstract::set_specific_character	(shared_str new_spec_char)
 {
 	R_ASSERT(new_spec_char.size());
 
-#ifdef XRGAME_EXPORTS
 	//убрать предыдущий номер из реестра
 	if ( m_SpecificCharacter.size() ) 
 	{
 		if(ai().get_alife())
 			ai().alife().registry(specific_characters).remove(m_SpecificCharacter, true);
 	}
-#endif
+
 	m_SpecificCharacter = new_spec_char;
 
-
-#ifdef XRGAME_EXPORTS
 	if(ai().get_alife())
 	{
 		//запомнить, то что мы использовали индекс
 		int a = 1;
 		ai().alife().registry(specific_characters).add(m_SpecificCharacter, a, true);
 	}
-#endif
 
 	CSpecificCharacter selected_char;
 	selected_char.Load(m_SpecificCharacter);
@@ -358,7 +327,6 @@ void CSE_ALifeTraderAbstract::set_specific_character	(shared_str new_spec_char)
 			visual->set_visual(selected_char.Visual());
 	}
 
-#ifdef XRGAME_EXPORTS
 	if(NO_COMMUNITY_INDEX == m_community_index)
 	{
 		m_community_index = selected_char.Community().index();
@@ -412,11 +380,6 @@ void CSE_ALifeTraderAbstract::set_specific_character	(shared_str new_spec_char)
 		m_dwMoney = min_m;
 		if(min_m!=max_m)	m_dwMoney += ::Random.randI(max_m-min_m);
 	}
-#else
-	//в редакторе специфический профиль оставляем не заполненым
-	m_SpecificCharacter = NULL;
-#endif
-
 }
 
 void CSE_ALifeTraderAbstract::set_character_profile(shared_str new_profile)
@@ -429,7 +392,6 @@ shared_str CSE_ALifeTraderAbstract::character_profile()
 	return	m_sCharacterProfile;
 }
 
-#ifdef XRGAME_EXPORTS
 //для работы с relation system
 u16								CSE_ALifeTraderAbstract::object_id		() const
 {
@@ -464,14 +426,11 @@ CHARACTER_REPUTATION_VALUE	CSE_ALifeTraderAbstract::Reputation ()
 	return m_reputation;
 }
 
-#endif
-
 void CSE_ALifeTraderAbstract::UPDATE_Write	(NET_Packet &tNetPacket)
 { };
 
 void CSE_ALifeTraderAbstract::UPDATE_Read	(NET_Packet &tNetPacket)
 { };
-
 
 ////////////////////////////////////////////////////////////////////////////
 // CSE_ALifeTrader
@@ -916,14 +875,12 @@ u32	 CSE_ALifeCreatureAbstract::ef_detector_type() const
 	return						(m_ef_detector_type);
 }
 
-#ifdef XRGAME_EXPORTS
 void CSE_ALifeCreatureAbstract::on_death		(CSE_Abstract *killer)
 {
 	VERIFY						(!m_game_death_time);
 	m_game_death_time			= Level().GetGameTime();
 	fHealth						= -1.f;
 }
-#endif // XRGAME_EXPORTS
 
 void CSE_ALifeCreatureAbstract::STATE_Write	(NET_Packet &tNetPacket)
 {
@@ -1098,10 +1055,7 @@ CSE_ALifeMonsterAbstract::CSE_ALifeMonsterAbstract(const char* caSection) : CSE_
 
 	m_rank						= (pSettings->line_exist(caSection,"rank")) ? pSettings->r_s32(caSection,"rank") : 0;
 
-#ifdef XRGAME_EXPORTS
 	m_stay_after_death_time_interval	= generate_time(1,1,1,pSettings->r_u32("monsters_common","stay_after_death_time_interval"),0,0);
-#endif // XRGAME_EXPORTS
-
 }
 
 CSE_ALifeMonsterAbstract::~CSE_ALifeMonsterAbstract()
@@ -1388,17 +1342,15 @@ void CSE_ALifeCreatureActor::UPDATE_Write	(NET_Packet	&tNetPacket)
 
 void CSE_ALifeCreatureActor::FillProps		(const char* pref, PropItemVec& items)
 {
-  	inherited1::FillProps		(pref,items);
-  	inherited2::FillProps		(pref,items);
+ 	inherited1::FillProps		(pref,items);
+ 	inherited2::FillProps		(pref,items);
 }
 
-#ifdef XRGAME_EXPORTS
 void CSE_ALifeCreatureActor::spawn_supplies	()
 {
 	inherited1::spawn_supplies	();
 	inherited2::spawn_supplies	();
 }
-#endif
 
 ////////////////////////////////////////////////////////////////////////////
 // CSE_ALifeCreatureCrow
@@ -1826,9 +1778,7 @@ CSE_Abstract *CSE_ALifeOnlineOfflineGroup::init				()
 	inherited1::init			();
 	inherited2::init			();
 
-#ifdef XRGAME_EXPORTS
 	m_brain						= xr_new<CALifeOnlineOfflineGroupBrain>(this);
-#endif
 
 	VERIFY						(m_members.empty());
 	m_flags.set					(flUsedAI_Locations,FALSE);
@@ -1838,9 +1788,7 @@ CSE_Abstract *CSE_ALifeOnlineOfflineGroup::init				()
 
 CSE_ALifeOnlineOfflineGroup::~CSE_ALifeOnlineOfflineGroup	()
 {
-#ifdef XRGAME_EXPORTS
 	xr_delete					(m_brain);
-#endif
 }
 
 void CSE_ALifeOnlineOfflineGroup::STATE_Write				(NET_Packet &tNetPacket)

@@ -1,7 +1,5 @@
 #pragma once
 
-#ifdef  XRGAME_EXPORTS
-
 #ifdef	dSqrt
 #undef	dSqrt
 #define dSqrt(x) ((float)_sqrt(x))		/* square root */
@@ -26,5 +24,3 @@
 #undef  dFabs
 #define dFabs(x) ((float)_abs(x))		/* absolute value */
 #endif
-
-#endif//XRGAME_EXPORTS

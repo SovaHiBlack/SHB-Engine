@@ -20,13 +20,11 @@ protected:
 
 public:
 	IC											CObjectItemClientServer		(const CLASS_ID &clsid, const char* script_clsid);
-#ifndef NO_XR_GAME
+
 	virtual ObjectFactory::CLIENT_BASE_CLASS	*client_object				() const;
-#endif
 	virtual ObjectFactory::SERVER_BASE_CLASS	*server_object				(const char* section) const;
 };
 
-#ifndef NO_XR_GAME
 	template <typename _client_type_single, typename _client_type_mp, typename _server_type_single, typename _server_type_mp>
 	class CObjectItemClientServerSingleMp : public CObjectItemAbstract {
 	typedef CObjectItemAbstract	inherited;
@@ -35,6 +33,5 @@ public:
 		virtual ObjectFactory::CLIENT_BASE_CLASS	*client_object					() const;
 		virtual ObjectFactory::SERVER_BASE_CLASS	*server_object					(const char* section) const;
 	};
-#endif // NO_XR_GAME
 
 #include "ObjectItemClientServer_inline.h"

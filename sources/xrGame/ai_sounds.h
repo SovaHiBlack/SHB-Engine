@@ -1,15 +1,10 @@
-////////////////////////////////////////////////////////////////////////////
 //	Module 		: ai_sounds.h
-//	Created 	: 15.08.2002
-//  Modified 	: 15.08.2002
-//	Author		: Dmitriy Iassenev
 //	Description : Sounds for AI personalities
-////////////////////////////////////////////////////////////////////////////
 
-#ifndef ai_soundsH
-#define ai_soundsH
+#pragma once
 
-enum ESoundTypes {
+enum ESoundTypes
+{
 	SOUND_TYPE_NO_SOUND					= 0x00000000ui32,
 
 	SOUND_TYPE_WEAPON					= 0x80000000ui32,
@@ -74,12 +69,10 @@ enum ESoundTypes {
 	SOUND_TYPE_WEAPON_MACHINEGUN		= SOUND_TYPE_WEAPON,
 	SOUND_TYPE_WEAPON_SNIPERRIFLE		= SOUND_TYPE_WEAPON,
 	SOUND_TYPE_WEAPON_GRENADELAUNCHER	= SOUND_TYPE_WEAPON,
-	SOUND_TYPE_WEAPON_ROCKETLAUNCHER	= SOUND_TYPE_WEAPON,
+	SOUND_TYPE_WEAPON_ROCKETLAUNCHER	= SOUND_TYPE_WEAPON
 };
 
-#define CROUCH_SOUND_FACTOR					.3f
-#define ACCELERATED_SOUND_FACTOR			.5f
+//#define CROUCH_SOUND_FACTOR				.3f
+//#define ACCELERATED_SOUND_FACTOR			.5f
 
 extern xr_token anomaly_type_token[];
-
-#endif

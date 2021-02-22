@@ -9,12 +9,7 @@
 #pragma once
 
 #include "associative_vector.h"
-
-#ifdef XRGAME_EXPORTS
-#	include "..\ENGINE\xrLevel.h"
-#else
-#	include "xrLevel.h"
-#endif
+#include "..\ENGINE\xrLevel.h"
 
 namespace GameGraph {
 	typedef u16	_GRAPH_ID;

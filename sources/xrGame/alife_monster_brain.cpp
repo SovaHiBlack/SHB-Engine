@@ -12,7 +12,6 @@
 #include "object_broker.h"
 #include "xrServer_Objects_ALife_Monsters.h"
 
-#ifdef XRGAME_EXPORTS
 #	include "alife_monster_movement_manager.h"
 #	include "alife_monster_detail_path_manager.h"
 #	include "alife_monster_patrol_path_manager.h"
@@ -25,16 +24,16 @@
 #	include "alife_smart_terrain_registry.h"
 #	include "alife_time_manager.h"
 #	include "date_time.h"
-#	ifdef DEBUG
-#		include "Level.h"
-#		include "MapLocation.h"
-#		include "MapManager.h"
-#	endif
+
+#ifdef DEBUG
+#	include "Level.h"
+#	include "MapLocation.h"
+#	include "MapManager.h"
 #endif
 
-#define MAX_ITEM_FOOD_COUNT			3
-#define MAX_ITEM_MEDIKIT_COUNT		3
-#define MAX_AMMO_ATTACH_COUNT		10
+//#define MAX_ITEM_FOOD_COUNT			3
+//#define MAX_ITEM_MEDIKIT_COUNT		3
+//#define MAX_AMMO_ATTACH_COUNT		10
 
 CALifeMonsterBrain::CALifeMonsterBrain		(object_type *object)
 {
@@ -43,24 +42,18 @@ CALifeMonsterBrain::CALifeMonsterBrain		(object_type *object)
 	m_last_search_time				= 0;
 	m_smart_terrain					= 0;
 
-#ifdef XRGAME_EXPORTS
 	m_movement_manager				= xr_new<CALifeMonsterMovementManager>(object);
-#endif
 	
-#ifdef XRGAME_EXPORTS
 	u32								hours,minutes,seconds;
 	sscanf							(pSettings->r_string(this->object().name(),"smart_terrain_choose_interval"),"%d:%d:%d",&hours,&minutes,&seconds);
 	m_time_interval					= (u32)generate_time(1,1,1,hours,minutes,seconds);
-#endif
 
 	m_can_choose_alife_tasks		= true;
 }
 
 CALifeMonsterBrain::~CALifeMonsterBrain			()
 {
-#ifdef XRGAME_EXPORTS
 	xr_delete						(m_movement_manager);
-#endif
 }
 
 void CALifeMonsterBrain::on_state_write		(NET_Packet &packet)
@@ -69,7 +62,6 @@ void CALifeMonsterBrain::on_state_write		(NET_Packet &packet)
 void CALifeMonsterBrain::on_state_read		(NET_Packet &packet)
 { }
 
-#ifdef XRGAME_EXPORTS
 bool CALifeMonsterBrain::perform_attack		()
 {
 	return							(false);
@@ -181,4 +173,3 @@ void CALifeMonsterBrain::on_switch_offline	()
 {
 	movement().on_switch_offline	();
 }
-#endif // XRGAME_EXPORTS

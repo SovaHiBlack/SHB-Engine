@@ -1,8 +1,6 @@
 #include "stdafx.h"
 
 #include "SpecificCharacter.h"
-
-#ifdef  XRGAME_EXPORTS
 #include "PhraseDialog.h"
 #include "StringTable.h"
 
@@ -29,7 +27,6 @@ SSpecificCharacterData::SSpecificCharacterData()
 
 SSpecificCharacterData::~SSpecificCharacterData()
 { }
-#endif
 
 CSpecificCharacter::CSpecificCharacter()
 {
@@ -98,7 +95,6 @@ void CSpecificCharacter::load_shared(const char*)
 
 	R_ASSERT3(!(data()->m_bNoRandom && data()->m_bDefaultForCommunity), "cannot set 'no_random' and 'team_default' flags simultaneously, profile id", *shared_str(item_data.id));
 	
-#ifdef XRGAME_EXPORTS
 	const char* start_dialog = pXML->Read("start_dialog", 0, NULL);
 	if (start_dialog)
 	{
@@ -128,11 +124,9 @@ void CSpecificCharacter::load_shared(const char*)
 	data()->m_crouch_type			= pXML->ReadInt("crouch_type",0,0);
 
 	data()->m_critical_wound_weights= pXML->Read("critical_wound_weights", 0, "1");
-#endif
 
 	data()->m_sVisual		= pXML->Read("visual", 0, "");
 
-#ifdef  XRGAME_EXPORTS
 	data()->m_sSupplySpawn	= pXML->Read("supplies", 0, "");
 	
 	if(!data()->m_sSupplySpawn.empty())
@@ -151,7 +145,6 @@ void CSpecificCharacter::load_shared(const char*)
 	data()->m_sound_voice_prefix	= pXML->Read("snd_config", 0, "");
 
 	data()->m_terrain_sect			= pXML->Read("terrain_sect", 0, "");
-#endif
 
 	data()->m_Classes.clear			();
 	int classes_num					= pXML->GetNodesNum (pXML->GetLocalRoot(), "class");
@@ -167,7 +160,6 @@ void CSpecificCharacter::load_shared(const char*)
 		}
 	}
 
-#ifdef  XRGAME_EXPORTS
 	const char* team = pXML->Read("community", 0, NULL);
 	R_ASSERT3(team != NULL, "'community' field not fulfiled for specific character", *m_OwnId);
 	
@@ -196,14 +188,12 @@ void CSpecificCharacter::load_shared(const char*)
 		MoneyDef().max_money	= 0;
 		MoneyDef().inf_money	= false;
 	}
-#endif
 
 #if 0
 	Msg			("CSpecificCharacter::load_shared() takes %f milliseconds",timer.GetElapsed_sec()*1000.f);
 #endif
 }
 
-#ifdef  XRGAME_EXPORTS
 const char* CSpecificCharacter::Name() const
 {
 	return	data()->m_sGameName.c_str();
@@ -253,7 +243,6 @@ const char* CSpecificCharacter::critical_wound_weights () const
 {
 	return data()->m_critical_wound_weights.c_str();
 }
-#endif
 
 shared_str CSpecificCharacter::terrain_sect		() const
 {

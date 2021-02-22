@@ -9,18 +9,16 @@
 #include "stdafx.h"
 
 #ifndef PURE_DYNAMIC_CAST
-#	ifdef XRGAME_EXPORTS
-#		include "../ENGINE\fbasicvisual.h"
-#		include "alife_space.h"
-#		include "hit.h"
-#		include "Actor.h"
-#		include "custommonster.h"
-#		include "ai/stalker/Stalker.h"
-#		include "ui/UIWindow.h"//
-#		include "CustomZone.h"
-#		include "Weapon.h"
-#		include "cameraeffector.h"
-#	endif
+#	include "../ENGINE\fbasicvisual.h"
+#	include "alife_space.h"
+#	include "hit.h"
+#	include "Actor.h"
+#	include "custommonster.h"
+#	include "ai/stalker/Stalker.h"
+#	include "ui/UIWindow.h"//
+#	include "CustomZone.h"
+#	include "Weapon.h"
+#	include "cameraeffector.h"
 #	include "xrServer_Objects_ALife_Monsters.h"
 #endif
 

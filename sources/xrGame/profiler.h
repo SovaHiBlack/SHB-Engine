@@ -8,11 +8,9 @@
 
 #pragma once
 
-#ifdef XRGAME_EXPORTS
-#	ifdef DEBUG
-#		define	USE_PROFILER
-#	endif // DEBUG
-#endif // XRGAME_EXPORTS
+#ifdef DEBUG
+#	define	USE_PROFILER
+#endif // DEBUG
 
 #ifdef USE_PROFILER
 #	include "ai_debug.h"

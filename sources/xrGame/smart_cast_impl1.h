@@ -508,7 +508,5 @@ IC	T1	smart_cast(T2& p)
 	return						(*SmartDynamicCast::CHelper2<T2>::smart_cast<object_type_traits::remove_reference<T1>::type>(&p));
 }
 
-#ifdef XRGAME_EXPORTS
-	template <> extern
-	CGameObject* SmartDynamicCast::smart_cast<CGameObject,CObject>(CObject *p);
-#endif
+template <> extern
+CGameObject* SmartDynamicCast::smart_cast<CGameObject,CObject>(CObject *p);

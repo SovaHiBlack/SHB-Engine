@@ -1,14 +1,8 @@
 #pragma once
 
-#if XRGAME_EXPORTS
-#	define	_memcpy CopyMemory
-#	define	_memset Memory.mem_fill
-#	define	_strlen xr_strlen
-#else
-#	define	_memcpy memcpy
-#	define	_memset memset
-#	define	_strlen strlen
-#endif
+#define	_memcpy CopyMemory
+#define	_memset Memory.mem_fill
+#define	_strlen xr_strlen
 
 class CMailSlotMsg {
 	char	m_buff [2048];

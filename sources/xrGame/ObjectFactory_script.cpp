@@ -14,29 +14,19 @@
 
 void CObjectFactory::register_script_class	(const char* client_class, const char* server_class, const char* clsid, const char* script_clsid)
 {
-#ifndef NO_XR_GAME
 	luabind::object				client;
 	if (!ai().script_engine().function_object(client_class,client,LUA_TUSERDATA)) {
 		ai().script_engine().script_log	(eLuaMessageTypeError,"Cannot register class %s",client_class);
 		return;
 	}
-#endif
+
 	luabind::object				server;
 	if (!ai().script_engine().function_object(server_class,server,LUA_TUSERDATA)) {
 		ai().script_engine().script_log	(eLuaMessageTypeError,"Cannot register class %s",server_class);
 		return;
 	}
 	
-	add							(
-		xr_new<CObjectItemScript>(
-#ifndef NO_XR_GAME
-			client,
-#endif
-			server,
-			TEXT2CLSID(clsid),
-			script_clsid
-		)
-	);
+	add(xr_new<CObjectItemScript>(client, server, TEXT2CLSID(clsid), script_clsid));
 }
 
 void CObjectFactory::register_script_class			(const char* unknown_class, const char* clsid, const char* script_clsid)
@@ -46,16 +36,8 @@ void CObjectFactory::register_script_class			(const char* unknown_class, const c
 		ai().script_engine().script_log	(eLuaMessageTypeError,"Cannot register class %s",unknown_class);
 		return;
 	}
-	add							(
-		xr_new<CObjectItemScript>(
-#ifndef NO_XR_GAME
-			creator,
-#endif
-			creator,
-			TEXT2CLSID(clsid),
-			script_clsid
-		)
-	);
+
+	add(xr_new<CObjectItemScript>(creator, creator, TEXT2CLSID(clsid), script_clsid));
 }
 
 void CObjectFactory::register_script_classes()

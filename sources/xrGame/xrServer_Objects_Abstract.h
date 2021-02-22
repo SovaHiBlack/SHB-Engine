@@ -10,21 +10,11 @@
 
 #pragma pack(push,4)
 #include "Server_space.h"
-
-#ifdef XRGAME_EXPORTS
-#	include "../../xrCDB/xrCDB.h"
-#else // XRGAME_EXPORTS
-#	include "../xrCDB/xrCDB.h"
-#endif // XRGAME_EXPORTS
-
+#include "../../xrCDB/xrCDB.h"
 #include "ShapeData.h"
 
 class NET_Packet;
 class CDUInterface;
-
-#ifndef XRGAME_EXPORTS
-   #include "Sound.h"
-#endif
 
 #include "xrEProps.h"
 #include "..\ENGINE\DrawUtils.h"

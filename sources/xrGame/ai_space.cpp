@@ -1,10 +1,5 @@
-////////////////////////////////////////////////////////////////////////////
 //	Module 		: ai_space.h
-//	Created 	: 12.11.2003
-//  Modified 	: 12.11.2003
-//	Author		: Dmitriy Iassenev
 //	Description : AI space class
-////////////////////////////////////////////////////////////////////////////
 
 #include "stdafx.h"
 
@@ -20,19 +15,19 @@
 #include "patrol_path_storage.h"
 #include "alife_simulator.h"
 
-CAI_Space *g_ai_space = 0;
+CAI_Space* g_ai_space = nullptr;
 
 CAI_Space::CAI_Space				()
 {
-	m_ef_storage			= 0;
-	m_game_graph			= 0;
-	m_graph_engine			= 0;
-	m_cover_manager			= 0;
-	m_level_graph			= 0;
-	m_cross_table			= 0;
-	m_alife_simulator		= 0;
-	m_patrol_path_storage	= 0;
-	m_script_engine			= 0;
+	m_ef_storage			= nullptr;
+	m_game_graph			= nullptr;
+	m_graph_engine			= nullptr;
+	m_cover_manager			= nullptr;
+	m_level_graph			= nullptr;
+	m_cross_table			= nullptr;
+	m_alife_simulator		= nullptr;
+	m_patrol_path_storage	= nullptr;
+	m_script_engine			= nullptr;
 }
 
 void CAI_Space::init				()
@@ -69,11 +64,12 @@ CAI_Space::~CAI_Space				()
 
 	xr_delete				(m_game_graph);
 	
-	try {
+	try
+	{
 		xr_delete			(m_script_engine);
 	}
-	catch(...) {
-	}
+	catch(...)
+	{ }
 
 	xr_delete				(m_cover_manager);
 	xr_delete				(m_graph_engine);

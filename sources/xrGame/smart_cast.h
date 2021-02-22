@@ -32,8 +32,6 @@
 #		define DO_NOT_DECLARE_TYPE_LIST
 #	endif
 
-#	ifdef XRGAME_EXPORTS
-
 		DECLARE_SPECIALIZATION			(CKinematics,		IRender_Visual,		dcast_PKinematics);
 #		undef cast_type_list
 #		define cast_type_list save_cast_list	(CKinematics,		IRender_Visual)
@@ -205,7 +203,6 @@
 #		undef cast_type_list
 #		define cast_type_list save_cast_list	(CBaseMonster,		CGameObject)
 
-#	endif
 	
 	DECLARE_SPECIALIZATION	(CSE_Abstract,		CSE_ALifeInventoryItem,	cast_abstract);
 #	undef cast_type_list

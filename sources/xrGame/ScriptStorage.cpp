@@ -41,10 +41,6 @@ const char* file_header = 0;
 #	define NO_XRGAME_SCRIPT_ENGINE
 #endif
 
-#ifndef XRGAME_EXPORTS
-#	define NO_XRGAME_SCRIPT_ENGINE
-#endif
-
 #ifndef NO_XRGAME_SCRIPT_ENGINE
 #	include "ai_debug.h"
 #endif

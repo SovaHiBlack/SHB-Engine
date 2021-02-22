@@ -46,9 +46,7 @@ DEFINE_VECTOR	(float,						FLOAT_VECTOR,					FLOAT_IT);
 DEFINE_VECTOR	(char*,						LPSTR_VECTOR,					LPSTR_IT);
 DEFINE_VECTOR	(Fvector,					FVECTOR_VECTOR,					FVECTOR_IT);
 
-#ifdef XRGAME_EXPORTS
-#	define DECLARE_ENTITY_DESTROY
-#endif
+#define DECLARE_ENTITY_DESTROY
 
 #ifdef DECLARE_ENTITY_DESTROY
 template <class T> void	F_entity_Destroy	(T *&P)

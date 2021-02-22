@@ -61,12 +61,10 @@ void CSE_ALifeTraderAbstract::script_register(lua_State *L)
 		class_<CSE_ALifeTraderAbstract>
 			("cse_alife_trader_abstract")
 //			.def(		constructor<const char*>())
-#ifdef XRGAME_EXPORTS
 			.def("community",		&CommunityName)
 			.def("profile_name",	&profile_name_script)
 			.def("rank",			&Rank)
 			.def("reputation",		&Reputation)
-#endif // XRGAME_EXPORTS
 	];
 }
 
@@ -102,9 +100,7 @@ void CSE_ALifeAnomalousZone::script_register(lua_State *L)
 			"cse_anomalous_zone",
 			CSE_ALifeCustomZone
 		)
-#ifdef XRGAME_EXPORTS
 		.def("spawn_artefacts",	&CSE_ALifeAnomalousZone::spawn_artefacts)
-#endif
 	];
 }
 
@@ -259,11 +255,8 @@ void CSE_ALifeHumanAbstract::script_register(lua_State* L)
 			CSE_ALifeMonsterAbstract
 		)
 			.def("brain", &human_brain)
-#ifdef XRGAME_EXPORTS
 			.def("rank", &CSE_ALifeTraderAbstract::Rank)
 			.def("set_rank", &CSE_ALifeTraderAbstract::SetRank)
-
-#endif
 	];
 }
 

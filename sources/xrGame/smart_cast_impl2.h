@@ -14,7 +14,7 @@
 	template <>\
 	B* SmartDynamicCast::smart_cast<B,A>(A *p){return p->C();};\
 
-#ifdef XRGAME_EXPORTS
+
 	template <> 
 	CGameObject* SmartDynamicCast::smart_cast<CGameObject,CObject>(CObject *p)
 	{
@@ -26,4 +26,3 @@
 	{
 		return (p->dcast_FeelSound());
 	}
-#endif

@@ -43,17 +43,14 @@ SERVER_ENTITY_DECLARE_BEGIN0(CSE_ALifeTraderAbstract)
 	CHARACTER_REPUTATION_VALUE		m_reputation;
 	CHARACTER_RANK_VALUE			m_rank;
 	xr_string						m_character_name;
-		
-#ifdef XRGAME_EXPORTS
+
 	//для работы с relation system
 	u16								object_id				() const;
 	CHARACTER_COMMUNITY_INDEX		Community				() const;
-	const char* CommunityName			() const;
+	const char*						CommunityName			() const;
 	CHARACTER_RANK_VALUE			Rank					();
 	CHARACTER_REPUTATION_VALUE		Reputation				();
 	void							SetRank					(CHARACTER_RANK_VALUE val);
-
-#endif
 
 	shared_str						m_sCharacterProfile;
 	shared_str						m_SpecificCharacter;
@@ -74,7 +71,6 @@ public:
 	// end of the virtual inheritance dependant code
 			void __stdcall			OnChangeProfile				(PropValue* sender);
 
-#ifdef XRGAME_EXPORTS
 	virtual	void					add_online					(const bool &update_registries);
 	virtual	void					add_offline					(const xr_vector<ALife::_OBJECT_ID> &saved_children, const bool &update_registries);
 #if 0//def DEBUG
@@ -82,7 +78,7 @@ public:
 #endif
 			void					vfInitInventory				();
 	virtual void					spawn_supplies				();
-#endif
+
 SERVER_ENTITY_DECLARE_END
 add_to_type_list(CSE_ALifeTraderAbstract)
 #define script_type_list save_type_list(CSE_ALifeTraderAbstract)
@@ -97,12 +93,11 @@ SERVER_ENTITY_DECLARE_BEGIN2(CSE_ALifeTrader,CSE_ALifeDynamicObjectVisual,CSE_AL
 	virtual bool					natural_weapon			() const {return false;}
 	virtual bool					natural_detector		() const {return false;}
 
-#ifdef XRGAME_EXPORTS
 			u32						dwfGetItemCost			(CSE_ALifeInventoryItem *tpALifeInventoryItem);
 	virtual void					spawn_supplies			();
 	virtual	void					add_online				(const bool &update_registries);
 	virtual	void					add_offline				(const xr_vector<ALife::_OBJECT_ID> &saved_children, const bool &update_registries);
-#endif
+
 #ifdef DEBUG
 	virtual bool					match_configuration		() const;
 #endif
@@ -143,14 +138,14 @@ SERVER_ENTITY_DECLARE_BEGIN(CSE_ALifeAnomalousZone,CSE_ALifeCustomZone)
 	virtual u32						ef_anomaly_type			() const;
 	virtual u32						ef_weapon_type			() const;
 	virtual u32						ef_creature_type		() const;
-#ifdef XRGAME_EXPORTS
+
 			void					spawn_artefacts			();
 	virtual void					on_spawn				();
 	virtual	CSE_ALifeItemWeapon		*tpfGetBestWeapon		(ALife::EHitType		&tHitType,				float &fHitPower);
 	virtual	ALife::EMeetActionType	tfGetActionType			(CSE_ALifeSchedulable	*tpALifeSchedulable,	int iGroupIndex, bool bMutualDetection);
 	virtual bool					bfActive				();
 	virtual CSE_ALifeDynamicObject	*tpfGetBestDetector		();
-#endif
+
 SERVER_ENTITY_DECLARE_END
 add_to_type_list(CSE_ALifeAnomalousZone)
 #define script_type_list save_type_list(CSE_ALifeAnomalousZone)
@@ -215,10 +210,10 @@ SERVER_ENTITY_DECLARE_BEGIN(CSE_ALifeCreatureAbstract,CSE_ALifeDynamicObjectVisu
 	virtual u32						ef_weapon_type			() const;
 	virtual u32						ef_detector_type		() const;
 	virtual CSE_ALifeCreatureAbstract	*cast_creature_abstract		() {return this;};
-#ifdef XRGAME_EXPORTS
-	virtual	void					on_death				(CSE_Abstract *killer);
+
+	virtual void					on_death				(CSE_Abstract *killer);
 	virtual void					on_spawn				();
-#endif
+
 #ifdef DEBUG
 	virtual bool					match_configuration		() const;
 #endif
@@ -275,9 +270,6 @@ public:
 	
 	IC		int						Rank					(){return m_rank;}
 
-#ifndef XRGAME_EXPORTS
-	virtual	void					update					()	{};
-#else
 	virtual	void					update					();
 	virtual	CSE_ALifeItemWeapon		*tpfGetBestWeapon		(ALife::EHitType		&tHitType,				float	&fHitPower);
 	virtual	ALife::EMeetActionType	tfGetActionType			(CSE_ALifeSchedulable	*tpALifeSchedulable,	int		iGroupIndex,	bool bMutualDetection);
@@ -289,7 +281,7 @@ public:
 	virtual	void					add_offline				(const xr_vector<ALife::_OBJECT_ID> &saved_children, const bool &update_registries);
 	virtual Fvector					draw_level_position		() const;
 	virtual	bool					redundant				() const;
-#endif
+
 	virtual bool					need_update				(CSE_ALifeDynamicObject *object);
 
 private:
@@ -328,11 +320,11 @@ SERVER_ENTITY_DECLARE_BEGIN3(CSE_ALifeCreatureActor,CSE_ALifeCreatureAbstract,CS
 	virtual bool					can_save				()const{return true;}
 	virtual bool					natural_weapon			() const {return false;}
 	virtual bool					natural_detector		() const {return false;}
-#ifdef XRGAME_EXPORTS
+
 	virtual void					spawn_supplies			();
 	virtual	void					add_online				(const bool &update_registries);
 	virtual	void					add_offline				(const xr_vector<ALife::_OBJECT_ID> &saved_children, const bool &update_registries);
-#endif
+
 #ifdef DEBUG
 	virtual bool					match_configuration		() const;
 #endif
@@ -388,11 +380,11 @@ SERVER_ENTITY_DECLARE_BEGIN2(CSE_ALifeMonsterBase,CSE_ALifeMonsterAbstract,CSE_P
 	virtual CSE_Abstract			*cast_abstract			() {return this;}
 	virtual void					spawn_supplies			(const char*){}
 	virtual void					spawn_supplies			(){}
-#ifdef XRGAME_EXPORTS
+
 	virtual void					on_spawn				();
 	virtual	void					add_online				(const bool &update_registries);
 	virtual	void					add_offline				(const xr_vector<ALife::_OBJECT_ID> &saved_children, const bool &update_registries);
-#endif // XRGAME_EXPORTS
+
 SERVER_ENTITY_DECLARE_END
 add_to_type_list(CSE_ALifeMonsterBase)
 #define script_type_list save_type_list(CSE_ALifeMonsterBase)
@@ -427,7 +419,6 @@ public:
 	IC		CALifeHumanBrain		&brain					() const {VERIFY(m_brain); return(*m_brain);}
 	virtual CALifeMonsterBrain		*create_brain			();
 
-#ifdef XRGAME_EXPORTS
 	virtual	void					update					();
 	virtual	CSE_ALifeItemWeapon		*tpfGetBestWeapon		(ALife::EHitType &tHitType, float &fHitPower);
 	virtual bool					bfPerformAttack			();
@@ -442,7 +433,6 @@ public:
 	virtual void					on_unregister			();
 	virtual	void					add_online				(const bool &update_registries);
 	virtual	void					add_offline				(const xr_vector<ALife::_OBJECT_ID> &saved_children, const bool &update_registries);
-#endif
 
 private:
 	CALifeHumanBrain				*m_brain;
@@ -480,7 +470,6 @@ public:
 private:
 	MEMBERS							m_members;
 
-#ifdef XRGAME_EXPORTS
 
 private:
 	CALifeOnlineOfflineGroupBrain	*m_brain;
@@ -506,9 +495,6 @@ public:
 	virtual	void					switch_online			();
 	virtual	void					switch_offline			();
 	virtual	bool					redundant				() const;
-#else
-	virtual void					update					() {};
-#endif
 
 SERVER_ENTITY_DECLARE_END
 add_to_type_list(CSE_ALifeOnlineOfflineGroup)

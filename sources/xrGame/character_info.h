@@ -1,7 +1,4 @@
-//////////////////////////////////////////////////////////////////////////
 // character_info.h			шаблон, дл€ представлени€ абстрактного песонажа
-// 
-//////////////////////////////////////////////////////////////////////////
 
 #pragma once
 
@@ -12,14 +9,12 @@
 class NET_Packet;
 
 #include "SpecificCharacter.h"
+#include "PhraseDialog_defs.h"
+#include "character_community.h"
+#include "character_rank.h"
+#include "character_reputation.h"
 
-#ifdef XRGAME_EXPORTS
-	#include "PhraseDialog_defs.h"
-	#include "character_community.h"
-	#include "character_rank.h"
-	#include "character_reputation.h"
-	class CSE_ALifeTraderAbstract;
-#endif
+class CSE_ALifeTraderAbstract;
 
 //////////////////////////////////////////////////////////////////////////
 // SCharacterProfile: данные профил€ персонажа
@@ -59,7 +54,6 @@ public:
 
 	virtual void Load	(shared_str id);
 
-#ifdef XRGAME_EXPORTS
 	void 						load				(IReader&);
 	void 						save				(NET_Packet&);
 
@@ -68,7 +62,6 @@ public:
 	//указанному индексу
 	void	Init				(CSE_ALifeTraderAbstract* trader);
 	void InitSpecificCharacter	(shared_str new_id);
-#endif
 
 protected:
 	const SCharacterProfile*	data				() const	{ VERIFY(inherited_shared::get_sd()); return inherited_shared::get_sd();}
@@ -86,16 +79,12 @@ protected:
 	//используетс€ в данном экземпл€ре класса
 	shared_str					m_SpecificCharacterId;
 
-#ifdef XRGAME_EXPORTS
 	shared_str					m_StartDialog;
 
 	//загруженна€ информаци€ о конкретном персонаже
 	CSpecificCharacter			m_SpecificCharacter;
-#endif
 
 public:
-
-#ifdef XRGAME_EXPORTS
 	shared_str					Profile() const;
 	const char*					Name() const;
 	shared_str					Bio() const;
@@ -115,14 +104,9 @@ public:
 
 	shared_str					StartDialog			()	const;
 	const DIALOG_ID_VECTOR&		ActorDialogs		()	const;
-#endif
 
 protected:
-
-#ifdef XRGAME_EXPORTS
 	CHARACTER_RANK					m_CurrentRank;
 	CHARACTER_REPUTATION			m_CurrentReputation;
 	CHARACTER_COMMUNITY				m_CurrentCommunity;
-#endif
-
 };

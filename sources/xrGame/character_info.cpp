@@ -1,20 +1,12 @@
-//////////////////////////////////////////////////////////////////////////
 // character_info.cpp			игровая информация для персонажей в игре
-// 
-//////////////////////////////////////////////////////////////////////////
 
 #include "stdafx.h"
+
 #include "character_info.h"
+#include "ui/xrUIXmlParser.h"//
+#include "PhraseDialog.h"
+#include "xrServer_Objects_ALife_Monsters.h"
 
-#ifdef XRGAME_EXPORTS
-#	include "ui/xrUIXmlParser.h"//
-#	include "PhraseDialog.h"
-#	include "xrServer_Objects_ALife_Monsters.h"
-#else // XRGAME_EXPORTS
-#	include "xrUIXmlParser.h"//
-#endif // XRGAME_EXPORTS
-
-//////////////////////////////////////////////////////////////////////////
 SCharacterProfile::SCharacterProfile()
 {
 	m_CharacterId		= NULL;
@@ -30,13 +22,9 @@ CCharacterInfo::CCharacterInfo()
 {
 	m_ProfileId = NULL;
 	m_SpecificCharacterId = NULL;
-
-#ifdef XRGAME_EXPORTS
 	m_CurrentRank.set(NO_RANK);
 	m_CurrentReputation.set(NO_REPUTATION);
 	m_StartDialog = NULL;
-#endif
-
 }
 
 CCharacterInfo::~CCharacterInfo()
@@ -48,7 +36,6 @@ void CCharacterInfo::Load(shared_str id)
 	inherited_shared::load_shared(m_ProfileId, NULL);
 }
 
-#ifdef XRGAME_EXPORTS
 void CCharacterInfo::InitSpecificCharacter (shared_str new_id)
 {
 	R_ASSERT(new_id.size());
@@ -64,7 +51,6 @@ void CCharacterInfo::InitSpecificCharacter (shared_str new_id)
 	if(!m_StartDialog || !m_StartDialog.size() )
 		m_StartDialog = m_SpecificCharacter.data()->m_StartDialog;
 }
-#endif
 
 void CCharacterInfo::load_shared	(const char*)
 {
@@ -102,7 +88,6 @@ void CCharacterInfo::load_shared	(const char*)
 		data()->m_CharacterId = spec_char;
 }
 
-#ifdef XRGAME_EXPORTS
 void CCharacterInfo::Init	(CSE_ALifeTraderAbstract* trader)
 {
 	m_CurrentCommunity.set		(trader->m_community_index);
@@ -164,7 +149,6 @@ void CCharacterInfo::save	(NET_Packet& stream)
 {
 	stream.w_stringZ	(m_StartDialog);
 }
-#endif
 
 void CCharacterInfo::InitXmlIdToIndex()
 {

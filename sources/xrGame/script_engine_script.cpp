@@ -48,19 +48,13 @@ void verify_if_thread_is_running()
 
 bool editor()
 {
-#ifdef XRGAME_EXPORTS
-	return		(false);
-#else
-	return		(true);
-#endif
+	return false;
 }
 
-#ifdef XRGAME_EXPORTS
 CRenderDevice *get_device()
 {
 	return		(&Device);
 }
-#endif
 
 int bit_and(int i, int j)
 {
@@ -173,11 +167,7 @@ IC	profile_timer_script	operator+	(const profile_timer_script &portion0, const p
 //	return					(stream);
 //}
 
-#ifdef XRGAME_EXPORTS
 __forceinline	u32	script_time_global	()	{ return Device.dwTimeGlobal; }
-#else
-__forceinline	u32	script_time_global	()	{ return 0; }
-#endif
 
 #pragma optimize("s",on)
 void CScriptEngine::script_register(lua_State *L)
@@ -207,7 +197,5 @@ void CScriptEngine::script_register(lua_State *L)
 	function	(L,	"bit_not",						bit_not);
 	function	(L, "user_name",					user_name);
 	function	(L, "time_global",					script_time_global);
-#ifdef XRGAME_EXPORTS
 	function	(L,	"device",						get_device);
-#endif
 }

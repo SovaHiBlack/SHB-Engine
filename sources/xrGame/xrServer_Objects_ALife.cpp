@@ -14,17 +14,9 @@
 #include "game_base_space.h"
 #include "object_broker.h"
 #include "restriction_space.h"
-
 #include "character_info.h"
-
-#ifndef XRGAME_EXPORTS
-#	include "bone.h"
-//#	include "defines.h"
-const char* GAME_CONFIG = "game.ltx";
-#else
-#	include "..\ENGINE\bone.h"
-#	include "..\ENGINE\render.h"
-#endif
+#include "..\ENGINE\bone.h"
+#include "..\ENGINE\render.h"
 
 bool SortStringsByAlphabetPred (const shared_str& s1, const shared_str& s2)
 {
@@ -112,14 +104,11 @@ CSE_ALifeObject::CSE_ALifeObject			(const char* caSection) : CSE_Abstract(caSect
 	m_flags.one					();
 	m_story_id					= INVALID_STORY_ID;
 	m_spawn_story_id			= INVALID_SPAWN_STORY_ID;
-#ifdef XRGAME_EXPORTS
 	m_alife_simulator			= 0;
-#endif
 	m_flags.set					(flOfflineNoMove,FALSE);
 	seed						(u32(CPU::QPC() & 0xffffffff));
 }
 
-#ifdef XRGAME_EXPORTS
 CALifeSimulator	&CSE_ALifeObject::alife	() const
 {
 	VERIFY						(m_alife_simulator);
@@ -130,7 +119,6 @@ Fvector CSE_ALifeObject::draw_level_position	() const
 {
 	return						(Position());
 }
-#endif
 
 CSE_ALifeObject::~CSE_ALifeObject			()
 { }
@@ -1031,14 +1019,10 @@ bool CSE_ALifeObjectHangingLamp::validate			()
 bool CSE_ALifeObjectHangingLamp::match_configuration() const
 {
 	R_ASSERT3(flags.test(flR1) || flags.test(flR2),"no renderer type set for hanging-lamp ",name_replace());
-#ifdef XRGAME_EXPORTS
 	return						(
 		(flags.test(flR1) && (::Render->get_generation() == IRender_interface::GENERATION_R1)) ||
 		(flags.test(flR2) && (::Render->get_generation() == IRender_interface::GENERATION_R2))
 	);
-#else
-	return						(true);
-#endif
 }
 
 ////////////////////////////////////////////////////////////////////////////

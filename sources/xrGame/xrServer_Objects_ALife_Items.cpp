@@ -14,13 +14,9 @@
 #include "xrServer_Objects_ALife_Items.h"
 #include "clsid_game.h"
 
-#ifndef XRGAME_EXPORTS
-#	include "bone.h"
-#else
-#	include "..\ENGINE\bone.h"
-#	ifdef DEBUG
-#		define PHPH_DEBUG
-#	endif
+#include "..\ENGINE\bone.h"
+#ifdef DEBUG
+#	define PHPH_DEBUG
 #endif
 
 #ifdef PHPH_DEBUG
@@ -250,10 +246,8 @@ void CSE_ALifeItem::UPDATE_Write			(NET_Packet &tNetPacket)
 	inherited1::UPDATE_Write	(tNetPacket);
 	inherited2::UPDATE_Write	(tNetPacket);
 
-#ifdef XRGAME_EXPORTS
 	m_last_update_time			= Device.dwTimeGlobal;
-#endif // XRGAME_EXPORTS
-};
+}
 
 void CSE_ALifeItem::UPDATE_Read				(NET_Packet &tNetPacket)
 {
@@ -261,7 +255,7 @@ void CSE_ALifeItem::UPDATE_Read				(NET_Packet &tNetPacket)
 	inherited2::UPDATE_Read		(tNetPacket);
 
 	m_physics_disabled			= false;
-};
+}
 
 void CSE_ALifeItem::FillProps				(const char* pref, PropItemVec& values)
 {
@@ -277,10 +271,8 @@ BOOL CSE_ALifeItem::Net_Relevant			()
 	if (!m_physics_disabled && !fis_zero(State.linear_vel.square_magnitude(),EPS_L))
 		return					(true);
 
-#ifdef XRGAME_EXPORTS
 	if (Device.dwTimeGlobal < (m_last_update_time + update_rate()))
 		return					(false);
-#endif // XRGAME_EXPORTS
 
 	return						(true);
 }
@@ -817,17 +809,8 @@ void CSE_ALifeItemPDA::STATE_Write		(NET_Packet	&tNetPacket)
 {
 	inherited::STATE_Write		(tNetPacket);
 	tNetPacket.w				(&m_original_owner,sizeof(m_original_owner));
-#ifdef XRGAME_EXPORTS
 	tNetPacket.w_stringZ		(m_specific_character);
 	tNetPacket.w_stringZ		(m_info_portion);
-#else
-	shared_str		tmp_1	= NULL;
-	shared_str						tmp_2	= NULL;
-
-	tNetPacket.w_stringZ		(tmp_1);
-	tNetPacket.w_stringZ		(tmp_2);
-#endif
-
 }
 
 void CSE_ALifeItemPDA::UPDATE_Read		(NET_Packet	&tNetPacket)

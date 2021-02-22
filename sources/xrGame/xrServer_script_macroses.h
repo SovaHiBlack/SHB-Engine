@@ -1,10 +1,5 @@
-////////////////////////////////////////////////////////////////////////////
 //	Module 		: xrServer_script_macroses.cpp
-//	Created 	: 24.06.2004
-//  Modified 	: 24.06.2004
-//	Author		: Dmitriy Iassenev
 //	Description : Server script macroses
-////////////////////////////////////////////////////////////////////////////
 
 #pragma once
 
@@ -14,25 +9,12 @@
 #include "ai_space.h"
 #include "script_engine.h"
 
-//#define USE_WRITER_READER
 class CSE_Abstract;
 class NET_Packet;
 class CSE_ALifeMonsterAbstract;
 class CALifeSmartTerrainTask;
 
 #define INHERIT_PURE
-
-//#ifndef USE_WRITER_READER
-//#	define INHERIT_PURE \
-//	DEFINE_LUA_WRAPPER_METHOD_R2P1_V1	(save,			NET_Packet)\
-//	DEFINE_LUA_WRAPPER_METHOD_R2P1_V1	(load,			NET_Packet)
-//#else
-//#	define INHERIT_PURE \
-//	DEFINE_LUA_WRAPPER_METHOD_R2P1_V1	(save,			NET_Packet)\
-//	DEFINE_LUA_WRAPPER_METHOD_R2P1_V1	(load,			NET_Packet)\
-//	DEFINE_LUA_WRAPPER_METHOD_R2P1_V1	(save,			IWriter)\
-//	DEFINE_LUA_WRAPPER_METHOD_R2P1_V1	(load,			IReader)
-//#endif
 
 #define INHERIT_ABSTRACT \
 	INHERIT_PURE\
@@ -49,21 +31,15 @@ class CALifeSmartTerrainTask;
 	DEFINE_LUA_WRAPPER_CONST_METHOD_0	(can_switch_offline,	bool)\
 	DEFINE_LUA_WRAPPER_CONST_METHOD_0	(interactive,			bool)
 
-#ifdef XRGAME_EXPORTS
-#	define INHERIT_DYNAMIC_ALIFE \
+#define INHERIT_DYNAMIC_ALIFE \
 	INHERIT_ALIFE\
 	DEFINE_LUA_WRAPPER_METHOD_V0		(on_spawn)\
 	DEFINE_LUA_WRAPPER_METHOD_V0		(on_before_register)\
 	DEFINE_LUA_WRAPPER_METHOD_V0		(on_register)\
 	DEFINE_LUA_WRAPPER_METHOD_V0		(on_unregister)\
 	DEFINE_LUA_WRAPPER_CONST_METHOD_0	(keep_saved_data_anyway,bool)
-#else
-#	define INHERIT_DYNAMIC_ALIFE \
-	INHERIT_ALIFE
-#endif
 
-#ifdef XRGAME_EXPORTS
-#	define INHERIT_ZONE \
+#define INHERIT_ZONE \
 	INHERIT_DYNAMIC_ALIFE\
 	DEFINE_LUA_WRAPPER_METHOD_V0		(update)\
 	DEFINE_LUA_WRAPPER_METHOD_V1		(smart_touch,CSE_ALifeMonsterAbstract*)\
@@ -73,28 +49,13 @@ class CALifeSmartTerrainTask;
 	DEFINE_LUA_WRAPPER_METHOD_V1		(unregister_npc,CSE_ALifeMonsterAbstract*)\
 	DEFINE_LUA_WRAPPER_METHOD_1			(task,CALifeSmartTerrainTask*,CSE_ALifeMonsterAbstract*)\
 	DEFINE_LUA_WRAPPER_METHOD_0			(detect_probability,float)
-#else
-#	define INHERIT_ZONE \
-	INHERIT_DYNAMIC_ALIFE\
-	DEFINE_LUA_WRAPPER_METHOD_V0		(update)\
-	DEFINE_LUA_WRAPPER_METHOD_V1		(smart_touch,CSE_ALifeMonsterAbstract*)\
-	DEFINE_LUA_WRAPPER_METHOD_0			(detect_probability,float)
-#endif
 
-#ifdef XRGAME_EXPORTS
-#	define INHERIT_CREATURE \
-		INHERIT_DYNAMIC_ALIFE\
-		DEFINE_LUA_WRAPPER_METHOD_0			(g_team,	u8)\
-		DEFINE_LUA_WRAPPER_METHOD_0			(g_squad,	u8)\
-		DEFINE_LUA_WRAPPER_METHOD_0			(g_group,	u8)\
-		DEFINE_LUA_WRAPPER_METHOD_V1		(on_death,	CSE_Abstract*)
-#else // XRGAME_EXPORTS
-#	define INHERIT_CREATURE \
-		INHERIT_DYNAMIC_ALIFE\
-		DEFINE_LUA_WRAPPER_METHOD_0			(g_team,	u8)\
-		DEFINE_LUA_WRAPPER_METHOD_0			(g_squad,	u8)\
-		DEFINE_LUA_WRAPPER_METHOD_0			(g_group,	u8)
-#endif // XRGAME_EXPORTS
+#define INHERIT_CREATURE \
+	INHERIT_DYNAMIC_ALIFE\
+	DEFINE_LUA_WRAPPER_METHOD_0			(g_team,	u8)\
+	DEFINE_LUA_WRAPPER_METHOD_0			(g_squad,	u8)\
+	DEFINE_LUA_WRAPPER_METHOD_0			(g_group,	u8)\
+	DEFINE_LUA_WRAPPER_METHOD_V1		(on_death,	CSE_Abstract*)
 
 #define INHERIT_MONSTER \
 	INHERIT_CREATURE\
@@ -172,20 +133,6 @@ struct CWrapperAbstractItem : public T, public luabind::wrap_base {
 #define luabind_virtual_pure(a,b) \
 	.def(	constructor<const char*>())
 
-//#ifndef USE_WRITER_READER
-//#	define luabind_virtual_pure(a,b) \
-//		.def(	constructor<const char*>()) \
-//		DEFINE_LUABIND_VIRTUAL_FUNCTION_EXPLICIT_1(a,b,save,void,NET_Packet&,NET_Packet*) \
-//		DEFINE_LUABIND_VIRTUAL_FUNCTION_EXPLICIT_1(a,b,load,void,NET_Packet&,NET_Packet*) 
-//#else
-//#	define luabind_virtual_pure(a,b) \
-//		.def(	constructor<const char*>()) \
-//		DEFINE_LUABIND_VIRTUAL_FUNCTION_EXPLICIT_1(a,b,save,void,NET_Packet&,NET_Packet*) \
-//		DEFINE_LUABIND_VIRTUAL_FUNCTION_EXPLICIT_1(a,b,load,void,NET_Packet&,NET_Packet*) \
-//		DEFINE_LUABIND_VIRTUAL_FUNCTION_EXPLICIT_1(a,b,save,void,IWriter&,IWriter*) \
-//		DEFINE_LUABIND_VIRTUAL_FUNCTION_EXPLICIT_1(a,b,load,void,IReader&,IReader*)
-//#endif
-
 #define luabind_virtual_abstract(a,b) \
 	DEFINE_LUABIND_VIRTUAL_FUNCTION(a,b,FillProps	) \
 	DEFINE_LUABIND_VIRTUAL_FUNCTION(a,b,STATE_Write	) \
@@ -199,46 +146,28 @@ struct CWrapperAbstractItem : public T, public luabind::wrap_base {
 	DEFINE_LUABIND_VIRTUAL_FUNCTION(a,b,used_ai_locations	) \
 	DEFINE_LUABIND_VIRTUAL_FUNCTION(a,b,can_save			) \
 
-#ifdef XRGAME_EXPORTS
-#	define luabind_virtual_dynamic_alife(a,b) \
+#define luabind_virtual_dynamic_alife(a,b) \
 	DEFINE_LUABIND_VIRTUAL_FUNCTION(a,b,on_spawn			) \
 	DEFINE_LUABIND_VIRTUAL_FUNCTION(a,b,on_before_register	) \
 	DEFINE_LUABIND_VIRTUAL_FUNCTION(a,b,on_register			) \
 	DEFINE_LUABIND_VIRTUAL_FUNCTION(a,b,on_unregister		) \
 	DEFINE_LUABIND_VIRTUAL_FUNCTION(a,b,keep_saved_data_anyway)
-#else
-#	define luabind_virtual_dynamic_alife(a,b)
-#endif
 
-#ifdef XRGAME_EXPORTS
-#	define luabind_virtual_creature(a,b) \
-		DEFINE_LUABIND_VIRTUAL_FUNCTION(a,b,g_team	) \
-		DEFINE_LUABIND_VIRTUAL_FUNCTION(a,b,g_squad	) \
-		DEFINE_LUABIND_VIRTUAL_FUNCTION(a,b,g_group	) \
-		DEFINE_LUABIND_VIRTUAL_FUNCTION(a,b,on_death)
-#else // XRGAME_EXPORTS
-#	define luabind_virtual_creature(a,b) \
-		DEFINE_LUABIND_VIRTUAL_FUNCTION(a,b,g_team	) \
-		DEFINE_LUABIND_VIRTUAL_FUNCTION(a,b,g_squad	) \
-		DEFINE_LUABIND_VIRTUAL_FUNCTION(a,b,g_group	)
-#endif // XRGAME_EXPORTS
+#define luabind_virtual_creature(a,b) \
+	DEFINE_LUABIND_VIRTUAL_FUNCTION(a,b,g_team	) \
+	DEFINE_LUABIND_VIRTUAL_FUNCTION(a,b,g_squad	) \
+	DEFINE_LUABIND_VIRTUAL_FUNCTION(a,b,g_group	) \
+	DEFINE_LUABIND_VIRTUAL_FUNCTION(a,b,on_death)
 
-#ifdef XRGAME_EXPORTS
-#	define luabind_virtual_zone(a,b) \
-		DEFINE_LUABIND_VIRTUAL_FUNCTION(a,b,update)\
-		DEFINE_LUABIND_VIRTUAL_FUNCTION(a,b,smart_touch)\
-		DEFINE_LUABIND_VIRTUAL_FUNCTION(a,b,enabled)\
-		DEFINE_LUABIND_VIRTUAL_FUNCTION(a,b,suitable)\
-		DEFINE_LUABIND_VIRTUAL_FUNCTION(a,b,register_npc)\
-		DEFINE_LUABIND_VIRTUAL_FUNCTION(a,b,unregister_npc)\
-		DEFINE_LUABIND_VIRTUAL_FUNCTION(a,b,task)\
-		DEFINE_LUABIND_VIRTUAL_FUNCTION(a,b,detect_probability)
-#else
-#	define luabind_virtual_zone(a,b) \
-		DEFINE_LUABIND_VIRTUAL_FUNCTION(a,b,update)\
-		DEFINE_LUABIND_VIRTUAL_FUNCTION(a,b,smart_touch)\
-		DEFINE_LUABIND_VIRTUAL_FUNCTION(a,b,detect_probability)
-#endif
+#define luabind_virtual_zone(a,b) \
+	DEFINE_LUABIND_VIRTUAL_FUNCTION(a,b,update)\
+	DEFINE_LUABIND_VIRTUAL_FUNCTION(a,b,smart_touch)\
+	DEFINE_LUABIND_VIRTUAL_FUNCTION(a,b,enabled)\
+	DEFINE_LUABIND_VIRTUAL_FUNCTION(a,b,suitable)\
+	DEFINE_LUABIND_VIRTUAL_FUNCTION(a,b,register_npc)\
+	DEFINE_LUABIND_VIRTUAL_FUNCTION(a,b,unregister_npc)\
+	DEFINE_LUABIND_VIRTUAL_FUNCTION(a,b,task)\
+	DEFINE_LUABIND_VIRTUAL_FUNCTION(a,b,detect_probability)
 
 #define luabind_virtual_monster(a,b) \
 	DEFINE_LUABIND_VIRTUAL_FUNCTION(a,b,update)
@@ -451,4 +380,3 @@ struct CWrapperAbstractItem : public T, public luabind::wrap_base {
 #define luabind_class_item4(a,b,c,d,e,f) \
 	DEFINE_LUABIND_CLASS_WRAPPER_4(a,CWrapperAbstractItem<a>,b,c,d,e,f) \
 	luabind_virtual_Item(a,CWrapperAbstractItem<a>)
-

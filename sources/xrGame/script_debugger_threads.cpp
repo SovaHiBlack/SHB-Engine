@@ -12,7 +12,6 @@ u32 CDbgScriptThreads::Fill()
 {
 	u32 res = 0;
 
-#ifdef XRGAME_EXPORTS
 	CScriptProcess* sp = ai().script_engine().script_process(ScriptEngine::eScriptProcessorGame);
 
 	if (sp)
@@ -23,9 +22,6 @@ u32 CDbgScriptThreads::Fill()
 		res += FillFrom(sp);
 
 	return res;
-#else
-	return res;
-#endif
 }
 
 u32 CDbgScriptThreads::FillFrom(CScriptProcess* sp)

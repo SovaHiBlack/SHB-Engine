@@ -182,9 +182,8 @@ void CScriptEngine::init				()
 	register_script_classes				();
 	object_factory().register_script	();
 
-#ifdef XRGAME_EXPORTS
 	load_common_scripts					();
-#endif
+
 	m_stack_level						= lua_gettop(lua());
 }
 
