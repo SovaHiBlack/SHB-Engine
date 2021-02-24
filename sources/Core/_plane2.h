@@ -7,10 +7,10 @@ public:
 	typedef _plane2<T>	Self;
 	typedef Self&		SelfRef;
 	typedef const Self&	SelfCRef;
-public:
+
 	_vector2<T>	n;
 	T			d;
-public:
+
 	IC	SelfRef	set		(Self &P)
 	{
 		n.set	(P.n);

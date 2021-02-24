@@ -26,7 +26,7 @@
 #	include "PHDebug.h"
 #endif
 
-IC BOOL BE	(BOOL A, BOOL B)
+inline BOOL BE	(BOOL A, BOOL B)
 {
 	bool a = !!A;
 	bool b = !!B;
@@ -190,7 +190,8 @@ void CActor::OnEvent		(NET_Packet& P, u16 type)
 		}break;
 	case GE_MOVE_ACTOR:
 		{
-			Fvector NewPos, NewRot;
+		Fvector3 NewPos;
+		Fvector3 NewRot;
 			P.r_vec3(NewPos);
 			P.r_vec3(NewRot);
 			
@@ -230,7 +231,7 @@ void CActor::OnEvent		(NET_Packet& P, u16 type)
 	case GE_ACTOR_JUMPING:
 		{
 			/*
-			Fvector dir;
+			Fvector3 dir;
 			P.r_dir(dir);
 			float jump = P.r_float();
 			NET_SavedAccel = dir;
@@ -243,7 +244,7 @@ void CActor::OnEvent		(NET_Packet& P, u16 type)
 	}
 }
 
-void CActor::MoveActor		(Fvector NewPos, Fvector NewDir)
+void CActor::MoveActor		(Fvector3 NewPos, Fvector3 NewDir)
 {
 	Fmatrix	M = XFORM();
 	M.translate(NewPos);

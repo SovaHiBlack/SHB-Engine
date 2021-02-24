@@ -223,7 +223,7 @@ typedef IRenderableWrapper<IRenderable,luabind::wrap_base> CIRenderableWrapper;
 //	virtual CObject*		H_SetParent			(CObject* O);
 //	virtual void			Center				(Fvector& C) const;
 //	virtual float			Radius				() const;
-//	virtual const Fbox&		BoundingBox			() const;
+//	virtual const Fbox3&		BoundingBox			() const;
 //	virtual void			Load				(const char* section);
 //	virtual void			UpdateCL			();
 //	virtual BOOL			net_Spawn			(CSE_Abstract* data);

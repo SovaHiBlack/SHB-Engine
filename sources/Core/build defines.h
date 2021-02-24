@@ -23,6 +23,8 @@
 
 //#define WEATHER_LOGGING
 
+#define LOG_ACTION
+
 //script
 //#define DEBUG_DISABLE_SCRIPTS
 //#define LOADING_SCRIPT_LOG

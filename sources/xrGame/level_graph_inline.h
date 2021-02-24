@@ -264,7 +264,7 @@ __forceinline float	CLevelGraph::CHeader::factor_y() const
 	return				(size_y);
 }
 
-__forceinline const Fbox &CLevelGraph::CHeader::box() const
+__forceinline const Fbox3& CLevelGraph::CHeader::box() const
 {
 	return				(aabb);
 }

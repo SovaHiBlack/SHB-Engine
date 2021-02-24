@@ -22,13 +22,13 @@ struct CRemoveOldDangerCover {
 
 	CAgentMemberManager		*m_members;
 
-	IC			CRemoveOldDangerCover	(CAgentMemberManager *members)
+	inline			CRemoveOldDangerCover	(CAgentMemberManager *members)
 	{
 		VERIFY				(members);
 		m_members			= members;
 	}
 
-	IC	bool	operator()				(const CAgentLocationManager::CDangerLocationPtr &location) const
+	inline	bool	operator()				(const CAgentLocationManager::CDangerLocationPtr &location) const
 	{
 		if (!location->useful()) {
 			MEMBER_STORAGE::iterator		I = m_members->members().begin();
@@ -48,18 +48,18 @@ struct CRemoveOldDangerCover {
 struct CDangerLocationPredicate {
 	Fvector				m_position;
 
-	IC			CDangerLocationPredicate	(const Fvector &position)
+	inline			CDangerLocationPredicate	(const Fvector &position)
 	{
 		m_position		= position;
 	}
 
-	IC	bool	operator()	(const CAgentLocationManager::CDangerLocationPtr &location) const
+	inline	bool	operator()	(const CAgentLocationManager::CDangerLocationPtr &location) const
 	{
 		return			(*location == m_position);
 	}
 };
 
-IC	CAgentLocationManager::CDangerLocationPtr CAgentLocationManager::location	(const Fvector &position)
+inline	CAgentLocationManager::CDangerLocationPtr CAgentLocationManager::location	(const Fvector &position)
 {
 	LOCATIONS::iterator	I = std::find_if(m_danger_locations.begin(),m_danger_locations.end(),CDangerLocationPredicate(position));
 	if (I != m_danger_locations.end())

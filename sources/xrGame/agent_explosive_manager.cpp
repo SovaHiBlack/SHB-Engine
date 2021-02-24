@@ -24,7 +24,7 @@ const float GRENADE_RADIUS	= 10.f;
 const u32 AFTER_GRENADE_DESTROYED_INTERVAL = 1000;
 
 struct CRemoveExplosivesPredicate {
-	IC	bool operator()		(CDangerExplosive &explosive) const
+	inline	bool operator()		(CDangerExplosive &explosive) const
 	{
 		return				(!!explosive.m_reactor);
 	}

@@ -8,7 +8,6 @@
 
 #pragma once
 
-#include "action_management_config.h"
 #include "property_storage.h"
 #include "script_export_space.h"
 #include "operator_abstract.h"
@@ -59,23 +58,23 @@ public:
 #endif
 
 public:
-	IC							CActionBase			(const xr_vector<COperatorCondition> &conditions, const xr_vector<COperatorCondition> &effects, _object_type *object = 0, const char* action_name = "");
-	IC							CActionBase			(_object_type *object, const char* action_name = "");
+	inline							CActionBase			(const xr_vector<COperatorCondition> &conditions, const xr_vector<COperatorCondition> &effects, _object_type *object = 0, const char* action_name = "");
+	inline							CActionBase			(_object_type *object, const char* action_name = "");
 	virtual						~CActionBase		();
-	IC		void				init				(_object_type *object, const char* action_name);
+	inline		void				init				(_object_type *object, const char* action_name);
 	virtual void				setup				(_object_type *object, CPropertyStorage *storage);
 	virtual void				initialize			();
 	virtual void				execute				();
 	virtual void				finalize			();
 	virtual _edge_value_type	weight				(const CSConditionState &condition0, const CSConditionState &condition1) const;
-	IC		void				set_inertia_time	(u32 inertia_time);
-	IC		u32					start_level_time	() const;
-	IC		u32					inertia_time		() const;
-	IC		bool				completed			() const;
-	IC		void				set_property		(const _condition_type &condition_id, const _value_type &value);
-	IC		const _value_type	&property			(const _condition_type &condition_id) const;
-	IC		void 				set_weight			(const _edge_value_type &weight);
-	IC		bool				first_time			() const;
+	inline		void				set_inertia_time	(u32 inertia_time);
+	inline		u32					start_level_time	() const;
+	inline		u32					inertia_time		() const;
+	inline		bool				completed			() const;
+	inline		void				set_property		(const _condition_type &condition_id, const _value_type &value);
+	inline		const _value_type	&property			(const _condition_type &condition_id) const;
+	inline		void 				set_weight			(const _edge_value_type &weight);
+	inline		bool				first_time			() const;
 
 	virtual	void				save				(NET_Packet &packet) {}
 	virtual	void				load				(IReader &packet) {}

@@ -27,7 +27,7 @@ namespace CPU {
 	CORE_API extern	u64				QPC	()				;
 
 	#pragma warning(disable:4035)
-	IC u64	GetCLK(void)	{
+	inline u64	GetCLK(void)	{
 		_asm    _emit 0x0F;
 		_asm    _emit 0x31;
 	}

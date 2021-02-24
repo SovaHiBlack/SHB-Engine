@@ -21,7 +21,8 @@ public:
 	{
 		// box
 		float	n_vR	=		2*n_R;
-		Fbox	BB;		BB.set	(n_C.x-n_vR, n_C.y-n_vR, n_C.z-n_vR, n_C.x+n_vR, n_C.y+n_vR, n_C.z+n_vR);
+		Fbox3	BB;
+		BB.set	(n_C.x-n_vR, n_C.y-n_vR, n_C.z-n_vR, n_C.x+n_vR, n_C.y+n_vR, n_C.z+n_vR);
 		if		(fcvNone==F->testAABB(BB.data(),fmask))	return;
 
 		// test items

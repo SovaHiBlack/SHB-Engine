@@ -337,8 +337,8 @@
     <ClInclude Include="_color.h" />
     <ClInclude Include="_compressed_normal.h" />
     <ClInclude Include="_cylinder.h" />
-    <ClInclude Include="_fbox.h" />
-    <ClInclude Include="_fbox2.h" />
+    <ClInclude Include="_box3.h" />
+    <ClInclude Include="_box2.h" />
     <ClInclude Include="_flags.h" />
     <ClInclude Include="_math.h" />
     <ClInclude Include="_matrix.h" />

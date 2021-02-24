@@ -8,7 +8,7 @@
 
 #pragma once
 
-IC	CAgentEnemyManager::CAgentEnemyManager						(CAgentManager *object)
+inline	CAgentEnemyManager::CAgentEnemyManager						(CAgentManager *object)
 {
 	VERIFY				(object);
 	m_object			= object;
@@ -16,13 +16,13 @@ IC	CAgentEnemyManager::CAgentEnemyManager						(CAgentManager *object)
 	m_is_any_wounded	= false;
 }
 
-IC	CAgentManager &CAgentEnemyManager::object					() const
+inline	CAgentManager &CAgentEnemyManager::object					() const
 {
 	VERIFY				(m_object);
 	return				(*m_object);
 }
 
-IC	CAgentEnemyManager::ENEMIES	&CAgentEnemyManager::enemies	()
+inline	CAgentEnemyManager::ENEMIES	&CAgentEnemyManager::enemies	()
 {
 	return				(m_enemies);
 }

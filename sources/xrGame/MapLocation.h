@@ -25,7 +25,7 @@ public:
 	};
 
 protected:
-	flags32					m_flags;
+	Flags32					m_flags;
 	shared_str				m_hint;
 	CMapSpot* m_level_spot;
 	CMapSpotPointer* m_level_spot_pointer;

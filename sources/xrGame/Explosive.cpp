@@ -204,8 +204,6 @@ __forceinline static BOOL grenade_hit_callback(collide::rq_result& result, LPVOI
 	return				(ep.shoot_factor > 0.01f);
 }
 
-
-
 float CExplosive::ExplosionEffect(collide::rq_results& storage, CExplosive* exp_obj, CPHShellHolder* blasted_obj, const Fvector& expl_centre, const float expl_radius)
 {
 
@@ -213,7 +211,7 @@ float CExplosive::ExplosionEffect(collide::rq_results& storage, CExplosive* exp_
 	Fmatrix	inv_obj_form; inv_obj_form.invert(obj_xform);
 	Fvector	local_exp_center; inv_obj_form.transform_tiny(local_exp_center, expl_centre);
 
-	const Fbox& l_b1 = blasted_obj->BoundingBox( );
+	const Fbox3& l_b1 = blasted_obj->BoundingBox( );
 	if (l_b1.contains(local_exp_center))
 		return 1.f;
 	Fvector l_c, l_d; l_b1.get_CD(l_c, l_d);

@@ -369,7 +369,7 @@ void spawn_phantom(const Fvector &position)
 	Level().spawn_item("m_phantom", position, u32(-1), u16(-1), false);
 }
 
-Fbox get_bounding_volume()
+Fbox3 get_bounding_volume()
 {
 	return Level().ObjectSpace.GetBoundingVolume();
 }

@@ -33,9 +33,9 @@ struct ray_segment_t {
 };
 
 __forceinline u32&	uf			(float &x)	{ return (u32&)x; }
-__forceinline BOOL	isect_fpu	(const Fvector& min, const Fvector& max, const ray_t &ray, Fvector& coord)
+__forceinline BOOL	isect_fpu	(const Fvector3& min, const Fvector3& max, const ray_t &ray, Fvector3& coord)
 {
-	Fvector				MaxT;
+	Fvector3				MaxT;
 	MaxT.x=MaxT.y=MaxT.z=-1.0f;
 	BOOL Inside			= TRUE;
 
@@ -179,13 +179,13 @@ class _MM_ALIGN16	ray_collider
 public:
 	COLLIDER*		dest;
 	TRI*			tris;
-	Fvector*		verts;
+	Fvector3*		verts;
 	
 	ray_t			ray;
 	float			rRange;
 	float			rRange2;
 
-	IC void			_init		(COLLIDER* CL, Fvector* V, TRI* T, const Fvector& C, const Fvector& D, float R)
+	IC void			_init		(COLLIDER* CL, Fvector3* V, TRI* T, const Fvector3& C, const Fvector3& D, float R)
 	{
 		dest			= CL;
 		tris			= T;
@@ -204,15 +204,15 @@ public:
 	}
 
 	// fpu
-	__forceinline BOOL		_box_fpu	(const Fvector& bCenter, const Fvector& bExtents, Fvector& coord)
+	__forceinline BOOL		_box_fpu	(const Fvector3& bCenter, const Fvector3& bExtents, Fvector3& coord)
 	{
-		Fbox		BB;
+		Fbox3		BB;
 		BB.min.sub	(bCenter,bExtents);
 		BB.max.add	(bCenter,bExtents);
         return 		isect_fpu	(BB.min,BB.max,ray,coord);
 	}
 	// sse
-	__forceinline BOOL		_box_sse	(const Fvector& bCenter, const Fvector& bExtents, float&  dist )
+	__forceinline BOOL		_box_sse	(const Fvector3& bCenter, const Fvector3& bExtents, float&  dist )
 	{
 		aabb_t		box;
 		box.min.sub (bCenter,bExtents);	box.min.pad = 0;
@@ -222,13 +222,17 @@ public:
 	
 	IC bool			_tri		(u32* p, float& u, float& v, float& range)
 	{
-		Fvector edge1, edge2, tvec, pvec, qvec;
+		Fvector3 edge1;
+		Fvector3 edge2;
+		Fvector3 tvec;
+		Fvector3 pvec;
+		Fvector3 qvec;
 		float	det,inv_det;
 		
 		// find vectors for two edges sharing vert0
-		Fvector&			p0	= verts[ p[0] ];
-		Fvector&			p1	= verts[ p[1] ];
-		Fvector&			p2	= verts[ p[2] ];
+		Fvector3&			p0	= verts[ p[0] ];
+		Fvector3&			p1	= verts[ p[1] ];
+		Fvector3&			p2	= verts[ p[2] ];
 		edge1.sub			(p1, p0);
 		edge2.sub			(p2, p0);
 		// begin calculating determinant - also used to calculate U parameter
@@ -319,12 +323,12 @@ public:
 		if (bUseSSE)			{
 			// use SSE
 			float		d;
-			if (!_box_sse((Fvector&)node->mAABB.mCenter,(Fvector&)node->mAABB.mExtents,d))	return;
+			if (!_box_sse((Fvector3&)node->mAABB.mCenter,(Fvector3&)node->mAABB.mExtents,d))	return;
 			if (d>rRange)																	return;
 		} else {
 			// use FPU
-			Fvector		P;
-			if (!_box_fpu((Fvector&)node->mAABB.mCenter,(Fvector&)node->mAABB.mExtents,P))	return;
+			Fvector3		P;
+			if (!_box_fpu((Fvector3&)node->mAABB.mCenter,(Fvector3&)node->mAABB.mExtents,P))	return;
 			if (P.distance_to_sqr(ray.pos)>rRange2)											return;
 		}
 		
@@ -341,7 +345,7 @@ public:
 	}
 };
 
-void	COLLIDER::ray_query	(const MODEL *m_def, const Fvector& r_start,  const Fvector& r_dir, float r_range)
+void	COLLIDER::ray_query	(const MODEL *m_def, const Fvector3& r_start,  const Fvector3& r_dir, float r_range)
 {
 	m_def->syncronize		();
 

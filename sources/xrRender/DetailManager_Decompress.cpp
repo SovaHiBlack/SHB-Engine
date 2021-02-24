@@ -76,7 +76,7 @@ void		CDetailManager::cache_Decompress(Slot* S)
 	CRandom				r_scale		(0x12071980^p_rnd);
 
 	// Prepare to actual-bounds-calculations
-	Fbox				Bounds;
+	Fbox3				Bounds;
 	Bounds.invalidate	();
 
 	// Decompressing itself
@@ -136,7 +136,7 @@ void		CDetailManager::cache_Decompress(Slot* S)
 
 			// X-Form BBox
 			Fmatrix		mScale,mXform;
-			Fbox		ItemBB;
+			Fbox3		ItemBB;
 			Item.mRotY.rotateY				(r_yaw.randF	(0,PI_MUL_2));
 			Item.mRotY.translate_over		(Item_P);
 			mScale.scale					(Item.scale,Item.scale,Item.scale);

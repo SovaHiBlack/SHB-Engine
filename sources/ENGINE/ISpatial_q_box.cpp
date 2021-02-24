@@ -10,7 +10,7 @@ public:
 	u32				mask;
 	Fvector3			center;
 	Fvector3			size;
-	Fbox			box;
+	Fbox3			box;
 	ISpatial_DB*	space;
 public:
 	walker					(ISpatial_DB*	_space, u32 _mask, const Fvector3& _center, const Fvector3& _size)
@@ -25,7 +25,8 @@ public:
 	{
 		// box
 		float	n_vR	=		2*n_R;
-		Fbox	BB;		BB.set	(n_C.x-n_vR, n_C.y-n_vR, n_C.z-n_vR, n_C.x+n_vR, n_C.y+n_vR, n_C.z+n_vR);
+		Fbox3	BB;
+		BB.set	(n_C.x-n_vR, n_C.y-n_vR, n_C.z-n_vR, n_C.x+n_vR, n_C.y+n_vR, n_C.z+n_vR);
 		if		(!BB.intersect(box))			return;
 
 		// test items
@@ -38,7 +39,8 @@ public:
 
 			Fvector3&		sC		= S->spatial.sphere.P;
 			float			sR		= S->spatial.sphere.R;
-			Fbox			sB;		sB.set	(sC.x-sR, sC.y-sR, sC.z-sR, sC.x+sR, sC.y+sR, sC.z+sR);
+			Fbox3			sB;
+			sB.set	(sC.x-sR, sC.y-sR, sC.z-sR, sC.x+sR, sC.y+sR, sC.z+sR);
 			if (!sB.intersect(box))	continue;
 
 			space->q_result->push_back	(S);

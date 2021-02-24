@@ -28,7 +28,7 @@ private:
 	static	u32					m_remove_time;
 	u32					m_break_time;
 	bool				bRemoved;
-//		Fbox				m_saved_box;
+//		Fbox3				m_saved_box;
 
 public:
 	CBreakableObject( );

@@ -758,7 +758,7 @@ void CPHMovementControl::SetActorRestrictorRadius(CPHCharacter::ERestrictionType
 
 void CPHMovementControl::Load(const char* section)
 {
-	Fbox bb;
+	Fbox3 bb;
 
 	// m_PhysicMovementControl: BOX
 	Fvector vBOX1_center = pSettings->r_fvector3(section, "ph_box1_center");

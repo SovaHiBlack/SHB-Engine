@@ -74,8 +74,8 @@ static float IReceived = 0;
 static float ICoincidenced = 0;
 
 //skeleton
-static Fbox		bbStandBox;
-static Fbox		bbCrouchBox;
+static Fbox3		bbStandBox;
+static Fbox3		bbCrouchBox;
 Flags32			psActorFlags={0};
 
 CActor::CActor() : CEntityAlive()
@@ -262,7 +262,9 @@ void CActor::Load	(const char* section )
 
 	// m_PhysicMovementControl: General
 	//m_PhysicMovementControl->SetParent		(this);
-	Fbox	bb;Fvector	vBOX_center,vBOX_size;
+	Fbox3 bb;
+	Fvector3 vBOX_center;
+	Fvector3 vBOX_size;
 	// m_PhysicMovementControl: BOX
 	vBOX_center= pSettings->r_fvector3	(section,"ph_box2_center"	);
 	vBOX_size	= pSettings->r_fvector3	(section,"ph_box2_size"		);
@@ -295,8 +297,6 @@ void CActor::Load	(const char* section )
 		character_physics_support()->movement()->SetActorRestrictorRadius(CPHCharacter::rtMonsterMedium,pSettings->r_float(section,"medium_monster_restrictor_radius"));
 	character_physics_support()->movement()->Load(section);
 
-	
-
 	m_fWalkAccel				= pSettings->r_float(section,"walk_accel");	
 	m_fJumpSpeed				= pSettings->r_float(section,"jump_speed");
 	m_fRunFactor				= pSettings->r_float(section,"run_coef");
@@ -308,7 +308,6 @@ void CActor::Load	(const char* section )
 
 	m_fWalk_StrafeFactor		= READ_IF_EXISTS(pSettings, r_float, section, "walk_strafe_coef", 1.0f);
 	m_fRun_StrafeFactor			= READ_IF_EXISTS(pSettings, r_float, section, "run_strafe_coef", 1.0f);
-
 
 	m_fCamHeightFactor			= pSettings->r_float(section,"camera_height_factor");
 	character_physics_support()->movement()		->SetJumpUpVelocity(m_fJumpSpeed);
@@ -380,8 +379,8 @@ void CActor::Load	(const char* section )
 	invincibility_fire_shield_1st	= READ_IF_EXISTS(pSettings,r_string,section,"Invincibility_Shield_1st",0);
 	invincibility_fire_shield_3rd	= READ_IF_EXISTS(pSettings,r_string,section,"Invincibility_Shield_3rd",0);
 //-----------------------------------------
-	m_AutoPickUp_AABB				= READ_IF_EXISTS(pSettings,r_fvector3,section,"AutoPickUp_AABB",Fvector().set(0.02f, 0.02f, 0.02f));
-	m_AutoPickUp_AABB_Offset		= READ_IF_EXISTS(pSettings,r_fvector3,section,"AutoPickUp_AABB_offs",Fvector().set(0, 0, 0));
+	m_AutoPickUp_AABB				= READ_IF_EXISTS(pSettings,r_fvector3,section,"AutoPickUp_AABB", Fvector3().set(0.02f, 0.02f, 0.02f));
+	m_AutoPickUp_AABB_Offset		= READ_IF_EXISTS(pSettings,r_fvector3,section,"AutoPickUp_AABB_offs", Fvector3().set(0, 0, 0));
 
 	CStringTable string_table;
 	m_sCharacterUseAction			= "character_use";
@@ -392,17 +391,16 @@ void CActor::Load	(const char* section )
 	m_sInventoryBoxUseAction		= "inventory_box_use";
 	//---------------------------------------------------------------------
 	m_sHeadShotParticle	= READ_IF_EXISTS(pSettings,r_string,section,"HeadShotParticle",0);
-
 }
 
-void CActor::PHHit(float P,Fvector &dir, CObject *who,s16 element,Fvector p_in_object_space, float impulse, ALife::EHitType hit_type /* = ALife::eHitTypeWound */)
+void CActor::PHHit(float P, Fvector3& dir, CObject *who,s16 element, Fvector3  p_in_object_space, float impulse, ALife::EHitType hit_type /* = ALife::eHitTypeWound */)
 {
 	m_pPhysics_support->in_Hit(P,dir,who,element,p_in_object_space,impulse,hit_type,!g_Alive());
 }
 
 struct playing_pred
 {
-	IC	bool	operator()			(ref_sound &s)
+	inline	bool	operator()			(ref_sound &s)
 	{
 		return	(NULL != s._feedback() );
 	}
@@ -424,7 +422,8 @@ void	CActor::Hit							(SHit* pHDS)
 	if(ph_dbg_draw_mask.test(phDbgCharacterControl)) 
 	{
 		DBG_OpenCashedDraw();
-		Fvector to;to.add(Position(),Fvector().mul(HDS.dir,HDS.phys_impulse()));
+		Fvector3 to;
+		to.add(Position(), Fvector3().mul(HDS.dir,HDS.phys_impulse()));
 		DBG_DrawLine(Position(),to,D3DCOLOR_XRGB(124,124,0));
 		DBG_ClosedCashedDraw(500);
 	}
@@ -454,7 +453,7 @@ void	CActor::Hit							(SHit* pHDS)
 		}
 		if (bPlaySound && !b_snd_hit_playing) 
 		{
-			Fvector point		= Position();
+			Fvector3 point		= Position();
 			point.y				+= CameraHeight();
 			S.play_at_pos		(this, point);
 		};
@@ -504,10 +503,10 @@ void	CActor::Hit							(SHit* pHDS)
 }
 
 void CActor::HitMark	(float P, 
-						 Fvector dir,			
+						 Fvector3 dir,
 						 CObject* who, 
 						 s16 element, 
-						 Fvector position_in_bone_space, 
+						 Fvector3 position_in_bone_space,
 						 float impulse,  
 						 ALife::EHitType hit_type)
 {
@@ -521,17 +520,19 @@ void CActor::HitMark	(float P,
 		if(!ce)
 			{
 			int id						= -1;
-			Fvector						cam_pos,cam_dir,cam_norm;
+			Fvector3						cam_pos;
+			Fvector3 cam_dir;
+			Fvector3 cam_norm;
 			cam_Active()->Get			(cam_pos,cam_dir,cam_norm);
 			cam_dir.normalize_safe		();
 			dir.normalize_safe			();
 
 			float ang_diff				= angle_difference	(cam_dir.getH(), dir.getH());
-			Fvector						cp;
+			Fvector3						cp;
 			cp.crossproduct				(cam_dir,dir);
 			bool bUp					=(cp.y>0.0f);
 
-			Fvector cross;
+			Fvector3 cross;
 			cross.crossproduct			(cam_dir, dir);
 			VERIFY						(ang_diff>=0.0f && ang_diff<=PI);
 
@@ -567,7 +568,7 @@ void CActor::HitMark	(float P,
 
 }
 
-void CActor::HitSignal(float perc, Fvector& vLocalDir, CObject* who, s16 element)
+void CActor::HitSignal(float perc, Fvector3& vLocalDir, CObject* who, s16 element)
 {
 	if (g_Alive()) 
 	{
@@ -575,13 +576,13 @@ void CActor::HitSignal(float perc, Fvector& vLocalDir, CObject* who, s16 element
 		// stop-motion
 		if (character_physics_support()->movement()->Environment()==CPHMovementControl::peOnGround || character_physics_support()->movement()->Environment()==CPHMovementControl::peAtWall)
 		{
-			Fvector zeroV;
+			Fvector3 zeroV;
 			zeroV.set			(0,0,0);
 			character_physics_support()->movement()->SetVelocity(zeroV);
 		}
 		
 		// check damage bone
-		Fvector D;
+		Fvector3 D;
 		XFORM().transform_dir(D,vLocalDir);
 
 		float	yaw, pitch;
@@ -668,10 +669,10 @@ void CActor::SwitchOutBorder(bool new_border_state)
 	m_bOutBorder=new_border_state;
 }
 
-void CActor::g_Physics(Fvector& _accel, float jump, float dt)
+void CActor::g_Physics(Fvector3& _accel, float jump, float dt)
 {
 	// Correct accel
-	Fvector						accel;
+	Fvector3						accel;
 	accel.set					(_accel);
 	hit_slowmo					-=	dt;
 	if (hit_slowmo<0)			hit_slowmo = 0.f;
@@ -696,8 +697,9 @@ void CActor::g_Physics(Fvector& _accel, float jump, float dt)
 			Cameras().AddCamEffector		(xr_new<CEffectorFall> (character_physics_support()->movement()->gcontact_Power));
 		if (!fis_zero(character_physics_support()->movement()->gcontact_HealthLost))	{
 			const ICollisionDamageInfo* di=character_physics_support()->movement()->CollisionDamageInfo();
-			Fvector hdir;di->HitDir(hdir);
-			SetHitInfo(this, NULL, 0, Fvector().set(0, 0, 0), hdir);
+			Fvector3 hdir;
+			di->HitDir(hdir);
+			SetHitInfo(this, NULL, 0, Fvector3().set(0, 0, 0), hdir);
 			if (Level().CurrentControlEntity() == this)
 			{
 				SHit HDS = SHit(character_physics_support()->movement()->gcontact_HealthLost,hdir,di->DamageInitiator(),character_physics_support()->movement()->ContactBone(),di->HitPos(),0.f,di->HitType());
@@ -883,7 +885,8 @@ void CActor::shedule_Update	(u32 DT)
 		g_SetAnimation			(mstate_real);
 		
 		// Check for game-contacts
-		Fvector C; float R;		
+		Fvector3 C;
+		float R;
 		//m_PhysicMovementControl->GetBoundingSphere	(C,R);
 		
 		Center(C);
@@ -968,9 +971,9 @@ void CActor::shedule_Update	(u32 DT)
 		{
 			if(!m_HeavyBreathSnd._feedback())
 			{
-				m_HeavyBreathSnd.play_at_pos(this, Fvector().set(0,ACTOR_HEIGHT,0), sm_Looped | sm_2D);
+				m_HeavyBreathSnd.play_at_pos(this, Fvector3().set(0,ACTOR_HEIGHT,0), sm_Looped | sm_2D);
 			}else{
-				m_HeavyBreathSnd.set_position(Fvector().set(0,ACTOR_HEIGHT,0));
+				m_HeavyBreathSnd.set_position(Fvector3().set(0,ACTOR_HEIGHT,0));
 			}
 		}else if(m_HeavyBreathSnd._feedback()){
 			m_HeavyBreathSnd.stop		();
@@ -979,7 +982,7 @@ void CActor::shedule_Update	(u32 DT)
 		float bs = conditions().BleedingSpeed();
 		if(bs>0.6f)
 		{
-			Fvector snd_pos;
+			Fvector3 snd_pos;
 			snd_pos.set(0,ACTOR_HEIGHT,0);
 			if(!m_BloodSnd._feedback())
 				m_BloodSnd.play_at_pos(this, snd_pos, sm_Looped | sm_2D);
@@ -1147,7 +1150,7 @@ void CActor::OnHUDDraw	(CCustomHUD* /**hud/**/)
 #endif
 }
 
-void CActor::RenderIndicator			(Fvector dpos, float r1, float r2, ref_shader IndShader)
+void CActor::RenderIndicator			(Fvector3 dpos, float r1, float r2, ref_shader IndShader)
 {
 	if (!g_Alive()) return;
 
@@ -1161,10 +1164,12 @@ void CActor::RenderIndicator			(Fvector dpos, float r1, float r2, ref_shader Ind
 	smart_cast<CKinematics*>(Visual())->CalculateBones	();
 	M.mul						(XFORM(),BI.mTransform);
 
-	Fvector pos = M.c; pos.add(dpos);
-	const Fvector& T        = Device.vCameraTop;
-	const Fvector& R        = Device.vCameraRight;
-	Fvector Vr, Vt;
+	Fvector3 pos = M.c;
+	pos.add(dpos);
+	const Fvector3& T        = Device.vCameraTop;
+	const Fvector3& R        = Device.vCameraRight;
+	Fvector3 Vr;
+	Fvector3 Vt;
 	Vr.x            = R.x*r1;
 	Vr.y            = R.y*r1;
 	Vr.z            = R.z*r1;
@@ -1172,7 +1177,10 @@ void CActor::RenderIndicator			(Fvector dpos, float r1, float r2, ref_shader Ind
 	Vt.y            = T.y*r2;
 	Vt.z            = T.z*r2;
 
-	Fvector         a,b,c,d;
+	Fvector3         a;
+	Fvector3 b;
+	Fvector3 c;
+	Fvector3 d;
 	a.sub           (Vt,Vr);
 	b.add           (Vt,Vr);
 	c.invert        (a);
@@ -1194,7 +1202,7 @@ void CActor::RenderIndicator			(Fvector dpos, float r1, float r2, ref_shader Ind
 static float mid_size = 0.097f;
 static float fontsize = 15.0f;
 static float upsize	= 0.33f;
-void CActor::RenderText				(const char* Text, Fvector dpos, float* pdup, u32 color)
+void CActor::RenderText				(const char* Text, Fvector3 dpos, float* pdup, u32 color)
 {
 	if (!g_Alive()) return;
 	
@@ -1203,12 +1211,15 @@ void CActor::RenderText				(const char* Text, Fvector dpos, float* pdup, u32 col
 	smart_cast<CKinematics*>(Visual())->CalculateBones	();
 	M.mul						(XFORM(),BI.mTransform);
 	//------------------------------------------------
-	Fvector v0, v1;
-	v0.set(M.c); v1.set(M.c);
-	Fvector T        = Device.vCameraTop;
+	Fvector3 v0;
+	Fvector3 v1;
+	v0.set(M.c);
+	v1.set(M.c);
+	Fvector3 T        = Device.vCameraTop;
 	v1.add(T);
 
-	Fvector v0r, v1r;
+	Fvector3 v0r;
+	Fvector3 v1r;
 	Device.mFullTransform.transform(v0r,v0);
 	Device.mFullTransform.transform(v1r,v1);
 	float size = v1r.distance_to(v0r);
@@ -1426,12 +1437,12 @@ void	CActor::SetShotRndSeed		(int Seed)
 	else m_ShotRndSeed = int(Level().timeServer_Async());
 };
 
-Fvector CActor::GetMissileOffset	() const
+Fvector3 CActor::GetMissileOffset	() const
 {
 	return m_vMissileOffset;
 }
 
-void CActor::SetMissileOffset		(const Fvector &vNewOffset)
+void CActor::SetMissileOffset		(const Fvector3& vNewOffset)
 {
 	m_vMissileOffset.set(vNewOffset);
 }

@@ -203,7 +203,7 @@ public:
 	void			_stab		(const AABBNoLeafNode* node)
 	{
 		// Actual box-box test
-		if (!_box((Fvector&)node->mAABB.mCenter,(Fvector&)node->mAABB.mExtents))	return;
+		if (!_box((Fvector3&)node->mAABB.mCenter,(Fvector3&)node->mAABB.mExtents))	return;
 		
 		// 1st chield
 		if (node->HasLeaf())	_prim	(node->GetPrimitive());

@@ -17,7 +17,7 @@
 #include "agent_member_manager.h"
 
 struct CRemoveMemberCorpsesPredicate {
-	IC	bool operator()				(CMemberCorpse &corpse) const
+	inline	bool operator()				(CMemberCorpse &corpse) const
 	{
 		return		(!!corpse.reactor());
 	}
@@ -25,13 +25,13 @@ struct CRemoveMemberCorpsesPredicate {
 
 struct CRemoveOfflineCorpsesPredicate {
 	CObject		*m_object;
-	IC		 CRemoveOfflineCorpsesPredicate	(CObject *object)
+	inline		 CRemoveOfflineCorpsesPredicate	(CObject *object)
 	{
 		VERIFY		(object);
 		m_object	= object;
 	}
 
-	IC	bool operator()						(CMemberCorpse &corpse) const
+	inline	bool operator()						(CMemberCorpse &corpse) const
 	{
 		return		(corpse.corpse()->ID() == m_object->ID());
 	}

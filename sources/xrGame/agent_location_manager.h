@@ -26,22 +26,22 @@ private:
 	LOCATIONS					m_danger_locations;
 
 protected:
-	IC		CAgentManager		&object					() const;
+	inline		CAgentManager		&object					() const;
 			void				remove_old_danger_covers();
 
 
 public:
-	IC							CAgentLocationManager	(CAgentManager *object);
-	IC		CDangerLocationPtr	location				(const Fvector &position);
-	IC		CDangerLocationPtr	location				(const CObject *object);
-	IC		void				clear					();
+	inline							CAgentLocationManager	(CAgentManager *object);
+	inline		CDangerLocationPtr	location				(const Fvector &position);
+	inline		CDangerLocationPtr	location				(const CObject *object);
+	inline		void				clear					();
 			void				update					();
 			void				add						(CDangerLocationPtr location);
 			float				danger					(const CCoverPoint *cover, CStalker *member) const;
 			bool				suitable				(CStalker *object, const CCoverPoint *location, bool use_enemy_info) const;
 			void				make_suitable			(CStalker *object, const CCoverPoint *location) const;
 			void				remove_links			(CObject *object);
-	IC		const LOCATIONS		&locations				() const;
+	inline		const LOCATIONS		&locations				() const;
 };
 
 #include "agent_location_manager_inline.h"

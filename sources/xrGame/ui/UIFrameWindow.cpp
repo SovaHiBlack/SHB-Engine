@@ -89,7 +89,8 @@ void CUIFrameWindow::FrameClip(const Frect parentAbsR)
 	int			tile_x, tile_y;
 	float		rem_x, rem_y;
 	float			size_x, size_y;
-	Frect		r, null;
+	Frect		r;
+	Frect null;
 	null.set(0.0f, 0.0f, 0.0f, 0.0f);
 
 	m_UIWndFrame.UpdateSize();

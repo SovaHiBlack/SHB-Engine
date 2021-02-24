@@ -105,7 +105,7 @@ void CObject::setVisible(BOOL _visible)
 
 void	CObject::Center					(Fvector3& C)	const	{ VERIFY2(renderable.visual,*cName()); renderable.xform.transform_tiny(C,renderable.visual->vis.sphere.P);	}
 float	CObject::Radius					()				const	{ VERIFY2(renderable.visual,*cName()); return renderable.visual->vis.sphere.R;								}
-const	Fbox&	CObject::BoundingBox	()				const	{ VERIFY2(renderable.visual,*cName()); return renderable.visual->vis.box;									}
+const	Fbox3&	CObject::BoundingBox	()				const	{ VERIFY2(renderable.visual,*cName()); return renderable.visual->vis.box;									}
 
 CObject::CObject		( )		: ISpatial(g_SpatialSpace)
 {

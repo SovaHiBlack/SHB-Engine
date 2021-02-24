@@ -60,7 +60,7 @@ bool CCF_Skeleton::_ElementCenter(u16 elem_id, Fvector3& e_center)
 
 IC bool RAYvsOBB(const Fmatrix& IM, const Fvector3& b_hsize, const Fvector3& S, const Fvector3& D, float &R, BOOL bCull)
 {
-	Fbox E	= {-b_hsize.x, -b_hsize.y, -b_hsize.z,	b_hsize.x,	b_hsize.y,	b_hsize.z};
+	Fbox3 E	= {-b_hsize.x, -b_hsize.y, -b_hsize.z,	b_hsize.x,	b_hsize.y,	b_hsize.z};
 	// XForm world-2-local
 	Fvector3	SL;
 	Fvector3 DL;
@@ -69,8 +69,8 @@ IC bool RAYvsOBB(const Fmatrix& IM, const Fvector3& b_hsize, const Fvector3& S, 
 	IM.transform_dir	(DL,D);
 
 	// Actual test
-	Fbox::ERP_Result rp_res = E.Pick2(SL,DL,PL);
-	if ((rp_res==Fbox::rpOriginOutside)||(!bCull&&(rp_res==Fbox::rpOriginInside))){
+	Fbox3::ERP_Result rp_res = E.Pick2(SL,DL,PL);
+	if ((rp_res== Fbox3::rpOriginOutside)||(!bCull&&(rp_res== Fbox3::rpOriginInside))){
 		float d = PL.distance_to_sqr(SL);
 		if (d<R*R) {
 			R		= _sqrt(d);
@@ -169,7 +169,7 @@ void CCF_Skeleton::BuildTopLevel()
 {
 	dwFrameTL			= Device.dwFrame;
 	IRender_Visual* K	= owner->Visual();
-	Fbox& B				= K->vis.box;
+	Fbox3& B				= K->vis.box;
 	bv_box.min.average	(B.min);
 	bv_box.max.average	(B.max);
 	bv_box.grow			(0.05f);
@@ -281,7 +281,7 @@ BOOL CCF_EventBox::Contact(CObject* O)
 BOOL CCF_EventBox::_RayQuery(const collide::ray_defs& Q, collide::rq_results& R)
 {	return FALSE; }
 /*
-void CCF_EventBox::_BoxQuery(const Fbox& B, const Fmatrix& M, u32 flags)
+void CCF_EventBox::_BoxQuery(const Fbox3& B, const Fmatrix& M, u32 flags)
 {   return; }
 */
 
@@ -323,7 +323,7 @@ BOOL CCF_Shape::_RayQuery(const collide::ray_defs& Q, collide::rq_results& R)
 			break;
 		case 1: // box
 			{
-				Fbox				box;
+			Fbox3				box;
 				box.identity		();
 				Fmatrix& B			= shape.data.ibox;
 				Fvector3				S1;
@@ -331,8 +331,8 @@ BOOL CCF_Shape::_RayQuery(const collide::ray_defs& Q, collide::rq_results& R)
 				Fvector3  P;
 				B.transform_tiny	(S1,dS);
 				B.transform_dir		(D1,dD);
-				Fbox::ERP_Result	rp_res 	= box.Pick2(S1,D1,P);
-				if ((rp_res==Fbox::rpOriginOutside)||(!(Q.flags&CDB::OPT_CULL)&&(rp_res==Fbox::rpOriginInside))){
+				Fbox3::ERP_Result	rp_res 	= box.Pick2(S1,D1,P);
+				if ((rp_res== Fbox3::rpOriginOutside)||(!(Q.flags&CDB::OPT_CULL)&&(rp_res== Fbox3::rpOriginInside))){
 					float d			= P.distance_to_sqr(dS);
 					if (d<range*range) {
 						range		= _sqrt(d);
@@ -348,7 +348,7 @@ BOOL CCF_Shape::_RayQuery(const collide::ray_defs& Q, collide::rq_results& R)
 	return bHIT;
 }
 /*
-void CCF_Shape::_BoxQuery(const Fbox& B, const Fmatrix& M, u32 flags)
+void CCF_Shape::_BoxQuery(const Fbox3& B, const Fmatrix& M, u32 flags)
 {   return; }
 */
 void CCF_Shape::add_sphere	(Fsphere& S )

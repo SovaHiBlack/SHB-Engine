@@ -97,7 +97,7 @@ void CPHWorld::Create()
 	m_commander							=xr_new<CPHCommander>();
 	//dVector3 extensions={2048,256,2048};
 	/*
-	Fbox	level_box		=	Level().ObjectSpace.GetBoundingVolume();
+	Fbox3	level_box		=	Level().ObjectSpace.GetBoundingVolume();
 	Fvector level_size,level_center;
 	level_box				.	getsize		(level_size);
 	level_box				.	getcenter	(level_center);

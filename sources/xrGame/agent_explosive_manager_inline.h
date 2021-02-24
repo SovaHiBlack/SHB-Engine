@@ -8,19 +8,19 @@
 
 #pragma once
 
-IC	CAgentExplosiveManager::CAgentExplosiveManager							(CAgentManager *object)
+inline	CAgentExplosiveManager::CAgentExplosiveManager							(CAgentManager *object)
 {
 	VERIFY		(object);
 	m_object	= object;
 }
 
-IC	CAgentManager &CAgentExplosiveManager::object							() const
+inline	CAgentManager &CAgentExplosiveManager::object							() const
 {
 	VERIFY		(m_object);
 	return		(*m_object);
 }
 
-IC	CAgentExplosiveManager::EXPLOSIVES &CAgentExplosiveManager::explosives	()
+inline	CAgentExplosiveManager::EXPLOSIVES &CAgentExplosiveManager::explosives	()
 {
 	return		(m_explosives);
 }

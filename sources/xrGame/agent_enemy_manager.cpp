@@ -37,7 +37,7 @@ const unsigned __int32 __c2					= 0x0f0f0f0f;
 const unsigned __int32 __c3					= 0x00ff00ff;
 const unsigned __int32 __c4					= 0x0000003f;
 
-IC	u32 population(const u32 &b) {
+inline	u32 population(const u32 &b) {
 	u32		a = b;
 	a		= (a & __c0) + ((a >> 1) & __c0);
 	a		= (a & __c1) + ((a >> 2) & __c1);
@@ -52,13 +52,13 @@ struct CEnemyFiller {
 	ENEMIES			*m_enemies;
 	squad_mask_type	m_mask;
 	
-	IC			CEnemyFiller					(ENEMIES *enemies, squad_mask_type mask)
+	inline			CEnemyFiller					(ENEMIES *enemies, squad_mask_type mask)
 	{
 		m_enemies					= enemies;
 		m_mask						= mask;
 	}
 
-	IC	void	operator()						(const CEntityAlive *enemy) const
+	inline	void	operator()						(const CEntityAlive *enemy) const
 	{
 		ENEMIES::iterator			I = std::find(m_enemies->begin(),m_enemies->end(),enemy);
 		if (I == m_enemies->end()) {
@@ -71,7 +71,7 @@ struct CEnemyFiller {
 };
 
 struct remove_wounded_predicate {
-	IC	bool	operator()						(const CMemberEnemy &enemy) const
+	inline	bool	operator()						(const CMemberEnemy &enemy) const
 	{
 		const CStalker			*stalker = smart_cast<const CStalker*>(enemy.m_object);
 		if (!stalker)
@@ -102,18 +102,18 @@ void CAgentEnemyManager::fill_enemies			()
 
 	VERIFY								(!m_enemies.empty());
 
+	for (int i = 0, n = (int) m_wounded.size( ); i < n; ++i)
 	{
-		for (int i=0, n=(int)m_wounded.size(); i<n; ++i) {
-			const CEntityAlive			*enemy = m_wounded[i].first;
-			ENEMIES::const_iterator		I = std::find(m_enemies.begin(),m_enemies.end(),enemy);
-			if (I != m_enemies.end())
-				continue;
+		const CEntityAlive* enemy = m_wounded[i].first;
+		ENEMIES::const_iterator		I = std::find(m_enemies.begin( ), m_enemies.end( ), enemy);
+		if (I != m_enemies.end( ))
+			continue;
 
-			m_wounded.erase				(m_wounded.begin() + i);
-			--i;
-			--n;
-		}
+		m_wounded.erase(m_wounded.begin( ) + i);
+		--i;
+		--n;
 	}
+
 
 	m_only_wounded_left					= true;
 	m_is_any_wounded					= false;
@@ -354,7 +354,7 @@ void CAgentEnemyManager::permutate_enemies		()
 }
 
 template <typename T>
-IC	void CAgentEnemyManager::setup_mask			(xr_vector<T> &objects, CMemberEnemy &enemy, const squad_mask_type &non_combat_members)
+inline	void CAgentEnemyManager::setup_mask			(xr_vector<T> &objects, CMemberEnemy &enemy, const squad_mask_type &non_combat_members)
 {
 	xr_vector<T>::iterator	I = std::find(objects.begin(),objects.end(),enemy.m_object->ID());
 	if (I != objects.end()) {
@@ -365,7 +365,7 @@ IC	void CAgentEnemyManager::setup_mask			(xr_vector<T> &objects, CMemberEnemy &e
 	}
 }
 
-IC	void CAgentEnemyManager::setup_mask			(CMemberEnemy &enemy, const squad_mask_type &non_combat_members)
+inline	void CAgentEnemyManager::setup_mask			(CMemberEnemy &enemy, const squad_mask_type &non_combat_members)
 {
 	setup_mask				(object().memory().visibles(),enemy,non_combat_members);
 	setup_mask				(object().memory().sounds(),enemy,non_combat_members);
@@ -591,13 +591,13 @@ void CAgentEnemyManager::distribute_enemies		()
 struct wounded_predicate {
 	CObject			*m_object;
 
-	IC			wounded_predicate	(CObject *object)
+	inline			wounded_predicate	(CObject *object)
 	{
 		VERIFY		(object);
 		m_object	= object;
 	}
 
-	IC	bool	operator()			(const CAgentEnemyManager::WOUNDED_ENEMY &wounded_enemy) const
+	inline	bool	operator()			(const CAgentEnemyManager::WOUNDED_ENEMY &wounded_enemy) const
 	{
 		if (wounded_enemy.first == m_object)
 			return	(true);
@@ -642,13 +642,13 @@ private:
 	const CEntityAlive				*m_object;
 
 public:
-	IC			find_wounded_predicate			(const CEntityAlive *object)
+	inline			find_wounded_predicate			(const CEntityAlive *object)
 	{
 		m_object					= object;
 		VERIFY						(m_object);
 	}
 
-	IC	bool	operator()						(const CAgentEnemyManager::WOUNDED_ENEMY &enemy) const
+	inline	bool	operator()						(const CAgentEnemyManager::WOUNDED_ENEMY &enemy) const
 	{
 		return						(enemy.first == m_object);
 	}

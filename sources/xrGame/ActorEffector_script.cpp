@@ -5,7 +5,7 @@
 #include "ActorEffector.h"
 #include "..\ENGINE\ObjectAnimator.h"
 
-void CAnimatorCamEffectorScriptCB::ProcessIfInvalid(Fvector &p, Fvector &d, Fvector &n, float& fFov, float& fFar, float& fAspect)
+void CAnimatorCamEffectorScriptCB::ProcessIfInvalid(Fvector3& p, Fvector3& d, Fvector3& n, float& fFov, float& fFar, float& fAspect)
 {
 	if(m_bAbsolutePositioning)
 	{

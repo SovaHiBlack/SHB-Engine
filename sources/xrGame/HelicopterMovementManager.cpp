@@ -164,7 +164,7 @@ bool SHeliMovementState::AlreadyOnPoint()
 
 void SHeliMovementState::getPathAltitude (Fvector& point, float base_altitude)
 {
-	Fbox	boundingVolume = Level().ObjectSpace.GetBoundingVolume();
+	Fbox3	boundingVolume = Level().ObjectSpace.GetBoundingVolume();
 	Fvector boundSize;
 	boundingVolume.getsize(boundSize);
 
@@ -301,7 +301,7 @@ void SHeliMovementState::load(IReader &input_packet)
 
 float SHeliMovementState::GetSafeAltitude()
 {
-	Fbox	boundingVolume = Level().ObjectSpace.GetBoundingVolume();
+	Fbox3	boundingVolume = Level().ObjectSpace.GetBoundingVolume();
 	return	boundingVolume.max.y+safe_altitude_add;
 }
 

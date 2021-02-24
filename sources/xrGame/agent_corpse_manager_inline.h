@@ -8,31 +8,31 @@
 
 #pragma once
 
-IC	CAgentCorpseManager::CAgentCorpseManager	(CAgentManager *object)
+inline	CAgentCorpseManager::CAgentCorpseManager	(CAgentManager *object)
 {
 	VERIFY						(object);
 	m_object					= object;
 }
 
-IC	CAgentManager &CAgentCorpseManager::object	() const
+inline	CAgentManager &CAgentCorpseManager::object	() const
 {
 	VERIFY						(m_object);
 	return						(*m_object);
 }
 
-IC	void CAgentCorpseManager::register_corpse	(CStalker*corpse)
+inline	void CAgentCorpseManager::register_corpse	(CStalker*corpse)
 {
 	MEMBER_CORPSES::iterator	I = std::find(m_corpses.begin(),m_corpses.end(),corpse);
 	VERIFY2						(I == m_corpses.end(),"Cannot register corpse more than a time!");
 	m_corpses.push_back			(CMemberCorpse(corpse,0,Device.dwTimeGlobal));
 }
 
-IC	CAgentCorpseManager::MEMBER_CORPSES &CAgentCorpseManager::corpses	()
+inline	CAgentCorpseManager::MEMBER_CORPSES &CAgentCorpseManager::corpses	()
 {
 	return						(m_corpses);
 }
 
-IC	void CAgentCorpseManager::clear				()
+inline	void CAgentCorpseManager::clear				()
 {
 	m_corpses.clear				();
 }

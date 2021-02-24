@@ -18,7 +18,7 @@ namespace LevelGraph {
 		__forceinline	u32				vertex_count			() const;
 		__forceinline	float			cell_size				() const;
 		__forceinline	float			factor_y				() const;
-		__forceinline	const Fbox		&box					() const;
+		__forceinline	const Fbox3&	box					() const;
 		__forceinline const xrGUID	&guid					() const;
 	};
 

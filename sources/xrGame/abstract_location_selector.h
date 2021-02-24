@@ -28,28 +28,28 @@ protected:
 	CRestrictedObject			*m_restricted_object;
 	
 protected:
-	IC			void			perform_search				(const _vertex_id_type game_vertex_id);
-	IC	virtual	void			before_search				(_vertex_id_type &vertex_id);
-	IC	virtual	void			after_search				();
+	inline			void			perform_search				(const _vertex_id_type game_vertex_id);
+	inline	virtual	void			before_search				(_vertex_id_type &vertex_id);
+	inline	virtual	void			after_search				();
 
 public:
-	IC							CAbstractLocationSelector	(CRestrictedObject *object);
-	IC	virtual					~CAbstractLocationSelector	();
-	IC	virtual void			reinit						(const _Graph *graph = 0);
+	inline							CAbstractLocationSelector	(CRestrictedObject *object);
+	inline	virtual					~CAbstractLocationSelector	();
+	inline	virtual void			reinit						(const _Graph *graph = 0);
 
-	IC			_vertex_id_type get_selected_vertex_id		() const;
+	inline			_vertex_id_type get_selected_vertex_id		() const;
 
-	IC			void			set_query_interval			(const u32 query_interval);
+	inline			void			set_query_interval			(const u32 query_interval);
 
-	IC			void			set_evaluator				(_VertexEvaluator *evaluator);
+	inline			void			set_evaluator				(_VertexEvaluator *evaluator);
 
-	IC			bool			failed						() const;
-	IC			bool			actual						(const _vertex_id_type start_vertex_id, bool path_completed);
-	IC			bool			used						() const;
-	IC			void			select_location				(const _vertex_id_type start_vertex_id, bool path_completed);
+	inline			bool			failed						() const;
+	inline			bool			actual						(const _vertex_id_type start_vertex_id, bool path_completed);
+	inline			bool			used						() const;
+	inline			void			select_location				(const _vertex_id_type start_vertex_id, bool path_completed);
 	// При поиске ноды сохранить найденный _кратчайший_ путь и найденную ноду
-	IC			void			set_dest_path				(xr_vector<_vertex_id_type> &path);
-	IC			void			set_dest_vertex				(_vertex_id_type &vertex_id);
+	inline			void			set_dest_path				(xr_vector<_vertex_id_type> &path);
+	inline			void			set_dest_vertex				(_vertex_id_type &vertex_id);
 };
 
 #include "abstract_location_selector_inline.h"

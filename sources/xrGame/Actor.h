@@ -104,7 +104,7 @@ public:
 	// Render
 	virtual void						renderable_Render			();
 	virtual BOOL						renderable_ShadowGenerate	();
-	virtual	void						feel_sound_new				(CObject* who, int type, CSound_UserDataPtr user_data, const Fvector& Position, float power);
+	virtual	void						feel_sound_new				(CObject* who, int type, CSound_UserDataPtr user_data, const Fvector3& Position, float power);
 	virtual	Feel::Sound*				dcast_FeelSound				()	{ return this;	}
 			float						m_snd_noise;
 #ifdef DEBUG
@@ -179,10 +179,10 @@ public:
 
 	virtual void						Die				(CObject* who);
 	virtual	void						Hit				(SHit* pHDS);
-	virtual	void						PHHit			(float P,Fvector &dir, CObject *who,s16 element,Fvector p_in_object_space, float impulse, ALife::EHitType hit_type /* = ALife::eHitTypeWound */);
-	virtual void						HitSignal		(float P, Fvector &vLocalDir,	CObject* who, s16 element);
+	virtual	void						PHHit			(float P, Fvector3& dir, CObject *who,s16 element, Fvector3 p_in_object_space, float impulse, ALife::EHitType hit_type /* = ALife::eHitTypeWound */);
+	virtual void						HitSignal		(float P, Fvector3& vLocalDir,	CObject* who, s16 element);
 			void						HitSector		(CObject* who, CObject* weapon);
-			void						HitMark			(float P, Fvector dir,			CObject* who, s16 element, Fvector position_in_bone_space, float impulse,  ALife::EHitType hit_type);
+			void						HitMark			(float P, Fvector3 dir,			CObject* who, s16 element, Fvector3 position_in_bone_space, float impulse,  ALife::EHitType hit_type);
 
 	virtual float						GetMass				() ;
 	virtual float						Radius				() const;
@@ -340,8 +340,8 @@ public:
 	//////////////////////////////////////////////////////////////////////////
 public:
 	CCameraManager&			Cameras				() 	{VERIFY(m_pActorEffector); return *m_pActorEffector;}
-	IC CCameraBase*			cam_Active			()	{return cameras[cam_active];}
-	IC CCameraBase*			cam_FirstEye		()	{return cameras[eacFirstEye];}
+	inline CCameraBase*			cam_Active			()	{return cameras[cam_active];}
+	inline CCameraBase*			cam_FirstEye		()	{return cameras[eacFirstEye];}
 
 protected:
 	void					cam_Set					(EActorCameras style);
@@ -355,7 +355,7 @@ protected:
 	CCameraBase*			cameras[eacMaxCam];
 	EActorCameras			cam_active;
 	float					fPrevCamPos;
-	Fvector					vPrevCamDir;
+	Fvector3				vPrevCamDir;
 	float					fCurAVelocity;
 	CEffectorBobbing*		pCamBobbing;
 
@@ -419,7 +419,7 @@ public:
 	// Motions (передвижени€ актрера)
 	//////////////////////////////////////////////////////////////////////////
 public:
-	void					g_cl_CheckControls		(u32 mstate_wf, Fvector &vControlAccel, float &Jump, float dt);
+	void					g_cl_CheckControls		(u32 mstate_wf, Fvector3& vControlAccel, float &Jump, float dt);
 	void					g_cl_ValidateMState		(float dt, u32 mstate_wf);
 	void					g_cl_Orientate			(u32 mstate_rl, float dt);
 	void					g_sv_Orientate			(u32 mstate_rl, float dt);
@@ -472,7 +472,7 @@ public:
 	//////////////////////////////////////////////////////////////////////////
 public:
 	virtual void						g_WeaponBones		(int &L, int &R1, int &R2);
-	virtual void						g_fireParams		(const CHudItem* pHudItem, Fvector& P, Fvector& D);
+	virtual void						g_fireParams		(const CHudItem* pHudItem, Fvector3& P, Fvector3& D);
 	virtual BOOL						g_State				(SEntityState& state) const;
 	virtual	float						GetWeaponAccuracy	() const;
 			bool						IsZoomAimingMode	() const {return m_bZoomAimingMode;}
@@ -495,11 +495,11 @@ protected:
 	//crouch+no acceleration
 	float								m_fDispCrouchNoAccelFactor;
 	//смещение firepoint относительно default firepoint дл€ бросани€ болтов и гранат
-	Fvector								m_vMissileOffset;
+	Fvector3								m_vMissileOffset;
 public:
 	// ѕолучение, и запись смещени€ дл€ гранат
-	Fvector								GetMissileOffset	() const;
-	void								SetMissileOffset	(const Fvector &vNewOffset);
+	Fvector3								GetMissileOffset	() const;
+	void								SetMissileOffset	(const Fvector3& vNewOffset);
 
 protected:
 	//косточки используемые при стрельбе
@@ -536,7 +536,7 @@ public:
 	virtual	BOOL						net_SaveRelevant	()																				;
 protected:
 	xr_deque<net_update>	NET;
-	Fvector					NET_SavedAccel;
+	Fvector3				NET_SavedAccel;
 	net_update				NET_Last;
 	BOOL					NET_WasInterpolating;	// previous update was by interpolation or by extrapolation
 	u32						NET_Time;				// server time of last update
@@ -561,17 +561,16 @@ virtual	bool				can_validate_position_on_spawn	(){return false;}
 	/// spline coeff /////////////////////
 	float			SCoeff[3][4];			//коэффициэнты дл€ сплайна Ѕизье
 	float			HCoeff[3][4];			//коэффициэнты дл€ сплайна Ёрмита
-	Fvector			IPosS, IPosH, IPosL;	//положение актера после интерпол€ции Ѕизье, Ёрмита, линейной
+	Fvector3		IPosS, IPosH, IPosL;	//положение актера после интерпол€ции Ѕизье, Ёрмита, линейной
 
 #ifdef DEBUG
-	DEF_DEQUE		(VIS_POSITION, Fvector);
+	DEF_DEQUE		(VIS_POSITION, Fvector3);
 
 	VIS_POSITION	LastPosS;
 	VIS_POSITION	LastPosH;
 	VIS_POSITION	LastPosL;
 #endif
 
-	
 	SPHNetState				LastState;
 	SPHNetState				RecalculatedState;
 	SPHNetState				PredictedState;
@@ -606,14 +605,14 @@ virtual	bool				can_validate_position_on_spawn	(){return false;}
 	// Actor physics
 	//////////////////////////////////////////////////////////////////////////
 public:
-			void			g_Physics		(Fvector& accel, float jump, float dt);
+			void			g_Physics		(Fvector3& accel, float jump, float dt);
 	virtual void			ForceTransform	(const Fmatrix &m);
 			void			SetPhPosition	(const Fmatrix& pos);
 	virtual void			PH_B_CrPr		(); // actions & operations before physic correction-prediction steps
 	virtual void			PH_I_CrPr		(); // actions & operations after correction before prediction steps
 	virtual void			PH_A_CrPr		(); // actions & operations after phisic correction-prediction steps
 //	virtual void			UpdatePosStack	( u32 Time0, u32 Time1 );
-	virtual void			MoveActor		(Fvector NewPos, Fvector NewDir);
+	virtual void			MoveActor		(Fvector3 NewPos, Fvector3 NewDir);
 
 	virtual void			SpawnAmmoForWeapon		(CInventoryItem *pIItem);
 	virtual void			RemoveAmmoForWeapon		(CInventoryItem *pIItem);
@@ -630,8 +629,8 @@ public:
 	virtual void			ChangeVisual			( shared_str NewVisual );
 	virtual void			OnChangeVisual			();
 
-	virtual void			RenderIndicator			(Fvector dpos, float r1, float r2, ref_shader IndShader);
-	virtual void			RenderText				(const char* Text, Fvector dpos, float* pdup, u32 color);
+	virtual void			RenderIndicator			(Fvector3 dpos, float r1, float r2, ref_shader IndShader);
+	virtual void			RenderText				(const char* Text, Fvector3 dpos, float* pdup, u32 color);
 
 	//////////////////////////////////////////////////////////////////////////
 	// Controlled Routines
@@ -640,7 +639,7 @@ public:
 			void			set_input_external_handler			(CActorInputHandler *handler);
 			bool			input_external_handler_installed	() const {return (m_input_external_handler != 0);}
 			
-	IC		void			lock_accel_for						(u32 time){m_time_lock_accel = Device.dwTimeGlobal + time;}
+			inline		void			lock_accel_for						(u32 time){m_time_lock_accel = Device.dwTimeGlobal + time;}
 
 private:	
 	CActorInputHandler		*m_input_external_handler;
@@ -657,17 +656,20 @@ protected:
 		const char* invincibility_fire_shield_1st;
 		shared_str				m_sHeadShotParticle;
 		u32						last_hit_frame;
+
 #ifdef DEBUG
 		friend class CLevelGraph;
 #endif
-		Fvector							m_AutoPickUp_AABB;
-		Fvector							m_AutoPickUp_AABB_Offset;
+
+		Fvector3							m_AutoPickUp_AABB;
+		Fvector3							m_AutoPickUp_AABB_Offset;
 
 		void							Check_for_AutoPickUp			();
 
 public:
 		void							SetWeaponHideState				(u32 State, bool bSet);
 		virtual CCustomOutfit*			GetOutfit() const;
+
 private:
 	CActorCondition				*m_entity_condition;
 
@@ -675,7 +677,7 @@ protected:
 	virtual	CEntityConditionSimple	*create_entity_condition	(CEntityConditionSimple* ec);
 
 public:
-	IC		CActorCondition		&conditions					() const;
+	inline		CActorCondition		&conditions					() const;
 	virtual DLL_Pure			*_construct					();
 	virtual bool				natural_weapon				() const {return false;}
 	virtual bool				natural_detector			() const {return false;}
@@ -685,15 +687,15 @@ protected:
 	u16							m_iLastHitterID;
 	u16							m_iLastHittingWeaponID;
 	s16							m_s16LastHittedElement;
-	Fvector						m_vLastHitDir;
-	Fvector						m_vLastHitPos;
+	Fvector3						m_vLastHitDir;
+	Fvector3						m_vLastHitPos;
 	float						m_fLastHealth;
 	bool						m_bWasHitted;
 	bool						m_bWasBackStabbed;
 
 	virtual		bool			Check_for_BackStab_Bone			(u16 element);
 public:
-	virtual void				SetHitInfo						(CObject* who, CObject* weapon, s16 element, Fvector Pos, Fvector Dir);
+	virtual void				SetHitInfo						(CObject* who, CObject* weapon, s16 element, Fvector3 Pos, Fvector3 Dir);
 
 	virtual	bool				InventoryAllowSprint			();
 	virtual void				OnNextWeaponSlot				();
@@ -704,8 +706,9 @@ public:
 	virtual	void				on_weapon_shot_start			(CWeapon *weapon);
 	virtual	void				on_weapon_shot_stop				(CWeapon *weapon);
 	virtual	void				on_weapon_hide					(CWeapon *weapon);
-			Fvector				weapon_recoil_delta_angle		();
-			Fvector				weapon_recoil_last_delta		();
+	Fvector3				weapon_recoil_delta_angle		();
+	Fvector3				weapon_recoil_last_delta		();
+
 protected:
 	virtual	void				update_camera					(CCameraShotEffector* effector);
 	//step manager
@@ -716,11 +719,11 @@ private:
 
 public:
 			void				SetActorVisibility				(u16 who, float value);
-	IC		CActorMemory		&memory							() const {VERIFY(m_memory); return(*m_memory); };
+			inline		CActorMemory		&memory							() const {VERIFY(m_memory); return(*m_memory); };
 
 	void						OnDifficultyChanged				();
 
-	IC float					HitProbability					() {return hit_probability;}
+	inline float					HitProbability					() {return hit_probability;}
 	virtual	CVisualMemoryManager*visual_memory					() const;
 
 	virtual	BOOL				BonePassBullet					(int boneID);
@@ -728,14 +731,14 @@ public:
 
 private:
 	collide::rq_results			RQR;
-			BOOL				CanPickItem						(const CFrustum& frustum, const Fvector& from, CObject* item);
+			BOOL				CanPickItem						(const CFrustum& frustum, const Fvector3& from, CObject* item);
 	xr_vector<ISpatial*>		ISpatialResult;
 
 private:
 	CLocationManager				*m_location_manager;
 
 public:
-	IC		const CLocationManager	&locations					() const
+	inline		const CLocationManager	&locations					() const
 	{
 		VERIFY						(m_location_manager);
 		return						(*m_location_manager);
@@ -750,7 +753,7 @@ public:
 
 extern bool		isActorAccelerated			(u32 mstate, bool ZoomMode);
 
-IC	CActorCondition	&CActor::conditions	() const{ VERIFY(m_entity_condition); return(*m_entity_condition);}
+inline	CActorCondition	&CActor::conditions	() const{ VERIFY(m_entity_condition); return(*m_entity_condition);}
 
 extern CActor*		g_actor;
 CActor*				Actor		();

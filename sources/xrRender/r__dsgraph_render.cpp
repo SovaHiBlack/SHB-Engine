@@ -515,7 +515,7 @@ void	R_dsgraph_structure::r_dsgraph_render_subspace	(IRender_Sector* _sector, CF
 	View							= 0;
 }
 
-void	R_dsgraph_structure::r_dsgraph_render_R1_box	(IRender_Sector* _S, Fbox& BB, int sh)
+void	R_dsgraph_structure::r_dsgraph_render_R1_box	(IRender_Sector* _S, Fbox3& BB, int sh)
 {
 	CSector*	S			= (CSector*)_S;
 	lstVisuals.clear		();

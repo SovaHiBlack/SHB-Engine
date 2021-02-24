@@ -91,7 +91,7 @@ public:
 	bool							m_bOnline;
 	bool							m_bDirectControl;
 	u32								m_tNodeID;
-	flags32							m_flags;
+	Flags32							m_flags;
 	ALife::_STORY_ID				m_story_id;
 	ALife::_SPAWN_STORY_ID			m_spawn_story_id;
 	CALifeSimulator					*m_alife_simulator;

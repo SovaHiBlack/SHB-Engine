@@ -2082,9 +2082,6 @@
     <ClInclude Include="wrapper_abstract_inline.h">
       <Filter>AI\AComponents\DecisionManagement</Filter>
     </ClInclude>
-    <ClInclude Include="action_management_config.h">
-      <Filter>AI\AComponents\DecisionManagement\ActionManagement</Filter>
-    </ClInclude>
     <ClInclude Include="action_base.h">
       <Filter>AI\AComponents\DecisionManagement\ActionManagement\ActionBase</Filter>
     </ClInclude>

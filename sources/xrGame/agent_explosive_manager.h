@@ -25,12 +25,12 @@ private:
 	TO_BE_DESTROYED			m_explosives_to_remove;
 
 protected:
-	IC		CAgentManager	&object					() const;
-	IC		EXPLOSIVES		&explosives				();
+	inline		CAgentManager	&object					() const;
+	inline		EXPLOSIVES		&explosives				();
 			bool			process_explosive		(CMemberOrder &member);
 
 public:
-	IC						CAgentExplosiveManager	(CAgentManager *object);
+	inline						CAgentExplosiveManager	(CAgentManager *object);
 			void			remove_links			(CObject *object);
 			void			register_explosive		(const CExplosive *explosive, const CGameObject *game_object);
 			void			react_on_explosives		();

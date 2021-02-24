@@ -669,7 +669,7 @@ void CCharacterPhysicsSupport::CollisionCorrectObjPos(const Fvector& start_from,
 	Fvector shift;
 	shift.sub(start_from, m_EntityAlife.Position( ));
 
-	Fbox box;
+	Fbox3 box;
 	if (character_create)
 	{
 		box.set(movement( )->Box( ));

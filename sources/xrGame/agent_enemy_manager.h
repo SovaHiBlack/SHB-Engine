@@ -32,8 +32,8 @@ private:
 
 protected:
 	template <typename T>
-	IC		void			setup_mask			(xr_vector<T> &objects, CMemberEnemy &enemy, const squad_mask_type &non_combat_members);
-	IC		void			setup_mask			(CMemberEnemy &enemy, const squad_mask_type &non_combat_members);
+	inline		void			setup_mask			(xr_vector<T> &objects, CMemberEnemy &enemy, const squad_mask_type &non_combat_members);
+	inline		void			setup_mask			(CMemberEnemy &enemy, const squad_mask_type &non_combat_members);
 			void			fill_enemies		();
 			void			compute_enemy_danger();
 			void			assign_enemies		();
@@ -42,13 +42,13 @@ protected:
 			void			assign_enemy_masks	();
 			float			evaluate			(const CEntityAlive *object0, const CEntityAlive *object1) const;
 			void			exchange_enemies	(CMemberOrder &member0, CMemberOrder &member1);
-	IC		CAgentManager	&object				() const;
+			inline		CAgentManager	&object				() const;
 
 public:
-	IC						CAgentEnemyManager	(CAgentManager *object);
+	inline						CAgentEnemyManager	(CAgentManager *object);
 			void			update				();
 			void			distribute_enemies	();
-	IC		ENEMIES			&enemies			();
+			inline		ENEMIES			&enemies			();
 			void			remove_links		(CObject *object);
 
 private:

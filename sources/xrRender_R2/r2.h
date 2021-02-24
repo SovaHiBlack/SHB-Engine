@@ -261,7 +261,7 @@ public:
 
 	// Occlusion culling
 	virtual BOOL					occ_visible					(vis_data&	V);
-	virtual BOOL					occ_visible					(Fbox&		B);
+	virtual BOOL					occ_visible					(Fbox3&		B);
 	virtual BOOL					occ_visible					(sPoly&		P);
 
 	// Main

@@ -131,8 +131,8 @@ private:
 	CObject* pObject;
 	EEnvironment															eOldEnvironment;
 	EEnvironment															eEnvironment;
-	Fbox																	aabb;
-	Fbox																	boxes[4];
+	Fbox3																	aabb;
+	Fbox3																	boxes[4];
 
 	u32																		trying_times[4];
 	Fvector																	trying_poses[4];
@@ -303,7 +303,7 @@ public:
 	{
 		return eOldEnvironment;
 	}
-	const Fbox& Box( )
+	const Fbox3& Box( )
 	{
 		return aabb;
 	}
@@ -311,7 +311,7 @@ public:
 	{
 		return m_dwCurBox;
 	}
-	const Fbox* Boxes( )
+	const Fbox3* Boxes( )
 	{
 		return boxes;
 	}
@@ -340,7 +340,7 @@ public:
 			}
 		}
 	}
-	void							SetBox(DWORD id, const Fbox& BB)
+	void							SetBox(DWORD id, const Fbox3& BB)
 	{
 		boxes[id].set(BB);
 		aabb.set(BB);

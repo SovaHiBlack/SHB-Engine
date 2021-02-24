@@ -22,14 +22,14 @@ private:
 	CAgentManager			*m_object;
 
 protected:
-	IC		CAgentManager	&object					() const;
+	inline		CAgentManager	&object					() const;
 			bool			process_corpse			(CMemberOrder &member);
 
 public:
-	IC						CAgentCorpseManager		(CAgentManager *object);
-	IC		void			register_corpse			(CStalker*corpse);
-	IC		MEMBER_CORPSES	&corpses				();
-	IC		void			clear					();
+	inline						CAgentCorpseManager		(CAgentManager *object);
+	inline		void			register_corpse			(CStalker*corpse);
+	inline		MEMBER_CORPSES	&corpses				();
+	inline		void			clear					();
 			void			react_on_member_death	();
 			void			update					();
 			void			remove_links			(CObject *object);

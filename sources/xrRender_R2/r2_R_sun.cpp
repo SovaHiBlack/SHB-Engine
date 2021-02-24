@@ -369,12 +369,13 @@ struct	DumbClipper
 		}
 		return	true;
 	}
-	D3DXVECTOR3			point		(Fbox& bb, int i) const { return D3DXVECTOR3( (i&1)?bb.min.x:bb.max.x, (i&2)?bb.min.y:bb.max.y, (i&4)?bb.min.z:bb.max.z );  }
-	Fbox				clipped_AABB(xr_vector<Fbox,render_alloc<Fbox3> >& src, Fmatrix& xf)
+	D3DXVECTOR3			point		(Fbox3& bb, int i) const { return D3DXVECTOR3( (i&1)?bb.min.x:bb.max.x, (i&2)?bb.min.y:bb.max.y, (i&4)?bb.min.z:bb.max.z );  }
+	Fbox3				clipped_AABB(xr_vector<Fbox3,render_alloc<Fbox3> >& src, Fmatrix& xf)
 	{
-		Fbox3		result;		result.invalidate		();
+		Fbox3		result;
+		result.invalidate		();
 		for (int it=0; it<int(src.size()); it++)		{
-			Fbox&			bb		= src	[it];
+			Fbox3&			bb		= src	[it];
 			u32				mask	= frustum.getMask	();
 			EFC_Visible		res		= frustum.testAABB	(&bb.min.x,mask);
 			switch	(res)	
@@ -419,7 +420,7 @@ inline const _Tp& max(const _Tp& __a, const _Tp& __b) {
 	return  __a < __b ? __b : __a;
 }
 
-xr_vector<Fbox,render_alloc<Fbox> >	s_casters;
+xr_vector<Fbox3,render_alloc<Fbox3> >	s_casters;
 
 D3DXVECTOR2 BuildTSMProjectionMatrix_caster_depth_bounds(D3DXMATRIX& lightSpaceBasis)
 {
@@ -519,12 +520,12 @@ void CRender::render_sun				()
 		mdir_View.build_camera_dir	(L_pos,L_dir,L_up);
 
 		// projection: box
-		Fbox	frustum_bb;			frustum_bb.invalidate();
+		Fbox3	frustum_bb;			frustum_bb.invalidate();
 		for (int it=0; it<8; it++)	{
 			Fvector3	xf	= wform		(mdir_View,hull.points[it]);
 			frustum_bb.modify		(xf);
 		}
-		Fbox&	bb					= frustum_bb;
+		Fbox3&	bb					= frustum_bb;
 				bb.grow				(EPS);
 		D3DXMatrixOrthoOffCenterLH	((D3DXMATRIX*)&mdir_Project,bb.min.x,bb.max.x,  bb.min.y,bb.max.y,  bb.min.z-tweak_ortho_xform_initial_offs,bb.max.z);
 
@@ -990,7 +991,8 @@ void CRender::render_sun_near	()
 									
 		float	nearborder			= 1*borderalpha + 1.136363636364f*(1-borderalpha);
 		float	spherical_range		= ps_r2_sun_near_border * nearborder * _max(_max(c0,c1), _max(k0,k1)*1.414213562373f );
-		Fbox	frustum_bb;			frustum_bb.invalidate	();
+		Fbox3	frustum_bb;	
+		frustum_bb.invalidate	();
 		hull.points.push_back		(Device.vCameraPosition);
 		for (int it=0; it<9; it++)	{
 			Fvector3	xf	= wform		(mdir_View,hull.points[it]);
@@ -1002,7 +1004,7 @@ void CRender::render_sun_near	()
 		float	diff_y				= (spherical_range - size_y)/2.f;	//VERIFY(diff_y>=0);
 		frustum_bb.min.x -= diff_x; frustum_bb.max.x += diff_x;
 		frustum_bb.min.y -= diff_y; frustum_bb.max.y += diff_y;
-		Fbox&	bb					= frustum_bb;
+		Fbox3&	bb					= frustum_bb;
 		D3DXMatrixOrthoOffCenterLH	((D3DXMATRIX*)&mdir_Project,bb.min.x,bb.max.x,  bb.min.y,bb.max.y,  bb.min.z-tweak_ortho_xform_initial_offs,bb.max.z);
 
 		// build viewport xform
@@ -1029,7 +1031,8 @@ void CRender::render_sun_near	()
 		cull_xform.mulA_44	(adjust);
 
 		// calculate scissor
-		Fbox		scissor				;	scissor.invalidate();
+		Fbox3		scissor				;
+		scissor.invalidate();
 		Fmatrix		scissor_xf			;
 					scissor_xf.mul		(m_viewport,cull_xform);
 		for (int it=0; it<9; it++)	{

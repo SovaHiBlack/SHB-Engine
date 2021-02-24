@@ -92,7 +92,7 @@ bool CActor::use_Vehicle(CHolderCustom* object)
 	
 //	CHolderCustom* vehicle=smart_cast<CHolderCustom*>(object);
 	CHolderCustom* vehicle=object;
-	Fvector center;
+	Fvector3 center;
 	Center(center);
 	if(m_holder){
 		if(!vehicle&& m_holder->Use(Device.vCameraPosition, Device.vCameraDirection,center)) detach_Vehicle();

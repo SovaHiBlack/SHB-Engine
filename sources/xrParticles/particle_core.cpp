@@ -388,8 +388,8 @@ void pDomain::transform(const pDomain& domain, const Fmatrix& m)
 	switch (type)
 	{
 	case PDBox:{
-		Fbox* bb_dest=(Fbox*)&p1;
-		Fbox* bb_from=(Fbox*)&domain.p1;
+		Fbox3* bb_dest=(Fbox3*)& p1;
+		Fbox3* bb_from=(Fbox3*)& domain.p1;
 		bb_dest->xform(*bb_from,m);
 		}break;
 	case PDPlane:

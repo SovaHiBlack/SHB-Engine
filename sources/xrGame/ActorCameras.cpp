@@ -97,12 +97,12 @@ void CActor::cam_UnsetLadder()
 }
 float CActor::CameraHeight()
 {
-	Fvector						R;
+	Fvector3						R;
 	character_physics_support()->movement()->Box().getsize		(R);
 	return						m_fCamHeightFactor*R.y;
 }
 
-IC float viewport_near(float& w, float& h)
+inline float viewport_near(float& w, float& h)
 {
 	w = 2.f*VIEWPORT_NEAR*tan(deg2rad(Device.fFOV)/2.f);
 	h = w*Device.fASPECT;
@@ -110,16 +110,16 @@ IC float viewport_near(float& w, float& h)
 	return	_max(_max(VIEWPORT_NEAR,_max(w,h)),c);
 }
 
-__forceinline void calc_point(Fvector& pt, float radius, float depth, float alpha)
+__forceinline void calc_point(Fvector3& pt, float radius, float depth, float alpha)
 {
 	pt.x	= radius*_sin(alpha);
 	pt.y	= radius+radius*_cos(alpha);
 	pt.z	= depth;
 }
 
-__forceinline BOOL test_point(xrXRC& xrc, const Fmatrix& xform, const Fmatrix33& mat, const Fvector& ext, float radius, float angle)
+__forceinline BOOL test_point(xrXRC& xrc, const Fmatrix& xform, const Fmatrix33& mat, const Fvector3& ext, float radius, float angle)
 {
-	Fvector				pt;
+	Fvector3				pt;
 	calc_point			(pt,radius,VIEWPORT_NEAR/2,angle);
 	xform.transform_tiny(pt);
 
@@ -141,8 +141,7 @@ void CActor::cam_Update(float dt, float fFOV)
 	if(mstate_real & mcClimb&&cam_active!=eacFreeLook)
 		camUpdateLadder(dt);
 
-	Fvector point={0,CameraHeight(),0}, dangle={0,0,0};
-	
+	Fvector3 point={0,CameraHeight(),0}, dangle={0,0,0};
 
 	Fmatrix				xform,xformR;
 	xform.setXYZ		(0,r_torso.yaw,0);
@@ -152,7 +151,8 @@ void CActor::cam_Update(float dt, float fFOV)
 	if (this == Level().CurrentControlEntity())
 	{
 		if (!fis_zero(r_torso_tgt_roll)){
-			Fvector src_pt,tgt_pt;
+			Fvector3 src_pt;
+			Fvector3 tgt_pt;
 			float radius		= point.y*0.5f;
 			float alpha			= r_torso_tgt_roll/2.f;
 			float dZ			= ((PI_DIV_2-((PI+alpha)/2)));
@@ -170,15 +170,16 @@ void CActor::cam_Update(float dt, float fFOV)
 			float w,h;
 			float c				= viewport_near(w,h); w/=2.f;h/=2.f;
 			// find tris
-			Fbox box;
+			Fbox3 box;
 			box.invalidate		();
 			box.modify			(src_pt);
 			box.modify			(tgt_pt);
 			box.grow			(c);
 
 			// query
-			Fvector				bc,bd		;
-			Fbox				xf			; 
+			Fvector3				bc;
+			Fvector3 bd;
+			Fbox3				xf			;
 			xf.xform			(box,xform)	;
 			xf.get_CD			(bc,bd)		;
 
@@ -189,7 +190,7 @@ void CActor::cam_Update(float dt, float fFOV)
 			if (tri_count)		{
 				float da		= 0.f;
 				BOOL bIntersect	= FALSE;
-				Fvector	ext		= {w,h,VIEWPORT_NEAR/2};
+				Fvector3	ext		= {w,h,VIEWPORT_NEAR/2};
 				if (test_point(xrc,xform,mat,ext,radius,alpha)){
 					da			= PI/1000.f;
 					if (!fis_zero(r_torso.roll))
@@ -241,7 +242,7 @@ void CActor::cam_Update(float dt, float fFOV)
 	
 		xrXRC						xrc			;
 		xrc.box_options				(0)			;
-		xrc.box_query				(Level().ObjectSpace.GetStaticModel(), point, Fvector().set(VIEWPORT_NEAR,VIEWPORT_NEAR,VIEWPORT_NEAR) );
+		xrc.box_query				(Level().ObjectSpace.GetStaticModel(), point, Fvector3().set(VIEWPORT_NEAR,VIEWPORT_NEAR,VIEWPORT_NEAR) );
 		u32 tri_count				= xrc.r_count();
 		if (tri_count)
 		{
@@ -250,7 +251,7 @@ void CActor::cam_Update(float dt, float fFOV)
 		else
 		{
 			xr_vector<ISpatial*> ISpatialResult;
-			g_SpatialSpacePhysic->q_box(ISpatialResult, 0, STYPE_PHYSIC, point, Fvector().set(VIEWPORT_NEAR,VIEWPORT_NEAR,VIEWPORT_NEAR));
+			g_SpatialSpacePhysic->q_box(ISpatialResult, 0, STYPE_PHYSIC, point, Fvector3().set(VIEWPORT_NEAR,VIEWPORT_NEAR,VIEWPORT_NEAR));
 			for (u32 o_it=0; o_it<ISpatialResult.size(); o_it++)
 			{
 				CPHShell*		pCPHS= smart_cast<CPHShell*>(ISpatialResult[o_it]);
@@ -275,12 +276,12 @@ void CActor::cam_Update(float dt, float fFOV)
 		_rot.j.crossproduct			(_rot.k,		_rot.i);
 
 		
-		Fvector						vbox; 
+		Fvector3						vbox; 
 		vbox.set					(oobox_size, oobox_size, oobox_size);
 
 
 		Level().debug_renderer().draw_aabb  (C->vPosition, 0.05f, 0.051f, 0.05f, D3DCOLOR_XRGB(0,255,0));
-		Level().debug_renderer().draw_obb  (_rot, Fvector().div(vbox,2.0f), D3DCOLOR_XRGB(255,0,0));
+		Level().debug_renderer().draw_obb  (_rot, Fvector3().div(vbox,2.0f), D3DCOLOR_XRGB(255,0,0));
 
 		dMatrix3					d_rot;
 		PHDynamicData::FMXtoDMX		(_rot, d_rot);
@@ -341,7 +342,7 @@ void CActor::update_camera (CCameraShotEffector* effector)
 			pACam->pitch += PI_MUL_2;
 		while (pACam->pitch > pACam->lim_pitch[1])
 			pACam->pitch -= PI_MUL_2;
-	};
+	}
 
 	effector->ApplyLastAngles(&(pACam->pitch), &(pACam->yaw));
 
@@ -351,7 +352,7 @@ void CActor::update_camera (CCameraShotEffector* effector)
 
 
 #ifdef DEBUG
-void dbg_draw_frustum (float FOV, float _FAR, float A, Fvector &P, Fvector &D, Fvector &U);
+void dbg_draw_frustum (float FOV, float _FAR, float A, Fvector3& P, Fvector3& D, Fvector3& U);
 extern	Flags32	dbg_net_Draw_Flags;
 
 void CActor::OnRender	()
@@ -415,5 +416,3 @@ void CActor::LoadSleepEffector	(const char* section)
 	m_pSleepEffector->time_attack		= pSettings->r_float(section,"time_attack");
 	m_pSleepEffector->time_release		= pSettings->r_float(section,"time_release");
 }
-
-

@@ -111,7 +111,7 @@ public:
 	__forceinline Fvector3&						Position			() 					{ return renderable.xform.c;		}
 	__forceinline const Fvector3&					Position			() 			const	{ return renderable.xform.c;		}
 	virtual float						Radius				()			const;
-	virtual const Fbox&					BoundingBox			()			const;
+	virtual const Fbox3&					BoundingBox			()			const;
 	
 	IC IRender_Sector*					Sector				()					{ return H_Root()->spatial.sector;	}
 	IC IRender_ObjectSpecific*			ROS					()					{ return renderable_ROS();			}

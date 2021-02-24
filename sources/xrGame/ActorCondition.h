@@ -69,7 +69,7 @@ public:
 	}
 
 public:
-	IC		CActor& object( ) const
+	inline		CActor& object( ) const
 	{
 		VERIFY(m_object);
 		return			(*m_object);

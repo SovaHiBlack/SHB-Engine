@@ -16,7 +16,7 @@ struct SControlJumpData : public ControlCom::IComData {
 		eGroundSkip					= u32(1) << 5,
 	};
 	
-	flags32					flags;
+	Flags32					flags;
 
 	struct	_prepare{
 		MotionID	motion;

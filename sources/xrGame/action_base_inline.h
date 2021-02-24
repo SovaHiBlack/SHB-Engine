@@ -14,14 +14,14 @@
 #define CBaseAction				CActionBase<_object_type>
 
 TEMPLATE_SPECIALIZATION
-IC	CBaseAction::CActionBase		(const xr_vector<COperatorCondition> &conditions, const xr_vector<COperatorCondition> &effects, _object_type *object, const char* action_name) :
+inline	CBaseAction::CActionBase		(const xr_vector<COperatorCondition> &conditions, const xr_vector<COperatorCondition> &effects, _object_type *object, const char* action_name) :
 	inherited			(conditions,effects)
 {
 	init				(object,action_name);
 }
 
 TEMPLATE_SPECIALIZATION
-IC	CBaseAction::CActionBase		(_object_type *object, const char* action_name)
+inline	CBaseAction::CActionBase		(_object_type *object, const char* action_name)
 {
 	init				(object,action_name);
 }
@@ -103,26 +103,26 @@ bool CBaseAction::completed		() const
 }
 
 TEMPLATE_SPECIALIZATION
-IC	u32	CBaseAction::start_level_time			() const
+inline	u32	CBaseAction::start_level_time			() const
 {
 	return				(m_start_level_time);
 }
 
 TEMPLATE_SPECIALIZATION
-IC	u32	CBaseAction::inertia_time				() const
+inline	u32	CBaseAction::inertia_time				() const
 {
 	return				(m_inertia_time);
 }
 
 TEMPLATE_SPECIALIZATION
-IC	void CBaseAction::set_inertia_time			(u32 inertia_time)
+inline	void CBaseAction::set_inertia_time			(u32 inertia_time)
 {
 	m_inertia_time		= inertia_time;
 }
 
 #ifdef LOG_ACTION
 TEMPLATE_SPECIALIZATION
-IC	void CBaseAction::debug_log			(const EActionStates state_state) const
+inline	void CBaseAction::debug_log			(const EActionStates state_state) const
 {
 	switch (state_state) {
 		case eActionStateConstructed : {
@@ -150,28 +150,28 @@ IC	void CBaseAction::debug_log			(const EActionStates state_state) const
 }
 
 TEMPLATE_SPECIALIZATION
-IC	void CBaseAction::set_use_log		(bool value)
+inline	void CBaseAction::set_use_log		(bool value)
 {
 	m_use_log	= value;
 }
 #endif
 
 TEMPLATE_SPECIALIZATION
-IC	void CBaseAction::set_property	(const _condition_type &condition_id, const _value_type &value)
+inline	void CBaseAction::set_property	(const _condition_type &condition_id, const _value_type &value)
 {
 	VERIFY					(m_storage);
 	m_storage->set_property	(condition_id,value);
 }
 
 TEMPLATE_SPECIALIZATION
-IC	const typename CBaseAction::_value_type	&CBaseAction::property	(const _condition_type &condition_id) const
+inline	const typename CBaseAction::_value_type	&CBaseAction::property	(const _condition_type &condition_id) const
 {
 	VERIFY					(m_storage);
 	return					(m_storage->property(condition_id));
 }
 
 TEMPLATE_SPECIALIZATION
-IC	void CBaseAction::set_weight	(const _edge_value_type &weight)
+inline	void CBaseAction::set_weight	(const _edge_value_type &weight)
 {
 	m_weight				= _max(min_weight(),weight);
 }
@@ -187,13 +187,13 @@ typename CBaseAction::_edge_value_type CBaseAction::weight	(const CSConditionSta
 
 #ifdef LOG_ACTION
 TEMPLATE_SPECIALIZATION
-IC	void CBaseAction::show			(const char* offset)
+inline	void CBaseAction::show			(const char* offset)
 {
 }
 #endif
 
 TEMPLATE_SPECIALIZATION
-IC	bool CBaseAction::first_time	() const
+inline	bool CBaseAction::first_time	() const
 {
 	return					(m_first_time);
 }
