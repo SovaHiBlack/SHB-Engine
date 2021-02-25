@@ -32,7 +32,7 @@ protected:
 
 public:
 	inline							CAgentLocationManager	(CAgentManager *object);
-	inline		CDangerLocationPtr	location				(const Fvector &position);
+	inline		CDangerLocationPtr	location				(const Fvector3& position);
 	inline		CDangerLocationPtr	location				(const CObject *object);
 	inline		void				clear					();
 			void				update					();

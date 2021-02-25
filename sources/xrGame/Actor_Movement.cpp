@@ -411,7 +411,7 @@ bool CActor::g_LadderOrient()
 	//q1.set(XFORM());
 	//q2.set(M);
 	//q3.slerp(q1,q2,dt);
-	//Fvector angles1,angles2,angles3;
+	//Fvector3 angles1,angles2,angles3;
 	//XFORM().getHPB(angles1.x,angles1.y,angles1.z);
 	//M.getHPB(angles2.x,angles2.y,angles2.z);
 	////angle_lerp(angles3.x,angles1.x,angles2.x,dt);
