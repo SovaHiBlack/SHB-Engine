@@ -11,7 +11,7 @@ public:
 	IC 	void	seed	(int val)					{ holdrand=val;	}
 	IC 	int		maxI	()							{ return 32767;	}
 
-    ICN	int		randI	()							{ return(((holdrand = holdrand * 214013L + 2531011L) >> 16) & 0x7fff); }
+	__declspec (noinline)	int		randI	()							{ return(((holdrand = holdrand * 214013L + 2531011L) >> 16) & 0x7fff); }
 	IC 	int		randI	(int max)					{ VERIFY(max);  return randI()%max; }
 	IC 	int		randI	(int min, int max)			{ return min+randI(max-min); }
 	IC 	int		randIs	(int range)					{ return randI(-range,range); }

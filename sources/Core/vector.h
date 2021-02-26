@@ -44,16 +44,7 @@ inline BOOL fsimilar(float a, float b, float cmp = EPS)
 	return _abs(a - b) < cmp;
 }
 
-inline BOOL dsimilar(double a, double b, double cmp = EPS)
-{
-	return _abs(a - b) < cmp;
-}
-
 inline BOOL fis_zero(float val, float cmp = EPS_S)
-{
-	return _abs(val) < cmp;
-}
-inline BOOL dis_zero(double val, double cmp = EPS_S)
 {
 	return _abs(val) < cmp;
 }
@@ -61,14 +52,17 @@ inline BOOL dis_zero(double val, double cmp = EPS_S)
 // degree 2 radians and vice-versa
 namespace implement
 {
-	template <class T>	__forceinline T	deg2rad(T val)
+	template <class T>
+	__forceinline T	deg2rad(T val)
 	{
 		return (val * T(M_PI) / T(180));
-	};
-	template <class T>	__forceinline T	rad2deg(T val)
+	}
+
+	template <class T>
+	__forceinline T	rad2deg(T val)
 	{
 		return (val * T(180) / T(M_PI));
-	};
+	}
 };
 __forceinline float	deg2rad(float val)
 {
@@ -91,10 +85,18 @@ __forceinline double	rad2deg(double val)
 template <class T>
 inline void clamp(T& val, const T& _low, const T& _high)
 {
-	if (val < _low) val = _low; else if (val > _high) val = _high;
-};
+	if (val < _low)
+	{
+		val = _low;
+	}
+	else if (val > _high)
+	{
+		val = _high;
+	}
+}
+
 template <class T>
-inline T	clampr(const T& val, const T& _low, const T& _high)
+inline T clampr(const T& val, const T& _low, const T& _high)
 {
 	if (val < _low)	return _low;
 	else if (val > _high)	return _high;

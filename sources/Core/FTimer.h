@@ -6,44 +6,70 @@ class CORE_API				pauseMngr
 {
 	xr_vector<CTimer_paused*>	m_timers;
 	BOOL						m_paused;
+
 public:
-			pauseMngr			();
-	BOOL	Paused				(){return m_paused;};
-	void	Pause				(BOOL b);
-	void	Register			(CTimer_paused* t);
-	void	UnRegister			(CTimer_paused* t);
+	pauseMngr( );
+	BOOL	Paused( )
+	{
+		return m_paused;
+	}
+	void	Pause(BOOL b);
+	void	Register(CTimer_paused* t);
+	void	UnRegister(CTimer_paused* t);
 };
 
 extern CORE_API pauseMngr		g_pauseMngr;
 
-class CORE_API CTimerBase		{
+class CORE_API CTimerBase
+{
 protected:
-	u64			qwStartTime		;
-	u64			qwPausedTime	;
-	u64			qwPauseAccum	;
-	BOOL		bPause			;
+	u64			qwStartTime;
+	u64			qwPausedTime;
+	u64			qwPauseAccum;
+	BOOL		bPause;
 public:
-				CTimerBase		()		: qwStartTime(0),qwPausedTime(0),qwPauseAccum(0),bPause(FALSE)		{ }
-				__forceinline	void	Start			()		{	if(bPause) return;	qwStartTime = CPU::QPC()-qwPauseAccum;		}
-				__forceinline u64		GetElapsed_ticks()const	{	if(bPause) return	qwPausedTime; else return CPU::QPC()-qwStartTime-CPU::qpc_overhead-qwPauseAccum; }
-	inline	u32		GetElapsed_ms	()const	{	return u32(GetElapsed_ticks()*u64(1000)/CPU::qpc_freq );	}
-	inline	float	GetElapsed_sec	()const	{
-
-		FPU::m64r	()			;
-	   
-		float		_result		=		float(double(GetElapsed_ticks())/double(CPU::qpc_freq )	)	;
-
-		FPU::m24r	()			;
-
-		return		_result		;
-	}
-	inline	void	Dump			() const
+	CTimerBase( ) : qwStartTime(0), qwPausedTime(0), qwPauseAccum(0), bPause(FALSE)
+	{ }
+	__forceinline void	Start( )
 	{
-		Msg("* Elapsed time (sec): %f",GetElapsed_sec());
+		if (bPause)
+		{
+			return;
+		}
+		
+		qwStartTime = CPU::QPC( ) - qwPauseAccum;
+	}
+	__forceinline u64		GetElapsed_ticks( )const
+	{
+		if (bPause)
+		{
+			return qwPausedTime;
+		}
+		else
+		{
+			return CPU::QPC( ) - qwStartTime - CPU::qpc_overhead - qwPauseAccum;
+		}
+	}
+	inline u32		GetElapsed_ms( )const
+	{
+		return u32(GetElapsed_ticks( ) * u64(1000) / CPU::qpc_freq);
+	}
+	inline float	GetElapsed_sec( )const
+	{
+		FPU::m64r( );
+		float _result = float(double(GetElapsed_ticks( )) / double(CPU::qpc_freq));
+		FPU::m24r( );
+
+		return _result;
+	}
+	inline void	Dump( ) const
+	{
+		Msg("* Elapsed time (sec): %f", GetElapsed_sec( ));
 	}
 };
 
-class CORE_API CTimer : public CTimerBase {
+class CORE_API CTimer : public CTimerBase
+{
 private:
 	typedef CTimerBase					inherited;
 
@@ -52,130 +78,171 @@ private:
 	u64					m_real_ticks;
 	u64					m_ticks;
 
-private:
-	inline	u64				GetElapsed_ticks(const u64 &current_ticks) const
+	inline u64				GetElapsed_ticks(const u64& current_ticks) const
 	{
 		u64				delta = current_ticks - m_real_ticks;
-		double			delta_d = (double)delta;
-		double			time_factor_d = time_factor();
-		double			time = delta_d*time_factor_d + .5;
-		u64				result = (u64)time;
+		double			delta_d = (double) delta;
+		double			time_factor_d = time_factor( );
+		double			time = delta_d * time_factor_d + 0.5;
+		u64				result = (u64) time;
 		return			(m_ticks + result);
 	}
 
 public:
-	inline					CTimer			() : m_time_factor(1.f), m_real_ticks(0), m_ticks(0) {}
+	inline					CTimer( ) : m_time_factor(1.0f), m_real_ticks(0), m_ticks(0)
+	{ }
 
-	__forceinline	void			Start			()
+	__forceinline void			Start( )
 	{
 		if (bPause)
+		{
 			return;
+		}
 
-		inherited::Start();
+		inherited::Start( );
 
-		m_real_ticks	= 0;
-		m_ticks			= 0;
+		m_real_ticks = 0;
+		m_ticks = 0;
 	}
 
-	inline	const float		&time_factor	() const
+	inline const float& time_factor( ) const
 	{
-		return			(m_time_factor);
+		return m_time_factor;
 	}
 
-	inline	void			time_factor		(const float &time_factor)
+	inline void			time_factor(const float& time_factor)
 	{
-		u64				current = inherited::GetElapsed_ticks();
-		m_ticks			= GetElapsed_ticks(current);
-		m_real_ticks	= current;
-		m_time_factor	= time_factor;
+		u64 current = inherited::GetElapsed_ticks( );
+		m_ticks = GetElapsed_ticks(current);
+		m_real_ticks = current;
+		m_time_factor = time_factor;
 	}
 
-	inline	u64				GetElapsed_ticks() const
+	inline u64				GetElapsed_ticks( ) const
 	{
-		FPU::m64r		();
+		FPU::m64r( );
+		u64 result = GetElapsed_ticks(inherited::GetElapsed_ticks( ));
+		FPU::m24r( );
 
-		u64				result = GetElapsed_ticks(inherited::GetElapsed_ticks());
-
-		FPU::m24r		();
-
-		return			(result);
+		return result;
 	}
 
-	u32				GetElapsed_ms	() const
+	u32				GetElapsed_ms( ) const
 	{
-		return			(u32(GetElapsed_ticks()*u64(1000)/CPU::qpc_freq));
-	}
-	
-	float			GetElapsed_sec	() const
-	{
-		FPU::m64r		();
-		
-		float			result = float(double(GetElapsed_ticks())/double(CPU::qpc_freq )	)	;
-
-		FPU::m24r		();
-
-		return			(result);
+		return			(u32(GetElapsed_ticks( ) * u64(1000) / CPU::qpc_freq));
 	}
 
-	void			Dump			() const
+	float			GetElapsed_sec( ) const
 	{
-		Msg				("* Elapsed time (sec): %f",GetElapsed_sec());
+		FPU::m64r( );
+		float result = float(double(GetElapsed_ticks( )) / double(CPU::qpc_freq));
+		FPU::m24r( );
+
+		return result;
+	}
+
+	void			Dump( ) const
+	{
+		Msg("* Elapsed time (sec): %f", GetElapsed_sec( ));
 	}
 };
 
-class CORE_API CTimer_paused_ex : public CTimer		{
-	u64							save_clock;
-public:
-	CTimer_paused_ex			()		{ }
-	virtual ~CTimer_paused_ex	()		{ }
-	inline BOOL		Paused			()const	{ return bPause;				}
-	inline void		Pause			(BOOL b){
-		if(bPause==b)			return	;
+class CORE_API CTimer_paused_ex : public CTimer
+{
+	u64											save_clock;
 
-		u64		_current		=		CPU::QPC()-CPU::qpc_overhead	;
-		if( b )	{
-			save_clock			= _current				;
-			qwPausedTime		= CTimerBase::GetElapsed_ticks()	;
-		}else	{
-			qwPauseAccum		+=		_current - save_clock;
+public:
+							CTimer_paused_ex	( )
+	{ }
+	virtual					~CTimer_paused_ex	( )
+	{ }
+	inline BOOL				Paused				( ) const
+	{
+		return bPause;
+	}
+	inline void				Pause				(BOOL b)
+	{
+		if (bPause == b)
+		{
+			return;
 		}
+
+		u64 _current = CPU::QPC( ) - CPU::qpc_overhead;
+		if (b)
+		{
+			save_clock = _current;
+			qwPausedTime = CTimerBase::GetElapsed_ticks( );
+		}
+		else
+		{
+			qwPauseAccum += _current - save_clock;
+		}
+
 		bPause = b;
 	}
 };
 
-class CORE_API CTimer_paused  : public CTimer_paused_ex		{
+class CORE_API CTimer_paused : public CTimer_paused_ex
+{
 public:
-	CTimer_paused				()		{ g_pauseMngr.Register(this);	}
-	virtual ~CTimer_paused		()		{ g_pauseMngr.UnRegister(this);	}
+							CTimer_paused		( )
+	{
+		g_pauseMngr.Register(this);
+	}
+	virtual					~CTimer_paused		( )
+	{
+		g_pauseMngr.UnRegister(this);
+	}
 };
 
-extern CORE_API BOOL			g_bEnableStatGather;
+extern CORE_API BOOL							g_bEnableStatGather;
 class CORE_API CStatTimer
 {
 public:
-	CTimer		T;
-	u64			accum;
-	float		result;
-	u32			count;
-public:
-				CStatTimer		();
-	void		FrameStart		();
-	void		FrameEnd		();
+	CTimer										T;
+	u64											accum;
+	float										result;
+	u32											count;
 
-	__forceinline void	Begin			()		{	if (!g_bEnableStatGather) return;	count++; T.Start();				}
-	__forceinline void	End				()		{	if (!g_bEnableStatGather) return;	accum += T.GetElapsed_ticks();	}
+							CStatTimer			( );
+	void					FrameStart			( );
+	void					FrameEnd			( );
 
-	__forceinline u64		GetElapsed_ticks()const	{	return accum;					}
+	__forceinline void		Begin				( )
+	{
+		if (!g_bEnableStatGather)
+		{
+			return;
+		}
 
-	inline	u32		GetElapsed_ms	()const	{	return u32(GetElapsed_ticks()*u64(1000)/CPU::qpc_freq );	}
-	inline	float	GetElapsed_sec	()const	{
+		count++;
+		T.Start( );
+	}
+	__forceinline void		End					( )
+	{
+		if (!g_bEnableStatGather)
+		{
+			return;
+		}
 
-		FPU::m64r	()			;
-	  
-		float		_result		=		float(double(GetElapsed_ticks())/double(CPU::qpc_freq )	)	;
+		accum += T.GetElapsed_ticks( );
+	}
 
-		FPU::m24r	()			;
+	__forceinline u64		GetElapsed_ticks	( ) const
+	{
+		return accum;
+	}
 
-		return		_result		;
+	inline u32				GetElapsed_ms		( ) const
+	{
+		return u32(GetElapsed_ticks( ) * u64(1000) / CPU::qpc_freq);
+	}
+	inline float			GetElapsed_sec		( ) const
+	{
+		FPU::m64r( );
+		float _result = float(double(GetElapsed_ticks( )) / double(CPU::qpc_freq));
+		FPU::m24r( );
+
+		return _result;
 	}
 };
