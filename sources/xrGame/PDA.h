@@ -1,7 +1,7 @@
 #pragma once
 
 #include "..\ENGINE\feel_touch.h"
-#include "inventory_item_object.h"
+#include "InventoryItemObject.h"
 
 #include "InfoPortion_defs.h"
 #include "character_info_defs.h"
@@ -11,7 +11,9 @@
 class CInventoryOwner;
 class CPda;
 
-DEF_VECTOR (PDA_LIST, CPda*);
+//DEF_VECTOR (PDA_LIST, CPda*);
+using PDA_LIST = xr_vector<CPda*>;
+using PDA_LIST_it = PDA_LIST::iterator;
 
 class CPda : public CInventoryItemObject, public Feel::Touch
 {

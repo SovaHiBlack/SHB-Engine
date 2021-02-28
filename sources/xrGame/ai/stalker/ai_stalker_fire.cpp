@@ -495,7 +495,7 @@ public:
 	float					m_pick_distance;
 
 public:
-	IC				ray_query_param		(const CStalker *holder, float power_threshold, float distance)
+	inline				ray_query_param		(const CStalker *holder, float power_threshold, float distance)
 	{
 		m_holder			= const_cast<CStalker*>(holder);
 		m_power_threshold	= power_threshold;
@@ -506,7 +506,7 @@ public:
 	}
 };
 
-IC BOOL ray_query_callback	(collide::rq_result& result, LPVOID params)
+inline BOOL ray_query_callback	(collide::rq_result& result, LPVOID params)
 {
 	ray_query_param						*param = (ray_query_param*)params;
 	float								power = param->m_holder->feel_vision_mtl_transp(result.O,result.element);
@@ -588,7 +588,7 @@ void CStalker::can_kill_entity_from	(const Fvector &position, Fvector direction,
 	can_kill_entity			(position,direction,distance,rq_storage);
 }
 
-IC	float CStalker::start_pick_distance	() const
+inline	float CStalker::start_pick_distance	() const
 {
 	float					result = 50.f;
 	if (!memory().enemy().selected())

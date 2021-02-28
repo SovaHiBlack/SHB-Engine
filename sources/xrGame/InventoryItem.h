@@ -1,16 +1,11 @@
-////////////////////////////////////////////////////////////////////////////
 //	Module 		: InventoryItem.h
-//	Created 	: 24.03.2003
-//  Modified 	: 29.01.2004
-//	Author		: Victor Reutsky, Yuri Dobronravin
 //	Description : Inventory item
-////////////////////////////////////////////////////////////////////////////
 
 #pragma once
 
 #include "Inventory_space.h"
 #include "hit_immunity.h"
-#include "attachable_item.h"
+#include "AttachableItem.h"
 
 enum EHandDependence
 {
@@ -79,7 +74,7 @@ public:
 		return m_Description;
 	}
 	virtual void				GetBriefInfo(xr_string& str_name, xr_string& icon_sect_name, xr_string& str_count)
-	{ };
+	{ }
 
 	virtual void				OnEvent(NET_Packet& P, u16 type);
 
@@ -106,11 +101,11 @@ public:
 	virtual EHandDependence		HandDependence( )	const
 	{
 		return hd1Hand;
-	};
+	}
 	virtual bool				IsSingleHanded( )	const
 	{
 		return true;
-	};
+	}
 	virtual bool				Activate( );									// !!! Переопределить. (см. в Inventory.cpp)
 	virtual void				Deactivate( );								// !!! Переопределить. (см. в Inventory.cpp)
 	virtual bool				Action(int cmd, u32 flags)
@@ -182,18 +177,18 @@ public:
 
 
 	virtual void				OnMoveToSlot( )
-	{ };
+	{ }
 	virtual void				OnMoveToBelt( )
-	{ };
+	{ }
 	virtual void				OnMoveToRuck( )
-	{ };
+	{ }
 
 	int					GetGridWidth( ) const;
 	int					GetGridHeight( ) const;
 	const shared_str& GetIconName( ) const
 	{
 		return m_icon_name;
-	};
+	}
 	int					GetXPos( ) const;
 	int					GetYPos( ) const;
 //---------------------------------------------------------------------
@@ -247,7 +242,7 @@ public:
 	virtual bool				IsNecessaryItem(const shared_str& item_sect)
 	{
 		return false;
-	};
+	}
 
 protected:
 	u32							m_slot;
@@ -287,12 +282,12 @@ public:
 	virtual	bool				IsSprintAllowed( ) const
 	{
 		return !!m_flags.test(FAllowSprint);
-	};
+	}
 
 	virtual	float				GetControlInertionFactor( ) const
 	{
 		return m_fControlInertionFactor;
-	};
+	}
 
 protected:
 	virtual void				UpdateXForm( );
@@ -383,7 +378,7 @@ public:
 	virtual CGameObject* cast_game_object( )
 	{
 		return 0;
-	};
+	}
 };
 
-#include "inventory_item_inline.h"
+#include "InventoryItem_inline.h"

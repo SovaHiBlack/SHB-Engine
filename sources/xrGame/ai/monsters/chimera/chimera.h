@@ -27,7 +27,7 @@ public:
 	virtual	void	TranslateActionToPathParams ();
 	virtual void	HitEntityInJump				(const CEntity *pEntity);
 
-	IC		void	SetUpperState				(bool state = true) {b_upper_state = state;}
+	inline		void	SetUpperState				(bool state = true) {b_upper_state = state;}
 	
 public:
 	static void script_register(lua_State*);

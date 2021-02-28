@@ -12,7 +12,7 @@
 #define CSALifeAbstractRegistry CALifeAbstractRegistry<_index_type,_data_type>
 
 TEMPLATE_SPECIALIZATION
-IC	CSALifeAbstractRegistry::CALifeAbstractRegistry	()
+inline	CSALifeAbstractRegistry::CALifeAbstractRegistry	()
 {
 }
 
@@ -35,13 +35,13 @@ void CSALifeAbstractRegistry ::load					(IReader &file_stream)
 }
 
 TEMPLATE_SPECIALIZATION
-IC	const typename CSALifeAbstractRegistry::OBJECT_REGISTRY &CSALifeAbstractRegistry::objects	() const
+inline	const typename CSALifeAbstractRegistry::OBJECT_REGISTRY &CSALifeAbstractRegistry::objects	() const
 {
 	return			(m_objects);
 }
 
 TEMPLATE_SPECIALIZATION
-IC	void CSALifeAbstractRegistry::add				(const _index_type &index, _data_type &data, bool no_assert)
+inline	void CSALifeAbstractRegistry::add				(const _index_type &index, _data_type &data, bool no_assert)
 {
 	const_iterator	I = objects().find(index);
 	if (I != objects().end()) {
@@ -52,7 +52,7 @@ IC	void CSALifeAbstractRegistry::add				(const _index_type &index, _data_type &d
 }
 
 TEMPLATE_SPECIALIZATION
-IC	void CSALifeAbstractRegistry::remove			(const _index_type &index, bool no_assert)
+inline	void CSALifeAbstractRegistry::remove			(const _index_type &index, bool no_assert)
 {
 	iterator		I = m_objects.find(index);
 	if (I == objects().end()) {
@@ -63,7 +63,7 @@ IC	void CSALifeAbstractRegistry::remove			(const _index_type &index, bool no_ass
 }
 
 TEMPLATE_SPECIALIZATION
-IC	_data_type *CSALifeAbstractRegistry::object	(const _index_type &index, bool no_assert)
+inline	_data_type *CSALifeAbstractRegistry::object	(const _index_type &index, bool no_assert)
 {
 	iterator		I = m_objects.find(index);
 	if (I == objects().end()) {

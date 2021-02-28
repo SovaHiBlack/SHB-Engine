@@ -578,10 +578,10 @@
     <ClInclude Include="associative_vector_compare_predicate.h" />
     <ClInclude Include="associative_vector_compare_predicate_inline.h" />
     <ClInclude Include="associative_vector_inline.h" />
-    <ClInclude Include="attachable_item.h" />
-    <ClInclude Include="attachable_item_inline.h" />
-    <ClInclude Include="attachment_owner.h" />
-    <ClInclude Include="attachment_owner_inline.h" />
+    <ClInclude Include="AttachableItem.h" />
+    <ClInclude Include="AttachableItem_inline.h" />
+    <ClInclude Include="AttachmentOwner.h" />
+    <ClInclude Include="AttachmentOwner_inline.h" />
     <ClInclude Include="autosave_manager.h" />
     <ClInclude Include="autosave_manager_inline.h" />
     <ClInclude Include="a_star.h" />
@@ -680,7 +680,7 @@
     <CustomBuild Include="dRayMotions.h" />
     <ClInclude Include="DummyArtefact.h" />
     <ClInclude Include="EatableItem.h" />
-    <ClInclude Include="eatable_item_object.h" />
+    <ClInclude Include="EatableItemObject.h" />
     <ClInclude Include="edge_path.h" />
     <ClInclude Include="edge_path_inline.h" />
     <ClInclude Include="EffectorBobbing.h" />
@@ -798,8 +798,8 @@
     <ClInclude Include="InventoryOwner.h" />
     <ClInclude Include="InventoryItem.h" />
     <ClInclude Include="InventoryItem_impl.h" />
-    <ClInclude Include="inventory_item_inline.h" />
-    <ClInclude Include="inventory_item_object.h" />
+    <ClInclude Include="InventoryItem_inline.h" />
+    <ClInclude Include="InventoryItemObject.h" />
     <ClInclude Include="inventory_owner_inline.h" />
     <ClInclude Include="Inventory_space.h" />
     <ClInclude Include="ItemListTypes.h" />
@@ -1691,8 +1691,8 @@
     <ClCompile Include="Antirad.cpp" />
     <ClCompile Include="Artefact_script.cpp" />
     <ClCompile Include="Artefact.cpp" />
-    <ClCompile Include="attachable_item.cpp" />
-    <ClCompile Include="attachment_owner.cpp" />
+    <ClCompile Include="AttachableItem.cpp" />
+    <ClCompile Include="AttachmentOwner.cpp" />
     <ClCompile Include="autosave_manager.cpp" />
     <ClCompile Include="base_client_classes_script.cpp" />
     <ClCompile Include="BastArtefact.cpp" />
@@ -1771,7 +1771,7 @@
     <ClCompile Include="dRayMotions.cpp" />
     <ClCompile Include="DummyArtefact.cpp" />
     <ClCompile Include="EatableItem.cpp" />
-    <ClCompile Include="eatable_item_object.cpp" />
+    <ClCompile Include="EatableItemObject.cpp" />
     <ClCompile Include="EffectorBobbing.cpp" />
     <ClCompile Include="EffectorFall.cpp" />
     <ClCompile Include="EffectorShot.cpp" />
@@ -1856,7 +1856,7 @@
     <ClCompile Include="InventoryBox.cpp" />
     <ClCompile Include="InventoryOwner.cpp" />
     <ClCompile Include="InventoryItem.cpp" />
-    <ClCompile Include="inventory_item_object.cpp" />
+    <ClCompile Include="InventoryItemObject.cpp" />
     <ClCompile Include="inventory_owner_info.cpp" />
     <ClCompile Include="item_manager.cpp" />
     <ClCompile Include="key_binding_registrator_script.cpp" />

@@ -1,15 +1,10 @@
-////////////////////////////////////////////////////////////////////////////
-//	Module 		: attachment_owner.cpp
-//	Created 	: 12.02.2004
-//  Modified 	: 12.02.2004
-//	Author		: Dmitriy Iassenev
+//	Module 		: AttachmentOwner.cpp
 //	Description : Attachment owner
-////////////////////////////////////////////////////////////////////////////
 
 #include "stdafx.h"
 
-#include "attachment_owner.h"
-#include "attachable_item.h"
+#include "AttachmentOwner.h"
+#include "AttachableItem.h"
 #include "..\ENGINE\skeletoncustom.h"
 #include "InventoryItem.h"
 #include "PHShellHolder.h"
@@ -28,8 +23,10 @@ void CAttachmentOwner::reload				(const char* section)
 	u32							item_count = _GetItemCount(attached_sections);
 	string256					current_item_section;
 	m_attach_item_sections.resize(item_count);
-	for (u32 i=0; i<item_count; ++i)
-		m_attach_item_sections[i] = _GetItem(attached_sections,i,current_item_section);
+	for (u32 i = 0; i < item_count; ++i)
+	{
+		m_attach_item_sections[i] = _GetItem(attached_sections, i, current_item_section);
+	}
 }
 
 void CAttachmentOwner::reinit	()
@@ -39,6 +36,7 @@ void CAttachmentOwner::reinit	()
 
 void CAttachmentOwner::net_Destroy()
 {
+
 #ifdef DEBUG
 	if (!attached_objects().empty()) {
 		Msg						("Object %s has attached items :",*smart_cast<CGameObject*>(this)->cName());
@@ -48,6 +46,7 @@ void CAttachmentOwner::net_Destroy()
 //			Msg					("* %s",*(*I)->item().object().cName());
 	}
 #endif
+
 	R_ASSERT					(attached_objects().empty());
 }
 
@@ -55,8 +54,10 @@ void CAttachmentOwner::renderable_Render		()
 {
 	xr_vector<CAttachableItem*>::iterator	I = m_attached_objects.begin();
 	xr_vector<CAttachableItem*>::iterator	E = m_attached_objects.end();
-	for ( ; I != E; ++I)
-		(*I)->renderable_Render();
+	for (; I != E; ++I)
+	{
+		(*I)->renderable_Render( );
+	}
 }
 
 void __stdcall AttachmentCallback(CKinematics *tpKinematics)
@@ -92,8 +93,11 @@ void CAttachmentOwner::attach(CInventoryItem *inventory_item)
 		VERIFY								(attachable_item);
 		CGameObject							*game_object = smart_cast<CGameObject*>(this);
 		VERIFY								(game_object && game_object->Visual());
-		if (m_attached_objects.empty())
+		if (m_attached_objects.empty( ))
+		{
 			game_object->add_visual_callback(AttachmentCallback);
+		}
+
 		attachable_item->set_bone_id		(smart_cast<CKinematics*>(game_object->Visual())->LL_BoneID(attachable_item->bone_name()));
 		m_attached_objects.push_back		(smart_cast<CAttachableItem*>(inventory_item));
 
@@ -136,16 +140,22 @@ bool  CAttachmentOwner::attached			(shared_str sect_name) const
 bool CAttachmentOwner::can_attach			(const CInventoryItem *inventory_item) const
 {
 	const CAttachableItem	*item = smart_cast<const CAttachableItem*>(inventory_item);
-	if (!item || !item->enabled() || !item->can_be_attached())
-		return			(false);
+	if (!item || !item->enabled( ) || !item->can_be_attached( ))
+	{
+		return false;
+	}
 
 	//можно ли присоединять объекты такого типа
-	if( m_attach_item_sections.end() == std::find(m_attach_item_sections.begin(),m_attach_item_sections.end(),inventory_item->object().cNameSect()) )
+	if (m_attach_item_sections.end( ) == std::find(m_attach_item_sections.begin( ), m_attach_item_sections.end( ), inventory_item->object( ).cNameSect( )))
+	{
 		return false;
+	}
 
 	//если уже есть присоединненый объет такого типа 
-	if(attached(inventory_item->object().cNameSect()))
+	if (attached(inventory_item->object( ).cNameSect( )))
+	{
 		return false;
+	}
 
 	return true;
 }
@@ -168,33 +178,43 @@ CAttachableItem* CAttachmentOwner::attachedItem			(CLASS_ID clsid) const
 {
 	xr_vector<CAttachableItem*>::const_iterator	I = m_attached_objects.begin();
 	xr_vector<CAttachableItem*>::const_iterator	E = m_attached_objects.end();
-	for ( ; I != E; ++I)
-		if ((*I)->item().object().CLS_ID == clsid)
+	for (; I != E; ++I)
+	{
+		if ((*I)->item( ).object( ).CLS_ID == clsid)
+		{
 			return (*I);
+		}
+	}
 
-	return NULL;
-
+	return nullptr;
 }
 
 CAttachableItem* CAttachmentOwner::attachedItem			(u16 id) const
 {
 	xr_vector<CAttachableItem*>::const_iterator	I = m_attached_objects.begin();
 	xr_vector<CAttachableItem*>::const_iterator	E = m_attached_objects.end();
-	for ( ; I != E; ++I)
-		if ((*I)->item().object().ID() == id)
+	for (; I != E; ++I)
+	{
+		if ((*I)->item( ).object( ).ID( ) == id)
+		{
 			return (*I);
+		}
+	}
 
-	return NULL;
+	return nullptr;
 }
 
 CAttachableItem* CAttachmentOwner::attachedItem			(shared_str& section) const
 {
 	xr_vector<CAttachableItem*>::const_iterator	I = m_attached_objects.begin();
 	xr_vector<CAttachableItem*>::const_iterator	E = m_attached_objects.end();
-	for ( ; I != E; ++I)
-		if (!xr_strcmp((*I)->item().object().cNameSect(), section) && !(*I)->item().IsInvalid())
+	for (; I != E; ++I)
+	{
+		if (!xr_strcmp((*I)->item( ).object( ).cNameSect( ), section) && !(*I)->item( ).IsInvalid( ))
+		{
 			return		(*I);
+		}
+	}
 
-	return				NULL;
-
+	return				nullptr;
 }

@@ -84,8 +84,12 @@ public:
 	float				mass;
 	Fvector3				center_of_mass;
 
-	DEFINE_VECTOR(u16, FacesVec, FacesVecIt);
-	DEFINE_VECTOR(FacesVec, ChildFacesVec, ChildFacesVecIt);
+//	DEFINE_VECTOR(u16, FacesVec, FacesVecIt);
+	using FacesVec = xr_vector<u16>;
+	using FacesVecIt = FacesVec::iterator;
+//	DEFINE_VECTOR(FacesVec, ChildFacesVec, ChildFacesVecIt);
+	using ChildFacesVec = xr_vector<FacesVec>;
+	using ChildFacesVecIt = ChildFacesVec::iterator;
 	ChildFacesVec		child_faces;	// shared
 public:
 	CBoneData(u16 ID) :SelfID(ID)
@@ -151,7 +155,9 @@ public:
 		u16				bone_id[3][2];
 		float			weight[3];
 	};
-	DEFINE_VECTOR(WMFace, WMFacesVec, WMFacesVecIt);
+//	DEFINE_VECTOR(WMFace, WMFacesVec, WMFacesVecIt);
+	using WMFacesVec = xr_vector<WMFace>;
+	using WMFacesVecIt = WMFacesVec::iterator;
 	WMFacesVec			m_Faces;		// 16 
 public:
 	Fsphere				m_Bounds;		// 16		world space
@@ -202,7 +208,9 @@ public:
 	}
 };
 
-DEFINE_VECTOR(intrusive_ptr<CSkeletonWallmark>, SkeletonWMVec, SkeletonWMVecIt);
+//DEFINE_VECTOR(intrusive_ptr<CSkeletonWallmark>, SkeletonWMVec, SkeletonWMVecIt);
+using SkeletonWMVec = xr_vector<intrusive_ptr<CSkeletonWallmark>>;
+using SkeletonWMVecIt = SkeletonWMVec::iterator;
 
 // sanity check
 #ifdef DEBUG

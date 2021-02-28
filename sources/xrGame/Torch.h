@@ -1,7 +1,6 @@
 #pragma once
 
-#include "inventory_item_object.h"
-//#include "night_vision_effector.h"
+#include "InventoryItemObject.h"
 #include "HudSound.h"
 #include "script_export_space.h"
 
@@ -11,7 +10,7 @@ class CMonsterEffector;
 class CTorch : public CInventoryItemObject
 {
 private:
-	typedef	CInventoryItemObject	inherited;
+	using inherited = CInventoryItemObject;
 
 protected:
 	float			fBrightness;
@@ -29,10 +28,10 @@ protected:
 	ref_glow		glow_render;
 	Fvector			m_focus;
 private:
-	inline	bool	can_use_dynamic_lights( );
+	inline bool	can_use_dynamic_lights( );
 
 public:
-	CTorch(void);
+	CTorch( );
 	virtual			~CTorch(void);
 
 	virtual void	Load(const char* section);

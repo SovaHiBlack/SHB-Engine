@@ -10,7 +10,9 @@ namespace PAPI
 	struct ParticleEffect;
 	struct PAHeader;
 	struct ParticleAction;
-	DEFINE_VECTOR(ParticleAction*,PAVec,PAVecIt);
+//	DEFINE_VECTOR(ParticleAction*,PAVec,PAVecIt);
+	using PAVec = xr_vector<ParticleAction*>;
+	using PAVecIt = PAVec::iterator;
 }
 //struct EParticleAction;        
 

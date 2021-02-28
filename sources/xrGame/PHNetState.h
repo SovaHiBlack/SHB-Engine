@@ -37,7 +37,9 @@ private:
 	void								read(src& P, const Fvector& min, const Fvector& max);
 };
 
-DEFINE_VECTOR(SPHNetState, PHNETSTATE_VECTOR, PHNETSTATE_I);
+//DEFINE_VECTOR(SPHNetState, PHNETSTATE_VECTOR, PHNETSTATE_I);
+using PHNETSTATE_VECTOR = xr_vector<SPHNetState>;
+using PHNETSTATE_I = PHNETSTATE_VECTOR::iterator;
 
 struct SPHBonesData
 {

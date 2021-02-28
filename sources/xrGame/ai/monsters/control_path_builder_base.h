@@ -100,34 +100,33 @@ public:
 			
 
 	// -------------------------------------------------------------------
-	IC	void	set_try_min_time		(bool new_val) {m_try_min_time		= new_val;}
-	IC	void	set_use_dest_orient		(bool new_val) {m_use_dest_orient	= new_val;}
-	IC	void	disable_path			() {m_enable = false;}
-	IC	void	enable_path				() {m_enable = true;}
-	IC	void	extrapolate_path		(bool val) {m_extrapolate = val;}
-	IC	void	set_level_path_type		() {m_path_type = MovementManager::ePathTypeLevelPath;}
-	IC	void	set_game_path_type		() {m_path_type = MovementManager::ePathTypeGamePath;}
-	IC	void	set_patrol_path_type	() {m_path_type = MovementManager::ePathTypePatrolPath;}
-	IC	void	set_velocity_mask		(u32 mask) {m_velocity_mask = mask;}
-	IC	void	set_desirable_mask		(u32 mask) {m_desirable_mask = mask;}
+			inline	void	set_try_min_time		(bool new_val) {m_try_min_time		= new_val;}
+			inline	void	set_use_dest_orient		(bool new_val) {m_use_dest_orient	= new_val;}
+			inline	void	disable_path			() {m_enable = false;}
+			inline	void	enable_path				() {m_enable = true;}
+			inline	void	extrapolate_path		(bool val) {m_extrapolate = val;}
+			inline	void	set_level_path_type		() {m_path_type = MovementManager::ePathTypeLevelPath;}
+			inline	void	set_game_path_type		() {m_path_type = MovementManager::ePathTypeGamePath;}
+			inline	void	set_patrol_path_type	() {m_path_type = MovementManager::ePathTypePatrolPath;}
+			inline	void	set_velocity_mask		(u32 mask) {m_velocity_mask = mask;}
+			inline	void	set_desirable_mask		(u32 mask) {m_desirable_mask = mask;}
 		void	set_dest_direction		(const Fvector &dir);
 
-	IC	bool	enabled					() {return m_enable;}
+		inline	bool	enabled					() {return m_enable;}
 	// -------------------------------------------------------------------
 	// Set methods
 		void		set_target_point		(const Fvector &position, u32 node = u32(-1));
 		void		set_target_point		(u32 node);
 		void		set_retreat_from_point	(const Fvector &position);
 
-	IC	void		set_rebuild_time		(u32 time);
-	IC	void		set_cover_params		(float min, float max, float dev, float radius);
-	IC	void		set_use_covers			(bool val = true);
-	IC	void		set_distance_to_end		(float dist);
-
+		inline	void		set_rebuild_time		(u32 time);
+		inline	void		set_cover_params		(float min, float max, float dev, float radius);
+		inline	void		set_use_covers			(bool val = true);
+		inline	void		set_distance_to_end		(float dist);
 
 		void		prepare_builder			();
 		void		detour_graph_points		(u32 game_graph_vertex_id = u32(-1));
-	IC	void		set_generic_parameters	();
+		inline	void		set_generic_parameters	();
 
 		Fvector		get_target_found		() {return m_target_found.position;}
 		Fvector		get_target_set			() {return m_target_set.position;}
@@ -140,7 +139,7 @@ private:
 		// functional
 		void		update_path_builder_state	();
 		void		update_target_point			();
-		void		check_failure				();
+//		void		check_failure				();
 
 		bool		target_point_need_update	();
 		void		find_target_point_set		();

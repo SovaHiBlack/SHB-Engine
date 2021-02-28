@@ -34,16 +34,16 @@ private:
 public:
 								CALifeMonsterMovementManager	(object_type *object);
 								~CALifeMonsterMovementManager	();
-	IC		object_type			&object						() const;
-	IC		detail_path_type	&detail						() const;
-	IC		patrol_path_type	&patrol						() const;
-	IC		const EPathType		&path_type					() const;
+								inline		object_type			&object						() const;
+								inline		detail_path_type	&detail						() const;
+								inline		patrol_path_type	&patrol						() const;
+								inline		const EPathType		&path_type					() const;
 
 public:
 			void				update						();
 			void				on_switch_online			();
 			void				on_switch_offline			();
-	IC		void				path_type					(const EPathType &path_type);
+			inline		void				path_type					(const EPathType &path_type);
 
 public:
 			bool				completed					() const;

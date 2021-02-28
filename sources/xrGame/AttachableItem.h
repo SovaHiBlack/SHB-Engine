@@ -1,10 +1,5 @@
-////////////////////////////////////////////////////////////////////////////
-//	Module 		: attachable_item.h
-//	Created 	: 11.02.2004
-//  Modified 	: 11.02.2004
-//	Author		: Dmitriy Iassenev
+//	Module 		: AttachableItem.h
 //	Description : Attachable item
-////////////////////////////////////////////////////////////////////////////
 
 #pragma once
 
@@ -19,10 +14,10 @@ private:
 	u16							m_bone_id;
 	bool						m_enabled;
 //	bool						m_auto_attach;
+
 #ifdef DEBUG
 	bool						m_valid;
 #endif
-
 
 public:
 	IC							CAttachableItem			();
@@ -60,6 +55,7 @@ public:
 	static	void				mov_dy					(float val){Fvector c = get_pos_offset(); c.y +=val; m_dbgItem->m_offset.c=c;}	
 	static	void				mov_dz					(float val){Fvector c = get_pos_offset(); c.z +=val; m_dbgItem->m_offset.c=c;}	
 #endif
+
 };
 
-#include "attachable_item_inline.h"
+#include "AttachableItem_inline.h"

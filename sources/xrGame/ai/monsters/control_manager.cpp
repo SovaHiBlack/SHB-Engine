@@ -92,7 +92,7 @@ void CControl_Manager::reinit()
 }
 
 struct predicate_remove {
-	IC bool	operator() (const CControl_Com *com) {
+	inline bool	operator() (const CControl_Com *com) {
 		return (com == 0);
 	}
 };

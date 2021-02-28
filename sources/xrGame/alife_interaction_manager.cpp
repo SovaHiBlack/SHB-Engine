@@ -59,7 +59,7 @@ public:
 	mutable CSE_ALifeHumanAbstract	*l_tpALifeHumanAbstract;
 	mutable CSE_ALifeMonsterAbstract*l_tpALifeMonsterAbstract;
 
-	IC	CCheckForInteractionPredicate(CALifeInteractionManager *manager, CSE_ALifeSchedulable *tpALifeSchedulable, GameGraph::_GRAPH_ID tGraphID) :
+	inline	CCheckForInteractionPredicate(CALifeInteractionManager *manager, CSE_ALifeSchedulable *tpALifeSchedulable, GameGraph::_GRAPH_ID tGraphID) :
 		manager(manager),
 		tpALifeSchedulable(tpALifeSchedulable),
 		tGraphID(tGraphID)
@@ -69,14 +69,14 @@ public:
 		manager->vfFillCombatGroup	(tpALifeSchedulable,0);
 	}
 
-	IC	bool operator()	(CALifeGraphRegistry::OBJECT_REGISTRY::_iterator &I, u64 counter, bool) const
+	inline	bool operator()	(CALifeGraphRegistry::OBJECT_REGISTRY::_iterator &I, u64 counter, bool) const
 	{
 		if (counter == (*I).second->m_switch_counter)
 			return				(false);
 		return					(!manager->m_tpaCombatGroups[0].empty());
 	}
 
-	IC	void operator()	(CALifeGraphRegistry::OBJECT_REGISTRY::_iterator &I, u64 counter) const
+	inline	void operator()	(CALifeGraphRegistry::OBJECT_REGISTRY::_iterator &I, u64 counter) const
 	{
 		(*I).second->m_switch_counter = counter;
 

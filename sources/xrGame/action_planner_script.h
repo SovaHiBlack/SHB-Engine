@@ -21,7 +21,7 @@ public:
 	_object_type			*m_object;
 
 public:
-	IC						CActionPlannerScript	();
+	inline						CActionPlannerScript	();
 	virtual	void			setup					(_object_type *object);
 };
 

@@ -1,7 +1,4 @@
-//////////////////////////////////////////////////////////////////////////
 // monster_community.h:	структура представления группировки для монстров
-//							
-//////////////////////////////////////////////////////////////////////////
 
 #pragma once
 
@@ -12,7 +9,6 @@ typedef int			MONSTER_COMMUNITY_INDEX;
 typedef shared_str	MONSTER_COMMUNITY_ID;
 #define NO_MONSTER_COMMUNITY_INDEX MONSTER_COMMUNITY_INDEX(-1)
 
-
 struct MONSTER_COMMUNITY_DATA
 {
 	MONSTER_COMMUNITY_DATA (MONSTER_COMMUNITY_INDEX, MONSTER_COMMUNITY_ID, const char*);
@@ -21,7 +17,6 @@ struct MONSTER_COMMUNITY_DATA
 	MONSTER_COMMUNITY_INDEX	index;
 	u8						team;
 };
-
 
 class MONSTER_COMMUNITY;
 

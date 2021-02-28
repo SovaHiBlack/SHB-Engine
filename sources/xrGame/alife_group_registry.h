@@ -26,7 +26,7 @@ public:
 			void			add						(CSE_ALifeDynamicObject *object);
 			void			remove					(CSE_ALifeDynamicObject *object);
 			OBJECT			&object					(const ALife::_OBJECT_ID &id) const;
-	IC		const OBJECTS	&objects				() const;
+			inline		const OBJECTS	&objects				() const;
 			void			on_after_game_load		();
 };
 

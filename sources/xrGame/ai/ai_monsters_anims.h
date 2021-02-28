@@ -11,7 +11,9 @@
 #include "..\..\ENGINE\SkeletonAnimated.h"
 #include "../ai_debug.h"
 
-DEFINE_VECTOR	(MotionID,ANIM_VECTOR, ANIM_IT);
+//DEFINE_VECTOR	(MotionID,ANIM_VECTOR, ANIM_IT);
+using ANIM_VECTOR = xr_vector<MotionID>;
+using ANIM_IT = ANIM_VECTOR::iterator;
 
 class CAniVector {
 public:
@@ -24,7 +26,7 @@ template <const char* caBaseNames[]> class CAniFVector {
 public:
 	ANIM_VECTOR		A;
 
-	IC	void		Load(CKinematicsAnimated *tpKinematics, const char* caBaseName)
+	inline	void		Load(CKinematicsAnimated *tpKinematics, const char* caBaseName)
 	{
 		A.clear			();
 		string256		S;
@@ -34,9 +36,11 @@ public:
 		{
 			strconcat	(sizeof(S),S,caBaseName,caBaseNames[i]);
 			A[i]		= tpKinematics->ID_Cycle_Safe(S);
+
 #ifdef DEBUG
 			if (A[i] && psAI_Flags.test(aiAnimation))
 				Msg		("* Loaded animation %s",S);
+
 #endif
 		}
 	}
@@ -46,7 +50,7 @@ template <class TYPE_NAME, const char* caBaseNames[]> class CAniCollection {
 public:
 	xr_vector<TYPE_NAME>	A;
 
-	IC	void		Load(CKinematicsAnimated *tpKinematics, const char* caBaseName)
+	inline	void		Load(CKinematicsAnimated *tpKinematics, const char* caBaseName)
 	{
 		A.clear		();
 		string256	S;
@@ -55,4 +59,5 @@ public:
 		for (int i=0; i<j; ++i)
 			A[i].Load	(tpKinematics,strconcat(sizeof(S),S,caBaseName,caBaseNames[i]));
 	}
-};
+}
+;

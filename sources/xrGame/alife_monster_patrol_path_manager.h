@@ -54,19 +54,19 @@ public:
 			void					path						(const shared_str &path_name);
 
 public:
-	IC		object_type				&object						() const;
-	IC		void					path						(const CPatrolPath *path);
-	IC		void					path						(const char* path_name);
-	IC		void					start_type					(const EPatrolStartType	&start_type);
-	IC		void					route_type					(const EPatrolRouteType	&route_type);
-	IC		const EPatrolStartType	&start_type					() const;
-	IC		const EPatrolRouteType	&route_type					() const;
-	IC		bool					actual						() const;
-	IC		bool					completed					() const;
-	IC		const CPatrolPath		&path						() const;
-	IC		void					start_vertex_index			(const u32 &start_vertex_index);
-	IC		bool					use_randomness				() const;
-	IC		void					use_randomness				(const bool &use_randomness);
+	inline		object_type				&object						() const;
+	inline		void					path						(const CPatrolPath *path);
+	inline		void					path						(const char* path_name);
+	inline		void					start_type					(const EPatrolStartType	&start_type);
+	inline		void					route_type					(const EPatrolRouteType	&route_type);
+	inline		const EPatrolStartType	&start_type					() const;
+	inline		const EPatrolRouteType	&route_type					() const;
+	inline		bool					actual						() const;
+	inline		bool					completed					() const;
+	inline		const CPatrolPath		&path						() const;
+	inline		void					start_vertex_index			(const u32 &start_vertex_index);
+	inline		bool					use_randomness				() const;
+	inline		void					use_randomness				(const bool &use_randomness);
 			const _GRAPH_ID			&target_game_vertex_id		() const;
 			const u32				&target_level_vertex_id		() const;
 			const Fvector			&target_position			() const;

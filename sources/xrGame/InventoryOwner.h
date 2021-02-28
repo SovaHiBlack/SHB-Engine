@@ -7,7 +7,7 @@
 
 #include "InfoPortion_defs.h"
 #include "pda_space.h"
-#include "attachment_owner.h"
+#include "AttachmentOwner.h"
 #include "script_space_forward.h"
 #include "character_info.h"
 #include "Inventory_space.h"

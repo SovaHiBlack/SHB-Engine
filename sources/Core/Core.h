@@ -152,9 +152,11 @@ struct CORE_API xr_shortcut{
 };
 #pragma pack (pop)
 
-DEFINE_VECTOR	(shared_str,RStringVec,RStringVecIt);
-DEFINE_SET		(shared_str,RStringSet,RStringSetIt);
-DEFINE_VECTOR	(xr_rtoken,RTokenVec,RTokenVecIt);
+using RStringVec = xr_vector<shared_str>;
+
+//DEFINE_VECTOR	(shared_str,RStringVec,RStringVecIt);
+//DEFINE_SET		(shared_str,RStringSet,RStringSetIt);
+//DEFINE_VECTOR	(xr_rtoken,RTokenVec,RTokenVecIt);
 
 #include "FS.h"
 #include "Log.h"

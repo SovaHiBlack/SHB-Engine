@@ -10,7 +10,9 @@
 #include "..\ENGINE\feel_touch.h"
 #include "PHShellHolder.h"
 
-DEFINE_VECTOR(CPHShellHolder*, GAME_OBJECT_LIST, GAME_OBJECT_LIST_it);
+//DEFINE_VECTOR(CPHShellHolder*, GAME_OBJECT_LIST, GAME_OBJECT_LIST_it);
+using GAME_OBJECT_LIST = xr_vector<CPHShellHolder*>;
+using GAME_OBJECT_LIST_it = GAME_OBJECT_LIST::iterator;
 
 class CBlackGraviArtefact : public CGraviArtefact, public Feel::Touch
 {

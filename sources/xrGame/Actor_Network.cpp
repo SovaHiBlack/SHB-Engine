@@ -52,7 +52,7 @@ CActor*			Actor()
 {	
 	VERIFY		(g_actor); 
 	return		(g_actor); 
-};
+}
 
 //--------------------------------------------------------------------
 void	CActor::ConvState(u32 mstate_rl, string128 *buf)
@@ -71,7 +71,7 @@ void	CActor::ConvState(u32 mstate_rl, string128 *buf)
 	if (mstate_rl&mcLLookout)	strcat(*buf,"LLookout ");
 	if (mstate_rl&mcRLookout)	strcat(*buf,"RLookout ");
 	if (m_bJumpKeyPressed)		strcat(*buf,"+Jumping ");
-};
+}
 //--------------------------------------------------------------------
 void CActor::net_Export	(NET_Packet& P)					// export to server
 {
@@ -133,7 +133,7 @@ void CActor::net_Export	(NET_Packet& P)					// export to server
 	{
 		net_ExportDeadBody(P);
 	}
-};
+}
 
 static void w_vec_q8(NET_Packet& P,const Fvector3& vec,const Fvector3& min,const Fvector3& max)
 {
@@ -194,7 +194,7 @@ static void	UpdateLimits (Fvector3& p, Fvector3& min, Fvector3& max)
 			UpdateLimits(p, min, max);
 		}
 	}
-};
+}
 
 void		CActor::net_ExportDeadBody		(NET_Packet &P)
 {
@@ -267,8 +267,6 @@ void		CActor::net_Import_Base				( NET_Packet& P)
 	//------------------------------------------------
 	P.r_u32				(N.dwTimeStamp	);
 	//---------------------------------------------
-	
-	//---------------------------------------------
 
 	P.r_u8				(flags			);
 	P.r_vec3			(N.p_pos		);
@@ -316,7 +314,7 @@ void		CActor::net_Import_Base				( NET_Packet& P)
 		{
 			if (inventory().GetActiveSlot() != u32(ActiveSlot))
 				inventory().Activate(u32(ActiveSlot));
-		};
+		}
 	}
 
 	//----------- for E3 -----------------------------
@@ -336,7 +334,7 @@ void		CActor::net_Import_Base				( NET_Packet& P)
 	//-----------------------------------------------
 	net_Import_Base_proceed	();
 	//-----------------------------------------------
-};
+}
 
 void	CActor::net_Import_Base_proceed		( )
 {
@@ -350,7 +348,7 @@ void	CActor::net_Import_Base_proceed		( )
 	if (Remote()) return;
 
 	net_update N		= NET.back();
-};
+}
 
 void		CActor::net_Import_Physic			( NET_Packet& P)
 {
@@ -431,7 +429,7 @@ void		CActor::net_Import_Physic			( NET_Packet& P)
 	//-----------------------------------------------
 	net_Import_Physic_proceed();
 	//-----------------------------------------------
-};
+}
 
 void	CActor::net_Import_Physic_proceed	( )
 {
@@ -822,7 +820,6 @@ void CActor::PH_B_CrPr		()	// actions & operations before physic correction-pred
 
 		//----------- for E3 -----------------------------
 		if (Local() && OnClient())
-			//------------------------------------------------
 		{
 			PHUnFreeze();
 
@@ -967,10 +964,10 @@ void	CActor::CalculateInterpolationParams()
 
 			HP0[k] = c*(c*(c*HCoeff[k][0]+HCoeff[k][1])+HCoeff[k][2])+HCoeff[k][3];
 			HP1[k] = (c*c*HCoeff[k][0]*3+c*HCoeff[k][1]*2+HCoeff[k][2]); // сокрость из формулы в 3 раза превышает скорость при расчете коэффициентов !!!!
-		};
+		}
 
 		SP1.add(SP0);
-	}	
+	}
 	else
 	{
 		if (LastState.linear_vel.x == 0 && LastState.linear_vel.y == 0 && LastState.linear_vel.z == 0)
@@ -981,9 +978,11 @@ void	CActor::CalculateInterpolationParams()
 		{
 			HP1.sub(LastState.position, LastState.previous_position);
 		}
+
 		HP1.mul(1.0f/fixed_step);
 		SP1.add(HP1, SP0);
 	}
+
 	HP2.sub(PredictedState.position, PredictedState.previous_position);
 	HP2.mul(1.0f/fixed_step);
 	SP2.sub(PredictedState.position, HP2);
@@ -1132,7 +1131,7 @@ void CActor::make_Interpolation	()
 			character_physics_support()->movement()->SetPosition	(ResPosition);
 			character_physics_support()->movement()->SetVelocity	(SpeedVector);
 			cam_Active()->Set		(-unaffected_r_torso.yaw,unaffected_r_torso.pitch, 0);//, unaffected_r_torso.roll);
-		};
+		}
 	}
 	else
 	{

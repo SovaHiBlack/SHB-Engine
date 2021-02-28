@@ -193,8 +193,6 @@ void CActor::IR_OnKeyboardRelease(int dik)
 		}else
 			if(inventory().Action(dik, CMD_STOP))		return;
 
-
-
 		switch(dik)
 		{
 		case kJUMP:		mstate_wishful &=~mcJump;		break;
@@ -268,7 +266,6 @@ void CActor::IR_OnMouseMove(int dx, int dy)
 
 bool CActor::use_Holder				(CHolderCustom* holder)
 {
-
 	if(m_holder){
 		bool b = false;
 		CGameObject* holderGO			= smart_cast<CGameObject*>(m_holder);
@@ -319,7 +316,6 @@ void CActor::ActorUse()
 	//mstate_real = 0;
 	PickupModeOn();
 
-		
 	if (m_holder)
 	{
 		CGameObject*	GO			= smart_cast<CGameObject*>(m_holder);
@@ -332,8 +328,6 @@ void CActor::ActorUse()
 				
 	if(character_physics_support()->movement()->PHCapture())
 		character_physics_support()->movement()->PHReleaseObject();
-
-	
 
 	if(m_pUsableObject)m_pUsableObject->use(this);
 	
@@ -378,9 +372,7 @@ void CActor::ActorUse()
 			if(b_allow && !character_physics_support()->movement()->PHCapture())
 			{
 				character_physics_support()->movement()->PHCaptureObject(object,element);
-
 			}
-
 		}
 		else
 		{
@@ -392,11 +384,8 @@ void CActor::ActorUse()
 					CGameObject::u_EventSend	(P);
 					return;
 			}
-
 		}
 	}
-
-
 }
 BOOL CActor::HUDview				( )const 
 { 
@@ -437,7 +426,7 @@ void	CActor::OnNextWeaponSlot()
 			return;
 		}
 	}
-};
+}
 
 void	CActor::OnPrevWeaponSlot()
 {
@@ -452,7 +441,7 @@ void	CActor::OnPrevWeaponSlot()
 	for (u32 CurSlot=0; CurSlot<NumSlotsToCheck; CurSlot++)
 	{
 		if (SlotsToCheck[CurSlot] == ActiveSlot) break;
-	};
+	}
 	if (CurSlot >= NumSlotsToCheck) return;
 	for (int i= int(CurSlot-1); i>=0; i--)
 	{
@@ -462,7 +451,7 @@ void	CActor::OnPrevWeaponSlot()
 			return;
 		}
 	}
-};
+}
 
 float	CActor::GetLookFactor()
 {

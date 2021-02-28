@@ -50,7 +50,9 @@ private:
 		};
 	};
 
-	DEF_DEQUE(DemoDeque, DemoDataStruct);
+//	DEF_DEQUE(DemoDeque, DemoDataStruct);
+	using DemoDeque = xr_deque<DemoDataStruct>;
+	using DemoDeque_it = DemoDeque::iterator;
 	DemoDeque					m_aDemoData;
 	void						Demo_Load(const char* DemoName);
 	void						Demo_Load_toFrame(const char* FileName, DWORD toFrame, long& ofs);

@@ -6,9 +6,9 @@
 //	Description : ALife space
 ////////////////////////////////////////////////////////////////////////////
 
-#ifndef XRAY_ALIFE_SPACE
-#define XRAY_ALIFE_SPACE
-
+//#ifndef XRAY_ALIFE_SPACE
+//#define XRAY_ALIFE_SPACE
+#pragma once
 // ALife objects, events and tasks
 #define ALIFE_VERSION				0x0003
 #define ALIFE_CHUNK_DATA			0x0000
@@ -126,7 +126,7 @@ namespace ALife {
 		eAddonAttachable			= 2		//можно присоединять
 	};
 
-	IC EHitType	g_tfString2HitType(const char* caHitType)
+	inline EHitType	g_tfString2HitType(const char* caHitType)
 	{
 		if (!stricmp(caHitType,"burn"))
 			return(eHitTypeBurn);
@@ -151,25 +151,41 @@ namespace ALife {
 		else
 				FATAL	("Unsupported hit type!");
 		NODEFAULT;
+
 #ifdef DEBUG
 		return(eHitTypeMax);
 #endif
+
 	}
 xr_token							hit_types_token							[ ];
 
-	IC const char* g_cafHitType2String(EHitType tHitType)
+inline const char* g_cafHitType2String(EHitType tHitType)
 	{
 		return get_token_name(hit_types_token, tHitType);
 	}
 
-	DEFINE_VECTOR	(int,						INT_VECTOR,						INT_IT);
-	DEFINE_VECTOR	(_OBJECT_ID,				OBJECT_VECTOR,					OBJECT_IT);
-	DEFINE_VECTOR	(CSE_ALifeInventoryItem*,	ITEM_P_VECTOR,					ITEM_P_IT);
-	DEFINE_VECTOR	(CSE_ALifeItemWeapon*,		WEAPON_P_VECTOR,				WEAPON_P_IT);
-	DEFINE_VECTOR	(CSE_ALifeSchedulable*,		SCHEDULE_P_VECTOR,				SCHEDULE_P_IT);
+//	DEFINE_VECTOR	(int,						INT_VECTOR,						INT_IT);
+	using INT_VECTOR = xr_vector<int>;
+	using INT_IT = INT_VECTOR::iterator;
+//	DEFINE_VECTOR	(_OBJECT_ID,				OBJECT_VECTOR,					OBJECT_IT);
+	using OBJECT_VECTOR = xr_vector<_OBJECT_ID>;
+	using OBJECT_IT = OBJECT_VECTOR::iterator;
+//	DEFINE_VECTOR	(CSE_ALifeInventoryItem*,	ITEM_P_VECTOR,					ITEM_P_IT);
+	using ITEM_P_VECTOR = xr_vector<CSE_ALifeInventoryItem*>;
+	using ITEM_P_IT = ITEM_P_VECTOR::iterator;
+//	DEFINE_VECTOR	(CSE_ALifeItemWeapon*,		WEAPON_P_VECTOR,				WEAPON_P_IT);
+	using WEAPON_P_VECTOR = xr_vector<CSE_ALifeItemWeapon*>;
+	using WEAPON_P_IT = WEAPON_P_VECTOR::iterator;
+//	DEFINE_VECTOR	(CSE_ALifeSchedulable*,		SCHEDULE_P_VECTOR,				SCHEDULE_P_IT);
+	using SCHEDULE_P_VECTOR = xr_vector<CSE_ALifeSchedulable*>;
+	using SCHEDULE_P_IT = SCHEDULE_P_VECTOR::iterator;
 
-	DEFINE_MAP		(_OBJECT_ID,				CSE_ALifeDynamicObject*,		D_OBJECT_P_MAP,				D_OBJECT_P_PAIR_IT);
-	DEFINE_MAP		(_STORY_ID,					CSE_ALifeDynamicObject*,		STORY_P_MAP,				STORY_P_PAIR_IT);
+//	DEFINE_MAP		(_OBJECT_ID,				CSE_ALifeDynamicObject*,		D_OBJECT_P_MAP,				D_OBJECT_P_PAIR_IT);
+	using D_OBJECT_P_MAP = xr_map<_OBJECT_ID, CSE_ALifeDynamicObject*>;
+	using D_OBJECT_P_PAIR_IT = D_OBJECT_P_MAP::iterator;
+//	DEFINE_MAP		(_STORY_ID,					CSE_ALifeDynamicObject*,		STORY_P_MAP,				STORY_P_PAIR_IT);
+	using STORY_P_MAP = xr_map<_STORY_ID, CSE_ALifeDynamicObject*>;
+	using STORY_P_PAIR_IT = STORY_P_MAP::iterator;
 };
 
-#endif //XRAY_ALIFE_SPACE
+//#endif //XRAY_ALIFE_SPACE

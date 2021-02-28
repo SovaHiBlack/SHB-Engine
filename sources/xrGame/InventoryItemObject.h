@@ -1,10 +1,5 @@
-////////////////////////////////////////////////////////////////////////////
-//	Module 		: inventory_item_object.h
-//	Created 	: 24.03.2003
-//  Modified 	: 27.12.2004
-//	Author		: Victor Reutsky, Yuri Dobronravin
+//	Module 		: InventoryItemObject.h
 //	Description : Inventory item object implementation
-////////////////////////////////////////////////////////////////////////////
 
 #pragma once
 
@@ -75,4 +70,4 @@ public:
 	virtual u32		ef_weapon_type			() const;
 };
 
-#include "inventory_item_inline.h"
+//#include "InventoryItem_inline.h"

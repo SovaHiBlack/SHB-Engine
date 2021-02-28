@@ -34,11 +34,11 @@ public:
 	virtual							~CALifeObjectRegistry	();
 	virtual	void					save					(IWriter &memory_stream);
 			void					load					(IReader &file_stream);
-	IC		void					add						(CSE_ALifeDynamicObject *object);
-	IC		void					remove					(const ALife::_OBJECT_ID &id, bool no_assert = false);
-	IC		CSE_ALifeDynamicObject	*object					(const ALife::_OBJECT_ID &id, bool no_assert = false) const;
-	IC		const OBJECT_REGISTRY	&objects				() const;
-	IC		OBJECT_REGISTRY			&objects				();
+			inline		void					add						(CSE_ALifeDynamicObject *object);
+			inline		void					remove					(const ALife::_OBJECT_ID &id, bool no_assert = false);
+			inline		CSE_ALifeDynamicObject	*object					(const ALife::_OBJECT_ID &id, bool no_assert = false) const;
+			inline		const OBJECT_REGISTRY	&objects				() const;
+			inline		OBJECT_REGISTRY			&objects				();
 };
 
 #include "alife_object_registry_inline.h"

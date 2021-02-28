@@ -1,20 +1,15 @@
-////////////////////////////////////////////////////////////////////////////
-//	Module 		: attachable_item.cpp
-//	Created 	: 11.02.2004
-//  Modified 	: 11.02.2004
-//	Author		: Dmitriy Iassenev
+//	Module 		: AttachableItem.cpp
 //	Description : Attachable item
-////////////////////////////////////////////////////////////////////////////
 
 #include "stdafx.h"
 
 #include "PHShellHolder.h"
-#include "attachable_item.h"
+#include "AttachableItem.h"
 #include "inventoryowner.h"
 #include "Inventory.h"
 
 #ifdef DEBUG
-	CAttachableItem*	CAttachableItem::m_dbgItem = NULL;
+	CAttachableItem*	CAttachableItem::m_dbgItem = nullptr;
 #endif
 
 IC	CPHShellHolder&CAttachableItem::object	() const
@@ -31,8 +26,7 @@ DLL_Pure *CAttachableItem::_construct	()
 }
 
 CAttachableItem::~CAttachableItem		()
-{
-}
+{ }
 
 void CAttachableItem::reload			(const char* section)
 {
@@ -46,17 +40,21 @@ void CAttachableItem::reload			(const char* section)
 	m_bone_name						= pSettings->r_string	(section,"attach_bone_name");
 //	enable							(m_auto_attach = !!(READ_IF_EXISTS(pSettings,r_bool,section,"auto_attach",TRUE)));
 	enable							(false);
+
 #ifdef DEBUG
 	m_valid							= true;
 #endif
+
 }
 
 void CAttachableItem::OnH_A_Chield		() 
 {
 //	VERIFY							(m_valid);
 	const CInventoryOwner			*inventory_owner = smart_cast<const CInventoryOwner*>(object().H_Parent());
-	if (inventory_owner && inventory_owner->attached(&item()))
-		object().setVisible			(true);
+	if (inventory_owner && inventory_owner->attached(&item( )))
+	{
+		object( ).setVisible(true);
+	}
 }
 
 void CAttachableItem::renderable_Render	()
@@ -107,16 +105,22 @@ void CAttachableItem::enable			(bool value)
 bool  CAttachableItem::can_be_attached	() const
 {
 //	VERIFY							(m_valid);
-	if (!item().m_pCurrentInventory)
-		return				(false);
+	if (!item( ).m_pCurrentInventory)
+	{
+		return false;
+	}
 
-	if (!item().m_pCurrentInventory->IsBeltUseful())
-		return				(true);
+	if (!item( ).m_pCurrentInventory->IsBeltUseful( ))
+	{
+		return true;
+	}
 
-	if (item().m_eItemPlace != eItemPlaceBelt)
-		return				(false);
+	if (item( ).m_eItemPlace != eItemPlaceBelt)
+	{
+		return false;
+	}
 	 
-	return					(true);
+	return true;
 }
 void CAttachableItem::afterAttach		()
 {

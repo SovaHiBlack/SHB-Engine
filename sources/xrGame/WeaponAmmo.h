@@ -1,34 +1,40 @@
 #pragma once
 
-#include "inventory_item_object.h"
+#include "InventoryItemObject.h"
 
 class CCartridge
 {
 public:
-	CCartridge( );
-	void Load(const char* section, u8 LocalAmmoType);
+								CCartridge			( );
+	void						Load				(const char* section, u8 LocalAmmoType);
 
-	shared_str	m_ammoSect;
+	shared_str										m_ammoSect;
 	enum
 	{
-		cfTracer = (1 << 0),
-		cfRicochet = (1 << 1),
-		cfCanBeUnlimited = (1 << 2),
-		cfExplosive = (1 << 3),
+		cfTracer									= (1 << 0),
+		cfRicochet									= (1 << 1),
+		cfCanBeUnlimited							= (1 << 2),
+		cfExplosive									= (1 << 3)
 	};
-	float	m_kDist, m_kDisp, m_kHit, m_kImpulse, m_kPierce, m_kAP, m_kAirRes;
-	int		m_buckShot;
-	float	m_impair;
-	float	fWallmarkSize;
 
-	u8		m_u8ColorID;
-	u8		m_LocalAmmoType;
+	float											m_kDist;
+	float											m_kDisp;
+	float											m_kHit;
+	float											m_kImpulse;
+	float											m_kPierce;
+	float											m_kAP;
+	float											m_kAirRes;
+	int												m_buckShot;
+	float											m_impair;
+	float											fWallmarkSize;
 
+	u8												m_u8ColorID;
+	u8												m_LocalAmmoType;
 
-	u16		bullet_material_idx;
-	Flags8	m_flags;
+	u16												bullet_material_idx;
+	Flags8											m_flags;
 
-	shared_str	m_InvShortName;
+	shared_str										m_InvShortName;
 };
 
 class CWeaponAmmo : public CInventoryItemObject

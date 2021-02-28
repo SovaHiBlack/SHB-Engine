@@ -23,12 +23,14 @@ class CAnomalyDetector {
 		u32		time_remember;
 		remove_predicate (u32 time) : time_remember(time){}
 
-		IC bool	operator() (const SAnomalyInfo &info) {
+		inline bool	operator() (const SAnomalyInfo &info) {
 			return (info.time_registered + time_remember < Device.dwTimeGlobal);
 		}
 	};
 
-	DEFINE_VECTOR			(SAnomalyInfo, ANOMALY_INFO_VEC, ANOMALY_INFO_VEC_IT);
+//	DEFINE_VECTOR			(SAnomalyInfo, ANOMALY_INFO_VEC, ANOMALY_INFO_VEC_IT);
+	using ANOMALY_INFO_VEC = xr_vector<SAnomalyInfo>;
+	using ANOMALY_INFO_VEC_IT = ANOMALY_INFO_VEC::iterator;
 	ANOMALY_INFO_VEC		m_storage;
 
 public:

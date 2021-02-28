@@ -110,7 +110,9 @@ private:
 //  Function for automatic tree hierarchy creation
 //////////////////////////////////////////////////////////////////////////
 
-DEF_VECTOR(GroupTree, shared_str);
+//DEF_VECTOR(GroupTree, shared_str);
+using GroupTree = xr_vector<shared_str>;
+using GroupTree_it = GroupTree::iterator;
 
 //////////////////////////////////////////////////////////////////////////
 

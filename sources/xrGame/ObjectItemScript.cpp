@@ -9,7 +9,7 @@
 
 #include "ObjectItemScript.h"
 #include "ObjectFactory.h"
-#include "attachable_item.h"
+#include "AttachableItem.h"
 
 ObjectFactory::CLIENT_BASE_CLASS *CObjectItemScript::client_object	() const
 {

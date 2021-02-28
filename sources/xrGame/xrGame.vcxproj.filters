@@ -4494,27 +4494,6 @@
     <ClInclude Include="Inventory.h">
       <Filter>Core\Client\Objects\inventory</Filter>
     </ClInclude>
-    <ClInclude Include="attachable_item.h">
-      <Filter>Core\Client\Objects\inventory\AttachableItem</Filter>
-    </ClInclude>
-    <ClInclude Include="attachable_item_inline.h">
-      <Filter>Core\Client\Objects\inventory\AttachableItem</Filter>
-    </ClInclude>
-    <ClInclude Include="attachment_owner.h">
-      <Filter>Core\Client\Objects\inventory\AttachmentOwner</Filter>
-    </ClInclude>
-    <ClInclude Include="attachment_owner_inline.h">
-      <Filter>Core\Client\Objects\inventory\AttachmentOwner</Filter>
-    </ClInclude>
-    <ClInclude Include="eatable_item_object.h">
-      <Filter>Core\Client\Objects\inventory\EatableItemObject</Filter>
-    </ClInclude>
-    <ClInclude Include="inventory_item_inline.h">
-      <Filter>Core\Client\Objects\inventory\InventoryItem</Filter>
-    </ClInclude>
-    <ClInclude Include="inventory_item_object.h">
-      <Filter>Core\Client\Objects\inventory\InventoryItemObject</Filter>
-    </ClInclude>
     <ClInclude Include="inventory_owner_inline.h">
       <Filter>Core\Client\Objects\inventory\InventoryOwner</Filter>
     </ClInclude>
@@ -5931,6 +5910,27 @@
     <ClInclude Include="xrTime.h">
       <Filter>Core\Server\Games\server</Filter>
     </ClInclude>
+    <ClInclude Include="EatableItemObject.h">
+      <Filter>Core\Client\Objects\inventory\EatableItemObject</Filter>
+    </ClInclude>
+    <ClInclude Include="AttachableItem_inline.h">
+      <Filter>Core\Client\Objects\inventory\AttachableItem</Filter>
+    </ClInclude>
+    <ClInclude Include="AttachableItem.h">
+      <Filter>Core\Client\Objects\inventory\AttachableItem</Filter>
+    </ClInclude>
+    <ClInclude Include="AttachmentOwner_inline.h">
+      <Filter>Core\Client\Objects\inventory\AttachmentOwner</Filter>
+    </ClInclude>
+    <ClInclude Include="AttachmentOwner.h">
+      <Filter>Core\Client\Objects\inventory\AttachmentOwner</Filter>
+    </ClInclude>
+    <ClInclude Include="InventoryItem_inline.h">
+      <Filter>Core\Client\Objects\inventory\InventoryItem</Filter>
+    </ClInclude>
+    <ClInclude Include="InventoryItemObject.h">
+      <Filter>Core\Client\Objects\inventory\InventoryItemObject</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="action_base_script.cpp">
@@ -7234,18 +7234,6 @@
     </ClCompile>
     <ClCompile Include="Inventory.cpp">
       <Filter>Core\Client\Objects\inventory</Filter>
-    </ClCompile>
-    <ClCompile Include="attachable_item.cpp">
-      <Filter>Core\Client\Objects\inventory\AttachableItem</Filter>
-    </ClCompile>
-    <ClCompile Include="attachment_owner.cpp">
-      <Filter>Core\Client\Objects\inventory\AttachmentOwner</Filter>
-    </ClCompile>
-    <ClCompile Include="eatable_item_object.cpp">
-      <Filter>Core\Client\Objects\inventory\EatableItemObject</Filter>
-    </ClCompile>
-    <ClCompile Include="inventory_item_object.cpp">
-      <Filter>Core\Client\Objects\inventory\InventoryItemObject</Filter>
     </ClCompile>
     <ClCompile Include="inventory_owner_info.cpp">
       <Filter>Core\Client\Objects\inventory\InventoryOwner</Filter>
@@ -8569,6 +8557,18 @@
     </ClCompile>
     <ClCompile Include="xrTime.cpp">
       <Filter>Core\Server\Games\server</Filter>
+    </ClCompile>
+    <ClCompile Include="EatableItemObject.cpp">
+      <Filter>Core\Client\Objects\inventory\EatableItemObject</Filter>
+    </ClCompile>
+    <ClCompile Include="AttachableItem.cpp">
+      <Filter>Core\Client\Objects\inventory\AttachableItem</Filter>
+    </ClCompile>
+    <ClCompile Include="AttachmentOwner.cpp">
+      <Filter>Core\Client\Objects\inventory\AttachmentOwner</Filter>
+    </ClCompile>
+    <ClCompile Include="InventoryItemObject.cpp">
+      <Filter>Core\Client\Objects\inventory\InventoryItemObject</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

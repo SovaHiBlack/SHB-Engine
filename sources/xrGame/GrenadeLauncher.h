@@ -2,7 +2,7 @@
 
 #pragma once
 
-#include "inventory_item_object.h"
+#include "InventoryItemObject.h"
 
 class CGrenadeLauncher : public CInventoryItemObject
 {

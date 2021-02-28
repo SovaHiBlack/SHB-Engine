@@ -31,7 +31,9 @@ namespace PS
 			float			m_Time1;
 							SEffect				(){m_Flags.zero();/*set(flEnabled)*/m_Time0=0;m_Time1=0;}
 		};
-		DEFINE_VECTOR(SEffect*,EffectVec,EffectIt);
+//		DEFINE_VECTOR(SEffect*,EffectVec,EffectIt);
+		using EffectVec = xr_vector<SEffect*>;
+		using EffectIt = EffectVec::iterator;
 		EffectVec			m_Effects;
 
 	public:
@@ -42,7 +44,9 @@ namespace PS
 		void 				Save		  	(IWriter& F);
 		BOOL 				Load		 	(IReader& F);
 	};
-	DEFINE_VECTOR(CPGDef*,PGDVec,PGDIt);
+//	DEFINE_VECTOR(CPGDef*,PGDVec,PGDIt);
+	using PGDVec = xr_vector<CPGDef*>;
+	using PGDIt = PGDVec::iterator;
 
 	class CParticleGroup: public IParticleCustom
 	{
@@ -50,7 +54,10 @@ namespace PS
 		float				m_CurrentTime;
 		Fvector				m_InitialPosition;
 	public:
-		DEFINE_VECTOR(IRender_Visual*,VisualVec,VisualVecIt);
+//		DEFINE_VECTOR(IRender_Visual*,VisualVec,VisualVecIt);
+		using VisualVec = xr_vector<IRender_Visual*>;
+		using VisualVecIt = VisualVec::iterator;
+
 		struct SItem		{
 			IRender_Visual*	_effect;
 			VisualVec		_children_related;
@@ -83,7 +90,10 @@ namespace PS
 			void			Play			();
 			void			Stop			(BOOL def_stop);
 		};
-		DEFINE_VECTOR(SItem,SItemVec,SItemVecIt)
+
+//		DEFINE_VECTOR(SItem,SItemVec,SItemVecIt)
+		using SItemVec = xr_vector<SItem>;
+		using SItemVecIt = SItemVec::iterator;
 		SItemVec			items;
 	public:
 		enum{

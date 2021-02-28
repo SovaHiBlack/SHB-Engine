@@ -40,7 +40,7 @@ public:
 private:
 			void						process_task			();
 			void						default_behaviour		();
-	IC		bool						can_choose_alife_tasks	() const;
+			inline		bool						can_choose_alife_tasks	() const;
 
 public:
 										CALifeMonsterBrain		(object_type *object);
@@ -61,10 +61,10 @@ public:
 			ALife::EMeetActionType		action_type				(CSE_ALifeSchedulable *tpALifeSchedulable, const int &iGroupIndex, const bool &bMutualDetection);
 
 public:
-	IC		object_type					&object					() const;
-	IC		movement_manager_type		&movement				() const;
-	IC		CSE_ALifeSmartZone			&smart_terrain			();
-	IC		void						can_choose_alife_tasks	(bool value);
+	inline		object_type					&object					() const;
+	inline		movement_manager_type		&movement				() const;
+	inline		CSE_ALifeSmartZone			&smart_terrain			();
+	inline		void						can_choose_alife_tasks	(bool value);
 
 public:
 	static void script_register(lua_State*);

@@ -21,12 +21,12 @@ protected:
 	ALife::_OBJECT_ID	m_object_id;
 
 public:
-	IC				CMemberPredicate2	(const ALife::_OBJECT_ID &object_id)
+	inline				CMemberPredicate2	(const ALife::_OBJECT_ID &object_id)
 	{
 		m_object_id		= object_id;
 	}
 
-	IC		bool	operator()			(const CMemberOrder *order) const
+	inline		bool	operator()			(const CMemberOrder *order) const
 	{
 		return			(order->object().ID() == m_object_id);
 	}

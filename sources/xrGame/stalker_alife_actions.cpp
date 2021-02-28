@@ -32,7 +32,7 @@ using namespace StalkerSpace;
 #endif
 
 #ifdef STALKER_DEBUG_MODE
-#	include "attachable_item.h"
+#	include "AttachableItem.h"
 #endif
 
 //////////////////////////////////////////////////////////////////////////

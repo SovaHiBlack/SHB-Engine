@@ -117,11 +117,10 @@ private:
 			// animation control method
 			void	select_next_anim_state	();
 
-	IC		bool	is_flag					(SControlJumpData::EFlags flag);
+			inline		bool	is_flag					(SControlJumpData::EFlags flag);
 };
 
-
-IC bool CControlJump::is_flag(SControlJumpData::EFlags flag) 
+inline bool CControlJump::is_flag(SControlJumpData::EFlags flag)
 {
 	return (m_data.flags.is(flag) == TRUE);
 }

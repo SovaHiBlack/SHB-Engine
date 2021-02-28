@@ -1,7 +1,4 @@
-//////////////////////////////////////////////////////////////////////////
-// relation_registry.h: реестр для хранения данных об отношении персонажа к 
-//						другим персонажам
-//////////////////////////////////////////////////////////////////////////
+// relation_registry.h: реестр для хранения данных об отношении персонажа к другим персонажам
 
 #pragma once
 
@@ -13,10 +10,8 @@ class CInventoryOwner;
 class CEntityAlive;
 
 //////////////////////////////////////////////////////////////////////////
-
 #define GAME_RELATIONS_SECT "game_relations"
 #define ACTIONS_POINTS_SECT "action_points"
-
 //////////////////////////////////////////////////////////////////////////
 
 struct RELATION_REGISTRY 
@@ -100,7 +95,10 @@ public:
 	void UpdateFightRegister ();
 
 private:
-	DEFINE_VECTOR(FIGHT_DATA, FIGHT_VECTOR, FIGHT_VECTOR_IT);
+//	DEFINE_VECTOR(FIGHT_DATA, FIGHT_VECTOR, FIGHT_VECTOR_IT);
+	using FIGHT_VECTOR = xr_vector<FIGHT_DATA>;
+	using FIGHT_VECTOR_IT = FIGHT_VECTOR::iterator;
+
 	static FIGHT_VECTOR*						m_fight_registry;
 	static FIGHT_VECTOR&						fight_registry();
 	

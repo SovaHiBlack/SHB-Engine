@@ -17,7 +17,7 @@
 #include "HUDManager.h"//
 #include "restricted_object.h"
 #include "script_engine.h"
-#include "attachable_item.h"
+#include "AttachableItem.h"
 #include "script_entity.h"
 //#include "StringTable.h"
 #include "alife_registry_wrappers.h"

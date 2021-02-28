@@ -22,7 +22,10 @@ struct SCarLight
 	void	ParseDefinitions(const char* section);
 };
 
-DEFINE_VECTOR(SCarLight*,LIGHTS_STORAGE,LIGHTS_I)
+//DEFINE_VECTOR(SCarLight*,LIGHTS_STORAGE,LIGHTS_I)
+using LIGHTS_STORAGE = xr_vector<SCarLight*>;
+using LIGHTS_I = LIGHTS_STORAGE::iterator;
+
 class CCarLights
 {
 public:

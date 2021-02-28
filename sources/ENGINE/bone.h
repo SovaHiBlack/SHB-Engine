@@ -145,7 +145,9 @@ struct SJointIKData
 
 // refs
 class CBone;
-DEFINE_VECTOR		    (CBone*,BoneVec,BoneIt);
+//DEFINE_VECTOR		    (CBone*,BoneVec,BoneIt);
+using BoneVec = xr_vector<CBone*>;
+using BoneIt = BoneVec::iterator;
 
 class CBone
 {

@@ -27,14 +27,12 @@ static const float	s_fJumpTime			= 0.3f;
 static const float	s_fJumpGroundTime	= 0.1f;	// для снятия флажка Jump если на земле
 	   const float	s_fFallTime			= 0.2f;
 
-	   inline static void generate_orthonormal_basis1(const Fvector3& dir, Fvector3& updir, Fvector3& right)
+inline static void generate_orthonormal_basis1(const Fvector3& dir, Fvector3& updir, Fvector3& right)
 {
-
 	right.crossproduct(dir,updir); //. <->
 	right.normalize();
 	updir.crossproduct(right,dir);
 }
-
 
 void CActor::g_cl_ValidateMState(float dt, u32 mstate_wf)
 {
@@ -103,7 +101,7 @@ void CActor::g_cl_ValidateMState(float dt, u32 mstate_wf)
 			cam_UnsetLadder();
 		}
 		mstate_real				&=~mcClimb;		
-	};
+	}
 
 	if (mstate_wf != mstate_real){
 		if ((mstate_real&mcCrouch)&&((0==(mstate_wf&mcCrouch)) || mstate_real&mcClimb)){
@@ -116,7 +114,7 @@ void CActor::g_cl_ValidateMState(float dt, u32 mstate_wf)
 	if(!CanAccelerate()&&isActorAccelerated(mstate_real, IsZoomAimingMode()))
 	{
 		mstate_real				^=mcAccel;
-	};	
+	}
 
 	if (this == Level().CurrentControlEntity())
 	{
@@ -126,7 +124,7 @@ void CActor::g_cl_ValidateMState(float dt, u32 mstate_wf)
 		if (bOnClimbNow != bOnClimbOld )
 		{
 			SetWeaponHideState		(INV_STATE_LADDER, bOnClimbNow );
-		};
+		}
 	/*
 	if ((mstate_real&mcSprint) != (mstate_old&mcSprint))
 	{
@@ -134,8 +132,8 @@ void CActor::g_cl_ValidateMState(float dt, u32 mstate_wf)
 		if (pHudItem) pHudItem->onMovementChanged(mcSprint);
 	};
 	*/
-	};
-};
+	}
+}
 
 void CActor::g_cl_CheckControls(u32 mstate_wf, Fvector3& vControlAccel, float &Jump, float dt)
 {
@@ -211,7 +209,6 @@ void CActor::g_cl_CheckControls(u32 mstate_wf, Fvector3& vControlAccel, float &J
 		Jump				= m_fJumpSpeed;
 		*/
 
-
 		// mask input into "real" state
 		u32 move	= mcAnyMove|mcAccel;
 
@@ -253,8 +250,6 @@ void CActor::g_cl_CheckControls(u32 mstate_wf, Fvector3& vControlAccel, float &J
 		{
 			BOOL	bAccelerated		= isActorAccelerated(mstate_real, IsZoomAimingMode())&&CanAccelerate();
 
-
-
 			// correct "mstate_real" if opposite keys pressed
 			if (_abs(vControlAccel.z)<EPS)	mstate_real &= ~(mcFwd+mcBack		);
 			if (_abs(vControlAccel.x)<EPS)	mstate_real &= ~(mcLStrafe+mcRStrafe);
@@ -271,8 +266,6 @@ void CActor::g_cl_CheckControls(u32 mstate_wf, Fvector3& vControlAccel, float &J
 				else
 					if (mstate_real&mcBack)
 						scale *= m_fWalkBackFactor;
-
-
 
 				if (mstate_real&mcCrouch)	scale *= m_fCrouchFactor;
 				if (mstate_real&mcClimb)	scale *= m_fClimbFactor;
@@ -296,7 +289,6 @@ void CActor::g_cl_CheckControls(u32 mstate_wf, Fvector3& vControlAccel, float &J
 	}
 
 	//-------------------------------------------------------------------------------	
-	
 
 	//transform local dir to world dir
 	Fmatrix				mOrient;
@@ -405,7 +397,6 @@ bool CActor::g_LadderOrient()
 	generate_orthonormal_basis1(M.k,M.j,M.i);
 	M.i.invert();
 	//M.j.invert();
-
 
 	//Fquaternion q1,q2,q3;
 	//q1.set(XFORM());
@@ -589,7 +580,6 @@ void CActor::StopAnyMove()
 	mstate_wishful	&=		~mcAnyMove;
 	mstate_real		&=		~mcAnyMove;
 }
-
 
 bool CActor::is_jump()
 {

@@ -29,7 +29,7 @@
 	>
 
 TEMPLATE_SPECIALIZATION
-IC	CPlanner::CActionPlanner			()
+inline	CPlanner::CActionPlanner			()
 {
 	m_initialized			= false;
 #ifdef LOG_ACTION
@@ -38,7 +38,7 @@ IC	CPlanner::CActionPlanner			()
 }
 
 TEMPLATE_SPECIALIZATION
-IC	CPlanner::~CActionPlanner			()
+inline	CPlanner::~CActionPlanner			()
 {
 	m_object						= 0;
 }
@@ -55,7 +55,7 @@ void CPlanner::setup					(_object_type *object)
 }
 
 TEMPLATE_SPECIALIZATION
-IC	_object_type &CPlanner::object		() const
+inline	_object_type &CPlanner::object		() const
 {
 	VERIFY					(m_object);
 	return					(*m_object);
@@ -113,44 +113,44 @@ void CPlanner::update				()
 }
 
 TEMPLATE_SPECIALIZATION
-IC	typename CPlanner::COperator &CPlanner::action	(const _action_id_type &action_id)
+inline	typename CPlanner::COperator &CPlanner::action	(const _action_id_type &action_id)
 {
 	return					(*get_operator(action_id));
 }
 
 TEMPLATE_SPECIALIZATION
-IC	typename CPlanner::CConditionEvaluator &CPlanner::evaluator		(const _condition_type &evaluator_id)
+inline	typename CPlanner::CConditionEvaluator &CPlanner::evaluator		(const _condition_type &evaluator_id)
 {
 	return					(*inherited::evaluator(evaluator_id));
 }
 
 TEMPLATE_SPECIALIZATION
-IC	typename CPlanner::_action_id_type CPlanner::current_action_id	() const
+inline	typename CPlanner::_action_id_type CPlanner::current_action_id	() const
 {
 	VERIFY					(initialized());
 	return					(m_current_action_id);
 }
 
 TEMPLATE_SPECIALIZATION
-IC	typename CPlanner::COperator &CPlanner::current_action	()
+inline	typename CPlanner::COperator &CPlanner::current_action	()
 {
 	return					(action(current_action_id()));
 }
 
 TEMPLATE_SPECIALIZATION
-IC	bool CPlanner::initialized	() const
+inline	bool CPlanner::initialized	() const
 {
 	return					(m_initialized);
 }
 
 TEMPLATE_SPECIALIZATION
-IC	void CPlanner::add_condition	(_world_operator *action, _condition_type condition_id, _value_type condition_value)
+inline	void CPlanner::add_condition	(_world_operator *action, _condition_type condition_id, _value_type condition_value)
 {
 	action->add_condition	(CWorldProperty(condition_id,condition_value));
 }
 
 TEMPLATE_SPECIALIZATION
-IC	void CPlanner::add_effect		(_world_operator *action, _condition_type condition_id, _value_type condition_value)
+inline	void CPlanner::add_effect		(_world_operator *action, _condition_type condition_id, _value_type condition_value)
 {
 	action->add_effect		(CWorldProperty(condition_id,condition_value));
 }
@@ -176,7 +176,7 @@ const char* CPlanner::object_name		() const
 #endif
 
 TEMPLATE_SPECIALIZATION
-IC	void CPlanner::add_operator		(const _edge_type &operator_id,	_operator_ptr _operator)
+inline	void CPlanner::add_operator		(const _edge_type &operator_id,	_operator_ptr _operator)
 {
 	inherited::add_operator	(operator_id,_operator);
 	_operator->setup		(m_object,&m_storage);
@@ -186,7 +186,7 @@ IC	void CPlanner::add_operator		(const _edge_type &operator_id,	_operator_ptr _o
 }
 
 TEMPLATE_SPECIALIZATION
-IC	void CPlanner::add_evaluator	(const _condition_type &condition_id, _condition_evaluator_ptr evaluator)
+inline	void CPlanner::add_evaluator	(const _condition_type &condition_id, _condition_evaluator_ptr evaluator)
 {
 	inherited::add_evaluator(condition_id,evaluator);
 	evaluator->setup		(m_object,&m_storage);
@@ -194,7 +194,7 @@ IC	void CPlanner::add_evaluator	(const _condition_type &condition_id, _condition
 
 #ifdef LOG_ACTION
 TEMPLATE_SPECIALIZATION
-IC	void CPlanner::set_use_log		(bool value)
+inline	void CPlanner::set_use_log		(bool value)
 {
 	m_use_log							= value;
 	OPERATOR_VECTOR::iterator			I = m_operators.begin();
@@ -204,7 +204,7 @@ IC	void CPlanner::set_use_log		(bool value)
 }
 
 TEMPLATE_SPECIALIZATION
-IC	void CPlanner::show_current_world_state	()
+inline	void CPlanner::show_current_world_state	()
 {
 	Msg						("Current world state :");
 	EVALUATORS::const_iterator	I = evaluators().begin();
@@ -220,7 +220,7 @@ IC	void CPlanner::show_current_world_state	()
 }
 
 TEMPLATE_SPECIALIZATION
-IC	void CPlanner::show_target_world_state	()
+inline	void CPlanner::show_target_world_state	()
 {
 	Msg						("Target world state :");
 	EVALUATORS::const_iterator	I = evaluators().begin();
@@ -236,7 +236,7 @@ IC	void CPlanner::show_target_world_state	()
 }
 
 TEMPLATE_SPECIALIZATION
-IC	void CPlanner::show				(const char* offset)
+inline	void CPlanner::show				(const char* offset)
 {
 	string256		temp;
 	strconcat		(sizeof(temp),temp,offset,"    ");
@@ -275,7 +275,7 @@ IC	void CPlanner::show				(const char* offset)
 #endif
 
 TEMPLATE_SPECIALIZATION
-IC	void CPlanner::save	(NET_Packet &packet)
+inline	void CPlanner::save	(NET_Packet &packet)
 {
 	{
 		EVALUATORS::iterator		I = m_evaluators.begin();
@@ -304,7 +304,7 @@ IC	void CPlanner::save	(NET_Packet &packet)
 }
 
 TEMPLATE_SPECIALIZATION
-IC	void CPlanner::load	(IReader &packet)
+inline	void CPlanner::load	(IReader &packet)
 {
 	{
 		EVALUATORS::iterator		I = m_evaluators.begin();

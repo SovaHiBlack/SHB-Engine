@@ -8,7 +8,7 @@ extern Fvector get_valid_position(const CEntity *entity, const Fvector &actual_p
 // возвращает true, если объект entity находится на ноде
 extern bool object_position_valid(const CEntity *entity);
 
-IC Fvector random_position(const Fvector &center, float R) 
+inline Fvector random_position(const Fvector &center, float R)
 {
 	Fvector v;
 	v = center;
@@ -18,12 +18,12 @@ IC Fvector random_position(const Fvector &center, float R)
 	return v;
 }
 
-IC bool	from_right(float ty, float cy) 
+inline bool	from_right(float ty, float cy)
 {
 	return ((angle_normalize_signed(ty - cy) > 0));
 }
 
-IC bool	is_angle_between(float yaw, float yaw_from, float yaw_to)
+inline bool	is_angle_between(float yaw, float yaw_from, float yaw_to)
 {
 	float diff = angle_difference(yaw_from,yaw_to);
 	R_ASSERT(diff < PI);
@@ -32,7 +32,7 @@ IC bool	is_angle_between(float yaw, float yaw_from, float yaw_to)
 	else return false;
 }
 
-IC void velocity_lerp(float &_cur, float _target, float _accel, float _dt)
+inline void velocity_lerp(float &_cur, float _target, float _accel, float _dt)
 {
 	if (fsimilar(_cur, _target)) return;
 
@@ -45,7 +45,7 @@ IC void velocity_lerp(float &_cur, float _target, float _accel, float _dt)
 	}
 }
 
-IC void def_lerp(float &_cur, float _target, float _vel, float _dt)
+inline void def_lerp(float &_cur, float _target, float _vel, float _dt)
 {
 	if (fsimilar(_cur, _target)) return;
 
@@ -58,7 +58,7 @@ IC void def_lerp(float &_cur, float _target, float _vel, float _dt)
 	}
 }
 
-IC u32	time() 
+inline u32	time()
 {
 	return Device.dwTimeGlobal;
 }
@@ -68,7 +68,7 @@ IC u32	time()
 //////////////////////////////////////////////////////////////////////////
 extern	Fvector get_bone_position	(CObject *object, const char* bone_name);
 
-IC Fvector get_head_position(CObject *object) 
+inline Fvector get_head_position(CObject *object)
 {
 	return get_bone_position(object, "bip01_head");
 }
@@ -76,7 +76,7 @@ IC Fvector get_head_position(CObject *object)
 //////////////////////////////////////////////////////////////////////////
 // LTX routines
 //////////////////////////////////////////////////////////////////////////
-IC void read_delay(const char* section, const char* name, u32 &delay_min, u32 &delay_max)
+inline void read_delay(const char* section, const char* name, u32 &delay_min, u32 &delay_max)
 {
 	const char* delay	= pSettings->r_string(section,name);
 	string128 tempst;	
@@ -90,7 +90,7 @@ IC void read_delay(const char* section, const char* name, u32 &delay_min, u32 &d
 	}
 }
 
-IC void read_distance(const char* section, const char* name, float &dist_min, float &dist_max)
+inline void read_distance(const char* section, const char* name, float &dist_min, float &dist_max)
 {
 	const char* dist	= pSettings->r_string(section,name);
 	string128 tempst;
@@ -100,4 +100,3 @@ IC void read_distance(const char* section, const char* name, float &dist_min, fl
 	dist_min		= float(atof(_GetItem(dist,0,tempst)));
 	dist_max		= float(atof(_GetItem(dist,1,tempst)));
 }
-

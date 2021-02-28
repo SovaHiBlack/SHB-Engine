@@ -4,7 +4,9 @@
 #pragma once
 
 class CORE_API EFS_Utils {
-	DEFINE_MAP	(xr_string,void*,HANDLEMap,HANDLEPairIt);
+//	DEFINE_MAP	(xr_string,void*,HANDLEMap,HANDLEPairIt);
+	using HANDLEMap = xr_map<xr_string, void*>;
+	using HANDLEPairIt = HANDLEMap::iterator;
 
 	HANDLEMap 	m_LockFiles;
 public:

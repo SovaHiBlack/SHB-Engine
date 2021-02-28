@@ -15,12 +15,12 @@
 #include "../../group_hierarchy_holder.h"
 #include "../../effectorshot.h"
 
-IC	CAgentManager &CStalker::agent_manager	() const
+inline	CAgentManager &CStalker::agent_manager	() const
 {
 	return			(Level().seniority_holder().team(g_Team()).squad(g_Squad()).group(g_Group()).agent_manager());
 }
 
-IC	Fvector CStalker::weapon_shot_effector_direction	(const Fvector &current) const
+inline	Fvector CStalker::weapon_shot_effector_direction	(const Fvector &current) const
 {
 	VERIFY			(weapon_shot_effector().IsActive());
 	Fvector			result;

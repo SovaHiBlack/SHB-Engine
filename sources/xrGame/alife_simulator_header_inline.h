@@ -8,12 +8,12 @@
 
 #pragma once
 
-IC	CALifeSimulatorHeader::CALifeSimulatorHeader							(const char* section)
+inline	CALifeSimulatorHeader::CALifeSimulatorHeader							(const char* section)
 {
 	m_version					= ALIFE_VERSION;
 }
 
-IC	u32									CALifeSimulatorHeader::version		() const
+inline	u32									CALifeSimulatorHeader::version		() const
 {
 	return						(m_version);
 }

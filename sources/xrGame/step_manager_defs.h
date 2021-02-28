@@ -17,8 +17,10 @@ struct SStepParam {
 };
 
 //DEFINE_MAP(MotionID, SStepParam, STEPS_MAP, STEPS_MAP_IT);
-typedef associative_vector<MotionID, SStepParam>	STEPS_MAP;
-typedef STEPS_MAP::iterator							STEPS_MAP_IT;
+using STEPS_MAP = associative_vector<MotionID, SStepParam>;
+using STEPS_MAP_IT = STEPS_MAP::iterator;
+//typedef associative_vector<MotionID, SStepParam>	STEPS_MAP;
+//typedef STEPS_MAP::iterator							STEPS_MAP_IT;
 
 struct SStepInfo {
 	struct {

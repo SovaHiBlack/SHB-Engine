@@ -6,7 +6,7 @@
 struct SEventVelocityBounce : public ControlCom::IEventData {
 	float	m_ratio;
 
-	IC		SEventVelocityBounce(float ratio) : m_ratio(ratio) {}
+	inline		SEventVelocityBounce(float ratio) : m_ratio(ratio) {}
 };
 
 //////////////////////////////////////////////////////////////////////////
@@ -174,12 +174,12 @@ public:
 	void	accel_load				(const char* section);
 
 	void	accel_activate			(EAccelType type);
-	IC	void	accel_deactivate		() {m_accel.active = false;	m_accel.enable_braking = false;}
-	IC	void	accel_set_braking		(bool val = true) {m_accel.enable_braking = val;}
+	inline	void	accel_deactivate		() {m_accel.active = false;	m_accel.enable_braking = false;}
+	inline	void	accel_set_braking		(bool val = true) {m_accel.enable_braking = val;}
 
 	float	accel_get				(EAccelValue val = eAV_Accel);
 
-	IC	bool	accel_active			(EAccelValue val = eAV_Accel) {return (val == eAV_Accel) ? m_accel.active : m_accel.enable_braking;}
+	inline	bool	accel_active			(EAccelValue val = eAV_Accel) {return (val == eAV_Accel) ? m_accel.active : m_accel.enable_braking;}
 
 	void	accel_chain_add			(EMotionAnim anim1, EMotionAnim anim2);
 	bool	accel_chain_get			(float cur_speed, EMotionAnim target_anim, EMotionAnim &new_anim, float &a_speed);

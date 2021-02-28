@@ -54,9 +54,9 @@ public:
 	virtual	void	on_deactivate		();
 	virtual	void	Hit					(SHit* pHDS);
 
-	IC		CPolterSpecialAbility		*ability() {return (m_flame ? m_flame : m_tele);}	
+	inline		CPolterSpecialAbility		*ability() {return (m_flame ? m_flame : m_tele);}
 	
-	IC		bool	is_hidden			() {return state_invisible;}
+	inline		bool	is_hidden			() {return state_invisible;}
 	
 	// Poltergeist ability
 			void	PhysicalImpulse		(const Fvector &position);
@@ -191,7 +191,9 @@ public:
 	};
 
 private:
-	DEFINE_VECTOR			(SFlameElement*, FLAME_ELEMS_VEC, FLAME_ELEMS_IT);
+//	DEFINE_VECTOR			(SFlameElement*, FLAME_ELEMS_VEC, FLAME_ELEMS_IT);
+	using FLAME_ELEMS_VEC = xr_vector<SFlameElement*>;
+	using FLAME_ELEMS_IT = FLAME_ELEMS_VEC::iterator;
 	FLAME_ELEMS_VEC			m_flames;
 
 public:	

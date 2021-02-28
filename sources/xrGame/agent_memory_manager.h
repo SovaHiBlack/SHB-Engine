@@ -32,31 +32,31 @@ protected:
 	HITS					*m_hit_objects;
 
 protected:
-	IC		CAgentManager	&object				() const;
+	inline		CAgentManager	&object				() const;
 
 public:
-	IC						CAgentMemoryManager	(CAgentManager *object);
+	inline						CAgentMemoryManager	(CAgentManager *object);
 			void			update				();
 			void			remove_links		(CObject *object);
 
 public:
-	IC		void			set_squad_objects	(VISIBLES *objects);
-	IC		void			set_squad_objects	(SOUNDS *objects);
-	IC		void			set_squad_objects	(HITS *objects);
+	inline		void			set_squad_objects	(VISIBLES *objects);
+	inline		void			set_squad_objects	(SOUNDS *objects);
+	inline		void			set_squad_objects	(HITS *objects);
 
 public:
-	IC		VISIBLES		&visibles			() const;
-	IC		SOUNDS			&sounds				() const;
-	IC		HITS			&hits				() const;
+	inline		VISIBLES		&visibles			() const;
+	inline		SOUNDS			&sounds				() const;
+	inline		HITS			&hits				() const;
 
 public:
 	template <typename T>
-	IC		void			reset_memory_masks	(T &objects);
+	inline		void			reset_memory_masks	(T &objects);
 			void			reset_memory_masks	();
 
 	template <typename T>
-	IC		void			update_memory_masks	(const squad_mask_type &mask, T &objects);
-	IC		void			update_memory_mask	(const squad_mask_type &mask, squad_mask_type &current);
+	inline		void			update_memory_masks	(const squad_mask_type &mask, T &objects);
+	inline		void			update_memory_mask	(const squad_mask_type &mask, squad_mask_type &current);
 			void			update_memory_masks	(const squad_mask_type &mask);
 			void			object_information	(const CObject *object, u32 &level_time, Fvector &position);
 };

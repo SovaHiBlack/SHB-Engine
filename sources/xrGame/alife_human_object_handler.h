@@ -23,8 +23,8 @@ private:
 	object_type						*m_object;
 
 public:
-	IC								CALifeHumanObjectHandler	(object_type *object);
-	IC		object_type				&object						() const;
+	inline								CALifeHumanObjectHandler	(object_type *object);
+	inline		object_type				&object						() const;
 
 public:
 			u16						get_available_ammo_count	(const CSE_ALifeItemWeapon *weapon, ALife::OBJECT_VECTOR &objects);

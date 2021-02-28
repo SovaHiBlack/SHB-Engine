@@ -1,6 +1,8 @@
 #pragma once
 
-DEFINE_VECTOR(ref_shader, SHADER_VECTOR, SHADER_VECTOR_IT);
+//DEFINE_VECTOR(ref_shader, SHADER_VECTOR, SHADER_VECTOR_IT);
+using SHADER_VECTOR = xr_vector<ref_shader>;
+using SHADER_VECTOR_IT = SHADER_VECTOR::iterator;
 
 class CWalmarkManager
 {

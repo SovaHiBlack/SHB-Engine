@@ -33,12 +33,12 @@ u32 get_rank(const shared_str&)
 static const int MAX_AMMO_ATTACH_COUNT = 10;
 static const int enough_ammo_box_count = 1;
 
-IC	bool CStalker::CTradeItem::operator<		(const CTradeItem &trade_item) const
+inline	bool CStalker::CTradeItem::operator<		(const CTradeItem &trade_item) const
 {
 	return			(m_item->object().ID() < trade_item.m_item->object().ID());
 }
 
-IC	bool CStalker::CTradeItem::operator==	(u16 id) const
+inline	bool CStalker::CTradeItem::operator==	(u16 id) const
 {
 	return			(m_item->object().ID() == id);
 }
@@ -93,7 +93,7 @@ void CStalker::transfer_item					(CInventoryItem *item, CGameObject *old_owner, 
 	O->u_EventSend		(P);
 }
 
-IC	void CStalker::buy_item_virtual			(CTradeItem &item)
+inline	void CStalker::buy_item_virtual			(CTradeItem &item)
 {
 	item.m_new_owner_id			= ID();
 	m_total_money				-= item.m_item->Cost();

@@ -9,7 +9,7 @@
 #pragma once
 
 template <typename T>
-IC	T	&CALifeRegistryContainer::operator()		(const T*)
+inline	T	&CALifeRegistryContainer::operator()		(const T*)
 {
 	const int		value = Loki::TL::IndexOf<TYPE_LIST,T>::value;
 	STATIC_CHECK	(value != -1,There_is_no_specified_registry_in_the_registry_container);
@@ -17,7 +17,7 @@ IC	T	&CALifeRegistryContainer::operator()		(const T*)
 }
 
 template <typename T>
-IC	const T &CALifeRegistryContainer::operator()	(const T*) const
+inline	const T &CALifeRegistryContainer::operator()	(const T*) const
 {
 	const int		value = Loki::TL::IndexOf<TYPE_LIST,T>::value;
 	STATIC_CHECK	(value != -1,There_is_no_specified_registry_in_the_registry_container);

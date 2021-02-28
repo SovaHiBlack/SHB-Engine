@@ -164,7 +164,7 @@ void RELATION_REGISTRY::Action (CEntityAlive* from, CEntityAlive* to, ERelationA
 						delta_goodwill = st->friend_attack_goodwill;
 						delta_reputation = st->friend_attack_reputation;
 					}break;
-				};
+				}
 
 				//сталкер при нападении на членов своей же группировки отношения не меняют
 				//(считается, что такое нападение всегда случайно)
@@ -219,7 +219,7 @@ void RELATION_REGISTRY::Action (CEntityAlive* from, CEntityAlive* to, ERelationA
 							delta_goodwill		= friend_kill_goodwill;
 							delta_reputation	= friend_kill_reputation;
 						}break;
-				};
+				}
 
 				CHARACTER_GOODWILL community_goodwill = 
 					(CHARACTER_GOODWILL)(CHARACTER_COMMUNITY::sympathy(stalker->Community())*
@@ -276,7 +276,7 @@ void RELATION_REGISTRY::Action (CEntityAlive* from, CEntityAlive* to, ERelationA
 							delta_goodwill = friend_fight_help_goodwill;
 							delta_reputation = friend_fight_help_reputation;
 						}break;
-				};
+				}
 
 				if(delta_goodwill)
 				{

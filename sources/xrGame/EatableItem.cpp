@@ -11,14 +11,14 @@
 
 CEatableItem::CEatableItem( )
 {
-	m_fHealthInfluence = 0.0f;
-	m_fPowerInfluence = 0.0f;
-	m_fSatietyInfluence = 0.0f;
-	m_fRadiationInfluence = 0.0f;
+	m_fHealthInfluence		= 0.0f;
+	m_fPowerInfluence		= 0.0f;
+	m_fSatietyInfluence		= 0.0f;
+	m_fRadiationInfluence	= 0.0f;
 
-	m_iPortionsNum = -1;
+	m_iPortionsNum			= -1;
 
-	m_physic_item = 0;
+	m_physic_item			= nullptr;
 }
 
 CEatableItem::~CEatableItem( )
@@ -27,23 +27,23 @@ CEatableItem::~CEatableItem( )
 DLL_Pure* CEatableItem::_construct( )
 {
 	m_physic_item = smart_cast<CPHItem*>(this);
-	return			(inherited::_construct( ));
+	return inherited::_construct( );
 }
 
 void CEatableItem::Load(const char* section)
 {
-	inherited::Load(section);
+	inherited::Load			(section);
 
-	m_fHealthInfluence = pSettings->r_float(section, "eat_health");
-	m_fPowerInfluence = pSettings->r_float(section, "eat_power");
-	m_fSatietyInfluence = pSettings->r_float(section, "eat_satiety");
-	m_fRadiationInfluence = pSettings->r_float(section, "eat_radiation");
-	m_fWoundsHealPerc = pSettings->r_float(section, "wounds_heal_perc");
-	clamp(m_fWoundsHealPerc, 0.0f, 1.0f);
+	m_fHealthInfluence		= pSettings->r_float(section, "eat_health");
+	m_fPowerInfluence		= pSettings->r_float(section, "eat_power");
+	m_fSatietyInfluence		= pSettings->r_float(section, "eat_satiety");
+	m_fRadiationInfluence	= pSettings->r_float(section, "eat_radiation");
+	m_fWoundsHealPerc		= pSettings->r_float(section, "wounds_heal_perc");
+	clamp					(m_fWoundsHealPerc, 0.0f, 1.0f);
 
-	m_iStartPortionsNum = pSettings->r_s32(section, "eat_portions_num");
-	m_fMaxPowerUpInfluence = READ_IF_EXISTS(pSettings, r_float, section, "eat_max_power", 0.0f);
-	VERIFY(m_iPortionsNum < 10000);
+	m_iStartPortionsNum		= pSettings->r_s32(section, "eat_portions_num");
+	m_fMaxPowerUpInfluence	= READ_IF_EXISTS(pSettings, r_float, section, "eat_max_power", 0.0f);
+	VERIFY					(m_iPortionsNum < 10000);
 }
 
 BOOL CEatableItem::net_Spawn(CSE_Abstract* DC)
@@ -56,7 +56,7 @@ BOOL CEatableItem::net_Spawn(CSE_Abstract* DC)
 	m_iPortionsNum = m_iStartPortionsNum;
 
 	return TRUE;
-};
+}
 
 bool CEatableItem::Useful( ) const
 {

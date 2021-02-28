@@ -31,7 +31,10 @@ extern const char*	dbg_trace_object;
 		float depth;
 	};
 
-	DEFINE_VECTOR(SPHContactDBGDraw, CONTACT_VECTOR, CONTACT_I);
+//	DEFINE_VECTOR(SPHContactDBGDraw, CONTACT_VECTOR, CONTACT_I);
+	using CONTACT_VECTOR = xr_vector<SPHContactDBGDraw>;
+	using CONTACT_I = CONTACT_VECTOR::iterator;
+
 	extern CONTACT_VECTOR Contacts0;
 	extern CONTACT_VECTOR Contacts1;
 #endif
@@ -88,7 +91,10 @@ struct SPHObjDBGDraw
 	Fvector AABB_center;
 };
 
-DEFINE_VECTOR(SPHObjDBGDraw, PHOBJ_DBG_V, PHOBJ_DBG_I);
+//DEFINE_VECTOR(SPHObjDBGDraw, PHOBJ_DBG_V, PHOBJ_DBG_I);
+using PHOBJ_DBG_V = xr_vector<SPHObjDBGDraw>;
+using PHOBJ_DBG_I = PHOBJ_DBG_V::iterator;
+
 extern PHOBJ_DBG_V	dbg_draw_objects0;
 extern PHOBJ_DBG_V	dbg_draw_objects1;
 
@@ -101,7 +107,10 @@ struct SPHDBGDrawAbsract
 	{ };
 };
 
-DEFINE_VECTOR(SPHDBGDrawAbsract*, PHABS_DBG_V, PHABS_DBG_I);
+//DEFINE_VECTOR(SPHDBGDrawAbsract*, PHABS_DBG_V, PHABS_DBG_I);
+using PHABS_DBG_V = xr_vector<SPHDBGDrawAbsract*>;
+using PHABS_DBG_I = PHABS_DBG_V::iterator;
+
 extern PHABS_DBG_V	dbg_draw_abstruct0;
 extern PHABS_DBG_V	dbg_draw_abstruct1;
 void DBG_DrawStatBeforeFrameStep( );

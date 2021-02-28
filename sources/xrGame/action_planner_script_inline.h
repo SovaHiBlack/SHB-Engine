@@ -12,7 +12,7 @@
 #define _CActionPlannerScript	CActionPlannerScript<_object_type>
 
 TEMPLATE_SPECIALIZATION
-IC	_CActionPlannerScript::CActionPlannerScript		()
+inline	_CActionPlannerScript::CActionPlannerScript		()
 {
 	m_object			= 0;
 }

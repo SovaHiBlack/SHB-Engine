@@ -30,27 +30,27 @@ private:
 
 
 protected:
-	IC		CAgentManager			&object					() const;
+	inline		CAgentManager			&object					() const;
 
 public:
-	IC								CAgentMemberManager		(CAgentManager *object);
+	inline								CAgentMemberManager		(CAgentManager *object);
 	virtual							~CAgentMemberManager	();
 			void					update					();
 			void					add						(CEntity *member);
 			void					remove					(CEntity *member);
-	IC		CMemberOrder			&member					(const CStalker *object);
+			inline		CMemberOrder			&member					(const CStalker *object);
 			CMemberOrder			*get_member				(const ALife::_OBJECT_ID &id);
-	IC		const MEMBER_STORAGE	&members				() const;
-	IC		MEMBER_STORAGE			&members				();
-	IC		squad_mask_type			mask					(const CStalker *object) const;
+			inline		const MEMBER_STORAGE	&members				() const;
+			inline		MEMBER_STORAGE			&members				();
+			inline		squad_mask_type			mask					(const CStalker *object) const;
 			squad_mask_type			mask					(const ALife::_OBJECT_ID &id) const;
-	IC		bool					group_behaviour			() const;
-	IC		iterator				member					(squad_mask_type mask);
+			inline		bool					group_behaviour			() const;
+			inline		iterator				member					(squad_mask_type mask);
 			void					remove_links			(CObject *object);
 			void					register_in_combat		(const CStalker *object);
 			void					unregister_in_combat	(const CStalker *object);
 			bool					registered_in_combat	(const CStalker *object) const;
-	IC		const squad_mask_type	&combat_mask			() const;
+			inline		const squad_mask_type	&combat_mask			() const;
 			squad_mask_type			non_combat_members_mask	() const;
 			MEMBER_STORAGE			&combat_members			();
 			u32						in_detour				() const;

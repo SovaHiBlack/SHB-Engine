@@ -30,9 +30,15 @@
 #define GAMEMTL_NONE_IDX				u16(-1)
 #define GAMEMTL_FILENAME				"gamemtl.xr"
 
-DEFINE_VECTOR(ref_sound,SoundVec,SoundIt);
-DEFINE_VECTOR(shared_str,PSVec,PSIt);
-DEFINE_VECTOR(ref_shader,ShaderVec,ShaderIt);
+//DEFINE_VECTOR(ref_sound,SoundVec,SoundIt);
+using SoundVec = xr_vector<ref_sound>;
+using SoundIt = SoundVec::iterator;
+//DEFINE_VECTOR(shared_str,PSVec,PSIt);
+using PSVec = xr_vector<shared_str>;
+using PSIt = PSVec::iterator;
+//DEFINE_VECTOR(ref_shader,ShaderVec,ShaderIt);
+using ShaderVec = xr_vector<ref_shader>;
+using ShaderIt = ShaderVec::iterator;
 
 struct SGameMtl
 {
@@ -102,7 +108,10 @@ public:
 	void 				Save			(IWriter& fs);
 	IC int				GetID			(){return ID;}
 };
-DEFINE_VECTOR(SGameMtl*,GameMtlVec,GameMtlIt);
+
+//DEFINE_VECTOR(SGameMtl*,GameMtlVec,GameMtlIt);
+using GameMtlVec = xr_vector<SGameMtl*>;
+using GameMtlIt = GameMtlVec::iterator;
 
 struct SGameMtlPair{
 	friend class CGameMtlLibrary;
@@ -157,7 +166,9 @@ public:
 #endif
 };
 
-DEFINE_VECTOR(SGameMtlPair*,GameMtlPairVec,GameMtlPairIt);
+//DEFINE_VECTOR(SGameMtlPair*,GameMtlPairVec,GameMtlPairIt);
+using GameMtlPairVec = xr_vector<SGameMtlPair*>;
+using GameMtlPairIt = GameMtlPairVec::iterator;
 
 class CGameMtlLibrary{
 	int					material_index;

@@ -40,11 +40,21 @@ enum EPOType {
 	epotSkeleton
 };
 
-DEFINE_VECTOR	(u32,						DWORD_VECTOR,					DWORD_IT);
-DEFINE_VECTOR	(bool,						BOOL_VECTOR,					BOOL_IT);
-DEFINE_VECTOR	(float,						FLOAT_VECTOR,					FLOAT_IT);
-DEFINE_VECTOR	(char*,						LPSTR_VECTOR,					LPSTR_IT);
-DEFINE_VECTOR	(Fvector,					FVECTOR_VECTOR,					FVECTOR_IT);
+//DEFINE_VECTOR	(u32,						DWORD_VECTOR,					DWORD_IT);
+using DWORD_VECTOR = xr_vector<u32>;
+using DWORD_IT = DWORD_VECTOR::iterator;
+//DEFINE_VECTOR	(bool,						BOOL_VECTOR,					BOOL_IT);
+using BOOL_VECTOR = xr_vector<bool>;
+using BOOL_IT = BOOL_VECTOR::iterator;
+//DEFINE_VECTOR	(float,						FLOAT_VECTOR,					FLOAT_IT);
+using FLOAT_VECTOR = xr_vector<float>;
+using FLOAT_IT = FLOAT_VECTOR::iterator;
+//DEFINE_VECTOR	(char*,						LPSTR_VECTOR,					LPSTR_IT);
+using LPSTR_VECTOR = xr_vector<char*>;
+using LPSTR_IT = LPSTR_VECTOR::iterator;
+//DEFINE_VECTOR	(Fvector,					FVECTOR_VECTOR,					FVECTOR_IT);
+using FVECTOR_VECTOR = xr_vector<Fvector>;
+using FVECTOR_IT = FVECTOR_VECTOR::iterator;
 
 #define DECLARE_ENTITY_DESTROY
 

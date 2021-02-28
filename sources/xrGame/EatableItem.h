@@ -11,7 +11,7 @@ private:
 	using inherited								= CInventoryItem;
 
 private:
-	CPHItem*								m_physic_item;
+	CPHItem*									m_physic_item;
 
 public:
 							CEatableItem		( );
@@ -32,7 +32,7 @@ public:
 	bool					Empty				( ) const
 	{
 		return m_iPortionsNum == 0;
-	};
+	}
 
 protected:
 	//влияние при поедании вещи на параметры игрока

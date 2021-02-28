@@ -6,8 +6,12 @@ struct SGameMtl;
 
 class CPHCollisionDamageReceiver
 {
-	typedef std::pair<u16, float> SControledBone;
-	DEFINE_VECTOR(SControledBone, DAMAGE_CONTROLED_BONES_V, DAMAGE_BONES_I);
+	using SControledBone = std::pair<u16, float>;
+
+//	DEFINE_VECTOR(SControledBone, DAMAGE_CONTROLED_BONES_V, DAMAGE_BONES_I);
+	using DAMAGE_CONTROLED_BONES_V = xr_vector<SControledBone>;
+	using DAMAGE_BONES_I = DAMAGE_CONTROLED_BONES_V::iterator;
+
 	struct SFind
 	{
 		u16 id; SFind(u16 _id)

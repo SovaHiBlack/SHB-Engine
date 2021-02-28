@@ -1,10 +1,5 @@
-////////////////////////////////////////////////////////////////////////////
 //	Module 		: inventory_item.cpp
-//	Created 	: 24.03.2003
-//  Modified 	: 29.01.2004
-//	Author		: Victor Reutsky, Yuri Dobronravin
 //	Description : Inventory item
-////////////////////////////////////////////////////////////////////////////
 
 #include "stdafx.h"
 
@@ -32,15 +27,14 @@
 struct net_update_IItem {	u32					dwTimeStamp;
 SPHNetState			State;};
 struct net_updateData{
-
-
-
 	xr_deque<net_update_IItem>	NET_IItem;
 	/// spline coeff /////////////////////
 	float			SCoeff[3][4];
 
 #ifdef DEBUG
-	DEF_VECTOR		(VIS_POSITION, Fvector);
+//	DEF_VECTOR		(VIS_POSITION, Fvector);
+	using VIS_POSITION = xr_vector<Fvector>;
+	using VIS_POSITION_it = VIS_POSITION::iterator;
 	VIS_POSITION	LastVisPos;
 #endif
 
@@ -144,24 +138,19 @@ void CInventoryItem::Load(const char* section)
 	m_flags.set(FCanTrade,		READ_IF_EXISTS(pSettings, r_bool, section, "can_trade",			TRUE));
 	m_flags.set(FIsQuestItem,	READ_IF_EXISTS(pSettings, r_bool, section, "quest_item",		FALSE));
 
-
-
 	//время убирания объекта с уровня
 	m_dwItemRemoveTime			= READ_IF_EXISTS(pSettings, r_u32, section,"item_remove_time",			ITEM_REMOVE_TIME);
 
 	m_flags.set					(FAllowSprint,READ_IF_EXISTS	(pSettings, r_bool, section,"sprint_allowed",			TRUE));
 	m_fControlInertionFactor	= READ_IF_EXISTS(pSettings, r_float,section,"control_inertion_factor",	1.0f);
 	m_icon_name					= READ_IF_EXISTS(pSettings, r_string,section,"icon_name",				NULL);
-
 }
-
 
 void  CInventoryItem::ChangeCondition(float fDeltaCondition)
 {
 	m_fCondition += fDeltaCondition;
 	clamp(m_fCondition, 0.f, 1.f);
 }
-
 
 void	CInventoryItem::Hit					(SHit* pHDS)
 {
@@ -194,8 +183,7 @@ bool CInventoryItem::Activate()
 }
 
 void CInventoryItem::Deactivate() 
-{
-}
+{ }
 
 void CInventoryItem::OnH_B_Independent(bool just_before_destroy)
 {
@@ -211,19 +199,20 @@ void CInventoryItem::OnH_A_Independent()
 }
 
 void CInventoryItem::OnH_B_Chield()
-{
-}
+{ }
 
 void CInventoryItem::OnH_A_Chield()
 {
 	inherited::OnH_A_Chield		();
 }
+
 #ifdef DEBUG
 extern	Flags32	dbg_net_Draw_Flags;
 #endif
 
 void CInventoryItem::UpdateCL()
 {
+
 #ifdef DEBUG
 	if(bDebug){
 		if (dbg_net_Draw_Flags.test(1<<4) )
@@ -322,6 +311,7 @@ bool CInventoryItem::Detach(const char* item_section_name, bool b_spawn_item)
 		// Destroy
 		F_entity_Destroy	(D);
 	}
+
 	return true;
 }
 
@@ -434,13 +424,13 @@ void CInventoryItem::net_Import			(NET_Packet& P)
 	while (p->NET_IItem.size() > 2)
 	{
 		p->NET_IItem.pop_front				();
-	};
+	}
 };
 
 void CInventoryItem::net_Export			(NET_Packet& P) 
 {	
 	P.w_u8				(0);
-};
+}
 
 void CInventoryItem::load(IReader &packet)
 {
@@ -486,9 +476,9 @@ void CInventoryItem::PH_B_CrPr		()
 	{
 		m_flags.set			(FInInterpolation, FALSE);
 //		m_bInInterpolation = false;
-	};
+	}
 	///////////////////////////////////////////////
-};	
+}
 
 void CInventoryItem::PH_I_CrPr		()		// actions & operations between two phisic prediction steps
 {
@@ -511,7 +501,7 @@ void CInventoryItem::PH_I_CrPr		()		// actions & operations between two phisic p
 	p->IRecRot.set(xformX);
 	p->IRecPos.set(xformX.c);
 	VERIFY2								(_valid(p->IRecPos),*object().cName());
-}; 
+}
 
 #ifdef DEBUG
 void CInventoryItem::PH_Ch_CrPr			()
@@ -540,9 +530,9 @@ void CInventoryItem::PH_Ch_CrPr			()
 			///////////////////////////////////////////////////////////////////
 			PH_Ch_CrPr					();
 			////////////////////////////////////
-		};
-	};	
-};
+		}
+	}	
+}
 #endif
 
 void CInventoryItem::PH_A_CrPr		()
@@ -574,7 +564,7 @@ void CInventoryItem::PH_A_CrPr		()
 	/////////////////////////////////////////////////////////////////////////
 	CalculateInterpolationParams		();
 	///////////////////////////////////////////////////
-};
+}
 
 extern	float		g_cl_lvInterp;
 
@@ -602,7 +592,7 @@ void CInventoryItem::CalculateInterpolationParams()
 		{
 			P0[k] = c*(c*(c*p->SCoeff[k][0]+p->SCoeff[k][1])+p->SCoeff[k][2])+p->SCoeff[k][3];
 			P1[k] = (c*c*p->SCoeff[k][0]*3+c*p->SCoeff[k][1]*2+p->SCoeff[k][2])/3; // сокрость из формулы в 3 раза превышает скорость при расчете коэффициентов !!!!
-		};
+		}
 		P0.set(p->IStartPos);
 		P1.add(p->IStartPos);
 	}	
@@ -621,7 +611,7 @@ void CInventoryItem::CalculateInterpolationParams()
 		{
 			pSyncObj->cv2obj_Xfrom(p->LastState.previous_quaternion, p->LastState.previous_position, xformX0);
 			pSyncObj->cv2obj_Xfrom(p->LastState.quaternion, p->LastState.position, xformX1);
-		};
+		}
 
 		P1.sub(xformX1.c, xformX0.c);
 		P1.add(p->IStartPos);
@@ -681,9 +671,9 @@ void CInventoryItem::CalculateInterpolationParams()
 				V1.normalize();
 				V1.mul(TotalLen/3);
 				P2.sub(P3, V1);
-			};
+			}
 		}
-	};
+	}
 	/////////////////////////////////////////////////////////////////////////////
 	for( u32 i =0; i<3; i++)
 	{
@@ -691,13 +681,12 @@ void CInventoryItem::CalculateInterpolationParams()
 		p->SCoeff[i][1] = 3*P2[i]	- 6*P1[i] + 3*P0[i];
 		p->SCoeff[i][2] = 3*P1[i]	- 3*P0[i];
 		p->SCoeff[i][3] = P0[i];
-	};
+	}
 	/////////////////////////////////////////////////////////////////////////////
 	m_flags.set	(FInInterpolation, TRUE);
 
 	if (object().m_pPhysicsShell) object().m_pPhysicsShell->NetInterpolationModeON();
-
-};
+}
 
 void CInventoryItem::make_Interpolation	()
 {
@@ -706,7 +695,6 @@ void CInventoryItem::make_Interpolation	()
 	
 	if(!object().H_Parent() && object().getVisible() && object().m_pPhysicsShell && m_flags.test(FInInterpolation) ) 
 	{
-
 		u32 CurTime = Level().timeServer();
 		if (CurTime >= p->m_dwIEndTime) 
 		{
@@ -747,12 +735,12 @@ void CInventoryItem::make_Interpolation	()
 			VERIFY2								(_valid(object().renderable.xform),*object().cName());
 			object().Position().set(IPos);
 			VERIFY2								(_valid(object().renderable.xform),*object().cName());
-		};
+		}
 	}
 	else
 	{
 		m_flags.set(FInInterpolation,FALSE);
-	};
+	}
 
 #ifdef DEBUG
 	Fvector iPos = object().Position();
@@ -761,8 +749,9 @@ void CInventoryItem::make_Interpolation	()
 	{
 		if(m_net_updateData)
 			m_net_updateData->LastVisPos.push_back(iPos);
-	};
+	}
 #endif
+
 }
 
 void CInventoryItem::reload		(const char* section)
@@ -774,33 +763,33 @@ void CInventoryItem::reload		(const char* section)
 
 void CInventoryItem::reinit		()
 {
-	m_pCurrentInventory	= NULL;
+	m_pCurrentInventory	= nullptr;
 	m_eItemPlace	= eItemPlaceUndefined;
 }
 
 bool CInventoryItem::can_kill			() const
 {
-	return				(false);
+	return false;
 }
 
 CInventoryItem *CInventoryItem::can_kill	(CInventory *inventory) const
 {
-	return				(0);
+	return nullptr;
 }
 
 const CInventoryItem *CInventoryItem::can_kill			(const xr_vector<const CGameObject*> &items) const
 {
-	return				(0);
+	return nullptr;
 }
 
 CInventoryItem *CInventoryItem::can_make_killing	(const CInventory *inventory) const
 {
-	return				(0);
+	return nullptr;
 }
 
 bool CInventoryItem::ready_to_kill		() const
 {
-	return				(false);
+	return false;
 }
 
 void CInventoryItem::activate_physic_shell()
@@ -809,7 +798,7 @@ void CInventoryItem::activate_physic_shell()
 	if (!E) {
 		on_activate_physic_shell();
 		return;
-	};
+	}
 
 	UpdateXForm();
 
@@ -872,10 +861,7 @@ void CInventoryItem::UpdateXForm	()
 	object().Position().set(mRes.c);
 }
 
-
-
 #ifdef DEBUG
-
 void CInventoryItem::OnRender()
 {
 	if (bDebug && object().Visual())
@@ -945,13 +931,13 @@ void CInventoryItem::OnRender()
 				for (u32 k=0; k<3; k++)
 				{
 					point1[k] = c*(c*(c*SCoeff[k][0]+SCoeff[k][1])+SCoeff[k][2])+SCoeff[k][3];
-				};
+				}
 				Level().debug_renderer().draw_line(Fidentity, point0, point1, color_rgba(0, 0, 255, 255));
 				point0.set(point1);
-			};
-		};
+			}
+		}
 		*/
-	};
+	}
 }
 #endif
 
@@ -1032,7 +1018,7 @@ int  CInventoryItem::GetYPos				() const
 bool CInventoryItem::IsNecessaryItem(CInventoryItem* item)		
 {
 	return IsNecessaryItem(item->object().cNameSect());
-};
+}
 
 BOOL CInventoryItem::IsInvalid() const
 {

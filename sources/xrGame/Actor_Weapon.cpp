@@ -26,7 +26,6 @@ static const float VEL_A_MAX	= 10.f;
 float CActor::GetWeaponAccuracy() const
 {
 	CWeapon* W	= smart_cast<CWeapon*>(inventory().ActiveItem());
-	
 
 	if(m_bZoomAimingMode&&W&&!GetWeaponParam(W, IsRotatingToZoom(), false))
 		return m_fDispAim;
@@ -100,8 +99,9 @@ void CActor::SetWeaponHideState (u32 State, bool bSet)
 		P.w_u32		(State);
 		P.w_u8		(u8(bSet));
 		u_EventSend	(P);
-	};
+	}
 }
+
 static	u16 BestWeaponSlots [] = {
 	RIFLE_SLOT		,		// 2
 	PISTOL_SLOT		,		// 1
@@ -171,7 +171,7 @@ void CActor::on_weapon_shot_start		(CWeapon *weapon)
 		{
 			effector->SetSingleShoot(FALSE);
 		}
-	};
+	}
 
 	effector->SetRndSeed			(GetShotRndSeed());
 	effector->SetActor				(this);
@@ -239,7 +239,7 @@ void	CActor::SpawnAmmoForWeapon	(CInventoryItem *pIItem)
 	if (!pWM || !pWM->AutoSpawnAmmo()) return;
 
 	pWM->SpawnAmmo(0xffffffff, NULL, ID());
-};
+}
 
 void	CActor::RemoveAmmoForWeapon	(CInventoryItem *pIItem)
 {
@@ -252,4 +252,4 @@ void	CActor::RemoveAmmoForWeapon	(CInventoryItem *pIItem)
 	CWeaponAmmo* pAmmo = smart_cast<CWeaponAmmo*>(inventory().GetAny(*(pWM->m_ammoTypes[0]) ));
 	if (!pAmmo) return;
 	pAmmo->DestroyObject();
-};
+}

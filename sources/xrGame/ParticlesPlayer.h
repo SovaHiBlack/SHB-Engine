@@ -8,8 +8,9 @@
 #include "ParticlesObject.h"
 #include "..\ENGINE\bone.h"
 
-
-DEFINE_VECTOR(CParticlesObject*, PARTICLES_PTR_VECTOR, PARTICLES_PTR_VECTOR_IT);
+//DEFINE_VECTOR(CParticlesObject*, PARTICLES_PTR_VECTOR, PARTICLES_PTR_VECTOR_IT);
+using PARTICLES_PTR_VECTOR = xr_vector<CParticlesObject*>;
+using PARTICLES_PTR_VECTOR_IT = PARTICLES_PTR_VECTOR::iterator;
 
 class CObject;
 
@@ -30,7 +31,10 @@ public:
 		//int					cur_time;	//текущее время существования партикла
 		//bool				auto_stop;	//автоматическая остановка партиклов, когда закончится время
 	};
-	DEFINE_VECTOR			(SParticlesInfo,ParticlesInfoList,ParticlesInfoListIt);
+
+//	DEFINE_VECTOR			(SParticlesInfo,ParticlesInfoList,ParticlesInfoListIt);
+	using ParticlesInfoList = xr_vector<SParticlesInfo>;
+	using ParticlesInfoListIt = ParticlesInfoList::iterator;
 
 	//структура для косточки с списком запущенных партиклов
 	struct SBoneInfo
@@ -45,7 +49,10 @@ public:
 		void				StopParticles			(const shared_str& ps_name, bool bDestroy);
 		void				StopParticles			(u16 sender_id, bool bDestroy);
 	};
-	DEFINE_VECTOR			(SBoneInfo,BoneInfoVec,BoneInfoVecIt);
+
+//	DEFINE_VECTOR			(SBoneInfo,BoneInfoVec,BoneInfoVecIt);
+	using BoneInfoVec = xr_vector<SBoneInfo>;
+	using BoneInfoVecIt = BoneInfoVec::iterator;
 
 private:
 	// список костей

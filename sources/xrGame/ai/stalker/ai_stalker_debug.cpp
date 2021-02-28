@@ -942,7 +942,7 @@ public:
 	COLLIDE_POINTS			*m_points;
 
 public:
-	IC				ray_query_param		(CCustomMonster *holder, float power_threshold, float distance, const Fvector &start_position, const Fvector &direction, COLLIDE_POINTS &points)
+	inline				ray_query_param		(CCustomMonster *holder, float power_threshold, float distance, const Fvector &start_position, const Fvector &direction, COLLIDE_POINTS &points)
 	{
 		m_holder			= holder;
 		m_power				= 1.f;

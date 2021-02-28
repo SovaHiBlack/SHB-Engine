@@ -31,7 +31,7 @@ class CALifeRegistryWrapperObject {
 	T				*m_registry;
 
 public:
-	IC				CALifeRegistryWrapperObject		()
+	inline				CALifeRegistryWrapperObject		()
 	{
 		m_registry	= xr_new<T>();
 	}
@@ -41,7 +41,7 @@ public:
 		xr_delete	(m_registry);
 	}
 
-	IC		T		&registry						() const
+	inline		T		&registry						() const
 	{
 		VERIFY		(m_registry);
 		return		(*m_registry);

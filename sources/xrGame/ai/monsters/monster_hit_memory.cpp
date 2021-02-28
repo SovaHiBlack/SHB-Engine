@@ -52,7 +52,7 @@ struct predicate_old_hit {
 		this->mem_time = mem_time;
 	}
 
-	IC bool	operator() (const SMonsterHit &hit_info) {
+	inline bool	operator() (const SMonsterHit &hit_info) {
 		if ((mem_time + hit_info.time) < cur_time) return true;
 		if (hit_info.object) {
 			CEntityAlive *entity = smart_cast<CEntityAlive *>(hit_info.object);
@@ -158,7 +158,7 @@ struct predicate_old_info {
 
 	predicate_old_info(const CObject *obj) : object(obj) {}
 
-	IC bool	operator() (const SMonsterHit &hit_info) {
+	inline bool	operator() (const SMonsterHit &hit_info) {
 		return (object == hit_info.object);
 	}
 };

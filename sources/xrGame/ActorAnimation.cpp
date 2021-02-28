@@ -134,7 +134,6 @@ void SAnimState::Create(CKinematicsAnimated* K, const char* base0, const char* b
 	legs_rs			= K->ID_Cycle(strconcat(sizeof(buf),buf,base0,base1,"_rs_0"));
 }
 
-
 void SActorState::CreateClimb(CKinematicsAnimated* K)
 {
 	string128		buf,buf1;
@@ -175,7 +174,6 @@ void SActorState::CreateClimb(CKinematicsAnimated* K)
 	for (int k=0; k<12; ++k)
 		m_damage[k]	= K->ID_FX(strconcat(sizeof(buf),buf,base,"_damage_",itoa(k,buf1,10)));
 }
-
 
 void SActorState::Create(CKinematicsAnimated* K, const char* base)
 {
@@ -232,9 +230,8 @@ void SActorMotions::Create(CKinematicsAnimated* V)
 }
 
 SActorVehicleAnims::SActorVehicleAnims()
-{
-	
-}
+{ }
+
 void SActorVehicleAnims::Create(CKinematicsAnimated* V)
 {
 	for(u16 i=0;TYPES_NUMBER>i;++i) m_vehicles_type_collections[i].Create(V,i);
@@ -306,8 +303,6 @@ char* mov_state[] ={
 };
 void CActor::g_SetAnimation( u32 mstate_rl )
 {
-
-
 	if (!g_Alive()) {
 		if (m_current_legs||m_current_torso){
 			SActorState*				ST = 0;
@@ -322,6 +317,7 @@ void CActor::g_SetAnimation( u32 mstate_rl )
 
 		return;
 	}
+
 	STorsoWpn::eMovingState	moving_idx 		= STorsoWpn::eIdle;
 	SActorState*					ST 		= 0;
 	SAnimState*						AS 		= 0;
@@ -374,8 +370,8 @@ void CActor::g_SetAnimation( u32 mstate_rl )
 		{
 			CHudItem* pHudItem = smart_cast<CHudItem*>(inventory().ActiveItem());	
 			if (pHudItem) pHudItem->onMovementChanged(mcSprint);
-		};
-	};
+		}
+	}
 	//-----------------------------------------------------------------------
 	// Torso
 	if(mstate_rl&mcClimb)
@@ -403,7 +399,7 @@ void CActor::g_SetAnimation( u32 mstate_rl )
 				{
 					Msg("! drop animation for %s", *(H->object().cName()));
 					M_torso = ST->m_torso_idle;
-				};
+				}
 				m_bAnimTorsoPlayed		= TRUE;
 			}else{
 				if (!m_bAnimTorsoPlayed) {
@@ -547,8 +543,6 @@ void CActor::g_SetAnimation( u32 mstate_rl )
 
 		CStepManager::on_animation_start(M_legs, m_current_legs_blend);
 	}
-
-
 
 #ifdef _DEBUG
 	if(bDebug){

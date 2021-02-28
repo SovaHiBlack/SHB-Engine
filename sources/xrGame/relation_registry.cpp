@@ -1,11 +1,9 @@
-//////////////////////////////////////////////////////////////////////////
 // реестр для хранения данных об отношении персонажа к другим персонажам
-//////////////////////////////////////////////////////////////////////////
 
 #include "stdafx.h"
+
 #include "relation_registry.h"
 #include "alife_registry_wrappers.h"
-
 #include "character_community.h"
 #include "character_reputation.h"
 #include "character_rank.h"
@@ -69,8 +67,10 @@ CRelationRegistryWrapper& RELATION_REGISTRY::relation_registry()
 
 RELATION_REGISTRY::FIGHT_VECTOR& RELATION_REGISTRY::fight_registry()
 {
-	if(!m_fight_registry)
-		m_fight_registry = xr_new<FIGHT_VECTOR>();
+	if (!m_fight_registry)
+	{
+		m_fight_registry = xr_new<FIGHT_VECTOR>( );
+	}
 
 	return *m_fight_registry;
 }
@@ -84,8 +84,11 @@ void RELATION_REGISTRY::clear_relation_registry()
 
 const shared_str& RELATION_REGISTRY::GetSpotName(ALife::ERelationType& type)
 {
-	if(!m_spot_names)
-		m_spot_names = xr_new<RELATION_MAP_SPOTS>();
+	if (!m_spot_names)
+	{
+		m_spot_names = xr_new<RELATION_MAP_SPOTS>( );
+	}
+
 	return m_spot_names->GetSpotName(type);
 }
 

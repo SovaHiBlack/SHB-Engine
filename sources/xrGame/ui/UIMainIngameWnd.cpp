@@ -40,7 +40,7 @@
 #include "UIArtefactPanel.h"//
 
 #ifdef DEBUG
-//#	include "../attachable_item.h"
+//#	include "../AttachableItem.h"
 #	include "..\..\ENGINE\Input.h"
 #endif // def DEBUG
 

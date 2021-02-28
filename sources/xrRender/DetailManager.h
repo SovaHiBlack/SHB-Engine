@@ -35,7 +35,10 @@ public:
 		Fvector						c_rgb;
 #endif
 	};
-	DEFINE_VECTOR(SlotItem*,SlotItemVec,SlotItemVecIt);
+//	DEFINE_VECTOR(SlotItem*,SlotItemVec,SlotItemVecIt);
+	using SlotItemVec = xr_vector<SlotItem*>;
+	using SlotItemVecIt = SlotItemVec::iterator;
+
 	struct	SlotPart	{                              	// 
 		u32							id;					// ID модельки
 		SlotItemVec					items;              // список кустиков
@@ -59,12 +62,12 @@ public:
 
 									Slot()				{ frame=0;empty=1; type=stReady; sx=sz=0; vis.clear(); }
 	};
-    struct 	CacheSlot1	{
+	struct 	CacheSlot1	{
 		u32							empty;
-    	vis_data 					vis;
-        Slot** 						slots[dm_cache1_count*dm_cache1_count];
+		vis_data 					vis;
+		Slot** 						slots[dm_cache1_count*dm_cache1_count];
 		CacheSlot1()				{empty=1; vis.clear();}
-    };
+	};
 
 	typedef	xr_vector<xr_vector <SlotItemVec* > >	vis_list;
 	typedef	svector<CDetail*,dm_max_objects>	DetailVec;
@@ -112,7 +115,7 @@ public:
 	IC bool							UseVS			()		{ return HW.Caps.geometry_major >= 1; }
 
 	// Software processor
-    ref_geom						soft_Geom;
+	ref_geom						soft_Geom;
 	void							soft_Load		();
 	void							soft_Unload		();
 	void							soft_Render		();
@@ -137,17 +140,17 @@ public:
 public:
 	// get unpacked slot
 	DetailSlot&						QueryDB			(int sx, int sz);
-    
+	
 	void							cache_Initialize();
 	void							cache_Update	(int sx, int sz, Fvector& view, int limit);
 	void							cache_Task		(int gx, int gz, Slot* D);
 	Slot*							cache_Query		(int sx, int sz);
 	void							cache_Decompress(Slot* D);
 	BOOL							cache_Validate	();
-    // cache grid to world
+	// cache grid to world
 	int								cg2w_X			(int x)			{ return cache_cx-dm_size+x;					}
 	int								cg2w_Z			(int z)			{ return cache_cz-dm_size+(dm_cache_line-1-z);	}
-    // world to cache grid 
+	// world to cache grid 
 	int								w2cg_X			(int x)			{ return x-cache_cx+dm_size;					}
 	int								w2cg_Z			(int z)			{ return cache_cz-dm_size+(dm_cache_line-1-z);	}
 

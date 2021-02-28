@@ -21,9 +21,9 @@ private:
 
 public:
 	template <typename T>
-	IC		T		&operator()	(const T*);
+	inline		T		&operator()	(const T*);
 	template <typename T>
-	IC		const T &operator()	(const T*) const;
+	inline		const T &operator()	(const T*) const;
 	virtual	void	load		(IReader &file_stream);
 	virtual void	save		(IWriter &memory_stream);
 };

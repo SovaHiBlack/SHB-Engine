@@ -111,7 +111,7 @@ public:
 	virtual bool			BuyArtefact				(CArtefact* pArtefact);
 
 public:
-	IC		bool			busy_now				() const
+	inline		bool			busy_now				() const
 	{
 		return				(m_busy_now);
 	}
@@ -120,7 +120,7 @@ private:
 	CSoundPlayer			*m_sound_player;
 
 public:
-	IC		CSoundPlayer	&sound					() const
+	inline		CSoundPlayer	&sound					() const
 	{
 		VERIFY				(m_sound_player);
 		return				(*m_sound_player);

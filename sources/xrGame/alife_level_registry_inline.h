@@ -10,17 +10,17 @@
 
 #include "ai_space.h"
 
-IC	CALifeLevelRegistry::CALifeLevelRegistry	(const GameGraph::_LEVEL_ID &level_id)
+inline	CALifeLevelRegistry::CALifeLevelRegistry	(const GameGraph::_LEVEL_ID &level_id)
 {
 	m_level_id			= level_id;
 }
 
-IC	GameGraph::_LEVEL_ID CALifeLevelRegistry::level_id	() const
+inline	GameGraph::_LEVEL_ID CALifeLevelRegistry::level_id	() const
 {
 	return				(m_level_id);
 }
 
-IC	void CALifeLevelRegistry::add				(CSE_ALifeDynamicObject *object)
+inline	void CALifeLevelRegistry::add				(CSE_ALifeDynamicObject *object)
 {
 	if (ai().game_graph().vertex(object->m_tGraphID)->level_id() != level_id())
 		return;
@@ -30,35 +30,41 @@ IC	void CALifeLevelRegistry::add				(CSE_ALifeDynamicObject *object)
 		Msg				("[LSS] adding object [%s][%d] to current level",object->name_replace(),object->ID);
 	}
 #endif
+
 	inherited::add		(object->ID,object);
 }
 
-IC	void CALifeLevelRegistry::remove			(CSE_ALifeDynamicObject *object, bool no_assert)
+inline	void CALifeLevelRegistry::remove			(CSE_ALifeDynamicObject *object, bool no_assert)
 {
+
 #ifdef DEBUG
 	if (psAI_Flags.test(aiALife)) {
 		Msg				("[LSS] removing object [%s][%d] from current level",object->name_replace(),object->ID);
 	}
 #endif
+
 	inherited::remove	(object->ID,no_assert);
 }
 
 template <typename _update_predicate>
-IC	void CALifeLevelRegistry::update			(const _update_predicate &predicate)
+inline	void CALifeLevelRegistry::update			(const _update_predicate &predicate)
 {
 //	u32					object_count = 
 		inherited::update(predicate);
+
 #ifdef FULL_LEVEL_UPDATE
 	m_first_update		= true;
 #endif
+
 #ifdef DEBUG
 	if (psAI_Flags.test(aiALife)) {
 //		Msg				("[LSS][OOS][%d : %d]",object_count, objects().size());
 	}
 #endif
+
 }
 
-IC	CSE_ALifeDynamicObject *CALifeLevelRegistry::object	(const ALife::_OBJECT_ID &id, bool no_assert) const
+inline	CSE_ALifeDynamicObject *CALifeLevelRegistry::object	(const ALife::_OBJECT_ID &id, bool no_assert) const
 {
 	_REGISTRY::const_iterator	I = objects().find(id);
 	if (I == objects().end()) {

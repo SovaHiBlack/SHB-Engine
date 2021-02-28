@@ -18,17 +18,17 @@ struct CRegistryHelperLoad {
 	typedef typename object_type_traits::remove_reference<_T2>::type T2;
 
 	template <bool loadable>
-	IC	static void do_load(T1 *self, T2 &p1)
+	inline	static void do_load(T1 *self, T2 &p1)
 	{
 	}
 
 	template <>
-	IC	static void do_load<true>(T1 *self, T2 &p1)
+	inline	static void do_load<true>(T1 *self, T2 &p1)
 	{
 		self->Head::load(p1);
 	}
 
-	IC	static void process(T1 *self, T2 &p1)
+	inline	static void process(T1 *self, T2 &p1)
 	{
 		do_load<object_type_traits::is_base_and_derived<IPureLîadableObject<T2>,Head>::value>(self,p1);
 	}
@@ -39,17 +39,17 @@ struct CRegistryHelperSave {
 	typedef typename object_type_traits::remove_reference<_T2>::type T2;
 
 	template <bool loadable>
-	IC	static void do_save(T1 *self, T2 &p1)
+	inline	static void do_save(T1 *self, T2 &p1)
 	{
 	}
 
 	template <>
-	IC	static void do_save<true>(T1 *self, T2 &p1)
+	inline	static void do_save<true>(T1 *self, T2 &p1)
 	{
 		self->Head::save(p1);
 	}
 
-	IC	static void process(T1 *self, T2 &p1)
+	inline	static void process(T1 *self, T2 &p1)
 	{
 		do_save<object_type_traits::is_base_and_derived<IPureSavableObject<T2>,Head>::value>(self,p1);
 	}
@@ -66,17 +66,17 @@ private:
 
 public:
 	template <typename _1>
-	IC	static void go_process(T1 *self, T2 p1)
+	inline	static void go_process(T1 *self, T2 p1)
 	{
 		CRegistryHelperProcess<helper,T1,T2,Tail>::process(self,p1);
 	}
 
 	template <>
-	IC	static void go_process<Loki::NullType>(T1 *self, T2 p1)
+	inline	static void go_process<Loki::NullType>(T1 *self, T2 p1)
 	{
 	}
 
-	IC	static void process(T1 *self, T2 p1)
+	inline	static void process(T1 *self, T2 p1)
 	{
 		go_process<Tail>(self,p1);
 		helper<T1,T2,Head>::process(self,p1);

@@ -84,16 +84,22 @@ private:
 	collide::rq_results		m_rq_results;
 
 private:
-	DEFINE_VECTOR						(ref_sound,SoundVec,SoundVecIt);
-	DEFINE_VECTOR						(SBullet,BulletVec,BulletVecIt);
-	typedef std::pair<float,float>		_hit		;
+//	DEFINE_VECTOR						(ref_sound,SoundVec,SoundVecIt);
+	using SoundVec = xr_vector<ref_sound>;
+	using SoundVecIt = SoundVec::iterator;
+//	DEFINE_VECTOR						(SBullet,BulletVec,BulletVecIt);
+	using BulletVec = xr_vector<SBullet>;
+	using BulletVecIt = BulletVec::iterator;
+
+	using _hit = std::pair<float, float>;
+
 	friend	CLevel;
 
 	enum EventType {
 		EVENT_HIT	= u8(0),
 		EVENT_REMOVE,
 
-		EVENT_DUMMY = u8(-1),
+		EVENT_DUMMY = u8(-1)
 	};
 	struct	_event			{
 		EventType			Type;

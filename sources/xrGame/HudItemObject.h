@@ -8,7 +8,7 @@
 
 #pragma once
 
-#include "inventory_item_object.h"
+#include "InventoryItemObject.h"
 #include "HudItem.h"
 
 class CHudItemObject : public CInventoryItemObject, public CHudItem

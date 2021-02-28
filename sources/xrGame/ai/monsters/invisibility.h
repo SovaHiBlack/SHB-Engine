@@ -29,9 +29,9 @@ protected:
 public:
 			void	activate				();
 			void	deactivate				();
-	IC		float	energy					() {return m_energy;}
-	IC		bool	active					() {return m_active;}
-	IC		bool	full_energy				() {return !!fsimilar(m_energy,1.f);}
+			inline		float	energy					() {return m_energy;}
+			inline		bool	active					() {return m_active;}
+			inline		bool	full_energy				() {return !!fsimilar(m_energy,1.f);}
 
 	// manual switching
 			void	set_manual_control		(bool b_man = true);

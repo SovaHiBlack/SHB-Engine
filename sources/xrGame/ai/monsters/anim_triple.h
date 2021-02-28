@@ -15,10 +15,9 @@ enum EStateAnimTriple {
 #define TA_EXECUTE_ONCE			true
 #define TA_EXECUTE_LOOPED		false
 
-
 struct STripleAnimEventData : public ControlCom::IEventData {
 	u32		m_current_state;
-	IC		STripleAnimEventData(u32 state) : m_current_state(state) {}
+	inline		STripleAnimEventData(u32 state) : m_current_state(state) {}
 };
 
 struct SAnimationTripleData : public ControlCom::IComData {
@@ -44,4 +43,3 @@ private:
 			void	select_next_state		();
 			void	play_selected			();
 };
-

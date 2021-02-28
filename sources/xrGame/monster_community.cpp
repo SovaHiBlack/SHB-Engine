@@ -1,9 +1,7 @@
-//////////////////////////////////////////////////////////////////////////
 // monster_community.cpp: структура представления группировки для монстров
-//							
-//////////////////////////////////////////////////////////////////////////
 
 #include "stdafx.h"
+
 #include "monster_community.h"
 
 #define MONSTER_RELATIONS_SECT			"monster_communities"
@@ -20,21 +18,17 @@ MONSTER_COMMUNITY_DATA::MONSTER_COMMUNITY_DATA (MONSTER_COMMUNITY_INDEX idx, MON
 
 //////////////////////////////////////////////////////////////////////////
 MONSTER_COMMUNITY::MONSTER_RELATION_TABLE MONSTER_COMMUNITY::m_relation_table;
-
 //////////////////////////////////////////////////////////////////////////
 MONSTER_COMMUNITY::MONSTER_COMMUNITY	()
 {
 	m_current_index = NO_MONSTER_COMMUNITY_INDEX;
 }
 MONSTER_COMMUNITY::~MONSTER_COMMUNITY	()
-{
-}
-
+{ }
 
 void  MONSTER_COMMUNITY::set	(MONSTER_COMMUNITY_ID id)
 {
 	m_current_index	 = IdToIndex(id);
-
 }
 void  MONSTER_COMMUNITY::set	(MONSTER_COMMUNITY_INDEX index)
 {
@@ -55,14 +49,12 @@ u8							 MONSTER_COMMUNITY::team			() const
 	return (*m_pItemDataVector)[m_current_index].team;
 }
 
-
 void MONSTER_COMMUNITY::InitIdToIndex	()
 {
 	section_name	= MONSTER_RELATIONS_SECT;
 	line_name		= MONSTER_COMMUNITIES;
 	m_relation_table.set_table_params(MONSTER_RELATIONS_TABLE);
 }
-
 
 int MONSTER_COMMUNITY::relation		(MONSTER_COMMUNITY_INDEX to)
 {

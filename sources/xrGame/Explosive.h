@@ -17,7 +17,9 @@
 
 class IRender_Light;
 
-DEFINE_VECTOR(CPHShellHolder*, BLASTED_OBJECTS_V, BLASTED_OBJECTS_I);
+//DEFINE_VECTOR(CPHShellHolder*, BLASTED_OBJECTS_V, BLASTED_OBJECTS_I);
+using BLASTED_OBJECTS_V = xr_vector<CPHShellHolder*>;
+using BLASTED_OBJECTS_I = BLASTED_OBJECTS_V::iterator;
 
 class CExplosive : public IDamageSource
 {

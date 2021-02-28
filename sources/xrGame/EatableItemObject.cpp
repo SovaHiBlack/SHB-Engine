@@ -1,5 +1,5 @@
 ////////////////////////////////////////////////////////////////////////////
-//	Module 		: eatable_item_object.cpp
+//	Module 		: EatableItemObject.cpp
 //	Created 	: 24.03.2003
 //  Modified 	: 29.01.2004
 //	Author		: Yuri Dobronravin
@@ -8,7 +8,7 @@
 
 #include "stdafx.h"
 
-#include "eatable_item_object.h"
+#include "EatableItemObject.h"
 
 CEatableItemObject::CEatableItemObject	()
 { }

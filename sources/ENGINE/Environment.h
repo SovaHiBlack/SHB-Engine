@@ -73,7 +73,9 @@ public:
 		Fvector3			offset;
 		float			wind_gust_factor;
 	};
-	DEFINE_VECTOR(SEffect, EffectVec, EffectVecIt);
+	//DEFINE_VECTOR(SEffect, EffectVec, EffectVecIt);
+	using EffectVec = xr_vector<SEffect>;
+	using EffectVecIt = EffectVec::iterator;
 
 protected:
 	shared_str			section;
@@ -202,9 +204,16 @@ class ENGINE_API CEnvironment
 	};
 
 public:
-	DEFINE_VECTOR(CEnvAmbient*, EnvAmbVec, EnvAmbVecIt);
-	DEFINE_VECTOR(CEnvDescriptor*, EnvVec, EnvIt);
-	DEFINE_MAP_PRED(shared_str, EnvVec, EnvsMap, EnvsMapIt, str_pred);
+//	DEFINE_VECTOR(CEnvAmbient*, EnvAmbVec, EnvAmbVecIt);
+	using EnvAmbVec = xr_vector<CEnvAmbient*>;
+	using EnvAmbVecIt = EnvAmbVec::iterator;
+//	DEFINE_VECTOR(CEnvDescriptor*, EnvVec, EnvIt);
+	using EnvVec = xr_vector<CEnvDescriptor*>;
+	using EnvIt = EnvVec::iterator;
+
+//	DEFINE_MAP_PRED(shared_str, EnvVec, EnvsMap, EnvsMapIt, str_pred);
+	using EnvsMap = xr_map<shared_str, EnvVec, str_pred>;
+	using EnvsMapIt = EnvsMap::iterator;
 
 private:
 	// clouds

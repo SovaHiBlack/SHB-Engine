@@ -72,7 +72,9 @@ struct TPHCharacterRestrictor : public SPHCharacterRestrictor
 	}
 };
 
-DEFINE_VECTOR(SPHCharacterRestrictor*, RESRICTORS_V, RESTRICTOR_I);
+//DEFINE_VECTOR(SPHCharacterRestrictor*, RESRICTORS_V, RESTRICTOR_I);
+using RESRICTORS_V = xr_vector<SPHCharacterRestrictor*>;
+using RESTRICTOR_I = RESRICTORS_V::iterator;
 
 IC RESTRICTOR_I begin(RESRICTORS_V& v)
 {

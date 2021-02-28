@@ -5,7 +5,6 @@
 
 #pragma once
 
-
 //////////////////////////////////////////////////////////////////////////
 template<typename T>
 ALife::ERelationType RELATION_REGISTRY::GetRelationBetween		(T char1,T char2) const 
@@ -63,7 +62,6 @@ ALife::ERelationType RELATION_REGISTRY::GetRelationType		(T from, T to) const
 		return ALife::eRelationTypeFriend;
 }
 
-
 //////////////////////////////////////////////////////////////////////////
 template<typename T>
 CHARACTER_GOODWILL	 RELATION_REGISTRY::GetAttitude	(T from, T to) const 
@@ -74,8 +72,6 @@ CHARACTER_GOODWILL	 RELATION_REGISTRY::GetAttitude	(T from, T to) const
 	CHARACTER_GOODWILL reputation_goodwill		= GetReputationRelation(from->Reputation(), to->Reputation());
 	//влияние рангов персонажей
 	CHARACTER_GOODWILL rank_goodwill			= GetRankRelation(from->Rank(), to->Rank());
-
-
 	//отношение группировки from персонально к to
 	CHARACTER_GOODWILL community_goodwill		= GetCommunityGoodwill(from->Community(), to->object_id()); VERIFY(community_goodwill != NO_GOODWILL);
 	//отношение группировки from к группировки to

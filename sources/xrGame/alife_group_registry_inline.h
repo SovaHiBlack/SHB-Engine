@@ -8,7 +8,7 @@
 
 #pragma once
 
-IC	const CALifeGroupRegistry::OBJECTS &CALifeGroupRegistry::objects	() const
+inline	const CALifeGroupRegistry::OBJECTS &CALifeGroupRegistry::objects	() const
 {
 	return		(m_objects);
 }

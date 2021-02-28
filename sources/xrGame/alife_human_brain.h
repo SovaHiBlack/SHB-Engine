@@ -43,8 +43,8 @@ public:
 			void						on_state_read		(NET_Packet &packet);
 
 public:
-	IC		object_type					&object				() const;
-	IC		object_handler_type			&objects			() const;
+	inline		object_type					&object				() const;
+	inline		object_handler_type			&objects			() const;
 
 public:
 	static void script_register(lua_State*);

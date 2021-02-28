@@ -2,7 +2,9 @@
 
 class CCar;
 
-DEFINE_VECTOR(u16,BIDS,BIDS_I);
+//DEFINE_VECTOR(u16,BIDS,BIDS_I);
+using BIDS = xr_vector<u16>;
+using BIDS_I = BIDS::iterator;
 
 struct CCarDamageParticles
 {

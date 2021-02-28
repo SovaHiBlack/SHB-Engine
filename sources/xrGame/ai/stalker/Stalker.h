@@ -262,7 +262,7 @@ public:
 			void						update_best_item_info	();
 	virtual float						GetWeaponAccuracy		() const;
 	virtual	void						spawn_supplies			();
-	IC		CAgentManager				&agent_manager			() const;
+	inline		CAgentManager				&agent_manager			() const;
 	
 	virtual bool						human_being				() const
 	{
@@ -288,7 +288,7 @@ public:
 			bool						can_kill_member			();
 			bool						can_kill_enemy			();
 			float						pick_distance			();
-	IC		float						start_pick_distance		() const;
+			inline		float						start_pick_distance		() const;
 			bool						fire_make_sense			();
 			
 	virtual const char* Name					() const;
@@ -306,7 +306,7 @@ private:
 		ALife::_OBJECT_ID				m_owner_id;
 		ALife::_OBJECT_ID				m_new_owner_id;
 
-		IC					CTradeItem	(
+		inline					CTradeItem	(
 			CInventoryItem		*item,
 			ALife::_OBJECT_ID	owner_id,
 			ALife::_OBJECT_ID	new_owner_id
@@ -317,8 +317,8 @@ private:
 			m_new_owner_id	= new_owner_id;
 		}
 
-		IC	bool			operator<	(const CTradeItem &trade_item) const;
-		IC	bool			operator==	(u16 id) const;
+		inline	bool			operator<	(const CTradeItem &trade_item) const;
+		inline	bool			operator==	(u16 id) const;
 	};
 
 private:
@@ -331,7 +331,7 @@ private:
 protected:
 			u32							fill_items						(CInventory &inventory, CGameObject *old_owner, ALife::_OBJECT_ID new_owner_id);
 			
-	IC		void						buy_item_virtual				(CTradeItem &item);
+			inline		void						buy_item_virtual				(CTradeItem &item);
 			void						attach_available_ammo			(CWeapon *weapon);
 			void						choose_food						();
 			void						choose_weapon					(ALife::EWeaponPriorityType weapon_priority_type);
@@ -355,9 +355,9 @@ protected:
 			void						on_after_take					(const CGameObject *object);
 	virtual bool						AllowItemToTrade 				(CInventoryItem const * item, EItemPlace place) const;
 public:
-	IC		CStalkerAnimationManager	&animation						() const;
-	IC		CStalkerPlanner				&brain							() const;
-	IC		CSightManager				&sight							() const;
+	inline		CStalkerAnimationManager	&animation						() const;
+	inline		CStalkerPlanner				&brain							() const;
+	inline		CSightManager				&sight							() const;
 
 private:
 	CStalkerSoundDataVisitor			*m_sound_user_data_visitor;
@@ -368,11 +368,11 @@ protected:
 	virtual CMovementManager			*create_movement_manager		();
 
 public:
-	IC		CStalkerMovementManager		&movement						() const;
+	inline		CStalkerMovementManager		&movement						() const;
 	virtual DLL_Pure					*_construct						();
 
 private:
-	IC		bool						frame_check						(u32 &frame);
+	inline		bool						frame_check						(u32 &frame);
 	virtual bool						natural_weapon					() const {return false;}
 	virtual bool						natural_detector				() const {return false;}
 	virtual bool						use_center_to_aim				() const;
@@ -382,7 +382,7 @@ private:
 	bool								m_group_behaviour;
 
 public:
-	IC		bool						group_behaviour					() const;
+	inline		bool						group_behaviour					() const;
 	virtual	void						update_range_fov				(float &new_range, float &new_fov, float start_range, float start_fov);
 			void __stdcall				update_object_handler			();
 			bool						zoom_state						() const;
@@ -396,11 +396,12 @@ public:
 	virtual	void						on_weapon_shot_start			(CWeapon *weapon);
 	virtual	void						on_weapon_shot_stop				(CWeapon *weapon);
 	virtual	void						on_weapon_hide					(CWeapon *weapon);
-	IC		CWeaponShotEffector			&weapon_shot_effector			() const;
-	IC		Fvector						weapon_shot_effector_direction	(const Fvector &current) const;
+	inline		CWeaponShotEffector			&weapon_shot_effector			() const;
+	inline		Fvector						weapon_shot_effector_direction	(const Fvector &current) const;
 	virtual void						UpdateCamera					();
 	virtual	bool						can_attach						(const CInventoryItem *inventory_item) const;
 	virtual	bool						use_simplified_visual			() const {return (already_dead());};
+
 #ifdef DEBUG
 			void						debug_planner					(const script_planner *planner);
 #endif
@@ -422,20 +423,20 @@ private:
 	u32				m_max_queue_interval_close;
 
 public:
-	IC		u32							min_queue_size_far				() const;
-	IC		u32							max_queue_size_far				() const;
-	IC		u32							min_queue_interval_far			() const;
-	IC		u32							max_queue_interval_far			() const;
+	inline		u32							min_queue_size_far				() const;
+	inline		u32							max_queue_size_far				() const;
+	inline		u32							min_queue_interval_far			() const;
+	inline		u32							max_queue_interval_far			() const;
 
-	IC		u32							min_queue_size_medium			() const;
-	IC		u32							max_queue_size_medium			() const;
-	IC		u32							min_queue_interval_medium		() const;
-	IC		u32							max_queue_interval_medium		() const;
+	inline		u32							min_queue_size_medium			() const;
+	inline		u32							max_queue_size_medium			() const;
+	inline		u32							min_queue_interval_medium		() const;
+	inline		u32							max_queue_interval_medium		() const;
 
-	IC		u32							min_queue_size_close			() const;
-	IC		u32							max_queue_size_close			() const;
-	IC		u32							min_queue_interval_close		() const;
-	IC		u32							max_queue_interval_close		() const;
+	inline		u32							min_queue_size_close			() const;
+	inline		u32							max_queue_size_close			() const;
+	inline		u32							min_queue_interval_close		() const;
+	inline		u32							max_queue_interval_close		() const;
 
 public:
 	typedef fastdelegate::FastDelegate<void (const CCoverPoint *, const CCoverPoint *)>	on_best_cover_changed_delegate;
@@ -475,7 +476,7 @@ public:
 public:
 			void						wounded								(bool value);
 			bool						wounded								(const CRestrictedObject *object) const;
-	IC		bool						wounded								() const;
+			inline		bool						wounded								() const;
 
 // throwing grenades
 private:
@@ -520,7 +521,7 @@ private:
 
 public:
 			bool						critically_wounded							();
-	IC		const CRITICAL_WOUND_WEIGHTS&critical_wound_weights						() const;
+			inline		const CRITICAL_WOUND_WEIGHTS&critical_wound_weights						() const;
 
 private:
 			bool						can_cry_enemy_is_wounded					() const;

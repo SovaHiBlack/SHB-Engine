@@ -243,7 +243,9 @@ public:
 			u32				_rendered	:1;
 		};
 	};
-	DEFINE_VECTOR			(SItem,item_vec,item_vec_it);
+//	DEFINE_VECTOR			(SItem,item_vec,item_vec_it);
+	using item_vec = xr_vector<SItem>;
+	using item_vec_it = item_vec::iterator;
 	item_vec				items;
 public:
 void						clear							()					{items.clear();}
