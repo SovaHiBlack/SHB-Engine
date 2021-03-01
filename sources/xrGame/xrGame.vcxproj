@@ -1178,7 +1178,6 @@
     <ClInclude Include="space_restriction_shape.h" />
     <ClInclude Include="space_restriction_shape_inline.h" />
     <ClInclude Include="SpaceRestrictor.h" />
-    <ClInclude Include="SpaceRestrictor_inline.h" />
     <ClInclude Include="SpecificCharacter.h" />
     <ClInclude Include="Spectator.h" />
     <ClInclude Include="squad_hierarchy_holder.h" />

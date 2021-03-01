@@ -5727,9 +5727,6 @@
     <ClInclude Include="SpaceRestrictor.h">
       <Filter>Core\Client\Objects\zones\SpaceRestrictor</Filter>
     </ClInclude>
-    <ClInclude Include="SpaceRestrictor_inline.h">
-      <Filter>Core\Client\Objects\zones\SpaceRestrictor</Filter>
-    </ClInclude>
     <ClInclude Include="TeamBaseZone.h">
       <Filter>Core\Client\Objects\zones\TeamBaseZone</Filter>
     </ClInclude>

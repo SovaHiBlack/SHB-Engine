@@ -1,10 +1,5 @@
-////////////////////////////////////////////////////////////////////////////
 //	Module 		: SpaceRestrictor.h
-//	Created 	: 17.08.2004
-//  Modified 	: 17.08.2004
-//	Author		: Dmitriy Iassenev
 //	Description : Space restrictor
-////////////////////////////////////////////////////////////////////////////
 
 #pragma once
 
@@ -12,20 +7,23 @@
 #include "restriction_space.h"
 #include "script_export_space.h"
 
-class CSpaceRestrictor : public CGameObject {
+class CSpaceRestrictor : public CGameObject
+{
 private:
-	typedef CGameObject			inherited;
+	using inherited = CGameObject;
 
 private:
-	enum {
-		PLANE_COUNT = 6,
+	enum
+	{
+		PLANE_COUNT = 6
 	};
 
 private:
 	typedef Fplane				CPlanesArray[PLANE_COUNT];
 
 private:
-	struct CPlanes {
+	struct CPlanes
+	{
 		CPlanesArray			m_planes;
 	};
 
@@ -40,38 +38,64 @@ private:
 	mutable bool				m_actuality;
 
 private:
-			u8					m_space_restrictor_type;
+	u8					m_space_restrictor_type;
 private:
-	IC		void				actual				(bool value) const;
-			void				prepare				() const;
-			bool				prepared_inside		(const Fsphere &sphere) const;
+	inline void				actual(bool value) const;
+	void				prepare( ) const;
+	bool				prepared_inside(const Fsphere& sphere) const;
 
 public:
-	IC							CSpaceRestrictor	();
-	virtual						~CSpaceRestrictor	();
-	virtual	BOOL				net_Spawn			(CSE_Abstract* data);
-	virtual	void				net_Destroy			();
-			bool				inside				(const Fsphere &sphere) const;
-	virtual void				Center				(Fvector &C) const;
-	virtual float				Radius				() const;
-	virtual BOOL				UsedAI_Locations	();
-	virtual void				spatial_move		();
-	IC		bool				actual				() const;
-	virtual	CSpaceRestrictor	*cast_restrictor	() {return this;}
-	virtual	bool				register_schedule	() const {return false;}
+	inline						CSpaceRestrictor( );
+	virtual						~CSpaceRestrictor( );
+	virtual BOOL				net_Spawn(CSE_Abstract* data);
+	virtual void				net_Destroy( );
+	bool						inside(const Fsphere& sphere) const;
+	virtual void				Center(Fvector& C) const;
+	virtual float				Radius( ) const;
+	virtual BOOL				UsedAI_Locations( );
+	virtual void				spatial_move( );
+	inline bool					actual( ) const;
+	virtual CSpaceRestrictor*	cast_restrictor( )
+	{
+		return this;
+	}
+	virtual bool				register_schedule( ) const
+	{
+		return false;
+	}
 
-	IC RestrictionSpace::ERestrictorTypes restrictor_type() const; 
+	inline RestrictionSpace::ERestrictorTypes restrictor_type( ) const;
 
 public:
 #ifdef DEBUG
-	virtual void				OnRender			();
-#endif
+	virtual void				OnRender( );
+#endif // def DEBUG
+
 public:
-	static void script_register(lua_State*);
+	static void					script_register(lua_State*);
 };
 
 add_to_type_list(CSpaceRestrictor)
 #undef script_type_list
 #define script_type_list save_type_list(CSpaceRestrictor)
 
-#include "SpaceRestrictor_inline.h"
+// Description : Space restrictor inline functions
+inline CSpaceRestrictor::CSpaceRestrictor( )
+{
+	m_space_restrictor_type = RestrictionSpace::eRestrictorTypeNone;
+}
+
+inline bool CSpaceRestrictor::actual( ) const
+{
+	return m_actuality;
+}
+
+inline void CSpaceRestrictor::actual(bool value) const
+{
+	m_actuality = value;
+}
+
+inline RestrictionSpace::ERestrictorTypes CSpaceRestrictor::restrictor_type( ) const
+{
+	return RestrictionSpace::ERestrictorTypes(m_space_restrictor_type);
+}
