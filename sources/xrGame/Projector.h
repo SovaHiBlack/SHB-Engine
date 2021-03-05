@@ -6,7 +6,7 @@ class CLAItem;
 
 class CProjector : public CScriptObject
 {
-	typedef	CScriptObject		inherited;
+	using inherited = CScriptObject;
 
 	friend void		BoneCallbackX(CBoneInstance* B);
 	friend void		BoneCallbackY(CBoneInstance* B);
@@ -43,14 +43,14 @@ public:
 
 	virtual BOOL	UsedAI_Locations( );
 
-	virtual	bool	bfAssignWatch(CScriptEntityAction* tpEntityAction);
-	virtual	bool	bfAssignObject(CScriptEntityAction* tpEntityAction);
+	virtual bool	bfAssignWatch(CScriptEntityAction* tpEntityAction);
+	virtual bool	bfAssignObject(CScriptEntityAction* tpEntityAction);
 
-	Fvector GetCurrentDirection( );
+	Fvector			GetCurrentDirection( );
 
 private:
-	void	TurnOn( );
-	void	TurnOff( );
+	void			TurnOn( );
+	void			TurnOff( );
 
 	// Rotation routines
 	static void		BoneCallbackX(CBoneInstance* B);
