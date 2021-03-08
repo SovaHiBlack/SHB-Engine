@@ -59,7 +59,7 @@ private:
 	CParticlesObject*	PlayParticles				(const shared_str& name, BOOL bAutoRemove, const Fmatrix& xform);
 //	void				PlayMotion					(MotionID);
 
-	void				UpdatePosition				(const Fvector& tgt_pos);
+	void				UpdatePosition				(const Fvector3& tgt_pos);
 
 	void				PsyHit						(const CObject *object, float value);
 
@@ -79,8 +79,8 @@ public:
 	virtual void		shedule_Update				(u32 DT); 
 	virtual void		UpdateCL					();
 
-	virtual void		HitSignal					(float	HitAmount,	Fvector& local_dir, CObject* who, s16 element){}
-	virtual void		HitImpulse					(float	amount,		Fvector& vWorldDir, Fvector& vLocalDir){}
+	virtual void		HitSignal					(float	HitAmount, Fvector3& local_dir, CObject* who, s16 element){}
+	virtual void		HitImpulse					(float	amount, Fvector3& vWorldDir, Fvector3& vLocalDir){}
 	virtual	void		Hit							(SHit* pHDS);
 
 	virtual BOOL		IsVisibleForHUD				() {return false;}

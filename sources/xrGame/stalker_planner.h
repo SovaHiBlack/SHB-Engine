@@ -41,8 +41,8 @@ public:
 	virtual					~CStalkerPlanner	();
 	virtual	void			setup				(CStalker *object);
 	virtual	void			update				(u32 time_delta);
-	IC		void			affect_cover		(bool value);
-	IC		bool			affect_cover		() const;
+	inline		void			affect_cover		(bool value);
+	inline		bool			affect_cover		() const;
 
 #ifdef LOG_ACTION
 	virtual	const char* object_name			() const;

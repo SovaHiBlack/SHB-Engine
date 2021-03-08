@@ -158,9 +158,9 @@ public:
 	IRender_Sector*					detectSector				(const Fvector& P, Fvector& D);
 
 	// HW-occlusion culling
-	IC u32							occq_begin					(u32&	ID		)	{ return HWOCC.occq_begin	(ID);	}
-	IC void							occq_end					(u32&	ID		)	{ HWOCC.occq_end	(ID);			}
-	IC u32							occq_get					(u32&	ID		)	{ return HWOCC.occq_get		(ID);	}
+	inline u32							occq_begin					(u32&	ID		)	{ return HWOCC.occq_begin	(ID);	}
+	inline void							occq_end					(u32&	ID		)	{ HWOCC.occq_end	(ID);			}
+	inline u32							occq_get					(u32&	ID		)	{ return HWOCC.occq_get		(ID);	}
 
 	__forceinline void						apply_object				(IRenderable*	O)
 	{
@@ -171,7 +171,7 @@ public:
 		o_hemi						= 0.75f*LT.get_hemi			()	;
 		o_sun						= 0.75f*LT.get_sun			()	;
 	}
-	IC void							apply_lmaterial				()
+	inline void							apply_lmaterial				()
 	{
 		R_constant*		C	= &*RCache.get_c	(c_sbase);		// get sampler
 		if (0==C)			return;

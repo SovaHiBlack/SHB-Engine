@@ -8,7 +8,7 @@
 
 #pragma once
 
-IC	CALifeSurgeManager::CALifeSurgeManager				(CServer*server, const char* section) :
+inline	CALifeSurgeManager::CALifeSurgeManager				(CServer*server, const char* section) :
 	inherited		(server,section)
 {
 }

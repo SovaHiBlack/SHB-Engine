@@ -60,8 +60,8 @@ virtual							~CPHShellSplitterHolder		()																												;
 		void					SplitProcess				(PHSHELL_PAIR_VECTOR &out_shels)																				;
 		void					AddToGeomMap				(const id_geom& id_rootgeom)																					;
 		u16						FindRootGeom				(u16 bone_id)																									;
-IC      bool					Breaked						()																							{return m_has_breaks;}
-IC		bool					isEmpty						()																					{return m_splitters.empty()	;}
+inline      bool					Breaked						()																							{return m_has_breaks;}
+inline		bool					isEmpty						()																					{return m_splitters.empty()	;}
 		void					SetUnbreakable				()																												;
 		void					SetBreakable				()																												;
 		bool					IsUnbreakable				()																					{return m_unbreakable		;}					

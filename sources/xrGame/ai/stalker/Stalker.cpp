@@ -149,14 +149,14 @@ void CStalker::reinit			()
 	m_best_cover_value				= flt_max;
 
 	m_throw_actual					= false;
-	m_computed_object_position		= Fvector().set(flt_max,flt_max,flt_max);
-	m_computed_object_direction		= Fvector().set(flt_max,flt_max,flt_max);
+	m_computed_object_position		= Fvector3().set(flt_max,flt_max,flt_max);
+	m_computed_object_direction		= Fvector3().set(flt_max,flt_max,flt_max);
 
-	m_throw_target					= Fvector().set(flt_max,flt_max,flt_max);
+	m_throw_target					= Fvector3().set(flt_max,flt_max,flt_max);
 
 	m_throw_force					= flt_max;
-	m_throw_position				= Fvector().set(flt_max,flt_max,flt_max);
-	m_throw_direction				= Fvector().set(flt_max,flt_max,flt_max);
+	m_throw_position				= Fvector3().set(flt_max,flt_max,flt_max);
+	m_throw_direction				= Fvector3().set(flt_max,flt_max,flt_max);
 
 	brain().CStalkerPlanner::m_storage.set_property	(StalkerDecisionSpace::eWorldPropertyCriticallyWounded,	false);
 
@@ -657,7 +657,7 @@ void CStalker::UpdateCL()
 	STOP_PROFILE
 }
 
-void CStalker ::PHHit				(float P,Fvector &dir, CObject *who,s16 element,Fvector p_in_object_space, float impulse, ALife::EHitType hit_type /*ALife::eHitTypeWound*/)
+void CStalker ::PHHit				(float P, Fvector3& dir, CObject *who,s16 element, Fvector3 p_in_object_space, float impulse, ALife::EHitType hit_type /*ALife::eHitTypeWound*/)
 {
 	m_pPhysics_support->in_Hit(P,dir,who,element,p_in_object_space,impulse,hit_type,!g_Alive());
 }
@@ -688,7 +688,7 @@ void CStalker::shedule_Update		( u32 DT )
 	VERIFY				(!NET.empty());
 	while ((NET.size()>2) && (NET[1].dwTimeStamp<dwTimeCL)) NET.pop_front();
 
-	Fvector				vNewPosition = Position();
+	Fvector3				vNewPosition = Position();
 	VERIFY				(_valid(Position()));
 	// *** general stuff
 	float dt			= float(DT)/1000.f;
@@ -750,7 +750,8 @@ void CStalker::shedule_Update		( u32 DT )
 		float							temp = conditions().health();
 		if (temp > 0) {
 			START_PROFILE("stalker/schedule_update/feel_touch")
-			Fvector C; float R;
+				Fvector3 C;
+			float R;
 			Center(C);
 			R = Radius();
 			feel_touch_update		(C,R);
@@ -880,7 +881,7 @@ void CStalker::Think			()
 	STOP_PROFILE
 }
 
-void CStalker::SelectAnimation(const Fvector &view, const Fvector &move, float speed)
+void CStalker::SelectAnimation(const Fvector3& view, const Fvector3& move, float speed)
 {
 	if (!Device.Paused())
 		animation().update();
@@ -948,7 +949,7 @@ bool CStalker::use_center_to_aim		() const
 void CStalker::UpdateCamera			()
 {
 	float								new_range = eye_range, new_fov = eye_fov;
-	Fvector								temp = eye_matrix.k;
+	Fvector3								temp = eye_matrix.k;
 	if (g_Alive()) {
 		update_range_fov				(new_range, new_fov, memory().visual().current_state().m_max_view_distance*eye_range, eye_fov);
 		if (weapon_shot_effector().IsActive())

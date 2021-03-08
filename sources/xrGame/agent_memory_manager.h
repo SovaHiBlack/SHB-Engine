@@ -58,7 +58,7 @@ public:
 	inline		void			update_memory_masks	(const squad_mask_type &mask, T &objects);
 	inline		void			update_memory_mask	(const squad_mask_type &mask, squad_mask_type &current);
 			void			update_memory_masks	(const squad_mask_type &mask);
-			void			object_information	(const CObject *object, u32 &level_time, Fvector &position);
+			void			object_information	(const CObject *object, u32 &level_time, Fvector3& position);
 };
 
 #include "agent_memory_manager_inline.h"

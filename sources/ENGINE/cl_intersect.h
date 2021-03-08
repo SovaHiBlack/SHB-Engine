@@ -11,7 +11,7 @@ namespace CDB
 	//         sR - radius of sphere
 	// Notes : Normalized directional vectors expected
 	// -----------------------------------------------------------------------
-	IC bool IntersectRaySphere(const Fvector3& rO, const Fvector3& rV, const Fvector3& sO, float sR)
+	inline bool IntersectRaySphere(const Fvector3& rO, const Fvector3& rV, const Fvector3& sO, float sR)
 	{
 		Fvector3 Q;
 		Q.sub(sO,rO);
@@ -25,7 +25,7 @@ namespace CDB
 	}
 
 	//-- Ray-Triangle : 2nd level of indirection --------------------------------
-	IC bool TestRayTri(const Fvector3& C, const Fvector3& D, Fvector3** p, float& u, float& v, float& range, bool bCull)
+	inline bool TestRayTri(const Fvector3& C, const Fvector3& D, Fvector3** p, float& u, float& v, float& range, bool bCull)
 	{
 		Fvector3 edge1;
 		Fvector3 edge2;
@@ -67,7 +67,7 @@ namespace CDB
 		return true;
 	}
 	//-- Ray-Triangle : 1st level of indirection --------------------------------
-	IC bool TestRayTri(const Fvector3& C, const Fvector3& D, Fvector3* p, float& u, float& v, float& range, bool bCull)
+	inline bool TestRayTri(const Fvector3& C, const Fvector3& D, Fvector3* p, float& u, float& v, float& range, bool bCull)
 	{
 		Fvector3 edge1;
 		Fvector3 edge2;
@@ -110,7 +110,7 @@ namespace CDB
 	}
 
 	//-- Ray-Triangle(always return range) : 1st level of indirection --------------------------------
-	IC bool TestRayTri2(const Fvector3& C, const Fvector3& D, Fvector3* p, float& range)
+	inline bool TestRayTri2(const Fvector3& C, const Fvector3& D, Fvector3* p, float& range)
 	{
 		Fvector3 edge1;
 		Fvector3 edge2;
@@ -138,7 +138,7 @@ namespace CDB
 		if (v < 0.0f || u + v > 1.0f) return false;
 		return true;
 	}
-	IC bool TestRayTri2(const Fvector3& C, const Fvector3& D, Fvector3** p, float& range)
+	inline bool TestRayTri2(const Fvector3& C, const Fvector3& D, Fvector3** p, float& range)
 	{
 		Fvector3 edge1;
 		Fvector3 edge2;
@@ -222,7 +222,7 @@ namespace CDB
 	}
 	//---------------------------------------------------------------------------
 
-	IC bool TestBBoxTri(const Fmatrix33& A, const Fvector3& T, const Fvector3& extA, Fvector3** p, BOOL bCulling){
+	inline bool TestBBoxTri(const Fmatrix33& A, const Fvector3& T, const Fvector3& extA, Fvector3** p, BOOL bCulling){
 		// construct triangle normal, difference of center and vertex (18 ops)
 		Fvector3 D;
 		Fvector3 E[2];
@@ -324,7 +324,7 @@ namespace CDB
 		// intersection occurs
 		return true;
 	}
-	IC bool TestBBoxTri(const Fmatrix33& A, const Fvector3& T, const Fvector3& extA, Fvector3* p, BOOL bCulling){
+	inline bool TestBBoxTri(const Fmatrix33& A, const Fvector3& T, const Fvector3& extA, Fvector3* p, BOOL bCulling){
 		// construct triangle normal, difference of center and vertex (18 ops)
 		Fvector3 D;
 		Fvector3 E[2];
@@ -429,7 +429,7 @@ namespace CDB
 	//---------------------------------------------------------------------------}
 
 	//----------------------------------------------------------------------------
-	IC float MgcSqrDistance (const Fvector3& rkPoint, const Fvector3& orig, const Fvector3& e0,const Fvector3& e1){
+	inline float MgcSqrDistance (const Fvector3& rkPoint, const Fvector3& orig, const Fvector3& e0,const Fvector3& e1){
 
 		Fvector3 kDiff;
 		kDiff.sub(orig,rkPoint);
@@ -595,7 +595,7 @@ namespace CDB
 		stInside	= 2,
 	};
 
-	IC EST_Result TestSphereTri(const Fvector3& sphereOrigin, float sphereRadius, const Fvector3& orig, const Fvector3& e0,const Fvector3& e1)
+	inline EST_Result TestSphereTri(const Fvector3& sphereOrigin, float sphereRadius, const Fvector3& orig, const Fvector3& e0,const Fvector3& e1)
 	{
 		float fRSqr = sphereRadius*sphereRadius;
 		Fvector3 kV0mC;
@@ -632,7 +632,7 @@ namespace CDB
 		return (fSqrDist < fRSqr)?stIntersect:stNone;
 	}
 	//---------------------------------------------------------------------------
-	IC EST_Result TestSphereTri(const Fvector3& sphereOrigin, float sphereRadius, Fvector3* p)
+	inline EST_Result TestSphereTri(const Fvector3& sphereOrigin, float sphereRadius, Fvector3* p)
 	{
 		Fvector3 e0;
 		Fvector3 e1;
@@ -641,7 +641,7 @@ namespace CDB
 		e1.sub(p[2], p[0]);
 		return TestSphereTri(sphereOrigin,sphereRadius,p[0],e0,e1);
 	}
-	IC EST_Result TestSphereTri(const Fvector3& sphereOrigin, float sphereRadius, Fvector3** p)
+	inline EST_Result TestSphereTri(const Fvector3& sphereOrigin, float sphereRadius, Fvector3** p)
 	{
 		Fvector3 e0;
 		Fvector3 e1;
@@ -650,7 +650,7 @@ namespace CDB
 		e1.sub(*p[2], *p[0]);
 		return TestSphereTri(sphereOrigin,sphereRadius,*p[0],e0,e1);
 	}
-	IC bool TestSphereOBB(const Fsphere& rkSphere, const Fobb& rkBox)
+	inline bool TestSphereOBB(const Fsphere& rkSphere, const Fobb& rkBox)
 	{
 		// Test for intersection in the coordinate system of the box by
 		// transforming the sphere into that coordinate system.
@@ -711,7 +711,7 @@ namespace CDB
 		}
 	}
 	//----------------------------------------------------------------------------
-	IC bool TestRayOBB (const Fvector3& origin, const Fvector3& direction, const Fobb& rkBox)
+	inline bool TestRayOBB (const Fvector3& origin, const Fvector3& direction, const Fobb& rkBox)
 	{
 		float			fWdU[3], fAWdU[3], fDdU[3], fADdU[3], fAWxDdU[3], fRhs;
 

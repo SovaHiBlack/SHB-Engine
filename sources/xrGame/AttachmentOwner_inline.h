@@ -3,10 +3,10 @@
 
 #pragma once
 
-IC	CAttachmentOwner::CAttachmentOwner( )
+inline	CAttachmentOwner::CAttachmentOwner( )
 { }
 
-IC	const xr_vector<CAttachableItem*>& CAttachmentOwner::attached_objects( ) const
+inline	const xr_vector<CAttachableItem*>& CAttachmentOwner::attached_objects( ) const
 {
 	return m_attached_objects;
 }

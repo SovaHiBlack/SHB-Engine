@@ -8,12 +8,12 @@
 
 #pragma once
 
-IC	const CScriptProcess::SCRIPT_REGISTRY &CScriptProcess::scripts	() const
+inline	const CScriptProcess::SCRIPT_REGISTRY &CScriptProcess::scripts	() const
 {
 	return	(m_scripts);
 }
 
-IC	shared_str CScriptProcess::name									() const
+inline	shared_str CScriptProcess::name									() const
 {
 	return	(m_name);
 }

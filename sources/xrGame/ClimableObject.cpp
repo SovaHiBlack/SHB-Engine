@@ -19,7 +19,7 @@
 static const float down_leader_extension_tolerance = 0.2f;
 static const float up_leader_extension_tolerance = 0.0f;
 
-IC void OrientToNorm(const Fvector& normal, Fmatrix& form, Fobb& box)
+inline void OrientToNorm(const Fvector& normal, Fmatrix& form, Fobb& box)
 {
 	Fvector* ax_pointer = (Fvector*) &form;
 	float* s_pointer = (float*) &(box.m_halfsize);

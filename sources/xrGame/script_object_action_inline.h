@@ -8,48 +8,48 @@
 
 #pragma once
 
-IC	CScriptObjectAction::CScriptObjectAction	()
+inline	CScriptObjectAction::CScriptObjectAction	()
 {
 	m_tpObject			= 0;
 	m_tGoalType			= MonsterSpace::eObjectActionIdle;
 	m_bCompleted		= true;
 }
 
-IC	CScriptObjectAction::CScriptObjectAction	(CScriptGameObject *tpLuaGameObject, MonsterSpace::EObjectAction tObjectActionType, u32 dwQueueSize)
+inline	CScriptObjectAction::CScriptObjectAction	(CScriptGameObject *tpLuaGameObject, MonsterSpace::EObjectAction tObjectActionType, u32 dwQueueSize)
 {
 	SetObject			(tpLuaGameObject);
 	SetObjectAction		(tObjectActionType);
 	SetQueueSize		(dwQueueSize);
 }
 
-IC	CScriptObjectAction::CScriptObjectAction	(const char* caBoneName, MonsterSpace::EObjectAction tObjectActionType)
+inline	CScriptObjectAction::CScriptObjectAction	(const char* caBoneName, MonsterSpace::EObjectAction tObjectActionType)
 {
 	SetObject			(caBoneName);
 	SetObjectAction		(tObjectActionType);
 }
 
-IC	CScriptObjectAction::CScriptObjectAction	(MonsterSpace::EObjectAction tObjectActionType)
+inline	CScriptObjectAction::CScriptObjectAction	(MonsterSpace::EObjectAction tObjectActionType)
 {
 	SetObjectAction		(tObjectActionType);
 }
 
-IC	void CScriptObjectAction::SetObject			(const char* caBoneName)
+inline	void CScriptObjectAction::SetObject			(const char* caBoneName)
 {
 	m_caBoneName		= caBoneName;
 	m_bCompleted		= false;
 }
 
-IC	void CScriptObjectAction::SetObjectAction	(MonsterSpace::EObjectAction tObjectActionType)
+inline	void CScriptObjectAction::SetObjectAction	(MonsterSpace::EObjectAction tObjectActionType)
 {
 	m_tGoalType			= tObjectActionType;
 	m_bCompleted		= false;
 }
 
-IC	void CScriptObjectAction::SetQueueSize		(u32 dwQueueSize)
+inline	void CScriptObjectAction::SetQueueSize		(u32 dwQueueSize)
 {
 	m_dwQueueSize		= dwQueueSize;
 	m_bCompleted		= false;
 }
 
-IC	void CScriptObjectAction::initialize		()
+inline	void CScriptObjectAction::initialize		()
 { }

@@ -19,13 +19,13 @@ private:
 	CKinematicsAnimated			*m_object;
 
 public:
-	IC			data_predicate	(CKinematicsAnimated *skeleton_animated)
+	inline			data_predicate	(CKinematicsAnimated *skeleton_animated)
 	{
 		VERIFY				(skeleton_animated);
 		m_object			= skeleton_animated;
 	}
 
-	IC	bool	operator()		(const CStalkerAnimationDataStorage::OBJECT &object) const
+	inline	bool	operator()		(const CStalkerAnimationDataStorage::OBJECT &object) const
 	{
 		if (m_object->LL_MotionsSlotCount() != object.first->LL_MotionsSlotCount())
 			return			(false);

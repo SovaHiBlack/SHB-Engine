@@ -150,7 +150,7 @@ public:
 	virtual	void			create_anim_mov_ctrl			( CBlend* b );
 	virtual	void			destroy_anim_mov_ctrl			( );
 			void			update_animation_movement_controller();
-	IC		bool			animation_movement_controlled	( ) const	{ return	!!animation_movement(); }
+	inline		bool			animation_movement_controlled	( ) const	{ return	!!animation_movement(); }
 const animation_movement_controller*animation_movement		( ) const	{ return	m_anim_mov_ctrl; }
 	// Game-specific events
 
@@ -213,7 +213,7 @@ public:
 			void			remove_visual_callback	(visual_callback *callback);
 			void			SetKinematicsCallback	(bool set);
 
-	IC		CALLBACK_VECTOR &visual_callbacks	()
+	inline		CALLBACK_VECTOR &visual_callbacks	()
 	{
 		return				(m_visual_callback);
 	}
@@ -231,7 +231,7 @@ public:
 	}
 
 public:
-	IC		CIniFile*spawn_ini			()
+	inline		CIniFile*spawn_ini			()
 	{
 		return				(m_ini_file);
 	}
@@ -240,7 +240,7 @@ protected:
 	virtual	void			spawn_supplies		();
 
 public:
-	IC		CAI_ObjectLocation	&ai_location		() const
+	inline		CAI_ObjectLocation	&ai_location		() const
 	{
 		VERIFY				(m_ai_location);
 		return				(*m_ai_location);
@@ -250,13 +250,13 @@ private:
 	u32						m_spawn_time;
 
 public:
-	IC		u32				spawn_time			() const
+	inline		u32				spawn_time			() const
 	{
 		VERIFY				(m_spawned);
 		return				(m_spawn_time);
 	}
 
-	IC		const ALife::_STORY_ID &story_id	() const
+	inline		const ALife::_STORY_ID &story_id	() const
 	{
 		return				(m_story_id);
 	}

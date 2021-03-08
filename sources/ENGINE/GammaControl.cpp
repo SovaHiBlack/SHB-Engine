@@ -2,7 +2,7 @@
 
 #include "GammaControl.h"
 
-IC u16 clr2gamma(float c)
+inline u16 clr2gamma(float c)
 {
 	int C							= iFloor(c);
 	clamp							(C, 0, 65535);

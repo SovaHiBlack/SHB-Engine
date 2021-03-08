@@ -15,11 +15,11 @@ private:
 	CStalker			*m_object;
 
 public:
-	IC					CStalkerSoundData	(CStalker *object);
+	inline					CStalkerSoundData	(CStalker *object);
 	virtual				~CStalkerSoundData	();
 	virtual void		invalidate			();
 	virtual void		accept				(CSound_UserDataVisitor *visitor);
-	IC		CStalker &object				() const;
+	inline		CStalker &object				() const;
 };
 
 #include "stalker_sound_data_inline.h"

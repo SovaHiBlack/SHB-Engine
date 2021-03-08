@@ -112,7 +112,7 @@ public:
 	void							UpdateVisibleS	();
 
 public:
-	IC bool							UseVS			()		{ return HW.Caps.geometry_major >= 1; }
+	inline bool							UseVS			()		{ return HW.Caps.geometry_major >= 1; }
 
 	// Software processor
 	ref_geom						soft_Geom;

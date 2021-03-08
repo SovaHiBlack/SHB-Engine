@@ -30,18 +30,18 @@ namespace PAPI{
 	public:
 						ParticleActions()						{actions.reserve(4);	}
 						~ParticleActions()						{clear();				}
-		IC void			clear			()
+		inline void			clear			()
 		{
 			for (PAVecIt it=actions.begin(); it!=actions.end(); it++) 
 				xr_delete(*it);
 			actions.clear();
 		}
-		IC void			append			(ParticleAction* pa)	{actions.push_back(pa);	}
-		IC bool			empty			()						{return	actions.empty();}
-		IC PAVecIt		begin			()						{return	actions.begin();}
-		IC PAVecIt		end				()						{return actions.end();	}
-		IC int			size			()						{return actions.size();	}
-		IC void			resize			(int cnt)        		{actions.resize(cnt);	}
+		inline void			append			(ParticleAction* pa)	{actions.push_back(pa);	}
+		inline bool			empty			()						{return	actions.empty();}
+		inline PAVecIt		begin			()						{return	actions.begin();}
+		inline PAVecIt		end				()						{return actions.end();	}
+		inline int			size			()						{return actions.size();	}
+		inline void			resize			(int cnt)        		{actions.resize(cnt);	}
 		void			copy			(ParticleActions* src);
 	};
 };

@@ -22,7 +22,7 @@
 
 using namespace ObjectHandlerSpace;
 
-IC	ObjectHandlerSpace::EWorldProperties CObjectHandlerPlanner::object_property(MonsterSpace::EObjectAction object_action) const
+inline	ObjectHandlerSpace::EWorldProperties CObjectHandlerPlanner::object_property(MonsterSpace::EObjectAction object_action) const
 {
 	switch (object_action) {
 		case MonsterSpace::eObjectActionSwitch1			: return(ObjectHandlerSpace::eWorldPropertySwitch1);

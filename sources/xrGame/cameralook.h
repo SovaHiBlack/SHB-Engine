@@ -17,7 +17,7 @@ public:
 	virtual void	Move			(int cmd, float val = 0, float factor = 1.0f);
 
 	virtual void	OnActivate		(CCameraBase* old_cam);
-	virtual void	Update			(Fvector& point, Fvector& noise_dangle);
+	virtual void	Update			(Fvector3& point, Fvector3& noise_dangle);
 
 	virtual float	GetWorldYaw		( )
 	{
@@ -32,7 +32,7 @@ public:
 class CCameraLook2 : public CCameraLook
 {
 public:
-	static Fvector	m_cam_offset;
+	static Fvector3	m_cam_offset;
 
 protected:
 	CObject*		m_locked_enemy;
@@ -48,6 +48,6 @@ public:
 	virtual			~CCameraLook2	( )
 	{ }
 	virtual	void	OnActivate		(CCameraBase* old_cam);
-	virtual void	Update			(Fvector& point, Fvector& noise_dangle);
+	virtual void	Update			(Fvector3& point, Fvector3& noise_dangle);
 	virtual void	Load			(const char* section);
 };

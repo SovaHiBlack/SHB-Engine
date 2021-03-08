@@ -26,14 +26,14 @@ struct CVertexPath {
 		typedef	typename CGraphVertex::_index_type			_index_type;
 	
 	public:
-		IC					CDataStorage		(const u32 vertex_count);
+		inline					CDataStorage		(const u32 vertex_count);
 		virtual				~CDataStorage		();
-		IC		void		init				();
-		IC		void		assign_parent		(CGraphVertex &neighbour, CGraphVertex *parent);
+		inline		void		init				();
+		inline		void		assign_parent		(CGraphVertex &neighbour, CGraphVertex *parent);
 		template <typename T>
-		IC		void		assign_parent		(CGraphVertex &neighbour, CGraphVertex *parent, const T&);
-		IC		void		update_successors	(CGraphVertex &neighbour);
-		IC		void		get_node_path		(xr_vector<_index_type> &path, CGraphVertex *best);
+		inline		void		assign_parent		(CGraphVertex &neighbour, CGraphVertex *parent, const T&);
+		inline		void		update_successors	(CGraphVertex &neighbour);
+		inline		void		get_node_path		(xr_vector<_index_type> &path, CGraphVertex *best);
 	};
 };
 

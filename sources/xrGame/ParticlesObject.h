@@ -34,7 +34,7 @@ public:
 
 	Fvector&			Position			();
 	void				SetXFORM			(const Fmatrix& m);
-	IC	Fmatrix&		XFORM				()	{return renderable.xform;}
+	inline	Fmatrix&		XFORM				()	{return renderable.xform;}
 	void				UpdateParent		(const Fmatrix& m, const Fvector& vel);
 
 	void				play_at_pos			(const Fvector& pos, BOOL xform=FALSE);

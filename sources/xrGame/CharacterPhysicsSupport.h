@@ -108,11 +108,11 @@ public:
 	{
 		m_eState = astate;
 	}
-	IC bool isDead( )
+	inline bool isDead( )
 	{
 		return m_eState == esDead;
 	}
-	IC bool isAlive( )
+	inline bool isAlive( )
 	{
 		return !m_pPhysicsShell;
 	}
@@ -127,15 +127,15 @@ protected:
 	virtual bool							CanRemoveObject( );
 
 public:
-	IC CPHMovementControl* movement( )
+	inline CPHMovementControl* movement( )
 	{
 		return m_PhysicMovementControl;
 	}
-	IC CPHSoundPlayer* ph_sound_player( )
+	inline CPHSoundPlayer* ph_sound_player( )
 	{
 		return &m_ph_sound_player;
 	}
-	IC CIKLimbsController* ik_controller( )
+	inline CIKLimbsController* ik_controller( )
 	{
 		return m_ik_controller;
 	}
@@ -188,8 +188,8 @@ private:
 	void							CollisionCorrectObjPos(const Fvector& start_from, bool character_create = false);
 	void							FlyTo(const	Fvector& disp);
 	void							TestForWounded( );
-	IC void							UpdateFrictionAndJointResistanse( );
-	IC void							UpdateDeathAnims( );
-	IC void							CalculateTimeDelta( );
-	IC bool							DoCharacterShellCollide( );
+	inline void							UpdateFrictionAndJointResistanse( );
+	inline void							UpdateDeathAnims( );
+	inline void							CalculateTimeDelta( );
+	inline bool							DoCharacterShellCollide( );
 };

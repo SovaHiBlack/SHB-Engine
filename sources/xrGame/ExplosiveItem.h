@@ -58,6 +58,6 @@ public:
 	virtual void				ChangeCondition(float fDeltaCondition)
 	{
 		CInventoryItem::ChangeCondition(fDeltaCondition);
-	};
+	}
 	virtual void				StartTimerEffects( );
 };

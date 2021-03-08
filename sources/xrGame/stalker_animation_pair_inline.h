@@ -3,7 +3,7 @@
 
 #pragma once
 
-IC	CStalkerAnimationPair::CStalkerAnimationPair	()
+inline	CStalkerAnimationPair::CStalkerAnimationPair	()
 {
 #ifdef DEBUG
 	m_object_name				= "unassigned";
@@ -14,7 +14,7 @@ IC	CStalkerAnimationPair::CStalkerAnimationPair	()
 	m_global_animation			= false;
 }
 
-IC	void CStalkerAnimationPair::reset				()
+inline	void CStalkerAnimationPair::reset				()
 {
 #if 0//def DEBUG
 	if (m_animation)
@@ -28,12 +28,12 @@ IC	void CStalkerAnimationPair::reset				()
 	m_array_animation.invalidate();
 }
 
-IC	bool CStalkerAnimationPair::actual				() const
+inline	bool CStalkerAnimationPair::actual				() const
 {
 	return						(m_actual);
 }
 
-IC	bool CStalkerAnimationPair::animation			(const MotionID &animation)
+inline	bool CStalkerAnimationPair::animation			(const MotionID &animation)
 {
 	bool						result = (m_animation == animation);
 	m_actual					= m_actual && result;
@@ -41,50 +41,50 @@ IC	bool CStalkerAnimationPair::animation			(const MotionID &animation)
 	return						(result);
 }
 
-IC	const MotionID &CStalkerAnimationPair::animation() const
+inline	const MotionID &CStalkerAnimationPair::animation() const
 {
 	return						(m_animation);
 }
 
-IC	CBlend *CStalkerAnimationPair::blend			() const
+inline	CBlend *CStalkerAnimationPair::blend			() const
 {
 	return						(m_blend);
 }
 
-IC	void CStalkerAnimationPair::step_dependence		(bool value)
+inline	void CStalkerAnimationPair::step_dependence		(bool value)
 {
 	m_step_dependence			= value;
 }
 
-IC	bool CStalkerAnimationPair::step_dependence		() const
+inline	bool CStalkerAnimationPair::step_dependence		() const
 {
 	return						(m_step_dependence);
 }
 
 #ifdef DEBUG
-IC	void CStalkerAnimationPair::set_dbg_info		(const char* object_name, const char* animation_type_name)
+inline	void CStalkerAnimationPair::set_dbg_info		(const char* object_name, const char* animation_type_name)
 {
 	m_object_name				= object_name;
 	m_animation_type_name		= animation_type_name;
 }
 #endif
 
-IC	void CStalkerAnimationPair::global_animation	(bool global_animation)
+inline	void CStalkerAnimationPair::global_animation	(bool global_animation)
 {
 	m_global_animation			= global_animation;
 }
 
-IC	bool CStalkerAnimationPair::global_animation	() const
+inline	bool CStalkerAnimationPair::global_animation	() const
 {
 	return						(m_global_animation);
 }
 
-IC	void CStalkerAnimationPair::make_inactual		()
+inline	void CStalkerAnimationPair::make_inactual		()
 {
 	m_actual					= false;
 }
 
-IC	const CStalkerAnimationPair::CALLBACK_ID *CStalkerAnimationPair::callback	(const CALLBACK_ID &callback) const
+inline	const CStalkerAnimationPair::CALLBACK_ID *CStalkerAnimationPair::callback	(const CALLBACK_ID &callback) const
 {
 	CALLBACKS::const_iterator	I = std::find(m_callbacks.begin(),m_callbacks.end(),callback);
 	if (I != m_callbacks.end())
@@ -93,20 +93,20 @@ IC	const CStalkerAnimationPair::CALLBACK_ID *CStalkerAnimationPair::callback	(co
 	return						(0);
 }
 
-IC	void CStalkerAnimationPair::add_callback		(const CALLBACK_ID &callback)
+inline	void CStalkerAnimationPair::add_callback		(const CALLBACK_ID &callback)
 {
 	VERIFY						(std::find(m_callbacks.begin(),m_callbacks.end(),callback) == m_callbacks.end());
 	m_callbacks.push_back		(callback);
 }
 
-IC	void CStalkerAnimationPair::remove_callback		(const CALLBACK_ID &callback)
+inline	void CStalkerAnimationPair::remove_callback		(const CALLBACK_ID &callback)
 {
 	CALLBACKS::iterator			I = std::find(m_callbacks.begin(),m_callbacks.end(),callback);
 	VERIFY						(I != m_callbacks.end());
 	m_callbacks.erase			(I);
 }
 
-IC	bool CStalkerAnimationPair::need_update			() const
+inline	bool CStalkerAnimationPair::need_update			() const
 {
 	return						(!m_callbacks.empty());
 }

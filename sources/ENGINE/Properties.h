@@ -93,13 +93,13 @@ public:
 };
 
 // Writers
-IC void		xrPWRITE		(IWriter& fs, u32 ID, const char* name, LPCVOID data, u32 size )
+inline void		xrPWRITE		(IWriter& fs, u32 ID, const char* name, LPCVOID data, u32 size )
 {
 	fs.w_u32			(ID);
 	fs.w_stringZ		(name);
 	if (data && size)	fs.w(data,size);
 }
-IC void		xrPWRITE_MARKER	(IWriter& fs, const char* name)
+inline void		xrPWRITE_MARKER	(IWriter& fs, const char* name)
 {
 	xrPWRITE	(fs,xrPID_MARKER,name,0,0);
 }
@@ -110,13 +110,13 @@ IC void		xrPWRITE_MARKER	(IWriter& fs, const char* name)
 }
 
 // Readers
-IC u32	xrPREAD			(IReader& fs)
+inline u32	xrPREAD			(IReader& fs)
 {
 	u32 T		= fs.r_u32();
 	fs.skip_stringZ	();
 	return		T;
 }
-IC void		xrPREAD_MARKER	(IReader& fs)
+inline void		xrPREAD_MARKER	(IReader& fs)
 {
 	R_ASSERT(xrPID_MARKER==xrPREAD(fs));
 }
@@ -132,13 +132,13 @@ IC void		xrPREAD_MARKER	(IReader& fs)
 }
 
 //template <class T>
-//IC void		xrPWRITE_PROP	(IWriter& FS, const char* name, u32 ID, T& data)
+//inline void		xrPWRITE_PROP	(IWriter& FS, const char* name, u32 ID, T& data)
 //{
 //	xrPWRITE	(FS,ID,name,&data,sizeof(data));
 //}
 
 //template <class T>
-//IC void		xrPREAD_PROP	(IReader& FS, u32 ID, T& data)
+//inline void		xrPREAD_PROP	(IReader& FS, u32 ID, T& data)
 //{
 //	R_ASSERT(ID==xrPREAD(FS)); FS.Read(&data,sizeof(data));
 //	switch (ID)

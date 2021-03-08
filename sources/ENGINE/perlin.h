@@ -17,15 +17,15 @@ protected:
 public:
 			CPerlinNoiseCustom	(int seed):
 								mOctaves(2),mFrequency(1),mAmplitude(1),mSeed(seed),mReady(false){}
-	IC void	SetParams			(int oct, float freq, float amp)
+	inline void	SetParams			(int oct, float freq, float amp)
 	{
 		mOctaves				= oct;
 		mFrequency				= freq;
 		mAmplitude				= amp;
 	}
-	IC void	SetOctaves			(int oct)	{mOctaves	= oct; mTimes.resize(mOctaves);}
-	IC void	SetFrequency		(float freq){mFrequency	= freq;}
-	IC void	SetAmplitude		(float amp)	{mAmplitude	= amp;}
+	inline void	SetOctaves			(int oct)	{mOctaves	= oct; mTimes.resize(mOctaves);}
+	inline void	SetFrequency		(float freq){mFrequency	= freq;}
+	inline void	SetAmplitude		(float amp)	{mAmplitude	= amp;}
 };
 
 class ENGINE_API CPerlinNoise1D: public CPerlinNoiseCustom

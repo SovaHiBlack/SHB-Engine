@@ -117,37 +117,37 @@ public:
 		R_statistics					r	;
 	}									stat;
 public:
-	IC	CTexture*					get_ActiveTexture			(u32 stage)
+	inline	CTexture*					get_ActiveTexture			(u32 stage)
 	{
 		if (stage>=256)				return textures_vs[stage-256];
 		else 						return textures_ps[stage];
 	}
-	IC	R_constant_array&			get_ConstantCache_Vertex	()			{ return constants.a_vertex;	}
-	IC	R_constant_array&			get_ConstantCache_Pixel		()			{ return constants.a_pixel;		}
+	inline	R_constant_array&			get_ConstantCache_Vertex	()			{ return constants.a_vertex;	}
+	inline	R_constant_array&			get_ConstantCache_Pixel		()			{ return constants.a_pixel;		}
 
 	// API
-	IC	void						set_xform			(u32 ID, const Fmatrix& M);
-	IC	void						set_xform_world		(const Fmatrix& M);
-	IC	void						set_xform_view		(const Fmatrix& M);
-	IC	void						set_xform_project	(const Fmatrix& M);
-	IC	const Fmatrix&				get_xform_world		();
-	IC	const Fmatrix&				get_xform_view		();
-	IC	const Fmatrix&				get_xform_project	();
+	inline	void						set_xform			(u32 ID, const Fmatrix& M);
+	inline	void						set_xform_world		(const Fmatrix& M);
+	inline	void						set_xform_view		(const Fmatrix& M);
+	inline	void						set_xform_project	(const Fmatrix& M);
+	inline	const Fmatrix&				get_xform_world		();
+	inline	const Fmatrix&				get_xform_view		();
+	inline	const Fmatrix&				get_xform_project	();
 
-	IC	void						set_RT				(IDirect3DSurface9* RT, u32 ID=0);
-	IC	void						set_ZB				(IDirect3DSurface9* ZB);
+	inline	void						set_RT				(IDirect3DSurface9* RT, u32 ID=0);
+	inline	void						set_ZB				(IDirect3DSurface9* ZB);
 
-	IC	void						set_Constants		(R_constant_table* C);
-	IC	void						set_Constants		(ref_ctable& C)						{ set_Constants(&*C);			}
+	inline	void						set_Constants		(R_constant_table* C);
+	inline	void						set_Constants		(ref_ctable& C)						{ set_Constants(&*C);			}
 
 		void						set_Textures		(STextureList* T);
-	IC	void						set_Textures		(ref_texture_list& T)				{ set_Textures(&*T);			}
+	inline	void						set_Textures		(ref_texture_list& T)				{ set_Textures(&*T);			}
 
-	IC	void						set_Element			(ShaderElement* S, u32	pass=0);
-	IC	void						set_Element			(ref_selement& S, u32	pass=0)		{ set_Element(&*S,pass);		}
+	inline	void						set_Element			(ShaderElement* S, u32	pass=0);
+	inline	void						set_Element			(ref_selement& S, u32	pass=0)		{ set_Element(&*S,pass);		}
 
-	IC	void						set_Shader			(Shader* S, u32 pass=0);
-	IC	void						set_Shader			(ref_shader& S, u32 pass=0)			{ set_Shader(&*S,pass);			}
+	inline	void						set_Shader			(Shader* S, u32 pass=0);
+	inline	void						set_Shader			(ref_shader& S, u32 pass=0)			{ set_Shader(&*S,pass);			}
 
 	__forceinline	void						set_States			(IDirect3DStateBlock9* _state);
 	__forceinline	void						set_States			(ref_state& _state)					{ set_States(_state->state);	}
@@ -164,13 +164,13 @@ public:
 	__forceinline	void						set_Indices			(IDirect3DIndexBuffer9* _ib);
 	__forceinline void						set_Geometry		(SGeometry* _geom);
 	__forceinline void						set_Geometry		(ref_geom& _geom)					{	set_Geometry(&*_geom);		}
-	IC  void						set_Stencil			(u32 _enable, u32 _func=D3DCMP_ALWAYS, u32 _ref=0x00, u32 _mask=0x00, u32 _writemask=0x00, u32 _fail=D3DSTENCILOP_KEEP, u32 _pass=D3DSTENCILOP_KEEP, u32 _zfail=D3DSTENCILOP_KEEP);
-	IC  void						set_ColorWriteEnable(u32 _mask = D3DCOLORWRITEENABLE_RED | D3DCOLORWRITEENABLE_GREEN | D3DCOLORWRITEENABLE_BLUE | D3DCOLORWRITEENABLE_ALPHA);
-	IC  void						set_CullMode		(u32 _mode);
-	IC  u32							get_CullMode		(){return cull_mode;}
+	inline  void						set_Stencil			(u32 _enable, u32 _func=D3DCMP_ALWAYS, u32 _ref=0x00, u32 _mask=0x00, u32 _writemask=0x00, u32 _fail=D3DSTENCILOP_KEEP, u32 _pass=D3DSTENCILOP_KEEP, u32 _zfail=D3DSTENCILOP_KEEP);
+	inline  void						set_ColorWriteEnable(u32 _mask = D3DCOLORWRITEENABLE_RED | D3DCOLORWRITEENABLE_GREEN | D3DCOLORWRITEENABLE_BLUE | D3DCOLORWRITEENABLE_ALPHA);
+	inline  void						set_CullMode		(u32 _mode);
+	inline  u32							get_CullMode		(){return cull_mode;}
 	void							set_ClipPlanes		(u32 _enable, Fplane*	_planes=NULL, u32 count=0);
 	void							set_ClipPlanes		(u32 _enable, Fmatrix*	_xform =NULL, u32 fmask=0xff);
-	IC	void						set_Scissor			(Irect*	rect=NULL);
+	inline	void						set_Scissor			(Irect*	rect=NULL);
 
 	// constants
 	__forceinline	ref_constant				get_c				(const char* n)													{ if (ctable)	return ctable->get(n);else return 0;}
@@ -213,18 +213,18 @@ public:
 	// Debug render
 	void dbg_DP						(D3DPRIMITIVETYPE pt, ref_geom geom, u32 vBase, u32 pc);
 	void dbg_DIP					(D3DPRIMITIVETYPE pt, ref_geom geom, u32 baseV, u32 startV, u32 countV, u32 startI, u32 PC);
-	IC void	dbg_SetRS				(D3DRENDERSTATETYPE p1, u32 p2)
+	inline void	dbg_SetRS				(D3DRENDERSTATETYPE p1, u32 p2)
 	{ CHK_DX(HW.pDevice->SetRenderState(p1,p2)); }
-	IC void	dbg_SetSS				(u32 sampler, D3DSAMPLERSTATETYPE type, u32 value)
+	inline void	dbg_SetSS				(u32 sampler, D3DSAMPLERSTATETYPE type, u32 value)
 	{ CHK_DX(HW.pDevice->SetSamplerState(sampler,type,value)); }
 
 #ifdef DEBUG
 	void dbg_Draw					(D3DPRIMITIVETYPE T, FVF::L* pVerts, int vcnt, u16* pIdx, int pcnt);
 	void dbg_Draw					(D3DPRIMITIVETYPE T, FVF::L* pVerts, int pcnt);
-	IC void dbg_DrawAABB			(Fvector3& T, float sx, float sy, float sz, u32 C)						{
+	inline void dbg_DrawAABB			(Fvector3& T, float sx, float sy, float sz, u32 C)						{
 		Fvector3 half_dim;	half_dim.set(sx,sy,sz); Fmatrix	TM;	TM.translate(T); dbg_DrawOBB(TM,half_dim,C);	}
 	void dbg_DrawOBB				(Fmatrix& T, Fvector3& half_dim, u32 C);
-	IC void dbg_DrawTRI				(Fmatrix& T, Fvector3* p, u32 C)											{	dbg_DrawTRI(T,p[0],p[1],p[2],C);	}
+	inline void dbg_DrawTRI				(Fmatrix& T, Fvector3* p, u32 C)											{	dbg_DrawTRI(T,p[0],p[1],p[2],C);	}
 	void dbg_DrawTRI				(Fmatrix& T, Fvector3& p1, Fvector3& p2, Fvector3& p3, u32 C);
 	void dbg_DrawLINE				(Fmatrix& T, Fvector3& p1, Fvector3& p2, u32 C);
 	void dbg_DrawEllipse			(Fmatrix& T, u32 C);

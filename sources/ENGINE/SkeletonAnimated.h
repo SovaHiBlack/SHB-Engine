@@ -102,7 +102,7 @@ private:
 
 public:
 	// methods
-IC	BlendSVec			&blend_vector	()	{ return Blend;}
+inline	BlendSVec			&blend_vector	()	{ return Blend;}
 	void				construct		();
 	void				blend_add		(CBlend* H);
 	void				blend_remove	(CBlend* H);
@@ -188,9 +188,9 @@ public:
 	u16							LL_MotionsSlotCount(){return (u16)m_Motions.size();}
 	const shared_motions&		LL_MotionsSlot	(u16 idx){return m_Motions[idx].motions;}
 
-	IC CMotionDef*				LL_GetMotionDef	(MotionID id){return m_Motions[id.slot].motions.motion_def(id.idx);}
-	IC CMotion*					LL_GetRootMotion(MotionID id){return &m_Motions[id.slot].bone_motions[iRoot]->at(id.idx);}
-	IC CMotion*					LL_GetMotion	(MotionID id, u16 bone_id){return &m_Motions[id.slot].bone_motions[bone_id]->at(id.idx);}
+	inline CMotionDef*				LL_GetMotionDef	(MotionID id){return m_Motions[id.slot].motions.motion_def(id.idx);}
+	inline CMotion*					LL_GetRootMotion(MotionID id){return &m_Motions[id.slot].bone_motions[iRoot]->at(id.idx);}
+	inline CMotion*					LL_GetMotion	(MotionID id, u16 bone_id){return &m_Motions[id.slot].bone_motions[bone_id]->at(id.idx);}
 
 	// Low level interface
 	MotionID					LL_MotionID		(const char* B);
@@ -235,11 +235,11 @@ public:
 		return sz;
 	}
 
-	IC	const BlendSVec			&blend_cycle	(const u32 &bone_part_id) const
+	inline	const BlendSVec			&blend_cycle	(const u32 &bone_part_id) const
 	{
 		VERIFY					(bone_part_id < MAX_PARTS);
 		return					(blend_cycles[bone_part_id]);
 	}
 };
 
-IC CKinematicsAnimated* PKinematicsAnimated(IRender_Visual* V) { return V?V->dcast_PKinematicsAnimated():0; }
+inline CKinematicsAnimated* PKinematicsAnimated(IRender_Visual* V) { return V?V->dcast_PKinematicsAnimated():0; }

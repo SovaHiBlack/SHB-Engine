@@ -38,8 +38,8 @@ private:
 	bool								m_use_desired_direction;
 
 public:
-	IC		bool	operator==			(const CStalkerMovementParams &params) const;
-	IC		bool	operator!=			(const CStalkerMovementParams &params) const;
+	inline		bool	operator==			(const CStalkerMovementParams &params) const;
+	inline		bool	operator!=			(const CStalkerMovementParams &params) const;
 };
 
 #include "stalker_movement_params_inline.h"

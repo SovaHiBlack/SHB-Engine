@@ -35,7 +35,7 @@ void cl_light_XFORM::setup	(R_constant* C)					{
 
 //////////////////////////////////////////////////////////////////////////
 /*
-IC void mk_vertex					(CLightR_Vertex& D, Fvector& P, Fvector& N, Fvector& C, float r2)
+inline void mk_vertex					(CLightR_Vertex& D, Fvector& P, Fvector& N, Fvector& C, float r2)
 {
 	D.P.set	(P);
 	D.N.set	(P);

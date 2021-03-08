@@ -29,15 +29,15 @@ protected:
 	PATROL_REGISTRY					m_registry;
 
 public:
-	IC								CPatrolPathStorage	();
+	inline								CPatrolPathStorage	();
 	virtual							~CPatrolPathStorage	();
 	virtual	void					load				(IReader &stream);
 	virtual	void					save				(IWriter &stream);
 
 public:
 			void					load_raw			(const CLevelGraph *level_graph, const CGameLevelCrossTable *cross, const CGameGraph *game_graph, IReader &stream);
-	IC		const CPatrolPath		*path				(shared_str patrol_name, bool no_assert = false) const;
-	IC		const PATROL_REGISTRY	&patrol_paths		() const;
+	inline		const CPatrolPath		*path				(shared_str patrol_name, bool no_assert = false) const;
+	inline		const PATROL_REGISTRY	&patrol_paths		() const;
 };
 
 #include "patrol_path_storage_inline.h"

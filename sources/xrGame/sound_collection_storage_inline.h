@@ -8,7 +8,7 @@
 
 #pragma once
 
-IC	CSoundCollectionStorage &sound_collection_storage	()
+inline	CSoundCollectionStorage &sound_collection_storage	()
 {
 	if (g_sound_collection_storage)
 		return					(*g_sound_collection_storage);

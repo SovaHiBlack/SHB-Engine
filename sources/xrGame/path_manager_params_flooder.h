@@ -19,7 +19,7 @@ struct SFlooder  : public SBaseParameters<
 	_iteration_type
 > {
 	u32	m_dummy;
-	IC	SFlooder (
+	inline	SFlooder (
 			_dist_type				max_range = _dist_type(6000),
 			_iteration_type			max_iteration_count = _iteration_type(-1),
 			u32						max_visited_node_count = 65530

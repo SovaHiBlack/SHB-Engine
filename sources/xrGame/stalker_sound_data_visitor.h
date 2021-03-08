@@ -18,10 +18,10 @@ private:
 	CStalker			*m_object;
 
 public:
-	IC					CStalkerSoundDataVisitor	(CStalker *object);
+	inline					CStalkerSoundDataVisitor	(CStalker *object);
 	virtual				~CStalkerSoundDataVisitor	();
 	virtual void		visit						(CStalkerSoundData *data);
-	IC		CStalker	&object						() const;
+	inline		CStalker	&object						() const;
 };
 
 #include "stalker_sound_data_visitor_inline.h"

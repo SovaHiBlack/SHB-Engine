@@ -149,7 +149,7 @@ void CBoar::CheckSpecParams(u32 spec_params)
 {
 	//if ((spec_params & ASP_ROTATION_JUMP) == ASP_ROTATION_JUMP) {
 	//	float yaw, pitch;
-	//	Fvector().sub(EnemyMan.get_enemy()->Position(), Position()).getHP(yaw,pitch);
+	//	Fvector3().sub(EnemyMan.get_enemy()->Position(), Position()).getHP(yaw,pitch);
 	//	yaw *= -1;
 	//	yaw = angle_normalize(yaw);
 

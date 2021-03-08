@@ -47,19 +47,19 @@ public:
 	virtual		float		radius				()																	=0;
 	virtual		void		get_extensions_bt	(const Fvector& axis,float center_prg,float& lo_ext, float& hi_ext) =0;
 				void		clear_cashed_tries	()																	  ;
-	IC			dGeomID		geom()
+	inline			dGeomID		geom()
 	{
 								return dGeomTransformGetGeom(m_geom_transform);
 	}
-	IC			dGeomID		geometry_transform   ()
+	inline			dGeomID		geometry_transform   ()
 							{
 								return m_geom_transform;
 							}
-	IC			dGeomID		geometry()
+	inline			dGeomID		geometry()
 							{
 								return m_geom_transform ? (geom() ? geom() : m_geom_transform) : NULL;
 							}
-	IC			dGeomID		geometry_bt()
+	inline			dGeomID		geometry_bt()
 							{
 								if(is_transformed_bt())	return geom() ;
 								else					return geometry_transform();
@@ -69,11 +69,11 @@ public:
 							{
 								return dGeomGetClass(g)==dGeomTransformClass;
 							}
-	IC			bool		is_transformed_bt()
+	inline			bool		is_transformed_bt()
 							{
 								return is_transform(m_geom_transform);
 							}
-	IC			u16&		element_position()
+	inline			u16&		element_position()
 							{
 								return dGeomGetUserData(geometry())->element_position;
 							}

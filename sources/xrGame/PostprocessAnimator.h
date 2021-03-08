@@ -116,7 +116,7 @@ public:
 		virtual    ~CPostprocessAnimator            ();
 		void        Clear                           ();
 		void        Load                            (const char* name);
-	IC  const char* Name                            (){return *m_Name;}
+	inline  const char* Name                            (){return *m_Name;}
   virtual void      Stop                            (float speed);
 		void		SetDesiredFactor				(float f, float sp);
 		void		SetCurrentFactor				(float f);

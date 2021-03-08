@@ -41,7 +41,7 @@ namespace CDB
 			};
 		};
 	public:
-		IC u32			IDvert	(u32 ID)		{ return verts[ID];	}
+		inline u32			IDvert	(u32 ID)		{ return verts[ID];	}
 	};
 
 	// Build callback
@@ -72,11 +72,11 @@ namespace CDB
 		MODEL();
 		~MODEL();
 
-		IC Fvector3*				get_verts		()			{ return verts;		}
-		IC int					get_verts_count	()	const	{ return verts_count;}
-		IC TRI*					get_tris		()			{ return tris;		}
-		IC int					get_tris_count	()	const	{ return tris_count;}
-		IC void					syncronize		()	const
+		inline Fvector3*				get_verts		()			{ return verts;		}
+		inline int					get_verts_count	()	const	{ return verts_count;}
+		inline TRI*					get_tris		()			{ return tris;		}
+		inline int					get_tris_count	()	const	{ return tris_count;}
+		inline void					syncronize		()	const
 		{
 			if (S_READY!=status)
 			{

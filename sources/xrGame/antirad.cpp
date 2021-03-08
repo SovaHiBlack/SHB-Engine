@@ -2,7 +2,7 @@
 
 #include "stdafx.h"
 
-#include "Antirad.h"//==>
+#include "Antirad.h"
 #include "PhysicsShell.h"
 
 CAntirad::CAntirad( )

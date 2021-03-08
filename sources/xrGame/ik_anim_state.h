@@ -9,6 +9,6 @@ class	ik_anim_state
 public:
 						ik_anim_state	(  ): is_step( false )	{};
 			void		update			( CKinematicsAnimated *K, const	CBlend *b, u16 interval );
-IC			bool		step			( ){ return is_step; }
+inline			bool		step			( ){ return is_step; }
 };
 

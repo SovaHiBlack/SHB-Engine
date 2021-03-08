@@ -31,7 +31,7 @@ CWeaponMagazined::CWeaponMagazined(const char* name, ESoundTypes eSoundType) : C
 	m_eSoundEmptyClick = ESoundTypes(SOUND_TYPE_WEAPON_EMPTY_CLICKING | eSoundType);
 	m_eSoundReload = ESoundTypes(SOUND_TYPE_WEAPON_RECHARGING | eSoundType);
 
-	m_pSndShotCurrent = NULL;
+	m_pSndShotCurrent = nullptr;
 	m_sSilencerFlameParticles = m_sSilencerSmokeParticles = NULL;
 
 	m_bFireSingleShot = false;
@@ -233,15 +233,18 @@ bool CWeaponMagazined::TryReload( )
 			SwitchState(eReload);
 			return true;
 		}
-		else for (u32 i = 0; i < m_ammoTypes.size( ); ++i)
+		else
 		{
-			m_pAmmo = smart_cast<CWeaponAmmo*>(m_pCurrentInventory->GetAny(*m_ammoTypes[i]));
-			if (m_pAmmo)
+			for (u32 i = 0; i < m_ammoTypes.size( ); ++i)
 			{
-				m_ammoType = i;
-				m_bPending = true;
-				SwitchState(eReload);
-				return true;
+				m_pAmmo = smart_cast<CWeaponAmmo*>(m_pCurrentInventory->GetAny(*m_ammoTypes[i]));
+				if (m_pAmmo)
+				{
+					m_ammoType = i;
+					m_bPending = true;
+					SwitchState(eReload);
+					return true;
+				}
 			}
 		}
 	}
@@ -353,7 +356,7 @@ void CWeaponMagazined::ReloadMagazine( )
 	if (!m_bLockType)
 	{
 		m_ammoName = NULL;
-		m_pAmmo = NULL;
+		m_pAmmo = nullptr;
 	}
 
 	if (!m_pCurrentInventory)
@@ -875,7 +878,6 @@ bool CWeaponMagazined::Action(int cmd, u32 flags)
 				}
 			}
 		}
-
 		return true;
 		case kWPN_FIREMODE_PREV:
 		{
@@ -1313,7 +1315,7 @@ void CWeaponMagazined::OnNextFireMode( )
 
 	m_iCurFireMode = (m_iCurFireMode + 1 + m_aFireModes.size( )) % m_aFireModes.size( );
 	SetQueueSize(GetCurrentFireMode( ));
-};
+}
 
 void CWeaponMagazined::OnPrevFireMode( )
 {
@@ -1329,7 +1331,7 @@ void CWeaponMagazined::OnPrevFireMode( )
 
 	m_iCurFireMode = (m_iCurFireMode - 1 + m_aFireModes.size( )) % m_aFireModes.size( );
 	SetQueueSize(GetCurrentFireMode( ));
-};
+}
 
 void CWeaponMagazined::OnH_A_Chield( )
 {
@@ -1347,7 +1349,7 @@ void CWeaponMagazined::OnH_A_Chield( )
 	}
 
 	inherited::OnH_A_Chield( );
-};
+}
 
 void CWeaponMagazined::SetQueueSize(int size)
 {
@@ -1360,7 +1362,7 @@ void CWeaponMagazined::SetQueueSize(int size)
 	{
 		sprintf_s(m_sCurFireMode, " (%d)", m_iQueueSize);
 	}
-};
+}
 
 float CWeaponMagazined::GetWeaponDeterioration( )
 {
@@ -1370,7 +1372,7 @@ float CWeaponMagazined::GetWeaponDeterioration( )
 	}
 
 	return m_iShotNum * conditionDecreasePerShot;
-};
+}
 
 void CWeaponMagazined::save(NET_Packet& output_packet)
 {

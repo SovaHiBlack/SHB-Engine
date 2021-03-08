@@ -22,7 +22,7 @@ struct CDataStorageBinaryHeap {
 		typedef typename CGraphVertex::_index_type				_index_type;
 
 		struct CGraphNodePredicate {
-			IC			bool	operator()(CGraphVertex *node1, CGraphVertex *node2)
+			inline			bool	operator()(CGraphVertex *node1, CGraphVertex *node2)
 			{
 				return				(node1->f() > node2->f());
 			};
@@ -34,15 +34,15 @@ struct CDataStorageBinaryHeap {
 		CGraphVertex			**m_heap_tail;
 
 	public:
-		IC						CDataStorage		(const u32 vertex_count);
+		inline						CDataStorage		(const u32 vertex_count);
 		virtual					~CDataStorage		();
-		IC		void			init				();
-		IC		bool			is_opened_empty		() const;
-		IC		void			add_opened			(CGraphVertex &vertex);
-		IC		void			decrease_opened		(CGraphVertex &vertex, const _dist_type value);
-		IC		void			remove_best_opened	();
-		IC		void			add_best_closed		();
-		IC		CGraphVertex	&get_best			() const;
+		inline		void			init				();
+		inline		bool			is_opened_empty		() const;
+		inline		void			add_opened			(CGraphVertex &vertex);
+		inline		void			decrease_opened		(CGraphVertex &vertex, const _dist_type value);
+		inline		void			remove_best_opened	();
+		inline		void			add_best_closed		();
+		inline		CGraphVertex	&get_best			() const;
 	};
 };
 

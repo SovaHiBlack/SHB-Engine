@@ -39,7 +39,7 @@ namespace PS
 			m_iFrameCount 	= 16;
 			m_fSpeed		= 24.f;
 		}
-		IC void       		CalculateTC(int frame, Fvector2& lt, Fvector2& rb)
+		inline void       		CalculateTC(int frame, Fvector2& lt, Fvector2& rb)
 		{
 			lt.x       	 	= (frame%m_iFrameDimX)*m_fTexSize.x;
 			lt.y        	= (frame/m_iFrameDimX)*m_fTexSize.y;
@@ -99,7 +99,7 @@ namespace PS
 							~CPEDef				();
 		
 		void				SetName				(const char* name);
-		IC const char* Name				()const{return *m_Name;}
+		inline const char* Name				()const{return *m_Name;}
 		void				CreateShader		();
 		void				DestroyShader		();
 

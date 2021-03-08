@@ -170,12 +170,12 @@ public:
 protected:
 	virtual void				Draw( );
 
-	IC const Ivector2&			CellsCapacity( )
+	inline const Ivector2&			CellsCapacity( )
 	{
 		return m_cellsCapacity;
 	};
 	void						SetCellsCapacity(const Ivector2& c);
-	IC const Ivector2&			CellSize( )
+	inline const Ivector2&			CellSize( )
 	{
 		return m_cellSize;
 	};

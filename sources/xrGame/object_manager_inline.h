@@ -92,7 +92,7 @@ bool CAbstractObjectManager::add					(T *object)
 }
 
 TEMPLATE_SPECIALIZATION
-IC	T *CAbstractObjectManager::selected		() const
+inline	T *CAbstractObjectManager::selected		() const
 {
 	return					(m_selected);
 }
@@ -104,7 +104,7 @@ void CAbstractObjectManager::reset					()
 }
 
 TEMPLATE_SPECIALIZATION
-IC	const typename CAbstractObjectManager::OBJECTS &CAbstractObjectManager::objects() const
+inline	const typename CAbstractObjectManager::OBJECTS &CAbstractObjectManager::objects() const
 {
 	return					(m_objects);
 }

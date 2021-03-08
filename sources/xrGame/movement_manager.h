@@ -199,58 +199,58 @@ public:
 	virtual BOOL	net_Spawn				(CSE_Abstract* data);
 	virtual void	net_Destroy				();
 	virtual	void	on_frame				(CPHMovementControl *movement_control, Fvector &dest_position);
-	IC		bool	actual					() const;
+	inline		bool	actual					() const;
 			bool	actual_all				() const;
-	IC		void	set_path_type			(EPathType path_type);
+	inline		void	set_path_type			(EPathType path_type);
 			void	set_game_dest_vertex	(const GameGraph::_GRAPH_ID &game_vertex_id);
 			void	set_level_dest_vertex	(const u32 level_vertex_id);
-	IC		void	set_build_path_at_once	();
+	inline		void	set_build_path_at_once	();
 			void	enable_movement			(bool enabled);
 			EPathType path_type				() const;
 			GameGraph::_GRAPH_ID game_dest_vertex_id	() const;
 			u32		level_dest_vertex_id	() const;
-	IC		bool	enabled					() const;
-	IC		bool	path_completed			() const;
-	IC		float	old_desirable_speed		() const;
-	IC		void	set_desirable_speed		(float speed);
+	inline		bool	enabled					() const;
+	inline		bool	path_completed			() const;
+	inline		float	old_desirable_speed		() const;
+	inline		void	set_desirable_speed		(float speed);
 			const xr_vector<CTravelPathPoint>	&path	() const;
-	IC		void	set_body_orientation	(const MonsterSpace::SBoneRotation &orientation);
-	IC		const CBoneRotation &body_orientation() const;
+	inline		void	set_body_orientation	(const MonsterSpace::SBoneRotation &orientation);
+	inline		const CBoneRotation &body_orientation() const;
 			void	update_path				();
 	virtual	void	move_along_path			(CPHMovementControl *movement_control, Fvector &dest_position, float time_delta);
 
-	IC		float	speed					() const;
+	inline		float	speed					() const;
 			float	speed					(CPHMovementControl *movement_control) const;
 
 	virtual void	on_travel_point_change	(const u32 &previous_travel_point_index);
 	virtual void	on_build_path			() {}
 
 	template <typename T>
-	IC		bool	accessible				(T position_or_vertex_id, float radius = EPS_L) const;
+	inline		bool	accessible				(T position_or_vertex_id, float radius = EPS_L) const;
 
-	IC		void	extrapolate_path		(bool value);
-	IC		bool	extrapolate_path		() const;
+	inline		void	extrapolate_path		(bool value);
+	inline		bool	extrapolate_path		() const;
 
 			bool	distance_to_destination_greater	(const float &distance_to_check) const;
 
-	IC		bool	wait_for_distributed_computation			() const;
+	inline		bool	wait_for_distributed_computation			() const;
 	virtual	bool	can_use_distributed_compuations				(u32 option) const;
 			
 			void	clear_path				();
 
 public:
-	IC		CGameVertexParams		*base_game_params			() const;
-	IC		CBaseParameters			*base_level_params			() const;
-	IC		CGameLocationSelector	&game_selector				() const;
-	IC		CGamePathManager		&game_path					() const;
-	IC		CLevelPathManager		&level_path					() const;
-	IC		CDetailPathManager		&detail						() const;
-	IC		CPatrolPathManager		&patrol						() const;
-	IC		CRestrictedObject		&restrictions				() const;
-	IC		CLocationManager		&locations					() const;
-	IC		CCustomMonster			&object						() const;
-	IC		CLevelPathBuilder		&level_path_builder			() const;
-	IC		CDetailPathBuilder		&detail_path_builder		() const;
+	inline		CGameVertexParams		*base_game_params			() const;
+	inline		CBaseParameters			*base_level_params			() const;
+	inline		CGameLocationSelector	&game_selector				() const;
+	inline		CGamePathManager		&game_path					() const;
+	inline		CLevelPathManager		&level_path					() const;
+	inline		CDetailPathManager		&detail						() const;
+	inline		CPatrolPathManager		&patrol						() const;
+	inline		CRestrictedObject		&restrictions				() const;
+	inline		CLocationManager		&locations					() const;
+	inline		CCustomMonster			&object						() const;
+	inline		CLevelPathBuilder		&level_path_builder			() const;
+	inline		CDetailPathBuilder		&detail_path_builder		() const;
 
 public:
 	virtual	void					on_restrictions_change		();

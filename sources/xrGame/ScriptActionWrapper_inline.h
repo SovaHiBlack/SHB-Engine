@@ -8,5 +8,5 @@
 
 #pragma once
 
-IC CScriptActionWrapper::CScriptActionWrapper(CScriptGameObject* object, const char* action_name) : CScriptActionBase(object, action_name)
+inline CScriptActionWrapper::CScriptActionWrapper(CScriptGameObject* object, const char* action_name) : CScriptActionBase(object, action_name)
 { }

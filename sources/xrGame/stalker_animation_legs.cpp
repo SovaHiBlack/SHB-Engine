@@ -44,7 +44,7 @@ void CStalkerAnimationManager::legs_play_callback			(CBlend *blend)
 	pair.on_animation_end		();
 }
 
-IC	float CStalkerAnimationManager::legs_switch_factor		() const
+inline	float CStalkerAnimationManager::legs_switch_factor		() const
 {
 	if	(
 			(m_target_direction == eMovementDirectionForward) &&

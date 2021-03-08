@@ -8,7 +8,7 @@
 
 #pragma once
 
-IC	CTradeParameters::CTradeParameters						(const shared_str &section) :
+inline	CTradeParameters::CTradeParameters						(const shared_str &section) :
 	m_buy	(
 		CTradeFactors(
 			pSettings->r_float(section,"buy_price_factor_hostile"),
@@ -24,13 +24,13 @@ IC	CTradeParameters::CTradeParameters						(const shared_str &section) :
 {
 }
 
-IC	void CTradeParameters::clear							()
+inline	void CTradeParameters::clear							()
 {
 	m_buy.clear				();
 	m_sell.clear			();
 }
 
-IC	CTradeParameters &CTradeParameters::instance			()
+inline	CTradeParameters &CTradeParameters::instance			()
 {
 	if (m_instance)
 		return				(*m_instance);
@@ -39,48 +39,48 @@ IC	CTradeParameters &CTradeParameters::instance			()
 	return					(*m_instance);
 }
 
-IC	void CTradeParameters::clean							()
+inline	void CTradeParameters::clean							()
 {
 	xr_delete				(m_instance);
 }
 
-IC	CTradeParameters &default_trade_parameters				()
+inline	CTradeParameters &default_trade_parameters				()
 {
 	return					(CTradeParameters::instance());
 }
 
-IC	const CTradeActionParameters &CTradeParameters::action	(action_buy) const
+inline	const CTradeActionParameters &CTradeParameters::action	(action_buy) const
 {
 	return					(m_buy);
 }
 
-IC	const CTradeActionParameters &CTradeParameters::action	(action_sell) const
+inline	const CTradeActionParameters &CTradeParameters::action	(action_sell) const
 {
 	return					(m_sell);
 }
 
-IC	const CTradeBoolParameters &CTradeParameters::action	(action_show) const
+inline	const CTradeBoolParameters &CTradeParameters::action	(action_show) const
 {
 	return					(m_show);
 }
 
-IC	CTradeActionParameters &CTradeParameters::action	(action_buy)
+inline	CTradeActionParameters &CTradeParameters::action	(action_buy)
 {
 	return					(m_buy);
 }
 
-IC	CTradeActionParameters &CTradeParameters::action	(action_sell)
+inline	CTradeActionParameters &CTradeParameters::action	(action_sell)
 {
 	return					(m_sell);
 }
 
-IC	CTradeBoolParameters &CTradeParameters::action		(action_show)
+inline	CTradeBoolParameters &CTradeParameters::action		(action_show)
 {
 	return					(m_show);
 }
 
 template <typename _action_type>
-IC	bool CTradeParameters::enabled							(_action_type type, const shared_str &section) const
+inline	bool CTradeParameters::enabled							(_action_type type, const shared_str &section) const
 {
 	if (action(type).disabled(section))
 		return				(false);
@@ -92,7 +92,7 @@ IC	bool CTradeParameters::enabled							(_action_type type, const shared_str &se
 }
 
 template <typename _action_type>
-IC	const CTradeFactors &CTradeParameters::factors			(_action_type type, const shared_str &section) const
+inline	const CTradeFactors &CTradeParameters::factors			(_action_type type, const shared_str &section) const
 {
 	VERIFY					(enabled(type,section));
 
@@ -106,7 +106,7 @@ IC	const CTradeFactors &CTradeParameters::factors			(_action_type type, const sh
 }
 
 template <typename _action_type>
-IC	void CTradeParameters::process							(_action_type type, CIniFile&ini_file, const shared_str &section)
+inline	void CTradeParameters::process							(_action_type type, CIniFile&ini_file, const shared_str &section)
 {
 	R_ASSERT2				(ini_file.section_exist(section),make_string("cannot find section %s",*section));
 
@@ -135,7 +135,7 @@ IC	void CTradeParameters::process							(_action_type type, CIniFile&ini_file, c
 }
 
 template <typename _action_type>
-IC	void CTradeParameters::default_factors(_action_type type, const CTradeFactors &trade_factors)
+inline	void CTradeParameters::default_factors(_action_type type, const CTradeFactors &trade_factors)
 {
 	action(type).default_factors(trade_factors);
 }

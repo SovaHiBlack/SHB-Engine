@@ -44,7 +44,7 @@ void CControlledActor::install()
 	m_need_turn = true;
 }
 
-void CControlledActor::look_point(const Fvector &point)
+void CControlledActor::look_point(const Fvector3& point)
 {
 	m_target_point						= point;
 }
@@ -54,9 +54,11 @@ void CControlledActor::update_turn()
 	// get yaw and pitch to target
 	float cam_target_yaw, cam_target_pitch;
 	
-	Fvector	P,D,N;
+	Fvector3	P;
+	Fvector3 D;
+	Fvector3 N;
 	m_actor->cam_Active()->Get				(P,D,N);
-	Fvector().sub(m_target_point, P).getHP	(cam_target_yaw, cam_target_pitch);
+	Fvector3().sub(m_target_point, P).getHP	(cam_target_yaw, cam_target_pitch);
 
 	// get yaw and pitch of current cam direction
 	float								cam_current_yaw, cam_current_pitch;

@@ -134,7 +134,7 @@ public:
 		return 1 == m_iQueueSize;
 	}
 	virtual void				SetQueueSize			(int size);
-	IC int						GetQueueSize			( ) const
+	inline int					GetQueueSize			( ) const
 	{
 		return m_iQueueSize;
 	};
@@ -181,15 +181,15 @@ public:
 	virtual bool				HasFireModes			( )
 	{
 		return m_bHasDifferentFireModes;
-	};
+	}
 	virtual int					GetCurrentFireMode		( )
 	{
 		return m_aFireModes[m_iCurFireMode];
-	};
+	}
 	virtual const char*			GetCurrentFireModeStr	( )
 	{
 		return m_sCurFireMode;
-	};
+	}
 
 	virtual void				save					(NET_Packet& output_packet);
 	virtual void				load					(IReader& input_packet);

@@ -3,7 +3,7 @@
 
 #pragma once
 
-IC	CStalkerAnimationScript::CStalkerAnimationScript				(
+inline	CStalkerAnimationScript::CStalkerAnimationScript				(
 		const MotionID &animation,
 		bool hand_usage,
 		bool use_movement_controller
@@ -14,17 +14,17 @@ IC	CStalkerAnimationScript::CStalkerAnimationScript				(
 {
 }
 
-IC	const MotionID &CStalkerAnimationScript::animation				() const
+inline	const MotionID &CStalkerAnimationScript::animation				() const
 {
 	return						(m_animation);
 }
 
-IC	const bool &CStalkerAnimationScript::hand_usage					() const
+inline	const bool &CStalkerAnimationScript::hand_usage					() const
 {
 	return						(m_hand_usage);
 }
 
-IC	const bool &CStalkerAnimationScript::use_movement_controller	() const
+inline	const bool &CStalkerAnimationScript::use_movement_controller	() const
 {
 	return						(m_use_movement_controller);
 }

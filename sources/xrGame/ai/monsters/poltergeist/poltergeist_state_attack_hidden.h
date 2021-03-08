@@ -9,7 +9,7 @@ protected:
 	typedef CState<_Object>*	state_ptr;
 
 	struct {
-		Fvector point;
+		Fvector3 point;
 		u32		node;
 	} m_target;
 

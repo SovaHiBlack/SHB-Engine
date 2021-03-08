@@ -8,7 +8,7 @@
 
 #pragma once
 
-IC	CDangerObject::CDangerObject											(
+inline	CDangerObject::CDangerObject											(
 	const CEntityAlive	*object,
 	const Fvector &position,
 	u32 time,
@@ -25,42 +25,42 @@ IC	CDangerObject::CDangerObject											(
 	m_perceive_type		= perceive_type;
 }
 
-IC	const CEntityAlive *CDangerObject::object								() const
+inline	const CEntityAlive *CDangerObject::object								() const
 {
 	return				(m_object);
 }
 
-IC	const Fvector &CDangerObject::position									() const
+inline	const Fvector &CDangerObject::position									() const
 {
 	return				(m_position);
 }
 
-IC	u32	CDangerObject::time													() const
+inline	u32	CDangerObject::time													() const
 {
 	return				(m_time);
 }
 
-IC	CDangerObject::EDangerType CDangerObject::type							() const
+inline	CDangerObject::EDangerType CDangerObject::type							() const
 {
 	return				(m_type);
 }
 
-IC	CDangerObject::EDangerPerceiveType CDangerObject::perceive_type			() const
+inline	CDangerObject::EDangerPerceiveType CDangerObject::perceive_type			() const
 {
 	return				(m_perceive_type);
 }
 
-IC	const CObject *CDangerObject::dependent_object							() const
+inline	const CObject *CDangerObject::dependent_object							() const
 {
 	return				(m_dependent_object);
 }
 
-IC	void CDangerObject::clear_dependent_object								()
+inline	void CDangerObject::clear_dependent_object								()
 {
 	m_dependent_object	= 0;
 }
 
-IC	bool CDangerObject::operator==											(const CDangerObject &object) const
+inline	bool CDangerObject::operator==											(const CDangerObject &object) const
 {
 	if (!m_object && object.object())
 		return			(false);

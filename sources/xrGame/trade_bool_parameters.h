@@ -16,10 +16,10 @@ private:
 	SECTIONS	m_sections;
 
 public:
-	IC			CTradeBoolParameters	();
-	IC	void	clear					();
-	IC	void	disable					(const shared_str &section);
-	IC	bool	disabled				(const shared_str &section) const;
+	inline			CTradeBoolParameters	();
+	inline	void	clear					();
+	inline	void	disable					(const shared_str &section);
+	inline	bool	disabled				(const shared_str &section) const;
 };
 
 #include "trade_bool_parameters_inline.h"

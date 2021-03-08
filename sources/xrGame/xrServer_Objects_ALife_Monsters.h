@@ -201,8 +201,8 @@ SERVER_ENTITY_DECLARE_BEGIN(CSE_ALifeCreatureAbstract,CSE_ALifeDynamicObjectVisu
 	virtual u8						g_team					();
 	virtual u8						g_squad					();
 	virtual u8						g_group					();
-	IC		float					g_Health				() const								{ return fHealth;}
-	IC		bool					g_Alive					() const								{ return (g_Health() > 0.f);}
+	inline		float					g_Health				() const								{ return fHealth;}
+	inline		bool					g_Alive					() const								{ return (g_Health() > 0.f);}
 	virtual bool					used_ai_locations		() const;
 	virtual bool					can_switch_online		() const;
 	virtual bool					can_switch_offline		() const;
@@ -254,7 +254,7 @@ SERVER_ENTITY_DECLARE_BEGIN2(CSE_ALifeMonsterAbstract,CSE_ALifeCreatureAbstract,
 public:
 									CSE_ALifeMonsterAbstract(const char* caSection);
 	virtual							~CSE_ALifeMonsterAbstract();
-	IC		float					g_MaxHealth				()	const									{ return m_fMaxHealthValue;	}
+	inline		float					g_MaxHealth				()	const									{ return m_fMaxHealthValue;	}
 	virtual CSE_Abstract			*init					();
 	virtual CSE_Abstract			*base					();
 	virtual const CSE_Abstract		*base					() const;
@@ -262,13 +262,13 @@ public:
 	virtual CSE_ALifeSchedulable	*cast_schedulable		() {return this;};
 	virtual CSE_ALifeMonsterAbstract*cast_monster_abstract	() {return this;};
 
-	IC		CALifeMonsterBrain		&brain					() const {VERIFY(m_brain); return(*m_brain);}
+	inline		CALifeMonsterBrain		&brain					() const {VERIFY(m_brain); return(*m_brain);}
 	virtual CALifeMonsterBrain		*create_brain			();
 	virtual u32						ef_creature_type		() const;
 	virtual u32						ef_weapon_type			() const;
 	virtual u32						ef_detector_type		() const;
 	
-	IC		int						Rank					(){return m_rank;}
+	inline		int						Rank					(){return m_rank;}
 
 	virtual	void					update					();
 	virtual	CSE_ALifeItemWeapon		*tpfGetBestWeapon		(ALife::EHitType		&tHitType,				float	&fHitPower);
@@ -416,7 +416,7 @@ public:
 	virtual CSE_ALifeHumanAbstract	*cast_human_abstract	() {return this;};
 	virtual bool					natural_weapon			() const {return false;}
 	virtual bool					natural_detector		() const {return false;}
-	IC		CALifeHumanBrain		&brain					() const {VERIFY(m_brain); return(*m_brain);}
+	inline		CALifeHumanBrain		&brain					() const {VERIFY(m_brain); return(*m_brain);}
 	virtual CALifeMonsterBrain		*create_brain			();
 
 	virtual	void					update					();
@@ -475,7 +475,7 @@ private:
 	CALifeOnlineOfflineGroupBrain	*m_brain;
 
 public:
-	IC		CALifeOnlineOfflineGroupBrain	&brain	() const;
+	inline		CALifeOnlineOfflineGroupBrain	&brain	() const;
 
 public:
 	virtual	CSE_ALifeItemWeapon		*tpfGetBestWeapon		(ALife::EHitType &tHitType, float &fHitPower);

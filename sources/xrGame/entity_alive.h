@@ -76,7 +76,7 @@ public:
 	
 	virtual bool			human_being				() const			{return	(false);}
 public:
-	//IC	CPHMovementControl*					PMovement					()						{return m_PhysicMovementControl;}
+	//inline	CPHMovementControl*					PMovement					()						{return m_PhysicMovementControl;}
 
 	virtual u16								PHGetSyncItemsNumber		()						;
 	virtual CPHSynchronize*					PHGetSyncItem				(u16 item)				;
@@ -158,8 +158,8 @@ protected:
 	virtual	CEntityConditionSimple	*create_entity_condition	(CEntityConditionSimple* ec);
 
 public:
-	IC		CEntityCondition	&conditions					() const;
-	IC		CMaterialManager	&material					() const {VERIFY(m_material_manager); return(*m_material_manager);}
+	inline		CEntityCondition	&conditions					() const;
+	inline		CMaterialManager	&material					() const {VERIFY(m_material_manager); return(*m_material_manager);}
 
 
 protected:

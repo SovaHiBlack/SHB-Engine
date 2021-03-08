@@ -21,7 +21,7 @@ public:
 	void			init				( );
 	void			setup				(const char* m, CPhysicsShell* s);
 	void			update				(CPhysicsShell* s);
-	IC bool			is_enabled			( )
+	inline bool			is_enabled			( )
 	{
 		return !!flags.test(fl_use_death_motion);
 	}

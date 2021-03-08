@@ -123,13 +123,13 @@ public:
 
 	u32						o_render_frame;
 	BOOL					o_fastmode;
-	IC void					o_switch_2_fast( )
+	inline void					o_switch_2_fast( )
 	{
 		if (o_fastmode)		return;
 		o_fastmode = TRUE;
 		//processing_activate		();
 	}
-	IC void					o_switch_2_slow( )
+	inline void					o_switch_2_slow( )
 	{
 		if (!o_fastmode)	return;
 		o_fastmode = FALSE;

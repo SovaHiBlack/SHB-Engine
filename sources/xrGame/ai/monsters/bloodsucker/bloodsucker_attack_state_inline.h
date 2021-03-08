@@ -145,7 +145,7 @@ bool CBloodsuckerStateAttackAbstract::check_hiding()
 		if (!get_state(eStateAttack_Melee)->check_start_conditions()) 
 			if (!get_state_current()->check_completion()) {
 				//object->path().set_use_dest_orient	(true);
-				//object->path().set_dest_direction	(Fvector().sub(object->EnemyMan.get_enemy()->Position(),m_dir_point));
+				//object->path().set_dest_direction	(Fvector3().sub(object->EnemyMan.get_enemy()->Position(),m_dir_point));
 				return true;
 			}
 
@@ -179,8 +179,8 @@ void CBloodsuckerStateAttackAbstract::setup_substates()
 
 		SStateDataMoveToPointEx data;
 
-		Fvector target_dir		= Random.randI(2) ? object->XFORM().i : Fvector().set(object->XFORM().i).invert();
-		m_dir_point				= Fvector().mad(object->Position(), target_dir, 2.5f);
+		Fvector3 target_dir		= Random.randI(2) ? object->XFORM().i : Fvector3().set(object->XFORM().i).invert();
+		m_dir_point				= Fvector3().mad(object->Position(), target_dir, 2.5f);
 
 		data.vertex				= 0;
 		data.point				= m_dir_point;

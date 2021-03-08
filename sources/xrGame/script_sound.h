@@ -22,29 +22,29 @@ class CScriptSound {
 public:
 								CScriptSound		(const char* caSoundName, ESoundTypes sound_type = SOUND_TYPE_NO_SOUND);
 	virtual						~CScriptSound		();
-	IC		u32					Length				();
-	IC		void				Play				(CScriptGameObject *object);
-	IC		void				Play				(CScriptGameObject *object, float delay);
+	inline		u32					Length				();
+	inline		void				Play				(CScriptGameObject *object);
+	inline		void				Play				(CScriptGameObject *object, float delay);
 			void				Play				(CScriptGameObject *object, float delay, int flags);
-	IC		void				PlayAtPos			(CScriptGameObject *object, const Fvector &position);
-	IC		void				PlayAtPos			(CScriptGameObject *object, const Fvector &position, float delay);
+	inline		void				PlayAtPos			(CScriptGameObject *object, const Fvector &position);
+	inline		void				PlayAtPos			(CScriptGameObject *object, const Fvector &position, float delay);
 			void				PlayAtPos			(CScriptGameObject *object, const Fvector &position, float delay, int flags);
 			void				PlayNoFeedback		(CScriptGameObject *object,	u32 flags/*!< Looping */, float delay/*!< Delay */, Fvector pos, float vol);
-	IC		void				Stop				();
-	IC		void				StopDeffered		();
-	IC		void				SetPosition			(const Fvector &position);
-	IC		void				SetFrequency		(float frequency);
-	IC		void				SetVolume			(float volume);
-	IC		const CSound_params	*GetParams			();
-	IC		void				SetParams			(CSound_params *sound_params);
+	inline		void				Stop				();
+	inline		void				StopDeffered		();
+	inline		void				SetPosition			(const Fvector &position);
+	inline		void				SetFrequency		(float frequency);
+	inline		void				SetVolume			(float volume);
+	inline		const CSound_params	*GetParams			();
+	inline		void				SetParams			(CSound_params *sound_params);
 			void				SetMinDistance		(const float fMinDistance);
-	IC		void				SetMaxDistance		(const float fMaxDistance);
+	inline		void				SetMaxDistance		(const float fMaxDistance);
 			Fvector				GetPosition			() const;
-	IC		const float			GetFrequency		() const;
-	IC		const float			GetMinDistance		() const;
-	IC		const float			GetMaxDistance		() const;
-	IC		const float			GetVolume			() const;
-	IC		bool				IsPlaying			() const;
+	inline		const float			GetFrequency		() const;
+	inline		const float			GetMinDistance		() const;
+	inline		const float			GetMaxDistance		() const;
+	inline		const float			GetVolume			() const;
+	inline		bool				IsPlaying			() const;
 
 public:
 	static void script_register(lua_State*);

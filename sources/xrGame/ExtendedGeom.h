@@ -125,12 +125,12 @@ struct dxGeomUserData
 //	};
 };
 
-IC dxGeomUserData* dGeomGetUserData(dxGeom* geom)
+inline dxGeomUserData* dGeomGetUserData(dxGeom* geom)
 {
 	return (dxGeomUserData*) dGeomGetData(geom);
 }
 
-IC dGeomID retrieveGeom(dGeomID geom)
+inline dGeomID retrieveGeom(dGeomID geom)
 {
 	if(dGeomGetClass(geom)==dGeomTransformClass)
 		return dGeomTransformGetGeom(geom);
@@ -138,7 +138,7 @@ IC dGeomID retrieveGeom(dGeomID geom)
 		return geom;
 }
 
-IC dxGeomUserData* retrieveGeomUserData(dGeomID geom)
+inline dxGeomUserData* retrieveGeomUserData(dGeomID geom)
 {
 			return dGeomGetUserData(retrieveGeom(geom));
 			//if(dGeomGetClass(geom)==dGeomTransformClass)
@@ -147,13 +147,13 @@ IC dxGeomUserData* retrieveGeomUserData(dGeomID geom)
 			//	return dGeomGetUserData(geom);
 }
 
-IC CPHShellHolder* retrieveRefObject(dGeomID geom)
+inline CPHShellHolder* retrieveRefObject(dGeomID geom)
 {
 	dxGeomUserData* ud=dGeomGetUserData(retrieveGeom(geom));
 	if(ud)return ud->ph_ref_object;
 	else return NULL;
 }
-IC void dGeomCreateUserData(dxGeom* geom)
+inline void dGeomCreateUserData(dxGeom* geom)
 {
 	if(!geom) return;
 	dGeomSetData(geom,xr_new<dxGeomUserData>());
@@ -181,7 +181,7 @@ IC void dGeomCreateUserData(dxGeom* geom)
 
 
 
-IC void dGeomDestroyUserData(dxGeom* geom)
+inline void dGeomDestroyUserData(dxGeom* geom)
 {
 	if(!geom)			return							;
 	dxGeomUserData*	P	= dGeomGetUserData(geom)		;
@@ -197,32 +197,32 @@ IC void dGeomDestroyUserData(dxGeom* geom)
 	dGeomSetData		(geom,0)						;
 }
 
-IC void dGeomUserDataSetCallbackData(dxGeom* geom,void *cd)
+inline void dGeomUserDataSetCallbackData(dxGeom* geom,void *cd)
 {
 	(dGeomGetUserData(geom))->callback_data=cd;
 }
-IC void dGeomUserDataSetPhObject(dxGeom* geom,CPHObject* phObject)
+inline void dGeomUserDataSetPhObject(dxGeom* geom,CPHObject* phObject)
 {
 	(dGeomGetUserData(geom))->ph_object=phObject;
 }
 
-IC void dGeomUserDataSetPhysicsRefObject(dxGeom* geom, CPHShellHolder* phRefObject)
+inline void dGeomUserDataSetPhysicsRefObject(dxGeom* geom, CPHShellHolder* phRefObject)
 {
 	(dGeomGetUserData(geom))->ph_ref_object=phRefObject;
 }
 
-IC void dGeomUserDataSetContactCallback(dxGeom* geom,ContactCallbackFun* callback)
+inline void dGeomUserDataSetContactCallback(dxGeom* geom,ContactCallbackFun* callback)
 {
 	(dGeomGetUserData(geom))->callback=callback;
 }
 
-IC void dGeomUserDataSetObjectContactCallback(dxGeom* geom,ObjectContactCallbackFun	*obj_callback)
+inline void dGeomUserDataSetObjectContactCallback(dxGeom* geom,ObjectContactCallbackFun	*obj_callback)
 {
 	xr_delete((dGeomGetUserData(geom))->object_callbacks);
 	if(obj_callback)(dGeomGetUserData(geom))->object_callbacks=xr_new<CObjectContactCallback>(obj_callback);
 }
 
-IC void dGeomUserDataAddObjectContactCallback(dxGeom* geom,ObjectContactCallbackFun	*obj_callback)
+inline void dGeomUserDataAddObjectContactCallback(dxGeom* geom,ObjectContactCallbackFun	*obj_callback)
 {
 	if((dGeomGetUserData(geom))->object_callbacks)
 	{
@@ -231,33 +231,33 @@ IC void dGeomUserDataAddObjectContactCallback(dxGeom* geom,ObjectContactCallback
 	else dGeomUserDataSetObjectContactCallback(geom,obj_callback);
 }
 
-IC void dGeomUserDataRemoveObjectContactCallback(dxGeom* geom,ObjectContactCallbackFun	*obj_callback)
+inline void dGeomUserDataRemoveObjectContactCallback(dxGeom* geom,ObjectContactCallbackFun	*obj_callback)
 {
 	CObjectContactCallback::RemoveCallback((dGeomGetUserData(geom))->object_callbacks,(obj_callback));
 }
 
-IC bool dGeomUserDataHasCallback(dxGeom* geom,ObjectContactCallbackFun	*obj_callback)
+inline bool dGeomUserDataHasCallback(dxGeom* geom,ObjectContactCallbackFun	*obj_callback)
 {
 	geom=retrieveGeom(geom);
 	if(geom&&dGeomGetUserData(geom)&&(dGeomGetUserData(geom))->object_callbacks)
 				return (dGeomGetUserData(geom))->object_callbacks->HasCallback(obj_callback);
 	else return false;
 }
-IC void dGeomUserDataSetElementPosition(dxGeom* geom,u16 e_pos)
+inline void dGeomUserDataSetElementPosition(dxGeom* geom,u16 e_pos)
 {
 	(dGeomGetUserData(geom))->element_position=e_pos;
 }
-IC void dGeomUserDataSetBoneId(dxGeom* geom,u16 bone_id)
+inline void dGeomUserDataSetBoneId(dxGeom* geom,u16 bone_id)
 {
 	(dGeomGetUserData(geom))->bone_id=bone_id;
 }
-IC void dGeomUserDataResetLastPos(dxGeom* geom)
+inline void dGeomUserDataResetLastPos(dxGeom* geom)
 {
 	(dGeomGetUserData(geom))->last_pos[0]=-dInfinity;
 	(dGeomGetUserData(geom))->last_pos[1]=-dInfinity;
 	(dGeomGetUserData(geom))->last_pos[2]=-dInfinity;
 }
-IC void dGeomUserDataClearCashedTries(dxGeom* geom)
+inline void dGeomUserDataClearCashedTries(dxGeom* geom)
 {
 	dxGeomUserData*	P	= dGeomGetUserData(geom);
 

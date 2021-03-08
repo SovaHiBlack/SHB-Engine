@@ -41,27 +41,27 @@ struct SGameMtl;
 #define CFM(k_p, k_d)				CFM_S(k_p, k_d, fixed_step)
 #define SPRING(cfm, erp)			SPRING_S(cfm, erp, fixed_step)
 
-IC float		Erp(float k_p, float k_d, float s = fixed_step)
+inline float		Erp(float k_p, float k_d, float s = fixed_step)
 {
 	return ((s * (k_p)) / (((s) * (k_p)) + (k_d)));
 }
 
-IC float		Cfm(float k_p, float k_d, float s = fixed_step)
+inline float		Cfm(float k_p, float k_d, float s = fixed_step)
 {
 	return (1.0f / (((s) * (k_p)) + (k_d)));
 }
 
-IC float		Spring(float cfm, float erp, float s = fixed_step)
+inline float		Spring(float cfm, float erp, float s = fixed_step)
 {
 	return ((erp) / (cfm) / s);
 }
 
-IC float		Damping(float cfm, float erp)
+inline float		Damping(float cfm, float erp)
 {
 	return ((1.0f - (erp)) / (cfm));
 }
 
-IC void			MulSprDmp(float& cfm, float& erp, float mul_spring, float mul_damping)
+inline void			MulSprDmp(float& cfm, float& erp, float mul_spring, float mul_damping)
 {
 	float factor = 1.0f / (mul_spring * erp + mul_damping * (1 - erp));
 	cfm *= factor;

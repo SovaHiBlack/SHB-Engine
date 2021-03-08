@@ -17,7 +17,7 @@ struct CDataStorageSingleLinkedList {
 		struct _vertex : public T1<T2> {
 			T2	*_next;
 
-			IC	T2	*&next()
+			inline	T2	*&next()
 			{
 				return	(_next);
 			}
@@ -44,15 +44,15 @@ struct CDataStorageSingleLinkedList {
 		CGraphVertex		*m_list_tail;
 
 	public:
-		IC						CDataStorage		(const u32 vertex_count, const _dist_type _max_distance = _dist_type(u32(-1)));
+		inline						CDataStorage		(const u32 vertex_count, const _dist_type _max_distance = _dist_type(u32(-1)));
 		virtual					~CDataStorage		();
-		IC		void			init				();
-		IC		bool			is_opened_empty		() const;
-		IC		void			add_opened			(CGraphVertex &vertex);
-		IC		void			decrease_opened		(CGraphVertex &vertex, const _dist_type value);
-		IC		void			remove_best_opened	();
-		IC		void			add_best_closed		();
-		IC		CGraphVertex	&get_best			() const;
+		inline		void			init				();
+		inline		bool			is_opened_empty		() const;
+		inline		void			add_opened			(CGraphVertex &vertex);
+		inline		void			decrease_opened		(CGraphVertex &vertex, const _dist_type value);
+		inline		void			remove_best_opened	();
+		inline		void			add_best_closed		();
+		inline		CGraphVertex	&get_best			() const;
 	};
 };
 

@@ -31,23 +31,23 @@ protected:
 	bool					m_first_update;
 
 protected:
-	IC		void			update_next			();
-	IC		_iterator		&next				();
-	IC		void			start_timer			();
-	IC		bool			time_over			();
+	inline		void			update_next			();
+	inline		_iterator		&next				();
+	inline		void			start_timer			();
+	inline		bool			time_over			();
 
 public:
-	IC						CSafeMapIterator	();
+	inline						CSafeMapIterator	();
 	virtual					~CSafeMapIterator	();
-	IC		void			add					(const _key_type &id, _data_type *value, bool no_assert = false);
-	IC		void			remove				(const _key_type &id, bool no_assert = false);
+	inline		void			add					(const _key_type &id, _data_type *value, bool no_assert = false);
+	inline		void			remove				(const _key_type &id, bool no_assert = false);
 	template <typename _update_predicate>
-	IC		u32				update				(const _update_predicate &predicate);
-	IC		void			set_process_time	(const float &process_time);
-	IC		const _REGISTRY	&objects			() const;
-	IC		void			clear				();
-	IC		bool			empty				() const;
-	IC		void			begin				();
+	inline		u32				update				(const _update_predicate &predicate);
+	inline		void			set_process_time	(const float &process_time);
+	inline		const _REGISTRY	&objects			() const;
+	inline		void			clear				();
+	inline		bool			empty				() const;
+	inline		void			begin				();
 };
 
 #include "safe_map_iterator_inline.h"

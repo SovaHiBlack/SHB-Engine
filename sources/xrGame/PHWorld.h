@@ -61,11 +61,11 @@ public:
 								CPHWorld						()							;
 	virtual						~CPHWorld						(){}						;
 
-//IC	dSpaceID					GetSpace						()			{return Space;}	;
-IC	bool						Exist							()			{return b_exist ;}
+//inline	dSpaceID					GetSpace						()			{return Space;}	;
+inline	bool						Exist							()			{return b_exist ;}
 	void						Create							()							;
 	void						SetGravity						(float	g)					;
-IC	float						Gravity							()							{return m_gravity;}
+inline	float						Gravity							()							{return m_gravity;}
 	void						AddObject						(CPHObject* object)			;
 	void						AddUpdateObject					(CPHUpdateObject* object)	;
 	void						AddRecentlyDisabled				(CPHObject* object)			;
@@ -73,10 +73,10 @@ IC	float						Gravity							()							{return m_gravity;}
 	void						RemoveObject					(PH_OBJECT_I i)				;
 	void						RemoveUpdateObject				(PH_UPDATE_OBJECT_I i)		;
 	dGeomID						GetMeshGeom						()							{return Mesh.GetGeom();}
-IC	dGeomID						GetMotionRayGeom				()							{return m_motion_ray;}
+inline	dGeomID						GetMotionRayGeom				()							{return m_motion_ray;}
 	void			static		SetStep							(dReal s)					;
 	void						Destroy							()							;
-IC	float						FrameTime						(bool frame_mark){return b_frame_mark==frame_mark ? m_frame_time :m_previous_frame_time;}
+inline	float						FrameTime						(bool frame_mark){return b_frame_mark==frame_mark ? m_frame_time :m_previous_frame_time;}
 	
 	void						FrameStep						(dReal step=0.025f)			;
 	void						Step							()							;
@@ -88,7 +88,7 @@ IC	float						FrameTime						(bool frame_mark){return b_frame_mark==frame_mark ?
 	void						AddFreezedObject				(CPHObject* obj)			;
 	void						RemoveFreezedObject				(PH_OBJECT_I i)				;
 	bool 						IsFreezed						()							;
-IC	bool						Processing						()							{return b_processing;}
+inline	bool						Processing						()							{return b_processing;}
 	u32							CalcNumSteps					(u32 dTime)					;
 	u16							ObjectsNumber					()							;
 	u16							UpdateObjectsNumber				()							;

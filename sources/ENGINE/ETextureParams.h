@@ -108,7 +108,7 @@ struct STextureParams{
 	{
 		Clear();
 	}
-	IC void Clear		()
+	inline void Clear		()
 	{
 		ZeroMemory		(this,sizeof(STextureParams));
 		flags.set		(flGenerateMipMaps|flDitherColor,TRUE);
@@ -121,12 +121,12 @@ struct STextureParams{
         bump_virtual_height = 0.05f;
 	}
 
-    IC BOOL HasAlpha()
+    inline BOOL HasAlpha()
     { 
     	// исходная текстура содержит альфа канал
     	return flags.is(flHasAlpha);
     }
-	IC BOOL HasAlphaChannel() // игровая текстура содержит альфа канал
+	inline BOOL HasAlphaChannel() // игровая текстура содержит альфа канал
 	{
 		switch (fmt)
 		{

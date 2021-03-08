@@ -74,7 +74,7 @@ public:
 
 /*
 #define ROT(a,i,j,k,l) g=a.m[i][j]; h=a.m[k][l]; a.m[i][j]=g-s*(h+g*tau); a.m[k][l]=h+s*(g-h*tau);
-	int IC Meigen(Tvector& dout, SelfRef a)
+	int inline Meigen(Tvector& dout, SelfRef a)
 	{
 		int i;
 		float tresh,theta,tau,t,sm,s,h,g,c;
@@ -230,14 +230,14 @@ public:
 					M1.m[2][2] * M2.m[2][2]);
 	  return *this;
 	}
-IC SelfRef McolcMcol(int cr, SelfCRef M, int c)
+inline SelfRef McolcMcol(int cr, SelfCRef M, int c)
 	{
 		m[0][cr] = M.m[0][c];
 		m[1][cr] = M.m[1][c];
 		m[2][cr] = M.m[2][c];
 		return *this;
 	}
-	IC SelfRef MxMpV(SelfCRef M1, SelfCRef M2, const Tvector& T)
+	inline SelfRef MxMpV(SelfCRef M1, SelfCRef M2, const Tvector& T)
 	{
 		m[0][0] = ( M1.m[0][0] * M2.m[0][0] +
 					M1.m[0][1] * M2.m[1][0] +
@@ -268,7 +268,7 @@ IC SelfRef McolcMcol(int cr, SelfCRef M, int c)
 					M1.m[2][2] * M2.m[2][2] + T.z);
 		return *this;
 	}
-	IC SelfRef Mqinverse(SelfCRef M)
+	inline SelfRef Mqinverse(SelfCRef M)
 	{
 		int i,j;
 
@@ -282,7 +282,7 @@ IC SelfRef McolcMcol(int cr, SelfCRef M, int c)
 		  }
 			return *this;
 	}
-	IC SelfRef MxMT(SelfCRef M1, SelfCRef M2)
+	inline SelfRef MxMT(SelfCRef M1, SelfCRef M2)
 	{
 		m[0][0] = ( M1.m[0][0] * M2.m[0][0] +
 					M1.m[0][1] * M2.m[0][1] +
@@ -313,7 +313,7 @@ IC SelfRef McolcMcol(int cr, SelfCRef M, int c)
 					M1.m[2][2] * M2.m[2][2]);
 		return *this;
 	}
-	IC SelfRef MskewV(const Tvector& v)
+	inline SelfRef MskewV(const Tvector& v)
 	{
 		m[0][0] = m[1][1] = m[2][2] = 0.0;
 		m[1][0] = v.z;
@@ -324,47 +324,47 @@ IC SelfRef McolcMcol(int cr, SelfCRef M, int c)
 		m[2][1] = v.x;
 		return *this;
 	}
-	IC SelfRef sMxVpV(Tvector& R, float s1, const Tvector& V1, const Tvector& V2) const
+	inline SelfRef sMxVpV(Tvector& R, float s1, const Tvector& V1, const Tvector& V2) const
 	{
 		R.x = s1 * (m[0][0] * V1.x + m[0][1] * V1.y + m[0][2] * V1.z) + V2.x;
 		R.y = s1 * (m[1][0] * V1.x + m[1][1] * V1.y + m[1][2] * V1.z) + V2.y;
 		R.z = s1 * (m[2][0] * V1.x + m[2][1] * V1.y + m[2][2] * V1.z) + V2.z;
 		return *this;
 	}
-	IC void MTxV(Tvector& R, const Tvector& V1) const
+	inline void MTxV(Tvector& R, const Tvector& V1) const
 	{
 		R.x = (m[0][0] * V1.x + m[1][0] * V1.y + m[2][0] * V1.z);
 		R.y = (m[0][1] * V1.x + m[1][1] * V1.y + m[2][1] * V1.z);
 		R.z = (m[0][2] * V1.x + m[1][2] * V1.y + m[2][2] * V1.z);
 	}
-	IC void MTxVpV(Tvector& R, const Tvector& V1, const Tvector& V2) const
+	inline void MTxVpV(Tvector& R, const Tvector& V1, const Tvector& V2) const
 	{
 		R.x = (m[0][0] * V1.x + m[1][0] * V1.y + m[2][0] * V1.z + V2.x);
 		R.y = (m[0][1] * V1.x + m[1][1] * V1.y + m[2][1] * V1.z + V2.y);
 		R.z = (m[0][2] * V1.x + m[1][2] * V1.y + m[2][2] * V1.z + V2.z);
 	}
-	IC SelfRef MTxVmV(Tvector& R, const Tvector& V1, const Tvector& V2) const
+	inline SelfRef MTxVmV(Tvector& R, const Tvector& V1, const Tvector& V2) const
 	{
 		R.x = (m[0][0] * V1.x + m[1][0] * V1.y + m[2][0] * V1.z - V2.x);
 		R.y = (m[0][1] * V1.x + m[1][1] * V1.y + m[2][1] * V1.z - V2.y);
 		R.z = (m[0][2] * V1.x + m[1][2] * V1.y + m[2][2] * V1.z - V2.z);
 		return *this;
 	}
-	IC SelfRef sMTxV(Tvector& R, float s1, const Tvector& V1) const
+	inline SelfRef sMTxV(Tvector& R, float s1, const Tvector& V1) const
 	{
 		R.x = s1*(m[0][0] * V1.x + m[1][0] * V1.y + m[2][0] * V1.z);
 		R.y = s1*(m[0][1] * V1.x + m[1][1] * V1.y + m[2][1] * V1.z);
 		R.z = s1*(m[0][2] * V1.x + m[1][2] * V1.y + m[2][2] * V1.z);
 		return *this;
 	}
-	IC SelfRef MxV(Tvector& R, const Tvector& V1) const
+	inline SelfRef MxV(Tvector& R, const Tvector& V1) const
 	{
 		R.x = (m[0][0] * V1.x + m[0][1] * V1.y + m[0][2] * V1.z);
 		R.y = (m[1][0] * V1.x + m[1][1] * V1.y + m[1][2] * V1.z);
 		R.z = (m[2][0] * V1.x + m[2][1] * V1.y + m[2][2] * V1.z);
 		return *this;
 	}
-	IC SelfRef MxVpV(Tvector& R, const Tvector& V1, const Tvector& V2) const
+	inline SelfRef MxVpV(Tvector& R, const Tvector& V1, const Tvector& V2) const
 	{
 		R.x = (m[0][0] * V1.x + m[0][1] * V1.y + m[0][2] * V1.z + V2.x);
 		R.y = (m[1][0] * V1.x + m[1][1] * V1.y + m[1][2] * V1.z + V2.y);

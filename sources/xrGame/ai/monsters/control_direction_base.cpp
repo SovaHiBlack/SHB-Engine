@@ -20,14 +20,14 @@ void CControlDirectionBase::reinit()
 	m_man->capture		(this, ControlCom::eControlDir);
 }
 
-void CControlDirectionBase::face_target(const Fvector &position, u32 delay, float add_yaw)
+void CControlDirectionBase::face_target(const Fvector3& position, u32 delay, float add_yaw)
 {
 	if (m_time_last_faced + delay > Device.dwTimeGlobal) return;
 
 	m_delay = delay;
 
 	float	yaw, pitch;
-	Fvector dir;
+	Fvector3 dir;
 
 	dir.sub		(position, m_object->Position());
 	dir.getHP	(yaw,pitch);

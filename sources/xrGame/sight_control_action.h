@@ -17,13 +17,13 @@ protected:
 	u32									m_start_time;
 
 public:
-	IC									CSightControlAction	(float weight, u32 inertia_time, const CSightAction &sight_action);
-	IC	float							weight				() const;
-	IC	bool							completed			() const;
-	IC	bool							use_torso_look		() const;
-	IC	const SightManager::ESightType	&sight_type			() const;
-	IC	const Fvector					&vector3d			() const;
-	IC	const CGameObject				&object				() const;
+	inline									CSightControlAction	(float weight, u32 inertia_time, const CSightAction &sight_action);
+	inline	float							weight				() const;
+	inline	bool							completed			() const;
+	inline	bool							use_torso_look		() const;
+	inline	const SightManager::ESightType	&sight_type			() const;
+	inline	const Fvector					&vector3d			() const;
+	inline	const CGameObject				&object				() const;
 };
 
 #include "sight_control_action_inline.h"

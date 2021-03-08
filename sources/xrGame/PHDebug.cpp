@@ -139,21 +139,21 @@ void DBG_DrawMatrix( const Fmatrix &m, float size, u8 a/* = 255*/ )
 }
 
 template<int>
-IC	void rotate(Fmatrix &m, float ang);
+inline	void rotate(Fmatrix &m, float ang);
 
 template<>
-IC	void rotate<0>(Fmatrix &m, float ang)
+inline	void rotate<0>(Fmatrix &m, float ang)
 {
 	m.rotateX( ang );
 }
 template<>
-IC	void rotate<1>(Fmatrix &m, float ang)
+inline	void rotate<1>(Fmatrix &m, float ang)
 {
 	m.rotateY( ang );
 }
 
 template<>
-IC	void rotate<2>(Fmatrix &m, float ang)
+inline	void rotate<2>(Fmatrix &m, float ang)
 {
 	m.rotateZ( ang );
 }
@@ -287,7 +287,7 @@ void DBG_ClosedCashedDraw(u32 remove_time)
 	cash_draw_remove_time	=remove_time+Device.dwTimeGlobal;
 }
 
-IC void push( PHABS_DBG_V &v, SPHDBGDrawAbsract* a )
+inline void push( PHABS_DBG_V &v, SPHDBGDrawAbsract* a )
 {
 	if( v.size() < 500 )
 				v.push_back(a);

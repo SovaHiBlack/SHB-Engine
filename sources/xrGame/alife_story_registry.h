@@ -22,9 +22,9 @@ protected:
 public:
 	virtual							~CALifeStoryRegistry	();
 			void					add						(ALife::_STORY_ID id, CSE_ALifeDynamicObject *object, bool no_assert = false);
-	IC		void					remove					(ALife::_STORY_ID id, bool no_assert = false);
-	IC		const STORY_REGISTRY	&objects				() const;
-	IC		CSE_ALifeDynamicObject	*object					(ALife::_STORY_ID id, bool no_assert = false) const;
+	inline		void					remove					(ALife::_STORY_ID id, bool no_assert = false);
+	inline		const STORY_REGISTRY	&objects				() const;
+	inline		CSE_ALifeDynamicObject	*object					(ALife::_STORY_ID id, bool no_assert = false) const;
 };
 
 #include "alife_story_registry_inline.h"

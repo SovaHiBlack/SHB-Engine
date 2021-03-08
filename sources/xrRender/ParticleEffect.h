@@ -50,9 +50,9 @@ namespace PS
 
 		BOOL				Compile				(CPEDef* def);
 
-		IC CPEDef*			GetDefinition		(){return m_Def;}
-		IC int				GetHandleEffect		(){return m_HandleEffect;}
-		IC int				GetHandleActionList	(){return m_HandleActionList;}
+		inline CPEDef*			GetDefinition		(){return m_Def;}
+		inline int				GetHandleEffect		(){return m_HandleEffect;}
+		inline int				GetHandleActionList	(){return m_HandleActionList;}
 
 		virtual void		Play				();
 		virtual void		Stop				(BOOL bDefferedStop=TRUE);

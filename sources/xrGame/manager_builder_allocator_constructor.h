@@ -49,10 +49,10 @@ struct CManagerBuilderAllocatorConstructor {
 		typedef typename CGraphVertex::_index_type	_index_type;
 
 	public:
-		IC							CDataStorage	(const u32 vertex_count);
+		inline							CDataStorage	(const u32 vertex_count);
 		virtual						~CDataStorage	();
-		IC		void				init			();
-		IC		CGraphVertex		&create_vertex	(const _index_type &vertex_id);
+		inline		void				init			();
+		inline		CGraphVertex		&create_vertex	(const _index_type &vertex_id);
 	};
 };
 

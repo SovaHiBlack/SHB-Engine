@@ -35,10 +35,10 @@ public:
 							CScriptThread		(const char* caNamespaceName, bool do_string = false, bool reload = false);
 	virtual					~CScriptThread		();
 			bool			update				();
-	IC		bool			active				() const;
-	IC		shared_str		script_name			() const;
-	IC		int				thread_reference	() const;
-	IC		lua_State		*lua				() const;
+	inline		bool			active				() const;
+	inline		shared_str		script_name			() const;
+	inline		int				thread_reference	() const;
+	inline		lua_State		*lua				() const;
 };
 
 #include "script_thread_inline.h"

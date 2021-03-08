@@ -8,7 +8,7 @@
 
 #pragma once
 
-IC	CSpaceRestrictionComposition::CSpaceRestrictionComposition	(CSpaceRestrictionHolder *space_restriction_holder, shared_str space_restrictors)
+inline	CSpaceRestrictionComposition::CSpaceRestrictionComposition	(CSpaceRestrictionHolder *space_restriction_holder, shared_str space_restrictors)
 {
 	VERIFY						(space_restriction_holder);
 	m_space_restriction_holder	= space_restriction_holder;
@@ -19,17 +19,17 @@ IC	CSpaceRestrictionComposition::CSpaceRestrictionComposition	(CSpaceRestriction
 	++g_restriction_checker;
 }
 
-IC	shared_str	CSpaceRestrictionComposition::name					() const
+inline	shared_str	CSpaceRestrictionComposition::name					() const
 {
 	return						(m_space_restrictors);
 }
 
-IC	bool CSpaceRestrictionComposition::shape					() const
+inline	bool CSpaceRestrictionComposition::shape					() const
 {
 	return						(false);
 }
 
-IC	bool CSpaceRestrictionComposition::default_restrictor		() const
+inline	bool CSpaceRestrictionComposition::default_restrictor		() const
 {
 	return						(false);
 }

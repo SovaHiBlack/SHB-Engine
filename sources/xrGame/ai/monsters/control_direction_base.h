@@ -27,7 +27,7 @@ public:
 
 			void	use_path_direction		(bool reversed = false);
 
-	virtual	void	face_target				(const Fvector &position,	u32 delay = 0, float add_yaw = 0.f);
+	virtual	void	face_target				(const Fvector3& position,	u32 delay = 0, float add_yaw = 0.f);
 	virtual	void	face_target				(const CObject *obj,		u32 delay = 0, float add_yaw = 0.f);
 	inline		void	set_delay				(u32 delay) {m_delay = delay;}
 

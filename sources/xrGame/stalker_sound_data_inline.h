@@ -8,13 +8,13 @@
 
 #pragma once
 
-IC	CStalkerSoundData::CStalkerSoundData	(CStalker *object)
+inline	CStalkerSoundData::CStalkerSoundData	(CStalker *object)
 {
 	VERIFY		(object);
 	m_object	= object;
 }
 
-IC	CStalker &CStalkerSoundData::object	() const
+inline	CStalker &CStalkerSoundData::object	() const
 {
 	VERIFY		(m_object);
 	return		(*m_object);

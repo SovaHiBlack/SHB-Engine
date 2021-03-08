@@ -48,7 +48,7 @@ private:
 	ALife::_OBJECT_ID			m_last_hit_object_id;
 
 public:
-	IC							CHitMemoryManager	(CCustomMonster *object, CStalker *stalker);
+	inline							CHitMemoryManager	(CCustomMonster *object, CStalker *stalker);
 	virtual						~CHitMemoryManager	();
 	virtual	void				Load				(const char* section);
 	virtual	void				reinit				();
@@ -62,13 +62,13 @@ public:
 			void				add					(const CHitObject &hit_object);
 
 public:
-	IC		const HITS			&objects			() const;
+	inline		const HITS			&objects			() const;
 #ifdef USE_SELECTED_HIT
-	IC		const CHitObject	*hit				() const;
+	inline		const CHitObject	*hit				() const;
 #endif
 			const CHitObject	*hit				(const CEntityAlive *object) const;
-	IC		void				set_squad_objects	(HITS *squad_objects);
-	IC		const ALife::_OBJECT_ID	&last_hit_object_id	() const;
+	inline		void				set_squad_objects	(HITS *squad_objects);
+	inline		const ALife::_OBJECT_ID	&last_hit_object_id	() const;
 
 public:
 			void				enable				(const CObject *object, bool enable);

@@ -37,18 +37,18 @@ CSpaceRestrictionComposition::~CSpaceRestrictionComposition	()
 struct CMergePredicate {
 	CSpaceRestrictionComposition *m_restriction;
 
-	IC	CMergePredicate	(CSpaceRestrictionComposition *restriction)
+	inline	CMergePredicate	(CSpaceRestrictionComposition *restriction)
 	{
 		m_restriction	= restriction;
 	}
 
-	IC	bool operator()	(u32 level_vertex_id) const
+	inline	bool operator()	(u32 level_vertex_id) const
 	{
 		return			(m_restriction->inside(level_vertex_id,false));
 	}
 };
 
-IC	void CSpaceRestrictionComposition::merge	(CBaseRestrictionPtr restriction)
+inline	void CSpaceRestrictionComposition::merge	(CBaseRestrictionPtr restriction)
 {
 	m_restrictions.push_back	(restriction);
 	m_border.insert				(m_border.begin(),restriction->border().begin(),restriction->border().end());

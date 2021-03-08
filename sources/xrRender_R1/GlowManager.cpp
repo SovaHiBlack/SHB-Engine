@@ -138,7 +138,7 @@ void CGlowManager::Unload	()
 	Glows.clear				();
 }
 
-IC bool glow_compare	(ref_glow g1, ref_glow g2)
+inline bool glow_compare	(ref_glow g1, ref_glow g2)
 {	return ((CGlow*)g1._get())->shader < ((CGlow*)g2._get())->shader; }
 
 void CGlowManager::add	(ref_glow G_)
@@ -175,7 +175,7 @@ void CGlowManager::add	(ref_glow G_)
 #endif
 }
 
-IC void FillSprite	(FVF::LIT*& pv, const Fvector& pos, float r, u32 clr)
+inline void FillSprite	(FVF::LIT*& pv, const Fvector& pos, float r, u32 clr)
 {
 	const Fvector& T 	= Device.vCameraTop;
 	const Fvector& R 	= Device.vCameraRight;

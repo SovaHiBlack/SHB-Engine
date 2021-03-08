@@ -25,9 +25,9 @@ private:
 public:
 			void			process			(CIniFile&ini_file, const char* section, CInventoryOwner &owner);
 
-	IC		void			deficit			(const shared_str &section, const float &deficit);
-	IC		float			deficit			(const shared_str &section) const;
-	IC		const DEFICITS	&deficits		() const;
+	inline		void			deficit			(const shared_str &section, const float &deficit);
+	inline		float			deficit			(const shared_str &section) const;
+	inline		const DEFICITS	&deficits		() const;
 };
 
 #include "purchase_list_inline.h"

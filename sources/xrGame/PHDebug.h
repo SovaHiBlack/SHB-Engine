@@ -158,14 +158,14 @@ public:
 	bool	IsActive( );
 	void	AddMarker(CStatGraph::EStyle Style, float pos, u32 Color);
 	void	UpdateMarker(u32 ID, float M1);
-	IC float	ScaleX(float x)
+	inline float	ScaleX(float x)
 	{
 		VERIFY(IsActive( ));
 		return(x - x_min) / s;
 	}
 	void	ScaleMarkerPos(u32 ID, float& p);
 	void	ScaleMarkerPos(CStatGraph::EStyle Style, float& p);
-	IC float	ResolutionX( )
+	inline float	ResolutionX( )
 	{
 		VERIFY(IsActive( ));
 		return s;

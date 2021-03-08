@@ -1533,11 +1533,9 @@ bool CActor::use_center_to_aim			() const
 	return							(!(mstate_real&mcCrouch));
 }
 
-
-
 bool CActor::can_attach			(const CInventoryItem *inventory_item) const
 {
-	const CAttachableItem	*item = smart_cast<const CAttachableItem*>(inventory_item);
+	const CAttachableItem* item = smart_cast<const CAttachableItem*>(inventory_item);
 	if (!item || /*!item->enabled() ||*/ !item->can_be_attached())
 		return			(false);
 

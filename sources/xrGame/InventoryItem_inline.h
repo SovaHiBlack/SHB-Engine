@@ -3,7 +3,7 @@
 
 #pragma once
 
-IC	bool CInventoryItem::useful_for_NPC					() const
+inline	bool CInventoryItem::useful_for_NPC					() const
 {
 	return				(Useful() && m_flags.test(Fuseful_for_NPC));
 }

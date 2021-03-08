@@ -64,58 +64,58 @@ public:
 	typedef std::pair<const_iterator,const_iterator>	const_equal_range_result;
 
 private:
-	IC		void						actualize			() const;//.
+	inline		void						actualize			() const;//.
 
 public:
 	template <typename _iterator_type>
-	IC									associative_vector	(_iterator_type first, _iterator_type last, const key_compare &predicate = key_compare(), const allocator_type &allocator = allocator_type());
-	IC									associative_vector	(const key_compare &predicate = key_compare(), const allocator_type &allocator = allocator_type());
-	IC						explicit	associative_vector	(const key_compare &predicate);
-	IC		iterator					begin				();
-	IC		iterator					end					();
-	IC		reverse_iterator			rbegin				();
-	IC		iterator					rend				();
-	IC		insert_result				insert				(const value_type &value);
-	IC		iterator					insert				(iterator where, const value_type &value);
+	inline									associative_vector	(_iterator_type first, _iterator_type last, const key_compare &predicate = key_compare(), const allocator_type &allocator = allocator_type());
+	inline									associative_vector	(const key_compare &predicate = key_compare(), const allocator_type &allocator = allocator_type());
+	inline						explicit	associative_vector	(const key_compare &predicate);
+	inline		iterator					begin				();
+	inline		iterator					end					();
+	inline		reverse_iterator			rbegin				();
+	inline		iterator					rend				();
+	inline		insert_result				insert				(const value_type &value);
+	inline		iterator					insert				(iterator where, const value_type &value);
 	template <class _iterator_type>
-	IC		void						insert				(_iterator_type first, _iterator_type last);
-	IC		void						erase				(iterator element);
-	IC		void						erase				(iterator first, iterator last);
-	IC		size_type					erase				(const key_type &key);
-	IC		void						clear				();
-	IC		iterator					find				(const key_type &key);
-	IC		iterator					lower_bound			(const key_type &key);
-	IC		iterator					upper_bound			(const key_type &key);
-	IC		equal_range_result			equal_range			(const key_type &key);
-	IC		void						swap				(self_type &object);
+	inline		void						insert				(_iterator_type first, _iterator_type last);
+	inline		void						erase				(iterator element);
+	inline		void						erase				(iterator first, iterator last);
+	inline		size_type					erase				(const key_type &key);
+	inline		void						clear				();
+	inline		iterator					find				(const key_type &key);
+	inline		iterator					lower_bound			(const key_type &key);
+	inline		iterator					upper_bound			(const key_type &key);
+	inline		equal_range_result			equal_range			(const key_type &key);
+	inline		void						swap				(self_type &object);
 
 public:
-	IC		const_iterator				begin				() const;
-	IC		const_iterator				end					() const;
-	IC		const_reverse_iterator		rbegin				() const;
-	IC		const_reverse_iterator		rend				() const;
-	IC		const_iterator				find				(const key_type &key) const;
-	IC		const_iterator				lower_bound			(const key_type &key) const;
-	IC		const_iterator				upper_bound			(const key_type &key) const;
-	IC		const_equal_range_result	equal_range			(const key_type &key) const;
-	IC		size_type					count				(const key_type &key) const;
-	IC		size_type					max_size			() const;
-//	IC		size_type					size				() const;
-	IC		u32							size				() const;
-	IC		bool						empty				() const;
-	IC		key_compare					key_comp			() const;
-	IC		value_compare				value_comp			() const;
-	IC		allocator_type				get_allocator		() const;
+	inline		const_iterator				begin				() const;
+	inline		const_iterator				end					() const;
+	inline		const_reverse_iterator		rbegin				() const;
+	inline		const_reverse_iterator		rend				() const;
+	inline		const_iterator				find				(const key_type &key) const;
+	inline		const_iterator				lower_bound			(const key_type &key) const;
+	inline		const_iterator				upper_bound			(const key_type &key) const;
+	inline		const_equal_range_result	equal_range			(const key_type &key) const;
+	inline		size_type					count				(const key_type &key) const;
+	inline		size_type					max_size			() const;
+//	inline		size_type					size				() const;
+	inline		u32							size				() const;
+	inline		bool						empty				() const;
+	inline		key_compare					key_comp			() const;
+	inline		value_compare				value_comp			() const;
+	inline		allocator_type				get_allocator		() const;
 
 public:
-	IC		mapped_type					&operator[]			(const key_type &key);
-	IC		self_type					&operator=			(const self_type &right);
-	IC		bool						operator<			(const self_type &right) const;
-	IC		bool						operator<=			(const self_type &right) const;
-	IC		bool						operator>			(const self_type &right) const;
-	IC		bool						operator>=			(const self_type &right) const;
-	IC		bool						operator==			(const self_type &right) const;
-	IC		bool						operator!=			(const self_type &right) const;
+	inline		mapped_type					&operator[]			(const key_type &key);
+	inline		self_type					&operator=			(const self_type &right);
+	inline		bool						operator<			(const self_type &right) const;
+	inline		bool						operator<=			(const self_type &right) const;
+	inline		bool						operator>			(const self_type &right) const;
+	inline		bool						operator>=			(const self_type &right) const;
+	inline		bool						operator==			(const self_type &right) const;
+	inline		bool						operator!=			(const self_type &right) const;
 };
 
 template <
@@ -123,7 +123,7 @@ template <
 	typename _data_type,
 	typename _compare_predicate_type
 >
-IC			void					swap				(
+inline			void					swap				(
 				associative_vector<
 					_key_type,
 					_data_type,

@@ -11,7 +11,7 @@
 #endif
 
 template<class T>
-IC int dcTriListCollider::dSortTriPrimitiveCollide (
+inline int dcTriListCollider::dSortTriPrimitiveCollide (
 							  T primitive,
 							  dxGeom		*o1,		dxGeom			*o2,
 							  int			flags,		dContactGeom	*contact,	int skip,

@@ -92,7 +92,7 @@ void CTrader::BoneCallback(CBoneInstance *B)
 
 void CTrader::LookAtActor(CBoneInstance *B)
 {
-	Fvector dir;
+	Fvector3 dir;
 	dir.sub(Level().CurrentEntity()->Position(),Position());
 
 	float yaw,pitch;
@@ -246,7 +246,7 @@ void CTrader::g_WeaponBones	(int &L, int &R1, int &R2)
 	L				= V->LL_BoneID("bip01_l_finger1");
 }
 
-void CTrader::g_fireParams(const CHudItem* pHudItem, Fvector& P, Fvector& D)
+void CTrader::g_fireParams(const CHudItem* pHudItem, Fvector3& P, Fvector3& D)
 {
 	VERIFY			(inventory().ActiveItem());
 	if (g_Alive() && inventory().ActiveItem()) {

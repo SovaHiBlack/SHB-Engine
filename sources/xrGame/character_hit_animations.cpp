@@ -33,7 +33,7 @@ __forceinline int sign(float x)
 	return x < 0 ? -1 : 1;
 }
 
-IC void set_blend_params(CBlend* B)
+inline void set_blend_params(CBlend* B)
 {
 	if (!B)
 	{
@@ -43,7 +43,7 @@ IC void set_blend_params(CBlend* B)
 	B->blendAmount = 1.0;
 }
 
-IC void	play_cycle(CKinematicsAnimated* CA, const MotionID& m, u8 channel, u32& time_block, float base_power)
+inline void	play_cycle(CKinematicsAnimated* CA, const MotionID& m, u8 channel, u32& time_block, float base_power)
 {
 	const BOOL mixin = TRUE;
 	const u32  dellay = 1;

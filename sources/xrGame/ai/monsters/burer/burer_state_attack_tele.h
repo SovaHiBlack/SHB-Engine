@@ -51,7 +51,7 @@ private:
 	void		SelectObjects( );
 
 	// internal for FindObjects
-	void		FindFreeObjects(xr_vector<CObject*>& tpObjects, const Fvector& pos);
+	void		FindFreeObjects(xr_vector<CObject*>& tpObjects, const Fvector3& pos);
 };
 
 #include "burer_state_attack_tele_inline.h"

@@ -64,12 +64,12 @@ struct CVisibleObjectPredicate {
 struct CNotYetVisibleObjectPredicate{
 	const CGameObject *m_game_object;
 
-	IC				CNotYetVisibleObjectPredicate(const CGameObject *game_object)
+	inline				CNotYetVisibleObjectPredicate(const CGameObject *game_object)
 	{
 		m_game_object	= game_object;
 	}
 
-	IC		bool	operator()	(const CNotYetVisibleObject &object) const
+	inline		bool	operator()	(const CNotYetVisibleObject &object) const
 	{
 		return		(object.m_object->ID() == m_game_object->ID());
 	}
@@ -154,7 +154,7 @@ void CVisualMemoryManager::reload(const char* section)
 	}
 }
 
-IC	const CVisionParameters &CVisualMemoryManager::current_state() const
+inline	const CVisionParameters &CVisualMemoryManager::current_state() const
 {
 	return				(!m_stalker || (m_stalker->movement().mental_state() != eMentalStateDanger) ? m_free : m_danger);
 }
@@ -547,7 +547,7 @@ CVisibleObject *CVisualMemoryManager::visible_object	(const CGameObject *game_ob
 	return						(&*I);
 }
 
-IC	squad_mask_type CVisualMemoryManager::mask			() const
+inline	squad_mask_type CVisualMemoryManager::mask			() const
 {
 	if (!m_stalker)
 		return					(squad_mask_type(-1));

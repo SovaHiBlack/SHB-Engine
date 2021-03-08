@@ -8,7 +8,7 @@
 
 #pragma once
 
-IC	CScriptMovementAction::CScriptMovementAction		(MonsterSpace::EBodyState tBodyState, MonsterSpace::EMovementType tMovementType, DetailPathManager::EDetailPathType tPathType, CScriptGameObject *tpObjectToGo, float fSpeed)
+inline	CScriptMovementAction::CScriptMovementAction		(MonsterSpace::EBodyState tBodyState, MonsterSpace::EMovementType tMovementType, DetailPathManager::EDetailPathType tPathType, CScriptGameObject *tpObjectToGo, float fSpeed)
 {
 	SetBodyState		(tBodyState);
 	SetMovementType		(tMovementType);
@@ -17,7 +17,7 @@ IC	CScriptMovementAction::CScriptMovementAction		(MonsterSpace::EBodyState tBody
 	SetSpeed			(fSpeed);
 }
 
-IC	CScriptMovementAction::CScriptMovementAction		(MonsterSpace::EBodyState tBodyState, MonsterSpace::EMovementType tMovementType, DetailPathManager::EDetailPathType tPathType, const Fvector &tPosition, float fSpeed)
+inline	CScriptMovementAction::CScriptMovementAction		(MonsterSpace::EBodyState tBodyState, MonsterSpace::EMovementType tMovementType, DetailPathManager::EDetailPathType tPathType, const Fvector &tPosition, float fSpeed)
 {
 	SetBodyState		(tBodyState);
 	SetMovementType		(tMovementType);
@@ -26,7 +26,7 @@ IC	CScriptMovementAction::CScriptMovementAction		(MonsterSpace::EBodyState tBody
 	SetSpeed			(fSpeed);
 }
 
-IC	CScriptMovementAction::CScriptMovementAction		(const EInputKeys tInputKeys, float fSpeed)
+inline	CScriptMovementAction::CScriptMovementAction		(const EInputKeys tInputKeys, float fSpeed)
 {
 	SetInputKeys		(tInputKeys);
 	SetSpeed			(fSpeed);
@@ -35,7 +35,7 @@ IC	CScriptMovementAction::CScriptMovementAction		(const EInputKeys tInputKeys, f
 // --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------						
 // Monsters
 // --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-IC	CScriptMovementAction::CScriptMovementAction		(MonsterSpace::EScriptMonsterMoveAction tAct, Fvector &tPosition, float	dist_to_end, MonsterSpace::EScriptMonsterSpeedParam speed_param)
+inline	CScriptMovementAction::CScriptMovementAction		(MonsterSpace::EScriptMonsterMoveAction tAct, Fvector &tPosition, float	dist_to_end, MonsterSpace::EScriptMonsterSpeedParam speed_param)
 {																																			
 	m_tMoveAction		= tAct;
 	SetPosition			(tPosition);																										
@@ -43,7 +43,7 @@ IC	CScriptMovementAction::CScriptMovementAction		(MonsterSpace::EScriptMonsterMo
 	m_fDistToEnd		= dist_to_end;
 }						
 
-IC	CScriptMovementAction::CScriptMovementAction		(MonsterSpace::EScriptMonsterMoveAction tAct, CScriptGameObject *tpObjectToGo, float dist_to_end, MonsterSpace::EScriptMonsterSpeedParam speed_param)
+inline	CScriptMovementAction::CScriptMovementAction		(MonsterSpace::EScriptMonsterMoveAction tAct, CScriptGameObject *tpObjectToGo, float dist_to_end, MonsterSpace::EScriptMonsterSpeedParam speed_param)
 {
 	m_tMoveAction		= tAct;
 	SetObjectToGo		(tpObjectToGo);
@@ -52,25 +52,25 @@ IC	CScriptMovementAction::CScriptMovementAction		(MonsterSpace::EScriptMonsterMo
 }
 
 // --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-IC	void CScriptMovementAction::SetBodyState			(const MonsterSpace::EBodyState tBodyState)
+inline	void CScriptMovementAction::SetBodyState			(const MonsterSpace::EBodyState tBodyState)
 {
 	m_tBodyState		= tBodyState;
 	m_bCompleted		= false;
 }
 
-IC	void CScriptMovementAction::SetMovementType		(const MonsterSpace::EMovementType tMovementType)
+inline	void CScriptMovementAction::SetMovementType		(const MonsterSpace::EMovementType tMovementType)
 {
 	m_tMovementType		= tMovementType;
 	m_bCompleted		= false;
 }
 
-IC	void CScriptMovementAction::SetPathType			(const DetailPathManager::EDetailPathType tPathType)
+inline	void CScriptMovementAction::SetPathType			(const DetailPathManager::EDetailPathType tPathType)
 {
 	m_tPathType			= tPathType;
 	m_bCompleted		= false;
 }
 
-IC	void CScriptMovementAction::SetPatrolPath		(const CPatrolPath *path, shared_str path_name)
+inline	void CScriptMovementAction::SetPatrolPath		(const CPatrolPath *path, shared_str path_name)
 {
 	m_path				= path;
 	m_path_name			= path_name;
@@ -78,43 +78,43 @@ IC	void CScriptMovementAction::SetPatrolPath		(const CPatrolPath *path, shared_s
 	m_bCompleted		= false;
 }
 
-IC	void CScriptMovementAction::SetPosition			(const Fvector &tPosition)
+inline	void CScriptMovementAction::SetPosition			(const Fvector &tPosition)
 {
 	m_tDestinationPosition = tPosition;
 	m_tGoalType			= eGoalTypePathPosition;
 	m_bCompleted		= false;
 }
 
-IC	void CScriptMovementAction::SetSpeed			(float fSpeed)
+inline	void CScriptMovementAction::SetSpeed			(float fSpeed)
 {
 	m_fSpeed			= fSpeed;
 	m_bCompleted		= false;
 }
 
-IC	void CScriptMovementAction::SetPatrolStart		(PatrolPathManager::EPatrolStartType tPatrolPathStart)
+inline	void CScriptMovementAction::SetPatrolStart		(PatrolPathManager::EPatrolStartType tPatrolPathStart)
 {
 	m_tPatrolPathStart	= tPatrolPathStart;
 	m_bCompleted		= false;
 }
 
-IC	void CScriptMovementAction::SetPatrolStop		(PatrolPathManager::EPatrolRouteType tPatrolPathStop)
+inline	void CScriptMovementAction::SetPatrolStop		(PatrolPathManager::EPatrolRouteType tPatrolPathStop)
 {
 	m_tPatrolPathStop	= tPatrolPathStop;
 	m_bCompleted		= false;
 }
 
-IC	void CScriptMovementAction::SetPatrolRandom		(bool bRandom)
+inline	void CScriptMovementAction::SetPatrolRandom		(bool bRandom)
 {
 	m_bRandom			= bRandom;
 	m_bCompleted		= false;
 }
 
-IC	void CScriptMovementAction::SetInputKeys		(const EInputKeys tInputKeys)
+inline	void CScriptMovementAction::SetInputKeys		(const EInputKeys tInputKeys)
 {
 	m_tInputKeys		= tInputKeys;
 	m_tGoalType			= eGoalTypeInput;
 	m_bCompleted		= false;
 }
 
-IC	void CScriptMovementAction::initialize			()
+inline	void CScriptMovementAction::initialize			()
 { }

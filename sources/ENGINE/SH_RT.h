@@ -20,7 +20,7 @@ public:
 	void				destroy			();
 	void				reset_begin		();
 	void				reset_end		();
-	IC BOOL				valid			()	{ return !!pTexture; }
+	inline BOOL				valid			()	{ return !!pTexture; }
 };
 struct ENGINE_API		resptrcode_crt	: public resptr_base<CRT>
 {
@@ -48,7 +48,7 @@ public:
 	void				destroy			();
 	void				reset_begin		();
 	void				reset_end		();
-	IC BOOL				valid			()	{ return !pTexture; }
+	inline BOOL				valid			()	{ return !pTexture; }
 };
 struct ENGINE_API		resptrcode_crtc	: public resptr_base<CRTC>
 {

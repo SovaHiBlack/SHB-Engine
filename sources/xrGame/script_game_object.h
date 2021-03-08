@@ -128,7 +128,7 @@ public:
 	virtual					~CScriptGameObject		();
 							operator CObject*		();
 
-	IC		CGameObject			&object				() const;
+	inline		CGameObject			&object				() const;
 			CScriptGameObject	*Parent				() const;
 			void				Hit					(CScriptHit *tLuaHit);
 			int					clsid				() const;
@@ -239,7 +239,7 @@ public:
 			void				external_sound_stop		();
 
 			template <typename T>
-			IC		T			*action_planner			();
+			inline		T			*action_planner			();
 
 	// CProjector
 			Fvector				GetCurrentDirection		();

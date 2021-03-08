@@ -52,9 +52,9 @@ public:
 public:
 								CScriptStorage				();
 	virtual						~CScriptStorage				();
-	IC		lua_State			*lua						();
-	IC		void				current_thread				(CScriptThread *thread);
-	IC		CScriptThread		*current_thread				() const;
+	inline		lua_State			*lua						();
+	inline		void				current_thread				(CScriptThread *thread);
+	inline		CScriptThread		*current_thread				() const;
 			bool				load_buffer					(lua_State *L, const char* caBuffer, size_t tSize, const char* caScriptName, const char* caNameSpaceName = 0);
 			bool				load_file_into_namespace	(const char* caScriptName, const char* caNamespaceName);
 			bool				namespace_loaded			(const char* caName, bool remove_from_stack = true);

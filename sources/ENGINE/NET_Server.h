@@ -72,7 +72,7 @@ public:
 };
 
 
-IC bool operator== (IClient const* pClient, ClientID const& ID) { return pClient->ID == ID; }
+inline bool operator== (IClient const* pClient, ClientID const& ID) { return pClient->ID == ID; }
 
 class CServerInfo;
 
@@ -121,10 +121,10 @@ public:
 	virtual void			client_Replicate	()				= 0;			// replicate current state to client
 	virtual void			client_Destroy		(IClient* C)	= 0;			// destroy client info
 
-	IC u32					client_Count		()			{ return net_Players.size(); }
-	IC IClient*				client_Get			(u32 num)	{ return net_Players[num]; }
+	inline u32					client_Count		()			{ return net_Players.size(); }
+	inline IClient*				client_Get			(u32 num)	{ return net_Players[num]; }
 
-	IC int					GetPort					()				{ return 0; };
+	inline int					GetPort					()				{ return 0; };
 	
 	virtual bool			Check_ServerAccess( IClient* CL, string512& reason )	{ return true; }
 //	virtual void			Assign_ServerType( string512& res ) {};

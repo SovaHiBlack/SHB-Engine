@@ -20,10 +20,10 @@ inline	CAgentManager &CStalker::agent_manager	() const
 	return			(Level().seniority_holder().team(g_Team()).squad(g_Squad()).group(g_Group()).agent_manager());
 }
 
-inline	Fvector CStalker::weapon_shot_effector_direction	(const Fvector &current) const
+inline	Fvector3 CStalker::weapon_shot_effector_direction	(const Fvector3& current) const
 {
 	VERIFY			(weapon_shot_effector().IsActive());
-	Fvector			result;
+	Fvector3			result;
 	weapon_shot_effector().GetDeltaAngle(result);
 
 	float			y,p;

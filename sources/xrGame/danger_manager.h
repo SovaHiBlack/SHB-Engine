@@ -37,7 +37,7 @@ private:
 	CCustomMonster		*m_object;
 
 public:
-	IC					CDangerManager		(CCustomMonster *object);
+	inline					CDangerManager		(CCustomMonster *object);
 	virtual				~CDangerManager		();
 	virtual void		Load				(const char* section);
 	virtual void		reinit				();
@@ -48,7 +48,7 @@ public:
 	virtual	float		evaluate			(const CDangerObject &object) const;
 	virtual	float		do_evaluate			(const CDangerObject &object) const;
 			void		remove_links		(const CObject *object);
-	IC		void		reset				();
+	inline		void		reset				();
 
 public:
 			void		add					(const CVisibleObject &object);
@@ -58,12 +58,12 @@ public:
 			void		ignore				(const CGameObject *object);
 
 public:
-	IC		u32			time_line			() const;
-	IC		void		time_line			(u32 value);
+	inline		u32			time_line			() const;
+	inline		void		time_line			(u32 value);
 
 public:
-	IC		const CDangerObject	*selected	() const;
-	IC		const OBJECTS		&objects	() const;
+	inline		const CDangerObject	*selected	() const;
+	inline		const OBJECTS		&objects	() const;
 
 public:
 			void		save				(NET_Packet &packet) const;

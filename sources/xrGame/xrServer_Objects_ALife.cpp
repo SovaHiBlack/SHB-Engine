@@ -27,7 +27,7 @@ bool SortStringsByAlphabetPred (const shared_str& s1, const shared_str& s2)
 };
 
 struct story_name_predicate {
-	IC	bool	operator()	(const xr_rtoken &_1, const xr_rtoken &_2) const
+	inline	bool	operator()	(const xr_rtoken &_1, const xr_rtoken &_2) const
 	{
 		VERIFY	(_1.name.size());
 		VERIFY	(_2.name.size());

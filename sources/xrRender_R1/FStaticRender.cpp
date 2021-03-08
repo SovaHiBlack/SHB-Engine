@@ -255,7 +255,7 @@ void					CRender::apply_object			(IRenderable*		O )
 float					g_fSCREEN;
 static	BOOL			gm_Nearer	= 0;
 
-IC		void			gm_SetNearer		(BOOL bNearer)
+inline		void			gm_SetNearer		(BOOL bNearer)
 {
 	if (bNearer	!= gm_Nearer)
 	{

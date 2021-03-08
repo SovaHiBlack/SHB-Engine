@@ -23,12 +23,12 @@ struct CVertexManagerFixed {
 			_index_type	_index  : 8*sizeof(_index_type) - mask;
 			_index_type	_opened : mask;
 
-			IC	_index_type index() const
+			inline	_index_type index() const
 			{
 				return	(_index);
 			}
 
-			IC	_index_type opened() const
+			inline	_index_type opened() const
 			{
 				return	(_opened);
 			}
@@ -65,17 +65,17 @@ struct CVertexManagerFixed {
 		CGraphIndexVertex		*m_indexes;
 
 	public:
-		IC						CDataStorage	(const u32 vertex_count);
+		inline						CDataStorage	(const u32 vertex_count);
 		virtual					~CDataStorage	();
-		IC		void			init			();
-		IC		bool			is_opened		(const CGraphVertex &vertex) const;
-		IC		bool			is_visited		(const _index_type &vertex_id) const;
-		IC		bool			is_closed		(const CGraphVertex &vertex) const;
-		IC		CGraphVertex	&get_node		(const _index_type &vertex_id) const;
-		IC		CGraphVertex	&create_vertex	(CGraphVertex &vertex, const _index_type &vertex_id);
-		IC		void			add_opened		(CGraphVertex &vertex);
-		IC		void			add_closed		(CGraphVertex &vertex);
-		IC		_path_id_type	current_path_id	() const;
+		inline		void			init			();
+		inline		bool			is_opened		(const CGraphVertex &vertex) const;
+		inline		bool			is_visited		(const _index_type &vertex_id) const;
+		inline		bool			is_closed		(const CGraphVertex &vertex) const;
+		inline		CGraphVertex	&get_node		(const _index_type &vertex_id) const;
+		inline		CGraphVertex	&create_vertex	(CGraphVertex &vertex, const _index_type &vertex_id);
+		inline		void			add_opened		(CGraphVertex &vertex);
+		inline		void			add_closed		(CGraphVertex &vertex);
+		inline		_path_id_type	current_path_id	() const;
 	};
 };
 

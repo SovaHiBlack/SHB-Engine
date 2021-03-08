@@ -70,16 +70,16 @@ private:
 #endif
 
 private:
-	IC		void				update_sound_threshold	();
-	IC		u32					priority				(const CSoundObject &sound) const;
+	inline		void				update_sound_threshold	();
+	inline		u32					priority				(const CSoundObject &sound) const;
 			void				add						(const CSoundObject &sound_object, bool check_for_existance = false);
 			void				add						(const CObject *object, int sound_type, const Fvector &position, float sound_power);
 
 protected:
-	IC		void				priority				(const ESoundTypes &sound_type, u32 priority);
+	inline		void				priority				(const ESoundTypes &sound_type, u32 priority);
 
 public:
-	IC							CSoundMemoryManager		(CCustomMonster *object, CStalker *stalker, CSound_UserDataVisitor *visitor);
+	inline							CSoundMemoryManager		(CCustomMonster *object, CStalker *stalker, CSound_UserDataVisitor *visitor);
 	virtual						~CSoundMemoryManager	();
 	virtual	void				Load					(const char* section);
 	virtual	void				reinit					();
@@ -92,15 +92,15 @@ public:
 			void				enable					(const CObject *object, bool enable);
 
 public:
-	IC		const SOUNDS		&objects				() const;
+	inline		const SOUNDS		&objects				() const;
 #ifdef USE_SELECTED_SOUND
-	IC		const CSoundObject	*sound					() const;
+	inline		const CSoundObject	*sound					() const;
 #endif
-	IC		void				set_squad_objects		(SOUNDS *squad_objects);
+	inline		void				set_squad_objects		(SOUNDS *squad_objects);
 
 public:
-	IC		void				set_threshold			(float threshold);
-	IC		void				restore_threshold		();
+	inline		void				set_threshold			(float threshold);
+	inline		void				restore_threshold		();
 
 public:
 			void				save					(NET_Packet &packet) const;

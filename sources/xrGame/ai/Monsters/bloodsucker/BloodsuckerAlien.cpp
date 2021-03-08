@@ -79,8 +79,8 @@ class CAlienEffector : public CEffectorCam
 	using inherited = CEffectorCam;
 
 	float	m_time_total;
-	Fvector	dangle_target;
-	Fvector dangle_current;
+	Fvector3	dangle_target;
+	Fvector3 dangle_current;
 
 	CBloodsucker* monster;
 
@@ -90,7 +90,7 @@ class CAlienEffector : public CEffectorCam
 
 public:
 	CAlienEffector(ECameraEffectorType type, CBloodsucker* obj);
-	virtual BOOL	Process(Fvector& p, Fvector& d, Fvector& n, float& fFov, float& fFar, float& fAspect);
+	virtual BOOL	Process(Fvector3& p, Fvector3& d, Fvector3& n, float& fFov, float& fFar, float& fAspect);
 };
 
 #define DELTA_ANGLE_X		10 * PI / 180
@@ -112,12 +112,12 @@ CAlienEffector::CAlienEffector(ECameraEffectorType type, CBloodsucker* obj) : in
 
 	m_prev_eye_matrix.c = get_head_position(monster);
 	m_prev_eye_matrix.k = monster->Direction( );
-	Fvector::generate_orthonormal_basis(m_prev_eye_matrix.k, m_prev_eye_matrix.j, m_prev_eye_matrix.i);
+	Fvector3::generate_orthonormal_basis(m_prev_eye_matrix.k, m_prev_eye_matrix.j, m_prev_eye_matrix.i);
 	m_inertion = 1.0f;
 	m_current_fov = MIN_FOV;
 }
 
-BOOL CAlienEffector::Process(Fvector& p, Fvector& d, Fvector& n, float& fFov, float& fFar, float& fAspect)
+BOOL CAlienEffector::Process(Fvector3& p, Fvector3& d, Fvector3& n, float& fFov, float& fFar, float& fAspect)
 {
 	//Инициализация
 	Fmatrix	Mdef;
@@ -156,7 +156,7 @@ BOOL CAlienEffector::Process(Fvector& p, Fvector& d, Fvector& n, float& fFov, fl
 	//set pos and dir with inertion
 	m_prev_eye_matrix.c.inertion(cur_matrix.c, m_inertion);
 	m_prev_eye_matrix.k.inertion(cur_matrix.k, m_inertion);
-	Fvector::generate_orthonormal_basis_normalized(m_prev_eye_matrix.k, m_prev_eye_matrix.j, m_prev_eye_matrix.i);
+	Fvector3::generate_orthonormal_basis_normalized(m_prev_eye_matrix.k, m_prev_eye_matrix.j, m_prev_eye_matrix.i);
 
 	//apply position and direction
 	Mdef = m_prev_eye_matrix;

@@ -24,12 +24,12 @@ private:
 	struct setup_pred {
 		_action_id_type	m_action_id;
 
-		IC			setup_pred	(const _action_id_type &action_id)
+		inline			setup_pred	(const _action_id_type &action_id)
 		{
 			m_action_id	= action_id;
 		}
 
-		IC	bool	operator()	(const setup_pair &pair) const
+		inline	bool	operator()	(const setup_pair &pair) const
 		{
 			return	(pair.first == m_action_id);
 		}
@@ -43,19 +43,19 @@ protected:
 	bool							m_actuality;
 
 public:
-	IC								CSetupManager		(_object_type *object);
+	inline								CSetupManager		(_object_type *object);
 	virtual 						~CSetupManager		();
 	virtual void					reinit				();
 	virtual void					update				();
-	IC		void					add_action			(const _action_id_type &action_id, _action_type *action);
-	IC		_action_type			&action				(const _action_id_type &action_id) const;
-	IC		_action_type			&current_action		() const;
-	IC		const _action_id_type	&current_action_id	() const;
-	IC		void					select_action		();
-	IC		void					clear				();
-	IC		_object_type			&object				() const;
-	IC		const setup_actions		&actions			() const;
-	IC		setup_actions			&actions			();
+	inline		void					add_action			(const _action_id_type &action_id, _action_type *action);
+	inline		_action_type			&action				(const _action_id_type &action_id) const;
+	inline		_action_type			&current_action		() const;
+	inline		const _action_id_type	&current_action_id	() const;
+	inline		void					select_action		();
+	inline		void					clear				();
+	inline		_object_type			&object				() const;
+	inline		const setup_actions		&actions			() const;
+	inline		setup_actions			&actions			();
 };
 
 #include "setup_manager_inline.h"

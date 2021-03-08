@@ -15,7 +15,7 @@
 #define CEvaluator	CPropertyEvaluatorConst<_object_type>
 
 TEMPLATE_SPECIALIZATION
-IC	CEvaluator::CPropertyEvaluatorConst	(_value_type value, const char* evaluator_name) :
+inline	CEvaluator::CPropertyEvaluatorConst	(_value_type value, const char* evaluator_name) :
 	m_value			(value)
 {
 #ifdef LOG_ACTION

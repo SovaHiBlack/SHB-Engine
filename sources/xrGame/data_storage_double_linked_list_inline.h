@@ -18,7 +18,7 @@
 #define CDoubleLinkedList	CDataStorageDoubleLinkedList<sorted>::CDataStorage<_data_storage,_vertex>
 
 TEMPLATE_SPECIALIZATION
-IC	CDoubleLinkedList::CDataStorage			(const u32 vertex_count, const _dist_type _max_distance = _dist_type(u32(-1))) :
+inline	CDoubleLinkedList::CDataStorage			(const u32 vertex_count, const _dist_type _max_distance = _dist_type(u32(-1))) :
 	inherited				(vertex_count)
 {
 	m_switch_factor			= _dist_type(1);
@@ -29,14 +29,14 @@ CDoubleLinkedList::~CDataStorage			()
 { }
 
 TEMPLATE_SPECIALIZATION
-IC	void CDoubleLinkedList::init			()
+inline	void CDoubleLinkedList::init			()
 {
 	inherited::init			();
 	m_list_tail->prev()		= m_list_head;
 }
 
 TEMPLATE_SPECIALIZATION
-IC	void CDoubleLinkedList::add_opened		(CGraphVertex &vertex)
+inline	void CDoubleLinkedList::add_opened		(CGraphVertex &vertex)
 {
 	inherited_base::add_opened	(vertex);
 	if (!sorted) {
@@ -58,7 +58,7 @@ IC	void CDoubleLinkedList::add_opened		(CGraphVertex &vertex)
 }
 
 TEMPLATE_SPECIALIZATION
-IC	void CDoubleLinkedList::decrease_opened	(CGraphVertex &vertex, const _dist_type value)
+inline	void CDoubleLinkedList::decrease_opened	(CGraphVertex &vertex, const _dist_type value)
 {
 	VERIFY					(!is_opened_empty());
 	
@@ -101,7 +101,7 @@ IC	void CDoubleLinkedList::decrease_opened	(CGraphVertex &vertex, const _dist_ty
 }
 
 TEMPLATE_SPECIALIZATION
-IC	void CDoubleLinkedList::remove_best_opened	()
+inline	void CDoubleLinkedList::remove_best_opened	()
 {
 	VERIFY					(!is_opened_empty());
 	m_list_head->next()->next()->prev()	= m_list_head;
@@ -109,7 +109,7 @@ IC	void CDoubleLinkedList::remove_best_opened	()
 }
 
 TEMPLATE_SPECIALIZATION
-IC	typename CDoubleLinkedList::CGraphVertex &CDoubleLinkedList::get_best	() const
+inline	typename CDoubleLinkedList::CGraphVertex &CDoubleLinkedList::get_best	() const
 {
 	VERIFY					(!is_opened_empty());
 	if (sorted)
@@ -134,7 +134,7 @@ IC	typename CDoubleLinkedList::CGraphVertex &CDoubleLinkedList::get_best	() cons
 }
 
 TEMPLATE_SPECIALIZATION
-IC	void CDoubleLinkedList::set_switch_factor	(const _dist_type _switch_factor)
+inline	void CDoubleLinkedList::set_switch_factor	(const _dist_type _switch_factor)
 {
 	if (!sorted)
 		NODEFAULT;

@@ -25,11 +25,11 @@ private:
 	mutable SQUAD_REGISTRY				m_squads;
 
 public:
-	IC									CTeamHierarchyHolder	(CSeniorityHierarchyHolder *m_seniority_manager);
+	inline									CTeamHierarchyHolder	(CSeniorityHierarchyHolder *m_seniority_manager);
 	virtual								~CTeamHierarchyHolder	();
 			CSquadHierarchyHolder		&squad					(u32 squad_id) const;
-	IC		CSeniorityHierarchyHolder	&team					() const;
-	IC		const SQUAD_REGISTRY		&squads					() const;
+	inline		CSeniorityHierarchyHolder	&team					() const;
+	inline		const SQUAD_REGISTRY		&squads					() const;
 };
 
 #include "team_hierarchy_holder_inline.h"

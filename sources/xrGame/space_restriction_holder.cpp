@@ -194,7 +194,7 @@ void CSpaceRestrictionHolder::unregister_restrictor			(CSpaceRestrictor *space_r
 	collect_garbage			();
 }
 
-IC	void CSpaceRestrictionHolder::collect_garbage			()
+inline	void CSpaceRestrictionHolder::collect_garbage			()
 {
 	RESTRICTIONS::iterator	I = m_restrictions.begin(), J;
 	RESTRICTIONS::iterator	E = m_restrictions.end();

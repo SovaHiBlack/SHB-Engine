@@ -8,7 +8,7 @@
 
 #pragma once
 
-IC	CScriptBinderObject	*CScriptBinder::object	()
+inline	CScriptBinderObject	*CScriptBinder::object	()
 {
 	return			(m_object);
 }

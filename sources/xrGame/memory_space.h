@@ -59,8 +59,8 @@ namespace MemorySpace {
 	
 	template <typename T>
 	struct CObjectParams : public SObjectParams {
-		IC		SRotation orientation	(const T *object) const;
-		IC		void	fill			(const T *game_object);
+		inline		SRotation orientation	(const T *object) const;
+		inline		void	fill			(const T *game_object);
 	};
 
 	struct SMemoryObject {
@@ -113,7 +113,7 @@ namespace MemorySpace {
 		{
 		}
 
-		IC		void	fill						()
+		inline		void	fill						()
 		{
 			m_enabled				= true;
 		}
@@ -126,9 +126,9 @@ namespace MemorySpace {
 		CObjectParams<T>			m_self_params;
 		_flags<squad_mask_type>		m_squad_mask;
 
-		IC			CMemoryObject	();
-		IC	bool	operator==		(u16 id) const;
-		IC	void	fill			(const T *game_object, const T *self, const squad_mask_type &mask);
+		inline			CMemoryObject	();
+		inline	bool	operator==		(u16 id) const;
+		inline	void	fill			(const T *game_object, const T *self, const squad_mask_type &mask);
 	};
 
 	struct CVisibleObject : CMemoryObject<CGameObject> {
@@ -136,22 +136,22 @@ namespace MemorySpace {
 		_flags<squad_mask_type>		m_visible;
 
 	public:
-		IC			CVisibleObject	()
+		inline			CVisibleObject	()
 		{
 			m_visible.zero			();
 		}
 
-		IC	bool	visible			(const squad_mask_type &mask) const 
+		inline	bool	visible			(const squad_mask_type &mask) const 
 		{
 			return					(!!m_visible.test(mask));
 		}
 
-		IC	void	visible			(const squad_mask_type &mask, bool value)
+		inline	void	visible			(const squad_mask_type &mask, bool value)
 		{
 			m_visible.set			(mask,value ? TRUE : FALSE);
 		}
 
-		IC	void	fill							(const CGameObject *game_object, const CGameObject *self, const squad_mask_type &mask, const squad_mask_type &visibility_mask)
+		inline	void	fill							(const CGameObject *game_object, const CGameObject *self, const squad_mask_type &mask, const squad_mask_type &visibility_mask)
 		{
 			inherited::fill			(game_object,self,mask);
 			m_visible.set			(visibility_mask,TRUE);
@@ -168,14 +168,14 @@ namespace MemorySpace {
 		ESoundTypes					m_sound_type;
 		float						m_power;
 
-		IC	void	fill							(const CGameObject *game_object, const CGameObject *self, const ESoundTypes sound_type, const float sound_power, const squad_mask_type &mask)
+		inline	void	fill							(const CGameObject *game_object, const CGameObject *self, const ESoundTypes sound_type, const float sound_power, const squad_mask_type &mask)
 		{
 			CMemoryObject<CGameObject>::fill	(game_object,self,mask);
 			m_sound_type			= sound_type;
 			m_power					= sound_power;
 		}
 
-		IC	int		sound_type		() const
+		inline	int		sound_type		() const
 		{
 			return					(int(m_sound_type));
 		}

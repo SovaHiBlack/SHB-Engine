@@ -9,10 +9,10 @@ class CStateMonsterFindEnemyLook : public CState<_Object> {
 
 	bool		look_right_side;
 	u8			current_stage;
-	Fvector		target_point;
+	Fvector3		target_point;
 
-	Fvector		current_dir;
-	Fvector		start_position;
+	Fvector3		current_dir;
+	Fvector3		start_position;
 
 	enum {
 		eMoveToPoint = u32(0),

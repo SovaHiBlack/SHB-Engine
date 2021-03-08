@@ -11,13 +11,13 @@ public:
 	_vector3<T>	n;
 	T			d;
 
-	IC	SelfRef	set		(Self &P)
+	inline	SelfRef	set		(Self &P)
 	{
 		n.set	(P.n);
 		d		= P.d;
 		return *this;
 	}
-    IC	 BOOL 	similar (Self &P, T eps_n=EPS, T eps_d=EPS)
+    inline	 BOOL 	similar (Self &P, T eps_n=EPS, T eps_d=EPS)
 	{
     	return (n.similar(P.n,eps_n)&&(_abs(d-P.d)<eps_d));
     }
@@ -46,7 +46,7 @@ public:
 		d			= - n.set(_n).dotproduct(_p);
 		return *this;
 	}
-	IC	SelfRef	project(_vector3<T> &pdest, _vector3<T> &psrc)
+	inline	SelfRef	project(_vector3<T> &pdest, _vector3<T> &psrc)
 	{
 		pdest.mad	(psrc,n,-classify(psrc));
 		return *this;
@@ -55,18 +55,18 @@ public:
 	{
 		return n.dotproduct(v)+d;
 	}
-	IC	SelfRef	normalize() 
+	inline	SelfRef	normalize() 
 	{
 		T denom = 1.f / n.magnitude();
 		n.mul(denom);
 		d*=denom;
 		return *this;
 	}
-	IC	T	distance	(const _vector3<T> &v)	
+	inline	T	distance	(const _vector3<T> &v)	
 	{
 		return _abs(classify(v));
 	}
-	IC BOOL intersectRayDist(const _vector3<T>& P, const _vector3<T>& D, T& dist)
+	inline BOOL intersectRayDist(const _vector3<T>& P, const _vector3<T>& D, T& dist)
 	{
 		T numer = classify(P);
 		T denom = n.dotproduct(D);
@@ -89,7 +89,7 @@ public:
 			return 		((dist>0.f)||fis_zero(dist));
 		}
 	}
-	IC	BOOL	intersect (
+	inline	BOOL	intersect (
 		const _vector3<T>& u, const _vector3<T>& v,	// segment
 	    _vector3<T>&	isect)                  // intersection point
 	{
@@ -106,7 +106,7 @@ public:
 		return true;
 	}
 
-	IC	BOOL	intersect_2 (
+	inline	BOOL	intersect_2 (
 		const _vector3<T>& u, const _vector3<T>& v,				// segment
 	    _vector3<T>& isect)						// intersection point
 	{
@@ -124,7 +124,7 @@ public:
 
 		return true;
 	}
-	IC	SelfRef	transform(_matrix<T>& M)
+	inline	SelfRef	transform(_matrix<T>& M)
 	{
 		// rotate the normal
 		M.transform_dir		(n);

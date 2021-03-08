@@ -28,11 +28,11 @@
 #define CSolverPathManager CPathManager<CProblemSolver<T1,T2,T3,T4,T5,T6,T7,T8>,_DataStorage,_Parameters,_dist_type,_index_type,_iteration_type>
 
 TEMPLATE_SPECIALIZATION
-IC	CSolverPathManager::~CPathManager			()
+inline	CSolverPathManager::~CPathManager			()
 { }
 
 TEMPLATE_SPECIALIZATION
-IC	void CSolverPathManager::setup					(
+inline	void CSolverPathManager::setup					(
 		const _Graph			*_graph,
 		_DataStorage			*_data_storage,
 		xr_vector<_edge_type>	*_path,
@@ -52,32 +52,32 @@ IC	void CSolverPathManager::setup					(
 }
 
 TEMPLATE_SPECIALIZATION
-IC	bool CSolverPathManager::is_goal_reached		(const _index_type &vertex_id) const
+inline	bool CSolverPathManager::is_goal_reached		(const _index_type &vertex_id) const
 {
 	return					(graph->is_goal_reached(vertex_id));
 }
 
 TEMPLATE_SPECIALIZATION
-IC	const _index_type &CSolverPathManager::get_value(const_iterator &i, bool reverse_search) const
+inline	const _index_type &CSolverPathManager::get_value(const_iterator &i, bool reverse_search) const
 {
 	return					(graph->value(*best_node_index,i,reverse_search));
 }
 
 TEMPLATE_SPECIALIZATION
-IC	const typename CSolverPathManager::_edge_type &CSolverPathManager::edge		(const_iterator &i) const
+inline	const typename CSolverPathManager::_edge_type &CSolverPathManager::edge		(const_iterator &i) const
 {
 	return					((*i).m_operator_id);
 }
 
 TEMPLATE_SPECIALIZATION
-IC	_dist_type CSolverPathManager::evaluate			(const _index_type &node_index1, const _index_type &node_index2, const const_iterator &i) const
+inline	_dist_type CSolverPathManager::evaluate			(const _index_type &node_index1, const _index_type &node_index2, const const_iterator &i) const
 {
 	VERIFY					(graph);
 	return					(graph->get_edge_weight(node_index1,node_index2,i));
 }
 
 TEMPLATE_SPECIALIZATION
-IC	_dist_type CSolverPathManager::estimate			(const _index_type &vertex_id) const
+inline	_dist_type CSolverPathManager::estimate			(const _index_type &vertex_id) const
 {
 	VERIFY					(graph);
 //	return					((_dist_type)graph->get_edge_weight(vertex_id,start_node_index,m_iterator));
@@ -86,7 +86,7 @@ IC	_dist_type CSolverPathManager::estimate			(const _index_type &vertex_id) cons
 }
 
 TEMPLATE_SPECIALIZATION
-IC	void CSolverPathManager::init_path				()
+inline	void CSolverPathManager::init_path				()
 {
 	if (m_edge_path)
 		m_edge_path->clear	();
@@ -94,7 +94,7 @@ IC	void CSolverPathManager::init_path				()
 
 TEMPLATE_SPECIALIZATION
 template <typename T>
-IC	void CSolverPathManager::create_path			(T &vertex, _DataStorage &data_storage, bool reverse_order)
+inline	void CSolverPathManager::create_path			(T &vertex, _DataStorage &data_storage, bool reverse_order)
 {
 	VERIFY					(this->data_storage);
 	if (m_edge_path)
@@ -103,7 +103,7 @@ IC	void CSolverPathManager::create_path			(T &vertex, _DataStorage &data_storage
 
 TEMPLATE_SPECIALIZATION
 template <typename T>
-IC	void CSolverPathManager::create_path			(T &vertex)
+inline	void CSolverPathManager::create_path			(T &vertex)
 {
 	VERIFY					(this->data_storage);
 	if (m_edge_path)

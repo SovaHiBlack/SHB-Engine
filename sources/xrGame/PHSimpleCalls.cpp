@@ -13,7 +13,7 @@ CPHCallOnStepCondition::CPHCallOnStepCondition()
 	else		set_step(0);
 }
 
-IC bool CPHCallOnStepCondition::time_out() const
+inline bool CPHCallOnStepCondition::time_out() const
 {
 	return ph_world->m_steps_num>m_step;
 }

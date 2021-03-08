@@ -8,14 +8,13 @@
 class CScope : public CInventoryItemObject
 {
 private:
-	using inherited			= CInventoryItemObject;
+	using inherited					= CInventoryItemObject;
 
 public:
-					CScope		( );
-	virtual			~CScope		( );
+					CScope			( );
+	virtual			~CScope			( );
 
-public:
-	static void script_register(lua_State*);
+	static void		script_register	(lua_State*);
 };
 
 add_to_type_list(CScope)

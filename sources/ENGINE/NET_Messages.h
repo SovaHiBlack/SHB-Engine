@@ -3,7 +3,7 @@
 
 #define	DPNSEND_IMMEDIATELLY				0x0100
 
-IC u32	net_flags	(BOOL bReliable=FALSE, BOOL bSequental=TRUE, BOOL bHighPriority=FALSE, 
+inline u32	net_flags	(BOOL bReliable=FALSE, BOOL bSequental=TRUE, BOOL bHighPriority=FALSE, 
 					 BOOL bSendImmediatelly = FALSE)
 {
 	return 

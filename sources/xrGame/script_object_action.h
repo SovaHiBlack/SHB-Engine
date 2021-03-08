@@ -22,16 +22,16 @@ public:
 	shared_str							m_caBoneName;
 
 public:
-	IC				CScriptObjectAction	();
-	IC				CScriptObjectAction	(CScriptGameObject *tpLuaGameObject, MonsterSpace::EObjectAction tObjectActionType, u32 dwQueueSize = u32(-1));
-	IC				CScriptObjectAction	(const char* caBoneName, MonsterSpace::EObjectAction tObjectActionType);
-	IC				CScriptObjectAction	(MonsterSpace::EObjectAction tObjectActionType);
+	inline				CScriptObjectAction	();
+	inline				CScriptObjectAction	(CScriptGameObject *tpLuaGameObject, MonsterSpace::EObjectAction tObjectActionType, u32 dwQueueSize = u32(-1));
+	inline				CScriptObjectAction	(const char* caBoneName, MonsterSpace::EObjectAction tObjectActionType);
+	inline				CScriptObjectAction	(MonsterSpace::EObjectAction tObjectActionType);
 	virtual			~CScriptObjectAction();
 			void	SetObject			(CScriptGameObject *tpLuaGameObject);
-	IC		void	SetObject			(const char* caBoneName);
-	IC		void	SetObjectAction		(MonsterSpace::EObjectAction tObjectActionType);
-	IC		void	SetQueueSize		(u32 dwQueueSize);
-	IC		void	initialize			();
+	inline		void	SetObject			(const char* caBoneName);
+	inline		void	SetObjectAction		(MonsterSpace::EObjectAction tObjectActionType);
+	inline		void	SetQueueSize		(u32 dwQueueSize);
+	inline		void	initialize			();
 
 public:
 	static void script_register(lua_State*);

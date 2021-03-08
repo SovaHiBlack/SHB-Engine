@@ -88,7 +88,7 @@ namespace CDB
 #pragma pack(pop)
 
 	struct sort_predicate {
-		IC	bool	operator()	(const edge &edge0, const edge &edge1) const
+		inline	bool	operator()	(const edge &edge0, const edge &edge1) const
 		{
 			if (edge0.vertex_id0 < edge1.vertex_id0)
 				return				(true);
@@ -244,7 +244,7 @@ namespace CDB
 		}
 #endif
 	}
-    IC BOOL similar(TRI& T1, TRI& T2)
+    inline BOOL similar(TRI& T1, TRI& T2)
     {
         if ((T1.verts[0]==T2.verts[0]) && (T1.verts[1]==T2.verts[1]) && (T1.verts[2]==T2.verts[2]) && (T1.dummy==T2.dummy)) return TRUE;
         if ((T1.verts[0]==T2.verts[0]) && (T1.verts[2]==T2.verts[1]) && (T1.verts[1]==T2.verts[2]) && (T1.dummy==T2.dummy)) return TRUE;

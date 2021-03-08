@@ -48,34 +48,34 @@ private:
 	CGameObject						*m_game_object;
 
 protected:
-	IC			bool				random					() const;
-	IC			bool				accessible				(const Fvector &position) const;
-	IC			bool				accessible				(u32 vertex_id) const;
-	IC			bool				accessible				(const CPatrolPath::CVertex *vertex) const;
+	inline			bool				random					() const;
+	inline			bool				accessible				(const Fvector &position) const;
+	inline			bool				accessible				(u32 vertex_id) const;
+	inline			bool				accessible				(const CPatrolPath::CVertex *vertex) const;
 
 public:
-	IC								CPatrolPathManager		(CRestrictedObject *object, CGameObject *game_object);
+	inline								CPatrolPathManager		(CRestrictedObject *object, CGameObject *game_object);
 		virtual						~CPatrolPathManager		();
 		virtual	void				reinit					();
-	IC			CExtrapolateCallback&extrapolate_callback	();
-	IC			void				make_inactual			();
-	IC			const CPatrolPath	*get_path				() const;
-	IC			void				set_path				(const CPatrolPath *path, shared_str path_name);
-	IC			void				set_path				(shared_str path_name);
-	IC			void				set_path				(shared_str path_name, const EPatrolStartType patrol_start_type = ePatrolStartTypeNearest, const EPatrolRouteType patrol_route_type = ePatrolRouteTypeContinue, bool random = true);
-	IC			void				set_start_type			(const EPatrolStartType patrol_start_type);
-	IC			void				set_route_type			(const EPatrolRouteType patrol_route_type);
-	IC			void				set_random				(bool random);
-	IC			bool				actual					() const;
+	inline			CExtrapolateCallback&extrapolate_callback	();
+	inline			void				make_inactual			();
+	inline			const CPatrolPath	*get_path				() const;
+	inline			void				set_path				(const CPatrolPath *path, shared_str path_name);
+	inline			void				set_path				(shared_str path_name);
+	inline			void				set_path				(shared_str path_name, const EPatrolStartType patrol_start_type = ePatrolStartTypeNearest, const EPatrolRouteType patrol_route_type = ePatrolRouteTypeContinue, bool random = true);
+	inline			void				set_start_type			(const EPatrolStartType patrol_start_type);
+	inline			void				set_route_type			(const EPatrolRouteType patrol_route_type);
+	inline			void				set_random				(bool random);
+	inline			bool				actual					() const;
 				shared_str			path_name				() const;
 				void				set_previous_point		(int point_index);
 				void				set_start_point			(int point_index);
-	IC			bool				completed				() const;
-	IC			bool				failed					() const;
+	inline			bool				completed				() const;
+	inline			bool				failed					() const;
 				void				select_point			(const Fvector &position, u32 &dest_vertex_id);
-	IC			const Fvector		&destination_position	() const;
-	IC			u32					get_current_point_index	() const;
-	IC			CRestrictedObject	&object					() const;
+	inline			const Fvector		&destination_position	() const;
+	inline			u32					get_current_point_index	() const;
+	inline			CRestrictedObject	&object					() const;
 				bool				extrapolate_path		();
 
 private:

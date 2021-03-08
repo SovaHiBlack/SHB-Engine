@@ -22,11 +22,11 @@ struct CVertexAllocatorFixed {
 		VERTICES					m_vertices;
 
 	public:
-		IC							CDataStorage			();
+		inline							CDataStorage			();
 		virtual						~CDataStorage			();
-		IC		void				init					();
-		IC		u32					get_visited_node_count	() const;
-		IC		CGraphVertex		&create_vertex			();
+		inline		void				init					();
+		inline		u32					get_visited_node_count	() const;
+		inline		CGraphVertex		&create_vertex			();
 	};
 };
 

@@ -24,11 +24,11 @@ public:
 	flags					m_mask;
 
 public:
-	IC		bool			operator==	(const Fvector &position) const;
+	inline		bool			operator==	(const Fvector &position) const;
 	virtual	bool			operator==	(const CObject *object) const;
 	virtual bool			useful		() const;
 	virtual const Fvector	&position	() const = 0;
-	IC		const flags		&mask		() const;
+	inline		const flags		&mask		() const;
 };
 
 #include "danger_location_inline.h"

@@ -250,7 +250,7 @@ bool CEnemyManager::change_from_wounded					(const CEntityAlive *current, const 
 	return						(true);
 }
 
-IC	bool CEnemyManager::enemy_inertia					(const CEntityAlive *previous_enemy) const
+inline	bool CEnemyManager::enemy_inertia					(const CEntityAlive *previous_enemy) const
 {
 	if (m_selected->CLS_ID == CLSID_OBJECT_ACTOR)
 		return					(Device.dwTimeGlobal <= (m_last_enemy_change + ENEMY_INERTIA_TIME_TO_ACTOR));
@@ -292,7 +292,7 @@ void CEnemyManager::on_enemy_change						(const CEntityAlive *previous_enemy)
 void CEnemyManager::remove_wounded			()
 {
 	struct no_wounded {
-		IC	static bool	predicate	(const CEntityAlive *enemy)
+		inline	static bool	predicate	(const CEntityAlive *enemy)
 		{
 			const CStalker		*stalker = smart_cast<const CStalker*>(enemy);
 			if (!stalker)

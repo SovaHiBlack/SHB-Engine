@@ -100,23 +100,23 @@ struct translation_pair {
 	u32			m_id;
 	u16			m_index;
 
-	IC			translation_pair	(u32 id, u16 index)
+	inline			translation_pair	(u32 id, u16 index)
 	{
 		m_id	= id;
 		m_index	= index;
 	}
 
-	IC	bool	operator==	(const u16 &id) const
+	inline	bool	operator==	(const u16 &id) const
 	{
 		return	(m_id == id);
 	}
 
-	IC	bool	operator<	(const translation_pair &pair) const
+	inline	bool	operator<	(const translation_pair &pair) const
 	{
 		return	(m_id < pair.m_id);
 	}
 
-	IC	bool	operator<	(const u16 &id) const
+	inline	bool	operator<	(const u16 &id) const
 	{
 		return	(m_id < id);
 	}

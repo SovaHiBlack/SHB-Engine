@@ -56,7 +56,7 @@ void  OnCharacterContactInDeath(bool& do_colide, bool bo1, dContact& c, SGameMtl
 	surface.mu = l_character_physic_support->m_curr_skin_friction_in_death;
 }
 
-IC bool is_imotion(interactive_motion* im)
+inline bool is_imotion(interactive_motion* im)
 {
 	return im && im->is_enabled( );
 }
@@ -369,7 +369,7 @@ BOOL  b_death_anim_velocity = TRUE;
 const float cmp_angle = M_PI / 10.f;
 const float cmp_ldisp = 0.1f;
 
-IC bool cmp(const Fmatrix& f0, const Fmatrix& f1)
+inline bool cmp(const Fmatrix& f0, const Fmatrix& f1)
 {
 	Fmatrix if0;
 	if0.invert(f0);
@@ -511,7 +511,7 @@ void CCharacterPhysicsSupport::in_Hit(float P, Fvector& dir, CObject* who, s16 e
 	}
 }
 
-IC void CCharacterPhysicsSupport::UpdateDeathAnims( )
+inline void CCharacterPhysicsSupport::UpdateDeathAnims( )
 {
 	VERIFY(m_pPhysicsShell->isFullActive( ));
 

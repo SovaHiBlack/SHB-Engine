@@ -15,7 +15,7 @@
 #define CConstructorBuilderAllocator CBuilderAllocatorConstructor<_1,_2>::CDataStorage<_vertex>
 
 TEMPLATE_SPECIALIZATION
-IC	CConstructorBuilderAllocator::CDataStorage	(const u32 vertex_count) :
+inline	CConstructorBuilderAllocator::CDataStorage	(const u32 vertex_count) :
 	CDataStorageBase			(vertex_count),
 	CDataStorageAllocator		()
 { }
@@ -25,7 +25,7 @@ CConstructorBuilderAllocator::~CDataStorage		()
 { }
 
 TEMPLATE_SPECIALIZATION
-IC	void CConstructorBuilderAllocator::init		()
+inline	void CConstructorBuilderAllocator::init		()
 {
 	CDataStorageBase::init		();
 	CDataStorageAllocator::init ();

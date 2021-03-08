@@ -62,26 +62,26 @@ protected:
 			void		execute_fire_object			();
 
 public:
-	IC					CSightAction				();
-	IC					CSightAction				(const ESightType &sight_type, bool	torso_look = false, bool path = false);
-	IC					CSightAction				(const ESightType &sight_type, const Fvector &vector3d, bool torso_look = false);
-	IC					CSightAction				(const ESightType &sight_type, const Fvector *vector3d);
-	IC					CSightAction				(const CGameObject *object_to_look, bool torso_look = false, bool fire_object = false, bool no_pitch = false);
-	IC					CSightAction				(const CMemoryInfo *memory_object, bool	torso_look = false);
+	inline					CSightAction				();
+	inline					CSightAction				(const ESightType &sight_type, bool	torso_look = false, bool path = false);
+	inline					CSightAction				(const ESightType &sight_type, const Fvector &vector3d, bool torso_look = false);
+	inline					CSightAction				(const ESightType &sight_type, const Fvector *vector3d);
+	inline					CSightAction				(const CGameObject *object_to_look, bool torso_look = false, bool fire_object = false, bool no_pitch = false);
+	inline					CSightAction				(const CMemoryInfo *memory_object, bool	torso_look = false);
 			void		initialize					();
 			void		execute						();
-	IC		void		set_vector3d				(const Fvector &position);
-	IC		void		set_object_to_look			(const CGameObject *object_to_look);
-	IC		void		set_memory_object			(const CMemoryInfo *object_to_look);
-	IC		bool		operator==					(const CSightAction &sight_action) const;
+	inline		void		set_vector3d				(const Fvector &position);
+	inline		void		set_object_to_look			(const CGameObject *object_to_look);
+	inline		void		set_memory_object			(const CMemoryInfo *object_to_look);
+	inline		bool		operator==					(const CSightAction &sight_action) const;
 			void		remove_links				(CObject *object);
 			bool		change_body_speed			() const;
 			float		body_speed					() const;
 			bool		change_head_speed			() const;
 			float		head_speed					() const;
-	IC		ESightType	sight_type					() const;
-	IC		const CGameObject	*object_to_look		() const;
-	IC		const Fvector		&vector3d			() const;
+	inline		ESightType	sight_type					() const;
+	inline		const CGameObject	*object_to_look		() const;
+	inline		const Fvector		&vector3d			() const;
 };
 
 #include "sight_action_inline.h"

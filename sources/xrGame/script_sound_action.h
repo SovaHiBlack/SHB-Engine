@@ -37,28 +37,28 @@ public:
 	MonsterSpace::EMonsterHeadAnimType	m_tHeadAnimType;
 
 public:
-	IC				CScriptSoundAction	();
-	IC				CScriptSoundAction	(const char* caSoundToPlay, const char* caBoneName, const Fvector &tPositionOffset = Fvector().set(0,0,0), const Fvector &tAngleOffset = Fvector().set(0,0,0), bool bLooped = false, ESoundTypes sound_type = SOUND_TYPE_NO_SOUND);
-	IC				CScriptSoundAction	(const char* caSoundToPlay, const Fvector &tPosition, const Fvector &tAngleOffset = Fvector().set(0,0,0), bool bLooped = false, ESoundTypes sound_type = SOUND_TYPE_NO_SOUND);
-	IC				CScriptSoundAction	(CScriptSound &sound, const char* caBoneName, const Fvector &tPositionOffset = Fvector().set(0,0,0), const Fvector &tAngleOffset = Fvector().set(0,0,0), bool bLooped = false, ESoundTypes sound_type = SOUND_TYPE_NO_SOUND);
-	IC				CScriptSoundAction	(CScriptSound &sound, const Fvector &tPosition, const Fvector &tAngleOffset = Fvector().set(0,0,0), bool bLooped = false, ESoundTypes sound_type = SOUND_TYPE_NO_SOUND);
+	inline				CScriptSoundAction	();
+	inline				CScriptSoundAction	(const char* caSoundToPlay, const char* caBoneName, const Fvector &tPositionOffset = Fvector().set(0,0,0), const Fvector &tAngleOffset = Fvector().set(0,0,0), bool bLooped = false, ESoundTypes sound_type = SOUND_TYPE_NO_SOUND);
+	inline				CScriptSoundAction	(const char* caSoundToPlay, const Fvector &tPosition, const Fvector &tAngleOffset = Fvector().set(0,0,0), bool bLooped = false, ESoundTypes sound_type = SOUND_TYPE_NO_SOUND);
+	inline				CScriptSoundAction	(CScriptSound &sound, const char* caBoneName, const Fvector &tPositionOffset = Fvector().set(0,0,0), const Fvector &tAngleOffset = Fvector().set(0,0,0), bool bLooped = false, ESoundTypes sound_type = SOUND_TYPE_NO_SOUND);
+	inline				CScriptSoundAction	(CScriptSound &sound, const Fvector &tPosition, const Fvector &tAngleOffset = Fvector().set(0,0,0), bool bLooped = false, ESoundTypes sound_type = SOUND_TYPE_NO_SOUND);
 	////////////////////////////////////////////////////////////////////////////////////
 	// Monster Specific
 	///////////////////////////////////////////////////////////////////////////////////
-	IC				CScriptSoundAction	(MonsterSound::EType sound_type);
-	IC				CScriptSoundAction	(MonsterSound::EType sound_type, int delay);
+	inline				CScriptSoundAction	(MonsterSound::EType sound_type);
+	inline				CScriptSoundAction	(MonsterSound::EType sound_type, int delay);
 	////////////////////////////////////////////////////////////////////////////////////
 	// Trader Specific
 	///////////////////////////////////////////////////////////////////////////////////
-	IC				CScriptSoundAction	(const char* caSoundToPlay, const char* caBoneName, MonsterSpace::EMonsterHeadAnimType head_anim_type);
+	inline				CScriptSoundAction	(const char* caSoundToPlay, const char* caBoneName, MonsterSpace::EMonsterHeadAnimType head_anim_type);
 	virtual			~CScriptSoundAction	();
 			void	SetSound			(const char* caSoundToPlay);
-	IC		void	SetSound			(const CScriptSound &sound);
-	IC		void	SetPosition			(const Fvector &tPosition);
-	IC		void	SetBone				(const char* caBoneName);
-	IC		void	SetAngles			(const Fvector &tAngles);
-	IC		void	SetSoundType		(const ESoundTypes sound_type);
-	IC		void	initialize			();
+	inline		void	SetSound			(const CScriptSound &sound);
+	inline		void	SetPosition			(const Fvector &tPosition);
+	inline		void	SetBone				(const char* caBoneName);
+	inline		void	SetAngles			(const Fvector &tAngles);
+	inline		void	SetSoundType		(const ESoundTypes sound_type);
+	inline		void	initialize			();
 
 public:
 	static void script_register(lua_State*);

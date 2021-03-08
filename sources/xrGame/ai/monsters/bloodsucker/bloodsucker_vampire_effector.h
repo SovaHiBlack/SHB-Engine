@@ -27,13 +27,13 @@ class CVampireCameraEffector : public CEffectorCam
 	using inherited = CEffectorCam;
 
 	float	m_time_total;
-	Fvector	dangle_target;
-	Fvector dangle_current;
+	Fvector3	dangle_target;
+	Fvector3 dangle_current;
 
 	float	m_dist;
-	Fvector m_direction;
+	Fvector3 m_direction;
 
 public:
-					CVampireCameraEffector	(float time, const Fvector &src, const Fvector &tgt);
-	virtual	BOOL	Process					(Fvector &p, Fvector &d, Fvector &n, float& fFov, float& fFar, float& fAspect);
+					CVampireCameraEffector	(float time, const Fvector3& src, const Fvector3& tgt);
+	virtual	BOOL	Process					(Fvector3& p, Fvector3& d, Fvector3& n, float& fFov, float& fFar, float& fAspect);
 };

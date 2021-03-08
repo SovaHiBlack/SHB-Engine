@@ -29,23 +29,23 @@ typedef fastdelegate::FastDelegate0<>		  					TOnModifiedEvent;
 //------------------------------------------------------------------------------
 // Prepare Key
 //------------------------------------------------------------------------------
-IC xr_string FolderAppend	(const char* val)
+inline xr_string FolderAppend	(const char* val)
 {
 	xr_string	tmp 	= (val&&val[0])?val:"";
 	if (val&&val[0])tmp	+= "\\";
 	return 	tmp;
 }
-IC shared_str PrepareKey	(const char* pref, const char* key)
+inline shared_str PrepareKey	(const char* pref, const char* key)
 {
 	R_ASSERT	(key);
 	return 		shared_str(xr_string(FolderAppend(pref)+key).c_str());
 }
-IC shared_str PrepareKey (const char* pref0, const char* pref1, const char* key)
+inline shared_str PrepareKey (const char* pref0, const char* pref1, const char* key)
 {
 	R_ASSERT	(key);
 	return 		shared_str(xr_string(FolderAppend(pref0)+FolderAppend(pref1)+key).c_str());
 }
-IC shared_str PrepareKey (const char* pref0, const char* pref1, const char* pref2, const char* key)
+inline shared_str PrepareKey (const char* pref0, const char* pref1, const char* pref2, const char* key)
 {
 	R_ASSERT	(key);
 	return 		shared_str(xr_string(FolderAppend(pref0)+FolderAppend(pref1)+FolderAppend(pref2)+key).c_str());

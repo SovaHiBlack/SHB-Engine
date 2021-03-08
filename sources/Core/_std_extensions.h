@@ -34,7 +34,7 @@ struct CORE_API xr_token
 	int				id;
 };
 // ----------------------------------------------------------------------------
-IC const char* get_token_name(xr_token* tokens, int key)
+inline const char* get_token_name(xr_token* tokens, int key)
 {
 	for (int k = 0; tokens[k].name; k++)
 	{
@@ -47,7 +47,7 @@ IC const char* get_token_name(xr_token* tokens, int key)
 	return "";
 }
 // ----------------------------------------------------------------------------
-IC int get_token_id(xr_token* tokens, const char* key)
+inline int get_token_id(xr_token* tokens, const char* key)
 {
 	for (int k = 0; tokens[k].name; k++)
 	{
@@ -62,16 +62,16 @@ IC int get_token_id(xr_token* tokens, const char* key)
 // ----------------------------------------------------------------------------
 
 // generic
-template <class T>	IC T		_min	(T a, T b)	{ return a<b?a:b;	}
-template <class T>	IC T		_max	(T a, T b)	{ return a>b?a:b;	}
-template <class T>	IC T		_sqr	(T a)		{ return a*a;		}
+template <class T>	inline T		_min	(T a, T b)	{ return a<b?a:b;	}
+template <class T>	inline T		_max	(T a, T b)	{ return a>b?a:b;	}
+template <class T>	inline T		_sqr	(T a)		{ return a*a;		}
 
 // float
-IC float	_abs	(float x)		{ return fabsf(x); }
-IC float	_sqrt	(float x)		{ return sqrtf(x); }
-IC float	_sin	(float x)		{ return sinf(x); }
-IC float	_cos	(float x)		{ return cosf(x); }
-IC BOOL		_valid	(const float x)
+inline float	_abs	(float x)		{ return fabsf(x); }
+inline float	_sqrt	(float x)		{ return sqrtf(x); }
+inline float	_sin	(float x)		{ return sinf(x); }
+inline float	_cos	(float x)		{ return cosf(x); }
+inline BOOL		_valid	(const float x)
 {
 	// check for: Signaling NaN, Quiet NaN, Negative infinity ( –INF), Positive infinity (+INF), Negative denormalized, Positive denormalized
 	int			cls			= _fpclass		(double(x));
@@ -89,11 +89,11 @@ IC BOOL		_valid	(const float x)
 
 
 // double
-IC double	_abs	(double x)		{ return fabs(x); }
-IC double	_sqrt	(double x)		{ return sqrt(x); }
-IC double	_sin	(double x)		{ return sin(x); }
-IC double	_cos	(double x)		{ return cos(x); }
-IC BOOL		_valid	(const double x)
+inline double	_abs	(double x)		{ return fabs(x); }
+inline double	_sqrt	(double x)		{ return sqrt(x); }
+inline double	_sin	(double x)		{ return sin(x); }
+inline double	_cos	(double x)		{ return cos(x); }
+inline BOOL		_valid	(const double x)
 {
 	// check for: Signaling NaN, Quiet NaN, Negative infinity ( –INF), Positive infinity (+INF), Negative denormalized, Positive denormalized
 	int			cls			= _fpclass		(x);
@@ -110,35 +110,35 @@ IC BOOL		_valid	(const double x)
 }
 
 // int8
-IC s8		_abs	(s8  x)			{ return (x>=0)? x : s8(-x); }
-IC s8 		_min	(s8  x, s8  y)	{ return y + ((x - y) & ((x - y) >> (sizeof(s8 ) * 8 - 1))); };
-IC s8 		_max	(s8  x, s8  y)	{ return x - ((x - y) & ((x - y) >> (sizeof(s8 ) * 8 - 1))); };
+inline s8		_abs	(s8  x)			{ return (x>=0)? x : s8(-x); }
+inline s8 		_min	(s8  x, s8  y)	{ return y + ((x - y) & ((x - y) >> (sizeof(s8 ) * 8 - 1))); };
+inline s8 		_max	(s8  x, s8  y)	{ return x - ((x - y) & ((x - y) >> (sizeof(s8 ) * 8 - 1))); };
 
 // unsigned int8
-IC u8		_abs	(u8 x)			{ return x; }
+inline u8		_abs	(u8 x)			{ return x; }
 
 // int16
-IC s16		_abs	(s16 x)			{ return (x>=0)? x : s16(-x); }
-IC s16		_min	(s16 x, s16 y)	{ return y + ((x - y) & ((x - y) >> (sizeof(s16) * 8 - 1))); };
-IC s16		_max	(s16 x, s16 y)	{ return x - ((x - y) & ((x - y) >> (sizeof(s16) * 8 - 1))); };
+inline s16		_abs	(s16 x)			{ return (x>=0)? x : s16(-x); }
+inline s16		_min	(s16 x, s16 y)	{ return y + ((x - y) & ((x - y) >> (sizeof(s16) * 8 - 1))); };
+inline s16		_max	(s16 x, s16 y)	{ return x - ((x - y) & ((x - y) >> (sizeof(s16) * 8 - 1))); };
 
 // unsigned int16
-IC u16		_abs	(u16 x)			{ return x; }
+inline u16		_abs	(u16 x)			{ return x; }
 
 // int32
-IC int		_abs	(int x)			{ return (x>=0)? x : int(-x); }
-IC int		_min	(int x, int y)	{ return y + ((x - y) & ((x - y) >> (sizeof(int) * 8 - 1))); };
-IC int		_max	(int x, int y)	{ return x - ((x - y) & ((x - y) >> (sizeof(int) * 8 - 1))); };
+inline int		_abs	(int x)			{ return (x>=0)? x : int(-x); }
+inline int		_min	(int x, int y)	{ return y + ((x - y) & ((x - y) >> (sizeof(int) * 8 - 1))); };
+inline int		_max	(int x, int y)	{ return x - ((x - y) & ((x - y) >> (sizeof(int) * 8 - 1))); };
 
 // int64
-IC s64		_abs	(s64 x)			{ return (x>=0)? x : s64(-x); }
-IC s64		_min	(s64 x, s64 y)	{ return y + ((x - y) & ((x - y) >> (sizeof(s64) * 8 - 1))); };
-IC s64		_max	(s64 x, s64 y)	{ return x - ((x - y) & ((x - y) >> (sizeof(s64) * 8 - 1))); };
+inline s64		_abs	(s64 x)			{ return (x>=0)? x : s64(-x); }
+inline s64		_min	(s64 x, s64 y)	{ return y + ((x - y) & ((x - y) >> (sizeof(s64) * 8 - 1))); };
+inline s64		_max	(s64 x, s64 y)	{ return x - ((x - y) & ((x - y) >> (sizeof(s64) * 8 - 1))); };
 
-IC u32							xr_strlen				(const char* S );
+inline u32							xr_strlen				(const char* S );
 
 // string management
-IC const char* strconcat				( int dest_sz, char* dest, const char* S1, const char* S2)
+inline const char* strconcat				( int dest_sz, char* dest, const char* S1, const char* S2)
 {
 	u32 l1 = xr_strlen(S1);
 	strcpy_s(dest,dest_sz,S1);
@@ -148,7 +148,7 @@ IC const char* strconcat				( int dest_sz, char* dest, const char* S1, const cha
 }
 
 // dest = S1+S2+S3
-IC const char* strconcat				( int dest_sz, char* dest, const char* S1, const char* S2, const char* S3)
+inline const char* strconcat				( int dest_sz, char* dest, const char* S1, const char* S2, const char* S3)
 {
 	u32 l1 = xr_strlen(S1);
 	u32 l2 = xr_strlen(S2);
@@ -161,7 +161,7 @@ IC const char* strconcat				( int dest_sz, char* dest, const char* S1, const cha
 }
 
 // dest = S1+S2+S3+S4
-IC const char* strconcat				( int dest_sz, char* dest, const char* S1, const char* S2, const char* S3, const char* S4)
+inline const char* strconcat				( int dest_sz, char* dest, const char* S1, const char* S2, const char* S3, const char* S4)
 {
 	u32 l1 = xr_strlen(S1);
 	u32 l2 = xr_strlen(S2);
@@ -176,7 +176,7 @@ IC const char* strconcat				( int dest_sz, char* dest, const char* S1, const cha
 }
 
 // dest = S1+S2+S3+S4+S5
-IC const char* strconcat				(int dest_sz, char* dest, const char* S1, const char* S2, const char* S3, const char* S4, const char* S5)
+inline const char* strconcat				(int dest_sz, char* dest, const char* S1, const char* S2, const char* S3, const char* S4, const char* S5)
 {
 	u32 l1 = xr_strlen(S1);
 	u32 l2 = xr_strlen(S2);
@@ -193,7 +193,7 @@ IC const char* strconcat				(int dest_sz, char* dest, const char* S1, const char
 }
 
 // dest = S1+S2+S3+S4+S5+S6
-IC const char* strconcat				( int dest_sz, char* dest, const char* S1, const char* S2, const char* S3, const char* S4, const char* S5, const char* S6)
+inline const char* strconcat				( int dest_sz, char* dest, const char* S1, const char* S2, const char* S3, const char* S4, const char* S5, const char* S6)
 {
 	u32 l1 = xr_strlen(S1);
 	u32 l2 = xr_strlen(S2);
@@ -212,19 +212,19 @@ IC const char* strconcat				( int dest_sz, char* dest, const char* S1, const cha
 }
 
 // return pointer to ".ext"
-IC char*						strext					(const char* S )
+inline char*						strext					(const char* S )
 {	return (char*) strrchr(S,'.');	}
 
-IC u32							xr_strlen				(const char* S )
+inline u32							xr_strlen				(const char* S )
 {	return (u32)strlen(S);			}
 
-IC char*						xr_strlwr				(char* S)
+inline char*						xr_strlwr				(char* S)
 {	return strlwr(S);				}
 
 #ifdef BREAK_AT_STRCMP
 CORE_API	int					xr_strcmp				(const char* S1, const char* S2 );
 #else
-IC int							xr_strcmp				(const char* S1, const char* S2 )
+inline int							xr_strcmp				(const char* S1, const char* S2 )
 {	return (int)strcmp(S1,S2);  }
 #endif
 

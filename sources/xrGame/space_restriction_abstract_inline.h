@@ -8,13 +8,13 @@
 
 #pragma once
 
-IC	CSpaceRestrictionAbstract::CSpaceRestrictionAbstract						()
+inline	CSpaceRestrictionAbstract::CSpaceRestrictionAbstract						()
 {
 	m_initialized									= false;
 	m_accessible_neighbour_border_actual			= false;
 }
 
-IC	const xr_vector<u32> &CSpaceRestrictionAbstract::border						()
+inline	const xr_vector<u32> &CSpaceRestrictionAbstract::border						()
 {
 	if (!initialized())
 		initialize									();
@@ -24,13 +24,13 @@ IC	const xr_vector<u32> &CSpaceRestrictionAbstract::border						()
 	return											(m_border);
 }
 
-IC	bool CSpaceRestrictionAbstract::initialized									() const
+inline	bool CSpaceRestrictionAbstract::initialized									() const
 {
 	return											(m_initialized);
 }
 
 template <typename T>
-IC	const xr_vector<u32> &CSpaceRestrictionAbstract::accessible_neighbour_border(T &restriction, bool out_restriction)
+inline	const xr_vector<u32> &CSpaceRestrictionAbstract::accessible_neighbour_border(T &restriction, bool out_restriction)
 {
 	if (!m_accessible_neighbour_border_actual)
 		prepare_accessible_neighbour_border			(restriction,out_restriction);
@@ -40,7 +40,7 @@ IC	const xr_vector<u32> &CSpaceRestrictionAbstract::accessible_neighbour_border(
 }
 
 template <typename T>
-IC	bool CSpaceRestrictionAbstract::accessible_neighbours						(T &restriction, u32 level_vertex_id, bool out_restriction)
+inline	bool CSpaceRestrictionAbstract::accessible_neighbours						(T &restriction, u32 level_vertex_id, bool out_restriction)
 {
 	CLevelGraph::const_iterator						I, E;
 	ai().level_graph().begin						(level_vertex_id,I,E);
@@ -58,7 +58,7 @@ IC	bool CSpaceRestrictionAbstract::accessible_neighbours						(T &restriction, u
 }
 
 template <typename T>
-IC	void CSpaceRestrictionAbstract::prepare_accessible_neighbour_border			(T &restriction, bool out_restriction)
+inline	void CSpaceRestrictionAbstract::prepare_accessible_neighbour_border			(T &restriction, bool out_restriction)
 {
 	VERIFY											(!m_accessible_neighbour_border_actual);
 	m_accessible_neighbour_border_actual			= true;

@@ -15,9 +15,9 @@ public:
 						CEffectorCam	()									{eType=(ECameraEffectorType)0; fLifeTime=0.0f;};
 	virtual				~CEffectorCam	()									{};
 			void		SetType			(ECameraEffectorType type)				{eType=type;}
-	IC ECameraEffectorType	GetType			()									{return eType;}
+	inline ECameraEffectorType	GetType			()									{return eType;}
 	virtual	BOOL		Valid			()									{return fLifeTime>0.0f;}
-	IC virtual BOOL		Overlapped		()									{return FALSE;}
+	inline virtual BOOL		Overlapped		()									{return FALSE;}
 
 	virtual	BOOL		Process			(Fvector3& p, Fvector3& d, Fvector3& n, float& fFov, float& fFar, float& fAspect){fLifeTime-=Device.fTimeDelta; return Valid();};
 

@@ -112,7 +112,7 @@ void	CIKLimbsController::LimbUpdate( CIKLimb &L, u16 i )
 	L.Update( m_object, m_legs_blend, i );
 }
 
-IC void	update_blend (CBlend* &b)
+inline void	update_blend (CBlend* &b)
 {
 	if(b && CBlend::eFREE_SLOT == b->blend)
 		b = 0;

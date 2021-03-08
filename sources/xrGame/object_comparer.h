@@ -13,35 +13,35 @@ struct CComparer {
 	template <typename T>
 	struct CHelper {
 		template <bool a>
-		IC	static bool compare(const T &_1, const T &_2, const P &p)
+		inline	static bool compare(const T &_1, const T &_2, const P &p)
 		{
 			return			(p(_1,_2));
 		}
 
 		template <>
-		IC	static bool compare<true>(const T &_1, const T &_2, const P &p)
+		inline	static bool compare<true>(const T &_1, const T &_2, const P &p)
 		{
 			return			(CComparer::compare(*_1,*_2,p));
 		}
 	};
 
-	IC	static bool compare(const char* _1, const char* _2, const P &p)
+	inline	static bool compare(const char* _1, const char* _2, const P &p)
 	{
 		return						(p(_1,_2));
 	}
 
-	IC	static bool compare(char* _1, char* _2, const P &p)
+	inline	static bool compare(char* _1, char* _2, const P &p)
 	{
 		return						(p(_1,_2));
 	}
 
-	IC	static bool compare(const shared_str &_1, const shared_str &_2, const P &p)
+	inline	static bool compare(const shared_str &_1, const shared_str &_2, const P &p)
 	{
 		return						(p(_1,_2));
 	}
 
 	template <typename T1, typename T2>
-	IC	static bool compare(const std::pair<T1,T2> &_1, const std::pair<T1,T2> &_2, const P &p)
+	inline	static bool compare(const std::pair<T1,T2> &_1, const std::pair<T1,T2> &_2, const P &p)
 	{
 		return						(
 			compare(_1.first,_2.first,p)
@@ -51,7 +51,7 @@ struct CComparer {
 	}
 
 	template <typename T, int size>
-	IC	static bool compare(const svector<T,size> &_1, const svector<T,size> &_2, const P &p)
+	inline	static bool compare(const svector<T,size> &_1, const svector<T,size> &_2, const P &p)
 	{
 		if (_1.size() != _2.size())
 			return					(p());
@@ -65,7 +65,7 @@ struct CComparer {
 	}
 
 	template <typename T1, typename T2>
-	IC	static bool compare(const std::queue<T1,T2> &__1, const std::queue<T1,T2> &__2, const P &p)
+	inline	static bool compare(const std::queue<T1,T2> &__1, const std::queue<T1,T2> &__2, const P &p)
 	{
 		std::queue<T1,T2>			_1 = __1;
 		std::queue<T1,T2>			_2 = __2;
@@ -80,7 +80,7 @@ struct CComparer {
 	}
 
 	template <template <typename _1, typename _2> class T1, typename T2, typename T3>
-	IC	static bool compare(const T1<T2,T3> &__1, const T1<T2,T3> &__2, const P &p, bool)
+	inline	static bool compare(const T1<T2,T3> &__1, const T1<T2,T3> &__2, const P &p, bool)
 	{
 		T1<T2,T3>					_1 = __1;
 		T1<T2,T3>					_2 = __2;
@@ -95,7 +95,7 @@ struct CComparer {
 	}
 
 	template <template <typename _1, typename _2, typename _3> class T1, typename T2, typename T3, typename T4>
-	IC	static bool compare(const T1<T2,T3,T4> &__1, const T1<T2,T3,T4> &__2, const P &p, bool)
+	inline	static bool compare(const T1<T2,T3,T4> &__1, const T1<T2,T3,T4> &__2, const P &p, bool)
 	{
 		T1<T2,T3,T4>				_1 = __1;
 		T1<T2,T3,T4>				_2 = __2;
@@ -110,20 +110,20 @@ struct CComparer {
 	}
 
 	template <typename T1, typename T2>
-	IC	static bool compare(const xr_stack<T1,T2> &_1, const xr_stack<T1,T2> &_2, const P &p)
+	inline	static bool compare(const xr_stack<T1,T2> &_1, const xr_stack<T1,T2> &_2, const P &p)
 	{
 		return					(compare(_1,_2,p,true));
 	}
 
 	template <typename T1, typename T2, typename T3>
-	IC	static bool compare(const std::priority_queue<T1,T2,T3> &_1, const std::priority_queue<T1,T2,T3> &_2, const P &p)
+	inline	static bool compare(const std::priority_queue<T1,T2,T3> &_1, const std::priority_queue<T1,T2,T3> &_2, const P &p)
 	{
 		return					(compare(_1,_2,p,true));
 	}
 
 	struct CHelper3 {
 		template <typename T>
-		IC	static bool compare(const T &_1, const T &_2, const P &p)
+		inline	static bool compare(const T &_1, const T &_2, const P &p)
 		{
 			if (_1.size() != _2.size())
 				return					(p());
@@ -140,39 +140,39 @@ struct CComparer {
 	template <typename T>
 	struct CHelper4 {
 		template <bool a>
-		IC	static bool compare(const T &_1, const T &_2, const P &p)
+		inline	static bool compare(const T &_1, const T &_2, const P &p)
 		{
 			return(CHelper<T>::compare<object_type_traits::is_pointer<T>::value>(_1,_2,p));
 		}
 
 		template <>
-		IC	static bool compare<true>(const T &_1, const T &_2, const P &p)
+		inline	static bool compare<true>(const T &_1, const T &_2, const P &p)
 		{
 			return(CHelper3::compare(_1,_2,p));
 		}
 	};
 
 	template <typename T>
-	IC	static bool compare(const T &_1, const T &_2, const P &p)
+	inline	static bool compare(const T &_1, const T &_2, const P &p)
 	{
 		return						(CHelper4<T>::compare<object_type_traits::is_stl_container<T>::value>(_1,_2,p));
 	}
 };
 
 template <typename P>
-IC	bool compare(const char* p0, char* p1, const P &p)
+inline	bool compare(const char* p0, char* p1, const P &p)
 {
 	return			(p(p0,p1));
 }
 
 template <typename P>
-IC	bool compare(char* p0, const char* p1, const P &p)
+inline	bool compare(char* p0, const char* p1, const P &p)
 {
 	return			(p(p0,p1));
 }
 
 template <typename T, typename P>
-IC	bool compare(const T &p0, const T &p1, const P &p)
+inline	bool compare(const T &p0, const T &p1, const P &p)
 {
 	return			(CComparer<P>::compare(p0,p1,p));
 }
@@ -182,19 +182,19 @@ namespace object_comparer {
 		template <template <typename _1> class P>
 		struct comparer {
 			template <typename T>
-			IC	bool operator() (const T &_1, const T &_2)	const	{return(P<T>()		(_1,_2));}
-			IC	bool operator() ()							const	{return(P<bool>()	(false,true));}
-			IC	bool operator() (const char* _1, const char* _2)		const	{return(P<int>()	(xr_strcmp(_1,_2),0));}
-			IC	bool operator() (char* _1, char* _2)		const	{return(P<int>()	(xr_strcmp(_1,_2),0));}
-			IC	bool operator() (const char* _1, char* _2)		const	{return(P<int>()	(xr_strcmp(_1,_2),0));}
-			IC	bool operator() (char* _1, const char* _2)		const	{return(P<int>()	(xr_strcmp(_1,_2),0));}
+			inline	bool operator() (const T &_1, const T &_2)	const	{return(P<T>()		(_1,_2));}
+			inline	bool operator() ()							const	{return(P<bool>()	(false,true));}
+			inline	bool operator() (const char* _1, const char* _2)		const	{return(P<int>()	(xr_strcmp(_1,_2),0));}
+			inline	bool operator() (char* _1, char* _2)		const	{return(P<int>()	(xr_strcmp(_1,_2),0));}
+			inline	bool operator() (const char* _1, char* _2)		const	{return(P<int>()	(xr_strcmp(_1,_2),0));}
+			inline	bool operator() (char* _1, const char* _2)		const	{return(P<int>()	(xr_strcmp(_1,_2),0));}
 		};
 	};
 };
 
 #define declare_comparer(a,b) \
 	template <typename T1, typename T2>\
-	IC	bool a(const T1 &p0, const T2 &p1)\
+	inline	bool a(const T1 &p0, const T2 &p1)\
 	{\
 		return			(compare(p0,p1,object_comparer::detail::comparer<b>()));\
 	}

@@ -75,11 +75,11 @@ class ui_core : public CDeviceResetNotifier
 	Fvector2										m_scale_;
 	Fvector2*										m_current_scale;
 
-	IC float			ClientToScreenScaledX		(float left)
+	inline float			ClientToScreenScaledX		(float left)
 	{
 		return										left * m_current_scale->x;
 	};
-	IC float			ClientToScreenScaledY		(float top)
+	inline float			ClientToScreenScaledY		(float top)
 	{
 		return										top * m_current_scale->y;
 	};

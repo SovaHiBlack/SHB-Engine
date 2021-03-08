@@ -112,7 +112,8 @@ BOOL CArtefact::net_Spawn(CSE_Abstract* DC)
 {
 	BOOL result = inherited::net_Spawn(DC);
 	if (*m_sParticlesName) 
-	{Fvector dir;
+	{
+		Fvector3 dir;
 		dir.set(0,1,0);
 		CParticlesPlayer::StartParticles(m_sParticlesName,dir,ID(),-1, false);
 	}
@@ -168,7 +169,7 @@ void CArtefact::OnH_B_Independent(bool just_before_destroy)
 	StartLights();
 	if (*m_sParticlesName) 
 	{
-		Fvector dir;
+		Fvector3 dir;
 		dir.set(0,1,0);
 		CParticlesPlayer::StartParticles(m_sParticlesName,dir,ID(),-1, false);
 	}
@@ -187,7 +188,7 @@ void CArtefact::UpdateWorkload		(u32 dt)
 {
 	VERIFY(!ph_world->Processing());
 	// particles - velocity
-	Fvector vel = {0, 0, 0};
+	Fvector3 vel = {0, 0, 0};
 	if (H_Parent()) 
 	{
 		CPHShellHolder* pPhysicsShellHolder = smart_cast<CPHShellHolder*>(H_Parent());
@@ -216,7 +217,7 @@ void CArtefact::shedule_Update		(u32 dt)
 	// check "fast-mode" border
 	if (H_Parent())			o_switch_2_slow	();
 	else					{
-		Fvector	center;			Center(center);
+		Fvector3	center;			Center(center);
 		BOOL	rendering		= (Device.dwFrame==o_render_frame);
 		float	cam_distance	= Device.vCameraPosition.distance_to(center)-Radius();
 		if (rendering || (cam_distance < FASTMODE_DISTANCE))	o_switch_2_fast	();
@@ -324,7 +325,9 @@ void CArtefact::UpdateXForm()
 
 		// Calculate
 		Fmatrix				mRes;
-		Fvector				R,D,N;
+		Fvector3				R;
+		Fvector3 D;
+		Fvector3 N;
 		D.sub				(mL.c,mR.c);	D.normalize_safe();
 		R.crossproduct		(mR.j,D);		R.normalize_safe();
 		N.crossproduct		(D,R);			N.normalize_safe();
@@ -497,7 +500,7 @@ void SArtefactActivation::UpdateActivation()
 void SArtefactActivation::PhDataUpdate(dReal step)
 {
 	if (m_cur_activation_state==eFlying) {
-		Fvector dir	= {0, -1.f, 0};
+		Fvector3 dir	= {0, -1.f, 0};
 		if(Level().ObjectSpace.RayTest(m_af->Position(), dir, 1.0f, collide::rqtBoth,NULL,m_af) ){
 			dir.y = ph_world->Gravity()*1.1f; 
 			m_af->m_pPhysicsShell->applyGravityAccel(dir);
@@ -524,7 +527,7 @@ void SArtefactActivation::ChangeEffects()
 								state_def.m_light_color.b);
 	
 	if(state_def.m_particle.size()){
-		Fvector dir;
+		Fvector3 dir;
 		dir.set(0,1,0);
 
 		m_af->CParticlesPlayer::StartParticles(	state_def.m_particle,
@@ -558,7 +561,7 @@ void SArtefactActivation::SpawnAnomaly()
 	float zone_power	= (float)atof(_GetItem(str,2,tmp));
 	const char* zone_sect	= _GetItem(str,0,tmp); //must be last call of _GetItem... (const char* !!!)
 
-		Fvector pos;
+	Fvector3 pos;
 		m_af->Center(pos);
 		CSE_Abstract		*object = Level().spawn_item(	zone_sect,
 															pos,

@@ -21,12 +21,12 @@ private:
 	const CSoundCollectionParams *m_params;
 
 public:
-	IC			collection_predicate	(const CSoundCollectionParams &params)
+	inline			collection_predicate	(const CSoundCollectionParams &params)
 	{
 		m_params	= &params;
 	}
 
-	IC	bool	operator()				(const SOUND_COLLECTION_PAIR &pair) const
+	inline	bool	operator()				(const SOUND_COLLECTION_PAIR &pair) const
 	{
 		return		(*m_params == pair.first);
 	}

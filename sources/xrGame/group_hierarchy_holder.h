@@ -59,11 +59,11 @@ public:
 	u32								m_dwStandingCount;
 
 private:
-	IC		CAgentManager			*get_agent_manager			() const;
+	inline		CAgentManager			*get_agent_manager			() const;
 private:
-	IC		VISIBLE_OBJECTS			&visible_objects			() const;
-	IC		SOUND_OBJECTS			&sound_objects				() const;
-	IC		HIT_OBJECTS				&hit_objects				() const;
+	inline		VISIBLE_OBJECTS			&visible_objects			() const;
+	inline		SOUND_OBJECTS			&sound_objects				() const;
+	inline		HIT_OBJECTS				&hit_objects				() const;
 private:
 			void					register_in_group			(CEntity *member);
 			void					register_in_squad			(CEntity *member);
@@ -76,18 +76,18 @@ private:
 			void					unregister_in_group_senses	(CEntity *member);
 
 public:
-	IC								CGroupHierarchyHolder		(CSquadHierarchyHolder *squad);
+	inline								CGroupHierarchyHolder		(CSquadHierarchyHolder *squad);
 	virtual							~CGroupHierarchyHolder		();
-	IC		CAgentManager			&agent_manager				() const;
-	IC		const MEMBER_REGISTRY	&members					() const;
+	inline		CAgentManager			&agent_manager				() const;
+	inline		const MEMBER_REGISTRY	&members					() const;
 			void					register_member				(CEntity *member);
 			void					unregister_member			(CEntity *member);
-	IC		CSquadHierarchyHolder	&squad						() const;
+	inline		CSquadHierarchyHolder	&squad						() const;
 
 #ifdef SQUAD_HIERARCHY_HOLDER_USE_LEADER
 public:
 			void					update_leader				();
-	IC		CEntity					*leader						() const;
+	inline		CEntity					*leader						() const;
 #endif // SQUAD_HIERARCHY_HOLDER_USE_LEADER
 };
 

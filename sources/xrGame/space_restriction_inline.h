@@ -8,7 +8,7 @@
 
 #pragma once
 
-IC	CSpaceRestriction::CSpaceRestriction			(CSpaceRestrictionManager *space_restriction_manager, shared_str out_restrictions, shared_str in_restrictions)
+inline	CSpaceRestriction::CSpaceRestriction			(CSpaceRestrictionManager *space_restriction_manager, shared_str out_restrictions, shared_str in_restrictions)
 {
 	VERIFY							(space_restriction_manager);
 	m_space_restriction_manager		= space_restriction_manager;
@@ -18,23 +18,23 @@ IC	CSpaceRestriction::CSpaceRestriction			(CSpaceRestrictionManager *space_restr
 	m_applied						= false;
 }
 
-IC	bool CSpaceRestriction::initialized				() const
+inline	bool CSpaceRestriction::initialized				() const
 {
 	return							(m_initialized);
 }
 
-IC	shared_str CSpaceRestriction::out_restrictions		() const
+inline	shared_str CSpaceRestriction::out_restrictions		() const
 {
 	return							(m_out_restrictions);
 }
 
-IC	shared_str CSpaceRestriction::in_restrictions		() const
+inline	shared_str CSpaceRestriction::in_restrictions		() const
 {
 	return							(m_in_restrictions);
 }
 
 template <typename T1, typename T2>
-IC	void CSpaceRestriction::add_border				(T1 p1, T2 p2)
+inline	void CSpaceRestriction::add_border				(T1 p1, T2 p2)
 {
 	if (!initialized())
 		return;
@@ -62,17 +62,17 @@ IC	void CSpaceRestriction::add_border				(T1 p1, T2 p2)
 #endif
 }
 
-IC	bool CSpaceRestriction::applied					() const
+inline	bool CSpaceRestriction::applied					() const
 {
 	return							(m_applied);
 }
 
-IC	bool CSpaceRestriction::inside					(const Fsphere &sphere)
+inline	bool CSpaceRestriction::inside					(const Fsphere &sphere)
 {
 	return							(accessible(sphere));
 }
 
-IC	bool CSpaceRestriction::inside					(u32 level_vertex_id, bool partially_inside)
+inline	bool CSpaceRestriction::inside					(u32 level_vertex_id, bool partially_inside)
 {
 	return							(
 		(

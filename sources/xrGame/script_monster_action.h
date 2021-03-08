@@ -20,9 +20,9 @@ public:
 	CObject										*m_tObject;
 
 public:
-	IC				CScriptMonsterAction	();
-	IC				CScriptMonsterAction	(MonsterSpace::EScriptMonsterGlobalAction action);
-	IC				CScriptMonsterAction	(MonsterSpace::EScriptMonsterGlobalAction action, CScriptGameObject *tObj);
+	inline				CScriptMonsterAction	();
+	inline				CScriptMonsterAction	(MonsterSpace::EScriptMonsterGlobalAction action);
+	inline				CScriptMonsterAction	(MonsterSpace::EScriptMonsterGlobalAction action, CScriptGameObject *tObj);
 	virtual			~CScriptMonsterAction	();
 			void	SetObject				(CScriptGameObject *tObj);
 

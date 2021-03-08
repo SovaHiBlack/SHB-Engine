@@ -31,8 +31,8 @@ protected:
 	_item_type		*m_item;
 
 public:
-	IC					CObjectPropertyEvaluatorBase	(_item_type *item, CStalker *owner);
-	IC		CStalker &object							() const;	
+	inline					CObjectPropertyEvaluatorBase	(_item_type *item, CStalker *owner);
+	inline		CStalker &object							() const;	
 };
 
 typedef CObjectPropertyEvaluatorBase<CGameObject>	CSObjectPropertyEvaluatorBase;
@@ -145,7 +145,7 @@ protected:
 public:
 						CObjectPropertyEvaluatorNoItems	(CStalker *owner);
 	virtual _value_type	evaluate						();
-	IC		CStalker &object							() const;	
+	inline		CStalker &object							() const;	
 };
 
 //////////////////////////////////////////////////////////////////////////

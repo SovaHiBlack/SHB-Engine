@@ -1,6 +1,6 @@
 #include "stdafx.h"
 
-IC		bool	pred_area		(light* _1, light* _2)
+inline		bool	pred_area		(light* _1, light* _2)
 {
 	u32		a0		= _1->X.S.size;
 	u32		a1		= _2->X.S.size;

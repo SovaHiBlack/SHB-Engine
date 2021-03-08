@@ -140,7 +140,7 @@ public:
 	//игровые характеристики персонажа
 public:
 	CCharacterInfo&						CharacterInfo		() const {VERIFY(m_pCharacterInfo); return *m_pCharacterInfo;}
-	IC const CSpecificCharacter&		SpecificCharacter	() const {return CharacterInfo().m_SpecificCharacter;};
+	inline const CSpecificCharacter&		SpecificCharacter	() const {return CharacterInfo().m_SpecificCharacter;};
 	bool								InfinitiveMoney		()	{return CharacterInfo().m_SpecificCharacter.MoneyDef().inf_money;}
 
 	//установка группировки на клиентском и серверном объкте
@@ -184,8 +184,8 @@ protected:
 	u32							m_ammo_in_box_to_spawn;
 
 public:
-	IC		const shared_str	&item_to_spawn			() const {return m_item_to_spawn;}
-	IC		const u32			&ammo_in_box_to_spawn	() const {return m_ammo_in_box_to_spawn;}
+	inline		const shared_str	&item_to_spawn			() const {return m_item_to_spawn;}
+	inline		const u32			&ammo_in_box_to_spawn	() const {return m_ammo_in_box_to_spawn;}
 
 public:
 	virtual	void				on_weapon_shot_start	(CWeapon *weapon);
@@ -201,7 +201,7 @@ private:
 	BOOL						m_need_osoznanie_mode;
 
 public:
-	IC		CTradeParameters	&trade_parameters		() const;
+	inline		CTradeParameters	&trade_parameters		() const;
 	virtual	const char* trade_section			() const;
 			float				deficit_factor			(const shared_str &section) const;
 			void				buy_supplies			(CIniFile&ini_file, const char* section);

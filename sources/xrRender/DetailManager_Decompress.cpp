@@ -4,7 +4,7 @@
 #include "..\ENGINE\cl_intersect.h"
 
 //--------------------------------------------------- Decompression
-IC float	Interpolate			(float* base,		u32 x, u32 y, u32 size)
+inline float	Interpolate			(float* base,		u32 x, u32 y, u32 size)
 {
 	float	f	= float(size);
 	float	fx	= float(x)/f; float ifx = 1.f-fx;
@@ -20,7 +20,7 @@ IC float	Interpolate			(float* base,		u32 x, u32 y, u32 size)
 	return	(cx+cy)/2;
 }
 
-IC bool		InterpolateAndDither(float* alpha255,	u32 x, u32 y, u32 sx, u32 sy, u32 size, int dither[16][16] )
+inline bool		InterpolateAndDither(float* alpha255,	u32 x, u32 y, u32 sx, u32 sy, u32 size, int dither[16][16] )
 {
 	clamp 	(x,(u32)0,size-1);
 	clamp 	(y,(u32)0,size-1);

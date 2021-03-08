@@ -4,7 +4,7 @@
 #include "dTriSphere.h"
 #include "dctrilistcollider.h"
 ////////////////////////////////////////////////////////////////////////////
-IC dReal dcTriListCollider::PointSphereTest(const dReal* center, const dReal radius,
+inline dReal dcTriListCollider::PointSphereTest(const dReal* center, const dReal radius,
 							 const dReal* pt,dReal* norm)
 {
 
@@ -66,7 +66,7 @@ inline dReal dcTriListCollider::FragmentonSphereTest(const dReal* center, const 
 
 
 ///////////////////////////////////////////////////////////////////////////////
-IC bool dcTriListCollider::FragmentonSphereTest(const dReal* center, const dReal radius,
+inline bool dcTriListCollider::FragmentonSphereTest(const dReal* center, const dReal radius,
 								  const dReal* pt1, const dReal* pt2,dReal* norm,dReal& depth)
 {
 	dVector3 V={pt2[0]-pt1[0],pt2[1]-pt1[1],pt2[2]-pt1[2]};
@@ -99,7 +99,7 @@ IC bool dcTriListCollider::FragmentonSphereTest(const dReal* center, const dReal
 	return true;
 }
 
-IC bool	dcTriListCollider:: PointSphereTest(const dReal* center, const dReal radius,
+inline bool	dcTriListCollider:: PointSphereTest(const dReal* center, const dReal radius,
 							 const dReal* pt,dReal* norm,dReal &depth)
 {
 

@@ -71,10 +71,10 @@ public:
 	// Jump
 	void		jump					(CObject *obj, const SControlJumpData &ta);
 	void		jump					(const SControlJumpData &ta);
-	void		jump					(const Fvector &position);
+	void		jump					(const Fvector3& position);
 	void		load_jump_data			(const char* s1, const char* s2, const char* s3, const char* s4, u32 vel_mask_prepare, u32 vel_mask_ground, u32 flags);
 	
-	void		script_jump				(const Fvector &position, float factor);
+	void		script_jump				(const Fvector3& position, float factor);
 
 	//-------------------------------------------------------------------------------
 	// Rotation Jump

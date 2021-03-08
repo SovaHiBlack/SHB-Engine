@@ -5,35 +5,35 @@
 #include "sh_constant.h"
 #include "sh_rt.h"
 
-IC void		R_xforms::set_c_w			(R_constant* C)		{	c_w		= C;	RCache.set_c(C,m_w);	};
-IC void		R_xforms::set_c_v			(R_constant* C)		{	c_v		= C;	RCache.set_c(C,m_v);	};
-IC void		R_xforms::set_c_p			(R_constant* C)		{	c_p		= C;	RCache.set_c(C,m_p);	};
-IC void		R_xforms::set_c_wv			(R_constant* C)		{	c_wv	= C;	RCache.set_c(C,m_wv);	};
-IC void		R_xforms::set_c_vp			(R_constant* C)		{	c_vp	= C;	RCache.set_c(C,m_vp);	};
-IC void		R_xforms::set_c_wvp			(R_constant* C)		{	c_wvp	= C;	RCache.set_c(C,m_wvp);	};
+inline void		R_xforms::set_c_w			(R_constant* C)		{	c_w		= C;	RCache.set_c(C,m_w);	};
+inline void		R_xforms::set_c_v			(R_constant* C)		{	c_v		= C;	RCache.set_c(C,m_v);	};
+inline void		R_xforms::set_c_p			(R_constant* C)		{	c_p		= C;	RCache.set_c(C,m_p);	};
+inline void		R_xforms::set_c_wv			(R_constant* C)		{	c_wv	= C;	RCache.set_c(C,m_wv);	};
+inline void		R_xforms::set_c_vp			(R_constant* C)		{	c_vp	= C;	RCache.set_c(C,m_vp);	};
+inline void		R_xforms::set_c_wvp			(R_constant* C)		{	c_wvp	= C;	RCache.set_c(C,m_wvp);	};
 
-IC void		CBackend::set_xform			(u32 ID, const Fmatrix& M)
+inline void		CBackend::set_xform			(u32 ID, const Fmatrix& M)
 {
 	stat.xforms			++;
 	CHK_DX				(HW.pDevice->SetTransform((D3DTRANSFORMSTATETYPE)ID,(D3DMATRIX*)&M));
 }
-IC	void	CBackend::set_xform_world	(const Fmatrix& M)
+inline	void	CBackend::set_xform_world	(const Fmatrix& M)
 { 
 	xforms.set_W(M);	
 }
-IC	void	CBackend::set_xform_view	(const Fmatrix& M)
+inline	void	CBackend::set_xform_view	(const Fmatrix& M)
 { 
 	xforms.set_V(M);	
 }
-IC	void	CBackend::set_xform_project	(const Fmatrix& M)
+inline	void	CBackend::set_xform_project	(const Fmatrix& M)
 { 
 	xforms.set_P(M);	
 }
-IC	const Fmatrix&	CBackend::get_xform_world	()	{ return xforms.get_W();	}
-IC	const Fmatrix&	CBackend::get_xform_view	()	{ return xforms.get_V();	}
-IC	const Fmatrix&	CBackend::get_xform_project	()	{ return xforms.get_P();	}
+inline	const Fmatrix&	CBackend::get_xform_world	()	{ return xforms.get_W();	}
+inline	const Fmatrix&	CBackend::get_xform_view	()	{ return xforms.get_V();	}
+inline	const Fmatrix&	CBackend::get_xform_project	()	{ return xforms.get_P();	}
 
-IC void CBackend::set_RT				(IDirect3DSurface9* RT, u32 ID)
+inline void CBackend::set_RT				(IDirect3DSurface9* RT, u32 ID)
 {
 	if (RT!=pRT[ID])
 	{
@@ -44,7 +44,7 @@ IC void CBackend::set_RT				(IDirect3DSurface9* RT, u32 ID)
 	}
 }
 
-IC void	CBackend::set_ZB				(IDirect3DSurface9* ZB)
+inline void	CBackend::set_ZB				(IDirect3DSurface9* ZB)
 {
 	if (ZB!=pZB)
 	{
@@ -70,7 +70,7 @@ __forceinline void	CBackend::set_States		(IDirect3DStateBlock9* _state)
 	}
 }
 
-IC void CBackend::set_Constants			(R_constant_table* C)
+inline void CBackend::set_Constants			(R_constant_table* C)
 {
 	// caching
 	if (ctable==C)	return;
@@ -89,7 +89,7 @@ IC void CBackend::set_Constants			(R_constant_table* C)
 	}
 }
 
-IC void CBackend::set_Element			(ShaderElement* S, u32	pass)
+inline void CBackend::set_Element			(ShaderElement* S, u32	pass)
 {
 	SPass&	P		= *(S->passes[pass]);
 	set_States		(P.state);
@@ -202,7 +202,7 @@ __forceinline void CBackend::set_Shader			(Shader* S, u32 pass)
 	set_Element			(S->E[0],pass);
 }
 
-IC void CBackend::set_Geometry			(SGeometry* _geom)
+inline void CBackend::set_Geometry			(SGeometry* _geom)
 {
 	set_Format			(_geom->dcl._get()->dcl);
 	set_Vertices		(_geom->vb, _geom->vb_stride);
@@ -210,7 +210,7 @@ IC void CBackend::set_Geometry			(SGeometry* _geom)
 }
 
 
-IC void	CBackend::set_Scissor			(Irect*	R)
+inline void	CBackend::set_Scissor			(Irect*	R)
 {
 	if (R)			{
 		CHK_DX		(HW.pDevice->SetRenderState(D3DRS_SCISSORTESTENABLE,TRUE));
@@ -221,7 +221,7 @@ IC void	CBackend::set_Scissor			(Irect*	R)
 	}
 }
 
-IC void CBackend::set_Stencil			(u32 _enable, u32 _func, u32 _ref, u32 _mask, u32 _writemask, u32 _fail, u32 _pass, u32 _zfail)
+inline void CBackend::set_Stencil			(u32 _enable, u32 _func, u32 _ref, u32 _mask, u32 _writemask, u32 _fail, u32 _pass, u32 _zfail)
 {
 	// Simple filter
 	if (stencil_enable		!= _enable)		{ stencil_enable=_enable;		CHK_DX(HW.pDevice->SetRenderState	( D3DRS_STENCILENABLE,		_enable				)); }
@@ -234,7 +234,7 @@ IC void CBackend::set_Stencil			(u32 _enable, u32 _func, u32 _ref, u32 _mask, u3
 	if (stencil_pass		!= _pass)		{ stencil_pass=_pass;			CHK_DX(HW.pDevice->SetRenderState	( D3DRS_STENCILPASS,		_pass				)); }
 	if (stencil_zfail		!= _zfail)		{ stencil_zfail=_zfail;			CHK_DX(HW.pDevice->SetRenderState	( D3DRS_STENCILZFAIL,		_zfail				)); }
 }
-IC void	CBackend::set_ColorWriteEnable	(u32 _mask )
+inline void	CBackend::set_ColorWriteEnable	(u32 _mask )
 {
 	if (colorwrite_mask		!= _mask)		{ 
 		colorwrite_mask=_mask;		

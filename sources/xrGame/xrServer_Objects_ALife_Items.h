@@ -57,7 +57,7 @@ public:
 	virtual	u32						update_rate				() const;
 	// end of the virtual inheritance dependant code
 
-	IC		bool					attached	() const
+	inline		bool					attached	() const
 	{
 		return						(base()->ID_Parent < 0xffff);
 	}

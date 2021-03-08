@@ -36,7 +36,7 @@ private:
 	u32									m_dwParameterCount;
 	SEFHeader							m_tEFHeader;
 
-	IC u32			dwfGetPatternIndex	(u32* dwpTest, int iPatternIndex)
+	inline u32			dwfGetPatternIndex	(u32* dwpTest, int iPatternIndex)
 	{
 		SPattern& tPattern				= m_tpPatterns[iPatternIndex];
 		for (u32 i = 1, dwIndex = dwpTest[tPattern.dwaVariableIndexes[0]]; i < (int) tPattern.dwCardinality; ++i)

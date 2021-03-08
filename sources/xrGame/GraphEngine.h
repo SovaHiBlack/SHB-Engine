@@ -67,16 +67,16 @@ public:
 
 public:
 
-	IC				CGraphEngine			(u32 max_vertex_count);
+	inline				CGraphEngine			(u32 max_vertex_count);
 	virtual			~CGraphEngine			();
 
-	IC		const CSolverAlgorithm &solver_algorithm() const;
+	inline		const CSolverAlgorithm &solver_algorithm() const;
 
 	template <
 		typename _Graph,
 		typename _Parameters
 	>
-	IC		bool	search					(
+	inline		bool	search					(
 				const _Graph			&graph, 
 				const _index_type		&start_node, 
 				const _index_type		&dest_node, 
@@ -88,7 +88,7 @@ public:
 		typename _Graph,
 		typename _Parameters
 	>
-	IC		bool	search					(
+	inline		bool	search					(
 				const _Graph			&graph, 
 				const _index_type		&start_node, 
 				const _index_type		&dest_node, 
@@ -101,7 +101,7 @@ public:
 		typename _Parameters,
 		typename _PathManager
 	>
-	IC		bool	search					(
+	inline		bool	search					(
 				const _Graph			&graph, 
 				const _index_type		&start_node, 
 				const _index_type		&dest_node, 
@@ -121,7 +121,7 @@ public:
 		typename T8,
 		typename _Parameters
 	>
-	IC		bool	search					(
+	inline		bool	search					(
 		const CProblemSolver<
 			T1,
 			T2,

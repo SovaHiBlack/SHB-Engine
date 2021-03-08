@@ -87,7 +87,7 @@ public:
 		flMotionChange				= u32(1 << 3),
 	};
 	Flags32							m_editor_flags;
-	IC	void						set_editor_flag	(u32 mask)	{m_editor_flags.set	(mask,TRUE);}
+	inline	void						set_editor_flag	(u32 mask)	{m_editor_flags.set	(mask,TRUE);}
 
 public:
 	virtual void		__stdcall	Spawn_Write		(NET_Packet &tNetPacket, BOOL bLocal) = 0;

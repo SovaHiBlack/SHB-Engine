@@ -15,7 +15,7 @@
 #include "../control_animation_base.h"
 
 // Установка анимации
-void CBaseMonster::SelectAnimation(const Fvector &/**_view/**/, const Fvector &/**_move/**/, float /**speed/**/)
+void CBaseMonster::SelectAnimation(const Fvector3&/**_view/**/, const Fvector3&/**_move/**/, float /**speed/**/)
 {
 	control().animation().update_frame();
 }

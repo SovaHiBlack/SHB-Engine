@@ -21,22 +21,22 @@ public:
 
 protected:
 	struct CObjectItemPredicate {
-		IC	bool					operator()							(const CObjectItemAbstract *item1, const CObjectItemAbstract *item2) const;
-		IC	bool					operator()							(const CObjectItemAbstract *item, const CLASS_ID &clsid) const;
+		inline	bool					operator()							(const CObjectItemAbstract *item1, const CObjectItemAbstract *item2) const;
+		inline	bool					operator()							(const CObjectItemAbstract *item, const CLASS_ID &clsid) const;
 	};
 
 	struct CObjectItemPredicateCLSID {
 		CLASS_ID					m_clsid;
 
-		IC							CObjectItemPredicateCLSID			(const CLASS_ID &clsid);
-		IC	bool					operator()							(const CObjectItemAbstract *item) const;
+		inline							CObjectItemPredicateCLSID			(const CLASS_ID &clsid);
+		inline	bool					operator()							(const CObjectItemAbstract *item) const;
 	};
 
 	struct CObjectItemPredicateScript {
 		shared_str					m_script_clsid_name;
 
-		IC							CObjectItemPredicateScript			(const shared_str &script_clsid_name);
-		IC	bool					operator()							(const CObjectItemAbstract *item) const;
+		inline							CObjectItemPredicateScript			(const shared_str &script_clsid_name);
+		inline	bool					operator()							(const CObjectItemAbstract *item) const;
 	};
 
 public:
@@ -50,25 +50,25 @@ protected:
 
 protected:
 			void						register_classes				();
-	IC		void						add								(CObjectItemAbstract *item);
-	IC		const OBJECT_ITEM_STORAGE	&clsids							() const;
-	IC		void						actualize						() const;
+	inline		void						add								(CObjectItemAbstract *item);
+	inline		const OBJECT_ITEM_STORAGE	&clsids							() const;
+	inline		void						actualize						() const;
 	template <typename _unknown_type>
-	IC		void						add								(const CLASS_ID &clsid, const char* script_clsid);
+	inline		void						add								(const CLASS_ID &clsid, const char* script_clsid);
 
 	template <typename _client_type, typename _server_type>
-	IC		void						add								(const CLASS_ID &clsid, const char* script_clsid);
-	IC		const CObjectItemAbstract	&item							(const CLASS_ID &clsid) const;
+	inline		void						add								(const CLASS_ID &clsid, const char* script_clsid);
+	inline		const CObjectItemAbstract	&item							(const CLASS_ID &clsid) const;
 
 public:
 										CObjectFactory					();
 	virtual								~CObjectFactory					();
 			void						init							();
 
-	IC		CLIENT_BASE_CLASS			*client_object					(const CLASS_ID &clsid) const;
-	IC		SERVER_BASE_CLASS			*server_object					(const CLASS_ID &clsid, const char* section) const;
+	inline		CLIENT_BASE_CLASS			*client_object					(const CLASS_ID &clsid) const;
+	inline		SERVER_BASE_CLASS			*server_object					(const CLASS_ID &clsid, const char* section) const;
 
-	IC		int							script_clsid					(const CLASS_ID &clsid) const;
+	inline		int							script_clsid					(const CLASS_ID &clsid) const;
 			void						register_script					() const;
 			void						register_script_class			(const char* client_class, const char* server_class, const char* clsid, const char* script_clsid);
 			void						register_script_class			(const char* unknown_class, const char* clsid, const char* script_clsid);
@@ -83,6 +83,6 @@ add_to_type_list(CObjectFactory)
 
 extern CObjectFactory *g_object_factory;
 
-IC	const CObjectFactory &object_factory();
+inline	const CObjectFactory &object_factory();
 
 #include "ObjectFactory_inline.h"

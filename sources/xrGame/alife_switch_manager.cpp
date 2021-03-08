@@ -27,13 +27,13 @@ using namespace ALife;
 struct remove_non_savable_predicate {
 	CServer*m_server;
 
-	IC		 remove_non_savable_predicate(CServer*server)
+	inline		 remove_non_savable_predicate(CServer*server)
 	{
 		VERIFY			(server);
 		m_server		= server;
 	}
 
-	IC	bool operator()	(const ALife::_OBJECT_ID &id) const
+	inline	bool operator()	(const ALife::_OBJECT_ID &id) const
 	{
 		CSE_Abstract	*object = m_server->game->get_entity_from_eid(id);
 		VERIFY			(object);

@@ -49,20 +49,20 @@ struct CDataStorageBucketList {
 		u32						m_min_bucket_id;
 
 	public:
-		IC						CDataStorage		(const u32 vertex_count);
+		inline						CDataStorage		(const u32 vertex_count);
 		virtual					~CDataStorage		();
-		IC		void			init				();
-		IC		void			add_best_closed		();
-		IC		bool			is_opened_empty		();
-		IC		u32				compute_bucket_id	(CGraphVertex &vertex) const;
-		IC		void			verify_buckets		() const;
-		IC		void			add_to_bucket		(CGraphVertex &vertex, u32 bucket_id);
-		IC		void			add_opened			(CGraphVertex &vertex);
-		IC		void			decrease_opened		(CGraphVertex &vertex, const _dist_type value);
-		IC		void			remove_best_opened	();
-		IC		CGraphVertex	&get_best			();
-		IC		void			set_min_bucket_value(const _dist_type min_bucket_value);
-		IC		void			set_max_bucket_value(const _dist_type max_bucket_value);
+		inline		void			init				();
+		inline		void			add_best_closed		();
+		inline		bool			is_opened_empty		();
+		inline		u32				compute_bucket_id	(CGraphVertex &vertex) const;
+		inline		void			verify_buckets		() const;
+		inline		void			add_to_bucket		(CGraphVertex &vertex, u32 bucket_id);
+		inline		void			add_opened			(CGraphVertex &vertex);
+		inline		void			decrease_opened		(CGraphVertex &vertex, const _dist_type value);
+		inline		void			remove_best_opened	();
+		inline		CGraphVertex	&get_best			();
+		inline		void			set_min_bucket_value(const _dist_type min_bucket_value);
+		inline		void			set_max_bucket_value(const _dist_type max_bucket_value);
 	};
 };
 

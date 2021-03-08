@@ -33,9 +33,9 @@ class CMonsterEffectorHit : public CEffectorCam
 	float period_number;
 	float power;
 
-	Fvector offset;
+	Fvector3 offset;
 
 public:
 					CMonsterEffectorHit		(float time, float amp, float periods, float power);
-	virtual	BOOL	Process					(Fvector &p, Fvector &d, Fvector &n, float& fFov, float& fFar, float& fAspect);
+	virtual	BOOL	Process					(Fvector3& p, Fvector3& d, Fvector3& n, float& fFov, float& fFar, float& fAspect);
 };

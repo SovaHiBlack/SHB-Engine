@@ -21,7 +21,7 @@ public:
 	virtual bool	ability_can_drag		() {return true;}
 
 private:
-	bool	ConeSphereIntersection	(Fvector ConeVertex, float ConeAngle, Fvector ConeDir, Fvector SphereCenter, float SphereRadius);
+	bool	ConeSphereIntersection	(Fvector3 ConeVertex, float ConeAngle, Fvector3 ConeDir, Fvector3 SphereCenter, float SphereRadius);
 	
 public:
 	static void script_register(lua_State*);

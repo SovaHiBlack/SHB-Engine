@@ -11,5 +11,5 @@ class CPseudogigantStepEffector : public CEffectorCam {
 
 public:
 					CPseudogigantStepEffector	(float time, float amp, float periods, float power);
-	virtual	BOOL	Process						(Fvector &p, Fvector &d, Fvector &n, float& fFov, float& fFar, float& fAspect);
+	virtual	BOOL	Process						(Fvector3& p, Fvector3& d, Fvector3& n, float& fFov, float& fFar, float& fAspect);
 };

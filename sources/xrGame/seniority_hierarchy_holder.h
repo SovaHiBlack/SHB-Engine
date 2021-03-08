@@ -23,10 +23,10 @@ private:
 	TEAM_REGISTRY					m_teams;
 
 public:
-	IC								CSeniorityHierarchyHolder	();
+	inline								CSeniorityHierarchyHolder	();
 	virtual							~CSeniorityHierarchyHolder	();
 			CTeamHierarchyHolder	&team						(u32 team_id);
-	IC		const TEAM_REGISTRY		&teams						() const;
+	inline		const TEAM_REGISTRY		&teams						() const;
 };
 
 #include "seniority_hierarchy_holder_inline.h"

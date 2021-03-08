@@ -40,16 +40,16 @@ private:
 	EDangerPerceiveType					m_perceive_type;
 
 public:
-	IC									CDangerObject			(const CEntityAlive	*object, const Fvector &position, u32 time, const EDangerType &type, const EDangerPerceiveType &perceive_type, const CObject *dependent_object = 0);
+	inline									CDangerObject			(const CEntityAlive	*object, const Fvector &position, u32 time, const EDangerType &type, const EDangerPerceiveType &perceive_type, const CObject *dependent_object = 0);
 	virtual								~CDangerObject			();
-	IC		const CEntityAlive			*object					() const;
-	IC		const Fvector				&position				() const;
-	IC		u32							time					() const;
-	IC		EDangerType					type					() const;
-	IC		EDangerPerceiveType			perceive_type			() const;
-	IC		const CObject				*dependent_object		() const;
-	IC		void						clear_dependent_object	();
-	IC		bool						operator==				(const CDangerObject &object) const;
+	inline		const CEntityAlive			*object					() const;
+	inline		const Fvector				&position				() const;
+	inline		u32							time					() const;
+	inline		EDangerType					type					() const;
+	inline		EDangerPerceiveType			perceive_type			() const;
+	inline		const CObject				*dependent_object		() const;
+	inline		void						clear_dependent_object	();
+	inline		bool						operator==				(const CDangerObject &object) const;
 };
 
 #include "danger_object_inline.h"

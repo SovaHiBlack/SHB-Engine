@@ -35,7 +35,7 @@ protected:
 				bool						m_disabled														;
 protected:
 
-	IC			void			CheckState					(const SDisableUpdateState& state)
+	inline			void			CheckState					(const SDisableUpdateState& state)
 	{
 		if(m_disabled)	m_disabled=!state.enable;
 		else			m_disabled=state.disable;
@@ -61,7 +61,7 @@ public:
 
 protected:
 				void			Reinit						()												;
-	IC			void			CheckState					(SDisableUpdateState& state,	float vel	,float	accel)
+	inline			void			CheckState					(SDisableUpdateState& state,	float vel	,float	accel)
 	{
 		if	(vel	<	m_params.velocity	&&	accel	<	m_params.acceleration) 
 																					state.disable=true	;

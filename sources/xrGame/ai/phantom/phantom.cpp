@@ -144,7 +144,8 @@ void CPhantom::SwitchToState_internal(EState new_state)
 		case stContact:{
 			SStateData& sdata	= m_state_data[m_CurState];
 			PlayParticles		(sdata.particles.c_str(),FALSE,xform);
-			Fvector vE,vP;
+			Fvector3 vE;
+			Fvector3 vP;
 			m_enemy->Center		(vE);
 			Center				(vP);
 			if (vP.distance_to_sqr(vE)<_sqr(Radius())){ 
@@ -206,12 +207,13 @@ void CPhantom::OnFlyState()
 {
 	UpdateFlyMedia			();
 	if (g_Alive()){
-		Fvector vE,vP;
+		Fvector3 vE;
+		Fvector3 vP;
 		m_enemy->Center		(vE);
 		Center				(vP);
 		if (vP.distance_to_sqr(vE)<_sqr(Radius()+m_enemy->Radius())){
 			SwitchToState	(stContact);
-			SHit HDS(1000.f,Fvector().set(0,0,1),this,BI_NONE,Fvector().set(0,0,0),100.f,ALife::eHitTypeFireWound);
+			SHit HDS(1000.0f, Fvector3().set(0,0,1),this,BI_NONE, Fvector3().set(0,0,0),100.f,ALife::eHitTypeFireWound);
 			Hit(&HDS);
 		}
 	}
@@ -229,7 +231,7 @@ void CPhantom::UpdateFlyMedia()
 	// update particles
 	if (m_fly_particles)
 	{
-		Fvector		vel;
+		Fvector3		vel;
 		vel.sub		(m_enemy->Position(),Position()).normalize_safe().mul(fSpeed);
 		m_fly_particles->UpdateParent(xform,vel);
 	}
@@ -267,7 +269,7 @@ void	CPhantom::Hit							(SHit* pHDS)
 //---------------------------------------------------------------------
 Fmatrix	CPhantom::XFORM_center()
 {
-	Fvector			center;
+	Fvector3			center;
 	Center			(center);
 	Fmatrix	xform	= XFORM();
 	return			xform.translate_over(center);
@@ -282,10 +284,11 @@ CParticlesObject* CPhantom::PlayParticles(const shared_str& name, BOOL bAutoRemo
 }
 
 //---------------------------------------------------------------------
-void CPhantom::UpdatePosition(const Fvector& tgt_pos) 
+void CPhantom::UpdatePosition(const Fvector3& tgt_pos)
 {
 	float			tgt_h,tgt_p;
-	Fvector			tgt_dir,cur_dir;
+	Fvector3			tgt_dir;
+	Fvector3 cur_dir;
 	tgt_dir.sub		(tgt_pos,Position());
 	tgt_dir.getHP	(tgt_h,tgt_p);
 
@@ -294,7 +297,7 @@ void CPhantom::UpdatePosition(const Fvector& tgt_pos)
 
 	cur_dir.setHP	(vHP.x,vHP.y);
 
-	Fvector prev_pos=Position();
+	Fvector3 prev_pos=Position();
 	XFORM().rotateY (-vHP.x);
 	Position().mad	(prev_pos,cur_dir,fSpeed*Device.fTimeDelta);
 }
@@ -306,10 +309,10 @@ void CPhantom::PsyHit(const CObject *object, float value)
 	HS.GenHeader		(GE_HIT, object->ID());				//
 	HS.whoID			= (ID());					// own
 	HS.weaponID			= (ID());					// own
-	HS.dir				= (Fvector().set(0.f,1.f,0.f));		// direction
+	HS.dir				= (Fvector3().set(0.f,1.f,0.f));		// direction
 	HS.power			= (value);							// hit value
 	HS.boneID			= (BI_NONE);						// bone
-	HS.p_in_bone_space	= (Fvector().set(0.f,0.f,0.f));
+	HS.p_in_bone_space	= (Fvector3().set(0.f,0.f,0.f));
 	HS.impulse			= (0.f);
 	HS.hit_type			= (ALife::eHitTypeTelepatic);
 	HS.Write_Packet		(P);

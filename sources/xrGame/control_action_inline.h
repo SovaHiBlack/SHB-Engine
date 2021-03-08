@@ -8,44 +8,44 @@
 
 #pragma once
 
-IC	CControlAction::CControlAction		()
+inline	CControlAction::CControlAction		()
 {
 }
 
-IC	void CControlAction::set_object		(CStalker *object)
+inline	void CControlAction::set_object		(CStalker *object)
 {
 	VERIFY				(object);
 	m_object			= object;
 }
 
-IC	bool CControlAction::applicable		() const
+inline	bool CControlAction::applicable		() const
 {
 	return				(true);
 }
 
-IC	bool CControlAction::completed		() const
+inline	bool CControlAction::completed		() const
 {
 	return				(true);
 }
 
-IC	void CControlAction::initialize		()
+inline	void CControlAction::initialize		()
 {
 }
 
-IC	void CControlAction::execute		()
+inline	void CControlAction::execute		()
 {
 }
 
-IC	void CControlAction::finalize		()
+inline	void CControlAction::finalize		()
 {
 }
 
-IC	CStalker &CControlAction::object	() const
+inline	CStalker &CControlAction::object	() const
 {
 	VERIFY				(m_object);
 	return				(*m_object);
 }
 
-IC	void CControlAction::remove_links	(CObject *object)
+inline	void CControlAction::remove_links	(CObject *object)
 {
 }

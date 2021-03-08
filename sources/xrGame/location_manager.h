@@ -18,11 +18,11 @@ private:
 	CGameObject					*m_object;
 
 public:
-	IC				CLocationManager			(CGameObject *object);
+	inline				CLocationManager			(CGameObject *object);
 	virtual			~CLocationManager			();
 	virtual void	Load						(const char* section);
 	virtual void	reload						(const char* section);
-	IC		const GameGraph::TERRAIN_VECTOR &vertex_types	() const;
+	inline		const GameGraph::TERRAIN_VECTOR &vertex_types	() const;
 };
 
 #include "location_manager_inline.h"

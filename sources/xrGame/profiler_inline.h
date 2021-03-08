@@ -8,7 +8,7 @@
 
 #pragma once
 
-IC	CProfilePortion::CProfilePortion	(const char* timer_id)
+inline	CProfilePortion::CProfilePortion	(const char* timer_id)
 {
 	if (!psAI_Flags.test(aiStats))
 		return;
@@ -20,7 +20,7 @@ IC	CProfilePortion::CProfilePortion	(const char* timer_id)
 	m_time								= CPU::QPC();
 }
 
-IC	CProfilePortion::~CProfilePortion	()
+inline	CProfilePortion::~CProfilePortion	()
 {
 	if (!psAI_Flags.test(aiStats))
 		return;
@@ -33,12 +33,12 @@ IC	CProfilePortion::~CProfilePortion	()
 	profiler().add_profile_portion		(*this);
 }
 
-IC	CProfiler&	profiler				()
+inline	CProfiler&	profiler				()
 {
 	return			(*g_profiler);
 }
 
-IC	CProfileStats::CProfileStats		()
+inline	CProfileStats::CProfileStats		()
 {
 	m_update_time	= 0;
 	m_name			= shared_str("");

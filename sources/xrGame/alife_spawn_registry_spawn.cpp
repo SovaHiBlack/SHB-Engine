@@ -10,12 +10,12 @@
 #include "alife_spawn_registry.h"
 #include "random32.h"
 
-IC	bool CALifeSpawnRegistry::enabled_spawn		(CSE_Abstract &abstract) const
+inline	bool CALifeSpawnRegistry::enabled_spawn		(CSE_Abstract &abstract) const
 {
 	return		(!!abstract.m_spawn_flags.is(CSE_Abstract::flSpawnEnabled));
 }
 
-IC	bool CALifeSpawnRegistry::count_limit		(CSE_Abstract &abstract) const
+inline	bool CALifeSpawnRegistry::count_limit		(CSE_Abstract &abstract) const
 {
 	if (!!abstract.m_spawn_flags.is(CSE_Abstract::flSpawnInfiniteCount))
 		return	(false);
@@ -26,7 +26,7 @@ IC	bool CALifeSpawnRegistry::count_limit		(CSE_Abstract &abstract) const
 	return		(true);
 }
 
-IC	bool CALifeSpawnRegistry::time_limit		(CSE_Abstract &abstract, ALife::_TIME_ID game_time) const
+inline	bool CALifeSpawnRegistry::time_limit		(CSE_Abstract &abstract, ALife::_TIME_ID game_time) const
 {
 	if (!!abstract.m_spawn_flags.is(CSE_Abstract::flSpawnOnSurgeOnly))
 		return	(false);
@@ -37,13 +37,13 @@ IC	bool CALifeSpawnRegistry::time_limit		(CSE_Abstract &abstract, ALife::_TIME_I
 	return		(true);
 }
 
-IC	bool CALifeSpawnRegistry::spawned_item				(CSE_Abstract &abstract, SPAWN_IDS &objects) const
+inline	bool CALifeSpawnRegistry::spawned_item				(CSE_Abstract &abstract, SPAWN_IDS &objects) const
 {
 	SPAWN_IDS::iterator			I = std::lower_bound(objects.begin(),objects.end(),abstract.m_tSpawnID);
 	return						((I != objects.end()) && (*I == abstract.m_tSpawnID));
 }
 
-IC	bool CALifeSpawnRegistry::spawned_item				(SPAWN_GRAPH::CVertex *vertex, SPAWN_IDS &objects)
+inline	bool CALifeSpawnRegistry::spawned_item				(SPAWN_GRAPH::CVertex *vertex, SPAWN_IDS &objects)
 {
 	if (vertex->edges().empty())
 		return					(spawned_item(vertex->data()->object(),objects));
@@ -57,7 +57,7 @@ IC	bool CALifeSpawnRegistry::spawned_item				(SPAWN_GRAPH::CVertex *vertex, SPAW
 	return						(false);
 }
 
-IC	bool CALifeSpawnRegistry::object_existance_limit	(CSE_Abstract &abstract, SPAWN_IDS &objects) const
+inline	bool CALifeSpawnRegistry::object_existance_limit	(CSE_Abstract &abstract, SPAWN_IDS &objects) const
 {
 	if (!abstract.m_spawn_flags.is(CSE_Abstract::flSpawnIfDestroyedOnly))
 		return					(false);
@@ -68,7 +68,7 @@ IC	bool CALifeSpawnRegistry::object_existance_limit	(CSE_Abstract &abstract, SPA
 	return						(false);
 }
 
-IC	bool CALifeSpawnRegistry::can_spawn					(CSE_Abstract &abstract, ALife::_TIME_ID game_time, SPAWN_IDS &objects) const
+inline	bool CALifeSpawnRegistry::can_spawn					(CSE_Abstract &abstract, ALife::_TIME_ID game_time, SPAWN_IDS &objects) const
 {
 	return						(
 		enabled_spawn(abstract) &&

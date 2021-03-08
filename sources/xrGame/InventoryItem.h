@@ -307,7 +307,7 @@ public:
 	virtual const CInventoryItem* can_kill(const xr_vector<const CGameObject*>& items) const;
 	virtual CInventoryItem* can_make_killing(const CInventory* inventory) const;
 	virtual bool				ready_to_kill( ) const;
-	IC		bool				useful_for_NPC( ) const;
+	inline		bool				useful_for_NPC( ) const;
 
 #ifdef DEBUG
 	virtual void				OnRender( );
@@ -315,7 +315,7 @@ public:
 
 public:
 	virtual DLL_Pure* _construct( );
-	IC CPHShellHolder& object( ) const
+	inline CPHShellHolder& object( ) const
 	{
 		VERIFY(m_object);
 		return *m_object;
@@ -333,7 +333,7 @@ public:
 	virtual void				modify_holder_params(float& range, float& fov) const;
 
 protected:
-	IC CInventoryOwner& inventory_owner( ) const;
+	inline CInventoryOwner& inventory_owner( ) const;
 
 private:
 	CPHShellHolder* m_object;

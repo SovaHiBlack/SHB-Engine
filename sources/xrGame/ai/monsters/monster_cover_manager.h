@@ -14,10 +14,10 @@ public:
 
 	void				load					();
 	// найти лучший ковер относительно "position"
-	const CCoverPoint	*find_cover				(const Fvector &position, float min_pos_distance, float	max_pos_distance, float deviation = 0.f);
+	const CCoverPoint	*find_cover				(const Fvector3& position, float min_pos_distance, float	max_pos_distance, float deviation = 0.f);
 
 	// найти лучший ковер относительно "src_pos" и "dest_pos"
-	const CCoverPoint	*find_cover				(const Fvector &src_pos, const Fvector &dest_pos, float min_pos_distance, float	max_pos_distance, float deviation = 0.f);
+	const CCoverPoint	*find_cover				(const Fvector3& src_pos, const Fvector3& dest_pos, float min_pos_distance, float	max_pos_distance, float deviation = 0.f);
 
-	void				less_cover_direction	(Fvector &dir);
+	void				less_cover_direction	(Fvector3& dir);
 };

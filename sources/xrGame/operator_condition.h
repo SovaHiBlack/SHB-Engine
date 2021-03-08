@@ -26,12 +26,12 @@ protected:
 	_value_type			m_value;
 
 public:
-	IC								COperatorConditionAbstract	(const _condition_type condition, const _value_type value);
-	IC		const _condition_type	&condition					() const;
-	IC		const _value_type		&value						() const;
-	IC		const u32				&hash_value					() const;
-	IC		bool					operator<					(const COperatorCondition &condition) const;
-	IC		bool					operator==					(const COperatorCondition &condition) const;
+	inline								COperatorConditionAbstract	(const _condition_type condition, const _value_type value);
+	inline		const _condition_type	&condition					() const;
+	inline		const _value_type		&value						() const;
+	inline		const u32				&hash_value					() const;
+	inline		bool					operator<					(const COperatorCondition &condition) const;
+	inline		bool					operator==					(const COperatorCondition &condition) const;
 };
 
 #include "operator_condition_inline.h"

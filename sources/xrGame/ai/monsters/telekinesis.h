@@ -35,13 +35,13 @@ virtual		void	clear_notrelevant   ();
 			void	remove_object		(TELE_OBJECTS_IT it);
 			void	remove_object		(CPHShellHolder*obj);
 			// бросить все объекты в позицию 'target'
-			void	fire_all			(const Fvector &target);
+			void	fire_all			(const Fvector3& target);
 			
 			// бросить объект 'obj' в позицию 'target' с учетом коэф силы 
-			void	fire				(CPHShellHolder*obj, const Fvector &target, float power);
+			void	fire				(CPHShellHolder*obj, const Fvector3& target, float power);
 
 			// бросить объект 'obj' в позицию 'target' с учетом коэф силы 
-			void	fire_t				(CPHShellHolder*obj, const Fvector &target, float time);
+			void	fire_t				(CPHShellHolder*obj, const Fvector3& target, float time);
 
 
 			// вернуть активность телекинеза

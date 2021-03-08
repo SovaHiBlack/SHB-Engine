@@ -75,7 +75,7 @@
 >
 
 TEMPLATE_SPECIALIZATION
-IC	CSDijkstra::CDijkstra			(const u32 max_vertex_count)
+inline	CSDijkstra::CDijkstra			(const u32 max_vertex_count)
 {
 	m_data_storage		= xr_new<CDataStorage>(max_vertex_count);
 	m_search_started	= false;
@@ -88,20 +88,20 @@ CSDijkstra::~CDijkstra				()
 }
 
 TEMPLATE_SPECIALIZATION
-IC	typename CSDijkstra::CDataStorage &CSDijkstra::data_storage		()
+inline	typename CSDijkstra::CDataStorage &CSDijkstra::data_storage		()
 {
 	return				(*m_data_storage);
 }
 
 TEMPLATE_SPECIALIZATION
-IC	const typename CSDijkstra::CDataStorage &CSDijkstra::data_storage	() const
+inline	const typename CSDijkstra::CDataStorage &CSDijkstra::data_storage	() const
 {
 	return				(*m_data_storage);
 }
 
 TEMPLATE_SPECIALIZATION
 template <typename _PathManager>
-IC	void CSDijkstra::initialize		(_PathManager &path_manager)
+inline	void CSDijkstra::initialize		(_PathManager &path_manager)
 {
 	THROW2				(!m_search_started,"Recursive graph engine usage is not allowed!");
 	m_search_started	= true;
@@ -126,7 +126,7 @@ IC	void CSDijkstra::initialize		(_PathManager &path_manager)
 
 TEMPLATE_SPECIALIZATION
 template <typename _PathManager>
-IC	void CSDijkstra::finalize		(_PathManager &path_manager)
+inline	void CSDijkstra::finalize		(_PathManager &path_manager)
 {
 	// finalize path manager after we finished path search
 	path_manager.finalize	();
@@ -135,7 +135,7 @@ IC	void CSDijkstra::finalize		(_PathManager &path_manager)
 
 TEMPLATE_SPECIALIZATION
 template <typename _PathManager>
-IC	bool CSDijkstra::step				(_PathManager &path_manager)
+inline	bool CSDijkstra::step				(_PathManager &path_manager)
 {
 	// get the best node, i.e. a node with the minimum 'f'
 	CGraphVertex		&best = data_storage().get_best();
@@ -215,7 +215,7 @@ IC	bool CSDijkstra::step				(_PathManager &path_manager)
 
 TEMPLATE_SPECIALIZATION
 template <typename _PathManager>
-IC	bool CSDijkstra::find				(_PathManager &path_manager)
+inline	bool CSDijkstra::find				(_PathManager &path_manager)
 {
 	// initialize data structures with new search
 	initialize			(path_manager);

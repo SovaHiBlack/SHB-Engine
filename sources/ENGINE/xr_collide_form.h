@@ -29,14 +29,14 @@ struct clQueryCollision
 	xr_vector<Fobb>			boxes;			// boxes/ellipsoids	(if queried)
 	xr_vector<Fvector4>		spheres;		// spheres			(if queried)
 	
-	IC void				Clear	()
+	inline void				Clear	()
 	{
 		objects.clear	();
 		tris.clear		();
 		boxes.clear		();
 		spheres.clear	();
 	}
-	IC void				AddTri( const Fmatrix& m, const CDB::TRI* one, const Fvector3* verts )
+	inline void				AddTri( const Fmatrix& m, const CDB::TRI* one, const Fvector3* verts )
 	{
 		clQueryTri	T;
 		m.transform_tiny	(T.p[0],verts[one->verts[0]]);
@@ -45,7 +45,7 @@ struct clQueryCollision
 		T.T					= one;
 		tris.push_back		(T);
 	}
-	IC void				AddTri(const CDB::TRI* one, const Fvector3* verts )
+	inline void				AddTri(const CDB::TRI* one, const Fvector3* verts )
 	{
 		clQueryTri			T;
 		T.p[0]				= verts[one->verts[0]];
@@ -54,7 +54,7 @@ struct clQueryCollision
 		T.T					= one;
 		tris.push_back		(T);
 	}
-	IC void				AddBox(const Fmatrix& M, const Fbox3& B)
+	inline void				AddBox(const Fmatrix& M, const Fbox3& B)
 	{
 		Fobb			box;
 		Fvector3			c;
@@ -68,7 +68,7 @@ struct clQueryCollision
 		box.xform_set	(R);
 		boxes.push_back	(box);
 	}
-	IC void				AddBox(const Fobb& B)
+	inline void				AddBox(const Fobb& B)
 	{
 		boxes.push_back	(B);
 	}
@@ -97,7 +97,7 @@ public:
 	virtual BOOL	_RayQuery		( const collide::ray_defs& Q, collide::rq_results& R) = 0;
 	//virtual void	_BoxQuery		( const Fbox3& B, const Fmatrix& M, u32 flags)	= 0;
 
-	IC CObject*		Owner			( )	const				{ return owner;			}
+	inline CObject*		Owner			( )	const				{ return owner;			}
 	const Fbox3&		getBBox			( )	const				{ return bv_box;		}
 	float			getRadius		( )	const				{ return bv_sphere.R;	}
 	const Fsphere&	getSphere		( )	const				{ return bv_sphere;		}

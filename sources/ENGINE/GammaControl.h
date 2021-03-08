@@ -15,24 +15,24 @@ public:
 		Balance			(1.0f, 1.0f, 1.0f);
 	};
 
-	IC void				Balance			(float _r, float _g, float _b)
+	inline void				Balance			(float _r, float _g, float _b)
 	{
 		cBalance.set	(_r, _g, _b, 1);
 	}
-	IC void				Balance			(Fcolor& C)
+	inline void				Balance			(Fcolor& C)
 	{
 		Balance			(C.r, C.g, C.b);
 	}
 
-	IC void				Gamma			(float G)
+	inline void				Gamma			(float G)
 	{
 		fGamma			= G;
 	}
-	IC void				Brightness		(float B)
+	inline void				Brightness		(float B)
 	{
 		fBrightness		= B;
 	}
-	IC void				Contrast		(float C)
+	inline void				Contrast		(float C)
 	{
 		fContrast		= C;
 	}

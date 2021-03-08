@@ -371,7 +371,7 @@ namespace SmartDynamicCast {
 
 		template <typename P>
 		struct CHelper {
-			IC	static Target* smart_cast(Head *p)
+			inline	static Target* smart_cast(Head *p)
 			{
 				return		(CSmartCaster<Tail,Target>::smart_cast(SmartDynamicCast::smart_cast<NextHead>(p)));
 			}
@@ -379,13 +379,13 @@ namespace SmartDynamicCast {
 
 		template <>
 		struct CHelper<Loki::NullType> {
-			IC	static Target* smart_cast(Head *p)
+			inline	static Target* smart_cast(Head *p)
 			{
 				return		(SmartDynamicCast::smart_cast<Target>(p));
 			}
 		};
 
-		IC	static Target* smart_cast(Head *p)
+		inline	static Target* smart_cast(Head *p)
 		{
 			if (!p)
 				return	(reinterpret_cast<Target*>(p));
@@ -396,13 +396,13 @@ namespace SmartDynamicCast {
 	template <typename T1, typename T2>
 	struct CSmartMatcher {
 		template <typename T3>
-		IC	static T1* smart_cast(T2 *p)
+		inline	static T1* smart_cast(T2 *p)
 		{
 			return		(CSmartCaster<T3,T1>::smart_cast(static_cast<typename T3::Head*>(p)));
 		}
 
 		template <>
-		IC	static T1* smart_cast<Loki::NullType>(T2 *p)
+		inline	static T1* smart_cast<Loki::NullType>(T2 *p)
 		{
 #ifdef SHOW_SMART_CAST_UNOPTIMIZED_CASES
 #pragma todo("Dima to all : this smart_cast is not optimized!")
@@ -417,20 +417,20 @@ namespace SmartDynamicCast {
 	template <typename T1, typename T2>
 	struct CHelper1 {
 		template <bool base>
-		IC	static T1* smart_cast(T2 *p)
+		inline	static T1* smart_cast(T2 *p)
 		{
 			return				(CSmartMatcher<T1,T2>::smart_cast<get_conversion_sequence<T1,T2>::result>(p));
 		}
 
 		template <>
-		IC	static T1* smart_cast<true>(T2 *p)
+		inline	static T1* smart_cast<true>(T2 *p)
 		{
 			return				(static_cast<T1*>(p));
 		}
 	};
 
 	template <typename T1, typename T2>
-	IC	T1* smart_cast(T2 *p)
+	inline	T1* smart_cast(T2 *p)
 	{
 		return					(CHelper1<T1,T2>::smart_cast<object_type_traits::is_base_and_derived<T1,T2>::value || object_type_traits::is_same<T1,T2>::value>(p));
 	}
@@ -438,7 +438,7 @@ namespace SmartDynamicCast {
 	template <typename T2>
 	struct CHelper2 {
 		template <typename T1>
-		IC	static T1* smart_cast(T2* p)
+		inline	static T1* smart_cast(T2* p)
 		{
 			STATIC_CHECK		(!object_type_traits::is_const<T2>::value || object_type_traits::is_const<T1>::value,Cannot_use_smart_cast_to_convert_const_to_non_const);
 			typedef object_type_traits::remove_const<T1>::type _T1;
@@ -463,7 +463,7 @@ namespace SmartDynamicCast {
 		}
 
 		template <>
-		IC	static void* smart_cast<void>(T2* p)
+		inline	static void* smart_cast<void>(T2* p)
 		{
 #ifdef SHOW_SMART_CAST_UNOPTIMIZED_CASES
 #pragma todo("Dima to all : this smart_cast is not optimized!")
@@ -479,7 +479,7 @@ namespace SmartDynamicCast {
 };
 
 template <typename T1, typename T2>
-IC	T1	smart_cast(T2* p)
+inline	T1	smart_cast(T2* p)
 {
 #ifdef PURE_DYNAMIC_CAST_COMPATIBILITY_CHECK
 	STATIC_CHECK				(object_type_traits::is_pointer<T1>::value,Invalid_target_type_for_Dynamic_Cast);
@@ -495,7 +495,7 @@ IC	T1	smart_cast(T2* p)
 }
 
 template <typename T1, typename T2>
-IC	T1	smart_cast(T2& p)
+inline	T1	smart_cast(T2& p)
 {
 #ifdef PURE_DYNAMIC_CAST_COMPATIBILITY_CHECK
 	STATIC_CHECK				(object_type_traits::is_reference<T1>::value,Invalid_target_type_for_Dynamic_Cast);

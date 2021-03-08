@@ -8,7 +8,7 @@
 
 #pragma once
 
-IC	CSoundMemoryManager::CSoundMemoryManager						(CCustomMonster *object, CStalker *stalker, CSound_UserDataVisitor *visitor)
+inline	CSoundMemoryManager::CSoundMemoryManager						(CCustomMonster *object, CStalker *stalker, CSound_UserDataVisitor *visitor)
 {
 	VERIFY						(object);
 	m_object					= object;
@@ -21,13 +21,13 @@ IC	CSoundMemoryManager::CSoundMemoryManager						(CCustomMonster *object, CStalk
 #endif
 }
 
-IC	const CSoundMemoryManager::SOUNDS &CSoundMemoryManager::objects	() const
+inline	const CSoundMemoryManager::SOUNDS &CSoundMemoryManager::objects	() const
 {
 	VERIFY						(m_sounds);
 	return						(*m_sounds);
 }
 
-IC	void CSoundMemoryManager::priority								(const ESoundTypes &sound_type, u32 priority)
+inline	void CSoundMemoryManager::priority								(const ESoundTypes &sound_type, u32 priority)
 {
 	PRIORITIES::const_iterator	I = m_priorities.find(sound_type);
 	VERIFY						(m_priorities.end() == I);
@@ -35,24 +35,24 @@ IC	void CSoundMemoryManager::priority								(const ESoundTypes &sound_type, u32
 }
 
 #ifdef USE_SELECTED_SOUND
-IC	const MemorySpace::CSoundObject *CSoundMemoryManager::sound		() const
+inline	const MemorySpace::CSoundObject *CSoundMemoryManager::sound		() const
 {
 	return						(m_selected_sound);
 }
 #endif
 
-IC	void CSoundMemoryManager::set_squad_objects						(SOUNDS *squad_objects)
+inline	void CSoundMemoryManager::set_squad_objects						(SOUNDS *squad_objects)
 {
 	m_sounds					= squad_objects;
 }
 
-IC	void CSoundMemoryManager::set_threshold							(float threshold)
+inline	void CSoundMemoryManager::set_threshold							(float threshold)
 {
 	m_sound_threshold			= threshold;
 	VERIFY						(_valid(m_sound_threshold));
 }
 
-IC	void CSoundMemoryManager::restore_threshold						()
+inline	void CSoundMemoryManager::restore_threshold						()
 {
 	m_sound_threshold			= m_min_sound_threshold;
 	VERIFY						(_valid(m_sound_threshold));

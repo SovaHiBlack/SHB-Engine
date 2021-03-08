@@ -37,7 +37,7 @@ extern bool show_restrictions(CRestrictedObject *object);
 const float BAD_PATH_ANGLE			= PI_DIV_2 - PI_DIV_8;
 const float BAD_PATH_DISTANCE_CHECK	= 2.f;
 
-IC	void CStalkerMovementManager::setup_head_speed		()
+inline	void CStalkerMovementManager::setup_head_speed		()
 {
 	if (mental_state() == eMentalStateFree) {
 		if (object().sight().enabled())
@@ -47,7 +47,7 @@ IC	void CStalkerMovementManager::setup_head_speed		()
 		m_head.speed			= m_danger_head_speed;
 }
 
-IC	void CStalkerMovementManager::add_velocity			(int mask, float linear, float compute_angular, float angular)
+inline	void CStalkerMovementManager::add_velocity			(int mask, float linear, float compute_angular, float angular)
 {
 	detail().add_velocity		(
 		mask,
@@ -59,7 +59,7 @@ IC	void CStalkerMovementManager::add_velocity			(int mask, float linear, float c
 	);
 }
 
-IC	float CStalkerMovementManager::path_direction_angle	()
+inline	float CStalkerMovementManager::path_direction_angle	()
 {
 	if (!path().empty() && (path().size() > detail().curr_travel_point_index() + 1)) {
 		Fvector					t;
@@ -106,7 +106,7 @@ void CStalkerMovementManager::set_desired_position(const Fvector *desired_positi
 	}
 }
 
-IC	void CStalkerMovementManager::setup_body_orientation	()
+inline	void CStalkerMovementManager::setup_body_orientation	()
 {
 	if (path().empty())
 		return;
@@ -606,7 +606,7 @@ bool CStalkerMovementManager::is_object_on_the_way		(const CGameObject *object, 
 	return								(m_last_query_result);
 }
 
-IC float distance_to_line								(const Fvector &p0, const Fvector &p1, const Fvector &p2)
+inline float distance_to_line								(const Fvector &p0, const Fvector &p1, const Fvector &p2)
 {
 	if (p0.similar(p2))
 		return							(0.f);

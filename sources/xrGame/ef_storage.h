@@ -61,12 +61,12 @@ private:
 	T2* m_enemy_item;
 
 public:
-	IC			CEF_Params( )
+	inline			CEF_Params( )
 	{
 		clear( );
 	}
 
-	IC void	clear( )
+	inline void	clear( )
 	{
 		m_member = 0;
 		m_enemy = 0;
@@ -74,22 +74,22 @@ public:
 		m_enemy_item = 0;
 	}
 
-	IC T1*& member( )
+	inline T1*& member( )
 	{
 		return m_member;
 	}
 
-	IC T1*& enemy( )
+	inline T1*& enemy( )
 	{
 		return m_enemy;
 	}
 
-	IC T2*& member_item( )
+	inline T2*& member_item( )
 	{
 		return m_member_item;
 	}
 
-	IC T2*& enemy_item( )
+	inline T2*& enemy_item( )
 	{
 		return m_enemy_item;
 	}
@@ -103,11 +103,11 @@ class CEF_Storage;
 template <typename T>
 struct CEnemyFunction : public T
 {
-	IC				CEnemyFunction(CEF_Storage* storage) : T(storage)
+	inline				CEnemyFunction(CEF_Storage* storage) : T(storage)
 	{ }
 
 	template <typename P>
-	IC float	get_value(P& params)
+	inline float	get_value(P& params)
 	{
 		P save = params;
 		params.member( ) = params.enemy( );
@@ -206,9 +206,9 @@ public:
 	CEF_Storage( );
 	virtual									~CEF_Storage( );
 	CBaseFunction* function(const char* function) const;
-	IC void							alife_evaluation(bool value);
-	IC CNonALifeParams& non_alife( );
-	IC CALifeParams& alife( );
+	inline void							alife_evaluation(bool value);
+	inline CNonALifeParams& non_alife( );
+	inline CALifeParams& alife( );
 public:
 	static void script_register(lua_State*);
 };

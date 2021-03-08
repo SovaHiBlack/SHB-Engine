@@ -31,10 +31,10 @@ void CStateMonsterRestFunAbstract::initialize()
 TEMPLATE_SPECIALIZATION
 void CStateMonsterRestFunAbstract::execute()
 {
-	Fvector point;
+	Fvector3 point;
 	float	dist;
 	
-	Fvector dir;
+	Fvector3 dir;
 	dir.sub			(object->CorpseMan.get_corpse_position(), object->Position());
 	dist			= dir.magnitude();
 	dir.normalize	();
@@ -55,8 +55,8 @@ void CStateMonsterRestFunAbstract::execute()
 		CPHShellHolder*target = smart_cast<CPHShellHolder*>	(corpse);
 
 		if  (target && target->m_pPhysicsShell) {
-			Fvector			dir;
-			dir.add			(Fvector().sub(target->Position(), object->Position()), object->Direction());
+			Fvector3			dir;
+			dir.add			(Fvector3().sub(target->Position(), object->Position()), object->Direction());
 			
 			float			h,p;
 			dir.getHP		(h,p);

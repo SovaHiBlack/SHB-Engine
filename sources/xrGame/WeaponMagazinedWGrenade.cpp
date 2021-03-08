@@ -125,7 +125,7 @@ BOOL CWeaponMagazinedWGrenade::net_Spawn(CSE_Abstract* DC)
 
 	m_DefaultCartridge2.Load(*m_ammoTypes2[m_ammoType2], u8(m_ammoType2));
 
-	xr_vector<CCartridge>* pM = NULL;
+	xr_vector<CCartridge>* pM = nullptr;
 	bool b_if_grenade_mode = (m_bGrenadeMode && iAmmoElapsed && !getRocketCount( ));
 	if (b_if_grenade_mode)
 	{
@@ -214,7 +214,7 @@ bool CWeaponMagazinedWGrenade::SwitchMode( )
 	return true;
 }
 
-void  CWeaponMagazinedWGrenade::PerformSwitchGL( )
+void CWeaponMagazinedWGrenade::PerformSwitchGL( )
 {
 	m_bGrenadeMode = !m_bGrenadeMode;
 
@@ -649,7 +649,7 @@ bool CWeaponMagazinedWGrenade::UseScopeTexture( )
 	}
 
 	return true;
-};
+}
 
 float CWeaponMagazinedWGrenade::CurrentZoomFactor( )
 {
@@ -770,7 +770,7 @@ void CWeaponMagazinedWGrenade::PlayAnimShoot( )
 	}
 }
 
-void  CWeaponMagazinedWGrenade::PlayAnimModeSwitch( )
+void CWeaponMagazinedWGrenade::PlayAnimModeSwitch( )
 {
 	if (m_bGrenadeMode)
 	{
@@ -854,7 +854,7 @@ void CWeaponMagazinedWGrenade::net_Export(NET_Packet& P)
 
 void CWeaponMagazinedWGrenade::net_Import(NET_Packet& P)
 {
-	bool NewMode = FALSE;
+	bool NewMode = false;
 	NewMode = !!P.r_u8( );
 	if (NewMode != m_bGrenadeMode)
 	{

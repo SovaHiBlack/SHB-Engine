@@ -5,7 +5,7 @@
 #include	"..\ENGINE\skeletonanimated.h"
 
 
-IC bool is_in( const motion_marks::interval &i, float v )
+inline bool is_in( const motion_marks::interval &i, float v )
 {
 	if( i.first < i.second )
 		return i.first < v && i.second > v;

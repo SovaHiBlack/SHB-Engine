@@ -21,7 +21,7 @@
 >
 
 TEMPLATE_SPECIALIZATION
-IC	CSGraphVertex::CVertex					(const _data_type &data, const _vertex_id_type &vertex_id, size_t *edge_count)
+inline	CSGraphVertex::CVertex					(const _data_type &data, const _vertex_id_type &vertex_id, size_t *edge_count)
 {
 	m_data					= data;
 	m_vertex_id				= vertex_id;
@@ -30,7 +30,7 @@ IC	CSGraphVertex::CVertex					(const _data_type &data, const _vertex_id_type &ve
 }
 
 TEMPLATE_SPECIALIZATION
-IC	CSGraphVertex::~CVertex				()
+inline	CSGraphVertex::~CVertex				()
 {
 	while (!edges().empty())
 		remove_edge			(edges().back().vertex_id());
@@ -46,7 +46,7 @@ IC	CSGraphVertex::~CVertex				()
 }
 
 TEMPLATE_SPECIALIZATION
-IC	const typename CSGraphVertex::_edge_type *CSGraphVertex::edge	(const _vertex_id_type &vertex_id) const
+inline	const typename CSGraphVertex::_edge_type *CSGraphVertex::edge	(const _vertex_id_type &vertex_id) const
 {
 	EDGES::const_iterator	I = std::find(edges().begin(),edges().end(),vertex_id);
 	if (m_edges.end() == I)
@@ -55,7 +55,7 @@ IC	const typename CSGraphVertex::_edge_type *CSGraphVertex::edge	(const _vertex_
 }
 
 TEMPLATE_SPECIALIZATION
-IC	typename CSGraphVertex::_edge_type *CSGraphVertex::edge			(const _vertex_id_type &vertex_id)
+inline	typename CSGraphVertex::_edge_type *CSGraphVertex::edge			(const _vertex_id_type &vertex_id)
 {
 	EDGES::iterator			I = std::find(m_edges.begin(),m_edges.end(),vertex_id);
 	if (m_edges.end() == I)
@@ -64,7 +64,7 @@ IC	typename CSGraphVertex::_edge_type *CSGraphVertex::edge			(const _vertex_id_t
 }
 
 TEMPLATE_SPECIALIZATION
-IC	void CSGraphVertex::add_edge						(CVertex *vertex, const _edge_weight_type &edge_weight)
+inline	void CSGraphVertex::add_edge						(CVertex *vertex, const _edge_weight_type &edge_weight)
 {
 	EDGES::iterator			I = std::find(m_edges.begin(),m_edges.end(),vertex->vertex_id());
 	VERIFY					(m_edges.end() == I);
@@ -74,7 +74,7 @@ IC	void CSGraphVertex::add_edge						(CVertex *vertex, const _edge_weight_type &
 }
 
 TEMPLATE_SPECIALIZATION
-IC	void CSGraphVertex::remove_edge						(const _vertex_id_type &vertex_id)
+inline	void CSGraphVertex::remove_edge						(const _vertex_id_type &vertex_id)
 {
 	EDGES::iterator			I = std::find(m_edges.begin(),m_edges.end(),vertex_id);
 	VERIFY					(m_edges.end() != I);
@@ -85,7 +85,7 @@ IC	void CSGraphVertex::remove_edge						(const _vertex_id_type &vertex_id)
 }
 
 TEMPLATE_SPECIALIZATION
-IC	void CSGraphVertex::on_edge_addition				(CVertex *vertex)
+inline	void CSGraphVertex::on_edge_addition				(CVertex *vertex)
 {
 	VERTICES::const_iterator	I = std::find(m_vertices.begin(),m_vertices.end(),vertex);
 	VERIFY						(I == m_vertices.end());
@@ -93,7 +93,7 @@ IC	void CSGraphVertex::on_edge_addition				(CVertex *vertex)
 }
 
 TEMPLATE_SPECIALIZATION
-IC	void CSGraphVertex::on_edge_removal					(const CVertex *vertex)
+inline	void CSGraphVertex::on_edge_removal					(const CVertex *vertex)
 {
 	VERTICES::iterator			I = std::find(m_vertices.begin(),m_vertices.end(),vertex);
 	VERIFY						(I != m_vertices.end());
@@ -101,37 +101,37 @@ IC	void CSGraphVertex::on_edge_removal					(const CVertex *vertex)
 }
 
 TEMPLATE_SPECIALIZATION
-IC	const _vertex_id_type &CSGraphVertex::vertex_id		() const
+inline	const _vertex_id_type &CSGraphVertex::vertex_id		() const
 {
 	return			(m_vertex_id);
 }
 
 TEMPLATE_SPECIALIZATION
-IC	const _data_type &CSGraphVertex::data	() const
+inline	const _data_type &CSGraphVertex::data	() const
 {
 	return			(m_data);
 }
 
 TEMPLATE_SPECIALIZATION
-IC	_data_type &CSGraphVertex::data			()
+inline	_data_type &CSGraphVertex::data			()
 {
 	return			(m_data);
 }
 
 TEMPLATE_SPECIALIZATION
-IC	void CSGraphVertex::data				(const _data_type &data)
+inline	void CSGraphVertex::data				(const _data_type &data)
 {
 	m_data			= data;
 }
 
 TEMPLATE_SPECIALIZATION
-IC	const typename CSGraphVertex::EDGES &CSGraphVertex::edges	() const
+inline	const typename CSGraphVertex::EDGES &CSGraphVertex::edges	() const
 {
 	return			(m_edges);
 }
 
 TEMPLATE_SPECIALIZATION
-IC	bool CSGraphVertex::operator==	(const CVertex &obj) const
+inline	bool CSGraphVertex::operator==	(const CVertex &obj) const
 {
 	if (vertex_id() != obj.vertex_id())
 		return		(false);

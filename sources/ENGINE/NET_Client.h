@@ -49,8 +49,8 @@ public:
 	const char* net_SessionName			()	{ return nullptr; }
 
 	// receive
-	IC virtual	NET_Packet*	net_msg_Retreive		()	{ return net_Queue.Retreive();	}
-	IC void					net_msg_Release			()	{ net_Queue.Release();			}
+	inline virtual	NET_Packet*	net_msg_Retreive		()	{ return net_Queue.Retreive();	}
+	inline void					net_msg_Release			()	{ net_Queue.Release();			}
 
 	// send
 	virtual	void			Send					(NET_Packet& P, u32 dwFlags=DPNSEND_GUARANTEED, u32 dwTimeout=0);
@@ -58,8 +58,8 @@ public:
 	virtual void			OnConnectRejected		()	{};
 
 	// time management
-	IC u32					timeServer				( )	{ return device_timer->GetElapsed_ms( ); }
-	IC u32					timeServer_Async		( )	{ return device_timer->GetElapsed_ms( ); }
+	inline u32					timeServer				( )	{ return device_timer->GetElapsed_ms( ); }
+	inline u32					timeServer_Async		( )	{ return device_timer->GetElapsed_ms( ); }
 
 	BOOL					net_Syncronised;
 	virtual	BOOL			net_IsSyncronised( )

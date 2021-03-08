@@ -163,8 +163,8 @@ public:
 	virtual bool		bfExecMovement			(){return(false);};
 
 
-	IC	bool					angle_lerp_bounds		(float &a, float b, float c, float d);
-	IC	void					vfNormalizeSafe			(Fvector& Vector);
+	inline	bool					angle_lerp_bounds		(float &a, float b, float c, float d);
+	inline	void					vfNormalizeSafe			(Fvector& Vector);
 
 public:
 	virtual	float				ffGetFov				()	const								{return eye_fov;}	
@@ -213,7 +213,7 @@ public:
 			void				load_killer_clsids		(const char* section);
 			bool				is_special_killer		(CObject *obj);
 
-	IC		CMemoryManager		&memory					() const;
+	inline		CMemoryManager		&memory					() const;
 	virtual float				feel_vision_mtl_transp	(CObject* O, u32 element);
 	virtual	void				feel_sound_new			(CObject* who, int type, CSound_UserDataPtr user_data, const Fvector &Position, float power);
 
@@ -228,7 +228,7 @@ protected:
 	float						m_panic_threshold;
 
 public:
-	IC		float				panic_threshold			() const;
+	inline		float				panic_threshold			() const;
 
 
 private:
@@ -240,9 +240,9 @@ protected:
 	virtual CMovementManager		*create_movement_manager();
 
 public:
-	IC		CMovementManager		&movement				() const;
-	IC		CSoundPlayer			&sound					() const;
-	IC		CSound_UserDataVisitor	*sound_user_data_visitor() const;
+	inline		CMovementManager		&movement				() const;
+	inline		CSoundPlayer			&sound					() const;
+	inline		CSound_UserDataVisitor	*sound_user_data_visitor() const;
 
 protected:
 	float							m_far_plane_factor;
@@ -260,15 +260,15 @@ private:
 	bool							m_already_dead;
 
 public:
-	IC		const bool				&already_dead			() const {return (m_already_dead);};
+	inline		const bool				&already_dead			() const {return (m_already_dead);};
 	virtual	bool					use_simplified_visual	() const {return (already_dead());};
 	virtual void					on_enemy_change			(const CEntityAlive *enemy);
 	virtual	CVisualMemoryManager	*visual_memory			() const;
 
 public:
-	IC		float					client_update_fdelta	() const;
-	IC		const u32				&client_update_delta	() const;
-	IC		const u32				&last_client_update_time() const;
+	inline		float					client_update_fdelta	() const;
+	inline		const u32				&client_update_delta	() const;
+	inline		const u32				&last_client_update_time() const;
 
 	//////////////////////////////////////////////////////////////////////////
 	// Critical Wounds
@@ -295,18 +295,18 @@ protected:
 			bool					update_critical_wounded						(const u16 &bone_id, const float &power);
 
 public:
-	IC		void					critical_wounded_state_stop					();
+	inline		void					critical_wounded_state_stop					();
 public:
-	IC		bool					critically_wounded							();
-	IC	const u32					&critical_wound_type						() const;
+	inline		bool					critically_wounded							();
+	inline	const u32					&critical_wound_type						() const;
 
 	//////////////////////////////////////////////////////////////////////////
 private:
 	bool							m_invulnerable;
 
 public:
-	IC		void					invulnerable								(const bool &invulnerable);
-	IC		bool					invulnerable								() const;
+	inline		void					invulnerable								(const bool &invulnerable);
+	inline		bool					invulnerable								() const;
 
 protected:
 	bool	m_update_rotation_on_frame;

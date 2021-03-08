@@ -27,10 +27,10 @@ public:
 	virtual void					save					(IWriter	&memory_stream);
 	virtual void					load					(IReader	&file_stream);
 			void					init					(const char* section);
-	IC		void					set_time_factor			(float		time_factor);
-	IC		ALife::_TIME_ID			game_time				() const;
-	IC		float					time_factor				() const;
-	IC		float					normal_time_factor		() const;
+	inline		void					set_time_factor			(float		time_factor);
+	inline		ALife::_TIME_ID			game_time				() const;
+	inline		float					time_factor				() const;
+	inline		float					normal_time_factor		() const;
 };
 
 #include "alife_time_manager_inline.h"

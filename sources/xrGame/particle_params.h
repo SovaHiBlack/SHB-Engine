@@ -17,9 +17,9 @@ public:
 	Fvector			m_tParticleVelocity;
 
 public:
-	IC				CParticleParams		(const Fvector &tPositionOffset = Fvector().set(0,0,0), const Fvector &tAnglesOffset = Fvector().set(0,0,0), const Fvector &tVelocity = Fvector().set(0,0,0));
+	inline				CParticleParams		(const Fvector &tPositionOffset = Fvector().set(0,0,0), const Fvector &tAnglesOffset = Fvector().set(0,0,0), const Fvector &tVelocity = Fvector().set(0,0,0));
 	virtual			~CParticleParams	();
-	IC		void	initialize			();
+	inline		void	initialize			();
 
 public:
 	static void script_register(lua_State*);

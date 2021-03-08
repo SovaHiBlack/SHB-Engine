@@ -82,7 +82,7 @@ public:
 };
 
 /////////////////////////////////////////////////////////////////////////////
-IC void add_contact_body_effector(dBodyID body, const dContact& c, SGameMtl* material)
+inline void add_contact_body_effector(dBodyID body, const dContact& c, SGameMtl* material)
 {
 	CPHContactBodyEffector* effector = (CPHContactBodyEffector*) dBodyGetData(body);
 	if (effector)
@@ -97,7 +97,7 @@ IC void add_contact_body_effector(dBodyID body, const dContact& c, SGameMtl* mat
 	}
 }
 
-IC static int CollideIntoGroup(dGeomID o1, dGeomID o2, dJointGroupID jointGroup, CPHIsland* world, const int& MAX_CONTACTS)
+inline static int CollideIntoGroup(dGeomID o1, dGeomID o2, dJointGroupID jointGroup, CPHIsland* world, const int& MAX_CONTACTS)
 {
 	const int RS = 800 + 10;
 	const int N = RS;

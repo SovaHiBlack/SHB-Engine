@@ -33,7 +33,7 @@
 	>::CDataStorage<_vertex,_index_vertex>
 
 TEMPLATE_SPECIALIZATION
-IC	CConstructorManagerBuilderAllocator::CDataStorage	(const u32 vertex_count) :
+inline	CConstructorManagerBuilderAllocator::CDataStorage	(const u32 vertex_count) :
 		inherited				(vertex_count)
 { }
 
@@ -42,13 +42,13 @@ CConstructorManagerBuilderAllocator::~CDataStorage	()
 { }
 
 TEMPLATE_SPECIALIZATION
-IC	void CConstructorManagerBuilderAllocator::init	()
+inline	void CConstructorManagerBuilderAllocator::init	()
 {
 	inherited::init				();
 }
 
 TEMPLATE_SPECIALIZATION
-IC	typename CConstructorManagerBuilderAllocator::CGraphVertex &CConstructorManagerBuilderAllocator::create_vertex	(const _index_type &vertex_id)
+inline	typename CConstructorManagerBuilderAllocator::CGraphVertex &CConstructorManagerBuilderAllocator::create_vertex	(const _index_type &vertex_id)
 {
 	return						(inherited::create_vertex(inherited_allocator::create_vertex(),vertex_id));
 }

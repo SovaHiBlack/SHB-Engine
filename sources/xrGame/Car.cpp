@@ -271,7 +271,7 @@ void CCar::SaveNetState(NET_Packet& P)
 
 	CPHSkeleton::SaveNetState	   (P);
 	P.w_vec3(Position());
-	Fvector Angle;
+	Fvector3 Angle;
 	XFORM().getXYZ(Angle);
 	P.w_vec3(Angle);
 	{
@@ -339,16 +339,16 @@ void CCar::RestoreNetState(CSE_PHSkeleton* po)
 		PKinematics(Visual())->CalculateBones_Invalidate();
 		PKinematics(Visual())->CalculateBones();
 		PPhysicsShell()->DisableCollision();
-		CPHActivationShape activation_shape;//Fvector start_box;m_PhysicMovementControl.Box().getsize(start_box);
+		CPHActivationShape activation_shape;//Fvector3 start_box;m_PhysicMovementControl.Box().getsize(start_box);
 
-		Fvector center;Center(center);
-		Fvector obj_size;BoundingBox().getsize(obj_size);
+		Fvector3 center;Center(center);
+		Fvector3 obj_size;BoundingBox().getsize(obj_size);
 		get_box(PPhysicsShell(),restored_form,obj_size,center);
 		replace.transform(center);
 		activation_shape.Create(center,obj_size,this);
 		activation_shape.set_rotation(sof);
 		activation_shape.Activate(obj_size,1,1.f,M_PI/8.f);
-		Fvector dd;
+		Fvector3 dd;
 		dd.sub(activation_shape.Position(),center);
 		activation_shape.Destroy();
 		sof.c.add(dd);
@@ -382,7 +382,7 @@ void CCar::shedule_Update(u32 dt)
 	{
 		//CarExplode();
 	}
-	if(b_exploded&&!m_explosion_flags.test(flExploding)&&!getEnabled())//!m_bExploding
+	if(b_exploded&&!m_explosion_flags.test(flExploding)&&!getEnabled())
 										setEnabled(TRUE);
 #ifdef DEBUG
 	DbgSheduleUpdate();
@@ -436,10 +436,11 @@ void CCar::UpdateCL				( )
 {
 	m_pPhysicsShell->InterpolateGlobalTransform(&XFORM());
 
-	Fvector lin_vel;
+	Fvector3 lin_vel;
 	m_pPhysicsShell->get_LinearVel(lin_vel);
 	// Sound
-	Fvector		C,V;
+	Fvector3		C;
+	Fvector3 V;
 	Center		(C);
 	V.set		(lin_vel);
 
@@ -498,7 +499,7 @@ void	CCar::net_Import			(NET_Packet& P)
 void	CCar::OnHUDDraw				(CCustomHUD* /**hud/**/)
 {
 #ifdef DEBUG
-	Fvector velocity;
+	Fvector3 velocity;
 	m_pPhysicsShell->get_LinearVel(velocity);
 	HUD().Font().pFontSmall->SetColor		(0xffffffff);
 	HUD().Font().pFontSmall->OutSet		(120,530);
@@ -538,13 +539,14 @@ void CCar::ChangeCondition	(float fDeltaCondition)
 		HUD().GetUI()->UIMainIngameWnd->CarPanel().SetCarHealth(GetfHealth()/* /100.f */);
 }
 
-void CCar::PHHit(float P,Fvector &dir, CObject *who,s16 element,Fvector p_in_object_space, float impulse, ALife::EHitType hit_type)
+void CCar::PHHit(float P, Fvector3& dir, CObject *who,s16 element, Fvector3 p_in_object_space, float impulse, ALife::EHitType hit_type)
 {
 	if(!m_pPhysicsShell)	return;
 	if(m_bone_steer==element) return;
 	if(CPHUpdateObject::IsActive())
 	{
-		Fvector vimpulse;vimpulse.set(dir);
+		Fvector3 vimpulse;
+		vimpulse.set(dir);
 		vimpulse.mul(impulse);
 		vimpulse.y *=GravityFactorImpulse();
 		float mag=vimpulse.magnitude();
@@ -664,12 +666,12 @@ bool CCar::is_Door(u16 id)
 	return true;
 }
 
-bool CCar::Enter(const Fvector& pos,const Fvector& dir,const Fvector& foot_pos)
+bool CCar::Enter(const Fvector3& pos,const Fvector3& dir,const Fvector3& foot_pos)
 {
 	xr_map<u16,SDoor>::iterator i,e;
 
 	i=m_doors.begin();e=m_doors.end();
-	Fvector enter_pos;
+	Fvector3 enter_pos;
 	enter_pos.add(pos,foot_pos);
 	enter_pos.mul(0.5f);
 	for(;i!=e;++i)
@@ -679,7 +681,7 @@ bool CCar::Enter(const Fvector& pos,const Fvector& dir,const Fvector& foot_pos)
 	return false;
 }
 
-bool CCar::Exit(const Fvector& pos,const Fvector& dir)
+bool CCar::Exit(const Fvector3& pos,const Fvector3& dir)
 {
 	xr_map<u16,SDoor>::iterator i,e;
 
@@ -768,7 +770,7 @@ void CCar::ParseDefinitions()
 	{
 		sprintf_s(rat_num,"N%d",i);
 		if(!ini->line_exist("transmission_gear_ratio",rat_num)) break;
-		Fvector gear_rat=ini->r_fvector3("transmission_gear_ratio",rat_num);
+		Fvector3 gear_rat=ini->r_fvector3("transmission_gear_ratio",rat_num);
 		gear_rat[0]*=main_gear_ratio;
 		gear_rat[1]*=(1.f/60.f*2.f*M_PI);
 		gear_rat[2]*=(1.f/60.f*2.f*M_PI);
@@ -1370,7 +1372,7 @@ void CCar::UpdateBack()
 		e=m_breaking_wheels.end();
 		for(;i!=e;++i)
 				i->Break(k);
-		Fvector v;
+		Fvector3 v;
 		m_pPhysicsShell->get_LinearVel(v);
 		//if(DriveWheelsMeanAngleRate()<m_breaks_to_back_rate)
 		if(v.dotproduct(XFORM().k)<EPS)
@@ -1426,7 +1428,7 @@ void CCar::ClearExhausts()
 		i->Clear();
 }
 
-bool CCar::Use(const Fvector& pos,const Fvector& dir,const Fvector& foot_pos)
+bool CCar::Use(const Fvector3& pos,const Fvector3& dir,const Fvector3& foot_pos)
 {
 	xr_map<u16,SDoor>::iterator i;
 
@@ -1765,7 +1767,7 @@ void CCar::CarExplode()
 	if(m_car_weapon)m_car_weapon->Action(CCarWeapon::eWpnActivate,0);
 	m_lights.TurnOffHeadLights();
 	b_exploded=true;
-	CExplosive::GenExplodeEvent(Position(),Fvector().set(0.f,1.f,0.f));
+	CExplosive::GenExplodeEvent(Position(), Fvector3().set(0.f,1.f,0.f));
 
 	CActor* A=OwnerActor();
 	if(A)
@@ -1826,7 +1828,7 @@ void CCar::CarExplode()
 //	}
 //}
 
-template <class T> IC void CCar::fill_wheel_vector(const char* S,xr_vector<T>& type_wheels)
+template <class T> inline void CCar::fill_wheel_vector(const char* S,xr_vector<T>& type_wheels)
 {
 	CKinematics* pKinematics	=smart_cast<CKinematics*>(Visual());
 	string64					S1;
@@ -1861,7 +1863,7 @@ template <class T> IC void CCar::fill_wheel_vector(const char* S,xr_vector<T>& t
 	}
 }
 
-IC void CCar::fill_exhaust_vector(const char* S,xr_vector<SExhaust>& exhausts)
+inline void CCar::fill_exhaust_vector(const char* S,xr_vector<SExhaust>& exhausts)
 {
 	CKinematics* pKinematics	=smart_cast<CKinematics*>(Visual());
 	string64					S1;
@@ -1885,7 +1887,7 @@ IC void CCar::fill_exhaust_vector(const char* S,xr_vector<SExhaust>& exhausts)
 	}
 }
 
-IC void CCar::fill_doors_map(const char* S,xr_map<u16,SDoor>& doors)
+inline void CCar::fill_doors_map(const char* S,xr_map<u16,SDoor>& doors)
 {
 	CKinematics* pKinematics	=smart_cast<CKinematics*>(Visual());
 	string64					S1;
@@ -1938,7 +1940,7 @@ float	CCar:: RefWheelCurTorque()
 	if(b_transmission_switching) return 0.f;
 	return EngineCurTorque()*((m_current_gear_ratio<0.f) ? -m_current_gear_ratio : m_current_gear_ratio);
 }
-void CCar::GetRayExplosionSourcePos(Fvector &pos)
+void CCar::GetRayExplosionSourcePos(Fvector3& pos)
 {
 	random_point_in_object_box(pos,this);
 }
@@ -1998,12 +2000,12 @@ void	CCar::		Die					(CObject* who)
 	CarExplode();
 }
 
-Fvector	CCar::		ExitVelocity				()
+Fvector3	CCar::		ExitVelocity				()
 {
 	CPhysicsShell		*P=PPhysicsShell();
-	if(!P||!P->isActive())return Fvector().set(0,0,0);
+	if(!P||!P->isActive())return Fvector3().set(0,0,0);
 	CPhysicsElement *E=P->get_ElementByStoreOrder(0);
-	Fvector v=ExitPosition();
+	Fvector3 v=ExitPosition();
 	dBodyGetPointVel(E->get_body(),v.x,v.y,v.z,cast_fp(v));
 	return v;
 }

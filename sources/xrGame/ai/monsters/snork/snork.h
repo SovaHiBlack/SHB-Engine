@@ -17,15 +17,15 @@ public:
 	virtual void	reinit				();				
 	virtual void	UpdateCL			();
 	virtual void	CheckSpecParams		(u32 spec_params);
-	virtual void	jump				(const Fvector &position, float factor);
+	virtual void	jump				(const Fvector3& position, float factor);
 	virtual bool	ability_jump_over_physics	() {return true;}
 	virtual bool	ability_distant_feel		() {return true;}
 	virtual void	HitEntityInJump		(const CEntity *pEntity);
 			
-			bool	find_geometry		(Fvector &dir);
-			float	trace				(const Fvector &dir);
+			bool	find_geometry		(Fvector3& dir);
+			float	trace				(const Fvector3& dir);
 
-			bool	trace_geometry		(const Fvector &d, float &range);
+			bool	trace_geometry		(const Fvector3& d, float &range);
 
 	virtual bool	check_start_conditions	(ControlCom::EControlType type);
 	virtual void	on_activate_control		(ControlCom::EControlType);

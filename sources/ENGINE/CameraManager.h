@@ -7,21 +7,21 @@ struct ENGINE_API SPPInfo {
 		float r, g, b;
 		SColor					(){}
 		SColor					(float _r, float _g, float _b):r(_r),g(_g),b(_b){}
-		IC operator u32()										{
+		inline operator u32()										{
 			int		_r	= clampr	(iFloor(r*255.f+.5f),0,255);
 			int		_g	= clampr	(iFloor(g*255.f+.5f),0,255);
 			int		_b	= clampr	(iFloor(b*255.f+.5f),0,255);
 			return color_rgba		(_r,_g,_b,0);
 		}
-		IC SColor& operator +=	(const SColor &ppi)				{
+		inline SColor& operator +=	(const SColor &ppi)				{
 			r += ppi.r; g += ppi.g; b += ppi.b; 
 			return *this;
 		}
-		IC SColor& operator -=	(const SColor &ppi)				{
+		inline SColor& operator -=	(const SColor &ppi)				{
 			r -= ppi.r; g -= ppi.g; b -= ppi.b; 
 			return *this;
 		}
-		IC SColor& set			(float _r, float _g, float _b)	{
+		inline SColor& set			(float _r, float _g, float _b)	{
 			r=_r;g=_g;b=_b;
 			return *this;
 		}
@@ -31,7 +31,7 @@ struct ENGINE_API SPPInfo {
 		float h, v; 
 		SDuality				(){}
 		SDuality				(float _h, float _v):h(_h),v(_v){}
-		IC SDuality& set		(float _h, float _v)			{
+		inline SDuality& set		(float _h, float _v)			{
 			h=_h;v=_v;
 			return *this;
 		}
@@ -41,7 +41,7 @@ struct ENGINE_API SPPInfo {
 		float		fps;
 		SNoise					(){}
 		SNoise					(float _i, float _g, float _f):intensity(_i),grain(_g),fps(_f){}
-		IC SNoise& set			(float _i, float _g, float _f){
+		inline SNoise& set			(float _i, float _g, float _f){
 			intensity=_i;grain=_g;fps=_f;
 			return *this;
 		}
@@ -51,7 +51,7 @@ struct ENGINE_API SPPInfo {
 	SColor		color_gray;
 	SColor		color_add;
 
-	IC SPPInfo& operator += (const SPPInfo &ppi) {
+	inline SPPInfo& operator += (const SPPInfo &ppi) {
 		blur		+= ppi.blur;
 		gray		+= ppi.gray;
 		duality.h	+= ppi.duality.h; duality.v += ppi.duality.v;
@@ -62,7 +62,7 @@ struct ENGINE_API SPPInfo {
 		color_add	+= ppi.color_add;
 		return *this;
 	}
-	IC SPPInfo& operator -= (const SPPInfo &ppi) {
+	inline SPPInfo& operator -= (const SPPInfo &ppi) {
 		blur		-= ppi.blur;
 		gray		-= ppi.gray;
 		duality.h	-= ppi.duality.h; duality.v -= ppi.duality.v;
@@ -127,12 +127,12 @@ public:
 	CEffectorPP*			AddPPEffector			(CEffectorPP*		ef);
 	void					RemovePPEffector		(EEffectorPostProcessType	type);
 
-	IC Fvector3				Pos					()	const { return vPosition;	}
-	IC Fvector3				Dir					()	const { return vDirection;}
-	IC Fvector3				Up					()	const { return vNormal;	}
-	IC Fvector3				Right				()	const { return vRight;	}
+	inline Fvector3				Pos					()	const { return vPosition;	}
+	inline Fvector3				Dir					()	const { return vDirection;}
+	inline Fvector3				Up					()	const { return vNormal;	}
+	inline Fvector3				Right				()	const { return vRight;	}
 	
-	IC void					camera_Matrix		(Fmatrix& M){M.set(vRight,vNormal,vDirection,vPosition);}
+	inline void					camera_Matrix		(Fmatrix& M){M.set(vRight,vNormal,vDirection,vPosition);}
 	void					Update				(const Fvector3& P, const Fvector3& D, const Fvector3& N, float fFOV_Dest, float fASPECT_Dest, float fFAR_Dest, u32 flags=0);
 	void					Update				(const CCameraBase* C);
 	void					ApplyDevice			(float _viewport_near);

@@ -49,11 +49,11 @@ void i_order	(float* A, float* B, float* C)
 }
 
 // Find the closest min/max pixels of a point
-IC void Vclamp(int& v, int a, int b)
+inline void Vclamp(int& v, int a, int b)
 {
 	if (v<a)	v=a; else if (v>=b) v=b-1;
 }
-IC BOOL shared(occTri* T1, occTri* T2)
+inline BOOL shared(occTri* T1, occTri* T2)
 {
 	if (T1==T2)					return TRUE;
 	if (T1->adjacent[0]==T2)	return TRUE;
@@ -61,7 +61,7 @@ IC BOOL shared(occTri* T1, occTri* T2)
 	if (T1->adjacent[2]==T2)	return TRUE;
 	return FALSE;
 }
-IC BOOL lesser(float& a, float& b)
+inline BOOL lesser(float& a, float& b)
 {
 	u32* A = (u32*)(&a);
 	u32* B = (u32*)(&b);
@@ -142,7 +142,7 @@ void i_scan		(int curY, float leftX, float lhx, float rightX, float rhx, float s
 	}
 }
 
-IC void i_test_micro( int x, int y)
+inline void i_test_micro( int x, int y)
 {
 	if (x<1) return; else if (x>=occ_dim-1)	return;
 	if (y<1) return; else if (y>=occ_dim-1)	return;
@@ -208,7 +208,7 @@ p2.y >= p1.y, p1, p2 are start/end vertices
 E1 E2 are the triangle edge differences of the 2 bounding edges for this section
 */
 
-IC void i_section	(int Sect, BOOL bMiddle)
+inline void i_section	(int Sect, BOOL bMiddle)
 {
 	// Find the start/end Y pixel coord, set the starting pts for scan line ends
 	int		startY, endY;

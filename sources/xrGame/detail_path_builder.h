@@ -21,13 +21,13 @@ private:
 	u32						m_path_vertex_index;
 
 public:
-	IC						CDetailPathBuilder	(CMovementManager *object)
+	inline						CDetailPathBuilder	(CMovementManager *object)
 	{
 		VERIFY				(object);
 		m_object			= object;
 	}
 	
-	IC		void			setup			(const PATH &level_path, const u32 &path_vertex_index)
+	inline		void			setup			(const PATH &level_path, const u32 &path_vertex_index)
 	{
 		m_object->m_wait_for_distributed_computation	= true;
 		m_level_path		= &level_path;
@@ -48,7 +48,7 @@ public:
 			m_object->m_path_state		= CMovementManager::ePathStatePathVerification;
 	}
 
-	IC		void			remove			()
+	inline		void			remove			()
 	{
 		if (m_object->m_wait_for_distributed_computation)
 			m_object->m_wait_for_distributed_computation	= false;

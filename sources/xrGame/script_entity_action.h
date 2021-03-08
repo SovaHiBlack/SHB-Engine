@@ -32,40 +32,40 @@ public:
 	bool					m_started;
 
 public:
-	IC				CScriptEntityAction					();
-	IC				CScriptEntityAction					(const CScriptEntityAction *entity_action);
+	inline				CScriptEntityAction					();
+	inline				CScriptEntityAction					(const CScriptEntityAction *entity_action);
 	virtual			~CScriptEntityAction				();
 	template<typename T>
-	IC		void	SetAction							(const T &t, T &tt);
-	IC		void	SetAction							(CScriptMovementAction &tMovementAction);
-	IC		void	SetAction							(CScriptWatchAction &tWatchAction);
-	IC		void	SetAction							(CScriptAnimationAction &tAnimationAction);
-	IC		void	SetAction							(CScriptSoundAction &tSoundAction);
-	IC		void	SetAction							(CScriptParticleAction &tParticleAction);
-	IC		void	SetAction							(CScriptObjectAction &tObjectAction);
-	IC		void	SetAction							(CScriptActionCondition &tActionCondition);
-	IC		void	SetAction							(CScriptMonsterAction &tMonsterAction);
-	IC		void	SetAction							(void *user_data);
-	IC		bool	CheckIfActionCompleted				(const CScriptAbstractAction &tAbstractAction) const;
-	IC		bool	CheckIfMovementCompleted			() const;
-	IC		bool	CheckIfWatchCompleted				() const;
-	IC		bool	CheckIfAnimationCompleted			() const;
-	IC		bool	CheckIfSoundCompleted				() const;
-	IC		bool	CheckIfParticleCompleted			() const;
-	IC		bool	CheckIfObjectCompleted				() const;
-	IC		bool	CheckIfMonsterActionCompleted		() const;
-	IC		bool	CheckIfTimeOver						();
-	IC		bool	CheckIfActionCompleted				();
-	IC		void	initialize							();
+	inline		void	SetAction							(const T &t, T &tt);
+	inline		void	SetAction							(CScriptMovementAction &tMovementAction);
+	inline		void	SetAction							(CScriptWatchAction &tWatchAction);
+	inline		void	SetAction							(CScriptAnimationAction &tAnimationAction);
+	inline		void	SetAction							(CScriptSoundAction &tSoundAction);
+	inline		void	SetAction							(CScriptParticleAction &tParticleAction);
+	inline		void	SetAction							(CScriptObjectAction &tObjectAction);
+	inline		void	SetAction							(CScriptActionCondition &tActionCondition);
+	inline		void	SetAction							(CScriptMonsterAction &tMonsterAction);
+	inline		void	SetAction							(void *user_data);
+	inline		bool	CheckIfActionCompleted				(const CScriptAbstractAction &tAbstractAction) const;
+	inline		bool	CheckIfMovementCompleted			() const;
+	inline		bool	CheckIfWatchCompleted				() const;
+	inline		bool	CheckIfAnimationCompleted			() const;
+	inline		bool	CheckIfSoundCompleted				() const;
+	inline		bool	CheckIfParticleCompleted			() const;
+	inline		bool	CheckIfObjectCompleted				() const;
+	inline		bool	CheckIfMonsterActionCompleted		() const;
+	inline		bool	CheckIfTimeOver						();
+	inline		bool	CheckIfActionCompleted				();
+	inline		void	initialize							();
 
 public:
-	IC		const CScriptMovementAction		&move		();
-	IC		const CScriptWatchAction		&look		();
-	IC		const CScriptAnimationAction	&anim		();
-	IC		const CScriptParticleAction		&particle	();
-	IC		const CScriptObjectAction		&object		();
-	IC		const CScriptActionCondition	&cond		();
-	IC		void							*data		();
+	inline		const CScriptMovementAction		&move		();
+	inline		const CScriptWatchAction		&look		();
+	inline		const CScriptAnimationAction	&anim		();
+	inline		const CScriptParticleAction		&particle	();
+	inline		const CScriptObjectAction		&object		();
+	inline		const CScriptActionCondition	&cond		();
+	inline		void							*data		();
 
 public:
 	static void script_register(lua_State*);

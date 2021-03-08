@@ -44,7 +44,7 @@ void CPatrolPoint::verify_vertex_id							(const CLevelGraph *level_graph, const
 }
 #endif
 
-IC	void CPatrolPoint::correct_position						(const CLevelGraph *level_graph, const CGameLevelCrossTable *cross, const CGameGraph *game_graph)
+inline	void CPatrolPoint::correct_position						(const CLevelGraph *level_graph, const CGameLevelCrossTable *cross, const CGameGraph *game_graph)
 {
 	if (!level_graph || !level_graph->valid_vertex_position(position()) || !level_graph->valid_vertex_id(m_level_vertex_id))
 		return;

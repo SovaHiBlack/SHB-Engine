@@ -32,7 +32,7 @@ public:
 	virtual BOOL				net_SaveRelevant();
 	virtual void				net_Relcase		(CObject *object);
 			void				set_object		(CScriptBinderObject *object);
-	IC		CScriptBinderObject	*object			();
+	inline		CScriptBinderObject	*object			();
 };
 
 #include "script_binder_inline.h"

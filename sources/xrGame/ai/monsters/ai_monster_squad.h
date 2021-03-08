@@ -17,7 +17,7 @@ enum EMemberGoalType {
 struct SMemberGoal {
 	EMemberGoalType		type;
 	CEntity				*entity;
-	Fvector				position;
+	Fvector3				position;
 	u32					node;
 
 	SMemberGoal			() {
@@ -45,12 +45,10 @@ struct SSquadCommand {
 	ESquadCommandType	type;	// тип команды
 
 	CEntity		*entity;
-	Fvector		position;
+	Fvector3		position;
 	u32			node;
-	Fvector		direction;
-
+	Fvector3		direction;
 };
-
 
 /////////////////////////////////////////////////////////////////////////////////////////
 // MonsterSquad Class
@@ -143,7 +141,7 @@ public:
 	// -- Temp -- 
 	struct _elem {
 		CEntity		*pE;
-		Fvector		p_from;
+		Fvector3		p_from;
 		float		yaw;
 	};
 	xr_vector<_elem>	lines;

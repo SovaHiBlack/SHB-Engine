@@ -30,19 +30,19 @@ protected:
 	float				m_last_radius;
 
 public:
-	IC							CCoverEvaluatorBase	(CRestrictedObject *object);
-	IC		const CCoverPoint	*selected			() const;
-	IC		bool				inertia				(float radius);
-	IC		bool				initialized			() const;
-	IC		void				setup				();
-	IC		void				set_inertia			(u32 inertia_time);
-	IC		void				initialize			(const Fvector &start_position, bool fake_call = false);
+	inline							CCoverEvaluatorBase	(CRestrictedObject *object);
+	inline		const CCoverPoint	*selected			() const;
+	inline		bool				inertia				(float radius);
+	inline		bool				initialized			() const;
+	inline		void				setup				();
+	inline		void				set_inertia			(u32 inertia_time);
+	inline		void				initialize			(const Fvector &start_position, bool fake_call = false);
 	virtual void				finalize			();
-	IC		bool				accessible			(const Fvector &position);
-	IC		bool				actual				() const;
-	IC		CRestrictedObject	&object				() const;
-	IC		void				invalidate			();
-	IC		float				best_value			() const;
+	inline		bool				accessible			(const Fvector &position);
+	inline		bool				actual				() const;
+	inline		CRestrictedObject	&object				() const;
+	inline		void				invalidate			();
+	inline		float				best_value			() const;
 };
 
 //////////////////////////////////////////////////////////////////////////
@@ -62,9 +62,9 @@ protected:
 	float				m_best_distance;
 
 public:
-	IC					CCoverEvaluatorCloseToEnemy	(CRestrictedObject *object);
-	IC		void		initialize			(const Fvector &start_position, bool fake_call = false);
-	IC		void		setup				(const Fvector &enemy_position, float min_enemy_distance, float	max_enemy_distance, float deviation = 0.f);
+	inline					CCoverEvaluatorCloseToEnemy	(CRestrictedObject *object);
+	inline		void		initialize			(const Fvector &start_position, bool fake_call = false);
+	inline		void		setup				(const Fvector &enemy_position, float min_enemy_distance, float	max_enemy_distance, float deviation = 0.f);
 			void		evaluate			(const CCoverPoint *cover_point, float weight);
 };
 
@@ -77,7 +77,7 @@ protected:
 	typedef CCoverEvaluatorCloseToEnemy inherited;
 
 public:
-	IC					CCoverEvaluatorFarFromEnemy	(CRestrictedObject *object);
+	inline					CCoverEvaluatorFarFromEnemy	(CRestrictedObject *object);
 			void		evaluate			(const CCoverPoint *cover_point, float weight);
 };
 
@@ -90,7 +90,7 @@ protected:
 	typedef CCoverEvaluatorCloseToEnemy inherited;
 
 public:
-	IC					CCoverEvaluatorBest	(CRestrictedObject *object);
+	inline					CCoverEvaluatorBest	(CRestrictedObject *object);
 			void		evaluate			(const CCoverPoint *cover_point, float weight);
 };
 
@@ -103,7 +103,7 @@ protected:
 	typedef CCoverEvaluatorBest inherited;
 
 public:
-	IC					CCoverEvaluatorBestByTime	(CRestrictedObject *object);
+	inline					CCoverEvaluatorBestByTime	(CRestrictedObject *object);
 			void		evaluate					(const CCoverPoint *cover_point, float weight);
 };
 
@@ -122,8 +122,8 @@ protected:
 	u32					m_level_vertex_id;
 
 public:
-	IC					CCoverEvaluatorAngle(CRestrictedObject *object);
-	IC		void		setup				(const Fvector &enemy_position, float min_enemy_distance, float	max_enemy_distance, u32 level_vertex_id);
+	inline					CCoverEvaluatorAngle(CRestrictedObject *object);
+	inline		void		setup				(const Fvector &enemy_position, float min_enemy_distance, float	max_enemy_distance, u32 level_vertex_id);
 			void		initialize			(const Fvector &start_position, bool fake_call = false);
 			void		evaluate			(const CCoverPoint *cover_point, float weight);
 };
@@ -140,8 +140,8 @@ protected:
 	float				m_min_distance;
 
 public:
-	IC					CCoverEvaluatorSafe	(CRestrictedObject *object);
-	IC		void		setup				(float min_distance);
+	inline					CCoverEvaluatorSafe	(CRestrictedObject *object);
+	inline		void		setup				(float min_distance);
 			void		evaluate			(const CCoverPoint *cover_point, float weight);
 };
 
@@ -160,7 +160,7 @@ protected:
 	xr_vector<const CCoverPoint*>	m_covers;
 
 public:
-	IC					CCoverEvaluatorRandomGame	(CRestrictedObject *object);
+	inline					CCoverEvaluatorRandomGame	(CRestrictedObject *object);
 			void		setup						(GameGraph::_GRAPH_ID game_vertex_id, float max_distance);
 			void		evaluate					(const CCoverPoint *cover_point, float weight);
 	virtual	void		finalize					();
@@ -180,7 +180,7 @@ private:
 	float				m_min_enemy_distance;
 
 public:
-	IC					CCoverEvaluatorAmbush	(CRestrictedObject *object);
+	inline					CCoverEvaluatorAmbush	(CRestrictedObject *object);
 			void		setup					(const Fvector &my_position, const Fvector &enemy_position, float min_enemy_distance);
 			void		evaluate				(const CCoverPoint *cover_point, float weight);
 };

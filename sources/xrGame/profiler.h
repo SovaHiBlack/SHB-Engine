@@ -23,8 +23,8 @@ struct CProfileResultPortion {
 #pragma pack(pop)
 
 struct CProfilePortion : public CProfileResultPortion {
-	IC				CProfilePortion		(const char* timer_id);
-	IC				~CProfilePortion	();
+	inline				CProfilePortion		(const char* timer_id);
+	inline				~CProfilePortion	();
 };
 
 struct CProfileStats {
@@ -37,13 +37,13 @@ struct CProfileStats {
 	u32				m_count;
 	u32				m_call_count;
 
-	IC				CProfileStats		();
+	inline				CProfileStats		();
 };
 
 class CProfiler {
 private:
 	struct pred_rstr {
-		IC	bool operator()	(const shared_str &_1, const shared_str &_2) const
+		inline	bool operator()	(const shared_str &_1, const shared_str &_2) const
 		{
 			return	(xr_strcmp(*_1,*_2) < 0);
 		}
@@ -61,7 +61,7 @@ protected:
 
 protected:
 			void		setup_timer			(const char* timer_id, const u64 &timer_time, const u32 &call_count);
-	IC		void		convert_string		(const char* str, shared_str &out, u32 max_string_size);
+	inline		void		convert_string		(const char* str, shared_str &out, u32 max_string_size);
 
 public:
 						CProfiler			();
@@ -74,7 +74,7 @@ public:
 extern 	CProfiler *g_profiler;
 extern Flags32 psAI_Flags;
 
-IC	CProfiler&	profiler();
+inline	CProfiler&	profiler();
 		
 #	define START_PROFILE(a) { CProfilePortion	__profile_portion__(a);
 #	define STOP_PROFILE     }

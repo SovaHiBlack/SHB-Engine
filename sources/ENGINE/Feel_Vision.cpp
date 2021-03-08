@@ -23,7 +23,7 @@ namespace Feel {
 		float						vis_threshold;
 		SFeelParam(Vision* _parent, Vision::feel_visible_Item* _item, float _vis_threshold):parent(_parent),item(_item),vis(1.f),vis_threshold(_vis_threshold){}
 	};
-	IC BOOL feel_vision_callback(collide::rq_result& result, LPVOID params)
+	inline BOOL feel_vision_callback(collide::rq_result& result, LPVOID params)
 	{
 		SFeelParam* fp	= (SFeelParam*)params;
 		float vis		= fp->parent->feel_vision_mtl_transp(result.O, result.element);

@@ -221,7 +221,7 @@ int dcTriListCollider::dSortedTriCyl (
 //////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////
 
-IC	bool  dcTriListCollider::cylinderCrossesLine(const dReal* p,const dReal* R,dReal hlz,
+inline	bool  dcTriListCollider::cylinderCrossesLine(const dReal* p,const dReal* R,dReal hlz,
 						 const dReal* v0,const dReal* v1,const dReal* l,dVector3 pos){
 	dReal _cos=dDOT14(l,R);
 

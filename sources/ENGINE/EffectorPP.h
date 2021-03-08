@@ -17,8 +17,8 @@ public:
 	virtual				~CEffectorPP	();
 	virtual	BOOL		Process			(SPPInfo &PPInfo);
 	virtual	BOOL		Valid			()							{return fLifeTime>0.0f;}
-	IC EEffectorPostProcessType	Type			()	const					{return eType;}
-	IC bool				FreeOnRemove	()	const					{return bFreeOnRemove;}
-	IC void				SetType			(EEffectorPostProcessType t)			{eType=t;}
+	inline EEffectorPostProcessType	Type			()	const					{return eType;}
+	inline bool				FreeOnRemove	()	const					{return bFreeOnRemove;}
+	inline void				SetType			(EEffectorPostProcessType t)			{eType=t;}
 	virtual void		Stop            (float speed)				{fLifeTime=0.0f;};
 };

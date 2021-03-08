@@ -3,56 +3,56 @@
 
 #pragma once
 
-IC	const CStalkerAnimationManager::SCRIPT_ANIMATIONS &CStalkerAnimationManager::script_animations	() const
+inline	const CStalkerAnimationManager::SCRIPT_ANIMATIONS &CStalkerAnimationManager::script_animations	() const
 {
 	return							(m_script_animations);
 }
 
-IC	CStalkerAnimationPair &CStalkerAnimationManager::global	()
+inline	CStalkerAnimationPair &CStalkerAnimationManager::global	()
 {
 	return							(m_global);
 }
 
-IC	CStalkerAnimationPair &CStalkerAnimationManager::head	()
+inline	CStalkerAnimationPair &CStalkerAnimationManager::head	()
 {
 	return							(m_head);
 }
 
-IC	CStalkerAnimationPair &CStalkerAnimationManager::torso	()
+inline	CStalkerAnimationPair &CStalkerAnimationManager::torso	()
 {
 	return							(m_torso);
 }
 
-IC	CStalkerAnimationPair &CStalkerAnimationManager::legs	()
+inline	CStalkerAnimationPair &CStalkerAnimationManager::legs	()
 {
 	return							(m_legs);
 }
 
-IC	CStalkerAnimationPair &CStalkerAnimationManager::script	()
+inline	CStalkerAnimationPair &CStalkerAnimationManager::script	()
 {
 	return							(m_script);
 }
 
-IC	CStalker	&CStalkerAnimationManager::object			() const
+inline	CStalker	&CStalkerAnimationManager::object			() const
 {
 	VERIFY							(m_object);
 	return							(*m_object);
 }
 
-IC	void CStalkerAnimationManager::pop_script_animation		()
+inline	void CStalkerAnimationManager::pop_script_animation		()
 {
 	VERIFY							(!script_animations().empty());
 	m_script_animations.pop_front	();
 	script().reset					();
 }
 
-IC	void CStalkerAnimationManager::clear_script_animations	()
+inline	void CStalkerAnimationManager::clear_script_animations	()
 {
 	m_script_animations.clear		();
 	script().reset					();
 }
 
-IC	bool CStalkerAnimationManager::non_script_need_update	() const
+inline	bool CStalkerAnimationManager::non_script_need_update	() const
 {
 	return							(
 		m_global.need_update() ||

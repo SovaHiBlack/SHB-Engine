@@ -36,7 +36,7 @@ IPropHelper& PHelper( )
 const char* script_section = "script";
 const char* current_version = "current_server_entity_version";
 
-IC	u16	script_server_object_version	()
+inline	u16	script_server_object_version	()
 {
 	static bool initialized		= false;
 	static u16  script_version	= 0;

@@ -13,7 +13,7 @@
 
 namespace SmartDynamicCast {
 	template <typename T1, typename T2>
-	IC	T1* smart_cast(T2 *p);
+	inline	T1* smart_cast(T2 *p);
 
 	template <typename List, typename T, typename P>
 	struct CTypeHelper {

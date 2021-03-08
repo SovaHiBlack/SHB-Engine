@@ -13,7 +13,7 @@ class fClassEQ {
 	CLASS_ID cls;
 public:
 	fClassEQ(CLASS_ID C) : cls(C) {};
-	IC bool operator() (CObject* O) { return cls==O->CLS_ID; }
+	inline bool operator() (CObject* O) { return cls==O->CLS_ID; }
 };
 
 CObjectList::CObjectList	( )

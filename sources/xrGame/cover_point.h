@@ -16,10 +16,10 @@ public:
 	u32					m_level_vertex_id;
 
 public:
-	IC					CCoverPoint		(const Fvector &point, u32 level_vertex_id);
-	IC	const Fvector	&position		() const;
-	IC	u32				level_vertex_id	() const;
-	IC	bool			operator==		(const CCoverPoint &point) const;
+	inline					CCoverPoint		(const Fvector &point, u32 level_vertex_id);
+	inline	const Fvector	&position		() const;
+	inline	u32				level_vertex_id	() const;
+	inline	bool			operator==		(const CCoverPoint &point) const;
 
 public:
 	static void script_register(lua_State*);

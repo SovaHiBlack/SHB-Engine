@@ -103,7 +103,7 @@ public:
 	IRender_Visual*						model_CreatePE			(const char* name);
 	void								ApplyBlur4				(FVF::TL4uv*	dest, u32 w, u32 h, float k);
 	void								apply_object			(IRenderable*	O);
-	IC void								apply_lmaterial			()				{};
+	inline void								apply_lmaterial			()				{};
 public:
 	// feature level
 	virtual	GenerationLevel			get_generation			()	{ return IRender_interface::GENERATION_R1; }

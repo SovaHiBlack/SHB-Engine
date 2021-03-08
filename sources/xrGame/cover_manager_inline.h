@@ -8,19 +8,19 @@
 
 #pragma once
 
-IC	CCoverManager::CPointQuadTree &CCoverManager::covers		() const
+inline	CCoverManager::CPointQuadTree &CCoverManager::covers		() const
 {
 	VERIFY					(m_covers);
 	return					(*m_covers);
 }
 
-IC	CCoverManager::CPointQuadTree *CCoverManager::get_covers	()
+inline	CCoverManager::CPointQuadTree *CCoverManager::get_covers	()
 {
 	return					(m_covers);
 }
 
 template <typename _evaluator_type, typename _restrictor_type>
-IC	bool CCoverManager::inertia									(float radius, _evaluator_type &evaluator, const _restrictor_type &restrictor) const
+inline	bool CCoverManager::inertia									(float radius, _evaluator_type &evaluator, const _restrictor_type &restrictor) const
 {
 	// check if evaluator has no inertion or it's time to reevaluate
 	if (!evaluator.inertia(radius))
@@ -53,7 +53,7 @@ IC	bool CCoverManager::inertia									(float radius, _evaluator_type &evaluator
 }
 
 template <typename _evaluator_type, typename _restrictor_type>
-IC	const CCoverPoint *CCoverManager::best_cover				(const Fvector &position, float radius, _evaluator_type &evaluator, const _restrictor_type &restrictor) const
+inline	const CCoverPoint *CCoverManager::best_cover				(const Fvector &position, float radius, _evaluator_type &evaluator, const _restrictor_type &restrictor) const
 {
 	START_PROFILE("Covers/best_cover")
 
@@ -104,21 +104,21 @@ IC	const CCoverPoint *CCoverManager::best_cover				(const Fvector &position, flo
 }
 
 template <typename _evaluator_type>
-IC	const CCoverPoint *CCoverManager::best_cover				(const Fvector &position, float radius, _evaluator_type &evaluator) const
+inline	const CCoverPoint *CCoverManager::best_cover				(const Fvector &position, float radius, _evaluator_type &evaluator) const
 {
 	return					(best_cover<_evaluator_type,CCoverManager>(position,radius,evaluator,*this));
 }
 
-IC	bool CCoverManager::operator()								(const CCoverPoint *) const
+inline	bool CCoverManager::operator()								(const CCoverPoint *) const
 {
 	return					(true);
 }
 
-IC	float CCoverManager::weight									(const CCoverPoint *) const
+inline	float CCoverManager::weight									(const CCoverPoint *) const
 {
 	return					(1.f);
 }
 
-IC	void CCoverManager::finalize								(const CCoverPoint *) const
+inline	void CCoverManager::finalize								(const CCoverPoint *) const
 {
 }

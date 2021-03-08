@@ -8,53 +8,55 @@
 
 class CGrenade : public CMissile, public CExplosive
 {
-	typedef CMissile		inherited;
+	using inherited = CMissile;
 
 public:
-							CGrenade							();
-	virtual					~CGrenade							();
+	CGrenade( );
+	virtual					~CGrenade( );
 
 
-	virtual void			Load								(const char* section);
-	
-	virtual BOOL 			net_Spawn							(CSE_Abstract* DC);
-	virtual void 			net_Destroy							();
-	virtual void 			net_Relcase							(CObject* O );
+	virtual void			Load(const char* section);
 
-	virtual void 			OnH_B_Independent					(bool just_before_destroy);
-	virtual void 			OnH_A_Independent					();
-	virtual void 			OnH_A_Chield						();
-	
-	virtual void 			OnEvent								(NET_Packet& P, u16 type);
-	
-	virtual void 			OnAnimationEnd						(u32 state);
-	virtual void 			UpdateCL							();
+	virtual BOOL 			net_Spawn(CSE_Abstract* DC);
+	virtual void 			net_Destroy( );
+	virtual void 			net_Relcase(CObject* O);
 
-	virtual void 			Throw();
-	virtual void 			Destroy();
+	virtual void 			OnH_B_Independent(bool just_before_destroy);
+	virtual void 			OnH_A_Independent( );
+	virtual void 			OnH_A_Chield( );
 
-	
-	virtual bool			Action								(int cmd, u32 flags);
-	virtual bool			Useful								() const;
-	virtual void			State								(u32 state);
+	virtual void 			OnEvent(NET_Packet& P, u16 type);
 
-	virtual void			OnH_B_Chield						()				{inherited::OnH_B_Chield();}
+	virtual void 			OnAnimationEnd(u32 state);
+	virtual void 			UpdateCL( );
 
-	virtual void			Hit									(SHit* pHDS);
+	virtual void 			Throw( );
+	virtual void 			Destroy( );
 
-	virtual bool			NeedToDestroyObject					() const; 
-	virtual ALife::_TIME_ID	TimePassedAfterIndependant			() const;
 
-			void			PutNextToSlot						();
+	virtual bool			Action(int cmd, u32 flags);
+	virtual bool			Useful( ) const;
+	virtual void			State(u32 state);
 
-	virtual void			Deactivate							();
-	virtual void			GetBriefInfo						(xr_string& str_name, xr_string& icon_sect_name, xr_string& str_count);
+	virtual void			OnH_B_Chield( )
+	{
+		inherited::OnH_B_Chield( );
+	}
+
+	virtual void			Hit(SHit* pHDS);
+
+	virtual bool			NeedToDestroyObject( ) const;
+	virtual ALife::_TIME_ID	TimePassedAfterIndependant( ) const;
+
+	void			PutNextToSlot( );
+
+	virtual void			Deactivate( );
+	virtual void			GetBriefInfo(xr_string& str_name, xr_string& icon_sect_name, xr_string& str_count);
 
 protected:
 	ALife::_TIME_ID			m_dwGrenadeRemoveTime;
 	ALife::_TIME_ID			m_dwGrenadeIndependencyTime;
 
-protected:
 	HUD_SOUND				sndCheckout;
 	ESoundTypes				m_eSoundCheckout;
 
@@ -63,13 +65,31 @@ private:
 	bool					m_thrown;
 
 protected:
-	virtual void			UpdateXForm							()		{ CMissile::UpdateXForm(); };
+	virtual void			UpdateXForm( )
+	{
+		CMissile::UpdateXForm( );
+	};
 
 public:
-	virtual BOOL			UsedAI_Locations					();
-	virtual CExplosive		*cast_explosive						()	{return this;}
-	virtual CMissile		*cast_missile						()	{return this;}
-	virtual CHudItem		*cast_hud_item						()	{return this;}
-	virtual CGameObject		*cast_game_object					()	{return this;}
-	virtual IDamageSource	*cast_IDamageSource					()	{return CExplosive::cast_IDamageSource();}
+	virtual BOOL			UsedAI_Locations( );
+	virtual CExplosive* cast_explosive( )
+	{
+		return this;
+	}
+	virtual CMissile* cast_missile( )
+	{
+		return this;
+	}
+	virtual CHudItem* cast_hud_item( )
+	{
+		return this;
+	}
+	virtual CGameObject* cast_game_object( )
+	{
+		return this;
+	}
+	virtual IDamageSource* cast_IDamageSource( )
+	{
+		return CExplosive::cast_IDamageSource( );
+	}
 };

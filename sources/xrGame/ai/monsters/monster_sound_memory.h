@@ -41,7 +41,7 @@ typedef struct tagSoundElement
 {
 	const CObject		*who;
 	TSoundDangerValue	type;
-	Fvector				position;		// позиция звука, не объекта, издавшего звук
+	Fvector3				position;		// позиция звука, не объекта, издавшего звук
 	float				power;
 	TTime				time;			// время обнаружения звука
 
@@ -53,12 +53,12 @@ typedef struct tagSoundElement
 	bool operator < (const tagSoundElement &s) const  { 
 		return (value < s.value);
 	}
-	inline void SetConvert(const CObject* who, int eType, const Fvector &position, float power, TTime time) {
+	inline void SetConvert(const CObject* who, int eType, const Fvector3& position, float power, TTime time) {
 		this->who = who; type = ConvertSoundType((ESoundTypes)eType); this->position = position; this->power = power; this->time = time;
 	}
 	TSoundDangerValue ConvertSoundType(ESoundTypes stype);
 
-	void CalcValue(TTime cur_time, Fvector cur_pos) {
+	void CalcValue(TTime cur_time, Fvector3 cur_pos) {
 		value = FACTOR_SOUND_TYPE * u32(NONE_DANGEROUS_SOUND - WEAPON_SHOOTING) - iFloor(FACTOR_DISTANCE * cur_pos.distance_to(position)) - FACTOR_DELTA_TIME * iFloor(float((cur_time - time) / 1000)) + FACTOR_SOUND_POWER * iFloor(power);
 	}
 
@@ -80,7 +80,7 @@ public:
 	void		init_external			(CBaseMonster *M, TTime mem_time);
 
 	void		HearSound				(const SoundElem &s);
-	void		HearSound				(const CObject* who, int eType, const Fvector &Position, float power, TTime time);
+	void		HearSound				(const CObject* who, int eType, const Fvector3& Position, float power, TTime time);
 	inline	bool	IsRememberSound			() {return (!Sounds.empty());}
 	void		GetSound				(SoundElem &s, bool &bDangerous);	// возвращает самый опасный звук
 	SoundElem	&GetSound				();

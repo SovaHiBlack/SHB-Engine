@@ -22,7 +22,7 @@ struct SStraightLineParams : public SBaseParameters<
 	Fvector			m_dest_point;
 	_dist_type		m_distance;
 
-	IC	SStraightLineParams (
+	inline	SStraightLineParams (
 			const Fvector			&start_point,
 			const Fvector			&dest_point,
 			_dist_type				max_range = _dist_type(6000),

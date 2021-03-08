@@ -11,7 +11,7 @@
 #include "ai_space.h"
 #include "script_engine.h"
 
-IC	bool compare_safe(const luabind::object &o1 , const luabind::object &o2)
+inline	bool compare_safe(const luabind::object &o1 , const luabind::object &o2)
 {
 	if ((o1.type() == LUA_TNIL) && (o2.type() == LUA_TNIL))
 		return						(true);
@@ -39,7 +39,7 @@ IC	bool compare_safe(const luabind::object &o1 , const luabind::object &o2)
 
 #define function_body_ex(_1,_2,_3,_4,_c,_5,_6) \
 	_1 _3 _2\
-	IC return_type operator() (_4) _c\
+	inline return_type operator() (_4) _c\
 	{\
 		try {					\
 			try {				\
@@ -83,19 +83,19 @@ protected:
 	object_type						m_object;
 
 private:
-	IC			bool				empty					() const;
+	inline			bool				empty					() const;
 
 public:
-	IC								CScriptCallbackEx_		();
-	IC								CScriptCallbackEx_		(const CScriptCallbackEx_ &callback);
-	IC	virtual						~CScriptCallbackEx_		();
-	IC			CScriptCallbackEx_	&operator=				(const CScriptCallbackEx_ &callback);
-	IC			bool				operator==				(const CScriptCallbackEx_ &callback)const{return compare_safe(m_object,(callback.m_object))&&m_functor==(callback.m_functor);}
-	IC			bool				operator==				(const object_type	&object)		const{return compare_safe(m_object,object);}
-	IC			void				set						(const functor_type &functor);
-	IC			void				set						(const functor_type &functor, const object_type &object);
-	IC			void				clear					();
-	IC			operator			unspecified_bool_type	() const {return (!m_functor.is_valid() ? 0 : &CScriptCallbackEx_::empty);}
+	inline								CScriptCallbackEx_		();
+	inline								CScriptCallbackEx_		(const CScriptCallbackEx_ &callback);
+	inline	virtual						~CScriptCallbackEx_		();
+	inline			CScriptCallbackEx_	&operator=				(const CScriptCallbackEx_ &callback);
+	inline			bool				operator==				(const CScriptCallbackEx_ &callback)const{return compare_safe(m_object,(callback.m_object))&&m_functor==(callback.m_functor);}
+	inline			bool				operator==				(const object_type	&object)		const{return compare_safe(m_object,object);}
+	inline			void				set						(const functor_type &functor);
+	inline			void				set						(const functor_type &functor, const object_type &object);
+	inline			void				clear					();
+	inline			operator			unspecified_bool_type	() const {return (!m_functor.is_valid() ? 0 : &CScriptCallbackEx_::empty);}
 };
 
 #include "script_callback_ex_inline.h"

@@ -133,7 +133,7 @@ ALife::ERelationType CScriptGameObject::GetRelationType	(CScriptGameObject* who)
 }
 
 template <typename T>
-IC	T	*CScriptGameObject::action_planner()
+inline	T	*CScriptGameObject::action_planner()
 {
 	CStalker				*manager = smart_cast<CStalker*>(&object());
 	if (!manager)

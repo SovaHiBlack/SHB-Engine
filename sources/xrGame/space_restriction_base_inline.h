@@ -9,7 +9,7 @@
 #pragma once
 
 #ifdef DEBUG
-IC	bool CSpaceRestrictionBase::correct	() const
+inline	bool CSpaceRestrictionBase::correct	() const
 {
 	return	(m_correct);
 }

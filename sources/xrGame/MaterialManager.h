@@ -33,9 +33,9 @@ public:
 	virtual void				reload					(const char* section);
 	virtual void				set_run_mode			(bool run_mode);
 	virtual void				update					(float time_delta, float volume, float step_time, bool standing);
-	IC		u16					last_material_idx		() const;
-	IC		u16					self_material_idx		() const;
-	IC		SGameMtlPair		*get_current_pair		();
+	inline		u16					last_material_idx		() const;
+	inline		u16					self_material_idx		() const;
+	inline		SGameMtlPair		*get_current_pair		();
 };
 
 #include "MaterialManager_inline.h"

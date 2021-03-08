@@ -1,10 +1,5 @@
-////////////////////////////////////////////////////////////////////////////
 //	Module 		: hud_item_object.cpp
-//	Created 	: 24.03.2003
-//  Modified 	: 27.12.2004
-//	Author		: Yuri Dobronravin
 //	Description : HUD item
-////////////////////////////////////////////////////////////////////////////
 
 #include "stdafx.h"
 
@@ -20,7 +15,7 @@ DLL_Pure* CHudItemObject::_construct( )
 {
 	CInventoryItemObject::_construct( );
 	CHudItem::_construct( );
-	return						(this);
+	return this;
 }
 
 void CHudItemObject::Load(const char* section)
@@ -32,8 +27,11 @@ void CHudItemObject::Load(const char* section)
 bool CHudItemObject::Action(int cmd, u32 flags)
 {
 	if (CInventoryItemObject::Action(cmd, flags))
-		return					(true);
-	return						(CHudItem::Action(cmd, flags));
+	{
+		return true;
+	}
+
+	return CHudItem::Action(cmd, flags);
 }
 
 void CHudItemObject::SwitchState(u32 S)
@@ -78,10 +76,7 @@ void CHudItemObject::OnH_A_Independent( )
 
 BOOL CHudItemObject::net_Spawn(CSE_Abstract* DC)
 {
-	return						(
-		CInventoryItemObject::net_Spawn(DC) &&
-		CHudItem::net_Spawn(DC)
-		);
+	return (CInventoryItemObject::net_Spawn(DC) && CHudItem::net_Spawn(DC));
 }
 
 void CHudItemObject::net_Destroy( )
@@ -92,7 +87,7 @@ void CHudItemObject::net_Destroy( )
 
 bool CHudItemObject::Activate( )
 {
-	return						(CHudItem::Activate( ));
+	return CHudItem::Activate( );
 }
 
 void CHudItemObject::Deactivate( )

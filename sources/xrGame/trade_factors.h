@@ -14,9 +14,9 @@ private:
 	float			m_enemy_factor;
 
 public:
-	IC				CTradeFactors	(const float &friend_factor = 1.f, const float &enemy_factor = 1.f);
-	IC	const float	&friend_factor	() const;
-	IC	const float	&enemy_factor	() const;
+	inline				CTradeFactors	(const float &friend_factor = 1.f, const float &enemy_factor = 1.f);
+	inline	const float	&friend_factor	() const;
+	inline	const float	&enemy_factor	() const;
 };
 
 #include "trade_factors_inline.h"

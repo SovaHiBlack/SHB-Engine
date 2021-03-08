@@ -43,7 +43,7 @@ class CCrow : public CEntity
 		SoundSVec		m_Sounds;
 		ref_sound&		GetRandom		()	{return m_Sounds[Random.randI(0,m_Sounds.size())];}
 		void			Load			(const char* prefix);
-		void			SetPosition		(const Fvector& pos);
+		void			SetPosition		(const Fvector3& pos);
 		void			Unload			();
 	};
 
@@ -66,12 +66,12 @@ protected:
 	};
 	SCrowSounds		m_Sounds;
 
-	Fvector			vOldPosition;
+	Fvector3			vOldPosition;
 	ECrowStates		st_current, st_target;
 	// parameters block
-	Fvector			vGoalDir;
-	Fvector			vCurrentDir;
-	Fvector			vHPB;
+	Fvector3			vGoalDir;
+	Fvector3			vCurrentDir;
+	Fvector3			vHPB;
 	float			fDHeading;
 
 	// constants
@@ -79,7 +79,7 @@ protected:
 	float			fSpeed;
 	float			fASpeed;
 	float			fMinHeight;
-	Fvector			vVarGoal;
+	Fvector3			vVarGoal;
 	float			fIdleSoundDelta;
 
 	// variables
@@ -123,15 +123,15 @@ public:
 	virtual void	net_Export					(NET_Packet& P);
 	virtual void	net_Import					(NET_Packet& P);
 
-	virtual void	g_fireParams				(const CHudItem* /**pHudItem/**/, Fvector& /**P/**/, Fvector& /**D/**/)	{};
+	virtual void	g_fireParams				(const CHudItem* /**pHudItem/**/, Fvector3& /**P/**/, Fvector3& /**D/**/)	{};
 	virtual void	g_WeaponBones				(int &/**L/**/, int &/**R1/**/, int &/**R2/**/)	{};
 
-	virtual void	HitSignal					(float	HitAmount,	Fvector& local_dir, CObject* who, s16 element);
-	virtual void	HitImpulse					(float	amount,		Fvector& vWorldDir, Fvector& vLocalDir);
+	virtual void	HitSignal					(float	HitAmount, Fvector3& local_dir, CObject* who, s16 element);
+	virtual void	HitImpulse					(float	amount, Fvector3& vWorldDir, Fvector3& vLocalDir);
 	virtual	void	Hit							(SHit* pHDS);
 	virtual void	Die							(CObject* who);
-	virtual	float	ffGetFov					() const {return 150.f;	}
-	virtual	float	ffGetRange					() const {return 30.f;	}
+	virtual	float	ffGetFov					() const {return 150.0f;	}
+	virtual	float	ffGetRange					() const {return 30.0f;	}
 
 	virtual BOOL	IsVisibleForHUD	()			{ return FALSE;		}
 	virtual bool	IsVisibleForZones()			{ return false;		}

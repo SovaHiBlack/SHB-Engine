@@ -16,7 +16,7 @@ protected:
 
 public:
 	virtual			~CScriptValueContainer	();
-	IC		void	assign					();
-	IC		void	clear					();
-	IC		void	add						(CScriptValue *value);
+	inline		void	assign					();
+	inline		void	clear					();
+	inline		void	add						(CScriptValue *value);
 };

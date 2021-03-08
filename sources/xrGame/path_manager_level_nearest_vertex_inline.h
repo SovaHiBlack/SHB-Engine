@@ -34,7 +34,7 @@ CNearestVertexPathManager::~CPathManager			()
 { }
 
 TEMPLATE_SPECIALIZATION
-IC	void CNearestVertexPathManager::setup			(
+inline	void CNearestVertexPathManager::setup			(
 		const _Graph			*_graph,
 		_DataStorage			*_data_storage,
 		xr_vector<_index_type>	*_path,
@@ -63,7 +63,7 @@ IC	void CNearestVertexPathManager::setup			(
 }
 
 TEMPLATE_SPECIALIZATION
-IC	bool CNearestVertexPathManager::is_goal_reached	(const _index_type &node_index)
+inline	bool CNearestVertexPathManager::is_goal_reached	(const _index_type &node_index)
 {
 	VERIFY					(path);
 	best_node				= graph->vertex(node_index);
@@ -79,21 +79,21 @@ IC	bool CNearestVertexPathManager::is_goal_reached	(const _index_type &node_inde
 }
 
 TEMPLATE_SPECIALIZATION
-IC	_dist_type CNearestVertexPathManager::evaluate	(const _index_type &node_index1, const _index_type &node_index2, const _Graph::const_iterator &/**i/**/)
+inline	_dist_type CNearestVertexPathManager::evaluate	(const _index_type &node_index1, const _index_type &node_index2, const _Graph::const_iterator &/**i/**/)
 {
 	VERIFY					(graph);
 	return					(m_cell_dist);
 }
 
 TEMPLATE_SPECIALIZATION
-IC	_dist_type CNearestVertexPathManager::estimate	(const _index_type &node_index) const
+inline	_dist_type CNearestVertexPathManager::estimate	(const _index_type &node_index) const
 {
 	VERIFY					(graph);
 	return					(_dist_type(0));
 }
 
 TEMPLATE_SPECIALIZATION
-IC	bool CNearestVertexPathManager::is_accessible	(const _index_type &vertex_id) const
+inline	bool CNearestVertexPathManager::is_accessible	(const _index_type &vertex_id) const
 {
 	if (!inherited::is_accessible(vertex_id))
 		return				(false);
@@ -104,7 +104,7 @@ IC	bool CNearestVertexPathManager::is_accessible	(const _index_type &vertex_id) 
 }
 
 TEMPLATE_SPECIALIZATION
-IC	bool CNearestVertexPathManager::is_limit_reached	(const _iteration_type iteration_count) const
+inline	bool CNearestVertexPathManager::is_limit_reached	(const _iteration_type iteration_count) const
 {
 	VERIFY					(data_storage);
 	return					(
@@ -115,7 +115,7 @@ IC	bool CNearestVertexPathManager::is_limit_reached	(const _iteration_type itera
 
 TEMPLATE_SPECIALIZATION
 template <typename T>
-IC	void CNearestVertexPathManager::create_path		(T &vertex)
+inline	void CNearestVertexPathManager::create_path		(T &vertex)
 {
 }
 

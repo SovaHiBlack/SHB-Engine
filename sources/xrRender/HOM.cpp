@@ -52,7 +52,7 @@ struct HOM_poly
 };
 #pragma pack(pop)
 
-IC float	Area		(Fvector& v0, Fvector& v1, Fvector& v2)
+inline float	Area		(Fvector& v0, Fvector& v1, Fvector& v2)
 {
 	float	e1 = v0.distance_to(v1);
 	float	e2 = v0.distance_to(v2);
@@ -254,7 +254,7 @@ __forceinline	BOOL	xform_b1	(Fvector2& min, Fvector2& max, float& minz, Fmatrix&
 	t			= 0.f+z*iw;										if (t<minz)	 minz =t;
 	return FALSE;
 }
-IC	BOOL	_visible	(Fbox3& B, Fmatrix& m_xform_01)
+inline	BOOL	_visible	(Fbox3& B, Fmatrix& m_xform_01)
 {
 	// Find min/max points of xformed-box
 	Fvector2	min,max;

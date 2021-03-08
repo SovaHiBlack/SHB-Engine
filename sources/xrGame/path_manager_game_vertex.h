@@ -65,8 +65,8 @@ protected:
 	bool			m_start_is_accessible;
 
 public:
-	IC		void		setup			(const _Graph *graph, _DataStorage *_data_storage, xr_vector<_index_type> *_path, const _index_type	&_start_node_index, const _index_type &_goal_node_index, _Parameters &params);
-	IC		bool		is_accessible	(const _index_type &vertex_id) const;
+	inline		void		setup			(const _Graph *graph, _DataStorage *_data_storage, xr_vector<_index_type> *_path, const _index_type	&_start_node_index, const _index_type &_goal_node_index, _Parameters &params);
+	inline		bool		is_accessible	(const _index_type &vertex_id) const;
 };
 
 #include "path_manager_game_vertex_inline.h"

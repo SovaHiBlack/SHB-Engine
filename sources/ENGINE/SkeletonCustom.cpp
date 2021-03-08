@@ -341,7 +341,7 @@ void	CKinematics::Load(const char* N, IReader *data, u32 dwFlags)
 	LL_Validate		();
 }
 
-IC void iBuildGroups(CBoneData* B, U16Vec& tgt, u16 id, u16& last_id)
+inline void iBuildGroups(CBoneData* B, U16Vec& tgt, u16 id, u16& last_id)
 {
 	if (B->IK_data.ik_flags.is(SJointIKData::flBreakable)) id = ++last_id;
 	tgt[B->GetSelfID()]	= id;
@@ -534,7 +534,7 @@ void CKinematics::Visibility_Update	()
 	}
 }
 
-IC static void RecursiveBindTransform(CKinematics* K, xr_vector<Fmatrix>& matrices, u16 bone_id, const Fmatrix& parent)
+inline static void RecursiveBindTransform(CKinematics* K, xr_vector<Fmatrix>& matrices, u16 bone_id, const Fmatrix& parent)
 {
 	CBoneData& BD			= K->LL_GetData	(bone_id);
 	Fmatrix& BM				= matrices[bone_id];

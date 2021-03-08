@@ -44,7 +44,7 @@ public:
 			void			SetParam			(int id, Fvector val);
 			bool			AllowFire			();
 			float			FireDirDiff			();
-			IC bool			IsActive			() {return m_bActive;}
+			inline bool			IsActive			() {return m_bActive;}
 			float			_height				() const	{return m_weapon_h;};
 			const Fvector&	ViewCameraPos		();
 			const Fvector&	ViewCameraDir		();

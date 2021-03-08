@@ -235,8 +235,8 @@ void CPseudoGigant::on_threaten_execute()
 		CPHShellHolder*obj = smart_cast<CPHShellHolder*>(m_nearest[i]);
 		if (!obj || !obj->m_pPhysicsShell) continue;
 
-		Fvector dir;
-		Fvector pos;
+		Fvector3 dir;
+		Fvector3 pos;
 		pos.set(obj->Position());
 		pos.y += 2.f;
 		dir.sub(pos, Position());
@@ -245,7 +245,7 @@ void CPseudoGigant::on_threaten_execute()
 	}
 
 	// играть звук
-	Fvector		pos;
+	Fvector3		pos;
 	pos.set		(Position());
 	pos.y		+= 0.1f;
 	m_sound_threaten_hit.play_at_pos(this,pos);
@@ -281,10 +281,10 @@ void CPseudoGigant::on_threaten_execute()
 	HS.GenHeader		(GE_HIT, pA->ID());
 	HS.whoID			= (ID());
 	HS.weaponID			= (ID());
-	HS.dir				= (Fvector().set(0.f,1.f,0.f));
+	HS.dir				= (Fvector3().set(0.f,1.f,0.f));
 	HS.power			= (hit_value);
 	HS.boneID			= (smart_cast<CKinematics*>(pA->Visual())->LL_GetBoneRoot());
-	HS.p_in_bone_space	= (Fvector().set(0.f,0.f,0.f));
+	HS.p_in_bone_space	= (Fvector3().set(0.f,0.f,0.f));
 	HS.impulse			= (80 * pA->character_physics_support()->movement()->GetMass());
 	HS.hit_type			= ( ALife::eHitTypeStrike);
 	HS.Write_Packet		(l_P);

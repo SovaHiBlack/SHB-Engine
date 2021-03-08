@@ -11,7 +11,7 @@
 #include "entity.h"
 #include "visual_memory_manager.h"
 
-IC	const CEntity &vision_client::object		() const
+inline	const CEntity &vision_client::object		() const
 {
 	VERIFY						(m_object);
 	return						(*m_object);

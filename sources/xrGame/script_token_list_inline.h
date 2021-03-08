@@ -9,12 +9,12 @@
 #pragma once
 
 
-IC	CScriptTokenList::CScriptTokenList	()
+inline	CScriptTokenList::CScriptTokenList	()
 {
 	clear					();
 }
 
-IC	void CScriptTokenList::add		(const char* name, int id)
+inline	void CScriptTokenList::add		(const char* name, int id)
 {
 	VERIFY					((token(name) == m_token_list.end()) && (token(id) == m_token_list.end()));
 	xr_token				temp;
@@ -26,14 +26,14 @@ IC	void CScriptTokenList::add		(const char* name, int id)
 	m_token_list.push_back	(temp);
 }
 
-IC	void CScriptTokenList::remove	(const char* name)
+inline	void CScriptTokenList::remove	(const char* name)
 {
 	iterator				I = token(name);
 	VERIFY					(I != m_token_list.end());
 	m_token_list.erase		(I);
 }
 
-IC	void CScriptTokenList::clear	()
+inline	void CScriptTokenList::clear	()
 {
 	m_token_list.clear		();
 	xr_token				temp;
@@ -41,36 +41,36 @@ IC	void CScriptTokenList::clear	()
 	m_token_list.push_back	(temp);
 }
 
-IC	int	 CScriptTokenList::id		(const char* name)
+inline	int	 CScriptTokenList::id		(const char* name)
 {
 	iterator				I = token(name);
 	VERIFY					(I != m_token_list.end());
 	return					((*I).id);
 }
 
-IC	const char* CScriptTokenList::name	(int id)
+inline	const char* CScriptTokenList::name	(int id)
 {
 	iterator				I = token(id);
 	VERIFY					(I != m_token_list.end());
 	return					((*I).name);
 }
 
-IC	CScriptTokenList::iterator CScriptTokenList::token	(const char* name)
+inline	CScriptTokenList::iterator CScriptTokenList::token	(const char* name)
 {
 	return					(std::find_if(m_token_list.begin(),m_token_list.end(),CTokenPredicateName(name)));
 }
 
-IC	CScriptTokenList::iterator CScriptTokenList::token	(int id)
+inline	CScriptTokenList::iterator CScriptTokenList::token	(int id)
 {
 	return					(std::find_if(m_token_list.begin(),m_token_list.end(),CTokenPredicateID(id)));
 }
 
-IC	const CScriptTokenList::TOKEN_LIST &CScriptTokenList::tokens() const
+inline	const CScriptTokenList::TOKEN_LIST &CScriptTokenList::tokens() const
 {
 	return					(m_token_list);
 }
 
-IC	CScriptTokenList::TOKEN_LIST &CScriptTokenList::tokens()
+inline	CScriptTokenList::TOKEN_LIST &CScriptTokenList::tokens()
 {
 	return					(m_token_list);
 }

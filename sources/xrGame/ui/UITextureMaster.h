@@ -36,7 +36,7 @@ public:
 	static void			WriteLog( );
 
 protected:
-	IC	static bool IsSh(const char* texture_name);
+	inline	static bool IsSh(const char* texture_name);
 
 //	typedef xr_string region_name;
 //	typedef xr_string shader_name;

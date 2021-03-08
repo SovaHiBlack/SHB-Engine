@@ -20,7 +20,7 @@
 typedef std::pair<shared_str,shared_str>	ANIMATION_ID;
 
 struct animation_id_predicate {
-	IC	bool operator()	(const ANIMATION_ID &_1, const ANIMATION_ID &_2) const
+	inline	bool operator()	(const ANIMATION_ID &_1, const ANIMATION_ID &_2) const
 	{
 		if (_1.first._get() < _2.first._get())
 			return	(true);
@@ -32,7 +32,7 @@ struct animation_id_predicate {
 	}
 };
 
-//IC	bool shared_str_predicate	(const shared_str &_1, const shared_str &_2)
+//inline	bool shared_str_predicate	(const shared_str &_1, const shared_str &_2)
 //{
 //	return		(_1._get() < _2._get());
 //}
@@ -44,7 +44,7 @@ struct animation_stats {
 	u32			m_frame_count;
 	u32			m_start_count;
 
-	IC	animation_stats	(
+	inline	animation_stats	(
 			const shared_str &visual_id,
 			const u32		 &frame_count,
 			const u32		 &start_count
@@ -63,13 +63,13 @@ static ANIMATION_STATS	g_animation_stats;
 typedef std::pair<ANIMATION_ID,ANIMATION_ID>	BLEND_ID;
 
 struct blend_id_predicate {
-	IC	bool less		(const shared_str &_1, const shared_str &_2) const
+	inline	bool less		(const shared_str &_1, const shared_str &_2) const
 	{
 		return		(_1._get() < _2._get());
 	}
 
 	template <typename T>
-	IC	bool less		(const std::pair<T,T> &_1, const std::pair<T,T> &_2) const
+	inline	bool less		(const std::pair<T,T> &_1, const std::pair<T,T> &_2) const
 	{
 		if (less(_1.first,_2.first))
 			return	(true);
@@ -80,7 +80,7 @@ struct blend_id_predicate {
 		return		(less(_1.second,_2.second));
 	}
 
-	IC	bool operator()	(const BLEND_ID &_1, const BLEND_ID &_2) const
+	inline	bool operator()	(const BLEND_ID &_1, const BLEND_ID &_2) const
 	{
 		return		(less(_1,_2));
 	}
@@ -101,7 +101,7 @@ void show_animations		()
 		*i							= (const ANIMATION_STATS_PAIR *)&(*I).first;
 
 	struct predicate {
-		static IC	bool frame_count	(const ANIMATION_STATS_PAIR * const &_1, const ANIMATION_STATS_PAIR * const &_2)
+		static inline	bool frame_count	(const ANIMATION_STATS_PAIR * const &_1, const ANIMATION_STATS_PAIR * const &_2)
 		{
 			return					(_1->second.m_frame_count < _2->second.m_frame_count);
 		}
@@ -132,7 +132,7 @@ void show_blends			()
 		*i							= (const BLEND_STATS_PAIR *)&(*I).first;
 
 	struct predicate {
-		static IC	bool blend_count	(const BLEND_STATS_PAIR * const &_1, const BLEND_STATS_PAIR * const &_2)
+		static inline	bool blend_count	(const BLEND_STATS_PAIR * const &_1, const BLEND_STATS_PAIR * const &_2)
 		{
 			return					(_1->second < _2->second);
 		}

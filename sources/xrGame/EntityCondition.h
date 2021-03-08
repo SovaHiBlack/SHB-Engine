@@ -18,19 +18,19 @@ public:
 							CEntityConditionSimple		( );
 	virtual					~CEntityConditionSimple		( );
 
-	IC float				GetHealth					( ) const
+	inline float				GetHealth					( ) const
 	{
 		return m_fHealth;
 	}
-	IC float 				GetMaxHealth				( ) const
+	inline float 				GetMaxHealth				( ) const
 	{
 		return m_fHealthMax;
 	}
-	IC float&				health						( )
+	inline float&				health						( )
 	{
 		return m_fHealth;
 	}
-	IC float&				max_health					( )
+	inline float&				max_health					( )
 	{
 		return m_fHealthMax;
 	}
@@ -52,23 +52,23 @@ public:
 	virtual void			save						(NET_Packet& output_packet);
 	virtual void			load						(IReader& input_packet);
 
-	IC float				GetPower					( ) const
+	inline float				GetPower					( ) const
 	{
 		return m_fPower;
 	}
-	IC float				GetRadiation				( ) const
+	inline float				GetRadiation				( ) const
 	{
 		return m_fRadiation;
 	}
-	IC float				GetPsyHealth				( ) const
+	inline float				GetPsyHealth				( ) const
 	{
 		return m_fPsyHealth;
 	}
-	IC float 				GetEntityMorale				( ) const
+	inline float 				GetEntityMorale				( ) const
 	{
 		return m_fEntityMorale;
 	}
-	IC float 				GetHealthLost				( ) const
+	inline float 				GetHealthLost				( ) const
 	{
 		return m_fHealthLost;
 	}
@@ -84,16 +84,16 @@ public:
 	virtual void 			ChangeAlcohol				(float value)
 	{ };
 
-	IC void					MaxPower					( )
+	inline void					MaxPower					( )
 	{
 		m_fPower = m_fPowerMax;
 	};
-	IC void					SetMaxPower					(float val)
+	inline void					SetMaxPower					(float val)
 	{
 		m_fPowerMax = val;
 		clamp(m_fPowerMax, 0.1f, 1.0f);
 	};
-	IC float				GetMaxPower					( ) const
+	inline float				GetMaxPower					( ) const
 	{
 		return m_fPowerMax;
 	};
@@ -107,7 +107,7 @@ public:
 	virtual void			UpdateCondition				( );
 	void					UpdateWounds				( );
 	void					UpdateConditionTime			( );
-	IC void					SetConditionDeltaTime		(float DeltaTime)
+	inline void					SetConditionDeltaTime		(float DeltaTime)
 	{
 		m_fDeltaTime = DeltaTime;
 	};
@@ -126,11 +126,11 @@ public:
 
 	CWound*					AddWound					(float hit_power, ALife::EHitType hit_type, u16 element);
 
-	IC void 				SetCanBeHarmedState			(bool CanBeHarmed)
+	inline void 				SetCanBeHarmedState			(bool CanBeHarmed)
 	{
 		m_bCanBeHarmed = CanBeHarmed;
 	}
-	IC bool					CanBeHarmed					( ) const
+	inline bool					CanBeHarmed					( ) const
 	{
 		return OnServer( ) && m_bCanBeHarmed;
 	};
@@ -224,23 +224,23 @@ protected:
 public:
 	virtual void		reinit( );
 
-	IC const float		fdelta_time( ) const
+	inline const float		fdelta_time( ) const
 	{
 		return m_fDeltaTime;
 	}
-	IC const WOUND_VECTOR& wounds( ) const
+	inline const WOUND_VECTOR& wounds( ) const
 	{
 		return m_WoundVector;
 	}
-	IC float&			radiation( )
+	inline float&			radiation( )
 	{
 		return m_fRadiation;
 	}
-	IC float&			hit_bone_scale( )
+	inline float&			hit_bone_scale( )
 	{
 		return m_fHitBoneScale;
 	}
-	IC float&			wound_bone_scale( )
+	inline float&			wound_bone_scale( )
 	{
 		return m_fWoundBoneScale;
 	}

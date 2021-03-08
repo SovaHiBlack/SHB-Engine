@@ -30,7 +30,7 @@
 >
 
 TEMPLATE_SPECIALIZATION
-IC	void CGameVertexPathManager::setup			(
+inline	void CGameVertexPathManager::setup			(
 			const _Graph			*_graph,
 			_DataStorage			*_data_storage,
 			xr_vector<_index_type>	*_path,
@@ -53,7 +53,7 @@ IC	void CGameVertexPathManager::setup			(
 }
 
 TEMPLATE_SPECIALIZATION
-IC	bool CGameVertexPathManager::is_accessible	(const _index_type &vertex_id) const
+inline	bool CGameVertexPathManager::is_accessible	(const _index_type &vertex_id) const
 {
 	if (!inherited::is_accessible(vertex_id))
 		return				(false);

@@ -68,8 +68,8 @@ public:
 			void				setup_callbacks				();
 			void				load_common_scripts			();
 //			bool				load_file					(const char*	caScriptName, const char* namespace_name);
-	IC		CScriptProcess		*script_process				(const EScriptProcessors &process_id) const;
-	IC		void				add_script_process			(const EScriptProcessors &process_id, CScriptProcess *script_process);
+	inline		CScriptProcess		*script_process				(const EScriptProcessors &process_id) const;
+	inline		void				add_script_process			(const EScriptProcessors &process_id, CScriptProcess *script_process);
 			void				remove_script_process		(const EScriptProcessors &process_id);
 			void				setup_auto_load				();
 			void				process_file_if_exists		(const char* file_name, bool warn_if_not_exist);
@@ -77,10 +77,10 @@ public:
 			void				process_file				(const char* file_name, bool reload_modules);
 			bool				function_object				(const char* function_to_call, luabind::object &object, int type = LUA_TFUNCTION);
 			void				register_script_classes		();
-	IC		void				parse_script_namespace		(const char* function_to_call, char* name_space, char* functor);
+	inline		void				parse_script_namespace		(const char* function_to_call, char* name_space, char* functor);
 
 	template <typename _result_type>
-	IC		bool				functor						(const char* function_to_call, luabind::functor<_result_type> &lua_function);
+	inline		bool				functor						(const char* function_to_call, luabind::functor<_result_type> &lua_function);
 
 #ifdef USE_DEBUGGER
 			void				stopDebugger				();

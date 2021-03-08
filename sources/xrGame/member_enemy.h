@@ -26,9 +26,9 @@ public:
 	u32					m_level_time;
 
 public:
-	IC					CMemberEnemy		(const CEntityAlive *object, squad_mask_type mask);
-	IC		bool		operator==			(const CEntityAlive *object) const;
-	IC		bool		operator<			(const CMemberEnemy &enemy) const;
+	inline					CMemberEnemy		(const CEntityAlive *object, squad_mask_type mask);
+	inline		bool		operator==			(const CEntityAlive *object) const;
+	inline		bool		operator<			(const CMemberEnemy &enemy) const;
 };
 
 #include "member_enemy_inline.h"

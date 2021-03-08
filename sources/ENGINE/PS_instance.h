@@ -26,11 +26,11 @@ protected:
 public:
 							CPS_Instance		(bool destroy_on_game_load);
 
-	IC		const bool		&destroy_on_game_load() const				{	return m_destroy_on_game_load;	}
+	inline		const bool		&destroy_on_game_load() const				{	return m_destroy_on_game_load;	}
 	virtual void			PSI_destroy			();
-	IC BOOL					PSI_alive			()						{	return m_iLifeTime>0;				}
-	IC BOOL					PSI_IsAutomatic		()						{	return m_bAutoRemove;				}
-	IC void					PSI_SetLifeTime		(float life_time)		{	m_iLifeTime=iFloor(life_time*1000);	}
+	inline BOOL					PSI_alive			()						{	return m_iLifeTime>0;				}
+	inline BOOL					PSI_IsAutomatic		()						{	return m_bAutoRemove;				}
+	inline void					PSI_SetLifeTime		(float life_time)		{	m_iLifeTime=iFloor(life_time*1000);	}
 
 	virtual void			Play				()				= 0;
 	virtual BOOL			Locked				()				{ return FALSE; }

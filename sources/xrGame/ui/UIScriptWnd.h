@@ -31,7 +31,7 @@ public:
 	virtual bool				Dispatch			(int cmd, int param)				{return true;}
 
 template<typename T>
-IC	T*	GetControl(const char* name);
+inline	T*	GetControl(const char* name);
 
 public:
 	static void script_register(lua_State*);

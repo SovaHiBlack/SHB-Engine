@@ -34,7 +34,7 @@ CLevelFlooderPathManager::~CPathManager				()
 { }
 
 TEMPLATE_SPECIALIZATION
-IC	void CLevelFlooderPathManager::setup			(
+inline	void CLevelFlooderPathManager::setup			(
 		const _Graph			*_graph,
 		_DataStorage			*_data_storage,
 		xr_vector<_index_type>	*_path,
@@ -58,7 +58,7 @@ IC	void CLevelFlooderPathManager::setup			(
 }
 
 TEMPLATE_SPECIALIZATION
-IC	bool CLevelFlooderPathManager::is_goal_reached	(const _index_type &node_index)
+inline	bool CLevelFlooderPathManager::is_goal_reached	(const _index_type &node_index)
 {
 	VERIFY					(path);
 	path->push_back			(node_index);
@@ -68,21 +68,21 @@ IC	bool CLevelFlooderPathManager::is_goal_reached	(const _index_type &node_index
 }
 
 TEMPLATE_SPECIALIZATION
-IC	_dist_type CLevelFlooderPathManager::evaluate	(const _index_type &node_index1, const _index_type &node_index2, const _Graph::const_iterator &/**i/**/)
+inline	_dist_type CLevelFlooderPathManager::evaluate	(const _index_type &node_index1, const _index_type &node_index2, const _Graph::const_iterator &/**i/**/)
 {
 	VERIFY					(graph);
 	return					(m_cell_dist);
 }
 
 TEMPLATE_SPECIALIZATION
-IC	_dist_type CLevelFlooderPathManager::estimate	(const _index_type &node_index) const
+inline	_dist_type CLevelFlooderPathManager::estimate	(const _index_type &node_index) const
 {
 	VERIFY					(graph);
 	return					(_dist_type(0));
 }
 
 TEMPLATE_SPECIALIZATION
-IC	bool CLevelFlooderPathManager::is_accessible	(const _index_type &vertex_id) const
+inline	bool CLevelFlooderPathManager::is_accessible	(const _index_type &vertex_id) const
 {
 	if (!inherited::is_accessible(vertex_id))
 		return				(false);
@@ -92,7 +92,7 @@ IC	bool CLevelFlooderPathManager::is_accessible	(const _index_type &vertex_id) c
 }
 
 TEMPLATE_SPECIALIZATION
-IC	bool CLevelFlooderPathManager::is_limit_reached	(const _iteration_type iteration_count) const
+inline	bool CLevelFlooderPathManager::is_limit_reached	(const _iteration_type iteration_count) const
 {
 	VERIFY					(data_storage);
 	return					(
@@ -103,7 +103,7 @@ IC	bool CLevelFlooderPathManager::is_limit_reached	(const _iteration_type iterat
 
 TEMPLATE_SPECIALIZATION
 template <typename T>
-IC	void CLevelFlooderPathManager::create_path		(T &vertex)
+inline	void CLevelFlooderPathManager::create_path		(T &vertex)
 {
 }
 

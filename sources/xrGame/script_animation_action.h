@@ -29,17 +29,17 @@ public:
 	int										anim_index;
 
 public:
-	IC				CScriptAnimationAction	();
-	IC				CScriptAnimationAction	(const char* caAnimationToPlay, bool use_animation_movement_controller = false);
-	IC				CScriptAnimationAction	(MonsterSpace::EMentalState tMentalState);
+	inline				CScriptAnimationAction	();
+	inline				CScriptAnimationAction	(const char* caAnimationToPlay, bool use_animation_movement_controller = false);
+	inline				CScriptAnimationAction	(MonsterSpace::EMentalState tMentalState);
 	// -------------------------------------------------------------------------------------------------
 	// Monster
 	// -------------------------------------------------------------------------------------------------
-	IC				CScriptAnimationAction	(MonsterSpace::EScriptMonsterAnimAction tAnimAction, int index);
+	inline				CScriptAnimationAction	(MonsterSpace::EScriptMonsterAnimAction tAnimAction, int index);
 	virtual			~CScriptAnimationAction	();
-	IC		void	SetAnimation			(const char* caAnimationToPlay);
-	IC		void	SetMentalState			(MonsterSpace::EMentalState tMentalState);
-	IC		void	initialize				();
+	inline		void	SetAnimation			(const char* caAnimationToPlay);
+	inline		void	SetMentalState			(MonsterSpace::EMentalState tMentalState);
+	inline		void	initialize				();
 
 public:
 	static void script_register(lua_State*);

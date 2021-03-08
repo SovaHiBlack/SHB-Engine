@@ -21,7 +21,7 @@
 #define CGenericPathManager CPathManagerGeneric<_Graph,_DataStorage,_Parameters,_dist_type,_index_type,_iteration_type>
 
 TEMPLATE_SPECIALIZATION
-IC	CGenericPathManager::CPathManagerGeneric		()
+inline	CGenericPathManager::CPathManagerGeneric		()
 {
 	graph			= 0;
 	data_storage	= 0;
@@ -33,11 +33,11 @@ CGenericPathManager::~CPathManagerGeneric			()
 { }
 
 TEMPLATE_SPECIALIZATION
-IC	void CGenericPathManager::init					()
+inline	void CGenericPathManager::init					()
 { }
 
 TEMPLATE_SPECIALIZATION
-IC	void CGenericPathManager::setup					(
+inline	void CGenericPathManager::setup					(
 		const _Graph			*_graph,
 		_DataStorage			*_data_storage,
 		xr_vector<_index_type>	*_path,
@@ -57,21 +57,21 @@ IC	void CGenericPathManager::setup					(
 }
 
 TEMPLATE_SPECIALIZATION
-IC	_dist_type CGenericPathManager::evaluate		(const _index_type &node_index1, const _index_type &node_index2, const const_iterator &i) const
+inline	_dist_type CGenericPathManager::evaluate		(const _index_type &node_index1, const _index_type &node_index2, const const_iterator &i) const
 {
 	VERIFY					(graph);
 	return					(graph->get_edge_weight(node_index1,node_index2,i));
 }
 
 TEMPLATE_SPECIALIZATION
-IC	_dist_type CGenericPathManager::estimate		(const _index_type &vertex_id) const
+inline	_dist_type CGenericPathManager::estimate		(const _index_type &vertex_id) const
 {
 	VERIFY					(graph);
 	return					(_dist_type(0));
 }
 
 TEMPLATE_SPECIALIZATION
-IC	void CGenericPathManager::init_path				()
+inline	void CGenericPathManager::init_path				()
 {
 	if (path)
 		path->clear			();
@@ -79,34 +79,34 @@ IC	void CGenericPathManager::init_path				()
 
 TEMPLATE_SPECIALIZATION
 template <typename T>
-IC	void CGenericPathManager::create_path			(T &vertex)
+inline	void CGenericPathManager::create_path			(T &vertex)
 {
 	VERIFY					(data_storage);
-//		Msg						("Path [IC=xxx][VNC=%d][BV=%f]",data_storage->get_visited_node_count(),data_storage->get_best().f());
+//		Msg						("Path [inline=xxx][VNC=%d][BV=%f]",data_storage->get_visited_node_count(),data_storage->get_best().f());
 	if (path)
 		data_storage->get_node_path	(*path,&vertex);
 }
 
 TEMPLATE_SPECIALIZATION
-IC	const _index_type &CGenericPathManager::start_node		() const
+inline	const _index_type &CGenericPathManager::start_node		() const
 {
 	return					(start_node_index);
 }
 
 TEMPLATE_SPECIALIZATION
-IC	const _index_type &CGenericPathManager::goal_node		() const
+inline	const _index_type &CGenericPathManager::goal_node		() const
 {
 	return					(goal_node_index);
 }
 
 TEMPLATE_SPECIALIZATION
-IC	bool CGenericPathManager::is_goal_reached		(const _index_type &vertex_id) const
+inline	bool CGenericPathManager::is_goal_reached		(const _index_type &vertex_id) const
 {
 	return					(vertex_id == goal_node_index);
 }
 
 TEMPLATE_SPECIALIZATION
-IC	bool CGenericPathManager::is_limit_reached		(const _iteration_type	iteration_count) const
+inline	bool CGenericPathManager::is_limit_reached		(const _iteration_type	iteration_count) const
 {
 	VERIFY					(data_storage);
 	return					(
@@ -117,38 +117,38 @@ IC	bool CGenericPathManager::is_limit_reached		(const _iteration_type	iteration_
 }
 
 TEMPLATE_SPECIALIZATION
-IC	bool CGenericPathManager::is_accessible			(const _index_type &vertex_id) const
+inline	bool CGenericPathManager::is_accessible			(const _index_type &vertex_id) const
 {
 	VERIFY					(graph);
 	return					(graph->is_accessible(vertex_id));
 }
 
 TEMPLATE_SPECIALIZATION
-IC	bool CGenericPathManager::is_metric_euclidian	() const
+inline	bool CGenericPathManager::is_metric_euclidian	() const
 {
 //#pragma todo("Dima to Dima : implement path manager for non-euclidian heuristics")
 	return					(true);
 }
 
 TEMPLATE_SPECIALIZATION
-IC	void CGenericPathManager::begin					(const _index_type &vertex_id, const_iterator &begin, const_iterator &end)
+inline	void CGenericPathManager::begin					(const _index_type &vertex_id, const_iterator &begin, const_iterator &end)
 {
 	best_node_index			= &vertex_id;
 	graph->begin			(vertex_id,begin,end);
 }
 
 TEMPLATE_SPECIALIZATION
-IC	const _index_type CGenericPathManager::get_value(const_iterator &i) const
+inline	const _index_type CGenericPathManager::get_value(const_iterator &i) const
 {
 	return					(graph->value(*best_node_index,i));
 }
 
 TEMPLATE_SPECIALIZATION
-IC	void CGenericPathManager::finalize				()
+inline	void CGenericPathManager::finalize				()
 { }
 
 TEMPLATE_SPECIALIZATION
-IC	const typename CGenericPathManager::const_iterator &CGenericPathManager::edge	(const_iterator &i) const
+inline	const typename CGenericPathManager::const_iterator &CGenericPathManager::edge	(const_iterator &i) const
 {
 	return					(i);
 }

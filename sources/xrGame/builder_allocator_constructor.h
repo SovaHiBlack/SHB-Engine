@@ -29,9 +29,9 @@ struct CBuilderAllocatorConstructor {
 		typedef typename CGraphVertex::_index_type		_index_type;
 
 	public:
-		IC							CDataStorage	(const u32 vertex_count);
+		inline							CDataStorage	(const u32 vertex_count);
 		virtual						~CDataStorage	();
-		IC		void				init			();
+		inline		void				init			();
 	};
 };
 

@@ -19,7 +19,7 @@ protected:
 	typedef _server_type		SERVER_TYPE;
 
 public:
-	IC											CObjectItemClientServer		(const CLASS_ID &clsid, const char* script_clsid);
+	inline											CObjectItemClientServer		(const CLASS_ID &clsid, const char* script_clsid);
 
 	virtual ObjectFactory::CLIENT_BASE_CLASS	*client_object				() const;
 	virtual ObjectFactory::SERVER_BASE_CLASS	*server_object				(const char* section) const;
@@ -29,7 +29,7 @@ public:
 	class CObjectItemClientServerSingleMp : public CObjectItemAbstract {
 	typedef CObjectItemAbstract	inherited;
 	public:
-		IC											CObjectItemClientServerSingleMp	(const CLASS_ID &clsid, const char* script_clsid);
+		inline											CObjectItemClientServerSingleMp	(const CLASS_ID &clsid, const char* script_clsid);
 		virtual ObjectFactory::CLIENT_BASE_CLASS	*client_object					() const;
 		virtual ObjectFactory::SERVER_BASE_CLASS	*server_object					(const char* section) const;
 	};

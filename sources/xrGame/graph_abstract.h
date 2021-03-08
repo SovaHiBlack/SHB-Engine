@@ -45,29 +45,29 @@ private:
 	u32							m_edge_count;
 
 public:
-	IC									CGraphAbstract	();
+	inline									CGraphAbstract	();
 	virtual								~CGraphAbstract	();
-	IC		bool						operator==		(const CGraphAbstract &obj) const;
-	IC		void						clear			();
-	IC		void						add_vertex		(const _data_type &data, const _vertex_id_type &vertex_id);
-	IC		void						remove_vertex	(const _vertex_id_type &vertex_id);
-	IC		void						add_edge		(const _vertex_id_type &vertex_id0, const _vertex_id_type &vertex_id1, const _edge_weight_type &edge_weight);
-	IC		void						add_edge		(const _vertex_id_type &vertex_id0, const _vertex_id_type &vertex_id1, const _edge_weight_type &edge_weight0, const _edge_weight_type &edge_weight1);
-	IC		void						remove_edge		(const _vertex_id_type &vertex_id0, const _vertex_id_type &vertex_id1);
-	IC		u32							vertex_count	() const;
-	IC		u32							edge_count		() const;
-	IC		bool						empty			() const;
-	IC		const VERTICES				&vertices		() const;
-	IC		VERTICES					&vertices		();
-	IC		const CVertex				*vertex			(const _vertex_id_type &vertex_id) const;
-	IC		CVertex						*vertex			(const _vertex_id_type &vertex_id);
-	IC		const CEdge					*edge			(const _vertex_id_type &vertex_id0, const _vertex_id_type &vertex_id1) const;
-	IC		CEdge						*edge			(const _vertex_id_type &vertex_id0, const _vertex_id_type &vertex_id1);
-	IC		const CGraphAbstract		&header			() const;
-	IC		const _edge_weight_type		get_edge_weight	(const _vertex_id_type vertex_index0, const _vertex_id_type vertex_index1, const_iterator i) const;
-	IC		bool						is_accessible	(const _vertex_id_type vertex_index) const;
-	IC		const CVertex 				*value			(const _vertex_id_type vertex_index, const_iterator i) const;
-	IC		void						begin			(const CVertex *vertex, const_iterator &b, const_iterator &e) const;
+	inline		bool						operator==		(const CGraphAbstract &obj) const;
+	inline		void						clear			();
+	inline		void						add_vertex		(const _data_type &data, const _vertex_id_type &vertex_id);
+	inline		void						remove_vertex	(const _vertex_id_type &vertex_id);
+	inline		void						add_edge		(const _vertex_id_type &vertex_id0, const _vertex_id_type &vertex_id1, const _edge_weight_type &edge_weight);
+	inline		void						add_edge		(const _vertex_id_type &vertex_id0, const _vertex_id_type &vertex_id1, const _edge_weight_type &edge_weight0, const _edge_weight_type &edge_weight1);
+	inline		void						remove_edge		(const _vertex_id_type &vertex_id0, const _vertex_id_type &vertex_id1);
+	inline		u32							vertex_count	() const;
+	inline		u32							edge_count		() const;
+	inline		bool						empty			() const;
+	inline		const VERTICES				&vertices		() const;
+	inline		VERTICES					&vertices		();
+	inline		const CVertex				*vertex			(const _vertex_id_type &vertex_id) const;
+	inline		CVertex						*vertex			(const _vertex_id_type &vertex_id);
+	inline		const CEdge					*edge			(const _vertex_id_type &vertex_id0, const _vertex_id_type &vertex_id1) const;
+	inline		CEdge						*edge			(const _vertex_id_type &vertex_id0, const _vertex_id_type &vertex_id1);
+	inline		const CGraphAbstract		&header			() const;
+	inline		const _edge_weight_type		get_edge_weight	(const _vertex_id_type vertex_index0, const _vertex_id_type vertex_index1, const_iterator i) const;
+	inline		bool						is_accessible	(const _vertex_id_type vertex_index) const;
+	inline		const CVertex 				*value			(const _vertex_id_type vertex_index, const_iterator i) const;
+	inline		void						begin			(const CVertex *vertex, const_iterator &b, const_iterator &e) const;
 };
 
 template <

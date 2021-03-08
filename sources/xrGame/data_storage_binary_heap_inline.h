@@ -17,7 +17,7 @@
 #define CBinaryHeap				CDataStorageBinaryHeap::CDataStorage<_data_storage,_vertex>
 
 TEMPLATE_SPECIALIZATION
-IC	CBinaryHeap::CDataStorage				(const u32 vertex_count) : 
+inline	CBinaryHeap::CDataStorage				(const u32 vertex_count) : 
 		inherited(vertex_count)
 {
 	u32						memory_usage = 0;
@@ -36,21 +36,21 @@ CBinaryHeap::~CDataStorage					()
 }
 
 TEMPLATE_SPECIALIZATION
-IC	void CBinaryHeap::init					()
+inline	void CBinaryHeap::init					()
 {
 	inherited::init			();
 	m_heap_head				= m_heap_tail = m_heap;
 }
 
 TEMPLATE_SPECIALIZATION
-IC	bool CBinaryHeap::is_opened_empty		() const
+inline	bool CBinaryHeap::is_opened_empty		() const
 {
 	VERIFY					(m_heap_head <= m_heap_tail);
 	return					(m_heap_head == m_heap_tail);
 }
 
 TEMPLATE_SPECIALIZATION
-IC	void CBinaryHeap::add_opened			(CGraphVertex &vertex)
+inline	void CBinaryHeap::add_opened			(CGraphVertex &vertex)
 {
 	VERIFY					(m_heap_head <= m_heap_tail);
 	inherited::add_opened	(vertex);
@@ -65,7 +65,7 @@ IC	void CBinaryHeap::add_opened			(CGraphVertex &vertex)
 }
 
 TEMPLATE_SPECIALIZATION
-IC	void CBinaryHeap::decrease_opened		(CGraphVertex &vertex, const _dist_type value)
+inline	void CBinaryHeap::decrease_opened		(CGraphVertex &vertex, const _dist_type value)
 {
 	VERIFY					(!is_opened_empty());
 	for (CGraphVertex **i = m_heap_head; *i != &vertex; ++i);
@@ -73,21 +73,21 @@ IC	void CBinaryHeap::decrease_opened		(CGraphVertex &vertex, const _dist_type va
 }
 
 TEMPLATE_SPECIALIZATION
-IC	void CBinaryHeap::remove_best_opened	()
+inline	void CBinaryHeap::remove_best_opened	()
 {
 	VERIFY					(!is_opened_empty());
 	std::pop_heap			(m_heap_head,m_heap_tail--,CGraphNodePredicate());
 }
 
 TEMPLATE_SPECIALIZATION
-IC	void CBinaryHeap::add_best_closed		()
+inline	void CBinaryHeap::add_best_closed		()
 {
 	VERIFY					(!is_opened_empty());
 	inherited::add_closed	(**m_heap_head);
 }
 
 TEMPLATE_SPECIALIZATION
-IC	typename CBinaryHeap::CGraphVertex &CBinaryHeap::get_best		() const
+inline	typename CBinaryHeap::CGraphVertex &CBinaryHeap::get_best		() const
 {
 	VERIFY					(!is_opened_empty());
 	return					(**m_heap_head);

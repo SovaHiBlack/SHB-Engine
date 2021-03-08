@@ -74,7 +74,9 @@ void try_change_current_entity()
 		if (!current)					continue;
 		if (Level().CurrentEntity()==current) continue;
 
-		Fvector							A, B, tmp; 
+		Fvector3							A;
+		Fvector3 B;
+		Fvector3 tmp;
 		current->Center					(A);
 
 		tmp.sub							(A, actor->cam_Active()->vPosition);
@@ -803,7 +805,9 @@ void CStalker::OnHUDDraw				(CCustomHUD *hud)
 void CStalker::OnRender			()
 {
 	if (inventory().ActiveItem()) {
-		Fvector					position, direction, temp;
+		Fvector3					position;
+		Fvector3 direction;
+		Fvector3 temp;
 		g_fireParams			(0,position,direction);
 		temp					= direction;
 		temp.mul				(1.f);
@@ -821,7 +825,7 @@ void CStalker::OnRender			()
 		xr_vector<CObject*>		objects;
 		feel_vision_get			(objects);
 		if (std::find(objects.begin(),objects.end(),memory().enemy().selected()) != objects.end()) {
-			Fvector				position = feel_vision_get_vispoint(const_cast<CEntityAlive*>(memory().enemy().selected()));
+			Fvector3				position = feel_vision_get_vispoint(const_cast<CEntityAlive*>(memory().enemy().selected()));
 			Level().debug_renderer().draw_aabb	(position,.05f,.05f,.05f,D3DCOLOR_XRGB(0*255,255,0*255));
 			return;
 		}
@@ -832,7 +836,10 @@ void CStalker::OnRender			()
 	inherited::OnRender		();
 
 	{
-		Fvector					c0 = Position(),c1,t0 = Position(),t1;
+		Fvector3					c0 = Position( );
+		Fvector3 c1;
+		Fvector3 t0 = Position( );
+		Fvector3 t1;
 		c0.y					+= 2.f;
 		c1.setHP				(-movement().m_body.current.yaw,-movement().m_body.current.pitch);
 		c1.add					(c0);
@@ -845,7 +852,7 @@ void CStalker::OnRender			()
 	}
 
 	if (memory().danger().selected() && ai().level_graph().valid_vertex_position(memory().danger().selected()->position())) {
-		Fvector						position = memory().danger().selected()->position();
+		Fvector3						position = memory().danger().selected()->position();
 		u32							level_vertex_id = ai().level_graph().vertex_id(position);
 		float						half_size = ai().level_graph().header().cell_size()*.5f;
 		position.y					+= 1.f;
@@ -853,7 +860,7 @@ void CStalker::OnRender			()
 
 		if (ai().level_graph().valid_vertex_id(level_vertex_id)) {
 			LevelGraph::CVertex			*v = ai().level_graph().vertex(level_vertex_id);
-			Fvector						direction;
+			Fvector3						direction;
 			float						best_value = -1.f;
 
 			for (u32 i=0, j = 0; i<36; ++i) {
@@ -901,7 +908,7 @@ void CStalker::dbg_draw_vision	()
 	if (!smart_cast<CGameObject*>(Level().CurrentEntity()))
 		return;
 
-	Fvector						shift;
+	Fvector3						shift;
 	shift.set					(0.f,2.5f,0.f);
 
 	Fmatrix						res;
@@ -929,7 +936,7 @@ void CStalker::dbg_draw_vision	()
 	HUD().Font().pFontMedium->OutNext	(out_text);
 }
 
-typedef xr_vector<Fvector>	COLLIDE_POINTS;
+typedef xr_vector<Fvector3>	COLLIDE_POINTS;
 
 class ray_query_param	{
 public:
@@ -937,12 +944,12 @@ public:
 	float					m_power;
 	float					m_power_threshold;
 	float					m_pick_distance;
-	Fvector					m_start_position;
-	Fvector					m_direction;
+	Fvector3					m_start_position;
+	Fvector3					m_direction;
 	COLLIDE_POINTS			*m_points;
 
 public:
-	inline				ray_query_param		(CCustomMonster *holder, float power_threshold, float distance, const Fvector &start_position, const Fvector &direction, COLLIDE_POINTS &points)
+	inline				ray_query_param		(CCustomMonster *holder, float power_threshold, float distance, const Fvector3& start_position, const Fvector3& direction, COLLIDE_POINTS &points)
 	{
 		m_holder			= holder;
 		m_power				= 1.f;
@@ -958,7 +965,7 @@ BOOL _ray_query_callback	(collide::rq_result& result, LPVOID params)
 {
 	ray_query_param						*param = (ray_query_param*)params;
 	param->m_points->push_back			(
-		Fvector().mad(
+		Fvector3().mad(
 			param->m_start_position,
 			param->m_direction,
 			result.range
@@ -974,7 +981,7 @@ BOOL _ray_query_callback	(collide::rq_result& result, LPVOID params)
 	return								(false);
 }
 
-void fill_points			(CCustomMonster *self, const Fvector &position, const Fvector &direction, float distance, collide::rq_results& rq_storage, COLLIDE_POINTS &points, float &pick_distance)
+void fill_points			(CCustomMonster *self, const Fvector3& position, const Fvector3& direction, float distance, collide::rq_results& rq_storage, COLLIDE_POINTS &points, float &pick_distance)
 {
 	VERIFY							(!fis_zero(direction.square_magnitude()));
 
@@ -1008,9 +1015,9 @@ void draw_visiblity_rays	(CCustomMonster *self, const CObject *object, collide::
 	if (!item)
 		return;
 
-	Fvector					start_position = self->eye_matrix.c;
-	Fvector					dest_position = item->cp_LAST;
-	Fvector					direction = Fvector().sub(dest_position,start_position);
+	Fvector3					start_position = self->eye_matrix.c;
+	Fvector3					dest_position = item->cp_LAST;
+	Fvector3					direction = Fvector3().sub(dest_position,start_position);
 	float					distance = direction.magnitude();
 	direction.normalize		();
 	float					pick_distance = flt_max;
@@ -1033,7 +1040,7 @@ void draw_visiblity_rays	(CCustomMonster *self, const CObject *object, collide::
 
 	VERIFY					(points.size() > 1);
 	
-	Fvector					size = Fvector().set(.05f,.05f,.05f);
+	Fvector3					size = Fvector3().set(.05f,.05f,.05f);
 	Level().debug_renderer().draw_aabb	(points.front(),size.x,size.y,size.z,D3DCOLOR_XRGB(0,0,255));
 
 	{

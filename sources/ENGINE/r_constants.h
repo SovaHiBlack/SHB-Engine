@@ -36,7 +36,7 @@ struct	R_constant_load
 
 	R_constant_load() : index(u16(-1)), cls(u16(-1)) {};
 
-	IC BOOL					equal		(R_constant_load& C)
+	inline BOOL					equal		(R_constant_load& C)
 	{
 		return (index==C.index) && (cls == C.cls);
 	}
@@ -55,11 +55,11 @@ struct	R_constant			:public xr_resource
 
 	R_constant() : type(u16(-1)), destination(0), handler(NULL) { };
 
-	IC BOOL					equal		(R_constant& C)
+	inline BOOL					equal		(R_constant& C)
 	{
 		return (0==xr_strcmp(name,C.name)) && (type==C.type) && (destination==C.destination) && ps.equal(C.ps) && vs.equal(C.vs) && samp.equal(C.samp) && handler==C.handler;
 	}
-	IC BOOL					equal		(R_constant* C)
+	inline BOOL					equal		(R_constant* C)
 	{
 		return equal(*C);
 	}

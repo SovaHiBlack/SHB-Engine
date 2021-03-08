@@ -94,7 +94,7 @@ float CStalker::GetWeaponAccuracy	() const
 			return			(base*m_disp_stand_crouch_zoom);
 }
 
-void CStalker::g_fireParams(const CHudItem* pHudItem, Fvector& P, Fvector& D)
+void CStalker::g_fireParams(const CHudItem* pHudItem, Fvector3& P, Fvector3& D)
 {
 //.	VERIFY				(inventory().ActiveItem());
 	if (!inventory().ActiveItem()) {
@@ -102,7 +102,7 @@ void CStalker::g_fireParams(const CHudItem* pHudItem, Fvector& P, Fvector& D)
 		Msg				("! CStalker::g_fireParams() : VERIFY(inventory().ActiveItem())");
 #endif // DEBUG
 		P				= Position();
-		D				= Fvector().set(0.f,0.f,1.f);
+		D				= Fvector3().set(0.f,0.f,1.f);
 		return;
 	}
 
@@ -234,7 +234,7 @@ void			CStalker::Hit					(SHit* pHDS)
 				(pHDS->bone() != BI_NONE)
 			)
 			{
-				Fvector					D;
+				Fvector3					D;
 				float					yaw, pitch;
 				D.getHP					(yaw,pitch);
 
@@ -269,7 +269,7 @@ void			CStalker::Hit					(SHit* pHDS)
 	inherited::Hit					(&HDS);
 }
 
-void CStalker::HitSignal				(float amount, Fvector& vLocalDir, CObject* who, s16 element)
+void CStalker::HitSignal				(float amount, Fvector3& vLocalDir, CObject* who, s16 element)
 {
 	if (getDestroy())
 		return;
@@ -543,7 +543,7 @@ inline BOOL ray_query_callback	(collide::rq_result& result, LPVOID params)
 	return								(false);
 }
 
-void CStalker::can_kill_entity		(const Fvector &position, const Fvector &direction, float distance, collide::rq_results& rq_storage)
+void CStalker::can_kill_entity		(const Fvector3& position, const Fvector3& direction, float distance, collide::rq_results& rq_storage)
 {
 	VERIFY							(!fis_zero(direction.square_magnitude()));
 
@@ -558,7 +558,7 @@ void CStalker::can_kill_entity		(const Fvector &position, const Fvector &directi
 	m_pick_distance					= _max(m_pick_distance,params.m_pick_distance);
 }
 
-void CStalker::can_kill_entity_from	(const Fvector &position, Fvector direction, float distance)
+void CStalker::can_kill_entity_from	(const Fvector3& position, Fvector3 direction, float distance)
 {
 	m_pick_distance			= 0.f;
 	rq_storage.r_clear		();
@@ -620,7 +620,8 @@ void CStalker::update_can_kill_info	()
 	m_can_kill_member		= false;
 	m_can_kill_enemy		= false;
 
-	Fvector					position, direction;
+	Fvector3					position;
+	Fvector3 direction;
 	VERIFY					(inventory().ActiveItem());
 	g_fireParams			(0,position,direction);
 	can_kill_entity_from	(position,direction,start_pick_distance());
@@ -820,7 +821,7 @@ float CStalker::missile_throw_force		()
 	return					(m_throw_force);
 }
 
-void CStalker::throw_target				(const Fvector &position)
+void CStalker::throw_target				(const Fvector3& position)
 {
 	float					distance_to_sqr = position.distance_to_sqr(m_throw_target);
 	m_throw_actual			= m_throw_actual && (distance_to_sqr < _sqr(.1f));
@@ -845,7 +846,7 @@ void CStalker::update_throw_params		()
 	m_throw_position		= eye_matrix.c;
 
 	// computing velocity with minimum magnitude
-	Fvector					velocity;
+	Fvector3					velocity;
 	velocity.sub			(m_throw_target,m_throw_position);
 	float					time = ThrowMinVelTime(velocity,ph_world->Gravity());
 	TransferenceToThrowVel	(velocity,time,ph_world->Gravity());

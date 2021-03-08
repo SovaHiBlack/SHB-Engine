@@ -7,7 +7,7 @@ class	CBloodsuckerStateAttack : public CStateMonsterAttack<_Object> {
 	typedef CStateMonsterAttack<_Object> inherited_attack;
 
 	u32				m_time_stop_invis;
-	Fvector			m_dir_point;
+	Fvector3			m_dir_point;
 
 public:
 					CBloodsuckerStateAttack		(_Object *obj);

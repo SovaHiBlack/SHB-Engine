@@ -8,7 +8,7 @@
 
 #pragma once
 
-IC	Fvector	CSpaceRestrictionShape::position		(const CCF_Shape::shape_def &data) const
+inline	Fvector	CSpaceRestrictionShape::position		(const CCF_Shape::shape_def &data) const
 {
 	switch (data.type) {
 		case 0	: return(data.data.sphere.P);
@@ -20,7 +20,7 @@ IC	Fvector	CSpaceRestrictionShape::position		(const CCF_Shape::shape_def &data) 
 #endif
 }
 
-IC	float CSpaceRestrictionShape::radius			(const CCF_Shape::shape_def &data) const
+inline	float CSpaceRestrictionShape::radius			(const CCF_Shape::shape_def &data) const
 {
 	switch (data.type) {
 		case 0	: return(data.data.sphere.R);
@@ -32,7 +32,7 @@ IC	float CSpaceRestrictionShape::radius			(const CCF_Shape::shape_def &data) con
 #endif
 }
 
-IC	CSpaceRestrictionShape::CSpaceRestrictionShape	(CSpaceRestrictor *space_restrictor, bool default_restrictor)
+inline	CSpaceRestrictionShape::CSpaceRestrictionShape	(CSpaceRestrictor *space_restrictor, bool default_restrictor)
 {
 	m_default					= default_restrictor;
 	m_initialized				= true;
@@ -44,17 +44,17 @@ IC	CSpaceRestrictionShape::CSpaceRestrictionShape	(CSpaceRestrictor *space_restr
 	build_border				();
 }
 
-IC	void CSpaceRestrictionShape::initialize			()
+inline	void CSpaceRestrictionShape::initialize			()
 {
 	VERIFY						(m_initialized);
 }
 
-IC	bool CSpaceRestrictionShape::shape				() const
+inline	bool CSpaceRestrictionShape::shape				() const
 {
 	return						(true);
 }
 
-IC	bool CSpaceRestrictionShape::default_restrictor	() const
+inline	bool CSpaceRestrictionShape::default_restrictor	() const
 {
 	return						(m_default);
 }

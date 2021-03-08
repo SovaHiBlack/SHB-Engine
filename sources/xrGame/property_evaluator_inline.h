@@ -12,18 +12,18 @@
 #define CEvaluator				CPropertyEvaluator<_object_type>
 
 TEMPLATE_SPECIALIZATION
-IC	CEvaluator::CPropertyEvaluator	(_object_type *object, const char* evaluator_name)
+inline	CEvaluator::CPropertyEvaluator	(_object_type *object, const char* evaluator_name)
 {
 	init				(object,evaluator_name);
 }
 
 TEMPLATE_SPECIALIZATION
-IC	CEvaluator::~CPropertyEvaluator	()
+inline	CEvaluator::~CPropertyEvaluator	()
 {
 }
 
 TEMPLATE_SPECIALIZATION
-IC	void CEvaluator::init			(_object_type *object, const char* evaluator_name)
+inline	void CEvaluator::init			(_object_type *object, const char* evaluator_name)
 {
 	m_object			= object;
 #ifdef LOG_ACTION
@@ -50,7 +50,7 @@ typename CEvaluator::_value_type CEvaluator::evaluate	()
 }
 
 TEMPLATE_SPECIALIZATION
-IC	const typename CEvaluator::_value_type &CEvaluator::property	(const _condition_type &condition_id) const
+inline	const typename CEvaluator::_value_type &CEvaluator::property	(const _condition_type &condition_id) const
 {
 	VERIFY				(m_storage);
 	return				(m_storage->property(condition_id));

@@ -60,7 +60,7 @@ struct CDataStorageConstructor :
 	typedef typename inherited::CGraphVertex	CGraphVertex;
 	typedef typename CGraphVertex::_index_type	_index_type;
 
-	IC	CDataStorageConstructor (const u32 vertex_count) :
+	inline	CDataStorageConstructor (const u32 vertex_count) :
 		inherited(vertex_count)
 	{
 	}

@@ -64,7 +64,7 @@ protected :
 	bool					m_bActiveBones;	//есть ли косточки на которых играются партиклы
 
 public:
-	IC SBoneInfo*			get_bone_info			(u16 bone_index)
+	inline SBoneInfo*			get_bone_info			(u16 bone_index)
 	{
 		if (BI_NONE==bone_index) return 0;
 		for (BoneInfoVecIt it=m_Bones.begin(); it!=m_Bones.end(); it++)
@@ -97,7 +97,7 @@ public:
 	static void				MakeXFORM				(CObject* pObject, u16 bone_id, const Fvector& dir, const Fvector& offset, Fmatrix& result);
 	static void				GetBonePos				(CObject* pObject, u16 bone_id, const Fvector& offset, Fvector& result);
 	u16						GetNearestBone			(CKinematics* K, u16 bone_id);
-	IC u16					GetRandomBone			(){ u16 l_PBCount=u16(m_Bones.size()); if(l_PBCount) return m_Bones[(u16)Random.randI(l_PBCount)].index; else return BI_NONE;}
+	inline u16					GetRandomBone			(){ u16 l_PBCount=u16(m_Bones.size()); if(l_PBCount) return m_Bones[(u16)Random.randI(l_PBCount)].index; else return BI_NONE;}
 
 	void					SetParentVel			(const Fvector& vel) {parent_vel = vel;}
 	

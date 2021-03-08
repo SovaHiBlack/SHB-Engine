@@ -6,12 +6,12 @@
 
 #define	GAMESAVE_SIZE	128
 
-IC u32 convert				(float c)	{
+inline u32 convert				(float c)	{
 	u32 C=iFloor(c);
 	if (C>255) C=255;
 	return C;
 }
-IC void MouseRayFromPoint	( Fvector& direction, int x, int y, Fmatrix& m_CamMat )
+inline void MouseRayFromPoint	( Fvector& direction, int x, int y, Fmatrix& m_CamMat )
 {
 	int halfwidth		= Device.dwWidth/2;
 	int halfheight		= Device.dwHeight/2;

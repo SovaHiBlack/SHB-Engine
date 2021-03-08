@@ -28,7 +28,7 @@ public:
 
 	void				Clear				( );
 	void				Load				(const char* name);
-	IC const char*		Name				( )
+	inline const char*		Name				( )
 	{
 		return *m_Name;
 	}
@@ -43,12 +43,12 @@ public:
 		return m_MParam.Pause(val);
 	}
 	void				Stop				( );
-	IC BOOL				IsPlaying			( )
+	inline BOOL				IsPlaying			( )
 	{
 		return m_MParam.bPlay;
 	}
 
-	IC const Fmatrix&	XFORM				( )
+	inline const Fmatrix&	XFORM				( )
 	{
 		return m_XFORM;
 	}

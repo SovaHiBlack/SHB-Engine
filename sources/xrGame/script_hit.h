@@ -23,10 +23,10 @@ public:
 	int					m_tHitType;
 
 public:
-	IC					CScriptHit		();
-	IC					CScriptHit		(const CScriptHit *tpLuaHit);
+	inline					CScriptHit		();
+	inline					CScriptHit		(const CScriptHit *tpLuaHit);
 	virtual				~CScriptHit		();
-	IC		void		set_bone_name	(const char* bone_name);
+	inline		void		set_bone_name	(const char* bone_name);
 public:
 	static void script_register(lua_State*);
 };

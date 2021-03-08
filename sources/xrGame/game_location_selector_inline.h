@@ -16,7 +16,7 @@
 #define CGameLocationSelector CBaseLocationSelector<CGameGraph,_VertexEvaluator,_vertex_id_type>
 
 TEMPLATE_SPECIALIZATION
-IC	CGameLocationSelector::CBaseLocationSelector	(CRestrictedObject *object, CLocationManager *location_manager) :
+inline	CGameLocationSelector::CBaseLocationSelector	(CRestrictedObject *object, CLocationManager *location_manager) :
 	inherited	(object)
 {
 	m_location_manager				= location_manager;
@@ -24,18 +24,18 @@ IC	CGameLocationSelector::CBaseLocationSelector	(CRestrictedObject *object, CLoc
 }
 
 TEMPLATE_SPECIALIZATION
-IC	CGameLocationSelector::~CBaseLocationSelector	()
+inline	CGameLocationSelector::~CBaseLocationSelector	()
 {
 }
 
 TEMPLATE_SPECIALIZATION
-IC	void CGameLocationSelector::set_selection_type	(const ESelectionType selection_type)
+inline	void CGameLocationSelector::set_selection_type	(const ESelectionType selection_type)
 {
 	m_selection_type	= selection_type;
 }
 
 TEMPLATE_SPECIALIZATION
-IC	void CGameLocationSelector::reinit			(const CGameGraph *graph)
+inline	void CGameLocationSelector::reinit			(const CGameGraph *graph)
 {
 	inherited::reinit				(graph);
 	m_selection_type				= eSelectionTypeRandomBranching;
@@ -46,7 +46,7 @@ IC	void CGameLocationSelector::reinit			(const CGameGraph *graph)
 }
 
 TEMPLATE_SPECIALIZATION
-IC	void CGameLocationSelector::select_location	(const _vertex_id_type start_vertex_id, _vertex_id_type &dest_vertex_id)
+inline	void CGameLocationSelector::select_location	(const _vertex_id_type start_vertex_id, _vertex_id_type &dest_vertex_id)
 {
 	switch (m_selection_type) {
 		case eSelectionTypeMask : {
@@ -67,7 +67,7 @@ IC	void CGameLocationSelector::select_location	(const _vertex_id_type start_vert
 }
 
 TEMPLATE_SPECIALIZATION
-IC	void CGameLocationSelector::select_random_location(const _vertex_id_type start_vertex_id, _vertex_id_type &dest_vertex_id)
+inline	void CGameLocationSelector::select_random_location(const _vertex_id_type start_vertex_id, _vertex_id_type &dest_vertex_id)
 {
 	VERIFY						(m_graph);
 	VERIFY						(m_graph->valid_vertex_id(start_vertex_id));
@@ -151,13 +151,13 @@ IC	void CGameLocationSelector::select_random_location(const _vertex_id_type star
 }
 
 TEMPLATE_SPECIALIZATION
-IC	void CGameLocationSelector::selection_type		() const
+inline	void CGameLocationSelector::selection_type		() const
 {
 	return				(m_selection_type);
 }
 
 TEMPLATE_SPECIALIZATION
-IC	bool CGameLocationSelector::actual				(const _vertex_id_type start_vertex_id, bool path_completed)
+inline	bool CGameLocationSelector::actual				(const _vertex_id_type start_vertex_id, bool path_completed)
 {
 	if (m_selection_type != eSelectionTypeRandomBranching)
 		return				(inherited::actual(start_vertex_id,path_completed));
@@ -165,7 +165,7 @@ IC	bool CGameLocationSelector::actual				(const _vertex_id_type start_vertex_id,
 }
 
 TEMPLATE_SPECIALIZATION
-IC	bool CGameLocationSelector::accessible			(const _vertex_id_type vertex_id) const
+inline	bool CGameLocationSelector::accessible			(const _vertex_id_type vertex_id) const
 {
 	return					(m_restricted_object ? m_restricted_object->accessible(m_graph->vertex(vertex_id)->level_vertex_id()) : true);
 }

@@ -18,7 +18,7 @@ struct SBaseParameters {
 	_iteration_type	max_iteration_count;
 	u32				max_visited_node_count;
 
-	IC	SBaseParameters(
+	inline	SBaseParameters(
 			_dist_type		max_range				= type_max(_dist_type),
 			_iteration_type	max_iteration_count		= _iteration_type(-1),
 			u32				max_visited_node_count	= 65500
@@ -29,7 +29,7 @@ struct SBaseParameters {
 	{
 	}
 
-	IC	bool actual () const
+	inline	bool actual () const
 	{
 		return		(true);
 	}

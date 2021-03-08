@@ -1327,7 +1327,7 @@ public:
 	}
 	virtual	void	Execute(const char* args);
 
-	IC		void	Set(BOOL V)
+	inline		void	Set(BOOL V)
 	{
 		value->set(mask, V);
 	}

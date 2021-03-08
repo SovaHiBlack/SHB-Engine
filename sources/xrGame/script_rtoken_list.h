@@ -17,12 +17,12 @@ protected:
 	RTOKEN_LIST			m_values;
 
 public:
-	IC		void		add		(const char* value);
-	IC		void		remove	(u32 index);
-	IC		const char* get		(u32 index);
-	IC		u32			size	();
-	IC		void		clear	();
-	IC		RTOKEN_LIST	&tokens	();
+	inline		void		add		(const char* value);
+	inline		void		remove	(u32 index);
+	inline		const char* get		(u32 index);
+	inline		u32			size	();
+	inline		void		clear	();
+	inline		RTOKEN_LIST	&tokens	();
 public:
 	static void script_register(lua_State*);
 };

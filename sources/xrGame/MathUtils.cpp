@@ -47,7 +47,7 @@ EBoxSideNearestPointCode GetNearestPointOnOBBSide(const Fmatrix &xform,const Fve
 	float diffs=diffc<0.f ? diffc+h	:	diffc-h;
 }
 */
-IC bool RAYvsCYLINDER(const Fcylinder& c_cylinder, const Fvector &S, const Fvector &D, float &R, BOOL bCull)
+inline bool RAYvsCYLINDER(const Fcylinder& c_cylinder, const Fvector &S, const Fvector &D, float &R, BOOL bCull)
 {
 
 	const float &r=c_cylinder.m_radius;

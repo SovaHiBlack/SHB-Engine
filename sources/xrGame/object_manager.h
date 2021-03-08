@@ -29,8 +29,8 @@ public:
 	virtual	void			reset			();
 
 public:
-	IC		T				*selected		() const;
-	IC		const OBJECTS	&objects		() const;
+	inline		T				*selected		() const;
+	inline		const OBJECTS	&objects		() const;
 };
 
 #include "object_manager_inline.h"

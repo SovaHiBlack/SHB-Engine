@@ -16,7 +16,7 @@ const char* indent				= "  ";
 char		white_character		= '.';
 
 struct CProfilePortionPredicate {
-	IC		bool operator()			(const CProfileResultPortion &_1, const CProfileResultPortion &_2) const
+	inline		bool operator()			(const CProfileResultPortion &_1, const CProfileResultPortion &_2) const
 	{
 		return					(xr_strcmp(_1.m_timer_id,_2.m_timer_id) < 0);
 	}
@@ -30,7 +30,7 @@ CProfiler::CProfiler				()
 CProfiler::~CProfiler				()
 { }
 
-IC	u32 compute_string_length		(const char* str)
+inline	u32 compute_string_length		(const char* str)
 {
 	const char* i;
 	const char* j = str;
@@ -42,7 +42,7 @@ IC	u32 compute_string_length		(const char* str)
 	return						(count*xr_strlen(indent) + xr_strlen(j));
 }
 
-IC	void CProfiler::convert_string	(const char* str, shared_str &out, u32 max_string_size)
+inline	void CProfiler::convert_string	(const char* str, shared_str &out, u32 max_string_size)
 {
 	string256					m_temp;
 	const char* i;

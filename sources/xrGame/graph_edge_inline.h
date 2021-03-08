@@ -16,7 +16,7 @@
 #define CSGraphEdge CEdge<_edge_weight_type,_vertex_type>
 
 TEMPLATE_SPECIALIZATION
-IC	CSGraphEdge::CEdge			(const _edge_weight_type &weight, _vertex_type *vertex)
+inline	CSGraphEdge::CEdge			(const _edge_weight_type &weight, _vertex_type *vertex)
 {
 	m_weight		= weight;
 	VERIFY			(vertex);
@@ -24,31 +24,31 @@ IC	CSGraphEdge::CEdge			(const _edge_weight_type &weight, _vertex_type *vertex)
 }
 
 TEMPLATE_SPECIALIZATION
-IC	typename const CSGraphEdge::_edge_weight_type &CSGraphEdge::weight	() const
+inline	typename const CSGraphEdge::_edge_weight_type &CSGraphEdge::weight	() const
 {
 	return			(m_weight);
 }
 
 TEMPLATE_SPECIALIZATION
-IC	typename CSGraphEdge::_vertex_type *CSGraphEdge::vertex				() const
+inline	typename CSGraphEdge::_vertex_type *CSGraphEdge::vertex				() const
 {
 	return			(m_vertex);
 }
 
 TEMPLATE_SPECIALIZATION
-IC	const typename CSGraphEdge::_vertex_id_type &CSGraphEdge::vertex_id	() const
+inline	const typename CSGraphEdge::_vertex_id_type &CSGraphEdge::vertex_id	() const
 {
 	return			(vertex()->vertex_id());
 }
 
 TEMPLATE_SPECIALIZATION
-IC	bool CSGraphEdge::operator==	(const _vertex_id_type &vertex_id) const
+inline	bool CSGraphEdge::operator==	(const _vertex_id_type &vertex_id) const
 {
 	return			(vertex()->vertex_id() == vertex_id);
 }
 
 TEMPLATE_SPECIALIZATION
-IC	bool CSGraphEdge::operator==	(const CEdge &obj) const
+inline	bool CSGraphEdge::operator==	(const CEdge &obj) const
 {
 	if (weight() != obj.weight())
 		return		(false);

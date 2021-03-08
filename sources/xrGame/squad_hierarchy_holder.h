@@ -35,16 +35,16 @@ private:
 #endif // SQUAD_HIERARCHY_HOLDER_USE_LEADER
 
 public:
-	IC								CSquadHierarchyHolder	(CTeamHierarchyHolder *team);
+	inline								CSquadHierarchyHolder	(CTeamHierarchyHolder *team);
 	virtual							~CSquadHierarchyHolder	();
 			CGroupHierarchyHolder	&group					(u32 group_id) const;
-	IC		CTeamHierarchyHolder	&team					() const;
-	IC		const GROUP_REGISTRY	&groups					() const;
+	inline		CTeamHierarchyHolder	&team					() const;
+	inline		const GROUP_REGISTRY	&groups					() const;
 
 #ifdef SQUAD_HIERARCHY_HOLDER_USE_LEADER
 public:
-	IC		void					leader					(CEntity *leader);
-	IC		CEntity					*leader					() const;
+	inline		void					leader					(CEntity *leader);
+	inline		CEntity					*leader					() const;
 			void					update_leader			();
 #endif // SQUAD_HIERARCHY_HOLDER_USE_LEADER
 };

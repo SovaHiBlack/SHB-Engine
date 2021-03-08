@@ -26,7 +26,7 @@ public:
 		u32										m_max_count;
 		ESoundTypes								m_type;
 
-		IC		bool	operator==	(const CSoundCollectionParams &object) const
+		inline		bool	operator==	(const CSoundCollectionParams &object) const
 		{
 			if (m_sound_prefix != object.m_sound_prefix)
 				return	(false);
@@ -57,7 +57,7 @@ public:
 
 							CSoundCollection	(const CSoundCollectionParams &params);
 							~CSoundCollection	();
-		IC	ref_sound		*add				(ESoundTypes type, const char* name) const;
+		inline	ref_sound		*add				(ESoundTypes type, const char* name) const;
 			const ref_sound	&random				(const u32 &id);
 	};
 
@@ -88,7 +88,7 @@ public:
 			m_started							= true;
 		}
 
-		IC		bool	started					() const
+		inline		bool	started					() const
 		{
 			return								(m_started);
 		}
@@ -127,7 +127,7 @@ private:
 	CObject										*m_object;
 	shared_str									m_sound_prefix;
 
-	IC		Fvector		compute_sound_point			(const CSoundSingle &sound);
+	inline		Fvector		compute_sound_point			(const CSoundSingle &sound);
 			void		remove_inappropriate_sounds	(u32 sound_mask);
 			void		update_playing_sounds		();
 			bool		check_sound_legacy			(u32 internal_type) const;
@@ -143,15 +143,15 @@ public:
 			void		clear						();
 			void		play						(u32 internal_type, u32 max_start_time = 0, u32 min_start_time = 0, u32 max_stop_time = 0, u32 min_stop_time = 0, u32 id = u32(-1));
 			void		update						(float time_delta);
-	IC		void		set_sound_mask				(u32 sound_mask);
-	IC		void		remove_active_sounds		(u32 sound_mask);
-	IC	const xr_vector<CSoundSingle>&playing_sounds() const;
-	IC		u32			active_sound_count			(bool only_playing = false) const;
+	inline		void		set_sound_mask				(u32 sound_mask);
+	inline		void		remove_active_sounds		(u32 sound_mask);
+	inline	const xr_vector<CSoundSingle>&playing_sounds() const;
+	inline		u32			active_sound_count			(bool only_playing = false) const;
 			bool		need_bone_data				() const;
-	IC	const SOUND_COLLECTIONS &objects			() const;
-	IC		bool		active_sound_type			(u32 synchro_mask) const;
-	IC		void		sound_prefix				(const shared_str &sound_prefix);
-	IC	const shared_str &sound_prefix				() const;
+	inline	const SOUND_COLLECTIONS &objects			() const;
+	inline		bool		active_sound_type			(u32 synchro_mask) const;
+	inline		void		sound_prefix				(const shared_str &sound_prefix);
+	inline	const shared_str &sound_prefix				() const;
 };
 
 #include "sound_player_inline.h"

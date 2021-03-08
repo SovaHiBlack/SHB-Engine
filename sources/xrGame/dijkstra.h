@@ -70,17 +70,17 @@ public:
 		_dist_type	_f;
 		T1			*_back;
 
-		IC	_dist_type &f()
+		inline	_dist_type &f()
 		{
 			return	(_f);
 		}
 
-		IC	const _dist_type &f() const
+		inline	const _dist_type &f() const
 		{
 			return	(_f);
 		}
 
-		IC	T1	*&back()
+		inline	T1	*&back()
 		{
 			return	(_back);
 		}
@@ -107,19 +107,19 @@ protected:
 
 protected:
 	template <typename _PathManager>
-	IC		void				initialize		(_PathManager &path_manager);
+	inline		void				initialize		(_PathManager &path_manager);
 	template <typename _PathManager>
-	IC		bool				step			(_PathManager &path_manager);
+	inline		bool				step			(_PathManager &path_manager);
 	template <typename _PathManager>
-	IC		void				finalize		(_PathManager &path_manager);
+	inline		void				finalize		(_PathManager &path_manager);
 
 public:
-	IC							CDijkstra		(const u32 max_vertex_count);
+	inline							CDijkstra		(const u32 max_vertex_count);
 	virtual						~CDijkstra		();
 	template <typename _PathManager>
-	IC		bool				find			(_PathManager &path_manager);
-	IC		CDataStorage		&data_storage	();
-	IC		const CDataStorage	&data_storage	() const;
+	inline		bool				find			(_PathManager &path_manager);
+	inline		CDataStorage		&data_storage	();
+	inline		const CDataStorage	&data_storage	() const;
 };
 
 #include "dijkstra_inline.h"

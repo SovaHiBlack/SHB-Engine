@@ -85,7 +85,7 @@ public:
 	void				OnDeviceCreate	( );
 	void				OnDeviceDestroy	( );
 
-	IC void				SetStyle		(EStyle s, u32 SubGraphID = 0)
+	inline void				SetStyle		(EStyle s, u32 SubGraphID = 0)
 	{
 		if (SubGraphID >= subgraphs.size( ))
 		{
@@ -96,7 +96,7 @@ public:
 		it->SetStyle(s);
 	}
 
-	IC void				SetRect			(int l, int t, int w, int h, u32 rect_clr, u32 back_clr)
+	inline void				SetRect			(int l, int t, int w, int h, u32 rect_clr, u32 back_clr)
 	{
 		lt.set(l, t);
 		rb.set(l + w, t + h);
@@ -104,7 +104,7 @@ public:
 		back_color = back_clr;
 	}
 
-	IC void				SetGrid			(int w_div, float w_step, int h_div, float h_step, u32 grid_clr, u32 base_clr)
+	inline void				SetGrid			(int w_div, float w_step, int h_div, float h_step, u32 grid_clr, u32 base_clr)
 	{
 		grid.set(w_div, h_div);
 		grid_step.set(w_step, h_step);
@@ -112,7 +112,7 @@ public:
 		base_color = base_clr;
 	}
 
-	IC void				SetMinMax		(float _mn, float _mx, u32 item_count)
+	inline void				SetMinMax		(float _mn, float _mx, u32 item_count)
 	{
 		mn = _mn;
 		mx = _mx;
@@ -126,7 +126,7 @@ public:
 		}
 	}
 
-	IC void				AppendItem		(float d, u32 clr, u32 SubGraphID = 0)
+	inline void				AppendItem		(float d, u32 clr, u32 SubGraphID = 0)
 	{
 		if (SubGraphID >= subgraphs.size( )) return;
 
@@ -140,13 +140,13 @@ public:
 		}
 	}
 
-	IC u32				AppendSubGraph	(EStyle S)
+	inline u32				AppendSubGraph	(EStyle S)
 	{
 		subgraphs.push_back(SSubGraph(S));
 		return subgraphs.size( ) - 1;
 	}
 
-	IC void				AddMarker		(EStyle Style, float pos, u32 Color)
+	inline void				AddMarker		(EStyle Style, float pos, u32 Color)
 	{
 		SMarker NewMarker;
 		NewMarker.m_dwColor = Color;
@@ -156,13 +156,13 @@ public:
 		m_Markers.push_back(NewMarker);
 	}
 
-	IC const SMarker&	Marker			(u32 ID)
+	inline const SMarker&	Marker			(u32 ID)
 	{
 		VERIFY(ID < m_Markers.size( ));
 		return m_Markers[ID];
 	}
 
-	IC void				UpdateMarkerPos	(u32 ID, float NewPos)
+	inline void				UpdateMarkerPos	(u32 ID, float NewPos)
 	{
 		if (ID >= m_Markers.size( ))
 		{
@@ -173,12 +173,12 @@ public:
 		pMarker.m_fPos = NewPos;
 	}
 
-	IC void				ClearMarkers	( )
+	inline void				ClearMarkers	( )
 	{
 		m_Markers.clear( );
 	}
 
-	IC void				RemoveMarker	(u32 ID)
+	inline void				RemoveMarker	(u32 ID)
 	{
 		if (ID >= m_Markers.size( ))
 		{

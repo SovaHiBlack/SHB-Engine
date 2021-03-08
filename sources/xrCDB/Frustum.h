@@ -61,7 +61,7 @@ public:
 		return			fcvPartial;
 	}
 public:
-	IC void			_clear				()				{ p_count=0; }
+	inline void			_clear				()				{ p_count=0; }
 	void			_add				(Fplane &P);
 	void			_add				(Fvector3& P1, Fvector3& P2, Fvector3& P3);
 
@@ -84,12 +84,12 @@ public:
 	EFC_Visible		testSAABB			(Fvector3& c, float r, const float* mM, u32& test_mask)	const;
 	BOOL			testPolyInside_dirty(Fvector3* p, int count)									const;
 
-	IC BOOL			testPolyInside		(sPoly& src)											const
+	inline BOOL			testPolyInside		(sPoly& src)											const
     {
     	sPoly d;
         return !!ClipPoly(src,d);
     }
-   	IC BOOL			testPolyInside		(Fvector3* p, int count)									const
+   	inline BOOL			testPolyInside		(Fvector3* p, int count)									const
     {
     	sPoly src(p,count);
         return testPolyInside(src);

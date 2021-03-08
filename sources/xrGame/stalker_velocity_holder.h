@@ -25,7 +25,7 @@ public:
 			const COLLECTION	&collection				(const shared_str &section);
 };
 
-IC		CStalkerVelocityHolder	&stalker_velocity_holder();
+inline		CStalkerVelocityHolder	&stalker_velocity_holder();
 
 extern	CStalkerVelocityHolder	*g_stalker_velocity_holder;
 

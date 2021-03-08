@@ -9,7 +9,7 @@ void	light_Package::clear	()
 }
 
 #if RENDER==R_R2
-IC	bool	pred_light_cmp	(light*	_1, light* _2)
+inline	bool	pred_light_cmp	(light*	_1, light* _2)
 {
 	if	(_1->vis.pending)
 	{

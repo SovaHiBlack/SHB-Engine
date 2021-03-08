@@ -13,7 +13,7 @@ private:
 		ISheduled*	Object;
 		u32			dwPadding;				// for align-issues
 
-		IC bool		operator < (Item& I)
+		inline bool		operator < (Item& I)
 		{	return dwTimeForExecute > I.dwTimeForExecute; }
 	};
 	struct	ItemReg
@@ -29,9 +29,9 @@ private:
 	xr_vector<ItemReg>		Registration	;
 	bool					m_processing_now;
 
-	IC void			Push	(Item& I);
-	IC void			Pop		();
-	IC Item&		Top		()
+	inline void			Push	(Item& I);
+	inline void			Pop		();
+	inline Item&		Top		()
 	{
 		return Items.front();
 	}

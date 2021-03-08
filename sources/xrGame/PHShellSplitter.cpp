@@ -360,7 +360,7 @@ shell_root CPHShellSplitterHolder::ElementSingleSplit(const element_fracture &sp
 }
 
 
-IC	void correct_diapasones(ELEMENT_PAIR_VECTOR& element_pairs)
+inline	void correct_diapasones(ELEMENT_PAIR_VECTOR& element_pairs)
 {
 	ELEMENT_PAIR_I i,b=element_pairs.begin(),e=element_pairs.end();
 

@@ -34,22 +34,22 @@ u32 C_ON_FRIEND		D3DCOLOR_XRGB(0, 0xff, 0);
 #define SHOW_INFO_SPEED		0.5f
 #define HIDE_INFO_SPEED		10.0f
 
-IC float	recon_mindist( )
+inline float	recon_mindist( )
 {
 	return 2.0f;
 }
 
-IC float	recon_maxdist( )
+inline float	recon_maxdist( )
 {
 	return 50.0f;
 }
 
-IC float	recon_minspeed( )
+inline float	recon_minspeed( )
 {
 	return 0.5f;
 }
 
-IC float	recon_maxspeed( )
+inline float	recon_maxspeed( )
 {
 	return 10.0f;
 }

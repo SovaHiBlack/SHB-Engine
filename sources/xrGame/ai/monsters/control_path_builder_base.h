@@ -15,7 +15,7 @@ class CControlPathBuilderBase : public CControl_ComBase {
 	bool						m_try_min_time;
 	bool						m_enable;
 	bool						m_use_dest_orient;
-	Fvector						m_dest_dir;
+	Fvector3						m_dest_dir;
 	MovementManager::EPathType	m_path_type;
 	bool						m_extrapolate;
 	u32							m_velocity_mask;
@@ -28,14 +28,14 @@ class CControlPathBuilderBase : public CControl_ComBase {
 	// -----------------------------------------------------------
 
 	struct STarget {
-		Fvector		position;
+		Fvector3		position;
 		u32			node;
 		void		init		() {
 			position.set	(0.f,0.f,0.f);
 			node			= u32(-1);
 		}
 
-		void		set			(const Fvector &pos, u32 vertex) {
+		void		set			(const Fvector3&pos, u32 vertex) {
 			position.set	(pos);
 			node			= vertex;
 		}
@@ -110,14 +110,14 @@ public:
 			inline	void	set_patrol_path_type	() {m_path_type = MovementManager::ePathTypePatrolPath;}
 			inline	void	set_velocity_mask		(u32 mask) {m_velocity_mask = mask;}
 			inline	void	set_desirable_mask		(u32 mask) {m_desirable_mask = mask;}
-		void	set_dest_direction		(const Fvector &dir);
+		void	set_dest_direction		(const Fvector3& dir);
 
 		inline	bool	enabled					() {return m_enable;}
 	// -------------------------------------------------------------------
 	// Set methods
-		void		set_target_point		(const Fvector &position, u32 node = u32(-1));
+		void		set_target_point		(const Fvector3& position, u32 node = u32(-1));
 		void		set_target_point		(u32 node);
-		void		set_retreat_from_point	(const Fvector &position);
+		void		set_retreat_from_point	(const Fvector3& position);
 
 		inline	void		set_rebuild_time		(u32 time);
 		inline	void		set_cover_params		(float min, float max, float dev, float radius);
@@ -128,12 +128,12 @@ public:
 		void		detour_graph_points		(u32 game_graph_vertex_id = u32(-1));
 		inline	void		set_generic_parameters	();
 
-		Fvector		get_target_found		() {return m_target_found.position;}
-		Fvector		get_target_set			() {return m_target_set.position;}
+		Fvector3		get_target_found		() {return m_target_found.position;}
+		Fvector3		get_target_set			() {return m_target_set.position;}
 
 		// -------------------------------------------------------------------
 		// Services
-		void		set_target_accessible	(STarget &target, const Fvector &position);
+		void		set_target_accessible	(STarget &target, const Fvector3& position);
 
 private:
 		// functional

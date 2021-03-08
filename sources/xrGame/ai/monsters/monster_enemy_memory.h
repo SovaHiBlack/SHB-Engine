@@ -28,7 +28,7 @@ public:
 	void				remove_links			(CObject *O);
 	
 	void				add_enemy				(const CEntityAlive *enemy);
-	void				add_enemy				(const CEntityAlive *enemy, const Fvector &pos, u32 vertex, u32 time);
+	void				add_enemy				(const CEntityAlive *enemy, const Fvector3& pos, u32 vertex, u32 time);
 
 private:
 

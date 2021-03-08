@@ -59,7 +59,7 @@ CTorch::~CTorch(void)
 	HUD_SOUND::DestroySound(m_NightVisionBrokenSnd);
 }
 
-IC bool CTorch::can_use_dynamic_lights( )
+inline bool CTorch::can_use_dynamic_lights( )
 {
 	if (!H_Parent( ))
 		return				(true);

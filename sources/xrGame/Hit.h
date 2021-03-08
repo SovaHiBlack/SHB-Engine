@@ -6,37 +6,37 @@ struct SHit
 	SHit( );
 	bool				is_valide( ) const;
 	void				invalidate( );
-	IC	float				damage( ) const
+	inline	float				damage( ) const
 	{
 		VERIFY(is_valide( ));
 		return power;
 	}
-	IC	const Fvector& direction( ) const
+	inline	const Fvector& direction( ) const
 	{
 		VERIFY(is_valide( ));
 		return dir;
 	}
-	IC	const CObject* initiator( ) const
+	inline	const CObject* initiator( ) const
 	{
 		VERIFY(is_valide( ));
 		return who;
 	}
-	IC			u16			bone( ) const
+	inline			u16			bone( ) const
 	{
 		VERIFY(is_valide( ));
 		return boneID;
 	}
-	IC	const Fvector& bone_space_position( ) const
+	inline	const Fvector& bone_space_position( ) const
 	{
 		VERIFY(is_valide( ));
 		return p_in_bone_space;
 	}
-	IC			float		phys_impulse( ) const
+	inline			float		phys_impulse( ) const
 	{
 		VERIFY(is_valide( ));
 		return impulse;
 	}
-	IC	ALife::EHitType		type( )		const
+	inline	ALife::EHitType		type( )		const
 	{
 		VERIFY(is_valide( ));
 		return hit_type;

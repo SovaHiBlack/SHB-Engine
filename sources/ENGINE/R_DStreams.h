@@ -39,9 +39,9 @@ public:
 	void						reset_begin		();
 	void						reset_end		();
 
-	IC IDirect3DVertexBuffer9*	Buffer()		{ return pVB;			}
-	IC u32						DiscardID()		{ return mDiscardID;	}
-	IC void						Flush()			{ mPosition=mSize;		}
+	inline IDirect3DVertexBuffer9*	Buffer()		{ return pVB;			}
+	inline u32						DiscardID()		{ return mDiscardID;	}
+	inline void						Flush()			{ mPosition=mSize;		}
 
 	void*						Lock			( u32 vl_Count, u32 Stride, u32& vOffset );
 	void						Unlock			( u32 Count, u32 Stride);
@@ -73,8 +73,8 @@ public:
 	void						reset_begin		();
 	void						reset_end		();
 
-	IC IDirect3DIndexBuffer9*	Buffer()		{ return pIB;			}
-	IC u32						DiscardID()		{ return mDiscardID;	}
+	inline IDirect3DIndexBuffer9*	Buffer()		{ return pIB;			}
+	inline u32						DiscardID()		{ return mDiscardID;	}
 	void						Flush()			{ mPosition=mSize;		}
 
 	u16*						Lock			( u32 Count, u32& vOffset );

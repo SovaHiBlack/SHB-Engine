@@ -24,7 +24,7 @@ struct	ENGINE_API		STextureList	: public xr_resource_flagged, public xr_vector<s
 	typedef xr_vector<std::pair<u32,ref_texture> > inherited_vec;
 						~STextureList	();
 
-						IC BOOL		equal (const STextureList& base) const
+						inline BOOL		equal (const STextureList& base) const
 						{
 							if (size()!=base.size())			return FALSE;
 							for (u32 cmp=0; cmp<size(); cmp++)	{

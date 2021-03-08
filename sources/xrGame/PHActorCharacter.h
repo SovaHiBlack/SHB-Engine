@@ -76,13 +76,13 @@ struct TPHCharacterRestrictor : public SPHCharacterRestrictor
 using RESRICTORS_V = xr_vector<SPHCharacterRestrictor*>;
 using RESTRICTOR_I = RESRICTORS_V::iterator;
 
-IC RESTRICTOR_I begin(RESRICTORS_V& v)
+inline RESTRICTOR_I begin(RESRICTORS_V& v)
 {
 	//return v;
 	return v.begin( );
 }
 
-IC RESTRICTOR_I end(RESRICTORS_V& v)
+inline RESTRICTOR_I end(RESRICTORS_V& v)
 {
 	//return v+sizeof(RESRICTORS_V)/sizeof(SPHCharacterRestrictor*);
 	return v.end( );

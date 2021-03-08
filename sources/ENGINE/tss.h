@@ -5,11 +5,11 @@
 class ENGINE_API CSimulatorTSS
 {
 public:
-	IC void Set			(SimulatorStates& container, u32 S, u32 N, u32 V)
+	inline void Set			(SimulatorStates& container, u32 S, u32 N, u32 V)
 	{
 		container.set_TSS(S,N,V);
 	}
-	IC void SetColor	(SimulatorStates& container, u32 S, u32 A1, u32 OP, u32 A2)
+	inline void SetColor	(SimulatorStates& container, u32 S, u32 A1, u32 OP, u32 A2)
 	{
 		Set(container,S,D3DTSS_COLOROP,	OP);
 		switch (OP)
@@ -28,12 +28,12 @@ public:
 			break;
 		}
 	}
-	IC void SetColor3	(SimulatorStates& container, u32 S, u32 A1, u32 OP, u32 A2, u32 A3)
+	inline void SetColor3	(SimulatorStates& container, u32 S, u32 A1, u32 OP, u32 A2, u32 A3)
 	{
 		SetColor		(container,S,A1,OP,A2);
 		Set				(container,S,D3DTSS_COLORARG0,A3);
 	}
-	IC void SetAlpha	(SimulatorStates& container, u32 S, u32 A1, u32 OP, u32 A2)
+	inline void SetAlpha	(SimulatorStates& container, u32 S, u32 A1, u32 OP, u32 A2)
 	{
 		Set(container,S,D3DTSS_ALPHAOP,	OP);
 		switch (OP)
@@ -52,7 +52,7 @@ public:
 			break;
 		}
 	}
-	IC void SetAlpha3	(SimulatorStates& container, u32 S, u32 A1, u32 OP, u32 A2, u32 A3)
+	inline void SetAlpha3	(SimulatorStates& container, u32 S, u32 A1, u32 OP, u32 A2, u32 A3)
 	{
 		SetAlpha		(container,S,A1,OP,A2);
 		Set				(container,S,D3DTSS_ALPHAARG0,A3);
@@ -62,7 +62,7 @@ public:
 class ENGINE_API CSimulatorRS
 {
 public:
-	IC void Set			(SimulatorStates& container, u32 N, u32 V)
+	inline void Set			(SimulatorStates& container, u32 N, u32 V)
 	{
 		R_ASSERT(N<256);
 		container.set_RS(N,V);
@@ -77,13 +77,13 @@ public:
 	SimulatorStates		container;
 public:
 						CSimulator	()									{ Invalidate(); }
-	IC void				Invalidate	()									{ container.clear(); }
-	IC void				SetTSS		(u32 S, u32 N, u32 V)				{ TSS.Set(container,S,N,V);		}
-	IC void				SetSAMP		(u32 S, u32 N, u32 V)				{ container.set_SAMP(S,N,V);	}
-	IC void				SetColor	(u32 S, u32 a, u32 b, u32 c)		{ TSS.SetColor(container,S,a,b,c);}
-	IC void				SetColor3	(u32 S, u32 a, u32 b, u32 c, u32 d)	{ TSS.SetColor3(container,S,a,b,c,d);}
-	IC void				SetAlpha	(u32 S, u32 a, u32 b, u32 c)		{ TSS.SetAlpha(container,S,a,b,c);}
-	IC void				SetAlpha3	(u32 S, u32 a, u32 b, u32 c, u32 d)	{ TSS.SetAlpha3(container,S,a,b,c,d);}
-	IC void				SetRS		(u32 N, u32 V)						{ RS.Set(container,N,V);	}
-	IC SimulatorStates&	GetContainer()									{ return container; }
+	inline void				Invalidate	()									{ container.clear(); }
+	inline void				SetTSS		(u32 S, u32 N, u32 V)				{ TSS.Set(container,S,N,V);		}
+	inline void				SetSAMP		(u32 S, u32 N, u32 V)				{ container.set_SAMP(S,N,V);	}
+	inline void				SetColor	(u32 S, u32 a, u32 b, u32 c)		{ TSS.SetColor(container,S,a,b,c);}
+	inline void				SetColor3	(u32 S, u32 a, u32 b, u32 c, u32 d)	{ TSS.SetColor3(container,S,a,b,c,d);}
+	inline void				SetAlpha	(u32 S, u32 a, u32 b, u32 c)		{ TSS.SetAlpha(container,S,a,b,c);}
+	inline void				SetAlpha3	(u32 S, u32 a, u32 b, u32 c, u32 d)	{ TSS.SetAlpha3(container,S,a,b,c,d);}
+	inline void				SetRS		(u32 N, u32 V)						{ RS.Set(container,N,V);	}
+	inline SimulatorStates&	GetContainer()									{ return container; }
 };

@@ -69,4 +69,4 @@ public:
 	virtual	void		LoadTitle				(const char* str);
 };
 
-IC CGamePersistent&		GamePersistent()		{ return *((CGamePersistent*) g_pGamePersistent);			}
+inline CGamePersistent&		GamePersistent()		{ return *((CGamePersistent*) g_pGamePersistent);			}

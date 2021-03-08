@@ -21,11 +21,11 @@ protected:
 public:
 	virtual					~CALifeSpawnHeader	();
 	virtual void			load				(IReader &file_stream);
-	IC		u32				version				() const;
-	IC		const xrGUID	&guid				() const;
-	IC		const xrGUID	&graph_guid			() const;
-	IC		u32				count				() const;
-	IC		u32				level_count			() const;
+	inline		u32				version				() const;
+	inline		const xrGUID	&guid				() const;
+	inline		const xrGUID	&graph_guid			() const;
+	inline		u32				count				() const;
+	inline		u32				level_count			() const;
 };
 
 #include "alife_spawn_registry_header_inline.h"

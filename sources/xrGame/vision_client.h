@@ -32,7 +32,7 @@ private:
 	Fvector							m_position;
 
 private:
-	IC		const CEntity			&object					() const;
+	inline		const CEntity			&object					() const;
 
 private:
 			void					eye_pp_s01				();
@@ -69,7 +69,7 @@ public:
 			void					remove_links			(CObject *object);
 
 public:
-	IC		CVisualMemoryManager	&visual					() const;
+	inline		CVisualMemoryManager	&visual					() const;
 };
 
 #include "vision_client_inline.h"

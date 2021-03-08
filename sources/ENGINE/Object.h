@@ -91,15 +91,15 @@ public:
 	virtual bool						shedule_Needed		()					{return processing_enabled();};
 
 	// Parentness
-	IC CObject*							H_Parent			()					{ return Parent;						}
-	IC const CObject*					H_Parent			()			const	{ return Parent;						}
+	inline CObject*							H_Parent			()					{ return Parent;						}
+	inline const CObject*					H_Parent			()			const	{ return Parent;						}
 	CObject*							H_Root				()					{ return Parent?Parent->H_Root():this;	}
 	const CObject*						H_Root				()			const	{ return Parent?Parent->H_Root():this;	}
 	CObject*							H_SetParent			(CObject* O, bool just_before_destroy = false);
 
 	// Geometry xform
 	virtual void						Center				(Fvector3& C) const;
-	IC const Fmatrix&					XFORM				()			 const	{ VERIFY(_valid(renderable.xform));	return renderable.xform;	}
+	inline const Fmatrix&					XFORM				()			 const	{ VERIFY(_valid(renderable.xform));	return renderable.xform;	}
 	__forceinline Fmatrix&						XFORM				()					{ return renderable.xform;			}
 	virtual void						spatial_register	();
 	virtual void						spatial_unregister	();
@@ -113,8 +113,8 @@ public:
 	virtual float						Radius				()			const;
 	virtual const Fbox3&					BoundingBox			()			const;
 	
-	IC IRender_Sector*					Sector				()					{ return H_Root()->spatial.sector;	}
-	IC IRender_ObjectSpecific*			ROS					()					{ return renderable_ROS();			}
+	inline IRender_Sector*					Sector				()					{ return H_Root()->spatial.sector;	}
+	inline IRender_ObjectSpecific*			ROS					()					{ return renderable_ROS();			}
 	virtual BOOL						renderable_ShadowGenerate	()			{ return TRUE;						}
 	virtual BOOL						renderable_ShadowReceive	()			{ return TRUE;						}
 
@@ -172,7 +172,7 @@ public:
 	virtual void						net_Relcase			(CObject*	 O) { };				// destroy all links to another objects
 
 	// Position stack
-	IC u32								ps_Size				()			const	{ return PositionStack.size(); }
+	inline u32								ps_Size				()			const	{ return PositionStack.size(); }
 	virtual	SavedPosition				ps_Element			(u32 ID)	const;
 	virtual void						ForceTransform		(const Fmatrix& m)	{};
 

@@ -43,20 +43,20 @@ public:
 			void	SetLessCoverLook					(const LevelGraph::CVertex *tpNode, float fMaxHeadTurnAngle, bool bDifferenceLook);
 			void	vfValidateAngleDependency			(float x1, float &x2, float x3);
 			bool	need_correction						(float x1, float x2, float x3);
-	IC		bool	GetDirectionAnglesByPrevPositions	(float &yaw, float &pitch);
+	inline		bool	GetDirectionAnglesByPrevPositions	(float &yaw, float &pitch);
 			bool	GetDirectionAngles					(float &yaw, float &pitch);
-	IC		bool	use_torso_look						() const;
+	inline		bool	use_torso_look						() const;
 	template <typename T1, typename T2, typename T3>
-	IC		void	setup								(T1 _1, T2 _2, T3 _3);
+	inline		void	setup								(T1 _1, T2 _2, T3 _3);
 	template <typename T1, typename T2>
-	IC		void	setup								(T1 _1, T2 _2);
+	inline		void	setup								(T1 _1, T2 _2);
 	template <typename T1>
-	IC		void	setup								(T1 _1);
+	inline		void	setup								(T1 _1);
 			void	setup								(const CSightAction &sight_action);
 	virtual void	update								();
-	IC		bool	turning_in_place					() const;
-	IC		bool	enabled								() const;
-	IC		void	enable								(bool value);
+	inline		bool	turning_in_place					() const;
+	inline		bool	enabled								() const;
+	inline		void	enable								(bool value);
 };
 
 #include "sight_manager_inline.h"

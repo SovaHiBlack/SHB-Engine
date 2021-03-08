@@ -2,7 +2,7 @@
 
 #include "stdafx.h"
 
-#include "BottleItem.h"//==>
+#include "BottleItem.h"
 #include "Messages.h"
 #include "../ENGINE/net_utils.h"
 #include "entity_alive.h"

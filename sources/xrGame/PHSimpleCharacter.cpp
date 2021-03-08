@@ -22,7 +22,7 @@
 //#include "game_base_space.h"
 //#include "PHValide.h"
 
-IC bool PhOutOfBoundaries(const Fvector& v)
+inline bool PhOutOfBoundaries(const Fvector& v)
 {
 	return v.y < phBoundaries.y1;
 }
@@ -35,7 +35,7 @@ const float LOSE_CONTROL_DISTANCE = 0.5f; //fly distance to lose control
 const float CLAMB_DISTANCE = 0.5f;
 const float CLIMB_GETUP_HEIGHT = 0.3f;
 
-float IC sgn(float v)
+float inline sgn(float v)
 {
 	return v < 0.0f ? -1.0f : 1.0f;
 }

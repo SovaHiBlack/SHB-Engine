@@ -24,7 +24,7 @@ private:
 			void	load					(void *buffer, const u32 &buffer_size, const char* file_name);
 
 public:
-	IC				CALifeStorageManager	(CServer*server, const char* section);
+	inline				CALifeStorageManager	(CServer*server, const char* section);
 	virtual			~CALifeStorageManager	();
 			bool	load					(const char* save_name = 0);
 			void	save					(const char* save_name = 0, bool update_name = true);

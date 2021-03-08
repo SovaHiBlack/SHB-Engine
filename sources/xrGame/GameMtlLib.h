@@ -106,7 +106,7 @@ public:
 	}
 	void 				Load			(IReader& fs);
 	void 				Save			(IWriter& fs);
-	IC int				GetID			(){return ID;}
+	inline int				GetID			(){return ID;}
 };
 
 //DEFINE_VECTOR(SGameMtl*,GameMtlVec,GameMtlIt);
@@ -151,14 +151,14 @@ public:
 		OwnProps.one	();
 	}
 	~SGameMtlPair		();
-	IC int				GetMtl0			(){return mtl0;}
-	IC int				GetMtl1			(){return mtl1;}
-	IC int				GetID			(){return ID;}
-	IC void				SetPair			(int m0, int m1){mtl0=m0; mtl1=m1;}
-	IC bool				IsPair			(int m0, int m1){return !!(((mtl0==m0)&&(mtl1==m1))||((mtl0==m1)&&(mtl1==m0)));}
+	inline int				GetMtl0			(){return mtl0;}
+	inline int				GetMtl1			(){return mtl1;}
+	inline int				GetID			(){return ID;}
+	inline void				SetPair			(int m0, int m1){mtl0=m0; mtl1=m1;}
+	inline bool				IsPair			(int m0, int m1){return !!(((mtl0==m0)&&(mtl1==m1))||((mtl0==m1)&&(mtl1==m0)));}
 	void				Save			(IWriter& fs);
 	void				Load			(IReader& fs);
-	IC int 				GetParent		(){return ID_parent;}
+	inline int 				GetParent		(){return ID_parent;}
 	BOOL				SetParent		(int parent);
 
 #ifdef DEBUG
@@ -196,7 +196,7 @@ public:
 		R_ASSERT		(0==materials.size());
 		*/
 	}
-	IC void				Unload			()
+	inline void				Unload			()
 	{
 		material_count	= 0;
 		material_pairs_rt.clear();
@@ -209,44 +209,44 @@ public:
 		material_pairs.clear();
 	}
 	// material routine
-	IC GameMtlIt 		GetMaterialIt	(const char* name)
+	inline GameMtlIt 		GetMaterialIt	(const char* name)
 	{
 		for (GameMtlIt it=materials.begin(); materials.end() != it; ++it)
 			if (0==strcmpi(*(*it)->m_Name,name)) return it;
 		return materials.end();
 	}
-	IC GameMtlIt 		GetMaterialIt	(shared_str& name)
+	inline GameMtlIt 		GetMaterialIt	(shared_str& name)
 	{
 		for (GameMtlIt it=materials.begin(); materials.end() != it; ++it)
 			if (name.equal((*it)->m_Name)) return it;
 		return materials.end();
 	}
-	IC GameMtlIt 		GetMaterialItByID(int id)
+	inline GameMtlIt 		GetMaterialItByID(int id)
 	{
 		for (GameMtlIt it=materials.begin(); materials.end() != it; ++it)
 			if ((*it)->ID==id) return it;
 		return materials.end();
 	}
-	IC u32				GetMaterialID	(const char* name)
+	inline u32				GetMaterialID	(const char* name)
 	{
 		GameMtlIt it	= GetMaterialIt	(name);
 		return (it==materials.end())?GAMEMTL_NONE_ID:(*it)->ID;
 	}
 
-	IC u16				GetMaterialIdx	(int ID)		{GameMtlIt it=GetMaterialItByID(ID);VERIFY(materials.end() != it); return (u16)(it-materials.begin());}
-	IC u16				GetMaterialIdx	(const char* name)	{GameMtlIt it=GetMaterialIt(name);VERIFY(materials.end() != it); return (u16)(it-materials.begin());}
-	IC SGameMtl*		GetMaterialByIdx(u16 idx)		{VERIFY(idx<materials.size()); return materials[idx];}
-	IC SGameMtl*		GetMaterialByID (int id)		{return GetMaterialByIdx(GetMaterialIdx(id));}
+	inline u16				GetMaterialIdx	(int ID)		{GameMtlIt it=GetMaterialItByID(ID);VERIFY(materials.end() != it); return (u16)(it-materials.begin());}
+	inline u16				GetMaterialIdx	(const char* name)	{GameMtlIt it=GetMaterialIt(name);VERIFY(materials.end() != it); return (u16)(it-materials.begin());}
+	inline SGameMtl*		GetMaterialByIdx(u16 idx)		{VERIFY(idx<materials.size()); return materials[idx];}
+	inline SGameMtl*		GetMaterialByID (int id)		{return GetMaterialByIdx(GetMaterialIdx(id));}
 
-	IC GameMtlIt		FirstMaterial	(){return materials.begin();}
-	IC GameMtlIt		LastMaterial	(){return materials.end();}
-	IC u32				CountMaterial	(){return materials.size();}
+	inline GameMtlIt		FirstMaterial	(){return materials.begin();}
+	inline GameMtlIt		LastMaterial	(){return materials.end();}
+	inline u32				CountMaterial	(){return materials.size();}
 
 	// material pair routine
-	IC SGameMtlPair*	GetMaterialPair		(u16 idx0, u16 idx1){R_ASSERT((idx0<material_count)&&(idx1<material_count)); return material_pairs_rt[idx1*material_count+idx0];}
+	inline SGameMtlPair*	GetMaterialPair		(u16 idx0, u16 idx1){R_ASSERT((idx0<material_count)&&(idx1<material_count)); return material_pairs_rt[idx1*material_count+idx0];}
 
-	IC GameMtlPairIt	FirstMaterialPair	(){return material_pairs.begin();}
-	IC GameMtlPairIt	LastMaterialPair	(){return material_pairs.end();}
+	inline GameMtlPairIt	FirstMaterialPair	(){return material_pairs.begin();}
+	inline GameMtlPairIt	LastMaterialPair	(){return material_pairs.end();}
 
 	// IO routines
 	void				Load				();

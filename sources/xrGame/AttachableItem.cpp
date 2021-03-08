@@ -9,12 +9,12 @@
 #include "Inventory.h"
 
 #ifdef DEBUG
-	CAttachableItem*	CAttachableItem::m_dbgItem = nullptr;
+CAttachableItem* CAttachableItem::m_dbgItem = nullptr;
 #endif
 
-IC	CPHShellHolder&CAttachableItem::object	() const
+inline CPHShellHolder& CAttachableItem::object( ) const
 {
-	return				(item().object());
+	return item( ).object( );
 }
 
 DLL_Pure *CAttachableItem::_construct	()
@@ -33,8 +33,8 @@ void CAttachableItem::reload			(const char* section)
 	if (!pSettings->line_exist(section,"attach_angle_offset"))
 		return;
 
-	Fvector							angle_offset = pSettings->r_fvector3	(section,"attach_angle_offset");
-	Fvector							position_offset	= pSettings->r_fvector3	(section,"attach_position_offset");
+	Fvector3							angle_offset = pSettings->r_fvector3	(section,"attach_angle_offset");
+	Fvector3							position_offset	= pSettings->r_fvector3	(section,"attach_position_offset");
 	m_offset.setHPB					(VPUSH(angle_offset));
 	m_offset.c						= position_offset;
 	m_bone_name						= pSettings->r_string	(section,"attach_bone_name");

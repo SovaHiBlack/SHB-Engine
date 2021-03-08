@@ -34,8 +34,8 @@ public:
 	// Description
 	IDirect3DBaseTexture9*				desc_cache;
 	D3DSURFACE_DESC						desc;
-	IC BOOL								desc_valid		()		{ return pSurface==desc_cache; }
-	IC void								desc_enshure	()		{ if (!desc_valid()) desc_update(); }
+	inline BOOL								desc_valid		()		{ return pSurface==desc_cache; }
+	inline void								desc_enshure	()		{ if (!desc_valid()) desc_update(); }
 	void								desc_update		();
 public:
 	void	__stdcall					apply_load		(u32	stage);
@@ -53,9 +53,9 @@ public:
 	void								surface_set		(IDirect3DBaseTexture9* surf);
 	IDirect3DBaseTexture9*				surface_get 	();
 
-	IC BOOL								isUser			()		{ return flags.bUser;					}
-	IC u32								get_Width		()		{ desc_enshure(); return desc.Width;	}
-	IC u32								get_Height		()		{ desc_enshure(); return desc.Height;	}
+	inline BOOL								isUser			()		{ return flags.bUser;					}
+	inline u32								get_Width		()		{ desc_enshure(); return desc.Width;	}
+	inline u32								get_Height		()		{ desc_enshure(); return desc.Height;	}
 
 	void								video_Sync		(u32 _time){m_play_time=_time;}
 	void								video_Play		(BOOL looped, u32 _time=0xFFFFFFFF);

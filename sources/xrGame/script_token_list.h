@@ -20,12 +20,12 @@ protected:
 	struct CTokenPredicateName {
 		const char* m_name;
 
-		IC				CTokenPredicateName	(const char* name)
+		inline				CTokenPredicateName	(const char* name)
 		{
 			m_name		= name;
 		}
 
-		IC		bool	operator()		(const xr_token &token) const
+		inline		bool	operator()		(const xr_token &token) const
 		{
 			return		(token.name && !xr_strcmp(token.name,m_name));
 		}
@@ -34,12 +34,12 @@ protected:
 	struct CTokenPredicateID {
 		int				m_id;
 
-		IC				CTokenPredicateID	(int id)
+		inline				CTokenPredicateID	(int id)
 		{
 			m_id		= id;
 		}
 
-		IC		bool	operator()		(const xr_token &token) const
+		inline		bool	operator()		(const xr_token &token) const
 		{
 			return		(token.name && (token.id == m_id));
 		}
@@ -49,19 +49,19 @@ protected:
 	TOKEN_LIST					m_token_list;
 
 protected:
-	IC		iterator			token				(const char* name);
-	IC		iterator			token				(int id);
+	inline		iterator			token				(const char* name);
+	inline		iterator			token				(int id);
 
 public:
-	IC							CScriptTokenList	();
+	inline							CScriptTokenList	();
 								~CScriptTokenList	();
-	IC		void				add					(const char* name, int id);
-	IC		void				remove				(const char* name);
-	IC		void				clear				();
-	IC		int					id					(const char* name);
-	IC		const char* name				(int id);
-	IC		const TOKEN_LIST	&tokens				() const;
-	IC		TOKEN_LIST			&tokens				();
+	inline		void				add					(const char* name, int id);
+	inline		void				remove				(const char* name);
+	inline		void				clear				();
+	inline		int					id					(const char* name);
+	inline		const char* name				(int id);
+	inline		const TOKEN_LIST	&tokens				() const;
+	inline		TOKEN_LIST			&tokens				();
 public:
 	static void script_register(lua_State*);
 };

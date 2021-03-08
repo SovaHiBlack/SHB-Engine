@@ -31,7 +31,7 @@ namespace PAPI{
 		{
 			xr_free					(particles);
 		}
-		IC int		Resize			(u32 max_count)
+		inline int		Resize			(u32 max_count)
 		{
 			// Reducing max.
 			if(particles_allocated >= max_count)
@@ -61,7 +61,7 @@ namespace PAPI{
 			particles_allocated		= max_count;
 			return max_count;
 		}
-		IC void		Remove			(int i)
+		inline void		Remove			(int i)
 		{
         	if (0==p_count)			return;
 			Particle& m				= particles[i];
@@ -69,7 +69,7 @@ namespace PAPI{
             m 						= particles[--p_count]; // не менять правило удаления !!! (dependence ParticleGroup)
 		}
 
-		IC BOOL		Add				(const pVector &pos, const pVector &posB,
+		inline BOOL		Add				(const pVector &pos, const pVector &posB,
 									const pVector &size, const pVector &rot, const pVector &vel, u32 color,
 									const float age = 0.0f, u16 frame=0, u16 flags=0)
 		{

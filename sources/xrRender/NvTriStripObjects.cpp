@@ -326,7 +326,7 @@ int NvStripifier::GetSharedVertex(NvFaceInfo *faceA, NvFaceInfo *faceB){
 //
 // Returns vertex of the input face which is "next" in the input index list
 //
-IC int NvStripifier::GetNextIndex(const WordVec &indices, NvFaceInfo *face){
+inline int NvStripifier::GetNextIndex(const WordVec &indices, NvFaceInfo *face){
 	
 	int numIndices = indices.size();
 	assert(numIndices >= 2);
@@ -373,7 +373,7 @@ IC int NvStripifier::GetNextIndex(const WordVec &indices, NvFaceInfo *face){
 // already assign to a committed strip OR it is assigned in an
 // experiment and the experiment index is the one we are building
 // for, then it is marked and unavailable
-IC bool NvStripInfo::IsMarked(NvFaceInfo *faceInfo){
+inline bool NvStripInfo::IsMarked(NvFaceInfo *faceInfo){
 	return (faceInfo->m_stripId >= 0) || (IsExperiment() && faceInfo->m_experimentId == m_experimentId);
 }
 
@@ -383,7 +383,7 @@ IC bool NvStripInfo::IsMarked(NvFaceInfo *faceInfo){
 //
 // Marks the face with the current strip ID
 //
-IC void NvStripInfo::MarkTriangle(NvFaceInfo *faceInfo){
+inline void NvStripInfo::MarkTriangle(NvFaceInfo *faceInfo){
 	assert(!IsMarked(faceInfo));
 	if (IsExperiment()){
 		faceInfo->m_experimentId = m_experimentId;

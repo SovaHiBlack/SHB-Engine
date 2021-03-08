@@ -52,7 +52,7 @@ void CCarDamageParticles::Play1(CCar* car)
 	if(*m_car_damage_particles1)
 	{
 		BIDS_I i=bones1.begin(),e=bones1.end();
-		for(;e!=i;++i) car->StartParticles(m_car_damage_particles1,*i,Fvector().set(0,1,0),car->ID());
+		for(;e!=i;++i) car->StartParticles(m_car_damage_particles1,*i, Fvector3().set(0,1,0),car->ID());
 	}
 }
 
@@ -62,22 +62,21 @@ void CCarDamageParticles::Play2(CCar* car)
 	if(*m_car_damage_particles2)
 	{
 		BIDS_I i=bones2.begin(),e=bones2.end();
-		for(;e!=i;++i) car->StartParticles(m_car_damage_particles2,*i,Fvector().set(0,1,0),car->ID());
+		for(;e!=i;++i) car->StartParticles(m_car_damage_particles2,*i, Fvector3().set(0,1,0),car->ID());
 	}
 }
 
 void CCarDamageParticles::PlayWheel1(CCar*car,u16 bone_id)
 {
 	VERIFY(!ph_world->Processing());
-	if(*m_wheels_damage_particles1)car->StartParticles(m_wheels_damage_particles1,bone_id,Fvector().set(0,1,0),car->ID());
+	if(*m_wheels_damage_particles1)car->StartParticles(m_wheels_damage_particles1,bone_id, Fvector3().set(0,1,0),car->ID());
 }
 
 void CCarDamageParticles::PlayWheel2(CCar*car,u16 bone_id)
 {
 	VERIFY(!ph_world->Processing());
-	if(*m_wheels_damage_particles2)car->StartParticles(m_wheels_damage_particles2,bone_id,Fvector().set(0,1,0),car->ID());
+	if(*m_wheels_damage_particles2)car->StartParticles(m_wheels_damage_particles2,bone_id, Fvector3().set(0,1,0),car->ID());
 }
-
 
 void CCarDamageParticles::Clear()
 {

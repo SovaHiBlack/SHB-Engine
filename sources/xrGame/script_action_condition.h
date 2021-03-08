@@ -30,10 +30,10 @@ public:
 	ALife::_TIME_ID		m_tStartTime;
 
 public:
-	IC					CScriptActionCondition	();
-	IC					CScriptActionCondition	(u32 dwFlags, double dTime = -1);
+	inline					CScriptActionCondition	();
+	inline					CScriptActionCondition	(u32 dwFlags, double dTime = -1);
 	virtual				~CScriptActionCondition	();
-	IC		void		initialize				();
+	inline		void		initialize				();
 
 public:
 	static void script_register(lua_State*);

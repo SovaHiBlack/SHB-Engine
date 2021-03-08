@@ -10,7 +10,7 @@ struct	vis_data
 	u32			hom_frame;			// when to perform test - shedule
 	u32			hom_tested;			// when it was last time tested
 
-	IC void		clear			()
+	inline void		clear			()
 	{
 		sphere.P.set	(0,0,0);
 		sphere.R		= 0;

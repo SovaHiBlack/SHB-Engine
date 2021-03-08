@@ -119,7 +119,7 @@ float		CIKLimb::SwivelAngle( const Fmatrix &ihip, const SCalculateData& cd )
 
 }
 
-IC Fmatrix &get_base( Fmatrix &base, const Fvector &p0, const Fvector &p1 )
+inline Fmatrix &get_base( Fmatrix &base, const Fvector &p0, const Fvector &p1 )
 {
 	base.c.set( 0, 0, 0 );
 	base.i.sub( p1, p0 );
@@ -214,7 +214,7 @@ void	CIKLimb::Solve(SCalculateData& cd)
 #endif
 }
 
-IC void set_limits( float &min, float &max, SJointLimit& l)
+inline void set_limits( float &min, float &max, SJointLimit& l)
 {
 	min=-l.limit.y  ;max=-l.limit.x  ;
 	min += M_PI; max += M_PI;
@@ -223,7 +223,7 @@ IC void set_limits( float &min, float &max, SJointLimit& l)
 	//min = 0/*-2*M_PI*/; max = 2*M_PI;
 }
 
-IC void free_limits( float &min, float &max)
+inline void free_limits( float &min, float &max)
 {
 	min = 0  ;max = 2 * M_PI  ;
 }
@@ -280,13 +280,13 @@ void CIKLimb::Destroy()
 {
 
 }
-IC bool state_valide(const calculate_state &prev_state)
+inline bool state_valide(const calculate_state &prev_state)
 {
 	return  (Device.dwFrame - prev_state.frame) == 1; //prev_state.state !=calculate_state::not_definite &&
 }
 
 
-IC void	CIKLimb::GetPickDir(Fvector &v, const Fmatrix &gl_bone )
+inline void	CIKLimb::GetPickDir(Fvector &v, const Fmatrix &gl_bone )
 {
 	v.set(0, -1, 0 );
 	if(!state_valide(sv_state))
@@ -347,7 +347,7 @@ float CIKLimb::CollideFoot( float angle, const Fmatrix &gl_anim, Fplane &p, Fvec
 	return angle;
 }
 
-IC void tri_plane(const CDB::TRI &tri, Fplane &p )
+inline void tri_plane(const CDB::TRI &tri, Fplane &p )
 {
 	Fvector*	pVerts	= Level( ).ObjectSpace.GetStaticVerts( );
 	p.n.mknormal	( pVerts[tri.verts[0]], pVerts[tri.verts[1]], pVerts[tri.verts[2]] );
@@ -422,7 +422,7 @@ void CollideGoal( Fmatrix &g, const  SIKCollideData &cld )
 	}
 }
 
-IC float clamp_rotation( Fquaternion &q, float v )
+inline float clamp_rotation( Fquaternion &q, float v )
 {
 	float angl;Fvector ax;
 	q.get_axis_angle( ax, angl );
@@ -436,7 +436,7 @@ IC float clamp_rotation( Fquaternion &q, float v )
 	return abs_angl;
 }
 
-IC float  clamp_rotation( Fmatrix &m, float v )
+inline float  clamp_rotation( Fmatrix &m, float v )
 {
 	Fquaternion q;
 	q.set(m);
@@ -447,14 +447,14 @@ IC float  clamp_rotation( Fmatrix &m, float v )
 	return r;
 }
 
-IC void get_axix_angle( const Fmatrix &m, Fvector &ax, float &angl )
+inline void get_axix_angle( const Fmatrix &m, Fvector &ax, float &angl )
 {
 	Fquaternion q;
 	q.set( m );
 	q.get_axis_angle( ax, angl );
 }
 
-IC bool clamp_change( Fmatrix& m, const Fmatrix &start, float ml, float ma, float tl, float ta )
+inline bool clamp_change( Fmatrix& m, const Fmatrix &start, float ml, float ma, float tl, float ta )
 {
 	Fmatrix diff; diff.mul_43( Fmatrix( ).invert( start ), m );
 	float linear_ch	 = diff.c.magnitude( );
@@ -476,7 +476,7 @@ void get_diff_avalue( const Fmatrix & m0, const Fmatrix &m1, float &l, float &a 
 	get_axix_angle( diff, ax, a );
 	a = _abs( a );
 }
-IC void get_blend_speed_limits(float& l,float& a, const SCalculateData& cd, const calculate_state	&sv_state )
+inline void get_blend_speed_limits(float& l,float& a, const SCalculateData& cd, const calculate_state	&sv_state )
 {
 	Fmatrix anim_global; anim_global.mul_43( cd.m_obj, cd.goal );
 	Fmatrix sv_anim_global; sv_anim_global.mul_43( sv_state.obj_pos, sv_state.anim_pos );
@@ -786,7 +786,7 @@ void	DBG_DrawRotation3(const Fmatrix &start, const float angs[7], const AngleInt
 	DBGG.mulB_43(Fmatrix().rotateZ(-angs[z]));
 	DBG_DrawRotationLimitsX( DBGG, -angs[x], -limits[x].Low(), -limits[x].High() );
 }
-IC void ang_evaluate(Fmatrix& M, const float ang[3] )
+inline void ang_evaluate(Fmatrix& M, const float ang[3] )
 {
 	Fmatrix ry;ry.rotateY( -ang[0] );
 	Fmatrix rz;rz.rotateZ( -ang[1] );
@@ -794,7 +794,7 @@ IC void ang_evaluate(Fmatrix& M, const float ang[3] )
 	M.mul_43(Fmatrix().mul_43( ry, rz ), rx);
 }
 
-IC void CIKLimb:: get_start( Fmatrix &start, SCalculateData &D, u16 bone )
+inline void CIKLimb:: get_start( Fmatrix &start, SCalculateData &D, u16 bone )
 {
 	CKinematics		*K	=D.m_K;
 	VERIFY( K );

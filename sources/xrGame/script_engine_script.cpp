@@ -92,7 +92,7 @@ struct profile_timer_script {
 	u64							m_count;
 	int							m_recurse_mark;
 	
-	IC								profile_timer_script	()
+	inline								profile_timer_script	()
 	{
 		m_start_cpu_tick_count	= 0;
 		m_accumulator			= 0;
@@ -100,12 +100,12 @@ struct profile_timer_script {
 		m_recurse_mark			= 0;
 	}
 
-	IC								profile_timer_script	(const profile_timer_script &profile_timer)
+	inline								profile_timer_script	(const profile_timer_script &profile_timer)
 	{
 		*this					= profile_timer;
 	}
 
-	IC		profile_timer_script&	operator=				(const profile_timer_script &profile_timer)
+	inline		profile_timer_script&	operator=				(const profile_timer_script &profile_timer)
 	{
 		m_start_cpu_tick_count	= profile_timer.m_start_cpu_tick_count;
 		m_accumulator			= profile_timer.m_accumulator;
@@ -114,12 +114,12 @@ struct profile_timer_script {
 		return					(*this);
 	}
 
-	IC		bool					operator<				(const profile_timer_script &profile_timer) const
+	inline		bool					operator<				(const profile_timer_script &profile_timer) const
 	{
 		return					(m_accumulator < profile_timer.m_accumulator);
 	}
 
-	IC		void					start					()
+	inline		void					start					()
 	{
 		if (m_recurse_mark) {
 			++m_recurse_mark;
@@ -131,7 +131,7 @@ struct profile_timer_script {
 		m_start_cpu_tick_count	= CPU::GetCLK();
 	}
 
-	IC		void					stop					()
+	inline		void					stop					()
 	{
 		THROW					(m_recurse_mark);
 		--m_recurse_mark;
@@ -144,7 +144,7 @@ struct profile_timer_script {
 			m_accumulator		+= finish - m_start_cpu_tick_count;
 	}
 
-	IC		float					time					() const
+	inline		float					time					() const
 	{
 		FPU::m64r				();
 		float					result = (float(double(m_accumulator)/double(CPU::clk_per_second))*1000000.f);
@@ -153,7 +153,7 @@ struct profile_timer_script {
 	}
 };
 
-IC	profile_timer_script	operator+	(const profile_timer_script &portion0, const profile_timer_script &portion1)
+inline	profile_timer_script	operator+	(const profile_timer_script &portion0, const profile_timer_script &portion1)
 {
 	profile_timer_script	result;
 	result.m_accumulator	= portion0.m_accumulator + portion1.m_accumulator;
@@ -161,7 +161,7 @@ IC	profile_timer_script	operator+	(const profile_timer_script &portion0, const p
 	return					(result);
 }
 
-//IC	std::ostream& operator<<(std::ostream &stream, profile_timer_script &timer)
+//inline	std::ostream& operator<<(std::ostream &stream, profile_timer_script &timer)
 //{
 //	stream					<< timer.time();
 //	return					(stream);

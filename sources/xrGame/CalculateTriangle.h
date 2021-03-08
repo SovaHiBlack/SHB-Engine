@@ -5,16 +5,18 @@
 #include "Geometry.h"
 #include "tri-colliderknoopc/dtricollidermath.h"
 
-__forceinline void GetNormal(CDB::TRI* XTri, Fvector& n)
+__forceinline void GetNormal(CDB::TRI* XTri, Fvector3& n)
 {
-	const Fvector* V_array = Level( ).ObjectSpace.GetStaticVerts( );
-	Fvector sd1; sd1.sub(V_array[XTri->verts[1]], V_array[XTri->verts[0]]);
-	Fvector sd2; sd2.sub(V_array[XTri->verts[2]], V_array[XTri->verts[1]]);
+	const Fvector3* V_array = Level( ).ObjectSpace.GetStaticVerts( );
+	Fvector3 sd1;
+	sd1.sub(V_array[XTri->verts[1]], V_array[XTri->verts[0]]);
+	Fvector3 sd2;
+	sd2.sub(V_array[XTri->verts[2]], V_array[XTri->verts[1]]);
 	n.crossproduct(sd1, sd2);
 }
 __forceinline	void InitTriangle(CDB::TRI* XTri, Triangle& triangle)
 {
-	const Fvector* V_array = Level( ).ObjectSpace.GetStaticVerts( );
+	const Fvector3* V_array = Level( ).ObjectSpace.GetStaticVerts( );
 	const float* VRT[3] = { (dReal*) &V_array[XTri->verts[0]],(dReal*) &V_array[XTri->verts[1]],(dReal*) &V_array[XTri->verts[2]] };
 	dVectorSub(triangle.side0, VRT[1], VRT[0]);
 	dVectorSub(triangle.side1, VRT[2], VRT[1]);
@@ -76,7 +78,7 @@ __forceinline bool  TriContainPoint(const dReal* v0, const dReal* v1, const dRea
 __forceinline bool TriContainPoint(Triangle* T, const float* pos, u16& c)
 {
 	//TriContainPoint(const dReal* v0,const dReal* v1,const dReal* v2,const dReal* triAx,const dReal* triSideAx0,const dReal* triSideAx1, const dReal* pos)
-	const Fvector* V_array = Level( ).ObjectSpace.GetStaticVerts( );
+	const Fvector3* V_array = Level( ).ObjectSpace.GetStaticVerts( );
 	CDB::TRI* XTri = T->T;
 	const float* VRT[3] = { (dReal*) &V_array[XTri->verts[0]],(dReal*) &V_array[XTri->verts[1]],(dReal*) &V_array[XTri->verts[2]] };
 	return TriContainPoint(VRT[0], VRT[1], VRT[2], T->norm, T->side0, T->side1, pos, c);
@@ -90,7 +92,7 @@ enum ETriDist
 	tdVert
 };
 
-IC float DistToFragmenton(const dReal* point, const dReal* pt1, const dReal* pt2, dReal* p, dReal* to_point, u16& c)
+inline float DistToFragmenton(const dReal* point, const dReal* pt1, const dReal* pt2, dReal* p, dReal* to_point, u16& c)
 {
 	dVector3 V = { pt2[0] - pt1[0],pt2[1] - pt1[1],pt2[2] - pt1[2] };
 	dVector3 L = { pt1[0] - point[0],pt1[1] - point[1],pt1[2] - point[2] };
@@ -119,7 +121,7 @@ IC float DistToFragmenton(const dReal* point, const dReal* pt1, const dReal* pt2
 	dVectorSet(to_point, Dc);
 	return dSqrt(dDOT(Dc, Dc));
 }
-__forceinline float DistToTri(Triangle* T, const float* pos, float* dir, float* p, ETriDist& c, const Fvector* V_array)
+__forceinline float DistToTri(Triangle* T, const float* pos, float* dir, float* p, ETriDist& c, const Fvector3* V_array)
 {
 	if (!TriPlaneContainPoint(T))
 	{

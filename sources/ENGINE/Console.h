@@ -10,7 +10,7 @@ class ENGINE_API CConsole : public IInputReceiver, public pureRender, public pur
 public:
 	struct str_pred : public std::binary_function<char*, char*, bool>
 	{
-		IC bool operator ( )							(const char* x, const char* y) const
+		inline bool operator ( )							(const char* x, const char* y) const
 		{
 			return xr_strcmp(x, y) < 0;
 		}

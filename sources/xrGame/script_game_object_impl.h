@@ -12,7 +12,7 @@
 #include "ai_space.h"
 #include "script_engine.h"
 
-IC	CGameObject &CScriptGameObject::object	() const
+inline	CGameObject &CScriptGameObject::object	() const
 {
 	if (m_game_object && m_game_object->lua_game_object() == this)
 		return	(*m_game_object);

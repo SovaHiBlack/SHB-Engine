@@ -146,7 +146,7 @@ public:
 	typedef Self&			SelfRef;
 	typedef const Self&		SelfCRef;
 private:
-	IC T _asin_(T x)
+	inline T _asin_(T x)
 	{
 		const T c1 = 0.892399f;
 		const T c3 = 1.693204f;
@@ -158,19 +158,19 @@ private:
 		
 		return d;
 	}
-	IC T _acos_(T x)
+	inline T _acos_(T x)
 	{
 		return PI_DIV_2 - _asin_(x);
 	}
 public:
 	T x,y,z,w;
 
-	IC	SelfRef	set(T W, T X, T Y, T Z)	// don't normalize
+	inline	SelfRef	set(T W, T X, T Y, T Z)	// don't normalize
 	{	x=X; y=Y; z=Z; w=W;			return *this; }
-	IC	SelfRef	set(SelfCRef Q)				// don't normalize
+	inline	SelfRef	set(SelfCRef Q)				// don't normalize
 	{	set(Q.w, Q.x, Q.y, Q.z);	return *this; }
 
-	IC SelfRef	set(const _matrix<T>& m);
+	inline SelfRef	set(const _matrix<T>& m);
 
 	// multiplies q1 * q2, and places the result in *this.
 	// no failure. 	renormalization not automatic
@@ -182,7 +182,7 @@ public:
 		(w1*y2 - x1*z2 + y1*w2 + z1*x2)j    {y3}
 		(w1*z2 + x1*y2 - y1*x2 + z1*w2)k	{z3}
 */
-	IC	SelfRef	mul(SelfCRef q1l, SelfCRef q2l)
+	inline	SelfRef	mul(SelfCRef q1l, SelfCRef q2l)
 	{
 		VERIFY( q1l.isValid() );
 		VERIFY( q2l.isValid() );
@@ -201,7 +201,7 @@ public:
 		return *this; 
 	}
 
-	IC	SelfRef	add(SelfCRef q1, SelfCRef q2)
+	inline	SelfRef	add(SelfCRef q1, SelfCRef q2)
 	{
 		x  =	q1.x+q2.x;
 		y  =	q1.y+q2.y;
@@ -209,7 +209,7 @@ public:
 		w  =	q1.w+q2.w;
 		return *this; 
 	}
-	IC	SelfRef	sub(SelfCRef q1, SelfCRef q2)
+	inline	SelfRef	sub(SelfCRef q1, SelfCRef q2)
 	{
 		x  =	q1.x-q2.x;
 		y  =	q1.y-q2.y;
@@ -218,7 +218,7 @@ public:
 		return *this; 
 	}
 
-	IC	SelfRef	add(SelfCRef q)
+	inline	SelfRef	add(SelfCRef q)
 	{
 		x  +=	q.x;
 		y  +=	q.y;
@@ -226,7 +226,7 @@ public:
 		w  +=	q.w;
 		return *this; 
 	}
-	IC	SelfRef	sub(SelfCRef q)
+	inline	SelfRef	sub(SelfCRef q)
 	{
 		x  -=	q.x;
 		y  -=	q.y;
@@ -236,7 +236,7 @@ public:
 	}
 
 	// validates numerical stability
-	IC	const BOOL	isValid(void) const 
+	inline	const BOOL	isValid(void) const 
 	{
 		if ((w * w) < 0.0f)	return false;
 		if ((x * x) < 0.0f)	return false;
@@ -246,7 +246,7 @@ public:
 	}
 
 	// checks for Unit-length quanternion
-	IC	const BOOL	isUnit(void) 
+	inline	const BOOL	isUnit(void) 
 	{
 		T m  =  magnitude();
 
@@ -256,7 +256,7 @@ public:
 	}
 
 	// normalizes Q to be a unit geQuaternion
-	IC	SelfRef	normalize(void) 
+	inline	SelfRef	normalize(void) 
 	{
 		T	m,one_over_magnitude;
 
@@ -275,26 +275,26 @@ public:
 	}
 
 	// inversion
-	IC	SelfRef	inverse(SelfCRef Q)
+	inline	SelfRef	inverse(SelfCRef Q)
 	{	return set(Q.w,-Q.x,-Q.y,-Q.z);	}
-	IC	SelfRef	inverse()
+	inline	SelfRef	inverse()
 	{	return set(w,-x,-y,-z);	}
-	IC	SelfRef	inverse_with_w(SelfCRef Q)
+	inline	SelfRef	inverse_with_w(SelfCRef Q)
 	{	return set(-Q.w,-Q.x,-Q.y,-Q.z);	}
-	IC	SelfRef	inverse_with_w()
+	inline	SelfRef	inverse_with_w()
 	{	return set(-w,-x,-y,-z);	}
 
 	// identity - no rotation
-	IC	SelfRef	identity(void)
+	inline	SelfRef	identity(void)
 	{	return set(1.f,0.f,0.f,0.f);		}
 
 	// square length
-	IC	T	magnitude(void) {
+	inline	T	magnitude(void) {
 		return w*w + x*x + y*y + z*z;
 	}
 
 	// makes unit rotation
-	IC	SelfRef	rotationYawPitchRoll(T _x, T _y, T _z) 
+	inline	SelfRef	rotationYawPitchRoll(T _x, T _y, T _z) 
 	{
 		T fSinYaw   = _sin(_x*.5f);
 		T fCosYaw   = _cos(_x*.5f);
@@ -311,11 +311,11 @@ public:
 	}
 
 	// makes unit rotation
-	IC	SelfRef	rotationYawPitchRoll(const Fvector3& ypr)
+	inline	SelfRef	rotationYawPitchRoll(const Fvector3& ypr)
 	{	return rotationYawPitchRoll(ypr.x,ypr.y,ypr.z);	}
 
 	// set a quaternion from an axis and a rotation around the axis
-	IC	SelfRef	rotation(Fvector3& axis, T angle)
+	inline	SelfRef	rotation(Fvector3& axis, T angle)
 	{
 		T	sinTheta;
 
@@ -330,7 +330,7 @@ public:
 	// gets an axis and angle of rotation around the axis from a quaternion
 	// returns TRUE if there is an axis.
 	// returns FALSE if there is no axis (and Axis is set to 0,0,0, and Theta is 0)
-	IC	BOOL	get_axis_angle(Fvector3& axis, T &angle)
+	inline	BOOL	get_axis_angle(Fvector3& axis, T &angle)
 	{
 		T OneOverSinTheta;
 
@@ -394,7 +394,7 @@ public:
 	}
 
 	// return TRUE if quaternions differ elementwise by less than Tolerance.
-	IC	BOOL	cmp(SelfCRef Q, T Tolerance=0.0001f)
+	inline	BOOL	cmp(SelfCRef Q, T Tolerance=0.0001f)
 	{
 		if (	// they are the same but with opposite signs
 			(	(_abs(x + Q.x) <= Tolerance )
@@ -413,7 +413,7 @@ public:
 		else
 			return false;
 	}
-	IC	SelfRef	ln(SelfCRef Q)
+	inline	SelfRef	ln(SelfCRef Q)
 	{
 		T n	 = Q.x*Q.x+Q.y*Q.y+Q.z*Q.z;
 		T r  = _sqrt(n);
@@ -424,7 +424,7 @@ public:
 		w = .5f*_log(n+Q.w*Q.w);
 		return *this;
 	}
-	IC	SelfRef	exp(SelfCRef Q)
+	inline	SelfRef	exp(SelfCRef Q)
 	{
 		T r  = _sqrt(Q.x*Q.x+Q.y*Q.y+Q.z*Q.z);
 		T et = expf(Q.w);

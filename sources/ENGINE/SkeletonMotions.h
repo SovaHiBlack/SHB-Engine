@@ -98,8 +98,8 @@ public:
 	u16						flags;
 	xr_vector<motion_marks>	marks;
 
-	IC float				Dequantize			(u16 V)		{	return  float(V)/655.35f; }
-	IC u16					Quantize			(float V)	{ int		t = iFloor(V*655.35f); clamp(t,0,65535); return u16(t); }
+	inline float				Dequantize			(u16 V)		{	return  float(V)/655.35f; }
+	inline u16					Quantize			(float V)	{ int		t = iFloor(V*655.35f); clamp(t,0,65535); return u16(t); }
 
 	void					Load				(IReader* MP, u32 fl, u16 vers);
 	u32						mem_usage			(){ return sizeof(*this);}
@@ -111,7 +111,7 @@ public:
 	bool					StopAtEnd			();
 };
 struct accel_str_pred : public std::binary_function<shared_str, shared_str, bool>	{	
-	IC bool operator()(const shared_str& x, const shared_str& y) const	{	return xr_strcmp(x,y)<0;	}
+	inline bool operator()(const shared_str& x, const shared_str& y) const	{	return xr_strcmp(x,y)<0;	}
 };
 typedef xr_map<shared_str,u16,accel_str_pred> 	accel_map;
 //DEFINE_VECTOR			(CMotionDef,MotionDefVec,MotionDefVecIt);
@@ -141,8 +141,8 @@ class ENGINE_API		CPartition
 {
 	CPartDef			P[MAX_PARTS];
 public:
-	IC CPartDef&		operator[] 			(u16 id){ return P[id]; }
-	IC CPartDef&		part				(u16 id){ return P[id]; }
+	inline CPartDef&		operator[] 			(u16 id){ return P[id]; }
+	inline CPartDef&		part				(u16 id){ return P[id]; }
 	u32					mem_usage			()		{ return P[0].mem_usage()*MAX_PARTS;}
 };
 

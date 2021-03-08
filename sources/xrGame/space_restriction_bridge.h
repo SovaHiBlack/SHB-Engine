@@ -17,10 +17,10 @@ protected:
 	CSpaceRestrictionBase			*m_object;
 
 public:
-	IC		CSpaceRestrictionBase	&object						() const;
+	inline		CSpaceRestrictionBase	&object						() const;
 
 public:
-	IC								CSpaceRestrictionBridge		(CSpaceRestrictionBase *object);
+	inline								CSpaceRestrictionBridge		(CSpaceRestrictionBase *object);
 	virtual							~CSpaceRestrictionBridge	();
 			void					change_implementation		(CSpaceRestrictionBase *object);
 			const xr_vector<u32>	&border						() const;
@@ -38,9 +38,9 @@ public:
 			Fsphere					sphere						() const;
 
 	template <typename T>
-	IC		u32						accessible_nearest			(T &restriction, const Fvector &position, Fvector &result, bool out_restriction);
+	inline		u32						accessible_nearest			(T &restriction, const Fvector &position, Fvector &result, bool out_restriction);
 	template <typename T>
-	IC		const xr_vector<u32>	&accessible_neighbour_border(T &restriction, bool out_restriction);
+	inline		const xr_vector<u32>	&accessible_neighbour_border(T &restriction, bool out_restriction);
 };
 
 #include "space_restriction_bridge_inline.h"

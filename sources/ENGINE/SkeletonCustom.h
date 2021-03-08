@@ -102,16 +102,16 @@ public:
 	typedef svector<int, 128>	BoneDebug;
 	void						DebugQuery(BoneDebug& L);
 #endif
-	IC void				SetParentID(u16 id)
+	inline void				SetParentID(u16 id)
 	{
 		ParentID = id;
 	}
 
-	IC u16				GetSelfID( ) const
+	inline u16				GetSelfID( ) const
 	{
 		return SelfID;
 	}
-	IC u16				GetParentID( ) const
+	inline u16				GetParentID( ) const
 	{
 		return ParentID;
 	}
@@ -178,31 +178,31 @@ public:
 	}
 #endif
 
-	IC CKinematics* Parent( )
+	inline CKinematics* Parent( )
 	{
 		return m_Parent;
 	}
-	IC u32				VCount( )
+	inline u32				VCount( )
 	{
 		return m_Faces.size( ) * 3;
 	}
-	IC bool				Similar(ref_shader& sh, const Fvector3& cp, float eps)
+	inline bool				Similar(ref_shader& sh, const Fvector3& cp, float eps)
 	{
 		return (m_Shader == sh) && m_ContactPoint.similar(cp, eps);
 	}
-	IC float			TimeStart( )
+	inline float			TimeStart( )
 	{
 		return m_fTimeStart;
 	}
-	IC const Fmatrix* XFORM( )
+	inline const Fmatrix* XFORM( )
 	{
 		return m_XForm;
 	}
-	IC const Fvector3& ContactPoint( )
+	inline const Fvector3& ContactPoint( )
 	{
 		return m_ContactPoint;
 	}
-	IC ref_shader		Shader( )
+	inline ref_shader		Shader( )
 	{
 		return m_Shader;
 	}
@@ -405,7 +405,7 @@ public:
 	}
 };
 
-IC CKinematics* PKinematics(IRender_Visual* V)
+inline CKinematics* PKinematics(IRender_Visual* V)
 {
 	return V ? V->dcast_PKinematics( ) : 0;
 }

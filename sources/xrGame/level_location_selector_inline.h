@@ -16,13 +16,13 @@
 #define CLevelLocationSelector CBaseLocationSelector<CLevelGraph,_VertexEvaluator,_vertex_id_type>
 
 TEMPLATE_SPECIALIZATION
-IC	CLevelLocationSelector::CBaseLocationSelector	(CRestrictedObject *object) :
+inline	CLevelLocationSelector::CBaseLocationSelector	(CRestrictedObject *object) :
 	inherited(object,selector_manager)
 {
 }
 
 TEMPLATE_SPECIALIZATION
-IC	void CLevelLocationSelector::before_search	(_vertex_id_type &vertex_id)
+inline	void CLevelLocationSelector::before_search	(_vertex_id_type &vertex_id)
 {
 	if (m_restricted_object) {
 		if (!m_restricted_object->accessible(vertex_id)) {
@@ -34,7 +34,7 @@ IC	void CLevelLocationSelector::before_search	(_vertex_id_type &vertex_id)
 }
 
 TEMPLATE_SPECIALIZATION
-IC	void CLevelLocationSelector::after_search	()
+inline	void CLevelLocationSelector::after_search	()
 {
 	if (m_restricted_object)
 		m_restricted_object->remove_border();

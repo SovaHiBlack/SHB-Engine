@@ -35,7 +35,7 @@ CLevelPathManager::~CPathManager			()
 }
 
 TEMPLATE_SPECIALIZATION
-IC	void CLevelPathManager::setup			(
+inline	void CLevelPathManager::setup			(
 		const _Graph			*_graph,
 		_DataStorage			*_data_storage,
 		xr_vector<_index_type>	*_path,
@@ -59,7 +59,7 @@ IC	void CLevelPathManager::setup			(
 }
 
 TEMPLATE_SPECIALIZATION
-IC	void CLevelPathManager::init			()
+inline	void CLevelPathManager::init			()
 {
 	const _Graph::CVertex	&tNode1	= *graph->vertex(start_node_index);
 	graph->unpack_xz		(tNode1,x2,z2);
@@ -74,7 +74,7 @@ IC	void CLevelPathManager::init			()
 }
 
 TEMPLATE_SPECIALIZATION
-IC	_dist_type CLevelPathManager::evaluate	(const _index_type &node_index1, const _index_type &node_index2, const _Graph::const_iterator &/**i/**/)
+inline	_dist_type CLevelPathManager::evaluate	(const _index_type &node_index1, const _index_type &node_index2, const _Graph::const_iterator &/**i/**/)
 {
 	VERIFY					(graph);
 	
@@ -87,7 +87,7 @@ IC	_dist_type CLevelPathManager::evaluate	(const _index_type &node_index1, const
 }
 
 TEMPLATE_SPECIALIZATION
-IC	_dist_type CLevelPathManager::estimate	(const _index_type &node_index) const
+inline	_dist_type CLevelPathManager::estimate	(const _index_type &node_index) const
 {
 	VERIFY					(graph);
 //		return					(_sqrt((float)(m_sqr_distance_xz*float(_sqr(x3 - x1) + _sqr(z3 - z1)) + square_size_y*(float)_sqr(y3 - y1))));
@@ -98,7 +98,7 @@ IC	_dist_type CLevelPathManager::estimate	(const _index_type &node_index) const
 }
 
 TEMPLATE_SPECIALIZATION
-IC	bool CLevelPathManager::is_goal_reached	(const _index_type &node_index)
+inline	bool CLevelPathManager::is_goal_reached	(const _index_type &node_index)
 {
 	if (node_index == goal_node_index)
 		return				(true);
@@ -111,14 +111,14 @@ IC	bool CLevelPathManager::is_goal_reached	(const _index_type &node_index)
 }
 
 TEMPLATE_SPECIALIZATION
-IC	bool CLevelPathManager::is_limit_reached(const _iteration_type	iteration_count) const
+inline	bool CLevelPathManager::is_limit_reached(const _iteration_type	iteration_count) const
 {
 	VERIFY					(data_storage);
 	return					(inherited::is_limit_reached(iteration_count));
 }
 
 TEMPLATE_SPECIALIZATION
-IC	bool CLevelPathManager::is_accessible	(const _index_type &vertex_id) const
+inline	bool CLevelPathManager::is_accessible	(const _index_type &vertex_id) const
 {
 	VERIFY					(graph);
 //	return					(graph->valid_vertex_id(vertex_id));
@@ -126,13 +126,13 @@ IC	bool CLevelPathManager::is_accessible	(const _index_type &vertex_id) const
 }
 
 TEMPLATE_SPECIALIZATION
-IC	void CLevelPathManager::begin			(const _index_type &vertex_id, const_iterator &begin, const_iterator &end)
+inline	void CLevelPathManager::begin			(const _index_type &vertex_id, const_iterator &begin, const_iterator &end)
 {
 	graph->begin			(best_node,begin,end);
 }
 
 TEMPLATE_SPECIALIZATION
-IC	const _index_type CLevelPathManager::get_value		(const_iterator &i) const
+inline	const _index_type CLevelPathManager::get_value		(const_iterator &i) const
 {
 	return					(graph->value(best_node,i));
 }

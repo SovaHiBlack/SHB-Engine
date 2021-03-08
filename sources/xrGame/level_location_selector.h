@@ -35,11 +35,11 @@ class
 	> inherited;
 
 public:
-	IC							CBaseLocationSelector		(CRestrictedObject *object);
+	inline							CBaseLocationSelector		(CRestrictedObject *object);
 
 protected:
-	IC	virtual	void			before_search				(_vertex_id_type &vertex_id);
-	IC	virtual	void			after_search				();
+	inline	virtual	void			before_search				(_vertex_id_type &vertex_id);
+	inline	virtual	void			after_search				();
 };
 
 #include "level_location_selector_inline.h"

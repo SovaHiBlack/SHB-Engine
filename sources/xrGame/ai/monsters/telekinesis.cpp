@@ -114,7 +114,7 @@ void CTelekinesis::remove_object		(TELE_OBJECTS_IT it)
 		active = false;
 	}
 }
-void CTelekinesis::fire_all(const Fvector &target)
+void CTelekinesis::fire_all(const Fvector3& target)
 {
 	if (!active) return;
 
@@ -124,7 +124,7 @@ void CTelekinesis::fire_all(const Fvector &target)
 }
 
 // бросить объект 'obj' в позицию 'target' с учетом коэф силы 
-void CTelekinesis::fire(CPHShellHolder*obj, const Fvector &target, float power)
+void CTelekinesis::fire(CPHShellHolder*obj, const Fvector3& target, float power)
 {
 	// найти объект
 
@@ -135,7 +135,7 @@ void CTelekinesis::fire(CPHShellHolder*obj, const Fvector &target, float power)
 	(*it)->fire(target,power);
 }
 
-void CTelekinesis::fire_t(CPHShellHolder*obj, const Fvector &target, float time)
+void CTelekinesis::fire_t(CPHShellHolder*obj, const Fvector3& target, float time)
 {
 	TELE_OBJECTS_IT it = std::find_if(objects.begin(), objects.end(),SFindPred(obj));
 	if (it == objects.end()) return;

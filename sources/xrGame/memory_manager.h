@@ -65,19 +65,19 @@ public:
 
 public:
 	template <typename T, typename _predicate>
-	IC		void				fill_enemies				(const xr_vector<T> &objects, const _predicate &predicate) const;
+	inline		void				fill_enemies				(const xr_vector<T> &objects, const _predicate &predicate) const;
 	template <typename _predicate>
-	IC		void				fill_enemies				(const _predicate &predicate) const;
+	inline		void				fill_enemies				(const _predicate &predicate) const;
 
 public:
-	IC		CVisualMemoryManager&visual						() const;
-	IC		CSoundMemoryManager	&sound						() const;
-	IC		CHitMemoryManager	&hit						() const;
-	IC		CEnemyManager		&enemy						() const;
-	IC		CItemManager		&item						() const;
-	IC		CDangerManager		&danger						() const;
-	IC		CCustomMonster		&object						() const;
-	IC		CStalker			&stalker					() const;
+	inline		CVisualMemoryManager&visual						() const;
+	inline		CSoundMemoryManager	&sound						() const;
+	inline		CHitMemoryManager	&hit						() const;
+	inline		CEnemyManager		&enemy						() const;
+	inline		CItemManager		&item						() const;
+	inline		CDangerManager		&danger						() const;
+	inline		CCustomMonster		&object						() const;
+	inline		CStalker			&stalker					() const;
 
 public:
 			void				save						(NET_Packet &packet) const;

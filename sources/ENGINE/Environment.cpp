@@ -211,7 +211,7 @@ void CEnvironment::StopWFX	()
 
 }
 
-IC bool lb_env_pred(const CEnvDescriptor* x, float val)
+inline bool lb_env_pred(const CEnvDescriptor* x, float val)
 {	return x->exec_time < val;	}
 
 void CEnvironment::SelectEnv(EnvVec* envs, CEnvDescriptor*& e, float gt)

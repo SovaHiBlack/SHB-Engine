@@ -19,23 +19,23 @@
 #endif
 
 template <typename T>
-IC	T sin_apb(T sina, T cosa, T sinb, T cosb)
+inline	T sin_apb(T sina, T cosa, T sinb, T cosb)
 {
 	return				(sina*cosb + cosa*sinb);
 }
 
 template <typename T>
-IC	T cos_apb(T sina, T cosa, T sinb, T cosb)
+inline	T cos_apb(T sina, T cosa, T sinb, T cosb)
 {
 	return				(cosa*cosb - sina*sinb);
 }
 
-IC	bool is_negative(float a)
+inline	bool is_negative(float a)
 {
 	return				(!fis_zero(a) && (a < 0.f));
 }
 
-IC	bool coincide_directions	(
+inline	bool coincide_directions	(
 	const Fvector2	&start_circle_center,
 	const Fvector2	&start_tangent_point,
 	float			start_cross_product,
@@ -601,7 +601,7 @@ bool CDetailPathManager::fill_key_points(
 	return								(true);
 }
 
-IC	CDetailPathManager::STravelPoint CDetailPathManager::compute_better_key_point(
+inline	CDetailPathManager::STravelPoint CDetailPathManager::compute_better_key_point(
 	const STravelPoint	&point0, 
 	const STravelPoint	&point1, 
 	const STravelPoint	&point2,
@@ -659,7 +659,7 @@ IC	CDetailPathManager::STravelPoint CDetailPathManager::compute_better_key_point
 	return						(result);
 }
 
-IC	bool CDetailPathManager::better_key_point(
+inline	bool CDetailPathManager::better_key_point(
 	const STravelPoint	&point0, 
 	const STravelPoint	&point2, 
 	const STravelPoint	&point10, 

@@ -81,7 +81,7 @@ public:
 	void 			ScrollToEnd				();
 	void 			ScrollToPos				(int position);
 	
-	IC bool			IsActiveBackgroundEnabled()								{return m_bActiveBackground;}
+	inline bool			IsActiveBackgroundEnabled()								{return m_bActiveBackground;}
 	void			EnableActiveBackground	(bool enable);
 
 	virtual void	SetWidth				(float width);

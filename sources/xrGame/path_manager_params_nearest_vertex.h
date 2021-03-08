@@ -20,7 +20,7 @@ struct SNearestVertex : public SBaseParameters<
 > {
 	Fvector			m_target_position;
 
-	IC	SNearestVertex (
+	inline	SNearestVertex (
 			const Fvector			&target_position,
 			_dist_type				max_range = _dist_type(6000),
 			_iteration_type			max_iteration_count = _iteration_type(-1),

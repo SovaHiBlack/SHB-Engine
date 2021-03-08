@@ -20,22 +20,22 @@ protected:
 	u32											m_hash;
 
 public:
-	IC											CConditionState		();
+	inline											CConditionState		();
 	virtual										~CConditionState	();
-	IC		const xr_vector<COperatorCondition>	&conditions			() const;
-	IC		u8									weight				(const CConditionState &condition) const;
-	IC		void								add_condition		(const COperatorCondition &condition);
-	IC		void								remove_condition	(const typename COperatorCondition::_condition_type &condition);
-	IC		void								add_condition		(typename xr_vector<COperatorCondition>::const_iterator &J, const COperatorCondition &condition);
-	IC		void								add_condition_back	(const COperatorCondition &condition);
-	IC		bool								includes			(const CConditionState &condition) const;
-	IC		void								clear				();
-	IC		bool								operator<			(const CConditionState &condition) const;
-	IC		CConditionState<_world_property>	&operator-=			(const CConditionState &condition);
-	IC		bool 								operator==			(const CConditionState &condition);
-	IC											operator u32		() const;
-	IC		u32									hash_value			() const;
-	IC		const COperatorCondition			*property			(const typename COperatorCondition::_condition_type &condition) const;
+	inline		const xr_vector<COperatorCondition>	&conditions			() const;
+	inline		u8									weight				(const CConditionState &condition) const;
+	inline		void								add_condition		(const COperatorCondition &condition);
+	inline		void								remove_condition	(const typename COperatorCondition::_condition_type &condition);
+	inline		void								add_condition		(typename xr_vector<COperatorCondition>::const_iterator &J, const COperatorCondition &condition);
+	inline		void								add_condition_back	(const COperatorCondition &condition);
+	inline		bool								includes			(const CConditionState &condition) const;
+	inline		void								clear				();
+	inline		bool								operator<			(const CConditionState &condition) const;
+	inline		CConditionState<_world_property>	&operator-=			(const CConditionState &condition);
+	inline		bool 								operator==			(const CConditionState &condition);
+	inline											operator u32		() const;
+	inline		u32									hash_value			() const;
+	inline		const COperatorCondition			*property			(const typename COperatorCondition::_condition_type &condition) const;
 };
 
 #include "condition_state_inline.h"

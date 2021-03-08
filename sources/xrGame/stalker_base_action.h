@@ -27,7 +27,7 @@ public:
 	virtual void		initialize					();
 	virtual void		execute						();
 	virtual void		finalize					();
-	IC		CStalker	&object						() const
+	inline		CStalker	&object						() const
 	{
 		VERIFY			(m_object);
 		return			(*m_object);

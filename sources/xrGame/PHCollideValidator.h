@@ -24,7 +24,7 @@ class CPHCollideValidator
 public:
 static		CGID			RegisterGroup				()														;
 static		CGID			LastGroupRegistred			()														;
-static	IC const	CGID			&GetGroup					(const CPHObject& obj)		{return obj.collide_bits();}
+static	inline const	CGID			&GetGroup					(const CPHObject& obj)		{return obj.collide_bits();}
 ////////////////////////////////////////////////////////////////////////////////
 static		void			InitObject					(CPHObject& obj)										;
 static		void			RegisterObjToGroup			(CGID group,CPHObject& obj)								;
@@ -42,7 +42,7 @@ static		void			SetClassSmall				(CPHObject& obj)										;
 static		void			SetClassSmallNotCollide		(CPHObject& obj)										;
 static		void			Init						()														;
 
-static	IC	bool			DoCollide					(const CPHObject& obj1,const CPHObject& obj2)
+static	inline	bool			DoCollide					(const CPHObject& obj1,const CPHObject& obj2)
 {
 	switch(CollideType(obj1.collide_class_bits().flags,obj2.collide_class_bits().flags)) {
 		case cbNCGroupObject:	return DoCollideGroup		(obj1,obj2)			;break;
@@ -54,7 +54,7 @@ static	IC	bool			DoCollide					(const CPHObject& obj1,const CPHObject& obj2)
 #endif // DEBUG
 }
 
-static	IC bool				DoCollideStatic				(const CPHObject& obj)
+static	inline bool				DoCollideStatic				(const CPHObject& obj)
 {
 	return !obj.collide_class_bits().test(cbNCStatic);
 }
@@ -62,7 +62,7 @@ static	IC bool				DoCollideStatic				(const CPHObject& obj)
 protected:
 private:
 
-	static IC	bool			DoCollideNonMatched			(const CPHObject& obj1,const CPHObject& obj2)
+	static inline	bool			DoCollideNonMatched			(const CPHObject& obj1,const CPHObject& obj2)
 	{
 		return
 			!(
@@ -72,12 +72,12 @@ private:
 			);
 	}
 
-	static IC	bool			DoCollideGroup				(const CPHObject& obj1,const CPHObject& obj2)
+	static inline	bool			DoCollideGroup				(const CPHObject& obj1,const CPHObject& obj2)
 	{
 		return !(obj1.collide_bits()==obj2.collide_bits());
 	}
 
-	static IC	CLClassBits	CollideType(CLClassBits cb1,CLClassBits cb2)
+	static inline	CLClassBits	CollideType(CLClassBits cb1,CLClassBits cb2)
 	{
 		return ((cb1&cb2)&NonTypeFlags.flags);
 	}

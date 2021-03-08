@@ -10,7 +10,7 @@ class ENGINE_API 				IGameObjectPool
 private:
 	struct str_pred : public std::binary_function<shared_str&, shared_str&, bool> 
 	{	
-		IC bool operator()(const shared_str& x, const shared_str& y) const
+		inline bool operator()(const shared_str& x, const shared_str& y) const
 		{	return xr_strcmp(x,y)<0;	}
 	};
 	typedef xr_multimap<shared_str,CObject*,str_pred>	POOL;

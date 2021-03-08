@@ -18,13 +18,13 @@ private:
 	u32								m_dest_vertex_id;
 
 public:
-	IC						CLevelPathBuilder	(CMovementManager *object)
+	inline						CLevelPathBuilder	(CMovementManager *object)
 	{
 		VERIFY				(object);
 		m_object			= object;
 	}
 
-	IC		void			setup				(const u32 &start_vertex_id, const u32 &dest_vertex_id)
+	inline		void			setup				(const u32 &start_vertex_id, const u32 &dest_vertex_id)
 	{
 		VERIFY				(ai().level_graph().valid_vertex_id(start_vertex_id));
 		m_start_vertex_id	= start_vertex_id;
@@ -47,7 +47,7 @@ public:
 			m_object->m_path_state	= CMovementManager::ePathStateContinueLevelPath;
 	}
 
-	IC		void			remove			()
+	inline		void			remove			()
 	{
 		if (m_object->m_wait_for_distributed_computation)
 			m_object->m_wait_for_distributed_computation	= false;

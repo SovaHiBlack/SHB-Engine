@@ -23,23 +23,23 @@ public:
 	{
 		Memory.mem_fill	(this,0,sizeof(CConstant));
 	}
-	IC void			set_float	(float r, float g, float b, float a)
+	inline void			set_float	(float r, float g, float b, float a)
 	{
 		const_float.set	(r,g,b,a);
 		const_dword		= const_float.get();
 	}
-	IC void			set_float	(Fcolor& c)
+	inline void			set_float	(Fcolor& c)
 	{
 		const_float.set	(c);
 		const_dword		= const_float.get();
 	}
-	IC void			set_dword	(u32 c)
+	inline void			set_dword	(u32 c)
 	{
 		const_float.set(c);
 		const_dword		= c;
 	}
 	void			Calculate	();
-	IC	BOOL		Similar		(CConstant& C)		// comare by modes and params
+	inline	BOOL		Similar		(CConstant& C)		// comare by modes and params
 	{
 		if (dwMode!=C.dwMode)	return FALSE;
 		if (!_R.Similar(C._R))	return FALSE;

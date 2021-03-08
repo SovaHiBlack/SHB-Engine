@@ -5,9 +5,9 @@ struct _sphere {
 	_vector3<T>	P;
 	T			R;
 public:
-	IC void		set(const _vector3<T> &_P, T _R)	{ P.set(_P); R = _R; }
-	IC void		set(const _sphere<T> &S)			{ P.set(S.P); R=S.R; }
-	IC void		identity()							{ P.set(0,0,0); R=1; }
+	inline void		set(const _vector3<T> &_P, T _R)	{ P.set(_P); R = _R; }
+	inline void		set(const _sphere<T> &S)			{ P.set(S.P); R=S.R; }
+	inline void		identity()							{ P.set(0,0,0); R=1; }
 
 	enum ERP_Result{
 		rpNone			= 0,
@@ -87,7 +87,7 @@ public:
 		return			rpNone;
 	}
 
-	IC ERP_Result intersect2(const _vector3<T>& S, const _vector3<T>& D, T& range) const	
+	inline ERP_Result intersect2(const _vector3<T>& S, const _vector3<T>& D, T& range) const	
     {
 		_vector3<T> Q;	Q.sub(P,S);
 	
@@ -120,13 +120,13 @@ public:
 		T SumR = R+S.R;
 		return P.distance_to_sqr(S.P) < SumR*SumR;
 	}
-	IC BOOL		contains(const _vector3<T>& PT) const 
+	inline BOOL		contains(const _vector3<T>& PT) const 
 	{
 		return P.distance_to_sqr(PT) <= (R*R+EPS_S);
 	}
 	
 	// returns true if this wholly contains the argument sphere
-	IC BOOL		contains(const _sphere<T>& S) const	
+	inline BOOL		contains(const _sphere<T>& S) const	
 	{
 		// can't contain a sphere that's bigger than me !
 		const T RDiff		= R - S.R;
@@ -136,7 +136,7 @@ public:
 	}
 
 	// return's volume of sphere
-	IC T		volume	() const
+	inline T		volume	() const
 	{
 		return T( PI_MUL_4 / 3 ) * (R*R*R);
 	}

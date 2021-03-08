@@ -22,7 +22,7 @@ public:
 		u32		get_place			();
 		u32		get_place_in_cover	();
 		bool	at_home				();
-		bool	at_home				(const Fvector &pos);
+		bool	at_home				(const Fvector3& pos);
 		inline	bool	has_home			() {return (m_path != 0);}
 		inline	bool	is_aggressive		() {return m_aggressive;}
 };

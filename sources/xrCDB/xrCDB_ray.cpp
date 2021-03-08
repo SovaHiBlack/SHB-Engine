@@ -185,7 +185,7 @@ public:
 	float			rRange;
 	float			rRange2;
 
-	IC void			_init		(COLLIDER* CL, Fvector3* V, TRI* T, const Fvector3& C, const Fvector3& D, float R)
+	inline void			_init		(COLLIDER* CL, Fvector3* V, TRI* T, const Fvector3& C, const Fvector3& D, float R)
 	{
 		dest			= CL;
 		tris			= T;
@@ -220,7 +220,7 @@ public:
         return 		isect_sse	(box,ray,dist);
 	}
 	
-	IC bool			_tri		(u32* p, float& u, float& v, float& range)
+	inline bool			_tri		(u32* p, float& u, float& v, float& range)
 	{
 		Fvector3 edge1;
 		Fvector3 edge2;

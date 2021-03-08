@@ -22,7 +22,7 @@ struct CEdgePath {
 		struct _vertex : public T1<T2> {
 			_edge_type	_edge;
 
-			IC	_edge_type	&edge()
+			inline	_edge_type	&edge()
 			{
 				return	(_edge);
 			}
@@ -41,11 +41,11 @@ struct CEdgePath {
 		typedef	typename CGraphVertex::_index_type		_index_type;
 	
 	public:
-		IC					CDataStorage		(const u32 vertex_count);
+		inline					CDataStorage		(const u32 vertex_count);
 		virtual				~CDataStorage		();
-		IC		void		assign_parent		(CGraphVertex &neighbour, CGraphVertex *parent);
-		IC		void		assign_parent		(CGraphVertex &neighbour, CGraphVertex *parent, const _edge_type &edge);
-		IC		void		get_edge_path		(xr_vector<_edge_type>  &path, CGraphVertex *best, bool reverse_order = false);
+		inline		void		assign_parent		(CGraphVertex &neighbour, CGraphVertex *parent);
+		inline		void		assign_parent		(CGraphVertex &neighbour, CGraphVertex *parent, const _edge_type &edge);
+		inline		void		get_edge_path		(xr_vector<_edge_type>  &path, CGraphVertex *best, bool reverse_order = false);
 	};
 };
 

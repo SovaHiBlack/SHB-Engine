@@ -8,7 +8,7 @@
 
 #pragma once
 
-IC	CScriptSoundAction::CScriptSoundAction	()
+inline	CScriptSoundAction::CScriptSoundAction	()
 {
 	m_caSoundToPlay		= "";
 	m_caBoneName		= "";
@@ -22,7 +22,7 @@ IC	CScriptSoundAction::CScriptSoundAction	()
 	m_tHeadAnimType		= MonsterSpace::eHeadAnimNone;
 }
 
-IC	CScriptSoundAction::CScriptSoundAction		(const char* caSoundToPlay, const char* caBoneName, const Fvector &tPositionOffset, const Fvector &tAngleOffset, bool bLooped, ESoundTypes sound_type)
+inline	CScriptSoundAction::CScriptSoundAction		(const char* caSoundToPlay, const char* caBoneName, const Fvector &tPositionOffset, const Fvector &tAngleOffset, bool bLooped, ESoundTypes sound_type)
 {
 	m_bLooped			= bLooped;
 	SetBone				(caBoneName);
@@ -34,7 +34,7 @@ IC	CScriptSoundAction::CScriptSoundAction		(const char* caSoundToPlay, const cha
 	m_tHeadAnimType		= MonsterSpace::eHeadAnimNone;
 }
 
-IC	CScriptSoundAction::CScriptSoundAction		(const char* caSoundToPlay, const Fvector &tPosition, const Fvector &tAngleOffset, bool bLooped, ESoundTypes sound_type)
+inline	CScriptSoundAction::CScriptSoundAction		(const char* caSoundToPlay, const Fvector &tPosition, const Fvector &tAngleOffset, bool bLooped, ESoundTypes sound_type)
 {
 	m_bLooped			= bLooped;
 	SetSound			(caSoundToPlay);
@@ -45,7 +45,7 @@ IC	CScriptSoundAction::CScriptSoundAction		(const char* caSoundToPlay, const Fve
 	m_tHeadAnimType		= MonsterSpace::eHeadAnimNone;
 }
 
-IC	CScriptSoundAction::CScriptSoundAction		(CScriptSound &sound, const char* caBoneName, const Fvector &tPositionOffset, const Fvector &tAngleOffset, bool bLooped, ESoundTypes sound_type)
+inline	CScriptSoundAction::CScriptSoundAction		(CScriptSound &sound, const char* caBoneName, const Fvector &tPositionOffset, const Fvector &tAngleOffset, bool bLooped, ESoundTypes sound_type)
 {
 	m_bLooped			= bLooped;
 	SetBone				(caBoneName);
@@ -57,7 +57,7 @@ IC	CScriptSoundAction::CScriptSoundAction		(CScriptSound &sound, const char* caB
 	m_tHeadAnimType		= MonsterSpace::eHeadAnimNone;
 }
 
-IC	CScriptSoundAction::CScriptSoundAction		(CScriptSound &sound, const Fvector &tPosition, const Fvector &tAngleOffset, bool bLooped, ESoundTypes sound_type)
+inline	CScriptSoundAction::CScriptSoundAction		(CScriptSound &sound, const Fvector &tPosition, const Fvector &tAngleOffset, bool bLooped, ESoundTypes sound_type)
 {
 	m_bLooped			= bLooped;
 	SetSound			(sound);
@@ -72,14 +72,14 @@ IC	CScriptSoundAction::CScriptSoundAction		(CScriptSound &sound, const Fvector &
 // Monster Specific
 ///////////////////////////////////////////////////////////////////////////////////
 						
-IC	CScriptSoundAction::CScriptSoundAction		(MonsterSound::EType sound_type)
+inline	CScriptSoundAction::CScriptSoundAction		(MonsterSound::EType sound_type)
 {
 	m_monster_sound			= sound_type;
 	m_monster_sound_delay	= int (-1);
 	m_bCompleted			= false;
 }
 
-IC	CScriptSoundAction::CScriptSoundAction		(MonsterSound::EType sound_type, int delay)
+inline	CScriptSoundAction::CScriptSoundAction		(MonsterSound::EType sound_type, int delay)
 {
 	m_monster_sound			= sound_type;
 	m_monster_sound_delay	= delay;
@@ -90,7 +90,7 @@ IC	CScriptSoundAction::CScriptSoundAction		(MonsterSound::EType sound_type, int 
 // Trader Specific
 ///////////////////////////////////////////////////////////////////////////////////
 
-IC	CScriptSoundAction::CScriptSoundAction		(const char* caSoundToPlay, const char* caBoneName, MonsterSpace::EMonsterHeadAnimType head_anim_type)
+inline	CScriptSoundAction::CScriptSoundAction		(const char* caSoundToPlay, const char* caBoneName, MonsterSpace::EMonsterHeadAnimType head_anim_type)
 {
 	SetBone				(caBoneName);
 	SetSound			(caSoundToPlay);		
@@ -104,7 +104,7 @@ IC	CScriptSoundAction::CScriptSoundAction		(const char* caSoundToPlay, const cha
 
 ///////////////////////////////////////////////////////////////////////////////////
 
-IC	void CScriptSoundAction::SetSound			(const CScriptSound &sound)
+inline	void CScriptSoundAction::SetSound			(const CScriptSound &sound)
 {
 	m_caSoundToPlay		= sound.m_caSoundToPlay;
 	m_tGoalType			= eGoalTypeSoundAttached;
@@ -112,32 +112,32 @@ IC	void CScriptSoundAction::SetSound			(const CScriptSound &sound)
 	m_bCompleted		= false;
 }
 
-IC	void CScriptSoundAction::SetPosition		(const Fvector &tPosition)
+inline	void CScriptSoundAction::SetPosition		(const Fvector &tPosition)
 {
 	m_tSoundPosition	= tPosition;
 	m_tGoalType			= eGoalTypeSoundPosition;
 	m_bStartedToPlay	= false;
 }
 
-IC	void CScriptSoundAction::SetBone			(const char* caBoneName)
+inline	void CScriptSoundAction::SetBone			(const char* caBoneName)
 {
 	m_caBoneName		= caBoneName;
 	m_bStartedToPlay	= false;
 }
 
-IC	void CScriptSoundAction::SetAngles			(const Fvector &tAngles)
+inline	void CScriptSoundAction::SetAngles			(const Fvector &tAngles)
 {
 	m_tSoundAngles		= tAngles;
 	m_bStartedToPlay	= false;
 }
 
-IC	void CScriptSoundAction::SetSoundType		(const ESoundTypes sound_type)
+inline	void CScriptSoundAction::SetSoundType		(const ESoundTypes sound_type)
 {
 	m_sound_type		= sound_type;
 	m_bStartedToPlay	= false;
 }
 
-IC	void CScriptSoundAction::initialize			()
+inline	void CScriptSoundAction::initialize			()
 {
 	m_bStartedToPlay	= false;
 }

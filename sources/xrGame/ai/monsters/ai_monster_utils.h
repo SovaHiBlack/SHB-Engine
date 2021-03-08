@@ -3,14 +3,14 @@
 // проверить, находится ли объект entity на ноде
 // возвращает позицию объекта, если он находится на ноде, или центр его ноды
 class CEntity;
-extern Fvector get_valid_position(const CEntity *entity, const Fvector &actual_position);
+extern Fvector3 get_valid_position(const CEntity *entity, const Fvector3& actual_position);
 
 // возвращает true, если объект entity находится на ноде
 extern bool object_position_valid(const CEntity *entity);
 
-inline Fvector random_position(const Fvector &center, float R)
+inline Fvector3 random_position(const Fvector3& center, float R)
 {
-	Fvector v;
+	Fvector3 v;
 	v = center;
 	v.x += ::Random.randF(-R,R);
 	v.z += ::Random.randF(-R,R);
@@ -66,9 +66,9 @@ inline u32	time()
 //////////////////////////////////////////////////////////////////////////
 // bone routines
 //////////////////////////////////////////////////////////////////////////
-extern	Fvector get_bone_position	(CObject *object, const char* bone_name);
+extern	Fvector3 get_bone_position	(CObject *object, const char* bone_name);
 
-inline Fvector get_head_position(CObject *object)
+inline Fvector3 get_head_position(CObject *object)
 {
 	return get_bone_position(object, "bip01_head");
 }

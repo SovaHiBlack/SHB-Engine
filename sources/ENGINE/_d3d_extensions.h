@@ -18,7 +18,7 @@ public:
     float	        theta;            /* Inner angle of spotlight cone */
     float	        phi;              /* Outer angle of spotlight cone */
 
-	IC	void		set	(u32 ltType, float x, float y, float z)
+	inline	void		set	(u32 ltType, float x, float y, float z)
 	{
 		ZeroMemory( this, sizeof(Flight) );
 		type=ltType;
@@ -29,7 +29,7 @@ public:
 		direction.normalize_safe();
 		range= _sqrt(flt_max);
 	}
-    IC	void		mul		(float brightness){
+    inline	void		mul		(float brightness){
 	    diffuse.mul_rgb		(brightness);
     	ambient.mul_rgb		(brightness);
 	    specular.mul_rgb	(brightness);
@@ -54,7 +54,7 @@ public:
     Fcolor			emissive;       /* Emissive color RGB */
     float			power;          /* Sharpness if specular highlight */
 
-	IC	void		set	(float r, float g, float b)
+	inline	void		set	(float r, float g, float b)
 	{
 		ZeroMemory	(this, sizeof(Fmaterial));
 		diffuse.r = ambient.r = r;
@@ -63,7 +63,7 @@ public:
 		diffuse.a = ambient.a = 1.0f;
 		power	  = 0;
 	}
-	IC	void	set(float r, float g, float b, float a)
+	inline	void	set(float r, float g, float b, float a)
 	{
 		ZeroMemory	(this, sizeof(Fmaterial));
 		diffuse.r = ambient.r = r;
@@ -72,7 +72,7 @@ public:
 		diffuse.a = ambient.a = a;
 		power	  = 0;
 	}
-	IC	void	set	(Fcolor &c)
+	inline	void	set	(Fcolor &c)
 	{
 		ZeroMemory	( this, sizeof(Fmaterial) );
 		diffuse.r = ambient.r = c.r;

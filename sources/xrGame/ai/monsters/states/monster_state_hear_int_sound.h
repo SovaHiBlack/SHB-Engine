@@ -16,8 +16,7 @@ public:
 	virtual void	setup_substates						();
 
 private:
-			Fvector	get_target_position					();
-
+	Fvector3	get_target_position					();
 };
 
 #include "monster_state_hear_int_sound_inline.h"

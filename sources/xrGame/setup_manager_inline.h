@@ -18,7 +18,7 @@
 #define CSSetupManager CSetupManager<_action_type,_object_type,_action_id_type>
 
 TEMPLATE_SPECIALIZATION
-IC	CSSetupManager::CSetupManager					(_object_type *object)
+inline	CSSetupManager::CSetupManager					(_object_type *object)
 {
 	VERIFY					(object);
 	m_object				= object;
@@ -38,7 +38,7 @@ void CSSetupManager::reinit							()
 }
 
 TEMPLATE_SPECIALIZATION
-IC	_action_type &CSSetupManager::action			(const _action_id_type &action_id) const
+inline	_action_type &CSSetupManager::action			(const _action_id_type &action_id) const
 {
 	setup_actions::const_iterator	I = std::find_if(actions().begin(),actions().end(),setup_pred(action_id));
 	VERIFY					(I != actions().end());
@@ -46,19 +46,19 @@ IC	_action_type &CSSetupManager::action			(const _action_id_type &action_id) con
 }
 
 TEMPLATE_SPECIALIZATION
-IC	_action_type &CSSetupManager::current_action	() const
+inline	_action_type &CSSetupManager::current_action	() const
 {
 	return					(action(current_action_id()));
 }
 
 TEMPLATE_SPECIALIZATION
-IC	const _action_id_type &CSSetupManager::current_action_id	() const
+inline	const _action_id_type &CSSetupManager::current_action_id	() const
 {
 	return					(m_current_action_id);
 }
 
 TEMPLATE_SPECIALIZATION
-IC	void CSSetupManager::clear						()
+inline	void CSSetupManager::clear						()
 {
 	m_actuality				= false;
 	m_current_action_id		= _action_id_type(-1);
@@ -67,7 +67,7 @@ IC	void CSSetupManager::clear						()
 }
 
 TEMPLATE_SPECIALIZATION
-IC	void CSSetupManager::add_action					(const _action_id_type &action_id, _action_type *action)
+inline	void CSSetupManager::add_action					(const _action_id_type &action_id, _action_type *action)
 {
 	m_actuality				= false;
 	VERIFY					(action);
@@ -95,7 +95,7 @@ void CSSetupManager::update							()
 }
 
 TEMPLATE_SPECIALIZATION
-IC	void CSSetupManager::select_action				()
+inline	void CSSetupManager::select_action				()
 {
 	if (!m_actuality || current_action().completed()) {
 		m_actuality			= true;
@@ -133,20 +133,20 @@ IC	void CSSetupManager::select_action				()
 }
 
 TEMPLATE_SPECIALIZATION
-IC	_object_type &CSSetupManager::object	() const
+inline	_object_type &CSSetupManager::object	() const
 {
 	VERIFY		(m_object);
 	return		(*m_object);
 }
 
 TEMPLATE_SPECIALIZATION
-IC	const typename CSSetupManager::setup_actions &CSSetupManager::actions	() const
+inline	const typename CSSetupManager::setup_actions &CSSetupManager::actions	() const
 {
 	return		(m_actions);
 }
 
 TEMPLATE_SPECIALIZATION
-IC	typename CSSetupManager::setup_actions &CSSetupManager::actions	()
+inline	typename CSSetupManager::setup_actions &CSSetupManager::actions	()
 {
 	return		(m_actions);
 }

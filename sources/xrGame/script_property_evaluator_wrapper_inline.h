@@ -8,7 +8,7 @@
 
 #pragma once
 
-IC	CScriptPropertyEvaluatorWrapper::CScriptPropertyEvaluatorWrapper	(CScriptGameObject *object, const char* evaluator_name) :
+inline	CScriptPropertyEvaluatorWrapper::CScriptPropertyEvaluatorWrapper	(CScriptGameObject *object, const char* evaluator_name) :
 	CScriptPropertyEvaluator	(object,evaluator_name)
 {
 }

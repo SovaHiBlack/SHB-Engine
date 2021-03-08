@@ -24,7 +24,7 @@ namespace PAPI{
 		void 		transform_dir	(const pDomain& domain, const Fmatrix& m);
 		// This constructor is used when default constructing a
 		// ParticleAction that has a pDomain.
-		IC 			pDomain			(){}
+		inline 			pDomain			(){}
 		// Construct a domain in the standard way.
 					pDomain			(PDomainEnum dtype,
                                     float a0=0.0f, float a1=0.0f, float a2=0.0f,

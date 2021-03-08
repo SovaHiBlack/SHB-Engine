@@ -34,16 +34,16 @@ public:
 	bool				m_bAutoRemove;
 
 public:
-	IC					CScriptParticleAction	();
-	IC					CScriptParticleAction	(const char* caPartcileToRun, const char* caBoneName, const CParticleParams &tParticleParams = CParticleParams(), bool bAutoRemove = false);
-	IC					CScriptParticleAction	(const char* caPartcileToRun, const CParticleParams &tParticleParams = CParticleParams(), bool bAutoRemove = false);
+	inline					CScriptParticleAction	();
+	inline					CScriptParticleAction	(const char* caPartcileToRun, const char* caBoneName, const CParticleParams &tParticleParams = CParticleParams(), bool bAutoRemove = false);
+	inline					CScriptParticleAction	(const char* caPartcileToRun, const CParticleParams &tParticleParams = CParticleParams(), bool bAutoRemove = false);
 	virtual				~CScriptParticleAction	();
 			void		SetParticle				(const char* caParticleToRun, bool bAutoRemove);
-	IC		void		SetPosition				(const Fvector &tPosition);
-	IC		void		SetBone					(const char* caBoneName);
-	IC		void		SetAngles				(const Fvector &tAngleOffset);
-	IC		void		SetVelocity				(const Fvector &tVelocity);
-	IC		void		initialize				();
+	inline		void		SetPosition				(const Fvector &tPosition);
+	inline		void		SetBone					(const char* caBoneName);
+	inline		void		SetAngles				(const Fvector &tAngleOffset);
+	inline		void		SetVelocity				(const Fvector &tVelocity);
+	inline		void		initialize				();
 
 public:
 	static void script_register(lua_State*);

@@ -34,20 +34,20 @@ private:
 	size_t								*m_edge_count;
 
 public:
-	IC									CVertex				(const _data_type &data, const _vertex_id_type &vertex_id, size_t *edge_count);
-	IC									~CVertex			();
-	IC		bool						operator==			(const CVertex &obj) const;
-	IC		void						add_edge			(CVertex *vertex, const _edge_weight_type &edge_weight);
-	IC		void						remove_edge			(const _vertex_id_type &vertex_id);
-	IC		void						on_edge_addition	(CVertex *vertex);
-	IC		void						on_edge_removal		(const CVertex *vertex);
-	IC		const _vertex_id_type		&vertex_id			() const;
-	IC		const _data_type			&data				() const;
-	IC		_data_type					&data				();
-	IC		void						data				(const _data_type &data);
-	IC		const EDGES					&edges				() const;
-	IC		const _edge_type			*edge				(const _vertex_id_type &vertex_id) const;
-	IC		_edge_type					*edge				(const _vertex_id_type &vertex_id);
+	inline									CVertex				(const _data_type &data, const _vertex_id_type &vertex_id, size_t *edge_count);
+	inline									~CVertex			();
+	inline		bool						operator==			(const CVertex &obj) const;
+	inline		void						add_edge			(CVertex *vertex, const _edge_weight_type &edge_weight);
+	inline		void						remove_edge			(const _vertex_id_type &vertex_id);
+	inline		void						on_edge_addition	(CVertex *vertex);
+	inline		void						on_edge_removal		(const CVertex *vertex);
+	inline		const _vertex_id_type		&vertex_id			() const;
+	inline		const _data_type			&data				() const;
+	inline		_data_type					&data				();
+	inline		void						data				(const _data_type &data);
+	inline		const EDGES					&edges				() const;
+	inline		const _edge_type			*edge				(const _vertex_id_type &vertex_id) const;
+	inline		_edge_type					*edge				(const _vertex_id_type &vertex_id);
 };
 
 #include "graph_vertex_inline.h"

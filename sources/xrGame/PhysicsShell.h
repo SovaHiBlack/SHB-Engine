@@ -243,7 +243,7 @@ public:
 	CPHShellHolder*dbg_obj																																;
 #endif
 public:
-IC					CKinematics					*PKinematics								()																{return m_pKinematics		;}
+inline					CKinematics					*PKinematics								()																{return m_pKinematics		;}
 					void						set_Kinematics								(CKinematics* p)														{m_pKinematics=p	;}
 	virtual			void						set_JointResistance							(float force)																				= 0;
 	virtual			void						add_Element									(CPhysicsElement* E)																		= 0;

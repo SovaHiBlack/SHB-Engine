@@ -115,7 +115,7 @@ bool CMonsterHome::at_home()
 	return at_home(m_object->Position());
 }
 
-bool CMonsterHome::at_home(const Fvector &pos)
+bool CMonsterHome::at_home(const Fvector3& pos)
 {
 	if (!m_path) return true;
 

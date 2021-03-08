@@ -39,7 +39,7 @@ struct heritage {
 template <typename base, typename luabind_base = Loki::EmptyType>
 class DLL_PureWrapper : public heritage<base,luabind_base>::result {
 public:
-	IC					DLL_PureWrapper		() {};
+	inline					DLL_PureWrapper		() {};
 	virtual				~DLL_PureWrapper	() {};
 
 	virtual	DLL_Pure*	_construct			()
@@ -59,7 +59,7 @@ typedef DLL_PureWrapper<DLL_Pure,luabind::wrap_base> CDLL_PureWrapper;
 template <typename base, typename luabind_base = Loki::EmptyType>
 class ISpatialWrapper : public heritage<base,luabind_base>::result {
 public:
-	IC						ISpatialWrapper				() {};
+	inline						ISpatialWrapper				() {};
 	virtual					~ISpatialWrapper			() {};
 	virtual	void			spatial_register			()
 	{
@@ -91,12 +91,12 @@ public:
 		self->base::spatial_move();
 	}
 
-	virtual	Fvector			spatial_sector_point		()
+	virtual	Fvector3			spatial_sector_point		()
 	{
-		return	(call_member<Fvector>(this,"spatial_sector_point"));
+		return	(call_member<Fvector3>(this,"spatial_sector_point"));
 	}
 
-	static	Fvector			spatial_sector_point_static	(base *self)
+	static	Fvector3			spatial_sector_point_static	(base *self)
 	{
 		return	(self->base::spatial_sector_point());
 	}
@@ -138,7 +138,7 @@ typedef ISpatialWrapper<ISpatial,luabind::wrap_base> CISpatialWrapper;
 template <typename base, typename luabind_base = Loki::EmptyType>
 class ISheduledWrapper : public heritage<base,luabind_base>::result {
 public:
-	IC						ISheduledWrapper		() {};
+	inline						ISheduledWrapper		() {};
 	virtual					~ISheduledWrapper		() {};
 	
 	virtual float			shedule_Scale			()
@@ -171,7 +171,7 @@ typedef ISheduledWrapper<ISheduled,luabind::wrap_base> CISheduledWrapper;
 template <typename base, typename luabind_base = Loki::EmptyType>
 class IRenderableWrapper : public heritage<base,luabind_base>::result {
 public:
-	IC				IRenderableWrapper				()  {};
+	inline				IRenderableWrapper				()  {};
 	virtual			~IRenderableWrapper				()  {};
 	
 /*
@@ -216,12 +216,12 @@ typedef IRenderableWrapper<IRenderable,luabind::wrap_base> CIRenderableWrapper;
 
 //class CObjectWrapper : public CObjectIRenderable {
 //public:
-//	IC						CObjectWrapper		() {};
+//	inline						CObjectWrapper		() {};
 //	virtual					~CObjectWrapper		() {};
 ///**
 //	virtual BOOL			Ready				();
 //	virtual CObject*		H_SetParent			(CObject* O);
-//	virtual void			Center				(Fvector& C) const;
+//	virtual void			Center				(Fvector3& C) const;
 //	virtual float			Radius				() const;
 //	virtual const Fbox3&		BoundingBox			() const;
 //	virtual void			Load				(const char* section);
@@ -251,7 +251,7 @@ typedef IRenderableWrapper<CGameObjectISheduled>			CGameObjectIRenderable;
 
 class CGameObjectWrapper : public CGameObjectIRenderable {
 public:
-	IC						CGameObjectWrapper	() {};
+	inline						CGameObjectWrapper	() {};
 	virtual					~CGameObjectWrapper	() {};
 	virtual bool			use					(CGameObject* who_use)
 	{
@@ -296,25 +296,25 @@ public:
 
 class CEntityWrapper : public CEntity, public luabind::wrap_base {
 public:
-	IC						CEntityWrapper		() {}
+	inline						CEntityWrapper		() {}
 	virtual					~CEntityWrapper		() {}
 
-	virtual void			HitSignal			(float P, Fvector &local_dir,	CObject* who, s16 element)
+	virtual void			HitSignal			(float P, Fvector3& local_dir,	CObject* who, s16 element)
 	{
 		luabind::call_member<void>(this,"HitSignal",P,local_dir,who,element);
 	}
 
-	static	void			HitSignal_static	(CEntity *self, float P, Fvector &local_dir,	CObject* who, s16 element)
+	static	void			HitSignal_static	(CEntity *self, float P, Fvector3& local_dir,	CObject* who, s16 element)
 	{
 		ai().script_engine().script_log(eLuaMessageTypeError,"You are trying to call a pure virtual function CEntity::HitSignal!");
 	}
 
-	virtual void			HitImpulse			(float P, Fvector &vWorldDir, 	Fvector& vLocalDir)
+	virtual void			HitImpulse			(float P, Fvector3& vWorldDir, Fvector3& vLocalDir)
 	{
 		luabind::call_member<void>(this,"HitImpulse",P,vWorldDir,vLocalDir);
 	}
 
-	static	void			HitImpulse_static	(float P, Fvector &vWorldDir, 	Fvector& vLocalDir)
+	static	void			HitImpulse_static	(float P, Fvector3& vWorldDir, Fvector3& vLocalDir)
 	{
 		ai().script_engine().script_log(eLuaMessageTypeError,"You are trying to call a pure virtual function CEntity::HitImpulse!");
 	}

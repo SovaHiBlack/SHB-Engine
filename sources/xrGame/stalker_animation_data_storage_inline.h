@@ -3,7 +3,7 @@
 
 #pragma once
 
-IC	CStalkerAnimationDataStorage &stalker_animation_data_storage	()
+inline	CStalkerAnimationDataStorage &stalker_animation_data_storage	()
 {
 	if (g_stalker_animation_data_storage)
 		return							(*g_stalker_animation_data_storage);

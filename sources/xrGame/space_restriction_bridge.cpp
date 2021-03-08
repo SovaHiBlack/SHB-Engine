@@ -87,7 +87,7 @@ bool CSpaceRestrictionBridge::inside					(const Fsphere &sphere)
 }
 
 struct CFindByXZ_predicate {
-	IC	bool	operator()	(u32 vertex_id, u32 xz) const
+	inline	bool	operator()	(u32 vertex_id, u32 xz) const
 	{
 		return			(ai().level_graph().vertex(vertex_id)->position().xz() < xz);
 	}

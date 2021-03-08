@@ -22,10 +22,10 @@ private:
 	bool				m_notify_agent_manager;
 
 public:
-	IC					CStalkerMovementRestrictor	(CStalker *object, bool use_enemy_info, bool notify_agent_manager = true);
-	IC		bool		operator()					(const CCoverPoint *cover) const;
-	IC		float		weight						(const CCoverPoint *cover) const;
-	IC		void		finalize					(const CCoverPoint *cover) const;
+	inline					CStalkerMovementRestrictor	(CStalker *object, bool use_enemy_info, bool notify_agent_manager = true);
+	inline		bool		operator()					(const CCoverPoint *cover) const;
+	inline		float		weight						(const CCoverPoint *cover) const;
+	inline		void		finalize					(const CCoverPoint *cover) const;
 };
 
 #include "stalker_movement_restriction_inline.h"

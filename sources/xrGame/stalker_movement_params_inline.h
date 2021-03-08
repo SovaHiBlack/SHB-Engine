@@ -8,7 +8,7 @@
 
 #pragma once
 
-IC	bool CStalkerMovementParams::operator==	(const CStalkerMovementParams &params) const
+inline	bool CStalkerMovementParams::operator==	(const CStalkerMovementParams &params) const
 {
 	if (m_use_desired_position != params.m_use_desired_position)
 		return				(false);
@@ -40,7 +40,7 @@ IC	bool CStalkerMovementParams::operator==	(const CStalkerMovementParams &params
 	return					(true);
 }
 
-IC	bool CStalkerMovementParams::operator!=	(const CStalkerMovementParams &params) const
+inline	bool CStalkerMovementParams::operator!=	(const CStalkerMovementParams &params) const
 {
 	return					(!(*this == params));
 }

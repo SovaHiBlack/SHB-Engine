@@ -3,7 +3,7 @@
 #include "custommonster.h"
 #include "movement_manager.h"
 
-IC void conv_angle(float& c)
+inline void conv_angle(float& c)
 {
 	if (c<0)				c+=PI_MUL_2;
 	else if (c>PI_MUL_2)	c-=PI_MUL_2;

@@ -25,12 +25,12 @@ namespace AStar {
 			_dist_type	_g;
 			_dist_type	_h;
 
-			IC	_dist_type &g()
+			inline	_dist_type &g()
 			{
 				return	(_g);
 			}
 
-			IC	_dist_type &h()
+			inline	_dist_type &h()
 			{
 				return	(_h);
 			}
@@ -121,15 +121,15 @@ protected:
 
 protected:
 	template <typename _PathManager>
-	IC		void				initialize		(_PathManager &path_manager);
+	inline		void				initialize		(_PathManager &path_manager);
 	template <typename _PathManager>
-	IC		bool				step			(_PathManager &path_manager);
+	inline		bool				step			(_PathManager &path_manager);
 
 public:
-	IC							CAStar			(const u32 max_vertex_count);
+	inline							CAStar			(const u32 max_vertex_count);
 	virtual						~CAStar			();
 	template <typename _PathManager>
-	IC		bool				find			(_PathManager &path_manager);
+	inline		bool				find			(_PathManager &path_manager);
 };
 
 #include "a_star_inline.h"

@@ -17,21 +17,21 @@ protected:
 
 private:
 	template <typename T>
-	IC		bool					accessible_neighbours				(T &restriction, u32 level_vertex_id, bool out_restriction);
+	inline		bool					accessible_neighbours				(T &restriction, u32 level_vertex_id, bool out_restriction);
 	
 	template <typename T>
-	IC		void					prepare_accessible_neighbour_border	(T &restriction, bool out_restriction);
+	inline		void					prepare_accessible_neighbour_border	(T &restriction, bool out_restriction);
 
 public:
-	IC								CSpaceRestrictionAbstract			();
+	inline								CSpaceRestrictionAbstract			();
 	virtual							~CSpaceRestrictionAbstract			() {}
 	virtual	void					initialize							() = 0;
-	IC		const xr_vector<u32>	&border								();
-	IC		bool					initialized							() const;
+	inline		const xr_vector<u32>	&border								();
+	inline		bool					initialized							() const;
 
 public:
 	template <typename T>
-	IC		const xr_vector<u32>	&accessible_neighbour_border		(T &restriction, bool out_restriction);
+	inline		const xr_vector<u32>	&accessible_neighbour_border		(T &restriction, bool out_restriction);
 
 public:
 	virtual shared_str				name								() const = 0;

@@ -36,7 +36,7 @@ private:
 		CBaseRestrictionPtr		m_restriction;
 		bool					m_enabled;
 
-		IC	CFreeInRestriction	(CBaseRestrictionPtr restriction, bool enabled)
+		inline	CFreeInRestriction	(CBaseRestrictionPtr restriction, bool enabled)
 		{
 			m_restriction		= restriction;
 			m_enabled			= enabled;
@@ -60,14 +60,14 @@ protected:
 #endif
 
 private:
-	IC		bool					intersects					(CBaseRestrictionPtr bridge);
-	IC		bool					intersects					(SpaceRestrictionHolder::CBaseRestrictionPtr bridge0, SpaceRestrictionHolder::CBaseRestrictionPtr bridge1);
+	inline		bool					intersects					(CBaseRestrictionPtr bridge);
+	inline		bool					intersects					(SpaceRestrictionHolder::CBaseRestrictionPtr bridge0, SpaceRestrictionHolder::CBaseRestrictionPtr bridge1);
 			CBaseRestrictionPtr		merge						(CBaseRestrictionPtr bridge, const RESTRICTIONS &temp_restrictions) const;
 			void					merge_in_out_restrictions	();
 			void					merge_free_in_retrictions	();
 
 protected:
-	IC		bool					initialized					() const;
+	inline		bool					initialized					() const;
 			bool					affect						(CBaseRestrictionPtr bridge, const Fsphere &sphere) const;
 			bool					affect						(CBaseRestrictionPtr bridge, u32 start_vertex_id, float radius) const;
 			bool					affect						(CBaseRestrictionPtr bridge, const Fvector &start_position, const Fvector &dest_position) const;
@@ -78,15 +78,15 @@ public:
 			void					initialize					();
 			void					remove_border				();
 	template <typename T1, typename T2>
-	IC		void					add_border					(T1 p1, T2 p2);
+	inline		void					add_border					(T1 p1, T2 p2);
 			u32						accessible_nearest			(const Fvector &position, Fvector &result);
 			bool					accessible					(const Fsphere &sphere);
 			bool					accessible					(u32 level_vertex_id, float radius);
-	IC		shared_str				out_restrictions			() const;
-	IC		shared_str				in_restrictions				() const;
-	IC		bool					applied						() const;
-	IC		bool					inside						(const Fsphere &sphere);
-	IC		bool					inside						(u32 level_vertex_id, bool partially_inside);
+	inline		shared_str				out_restrictions			() const;
+	inline		shared_str				in_restrictions				() const;
+	inline		bool					applied						() const;
+	inline		bool					inside						(const Fsphere &sphere);
+	inline		bool					inside						(u32 level_vertex_id, bool partially_inside);
 	virtual shared_str				name						() const;
 };
 

@@ -8,7 +8,7 @@
 
 #pragma once
 
-IC	void CPropertyStorage::set_property	(const _condition_type &condition_id, const _value_type &value)
+inline	void CPropertyStorage::set_property	(const _condition_type &condition_id, const _value_type &value)
 {
 	CConditionStorage::iterator			I = std::find(m_storage.begin(),m_storage.end(),condition_id);
 	if (m_storage.end() != I)
@@ -17,14 +17,14 @@ IC	void CPropertyStorage::set_property	(const _condition_type &condition_id, con
 		m_storage.push_back				(CConditionValue(condition_id,value));
 }
 
-IC	const CPropertyStorage::_value_type	&CPropertyStorage::property	(const _condition_type &condition_id) const
+inline	const CPropertyStorage::_value_type	&CPropertyStorage::property	(const _condition_type &condition_id) const
 {
 	CConditionStorage::const_iterator	I = std::find(m_storage.begin(),m_storage.end(),condition_id);
 	THROW								(m_storage.end() != I);
 	return								((*I).m_value);
 }
 
-IC	void CPropertyStorage::clear		()
+inline	void CPropertyStorage::clear		()
 {
 	m_storage.clear						();
 }

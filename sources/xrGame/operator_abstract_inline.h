@@ -16,7 +16,7 @@
 #define CAbstractOperator COperatorAbstract<_world_property,_edge_value_type>
 
 TEMPLATE_SPECIALIZATION
-IC	CAbstractOperator::COperatorAbstract	()
+inline	CAbstractOperator::COperatorAbstract	()
 {
 	m_actuality			= 0;
 	m_weight_actual		= true;
@@ -24,7 +24,7 @@ IC	CAbstractOperator::COperatorAbstract	()
 }
 
 TEMPLATE_SPECIALIZATION
-IC	CAbstractOperator::COperatorAbstract	(const CSConditionState &conditions, const CSConditionState &effects)
+inline	CAbstractOperator::COperatorAbstract	(const CSConditionState &conditions, const CSConditionState &effects)
 {
 	m_conditions		= conditions;
 	m_effects			= effects;
@@ -52,7 +52,7 @@ void CAbstractOperator::setup						(bool *actuality)
 }
 
 TEMPLATE_SPECIALIZATION
-IC	void CAbstractOperator::actual					(bool value)
+inline	void CAbstractOperator::actual					(bool value)
 {
 	if (!m_actuality)
 		return;
@@ -61,47 +61,47 @@ IC	void CAbstractOperator::actual					(bool value)
 }
 
 TEMPLATE_SPECIALIZATION
-IC	const typename CAbstractOperator::CSConditionState	&CAbstractOperator::conditions	() const
+inline	const typename CAbstractOperator::CSConditionState	&CAbstractOperator::conditions	() const
 {
 	return				(m_conditions);
 }
 
 TEMPLATE_SPECIALIZATION
-IC	const typename CAbstractOperator::CSConditionState	&CAbstractOperator::effects		() const
+inline	const typename CAbstractOperator::CSConditionState	&CAbstractOperator::effects		() const
 {
 	return				(m_effects);
 }
 
 TEMPLATE_SPECIALIZATION
-IC	void CAbstractOperator::add_condition	(const COperatorCondition &condition)
+inline	void CAbstractOperator::add_condition	(const COperatorCondition &condition)
 {
 	actual						(false);
 	m_conditions.add_condition	(condition);
 }
 
 TEMPLATE_SPECIALIZATION
-IC	void CAbstractOperator::remove_condition(const typename COperatorCondition::_condition_type &condition)
+inline	void CAbstractOperator::remove_condition(const typename COperatorCondition::_condition_type &condition)
 {
 	actual						(false);
 	m_conditions.remove_condition(condition);
 }
 
 TEMPLATE_SPECIALIZATION
-IC	void CAbstractOperator::add_effect		(const COperatorCondition &effect)
+inline	void CAbstractOperator::add_effect		(const COperatorCondition &effect)
 {
 	actual						(false);
 	m_effects.add_condition		(effect);
 }
 
 TEMPLATE_SPECIALIZATION
-IC	void CAbstractOperator::remove_effect	(const typename COperatorCondition::_condition_type &effect)
+inline	void CAbstractOperator::remove_effect	(const typename COperatorCondition::_condition_type &effect)
 {
 	actual						(false);
 	m_effects.remove_condition	(effect);
 }
 
 TEMPLATE_SPECIALIZATION
-IC	bool CAbstractOperator::applicable_reverse	(const CSConditionState &condition, const CSConditionState &start, const CSConditionState &self_condition) const
+inline	bool CAbstractOperator::applicable_reverse	(const CSConditionState &condition, const CSConditionState &start, const CSConditionState &self_condition) const
 {
 	xr_vector<COperatorCondition>::const_iterator	i = self_condition.conditions().begin();
 	xr_vector<COperatorCondition>::const_iterator	e = self_condition.conditions().end();
@@ -149,7 +149,7 @@ IC	bool CAbstractOperator::applicable_reverse	(const CSConditionState &condition
 }
 
 TEMPLATE_SPECIALIZATION
-IC	bool CAbstractOperator::apply_reverse	(const CSConditionState &condition, const CSConditionState &start, CSConditionState &result, const CSConditionState &self_condition) const
+inline	bool CAbstractOperator::apply_reverse	(const CSConditionState &condition, const CSConditionState &start, CSConditionState &result, const CSConditionState &self_condition) const
 {
 	result.clear			();
 	bool					changed = false;
@@ -220,7 +220,7 @@ IC	bool CAbstractOperator::apply_reverse	(const CSConditionState &condition, con
 
 TEMPLATE_SPECIALIZATION
 template <typename T>
-IC	bool CAbstractOperator::applicable	(const CSConditionState &current, const CSConditionState &start, const CSConditionState &conditions,T &problem_solver) const
+inline	bool CAbstractOperator::applicable	(const CSConditionState &current, const CSConditionState &start, const CSConditionState &conditions,T &problem_solver) const
 {
 	xr_vector<COperatorCondition>::const_iterator	I = current.conditions().begin();
 	xr_vector<COperatorCondition>::const_iterator	E = current.conditions().end();
@@ -277,7 +277,7 @@ IC	bool CAbstractOperator::applicable	(const CSConditionState &current, const CS
 
 TEMPLATE_SPECIALIZATION
 template <typename T>
-IC	const typename CAbstractOperator::CSConditionState &CAbstractOperator::apply	(const CSConditionState &current, const CSConditionState &effects, CSConditionState &result, CSConditionState &start,T &problem_solver) const
+inline	const typename CAbstractOperator::CSConditionState &CAbstractOperator::apply	(const CSConditionState &current, const CSConditionState &effects, CSConditionState &result, CSConditionState &start,T &problem_solver) const
 {
 	result.clear			();
 	xr_vector<COperatorCondition>::const_iterator	I = current.conditions().begin();
@@ -338,7 +338,7 @@ IC	const typename CAbstractOperator::CSConditionState &CAbstractOperator::apply	
 }
 
 TEMPLATE_SPECIALIZATION
-IC	const typename CAbstractOperator::CSConditionState &CAbstractOperator::apply	(const CSConditionState &condition, const CSConditionState &self_condition, CSConditionState &result) const
+inline	const typename CAbstractOperator::CSConditionState &CAbstractOperator::apply	(const CSConditionState &condition, const CSConditionState &self_condition, CSConditionState &result) const
 {
 	result.clear			();
 	xr_vector<COperatorCondition>::const_iterator	i = self_condition.conditions().begin();
@@ -375,13 +375,13 @@ IC	const typename CAbstractOperator::CSConditionState &CAbstractOperator::apply	
 }
 
 TEMPLATE_SPECIALIZATION
-IC	typename CAbstractOperator::_edge_value_type CAbstractOperator::weight	(const CSConditionState &condition0, const CSConditionState &condition1) const
+inline	typename CAbstractOperator::_edge_value_type CAbstractOperator::weight	(const CSConditionState &condition0, const CSConditionState &condition1) const
 {
 	return					(min_weight());
 }
 
 TEMPLATE_SPECIALIZATION
-IC	typename CAbstractOperator::_edge_value_type CAbstractOperator::min_weight	() const
+inline	typename CAbstractOperator::_edge_value_type CAbstractOperator::min_weight	() const
 {
 	if (m_weight_actual)
 		return				(m_min_weight);

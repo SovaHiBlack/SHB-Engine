@@ -10,18 +10,18 @@
 
 #include "object_broker.h"
 
-IC	CScriptValueContainer::~CScriptValueContainer	()
+inline	CScriptValueContainer::~CScriptValueContainer	()
 {
 	clear				();
 }
 
-IC	void CScriptValueContainer::add			(CScriptValue *new_value)
+inline	void CScriptValueContainer::add			(CScriptValue *new_value)
 { }
 
-IC	void CScriptValueContainer::assign		()
+inline	void CScriptValueContainer::assign		()
 { }
 
-IC	void CScriptValueContainer::clear		()
+inline	void CScriptValueContainer::clear		()
 {
 	delete_data			(m_values);
 }

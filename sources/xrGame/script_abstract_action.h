@@ -13,7 +13,7 @@ public:
 	bool			m_bCompleted;
 
 public:
-	IC				CScriptAbstractAction	();
+	inline				CScriptAbstractAction	();
 	virtual			~CScriptAbstractAction	();
 	virtual	bool	completed				();
 };

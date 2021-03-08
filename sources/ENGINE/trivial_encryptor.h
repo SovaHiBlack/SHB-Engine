@@ -31,12 +31,12 @@ private:
 		u32				m_seed;
 
 	public:
-		IC	void		seed	(const u32 &seed)
+		inline	void		seed	(const u32 &seed)
 		{
 			m_seed		= seed;
 		}
 
-		IC	u32			random	(const u32 &range)
+		inline	u32			random	(const u32 &range)
 		{
 			m_seed		= 0x08088405*m_seed + 1;
 			return		(u32(u64(m_seed)*u64(range) >> 32));
@@ -63,7 +63,7 @@ public:
 #endif // TRIVIAL_ENCRYPTOR_DECODER
 
 private:
-	IC	static void	initialize		()
+	inline	static void	initialize		()
 	{
 	#ifndef TRIVIAL_ENCRYPTOR_ENCODER
 		type					*m_alphabet = (type*)_alloca(sizeof(type)*alphabet_size);
@@ -90,7 +90,7 @@ private:
 	}
 
 #ifdef TRIVIAL_ENCRYPTOR_ENCODER
-	public:	IC	static void	encode	(pcvoid source, const u32 &source_size, pvoid destination)
+	public:	inline	static void	encode	(pcvoid source, const u32 &source_size, pvoid destination)
 	{
 #	ifndef TRIVIAL_ENCRYPTOR_DECODER
 		static bool m_initialized	= false;
@@ -111,7 +111,7 @@ private:
 #endif // TRIVIAL_ENCRYPTOR_ENCODER
 
 #ifdef TRIVIAL_ENCRYPTOR_DECODER
-	public:	IC	static void	decode	(pcvoid source, const u32 &source_size, pvoid destination)
+	public:	inline	static void	decode	(pcvoid source, const u32 &source_size, pvoid destination)
 	{
 #	ifndef TRIVIAL_ENCRYPTOR_ENCODER
 		static bool m_initialized	= false;

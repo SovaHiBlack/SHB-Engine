@@ -77,7 +77,7 @@ protected:
 	}
 
 public:
-	IC			BOOL			IsRayMotion( )
+	inline			BOOL			IsRayMotion( )
 	{
 		return m_flags.test(fl_ray_motions);
 	}
@@ -126,7 +126,7 @@ public:
 
 	void 			Freeze( );
 	void 			UnFreeze( );
-	IC			bool			IsFreezed( )
+	inline			bool			IsFreezed( )
 	{
 		return !!(m_flags.test(st_freezed));
 	}
@@ -148,7 +148,7 @@ public:
 
 	CPHObject( );
 	void			activate( );
-	IC	bool			is_active( )
+	inline	bool			is_active( )
 	{
 		return !!m_flags.test(st_activated)/*b_activated*/;
 	}
@@ -183,19 +183,19 @@ public:
 	{ }
 	virtual		void			vis_update_deactivate( )
 	{ }
-	IC			CLBits& collide_bits( )
+	inline			CLBits& collide_bits( )
 	{
 		return m_collide_bits;
 	}
-	IC			_flags<CLClassBits>& collide_class_bits( )
+	inline			_flags<CLClassBits>& collide_class_bits( )
 	{
 		return m_collide_class_bits;
 	}
-	IC			const CLBits& collide_bits( )const
+	inline			const CLBits& collide_bits( )const
 	{
 		return m_collide_bits;
 	}
-	IC			const _flags<CLClassBits>& collide_class_bits( )const
+	inline			const _flags<CLClassBits>& collide_class_bits( )const
 	{
 		return m_collide_class_bits;
 	}
@@ -217,7 +217,7 @@ public:
 	}
 	void			Activate( );
 	void			Deactivate( );
-	IC	bool			IsActive( )
+	inline	bool			IsActive( )
 	{
 		return b_activated;
 	}

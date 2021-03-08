@@ -125,7 +125,7 @@ public:
 
 	// Mode control
 	void DumpFlags							();
-	IC	 CTimer_paused* GetTimerGlobal		()	{ return &TimerGlobal;								}
+	inline	 CTimer_paused* GetTimerGlobal		()	{ return &TimerGlobal;								}
 	u32	 TimerAsync							()	{ return TimerGlobal.GetElapsed_ms();				}
 	u32	 TimerAsync_MMT						()	{ return TimerMM.GetElapsed_ms() +	Timer_MM_Delta; }
 
@@ -145,7 +145,7 @@ public:
 		TimerGlobal.time_factor	(time_factor);
 	}
 	
-	IC	const float &time_factor			() const
+	inline	const float &time_factor			() const
 	{
 		VERIFY					(Timer.time_factor() == TimerGlobal.time_factor());
 		return					(Timer.time_factor());

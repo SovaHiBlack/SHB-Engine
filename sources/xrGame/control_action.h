@@ -15,15 +15,15 @@ protected:
 	CStalker			*m_object;
 
 public:
-	IC					CControlAction	();
-	IC		void		set_object		(CStalker *object);
-	IC		bool		applicable		() const;
-	IC		bool		completed		() const;
-	IC		void		initialize		();
-	IC		void		execute			();
-	IC		void		finalize		();
-	IC		CStalker &object			() const;
-	IC		void		remove_links	(CObject *object);
+	inline					CControlAction	();
+	inline		void		set_object		(CStalker *object);
+	inline		bool		applicable		() const;
+	inline		bool		completed		() const;
+	inline		void		initialize		();
+	inline		void		execute			();
+	inline		void		finalize		();
+	inline		CStalker &object			() const;
+	inline		void		remove_links	(CObject *object);
 };
 
 #include "control_action_inline.h"

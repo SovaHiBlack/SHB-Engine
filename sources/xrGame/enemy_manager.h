@@ -36,7 +36,7 @@ private:
 	u32							m_last_enemy_change;
 
 private:
-	IC		bool				enemy_inertia		(const CEntityAlive *previous_enemy) const;
+	inline		bool				enemy_inertia		(const CEntityAlive *previous_enemy) const;
 			bool				need_update			(const bool &only_wounded) const;
 			void				process_wounded		(bool &only_wounded);
 			bool				change_from_wounded	(const CEntityAlive *current, const CEntityAlive *previous) const;
@@ -56,9 +56,9 @@ public:
 	virtual	float				do_evaluate			(const CEntityAlive *object) const;
 	virtual void				update				();
 	virtual void				set_ready_to_save	();
-	IC		u32					last_enemy_time		() const;
-	IC		const CEntityAlive	*last_enemy			() const;
-	IC		USEFULE_CALLBACK	&useful_callback	();
+	inline		u32					last_enemy_time		() const;
+	inline		const CEntityAlive	*last_enemy			() const;
+	inline		USEFULE_CALLBACK	&useful_callback	();
 			void				remove_links		(CObject *object);
 
 public:
@@ -71,11 +71,11 @@ public:
 
 public:
 			void				wounded				(const CEntityAlive *wounded_enemy);
-	IC		const CEntityAlive	*wounded			() const;
+	inline		const CEntityAlive	*wounded			() const;
 
 public:
-	IC		void				enable_enemy_change	(const bool &value);
-	IC		bool				enable_enemy_change	() const;
+	inline		void				enable_enemy_change	(const bool &value);
+	inline		bool				enable_enemy_change	() const;
 };
 
 #include "enemy_manager_inline.h"

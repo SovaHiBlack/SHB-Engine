@@ -27,7 +27,7 @@ struct SGameVertex : public SBaseParameters<
 	_index_type		m_vertex_id;
 	xr_vector<_index_type> *m_path;
 
-	IC	SGameVertex (
+	inline	SGameVertex (
 			const VERTEX_TYPES		&vertex_types,
 			_dist_type				max_range = _dist_type(6000),
 			_iteration_type			max_iteration_count = _iteration_type(-1),
@@ -47,7 +47,7 @@ struct SGameVertex : public SBaseParameters<
 		m_vertex_types	= &vertex_types;
 	}
 
-	IC	_index_type	selected_vertex_id() const
+	inline	_index_type	selected_vertex_id() const
 	{
 		return		(m_vertex_id);
 	}

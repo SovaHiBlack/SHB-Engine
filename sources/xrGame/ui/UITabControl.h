@@ -42,7 +42,7 @@ public:
 	const	int			GetTabsCount				() const						{ return m_TabsArr.size(); }
 	
 	// –ежим клавилатурных акселераторов (вкл/выкл)
-	IC bool				GetAcceleratorsMode			() const						{ return m_bAcceleratorsEnable; }
+	inline bool				GetAcceleratorsMode			() const						{ return m_bAcceleratorsEnable; }
 	void				SetAcceleratorsMode			(bool bEnable)					{ m_bAcceleratorsEnable = bEnable; }
 
 	TABS_VECTOR *		GetButtonsVector			()								{ return &m_TabsArr; }

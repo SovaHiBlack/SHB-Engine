@@ -17,18 +17,18 @@
 struct CBorderMergePredicate {
 	CSpaceRestrictionShape			*m_restriction;
 
-	IC			CBorderMergePredicate	(CSpaceRestrictionShape *restriction)
+	inline			CBorderMergePredicate	(CSpaceRestrictionShape *restriction)
 	{
 		m_restriction				= restriction;
 	}
 
-	IC	void	operator()				(const CLevelGraph::CVertex &vertex) const
+	inline	void	operator()				(const CLevelGraph::CVertex &vertex) const
 	{
 		if (m_restriction->inside(ai().level_graph().vertex_id(&vertex),true) && !m_restriction->inside(ai().level_graph().vertex_id(&vertex),false))
 			m_restriction->m_border.push_back	(ai().level_graph().vertex_id(&vertex));
 	}
 
-	IC	bool operator()					(u32 level_vertex_id) const
+	inline	bool operator()					(u32 level_vertex_id) const
 	{
 		return						(m_restriction->inside(level_vertex_id,false));
 	}
@@ -39,12 +39,12 @@ struct CBorderMergePredicate {
 struct CShapeTestPredicate {
 	CSpaceRestrictionShape			*m_restriction;
 
-	IC			CShapeTestPredicate		(CSpaceRestrictionShape *restriction)
+	inline			CShapeTestPredicate		(CSpaceRestrictionShape *restriction)
 	{
 		m_restriction				= restriction;
 	}
 
-	IC	void	operator()				(const CLevelGraph::CVertex &vertex) const
+	inline	void	operator()				(const CLevelGraph::CVertex &vertex) const
 	{
 		if (m_restriction->inside(ai().level_graph().vertex_id(&vertex),false))
 			m_restriction->m_test_storage.push_back(ai().level_graph().vertex_id(&vertex));

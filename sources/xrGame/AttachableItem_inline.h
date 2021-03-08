@@ -3,10 +3,10 @@
 
 #pragma once
 
-IC	CAttachableItem::CAttachableItem				()
+inline CAttachableItem::CAttachableItem( )
 {
 	m_item				= nullptr;
-	m_offset.identity	();
+	m_offset.identity	( );
 	m_bone_name			= "";
 	m_enabled			= true;
 //	m_auto_attach		= true;
@@ -17,37 +17,37 @@ IC	CAttachableItem::CAttachableItem				()
 
 }
 
-IC	shared_str CAttachableItem::bone_name			() const
+inline	shared_str CAttachableItem::bone_name			() const
 {
 	VERIFY				(m_valid);
 	return m_bone_name;
 }
 
-IC	const Fmatrix &CAttachableItem::offset			() const
+inline	const Fmatrix &CAttachableItem::offset			() const
 {
 	VERIFY				(m_valid);
 	return m_offset;
 }
 
-IC	u16	 CAttachableItem::bone_id					() const
+inline	u16	 CAttachableItem::bone_id					() const
 {
 	VERIFY				(m_valid);
 	return m_bone_id;
 }
 
-IC	void CAttachableItem::set_bone_id				(u16 bone_id)
+inline	void CAttachableItem::set_bone_id				(u16 bone_id)
 {
 	VERIFY				(m_valid);
 	m_bone_id			= bone_id;
 }
 
-IC	bool CAttachableItem::enabled					() const
+inline	bool CAttachableItem::enabled					() const
 {
 //	VERIFY				(m_valid);
 	return m_enabled;
 }
 
-IC	CInventoryItem &CAttachableItem::item			() const
+inline	CInventoryItem &CAttachableItem::item			() const
 {
 	VERIFY				(m_item);
 	return *m_item;

@@ -22,13 +22,13 @@ struct CMergeInOutPredicate {
 	SpaceRestrictionHolder::CBaseRestrictionPtr m_out;
 	SpaceRestrictionHolder::CBaseRestrictionPtr m_in;
 
-	IC			CMergeInOutPredicate(SpaceRestrictionHolder::CBaseRestrictionPtr out, SpaceRestrictionHolder::CBaseRestrictionPtr in)
+	inline			CMergeInOutPredicate(SpaceRestrictionHolder::CBaseRestrictionPtr out, SpaceRestrictionHolder::CBaseRestrictionPtr in)
 	{
 		m_out						= out;
 		m_in						= in;
 	}
 
-	IC	bool	operator()			(u32 level_vertex_id) const
+	inline	bool	operator()			(u32 level_vertex_id) const
 	{
 		if (!m_out || !m_in)
 			return					(false);
@@ -39,12 +39,12 @@ struct CMergeInOutPredicate {
 struct CRemoveMergedFreeInRestrictions {
 	CSpaceRestriction::RESTRICTIONS	*m_restrictions;
 
-	IC			CRemoveMergedFreeInRestrictions	(CSpaceRestriction::RESTRICTIONS &restrictions)
+	inline			CRemoveMergedFreeInRestrictions	(CSpaceRestriction::RESTRICTIONS &restrictions)
 	{
 		m_restrictions				= &restrictions;
 	}
 
-	IC	bool	operator()						(const CSpaceRestriction::CFreeInRestriction &free_in_restriction) const
+	inline	bool	operator()						(const CSpaceRestriction::CFreeInRestriction &free_in_restriction) const
 	{
 		return						(std::find(m_restrictions->begin(),m_restrictions->end(), free_in_restriction.m_restriction) != m_restrictions->end());
 	}
@@ -105,7 +105,7 @@ bool CSpaceRestriction::accessible				(u32 level_vertex_id, float radius)
 	);
 }
 
-IC	bool CSpaceRestriction::intersects			(SpaceRestrictionHolder::CBaseRestrictionPtr bridge0, SpaceRestrictionHolder::CBaseRestrictionPtr bridge1)
+inline	bool CSpaceRestriction::intersects			(SpaceRestrictionHolder::CBaseRestrictionPtr bridge0, SpaceRestrictionHolder::CBaseRestrictionPtr bridge1)
 {
 	xr_vector<u32>::const_iterator	I = bridge1->border().begin();
 	xr_vector<u32>::const_iterator	E = bridge1->border().end();
@@ -127,7 +127,7 @@ IC	bool CSpaceRestriction::intersects			(SpaceRestrictionHolder::CBaseRestrictio
 	return							(J != m_temp.begin());
 }
 
-IC	bool CSpaceRestriction::intersects			(SpaceRestrictionHolder::CBaseRestrictionPtr bridge)
+inline	bool CSpaceRestriction::intersects			(SpaceRestrictionHolder::CBaseRestrictionPtr bridge)
 {
 	if (!m_out_space_restriction)
 		return						(false);

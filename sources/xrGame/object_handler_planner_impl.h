@@ -8,33 +8,33 @@
 
 #pragma once
 
-IC	CObjectHandlerPlanner::_condition_type CObjectHandlerPlanner::uid(const u32 id0, const u32 id1) const
+inline	CObjectHandlerPlanner::_condition_type CObjectHandlerPlanner::uid(const u32 id0, const u32 id1) const
 {
 	VERIFY				(!((id0 << 16) & id1));
 	return				((id0 << 16) | id1);
 }
 
-IC	bool CObjectHandlerPlanner::object_action	(u32 action_id, CObject *object)
+inline	bool CObjectHandlerPlanner::object_action	(u32 action_id, CObject *object)
 {
 	return				((action_id >> 16) == object->ID());
 }
 
-IC	u32	CObjectHandlerPlanner::current_action_object_id	() const
+inline	u32	CObjectHandlerPlanner::current_action_object_id	() const
 {
 	return				(action_object_id(current_action_id()));
 }
 
-IC	u32	CObjectHandlerPlanner::action_object_id		(_condition_type action_id) const
+inline	u32	CObjectHandlerPlanner::action_object_id		(_condition_type action_id) const
 {
 	return				(action_id >> 16);
 }
 
-IC	void CObjectHandlerPlanner::add_condition			(CActionBase<CStalker> *action, u16 id, ObjectHandlerSpace::EWorldProperties property, _value_type value)
+inline	void CObjectHandlerPlanner::add_condition			(CActionBase<CStalker> *action, u16 id, ObjectHandlerSpace::EWorldProperties property, _value_type value)
 {
 	action->add_condition(CWorldProperty(uid(id,property),value));
 }
 
-IC	void CObjectHandlerPlanner::add_effect				(CActionBase<CStalker> *action, u16 id, ObjectHandlerSpace::EWorldProperties property, _value_type value)
+inline	void CObjectHandlerPlanner::add_effect				(CActionBase<CStalker> *action, u16 id, ObjectHandlerSpace::EWorldProperties property, _value_type value)
 {
 	action->add_effect	(CWorldProperty(uid(id,property),value));
 }

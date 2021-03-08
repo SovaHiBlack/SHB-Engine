@@ -62,7 +62,7 @@ public:
 	void		Depart( );
 	float		ClimbDirection( );
 	void		Deactivate( );
-	IC			Estate		State( )
+	inline			Estate		State( )
 	{
 		return m_state;
 	}

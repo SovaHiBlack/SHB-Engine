@@ -131,7 +131,7 @@ public:
 	virtual bool			IsHiding			()	const		{	return GetState() == eHiding;}
 	virtual bool			IsShowing			()	const		{	return GetState() == eShowing;}
 
-	IC BOOL					IsValid				()	const		{	return iAmmoElapsed;						}
+	inline BOOL					IsValid				()	const		{	return iAmmoElapsed;						}
 	// Does weapon need's update?
 	BOOL					IsUpdating			();
 
@@ -234,7 +234,7 @@ protected:
 	bool			m_bHideCrosshairInZoom;
 	
 public:
-	IC bool					IsZoomEnabled		()	const	{return m_bZoomEnabled;}
+	inline bool					IsZoomEnabled		()	const	{return m_bZoomEnabled;}
 	virtual	void			ZoomInc				(){};
 	virtual	void			ZoomDec				(){};
 	virtual void			OnZoomIn			();
@@ -243,7 +243,7 @@ public:
 	CUIStaticItem*			ZoomTexture			();	
 			bool			ZoomHideCrosshair	()			{return m_bHideCrosshairInZoom || ZoomTexture();}
 
-	IC float				GetZoomFactor		() const		{	return m_fZoomFactor;	}
+	inline float				GetZoomFactor		() const		{	return m_fZoomFactor;	}
 	virtual	float			CurrentZoomFactor	();
 	//показывает, что оружие находится в соостоянии поворота для приближенного прицеливания
 			bool			IsRotatingToZoom	() const		{	return (m_fZoomRotationFactor<1.f);}
@@ -257,10 +257,10 @@ public:
 			bool				IsSingleHanded		()	const		{	return m_bIsSingleHanded; }
 
 public:
-	IC		const char* strap_bone0			() const {return m_strap_bone0;}
-	IC		const char* strap_bone1			() const {return m_strap_bone1;}
-	IC		void			strapped_mode		(bool value) {m_strapped_mode = value;}
-	IC		bool			strapped_mode		() const {return m_strapped_mode;}
+	inline		const char* strap_bone0			() const {return m_strap_bone0;}
+	inline		const char* strap_bone1			() const {return m_strap_bone1;}
+	inline		void			strapped_mode		(bool value) {m_strapped_mode = value;}
+	inline		bool			strapped_mode		() const {return m_strapped_mode;}
 
 protected:
 	const char* m_strap_bone0;
@@ -302,15 +302,15 @@ protected:
 	virtual void			UpdatePosition			(const Fmatrix& transform);	//.
 	virtual void			UpdateXForm				();
 	virtual void			UpdateHudAdditonal		(Fmatrix&);
-	IC		void			UpdateFireDependencies	()			{ if (dwFP_Frame==Device.dwFrame) return; UpdateFireDependencies_internal(); };
+	inline		void			UpdateFireDependencies	()			{ if (dwFP_Frame==Device.dwFrame) return; UpdateFireDependencies_internal(); };
 
 	virtual void			LoadFireParams		(const char* section, const char* prefix);
 
 public:	
-	IC		const Fvector&	get_LastFP				()			{ UpdateFireDependencies(); return m_firedeps.vLastFP;	}
-	IC		const Fvector&	get_LastFP2				()			{ UpdateFireDependencies(); return m_firedeps.vLastFP2;	}
-	IC		const Fvector&	get_LastFD				()			{ UpdateFireDependencies(); return m_firedeps.vLastFD;	}
-	IC		const Fvector&	get_LastSP				()			{ UpdateFireDependencies(); return m_firedeps.vLastSP;	}
+	inline		const Fvector&	get_LastFP				()			{ UpdateFireDependencies(); return m_firedeps.vLastFP;	}
+	inline		const Fvector&	get_LastFP2				()			{ UpdateFireDependencies(); return m_firedeps.vLastFP2;	}
+	inline		const Fvector&	get_LastFD				()			{ UpdateFireDependencies(); return m_firedeps.vLastFD;	}
+	inline		const Fvector&	get_LastSP				()			{ UpdateFireDependencies(); return m_firedeps.vLastSP;	}
 
 	virtual const Fvector&	get_CurrentFirePoint	()			{ return get_LastFP();				}
 	virtual const Fvector&	get_CurrentFirePoint2	()			{ return get_LastFP2();				}
@@ -410,8 +410,8 @@ protected:
 // Weapon and ammo
 //////////////////////////////////////////////////////////////////////////
 public:
-	IC int					GetAmmoElapsed		()	const		{	return /*int(m_magazine.size())*/iAmmoElapsed;}
-	IC int					GetAmmoMagSize		()	const		{	return iMagazineSize;						}
+	inline int					GetAmmoElapsed		()	const		{	return /*int(m_magazine.size())*/iAmmoElapsed;}
+	inline int					GetAmmoMagSize		()	const		{	return iMagazineSize;						}
 	int						GetAmmoCurrent		(bool use_item_to_spawn = false)  const;
 
 	void					SetAmmoElapsed		(int ammo_count);
@@ -456,7 +456,7 @@ public:
 	float					m_fCurrentCartirdgeDisp;
 
 		bool				unlimited_ammo				();
-	IC	bool				can_be_strapped				() const {return m_can_be_strapped;};
+	inline	bool				can_be_strapped				() const {return m_can_be_strapped;};
 
 	const char* GetCurrentAmmo_ShortName	();
 

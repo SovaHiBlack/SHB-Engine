@@ -87,27 +87,27 @@ protected:
 
 public:
 	void				load(const shared_str& section);
-	IC SEffect* get_rnd_effect( )
+	inline SEffect* get_rnd_effect( )
 	{
 		return effects.empty( ) ? 0 : &effects[Random.randI(effects.size( ))];
 	}
-	IC ref_sound* get_rnd_sound( )
+	inline ref_sound* get_rnd_sound( )
 	{
 		return sounds.empty( ) ? 0 : &sounds[Random.randI(sounds.size( ))];
 	}
-	IC const shared_str& name( )
+	inline const shared_str& name( )
 	{
 		return section;
 	}
-	IC u32				get_rnd_sound_time( )
+	inline u32				get_rnd_sound_time( )
 	{
 		return Random.randI(sound_period.x, sound_period.y);
 	}
-	IC float			get_rnd_sound_dist( )
+	inline float			get_rnd_sound_dist( )
 	{
 		return Random.randF(sound_dist.x, sound_dist.y);
 	}
-	IC u32				get_rnd_effect_time( )
+	inline u32				get_rnd_effect_time( )
 	{
 		return Random.randI(effect_period.x, effect_period.y);
 	}
@@ -197,7 +197,7 @@ class ENGINE_API CEnvironment
 {
 	struct str_pred : public std::binary_function<shared_str, shared_str, bool>
 	{
-		IC bool operator()(const shared_str& x, const shared_str& y) const
+		inline bool operator()(const shared_str& x, const shared_str& y) const
 		{
 			return xr_strcmp(x, y) < 0;
 		}

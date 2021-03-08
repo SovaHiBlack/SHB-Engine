@@ -54,7 +54,7 @@ void	CROS_impl::add		(light* source)
 	L.energy			= 0.f;
 }
 
-IC bool	pred_energy			(const CROS_impl::Light& L1, const CROS_impl::Light& L2)	{ return L1.energy>L2.energy; }
+inline bool	pred_energy			(const CROS_impl::Light& L1, const CROS_impl::Light& L2)	{ return L1.energy>L2.energy; }
 //////////////////////////////////////////////////////////////////////////
 #pragma warning(push)
 #pragma warning(disable:4305)

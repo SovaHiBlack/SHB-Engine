@@ -22,9 +22,9 @@ public:
 	CConditionStorage			m_storage;
 
 public:
-	IC		void				clear			();
-	IC		void				set_property	(const _condition_type &condition_id, const _value_type &value);
-	IC		const _value_type	&property		(const _condition_type &condition_id) const;
+	inline		void				clear			();
+	inline		void				set_property	(const _condition_type &condition_id, const _value_type &value);
+	inline		const _value_type	&property		(const _condition_type &condition_id) const;
 public:
 	static void script_register(lua_State*);
 };

@@ -19,7 +19,7 @@ struct CDataStorageDoubleLinkedList {
 		struct _vertex : public T1<T2> {
 			T2	*_prev;
 
-			IC	T2	*&prev()
+			inline	T2	*&prev()
 			{
 				return	(_prev);
 			}
@@ -45,14 +45,14 @@ struct CDataStorageDoubleLinkedList {
 		_dist_type				m_switch_factor;
 
 	public:
-		IC						CDataStorage		(const u32 vertex_count, const _dist_type _max_distance = _dist_type(u32(-1)));
+		inline						CDataStorage		(const u32 vertex_count, const _dist_type _max_distance = _dist_type(u32(-1)));
 		virtual					~CDataStorage		();
-		IC		void			init				();
-		IC		void			set_switch_factor	(const _dist_type _switch_factor);
-		IC		void			add_opened			(CGraphVertex &vertex);
-		IC		void			decrease_opened		(CGraphVertex &vertex, const _dist_type value);
-		IC		void			remove_best_opened	();
-		IC		CGraphVertex	&get_best			() const;
+		inline		void			init				();
+		inline		void			set_switch_factor	(const _dist_type _switch_factor);
+		inline		void			add_opened			(CGraphVertex &vertex);
+		inline		void			decrease_opened		(CGraphVertex &vertex, const _dist_type value);
+		inline		void			remove_best_opened	();
+		inline		CGraphVertex	&get_best			() const;
 	};
 };
 

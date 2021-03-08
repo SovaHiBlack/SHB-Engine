@@ -71,7 +71,7 @@ public:
 	virtual void			Draw( );
 	virtual void			Draw(float x, float y);
 	virtual void			Update( );
-	IC			void			SetWndSize_inline(const Fvector2& wnd_size);
+	inline			void			SetWndSize_inline(const Fvector2& wnd_size);
 
 
 	// CDeviceResetNotifier methods

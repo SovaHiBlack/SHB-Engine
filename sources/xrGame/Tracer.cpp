@@ -35,7 +35,7 @@ CTracer::~CTracer()
 }
 
 
-IC void FillSprite_Circle      (FVF::LIT*& pv, const Fvector& pos, const float r1, float r2, u32 color)
+inline void FillSprite_Circle      (FVF::LIT*& pv, const Fvector& pos, const float r1, float r2, u32 color)
 {
 	const Fvector& T        = Device.vCameraTop;
 	const Fvector& R        = Device.vCameraRight;
@@ -58,7 +58,7 @@ IC void FillSprite_Circle      (FVF::LIT*& pv, const Fvector& pos, const float r
 	pv->set         (b.x+pos.x,b.y+pos.y,b.z+pos.z, color, 1.f,0.f);        pv++;
 }
 
-IC void FillSprite_Line	(FVF::LIT*& pv, const Fvector& pos, const Fvector& dir, float r1, float r2, u32 color)
+inline void FillSprite_Line	(FVF::LIT*& pv, const Fvector& pos, const Fvector& dir, float r1, float r2, u32 color)
 {
     const Fvector& T        = dir;
 

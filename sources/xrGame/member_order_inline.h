@@ -8,7 +8,7 @@
 
 #pragma once
 
-IC	CMemberOrder::CMemberOrder					(CStalker *object) :
+inline	CMemberOrder::CMemberOrder					(CStalker *object) :
 	m_object		(object),
 	m_initialized	(true)
 {
@@ -20,78 +20,78 @@ IC	CMemberOrder::CMemberOrder					(CStalker *object) :
 	m_detour				= false;
 }
 
-IC	bool CMemberOrder::initialized				() const
+inline	bool CMemberOrder::initialized				() const
 {
 	return			(m_initialized);
 }
 
-IC	CStalker &CMemberOrder::object			() const
+inline	CStalker &CMemberOrder::object			() const
 {
 	VERIFY			(m_object);
 	return			(*m_object);
 }
 
-IC	float CMemberOrder::probability				() const
+inline	float CMemberOrder::probability				() const
 {
 	return			(m_probability);
 }
 
-IC	void CMemberOrder::probability				(float probability)
+inline	void CMemberOrder::probability				(float probability)
 {
 	m_probability	= probability;
 }
 
-IC	xr_vector<u32> &CMemberOrder::enemies		()
+inline	xr_vector<u32> &CMemberOrder::enemies		()
 {
 	return			(m_enemies);
 }
 
-IC	bool CMemberOrder::processed				() const
+inline	bool CMemberOrder::processed				() const
 {
 	return			(m_processed);
 }
 
-IC	void CMemberOrder::processed				(bool processed)
+inline	void CMemberOrder::processed				(bool processed)
 {
 	m_processed		= processed;
 }
 
-IC	u32	 CMemberOrder::selected_enemy			() const
+inline	u32	 CMemberOrder::selected_enemy			() const
 {
 	return			(m_selected_enemy);
 }
 
-IC	void CMemberOrder::selected_enemy			(u32 selected_enemy)
+inline	void CMemberOrder::selected_enemy			(u32 selected_enemy)
 {
 	m_selected_enemy = selected_enemy;
 }
 
-IC	void CMemberOrder::cover					(const CCoverPoint *object_cover) const
+inline	void CMemberOrder::cover					(const CCoverPoint *object_cover) const
 {
 	m_cover			= object_cover;
 }
 
-IC	const CCoverPoint *CMemberOrder::cover		() const
+inline	const CCoverPoint *CMemberOrder::cover		() const
 {
 	return			(m_cover);
 }
 
-IC	CMemberOrder::CMemberDeathReaction &CMemberOrder::member_death_reaction	()
+inline	CMemberOrder::CMemberDeathReaction &CMemberOrder::member_death_reaction	()
 {
 	return			(m_member_death_reaction);
 }
 
-IC	CMemberOrder::CGrenadeReaction &CMemberOrder::grenade_reaction			()
+inline	CMemberOrder::CGrenadeReaction &CMemberOrder::grenade_reaction			()
 {
 	return			(m_grenade_reaction);
 }
 
-IC	bool CMemberOrder::detour					() const
+inline	bool CMemberOrder::detour					() const
 {
 	return			(m_detour);
 }
 
-IC	void CMemberOrder::detour					(const bool &value)
+inline	void CMemberOrder::detour					(const bool &value)
 {
 	m_detour		= value;
 }

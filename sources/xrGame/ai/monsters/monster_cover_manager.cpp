@@ -21,7 +21,7 @@
 class CCoverEvaluator : public CCoverEvaluatorBase {
 	typedef CCoverEvaluatorBase inherited;
 
-	Fvector				m_dest_position;
+	Fvector3				m_dest_position;
 	float				m_min_distance;
 	float				m_max_distance;
 	float				m_current_distance;
@@ -34,10 +34,10 @@ public:
 				CCoverEvaluator	(CRestrictedObject *object);
 
 	// setup by cover_manager
-	void		initialize		(const Fvector &start_position);
+	void		initialize		(const Fvector3& start_position);
 
 	// manual setup
-	void		setup			(CBaseMonster *object, const Fvector &position, float min_pos_distance, float	max_pos_distance, float deviation = 0.f);
+	void		setup			(CBaseMonster *object, const Fvector3& position, float min_pos_distance, float	max_pos_distance, float deviation = 0.f);
 
 	void		evaluate		(const CCoverPoint *cover_point, float weight);
 };
@@ -79,7 +79,7 @@ CCoverEvaluator::CCoverEvaluator(CRestrictedObject *object) : inherited(object)
 	m_current_distance		= flt_max;
 }
 
-void CCoverEvaluator::setup(CBaseMonster *object, const Fvector &position, float min_pos_distance, float max_pos_distance, float deviation)
+void CCoverEvaluator::setup(CBaseMonster *object, const Fvector3& position, float min_pos_distance, float max_pos_distance, float deviation)
 {
 	inherited::setup();
 
@@ -98,7 +98,7 @@ void CCoverEvaluator::setup(CBaseMonster *object, const Fvector &position, float
 
 }
 
-void CCoverEvaluator::initialize(const Fvector &start_position)
+void CCoverEvaluator::initialize(const Fvector3& start_position)
 {
 	inherited::initialize	(start_position);
 	m_current_distance		= m_start_position.distance_to(m_dest_position);
@@ -127,7 +127,7 @@ void CCoverEvaluator::evaluate(const CCoverPoint *cover_point, float weight)
 	if((dest_distance >= m_max_distance) && (m_current_distance < dest_distance))
 		return;
 
-	Fvector					direction;
+	Fvector3					direction;
 	float					y,p;
 	direction.sub			(m_dest_position,cover_point->position());
 	direction.getHP			(y,p);
@@ -165,7 +165,7 @@ void CMonsterCoverManager::load()
 	m_ce_best = xr_new<CCoverEvaluator>(&(m_object->control().path_builder().restrictions()));
 }
 
-const CCoverPoint *CMonsterCoverManager::find_cover(const Fvector &position, float min_pos_distance, float max_pos_distance, float deviation)
+const CCoverPoint *CMonsterCoverManager::find_cover(const Fvector3& position, float min_pos_distance, float max_pos_distance, float deviation)
 {
 	m_ce_best->setup	(m_object, position,min_pos_distance,max_pos_distance,deviation);
 	const CCoverPoint	*point = ai().cover_manager().best_cover(m_object->Position(),30.f,*m_ce_best);
@@ -174,7 +174,7 @@ const CCoverPoint *CMonsterCoverManager::find_cover(const Fvector &position, flo
 }
 
 // найти лучший ковер относительно "position"
-const CCoverPoint *CMonsterCoverManager::find_cover(const Fvector &src_pos, const Fvector &dest_pos, float min_pos_distance, float	max_pos_distance, float deviation)
+const CCoverPoint *CMonsterCoverManager::find_cover(const Fvector3& src_pos, const Fvector3& dest_pos, float min_pos_distance, float	max_pos_distance, float deviation)
 {
 	m_ce_best->setup	(m_object, dest_pos, min_pos_distance,max_pos_distance,deviation);
 	const CCoverPoint	*point = ai().cover_manager().best_cover(src_pos,30.f,*m_ce_best);
@@ -189,7 +189,7 @@ const CCoverPoint *CMonsterCoverManager::find_cover(const Fvector &src_pos, cons
 #define ANGLE_DISP_STEP				deg(10)
 #define TRACE_STATIC_DIST			3.f
 
-void CMonsterCoverManager::less_cover_direction(Fvector &dir)
+void CMonsterCoverManager::less_cover_direction(Fvector3& dir)
 {
 	float angle				= ai().level_graph().vertex_cover_angle(m_object->ai_location().level_vertex_id(),deg(10), ::std::greater<float>());
 
@@ -198,9 +198,9 @@ void CMonsterCoverManager::less_cover_direction(Fvector &dir)
 	float angle_from		= angle_normalize(angle - ANGLE_DISP);
 	float angle_to			= angle_normalize(angle + ANGLE_DISP);
 
-	Fvector					trace_from;
+	Fvector3					trace_from;
 	m_object->Center		(trace_from);
-	Fvector					direction;
+	Fvector3					direction;
 
 	// trace discretely left
 	for (float ang = angle; angle_difference(ang, angle) < ANGLE_DISP; ang = angle_normalize(ang - ANGLE_DISP_STEP)) {

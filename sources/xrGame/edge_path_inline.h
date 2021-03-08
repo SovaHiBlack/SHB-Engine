@@ -16,7 +16,7 @@
 #define CEdgePathBuilder		CEdgePath<_edge_type,bEuclidianHeuristics>::CDataStorage<_vertex>
 
 TEMPLATE_SPECIALIZATION
-IC	CEdgePathBuilder::CDataStorage			(const u32 vertex_count) :
+inline	CEdgePathBuilder::CDataStorage			(const u32 vertex_count) :
 	inherited					(vertex_count)
 { }
 
@@ -25,20 +25,20 @@ CEdgePathBuilder::~CDataStorage				()
 { }
 
 TEMPLATE_SPECIALIZATION
-IC	void CEdgePathBuilder::assign_parent	(CGraphVertex	&neighbour, CGraphVertex *parent)
+inline	void CEdgePathBuilder::assign_parent	(CGraphVertex	&neighbour, CGraphVertex *parent)
 {
 	inherited::assign_parent	(neighbour,parent);
 }
 
 TEMPLATE_SPECIALIZATION
-IC	void CEdgePathBuilder::assign_parent	(CGraphVertex	&neighbour, CGraphVertex *parent, const _edge_type &edge)
+inline	void CEdgePathBuilder::assign_parent	(CGraphVertex	&neighbour, CGraphVertex *parent, const _edge_type &edge)
 {
 	inherited::assign_parent	(neighbour,parent);
 	neighbour.edge()			= edge;
 }
 
 TEMPLATE_SPECIALIZATION
-IC	void CEdgePathBuilder::get_edge_path	(xr_vector<_edge_type> &path, CGraphVertex *best, bool reverse_order)
+inline	void CEdgePathBuilder::get_edge_path	(xr_vector<_edge_type> &path, CGraphVertex *best, bool reverse_order)
 {
 	CGraphVertex			*t1 = best, *t2 = best->back();
 	for (u32 i=1; t2; t1 = t2, t2 = t2->back(), ++i) ;

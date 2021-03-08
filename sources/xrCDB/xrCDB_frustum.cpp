@@ -16,14 +16,14 @@ public:
 	
 	const CFrustum*	F;
 	
-	IC void			_init		(COLLIDER* CL, Fvector3* V, TRI* T, const CFrustum* _F)
+	inline void			_init		(COLLIDER* CL, Fvector3* V, TRI* T, const CFrustum* _F)
 	{
 		dest		= CL;
 		tris		= T;
 		verts		= V;
 		F			= _F;
 	}
-	IC EFC_Visible	_box		(Fvector3& C, Fvector3& E, u32& mask)
+	inline EFC_Visible	_box		(Fvector3& C, Fvector3& E, u32& mask)
 	{
 		Fvector3		mM[2];
 		mM[0].sub	(C,E);

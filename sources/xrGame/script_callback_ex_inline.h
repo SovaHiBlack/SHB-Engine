@@ -12,15 +12,15 @@
 #define CSScriptCallbackEx				CScriptCallbackEx_<_return_type>
 
 TEMPLATE_SPECIALIZATION
-IC	CSScriptCallbackEx::CScriptCallbackEx_				() 
+inline	CSScriptCallbackEx::CScriptCallbackEx_				() 
 { }
 
 TEMPLATE_SPECIALIZATION
-IC	CSScriptCallbackEx::~CScriptCallbackEx_				()
+inline	CSScriptCallbackEx::~CScriptCallbackEx_				()
 { }
 
 TEMPLATE_SPECIALIZATION
-IC	void CSScriptCallbackEx::clear						()
+inline	void CSScriptCallbackEx::clear						()
 {
 	m_functor.~functor_type			();
 	new (&m_functor) functor_type	();
@@ -30,14 +30,14 @@ IC	void CSScriptCallbackEx::clear						()
 }
 
 TEMPLATE_SPECIALIZATION
-IC	CSScriptCallbackEx::CScriptCallbackEx_				(const CScriptCallbackEx_ &callback)
+inline	CSScriptCallbackEx::CScriptCallbackEx_				(const CScriptCallbackEx_ &callback)
 {
 	clear				();
 	*this				= callback;
 }
 
 TEMPLATE_SPECIALIZATION
-IC	CSScriptCallbackEx &CSScriptCallbackEx::operator=	(const CScriptCallbackEx_ &callback)
+inline	CSScriptCallbackEx &CSScriptCallbackEx::operator=	(const CScriptCallbackEx_ &callback)
 {
 	clear				();
 	
@@ -51,14 +51,14 @@ IC	CSScriptCallbackEx &CSScriptCallbackEx::operator=	(const CScriptCallbackEx_ &
 }
 
 TEMPLATE_SPECIALIZATION
-IC	void CSScriptCallbackEx::set						(const functor_type &functor)
+inline	void CSScriptCallbackEx::set						(const functor_type &functor)
 {
 	clear				();
 	m_functor			= functor;
 }
 
 TEMPLATE_SPECIALIZATION
-IC	void CSScriptCallbackEx::set						(const functor_type &functor, const object_type &object)
+inline	void CSScriptCallbackEx::set						(const functor_type &functor, const object_type &object)
 {
 	clear				();
 	
@@ -67,7 +67,7 @@ IC	void CSScriptCallbackEx::set						(const functor_type &functor, const object_
 }
 
 TEMPLATE_SPECIALIZATION
-IC	bool CSScriptCallbackEx::empty						() const
+inline	bool CSScriptCallbackEx::empty						() const
 {
 	return				(!!m_functor.lua_state());
 }

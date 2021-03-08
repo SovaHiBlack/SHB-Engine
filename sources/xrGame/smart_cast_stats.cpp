@@ -21,21 +21,21 @@ private:
 		const char* m_to;
 		u32			m_count;
 
-		IC		 CStats		(const char* from, const char* to, u32 count) :
+		inline		 CStats		(const char* from, const char* to, u32 count) :
 			m_from	(from),
 			m_to	(to),
 			m_count	(count)
 		{
 		}
 
-		IC	bool operator<	(const CStats &stats) const
+		inline	bool operator<	(const CStats &stats) const
 		{
 			return					((m_from < stats.m_from) || ((m_from == stats.m_from) && (m_to < stats.m_to)));
 		}
 	};
 
 	struct CStatsPredicate {
-		IC	bool	operator()	(const CStats &_1, const CStats &_2) const
+		inline	bool	operator()	(const CStats &_1, const CStats &_2) const
 		{
 			return					(_1.m_count < _2.m_count);
 		}
@@ -49,30 +49,30 @@ private:
 	xr_vector<CStats>				m_temp;
 
 public:
-	IC	static	CSmartCastStats*	instance	();
-	IC	static	void				_release	();
+	inline	static	CSmartCastStats*	instance	();
+	inline	static	void				_release	();
 
 public:
-	IC			void				add			(const char* from, const char* to);
-	IC			void				clear		();
-	IC			void				show		();
+	inline			void				add			(const char* from, const char* to);
+	inline			void				clear		();
+	inline			void				show		();
 };
 
 CSmartCastStats* CSmartCastStats::m_instance = 0;
 
-IC	CSmartCastStats* CSmartCastStats::instance	()
+inline	CSmartCastStats* CSmartCastStats::instance	()
 {
 	if (!m_instance)
 		m_instance			= xr_new<CSmartCastStats>();
 	return					(m_instance);
 }
 
-IC	void CSmartCastStats::_release				()
+inline	void CSmartCastStats::_release				()
 {
 	xr_delete				(m_instance);
 }
 
-IC	CSmartCastStats	&stats						()
+inline	CSmartCastStats	&stats						()
 {
 	return						(*CSmartCastStats::instance());
 }
@@ -80,7 +80,7 @@ IC	CSmartCastStats	&stats						()
 #ifdef SMART_CAST_STATS_ALL
 CSmartCastStats* g_smart_cast_opt = 0;
 
-IC	CSmartCastStats	&stats_all					()
+inline	CSmartCastStats	&stats_all					()
 {
 	if (!g_smart_cast_opt)
 		g_smart_cast_opt		= xr_new<CSmartCastStats>();
@@ -88,7 +88,7 @@ IC	CSmartCastStats	&stats_all					()
 }
 #endif
 
-IC	void CSmartCastStats::add					(const char* from, const char* to)
+inline	void CSmartCastStats::add					(const char* from, const char* to)
 {
 	CStats					temp(from,to,1);
 	STATS::iterator			I = m_stats.find(temp);
@@ -98,12 +98,12 @@ IC	void CSmartCastStats::add					(const char* from, const char* to)
 		++(const_cast<CStats&>(*I).m_count);
 }
 
-IC	void CSmartCastStats::clear					()
+inline	void CSmartCastStats::clear					()
 {
 	m_stats.clear			();
 }
 
-IC	void CSmartCastStats::show					()
+inline	void CSmartCastStats::show					()
 {
 	if (m_stats.empty()) {
 		Msg								("CONGRATULATIONS : SmartCast stats is empty!!!");

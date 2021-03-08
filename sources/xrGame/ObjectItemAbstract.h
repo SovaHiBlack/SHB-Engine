@@ -15,9 +15,9 @@ protected:
 	shared_str									m_script_clsid;
 
 public:
-	IC											CObjectItemAbstract	(const CLASS_ID &clsid, const char* script_clsid);
-	IC		const CLASS_ID						&clsid				() const;
-	IC		shared_str							script_clsid		() const;
+	inline											CObjectItemAbstract	(const CLASS_ID &clsid, const char* script_clsid);
+	inline		const CLASS_ID						&clsid				() const;
+	inline		shared_str							script_clsid		() const;
 
 	virtual ObjectFactory::CLIENT_BASE_CLASS	*client_object		() const = 0;
 	virtual ObjectFactory::SERVER_BASE_CLASS	*server_object		(const char* section) const = 0;

@@ -813,7 +813,7 @@ void CPHElement::GetAnimBonePos(Fmatrix &bp)
 
 }
 
-IC bool put_in_range( Fvector &v, float range )
+inline bool put_in_range( Fvector &v, float range )
 {
 	VERIFY( range > EPS_S );
 	float sq_mag=v.square_magnitude( );

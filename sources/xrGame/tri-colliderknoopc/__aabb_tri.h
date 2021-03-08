@@ -5,34 +5,34 @@
 		public:
 
 		//! Empty constructor
-		IC				Point()														{}
+		inline				Point()														{}
 		//! Constructor from floats
-		IC				Point(float _x, float _y, float _z) : x(_x), y(_y), z(_z)	{}
+		inline				Point(float _x, float _y, float _z) : x(_x), y(_y), z(_z)	{}
 		//! Constructor from array
-		IC				Point(float f[3]) : x(f[0]), y(f[1]), z(f[2])				{}
+		inline				Point(float f[3]) : x(f[0]), y(f[1]), z(f[2])				{}
 		//! Constructor from array
-		IC				Point(const float f[3]) : x(f[0]), y(f[1]), z(f[2])			{}
+		inline				Point(const float f[3]) : x(f[0]), y(f[1]), z(f[2])			{}
 		//! Copy constructor
-		IC				Point(const Point& p) : x(p.x), y(p.y), z(p.z)				{}
+		inline				Point(const Point& p) : x(p.x), y(p.y), z(p.z)				{}
 		//! Destructor
-		IC				~Point()													{}
+		inline				~Point()													{}
 
 		//! Returns MIN(x, y, z);
-		//IC	float		Min()								const		{ return MIN(x, MIN(y, z));												}
+		//inline	float		Min()								const		{ return MIN(x, MIN(y, z));												}
 		//! Returns MAX(x, y, z);
-		//IC	float		Max()								const		{ return MAX(x, MAX(y, z));												}
+		//inline	float		Max()								const		{ return MAX(x, MAX(y, z));												}
 		//! TO BE DOCUMENTED
-		//IC	Point&		Min(const Point& p)								{ x = MIN(x, p.x); y = MIN(y, p.y); z = MIN(z, p.z);	return *this;	}
+		//inline	Point&		Min(const Point& p)								{ x = MIN(x, p.x); y = MIN(y, p.y); z = MIN(z, p.z);	return *this;	}
 		//! TO BE DOCUMENTED
-		//IC	Point&		Max(const Point& p)								{ x = MAX(x, p.x); y = MAX(y, p.y); z = MAX(z, p.z);	return *this;	}
+		//inline	Point&		Max(const Point& p)								{ x = MAX(x, p.x); y = MAX(y, p.y); z = MAX(z, p.z);	return *this;	}
 
 		//! Computes square magnitude
-		IC	float		SquareMagnitude()					const		{ return x*x + y*y + z*z;												}
+		inline	float		SquareMagnitude()					const		{ return x*x + y*y + z*z;												}
 		//! Computes magnitude
-		IC	float		Magnitude()							const		{ return _sqrt(x*x + y*y + z*z);										}
+		inline	float		Magnitude()							const		{ return _sqrt(x*x + y*y + z*z);										}
 
 		//! Return largest axis
-		IC	u32			LargestAxis()						const
+		inline	u32			LargestAxis()						const
 						{
 							const float* Vals = &x;
 							u32 m = 0;
@@ -189,7 +189,7 @@ __forceinline bool planeBoxOverlap(const Point& normal, const float d, const Poi
 	
 
 
-IC	bool		aabb_tri_aabb(Point center,Point extents,const Point* mLeafVerts)
+inline	bool		aabb_tri_aabb(Point center,Point extents,const Point* mLeafVerts)
 {
 	Point v0, v1, v2;
 	//Fvector v0,v1,v2;
@@ -240,7 +240,7 @@ IC	bool		aabb_tri_aabb(Point center,Point extents,const Point* mLeafVerts)
 	if(!r0)		return false;
 	return true;
 }
-IC	bool		__aabb_tri		(Point center,Point extents,const Point* mLeafVerts)
+inline	bool		__aabb_tri		(Point center,Point extents,const Point* mLeafVerts)
 	{
 		// move everything so that the boxcenter is in (0,0,0) 
 		Point v0, v1, v2;

@@ -38,16 +38,16 @@
 //	//		m_jumper->stop();
 //	//		init_jump_specific();
 //	//		
-//	//		Fvector dir;
+//	//		Fvector3 dir;
 //	//		float h,p;
 //	//		float h2,p2;
-//	//		Fvector().sub(m_target_object->Position(), m_object->Position()).getHP(h,p);
+//	//		Fvector3().sub(m_target_object->Position(), m_object->Position()).getHP(h,p);
 //	//		m_target_object->Direction().getHP(h2,p2);
 //	//		dir.set		(1,0,0);
 //	//		dir.setHP	(h,p2);
 //	//		dir.normalize();
 //	//		
-//	//		Fvector pos;
+//	//		Fvector3 pos;
 //	//		pos.mad		(m_target_object->Position(), dir, 4.f);
 //	//		pos.y+=2.f;
 //
@@ -71,12 +71,12 @@
 //	m_velocity_mask		= velocity_mask;
 //
 //	// 1. Get enemy position, yaw
-//	Fvector source_position		= m_object->Position();
-//	Fvector target_position;
+//	Fvector3 source_position		= m_object->Position();
+//	Fvector3 target_position;
 //	target->Center				(target_position);
 //
 //	// получить вектор направления и его мир угол
-//	Fvector		dir;
+//	Fvector3		dir;
 //	float		dir_yaw, dir_pitch;
 //
 //	dir.sub		(target_position, source_position);
@@ -106,7 +106,7 @@
 //void CSnorkJump::try_jump_specific()
 //{
 //	float			yaw, pitch;
-//	Fvector().sub	(m_target_object->Position(), m_object->Position()).getHP(yaw, pitch);
+//	Fvector3().sub	(m_target_object->Position(), m_object->Position()).getHP(yaw, pitch);
 //
 //	// получить вектор направления и его мир угол
 //	//// проверка на angle и на dist
@@ -122,7 +122,7 @@
 //	init_jump_normal();
 //
 //	// 4. Perform jump
-//	Fvector pos;
+//	Fvector3 pos;
 //	pos.mad			(m_object->Position(), m_object->Direction(), 10.f);
 //	pos.y += 1.5;
 //	m_jumper->jump	(pos, m_velocity_mask);
@@ -164,7 +164,7 @@
 //	m_object->setEnabled(FALSE);
 //	collide::rq_result	l_rq;
 //
-//	Fvector			trace_from;
+//	Fvector3			trace_from;
 //	m_object->Center(trace_from);
 //
 //	float			trace_dist = m_object->Radius() + dist;

@@ -55,19 +55,19 @@ private:
 #endif // USE_HEAD_BONE_PART_FAKE
 
 public:
-	IC						CStalkerAnimationPair	();
-	IC		void			reset					();
+	inline						CStalkerAnimationPair	();
+	inline		void			reset					();
 			void			synchronize				(CKinematicsAnimated *skeleton_animated, const CStalkerAnimationPair &stalker_animation_pair) const;
 			MotionID		select					(const ANIM_VECTOR &array, const ANIMATION_WEIGHTS *weights = 0);
-	IC		bool			actual					() const;
-	IC		bool			animation				(const MotionID &animation);
-	IC		const MotionID	&animation				() const;
-	IC		CBlend			*blend					() const;
-	IC		void			step_dependence			(bool value);
-	IC		bool			step_dependence			() const;
-	IC		void			global_animation		(bool global_animation);
-	IC		bool			global_animation		() const;
-	IC		void			make_inactual			();
+	inline		bool			actual					() const;
+	inline		bool			animation				(const MotionID &animation);
+	inline		const MotionID	&animation				() const;
+	inline		CBlend			*blend					() const;
+	inline		void			step_dependence			(bool value);
+	inline		bool			step_dependence			() const;
+	inline		void			global_animation		(bool global_animation);
+	inline		bool			global_animation		() const;
+	inline		void			make_inactual			();
 
 public:
 #ifndef USE_HEAD_BONE_PART_FAKE
@@ -78,16 +78,16 @@ public:
 
 #ifdef DEBUG
 public:
-	IC		void			set_dbg_info			(const char* object_name, const char* animation_type_name);
+	inline		void			set_dbg_info			(const char* object_name, const char* animation_type_name);
 			BLEND_ID		*blend_id				(CKinematicsAnimated *skeleton_animated, BLEND_ID &result) const;
 #endif // DEBUG
 
 public:
-	IC	const CALLBACK_ID	*callback				(const CALLBACK_ID &callback) const;
-	IC		void			add_callback			(const CALLBACK_ID &callback);
-	IC		void			remove_callback			(const CALLBACK_ID &callback);
+	inline	const CALLBACK_ID	*callback				(const CALLBACK_ID &callback) const;
+	inline		void			add_callback			(const CALLBACK_ID &callback);
+	inline		void			remove_callback			(const CALLBACK_ID &callback);
 			void			on_animation_end		();
-	IC		bool			need_update				() const;
+	inline		bool			need_update				() const;
 };
 
 #include "stalker_animation_pair_inline.h"

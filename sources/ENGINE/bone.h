@@ -198,20 +198,20 @@ public:
 	shared_str		    Name			(){return name;}
 	shared_str		    ParentName		(){return parent_name;}
 	shared_str		    WMap			(){return wmap;}
-	IC CBone*		    Parent			(){return parent;}
-	IC BOOL			    IsRoot			(){return (parent==0);}
+	inline CBone*		    Parent			(){return parent;}
+	inline BOOL			    IsRoot			(){return (parent==0);}
 
 	// transformation
 	const Fvector3&      _Offset			(){return mot_offset;}
 	const Fvector3&      _Rotate			(){return mot_rotate;}
 	float			    _Length			(){return mot_length;}
-	IC Fmatrix&		    _RTransform		(){return rest_transform;}
-	IC Fmatrix&		    _RITransform	(){return rest_i_transform;}
-	IC Fmatrix&		    _MTransform		(){return mot_transform;}
-	IC Fmatrix&		    _LTransform		(){return last_transform;}
-	IC Fmatrix&		    _RenderTransform(){return render_transform;}
-	IC Fvector3&			_RestOffset		(){return rest_offset;}
-	IC Fvector3&		    _RestRotate		(){return rest_rotate;}
+	inline Fmatrix&		    _RTransform		(){return rest_transform;}
+	inline Fmatrix&		    _RITransform	(){return rest_i_transform;}
+	inline Fmatrix&		    _MTransform		(){return mot_transform;}
+	inline Fmatrix&		    _LTransform		(){return last_transform;}
+	inline Fmatrix&		    _RenderTransform(){return render_transform;}
+	inline Fvector3&			_RestOffset		(){return rest_offset;}
+	inline Fvector3&		    _RestRotate		(){return rest_rotate;}
 	
 	void			    _Update			(const Fvector3& T, const Fvector3& R){mot_offset.set(T); mot_rotate.set(R); mot_length=rest_length;}
 	void			    Reset			(){mot_offset.set(rest_offset); mot_rotate.set(rest_rotate); mot_length=rest_length;}

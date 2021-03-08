@@ -61,7 +61,7 @@ public:
 
 	virtual void			RenderUI				( );
 
-	virtual IC CUI*			GetUI					( )
+	virtual inline CUI*			GetUI					( )
 	{
 		return pUI;
 	}

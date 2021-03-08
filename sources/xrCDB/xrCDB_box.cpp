@@ -92,7 +92,7 @@ public:
 
 	Point			mLeafVerts	[3];
 	
-	IC void			_init		(COLLIDER* CL, Fvector3* V, TRI* T, const Fvector3& C, const Fvector3& E)
+	inline void			_init		(COLLIDER* CL, Fvector3* V, TRI* T, const Fvector3& C, const Fvector3& E)
 	{
 		dest		= CL;
 		verts		= V;

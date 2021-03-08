@@ -48,7 +48,7 @@ public:
 	{
 		if (IsSheduled( ))shedule_unregister( ); b_sheduled = false;
 	}
-	IC	bool	IsSheduled( )
+	inline	bool	IsSheduled( )
 	{
 		return b_sheduled;
 	}
@@ -60,12 +60,12 @@ public:
 
 	CPHShellHolder( );
 
-	IC CPhysicsShell*& PPhysicsShell( )
+	inline CPhysicsShell*& PPhysicsShell( )
 	{
 		return m_pPhysicsShell;
 	}
 
-	IC CPHShellHolder* PhysicsShellHolder( )
+	inline CPHShellHolder* PhysicsShellHolder( )
 	{
 		return this;
 	}

@@ -233,7 +233,7 @@ void CBloodsucker::vfAssignBones()
 
 //#define MAX_BONE_ANGLE PI_DIV_4
 
-void CBloodsucker::LookDirection(Fvector to_dir, float bone_turn_speed)
+void CBloodsucker::LookDirection(Fvector3 to_dir, float bone_turn_speed)
 {
 	//// получаем вектор направления к источнику звука и его мировые углы
 	//float		yaw,pitch;
@@ -376,7 +376,7 @@ void CBloodsucker::predator_start()
 
 	control().animation().restart	();
 	
-	CParticlesPlayer::StartParticles(invisible_particle_name,Fvector().set(0.0f,0.1f,0.0f),ID());		
+	CParticlesPlayer::StartParticles(invisible_particle_name, Fvector3().set(0.0f,0.1f,0.0f),ID());
 	sound().play					(CBloodsucker::eChangeVisibility);
 
 	m_predator						= true;
@@ -397,7 +397,7 @@ void CBloodsucker::predator_stop()
 
 	control().animation().restart	();
 	
-	CParticlesPlayer::StartParticles(invisible_particle_name,Fvector().set(0.0f,0.1f,0.0f),ID());		
+	CParticlesPlayer::StartParticles(invisible_particle_name, Fvector3().set(0.0f,0.1f,0.0f),ID());
 	sound().play					(CBloodsucker::eChangeVisibility);
 	m_predator						= false;
 }
@@ -421,7 +421,7 @@ void CBloodsucker::move_actor_cam()
 	}
 }
 
-void CBloodsucker::HitEntity(const CEntity *pEntity, float fDamage, float impulse, Fvector &dir)
+void CBloodsucker::HitEntity(const CEntity *pEntity, float fDamage, float impulse, Fvector3& dir)
 {
 	inherited::HitEntity(pEntity,fDamage,impulse,dir);
 

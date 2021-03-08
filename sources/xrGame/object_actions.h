@@ -30,10 +30,10 @@ protected:
 	_item_type			*m_item;
 
 public:
-	IC					CObjectActionBase	(_item_type *item, CStalker *owner, CPropertyStorage *storage, const char* action_name = "");
+	inline					CObjectActionBase	(_item_type *item, CStalker *owner, CPropertyStorage *storage, const char* action_name = "");
 	virtual void		initialize			();
-	IC		void		set_property		(_condition_type condition_id, _value_type value);
-	IC		CStalker &object				() const;
+	inline		void		set_property		(_condition_type condition_id, _value_type value);
+	inline		CStalker &object				() const;
 };
 
 class CGameObject;
@@ -54,7 +54,7 @@ protected:
 	_value_type			m_value;
 
 public:
-	IC					CObjectActionMember	(_item_type *item, CStalker *owner, CPropertyStorage *storage, _condition_type condition_id, _value_type value, const char* action_name = "");
+	inline					CObjectActionMember	(_item_type *item, CStalker *owner, CPropertyStorage *storage, _condition_type condition_id, _value_type value, const char* action_name = "");
 	virtual void		execute				();
 };
 

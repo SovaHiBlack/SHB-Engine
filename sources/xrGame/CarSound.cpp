@@ -59,7 +59,7 @@ void CCar::SCarSound::SetSoundPosition(ref_sound& snd)
 	VERIFY(!ph_world->Processing( ));
 	if (snd._feedback( ))
 	{
-		Fvector pos;
+		Fvector3 pos;
 		pcar->XFORM( ).transform_tiny(pos, relative_pos);
 		snd.set_position(pos);
 	}

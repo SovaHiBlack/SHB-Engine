@@ -34,27 +34,27 @@ public:
 		};
 	
 	public:
-		IC	void	add_item		(T data) {
+		inline	void	add_item		(T data) {
 			m_data.push_back	(data);	
 			std::sort			(m_data.begin(), m_data.end(), sort_id_pred());
 		}
 
-		IC	void	remove_item		(const char* text) {
+		inline	void	remove_item		(const char* text) {
 			ITEM_STORAGE_VEC_IT it = std::remove_if(m_data.begin(), m_data.end(), remove_text_pred(text));
 			m_data.erase(it, m_data.end());
 
 			std::sort(m_data.begin(), m_data.end(), sort_id_pred());
 		}
-		IC	void	remove_item		(u32 id) {
+		inline	void	remove_item		(u32 id) {
 			ITEM_STORAGE_VEC_IT it = std::remove_if(m_data.begin(), m_data.end(), remove_id_pred(id));
 			m_data.erase(it, m_data.end());
 
 			std::sort(m_data.begin(), m_data.end(), sort_id_pred());
 		}
-		IC	void	clear			() {m_data.clear	();}
+		inline	void	clear			() {m_data.clear	();}
 
 		template<class T>
-		IC	void	process			(T &process_pred) {
+		inline	void	process			(T &process_pred) {
 			for (ITEM_STORAGE_VEC_IT it=m_data.begin(); it != m_data.end(); ++it) {
 				process_pred(*it);
 			}
@@ -88,9 +88,9 @@ public:
 			void	add_item		(const char* text, u32 color, u32 id = u32(-1));
 			
 			void	draw_info		(float x, float &y);
-		IC	void	setup			(const Fvector &shift = SHIFT_POS_DEFAULT, float delta = DELTA_HEIGHT_DEFAULT) {m_shift_pos.set(shift); m_delta_height = delta;}
+		inline	void	setup			(const Fvector &shift = SHIFT_POS_DEFAULT, float delta = DELTA_HEIGHT_DEFAULT) {m_shift_pos.set(shift); m_delta_height = delta;}
 
-		IC	Fvector &get_shift_pos	() {return m_shift_pos;}
+		inline	Fvector &get_shift_pos	() {return m_shift_pos;}
 	};
 
 	//////////////////////////////////////////////////////////////////////////

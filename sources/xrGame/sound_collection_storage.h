@@ -27,6 +27,6 @@ public:
 
 extern CSoundCollectionStorage			*g_sound_collection_storage;
 
-IC			CSoundCollectionStorage		&sound_collection_storage	();
+inline			CSoundCollectionStorage		&sound_collection_storage	();
 
 #include "sound_collection_storage_inline.h"

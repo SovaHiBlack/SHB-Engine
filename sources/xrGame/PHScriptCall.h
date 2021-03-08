@@ -2,7 +2,7 @@
 #include "PHReqComparer.h"
 
 //template<>
-//IC bool compare_safe(const functor<>& f1,const functor<>& f2)
+//inline bool compare_safe(const functor<>& f1,const functor<>& f2)
 //{
 //	f1.typ
 //}

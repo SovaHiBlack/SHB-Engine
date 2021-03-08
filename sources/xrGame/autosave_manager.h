@@ -27,14 +27,14 @@ public:
 	virtual bool		shedule_Needed			()				{return true;};
 
 public:
-	IC		u32		autosave_interval		() const;
-	IC		u32		last_autosave_time		() const;
-	IC		u32		not_ready_count			() const;
-	IC		void	inc_not_ready			();
-	IC		void	dec_not_ready			();
-	IC		void	update_autosave_time	();
-	IC		void	delay_autosave			();
-	IC		bool	ready_for_autosave		();
+	inline		u32		autosave_interval		() const;
+	inline		u32		last_autosave_time		() const;
+	inline		u32		not_ready_count			() const;
+	inline		void	inc_not_ready			();
+	inline		void	dec_not_ready			();
+	inline		void	update_autosave_time	();
+	inline		void	delay_autosave			();
+	inline		bool	ready_for_autosave		();
 };
 
 #include "autosave_manager_inline.h"

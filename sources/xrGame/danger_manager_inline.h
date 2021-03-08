@@ -8,34 +8,34 @@
 
 #pragma once
 
-IC	CDangerManager::CDangerManager							(CCustomMonster *object)
+inline	CDangerManager::CDangerManager							(CCustomMonster *object)
 {
 	VERIFY			(object);
 	m_object		= object;
 }
 
-IC	void CDangerManager::reset								()
+inline	void CDangerManager::reset								()
 {
 	m_objects.clear	();
 	m_selected		= 0;
 }
 
-IC	const CDangerObject *CDangerManager::selected			() const
+inline	const CDangerObject *CDangerManager::selected			() const
 {
 	return			(m_selected);
 }
 
-IC	const CDangerManager::OBJECTS &CDangerManager::objects	() const
+inline	const CDangerManager::OBJECTS &CDangerManager::objects	() const
 {
 	return			(m_objects);
 }
 
-IC	u32	CDangerManager::time_line							() const
+inline	u32	CDangerManager::time_line							() const
 {
 	return			(m_time_line);
 }
 
-IC	void CDangerManager::time_line							(u32 value)
+inline	void CDangerManager::time_line							(u32 value)
 {
 	m_time_line		= value;
 }

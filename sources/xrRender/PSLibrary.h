@@ -28,10 +28,10 @@ public:
 	PS::PGDIt			FindPGDIt		(const char* name);
 
 	// get object properties methods
-	IC PS::PEDIt		FirstPED		()	{return m_PEDs.begin();}
-	IC PS::PEDIt		LastPED			()	{return m_PEDs.end();}
-	IC PS::PGDIt		FirstPGD		()	{return m_PGDs.begin();}
-	IC PS::PGDIt		LastPGD			()	{return m_PGDs.end();}
+	inline PS::PEDIt		FirstPED		()	{return m_PEDs.begin();}
+	inline PS::PEDIt		LastPED			()	{return m_PEDs.end();}
+	inline PS::PGDIt		FirstPGD		()	{return m_PGDs.begin();}
+	inline PS::PGDIt		LastPGD			()	{return m_PGDs.end();}
 
 	PS::CPEDef*			AppendPED		(PS::CPEDef* src=0);
 	PS::CPGDef*			AppendPGD		(PS::CPGDef* src=0);

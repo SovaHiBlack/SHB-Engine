@@ -149,7 +149,7 @@ struct STranspParam		{
 	float				vis_threshold;
 	STranspParam		(CLensFlare* p, const Fvector3& _P, const Fvector3& _D, float _f, float _vis_threshold):P(_P),D(_D),f(_f),parent(p),vis(1.f),vis_threshold(_vis_threshold){}
 };
-IC BOOL material_callback(collide::rq_result& result, LPVOID params)
+inline BOOL material_callback(collide::rq_result& result, LPVOID params)
 {
 	STranspParam* fp= (STranspParam*)params;
 	float vis		= 1.f;
@@ -173,7 +173,7 @@ IC BOOL material_callback(collide::rq_result& result, LPVOID params)
 	return (fp->vis>fp->vis_threshold); 
 }
 
-IC void	blend_lerp	(float& cur, float tgt, float speed, float dt)
+inline void	blend_lerp	(float& cur, float tgt, float speed, float dt)
 {
 	float diff		= tgt - cur;
 	float diff_a	= _abs(diff);

@@ -536,9 +536,9 @@ void CDrawUtilities::DrawLineSphere(const Fvector3& p, float radius, u32 c, BOOL
 }
 
 //----------------------------------------------------
-IC float 				_x2real			(float x)
+inline float 				_x2real			(float x)
 { return (x+1)*Device.dwWidth*0.5f;	}
-IC float 				_y2real			(float y)
+inline float 				_y2real			(float y)
 { return (y+1)*Device.dwHeight*0.5f;}
 
 void CDrawUtilities::dbgDrawPlacement(const Fvector3& p, int sz, u32 clr, const char* caption, u32 clr_font)

@@ -94,9 +94,9 @@ public:
 
 	virtual void __stdcall DrawFace(const Fvector3& p0,	const Fvector3& p1, const Fvector3& p2, u32 clr_s, u32 clr_w, BOOL bSolid, BOOL bWire);
 	virtual void __stdcall DrawLine(const Fvector3& p0,	const Fvector3& p1, u32 clr);
-	IC virtual void __stdcall DrawLine(const Fvector3* p, u32 clr){DrawLine(p[0],p[1],clr);}
+	inline virtual void __stdcall DrawLine(const Fvector3* p, u32 clr){DrawLine(p[0],p[1],clr);}
 	virtual void __stdcall DrawLink(const Fvector3& p0, const Fvector3& p1, float sz, u32 clr);
-	IC virtual void __stdcall DrawFaceNormal(const Fvector3& p0, const Fvector3& p1, const Fvector3& p2, float size, u32 clr){
+	inline virtual void __stdcall DrawFaceNormal(const Fvector3& p0, const Fvector3& p1, const Fvector3& p2, float size, u32 clr){
 		Fvector3 N;
 		Fvector3 C;
 		Fvector3 P;
@@ -107,13 +107,13 @@ public:
 		C.div(3);
 		P.mad(C,N,size);
 		DrawLine(C,P,clr);}
-	IC virtual void __stdcall DrawFaceNormal(const Fvector3* p, float size, u32 clr){DrawFaceNormal(p[0],p[1],p[2],size,clr);}
-	IC virtual void __stdcall DrawFaceNormal(const Fvector3& C, const Fvector3& N, float size, u32 clr){
+	inline virtual void __stdcall DrawFaceNormal(const Fvector3* p, float size, u32 clr){DrawFaceNormal(p[0],p[1],p[2],size,clr);}
+	inline virtual void __stdcall DrawFaceNormal(const Fvector3& C, const Fvector3& N, float size, u32 clr){
 		Fvector3 P;
 		P.mad(C,N,size);
 		DrawLine(C,P,clr);}
 	virtual void __stdcall DrawSelectionBox(const Fvector3& center, const Fvector3& size, u32* c=0);
-	IC virtual void __stdcall DrawSelectionBox(const Fbox3& box, u32* c=0){
+	inline virtual void __stdcall DrawSelectionBox(const Fbox3& box, u32* c=0){
 		Fvector3 S;
 		Fvector3 C;
 		box.getsize(S);

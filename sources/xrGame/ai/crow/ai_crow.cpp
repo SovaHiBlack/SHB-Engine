@@ -45,7 +45,7 @@ void CCrow::SSound::Load	(const char* prefix)
 	R_ASSERT(m_Sounds.size());
 }
 
-void CCrow::SSound::SetPosition	(const Fvector& pos)
+void CCrow::SSound::SetPosition	(const Fvector3& pos)
 {
 	for (int i=0; i<(int)m_Sounds.size(); ++i)
 		if (m_Sounds[i]._feedback())
@@ -175,7 +175,7 @@ void CCrow::switch2_DeathDead()
 
 void CCrow::switch2_DeathFall()
 {
-	Fvector V;
+	Fvector3 V;
 	V.mul(XFORM().k,fSpeed);
 //	m_PhysicMovementControl->SetVelocity(V);
 	smart_cast<CKinematicsAnimated*>(Visual())->PlayCycle	(m_Anims.m_death.GetRandom(),TRUE,cb_OnHitEndPlaying,this);
@@ -185,10 +185,10 @@ void CCrow::state_Flying		(float fdt)
 {
 	// Update position and orientation of the planes
 	float fAT = fASpeed * fdt		;
-	Fvector& vDirection = XFORM().k	;
+	Fvector3& vDirection = XFORM().k	;
 
 	// Tweak orientation based on last position and goal
-	Fvector vOffset;
+	Fvector3 vOffset;
 	vOffset.sub(vGoalDir,Position());
 
 	// First, tweak the pitch
@@ -225,17 +225,18 @@ void CCrow::state_Flying		(float fdt)
 	Position().mad	(vOldPosition,vDirection,fSpeed*fdt);
 }
 
-static Fvector vV={0,0,0};
+static Fvector3 vV={0,0,0};
 void CCrow::state_DeathFall()
 {
-	Fvector tAcceleration	;
+	Fvector3 tAcceleration	;
 	tAcceleration.set		(0,-10.f,0);
 	if (m_pPhysicsShell)
 	{
-		Fvector velocity;
+		Fvector3 velocity;
 		m_pPhysicsShell->get_LinearVel(velocity);
 		if(velocity.y>-0.001f) st_target = eDeathDead;
 	}
+
 	if (bPlayDeathIdle){
 		smart_cast<CKinematicsAnimated*>(Visual())->PlayCycle	(m_Anims.m_death_idle.GetRandom());
 		bPlayDeathIdle		= false;
@@ -308,12 +309,13 @@ void CCrow::shedule_Update		(u32 DT)
 		// At random times, change the direction (goal) of the plane
 		if(fGoalChangeTime<=0)	{
 			fGoalChangeTime += fGoalChangeDelta+fGoalChangeDelta*Random.randF(-0.5f,0.5f);
-			Fvector vP;
+			Fvector3 vP;
 			vP.set(Device.vCameraPosition.x,Device.vCameraPosition.y+fMinHeight,Device.vCameraPosition.z);
 			vGoalDir.x		= vP.x+vVarGoal.x*Random.randF(-0.5f,0.5f); 
 			vGoalDir.y		= vP.y+vVarGoal.y*Random.randF(-0.5f,0.5f);
 			vGoalDir.z		= vP.z+vVarGoal.z*Random.randF(-0.5f,0.5f);
 		}
+
 		fGoalChangeTime		-= fDT;
 		// sounds
 		if (fIdleSoundTime<=0){
@@ -391,7 +393,7 @@ void CCrow::net_Import	(NET_Packet& P)
 	XFORM().setHPB		(yaw,pitch,bank);
 }
 //---------------------------------------------------------------------
-void CCrow::HitSignal	(float /**HitAmount/**/, Fvector& /**local_dir/**/, CObject* who, s16 /**element/**/)
+void CCrow::HitSignal	(float /**HitAmount/**/, Fvector3& /**local_dir/**/, CObject* who, s16 /**element/**/)
 {
 	//bool				first_time = !!g_Alive(); 
 //	bool				first_time = !PPhysicsShell(); 
@@ -405,7 +407,7 @@ void CCrow::HitSignal	(float /**HitAmount/**/, Fvector& /**local_dir/**/, CObjec
 	else smart_cast<CKinematicsAnimated*>(Visual())->PlayCycle(m_Anims.m_death_dead.GetRandom());
 }
 //---------------------------------------------------------------------
-void CCrow::HitImpulse	(float	/**amount/**/,		Fvector& /**vWorldDir/**/, Fvector& /**vLocalDir/**/)
+void CCrow::HitImpulse	(float	/**amount/**/, Fvector3& /**vWorldDir/**/, Fvector3& /**vLocalDir/**/)
 {
 }
 //---------------------------------------------------------------------

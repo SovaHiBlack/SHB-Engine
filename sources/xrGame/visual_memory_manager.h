@@ -61,7 +61,7 @@ public:
 			void	add_visible_object		(const CObject *object, float time_delta, bool fictitious = false);
 
 protected:
-	IC		void	fill_object				(CVisibleObject &visible_object, const CGameObject *game_object);
+	inline		void	fill_object				(CVisibleObject &visible_object, const CGameObject *game_object);
 			void	add_visible_object		(const CVisibleObject visible_object);
 			float	object_visible_distance	(const CGameObject *game_object, float &object_distance) const;
 			float	object_luminocity		(const CGameObject *game_object) const;
@@ -95,7 +95,7 @@ public:
 			bool	visible					(u32 level_vertex_id, float yaw, float eye_fov) const;
 
 public:
-	IC		void	set_squad_objects		(xr_vector<CVisibleObject> *squad_objects);
+	inline		void	set_squad_objects		(xr_vector<CVisibleObject> *squad_objects);
 			CVisibleObject *visible_object	(const CGameObject *game_object);
 			
 public:
@@ -115,19 +115,19 @@ public:
 			void	enable					(const CObject *object, bool enable);
 
 public:
-	IC		float	visibility_threshold	() const;
-	IC		float	transparency_threshold	() const;
+	inline		float	visibility_threshold	() const;
+	inline		float	transparency_threshold	() const;
 
 public:
-	IC		bool	enabled					() const;
-	IC		void	enable					(bool value);
+	inline		bool	enabled					() const;
+	inline		void	enable					(bool value);
 
 public:
-	IC		const VISIBLES			&objects					() const;
-	IC		const RAW_VISIBLES		&raw_objects				() const;
-	IC		const NOT_YET_VISIBLES	&not_yet_visible_objects	() const;
-	IC		const CVisionParameters &current_state				() const;
-	IC		squad_mask_type			mask						() const;
+	inline		const VISIBLES			&objects					() const;
+	inline		const RAW_VISIBLES		&raw_objects				() const;
+	inline		const NOT_YET_VISIBLES	&not_yet_visible_objects	() const;
+	inline		const CVisionParameters &current_state				() const;
+	inline		squad_mask_type			mask						() const;
 
 public:
 #ifdef DEBUG

@@ -198,8 +198,14 @@ bool CMonsterEnemyManager::is_faced(const CEntityAlive *object0, const CEntityAl
 	if (object0->Position().distance_to(object1->Position()) > object0->ffGetRange())
 		return		(false);
 
-	float			yaw1, pitch1, yaw2, pitch2, fYawFov, fPitchFov, fRange;
-	Fvector			tPosition = object0->Position();
+	float			yaw1;
+	float pitch1;
+	float yaw2;
+	float pitch2;
+	float fYawFov;
+	float fPitchFov;
+	float fRange;
+	Fvector3			tPosition = object0->Position();
 
 	yaw1			= object0->Orientation().yaw;
 	pitch1			= object0->Orientation().pitch;

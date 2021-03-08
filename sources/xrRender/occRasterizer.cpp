@@ -18,7 +18,7 @@ void __stdcall fillDW_8x	(void* _p, u32 size, u32 value)
 	}
 }
 
-IC void propagade_depth			(LPVOID p_dest, LPVOID p_src, int dim)
+inline void propagade_depth			(LPVOID p_dest, LPVOID p_src, int dim)
 {
 	occD*	dest = (occD*)p_dest;
 	occD*	src	 = (occD*)p_src;
@@ -64,7 +64,7 @@ void occRasterizer::clear		()
 	Memory.mem_fill32	(bufDepth,*LPDWORD(&f),size);
 }
 
-IC BOOL shared(occTri* T1, occTri* T2)
+inline BOOL shared(occTri* T1, occTri* T2)
 {
 	if (T1==T2)					return TRUE;
 	if (T1->adjacent[0]==T2)	return TRUE;
@@ -119,7 +119,7 @@ void occRasterizer::propagade	()
 	propagade_depth	(bufDepth_3,bufDepth_2,occ_dim_3);
 }
 
-IC	BOOL			test_Level	(occD* depth, int dim, float _x0, float _y0, float _x1, float _y1, occD z)
+inline	BOOL			test_Level	(occD* depth, int dim, float _x0, float _y0, float _x1, float _y1, occD z)
 {
 	int x0		= iFloor	(_x0*dim+.5f);	clamp(x0,0,		dim-1);
 	int x1		= iFloor	(_x1*dim+.5f);	clamp(x1,x0,	dim-1);

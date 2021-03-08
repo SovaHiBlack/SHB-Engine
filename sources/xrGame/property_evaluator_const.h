@@ -19,7 +19,7 @@ protected:
 	_value_type			m_value;
 
 public:
-	IC					CPropertyEvaluatorConst	(_value_type value, const char* evaluator_name = "");
+	inline					CPropertyEvaluatorConst	(_value_type value, const char* evaluator_name = "");
 	virtual _value_type	evaluate				();
 };
 

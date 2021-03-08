@@ -19,25 +19,25 @@
 #define CLevelManagerTemplate CBasePathManager<CLevelGraph,_VertexEvaluator,_vertex_id_type,_index_type>
 
 TEMPLATE_SPECIALIZATION
-IC	CLevelManagerTemplate::CBasePathManager	(CRestrictedObject *object) :
+inline	CLevelManagerTemplate::CBasePathManager	(CRestrictedObject *object) :
 	inherited(object)
 {
 }
 
 TEMPLATE_SPECIALIZATION
-IC	void CLevelManagerTemplate::reinit(const CLevelGraph *graph)
+inline	void CLevelManagerTemplate::reinit(const CLevelGraph *graph)
 {
 	inherited::reinit			(graph);
 }
 
 TEMPLATE_SPECIALIZATION
-IC	bool CLevelManagerTemplate::actual() const
+inline	bool CLevelManagerTemplate::actual() const
 {
 	return						(inherited::actual(m_object->object().ai_location().level_vertex_id(),dest_vertex_id()));
 }
 
 TEMPLATE_SPECIALIZATION
-IC	void CLevelManagerTemplate::build_path	(const _vertex_id_type start_vertex_id, const _vertex_id_type dest_vertex_id)
+inline	void CLevelManagerTemplate::build_path	(const _vertex_id_type start_vertex_id, const _vertex_id_type dest_vertex_id)
 {
 	START_PROFILE("Build Path/Level Path");
 	
@@ -55,7 +55,7 @@ IC	void CLevelManagerTemplate::build_path	(const _vertex_id_type start_vertex_id
 }
 
 TEMPLATE_SPECIALIZATION
-IC	void CLevelManagerTemplate::before_search			(const _vertex_id_type start_vertex_id, const _vertex_id_type dest_vertex_id)
+inline	void CLevelManagerTemplate::before_search			(const _vertex_id_type start_vertex_id, const _vertex_id_type dest_vertex_id)
 {
 	if (m_object) {
 		m_object->add_border	(start_vertex_id,dest_vertex_id);
@@ -65,20 +65,20 @@ IC	void CLevelManagerTemplate::before_search			(const _vertex_id_type start_vert
 }
 
 TEMPLATE_SPECIALIZATION
-IC	void CLevelManagerTemplate::after_search			()
+inline	void CLevelManagerTemplate::after_search			()
 {
 	if (m_object)
 		m_object->remove_border();
 }
 
 TEMPLATE_SPECIALIZATION
-IC	bool CLevelManagerTemplate::check_vertex			(const _vertex_id_type vertex_id) const
+inline	bool CLevelManagerTemplate::check_vertex			(const _vertex_id_type vertex_id) const
 {
 	return						(inherited::check_vertex(vertex_id) && (!m_object || object().accessible(vertex_id)));
 }
 
 TEMPLATE_SPECIALIZATION
-IC	void CLevelManagerTemplate::on_restrictions_change	()
+inline	void CLevelManagerTemplate::on_restrictions_change	()
 {
 	m_failed_start_vertex_id	= _vertex_id_type(-1);
 	m_failed_dest_vertex_id		= _vertex_id_type(-1);

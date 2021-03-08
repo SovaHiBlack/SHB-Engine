@@ -8,7 +8,7 @@
 
 #pragma once
 
-IC	void CScriptEngine::add_script_process		(const EScriptProcessors &process_id, CScriptProcess *script_process)
+inline	void CScriptEngine::add_script_process		(const EScriptProcessors &process_id, CScriptProcess *script_process)
 {
 	CScriptProcessStorage::const_iterator	I = m_script_processes.find(process_id);
 	VERIFY									(I == m_script_processes.end());
@@ -23,7 +23,7 @@ CScriptProcess *CScriptEngine::script_process	(const EScriptProcessors &process_
 	return									(0);
 }
 
-IC	void CScriptEngine::parse_script_namespace(const char* function_to_call, char* name_space, char* function)
+inline	void CScriptEngine::parse_script_namespace(const char* function_to_call, char* name_space, char* function)
 {
 	const char* I = function_to_call;
 	const char* J = 0;
@@ -43,7 +43,7 @@ IC	void CScriptEngine::parse_script_namespace(const char* function_to_call, char
 }
 
 template <typename _result_type>
-IC	bool CScriptEngine::functor(const char* function_to_call, luabind::functor<_result_type> &lua_function)
+inline	bool CScriptEngine::functor(const char* function_to_call, luabind::functor<_result_type> &lua_function)
 {
 	luabind::object			object;
 	if (!function_object(function_to_call,object))
@@ -60,7 +60,7 @@ IC	bool CScriptEngine::functor(const char* function_to_call, luabind::functor<_r
 }
 
 #ifdef USE_DEBUGGER
-IC CScriptDebugger *CScriptEngine::debugger			()
+inline CScriptDebugger *CScriptEngine::debugger			()
 {
 	return m_scriptDebugger;
 }

@@ -280,19 +280,19 @@ public:
 	// Save/Load/State
 	void						SLS_Default( );					// Default/Editor Load
 
-	IC CSpaceRestrictionManager& space_restriction_manager( );
-	IC CSeniorityHierarchyHolder& seniority_holder( );
-	IC CClientSpawnManager& client_spawn_manager( );
-	IC CAutosaveManager& autosave_manager( );
+	inline CSpaceRestrictionManager& space_restriction_manager( );
+	inline CSeniorityHierarchyHolder& seniority_holder( );
+	inline CClientSpawnManager& client_spawn_manager( );
+	inline CAutosaveManager& autosave_manager( );
 
 #ifdef DEBUG
-	IC CDebugRenderer& debug_renderer( );
+	inline CDebugRenderer& debug_renderer( );
 #endif
 
 	void	__stdcall				script_gc( );			// GC-cycle
 
-	IC CPHCommander& ph_commander( );
-	IC CPHCommander& ph_commander_scripts( );
+	inline CPHCommander& ph_commander( );
+	inline CPHCommander& ph_commander_scripts( );
 
 	// C/D
 	CLevel( );

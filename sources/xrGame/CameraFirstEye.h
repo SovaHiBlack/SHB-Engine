@@ -14,7 +14,7 @@ public:
 	virtual void	Move(int cmd, float val = 0, float factor = 1.0f);
 
 	virtual void	OnActivate(CCameraBase* old_cam);
-	virtual void	Update(Fvector& point, Fvector& noise_angle);
+	virtual void	Update(Fvector3& point, Fvector3& noise_angle);
 
 	virtual float	GetWorldYaw( )
 	{

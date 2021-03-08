@@ -8,7 +8,7 @@
 
 #pragma once
 
-IC	CScriptHit::CScriptHit			()
+inline	CScriptHit::CScriptHit			()
 {
 	m_fPower			= 100;
 	m_tDirection.set	(1,0,0);
@@ -18,12 +18,12 @@ IC	CScriptHit::CScriptHit			()
 	m_tHitType			= ALife::eHitTypeWound;
 }
 
-IC	CScriptHit::CScriptHit			(const CScriptHit *tpLuaHit)
+inline	CScriptHit::CScriptHit			(const CScriptHit *tpLuaHit)
 {
 	*this				= *tpLuaHit;
 }
 
-IC	void CScriptHit::set_bone_name	(const char* bone_name)
+inline	void CScriptHit::set_bone_name	(const char* bone_name)
 {
 	m_caBoneName		= bone_name;
 }

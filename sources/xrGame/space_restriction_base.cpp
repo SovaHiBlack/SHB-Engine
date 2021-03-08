@@ -18,12 +18,12 @@ bool CSpaceRestrictionBase::inside	(u32 level_vertex_id, bool partially_inside)
 	return							(inside(level_vertex_id,partially_inside,DEFAULT_RADIUS));
 }
 
-IC	Fvector construct_position		(u32 level_vertex_id, float x, float z)
+inline	Fvector construct_position		(u32 level_vertex_id, float x, float z)
 {
 	return							(Fvector().set(x,ai().level_graph().vertex_plane_y(level_vertex_id,x,z),z));
 }
 
-IC	bool CSpaceRestrictionBase_inside	(CSpaceRestrictionBase *self, const Fvector &position, const float &radius)
+inline	bool CSpaceRestrictionBase_inside	(CSpaceRestrictionBase *self, const Fvector &position, const float &radius)
 {
 	Fsphere							sphere;
 	sphere.P						= position;
@@ -54,7 +54,7 @@ bool CSpaceRestrictionBase::inside	(u32 level_vertex_id, bool partially_inside, 
 }
 
 struct SortByXZ_predicate {
-	IC	bool	operator()	(u32 v0, u32 v1) const
+	inline	bool	operator()	(u32 v0, u32 v1) const
 	{
 		return						(ai().level_graph().vertex(v0)->position().xz() < ai().level_graph().vertex(v1)->position().xz());
 	}

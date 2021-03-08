@@ -79,7 +79,7 @@ public:
 		VERIFY(idx == 0 || idx == 1);
 		return m_uAccelerator[idx];
 	}
-	IC bool			IsAccelerator(int iAccel) const
+	inline bool			IsAccelerator(int iAccel) const
 	{
 		return (m_uAccelerator[0] == iAccel) || (m_uAccelerator[1] == iAccel);
 	}

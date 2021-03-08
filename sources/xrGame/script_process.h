@@ -20,14 +20,14 @@ private:
 		bool						m_do_string;
 		bool						m_reload;
 
-		IC		CScriptToRun		(const char* script_name, bool do_string, bool reload = false)
+		inline		CScriptToRun		(const char* script_name, bool do_string, bool reload = false)
 		{
 			m_script_name			= xr_strdup(script_name);
 			m_do_string				= do_string;
 			m_reload				= reload;
 		}
 
-		IC		CScriptToRun		(const CScriptToRun &script)
+		inline		CScriptToRun		(const CScriptToRun &script)
 		{
 			m_script_name			= xr_strdup(script.m_script_name);
 			m_do_string				= script.m_do_string;
@@ -59,8 +59,8 @@ public:
 	virtual							~CScriptProcess	();
 			void					update			();
 			void					add_script		(const char* script_name, bool string, bool reload);
-	IC		const SCRIPT_REGISTRY	&scripts		() const;
-	IC		shared_str				name			() const;
+	inline		const SCRIPT_REGISTRY	&scripts		() const;
+	inline		shared_str				name			() const;
 };
 
 #include "script_process_inline.h"

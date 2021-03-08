@@ -14,7 +14,7 @@
 #include "ObjectItemClientServer.h"
 
 template <typename _client_type, typename _server_type>
-IC	void CObjectFactory::add	(const CLASS_ID &clsid, const char* script_clsid)
+inline	void CObjectFactory::add	(const CLASS_ID &clsid, const char* script_clsid)
 {
 	{
 		typedef object_type_traits::is_base_and_derived<CLIENT_BASE_CLASS,_client_type> a;
@@ -28,7 +28,7 @@ IC	void CObjectFactory::add	(const CLASS_ID &clsid, const char* script_clsid)
 }
 
 template <typename _unknown_type>
-IC	void CObjectFactory::add	(const CLASS_ID &clsid, const char* script_clsid)
+inline	void CObjectFactory::add	(const CLASS_ID &clsid, const char* script_clsid)
 {
 	{
 		typedef object_type_traits::is_base_and_derived<CLIENT_BASE_CLASS,_unknown_type> a;

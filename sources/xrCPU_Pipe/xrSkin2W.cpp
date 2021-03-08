@@ -8,10 +8,10 @@ struct vertBoned2W	// (1+3+3 + 1+3+3 + 2)*4 = 16*4 = 64 bytes
 {
 	u16	matrix0;
 	u16	matrix1;
-	Fvector	P0;
-	Fvector	N0;
-	Fvector	P1;
-	Fvector	N1;
+	Fvector3	P0;
+	Fvector3	N0;
+	Fvector3	P1;
+	Fvector3	N1;
 	float	w;
 	float	u,v;
 };
@@ -28,7 +28,10 @@ void __stdcall xrSkin2W_x86(vertRender*		D,
 	int U_Count			= vCount;
 	vertBoned2W*	V	= S;
 	vertBoned2W*	E	= V+U_Count;
-	Fvector			P0,N0,P1,N1;
+	Fvector3			P0;
+	Fvector3 N0;
+	Fvector3 P1;
+	Fvector3 N1;
 
 	// NON-Unrolled loop
 	for (; S!=E; ){

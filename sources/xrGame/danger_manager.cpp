@@ -19,12 +19,12 @@
 struct CDangerPredicate {
 	const CObject	*m_object;
 
-	IC			CDangerPredicate	(const CObject *object)
+	inline			CDangerPredicate	(const CObject *object)
 	{
 		m_object			= object;
 	}
 
-	IC	bool	operator()			(const CDangerObject &object) const
+	inline	bool	operator()			(const CDangerObject &object) const
 	{
 		if (!m_object)
 			return			(!object.object());
@@ -39,12 +39,12 @@ struct CDangerPredicate {
 struct CFindPredicate {
 	const CDangerObject		*m_object;
 
-	IC			CFindPredicate		(const CDangerObject &object)
+	inline			CFindPredicate		(const CDangerObject &object)
 	{
 		m_object			= &object;
 	}
 
-	IC	bool	operator()			(const CDangerObject &object) const
+	inline	bool	operator()			(const CDangerObject &object) const
 	{
 		return				(*m_object == object);
 	}
@@ -54,14 +54,14 @@ struct CRemoveByTimePredicate {
 	u32						m_time_line;
 	CDangerManager			*m_manager;
 
-	IC			CRemoveByTimePredicate	(u32 time_line, CDangerManager *manager)
+	inline			CRemoveByTimePredicate	(u32 time_line, CDangerManager *manager)
 	{
 		m_time_line			= time_line;
 		VERIFY				(manager);
 		m_manager			= manager;
 	}
 
-	IC	bool	operator()				(const CDangerObject &object) const
+	inline	bool	operator()				(const CDangerObject &object) const
 	{
 		if (object.time() < m_time_line) {
 			if (object.object() && (object.type() == CDangerObject::eDangerTypeFreshEntityCorpse))

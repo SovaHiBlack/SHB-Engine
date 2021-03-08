@@ -123,7 +123,7 @@ void CSnork::UpdateCL()
 	if (point) {
 		DBG().level_info(this).add_item	(point->position(),COLOR_RED);
 		
-		Fvector pos;
+		Fvector3 pos;
 		pos.set(Position());
 		pos.y+=5.f;
 
@@ -135,13 +135,13 @@ void CSnork::UpdateCL()
 
 #define TRACE_RANGE 30.f
 
-float CSnork::trace(const Fvector &dir)
+float CSnork::trace(const Fvector3& dir)
 {
 	float ret_val = flt_max;
 
 	collide::rq_result	l_rq;
 
-	Fvector		trace_from;
+	Fvector3		trace_from;
 	Center		(trace_from);
 
 	float		trace_dist = Radius() + TRACE_RANGE;
@@ -155,7 +155,7 @@ float CSnork::trace(const Fvector &dir)
 }
 
 #define JUMP_DISTANCE 10.f
-bool CSnork::find_geometry(Fvector &dir)
+bool CSnork::find_geometry(Fvector3& dir)
 {
 	// 1. trace direction
 	dir		= Direction();
@@ -170,13 +170,15 @@ bool CSnork::find_geometry(Fvector &dir)
 	return false;
 }
 
-bool CSnork::trace_geometry(const Fvector &d, float &range)
+bool CSnork::trace_geometry(const Fvector3& d, float &range)
 {
-	Fvector				dir;
+	Fvector3				dir;
 	float				h, p;
 
-	Fvector				Pl,Pc,Pr;
-	Fvector				center;
+	Fvector3				Pl;
+	Fvector3 Pc;
+	Fvector3 Pr;
+	Fvector3				center;
 	Center				(center);
 
 	range				= trace (d);
@@ -198,7 +200,7 @@ bool CSnork::trace_geometry(const Fvector &d, float &range)
 	Pc.mad				(center, dir, range);
 
 	// trace left ray
-	Fvector				temp_p;
+	Fvector3				temp_p;
 	temp_p.mad			(Pc, XFORM().i, Radius() / 2);
 	dir.sub				(temp_p, center);
 	dir.normalize_safe	();
@@ -209,7 +211,7 @@ bool CSnork::trace_geometry(const Fvector &d, float &range)
 	Pl.mad				(center, dir, range);
 
 	// trace right ray
-	Fvector inv			= XFORM().i; 
+	Fvector3 inv			= XFORM().i;
 	inv.invert			();
 	temp_p.mad			(Pc, inv, Radius() / 2);
 	dir.sub				(temp_p, center);
@@ -222,8 +224,8 @@ bool CSnork::trace_geometry(const Fvector &d, float &range)
 
 	float				h1,p1,h2,p2;
 
-	Fvector().sub(Pl, Pc).getHP(h1,p1);
-	Fvector().sub(Pc, Pr).getHP(h2,p2);
+	Fvector3().sub(Pl, Pc).getHP(h1,p1);
+	Fvector3().sub(Pc, Pr).getHP(h2,p2);
 
 	return (fsimilar(h1,h2,0.1f) && fsimilar(p1,p2,0.1f));
 }
@@ -247,7 +249,7 @@ void CSnork::HitEntityInJump(const CEntity *pEntity)
 }
 
 //////////////////////////////////////////////////////////////////////////
-void CSnork::jump(const Fvector &position, float factor)
+void CSnork::jump(const Fvector3& position, float factor)
 {
 	com_man().script_jump	(position, factor);
 	sound().play			(MonsterSound::eMonsterSoundAggressive);

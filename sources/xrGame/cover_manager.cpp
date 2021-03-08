@@ -27,7 +27,7 @@ CCoverManager::~CCoverManager				()
 	xr_delete				(m_covers);
 }
 
-IC	bool CCoverManager::edge_vertex		(u32 index)
+inline	bool CCoverManager::edge_vertex		(u32 index)
 {
 	CLevelGraph::CVertex	*v = ai().level_graph().vertex(index);
 	return					(
@@ -38,7 +38,7 @@ IC	bool CCoverManager::edge_vertex		(u32 index)
 	);
 }
 
-IC	bool CCoverManager::cover			(CLevelGraph::CVertex *v, u32 index0, u32 index1)
+inline	bool CCoverManager::cover			(CLevelGraph::CVertex *v, u32 index0, u32 index1)
 {
 	return					(
 		ai().level_graph().valid_vertex_id(v->link(index0)) &&
@@ -47,7 +47,7 @@ IC	bool CCoverManager::cover			(CLevelGraph::CVertex *v, u32 index0, u32 index1)
 	);
 }
 
-IC	bool CCoverManager::critical_point	(CLevelGraph::CVertex *v, u32 index, u32 index0, u32 index1)
+inline	bool CCoverManager::critical_point	(CLevelGraph::CVertex *v, u32 index, u32 index0, u32 index1)
 {
 	return					(
 		!ai().level_graph().valid_vertex_id(v->link(index)) &&
@@ -60,7 +60,7 @@ IC	bool CCoverManager::critical_point	(CLevelGraph::CVertex *v, u32 index, u32 i
 	);
 }
 
-IC	bool CCoverManager::critical_cover	(u32 index)
+inline	bool CCoverManager::critical_cover	(u32 index)
 {
 	CLevelGraph::CVertex	*v = ai().level_graph().vertex(index);
 	return					(

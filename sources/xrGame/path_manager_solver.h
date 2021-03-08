@@ -50,17 +50,17 @@ protected:
 
 public:
 	virtual						~CPathManager	();
-	IC		void				setup			(const _Graph *graph, _DataStorage *_data_storage, xr_vector<_edge_type> *_path, const _index_type	&_start_node_index, const _index_type &_goal_node_index, const _Parameters &params);
-	IC		bool				is_goal_reached	(const _index_type &vertex_id) const;
-	IC		const _index_type	&get_value		(const_iterator &i, bool reverse_search = typename _Graph::reverse_search) const;
-	IC		const _edge_type	&edge			(const_iterator &i) const;
-	IC		_dist_type			evaluate		(const _index_type &node_index1, const _index_type &node_index2, const const_iterator &i) const;
-	IC		_dist_type			estimate		(const _index_type &vertex_id) const;
-	IC		void				init_path		();
+	inline		void				setup			(const _Graph *graph, _DataStorage *_data_storage, xr_vector<_edge_type> *_path, const _index_type	&_start_node_index, const _index_type &_goal_node_index, const _Parameters &params);
+	inline		bool				is_goal_reached	(const _index_type &vertex_id) const;
+	inline		const _index_type	&get_value		(const_iterator &i, bool reverse_search = typename _Graph::reverse_search) const;
+	inline		const _edge_type	&edge			(const_iterator &i) const;
+	inline		_dist_type			evaluate		(const _index_type &node_index1, const _index_type &node_index2, const const_iterator &i) const;
+	inline		_dist_type			estimate		(const _index_type &vertex_id) const;
+	inline		void				init_path		();
 	template <typename T>
-	IC		void				create_path		(T &vertex, _DataStorage &data_storage, bool reverse_order);
+	inline		void				create_path		(T &vertex, _DataStorage &data_storage, bool reverse_order);
 	template <typename T>
-	IC		void				create_path		(T &vertex);
+	inline		void				create_path		(T &vertex);
 };
 
 #include "path_manager_solver_inline.h"

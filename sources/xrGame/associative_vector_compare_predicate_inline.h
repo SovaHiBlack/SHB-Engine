@@ -23,36 +23,36 @@
 	>
 
 TEMPLATE_SPECIALIZATION
-IC	_associative_vector_compare_predicate::associative_vector_compare_predicate	()
+inline	_associative_vector_compare_predicate::associative_vector_compare_predicate	()
 {
 }
 
 TEMPLATE_SPECIALIZATION
-IC	_associative_vector_compare_predicate::associative_vector_compare_predicate	(const _compare_predicate_type &compare_predicate) :
+inline	_associative_vector_compare_predicate::associative_vector_compare_predicate	(const _compare_predicate_type &compare_predicate) :
 	inherited	(compare_predicate)
 {
 }
 
 TEMPLATE_SPECIALIZATION
-IC	bool _associative_vector_compare_predicate::operator()						(const _key_type &lhs, const _key_type &rhs) const
+inline	bool _associative_vector_compare_predicate::operator()						(const _key_type &lhs, const _key_type &rhs) const
 {
 	return		(inherited::operator()(lhs, rhs));
 }
 
 TEMPLATE_SPECIALIZATION
-IC	bool _associative_vector_compare_predicate::operator()						(const value_type &lhs, const value_type &rhs) const
+inline	bool _associative_vector_compare_predicate::operator()						(const value_type &lhs, const value_type &rhs) const
 {
 	return		(operator()(lhs.first, rhs.first));
 }
 
 TEMPLATE_SPECIALIZATION
-IC	bool _associative_vector_compare_predicate::operator()						(const value_type &lhs, const _key_type &rhs) const
+inline	bool _associative_vector_compare_predicate::operator()						(const value_type &lhs, const _key_type &rhs) const
 {
 	return		(operator()(lhs.first, rhs));
 }
 
 TEMPLATE_SPECIALIZATION
-IC	bool _associative_vector_compare_predicate::operator()						(const _key_type &lhs, const value_type &rhs) const
+inline	bool _associative_vector_compare_predicate::operator()						(const _key_type &lhs, const value_type &rhs) const
 {
 	return		(operator()(lhs, rhs.first));
 }

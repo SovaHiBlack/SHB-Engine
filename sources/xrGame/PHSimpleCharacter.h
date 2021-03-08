@@ -30,7 +30,7 @@ protected:
 		void					Construct( );
 		float					ContactVelocity( ) const;
 		void					HitDir(Fvector& dir) const;
-		IC	const Fvector& HitPos( ) const
+		inline	const Fvector& HitPos( ) const
 		{
 			return cast_fv(m_damege_contact.geom.pos);
 		}
@@ -292,8 +292,8 @@ private:
 	void		SafeAndLimitVelocity( );
 	void		UpdateStaticDamage(dContact* c, SGameMtl* tri_material, bool bo1);
 	void		UpdateDynamicDamage(dContact* c, u16 obj_material_idx, dBodyID b, bool bo1);
-	IC	void 		FootProcess(dContact* c, bool& do_collide, bool bo);
-	IC	void		foot_material_update(u16	tri_material, u16	foot_material_idx);
+	inline	void 		FootProcess(dContact* c, bool& do_collide, bool bo);
+	inline	void		foot_material_update(u16	tri_material, u16	foot_material_idx);
 	static void	TestPathCallback(bool& do_colide, bool bo1, dContact& c, SGameMtl* /*material_1*/, SGameMtl* /*material_2*/);
 public:
 #ifdef DEBUG
