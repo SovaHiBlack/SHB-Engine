@@ -4,7 +4,7 @@
 #include "Explosive.h"
 #include "..\ENGINE\feel_touch.h"
 
-#define SND_RIC_COUNT 5
+//#define SND_RIC_COUNT 5
 
 class CGrenade : public CMissile, public CExplosive
 {
@@ -68,7 +68,7 @@ protected:
 	virtual void			UpdateXForm( )
 	{
 		CMissile::UpdateXForm( );
-	};
+	}
 
 public:
 	virtual BOOL			UsedAI_Locations( );

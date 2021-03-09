@@ -1,12 +1,9 @@
-///////////////////////////////////////////////////////////////
 // DummyArtefact.cpp
 // DummyArtefact - артефакт пустышка
-///////////////////////////////////////////////////////////////
 
 #include "stdafx.h"
 
 #include "DummyArtefact.h"
-//#include "PhysicsShell.h"
 
 CDummyArtefact::CDummyArtefact( )
 { }

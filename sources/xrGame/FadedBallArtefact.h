@@ -1,7 +1,5 @@
-///////////////////////////////////////////////////////////////
 // FadedBallArtefact.h
 // FadedBallArtefact - артефакт блеклый шар
-///////////////////////////////////////////////////////////////
 
 #pragma once
 
@@ -10,7 +8,7 @@
 class CFadedBallArtefact : public CArtefact
 {
 private:
-	typedef CArtefact inherited;
+	using inherited = CArtefact;
 
 public:
 	CFadedBallArtefact( );

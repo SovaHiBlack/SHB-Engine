@@ -13,7 +13,7 @@ class ENGINE_API CMotionDef;
 class CWeaponMagazined : public CWeapon
 {
 private:
-	using inherited										= CWeapon;
+	using inherited = CWeapon;
 
 protected:
 	// Media :: sounds
@@ -23,13 +23,13 @@ protected:
 	HUD_SOUND											sndEmptyClick;
 	HUD_SOUND											sndReload;
 	//звук текущего выстрела
-	HUD_SOUND*											m_pSndShotCurrent;
+	HUD_SOUND* m_pSndShotCurrent;
 
-	virtual void				StopHUDSounds			( );
+	virtual void				StopHUDSounds( );
 
 	//дополнительная информация о глушителе
-	const char*											m_sSilencerFlameParticles;
-	const char*											m_sSilencerSmokeParticles;
+	const char* m_sSilencerFlameParticles;
+	const char* m_sSilencerSmokeParticles;
 	HUD_SOUND											sndSilencerShot;
 
 	ESoundTypes											m_eSoundShow;
@@ -56,93 +56,93 @@ protected:
 	u32													dwUpdateSounds_Frame;
 
 protected:
-	virtual void				OnMagazineEmpty			( );
+	virtual void				OnMagazineEmpty( );
 
-	virtual void				switch2_Idle			( );
-	virtual void				switch2_Fire			( );
-	virtual void				switch2_Fire2			( )
+	virtual void				switch2_Idle( );
+	virtual void				switch2_Fire( );
+	virtual void				switch2_Fire2( )
 	{ }
-	virtual void				switch2_Empty			( );
-	virtual void				switch2_Reload			( );
-	virtual void				switch2_Hiding			( );
-	virtual void				switch2_Hidden			( );
-	virtual void				switch2_Showing			( );
+	virtual void				switch2_Empty( );
+	virtual void				switch2_Reload( );
+	virtual void				switch2_Hiding( );
+	virtual void				switch2_Hidden( );
+	virtual void				switch2_Showing( );
 
-	virtual void				OnShot					( );
+	virtual void				OnShot( );
 
-	virtual void				OnEmptyClick			( );
+	virtual void				OnEmptyClick( );
 
-	virtual void				OnAnimationEnd			(u32 state);
-	virtual void				OnStateSwitch			(u32 S);
+	virtual void				OnAnimationEnd(u32 state);
+	virtual void				OnStateSwitch(u32 S);
 
-	virtual void				UpdateSounds			( );
+	virtual void				UpdateSounds( );
 
-	bool						TryReload				( );
-	bool						TryPlayAnimIdle			( );
+	bool						TryReload( );
+	bool						TryPlayAnimIdle( );
 
 protected:
-	virtual void				ReloadMagazine			( );
-	void						ApplySilencerKoeffs		( );
+	virtual void				ReloadMagazine( );
+	void						ApplySilencerKoeffs( );
 
-	virtual void				state_Fire				(float dt);
-	virtual void				state_MagEmpty			(float dt);
-	virtual void				state_Misfire			(float dt);
+	virtual void				state_Fire(float dt);
+	virtual void				state_MagEmpty(float dt);
+	virtual void				state_Misfire(float dt);
 
 public:
-								CWeaponMagazined		(const char* name = "AK74", ESoundTypes eSoundType = SOUND_TYPE_WEAPON_SUBMACHINEGUN);
-	virtual						~CWeaponMagazined		( );
+	CWeaponMagazined(const char* name = "AK74", ESoundTypes eSoundType = SOUND_TYPE_WEAPON_SUBMACHINEGUN);
+	virtual						~CWeaponMagazined( );
 
-	virtual void				Load					(const char* section);
-	virtual CWeaponMagazined*	cast_weapon_magazined	( )
+	virtual void				Load(const char* section);
+	virtual CWeaponMagazined* cast_weapon_magazined( )
 	{
 		return this;
 	}
 
-	virtual void				SetDefaults				( );
-	virtual void				FireStart				( );
-	virtual void				FireEnd					( );
-	virtual void				Reload					( );
+	virtual void				SetDefaults( );
+	virtual void				FireStart( );
+	virtual void				FireEnd( );
+	virtual void				Reload( );
 
-	virtual void				UpdateCL				( );
-	virtual void				net_Destroy				( );
-	virtual void				net_Export				(NET_Packet& P);
-	virtual void				net_Import				(NET_Packet& P);
+	virtual void				UpdateCL( );
+	virtual void				net_Destroy( );
+	virtual void				net_Export(NET_Packet& P);
+	virtual void				net_Import(NET_Packet& P);
 
-	virtual void				OnH_A_Chield			( );
+	virtual void				OnH_A_Chield( );
 
-	virtual bool				Attach					(PIItem pIItem, bool b_send_event);
-	virtual bool				Detach					(const char* item_section_name, bool b_spawn_item);
-	virtual bool				CanAttach				(PIItem pIItem);
-	virtual bool				CanDetach				(const char* item_section_name);
+	virtual bool				Attach(PIItem pIItem, bool b_send_event);
+	virtual bool				Detach(const char* item_section_name, bool b_spawn_item);
+	virtual bool				CanAttach(PIItem pIItem);
+	virtual bool				CanDetach(const char* item_section_name);
 
-	virtual void				InitAddons				( );
+	virtual void				InitAddons( );
 
-	virtual bool				Action					(int cmd, u32 flags);
-	virtual void				onMovementChanged		(ACTOR_DEFS::EMoveCommand cmd);
-	bool						IsAmmoAvailable			( );
-	virtual void				UnloadMagazine			(bool spawn_ammo = true);
+	virtual bool				Action(int cmd, u32 flags);
+	virtual void				onMovementChanged(ACTOR_DEFS::EMoveCommand cmd);
+	bool						IsAmmoAvailable( );
+	virtual void				UnloadMagazine(bool spawn_ammo = true);
 
-	virtual void				GetBriefInfo			(xr_string& str_name, xr_string& icon_sect_name, xr_string& str_count);
+	virtual void				GetBriefInfo(xr_string& str_name, xr_string& icon_sect_name, xr_string& str_count);
 
 	//////////////////////////////////////////////
 	// для стрельбы очередями или одиночными
 	//////////////////////////////////////////////
 public:
-	virtual bool				SwitchMode				( );
-	virtual bool				SingleShotMode			( )
+	virtual bool				SwitchMode( );
+	virtual bool				SingleShotMode( )
 	{
 		return 1 == m_iQueueSize;
 	}
-	virtual void				SetQueueSize			(int size);
-	inline int					GetQueueSize			( ) const
+	virtual void				SetQueueSize(int size);
+	inline int					GetQueueSize( ) const
 	{
 		return m_iQueueSize;
 	};
-	virtual bool				StopedAfterQueueFired	( )
+	virtual bool				StopedAfterQueueFired( )
 	{
 		return m_bStopedAfterQueueFired;
 	}
-	virtual void				StopedAfterQueueFired	(bool value)
+	virtual void				StopedAfterQueueFired(bool value)
 	{
 		m_bStopedAfterQueueFired = value;
 	}
@@ -174,44 +174,44 @@ protected:
 	// режим приближения
 	//////////////////////////////////////////////
 public:
-	virtual void				OnZoomIn				( );
-	virtual void				OnZoomOut				( );
-	virtual void				OnNextFireMode			( );
-	virtual void				OnPrevFireMode			( );
-	virtual bool				HasFireModes			( )
+	virtual void				OnZoomIn( );
+	virtual void				OnZoomOut( );
+	virtual void				OnNextFireMode( );
+	virtual void				OnPrevFireMode( );
+	virtual bool				HasFireModes( )
 	{
 		return m_bHasDifferentFireModes;
 	}
-	virtual int					GetCurrentFireMode		( )
+	virtual int					GetCurrentFireMode( )
 	{
 		return m_aFireModes[m_iCurFireMode];
 	}
-	virtual const char*			GetCurrentFireModeStr	( )
+	virtual const char* GetCurrentFireModeStr( )
 	{
 		return m_sCurFireMode;
 	}
 
-	virtual void				save					(NET_Packet& output_packet);
-	virtual void				load					(IReader& input_packet);
+	virtual void				save(NET_Packet& output_packet);
+	virtual void				load(IReader& input_packet);
 
 protected:
-	virtual bool				AllowFireWhileWorking	( )
+	virtual bool				AllowFireWhileWorking( )
 	{
 		return false;
 	}
 
 	//виртуальные функции для проигрывания анимации HUD
-	virtual void				PlayAnimShow			( );
-	virtual void				PlayAnimHide			( );
-	virtual void				PlayAnimReload			( );
-	virtual void				PlayAnimIdle			( );
-	virtual void				PlayAnimShoot			( );
-	virtual void				PlayReloadSound			( );
+	virtual void				PlayAnimShow( );
+	virtual void				PlayAnimHide( );
+	virtual void				PlayAnimReload( );
+	virtual void				PlayAnimIdle( );
+	virtual void				PlayAnimShoot( );
+	virtual void				PlayReloadSound( );
 
-	virtual void				StartIdleAnim			( );
-	virtual int					ShotsFired				( )
+	virtual void				StartIdleAnim( );
+	virtual int					ShotsFired( )
 	{
 		return m_iShotNum;
 	}
-	virtual float				GetWeaponDeterioration	( );
+	virtual float				GetWeaponDeterioration( );
 };

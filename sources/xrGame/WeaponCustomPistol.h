@@ -2,7 +2,7 @@
 
 #include "WeaponMagazined.h"
 
-#define SND_RIC_COUNT 5
+//#define SND_RIC_COUNT 5
 
 class CWeaponCustomPistol : public CWeaponMagazined
 {
@@ -15,7 +15,7 @@ public:
 	virtual int		GetCurrentFireMode		( )
 	{
 		return 1;
-	};
+	}
 
 protected:
 	virtual void	FireEnd					( );

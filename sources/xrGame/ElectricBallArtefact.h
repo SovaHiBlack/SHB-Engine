@@ -1,7 +1,5 @@
-///////////////////////////////////////////////////////////////
 // ElectricBallArtefact.h
 // ElectricBallArtefact - артефакт электрический шар
-///////////////////////////////////////////////////////////////
 
 #pragma once
 
@@ -10,7 +8,7 @@
 class CElectricBallArtefact : public CArtefact
 {
 private:
-	typedef CArtefact inherited;
+	using inherited = CArtefact;
 
 public:
 	CElectricBallArtefact( );

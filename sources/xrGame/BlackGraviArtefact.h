@@ -1,8 +1,5 @@
-///////////////////////////////////////////////////////////////
 // BlackGraviArtefact.h
-// BlackGraviArtefact - гравитационный артефакт, 
-// такой же как и обычный, но при получении хита
-///////////////////////////////////////////////////////////////
+// BlackGraviArtefact - гравитационный артефакт, такой же как и обычный, но при получении хита
 
 #pragma once
 
@@ -20,7 +17,7 @@ private:
 	collide::rq_results		rq_storage;
 
 private:
-	typedef CGraviArtefact inherited;
+	using inherited = CGraviArtefact;
 
 public:
 	CBlackGraviArtefact( );

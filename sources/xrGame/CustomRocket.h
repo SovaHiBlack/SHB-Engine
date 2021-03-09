@@ -12,7 +12,7 @@ struct SRoketContact
 	bool contact;
 	Fvector pos;
 	Fvector up;
-						SRoketContact			( )
+	SRoketContact( )
 	{
 		contact = false;
 	}
@@ -21,7 +21,7 @@ struct SRoketContact
 class CCustomRocket : public CPHItem, public CPHUpdateObject
 {
 private:
-	using inherited								= CPHItem;
+	using inherited = CPHItem;
 	friend CRocketLauncher;
 
 public:
@@ -29,46 +29,46 @@ public:
 	//	Generic
 	//////////////////////////////////////////////////////////////////////////
 
-						CCustomRocket			( );
-	virtual				~CCustomRocket			( );
+	CCustomRocket( );
+	virtual				~CCustomRocket( );
 
-	virtual void		Load					(const char* section);
-	virtual BOOL		net_Spawn				(CSE_Abstract* DC);
-	virtual void		net_Destroy				( );
-	virtual BOOL		AlwaysTheCrow			( )
+	virtual void		Load(const char* section);
+	virtual BOOL		net_Spawn(CSE_Abstract* DC);
+	virtual void		net_Destroy( );
+	virtual BOOL		AlwaysTheCrow( )
 	{
 		return TRUE;
 	}
 
-	virtual void		reinit					( );
-	virtual void		reload					(const char* section);
+	virtual void		reinit( );
+	virtual void		reload(const char* section);
 
-	virtual void		OnH_A_Independent		( );
-	virtual void		OnH_B_Independent		(bool just_before_destroy);
-	virtual void		OnH_B_Chield			( );
-	virtual void		OnH_A_Chield			( );
-	virtual void		UpdateCL				( );
+	virtual void		OnH_A_Independent( );
+	virtual void		OnH_B_Independent(bool just_before_destroy);
+	virtual void		OnH_B_Chield( );
+	virtual void		OnH_A_Chield( );
+	virtual void		UpdateCL( );
 
-	virtual BOOL		UsedAI_Locations		( )
+	virtual BOOL		UsedAI_Locations( )
 	{
 		return FALSE;
 	}
-	virtual bool		Useful					( ) const
+	virtual bool		Useful( ) const
 	{
 		return (m_eState == eInactive);
 	}
 
-	virtual void		renderable_Render		( )
+	virtual void		renderable_Render( )
 	{
 		inherited::renderable_Render( );
 	}
 
 //создание физической оболочки
-	virtual void		activate_physic_shell	( );
-	virtual void		create_physic_shell		( );
+	virtual void		activate_physic_shell( );
+	virtual void		create_physic_shell( );
 
-	virtual void		PhDataUpdate			(float step);
-	virtual void		PhTune					(float step);
+	virtual void		PhDataUpdate(float step);
+	virtual void		PhTune(float step);
 
 	//////////////////////////////////////////////////////////////////////////
 	//	Rocket Properties
@@ -76,28 +76,28 @@ public:
 public:
 
 #ifdef DEBUG
-	CGameObject*		owner					( )
+	CGameObject* owner( )
 	{
 		return m_pOwner;
 	}
 #endif // def DEBUG
 
-	virtual void		StartEngine				( );
-	virtual void		StopEngine				( );
-	virtual void		UpdateEngine			( );
-	virtual void		UpdateEnginePh			( );
+	virtual void		StartEngine( );
+	virtual void		StopEngine( );
+	virtual void		UpdateEngine( );
+	virtual void		UpdateEnginePh( );
 
-	virtual void		StartFlying				( );
-	virtual void		StopFlying				( );
+	virtual void		StartFlying( );
+	virtual void		StopFlying( );
 
-	virtual void		SetLaunchParams			(const Fmatrix& xform, const Fvector& vel, const Fvector& angular_vel);
+	virtual void		SetLaunchParams(const Fmatrix& xform, const Fvector& vel, const Fvector& angular_vel);
 
-	virtual void		OnEvent					(NET_Packet& P, u16 type);
+	virtual void		OnEvent(NET_Packet& P, u16 type);
 	bool										m_bLaunched;
 
 protected:
 	//указатель на владельца RocketLauncher - который стреляет ракету
-	CGameObject*								m_pOwner;
+	CGameObject* m_pOwner;
 
 	SRoketContact								m_contact;
 	//параметры которые задаются RocketLauncher-ом перед пуском
@@ -127,9 +127,9 @@ protected:
 	int											m_dwEngineTime;
 
 	//обработка столкновения
-	virtual void		Contact					(const Fvector& pos, const Fvector& normal);
-	void				PlayContact				( );
-	static void			ObjectContactCallback	(bool& do_colide, bool bo1, dContact& c, SGameMtl* /*material_1*/, SGameMtl* /*material_2*/);
+	virtual void		Contact(const Fvector& pos, const Fvector& normal);
+	void				PlayContact( );
+	static void			ObjectContactCallback(bool& do_colide, bool bo1, dContact& c, SGameMtl* /*material_1*/, SGameMtl* /*material_2*/);
 
 	//////////////////////////////////////////////////////////////////////////
 	//	Lights
@@ -146,9 +146,9 @@ protected:
 	ref_sound									m_flyingSound;
 
 protected:
-	virtual void		StartLights				( );
-	virtual void		StopLights				( );
-	virtual void		UpdateLights			( );
+	virtual void		StartLights( );
+	virtual void		StopLights( );
+	virtual void		UpdateLights( );
 
 	//////////////////////////////////////////////////////////////////////////
 	//	Particles
@@ -156,10 +156,10 @@ protected:
 protected:
 	//имя партиклов двигателя
 	shared_str									m_sEngineParticles;
-	CParticlesObject*							m_pEngineParticles;
+	CParticlesObject* m_pEngineParticles;
 	//имя партиклов полета
 	shared_str									m_sFlyParticles;
-	CParticlesObject*							m_pFlyParticles;
+	CParticlesObject* m_pFlyParticles;
 
 	Fvector										m_vPrevVel;
 	float										m_time_to_explode;
@@ -170,10 +170,10 @@ protected:
 #endif // def DEBUG
 
 protected:
-	virtual void		StartEngineParticles	( );
-	virtual void		StopEngineParticles		( );
-	virtual void		StartFlyParticles		( );
-	virtual void		StopFlyParticles		( );
+	virtual void		StartEngineParticles( );
+	virtual void		StopEngineParticles( );
+	virtual void		StartFlyParticles( );
+	virtual void		StopFlyParticles( );
 
-	virtual void		UpdateParticles			( );
+	virtual void		UpdateParticles( );
 };

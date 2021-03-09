@@ -1,7 +1,5 @@
-///////////////////////////////////////////////////////////////
 // GalantineArtefact.h
-// GalantineArtefact - артефакт ведбмин студень
-///////////////////////////////////////////////////////////////
+// GalantineArtefact - артефакт ведьмин студень
 
 #pragma once
 
@@ -10,7 +8,7 @@
 class CGalantineArtefact : public CArtefact 
 {
 private:
-	typedef CArtefact inherited;
+	using inherited = CArtefact;
 
 public:
 	CGalantineArtefact( );

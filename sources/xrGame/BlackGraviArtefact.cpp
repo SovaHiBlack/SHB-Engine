@@ -1,18 +1,10 @@
-///////////////////////////////////////////////////////////////
 // BlackGraviArtefact.cpp
-// BlackGraviArtefact - гравитационный артефакт, 
-// такой же как и обычный, но при получении хита
-///////////////////////////////////////////////////////////////
+// BlackGraviArtefact - гравитационный артефакт, такой же как и обычный, но при получении хита
 
 #include "stdafx.h"
 
 #include "BlackGraviArtefact.h"
-//#include "PhysicsShell.h"
-//#include "entity_alive.h"
-//#include "ParticlesObject.h"
 #include "PHMovementControl.h"
-//#include "Messages.h"
-//#include "PHShellHolder.h"
 #include "Explosive.h"
 #include "../ENGINE/net_utils.h"
 #include "PHWorld.h"
@@ -46,7 +38,10 @@ void CBlackGraviArtefact::Load(const char* section)
 
 BOOL CBlackGraviArtefact::net_Spawn(CSE_Abstract* DC)
 {
-	if (!inherited::net_Spawn(DC)) return FALSE;
+	if (!inherited::net_Spawn(DC))
+	{
+		return FALSE;
+	}
 
 	CParticlesObject* pStaticPG;
 	pStaticPG = CParticlesObject::Create("anomaly\\galantine", FALSE);
@@ -121,7 +116,7 @@ void CBlackGraviArtefact::UpdateCLChild( )
 	}
 }
 
-void	CBlackGraviArtefact::Hit(SHit* pHDS)
+void CBlackGraviArtefact::Hit(SHit* pHDS)
 {
 	SHit HDS = *pHDS;
 	if (HDS.impulse > m_fImpulseThreshold)
@@ -161,9 +156,13 @@ BOOL CBlackGraviArtefact::feel_touch_contact(CObject* O)
 	CGameObject* pGameObject = static_cast<CGameObject*>(O);
 
 	if (pGameObject)
+	{
 		return TRUE;
+	}
 	else
+	{
 		return FALSE;
+	}
 }
 
 void CBlackGraviArtefact::GraviStrike( )
@@ -176,24 +175,25 @@ void CBlackGraviArtefact::GraviStrike( )
 
 	rq_storage.r_clear( );
 
-	for (GAME_OBJECT_LIST_it it = m_GameObjectList.begin( );
-		 m_GameObjectList.end( ) != it;
-		 ++it)
+	for (GAME_OBJECT_LIST_it it = m_GameObjectList.begin( ); m_GameObjectList.end( ) != it; ++it)
 	{
 		CPHShellHolder* pGameObject = *it;
 
 		if (pGameObject->Visual( ))
+		{
 			pGameObject->Center(object_pos);
+		}
 		else
+		{
 			object_pos.set(pGameObject->Position( ));
+		}
 
 		strike_dir.sub(object_pos, Position( ));
 		float distance = strike_dir.magnitude( );
 
-		float impulse = 100.f * m_fStrikeImpulse * (1.f - (distance / m_fRadius) *
-													(distance / m_fRadius));
+		float impulse = 100.0f * m_fStrikeImpulse * (1.0f - (distance / m_fRadius) * (distance / m_fRadius));
 
-		if (impulse > .001f)
+		if (impulse > 0.001f)
 		{
 //?			BOOL		enabled = getEnabled();
 //?			setEnabled	(FALSE);
@@ -203,22 +203,28 @@ void CBlackGraviArtefact::GraviStrike( )
 
 		float hit_power;
 		CEntityAlive* pEntityAlive = smart_cast<CEntityAlive*>(pGameObject);
-		if (pGameObject->m_pPhysicsShell)	hit_power = 0;
-		else if (pEntityAlive && pEntityAlive->g_Alive( ) &&
-				 pEntityAlive->character_physics_support( )->movement( )->CharacterExist( ))
+		if (pGameObject->m_pPhysicsShell)
+		{
 			hit_power = 0;
+		}
+		else if (pEntityAlive && pEntityAlive->g_Alive( ) && pEntityAlive->character_physics_support( )->movement( )->CharacterExist( ))
+		{
+			hit_power = 0;
+		}
 		else
+		{
 			hit_power = impulse;
+		}
 
-		if (impulse > .001f)
+		if (impulse > 0.001f)
 		{
 			while (!elements_list.empty( ))
 			{
 				s16 element = elements_list.front( );
 				Fvector3 bone_pos = bone_position_list.front( );
 
-				NET_Packet		P;
-				SHit	HS;
+				NET_Packet P;
+				SHit HS;
 				HS.GenHeader(GE_HIT, pGameObject->ID( ));
 				HS.whoID = ID( );
 				HS.weaponID = ID( );

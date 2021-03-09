@@ -1,6 +1,4 @@
 // WeaponDispersion.cpp: разбос при стрельбе
-// 
-//////////////////////////////////////////////////////////////////////
 
 #include "stdafx.h"
 
@@ -72,7 +70,7 @@ void	CWeapon::ClearShotEffector	()
 	CInventoryOwner* pInventoryOwner = smart_cast<CInventoryOwner*>(H_Parent());
 	if (pInventoryOwner)
 		pInventoryOwner->on_weapon_hide	(this);
-};
+}
 
 /**
 const Fvector& CWeapon::GetRecoilDeltaAngle()

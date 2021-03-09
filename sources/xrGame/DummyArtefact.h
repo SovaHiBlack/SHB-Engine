@@ -1,7 +1,5 @@
-///////////////////////////////////////////////////////////////
 // DummyArtefact.h
 // DummyArtefact - артефакт пустышка
-///////////////////////////////////////////////////////////////
 
 #pragma once
 
@@ -10,7 +8,7 @@
 class CDummyArtefact : public CArtefact
 {
 private:
-	typedef CArtefact inherited;
+	using inherited = CArtefact;
 
 public:
 	CDummyArtefact( );

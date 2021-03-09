@@ -1,8 +1,5 @@
-///////////////////////////////////////////////////////////////
 // MercuryBallArtefact.h	Ртутный шар
-// MercuryBallArtefact - переливающийся и колыхающийся шар
-// перекатывается с места на место
-///////////////////////////////////////////////////////////////
+// MercuryBallArtefact - переливающийся и колыхающийся шар перекатывается с места на место
 
 #pragma once
 
@@ -11,7 +8,7 @@
 class CMercuryBallArtefact : public CArtefact
 {
 private:
-	typedef CArtefact inherited;
+	using inherited = CArtefact;
 
 public:
 	CMercuryBallArtefact( );

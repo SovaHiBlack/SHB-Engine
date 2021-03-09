@@ -1,7 +1,5 @@
-///////////////////////////////////////////////////////////////
 // ThornArtefact.h
 // ThornArtefact - артефакт колючка
-///////////////////////////////////////////////////////////////
 
 #pragma once
 
@@ -10,7 +8,7 @@
 class CThornArtefact : public CArtefact
 {
 private:
-	typedef CArtefact inherited;
+	using inherited = CArtefact;
 
 public:
 	CThornArtefact( );

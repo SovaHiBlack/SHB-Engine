@@ -1,18 +1,18 @@
-///////////////////////////////////////////////////////////////
 // BlackDropsArtefact.h
 // BlackDropsArtefact - черные капли
-///////////////////////////////////////////////////////////////
 
 #pragma once
+
 #include "Artefact.h"
 
 class CBlackDropsArtefact : public CArtefact
 {
 private:
-	typedef CArtefact inherited;
+	using inherited = CArtefact;
+
 public:
 	CBlackDropsArtefact( );
 	virtual ~CBlackDropsArtefact( );
 
-	virtual void Load				(const char* section);
+	virtual void Load(const char* section);
 };

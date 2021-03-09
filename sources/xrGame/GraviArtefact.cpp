@@ -1,17 +1,11 @@
-///////////////////////////////////////////////////////////////
 // GraviArtefact.cpp
-// GraviArtefact - гравитационный артефакт, прыгает на месте
-// и неустойчиво парит над землей
-///////////////////////////////////////////////////////////////
+// GraviArtefact - гравитационный артефакт, прыгает на месте и неустойчиво парит над землей
 
 #include "stdafx.h"
 
 #include "GraviArtefact.h"
 #include "PhysicsShell.h"
 #include "Level.h"
-//#include "Messages.h"
-//#include "game_cl_base.h"
-//#include "..\ENGINE\skeletoncustom.h"
 #include "PHWorld.h"
 
 extern CPHWorld* ph_world;

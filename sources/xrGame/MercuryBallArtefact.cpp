@@ -1,8 +1,5 @@
-///////////////////////////////////////////////////////////////
 // MercuryBallArtefact.cpp
-// MercuryBallArtefact - переливающийся и колыхающийся шар
-// перекатывается с места на место
-///////////////////////////////////////////////////////////////
+// MercuryBallArtefact - переливающийся и колыхающийся шар перекатывается с места на место
 
 #include "stdafx.h"
 
@@ -14,8 +11,8 @@ CMercuryBallArtefact::CMercuryBallArtefact( )
 	m_timeLastUpdate = 0;
 	m_timeToUpdate = 1000;
 
-	m_fImpulseMin = 45.f;
-	m_fImpulseMax = 90.f;
+	m_fImpulseMin = 45.0f;
+	m_fImpulseMax = 90.0f;
 }
 
 CMercuryBallArtefact::~CMercuryBallArtefact( )

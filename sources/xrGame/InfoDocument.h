@@ -1,7 +1,5 @@
-///////////////////////////////////////////////////////////////
 // InfoDocument.h
 // InfoDocument - документ, содержащий сюжетную информацию
-///////////////////////////////////////////////////////////////
 
 #pragma once
 
@@ -11,23 +9,23 @@
 class CInfoDocument : public CInventoryItemObject
 {
 private:
-	typedef	CInventoryItemObject inherited;
+	using inherited						= CInventoryItemObject;
 
 public:
-	CInfoDocument( );
-	virtual ~CInfoDocument( );
+					CInfoDocument		( );
+	virtual			~CInfoDocument		( );
 
-	virtual BOOL net_Spawn(CSE_Abstract* DC);
-	virtual void Load(const char* section);
-	virtual void net_Destroy( );
-	virtual void shedule_Update(u32 dt);
-	virtual void UpdateCL( );
-	virtual void renderable_Render( );
+	virtual BOOL	net_Spawn			(CSE_Abstract* DC);
+	virtual void	Load				(const char* section);
+	virtual void	net_Destroy			( );
+	virtual void	shedule_Update		(unsigned int dt);
+	virtual void	UpdateCL			( );
+	virtual void	renderable_Render	( );
 
-	virtual void OnH_A_Chield( );
-	virtual void OnH_B_Independent(bool just_before_destroy);
+	virtual void	OnH_A_Chield		( );
+	virtual void	OnH_B_Independent	(bool just_before_destroy);
 
 protected:
 	//индекс информации, содержащейся в документе
-	shared_str m_Info;
+	shared_str							m_Info;
 };

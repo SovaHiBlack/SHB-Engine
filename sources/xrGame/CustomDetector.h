@@ -12,7 +12,6 @@ struct ZONE_TYPE
 	float		min_freq;
 	float		max_freq;
 	//звук реакции детектора на конкретную зону
-//	ref_sound	detect_snd;
 	HUD_SOUND	detect_snds;
 
 	shared_str	zone_map_location;
@@ -35,7 +34,7 @@ class CInventoryOwner;
 
 class CCustomDetector : public CInventoryItemObject, public Feel::Touch
 {
-	typedef	CInventoryItemObject	inherited;
+	using inherited = CInventoryItemObject;
 
 public:
 	CCustomDetector(void);

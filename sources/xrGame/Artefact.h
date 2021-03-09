@@ -10,7 +10,7 @@ struct SArtefactActivation;
 class CArtefact : public CHudItemObject, public CPHUpdateObject
 {
 private:
-	typedef			CHudItemObject	inherited;
+	using inherited = CHudItemObject;
 
 public:
 	CArtefact( );
@@ -49,7 +49,7 @@ public:
 
 protected:
 	virtual void					UpdateCLChild( )
-	{ };
+	{ }
 
 	u16								m_CarringBoneID;
 	shared_str						m_sParticlesName;
@@ -72,18 +72,18 @@ public:
 	virtual void					StopLights( );
 	void							ActivateArtefact( );
 	bool							CanBeActivated( )
-	{
+	{	// does artefact can spawn anomaly zone
 		return m_bCanSpawnZone;
-	};// does artefact can spawn anomaly zone
+	}
 
 	virtual void					PhDataUpdate(dReal step);
 	virtual void					PhTune(dReal step)
-	{ };
+	{ }
 
 	bool							m_bCanSpawnZone;
 	float							m_fHealthRestoreSpeed;
-	float 							m_fRadiationRestoreSpeed;
-	float 							m_fSatietyRestoreSpeed;
+	float							m_fRadiationRestoreSpeed;
+	float							m_fSatietyRestoreSpeed;
 	float							m_fPowerRestoreSpeed;
 	float							m_fBleedingRestoreSpeed;
 	CHitImmunity 					m_ArtefactHitImmunities;
@@ -102,7 +102,7 @@ public:
 		eShowing,
 		eHiding,
 		eHidden,
-		eActivating,
+		eActivating
 	};
 	virtual	void					PlayAnimIdle( );
 
@@ -120,7 +120,6 @@ public:
 	virtual u16						bone_count_to_synchronize( ) const;
 
 	// optimization FAST/SLOW mode
-
 	u32						o_render_frame;
 	BOOL					o_fastmode;
 	inline void					o_switch_2_fast( )
@@ -136,8 +135,7 @@ public:
 		//processing_deactivate		();
 	}
 
-	public:
-		static void script_register(lua_State*);
+	static void script_register(lua_State*);
 };
 
 add_to_type_list(CArtefact)

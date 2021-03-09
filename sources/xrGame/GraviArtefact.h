@@ -1,8 +1,5 @@
-///////////////////////////////////////////////////////////////
 // GraviArtefact.h
-// GraviArtefact - гравитационный артефакт, прыгает на месте
-// и парит над землей
-///////////////////////////////////////////////////////////////
+// GraviArtefact - гравитационный артефакт, прыгает на месте и парит над землей
 
 #pragma once
 
@@ -11,7 +8,7 @@
 class CGraviArtefact : public CArtefact
 {
 private:
-	typedef CArtefact inherited;
+	using inherited = CArtefact;
 
 public:
 	CGraviArtefact( );

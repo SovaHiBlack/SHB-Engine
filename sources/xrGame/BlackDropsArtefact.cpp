@@ -1,12 +1,9 @@
-///////////////////////////////////////////////////////////////
 // BlackDropsArtefact.cpp
 // BlackDropsArtefact - черные капли
-///////////////////////////////////////////////////////////////
 
 #include "stdafx.h"
 
 #include "BlackDropsArtefact.h"
-//#include "PhysicsShell.h"
 
 CBlackDropsArtefact::CBlackDropsArtefact( )
 { }

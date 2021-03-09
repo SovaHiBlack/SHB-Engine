@@ -1,6 +1,5 @@
 // WeaponFire.cpp: implementation of the CWeapon class.
 // function responsible for firing with CWeapon
-//////////////////////////////////////////////////////////////////////
 
 #include "stdafx.h"
 
@@ -47,7 +46,7 @@ void random_dir(Fvector& tgt_dir, const Fvector& src_dir, float dispersion)
 float CWeapon::GetWeaponDeterioration	()
 {
 	return conditionDecreasePerShot;
-};
+}
 
 void CWeapon::FireTrace		(const Fvector& P, const Fvector& D)
 {
@@ -136,5 +135,8 @@ void CWeapon::StopFlameParticles2	()
 
 void CWeapon::UpdateFlameParticles2	()
 {
-	if (m_pFlameParticles2)			CShootingObject::UpdateParticles (m_pFlameParticles2, get_LastFP2());
+	if (m_pFlameParticles2)
+	{
+		CShootingObject::UpdateParticles(m_pFlameParticles2, get_LastFP2( ));
+	}
 }

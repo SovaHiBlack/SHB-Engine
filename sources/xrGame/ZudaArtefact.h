@@ -1,7 +1,5 @@
-///////////////////////////////////////////////////////////////
 // ZudaArtefact.h
 // ZudaArtefact - артефакт зуда
-///////////////////////////////////////////////////////////////
 
 #pragma once
 
@@ -10,7 +8,7 @@
 class CZudaArtefact : public CArtefact
 {
 private:
-	typedef CArtefact inherited;
+	using inherited = CArtefact;
 
 public:
 	CZudaArtefact( );

@@ -1,7 +1,5 @@
-///////////////////////////////////////////////////////////////
 // BastArtefact.h
 // BastArtefact - артефакт мочалка
-///////////////////////////////////////////////////////////////
 
 #pragma once
 
@@ -19,7 +17,7 @@ using ALIVE_LIST_it = ALIVE_LIST::iterator;
 class CBastArtefact : public CArtefact, public Feel::Touch
 {
 private:
-	typedef CArtefact inherited;
+	using inherited = CArtefact;
 
 public:
 	CBastArtefact( );

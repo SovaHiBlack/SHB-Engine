@@ -1,7 +1,5 @@
-///////////////////////////////////////////////////////////////
 // RustyHairArtefact.h
 // RustyHairArtefact - артефакт ржавые волосы
-///////////////////////////////////////////////////////////////
 
 #pragma once
 
@@ -10,7 +8,7 @@
 class CRustyHairArtefact : public CArtefact
 {
 private:
-	typedef CArtefact inherited;
+	using inherited = CArtefact;
 
 public:
 	CRustyHairArtefact( );

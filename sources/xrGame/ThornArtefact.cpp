@@ -1,13 +1,9 @@
-///////////////////////////////////////////////////////////////
 // ThornArtifact.cpp
 // ThornArtefact - артефакт колючка
-///////////////////////////////////////////////////////////////
 
 #include "stdafx.h"
 
 #include "ThornArtefact.h"
-//#include "PhysicsShell.h"
-
 
 CThornArtefact::CThornArtefact( )
 { }
