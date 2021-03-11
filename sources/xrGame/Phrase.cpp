@@ -1,14 +1,11 @@
-///////////////////////////////////////////////////////////////
-// Phrase.cpp
-// класс, описывающий фразу (элемент диалога)
-///////////////////////////////////////////////////////////////
+// Phrase.cpp класс, описывающий фразу (элемент диалога)
 
 #include "stdafx.h"
 
 #include "Phrase.h"
-#include "ai_space.h"
-#include "GameObject.h"
-#include "script_game_object.h"
+//#include "ai_space.h"
+//#include "GameObject.h"
+//#include "script_game_object.h"
 
 CPhrase::CPhrase( )
 {
@@ -27,7 +24,9 @@ const char* CPhrase::GetText( ) const
 bool CPhrase::IsDummy( ) const
 {
 	if (xr_strlen(GetText( )) == 0)
+	{
 		return true;
+	}
 
 	return false;
 }
