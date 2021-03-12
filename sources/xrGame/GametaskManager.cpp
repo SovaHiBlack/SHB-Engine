@@ -73,14 +73,14 @@ CGameTask* CGameTaskManager::HasGameTask(const TASK_ID& id)
 		return (*it).game_task;
 	}
 
-	return 0;
+	return nullptr;
 }
 
 CGameTask* CGameTaskManager::GiveGameTaskToActor(const TASK_ID& id, u32 timeToComplete, bool bCheckExisting)
 {
 	if (bCheckExisting && HasGameTask(id))
 	{
-		return NULL;
+		return nullptr;
 	}
 
 	CGameTask* t = xr_new<CGameTask>(id);
@@ -92,7 +92,7 @@ CGameTask* CGameTaskManager::GiveGameTaskToActor(CGameTask* t, u32 timeToComplet
 {
 	if (bCheckExisting && HasGameTask(t->m_ID))
 	{
-		return NULL;
+		return nullptr;
 	}
 
 	m_flags.set(eChanged, TRUE);
@@ -106,7 +106,7 @@ CGameTask* CGameTaskManager::GiveGameTaskToActor(CGameTask* t, u32 timeToComplet
 
 	ARTICLE_VECTOR& article_vector = Actor( )->encyclopedia_registry->registry( ).objects( );
 
-	SGameTaskObjective* obj = NULL;
+	SGameTaskObjective* obj = nullptr;
 	for (u32 i = 0; i < t->m_Objectives.size( ); ++i)
 	{
 		obj = &t->m_Objectives[i];
@@ -305,14 +305,16 @@ void CGameTaskManager::UpdateActiveTask( )
 			SGameTaskObjective& obj = t->Objective(i);
 
 			//1-st enable hidden locations
-			if ((!obj.def_location_enabled) &&
-				(obj.TaskState( ) == eTaskStateInProgress) &&
-				(t->Objective(i - 1).TaskState( ) == eTaskStateCompleted))
+			if ((!obj.def_location_enabled) && (obj.TaskState( ) == eTaskStateInProgress) && (t->Objective(i - 1).TaskState( ) == eTaskStateCompleted))
 			{
 				if (obj.object_id != u16(-1) && *obj.map_location)
 				{
 					CMapLocation* ml = Level( ).MapManager( ).AddMapLocation(obj.map_location, obj.object_id);
-					if (obj.map_hint.size( ))		ml->SetHint(obj.map_hint);
+					if (obj.map_hint.size( ))
+					{
+						ml->SetHint(obj.map_hint);
+					}
+
 					ml->DisablePointer( );
 					ml->SetSerializable(true);
 				}
@@ -358,7 +360,7 @@ CGameTask* CGameTaskManager::ActiveTask( )
 	const TASK_ID& t_id = g_active_task_id;
 	if (!t_id.size( ))
 	{
-		return NULL;
+		return nullptr;
 	}
 
 	return						HasGameTask(t_id);
@@ -391,5 +393,5 @@ SGameTaskObjective* CGameTaskManager::ActiveObjective( )
 {
 	CGameTask* t = ActiveTask( );
 
-	return (t) ? &t->Objective(g_active_task_objective_id) : NULL;
+	return (t) ? &t->Objective(g_active_task_objective_id) : nullptr;
 }

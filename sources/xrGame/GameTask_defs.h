@@ -25,10 +25,10 @@ struct SGameTaskKey : public IPureSerializeObject<IReader, IWriter>, public IPur
 {
 	TASK_ID			task_id;
 	CGameTask* game_task;
-	SGameTaskKey(TASK_ID t_id) :task_id(t_id), game_task(NULL)
-	{ };
-	SGameTaskKey( ) :task_id(NULL), game_task(NULL)
-	{ };
+	SGameTaskKey(TASK_ID t_id) : task_id(t_id), game_task(NULL)
+	{ }
+	SGameTaskKey( ) : task_id(NULL), game_task(NULL)
+	{ }
 
 	virtual void save(IWriter& stream);
 	virtual void load(IReader& stream);
@@ -46,11 +46,11 @@ struct CGameTaskRegistry : public CALifeAbstractRegistry<u16, GameTasks>
 		CALifeAbstractRegistry<u16, GameTasks>::save(stream);
 		save_data(g_active_task_id, stream);
 		save_data(g_active_task_objective_id, stream);
-	};
+	}
 	virtual void load(IReader& stream)
 	{
 		CALifeAbstractRegistry<u16, GameTasks>::load(stream);
 		load_data(g_active_task_id, stream);
 		load_data(g_active_task_objective_id, stream);
-	};
+	}
 };

@@ -64,7 +64,7 @@ public:
 	ETaskState				TaskState( )
 	{
 		return task_state;
-	};
+	}
 	ETaskState				UpdateState( );
 
 	shared_str							icon_texture_name;
@@ -88,7 +88,7 @@ public:
 	int						GetIDX_script( )
 	{
 		return idx;
-	};
+	}
 	void					SetMapHint_script(const char* _str);
 	void					SetMapLocation_script(const char* _str);
 	void					SetObjectID_script(u16 id);
@@ -108,7 +108,7 @@ public:
 	const char* GetDescription_script( )
 	{
 		return *description;
-	};
+	}
 	void					ChangeStateCallback( );
 };
 
@@ -120,7 +120,7 @@ class CGameTask
 {
 private:
 	CGameTask(const CGameTask&)
-	{ }; //disable copy ctor
+	{ } //disable copy ctor
 
 protected:
 	void					Load(const TASK_ID& id);
@@ -135,7 +135,7 @@ public:
 	SGameTaskObjective& Objective(int objectice_id)
 	{
 		return m_Objectives[objectice_id];
-	};
+	}
 
 	TASK_ID					m_ID;
 	shared_str				m_Title;
@@ -151,12 +151,12 @@ public:
 	const char* GetTitle_script( )
 	{
 		return *m_Title;
-	};
+	}
 	void					SetPriority_script(int _prio);
 	int						GetPriority_script( )
 	{
 		return m_priority;
-	};
+	}
 	void					AddObjective_script(SGameTaskObjective* O);
 	SGameTaskObjective* GetObjective_script(int objective_id)
 	{
@@ -175,7 +175,6 @@ public:
 		return m_Objectives.size( );
 	}
 
-public:
 	static void script_register(lua_State*);
 };
 
