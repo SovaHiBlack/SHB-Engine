@@ -58,7 +58,7 @@ void CUIDebugFonts::FillUpList( )
 		CUIStatic* pItem = xr_new<CUIStatic>( );
 		pItem->SetWndPos(pos);
 		pItem->SetWndSize(sz);
-		sprintf_s(str, "%s:%s", *F->m_font_name, *CStringTable( ).translate("Test_Font_String"));
+		sprintf_s(str, "%s:%s", *F->m_font_name, *CStringTable( ).translate("ÀÁÂÃÄÅ¨ÆÇÈÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞß"));
 		pItem->SetFont(F);
 		pItem->SetText(str);
 		pItem->SetTextComplexMode(false);

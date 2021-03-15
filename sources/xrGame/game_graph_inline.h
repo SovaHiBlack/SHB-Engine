@@ -165,22 +165,22 @@ inline	const GameGraph::SLevel *GameGraph::CHeader::level				(const char* level_
 
 inline	const xrGUID &CGameGraph::CHeader::guid							() const
 {
-	return						(m_guid);
+	return m_guid;
 }
 
-inline	const Fvector &GameGraph::CVertex::level_point					() const
+inline const Fvector3& GameGraph::CVertex::level_point					() const
 {
-	return						(tLocalPoint);
+	return tLocalPoint;
 }
 
-inline	const Fvector &GameGraph::CVertex::game_point					() const
+inline const Fvector3& GameGraph::CVertex::game_point					() const
 {
-	return						(tGlobalPoint);
+	return tGlobalPoint;
 }
 
 inline	GameGraph::_LEVEL_ID GameGraph::CVertex::level_id				() const
 {
-	return						(tLevelID);
+	return tLevelID;
 }
 
 inline	u32 GameGraph::CVertex::level_vertex_id							() const

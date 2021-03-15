@@ -41,9 +41,9 @@ BOOL car_memory::feel_vision_isRelevant	(CObject *object)
 }
 
 void car_memory::camera					(
-		Fvector &position,
-		Fvector &direction,
-		Fvector &normal,
+	Fvector3& position,
+	Fvector3& direction,
+	Fvector3& normal,
 		float &field_of_view,
 		float &aspect_ratio,
 		float &near_plane,
@@ -61,9 +61,9 @@ void car_memory::camera					(
 }
 
 void car_memory::set_camera(
-						const Fvector &position,
-						const Fvector &direction,
-						const Fvector &normal
+						const Fvector3& position,
+						const Fvector3& direction,
+						const Fvector3& normal
 					)
 {
 	m_view_position		= position;

@@ -100,7 +100,7 @@ void	CEntity::Hit		(SHit* pHDS)
 
 	// *** process hit calculations
 	// Calc impulse
-	Fvector					vLocalDir;
+	Fvector3					vLocalDir;
 	float					m = pHDS->dir.magnitude();
 	VERIFY					(m>EPS);
 	

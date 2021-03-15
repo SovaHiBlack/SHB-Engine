@@ -46,8 +46,8 @@ public:
 	{
 		return CExplosive::cast_IDamageSource( );
 	}
-	virtual void				GetRayExplosionSourcePos(Fvector& pos);
-	virtual void				ActivateExplosionBox(const Fvector& size, Fvector& in_out_pos);
+	virtual void				GetRayExplosionSourcePos(Fvector3& pos);
+	virtual void				ActivateExplosionBox(const Fvector3& size, Fvector3& in_out_pos);
 	virtual void				OnEvent(NET_Packet& P, u16 type);
 	virtual void				Hit(SHit* pHDS);
 	virtual void				shedule_Update(u32 dt);

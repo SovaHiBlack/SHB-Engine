@@ -47,7 +47,7 @@ void CGraviArtefact::UpdateCLChild( )
 	{
 		if (m_fJumpHeight)
 		{
-			Fvector dir;
+			Fvector3 dir;
 			dir.set(0, -1.0f, 0);
 			collide::rq_result RQ;
 

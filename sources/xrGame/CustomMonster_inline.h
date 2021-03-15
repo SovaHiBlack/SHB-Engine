@@ -12,7 +12,7 @@ inline	bool CCustomMonster::angle_lerp_bounds(float &a, float b, float c, float 
 	return(false);
 };
 
-inline void CCustomMonster::vfNormalizeSafe(Fvector& Vector)
+inline void CCustomMonster::vfNormalizeSafe(Fvector3& Vector)
 {
 	float fMagnitude = Vector.magnitude(); 
 	if (fMagnitude > EPS_L) {

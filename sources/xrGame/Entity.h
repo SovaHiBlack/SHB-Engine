@@ -89,8 +89,8 @@ public:
 
 	// Health calculations
 	virtual	void			Hit					(SHit* pHDS);
-	virtual void			HitSignal			(float P, Fvector &local_dir,	CObject* who, s16 element)		= 0;
-	virtual void			HitImpulse			(float P, Fvector &vWorldDir, 	Fvector& vLocalDir)	= 0;
+	virtual void			HitSignal			(float P, Fvector3& local_dir,	CObject* who, s16 element)		= 0;
+	virtual void			HitImpulse			(float P, Fvector3& vWorldDir, Fvector3& vLocalDir)	= 0;
 
 	virtual void			Die					(CObject* who);
 //			void			KillEntity			(CObject* who);
@@ -100,7 +100,7 @@ public:
 	virtual void			OnEvent				( NET_Packet& P, u16 type		);
 
 	virtual BOOL			IsVisibleForHUD		()	{return g_Alive();	}
-	virtual void			g_fireParams		(const CHudItem*, Fvector &, Fvector &){}; 
+	virtual void			g_fireParams		(const CHudItem*, Fvector3&, Fvector3&){};
 
 	//time of entity death
 	u32						m_level_death_time;

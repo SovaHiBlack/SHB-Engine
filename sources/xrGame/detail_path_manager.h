@@ -97,11 +97,11 @@ private:
 	EDetailPathType								m_path_type;
 
 private:
-	Fvector										m_start_position;
-	Fvector										m_start_direction;
-	Fvector										m_dest_position;
-	Fvector										m_corrected_dest_position;
-	Fvector										m_dest_direction;
+	Fvector3									m_start_position;
+	Fvector3									m_start_direction;
+	Fvector3									m_dest_position;
+	Fvector3									m_corrected_dest_position;
+	Fvector3									m_dest_direction;
 
 private:
 	xr_vector<STravelPathPoint>					m_path;
@@ -166,20 +166,20 @@ public:
 	virtual			~CDetailPathManager			();
 	virtual	void	reinit						();
 			bool	valid						() const;
-			Fvector direction					() const;
+			Fvector3 direction					() const;
 			bool	actual						() const;
 	inline		bool	failed						() const;
-	inline		bool	completed					(const Fvector &position, bool bRealCompleted = true) const;
-			bool	valid						(const Fvector &position) const;
+	inline		bool	completed					(const Fvector3& position, bool bRealCompleted = true) const;
+			bool	valid						(const Fvector3& position) const;
 	inline		u32		curr_travel_point_index		() const;
 
 public:
 	inline		const xr_vector<STravelPathPoint>	&path					() const;
 	inline		const STravelPathPoint				&curr_travel_point		() const;
-	inline		const Fvector						&start_position			() const;
-	inline		const Fvector						&start_direction		() const;
-	inline		const Fvector						&dest_position			() const;
-	inline		const Fvector						&dest_direction			() const;
+	inline		const Fvector3&						start_position			() const;
+	inline		const Fvector3&						start_direction		() const;
+	inline		const Fvector3&						dest_position			() const;
+	inline		const Fvector3&						dest_direction			() const;
 	inline		const u32							velocity_mask			() const;
 	inline		const u32							desirable_mask			() const;
 	inline		const bool							try_min_time			() const;
@@ -188,10 +188,10 @@ public:
 	inline		const STravelParams					&velocity				(const u32 &velocity_id) const;
 	inline		const VELOCITIES					&velocities				() const;
 	inline		void								add_velocity			(const u32 &velocity_id, const STravelParams &params);
-	inline		void								set_start_position		(const Fvector &start_position);
-	inline		void								set_start_direction		(const Fvector &start_direction);
-	inline		void								set_dest_position		(const Fvector &dest_position);
-	inline		void								set_dest_direction		(const Fvector &dest_direction);
+	inline		void								set_start_position		(const Fvector3& start_position);
+	inline		void								set_start_direction		(const Fvector3& start_direction);
+	inline		void								set_dest_position		(const Fvector3& dest_position);
+	inline		void								set_dest_direction		(const Fvector3& dest_direction);
 	inline		void								set_path_type			(const EDetailPathType path_type);
 	inline		void								set_velocity_mask		(const u32 mask);
 	inline		void								set_desirable_mask		(const u32 mask);
@@ -205,7 +205,7 @@ public:
 public:
 			void								on_travel_point_change	(const u32 &previous_travel_point_index);
 	inline		const float							&distance_to_target		();
-			u32									location_on_path		(const CGameObject *object, float distance, Fvector &result) const;
+			u32									location_on_path		(const CGameObject *object, float distance, Fvector3& result) const;
 };
 
 #include "detail_path_manager_inline.h"

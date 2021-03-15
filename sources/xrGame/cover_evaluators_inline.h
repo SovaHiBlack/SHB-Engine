@@ -52,7 +52,7 @@ inline	void CCoverEvaluatorBase::setup						()
 	m_initialized			= true;
 }
 
-inline	void CCoverEvaluatorBase::initialize				(const Fvector &start_position, bool fake_call)
+inline	void CCoverEvaluatorBase::initialize				(const Fvector3& start_position, bool fake_call)
 {
 	VERIFY					(initialized());
 	m_start_position		= start_position;
@@ -73,7 +73,7 @@ inline	bool CCoverEvaluatorBase::initialized				() const
 	return					(m_initialized);
 }
 
-inline	bool CCoverEvaluatorBase::accessible				(const Fvector &position)
+inline	bool CCoverEvaluatorBase::accessible				(const Fvector3& position)
 {
 	return					(m_object ? object().accessible(position) : true);
 }
@@ -113,13 +113,13 @@ inline	CCoverEvaluatorCloseToEnemy::CCoverEvaluatorCloseToEnemy	(CRestrictedObje
 	m_current_distance		= flt_max;
 }
 
-inline	void CCoverEvaluatorCloseToEnemy::initialize(const Fvector &start_position, bool fake_call)
+inline	void CCoverEvaluatorCloseToEnemy::initialize(const Fvector3& start_position, bool fake_call)
 {
 	inherited::initialize	(start_position,fake_call);
 	m_current_distance		= m_start_position.distance_to(m_enemy_position);
 }
 
-inline	void CCoverEvaluatorCloseToEnemy::setup		(const Fvector &enemy_position, float min_enemy_distance, float	max_enemy_distance, float deviation)
+inline	void CCoverEvaluatorCloseToEnemy::setup		(const Fvector3& enemy_position, float min_enemy_distance, float	max_enemy_distance, float deviation)
 {
 	inherited::setup		();
 	
@@ -148,7 +148,7 @@ inline	CCoverEvaluatorAngle::CCoverEvaluatorAngle	(CRestrictedObject *object) : 
 	m_level_vertex_id	= u32(-1);
 }
 
-inline	void CCoverEvaluatorAngle::setup		(const Fvector &enemy_position, float min_enemy_distance, float	max_enemy_distance, u32 level_vertex_id)
+inline	void CCoverEvaluatorAngle::setup		(const Fvector3& enemy_position, float min_enemy_distance, float max_enemy_distance, u32 level_vertex_id)
 {
 	inherited::setup		(enemy_position,min_enemy_distance,max_enemy_distance);
 	m_actuality				= m_actuality && (m_level_vertex_id == level_vertex_id);

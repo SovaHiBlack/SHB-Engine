@@ -106,8 +106,8 @@ __forceinline static BOOL pick_trace_callback(collide::rq_result& result, LPVOID
 
 void CHUDTarget::CursorOnFrame( )
 {
-	Fvector p1;
-	Fvector dir;
+	Fvector3 p1;
+	Fvector3 dir;
 
 	p1 = Device.vCameraPosition;
 	dir = Device.vCameraDirection;

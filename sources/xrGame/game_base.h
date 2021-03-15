@@ -10,8 +10,8 @@ class	NET_Packet;
 
 struct		RPoint
 {
-	Fvector	P;
-	Fvector A;
+	Fvector3	P;
+	Fvector3 A;
 	u32		TimeToUnfreeze;
 	bool	Blocked;
 	u32		BlockedByID;

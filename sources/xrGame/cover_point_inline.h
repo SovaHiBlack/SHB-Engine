@@ -8,13 +8,12 @@
 
 #pragma once
 
-inline	CCoverPoint::CCoverPoint				(const Fvector &point, u32 level_vertex_id) :
+inline	CCoverPoint::CCoverPoint				(const Fvector3& point, u32 level_vertex_id) :
 	m_position			(point),
 	m_level_vertex_id	(level_vertex_id)
-{
-}
+{ }
 
-inline	const Fvector &CCoverPoint::position	() const
+inline	const Fvector3& CCoverPoint::position	() const
 {
 	return		(m_position);
 }

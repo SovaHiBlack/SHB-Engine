@@ -32,17 +32,17 @@ public:
 
 	virtual void			cam_Update			(float dt, float fov=90.0f)		= 0;
 
-	virtual bool			Use					(const Fvector& pos,const Fvector& dir,const Fvector& foot_pos)=0;
+	virtual bool			Use					(const Fvector3& pos,const Fvector3& dir,const Fvector3& foot_pos)=0;
 	virtual bool			attach_Actor		(CGameObject* actor);
 	virtual void			detach_Actor		();
 	virtual bool			allowWeapon			()	const		= 0;
 	virtual bool			HUDView				() const		= 0;
-	virtual Fvector			ExitPosition		()				= 0;
-	virtual Fvector			ExitVelocity		()				{return Fvector().set(0,0,0);}
+	virtual Fvector3			ExitPosition		()				= 0;
+	virtual Fvector3			ExitVelocity		()				{return Fvector3().set(0,0,0);}
 	virtual CCameraBase*	Camera				()				= 0;
 	virtual void			Action				(int id, u32 flags)				{};
 	virtual void			SetParam			(int id, Fvector2 val)			{};
-	virtual void			SetParam			(int id, Fvector val)			{};
+	virtual void			SetParam			(int id, Fvector3 val)			{};
 public:
 	static void script_register(lua_State*);
 };

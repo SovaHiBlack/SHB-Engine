@@ -71,9 +71,8 @@ public:
 class CORE_API CTimer : public CTimerBase
 {
 private:
-	typedef CTimerBase					inherited;
+	using inherited = CTimerBase;
 
-private:
 	float				m_time_factor;
 	u64					m_real_ticks;
 	u64					m_ticks;

@@ -505,7 +505,7 @@ void CCustomZone::shedule_Update(u32 dt)
 	if (IsEnabled())
 	{
 		const Fsphere& s		= CFORM()->getSphere();
-		Fvector					P;
+		Fvector3					P;
 		XFORM().transform_tiny	(P,s.P);
 
 		// update
@@ -658,7 +658,7 @@ float CCustomZone::effective_radius()
 
 float CCustomZone::distance_to_center(CObject* O)
 {
-	Fvector P; 
+	Fvector3 P;
 	XFORM().transform_tiny(P,CFORM()->getSphere().P);
 	return P.distance_to(O->Position());
 }
@@ -690,8 +690,10 @@ void CCustomZone::StopIdleParticles()
 {
 	m_idle_sound.stop();
 
-	if(m_pIdleParticles)
+	if (m_pIdleParticles)
+	{
 		m_pIdleParticles->Stop(FALSE);
+	}
 
 	StopIdleLight();
 }
@@ -701,7 +703,7 @@ void  CCustomZone::StartIdleLight	()
 	if(m_pIdleLight)
 	{
 		m_pIdleLight->set_range(m_fIdleLightRange);
-		Fvector pos = Position();
+		Fvector3 pos = Position();
 		pos.y += m_fIdleLightHeight;
 		m_pIdleLight->set_position(pos);
 		m_pIdleLight->set_active(true);
@@ -730,7 +732,7 @@ void CCustomZone::UpdateIdleLight	()
 	m_pIdleLight->set_range	(range);
 	m_pIdleLight->set_color	(fclr);
 
-	Fvector pos		= Position();
+	Fvector3 pos		= Position();
 	pos.y			+= m_fIdleLightHeight;
 	m_pIdleLight->set_position(pos);
 }
@@ -767,15 +769,20 @@ void CCustomZone::PlayHitParticles(CGameObject* pObject)
 		CParticlesPlayer* PP = smart_cast<CParticlesPlayer*>(pObject);
 		if (PP){
 			u16 play_bone = PP->GetRandomBone(); 
-			if (play_bone!=BI_NONE)
-				PP->StartParticles	(particle_str,play_bone,Fvector().set(0,1,0), ID());
+			if (play_bone != BI_NONE)
+			{
+				PP->StartParticles(particle_str, play_bone, Fvector3( ).set(0, 1, 0), ID( ));
+			}
 		}
 	}
 }
 
 void CCustomZone::PlayEntranceParticles(CGameObject* pObject)
 {
-	if (!IsEnabled())		return;
+	if (!IsEnabled( ))
+	{
+		return;
+	}
 
 	m_entrance_sound.play_at_pos(0, pObject->Position());
 
@@ -783,21 +790,33 @@ void CCustomZone::PlayEntranceParticles(CGameObject* pObject)
 
 	if(pObject->Radius()<SMALL_OBJECT_RADIUS)
 	{
-		if(!m_sEntranceParticlesSmall) return;
+		if (!m_sEntranceParticlesSmall)
+		{
+			return;
+		}
+
 		particle_str = m_sEntranceParticlesSmall;
 	}
 	else
 	{
-		if(!m_sEntranceParticlesBig) return;
+		if (!m_sEntranceParticlesBig)
+		{
+			return;
+		}
+
 		particle_str = m_sEntranceParticlesBig;
 	}
 
-	Fvector vel;
+	Fvector3 vel;
 	CPHShellHolder* shell_holder=smart_cast<CPHShellHolder*>(pObject);
-	if(shell_holder)
+	if (shell_holder)
+	{
 		shell_holder->PHGetLinearVell(vel);
-	else 
-		vel.set(0,0,0);
+	}
+	else
+	{
+		vel.set(0, 0, 0);
+	}
 	
 	//выбрать случайную косточку на объекте
 	CParticlesPlayer* PP = smart_cast<CParticlesPlayer*>(pObject);
@@ -807,7 +826,7 @@ void CCustomZone::PlayEntranceParticles(CGameObject* pObject)
 			CParticlesObject* pParticles = CParticlesObject::Create(*particle_str,TRUE);
 			Fmatrix xform;
 
-			Fvector dir;
+			Fvector3 dir;
 			if(fis_zero(vel.magnitude()))
 				dir.set(0,1,0);
 			else
@@ -816,7 +835,7 @@ void CCustomZone::PlayEntranceParticles(CGameObject* pObject)
 				dir.normalize();
 			}
 
-			PP->MakeXFORM			(pObject,play_bone,dir,Fvector().set(0,0,0),xform);
+			PP->MakeXFORM			(pObject,play_bone,dir, Fvector3().set(0,0,0),xform);
 			pParticles->UpdateParent(xform, vel);
 			{
 				pParticles->Play		();
@@ -827,7 +846,7 @@ void CCustomZone::PlayEntranceParticles(CGameObject* pObject)
 	}
 }
 
-void CCustomZone::PlayBulletParticles(Fvector& pos)
+void CCustomZone::PlayBulletParticles(Fvector3& pos)
 {
 	m_entrance_sound.play_at_pos(0, pos);
 
@@ -867,7 +886,7 @@ void CCustomZone::PlayObjectIdleParticles(CGameObject* pObject)
 	//. new
 	PP->StopParticles (particle_str, BI_NONE, true);
 
-	PP->StartParticles (particle_str, Fvector().set(0,1,0), ID());
+	PP->StartParticles (particle_str, Fvector3().set(0,1,0), ID());
 	if (!IsEnabled())
 		PP->StopParticles	(particle_str, BI_NONE, true);
 }
@@ -918,7 +937,7 @@ void CCustomZone::StartBlowoutLight		()
 	m_pLight->set_color(m_LightColor.r, m_LightColor.g, m_LightColor.b);
 	m_pLight->set_range(m_fLightRange);
 	
-	Fvector pos = Position();
+	Fvector3 pos = Position();
 	pos.y		+= m_fLightHeight;
 	m_pLight->set_position(pos);
 	m_pLight->set_active(true);
@@ -946,7 +965,7 @@ void CCustomZone::UpdateBlowoutLight	()
 							m_LightColor.b*scale);
 		m_pLight->set_range(r);
 
-		Fvector pos			= Position();
+		Fvector3 pos			= Position();
 		pos.y				+= m_fLightHeight;
 		m_pLight->set_position(pos);
 	}
@@ -1011,10 +1030,12 @@ void  CCustomZone::OnMove()
 		float time_delta	= float(Device.dwTimeGlobal - m_dwLastTimeMoved)/1000.f;
 		m_dwLastTimeMoved	= Device.dwTimeGlobal;
 
-		Fvector				vel;
+		Fvector3				vel;
 			
-		if(fis_zero(time_delta))
+		if (fis_zero(time_delta))
+		{
 			vel = zero_vel;
+		}
 		else
 		{
 			vel.sub(Position(), m_vPrevPos);
@@ -1175,7 +1196,7 @@ void CCustomZone::SpawnArtefact()
 	}
 	R_ASSERT(i<m_ArtefactSpawn.size());
 
-	Fvector pos;
+	Fvector3 pos;
 	Center(pos);
 	Level().spawn_item(*m_ArtefactSpawn[i].section, pos, ai_location().level_vertex_id(), ID());
 }
@@ -1216,7 +1237,7 @@ void CCustomZone::ThrowOutArtefact(CArtefact* pArtefact)
 
 	m_ArtefactBornSound.play_at_pos(0, pArtefact->Position());
 
-	Fvector dir;
+	Fvector3 dir;
 	dir.random_dir();
 	pArtefact->m_pPhysicsShell->applyImpulse (dir, m_fThrowOutPower);
 }
@@ -1284,10 +1305,10 @@ u32	CCustomZone::ef_weapon_type		() const
 
 void CCustomZone::CreateHit	(	u16 id_to, 
 								u16 id_from, 
-								const Fvector& hit_dir, 
+								const Fvector3& hit_dir,
 								float hit_power, 
 								s16 bone_id, 
-								const Fvector& pos_in_bone, 
+								const Fvector3& pos_in_bone,
 								float hit_impulse, 
 								ALife::EHitType hit_type)
 {
@@ -1297,7 +1318,7 @@ void CCustomZone::CreateHit	(	u16 id_to,
 			id_from	= (u16)m_owner_id;
 
 		NET_Packet	l_P;
-		Fvector hdir = hit_dir;
+		Fvector3 hdir = hit_dir;
 		SHit	Hit = SHit(hit_power, hdir, this, bone_id, pos_in_bone, hit_impulse, hit_type);
 		Hit.GenHeader(GE_HIT, id_to);
 		Hit.whoID = id_from;
@@ -1305,7 +1326,7 @@ void CCustomZone::CreateHit	(	u16 id_to,
 		Hit.Write_Packet(l_P);
 
 		u_EventSend	(l_P);
-	};
+	}
 }
 
 void CCustomZone::net_Relcase(CObject* O)

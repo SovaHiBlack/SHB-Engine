@@ -376,7 +376,7 @@ inline bool cmp(const Fmatrix& f0, const Fmatrix& f1)
 	Fmatrix cm;
 	cm.mul_43(if0, f1);
 
-	Fvector ax;
+	Fvector3 ax;
 	float ang;
 	Fquaternion q;
 	q.set(cm);
@@ -391,7 +391,7 @@ bool is_similar(const Fmatrix& m0, const Fmatrix& m1, float param)
 	tmp1.invert(m0);
 	Fmatrix tmp2;
 	tmp2.mul(tmp1, m1);
-	Fvector ax;
+	Fvector3 ax;
 	float ang;
 	Fquaternion q;
 	q.set(tmp2);
@@ -461,7 +461,7 @@ void CCharacterPhysicsSupport::KillHit(CObject* who, ALife::EHitType hit_type, f
 	}
 }
 
-void CCharacterPhysicsSupport::in_Hit(float P, Fvector& dir, CObject* who, s16 element, Fvector p_in_object_space, float impulse, ALife::EHitType hit_type, bool is_killing)
+void CCharacterPhysicsSupport::in_Hit(float P, Fvector3& dir, CObject* who, s16 element, Fvector3 p_in_object_space, float impulse, ALife::EHitType hit_type, bool is_killing)
 {
 	if (m_EntityAlife.use_simplified_visual( ))
 	{
@@ -575,7 +575,7 @@ void CCharacterPhysicsSupport::in_UpdateCL( )
 		Fmatrix &me	 = K->LL_GetTransform(eb);
 		Fmatrix &mn	 = K->LL_GetTransform(nb);
 		float d = DET(mh);
-		if(Fvector().sub(mh.c,mp.c).magnitude() < 0.3f||d<0.7 )//|| Fvector().sub(me.c,mn.c) < 0.5
+		if(Fvector3().sub(mh.c,mp.c).magnitude() < 0.3f||d<0.7 )//|| Fvector3().sub(me.c,mn.c) < 0.5
 		{
 
 			K->CalculateBones_Invalidate();
@@ -625,7 +625,7 @@ void CCharacterPhysicsSupport::CreateSkeleton( )
 		return;
 	}
 
-	Fvector velocity;
+	Fvector3 velocity;
 	m_PhysicMovementControl->GetCharacterVelocity(velocity);
 	m_PhysicMovementControl->GetDeathPosition(m_EntityAlife.Position( ));
 	m_PhysicMovementControl->DestroyCharacter( );
@@ -664,9 +664,9 @@ bool CCharacterPhysicsSupport::DoCharacterShellCollide( )
 	return true;
 }
 
-void CCharacterPhysicsSupport::CollisionCorrectObjPos(const Fvector& start_from, bool character_create/*=false*/)
+void CCharacterPhysicsSupport::CollisionCorrectObjPos(const Fvector3& start_from, bool character_create/*=false*/)
 {
-	Fvector shift;
+	Fvector3 shift;
 	shift.sub(start_from, m_EntityAlife.Position( ));
 
 	Fbox3 box;
@@ -679,8 +679,8 @@ void CCharacterPhysicsSupport::CollisionCorrectObjPos(const Fvector& start_from,
 		box.set(m_EntityAlife.BoundingBox( ));
 	}
 
-	Fvector vbox;
-	Fvector activation_pos;
+	Fvector3 vbox;
+	Fvector3 activation_pos;
 	box.get_CD(activation_pos, vbox); shift.add(activation_pos); vbox.mul(2.f);
 	activation_pos.add(shift, m_EntityAlife.Position( ));
 	CPHActivationShape activation_shape;
@@ -695,7 +695,7 @@ void CCharacterPhysicsSupport::CollisionCorrectObjPos(const Fvector& start_from,
 	activation_shape.Destroy( );
 }
 
-void CCharacterPhysicsSupport::set_movement_position(const Fvector& pos)
+void CCharacterPhysicsSupport::set_movement_position(const Fvector3& pos)
 {
 	VERIFY(movement( ));
 
@@ -773,10 +773,12 @@ void CCharacterPhysicsSupport::ActivateShell(CObject* who)
 		return;
 	}
 
-	Fvector velocity;
+	Fvector3 velocity;
 	m_PhysicMovementControl->GetCharacterVelocity(velocity);
 	velocity.mul(1.3f);
-	Fvector dp, start; start.set(m_EntityAlife.Position( ));
+	Fvector3 dp;
+	Fvector3 start;
+	start.set(m_EntityAlife.Position( ));
 	if (!m_PhysicMovementControl->CharacterExist( ))
 	{
 		dp.set(m_EntityAlife.Position( ));
@@ -830,7 +832,7 @@ void CCharacterPhysicsSupport::ActivateShell(CObject* who)
 	//end seting params
 
 	//fly back after correction
-	FlyTo(Fvector( ).sub(start, m_EntityAlife.Position( )));
+	FlyTo(Fvector3( ).sub(start, m_EntityAlife.Position( )));
 
 	//actualize
 	m_pPhysicsShell->GetGlobalTransformDynamic(&mXFORM);
@@ -892,7 +894,7 @@ bool CCharacterPhysicsSupport::CanRemoveObject( )
 	}
 }
 
-void CCharacterPhysicsSupport::PHGetLinearVell(Fvector& velocity)
+void CCharacterPhysicsSupport::PHGetLinearVell(Fvector3& velocity)
 {
 	if (m_pPhysicsShell && m_pPhysicsShell->isActive( ))
 	{
@@ -974,7 +976,7 @@ void StaticEnvironmentCB(bool& do_colide, bool bo1, dContact& c, SGameMtl* mater
 	do_colide = false;
 }
 
-void CCharacterPhysicsSupport::FlyTo(const	Fvector& disp)
+void CCharacterPhysicsSupport::FlyTo(const Fvector3& disp)
 {
 	VERIFY(m_pPhysicsShell);
 	float ammount = disp.magnitude( );
@@ -990,7 +992,7 @@ void CCharacterPhysicsSupport::FlyTo(const	Fvector& disp)
 	void* cd = m_pPhysicsShell->get_CallbackData( );
 	m_pPhysicsShell->set_CallbackData(m_pPhysicsShell->PIsland( ));
 	m_pPhysicsShell->UnFreeze( );
-	Fvector vel;
+	Fvector3 vel;
 	vel.set(disp);
 	const u16 steps_num = 10;
 	const float fsteps_num = steps_num;
@@ -1025,7 +1027,7 @@ void CCharacterPhysicsSupport::TestForWounded( )
 
 	xrXRC xrc;
 	xrc.ray_options(0);
-	xrc.ray_query(Level( ).ObjectSpace.GetStaticModel( ), position_matrix.c, Fvector( ).set(0.0f, -1.0f, 0.0f), pelvis_factor_low_pose_detect);
+	xrc.ray_query(Level( ).ObjectSpace.GetStaticModel( ), position_matrix.c, Fvector3( ).set(0.0f, -1.0f, 0.0f), pelvis_factor_low_pose_detect);
 
 	if (xrc.r_count( ))
 	{

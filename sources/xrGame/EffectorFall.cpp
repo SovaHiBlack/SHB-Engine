@@ -15,7 +15,7 @@ CEffectorFall::CEffectorFall(float power,float life_time) : CEffectorCam(eCEFall
 CEffectorFall::~CEffectorFall()
 { }
 
-BOOL CEffectorFall::Process(Fvector &p, Fvector &d, Fvector &n, float& fFov, float& fFar, float& fAspect)
+BOOL CEffectorFall::Process(Fvector3& p, Fvector3& d, Fvector3& n, float& fFov, float& fFar, float& fAspect)
 {
 	fPhase+=FALL_SPEED*Device.fTimeDelta;
 	if (fPhase<1)	p.y-=FALL_MAXDIST*fPower*_sin(M_PI*fPhase+M_PI);

@@ -131,14 +131,15 @@ void CDestroyablePhysicsObject::Destroy( )
 
 	if (*m_destroy_particles)
 	{
-			//Fvector dir;dir.set(0,1,0);
+			//Fvector3 dir;dir.set(0,1,0);
 		Fmatrix m;
 		m.identity( );
 		/////////////////////////////////////////////////
 		m.j.set(0, 1.f, 0);
 		///////////////////////////////////////////////
 
-		Fvector hdir; hdir.set(CPHDestroyable::FatalHit( ).direction( ));
+		Fvector3 hdir;
+		hdir.set(CPHDestroyable::FatalHit( ).direction( ));
 
 		if (fsimilar(_abs(m.j.dotproduct(hdir)), 1.f, EPS_L))
 		{

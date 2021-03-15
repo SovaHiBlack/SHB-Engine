@@ -66,7 +66,7 @@ public:
 		return pUI;
 	}
 
-	void					Hit						(int idx, float power, const Fvector& dir);
+	void					Hit						(int idx, float power, const Fvector3& dir);
 	CFontManager&			Font					( )
 	{
 		return *(UI( )->Font( ));

@@ -136,14 +136,14 @@ void CWeaponShotEffector::Clear				()
 	m_LastSeed		= 0;
 };
 
-void CWeaponShotEffector::GetDeltaAngle	(Fvector &delta_angle)
+void CWeaponShotEffector::GetDeltaAngle	(Fvector3& delta_angle)
 {
 	delta_angle.x			= -fAngleVert;
 	delta_angle.y			= -fAngleHorz;
 	delta_angle.z			= 0.0f;
 }
 
-void CWeaponShotEffector::GetLastDelta		(Fvector& delta_angle)
+void CWeaponShotEffector::GetLastDelta		(Fvector3& delta_angle)
 {
 	delta_angle.x			= -fLastDeltaVert;
 	delta_angle.y			= -fLastDeltaHorz;
@@ -182,7 +182,7 @@ CCameraShotEffector::~CCameraShotEffector()
 {
 }
 
-BOOL CCameraShotEffector::Process	(Fvector &p, Fvector &d, Fvector &n, float& fFov, float& fFar, float& fAspect)
+BOOL CCameraShotEffector::Process	(Fvector3& p, Fvector3& d, Fvector3& n, float& fFov, float& fFar, float& fAspect)
 {
 	if (bActive){
 		float		h,p;

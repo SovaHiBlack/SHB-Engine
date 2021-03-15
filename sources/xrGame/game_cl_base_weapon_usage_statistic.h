@@ -26,8 +26,8 @@ using ABULLETS_it = ABULLETS::iterator;
 
 struct HitData
 {
-	Fvector Pos0;
-	Fvector Pos1;
+	Fvector3 Pos0;
+	Fvector3 Pos1;
 	
 	s16		BoneID;
 	shared_str	BoneName;
@@ -178,7 +178,7 @@ struct WeaponUsageStatistic {
 	//-----------------------------------------------
 	void				OnWeaponBought			(game_PlayerState* ps, const char* WeaponName);
 	void				OnBullet_Fire			(SBullet* pBullet, const CCartridge& cartridge);
-	void				OnBullet_Hit			(SBullet* pBullet, u16 TargetID, s16 element, Fvector HitLocation);
+	void				OnBullet_Hit			(SBullet* pBullet, u16 TargetID, s16 element, Fvector3 HitLocation);
 	void				OnBullet_Remove			(SBullet* pBullet);
 	//-----------------------------------------------
 

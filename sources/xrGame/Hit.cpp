@@ -8,7 +8,7 @@
 #include "Messages.h"
 #include "Level.h"
 
-SHit::SHit(float aPower, Fvector& adir, CObject* awho, u16 aelement, Fvector ap_in_bone_space, float aimpulse, ALife::EHitType ahit_type, float aAP, bool AimBullet)
+SHit::SHit(float aPower, Fvector3& adir, CObject* awho, u16 aelement, Fvector3 ap_in_bone_space, float aimpulse, ALife::EHitType ahit_type, float aAP, bool AimBullet)
 {
 	power = aPower;
 	dir.set(adir);

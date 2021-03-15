@@ -29,7 +29,7 @@ public:
 		return this;
 	}
 
-	virtual void			PlaySound				(HUD_SOUND& snd, const Fvector& position);
+	virtual void			PlaySound				(HUD_SOUND& snd, const Fvector3& position);
 
 	// общие функции HUD
 	inline void				SetHUDmode				(BOOL H)

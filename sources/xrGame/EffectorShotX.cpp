@@ -11,12 +11,12 @@ CCameraShotEffectorX::~CCameraShotEffectorX	()
 {
 }
 
-BOOL CCameraShotEffectorX::Process		(Fvector &p, Fvector &d, Fvector &n, float& fFov, float& fFar, float& fAspect)
+BOOL CCameraShotEffectorX::Process		(Fvector3& p, Fvector3& d, Fvector3& n, float& fFov, float& fFar, float& fAspect)
 {
 	return TRUE;
-};
+}
 
-void CCameraShotEffectorX::GetDeltaAngle	(Fvector& delta_angle)
+void CCameraShotEffectorX::GetDeltaAngle	(Fvector3& delta_angle)
 {
 	delta_angle.x = 0.0f;
 	delta_angle.y = 0.0f;

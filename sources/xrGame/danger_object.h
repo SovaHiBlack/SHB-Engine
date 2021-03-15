@@ -34,16 +34,16 @@ public:
 private:
 	const CEntityAlive					*m_object;
 	const CObject						*m_dependent_object;
-	Fvector								m_position;
+	Fvector3								m_position;
 	u32									m_time;
 	EDangerType							m_type;
 	EDangerPerceiveType					m_perceive_type;
 
 public:
-	inline									CDangerObject			(const CEntityAlive	*object, const Fvector &position, u32 time, const EDangerType &type, const EDangerPerceiveType &perceive_type, const CObject *dependent_object = 0);
+	inline									CDangerObject			(const CEntityAlive	*object, const Fvector3& position, u32 time, const EDangerType &type, const EDangerPerceiveType &perceive_type, const CObject *dependent_object = 0);
 	virtual								~CDangerObject			();
 	inline		const CEntityAlive			*object					() const;
-	inline		const Fvector				&position				() const;
+	inline		const Fvector3&				position				() const;
 	inline		u32							time					() const;
 	inline		EDangerType					type					() const;
 	inline		EDangerPerceiveType			perceive_type			() const;

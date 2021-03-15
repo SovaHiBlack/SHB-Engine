@@ -42,7 +42,7 @@ void	CExplosiveItem::Hit(SHit* pHDS)
 
 void	CExplosiveItem::StartTimerEffects( )
 {
-	CParticlesPlayer::StartParticles(pSettings->r_string(*cNameSect( ), "set_timer_particles"), Fvector( ).set(0, 1, 0), ID( ));
+	CParticlesPlayer::StartParticles(pSettings->r_string(*cNameSect( ), "set_timer_particles"), Fvector3( ).set(0, 1, 0), ID( ));
 }
 
 void  CExplosiveItem::OnEvent(NET_Packet& P, u16 type)
@@ -62,7 +62,7 @@ void CExplosiveItem::shedule_Update(u32 dt)
 	inherited::shedule_Update(dt);
 	if (CDelayedActionFuse::isActive( ) && CDelayedActionFuse::Update(GetCondition( )))
 	{
-		Fvector normal;
+		Fvector3 normal;
 		FindNormal(normal);
 		CExplosive::GenExplodeEvent(Position( ), normal);
 		CParticlesPlayer::StopParticles(ID( ), BI_NONE, true);
@@ -87,12 +87,12 @@ void CExplosiveItem::net_Relcase(CObject* O)
 	inherited::net_Relcase(O);
 }
 
-void	CExplosiveItem::ActivateExplosionBox(const Fvector& size, Fvector& in_out_pos)
+void	CExplosiveItem::ActivateExplosionBox(const Fvector3& size, Fvector3& in_out_pos)
 {
 	//PKinematics(Visual())->CalculateBones();
 }
 
-void CExplosiveItem::GetRayExplosionSourcePos(Fvector& pos)
+void CExplosiveItem::GetRayExplosionSourcePos(Fvector3& pos)
 {
 	random_point_in_object_box(pos, this);
 }

@@ -152,7 +152,7 @@ public:
 	{
 		return m_BonceDamageFactor;
 	}
-	void							set_movement_position(const Fvector& pos);
+	void							set_movement_position(const Fvector3& pos);
 	//////////////////base hierarchi methods///////////////////////////////////////////////////
 	void							CreateCharacter( );
 	void 							in_UpdateCL( );
@@ -162,12 +162,12 @@ public:
 	void							in_NetRelcase(CObject* O);
 	void 							in_Init( );
 	void 							in_Load(const char* section);
-	void 							in_Hit(float P, Fvector& dir, CObject* who, s16 element, Fvector p_in_object_space, float impulse, ALife::EHitType hit_type, bool is_killing = false);
+	void 							in_Hit(float P, Fvector3& dir, CObject* who, s16 element, Fvector3 p_in_object_space, float impulse, ALife::EHitType hit_type, bool is_killing = false);
 	void							in_NetSave(NET_Packet& P);
 	void							in_ChangeVisual( );
 	void							on_create_anim_mov_ctrl( );
 	void							on_destroy_anim_mov_ctrl( );
-	void							PHGetLinearVell(Fvector& velocity);
+	void							PHGetLinearVell(Fvector3& velocity);
 	SCollisionHitCallback* get_collision_hit_callback( );
 	bool							set_collision_hit_callback(SCollisionHitCallback* cc);
 /////////////////////////////////////////////////////////////////
@@ -185,8 +185,8 @@ private:
 	void							KillHit(CObject* who, ALife::EHitType hit_type, float& impulse);
 	void							CreateIKController( );
 	void							DestroyIKController( );
-	void							CollisionCorrectObjPos(const Fvector& start_from, bool character_create = false);
-	void							FlyTo(const	Fvector& disp);
+	void							CollisionCorrectObjPos(const Fvector3& start_from, bool character_create = false);
+	void							FlyTo(const Fvector3& disp);
 	void							TestForWounded( );
 	inline void							UpdateFrictionAndJointResistanse( );
 	inline void							UpdateDeathAnims( );

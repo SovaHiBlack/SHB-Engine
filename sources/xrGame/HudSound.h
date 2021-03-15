@@ -18,7 +18,7 @@ struct HUD_SOUND
 	static void				LoadSound			(const char* section, const char* line, HUD_SOUND& hud_snd, int type = sg_SourceType);
 	static void				DestroySound		(HUD_SOUND& hud_snd);
 
-	static void				PlaySound			(HUD_SOUND& snd, const Fvector& position, const CObject* parent, bool hud_mode, bool looped = false);
+	static void				PlaySound			(HUD_SOUND& snd, const Fvector3& position, const CObject* parent, bool hud_mode, bool looped = false);
 	static void				StopSound			(HUD_SOUND& snd);
 
 	__forceinline BOOL		playing				( )
@@ -33,7 +33,7 @@ struct HUD_SOUND
 		}
 	}
 
-	__forceinline void		set_position		(const Fvector& pos)
+	__forceinline void		set_position		(const Fvector3& pos)
 	{
 		if (m_activeSnd)
 		{

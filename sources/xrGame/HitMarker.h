@@ -9,7 +9,7 @@ struct SHitMark{
 	float			m_HitDirection;
 	CLAItem*		m_lanim;
 
-					SHitMark		(const ref_shader& sh, const Fvector& dir);
+					SHitMark		(const ref_shader& sh, const Fvector3& dir);
 					~SHitMark		();
 	bool			IsActive		();
 	void			UpdateAnim		();
@@ -33,6 +33,6 @@ public:
 							~CHitMarker	();
 
 	void					Render		();
-	void					Hit			(int id, const Fvector& dir);
+	void					Hit			(int id, const Fvector3& dir);
 	void					InitShader	(const char* tex_name);
 };

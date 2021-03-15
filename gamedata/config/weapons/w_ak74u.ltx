@@ -1,6 +1,5 @@
 [wpn_ak74u]:identity_immunities
 GroupControlSection		= spawn_group
-discovery_dependency	= 
 $spawn              	= "weapons\ak-74u"	; name and section in level editor
 $npc					= on				
 $prefetch 				= 8
@@ -19,24 +18,19 @@ holder_range_modifier	= 1.0		       ; во сколько раз увеличивается eye_range
 holder_fov_modifier		= 0.7              ; во сколько раз увеличивается eye_fov
 ;-----------------------------------------------------------------------------------
 
-
 cost					= 1000				; the price of the item
-weapon_class			= assault_rifle		; the type of the box that will be used in buy-menu in multiplayer mode	
-	
-ammo_limit				= 210				; obsolete
-ammo_elapsed			= 30				; obsolete
-	
-ammo_mag_size			= 30				; clip (magazine) size
-fire_modes				= 1, -1
 
-ammo_class				= ammo_5.45x39_fmj, ammo_5.45x39_ap   ; name of the ltx-section of used ammo 
+ammo_elapsed			= 30
+ammo_mag_size			= 30				; clip (magazine) size
+ammo_class				= ammo_5.45x39_fmj, ammo_5.45x39_ap   ; name of the ltx-section of used ammo
+
+fire_modes				= 1, -1
 
 hand_dependence			= 1									; how many hands (1 or 2) we used to hold weapon in
 single_handed			= 0
 	
 slot 					= 2									; number of slot in inventory we put weapon in (1 - knife slot, 2 - pistol, 3 - rifle, 4 - grenade, 5 - apparatus)
 animation_slot			= 2									; type of the animation that will be used
-
 
 inv_name	        	= wpn-ak74u								; name in inventory	
 inv_name_short			= wpn-ak74u	

@@ -90,17 +90,17 @@ void			CEffectorZoomInertion::CalcNextPoint		()
 	m_vTargetVel.sub(m_vTargetPoint, m_vLastPoint);
 };
 
-BOOL CEffectorZoomInertion::Process		(Fvector &p, Fvector &d, Fvector &n, 
-										 float& fFov, float& fFar, float& fAspect)
+BOOL CEffectorZoomInertion::Process		(Fvector3& p, Fvector3& d, Fvector3& n, float& fFov, float& fFar, float& fAspect)
 {
 	bool camera_moved = false;
 
 	//определяем двигал ли прицелом актер
-	if(!d.similar(m_vOldCameraDir, m_fCameraMoveEpsilon))
+	if (!d.similar(m_vOldCameraDir, m_fCameraMoveEpsilon))
+	{
 		camera_moved = true;
+	}
 
-
-	Fvector dir;
+	Fvector3 dir;
 	dir.sub(m_vCurrentPoint,m_vTargetPoint);
 
 

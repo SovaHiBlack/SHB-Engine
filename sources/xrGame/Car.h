@@ -291,7 +291,7 @@ virtual void ApplyDamage			(u16 level);
 virtual void ApplyDamage(u16 level);
 		void Update();
 		float GetAngle();
-		bool CanEnter(const Fvector3& pos,const Fvector3& dir,const Fvector& foot_pos);
+		bool CanEnter(const Fvector3& pos,const Fvector3& dir,const Fvector3& foot_pos);
 		bool IsInArea(const Fvector3& pos,const Fvector3& dir);
 		bool IsFront (const Fvector3& pos,const Fvector3& dir);
 		bool CanExit(const Fvector3& pos,const Fvector3& dir);
@@ -363,7 +363,7 @@ virtual void ApplyDamage(u16 level);
 
 				SCarSound			(CCar* car)					;
 				~SCarSound			()							;
-		Fvector	relative_pos									;
+				Fvector3	relative_pos									;
 		float	volume											;
 		u32		engine_start_delay								;//snd_engine starts after engine_start_delay ms by snd_engine_start
 		u32		time_state_start								;

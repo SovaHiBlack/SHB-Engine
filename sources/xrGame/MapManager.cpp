@@ -17,7 +17,7 @@ struct FindLocationBySpotID
 {
 	shared_str	spot_id;
 	u16			object_id;
-	FindLocationBySpotID(const shared_str& s, u16 id) :spot_id(s), object_id(id)
+	FindLocationBySpotID(const shared_str& s, u16 id) : spot_id(s), object_id(id)
 	{ }
 	bool operator () (const SLocationKey& key)
 	{
@@ -28,7 +28,7 @@ struct FindLocationBySpotID
 struct FindLocationByID
 {
 	u16			object_id;
-	FindLocationByID(u16 id) :object_id(id)
+	FindLocationByID(u16 id) : object_id(id)
 	{ }
 	bool operator () (const SLocationKey& key)
 	{
@@ -39,7 +39,7 @@ struct FindLocationByID
 struct FindLocation
 {
 	CMapLocation* ml;
-	FindLocation(CMapLocation* m) :ml(m)
+	FindLocation(CMapLocation* m) : ml(m)
 	{ }
 	bool operator () (const SLocationKey& key)
 	{

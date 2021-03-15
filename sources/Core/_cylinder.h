@@ -4,15 +4,15 @@ template <class T>
 class _cylinder
 {
 public:
-	typedef T			TYPE;
-	typedef _cylinder<T>Self;
-	typedef Self& SelfRef;
-	typedef const Self& SelfCRef;
+	using TYPE = T;
+	using Self = _cylinder<TYPE>;
+	using SelfRef = Self&;
+	using SelfCRef = const Self&;
 
-	_vector3<T>	m_center;
-	_vector3<T>	m_direction;
-	T			m_height;
-	T			m_radius;
+	_vector3<TYPE>	m_center;
+	_vector3<TYPE>	m_direction;
+	TYPE			m_height;
+	TYPE			m_radius;
 
 	inline SelfRef	invalidate( )
 	{
@@ -22,17 +22,20 @@ public:
 		m_radius = 0;
 		return *this;
 	}
-	inline int		intersect(const _vector3<T>& start, const _vector3<T>& dir, T afT[2]) const
+	inline int		intersect(const _vector3<TYPE>& start, const _vector3<TYPE>& dir, TYPE afT[2]) const
 	{
-		T fEpsilon = 1e-12f;
+		TYPE fEpsilon = 1e-12f;
 
 		// set up quadratic Q(t) = a*t^2 + 2*b*t + c
-		_vector3<T> kU, kV, kW = m_direction;
-		_vector3<T>::generate_orthonormal_basis(kW, kU, kV);
-		_vector3<T> kD; kD.set(kU.dotproduct(dir), kV.dotproduct(dir), kW.dotproduct(dir));
+		_vector3<TYPE> kU;
+		_vector3<TYPE> kV;
+		_vector3<TYPE> kW = m_direction;
+		_vector3<TYPE>::generate_orthonormal_basis(kW, kU, kV);
+		_vector3<TYPE> kD;
+		kD.set(kU.dotproduct(dir), kV.dotproduct(dir), kW.dotproduct(dir));
 
 #ifdef DEBUG
-		if (kD.square_magnitude( ) <= std::numeric_limits<T>::min( ))
+		if (kD.square_magnitude( ) <= std::numeric_limits<TYPE>::min( ))
 		{
 			Msg("dir :%f,%f,%f", dir.x, dir.y, dir.z);
 			Msg("kU :%f,%f,%f", kU.x, kU.y, kU.z);
@@ -42,14 +45,26 @@ public:
 		}
 #endif // DEBUG
 
-		T fDLength = kD.normalize_magn( );
-		T fInvDLength = 1.0f / fDLength;
-		_vector3<T> kDiff; kDiff.sub(start, m_center);
-		_vector3<T> kP; kP.set(kU.dotproduct(kDiff), kV.dotproduct(kDiff), kW.dotproduct(kDiff));
-		T fHalfHeight = 0.5f * m_height;
-		T fRadiusSqr = m_radius * m_radius;
+		TYPE fDLength = kD.normalize_magn( );
+		TYPE fInvDLength = 1.0f / fDLength;
+		_vector3<TYPE> kDiff;
+		kDiff.sub(start, m_center);
+		_vector3<TYPE> kP;
+		kP.set(kU.dotproduct(kDiff), kV.dotproduct(kDiff), kW.dotproduct(kDiff));
+		TYPE fHalfHeight = 0.5f * m_height;
+		TYPE fRadiusSqr = m_radius * m_radius;
 
-		T fInv, fA, fB, fC, fDiscr, fRoot, fT, fT0, fT1, fTmp0, fTmp1;
+		TYPE fInv;
+		TYPE fA;
+		TYPE fB;
+		TYPE fC;
+		TYPE fDiscr;
+		TYPE fRoot;
+		TYPE fT;
+		TYPE fT0;
+		TYPE fT1;
+		TYPE fTmp0;
+		TYPE fTmp1;
 
 		if (_abs(kD.z) >= 1.0f - fEpsilon)
 		{	// line is parallel to cylinder axis
@@ -202,9 +217,9 @@ public:
 		rpOriginOutside = 2,
 		fcv_forcedword = u32(-1)
 	};
-	inline ERP_Result	intersect(const _vector3<T>& start, const _vector3<T>& dir, T& dist) const
+	inline ERP_Result	intersect(const _vector3<TYPE>& start, const _vector3<TYPE>& dir, TYPE& dist) const
 	{
-		T afT[2];
+		TYPE afT[2];
 		int cnt;
 		if (0 != (cnt = intersect(start, dir, afT)))
 		{
@@ -237,8 +252,7 @@ public:
 	}
 };
 
-typedef _cylinder<float>	Fcylinder;
-typedef _cylinder<double>	Dcylinder;
+using Fcylinder = _cylinder<float>;
 
 template <class T>
 BOOL	_valid(const _cylinder<T>& c)

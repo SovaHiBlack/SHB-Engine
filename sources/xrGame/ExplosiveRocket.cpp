@@ -28,7 +28,8 @@ BOOL CExplosiveRocket::net_Spawn(CSE_Abstract* DC)
 {
 	BOOL result = inherited::net_Spawn(DC);
 	result = result && CInventoryItem::net_Spawn(DC);
-	Fvector box; BoundingBox( ).getsize(box);
+	Fvector3 box;
+	BoundingBox( ).getsize(box);
 	float max_size = _max(_max(box.x, box.y), box.z);
 	box.set(max_size, max_size, max_size);
 	box.mul(3.f);
@@ -36,7 +37,7 @@ BOOL CExplosiveRocket::net_Spawn(CSE_Abstract* DC)
 	return result;
 }
 
-void CExplosiveRocket::Contact(const Fvector& pos, const Fvector& normal)
+void CExplosiveRocket::Contact(const Fvector3& pos, const Fvector3& normal)
 {
 	if (eCollide == m_eState)
 	{

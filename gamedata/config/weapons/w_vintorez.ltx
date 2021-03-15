@@ -1,6 +1,5 @@
 [wpn_vintorez]:identity_immunities
 GroupControlSection		 	= spawn_group
-discovery_dependency 	 	= 
 $spawn                   	= "weapons\vintorez"					; option for Level Editor
 $npc                     	= off
 $prefetch 		         	= 8
@@ -20,18 +19,14 @@ holder_fov_modifier		= 0.3              ; во сколько раз увеличивается eye_fov
 ;-----------------------------------------------------------------------------------
 
 cost					 	= 12000	;4000
-weapon_class			 	= sniper_rifle
 
-ammo_limit		         	= 180
-ammo_current		     	= 90
 ammo_elapsed		     	= 10
-
 ammo_mag_size		     	= 10
+ammo_class		         	= ammo_9x39_pab9, ammo_9x39_sp5, ammo_9x39_ap
 
 hand_dependence		     	= 1
 single_handed				= 0
 
-ammo_class		         	= ammo_9x39_pab9, ammo_9x39_sp5, ammo_9x39_ap
 fire_modes					= 1, -1
 
 slot 			         	= 2		; // secondary

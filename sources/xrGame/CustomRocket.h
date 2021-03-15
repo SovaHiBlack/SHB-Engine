@@ -10,8 +10,8 @@ class CRocketLauncher;
 struct SRoketContact
 {
 	bool contact;
-	Fvector pos;
-	Fvector up;
+	Fvector3 pos;
+	Fvector3 up;
 	SRoketContact( )
 	{
 		contact = false;
@@ -90,7 +90,7 @@ public:
 	virtual void		StartFlying( );
 	virtual void		StopFlying( );
 
-	virtual void		SetLaunchParams(const Fmatrix& xform, const Fvector& vel, const Fvector& angular_vel);
+	virtual void		SetLaunchParams(const Fmatrix& xform, const Fvector3& vel, const Fvector3& angular_vel);
 
 	virtual void		OnEvent(NET_Packet& P, u16 type);
 	bool										m_bLaunched;
@@ -102,8 +102,8 @@ protected:
 	SRoketContact								m_contact;
 	//параметры которые задаются RocketLauncher-ом перед пуском
 	Fmatrix										m_LaunchXForm;
-	Fvector										m_vLaunchVelocity;
-	Fvector										m_vLaunchAngularVelocity;
+	Fvector3										m_vLaunchVelocity;
+	Fvector3										m_vLaunchAngularVelocity;
 
 	enum ERocketState
 	{
@@ -127,7 +127,7 @@ protected:
 	int											m_dwEngineTime;
 
 	//обработка столкновения
-	virtual void		Contact(const Fvector& pos, const Fvector& normal);
+	virtual void		Contact(const Fvector3& pos, const Fvector3& normal);
 	void				PlayContact( );
 	static void			ObjectContactCallback(bool& do_colide, bool bo1, dContact& c, SGameMtl* /*material_1*/, SGameMtl* /*material_2*/);
 
@@ -161,7 +161,7 @@ protected:
 	shared_str									m_sFlyParticles;
 	CParticlesObject* m_pFlyParticles;
 
-	Fvector										m_vPrevVel;
+	Fvector3										m_vPrevVel;
 	float										m_time_to_explode;
 
 #ifdef DEBUG

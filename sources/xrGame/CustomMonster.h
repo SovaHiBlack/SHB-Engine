@@ -72,11 +72,11 @@ public:
 
 	u32					eye_pp_stage;
 	u32					eye_pp_timestamp;
-	Fvector				m_tEyeShift;
+	Fvector3				m_tEyeShift;
 	float				m_fEyeShiftYaw;
 	BOOL				NET_WasExtrapolating;
 
-	Fvector				tWatchDirection;
+	Fvector3				tWatchDirection;
 
 	virtual void		Think() = 0;
 
@@ -91,7 +91,7 @@ public:
 		u32				dwTimeStamp;			// server(game) timestamp
 		float			o_model;				// model yaw
 		SRotation		o_torso;				// torso in world coords
-		Fvector			p_pos;					// in world coords
+		Fvector3			p_pos;					// in world coords
 		float			fHealth;
 
 		// non-exported (temporal)
@@ -115,8 +115,8 @@ public:
 	virtual BOOL		feel_touch_on_contact	(CObject *);
 	virtual BOOL		feel_touch_contact		(CObject *);
 	// utils
-	void				mk_orientation			( Fvector& dir, Fmatrix& mR );
-	void				mk_rotation				( Fvector& dir, SRotation &R);
+	void				mk_orientation			(Fvector3& dir, Fmatrix& mR );
+	void				mk_rotation				(Fvector3& dir, SRotation &R);
 
 	// stream executors
 	virtual void		Exec_Action				( float dt );
@@ -142,7 +142,7 @@ public:
 	virtual BOOL		net_Spawn				( CSE_Abstract* DC);
 	virtual void		Die						( CObject* who);
 
-	virtual void		HitSignal				( float P,	Fvector& vLocalDir, CObject* who);
+	virtual void		HitSignal				( float P, Fvector3& vLocalDir, CObject* who);
 	virtual void		g_WeaponBones			(int &/**L/**/, int &/**R1/**/, int &/**R2/**/) {};
 	virtual void		shedule_Update					( u32		DT		);
 	virtual void		UpdateCL				( );
@@ -152,7 +152,7 @@ public:
 	virtual void		net_Import				(NET_Packet& P);				// import from server
 	virtual void		net_Relcase				(CObject*	 O);
 
-	virtual void		SelectAnimation			( const Fvector& _view, const Fvector& _move, float speed ) = 0;
+	virtual void		SelectAnimation			( const Fvector3& _view, const Fvector3& _move, float speed ) = 0;
 
 	// debug
 #ifdef DEBUG
@@ -164,7 +164,7 @@ public:
 
 
 	inline	bool					angle_lerp_bounds		(float &a, float b, float c, float d);
-	inline	void					vfNormalizeSafe			(Fvector& Vector);
+	inline	void					vfNormalizeSafe			(Fvector3& Vector);
 
 public:
 	virtual	float				ffGetFov				()	const								{return eye_fov;}	
@@ -215,7 +215,7 @@ public:
 
 	inline		CMemoryManager		&memory					() const;
 	virtual float				feel_vision_mtl_transp	(CObject* O, u32 element);
-	virtual	void				feel_sound_new			(CObject* who, int type, CSound_UserDataPtr user_data, const Fvector &Position, float power);
+	virtual	void				feel_sound_new			(CObject* who, int type, CSound_UserDataPtr user_data, const Fvector3& Position, float power);
 
 	virtual bool				useful					(const CItemManager *manager, const CGameObject *object) const;
 	virtual float				evaluate				(const CItemManager *manager, const CGameObject *object) const;

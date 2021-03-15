@@ -292,7 +292,8 @@ float GetCurrAcc(float V0, float V1, float dist, float a0, float a1);
 
 void CHelicopter::MoveStep()
 {
-	Fvector dir, pathDir;
+	Fvector3 dir;
+	Fvector3 pathDir;
 	float desired_H = m_movement.currPathH;
 	float desired_P;
 	if(m_movement.type != eMovNone){
@@ -348,7 +349,7 @@ void CHelicopter::MoveStep()
 	}
 
 	if(	m_body.b_looking_at_point){
-		Fvector desired_dir;
+		Fvector3 desired_dir;
 		desired_dir.sub(m_body.looking_point, m_movement.currP ).normalize_safe();
 
 		float center_desired_H,tmp_P;
@@ -363,7 +364,7 @@ void CHelicopter::MoveStep()
 	angle_lerp	(m_body.currBodyHPB.y, needBodyP, m_body.model_angSpeedPitch, STEP);
 
 	float sign;
-	Fvector cp;
+	Fvector3 cp;
 	cp.crossproduct (pathDir,dir);
 	(cp.y>0.0)?sign=1.0f:sign=-1.0f;
 	float ang_diff = angle_difference (m_movement.currPathH, desired_H);
@@ -448,12 +449,12 @@ void CHelicopter::goPatrolByPatrolPath (const char* path_name, int start_idx)
 	m_movement.goPatrolByPatrolPath (path_name, start_idx);
 }
 
-void CHelicopter::goByRoundPath(Fvector center, float radius, bool clockwise)
+void CHelicopter::goByRoundPath(Fvector3 center, float radius, bool clockwise)
 {
 	m_movement.goByRoundPath(center, radius, clockwise);
 }
 
-void CHelicopter::LookAtPoint(Fvector point, bool do_it)
+void CHelicopter::LookAtPoint(Fvector3 point, bool do_it)
 {
 	m_body.LookAtPoint(point,do_it);
 }
@@ -502,10 +503,10 @@ void CHelicopter::net_Relcase(CObject* O )
 
 bool CHelicopter::isObjectVisible(CObject* O)
 {
-	Fvector					dir_to_object;
-	Fvector					to_point;
+	Fvector3					dir_to_object;
+	Fvector3					to_point;
 	O->Center(to_point);
-	Fvector from_point = XFORM( ).c;
+	Fvector3 from_point = XFORM( ).c;
 	dir_to_object.sub(to_point, from_point).normalize_safe( );
 	float ray_length = from_point.distance_to(to_point);
 
@@ -538,8 +539,8 @@ void CHelicopter::StartFlame( )
 	if (m_pParticle)return;
 	m_pParticle = CParticlesObject::Create(*m_smoke_particle, FALSE);
 
-	Fvector zero_vector;
-	zero_vector.set(0.f, 0.f, 0.f);
+	Fvector3 zero_vector;
+	zero_vector.set(0.0f, 0.0f, 0.0f);
 	m_pParticle->UpdateParent(m_particleXFORM, zero_vector);
 	m_pParticle->Play( );
 	m_flame_started = true;
@@ -553,9 +554,9 @@ void CHelicopter::UpdateHeliParticles( )
 
 	if (m_pParticle)
 	{
-		Fvector vel;
+		Fvector3 vel;
 
-		Fvector last_pos = PositionStack.back( ).vPosition;
+		Fvector3 last_pos = PositionStack.back( ).vPosition;
 		vel.sub(Position( ), last_pos);
 		vel.mul(5.0f);
 
@@ -597,11 +598,11 @@ void CHelicopter::ExplodeHelicopter( )
 		CPHDestroyable::Destroy(ID( ), "physic_destroyable_object");
 
 	CExplosive::SetInitiator(ID( ));
-	CExplosive::GenExplodeEvent(Position( ), Fvector( ).set(0.f, 1.f, 0.f));
+	CExplosive::GenExplodeEvent(Position( ), Fvector3( ).set(0.0f, 1.0f, 0.0f));
 	m_brokenSound.stop( );
 }
 
-void CHelicopter::SetDestPosition(Fvector* pos)
+void CHelicopter::SetDestPosition(Fvector3* pos)
 {
 	m_movement.SetDestPosition(pos);
 	if (bDebug)
@@ -624,7 +625,7 @@ void CHelicopter::SetEnemy(CScriptGameObject* e)
 	m_enemy.destEnemyID = e->ID( );
 }
 
-void CHelicopter::SetEnemy(Fvector* pos)
+void CHelicopter::SetEnemy(Fvector3* pos)
 {
 	m_enemy.type = eEnemyPoint;
 	m_enemy.destEnemyPos = *pos;
@@ -679,7 +680,7 @@ float CHelicopter::GetOnPointRangeDist( )
 float CHelicopter::GetRealAltitude( )
 {
 	collide::rq_result		cR;
-	Fvector down_dir;
+	Fvector3 down_dir;
 
 	down_dir.set(0.0f, -1.0f, 0.0f);
 
@@ -732,7 +733,7 @@ void	CHelicopter::Hit(SHit* pHDS)
 	CPHDestroyable::SetFatalHit(*pHDS);
 }
 
-void CHelicopter::PHHit(float P, Fvector& dir, CObject* who, s16 element, Fvector p_in_object_space, float impulse, ALife::EHitType hit_type)
+void CHelicopter::PHHit(float P, Fvector3& dir, CObject* who, s16 element, Fvector3 p_in_object_space, float impulse, ALife::EHitType hit_type)
 {
 	if (!g_Alive( ))inherited::PHHit(P, dir, who, element, p_in_object_space, impulse, hit_type);
 }
@@ -777,9 +778,9 @@ void CHelicopter::DieHelicopter( )
 		PPhysicsShell( )->set_ObjectContactCallback(CollisionCallbackDead);
 		PPhysicsShell( )->set_ContactCallback(ContactShotMark);
 	}
-	Fvector lin_vel;
+	Fvector3 lin_vel;
 
-	Fvector prev_pos = PositionStack.front( ).vPosition;
+	Fvector3 prev_pos = PositionStack.front( ).vPosition;
 	lin_vel.sub(XFORM( ).c, prev_pos);
 
 	if (Device.dwTimeGlobal != PositionStack.front( ).dwTime)
@@ -890,7 +891,7 @@ void SHeliBodyState::reinit( )
 	parent->XFORM( ).getHPB(currBodyHPB.x, currBodyHPB.y, currBodyHPB.z);
 }
 
-void SHeliBodyState::LookAtPoint(Fvector point, bool do_it)
+void SHeliBodyState::LookAtPoint(Fvector3 point, bool do_it)
 {
 	b_looking_at_point = do_it;
 	looking_point = point;

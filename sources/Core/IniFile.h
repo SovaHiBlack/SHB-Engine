@@ -29,17 +29,20 @@ public:
 
 		{};
 	};
-	typedef xr_vector<Item>				Items;
-	typedef Items::const_iterator		SectCIt;
-	typedef Items::iterator				SectIt_;
+
+	using Items = xr_vector<Item>;
+	using SectIt_ = Items::iterator;
+	using SectCIt = Items::const_iterator;
+
 	struct CORE_API	Sect {
 		shared_str		Name;
 		Items			Data;
 
 		BOOL			line_exist	(const char* L, const char** val=0);
 	};
-	typedef	xr_vector<Sect*>		Root;
-	typedef Root::iterator			RootIt;
+
+	using Root = xr_vector<Sect*>;
+	using RootIt = Root::iterator;
 
 	// factorisation
 	static CIniFile*	Create		(const char* szFileName, BOOL ReadOnly=TRUE);

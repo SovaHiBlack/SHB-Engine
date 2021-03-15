@@ -75,7 +75,7 @@ public:
 	virtual void	net_Import(NET_Packet& P);
 	virtual BOOL	UsedAI_Locations( );
 
-	virtual void	Center(Fvector& C)	const;
+	virtual void	Center(Fvector3& C)	const;
 	virtual float	Radius( )				const;
 public:
 	static void script_register(lua_State*);

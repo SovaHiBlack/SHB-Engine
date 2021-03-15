@@ -12,12 +12,12 @@
 
 class CCoverPoint {
 public:
-	Fvector				m_position;
+	Fvector3				m_position;
 	u32					m_level_vertex_id;
 
 public:
-	inline					CCoverPoint		(const Fvector &point, u32 level_vertex_id);
-	inline	const Fvector	&position		() const;
+	inline					CCoverPoint		(const Fvector3& point, u32 level_vertex_id);
+	inline const Fvector3&	position		() const;
 	inline	u32				level_vertex_id	() const;
 	inline	bool			operator==		(const CCoverPoint &point) const;
 

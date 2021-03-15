@@ -18,7 +18,7 @@ inline	void CDebugRenderer::render			()
 	m_line_vertices.resize			(0);
 }
 
-inline	void CDebugRenderer::draw_line		(const Fmatrix &matrix, const Fvector &vertex0, const Fvector &vertex1, const u32 &color)
+inline void CDebugRenderer::draw_line		(const Fmatrix &matrix, const Fvector3& vertex0, const Fvector3& vertex1, const u32 &color)
 {
 	if ((m_line_vertices.size() + 2) >= line_vertex_limit)
 		render						();
@@ -33,9 +33,9 @@ inline	void CDebugRenderer::draw_line		(const Fmatrix &matrix, const Fvector &ve
 	m_line_vertices.push_back		(temp);
 }
 
-inline	void CDebugRenderer::draw_aabb		(const Fvector &center, const float &half_radius_x, const float &half_radius_y, const float &half_radius_z, const u32 &color)
+inline void CDebugRenderer::draw_aabb		(const Fvector3& center, const float& half_radius_x, const float& half_radius_y, const float& half_radius_z, const u32& color)
 {
-	Fvector							half_radius;
+	Fvector3							half_radius;
 	half_radius.set					(half_radius_x,half_radius_y,half_radius_z);
 
 	Fmatrix							matrix;

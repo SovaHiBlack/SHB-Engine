@@ -10,7 +10,7 @@
 
 inline	CDangerObject::CDangerObject											(
 	const CEntityAlive	*object,
-	const Fvector &position,
+	const Fvector3& position,
 	u32 time,
 	const EDangerType &type,
 	const EDangerPerceiveType &perceive_type,
@@ -30,7 +30,7 @@ inline	const CEntityAlive *CDangerObject::object								() const
 	return				(m_object);
 }
 
-inline	const Fvector &CDangerObject::position									() const
+inline	const Fvector3& CDangerObject::position									() const
 {
 	return				(m_position);
 }

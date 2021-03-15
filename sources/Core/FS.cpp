@@ -9,13 +9,14 @@
 #include <sys\stat.h>
 #pragma warning(default:4995)
 
-typedef void DUMMY_STUFF (const void*,const u32&,void*);
+typedef void DUMMY_STUFF(const void*, const u32&, void*);
 CORE_API DUMMY_STUFF	*g_dummy_stuff = 0;
 
 #ifdef DEBUG
 	CORE_API	u32								g_file_mapped_memory = 0;
 	u32								g_file_mapped_count	= 0;
-	typedef std::map<u32,std::pair<u32,shared_str> >	FILE_MAPPINGS;
+
+	using FILE_MAPPINGS				= std::map<u32, std::pair<u32, shared_str>>;
 	FILE_MAPPINGS					g_file_mappings;
 
 void register_file_mapping			(void *address, const u32 &size, const char* file_name)

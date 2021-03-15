@@ -1,6 +1,5 @@
 // Level.h: interface for the CLevel class.
-//
-//////////////////////////////////////////////////////////////////////
+
 #pragma once
 
 #include "..\ENGINE\IGameLevel.h"
@@ -28,7 +27,7 @@ class CLevelDebug;
 class CLevelSoundManager;
 
 #ifdef DEBUG
-class	CDebugRenderer;
+	class CDebugRenderer;
 #endif
 
 extern float g_fov;
@@ -114,13 +113,13 @@ public:
 	u32							GetNumCrSteps( ) const
 	{
 		return m_dwNumSteps;
-	};
+	}
 	void						SetNumCrSteps(u32 NumSteps);
 	static void 				PhisStepsCallback(u32 Time0, u32 Time1);
 	bool						In_NetCorrectionPrediction( )
 	{
 		return m_bIn_CrPr;
-	};
+	}
 
 	virtual void				OnMessage(void* data, u32 size);
 	virtual void				OnInvalidHost( );
@@ -361,8 +360,8 @@ public:
 	void			remove_objects( );
 	virtual void			OnSessionTerminate(const char* reason);
 
-	public:
-		static void script_register(lua_State*);
+public:
+	static void script_register(lua_State*);
 };
 
 add_to_type_list(CLevel)

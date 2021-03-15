@@ -15,12 +15,12 @@ class CEffectorZoomInertion : public CEffectorCam
 	float	m_fDispRadius;
 
 	float	m_fEpsilon;
-	Fvector	m_vCurrentPoint;
-	Fvector m_vLastPoint;
-	Fvector	m_vTargetPoint;
-	Fvector	m_vTargetVel;
+	Fvector3	m_vCurrentPoint;
+	Fvector3 m_vLastPoint;
+	Fvector3	m_vTargetPoint;
+	Fvector3	m_vTargetVel;
 
-	Fvector m_vOldCameraDir;
+	Fvector3 m_vOldCameraDir;
 
 	u32		m_dwTimePassed;
 
@@ -44,10 +44,8 @@ public:
 			void	Load				();
 			void	SetParams			(float disp);
 
-	virtual	BOOL	Process				(Fvector &delta_p, Fvector &delta_d,
-											Fvector &delta_n, float& fFov,
-											float& fFar, float& fAspect);
-	virtual	void	SetRndSeed				(int Seed) { m_Random.seed(Seed); };
+	virtual	BOOL	Process				(Fvector3& delta_p, Fvector3& delta_d, Fvector3& delta_n, float& fFov, float& fFar, float& fAspect);
+	virtual	void	SetRndSeed				(int Seed) { m_Random.seed(Seed); }
 	virtual	void	Init				(CWeaponMagazined*	pWeapon);
 
 	virtual CEffectorZoomInertion	*cast_effector_zoom_inertion	()	{return this;}

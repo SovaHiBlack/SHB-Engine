@@ -54,7 +54,7 @@ public:
 	virtual	void			create_anim_mov_ctrl	( CBlend* b );
 	virtual	void			destroy_anim_mov_ctrl	( );
 
-	virtual void			HitImpulse				(float amount, Fvector& vWorldDir, Fvector& vLocalDir);
+	virtual void			HitImpulse				(float amount, Fvector3& vWorldDir, Fvector3& vLocalDir);
 	virtual	void			Hit						(SHit* pHDS);
 	virtual void			Die						(CObject* who);
 	virtual void			g_WeaponBones			(int &L, int &R1, int &R2)										= 0;
@@ -83,7 +83,7 @@ public:
 	virtual void							PHUnFreeze					()						;
 	virtual void							PHFreeze					()						;
 
-	virtual void							PHGetLinearVell				(Fvector& velocity)		;
+	virtual void							PHGetLinearVell				(Fvector3& velocity)		;
 	virtual CPHSoundPlayer*					ph_sound_player				()						;
 	virtual	CIKLimbsController				*character_ik_controller	()						;
 	virtual SCollisionHitCallback			*get_collision_hit_callback	()						;
@@ -106,14 +106,14 @@ protected:
 	static float				m_fStopBurnWoundSize;
 
 
-	virtual void				BloodyWallmarks			(float P, const Fvector &dir, s16 element, const Fvector& position_in_object_space);
+	virtual void				BloodyWallmarks			(float P, const Fvector3& dir, s16 element, const Fvector3& position_in_object_space);
 	static  void				LoadBloodyWallmarks		(const char* section);
 public:	
 	static  void				UnloadBloodyWallmarks	();
 
 	void						ClearBloodWounds		() {m_BloodWounds.clear();};
 protected:
-	virtual void				PlaceBloodWallmark		(const Fvector& dir, const Fvector& start_pos, 
+	virtual void				PlaceBloodWallmark		(const Fvector3& dir, const Fvector3& start_pos,
 														float trace_dist, float wallmark_size,
 														SHADER_VECTOR& wallmarks_vector);
 

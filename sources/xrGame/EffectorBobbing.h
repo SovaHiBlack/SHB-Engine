@@ -6,7 +6,7 @@
 class CEffectorBobbing : public CEffectorCam
 {
 	float	fTime;
-	Fvector	vAngleAmplitude;
+	Fvector3	vAngleAmplitude;
 	float	fYAmplitude;
 	float	fSpeed;
 
@@ -26,6 +26,6 @@ class CEffectorBobbing : public CEffectorCam
 public:
 			CEffectorBobbing	();
 	virtual ~CEffectorBobbing	();
-	virtual	BOOL	Process		(Fvector &delta_p, Fvector &delta_d, Fvector &delta_n, float& fFov, float& fFar, float& fAspect);
+	virtual	BOOL	Process		(Fvector3& delta_p, Fvector3& delta_d, Fvector3& delta_n, float& fFov, float& fFar, float& fAspect);
 	void	SetState			(u32 st, bool limping, bool ZoomMode);
 };

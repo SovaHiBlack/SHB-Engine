@@ -8,7 +8,7 @@
 
 #pragma once
 
-inline	bool CDangerLocation::operator==	(const Fvector &position) const
+inline bool CDangerLocation::operator==	(const Fvector3& position) const
 {
 	return		(!!this->position().similar(position));
 }

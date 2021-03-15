@@ -145,14 +145,14 @@ struct SExpQParams
 {
 
 #ifdef DEBUG
-	SExpQParams(const Fvector& ec, const Fvector& d)
+	SExpQParams(const Fvector3& ec, const Fvector3& d)
 	{
 		shoot_factor = 1.0f;
 		source_p.set(ec);
 		l_dir.set(d);
 	}
-	Fvector source_p;
-	Fvector l_dir;
+	Fvector3 source_p;
+	Fvector3 l_dir;
 #else
 	SExpQParams( )
 	{
@@ -190,7 +190,7 @@ __forceinline static BOOL grenade_hit_callback(collide::rq_result& result, LPVOI
 #ifdef DEBUG
 	if (ph_dbg_draw_mask.test(phDbgDrawExplosions))
 	{
-		Fvector p;
+		Fvector3 p;
 		p.set(ep.l_dir);
 		p.mul(result.range);
 		p.add(ep.source_p);
@@ -202,12 +202,12 @@ __forceinline static BOOL grenade_hit_callback(collide::rq_result& result, LPVOI
 	return (ep.shoot_factor > 0.01f);
 }
 
-float CExplosive::ExplosionEffect(collide::rq_results& storage, CExplosive* exp_obj, CPHShellHolder* blasted_obj, const Fvector& expl_centre, const float expl_radius)
+float CExplosive::ExplosionEffect(collide::rq_results& storage, CExplosive* exp_obj, CPHShellHolder* blasted_obj, const Fvector3& expl_centre, const float expl_radius)
 {
 	const Fmatrix& obj_xform = blasted_obj->XFORM( );
 	Fmatrix inv_obj_form;
 	inv_obj_form.invert(obj_xform);
-	Fvector local_exp_center;
+	Fvector3 local_exp_center;
 	inv_obj_form.transform_tiny(local_exp_center, expl_centre);
 
 	const Fbox3& l_b1 = blasted_obj->BoundingBox( );
@@ -216,8 +216,8 @@ float CExplosive::ExplosionEffect(collide::rq_results& storage, CExplosive* exp_
 		return 1.0f;
 	}
 
-	Fvector l_c;
-	Fvector l_d;
+	Fvector3 l_c;
+	Fvector3 l_d;
 	l_b1.get_CD(l_c, l_d);
 	float effective_volume = l_d.x * l_d.y * l_d.z;
 	float max_s = effective_volume / (_min(_min(l_d.x, l_d.y), l_d.z));
@@ -243,13 +243,13 @@ float CExplosive::ExplosionEffect(collide::rq_results& storage, CExplosive* exp_
 
 	for (u16 i = 0; i < TEST_RAYS_PER_OBJECT; ++i)
 	{
-		Fvector l_source_p;
-		Fvector l_end_p;
+		Fvector3 l_source_p;
+		Fvector3 l_end_p;
 		l_end_p.random_point(l_d);
 		l_end_p.add(l_c);
 		obj_xform.transform_tiny(l_end_p);
 		GetRaySourcePos(exp_obj, expl_centre, l_source_p);
-		Fvector l_local_source_p;
+		Fvector3 l_local_source_p;
 		inv_obj_form.transform_tiny(l_local_source_p, l_source_p);
 		if (l_b1.contains(l_local_source_p))
 		{
@@ -257,7 +257,7 @@ float CExplosive::ExplosionEffect(collide::rq_results& storage, CExplosive* exp_
 			continue;
 		}
 
-		Fvector l_dir;
+		Fvector3 l_dir;
 		l_dir.sub(l_end_p, l_source_p);
 		float mag = l_dir.magnitude( );
 
@@ -305,7 +305,7 @@ float CExplosive::ExplosionEffect(collide::rq_results& storage, CExplosive* exp_
 	return effect / TEST_RAYS_PER_OBJECT;
 }
 
-float CExplosive::TestPassEffect(const	Fvector& source_p, const	Fvector& dir, float range, float ef_radius, collide::rq_results& storage, CObject* blasted_obj)
+float CExplosive::TestPassEffect(const Fvector3& source_p, const Fvector3& dir, float range, float ef_radius, collide::rq_results& storage, CObject* blasted_obj)
 {
 	float sq_ef_radius = ef_radius * ef_radius;
 	float dist_factor = sq_ef_radius / (range * range * (exp_dist_extinction_factor - 1.0f) + sq_ef_radius);
@@ -341,8 +341,8 @@ void CExplosive::Explode( )
 	m_explosion_flags.set(flExploding, TRUE);
 	cast_game_object( )->processing_activate( );
 
-	Fvector& pos = m_vExplodePos;
-	Fvector& dir = m_vExplodeDir;
+	Fvector3& pos = m_vExplodePos;
+	Fvector3& dir = m_vExplodeDir;
 
 #ifdef DEBUG
 	if (ph_dbg_draw_mask.test(phDbgDrawExplosions))
@@ -360,13 +360,13 @@ void CExplosive::Explode( )
 	//показываем эффекты
 	m_wallmark_manager.PlaceWallmarks(pos);
 
-	Fvector vel;
+	Fvector3 vel;
 	smart_cast<CPHShellHolder*>(cast_game_object( ))->PHGetLinearVell(vel);
 
 	Fmatrix explode_matrix;
 	explode_matrix.identity( );
 	explode_matrix.j.set(dir);
-	Fvector::generate_orthonormal_basis(explode_matrix.j, explode_matrix.i, explode_matrix.k);
+	Fvector3::generate_orthonormal_basis(explode_matrix.j, explode_matrix.i, explode_matrix.k);
 	explode_matrix.c.set(pos);
 
 	CParticlesObject* pStaticPG;
@@ -383,7 +383,7 @@ void CExplosive::Explode( )
 	StartLight( );
 
 	//trace frags
-	Fvector frag_dir;
+	Fvector3 frag_dir;
 
 	//осколки
 	bool SendHits = false;
@@ -466,30 +466,30 @@ void CExplosive::Explode( )
 
 void CExplosive::PositionUpdate( )
 {
-	Fvector vel;
-	Fvector& pos = m_vExplodePos;
-	Fvector& dir = m_vExplodeDir;
+	Fvector3 vel;
+	Fvector3& pos = m_vExplodePos;
+	Fvector3& dir = m_vExplodeDir;
 	GetExplVelocity(vel);
 	GetExplPosition(pos);
 	GetExplDirection(dir);
 	Fmatrix explode_matrix;
 	explode_matrix.identity( );
 	explode_matrix.j.set(dir);
-	Fvector::generate_orthonormal_basis(explode_matrix.j, explode_matrix.i, explode_matrix.k);
+	Fvector3::generate_orthonormal_basis(explode_matrix.j, explode_matrix.i, explode_matrix.k);
 	explode_matrix.c.set(pos);
 }
 
-void CExplosive::GetExplPosition(Fvector& p)
+void CExplosive::GetExplPosition(Fvector3& p)
 {
 	p.set(m_vExplodePos);
 }
 
-void CExplosive::GetExplDirection(Fvector& d)
+void CExplosive::GetExplDirection(Fvector3& d)
 {
 	d.set(m_vExplodeDir);
 }
 
-void CExplosive::GetExplVelocity(Fvector& v)
+void CExplosive::GetExplVelocity(Fvector3& v)
 {
 	smart_cast<CPHShellHolder*>(cast_game_object( ))->PHGetLinearVell(v);
 }
@@ -593,8 +593,8 @@ void CExplosive::OnEvent(NET_Packet& P, u16 type)
 	{
 		case GE_GRENADE_EXPLODE:
 		{
-			Fvector pos;
-			Fvector normal;
+			Fvector3 pos;
+			Fvector3 normal;
 			u16 parent_id;
 			P.r_u16(parent_id);
 			P.r_vec3(pos);
@@ -609,7 +609,7 @@ void CExplosive::OnEvent(NET_Packet& P, u16 type)
 	}
 }
 
-void CExplosive::ExplodeParams(const Fvector& pos, const Fvector& dir)
+void CExplosive::ExplodeParams(const Fvector3& pos, const Fvector3& dir)
 {
 	m_explosion_flags.set(flReadyToExplode, TRUE);
 	m_vExplodePos = pos;
@@ -617,7 +617,7 @@ void CExplosive::ExplodeParams(const Fvector& pos, const Fvector& dir)
 	m_vExplodeDir = dir;
 }
 
-void CExplosive::GenExplodeEvent(const Fvector& pos, const Fvector& normal)
+void CExplosive::GenExplodeEvent(const Fvector3& pos, const Fvector3& normal)
 {
 	if (OnClient( ) || cast_game_object( )->Remote( ))
 	{
@@ -637,12 +637,12 @@ void CExplosive::GenExplodeEvent(const Fvector& pos, const Fvector& normal)
 	m_explosion_flags.set(flExplodEventSent, TRUE);
 }
 
-void CExplosive::FindNormal(Fvector& normal)
+void CExplosive::FindNormal(Fvector3& normal)
 {
 	collide::rq_result RQ;
 
-	Fvector pos;
-	Fvector dir;
+	Fvector3 pos;
+	Fvector3 dir;
 	dir.set(0.0f, -1.0f, 0.0f);
 	cast_game_object( )->Center(pos);
 
@@ -655,7 +655,7 @@ void CExplosive::FindNormal(Fvector& normal)
 	}
 	else
 	{
-		Fvector* pVerts = Level( ).ObjectSpace.GetStaticVerts( );
+		Fvector3* pVerts = Level( ).ObjectSpace.GetStaticVerts( );
 		CDB::TRI* pTri = Level( ).ObjectSpace.GetStaticTris( ) + RQ.element;
 		normal.mknormal(pVerts[pTri->verts[0]], pVerts[pTri->verts[1]], pVerts[pTri->verts[2]]);
 	}
@@ -686,7 +686,7 @@ void CExplosive::StopLight( )
 	}
 }
 
-void CExplosive::GetRaySourcePos(CExplosive* exp_obj, const	Fvector& expl_center, Fvector& p)
+void CExplosive::GetRaySourcePos(CExplosive* exp_obj, const Fvector3& expl_center, Fvector3& p)
 {
 	if (exp_obj)
 	{
@@ -694,7 +694,7 @@ void CExplosive::GetRaySourcePos(CExplosive* exp_obj, const	Fvector& expl_center
 	}
 }
 
-void CExplosive::GetRayExplosionSourcePos(Fvector& pos)
+void CExplosive::GetRayExplosionSourcePos(Fvector3& pos)
 {
 	pos.set(m_vExplodeSize); pos.mul(0.5f);
 	pos.random_point(pos);
@@ -703,7 +703,7 @@ void CExplosive::GetRayExplosionSourcePos(Fvector& pos)
 
 void CExplosive::ExplodeWaveProcessObject(collide::rq_results& storage, CPHShellHolder* l_pGO)
 {
-	Fvector	l_goPos;
+	Fvector3	l_goPos;
 	if (l_pGO->Visual( ))
 	{
 		l_pGO->Center(l_goPos);
@@ -726,7 +726,7 @@ void CExplosive::ExplodeWaveProcessObject(collide::rq_results& storage, CPHShell
 
 	if (l_impuls > .001f || l_hit > 0.001)
 	{
-		Fvector l_dir;
+		Fvector3 l_dir;
 		l_dir.sub(l_goPos, m_vExplodePos);
 
 		float rmag = _sqrt(m_fUpThrowFactor * m_fUpThrowFactor + 1.f + 2.f * m_fUpThrowFactor * l_dir.y);
@@ -779,17 +779,17 @@ void CExplosive::ExplodeWaveProcess( )
 	}
 }
 
-void CExplosive::GetExplosionBox(Fvector& size)
+void CExplosive::GetExplosionBox(Fvector3& size)
 {
 	size.set(m_vExplodeSize);
 }
 
-void CExplosive::SetExplosionSize(const Fvector& new_size)
+void CExplosive::SetExplosionSize(const Fvector3& new_size)
 {
 	m_vExplodeSize.set(new_size);
 }
 
-void CExplosive::ActivateExplosionBox(const Fvector& size, Fvector& in_out_pos)
+void CExplosive::ActivateExplosionBox(const Fvector3& size, Fvector3& in_out_pos)
 {
 	CPHShellHolder* self_obj = smart_cast<CPHShellHolder*>(cast_game_object( ));
 	CPhysicsShell* self_shell = self_obj->PPhysicsShell( );
@@ -850,7 +850,7 @@ void CExplosive::UpdateExplosionParticles( )
 	}
 
 	Fmatrix ParticleMatrix = m_pExpParticle->XFORM( );
-	Fvector Vel;
+	Fvector3 Vel;
 	Vel.sub(GO->Position( ), ParticleMatrix.c);
 	ParticleMatrix.c.set(GO->Position( ));
 	m_pExpParticle->UpdateParent(ParticleMatrix, Vel);

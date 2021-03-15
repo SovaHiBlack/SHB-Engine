@@ -5,7 +5,7 @@
 CGrenadeRGD5::CGrenadeRGD5( )
 {
 	m_flags.set				(Fbelt, TRUE);
-	m_weight				= .1f;
+	m_weight				= 0.1f;
 	m_slot					= GRENADE_SLOT;
 }
 
