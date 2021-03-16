@@ -5,11 +5,11 @@
 	<specific_character id="agr_krot" team_default = "1">
 		<name>agr_krot_name</name>
 		<icon>ui_npc_u_stalker_neytral_rukzak_4</icon>
-		<map_icon x="0" y="0"></map_icon>
 		<bio>agr_krot_bio</bio>
 
 		<class>agr_krot</class>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 
 		<rank>507</rank>
 		<reputation>49</reputation>
@@ -41,11 +41,11 @@
 	<specific_character id="agr_ratcatcher" team_default = "1">
 		<name>GENERATE_NAME_private</name>
 		<icon>ui_npc_u_soldier_bandana_6</icon>
-		<map_icon x="0" y="0"></map_icon>
 		<bio>sim_soldier_regular_bio</bio>
 
 		<class>agr_ratcatcher</class>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 		<money min="200" max="600" infinitive="0"></money>
 
 		<rank>200</rank>
@@ -75,11 +75,11 @@
 	<specific_character id="agr_nii_commander" team_default = "1">
 		<name>GENERATE_NAME_captain</name>
 		<icon>ui_npc_u_soldier_beret</icon>
-		<map_icon x="2" y="0"></map_icon>
 		<bio>sim_soldier_commander_bio</bio>
 
 		<class>agr_nii_commander</class>
-		<community>military</community> <terrain_sect>stalker_military_terrain</terrain_sect>
+		<community>military</community>
+		<terrain_sect>stalker_military_terrain</terrain_sect>
 		<money min="5000" max="10000" infinitive="0"></money>
 
 		<rank>950</rank>
@@ -105,18 +105,15 @@
 
 	</specific_character>
 
-
-
 	<!--STALKER GENERAL-->
-
 	<specific_character id="agr_stalker_general_default1" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_neytral_hood_uzor</icon>
-		<map_icon x="1" y="0"></map_icon>
 		<bio>sim_stalker_general_bio</bio>
 
 		<class>agr_Stalker_general</class>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 
 		<rank>423</rank>
 		<reputation>27</reputation>
@@ -145,11 +142,11 @@
 	<specific_character id="agr_stalker_general_default2" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_neytral_balon_8</icon>
-		<map_icon x="1" y="0"></map_icon>
 		<bio>sim_stalker_general_bio</bio>
 
 		<class>agr_Stalker_general</class>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 
 		<rank>462</rank>
 		<reputation>42</reputation>
@@ -178,11 +175,11 @@
 	<specific_character id="agr_stalker_general_default3" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_neytral_rukzak_2</icon>
-		<map_icon x="1" y="0"></map_icon>
 		<bio>sim_stalker_general_bio</bio>
 
 		<class>agr_Stalker_general</class>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 
 		<rank>482</rank>
 		<reputation>18</reputation>
@@ -211,11 +208,11 @@
 	<specific_character id="agr_stalker_general_default4" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_neytral_hood_2</icon>
-		<map_icon x="1" y="0"></map_icon>
 		<bio>sim_stalker_general_bio</bio>
 
 		<class>agr_Stalker_general</class>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 
 		<rank>466</rank>
 		<reputation>36</reputation>
@@ -244,11 +241,11 @@
 	<specific_character id="agr_stalker_general_default5" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_neytral_hood_8</icon>
-		<map_icon x="1" y="0"></map_icon>
 		<bio>sim_stalker_general_bio</bio>
 
 		<class>agr_Stalker_general</class>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 
 		<rank>423</rank>
 		<reputation>23</reputation>
@@ -277,11 +274,11 @@
 	<specific_character id="agr_stalker_general_default6" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_neytral_rukzak_2</icon>
-		<map_icon x="1" y="0"></map_icon>
 		<bio>sim_stalker_general_bio</bio>
 
 		<class>agr_Stalker_general</class>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 
 		<rank>447</rank>
 		<reputation>33</reputation>
@@ -307,16 +304,15 @@
 		#include "gameplay\character_dialogs.xml"
 	</specific_character>
 
-
 	<!--SOLDIER PRIVATE-->
 	<specific_character id="agr_soldier_regular_default1" team_default = "1">
 		<name>GENERATE_NAME_private</name>
 		<icon>ui_npc_u_soldier_bandana</icon>
-		<map_icon x="1" y="2"></map_icon>
 		<bio>sim_soldier_regular_bio</bio>
 
 		<class>agr_Soldier_regular</class>
-		<community>military</community> <terrain_sect>stalker_military_terrain</terrain_sect>
+		<community>military</community>
+		<terrain_sect>stalker_military_terrain</terrain_sect>
 
 		<rank>211</rank>
 		<reputation>-9</reputation>
@@ -345,11 +341,11 @@
 	<specific_character id="agr_soldier_regular_default2" team_default = "1">
 		<name>GENERATE_NAME_private</name>
 		<icon>ui_npc_u_soldier_bandana_5</icon>
-		<map_icon x="1" y="2"></map_icon>
 		<bio>sim_soldier_regular_bio</bio>
 
 		<class>agr_Soldier_regular</class>
-		<community>military</community> <terrain_sect>stalker_military_terrain</terrain_sect>
+		<community>military</community>
+		<terrain_sect>stalker_military_terrain</terrain_sect>
 
 		<rank>216</rank>
 		<reputation>-6</reputation>
@@ -378,11 +374,11 @@
 	<specific_character id="agr_soldier_regular_default3" team_default = "1">
 		<name>GENERATE_NAME_private</name>
 		<icon>ui_npc_u_soldier_obichniy</icon>
-		<map_icon x="1" y="2"></map_icon>
 		<bio>sim_soldier_regular_bio</bio>
 
 		<class>agr_Soldier_regular</class>
-		<community>military</community> <terrain_sect>stalker_military_terrain</terrain_sect>
+		<community>military</community>
+		<terrain_sect>stalker_military_terrain</terrain_sect>
 		<money min="200" max="600" infinitive="0"></money>
 
 		<rank>218</rank>
@@ -411,11 +407,11 @@
 	<specific_character id="agr_soldier_regular_default4" team_default = "1">
 		<name>GENERATE_NAME_private</name>
 		<icon>ui_npc_u_soldier_bandana</icon>
-		<map_icon x="1" y="2"></map_icon>
 		<bio>sim_soldier_regular_bio</bio>
 
 		<class>agr_Soldier_regular</class>
-		<community>military</community> <terrain_sect>stalker_military_terrain</terrain_sect>
+		<community>military</community>
+		<terrain_sect>stalker_military_terrain</terrain_sect>
 		<money min="200" max="600" infinitive="0"></money>
 
 		<rank>210</rank>
@@ -444,11 +440,11 @@
 	<specific_character id="agr_soldier_regular_default5" team_default = "1">
 		<name>GENERATE_NAME_sergeant</name>
 		<icon>ui_npc_u_soldier_obichniy</icon>
-		<map_icon x="1" y="2"></map_icon>
 		<bio>sim_soldier_regular_bio</bio>
 
 		<class>agr_Soldier_regular</class>
-		<community>military</community> <terrain_sect>stalker_military_terrain</terrain_sect>
+		<community>military</community>
+		<terrain_sect>stalker_military_terrain</terrain_sect>
 		<money min="600" max="2000" infinitive="0"></money>
 
 		<rank>460</rank>
@@ -479,11 +475,11 @@
 	<specific_character id="agr_soldier_specnaz_default1" team_default = "1">
 		<name>GENERATE_NAME_sergeant</name>
 		<icon>ui_npc_u_soldier_spetsnaz</icon>
-		<map_icon x="2" y="2"></map_icon>
 		<bio>sim_soldier_specnaz_bio</bio>
 
 		<class>agr_Soldier_specnaz</class>
-		<community>military</community> <terrain_sect>stalker_military_terrain</terrain_sect>
+		<community>military</community>
+		<terrain_sect>stalker_military_terrain</terrain_sect>
 		<money min="600" max="2000" infinitive="0"></money>
 
 		<rank>490</rank>
@@ -512,11 +508,11 @@
 	<specific_character id="agr_soldier_specnaz_default2" team_default = "1">
 		<name>GENERATE_NAME_lieutenant</name>
 		<icon>ui_npc_u_soldier_spetsnaz</icon>
-		<map_icon x="2" y="2"></map_icon>
 		<bio>sim_soldier_specnaz_bio</bio>
 
 		<class>agr_Soldier_specnaz</class>
-		<community>military</community> <terrain_sect>stalker_military_terrain</terrain_sect>
+		<community>military</community>
+		<terrain_sect>stalker_military_terrain</terrain_sect>
 		<money min="2000" max="5000" infinitive="0"></money>
 
 		<rank>764</rank>
@@ -547,11 +543,11 @@
 	<specific_character id="agr_soldier_commander1" team_default = "1">
 		<name>GENERATE_NAME_lieutenant</name>
 		<icon>ui_npc_u_soldier_beret</icon>
-		<map_icon x="2" y="0"></map_icon>
 		<bio>sim_soldier_commander_bio</bio>
 
 		<class>agr_Soldier_commander</class>
-		<community>military</community> <terrain_sect>stalker_military_terrain</terrain_sect>
+		<community>military</community>
+		<terrain_sect>stalker_military_terrain</terrain_sect>
 		<money min="2000" max="5000" infinitive="0"></money>
 
 		<rank>774</rank>
@@ -580,11 +576,11 @@
 	<specific_character id="agr_soldier_commander2" team_default = "1">
 		<name>GENERATE_NAME_lieutenant</name>
 		<icon>ui_npc_u_soldier_beret_3</icon>
-		<map_icon x="2" y="0"></map_icon>
 		<bio>sim_soldier_commander_bio</bio>
 
 		<class>agr_Soldier_commander</class>
-		<community>military</community> <terrain_sect>stalker_military_terrain</terrain_sect>
+		<community>military</community>
+		<terrain_sect>stalker_military_terrain</terrain_sect>
 		<money min="2000" max="5000" infinitive="0"></money>
 
 		<rank>799</rank>
@@ -614,11 +610,11 @@
 	<specific_character id="agr_soldier_sniper_default1" team_default = "1">
 		<name>GENERATE_NAME_sergeant</name>
 		<icon>ui_npc_u_soldier_obichniy</icon>
-		<map_icon x="1" y="2"></map_icon>
 		<bio>sim_soldier_sniper_bio</bio>
 
 		<class>agr_Soldier_sniper</class>
-		<community>military</community> <terrain_sect>stalker_military_terrain</terrain_sect>
+		<community>military</community>
+		<terrain_sect>stalker_military_terrain</terrain_sect>
 		<money min="600" max="2000" infinitive="0"></money>
 
 		<rank>487</rank>
@@ -647,11 +643,11 @@
 	<specific_character id="agr_soldier_sniper_default2" team_default = "1">
 		<name>GENERATE_NAME_sergeant</name>
 		<icon>ui_npc_u_soldier_bandana</icon>
-		<map_icon x="1" y="2"></map_icon>
 		<bio>sim_soldier_sniper_bio</bio>
 
 		<class>agr_Soldier_sniper</class>
-		<community>military</community> <terrain_sect>stalker_military_terrain</terrain_sect>
+		<community>military</community>
+		<terrain_sect>stalker_military_terrain</terrain_sect>
 		<money min="600" max="2000" infinitive="0"></money>
 
 		<rank>486</rank>
@@ -680,11 +676,11 @@
 	<specific_character id="agr_soldier_sniper_default3" team_default = "1">
 		<name>GENERATE_NAME_sergeant</name>
 		<icon>ui_npc_u_soldier_bandana_5</icon>
-		<map_icon x="1" y="2"></map_icon>
 		<bio>sim_soldier_sniper_bio</bio>
 
 		<class>agr_Soldier_sniper</class>
-		<community>military</community> <terrain_sect>stalker_military_terrain</terrain_sect>
+		<community>military</community>
+		<terrain_sect>stalker_military_terrain</terrain_sect>
 		<money min="600" max="2000" infinitive="0"></money>
 
 		<rank>497</rank>
@@ -715,11 +711,11 @@
 	<specific_character id="agr_bandit_general_default1" team_default = "1">
 		<name>GENERATE_NAME_bandit</name>
 		<icon>ui_npc_u_stalker_bandit_3</icon>
-		<map_icon x="3" y="2"></map_icon>
 		<bio>sim_bandit_general_bio</bio>
 
 		<class>agr_bandit_general</class>
-		<community>bandit</community> <terrain_sect>stalker_bandit_terrain</terrain_sect>
+		<community>bandit</community>
+		<terrain_sect>stalker_bandit_terrain</terrain_sect>
 		<money min="600" max="2000" infinitive="0"></money>
 
 		<rank>438</rank>
@@ -749,11 +745,11 @@
 	<specific_character id="agr_bandit_general_default2" team_default = "1">
 		<name>GENERATE_NAME_bandit</name>
 		<icon>ui_npc_u_stalker_bandit_4</icon>
-		<map_icon x="3" y="2"></map_icon>
 		<bio>sim_bandit_general_bio</bio>
 
 		<class>agr_bandit_general</class>
-		<community>bandit</community> <terrain_sect>stalker_bandit_terrain</terrain_sect>
+		<community>bandit</community>
+		<terrain_sect>stalker_bandit_terrain</terrain_sect>
 		<money min="600" max="2000" infinitive="0"></money>
 
 		<rank>476</rank>
@@ -783,11 +779,11 @@
 	<specific_character id="agr_bandit_general_default3" team_default = "1">
 		<name>GENERATE_NAME_bandit</name>
 		<icon>ui_npc_u_stalker_bandit_5</icon>
-		<map_icon x="3" y="2"></map_icon>
 		<bio>sim_bandit_general_bio</bio>
 
 		<class>agr_bandit_general</class>
-		<community>bandit</community> <terrain_sect>stalker_bandit_terrain</terrain_sect>
+		<community>bandit</community>
+		<terrain_sect>stalker_bandit_terrain</terrain_sect>
 		<money min="600" max="2000" infinitive="0"></money>
 
 		<rank>458</rank>

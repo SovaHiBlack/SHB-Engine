@@ -28,7 +28,6 @@
 		<start_dialog>yantar_general_ucheniy_talk_start</start_dialog>
 		<actor_dialog>tm_ecolog_dialog</actor_dialog>
 		<actor_dialog>tm_ecolog_reward</actor_dialog>
-
 	</specific_character>
 
 	<!--RESCUE_ECOLOG-->
