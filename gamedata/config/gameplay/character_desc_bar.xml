@@ -498,7 +498,7 @@
 		<actor_dialog>bar_bar_psih_talk_lisiy</actor_dialog>
 	</specific_character>
 
-	<!-- ******************* ARENA ********************** -->
+	<!-- ARENA -->
 	<specific_character id="bar_arena_manager" team_default = "1">
 		<name>bar_arny_name</name>
 		<icon>ui_npc_u_stalker_neytral_balon_6</icon>
@@ -769,7 +769,7 @@
 		<actor_dialog>tm_zastava_commander_reward</actor_dialog>
 	</specific_character>
 
-	<!-- ******************* Helicopter scene ********************** -->
+	<!-- Helicopter scene -->
 	<specific_character id="bar_ecolog_professor" team_default = "1">
 		<name>ros_kruglov_name</name>
 		<icon>ui_npc_u_stalker_ecolog_military</icon>
@@ -836,7 +836,7 @@
 		<actor_dialog>bar_svoboda_volkodav_info_dp</actor_dialog>
 	</specific_character>
 
-	<!-- ******************* KILLER AMBUSH ********************** -->
+	<!-- KILLER AMBUSH -->
 	<specific_character id="bar_killer_ambush_tiran" team_default = "1">
 		<name>ros_tiran_name</name>
 		<icon>ui_npc_u_stalker_ki_exoskeleton</icon>
@@ -869,7 +869,7 @@
 		#include "gameplay\character_dialogs.xml"
 	</specific_character>
 
-	<!-- ******************* CRAZY VETERANS ********************** -->
+	<!-- CRAZY VETERANS -->
 	<specific_character id="bar_crazy_veterans_lucky" team_default = "1">
 		<name>ros_happy_name</name>
 		<icon>ui_npc_u_stalker_bandit_master</icon>
@@ -960,7 +960,7 @@
 		#include "gameplay\character_dialogs.xml"
 	</specific_character>
 
-	<!-- ************************ Гордон Фримен *********************** -->
+	<!-- Гордон Фримен -->
 	<specific_character id="bar_stalker_freeman" team_default = "1">
 		<name>ros_freeman_name</name>
 		<icon>ui_npc_u_green_stalker_7</icon>

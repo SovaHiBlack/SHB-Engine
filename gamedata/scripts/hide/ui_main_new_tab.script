@@ -43,7 +43,7 @@ function main_new_tab:InitControls(x, y, handler)
 							 width = self.btn.width,
 							 height = self.btn.height}
 						
-	------->> NOVICE
+	------- >> NOVICE
  	btn = CUI3tButton()	
 	btn:SetAutoDelete(true)
 	btn:SetWindowName("btn_novice")
@@ -55,7 +55,7 @@ function main_new_tab:InitControls(x, y, handler)
 	handler:Register(btn)
 	self:AttachChild(btn)
 	
-	--------->> STALKER
+	--------- >> STALKER
 	btn = CUI3tButton()
 	btn:SetAutoDelete(true)
 	btn:SetWindowName("btn_stalker")
@@ -67,7 +67,7 @@ function main_new_tab:InitControls(x, y, handler)
 	handler:Register(btn)
 	self:AttachChild(btn)	
 	
-	--------->> VETERAN
+	--------- >> VETERAN
 	btn = CUI3tButton()
 	btn:SetAutoDelete(true)
 	btn:SetWindowName("btn_veteran")
@@ -80,7 +80,7 @@ function main_new_tab:InitControls(x, y, handler)
 	self:AttachChild(btn)	
 
 
-	--------->> MASTER
+	--------- >> MASTER
 	btn = CUI3tButton()
 	btn:SetAutoDelete(true)
 	btn:SetWindowName("btn_master")

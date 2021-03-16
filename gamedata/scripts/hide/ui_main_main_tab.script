@@ -57,7 +57,7 @@ function main_main_tab:InitControls(x, y, handler)
 							 
 		----- CODE -------
 -------- BUTTONS ------------------------------- 
-	--------->> NEW GAME
+	--------- >> NEW GAME
 	btn = CUI3tButton()	
 	btn:SetAutoDelete(true)
 	btn:SetWindowName("btn_new_game")
@@ -71,7 +71,7 @@ function main_main_tab:InitControls(x, y, handler)
 	
 	btn:Enable(not level.present())
 		
-	--------->> LOAD Game	
+	--------- >> LOAD Game	
 	btn = CUI3tButton()
 	btn:SetAutoDelete(true)
 	btn:SetWindowName("btn_load")
@@ -84,7 +84,7 @@ function main_main_tab:InitControls(x, y, handler)
 	handler:Register(btn)
 	self:AttachChild(btn)	
 	
-	--------->> SAVE Game	
+	--------- >> SAVE Game	
 	btn = CUI3tButton()
 	btn:SetAutoDelete(true)
 	btn:SetWindowName("btn_save")
@@ -100,7 +100,7 @@ function main_main_tab:InitControls(x, y, handler)
 	btn:Enable(level.present())
 	
 		
-	--------->> MULTIPLAYER
+	--------- >> MULTIPLAYER
 	btn = CUI3tButton()
 	btn:SetAutoDelete(true)
 	btn:SetWindowName("btn_multiplayer")
@@ -114,7 +114,7 @@ function main_main_tab:InitControls(x, y, handler)
 	
 	btn:Enable(not level.present())
 	
-	--------->> OPTIONS
+	--------- >> OPTIONS
 	btn = CUI3tButton()
 	btn:SetAutoDelete(true)
 	btn:SetWindowName("btn_options")
@@ -128,7 +128,7 @@ function main_main_tab:InitControls(x, y, handler)
 	
 --	btn:Enable(false)
 	
-	--------->> QUIT TO WINDOWS
+	--------- >> QUIT TO WINDOWS
 	btn = CUI3tButton()
 	btn:SetAutoDelete(true)
 	btn:SetWindowName("btn_quit")
@@ -140,7 +140,7 @@ function main_main_tab:InitControls(x, y, handler)
 	handler:Register(btn)
 	self:AttachChild(btn)
 	
-	--------->> BONUS
+	--------- >> BONUS
 	btn = CUI3tButton()
 	btn:SetAutoDelete(true)
 	btn:SetWindowName("btn_bonus")

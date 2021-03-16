@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="windows-1251"?>
 <xml>
 	<!-- Уникальные профиля -->
-
 	<specific_character id="agr_krot" team_default = "1">
 		<name>agr_krot_name</name>
 		<icon>ui_npc_u_stalker_neytral_rukzak_4</icon>

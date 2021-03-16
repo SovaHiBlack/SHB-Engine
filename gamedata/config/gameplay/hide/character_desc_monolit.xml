@@ -81,7 +81,7 @@
 		<actor_dialog>esc_stalker_talk_level</actor_dialog>
 	</specific_character>
 
-<!---------------------------MONOLIT REGULAR----------------------->
+<!--MONOLIT REGULAR-->
 	<specific_character id="monolit_regular_default1" team_default = "3">
 		<name>Сталкер группировки "Монолит"</name>
 		<icon x="4" y="2"></icon>
@@ -134,7 +134,7 @@
 		<actor_dialog>esc_stalker_talk_level</actor_dialog>
 	</specific_character>
 
-<!---------------------------MONOLIT SNIPER---------------------->
+<!--MONOLIT SNIPER-->
 	<specific_character id="monolit_sniper_default1" team_default = "1">
 		<name>Сталкер группировки "Монолит"</name>
 		<icon x="4" y="2"></icon>
@@ -187,7 +187,7 @@
 		<actor_dialog>esc_stalker_talk_level</actor_dialog>
 	</specific_character>
 
-<!---------------------------MONOLIT SNIPER GAUSS---------------------->
+<!--MONOLIT SNIPER GAUSS-->
 	<specific_character id="monolit_sniper_gauss" team_default = "1">
 		<name>Сталкер группировки "Монолит"</name>
 		<icon x="4" y="2"></icon>
@@ -214,7 +214,7 @@
 		<actor_dialog>esc_stalker_talk_level</actor_dialog>
 	</specific_character>
 
-<!---------------------------MONOLIT SPECNAZ---------------------->
+<!--MONOLIT SPECNAZ-->
 	<specific_character id="monolit_specnaz_default1" team_default = "1">
 		<name>Сталкер группировки "Монолит"</name>
 		<icon x="4" y="2"></icon>
@@ -320,7 +320,7 @@
 		<actor_dialog>esc_stalker_talk_level</actor_dialog>
 	</specific_character>
 
-<!---------------------------MONOLIT MASTER----------------------->
+<!--MONOLIT MASTER-->
 	<specific_character id="monolit_master_default1" team_default = "1">
 		<name>Сталкер группировки "Монолит"</name>
 		<icon x="28" y="8"></icon>
@@ -374,7 +374,7 @@
 		<actor_dialog>esc_stalker_talk_level</actor_dialog>
 	</specific_character>
 
-<!---------------------------MONOLIT REGULAR with RPG----------------------->
+<!--MONOLIT REGULAR with RPG-->
 	<specific_character id="monolit_rpg_default1" team_default = "1">
 		<name>Сталкер группировки "Монолит"</name>
 		<icon x="4" y="2"></icon>

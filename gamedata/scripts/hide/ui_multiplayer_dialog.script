@@ -29,7 +29,7 @@ function multiplayer_dialog:InitControls()
 	ui_base_dialog.base_dialog.InitControls(self, "Multiplayer")
 
 	----- DATA ----
-	----- BUTTONS --->>>
+	----- BUTTONS --- >>>
 	local btn_find_rect   = {x = self.btn_rect.x,
 							 y = self.top_align_y,
 							 width = self.btn_rect.width,
@@ -46,8 +46,8 @@ function multiplayer_dialog:InitControls()
 							 height = self.btn_rect.height}	
 	
 	----- CODE -------
-	------>> BUTTONS
-	--------->> FIND SERVER
+	------ >> BUTTONS
+	--------- >> FIND SERVER
     local btn = CUIButton()
 	btn:SetAutoDelete(true)
 	btn:SetWindowName("btn_find_server")
@@ -59,7 +59,7 @@ function multiplayer_dialog:InitControls()
 	self:Register(btn)
 	self.main_frame:AttachChild(btn)	
 
-	--------->> CREATE SERVER
+	--------- >> CREATE SERVER
 	btn = CUIButton()
 	btn:SetAutoDelete(true)
 	btn:SetWindowName("btn_create_server")
@@ -71,7 +71,7 @@ function multiplayer_dialog:InitControls()
 	self:Register(btn)
 	self.main_frame:AttachChild(btn)	
 	
-	--------->> BACK
+	--------- >> BACK
 	btn = CUIButton()
 	btn:SetAutoDelete(true)
 	btn:SetWindowName("btn_back")

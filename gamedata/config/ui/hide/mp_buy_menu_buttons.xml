@@ -183,7 +183,7 @@
 </btn_preset_def>
 
 
-<!------------- -->
+<!-- -->
 <btn_save_preset_1 x="970" y="207" width="37" height="25" check_mode="0">
 	<window_name>btn_save_preset_1</window_name>
 	<texture>ui_bm_save_preset</texture>
@@ -201,7 +201,7 @@
 	<texture>ui_bm_save_preset</texture>
 	<sound_t>weapons\generic_close</sound_t>
 </btn_save_preset_3>
-<!------------- -->
+<!-- -->
 
 <btn_sell x="723" y="530" width="117" height="29" hint="ui_inv_sell_items(X)"  accel="kX">
 	<window_name>btn_sell</window_name>

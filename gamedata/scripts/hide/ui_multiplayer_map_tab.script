@@ -37,7 +37,7 @@ function map_tab:InitControls(x_pos, y_pos, width, height)
 	list_map_r_rect.y = list_map_rect.y
 	
 	
-	----- BUTTONS --->>>	
+	----- BUTTONS --- >>>	
 	-- Bottom align
 	local btn_back_rect   = {0,
 							 y = self.bottom_align_y - self.btn_rect.height,							 
@@ -45,7 +45,7 @@ function map_tab:InitControls(x_pos, y_pos, width, height)
 							 height = self.btn_rect.height}	
 	btn_back_rect.x = self.main_rect.width - btn_back_rect.width - self.indent
 	
-	--------->> BACK
+	--------- >> BACK
 	btn = CUIButton()
 	btn:SetAutoDelete(true)
 	btn:SetWindowName("btn_back")

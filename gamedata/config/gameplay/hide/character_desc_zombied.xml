@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding="windows-1251"?>
 
 <xml>
-<!---------------------------ZOMBIED----------------------->
+<!--ZOMBIED-->
 	<specific_character id="zombied_default1" team_default = "1">
 		<name>Зомбированный сталкер</name>
 		<icon x="20" y="10"></icon>
@@ -198,7 +198,7 @@
 		<actor_dialog>esc_stalker_talk_level</actor_dialog>
 	</specific_character>
 
-<!---------------------------ZOMBIED VETERANS----------------------->
+<!--ZOMBIED VETERANS-->
 	<specific_character id="zombied_veteran_default1" team_default = "1">
 		<name>Зомбированный сталкер</name>
 		<icon x="20" y="10"></icon>

@@ -26,7 +26,7 @@
 		<start_dialog>hello_dialog</start_dialog>
 	</specific_character>	
 
-<!---------------------------SVOBODA REGULAR----------------------->
+<!--SVOBODA REGULAR-->
 	<specific_character id="svoboda_regular_default1" team_default = "1">
 		<name>Сталкер группировки "Свобода"</name>
 		<icon x="22" y="8"></icon>
@@ -87,7 +87,7 @@
 		<actor_dialog>esc_stalker_talk_level</actor_dialog>
 	</specific_character>
 
-<!---------------------------SVOBODA BODYGUARD---------------------->
+<!--SVOBODA BODYGUARD-->
 	<specific_character id="svoboda_bodyguard1" team_default = "1">
 		<name>"Капец"</name>
 		<icon x="24" y="12"></icon>
@@ -175,7 +175,7 @@
 		<actor_dialog>esc_stalker_talk_level</actor_dialog>
 	</specific_character>
 
-<!---------------------------SVOBODA SNIPER---------------------->
+<!--SVOBODA SNIPER-->
 	<specific_character id="svoboda_sniper_default2" team_default = "1">
 		<name>Сталкер группировки "Свобода"</name>
 		<icon x="10" y="2"></icon>
@@ -234,7 +234,7 @@
 		<actor_dialog>esc_stalker_talk_level</actor_dialog>
 	</specific_character>
 	
-<!---------------------------SVOBODA SPECNAZ---------------------->
+<!--SVOBODA SPECNAZ-->
 	<specific_character id="svoboda_veteran_default1" team_default = "1">
 		<name>Сталкер группировки "Свобода"</name>
 		<icon x="24" y="8"></icon>
@@ -265,7 +265,7 @@
 	</specific_character>
 
 				
-<!---------------------------SVOBODA MASTER----------------------->
+<!--SVOBODA MASTER-->
 	<specific_character id="svoboda_master_default1" team_default = "1">
 		<name>Сталкер группировки "Свобода"</name>
 		<icon x="12" y="0"></icon>
@@ -297,7 +297,7 @@
 		<actor_dialog>esc_stalker_talk_level</actor_dialog>
 	</specific_character>
 
-<!---------------------------SVOBODA MASTER MAX----------------------->
+<!--SVOBODA MASTER MAX-->
 	<specific_character id="svoboda_master_max" team_default = "1">
 		<name>"Макс"</name>
 		<icon x="12" y="0"></icon>
@@ -330,7 +330,7 @@
 		<actor_dialog>mil_max_dialog_common3</actor_dialog>
 	</specific_character>
 
-<!---------------------------SVOBODA MASTER UGRUMIY----------------------->
+<!--SVOBODA MASTER UGRUMIY-->
 	<specific_character id="svoboda_master_ugrumiy" team_default = "1">
 		<name>"Угрюмый"</name>
 		
@@ -361,7 +361,7 @@
 		<actor_dialog>esc_stalker_talk_level</actor_dialog>
 	</specific_character>
 
-<!---------------------------SVOBODA COOK----------------------->
+<!--SVOBODA COOK-->
 	<specific_character id="svoboda_cook" team_default = "1">
 		<name>"Повар"</name>
 		
@@ -402,7 +402,7 @@
 
 	</specific_character>
 
-<!---------------------------SVOBODA TRADER----------------------->
+<!--SVOBODA TRADER-->
 	<specific_character id="svoboda_trader" team_default = "1">
 		<name>"Скряга"</name>
 		<icon x="12" y="0"></icon>
@@ -432,7 +432,7 @@
 
 	</specific_character>
 
-<!---------------------------SVOBODA SPECNAZ STUKACH---------------------->
+<!--SVOBODA SPECNAZ STUKACH-->
 	<specific_character id="svoboda_specnaz_stukach" team_default = "1">
 		<name>Павлик</name>
 		<icon x="22" y="8"></icon>
@@ -462,7 +462,7 @@
 		<actor_dialog>esc_stalker_talk_level</actor_dialog>
 	</specific_character>
 
-<!---------------------------SVOBODA BLOCKPOST LEADER---------------------->
+<!--SVOBODA BLOCKPOST LEADER-->
 	<specific_character id="svoboda_blockpost_leader" team_default = "1">
 		<name>"Кеп"</name>
 		<icon x="22" y="8"></icon>
@@ -490,7 +490,7 @@
 		<actor_dialog>mil_freedom_commander_common2</actor_dialog>
 	</specific_character>
 
-<!---------------------------SVOBODA ZONEGUARD---------------------->
+<!--SVOBODA ZONEGUARD-->
 	<specific_character id="svoboda_zoneguard" team_default = "1">
 		<name>Сталкер группировки "Свобода"</name>
 		<icon x="24" y="8"></icon>

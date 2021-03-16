@@ -34,7 +34,7 @@
 		<actor_dialog>escape_lager_hlam_talk_people</actor_dialog>
 	</specific_character>
 
-<!---------------------------STALKER NOVICE----------------------->
+<!--STALKER NOVICE-->
 	<specific_character id="stalker_novice_default1" team_default = "1">
 		<name>Неизвестный новичок</name>
 		<icon x="20" y="2"></icon>
@@ -239,7 +239,7 @@
 		<actor_dialog>esc_stalker_talk_level</actor_dialog>
 	</specific_character>
 
-<!---------------------------STALKER GENERAL---------------------->
+<!--STALKER GENERAL-->
 	<specific_character id="stalker_general_default1" team_default = "1">
 		<name>Неизвестный сталкер</name>
 		<icon x="2" y="2"></icon>
@@ -401,7 +401,7 @@
 		<actor_dialog>agr_stalker_esc</actor_dialog>
 	</specific_character>
 	
-<!---------------------------STALKER VETERAN---------------------->
+<!--STALKER VETERAN-->
 	<specific_character id="stalker_veteran_default1" team_default = "1">
 		<name>Неизвестный ветеран</name>
 		<icon x="2" y="2"></icon>
@@ -557,7 +557,7 @@
 
 	</specific_character>
 
-<!---------------------------STALKER MASTER----------------------->
+<!--STALKER MASTER-->
 	<specific_character id="stalker_master_default1" team_default = "1">
 		<name>Неизвестный мастер</name>
 		<icon x="10" y="0"></icon>
@@ -933,7 +933,7 @@
 		<actor_dialog>esc_stalker_talk_level</actor_dialog>
 	</specific_character>
 
-<!---------------------------STALKER SNIPER----------------------->
+<!--STALKER SNIPER-->
 	<specific_character id="stalker_sniper" team_default = "1">
 		<name>Неизвестный мастер</name>
 		<icon x="10" y="0"></icon>

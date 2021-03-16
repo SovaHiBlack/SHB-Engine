@@ -2,7 +2,7 @@
 
 <xml>
 
-<!---------------------------SOLDIER COMMANDER----------------------->
+<!--SOLDIER COMMANDER-->
 	<specific_character id="soldier_commander1" team_default = "1">
 		<name>Командир</name>
 		<icon x="6" y="2"></icon>
@@ -87,7 +87,7 @@
 		<actor_dialog>esc_stalker_talk_level</actor_dialog>
 	</specific_character>
 
-<!---------------------------SOLDIER PRIVATE----------------------->
+<!--SOLDIER PRIVATE-->
 	<specific_character id="soldier_regular_default1" team_default = "1">
 		<name>Рядовой солдат</name>
 		<icon x="12" y="2"></icon>
@@ -238,7 +238,7 @@
 		<actor_dialog>esc_stalker_talk_level</actor_dialog>
 	</specific_character>
 
-<!---------------------------SOLDIER SNIPER---------------------->
+<!--SOLDIER SNIPER-->
 	<specific_character id="soldier_sniper_default1" team_default = "1">
 		<name>Рядовой солдат</name>
 		<icon x="12" y="2"></icon>
@@ -329,7 +329,7 @@
 		<actor_dialog>esc_stalker_talk_level</actor_dialog>
 	</specific_character>	
 	
-<!---------------------------SOLDIER SPECNAZ---------------------->
+<!--SOLDIER SPECNAZ-->
 	<specific_character id="soldier_specnaz_default1" team_default = "1">
 		<name>Неизвестный военный</name>
 		<icon x="14" y="2"></icon>
@@ -420,7 +420,7 @@
 		<actor_dialog>esc_stalker_talk_level</actor_dialog>
 	</specific_character>
 	
-<!---------------------------SOLDIER MASTER----------------------->
+<!--SOLDIER MASTER-->
 	<specific_character id="soldier_military_default" team_default = "1">
 		<name>Неизвестный солдат</name>
 		<icon x="6" y="4"></icon>
@@ -600,7 +600,7 @@
 	</specific_character>
 
 
-<!---------------------------SOLDIER SPECNAZ AES---------------------->
+<!--SOLDIER SPECNAZ AES-->
 	<specific_character id="soldier_specnaz_aes" team_default = "1">
 		<name>Неизвестный военный</name>
 		<icon x="14" y="2"></icon>

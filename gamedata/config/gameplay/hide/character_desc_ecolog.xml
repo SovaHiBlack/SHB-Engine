@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding="windows-1251"?>
 
 <xml>
-<!---------------------------ECOLOG------------------------------>
+<!--ECOLOG-->
 	<specific_character id="ecolog_default1" team_default = "1">
 		<name>Неизвестный ученый</name>
 		<icon x="10" y="4"></icon>
@@ -58,7 +58,7 @@
 		<actor_dialog>esc_stalker_talk_level</actor_dialog>
 	</specific_character>
 
-<!---------------------------ECOLOG GUARD------------------------>
+<!--ECOLOG GUARD-->
 	<specific_character id="ecolog_guard_default1" team_default = "1">
 		<name>Неизвестный ученый</name>
 		<icon x="8" y="4"></icon>

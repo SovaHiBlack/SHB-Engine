@@ -98,7 +98,7 @@ function spawn_dialog:InitControls()
 	self:Register(list_wnd)
 	self.main_frame:AttachChild(list_wnd)
 
-	-----> BUTTONS
+	----- > BUTTONS
 	--- LOAD
 	local btn   = CUI3tButton()
 	btn:SetAutoDelete(true) 

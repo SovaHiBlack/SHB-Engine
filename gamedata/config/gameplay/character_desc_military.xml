@@ -313,7 +313,7 @@
 		<start_dialog>mil_trader_dialog</start_dialog>
 		#include "gameplay\character_dialogs.xml"
 	</specific_character>
-	
+
 	<!--SVOBODA MASTER MAX-->
 	<specific_character id="mil_Svoboda_master_Max" team_default = "1">
 		<name>mil_Svoboda_master_Max_name</name>
@@ -350,7 +350,7 @@
 		<start_dialog>mil_max_dialog</start_dialog>
 		#include "gameplay\character_dialogs.xml"
 	</specific_character>
-	
+
 	<!--SVOBODA MASTER-->
 	<specific_character id="mil_Svoboda_master" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
@@ -384,7 +384,7 @@
 		#include "gameplay\character_criticals_5.xml"
 		#include "gameplay\character_dialogs.xml"
 	</specific_character>
-	
+
 	<!--SVOBODA COOK-->
 	<specific_character id="mil_Svoboda_cook" team_default = "1">
 		<name>mil_Svoboda_cook_name</name>
@@ -431,7 +431,7 @@
 		<actor_dialog>mil_cook_drunk_question_about_rg6_3</actor_dialog>
 		#include "gameplay\character_dialogs.xml"
 	</specific_character>
-	
+
 	<!--SVOBODA BLOCKPOST LEADER-->
 	<specific_character id="mil_Svoboda_blockpost_leader" team_default = "1">
 		<name>mil_Svoboda_blockpost_leader_name</name>
@@ -467,7 +467,7 @@
 
 		<actor_dialog>mil_freedom_commander_common2</actor_dialog>
 	</specific_character>
-	
+
 	<!--SVOBODA MASTER UGRUMIY-->
 	<specific_character id="mil_Svoboda_master_Ugrumiy" team_default = "1">
 		<name>mil_Svoboda_master_Ugrumiy_name</name>
@@ -536,7 +536,7 @@
 		#include "gameplay\character_criticals_6.xml"
 		#include "gameplay\character_dialogs.xml"
 	</specific_character>
-	
+
 	<!--DOLG SPECNAZ SILENCE-->
 	<specific_character id="mil_Dolg_specnaz_silence" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
@@ -570,7 +570,7 @@
 		#include "gameplay\character_criticals_2.xml"
 		#include "gameplay\character_dialogs.xml"
 	</specific_character>
-	
+
 	<!--DOLG SPECNAZ CHEREP-->
 	<specific_character id="mil_Dolg_specnaz_cherep" team_default = "1">
 		<name>mil_Dolg_specnaz_cherep_name</name>
@@ -641,7 +641,7 @@
 
 		<start_dialog>hello_dialog</start_dialog>
 	</specific_character>
-	
+
 	<!--KILLER SPECNAZ-->
 	<specific_character id="mil_Killer_specnaz" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
@@ -778,7 +778,7 @@
 		#include "gameplay\character_criticals_2.xml"
 		#include "gameplay\character_dialogs.xml"
 	</specific_character>
-	
+
 	<!--STALKER VETERAN-->
 	<specific_character id="mil_Stalker_veteran" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
@@ -841,7 +841,7 @@
 		#include "gameplay\character_criticals_1.xml"
 		#include "gameplay\character_dialogs.xml"
 	</specific_character>
-	
+
 	<!--MONOLIT REGULAR-->
 	<specific_character id="mil_Monolit_regular" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>

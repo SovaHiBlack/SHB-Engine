@@ -28,7 +28,7 @@
 		<actor_dialog>esc_stalker_talk_level</actor_dialog>
 	</specific_character>
 	
-<!---------------------------KILLER REGULAR----------------------->
+<!--KILLER REGULAR-->
 	<specific_character id="killer_regular_default1" team_default = "1">
 		<name>Неизвестный наемник</name>
 		<icon x="18" y="4"></icon>
@@ -116,7 +116,7 @@
 		<actor_dialog>esc_stalker_talk_level</actor_dialog>
 	</specific_character>
 		
-<!---------------------------KILLER SNIPER---------------------->
+<!--KILLER SNIPER-->
 	<specific_character id="killer_sniper_default1" team_default = "1">
 		<name>Неизвестный наемник</name>
 		<icon x="28" y="6"></icon>
@@ -146,7 +146,7 @@
 	</specific_character>
 
 	
-<!---------------------------KILLER SPECNAZ---------------------->
+<!--KILLER SPECNAZ-->
 	<specific_character id="killer_specnaz_default1" team_default = "1">
 		<name>Неизвестный наемник</name>
 		<icon x="4" y="2"></icon>
@@ -261,7 +261,7 @@
 		<actor_dialog>esc_stalker_talk_level</actor_dialog>
 	</specific_character>
 			
-<!---------------------------KILLER MASTER----------------------->
+<!--KILLER MASTER-->
 	<specific_character id="killer_master_default1" team_default = "1">
 		<name>Неизвестный наемник</name>
 		<icon x="30" y="6"></icon>
@@ -324,7 +324,7 @@
 		<actor_dialog>esc_stalker_talk_level</actor_dialog>
 	</specific_character>
 
-<!---------------------------KILLER SPECNAZ STUKACH---------------------->
+<!--KILLER SPECNAZ STUKACH-->
 	<specific_character id="killer_specnaz_stukach" team_default = "1">
 		<name>Павлик</name>
 		<icon x="22" y="8"></icon>
@@ -353,7 +353,7 @@
 		<actor_dialog>esc_stalker_talk_level</actor_dialog>
 	</specific_character>
 		
-<!---------------------------KILLER IHFORMATOR---------------------->
+<!--KILLER IHFORMATOR-->
 	<specific_character id="killer_informator" team_default = "1">
 		<name>Ара</name>
 		<icon x="28" y="14"></icon>

@@ -31,7 +31,8 @@
 		<bio>esc_wolf_bio</bio>
 
 		<class>esc_wolf</class>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 
 		<rank>434</rank>
 		<reputation>5</reputation>
@@ -67,7 +68,8 @@
 		<bio>esc_fanat_bio</bio>
 
 		<class>esc_fanat</class>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 
 		<rank>502</rank>
 		<reputation>10</reputation>
@@ -100,7 +102,8 @@
 		<bio>esc_fox_bio</bio>
 
 		<class>esc_fox</class>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 
 		<rank>338</rank>
 		<reputation>-3</reputation>
@@ -133,7 +136,8 @@
 		<bio>esc_tolik_bio</bio>
 
 		<class>esc_tutorial_wounded</class>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 
 		<rank>196</rank>
 		<reputation>6</reputation>
@@ -155,7 +159,6 @@
 		<start_dialog>dm_hello_dialog</start_dialog>
 		<actor_dialog>dm_cool_info_dialog</actor_dialog>
 		<actor_dialog>dm_help_wounded_medkit_dialog</actor_dialog>
-
 	</specific_character>
 	<!--esc_shustryi-->
 	<specific_character id="esc_shustryi" team_default = "1">
@@ -164,7 +167,8 @@
 		<bio>esc_shustryi_bio</bio>
 
 		<class>esc_shustryi</class>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 
 		<rank>196</rank>
 		<reputation>6</reputation>
@@ -200,7 +204,8 @@
 		<team>Killer_specnaz</team>
 
 		<class>esc_killer_specnaz</class>
-		<community>killer</community> <terrain_sect>stalker_killer_terrain</terrain_sect>
+		<community>killer</community>
+		<terrain_sect>stalker_killer_terrain</terrain_sect>
 
 		<rank>585</rank>
 		<reputation>-85</reputation>
@@ -231,7 +236,8 @@
 		<bio>esc_bandit_novice_bio</bio>
 
 		<class>esc_bandit_novice</class>
-		<community>bandit</community> <terrain_sect>stalker_bandit_terrain</terrain_sect>
+		<community>bandit</community>
+		<terrain_sect>stalker_bandit_terrain</terrain_sect>
 
 		<rank>32</rank>
 		<reputation>-56</reputation>
@@ -261,7 +267,8 @@
 		<bio>esc_bandit_novice_bio</bio>
 
 		<class>esc_bandit_novice</class>
-		<community>bandit</community> <terrain_sect>stalker_bandit_terrain</terrain_sect>
+		<community>bandit</community>
+		<terrain_sect>stalker_bandit_terrain</terrain_sect>
 
 		<rank>59</rank>
 		<reputation>-60</reputation>
@@ -294,7 +301,8 @@
 		<bio>esc_bandit_novice_bio</bio>
 
 		<class>esc_bandit_novice</class>
-		<community>bandit</community> <terrain_sect>stalker_bandit_terrain</terrain_sect>
+		<community>bandit</community>
+		<terrain_sect>stalker_bandit_terrain</terrain_sect>
 
 		<rank>81</rank>
 		<reputation>-67</reputation>
@@ -318,16 +326,15 @@
 		#include "gameplay\character_dialogs.xml"
 	</specific_character>
 
-
 	<!--STALKER NOVICE-->
-
 	<specific_character id="esc_stalker_novice_default1" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_green_stalker_2</icon>
 		<bio>esc_stalker_novice_bio</bio>
 
 		<class>esc_stalker_novice</class>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 
 		<rank>140</rank>
 		<reputation>12</reputation>
@@ -357,7 +364,8 @@
 		<bio>esc_stalker_novice_bio</bio>
 
 		<class>esc_stalker_novice</class>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 
 		<rank>127</rank>
 		<reputation>-8</reputation>
@@ -388,7 +396,8 @@
 		<bio>esc_stalker_novice_bio</bio>
 
 		<class>esc_stalker_novice</class>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 
 		<rank>214</rank>
 		<reputation>9</reputation>
@@ -418,7 +427,8 @@
 		<bio>esc_stalker_novice_bio</bio>
 
 		<class>esc_stalker_novice</class>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 
 		<rank>175</rank>
 		<reputation>8</reputation>
@@ -448,7 +458,8 @@
 		<bio>esc_stalker_novice_bio</bio>
 
 		<class>esc_stalker_novice</class>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 
 		<rank>268</rank>
 		<reputation>-10</reputation>
@@ -479,7 +490,8 @@
 		<bio>esc_stalker_novice_bio</bio>
 
 		<class>esc_stalker_novice</class>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 
 		<rank>133</rank>
 		<reputation>6</reputation>
@@ -510,7 +522,8 @@
 		<bio>esc_stalker_novice_bio</bio>
 
 		<class>esc_stalker_novice</class>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 
 		<rank>224</rank>
 		<reputation>18</reputation>
@@ -541,7 +554,8 @@
 		<bio>esc_stalker_novice_bio</bio>
 
 		<class>esc_stalker_novice</class>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 
 		<rank>58</rank>
 		<reputation>-2</reputation>
@@ -574,7 +588,8 @@
 		<bio>esc_petruha_bio</bio>
 
 		<class>esc_ranger</class>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 
 		<rank>279</rank>
 		<reputation>16</reputation>
@@ -608,7 +623,8 @@
 		<bio>esc_soldier_commander_bio</bio>
 
 		<class>esc_soldier_commander</class>
-		<community>military</community> <terrain_sect>stalker_military_terrain</terrain_sect>
+		<community>military</community>
+		<terrain_sect>stalker_military_terrain</terrain_sect>
 
 		<rank>764</rank>
 		<reputation>-15</reputation>
@@ -640,7 +656,8 @@
 		<bio>esc_soldier_regular_bio</bio>
 
 		<class>esc_soldier_regular</class>
-		<community>military</community> <terrain_sect>stalker_military_terrain</terrain_sect>
+		<community>military</community>
+		<terrain_sect>stalker_military_terrain</terrain_sect>
 
 		<rank>223</rank>
 		<reputation>6</reputation>
@@ -670,7 +687,8 @@
 		<bio>esc_soldier_regular_bio</bio>
 
 		<class>esc_soldier_regular</class>
-		<community>military</community> <terrain_sect>stalker_military_terrain</terrain_sect>
+		<community>military</community>
+		<terrain_sect>stalker_military_terrain</terrain_sect>
 
 		<rank>476</rank>
 		<reputation>9</reputation>
@@ -701,7 +719,8 @@
 		<bio>esc_soldier_regular_bio</bio>
 
 		<class>esc_soldier_regular</class>
-		<community>military</community> <terrain_sect>stalker_military_terrain</terrain_sect>
+		<community>military</community>
+		<terrain_sect>stalker_military_terrain</terrain_sect>
 
 		<rank>207</rank>
 		<reputation>10</reputation>
@@ -731,7 +750,8 @@
 		<bio>esc_sergant_regular_bio</bio>
 
 		<class>esc_soldier_regular</class>
-		<community>military</community> <terrain_sect>stalker_military_terrain</terrain_sect>
+		<community>military</community>
+		<terrain_sect>stalker_military_terrain</terrain_sect>
 
 		<rank>263</rank>
 		<reputation>-18</reputation>
@@ -763,7 +783,8 @@
 		<bio>esc_sergant_regular_bio</bio>
 
 		<class>esc_soldier_regular</class>
-		<community>military</community> <terrain_sect>stalker_military_terrain</terrain_sect>
+		<community>military</community>
+		<terrain_sect>stalker_military_terrain</terrain_sect>
 
 		<rank>481</rank>
 		<reputation>12</reputation>
@@ -794,7 +815,8 @@
 		<bio>esc_captain_bio</bio>
 
 		<class>esc_soldier_blockpost_commander</class>
-		<community>military</community> <terrain_sect>stalker_military_terrain</terrain_sect>
+		<community>military</community>
+		<terrain_sect>stalker_military_terrain</terrain_sect>
 
 		<rank>906</rank>
 		<reputation>20</reputation>
@@ -823,7 +845,8 @@
 		<bio>esc_soldier_regular_bio</bio>
 
 		<class>esc_soldier_blokpost</class>
-		<community>military</community> <terrain_sect>stalker_military_terrain</terrain_sect>
+		<community>military</community>
+		<terrain_sect>stalker_military_terrain</terrain_sect>
 
 		<rank>205</rank>
 		<reputation>0</reputation>
@@ -853,7 +876,8 @@
 		<bio>esc_soldier_regular_bio</bio>
 
 		<class>esc_soldier_blokpost</class>
-		<community>military</community> <terrain_sect>stalker_military_terrain</terrain_sect>
+		<community>military</community>
+		<terrain_sect>stalker_military_terrain</terrain_sect>
 
 		<rank>237</rank>
 		<reputation>-6</reputation>
@@ -884,7 +908,8 @@
 		<bio>esc_soldier_regular_bio</bio>
 
 		<class>esc_soldier_blokpost</class>
-		<community>military</community> <terrain_sect>stalker_military_terrain</terrain_sect>
+		<community>military</community>
+		<terrain_sect>stalker_military_terrain</terrain_sect>
 
 		<rank>355</rank>
 		<reputation>11</reputation>
@@ -914,7 +939,8 @@
 		<bio>esc_specnaz_bio</bio>
 
 		<class>esc_soldier_specnaz</class>
-		<community>military</community> <terrain_sect>stalker_military_terrain</terrain_sect>
+		<community>military</community>
+		<terrain_sect>stalker_military_terrain</terrain_sect>
 
 		<rank>809</rank>
 		<reputation>0</reputation>
@@ -944,7 +970,8 @@
 		<bio>esc_specnaz_bio</bio>
 
 		<class>esc_soldier_specnaz</class>
-		<community>military</community> <terrain_sect>stalker_military_terrain</terrain_sect>
+		<community>military</community>
+		<terrain_sect>stalker_military_terrain</terrain_sect>
 
 		<rank>830</rank>
 		<reputation>-4</reputation>
@@ -975,7 +1002,8 @@
 		<bio>esc_specnaz_killer_bio</bio>
 
 		<class>esc_killer_master</class>
-		<community>killer</community> <terrain_sect>stalker_killer_terrain</terrain_sect>
+		<community>killer</community>
+		<terrain_sect>stalker_killer_terrain</terrain_sect>
 
 		<rank>599</rank>
 		<reputation>-109</reputation>
@@ -1005,7 +1033,8 @@
 		<bio>esc_provodnik_bio</bio>
 
 		<class>esc_provodnik</class>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 
 		<rank>593</rank>
 		<reputation>0</reputation>

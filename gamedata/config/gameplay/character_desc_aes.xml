@@ -205,7 +205,8 @@
 		<bio>aes_Soldier_commander_bio</bio>
 
 		<class>aes_Soldier_commander</class>
-		<community>military</community> <terrain_sect>stalker_military_terrain</terrain_sect>
+		<community>military</community>
+		<terrain_sect>stalker_military_terrain</terrain_sect>
 
 		<rank>860</rank>
 		<reputation>12</reputation>
@@ -241,7 +242,8 @@
 		<team>Soldier_military</team>
 
 		<class>aes_Soldier_military</class>
-		<community>military</community> <terrain_sect>stalker_military_terrain</terrain_sect>
+		<community>military</community>
+		<terrain_sect>stalker_military_terrain</terrain_sect>
 
 		<snd_config>characters_voice\human_03\military\</snd_config>
 		<crouch_type>0</crouch_type>
@@ -277,7 +279,8 @@
 		<team>Soldier_specnaz</team>
 
 		<class>aes_Soldier_specnaz</class>
-		<community>military</community> <terrain_sect>stalker_military_terrain</terrain_sect>
+		<community>military</community>
+		<terrain_sect>stalker_military_terrain</terrain_sect>
 
 		<rank>850</rank>
 		<reputation>20</reputation>
@@ -313,7 +316,8 @@
 		<team>Soldier_specnaz</team>
 
 		<class>aes_Soldier_specnaz_aes</class>
-		<community>military</community> <terrain_sect>stalker_military_terrain</terrain_sect>
+		<community>military</community>
+		<terrain_sect>stalker_military_terrain</terrain_sect>
 
 		<rank>890</rank>
 		<reputation>15</reputation>
@@ -348,7 +352,8 @@
 		<team>Soldier_sniper</team>
 
 		<class>aes_Soldier_sniper</class>
-		<community>military</community> <terrain_sect>stalker_military_terrain</terrain_sect>
+		<community>military</community>
+		<terrain_sect>stalker_military_terrain</terrain_sect>
 
 		<rank>660</rank>
 		<reputation>-13</reputation>
@@ -386,7 +391,8 @@
 		<team>Soldier_sniper</team>
 
 		<class>aes_x</class>
-		<community>military</community> <terrain_sect>stalker_military_terrain</terrain_sect>
+		<community>military</community>
+		<terrain_sect>stalker_military_terrain</terrain_sect>
 
 		<rank>900</rank>
 		<reputation>0</reputation>
@@ -422,7 +428,8 @@
 		<team>Soldier_sniper</team>
 
 		<class>aes_x_2</class>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 
 		<rank>900</rank>
 		<reputation>0</reputation>

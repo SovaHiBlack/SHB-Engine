@@ -2,7 +2,7 @@
 
 <xml>
 	
-<!---------------------------DOLG REGULAR----------------------->
+<!--DOLG REGULAR-->
 	<specific_character id="dolg_regular_default1" team_default = "1">
 		<name>Cталкер группировки "Долг"</name>
 		<icon x="8" y="2"></icon>
@@ -97,7 +97,7 @@
 		<actor_dialog>bar_dolg_base_guard_acces</actor_dialog>	
 	</specific_character>
 
-<!---------------------------DOLG SNIPER---------------------->
+<!--DOLG SNIPER-->
 	<specific_character id="dolg_sniper_default1" team_default = "1">
 		<name>Сталкер группировки "Долг"</name>
 		<icon x="28" y="4"></icon>
@@ -182,7 +182,7 @@
 		<actor_dialog>esc_stalker_talk_level</actor_dialog>
 	</specific_character>
 
-<!---------------------------DOLG SPECNAZ---------------------->
+<!--DOLG SPECNAZ-->
 	<specific_character id="dolg_veteran_default1" team_default = "1">
 		<name>Сталкер группировки "Долг"</name>
 		<icon x="8" y="2"></icon>
@@ -299,7 +299,7 @@
 		<actor_dialog>esc_stalker_talk_level</actor_dialog>
 	</specific_character>
 	
-<!---------------------------DOLG MASTER----------------------->
+<!--DOLG MASTER-->
 	<specific_character id="dolg_master_default1" team_default = "1">
 		<name>Сталкер группировки "Долг"</name>
 		<icon x="30" y="4"></icon>
@@ -359,7 +359,7 @@
 		<actor_dialog>esc_stalker_talk_level</actor_dialog>
 	</specific_character>
 
-<!---------------------------DOLG SPECNAZ CHEREP---------------------->
+<!--DOLG SPECNAZ CHEREP-->
 	<specific_character id="dolg_veteran_cherep" team_default = "1">
 		<name>"Череп"</name>
 		<icon x="8" y="2"></icon>
@@ -391,7 +391,7 @@
 
 
 
-<!---------------------------DOLG SPECNAZ SILENCE---------------------->
+<!--DOLG SPECNAZ SILENCE-->
 	<specific_character id="dolg_veteran_silence" team_default = "1">
 		<name>Сталкер группировки "Долг"</name>
 		<icon x="8" y="2"></icon>

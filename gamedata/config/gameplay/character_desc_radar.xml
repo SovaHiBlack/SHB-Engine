@@ -1971,11 +1971,11 @@
 	<specific_character id="rad_dolg_master_default3" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_do_exoskeleton</icon>
-		<map_icon x="4" y="0"></map_icon>
 		<bio>rad_dolg_master_bio</bio>
 
 		<class>rad_Dolg_master</class>
-		<community>dolg</community> <terrain_sect>stalker_dolg_terrain</terrain_sect>
+		<community>dolg</community>
+		<terrain_sect>stalker_dolg_terrain</terrain_sect>
 
 		<rank>925</rank>
 		<reputation>93</reputation>
@@ -2003,11 +2003,11 @@
 	<specific_character id="rad_dolg_master_default4" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_do_exoskeleton</icon>
-		<map_icon x="4" y="0"></map_icon>
 		<bio>rad_dolg_master_bio</bio>
 
 		<class>rad_Dolg_master</class>
-		<community>dolg</community> <terrain_sect>stalker_dolg_terrain</terrain_sect>
+		<community>dolg</community>
+		<terrain_sect>stalker_dolg_terrain</terrain_sect>
 
 		<rank>918</rank>
 		<reputation>90</reputation>
@@ -2033,15 +2033,14 @@
 	</specific_character>
 
 	<!-- dead SCIENTISTS -->
-
 	<specific_character id="rad_ecolog_default1" team_default = "1">
 		<name>rad_ecolog_name</name>
 		<icon>ui_npc_u_stalker_ecolog</icon>
-		<map_icon x="0" y="6"></map_icon>
 		<bio>rad_ecolog_bio</bio>
 
 		<class>rad_Ecolog</class>
-		<community>ecolog</community> <terrain_sect>stalker_ecolog_terrain</terrain_sect>
+		<community>ecolog</community>
+		<terrain_sect>stalker_ecolog_terrain</terrain_sect>
 
 		<rank>783</rank>
 		<reputation>50</reputation>
@@ -2066,11 +2065,11 @@
 	<specific_character id="rad_ecolog_default2" team_default = "1">
 		<name>rad_ecolog_guard_name</name>
 		<icon>ui_npc_u_stalker_ecolog_military</icon>
-		<map_icon x="0" y="6"></map_icon>
 		<bio>rad_ecolog_guard_bio</bio>
 
 		<class>rad_Ecolog</class>
-		<community>ecolog</community> <terrain_sect>stalker_ecolog_terrain</terrain_sect>
+		<community>ecolog</community>
+		<terrain_sect>stalker_ecolog_terrain</terrain_sect>
 
 		<rank>804</rank>
 		<reputation>50</reputation>
@@ -2097,11 +2096,11 @@
 	<specific_character id="rad_ecolog_default3" team_default = "1">
 		<name>rad_ecolog_guard_name</name>
 		<icon>ui_npc_u_stalker_ecolog_military</icon>
-		<map_icon x="0" y="6"></map_icon>
 		<bio>rad_ecolog_guard_bio</bio>
 
 		<class>rad_Ecolog</class>
-		<community>ecolog</community> <terrain_sect>stalker_ecolog_terrain</terrain_sect>
+		<community>ecolog</community>
+		<terrain_sect>stalker_ecolog_terrain</terrain_sect>
 
 		<rank>809</rank>
 		<reputation>50</reputation>

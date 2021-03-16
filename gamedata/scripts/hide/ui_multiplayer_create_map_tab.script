@@ -27,7 +27,7 @@ function create_map_tab:InitConrols(x_pos, y_pos)
 	ui_multiplayer_create_base_tab.multiplayer_create_base_tab.InitControls(self, "Map", x_pos, y_pos)
 	
 	----- DATA ----
-	----- BUTTONS --->>>
+	----- BUTTONS --- >>>
 	
 	
 	-- Bottom align
@@ -37,7 +37,7 @@ function create_map_tab:InitConrols(x_pos, y_pos)
 							 height = self.btn_rect.height}	
 	btn_back_rect.x = self.main_rect.width - btn_back_rect.width - self.indent
 	
-	--------->> BACK
+	--------- >> BACK
 	btn = CUIButton()
 	btn:SetAutoDelete(true)
 	btn:SetWindowName("btn_back")
