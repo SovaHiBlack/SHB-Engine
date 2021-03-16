@@ -119,8 +119,8 @@ void CSpecificCharacter::load_shared(const char*)
 	data( )->m_sGameName = pXML->Read("name", 0, "");
 	data( )->m_sBioText = CStringTable( ).translate(pXML->Read("bio", 0, ""));
 
-	data( )->m_fPanic_threshold = pXML->ReadFlt("panic_threshold", 0, 0.f);
-	data( )->m_fHitProbabilityFactor = pXML->ReadFlt("hit_probability_factor", 0, 1.f);
+	data( )->m_fPanic_threshold = pXML->ReadFlt("panic_threshold", 0, 0.0f);
+	data( )->m_fHitProbabilityFactor = pXML->ReadFlt("hit_probability_factor", 0, 1.0f);
 	data( )->m_crouch_type = pXML->ReadInt("crouch_type", 0, 0);
 
 	data( )->m_critical_wound_weights = pXML->Read("critical_wound_weights", 0, "1");

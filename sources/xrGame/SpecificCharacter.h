@@ -46,7 +46,6 @@ struct SSpecificCharacterData : CSharedResource
 	shared_str								m_icon_name;
 	// команда 
 	CHARACTER_COMMUNITY						m_Community;
-
 	// ранг
 	CHARACTER_RANK_VALUE					m_Rank;
 	// репутация

@@ -5,11 +5,11 @@
 	<specific_character id="val_bandit_borov" team_default="1">
 		<name>val_borov_name</name>
 		<icon>ui_npc_u_stalker_bandit_borov</icon>
-		<map_icon x="0" y="0"></map_icon>
 		<bio>val_borov_bio</bio>
 
 		<class>val_bandit_borov</class>
-		<community>bandit</community> <terrain_sect>stalker_bandit_terrain</terrain_sect>
+		<community>bandit</community>
+		<terrain_sect>stalker_bandit_terrain</terrain_sect>
 
 		<rank>621</rank>
 		<hit_probability_factor>1.5</hit_probability_factor>
@@ -33,15 +33,16 @@
 
 		<start_dialog>hello_dialog</start_dialog>
 	</specific_character>
+
 	<!-- BODYGUARD -->
 	<specific_character id="val_bandit_bodyguard" team_default="1">
 		<name>GENERATE_NAME_bandit</name>
 		<icon>ui_npc_u_stalker_bandit_8</icon>
-		<map_icon x="3" y="2"></map_icon>
 		<bio>val_bandit_bodyguard_bio</bio>
 
 		<class>val_bandit_bodyguard</class>
-		<community>bandit</community> <terrain_sect>stalker_bandit_terrain</terrain_sect>
+		<community>bandit</community>
+		<terrain_sect>stalker_bandit_terrain</terrain_sect>
 
 		<rank>544</rank>
 		<reputation>-138</reputation>
@@ -60,15 +61,16 @@
 
 		<start_dialog>hello_dialog</start_dialog>
 	</specific_character>
+
 	<!-- BANDIT NOVICE -->
 	<specific_character id="val_bandit_novice_default1" team_default="1">
 		<name>GENERATE_NAME_bandit</name>
 		<icon>ui_npc_u_stalker_bandit_3</icon>
-		<map_icon x="3" y="2"></map_icon>
 		<bio>val_bandit_novice_bio</bio>
 
 		<class>val_bandit_novice</class>
-		<community>bandit</community> <terrain_sect>stalker_bandit_terrain</terrain_sect>
+		<community>bandit</community>
+		<terrain_sect>stalker_bandit_terrain</terrain_sect>
 
 		<rank>154</rank>
 		<reputation>-84</reputation>
@@ -91,14 +93,15 @@
 
 		<start_dialog>hello_dialog</start_dialog>
 	</specific_character>
+
 	<specific_character id="val_bandit_novice_default2" team_default="1">
 		<name>GENERATE_NAME_bandit</name>
 		<icon>ui_npc_u_stalker_bandit_4</icon>
-		<map_icon x="3" y="2"></map_icon>
 		<bio>val_bandit_novice_bio</bio>
 
 		<class>val_bandit_novice</class>
-		<community>bandit</community> <terrain_sect>stalker_bandit_terrain</terrain_sect>
+		<community>bandit</community>
+		<terrain_sect>stalker_bandit_terrain</terrain_sect>
 
 		<rank>125</rank>
 		<reputation>-71</reputation>
@@ -122,14 +125,15 @@
 
 		<start_dialog>hello_dialog</start_dialog>
 	</specific_character>
+
 	<specific_character id="val_bandit_novice_default3" team_default="1">
 		<name>GENERATE_NAME_bandit</name>
 		<icon>ui_npc_u_stalker_bandit_5</icon>
-		<map_icon x="3" y="2"></map_icon>
 		<bio>val_bandit_novice_bio</bio>
 
 		<class>val_bandit_novice</class>
-		<community>bandit</community> <terrain_sect>stalker_bandit_terrain</terrain_sect>
+		<community>bandit</community>
+		<terrain_sect>stalker_bandit_terrain</terrain_sect>
 
 		<rank>197</rank>
 		<reputation>-90</reputation>
@@ -152,14 +156,15 @@
 
 		<start_dialog>hello_dialog</start_dialog>
 	</specific_character>
+
 	<specific_character id="val_bandit_novice_default4" team_default="1">
 		<name>GENERATE_NAME_bandit</name>
 		<icon>ui_npc_u_stalker_bandit_8</icon>
-		<map_icon x="3" y="2"></map_icon>
 		<bio>val_bandit_novice_bio</bio>
 
 		<class>val_bandit_novice</class>
-		<community>bandit</community> <terrain_sect>stalker_bandit_terrain</terrain_sect>
+		<community>bandit</community>
+		<terrain_sect>stalker_bandit_terrain</terrain_sect>
 
 		<rank>67</rank>
 		<reputation>-59</reputation>
@@ -180,15 +185,16 @@
 
 		<start_dialog>hello_dialog</start_dialog>
 	</specific_character>
+
 	<!-- HALFDEAD -->
 	<specific_character id="val_escort_halfdead" team_default="1">
 		<name>GENERATE_NAME_bandit</name>
 		<icon>ui_npc_u_stalker_bandit_4</icon>
-		<map_icon x="3" y="2"></map_icon>
 		<bio>val_bandit_novice_bio</bio>
 
 		<class>val_bandit_novice</class>
-		<community>bandit</community> <terrain_sect>stalker_bandit_terrain</terrain_sect>
+		<community>bandit</community>
+		<terrain_sect>stalker_bandit_terrain</terrain_sect>
 
 		<rank>95</rank>
 		<reputation>-77</reputation>
@@ -202,15 +208,16 @@
 
 		<start_dialog>hello_dialog</start_dialog>
 	</specific_character>
+
 	<!--BANDIT GENERAL-->
 	<specific_character id="val_bandit_general_defaul1t" team_default="1">
 		<name>GENERATE_NAME_bandit</name>
 		<icon>ui_npc_u_stalker_bandit_3</icon>
-		<map_icon x="3" y="2"></map_icon>
 		<bio>val_bandit_general_bio</bio>
 
 		<class>val_bandit_general</class>
-		<community>bandit</community> <terrain_sect>stalker_bandit_terrain</terrain_sect>
+		<community>bandit</community>
+		<terrain_sect>stalker_bandit_terrain</terrain_sect>
 
 		<rank>431</rank>
 		<reputation>-99</reputation>
@@ -234,14 +241,15 @@
 
 		<start_dialog>hello_dialog</start_dialog>
 	</specific_character>
+
 	<specific_character id="val_bandit_general_default2" team_default="1">
 		<name>GENERATE_NAME_bandit</name>
 		<icon>ui_npc_u_stalker_bandit_4</icon>
-		<map_icon x="3" y="2"></map_icon>
 		<bio>val_bandit_general_bio</bio>
 
 		<class>val_bandit_general</class>
-		<community>bandit</community> <terrain_sect>stalker_bandit_terrain</terrain_sect>
+		<community>bandit</community>
+		<terrain_sect>stalker_bandit_terrain</terrain_sect>
 
 		<rank>502</rank>
 		<reputation>-116</reputation>
@@ -264,14 +272,15 @@
 
 		<start_dialog>hello_dialog</start_dialog>
 	</specific_character>
+
 	<specific_character id="val_bandit_general_default3" team_default="1">
 		<name>GENERATE_NAME_bandit</name>
 		<icon>ui_npc_u_stalker_bandit_5</icon>
-		<map_icon x="3" y="2"></map_icon>
 		<bio>val_bandit_general_bio</bio>
 
 		<class>val_bandit_general</class>
-		<community>bandit</community> <terrain_sect>stalker_bandit_terrain</terrain_sect>
+		<community>bandit</community>
+		<terrain_sect>stalker_bandit_terrain</terrain_sect>
 
 		<rank>538</rank>
 		<reputation>-121</reputation>
@@ -294,14 +303,15 @@
 
 		<start_dialog>hello_dialog</start_dialog>
 	</specific_character>
+
 	<specific_character id="val_bandit_general_default4" team_default="1">
 		<name>GENERATE_NAME_bandit</name>
 		<icon>ui_npc_u_stalker_bandit_8</icon>
-		<map_icon x="3" y="2"></map_icon>
 		<bio>val_bandit_general_bio</bio>
 
 		<class>val_bandit_general</class>
-		<community>bandit</community> <terrain_sect>stalker_bandit_terrain</terrain_sect>
+		<community>bandit</community>
+		<terrain_sect>stalker_bandit_terrain</terrain_sect>
 
 		<rank>487</rank>
 		<reputation>-93</reputation>
@@ -324,15 +334,16 @@
 
 		<start_dialog>hello_dialog</start_dialog>
 	</specific_character>
+
 	<!--BANDIT VETERAN-->
 	<specific_character id="val_bandit_veteran_default1" team_default="1">
 		<name>GENERATE_NAME_bandit</name>
 		<icon>ui_npc_u_stalker_bandit_master</icon>
-		<map_icon x="3" y="2"></map_icon>
 		<bio>val_bandit_veteran_bio</bio>
 
 		<class>val_bandit_veteran</class>
-		<community>bandit</community> <terrain_sect>stalker_bandit_terrain</terrain_sect>
+		<community>bandit</community>
+		<terrain_sect>stalker_bandit_terrain</terrain_sect>
 
 		<rank>808</rank>
 		<reputation>-132</reputation>
@@ -356,14 +367,15 @@
 
 		<start_dialog>hello_dialog</start_dialog>
 	</specific_character>
+
 	<specific_character id="val_bandit_veteran_default2" team_default="1">
 		<name>GENERATE_NAME_bandit</name>
 		<icon>ui_npc_u_stalker_bandit_veteran</icon>
-		<map_icon x="3" y="2"></map_icon>
 		<bio>val_bandit_veteran_bio</bio>
 
 		<class>val_bandit_veteran</class>
-		<community>bandit</community> <terrain_sect>stalker_bandit_terrain</terrain_sect>
+		<community>bandit</community>
+		<terrain_sect>stalker_bandit_terrain</terrain_sect>
 
 		<rank>759</rank>
 		<reputation>-128</reputation>
@@ -386,14 +398,15 @@
 
 		<start_dialog>hello_dialog</start_dialog>
 	</specific_character>
+
 	<specific_character id="val_bandit_veteran_default3" team_default="1">
 		<name>GENERATE_NAME_bandit</name>
 		<icon>ui_npc_u_stalker_bandit_veteran</icon>
-		<map_icon x="3" y="2"></map_icon>
 		<bio>val_bandit_veteran_bio</bio>
 
 		<class>val_bandit_veteran</class>
-		<community>bandit</community> <terrain_sect>stalker_bandit_terrain</terrain_sect>
+		<community>bandit</community>
+		<terrain_sect>stalker_bandit_terrain</terrain_sect>
 
 		<rank>866</rank>
 		<reputation>-140</reputation>
@@ -416,15 +429,16 @@
 
 		<start_dialog>hello_dialog</start_dialog>
 	</specific_character>
+
 	<!-- WATCHTOWER BANDIT -->
 	<specific_character id="val_watchtower_bandit_guard1" team_default="1">
 		<name>GENERATE_NAME_bandit</name>
 		<icon>ui_npc_u_stalker_bandit_veteran</icon>
-		<map_icon x="3" y="2"></map_icon>
 		<bio>val_bandit_veteran_bio</bio>
 
 		<class>val_watchtower_bandit_guard</class>
-		<community>bandit</community> <terrain_sect>stalker_bandit_terrain</terrain_sect>
+		<community>bandit</community>
+		<terrain_sect>stalker_bandit_terrain</terrain_sect>
 
 		<rank>583</rank>
 		<reputation>-138</reputation>
@@ -447,14 +461,15 @@
 
 		<start_dialog>hello_dialog</start_dialog>
 	</specific_character>
+
 	<specific_character id="val_watchtower_bandit_sniper1" team_default="1">
 		<name>GENERATE_NAME_bandit</name>
 		<icon>ui_npc_u_stalker_bandit_veteran</icon>
-		<map_icon x="3" y="2"></map_icon>
 		<bio>val_bandit_veteran_bio</bio>
 
 		<class>val_watchtower_bandit_sniper</class>
-		<community>bandit</community> <terrain_sect>stalker_bandit_terrain</terrain_sect>
+		<community>bandit</community>
+		<terrain_sect>stalker_bandit_terrain</terrain_sect>
 
 		<rank>661</rank>
 		<reputation>-145</reputation>
@@ -477,16 +492,17 @@
 
 		<start_dialog>hello_dialog</start_dialog>
 	</specific_character>
+
 	<!-- DOLG -->
 	<!-- REGULAR -->
 	<specific_character id="val_dolg_regular_default1" team_default="1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_do_antigas</icon>
-		<map_icon x="4" y="0"></map_icon>
 		<bio>val_dolg_common_bio</bio>
 
 		<class>val_dolg_regular</class>
-		<community>dolg</community> <terrain_sect>stalker_dolg_terrain</terrain_sect>
+		<community>dolg</community>
+		<terrain_sect>stalker_dolg_terrain</terrain_sect>
 
 		<rank>332</rank>
 		<reputation>73</reputation>
@@ -516,14 +532,15 @@
 		<actor_dialog>bar_dolg_base_guard_acces</actor_dialog>
 		#include "gameplay\character_dialogs.xml"
 	</specific_character>
+
 	<specific_character id="val_dolg_regular_default2" team_default="1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_do_balon_8</icon>
-		<map_icon x="4" y="0"></map_icon>
 		<bio>val_dolg_common_bio</bio>
 
 		<class>val_dolg_regular</class>
-		<community>dolg</community> <terrain_sect>stalker_dolg_terrain</terrain_sect>
+		<community>dolg</community>
+		<terrain_sect>stalker_dolg_terrain</terrain_sect>
 
 		<rank>401</rank>
 		<reputation>95</reputation>
@@ -552,14 +569,15 @@
 		<actor_dialog>bar_dolg_base_guard_acces</actor_dialog>
 		#include "gameplay\character_dialogs.xml"
 	</specific_character>
+
 	<specific_character id="val_dolg_regular_default3" team_default="1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_do_mask_1</icon>
-		<map_icon x="4" y="0"></map_icon>
 		<bio>val_dolg_common_bio</bio>
 
 		<class>val_dolg_regular</class>
-		<community>dolg</community> <terrain_sect>stalker_dolg_terrain</terrain_sect>
+		<community>dolg</community>
+		<terrain_sect>stalker_dolg_terrain</terrain_sect>
 
 		<rank>452</rank>
 		<reputation>93</reputation>
@@ -588,15 +606,16 @@
 		<actor_dialog>bar_dolg_base_guard_acces</actor_dialog>
 		#include "gameplay\character_dialogs.xml"
 	</specific_character>
+
 	<!-- PRISONER -->
 	<specific_character id="val_dolg_prisoner" team_default="1">
 		<name>val_prisoner_name</name>
 		<icon>ui_npc_u_stalker_do_mask_1</icon>
-		<map_icon x="4" y="0"></map_icon>
 		<bio>val_prisoner_bio</bio>
 
 		<class>val_dolg_prisoner</class>
-		<community>dolg</community> <terrain_sect>stalker_dolg_terrain</terrain_sect>
+		<community>dolg</community>
+		<terrain_sect>stalker_dolg_terrain</terrain_sect>
 
 		<rank>546</rank>
 		<reputation>101</reputation>
@@ -619,15 +638,16 @@
 		<actor_dialog>bar_dolg_base_guard_acces</actor_dialog>
 		#include "gameplay\character_dialogs.xml"
 	</specific_character>
+
 	<!-- NAP1 -->
 	<specific_character id="val_escort_nap1" team_default="1">
 		<name>val_pulia_name</name>
 		<icon>ui_npc_u_stalker_do_mask_1</icon>
-		<map_icon x="4" y="0"></map_icon>
 		<bio>val_pulia_bio</bio>
 
 		<class>val_escort_nap1</class>
-		<community>dolg</community> <terrain_sect>stalker_dolg_terrain</terrain_sect>
+		<community>dolg</community>
+		<terrain_sect>stalker_dolg_terrain</terrain_sect>
 
 		<rank>567</rank>
 		<reputation>128</reputation>
@@ -655,15 +675,16 @@
 		<actor_dialog>bar_dolg_base_guard_acces</actor_dialog>
 		#include "gameplay\character_dialogs.xml"
 	</specific_character>
+
 	<!-- CAPTIVE -->
 	<specific_character id="val_escort_captive" team_default="1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_do_mask_1</icon>
-		<map_icon x="4" y="0"></map_icon>
 		<bio>val_dolg_common_bio</bio>
 
 		<class>val_dolg_regular</class>
-		<community>dolg</community> <terrain_sect>stalker_dolg_terrain</terrain_sect>
+		<community>dolg</community>
+		<terrain_sect>stalker_dolg_terrain</terrain_sect>
 
 		<rank>535</rank>
 		<reputation>126</reputation>
@@ -686,17 +707,16 @@
 		<actor_dialog>bar_dolg_base_guard_acces</actor_dialog>
 		#include "gameplay\character_dialogs.xml"
 	</specific_character>
+
 	<!-- MONOLITH -->
 	<!-- REGULAR -->
 	<specific_character id="val_monolith_regular_default1" team_default="3">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_mo_hood_9</icon>
-		<map_icon x="3" y="0"></map_icon>
 		<bio>val_monolith_common_bio</bio>
 
 		<class>val_monolith_regular</class>
 		<community>monolith</community>
-
 
 		<rank>302</rank>
 		<reputation>-187</reputation>
@@ -717,15 +737,14 @@
 
 		<start_dialog>hello_dialog</start_dialog>
 	</specific_character>
+
 	<specific_character id="val_monolith_regular_default2" team_default="1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_mo_head_1</icon>
-		<map_icon x="3" y="0"></map_icon>
 		<bio>val_monolith_common_bio</bio>
 
 		<class>val_monolith_regular</class>
 		<community>monolith</community>
-
 
 		<rank>352</rank>
 		<reputation>-201</reputation>
@@ -746,16 +765,17 @@
 
 		<start_dialog>hello_dialog</start_dialog>
 	</specific_character>
+
 	<!-- SOLDIER -->
 	<!-- REGULAR -->
 	<specific_character id="val_soldier_regular_default1" team_default="1">
 		<name>GENERATE_NAME_sergeant</name>
 		<icon>ui_npc_u_soldier_bandana</icon>
-		<map_icon x="1" y="2"></map_icon>
 		<bio>val_soldier_regular_bio</bio>
 
 		<class>val_soldier_regular</class>
-		<community>military</community> <terrain_sect>stalker_military_terrain</terrain_sect>
+		<community>military</community>
+		<terrain_sect>stalker_military_terrain</terrain_sect>
 
 		<rank>470</rank>
 		<reputation>-4</reputation>
@@ -778,14 +798,15 @@
 
 		<start_dialog>hello_dialog</start_dialog>
 	</specific_character>
+
 	<specific_character id="val_soldier_regular_default2" team_default="1">
 		<name>GENERATE_NAME_sergeant</name>
 		<icon>ui_npc_u_soldier_bandana_5</icon>
-		<map_icon x="1" y="2"></map_icon>
 		<bio>val_soldier_regular_bio</bio>
 
 		<class>val_soldier_regular</class>
-		<community>military</community> <terrain_sect>stalker_military_terrain</terrain_sect>
+		<community>military</community>
+		<terrain_sect>stalker_military_terrain</terrain_sect>
 
 		<rank>501</rank>
 		<reputation>3</reputation>
@@ -808,14 +829,15 @@
 
 		<start_dialog>hello_dialog</start_dialog>
 	</specific_character>
+
 	<specific_character id="val_soldier_regular_default3" team_default="1">
 		<name>GENERATE_NAME_sergeant</name>
 		<icon>ui_npc_u_soldier_mask</icon>
-		<map_icon x="1" y="2"></map_icon>
 		<bio>val_soldier_regular_bio</bio>
 
 		<class>val_soldier_regular</class>
-		<community>military</community> <terrain_sect>stalker_military_terrain</terrain_sect>
+		<community>military</community>
+		<terrain_sect>stalker_military_terrain</terrain_sect>
 
 		<rank>322</rank>
 		<reputation>-13</reputation>
@@ -838,14 +860,15 @@
 
 		<start_dialog>hello_dialog</start_dialog>
 	</specific_character>
+
 	<specific_character id="val_soldier_regular_default4" team_default="1">
 		<name>GENERATE_NAME_sergeant</name>
 		<icon>ui_npc_u_soldier_obichniy</icon>
-		<map_icon x="1" y="2"></map_icon>
 		<bio>val_soldier_regular_bio.</bio>
 
 		<class>val_soldier_regular</class>
-		<community>military</community> <terrain_sect>stalker_military_terrain</terrain_sect>
+		<community>military</community>
+		<terrain_sect>stalker_military_terrain</terrain_sect>
 
 		<rank>469</rank>
 		<reputation>16</reputation>
@@ -868,15 +891,16 @@
 
 		<start_dialog>hello_dialog</start_dialog>
 	</specific_character>
+
 	<!-- SPECNAZ -->
 	<specific_character id="val_soldier_specnaz_default1" team_default="1">
 		<name>GENERATE_NAME_lieutenant</name>
 		<icon>ui_npc_u_soldier_spetsnaz</icon>
-		<map_icon x="2" y="2"></map_icon>
 		<bio>val_soldier_specnaz_bio</bio>
 
 		<class>val_soldier_specnaz</class>
-		<community>military</community> <terrain_sect>stalker_military_terrain</terrain_sect>
+		<community>military</community>
+		<terrain_sect>stalker_military_terrain</terrain_sect>
 
 		<rank>678</rank>
 		<reputation>-8</reputation>
@@ -900,14 +924,15 @@
 
 		<start_dialog>hello_dialog</start_dialog>
 	</specific_character>
+
 	<specific_character id="val_soldier_specnaz_default2" team_default="1">
 		<name>GENERATE_NAME_lieutenant</name>
 		<icon>ui_npc_u_soldier_spetsnaz</icon>
-		<map_icon x="2" y="2"></map_icon>
 		<bio>val_soldier_specnaz_bio</bio>
 
 		<class>val_soldier_specnaz</class>
-		<community>military</community> <terrain_sect>stalker_military_terrain</terrain_sect>
+		<community>military</community>
+		<terrain_sect>stalker_military_terrain</terrain_sect>
 
 		<rank>881</rank>
 		<reputation>-17</reputation>
@@ -930,14 +955,15 @@
 
 		<start_dialog>hello_dialog</start_dialog>
 	</specific_character>
+
 	<specific_character id="val_soldier_specnaz_default3" team_default="1">
 		<name>GENERATE_NAME_lieutenant</name>
 		<icon>ui_npc_u_soldier_spetsnaz</icon>
-		<map_icon x="2" y="2"></map_icon>
 		<bio>val_soldier_specnaz_bio</bio>
 
 		<class>val_soldier_specnaz</class>
-		<community>military</community> <terrain_sect>stalker_military_terrain</terrain_sect>
+		<community>military</community>
+		<terrain_sect>stalker_military_terrain</terrain_sect>
 
 		<rank>625</rank>
 		<reputation>1</reputation>
@@ -960,14 +986,15 @@
 
 		<start_dialog>hello_dialog</start_dialog>
 	</specific_character>
+
 	<specific_character id="val_soldier_specnaz_default4" team_default="1">
 		<name>GENERATE_NAME_lieutenant</name>
 		<icon>ui_npc_u_soldier_spetsnaz</icon>
-		<map_icon x="2" y="2"></map_icon>
 		<bio>val_soldier_specnaz_bio</bio>
 
 		<class>val_soldier_specnaz</class>
-		<community>military</community> <terrain_sect>stalker_military_terrain</terrain_sect>
+		<community>military</community>
+		<terrain_sect>stalker_military_terrain</terrain_sect>
 
 		<rank>786</rank>
 		<reputation>-2</reputation>
@@ -990,16 +1017,17 @@
 
 		<start_dialog>hello_dialog</start_dialog>
 	</specific_character>
+
 	<!-- STALKER -->
 	<!-- NOVICE -->
 	<specific_character id="val_stalker_novice_default2" team_default="1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_green_stalker_2</icon>
-		<map_icon x="0" y="0"></map_icon>
 		<bio>val_stalker_novice_bio</bio>
 
 		<class>val_stalker_novice</class>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 
 		<rank>59</rank>
 		<reputation>9</reputation>
@@ -1023,14 +1051,15 @@
 
 		#include "gameplay\character_dialogs.xml"
 	</specific_character>
+
 	<specific_character id="val_stalker_novice_default3" team_default="1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_green_stalker_3</icon>
-		<map_icon x="0" y="0"></map_icon>
 		<bio>val_stalker_novice_bio</bio>
 
 		<class>val_stalker_novice</class>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 
 		<rank>290</rank>
 		<reputation>3</reputation>
@@ -1056,14 +1085,15 @@
 
 		#include "gameplay\character_dialogs.xml"
 	</specific_character>
+
 	<specific_character id="val_stalker_novice_default4" team_default="1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_green_stalker_4</icon>
-		<map_icon x="0" y="0"></map_icon>
 		<bio>val_stalker_novice_bio</bio>
 
 		<class>val_stalker_novice</class>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 
 		<rank>165</rank>
 		<reputation>14</reputation>
@@ -1086,14 +1116,15 @@
 
 		#include "gameplay\character_dialogs.xml"
 	</specific_character>
+
 	<specific_character id="val_stalker_novice_default5" team_default="1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_green_stalker_5</icon>
-		<map_icon x="0" y="0"></map_icon>
 		<bio>val_stalker_novice_bio</bio>
 
 		<class>val_stalker_novice</class>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 
 		<rank>189</rank>
 		<reputation>-3</reputation>
@@ -1116,14 +1147,15 @@
 
 		#include "gameplay\character_dialogs.xml"
 	</specific_character>
+
 	<specific_character id="val_stalker_novice_default6" team_default="1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_green_stalker_6</icon>
-		<map_icon x="0" y="0"></map_icon>
 		<bio>val_stalker_novice_bio</bio>
 
 		<class>val_stalker_novice</class>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 
 		<rank>222</rank>
 		<reputation>0</reputation>
@@ -1148,14 +1180,15 @@
 
 		#include "gameplay\character_dialogs.xml"
 	</specific_character>
+
 	<specific_character id="val_stalker_novice_default10" team_default="1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_green_stalker_10</icon>
-		<map_icon x="0" y="0"></map_icon>
 		<bio>val_stalker_novice_bio</bio>
 
 		<class>val_stalker_novice</class>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 
 		<rank>109</rank>
 		<reputation>5</reputation>
@@ -1178,15 +1211,16 @@
 
 		#include "gameplay\character_dialogs.xml"
 	</specific_character>
+
 	<!-- GENERAL -->
 	<specific_character id="val_stalker_general_default1" team_default="1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_neytral_hood_9</icon>
-		<map_icon x="1" y="0"></map_icon>
 		<bio>val_stalker_general_bio</bio>
 
 		<class>val_stalker_general</class>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 
 		<rank>377</rank>
 		<reputation>-11</reputation>
@@ -1212,14 +1246,15 @@
 
 		#include "gameplay\character_dialogs.xml"
 	</specific_character>
+
 	<specific_character id="val_stalker_general_default2" team_default="1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_neytral_balon_8</icon>
-		<map_icon x="1" y="0"></map_icon>
 		<bio>val_stalker_general_bio</bio>
 
 		<class>val_stalker_general</class>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 
 		<rank>515</rank>
 		<reputation>-18</reputation>
@@ -1245,14 +1280,15 @@
 
 		#include "gameplay\character_dialogs.xml"
 	</specific_character>
+
 	<specific_character id="val_stalker_general_default3" team_default="1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_neytral_rukzak_2</icon>
-		<map_icon x="1" y="0"></map_icon>
 		<bio>val_stalker_general_bio</bio>
 
 		<class>val_stalker_general</class>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 
 		<rank>460</rank>
 		<reputation>-6</reputation>
@@ -1277,14 +1313,15 @@
 
 		#include "gameplay\character_dialogs.xml"
 	</specific_character>
+
 	<specific_character id="val_stalker_general_default4" team_default="1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_neytral_hood_2</icon>
-		<map_icon x="1" y="0"></map_icon>
 		<bio>val_stalker_general_bio</bio>
 
 		<class>val_stalker_general</class>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 
 		<rank>311</rank>
 		<reputation>4</reputation>
@@ -1309,14 +1346,15 @@
 
 		#include "gameplay\character_dialogs.xml"
 	</specific_character>
+
 	<specific_character id="val_stalker_general_default5" team_default="1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_neytral_hood_8</icon>
-		<map_icon x="1" y="0"></map_icon>
 		<bio>val_stalker_general_bio</bio>
 
 		<class>val_stalker_general</class>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 
 		<rank>555</rank>
 		<reputation>1</reputation>
@@ -1341,15 +1379,16 @@
 
 		#include "gameplay\character_dialogs.xml"
 	</specific_character>
+
 	<!-- X18 -->
 	<specific_character id="dar_stalker_explorer" team_default="1">
 		<name>dar_explorer_name</name>
 		<icon>ui_npc_u_stalker_neytral_rukzak_2</icon>
-		<map_icon x="0" y="0"></map_icon>
 		<bio>dar_explorer_bio</bio>
 
 		<class>dar_stalker_explorer</class>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 
 		<rank>500</rank>
 		<reputation>0</reputation>
@@ -1368,16 +1407,16 @@
 		#include "gameplay\character_criticals_4.xml"
 
 		<start_dialog>dar_explorer_dialog</start_dialog>
-
 	</specific_character>
+
 	<specific_character id="dar_corpse_default1" team_default="1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_neytral_hood_8</icon>
-		<map_icon x="0" y="0"></map_icon>
 		<bio>dar_corpse_bio</bio>
 
 		<class>dar_corpse</class>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 
 		<rank>900</rank>
 		<reputation>0</reputation>
@@ -1391,14 +1430,15 @@
 
 		<start_dialog>hello_dialog</start_dialog>
 	</specific_character>
+
 	<specific_character id="dar_corpse_default3" team_default="1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_green_stalker_2</icon>
-		<map_icon x="0" y="0"></map_icon>
 		<bio>dar_corpse_bio</bio>
 
 		<class>dar_corpse</class>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 
 		<rank>900</rank>
 		<reputation>0</reputation>
@@ -1412,14 +1452,15 @@
 
 		<start_dialog>hello_dialog</start_dialog>
 	</specific_character>
+
 	<specific_character id="dar_corpse_default4" team_default="1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_zombie5</icon>
-		<map_icon x="0" y="0"></map_icon>
 		<bio>dar_corpse_bio</bio>
 
 		<class>dar_corpse</class>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 
 		<rank>900</rank>
 		<reputation>0</reputation>
@@ -1433,14 +1474,15 @@
 
 		<start_dialog>hello_dialog</start_dialog>
 	</specific_character>
+
 	<specific_character id="dar_corpse_kalugin1" team_default="1">
 		<name>dar_kalugin_name</name>
 		<icon>ui_npc_u_stalker_ecolog</icon>
-		<map_icon x="0" y="0"></map_icon>
 		<bio>dar_corpse_bio</bio>
 
 		<class>dar_corpse_kalugin</class>
-		<community>ecolog</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>ecolog</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 
 		<rank>300</rank>
 		<reputation>0</reputation>
@@ -1454,14 +1496,15 @@
 
 		<start_dialog>hello_dialog</start_dialog>
 	</specific_character>
+
 	<specific_character id="dar_military_scout1" team_default="1">
 		<name>GENERATE_NAME_lieutenant</name>
 		<icon>ui_npc_u_soldier_spetsnaz</icon>
-		<map_icon x="2" y="2"></map_icon>
 		<bio>sim_soldier_specnaz_bio</bio>
 
 		<class>dar_military_scout</class>
-		<community>military</community> <terrain_sect>stalker_military_terrain</terrain_sect>
+		<community>military</community>
+		<terrain_sect>stalker_military_terrain</terrain_sect>
 
 		<rank>765</rank>
 		<reputation>23</reputation>

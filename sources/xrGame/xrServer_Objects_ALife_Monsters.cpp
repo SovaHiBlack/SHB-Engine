@@ -456,7 +456,7 @@ void CSE_ALifeTraderAbstract::set_character_profile(shared_str new_profile)
 
 shared_str CSE_ALifeTraderAbstract::character_profile( )
 {
-	return	m_sCharacterProfile;
+	return m_sCharacterProfile;
 }
 
 //для работы с relation system
@@ -517,7 +517,7 @@ CSE_ALifeTrader::~CSE_ALifeTrader( )
 #ifdef DEBUG
 bool CSE_ALifeTrader::match_configuration( ) const
 {
-	return						(!strstr(Core.Params, "-designer"));
+	return !strstr(Core.Params, "-designer");
 }
 #endif
 

@@ -5,7 +5,6 @@
 	<specific_character id="pri_monolith_ambush_default1" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_mo_head_1</icon>
-		<map_icon x="3" y="0"></map_icon>
 		<bio>pri_monolith_common_bio</bio>
 
 		<class>pri_monolith_ambush</class>
@@ -36,7 +35,6 @@
 	<specific_character id="pri_monolith_ambush_default2" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_mo_mask</icon>
-		<map_icon x="3" y="0"></map_icon>
 		<bio>pri_monolith_common_bio</bio>
 
 		<class>pri_monolith_ambush</class>
@@ -68,7 +66,6 @@
 	<specific_character id="pri_monolith_ambush_specnaz_default1" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_mo_hood_9</icon>
-		<map_icon x="3" y="0"></map_icon>
 		<bio>pri_monolith_common_bio</bio>
 
 		<class>pri_monolith_ambush_specnaz</class>
@@ -98,7 +95,6 @@
 	<specific_character id="pri_monolith_ambush_specnaz_default2" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_mo_hood_9</icon>
-		<map_icon x="3" y="0"></map_icon>
 		<bio>pri_monolith_common_bio</bio>
 
 		<class>pri_monolith_ambush_specnaz</class>
@@ -130,7 +126,6 @@
 	<specific_character id="pri_monolith_ambush_exo_default1" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_mo_exo</icon>
-		<map_icon x="3" y="0"></map_icon>
 		<bio>pri_monolith_common_bio</bio>
 
 		<class>pri_monolith_ambush_exo</class>
@@ -161,7 +156,6 @@
 	<specific_character id="pri_monolith_ambush_exo_default2" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_mo_exo</icon>
-		<map_icon x="3" y="0"></map_icon>
 		<bio>pri_monolith_common_bio</bio>
 
 		<class>pri_monolith_ambush_exo</class>
@@ -192,12 +186,10 @@
 	<specific_character id="pri_monolith_regular_default1" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_mo_head_1</icon>
-		<map_icon x="3" y="0"></map_icon>
 		<bio>pri_monolith_regular_bio</bio>
 
 		<class>pri_monolith_regular</class>
 		<community>monolith</community>
-
 
 		<rank>378</rank>
 		<reputation>-552</reputation>
@@ -222,12 +214,10 @@
 	<specific_character id="pri_monolith_regular_default2" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_mo_mask</icon>
-		<map_icon x="3" y="0"></map_icon>
 		<bio>pri_monolith_regular_bio</bio>
 
 		<class>pri_monolith_regular</class>
 		<community>monolith</community>
-
 
 		<rank>441</rank>
 		<reputation>-579</reputation>
@@ -252,12 +242,10 @@
 	<specific_character id="pri_monolith_regular_default3" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_mo_head_1</icon>
-		<map_icon x="3" y="0"></map_icon>
 		<bio>pri_monolith_regular_bio</bio>
 
 		<class>pri_monolith_regular</class>
 		<community>monolith</community>
-
 
 		<rank>413</rank>
 		<reputation>-508</reputation>
@@ -282,12 +270,10 @@
 	<specific_character id="pri_monolith_regular_default4" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_mo_mask</icon>
-		<map_icon x="3" y="0"></map_icon>
 		<bio>pri_monolith_regular_bio</bio>
 
 		<class>pri_monolith_regular</class>
 		<community>monolith</community>
-
 
 		<rank>534</rank>
 		<reputation>-627</reputation>
@@ -313,12 +299,10 @@
 	<specific_character id="pri_monolith_specnaz_default1" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_mo_hood_9</icon>
-		<map_icon x="3" y="0"></map_icon>
 		<bio>pri_monolith_specnaz_bio</bio>
 
 		<class>pri_monolith_specnaz</class>
 		<community>monolith</community>
-
 
 		<rank>784</rank>
 		<reputation>-748</reputation>
@@ -344,12 +328,10 @@
 	<specific_character id="pri_monolith_specnaz_default2" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_mo_nauchniy</icon>
-		<map_icon x="3" y="0"></map_icon>
 		<bio>pri_monolith_specnaz_bio</bio>
 
 		<class>pri_monolith_specnaz</class>
 		<community>monolith</community>
-
 
 		<rank>682</rank>
 		<reputation>-800</reputation>
@@ -376,12 +358,10 @@
 	<specific_character id="pri_monolith_exo_default1" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_mo_exo</icon>
-		<map_icon x="3" y="0"></map_icon>
 		<bio>pri_monolith_exo_bio</bio>
 
 		<class>pri_monolith_exo</class>
 		<community>monolith</community>
-
 
 		<rank>925</rank>
 		<reputation>-943</reputation>
@@ -407,12 +387,10 @@
 	<specific_character id="pri_monolith_exo_default2" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_mo_exo</icon>
-		<map_icon x="3" y="0"></map_icon>
 		<bio>pri_monolith_exo_bio</bio>
 
 		<class>pri_monolith_exo</class>
 		<community>monolith</community>
-
 
 		<rank>955</rank>
 		<reputation>-899</reputation>
@@ -439,12 +417,10 @@
 	<specific_character id="pri_monolith_leader" team_default = "1">
 		<name>pri_monolith_leader_name</name>
 		<icon>ui_npc_u_stalker_mo_exo</icon>
-		<map_icon x="3" y="0"></map_icon>
 		<bio>pri_monolith_leader_bio</bio>
 
 		<class>pri_monolith_leader</class>
 		<community>monolith</community>
-
 
 		<rank>989</rank>
 		<reputation>-998</reputation>
@@ -472,11 +448,11 @@
 	<specific_character id="pri_followers_bomber" team_default = "1">
 		<name>pri_followers_bomber_name</name>
 		<icon>ui_npc_u_stalker_neytral_exoskeleton</icon>
-		<map_icon x="1" y="0"></map_icon>
 		<bio>sim_stalker_master_bio</bio>
 
 		<class>pri_followers_bomber</class>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 
 		<rank>941</rank>
 		<reputation>18</reputation>
@@ -506,11 +482,11 @@
 	<specific_character id="pri_followers_leader" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_neytral_exoskeleton</icon>
-		<map_icon x="1" y="0"></map_icon>
 		<bio>sim_stalker_master_bio</bio>
 
 		<class>pri_followers_leader</class>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 
 		<rank>960</rank>
 		<reputation>18</reputation>
@@ -540,11 +516,11 @@
 	<specific_character id="pri_followers_stalker1" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_neytral_exoskeleton</icon>
-		<map_icon x="1" y="0"></map_icon>
 		<bio>sim_stalker_master_bio</bio>
 
 		<class>pri_followers</class>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 
 		<rank>937</rank>
 		<reputation>18</reputation>
@@ -574,11 +550,11 @@
 	<specific_character id="pri_followers_stalker2" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_neytral_exoskeleton</icon>
-		<map_icon x="1" y="0"></map_icon>
 		<bio>sim_stalker_master_bio</bio>
 
 		<class>pri_followers</class>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 
 		<rank>911</rank>
 		<reputation>19</reputation>
@@ -607,11 +583,11 @@
 	<specific_character id="pri_followers_stalker3" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_neytral_exoskeleton</icon>
-		<map_icon x="1" y="0"></map_icon>
 		<bio>sim_stalker_master_bio</bio>
 
 		<class>pri_followers</class>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 
 		<rank>940</rank>
 		<reputation>12</reputation>
@@ -640,11 +616,11 @@
 	<specific_character id="pri_followers_stalker4" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_neytral_exoskeleton</icon>
-		<map_icon x="1" y="0"></map_icon>
 		<bio>sim_stalker_master_bio</bio>
 
 		<class>pri_followers</class>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 
 		<rank>905</rank>
 		<reputation>15</reputation>
@@ -673,11 +649,11 @@
 	<specific_character id="pri_followers_stalker5" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_neytral_exoskeleton</icon>
-		<map_icon x="1" y="0"></map_icon>
 		<bio>sim_stalker_master_bio</bio>
 
 		<class>pri_followers</class>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 
 		<rank>957</rank>
 		<reputation>13</reputation>
@@ -708,11 +684,11 @@
 	<specific_character id="pri_soldier_suicide_default1" team_default = "1">
 		<name>pri_zombied_soldier_name</name>
 		<icon>ui_npc_u_soldier_spetsnaz</icon>
-		<map_icon x="1" y="2"></map_icon>
 		<bio>pri_zombied_soldier_bio</bio>
 
 		<class>pri_soldier_suicide</class>
-		<community>zombied</community> <terrain_sect>stalker_zombied_terrain</terrain_sect>
+		<community>zombied</community>
+		<terrain_sect>stalker_zombied_terrain</terrain_sect>
 
 		<rank>344</rank>
 		<reputation>-242</reputation>
@@ -734,11 +710,11 @@
 	<specific_character id="pri_soldier_suicide_default2" team_default = "1">
 		<name>pri_zombied_soldier_name</name>
 		<icon>ui_npc_u_soldier_bandana</icon>
-		<map_icon x="1" y="2"></map_icon>
 		<bio>pri_zombied_soldier_bio</bio>
 
 		<class>pri_soldier_suicide</class>
-		<community>zombied</community> <terrain_sect>stalker_zombied_terrain</terrain_sect>
+		<community>zombied</community>
+		<terrain_sect>stalker_zombied_terrain</terrain_sect>
 
 		<rank>376</rank>
 		<reputation>-286</reputation>
@@ -761,11 +737,11 @@
 	<specific_character id="pri_zombied_suicide_default1" team_default = "1">
 		<name>pri_zombied_stalker_name</name>
 		<icon>ui_npc_u_stalker_zombie_specnaz</icon>
-		<map_icon x="7" y="0"></map_icon>
 		<bio>pri_zombied_stalker_bio</bio>
 
 		<class>pri_zombied_suicide</class>
-		<community>zombied</community> <terrain_sect>stalker_zombied_terrain</terrain_sect>
+		<community>zombied</community>
+		<terrain_sect>stalker_zombied_terrain</terrain_sect>
 
 		<rank>538</rank>
 		<reputation>-303</reputation>
@@ -788,11 +764,11 @@
 	<specific_character id="pri_zombied_default1" team_default = "1">
 		<name>pri_zombied_stalker_name</name>
 		<icon>ui_npc_u_stalker_zombie_specnaz</icon>
-		<map_icon x="7" y="0"></map_icon>
 		<bio>pri_zombied_stalker_bio</bio>
 
 		<class>pri_zombied</class>
-		<community>zombied</community> <terrain_sect>stalker_zombied_terrain</terrain_sect>
+		<community>zombied</community>
+		<terrain_sect>stalker_zombied_terrain</terrain_sect>
 
 		<rank>512</rank>
 		<reputation>-338</reputation>
@@ -818,11 +794,11 @@
 	<specific_character id="pri_zombied_veteran_default1" team_default = "1">
 		<name>pri_zombied_stalker_name</name>
 		<icon>ui_npc_u_stalker_zombie_specnaz</icon>
-		<map_icon x="7" y="0"></map_icon>
 		<bio>pri_zombied_stalker_bio</bio>
 
 		<class>pri_zombied_veteran</class>
-		<community>zombied</community> <terrain_sect>stalker_zombied_terrain</terrain_sect>
+		<community>zombied</community>
+		<terrain_sect>stalker_zombied_terrain</terrain_sect>
 
 		<rank>737</rank>
 		<reputation>-487</reputation>
@@ -847,11 +823,11 @@
 	<specific_character id="pri_zombied_veteran_default2" team_default = "1">
 		<name>pri_zombied_stalker_name</name>
 		<icon>ui_npc_u_stalker_zombie_specnaz</icon>
-		<map_icon x="7" y="0"></map_icon>
 		<bio>pri_zombied_stalker_bio</bio>
 
 		<class>pri_zombied_veteran</class>
-		<community>zombied</community> <terrain_sect>stalker_zombied_terrain</terrain_sect>
+		<community>zombied</community>
+		<terrain_sect>stalker_zombied_terrain</terrain_sect>
 
 		<rank>816</rank>
 		<reputation>-576</reputation>
