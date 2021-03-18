@@ -21,7 +21,7 @@
 			wpn_fn2000 \n
 			ammo_5.56x45_ap = 1 \n
 			#include "gameplay\character_food.xml"
-			#include "gameplay\character_items.xml" \n
+			#include "gameplay\character_items.xml"
 		</supplies>
 
 		#include "gameplay\character_criticals_1.xml"
@@ -50,7 +50,7 @@
 			wpn_g36 \n
 			ammo_5.56x45_ap = 1 \n
 			#include "gameplay\character_food.xml"
-			#include "gameplay\character_items.xml" \n
+			#include "gameplay\character_items.xml"
 		</supplies>
 
 		#include "gameplay\character_criticals_1.xml"
@@ -79,7 +79,7 @@
 			wpn_val \n
 			ammo_9x39_ap = 1 \n
 			#include "gameplay\character_food.xml"
-			#include "gameplay\character_items.xml" \n
+			#include "gameplay\character_items.xml"
 		</supplies>
 
 		#include "gameplay\character_criticals_1.xml"
@@ -108,7 +108,7 @@
 			wpn_groza \n
 			ammo_9x39_ap \n
 			#include "gameplay\character_food.xml"
-			#include "gameplay\character_items.xml" \n
+			#include "gameplay\character_items.xml"
 		</supplies>
 
 		#include "gameplay\character_criticals_1.xml"
@@ -137,7 +137,7 @@
 			wpn_groza \n
 			ammo_9x39_ap \n
 			#include "gameplay\character_food.xml"
-			#include "gameplay\character_items.xml" \n
+			#include "gameplay\character_items.xml"
 		</supplies>
 
 		#include "gameplay\character_criticals_1.xml"
@@ -167,7 +167,7 @@
 			wpn_groza \n
 			ammo_9x39_ap \n
 			#include "gameplay\character_drugs.xml"
-			#include "gameplay\character_items.xml" \n
+			#include "gameplay\character_items.xml"
 		</supplies>
 
 		#include "gameplay\character_criticals_1.xml"
@@ -196,7 +196,7 @@
 			wpn_groza \n
 			ammo_9x39_ap \n
 			#include "gameplay\character_drugs.xml"
-			#include "gameplay\character_items.xml" \n
+			#include "gameplay\character_items.xml"
 		</supplies>
 
 		#include "gameplay\character_criticals_1.xml"
@@ -225,7 +225,7 @@
 			wpn_groza \n
 			ammo_9x39_ap \n
 			#include "gameplay\character_drugs.xml"
-			#include "gameplay\character_items.xml" \n
+			#include "gameplay\character_items.xml"
 		</supplies>
 
 		#include "gameplay\character_criticals_1.xml"
@@ -254,7 +254,7 @@
 			wpn_spas12 \n
 			ammo_12x76_zhekan = 1 \n
 			#include "gameplay\character_drugs.xml"
-			#include "gameplay\character_items.xml" \n
+			#include "gameplay\character_items.xml"
 		</supplies>
 
 		#include "gameplay\character_criticals_1.xml"
@@ -283,7 +283,7 @@
 			wpn_spas12 \n
 			ammo_12x76_zhekan = 1 \n
 			#include "gameplay\character_drugs.xml"
-			#include "gameplay\character_items.xml" \n
+			#include "gameplay\character_items.xml"
 		</supplies>
 
 		#include "gameplay\character_criticals_1.xml"
@@ -312,7 +312,7 @@
 			wpn_val \n
 			ammo_9x39_ap = 1 \n
 			#include "gameplay\character_drugs.xml"
-			#include "gameplay\character_items.xml" \n
+			#include "gameplay\character_items.xml"
 		</supplies>
 
 		#include "gameplay\character_criticals_1.xml"
@@ -341,7 +341,7 @@
 			wpn_g36 \n
 			ammo_5.56x45_ap = 1 \n
 			#include "gameplay\character_drugs.xml"
-			#include "gameplay\character_items.xml" \n
+			#include "gameplay\character_items.xml"
 		</supplies>
 
 		#include "gameplay\character_criticals_1.xml"
@@ -370,7 +370,7 @@
 			wpn_gauss \n
 			ammo_gauss = 1 \n
 			#include "gameplay\character_drugs.xml"
-			#include "gameplay\character_items.xml" \n
+			#include "gameplay\character_items.xml"
 		</supplies>
 
 		#include "gameplay\character_criticals_1.xml"
@@ -396,7 +396,7 @@
 			[spawn] \n
 			wpn_groza \n
 			ammo_9x39_ap \n
-			#include "gameplay\character_items.xml" \n
+			#include "gameplay\character_items.xml"
 		</supplies>
 
 		#include "gameplay\character_criticals_1.xml"
@@ -422,7 +422,7 @@
 			[spawn] \n
 			wpn_groza \n
 			ammo_9x39_ap \n
-			#include "gameplay\character_items.xml" \n
+			#include "gameplay\character_items.xml"
 		</supplies>
 
 		#include "gameplay\character_criticals_1.xml"
@@ -448,7 +448,7 @@
 			[spawn] \n
 			wpn_fn2000 \n
 			ammo_5.56x45_ap = 1 \n
-			#include "gameplay\character_items.xml" \n
+			#include "gameplay\character_items.xml"
 		</supplies>
 
 		#include "gameplay\character_criticals_1.xml"
@@ -474,7 +474,7 @@
 			[spawn] \n
 			wpn_fn2000 \n
 			ammo_5.56x45_ap = 1 \n
-			#include "gameplay\character_items.xml" \n
+			#include "gameplay\character_items.xml"
 		</supplies>
 
 		#include "gameplay\character_criticals_1.xml"
@@ -500,7 +500,7 @@
 			[spawn] \n
 			wpn_g36 \n
 			ammo_5.56x45_ap = 1 \n
-			#include "gameplay\character_items.xml" \n
+			#include "gameplay\character_items.xml"
 		</supplies>
 
 		#include "gameplay\character_criticals_1.xml"
@@ -526,12 +526,11 @@
 			[spawn] \n
 			wpn_gauss \n
 			ammo_gauss = 1 \n
-			#include "gameplay\character_items.xml" \n
+			#include "gameplay\character_items.xml"
 		</supplies>
 
 		#include "gameplay\character_criticals_1.xml"
 
 		<start_dialog>hello_dialog</start_dialog>
 	</specific_character>
-
 </xml>

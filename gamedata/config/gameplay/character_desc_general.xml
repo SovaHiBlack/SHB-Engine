@@ -18,21 +18,6 @@
 		<visual>actors\hero\stalker_novice</visual>
 	</specific_character>
 
-	<!--	<specific_character id="mp_actor" no_random = "1">
-		<name>actor_name</name>
-		<icon>ui_npc_u_actor</icon>
-
-		<team>mp_actor</team>
-		<supplies/>
-
-		<class>mp_actor</class>
-		<community>actor</community>
-
-		<rank>00</rank>
-		<reputation>0</reputation>
-		<visual>actors\hero\stalker_novice</visual>
-	</specific_character>-->
-
 	<specific_character id="stalker_general_default" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_neytral_hood_9</icon>
@@ -73,7 +58,8 @@
 		<visual>actors\ucheniy\ucheniy_1_strong</visual>
 		<snd_config>characters_voice\human_01\</snd_config>
 
-		<supplies />
+		<supplies>
+		</supplies>
 
 		<start_dialog>oso_osoznanie_start</start_dialog>
 		<actor_dialog>oso_who_are_you</actor_dialog>

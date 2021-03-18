@@ -202,7 +202,8 @@
 		<visual>actors\bandit\stalker_bandit_4</visual>
 		<snd_config>characters_voice\human_02\bandit\</snd_config>
 		<crouch_type>1</crouch_type>
-		<supplies></supplies>
+		<supplies>
+		</supplies>
 
 		#include "gameplay\character_criticals_3.xml"
 
@@ -661,7 +662,6 @@
 			ammo_9x18_fmj \n
 			wpn_abakan = 1, scope \n
 			ammo_5.45x39_ap = 1 \n
-
 			wpn_addon_scope \n
 		</supplies>
 
@@ -1423,7 +1423,6 @@
 
 		<visual>actors\neytral\stalker_neytral_hood_8</visual>
 		<supplies>
-			[spawn] \n
 		</supplies>
 
 		#include "gameplay\character_criticals_4.xml"
@@ -1445,7 +1444,6 @@
 
 		<visual>actors\novice\green_stalker_2</visual>
 		<supplies>
-			[spawn] \n
 		</supplies>
 
 		#include "gameplay\character_criticals_3.xml"
@@ -1467,7 +1465,6 @@
 
 		<visual>actors\stalker_zombi\stalker_zombie5</visual>
 		<supplies>
-			[spawn] \n
 		</supplies>
 
 		#include "gameplay\character_criticals_1.xml"
@@ -1489,7 +1486,6 @@
 
 		<visual>actors\ecolog\stalker_ecolog</visual>
 		<supplies>
-			[spawn] \n
 		</supplies>
 
 		#include "gameplay\character_criticals_3.xml"

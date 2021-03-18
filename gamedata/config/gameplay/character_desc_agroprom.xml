@@ -61,7 +61,7 @@
 			wpn_ak74u \n
 			ammo_5.45x39_fmj = 1 \n
 			device_torch \n
-			#include "gameplay\character_drugs.xml" \n
+			#include "gameplay\character_drugs.xml"
 			#include "gameplay\character_food.xml"
 		</supplies>
 
@@ -805,6 +805,34 @@
 		</supplies>
 
 		#include "gameplay\character_criticals_3.xml"
+		#include "gameplay\character_dialogs.xml"
+	</specific_character>
+
+	<!-- DOCTOR -->
+	<specific_character id="cit_doctor" team_default = "1">
+		<name>cit_doctor_name</name>
+		<icon>ui_npc_u_izgoy</icon>
+		<bio>cit_doctor_bio</bio>
+
+		<class>cit_doctor</class>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
+
+		<rank>859</rank>
+		<reputation>145</reputation>
+
+		<visual>actors\izgoy\izgoy</visual>
+		<snd_config>characters_voice\human_02\stalker\</snd_config>
+		<supplies>
+			[spawn] \n
+			cit_doctors_key \n
+			#include "gameplay\character_food.xml"
+			<!-- #include "gameplay\character_drugs.xml" -->
+		</supplies>
+
+		<start_dialog>cit_doctor_hello_dialog</start_dialog>
+		<actor_dialog>cit_doctor_main_dialog</actor_dialog>
+		<actor_dialog>cit_doctor_escape_dialog</actor_dialog>
 		#include "gameplay\character_dialogs.xml"
 	</specific_character>
 </xml>

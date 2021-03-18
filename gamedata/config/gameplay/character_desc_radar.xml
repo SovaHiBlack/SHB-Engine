@@ -622,7 +622,6 @@
 		#include "gameplay\character_dialogs.xml"
 	</specific_character>
 
-
 	<specific_character id="rad_monolit_strong_default5" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_mo_head_1</icon>
@@ -2123,7 +2122,4 @@
 
 		<start_dialog>hello_dialog</start_dialog>
 	</specific_character>
-
-
-
 </xml>
