@@ -40,7 +40,7 @@ public:
 	void				SetOffset					(float x, float y)
 	{
 		m_pos.set(x, y);
-	};
+	}
 	void				SetFramesCount				(u32 frameCnt)
 	{
 		m_uFrameCount = frameCnt;

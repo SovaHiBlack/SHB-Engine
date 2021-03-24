@@ -9,16 +9,16 @@ class UIGame_custom_script : public CUIGameCustom
 	using inherited									= CUIGameCustom;
 
 public:
-						UIGame_custom_script		( ) :inherited( )
-	{ };
+						UIGame_custom_script		( ) : inherited( )
+	{ }
 	virtual void		SetClGame					(game_cl_GameState* g)
 	{
 		inherited::SetClGame(g);
-	};
+	}
 	virtual void		Init						( )
-	{ };
+	{ }
 	virtual void		ReInitShownUI				( )
-	{ };
+	{ }
 
 	static void			script_register				(lua_State*);
 };

@@ -234,7 +234,7 @@ public:
 	void						SetHeading					(float f)
 	{
 		m_fHeading = f;
-	};
+	}
 	float						GetHeading					( )
 	{
 		return m_fHeading;

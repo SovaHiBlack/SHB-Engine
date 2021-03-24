@@ -119,9 +119,8 @@ bool CUIButton::OnMouse(float x, float y, EUIMessages mouse_action)
 					m_eButtonState = BUTTON_NORMAL;
 				}
 			}
-
-			break;
 		}
+		break;
 		case DOWN_PRESS:
 		{
 			if (mouse_action == WINDOW_MOUSE_MOVE)
@@ -143,9 +142,8 @@ bool CUIButton::OnMouse(float x, float y, EUIMessages mouse_action)
 					return true;
 				}
 			}
-
-			break;
 		}
+		break;
 	}
 
 	return false;

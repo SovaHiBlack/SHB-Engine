@@ -73,7 +73,6 @@ public:
 	virtual void			Update( );
 	inline			void			SetWndSize_inline(const Fvector2& wnd_size);
 
-
 	// CDeviceResetNotifier methods
 	virtual void			OnDeviceReset( );
 

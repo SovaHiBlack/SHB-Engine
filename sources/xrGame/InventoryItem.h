@@ -192,10 +192,10 @@ public:
 	int					GetXPos( ) const;
 	int					GetYPos( ) const;
 //---------------------------------------------------------------------
-	float				GetKillMsgXPos( ) const;
-	float				GetKillMsgYPos( ) const;
-	float				GetKillMsgWidth( ) const;
-	float				GetKillMsgHeight( ) const;
+//	float				GetKillMsgXPos( ) const;
+//	float				GetKillMsgYPos( ) const;
+//	float				GetKillMsgWidth( ) const;
+//	float				GetKillMsgHeight( ) const;
 //---------------------------------------------------------------------
 	float				GetCondition( ) const
 	{

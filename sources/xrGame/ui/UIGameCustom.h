@@ -96,7 +96,7 @@ protected:
 
 public:
 	virtual void		SetClGame				(game_cl_GameState* g)
-	{ };
+	{ }
 
 	virtual float		shedule_Scale			( );
 	virtual void		shedule_Update			(u32 dt);
@@ -105,7 +105,7 @@ public:
 	virtual				~CUIGameCustom			( );
 
 	virtual void		Init					( )
-	{ };
+	{ }
 
 	virtual void		Render					( );
 	virtual void		OnFrame					( );
@@ -122,7 +122,7 @@ public:
 	CUIDialogWnd*		MainInputReceiver		( );
 	virtual void		ReInitShownUI			( ) = 0;
 	virtual void		HideShownDialogs		( )
-	{ };
+	{ }
 
 	void				AddCustomMessage		(const char* id, float x, float y, float font_size, CGameFont* pFont, u16 alignment, u32 color);
 	void				AddCustomMessage		(const char* id, float x, float y, float font_size, CGameFont* pFont, u16 alignment, u32 color, float flicker);
@@ -136,11 +136,11 @@ public:
 	virtual shared_str	shedule_Name			( ) const
 	{
 		return shared_str("CUIGameCustom");
-	};
+	}
 	virtual bool		shedule_Needed			( )
 	{
 		return true;
-	};
+	}
 
 	static void			script_register			(lua_State*);
 };

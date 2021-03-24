@@ -21,6 +21,4 @@ void CUIRadioButton::Init(float x, float y, float width, float height)
 }
 
 void CUIRadioButton::InitTexture(const char* tex_name)
-{
-	// do nothing
-}
+{ }

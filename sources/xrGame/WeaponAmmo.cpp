@@ -64,7 +64,7 @@ void CCartridge::Load(const char* section, u8 LocalAmmoType)
 		m_flags.set(cfExplosive, pSettings->r_bool(section, "explosive"));
 	}
 
-	bullet_material_idx = GMLib.GetMaterialIdx(WEAPON_MATERIAL_NAME);
+	bullet_material_idx = GMLib.GetMaterialIdx(BULLET_MATERIAL_NAME);
 	VERIFY(u16(-1) != bullet_material_idx);
 	VERIFY(fWallmarkSize > 0);
 
@@ -140,7 +140,6 @@ void CWeaponAmmo::OnH_B_Independent(bool just_before_destroy)
 {
 	if (!Useful( ))
 	{
-
 		if (Local( ))
 		{
 			DestroyObject( );
@@ -189,7 +188,7 @@ bool CWeaponAmmo::Get(CCartridge& cartridge)
 	cartridge.m_buckShot = m_buckShot;
 	cartridge.m_impair = m_impair;
 	cartridge.fWallmarkSize = fWallmarkSize;
-	cartridge.bullet_material_idx = GMLib.GetMaterialIdx(WEAPON_MATERIAL_NAME);
+	cartridge.bullet_material_idx = GMLib.GetMaterialIdx(BULLET_MATERIAL_NAME);
 	cartridge.m_InvShortName = NameShort( );
 	--m_boxCurr;
 	if (m_pCurrentInventory)

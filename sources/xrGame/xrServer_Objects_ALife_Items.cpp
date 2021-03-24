@@ -630,11 +630,13 @@ void CSE_ALifeItemWeaponMagazinedWGL::FillProps			(const char* pref, PropItemVec
 ////////////////////////////////////////////////////////////////////////////
 // CSE_ALifeItemAmmo
 ////////////////////////////////////////////////////////////////////////////
-CSE_ALifeItemAmmo::CSE_ALifeItemAmmo		(const char* caSection) : CSE_ALifeItem(caSection)
+CSE_ALifeItemAmmo::CSE_ALifeItemAmmo(const char* caSection) : CSE_ALifeItem(caSection)
 {
-	a_elapsed					= m_boxSize = (u16)pSettings->r_s32(caSection, "box_size");
-	if (pSettings->section_exist(caSection) && pSettings->line_exist(caSection,"visual"))
-        set_visual				(pSettings->r_string(caSection,"visual"));
+	a_elapsed = m_boxSize = (u16) pSettings->r_s32(caSection, "box_size");
+	if (pSettings->section_exist(caSection) && pSettings->line_exist(caSection, "visual"))
+	{
+		set_visual(pSettings->r_string(caSection, "visual"));
+	}
 }
 
 CSE_ALifeItemAmmo::~CSE_ALifeItemAmmo		()

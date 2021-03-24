@@ -82,7 +82,7 @@ public:
 	inline void				SetAlign					(u32 align)
 	{
 		uAlign = align;
-	};
+	}
 	inline u32				GetAlign					( )
 	{
 		return uAlign;

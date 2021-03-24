@@ -1,7 +1,4 @@
-//////////////////////////////////////////////////////////////////////
-// ShootingObject.cpp:  интерфейс дл€ семейства стрел€ющих объектов 
-//						(оружие и осколочные гранаты) 	
-//////////////////////////////////////////////////////////////////////
+// ShootingObject.cpp:  интерфейс дл€ семейства стрел€ющих объектов (оружие и осколочные гранаты)
 
 #include "stdafx.h"
 
@@ -51,7 +48,7 @@ CShootingObject::~CShootingObject( )
 
 void CShootingObject::reinit( )
 {
-	m_pFlameParticles = NULL;
+	m_pFlameParticles = nullptr;
 }
 
 void CShootingObject::Load(const char* section)
@@ -61,12 +58,14 @@ void CShootingObject::Load(const char* section)
 		m_bLightShotEnabled = !pSettings->r_bool(section, "light_disabled");
 	}
 	else
+	{
 		m_bLightShotEnabled = true;
+	}
 
 	//врем€ затрачиваемое на выстрел
 	fTimeToFire = pSettings->r_float(section, "rpm");
 	VERIFY(fTimeToFire > 0.f);
-	fTimeToFire = 60.f / fTimeToFire;
+	fTimeToFire = 60.0f / fTimeToFire;
 
 	LoadFireParams(section, "");
 	LoadLights(section, "");
@@ -134,17 +133,17 @@ void CShootingObject::LoadFireParams(const char* section, const char* prefix)
 
 void CShootingObject::LoadLights(const char* section, const char* prefix)
 {
-	string256				full_name;
+	string256 full_name;
 	// light
 	if (m_bLightShotEnabled)
 	{
-		Fvector clr = pSettings->r_fvector3(section, strconcat(sizeof(full_name), full_name, prefix, "light_color"));
+		Fvector3 clr = pSettings->r_fvector3(section, strconcat(sizeof(full_name), full_name, prefix, "light_color"));
 		light_base_color.set(clr.x, clr.y, clr.z, 1);
 		light_base_range = pSettings->r_float(section, strconcat(sizeof(full_name), full_name, prefix, "light_range"));
 		light_var_color = pSettings->r_float(section, strconcat(sizeof(full_name), full_name, prefix, "light_var_color"));
 		light_var_range = pSettings->r_float(section, strconcat(sizeof(full_name), full_name, prefix, "light_var_range"));
 		light_lifetime = pSettings->r_float(section, strconcat(sizeof(full_name), full_name, prefix, "light_time"));
-		light_time = -1.f;
+		light_time = -1.0f;
 	}
 }
 

@@ -18,11 +18,11 @@ const Fmatrix	XLocalJoint		={0,-1,0,0, -1,0,0,0, 0,0,1,0,  0,0,0,1};
 
 const Fmatrix	xm2im			={0,0,1,0,	0,1,0,0, 1,0,0,0, 0,0,0,1};
 
-const Fvector	xgproj_axis		={0,1,0};
-const Fvector	xgpos_axis		={0,0,1};
+const Fvector3	xgproj_axis		={0,1,0};
+const Fvector3	xgpos_axis		={0,0,1};
 
-const Fvector	xlproj_axis		={1,0,0};
-const Fvector	xlpos_axis		={0,0,1};
+const Fvector3	xlproj_axis		={1,0,0};
+const Fvector3	xlpos_axis		={0,0,1};
 typedef float IVektor [3];
 
 const IVektor	lproj_vector	={0,0,1};
@@ -30,8 +30,6 @@ const IVektor	lpos_vector		={-1,0,0};
 
 const IVektor	gproj_vector	={0,0,1};//. in XGlobal
 const IVektor	gpos_vector		={1,0,0};
-
-
 
 CIKLimb::CIKLimb()
 {
@@ -79,12 +77,12 @@ void IM2XM(const Matrix &IM,Fmatrix &XM)
 {
 	XM2IM(*((Fmatrix*)(&IM)),XM);
 }
-void XV2IV(const Fvector	&XV,IVektor &IV)
+void XV2IV(const Fvector3& XV,IVektor &IV)
 {
 	xm2im.transform_dir(cast_fv(IV),XV);
 }
 
-void IV2XV(const IVektor &IV,Fvector	&XV)
+void IV2XV(const IVektor &IV, Fvector3& XV)
 {
 	xm2im.transform_dir(XV),cast_fv(IV);
 }

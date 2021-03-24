@@ -6,8 +6,6 @@ $prefetch 		 			= 8
 scheduled                	= off              ; option for ALife Simulator
 cform                    	= skeleton
 class                    	= WP_AK74
-min_radius               	= 0
-max_radius               	= 50
 description					= enc_weapons1_wpn-lr300
 
 ef_main_weapon_type			= 2
@@ -19,7 +17,7 @@ holder_fov_modifier		= 0.7              ; во сколько раз увеличивается eye_fov
 ;-----------------------------------------------------------------------------------
 
 
-cost					 	= 5000
+cost					 	= 5000		; the price of the item
 
 ammo_elapsed		 		= 30
 ammo_mag_size		 		= 30
@@ -40,11 +38,6 @@ inv_grid_height				= 2
 inv_grid_x					= 0
 inv_grid_y					= 6
 
-kill_msg_x			= 175
-kill_msg_y			= 0
-kill_msg_width		= 82
-kill_msg_height		= 28
-
 slot 			 			= 2		; // secondary
 animation_slot				= 2		; type of the animation that will be used
 
@@ -54,13 +47,13 @@ fire_dispersion_base		= 0.18 	;угол (в градусах) базовой дисперсии оружия (оружи
 control_inertion_factor		= 1.2f
 
 ;отдача
-cam_relax_speed        		= 6;0.15	;скорость возврата в исходное положение
-cam_dispersion         		= 0.15	;увеличения угла (в градусах) с каждым выстрелом
-cam_dispersion_inc		= 0.15	;увеличениe cam_dispersion с каждым выстрелом
+cam_relax_speed        		= 6.0	;скорость возврата в исходное положение
+cam_dispersion         		= 0.15	;изменение угла (в градусах) при выстреле
+cam_dispersion_inc		= 0.15	;увеличениe cam_dispersion с каждым выстрелом(по умолчанию = 0.0)
 cam_dispertion_frac		= 1	;ствол будет подыматься на cam_dispersion*cam_dispertion_frac +- cam_dispersion*(1-cam_dispertion_frac)
-cam_max_angle			= 7	;максимальный угол отдачи
-cam_max_angle_horz		= 5.0	;(degree) maximum shot horizontal degree 
-cam_step_angle_horz		= 0.5;0.4	;(degree) size of step camera moved in horizontal position while shooting
+cam_max_angle			= 7.0	;максимальный угол отдачи
+cam_max_angle_horz		= 5.0	;максимальное смещение ствола по горизонтали при выстреле(в градусах)
+cam_step_angle_horz		= 0.5	;шаг смещения ствола в горизонтальной плоскости в момент выстрела(в градусах)
 
 fire_dispersion_condition_factor = 5	;увеличение дисперсии в процентах при максимальном износе 
 misfire_probability 		= 0.003 ;вероятность осечки при максимальном износе
@@ -79,8 +72,6 @@ grenade_flame_particles		= weapons\generic_weapon01
 shell_point		 			= 0.0, 0.199, 0.09
 shell_dir		 			= 0.0, 1.0, 0.0
 shell_particles	 			= weapons\generic_shells
-
-rpm_empty_click 	 		= 200
 
 PDM_disp_base 			= 1.0
 PDM_disp_vel_factor 		= 1.2
@@ -112,7 +103,6 @@ strap_orientation      		= -10,-5,10					; (3rd person view in degrees)
 strap_bone0					= bip01_spine2
 strap_bone1					= bip01_spine1
 
-startup_ammo             	= 1000
 visual                   	= weapons\lr300\wpn_lr300.ogf
 
 light_color		 			= 0.6,0.5,0.3
@@ -122,7 +112,6 @@ light_var_range		 		= 0.1
 light_time 		 			= 0.2
 
 ph_mass			 			= 3
-;cost			 			= 2500
 
 ;addons
 scope_status				= 2;0

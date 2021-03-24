@@ -133,8 +133,10 @@ void CHelicopter::OnShot		()
 	FireBullet(fire_pos, fire_dir, fireDispersionBase, m_CurrentAmmo, ID(), ID(), OnServer());
 
 	StartShotParticles	();
-	if(m_bLightShotEnabled) 
-		Light_Start			();
+	if (m_bLightShotEnabled)
+	{
+		Light_Start( );
+	}
 
 	StartFlameParticles		();
 	StartSmokeParticles		(fire_pos, zero_vel);

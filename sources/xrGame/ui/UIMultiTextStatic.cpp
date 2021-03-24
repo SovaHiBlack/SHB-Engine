@@ -12,7 +12,7 @@
 CUIMultiTextStatic::CUIMultiTextStatic				()
 {
 	m_vPhrases.clear();
-};
+}
 
 CUIMultiTextStatic::~CUIMultiTextStatic				()
 {
@@ -66,8 +66,6 @@ CUIMultiTextStatic::SinglePhrase * CUIMultiTextStatic::GetPhraseByIndex(u32 idx)
 
 	return &m_vPhrases[idx];
 }
-
-
 
 //////////////////////////////////////////////////////////////////////////
 

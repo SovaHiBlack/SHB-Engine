@@ -12,7 +12,7 @@
 #include "ai/stalker/Stalker.h"
 #include "sight_manager.h"
 #include "stalker_movement_manager.h"
-#include "stalker_animation_data.h"
+#include "StalkerAnimationData.h"
 
 #include "Weapon.h"
 #include "Missile.h"

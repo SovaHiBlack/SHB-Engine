@@ -48,29 +48,31 @@ struct envc :
 private boost::noncopyable,
 public SEnumVerticesCallback
 {
-	Fvector &pos;
-	Fvector start_pos;
+	Fvector3& pos;
+	Fvector3 start_pos;
 	const Fmatrix &i_bind_transform;
-	const Fvector &ax;
-	envc( const Fmatrix &_i_bind_transform, const Fvector &_ax,  Fvector &_pos ): 
+	const Fvector3& ax;
+	envc(const Fmatrix &_i_bind_transform, const Fvector3& _ax, Fvector3& _pos):
 	SEnumVerticesCallback( ), i_bind_transform( _i_bind_transform ), ax( _ax ), pos( _pos ) { start_pos.set(0,0,0); }
-	void operator () (const Fvector& p)
+	void operator () (const Fvector3& p)
 	{
-		Fvector lpos;
+		Fvector3 lpos;
 		i_bind_transform.transform_tiny(lpos, p );
 		//Fvector diff;diff.sub( lpos, pos );
-		if( Fvector().sub(lpos,start_pos).dotproduct( ax ) > Fvector().sub(pos,start_pos).dotproduct( ax ) )
+		if(Fvector3().sub(lpos,start_pos).dotproduct( ax ) > Fvector3().sub(pos,start_pos).dotproduct( ax ) )
 						pos.set( lpos );
 	}
 };
 
-void get_toe(CKinematics *skeleton, Fvector & toe, const u16 bones[4])
+void get_toe(CKinematics *skeleton, Fvector3& toe, const u16 bones[4])
 {
 	VERIFY( skeleton );
 	xr_vector<Fmatrix> binds;
 	skeleton->LL_GetBindTransform( binds );
 	Fmatrix ibind; ibind.invert( binds[ bones[3] ] );
-	Fvector ax; Fvector pos; pos.set( 0, 0, 0);
+	Fvector3 ax;
+	Fvector3 pos;
+	pos.set( 0, 0, 0);
 	ax.set(1, 0, -1 );
 	envc pred( ibind, ax, pos );
 	skeleton->EnumBoneVertices( pred, bones[3] );
@@ -84,7 +86,6 @@ void get_toe(CKinematics *skeleton, Fvector & toe, const u16 bones[4])
 	ax.set(1, 0, 0);
 	skeleton->EnumBoneVertices( pred, bones[2] );
 	toe.x = _max( pos.x, toe.x );
-
 }
 
 void	CIKLimbsController::LimbSetup(  const u16 bones[4] )
@@ -92,12 +93,10 @@ void	CIKLimbsController::LimbSetup(  const u16 bones[4] )
 	_bone_chains.push_back( CIKLimb( ) );
 	CKinematicsAnimated *skeleton_animated = m_object->Visual( )->dcast_PKinematicsAnimated( );
 	VERIFY( skeleton_animated );
-	Fvector toe;
+	Fvector3 toe;
 	get_toe( skeleton_animated, toe, bones );
-	_bone_chains.back( ).Create( ( u16 ) _bone_chains.size( )-1, skeleton_animated, bones, toe, true );//Fvector( ).set( 0.13143f, 0, 0.20f )
+	_bone_chains.back( ).Create( ( u16 ) _bone_chains.size( )-1, skeleton_animated, bones, toe, true );//Fvector3( ).set( 0.13143f, 0, 0.20f )
 }
-
-
 
 void	CIKLimbsController::LimbCalculate( SCalculateData &cd )
 {

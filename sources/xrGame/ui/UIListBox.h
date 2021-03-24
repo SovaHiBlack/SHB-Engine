@@ -4,44 +4,46 @@
 
 class CUIListBoxItem;
 
-class CUIListBox : 	public CUIScrollView,
-					public IUIFontControl
+class CUIListBox : public CUIScrollView, public IUIFontControl
 {
 public:
-					CUIListBox						();
-	CUIListBoxItem* AddItem							(const char* text);
-	CUIListBoxItem* GetItemByTAG					(u32 tag_value);
-	CUIListBoxItem* GetItemByIDX					(u32 idx);
-	CUIListBoxItem* GetItemByText					(const char* text);
-	CUIListBoxItem* GetSelectedItem					();
+	CUIListBox( );
+	CUIListBoxItem* AddItem(const char* text);
+	CUIListBoxItem* GetItemByTAG(u32 tag_value);
+	CUIListBoxItem* GetItemByIDX(u32 idx);
+	CUIListBoxItem* GetItemByText(const char* text);
+	CUIListBoxItem* GetSelectedItem( );
 
-	const char* GetSelectedText					();
-	const char* GetText							(u32 idx);
-	void			MoveSelectedUp					();
-	void			MoveSelectedDown				();
-	void			SetSelectionTexture				(const char* texture);
-	void			SetItemHeight					(float h);
-	float			GetItemHeight					();
-	float			GetLongestLength				();
+	const char* GetSelectedText( );
+	const char* GetText(u32 idx);
+	void			MoveSelectedUp( );
+	void			MoveSelectedDown( );
+	void			SetSelectionTexture(const char* texture);
+	void			SetItemHeight(float h);
+	float			GetItemHeight( );
+	float			GetLongestLength( );
 
-	virtual	void	SetSelected						(CUIWindow* w)	{CUIScrollView::SetSelected(w);};
-		u32			GetSelectedIDX					();
-		void		SetSelectedIDX					(u32 idx);
-		void		SetSelectedTAG					(u32 tag_val);
-		void		SetSelectedText					(const char* txt);
-		void		SetImmediateSelection			(bool f);
+	virtual void	SetSelected(CUIWindow* w)
+	{
+		CUIScrollView::SetSelected(w);
+	}
+	u32			GetSelectedIDX( );
+	void		SetSelectedIDX(u32 idx);
+	void		SetSelectedTAG(u32 tag_val);
+	void		SetSelectedText(const char* txt);
+	void		SetImmediateSelection(bool f);
 
-virtual bool		OnMouse							(float x, float y, EUIMessages mouse_action);
-virtual void		SendMessage						(CUIWindow* pWnd, s16 msg, void* pData = nullptr);
+	virtual bool		OnMouse(float x, float y, EUIMessages mouse_action);
+	virtual void		SendMessage(CUIWindow* pWnd, s16 msg, void* pData = nullptr);
 
-	// IUIFontControl
-	virtual void			SetTextColor			(u32 color);
-			void			SetTextColorS			(u32 color);
-	virtual u32				GetTextColor			();
-	virtual void			SetFont					(CGameFont* pFont);
-	virtual CGameFont*		GetFont					();
-	virtual void			SetTextAlignment		(ETextAlignment alignment);
-	virtual ETextAlignment	GetTextAlignment		();
+		// IUIFontControl
+	virtual void			SetTextColor(u32 color);
+	void			SetTextColorS(u32 color);
+	virtual u32				GetTextColor( );
+	virtual void			SetFont(CGameFont* pFont);
+	virtual CGameFont* GetFont( );
+	virtual void			SetTextAlignment(ETextAlignment alignment);
+	virtual ETextAlignment	GetTextAlignment( );
 
 protected:
 	float			m_def_item_height;

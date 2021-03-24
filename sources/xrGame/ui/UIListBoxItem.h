@@ -2,38 +2,38 @@
 
 #include "UILabel.h"//
 
-class CUIListBoxItem : public CUILabel, public CUISelectable{
+class CUIListBoxItem : public CUILabel, public CUISelectable
+{
 public:
 	using CUILabel::SetTextColor;
 
-						CUIListBoxItem();
-	virtual				~CUIListBoxItem();
+	CUIListBoxItem( );
+	virtual				~CUIListBoxItem( );
 
-    virtual void		SetSelected(bool b);
+	virtual void		SetSelected(bool b);
 //	virtual void	Update();
-	virtual void		Draw();
+	virtual void		Draw( );
 	virtual bool		OnMouseDown(int mouse_btn);
-	virtual bool		OnDbClick();
-	virtual void		OnFocusReceive();
-	virtual CGameFont*	GetFont();
-			void		SetTextColor(u32 color, u32 color_s);
-			void		InitDefault();
-			void		SetTAG(u32 value);
-			u32			GetTAG();
+	virtual bool		OnDbClick( );
+	virtual void		OnFocusReceive( );
+	virtual CGameFont* GetFont( );
+	void		SetTextColor(u32 color, u32 color_s);
+	void		InitDefault( );
+	void		SetTAG(u32 value);
+	u32			GetTAG( );
 
-			void		SetData(void* data);
-			void*		GetData();
+	void		SetData(void* data);
+	void* GetData( );
 
-		CUIStatic*		AddField(const char* txt, float len, const char* key = "");
-		const char* GetField(const char* key);
+	CUIStatic* AddField(const char* txt, float len, const char* key = "");
+	const char* GetField(const char* key);
 
 protected:
-			float		FieldsLength();
-		xr_vector<CUIStatic*>	fields;
-		u32				txt_color;
-		u32				txt_color_s;
-		u32				tag;
-		void*			pData;
+	float		FieldsLength( );
+	xr_vector<CUIStatic*>	fields;
+	u32				txt_color;
+	u32				txt_color_s;
+	u32				tag;
+	void* pData;
 //.static	u32	uid_counter;
 };
-

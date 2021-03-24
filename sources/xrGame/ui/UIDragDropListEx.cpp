@@ -6,13 +6,17 @@
 #include "UICellItem.h"//
 #include "../HUDManager.h"//
 
-CUIDragItem* CUIDragDropListEx::m_drag_item = NULL;
+CUIDragItem* CUIDragDropListEx::m_drag_item = nullptr;
 
 void CUICell::Clear( )
 {
 	m_bMainItem = false;
-	if (m_item)	m_item->SetOwnerList(NULL);
-	m_item = NULL;
+	if (m_item)
+	{
+		m_item->SetOwnerList(NULL);
+	}
+
+	m_item = nullptr;
 }
 
 CUIDragDropListEx::CUIDragDropListEx( )
@@ -21,7 +25,7 @@ CUIDragDropListEx::CUIDragDropListEx( )
 	m_container = xr_new<CUICellContainer>(this);
 	m_vScrollBar = xr_new<CUIScrollBar>( );
 	m_vScrollBar->SetAutoDelete(true);
-	m_selected_item = NULL;
+	m_selected_item = nullptr;
 
 	SetCellSize(Ivector2( ).set(50, 50));
 	SetCellsCapacity(Ivector2( ).set(0, 0));
@@ -87,11 +91,11 @@ void CUIDragDropListEx::Init(float x, float y, float w, float h)
 	m_vScrollBar->Init(w, 0, h, false);
 	m_vScrollBar->SetWndPos(m_vScrollBar->GetWndPos( ).x - m_vScrollBar->GetWidth( ), m_vScrollBar->GetWndPos( ).y);
 /*
-//.	m_background->Init					(0,0,w,h);
-//.	m_background->Init					("ui\\ui_frame_02_back",0,0,w,h);
-//.	Frect rect; rect.set				(0,0,64,64);
+//.	m_background->Init(0, 0, w, h);
+//.	m_background->Init("ui\\ui_frame_02_back", 0, 0, w, h);
+//.	Frect rect; rect.set(0, 0, 64, 64);
 //.	m_background->GetUIStaticItem().SetOriginalRect(rect);
-//.	m_background->SetStretchTexture		(true);
+//.	m_background->SetStretchTexture(true);
 */
 }
 
@@ -230,7 +234,7 @@ void CUIDragDropListEx::ClearAll(bool bDestroy)
 {
 	DestroyDragItem( );
 	m_container->ClearAll(bDestroy);
-	m_selected_item = NULL;
+	m_selected_item = nullptr;
 	m_container->SetWndPos(0, 0);
 	ResetCellsCapacity( );
 }
@@ -260,9 +264,9 @@ void CUIDragDropListEx::Draw( )
 		F->SetHeightI(0.02f);
 		F->OutSetI(0.f, -0.5f);
 		F->SetColor(0xffffffff);
-		Ivector2			pt = m_container->PickCell(GetUICursor( )->GetCursorPosition( ));
+		Ivector2 pt = m_container->PickCell(GetUICursor( )->GetCursorPosition( ));
 		F->OutNext("%d-%d", pt.x, pt.y);
-	};
+	}
 }
 
 void CUIDragDropListEx::Update( )
@@ -319,14 +323,14 @@ bool CUIDragDropListEx::OnMouse(float x, float y, EUIMessages mouse_action)
 			{
 				m_vScrollBar->TryScrollInc( );
 				return true;
-				break;
 			}
+			break;
 			case WINDOW_MOUSE_WHEEL_UP:
 			{
 				m_vScrollBar->TryScrollDec( );
 				return true;
-				break;
 			}
+			break;
 		}
 	}
 
@@ -489,7 +493,7 @@ CUICellItem* CUICellContainer::FindSimilar(CUICellItem* itm)
 		}
 	}
 
-	return NULL;
+	return nullptr;
 }
 
 void CUICellContainer::PlaceItemAtPos(CUICellItem* itm, Ivector2& cell_pos)
@@ -521,7 +525,7 @@ CUICellItem* CUICellContainer::RemoveItem(CUICellItem* itm, bool force_root)
 		{
 			CUICellItem* iii = i->PopChild( );
 			R_ASSERT(0 == iii->ChildsCount( ));
-			return				iii;
+			return iii;
 		}
 	}
 
@@ -529,7 +533,7 @@ CUICellItem* CUICellContainer::RemoveItem(CUICellItem* itm, bool force_root)
 	{
 		CUICellItem* iii = itm->PopChild( );
 		R_ASSERT(0 == iii->ChildsCount( ));
-		return				iii;
+		return iii;
 	}
 
 	Ivector2 pos = GetItemPos(itm);
@@ -546,7 +550,7 @@ CUICellItem* CUICellContainer::RemoveItem(CUICellItem* itm, bool force_root)
 
 	itm->SetOwnerList(NULL);
 	DetachChild(itm);
-	return					itm;
+	return itm;
 }
 
 Ivector2 CUICellContainer::FindFreeCell(const Ivector2& size)
@@ -577,7 +581,7 @@ Ivector2 CUICellContainer::FindFreeCell(const Ivector2& size)
 			{
 				if (IsRoomFree(tmp, size))
 				{
-					return  tmp;
+					return tmp;
 				}
 			}
 		}
@@ -633,7 +637,7 @@ void CUICellContainer::GetTexUVLT(Fvector2& uv, u32 col, u32 row)
 {
 	uv.set(0.0f, 0.0f);
 
-//.	if( (col%2==1 && row%2==1)||(col%2==0 && row%2==0) )
+//.	if ((col%2==1 && row%2==1)||(col%2==0 && row%2==0) )
 //.		uv.set(0.5f,0.0f);
 }
 
@@ -719,13 +723,11 @@ bool CUICellContainer::ValidCell(const Ivector2& pos) const
 
 void CUICellContainer::ClearAll(bool bDestroy)
 {
+	UI_CELLS_VEC_IT it = m_cells.begin( );
+	UI_CELLS_VEC_IT it_e = m_cells.end( );
+	for (; it != it_e; ++it)
 	{
-		UI_CELLS_VEC_IT it = m_cells.begin( );
-		UI_CELLS_VEC_IT it_e = m_cells.end( );
-		for (; it != it_e; ++it)
-		{
-			(*it).Clear( );
-		}
+		(*it).Clear( );
 	}
 
 	while (!m_ChildWndList.empty( ))
@@ -810,7 +812,7 @@ void CUICellContainer::Draw( )
 
 	// fill cell buffer
 	u32 vOffset = 0;
-	FVF::TL* start_pv = (FVF::TL*)RCache.Vertex.Lock((tgt_cells.width( ) + 1) * (tgt_cells.height( ) + 1) * 6, hGeom.stride( ), vOffset);
+	FVF::TL* start_pv = (FVF::TL*) RCache.Vertex.Lock((tgt_cells.width( ) + 1) * (tgt_cells.height( ) + 1) * 6, hGeom.stride( ), vOffset);
 	FVF::TL* pv = start_pv;
 	for (int x = 0; x <= tgt_cells.width( ); ++x)
 	{

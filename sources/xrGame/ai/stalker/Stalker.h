@@ -548,8 +548,8 @@ public:
 private:
 	bool	m_can_select_items;
 
-	public:
-		static void script_register(lua_State*);
+public:
+	static void script_register(lua_State*);
 };
 
 add_to_type_list(CStalker)

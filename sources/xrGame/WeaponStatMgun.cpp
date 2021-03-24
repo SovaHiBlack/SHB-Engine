@@ -63,14 +63,18 @@ void CWeaponStatMgun::ResetBoneCallbacks()
 void CWeaponStatMgun::Load(const char* section)
 {
 	inheritedPH::Load(section);
-	inheritedShooting::Load	(section);
+	inheritedShooting::Load(section);
 
-	HUD_SOUND::LoadSound(section,"snd_shoot", sndShot, SOUND_TYPE_WEAPON_SHOOTING);
+	HUD_SOUND::LoadSound(section, "snd_shoot", sndShot, SOUND_TYPE_WEAPON_SHOOTING);
 	m_Ammo->Load(pSettings->r_string(section, "ammo_class"), 0);
-	camMaxAngle			= pSettings->r_float		(section,"cam_max_angle"	); 
-	camMaxAngle			= deg2rad					(camMaxAngle);
-	camRelaxSpeed		= pSettings->r_float		(section,"cam_relax_speed"	); 
-	camRelaxSpeed		= deg2rad					(camRelaxSpeed);
+
+	//подбрасывание камеры во время отдачи
+	//максимальный угол отдачи
+	camMaxAngle = pSettings->r_float(section, "cam_max_angle");
+	camMaxAngle = deg2rad(camMaxAngle);
+	//скорость возврата в исходное положение
+	camRelaxSpeed = pSettings->r_float(section, "cam_relax_speed");
+	camRelaxSpeed = deg2rad(camRelaxSpeed);
 }
 
 BOOL CWeaponStatMgun::net_Spawn(CSE_Abstract* DC)

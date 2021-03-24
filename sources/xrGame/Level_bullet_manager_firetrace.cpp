@@ -123,7 +123,7 @@ BOOL CBulletManager::test_callback(const collide::ray_defs& rd, CObject* object,
 						}
 						// play whine sound
 						if (play_whine){
-							Fvector					pt;
+							Fvector3					pt;
 							pt.mad					(bullet->pos, bullet->dir, dist);
 							Level().BulletManager().PlayWhineSound				(bullet,initiator,pt);
 						}
@@ -153,7 +153,7 @@ BOOL  CBulletManager::firetrace_callback(collide::rq_result& result, LPVOID para
 	SBullet* bullet						= pData->pBullet;
 
 	//вычислить точку попадания
-	Fvector end_point;
+	Fvector3 end_point;
 	end_point.mad(bullet->pos, bullet->dir, result.range);
 
 	u16 hit_material_idx = GAMEMTL_NONE_IDX;
@@ -194,10 +194,10 @@ BOOL  CBulletManager::firetrace_callback(collide::rq_result& result, LPVOID para
 		return TRUE;
 }
 
-void CBulletManager::FireShotmark (SBullet* bullet, const Fvector& vDir, const Fvector &vEnd, collide::rq_result& R, u16 target_material, const Fvector& vNormal, bool ShowMark)
+void CBulletManager::FireShotmark (SBullet* bullet, const Fvector3& vDir, const Fvector3& vEnd, collide::rq_result& R, u16 target_material, const Fvector3& vNormal, bool ShowMark)
 {
 	SGameMtlPair* mtl_pair	= GMLib.GetMaterialPair(bullet->bullet_material_idx, target_material);
-	Fvector particle_dir;
+	Fvector3 particle_dir;
 
 	if (R.O)
 	{
@@ -213,7 +213,7 @@ void CBulletManager::FireShotmark (SBullet* bullet, const Fvector& vDir, const F
 		if (pWallmarkShader && ShowMark)
 		{
 			//добавить отметку на материале
-			Fvector p;
+			Fvector3 p;
 			p.mad(bullet->pos,bullet->dir,R.range-0.01f);
 			::Render->add_SkeletonWallmark	(&R.O->renderable.xform, 
 							PKinematics(R.O->Visual()), *pWallmarkShader,
@@ -224,7 +224,7 @@ void CBulletManager::FireShotmark (SBullet* bullet, const Fvector& vDir, const F
 	{
 		//вычислить нормаль к пораженной поверхности
 		particle_dir		= vNormal;
-		Fvector*	pVerts	= Level().ObjectSpace.GetStaticVerts();
+		Fvector3*	pVerts	= Level().ObjectSpace.GetStaticVerts();
 		CDB::TRI*	pTri	= Level().ObjectSpace.GetStaticTris()+R.element;
 
 		ref_shader* pWallmarkShader =	(!mtl_pair || mtl_pair->CollideMarks.empty())?
@@ -258,7 +258,7 @@ NULL:*mtl_pair->CollideParticles[::Random.randI(0,mtl_pair->CollideParticles.siz
 	{
 		Fmatrix pos;
 		pos.k.normalize(particle_dir);
-		Fvector::generate_orthonormal_basis(pos.k, pos.j, pos.i);
+		Fvector3::generate_orthonormal_basis(pos.k, pos.j, pos.i);
 		pos.c.set(vEnd);
 		if(ps_name && ShowMark){
 			//отыграть партиклы попадания в материал
@@ -275,7 +275,7 @@ NULL:*mtl_pair->CollideParticles[::Random.randI(0,mtl_pair->CollideParticles.siz
 
 void CBulletManager::StaticObjectHit	(CBulletManager::_event& E)
 {
-//	Fvector hit_normal;
+//	Fvector3 hit_normal;
 	FireShotmark(&E.bullet, E.bullet.dir, E.point, E.R, E.tgt_material, E.normal, (E.bullet.hit_type == ALife::eHitTypeFireWound || E.bullet.hit_type == ALife::eHitTypeWound || E.bullet.hit_type == ALife::eHitTypeWound_2));
 //	ObjectHit	(&E.bullet,					E.point, E.R, E.tgt_material, hit_normal);
 }
@@ -295,14 +295,14 @@ void CBulletManager::DynamicObjectHit	(CBulletManager::_event& E)
 		if (ps && ps->testFlag(GAME_PLAYER_FLAG_INVINCIBLE))
 		{
 			NeedShootmark = false;
-		};
+		}
 	}
 	
 	//визуальное обозначение попадание на объекте
-//	Fvector			hit_normal;
+//	Fvector3			hit_normal;
 	FireShotmark	(&E.bullet, E.bullet.dir, E.point, E.R, E.tgt_material, E.normal, NeedShootmark);
 	
-	Fvector original_dir = E.bullet.dir;
+	Fvector3 original_dir = E.bullet.dir;
 	float power, impulse;
 	std::pair<float,float> hit_result = E.result; //ObjectHit(&E.bullet, E.end_point, E.R, E.tgt_material, hit_normal);
 	power = hit_result.first;
@@ -310,7 +310,8 @@ void CBulletManager::DynamicObjectHit	(CBulletManager::_event& E)
 
 	// object-space
 	//вычислить координаты попадания
-	Fvector				p_in_object_space,position_in_bone_space;
+	Fvector3				p_in_object_space;
+	Fvector3 position_in_bone_space;
 	Fmatrix				m_inv;
 	m_inv.invert		(E.R.O->XFORM());
 	m_inv.transform_tiny(p_in_object_space, E.point);
@@ -364,18 +365,18 @@ void CBulletManager::DynamicObjectHit	(CBulletManager::_event& E)
 FvectorVec g_hit[3];
 #endif
 
-extern void random_dir	(Fvector& tgt_dir, const Fvector& src_dir, float dispersion);
+extern void random_dir	(Fvector3& tgt_dir, const Fvector3& src_dir, float dispersion);
 
-std::pair<float, float>  CBulletManager::ObjectHit	(SBullet* bullet, const Fvector& end_point, 
-									collide::rq_result& R, u16 target_material, 
-									Fvector& hit_normal)
+std::pair<float, float>  CBulletManager::ObjectHit	(SBullet* bullet, const Fvector3& end_point,
+													collide::rq_result& R, u16 target_material, 
+													 Fvector3& hit_normal)
 {
 	//----------- normal - start
 	if (R.O){
 		//вернуть нормаль по которой играть партиклы
 		CCF_Skeleton* skeleton = smart_cast<CCF_Skeleton*>(R.O->CFORM());
 		if(skeleton){
-			Fvector			e_center;
+			Fvector3			e_center;
 			hit_normal.set	(0,0,0);
 			if (skeleton->_ElementCenter((u16)R.element,e_center))
 				hit_normal.sub							(end_point, e_center);
@@ -385,7 +386,7 @@ std::pair<float, float>  CBulletManager::ObjectHit	(SBullet* bullet, const Fvect
 		}
 	} else {
 		//вычислить нормаль к поверхности
-		Fvector*	pVerts	= Level().ObjectSpace.GetStaticVerts();
+		Fvector3*	pVerts	= Level().ObjectSpace.GetStaticVerts();
 		CDB::TRI*	pTri	= Level().ObjectSpace.GetStaticTris()+R.element;
 		hit_normal.mknormal	(pVerts[pTri->verts[0]],pVerts[pTri->verts[1]],pVerts[pTri->verts[2]]);
 	}		
@@ -408,7 +409,7 @@ std::pair<float, float>  CBulletManager::ObjectHit	(SBullet* bullet, const Fvect
 	float impulse	= 0.f;
 
 #ifdef DEBUG
-	Fvector dbg_bullet_pos;
+	Fvector3 dbg_bullet_pos;
 	dbg_bullet_pos.mad(bullet->pos,bullet->dir,R.range);
 	int bullet_state		= 0;
 #endif
@@ -422,9 +423,9 @@ std::pair<float, float>  CBulletManager::ObjectHit	(SBullet* bullet, const Fvect
 	}
 
 	//рикошет
-	Fvector			new_dir;
+	Fvector3			new_dir;
 	new_dir.reflect	(bullet->dir,hit_normal);
-	Fvector			tgt_dir;
+	Fvector3			tgt_dir;
 	random_dir		(tgt_dir, new_dir, deg2rad(10.f));
 
 	float ricoshet_factor	= bullet->dir.dotproduct(tgt_dir);
@@ -476,7 +477,7 @@ std::pair<float, float>  CBulletManager::ObjectHit	(SBullet* bullet, const Fvect
 		
 		bullet->pos.mad(bullet->pos,bullet->dir,EPS);//fake
 		//ввести коэффициент случайности при простреливании
-		Fvector rand_normal;
+		Fvector3 rand_normal;
 		rand_normal.random_dir(bullet->dir, deg2rad(5.f)*energy_lost, Random);
 		bullet->dir.set(rand_normal);
 		#ifdef DEBUG

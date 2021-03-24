@@ -41,7 +41,7 @@ CUIGameCustom::~CUIGameCustom( )
 float CUIGameCustom::shedule_Scale( )
 {
 	return 0.5f;
-};
+}
 
 void CUIGameCustom::shedule_Update(u32 dt)
 {
@@ -110,7 +110,7 @@ void CUIGameCustom::RemoveDialogToRender(CUIWindow* pDialog)
 CUIDialogWnd* CUIGameCustom::MainInputReceiver( )
 {
 	return HUD( ).GetUI( )->MainInputReceiver( );
-};
+}
 
 void CUIGameCustom::AddCustomMessage(const char* id, float x, float y, float font_size, CGameFont* pFont, u16 alignment, u32 color)
 {

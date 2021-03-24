@@ -17,72 +17,70 @@ class CUIComboBox : public CUIWindow, public CUIOptionsItem
 	} E_COMBO_STATE;
 
 public:
-	CUIComboBox( );
-	virtual				~CUIComboBox( );
+						CUIComboBox			( );
+	virtual				~CUIComboBox		( );
 	// CUIOptionsItem
-	virtual void		SetCurrentValue( );
-	virtual void		SaveValue( );
-	virtual bool		IsChanged( );
-	virtual void 		SeveBackUpValue( );
-	virtual void 		Undo( );
+	virtual void		SetCurrentValue		( );
+	virtual void		SaveValue			( );
+	virtual bool		IsChanged			( );
+	virtual void 		SeveBackUpValue		( );
+	virtual void 		Undo				( );
 
-	const char* GetText( );
+	const char*			GetText				( );
 
 	// methods
-	CUIListBox* GetListWnd( );
-	void		SetListLength(int length);
-	void		SetVertScroll(bool bVScroll = true)
+	CUIListBox*			GetListWnd			( );
+	void				SetListLength		(int length);
+	void				SetVertScroll		(bool bVScroll = true)
 	{
 		m_list.SetFixedScrollBar(bVScroll);
-	};
-//.	virtual void		AddItem					(const char* str, bool bSelected);
-	CUIListBoxItem* AddItem_(const char* str, int _data);
-	virtual void		Init(float x, float y, float width);
-	void		SetItem(int i);
+	}
+//.	virtual void		AddItem				(const char* str, bool bSelected);
+	CUIListBoxItem*		AddItem_			(const char* str, int _data);
+	virtual void		Init				(float x, float y, float width);
+	void				SetItem				(int i);
 
-	virtual void		Init(float x, float y, float width, float height);
-	virtual void		SendMessage(CUIWindow* pWnd, s16 msg, void* pData = nullptr);
-	virtual void		OnFocusLost( );
-	virtual void		OnFocusReceive( );
-	int			CurrentID( )
+	virtual void		Init				(float x, float y, float width, float height);
+	virtual void		SendMessage			(CUIWindow* pWnd, s16 msg, void* pData = nullptr);
+	virtual void		OnFocusLost			( );
+	virtual void		OnFocusReceive		( );
+	int					CurrentID			( )
 	{
 		return m_itoken_id;
 	}
 
 protected:
-	virtual void		SetState(UIState state);
-	virtual bool		OnMouse(float x, float y, EUIMessages mouse_action);
-	virtual void		OnBtnClicked( );
-	void		ShowList(bool bShow);
-	void		OnListItemSelect( );
-	virtual void		Update( );
+	virtual void		SetState			(UIState state);
+	virtual bool		OnMouse				(float x, float y, EUIMessages mouse_action);
+	virtual void		OnBtnClicked		( );
+	void				ShowList			(bool bShow);
+	void				OnListItemSelect	( );
+	virtual void		Update				( );
 
-protected:
-	bool				m_bInited;
-	int					m_iListHeight;
-	int					m_itoken_id;
-	E_COMBO_STATE		m_eState;
-	int					m_backup_itoken_id;
+	bool									m_bInited;
+	int										m_iListHeight;
+	int										m_itoken_id;
+	E_COMBO_STATE							m_eState;
+	int										m_backup_itoken_id;
 
-	CUI_IB_FrameLineWnd	m_frameLine;
-	CUILabel			m_text;
-	CUIFrameWindow		m_frameWnd;
+	CUI_IB_FrameLineWnd						m_frameLine;
+	CUILabel								m_text;
+	CUIFrameWindow							m_frameWnd;
 
-	u32					m_textColor[2];
+	u32										m_textColor[2];
 
 public:
-	CUIListBox			m_list;
-	void				SetTextColor(u32 color)
+	CUIListBox								m_list;
+	void				SetTextColor		(u32 color)
 	{
 		m_textColor[0] = color;
-	};
-	void				SetTextColorD(u32 color)
+	}
+	void				SetTextColorD		(u32 color)
 	{
 		m_textColor[1] = color;
-	};
+	}
 
-public:
-	static void script_register(lua_State*);
+	static void			script_register		(lua_State*);
 };
 
 add_to_type_list(CUIComboBox)

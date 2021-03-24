@@ -32,19 +32,19 @@ struct net_updateData{
 	float			SCoeff[3][4];
 
 #ifdef DEBUG
-//	DEF_VECTOR		(VIS_POSITION, Fvector);
-	using VIS_POSITION = xr_vector<Fvector>;
+//	DEF_VECTOR		(VIS_POSITION, Fvector3);
+	using VIS_POSITION = xr_vector<Fvector3>;
 	using VIS_POSITION_it = VIS_POSITION::iterator;
 	VIS_POSITION	LastVisPos;
 #endif
 
-	Fvector			IStartPos;
+	Fvector3			IStartPos;
 	Fquaternion		IStartRot;
 
-	Fvector			IRecPos;
+	Fvector3			IRecPos;
 	Fquaternion		IRecRot;
 
-	Fvector			IEndPos;
+	Fvector3			IEndPos;
 	Fquaternion		IEndRot;	
 
 	SPHNetState		LastState;
@@ -574,7 +574,10 @@ void CInventoryItem::CalculateInterpolationParams()
 	p->IStartPos.set(object().Position());
 	p->IStartRot.set(object().XFORM());
 
-	Fvector P0, P1, P2, P3;
+	Fvector3 P0;
+	Fvector3 P1;
+	Fvector3 P2;
+	Fvector3 P3;
 
 	CPHSynchronize* pSyncObj = NULL;
 	pSyncObj = object().PHGetSyncItem(0);
@@ -624,7 +627,7 @@ void CInventoryItem::CalculateInterpolationParams()
 	pSyncObj->cv2obj_Xfrom(p->PredictedState.quaternion, p->PredictedState.position, xformX1);
 	P3.set(xformX1.c);
 	/////////////////////////////////////////////////////////////////////////////
-	Fvector TotalPath;
+	Fvector3 TotalPath;
 	TotalPath.sub(P3, P0);
 	float TotalLen = TotalPath.magnitude();
 	
@@ -646,7 +649,8 @@ void CInventoryItem::CalculateInterpolationParams()
 	else
 		p->m_dwIEndTime = p->m_dwIStartTime + ConstTime;
 	/////////////////////////////////////////////////////////////////////////////
-	Fvector V0, V1;
+	Fvector3 V0;
+	Fvector3 V1;
 	V0.sub(P1, P0);
 	V1.sub(P3, P2);
 	lV0 = V0.magnitude();
@@ -718,7 +722,7 @@ void CInventoryItem::make_Interpolation	()
 			if (factor > 1) factor = 1.0f;
 			else if (factor < 0) factor = 0;
 
-			Fvector IPos;
+			Fvector3 IPos;
 			Fquaternion IRot;
 
 			float c = factor;
@@ -743,7 +747,7 @@ void CInventoryItem::make_Interpolation	()
 	}
 
 #ifdef DEBUG
-	Fvector iPos = object().Position();
+	Fvector3 iPos = object().Position();
 
 	if (!object().H_Parent() && object().getVisible()) 
 	{
@@ -754,11 +758,11 @@ void CInventoryItem::make_Interpolation	()
 
 }
 
-void CInventoryItem::reload		(const char* section)
+void CInventoryItem::reload(const char* section)
 {
-	inherited::reload		(section);
-	m_holder_range_modifier	= READ_IF_EXISTS(pSettings,r_float,section,"holder_range_modifier",1.f);
-	m_holder_fov_modifier	= READ_IF_EXISTS(pSettings,r_float,section,"holder_fov_modifier",1.f);
+	inherited::reload(section);
+	m_holder_range_modifier = READ_IF_EXISTS(pSettings, r_float, section, "holder_range_modifier", 1.0f);
+	m_holder_fov_modifier = READ_IF_EXISTS(pSettings, r_float, section, "holder_fov_modifier", 1.0f);
 }
 
 void CInventoryItem::reinit		()
@@ -837,7 +841,9 @@ void CInventoryItem::UpdateXForm	()
 	Fmatrix& mR			= V->LL_GetTransform(u16(boneR));
 	// Calculate
 	Fmatrix			mRes;
-	Fvector			R,D,N;
+	Fvector3			R;
+	Fvector3 D;
+	Fvector3 N;
 	D.sub			(mL.c,mR.c);	D.normalize_safe();
 
 	if(fis_zero(D.magnitude()))
@@ -868,7 +874,8 @@ void CInventoryItem::OnRender()
 	{
 		if (!(dbg_net_Draw_Flags.is_any((1<<4)))) return;
 
-		Fvector bc,bd; 
+		Fvector3 bc;
+		Fvector3 bd;
 		object().Visual()->vis.box.get_CD	(bc,bd);
 		Fmatrix	M = object().XFORM();
 		M.c.add (bc);
@@ -896,7 +903,8 @@ void CInventoryItem::OnRender()
 		{
 			Level().debug_renderer().draw_aabb			(Position(), size, size, size, color_rgba(0, 255, 0, 255));
 
-			Fvector Pos1, Pos2;
+			Fvector3 Pos1;
+			Fvector3 Pos2;
 			VIS_POSITION_it It = LastVisPos.begin();
 			Pos1 = *It;
 			for (; It != LastVisPos.end(); It++)
@@ -922,7 +930,8 @@ void CInventoryItem::OnRender()
 			Level().debug_renderer().draw_obb			(xformI,bd,color_rgba(0, 255, 0, 255));
 
 			///////////////////////////////////////////////////////////////////////////
-			Fvector point0 = IStartPos, point1;			
+			Fvector3 point0 = IStartPos;
+			Fvector3 point1;
 			
 			float c = 0;
 			for (float i=0.1f; i<1.1f; i+= 0.1f)
@@ -977,42 +986,21 @@ bool	CInventoryItem::CanTrade() const
 	return (res && m_flags.test(FCanTrade) && !IsQuestItem());
 }
 
-float CInventoryItem::GetKillMsgXPos		() const 
+int CInventoryItem::GetGridWidth( ) const
 {
-	return READ_IF_EXISTS(pSettings,r_float,m_object->cNameSect(),"kill_msg_x", 0.0f);
+	return pSettings->r_u32(m_object->cNameSect( ), "inv_grid_width");
 }
-
-float CInventoryItem::GetKillMsgYPos		() const 
+int CInventoryItem::GetGridHeight( ) const
 {
-	return READ_IF_EXISTS(pSettings,r_float,m_object->cNameSect(),"kill_msg_y", 0.0f);
+	return pSettings->r_u32(m_object->cNameSect( ), "inv_grid_height");
 }
-
-float CInventoryItem::GetKillMsgWidth		() const 
+int CInventoryItem::GetXPos( ) const
 {
-	return READ_IF_EXISTS(pSettings,r_float,m_object->cNameSect(),"kill_msg_width", 0.0f);
+	return pSettings->r_u32(m_object->cNameSect( ), "inv_grid_x");
 }
-
-float CInventoryItem::GetKillMsgHeight	() const 
+int CInventoryItem::GetYPos( ) const
 {
-	return READ_IF_EXISTS(pSettings,r_float,m_object->cNameSect(),"kill_msg_height", 0.0f);
-}
-
-int  CInventoryItem::GetGridWidth			() const 
-{
-	return pSettings->r_u32(m_object->cNameSect(), "inv_grid_width");
-}
-
-int  CInventoryItem::GetGridHeight			() const 
-{
-	return pSettings->r_u32(m_object->cNameSect(), "inv_grid_height");
-}
-int  CInventoryItem::GetXPos				() const 
-{
-	return pSettings->r_u32(m_object->cNameSect(), "inv_grid_x");
-}
-int  CInventoryItem::GetYPos				() const 
-{
-	return pSettings->r_u32(m_object->cNameSect(), "inv_grid_y");
+	return pSettings->r_u32(m_object->cNameSect( ), "inv_grid_y");
 }
 
 bool CInventoryItem::IsNecessaryItem(CInventoryItem* item)		

@@ -11,7 +11,7 @@
 #include "stalker_animation_manager.h"
 #include "ai/stalker/Stalker.h"
 #include "stalker_animation_data_storage.h"
-#include "stalker_animation_data.h"
+#include "StalkerAnimationData.h"
 #include "stalker_movement_manager.h"
 
 // TODO:

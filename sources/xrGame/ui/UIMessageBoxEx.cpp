@@ -4,57 +4,65 @@
 #include "UIMessageBoxEx.h"//
 #include "UIDialogHolder.h"//
 
-CUIMessageBoxEx::CUIMessageBoxEx(){
-	m_pMessageBox = xr_new<CUIMessageBox>();
+CUIMessageBoxEx::CUIMessageBoxEx( )
+{
+	m_pMessageBox = xr_new<CUIMessageBox>( );
 	m_pMessageBox->SetWindowName("msg_box");
 //	m_pMessageBox->SetAutoDelete(true);
 	AttachChild(m_pMessageBox);
 }
 
-CUIMessageBoxEx::~CUIMessageBoxEx(){
+CUIMessageBoxEx::~CUIMessageBoxEx( )
+{
 	xr_delete(m_pMessageBox);
 }
 
-void CUIMessageBoxEx::Init(const char* xml_template){
-	CUIDialogWnd::Init(0,0,1024,768);
+void CUIMessageBoxEx::Init(const char* xml_template)
+{
+	CUIDialogWnd::Init(0, 0, 1024, 768);
 	m_pMessageBox->Init(xml_template);
 }
 
-void CUIMessageBoxEx::SetText(const char* text){
+void CUIMessageBoxEx::SetText(const char* text)
+{
 	m_pMessageBox->SetText(text);
 }
 
-const char* CUIMessageBoxEx::GetText ()
+const char* CUIMessageBoxEx::GetText( )
 {
-	return m_pMessageBox->GetText();
+	return m_pMessageBox->GetText( );
 }
 
-void CUIMessageBoxEx::SendMessage(CUIWindow* pWnd, s16 msg, void* pData){
+void CUIMessageBoxEx::SendMessage(CUIWindow* pWnd, s16 msg, void* pData)
+{
 	CUIWndCallback::OnEvent(pWnd, msg, pData);
 	if (pWnd == m_pMessageBox)
 	{
-		switch (msg){
+		switch (msg)
+		{
 			case MESSAGE_BOX_OK_CLICKED:
 			case MESSAGE_BOX_YES_CLICKED:
 			case MESSAGE_BOX_NO_CLICKED:
 			case MESSAGE_BOX_CANCEL_CLICKED:
 			case MESSAGE_BOX_QUIT_WIN_CLICKED:
 			case MESSAGE_BOX_QUIT_GAME_CLICKED:
-				GetHolder()->StartStopMenu(this, true);
+				GetHolder( )->StartStopMenu(this, true);
 			default:
 				break;
 		}
 
-		if (GetMessageTarget())
-            GetMessageTarget()->SendMessage(this,msg,pData);
+		if (GetMessageTarget( ))
+			GetMessageTarget( )->SendMessage(this, msg, pData);
 	}
-	
+
 }
 
-const char* CUIMessageBoxEx::GetHost(){
-	return m_pMessageBox->GetHost();
+const char* CUIMessageBoxEx::GetHost( )
+{
+	return m_pMessageBox->GetHost( );
 }
 
-const char* CUIMessageBoxEx::GetPassword(){
-	return m_pMessageBox->GetPassword();
+const char* CUIMessageBoxEx::GetPassword( )
+{
+	return m_pMessageBox->GetPassword( );
 }

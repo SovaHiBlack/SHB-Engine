@@ -55,7 +55,7 @@
 #include "../../alife_human_brain.h"
 #include "..\..\Profiler.h"
 #include "../../BoneProtections.h"
-#include "../../stalker_animation_names.h"
+#include "../../StalkerAnimationNames.h"
 #include "../../stalker_decision_space.h"///
 #include "../../agent_member_manager.h"
 #include "../../location_manager.h"

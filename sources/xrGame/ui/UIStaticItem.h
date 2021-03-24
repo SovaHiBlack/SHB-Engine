@@ -35,7 +35,7 @@ public:
 	void					SetAlphaRef				(int val)
 	{
 		alpha_ref = val;
-	};
+	}
 	virtual void			CreateShader			(const char* tex, const char* sh = "hud\\default");
 	virtual void			SetShader				(const ref_shader& sh);
 	virtual void			SetTextureColor			(u32 color)

@@ -18,42 +18,42 @@
 
 using namespace luabind;
 
-extern export_class &script_register_ui_window1(export_class &);
-extern export_class &script_register_ui_window2(export_class &);
+extern export_class& script_register_ui_window1(export_class&);
+extern export_class& script_register_ui_window2(export_class&);
 
 #pragma optimize("s",on)
-void CUIDialogWndEx::script_register(lua_State *L)
+void CUIDialogWndEx::script_register(lua_State* L)
 {
 	export_class				instance("CUIScriptWnd");
 
 	module(L)
-	[
-		script_register_ui_window2(
-			script_register_ui_window1(
-				instance
+		[
+			script_register_ui_window2(
+				script_register_ui_window1(
+		instance
 			)
-		)
-		.def("Load",			&BaseType::Load)
-	];
+			)
+		.def("Load", &BaseType::Load)
+		];
 }
 
-export_class &script_register_ui_window1(export_class &instance)
+export_class& script_register_ui_window1(export_class& instance)
 {
 	instance
-		.def(					constructor<>())
+		.def(constructor<>( ))
 
-		.def("AddCallback",		(void(BaseType::*)(const char*, s16, const luabind::functor<void>&))&BaseType::AddCallback)
-		.def("AddCallback",		(void(BaseType::*)(const char*, s16, const luabind::functor<void>&, const luabind::object&))&BaseType::AddCallback)
+		.def("AddCallback", (void(BaseType::*)(const char*, s16, const luabind::functor<void>&)) & BaseType::AddCallback)
+		.def("AddCallback", (void(BaseType::*)(const char*, s16, const luabind::functor<void>&, const luabind::object&)) & BaseType::AddCallback)
 
-		.def("Register",		(void (BaseType::*)(CUIWindow*))&BaseType::Register)
-		.def("Register",		(void (BaseType::*)(CUIWindow*, const char*))&BaseType::Register)
+		.def("Register", (void (BaseType::*)(CUIWindow*)) & BaseType::Register)
+		.def("Register", (void (BaseType::*)(CUIWindow*, const char*)) & BaseType::Register)
 
-		.def("GetButton",		(CUIButton* (BaseType::*)(const char*)) &BaseType::GetControl<CUIButton>)
-		.def("GetMessageBox",	(CUIMessageBox* (BaseType::*)(const char*)) &BaseType::GetControl<CUIMessageBox>)
-		.def("GetPropertiesBox",(CUIPropertiesBox* (BaseType::*)(const char*)) &BaseType::GetControl<CUIPropertiesBox>)
-		.def("GetCheckButton",	(CUICheckButton* (BaseType::*)(const char*)) &BaseType::GetControl<CUICheckButton>)
-		.def("GetRadioButton",	(CUIRadioButton* (BaseType::*)(const char*)) &BaseType::GetControl<CUIRadioButton>)
+		.def("GetButton", (CUIButton * (BaseType::*)(const char*)) & BaseType::GetControl<CUIButton>)
+		.def("GetMessageBox", (CUIMessageBox * (BaseType::*)(const char*)) & BaseType::GetControl<CUIMessageBox>)
+		.def("GetPropertiesBox", (CUIPropertiesBox * (BaseType::*)(const char*)) & BaseType::GetControl<CUIPropertiesBox>)
+		.def("GetCheckButton", (CUICheckButton * (BaseType::*)(const char*)) & BaseType::GetControl<CUICheckButton>)
+		.def("GetRadioButton", (CUIRadioButton * (BaseType::*)(const char*)) & BaseType::GetControl<CUIRadioButton>)
 //		.def("GetRadioGroup",	(CUIRadioGroup* (BaseType::*)(const char*)) &BaseType::GetControl<CUIRadioGroup>)
 
-	;return	(instance);
+; return	(instance);
 }

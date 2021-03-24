@@ -407,7 +407,7 @@ void CExplosive::Explode( )
 		cartridge.m_kImpulse = 1.0f;
 		cartridge.m_kPierce = 1.0f;
 		cartridge.fWallmarkSize = fWallmarkSize;
-		cartridge.bullet_material_idx = GMLib.GetMaterialIdx(WEAPON_MATERIAL_NAME);
+		cartridge.bullet_material_idx = GMLib.GetMaterialIdx(BULLET_MATERIAL_NAME);
 		cartridge.m_flags.set(CCartridge::cfTracer, FALSE);
 
 		Level( ).BulletManager( ).AddBullet(pos, frag_dir, m_fFragmentSpeed,

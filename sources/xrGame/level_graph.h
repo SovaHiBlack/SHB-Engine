@@ -55,7 +55,7 @@ private:
 	u32						m_max_z;
 
 protected:
-			u32		vertex						(const Fvector &position) const;
+			u32		vertex						(const Fvector3& position) const;
 
 public:
 	typedef u32 const_iterator;
@@ -109,13 +109,13 @@ public:
 	__forceinline		CVertex	*vertex						(u32 vertex_id) const;
 	__forceinline		u32		vertex						(const CVertex *vertex_p) const;
 	__forceinline		u32		vertex						(const CVertex &vertex_r) const;
-	inline		const	Fvector						vertex_position(const CLevelGraph::CPosition &source_position) const;
-	inline		const	Fvector						&vertex_position(Fvector &dest_position, const CLevelGraph::CPosition &source_position) const;
-	inline		const	CLevelGraph::CPosition		&vertex_position(CLevelGraph::CPosition &dest_position, const Fvector &source_position) const;
-	inline		const	CLevelGraph::CPosition		vertex_position	(const Fvector &position) const;
-	inline		const	Fvector						vertex_position	(u32 vertex_id) const;
-	inline		const	Fvector						vertex_position	(const CVertex &vertex) const;
-	inline		const	Fvector						vertex_position	(const CVertex *vertex) const;
+	inline		const	Fvector3						vertex_position(const CLevelGraph::CPosition &source_position) const;
+	inline		const	Fvector3&					vertex_position(Fvector3& dest_position, const CLevelGraph::CPosition &source_position) const;
+	inline		const	CLevelGraph::CPosition		&vertex_position(CLevelGraph::CPosition &dest_position, const Fvector3& source_position) const;
+	inline		const	CLevelGraph::CPosition		vertex_position	(const Fvector3& position) const;
+	inline		const	Fvector3						vertex_position	(u32 vertex_id) const;
+	inline		const	Fvector3						vertex_position	(const CVertex &vertex) const;
+	inline		const	Fvector3						vertex_position	(const CVertex *vertex) const;
 	inline		float	vertex_plane_y				(const CVertex &vertex, const float X, const float Z) const;
 	inline		float	vertex_plane_y				(const CVertex *vertex, const float X, const float Z) const;
 	inline		float	vertex_plane_y				(const u32 vertex_id,	const float X, const float Z) const;
@@ -123,21 +123,21 @@ public:
 	inline		float	vertex_plane_y				(const CVertex *vertex) const;
 	inline		float	vertex_plane_y				(const u32 vertex_id) const;
 	inline		bool	inside						(const CVertex &vertex, const CLevelGraph::CPosition &vertex_position) const;
-	inline		bool	inside						(const CVertex &vertex, const Fvector &vertex_position) const;
+	inline		bool	inside						(const CVertex &vertex, const Fvector3& vertex_position) const;
 	inline		bool	inside						(const CVertex *vertex, const CLevelGraph::CPosition &vertex_position) const;
-	inline		bool	inside						(const CVertex *vertex, const Fvector &vertex_position) const;
+	inline		bool	inside						(const CVertex *vertex, const Fvector3& vertex_position) const;
 	inline		bool	inside						(const u32 vertex_id,	const CLevelGraph::CPosition &vertex_position) const;
-	inline		bool	inside						(const u32 vertex_id,	const Fvector &position) const;
+	inline		bool	inside						(const u32 vertex_id,	const Fvector3& position) const;
 	inline		bool	inside						(const u32 vertex_id,	const Fvector2 &position) const;
 	inline		bool	inside						(const CVertex &vertex, const CLevelGraph::CPosition &vertex_position, const float epsilon) const;
-	inline		bool	inside						(const CVertex &vertex, const Fvector &vertex_position, const float epsilon) const;
+	inline		bool	inside						(const CVertex &vertex, const Fvector3& vertex_position, const float epsilon) const;
 	inline		bool	inside						(const CVertex *vertex, const CLevelGraph::CPosition &vertex_position, const float epsilon) const;
-	inline		bool	inside						(const CVertex *vertex, const Fvector &vertex_position, const float epsilon) const;
+	inline		bool	inside						(const CVertex *vertex, const Fvector3& vertex_position, const float epsilon) const;
 	inline		bool	inside						(const u32 vertex_id,	const CLevelGraph::CPosition &vertex_position, const float epsilon) const;
-	inline		bool	inside						(const u32 vertex_id,	const Fvector &position, const float epsilon) const;
-	inline		void	project_point				(const Fplane &plane,	Fvector &point) const;
+	inline		bool	inside						(const u32 vertex_id,	const Fvector3& position, const float epsilon) const;
+	inline		void	project_point				(const Fplane &plane, Fvector3& point) const;
 	inline		u32		row_length					() const;
-			float	distance					(const Fvector &position, const CVertex *vertex) const;
+			float	distance					(const Fvector3& position, const CVertex *vertex) const;
 			float	distance					(const Fvector &position, const u32 vertex_id) const;
 			float	distance					(const u32 vertex_id, const Fvector &position) const;
 	inline		float	distance					(const Fvector &position, const Fvector &point0, const Fvector &point1) const;

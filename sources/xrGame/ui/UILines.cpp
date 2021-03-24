@@ -10,7 +10,7 @@
 
 CUILines::CUILines( )
 {
-	m_pFont = NULL;
+	m_pFont = nullptr;
 	m_interval = 0.0f;
 	m_eTextAlign = CGameFont::alLeft;
 	m_eVTextAlign = valTop;
@@ -78,7 +78,6 @@ void CUILines::Init(float x, float y, float width, float heigt)
 
 void CUILines::SetText(const char* text)
 {
-
 	if (!m_pFont)
 	{
 		m_pFont = UI( )->Font( )->pFontLetterica16Russian;
@@ -176,7 +175,7 @@ void CUILines::ParseText( )
 		R_ASSERT2(false, "can't parse text without font");
 	}
 
-	CUILine* line = NULL;
+	CUILine* line = nullptr;
 	if (uFlags.test(flColoringMode))
 	{
 		line = ParseTextToColoredLine(m_text.c_str( ));
@@ -290,8 +289,8 @@ void CUILines::ParseText( )
 	{
 		float max_width = m_wndSize.x;
 		u32 sbl_cnt = line->m_subLines.size( );
-		CUILine									tmp_line;
-		string4096								buff;
+		CUILine tmp_line;
+		string4096 buff;
 		float curr_width = 0.0f;
 		bool bnew_line = false;
 		float __eps = get_str_width(m_pFont, 'o');//hack -(
@@ -487,17 +486,20 @@ float CUILines::GetIndentByAlign( )const
 		{
 //			GetFont()->SetAligment(CGameFont::alCenter);
 			return (m_wndSize.x /*- length*/) / 2;
-		}break;
+		}
+		break;
 		case CGameFont::alLeft:
 		{
 //			GetFont()->SetAligment(CGameFont::alLeft);
 			return 0;
-		}break;
+		}
+		break;
 		case CGameFont::alRight:
 		{
 //			GetFont()->SetAligment(CGameFont::alRight);
 			return (m_wndSize.x /*- length*/);
-		}break;
+		}
+		break;
 		default:
 			NODEFAULT;
 	}
@@ -554,7 +556,9 @@ u32 CUILines::GetColorFromText(const xr_string& str)const
 
 	// try default color
 	if (npos != str.find("%c[default]", begin, end - begin))
+	{
 		return m_dwTextColor;
+	}
 
 	// Try predefined in XML colors
 //	CUIXmlInit xml;

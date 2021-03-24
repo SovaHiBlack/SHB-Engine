@@ -1,6 +1,4 @@
-// UICheckButton.cpp: класс кнопки, имеющей 2 состояния:
-// с галочкой и без
-//////////////////////////////////////////////////////////////////////
+// UICheckButton.cpp: класс кнопки, имеющей 2 состояния: с галочкой и без
 
 #include "stdafx.h"
 
@@ -8,14 +6,14 @@
 #include "../HUDManager.h"//
 #include "UILines.h"//
 
-CUICheckButton::CUICheckButton(void)
+CUICheckButton::CUICheckButton( )
 {
 	SetTextAlignment(CGameFont::alLeft);
 	m_bCheckMode = true;
-	m_pDependControl = NULL;
+	m_pDependControl = nullptr;
 }
 
-CUICheckButton::~CUICheckButton(void)
+CUICheckButton::~CUICheckButton( )
 { }
 
 void CUICheckButton::SetDependControl(CUIWindow* pWnd)

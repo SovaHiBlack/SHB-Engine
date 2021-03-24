@@ -78,31 +78,34 @@ BOOL CObjectHandler::net_Spawn		(CSE_Abstract* DC)
 	return						(TRUE);
 }
 
-void CObjectHandler::OnItemTake		(CInventoryItem *inventory_item)
+void CObjectHandler::OnItemTake(CInventoryItem* inventory_item)
 {
-	inherited::OnItemTake		(inventory_item);
+	inherited::OnItemTake(inventory_item);
 
-	m_inventory_actual			= false;
+	m_inventory_actual = false;
 
-	planner().add_item			(inventory_item);
+	planner( ).add_item(inventory_item);
 
-	if (planner().object().g_Alive())
-		switch_torch			(inventory_item,true);
-
-	if (inventory_item->useful_for_NPC() && (inventory_item->object().cNameSect() == m_item_to_spawn)) {
-		m_item_to_spawn			= shared_str();
-		m_ammo_in_box_to_spawn	= 0;
+	if (planner( ).object( ).g_Alive( ))
+	{
+		switch_torch(inventory_item, true);
 	}
 
-	CWeapon						*weapon = smart_cast<CWeapon*>(inventory_item);
+	if (inventory_item->useful_for_NPC( ) && (inventory_item->object( ).cNameSect( ) == m_item_to_spawn))
+	{
+		m_item_to_spawn = shared_str( );
+		m_ammo_in_box_to_spawn = 0;
+	}
+
+	CWeapon* weapon = smart_cast<CWeapon*>(inventory_item);
 	if (weapon)
-		planner().object().weapon_shot_effector().Initialize(
-			weapon->camMaxAngle,
-			weapon->camRelaxSpeed_AI,
-			weapon->camMaxAngleHorz,
-			weapon->camStepAngleHorz,
-			weapon->camDispertionFrac
-		);
+	{
+		planner( ).object( ).weapon_shot_effector( ).Initialize(weapon->camMaxAngle,
+																weapon->camRelaxSpeed_AI,
+																weapon->camMaxAngleHorz,
+																weapon->camStepAngleHorz,
+																weapon->camDispertionFrac);
+	}
 }
 
 void CObjectHandler::OnItemDrop		(CInventoryItem *inventory_item)

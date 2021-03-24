@@ -110,8 +110,8 @@ inv_name	        			= wpn-ak74_m1
 inv_name_short					= wpn-ak74_m1
 rpm                      		= 850
 condition_shot_dec 				= 0.0001
-cam_dispersion					= 0.05		
-cam_dispersion_inc				= 0.1
+cam_dispersion					= 0.05		;изменение угла (в градусах) при выстреле
+cam_dispersion_inc				= 0.1		;увеличениe cam_dispersion с каждым выстрелом(по умолчанию = 0.0)
 inv_grid_x						= 0
 inv_grid_y						= 30
 
@@ -204,8 +204,8 @@ $spawn             				= "weapons\uniq\wpn_l85_m1"
 description						= enc_weapons1_wpn-l85_m1
 inv_name	        			= wpn-l85_m1
 inv_name_short					= wpn-l85_m1
-cam_dispersion					= 0.05		
-cam_dispersion_inc				= 0.1
+cam_dispersion					= 0.05		;изменение угла (в градусах) при выстреле
+cam_dispersion_inc				= 0.1		;увеличениe cam_dispersion с каждым выстрелом(по умолчанию = 0.0)
 condition_shot_dec 				= 0.00005
 inv_grid_x						= 5
 inv_grid_y						= 25
@@ -235,8 +235,8 @@ $spawn             				= "weapons\uniq\wpn_svd_m1"
 description						= enc_weapons1_wpn-svd_m1
 inv_name						= wpn-svd_m1
 inv_name_short					= wpn-svd_m1
-cam_dispersion					= 0.9
-cam_step_angle_horz				= 0.1
+cam_dispersion					= 0.9			;изменение угла (в градусах) при выстреле
+cam_step_angle_horz				= 0.1			;шаг смещения ствола в горизонтальной плоскости в момент выстрела(в градусах)
 scope_zoom_factor				= 10
 scope_status					= 1
 condition_shot_dec 				= 0.00055
@@ -339,8 +339,7 @@ smoke_particles 				= weapons\generic_shoot_00
 flame_particles					= 
 light_disabled					= true
 
-snd_shoot					= weapons\w_ak74_shot1 
-
+snd_shoot					= weapons\w_ak74_shot1
 
 
 [wpn_sig_m2]:wpn_sig550	;SiG снайперский

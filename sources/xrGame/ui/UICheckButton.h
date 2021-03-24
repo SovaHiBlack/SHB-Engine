@@ -1,3 +1,5 @@
+// UICheckButton.h: класс кнопки, имеющей 2 состояния: с галочкой и без
+
 #pragma once
 
 #include "UI3tButton.h"//
@@ -6,38 +8,36 @@
 class CUICheckButton : public CUI3tButton, public CUIOptionsItem
 {
 public:
-					CUICheckButton( );
-	virtual			~CUICheckButton( );
+					CUICheckButton		( );
+	virtual			~CUICheckButton		( );
 
-	virtual void	Update( );
+	virtual void	Update				( );
 
 	// CUIOptionsItem
-	virtual void	SetCurrentValue( );
-	virtual void	SaveValue( );
-	virtual bool	IsChanged( );
-	virtual void	SeveBackUpValue( );
-	virtual void	Undo( );
+	virtual void	SetCurrentValue		( );
+	virtual void	SaveValue			( );
+	virtual bool	IsChanged			( );
+	virtual void	SeveBackUpValue		( );
+	virtual void	Undo				( );
 
-	virtual void	Init(float x, float y, float width, float height);
-	virtual void	SetTextX(float x)
-	{
-		/*do nothing*/
-	}
+	virtual void	Init				(float x, float y, float width, float height);
+	virtual void	SetTextX			(float x)
+	{ }
 
 	// состояние кнопки
-	bool			GetCheck( )
+	bool			GetCheck			( )
 	{
 		return m_eButtonState == BUTTON_PUSHED;
 	}
-	void			SetCheck(bool ch)
+	void			SetCheck			(bool ch)
 	{
 		m_eButtonState = ch ? BUTTON_PUSHED : BUTTON_NORMAL;
 	}
 
-	void			SetDependControl(CUIWindow* pWnd);
+	void			SetDependControl	(CUIWindow* pWnd);
 
 private:
-	bool			b_backup_val;
-	void			InitTexture( );
-	CUIWindow*		m_pDependControl;
+	bool								b_backup_val;
+	void			InitTexture			( );
+	CUIWindow*							m_pDependControl;
 };

@@ -138,32 +138,38 @@ void	CActor::HitSector(CObject* who, CObject* weapon)
 		}
 	}
 
-	if (!bShowHitSector) return;	
-		Level().MapManager().AddMapLocation(ENEMY_HIT_SPOT, who->ID());
+	if (!bShowHitSector)
+	{
+		return;
+	}
+
+	Level().MapManager().AddMapLocation(ENEMY_HIT_SPOT, who->ID());
 }
 
-void CActor::on_weapon_shot_start		(CWeapon *weapon)
-{	
+void CActor::on_weapon_shot_start(CWeapon* weapon)
+{
 	CWeaponMagazined* pWM = smart_cast<CWeaponMagazined*> (weapon);
-	//*
-	CCameraShotEffector				*effector = smart_cast<CCameraShotEffector*>	(Cameras().GetCamEffector(eCEShot)); 
-	if (!effector) {
-		effector					= 
-			(CCameraShotEffector*)Cameras().AddCamEffector(
-			xr_new<CCameraShotEffector>(weapon->camMaxAngle,
-			weapon->camRelaxSpeed,
-			weapon->camMaxAngleHorz,
-			weapon->camStepAngleHorz,
-			weapon->camDispertionFrac)	);
+
+	CCameraShotEffector* effector = smart_cast<CCameraShotEffector*> (Cameras( ).GetCamEffector(eCEShot));
+	if (!effector)
+	{
+		effector = (CCameraShotEffector*) Cameras( ).AddCamEffector(xr_new<CCameraShotEffector>(weapon->camMaxAngle,
+																								weapon->camRelaxSpeed,
+																								weapon->camMaxAngleHorz,
+																								weapon->camStepAngleHorz,
+																								weapon->camDispertionFrac));
 	}
-	R_ASSERT						(effector);
+
+	R_ASSERT(effector);
 
 	if (pWM)
 	{
-		if (effector->IsSingleShot())
+		if (effector->IsSingleShot( ))
+		{
 			update_camera(effector);
+		}
 
-		if (pWM->GetCurrentFireMode() == 1)
+		if (pWM->GetCurrentFireMode( ) == 1)
 		{
 			effector->SetSingleShoot(TRUE);
 		}
@@ -173,17 +179,17 @@ void CActor::on_weapon_shot_start		(CWeapon *weapon)
 		}
 	}
 
-	effector->SetRndSeed			(GetShotRndSeed());
-	effector->SetActor				(this);
-	effector->Shot					(weapon->camDispersion + weapon->camDispersionInc*float(weapon->ShotsFired()));
+	effector->SetRndSeed(GetShotRndSeed( ));
+	effector->SetActor(this);
+	effector->Shot(weapon->camDispersion + weapon->camDispersionInc * float(weapon->ShotsFired( )));
 
 	if (pWM)
 	{
-		if (pWM->GetCurrentFireMode() != 1)
+		if (pWM->GetCurrentFireMode( ) != 1)
 		{
 			effector->SetActive(FALSE);
 			update_camera(effector);
-		}		
+		}
 	}
 }
 

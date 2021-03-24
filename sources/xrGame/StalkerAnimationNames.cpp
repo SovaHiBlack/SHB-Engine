@@ -1,22 +1,20 @@
-////////////////////////////////////////////////////////////////////////////
-//	Module 		: stalker_animation_names.cpp
-//	Created 	: 25.02.2003
-//  Modified 	: 19.11.2004
-//	Author		: Dmitriy Iassenev
+//	Module 		: StalkerAnimationNames.cpp
 //	Description : Stalker animation names
-////////////////////////////////////////////////////////////////////////////
 
 #include "stdafx.h"
-#include "stalker_animation_names.h"
 
-const char* state_names			[] = {
+#include "StalkerAnimationNames.h"
+
+const char* state_names[ ] =
+{
 	"cr_",
 	"norm_",
 	"dmg_norm_",
 	0
 };
 
-const char* weapon_names			[] = {
+const char* weapon_names[ ] =
+{
 	"0_",
 	"1_",
 	"2_",
@@ -31,7 +29,8 @@ const char* weapon_names			[] = {
 	0
 };
 
-const char* weapon_action_names	[] = {
+const char* weapon_action_names[ ] =
+{
 	"draw_",			// 0
 	"attack_",			// 1
 	"drop_",			// 2
@@ -50,13 +49,15 @@ const char* weapon_action_names	[] = {
 	0
 };
 
-const char* movement_names		[] = {
+const char* movement_names[ ] =
+{
 	"walk_",
 	"run_",
 	0
 };
 
-const char* movement_action_names[] = {
+const char* movement_action_names[ ] =
+{
 	"fwd_",
 	"back_",
 	"ls_",
@@ -64,7 +65,8 @@ const char* movement_action_names[] = {
 	0
 };
 
-const char* in_place_names		[] = {
+const char* in_place_names[ ] =
+{
 	"idle_0",
 	"idle_1",
 	"turn_right_0",
@@ -78,7 +80,8 @@ const char* in_place_names		[] = {
 	0
 };
 
-const char* global_names			[] = {
+const char* global_names[ ] =
+{
 	"damage_",						// 0
 	"escape_",						// 1
 	"dead_stop_",					// 2
@@ -109,7 +112,8 @@ const char* global_names			[] = {
 	0
 };
 
-const char* head_names			[] = {
+const char* head_names[ ] =
+{
 	"head_idle_0",
 	"head_talk_0",
 	0

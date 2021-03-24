@@ -13,7 +13,7 @@ static const char	cSeparatorChar = '%';
 
 CUIListWnd::CUIListWnd( )
 {
-	m_ActiveBackgroundFrame = NULL;
+	m_ActiveBackgroundFrame = nullptr;
 	m_bListActivity = true;
 	m_iFocusedItem = -1;
 	m_iSelectedItem = -1;
@@ -166,7 +166,10 @@ void CUIListWnd::RemoveItem(int index)
 
 CUIListItem* CUIListWnd::GetItem(int index)
 {
-	if (index < 0 || index >= (int) m_ItemList.size( )) return NULL;
+	if (index < 0 || index >= (int) m_ItemList.size( ))
+	{
+		return nullptr;
+	}
 
 	LIST_ITEM_LIST_it it;
 
@@ -176,22 +179,26 @@ CUIListItem* CUIListWnd::GetItem(int index)
 
 	R_ASSERT(m_ItemList.end( ) != it);
 
-	return (*it);
+	return *it;
 }
-
 
 void CUIListWnd::DetachChild(CUIWindow* pChild)
 {
 	LIST_ITEM_LIST_it it = std::find(m_ItemList.begin( ), m_ItemList.end( ), pChild);
 	if (it != m_ItemList.end( ))
+	{
 		m_ItemList.erase(it);
+	}
 
 	inherited::DetachChild(pChild);
 }
 
 void CUIListWnd::RemoveAll( )
 {
-	if (m_ItemList.empty( )) return;
+	if (m_ItemList.empty( ))
+	{
+		return;
+	}
 
 //	LIST_ITEM_LIST_it it;
 
@@ -203,7 +210,6 @@ void CUIListWnd::RemoveAll( )
 
 	m_iFirstShownIndex = 0;
 
-
 	UpdateList( );
 	Reset( );
 
@@ -214,7 +220,6 @@ void CUIListWnd::RemoveAll( )
 
 	UpdateScrollBar( );
 }
-
 
 //////////////////////////////////////////////////////////////////////////
 
@@ -235,32 +240,30 @@ void CUIListWnd::UpdateList( )
 		(*it)->Show(false);
 	}
 
-
 	//показать текущий список
-	for (i = m_iFirstShownIndex;
-		 i < _min(m_ItemList.size( ), m_iFirstShownIndex + m_iRowNum + 1);
-		 ++i, ++it)
+	for (i = m_iFirstShownIndex; i < _min(m_ItemList.size( ), m_iFirstShownIndex + m_iRowNum + 1); ++i, ++it)
 	{
-		(*it)->SetWndRect((*it)->GetWndRect( ).left, m_bVertFlip ? GetHeight( ) - (i - m_iFirstShownIndex) * m_iItemHeight - m_iItemHeight : (i - m_iFirstShownIndex) * m_iItemHeight,
-						  m_iItemWidth, m_iItemHeight);
+		(*it)->SetWndRect((*it)->GetWndRect( ).left, m_bVertFlip ? GetHeight( ) - (i - m_iFirstShownIndex) * m_iItemHeight - m_iItemHeight : (i - m_iFirstShownIndex) * m_iItemHeight, m_iItemWidth, m_iItemHeight);
 		(*it)->Show(true);
 
 		if (m_bListActivity)
+		{
 			(*it)->Enable(true);
+		}
 		else
+		{
 			(*it)->Enable(false);
+		}
 	}
 
 	--it;
 
 	//спрятать все после
-	for (u32 k = m_iFirstShownIndex + m_iRowNum;
-		 k < m_ItemList.size( ); ++k, ++it)
+	for (u32 k = m_iFirstShownIndex + m_iRowNum; k < m_ItemList.size( ); ++k, ++it)
 	{
 		(*it)->Show(false);
 //		(*it)->Enable(false);
 	}
-
 
 	UpdateScrollBar( );
 }
@@ -279,9 +282,7 @@ void CUIListWnd::SendMessage(CUIWindow* pWnd, s16 msg, void* pData)
 		}
 	}
 	else
-	{
-		//если сообщение пришло от одного из элементов списка
-
+	{	//если сообщение пришло от одного из элементов списка
 		if (IsChild(pWnd))
 		{
 			CUIListItem* pListItem2;
@@ -294,11 +295,16 @@ void CUIListWnd::SendMessage(CUIWindow* pWnd, s16 msg, void* pData)
 				{
 					pListItem2 = smart_cast<CUIListItem*>(*it);
 					if (!pListItem2)
+					{
 						continue;
+					}
+
 					if (pListItem2->GetGroupID( ) == -1)
+					{
 						continue;
-					if (pListItem2->GetGroupID( ) ==
-						pListItem->GetGroupID( ))
+					}
+
+					if (pListItem2->GetGroupID( ) == pListItem->GetGroupID( ))
 					{
 						pListItem2->SetHighlightText(true);
 						pListItem2->SendMessage(this, LIST_ITEM_SELECT, pData);
@@ -311,9 +317,9 @@ void CUIListWnd::SendMessage(CUIWindow* pWnd, s16 msg, void* pData)
 						pListItem2->SendMessage(this, LIST_ITEM_UNSELECT, pData);
 					}
 				}
+
 				GetMessageTarget( )->SendMessage(this, LIST_ITEM_CLICKED, pListItem);
 			}
-
 			else if (STATIC_FOCUS_RECEIVED == msg)
 			{
 				if (!m_bForceFocusedItem)
@@ -322,16 +328,24 @@ void CUIListWnd::SendMessage(CUIWindow* pWnd, s16 msg, void* pData)
 					m_iFocusedItemGroupID = pListItem->GetGroupID( );
 				}
 				else if (m_iFocusedItem >= 0)
+				{
 					m_iFocusedItemGroupID = GetItem(m_iFocusedItem)->GetGroupID( );
+				}
 
-
-			// prototype code
-
+				// prototype code
 				for (WINDOW_LIST_it it = m_ChildWndList.begin( ); it != m_ChildWndList.end( ); ++it)
 				{
 					pListItem2 = smart_cast<CUIListItem*>(*it);
-					if (!pListItem2) continue;
-					if (pListItem2->GetGroupID( ) == -1) continue;
+					if (!pListItem2)
+					{
+						continue;
+					}
+
+					if (pListItem2->GetGroupID( ) == -1)
+					{
+						continue;
+					}
+
 					if (pListItem2->GetGroupID( ) == pListItem->GetGroupID( ))
 					{
 						pListItem2->SetHighlightText(true);
@@ -347,15 +361,23 @@ void CUIListWnd::SendMessage(CUIWindow* pWnd, s16 msg, void* pData)
 			}
 			else if (STATIC_FOCUS_LOST == msg)
 			{
-				if (pListItem->GetIndex( ) == m_iFocusedItem && !m_bForceFocusedItem) m_iFocusedItem = -1;
+				if (pListItem->GetIndex( ) == m_iFocusedItem && !m_bForceFocusedItem)
+				{
+					m_iFocusedItem = -1;
+				}
 
 				for (WINDOW_LIST_it it = m_ChildWndList.begin( ); it != m_ChildWndList.end( ); ++it)
 				{
 					pListItem2 = smart_cast<CUIListItem*>(*it);
-					if (!pListItem2) continue;
+					if (!pListItem2)
+					{
+						continue;
+					}
+
 					pListItem2->SetHighlightText(false);
 					pListItem2->SendMessage(this, STATIC_FOCUS_LOST, pData);
 				}
+
 				m_bUpdateMouseMove = true;
 			}
 		}
@@ -368,16 +390,21 @@ void CUIListWnd::SendMessage(CUIWindow* pWnd, s16 msg, void* pData)
 
 void CUIListWnd::DrawActiveBackFrame(const Frect& rect, CUIListItem* itm)
 {
-	Fvector2		_pos;
+	Fvector2 _pos;
 	_pos.set(rect.left, rect.top + (itm->GetIndex( ) - m_iFirstShownIndex) * GetItemHeight( ));
 	float _d = GetItemHeight( ) - m_ActiveBackgroundFrame->GetHeight( );
 	if (_d > 0)
+	{
 		_pos.y += (float) iFloor(_d / 2.0f);
+	}
 
 	m_ActiveBackgroundFrame->SetWndPos(_pos);
 	float _w = GetWidth( );
 	if (m_ScrollBar->IsShown( ))
+	{
 		_w -= m_ScrollBar->GetWidth( );
+	}
+
 	m_ActiveBackgroundFrame->SetWidth(_w);
 	m_ActiveBackgroundFrame->Draw( );
 }
@@ -393,11 +420,17 @@ void CUIListWnd::Draw( )
 		for (it = m_ChildWndList.begin( ); it != m_ChildWndList.end( ); ++it)
 		{
 			CUIListItem* pListItem2 = smart_cast<CUIListItem*>(*it);
-			if (!pListItem2) continue;
-			if (pListItem2->GetGroupID( ) == -1) continue;
-			if ((pListItem2->GetGroupID( ) == m_iFocusedItemGroupID) &&
-				((pListItem2->GetIndex( ) >= m_iFirstShownIndex) &&
-				 (pListItem2->GetIndex( ) <= m_iRowNum + m_iFirstShownIndex - 1)))
+			if (!pListItem2)
+			{
+				continue;
+			}
+
+			if (pListItem2->GetGroupID( ) == -1)
+			{
+				continue;
+			}
+
+			if ((pListItem2->GetGroupID( ) == m_iFocusedItemGroupID) && ((pListItem2->GetIndex( ) >= m_iFirstShownIndex) && (pListItem2->GetIndex( ) <= m_iRowNum + m_iFirstShownIndex - 1)))
 			{
 				DrawActiveBackFrame(rect, pListItem2);
 			}
@@ -411,8 +444,16 @@ void CUIListWnd::Draw( )
 		for (it = m_ChildWndList.begin( ); it != m_ChildWndList.end( ); ++it)
 		{
 			CUIListItem* pListItem2 = smart_cast<CUIListItem*>(*it);
-			if (!pListItem2) continue;
-			if (pListItem2->GetGroupID( ) == -1) continue;
+			if (!pListItem2)
+			{
+				continue;
+			}
+
+			if (pListItem2->GetGroupID( ) == -1)
+			{
+				continue;
+			}
+
 			if (pListItem2->GetIndex( ) == m_iSelectedItem)
 			{
 				UI( )->PushScissor(rect);
@@ -426,7 +467,6 @@ void CUIListWnd::Draw( )
 
 	CUIWindow::Draw( );
 }
-
 
 void CUIListWnd::SetItemWidth(float iItemWidth)
 {
@@ -466,6 +506,7 @@ int CUIListWnd::FindItem(void* pData)
 	{
 		if ((*it)->GetData( ) == pData) return i;
 	}
+
 	return -1;
 }
 
@@ -476,24 +517,30 @@ int CUIListWnd::FindItemWithValue(int iValue)
 	{
 		if ((*it)->GetValue( ) == iValue) return i;
 	}
+
 	return -1;
 }
-
 
 bool CUIListWnd::OnMouse(float x, float y, EUIMessages mouse_action)
 {
 	switch (mouse_action)
 	{
 		case WINDOW_LBUTTON_DB_CLICK:
-			break;
+		{
+		}
+		break;
 		case WINDOW_MOUSE_WHEEL_DOWN:
+		{
 			m_ScrollBar->TryScrollInc( );
-			return						true;
-			break;
+			return true;
+		}
+		break;
 		case WINDOW_MOUSE_WHEEL_UP:
+		{
 			m_ScrollBar->TryScrollDec( );
-			return						true;
-			break;
+			return true;
+		}
+		break;
 	}
 
 	return inherited::OnMouse(x, y, mouse_action);
@@ -514,9 +561,13 @@ void CUIListWnd::UpdateScrollBar( )
 	}
 
 	if ((int) m_ItemList.size( ) <= m_ScrollBar->GetPageSize( ))
+	{
 		m_ScrollBar->Show(false);
+	}
 	else
+	{
 		m_ScrollBar->Show(true);
+	}
 }
 
 //////////////////////////////////////////////////////////////////////////
@@ -548,9 +599,13 @@ void CUIListWnd::ScrollToEnd( )
 	u32 pos = m_ScrollBar->GetMaxRange( ) - m_ScrollBar->GetPageSize( ) + 1;
 
 	if ((int) pos > m_ScrollBar->GetMinRange( ))
+	{
 		m_ScrollBar->SetScrollPos(pos);
+	}
 	else
+	{
 		m_ScrollBar->SetScrollPos(m_ScrollBar->GetMinRange( ));
+	}
 
 	m_iFirstShownIndex = m_ScrollBar->GetScrollPos( );
 	UpdateList( );
@@ -578,7 +633,9 @@ void CUIListWnd::Update( )
 
 	inherited::Update( );
 	if (m_ActiveBackgroundFrame)
+	{
 		m_ActiveBackgroundFrame->Update( );
+	}
 }
 
 void CUIListWnd::SetFocusedItem(int iNewFocusedItem)
@@ -587,7 +644,9 @@ void CUIListWnd::SetFocusedItem(int iNewFocusedItem)
 	m_bForceFocusedItem = true;
 	EnableActiveBackground(true);
 	if (m_iFocusedItem >= 0)
+	{
 		m_iFocusedItemGroupID = GetItem(m_iFocusedItem)->GetGroupID( );
+	}
 }
 
 int CUIListWnd::GetItemPos(CUIListItem* pItem)
@@ -595,7 +654,11 @@ int CUIListWnd::GetItemPos(CUIListItem* pItem)
 	LIST_ITEM_LIST_it it = m_ItemList.begin( );
 	for (u32 i = 0; i < m_ItemList.size( ); ++i)
 	{
-		if (*it == pItem) return i;
+		if (*it == pItem)
+		{
+			return i;
+		}
+
 		++it;
 	}
 
@@ -618,7 +681,9 @@ void CUIListWnd::EnableActiveBackground(bool enable)
 		create_active_back( );
 	}
 	else
+	{
 		destroy_active_back( );
+	}
 }
 
 void CUIListWnd::ShowSelectedItem(bool show)
@@ -630,12 +695,17 @@ void CUIListWnd::ShowSelectedItem(bool show)
 		create_active_back( );
 	}
 	else
+	{
 		destroy_active_back( );
+	}
 }
 
 void CUIListWnd::create_active_back( )
 {
-	if (m_ActiveBackgroundFrame)	return;
+	if (m_ActiveBackgroundFrame)
+	{
+		return;
+	}
 
 	m_ActiveBackgroundFrame = xr_new<CUIFrameLineWnd>( );
 	m_ActiveBackgroundFrame->Init("ui_listline", 0, 0, GetWidth( ), 18);
@@ -644,5 +714,7 @@ void CUIListWnd::create_active_back( )
 void CUIListWnd::destroy_active_back( )
 {
 	if (!m_bShowSelectedItem && !m_bActiveBackground)
+	{
 		xr_delete(m_ActiveBackgroundFrame);
+	}
 }

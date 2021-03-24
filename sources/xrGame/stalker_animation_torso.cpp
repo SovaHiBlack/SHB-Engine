@@ -18,7 +18,7 @@
 #include "object_handler_planner.h"
 #include "stalker_movement_manager.h"
 #include "EntityCondition.h"
-#include "stalker_animation_data.h"
+#include "StalkerAnimationData.h"
 #include "stalker_animation_manager_impl.h"
 
 const u32	need_look_back_time_interval= 2000;

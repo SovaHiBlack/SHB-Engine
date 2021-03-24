@@ -21,11 +21,6 @@ inv_grid_height				= 1
 inv_grid_x					= 18
 inv_grid_y					= 8
 
-kill_msg_x					= 197
-kill_msg_y					= 177
-kill_msg_width				= 53
-kill_msg_height				= 16
-
 show_ammo					= false
 
 slot						= 0
@@ -34,16 +29,15 @@ single_handed				= 1
 
 hud							= wpn_knife_hud
 	
-cost						= 70
+cost						= 70		; the price of the item
 
 hand_dependence		     	= 1
 
-cam_relax_speed          	= 5.0
-cam_dispersion           	= 0.9
-cam_max_angle		     	= 7
-cam_max_angle_horz			= 5.0
-cam_step_angle_horz			= 0.5
-
+cam_relax_speed          	= 5.0 ;скорость возврата в исходное положение
+cam_dispersion           	= 0.9	;изменение угла (в градусах) при выстреле
+cam_max_angle		     	= 7.0 ;максимальный угол отдачи
+cam_max_angle_horz			= 5.0 ;максимальное смещение ствола по горизонтали при выстреле(в градусах)
+cam_step_angle_horz			= 0.5 ;шаг смещения ствола в горизонтальной плоскости в момент выстрела(в градусах)
 
 fire_dispersion          	= 0.5
 fire_dispersion_add      	= 5.3
@@ -62,8 +56,6 @@ fire_point               	= 0.0, 0.1, 0.4
 
 flame_particles			 	= 
 
-rpm_empty_click 	     	= 200
-
 ; ttc	
 hit_power                	= 1.80, 2.00, 2.20, 2.40
 hit_impulse		         	= 120
@@ -81,7 +73,6 @@ rpm                      	= 1000;600
 normal                   	= 0, 1, 0
 position                 	= -0.021, -0.078, 0.0
 orientation              	= 0,90,0
-startup_ammo             	= 1000
 wm_size                  	= 0.10
 
 light_disabled				= true
@@ -92,9 +83,6 @@ ammo_elapsed		     	= 0
 ammo_mag_size		     	= 0
 ammo_class				 	= ammo_9x39_pab9
 	
-min_radius               	= 50
-max_radius               	= 50
-
 scope_status				= 0
 silencer_status				= 0
 grenade_launcher_status		= 0

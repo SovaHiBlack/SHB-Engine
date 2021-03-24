@@ -16,11 +16,8 @@ CUIInventoryCellItem::CUIInventoryCellItem(CInventoryItem* itm)
 
 	m_grid_size.set(itm->GetGridWidth( ), itm->GetGridHeight( ));
 	Frect rect;
-	rect.lt.set(INV_GRID_WIDTHF * itm->GetXPos( ),
-				INV_GRID_HEIGHTF * itm->GetYPos( ));
-
-	rect.rb.set(rect.lt.x + INV_GRID_WIDTHF * m_grid_size.x,
-				rect.lt.y + INV_GRID_HEIGHTF * m_grid_size.y);
+	rect.lt.set(INV_GRID_WIDTHF * itm->GetXPos( ), INV_GRID_HEIGHTF * itm->GetYPos( ));
+	rect.rb.set(rect.lt.x + INV_GRID_WIDTHF * m_grid_size.x, rect.lt.y + INV_GRID_HEIGHTF * m_grid_size.y);
 
 	inherited::SetOriginalRect(rect);
 	inherited::SetStretchTexture(true);
@@ -29,25 +26,31 @@ CUIInventoryCellItem::CUIInventoryCellItem(CInventoryItem* itm)
 bool CUIInventoryCellItem::EqualTo(CUICellItem* itm)
 {
 	CUIInventoryCellItem* ci = smart_cast<CUIInventoryCellItem*>(itm);
-	if (!itm)				return false;
-	return					(
-		fsimilar(object( )->GetCondition( ), ci->object( )->GetCondition( ), 0.01f) &&
-		(object( )->object( ).cNameSect( ) == ci->object( )->object( ).cNameSect( ))
-		);
+	if (!itm)
+	{
+		return false;
+	}
+	return (fsimilar(object( )->GetCondition( ), ci->object( )->GetCondition( ), 0.01f) &&
+			(object( )->object( ).cNameSect( ) == ci->object( )->object( ).cNameSect( )));
 }
 
-CUIAmmoCellItem::CUIAmmoCellItem(CWeaponAmmo* itm)
-	:inherited(itm)
+CUIAmmoCellItem::CUIAmmoCellItem(CWeaponAmmo* itm) : inherited(itm)
 { }
 
 bool CUIAmmoCellItem::EqualTo(CUICellItem* itm)
 {
-	if (!inherited::EqualTo(itm))	return false;
+	if (!inherited::EqualTo(itm))
+	{
+		return false;
+	}
 
 	CUIAmmoCellItem* ci = smart_cast<CUIAmmoCellItem*>(itm);
-	if (!ci)							return false;
+	if (!ci)
+	{
+		return false;
+	}
 
-	return					((object( )->cNameSect( ) == ci->object( )->cNameSect( )));
+	return (object( )->cNameSect( ) == ci->object( )->cNameSect( ));
 }
 
 void CUIAmmoCellItem::Update( )
@@ -65,9 +68,11 @@ void CUIAmmoCellItem::UpdateItemText( )
 
 		u16 total = object( )->m_boxCurr;
 		for (; it != it_e; ++it)
+		{
 			total = total + ((CUIAmmoCellItem*) (*it))->object( )->m_boxCurr;
+		}
 
-		string32				str;
+		string32 str;
 		sprintf_s(str, "%d", total);
 
 		SetText(str);
@@ -80,18 +85,24 @@ void CUIAmmoCellItem::UpdateItemText( )
 
 CUIWeaponCellItem::CUIWeaponCellItem(CWeapon* itm) : inherited(itm)
 {
-	m_addons[eSilencer] = NULL;
-	m_addons[eScope] = NULL;
-	m_addons[eLauncher] = NULL;
+	m_addons[eSilencer] = nullptr;
+	m_addons[eScope] = nullptr;
+	m_addons[eLauncher] = nullptr;
 
 	if (itm->SilencerAttachable( ))
+	{
 		m_addon_offset[eSilencer].set(object( )->GetSilencerX( ), object( )->GetSilencerY( ));
+	}
 
 	if (itm->ScopeAttachable( ))
+	{
 		m_addon_offset[eScope].set(object( )->GetScopeX( ), object( )->GetScopeY( ));
+	}
 
 	if (itm->GrenadeLauncherAttachable( ))
+	{
 		m_addon_offset[eLauncher].set(object( )->GetGrenadeLauncherX( ), object( )->GetGrenadeLauncherY( ));
+	}
 }
 
 CUIWeaponCellItem::~CUIWeaponCellItem( )
@@ -123,7 +134,7 @@ void CUIWeaponCellItem::CreateIcon(eAddonType t)
 void CUIWeaponCellItem::DestroyIcon(eAddonType t)
 {
 	DetachChild(m_addons[t]);
-	m_addons[t] = NULL;
+	m_addons[t] = nullptr;
 }
 
 CUIStatic* CUIWeaponCellItem::GetIcon(eAddonType t)
@@ -148,7 +159,9 @@ void CUIWeaponCellItem::Update( )
 		else
 		{
 			if (m_addons[eSilencer])
+			{
 				DestroyIcon(eSilencer);
+			}
 		}
 	}
 
@@ -165,7 +178,9 @@ void CUIWeaponCellItem::Update( )
 		else
 		{
 			if (m_addons[eScope])
+			{
 				DestroyIcon(eScope);
+			}
 		}
 	}
 
@@ -182,7 +197,9 @@ void CUIWeaponCellItem::Update( )
 		else
 		{
 			if (m_addons[eLauncher])
+			{
 				DestroyIcon(eLauncher);
+			}
 		}
 	}
 }
@@ -190,23 +207,29 @@ void CUIWeaponCellItem::Update( )
 void CUIWeaponCellItem::OnAfterChild( )
 {
 	if (is_silencer( ) && GetIcon(eSilencer))
+	{
 		InitAddon(GetIcon(eSilencer), *object( )->GetSilencerName( ), m_addon_offset[eSilencer]);
+	}
 
 	if (is_scope( ) && GetIcon(eScope))
+	{
 		InitAddon(GetIcon(eScope), *object( )->GetScopeName( ), m_addon_offset[eScope]);
+	}
 
 	if (is_launcher( ) && GetIcon(eLauncher))
+	{
 		InitAddon(GetIcon(eLauncher), *object( )->GetGrenadeLauncherName( ), m_addon_offset[eLauncher]);
+	}
 }
 
 void CUIWeaponCellItem::InitAddon(CUIStatic* s, const char* section, Fvector2 addon_offset)
 {
-	Frect					tex_rect;
-	Fvector2				base_scale;
+	Frect tex_rect;
+	Fvector2 base_scale;
 	base_scale.x = GetWidth( ) / (INV_GRID_WIDTHF * m_grid_size.x);
 	base_scale.y = GetHeight( ) / (INV_GRID_HEIGHTF * m_grid_size.y);
 
-	Fvector2				cell_size;
+	Fvector2 cell_size;
 	cell_size.x = pSettings->r_u32(section, "inv_grid_width") * INV_GRID_WIDTHF;
 	cell_size.y = pSettings->r_u32(section, "inv_grid_height") * INV_GRID_HEIGHTF;
 
@@ -227,7 +250,7 @@ void CUIWeaponCellItem::InitAddon(CUIStatic* s, const char* section, Fvector2 ad
 CUIDragItem* CUIWeaponCellItem::CreateDragItem( )
 {
 	CUIDragItem* i = inherited::CreateDragItem( );
-	CUIStatic* s = NULL;
+	CUIStatic* s = nullptr;
 
 	if (GetIcon(eSilencer))
 	{
@@ -255,20 +278,27 @@ CUIDragItem* CUIWeaponCellItem::CreateDragItem( )
 		s->SetColor(i->wnd( )->GetColor( ));
 		i->wnd( )->AttachChild(s);
 	}
-	return				i;
+
+	return i;
 }
 
 bool CUIWeaponCellItem::EqualTo(CUICellItem* itm)
 {
-	if (!inherited::EqualTo(itm))	return false;
+	if (!inherited::EqualTo(itm))
+	{
+		return false;
+	}
 
 	CUIWeaponCellItem* ci = smart_cast<CUIWeaponCellItem*>(itm);
-	if (!ci)							return false;
+	if (!ci)
+	{
+		return false;
+	}
 
 	bool b_addons = ((object( )->GetAddonsState( ) == ci->object( )->GetAddonsState( )));
 	bool b_place = ((object( )->m_eItemPlace == ci->object( )->m_eItemPlace));
 
-	return							b_addons && b_place;
+	return (b_addons && b_place);
 }
 
 CBuyItemCustomDrawCell::CBuyItemCustomDrawCell(const char* str, CGameFont* pFont)
@@ -280,7 +310,7 @@ CBuyItemCustomDrawCell::CBuyItemCustomDrawCell(const char* str, CGameFont* pFont
 
 void CBuyItemCustomDrawCell::OnDraw(CUICellItem* cell)
 {
-	Fvector2							pos;
+	Fvector2 pos;
 	cell->GetAbsolutePos(pos);
 	UI( )->ClientToScreenScaled(pos, pos.x, pos.y);
 	m_pFont->Out(pos.x, pos.y, m_string);

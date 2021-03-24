@@ -258,7 +258,8 @@ void CWeapon::Load(const char* section)
 
 #ifdef DEBUG
 	{
-		Fvector				pos, ypr;
+		Fvector3 pos;
+		Fvector3 ypr;
 		pos = pSettings->r_fvector3(section, "position");
 		ypr = pSettings->r_fvector3(section, "orientation");
 		ypr.mul(PI / 180.f);
@@ -270,7 +271,8 @@ void CWeapon::Load(const char* section)
 	m_StrapOffset = m_Offset;
 	if (pSettings->line_exist(section, "strap_position") && pSettings->line_exist(section, "strap_orientation"))
 	{
-		Fvector				pos, ypr;
+		Fvector3 pos;
+		Fvector3 ypr;
 		pos = pSettings->r_fvector3(section, "strap_position");
 		ypr = pSettings->r_fvector3(section, "strap_orientation");
 		ypr.mul(PI / 180.f);
@@ -285,8 +287,8 @@ void CWeapon::Load(const char* section)
 	const char* S = pSettings->r_string(section, "ammo_class");
 	if (S && S[0])
 	{
-		string128		_ammoItem;
-		int				count = _GetItemCount(S);
+		string128 _ammoItem;
+		int count = _GetItemCount(S);
 		for (int it = 0; it < count; ++it)
 		{
 			_GetItem(S, it, _ammoItem);
@@ -307,10 +309,13 @@ void CWeapon::Load(const char* section)
 	// дисперси€ стрельбы
 
 	//подбрасывание камеры во врем€ отдачи
+	//максимальный угол отдачи
 	camMaxAngle = pSettings->r_float(section, "cam_max_angle");
 	camMaxAngle = deg2rad(camMaxAngle);
+	//скорость возврата в исходное положение
 	camRelaxSpeed = pSettings->r_float(section, "cam_relax_speed");
 	camRelaxSpeed = deg2rad(camRelaxSpeed);
+
 	if (pSettings->line_exist(section, "cam_relax_speed_ai"))
 	{
 		camRelaxSpeed_AI = pSettings->r_float(section, "cam_relax_speed_ai");
@@ -321,10 +326,14 @@ void CWeapon::Load(const char* section)
 		camRelaxSpeed_AI = camRelaxSpeed;
 	}
 
+	//максимальное смещение ствола по горизонтали при выстреле
 	camMaxAngleHorz = pSettings->r_float(section, "cam_max_angle_horz");
 	camMaxAngleHorz = deg2rad(camMaxAngleHorz);
+	//шаг смещени€ ствола в горизонтальной плоскости в момент выстрела
 	camStepAngleHorz = pSettings->r_float(section, "cam_step_angle_horz");
 	camStepAngleHorz = deg2rad(camStepAngleHorz);
+
+	//ствол будет подыматьс€ на cam_dispersion*cam_dispertion_frac +- cam_dispersion*(1-cam_dispertion_frac)
 	camDispertionFrac = READ_IF_EXISTS(pSettings, r_float, section, "cam_dispertion_frac", 0.7f);
 
 	m_fPDM_disp_base = READ_IF_EXISTS(pSettings, r_float, section, "PDM_disp_base", 1.0f);
@@ -356,10 +365,10 @@ void CWeapon::Load(const char* section)
 	{
 		m_bIsSingleHanded = !!pSettings->r_bool(section, "single_handed");
 	}
-	// 
-	m_fMinRadius = pSettings->r_float(section, "min_radius");
-	m_fMaxRadius = pSettings->r_float(section, "max_radius");
-
+/*	нигде не используетс€
+//	m_fMinRadius = pSettings->r_float(section, "min_radius");
+//	m_fMaxRadius = pSettings->r_float(section, "max_radius");
+*/
 	// информаци€ о возможных апгрейдах и их визуализации в инвентаре
 	m_eScopeStatus = (ALife::EWeaponAddonStatus) pSettings->r_s32(section, "scope_status");
 	m_eSilencerStatus = (ALife::EWeaponAddonStatus) pSettings->r_s32(section, "silencer_status");
@@ -427,19 +436,20 @@ void CWeapon::Load(const char* section)
 	m_bHasTracers = READ_IF_EXISTS(pSettings, r_bool, section, "tracers", true);
 	m_u8TracerColorID = READ_IF_EXISTS(pSettings, r_u8, section, "tracers_color_ID", u8(-1));
 
-	string256						temp;
+	string256 temp;
 	for (int i = egdNovice; i < egdCount; ++i)
 	{
 		strconcat(sizeof(temp), temp, "hit_probability_", get_token_name(difficulty_type_token, i));
-		m_hit_probability[i] = READ_IF_EXISTS(pSettings, r_float, section, temp, 1.f);
+		m_hit_probability[i] = READ_IF_EXISTS(pSettings, r_float, section, temp, 1.0f);
 	}
 }
 
 void CWeapon::LoadFireParams(const char* section, const char* prefix)
 {
+	//изменение угла (в градусах) при выстреле
 	camDispersion = pSettings->r_float(section, "cam_dispersion");
 	camDispersion = deg2rad(camDispersion);
-
+	//увеличениe cam_dispersion с каждым выстрелом
 	if (pSettings->line_exist(section, "cam_dispersion_inc"))
 	{
 		camDispersionInc = pSettings->r_float(section, "cam_dispersion_inc");
@@ -447,7 +457,7 @@ void CWeapon::LoadFireParams(const char* section, const char* prefix)
 	}
 	else
 	{
-		camDispersionInc = 0;
+		camDispersionInc = 0.0f;
 	}
 
 	CShootingObject::LoadFireParams(section, prefix);
@@ -571,7 +581,8 @@ void CWeapon::net_Import(NET_Packet& P)
 	m_flagsAddOnState = NewAddonState;
 	UpdateAddonsVisibility( );
 
-	u8 ammoType, wstate;
+	u8 ammoType;
+	u8 wstate;
 	P.r_u8(ammoType);
 	P.r_u8(wstate);
 
@@ -658,7 +669,7 @@ void CWeapon::OnEvent(NET_Packet& P, u16 type)
 		break;
 		case GE_WPN_STATE_CHANGE:
 		{
-			u8				state;
+			u8 state;
 			P.r_u8(state);
 			P.r_u8(m_sub_state);
 //			u8 NewAmmoType = 

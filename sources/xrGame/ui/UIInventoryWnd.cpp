@@ -2,39 +2,16 @@
 
 #include "UIInventoryWnd.h"//
 
-//#include "xrUIXmlParser.h"//
 #include "UIXmlInit.h"//
-//#include "..\StringTable.h"
-
 #include "..\Actor.h"
-//#include "UIGameSP.h"//
-//#include "../HUDManager.h"//
-
 #include "../CustomOutfit.h"
-
-//#include "..\Weapon.h"
-
-//#include "../script_process.h"
-
-//#include "../EatableItem.h"
 #include "..\Inventory.h"
-
 #include "UIInventoryUtilities.h"//
 
 using namespace InventoryUtilities;
 
-//#include "..\InfoPortion.h"
-//#include "..\Level.h"
-//#include "../game_base_space.h"
-//#include "../EntityCondition.h"
-
 #include "../game_cl_base.h"
-//#include "UISleepWnd.h"
-//#include "../ActorCondition.h"
-//#include "UIDragDropListEx.h"//
-//#include "UIOutfitSlot.h"//
 #include "UI3tButton.h"//
-
 #include "../xr_level_controller.h"
 #include <dinput.h>
 

@@ -480,31 +480,29 @@ public:
 	//текущая дисперсия (в радианах) оружия с учетом используемого патрона
 	float					GetFireDispersion(bool with_cartridge);
 	float					GetFireDispersion(float cartridge_k);
-//	const Fvector&			GetRecoilDeltaAngle	();
-	virtual	int				ShotsFired( )
+	virtual int				ShotsFired( )
 	{
 		return 0;
 	}
 
-//параметы оружия в зависимоти от его состояния исправности
+	//параметы оружия в зависимоти от его состояния исправности
 	float					GetConditionDispersionFactor( ) const;
 	float					GetConditionMisfireProbability( ) const;
 	virtual	float			GetConditionToShow( ) const;
 
 public:
-	//отдача при стрельбе 
-	float					camMaxAngle;
-	float					camRelaxSpeed;
-	float					camRelaxSpeed_AI;
-	float					camDispersion;
-	float					camDispersionInc;
+	//отдача при стрельбе
+	float					camMaxAngle;		//максимальный угол отдачи
+	float					camRelaxSpeed;		//скорость возврата в исходное положение
+	float					camRelaxSpeed_AI;	//скорость возврата в исходное положение
+	float					camDispersion;		//изменение угла при выстреле
+	float					camDispersionInc;	//увеличениe cam_dispersion с каждым выстрелом
 	float					camDispertionFrac;
-	float					camMaxAngleHorz;
+	float					camMaxAngleHorz;	//максимальное смещение ствола по горизонтали при выстреле
 	float					camStepAngleHorz;
 
 protected:
-	//фактор увеличения дисперсии при максимальной изношености 
-	//(на сколько процентов увеличится дисперсия)
+	//фактор увеличения дисперсии при максимальной изношености (на сколько процентов увеличится дисперсия)
 	float					fireDispersionConditionFactor;
 	//вероятность осечки при максимальной изношености
 	float					misfireProbability;
@@ -524,11 +522,11 @@ protected:
 	//для отдачи оружия
 	Fvector					m_vRecoilDeltaAngle;
 
-	//для сталкеров, чтоб они знали эффективные границы использования 
-	//оружия
-	float					m_fMinRadius;
-	float					m_fMaxRadius;
-
+/* 	нигде не используется
+//	//для сталкеров, чтоб они знали эффективные границы использования оружия
+//	float					m_fMinRadius;
+//	float					m_fMaxRadius;
+ */
 //////////////////////////////////////////////////////////////////////////
 // партиклы
 //////////////////////////////////////////////////////////////////////////
@@ -566,23 +564,23 @@ public:
 							  u32 ParentID = 0xffffffff);
 
 //  [8/3/2005]
-	virtual	float			Get_PDM_Base( ) const
+	virtual float			Get_PDM_Base( ) const
 	{
 		return m_fPDM_disp_base;
 	}
-	virtual	float			Get_PDM_Vel_F( ) const
+	virtual float			Get_PDM_Vel_F( ) const
 	{
 		return m_fPDM_disp_vel_factor;
 	}
-	virtual	float			Get_PDM_Accel_F( ) const
+	virtual float			Get_PDM_Accel_F( ) const
 	{
 		return m_fPDM_disp_accel_factor;
 	}
-	virtual	float			Get_PDM_Crouch( ) const
+	virtual float			Get_PDM_Crouch( ) const
 	{
 		return m_fPDM_disp_crouch;
 	}
-	virtual	float			Get_PDM_Crouch_NA( ) const
+	virtual float			Get_PDM_Crouch_NA( ) const
 	{
 		return m_fPDM_disp_crouch_no_acc;
 	}

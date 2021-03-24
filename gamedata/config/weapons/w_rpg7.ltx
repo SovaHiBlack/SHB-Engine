@@ -10,8 +10,6 @@ $prefetch 		 			= 8
 scheduled            		= off              ; option for ALife Simulator
 cform                    	= skeleton
 class                    	= WP_RPG7
-min_radius               	= 50
-max_radius               	= 150
 max_zoom_factor			 	= 5
 description					= enc_weapons1_wpn-rpg7
 
@@ -23,7 +21,7 @@ holder_range_modifier	= 2.0               ; во сколько раз увеличивается eye_ran
 holder_fov_modifier		= 0.3              ; во сколько раз увеличивается eye_fov
 ;-----------------------------------------------------------------------------------
 
-cost					 	= 10000
+cost					 	= 10000		; the price of the item
 
 ammo_elapsed		 		= 12
 ammo_mag_size		 		= 1
@@ -46,21 +44,16 @@ inv_grid_height				= 1
 inv_grid_x					= 6
 inv_grid_y					= 0
 
-kill_msg_x			= 0
-kill_msg_y			= 85
-kill_msg_width		= 73
-kill_msg_height		= 19
-
 ;-----------------------------------------------------------------------------------
 ;базовая дисперсия
 fire_dispersion_base		= 1.5   ;угол (в градусах) базовой дисперсии оружия (оружия зажатого в тисках)
 
 ;отдача
 cam_relax_speed         	= 2.0	;скорость возврата в исходное положение
-cam_dispersion          	= 6.0	;увеличения угла (в градусах) с каждым выстрелом
-cam_max_angle				= 8		;максимальный угол отдачи
-cam_max_angle_horz			= 5.0	;(degree) maximum shot horizontal degree 
-cam_step_angle_horz			= 0.5	;(degree) size of step camera moved in horizontal position while shooting
+cam_dispersion          	= 6.0	;изменение угла (в градусах) при выстреле
+cam_max_angle				= 8.0		;максимальный угол отдачи
+cam_max_angle_horz			= 5.0	;максимальное смещение ствола по горизонтали при выстреле(в градусах)
+cam_step_angle_horz			= 0.5	;шаг смещения ствола в горизонтальной плоскости в момент выстрела(в градусах)
 
 fire_dispersion_condition_factor = 5	;увеличение дисперсии в процентах при максимальном износе 
 misfire_probability 		= 0.0001	;вероятность осечки при максимальном износе 
@@ -72,8 +65,6 @@ shell_point				 	= 0.0, 0.0, 0.0
 fire_point               	= 0.0, 0.162, 0.35
 
 smoke_particles		   		= weapons\generic_weapon02;generic_rpg_shot
-
-rpm_empty_click 	 		= 200
 
 ; ttc
 ;---------------------------------------------------------------
@@ -101,7 +92,6 @@ strap_orientation      		= -15,-189,110				; (3rd person view in degrees)
 strap_bone0					= bip01_spine2
 strap_bone1					= bip01_spine1
 
-;startup_ammo             	= 90
 visual                   	= weapons\rpg_7\wpn_rpg_7.ogf
 
 
@@ -116,7 +106,6 @@ light_var_range		 		= 0.5
 light_time 		 			= 0.75
 
 ph_mass			 			= 1
-;cost			 			= 350
 
 ;addons
 scope_status				= 1
@@ -180,12 +169,7 @@ $prefetch 		 			= 32
 
 inv_weight					= 0
 
-kill_msg_x			= 0
-kill_msg_y			= 85
-kill_msg_width		= 74
-kill_msg_height		= 19
-
-cost					 	= 200
+cost					 	= 200		; the price of the item
 ;---------------------------------------------------------------
 blast						= 5.00
 blast_r						= 10;15
@@ -238,10 +222,6 @@ inv_grid_height				= 1
 inv_grid_x					= 15
 inv_grid_y					= 5
 
-kill_msg_x			= 0
-kill_msg_y			= 85
-kill_msg_width		= 73
-kill_msg_height		= 19
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Свойства CustomRocket
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

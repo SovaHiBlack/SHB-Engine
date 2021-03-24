@@ -3657,10 +3657,10 @@
     <ClInclude Include="stalker_animation_data_storage_inline.h">
       <Filter>AI\AMonsters\humans\stalker\AnimationManager\data_storage</Filter>
     </ClInclude>
-    <ClInclude Include="stalker_animation_data.h">
+    <ClInclude Include="StalkerAnimationData.h">
       <Filter>AI\AMonsters\humans\stalker\AnimationManager\data_storage\data</Filter>
     </ClInclude>
-    <ClInclude Include="stalker_animation_names.h">
+    <ClInclude Include="StalkerAnimationNames.h">
       <Filter>AI\AMonsters\humans\stalker\AnimationManager\names</Filter>
     </ClInclude>
     <ClInclude Include="stalker_animation_pair.h">
@@ -3675,7 +3675,7 @@
     <ClInclude Include="stalker_animation_script_inline.h">
       <Filter>AI\AMonsters\humans\stalker\AnimationManager\script</Filter>
     </ClInclude>
-    <ClInclude Include="stalker_animation_state.h">
+    <ClInclude Include="StalkerAnimationState.h">
       <Filter>AI\AMonsters\humans\stalker\AnimationManager\state</Filter>
     </ClInclude>
     <ClInclude Include="cover_evaluators.h">
@@ -6632,16 +6632,16 @@
     <ClCompile Include="stalker_animation_data_storage.cpp">
       <Filter>AI\AMonsters\humans\stalker\AnimationManager\data_storage</Filter>
     </ClCompile>
-    <ClCompile Include="stalker_animation_data.cpp">
+    <ClCompile Include="StalkerAnimationData.cpp">
       <Filter>AI\AMonsters\humans\stalker\AnimationManager\data_storage\data</Filter>
     </ClCompile>
-    <ClCompile Include="stalker_animation_names.cpp">
+    <ClCompile Include="StalkerAnimationNames.cpp">
       <Filter>AI\AMonsters\humans\stalker\AnimationManager\names</Filter>
     </ClCompile>
     <ClCompile Include="stalker_animation_pair.cpp">
       <Filter>AI\AMonsters\humans\stalker\AnimationManager\pair</Filter>
     </ClCompile>
-    <ClCompile Include="stalker_animation_state.cpp">
+    <ClCompile Include="StalkerAnimationState.cpp">
       <Filter>AI\AMonsters\humans\stalker\AnimationManager\state</Filter>
     </ClCompile>
     <ClCompile Include="cover_evaluators.cpp">

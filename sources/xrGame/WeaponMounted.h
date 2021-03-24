@@ -52,8 +52,8 @@ protected:
 	HUD_SOUND				sndShot;
 
 	//для отдачи
-	float					camRelaxSpeed;
-	float					camMaxAngle;
+	float					camRelaxSpeed;	//скорость возврата в исходное положение
+	float					camMaxAngle;	//максимальный угол отдачи
 
 
 	/////////////////////////////////////////////////

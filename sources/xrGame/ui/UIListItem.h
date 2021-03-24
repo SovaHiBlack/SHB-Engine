@@ -5,10 +5,11 @@
 class CUIListItem : public CUIButton
 {
 private:
-	typedef CUIButton inherited;
+	using inherited = CUIButton;
+
 public:
-	CUIListItem(void);
-	virtual ~CUIListItem(void);
+	CUIListItem( );
+	virtual ~CUIListItem( );
 
 	virtual void Init(float x, float y, float width, float height);
 	virtual void Init(const char* str, float x, float y, float width, float height);
@@ -51,7 +52,7 @@ public:
 	}
 
 	virtual void	MarkSelected(bool b)
-	{ };
+	{ }
 // переопределяем критерий подсвечивания текста
 	virtual bool IsHighlightText( );
 	virtual void SetHighlightText(bool Highlight)

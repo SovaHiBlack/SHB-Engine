@@ -43,9 +43,11 @@ void CUIComboBox::Init(float x, float y, float width)
 {
 	m_bInited = true;
 	if (0 == m_iListHeight)
+	{
 		m_iListHeight = 4;
+	}
 
-//.	width								-= BTN_SIZE;
+//.	width -= BTN_SIZE;
 
 	CUIWindow::Init(x, y, width, CB_HEIGHT);
 	// Frame Line
@@ -53,13 +55,12 @@ void CUIComboBox::Init(float x, float y, float width)
 	m_frameLine.InitEnabledState("ui_cb_linetext_e"); // horizontal by default
 	m_frameLine.InitHighlightedState("ui_cb_linetext_h");
 
-
 	// Edit Box on left side of frame line
 	m_text.Init(0, 0, width, CB_HEIGHT);
 	m_text.SetTextColor(m_textColor[0]);
 	m_text.Enable(false);
 	// Button on right side of frame line
-//.	m_btn.Init							("ui_cb_button", width, 0, BTN_SIZE, BTN_SIZE);
+//.	m_btn.Init("ui_cb_button", width, 0, BTN_SIZE, BTN_SIZE);
 
 	// height of list equal to height of ONE element
 	float item_height = CUITextureMaster::GetTextureHeight("ui_cb_listline_b");
@@ -68,6 +69,7 @@ void CUIComboBox::Init(float x, float y, float width)
 	m_list.SetTextColor(m_textColor[0]);
 	m_list.SetSelectionTexture("ui_cb_listline");
 	m_list.SetItemHeight(CUITextureMaster::GetTextureHeight("ui_cb_listline_b"));
+
 	// frame(texture) for list
 	m_frameWnd.Init(0, CB_HEIGHT, width, m_list.GetItemHeight( ) * m_iListHeight);
 	m_frameWnd.InitTexture("ui_cb_listbox");
@@ -142,14 +144,14 @@ void CUIComboBox::SaveValue( )
 
 bool CUIComboBox::IsChanged( )
 {
-	return				(m_backup_itoken_id != m_itoken_id);
+	return (m_backup_itoken_id != m_itoken_id);
 /*
-	xr_token* tok		= GetOptToken();
-	const char* cur_val		= get_token_name(tok, m_itoken_id);
+	xr_token* tok = GetOptToken();
+	const char* cur_val = get_token_name(tok, m_itoken_id);
 
-	bool bChanged		= (0 != xr_strcmp(GetOptTokenValue(), cur_val));
+	bool bChanged = (0 != xr_strcmp(GetOptTokenValue(), cur_val));
 
-	return				bChanged;
+	return bChanged;
 */
 }
 
@@ -242,9 +244,8 @@ bool CUIComboBox::OnMouse(float x, float y, EUIMessages mouse_action)
 
 	bool bCursorOverScb = false;
 //.	bCursorOverScb |= (0 <= x) && (GetWidth() >= x) && (0 <= y) && (GetHeight() >= y);
-
-//.	Frect wndRect		= m_list.ScrollBar()->GetWndRect();
-//.	bCursorOverScb		= wndRect.in(m_list.ScrollBar()->cursor_pos)
+//.	Frect wndRect = m_list.ScrollBar()->GetWndRect();
+//.	bCursorOverScb = wndRect.in(m_list.ScrollBar()->cursor_pos)
 	bCursorOverScb = m_list.ScrollBar( )->CursorOverWindow( );
 	switch (m_eState)
 	{
@@ -255,9 +256,8 @@ bool CUIComboBox::OnMouse(float x, float y, EUIMessages mouse_action)
 				ShowList(false);
 				return true;
 			}
-
-			break;
 		}
+		break;
 		case LIST_FONDED:
 		{
 			if (mouse_action == WINDOW_LBUTTON_DOWN)
@@ -265,13 +265,12 @@ bool CUIComboBox::OnMouse(float x, float y, EUIMessages mouse_action)
 				OnBtnClicked( );
 				return true;
 			}
-
-			break;
 		}
+		break;
 		default:
 		{
-			break;
 		}
+		break;
 	}
 
 	return false;
@@ -289,16 +288,25 @@ void CUIComboBox::SendMessage(CUIWindow* pWnd, s16 msg, void* pData)
 	switch (msg)
 	{
 /*		case BUTTON_CLICKED:
-			if (pWnd == &m_btn || pWnd == &m_list)
+		{	if (pWnd == &m_btn || pWnd == &m_list)
+			{
 				OnBtnClicked();
-			break;
+			}
+		}
+		break;
 */
 		case LIST_ITEM_CLICKED:
+		{
 			if (pWnd == &m_list)
+			{
 				OnListItemSelect( );
-			break;
+			}
+		}
+		break;
 		default:
-			break;
+		{
+		}
+		break;
 	}
 }
 

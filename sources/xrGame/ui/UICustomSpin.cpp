@@ -119,15 +119,14 @@ void CUICustomSpin::Update()
 			{
 				IncVal			();
 				tmp				-= step;	
-			};
+			}
 			
 			m_u_delay			+= 50;
 			
 			if(m_p_delay>50)
 				m_p_delay -= 50;
 		}
-	}else
-	if (CUIButton::BUTTON_PUSHED == m_pBtnDown->GetButtonsState() && m_pBtnDown->CursorOverWindow())
+	}else if (CUIButton::BUTTON_PUSHED == m_pBtnDown->GetButtonsState() && m_pBtnDown->CursorOverWindow())
 	{
 		if (m_time_begin < Device.dwTimeContinual - m_p_delay)
 		{
@@ -138,7 +137,7 @@ void CUICustomSpin::Update()
 			{
 				DecVal			();
 				tmp				-= step;	
-			};
+			}
 			
 			m_u_delay			+= 50;
 			

@@ -4,14 +4,14 @@
 
 #include "UIlistitem.h"//
 
-CUIListItem::CUIListItem(void)
+CUIListItem::CUIListItem( )
 {
 	m_eButtonState = BUTTON_NORMAL;
 	m_ePressMode = NORMAL_PRESS;
 
 	m_bButtonClicked = false;
 
-	m_pData = NULL;
+	m_pData = nullptr;
 
 	m_iIndex = -1;
 	m_iValue = 0;
@@ -21,28 +21,29 @@ CUIListItem::CUIListItem(void)
 	SetTextAlignment(CGameFont::alLeft);
 }
 
-CUIListItem::~CUIListItem(void)
+CUIListItem::~CUIListItem( )
 { }
 
 void CUIListItem::Init(float x, float y, float width, float height)
 {
 	inherited::Init(x, y, width, height);
 	SetPressMode(CUIButton::DOWN_PRESS);
-	SetPushOffset( Fvector2().set(0.0f,0.0f));
+	SetPushOffset(Fvector2( ).set(0.0f, 0.0f));
 }
 
-void CUIListItem::InitTexture(const char* tex_name){
+void CUIListItem::InitTexture(const char* tex_name)
+{
 	CUIButton::InitTexture(tex_name);
-	SetTextX(m_UIStaticItem.GetRect().width());
+	SetTextX(m_UIStaticItem.GetRect( ).width( ));
 }
 
 void CUIListItem::Init(const char* str, float x, float y, float width, float height)
 {
-	Init(x,y,width, height);
-	SetTextST(str);	
+	Init(x, y, width, height);
+	SetTextST(str);
 }
 
-bool CUIListItem::IsHighlightText()
+bool CUIListItem::IsHighlightText( )
 {
-	return CUIButton::IsHighlightText();
+	return CUIButton::IsHighlightText( );
 }

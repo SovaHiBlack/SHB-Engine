@@ -222,7 +222,7 @@ void CUICharacterInfo::InitCharacter(u16 id)
 	}
 }
 
-void  CUICharacterInfo::SetRelation(ALife::ERelationType relation, CHARACTER_GOODWILL goodwill)
+void CUICharacterInfo::SetRelation(ALife::ERelationType relation, CHARACTER_GOODWILL goodwill)
 {
 	shared_str relation_str;
 

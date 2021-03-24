@@ -45,8 +45,10 @@ void CStalker::OnEvent		(NET_Packet& P, u16 type)
 			if (inventory().CanTakeItem(smart_cast<CInventoryItem*>(_O))) { //GetScriptControl()
 				O->H_SetParent(this);
 				inventory().Take(_O,true, false);
-				if (!inventory().ActiveItem() && GetScriptControl() && smart_cast<CShootingObject*>(O))
-					CObjectHandler::set_goal	(eObjectActionIdle,_O);
+				if (!inventory( ).ActiveItem( ) && GetScriptControl( ) && smart_cast<CShootingObject*>(O))
+				{
+					CObjectHandler::set_goal(eObjectActionIdle, _O);
+				}
 
 				on_after_take			(_O);
 #ifndef SILENCE

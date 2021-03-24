@@ -137,7 +137,7 @@ void CUIStatic::InitTextureEx(const char* tex_name, const char* sh_name)
 	m_bAvailableTexture				= true;
 }
 
-void  CUIStatic::Draw()
+void CUIStatic::Draw()
 {
 	if(m_bClipper){
 		Frect clip_rect;

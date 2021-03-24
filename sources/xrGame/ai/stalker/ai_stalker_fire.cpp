@@ -43,7 +43,7 @@
 #include "../../ai_object_location.h"
 #include "..\..\Missile.h"
 #include "../../PHWorld.h"
-#include "../../stalker_animation_names.h"
+#include "../../StalkerAnimationNames.h"
 #include "../../agent_corpse_manager.h"
 #include "../../CharacterPhysicsSupport.h"
 #include "../../stalker_planner.h"

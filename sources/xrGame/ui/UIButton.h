@@ -6,24 +6,24 @@
 class CUIButton : public CUIStatic
 {
 private:
-	typedef			CUIStatic				inherited;
+	using inherited						= CUIStatic;
 
 public:
-	CUIButton( );
-	virtual			~CUIButton( );
+					CUIButton			( );
+	virtual			~CUIButton			( );
 
-	virtual bool	OnMouse(float x, float y, EUIMessages mouse_action);
-	virtual void	OnClick( );
+	virtual bool	OnMouse				(float x, float y, EUIMessages mouse_action);
+	virtual void	OnClick				( );
 
 	// прорисовка окна
-	virtual void	DrawTexture( );
-	virtual void	DrawText( );
-	virtual void	DrawHighlightedText( );
+	virtual void	DrawTexture			( );
+	virtual void	DrawText			( );
+	virtual void	DrawHighlightedText	( );
 
-	virtual void	Update( );
-	virtual void	Enable(bool status);
-	virtual bool	OnKeyboard(int dik, EUIMessages keyboard_action);
-	virtual void	OnFocusLost( );
+	virtual void	Update				( );
+	virtual void	Enable				(bool status);
+	virtual bool	OnKeyboard			(int dik, EUIMessages keyboard_action);
+	virtual void	OnFocusLost			( );
 
 	// режимы в которых можно нажимать кнопку
 	typedef enum
@@ -33,11 +33,11 @@ public:
 	} E_PRESS_MODE;
 
 	// заново подготовить состояние
-	virtual void	Reset( );
+	virtual void	Reset				( );
 
 	// подсвечен ли текст на кнопке
 	// принудительная подсветка
-	virtual void	HighlightItem(bool bHighlight)
+	virtual void	HighlightItem		(bool bHighlight)
 	{
 		m_bCursorOverWindow = bHighlight;
 	}
@@ -51,17 +51,17 @@ public:
 	} E_BUTTON_STATE;
 
 	// Установка состояния кнопки: утоплена, не утоплена
-	void			SetButtonMode(E_BUTTON_STATE eBtnState)
+	void			SetButtonMode		(E_BUTTON_STATE eBtnState)
 	{
 		m_eButtonState = eBtnState;
 	}
-	E_BUTTON_STATE	GetButtonsState( )
+	E_BUTTON_STATE	GetButtonsState		( )
 	{
 		return m_eButtonState;
 	}
 
 	// Поведение кнопки как переключателя реализовано пока только в режиме NORMAL_PRESS
-	void			SetButtonAsSwitch(bool bAsSwitch)
+	void			SetButtonAsSwitch	(bool bAsSwitch)
 	{
 		m_bIsSwitch = bAsSwitch;
 	}
@@ -69,55 +69,55 @@ public:
 	// Работа с акселератором
 	// Код акселератора берется из файла dinput.h, из DirectX SDK.
 	// Например: кнопка A - код 0x1E(DIK_A)
-	void			SetAccelerator(int iAccel, int idx)
+	void			SetAccelerator		(int iAccel, int idx)
 	{
 		VERIFY(idx == 0 || idx == 1);
 		m_uAccelerator[idx] = iAccel;
 	}
-	const int		GetAccelerator(int idx) const
+	const int		GetAccelerator		(int idx) const
 	{
 		VERIFY(idx == 0 || idx == 1);
 		return m_uAccelerator[idx];
 	}
-	inline bool			IsAccelerator(int iAccel) const
+	inline bool		IsAccelerator		(int iAccel) const
 	{
 		return (m_uAccelerator[0] == iAccel) || (m_uAccelerator[1] == iAccel);
 	}
 
-	void			SetPressMode(E_PRESS_MODE ePressMode)
+	void			SetPressMode		(E_PRESS_MODE ePressMode)
 	{
 		m_ePressMode = ePressMode;
 	}
-	E_PRESS_MODE	GetPressMode( )
+	E_PRESS_MODE	GetPressMode		( )
 	{
 		return m_ePressMode;
 	}
 
-	void			SetPushOffset(const Fvector2& offset)
+	void			SetPushOffset		(const Fvector2& offset)
 	{
 		m_PushOffset = offset;
 	}
-	Fvector2		GetPushOffset( )
+	Fvector2		GetPushOffset		( )
 	{
 		return m_PushOffset;
 	}
-	void			SetShadowOffset(const Fvector2& offset)
+	void			SetShadowOffset		(const Fvector2& offset)
 	{
 		m_ShadowOffset = offset;
 	}
-	shared_str		m_hint_text;
+	shared_str							m_hint_text;
 
 protected:
-	E_BUTTON_STATE	m_eButtonState;
-	bool			m_bIsSwitch;
-	bool			m_bButtonClicked;
-	E_PRESS_MODE	m_ePressMode;
-	Fvector2		m_PushOffset;
-	int				m_uAccelerator[2];
-	Fvector2		m_ShadowOffset;
+	E_BUTTON_STATE						m_eButtonState;
+	bool								m_bIsSwitch;
+	bool								m_bButtonClicked;
+	E_PRESS_MODE						m_ePressMode;
+	Fvector2							m_PushOffset;
+	int									m_uAccelerator[2];
+	Fvector2							m_ShadowOffset;
 
 public:
-	static void script_register(lua_State*);
+	static void		script_register		(lua_State*);
 };
 
 add_to_type_list(CUIButton)

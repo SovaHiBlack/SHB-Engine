@@ -6,8 +6,6 @@ $prefetch 		         	= 8
 scheduled                	= off                              ; option for ALife Simulator
 cform                    	= skeleton
 class                    	= WP_VINT
-min_radius               	= 50
-max_radius               	= 150
 description					= enc_weapons1_wpn-vintorez
 
 ef_main_weapon_type			= 3
@@ -18,7 +16,7 @@ holder_range_modifier	= 2.0               ; во сколько раз увеличивается eye_ran
 holder_fov_modifier		= 0.3              ; во сколько раз увеличивается eye_fov
 ;-----------------------------------------------------------------------------------
 
-cost					 	= 12000	;4000
+cost					 	= 12000	; the price of the item
 
 ammo_elapsed		     	= 10
 ammo_mag_size		     	= 10
@@ -41,11 +39,6 @@ inv_grid_height				= 2
 inv_grid_x					= 0
 inv_grid_y					= 4
 
-kill_msg_x			= 98
-kill_msg_y			= 0
-kill_msg_width		= 78
-kill_msg_height		= 25
-
 ;-----------------------------------------------------------------------------------
 ;базовая дисперсия
 fire_dispersion_base		= 0.05	;угол (в градусах) базовой дисперсии оружия (оружия зажатого в тисках)
@@ -53,12 +46,12 @@ control_inertion_factor		= 1.04f
 
 ;отдача
 cam_relax_speed         	= 4.75	;скорость возврата в исходное положение
-cam_dispersion          	= 0.125	;увеличения угла (в градусах) с каждым выстрелом
-cam_dispersion_inc		= 0.2	;увеличениe cam_dispersion с каждым выстрелом
+cam_dispersion          	= 0.125	;изменение угла (в градусах) при выстреле
+cam_dispersion_inc		= 0.2	;увеличениe cam_dispersion с каждым выстрелом(по умолчанию = 0.0)
 cam_dispertion_frac		= 1.0	;ствол будет подыматься на cam_dispersion*cam_dispertion_frac +- cam_dispersion*(1-cam_dispertion_frac)
 cam_max_angle			= 9.0	;максимальный угол отдачи
-cam_max_angle_horz		= 5.0	;(degree) maximum shot horizontal degree 
-cam_step_angle_horz		= 0.4;0.3	;(degree) size of step camera moved in horizontal position while shooting
+cam_max_angle_horz		= 5.0	;максимальное смещение ствола по горизонтали при выстреле(в градусах)
+cam_step_angle_horz		= 0.4	;шаг смещения ствола в горизонтальной плоскости в момент выстрела(в градусах)
 
 fire_dispersion_condition_factor = 5	;увеличение дисперсии в процентах при максимальном износе 
 misfire_probability 	= 0.005	;вероятность осечки при максимальном износе 
@@ -75,8 +68,6 @@ smoke_particles				= weapons\generic_shoot_00
 shell_point		 			= 0.0, 0.127, 0.10
 shell_dir		 			= 0.0, 1.0, 0.0
 shell_particles	 			= weapons\generic_shells
-
-rpm_empty_click 	     	= 200
 
 PDM_disp_base 			= 1.0
 PDM_disp_vel_factor 		= 1.2
@@ -109,13 +100,11 @@ strap_orientation      		= -15,-9,110				; (3rd person view in degrees)
 strap_bone0					= bip01_spine2
 strap_bone1					= bip01_spine1
 
-startup_ammo             	= 1000
 visual                   	= weapons\vintorez\wpn_vintorez.ogf
 	
 light_disabled				= true
 
 ph_mass			         	= 4
-;cost			         	= 5000
 
 ;addons
 scope_status				= 1

@@ -66,8 +66,8 @@ void CUIMessageBox::Init	(const char* box_template)
 
 	strconcat								(sizeof(str),str,box_template,":message_text");
 	if (uiXml.NavigateToNode(str,0)){
-        m_UIStaticText							= xr_new<CUIStatic>();AttachChild(m_UIStaticText);
-        xml_init.InitStatic						(uiXml, str, 0, m_UIStaticText);
+		m_UIStaticText							= xr_new<CUIStatic>();AttachChild(m_UIStaticText);
+		xml_init.InitStatic						(uiXml, str, 0, m_UIStaticText);
 	}
 
 	strcpy		(str,box_template);
@@ -226,7 +226,7 @@ void CUIMessageBox::SendMessage(CUIWindow *pWnd, s16 msg, void *pData)
 			if(pWnd == m_UIButtonYesOk)
 			{
 				if (MESSAGEBOX_QUIT_GAME == m_eMessageBoxStyle)
-                    GetMessageTarget()->SendMessage(this, MESSAGE_BOX_QUIT_GAME_CLICKED);
+					GetMessageTarget()->SendMessage(this, MESSAGE_BOX_QUIT_GAME_CLICKED);
 				else if (MESSAGEBOX_QUIT_WINDOWS == m_eMessageBoxStyle)
 					GetMessageTarget()->SendMessage(this, MESSAGE_BOX_QUIT_WIN_CLICKED);
 				else

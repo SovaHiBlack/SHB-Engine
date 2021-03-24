@@ -23,7 +23,7 @@ void CCameraShotEffectorX::GetDeltaAngle	(Fvector3& delta_angle)
 	delta_angle.z = 0.0f;
 }
 
-void CCameraShotEffectorX::Shot			(float angle)
+void CCameraShotEffectorX::Shot(float angle)
 {
 	float fAC_Old = fAngleVert;
 	float fAH_Old = fAngleHorz;
@@ -31,7 +31,7 @@ void CCameraShotEffectorX::Shot			(float angle)
 	float dAC = fAngleVert - fAC_Old;
 	float dAH = fAngleHorz - fAH_Old;
 
-	UpdateActorCamera(-dAC, -dAH);	
+	UpdateActorCamera(-dAC, -dAH);
 }
 
 void	CCameraShotEffectorX::Clear				()

@@ -51,20 +51,21 @@ CWeaponMounted::~CWeaponMounted()
 void	CWeaponMounted::Load(const char* section)
 {
 	inherited::Load(section);
-	CShootingObject::Load	(section);
+	CShootingObject::Load(section);
 
-	HUD_SOUND::LoadSound(section,"snd_shoot", sndShot, SOUND_TYPE_WEAPON_SHOOTING);
+	HUD_SOUND::LoadSound(section, "snd_shoot", sndShot, SOUND_TYPE_WEAPON_SHOOTING);
 
 	//тип используемых патронов
 	m_sAmmoType = pSettings->r_string(section, "ammo_class");
 	m_CurrentAmmo.Load(*m_sAmmoType, 0);
 
 	//подбрасывание камеры во время отдачи
-	camMaxAngle			= pSettings->r_float		(section,"cam_max_angle"	); 
-	camMaxAngle			= deg2rad					(camMaxAngle);
-	camRelaxSpeed		= pSettings->r_float		(section,"cam_relax_speed"	); 
-	camRelaxSpeed		= deg2rad					(camRelaxSpeed);
-
+	//максимальный угол отдачи
+	camMaxAngle = pSettings->r_float(section, "cam_max_angle");
+	camMaxAngle = deg2rad(camMaxAngle);
+	//скорость возврата в исходное положение
+	camRelaxSpeed = pSettings->r_float(section, "cam_relax_speed");
+	camRelaxSpeed = deg2rad(camRelaxSpeed);
 }
 
 BOOL	CWeaponMounted::net_Spawn(CSE_Abstract* DC)
@@ -308,10 +309,11 @@ void CWeaponMounted::OnShot		()
 		fireDispersionBase,
 		m_CurrentAmmo, Owner()->ID(),ID(), SendHitAllowed(Owner()));
 
-	StartShotParticles			();
-
-	if(m_bLightShotEnabled) 
-		Light_Start			();
+	StartShotParticles();
+	if (m_bLightShotEnabled)
+	{
+		Light_Start( );
+	}
 
 	StartFlameParticles();
 	StartSmokeParticles(fire_pos, zero_vel);
@@ -353,14 +355,22 @@ const Fmatrix&	 CWeaponMounted::get_ParticlesXFORM	()
 	return fire_bone_xform;
 }
 
-void CWeaponMounted::AddShotEffector				()
+void CWeaponMounted::AddShotEffector( )
 {
-	if(OwnerActor())
+	if (OwnerActor( ))
 	{
-		CCameraShotEffector* S	= smart_cast<CCameraShotEffector*>(OwnerActor()->Cameras().GetCamEffector(eCEShot)); 
-		if (!S)	S				= (CCameraShotEffector*)OwnerActor()->Cameras().AddCamEffector(xr_new<CCameraShotEffector> (camMaxAngle,camRelaxSpeed, 0.25f, 0.01f, 0.7f));
-		R_ASSERT				(S);
-		S->Shot					(0.01f);
+		CCameraShotEffector* S = smart_cast<CCameraShotEffector*>(OwnerActor( )->Cameras( ).GetCamEffector(eCEShot));
+		if (!S)
+		{
+			S = (CCameraShotEffector*) OwnerActor( )->Cameras( ).AddCamEffector(xr_new<CCameraShotEffector>(camMaxAngle,
+																											camRelaxSpeed,
+																											0.25f,
+																											0.01f,
+																											0.7f));
+		}
+
+		R_ASSERT(S);
+		S->Shot(0.01f);
 	}
 }
 

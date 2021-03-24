@@ -76,21 +76,20 @@ public:
 		typedef CItemBase<SInfoItem> inherited;
 		
 		#define	DELTA_HEIGHT_DEFAULT	16.f
-		#define	SHIFT_POS_DEFAULT		Fvector().set(0.f,2.f,0.f)
+		#define	SHIFT_POS_DEFAULT		Fvector3().set(0.f,2.f,0.f)
 
-		Fvector			m_shift_pos;
+		Fvector3			m_shift_pos;
 		float			m_delta_height;
 
-	public: 
-
+	public:
 					CObjectInfo		() {setup();}
 
 			void	add_item		(const char* text, u32 color, u32 id = u32(-1));
 			
 			void	draw_info		(float x, float &y);
-		inline	void	setup			(const Fvector &shift = SHIFT_POS_DEFAULT, float delta = DELTA_HEIGHT_DEFAULT) {m_shift_pos.set(shift); m_delta_height = delta;}
+		inline	void	setup			(const Fvector3& shift = SHIFT_POS_DEFAULT, float delta = DELTA_HEIGHT_DEFAULT) {m_shift_pos.set(shift); m_delta_height = delta;}
 
-		inline	Fvector &get_shift_pos	() {return m_shift_pos;}
+		inline	Fvector3& get_shift_pos	() {return m_shift_pos;}
 	};
 
 	//////////////////////////////////////////////////////////////////////////
@@ -118,8 +117,8 @@ public:
 	//////////////////////////////////////////////////////////////////////////
 
 	struct SLevelItem {
-		Fvector		position1;
-		Fvector		position2;
+		Fvector3		position1;
+		Fvector3		position2;
 		float		radius;
 
 		enum {
@@ -131,24 +130,24 @@ public:
 		u32			color;
 		u32			id;
 
-		SLevelItem		(const Fvector &p, u32 col, u32 i) {
+		SLevelItem		(const Fvector3& p, u32 col, u32 i) {
 			set			(p, col, i);
 			ptype		= ePoint;
 		}
 		
-		SLevelItem		(const Fvector &p, const Fvector &p2, u32 col, u32 i) {
+		SLevelItem		(const Fvector3& p, const Fvector3& p2, u32 col, u32 i) {
 			set			(p, col, i);
 			ptype		= eLine;
 			position2	= p2;
 		}
 
-		SLevelItem		(const Fvector &p, float r, u32 col, u32 i) {
+		SLevelItem		(const Fvector3& p, float r, u32 col, u32 i) {
 			set			(p, col, i);
 			ptype		= eBox;
 			radius		= r;
 		}
 
-		void	set		(const Fvector &p, u32 col, u32 i) {
+		void	set		(const Fvector3& p, u32 col, u32 i) {
 			position1	= p;
 			color		= col;
 			id			= i;
@@ -158,9 +157,9 @@ public:
 	class CLevelInfo : public CItemBase<SLevelItem> {
 		typedef CItemBase<SLevelItem> inherited;
 	public:
-		void	add_item		(const Fvector &pos, u32 color, u32 id = u32(-1));
-		void	add_item		(const Fvector &pos1, const Fvector &pos2, u32 color, u32 id = u32(-1));
-		void	add_item		(const Fvector &pos, float radius, u32 color, u32 id = u32(-1));
+		void	add_item		(const Fvector3& pos, u32 color, u32 id = u32(-1));
+		void	add_item		(const Fvector3& pos1, const Fvector3& pos2, u32 color, u32 id = u32(-1));
+		void	add_item		(const Fvector3& pos, float radius, u32 color, u32 id = u32(-1));
 		void	draw_info		();
 	};
 

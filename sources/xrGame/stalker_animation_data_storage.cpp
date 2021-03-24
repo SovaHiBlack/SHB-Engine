@@ -8,7 +8,7 @@
 
 #include "stdafx.h"
 #include "stalker_animation_data_storage.h"
-#include "stalker_animation_data.h"
+#include "StalkerAnimationData.h"
 #include "object_broker.h"
 #include "..\ENGINE\skeletonanimated.h"
 

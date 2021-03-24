@@ -7,13 +7,12 @@
 //#include "UILine_std.h"//
 #include "ui_base.h"//
 
-
 #ifdef ALL_LINES_LOG
 int ListSubLinesCount = 0;
 struct DBGList
 {
 	CUISubLine* wnd;
-	int				num;
+	int num;
 };
 xr_vector<DBGList>	dbg_list_sublines;
 void dump_list_sublines( )
@@ -21,7 +20,9 @@ void dump_list_sublines( )
 	Msg("------Total  SubLines %d", dbg_list_sublines.size( ));
 	xr_vector<DBGList>::iterator _it = dbg_list_sublines.begin( );
 	for (; _it != dbg_list_sublines.end( ); ++_it)
+	{
 		Msg("--leak detected ---- SubLine = %d", (*_it).num);
+	}
 }
 #else // def ALL_LINES_LOG
 void dump_list_sublines( )
@@ -33,7 +34,7 @@ CUISubLine::CUISubLine(const CUISubLine& other)
 	m_color = other.m_color;
 	m_last_in_line = other.m_last_in_line;
 	m_text = other.m_text;
-	m_pTempLine = NULL;
+	m_pTempLine = nullptr;
 
 #ifdef ALL_LINES_LOG
 	ListSubLinesCount++;
@@ -50,13 +51,13 @@ CUISubLine& CUISubLine::operator=(const CUISubLine& other)
 	m_text = other.m_text;
 	m_last_in_line = other.m_last_in_line;
 	xr_delete(m_pTempLine);
-	return (*this);
+	return *this;
 }
 
 CUISubLine::CUISubLine( )
 {
 	m_color = 0;
-	m_pTempLine = NULL;
+	m_pTempLine = nullptr;
 	m_last_in_line = false;
 
 #ifdef ALL_LINES_LOG
@@ -71,7 +72,7 @@ CUISubLine::CUISubLine( )
 CUISubLine::~CUISubLine( )
 {
 	xr_delete(m_pTempLine);
-	m_pTempLine = NULL;
+	m_pTempLine = nullptr;
 
 #ifdef ALL_LINES_LOG
 	xr_vector<DBGList>::iterator _it = dbg_list_sublines.begin( );
@@ -119,7 +120,7 @@ void CUISubLine::FreeBuffer( )
 void CUISubLine::Draw(CGameFont* pFont, float x, float y) const
 {
 	pFont->SetColor(m_color);
-	Fvector2			pos;
+	Fvector2 pos;
 	pos.set(x, y);
 	UI( )->ClientToScreenScaled(pos);
 	pFont->Out(pos.x, pos.y, "%s", m_text.c_str( ));

@@ -77,7 +77,6 @@ void CUISpinNum::SetValue()
 bool CUISpinNum::CanPressUp()
 {
 	return m_iVal + m_iStep <= m_iMax;
-
 }
 
 bool CUISpinNum::CanPressDown()
@@ -155,7 +154,6 @@ void CUISpinFlt::SetValue()
 bool CUISpinFlt::CanPressUp()
 {
 	return m_fVal + m_fStep <= m_fMax;
-
 }
 
 bool CUISpinFlt::CanPressDown()

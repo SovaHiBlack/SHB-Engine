@@ -7,13 +7,11 @@ $prefetch 				= 8
 scheduled				= off              ; option for ALife Simulator
 cform               	= skeleton
 class               	= W_AK74
-min_radius          	= 30
-max_radius          	= 100
 	
 ef_main_weapon_type		= 2
 ef_weapon_type			= 6
 
-cost				= 350	;1800
+cost				= 350		; the price of the item
 
 ammo_elapsed			= 30
 ammo_mag_size			= 30
@@ -39,8 +37,8 @@ fire_dispersion_base		= 0.05  ;угол (в градусах) базовой дисперсии оружия (оружи
 
 ;отдача
 cam_relax_speed         	= 4.0	;скорость возврата в исходное положение
-cam_dispersion          	= 1.0	;увеличения угла (в градусах) с каждым выстрелом
-cam_max_angle				= 8		;максимальный угол отдачи
+cam_dispersion          	= 1.0	;изменение угла (в градусах) при выстреле
+cam_max_angle				= 8.0		;максимальный угол отдачи
 cam_horz_prob				= 1		;вероятность отклонения по горизонтали эффектора во время стрельбы (1 - всегда отклоняется)
 cam_horz_factor				= 1.5	;импирический коэффициент отклонения по горизонтали (чем больше, тем сильнее разброс)
 
@@ -61,8 +59,6 @@ grenade_flame_particles		= weapons\generic_weapon01
 shell_point		 			= 0.05, 0.22, 0.06
 shell_dir		 			= 0.0, 0.0, 0.4
 shell_particles	 			= weapons\generic_shells
-
-rpm_empty_click 	 		= 200
 
 ; ttc
 hit_power                	= 50
@@ -87,7 +83,6 @@ strap_orientation      		= 1.57,0,0						; (3rd person view)
 strap_bone0					= bip01_spine2
 strap_bone1					= bip01_spine1
 
-startup_ammo   		        = 90
 visual         		        = weapon\ak74\wpn_ak74.ogf
 	
 light_color					= 0.6,0.5,0.3
@@ -97,7 +92,6 @@ light_var_range				= 0.5
 light_time 					= 0.2
 
 ph_mass						= 5
-;cost						= 2100
 
 ;addons
 scope_status				= 2 ; 0 - no addon, 1 - permanent addon, 2 -attachable addon

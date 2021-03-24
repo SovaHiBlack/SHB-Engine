@@ -74,10 +74,11 @@ void CWeapon::FireTrace		(const Fvector& P, const Fvector& D)
 		FireBullet(P, D, fire_disp, l_cartridge, H_Parent()->ID(), ID(), SendHit);
 	}
 
-	StartShotParticles		();
-	
-	if(m_bLightShotEnabled) 
-		Light_Start			();
+	StartShotParticles( );
+	if (m_bLightShotEnabled)
+	{
+		Light_Start( );
+	}
 
 	// Ammo
 	m_magazine.pop_back	();

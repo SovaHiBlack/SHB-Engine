@@ -190,7 +190,7 @@ CUIButton* CUITabControl::GetButtonByIndex	(int i)
 const shared_str CUITabControl::GetCommandName	(int i)							
 { 
 	return (GetButtonByIndex(i))->WindowName();
-};
+}
 
 CUIButton* CUITabControl::GetButtonByCommand			(const shared_str& n)
 {

@@ -13,7 +13,7 @@ CUIEditBox::CUIEditBox( )
 	m_lines.SetTextComplexMode(false);
 }
 
-CUIEditBox::~CUIEditBox(void)
+CUIEditBox::~CUIEditBox( )
 { }
 
 void CUIEditBox::Init(float x, float y, float width, float height)
@@ -40,5 +40,5 @@ void CUIEditBox::SaveValue( )
 
 bool CUIEditBox::IsChanged( )
 {
-	return 0 != xr_strcmp(GetOptStringValue( ), GetText( ));
+	return (0 != xr_strcmp(GetOptStringValue( ), GetText( )));
 }

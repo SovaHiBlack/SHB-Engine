@@ -52,7 +52,6 @@ void CUITrackBar::Init(float x, float y, float width, float height){
 	float				item_width;
 	CUIWindow::Init		(x, y, width, DEF_CONTROL_HEIGHT);
 
-
 	item_height			= CUITextureMaster::GetTextureHeight(strconcat(sizeof(buf),buf,FRAME_LINE_TEXTURE,"_b"));
 	m_pFrameLine->Init	(0, (height - item_height)/2, width, item_height);
 	m_pFrameLine->InitTexture(FRAME_LINE_TEXTURE);
@@ -233,7 +232,6 @@ void CUITrackBar::UpdatePos()
 	float __fval	= (m_b_is_float)?m_f_val:(float)m_i_val;
 	float __fmax	= (m_b_is_float)?m_f_max:(float)m_i_max;
 	float __fmin	= (m_b_is_float)?m_f_min:(float)m_i_min;
-
 
 	pos.x						= (__fval - __fmin)*free_space/(__fmax - __fmin);
 	if( GetInvert() )

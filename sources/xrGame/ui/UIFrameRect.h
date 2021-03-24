@@ -40,7 +40,7 @@ public:
 	void		SetVisiblePart(EFramePart p, BOOL b)
 	{
 		m_itm_mask.set(u16(1 << p), b);
-	};
+	}
 
 protected:
 	CUIStaticItem	frame[fmMax];

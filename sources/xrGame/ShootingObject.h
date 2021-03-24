@@ -1,8 +1,4 @@
-//////////////////////////////////////////////////////////////////////
-// ShootingObject.h: интерфейс дл€ семейства стрел€ющих объектов 
-//					 (оружие и осколочные гранаты) 	
-//					 обеспечивает набор хитов, звуков рикошетп
-//////////////////////////////////////////////////////////////////////
+// ShootingObject.h: интерфейс дл€ семейства стрел€ющих объектов (оружие и осколочные гранаты) обеспечивает набор хитов, звуков рикошета
 
 #pragma once
 
@@ -15,7 +11,7 @@ class IRender_Sector;
 
 extern const Fvector zero_vel;
 
-#define WEAPON_MATERIAL_NAME "objects\\bullet"
+#define BULLET_MATERIAL_NAME "objects\\bullet"
 
 class CShootingObject
 {
@@ -25,7 +21,7 @@ protected:
 
 	void	reinit( );
 	void	reload(const char* section)
-	{ };
+	{ }
 	void	Load(const char* section);
 
 	Fvector		m_vCurrentShootDir;
@@ -51,7 +47,7 @@ protected:
 	virtual void			FireEnd( );
 
 public:
-	inline BOOL					IsWorking( )	const
+	inline BOOL					IsWorking( ) const
 	{
 		return bWorking;
 	}
@@ -83,12 +79,6 @@ protected:
 
 	//счетчик времени, затрачиваемого на выстрел
 	float					fTime;
-
-protected:
-	//дл€ сталкеров, чтоб они знали эффективные границы использовани€ 
-	//оружи€
-	float					m_fMinRadius;
-	float					m_fMaxRadius;
 
 //////////////////////////////////////////////////////////////////////////
 // Lights

@@ -55,11 +55,11 @@ protected:
 template <class T>
 CUIInteractiveBackground<T>::CUIInteractiveBackground( )
 {
-	m_stateCurrent = NULL;
-	m_stateEnabled = NULL;
-	m_stateDisabled = NULL;
-	m_stateHighlighted = NULL;
-	m_stateTouched = NULL;
+	m_stateCurrent = nullptr;
+	m_stateEnabled = nullptr;
+	m_stateDisabled = nullptr;
+	m_stateHighlighted = nullptr;
+	m_stateTouched = nullptr;
 }
 
 template <class T>
@@ -232,16 +232,24 @@ void CUIInteractiveBackground<T>::SetState(UIState state)
 	switch (state)
 	{
 		case S_Enabled:
+		{
 			this->m_stateCurrent = this->m_stateEnabled;
-			break;
+		}
+		break;
 		case S_Disabled:
+		{
 			this->m_stateCurrent = this->m_stateDisabled ? this->m_stateDisabled : this->m_stateEnabled;
-			break;
+		}
+		break;
 		case S_Highlighted:
+		{
 			this->m_stateCurrent = this->m_stateHighlighted ? this->m_stateHighlighted : this->m_stateEnabled;
-			break;
+		}
+		break;
 		case S_Touched:
+		{
 			this->m_stateCurrent = this->m_stateTouched ? this->m_stateTouched : this->m_stateEnabled;
+		}
 	}
 }
 
@@ -302,5 +310,5 @@ void CUIInteractiveBackground<T>::SetHeight(float heigth)
 	}
 }
 
-typedef CUIInteractiveBackground<CUIFrameWindow> CUI_IB_FrameWindow;
-typedef CUIInteractiveBackground<CUIFrameLineWnd> CUI_IB_FrameLineWnd;
+using CUI_IB_FrameWindow = CUIInteractiveBackground<CUIFrameWindow>;
+using CUI_IB_FrameLineWnd = CUIInteractiveBackground<CUIFrameLineWnd>;

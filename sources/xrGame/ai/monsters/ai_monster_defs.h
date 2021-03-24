@@ -13,8 +13,8 @@ typedef u32 TTime;
 class CBlend;
 
 // специальные параметры анимаций (animation spec params)
-#define ASP_MOVE_BKWD			(1 << 0) 
-#define ASP_DRAG_CORPSE			(1 << 1) 
+#define ASP_MOVE_BKWD			(1 << 0)
+#define ASP_DRAG_CORPSE			(1 << 1)
 #define ASP_CHECK_CORPSE		(1 << 2)
 #define ASP_ATTACK_RAT			(1 << 3)
 #define ASP_ATTACK_RAT_JUMP		(1 << 4)
@@ -34,8 +34,6 @@ class CBlend;
 #define CRITICAL_STAND_TIME		1400
 #define TIME_STAND_RECHECK		2000
 
-
-
 #define HIT_SIDE_COUNT			2
 #define HIT_BACK				0
 #define HIT_FRONT				1
@@ -43,7 +41,6 @@ class CBlend;
 #define HIT_HEIGHT_COUNT		2
 #define HIT_LOW					0
 #define HIT_HIGH				1
-
 
 // Enemy flags
 #define FLAG_ENEMY_DIE					( 1 << 0 )
@@ -163,7 +160,7 @@ enum EMotionAnim {
 	eAnimSteal,
 
 	eAnimJumpStart,
-	eAnimJumpGlide,		
+	eAnimJumpGlide,
 	eAnimJumpFinish,
 
 	eAnimJumpLeft,

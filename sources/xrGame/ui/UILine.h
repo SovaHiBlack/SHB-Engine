@@ -16,18 +16,18 @@ public:
 		len_full = 0;
 		pos = 0;
 	}
-	int  len;
-	int  len_full;
-	int  pos;
-	inline	int  last_symbol( )
+	int len;
+	int len_full;
+	int pos;
+	inline int last_symbol( )
 	{
 		return pos + len - 1;
 	}
-	inline	int  last_space( )
+	inline int last_space( )
 	{
 		return pos + len_full - 1;
 	}
-	inline	bool exist( )
+	inline bool exist( )
 	{
 		return len > 0;
 	}
@@ -38,12 +38,12 @@ class Position
 public:
 	Word word_1;
 	Word word_2;
-	u32  curr_subline;
-	u32  slash_n_size( )
+	u32 curr_subline;
+	u32 slash_n_size( )
 	{
 		return 2;
 	}
-	inline	bool is_separated( )
+	inline bool is_separated( )
 	{
 		return (0 == word_2.pos) || (word_1.pos >= word_2.pos);
 	}

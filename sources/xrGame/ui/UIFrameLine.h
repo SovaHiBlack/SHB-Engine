@@ -42,15 +42,18 @@ public:
 	void		SetColor(u32 cl);
 	inline void		SetPos(float left, float top)
 	{
-		iPos.set(left, top);	uFlags &= ~flValidSize;
+		iPos.set(left, top);
+		uFlags &= ~flValidSize;
 	}
 	inline void		SetSize(float size)
 	{
-		iSize = size;			uFlags &= ~flValidSize;
+		iSize = size;
+		uFlags &= ~flValidSize;
 	}
 	inline void		SetOrientation(bool bIsHorizontal)
 	{
-		bHorizontalOrientation = bIsHorizontal; uFlags &= ~flValidSize;
+		bHorizontalOrientation = bIsHorizontal;
+		uFlags &= ~flValidSize;
 	}
 	void		Render( );
 };

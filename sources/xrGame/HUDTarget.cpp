@@ -147,14 +147,14 @@ void CHUDTarget::Render( )
 		return;
 	}
 
-	Fvector p1 = Device.vCameraPosition;
-	Fvector dir = Device.vCameraDirection;
+	Fvector3 p1 = Device.vCameraPosition;
+	Fvector3 dir = Device.vCameraDirection;
 
 	//Render cursor
 	u32 C = C_DEFAULT;
 
 	FVF::TL PT;
-	Fvector p2;
+	Fvector3 p2;
 	p2.mad(p1, dir, RQ.range);
 	PT.transform(p2, Device.mFullTransform);
 	float di_size = C_SIZE / powf(PT.p.w, .2f);

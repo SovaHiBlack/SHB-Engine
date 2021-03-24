@@ -61,8 +61,8 @@ private:
 	Fvector					m_destEnemyDir;
 	bool					m_allow_fire;
 	HUD_SOUND				sndShot;
-	float					camRelaxSpeed;
-	float					camMaxAngle;
+	float					camRelaxSpeed;	//скорость возврата в исходное положение
+	float					camMaxAngle;	//максимальный угол отдачи
 
 protected:
 	void					UpdateBarrelDir		();

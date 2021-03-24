@@ -61,10 +61,11 @@ void CWeaponStatMgun::OnShot()
 	FireBullet				(	m_fire_pos, m_fire_dir, fireDispersionBase, *m_Ammo, 
 								Owner()->ID(),ID(), SendHitAllowed(Owner()));
 
-	StartShotParticles		();
-	
-	if(m_bLightShotEnabled) 
-		Light_Start			();
+	StartShotParticles( );
+	if (m_bLightShotEnabled)
+	{
+		Light_Start( );
+	}
 
 	StartFlameParticles		();
 	StartSmokeParticles		(m_fire_pos, zero_vel);
@@ -78,14 +79,22 @@ void CWeaponStatMgun::OnShot()
 								::Random.randF(-fireDispersionBase,fireDispersionBase));
 }
 
-void CWeaponStatMgun::AddShotEffector				()
+void CWeaponStatMgun::AddShotEffector( )
 {
-	if(OwnerActor())
+	if (OwnerActor( ))
 	{
-		CCameraShotEffector* S	= smart_cast<CCameraShotEffector*>(OwnerActor()->Cameras().GetCamEffector(eCEShot)); 
-		if (!S)	S				= (CCameraShotEffector*)OwnerActor()->Cameras().AddCamEffector(xr_new<CCameraShotEffector> (camMaxAngle,camRelaxSpeed, 0.25f, 0.01f, 0.7f));
-		R_ASSERT				(S);
-		S->Shot					(0.01f);
+		CCameraShotEffector* S = smart_cast<CCameraShotEffector*>(OwnerActor( )->Cameras( ).GetCamEffector(eCEShot));
+		if (!S)
+		{
+			S = (CCameraShotEffector*) OwnerActor( )->Cameras( ).AddCamEffector(xr_new<CCameraShotEffector>(camMaxAngle,
+																											camRelaxSpeed,
+																											0.25f,
+																											0.01f,
+																											0.7f));
+		}
+
+		R_ASSERT(S);
+		S->Shot(0.01f);
 	}
 }
 

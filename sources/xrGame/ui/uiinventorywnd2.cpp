@@ -66,7 +66,7 @@ void CUIInventoryWnd::InitInventory( )
 
 	UIPropertiesBox.Hide( );
 	ClearAllLists( );
-	m_pMouseCapturer = NULL;
+	m_pMouseCapturer = nullptr;
 	SetCurrentItem(NULL);
 
 	//Slots
@@ -141,7 +141,7 @@ void CUIInventoryWnd::DropCurrentItem(bool b_all)
 		for (u32 i = 0; i < cnt; ++i)
 		{
 			CUICellItem* itm = CurrentItem( )->PopChild( );
-			PIItem			iitm = (PIItem) itm->m_pData;
+			PIItem iitm = (PIItem) itm->m_pData;
 			SendEvent_Item_Drop(iitm);
 		}
 
