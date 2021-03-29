@@ -168,7 +168,6 @@ void CUIListBox::MoveSelectedUp( )
 	{
 		return;
 	}
-//.	R_ASSERT(!m_flags.test(CUIScrollView::eMultiSelect));
 
 	WINDOW_LIST::reverse_iterator it = m_pad->GetChildWndList( ).rbegin( );
 	WINDOW_LIST::reverse_iterator it_e = m_pad->GetChildWndList( ).rend( );
@@ -199,7 +198,7 @@ void CUIListBox::MoveSelectedDown( )
 	{
 		return;
 	}
-//.	R_ASSERT(!m_flags.test(CUIScrollView::eMultiSelect));
+
 	WINDOW_LIST_it it = m_pad->GetChildWndList( ).begin( );
 	WINDOW_LIST_it it_e = m_pad->GetChildWndList( ).end( );
 	WINDOW_LIST_it it_next;

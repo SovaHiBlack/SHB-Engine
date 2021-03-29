@@ -101,8 +101,10 @@ void CUIProgressShape::Draw( )
 	float		curr_angle = 0.0f;
 	float		sin_a = _sin(curr_angle);
 	float		cos_a = _cos(curr_angle);
-	Fvector2	start_pos_pt, prev_pos_pt;
-	Fvector2	start_tex_pt, prev_tex_pt;
+	Fvector2	start_pos_pt;
+	Fvector2	prev_pos_pt;
+	Fvector2	start_tex_pt;
+	Fvector2	prev_tex_pt;
 
 	start_pos_pt.set(0.0f, -radius_pos);
 	prev_pos_pt = start_pos_pt;
@@ -115,13 +117,14 @@ void CUIProgressShape::Draw( )
 		float ffff = calc_color(i + 1, m_sectorCount, m_stage, 1.0f);
 		u32 color = color_argb_f(ffff, 1.0f, 1.0f, 1.0f);
 
-		pv->set(center_pos.x, center_pos.y, color, center_tex.x, center_tex.y); ++pv;
+		pv->set(center_pos.x, center_pos.y, color, center_tex.x, center_tex.y);
+		++pv;
 
-		Fvector2	tp;
+		Fvector2 tp;
 		tp.set(prev_pos_pt);
 		tp.add(center_pos);
 
-		Fvector2	tx;
+		Fvector2 tx;
 		tx.set(prev_tex_pt);
 		tx.add(center_tex);
 

@@ -31,7 +31,7 @@ CUIScrollBar::CUIScrollBar( )
 	m_StaticBackground = xr_new<CUIStaticItem>( );
 }
 
-CUIScrollBar::~CUIScrollBar(void)
+CUIScrollBar::~CUIScrollBar( )
 {
 	xr_delete(m_StaticBackground);
 }
@@ -136,6 +136,7 @@ void CUIScrollBar::SetRange(int iMin, int iMax)
 
 	UpdateScrollBar( );
 }
+
 void CUIScrollBar::Show(bool b)
 {
 	if (!m_b_enabled)
@@ -201,8 +202,8 @@ bool CUIScrollBar::OnKeyboardHold(int dik)
 	if (dik == MOUSE_1 && (last_hold_time + 100) < Device.dwTimeContinual)
 	{
 		Fvector2 cursor_pos = GetUICursor( )->GetCursorPosition( );
-		Frect	dec_rect;
-		Frect	inc_rect;
+		Frect dec_rect;
+		Frect inc_rect;
 
 		m_DecButton->GetAbsoluteRect(dec_rect);
 		m_IncButton->GetAbsoluteRect(inc_rect);

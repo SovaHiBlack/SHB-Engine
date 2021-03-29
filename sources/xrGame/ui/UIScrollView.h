@@ -5,14 +5,19 @@
 
 class CUIScrollBar;
 
-class CUIScrollView :public CUIWindow, public CUIWndCallback
+class CUIScrollView : public CUIWindow, public CUIWndCallback
 {
 	typedef CUIWindow	inherited;
 	friend class CUIXmlInit; //for init
+
 protected:
 	enum
 	{
-		eVertFlip = (1 << 0), eNeedRecalc = (1 << 1), eFixedScrollBar = (1 << 2), eItemsSelectabe = (1 << 3), eInverseDir = (1 << 4)/*,eMultiSelect=(1<<5)*/
+		eVertFlip = (1 << 0),
+		eNeedRecalc = (1 << 1),
+		eFixedScrollBar = (1 << 2),
+		eItemsSelectabe = (1 << 3),
+		eInverseDir = (1 << 4)
 	};
 	CUIScrollBar* m_VScrollBar;
 	CUIWindow* m_pad;
@@ -38,6 +43,7 @@ protected:
 	{
 		m_flags.set(eVertFlip, val);
 	}
+
 public:
 	using CUIWindow::Init;
 

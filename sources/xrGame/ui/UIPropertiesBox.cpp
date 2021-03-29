@@ -28,7 +28,7 @@ void CUIPropertiesBox::Init(float x, float y, float width, float height)
 
 	AttachChild(&m_UIListWnd);
 
-	CUIXml					xml_doc;
+	CUIXml xml_doc;
 	xml_doc.Init("$game_config$", "ui", "inventory_new.xml");
 
 	const char* t = xml_doc.Read("properties_box:texture", 0, "");
@@ -62,6 +62,7 @@ bool CUIPropertiesBox::AddItem(const char* str, void* pData, u32 tag_value)
 
 	return true;
 }
+
 void CUIPropertiesBox::RemoveItemByTAG(u32 tag)
 {
 	m_UIListWnd.RemoveWindow(m_UIListWnd.GetItemByTAG(tag));
@@ -74,7 +75,7 @@ void CUIPropertiesBox::RemoveAll( )
 
 void CUIPropertiesBox::Show(const Frect& parent_rect, const Fvector2& point)
 {
-	Fvector2						prop_pos;
+	Fvector2 prop_pos;
 	Fvector2 prop_size = GetWndSize( );
 
 	if (point.x - prop_size.x > parent_rect.x1 && point.y + prop_size.y < parent_rect.y2)
@@ -152,11 +153,6 @@ void CUIPropertiesBox::AutoUpdateSize( )
 	m_UIListWnd.UpdateChildrenLenght( );
 }
 
-//int CUIPropertiesBox::GetClickedIndex() 
-//{
-////	return m_iClickedElement;
-//}
-
 CUIListBoxItem* CUIPropertiesBox::GetClickedItem( )
 {
 	return m_UIListWnd.GetSelectedItem( );
@@ -187,14 +183,11 @@ void CUIPropertiesBox::script_register(lua_State* L)
 		[
 			class_<CUIPropertiesBox, CUIFrameWindow>("CUIPropertiesBox")
 			.def(constructor<>( ))
-	//		.def("AddItem",					&CUIPropertiesBox::AddItem)
-		.def("RemoveItem", &CUIPropertiesBox::RemoveItemByTAG)
-		.def("RemoveAll", &CUIPropertiesBox::RemoveAll)
-		.def("Show", (void(CUIPropertiesBox::*)(int, int)) & CUIPropertiesBox::Show)
-		.def("Hide", &CUIPropertiesBox::Hide)
-//		.def("GetClickedIndex",		&CUIPropertiesBox::GetClickedIndex)
-.def("AutoUpdateSize", &CUIPropertiesBox::AutoUpdateSize)
-.def("AddItem", &CUIPropertiesBox::AddItem_script)
-//		.def("",					&CUIPropertiesBox::)
+			.def("RemoveItem", &CUIPropertiesBox::RemoveItemByTAG)
+			.def("RemoveAll", &CUIPropertiesBox::RemoveAll)
+			.def("Show", (void(CUIPropertiesBox::*)(int, int)) & CUIPropertiesBox::Show)
+			.def("Hide", &CUIPropertiesBox::Hide)
+			.def("AutoUpdateSize", &CUIPropertiesBox::AutoUpdateSize)
+			.def("AddItem", &CUIPropertiesBox::AddItem_script)
 		];
 }

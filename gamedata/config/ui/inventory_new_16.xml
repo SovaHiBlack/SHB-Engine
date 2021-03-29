@@ -2,10 +2,8 @@
 <window>
 	<properties_box>
 		<texture>ui_cb_listbox</texture>
-
 		<list x="0" y="0" width="10" height="10" item_height="18" always_show_scroll="0" can_select="1" bottom_indent="10" right_ident="10" left_ident="20">
 			<font_s r="218" g="217" b="213"/>
-
 			<font r="131" g="131" b="131" font="letterica16"/>
 		</list>
 	</properties_box>
@@ -61,55 +59,46 @@
 
 		<static_burn_immunity x="0" y="0" width="226" height="15" complex_mode="1">
 			<texture>ui_inv_icon_burn_immunity</texture>
-
 			<text font="letterica16" x="13" y="0" color="ui_clr_1"/>
 		</static_burn_immunity>
 
 		<static_strike_immunity x="0" y="0" width="226" height="15" complex_mode="1">
 			<texture>ui_inv_icon_strike_immunity</texture>
-
 			<text font="letterica16" x="13" y="0" color="ui_clr_1"/>
 		</static_strike_immunity>
 
 		<static_shock_immunity x="0" y="0" width="226" height="15" complex_mode="1">
 			<texture>ui_inv_icon_shock_immunity</texture>
-
 			<text font="letterica16" x="13" y="0" color="ui_clr_1"/>
 		</static_shock_immunity>
 
 		<static_wound_immunity x="0" y="0" width="226" height="15" complex_mode="1">
 			<texture>ui_inv_icon_wound_immunity</texture>
-
 			<text font="letterica16" x="13" y="0" color="ui_clr_1"/>
 		</static_wound_immunity>
 
 		<static_radiation_immunity x="0" y="0" width="226" height="15" complex_mode="1">
 			<texture>ui_inv_icon_radiation_immunity</texture>
-
 			<text font="letterica16" x="13" y="0" color="ui_clr_1"/>
 		</static_radiation_immunity>
 
 		<static_telepatic_immunity x="0" y="0" width="226" height="15" complex_mode="1">
 			<texture>ui_inv_icon_telepatic_immunity</texture>
-
 			<text font="letterica16" x="13" y="0" color="ui_clr_1"/>
 		</static_telepatic_immunity>
 
 		<static_chemical_burn_immunity x="0" y="0" width="226" height="15" complex_mode="1">
 			<texture>ui_inv_icon_chemical_burn_immunity</texture>
-
 			<text font="letterica16" x="13" y="0" color="ui_clr_1"/>
 		</static_chemical_burn_immunity>
 
 		<static_explosion_immunity x="0" y="0" width="226" height="15" complex_mode="1">
 			<texture>ui_inv_icon_explosion_immunity</texture>
-
 			<text font="letterica16" x="13" y="0" color="ui_clr_1"/>
 		</static_explosion_immunity>
 
 		<static_fire_wound_immunity x="0" y="0" width="226" height="15" complex_mode="1">
 			<texture>ui_inv_icon_fire_wound_immunity</texture>
-
 			<text font="letterica16" x="13" y="0" color="ui_clr_1"/>
 		</static_fire_wound_immunity>
 	</outfit_info>
@@ -118,7 +107,6 @@
 
 	<rank x="732" y="272" width="56" height="65" stretch="1">
 		<texture>ui_inventory_rank</texture>
-
 		<pic x="10" y="17" width="34" height="40" stretch="1"/>
 	</rank>
 

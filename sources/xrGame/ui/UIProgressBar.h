@@ -32,22 +32,24 @@ public:
 	CUIStatic			m_UIProgressItem;
 	CUIStatic			m_UIBackgroundItem;
 
-	CUIProgressBar( );
+						CUIProgressBar( );
 	virtual				~CUIProgressBar( );
 
 	virtual void		Init(float x, float y, float width, float height, bool bIsHorizontal);
 
 	void				SetRange(float _Min, float _Max)
 	{
-		m_MinPos = _Min;  m_MaxPos = _Max; UpdateProgressBar( );
+		m_MinPos = _Min;
+		m_MaxPos = _Max;
+		UpdateProgressBar( );
 	}
 	float				GetRange_min( )
 	{
-		return  m_MinPos;
+		return m_MinPos;
 	}
 	float				GetRange_max( )
 	{
-		return  m_MaxPos;
+		return m_MaxPos;
 	}
 
 	void				SetProgressPos(float _Pos);
@@ -59,7 +61,7 @@ public:
 	virtual void		Draw( );
 	virtual void		Update( );
 
-	static void script_register(lua_State*);
+	static void			script_register(lua_State*);
 };
 
 add_to_type_list(CUIProgressBar)

@@ -32,14 +32,23 @@ void CUIProgressBar::Init(float x, float y, float width, float height, bool bIsH
 
 void CUIProgressBar::UpdateProgressBar( )
 {
-	if (fsimilar(m_MaxPos, m_MinPos)) m_MaxPos += EPS;
+	if (fsimilar(m_MaxPos, m_MinPos))
+	{
+		m_MaxPos += EPS;
+	}
 
 	float progressbar_unit = 1 / (m_MaxPos - m_MinPos);
 
 	float fCurrentLength = m_ProgressPos.x * progressbar_unit;
 
-	if (m_bIsHorizontal)	m_CurrentLength = GetWidth( ) * fCurrentLength;
-	else				m_CurrentLength = GetHeight( ) * fCurrentLength;
+	if (m_bIsHorizontal)
+	{
+		m_CurrentLength = GetWidth( ) * fCurrentLength;
+	}
+	else
+	{
+		m_CurrentLength = GetHeight( ) * fCurrentLength;
+	}
 
 	if (m_bUseColor)
 	{
@@ -55,7 +64,9 @@ void CUIProgressBar::SetProgressPos(float _Pos)
 	clamp(m_ProgressPos.y, m_MinPos, m_MaxPos);
 
 	if (m_last_render_frame + 1 != Device.dwFrame)
+	{
 		m_ProgressPos.x = m_ProgressPos.y;
+	}
 
 	UpdateProgressBar( );
 }
@@ -64,12 +75,16 @@ float _sign(const float& v)
 {
 	return (v > 0.0f) ? +1.0f : -1.0f;
 }
+
 void CUIProgressBar::Update( )
 {
 	inherited::Update( );
 	if (!fsimilar(m_ProgressPos.x, m_ProgressPos.y))
 	{
-		if (fsimilar(m_MaxPos, m_MinPos)) m_MaxPos += EPS;	//hack ^(
+		if (fsimilar(m_MaxPos, m_MinPos))
+		{	//hack ^(
+			m_MaxPos += EPS;
+		}
 		float _diff = m_ProgressPos.y - m_ProgressPos.x;
 
 		float _length = (m_MaxPos - m_MinPos);
@@ -84,7 +99,7 @@ void CUIProgressBar::Update( )
 
 void CUIProgressBar::Draw( )
 {
-	Frect					rect;
+	Frect rect;
 	GetAbsoluteRect(rect);
 
 	if (m_bBackgroundPresent)
@@ -132,6 +147,5 @@ void CUIProgressBar::script_register(lua_State* L)
 
 		.def("GetRange_min", &CUIProgressBar::GetRange_min)
 		.def("GetRange_max", &CUIProgressBar::GetRange_max)
-
 		];
 }

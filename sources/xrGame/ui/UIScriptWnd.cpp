@@ -7,10 +7,10 @@
 
 struct event_comparer
 {
-	shared_str			name;
-	s16					event;
+	shared_str name;
+	s16 event;
 
-	event_comparer(shared_str n, s16 e) :name(n), event(e)
+	event_comparer(shared_str n, s16 e) : name(n), event(e)
 	{ }
 	bool operator ()(SCallbackInfo* i)
 	{
@@ -33,6 +33,7 @@ CUIDialogWndEx::~CUIDialogWndEx( )
 	{
 	}
 }
+
 void CUIDialogWndEx::Register(CUIWindow* pChild)
 {
 	pChild->SetMessageTarget(this);
@@ -50,12 +51,16 @@ void CUIDialogWndEx::SendMessage(CUIWindow* pWnd, s16 msg, void* pData)
 
 	CALLBACK_IT it = std::find_if(m_callbacks.begin( ), m_callbacks.end( ), ec);
 	if (it == m_callbacks.end( ))
+	{
 		return inherited::SendMessage(pWnd, msg, pData);
+	}
 
 	((*it)->m_callback)();
 
-//	if ( (*it)->m_cpp_callback )	
-//		(*it)->m_cpp_callback(pData);
+//	if ((*it)->m_cpp_callback)
+//	{
+//	(*it)->m_cpp_callback(pData);
+//	}
 }
 
 bool CUIDialogWndEx::Load(const char* xml_name)
@@ -89,6 +94,7 @@ bool CUIDialogWndEx::OnKeyboard(int dik, EUIMessages keyboard_action)
 {
 	return inherited::OnKeyboard(dik, keyboard_action);
 }
+
 void CUIDialogWndEx::Update( )
 {
 	inherited::Update( );

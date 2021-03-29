@@ -6,38 +6,38 @@
 
 struct SCallbackInfo;
 
-class CUIDialogWndEx :public CUIDialogWnd, public DLL_Pure
+class CUIDialogWndEx : public CUIDialogWnd, public DLL_Pure
 {
-	typedef CUIDialogWnd				inherited;
-	typedef xr_vector<SCallbackInfo*>	CALLBACKS;
-	typedef CALLBACKS::iterator			CALLBACK_IT;
+	using inherited							= CUIDialogWnd;
+	using CALLBACKS							= xr_vector<SCallbackInfo*>;
+	using CALLBACK_IT						= CALLBACKS::iterator;
 
 private:
-	CALLBACKS			m_callbacks;
-	virtual void				SendMessage(CUIWindow* pWnd, s16 msg, void* pData = nullptr);
-	SCallbackInfo* NewCallback( );
+	CALLBACKS								m_callbacks;
+	virtual void		SendMessage			(CUIWindow* pWnd, s16 msg, void* pData = nullptr);
+	SCallbackInfo*		NewCallback			( );
 
 protected:
-	bool				Load(const char* xml_name);
+	bool				Load				(const char* xml_name);
 
 public:
-	void				Register(CUIWindow* pChild);
-	void				Register(CUIWindow* pChild, const char* name);
-	CUIDialogWndEx( );
-	virtual						~CUIDialogWndEx( );
-	void				AddCallback(const char* control_id, s16 event, const luabind::functor<void>& lua_function);
-	void				AddCallback(const char* control_id, s16 event, const luabind::functor<void>& functor, const luabind::object& object);
-	virtual void				Update( );
-	virtual bool				OnKeyboard(int dik, EUIMessages keyboard_action);
-	virtual bool				Dispatch(int cmd, int param)
+	void				Register			(CUIWindow* pChild);
+	void				Register			(CUIWindow* pChild, const char* name);
+						CUIDialogWndEx		( );
+	virtual				~CUIDialogWndEx		( );
+	void				AddCallback			(const char* control_id, s16 event, const luabind::functor<void>& lua_function);
+	void				AddCallback			(const char* control_id, s16 event, const luabind::functor<void>& functor, const luabind::object& object);
+	virtual void		Update				( );
+	virtual bool		OnKeyboard			(int dik, EUIMessages keyboard_action);
+	virtual bool		Dispatch			(int cmd, int param)
 	{
 		return true;
 	}
 
 	template<typename T>
-	inline	T* GetControl(const char* name);
+	inline T*			GetControl			(const char* name);
 
-	static void script_register(lua_State*);
+	static void			script_register		(lua_State*);
 };
 
 add_to_type_list(CUIDialogWndEx)

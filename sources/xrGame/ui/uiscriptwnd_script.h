@@ -34,8 +34,8 @@ struct CWrapperBase : public T, public luabind::wrap_base
 	}
 };
 
-typedef CWrapperBase<CUIDialogWndEx> WrapType;
-typedef CUIDialogWndEx BaseType;
+using WrapType = CWrapperBase<CUIDialogWndEx>;
+using BaseType = CUIDialogWndEx;
 
 template<typename T>
 inline T* CUIDialogWndEx::GetControl(const char* name)
@@ -50,4 +50,4 @@ inline T* CUIDialogWndEx::GetControl(const char* name)
 	return smart_cast<T*>(pWnd);
 }
 
-typedef luabind::class_<CUIDialogWndEx, WrapType, luabind::bases<CUIDialogWnd, DLL_Pure> > export_class;
+using export_class = luabind::class_<CUIDialogWndEx, WrapType, luabind::bases<CUIDialogWnd, DLL_Pure>>;

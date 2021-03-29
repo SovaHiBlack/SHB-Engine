@@ -4,10 +4,6 @@
 //.#include "uiscrollbar.h"//
 #include "UIFrameLineWnd.h"//
 
-//. #define				ACTIVE_BACKGROUND			"ui\\ui_pop_up_active_back"
-//. #define				ACTIVE_BACKGROUND_WIDTH		16
-//. #define				ACTIVE_BACKGROUND_HEIGHT	16
-
 // разделитель для интерактивных строк в листе
 static const char	cSeparatorChar = '%';
 
@@ -86,13 +82,6 @@ void CUIListWnd::Init(float x, float y, float width, float height, float item_he
 	m_ScrollBar->Show(false);
 	m_ScrollBar->Enable(false);
 
-/*
-	m_StaticActiveBackground.Init(ACTIVE_BACKGROUND,"hud\\default", 0,0,alNone);
-	m_StaticActiveBackground.SetTile(iFloor(m_iItemWidth/ACTIVE_BACKGROUND_WIDTH),
-									 iFloor(m_iItemHeight/ACTIVE_BACKGROUND_HEIGHT),
-									 fmod(m_iItemWidth,float(ACTIVE_BACKGROUND_WIDTH)),
-									 fmod(m_iItemHeight,float(ACTIVE_BACKGROUND_HEIGHT)));
-*/
 	UpdateList( );
 }
 //////////////////////////////////////////////////////////////////////////
@@ -112,13 +101,6 @@ void CUIListWnd::SetHeight(float height)
 void CUIListWnd::SetWidth(float width)
 {
 	inherited::SetWidth(width);
-/*
-	m_StaticActiveBackground.SetTile(iFloor(GetWidth()/ACTIVE_BACKGROUND_WIDTH),
-									 iFloor(m_iItemHeight/ACTIVE_BACKGROUND_HEIGHT),
-									 fmod(GetWidth(),float(ACTIVE_BACKGROUND_WIDTH)),
-									 fmod(float(m_iItemHeight),float(ACTIVE_BACKGROUND_HEIGHT))
-									 );
-*/
 }
 
 void CUIListWnd::RemoveItem(int index)
@@ -504,7 +486,10 @@ int CUIListWnd::FindItem(void* pData)
 	int i = 0;
 	for (LIST_ITEM_LIST_it it = m_ItemList.begin( ); m_ItemList.end( ) != it; ++it, ++i)
 	{
-		if ((*it)->GetData( ) == pData) return i;
+		if ((*it)->GetData( ) == pData)
+		{
+			return i;
+		}
 	}
 
 	return -1;
@@ -515,7 +500,10 @@ int CUIListWnd::FindItemWithValue(int iValue)
 	int i = 0;
 	for (LIST_ITEM_LIST_it it = m_ItemList.begin( ); m_ItemList.end( ) != it; ++it, ++i)
 	{
-		if ((*it)->GetValue( ) == iValue) return i;
+		if ((*it)->GetValue( ) == iValue)
+		{
+			return i;
+		}
 	}
 
 	return -1;

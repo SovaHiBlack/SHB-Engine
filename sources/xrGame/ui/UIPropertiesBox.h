@@ -8,45 +8,45 @@
 class CUIPropertiesBox : public CUIFrameWindow
 {
 private:
-	typedef CUIFrameWindow inherited;
+	using inherited							= CUIFrameWindow;
 
 public:
-	CUIPropertiesBox( );
-	virtual				~CUIPropertiesBox( );
+						CUIPropertiesBox	( );
+	virtual				~CUIPropertiesBox	( );
 
-	virtual void		Init(float x, float y, float width, float height);
+	virtual void		Init				(float x, float y, float width, float height);
 
-	virtual void		SendMessage(CUIWindow* pWnd, s16 msg, void* pData);
-	virtual bool		OnMouse(float x, float y, EUIMessages mouse_action);
-	virtual bool		OnKeyboard(int dik, EUIMessages keyboard_action);
+	virtual void		SendMessage			(CUIWindow* pWnd, s16 msg, void* pData);
+	virtual bool		OnMouse				(float x, float y, EUIMessages mouse_action);
+	virtual bool		OnKeyboard			(int dik, EUIMessages keyboard_action);
 
-	bool				AddItem(const char* str, void* pData = nullptr, u32 tag_value = 0);
-	bool				AddItem_script(const char* str)
+	bool				AddItem				(const char* str, void* pData = nullptr, u32 tag_value = 0);
+	bool				AddItem_script		(const char* str)
 	{
 		return AddItem(str);
 	}
-	u32					GetItemsCount( )
+	u32					GetItemsCount		( )
 	{
 		return m_UIListWnd.GetSize( );
 	}
-	void				RemoveItemByTAG(u32 tag_value);
-	void				RemoveAll( );
+	void				RemoveItemByTAG		(u32 tag_value);
+	void				RemoveAll			( );
 
-	virtual void		Show(const Frect& parent_rect, const Fvector2& point);
-	virtual void		Hide( );
+	virtual void		Show				(const Frect& parent_rect, const Fvector2& point);
+	virtual void		Hide				( );
 
-	virtual void		Update( );
-	virtual void		Draw( );
+	virtual void		Update				( );
+	virtual void		Draw				( );
 
-	CUIListBoxItem* GetClickedItem( );
+	CUIListBoxItem*		GetClickedItem		( );
 
-	void				AutoUpdateSize( );
+	void				AutoUpdateSize		( );
 
 protected:
-	CUIListBox			m_UIListWnd;
+	CUIListBox								m_UIListWnd;
 
 public:
-	static void script_register(lua_State*);
+	static void			script_register		(lua_State*);
 };
 
 add_to_type_list(CUIPropertiesBox)

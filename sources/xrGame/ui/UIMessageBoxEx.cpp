@@ -46,23 +46,31 @@ void CUIMessageBoxEx::SendMessage(CUIWindow* pWnd, s16 msg, void* pData)
 			case MESSAGE_BOX_CANCEL_CLICKED:
 			case MESSAGE_BOX_QUIT_WIN_CLICKED:
 			case MESSAGE_BOX_QUIT_GAME_CLICKED:
+			{
 				GetHolder( )->StartStopMenu(this, true);
+			}
 			default:
-				break;
+			{
+			}
+			break;
 		}
 
 		if (GetMessageTarget( ))
+		{
 			GetMessageTarget( )->SendMessage(this, msg, pData);
+		}
 	}
 
 }
-
+/*
 const char* CUIMessageBoxEx::GetHost( )
 {
 	return m_pMessageBox->GetHost( );
 }
-
+*/
+/*
 const char* CUIMessageBoxEx::GetPassword( )
 {
 	return m_pMessageBox->GetPassword( );
 }
+*/

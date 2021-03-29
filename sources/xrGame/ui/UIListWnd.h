@@ -184,8 +184,8 @@ protected:
 	//элемент над которым курсор в данный момент или -1, если такого нет
 	int		m_iFocusedItem;
 	int		m_iFocusedItemGroupID;
-	int     m_iSelectedItem;
-	int     m_iSelectedItemGroupID;
+	int		m_iSelectedItem;
+	int		m_iSelectedItemGroupID;
 
 	bool	m_bShowSelectedItem;
 	bool	m_bAlwaysShowScroll_enable;

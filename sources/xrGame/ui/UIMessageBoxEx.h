@@ -16,8 +16,8 @@ public:
 	virtual void Init(const char* xml_template);
 	virtual void SendMessage(CUIWindow* pWnd, s16 msg, void* pData = nullptr);
 
-	const char* GetHost( );
-	const char* GetPassword( );
+//	const char* GetHost( );
+//	const char* GetPassword( );
 
 	CUIMessageBox* m_pMessageBox;
 };
