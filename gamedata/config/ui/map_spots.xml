@@ -4,11 +4,8 @@
 #include "ui\map_spots_escape.xml"
 #include "ui\map_spots_garbage.xml"
 #include "ui\map_spots_agroprom.xml"
-;#include "ui\map_spots_darkvalley.xml"
 #include "ui\map_spots_bar.xml"
-;#include "ui\map_spots_military.xml"
 #include "ui\map_spots_radar.xml"
-;#include "ui\map_spots_mp.xml"
 #include "ui\map_spots_relations.xml"
 #include "ui\map_spots_lchangers.xml"
 

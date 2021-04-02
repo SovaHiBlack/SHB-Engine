@@ -133,9 +133,6 @@
     <Filter Include="spawns\unpack">
       <UniqueIdentifier>{185e80c6-73e0-4cb3-897b-baca302b38c6}</UniqueIdentifier>
     </Filter>
-    <Filter Include="config\ui\hide">
-      <UniqueIdentifier>{6e01d672-a59a-4856-b5f2-746193027760}</UniqueIdentifier>
-    </Filter>
     <Filter Include="scripts\hide">
       <UniqueIdentifier>{3a896236-2152-4c4e-9b2f-23ee55c2411a}</UniqueIdentifier>
     </Filter>
@@ -3187,12 +3184,6 @@
     <None Include="scripts\hide\agro.script">
       <Filter>scripts\hide</Filter>
     </None>
-    <None Include="scripts\hide\agroprom_dialog.script">
-      <Filter>scripts\hide</Filter>
-    </None>
-    <None Include="scripts\hide\agroprom_tasks.script">
-      <Filter>scripts\hide</Filter>
-    </None>
     <None Include="scripts\hide\alife_test.script">
       <Filter>scripts\hide</Filter>
     </None>
@@ -3209,12 +3200,6 @@
       <Filter>scripts\hide</Filter>
     </None>
     <None Include="scripts\hide\avi_start.script">
-      <Filter>scripts\hide</Filter>
-    </None>
-    <None Include="scripts\hide\bar_dialogs.script">
-      <Filter>scripts\hide</Filter>
-    </None>
-    <None Include="scripts\hide\bar_rostok_tasks.script">
       <Filter>scripts\hide</Filter>
     </None>
     <None Include="scripts\hide\bug_test.script">
@@ -3247,9 +3232,6 @@
     <None Include="scripts\hide\dar_dialogs.script">
       <Filter>scripts\hide</Filter>
     </None>
-    <None Include="scripts\hide\darkvalley_tasks.script">
-      <Filter>scripts\hide</Filter>
-    </None>
     <None Include="scripts\hide\dbg_test.script">
       <Filter>scripts\hide</Filter>
     </None>
@@ -3277,21 +3259,6 @@
     <None Include="scripts\hide\del2.script">
       <Filter>scripts\hide</Filter>
     </None>
-    <None Include="scripts\hide\dialogs.script">
-      <Filter>scripts\hide</Filter>
-    </None>
-    <None Include="scripts\hide\dialogs_aes.script">
-      <Filter>scripts\hide</Filter>
-    </None>
-    <None Include="scripts\hide\dialogs_darkvalley.script">
-      <Filter>scripts\hide</Filter>
-    </None>
-    <None Include="scripts\hide\dialogs_military.script">
-      <Filter>scripts\hide</Filter>
-    </None>
-    <None Include="scripts\hide\dialogs_yantar.script">
-      <Filter>scripts\hide</Filter>
-    </None>
     <None Include="scripts\hide\dog_look1.script">
       <Filter>scripts\hide</Filter>
     </None>
@@ -3305,9 +3272,6 @@
       <Filter>scripts\hide</Filter>
     </None>
     <None Include="scripts\hide\esc_test.script">
-      <Filter>scripts\hide</Filter>
-    </None>
-    <None Include="scripts\hide\escape_dialog.script">
       <Filter>scripts\hide</Filter>
     </None>
     <None Include="scripts\hide\escape_heli.script">
@@ -3326,9 +3290,6 @@
       <Filter>scripts\hide</Filter>
     </None>
     <None Include="scripts\hide\escape_sound_events.script">
-      <Filter>scripts\hide</Filter>
-    </None>
-    <None Include="scripts\hide\escape_tasks.script">
       <Filter>scripts\hide</Filter>
     </None>
     <None Include="scripts\hide\explode_zone.script">
@@ -3368,15 +3329,6 @@
       <Filter>scripts\hide</Filter>
     </None>
     <None Include="scripts\hide\game_types.script">
-      <Filter>scripts\hide</Filter>
-    </None>
-    <None Include="scripts\hide\garbage_dialogs.script">
-      <Filter>scripts\hide</Filter>
-    </None>
-    <None Include="scripts\hide\garbage_tasks.script">
-      <Filter>scripts\hide</Filter>
-    </None>
-    <None Include="scripts\hide\gramofon.script">
       <Filter>scripts\hide</Filter>
     </None>
     <None Include="scripts\hide\gulag_deadcity.script">
@@ -3559,9 +3511,6 @@
     <None Include="scripts\hide\quest_yantar.script">
       <Filter>scripts\hide</Filter>
     </None>
-    <None Include="scripts\hide\rad_dialogs.script">
-      <Filter>scripts\hide</Filter>
-    </None>
     <None Include="scripts\hide\radar_test.script">
       <Filter>scripts\hide</Filter>
     </None>
@@ -3575,9 +3524,6 @@
       <Filter>scripts\hide</Filter>
     </None>
     <None Include="scripts\hide\slowdown.script">
-      <Filter>scripts\hide</Filter>
-    </None>
-    <None Include="scripts\hide\sound_megafon.script">
       <Filter>scripts\hide</Filter>
     </None>
     <None Include="scripts\hide\sound_prefetch.script">
@@ -3775,51 +3721,6 @@
     <None Include="scripts\hide\ui_main_new_tab.script">
       <Filter>scripts\hide</Filter>
     </None>
-    <None Include="scripts\hide\ui_mm_mp_join.script">
-      <Filter>scripts\hide</Filter>
-    </None>
-    <None Include="scripts\hide\ui_mm_mp_join.script~">
-      <Filter>scripts\hide</Filter>
-    </None>
-    <None Include="scripts\hide\ui_mm_mp_options.script">
-      <Filter>scripts\hide</Filter>
-    </None>
-    <None Include="scripts\hide\ui_mm_mp_server.script">
-      <Filter>scripts\hide</Filter>
-    </None>
-    <None Include="scripts\hide\ui_mp_main.script">
-      <Filter>scripts\hide</Filter>
-    </None>
-    <None Include="scripts\hide\ui_multiplayer_base.script">
-      <Filter>scripts\hide</Filter>
-    </None>
-    <None Include="scripts\hide\ui_multiplayer_base_tab.script">
-      <Filter>scripts\hide</Filter>
-    </None>
-    <None Include="scripts\hide\ui_multiplayer_create.script">
-      <Filter>scripts\hide</Filter>
-    </None>
-    <None Include="scripts\hide\ui_multiplayer_create_base_tab.script">
-      <Filter>scripts\hide</Filter>
-    </None>
-    <None Include="scripts\hide\ui_multiplayer_create_map_tab.script">
-      <Filter>scripts\hide</Filter>
-    </None>
-    <None Include="scripts\hide\ui_multiplayer_dialog.script">
-      <Filter>scripts\hide</Filter>
-    </None>
-    <None Include="scripts\hide\ui_multiplayer_find.script">
-      <Filter>scripts\hide</Filter>
-    </None>
-    <None Include="scripts\hide\ui_multiplayer_gametype_tab.script">
-      <Filter>scripts\hide</Filter>
-    </None>
-    <None Include="scripts\hide\ui_multiplayer_map_tab.script">
-      <Filter>scripts\hide</Filter>
-    </None>
-    <None Include="scripts\hide\ui_multiplayer_options_tab.script">
-      <Filter>scripts\hide</Filter>
-    </None>
     <None Include="scripts\hide\ui_options_base_tab.script">
       <Filter>scripts\hide</Filter>
     </None>
@@ -3883,16 +3784,10 @@
     <None Include="scripts\hide\x18.script">
       <Filter>scripts\hide</Filter>
     </None>
-    <None Include="scripts\hide\xr_assistance.script">
-      <Filter>scripts\hide</Filter>
-    </None>
     <None Include="scripts\hide\xr_bodyguard.script">
       <Filter>scripts\hide</Filter>
     </None>
     <None Include="scripts\hide\xr_combat_monolith.script">
-      <Filter>scripts\hide</Filter>
-    </None>
-    <None Include="scripts\hide\xr_comm_ptr.script">
       <Filter>scripts\hide</Filter>
     </None>
     <None Include="scripts\hide\xr_companion.script">
@@ -3934,9 +3829,6 @@
     <None Include="scripts\hide\xr_sounds_id.script">
       <Filter>scripts\hide</Filter>
     </None>
-    <None Include="scripts\hide\xr_state.script">
-      <Filter>scripts\hide</Filter>
-    </None>
     <None Include="scripts\hide\xr_talker.script">
       <Filter>scripts\hide</Filter>
     </None>
@@ -3944,9 +3836,6 @@
       <Filter>scripts\hide</Filter>
     </None>
     <None Include="scripts\hide\xr_zones_sound.script">
-      <Filter>scripts\hide</Filter>
-    </None>
-    <None Include="scripts\hide\yantar_dialog.script">
       <Filter>scripts\hide</Filter>
     </None>
     <None Include="scripts\hide\yantar_test.script">
@@ -4508,6 +4397,9 @@
       <Filter>scripts</Filter>
     </None>
     <None Include="scripts\xr_zones.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\xr_state.script">
       <Filter>scripts</Filter>
     </None>
   </ItemGroup>
@@ -5291,216 +5183,6 @@
     </Xml>
     <Xml Include="config\text\eng\ui_st_pda.xml">
       <Filter>config\text\eng</Filter>
-    </Xml>
-    <Xml Include="config\ui\hide\actor_diary.xml">
-      <Filter>config\ui\hide</Filter>
-    </Xml>
-    <Xml Include="config\ui\hide\buy_menu_item.xml">
-      <Filter>config\ui\hide</Filter>
-    </Xml>
-    <Xml Include="config\ui\hide\buy_mp_item.xml">
-      <Filter>config\ui\hide</Filter>
-    </Xml>
-    <Xml Include="config\ui\hide\carbody.xml">
-      <Filter>config\ui\hide</Filter>
-    </Xml>
-    <Xml Include="config\ui\hide\chat_mp.xml">
-      <Filter>config\ui\hide</Filter>
-    </Xml>
-    <Xml Include="config\ui\hide\contracts.xml">
-      <Filter>config\ui\hide</Filter>
-    </Xml>
-    <Xml Include="config\ui\hide\contracts_character.xml">
-      <Filter>config\ui\hide</Filter>
-    </Xml>
-    <Xml Include="config\ui\hide\follower_character.xml">
-      <Filter>config\ui\hide</Filter>
-    </Xml>
-    <Xml Include="config\ui\hide\follower_panel.xml">
-      <Filter>config\ui\hide</Filter>
-    </Xml>
-    <Xml Include="config\ui\hide\global_map.xml">
-      <Filter>config\ui\hide</Filter>
-    </Xml>
-    <Xml Include="config\ui\hide\ingame_msglog_mp.xml">
-      <Filter>config\ui\hide</Filter>
-    </Xml>
-    <Xml Include="config\ui\hide\ingame_msglog_sp.xml">
-      <Filter>config\ui\hide</Filter>
-    </Xml>
-    <Xml Include="config\ui\hide\inventory.xml">
-      <Filter>config\ui\hide</Filter>
-    </Xml>
-    <Xml Include="config\ui\hide\inventory_character.xml">
-      <Filter>config\ui\hide</Filter>
-    </Xml>
-    <Xml Include="config\ui\hide\inventorymp.xml">
-      <Filter>config\ui\hide</Filter>
-    </Xml>
-    <Xml Include="config\ui\hide\inventorymp_new.xml">
-      <Filter>config\ui\hide</Filter>
-    </Xml>
-    <Xml Include="config\ui\hide\inventorymp_new2.xml">
-      <Filter>config\ui\hide</Filter>
-    </Xml>
-    <Xml Include="config\ui\hide\jobs.xml">
-      <Filter>config\ui\hide</Filter>
-    </Xml>
-    <Xml Include="config\ui\hide\jobs_new.xml">
-      <Filter>config\ui\hide</Filter>
-    </Xml>
-    <Xml Include="config\ui\hide\maingame_character.xml">
-      <Filter>config\ui\hide</Filter>
-    </Xml>
-    <Xml Include="config\ui\hide\maingame_new.xml">
-      <Filter>config\ui\hide</Filter>
-    </Xml>
-    <Xml Include="config\ui\hide\map.xml">
-      <Filter>config\ui\hide</Filter>
-    </Xml>
-    <Xml Include="config\ui\hide\map_character.xml">
-      <Filter>config\ui\hide</Filter>
-    </Xml>
-    <Xml Include="config\ui\hide\map_desc.xml">
-      <Filter>config\ui\hide</Filter>
-    </Xml>
-    <Xml Include="config\ui\hide\map_desc_16.xml">
-      <Filter>config\ui\hide</Filter>
-    </Xml>
-    <Xml Include="config\ui\hide\map_spots_darkvalley.xml">
-      <Filter>config\ui\hide</Filter>
-    </Xml>
-    <Xml Include="config\ui\hide\map_spots_military.xml">
-      <Filter>config\ui\hide</Filter>
-    </Xml>
-    <Xml Include="config\ui\hide\map_spots_rostok.xml">
-      <Filter>config\ui\hide</Filter>
-    </Xml>
-    <Xml Include="config\ui\hide\mp_buy_menu.xml">
-      <Filter>config\ui\hide</Filter>
-    </Xml>
-    <Xml Include="config\ui\hide\mp_buy_menu_buttons.xml">
-      <Filter>config\ui\hide</Filter>
-    </Xml>
-    <Xml Include="config\ui\hide\news_templates.xml">
-      <Filter>config\ui\hide</Filter>
-    </Xml>
-    <Xml Include="config\ui\hide\pda_character_new.xml">
-      <Filter>config\ui\hide</Filter>
-    </Xml>
-    <Xml Include="config\ui\hide\pda_contacts.xml">
-      <Filter>config\ui\hide</Filter>
-    </Xml>
-    <Xml Include="config\ui\hide\pda_dialog.xml">
-      <Filter>config\ui\hide</Filter>
-    </Xml>
-    <Xml Include="config\ui\hide\pda_new.xml">
-      <Filter>config\ui\hide</Filter>
-    </Xml>
-    <Xml Include="config\ui\hide\skin_selector.xml">
-      <Filter>config\ui\hide</Filter>
-    </Xml>
-    <Xml Include="config\ui\hide\skin_selector_16.xml">
-      <Filter>config\ui\hide</Filter>
-    </Xml>
-    <Xml Include="config\ui\hide\sleep_dialog.xml">
-      <Filter>config\ui\hide</Filter>
-    </Xml>
-    <Xml Include="config\ui\hide\sleep_dialog_new.xml">
-      <Filter>config\ui\hide</Filter>
-    </Xml>
-    <Xml Include="config\ui\hide\spawn.xml">
-      <Filter>config\ui\hide</Filter>
-    </Xml>
-    <Xml Include="config\ui\hide\spawn_16.xml">
-      <Filter>config\ui\hide</Filter>
-    </Xml>
-    <Xml Include="config\ui\hide\statisticwnd.xml">
-      <Filter>config\ui\hide</Filter>
-    </Xml>
-    <Xml Include="config\ui\hide\stats.xml">
-      <Filter>config\ui\hide</Filter>
-    </Xml>
-    <Xml Include="config\ui\hide\stats_16.xml">
-      <Filter>config\ui\hide</Filter>
-    </Xml>
-    <Xml Include="config\ui\hide\td_ui_buy_menu.xml">
-      <Filter>config\ui\hide</Filter>
-    </Xml>
-    <Xml Include="config\ui\hide\td_ui_map_description.xml">
-      <Filter>config\ui\hide</Filter>
-    </Xml>
-    <Xml Include="config\ui\hide\td_ui_models_multiplayer.xml">
-      <Filter>config\ui\hide</Filter>
-    </Xml>
-    <Xml Include="config\ui\hide\td_ui_mp_icon_rank.xml">
-      <Filter>config\ui\hide</Filter>
-    </Xml>
-    <Xml Include="config\ui\hide\td_ui_mp_main.xml">
-      <Filter>config\ui\hide</Filter>
-    </Xml>
-    <Xml Include="config\ui\hide\td_ui_statistics.xml">
-      <Filter>config\ui\hide</Filter>
-    </Xml>
-    <Xml Include="config\ui\hide\td_ui_team_logo.xml">
-      <Filter>config\ui\hide</Filter>
-    </Xml>
-    <Xml Include="config\ui\hide\td_ui_team_logo_small.xml">
-      <Filter>config\ui\hide</Filter>
-    </Xml>
-    <Xml Include="config\ui\hide\trade_new.xml">
-      <Filter>config\ui\hide</Filter>
-    </Xml>
-    <Xml Include="config\ui\hide\ui_game_ahunt.xml">
-      <Filter>config\ui\hide</Filter>
-    </Xml>
-    <Xml Include="config\ui\hide\ui_game_ahunt_16.xml">
-      <Filter>config\ui\hide</Filter>
-    </Xml>
-    <Xml Include="config\ui\hide\ui_game_dm.xml">
-      <Filter>config\ui\hide</Filter>
-    </Xml>
-    <Xml Include="config\ui\hide\ui_game_dm_16.xml">
-      <Filter>config\ui\hide</Filter>
-    </Xml>
-    <Xml Include="config\ui\hide\ui_game_over.xml">
-      <Filter>config\ui\hide</Filter>
-    </Xml>
-    <Xml Include="config\ui\hide\ui_game_tdm.xml">
-      <Filter>config\ui\hide</Filter>
-    </Xml>
-    <Xml Include="config\ui\hide\ui_game_tdm_16.xml">
-      <Filter>config\ui\hide</Filter>
-    </Xml>
-    <Xml Include="config\ui\hide\ui_mapinfo.xml">
-      <Filter>config\ui\hide</Filter>
-    </Xml>
-    <Xml Include="config\ui\hide\ui_mm_mp.xml">
-      <Filter>config\ui\hide</Filter>
-    </Xml>
-    <Xml Include="config\ui\hide\ui_mm_mp_gs_ext.xml">
-      <Filter>config\ui\hide</Filter>
-    </Xml>
-    <Xml Include="config\ui\hide\ui_mm_mp_gs_ext_16.xml">
-      <Filter>config\ui\hide</Filter>
-    </Xml>
-    <Xml Include="config\ui\hide\ui_mm_mp_tabclient.xml">
-      <Filter>config\ui\hide</Filter>
-    </Xml>
-    <Xml Include="config\ui\hide\ui_mm_mp_taboptions.xml">
-      <Filter>config\ui\hide</Filter>
-    </Xml>
-    <Xml Include="config\ui\hide\ui_mm_mp_tabserver.xml">
-      <Filter>config\ui\hide</Filter>
-    </Xml>
-    <Xml Include="config\ui\hide\ui_videoplayer.xml">
-      <Filter>config\ui\hide</Filter>
-    </Xml>
-    <Xml Include="config\ui\hide\voting_category.xml">
-      <Filter>config\ui\hide</Filter>
-    </Xml>
-    <Xml Include="config\ui\hide\voting_category_16.xml">
-      <Filter>config\ui\hide</Filter>
     </Xml>
     <Xml Include="config\ui\td_ui_asus_intro.xml">
       <Filter>config\ui</Filter>

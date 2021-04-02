@@ -1,17 +1,5 @@
 <?xml version="1.0" encoding="windows-1251"?>
 <string_table>
-	<string id="mp_art_destroyed">
-		<text>Артефакт был уничтожен.</text>
-	</string>
-	<string id="mp_art_spowned">
-		<text>Артефакт рожден. Принесите его на базу, чтобы заработать очко.</text>
-	</string>
-	<string id="mp_artefacts">
-		<text>артефакты</text>
-	</string>
-	<string id="mp_artefacts_upcase">
-		<text>Артефактов</text>
-	</string>
 	<string id="mp_auto_select">
 		<text>Автовыбор</text>
 	</string>

@@ -1,17 +1,5 @@
 <?xml version="1.0" encoding="windows-1251" ?>
 <string_table>
-	<string id="mp_art_destroyed">
-		<text>The artifact was destroyed.</text>
-	</string>
-	<string id="mp_art_spowned">
-		<text>The artifact spawned. Bring it to the base to score a point.</text>
-	</string>
-	<string id="mp_artefacts">
-		<text>Artifacts </text>
-	</string>
-	<string id="mp_artefacts_upcase">
-		<text>Artifacts</text>
-	</string>
 	<string id="mp_auto_select">
 		<text>Autoselect</text>
 	</string>
