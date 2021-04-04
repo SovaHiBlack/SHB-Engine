@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="windows-1251"?>
 <string_table>
-	<string id="actor_btn_hint">
+	<string id="st_actor_btn_hint">
 		<text>Центр на Меченом</text>
 	</string>
 	<string id="add_spot_btn_hint">

@@ -19,23 +19,26 @@ BOOL CLevel::net_Start_client	(const char* options )
 	return FALSE;
 }
 
-bool	CLevel::net_start_client1				()
+bool CLevel::net_start_client1( )
 {
-	pApp->LoadBegin	();
+	pApp->LoadBegin( );
 	// name_of_server
-	string64					name_of_server = "";
-//	strcpy						(name_of_server,*m_caClientOptions);
+	string64 name_of_server = "";
 	if (strchr(*m_caClientOptions, '/'))
-		strncpy(name_of_server,*m_caClientOptions, strchr(*m_caClientOptions, '/')-*m_caClientOptions);
+	{
+		strncpy(name_of_server, *m_caClientOptions, strchr(*m_caClientOptions, '/') - *m_caClientOptions);
+	}
 
-	if (strchr(name_of_server,'/'))	*strchr(name_of_server,'/') = 0;
+	if (strchr(name_of_server, '/'))
+	{
+		*strchr(name_of_server, '/') = 0;
+	}
 
 	// Startup client
-	string256					temp;
-	sprintf_s						(temp,"%s %s",
-								CStringTable().translate("st_client_connecting_to").c_str(), name_of_server);
+	string256 temp;
+	sprintf_s(temp, "%s %s", CStringTable( ).translate("st_client_connecting_to").c_str( ), name_of_server);
 
-	g_pGamePersistent->LoadTitle				(temp);
+	g_pGamePersistent->LoadTitle(temp);
 	return true;
 }
 

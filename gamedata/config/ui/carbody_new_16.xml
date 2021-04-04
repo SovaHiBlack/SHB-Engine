@@ -49,7 +49,6 @@
 
 	<take_all_btn x="830" y="725" width="157" height="48" hR="255" hB="83" hG="179" highlight_text="1">
 		<texture>ui_button_main01</texture>
-
-		<text align="c" font="graffiti22" r="238" g="153" b="26">ui_st_take_all</text>
+		<text align="c" font="graffiti22" r="238" g="153" b="26">st_ui_take_all</text>
 	</take_all_btn>
 </window>

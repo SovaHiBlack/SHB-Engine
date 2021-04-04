@@ -22,7 +22,7 @@
 		</dialog>
 		
 		<cap_options x="45" y="9" width="378" height="33">
-			<text font="graffiti22" r="215" g="195" b="170">ui_mm_options</text>
+			<text font="graffiti22" r="215" g="195" b="170">st_ui_mm_options</text>
 		</cap_options>
 		
 		<btn_accept x="219" y="429" width="157" height="48">
@@ -197,7 +197,7 @@
 		</track_geometry_lod>
 
 		<cap_detail_density x="20" y="0" width="143" height="21">
-			<text font="letterica16" r="215" g="195" b="170">ui_mm_detail_density</text>
+			<text font="letterica16" r="215" g="195" b="170">st_ui_mm_detail_density</text>
 		</cap_detail_density>
 		
 		<track_detail_density x="194" y="0" width="245" height="21" invert="1" step="0.02">
@@ -229,7 +229,7 @@
 		</track_ssample>
 
 		<cap_r2_sun x="20" y="0" width="143" height="21">
-			<text font="letterica16" r="215" g="195" b="170">ui_mm_r2_sun</text>
+			<text font="letterica16" r="215" g="195" b="170">st_ui_mm_r2_sun</text>
 		</cap_r2_sun>
 		
 		<check_r2_sun x="194" y="0" width="30" height="21">
@@ -237,7 +237,7 @@
 		</check_r2_sun>
 
 		<cap_r2_sun_details x="20" y="0" width="143" height="21">
-			<text font="letterica16" r="215" g="195" b="170">ui_mm_r2_sun_details</text>
+			<text font="letterica16" r="215" g="195" b="170">st_ui_mm_r2_sun_details</text>
 		</cap_r2_sun_details>
 		
 		<check_r2_sun_details x="194" y="0" width="30" height="21">
@@ -321,7 +321,7 @@
 		</_list_soundquality>
 
 		<btn_default_set x="342" y="325" width="111" height="29">
-			<text align="c" font="letterica16" r="188" g="153" b="123">ui_mm_default</text>
+			<text align="c" font="letterica16" r="188" g="153" b="123">st_ui_mm_default</text>
 			<texture>ui_button_ordinary</texture>
 		</btn_default_set>
 	</tab_sound>
@@ -396,7 +396,7 @@
 				<texture>ui_table_button_e</texture>
 			</header_2>
 			<header_3 x="330" y="0" width="102" height="17">
-				<text font="letterica16" r="215" g="195" b="170" x="2">ui_mm_alternative</text>
+				<text font="letterica16" r="215" g="195" b="170" x="2">st_ui_mm_alternative</text>
 				<texture>ui_table_button_e</texture>
 			</header_3>
 			<!--frame-->
@@ -420,7 +420,7 @@
 		</key_binding>
 
 		<btn_default x="342" y="325" width="111" height="29">
-			<text align="c" font="letterica16" r="227" g="199" b="178">ui_mm_default</text>
+			<text align="c" font="letterica16" r="227" g="199" b="178">st_ui_mm_default</text>
 			<texture>ui_button_ordinary</texture>
 		</btn_default>
 	</tab_controls>

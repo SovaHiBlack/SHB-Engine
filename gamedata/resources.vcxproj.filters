@@ -151,8 +151,23 @@
     <Filter Include="config\gameplay\encyclopedia">
       <UniqueIdentifier>{c55af635-f9a0-4b0f-827d-98ab1ba35148}</UniqueIdentifier>
     </Filter>
-    <Filter Include="config\text\hide">
-      <UniqueIdentifier>{0b9ac3d2-58d1-4a15-9976-890669fed6a4}</UniqueIdentifier>
+    <Filter Include="config\text\rus\storyline_info">
+      <UniqueIdentifier>{0a14b847-ae6a-4415-874c-7b14f5901fab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="config\text\rus\mapspots">
+      <UniqueIdentifier>{34778738-0ad7-44d5-8030-a14cbb9cf6c5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="config\text\rus\tasks">
+      <UniqueIdentifier>{da3b8ba7-20fd-41dc-b4f7-d7c7c7feb4ed}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="config\text\rus\tips">
+      <UniqueIdentifier>{de4a77af-e339-4932-9a2f-15c375fc3b34}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="config\text\rus\name">
+      <UniqueIdentifier>{c7cfe161-8581-4d11-b3c5-cc503d8687bc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="config\text\rus\dialogs">
+      <UniqueIdentifier>{558e6c98-6a7c-4864-9389-290ffe5f651f}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -1277,15 +1292,6 @@
     </None>
     <None Include="config\weapons\weapons.ltx">
       <Filter>config\weapons</Filter>
-    </None>
-    <None Include="config\text\eng\stable_dialogs_darkvalley.ltx">
-      <Filter>config\text\eng</Filter>
-    </None>
-    <None Include="config\text\eng\string_table_tasks_agroprom">
-      <Filter>config\text\eng</Filter>
-    </None>
-    <None Include="config\text\eng\string_table_tasks_pripyat">
-      <Filter>config\text\eng</Filter>
     </None>
     <None Include="config\scripts\agr\agr_factory_assault_trigger.ltx">
       <Filter>config\scripts\agr</Filter>
@@ -4605,112 +4611,10 @@
     <Xml Include="config\ui\zone_map_16.xml">
       <Filter>config\ui</Filter>
     </Xml>
-    <Xml Include="config\text\rus\mp_st_speechmenu.xml">
-      <Filter>config\text\rus</Filter>
-    </Xml>
-    <Xml Include="config\text\rus\stable_bio_name.xml">
-      <Filter>config\text\rus</Filter>
-    </Xml>
-    <Xml Include="config\text\rus\stable_dialog_manager.xml">
-      <Filter>config\text\rus</Filter>
-    </Xml>
-    <Xml Include="config\text\rus\stable_dialog_manager_uni.xml">
-      <Filter>config\text\rus</Filter>
-    </Xml>
-    <Xml Include="config\text\rus\stable_dialogs.xml">
-      <Filter>config\text\rus</Filter>
-    </Xml>
-    <Xml Include="config\text\rus\stable_dialogs_aes.xml">
-      <Filter>config\text\rus</Filter>
-    </Xml>
-    <Xml Include="config\text\rus\stable_dialogs_agroprom.xml">
-      <Filter>config\text\rus</Filter>
-    </Xml>
-    <Xml Include="config\text\rus\stable_dialogs_bar.xml">
-      <Filter>config\text\rus</Filter>
-    </Xml>
-    <Xml Include="config\text\rus\stable_dialogs_darkvalley.xml">
-      <Filter>config\text\rus</Filter>
-    </Xml>
-    <Xml Include="config\text\rus\stable_dialogs_deadcity.xml">
-      <Filter>config\text\rus</Filter>
-    </Xml>
-    <Xml Include="config\text\rus\stable_dialogs_escape.xml">
-      <Filter>config\text\rus</Filter>
-    </Xml>
-    <Xml Include="config\text\rus\stable_dialogs_garbage.xml">
-      <Filter>config\text\rus</Filter>
-    </Xml>
-    <Xml Include="config\text\rus\stable_dialogs_labx18.xml">
-      <Filter>config\text\rus</Filter>
-    </Xml>
-    <Xml Include="config\text\rus\stable_dialogs_military.xml">
-      <Filter>config\text\rus</Filter>
-    </Xml>
-    <Xml Include="config\text\rus\stable_dialogs_pripyat.xml">
-      <Filter>config\text\rus</Filter>
-    </Xml>
-    <Xml Include="config\text\rus\stable_dialogs_radar.xml">
-      <Filter>config\text\rus</Filter>
-    </Xml>
-    <Xml Include="config\text\rus\stable_dialogs_yantar.xml">
-      <Filter>config\text\rus</Filter>
-    </Xml>
     <Xml Include="config\text\rus\stable_game_credits.xml">
       <Filter>config\text\rus</Filter>
     </Xml>
-    <Xml Include="config\text\rus\stable_generate_fnames.xml">
-      <Filter>config\text\rus</Filter>
-    </Xml>
-    <Xml Include="config\text\rus\stable_generate_snames.xml">
-      <Filter>config\text\rus</Filter>
-    </Xml>
-    <Xml Include="config\text\rus\stable_statistic_caption.xml">
-      <Filter>config\text\rus</Filter>
-    </Xml>
     <Xml Include="config\text\rus\stable_stories.xml">
-      <Filter>config\text\rus</Filter>
-    </Xml>
-    <Xml Include="config\text\rus\stable_storyline_info_aes.xml">
-      <Filter>config\text\rus</Filter>
-    </Xml>
-    <Xml Include="config\text\rus\stable_storyline_info_agroprom.xml">
-      <Filter>config\text\rus</Filter>
-    </Xml>
-    <Xml Include="config\text\rus\stable_storyline_info_bar.xml">
-      <Filter>config\text\rus</Filter>
-    </Xml>
-    <Xml Include="config\text\rus\stable_storyline_info_bar-rostok.xml">
-      <Filter>config\text\rus</Filter>
-    </Xml>
-    <Xml Include="config\text\rus\stable_storyline_info_darkvalley.xml">
-      <Filter>config\text\rus</Filter>
-    </Xml>
-    <Xml Include="config\text\rus\stable_storyline_info_deadcity.xml">
-      <Filter>config\text\rus</Filter>
-    </Xml>
-    <Xml Include="config\text\rus\stable_storyline_info_escape.xml">
-      <Filter>config\text\rus</Filter>
-    </Xml>
-    <Xml Include="config\text\rus\stable_storyline_info_garbage.xml">
-      <Filter>config\text\rus</Filter>
-    </Xml>
-    <Xml Include="config\text\rus\stable_storyline_info_military.xml">
-      <Filter>config\text\rus</Filter>
-    </Xml>
-    <Xml Include="config\text\rus\stable_storyline_info_pripyat.xml">
-      <Filter>config\text\rus</Filter>
-    </Xml>
-    <Xml Include="config\text\rus\stable_storyline_info_radar.xml">
-      <Filter>config\text\rus</Filter>
-    </Xml>
-    <Xml Include="config\text\rus\stable_storyline_info_sarcofag.xml">
-      <Filter>config\text\rus</Filter>
-    </Xml>
-    <Xml Include="config\text\rus\stable_storyline_info_yantar.xml">
-      <Filter>config\text\rus</Filter>
-    </Xml>
-    <Xml Include="config\text\rus\stable_task_manager.xml">
       <Filter>config\text\rus</Filter>
     </Xml>
     <Xml Include="config\text\rus\stable_treasure_manager.xml">
@@ -4737,109 +4641,16 @@
     <Xml Include="config\text\rus\string_table_general.xml">
       <Filter>config\text\rus</Filter>
     </Xml>
-    <Xml Include="config\text\rus\string_table_includes.xml">
-      <Filter>config\text\rus</Filter>
-    </Xml>
     <Xml Include="config\text\rus\string_table_items.xml">
       <Filter>config\text\rus</Filter>
     </Xml>
     <Xml Include="config\text\rus\string_table_level_tips.xml">
       <Filter>config\text\rus</Filter>
     </Xml>
-    <Xml Include="config\text\rus\string_table_mapspots_aes.xml">
-      <Filter>config\text\rus</Filter>
-    </Xml>
-    <Xml Include="config\text\rus\string_table_mapspots_agroprom.xml">
-      <Filter>config\text\rus</Filter>
-    </Xml>
-    <Xml Include="config\text\rus\string_table_mapspots_bar.xml">
-      <Filter>config\text\rus</Filter>
-    </Xml>
-    <Xml Include="config\text\rus\string_table_mapspots_darkvalley.xml">
-      <Filter>config\text\rus</Filter>
-    </Xml>
-    <Xml Include="config\text\rus\string_table_mapspots_deadcity.xml">
-      <Filter>config\text\rus</Filter>
-    </Xml>
-    <Xml Include="config\text\rus\string_table_mapspots_escape.xml">
-      <Filter>config\text\rus</Filter>
-    </Xml>
-    <Xml Include="config\text\rus\string_table_mapspots_garbage.xml">
-      <Filter>config\text\rus</Filter>
-    </Xml>
-    <Xml Include="config\text\rus\string_table_mapspots_military.xml">
-      <Filter>config\text\rus</Filter>
-    </Xml>
-    <Xml Include="config\text\rus\string_table_mapspots_pripyat.xml">
-      <Filter>config\text\rus</Filter>
-    </Xml>
-    <Xml Include="config\text\rus\string_table_mapspots_radar.xml">
-      <Filter>config\text\rus</Filter>
-    </Xml>
     <Xml Include="config\text\rus\string_table_outfit.xml">
       <Filter>config\text\rus</Filter>
     </Xml>
-    <Xml Include="config\text\rus\string_table_tasks_aes.xml">
-      <Filter>config\text\rus</Filter>
-    </Xml>
-    <Xml Include="config\text\rus\string_table_tasks_agroprom.xml">
-      <Filter>config\text\rus</Filter>
-    </Xml>
-    <Xml Include="config\text\rus\string_table_tasks_bar.xml">
-      <Filter>config\text\rus</Filter>
-    </Xml>
-    <Xml Include="config\text\rus\string_table_tasks_darkvalley.xml">
-      <Filter>config\text\rus</Filter>
-    </Xml>
-    <Xml Include="config\text\rus\string_table_tasks_deadcity.xml">
-      <Filter>config\text\rus</Filter>
-    </Xml>
-    <Xml Include="config\text\rus\string_table_tasks_escape.xml">
-      <Filter>config\text\rus</Filter>
-    </Xml>
-    <Xml Include="config\text\rus\string_table_tasks_garbage.xml">
-      <Filter>config\text\rus</Filter>
-    </Xml>
-    <Xml Include="config\text\rus\string_table_tasks_military.xml">
-      <Filter>config\text\rus</Filter>
-    </Xml>
-    <Xml Include="config\text\rus\string_table_tasks_radar.xml">
-      <Filter>config\text\rus</Filter>
-    </Xml>
-    <Xml Include="config\text\rus\string_table_tasks_sarcofag.xml">
-      <Filter>config\text\rus</Filter>
-    </Xml>
-    <Xml Include="config\text\rus\string_table_tasks_yantar.xml">
-      <Filter>config\text\rus</Filter>
-    </Xml>
     <Xml Include="config\text\rus\string_table_tips.xml">
-      <Filter>config\text\rus</Filter>
-    </Xml>
-    <Xml Include="config\text\rus\string_table_tips_agroprom.xml">
-      <Filter>config\text\rus</Filter>
-    </Xml>
-    <Xml Include="config\text\rus\string_table_tips_bar-rostok.xml">
-      <Filter>config\text\rus</Filter>
-    </Xml>
-    <Xml Include="config\text\rus\string_table_tips_darkvalley.xml">
-      <Filter>config\text\rus</Filter>
-    </Xml>
-    <Xml Include="config\text\rus\string_table_tips_escape.xml">
-      <Filter>config\text\rus</Filter>
-    </Xml>
-    <Xml Include="config\text\rus\string_table_tips_garbage.xml">
-      <Filter>config\text\rus</Filter>
-    </Xml>
-    <Xml Include="config\text\rus\string_table_tips_military.xml">
-      <Filter>config\text\rus</Filter>
-    </Xml>
-    <Xml Include="config\text\rus\string_table_tips_radar.xml">
-      <Filter>config\text\rus</Filter>
-    </Xml>
-    <Xml Include="config\text\rus\string_table_tips_sarcofag.xml">
-      <Filter>config\text\rus</Filter>
-    </Xml>
-    <Xml Include="config\text\rus\string_table_tips_yantar.xml">
       <Filter>config\text\rus</Filter>
     </Xml>
     <Xml Include="config\text\rus\string_table_tutorial.xml">
@@ -4848,41 +4659,20 @@
     <Xml Include="config\text\rus\string_table_ui.xml">
       <Filter>config\text\rus</Filter>
     </Xml>
-    <Xml Include="config\text\rus\ui_mp_teamdesc.xml">
-      <Filter>config\text\rus</Filter>
-    </Xml>
     <Xml Include="config\text\rus\ui_st_inventory.xml">
       <Filter>config\text\rus</Filter>
     </Xml>
     <Xml Include="config\text\rus\ui_st_keybinding.xml">
       <Filter>config\text\rus</Filter>
     </Xml>
-    <Xml Include="config\text\rus\ui_st_mapdesc.xml">
-      <Filter>config\text\rus</Filter>
-    </Xml>
     <Xml Include="config\text\rus\ui_st_mm.xml">
-      <Filter>config\text\rus</Filter>
-    </Xml>
-    <Xml Include="config\text\rus\ui_st_mm_mp.xml">
-      <Filter>config\text\rus</Filter>
-    </Xml>
-    <Xml Include="config\text\rus\ui_st_mp.xml">
       <Filter>config\text\rus</Filter>
     </Xml>
     <Xml Include="config\text\rus\ui_st_other.xml">
       <Filter>config\text\rus</Filter>
     </Xml>
-    <Xml Include="config\text\rus\ui_st_others.xml">
-      <Filter>config\text\rus</Filter>
-    </Xml>
     <Xml Include="config\text\rus\ui_st_pda.xml">
       <Filter>config\text\rus</Filter>
-    </Xml>
-    <Xml Include="config\text\eng\dialogs_escape_1_string.xml">
-      <Filter>config\text\eng</Filter>
-    </Xml>
-    <Xml Include="config\text\eng\mp_st_speechmenu.xml">
-      <Filter>config\text\eng</Filter>
     </Xml>
     <Xml Include="config\text\eng\stable_bio_name.xml">
       <Filter>config\text\eng</Filter>
@@ -5028,9 +4818,6 @@
     <Xml Include="config\text\eng\string_table_includes.xml">
       <Filter>config\text\eng</Filter>
     </Xml>
-    <Xml Include="config\text\eng\string_table_items.xml">
-      <Filter>config\text\eng</Filter>
-    </Xml>
     <Xml Include="config\text\eng\string_table_level_tips.xml">
       <Filter>config\text\eng</Filter>
     </Xml>
@@ -5151,31 +4938,13 @@
     <Xml Include="config\text\eng\tasks_yantar.xml">
       <Filter>config\text\eng</Filter>
     </Xml>
-    <Xml Include="config\text\eng\test_string.xml">
-      <Filter>config\text\eng</Filter>
-    </Xml>
-    <Xml Include="config\text\eng\ui_mm_team_desc.xml">
-      <Filter>config\text\eng</Filter>
-    </Xml>
-    <Xml Include="config\text\eng\ui_mp_teamdesc.xml">
-      <Filter>config\text\eng</Filter>
-    </Xml>
     <Xml Include="config\text\eng\ui_st_inventory.xml">
       <Filter>config\text\eng</Filter>
     </Xml>
     <Xml Include="config\text\eng\ui_st_keybinding.xml">
       <Filter>config\text\eng</Filter>
     </Xml>
-    <Xml Include="config\text\eng\ui_st_mapdesc.xml">
-      <Filter>config\text\eng</Filter>
-    </Xml>
     <Xml Include="config\text\eng\ui_st_mm.xml">
-      <Filter>config\text\eng</Filter>
-    </Xml>
-    <Xml Include="config\text\eng\ui_st_mm_mp.xml">
-      <Filter>config\text\eng</Filter>
-    </Xml>
-    <Xml Include="config\text\eng\ui_st_mp.xml">
       <Filter>config\text\eng</Filter>
     </Xml>
     <Xml Include="config\text\eng\ui_st_other.xml">
@@ -5496,71 +5265,176 @@
     <Xml Include="config\gameplay\encyclopedia_tutorial.xml">
       <Filter>config\gameplay\encyclopedia</Filter>
     </Xml>
-    <Xml Include="config\text\hide\dialogs_escape_1_string.xml">
-      <Filter>config\text\hide</Filter>
+    <Xml Include="config\text\rus\storyline_info_aes.xml">
+      <Filter>config\text\rus\storyline_info</Filter>
     </Xml>
-    <Xml Include="config\text\hide\stable_dialogs_agroprom.xml">
-      <Filter>config\text\hide</Filter>
+    <Xml Include="config\text\rus\storyline_info_agroprom.xml">
+      <Filter>config\text\rus\storyline_info</Filter>
     </Xml>
-    <Xml Include="config\text\hide\stable_dialogs_bar.xml">
-      <Filter>config\text\hide</Filter>
+    <Xml Include="config\text\rus\storyline_info_bar.xml">
+      <Filter>config\text\rus\storyline_info</Filter>
     </Xml>
-    <Xml Include="config\text\hide\stable_dialogs_escape.xml">
-      <Filter>config\text\hide</Filter>
+    <Xml Include="config\text\rus\storyline_info_darkvalley.xml">
+      <Filter>config\text\rus\storyline_info</Filter>
     </Xml>
-    <Xml Include="config\text\hide\stable_dialogs_garbage.xml">
-      <Filter>config\text\hide</Filter>
+    <Xml Include="config\text\rus\storyline_info_escape.xml">
+      <Filter>config\text\rus\storyline_info</Filter>
     </Xml>
-    <Xml Include="config\text\hide\stable_dialogs_military.xml">
-      <Filter>config\text\hide</Filter>
+    <Xml Include="config\text\rus\storyline_info_garbage.xml">
+      <Filter>config\text\rus\storyline_info</Filter>
     </Xml>
-    <Xml Include="config\text\hide\string_table_artefacts.xml">
-      <Filter>config\text\hide</Filter>
+    <Xml Include="config\text\rus\storyline_info_military.xml">
+      <Filter>config\text\rus\storyline_info</Filter>
     </Xml>
-    <Xml Include="config\text\hide\string_table_enc_equipment.xml">
-      <Filter>config\text\hide</Filter>
+    <Xml Include="config\text\rus\storyline_info_pripyat.xml">
+      <Filter>config\text\rus\storyline_info</Filter>
     </Xml>
-    <Xml Include="config\text\hide\string_table_enc_mutants.xml">
-      <Filter>config\text\hide</Filter>
+    <Xml Include="config\text\rus\storyline_info_radar.xml">
+      <Filter>config\text\rus\storyline_info</Filter>
     </Xml>
-    <Xml Include="config\text\hide\string_table_enc_social.xml">
-      <Filter>config\text\hide</Filter>
+    <Xml Include="config\text\rus\storyline_info_sarcofag.xml">
+      <Filter>config\text\rus\storyline_info</Filter>
     </Xml>
-    <Xml Include="config\text\hide\string_table_enc_vehicles.xml">
-      <Filter>config\text\hide</Filter>
+    <Xml Include="config\text\rus\storyline_info_yantar.xml">
+      <Filter>config\text\rus\storyline_info</Filter>
     </Xml>
-    <Xml Include="config\text\hide\string_table_enc_zone.xml">
-      <Filter>config\text\hide</Filter>
+    <Xml Include="config\text\rus\mapspots_aes.xml">
+      <Filter>config\text\rus\mapspots</Filter>
     </Xml>
-    <Xml Include="config\text\hide\string_table_general.xml">
-      <Filter>config\text\hide</Filter>
+    <Xml Include="config\text\rus\mapspots_agroprom.xml">
+      <Filter>config\text\rus\mapspots</Filter>
     </Xml>
-    <Xml Include="config\text\hide\string_table_items.xml">
-      <Filter>config\text\hide</Filter>
+    <Xml Include="config\text\rus\mapspots_bar.xml">
+      <Filter>config\text\rus\mapspots</Filter>
     </Xml>
-    <Xml Include="config\text\hide\string_table_level_tips.xml">
-      <Filter>config\text\hide</Filter>
+    <Xml Include="config\text\rus\mapspots_darkvalley.xml">
+      <Filter>config\text\rus\mapspots</Filter>
     </Xml>
-    <Xml Include="config\text\hide\string_table_news.xml">
-      <Filter>config\text\hide</Filter>
+    <Xml Include="config\text\rus\mapspots_escape.xml">
+      <Filter>config\text\rus\mapspots</Filter>
     </Xml>
-    <Xml Include="config\text\hide\string_table_outfit.xml">
-      <Filter>config\text\hide</Filter>
+    <Xml Include="config\text\rus\mapspots_garbage.xml">
+      <Filter>config\text\rus\mapspots</Filter>
     </Xml>
-    <Xml Include="config\text\hide\string_table_tasks_escape.xml">
-      <Filter>config\text\hide</Filter>
+    <Xml Include="config\text\rus\mapspots_military.xml">
+      <Filter>config\text\rus\mapspots</Filter>
     </Xml>
-    <Xml Include="config\text\hide\string_table_tips.xml">
-      <Filter>config\text\hide</Filter>
+    <Xml Include="config\text\rus\mapspots_pripyat.xml">
+      <Filter>config\text\rus\mapspots</Filter>
     </Xml>
-    <Xml Include="config\text\hide\string_table_ui.xml">
-      <Filter>config\text\hide</Filter>
+    <Xml Include="config\text\rus\mapspots_radar.xml">
+      <Filter>config\text\rus\mapspots</Filter>
     </Xml>
-    <Xml Include="config\text\hide\test_radar.xml">
-      <Filter>config\text\hide</Filter>
+    <Xml Include="config\text\rus\tasks_aes.xml">
+      <Filter>config\text\rus\tasks</Filter>
     </Xml>
-    <Xml Include="config\text\hide\test_string.xml">
-      <Filter>config\text\hide</Filter>
+    <Xml Include="config\text\rus\tasks_agroprom.xml">
+      <Filter>config\text\rus\tasks</Filter>
+    </Xml>
+    <Xml Include="config\text\rus\tasks_bar.xml">
+      <Filter>config\text\rus\tasks</Filter>
+    </Xml>
+    <Xml Include="config\text\rus\tasks_darkvalley.xml">
+      <Filter>config\text\rus\tasks</Filter>
+    </Xml>
+    <Xml Include="config\text\rus\tasks_escape.xml">
+      <Filter>config\text\rus\tasks</Filter>
+    </Xml>
+    <Xml Include="config\text\rus\tasks_garbage.xml">
+      <Filter>config\text\rus\tasks</Filter>
+    </Xml>
+    <Xml Include="config\text\rus\tasks_military.xml">
+      <Filter>config\text\rus\tasks</Filter>
+    </Xml>
+    <Xml Include="config\text\rus\tasks_radar.xml">
+      <Filter>config\text\rus\tasks</Filter>
+    </Xml>
+    <Xml Include="config\text\rus\tasks_sarcofag.xml">
+      <Filter>config\text\rus\tasks</Filter>
+    </Xml>
+    <Xml Include="config\text\rus\tasks_yantar.xml">
+      <Filter>config\text\rus\tasks</Filter>
+    </Xml>
+    <Xml Include="config\text\rus\tips_agroprom.xml">
+      <Filter>config\text\rus\tips</Filter>
+    </Xml>
+    <Xml Include="config\text\rus\tips_bar.xml">
+      <Filter>config\text\rus\tips</Filter>
+    </Xml>
+    <Xml Include="config\text\rus\tips_darkvalley.xml">
+      <Filter>config\text\rus\tips</Filter>
+    </Xml>
+    <Xml Include="config\text\rus\tips_escape.xml">
+      <Filter>config\text\rus\tips</Filter>
+    </Xml>
+    <Xml Include="config\text\rus\tips_garbage.xml">
+      <Filter>config\text\rus\tips</Filter>
+    </Xml>
+    <Xml Include="config\text\rus\tips_military.xml">
+      <Filter>config\text\rus\tips</Filter>
+    </Xml>
+    <Xml Include="config\text\rus\tips_radar.xml">
+      <Filter>config\text\rus\tips</Filter>
+    </Xml>
+    <Xml Include="config\text\rus\tips_sarcofag.xml">
+      <Filter>config\text\rus\tips</Filter>
+    </Xml>
+    <Xml Include="config\text\rus\tips_yantar.xml">
+      <Filter>config\text\rus\tips</Filter>
+    </Xml>
+    <Xml Include="config\text\rus\bio_name.xml">
+      <Filter>config\text\rus\name</Filter>
+    </Xml>
+    <Xml Include="config\text\rus\generate_fnames.xml">
+      <Filter>config\text\rus\name</Filter>
+    </Xml>
+    <Xml Include="config\text\rus\generate_snames.xml">
+      <Filter>config\text\rus\name</Filter>
+    </Xml>
+    <Xml Include="config\text\rus\statistic_caption.xml">
+      <Filter>config\text\rus\name</Filter>
+    </Xml>
+    <Xml Include="config\text\rus\dialog_manager.xml">
+      <Filter>config\text\rus\dialogs</Filter>
+    </Xml>
+    <Xml Include="config\text\rus\dialogs.xml">
+      <Filter>config\text\rus\dialogs</Filter>
+    </Xml>
+    <Xml Include="config\text\rus\dialogs_aes.xml">
+      <Filter>config\text\rus\dialogs</Filter>
+    </Xml>
+    <Xml Include="config\text\rus\dialogs_agroprom.xml">
+      <Filter>config\text\rus\dialogs</Filter>
+    </Xml>
+    <Xml Include="config\text\rus\dialogs_bar.xml">
+      <Filter>config\text\rus\dialogs</Filter>
+    </Xml>
+    <Xml Include="config\text\rus\dialogs_darkvalley.xml">
+      <Filter>config\text\rus\dialogs</Filter>
+    </Xml>
+    <Xml Include="config\text\rus\dialogs_escape.xml">
+      <Filter>config\text\rus\dialogs</Filter>
+    </Xml>
+    <Xml Include="config\text\rus\dialogs_garbage.xml">
+      <Filter>config\text\rus\dialogs</Filter>
+    </Xml>
+    <Xml Include="config\text\rus\dialogs_labx18.xml">
+      <Filter>config\text\rus\dialogs</Filter>
+    </Xml>
+    <Xml Include="config\text\rus\dialogs_military.xml">
+      <Filter>config\text\rus\dialogs</Filter>
+    </Xml>
+    <Xml Include="config\text\rus\dialogs_pripyat.xml">
+      <Filter>config\text\rus\dialogs</Filter>
+    </Xml>
+    <Xml Include="config\text\rus\dialogs_radar.xml">
+      <Filter>config\text\rus\dialogs</Filter>
+    </Xml>
+    <Xml Include="config\text\rus\dialogs_yantar.xml">
+      <Filter>config\text\rus\dialogs</Filter>
+    </Xml>
+    <Xml Include="config\text\rus\task_manager.xml">
+      <Filter>config\text\rus\tasks</Filter>
     </Xml>
   </ItemGroup>
   <ItemGroup>

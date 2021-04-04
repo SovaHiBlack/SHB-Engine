@@ -16,12 +16,6 @@
 
 #include "object_broker.h"
 
-//string128 ErrMsgBoxTemplate[ ] =
-//{
-//	"message_box_session_full",
-//	"message_box_error_loading"
-//};
-
 extern bool b_shniaganeed_pp;
 
 CMainMenu* MainMenu( )

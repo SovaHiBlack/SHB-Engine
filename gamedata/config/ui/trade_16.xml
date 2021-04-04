@@ -21,12 +21,12 @@
 
 	<button x="360" y="705" width="157" height="48" hR="255" hB="83" hG="179" highlight_text="1">
 		<texture>ui_button_main01</texture>
-		<text font="graffiti22" r="238" g="153" b="26" align="c">ui_st_trade</text>
+		<text font="graffiti22" r="238" g="153" b="26" align="c">st_ui_trade</text>
 	</button>
 
 	<button x="570" y="705" width="157" height="48" hR="255" hB="83" hG="179" highlight_text="1">
 		<texture>ui_button_main01</texture>
-		<text font="graffiti22" r="238" g="153" b="26" align="c">ui_st_leave</text>
+		<text font="graffiti22" r="238" g="153" b="26" align="c">st_ui_leave</text>
 	</button>
 
 	<our_bag_static x="15" y="270" width="333" height="450" stretch="1">
@@ -72,7 +72,7 @@
 	</desc_static>
 
 	<price_mt_static x="35" y="10" width="347" height="40">
-		<phrase x="0" y="0" width="170" font="graffiti22" r="238" g="153" b="26">ui_st_your_items</phrase>
+		<phrase x="0" y="0" width="170" font="graffiti22" r="238" g="153" b="26">st_ui_your_items</phrase>
 		<phrase x="175" y="0" font="graffiti22" r="220" g="185" b="140">ui_st_price</phrase>
 		<phrase x="230" y="0" font="graffiti22" r="240" g="215" b="185"></phrase>
 	</price_mt_static>

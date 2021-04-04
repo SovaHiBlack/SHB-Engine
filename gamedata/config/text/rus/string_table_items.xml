@@ -1,11 +1,5 @@
 <?xml version="1.0" encoding="windows-1251"?>
 <string_table>
-	<string id="item test1">
-		<text>Это тестовая строка для вещмешка</text>
-	</string>
-	<string id="item test2">
-		<text>Это еще одна тестовая строка для вещмешка</text>
-	</string>
 	<string id="item_case_esc_desc">
 		<text>Кейс с документами. Сделан из огнеупорного материала.</text>
 	</string>
@@ -122,5 +116,8 @@
 	</string>
 	<string id="yan_good_psy_helmet_name">
 		<text>Настроенный пси-шлем</text>
+	</string>
+	<string id="svoboda_outfit_name_m1">
+		<text>Комбез Свободы М2</text>
 	</string>
 </string_table>

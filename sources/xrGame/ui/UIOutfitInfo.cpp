@@ -37,15 +37,15 @@ const char* _imm_names[ ] =
 
 const char* _imm_st_names[ ] =
 {
-	"ui_inv_outfit_burn_protection",
-	"ui_inv_outfit_shock_protection",
-	"ui_inv_outfit_strike_protection",
-	"ui_inv_outfit_wound_protection",
-	"ui_inv_outfit_radiation_protection",
-	"ui_inv_outfit_telepatic_protection",
-	"ui_inv_outfit_chemical_burn_protection",
-	"ui_inv_outfit_explosion_protection",
-	"ui_inv_outfit_fire_wound_protection"
+	"st_ui_inv_outfit_burn_protection",
+	"st_ui_inv_outfit_shock_protection",
+	"st_ui_inv_outfit_strike_protection",
+	"st_ui_inv_outfit_wound_protection",
+	"st_ui_inv_outfit_radiation_protection",
+	"st_ui_inv_outfit_telepatic_protection",
+	"st_ui_inv_outfit_chemical_burn_protection",
+	"st_ui_inv_outfit_explosion_protection",
+	"st_ui_inv_outfit_fire_wound_protection"
 };
 
 void CUIOutfitInfo::InitFromXml(CUIXml& xml_doc)

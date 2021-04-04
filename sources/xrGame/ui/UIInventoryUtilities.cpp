@@ -309,27 +309,27 @@ const char* InventoryUtilities::GetTimePeriodAsString(char* _buff, u32 buff_sz, 
 
 	if (month1 != month2)
 	{
-		cnt = sprintf_s(_buff + cnt, buff_sz - cnt, "%d %s ", month2 - month1, *CStringTable( ).translate("ui_st_months"));
+		cnt = sprintf_s(_buff + cnt, buff_sz - cnt, "%d %s ", month2 - month1, *CStringTable( ).translate("st_ui_months"));
 	}
 
 	if (!cnt && day1 != day2)
 	{
-		cnt = sprintf_s(_buff + cnt, buff_sz - cnt, "%d %s", day2 - day1, *CStringTable( ).translate("ui_st_days"));
+		cnt = sprintf_s(_buff + cnt, buff_sz - cnt, "%d %s", day2 - day1, *CStringTable( ).translate("st_ui_days"));
 	}
 
 	if (!cnt && hours1 != hours2)
 	{
-		cnt = sprintf_s(_buff + cnt, buff_sz - cnt, "%d %s", hours2 - hours1, *CStringTable( ).translate("ui_st_hours"));
+		cnt = sprintf_s(_buff + cnt, buff_sz - cnt, "%d %s", hours2 - hours1, *CStringTable( ).translate("st_ui_hours"));
 	}
 
 	if (!cnt && mins1 != mins2)
 	{
-		cnt = sprintf_s(_buff + cnt, buff_sz - cnt, "%d %s", mins2 - mins1, *CStringTable( ).translate("ui_st_mins"));
+		cnt = sprintf_s(_buff + cnt, buff_sz - cnt, "%d %s", mins2 - mins1, *CStringTable( ).translate("st_ui_mins"));
 	}
 
 	if (!cnt && secs1 != secs2)
 	{
-		cnt = sprintf_s(_buff + cnt, buff_sz - cnt, "%d %s", secs2 - secs1, *CStringTable( ).translate("ui_st_secs"));
+		cnt = sprintf_s(_buff + cnt, buff_sz - cnt, "%d %s", secs2 - secs1, *CStringTable( ).translate("st_ui_secs"));
 	}
 
 	return _buff;
@@ -364,7 +364,7 @@ void InventoryUtilities::UpdateWeight(CUIStatic& wnd, bool withPrefix)
 
 	if (withPrefix)
 	{
-		sprintf_s(prefix, "%%c[default]%s ", *CStringTable( ).translate("ui_inv_weight"));
+		sprintf_s(prefix, "%%c[default]%s ", *CStringTable( ).translate("st_ui_inv_weight"));
 	}
 	else
 	{

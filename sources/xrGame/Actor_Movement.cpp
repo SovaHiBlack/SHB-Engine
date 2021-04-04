@@ -549,30 +549,35 @@ bool	CActor::CanJump				()
 	return can_Jump;
 }
 
-bool	CActor::CanMove				()
+bool CActor::CanMove( )
 {
-	if( conditions().IsCantWalk() )
+	if (conditions( ).IsCantWalk( ))
 	{
-		if(mstate_wishful&mcAnyMove)
+		if (mstate_wishful & mcAnyMove)
 		{
-			HUD().GetUI()->AddInfoMessage("cant_walk");
+			HUD( ).GetUI( )->AddInfoMessage("cant_walk");
 		}
+
 		return false;
-	}else
-	if( conditions().IsCantWalkWeight() )
+	}
+	else if (conditions( ).IsCantWalkWeight( ))
 	{
-		if(mstate_wishful&mcAnyMove)
+		if (mstate_wishful & mcAnyMove)
 		{
-			HUD().GetUI()->AddInfoMessage("cant_walk_weight");
+			HUD( ).GetUI( )->AddInfoMessage("cant_walk_weight");
 		}
+
 		return false;
-	
 	}
 
-	if(IsTalking())
+	if (IsTalking( ))
+	{
 		return false;
+	}
 	else
+	{
 		return true;
+	}
 }
 
 void CActor::StopAnyMove()

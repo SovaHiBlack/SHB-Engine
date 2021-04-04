@@ -18,7 +18,7 @@
 						<texture>ui_icons_newPDA_compas</texture>
 					</global_map_btn>
 
-					<actor_btn x="27" y="1" width="21" height="15" hint="actor_btn_hint">
+					<actor_btn x="27" y="1" width="21" height="15" hint="st_actor_btn_hint">
 						<window_name>actor_btn</window_name>
 						<texture>ui_icons_newPDA_showpers</texture>
 					</actor_btn>

@@ -47,15 +47,15 @@ const char* af_item_param_names[ ] =
 	"ui_inv_power",
 	"ui_inv_bleeding",
 
-	"ui_inv_outfit_burn_protection",			// "(burn_imm)",
-	"ui_inv_outfit_strike_protection",			// "(strike_imm)",
-	"ui_inv_outfit_shock_protection",			// "(shock_imm)",
-	"ui_inv_outfit_wound_protection",			// "(wound_imm)",
-	"ui_inv_outfit_radiation_protection",		// "(radiation_imm)",
-	"ui_inv_outfit_telepatic_protection",		// "(telepatic_imm)",
-	"ui_inv_outfit_chemical_burn_protection",	// "(chemical_burn_imm)",
-	"ui_inv_outfit_explosion_protection",		// "(explosion_imm)",
-	"ui_inv_outfit_fire_wound_protection",		// "(fire_wound_imm)",
+	"st_ui_inv_outfit_burn_protection",			// "(burn_imm)",
+	"st_ui_inv_outfit_strike_protection",			// "(strike_imm)",
+	"st_ui_inv_outfit_shock_protection",			// "(shock_imm)",
+	"st_ui_inv_outfit_wound_protection",			// "(wound_imm)",
+	"st_ui_inv_outfit_radiation_protection",		// "(radiation_imm)",
+	"st_ui_inv_outfit_telepatic_protection",		// "(telepatic_imm)",
+	"st_ui_inv_outfit_chemical_burn_protection",	// "(chemical_burn_imm)",
+	"st_ui_inv_outfit_explosion_protection",		// "(explosion_imm)",
+	"st_ui_inv_outfit_fire_wound_protection",		// "(fire_wound_imm)",
 };
 
 const char* af_actor_param_names[ ] =

@@ -33,9 +33,6 @@
 	<string id="Minimum">
 		<text>minimum</text>
 	</string>
-	<string id="mm_mp_check_cdkey">
-		<text>check CD-key</text>
-	</string>
 	<string id="Nigth">
 		<text>night</text>
 	</string>
@@ -51,12 +48,6 @@
 	<string id="renderer_r2a">
 		<text>Objects dynamic lighting</text>
 	</string>
-	<string id="st_artefacthunt">
-		<text>Artifact hunt</text>
-	</string>
-	<string id="st_deathmatch">
-		<text>Free for all</text>
-	</string>
 	<string id="st_rank_experienced">
 		<text>experienced</text>
 	</string>
@@ -71,39 +62,6 @@
 	</string>
 	<string id="st_rank_veteran">
 		<text>veteran</text>
-	</string>
-	<string id="st_team_deathmatch">
-		<text>Team play</text>
-	</string>
-	<string id="testers_mp_agroprom">
-		<text>"Agroprom" factory</text>
-	</string>
-	<string id="testers_mp_atp">
-		<text>Bus station</text>
-	</string>
-	<string id="testers_mp_darkvalley">
-		<text>Dark Valley</text>
-	</string>
-	<string id="testers_mp_factory">
-		<text>"Yantar" factory</text>
-	</string>
-	<string id="testers_mp_lost_village">
-		<text>Desolated village</text>
-	</string>
-	<string id="testers_mp_military_1">
-		<text>Military warehouses</text>
-	</string>
-	<string id="testers_mp_pool">
-		<text>Pool</text>
-	</string>
-	<string id="testers_mp_railroad">
-		<text>Railway station</text>
-	</string>
-	<string id="testers_mp_rostok">
-		<text>"Rostok" factory</text>
-	</string>
-	<string id="testers_mp_workshop">
-		<text>Deserted factory</text>
 	</string>
 	<string id="ui_mm_60_hz">
 		<text>Frequency 60Hz</text>
@@ -122,9 +80,6 @@
 	</string>
 	<string id="ui_mm_back">
 		<text>Back</text>
-	</string>
-	<string id="ui_mm_blood">
-		<text>Blood</text>
 	</string>
 	<string id="ui_mm_brightness">
 		<text>Brightness</text>
@@ -152,9 +107,6 @@
 	</string>
 	<string id="ui_mm_disconnect">
 		<text>Disconnect</text>
-	</string>
-	<string id="ui_mm_disconnect_message">
-		<text>Are you sure you want to disconnect?</text>
 	</string>
 	<string id="ui_mm_dyn_crosshair">
 		<text>Dynamic crosshair</text>
@@ -204,12 +156,6 @@
 	<string id="ui_mm_mouse_sense">
 		<text>Mouse sensitivity</text>
 	</string>
-	<string id="ui_mm_multiplayer">
-		<text>NETWORK GAME</text>
-	</string>
-	<string id="ui_mm_multiplayer_n">
-		<text>Network game</text>
-	</string>
 	<string id="ui_mm_music_volume">
 		<text>Music volume</text>
 	</string>
@@ -228,14 +174,11 @@
 	<string id="ui_mm_npc_torch">
 		<text>NPC flashlights</text>
 	</string>
-	<string id="ui_mm_options">
+	<string id="st_ui_mm_options">
 		<text>OPTIONS</text>
 	</string>
-	<string id="ui_mm_options_n">
+	<string id="st_ui_mm_options_n">
 		<text>Options</text>
-	</string>
-	<string id="ui_mm_particles_distance">
-		<text>Particles distance</text>
 	</string>
 	<string id="ui_mm_quality_presets">
 		<text>Quality settings</text>
@@ -314,17 +257,5 @@
 	</string>
 	<string id="ui_st_preset1">
 		<text>Preset 1</text>
-	</string>
-	<string id="ui_st_preset2">
-		<text>Preset 2</text>
-	</string>
-	<string id="ui_st_preset3">
-		<text>Preset 3</text>
-	</string>
-	<string id="ui_st_reset">
-		<text>Reset</text>
-	</string>
-	<string id="ui_st_sell_all">
-		<text>Sell all</text>
 	</string>
 </string_table>

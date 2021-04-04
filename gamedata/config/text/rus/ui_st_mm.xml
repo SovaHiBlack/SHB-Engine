@@ -3,9 +3,6 @@
 	<string id="Clear">
 		<text>ясная</text>
 	</string>
-	<string id="Cloudy">
-		<text>облачная</text>
-	</string>
 	<string id="Default">
 		<text>средние</text>
 	</string>
@@ -33,9 +30,6 @@
 	<string id="Minimum">
 		<text>минимальные</text>
 	</string>
-	<string id="mm_mp_check_cdkey">
-		<text>проверять CD-Key</text>
-	</string>
 	<string id="Nigth">
 		<text>ночь</text>
 	</string>
@@ -51,12 +45,6 @@
 	<string id="renderer_r2a">
 		<text>Динамическое освещение объектов</text>
 	</string>
-	<string id="st_artefacthunt">
-		<text>Охота за артефактом</text>
-	</string>
-	<string id="st_deathmatch">
-		<text>Все против всех</text>
-	</string>
 	<string id="st_rank_experienced">
 		<text>опытный</text>
 	</string>
@@ -71,39 +59,6 @@
 	</string>
 	<string id="st_rank_veteran">
 		<text>ветеран</text>
-	</string>
-	<string id="st_team_deathmatch">
-		<text>Команда против команды</text>
-	</string>
-	<string id="testers_mp_agroprom">
-		<text>Завод "Агропром"</text>
-	</string>
-	<string id="testers_mp_atp">
-		<text>АТП</text>
-	</string>
-	<string id="testers_mp_darkvalley">
-		<text>Темная долина</text>
-	</string>
-	<string id="testers_mp_factory">
-		<text>Завод "Янтарь"</text>
-	</string>
-	<string id="testers_mp_lost_village">
-		<text>Покинутая деревня</text>
-	</string>
-	<string id="testers_mp_military_1">
-		<text>Военные склады</text>
-	</string>
-	<string id="testers_mp_pool">
-		<text>Бассейн</text>
-	</string>
-	<string id="testers_mp_railroad">
-		<text>Ж/Д станция</text>
-	</string>
-	<string id="testers_mp_rostok">
-		<text>Завод "Росток"</text>
-	</string>
-	<string id="testers_mp_workshop">
-		<text>Брошенная фабрика</text>
 	</string>
 	<string id="ui_mm_60_hz">
 		<text>Частота 60Гц</text>
@@ -122,9 +77,6 @@
 	</string>
 	<string id="ui_mm_back">
 		<text>Назад</text>
-	</string>
-	<string id="ui_mm_blood">
-		<text>Кровь</text>
 	</string>
 	<string id="ui_mm_brightness">
 		<text>Яркость</text>
@@ -152,9 +104,6 @@
 	</string>
 	<string id="ui_mm_disconnect">
 		<text>Отсоединиться</text>
-	</string>
-	<string id="ui_mm_disconnect_message">
-		<text>Действительно ли вы желаете отсоединиться?</text>
 	</string>
 	<string id="ui_mm_dyn_crosshair">
 		<text>Динамический прицел</text>
@@ -204,12 +153,6 @@
 	<string id="ui_mm_mouse_sense">
 		<text>Чувствительность мыши</text>
 	</string>
-	<string id="ui_mm_multiplayer">
-		<text>СЕТЕВАЯ ИГРА</text>
-	</string>
-	<string id="ui_mm_multiplayer_n">
-		<text>Сетевая игра</text>
-	</string>
 	<string id="ui_mm_music_volume">
 		<text>Громкость музыки</text>
 	</string>
@@ -225,14 +168,11 @@
 	<string id="ui_mm_npc_torch">
 		<text>Свет фонариков НПС</text>
 	</string>
-	<string id="ui_mm_options">
+	<string id="st_ui_mm_options">
 		<text>ОПЦИИ</text>
 	</string>
-	<string id="ui_mm_options_n">
+	<string id="st_ui_mm_options_n">
 		<text>Опции</text>
-	</string>
-	<string id="ui_mm_particles_distance">
-		<text>Дальность партиклов</text>
 	</string>
 	<string id="ui_mm_quality_presets">
 		<text>Установки качества</text>
@@ -314,17 +254,5 @@
 	</string>
 	<string id="ui_st_preset1">
 		<text>Набор 1</text>
-	</string>
-	<string id="ui_st_preset2">
-		<text>Набор 2</text>
-	</string>
-	<string id="ui_st_preset3">
-		<text>Набор 3</text>
-	</string>
-	<string id="ui_st_reset">
-		<text>Сбросить</text>
-	</string>
-	<string id="ui_st_sell_all">
-		<text>Продать все</text>
 	</string>
 </string_table>

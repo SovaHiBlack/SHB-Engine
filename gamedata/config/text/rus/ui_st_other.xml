@@ -1,34 +1,19 @@
 <?xml version="1.0" encoding="windows-1251"?>
 <string_table>
-	<string id="id_mp_money">
-		<text>Деньги</text>
-	</string>
-	<string id="mm_mp_pda_hunt">
-		<text>Бонус за КПК</text>
-	</string>
 	<string id="st_drink">
 		<text>выпить</text>
 	</string>
-	<string id="st_mp_direct_ip">
-		<text>Прямой IP</text>
-	</string>
-	<string id="ui_mm_default">
+	<string id="st_ui_mm_default">
 		<text>По умолчанию</text>
 	</string>
-	<string id="ui_mm_detail_density">
+	<string id="st_ui_mm_detail_density">
 		<text>Плотность травы</text>
 	</string>
-	<string id="ui_mm_r2_sun">
+	<string id="st_ui_mm_r2_sun">
 		<text>Тень от солнца</text>
 	</string>
-	<string id="ui_mm_r2_sun_details">
+	<string id="st_ui_mm_r2_sun_details">
 		<text>Тень травы</text>
-	</string>
-	<string id="ui_mm_render_2">
-		<text>Рендер-2</text>
-	</string>
-	<string id="ui_pda_details">
-		<text># /детали</text>
 	</string>
 	<string id="ui_st_btn_cancel">
 		<text>Отмена</text>
@@ -36,76 +21,52 @@
 	<string id="ui_st_btn_no">
 		<text>Нет</text>
 	</string>
-	<string id="ui_st_btn_ok">
+	<string id="st_ui_btn_ok">
 		<text>ОК</text>
 	</string>
-	<string id="ui_st_btn_yes">
+	<string id="st_ui_btn_yes">
 		<text>Да</text>
 	</string>
-	<string id="ui_st_cant_run_r2">
-		<text>Вы не можете запустить второй рендер на вашем компьютере</text>
-	</string>
-	<string id="ui_st_conn_invalid_host">
-		<text>Ошибка соединения: неверный хост</text>
-	</string>
-	<string id="ui_st_conn_invalid_pass">
-		<text>Ошибка соединения: неверный пароль</text>
-	</string>
-	<string id="ui_st_conn_rejected_server">
-		<text>Ошибка соединения: соединение прервано сервером</text>
-	</string>
-	<string id="ui_st_conn_sess_full">
-		<text>Ошибка соединения: сервер заполнен</text>
-	</string>
-	<string id="ui_st_days">
+	<string id="st_ui_days">
 		<text>дн.</text>
 	</string>
-	<string id="ui_st_error">
-		<text>Ошибка</text>
-	</string>
-	<string id="ui_st_file_exist_owerwrite_q">
+	<string id="st_ui_file_exist_owerwrite_q">
 		<text>Файл с таким именем уже существует. Перезаписать?</text>
 	</string>
-	<string id="ui_st_file_name_is_empty">
+	<string id="st_ui_file_name_is_empty">
 		<text>Имя файла пустое</text>
 	</string>
-	<string id="ui_st_hours">
+	<string id="st_ui_hours">
 		<text>час.</text>
 	</string>
-	<string id="ui_st_leave">
+	<string id="st_ui_leave">
 		<text>Уйти</text>
 	</string>
-	<string id="ui_st_mins">
+	<string id="st_ui_mins">
 		<text>мин.</text>
 	</string>
-	<string id="ui_st_months">
+	<string id="st_ui_months">
 		<text>мес.</text>
 	</string>
-	<string id="ui_st_params">
+	<string id="st_ui_params">
 		<text>Параметры</text>
 	</string>
-	<string id="ui_st_secs">
+	<string id="st_ui_secs">
 		<text>сек.</text>
 	</string>
-	<string id="ui_st_select_one_map">
-		<text>Пожалуйста, выберите хотя бы одну карту</text>
-	</string>
-	<string id="ui_st_take_all">
+	<string id="st_ui_take_all">
 		<text>Взять все</text>
 	</string>
-	<string id="ui_st_time_remains">
+	<string id="st_ui_time_remains">
 		<text>Осталось</text>
 	</string>
-	<string id="ui_st_trade">
+	<string id="st_ui_trade">
 		<text>Торговать</text>
 	</string>
-	<string id="ui_st_voting_disabled">
-		<text>Голосование отключено</text>
-	</string>
-	<string id="ui_st_want_to_leave_game_q">
+	<string id="st_ui_want_to_leave_game_q">
 		<text>Вы действительно хотите покинуть игру?</text>
 	</string>
-	<string id="ui_st_your_items">
+	<string id="st_ui_your_items">
 		<text>Вещи Меченого</text>
 	</string>
 	<string id="st_game_over_press_jump">
@@ -134,9 +95,6 @@
 	</string>
 	<string id="st_loading_saved_game">
 		<text>Загрузка игры</text>
-	</string>
-	<string id="st_validating_cdkey">
-		<text>Проверка ключа</text>
 	</string>
 	<string id="st_loading_ai_objects">
 		<text>Загрузка ИИ объектов</text>
@@ -171,64 +129,22 @@
 	<string id="st_loading_sectors_portals">
 		<text>Загрузка секторов и порталов</text>
 	</string>
-	<string id="ui_st_conn_version_differs">
-		<text>Ошибка соединения: Отличаются версии.</text>
-	</string>
-	<string id="ui_st_conn_cdkey_invalid">
-		<text>Ошибка соединения: Неверный CD-Key.</text>
-	</string>
-	<string id="ui_st_conn_cdkey_in_use">
-		<text>Ошибка соединения: Такой CD-Key уже используется.</text>
-	</string>
-	<string id="ui_st_conn_cdkey_disabled">
-		<text>Ошибка соединения: Ваш CD-Key заблокирован. Свяжитесь со службой поддержки.</text>
-	</string>
-	<string id="ui_st_conn_new_patch">
-		<text>Доступен новый патч. \n Версия: %s\n %s\n Хотите загрузить его сейчас?</text>
-	</string>
-	<string id="ui_st_conn_no_new_patch">
-		<text>Нет новых патчей</text>
-	</string>
-	<string id="ui_mm_delete_existing_file_q">
+	<string id="st_ui_mm_delete_existing_file_q">
 		<text>Вы действительно хотите удалить файл?</text>
 	</string>
 	<string id="st_game_paused">
 		<text>Пауза</text>
 	</string>
-	<string id="st_bolt">
+	<string id="st_bolt_name">
 		<text>Болт</text>
 	</string>
 	<string id="st_items">
 		<text>Предметы</text>
 	</string>
-	<string id="st_video">
-		<text>Видео</text>
-	</string>
-	<string id="st_audio">
-		<text>Звук</text>
-	</string>
-	<string id="st_game">
-		<text>Игра</text>
-	</string>
-	<string id="st_controll">
-		<text>Управление</text>
-	</string>
-	<string id="ui_st_connecting_to_masterserver">
-		<text>Присоединение к мастер-серверу</text>
-	</string>
-	<string id="mp_only_one_voting">
-		<text>Разрешено только одно активное голосование</text>
-	</string>
-	<string id="ui_st_patch_download_success">
-		<text>Патч успешно скачан. Установить?</text>
-	</string>
-	<string id="ui_st_patch_download_error">
-		<text>Невозможно скачать патч.</text>
-	</string>
-	<string id="ui_st_load_game_confirm">
+	<string id="st_ui_load_game_confirm">
 		<text>Загрузка игры приведет к потере несохраненных данных. Желаете продолжить?</text>
 	</string>
-	<string id="ui_st_invalid_saved_game">
+	<string id="st_ui_invalid_saved_game">
 		<text>Не совпадает версия сохранённой игры или сохранённая игра испорчена.</text>
 	</string>
 </string_table>

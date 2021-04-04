@@ -176,7 +176,7 @@ void CUITaskRootItem::Update( )
 		string512 buff;
 		string512 buff2;
 		InventoryUtilities::GetTimePeriodAsString(buff, sizeof(buff), Level( ).GetGameTime( ), GameTask( )->m_TimeToComplete);
-		sprintf_s(buff2, "%s %s", *CStringTable( ).translate("ui_st_time_remains"), buff);
+		sprintf_s(buff2, "%s %s", *CStringTable( ).translate("st_ui_time_remains"), buff);
 		m_remTimeStatic->SetText(buff2);
 	}
 }

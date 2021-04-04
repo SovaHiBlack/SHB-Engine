@@ -1,25 +1,19 @@
 <?xml version="1.0" encoding="windows-1251"?>
 <string_table>
-	<string id="cant_walk">
+	<string id="st_cant_walk">
 		<text>Вы слишком истощены, чтобы двигаться</text>
 	</string>
-	<string id="cant_walk_weight">
+	<string id="st_cant_walk_weight">
 		<text>Вы слишком перегружены, чтобы двигаться</text>
 	</string>
-	<string id="dar_poltergeist_hold_the_door">
+	<string id="st_dar_poltergeist_hold_the_door">
 		<text>Кто-то удерживает дверь.</text>
 	</string>
-	<string id="Global Map">
-		<text>Глобальная карта</text>
-	</string>
-	<string id="gun_jammed">
+	<string id="st_gun_jammed">
 		<text>Оружие заклинило. Нужно перезарядить.</text>
 	</string>
 	<string id="inventory_box_use">
 		<text>Обыскать ящик ($$ACTION_USE$$)</text>
-	</string>
-	<string id="Local Map">
-		<text>Локальная карта</text>
 	</string>
 	<string id="st_game_saved">
 		<text>игра сохранена</text>

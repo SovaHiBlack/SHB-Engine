@@ -6,23 +6,8 @@
 	<string id="kb_always_run">
 		<text>Шаг</text>
 	</string>
-	<string id="kb_artefact">
-		<text>Артефакт</text>
-	</string>
 	<string id="kb_backward">
 		<text>Назад</text>
-	</string>
-	<string id="kb_binoculars">
-		<text>Бинокль</text>
-	</string>
-	<string id="kb_buy_menu">
-		<text>Меню покупки</text>
-	</string>
-	<string id="kb_chat">
-		<text>Чат</text>
-	</string>
-	<string id="kb_chat_team">
-		<text>Командный чат</text>
 	</string>
 	<string id="kb_console">
 		<text>Консоль</text>
@@ -69,9 +54,6 @@
 	<string id="kb_grp_movement">
 		<text>Движение</text>
 	</string>
-	<string id="kb_grp_multiplayer">
-		<text>Сетевая игра</text>
-	</string>
 	<string id="kb_grp_weapons">
 		<text>Оружие</text>
 	</string>
@@ -102,9 +84,6 @@
 	<string id="kb_pause">
 		<text>Пауза</text>
 	</string>
-	<string id="kb_pda">
-		<text>КПК</text>
-	</string>
 	<string id="kb_prev_slot">
 		<text>Оружие из предыдущего слота</text>
 	</string>
@@ -113,9 +92,6 @@
 	</string>
 	<string id="kb_reload">
 		<text>Перезарядить</text>
-	</string>
-	<string id="kb_repair">
-		<text>Починить</text>
 	</string>
 	<string id="kb_right">
 		<text>Вправо</text>
@@ -126,20 +102,11 @@
 	<string id="kb_right_strafe">
 		<text>Шаг вправо</text>
 	</string>
-	<string id="kb_scores">
-		<text>Очки</text>
-	</string>
 	<string id="kb_screenshot">
 		<text>Скриншот</text>
 	</string>
-	<string id="kb_skin_menu">
-		<text>Меню выбора модели</text>
-	</string>
 	<string id="kb_sprint">
 		<text>Бег</text>
-	</string>
-	<string id="kb_team_menu">
-		<text>Меню выбора команды</text>
 	</string>
 	<string id="kb_torch">
 		<text>Фонарик</text>
@@ -185,11 +152,5 @@
 	</string>
 	<string id="kb_zoom">
 		<text>Приблизить</text>
-	</string>
-	<string id="speech_menu_group">
-		<text>Голосовые сообщения (1)</text>
-	</string>
-	<string id="speech_menu_personal">
-		<text>Голосовые сообщения (2)</text>
 	</string>
 </string_table>
