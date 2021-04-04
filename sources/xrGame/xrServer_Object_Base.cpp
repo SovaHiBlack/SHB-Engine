@@ -53,20 +53,16 @@ inline	u16	script_server_object_version	()
 // CPureServerObject
 ////////////////////////////////////////////////////////////////////////////
 void CPureServerObject::save				(IWriter	&tMemoryStream)
-{
-}
+{ }
 
 void CPureServerObject::load				(IReader	&tFileStream)
-{
-}
+{ }
 
 void CPureServerObject::load				(NET_Packet	&tNetPacket)
-{
-}
+{ }
 
 void CPureServerObject::save				(NET_Packet	&tNetPacket)
-{
-}
+{ }
 
 ////////////////////////////////////////////////////////////////////////////
 // CSE_Abstract

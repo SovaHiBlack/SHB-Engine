@@ -61,8 +61,6 @@ CServer::~CServer( )
 	m_aDelayedPackets.clear( );
 }
 
-//--------------------------------------------------------------------
-
 CSE_Abstract* CServer::ID_to_entity(u16 ID)
 {
 	if (0xffff == ID)
@@ -81,7 +79,6 @@ CSE_Abstract* CServer::ID_to_entity(u16 ID)
 	}
 }
 
-//--------------------------------------------------------------------
 IClient* CServer::client_Create( )
 {
 	return xr_new<xrClientData>( );
@@ -184,7 +181,6 @@ void CServer::client_Destroy(IClient* C)
 	csPlayers.Leave( );
 }
 
-//--------------------------------------------------------------------
 int	g_Dump_Update_Write = 0;
 
 #ifdef DEBUG

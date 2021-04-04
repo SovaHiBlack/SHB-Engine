@@ -51,6 +51,7 @@ void CUIListBoxItem::InitDefault( )
 {
 	InitTexture("ui_listline");
 }
+
 bool CUIListBoxItem::OnDbClick( )
 {
 	smart_cast<CUIScrollView*>(GetParent( )->GetParent( ))->SetSelected(this);

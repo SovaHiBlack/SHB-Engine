@@ -46,7 +46,7 @@ public:
 	bool					GameIndicatorsShown		( )
 	{
 		return m_bShowGameIndicators;
-	};
+	}
 
 	void					ShowCrosshair			( );
 	void					HideCrosshair			( );

@@ -95,8 +95,8 @@ void CUICustomItem::Render(FVF::TL*& Pointer, const Fvector2& pos, u32 color)
 void CUICustomItem::Render(FVF::TL*& Pointer, const Fvector2& pos_ns, u32 color, float angle)
 {
 	CTexture* T = RCache.get_ActiveTexture(0);
-	Fvector2		ts;
-	Fvector2		hp;
+	Fvector2 ts;
+	Fvector2 hp;
 	ts.set(float(T->get_Width( )), float(T->get_Height( )));
 	hp.set(0.5f / ts.x, 0.5f / ts.y);
 

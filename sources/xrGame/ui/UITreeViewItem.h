@@ -26,13 +26,13 @@ public:
 		return isRoot;
 	}
 
-// Устанавливаем смещение текста
+	// Устанавливаем смещение текста
 	void			SetTextShift(int delta)
 	{
 		iTextShift += delta;
 	}
 
-// Владелец
+	// Владелец
 	CUITreeViewItem* GetOwner( ) const
 	{
 		return pOwner;
@@ -102,7 +102,7 @@ public:
 	{
 		return m_bArticleRead;
 	}
-// Цвет текста когда артикл не прочитан и не прочитан
+	// Цвет текста когда артикл прочитан и не прочитан
 	void	SetReadedColor(u32 cl)
 	{
 		m_uReadedColor = cl;
@@ -115,7 +115,7 @@ public:
 	{
 		m_bManualSetColor = val;
 	}
-// Устанавливаем цвет в зависимости от состояния элемента
+	// Устанавливаем цвет в зависимости от состояния элемента
 	void	SetItemColor( )
 	{
 		m_bArticleRead ? SetTextColor(m_uReadedColor) : SetTextColor(m_uUnreadedColor);
@@ -128,7 +128,7 @@ private:
 	void	CheckParentMark(CUITreeViewItem* pOwner);
 	// Цвет текста когда артикл не прочитан
 	u32		m_uUnreadedColor;
-	// Цвет текста когда артикл не прочитан
+	// Цвет текста когда артикл прочитан
 	u32		m_uReadedColor;
 	// Флажек состояния прочитки
 	bool	m_bArticleRead;

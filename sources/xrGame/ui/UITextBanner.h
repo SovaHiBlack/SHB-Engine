@@ -32,7 +32,6 @@ private:
 };
 
 //  Класс анимироанного баннера
-
 class CUITextBanner
 {
 public:

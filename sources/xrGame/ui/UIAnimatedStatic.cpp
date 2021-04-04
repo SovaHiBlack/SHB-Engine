@@ -24,11 +24,14 @@ CUIAnimatedStatic::CUIAnimatedStatic()
 
 void CUIAnimatedStatic::Update()
 {
-	if (!m_bPlaying) return;
+	if (!m_bPlaying)
+	{
+		return;
+	}
 
 	static u32 oneFrameDuration = 0;
 
-	// Пересчитаем пааметры анимации
+	// Пересчитаем параметры анимации
 	if (m_bParamsChanged && 0 != m_uFrameCount)
 	{
 		// Пересчитаем время одного кадра
@@ -48,7 +51,9 @@ void CUIAnimatedStatic::Update()
 	{
 		Rewind(0);
 		if (!m_bCyclic)
-			Stop();
+		{
+			Stop( );
+		}
 	}
 
 	// Теперь вычисляем кадры в зависимости от времени

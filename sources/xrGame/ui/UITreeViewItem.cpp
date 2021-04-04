@@ -10,15 +10,11 @@
 #define UNREAD_COLOR	0xff00ff00
 #define READ_COLOR		0xffffffff
 
-//////////////////////////////////////////////////////////////////////////
-
 // Смещение относительно родителя
 const int				subShift = 1;
 const char* const		treeItemBackgroundTexture = "ui\\ui_pda_over_list";
 // Цвет непрочитанного элемента
 static const u32		unreadColor = 0xff00ff00;
-
-//////////////////////////////////////////////////////////////////////////
 
 CUITreeViewItem::CUITreeViewItem( )
 	: isRoot(false),
@@ -37,14 +33,10 @@ CUITreeViewItem::CUITreeViewItem( )
 	m_bManualSetColor = false;
 }
 
-//////////////////////////////////////////////////////////////////////////
-
 CUITreeViewItem::~CUITreeViewItem( )
 {
 	DeleteAllSubItems( );
 }
-
-//////////////////////////////////////////////////////////////////////////
 
 void CUITreeViewItem::OnRootChanged( )
 {
@@ -55,7 +47,10 @@ void CUITreeViewItem::OnRootChanged( )
 		str = GetText( );
 
 		xr_string::size_type pos = str.find_first_not_of(" ");
-		if (xr_string::npos == pos) pos = 0;
+		if (xr_string::npos == pos)
+		{
+			pos = 0;
+		}
 
 		if (pos == 0)
 		{
@@ -63,14 +58,18 @@ void CUITreeViewItem::OnRootChanged( )
 			str.insert(0, " ");
 		}
 		else
+		{
 			--pos;
+		}
 
 		if (isOpened)
-			// Add minus sign
+		{	// Add minus sign
 			str.replace(pos, 1, "-");
+		}
 		else
-			// Add plus sign
+		{	// Add plus sign
 			str.replace(pos, 1, "+");
+		}
 
 		inherited::SetText(str.c_str( ));
 	}
@@ -83,21 +82,26 @@ void CUITreeViewItem::OnRootChanged( )
 		if (pos == 0)
 		{
 			for (int i = 0; i < iTextShift; ++i)
+			{
 				str.insert(pos, " ");
+			}
 		}
 		else
+		{
 			str.replace(pos, 1, " ");
+		}
 
 		inherited::SetText(str.c_str( ));
 	}
 }
 
-//////////////////////////////////////////////////////////////////////////
-
 void CUITreeViewItem::OnOpenClose( )
 {
 	// Если мы не являемся узлом дерева, значит ничего не делаем
-	if (!isRoot) return;
+	if (!isRoot)
+	{
+		return;
+	}
 
 	xr_string str;
 
@@ -107,22 +111,26 @@ void CUITreeViewItem::OnOpenClose( )
 	if (xr_string::npos != pos)
 	{
 		if (isOpened)
-			// Change minus sign to plus
+		{	// Change minus sign to plus
 			str.replace(pos, 1, "-");
+		}
 		else
-			// Change plus sign to minus
+		{	// Change plus sign to minus
 			str.replace(pos, 1, "+");
+		}
 	}
 
 	inherited::SetText(str.c_str( ));
 }
 
-//////////////////////////////////////////////////////////////////////////
-
 void CUITreeViewItem::Open( )
 {
 	// Если не рут или уже открыты, то ничего не делаем
-	if (!isRoot || isOpened) return;
+	if (!isRoot || isOpened)
+	{
+		return;
+	}
+
 	isOpened = true;
 
 	// Изменяем состояние
@@ -132,7 +140,10 @@ void CUITreeViewItem::Open( )
 	CUIListWnd* pList = smart_cast<CUIListWnd*>(GetParent( ));
 
 	R_ASSERT(pList);
-	if (!pList) return;
+	if (!pList)
+	{
+		return;
+	}
 
 	int pos = pList->GetItemPos(this);
 
@@ -142,12 +153,14 @@ void CUITreeViewItem::Open( )
 	}
 }
 
-//////////////////////////////////////////////////////////////////////////
-
 void CUITreeViewItem::Close( )
 {
 	// Если не рут или уже открыты, то ничего не делаем
-	if (!isRoot || !isOpened) return;
+	if (!isRoot || !isOpened)
+	{
+		return;
+	}
+
 	isOpened = false;
 
 	// Изменяем состояние
@@ -157,7 +170,10 @@ void CUITreeViewItem::Close( )
 	CUIListWnd* pList = smart_cast<CUIListWnd*>(GetParent( ));
 
 	R_ASSERT(pList);
-	if (!pList) return;
+	if (!pList)
+	{
+		return;
+	}
 
 	int pos;
 
@@ -175,12 +191,13 @@ void CUITreeViewItem::Close( )
 	}
 }
 
-//////////////////////////////////////////////////////////////////////////
-
 void CUITreeViewItem::AddItem(CUITreeViewItem* pItem)
 {
 	R_ASSERT(pItem);
-	if (!pItem) return;
+	if (!pItem)
+	{
+		return;
+	}
 
 	pItem->SetTextShift(subShift + iTextShift);
 
@@ -191,8 +208,6 @@ void CUITreeViewItem::AddItem(CUITreeViewItem* pItem)
 	pItem->SetText(pItem->GetText( ));
 }
 
-//////////////////////////////////////////////////////////////////////////
-
 void CUITreeViewItem::DeleteAllSubItems( )
 {
 	for (SubItems_it it = vSubItems.begin( ); it != vSubItems.end( ); ++it)
@@ -200,7 +215,9 @@ void CUITreeViewItem::DeleteAllSubItems( )
 		CUIWindow* pWindow = (*it)->GetParent( );
 
 		if (pWindow)
+		{
 			pWindow->DetachChild(*it);
+		}
 
 		xr_delete(*it);
 	}
@@ -208,17 +225,16 @@ void CUITreeViewItem::DeleteAllSubItems( )
 	vSubItems.clear( );
 }
 
-//////////////////////////////////////////////////////////////////////////
-
 void CUITreeViewItem::SetRoot(bool set)
 {
-	if (isRoot) return;
+	if (isRoot)
+	{
+		return;
+	}
 
 	isRoot = set;
 	OnRootChanged( );
 }
-
-//////////////////////////////////////////////////////////////////////////
 
 void CUITreeViewItem::SetText(const char* str)
 {
@@ -228,7 +244,9 @@ void CUITreeViewItem::SetText(const char* str)
 	if (pos < static_cast<xr_string::size_type>(iTextShift))
 	{
 		for (u32 i = 0; i < iTextShift - pos; ++i)
+		{
 			s.insert(0, " ");
+		}
 	}
 	else if (pos > static_cast<xr_string::size_type>(iTextShift))
 	{
@@ -237,8 +255,6 @@ void CUITreeViewItem::SetText(const char* str)
 
 	inherited::SetText(s.c_str( ));
 }
-
-//////////////////////////////////////////////////////////////////////////
 
 void CUITreeViewItem::SendMessage(CUIWindow* pWnd, s16 msg, void* pData)
 {
@@ -277,8 +293,6 @@ void CUITreeViewItem::SendMessage(CUIWindow* pWnd, s16 msg, void* pData)
 	}
 }
 
-//////////////////////////////////////////////////////////////////////////
-
 CUITreeViewItem* CUITreeViewItem::Find(const char* text) const
 {
 	// Пробегаемся по списку подчиненных элементов, и ищем элемент с заданным текстом
@@ -296,18 +310,23 @@ CUITreeViewItem* CUITreeViewItem::Find(const char* text) const
 		}
 
 		if (xr_strcmp(caption.c_str( ), text) == 0)
+		{
 			pResult = *it;
+		}
 
 		if ((*it)->IsRoot( ) && !pResult)
+		{
 			pResult = (*it)->Find(text);
+		}
 
-		if (pResult) break;
+		if (pResult)
+		{
+			break;
+		}
 	}
 
 	return pResult;
 }
-
-//////////////////////////////////////////////////////////////////////////
 
 CUITreeViewItem* CUITreeViewItem::Find(int value) const
 {
@@ -315,18 +334,24 @@ CUITreeViewItem* CUITreeViewItem::Find(int value) const
 
 	for (SubItems::const_iterator it = vSubItems.begin( ); it != vSubItems.end( ); ++it)
 	{
-		if ((*it)->GetValue( ) == value) pResult = *it;
+		if ((*it)->GetValue( ) == value)
+		{
+			pResult = *it;
+		}
 
 		if ((*it)->IsRoot( ) && !pResult)
+		{
 			pResult = (*it)->Find(value);
+		}
 
-		if (pResult) break;
+		if (pResult)
+		{
+			break;
+		}
 	}
 
 	return pResult;
 }
-
-//////////////////////////////////////////////////////////////////////////
 
 CUITreeViewItem* CUITreeViewItem::Find(CUITreeViewItem* pItem) const
 {
@@ -335,17 +360,22 @@ CUITreeViewItem* CUITreeViewItem::Find(CUITreeViewItem* pItem) const
 	for (SubItems::const_iterator it = vSubItems.begin( ); it != vSubItems.end( ); ++it)
 	{
 		if ((*it)->IsRoot( ) && !pResult)
+		{
 			pResult = (*it)->Find(pItem);
-		else
-			if (pItem == *it) pResult = *it;
+		}
+		else if (pItem == *it)
+		{
+			pResult = *it;
+		}
 
-		if (pResult) break;
+		if (pResult)
+		{
+			break;
+		}
 	}
 
 	return pResult;
 }
-
-//////////////////////////////////////////////////////////////////////////
 
 xr_string CUITreeViewItem::GetHierarchyAsText( )
 {
@@ -369,36 +399,37 @@ xr_string CUITreeViewItem::GetHierarchyAsText( )
 	return name;
 }
 
-//////////////////////////////////////////////////////////////////////////
-
 void CUITreeViewItem::MarkArticleAsRead(bool value)
 {
-	// Если элемент рутовый, то мы его маркаем его, и все чилды
 	if (IsRoot( ))
-	{
+	{	// Если элемент рутовый, то мы его маркаем его, и все чилды
 		m_bArticleRead = value;
 		if (!m_bManualSetColor)
+		{
 			SetItemColor( );
+		}
 
 		for (SubItems_it it = vSubItems.begin( ); it != vSubItems.end( ); ++it)
 		{
 			(*it)->m_bArticleRead = value;
 			(*it)->SetItemColor( );
 			if ((*it)->IsRoot( ))
+			{
 				(*it)->MarkArticleAsRead(value);
+			}
 		}
 	}
 	else
-	{
-		// Если же нет, то маркаем себя и говорим проверить свой парентовый элемент
+	{	// Если же нет, то маркаем себя и говорим проверить свой парентовый элемент
 		m_bArticleRead = value;
 		if (!m_bManualSetColor)
+		{
 			SetItemColor( );
+		}
+
 		CheckParentMark(GetOwner( ));
 	}
 }
-
-//////////////////////////////////////////////////////////////////////////
 
 void CUITreeViewItem::CheckParentMark(CUITreeViewItem* pOwner)
 {
@@ -418,8 +449,7 @@ void CUITreeViewItem::CheckParentMark(CUITreeViewItem* pOwner)
 		}
 
 		if (!f)
-		{
-			// Если мы тут, то все артиклы прочитанны, и можно маркнуть себя как прочитанная ветвь
+		{	// Если мы тут, то все артиклы прочитанны, и можно маркнуть себя как прочитанная ветвь
 			pOwner->m_bArticleRead = true;
 			pOwner->SetItemColor( );
 		}
@@ -432,25 +462,21 @@ void CUITreeViewItem::CheckParentMark(CUITreeViewItem* pOwner)
 // Standalone function for tree hierarchy creation
 //////////////////////////////////////////////////////////////////////////
 
-void CreateTreeBranch(shared_str nesting, shared_str leafName, CUIListWnd* pListToAdd, int leafProperty,
-					  CGameFont* pRootFont, u32 rootColor, CGameFont* pLeafFont, u32 leafColor, bool markRead)
-{
-	// Nested function emulation
+void CreateTreeBranch(shared_str nesting, shared_str leafName, CUIListWnd* pListToAdd, int leafProperty, CGameFont* pRootFont, u32 rootColor, CGameFont* pLeafFont, u32 leafColor, bool markRead)
+{	// Nested function emulation
 	class AddTreeTail_
 	{
 	private:
 		CGameFont* pRootFnt;
 		u32			rootItemColor;
+
 	public:
-		AddTreeTail_(CGameFont* f, u32 cl)
-			: pRootFnt(f),
-			rootItemColor(cl)
+		AddTreeTail_(CGameFont* f, u32 cl) : pRootFnt(f), rootItemColor(cl)
 		{ }
 
 		CUITreeViewItem* operator () (GroupTree_it it, GroupTree& cont, CUITreeViewItem* pItemToIns)
-		{
-			// Вставляем иерархию разделов в энциклопедию
-			CUITreeViewItem* pNewItem = NULL;
+		{	// Вставляем иерархию разделов в энциклопедию
+			CUITreeViewItem* pNewItem = nullptr;
 
 			for (GroupTree_it it2 = it; it2 != cont.end( ); ++it2)
 			{
@@ -479,10 +505,10 @@ void CreateTreeBranch(shared_str nesting, shared_str leafName, CUIListWnd* pList
 	xr_string group = *nesting;
 
 	// Парсим строку группы для определения вложенности
-	GroupTree					groupTree;
+	GroupTree groupTree;
 
-	xr_string::size_type		pos;
-	xr_string					oneLevel;
+	xr_string::size_type pos;
+	xr_string oneLevel;
 
 	while (true)
 	{
@@ -502,7 +528,8 @@ void CreateTreeBranch(shared_str nesting, shared_str leafName, CUIListWnd* pList
 	}
 
 	// Теперь ищем нет ли затребованных групп уже в наличии
-	CUITreeViewItem* pTVItem = NULL, * pTVItemChilds = NULL;
+	CUITreeViewItem* pTVItem = nullptr;
+	CUITreeViewItem* pTVItemChilds = nullptr;
 	bool status = false;
 
 	// Для всех рутовых элементов
@@ -519,8 +546,7 @@ void CreateTreeBranch(shared_str nesting, shared_str leafName, CUIListWnd* pList
 
 		// Ищем не содержит ли он данной иерархии и добавляем новые элементы если не найдено
 		if (0 == xr_strcmp(caption.c_str( ), *groupTree.front( )))
-		{
-			// Уже содержит. Надо искать глубже
+		{	// Уже содержит. Надо искать глубже
 			pTVItemChilds = pTVItem;
 			for (GroupTree_it it = groupTree.begin( ) + 1; it != groupTree.end( ); ++it)
 			{
@@ -532,11 +558,15 @@ void CreateTreeBranch(shared_str nesting, shared_str leafName, CUIListWnd* pList
 					status = true;
 					break;
 				}
+
 				pTVItemChilds = pTVItem;
 			}
 		}
 
-		if (status) break;
+		if (status)
+		{
+			break;
+		}
 	}
 
 	// Прошли все существующее дерево, и не нашли? Тогда добавляем новую иерархию
@@ -551,7 +581,9 @@ void CreateTreeBranch(shared_str nesting, shared_str leafName, CUIListWnd* pList
 
 		// Если в списке вложенности 1 элемент, то хвоста нет, и соответственно ничего не добавляем
 		if (groupTree.size( ) > 1)
+		{
 			pTVItemChilds = AddTreeTail(groupTree.begin( ) + 1, groupTree, pTVItemChilds);
+		}
 	}
 
 	// К этому моменту pTVItemChilds обязательно должна быть не NULL

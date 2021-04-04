@@ -11,14 +11,14 @@ class CDeviceResetNotifier : public pureDeviceReset
 public:
 						CDeviceResetNotifier		( )
 	{
-		Device.seqDeviceReset.Add					(this, REG_PRIORITY_NORMAL);
-	};
+		Device.seqDeviceReset.Add(this, REG_PRIORITY_NORMAL);
+	}
 	virtual				~CDeviceResetNotifier		( )
 	{
-		Device.seqDeviceReset.Remove				(this);
-	};
+		Device.seqDeviceReset.Remove(this);
+	}
 	virtual void		OnDeviceReset				( )
-	{ };
+	{ }
 };
 
 //---------------------------------------------------------------------------------------
@@ -32,18 +32,18 @@ struct S2DVert
 	{ }
 						S2DVert						(float pX, float pY, float tU, float tV)
 	{
-		pt.set										(pX, pY);
-		uv.set										(tU, tV);
+		pt.set(pX, pY);
+		uv.set(tU, tV);
 	}
 	void				set							(float pt_x, float pt_y, float uv_x, float uv_y)
 	{
-		pt.set										(pt_x, pt_y);
-		uv.set										(uv_x, uv_y);
+		pt.set(pt_x, pt_y);
+		uv.set(uv_x, uv_y);
 	}
 	void				set							(const Fvector2& _pt, const Fvector2& _uv)
 	{
-		pt.set										(_pt);
-		uv.set										(_uv);
+		pt.set(_pt);
+		uv.set(_uv);
 	}
 	void				rotate_pt					(const Fvector2& pivot, float cosA, float sinA, float kx);
 };
@@ -77,12 +77,12 @@ class ui_core : public CDeviceResetNotifier
 
 	inline float			ClientToScreenScaledX		(float left)
 	{
-		return										left * m_current_scale->x;
-	};
+		return left * m_current_scale->x;
+	}
 	inline float			ClientToScreenScaledY		(float top)
 	{
-		return										top * m_current_scale->y;
-	};
+		return top * m_current_scale->y;
+	}
 
 public:
 	xr_stack<Frect>									m_Scissors;
@@ -91,11 +91,11 @@ public:
 						~ui_core					( );
 	CFontManager*		Font						( )
 	{
-		return										m_pFontManager;
+		return m_pFontManager;
 	}
 	CUICursor*			GetUICursor					( )
 	{
-		return										m_pUICursor;
+		return m_pUICursor;
 	}
 
 	void				ClientToScreenScaled		(Fvector2& dest, float left, float top);

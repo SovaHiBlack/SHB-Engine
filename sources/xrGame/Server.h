@@ -187,7 +187,7 @@ public:
 	u32						GetEntitiesNum( )
 	{
 		return entities.size( );
-	};
+	}
 	CSE_Abstract* GetEntity(u32 Num);
 
 	inline void				clients_Lock( )
@@ -216,10 +216,6 @@ public:
 	shared_str		level_name(const shared_str& server_options) const;
 
 	void					create_direct_client( );
-
-//	virtual void			Assign_ServerType	( string512& res ) {};
-//	virtual bool			HasPassword			()	{ return false; }
-//	virtual bool			HasProtected		()	{ return false; }
 
 	virtual void			GetServerInfo(CServerInfo* si);
 

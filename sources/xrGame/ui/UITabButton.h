@@ -1,20 +1,17 @@
-// File:        UITabButton.h
-// Description: 
-
 #pragma once
 
 #include "UI3tButton.h"//
 
 class CUITabButton : public CUI3tButton
 {
-	typedef CUI3tButton inherited;
+	using inherited					= CUI3tButton;
 
 public:
-	CUITabButton( );
-	virtual ~CUITabButton( );
+					CUITabButton	( );
+	virtual			~CUITabButton	( );
 
-	virtual void SendMessage(CUIWindow* pWnd, s16 msg, void* pData = nullptr);
-	virtual bool OnMouse(float x, float y, EUIMessages mouse_action);
-	virtual bool OnMouseDown(int mouse_btn);
-	virtual void Update( );
+	virtual void	SendMessage		(CUIWindow* pWnd, s16 msg, void* pData = nullptr);
+	virtual bool	OnMouse			(float x, float y, EUIMessages mouse_action);
+	virtual bool	OnMouseDown		(int mouse_btn);
+	virtual void	Update			( );
 };

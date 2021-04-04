@@ -8,7 +8,6 @@
 template <typename _return_type>
 class CScriptCallbackEx;
 class CActor;
-//class CUIActorSleepVideoPlayer;
 
 class CActorCondition : public CEntityCondition
 {

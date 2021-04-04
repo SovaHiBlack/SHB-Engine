@@ -24,7 +24,7 @@ bool SortStringsByAlphabetPred (const shared_str& s1, const shared_str& s2)
 	R_ASSERT(s2.size());
 
 	return (xr_strcmp(s1,s2)<0);
-};
+}
 
 struct story_name_predicate {
 	inline	bool	operator()	(const xr_rtoken &_1, const xr_rtoken &_2) const
@@ -78,7 +78,8 @@ void CSE_ALifeGraphPoint::STATE_Write		(NET_Packet	&tNetPacket)
 	tNetPacket.w_u8				(m_tLocations[1]);
 	tNetPacket.w_u8				(m_tLocations[2]);
 	tNetPacket.w_u8				(m_tLocations[3]);
-};
+}
+
 void CSE_ALifeGraphPoint::UPDATE_Read		(NET_Packet	&tNetPacket)
 { }
 

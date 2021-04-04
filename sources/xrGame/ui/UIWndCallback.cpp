@@ -7,14 +7,14 @@
 
 struct event_comparer
 {
-	shared_str			name;
-	s16					event;
+	shared_str name;
+	s16 event;
 
-	event_comparer(shared_str n, s16 e) :name(n), event(e)
+	event_comparer(shared_str n, s16 e) : name(n), event(e)
 	{ }
-	bool operator ()(SCallbackInfo* i)
+	bool operator ( ) (SCallbackInfo* i)
 	{
-		return((i->m_controlName == name) && (i->m_event == event));
+		return ((i->m_controlName == name) && (i->m_event == event));
 	}
 };
 

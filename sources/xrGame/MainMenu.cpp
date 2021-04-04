@@ -12,8 +12,6 @@
 #include <dinput.h>
 #include "ui\UIButtonHint.h"//
 #include "ui/UICursor.h"//
-//#include "StringTable.h"
-
 #include "object_broker.h"
 
 extern bool b_shniaganeed_pp;
@@ -21,16 +19,12 @@ extern bool b_shniaganeed_pp;
 CMainMenu* MainMenu( )
 {
 	return (CMainMenu*) g_pGamePersistent->m_pMainMenu;
-};
-
-//----------------------------------------------------------------------------------
-//#define INIT_MSGBOX(_box, _template)	{ _box = xr_new<CUIMessageBoxEx>(); _box->Init(_template);}
-//----------------------------------------------------------------------------------
+}
 
 CMainMenu::CMainMenu( )
 {
 	m_Flags.zero( );
-	m_startDialog = NULL;
+	m_startDialog = nullptr;
 	m_screenshotFrame = u32(-1);
 	g_pGamePersistent->m_pMainMenu = this;
 	if (Device.b_is_Ready)
@@ -40,28 +34,20 @@ CMainMenu::CMainMenu( )
 
 	ReadTextureInfo( );
 	CUIXmlInit::InitColorDefs( );
-	g_btnHint = NULL;
+	g_btnHint = nullptr;
 	m_deactivated_frame = 0;
 
-	//---------------------------------------------------------------
 	m_NeedErrDialog = ErrNoError;
 	m_start_time = 0;
 
 	g_btnHint = xr_new<CUIButtonHint>( );
-
-	//for (u32 i = 0; i < u32(ErrMax); i++)
-	//{
-	//	CUIMessageBoxEx* pNewErrDlg;
-	//	INIT_MSGBOX(pNewErrDlg, ErrMsgBoxTemplate[i]);
-	//	m_pMB_ErrDlgs.push_back(pNewErrDlg);
-	//}
 }
 
 CMainMenu::~CMainMenu( )
 {
 	xr_delete(g_btnHint);
 	xr_delete(m_startDialog);
-	g_pGamePersistent->m_pMainMenu = NULL;
+	g_pGamePersistent->m_pMainMenu = nullptr;
 	delete_data(m_pMB_ErrDlgs);
 }
 
@@ -217,7 +203,7 @@ void CMainMenu::IR_OnMousePress(int btn)
 	}
 
 	IR_OnKeyboardPress(mouse_button_2_key[btn]);
-};
+}
 
 void CMainMenu::IR_OnMouseRelease(int btn)
 {
@@ -227,7 +213,7 @@ void CMainMenu::IR_OnMouseRelease(int btn)
 	}
 
 	IR_OnKeyboardRelease(mouse_button_2_key[btn]);
-};
+}
 
 void CMainMenu::IR_OnMouseHold(int btn)
 {
@@ -237,7 +223,7 @@ void CMainMenu::IR_OnMouseHold(int btn)
 	}
 
 	IR_OnKeyboardHold(mouse_button_2_key[btn]);
-};
+}
 
 void CMainMenu::IR_OnMouseMove(int dx, int dy)
 {
@@ -250,10 +236,10 @@ void CMainMenu::IR_OnMouseMove(int dx, int dy)
 	{
 		MainInputReceiver( )->IR_OnMouseMove(dx, dy);
 	}
-};
+}
 
 void CMainMenu::IR_OnMouseStop(int x, int y)
-{ };
+{ }
 
 void CMainMenu::IR_OnKeyboardPress(int dik)
 {
@@ -278,7 +264,7 @@ void CMainMenu::IR_OnKeyboardPress(int dik)
 	{
 		MainInputReceiver( )->IR_OnKeyboardPress(dik);
 	}
-};
+}
 
 void CMainMenu::IR_OnKeyboardRelease(int dik)
 {
@@ -291,7 +277,7 @@ void CMainMenu::IR_OnKeyboardRelease(int dik)
 	{
 		MainInputReceiver( )->IR_OnKeyboardRelease(dik);
 	}
-};
+}
 
 void CMainMenu::IR_OnKeyboardHold(int dik)
 {
@@ -304,7 +290,7 @@ void CMainMenu::IR_OnKeyboardHold(int dik)
 	{
 		MainInputReceiver( )->IR_OnKeyboardHold(dik);
 	}
-};
+}
 
 void CMainMenu::IR_OnMouseWheel(int direction)
 {
@@ -479,7 +465,7 @@ void CMainMenu::UnregisterPPDraw(CUIWindow* w)
 void CMainMenu::SetErrorDialog(EErrorDlg ErrDlg)
 {
 	m_NeedErrDialog = ErrDlg;
-};
+}
 
 void CMainMenu::CheckForErrorDlg( )
 {
@@ -490,7 +476,7 @@ void CMainMenu::CheckForErrorDlg( )
 
 	StartStopMenu(m_pMB_ErrDlgs[m_NeedErrDialog], false);
 	m_NeedErrDialog = ErrNoError;
-};
+}
 
 void CMainMenu::DestroyInternal(bool bForce)
 {

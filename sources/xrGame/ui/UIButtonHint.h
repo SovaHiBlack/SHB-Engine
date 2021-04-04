@@ -7,11 +7,11 @@ class CUIFrameLineWnd;
 
 class CUIButtonHint : public CUIWindow, public pureRender
 {
-	CUIWindow*			m_ownerWnd;
+	CUIWindow*							m_ownerWnd;
 
-	CUIStatic*			m_text;
-	CUIFrameLineWnd*	m_border;
-	bool				m_enabledOnFrame;
+	CUIStatic*							m_text;
+	CUIFrameLineWnd*					m_border;
+	bool								m_enabledOnFrame;
 
 public:
 						CUIButtonHint	( );
@@ -23,13 +23,13 @@ public:
 	void				Discard			( )
 	{
 		m_ownerWnd = nullptr;
-	};
+	}
 	virtual void		OnRender		( );
 	void				Draw_			( )
 	{
 		m_enabledOnFrame = true;
-	};
+	}
 	void				SetHintText		(CUIWindow* w, const char* text);
 };
 
-extern CUIButtonHint*	g_btnHint;
+extern CUIButtonHint*					g_btnHint;

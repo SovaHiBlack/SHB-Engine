@@ -8,12 +8,12 @@
 CUICursor* GetUICursor( )
 {
 	return UI( )->GetUICursor( );
-};
+}
 
 ui_core* UI( )
 {
 	return GamePersistent( ).m_pUI_core;
-};
+}
 
 extern ENGINE_API Fvector2		g_current_font_scale;
 
@@ -186,7 +186,7 @@ void ui_core::PushScissor(const Frect& r_tgt, bool overlapped)
 	result.rb.x = ClientToScreenScaledX(result.rb.x);
 	result.rb.y = ClientToScreenScaledY(result.rb.y);
 
-	Irect				r;
+	Irect r;
 	r.x1 = iFloor(result.x1);
 	r.x2 = iFloor(result.x2 + 0.5f);
 	r.y1 = iFloor(result.y1);

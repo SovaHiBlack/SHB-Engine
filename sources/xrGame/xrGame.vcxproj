@@ -1392,10 +1392,6 @@
     <ClInclude Include="ui\UITrackBar.h" />
     <ClInclude Include="ui\UITradeWnd.h" />
     <ClInclude Include="ui\UITreeViewItem.h" />
-    <ClInclude Include="ui\UIVideoPlayerWnd.h">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
-    </ClInclude>
     <ClInclude Include="ui\UIWindow.h" />
     <ClInclude Include="ui\UIWndCallback.h" />
     <ClInclude Include="ui\UIWpnParams.h" />
@@ -2331,10 +2327,6 @@
     <ClCompile Include="ui\UITrackBar.cpp" />
     <ClCompile Include="ui\UITradeWnd.cpp" />
     <ClCompile Include="ui\UITreeViewItem.cpp" />
-    <ClCompile Include="ui\UIVideoPlayerWnd.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
-    </ClCompile>
     <ClCompile Include="ui\UIWindow.cpp" />
     <ClCompile Include="ui\UIWindow_script.cpp" />
     <ClCompile Include="ui\UIWndCallback.cpp" />

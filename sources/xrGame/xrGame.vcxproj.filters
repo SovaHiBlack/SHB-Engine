@@ -1831,9 +1831,6 @@
     <Filter Include="UI\UIWindows\Lines">
       <UniqueIdentifier>{3d5f9e7c-6a7f-4704-9d0d-67f5e6bde30e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="UI\UIWindows\VideoPlayer">
-      <UniqueIdentifier>{c31dddd5-5f43-46f1-be20-e076c78c4fea}</UniqueIdentifier>
-    </Filter>
     <Filter Include="UI\UIWindows\DragDrop2">
       <UniqueIdentifier>{62cb4f4f-b35c-4f6d-ba3f-beb858370f8e}</UniqueIdentifier>
     </Filter>
@@ -5445,9 +5442,6 @@
     <ClInclude Include="ui\UISubLine.h">
       <Filter>UI\UIWindows\Lines</Filter>
     </ClInclude>
-    <ClInclude Include="ui\UIVideoPlayerWnd.h">
-      <Filter>UI\UIWindows\VideoPlayer</Filter>
-    </ClInclude>
     <ClInclude Include="ui\UICellCustomItems.h">
       <Filter>UI\UIWindows\DragDrop2</Filter>
     </ClInclude>
@@ -8110,9 +8104,6 @@
     </ClCompile>
     <ClCompile Include="ui\UISubLine.cpp">
       <Filter>UI\UIWindows\Lines</Filter>
-    </ClCompile>
-    <ClCompile Include="ui\UIVideoPlayerWnd.cpp">
-      <Filter>UI\UIWindows\VideoPlayer</Filter>
     </ClCompile>
     <ClCompile Include="ui\UICellCustomItems.cpp">
       <Filter>UI\UIWindows\DragDrop2</Filter>

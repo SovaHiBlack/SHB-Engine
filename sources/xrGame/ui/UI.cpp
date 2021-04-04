@@ -20,7 +20,7 @@ CUI::CUI(CHUDManager* p)
 	m_pMessagesWnd = xr_new<CUIMessagesWindow>( );
 
 	m_Parent = p;
-	pUIGame = NULL;
+	pUIGame = nullptr;
 
 	ShowGameIndicators( );
 	ShowCrosshair( );

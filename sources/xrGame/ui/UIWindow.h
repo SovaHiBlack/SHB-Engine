@@ -56,12 +56,12 @@ public:
 	{
 		VERIFY(1 == n);
 		return (pointer) ui_allocator.create( );
-	};
+	}
 	char*						__charalloc				(size_type n)
 	{
 		VERIFY(1 == n);
 		return (char*) ui_allocator.create( );
-	};
+	}
 	void						deallocate				(pointer p, size_type n) const
 	{
 		VERIFY(1 == n);
@@ -247,7 +247,7 @@ public:
 	inline bool					GetPPMode				( )
 	{
 		return m_bPP;
-	};
+	}
 	//для перевода окна и потомков в исходное состояние
 	virtual void				Reset					( );
 	void						ResetAll				( );
@@ -279,7 +279,6 @@ public:
 	{
 		return m_ChildWndList;
 	}
-
 
 	inline bool					IsAutoDelete			( )
 	{
@@ -318,7 +317,7 @@ protected:
 		{
 			m_ChildWndList.erase(it);
 		}
-	};
+	}
 
 	shared_str											m_windowName;
 	//список дочерних окон

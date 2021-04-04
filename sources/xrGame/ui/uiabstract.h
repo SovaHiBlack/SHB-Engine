@@ -12,7 +12,7 @@ class IUIFontControl
 {
 public:
 	virtual					~IUIFontControl					( )
-	{ };
+	{ }
 	virtual void			SetTextColor					(u32 color) = 0;
 	virtual u32				GetTextColor					( ) = 0;
 	virtual void			SetFont							(CGameFont* pFont) = 0;
@@ -32,7 +32,7 @@ class IUITextControl : public IUIFontControl
 {
 public:
 	virtual					~IUITextControl					( )
-	{ };
+	{ }
 	virtual void			SetText							(const char* text) = 0;
 	virtual const char*		GetText							( ) = 0;
 };
@@ -127,9 +127,9 @@ class IUISimpleWindow : public boost::noncopyable
 {
 public:
 							IUISimpleWindow					( )
-	{ };
+	{ }
 	virtual					~IUISimpleWindow				( )
-	{ };
+	{ }
 
 	virtual void			Init							(float x, float y, float width, float height) = 0;
 	virtual void			Draw							( ) = 0;
@@ -204,7 +204,7 @@ public:
 	inline void				SetAlignment					(EWindowAlignment al)
 	{
 		m_alignment = al;
-	};
+	}
 	virtual void			SetWndRect						(float x, float y, float width, float height)
 	{
 		m_wndPos.set(x, y);
@@ -238,7 +238,7 @@ public:
 			break;
 			default:
 				NODEFAULT;
-		};
+		}
 	}
 	void					MoveWndDelta					(float dx, float dy)
 	{
@@ -263,7 +263,7 @@ protected:
 	bool													m_bSelected;
 
 public:
-							CUISelectable					( ) :m_bSelected(false)
+							CUISelectable					( ) : m_bSelected(false)
 	{ }
 	bool					GetSelected						( ) const
 	{
@@ -272,5 +272,5 @@ public:
 	virtual void			SetSelected						(bool b)
 	{
 		m_bSelected = b;
-	};
+	}
 };

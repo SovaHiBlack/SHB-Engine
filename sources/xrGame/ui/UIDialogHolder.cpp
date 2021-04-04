@@ -10,8 +10,8 @@
 
 dlgItem::dlgItem(CUIWindow* pWnd)
 {
-	wnd					= pWnd;
-	enabled				= true;
+	wnd = pWnd;
+	enabled = true;
 }
 
 bool dlgItem::operator < (const dlgItem& itm) const
@@ -26,8 +26,8 @@ bool operator == (const dlgItem& i1, const dlgItem& i2)
 
 recvItem::recvItem(CUIDialogWnd* r)
 {
-	m_item				= r;
-	m_flags.zero		( );
+	m_item = r;
+	m_flags.zero( );
 }
 
 bool operator == (const recvItem& i1, const recvItem& i2)
@@ -37,16 +37,16 @@ bool operator == (const recvItem& i1, const recvItem& i2)
 
 CDialogHolder::CDialogHolder( )
 {
-	shedule.t_min			= 5;
-	shedule.t_max			= 20;
-	shedule_register		( );
-	Device.seqFrame.Add		(this, REG_PRIORITY_LOW - 1000);
+	shedule.t_min = 5;
+	shedule.t_max = 20;
+	shedule_register( );
+	Device.seqFrame.Add(this, REG_PRIORITY_LOW - 1000);
 }
 
 CDialogHolder::~CDialogHolder( )
 {
-	shedule_unregister		( );
-	Device.seqFrame.Remove	(this);
+	shedule_unregister( );
+	Device.seqFrame.Remove(this);
 }
 
 void CDialogHolder::StartMenu(CUIDialogWnd* pDialog, bool bDoHideIndicators)
@@ -179,7 +179,7 @@ CUIDialogWnd* CDialogHolder::MainInputReceiver( )
 	}
 
 	return nullptr;
-};
+}
 
 void CDialogHolder::SetMainInputReceiver(CUIDialogWnd* ir, bool _find_remove)
 {
@@ -222,7 +222,7 @@ void CDialogHolder::SetMainInputReceiver(CUIDialogWnd* ir, bool _find_remove)
 	{
 		m_input_receivers.push_back(recvItem(ir));
 	}
-};
+}
 
 void CDialogHolder::StartStopMenu(CUIDialogWnd* pDialog, bool bDoHideIndicators)
 {

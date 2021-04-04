@@ -1,6 +1,5 @@
 // file:		UITextureMaster.h
-// description:	holds info about shared textures. able to initialize external controls
-//				through IUITextureControl interface
+// description:	holds info about shared textures. able to initialize external controls through IUITextureControl interface
 
 #include "stdafx.h"
 
@@ -11,15 +10,15 @@
 xr_map<shared_str, TEX_INFO>	CUITextureMaster::m_textures;
 
 #ifdef DEBUG
-u32									CUITextureMaster::m_time = 0;
-#endif
+u32 CUITextureMaster::m_time = 0;
+#endif // def DEBUG
 
 void CUITextureMaster::WriteLog( )
 {
 
 #ifdef DEBUG
 	Msg("UI texture manager work time is %d ms", m_time);
-#endif
+#endif // def DEBUG
 
 }
 
@@ -29,11 +28,8 @@ void CUITextureMaster::ParseShTexInfo(const char* xml_file)
 	xml.Init("$game_config$", "ui", xml_file);
 	shared_str file = xml.Read("file_name", 0, "");
 
-//	shared_textures_it	sht_it = m_shTex.find(texture);
-//	if (m_shTex.end() == sht_it)
-//	{
 	int num = xml.GetNodesNum("", 0, "texture");
-//		regions regs;
+
 	for (int i = 0; i < num; i++)
 	{
 		TEX_INFO info;
@@ -48,8 +44,6 @@ void CUITextureMaster::ParseShTexInfo(const char* xml_file)
 
 		m_textures.insert(mk_pair(id, info));
 	}
-//		m_shTex.insert(mk_pair(texture, regs));
-//	}
 }
 
 bool CUITextureMaster::IsSh(const char* texture_name)
@@ -63,7 +57,7 @@ void CUITextureMaster::InitTexture(const char* texture_name, IUISimpleTextureCon
 #ifdef DEBUG
 	CTimer T;
 	T.Start( );
-#endif
+#endif // def DEBUG
 
 	xr_map<shared_str, TEX_INFO>::iterator	it;
 	it = m_textures.find(texture_name);
@@ -74,7 +68,7 @@ void CUITextureMaster::InitTexture(const char* texture_name, IUISimpleTextureCon
 
 #ifdef DEBUG
 		m_time += T.GetElapsed_ms( );
-#endif
+#endif // def DEBUG
 
 		return;
 	}
@@ -83,7 +77,7 @@ void CUITextureMaster::InitTexture(const char* texture_name, IUISimpleTextureCon
 
 #ifdef DEBUG
 	m_time += T.GetElapsed_ms( );
-#endif
+#endif // def DEBUG
 
 }
 
@@ -93,7 +87,7 @@ void CUITextureMaster::InitTexture(const char* texture_name, const char* shader_
 #ifdef DEBUG
 	CTimer T;
 	T.Start( );
-#endif
+#endif // def DEBUG
 
 	xr_map<shared_str, TEX_INFO>::iterator	it;
 	it = m_textures.find(texture_name);
@@ -104,7 +98,7 @@ void CUITextureMaster::InitTexture(const char* texture_name, const char* shader_
 
 #ifdef DEBUG
 		m_time += T.GetElapsed_ms( );
-#endif
+#endif // def DEBUG
 
 		return;
 	}
@@ -113,7 +107,7 @@ void CUITextureMaster::InitTexture(const char* texture_name, const char* shader_
 
 #ifdef DEBUG
 	m_time += T.GetElapsed_ms( );
-#endif
+#endif // def DEBUG
 
 }
 
@@ -128,7 +122,7 @@ float CUITextureMaster::GetTextureHeight(const char* texture_name)
 	}
 
 	R_ASSERT3(false, "CUITextureMaster::GetTextureHeight Can't find texture", texture_name);
-	return 0;
+	return 0.0f;
 }
 
 Frect CUITextureMaster::GetTextureRect(const char* texture_name)
@@ -154,7 +148,7 @@ float CUITextureMaster::GetTextureWidth(const char* texture_name)
 	}
 
 	R_ASSERT3(false, "CUITextureMaster::GetTextureHeight Can't find texture", texture_name);
-	return 0;
+	return 0.0f;
 }
 
 const char* CUITextureMaster::GetTextureFileName(const char* texture_name)
