@@ -18,7 +18,7 @@
 template <typename T>
 inline	SRotation CObjectParams<T>::orientation	(const T *object) const
 {
-	Fvector					t;
+	Fvector3					t;
 	object->XFORM().getHPB	(t.x,t.y,t.z);
 	return					(SRotation(t.x,t.y,0.f));
 }
@@ -42,7 +42,7 @@ inline	void CObjectParams<T>::fill				(const T *game_object)
 		m_position.set		(game_object->Position().x,m_position.y,game_object->Position().z);
 	}
 	else
-		m_position			= Fvector().set(0.f,0.f,0.f);
+		m_position			= Fvector3().set(0.f,0.f,0.f);
 }
 
 template <typename T>

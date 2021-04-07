@@ -1,24 +1,24 @@
 // step 1
 #pragma once
 
-inline float*			cast_fp								(Fvector& fv)
+inline float*			cast_fp								(Fvector3& fv)
 {
 	return (float*) (&fv);
 }
 
-inline const float*		cast_fp								(const Fvector& fv)
+inline const float*		cast_fp								(const Fvector3& fv)
 {
 	return (const float*) (&fv);
 }
 
-inline Fvector&			cast_fv								(float* fp)
+inline Fvector3&			cast_fv								(float* fp)
 {
-	return *((Fvector*) fp);
+	return *((Fvector3*) fp);
 }
 
-inline const Fvector&	cast_fv								(const float* fp)
+inline const Fvector3&	cast_fv								(const float* fp)
 {
-	return *((const Fvector*) fp);
+	return *((const Fvector3*) fp);
 }
 
 __forceinline void			accurate_normalize					(float* a)
@@ -95,7 +95,7 @@ inline float			dXZMag								(const float* v)
 	return _sqrt(v[0] * v[0] + v[2] * v[2]);
 }
 
-inline float			dXZMag								(const Fvector& v)
+inline float			dXZMag								(const Fvector3& v)
 {
 	return dXZMag(cast_fp(v));
 }
@@ -105,7 +105,7 @@ inline float			dXZDot								(const float* v0, const float* v1)
 	return v0[0] * v1[0] + v0[2] * v1[2];
 }
 
-inline float			dXZDotNormalized					(const Fvector& v0, const Fvector& v1)
+inline float			dXZDotNormalized					(const Fvector3& v0, const Fvector3& v1)
 {
 	return (v0.x * v1.x + v0.z * v1.z) / _sqrt((v0.x * v0.x + v0.z * v0.z) * (v1.x * v1.x + v1.z * v1.z));
 }
@@ -115,7 +115,7 @@ inline float			dXZDotNormalized					(const float* v0, const float* v1)
 	return dXZDotNormalized(cast_fv(v0), cast_fv(v1));
 }
 
-inline float			dXZDot								(const Fvector& v0, const Fvector& v1)
+inline float			dXZDot								(const Fvector3& v0, const Fvector3& v1)
 {
 	return v0.x * v1.x + v0.z * v1.z;
 }
@@ -277,9 +277,10 @@ inline void				dMatrixSmallDeviationAdd			(const dReal* matrix33_from, const dRe
 	vector_dev[2] += matrix33_from[4] - matrix33_to[4];
 }
 
-inline void				twoq_2w								(const Fquaternion& q1, const Fquaternion& q2, float dt, Fvector& w)
+inline void				twoq_2w								(const Fquaternion& q1, const Fquaternion& q2, float dt, Fvector3& w)
 {
-	Fvector v1, v2;
+	Fvector3 v1;
+	Fvector3 v2;
 	v1.set(q1.x, q1.y, q1.z);
 	v2.set(q2.x, q2.y, q2.z);
 	float cosinus = q1.w * q2.w + v1.dotproduct(v2);
@@ -298,7 +299,7 @@ inline void				twoq_2w								(const Fquaternion& q1, const Fquaternion& q2, flo
 	w.mul(k);
 }
 
-inline float			to_mag_and_dir						(const Fvector& in_v, Fvector& out_v)
+inline float			to_mag_and_dir						(const Fvector3& in_v, Fvector3& out_v)
 {
 	float mag = in_v.magnitude( );
 	if (!fis_zero(mag))
@@ -313,17 +314,17 @@ inline float			to_mag_and_dir						(const Fvector& in_v, Fvector& out_v)
 	return mag;
 }
 
-inline float			to_mag_and_dir						(Fvector& in_out_v)
+inline float			to_mag_and_dir						(Fvector3& in_out_v)
 {
 	return to_mag_and_dir(in_out_v, in_out_v);
 }
 
-inline void				to_vector							(Fvector& v, float mag, const Fvector dir)
+inline void				to_vector							(Fvector3& v, float mag, const Fvector3 dir)
 {
 	v.mul(dir, mag);
 }
 
-inline void				prg_pos_on_axis						(const Fvector& in_ax_p, const Fvector& in_ax_d, Fvector& in_out_pos)
+inline void				prg_pos_on_axis						(const Fvector3& in_ax_p, const Fvector3& in_ax_d, Fvector3& in_out_pos)
 {
 	in_out_pos.sub(in_ax_p);
 	float ax_mag = in_ax_d.magnitude( );
@@ -333,29 +334,29 @@ inline void				prg_pos_on_axis						(const Fvector& in_ax_p, const Fvector& in_a
 	in_out_pos.add(in_ax_p);
 }
 
-inline float			prg_pos_on_plane					(const Fvector& in_norm, float d, const Fvector& in_pos, Fvector& out_pos)
+inline float			prg_pos_on_plane					(const Fvector3& in_norm, float d, const Fvector3& in_pos, Fvector3& out_pos)
 {
 	float prg = d - in_pos.dotproduct(in_norm);
-	Fvector diff;
+	Fvector3 diff;
 	diff.set(in_norm);
 	diff.mul(prg);
 	out_pos.add(in_pos, diff);
 	return prg;
 }
 
-inline void				prg_dir_on_plane					(const Fvector& in_norm, const Fvector& in_dir, Fvector& out_dir)
+inline void				prg_dir_on_plane					(const Fvector3& in_norm, const Fvector3& in_dir, Fvector3& out_dir)
 {
 	float prg = -in_dir.dotproduct(in_norm);
-	Fvector diff;
+	Fvector3 diff;
 	diff.set(in_norm);
 	diff.mul(prg);
 	out_dir.add(in_dir, diff);
 	return;
 }
 
-inline void				restrict_vector_in_dir				(Fvector& V, const Fvector& dir)
+inline void				restrict_vector_in_dir				(Fvector3& V, const Fvector3& dir)
 {
-	Fvector sub;
+	Fvector3 sub;
 	sub.set(dir);
 	float dotpr = dir.dotproduct(V);
 	if (dotpr > 0.0f)
@@ -407,19 +408,19 @@ inline void				limit_below							(float& val, float limit)
 	}
 }
 
-inline void				TransferenceToThrowVel				(Fvector& in_transference_out_vel, float time, float gravity_accel)
+inline void				TransferenceToThrowVel				(Fvector3& in_transference_out_vel, float time, float gravity_accel)
 {
 	in_transference_out_vel.mul(1.0f / time);
 	in_transference_out_vel.y += time * gravity_accel / 2.0f;
 }
 
-inline float			ThrowMinVelTime						(const Fvector& transference, float gravity_accel)
+inline float			ThrowMinVelTime						(const Fvector3& transference, float gravity_accel)
 {
 	return _sqrt(2.0f * transference.magnitude( ) / gravity_accel);
 }
 
 // returns num result, tgA result tangents of throw angle 
-inline u8				TransferenceAndThrowVelToTgA		(const Fvector& transference, float throw_vel, float gravity_accel, Fvector2& tgA, float& s)
+inline u8				TransferenceAndThrowVelToTgA		(const Fvector3& transference, float throw_vel, float gravity_accel, Fvector2& tgA, float& s)
 {
 	float sqx = transference.x * transference.x + transference.z * transference.z;
 	float sqv = throw_vel * throw_vel;
@@ -443,13 +444,13 @@ inline u8				TransferenceAndThrowVelToTgA		(const Fvector& transference, float t
 	return 2;
 }
 
-inline u8				TransferenceAndThrowVelToTgA		(const Fvector& transference, float throw_vel, float gravity_accel, Fvector2& tgA)
+inline u8				TransferenceAndThrowVelToTgA		(const Fvector3& transference, float throw_vel, float gravity_accel, Fvector2& tgA)
 {
 	float s;
 	return TransferenceAndThrowVelToTgA(transference, throw_vel, gravity_accel, tgA, s);
 }
 
-inline u8				TransferenceAndThrowVelToThrowDir	(const Fvector& transference, float throw_vel, float gravity_accel, Fvector	throw_dir[2])
+inline u8				TransferenceAndThrowVelToThrowDir	(const Fvector3& transference, float throw_vel, float gravity_accel, Fvector3	throw_dir[2])
 {
 	throw_dir[0] = throw_dir[1] = transference;
 	Fvector2 tgA;
@@ -649,7 +650,7 @@ inline float			DET									(const Fmatrix& a)
 	return ((a._11 * (a._22 * a._33 - a._23 * a._32) - a._12 * (a._21 * a._33 - a._23 * a._31) + a._13 * (a._21 * a._32 - a._22 * a._31)));
 }
 
-inline bool				valid_pos							(const Fvector& P, const Fbox3& B)
+inline bool				valid_pos							(const Fvector3& P, const Fbox3& B)
 {
 	Fbox3 BB = B;
 	BB.grow(100000);

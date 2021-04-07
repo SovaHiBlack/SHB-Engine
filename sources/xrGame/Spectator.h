@@ -2,22 +2,20 @@
 
 #include "..\ENGINE\feel_touch.h"
 #include "..\ENGINE\IInputReceiver.h"
-
 #include "entity.h"
 #include "actor_flags.h"
 
-// refs
 class CActor;
 
 class CSpectator : public CGameObject, public IInputReceiver
 {
 private:
-	typedef CGameObject		inherited;
+	using inherited									= CGameObject;
 
 public:
 	enum EActorCameras
 	{
-		eacFreeFly = 0,
+		eacFreeFly									= 0,
 		eacFirstEye,
 		eacLookAt,
 		eacFreeLook,
@@ -26,16 +24,15 @@ public:
 
 private:
 	// Cameras
-	CCameraBase*			cameras[eacMaxCam];
-	EActorCameras			cam_active;
+	CCameraBase*									cameras[eacMaxCam];
+	EActorCameras									cam_active;
 
-	int						look_idx;
+	int												look_idx;
 
-	//------------------------------
 	void					cam_Set					(EActorCameras style);
 	void					cam_Update				(CActor* A = 0);
 
-	CActor*					m_pActorToLookAt;
+	CActor*											m_pActorToLookAt;
 
 	void					FirstEye_ToPlayer		(CObject* pObject);
 
@@ -65,7 +62,7 @@ public:
 	{
 		return this;
 	}
-	virtual IInputReceiver* cast_input_receiver		( )
+	virtual IInputReceiver*	cast_input_receiver		( )
 	{
 		return this;
 	}

@@ -58,7 +58,7 @@ public SEnumVerticesCallback
 	{
 		Fvector3 lpos;
 		i_bind_transform.transform_tiny(lpos, p );
-		//Fvector diff;diff.sub( lpos, pos );
+		//Fvector3 diff;diff.sub( lpos, pos );
 		if(Fvector3().sub(lpos,start_pos).dotproduct( ax ) > Fvector3().sub(pos,start_pos).dotproduct( ax ) )
 						pos.set( lpos );
 	}

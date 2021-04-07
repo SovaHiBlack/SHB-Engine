@@ -9,7 +9,7 @@ struct SStaticSound
 	Ivector2		m_PauseTime;
 	u32				m_NextTime;
 	u32				m_StopTime;
-	Fvector			m_Position;
+	Fvector3			m_Position;
 	float			m_Volume;
 	float			m_Freq;
 public:

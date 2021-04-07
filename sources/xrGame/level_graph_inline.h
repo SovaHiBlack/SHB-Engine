@@ -81,20 +81,20 @@ inline	void CLevelGraph::unpack_xz(const CLevelGraph::CVertex *vertex, T &x, T &
 	unpack_xz			(*vertex,x,z);
 }
 
-__forceinline	const Fvector CLevelGraph::vertex_position	(const CLevelGraph::CPosition &source_position) const
+__forceinline	const Fvector3 CLevelGraph::vertex_position	(const CLevelGraph::CPosition &source_position) const
 {
-	Fvector				dest_position;
+	Fvector3				dest_position;
 	unpack_xz			(source_position,dest_position.x,dest_position.z);
 	dest_position.y 	= (float(source_position.y())/65535)*header().factor_y() + header().box().min.y;
 	return				(dest_position);
 }
 
-__forceinline	const Fvector &CLevelGraph::vertex_position	(Fvector &dest_position, const CLevelGraph::CPosition &source_position) const
+__forceinline	const Fvector3& CLevelGraph::vertex_position	(Fvector3& dest_position, const CLevelGraph::CPosition &source_position) const
 {
 	return				(dest_position = vertex_position(source_position));
 }
 
-inline	const CLevelGraph::CPosition &CLevelGraph::vertex_position	(CLevelGraph::CPosition &dest_position, const Fvector &source_position) const
+inline	const CLevelGraph::CPosition &CLevelGraph::vertex_position	(CLevelGraph::CPosition &dest_position, const Fvector3& source_position) const
 {
 	VERIFY				(iFloor((source_position.z - header().box().min.z)/header().cell_size() + .5f) < (int)m_row_length);
 	int					pxz	= iFloor(((source_position.x - header().box().min.x)/header().cell_size() + .5f))*m_row_length + iFloor((source_position.z - header().box().min.z)/header().cell_size() + .5f);
@@ -106,25 +106,25 @@ inline	const CLevelGraph::CPosition &CLevelGraph::vertex_position	(CLevelGraph::
 	return				(dest_position);
 }
 
-inline  const Fvector CLevelGraph::vertex_position(u32 vertex_id) const
+inline const Fvector3 CLevelGraph::vertex_position(u32 vertex_id) const
 {
-	Fvector				t = vertex_position(vertex(vertex_id));
+	Fvector3				t = vertex_position(vertex(vertex_id));
 	return				(t);
 }
 
-inline  const Fvector CLevelGraph::vertex_position(const CLevelGraph::CVertex &vertex) const
+inline const Fvector3 CLevelGraph::vertex_position(const CLevelGraph::CVertex &vertex) const
 {
-	Fvector				position;
+	Fvector3				position;
 	vertex_position		(position, vertex.position());
 	return				(position);
 }
 
-inline  const Fvector CLevelGraph::vertex_position(const CLevelGraph::CVertex *vertex) const
+inline const Fvector3 CLevelGraph::vertex_position(const CLevelGraph::CVertex *vertex) const
 {
 	return				(vertex_position(*vertex));
 }
 
-inline	const CLevelGraph::CPosition	CLevelGraph::vertex_position	(const Fvector &position) const
+inline	const CLevelGraph::CPosition	CLevelGraph::vertex_position	(const Fvector3& position) const
 {
 	CLevelGraph::CPosition	_vertex_position;
 	return				(vertex_position(_vertex_position,position));
@@ -135,7 +135,7 @@ inline bool	CLevelGraph::inside				(const CLevelGraph::CVertex &vertex, const CL
 	return 				(vertex_position.xz() == vertex.position().xz());
 }
 
-inline bool	CLevelGraph::inside				(const CLevelGraph::CVertex &vertex, const Fvector &position) const
+inline bool	CLevelGraph::inside				(const CLevelGraph::CVertex &vertex, const Fvector3& position) const
 {
 	if (!valid_vertex_position(position))
 		return			(false);
@@ -147,7 +147,7 @@ inline bool	CLevelGraph::inside				(const CVertex *vertex, const CLevelGraph::CP
 	return				(inside(*vertex,vertex_position));
 }
 
-inline bool CLevelGraph::inside				(const CVertex *vertex, const Fvector &position) const
+inline bool CLevelGraph::inside				(const CVertex *vertex, const Fvector3& position) const
 {
 	return				(inside(*vertex,position));
 }
@@ -157,7 +157,7 @@ inline bool	CLevelGraph::inside				(const u32 vertex_id, const CLevelGraph::CPos
 	return				(inside(vertex(vertex_id),vertex_position));
 }
 
-inline bool CLevelGraph::inside				(const u32 vertex_id, const Fvector &position) const
+inline bool CLevelGraph::inside				(const u32 vertex_id, const Fvector3& position) const
 {
 	bool				b = inside(vertex(vertex_id),position);
 	return				(b);
@@ -168,7 +168,7 @@ inline bool	CLevelGraph::inside				(const CLevelGraph::CVertex &vertex, const CL
 	return				(inside(vertex,_vertex_position) && (_abs(vertex_position(vertex).y - vertex_position(_vertex_position).y) <= epsilon));
 }
 
-inline bool	CLevelGraph::inside				(const CLevelGraph::CVertex &vertex, const Fvector &position, const float epsilon) const
+inline bool	CLevelGraph::inside				(const CLevelGraph::CVertex &vertex, const Fvector3& position, const float epsilon) const
 {
 	if (!valid_vertex_position(position))
 		return			(false);
@@ -180,7 +180,7 @@ inline bool	CLevelGraph::inside				(const CVertex *vertex, const CLevelGraph::CP
 	return				(inside(*vertex,vertex_position,epsilon));
 }
 
-inline bool CLevelGraph::inside				(const CVertex *vertex, const Fvector &position, const float epsilon) const
+inline bool CLevelGraph::inside				(const CVertex *vertex, const Fvector3& position, const float epsilon) const
 {
 	return				(inside(*vertex,position,epsilon));
 }
@@ -190,7 +190,7 @@ inline bool	CLevelGraph::inside				(const u32 vertex_id, const CLevelGraph::CPos
 	return				(inside(vertex(vertex_id),vertex_position,epsilon));
 }
 
-inline bool CLevelGraph::inside				(const u32 vertex_id, const Fvector &position, const float epsilon) const
+inline bool CLevelGraph::inside				(const u32 vertex_id, const Fvector3& position, const float epsilon) const
 {
 	return				(inside(vertex(vertex_id),position,epsilon));
 }
@@ -205,7 +205,11 @@ inline bool	CLevelGraph::inside				(const u32 vertex_id,	const Fvector2 &positio
 
 inline float CLevelGraph::vertex_plane_y	(const CLevelGraph::CVertex &vertex, const float X, const float Z) const
 {
-	Fvector				DUP, normal, v, v1, P;
+	Fvector3				DUP;
+	Fvector3 normal;
+	Fvector3 v;
+	Fvector3 v1;
+	Fvector3 P;
 	Fplane				PL; 
 
 	DUP.set				(0,1,0);
@@ -374,12 +378,12 @@ inline	const u32 CLevelGraph::vertex_id(const CLevelGraph::CVertex *vertex) cons
 	return				(u32(vertex - m_nodes));
 }
 
-inline  Fvector CLevelGraph::v3d(const Fvector2 &vector2d) const
+inline Fvector3 CLevelGraph::v3d(const Fvector2 &vector2d) const
 {
-	return				(Fvector().set(vector2d.x,0.f,vector2d.y));
+	return				(Fvector3().set(vector2d.x,0.f,vector2d.y));
 }
 
-inline  Fvector2 CLevelGraph::v2d(const Fvector &vector3d) const
+inline  Fvector2 CLevelGraph::v2d(const Fvector3& vector3d) const
 {
 	return				(Fvector2().set(vector3d.x,vector3d.z));
 }
@@ -401,7 +405,7 @@ inline	bool	CLevelGraph::create_straight_path	(u32 start_vertex_id, const Fvecto
 	dir.sub					(dest,start);
 	u32						dest_xz = vertex_position(v3d(dest)).xz();
 	Fvector2				temp;
-	Fvector					pos3d;
+	Fvector3					pos3d;
 	unpack_xz				(vertex(start_vertex_id),temp.x,temp.y);
 
 	if (bClearPath)
@@ -417,7 +421,7 @@ inline	bool	CLevelGraph::create_straight_path	(u32 start_vertex_id, const Fvecto
 	}
 
 	if (vertex(start_vertex_id)->position().xz() == dest_xz) {
-		Fvector						tIntersectPoint	= v3d(dest);
+		Fvector3						tIntersectPoint	= v3d(dest);
 		if (bAssignY)
 			tIntersectPoint.y		= vertex_plane_y(vertex(cur_vertex_id),tIntersectPoint.x,tIntersectPoint.z);
 		path_node.set_position		(tIntersectPoint);
@@ -457,7 +461,7 @@ inline	bool	CLevelGraph::create_straight_path	(u32 start_vertex_id, const Fvecto
 #ifdef DEBUG
 				next1			= next2 = Fvector2().set(0.f,0.f);
 #endif
-				Fvector			tIntersectPoint;
+				Fvector3			tIntersectPoint;
 
 				switch (I) {
 					case 0 : {
@@ -537,7 +541,10 @@ inline	bool	CLevelGraph::create_straight_path	(u32 start_vertex_id, const Fvecto
 template<typename T>
 inline	void CLevelGraph::assign_y_values		(xr_vector<T> &path)
 {
-	Fvector						DUP = {0,1,0}, normal, v1, P = {0,0,0};
+	Fvector3						DUP = { 0,1,0 };
+	Fvector3 normal;
+	Fvector3 v1;
+	Fvector3 P = { 0,0,0 };
 	Fplane						PL; 
 	const CVertex				*_vertex;
 	u32							prev_id = u32(-1);
@@ -563,7 +570,7 @@ inline	u32	CLevelGraph::row_length				() const
 	return						(m_row_length);
 }
 
-inline	bool CLevelGraph::valid_vertex_position	(const Fvector &position) const
+inline	bool CLevelGraph::valid_vertex_position	(const Fvector3& position) const
 {
 	if ((position.x < header().box().min.x - header().cell_size()*.5f) || (position.x > header().box().max.x + header().cell_size()*.5f) || (position.z < header().box().min.z - header().cell_size()*.5f) || (position.z > header().box().max.z + header().cell_size()*.5f))
 		return			(false);
@@ -606,7 +613,7 @@ inline	void CLevelGraph::clear_mask			(u32 vertex_id)
 }
 
 template<typename P>
-inline	void CLevelGraph::iterate_vertices		(const Fvector &min_position, const Fvector &max_position, const P &predicate) const
+inline	void CLevelGraph::iterate_vertices		(const Fvector3& min_position, const Fvector3& max_position, const P &predicate) const
 {
 	CVertex						*I, *E;
 

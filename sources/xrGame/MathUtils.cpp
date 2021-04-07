@@ -9,13 +9,13 @@ enum EBoxSideNearestPointCode
 	on_edge			,
 	on_vertex
 };
-EBoxSideNearestPointCode GetNearestPointOnOBBSide(const Fmatrix &xform,const Fvector	&center,const Fvector &sides,u16 side,const Fvector &p,Fvector &point)
+EBoxSideNearestPointCode GetNearestPointOnOBBSide(const Fmatrix &xform,const Fvector3& center,const Fvector3& sides,u16 side,const Fvector3& p,Fvector3& point)
 {
 	//to plane dist
-	const Fvector	&norm=xform[side];
+	const Fvector3& norm=xform[side];
 	u16 side1=(side+1)%3,side2=(side+2)%3;
 	float h=sides[side],h1=sides[side1],h2=sides[side2];
-	//Fvector vdiffc;vdiffc.sub(center,p);
+	//Fvector3 vdiffc;vdiffc.sub(center,p);
 	float c_prg=norm.dotproduct(center);
 	float p_prg=norm.dotproduct(p);
 	float diffc=c_prg-p_prg;norm.dotproduct(vdiffc);
@@ -26,7 +26,7 @@ EBoxSideNearestPointCode GetNearestPointOnOBBSide(const Fmatrix &xform,const Fve
 		point.set(norm);
 		point.mul(diffs);
 		point.add(p);
-		Fvector d;d.sub(center,point);
+		Fvector3 d;d.sub(center,point);
 		bool inside1 =_abs(d[side1])<h1;
 		bool inside2 =_abs(d[side2])<h2;
 		if(diffs>0.f)
@@ -40,28 +40,28 @@ EBoxSideNearestPointCode GetNearestPointOnOBBSide(const Fmatrix &xform,const Fve
 			else if(inside1)
 			{
 				float dd=h2-_abs(d[side2]);
-				Fvector s;s.set(xform[side2]);s.
+				Fvector3 s;s.set(xform[side2]);s.
 			}
 		}
 	}
 	float diffs=diffc<0.f ? diffc+h	:	diffc-h;
 }
 */
-inline bool RAYvsCYLINDER(const Fcylinder& c_cylinder, const Fvector &S, const Fvector &D, float &R, BOOL bCull)
+inline bool RAYvsCYLINDER(const Fcylinder& c_cylinder, const Fvector3& S, const Fvector3& D, float &R, BOOL bCull)
 {
 
 	const float &r=c_cylinder.m_radius;
 	float h=c_cylinder.m_height/2.f;
-	const Fvector& p=S;
-	const Fvector& dir=D;
+	const Fvector3& p=S;
+	const Fvector3& dir=D;
 	
-	const Fvector &c=c_cylinder.m_center;
-	const Fvector &ax=c_cylinder.m_direction;
+	const Fvector3& c=c_cylinder.m_center;
+	const Fvector3& ax=c_cylinder.m_direction;
 	//c.set(-IM.c.dotproduct(IM.i),-IM.c.dotproduct(IM.j),-IM.c.dotproduct(IM.k));
-	//Fvector ax;ax.set(IM.i.z,IM.j.z,IM.k.z);//??
+	//Fvector3 ax;ax.set(IM.i.z,IM.j.z,IM.k.z);//??
 
 //////////////////////////////////////////////////////////////
-	Fvector	v;	v		.sub		(c,p)			;
+	Fvector3	v;	v		.sub		(c,p)			;
 	float	cs	=dir	.dotproduct	(ax)			;
 	float	Lc	=v		.dotproduct	(ax)			;
 	float	Lr	=v		.dotproduct	(dir)			;
@@ -420,7 +420,9 @@ void capped_cylinder_ray_collision_test()
 	c.m_height=2;
 	c.m_radius=1;
 	//ray
-	Fvector dir,pos;float R;
+	Fvector3 dir;
+	Fvector3 pos;
+	float R;
 	dir.set(1,0,0);pos.set(0,0,0);R=3;
 	
 	//inside
@@ -453,13 +455,15 @@ void capped_cylinder_ray_collision_test()
 	for(int i=0;i<1000000;i++)
 	{
 		Fcylinder c;
-		c.m_center.random_point(Fvector().set(2,2,2));
+		c.m_center.random_point(Fvector3().set(2,2,2));
 		c.m_direction.random_dir();
 		c.m_height=Random.randF(0.2f,2.f);
 		c.m_radius=Random.randF(0.1f,2.f);
 		//ray
-		Fvector dir,pos;float R=Random.randF(0.1f,2.f);
-		dir.random_dir();pos.random_point(Fvector().set(2,2,2));
+		Fvector3 dir;
+		Fvector3 pos;
+		float R = Random.randF(0.1f, 2.f);
+		dir.random_dir();pos.random_point(Fvector3().set(2,2,2));
 		RAYvsCYLINDER(c,pos,dir,R,TRUE);
 	}
 	Msg("my RAYvsCYLINDE time %f ms",t.GetElapsed_sec()*1000.f);
@@ -467,13 +471,14 @@ void capped_cylinder_ray_collision_test()
 	for(int i=0;i<1000000;i++)
 	{
 		Fcylinder c;
-		c.m_center.random_point(Fvector().set(2,2,2));
+		c.m_center.random_point(Fvector3().set(2,2,2));
 		c.m_direction.random_dir();
 		c.m_height=Random.randF(0.2f,2.f);
 		c.m_radius=Random.randF(0.1f,2.f);
 		//ray
-		Fvector dir,pos;//float R=Random.randF(0.1f,2.f);
-		dir.random_dir();pos.random_point(Fvector().set(2,2,2));
+		Fvector3 dir;
+		Fvector3 pos;//float R=Random.randF(0.1f,2.f);
+		dir.random_dir();pos.random_point(Fvector3().set(2,2,2));
 		c.intersect(pos,dir,ir);
 	}
 		Msg("current intersect time %f ms",t.GetElapsed_sec()*1000.f);

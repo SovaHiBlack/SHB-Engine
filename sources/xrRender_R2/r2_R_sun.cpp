@@ -385,7 +385,7 @@ struct	DumbClipper
 				for (int c=0; c<8; c++)
 				{
 					D3DXVECTOR3		p0	= point		(bb,c);
-					Fvector3			x0	= wform		(xf,*((Fvector*)(&p0)));
+					Fvector3			x0	= wform		(xf,*((Fvector3*)(&p0)));
 					result.modify	(x0	);
 				}
 				break;
@@ -398,8 +398,8 @@ struct	DumbClipper
 						D3DXVECTOR3		p0	= point	(bb,c0);
 						D3DXVECTOR3		p1	= point	(bb,c1);
 						if (!clip(p0,p1))	continue;
-						Fvector3			x0	= wform	(xf,*((Fvector*)(&p0)));
-						Fvector3			x1	= wform	(xf,*((Fvector*)(&p1)));
+						Fvector3			x0	= wform	(xf,*((Fvector3*)(&p0)));
+						Fvector3			x1	= wform	(xf,*((Fvector3*)(&p1)));
 						result.modify	(x0	);
 						result.modify	(x1	);
 					}

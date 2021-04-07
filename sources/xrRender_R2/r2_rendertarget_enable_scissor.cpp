@@ -20,13 +20,14 @@ void CRenderTarget::enable_dbt_bounds		(light* L)
 
 	// xform BB
 	Fbox3	BB;
-	Fvector	rr; rr.set(L->spatial.sphere.R,L->spatial.sphere.R,L->spatial.sphere.R);
+	Fvector3	rr;
+	rr.set(L->spatial.sphere.R,L->spatial.sphere.R,L->spatial.sphere.R);
 	BB.setb	(L->spatial.sphere.P, rr);
 
 	Fbox3	bbp;
 	bbp.invalidate();
 	for (u32 i=0; i<8; i++)		{
-		Fvector		pt;
+		Fvector3		pt;
 		BB.getpoint	(i,pt);
 		Device.mFullTransform.transform	(pt);
 		bbp.modify	(pt);

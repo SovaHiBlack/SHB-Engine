@@ -262,7 +262,7 @@ void CInventoryItem::OnEvent (NET_Packet& P, u16 type)
 		}break;	
 	case GE_CHANGE_POS:
 		{
-			Fvector p; 
+		Fvector3 p;
 			P.r_vec3(p);
 			CPHSynchronize* pSyncObj = NULL;
 			pSyncObj = object().PHGetSyncItem(0);

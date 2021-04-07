@@ -51,7 +51,7 @@ namespace MemorySpace {
 
 	struct SObjectParams {
 		u32							m_level_vertex_id;
-		Fvector						m_position;
+		Fvector3						m_position;
 #ifdef USE_ORIENTATION
 		SRotation					m_orientation;
 #endif
@@ -159,7 +159,7 @@ namespace MemorySpace {
 	};
 
 	struct CHitObject : public CMemoryObject<CEntityAlive> {
-		Fvector						m_direction;
+		Fvector3						m_direction;
 		u16							m_bone_index;
 		float						m_amount;
 	};

@@ -138,9 +138,9 @@ public:
 	inline		void	project_point				(const Fplane &plane, Fvector3& point) const;
 	inline		u32		row_length					() const;
 			float	distance					(const Fvector3& position, const CVertex *vertex) const;
-			float	distance					(const Fvector &position, const u32 vertex_id) const;
-			float	distance					(const u32 vertex_id, const Fvector &position) const;
-	inline		float	distance					(const Fvector &position, const Fvector &point0, const Fvector &point1) const;
+			float	distance					(const Fvector3& position, const u32 vertex_id) const;
+			float	distance					(const u32 vertex_id, const Fvector3& position) const;
+	inline		float	distance					(const Fvector3& position, const Fvector3& point0, const Fvector3& point1) const;
 	inline		float	distance					(u32 vertex_id0, u32 vertex_id1) const;
 	inline		float	distance					(const CVertex *tpNode0, u32 vertex_id1) const;
 	inline		float	distance					(u32 vertex_id0, const CVertex *vertex) const;
@@ -149,14 +149,14 @@ public:
 	inline		float	distance					(const CPosition &position, const u32 vertex_id) const;
 	inline		ELineIntersections	intersect		(float x1, float y1, float x2, float y2, float x3, float y3, float x4, float y4, float *x, float *y) const;
 	inline		ELineIntersections	intersect_no_check(float x1, float y1, float x2, float y2, float x3, float y3, float x4, float y4, float *x, float *y) const;
-	inline		bool	similar						(const Fvector &point0, const Fvector &point1) const;
-	inline		bool	inside						(const Fvector &point, const SContour &contour) const;
+	inline		bool	similar						(const Fvector3& point0, const Fvector3& point1) const;
+	inline		bool	inside						(const Fvector3& point, const SContour &contour) const;
 	inline		void	intersect					(SSegment &segment, const SContour &contour0, const SContour &contour1) const;
-	inline		float	nearest						(Fvector &destination, const Fvector &position, const Fvector &point0, const Fvector &point1) const;
+	inline		float	nearest						(Fvector3& destination, const Fvector3& position, const Fvector3& point0, const Fvector3& point1) const;
 	inline		void	contour						(SContour &contour, u32 vertex_id) const;
 	inline		void	contour						(SContour &contour, const CVertex *vertex) const;
-	inline		void	nearest						(Fvector &destination, const Fvector &position, const SContour &contour) const;
-	inline		bool	intersect					(Fvector &destination, const Fvector &v1, const Fvector& v2, const Fvector& v3, const Fvector& v4) const;
+	inline		void	nearest						(Fvector3& destination, const Fvector3& position, const SContour &contour) const;
+	inline		bool	intersect					(Fvector3& destination, const Fvector3& v1, const Fvector3& v2, const Fvector3& v3, const Fvector3& v4) const;
 	inline		float	square						(float a1, float b1, float alpha = PI_DIV_2) const;
 	inline		float	compute_square				(float angle, float AOV, float b0, float b1, float b2, float b3) const;
 	inline		float	compute_square				(float angle, float AOV, const CVertex *vertex) const;
@@ -171,32 +171,32 @@ public:
 	inline		float	vertex_cover_angle			(u32 vertex_id, float inc_angle, _predicate compare_predicate) const;
 	inline		void	set_invalid_vertex			(u32 &vertex_id, CVertex **vertex = NULL) const;
 	inline		const u32 vertex_id					(const CLevelGraph::CVertex *vertex) const;
-			u32		vertex_id					(const Fvector &position) const;
-			u32		vertex						(u32 current_vertex_id, const Fvector &position) const;
-			void	choose_point				(const Fvector &start_point, const Fvector &finish_point, const SContour &contour, int vertex_id, Fvector &temp_point, int &saved_index) const;
-	inline		bool	check_vertex_in_direction	(u32 start_vertex_id, const Fvector &start_position, u32 finish_vertex_id) const;
-	inline		u32		check_position_in_direction (u32 start_vertex_id, const Fvector &start_position, const Fvector &finish_position) const;
-			float	check_position_in_direction	(u32 start_vertex_id, const Fvector &start_position, const Fvector &finish_position, const float max_distance) const;
-			float	mark_nodes_in_direction		(u32 start_vertex_id, const Fvector &start_position, const Fvector &direction, float distance, xr_vector<u32> &vertex_stack, xr_vector<bool> *vertex_marks) const;
-			float	mark_nodes_in_direction		(u32 start_vertex_id, const Fvector &start_position, u32 finish_node, xr_vector<u32> &vertex_stack, xr_vector<bool> *vertex_marks) const;
-			float	mark_nodes_in_direction		(u32 start_vertex_id, const Fvector &start_position, const Fvector &finish_point, xr_vector<u32> &vertex_stack, xr_vector<bool> *vertex_marks) const;
-			float	farthest_vertex_in_direction(u32 start_vertex_id, const Fvector &start_point, const Fvector &finish_point, u32 &finish_vertex_id, xr_vector<bool> *tpaMarks, bool check_accessability = false) const;
-			bool	create_straight_path		(u32 start_vertex_id, const Fvector &start_point, const Fvector &finish_point, xr_vector<Fvector> &tpaOutputPoints, xr_vector<u32> &tpaOutputNodes, bool bAddFirstPoint, bool bClearPath = true) const;
-			bool	create_straight_path		(u32 start_vertex_id, const Fvector2 &start_point, const Fvector2 &finish_point, xr_vector<Fvector> &tpaOutputPoints, xr_vector<u32> &tpaOutputNodes, bool bAddFirstPoint, bool bClearPath = true) const;
+			u32		vertex_id					(const Fvector3& position) const;
+			u32		vertex						(u32 current_vertex_id, const Fvector3& position) const;
+			void	choose_point				(const Fvector3& start_point, const Fvector3& finish_point, const SContour &contour, int vertex_id, Fvector3& temp_point, int &saved_index) const;
+	inline		bool	check_vertex_in_direction	(u32 start_vertex_id, const Fvector3& start_position, u32 finish_vertex_id) const;
+	inline		u32		check_position_in_direction (u32 start_vertex_id, const Fvector3& start_position, const Fvector3& finish_position) const;
+			float	check_position_in_direction	(u32 start_vertex_id, const Fvector3& start_position, const Fvector3& finish_position, const float max_distance) const;
+			float	mark_nodes_in_direction		(u32 start_vertex_id, const Fvector3& start_position, const Fvector3& direction, float distance, xr_vector<u32> &vertex_stack, xr_vector<bool> *vertex_marks) const;
+			float	mark_nodes_in_direction		(u32 start_vertex_id, const Fvector3& start_position, u32 finish_node, xr_vector<u32> &vertex_stack, xr_vector<bool> *vertex_marks) const;
+			float	mark_nodes_in_direction		(u32 start_vertex_id, const Fvector3& start_position, const Fvector3& finish_point, xr_vector<u32> &vertex_stack, xr_vector<bool> *vertex_marks) const;
+			float	farthest_vertex_in_direction(u32 start_vertex_id, const Fvector3& start_point, const Fvector3& finish_point, u32 &finish_vertex_id, xr_vector<bool> *tpaMarks, bool check_accessability = false) const;
+			bool	create_straight_path		(u32 start_vertex_id, const Fvector3& start_point, const Fvector3& finish_point, xr_vector<Fvector3> &tpaOutputPoints, xr_vector<u32> &tpaOutputNodes, bool bAddFirstPoint, bool bClearPath = true) const;
+			bool	create_straight_path		(u32 start_vertex_id, const Fvector2 &start_point, const Fvector2 &finish_point, xr_vector<Fvector3> &tpaOutputPoints, xr_vector<u32> &tpaOutputNodes, bool bAddFirstPoint, bool bClearPath = true) const;
 	template <bool bAssignY, typename T>
 	inline		bool	create_straight_path		(u32 start_vertex_id, const Fvector2 &start_point, const Fvector2 &finish_point, xr_vector<T> &tpaOutputPoints, const T &example, bool bAddFirstPoint, bool bClearPath = true) const;
 	template<typename T>
 	inline		void	assign_y_values				(xr_vector<T> &path);
 	template<typename P>
-	inline		void	iterate_vertices			(const Fvector &min_position, const Fvector &max_position, const P &predicate) const;
+	inline		void	iterate_vertices			(const Fvector3& min_position, const Fvector3& max_position, const P &predicate) const;
 	inline		bool	check_vertex_in_direction	(u32 start_vertex_id, const Fvector2 &start_position, u32 finish_vertex_id) const;
 	inline		u32		check_position_in_direction	(u32 start_vertex_id, const Fvector2 &start_position, const Fvector2 &finish_position) const;
 			bool	check_vertex_in_direction_slow	(u32 start_vertex_id, const Fvector2 &start_position, u32 finish_vertex_id) const;
 			u32		check_position_in_direction_slow(u32 start_vertex_id, const Fvector2 &start_position, const Fvector2 &finish_position) const;
-	inline		Fvector v3d							(const Fvector2 &vector2d) const;
-	inline		Fvector2 v2d						(const Fvector &vector3d) const;
-	inline		bool	valid_vertex_position		(const Fvector &position) const;
-			bool	neighbour_in_direction		(const Fvector &direction, u32 start_vertex_id) const;
+	inline		Fvector3 v3d							(const Fvector2 &vector2d) const;
+	inline		Fvector2 v2d						(const Fvector3& vector3d) const;
+	inline		bool	valid_vertex_position		(const Fvector3& position) const;
+			bool	neighbour_in_direction		(const Fvector3& direction, u32 start_vertex_id) const;
 
 #ifdef DEBUG
 private:
@@ -205,14 +205,14 @@ private:
 private:
 	int					m_current_level_id;
 	bool				m_current_actual;
-	Fvector				m_current_center;
-	Fvector				m_current_radius;
+	Fvector3				m_current_center;
+	Fvector3				m_current_radius;
 
 public:
 			void		setup_current_level		(const int &level_id);
 
 private:
-			Fvector		convert_position		(const Fvector &position);
+	Fvector3		convert_position		(const Fvector3& position);
 			void		draw_edge				(const int &vertex_id0, const int &vertex_id1);
 			void		draw_vertex				(const int &vertex_id);
 			void		draw_stalkers			(const int &vertex_id);

@@ -14,9 +14,9 @@ struct SIKCollideData
 {
 	//CDB::TRI		*m_tri		;
 	Fplane			m_plane		;
-	Fvector			m_collide	;
-	Fvector			m_anime		;
-	Fvector			m_pick_dir	;
+	Fvector3			m_collide	;
+	Fvector3			m_anime		;
+	Fvector3			m_pick_dir	;
 	bool			collided	;
 	bool			clamp_down	;
 	SIKCollideData	(): collided( false ), clamp_down( false ){}
@@ -30,7 +30,7 @@ struct calculate_state
 	Fmatrix anim_pos;
 	Fmatrix	obj_pos;
 	Fmatrix	collide_pos;
-	Fvector pick;
+	Fvector3 pick;
 	float	speed_blend_l;
 	float	speed_blend_a;
 	bool	foot_step;
@@ -40,7 +40,7 @@ struct calculate_state
 #endif
 	calculate_state() : frame(0), foot_step(false), blending(false),
 						anim_pos(Fidentity), speed_blend_l(0), speed_blend_a(0),
-						pick(Fvector().set(0,0,0))
+						pick(Fvector3().set(0,0,0))
 #ifdef DEBUG
 						, count(-1)
 #endif
@@ -50,7 +50,7 @@ struct calculate_state
 class CIKLimb {
 public:
 							CIKLimb				();
-				void		Create				( u16 id, CKinematics* K, const u16 bones[3], const Fvector& toe_pos, bool collide_ );	
+				void		Create				( u16 id, CKinematics* K, const u16 bones[3], const Fvector3& toe_pos, bool collide_ );
 				void		Destroy				( );
 				void		Calculate			( SCalculateData& cd );
 				void		Update				( CGameObject *O, const	CBlend *b, u16 interval );
@@ -58,8 +58,8 @@ inline				u16			get_id				()	{ return m_id; }
 private:
 				void		Invalidate			();
 				void		GetFootStepMatrix	( Fmatrix	&m, const Fmatrix &gl_anim, const  SIKCollideData &cld, bool collide );
-inline				float		CollideFoot			( float angle, const Fmatrix &gl_anim, Fplane &p, Fvector &ax );
-inline				void		make_shift			(Fmatrix &xm, const Fplane &p,const Fvector &pick_dir );
+inline				float		CollideFoot			( float angle, const Fmatrix &gl_anim, Fplane &p, Fvector3& ax );
+inline				void		make_shift			(Fmatrix &xm, const Fplane &p,const Fvector3& pick_dir );
 				void		ApplyContext		( SCalculateData& cd );
 				void		Solve				( SCalculateData& cd );
 				void		Collide				( SIKCollideData &cld, CGameObject *O, const Fmatrix &foot, bool foot_step );
@@ -70,8 +70,8 @@ inline				void		AnimGoal			( Fmatrix &gl, CKinematicsAnimated	&K );
 				Matrix&		Goal				( Matrix &gl, const Fmatrix &xm, SCalculateData& cd );
 				Fmatrix&	GetHipInvert		( Fmatrix &ihip, const SCalculateData& cd );
 				float		SwivelAngle			( const Fmatrix &ihip, const SCalculateData& cd );
-				void		GetKnee				( Fvector &knee, const SCalculateData& cd ) const;
-				void		GetPickDir			(Fvector &v, const Fmatrix &gl_bone ) ;
+				void		GetKnee				(Fvector3& knee, const SCalculateData& cd ) const;
+				void		GetPickDir			(Fvector3& v, const Fmatrix &gl_bone ) ;
 inline		static	void		get_start			( Fmatrix &start, SCalculateData &D, u16 bone );
 private:
 		static	void 		BonesCallback0		( CBoneInstance* B );
@@ -80,7 +80,7 @@ private:
 
 private:
 	Limb		m_limb;
-	Fvector		m_toe_position;
+	Fvector3		m_toe_position;
 	u16			m_bones[4];	
 	u16			m_id;
 	bool		m_collide;

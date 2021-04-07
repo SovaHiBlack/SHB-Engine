@@ -37,13 +37,13 @@ public:
 	virtual void	feel_touch_new				(CObject* O);
 	virtual void	Load						(const char* section);
 	virtual bool	BlowoutState				();
-	virtual void	AffectPullDead				(CPHShellHolder* GO,const Fvector& throw_in_dir,float dist){}
-	virtual void	AffectPullAlife				(CEntityAlive* EA,const Fvector& throw_in_dir,float dist);
-	virtual void	AffectThrow					(SZoneObjectInfo* O, CPHShellHolder* GO,const Fvector& throw_in_dir,float dist);
-	virtual void	ThrowInCenter				(Fvector& C);
+	virtual void	AffectPullDead				(CPHShellHolder* GO,const Fvector3& throw_in_dir,float dist){}
+	virtual void	AffectPullAlife				(CEntityAlive* EA,const Fvector3& throw_in_dir,float dist);
+	virtual void	AffectThrow					(SZoneObjectInfo* O, CPHShellHolder* GO,const Fvector3& throw_in_dir,float dist);
+	virtual void	ThrowInCenter				(Fvector3& C);
 	virtual BOOL	net_Spawn					(CSE_Abstract* DC);
 	virtual void	net_Destroy					();
-	virtual void	Center						(Fvector& C) const;
+	virtual void	Center						(Fvector3& C) const;
 	virtual	void	NotificateDestroy			(CPHDestroyableNotificate *dn);
 	virtual float	BlowoutRadiusPercent		(CPHShellHolder* GO);
 

@@ -8,9 +8,10 @@
 
 #pragma once
 
-inline float CLevelGraph::distance(const Fvector &position, const Fvector &point0, const Fvector &point1) const
+inline float CLevelGraph::distance(const Fvector3& position, const Fvector3& point0, const Fvector3& point1) const
 {
-	Fvector				c, V;
+	Fvector3				c;
+	Fvector3 V;
 	c.sub				(position,	point0);
 	V.sub				(point1,	point0); 
 
@@ -24,12 +25,12 @@ inline float CLevelGraph::distance(const Fvector &position, const Fvector &point
 	if (t >= d)
 		return			position.distance_to_sqr(point1);
 
-	Fvector				R;
+	Fvector3				R;
 	R.mad				(point0,V,t);
 	return				(position.distance_to_sqr(R));
 }
 
-inline void CLevelGraph::project_point(const Fplane &plane, Fvector &point) const
+inline void CLevelGraph::project_point(const Fplane &plane, Fvector3& point) const
 {
 	point.y				-= plane.classify(point)/plane.n.y;
 }
@@ -54,12 +55,12 @@ inline float CLevelGraph::distance(const CLevelGraph::CVertex *node0, const CLev
 	return				(vertex_position(node0).distance_to(vertex_position(node1)));
 }
 
-inline float CLevelGraph::distance(const Fvector &position, const u32 vertex_id) const
+inline float CLevelGraph::distance(const Fvector3& position, const u32 vertex_id) const
 {
 	return				(distance(position,vertex(vertex_id)));
 }
 
-inline float CLevelGraph::distance(const u32 vertex_id, const Fvector &position) const
+inline float CLevelGraph::distance(const u32 vertex_id, const Fvector3& position) const
 {
 	return				(distance(position,vertex_id));
 }
@@ -214,12 +215,12 @@ inline CLevelGraph::ELineIntersections  CLevelGraph::intersect_no_check(
 	return		(eLineIntersectionIntersect);
 } /* lines_intersect */
 
-inline bool CLevelGraph::similar(const Fvector &tPoint0, const Fvector &tPoint1) const
+inline bool CLevelGraph::similar(const Fvector3& tPoint0, const Fvector3& tPoint1) const
 {
 	return((_abs(tPoint0.x - tPoint1.x) < EPS_L) && (_abs(tPoint0.z - tPoint1.z) < EPS_L));
 }
 
-inline bool CLevelGraph::inside(const Fvector &tPoint, const CLevelGraph::SContour &tContour) const
+inline bool CLevelGraph::inside(const Fvector3& tPoint, const CLevelGraph::SContour &tContour) const
 {
 	return((tContour.v1.x - EPS_L <= tPoint.x) && (tContour.v1.z - EPS_L <= tPoint.z) && (tContour.v3.x + EPS_L >= tPoint.x) && (tContour.v3.z + EPS_L >= tPoint.z));
 }
@@ -326,11 +327,13 @@ inline void CLevelGraph::intersect(SSegment &tSegment, const SContour &tContour0
 		Log("! AI_PathNodes: Can't find intersection segment");
 }
 
-inline float CLevelGraph::nearest(Fvector& Dest, const Fvector& P, const Fvector& A, const Fvector& B) const
+inline float CLevelGraph::nearest(Fvector3& Dest, const Fvector3& P, const Fvector3& A, const Fvector3& B) const
 {
 	// Determine t (the length of the xr_vector from ‘a’ to ‘p’)
-	Fvector c; c.sub(P,A);
-	Fvector V; V.sub(B,A); 
+	Fvector3 c;
+	c.sub(P,A);
+	Fvector3 V;
+	V.sub(B,A);
 	
 	float d = V.magnitude();
 	
@@ -354,7 +357,7 @@ inline void CLevelGraph::contour(CLevelGraph::SContour &_contour, u32 vertex_id)
 
 inline void CLevelGraph::contour(CLevelGraph::SContour &_contour, const CLevelGraph::CVertex *vertex) const
 {
-	Fvector					vertex_position = this->vertex_position	(vertex->p);
+	Fvector3					vertex_position = this->vertex_position	(vertex->p);
 
 	// decompress plane
 	Fplane					plane;	
@@ -375,10 +378,10 @@ inline void CLevelGraph::contour(CLevelGraph::SContour &_contour, const CLevelGr
 	project_point			(plane,_contour.v4);	// minX,maxZ
 }
 
-inline void CLevelGraph::nearest(Fvector &destination, const Fvector &position, const CLevelGraph::SContour &contour) const
+inline void CLevelGraph::nearest(Fvector3& destination, const Fvector3& position, const CLevelGraph::SContour &contour) const
 {
 	// calculate minimal distance
-	Fvector		T;
+	Fvector3		T;
 	float		best,dist;
 	
 	best		= nearest(destination,position,contour.v1,contour.v2);
@@ -404,7 +407,7 @@ inline void CLevelGraph::nearest(Fvector &destination, const Fvector &position, 
 
 const float corner_r = 0.05f;
 
-inline bool CLevelGraph::intersect(Fvector& dst, const Fvector& v1, const Fvector& v2, const Fvector& v3, const Fvector& v4) const
+inline bool CLevelGraph::intersect(Fvector3& dst, const Fvector3& v1, const Fvector3& v2, const Fvector3& v3, const Fvector3& v4) const
 {
 	// corner check (v4 - end, v1-v2 - segm)
 	if (v4.similar(v1,corner_r)) {
@@ -428,7 +431,7 @@ inline bool CLevelGraph::intersect(Fvector& dst, const Fvector& v1, const Fvecto
 	}
 
 	// projected intersection
-	Fvector		T;
+	Fvector3		T;
 	if (eLineIntersectionIntersect != 
 		intersect(v1.x,v1.z,v2.x,v2.z,v3.x,v3.z,v4.x,v4.z,&T.x,&T.z))
 		return (false);
@@ -562,12 +565,12 @@ inline	bool CLevelGraph::check_vertex_in_direction		(u32 start_vertex_id, const 
 	return					(check_vertex_in_direction_slow(start_vertex_id,start_position,finish_vertex_id));
 }
 
-inline	u32 CLevelGraph::check_position_in_direction(u32 start_vertex_id, const Fvector &start_position, const Fvector &finish_position) const
+inline	u32 CLevelGraph::check_position_in_direction(u32 start_vertex_id, const Fvector3& start_position, const Fvector3& finish_position) const
 {
 	return					(check_position_in_direction(start_vertex_id,Fvector2().set(start_position.x,start_position.z),Fvector2().set(finish_position.x,finish_position.z)));
 }
 
-inline	bool CLevelGraph::check_vertex_in_direction(u32 start_vertex_id, const Fvector &start_position, u32 finish_vertex_id) const
+inline	bool CLevelGraph::check_vertex_in_direction(u32 start_vertex_id, const Fvector3& start_position, u32 finish_vertex_id) const
 {
 	return					(check_vertex_in_direction(start_vertex_id,Fvector2().set(start_position.x,start_position.z),finish_vertex_id));
 }
