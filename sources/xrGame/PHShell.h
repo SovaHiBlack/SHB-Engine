@@ -33,8 +33,8 @@ public:
 					Fmatrix					m_object_in_root;
 									CPHShell( );
 	virtual							~CPHShell( );
-	virtual			void				applyImpulseTrace(const Fvector& pos, const Fvector& dir, float val, const u16 id);
-	virtual			void				applyHit(const Fvector& pos, const Fvector& dir, float val, const u16 id, ALife::EHitType hit_type);
+	virtual			void				applyImpulseTrace(const Fvector3& pos, const Fvector3& dir, float val, const u16 id);
+	virtual			void				applyHit(const Fvector3& pos, const Fvector3& dir, float val, const u16 id, ALife::EHitType hit_type);
 
 	static			void 				BonesCallback(CBoneInstance* B);
 	static			void 				StataticRootBonesCallBack(CBoneInstance* B);
@@ -71,12 +71,12 @@ public:
 	{
 		return &Island( );
 	};
-	virtual			void				applyImpulseTrace(const Fvector& pos, const Fvector& dir, float val);
+	virtual			void				applyImpulseTrace(const Fvector3& pos, const Fvector3& dir, float val);
 
 	virtual			void				Update( );
 
 	virtual			void				Activate(const Fmatrix& m0, float dt01, const Fmatrix& m2, bool disable = false);
-	virtual			void				Activate(const Fmatrix& transform, const Fvector& lin_vel, const Fvector& ang_vel, bool disable = false);
+	virtual			void				Activate(const Fmatrix& transform, const Fvector3& lin_vel, const Fvector3& ang_vel, bool disable = false);
 	virtual			void				Activate(bool disable = false);
 	virtual			void				Activate(const Fmatrix& start_from, bool disable = false)
 	{ };
@@ -111,13 +111,13 @@ public:
 	virtual			void				setDensity(float M);
 	virtual			float				getDensity( );
 	virtual			float				getVolume( );
-	virtual			void				get_Extensions(const Fvector& axis, float center_prg, float& lo_ext, float& hi_ext);
-	virtual			void				applyForce(const Fvector& dir, float val);
+	virtual			void				get_Extensions(const Fvector3& axis, float center_prg, float& lo_ext, float& hi_ext);
+	virtual			void				applyForce(const Fvector3& dir, float val);
 	virtual			void			applyForce(float x, float y, float z);
-	virtual void			applyImpulse(const Fvector& dir, float val);
-	virtual void			applyGravityAccel(const Fvector& accel);
-	virtual void			setTorque(const Fvector& torque);
-	virtual void			setForce(const Fvector& force);
+	virtual void			applyImpulse(const Fvector3& dir, float val);
+	virtual void			applyGravityAccel(const Fvector3& accel);
+	virtual void			setTorque(const Fvector3& torque);
+	virtual void			setForce(const Fvector3& force);
 	virtual void			set_JointResistance(float force)
 	{
 		JOINT_I i;
@@ -158,10 +158,10 @@ public:
 		return m_spliter_holder && m_spliter_holder->IsUnbreakable( );
 	}
 ///////	////////////////////////////////////////////////////////////////////////////////////////////
-	virtual		void				get_LinearVel(Fvector& velocity);
-	virtual		void				get_AngularVel(Fvector& velocity);
-	virtual		void				set_LinearVel(const Fvector& velocity);
-	virtual		void				set_AngularVel(const Fvector& velocity);
+	virtual		void				get_LinearVel(Fvector3& velocity);
+	virtual		void				get_AngularVel(Fvector3& velocity);
+	virtual		void				set_LinearVel(const Fvector3& velocity);
+	virtual		void				set_AngularVel(const Fvector3& velocity);
 	virtual		void				TransformPosition(const Fmatrix& form);
 	virtual		void				SetGlTransformDynamic(const Fmatrix& form);
 	virtual		void				set_ApplyByGravity(bool flag);
@@ -189,7 +189,7 @@ public:
 	{
 		return get_ElementSync(element);
 	}
-	virtual		CPhysicsElement* NearestToPoint(const Fvector& point);
+	virtual		CPhysicsElement* NearestToPoint(const Fvector3& point);
 	virtual		CPhysicsJoint* get_Joint(u16 bone_id);
 	virtual		CPhysicsJoint* get_Joint(const shared_str& bone_name);
 	virtual		CPhysicsJoint* get_Joint(const char* bone_name);
@@ -260,9 +260,9 @@ public:
 	virtual		void				UpdateRoot( );
 	virtual		void				SmoothElementsInertia(float k);
 	virtual		void				InterpolateGlobalTransform(Fmatrix* m);
-	virtual		void				InterpolateGlobalPosition(Fvector* v);
+	virtual		void				InterpolateGlobalPosition(Fvector3* v);
 	virtual		void				GetGlobalTransformDynamic(Fmatrix* m);
-	virtual		void				GetGlobalPositionDynamic(Fvector* v);
+	virtual		void				GetGlobalPositionDynamic(Fvector3* v);
 	virtual		Fmatrix& ObjectInRoot( )
 	{
 		return m_object_in_root;
@@ -312,6 +312,6 @@ private:
 	void				ResetCallbacksRecursive(u16 id, u16 element, Flags64& mask);
 	void				SetJointRootGeom(CPhysicsElement* root_e, CPhysicsJoint* J);
 	void				ReanableObject( );
-	void				ExplosionHit(const Fvector& pos, const Fvector& dir, float val, const u16 id);
+	void				ExplosionHit(const Fvector3& pos, const Fvector3& dir, float val, const u16 id);
 	void				ClearBreakInfo( );
 };

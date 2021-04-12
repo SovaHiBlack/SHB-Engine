@@ -9,7 +9,8 @@ inline void CPHElement::InverceLocalForm(Fmatrix& m)
 
 inline void CPHElement::MulB43InverceLocalForm(Fmatrix& m)
 {
-	Fvector ic;ic.set(m_mass_center);
+	Fvector3 ic;
+	ic.set(m_mass_center);
 	ic.invert();
 	m.transform_dir(ic);
 	m.c.add(ic);

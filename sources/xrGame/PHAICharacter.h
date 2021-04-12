@@ -6,7 +6,7 @@ class CPHAICharacter : public CPHSimpleCharacter
 {
 	typedef CPHSimpleCharacter	inherited;
 
-	Fvector m_vDesiredPosition;
+	Fvector3 m_vDesiredPosition;
 	bool	m_forced_physics_control;
 public:
 	CPHAICharacter( );
@@ -14,19 +14,19 @@ public:
 	{
 		return this;
 	}
-	virtual		void		SetPosition(Fvector pos);
-	virtual		void		SetDesiredPosition(const Fvector& pos)
+	virtual		void		SetPosition(Fvector3 pos);
+	virtual		void		SetDesiredPosition(const Fvector3& pos)
 	{
 		m_vDesiredPosition.set(pos);
 	}
-	virtual		void		GetDesiredPosition(Fvector& dpos)
+	virtual		void		GetDesiredPosition(Fvector3& dpos)
 	{
 		dpos.set(m_vDesiredPosition);
 	}
 	virtual		void		ValidateWalkOn( );
 	virtual		void		BringToDesired(float time, float velocity, float force = 1.f);
-	virtual		bool		TryPosition(Fvector pos, bool exact_state);
-	virtual		void		Jump(const Fvector& jump_velocity);
+	virtual		bool		TryPosition(Fvector3 pos, bool exact_state);
+	virtual		void		Jump(const Fvector3& jump_velocity);
 	virtual		void		SetMaximumVelocity(dReal vel)
 	{
 		m_max_velocity = vel;

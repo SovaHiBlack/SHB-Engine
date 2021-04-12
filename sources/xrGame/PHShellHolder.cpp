@@ -64,7 +64,7 @@ BOOL CPHShellHolder::net_Spawn				(CSE_Abstract*	DC)
 	return ret;
 }
 
-void CPHShellHolder::PHHit(float P,Fvector &dir, CObject *who,s16 element,Fvector p_in_object_space, float impulse, ALife::EHitType hit_type /* ALife::eHitTypeWound*/)
+void CPHShellHolder::PHHit(float P, Fvector3& dir, CObject *who,s16 element, Fvector3 p_in_object_space, float impulse, ALife::EHitType hit_type /* ALife::eHitTypeWound*/)
 {
 	if (impulse > 0)
 	{
@@ -100,8 +100,8 @@ void CPHShellHolder::correct_spawn_pos()
 {
 	VERIFY								(PPhysicsShell());
 
-	Fvector								size;
-	Fvector								c;
+	Fvector3								size;
+	Fvector3								c;
 	get_box								(PPhysicsShell(),XFORM(),size,c);
 
 	CPHActivationShape					activation_shape;
@@ -120,7 +120,8 @@ void CPHShellHolder::correct_spawn_pos()
 
 	PPhysicsShell()->EnableCollision	();
 
-	Fvector								ap = activation_shape.Position();
+	Fvector3								ap = activation_shape.Position();
+
 #ifdef DEBUG
 	if (!valid_pos(ap,phBoundaries)) {
 		Msg("not valid position	%f,%f,%f",ap.x,ap.y,ap.z);
@@ -144,7 +145,8 @@ void CPHShellHolder::activate_physic_shell()
 {
 	VERIFY						(!m_pPhysicsShell);
 	create_physic_shell			();
-	Fvector						l_fw, l_up;
+	Fvector3					l_fw;
+	Fvector3					l_up;
 	l_fw.set					(XFORM().k);
 	l_up.set					(XFORM().j);
 	l_fw.mul					(2.f);
@@ -207,7 +209,7 @@ void CPHShellHolder::PHSetMaterial(const char* m)
 	}
 }
 
-void CPHShellHolder::PHGetLinearVell		(Fvector& velocity)
+void CPHShellHolder::PHGetLinearVell		(Fvector3& velocity)
 {
 	if(!m_pPhysicsShell)
 	{
@@ -218,7 +220,7 @@ void CPHShellHolder::PHGetLinearVell		(Fvector& velocity)
 	m_pPhysicsShell->get_LinearVel(velocity);
 }
 
-void CPHShellHolder::PHSetLinearVell(Fvector& velocity)
+void CPHShellHolder::PHSetLinearVell(Fvector3& velocity)
 {
 	if(!m_pPhysicsShell)
 	{
@@ -337,7 +339,8 @@ void CPHShellHolder::PHSaveState(NET_Packet &P)
 		P.w_u16(0);
 	}
 	/////////////////////////////
-	Fvector min,max;
+	Fvector3 min;
+	Fvector3 max;
 
 	min.set(flt_max,flt_max,flt_max);
 	max.set(-flt_max,-flt_max,-flt_max);
@@ -348,7 +351,7 @@ void CPHShellHolder::PHSaveState(NET_Packet &P)
 	{
 		SPHNetState state;
 		PHGetSyncItem(i)->get_State(state);
-		Fvector& p=state.position;
+		Fvector3& p=state.position;
 		if (p.x < min.x)
 		{
 			min.x = p.x;
@@ -409,8 +412,8 @@ void CPHShellHolder::PHLoadState(IReader &P)
 		K->LL_SetBoneRoot(P.r_u16());
 	}
 
-	Fvector min=P.r_vec3();
-	Fvector max=P.r_vec3();
+	Fvector3 min=P.r_vec3();
+	Fvector3 max=P.r_vec3();
 	
 	VERIFY(!min.similar(max));
 

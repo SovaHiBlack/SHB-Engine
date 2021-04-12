@@ -9,7 +9,7 @@
 
 void CPHStaticGeomShell::get_spatial_params( )
 {
-	Fvector AABB;
+	Fvector3 AABB;
 	spatialParsFromDGeom(dSpacedGeometry( ), spatial.sphere.P, AABB, spatial.sphere.R);
 }
 

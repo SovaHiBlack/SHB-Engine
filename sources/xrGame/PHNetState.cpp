@@ -5,7 +5,7 @@
 
 //////////////////////////////////////8/////////////////////////////////////////////////////
 
-static void w_vec_q8(NET_Packet& P, const Fvector& vec, const Fvector& min, const Fvector& max)
+static void w_vec_q8(NET_Packet& P, const Fvector3& vec, const Fvector3& min, const Fvector3& max)
 {
 	P.w_float_q8(vec.x, min.x, max.x);
 	P.w_float_q8(vec.y, min.y, max.y);
@@ -13,7 +13,7 @@ static void w_vec_q8(NET_Packet& P, const Fvector& vec, const Fvector& min, cons
 }
 
 template<typename src>
-static void r_vec_q8(src& P, Fvector& vec, const Fvector& min, const Fvector& max)
+static void r_vec_q8(src& P, Fvector3& vec, const Fvector3& min, const Fvector3& max)
 {
 	vec.x = P.r_float_q8(min.x, max.x);
 	vec.y = P.r_float_q8(min.y, max.y);
@@ -26,7 +26,7 @@ static void r_vec_q8(src& P, Fvector& vec, const Fvector& min, const Fvector& ma
 
 static void w_qt_q8(NET_Packet& P, const Fquaternion& q)
 {
-	//Fvector Q;
+	//Fvector3 Q;
 	//Q.set(q.x,q.y,q.z);
 	//if(q.w<0.f)	Q.invert();
 	//P.w_float_q8(Q.x,-1.f,1.f);
@@ -71,13 +71,13 @@ static void r_qt_q8(src& P, Fquaternion& q)
 }
 
 /////////////////////////////////16////////////////////////////////////////////////////////////////
-static void w_vec_q16(NET_Packet& P, const Fvector& vec, const Fvector& min, const Fvector& max)
+static void w_vec_q16(NET_Packet& P, const Fvector3& vec, const Fvector3& min, const Fvector3& max)
 {
 	P.w_float_q16(vec.x, min.x, max.x);
 	P.w_float_q16(vec.y, min.y, max.y);
 	P.w_float_q16(vec.z, min.z, max.z);
 }
-static void r_vec_q16(NET_Packet& P, Fvector& vec, const Fvector& min, const Fvector& max)
+static void r_vec_q16(NET_Packet& P, Fvector3& vec, const Fvector3& min, const Fvector3& max)
 {
 	P.r_float_q16(vec.x, min.x, max.x);
 	P.r_float_q16(vec.y, min.y, max.y);
@@ -90,7 +90,7 @@ static void r_vec_q16(NET_Packet& P, Fvector& vec, const Fvector& min, const Fve
 template<typename src>
 static void w_qt_q16(src& P, const Fquaternion& q)
 {
-	//Fvector Q;
+	//Fvector3 Q;
 	//Q.set(q.x,q.y,q.z);
 	//if(q.w<0.f)	Q.invert();
 	//P.w_float_q16(Q.x,-1.f,1.f);
@@ -174,7 +174,7 @@ void SPHNetState::net_Load(IReader& P)
 	net_Import(P);
 	previous_position.set(position);
 }
-void SPHNetState::net_Save(NET_Packet& P, const Fvector& min, const Fvector& max)
+void SPHNetState::net_Save(NET_Packet& P, const Fvector3& min, const Fvector3& max)
 {
 	//P.w_vec3(linear_vel);
 	//P.w_vec3(angular_vel);
@@ -188,7 +188,7 @@ void SPHNetState::net_Save(NET_Packet& P, const Fvector& min, const Fvector& max
 	P.w_u8((u8) enabled);
 }
 template<typename src>
-void SPHNetState::read(src& P, const Fvector& min, const Fvector& max)
+void SPHNetState::read(src& P, const Fvector3& min, const Fvector3& max)
 {
 	VERIFY(!(fsimilar(min.x, max.x) && fsimilar(min.y, max.y) && fsimilar(min.z, max.z)));
 	linear_vel.set(0.f, 0.f, 0.f);
@@ -200,15 +200,14 @@ void SPHNetState::read(src& P, const Fvector& min, const Fvector& max)
 	r_qt_q8(P, quaternion);
 	previous_quaternion.set(quaternion);
 	enabled = !!P.r_u8( );
-
 }
 
-void SPHNetState::net_Load(NET_Packet& P, const Fvector& min, const Fvector& max)
+void SPHNetState::net_Load(NET_Packet& P, const Fvector3& min, const Fvector3& max)
 {
 	VERIFY(!(fsimilar(min.x, max.x) && fsimilar(min.y, max.y) && fsimilar(min.z, max.z)));
 	read(P, min, max);
 }
-void SPHNetState::net_Load(IReader& P, const Fvector& min, const Fvector& max)
+void SPHNetState::net_Load(IReader& P, const Fvector3& min, const Fvector3& max)
 {
 	VERIFY(!(fsimilar(min.x, max.x) && fsimilar(min.y, max.y) && fsimilar(min.z, max.z)));
 	read(P, min, max);
@@ -218,7 +217,8 @@ SPHBonesData::SPHBonesData( )
 	bones_mask = u64(-1);
 	root_bone = 0;
 
-	Fvector						_mn, _mx;
+	Fvector3 _mn;
+	Fvector3 _mx;
 
 	_mn.set(-100.f, -100.f, -100.f);
 	_mx.set(100.f, 100.f, 100.f);
@@ -249,7 +249,8 @@ void SPHBonesData::net_Load(NET_Packet& P)
 
 	bones_mask = P.r_u64( );
 	root_bone = P.r_u16( );
-	Fvector						_mn, _mx;
+	Fvector3 _mn;
+	Fvector3 _mx;
 	P.r_vec3(_mn);
 	P.r_vec3(_mx);
 	set_min_max(_mn, _mx);
@@ -263,7 +264,7 @@ void SPHBonesData::net_Load(NET_Packet& P)
 	}
 }
 
-void SPHBonesData::set_min_max(const Fvector& _min, const Fvector& _max)
+void SPHBonesData::set_min_max(const Fvector3& _min, const Fvector3& _max)
 {
 	VERIFY(!_min.similar(_max));
 	m_min = _min;

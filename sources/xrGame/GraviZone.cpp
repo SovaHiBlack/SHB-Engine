@@ -13,7 +13,7 @@
 #include "GraviZone.h"
 
 #include "PhysicsShell.h"
-#include "entity_alive.h"
+#include "EntityAlive.h"
 #include "PHMovementControl.h"
 #include "Messages.h"
 #include "PHShellHolder.h"

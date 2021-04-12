@@ -8,13 +8,12 @@
 
 #pragma once
 
-inline	CClientSpawnManager::CClientSpawnManager	()
-{
-}
+inline CClientSpawnManager::CClientSpawnManager( )
+{ }
 
 #ifdef DEBUG
-inline	const CClientSpawnManager::REQUEST_REGISTRY &CClientSpawnManager::registry	() const
+inline const CClientSpawnManager::REQUEST_REGISTRY& CClientSpawnManager::registry( ) const
 {
-	return		(m_registry);
+	return m_registry;
 }
 #endif // DEBUG

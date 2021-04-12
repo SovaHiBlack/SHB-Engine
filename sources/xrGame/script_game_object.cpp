@@ -18,7 +18,7 @@
 #include "HolderCustom.h"
 #include "inventoryowner.h"
 #include "movement_manager.h"
-#include "entity_alive.h"
+#include "EntityAlive.h"
 #include "WeaponMagazined.h"
 #include "Messages.h"
 #include "Inventory.h"
@@ -41,15 +41,15 @@ class CScriptBinderObject;
 //////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////
-Fvector	CScriptGameObject::Center()
+Fvector3	CScriptGameObject::Center()
 {
-	Fvector c;
+	Fvector3 c;
 	m_game_object->Center(c);
 	return	c;
 }
 
-BIND_FUNCTION10	(&object(),	CScriptGameObject::Position,			CGameObject,	Position,			Fvector,						Fvector());
-BIND_FUNCTION10	(&object(),	CScriptGameObject::Direction,			CGameObject,	Direction,			Fvector,						Fvector());
+BIND_FUNCTION10	(&object(),	CScriptGameObject::Position,			CGameObject,	Position, Fvector3, Fvector3());
+BIND_FUNCTION10	(&object(),	CScriptGameObject::Direction,			CGameObject,	Direction, Fvector3, Fvector3());
 BIND_FUNCTION10	(&object(),	CScriptGameObject::Mass, CPHShellHolder,	GetMass,			float,							float(-1));
 BIND_FUNCTION10	(&object(),	CScriptGameObject::ID,					CGameObject,	ID,					u32,							u32(-1));
 BIND_FUNCTION10	(&object(),	CScriptGameObject::getVisible,			CGameObject,	getVisible,			BOOL,							FALSE);
@@ -294,13 +294,13 @@ u32 CScriptGameObject::get_current_patrol_point_index()
 //////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////
 
-Fvector	CScriptGameObject::bone_position	(const char* bone_name) const
+Fvector3	CScriptGameObject::bone_position	(const char* bone_name) const
 {
 	CKinematics* k = smart_cast<CKinematics*>(object( ).Visual( ));
 	if (!k)
 	{
 		ai( ).script_engine( ).script_log(ScriptStorage::eLuaMessageTypeError, "CKinematics : cannot call bone_position!");
-		return			Fvector( );
+		return			Fvector3( );
 	}
 
 	u16					bone_id;
@@ -415,7 +415,7 @@ void CScriptGameObject::eat				(CScriptGameObject *item)
 	inventory_owner->inventory().Eat(inventory_item);
 }
 
-bool CScriptGameObject::inside					(const Fvector &position, float epsilon) const
+bool CScriptGameObject::inside					(const Fvector3& position, float epsilon) const
 {
 	CSpaceRestrictor		*space_restrictor = smart_cast<CSpaceRestrictor*>(&object());
 	if (!space_restrictor) {
@@ -428,7 +428,7 @@ bool CScriptGameObject::inside					(const Fvector &position, float epsilon) cons
 	return				(space_restrictor->inside(sphere));
 }
 
-bool CScriptGameObject::inside					(const Fvector &position) const
+bool CScriptGameObject::inside					(const Fvector3& position) const
 {
 	return				(inside(position,EPS_L));
 }
@@ -503,7 +503,7 @@ void CScriptGameObject::set_range				(float new_range)
 	monster->set_range		(new_range);
 }
 
-u32	CScriptGameObject::vertex_in_direction(u32 level_vertex_id, Fvector direction, float max_distance) const
+u32	CScriptGameObject::vertex_in_direction(u32 level_vertex_id, Fvector3 direction, float max_distance) const
 {
 	CCustomMonster	*monster = smart_cast<CCustomMonster*>(&object());
 	if (!monster) {
@@ -518,8 +518,8 @@ u32	CScriptGameObject::vertex_in_direction(u32 level_vertex_id, Fvector directio
 
 	direction.normalize_safe();
 	direction.mul	(max_distance);
-	Fvector			start_position = ai().level_graph().vertex_position(level_vertex_id);
-	Fvector			finish_position = Fvector(start_position).add(direction);
+	Fvector3			start_position = ai().level_graph().vertex_position(level_vertex_id);
+	Fvector3			finish_position = Fvector3(start_position).add(direction);
 	u32				result = u32(-1);
 	monster->movement().restrictions().add_border(level_vertex_id,max_distance);
 	ai().level_graph().farthest_vertex_in_direction(level_vertex_id,start_position,finish_position,result,0,true);

@@ -10,7 +10,7 @@
 #include "..\ENGINE\render.h"
 #include "..\ENGINE\IGamePersistent.h"//==>
 
-const Fvector zero_vel		= {0.f,0.f,0.f};
+const Fvector3 zero_vel		= {0.f,0.f,0.f};
 
 CParticlesObject::CParticlesObject	(const char* p_name, BOOL bAutoRemove, bool destroy_on_game_load) :
 	inherited				(destroy_on_game_load)
@@ -76,7 +76,8 @@ void CParticlesObject::UpdateSpatial()
 	// spatial	(+ workaround occasional bug inside particle-system)
 	if (_valid(renderable.visual->vis.sphere))
 	{
-		Fvector	P;	float	R;
+		Fvector3	P;
+		float	R;
 		renderable.xform.transform_tiny	(P,renderable.visual->vis.sphere.P);
 		R								= renderable.visual->vis.sphere.R;
 		if (0==spatial.type)	{
@@ -114,7 +115,7 @@ void CParticlesObject::Play		()
 	m_bStopping					= false;
 }
 
-void CParticlesObject::play_at_pos(const Fvector& pos, BOOL xform)
+void CParticlesObject::play_at_pos(const Fvector3& pos, BOOL xform)
 {
 	IParticleCustom* V			= smart_cast<IParticleCustom*>(renderable.visual); VERIFY(V);
 	Fmatrix m; m.translate		(pos); 
@@ -183,14 +184,14 @@ void CParticlesObject::SetXFORM			(const Fmatrix& m)
 	UpdateSpatial		();
 }
 
-void CParticlesObject::UpdateParent		(const Fmatrix& m, const Fvector& vel)
+void CParticlesObject::UpdateParent		(const Fmatrix& m, const Fvector3& vel)
 {
 	IParticleCustom* V	= smart_cast<IParticleCustom*>(renderable.visual); VERIFY(V);
 	V->UpdateParent		(m,vel,FALSE);
 	UpdateSpatial		();
 }
 
-Fvector& CParticlesObject::Position		()
+Fvector3& CParticlesObject::Position		()
 {
 	return renderable.visual->vis.sphere.P;
 }

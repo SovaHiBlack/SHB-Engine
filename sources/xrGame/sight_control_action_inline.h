@@ -35,7 +35,7 @@ inline	const SightManager::ESightType &CSightControlAction::sight_type	() const
 	return				(m_sight_type);
 }
 
-inline	const Fvector &CSightControlAction::vector3d	() const
+inline	const Fvector3& CSightControlAction::vector3d	() const
 {
 	return				(m_vector3d);
 }

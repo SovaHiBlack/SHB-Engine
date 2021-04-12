@@ -6,7 +6,7 @@
 #include "..\ENGINE\SkeletonAnimated.h"
 #include "actor_flags.h"
 #include "actor_defs.h"
-#include "entity_alive.h"
+#include "EntityAlive.h"
 #include "PHMovementControl.h"
 #include "PhysicsShell.h"
 #include "InventoryOwner.h"

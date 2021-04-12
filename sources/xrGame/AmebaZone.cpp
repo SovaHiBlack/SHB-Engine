@@ -8,7 +8,7 @@
 #include "AmebaZone.h"
 #include "HUDManager.h"//
 #include "Level.h"
-#include "entity_alive.h"
+#include "EntityAlive.h"
 #include "CharacterPhysicsSupport.h"
 
 CAmebaZone::CAmebaZone()

@@ -16,7 +16,7 @@
 #include "game_base_space.h"
 
 #include "ui/UIGameCustom.h"//
-#include "actorEffector.h"
+#include "ActorEffector.h"
 #include "CustomOutfit.h"
 
 static const float		TIME_2_HIDE = 5.0f;

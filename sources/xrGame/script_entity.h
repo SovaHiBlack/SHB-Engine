@@ -25,13 +25,13 @@ public:
 	struct CSavedSound {
 		CScriptGameObject	*m_lua_game_object;
 		int					m_sound_type;
-		Fvector				m_position;
+		Fvector3				m_position;
 		float				m_sound_power;
 
 		inline				CSavedSound(
 							CScriptGameObject	*lua_game_object,
 							int				sound_type,
-							const Fvector	&position,
+							const Fvector3	&position,
 							float			sound_power
 						) :
 						m_lua_game_object(lua_game_object),
@@ -80,7 +80,7 @@ public:
 	virtual DLL_Pure			*_construct				();
 
 public:
-			const Fmatrix		GetUpdatedMatrix		(shared_str caBoneName, const Fvector &tPositionOffset, const Fvector &tAngleOffset);
+			const Fmatrix		GetUpdatedMatrix		(shared_str caBoneName, const Fvector3& tPositionOffset, const Fvector3& tAngleOffset);
 			void				vfUpdateParticles		();
 			void				vfUpdateSounds			();
 	virtual	void				vfFinishAction			(CScriptEntityAction		*tpEntityAction);
@@ -103,7 +103,7 @@ public:
 	virtual	bool				bfAssignObject			(CScriptEntityAction		*tpEntityAction);
 	virtual bool				bfAssignMonsterAction	(CScriptEntityAction		*tpEntityAction);
 
-	virtual void				sound_callback			(const CObject *object, int sound_type, const Fvector &position, float sound_power);
+	virtual void				sound_callback			(const CObject *object, int sound_type, const Fvector3& position, float sound_power);
 
 	virtual const char* GetPatrolPathName		();
 			bool				bfScriptAnimation		();

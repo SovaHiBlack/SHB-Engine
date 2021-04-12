@@ -98,27 +98,27 @@ public:
 	virtual void						SetMaterial								(u16 m);																		//aux
 	virtual void						SetMaterial								(const char* m){CPHGeometryOwner::SetMaterial(m);}									//aux
 	virtual u16							numberOfGeoms							();																				//aux
-	virtual const Fvector&				local_mass_Center						()		{return CPHGeometryOwner::local_mass_Center();}							//aux
+	virtual const Fvector3&				local_mass_Center						()		{return CPHGeometryOwner::local_mass_Center();}							//aux
 	virtual float						getVolume								()		{return CPHGeometryOwner::get_volume();}								//aux
-	virtual void						get_Extensions							(const Fvector& axis,float center_prg,float& lo_ext, float& hi_ext);			//aux
-	virtual	void						get_MaxAreaDir							(Fvector& dir){CPHGeometryOwner::get_MaxAreaDir(dir);}
+	virtual void						get_Extensions							(const Fvector3& axis,float center_prg,float& lo_ext, float& hi_ext);			//aux
+	virtual	void						get_MaxAreaDir							(Fvector3& dir){CPHGeometryOwner::get_MaxAreaDir(dir);}
 	virtual float						getRadius								();
 ////////////////////////////////////////////////////Mass/////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 private:
-	void								calculate_it_data						(const Fvector& mc,float mass);													//aux
-	void								calculate_it_data_use_density			(const Fvector& mc,float density);												//aux
-	void								calc_it_fract_data_use_density  		(const Fvector& mc,float density);//sets element mass and fractures parts mass	//aux
+	void								calculate_it_data						(const Fvector3& mc,float mass);													//aux
+	void								calculate_it_data_use_density			(const Fvector3& mc,float density);												//aux
+	void								calc_it_fract_data_use_density  		(const Fvector3& mc,float density);//sets element mass and fractures parts mass	//aux
 	dMass								recursive_mass_summ						(u16 start_geom,FRACTURE_I cur_fracture);										//aux
 public:																																				//
-	virtual const Fvector&				mass_Center								()						;														//aux
+	virtual const Fvector3&				mass_Center								()						;														//aux
 	virtual void						setDensity								(float M);																		//aux
 	virtual float						getDensity								(){return m_mass.mass/m_volume;}												//aux
-	virtual void						setMassMC								(float M,const Fvector& mass_center);											//aux
-	virtual void						setDensityMC							(float M,const Fvector& mass_center);											//aux
+	virtual void						setMassMC								(float M,const Fvector3& mass_center);											//aux
+	virtual void						setDensityMC							(float M,const Fvector3& mass_center);											//aux
 	virtual void						setInertia								(const dMass& M);																//aux
 	virtual void						addInertia								(const dMass& M);
-	virtual void						add_Mass								(const SBoneShape& shape,const Fmatrix& offset,const Fvector& mass_center,float mass,CPHFracture* fracture=NULL);//aux
+	virtual void						add_Mass								(const SBoneShape& shape,const Fmatrix& offset,const Fvector3& mass_center,float mass,CPHFracture* fracture=NULL);//aux
 	virtual	void						set_BoxMass								(const Fobb& box, float mass);													//aux
 	virtual void						setMass									(float M);																		//aux
 	virtual float						getMass									(){return m_mass.mass;}															//aux
@@ -168,27 +168,27 @@ public:																																				//
 		angular=k_w;																																//
 	}	
 	virtual void						applyImpact						(const SPHImpact& impact);																																	//
-	virtual void						applyImpulseTrace				(const Fvector& pos, const Fvector& dir, float val,const u16 id)	;					//called anywhere ph state influent
+	virtual void						applyImpulseTrace				(const Fvector3& pos, const Fvector3& dir, float val,const u16 id)	;					//called anywhere ph state influent
 	virtual	void						set_DisableParams				(const SAllDDOParams& params)										;					//
 	virtual void						set_DynamicLimits				(float l_limit=default_l_limit,float w_limit=default_w_limit);							//aux (may not be)
 	virtual void						set_DynamicScales				(float l_scale=default_l_scale,float w_scale=default_w_scale);							//aux (may not be)
 	virtual	void						Fix								();
 	virtual	void						ReleaseFixed					();
 	virtual bool						isFixed							(){return !!(m_flags.test(flFixed));}
-	virtual void						applyForce						(const Fvector& dir, float val);															//aux
+	virtual void						applyForce						(const Fvector3& dir, float val);															//aux
 	virtual void						applyForce						(float x,float y,float z);																//called anywhere ph state influent
-	virtual void						applyImpulse					(const Fvector& dir, float val);//aux
-	virtual void						applyImpulseVsMC				(const Fvector& pos,const Fvector& dir, float val);										//
-	virtual void						applyImpulseVsGF				(const Fvector& pos,const Fvector& dir, float val);										//
-	virtual void						applyGravityAccel				(const Fvector& accel);
-	virtual void						getForce						(Fvector& force);
-	virtual void						getTorque						(Fvector& torque);
-	virtual void						get_LinearVel					(Fvector& velocity);															//aux
-	virtual void						get_AngularVel					(Fvector& velocity);															//aux
-	virtual void						set_LinearVel					(const Fvector& velocity);														//called anywhere ph state influent
-	virtual void						set_AngularVel					(const Fvector& velocity);														//called anywhere ph state influent
-	virtual void						setForce						(const Fvector& force);															//
-	virtual void						setTorque						(const Fvector& torque);														//
+	virtual void						applyImpulse					(const Fvector3& dir, float val);//aux
+	virtual void						applyImpulseVsMC				(const Fvector3& pos,const Fvector3& dir, float val);										//
+	virtual void						applyImpulseVsGF				(const Fvector3& pos,const Fvector3& dir, float val);										//
+	virtual void						applyGravityAccel				(const Fvector3& accel);
+	virtual void						getForce						(Fvector3& force);
+	virtual void						getTorque						(Fvector3& torque);
+	virtual void						get_LinearVel					(Fvector3& velocity);															//aux
+	virtual void						get_AngularVel					(Fvector3& velocity);															//aux
+	virtual void						set_LinearVel					(const Fvector3& velocity);														//called anywhere ph state influent
+	virtual void						set_AngularVel					(const Fvector3& velocity);														//called anywhere ph state influent
+	virtual void						setForce						(const Fvector3& force);															//
+	virtual void						setTorque						(const Fvector3& torque);														//
 	virtual void						set_ApplyByGravity				(bool flag)			;															//
 	virtual bool						get_ApplyByGravity				()					;															//
 ///////////////////////////////////////////////////Net////////////////////////////////////////////////////////////////////////////////////////
@@ -203,12 +203,12 @@ public:																																				//
 	virtual void						TransformPosition				(const Fmatrix &form);
 	virtual void						getQuaternion					(Fquaternion& quaternion);														//
 	virtual void						setQuaternion					(const Fquaternion& quaternion);												//
-	virtual void						SetGlobalPositionDynamic		(const Fvector& position);														//
-	virtual void						GetGlobalPositionDynamic		(Fvector* v);																	//
-	virtual void						cv2obj_Xfrom					(const Fquaternion& q,const Fvector& pos, Fmatrix& xform);						//
-	virtual void						cv2bone_Xfrom					(const Fquaternion& q,const Fvector& pos, Fmatrix& xform);						//
+	virtual void						SetGlobalPositionDynamic		(const Fvector3& position);														//
+	virtual void						GetGlobalPositionDynamic		(Fvector3* v);																	//
+	virtual void						cv2obj_Xfrom					(const Fquaternion& q,const Fvector3& pos, Fmatrix& xform);						//
+	virtual void						cv2bone_Xfrom					(const Fquaternion& q,const Fvector3& pos, Fmatrix& xform);						//
 	virtual void						InterpolateGlobalTransform		(Fmatrix* m);																	//called UpdateCL vis influent
-	virtual void						InterpolateGlobalPosition		(Fvector* v);																	//aux
+	virtual void						InterpolateGlobalPosition		(Fvector3* v);																	//aux
 	virtual void						GetGlobalTransformDynamic		(Fmatrix* m);																	//aux
 inline			void						InverceLocalForm				(Fmatrix&)	;
 inline			void						MulB43InverceLocalForm			(Fmatrix&)	;
@@ -234,7 +234,7 @@ inline			void						MulB43InverceLocalForm			(Fmatrix&)	;
 ////////////////////////////////////////////////////Build/Activate////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	virtual void						Activate				(const Fmatrix& m0, float dt01, const Fmatrix& m2,bool disable=false);					//some isues not to be aux
-	virtual void						Activate				(const Fmatrix &transform,const Fvector& lin_vel,const Fvector& ang_vel,bool disable=false);//some isues not to be aux
+	virtual void						Activate				(const Fmatrix &transform,const Fvector3& lin_vel,const Fvector3& ang_vel,bool disable=false);//some isues not to be aux
 	virtual void						Activate				(bool disable=false);									//some isues not to be aux
 	virtual void						Activate				(const Fmatrix& start_from, bool disable=false);										//some isues not to be aux
 	virtual void						Deactivate				();																						//aux																																			//aux

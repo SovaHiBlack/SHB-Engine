@@ -18,7 +18,7 @@
 //#include "character_info.h"
 
 #include "StringTable.h"
-#include "entity_alive.h"
+#include "EntityAlive.h"
 
 //#include "InventoryItem.h"
 #include "Inventory.h"

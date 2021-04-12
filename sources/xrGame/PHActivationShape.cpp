@@ -104,7 +104,7 @@ CPHActivationShape::~CPHActivationShape		( )
 	VERIFY(!m_body && !m_geom);
 }
 
-void CPHActivationShape::Create				(const Fvector start_pos, const Fvector start_size, CPHShellHolder* ref_obj, EType _type, u16 flags)
+void CPHActivationShape::Create				(const Fvector3  start_pos, const Fvector3  start_size, CPHShellHolder* ref_obj, EType _type, u16 flags)
 {
 	VERIFY(ref_obj);
 	m_body = dBodyCreate(0);
@@ -150,7 +150,7 @@ void CPHActivationShape::Destroy			( )
 	m_body = NULL;
 }
 
-bool CPHActivationShape::Activate			(const Fvector need_size, u16 steps, float max_displacement, float max_rotation, bool un_freeze_later)
+bool CPHActivationShape::Activate			(const Fvector3  need_size, u16 steps, float max_displacement, float max_rotation, bool un_freeze_later)
 {
 
 #ifdef DEBUG
@@ -159,7 +159,7 @@ bool CPHActivationShape::Activate			(const Fvector need_size, u16 steps, float m
 		DBG_OpenCashedDraw( );
 		Fmatrix M;
 		PHDynamicData::DMXPStoFMX(dBodyGetRotation(m_body), dBodyGetPosition(m_body), M);
-		Fvector v;
+		Fvector3 v;
 		dGeomBoxGetLengths(m_geom, cast_fp(v));
 		v.mul(0.5f);
 		DBG_DrawOBB(M, v, D3DCOLOR_XRGB(0, 255, 0));
@@ -208,9 +208,9 @@ bool CPHActivationShape::Activate			(const Fvector need_size, u16 steps, float m
 
 	max_depth = 0.0f;
 
-	Fvector from_size;
-	Fvector step_size;
-	Fvector size;
+	Fvector3 from_size;
+	Fvector3 step_size;
+	Fvector3 size;
 	dGeomBoxGetLengths(m_geom, cast_fp(from_size));
 	step_size.sub(need_size, from_size);
 	step_size.mul(fnum_steps_r);
@@ -265,7 +265,7 @@ bool CPHActivationShape::Activate			(const Fvector need_size, u16 steps, float m
 		DBG_OpenCashedDraw( );
 		Fmatrix M;
 		PHDynamicData::DMXPStoFMX(dBodyGetRotation(m_body), dBodyGetPosition(m_body), M);
-		Fvector v;
+		Fvector3 v;
 		v.set(need_size);
 		v.mul(0.5f);
 		DBG_DrawOBB(M, v, D3DCOLOR_XRGB(0, 255, 255));
@@ -276,12 +276,12 @@ bool CPHActivationShape::Activate			(const Fvector need_size, u16 steps, float m
 	return ret;
 }
 
-const Fvector& CPHActivationShape::Position	( )
+const Fvector3& CPHActivationShape::Position	( )
 {
 	return cast_fv(dBodyGetPosition(m_body));
 }
 
-void CPHActivationShape::Size				(Fvector& size)
+void CPHActivationShape::Size				(Fvector3& size)
 {
 	dGeomBoxGetLengths(m_geom, cast_fp(size));
 }

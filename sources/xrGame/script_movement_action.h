@@ -66,7 +66,7 @@ public:
 	const CPatrolPath							*m_path;
 	PatrolPathManager::EPatrolStartType			m_tPatrolPathStart;
 	PatrolPathManager::EPatrolRouteType			m_tPatrolPathStop;
-	Fvector										m_tDestinationPosition;
+	Fvector3										m_tDestinationPosition;
 	u32											m_tNodeID;
 	EGoalType									m_tGoalType;
 	float										m_fSpeed;
@@ -82,17 +82,17 @@ public:
 					CScriptMovementAction	();
 	inline				CScriptMovementAction	(MonsterSpace::EBodyState tBodyState, MonsterSpace::EMovementType tMovementType, DetailPathManager::EDetailPathType tPathType, CScriptGameObject *tpObjectToGo, float fSpeed = 0.f);
 					CScriptMovementAction	(MonsterSpace::EBodyState tBodyState, MonsterSpace::EMovementType tMovementType, DetailPathManager::EDetailPathType tPathType, const CPatrolPathParams &tPatrolPathParams, float fSpeed = 0.f);
-	inline				CScriptMovementAction	(MonsterSpace::EBodyState tBodyState, MonsterSpace::EMovementType tMovementType, DetailPathManager::EDetailPathType tPathType, const Fvector &tPosition, float fSpeed = 0.f);
-					CScriptMovementAction	(const Fvector &tPosition, float fSpeed);
+	inline				CScriptMovementAction	(MonsterSpace::EBodyState tBodyState, MonsterSpace::EMovementType tMovementType, DetailPathManager::EDetailPathType tPathType, const Fvector3& tPosition, float fSpeed = 0.f);
+					CScriptMovementAction	(const Fvector3& tPosition, float fSpeed);
 	inline				CScriptMovementAction	(const EInputKeys tInputKeys, float fSpeed = 0.f);
 	// --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------						
 	// Monsters
 	// --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-					CScriptMovementAction	(MonsterSpace::EScriptMonsterMoveAction tAct, Fvector &tPosition, float	dist_to_end						= -1.f);
+					CScriptMovementAction	(MonsterSpace::EScriptMonsterMoveAction tAct, Fvector3& tPosition, float	dist_to_end						= -1.f);
 					CScriptMovementAction	(MonsterSpace::EScriptMonsterMoveAction tAct, CPatrolPathParams &tPatrolPathParams, float dist_to_end	= -1.f);
 					CScriptMovementAction	(MonsterSpace::EScriptMonsterMoveAction tAct, CScriptGameObject *tpObjectToGo, float dist_to_end		= -1.f);
-					CScriptMovementAction	(MonsterSpace::EScriptMonsterMoveAction tAct, u32 node_id, Fvector &tPosition, float dist_to_end		= -1.f);
-	inline				CScriptMovementAction	(MonsterSpace::EScriptMonsterMoveAction tAct, Fvector &tPosition, float	dist_to_end,							MonsterSpace::EScriptMonsterSpeedParam speed_param);
+					CScriptMovementAction	(MonsterSpace::EScriptMonsterMoveAction tAct, u32 node_id, Fvector3& tPosition, float dist_to_end		= -1.f);
+	inline				CScriptMovementAction	(MonsterSpace::EScriptMonsterMoveAction tAct, Fvector3& tPosition, float	dist_to_end,							MonsterSpace::EScriptMonsterSpeedParam speed_param);
 					CScriptMovementAction	(MonsterSpace::EScriptMonsterMoveAction tAct, CPatrolPathParams &tPatrolPathParams, float dist_to_end,			MonsterSpace::EScriptMonsterSpeedParam speed_param);
 	inline				CScriptMovementAction	(MonsterSpace::EScriptMonsterMoveAction tAct, CScriptGameObject *tpObjectToGo, float dist_to_end,				MonsterSpace::EScriptMonsterSpeedParam speed_param);
 	virtual			~CScriptMovementAction	();
@@ -101,7 +101,7 @@ public:
 	inline		void	SetPathType				(const DetailPathManager::EDetailPathType tPathType);
 			void	SetObjectToGo			(CScriptGameObject *tpObjectToGo);
 	inline		void	SetPatrolPath			(const CPatrolPath *path, shared_str path_name);
-	inline		void	SetPosition				(const Fvector &tPosition);
+	inline		void	SetPosition				(const Fvector3& tPosition);
 	inline		void	SetSpeed				(float fSpeed);
 	inline		void	SetPatrolStart			(PatrolPathManager::EPatrolStartType tPatrolPathStart);
 	inline		void	SetPatrolStop			(PatrolPathManager::EPatrolRouteType tPatrolPathStop);

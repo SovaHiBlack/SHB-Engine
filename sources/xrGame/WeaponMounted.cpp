@@ -6,7 +6,7 @@
 #include "Actor.h"
 #include "WeaponAmmo.h"
 
-#include "actoreffector.h"
+#include "ActorEffector.h"
 #include "effectorshot.h"
 #include "ai_sounds.h"
 #include "Level.h"

@@ -1,29 +1,25 @@
 // EffectorShot.cpp: implementation of the CCameraShotEffector class.
-//
-//////////////////////////////////////////////////////////////////////
 
 #include "stdafx.h"
+
 #include "EffectorShot.h"
 
-//-----------------------------------------------------------------------------
-// Weapon shot effector
-//-----------------------------------------------------------------------------
 CWeaponShotEffector::CWeaponShotEffector( )
 {
-	fAngleHorz = 0.f;
+	fAngleHorz = 0.0f;
 	fAngleVert = -EPS_S;
 	bActive = FALSE;
 	bSingleShoot = FALSE;
 	bSSActive = false;
 	m_LastSeed = 0;
 	fRelaxSpeed = EPS_L;
-	fAngleVertMax = 0.f;
-	fAngleVertFrac = 1.f;
-	fAngleHorzMax = 0.f;
-	fAngleHorzStep = 0.f;
+	fAngleVertMax = 0.0f;
+	fAngleVertFrac = 1.0f;
+	fAngleHorzMax = 0.0f;
+	fAngleHorzStep = 0.0f;
 
-	fLastDeltaVert = 0.f;
-	fLastDeltaHorz = 0.f;
+	fLastDeltaVert = 0.0f;
+	fLastDeltaHorz = 0.0f;
 }
 
 void CWeaponShotEffector::Initialize(float max_angle, float relax_speed, float max_angle_horz, float step_angle_horz, float angle_frac)
@@ -78,44 +74,64 @@ void CWeaponShotEffector::Update( )
 		float relax_speed_l = (fis_zero(time_to_relax_l)) ? 0.0f : _abs(fLastDeltaHorz) / time_to_relax_l;
 //		VERIFY(_valid(relax_speed_l));
 		//-------------------------------------------------------
-		if (fAngleHorz >= 0.f)
+		if (fAngleHorz >= 0.0f)
+		{
 			fAngleHorz -= relax_speed * Device.fTimeDelta;
+		}
 		else
+		{
 			fAngleHorz += relax_speed * Device.fTimeDelta;
+		}
 
 		if (bSSActive)
 		{
-			if (fLastDeltaHorz >= 0.f)
+			if (fLastDeltaHorz >= 0.0f)
+			{
 				fLastDeltaHorz -= relax_speed_l * Device.fTimeDelta;
+			}
 			else
+			{
 				fLastDeltaHorz += relax_speed_l * Device.fTimeDelta;
+			}
 		}
 //		VERIFY(_valid(fLastDeltaHorz));
 		//-------------------------------------------------------
-		if (fAngleVert >= 0.f)
+		if (fAngleVert >= 0.0f)
 		{
 			fAngleVert -= fRelaxSpeed * Device.fTimeDelta;
-			if (fAngleVert < 0.f) bActive = FALSE;
+			if (fAngleVert < 0.0f)
+			{
+				bActive = FALSE;
+			}
 		}
 		else
 		{
 			fAngleVert += fRelaxSpeed * Device.fTimeDelta;
-			if (fAngleVert > 0.f)	bActive = FALSE;
+			if (fAngleVert > 0.0f)
+			{
+				bActive = FALSE;
+			}
 		}
 
 		if (bSSActive)
 		{
-			if (fLastDeltaVert >= 0.f)
+			if (fLastDeltaVert >= 0.0f)
 			{
 				fLastDeltaVert -= fRelaxSpeed * Device.fTimeDelta;
-				if (fLastDeltaVert < 0.f) bSSActive = false;
+				if (fLastDeltaVert < 0.0f)
+				{
+					bSSActive = false;
+				}
 			}
 			else
 			{
 				fLastDeltaVert += fRelaxSpeed * Device.fTimeDelta;
-				if (fLastDeltaVert > 0.f)	bSSActive = false;
+				if (fLastDeltaVert > 0.0f)
+				{
+					bSSActive = false;
+				}
 			}
-		};
+		}
 
 		//-------------------------------------------------------
 		if (!bActive)
@@ -181,9 +197,6 @@ void CWeaponShotEffector::ApplyDeltaAngles(float* pitch, float* yaw)
 	*yaw -= fAngleHorz;
 }
 
-//-----------------------------------------------------------------------------
-// Camera shot effector
-//-----------------------------------------------------------------------------
 CCameraShotEffector::CCameraShotEffector(float max_angle, float relax_speed, float max_angle_horz, float step_angle_horz, float angle_frac) : CEffectorCam(eCEShot, 100000.f)
 {
 	CWeaponShotEffector::Initialize(max_angle, relax_speed, max_angle_horz, step_angle_horz, angle_frac);

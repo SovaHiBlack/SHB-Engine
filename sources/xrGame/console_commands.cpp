@@ -32,7 +32,7 @@
 #include "ai/monsters/BaseMonster/BaseMonster.h"
 #include "date_time.h"
 #include "mt_config.h"
-#include "zone_effector.h"
+#include "ZoneEffector.h"
 #include "GameTask.h"
 #include "MainMenu.h"
 #include "saved_game_wrapper.h"

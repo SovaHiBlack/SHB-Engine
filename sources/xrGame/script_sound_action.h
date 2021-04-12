@@ -29,8 +29,8 @@ public:
 	EGoalType							m_tGoalType;
 	bool								m_bLooped;
 	bool								m_bStartedToPlay;
-	Fvector								m_tSoundPosition;
-	Fvector								m_tSoundAngles;
+	Fvector3								m_tSoundPosition;
+	Fvector3								m_tSoundAngles;
 	ESoundTypes							m_sound_type;
 	MonsterSound::EType					m_monster_sound;
 	int									m_monster_sound_delay;
@@ -38,10 +38,10 @@ public:
 
 public:
 	inline				CScriptSoundAction	();
-	inline				CScriptSoundAction	(const char* caSoundToPlay, const char* caBoneName, const Fvector &tPositionOffset = Fvector().set(0,0,0), const Fvector &tAngleOffset = Fvector().set(0,0,0), bool bLooped = false, ESoundTypes sound_type = SOUND_TYPE_NO_SOUND);
-	inline				CScriptSoundAction	(const char* caSoundToPlay, const Fvector &tPosition, const Fvector &tAngleOffset = Fvector().set(0,0,0), bool bLooped = false, ESoundTypes sound_type = SOUND_TYPE_NO_SOUND);
-	inline				CScriptSoundAction	(CScriptSound &sound, const char* caBoneName, const Fvector &tPositionOffset = Fvector().set(0,0,0), const Fvector &tAngleOffset = Fvector().set(0,0,0), bool bLooped = false, ESoundTypes sound_type = SOUND_TYPE_NO_SOUND);
-	inline				CScriptSoundAction	(CScriptSound &sound, const Fvector &tPosition, const Fvector &tAngleOffset = Fvector().set(0,0,0), bool bLooped = false, ESoundTypes sound_type = SOUND_TYPE_NO_SOUND);
+	inline				CScriptSoundAction	(const char* caSoundToPlay, const char* caBoneName, const Fvector3& tPositionOffset = Fvector3().set(0,0,0), const Fvector3& tAngleOffset = Fvector3().set(0,0,0), bool bLooped = false, ESoundTypes sound_type = SOUND_TYPE_NO_SOUND);
+	inline				CScriptSoundAction	(const char* caSoundToPlay, const Fvector3& tPosition, const Fvector3& tAngleOffset = Fvector3().set(0,0,0), bool bLooped = false, ESoundTypes sound_type = SOUND_TYPE_NO_SOUND);
+	inline				CScriptSoundAction	(CScriptSound &sound, const char* caBoneName, const Fvector3& tPositionOffset = Fvector3().set(0,0,0), const Fvector3& tAngleOffset = Fvector3().set(0,0,0), bool bLooped = false, ESoundTypes sound_type = SOUND_TYPE_NO_SOUND);
+	inline				CScriptSoundAction	(CScriptSound &sound, const Fvector3& tPosition, const Fvector3& tAngleOffset = Fvector3().set(0,0,0), bool bLooped = false, ESoundTypes sound_type = SOUND_TYPE_NO_SOUND);
 	////////////////////////////////////////////////////////////////////////////////////
 	// Monster Specific
 	///////////////////////////////////////////////////////////////////////////////////
@@ -54,9 +54,9 @@ public:
 	virtual			~CScriptSoundAction	();
 			void	SetSound			(const char* caSoundToPlay);
 	inline		void	SetSound			(const CScriptSound &sound);
-	inline		void	SetPosition			(const Fvector &tPosition);
+	inline		void	SetPosition			(const Fvector3& tPosition);
 	inline		void	SetBone				(const char* caBoneName);
-	inline		void	SetAngles			(const Fvector &tAngles);
+	inline		void	SetAngles			(const Fvector3& tAngles);
 	inline		void	SetSoundType		(const ESoundTypes sound_type);
 	inline		void	initialize			();
 

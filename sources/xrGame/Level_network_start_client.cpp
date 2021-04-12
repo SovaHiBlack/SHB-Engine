@@ -12,9 +12,9 @@
 #include "StringTable.h"
 #include "Server.h"
 
-extern	pureFrame*				g_pNetProcessor;
+extern pureFrame* g_pNetProcessor;
 
-BOOL CLevel::net_Start_client	(const char* options )
+BOOL CLevel::net_Start_client(const char* options)
 {
 	return FALSE;
 }
@@ -42,98 +42,109 @@ bool CLevel::net_start_client1( )
 	return true;
 }
 
-bool	CLevel::net_start_client2				()
+bool CLevel::net_start_client2( )
 {
-	Server->create_direct_client();
+	Server->create_direct_client( );
 
 	connected_to_server = Connect2Server(*m_caClientOptions);
-	
+
 	return true;
 }
 
-bool	CLevel::net_start_client3				()
+bool CLevel::net_start_client3( )
 {
-	if(connected_to_server){
+	if (connected_to_server)
+	{
 		const char* level_name = NULL;
-		level_name	= ai().get_alife() ? *name() : Server->level_name( Server->GetConnectOptions() ).c_str();
+		level_name = ai( ).get_alife( ) ? *name( ) : Server->level_name(Server->GetConnectOptions( )).c_str( );
 
 		// Determine internal level-ID
-		int						level_id = pApp->Level_ID(level_name);
-		if (level_id<0)	{
-			Disconnect			();
-			pApp->LoadEnd		();
+		int level_id = pApp->Level_ID(level_name);
+		if (level_id < 0)
+		{
+			Disconnect( );
+			pApp->LoadEnd( );
 			connected_to_server = FALSE;
-			m_name				= level_name;
+			m_name = level_name;
 			m_connect_server_err = CServer::ErrNoLevel;
-			return				false;
+			return false;
 		}
-		pApp->Level_Set			(level_id);
-		m_name					= level_name;
-		// Load level
-		R_ASSERT2				(Load(level_id),"Loading failed.");
 
+		pApp->Level_Set(level_id);
+		m_name = level_name;
+		// Load level
+		R_ASSERT2(Load(level_id), "Loading failed.");
 	}
+
 	return true;
 }
 
-bool	CLevel::net_start_client4				()
+bool CLevel::net_start_client4( )
 {
-	if(connected_to_server){
+	if (connected_to_server)
+	{
 		// Begin spawn
-		g_pGamePersistent->LoadTitle		("st_client_spawning");
+		g_pGamePersistent->LoadTitle("st_client_spawning");
 
 		// Send physics to single or multithreaded mode
-		LoadPhysicsGameParams				();
-		ph_world							= xr_new<CPHWorld>();
-		ph_world->Create					();
+		LoadPhysicsGameParams( );
+		ph_world = xr_new<CPHWorld>( );
+		ph_world->Create( );
 
 		// Send network to single or multithreaded mode
 		// *note: release version always has "mt_*" enabled
-		Device.seqFrameMT.Remove			(g_pNetProcessor);
-		Device.seqFrame.Remove				(g_pNetProcessor);
-		Device.seqFrameMT.Add				(g_pNetProcessor,REG_PRIORITY_HIGH	+ 2);
+		Device.seqFrameMT.Remove(g_pNetProcessor);
+		Device.seqFrame.Remove(g_pNetProcessor);
+		Device.seqFrameMT.Add(g_pNetProcessor, REG_PRIORITY_HIGH + 2);
 
-		while(!game_configured)
-		{ 
-			ClientReceive(); 
-			if(Server)
-				Server->Update()	;
-			Sleep(5); 
+		while (!game_configured)
+		{
+			ClientReceive( );
+			if (Server)
+			{
+				Server->Update( );
+			}
+
+			Sleep(5);
 		}
-		}
+	}
+
 	return true;
 }
 
-bool	CLevel::net_start_client5				()
+bool CLevel::net_start_client5( )
 {
-	if(connected_to_server){
-		// HUD
-
+	if (connected_to_server)
+	{	// HUD
 		// Textures
-		pHUD->Load							();
-		g_pGamePersistent->LoadTitle				("st_loading_textures");
-		Device.Resources->DeferredLoad		(FALSE);
-		Device.Resources->DeferredUpload	();
-		LL_CheckTextures					();
+		pHUD->Load( );
+		g_pGamePersistent->LoadTitle("st_loading_textures");
+		Device.Resources->DeferredLoad(FALSE);
+		Device.Resources->DeferredUpload( );
+		LL_CheckTextures( );
 	}
+
 	return true;
 }
 
-bool	CLevel::net_start_client6				()
+bool CLevel::net_start_client6( )
 {
-	if(connected_to_server){
-		// Sync
-		if(g_hud)
-			g_hud->OnConnected				();
+	if (connected_to_server)
+	{	// Sync
+		if (g_hud)
+		{
+			g_hud->OnConnected( );
+		}
 
-
-		g_pGamePersistent->LoadTitle		("st_client_synchronising");
-		Device.PreCache						(30);
-		net_start_result_total				= TRUE;
-	}else{
-		net_start_result_total				= FALSE;
+		g_pGamePersistent->LoadTitle("st_client_synchronising");
+		Device.PreCache(30);
+		net_start_result_total = TRUE;
+	}
+	else
+	{
+		net_start_result_total = FALSE;
 	}
 
-	pApp->LoadEnd							(); 
+	pApp->LoadEnd( );
 	return true;
 }

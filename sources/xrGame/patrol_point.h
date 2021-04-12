@@ -19,7 +19,7 @@ class CGameGraph;
 class CPatrolPoint : public IPureSerializeObject<IReader,IWriter> {
 protected:
 	shared_str							m_name;
-	Fvector								m_position;
+	Fvector3 								m_position;
 	u32									m_flags;
 	u32									m_level_vertex_id;
 	GameGraph::_GRAPH_ID				m_game_vertex_id;
@@ -37,12 +37,12 @@ private:
 #endif
 
 public:
-										CPatrolPoint		(const CLevelGraph *level_graph, const CGameLevelCrossTable *cross, const CGameGraph *game_graph, const CPatrolPath *path, const Fvector &position, u32 level_vertex_id, u32 flags, shared_str name);
+										CPatrolPoint		(const CLevelGraph *level_graph, const CGameLevelCrossTable *cross, const CGameGraph *game_graph, const CPatrolPath *path, const Fvector3& position, u32 level_vertex_id, u32 flags, shared_str name);
 										CPatrolPoint		(const CPatrolPath *path = 0);
 	virtual	void						load				(IReader &stream);
 	virtual	void						save				(IWriter &stream);
 			CPatrolPoint				&load_raw			(const CLevelGraph *level_graph, const CGameLevelCrossTable *cross, const CGameGraph *game_graph, IReader &stream);
-	inline		const Fvector				&position			() const;
+	inline		const Fvector3&			position			() const;
 	inline		const u32					&level_vertex_id	(const CLevelGraph *level_graph, const CGameLevelCrossTable *cross, const CGameGraph *game_graph) const;
 	inline		const GameGraph::_GRAPH_ID	&game_vertex_id		(const CLevelGraph *level_graph, const CGameLevelCrossTable *cross, const CGameGraph *game_graph) const;
 	inline		const u32					&flags				() const;

@@ -3,18 +3,22 @@
 #include "Level.h"
 #include "Server.h"
 
-void	CLevel::SLS_Default				()					// Default/Editor Load
+void CLevel::SLS_Default( )					// Default/Editor Load
 {
 	// Signal main actor spawn
 /*
-	const char*		s_cmd			= Engine.Params;
-	string64	s_name			= "actor";
-	if (strstr(s_cmd,"-actor "))	{
+	const char* s_cmd = Engine.Params;
+	string64 s_name = "actor";
+	if (strstr(s_cmd,"-actor "))
+	{
 		sscanf(strstr(s_cmd,"-actor ")+xr_strlen("-actor "),"%s",s_name);
-		ph_world			= xr_new<CPHWorld> ();
-		ph_world->Create	();
+		ph_world = xr_new<CPHWorld> ( );
+		ph_world->Create( );
 	}
-	g_cl_Spawn			(s_name, -1, 0, 0, 0);
+	g_cl_Spawn(s_name, -1, 0, 0, 0);
 */
-	if (Server)	Server->SLS_Default		();
+	if (Server)
+	{
+		Server->SLS_Default( );
+	}
 }

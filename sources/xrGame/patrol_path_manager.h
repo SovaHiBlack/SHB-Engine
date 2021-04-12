@@ -42,14 +42,14 @@ private:
 	u32								m_curr_point_index;
 	u32								m_prev_point_index;
 	u32								m_start_point_index;
-	Fvector							m_dest_position;
+	Fvector3 							m_dest_position;
 	CExtrapolateCallback			m_extrapolate_callback;
 	CRestrictedObject				*m_object;
 	CGameObject						*m_game_object;
 
 protected:
 	inline			bool				random					() const;
-	inline			bool				accessible				(const Fvector &position) const;
+	inline			bool				accessible				(const Fvector3& position) const;
 	inline			bool				accessible				(u32 vertex_id) const;
 	inline			bool				accessible				(const CPatrolPath::CVertex *vertex) const;
 
@@ -72,8 +72,8 @@ public:
 				void				set_start_point			(int point_index);
 	inline			bool				completed				() const;
 	inline			bool				failed					() const;
-				void				select_point			(const Fvector &position, u32 &dest_vertex_id);
-	inline			const Fvector		&destination_position	() const;
+				void				select_point			(const Fvector3& position, u32 &dest_vertex_id);
+	inline			const Fvector3&	destination_position	() const;
 	inline			u32					get_current_point_index	() const;
 	inline			CRestrictedObject	&object					() const;
 				bool				extrapolate_path		();

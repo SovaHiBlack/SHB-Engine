@@ -4,7 +4,7 @@
 #include "HUDManager.h"//
 #include "Level.h"
 #include "PHShellHolder.h"
-#include "entity_alive.h"
+#include "EntityAlive.h"
 #include "PHMovementControl.h"
 #include "CharacterPhysicsSupport.h"
 

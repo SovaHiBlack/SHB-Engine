@@ -2,10 +2,10 @@
 
 #include "WeaponStatMgun.h"
 #include "Level.h"
-#include "entity_alive.h"
+#include "EntityAlive.h"
 #include "HudSound.h"
 #include "Actor.h"
-#include "actorEffector.h"
+#include "ActorEffector.h"
 #include "EffectorShot.h"
 
 const Fvector&	CWeaponStatMgun::get_CurrentFirePoint()

@@ -11,7 +11,7 @@
 #include "MaterialManager.h"
 #include "alife_space.h"
 #include "PHMovementControl.h"
-#include "entity_alive.h"
+#include "EntityAlive.h"
 #include "CharacterPhysicsSupport.h"
 #include "..\ENGINE\skeletoncustom.h"
 

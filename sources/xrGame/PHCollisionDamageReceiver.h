@@ -27,7 +27,7 @@ class CPHCollisionDamageReceiver
 protected:
 	virtual CPHShellHolder* PPhysicsShellHolder( ) = 0;
 	void						Init( );
-	void						Hit(u16 source_id, u16 bone_id, float power, const Fvector& dir, Fvector& pos);
+	void						Hit(u16 source_id, u16 bone_id, float power, const Fvector3& dir, Fvector3& pos);
 	void						Clear( );
 private:
 	void						BoneInsert(u16 id, float k);

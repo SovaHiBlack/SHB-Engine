@@ -17,12 +17,12 @@
 
 void CLevel::ClientReceive( )
 {
-	Demo_StartFrame			( );
+	Demo_StartFrame( );
 
-	Demo_Update				( );
+	Demo_Update( );
 
-	m_dwRPC					= 0;
-	m_dwRPS					= 0;
+	m_dwRPC = 0;
+	m_dwRPS = 0;
 
 	for (NET_Packet* P = net_msg_Retreive( ); P; P = net_msg_Retreive( ))
 	{
@@ -30,8 +30,8 @@ void CLevel::ClientReceive( )
 		m_dwRPC++;
 		m_dwRPS += P->B.count;
 		//-----------------------------------------------------
-		u16			m_type;
-		u16			ID;
+		u16 m_type;
+		u16 ID;
 		P->r_begin(m_type);
 		switch (m_type)
 		{
@@ -73,7 +73,7 @@ void CLevel::ClientReceive( )
 					{
 						ProcessGameEvents( );
 					}
-				};
+				}
 			}
 			break;
 			case M_UPDATE:
@@ -85,7 +85,7 @@ void CLevel::ClientReceive( )
 					break;
 				}
 				//-------------------------------------------
-			};
+			}
 			// ни в коем случае нельз€ здесь ставить break, т.к. в случае если все объекты не влаз€т в пакет M_UPDATE, они досылаютс€ через M_UPDATE_OBJECTS
 			case M_UPDATE_OBJECTS:
 			{
@@ -161,7 +161,7 @@ void CLevel::ClientReceive( )
 					}
 
 					OActor->MoveActor(NewPos, NewDir);
-				};
+				}
 
 				NET_Packet PRespond;
 				PRespond.w_begin(M_MOVE_PLAYERS_RESPOND);
@@ -284,7 +284,7 @@ void CLevel::ClientReceive( )
 				else
 				{
 					const char* m_SO = m_caServerOptions.c_str( );
-//					const char* m_CO = m_caClientOptions.c_str();
+//					const char* m_CO = m_caClientOptions.c_str( );
 
 					m_SO = strchr(m_SO, '/');
 					if (m_SO)
@@ -330,51 +330,53 @@ void CLevel::ClientReceive( )
 	}
 }
 
-void				CLevel::OnMessage				(void* data, u32 size)
-{	
-	DemoCS.Enter();
+void CLevel::OnMessage(void* data, u32 size)
+{
+	DemoCS.Enter( );
 
-	if (IsDemoPlay() ) 
+	if (IsDemoPlay( ))
 	{
-		if (m_bDemoStarted) 
+		if (m_bDemoStarted)
 		{
-			DemoCS.Leave();
+			DemoCS.Leave( );
 			return;
 		}
-		
-		if (!m_aDemoData.empty() && net_IsSyncronised())
+
+		if (!m_aDemoData.empty( ) && net_IsSyncronised( ))
 		{
 //			NET_Packet *P = &(m_aDemoData.front());
-			DemoDataStruct *P = &(m_aDemoData.front());
+			DemoDataStruct* P = &(m_aDemoData.front( ));
 			m_bDemoStarted = TRUE;
 			Msg("! ------------- Demo Started ------------");
 			m_dwCurDemoFrame = P->m_dwFrame;
-			DemoCS.Leave();
+			DemoCS.Leave( );
 			return;
 		}
-	};	
+	}
 
-	if (IsDemoSave() && net_IsSyncronised()) 
+	if (IsDemoSave( ) && net_IsSyncronised( ))
 	{
 		Demo_StoreData(data, size, DATA_CLIENT_PACKET);
-	}	
+	}
 
-	IPureClient::OnMessage(data, size);	
+	IPureClient::OnMessage(data, size);
 
-	DemoCS.Leave();
-};
+	DemoCS.Leave( );
+}
 
-NET_Packet*				CLevel::net_msg_Retreive		()
+NET_Packet* CLevel::net_msg_Retreive( )
 {
-	NET_Packet* P = NULL;
+	NET_Packet* P = nullptr;
 
-	DemoCS.Enter();
+	DemoCS.Enter( );
 
-	P = IPureClient::net_msg_Retreive();
-	if (!P) Demo_EndFrame();
+	P = IPureClient::net_msg_Retreive( );
+	if (!P)
+	{
+		Demo_EndFrame( );
+	}
 
-	DemoCS.Leave();
+	DemoCS.Leave( );
 
 	return P;
 }
-

@@ -15,7 +15,7 @@
 #include "Artefact.h"
 #include "ai_object_location.h"
 #include "..\ENGINE\skeletoncustom.h"
-#include "zone_effector.h"
+#include "ZoneEffector.h"
 #include "BreakableObject.h"
 
 //////////////////////////////////////////////////////////////////////////

@@ -62,7 +62,7 @@ void CMovementManager::process_level_path()
 		case ePathStateBuildDetailPath : {
 			detail().set_state_patrol_path(extrapolate_path());
 			detail().set_start_position(object().Position());
-			detail().set_start_direction(Fvector().setHP(-m_body.current.yaw,0));
+			detail().set_start_direction(Fvector3().setHP(-m_body.current.yaw,0));
 
 			if (can_use_distributed_compuations(mtDetailPath)) {
 				detail_path_builder().setup(

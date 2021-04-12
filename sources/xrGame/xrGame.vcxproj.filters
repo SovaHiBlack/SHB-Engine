@@ -1159,9 +1159,6 @@
     <Filter Include="Core\Client\Effectors\Actor">
       <UniqueIdentifier>{fcb26c07-f429-4e87-9d05-ca98557366da}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Core\Client\Effectors\monsters_%3f%3f%3f">
-      <UniqueIdentifier>{35c13714-8f7c-4874-95a1-e99a6e6b97e7}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Core\Client\Effectors\Postprocess">
       <UniqueIdentifier>{6e6fe47f-b7c8-438e-b331-477b15d9d5b6}</UniqueIdentifier>
     </Filter>
@@ -2067,6 +2064,9 @@
     </Filter>
     <Filter Include="AI\AMonsters\common\BaseMonster">
       <UniqueIdentifier>{def054d2-448a-4f80-8b83-471e5a3d060f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Client\Effectors\Monsters">
+      <UniqueIdentifier>{35c13714-8f7c-4874-95a1-e99a6e6b97e7}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -4303,18 +4303,18 @@
       <Filter>Core\Client\Effectors\Actor</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\ai_monster_effector.h">
-      <Filter>Core\Client\Effectors\monsters_%3f%3f%3f</Filter>
+      <Filter>Core\Client\Effectors\Monsters</Filter>
     </ClInclude>
-    <ClInclude Include="pp_effector_custom.h">
-      <Filter>Core\Client\Effectors\monsters_%3f%3f%3f</Filter>
+    <ClInclude Include="PPEffectorCustom.h">
+      <Filter>Core\Client\Effectors\Monsters</Filter>
     </ClInclude>
-    <ClInclude Include="pp_effector_distance.h">
-      <Filter>Core\Client\Effectors\monsters_%3f%3f%3f</Filter>
+    <ClInclude Include="PPEffectorDistance.h">
+      <Filter>Core\Client\Effectors\Monsters</Filter>
     </ClInclude>
     <ClInclude Include="PostprocessAnimator.h">
       <Filter>Core\Client\Effectors\Postprocess</Filter>
     </ClInclude>
-    <ClInclude Include="zone_effector.h">
+    <ClInclude Include="ZoneEffector.h">
       <Filter>Core\Client\Effectors\Postprocess</Filter>
     </ClInclude>
     <ClInclude Include="EffectorShot.h">
@@ -4407,10 +4407,10 @@
     <ClInclude Include="Entity.h">
       <Filter>Core\Client\Objects\base\Entity</Filter>
     </ClInclude>
-    <ClInclude Include="entity_alive.h">
+    <ClInclude Include="EntityAlive.h">
       <Filter>Core\Client\Objects\base\EntityAlive</Filter>
     </ClInclude>
-    <ClInclude Include="entity_alive_inline.h">
+    <ClInclude Include="EntityAlive_inline.h">
       <Filter>Core\Client\Objects\base\EntityAlive</Filter>
     </ClInclude>
     <ClInclude Include="EntityCondition.h">
@@ -7029,18 +7029,18 @@
       <Filter>Core\Client\Effectors\Actor</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\ai_monster_effector.cpp">
-      <Filter>Core\Client\Effectors\monsters_%3f%3f%3f</Filter>
+      <Filter>Core\Client\Effectors\Monsters</Filter>
     </ClCompile>
-    <ClCompile Include="pp_effector_custom.cpp">
-      <Filter>Core\Client\Effectors\monsters_%3f%3f%3f</Filter>
+    <ClCompile Include="PPEffectorCustom.cpp">
+      <Filter>Core\Client\Effectors\Monsters</Filter>
     </ClCompile>
-    <ClCompile Include="pp_effector_distance.cpp">
-      <Filter>Core\Client\Effectors\monsters_%3f%3f%3f</Filter>
+    <ClCompile Include="PPEffectorDistance.cpp">
+      <Filter>Core\Client\Effectors\Monsters</Filter>
     </ClCompile>
     <ClCompile Include="PostprocessAnimator.cpp">
       <Filter>Core\Client\Effectors\Postprocess</Filter>
     </ClCompile>
-    <ClCompile Include="zone_effector.cpp">
+    <ClCompile Include="ZoneEffector.cpp">
       <Filter>Core\Client\Effectors\Postprocess</Filter>
     </ClCompile>
     <ClCompile Include="EffectorShot.cpp">
@@ -7148,7 +7148,7 @@
     <ClCompile Include="Entity.cpp">
       <Filter>Core\Client\Objects\base\Entity</Filter>
     </ClCompile>
-    <ClCompile Include="entity_alive.cpp">
+    <ClCompile Include="EntityAlive.cpp">
       <Filter>Core\Client\Objects\base\EntityAlive</Filter>
     </ClCompile>
     <ClCompile Include="EntityCondition.cpp">

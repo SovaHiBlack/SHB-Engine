@@ -44,7 +44,7 @@ void CMovementManager::apply_collision_hit(CPHMovementControl *movement_control)
 	{
 		const ICollisionDamageInfo * di=movement_control->CollisionDamageInfo();
 		VERIFY(di);
-		Fvector dir;
+		Fvector3 dir;
 		di->HitDir(dir);
 
 		SHit	HDS = SHit(movement_control->gcontact_HealthLost,dir,di->DamageInitiator(),movement_control->ContactBone(),di->HitPos(), 0.f,di->HitType());
@@ -52,11 +52,11 @@ void CMovementManager::apply_collision_hit(CPHMovementControl *movement_control)
 	}
 }
 
-void CMovementManager::move_along_path	(CPHMovementControl *movement_control, Fvector &dest_position, float time_delta)
+void CMovementManager::move_along_path	(CPHMovementControl *movement_control, Fvector3& dest_position, float time_delta)
 {
 	START_PROFILE("Build Path/Move Along Path")
 	VERIFY(movement_control);
-	Fvector				motion;
+	Fvector3				motion;
 	dest_position		= object().Position();
 
 	float				precision = 0.5f;
@@ -110,7 +110,7 @@ void CMovementManager::move_along_path	(CPHMovementControl *movement_control, Fv
 	float				desirable_dist		=	dist;
 
 	// определить целевую точку
-	Fvector				target;
+	Fvector3				target;
 	
 	u32 prev_cur_point_index = detail().curr_travel_point_index();
 
@@ -128,7 +128,7 @@ void CMovementManager::move_along_path	(CPHMovementControl *movement_control, Fv
 
 	target.set			(detail().path()[detail().curr_travel_point_index() + 1].position);
 	// определить направление к целевой точке
-	Fvector				dir_to_target;
+	Fvector3				dir_to_target;
 	dir_to_target.sub	(target, dest_position);
 
 	// дистанция до целевой точки
@@ -168,7 +168,7 @@ void CMovementManager::move_along_path	(CPHMovementControl *movement_control, Fv
 	// установить позицию
 	motion.mul			(dir_to_target, dist / dist_to_target);
 	dest_position.add	(motion);
-	Fvector velocity					=	dir_to_target;
+	Fvector3 velocity					=	dir_to_target;
 	velocity.normalize_safe();
 	if(velocity.y>0.9f)
 		velocity.y=0.8f;
@@ -223,7 +223,7 @@ void CMovementManager::move_along_path	(CPHMovementControl *movement_control, Fv
 	// Физика устанавливает позицию в соответствии с нулевой скоростью 
 	if (detail().completed(dest_position,true)) {
 		if(!movement_control->PhyssicsOnlyMode()) {
-			Fvector velocity				= {0.f,0.f,0.f};
+			Fvector3 velocity				= {0.f,0.f,0.f};
 			movement_control->SetVelocity	(velocity);
 			m_speed							= 0.f;
 		}

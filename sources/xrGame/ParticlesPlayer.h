@@ -1,38 +1,33 @@
-///////////////////////////////////////////////////////////////
 // ParticlesPlayer.h
 // интерфейс для проигрывания партиклов на объекте
-///////////////////////////////////////////////////////////////
 
 #pragma once
 
 #include "ParticlesObject.h"
 #include "..\ENGINE\bone.h"
 
-//DEFINE_VECTOR(CParticlesObject*, PARTICLES_PTR_VECTOR, PARTICLES_PTR_VECTOR_IT);
 using PARTICLES_PTR_VECTOR = xr_vector<CParticlesObject*>;
 using PARTICLES_PTR_VECTOR_IT = PARTICLES_PTR_VECTOR::iterator;
 
 class CObject;
 
-class CParticlesPlayer 
+class CParticlesPlayer
 {
-
 public:
 	//структура с внутренней информацией о партикле
 	struct SParticlesInfo
 	{
-		CParticlesObject*	ps;
-		//Fvector				dir;
+		CParticlesObject* ps;
+		//Fvector3				dir;
 		//Fmatrix				x_form;
-		Fvector				angles;
+		Fvector3				angles;
 		u16					sender_id;	//id - объекта, который запустил партиклы
 		u32					life_time;	//время жизни партикла (-1) - бесконечно
-		
+
 		//int					cur_time;	//текущее время существования партикла
 		//bool				auto_stop;	//автоматическая остановка партиклов, когда закончится время
 	};
 
-//	DEFINE_VECTOR			(SParticlesInfo,ParticlesInfoList,ParticlesInfoListIt);
 	using ParticlesInfoList = xr_vector<SParticlesInfo>;
 	using ParticlesInfoListIt = ParticlesInfoList::iterator;
 
@@ -40,67 +35,98 @@ public:
 	struct SBoneInfo
 	{
 		u16					index;
-		Fvector				offset;
+		Fvector3				offset;
 		ParticlesInfoList	particles;
-		SParticlesInfo*		FindParticles			(const shared_str& ps_name);
+		SParticlesInfo* FindParticles(const shared_str& ps_name);
+
 	public:
-							SBoneInfo				(u16 idx, const Fvector& offs):index(idx),offset(offs){;}
-		SParticlesInfo*		AppendParticles			(CObject* object, const shared_str& ps_name);
-		void				StopParticles			(const shared_str& ps_name, bool bDestroy);
-		void				StopParticles			(u16 sender_id, bool bDestroy);
+		SBoneInfo(u16 idx, const Fvector3& offs) :index(idx), offset(offs)
+		{ }
+		SParticlesInfo* AppendParticles(CObject* object, const shared_str& ps_name);
+		void				StopParticles(const shared_str& ps_name, bool bDestroy);
+		void				StopParticles(u16 sender_id, bool bDestroy);
 	};
 
-//	DEFINE_VECTOR			(SBoneInfo,BoneInfoVec,BoneInfoVecIt);
 	using BoneInfoVec = xr_vector<SBoneInfo>;
 	using BoneInfoVecIt = BoneInfoVec::iterator;
 
 private:
 	// список костей
 	u64						bone_mask; // используемые кости
-	BoneInfoVec				m_Bones;	
-	CObject					*m_self_object;
+	BoneInfoVec				m_Bones;
+	CObject* m_self_object;
 
-protected :
+protected:
 	bool					m_bActiveBones;	//есть ли косточки на которых играются партиклы
 
 public:
-	inline SBoneInfo*			get_bone_info			(u16 bone_index)
+	inline SBoneInfo* get_bone_info(u16 bone_index)
 	{
-		if (BI_NONE==bone_index) return 0;
-		for (BoneInfoVecIt it=m_Bones.begin(); it!=m_Bones.end(); it++)
-			if (it->index==bone_index) return &(*it);
-		return 0;
+		if (BI_NONE == bone_index)
+		{
+			return nullptr;
+		}
+
+		for (BoneInfoVecIt it = m_Bones.begin( ); it != m_Bones.end( ); it++)
+		{
+			if (it->index == bone_index)
+			{
+				return &(*it);
+			}
+		}
+
+		return nullptr;
 	}
-	SBoneInfo*				get_nearest_bone_info	(CKinematics* K, u16 bone_index);
-	Fvector					parent_vel;
-public:
-							CParticlesPlayer		(void);
-	virtual					~CParticlesPlayer		(void);
-	void					LoadParticles			(CKinematics* K);
+	SBoneInfo* get_nearest_bone_info(CKinematics* K, u16 bone_index);
+	Fvector3					parent_vel;
 
-	void					net_DestroyParticles	();
-	void					net_SpawnParticles		();
-	
-	void					UpdateParticles			();
+	CParticlesPlayer( );
+	virtual					~CParticlesPlayer( );
+	void					LoadParticles(CKinematics* K);
 
-	void					StartParticles			(const shared_str& ps_name, u16 bone_num,  const Fvector& dir, u16 sender_id, int life_time = -1, bool auto_stop = true);
-	void					StartParticles			(const shared_str& ps_name, const Fvector& dir, u16 sender_id, int life_time = -1, bool auto_stop = true);
+	void					net_DestroyParticles( );
+	void					net_SpawnParticles( );
 
-	void					StartParticles			(const shared_str& ps_name, u16 bone_num,  const Fmatrix& dir, u16 sender_id, int life_time = -1, bool auto_stop = true);
-	void					StartParticles			(const shared_str& ps_name, const Fmatrix& dir, u16 sender_id, int life_time = -1, bool auto_stop = true);
+	void					UpdateParticles( );
+
+	void					StartParticles(const shared_str& ps_name, u16 bone_num, const Fvector3& dir, u16 sender_id, int life_time = -1, bool auto_stop = true);
+	void					StartParticles(const shared_str& ps_name, const Fvector3& dir, u16 sender_id, int life_time = -1, bool auto_stop = true);
+
+	void					StartParticles(const shared_str& ps_name, u16 bone_num, const Fmatrix& dir, u16 sender_id, int life_time = -1, bool auto_stop = true);
+	void					StartParticles(const shared_str& ps_name, const Fmatrix& dir, u16 sender_id, int life_time = -1, bool auto_stop = true);
 
 
-	void					StopParticles			(u16 sender_ID, u16 bone_id, bool bDestroy);
-	void					StopParticles			(const shared_str& particles_name, u16 bone_id, bool bDestroy);
-	void					AutoStopParticles		(const shared_str& ps_name, u16 bone_id,u32 life_time);
+	void					StopParticles(u16 sender_ID, u16 bone_id, bool bDestroy);
+	void					StopParticles(const shared_str& particles_name, u16 bone_id, bool bDestroy);
+	void					AutoStopParticles(const shared_str& ps_name, u16 bone_id, u32 life_time);
 
-	static void				MakeXFORM				(CObject* pObject, u16 bone_id, const Fvector& dir, const Fvector& offset, Fmatrix& result);
-	static void				GetBonePos				(CObject* pObject, u16 bone_id, const Fvector& offset, Fvector& result);
-	u16						GetNearestBone			(CKinematics* K, u16 bone_id);
-	inline u16					GetRandomBone			(){ u16 l_PBCount=u16(m_Bones.size()); if(l_PBCount) return m_Bones[(u16)Random.randI(l_PBCount)].index; else return BI_NONE;}
+	static void				MakeXFORM(CObject* pObject, u16 bone_id, const Fvector3& dir, const Fvector3& offset, Fmatrix& result);
+	static void				GetBonePos(CObject* pObject, u16 bone_id, const Fvector3& offset, Fvector3& result);
+	u16						GetNearestBone(CKinematics* K, u16 bone_id);
+	inline u16					GetRandomBone( )
+	{
+		u16 l_PBCount = u16(m_Bones.size( ));
+		if (l_PBCount)
+		{
+			return m_Bones[(u16) Random.randI(l_PBCount)].index;
+		}
+		else
+		{
+			return BI_NONE;
+		}
+	}
 
-	void					SetParentVel			(const Fvector& vel) {parent_vel = vel;}
-	
-	bool					IsPlaying				() {return m_bActiveBones;}
-	virtual CParticlesPlayer*	cast_particles_player	()	{return this;}
+	void					SetParentVel(const Fvector3& vel)
+	{
+		parent_vel = vel;
+	}
+
+	bool					IsPlaying( )
+	{
+		return m_bActiveBones;
+	}
+	virtual CParticlesPlayer* cast_particles_player( )
+	{
+		return this;
+	}
 };

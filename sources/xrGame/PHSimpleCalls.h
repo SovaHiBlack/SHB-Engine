@@ -69,10 +69,10 @@ public:
 
 class CPHConstForceAction : public CPHShellBasedAction
 {
-	Fvector m_force;
+	Fvector3 m_force;
 
 public:
-	CPHConstForceAction(CPhysicsShell* shell, const Fvector& force);
+	CPHConstForceAction(CPhysicsShell* shell, const Fvector3& force);
 	virtual void run( );
 
 	virtual bool compare(const CPHReqComparerV* v)		const

@@ -7,7 +7,7 @@
 #include "wound.h"
 #include "Level.h"
 #include "game_cl_base.h"
-#include "entity_alive.h"
+#include "EntityAlive.h"
 #include "..\ENGINE\SkeletonCustom.h"
 #include "object_broker.h"
 
@@ -186,7 +186,7 @@ bool RemoveWoundPred(CWound* pWound)
 	return false;
 }
 
-void  CEntityCondition::UpdateWounds( )
+void CEntityCondition::UpdateWounds( )
 {
 	//убрать все зажившие раны из списка
 	m_WoundVector.erase(std::remove_if(m_WoundVector.begin( ), m_WoundVector.end( ), &RemoveWoundPred), m_WoundVector.end( ));
@@ -380,7 +380,7 @@ CWound* CEntityCondition::ConditionHit(SHit* pHDS)
 		case ALife::eHitTypeTelepatic:
 		{	// -------------------------------------------------
 			// temp (till there is no death from psy hits)
-			hit_power *= m_HitTypeK[pHDS->hit_type];
+//			hit_power *= m_HitTypeK[pHDS->hit_type];
 /*
 			m_fHealthLost = hit_power * m_fHealthHitPart * m_fHitBoneScale;
 			m_fDeltaHealth -= CanBeHarmed() ? m_fHealthLost : 0.0f;
@@ -391,8 +391,8 @@ CWound* CEntityCondition::ConditionHit(SHit* pHDS)
 			hit_power *= m_HitTypeK[pHDS->hit_type];
 			ChangePsyHealth(-hit_power);
 			bAddWound = false;
-			break;
 		}
+		break;
 		case ALife::eHitTypeBurn:
 		{
 			hit_power *= m_HitTypeK[pHDS->hit_type];
@@ -400,13 +400,13 @@ CWound* CEntityCondition::ConditionHit(SHit* pHDS)
 			m_fDeltaHealth -= CanBeHarmed( ) ? m_fHealthLost : 0.0f;
 			m_fDeltaPower -= hit_power * m_fPowerHitPart;
 			bAddWound = false;
-			break;
 		}
+		break;
 		case ALife::eHitTypeChemicalBurn:
 		{
 			hit_power *= m_HitTypeK[pHDS->hit_type];
-			break;
 		}
+		break;
 		case ALife::eHitTypeShock:
 		{
 			hit_power *= m_HitTypeK[pHDS->hit_type];
@@ -414,14 +414,14 @@ CWound* CEntityCondition::ConditionHit(SHit* pHDS)
 			m_fDeltaHealth -= CanBeHarmed( ) ? m_fHealthLost : 0.0f;
 			m_fDeltaPower -= hit_power * m_fPowerHitPart;
 			bAddWound = false;
-			break;
 		}
+		break;
 		case ALife::eHitTypeRadiation:
 		{
 			m_fDeltaRadiation += hit_power;
 			return nullptr;
-			break;
 		}
+		break;
 		case ALife::eHitTypeExplosion:
 		case ALife::eHitTypeStrike:
 		case ALife::eHitTypePhysicStrike:
@@ -430,8 +430,8 @@ CWound* CEntityCondition::ConditionHit(SHit* pHDS)
 			m_fHealthLost = hit_power * m_fHealthHitPart;
 			m_fDeltaHealth -= CanBeHarmed( ) ? m_fHealthLost : 0.0f;
 			m_fDeltaPower -= hit_power * m_fPowerHitPart;
-			break;
 		}
+		break;
 		case ALife::eHitTypeFireWound:
 		case ALife::eHitTypeWound:
 		{
@@ -439,13 +439,13 @@ CWound* CEntityCondition::ConditionHit(SHit* pHDS)
 			m_fHealthLost = hit_power * m_fHealthHitPart * m_fHitBoneScale;
 			m_fDeltaHealth -= CanBeHarmed( ) ? m_fHealthLost : 0.0f;
 			m_fDeltaPower -= hit_power * m_fPowerHitPart;
-			break;
 		}
+		break;
 		default:
 		{
 			R_ASSERT2(0, "unknown hit type");
-			break;
 		}
+		break;
 	}
 
 	if (bDebug)
@@ -573,7 +573,7 @@ void CEntityCondition::load(IReader& input_packet)
 
 void CEntityCondition::SConditionChangeV::load(const char* sect, const char* prefix)
 {
-	string256				str;
+	string256 str;
 
 	strconcat(sizeof(str), str, "radiation_v", prefix);
 	m_fV_Radiation = pSettings->r_float(sect, str);

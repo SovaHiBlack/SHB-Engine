@@ -4,7 +4,7 @@
 #include "stdafx.h"
 
 #include "Actor.h"
-#include "actoreffector.h"
+#include "ActorEffector.h"
 #include "Missile.h"
 #include "Inventory.h"
 #include "Weapon.h"

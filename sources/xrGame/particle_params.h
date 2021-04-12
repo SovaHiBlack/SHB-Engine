@@ -12,12 +12,12 @@
 
 class CParticleParams {
 public:
-	Fvector			m_tParticlePosition;
-	Fvector			m_tParticleAngles;
-	Fvector			m_tParticleVelocity;
+	Fvector3			m_tParticlePosition;
+	Fvector3			m_tParticleAngles;
+	Fvector3			m_tParticleVelocity;
 
 public:
-	inline				CParticleParams		(const Fvector &tPositionOffset = Fvector().set(0,0,0), const Fvector &tAnglesOffset = Fvector().set(0,0,0), const Fvector &tVelocity = Fvector().set(0,0,0));
+	inline				CParticleParams		(const Fvector3& tPositionOffset = Fvector3().set(0,0,0), const Fvector3& tAnglesOffset = Fvector3().set(0,0,0), const Fvector3& tVelocity = Fvector3().set(0,0,0));
 	virtual			~CParticleParams	();
 	inline		void	initialize			();
 

@@ -28,7 +28,7 @@ protected:
 	bool				m_torso_look;
 	bool				m_path;
 	bool				m_no_pitch;
-	Fvector				m_vector3d;
+	Fvector3				m_vector3d;
 	const CGameObject	*m_object_to_look;
 	const CMemoryInfo	*m_memory_object;
 	u32					m_start_time;
@@ -41,8 +41,8 @@ protected:
 	float				m_cover_yaw;
 
 protected:
-	Fvector				m_holder_start_position;
-	Fvector				m_object_start_position;
+	Fvector3				m_holder_start_position;
+	Fvector3				m_object_start_position;
 	u32					m_state_fire_object; // 0 : standard object navigation, 1 : vis_point navigation
 	xr_vector<CObject*>	objects;
 
@@ -64,13 +64,13 @@ protected:
 public:
 	inline					CSightAction				();
 	inline					CSightAction				(const ESightType &sight_type, bool	torso_look = false, bool path = false);
-	inline					CSightAction				(const ESightType &sight_type, const Fvector &vector3d, bool torso_look = false);
-	inline					CSightAction				(const ESightType &sight_type, const Fvector *vector3d);
+	inline					CSightAction				(const ESightType &sight_type, const Fvector3& vector3d, bool torso_look = false);
+	inline					CSightAction				(const ESightType &sight_type, const Fvector3* vector3d);
 	inline					CSightAction				(const CGameObject *object_to_look, bool torso_look = false, bool fire_object = false, bool no_pitch = false);
 	inline					CSightAction				(const CMemoryInfo *memory_object, bool	torso_look = false);
 			void		initialize					();
 			void		execute						();
-	inline		void		set_vector3d				(const Fvector &position);
+	inline		void		set_vector3d				(const Fvector3& position);
 	inline		void		set_object_to_look			(const CGameObject *object_to_look);
 	inline		void		set_memory_object			(const CMemoryInfo *object_to_look);
 	inline		bool		operator==					(const CSightAction &sight_action) const;
@@ -81,7 +81,7 @@ public:
 			float		head_speed					() const;
 	inline		ESightType	sight_type					() const;
 	inline		const CGameObject	*object_to_look		() const;
-	inline		const Fvector		&vector3d			() const;
+	inline		const Fvector3& vector3d			() const;
 };
 
 #include "sight_action_inline.h"

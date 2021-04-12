@@ -2,11 +2,6 @@
 
 #include "CameraFirstEye.h"
 #include "xr_level_controller.h"
-//#include "..\ENGINE\Object.h"
-
-//////////////////////////////////////////////////////////////////////
-// Construction/Destruction
-//////////////////////////////////////////////////////////////////////
 
 CCameraFirstEye::CCameraFirstEye(CObject* p, u32 flags) : CCameraBase(p, flags)
 { }
@@ -22,8 +17,11 @@ void CCameraFirstEye::Load(const char* section)
 
 void CCameraFirstEye::Update(Fvector3& point, Fvector3& noise_dangle)
 {
-	Fmatrix			mR, R;
-	Fmatrix			rX, rY, rZ;
+	Fmatrix mR;
+	Fmatrix R;
+	Fmatrix rX;
+	Fmatrix rY;
+	Fmatrix rZ;
 	rX.rotateX(noise_dangle.x);
 	rY.rotateY(-noise_dangle.y);
 	rZ.rotateZ(noise_dangle.z);
@@ -31,7 +29,7 @@ void CCameraFirstEye::Update(Fvector3& point, Fvector3& noise_dangle)
 	R.mulB_43(rZ);
 
 	mR.identity( );
-	Fquaternion		Q;
+	Fquaternion Q;
 	Q.rotationYawPitchRoll(roll, yaw, pitch);
 	mR.rotation(Q);
 	mR.transpose( );
@@ -54,23 +52,55 @@ void CCameraFirstEye::Move(int cmd, float val, float factor)
 	if (bClampPitch)
 	{
 		while (pitch < lim_pitch[0])
+		{
 			pitch += PI_MUL_2;
+		}
+
 		while (pitch > lim_pitch[1])
+		{
 			pitch -= PI_MUL_2;
-	};
+		}
+	}
+
 	switch (cmd)
 	{
-		case kDOWN:		pitch -= val ? val : (rot_speed.y * Device.fTimeDelta / factor);	break;
-		case kUP:		pitch += val ? val : (rot_speed.y * Device.fTimeDelta / factor);	break;
-		case kLEFT:		yaw -= val ? val : (rot_speed.x * Device.fTimeDelta / factor);	break;
-		case kRIGHT:	yaw += val ? val : (rot_speed.x * Device.fTimeDelta / factor);	break;
+		case kDOWN:
+		{
+			pitch -= val ? val : (rot_speed.y * Device.fTimeDelta / factor);
+		}
+		break;
+		case kUP:
+		{
+			pitch += val ? val : (rot_speed.y * Device.fTimeDelta / factor);
+		}
+		break;
+		case kLEFT:
+		{
+			yaw -= val ? val : (rot_speed.x * Device.fTimeDelta / factor);
+		}
+		break;
+		case kRIGHT:
+		{
+			yaw += val ? val : (rot_speed.x * Device.fTimeDelta / factor);
+		}
+		break;
 	}
-	if (bClampYaw)		clamp(yaw, lim_yaw[0], lim_yaw[1]);
-	if (bClampPitch)	clamp(pitch, lim_pitch[0], lim_pitch[1]);
+
+	if (bClampYaw)
+	{
+		clamp(yaw, lim_yaw[0], lim_yaw[1]);
+	}
+
+	if (bClampPitch)
+	{
+		clamp(pitch, lim_pitch[0], lim_pitch[1]);
+	}
 }
 
 void CCameraFirstEye::OnActivate(CCameraBase* old_cam)
 {
 	if (old_cam && (m_Flags.is(flRelativeLink) == old_cam->m_Flags.is(flRelativeLink)))
+	{
 		yaw = (old_cam)->yaw;
+	}
 }

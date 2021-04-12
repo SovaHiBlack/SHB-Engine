@@ -203,8 +203,8 @@ CPHCapture::CPHCapture(CPHCharacter* a_character, CPHShellHolder* a_taget_object
 
 void CPHCapture::Init(CIniFile* ini)
 {
-	Fvector dir;
-	Fvector capture_bone_position;
+	Fvector3 dir;
+	Fvector3 capture_bone_position;
 	capture_bone_position.set(m_capture_bone->mTransform.c);
 	b_character_feedback = true;
 	(m_character->PhysicsRefObject( ))->XFORM( ).transform_tiny(capture_bone_position);

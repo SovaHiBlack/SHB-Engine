@@ -4,7 +4,7 @@
 #include "stdafx.h"
 
 #include "Weapon.h"
-#include "entity_alive.h"
+#include "EntityAlive.h"
 #include "inventoryowner.h"
 #include "alife_simulator.h"
 #include "ef_storage.h"

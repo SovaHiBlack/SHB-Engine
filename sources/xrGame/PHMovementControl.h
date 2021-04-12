@@ -38,7 +38,7 @@ public:
 		return m_character;
 	}
 	void							PHReleaseObject( );
-	Fvector							PHCaptureGetNearestElemPos(const CPHShellHolder* object);
+	Fvector3							PHCaptureGetNearestElemPos(const CPHShellHolder* object);
 	Fmatrix							PHCaptureGetNearestElemTransform(CPHShellHolder* object);
 	void							SetMaterial(u16 material);
 	void							SetAirControlParam(float param)
@@ -78,10 +78,10 @@ public:
 		jtCurved,	//end point after uppermost point
 		jtHigh		//end point is uppermost point
 	};
-	void							JumpV(const Fvector& jump_velocity);
-	void							Jump(const Fvector& start_point, const Fvector& end_point, float time);
-	void							Jump(const Fvector& end_point, float time);
-	float							Jump(const Fvector& end_point);
+	void							JumpV(const Fvector3& jump_velocity);
+	void							Jump(const Fvector3& start_point, const Fvector3& end_point, float time);
+	void							Jump(const Fvector3& end_point, float time);
+	float							Jump(const Fvector3& end_point);
 	bool							JumpState( )
 	{
 		return (m_character && m_character->b_exist && m_character->IsEnabled( ) && m_character->JumpState( ));
@@ -91,9 +91,9 @@ public:
 	{
 		return (m_character && m_character->b_exist && m_character->IsEnabled( ) && (m_character->JumpState( ) || m_character->ForcedPhysicsControl( )));
 	}
-	void							GetJumpMinVelParam(Fvector& min_vel, float& time, JumpType& type, const Fvector& end_point);	//returns vector of velocity of jump with minimal start speed in min_vel and correspondent jump time in time
-	float							JumpMinVelTime(const Fvector& end_point);													//return time of jump with min start speed. input: end_point and time; return velocity and type of jump
-	void							GetJumpParam(Fvector& velocity, JumpType& type, const Fvector& end_point, float time);
+	void							GetJumpMinVelParam(Fvector3& min_vel, float& time, JumpType& type, const Fvector3& end_point);	//returns vector of velocity of jump with minimal start speed in min_vel and correspondent jump time in time
+	float							JumpMinVelTime(const Fvector3& end_point);													//return time of jump with min start speed. input: end_point and time; return velocity and type of jump
+	void							GetJumpParam(Fvector3& velocity, JumpType& type, const Fvector3& end_point, float time);
 	bool																	b_exect_position;
 	int																		in_dead_area_count;
 
@@ -118,8 +118,8 @@ public:
 	}
 
 private:
-	void							TraceBorder(const Fvector& previous_position);
-	void							CheckEnvironment(const Fvector& V);
+	void							TraceBorder(const Fvector3& previous_position);
+	void							CheckEnvironment(const Fvector3& V);
 
 	CharacterType															eCharacterType;
 	CPHCharacter* m_character;
@@ -135,7 +135,7 @@ private:
 	Fbox3																	boxes[4];
 
 	u32																		trying_times[4];
-	Fvector																	trying_poses[4];
+	Fvector3																	trying_poses[4];
 	DWORD																	m_dwCurBox;
 
 	float																	fMass;
@@ -144,11 +144,11 @@ private:
 	float																	fCollisionDamageFactor;
 	float																	fAirControlParam;
 
-	Fvector																	vVelocity;
-	Fvector																	vPosition;
+	Fvector3																	vVelocity;
+	Fvector3																	vPosition;
 
-	Fvector																	vPathPoint;
-	Fvector																	_vPathDir;
+	Fvector3																	vPathPoint;
+	Fvector3																	_vPathDir;
 	int																		m_path_size;
 	int																		m_start_index;
 
@@ -162,7 +162,7 @@ private:
 	float																	fLastUpdateTime;
 
 public:
-	Fvector																	vExternalImpulse;
+	Fvector3																	vExternalImpulse;
 	bool																	bExernalImpulse;
 	BOOL																	bSleep;
 
@@ -201,17 +201,17 @@ public:
 			return nullptr;
 		}
 	}
-	const Fvector& GetVelocity( )
+	const Fvector3& GetVelocity( )
 	{
 		return vVelocity;
 	}
-	const Fvector& GetPathDir( )
+	const Fvector3& GetPathDir( )
 	{
 		return _vPathDir;
 	}
-	void							SetPathDir(const Fvector& v);
+	void							SetPathDir(const Fvector3& v);
 
-	void							GetCharacterVelocity(Fvector& velocity)
+	void							GetCharacterVelocity(Fvector3& velocity)
 	{
 		if (m_character)
 		{
@@ -234,7 +234,7 @@ public:
 	{
 		return dXZMag(vVelocity);
 	}
-	float							GetActVelProj(const Fvector& dir)
+	float							GetActVelProj(const Fvector3& dir)
 	{
 		return vVelocity.dotproduct(dir);
 	}
@@ -248,7 +248,7 @@ public:
 		float r = dXZDot(GetPathDir( ), vVelocity);
 		return r > EPS_L ? r : 0.0f;
 	}
-	void							GetSmoothedVelocity(Fvector& v)
+	void							GetSmoothedVelocity(Fvector3& v)
 	{
 		if (m_character)
 		{
@@ -263,20 +263,20 @@ public:
 	{
 		return fContactSpeed;
 	}
-	void							GroundNormal(Fvector& norm);
+	void							GroundNormal(Fvector3& norm);
 	CPHSynchronize* GetSyncItem( );
 	void							Freeze( );
 	void							UnFreeze( );
 	void							SetVelocity(float x, float y, float z)
 	{
-		SetVelocity(Fvector( ).set(x, y, z));
+		SetVelocity(Fvector3( ).set(x, y, z));
 	}
-	void							SetVelocity(const Fvector& v)
+	void							SetVelocity(const Fvector3& v)
 	{
 		vVelocity.set(v);
 		SetCharacterVelocity(v);
 	}
-	void							SetCharacterVelocity(const Fvector& v)
+	void							SetCharacterVelocity(const Fvector3& v)
 	{
 		if (m_character)
 		{
@@ -286,12 +286,12 @@ public:
 	void							SetPhysicsRefObject(CPHShellHolder* ref_object)
 	{
 		m_character->SetPhysicsRefObject(ref_object);
-	};
+	}
 
-	void							CalcMaximumVelocity(Fvector& /**dest/**/, Fvector& /**accel/**/, float /**friction/**/)
-	{ };
+	void							CalcMaximumVelocity(Fvector3& /**dest/**/, Fvector3& /**accel/**/, float /**friction/**/)
+	{ }
 	void							CalcMaximumVelocity(float& /**dest/**/, float /**accel/**/, float /**friction/**/)
-	{ };
+	{ }
 	void							ActivateBox(DWORD id, BOOL Check = false);
 	bool							ActivateBoxDynamic(DWORD id, int num_it = 9, int num_steps = 5, float resolve_depth = 0.01f);
 	void							InterpolateBox(DWORD id, float k);
@@ -325,7 +325,7 @@ public:
 		{
 			return 0.0f;
 		}
-	};
+	}
 	void							CollisionEnable(BOOL enable)
 	{
 		if (m_character)
@@ -363,18 +363,18 @@ public:
 		fMaxCrashSpeed = max;
 	}
 
-	void							SetPosition(const Fvector& P);
-	void							GetPosition(Fvector& P);
-	void							GetCharacterPosition(Fvector& P)
+	void							SetPosition(const Fvector3& P);
+	void							GetPosition(Fvector3& P);
+	void							GetCharacterPosition(Fvector3& P)
 	{
 		m_character->GetPosition(P);
 	}
-	void							InterpolatePosition(Fvector& P)
+	void							InterpolatePosition(Fvector3& P)
 	{
 		VERIFY(m_character && m_character->b_exist);
 		m_character->IPosition(P);
 	}
-	bool							TryPosition(Fvector& pos);
+	bool							TryPosition(Fvector3& pos);
 	bool							IsCharacterEnabled( )
 	{
 		return (m_character->IsEnabled( ) || bExernalImpulse);
@@ -383,28 +383,28 @@ public:
 	{
 		m_character->Disable( );
 	}
-	void							Calculate(Fvector& vAccel, const Fvector& camDir, float ang_speed, float jump, float dt, bool bLight);
+	void							Calculate(Fvector3& vAccel, const Fvector3& camDir, float ang_speed, float jump, float dt, bool bLight);
 	void							Calculate(const xr_vector<DetailPathManager::STravelPathPoint>& path,		//in path
 											  float speed,														//in speed
 											  u32& travel_point,													//in- travel start, out - current trev point
 											  float& precesition													//in- tolerance, out - precesition
 	);
-	void							AddControlVel(const Fvector& vel);
+	void							AddControlVel(const Fvector3& vel);
 	void							SetVelocityLimit(float val);
 	float							VelocityLimit( );
 	void							PathNearestPoint(const xr_vector<DetailPathManager::STravelPathPoint>& path,		//in path
-													 const Fvector& new_position,										//in position
+													 const Fvector3& new_position,										//in position
 													 int& index,															//out nearest
 													 bool& type															//out type
 	);	//return nearest point
 	void							PathNearestPointFindUp(const xr_vector<DetailPathManager::STravelPathPoint>& path,		//in path
-														   const Fvector& new_position,										//in position
+														   const Fvector3& new_position,										//in position
 														   int& index,															//out nearest
 														   float radius,														//in exit radius
 														   bool& near_line														//out type
 	);
 	void							PathNearestPointFindDown(const xr_vector<DetailPathManager::STravelPathPoint>& path,		//in path
-															 const Fvector& new_position,										//in position
+															 const Fvector3& new_position,										//in position
 															 int& index,															//out nearest
 															 float radius,														//in exit radius
 															 bool& near_line														//out type
@@ -414,15 +414,15 @@ public:
 												 int index,															//in index
 												 float distance,														//in distance
 												 float precesition,													//in precesition
-												 Fvector& dir														//out dir
+												 Fvector3& dir														//out dir
 	);
 	void							PathDIrLine(const xr_vector<DetailPathManager::STravelPathPoint>& path,		//in path
 												int index,															//in point
 												float distance,														//in distance
 												float precesition,													//in precesition
-												Fvector& dir														//out dir
+												Fvector3& dir														//out dir
 	);
-	void							CorrectPathDir(const Fvector& real_path_dir, const xr_vector<DetailPathManager::STravelPathPoint>& path, int index, Fvector& corrected_path_dir);
+	void							CorrectPathDir(const Fvector3& real_path_dir, const xr_vector<DetailPathManager::STravelPathPoint>& path, int index, Fvector3& corrected_path_dir);
 
 	void							SetApplyGravity(BOOL flag)
 	{
@@ -432,7 +432,7 @@ public:
 			m_character->SetApplyGravity(flag);
 		}
 	}
-	void							GetDeathPosition(Fvector& pos)
+	void							GetDeathPosition(Fvector3& pos)
 	{
 		m_character->DeathPosition(pos);
 	}
@@ -440,8 +440,8 @@ public:
 	void							SetFrictionFactor(float f);
 	float							GetFrictionFactor( );
 	void							MulFrictionFactor(float f);
-	void							ApplyImpulse(const Fvector& dir, const dReal P);
-	void							ApplyHit(const Fvector& dir, const dReal P, ALife::EHitType hit_type);
+	void							ApplyImpulse(const Fvector3& dir, const dReal P);
+	void							ApplyHit(const Fvector3& dir, const dReal P, ALife::EHitType hit_type);
 	void							SetJumpUpVelocity(float velocity)
 	{
 		m_character->SetJupmUpVelocity(velocity);
@@ -486,7 +486,7 @@ public:
 		VERIFY(m_character);
 		return m_character->CollisionDamageInfo( );
 	}
-	void							GetDesiredPos(Fvector& dpos)
+	void							GetDesiredPos(Fvector3& dpos)
 	{
 		m_character->GetDesiredPosition(dpos);
 	}

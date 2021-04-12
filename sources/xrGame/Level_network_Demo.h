@@ -14,7 +14,7 @@ private:
 		DATA_CLIENT_PACKET,
 		DATA_SERVER_PACKET,
 
-		DATA_DUMMY = u32(-1),
+		DATA_DUMMY = u32(-1)
 	};
 
 	struct DemoFrameTime
@@ -50,7 +50,6 @@ private:
 		};
 	};
 
-//	DEF_DEQUE(DemoDeque, DemoDataStruct);
 	using DemoDeque = xr_deque<DemoDataStruct>;
 	using DemoDeque_it = DemoDeque::iterator;
 	DemoDeque					m_aDemoData;
@@ -88,20 +87,20 @@ public:
 	BOOL						IsDemoPlay( )
 	{
 		return (!m_bDemoSaveMode && m_bDemoPlayMode);
-	};
+	}
 	BOOL						IsDemoSave( )
 	{
 		return (m_bDemoSaveMode && !m_bDemoPlayMode);
-	};
+	}
 
 	bool						IsServerDemo( )
 	{
 		return (m_sDemoHeader.bServerClient != 0);
-	};
+	}
 	bool						IsClientDemo( )
 	{
 		return (m_sDemoHeader.bServerClient == 0);
-	};
+	}
 
 	virtual NET_Packet* net_msg_Retreive( );
 

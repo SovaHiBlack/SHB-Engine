@@ -41,14 +41,18 @@ BOOL CLevel::net_Start(const char* op_server, const char* op_client)
 			strcat_s(tmpstr, xr_strlen(Core.UserName) ? Core.UserName : Core.CompName);
 			const char* ptmp = strstr(strstr(op_client, "name="), "/");
 			if (ptmp)
+			{
 				strcat_s(tmpstr, ptmp);
+			}
+
 			m_caClientOptions = tmpstr;
 		}
 		else
 		{
 			m_caClientOptions = op_client;
-		};
-	};
+		}
+	}
+
 	m_caServerOptions = op_server;
 	//---------------------------------------------------------------------
 	m_bDemoPlayMode = FALSE;
@@ -56,7 +60,7 @@ BOOL CLevel::net_Start(const char* op_server, const char* op_client)
 	m_bDemoStarted = FALSE;
 	if (strstr(Core.Params, "-tdemo ") || strstr(Core.Params, "-tdemof "))
 	{
-		string1024				f_name;
+		string1024 f_name;
 		if (strstr(Core.Params, "-tdemo "))
 		{
 			sscanf(strstr(Core.Params, "-tdemo ") + 7, "%[^ ] ", f_name);
@@ -71,7 +75,7 @@ BOOL CLevel::net_Start(const char* op_server, const char* op_client)
 
 			m_lDemoOfs = 0;
 			Demo_Load_toFrame(f_name, 100, m_lDemoOfs);
-		};
+		}
 	}
 	else
 	{
@@ -89,7 +93,6 @@ BOOL CLevel::net_Start(const char* op_server, const char* op_client)
 	g_loading_events.push_back(LOADING_EVENT(this, &CLevel::net_start6));
 
 	return net_start_result_total;
-
 }
 
 bool CLevel::net_start1( )
@@ -104,19 +107,21 @@ bool CLevel::net_start1( )
 		// Connect
 		Server = xr_new<CServer>( );
 
-//		if (!strstr(*m_caServerOptions,"/alife")) 
+//		if (!strstr(*m_caServerOptions,"/alife"))
 		if (xr_strcmp(p.m_alife, "alife"))
 		{
-			string64			l_name = "";
+			string64 l_name = "";
 			const char* SOpts = *m_caServerOptions;
 			strncpy(l_name, *m_caServerOptions, strchr(SOpts, '/') - SOpts);
 			// Activate level
 			if (strchr(l_name, '/'))
+			{
 				*strchr(l_name, '/') = 0;
+			}
 
 			m_name = l_name;
 
-			int						id = pApp->Level_ID(l_name);
+			int id = pApp->Level_ID(l_name);
 
 			if (id < 0)
 			{
@@ -125,9 +130,11 @@ bool CLevel::net_start1( )
 				net_start_result_total = FALSE;
 				return true;
 			}
+
 			pApp->Level_Set(id);
 		}
 	}
+
 	return true;
 }
 
@@ -142,38 +149,49 @@ bool CLevel::net_start2( )
 //			Console->Execute("main_menu on");
 			return true;
 		}
+
 		Server->SLS_Default( );
 		m_name = Server->level_name(m_caServerOptions);
 	}
+
 	return true;
 }
 
 bool CLevel::net_start3( )
 {
-	if (!net_start_result_total) return true;
+	if (!net_start_result_total)
+	{
+		return true;
+	}
+
 	//add server port if don't have one in options
 	if (!strstr(m_caClientOptions.c_str( ), "port=") && Server)
 	{
-		string64	PortStr;
+		string64 PortStr;
 		sprintf_s(PortStr, "/port=%d", Server->GetPort( ));
 
-		string4096	tmp;
+		string4096 tmp;
 		strcpy_s(tmp, m_caClientOptions.c_str( ));
 		strcat_s(tmp, PortStr);
 
 		m_caClientOptions = tmp;
 	}
+
 	//add password string to client, if don't have one
 	if (m_caServerOptions.size( ))
 	{
 		if (strstr(m_caServerOptions.c_str( ), "psw=") && !strstr(m_caClientOptions.c_str( ), "psw="))
 		{
-			string64	PasswordStr = "";
+			string64 PasswordStr = "";
 			const char* PSW = strstr(m_caServerOptions.c_str( ), "psw=") + 4;
 			if (strchr(PSW, '/'))
+			{
 				strncpy(PasswordStr, PSW, strchr(PSW, '/') - PSW);
+			}
 			else
+			{
 				strcpy_s(PasswordStr, PSW);
+			}
 
 			string4096	tmp;
 			sprintf_s(tmp, "%s/psw=%s", m_caClientOptions.c_str( ), PasswordStr);
@@ -186,7 +204,10 @@ bool CLevel::net_start3( )
 
 bool CLevel::net_start4( )
 {
-	if (!net_start_result_total) return true;
+	if (!net_start_result_total)
+	{
+		return true;
+	}
 
 	g_loading_events.pop_front( );
 
@@ -204,15 +225,16 @@ bool CLevel::net_start5( )
 {
 	if (net_start_result_total)
 	{
-		NET_Packet		NP;
+		NET_Packet NP;
 		NP.w_begin(M_CLIENTREADY);
 		Send(NP, net_flags(TRUE, TRUE));
 
 		if (OnClient( ) && Server)
 		{
 			Server->SLS_Clear( );
-		};
-	};
+		}
+	}
+
 	return true;
 }
 
@@ -245,26 +267,31 @@ bool CLevel::net_start6( )
 	{
 		if (strstr(Core.Params, "-$"))
 		{
-			string256				buf, cmd, param;
+			string256 buf;
+			string256 cmd;
+			string256 param;
 			sscanf(strstr(Core.Params, "-$") + 2, "%[^ ] %[^ ] ", cmd, param);
 			strconcat(sizeof(buf), buf, cmd, " ", param);
 			Console->Execute(buf);
 		}
 
 		if (g_hud)
+		{
 			HUD( ).GetUI( )->OnConnected( );
+		}
 	}
 
 	return false;
 }
-
 
 void CLevel::InitializeClientGame(NET_Packet& P)
 {
 	string256 game_type_name;
 	P.r_stringZ(game_type_name);
 	if (game && !xr_strcmp(game_type_name, game->type_name( )))
+	{
 		return;
+	}
 
 	xr_delete(game);
 	Msg("- Game configuring : Started ");
@@ -274,4 +301,3 @@ void CLevel::InitializeClientGame(NET_Packet& P)
 	game->Init( );
 	m_bGameConfigStarted = TRUE;
 }
-

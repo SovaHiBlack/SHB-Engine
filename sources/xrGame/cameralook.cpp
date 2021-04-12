@@ -1,9 +1,12 @@
 #include "stdafx.h"
 
 #include "CameraLook.h"
-#include "..\ENGINE\Cameramanager.h"
+#include "..\ENGINE\CameraManager.h"
 #include "xr_level_controller.h"
 #include "Actor.h"
+#include "..\ENGINE\Input.h"
+#include "visual_memory_manager.h"
+#include "actor_memory.h"
 
 CCameraLook::CCameraLook(CObject* p, u32 flags) : CCameraBase(p, flags)
 { }
@@ -14,7 +17,7 @@ void CCameraLook::Load(const char* section)
 	style = csLookAt;
 	lim_zoom = pSettings->r_fvector2(section, "lim_zoom");
 	dist = (lim_zoom[0] + lim_zoom[1]) * 0.5f;
-	prev_d = 0;
+	prev_d = 0.0f;
 }
 
 CCameraLook::~CCameraLook( )
@@ -34,14 +37,15 @@ void CCameraLook::Update(Fvector3& point, Fvector3& /**noise_dangle/**/)
 		parent->XFORM( ).transform_dir(vDirection);
 		parent->XFORM( ).transform_dir(vNormal);
 	}
-	Fvector3				vDir;
-	collide::rq_result	R;
 
-	float				covariance = VIEWPORT_NEAR * 6.f;
+	Fvector3 vDir;
+	collide::rq_result R;
+
+	float covariance = VIEWPORT_NEAR * 6.0f;
 	vDir.invert(vDirection);
 	g_pGameLevel->ObjectSpace.RayPick(point, vDir, dist + covariance, collide::rqtBoth, R, parent);
 
-	float d = psCamSlideInert * prev_d + (1.f - psCamSlideInert) * (R.range - covariance);
+	float d = psCamSlideInert * prev_d + (1.0f - psCamSlideInert) * (R.range - covariance);
 	prev_d = d;
 
 	vPosition.mul(vDirection, -d - VIEWPORT_NEAR);
@@ -52,15 +56,48 @@ void CCameraLook::Move(int cmd, float val, float factor)
 {
 	switch (cmd)
 	{
-		case kCAM_ZOOM_IN:	dist -= val ? val : (rot_speed.z * Device.fTimeDelta);	break;
-		case kCAM_ZOOM_OUT:	dist += val ? val : (rot_speed.z * Device.fTimeDelta);	break;
-		case kDOWN:			pitch -= val ? val : (rot_speed.x * Device.fTimeDelta / factor);	break;
-		case kUP:			pitch += val ? val : (rot_speed.x * Device.fTimeDelta / factor);	break;
-		case kLEFT:			yaw -= val ? val : (rot_speed.y * Device.fTimeDelta / factor);	break;
-		case kRIGHT:		yaw += val ? val : (rot_speed.y * Device.fTimeDelta / factor);	break;
+		case kCAM_ZOOM_IN:
+		{
+			dist -= val ? val : (rot_speed.z * Device.fTimeDelta);
+		}
+		break;
+		case kCAM_ZOOM_OUT:
+		{
+			dist += val ? val : (rot_speed.z * Device.fTimeDelta);
+		}
+		break;
+		case kDOWN:
+		{
+			pitch -= val ? val : (rot_speed.x * Device.fTimeDelta / factor);
+		}
+		break;
+		case kUP:
+		{
+			pitch += val ? val : (rot_speed.x * Device.fTimeDelta / factor);
+		}
+		break;
+		case kLEFT:
+		{
+			yaw -= val ? val : (rot_speed.y * Device.fTimeDelta / factor);
+		}
+		break;
+		case kRIGHT:
+		{
+			yaw += val ? val : (rot_speed.y * Device.fTimeDelta / factor);
+		}
+		break;
 	}
-	if (bClampYaw)		clamp(yaw, lim_yaw[0], lim_yaw[1]);
-	if (bClampPitch)	clamp(pitch, lim_pitch[0], lim_pitch[1]);
+
+	if (bClampYaw)
+	{
+		clamp(yaw, lim_yaw[0], lim_yaw[1]);
+	}
+
+	if (bClampPitch)
+	{
+		clamp(pitch, lim_pitch[0], lim_pitch[1]);
+	}
+
 	clamp(dist, lim_zoom[0], lim_zoom[1]);
 }
 
@@ -71,13 +108,17 @@ void CCameraLook::OnActivate(CCameraBase* old_cam)
 		yaw = old_cam->yaw;
 		vPosition.set(old_cam->vPosition);
 	}
-	if (yaw > PI_MUL_2) yaw -= PI_MUL_2;
-	if (yaw < -PI_MUL_2)yaw += PI_MUL_2;
-}
 
-#include "..\ENGINE\Input.h"
-#include "visual_memory_manager.h"
-#include "actor_memory.h"
+	if (yaw > PI_MUL_2)
+	{
+		yaw -= PI_MUL_2;
+	}
+
+	if (yaw < -PI_MUL_2)
+	{
+		yaw += PI_MUL_2;
+	}
+}
 
 int cam_dik = DIK_LSHIFT;
 
@@ -98,7 +139,7 @@ void CCameraLook2::OnActivate(CCameraBase* old_cam)
 void CCameraLook2::Update(Fvector3& point, Fvector3&)
 {
 	if (!m_locked_enemy)
-	{//autoaim
+	{	//autoaim
 		if (pInput->iGetAsyncKeyState(cam_dik))
 		{
 			const CVisualMemoryManager::VISIBLES& vVisibles = Actor( )->memory( ).visual( ).objects( );
@@ -108,13 +149,18 @@ void CCameraLook2::Update(Fvector3& point, Fvector3&)
 			for (; v_it != vVisibles.end( ); ++v_it)
 			{
 				const CObject* _object_ = (*v_it).m_object;
-				if (!Actor( )->memory( ).visual( ).visible_now(smart_cast<const CGameObject*>(_object_)))	continue;
+				if (!Actor( )->memory( ).visual( ).visible_now(smart_cast<const CGameObject*>(_object_)))
+				{
+					continue;
+				}
 
 				CObject* object_ = const_cast<CObject*>(_object_);
 
-
 				CEntityAlive* EA = smart_cast<CEntityAlive*>(object_);
-				if (!EA || !EA->g_Alive( ))			continue;
+				if (!EA || !EA->g_Alive( ))
+				{
+					continue;
+				}
 
 				float d = object_->Position( ).distance_to_xz(Actor( )->Position( ));
 				if (!m_locked_enemy || d < _nearest_dst)
@@ -123,20 +169,26 @@ void CCameraLook2::Update(Fvector3& point, Fvector3&)
 					_nearest_dst = d;
 				}
 			}
-//.			if(m_locked_enemy) Msg("enemy is %s", *m_locked_enemy->cNameSect() );
+
+//.			if (m_locked_enemy)
+//.			{
+//.				Msg("enemy is %s", *m_locked_enemy->cNameSect( ));
+//.			}
 		}
 	}
 	else
 	{
 		if (!pInput->iGetAsyncKeyState(cam_dik))
 		{
-			m_locked_enemy = NULL;
-//.			Msg				("enemy is NILL");
+			m_locked_enemy = nullptr;
+//.			Msg("enemy is NILL");
 		}
 	}
 
 	if (m_locked_enemy)
+	{
 		UpdateAutoAim( );
+	}
 
 	Fmatrix mR;
 	mR.setHPB(-yaw, -pitch, -roll);
@@ -144,7 +196,7 @@ void CCameraLook2::Update(Fvector3& point, Fvector3&)
 	vDirection.set(mR.k);
 	vNormal.set(mR.j);
 
-	Fmatrix							a_xform;
+	Fmatrix a_xform;
 	a_xform.setXYZ(0, -yaw, 0);
 	a_xform.translate_over(point);
 	Fvector3 _off = m_cam_offset;
@@ -154,32 +206,24 @@ void CCameraLook2::Update(Fvector3& point, Fvector3&)
 
 void CCameraLook2::UpdateAutoAim( )
 {
-	Fvector3								_dest_point;
+	Fvector3 _dest_point;
 	m_locked_enemy->Center(_dest_point);
 	_dest_point.y += 0.2f;
 
-	Fvector3								_dest_dir;
+	Fvector3 _dest_dir;
 	_dest_dir.sub(_dest_point, vPosition);
 
-	Fmatrix								_m;
+	Fmatrix _m;
 	_m.identity( );
 	_m.k.normalize_safe(_dest_dir);
 	Fvector3::generate_orthonormal_basis(_m.k, _m.j, _m.i);
 
-	Fvector3								xyz;
+	Fvector3 xyz;
 	_m.getXYZi(xyz);
 
-	yaw = angle_inertion_var(yaw, xyz.y,
-							 m_autoaim_inertion_yaw.x,
-							 m_autoaim_inertion_yaw.y,
-							 PI,
-							 Device.fTimeDelta);
+	yaw = angle_inertion_var(yaw, xyz.y, m_autoaim_inertion_yaw.x, m_autoaim_inertion_yaw.y, PI, Device.fTimeDelta);
 
-	pitch = angle_inertion_var(pitch, xyz.x,
-							   m_autoaim_inertion_pitch.x,
-							   m_autoaim_inertion_pitch.y,
-							   PI,
-							   Device.fTimeDelta);
+	pitch = angle_inertion_var(pitch, xyz.x, m_autoaim_inertion_pitch.x, m_autoaim_inertion_pitch.y, PI, Device.fTimeDelta);
 }
 
 void CCameraLook2::Load(const char* section)

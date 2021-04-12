@@ -5,7 +5,7 @@
 #include "ai/monsters/ai_monster_squad_manager.h"
 #include "StringTable.h"
 
-#include "entity_alive.h"
+#include "EntityAlive.h"
 #include "ui/UIInventoryUtilities.h"//
 #include "ui/UIXmlInit.h"//
 

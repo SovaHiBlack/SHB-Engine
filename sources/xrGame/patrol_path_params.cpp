@@ -32,7 +32,7 @@ u32	CPatrolPathParams::count			() const
 	return				(m_path->vertices().size());
 }
 
-const Fvector &CPatrolPathParams::point	(u32 index) const
+const Fvector3& CPatrolPathParams::point	(u32 index) const
 {
 	VERIFY				(m_path);
 	VERIFY				(!m_path->vertices().empty());
@@ -63,7 +63,7 @@ u32	CPatrolPathParams::point			(const char* name) const
 	return				(u32(-1));
 }
 
-u32	CPatrolPathParams::point			(const Fvector &point) const
+u32	CPatrolPathParams::point			(const Fvector3& point) const
 {
 	return				(m_path->point(point)->vertex_id());
 }

@@ -165,26 +165,49 @@ void SPHCharacterRestrictor::SetMaterial(u16 material)
 {
 	dGeomGetUserData(m_restrictor)->material = material;
 }
-void CPHActorCharacter::SetAcceleration(Fvector accel)
+void CPHActorCharacter::SetAcceleration(Fvector3 accel)
 {
-	Fvector cur_a, input_a; float cur_mug, input_mug;
-	cur_a.set(m_acceleration); cur_mug = m_acceleration.magnitude( );
-	if (!fis_zero(cur_mug))cur_a.mul(1.f / cur_mug);
-	input_a.set(accel); input_mug = accel.magnitude( );
-	if (!fis_zero(input_mug))input_a.mul(1.f / input_mug);
+	Fvector3 cur_a;
+	Fvector3 input_a;
+	float cur_mug;
+	float input_mug;
+	cur_a.set(m_acceleration);
+	cur_mug = m_acceleration.magnitude( );
+	if (!fis_zero(cur_mug))
+	{
+		cur_a.mul(1.0f / cur_mug);
+	}
+
+	input_a.set(accel);
+	input_mug = accel.magnitude( );
+	if (!fis_zero(input_mug))
+	{
+		input_a.mul(1.0f / input_mug);
+	}
+
 	if (!cur_a.similar(input_a, 0.05f) || !fis_zero(input_mug - cur_mug, 0.5f))
+	{
 		inherited::SetAcceleration(accel);
+	}
 }
 
-void CPHActorCharacter::Jump(const Fvector& accel)
+void CPHActorCharacter::Jump(const Fvector3& accel)
 {
-	if (!b_exist) return;
+	if (!b_exist)
+	{
+		return;
+	}
+
 	if (!b_lose_control && (m_ground_contact_normal[1] > 0.5f || m_elevator_state.ClimbingState( )))
 	{
 		b_jump = true;
 		const dReal* vel = dBodyGetLinearVel(m_body);
 		dReal amag = m_acceleration.magnitude( );
-		if (amag < 1.f)amag = 1.f;
+		if (amag < 1.0f)
+		{
+			amag = 1.0f;
+		}
+
 		if (m_elevator_state.ClimbingState( ))
 		{
 			m_elevator_state.GetJumpDir(m_acceleration, m_jump_accel);

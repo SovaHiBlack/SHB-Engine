@@ -10,7 +10,7 @@
 
 #include "..\ENGINE\effectorpp.h"
 #include "script_export_space.h"
-#include "..\ENGINE\cameramanager.h"
+#include "..\ENGINE\CameraManager.h"
 
 class CScriptEffector : public CEffectorPP {
 public:

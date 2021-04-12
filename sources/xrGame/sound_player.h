@@ -82,7 +82,7 @@ public:
 			xr_delete							(m_sound);
 		}
 
-				void	play_at_pos				(CObject *object, const Fvector &position)
+				void	play_at_pos				(CObject *object, const Fvector3& position)
 		{
 			m_sound->play_at_pos				(object,position);
 			m_started							= true;

@@ -10,21 +10,24 @@
 
 //#define SQUAD_HIERARCHY_HOLDER_USE_LEADER
 
-namespace SeniorityHierarchy {
-	inline	shared_str to_string		(u32 number)
+namespace SeniorityHierarchy
+{
+	inline	shared_str to_string(u32 number)
 	{
 		string16	S;
-		itoa		(number,S,10);
-		return		(shared_str(S));
+		itoa(number, S, 10);
+		return shared_str(S);
 	}
 
 	template <typename T1>
-	inline	void	assign_svector	(T1 &container, u32 count, const typename T1::value_type &value)
+	inline void	assign_svector(T1& container, u32 count, const typename T1::value_type& value)
 	{
-		container.resize		(count);
-		typename T1::iterator	I = container.begin();
-		typename T1::iterator	E = container.end();
-		for ( ; I != E; ++I)
-			*I					= value;
+		container.resize(count);
+		typename T1::iterator I = container.begin( );
+		typename T1::iterator E = container.end( );
+		for (; I != E; ++I)
+		{
+			*I = value;
+		}
 	}
 }

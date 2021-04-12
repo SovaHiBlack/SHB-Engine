@@ -2,7 +2,7 @@
 
 #include "../../../..\ENGINE\effectorPP.h"
 #include "../../../CameraEffector.h"
-#include "../../../..\ENGINE\cameramanager.h"
+#include "../../../..\ENGINE\CameraManager.h"
 
 //////////////////////////////////////////////////////////////////////////
 // Vampire Postprocess Effector

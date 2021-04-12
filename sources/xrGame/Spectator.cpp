@@ -3,7 +3,7 @@
 #include "stdafx.h"
 
 #include "Spectator.h"
-#include "effectorfall.h"
+#include "EffectorFall.h"
 #include "CameraLook.h"
 #include "CameraFirstEye.h"
 #include "Actor.h"
@@ -358,9 +358,11 @@ void CSpectator::cam_Update(CActor* A)
 				cam->SetParent(A);
 				Fmatrix tmp; tmp.identity( );
 
-				Fvector point, point1, dangle;
-				point.set(0.f, 1.6f, 0.f);
-				point1.set(0.f, 1.6f, 0.f);
+				Fvector3 point;
+				Fvector3 point1;
+				Fvector3 dangle;
+				point.set(0.0f, 1.6f, 0.0f);
+				point1.set(0.0f, 1.6f, 0.0f);
 				M.transform_tiny(point);
 				tmp.translate_over(point);
 				tmp.transform_tiny(point1);

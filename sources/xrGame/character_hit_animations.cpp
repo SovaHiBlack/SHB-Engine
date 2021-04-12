@@ -1,7 +1,7 @@
 #include "stdafx.h"
 
 #include "character_hit_animations.h"
-#include "entity_alive.h"
+#include "EntityAlive.h"
 
 #ifdef DEBUG
 #	include "PHDebug.h"

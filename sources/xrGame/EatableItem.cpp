@@ -5,7 +5,7 @@
 #include "../ENGINE/net_utils.h"
 #include "PHItem.h"
 #include "Level.h"
-#include "entity_alive.h"
+#include "EntityAlive.h"
 #include "EntityCondition.h"
 #include "InventoryOwner.h"
 

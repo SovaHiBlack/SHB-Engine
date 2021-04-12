@@ -11,7 +11,7 @@
 
 using namespace luabind;
 
-Fvector CPatrolPathParams__point(const CPatrolPathParams *self, u32 index)
+Fvector3 CPatrolPathParams__point(const CPatrolPathParams *self, u32 index)
 {
 	THROW	(self);
 	return	(self->point(index));
@@ -49,7 +49,7 @@ void CPatrolPathParams::script_register(lua_State *L)
 			.def("point",						&CPatrolPathParams__point)
 			.def("name",						&CPatrolPathParams::name)
 			.def("index",						(u32			(CPatrolPathParams::*)(const char*)			const)	(&CPatrolPathParams::point))
-			.def("get_nearest",					(u32			(CPatrolPathParams::*)(const Fvector &) const)	(&CPatrolPathParams::point))
+			.def("get_nearest",					(u32			(CPatrolPathParams::*)(const Fvector3&) const)	(&CPatrolPathParams::point))
 			.def("flag",						&CPatrolPathParams::flag)
 			.def("flags",						&CPatrolPathParams::flags)
 			.def("terminal",					&CPatrolPathParams::terminal)

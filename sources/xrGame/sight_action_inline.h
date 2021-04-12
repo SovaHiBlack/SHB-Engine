@@ -26,7 +26,7 @@ inline	CSightAction::CSightAction		(const ESightType &sight_type, bool	torso_loo
 {
 }
 
-inline	CSightAction::CSightAction		(const ESightType &sight_type, const Fvector &vector3d, bool torso_look) :
+inline	CSightAction::CSightAction		(const ESightType &sight_type, const Fvector3& vector3d, bool torso_look) :
 	m_sight_type		(sight_type),
 	m_vector3d			(vector3d),
 	m_path				(false),
@@ -55,7 +55,7 @@ inline	CSightAction::CSightAction		(const CMemoryInfo *memory_object, bool torso
 {
 }
 
-inline	CSightAction::CSightAction		(const ESightType &sight_type, const Fvector *vector3d)
+inline	CSightAction::CSightAction		(const ESightType &sight_type, const Fvector3* vector3d)
 {
 	m_sight_type		= sight_type;
 	m_path				= false;
@@ -102,7 +102,7 @@ inline	bool CSightAction::operator==		(const CSightAction &sight_action) const
 #endif
 }
 
-inline	void CSightAction::set_vector3d			(const Fvector &vector3d)
+inline	void CSightAction::set_vector3d			(const Fvector3& vector3d)
 {
 	m_vector3d			= vector3d;
 }
@@ -127,7 +127,7 @@ inline	const CGameObject *CSightAction::object_to_look		() const
 	return				(m_object_to_look);
 }
 
-inline	const Fvector &CSightAction::vector3d				() const
+inline	const Fvector3& CSightAction::vector3d				() const
 {
 	return				(m_vector3d);
 }

@@ -1,6 +1,4 @@
-// hit_immunity.h: класс для тех объектов, которые поддерживают
-//				   коэффициенты иммунитета для разных типов хитов
-//////////////////////////////////////////////////////////////////////
+// hit_immunity.h: класс для тех объектов, которые поддерживают коэффициенты иммунитета для разных типов хитов
 
 #pragma once
 
@@ -10,16 +8,14 @@
 class CHitImmunity
 {
 public:
-	CHitImmunity();
-	virtual ~CHitImmunity();
+	CHitImmunity( );
+	virtual ~CHitImmunity( );
 
-	virtual void LoadImmunities (const char* section, CIniFile* ini);
+	virtual void LoadImmunities(const char* section, CIniFile* ini);
 
-	virtual float AffectHit		(float power, ALife::EHitType hit_type);
+	virtual float AffectHit(float power, ALife::EHitType hit_type);
 
 protected:
-	//коэффициенты на которые домножается хит
-	//при соответствующем типе воздействия
-	//(для защитных костюмов и специфичных животных)
+	//коэффициенты на которые домножается хит при соответствующем типе воздействия (для защитных костюмов и специфичных животных)
 	HitImmunity::HitTypeSVec m_HitTypeK;
 };

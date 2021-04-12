@@ -27,7 +27,7 @@ class CLevelDebug;
 class CLevelSoundManager;
 
 #ifdef DEBUG
-	class CDebugRenderer;
+class CDebugRenderer;
 #endif
 
 extern float g_fov;
@@ -61,7 +61,7 @@ private:
 #endif
 
 protected:
-	typedef IGameLevel			inherited;
+	using inherited = IGameLevel;
 
 	CLevelSoundManager* m_level_sound_manager;
 
@@ -132,7 +132,6 @@ private:
 	u32							m_dwNumSteps;
 	bool						m_bIn_CrPr;
 
-//	DEF_VECTOR(OBJECTS_LIST, CGameObject*);
 	using OBJECTS_LIST = xr_vector<CGameObject*>;
 	using OBJECTS_LIST_it = OBJECTS_LIST::iterator;
 
@@ -148,7 +147,7 @@ public:
 
 	void						RemoveObject_From_4CrPr(CGameObject* pObj);
 
-	CObject* CurrentControlEntity(void) const
+	CObject* CurrentControlEntity( ) const
 	{
 		return pCurrentControlEntity;
 	}
@@ -177,7 +176,6 @@ public:
 
 	//////////////////////////////////////////////	
 	// static particles
-//	DEFINE_VECTOR(CParticlesObject*, POVec, POIt);
 	using POVec = xr_vector<CParticlesObject*>;
 	using POIt = POVec::iterator;
 	POVec						m_StaticParticles;
@@ -192,7 +190,6 @@ public:
 
 private:
 	// preload sounds registry
-//	DEFINE_MAP(shared_str, ref_sound, SoundRegistryMap, SoundRegistryMapIt);
 	using SoundRegistryMap = xr_map<shared_str, ref_sound>;
 	using SoundRegistryMapIt = SoundRegistryMap::iterator;
 	SoundRegistryMap			sound_registry;
@@ -204,21 +201,21 @@ protected:
 	BOOL						net_start_result_total;
 	BOOL						connected_to_server;
 
-	bool	xr_stdcall			net_start1( );
-	bool	xr_stdcall			net_start2( );
-	bool	xr_stdcall			net_start3( );
-	bool	xr_stdcall			net_start4( );
-	bool	xr_stdcall			net_start5( );
-	bool	xr_stdcall			net_start6( );
+	bool xr_stdcall			net_start1( );
+	bool xr_stdcall			net_start2( );
+	bool xr_stdcall			net_start3( );
+	bool xr_stdcall			net_start4( );
+	bool xr_stdcall			net_start5( );
+	bool xr_stdcall			net_start6( );
 
-	bool	xr_stdcall			net_start_client1( );
-	bool	xr_stdcall			net_start_client2( );
-	bool	xr_stdcall			net_start_client3( );
-	bool	xr_stdcall			net_start_client4( );
-	bool	xr_stdcall			net_start_client5( );
-	bool	xr_stdcall			net_start_client6( );
+	bool xr_stdcall			net_start_client1( );
+	bool xr_stdcall			net_start_client2( );
+	bool xr_stdcall			net_start_client3( );
+	bool xr_stdcall			net_start_client4( );
+	bool xr_stdcall			net_start_client5( );
+	bool xr_stdcall			net_start_client6( );
 
-	bool	xr_stdcall			net_start_finalizer( );
+	bool xr_stdcall			net_start_finalizer( );
 
 	void						net_OnChangeSelfName(NET_Packet* P);
 
@@ -314,7 +311,7 @@ public:
 	void				SetGameTimeFactor(const float fTimeFactor);
 	void				SetGameTimeFactor(ALife::_TIME_ID GameTime, const float fTimeFactor);
 	void				SetEnvironmentGameTimeFactor(ALife::_TIME_ID GameTime, const float fTimeFactor);
-//	void				SetGameTime				(ALife::_TIME_ID GameTime);
+//	void				SetGameTime(ALife::_TIME_ID GameTime);
 
 	// gets current daytime [0..23]
 	u8					GetDayTime( );
@@ -356,11 +353,9 @@ public:
 		return m_dwRealPing;
 	}
 
-public:
 	void			remove_objects( );
 	virtual void			OnSessionTerminate(const char* reason);
 
-public:
 	static void script_register(lua_State*);
 };
 

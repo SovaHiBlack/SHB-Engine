@@ -17,7 +17,7 @@ inline	CScriptMovementAction::CScriptMovementAction		(MonsterSpace::EBodyState t
 	SetSpeed			(fSpeed);
 }
 
-inline	CScriptMovementAction::CScriptMovementAction		(MonsterSpace::EBodyState tBodyState, MonsterSpace::EMovementType tMovementType, DetailPathManager::EDetailPathType tPathType, const Fvector &tPosition, float fSpeed)
+inline	CScriptMovementAction::CScriptMovementAction		(MonsterSpace::EBodyState tBodyState, MonsterSpace::EMovementType tMovementType, DetailPathManager::EDetailPathType tPathType, const Fvector3& tPosition, float fSpeed)
 {
 	SetBodyState		(tBodyState);
 	SetMovementType		(tMovementType);
@@ -35,7 +35,7 @@ inline	CScriptMovementAction::CScriptMovementAction		(const EInputKeys tInputKey
 // --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------						
 // Monsters
 // --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-inline	CScriptMovementAction::CScriptMovementAction		(MonsterSpace::EScriptMonsterMoveAction tAct, Fvector &tPosition, float	dist_to_end, MonsterSpace::EScriptMonsterSpeedParam speed_param)
+inline	CScriptMovementAction::CScriptMovementAction		(MonsterSpace::EScriptMonsterMoveAction tAct, Fvector3& tPosition, float	dist_to_end, MonsterSpace::EScriptMonsterSpeedParam speed_param)
 {																																			
 	m_tMoveAction		= tAct;
 	SetPosition			(tPosition);																										
@@ -78,7 +78,7 @@ inline	void CScriptMovementAction::SetPatrolPath		(const CPatrolPath *path, shar
 	m_bCompleted		= false;
 }
 
-inline	void CScriptMovementAction::SetPosition			(const Fvector &tPosition)
+inline	void CScriptMovementAction::SetPosition			(const Fvector3& tPosition)
 {
 	m_tDestinationPosition = tPosition;
 	m_tGoalType			= eGoalTypePathPosition;

@@ -25,7 +25,7 @@ CPHFracturesHolder			();
 ~CPHFracturesHolder			();
 void				DistributeAdditionalMass	(u16 geom_num,const dMass& m);//
 void				SubFractureMass				(u16 fracture_num);
-void				AddImpact		(const Fvector& force,const Fvector& point,u16 id);
+void				AddImpact		(const Fvector3& force,const Fvector3& point,u16 id);
 PH_IMPACT_STORAGE&	Impacts			(){return m_impacts;}
 
 CPHFracture&		LastFracture	(){return m_fractures.back();}

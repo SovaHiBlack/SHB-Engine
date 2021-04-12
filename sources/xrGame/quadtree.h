@@ -86,7 +86,7 @@ public:
 	typedef CFixedStorage<CListItem> CListItemStorage;
 
 protected:
-	Fvector						m_center;
+	Fvector3						m_center;
 	float						m_radius;
 	int							m_max_depth;
 	CQuadNode					*m_root;
@@ -95,9 +95,9 @@ protected:
 	size_t						m_leaf_count;
 
 protected:
-	inline		u32					neighbour_index	(const Fvector	&position,	Fvector &center, float distance) const;
-	inline		void				nearest			(const Fvector	&position,	float radius, xr_vector<_object_type*> &objects, CQuadNode *node, Fvector center, float distance, int depth) const;
-	inline		_object_type		*remove			(const _object_type *object,CQuadNode *&node, Fvector center, float distance, int depth);
+	inline		u32					neighbour_index	(const Fvector3& position, Fvector3& center, float distance) const;
+	inline		void				nearest			(const Fvector3& position,	float radius, xr_vector<_object_type*> &objects, CQuadNode *node, Fvector3 center, float distance, int depth) const;
+	inline		_object_type		*remove			(const _object_type *object,CQuadNode *&node, Fvector3 center, float distance, int depth);
 	inline		void				all				(xr_vector<_object_type*> &objects, CQuadNode *node, int depth) const;
 
 public:
@@ -106,8 +106,8 @@ public:
 	inline		void				clear			();
 	inline		void				insert			(_object_type	*object);
 	inline		_object_type		*remove			(const _object_type *object);
-	inline		_object_type		*find			(const Fvector	&position);
-	inline		void				nearest			(const Fvector	&position,	float radius, xr_vector<_object_type*> &objects, bool clear = true) const;
+	inline		_object_type		*find			(const Fvector3& position);
+	inline		void				nearest			(const Fvector3& position,	float radius, xr_vector<_object_type*> &objects, bool clear = true) const;
 	inline		void				all				(xr_vector<_object_type*> &objects, bool clear = true) const;
 	inline		size_t				size			() const;
 };

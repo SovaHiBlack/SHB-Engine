@@ -478,15 +478,15 @@ inline xr_string draw_sprintf(xr_string& s, const float& V, int dec)
 	return s;
 }
 //------------------------------------------------------------------------------
-inline bool operator == (const Fvector& A, const Fvector& B)
+inline bool operator == (const Fvector3& A, const Fvector3& B)
 {	return !!A.similar(B); }
-inline void clamp(Fvector& V, const Fvector& mn, const Fvector& mx)
+inline void clamp(Fvector3& V, const Fvector3& mn, const Fvector3& mx)
 {
 	clamp(V.x,mn.x,mx.x);
 	clamp(V.y,mn.y,mx.y);
 	clamp(V.z,mn.z,mx.z);
 }
-inline xr_string draw_sprintf(xr_string& s, const Fvector& V, int dec)
+inline xr_string draw_sprintf(xr_string& s, const Fvector3& V, int dec)
 {
 	string128 fmt;	sprintf_s(fmt,"{%%.%df, %%.%df, %%.%df}",dec,dec,dec);
 	string256 tmp;	sprintf_s(tmp,fmt,V.x,V.y,V.z);
@@ -501,15 +501,15 @@ typedef NumericValue<s8>	S8Value;
 typedef NumericValue<s16>	S16Value;
 typedef NumericValue<int>	S32Value;
 typedef NumericValue<float>	FloatValue;
-class VectorValue: public NumericValue<Fvector>{
+class VectorValue: public NumericValue<Fvector3>{
 public:
-						VectorValue		(Fvector* val, float mn, float mx, float increment, int decimal):NumericValue<Fvector>(val)
+						VectorValue		(Fvector3* val, float mn, float mx, float increment, int decimal):NumericValue<Fvector3>(val)
 	{
 		lim_mn.set		(mn,mn,mn);
 		lim_mx.set		(mx,mx,mx);
 		inc.set			(increment,increment,increment);
 		dec				= decimal;
-	};
+	}
 };
 //------------------------------------------------------------------------------
 

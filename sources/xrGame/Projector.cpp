@@ -233,11 +233,11 @@ bool CProjector::bfAssignObject(CScriptEntityAction* tpEntityAction)
 	return true;
 }
 
-void CProjector::SetTarget(const Fvector& target_pos)
+void CProjector::SetTarget(const Fvector3& target_pos)
 {
 	float th;
 	float tp;
-	Fvector( ).sub(target_pos, Position( )).getHP(th, tp);
+	Fvector3( ).sub(target_pos, Position( )).getHP(th, tp);
 
 	float delta_h;
 	delta_h = angle_difference(th, _start.yaw);
@@ -255,7 +255,7 @@ void CProjector::SetTarget(const Fvector& target_pos)
 	_target.pitch = tp;
 }
 
-Fvector CProjector::GetCurrentDirection( )
+Fvector3 CProjector::GetCurrentDirection( )
 {
-	return (Fvector( ).setHP(_current.yaw, _current.pitch));
+	return (Fvector3( ).setHP(_current.yaw, _current.pitch));
 }

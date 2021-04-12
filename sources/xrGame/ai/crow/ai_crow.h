@@ -5,7 +5,7 @@
 
 #pragma once
 
-#include "../../entity_alive.h"
+#include "../../EntityAlive.h"
 #include "../../..\ENGINE\SkeletonAnimated.h"
 
 class CMotionDef;

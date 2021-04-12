@@ -14,7 +14,7 @@
 #include "CameraLook.h"
 #include "camerafirsteye.h"
 #include "Level.h"
-#include "..\ENGINE\cameramanager.h"
+#include "..\ENGINE\CameraManager.h"
 
 bool CCar::HUDView() const		
 {

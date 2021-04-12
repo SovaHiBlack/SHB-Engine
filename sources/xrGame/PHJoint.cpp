@@ -46,7 +46,7 @@ void CPHJoint::SetBackRef(CPhysicsJoint** j)
 void CPHJoint::CreateBall( )
 {
 	m_joint = dJointCreateBall(0, 0);
-	Fvector pos;
+	Fvector3 pos;
 	Fmatrix first_matrix;
 	Fmatrix second_matrix;
 	CPHElement* first = (pFirst_element);
@@ -87,10 +87,10 @@ void CPHJoint::CreateHinge( )
 {
 	m_joint = dJointCreateHinge(0, 0);
 
-	Fvector pos;
+	Fvector3 pos;
 	Fmatrix first_matrix;
 	Fmatrix second_matrix;
-	Fvector axis;
+	Fvector3 axis;
 
 	CPHElement* first = (pFirst_element);
 	CPHElement* second = (pSecond_element);
@@ -161,10 +161,10 @@ void CPHJoint::CreateHinge2( )
 {
 	m_joint = dJointCreateHinge2(0, 0);
 
-	Fvector pos;
+	Fvector3 pos;
 	Fmatrix first_matrix;
 	Fmatrix second_matrix;
-	Fvector axis;
+	Fvector3 axis;
 	CPHElement* first = (pFirst_element);
 	CPHElement* second = (pSecond_element);
 	VERIFY(first && second);
@@ -250,10 +250,10 @@ void CPHJoint::CreateHinge2( )
 
 void CPHJoint::CreateSlider( )
 {
-	Fvector pos;
+	Fvector3 pos;
 	Fmatrix first_matrix;
 	Fmatrix second_matrix;
-	Fvector axis;
+	Fvector3 axis;
 	CPHElement* first = (pFirst_element);
 	CPHElement* second = (pSecond_element);
 
@@ -358,9 +358,10 @@ void CPHJoint::CreateSlider( )
 
 void CPHJoint::CreateFullControl( )
 {
-	Fvector pos;
-	Fmatrix first_matrix, second_matrix;
-	Fvector axis;
+	Fvector3 pos;
+	Fmatrix first_matrix;
+	Fmatrix second_matrix;
+	Fvector3 axis;
 	CPHElement* first = (pFirst_element);
 	CPHElement* second = (pSecond_element);
 	VERIFY(first);
@@ -510,7 +511,7 @@ void CPHJoint::SetLimits(const float low, const float high, const int axis_num)
 	LimitAxisNum(ax);
 	if (-1 == ax)return;
 
-	Fvector axis;
+	Fvector3 axis;
 	switch (axes[ax].vs)
 	{
 		case vs_first:pFirst_element->mXFORM.transform_dir(axis, axes[ax].direction);	break;
@@ -1157,17 +1158,20 @@ void CPHJoint::GetJointSDfactors(float& spring_factor, float& damping_factor)
 		damping_factor /= world_damping;
 	}
 }
+
 void CPHJoint::GetAxisSDfactors(float& spring_factor, float& damping_factor, int axis_num)
 {
 	LimitAxisNum(axis_num);
 	spring_factor = SPRING(axes[axis_num].cfm, axes[axis_num].erp) / world_spring;
 	damping_factor = DAMPING(axes[axis_num].cfm, axes[axis_num].erp) / world_damping;
 }
+
 u16 CPHJoint::GetAxesNumber( )
 {
 	return u16(axes.size( ));
 }
-void CPHJoint::CalcAxis(int ax_num, Fvector& axis, float& lo, float& hi, const Fmatrix& first_matrix, const Fmatrix& second_matrix, const Fmatrix& rotate)
+
+void CPHJoint::CalcAxis(int ax_num, Fvector3& axis, float& lo, float& hi, const Fmatrix& first_matrix, const Fmatrix& second_matrix, const Fmatrix& rotate)
 {
 	switch (axes[ax_num].vs)
 	{
@@ -1200,17 +1204,15 @@ void CPHJoint::CalcAxis(int ax_num, Fvector& axis, float& lo, float& hi, const F
 	}
 }
 
-void CPHJoint::CalcAxis(int ax_num, Fvector& axis, float& lo, float& hi, const Fmatrix& first_matrix, const Fmatrix& second_matrix)
+void CPHJoint::CalcAxis(int ax_num, Fvector3& axis, float& lo, float& hi, const Fmatrix& first_matrix, const Fmatrix& second_matrix)
 {
 	switch (axes[ax_num].vs)
 	{
-
 		case vs_first:first_matrix.transform_dir(axis, axes[ax_num].direction);	break;
 		case vs_second:second_matrix.transform_dir(axis, axes[ax_num].direction); break;
 		case vs_global:pShell->mXFORM.transform_dir(axis, axes[ax_num].direction); break;
 		default:		NODEFAULT;
 	}
-
 
 	Fmatrix inv_first_matrix;
 	inv_first_matrix.set(first_matrix);
@@ -1226,7 +1228,6 @@ void CPHJoint::CalcAxis(int ax_num, Fvector& axis, float& lo, float& hi, const F
 
 	if (shift_angle > M_PI) shift_angle -= 2.f * M_PI;
 	if (shift_angle < -M_PI) shift_angle += 2.f * M_PI;
-
 
 	lo = axes[ax_num].low;//+shift_angle;
 	hi = axes[ax_num].high;//+shift_angle;
@@ -1270,21 +1271,19 @@ void CPHJoint::GetLimits(float& lo_limit, float& hi_limit, int axis_num)
 	}
 }
 
-
-void CPHJoint::GetAxisDir(int num, Fvector& axis, eVs& vs)
+void CPHJoint::GetAxisDir(int num, Fvector3& axis, eVs& vs)
 {
 	LimitAxisNum(num);
 	vs = axes[num].vs;
 	axis.set(axes[num].direction);
 }
 
-void CPHJoint::GetAxisDirDynamic(int num, Fvector& axis)
+void CPHJoint::GetAxisDirDynamic(int num, Fvector3& axis)
 {
 	LimitAxisNum(num);
 	dVector3 result;
 	switch (eType)
 	{
-
 		case ball:;
 			return;
 		case hinge:					dJointGetHingeAxis(m_joint, result);
@@ -1300,9 +1299,8 @@ void CPHJoint::GetAxisDirDynamic(int num, Fvector& axis)
 	axis.set(result[0], result[1], result[2]);
 }
 
-void CPHJoint::GetAnchorDynamic(Fvector& anchor)
+void CPHJoint::GetAnchorDynamic(Fvector3& anchor)
 {
-
 	dVector3 result;
 	switch (eType)
 	{

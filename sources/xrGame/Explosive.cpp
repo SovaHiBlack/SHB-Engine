@@ -12,7 +12,7 @@
 #include "Weapon.h"
 
 #include "Actor.h"
-#include "actoreffector.h"
+#include "ActorEffector.h"
 #include "Level.h"
 #include "level_bullet_manager.h"
 #include "Messages.h"

@@ -1,5 +1,6 @@
 #include "stdafx.h"
-#include "postprocessanimator.h"
+
+#include "PostprocessAnimator.h"
 #include "ActorEffector.h"
 
 // postprocess value LOAD method implementation
@@ -31,13 +32,12 @@ void CPostProcessColor::save(IWriter& pWriter)
 }
 
 //main PostProcessAnimator class
-
 CPostprocessAnimator::CPostprocessAnimator( )
 {
 	Create( );
 }
 
-CPostprocessAnimator::CPostprocessAnimator(int id, bool cyclic) :CEffectorPP((EEffectorPostProcessType) id, 100000, true), m_bCyclic(cyclic)
+CPostprocessAnimator::CPostprocessAnimator(int id, bool cyclic) : CEffectorPP((EEffectorPostProcessType) id, 100000, true), m_bCyclic(cyclic)
 {
 	Create( );
 }
@@ -49,7 +49,10 @@ CPostprocessAnimator::~CPostprocessAnimator( )
 
 BOOL CPostprocessAnimator::Valid( )
 {
-	if (m_bCyclic)	return TRUE;
+	if (m_bCyclic)
+	{
+		return TRUE;
+	}
 
 	return CEffectorPP::Valid( );
 }
@@ -57,7 +60,9 @@ BOOL CPostprocessAnimator::Valid( )
 void CPostprocessAnimator::Clear( )
 {
 	for (int a = 0; a < POSTPROCESS_PARAMS_COUNT; a++)
+	{
 		xr_delete(m_Params[a]);
+	}
 }
 
 void CPostprocessAnimator::Load(const char* name)
@@ -121,12 +126,19 @@ void CPostprocessAnimator::Load(const char* name)
 
 	f_length = GetLength( );
 
-	if (!m_bCyclic)	fLifeTime = f_length;
+	if (!m_bCyclic)
+	{
+		fLifeTime = f_length;
+	}
 }
 
 void CPostprocessAnimator::Stop(float sp)
 {
-	if (m_bStop)			return;
+	if (m_bStop)
+	{
+		return;
+	}
+
 	m_bStop = true;
 	VERIFY(_valid(sp));
 	m_factor_speed = sp;
@@ -140,21 +152,25 @@ float CPostprocessAnimator::GetLength( )
 		float t = m_Params[a]->get_length( );
 		v = _max(t, v);
 	}
+
 	return v;
 }
 
 void CPostprocessAnimator::Update(float tm)
 {
 	for (int a = 0; a < POSTPROCESS_PARAMS_COUNT; a++)
+	{
 		m_Params[a]->update(tm);
+	}
 }
+
 void CPostprocessAnimator::SetDesiredFactor(float f, float sp)
 {
 	m_dest_factor = f;
 	m_factor_speed = sp;
 	VERIFY(_valid(m_factor));
 	VERIFY(_valid(m_dest_factor));
-};
+}
 
 void CPostprocessAnimator::SetCurrentFactor(float f)
 {
@@ -162,17 +178,26 @@ void CPostprocessAnimator::SetCurrentFactor(float f)
 	m_dest_factor = f;
 	VERIFY(_valid(m_factor));
 	VERIFY(_valid(m_dest_factor));
-};
+}
 
 BOOL CPostprocessAnimator::Process(SPPInfo& PPInfo)
 {
 	if (m_bCyclic)
-		fLifeTime = 100000;
+	{
+		fLifeTime = 100000.0f;
+	}
 
 	CEffectorPP::Process(PPInfo);
 
-	if (m_start_time < 0.0f)m_start_time = Device.fTimeGlobal;
-	if (m_bCyclic && ((Device.fTimeGlobal - m_start_time) > f_length)) m_start_time += f_length;
+	if (m_start_time < 0.0f)
+	{
+		m_start_time = Device.fTimeGlobal;
+	}
+
+	if (m_bCyclic && ((Device.fTimeGlobal - m_start_time) > f_length))
+	{
+		m_start_time += f_length;
+	}
 
 	Update(Device.fTimeGlobal - m_start_time);
 
@@ -180,9 +205,13 @@ BOOL CPostprocessAnimator::Process(SPPInfo& PPInfo)
 	VERIFY(_valid(m_factor_speed));
 	VERIFY(_valid(m_dest_factor));
 	if (m_bStop)
+	{
 		m_factor -= Device.fTimeDelta * m_factor_speed;
+	}
 	else
+	{
 		m_factor += m_factor_speed * Device.fTimeDelta * (m_dest_factor - m_factor);
+	}
 
 	clamp(m_factor, 0.0001f, 1.0f);
 
@@ -208,7 +237,9 @@ BOOL CPostprocessAnimator::Process(SPPInfo& PPInfo)
 		m_EffectorParams.noise.fps = pp_identity.noise.fps;
 	}
 	else
+	{
 		m_EffectorParams.noise.fps *= 100.0f;
+	}
 
 	PPInfo.lerp(pp_identity, m_EffectorParams, m_factor);
 
@@ -218,7 +249,9 @@ BOOL CPostprocessAnimator::Process(SPPInfo& PPInfo)
 	}
 
 	if (fsimilar(m_factor, 0.0001f, EPS_S))
+	{
 		return FALSE;
+	}
 
 	return TRUE;
 }
@@ -234,37 +267,43 @@ void CPostprocessAnimator::Create( )
 
 	m_Params[0] = xr_new<CPostProcessColor>(&m_EffectorParams.color_base);			//base color
 	VERIFY(m_Params[0]);
-	m_Params[1] = xr_new<CPostProcessColor>(&m_EffectorParams.color_add);          //add color
+	m_Params[1] = xr_new<CPostProcessColor>(&m_EffectorParams.color_add);			//add color
 	VERIFY(m_Params[1]);
-	m_Params[2] = xr_new<CPostProcessColor>(&m_EffectorParams.color_gray);         //gray color
+	m_Params[2] = xr_new<CPostProcessColor>(&m_EffectorParams.color_gray);			//gray color
 	VERIFY(m_Params[2]);
-	m_Params[3] = xr_new<CPostProcessValue>(&m_EffectorParams.gray);              //gray value
+	m_Params[3] = xr_new<CPostProcessValue>(&m_EffectorParams.gray);				//gray value
 	VERIFY(m_Params[3]);
-	m_Params[4] = xr_new<CPostProcessValue>(&m_EffectorParams.blur);              //blur value
+	m_Params[4] = xr_new<CPostProcessValue>(&m_EffectorParams.blur);				//blur value
 	VERIFY(m_Params[4]);
-	m_Params[5] = xr_new<CPostProcessValue>(&m_EffectorParams.duality.h);          //duality horizontal
+	m_Params[5] = xr_new<CPostProcessValue>(&m_EffectorParams.duality.h);			//duality horizontal
 	VERIFY(m_Params[5]);
-	m_Params[6] = xr_new<CPostProcessValue>(&m_EffectorParams.duality.v);          //duality vertical
+	m_Params[6] = xr_new<CPostProcessValue>(&m_EffectorParams.duality.v);			//duality vertical
 	VERIFY(m_Params[6]);
-	m_Params[7] = xr_new<CPostProcessValue>(&m_EffectorParams.noise.intensity);    //noise intensity
+	m_Params[7] = xr_new<CPostProcessValue>(&m_EffectorParams.noise.intensity);		//noise intensity
 	VERIFY(m_Params[7]);
-	m_Params[8] = xr_new<CPostProcessValue>(&m_EffectorParams.noise.grain);        //noise granularity
+	m_Params[8] = xr_new<CPostProcessValue>(&m_EffectorParams.noise.grain);			//noise granularity
 	VERIFY(m_Params[8]);
-	m_Params[9] = xr_new<CPostProcessValue>(&m_EffectorParams.noise.fps);          //noise fps
+	m_Params[9] = xr_new<CPostProcessValue>(&m_EffectorParams.noise.fps);			//noise fps
 	VERIFY(m_Params[9]);
 }
 
 BOOL CPostprocessAnimatorLerp::Process(SPPInfo& PPInfo)
 {
 	if (!m_bStop)
+	{
 		m_factor = m_get_factor_func( );
+	}
+
 	return CPostprocessAnimator::Process(PPInfo);
 }
 
 BOOL CPostprocessAnimatorLerpConst::Process(SPPInfo& PPInfo)
 {
 	if (!m_bStop)
+	{
 		m_factor = m_power;
+	}
+
 	return CPostprocessAnimator::Process(PPInfo);
 }
 

@@ -22,7 +22,7 @@ public:
 	inline	bool							completed			() const;
 	inline	bool							use_torso_look		() const;
 	inline	const SightManager::ESightType	&sight_type			() const;
-	inline	const Fvector					&vector3d			() const;
+	inline	const Fvector3&					vector3d			() const;
 	inline	const CGameObject				&object				() const;
 };
 

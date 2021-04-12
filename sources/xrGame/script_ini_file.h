@@ -32,7 +32,7 @@ public:
 			u32			r_u32				(const char* S, const char* L);
 			int			r_s32				(const char* S, const char* L);
 			float		r_float				(const char* S, const char* L);
-			Fvector		r_fvector3			(const char* S, const char* L);
+			Fvector3		r_fvector3			(const char* S, const char* L);
 public:
 	static void script_register(lua_State*);
 };

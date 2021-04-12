@@ -3,7 +3,7 @@
 #pragma once
 
 #include "CameraEffector.h"
-#include "..\ENGINE\cameramanager.h"
+#include "..\ENGINE\CameraManager.h"
 #include "Actor.h"
 
 class CWeaponShotEffector

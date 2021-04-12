@@ -4,7 +4,7 @@
 
 #pragma once
 
-#include "entity_alive.h"
+#include "EntityAlive.h"
 #include "script_entity.h"
 #include "..\ENGINE\feel_vision.h"
 #include "..\ENGINE\feel_sound.h"

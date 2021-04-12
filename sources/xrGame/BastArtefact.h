@@ -5,7 +5,7 @@
 
 #include "Artefact.h"
 #include "..\ENGINE\feel_touch.h"
-#include "entity_alive.h"
+#include "EntityAlive.h"
 
 struct SGameMtl;
 struct dContact;

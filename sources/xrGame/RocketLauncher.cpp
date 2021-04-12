@@ -92,8 +92,8 @@ void CRocketLauncher::DetachRocket(u16 rocket_id, bool bLaunch)
 }
 
 void CRocketLauncher::LaunchRocket(const Fmatrix& xform,
-								   const Fvector& vel,
-								   const Fvector& angular_vel)
+								   const Fvector3& vel,
+								   const Fvector3& angular_vel)
 {
 /*	VERIFY(m_pRocket != NULL);
 	m_pRocket->SetLaunchParams(xform, vel, angular_vel);

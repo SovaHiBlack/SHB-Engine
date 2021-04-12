@@ -52,7 +52,7 @@ public:
 	};
 
 protected:
-	Fvector		AABB;
+	Fvector3		AABB;
 
 	virtual		dGeomID			dSpacedGeom( ) = 0;
 	virtual		void			get_spatial_params( ) = 0;

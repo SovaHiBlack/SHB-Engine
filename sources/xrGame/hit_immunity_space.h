@@ -1,7 +1,6 @@
 #pragma once
 
-namespace HitImmunity {
-	//раны полученные различными типами хитов
-	typedef	svector<float,ALife::eHitTypeMax> HitTypeSVec;
+namespace HitImmunity
+{	//раны полученные различными типами хитов
+	using HitTypeSVec = svector<float, ALife::eHitTypeMax>;
 };
-

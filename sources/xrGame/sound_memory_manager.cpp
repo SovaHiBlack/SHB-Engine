@@ -128,7 +128,7 @@ inline	bool is_sound_type(int s, const ESoundTypes &t)
 	return	((s & t) == t);
 }
 
-void CSoundMemoryManager::feel_sound_new(CObject *object, int sound_type, CSound_UserDataPtr user_data, const Fvector &position, float sound_power)
+void CSoundMemoryManager::feel_sound_new(CObject *object, int sound_type, CSound_UserDataPtr user_data, const Fvector3& position, float sound_power)
 {
 
 #ifndef MASTER_GOLD
@@ -224,7 +224,7 @@ void CSoundMemoryManager::add			(const CSoundObject &sound_object, bool check_fo
 		m_sounds->push_back	(sound_object);
 }
 
-void CSoundMemoryManager::add			(const CObject *object, int sound_type, const Fvector &position, float sound_power)
+void CSoundMemoryManager::add			(const CObject *object, int sound_type, const Fvector3& position, float sound_power)
 {
 #ifndef SAVE_OWN_SOUNDS
 	// we do not want to save our own sounds

@@ -121,14 +121,14 @@ public:
 	{ }
 
 public:
-	virtual void			PHGetLinearVell(Fvector& velocity);
-	virtual void			PHSetLinearVell(Fvector& velocity);
+	virtual void			PHGetLinearVell(Fvector3& velocity);
+	virtual void			PHSetLinearVell(Fvector3& velocity);
 	virtual void			PHSetMaterial(const char* m);
 	virtual void			PHSetMaterial(u16 m);
 	void			PHSaveState(NET_Packet& P);
 	void			PHLoadState(IReader& P);
 	virtual float				GetMass( );
-	virtual	void			PHHit(float P, Fvector& dir, CObject* who, s16 element, Fvector p_in_object_space, float impulse, ALife::EHitType hit_type = ALife::eHitTypeWound);
+	virtual	void			PHHit(float P, Fvector3& dir, CObject* who, s16 element, Fvector3 p_in_object_space, float impulse, ALife::EHitType hit_type = ALife::eHitTypeWound);
 	virtual	void			Hit(SHit* pHDS);
 ///////////////////////////////////////////////////////////////////////
 	virtual u16				PHGetSyncItemsNumber( );

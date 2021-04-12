@@ -51,7 +51,7 @@ u32			cash_draw_remove_time=u32(-1);
 
 struct SPHDBGDrawTri :public SPHDBGDrawAbsract
 {
-	Fvector v[3];
+	Fvector3 v[3];
 	u32		c;
 	bool solid;
 	SPHDBGDrawTri(CDB::RESULT* T,u32 ac)
@@ -62,7 +62,7 @@ struct SPHDBGDrawTri :public SPHDBGDrawAbsract
 		c=ac;
 		solid = false;
 	}
-	SPHDBGDrawTri(CDB::TRI* T,const Fvector*	V_array,u32 ac)
+	SPHDBGDrawTri(CDB::TRI* T,const Fvector3*	V_array,u32 ac)
 	{
 		
 		v[0].set(V_array[T->verts[0]]);
@@ -71,7 +71,7 @@ struct SPHDBGDrawTri :public SPHDBGDrawAbsract
 		c=ac;
 		solid = false;
 	}
-	SPHDBGDrawTri(const Fvector &v0, const Fvector &v1, const Fvector &v2, u32 ac, bool solid_)
+	SPHDBGDrawTri(const Fvector3& v0, const Fvector3& v1, const Fvector3& v2, u32 ac, bool solid_)
 	{
 		v[0].set(v0);v[1].set(v1);v[2].set(v2);
 		c = ac;
@@ -105,7 +105,7 @@ void DBG_DrawTri(CDB::RESULT* T,u32 c)
 {
 	DBG_DrawPHAbstruct(xr_new<SPHDBGDrawTri>(T,c));
 }
-void DBG_DrawTri(CDB::TRI* T,const Fvector* V_verts,u32 c)
+void DBG_DrawTri(CDB::TRI* T,const Fvector3* V_verts,u32 c)
 {
 	DBG_DrawPHAbstruct(xr_new<SPHDBGDrawTri>(T,V_verts,c));
 }
@@ -113,8 +113,9 @@ void DBG_DrawTri(CDB::TRI* T,const Fvector* V_verts,u32 c)
 
 struct SPHDBGDrawLine : public SPHDBGDrawAbsract
 {
-	Fvector p[2];u32 c;
-	SPHDBGDrawLine(const Fvector& p0,const Fvector& p1,u32 ca)
+	Fvector3 p[2];
+	u32 c;
+	SPHDBGDrawLine(const Fvector3& p0,const Fvector3& p1,u32 ca)
 	{
 		p[0].set(p0);p[1].set(p1);c=ca;
 	}
@@ -124,17 +125,18 @@ struct SPHDBGDrawLine : public SPHDBGDrawAbsract
 	}
 };
 
-void DBG_DrawLine ( const Fvector& p0, const Fvector& p1, u32 c )
+void DBG_DrawLine ( const Fvector3& p0, const Fvector3& p1, u32 c )
 {
 	DBG_DrawPHAbstruct( xr_new<SPHDBGDrawLine>( p0, p1, c ) );
 }
 void DBG_DrawMatrix( const Fmatrix &m, float size, u8 a/* = 255*/ )
 {
-	Fvector to;to.add( m.c,Fvector( ).mul( m.i, size ) );
+	Fvector3 to;
+	to.add( m.c, Fvector3( ).mul( m.i, size ) );
 	DBG_DrawPHAbstruct( xr_new<SPHDBGDrawLine>( m.c, to, D3DCOLOR_XRGB(a, 0, 0 ) ) );
-	to.add(m.c,Fvector( ).mul( m.j, size ) );
+	to.add(m.c, Fvector3( ).mul( m.j, size ) );
 	DBG_DrawPHAbstruct( xr_new<SPHDBGDrawLine>( m.c, to, D3DCOLOR_XRGB(0, a, 0 ) ) );
-	to.add(m.c,Fvector( ).mul( m.k, size ) );
+	to.add(m.c, Fvector3( ).mul( m.k, size ) );
 	DBG_DrawPHAbstruct( xr_new<SPHDBGDrawLine>( m.c, to, D3DCOLOR_XRGB(0, 0, a ) ) );
 }
 
@@ -159,10 +161,13 @@ inline	void rotate<2>(Fmatrix &m, float ang)
 }
 
 template<int ax>
-void DBG_DrawRotation( float ang0, float ang1, const Fmatrix& m, const Fvector &l, float size, u32 ac, bool solid, u32 tessel)
+void DBG_DrawRotation( float ang0, float ang1, const Fmatrix& m, const Fvector3& l, float size, u32 ac, bool solid, u32 tessel)
 {
-	Fvector from; from.set( m.c );
-	Fvector ln; ln.set( l ); ln.mul( size );
+	Fvector3 from;
+	from.set( m.c );
+	Fvector3 ln;
+	ln.set( l );
+	ln.mul( size );
 
 	
 	const float ftess = (float)tessel;
@@ -172,35 +177,38 @@ void DBG_DrawRotation( float ang0, float ang1, const Fmatrix& m, const Fvector &
 	rotate<ax>( r, ( ang1 - ang0 ) / ftess );
 	for( u32 i = 0; tessel > i; ++i )
 	{
-		Fvector tmp;
+		Fvector3 tmp;
 		mm.transform_dir( tmp, ln );
-		Fvector to0; to0.add( from, tmp );
+		Fvector3 to0;
+		to0.add( from, tmp );
 		mm.mulB_43( r );
 		mm.transform_dir( tmp, ln );
-		Fvector to1; to1.add( from, tmp );
+		Fvector3 to1;
+		to1.add( from, tmp );
 		DBG_DrawPHAbstruct( xr_new<SPHDBGDrawTri>( from, to0, to1, ac, solid ) );
 	}
 }
 
 void	DBG_DrawRotationX( const Fmatrix &m, float ang0, float ang1, float size, u32 ac, bool solid, u32 tessel )
 {
-	DBG_DrawRotation<0>( ang0 , ang1, m, Fvector().set(0,0,1) ,size, ac, solid, tessel );
+	DBG_DrawRotation<0>( ang0 , ang1, m, Fvector3().set(0,0,1) ,size, ac, solid, tessel );
 }
 
 void	DBG_DrawRotationY( const Fmatrix &m, float ang0, float ang1, float size, u32 ac, bool solid, u32 tessel  )
 {
-	DBG_DrawRotation<1>( ang0 , ang1, m, Fvector().set(1,0,0),size, ac, solid, tessel );
+	DBG_DrawRotation<1>( ang0 , ang1, m, Fvector3().set(1,0,0),size, ac, solid, tessel );
 }
 
 void	DBG_DrawRotationZ( const Fmatrix &m, float ang0, float ang1, float size, u32 ac, bool solid, u32 tessel  )
 {
-	DBG_DrawRotation<2>( ang0 , ang1, m, Fvector().set(0,1,0), size, ac, solid, tessel );
+	DBG_DrawRotation<2>( ang0 , ang1, m, Fvector3().set(0,1,0), size, ac, solid, tessel );
 }
 
 struct SPHDBGDrawAABB :public SPHDBGDrawAbsract
 {
-	Fvector p[2];u32 c;	
-	SPHDBGDrawAABB(const Fvector& center,const Fvector& AABB,u32 ac)
+	Fvector3 p[2];
+	u32 c;
+	SPHDBGDrawAABB(const Fvector3& center,const Fvector3& AABB,u32 ac)
 	{
 		p[0].set(center);p[1].set(AABB);
 		c=ac;
@@ -211,15 +219,17 @@ struct SPHDBGDrawAABB :public SPHDBGDrawAbsract
 	}
 };
 
-void DBG_DrawAABB(const Fvector& center,const Fvector& AABB,u32 c)
+void DBG_DrawAABB(const Fvector3& center,const Fvector3& AABB,u32 c)
 {
 	DBG_DrawPHAbstruct(xr_new<SPHDBGDrawAABB>(center,AABB,c));
 }
 
 struct SPHDBGDrawOBB: public SPHDBGDrawAbsract
 {
-	Fmatrix m;Fvector h;u32 c;
-	SPHDBGDrawOBB(const Fmatrix am,const Fvector ah, u32 ac)
+	Fmatrix m;
+	Fvector3 h;
+	u32 c;
+	SPHDBGDrawOBB(const Fmatrix am,const Fvector3 ah, u32 ac)
 	{
 		m.set(am);h.set(ah);c=ac;
 	}
@@ -228,25 +238,29 @@ struct SPHDBGDrawOBB: public SPHDBGDrawAbsract
 		Level().debug_renderer().draw_obb(m,h,c);
 	}
 };
-void DBG_DrawOBB(const Fmatrix& m,const Fvector h,u32 c)
+void DBG_DrawOBB(const Fmatrix& m,const Fvector3 h,u32 c)
 {
 	DBG_DrawPHAbstruct(xr_new<SPHDBGDrawOBB>(m,h,c));
 };
 struct SPHDBGDrawPoint :public SPHDBGDrawAbsract
 {
-	Fvector p;float size;u32 c;
-	SPHDBGDrawPoint(const Fvector ap,float s,u32 ac)
+	Fvector3 p;
+	float size;u32 c;
+	SPHDBGDrawPoint(const Fvector3 ap,float s,u32 ac)
 	{
 		p.set(ap),size=s;c=ac;
 	}
 	virtual void render()
 	{
 		//Level().debug_renderer().draw_aabb(p,size,size,size,c);
-		Fmatrix m;m.identity();m.scale(size,size,size);m.c.set(p);
+		Fmatrix m;
+		m.identity();
+		m.scale(size,size,size);
+		m.c.set(p);
 		Level().debug_renderer().draw_ellipse(m,c);
 	}
 };
-void DBG_DrawPoint(const Fvector& p,float size,u32 c)
+void DBG_DrawPoint(const Fvector3& p,float size,u32 c)
 {
 	DBG_DrawPHAbstruct(xr_new<SPHDBGDrawPoint>(p,size,c));
 }
@@ -515,7 +529,7 @@ void PH_DBG_Render()
 			SPHContactDBGDraw &c=*i;
 			bool is_cyl=c.geomClass==dCylinderClassUser;
 			Level().debug_renderer().draw_aabb			(c.pos,.01f,.01f,.01f,D3DCOLOR_XRGB(255*is_cyl,0,255*!is_cyl));
-			Fvector dir;
+			Fvector3 dir;
 			dir.set(c.norm);
 			dir.mul(c.depth*100.f);
 			dir.add(c.pos);

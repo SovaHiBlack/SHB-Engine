@@ -6,7 +6,7 @@
 #include "Console.h"
 #include "IConsoleCommand.h"
 #include "fbasicvisual.h"
-#include "cameramanager.h"
+#include "CameraManager.h"
 #include "environment.h"
 //#include "Input.h"
 //#include "CustomHUD.h"

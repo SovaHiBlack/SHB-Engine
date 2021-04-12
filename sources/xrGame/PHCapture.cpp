@@ -4,7 +4,7 @@
 #include "Physics.h"
 #include "ExtendedGeom.h"
 #include "PHCapture.h"
-#include "entity_alive.h"
+#include "EntityAlive.h"
 #include "PHMovementControl.h"
 #include "..\ENGINE\skeletoncustom.h"
 #include "characterphysicssupport.h"
@@ -86,8 +86,8 @@ void CPHCapture::PullingUpdate( )
 		return;
 	}
 
-	Fvector dir;
-	Fvector capture_bone_position;
+	Fvector3 dir;
+	Fvector3 capture_bone_position;
 	CObject* object = smart_cast<CObject*>(m_character->PhysicsRefObject( ));
 	capture_bone_position.set(m_capture_bone->mTransform.c);
 	object->XFORM( ).transform_tiny(capture_bone_position);
@@ -230,7 +230,7 @@ void CPHCapture::CapturedUpdate( )
 		m_character->ApplyForce(m_joint_feedback.f1[0] / f, m_joint_feedback.f1[1] / f, m_joint_feedback.f1[2] / f);
 	}
 
-	Fvector capture_bone_position;
+	Fvector3 capture_bone_position;
 	CObject* object = smart_cast<CObject*>(m_character->PhysicsRefObject( ));
 	capture_bone_position.set(m_capture_bone->mTransform.c);
 	object->XFORM( ).transform_tiny(capture_bone_position);

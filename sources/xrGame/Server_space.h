@@ -52,8 +52,8 @@ using FLOAT_IT = FLOAT_VECTOR::iterator;
 //DEFINE_VECTOR	(char*,						LPSTR_VECTOR,					LPSTR_IT);
 using LPSTR_VECTOR = xr_vector<char*>;
 using LPSTR_IT = LPSTR_VECTOR::iterator;
-//DEFINE_VECTOR	(Fvector,					FVECTOR_VECTOR,					FVECTOR_IT);
-using FVECTOR_VECTOR = xr_vector<Fvector>;
+//DEFINE_VECTOR	(Fvector3,					FVECTOR_VECTOR,					FVECTOR_IT);
+using FVECTOR_VECTOR = xr_vector<Fvector3>;
 using FVECTOR_IT = FVECTOR_VECTOR::iterator;
 
 #define DECLARE_ENTITY_DESTROY

@@ -2,10 +2,10 @@
 
 #include "actorcondition.h"
 #include "Actor.h"
-#include "actorEffector.h"
+#include "ActorEffector.h"
 #include "Inventory.h"
 #include "Level.h"
-#include "sleepeffector.h"
+#include "SleepEffector.h"
 #include "game_base_space.h"
 #include "autosave_manager.h"
 #include "Server.h"

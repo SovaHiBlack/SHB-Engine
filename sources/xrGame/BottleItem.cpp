@@ -5,7 +5,7 @@
 #include "BottleItem.h"
 #include "Messages.h"
 #include "../ENGINE/net_utils.h"
-#include "entity_alive.h"
+#include "EntityAlive.h"
 #include "EntityCondition.h"
 
 #define BREAK_POWER 5.0f

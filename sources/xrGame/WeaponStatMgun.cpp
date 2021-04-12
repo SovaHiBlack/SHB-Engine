@@ -7,7 +7,7 @@
 #include "object_broker.h"
 #include "ai_sounds.h"
 #include "Actor.h"
-#include "actorEffector.h"
+#include "ActorEffector.h"
 #include "camerafirsteye.h"
 #include "xr_level_controller.h"
 #include "GameObject_space.h"

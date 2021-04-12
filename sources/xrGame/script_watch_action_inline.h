@@ -14,7 +14,7 @@ inline	CScriptWatchAction::CScriptWatchAction		(SightManager::ESightType tWatchT
 	m_tGoalType			= eGoalTypeWatchType;
 }
 
-inline	CScriptWatchAction::CScriptWatchAction		(SightManager::ESightType tWatchType, const Fvector &tDirection)
+inline	CScriptWatchAction::CScriptWatchAction		(SightManager::ESightType tWatchType, const Fvector3& tDirection)
 {
 	SetWatchDirection	(tDirection);
 	SetWatchType		(tWatchType);
@@ -28,7 +28,7 @@ inline	CScriptWatchAction::CScriptWatchAction		(SightManager::ESightType tWatchT
 }
 
 // Searchlight look ///////////////////////////////////////////////
-inline	CScriptWatchAction::CScriptWatchAction		(const Fvector &tTarget, float vel1, float vel2)
+inline	CScriptWatchAction::CScriptWatchAction		(const Fvector3& tTarget, float vel1, float vel2)
 {
 	m_tpObjectToWatch	= 0;
 	m_tTargetPoint		= tTarget;
@@ -51,7 +51,7 @@ inline	void CScriptWatchAction::SetWatchType		(SightManager::ESightType tWatchTy
 	m_bCompleted		= false;
 }
 
-inline	void CScriptWatchAction::SetWatchDirection	(const Fvector &tDirection)
+inline	void CScriptWatchAction::SetWatchDirection	(const Fvector3& tDirection)
 {
 	m_tWatchVector		= tDirection;
 	m_tGoalType			= eGoalTypeDirection;

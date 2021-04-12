@@ -38,14 +38,14 @@ public:
 	virtual						~CScriptParticles	();
 
 	void						Play				();
-	void						PlayAtPos			(const Fvector &pos);
+	void						PlayAtPos			(const Fvector3& pos);
 	void						Stop				();
 	void						StopDeffered		();
 
 	bool						IsPlaying			() const;
 	bool						IsLooped			() const;
 
-	void						MoveTo				(const Fvector &pos, const Fvector& vel);
+	void						MoveTo				(const Fvector3& pos, const Fvector3& vel);
 
 	void						LoadPath			(const char* caPathName);
 	void						StartPath			(bool looped);

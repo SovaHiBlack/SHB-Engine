@@ -5,16 +5,16 @@
 
 bool CHolderCustom::attach_Actor(CGameObject* actor)
 {
-	m_owner						= actor;
-	m_ownerActor				= smart_cast<CActor*>(actor);
+	m_owner = actor;
+	m_ownerActor = smart_cast<CActor*>(actor);
 
 	return true;
 }
 
-void CHolderCustom::detach_Actor()
+void CHolderCustom::detach_Actor( )
 {
-	m_owner						= NULL;
-	m_ownerActor				= NULL;
+	m_owner = nullptr;
+	m_ownerActor = nullptr;
 }
 
 using namespace luabind;
@@ -27,7 +27,7 @@ void CHolderCustom::script_register(lua_State* L)
 			class_<CHolderCustom>("holder")
 			.def("engaged", &CHolderCustom::Engaged)
 			.def("Action", &CHolderCustom::Action)
-//			.def("SetParam",		(void (CHolderCustom::*)(int,Fvector2)) &CHolderCustom::SetParam)
-			.def("SetParam", (void (CHolderCustom::*)(int, Fvector3)) & CHolderCustom::SetParam)
+//			.def("SetParam", (void (CHolderCustom::*)(int, Fvector2))& CHolderCustom::SetParam)
+			.def("SetParam", (void (CHolderCustom::*)(int, Fvector3))& CHolderCustom::SetParam)
 		];
 }

@@ -71,12 +71,12 @@ void CPHShell::Activate(const Fmatrix& m0, float dt01, const Fmatrix& m2, bool d
 	m_flags.set(flActivating, TRUE);
 	spatial_register( );
 
-	Fvector lin_vel;
+	Fvector3 lin_vel;
 	lin_vel.sub(m2.c, m0.c);
 	set_LinearVel(lin_vel);
 }
 
-void CPHShell::Activate(const Fmatrix& transform, const Fvector& lin_vel, const Fvector& ang_vel, bool disable)
+void CPHShell::Activate(const Fmatrix& transform, const Fvector3& lin_vel, const Fvector3& ang_vel, bool disable)
 {
 	if (isActive( ))
 	{

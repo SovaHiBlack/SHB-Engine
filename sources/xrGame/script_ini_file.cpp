@@ -98,7 +98,7 @@ float CScriptIniFile::r_float			(const char* S, const char* L)
 	return		(inherited::r_float(S,L));
 }
 
-Fvector CScriptIniFile::r_fvector3		(const char* S, const char* L)
+Fvector3 CScriptIniFile::r_fvector3		(const char* S, const char* L)
 {
 	THROW3		(inherited::section_exist(S),"Cannot find section",S);
 	THROW3		(inherited::line_exist(S,L),"Cannot find line",L);

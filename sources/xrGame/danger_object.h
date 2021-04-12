@@ -8,7 +8,7 @@
 
 #pragma once
 
-#include "entity_alive.h"
+#include "EntityAlive.h"
 
 class CDangerObject {
 public:

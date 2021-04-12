@@ -8,7 +8,7 @@
 
 #pragma once
 
-inline	const Fvector &CPatrolPoint::position						() const
+inline	const Fvector3& CPatrolPoint::position						() const
 {
 	VERIFY				(m_initialized);
 	return				(m_position);

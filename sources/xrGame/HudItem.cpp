@@ -6,7 +6,7 @@
 //#include "PHItem.h"
 #include "WeaponHUD.h"
 #include "Actor.h"
-#include "actoreffector.h"
+#include "ActorEffector.h"
 #include "Missile.h"
 #include "Messages.h"
 #include "Level.h"

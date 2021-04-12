@@ -701,8 +701,8 @@
     <ClInclude Include="enemy_manager_inline.h" />
     <ClInclude Include="Entity.h" />
     <ClInclude Include="EntityCondition.h" />
-    <ClInclude Include="entity_alive.h" />
-    <ClInclude Include="entity_alive_inline.h" />
+    <ClInclude Include="EntityAlive.h" />
+    <ClInclude Include="EntityAlive_inline.h" />
     <ClInclude Include="ExoOutfit.h" />
     <CustomBuild Include="Explosive.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
@@ -997,8 +997,8 @@
     <ClInclude Include="PHItem.h" />
     <ClInclude Include="IPhysicShellCreator.h" />
     <ClInclude Include="PostprocessAnimator.h" />
-    <ClInclude Include="pp_effector_custom.h" />
-    <ClInclude Include="pp_effector_distance.h" />
+    <ClInclude Include="PPEffectorCustom.h" />
+    <ClInclude Include="PPEffectorDistance.h" />
     <ClInclude Include="problem_solver.h" />
     <ClInclude Include="problem_solver_inline.h" />
     <ClInclude Include="Profiler.h" />
@@ -1464,7 +1464,7 @@
     <ClInclude Include="xr_level_controller.h" />
     <ClInclude Include="xrTime.h" />
     <ClInclude Include="ZoneVisual.h" />
-    <ClInclude Include="zone_effector.h" />
+    <ClInclude Include="ZoneEffector.h" />
     <ClInclude Include="ZudaArtefact.h" />
   </ItemGroup>
   <ItemGroup>
@@ -1782,7 +1782,7 @@
     <ClCompile Include="enemy_manager.cpp" />
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="EntityCondition.cpp" />
-    <ClCompile Include="entity_alive.cpp" />
+    <ClCompile Include="EntityAlive.cpp" />
     <ClCompile Include="ExoOutfit.cpp" />
     <ClCompile Include="Explosive.cpp" />
     <ClCompile Include="ExplosiveItem.cpp" />
@@ -1981,8 +1981,8 @@
     <ClCompile Include="physics_game.cpp" />
     <ClCompile Include="PHItem.cpp" />
     <ClCompile Include="PostprocessAnimator.cpp" />
-    <ClCompile Include="pp_effector_custom.cpp" />
-    <ClCompile Include="pp_effector_distance.cpp" />
+    <ClCompile Include="PPEffectorCustom.cpp" />
+    <ClCompile Include="PPEffectorDistance.cpp" />
     <ClCompile Include="Profiler.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
@@ -2411,7 +2411,7 @@
     <ClCompile Include="xr_level_controller.cpp" />
     <ClCompile Include="xrTime.cpp" />
     <ClCompile Include="ZoneVisual.cpp" />
-    <ClCompile Include="zone_effector.cpp" />
+    <ClCompile Include="ZoneEffector.cpp" />
     <ClCompile Include="ZudaArtefact.cpp" />
   </ItemGroup>
   <ItemGroup>

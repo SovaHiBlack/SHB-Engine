@@ -22,7 +22,7 @@
 //#include "game_base_space.h"
 //#include "PHValide.h"
 
-inline bool PhOutOfBoundaries(const Fvector& v)
+inline bool PhOutOfBoundaries(const Fvector3& v)
 {
 	return v.y < phBoundaries.y1;
 }
@@ -40,11 +40,11 @@ float inline sgn(float v)
 	return v < 0.0f ? -1.0f : 1.0f;
 }
 
-bool test_sides(const Fvector& center, const Fvector& side_dir, const Fvector& fv_dir, const Fvector& box, int tri_id)
+bool test_sides(const Fvector3& center, const Fvector3& side_dir, const Fvector3& fv_dir, const Fvector3& box, int tri_id)
 {
 	Triangle tri;
 	InitTriangle(Level( ).ObjectSpace.GetStaticTris( ) + tri_id, tri);
-	Fvector* verts = Level( ).ObjectSpace.GetStaticVerts( );
+	Fvector3* verts = Level( ).ObjectSpace.GetStaticVerts( );
 	{
 		float dist = cast_fv(tri.norm).dotproduct(center) - tri.dist;
 		//// tri norm
@@ -113,17 +113,17 @@ bool test_sides(const Fvector& center, const Fvector& side_dir, const Fvector& f
 		}
 	}
 	////sides cross///////////////////////////////////////////////////////////////////////////////////////////////
-	Fvector crses[3];
+	Fvector3 crses[3];
 	crses[0].set(-tri.side0[2], 0, tri.side0[0]);
 	crses[1].set(-tri.side1[2], 0, tri.side1[0]);
-	const Fvector& v2 = verts[tri.T->verts[2]];
-	const Fvector& v0 = verts[tri.T->verts[0]];
+	const Fvector3& v2 = verts[tri.T->verts[2]];
+	const Fvector3& v0 = verts[tri.T->verts[0]];
 	crses[2].x = -(v0.z - v2.z);
 	crses[2].y = 0.f;
 	crses[2].z = v0.x - v2.x;
 	for (u8 i = 0; 3 > i; ++i)
 	{
-		const Fvector& crs = crses[i];
+		const Fvector3& crs = crses[i];
 		u32 sv = tri.T->verts[i % 3];
 		u32 ov = tri.T->verts[(i + 2) % 3];
 
@@ -459,7 +459,7 @@ void CPHSimpleCharacter::Destroy( )
 }
 
 const static u64 impulse_time_constant = 30;
-void CPHSimpleCharacter::ApplyImpulse(const Fvector& dir, dReal P)
+void CPHSimpleCharacter::ApplyImpulse(const Fvector3& dir, dReal P)
 {
 	if (!b_exist || b_external_impulse)
 	{
@@ -479,7 +479,7 @@ void CPHSimpleCharacter::ApplyImpulse(const Fvector& dir, dReal P)
 	dBodySetForce(m_body, m_ext_imulse.x * P / fixed_step, m_ext_imulse.y * P / fixed_step, m_ext_imulse.z * P / fixed_step);
 }
 
-void CPHSimpleCharacter::ApplyForce(const Fvector& force)
+void CPHSimpleCharacter::ApplyForce(const Fvector3& force)
 {
 	ApplyForce(force.x, force.y, force.z);
 }
@@ -495,7 +495,7 @@ void CPHSimpleCharacter::ApplyForce(float x, float y, float z)
 	dBodyAddForce(m_body, x, y, z);
 }
 
-void CPHSimpleCharacter::ApplyForce(const Fvector& dir, float force)
+void CPHSimpleCharacter::ApplyForce(const Fvector3& dir, float force)
 {
 	ApplyForce(dir.x * force, dir.y * force, dir.z * force);
 }
@@ -524,10 +524,10 @@ void CPHSimpleCharacter::PhDataUpdate(dReal /**step/**/)
 		b_external_impulse = false;
 		m_ext_impuls_stop_step = u64(-1);
 		m_ext_imulse.set(0.0f, 0.0f, 0.0f);
-		Fvector vel;
+		Fvector3 vel;
 		GetVelocity(vel);
 		dVectorLimit(cast_fp(vel), m_max_velocity, cast_fp(vel));
-		SetVelocity(Fvector( ).set(0, 0, 0));
+		SetVelocity(Fvector3( ).set(0, 0, 0));
 	}
 
 	was_contact = is_contact;
@@ -605,10 +605,10 @@ void CPHSimpleCharacter::PhTune(dReal step)
 //		Msg("death pos %f2.2,%f2.2,%f2.2", ud->last_pos[0] ,ud->last_pos[1], ud->last_pos[2]);
 //#endif // def DEBUG
 
-		Fvector pos;
+		Fvector3 pos;
 		pos.set(cast_fv(dBodyGetPosition(m_body)));
 
-		Fvector d;
+		Fvector3 d;
 		d.set(cast_fv(dBodyGetLinearVel(m_body)));
 		d.mul(fixed_step);
 		pos.sub(d);
@@ -737,9 +737,9 @@ void CPHSimpleCharacter::PhTune(dReal step)
 #ifdef DEBUG
 		if (ph_dbg_draw_mask.test(phDbgCharacterControl))
 		{
-			DBG_DrawLine(cast_fv(dBodyGetPosition(m_body)), Fvector( ).add(cast_fv(dBodyGetPosition(m_body)), Fvector( ).mul(cast_fv(sidedir), 1.f)), D3DCOLOR_XRGB(0, 0, 255));
-			DBG_DrawLine(cast_fv(dBodyGetPosition(m_body)), Fvector( ).add(cast_fv(dBodyGetPosition(m_body)), Fvector( ).mul(cast_fv(m_control_force), 1.f / 19.6f)), D3DCOLOR_XRGB(0, 0, 255));
-			DBG_DrawLine(cast_fv(dBodyGetPosition(m_body)), Fvector( ).add(cast_fv(dBodyGetPosition(m_body)), Fvector( ).mul(cast_fv(dBodyGetForce(m_body)), 1.f / 19.6f)), D3DCOLOR_XRGB(255, 0, 0));
+			DBG_DrawLine(cast_fv(dBodyGetPosition(m_body)), Fvector3( ).add(cast_fv(dBodyGetPosition(m_body)), Fvector3( ).mul(cast_fv(sidedir), 1.f)), D3DCOLOR_XRGB(0, 0, 255));
+			DBG_DrawLine(cast_fv(dBodyGetPosition(m_body)), Fvector3( ).add(cast_fv(dBodyGetPosition(m_body)), Fvector3( ).mul(cast_fv(m_control_force), 1.f / 19.6f)), D3DCOLOR_XRGB(0, 0, 255));
+			DBG_DrawLine(cast_fv(dBodyGetPosition(m_body)), Fvector3( ).add(cast_fv(dBodyGetPosition(m_body)), Fvector3( ).mul(cast_fv(dBodyGetForce(m_body)), 1.f / 19.6f)), D3DCOLOR_XRGB(255, 0, 0));
 		}
 #endif // def DEBUG
 
@@ -772,7 +772,7 @@ void CPHSimpleCharacter::PhTune(dReal step)
 #ifdef DEBUG
 	if (ph_dbg_draw_mask.test(phDbgCharacterControl))
 	{
-		DBG_DrawLine(cast_fv(dBodyGetPosition(m_body)), Fvector( ).add(cast_fv(dBodyGetPosition(m_body)), Fvector( ).mul(cast_fv(dBodyGetForce(m_body)), 1.0f / 19.6f)), D3DCOLOR_XRGB(255, 0, 128));
+		DBG_DrawLine(cast_fv(dBodyGetPosition(m_body)), Fvector3( ).add(cast_fv(dBodyGetPosition(m_body)), Fvector3( ).mul(cast_fv(dBodyGetForce(m_body)), 1.0f / 19.6f)), D3DCOLOR_XRGB(255, 0, 128));
 	}
 #endif // def DEBUG
 
@@ -831,12 +831,12 @@ bool CPHSimpleCharacter::ValidateWalkOnObject( )
 
 bool CPHSimpleCharacter::ValidateWalkOnMesh( )
 {
-	Fvector AABB;
-	Fvector AABB_forbid;
-	Fvector center;
-	Fvector center_forbid;
-	Fvector accel_add;
-	Fvector accel;
+	Fvector3 AABB;
+	Fvector3 AABB_forbid;
+	Fvector3 center;
+	Fvector3 center_forbid;
+	Fvector3 accel_add;
+	Fvector3 accel;
 
 	AABB.x = m_radius;
 	AABB.y = m_radius;
@@ -866,7 +866,8 @@ bool CPHSimpleCharacter::ValidateWalkOnMesh( )
 	// perform single query / two usages
 	Fbox3			query;
 	Fbox3 tmp;
-	Fvector			q_c, q_d;
+	Fvector3			q_c;
+	Fvector3 q_d;
 	query.set(center_forbid, center_forbid);
 	query.grow(AABB_forbid);
 	tmp.set(center, center);
@@ -877,11 +878,11 @@ bool CPHSimpleCharacter::ValidateWalkOnMesh( )
 	XRC.box_options(0);
 	XRC.box_query(Level( ).ObjectSpace.GetStaticModel( ), q_c, q_d);
 
-	Fvector sd_dir;
+	Fvector3 sd_dir;
 	sd_dir.set(-accel.z, 0, accel.x);
-	Fvector obb_fb;
+	Fvector3 obb_fb;
 	obb_fb.set(m_radius * 0.5f, m_radius * 2.0f, m_radius * 0.7f);
-	Fvector obb;
+	Fvector3 obb;
 	obb.set(m_radius * 0.5f, m_radius, m_radius * 0.7f);
 
 #ifdef DEBUG
@@ -956,7 +957,7 @@ bool CPHSimpleCharacter::ValidateWalkOnMesh( )
 	return false;
 }
 
-void CPHSimpleCharacter::SetAcceleration(Fvector accel)
+void CPHSimpleCharacter::SetAcceleration(Fvector3 accel)
 {
 	if (!b_exist)
 	{
@@ -974,7 +975,7 @@ void CPHSimpleCharacter::SetAcceleration(Fvector accel)
 	m_acceleration = accel;
 }
 
-void CPHSimpleCharacter::SetCamDir(const Fvector& cam_dir)
+void CPHSimpleCharacter::SetCamDir(const Fvector3& cam_dir)
 {
 	m_cam_dir.set(cam_dir);
 }
@@ -998,12 +999,12 @@ void CPHSimpleCharacter::ApplyAcceleration( )
 	{
 		if (m_elevator_state.NearState( ))
 		{
-			m_elevator_state.GetControlDir(*(Fvector*) accel);
+			m_elevator_state.GetControlDir(*(Fvector3*) accel);
 		}
 
 		if (m_elevator_state.ClimbingState( ))
 		{
-			if (m_elevator_state.GetControlDir(*(Fvector*) m_control_force))
+			if (m_elevator_state.GetControlDir(*(Fvector3*) m_control_force))
 			{
 				dVectorMul(m_control_force, m_friction_factor * m.mass * pull_force * 2.0f);
 				return;
@@ -1051,7 +1052,7 @@ void CPHSimpleCharacter::ApplyAcceleration( )
 	dVectorMul(m_control_force, m_friction_factor);
 }
 
-void CPHSimpleCharacter::IPosition(Fvector& pos)
+void CPHSimpleCharacter::IPosition(Fvector3& pos)
 {
 	if (!b_exist)
 	{
@@ -1067,7 +1068,7 @@ void CPHSimpleCharacter::IPosition(Fvector& pos)
 	return;
 }
 
-void CPHSimpleCharacter::SetPosition(Fvector pos)
+void CPHSimpleCharacter::SetPosition(Fvector3 pos)
 {
 	VERIFY_BOUNDARIES(pos, phBoundaries, PhysicsRefObject( ));
 	if (!b_exist)
@@ -1098,7 +1099,7 @@ void CPHSimpleCharacter::SetPosition(Fvector pos)
 	CPHObject::spatial_move( );
 }
 
-void CPHSimpleCharacter::GetPosition(Fvector& vpos)
+void CPHSimpleCharacter::GetPosition(Fvector3& vpos)
 {
 	if (!b_exist)
 	{
@@ -1114,14 +1115,14 @@ void CPHSimpleCharacter::GetPosition(Fvector& vpos)
 	VERIFY_BOUNDARIES(vpos, phBoundaries, PhysicsRefObject( ));
 }
 
-void CPHSimpleCharacter::GetPreviousPosition(Fvector& pos)
+void CPHSimpleCharacter::GetPreviousPosition(Fvector3& pos)
 {
 	VERIFY(b_exist);
 	VERIFY(!ph_world->Processing( ));
 	m_body_interpolation.GetPosition(pos, 0);
 }
 
-void CPHSimpleCharacter::GetVelocity(Fvector& vvel)
+void CPHSimpleCharacter::GetVelocity(Fvector3& vvel)
 {
 	if (!b_exist)
 	{
@@ -1134,7 +1135,7 @@ void CPHSimpleCharacter::GetVelocity(Fvector& vvel)
 	return;
 }
 
-void CPHSimpleCharacter::SetVelocity(Fvector vel)
+void CPHSimpleCharacter::SetVelocity(Fvector3 vel)
 {
 	if (!b_exist)
 	{
@@ -1180,15 +1181,15 @@ void CPHSimpleCharacter::OnRender( )
 
 	Fmatrix m;
 	m.identity( );
-	Fvector n = *(Fvector*) m_ground_contact_normal;
+	Fvector3 n = *(Fvector3*) m_ground_contact_normal;
 	n.mul(100.0f);
-	Fvector pos;
+	Fvector3 pos;
 	GetPosition(pos);
 	pos.y += m_radius;
-	Level( ).debug_renderer( ).draw_line(m, pos, *(Fvector*) m_control_force, color_rgba(256, 0, 0, 1));
+	Level( ).debug_renderer( ).draw_line(m, pos, *(Fvector3*) m_control_force, color_rgba(256, 0, 0, 1));
 	Level( ).debug_renderer( ).draw_line(m, pos, n, 0xefffffff);
 
-	Fvector scale;
+	Fvector3 scale;
 	scale.set(0.35f, 0.35f, 0.35f);
 	Fmatrix M;
 	M.identity( );
@@ -1277,9 +1278,9 @@ void CPHSimpleCharacter::SafeAndLimitVelocity( )
 			float ll_limit = m_ext_imulse.dotproduct(cast_fv(linear_velocity)) * 10.0f / fixed_step;
 			if (sq_mag > EPS_L)
 			{
-				Fvector acc;
-				acc.set(Fvector( ).mul(m_acceleration, 1.0f / _sqrt(sq_mag)));
-				Fvector vll;
+				Fvector3 acc;
+				acc.set(Fvector3( ).mul(m_acceleration, 1.0f / _sqrt(sq_mag)));
+				Fvector3 vll;
 				vll.mul(cast_fv(linear_velocity), 1.0f / mag);
 				float mxa = vll.dotproduct(acc);
 				if (mxa * ll_limit > l_limit && !fis_zero(mxa))
@@ -1440,7 +1441,7 @@ ObjectContactCallbackFun* CPHSimpleCharacter::ObjectContactCallBack( )
 
 u16 CPHSimpleCharacter::RetriveContactBone( )
 {
-	Fvector dir;
+	Fvector3 dir;
 	m_collision_damage_info.HitDir(dir);
 	collide::ray_defs	Q(m_collision_damage_info.HitPos( ), dir, m_radius, CDB::OPT_ONLYNEAREST | CDB::OPT_CULL, collide::rqtBoth);  // CDB::OPT_ONLYFIRST CDB::OPT_ONLYNEAREST
 	RQR.r_clear( );
@@ -1458,7 +1459,7 @@ u16 CPHSimpleCharacter::RetriveContactBone( )
 		CKinematics* K = smart_cast<CKinematics*>(object->Visual( ));
 		u16 count = K->LL_BoneCount( );
 		CBoneInstance* bone_instances = &K->LL_GetBoneInstance(0);
-		Fvector pos_in_object;
+		Fvector3 pos_in_object;
 		pos_in_object.sub(m_collision_damage_info.HitPos( ), object->Position( ));//vector from object center to contact position currently in global frame
 		Fmatrix object_form;
 		object_form.set(object->XFORM( ));
@@ -1467,7 +1468,7 @@ u16 CPHSimpleCharacter::RetriveContactBone( )
 		float sq_dist = dInfinity;
 		for (u16 i = 0; i < count; ++i)
 		{
-			Fvector c_to_bone;
+			Fvector3 c_to_bone;
 			c_to_bone.sub(bone_instances[i].mTransform.c, pos_in_object);
 			float temp_sq_dist = c_to_bone.square_magnitude( );
 			if (temp_sq_dist < sq_dist)
@@ -1684,7 +1685,7 @@ void CPHSimpleCharacter::FootProcess(dContact* c, bool& do_collide, bool bo)
 	}
 }
 
-void CPHSimpleCharacter::GroundNormal(Fvector& norm)
+void CPHSimpleCharacter::GroundNormal(Fvector3& norm)
 {
 	if (m_elevator_state.ClimbingState( ))
 	{
@@ -1692,7 +1693,7 @@ void CPHSimpleCharacter::GroundNormal(Fvector& norm)
 	}
 	else
 	{
-		norm.set(*((Fvector*) m_ground_contact_normal));
+		norm.set(*((Fvector3*) m_ground_contact_normal));
 	}
 }
 
@@ -1742,7 +1743,7 @@ float CPHSimpleCharacter::FootRadius( )
 	}
 }
 
-void CPHSimpleCharacter::DeathPosition(Fvector& deathPos)
+void CPHSimpleCharacter::DeathPosition(Fvector3& deathPos)
 {
 	if (!b_exist)
 	{
@@ -1764,7 +1765,7 @@ void CPHSimpleCharacter::DeathPosition(Fvector& deathPos)
 	}
 }
 
-void CPHSimpleCharacter::AddControlVel(const Fvector& vel)
+void CPHSimpleCharacter::AddControlVel(const Fvector3& vel)
 {
 	m_acceleration.add(vel);
 	m_max_velocity += vel.magnitude( );
@@ -1830,7 +1831,7 @@ float CPHSimpleCharacter::SCollisionDamageInfo::ContactVelocity( ) const
 	return ret;
 }
 
-void CPHSimpleCharacter::SCollisionDamageInfo::HitDir(Fvector& dir) const
+void CPHSimpleCharacter::SCollisionDamageInfo::HitDir(Fvector3& dir) const
 {
 	dir.set(m_damege_contact.geom.normal[0] * m_dmc_signum, m_damege_contact.geom.normal[1] * m_dmc_signum, m_damege_contact.geom.normal[2] * m_dmc_signum);
 }
@@ -1842,7 +1843,7 @@ void CPHSimpleCharacter::SCollisionDamageInfo::Reinit( )
 	m_contact_velocity = 0;
 }
 
-void CPHSimpleCharacter::GetSmothedVelocity(Fvector& vvel)
+void CPHSimpleCharacter::GetSmothedVelocity(Fvector3& vvel)
 {
 	if (!b_exist)
 	{

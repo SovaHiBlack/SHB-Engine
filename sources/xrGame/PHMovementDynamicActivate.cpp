@@ -139,13 +139,14 @@ public:
 		if (dV_valid(linear_velocity))
 		{
 			dReal mag;
-			Fvector vlinear_velocity; vlinear_velocity.set(cast_fv(linear_velocity));
+			Fvector3 vlinear_velocity; vlinear_velocity.set(cast_fv(linear_velocity));
 			mag = _sqrt(linear_velocity[0] * linear_velocity[0] + linear_velocity[2] * linear_velocity[2]);//
 			if (mag > l_limit)
 			{
 				dReal f = mag / l_limit;
 				//dBodySetLinearVel(m_body,linear_velocity[0]/f,linear_velocity[1],linear_velocity[2]/f);///f
-				vlinear_velocity.x /= f; vlinear_velocity.z /= f;
+				vlinear_velocity.x /= f;
+				vlinear_velocity.z /= f;
 				ret = true;
 			}
 
@@ -315,7 +316,8 @@ bool CPHMovementControl::ActivateBoxDynamic(DWORD id, int num_it/*=8*/, int num_
 	bool  character_exist = CharacterExist( );
 	if (character_exist && trying_times[id] != u32(-1))
 	{
-		Fvector dif; dif.sub(trying_poses[id], cast_fv(dBodyGetPosition(m_character->get_body( ))));
+		Fvector3 dif;
+		dif.sub(trying_poses[id], cast_fv(dBodyGetPosition(m_character->get_body( ))));
 		if (Device.dwTimeGlobal - trying_times[id] < 500 && dif.magnitude( ) < 0.05f)
 			return false;
 	}
@@ -360,8 +362,8 @@ bool CPHMovementControl::ActivateBoxDynamic(DWORD id, int num_it/*=8*/, int num_
 	float	fnum_steps = float(num_steps);
 	float	fnum_steps_r = 1.f / fnum_steps;
 
-	Fvector vel;
-	Fvector pos;
+	Fvector3 vel;
+	Fvector3 pos;
 	GetCharacterVelocity(vel);
 	GetCharacterPosition(pos);
 	//const Fbox3& box =Box();
@@ -370,7 +372,7 @@ bool CPHMovementControl::ActivateBoxDynamic(DWORD id, int num_it/*=8*/, int num_
 	float max_a_vel = M_PI / 8.f / fnum_it / fnum_steps / fixed_step;
 	dBodySetForce(GetBody( ), 0.f, 0.f, 0.f);
 	dBodySetLinearVel(GetBody( ), 0.f, 0.f, 0.f);
-	Calculate(Fvector( ).set(0, 0, 0), Fvector( ).set(1, 0, 0), 0, 0, 0, 0);
+	Calculate(Fvector3( ).set(0, 0, 0), Fvector3( ).set(1, 0, 0), 0, 0, 0, 0);
 	CVelocityLimiter vl(GetBody( ), max_vel, max_vel);
 	max_vel = 1.f / fnum_it / fnum_steps / fixed_step;
 
@@ -382,7 +384,7 @@ bool CPHMovementControl::ActivateBoxDynamic(DWORD id, int num_it/*=8*/, int num_
 ////////////////////////////////////
 	for (int m = 0; 30 > m; ++m)
 	{
-		Calculate(Fvector( ).set(0, 0, 0), Fvector( ).set(1, 0, 0), 0, 0, 0, 0);
+		Calculate(Fvector3( ).set(0, 0, 0), Fvector3( ).set(1, 0, 0), 0, 0, 0, 0);
 		EnableCharacter( );
 		m_character->ApplyForce(0, ph_world->Gravity( ) * m_character->Mass( ), 0);
 		max_depth = 0.f;
@@ -405,7 +407,7 @@ bool CPHMovementControl::ActivateBoxDynamic(DWORD id, int num_it/*=8*/, int num_
 		for (int i = 0; num_it > i; ++i)
 		{
 			max_depth = 0.f;
-			Calculate(Fvector( ).set(0, 0, 0), Fvector( ).set(1, 0, 0), 0, 0, 0, 0);
+			Calculate(Fvector3( ).set(0, 0, 0), Fvector3( ).set(1, 0, 0), 0, 0, 0, 0);
 			EnableCharacter( );
 			m_character->ApplyForce(0, ph_world->Gravity( ) * m_character->Mass( ), 0);
 			ph_world->Step( );

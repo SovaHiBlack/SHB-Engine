@@ -11,7 +11,7 @@
 //#include "PHElement.h"
 #include "PHShell.h"
 
-void CPHShell::applyHit(const Fvector& pos, const Fvector& dir, float val, const u16 id, ALife::EHitType hit_type)
+void CPHShell::applyHit(const Fvector3& pos, const Fvector3& dir, float val, const u16 id, ALife::EHitType hit_type)
 {
 	if (id == u16(-1))
 	{
@@ -38,7 +38,7 @@ void CPHShell::applyHit(const Fvector& pos, const Fvector& dir, float val, const
 	}
 }
 
-void CPHShell::ExplosionHit(const Fvector& pos, const Fvector& dir, float val, const u16 id)
+void CPHShell::ExplosionHit(const Fvector3& pos, const Fvector3& dir, float val, const u16 id)
 {
 	if (!isActive( ))
 	{
@@ -55,9 +55,9 @@ void CPHShell::ExplosionHit(const Fvector& pos, const Fvector& dir, float val, c
 		float g_impulse = impulse / gn;
 		for (u16 j = 0; j < gn; ++j)
 		{
-			Fvector r_dir;
-			Fvector r_pos;
-			Fvector r_box;
+			Fvector3 r_dir;
+			Fvector3 r_pos;
+			Fvector3 r_box;
 			float rad = element->getRadius( );
 			r_box.set(rad, rad, rad);
 			r_pos.random_point(r_box);

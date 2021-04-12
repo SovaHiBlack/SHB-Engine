@@ -29,8 +29,8 @@ protected:
 		SCollisionDamageInfo( );
 		void					Construct( );
 		float					ContactVelocity( ) const;
-		void					HitDir(Fvector& dir) const;
-		inline	const Fvector& HitPos( ) const
+		void					HitDir(Fvector3& dir) const;
+		inline	const Fvector3& HitPos( ) const
 		{
 			return cast_fv(m_damege_contact.geom.pos);
 		}
@@ -49,7 +49,7 @@ protected:
 	/////////////////////////// callback
 	ObjectContactCallbackFun* m_object_contact_callback;
 	////////////////////////// geometry
-	Fvector m_last_move;
+	Fvector3 m_last_move;
 	dGeomID m_geom_shell;
 	dGeomID m_wheel;
 	dGeomID m_hat;
@@ -69,8 +69,8 @@ protected:
 	dJointFeedback m_capture_joint_feedback;
 	////////////////////////// movement
 	dVector3 m_control_force;
-	Fvector	 m_acceleration;
-	Fvector  m_cam_dir;
+	Fvector3	 m_acceleration;
+	Fvector3  m_cam_dir;
 	dVector3 m_wall_contact_normal;
 	dVector3 m_ground_contact_normal;
 	dVector3 m_clamb_depart_position;
@@ -85,7 +85,7 @@ protected:
 
 	dVector3 m_jump_depart_position;
 	dVector3 m_death_position;
-	Fvector  m_jump_accel;
+	Fvector3  m_jump_accel;
 
 	//movement state
 	bool is_contact;
@@ -117,7 +117,7 @@ protected:
 	bool	b_clamb_jump;
 	bool	b_external_impulse;
 	u64		m_ext_impuls_stop_step;
-	Fvector m_ext_imulse;
+	Fvector3 m_ext_imulse;
 	bool	b_death_pos;
 	bool	b_foot_mtl_check;
 	dReal	m_friction_factor;
@@ -157,7 +157,7 @@ public:
 		else return false;
 	}
 	virtual		EEnvironment	 		CheckInvironment( );
-	virtual		void			 		GroundNormal(Fvector& norm);
+	virtual		void			 		GroundNormal(Fvector3& norm);
 	virtual		const ICollisionDamageInfo* CollisionDamageInfo( )const
 	{
 		return this;
@@ -167,11 +167,11 @@ private:
 	{
 		return m_collision_damage_info.ContactVelocity( );
 	}
-	virtual		void			 	HitDir(Fvector& dir)const
+	virtual		void			 	HitDir(Fvector3& dir)const
 	{
 		return m_collision_damage_info.HitDir(dir);
 	}
-	virtual		const Fvector& HitPos( )const
+	virtual		const Fvector3& HitPos( )const
 	{
 		return m_collision_damage_info.HitPos( );
 	}
@@ -204,21 +204,21 @@ public:
 	void					SetStaticContactCallBack(ContactCallbackFun* calback);
 	virtual		void		SwitchOFFInitContact( );
 	virtual		void		SwitchInInitContact( );
-	virtual		void		SetAcceleration(Fvector accel);
-	virtual		Fvector		GetAcceleration( )
+	virtual		void		SetAcceleration(Fvector3 accel);
+	virtual		Fvector3		GetAcceleration( )
 	{
 		return m_acceleration;
 	};
-	virtual     void		SetCamDir(const Fvector& cam_dir);
-	virtual	const Fvector& CamDir( )const
+	virtual     void		SetCamDir(const Fvector3& cam_dir);
+	virtual	const Fvector3& CamDir( )const
 	{
 		return m_cam_dir;
 	}
 	virtual		void		SetMaterial(u16 material);
-	virtual		void		SetPosition(Fvector pos);
-	virtual		void		GetVelocity(Fvector& vvel);
-	virtual		void		GetSmothedVelocity(Fvector& vvel);
-	virtual		void		SetVelocity(Fvector vel);
+	virtual		void		SetPosition(Fvector3 pos);
+	virtual		void		GetVelocity(Fvector3& vvel);
+	virtual		void		GetSmothedVelocity(Fvector3& vvel);
+	virtual		void		SetVelocity(Fvector3 vel);
 	virtual		void		SetAirControlFactor(float factor)
 	{
 		m_air_control_factor = factor;
@@ -232,17 +232,17 @@ public:
 	{
 		m_collision_damage_factor = f;
 	}
-	virtual		void		GetPosition(Fvector& vpos);
-	virtual		void		GetPreviousPosition(Fvector& pos);
+	virtual		void		GetPosition(Fvector3& vpos);
+	virtual		void		GetPreviousPosition(Fvector3& pos);
 	virtual		float		FootRadius( );
-	virtual		void		DeathPosition(Fvector& deathPos);
-	virtual		void		IPosition(Fvector& pos);
+	virtual		void		DeathPosition(Fvector3& deathPos);
+	virtual		void		IPosition(Fvector3& pos);
 	virtual		u16			ContactBone( );
-	virtual		void		ApplyImpulse(const Fvector& dir, const dReal P);
-	virtual		void		ApplyForce(const Fvector& force);
-	virtual		void		ApplyForce(const Fvector& dir, float force);
+	virtual		void		ApplyImpulse(const Fvector3& dir, const dReal P);
+	virtual		void		ApplyForce(const Fvector3& force);
+	virtual		void		ApplyForce(const Fvector3& dir, float force);
 	virtual		void		ApplyForce(float x, float y, float z);
-	virtual		void		AddControlVel(const Fvector& vel);
+	virtual		void		AddControlVel(const Fvector3& vel);
 	virtual		void		SetMaximumVelocity(dReal vel)
 	{
 		m_max_velocity = vel;
@@ -259,7 +259,7 @@ public:
 	{
 		return b_jumping || b_jump;
 	};
-	virtual	const Fvector& ControlAccel( )const
+	virtual	const Fvector3& ControlAccel( )const
 	{
 		return m_acceleration;
 	}

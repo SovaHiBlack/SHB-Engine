@@ -52,7 +52,7 @@ inline	bool CPatrolPathManager::random					() const
 	return					(m_random);
 }
 
-inline	const Fvector &CPatrolPathManager::destination_position	() const
+inline	const Fvector3& CPatrolPathManager::destination_position	() const
 {
 	VERIFY					(_valid(m_dest_position));
 	return					(m_dest_position);

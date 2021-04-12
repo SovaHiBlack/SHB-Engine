@@ -13,7 +13,7 @@ class CProjector : public CScriptObject
 
 	float			fBrightness;
 	CLAItem* lanim;
-	Fvector			m_pos;
+	Fvector3			m_pos;
 	ref_light		light_render;
 	ref_glow		glow_render;
 
@@ -46,7 +46,7 @@ public:
 	virtual bool	bfAssignWatch(CScriptEntityAction* tpEntityAction);
 	virtual bool	bfAssignObject(CScriptEntityAction* tpEntityAction);
 
-	Fvector			GetCurrentDirection( );
+	Fvector3			GetCurrentDirection( );
 
 private:
 	void			TurnOn( );
@@ -56,5 +56,5 @@ private:
 	static void		BoneCallbackX(CBoneInstance* B);
 	static void		BoneCallbackY(CBoneInstance* B);
 
-	void			SetTarget(const Fvector& target_pos);
+	void			SetTarget(const Fvector3& target_pos);
 };

@@ -71,7 +71,7 @@ void CPatrolPathManager::reinit					()
 	reset					();
 }
 
-inline	bool CPatrolPathManager::accessible	(const Fvector &position) const
+inline	bool CPatrolPathManager::accessible	(const Fvector3& position) const
 {
 	return		(m_object ? object().accessible(position) : true);
 }
@@ -94,13 +94,13 @@ struct CAccessabilityEvaluator {
 		m_manager	= manager;
 	}
 
-	inline	bool operator()	(const Fvector &position) const
+	inline	bool operator()	(const Fvector3& position) const
 	{
 		return		(m_manager->accessible(position));
 	}
 };
 
-void CPatrolPathManager::select_point(const Fvector &position, u32 &dest_vertex_id)
+void CPatrolPathManager::select_point(const Fvector3& position, u32 &dest_vertex_id)
 {
 	VERIFY						(m_path && !m_path->vertices().empty());
 	const CPatrolPath::CVertex	*vertex = 0;

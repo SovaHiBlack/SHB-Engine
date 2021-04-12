@@ -10,7 +10,7 @@
 
 #include "script_effector.h"
 #include "Actor.h"
-#include "..\ENGINE\cameramanager.h"
+#include "..\ENGINE\CameraManager.h"
 
 CScriptEffector::~CScriptEffector	()
 {

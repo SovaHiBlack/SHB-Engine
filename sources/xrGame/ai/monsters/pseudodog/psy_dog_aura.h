@@ -1,8 +1,8 @@
-	#pragma once
+#pragma once
 ////////////////////////////////////////////////////////////////////////
 // Effector controlling class
 ////////////////////////////////////////////////////////////////////////
-#include "../../../pp_effector_custom.h"
+#include "../../../PPEffectorCustom.h"
 
 class CPPEffectorPsyDogAura : public CPPEffectorCustom {
 	typedef CPPEffectorCustom inherited;

@@ -10,7 +10,7 @@
 #include "memory_space.h"
 #include "script_game_object.h"
 #include "GameObject.h"
-#include "entity_alive.h"
+#include "EntityAlive.h"
 #include "danger_object.h"
 
 using namespace luabind;
