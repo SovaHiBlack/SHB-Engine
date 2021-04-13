@@ -28,14 +28,14 @@ public:
 	virtual void							Action				(const CGameObject* pSpeaker1, const CGameObject* pSpeaker2, const char* dialog_id, const char* phrase_id) const;
 
 	using PRECONDITION_VECTOR									= xr_vector<shared_str>;
-//	using PRECONDITION_VECTOR_IT								= PRECONDITION_VECTOR::iterator;
+
 	virtual const PRECONDITION_VECTOR&		Preconditions		( ) const
 	{
 		return m_Preconditions;
 	}
 
 	using ACTION_NAME_VECTOR									= xr_vector<shared_str>;
-//	using ACTION_NAME_VECTOR_IT									= ACTION_NAME_VECTOR::iterator;
+
 	virtual const ACTION_NAME_VECTOR&		Actions				( ) const
 	{
 		return m_ScriptActions;
@@ -59,17 +59,14 @@ protected:
 
 	//скриптовые действия, которые активируется после того как говорится фраза
 	using ACTION_NAME_VECTOR									= xr_vector<shared_str>;
-//	using ACTION_NAME_VECTOR_IT									= ACTION_NAME_VECTOR::iterator;
 	ACTION_NAME_VECTOR											m_ScriptActions;
 
 	using INFO_VECTOR											= xr_vector<shared_str>;
-//	using INFO_VECTOR_IT										= INFO_VECTOR::iterator;
 	INFO_VECTOR													m_GiveInfo;
 	INFO_VECTOR													m_DisableInfo;
 
 	//список скриптовых предикатов, выполнение, которых необходимо для того чтоб фраза стала доступной
 	using PRECONDITION_VECTOR									= xr_vector<shared_str>;
-//	using PRECONDITION_VECTOR_IT								= PRECONDITION_VECTOR::iterator;
 	PRECONDITION_VECTOR											m_Preconditions;
 
 	//проверка наличия/отсутствия информации

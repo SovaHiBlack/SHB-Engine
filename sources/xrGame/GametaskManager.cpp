@@ -222,7 +222,7 @@ void CGameTaskManager::SetTaskState(const TASK_ID& id, u16 objective_num, ETaskS
 
 void CGameTaskManager::UpdateTasks( )
 {
-	u32					task_count = GameTasks( ).size( );
+	u32 task_count = GameTasks( ).size( );
 	if (0 == task_count)
 	{
 		return;
@@ -231,7 +231,7 @@ void CGameTaskManager::UpdateTasks( )
 	SGameTaskKey* tasks = (SGameTaskKey*) _alloca(task_count * sizeof(SGameTaskKey));
 	SGameTaskKey* I = tasks;
 	SGameTaskKey* E = tasks + task_count;
-	GameTasks_it		i = GameTasks( ).begin( );
+	GameTasks_it i = GameTasks( ).begin( );
 
 	for (; I != E; ++I, ++i)
 	{
@@ -363,7 +363,7 @@ CGameTask* CGameTaskManager::ActiveTask( )
 		return nullptr;
 	}
 
-	return						HasGameTask(t_id);
+	return HasGameTask(t_id);
 }
 
 void CGameTaskManager::SetActiveTask(const TASK_ID& id, u16 idx)

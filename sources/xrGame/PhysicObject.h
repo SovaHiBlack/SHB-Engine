@@ -23,8 +23,8 @@ private:
 	void	AddElement(CPhysicsElement* root_e, int id);
 
 public:
-	CPhysicObject(void);
-	virtual ~CPhysicObject(void);
+	CPhysicObject( );
+	virtual ~CPhysicObject( );
 
 	virtual BOOL						net_Spawn(CSE_Abstract* DC);
 	virtual void						CreatePhysicsShell(CSE_Abstract* e);
@@ -33,7 +33,7 @@ public:
 	virtual void						shedule_Update(u32 dt);	//
 	virtual void						UpdateCL( );
 	virtual void						net_Save(NET_Packet& P);
-	virtual	BOOL						net_SaveRelevant( );
+	virtual BOOL						net_SaveRelevant( );
 	virtual BOOL						UsedAI_Locations( );
 	virtual SCollisionHitCallback* get_collision_hit_callback( );
 	virtual bool						set_collision_hit_callback(SCollisionHitCallback* cc);
@@ -49,7 +49,7 @@ protected:
 	{
 		return this;
 	}
-	virtual	void						InitServerObject(CSE_Abstract* po);
+	virtual void						InitServerObject(CSE_Abstract* po);
 	virtual void						PHObjectPositionUpdate( );
 
 public:

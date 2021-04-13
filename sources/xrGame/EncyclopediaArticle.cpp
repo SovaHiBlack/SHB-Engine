@@ -1,6 +1,5 @@
 ///////////////////////////////////////////////////////////////
-// encyclopedia_article.cpp
-// структура, хранящая и загружающая статьи в энциклопедию
+// encyclopedia_article.cpp структура, хранящая и загружающая статьи в энциклопедию
 ///////////////////////////////////////////////////////////////
 
 #include "stdafx.h"
@@ -40,13 +39,7 @@ CEncyclopediaArticle::~CEncyclopediaArticle( )
 	}
 }
 
-/*
-void CEncyclopediaArticle::Load	(ARTICLE_STR_ID str_id)
-{
-	Load	(id_to_index::IdToIndex(str_id));
-}
-*/
-void CEncyclopediaArticle::Load(shared_str  id)
+void CEncyclopediaArticle::Load(shared_str id)
 {
 	m_ArticleId = id;
 	inherited_shared::load_shared(m_ArticleId, NULL);

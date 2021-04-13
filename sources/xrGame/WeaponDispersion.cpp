@@ -12,9 +12,9 @@
 #include "EffectorShotX.h"
 
 //возвращает 1, если оружие в отличном состоянии и >1 если повреждено
-float CWeapon::GetConditionDispersionFactor() const
+float CWeapon::GetConditionDispersionFactor( ) const
 {
-	return (1.0f + fireDispersionConditionFactor * (1.0f-GetCondition( )));
+	return (1.0f + fireDispersionConditionFactor * (1.0f - GetCondition( )));
 }
 
 float CWeapon::GetFireDispersion(bool with_cartridge)
@@ -33,16 +33,16 @@ float CWeapon::GetFireDispersion(bool with_cartridge)
 }
 
 //текущая дисперсия (в радианах) оружия с учетом используемого патрона
-float CWeapon::GetFireDispersion	(float cartridge_k) 
+float CWeapon::GetFireDispersion(float cartridge_k)
 {
 	//учет базовой дисперсии, состояние оружия и влияение патрона
-	float fire_disp = fireDispersionBase*cartridge_k*GetConditionDispersionFactor();
-	
-	//вычислить дисперсию, вносимую самим стрелком
-	const CInventoryOwner* pOwner	=	smart_cast<const CInventoryOwner*>(H_Parent());
-	VERIFY (pOwner);
+	float fire_disp = fireDispersionBase * cartridge_k * GetConditionDispersionFactor( );
 
-	float parent_disp = pOwner->GetWeaponAccuracy();
+	//вычислить дисперсию, вносимую самим стрелком
+	const CInventoryOwner* pOwner = smart_cast<const CInventoryOwner*>(H_Parent( ));
+	VERIFY(pOwner);
+
+	float parent_disp = pOwner->GetWeaponAccuracy( );
 	fire_disp += parent_disp;
 
 	return fire_disp;
@@ -55,16 +55,20 @@ void CWeapon::AddShotEffector( )
 	inventory_owner( ).on_weapon_shot_start(this);
 }
 
-void CWeapon::RemoveShotEffector	()
+void CWeapon::RemoveShotEffector( )
 {
-	CInventoryOwner* pInventoryOwner = smart_cast<CInventoryOwner*>(H_Parent());
+	CInventoryOwner* pInventoryOwner = smart_cast<CInventoryOwner*>(H_Parent( ));
 	if (pInventoryOwner)
-		pInventoryOwner->on_weapon_shot_stop	(this);
+	{
+		pInventoryOwner->on_weapon_shot_stop(this);
+	}
 }
 
-void	CWeapon::ClearShotEffector	()
+void CWeapon::ClearShotEffector( )
 {
-	CInventoryOwner* pInventoryOwner = smart_cast<CInventoryOwner*>(H_Parent());
+	CInventoryOwner* pInventoryOwner = smart_cast<CInventoryOwner*>(H_Parent( ));
 	if (pInventoryOwner)
-		pInventoryOwner->on_weapon_hide	(this);
+	{
+		pInventoryOwner->on_weapon_hide(this);
+	}
 }

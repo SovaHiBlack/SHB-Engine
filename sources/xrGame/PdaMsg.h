@@ -1,8 +1,4 @@
-/////////////////////////////////////////////////////
-//
 // PdaMsg.h - сообщение посылаемое при помощи PDA
-//
-/////////////////////////////////////////////////////
 
 #pragma once
 
@@ -42,6 +38,5 @@ struct TALK_CONTACT_DATA
 	u16				id;
 };
 
-//DEFINE_VECTOR(TALK_CONTACT_DATA, TALK_CONTACT_VECTOR, TALK_CONTACT_VECTOR_IT);
 using TALK_CONTACT_VECTOR = xr_vector<TALK_CONTACT_DATA>;
 using TALK_CONTACT_VECTOR_IT = TALK_CONTACT_VECTOR::iterator;

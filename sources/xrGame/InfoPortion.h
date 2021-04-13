@@ -36,7 +36,7 @@ struct SInfoPortionData : CSharedResource
 
 class CInfoPortion;
 
-//квант  - порция информации
+//квант - порция информации
 class CInfoPortion : public CSharedClass<SInfoPortionData, shared_str, false>, public CXML_IdToIndex<CInfoPortion>
 {
 private:

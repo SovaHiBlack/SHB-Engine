@@ -93,7 +93,7 @@ bool CPHSkeleton::Spawn(CSE_Abstract* D)
 	else
 	{
 		CPHShellHolder* obj = PPhysicsShellHolder( );
-		CKinematics* K = NULL;
+		CKinematics* K = nullptr;
 		if (obj->Visual( ))
 		{
 			K = smart_cast<CKinematics*>(obj->Visual( ));
@@ -320,7 +320,7 @@ void CPHSkeleton::SpawnCopy( )
 		/////////////////////////////////////////////////////////////////////////////////////////////
 		InitServerObject(D);
 		// Send
-		NET_Packet			P;
+		NET_Packet P;
 		D->Spawn_Write(P, TRUE);
 		Level( ).Send(P, net_flags(TRUE));
 		// Destroy
@@ -492,7 +492,7 @@ void CPHSkeleton::InitServerObject(CSE_Abstract* D)
 	D->RespawnTime = 0;
 }
 
-void	CPHSkeleton::SetNotNeedSave( )
+void CPHSkeleton::SetNotNeedSave( )
 {
 	m_flags.set(CSE_PHSkeleton::flNotSave, TRUE);
 }

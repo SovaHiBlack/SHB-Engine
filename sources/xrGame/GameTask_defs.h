@@ -23,7 +23,7 @@ class CGameTask;
 
 struct SGameTaskKey : public IPureSerializeObject<IReader, IWriter>, public IPureDestroyableObject
 {
-	TASK_ID			task_id;
+	TASK_ID task_id;
 	CGameTask* game_task;
 	SGameTaskKey(TASK_ID t_id) : task_id(t_id), game_task(NULL)
 	{ }

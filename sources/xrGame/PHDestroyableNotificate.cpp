@@ -2,17 +2,17 @@
 
 #include "PHDestroyableNotificate.h"
 #include "alife_space.h"
-#include "hit.h"
+//#include "hit.h"
 #include "PHDestroyable.h"
 #include "Level.h"
-#include "xrServer_Object_Base.h"
+//#include "xrServer_Object_Base.h"
 //#include "..\ENGINE\Object.h"
 #include "PHShellHolder.h"
 #include "xrServer_Objects.h"
 
 void CPHDestroyableNotificate::spawn_notificate(CSE_Abstract* so)
 {
-	CPHDestroyableNotificator* D = NULL;
+	CPHDestroyableNotificator* D = nullptr;
 	CSE_PHSkeleton* po = smart_cast<CSE_PHSkeleton*>(so);
 	u16 id = u16(-1);
 	if (po)

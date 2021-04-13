@@ -26,17 +26,15 @@ void _destroy_item_data_vector_cont(T_VECTOR* vec);
 TEMPLATE_SPECIALIZATION
 class CXML_IdToIndex
 {
-public:
-
 private:
-	static	T_VECTOR* m_pItemDataVector;
+	static T_VECTOR* m_pItemDataVector;
 
 protected:
-	//имена xml файлов (разделенных запятой) из которых 
-	//производить загрузку элементов
+	//имена xml файлов (разделенных запятой) из которых производить загрузку элементов
 	static const char* file_str;
 	//имена тегов
 	static const char* tag_name;
+
 public:
 	CXML_IdToIndex( );
 	virtual							~CXML_IdToIndex( );
@@ -118,6 +116,7 @@ const typename ITEM_DATA* CSXML_IdToIndex::GetByIndex(int index, bool no_assert)
 		R_ASSERT3(no_assert, "item by index not found in files", file_str);
 		return NULL;
 	}
+
 	return &(*m_pItemDataVector)[index];
 }
 
@@ -166,7 +165,6 @@ typename void CSXML_IdToIndex::InitInternal( )
 			sprintf_s(buf, "id for item don't set, number %d in %s", i, xml_file);
 			R_ASSERT2(item_name, buf);
 
-
 			//проверетить ID на уникальность
 			T_VECTOR::iterator t_it = m_pItemDataVector->begin( );
 			for (; m_pItemDataVector->end( ) != t_it; t_it++)
@@ -183,7 +181,7 @@ typename void CSXML_IdToIndex::InitInternal( )
 			data.id = item_name;
 			data.index = index;
 			data.pos_in_file = i;
-//.				data.file_name		= xml_file;
+//.			data.file_name		= xml_file;
 			data._xml = uiXml;
 			m_pItemDataVector->push_back(data);
 

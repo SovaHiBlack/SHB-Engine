@@ -7,31 +7,31 @@ class CSE_ALifePHSkeletonObject;
 
 class CPHSkeletonObject : public CPHShellHolder, public CPHSkeleton
 {
-	typedef CPHShellHolder inherited;
+	using inherited										= CPHShellHolder;
 
 public:
-	CPHSkeletonObject( );
-	virtual ~CPHSkeletonObject(void);
+								CPHSkeletonObject		( );
+	virtual						~CPHSkeletonObject		( );
 
-	virtual BOOL					net_Spawn(CSE_Abstract* DC);
-	virtual void					net_Destroy( );
-	virtual void					Load(const char* section);
-	virtual void					UpdateCL( );// Called each frame, so no need for dt
-	virtual void					shedule_Update(u32 dt);	//
-	virtual void					net_Save(NET_Packet& P);
-	virtual BOOL					net_SaveRelevant( );
-	virtual BOOL					UsedAI_Locations( );
+	virtual BOOL				net_Spawn				(CSE_Abstract* DC);
+	virtual void				net_Destroy				( );
+	virtual void				Load					(const char* section);
+	virtual void				UpdateCL				( );// Called each frame, so no need for dt
+	virtual void				shedule_Update			(u32 dt);
+	virtual void				net_Save				(NET_Packet& P);
+	virtual BOOL				net_SaveRelevant		( );
+	virtual BOOL				UsedAI_Locations		( );
 
 protected:
-	virtual CPHShellHolder* PPhysicsShellHolder( )
+	virtual CPHShellHolder*		PPhysicsShellHolder		( )
 	{
 		return PhysicsShellHolder( );
 	}
-	virtual CPHSkeleton* PHSkeleton( )
+	virtual CPHSkeleton*		PHSkeleton				( )
 	{
 		return this;
 	}
-	virtual void					SpawnInitPhysics(CSE_Abstract* D);
-	virtual void					PHObjectPositionUpdate( );
-	virtual void					CreatePhysicsShell(CSE_Abstract* e);
+	virtual void				SpawnInitPhysics		(CSE_Abstract* D);
+	virtual void				PHObjectPositionUpdate	( );
+	virtual void				CreatePhysicsShell		(CSE_Abstract* e);
 };

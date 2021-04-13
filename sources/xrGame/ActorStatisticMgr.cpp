@@ -160,7 +160,7 @@ SStatSectionData& CActorStatisticMgr::GetSection(const shared_str& key)
 
 	d.resize(d.size( ) + 1);
 	d.back( ).key = key;
-	return	d.back( );
+	return d.back( );
 }
 
 void CActorStatisticMgr::AddPoints(const shared_str& key, const shared_str& detail_key, const shared_str& str_value)
@@ -185,7 +185,7 @@ int CActorStatisticMgr::GetSectionPoints(const shared_str& key)
 		return GetSection(key).GetTotalPoints( );
 	}
 	else
-	{//total
+	{	//total
 		int _total = -1;
 		vStatSectionData& d = GetStorage( );
 		vStatSectionData::iterator it = d.begin( );

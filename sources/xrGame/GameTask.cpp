@@ -106,7 +106,7 @@ void CGameTask::Load(const TASK_ID& id)
 	{
 		Msg("Game Task [%s] has no priority", *id);
 	}
-#endif // DEBUG
+#endif // def DEBUG
 
 	int tag_num = g_gameTaskXml->GetNodesNum(g_gameTaskXml->GetLocalRoot( ), "objective");
 	m_Objectives.clear( );
@@ -344,32 +344,32 @@ ETaskState SGameTaskObjective::UpdateState( )
 	{
 		if (Level( ).GetGameTime( ) > parent->m_TimeToComplete)
 		{
-			return		eTaskStateFail;
+			return eTaskStateFail;
 		}
 	}
 
 	//check fail infos
 	if (CheckInfo(m_failInfos))
 	{
-		return		eTaskStateFail;
+		return eTaskStateFail;
 	}
 
 	//check fail functor
 	if (CheckFunctions(m_fail_lua_functions))
 	{
-		return		eTaskStateFail;
+		return eTaskStateFail;
 	}
 
 	//check complete infos
 	if (CheckInfo(m_completeInfos))
 	{
-		return		eTaskStateCompleted;
+		return eTaskStateCompleted;
 	}
 
 	//check complete functor
 	if (CheckFunctions(m_complete_lua_functions))
 	{
-		return		eTaskStateCompleted;
+		return eTaskStateCompleted;
 	}
 
 	return TaskState( );
@@ -403,7 +403,7 @@ bool SGameTaskObjective::CheckInfo(xr_vector<shared_str>& v)
 bool SGameTaskObjective::CheckFunctions(xr_vector<luabind::functor<bool> >& v)
 {
 	bool res = false;
-	xr_vector<luabind::functor<bool> >::iterator it = v.begin( );
+	xr_vector<luabind::functor<bool>>::iterator it = v.begin( );
 	for (; it != v.end( ); ++it)
 	{
 		if ((*it).is_valid( ))
@@ -422,7 +422,7 @@ bool SGameTaskObjective::CheckFunctions(xr_vector<luabind::functor<bool> >& v)
 
 void SGameTaskObjective::CallAllFuncs(xr_vector<luabind::functor<bool> >& v)
 {
-	xr_vector<luabind::functor<bool> >::iterator it = v.begin( );
+	xr_vector<luabind::functor<bool>>::iterator it = v.begin( );
 	for (; it != v.end( ); ++it)
 	{
 		if ((*it).is_valid( ))

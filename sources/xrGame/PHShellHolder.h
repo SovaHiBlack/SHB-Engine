@@ -19,8 +19,8 @@ struct SCollisionHitCallback
 	void* m_data;
 	SCollisionHitCallback( )
 	{
-		m_collision_hit_callback = NULL;
-		m_data = NULL;
+		m_collision_hit_callback = nullptr;
+		m_data = nullptr;
 	}
 	SCollisionHitCallback(CollisionHitCallbackFun* cc, void* data)
 	{
@@ -42,13 +42,13 @@ class CPHShellHolder : public CGameObject, public CParticlesPlayer
 public:
 	void	SheduleRegister( )
 	{
-		if (!IsSheduled( ))shedule_register( ); b_sheduled = true;
+		if (!IsSheduled( )) shedule_register( ); b_sheduled = true;
 	}
 	void	SheduleUnregister( )
 	{
-		if (IsSheduled( ))shedule_unregister( ); b_sheduled = false;
+		if (IsSheduled( )) shedule_unregister( ); b_sheduled = false;
 	}
-	inline	bool	IsSheduled( )
+	inline bool	IsSheduled( )
 	{
 		return b_sheduled;
 	}
@@ -71,15 +71,15 @@ public:
 	}
 	virtual CPHDestroyable* ph_destroyable( )
 	{
-		return NULL;
+		return nullptr;
 	}
 	virtual CPHCollisionDamageReceiver* PHCollisionDamageReceiver( )
 	{
-		return NULL;
+		return nullptr;
 	}
 	virtual CPHSkeleton* PHSkeleton( )
 	{
-		return NULL;
+		return nullptr;
 	}
 	virtual CPHShellHolder* cast_physics_shell_holder( )
 	{
@@ -91,27 +91,27 @@ public:
 	}
 	virtual IDamageSource* cast_IDamageSource( )
 	{
-		return NULL;
+		return nullptr;
 	}
 	virtual CPHSoundPlayer* ph_sound_player( )
 	{
-		return NULL;
+		return nullptr;
 	}
 	virtual	CCharacterPhysicsSupport* character_physics_support( )
 	{
-		return NULL;
+		return nullptr;
 	}
 	virtual	CCharacterPhysicsSupport* character_physics_support( ) const
 	{
-		return NULL;
+		return nullptr;
 	}
 	virtual	CIKLimbsController* character_ik_controller( )
 	{
-		return NULL;
+		return nullptr;
 	}
 	virtual SCollisionHitCallback* get_collision_hit_callback( )
 	{
-		return NULL;
+		return nullptr;
 	}
 	virtual bool						set_collision_hit_callback(SCollisionHitCallback* cc)
 	{
@@ -125,9 +125,9 @@ public:
 	virtual void			PHSetLinearVell(Fvector3& velocity);
 	virtual void			PHSetMaterial(const char* m);
 	virtual void			PHSetMaterial(u16 m);
-	void			PHSaveState(NET_Packet& P);
-	void			PHLoadState(IReader& P);
-	virtual float				GetMass( );
+	void					PHSaveState(NET_Packet& P);
+	void					PHLoadState(IReader& P);
+	virtual float			GetMass( );
 	virtual	void			PHHit(float P, Fvector3& dir, CObject* who, s16 element, Fvector3 p_in_object_space, float impulse, ALife::EHitType hit_type = ALife::eHitTypeWound);
 	virtual	void			Hit(SHit* pHDS);
 ///////////////////////////////////////////////////////////////////////
@@ -146,16 +146,14 @@ public:
 	virtual BOOL			net_Spawn(CSE_Abstract* DC);
 	virtual void			save(NET_Packet& output_packet);
 	virtual void			load(IReader& input_packet);
-	void			init( );
+	void					init( );
 
 	virtual void			OnChangeVisual( );
 	//для наследования CParticlesPlayer
 	virtual void			UpdateCL( );
-	void			correct_spawn_pos( );
+	void					correct_spawn_pos( );
 
-public:
 	virtual bool			register_schedule( ) const;
 
-public:
 	virtual	void			on_physics_disable( );
 };

@@ -12,7 +12,7 @@ CPhysicObject::CPhysicObject( )
 {
 	m_type = epotBox;
 	m_mass = 10.0f;
-	m_collision_hit_callback = NULL;
+	m_collision_hit_callback = nullptr;
 }
 
 CPhysicObject::~CPhysicObject( )
@@ -25,7 +25,7 @@ BOOL CPhysicObject::net_Spawn(CSE_Abstract* DC)
 	R_ASSERT(po);
 	m_type = EPOType(po->type);
 	m_mass = po->mass;
-	m_collision_hit_callback = NULL;
+	m_collision_hit_callback = nullptr;
 	inherited::net_Spawn(DC);
 	xr_delete(collidable.model);
 	switch (m_type)
@@ -268,7 +268,7 @@ bool					CPhysicObject::set_collision_hit_callback(SCollisionHitCallback* cc)
 {
 	if (!cc)
 	{
-		m_collision_hit_callback = NULL;
+		m_collision_hit_callback = nullptr;
 		return true;
 	}
 

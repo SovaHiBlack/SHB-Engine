@@ -17,7 +17,6 @@ public:
 	xr_vector<shared_str>	m_s_lua_functions_on_complete;
 	xr_vector<shared_str>	m_s_lua_functions_on_fail;
 
-public:
 	bool			not_empty( )
 	{
 		return m_s_complete_lua_functions.size( ) ||

@@ -2,10 +2,10 @@
 
 #include "PHSkeletonObject.h"
 #include "PhysicsShell.h"
-#include "PHSynchronize.h"
+//#include "PHSynchronize.h"
 #include "xrserver_objects_alife.h"
 #include "..\ENGINE\skeletoncustom.h"
-#include "..\ENGINE\xr_collide_form.h"
+//#include "..\ENGINE\xr_collide_form.h"
 
 CPHSkeletonObject::CPHSkeletonObject( )
 { }
@@ -73,7 +73,6 @@ void CPHSkeletonObject::CreatePhysicsShell(CSE_Abstract* e)
 void CPHSkeletonObject::shedule_Update(u32 dt)
 {
 	inherited::shedule_Update(dt);
-
 	CPHSkeleton::Update(dt);
 }
 

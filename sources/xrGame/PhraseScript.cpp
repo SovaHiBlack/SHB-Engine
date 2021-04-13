@@ -148,7 +148,7 @@ void CPhraseScript::Action(const CGameObject* pSpeakerGO, const char* dialog_id,
 {
 	for (u32 i = 0; i < Actions( ).size( ); ++i)
 	{
-		luabind::functor<void>	lua_function;
+		luabind::functor<void> lua_function;
 		THROW(*Actions( )[i]);
 		bool functor_exists = ai( ).script_engine( ).functor(*Actions( )[i], lua_function);
 		if (functor_exists)
@@ -187,7 +187,7 @@ bool CPhraseScript::Precondition(const CGameObject* pSpeakerGO1,
 
 	for (u32 i = 0; i < Preconditions( ).size( ); ++i)
 	{
-		luabind::functor<bool>	lua_function;
+		luabind::functor<bool> lua_function;
 		THROW(*Preconditions( )[i]);
 		bool functor_exists = ai( ).script_engine( ).functor(*Preconditions( )[i], lua_function);
 		if (functor_exists)
@@ -204,7 +204,9 @@ bool CPhraseScript::Precondition(const CGameObject* pSpeakerGO1,
 
 #ifdef DEBUG
 			if (psAI_Flags.test(aiDialogs))
+			{
 				Msg("dialog [%s] phrase[%s] rejected by script predicate", dialog_id, phrase_id);
+			}
 #endif // def DEBUG
 
 			break;

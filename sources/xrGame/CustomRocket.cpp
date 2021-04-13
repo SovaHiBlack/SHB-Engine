@@ -56,10 +56,10 @@ void CCustomRocket::reinit( )
 	m_pTrailLight = ::Render->light_create( );
 	m_pTrailLight->set_shadow(true);
 
-	m_pEngineParticles = NULL;
-	m_pFlyParticles = NULL;
+	m_pEngineParticles = nullptr;
+	m_pFlyParticles = nullptr;
 
-	m_pOwner = NULL;
+	m_pOwner = nullptr;
 
 	m_vPrevVel.set(0, 0, 0);
 }
@@ -615,7 +615,7 @@ void CCustomRocket::StopEngineParticles( )
 
 	m_pEngineParticles->Stop( );
 	m_pEngineParticles->SetAutoRemove(true);
-	m_pEngineParticles = NULL;
+	m_pEngineParticles = nullptr;
 }
 
 void CCustomRocket::StartFlyParticles( )
@@ -655,7 +655,7 @@ void CCustomRocket::StopFlyParticles( )
 
 	m_pFlyParticles->Stop( );
 	m_pFlyParticles->SetAutoRemove(true);
-	m_pFlyParticles = NULL;
+	m_pFlyParticles = nullptr;
 }
 
 void CCustomRocket::StartFlying( )
@@ -670,7 +670,7 @@ void CCustomRocket::StopFlying( )
 	StopLights( );
 }
 
-void	CCustomRocket::OnEvent(NET_Packet& P, u16 type)
+void CCustomRocket::OnEvent(NET_Packet& P, u16 type)
 {
 	switch (type)
 	{

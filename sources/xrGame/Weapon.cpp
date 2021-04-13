@@ -1318,7 +1318,7 @@ void CWeapon::UpdateAddonsVisibility( )
 	}
 
 	if (m_eScopeStatus == CSE_ALifeItemWeapon::eAddonDisabled && bone_id != BI_NONE && pWeaponVisual->LL_GetBoneVisible(bone_id))
- 	{
+	{
 		pWeaponVisual->LL_SetBoneVisible(bone_id, FALSE, TRUE);
 	}
 

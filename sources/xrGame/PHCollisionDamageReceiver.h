@@ -14,10 +14,12 @@ class CPHCollisionDamageReceiver
 
 	struct SFind
 	{
-		u16 id; SFind(u16 _id)
+		u16 id;
+		SFind(u16 _id)
 		{
 			id = _id;
-		}; bool operator () (const SControledBone& cb)
+		}
+		bool operator () (const SControledBone& cb)
 		{
 			return cb.first == id;
 		}
@@ -36,5 +38,5 @@ private:
 	{
 		return std::find_if(m_controled_bones.begin( ), m_controled_bones.end( ), SFind(id));
 	}
-	static	void 						CollisionCallback(bool& do_colide, bool bo1, dContact& c, SGameMtl* material_1, SGameMtl* material_2);
+	static void 						CollisionCallback(bool& do_colide, bool bo1, dContact& c, SGameMtl* material_1, SGameMtl* material_2);
 };

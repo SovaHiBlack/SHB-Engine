@@ -48,8 +48,8 @@ void CPHCollisionDamageReceiver::CollisionCallback(bool& do_colide, bool bo1, dC
 		return;
 	}
 
-	dBodyID						b1 = dGeomGetBody(c.geom.g1);
-	dBodyID						b2 = dGeomGetBody(c.geom.g2);
+	dBodyID b1 = dGeomGetBody(c.geom.g1);
+	dBodyID b2 = dGeomGetBody(c.geom.g2);
 	dxGeomUserData* ud_self = bo1 ? retrieveGeomUserData(c.geom.g1) : retrieveGeomUserData(c.geom.g2);
 	dxGeomUserData* ud_damager = bo1 ? retrieveGeomUserData(c.geom.g2) : retrieveGeomUserData(c.geom.g1);
 
@@ -57,8 +57,13 @@ void CPHCollisionDamageReceiver::CollisionCallback(bool& do_colide, bool bo1, dC
 	SGameMtl* material_damager = bo1 ? material_2 : material_1;
 	VERIFY(ud_self);
 	CPHShellHolder* o_self = ud_self->ph_ref_object;
-	CPHShellHolder* o_damager = NULL; if (ud_damager)o_damager = ud_damager->ph_ref_object;
-	u16							source_id = o_damager ? o_damager->ID( ) : u16(-1);
+	CPHShellHolder* o_damager = nullptr;
+	if (ud_damager)
+	{
+		o_damager = ud_damager->ph_ref_object;
+	}
+
+	u16 source_id = o_damager ? o_damager->ID( ) : u16(-1);
 	CPHCollisionDamageReceiver* dr = o_self->PHCollisionDamageReceiver( );
 	VERIFY2(dr, "wrong callback");
 
@@ -101,9 +106,9 @@ void CPHCollisionDamageReceiver::Hit(u16 source_id, u16 bone_id, float power, co
 		return;
 	}
 
-	NET_Packet		P;
+	NET_Packet P;
 	CPHShellHolder* ph = PPhysicsShellHolder( );
-	SHit	HS;
+	SHit HS;
 
 	HS.GenHeader(GE_HIT, ph->ID( ));
 	HS.whoID = ph->ID( );
@@ -112,7 +117,7 @@ void CPHCollisionDamageReceiver::Hit(u16 source_id, u16 bone_id, float power, co
 	HS.power = power;
 	HS.boneID = s16(bone_id);
 	HS.p_in_bone_space = pos;
-	HS.impulse = 0.f;
+	HS.impulse = 0.0f;
 	HS.hit_type = (ALife::eHitTypeStrike);
 	HS.Write_Packet(P);
 

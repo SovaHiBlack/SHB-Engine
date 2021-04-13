@@ -17,7 +17,6 @@ public:
 	virtual ~CExplosiveRocket( );
 	virtual DLL_Pure* _construct( );
 
-public:
 	virtual CExplosive* cast_explosive( )
 	{
 		return this;
@@ -32,7 +31,7 @@ public:
 	}
 	virtual CWeapon* cast_weapon( )
 	{
-		return NULL;
+		return nullptr;
 	}
 	virtual CGameObject* cast_game_object( )
 	{

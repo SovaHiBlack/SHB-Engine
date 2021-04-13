@@ -469,9 +469,9 @@ protected:
 	virtual void			Reload( );
 	void					StopShooting( );
 
-// обработка визуализации выстрела
+	// обработка визуализации выстрела
 	virtual void			OnShot( )
-	{ };
+	{ }
 	virtual void			AddShotEffector( );
 	virtual void			RemoveShotEffector( );
 	virtual void			ClearShotEffector( );
@@ -490,7 +490,6 @@ public:
 	float					GetConditionMisfireProbability( ) const;
 	virtual	float			GetConditionToShow( ) const;
 
-public:
 	//отдача при стрельбе
 	float					camMaxAngle;		//максимальный угол отдачи
 	float					camRelaxSpeed;		//скорость возврата в исходное положение
@@ -522,11 +521,6 @@ protected:
 	//для отдачи оружия
 	Fvector					m_vRecoilDeltaAngle;
 
-/* 	нигде не используется
-//	//для сталкеров, чтоб они знали эффективные границы использования оружия
-//	float					m_fMinRadius;
-//	float					m_fMaxRadius;
- */
 //////////////////////////////////////////////////////////////////////////
 // партиклы
 //////////////////////////////////////////////////////////////////////////

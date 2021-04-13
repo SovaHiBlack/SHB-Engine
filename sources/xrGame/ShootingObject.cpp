@@ -278,7 +278,7 @@ void CShootingObject::OnShellDrop(const Fvector3& play_pos,
 void CShootingObject::StartSmokeParticles(const Fvector3& play_pos,
 										  const Fvector3& parent_vel)
 {
-	CParticlesObject* pSmokeParticles = NULL;
+	CParticlesObject* pSmokeParticles = nullptr;
 	StartParticles(pSmokeParticles, *m_sSmokeParticlesCurrent, play_pos, parent_vel, true);
 }
 
@@ -307,7 +307,7 @@ void CShootingObject::StopFlameParticles( )
 
 	m_pFlameParticles->SetAutoRemove(true);
 	m_pFlameParticles->Stop( );
-	m_pFlameParticles = NULL;
+	m_pFlameParticles = nullptr;
 }
 
 void CShootingObject::UpdateFlameParticles( )
@@ -461,7 +461,7 @@ void CShootingObject::FireEnd( )
 
 void CShootingObject::StartShotParticles( )
 {
-	CParticlesObject* pSmokeParticles = NULL;
+	CParticlesObject* pSmokeParticles = nullptr;
 	StartParticles(pSmokeParticles, *m_sShotParticles,
 				   m_vCurrentShootPos, m_vCurrentShootDir, true);
 }

@@ -1,7 +1,4 @@
-///////////////////////////////////////////////////////////////
-// game_news.cpp
-// реестр новостей: новости симул€ции + сюжетные
-///////////////////////////////////////////////////////////////
+// game_news.cpp реестр новостей: новости симул€ции + сюжетные
 
 #include "stdafx.h"
 
@@ -56,9 +53,9 @@ const char* GAME_NEWS_DATA::SingleLineText( )
 	u32 years, months, days, hours, minutes, seconds, milliseconds;
 	split_time(receive_time, years, months, days, hours, minutes, seconds, milliseconds);
 #pragma todo("Satan->Satan : insert carry-over")
-	//sprintf_s(time, "%02i:%02i \\n", hours, minutes);
+//	sprintf_s(time, "%02i:%02i \\n", hours, minutes);
 	sprintf_s(time, "%02i:%02i ", hours, minutes);
-//	strconcat	(result, locationName, time, newsPhrase);
+//	strconcat(result, locationName, time, newsPhrase);
 
 	full_news_text = time;
 	full_news_text += news_text.c_str( );

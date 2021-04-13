@@ -1,6 +1,5 @@
 // DummyObject.h: interface for the CHangingLamp class.
-//
-//////////////////////////////////////////////////////////////////////
+
 #pragma once
 
 #include "PHShellHolder.h"
@@ -36,9 +35,9 @@ public:
 
 	virtual void	Load(const char* section);
 	virtual BOOL	net_Spawn(CSE_Abstract* DC);
-	virtual	void	net_Destroy( );
+	virtual void	net_Destroy( );
 	virtual void	shedule_Update(u32 dt);							// Called by sheduler
-	virtual	void	UpdateCL( );
+	virtual void	UpdateCL( );
 	virtual BOOL	renderable_ShadowGenerate( )
 	{
 		return FALSE;
@@ -48,7 +47,7 @@ public:
 		return TRUE;
 	}
 
-	virtual	void	Hit(SHit* pHDS);
+	virtual void	Hit(SHit* pHDS);
 
 	virtual void	net_Export(NET_Packet& P);
 	virtual void	net_Import(NET_Packet& P);
@@ -67,5 +66,5 @@ private:
 	void			ProcessDamage( );
 	void			SendDestroy( );
 	void			enable_notificate( );
-	static 	void	ObjectContactCallback(bool& /**do_colide/**/, bool bo1, dContact& c, SGameMtl* /*material_1*/, SGameMtl* /*material_2*/);
+	static void		ObjectContactCallback(bool& /**do_colide/**/, bool bo1, dContact& c, SGameMtl* /*material_1*/, SGameMtl* /*material_2*/);
 };

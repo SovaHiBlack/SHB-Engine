@@ -33,11 +33,13 @@ inline void OrientToNorm(const Fvector3& normal, Fmatrix& form, Fobb& box)
 		{
 			max_ax_i = i; max_dot = dot_pr;
 		}
+
 		if (min_size > s_pointer[i])
 		{
 			min_size_i = i; min_size = s_pointer[i];
 		}
 	}
+
 	VERIFY(min_size_i == max_ax_i);
 	if (ax_pointer[max_ax_i].dotproduct(normal) < 0.f)
 	{
@@ -49,6 +51,7 @@ inline void OrientToNorm(const Fvector3& normal, Fmatrix& form, Fobb& box)
 class CPHLeaderGeomShell : public CPHStaticGeomShell
 {
 	CClimableObject* m_pClimable;
+
 public:
 	CPHLeaderGeomShell(CClimableObject* climable);
 	void					near_callback(CPHObject* obj);
@@ -70,7 +73,7 @@ void CPHLeaderGeomShell::near_callback(CPHObject* obj)
 
 CClimableObject::CClimableObject( )
 {
-	m_pStaticShell = NULL;
+	m_pStaticShell = nullptr;
 }
 
 CClimableObject::~CClimableObject( )
@@ -151,7 +154,7 @@ void CClimableObject::Center(Fvector3& C) const
 
 float CClimableObject::Radius( ) const
 {
-	return							m_radius;
+	return m_radius;
 }
 
 float CClimableObject::DDLowerP(CPHCharacter* actor, Fvector3& out_dir)const
@@ -342,43 +345,52 @@ void CClimableObject::ObjectContactCallback(bool& do_colide, bool bo1, dContact&
 {
 	dxGeomUserData* usr_data_1 = retrieveGeomUserData(c.geom.g1);
 	dxGeomUserData* usr_data_2 = retrieveGeomUserData(c.geom.g2);
-	dxGeomUserData* usr_data_ch = NULL;
-	dxGeomUserData* usr_data_lad = NULL;
-	CClimableObject* this_object = NULL;
-	CPHCharacter* ch = NULL;
-	float norm_sign = 0.f;
+	dxGeomUserData* usr_data_ch = nullptr;
+	dxGeomUserData* usr_data_lad = nullptr;
+	CClimableObject* this_object = nullptr;
+	CPHCharacter* ch = nullptr;
+	float norm_sign = 0.0f;
 	if (bo1)
 	{
 		usr_data_ch = usr_data_2;
 		usr_data_lad = usr_data_1;
-		norm_sign = -1.f;
+		norm_sign = -1.0f;
 	}
 	else
 	{
-		norm_sign = 1.f;
+		norm_sign = 1.0f;
 		usr_data_ch = usr_data_1;
 		usr_data_lad = usr_data_2;
 	}
 
 	if (usr_data_ch && usr_data_ch->ph_object && usr_data_ch->ph_object->CastType( ) == CPHObject::tpCharacter)
+	{
 		ch = static_cast<CPHCharacter*>(usr_data_ch->ph_object);
+	}
 	else
 	{
 		do_colide = false;
 		return;
 	}
+
 	VERIFY(ch);
 	VERIFY(usr_data_lad);
 	this_object = static_cast<CClimableObject*>(usr_data_lad->ph_ref_object);
 	VERIFY(this_object);
-	if (!this_object->BeforeLadder(ch, -0.1f)) do_colide = false;
+	if (!this_object->BeforeLadder(ch, -0.1f))
+	{
+		do_colide = false;
+	}
 }
 
 #ifdef DEBUG
 extern	Flags32	dbg_net_Draw_Flags;
 void CClimableObject::OnRender( )
 {
-	if (!dbg_net_Draw_Flags.test(1 << 10) && !ph_dbg_draw_mask.test(phDbgLadder)) return;
+	if (!dbg_net_Draw_Flags.test(1 << 10) && !ph_dbg_draw_mask.test(phDbgLadder))
+	{
+		return;
+	}
 
 	Fmatrix form; m_box.xform_get(form);
 	//form.mulA(XFORM());
