@@ -4491,7 +4491,7 @@
     <ClInclude Include="Inventory.h">
       <Filter>Core\Client\Objects\inventory</Filter>
     </ClInclude>
-    <ClInclude Include="inventory_owner_inline.h">
+    <ClInclude Include="InventoryOwner_inline.h">
       <Filter>Core\Client\Objects\inventory\InventoryOwner</Filter>
     </ClInclude>
     <ClInclude Include="InventoryOwner.h">
@@ -7226,7 +7226,7 @@
     <ClCompile Include="Inventory.cpp">
       <Filter>Core\Client\Objects\inventory</Filter>
     </ClCompile>
-    <ClCompile Include="inventory_owner_info.cpp">
+    <ClCompile Include="InventoryOwner_info.cpp">
       <Filter>Core\Client\Objects\inventory\InventoryOwner</Filter>
     </ClCompile>
     <ClCompile Include="InventoryOwner.cpp">

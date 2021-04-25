@@ -21,6 +21,7 @@ void CActorInputHandler::install(CActor* actor)
 {
 	m_actor = actor;
 	VERIFY(m_actor);
+
 	actor->set_input_external_handler(this);
 }
 

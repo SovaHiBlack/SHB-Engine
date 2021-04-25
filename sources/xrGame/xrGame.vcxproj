@@ -800,7 +800,7 @@
     <ClInclude Include="InventoryItem_impl.h" />
     <ClInclude Include="InventoryItem_inline.h" />
     <ClInclude Include="InventoryItemObject.h" />
-    <ClInclude Include="inventory_owner_inline.h" />
+    <ClInclude Include="InventoryOwner_inline.h" />
     <ClInclude Include="Inventory_space.h" />
     <ClInclude Include="ItemListTypes.h" />
     <ClInclude Include="item_manager.h" />
@@ -1852,7 +1852,7 @@
     <ClCompile Include="InventoryOwner.cpp" />
     <ClCompile Include="InventoryItem.cpp" />
     <ClCompile Include="InventoryItemObject.cpp" />
-    <ClCompile Include="inventory_owner_info.cpp" />
+    <ClCompile Include="InventoryOwner_info.cpp" />
     <ClCompile Include="item_manager.cpp" />
     <ClCompile Include="key_binding_registrator_script.cpp" />
     <ClCompile Include="Level.cpp" />

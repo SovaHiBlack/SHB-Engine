@@ -127,16 +127,6 @@ void CStalker::DropItemSendMessage(CObject *O)
 	u_EventSend				(P);
 }
 
-/////////////////////////
-//PDA functions
-/////////////////////////
-/*
-void CStalker::ReceivePdaMessage(u16 who, EPdaMsg msg, shared_str info_id)
-{
-	CInventoryOwner::ReceivePdaMessage(who, msg, info_id);
-}*/
-
-
 void CStalker::UpdateAvailableDialogs(CPhraseDialogManager* partner)
 {
 /*	m_AvailableDialogs.clear();

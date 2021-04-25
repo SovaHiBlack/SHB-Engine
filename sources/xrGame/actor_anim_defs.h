@@ -38,7 +38,6 @@ struct STorsoWpn{
 
 struct SActorState
 {
-
 	MotionID		legs_idle;
 	MotionID		jump_begin;
 	MotionID		jump_idle;
@@ -86,6 +85,7 @@ struct SVehicleAnimCollection
 					SVehicleAnimCollection	();
 	void			Create				(CKinematicsAnimated* K,u16 num);
 };
+
 struct SActorVehicleAnims
 {
 	static const int TYPES_NUMBER=2;
@@ -93,5 +93,3 @@ struct SActorVehicleAnims
 						SActorVehicleAnims				();
 	void				Create							(CKinematicsAnimated* K);
 };
-
-

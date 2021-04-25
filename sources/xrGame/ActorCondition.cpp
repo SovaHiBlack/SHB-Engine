@@ -21,9 +21,6 @@
 #include "HUDManager.h"//
 #include "CustomOutfit.h"
 
-#define MAX_SATIETY					1.0f
-#define START_SATIETY				0.5f
-
 BOOL GodMode( )
 {
 	return psActorFlags.test(AF_GODMODE);
@@ -57,42 +54,41 @@ void CActorCondition::LoadCondition(const char* entity_section)
 
 	const char* section = READ_IF_EXISTS(pSettings, r_string, entity_section, "condition_sect", entity_section);
 
-	m_fJumpPower = pSettings->r_float(section, "jump_power");
-	m_fStandPower = pSettings->r_float(section, "stand_power");
-	m_fWalkPower = pSettings->r_float(section, "walk_power");
-	m_fJumpWeightPower = pSettings->r_float(section, "jump_weight_power");
-	m_fWalkWeightPower = pSettings->r_float(section, "walk_weight_power");
-	m_fOverweightWalkK = pSettings->r_float(section, "overweight_walk_k");
-	m_fOverweightJumpK = pSettings->r_float(section, "overweight_jump_k");
-	m_fAccelK = pSettings->r_float(section, "accel_k");
-	m_fSprintK = pSettings->r_float(section, "sprint_k");
+	m_fJumpPower				= pSettings->r_float(section, "jump_power");
+	m_fStandPower				= pSettings->r_float(section, "stand_power");
+	m_fWalkPower				= pSettings->r_float(section, "walk_power");
+	m_fJumpWeightPower			= pSettings->r_float(section, "jump_weight_power");
+	m_fWalkWeightPower			= pSettings->r_float(section, "walk_weight_power");
+	m_fOverweightWalkK			= pSettings->r_float(section, "overweight_walk_k");
+	m_fOverweightJumpK			= pSettings->r_float(section, "overweight_jump_k");
+	m_fAccelK					= pSettings->r_float(section, "accel_k");
+	m_fSprintK					= pSettings->r_float(section, "sprint_k");
 
 	//порог силы и здоровья меньше которого актер начинает хромать
-	m_fLimpingHealthBegin = pSettings->r_float(section, "limping_health_begin");
-	m_fLimpingHealthEnd = pSettings->r_float(section, "limping_health_end");
+	m_fLimpingHealthBegin		= pSettings->r_float(section, "limping_health_begin");
+	m_fLimpingHealthEnd			= pSettings->r_float(section, "limping_health_end");
 	R_ASSERT(m_fLimpingHealthBegin <= m_fLimpingHealthEnd);
 
-	m_fLimpingPowerBegin = pSettings->r_float(section, "limping_power_begin");
-	m_fLimpingPowerEnd = pSettings->r_float(section, "limping_power_end");
+	m_fLimpingPowerBegin		= pSettings->r_float(section, "limping_power_begin");
+	m_fLimpingPowerEnd			= pSettings->r_float(section, "limping_power_end");
 	R_ASSERT(m_fLimpingPowerBegin <= m_fLimpingPowerEnd);
 
-	m_fCantWalkPowerBegin = pSettings->r_float(section, "cant_walk_power_begin");
-	m_fCantWalkPowerEnd = pSettings->r_float(section, "cant_walk_power_end");
+	m_fCantWalkPowerBegin		= pSettings->r_float(section, "cant_walk_power_begin");
+	m_fCantWalkPowerEnd			= pSettings->r_float(section, "cant_walk_power_end");
 	R_ASSERT(m_fCantWalkPowerBegin <= m_fCantWalkPowerEnd);
 
-	m_fCantSprintPowerBegin = pSettings->r_float(section, "cant_sprint_power_begin");
-	m_fCantSprintPowerEnd = pSettings->r_float(section, "cant_sprint_power_end");
+	m_fCantSprintPowerBegin		= pSettings->r_float(section, "cant_sprint_power_begin");
+	m_fCantSprintPowerEnd		= pSettings->r_float(section, "cant_sprint_power_end");
 	R_ASSERT(m_fCantSprintPowerBegin <= m_fCantSprintPowerEnd);
 
-	m_fPowerLeakSpeed = pSettings->r_float(section, "max_power_leak_speed");
+	m_fPowerLeakSpeed			= pSettings->r_float(section, "max_power_leak_speed");
 
-	m_fV_Alcohol = pSettings->r_float(section, "alcohol_v");
+	m_fV_Alcohol				= pSettings->r_float(section, "alcohol_v");
+	m_fV_Satiety				= pSettings->r_float(section, "satiety_v");
+	m_fV_SatietyPower			= pSettings->r_float(section, "satiety_power_v");
+	m_fV_SatietyHealth			= pSettings->r_float(section, "satiety_health_v");
 
-	m_fV_Satiety = pSettings->r_float(section, "satiety_v");
-	m_fV_SatietyPower = pSettings->r_float(section, "satiety_power_v");
-	m_fV_SatietyHealth = pSettings->r_float(section, "satiety_health_v");
-
-	m_MaxWalkWeight = pSettings->r_float(section, "max_walk_weight");
+	m_MaxWalkWeight				= pSettings->r_float(section, "max_walk_weight");
 }
 
 //вычисление параметров с ходом времени
@@ -131,9 +127,12 @@ void CActorCondition::UpdateCondition( )
 
 			float base_w = object( ).MaxCarryWeight( );
 /*
-			CCustomOutfit* outfit	= m_object->GetOutfit();
-			if(outfit)
+			CCustomOutfit* outfit = m_object->GetOutfit();
+			if (outfit)
+			{
 				base_w += outfit->m_additional_weight2;
+			}
+
 */
 			k_max_power = 1.0f + _min(weight, base_w) / base_w + _max(0.0f, (weight - base_w) / 10.0f);
 		}
@@ -360,13 +359,13 @@ void CActorCondition::ChangeSatiety(float value)
 void CActorCondition::UpdateTutorialThresholds( )
 {
 	string256 cb_name;
-	static float _cPowerThr = pSettings->r_float("tutorial_conditions_thresholds", "power");
-	static float _cPowerMaxThr = pSettings->r_float("tutorial_conditions_thresholds", "max_power");
-	static float _cBleeding = pSettings->r_float("tutorial_conditions_thresholds", "bleeding");
-	static float _cSatiety = pSettings->r_float("tutorial_conditions_thresholds", "satiety");
-	static float _cRadiation = pSettings->r_float("tutorial_conditions_thresholds", "radiation");
-	static float _cWpnCondition = pSettings->r_float("tutorial_conditions_thresholds", "weapon_jammed");
-	static float _cPsyHealthThr = pSettings->r_float("tutorial_conditions_thresholds", "psy_health");
+	static float _cPowerThr			= pSettings->r_float("tutorial_conditions_thresholds", "power");
+	static float _cPowerMaxThr		= pSettings->r_float("tutorial_conditions_thresholds", "max_power");
+	static float _cBleeding			= pSettings->r_float("tutorial_conditions_thresholds", "bleeding");
+	static float _cSatiety			= pSettings->r_float("tutorial_conditions_thresholds", "satiety");
+	static float _cRadiation		= pSettings->r_float("tutorial_conditions_thresholds", "radiation");
+	static float _cWpnCondition		= pSettings->r_float("tutorial_conditions_thresholds", "weapon_jammed");
+	static float _cPsyHealthThr		= pSettings->r_float("tutorial_conditions_thresholds", "psy_health");
 
 	bool b = true;
 	if (b && !m_condition_flags.test(eCriticalPowerReached) && GetPower( ) < _cPowerThr)

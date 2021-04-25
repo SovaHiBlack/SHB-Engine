@@ -135,7 +135,7 @@ bool CPhraseDialog::SayPhrase(DIALOG_SHARED_PTR& phrase_dialog, const shared_str
 					shared_str id = next_phrase_vertex->data( )->GetID( );
 					Msg("----added phrase text [%s]phrase_id=[%s] id=[%s] to dialog [%s]", phrase_text, phrase_id.c_str( ), id.c_str( ), *phrase_dialog->m_DialogId.c_str( ));
 				}
-#endif
+#endif // def DEBUG
 
 			}
 		}

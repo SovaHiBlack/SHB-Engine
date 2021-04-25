@@ -12,106 +12,107 @@ class CActor;
 class CActorCondition : public CEntityCondition
 {
 private:
-	typedef CEntityCondition inherited;
+	using inherited									= CEntityCondition;
+
 	enum
 	{
-		eCriticalPowerReached = (1 << 0),
-		eCriticalMaxPowerReached = (1 << 1),
-		eCriticalBleedingSpeed = (1 << 2),
-		eCriticalSatietyReached = (1 << 3),
-		eCriticalRadiationReached = (1 << 4),
-		eWeaponJammedReached = (1 << 5),
-		ePhyHealthMinReached = (1 << 6),
-		eCantWalkWeight = (1 << 7)
+		eCriticalPowerReached						= (1 << 0),
+		eCriticalMaxPowerReached					= (1 << 1),
+		eCriticalBleedingSpeed						= (1 << 2),
+		eCriticalSatietyReached						= (1 << 3),
+		eCriticalRadiationReached					= (1 << 4),
+		eWeaponJammedReached						= (1 << 5),
+		ePhyHealthMinReached						= (1 << 6),
+		eCantWalkWeight								= (1 << 7)
 	};
+
 	Flags16											m_condition_flags;
 
-private:
-	CActor* m_object;
-	void				UpdateTutorialThresholds( );
-	void 				UpdateSatiety( );
+	CActor*											m_object;
+	void				UpdateTutorialThresholds	( );
+	void 				UpdateSatiety				( );
 
 public:
-	CActorCondition(CActor* object);
-	virtual				~CActorCondition( );
+						CActorCondition				(CActor* object);
+	virtual				~CActorCondition			( );
 
-	virtual void		LoadCondition(const char* section);
-	virtual void		reinit( );
+	virtual void		LoadCondition				(const char* section);
+	virtual void		reinit						( );
 
-	virtual CWound* ConditionHit(SHit* pHDS);
-	virtual void		UpdateCondition( );
+	virtual CWound*		ConditionHit				(SHit* pHDS);
+	virtual void		UpdateCondition				( );
 
-	virtual void 		ChangeAlcohol(float value);
-	virtual void 		ChangeSatiety(float value);
+	virtual void 		ChangeAlcohol				(float value);
+	virtual void 		ChangeSatiety				(float value);
 
 	// хромание при потере сил и здоровья
-	virtual	bool		IsLimping( ) const;
-	virtual bool		IsCantWalk( ) const;
-	virtual bool		IsCantWalkWeight( );
-	virtual bool		IsCantSprint( ) const;
+	virtual bool		IsLimping					( ) const;
+	virtual bool		IsCantWalk					( ) const;
+	virtual bool		IsCantWalkWeight			( );
+	virtual bool		IsCantSprint				( ) const;
 
-	void		ConditionJump(float weight);
-	void		ConditionWalk(float weight, bool accel, bool sprint);
-	void		ConditionStand(float weight);
+	void				ConditionJump				(float weight);
+	void				ConditionWalk				(float weight, bool accel, bool sprint);
+	void				ConditionStand				(float weight);
 
-	float xr_stdcall	GetAlcohol( )
+	float xr_stdcall	GetAlcohol					( )
 	{
 		return m_fAlcohol;
 	}
-	float xr_stdcall	GetPsy( )
+	float xr_stdcall	GetPsy						( )
 	{
 		return 1.0f - GetPsyHealth( );
 	}
-	float				GetSatiety( )
+	float				GetSatiety					( )
 	{
 		return m_fSatiety;
 	}
 
-public:
-	inline		CActor& object( ) const
+	inline CActor&		object						( ) const
 	{
 		VERIFY(m_object);
-		return			(*m_object);
+		return *m_object;
 	}
-	virtual void			save(NET_Packet& output_packet);
-	virtual void			load(IReader& input_packet);
+	virtual void		save						(NET_Packet& output_packet);
+	virtual void		load						(IReader& input_packet);
 
 protected:
-	float m_fAlcohol;
-	float m_fV_Alcohol;
-//--
-	float m_fSatiety;
-	float m_fV_Satiety;
-	float m_fV_SatietyPower;
-	float m_fV_SatietyHealth;
-//--
-	float m_fPowerLeakSpeed;
+	float											m_fAlcohol;
+	float											m_fV_Alcohol;
+	//--
+	float											m_fSatiety;
+	float											m_fV_Satiety;
+	float											m_fV_SatietyPower;
+	float											m_fV_SatietyHealth;
+	//--
+	float											m_fPowerLeakSpeed;
 
-	float m_fJumpPower;
-	float m_fStandPower;
-	float m_fWalkPower;
-	float m_fJumpWeightPower;
-	float m_fWalkWeightPower;
-	float m_fOverweightWalkK;
-	float m_fOverweightJumpK;
-	float m_fAccelK;
-	float m_fSprintK;
+	float											m_fJumpPower;
+	float											m_fStandPower;
+	float											m_fWalkPower;
+	float											m_fJumpWeightPower;
+	float											m_fWalkWeightPower;
+	float											m_fOverweightWalkK;
+	float											m_fOverweightJumpK;
+	float											m_fAccelK;
+	float											m_fSprintK;
 
-	float m_MaxWalkWeight;
+	float											m_MaxWalkWeight;
 
-	mutable bool m_bLimping;
-	mutable bool m_bCantWalk;
-	mutable bool m_bCantSprint;
+	mutable bool									m_bLimping;
+	mutable bool									m_bCantWalk;
+	mutable bool									m_bCantSprint;
 
 	//порог силы и здоровья меньше которого актер начинает хромать
-	float m_fLimpingPowerBegin;
-	float m_fLimpingPowerEnd;
-	float m_fCantWalkPowerBegin;
-	float m_fCantWalkPowerEnd;
+	float											m_fLimpingPowerBegin;
+	float											m_fLimpingPowerEnd;
 
-	float m_fCantSprintPowerBegin;
-	float m_fCantSprintPowerEnd;
+	float											m_fCantWalkPowerBegin;
+	float											m_fCantWalkPowerEnd;
 
-	float m_fLimpingHealthBegin;
-	float m_fLimpingHealthEnd;
+	float											m_fCantSprintPowerBegin;
+	float											m_fCantSprintPowerEnd;
+
+	float											m_fLimpingHealthBegin;
+	float											m_fLimpingHealthEnd;
 };

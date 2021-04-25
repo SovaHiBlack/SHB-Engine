@@ -1,10 +1,5 @@
-////////////////////////////////////////////////////////////////////////////
-//	Module 		: physic_item.cpp
-//	Created 	: 11.02.2004
-//  Modified 	: 11.02.2004
-//	Author		: Dmitriy Iassenev
+//	Module 		: PHItem.cpp
 //	Description : Physic item
-////////////////////////////////////////////////////////////////////////////
 
 #include "stdafx.h"
 
@@ -22,183 +17,197 @@
 	if(y>z){inst_y;}\
 		else{inst_z;}
 
-CPHItem::CPHItem()
+CPHItem::CPHItem( )
 {
-	init				();
+	init( );
 }
 
-CPHItem::~CPHItem()
+CPHItem::~CPHItem( )
 {
-	xr_delete			(m_pPhysicsShell);
+	xr_delete(m_pPhysicsShell);
 }
 
-void CPHItem::init		()
+void CPHItem::init( )
 {
-	m_pPhysicsShell			= 0;
+	m_pPhysicsShell = nullptr;
 }
 
-void CPHItem::reinit	()
+void CPHItem::reinit( )
 {
-	inherited::reinit		();
-	m_ready_to_destroy		= false;
+	inherited::reinit( );
+	m_ready_to_destroy = false;
 }
 
-void CPHItem::Load		(const char* section)
+void CPHItem::Load(const char* section)
 {
-	inherited::Load			(section);
+	inherited::Load(section);
 }
 
-void CPHItem::reload	(const char* section)
+void CPHItem::reload(const char* section)
 {
-	inherited::reload		(section);
+	inherited::reload(section);
 }
 
-void CPHItem::OnH_B_Independent	(bool just_before_destroy)
+void CPHItem::OnH_B_Independent(bool just_before_destroy)
 {
 	inherited::OnH_B_Independent(just_before_destroy);
 
 	if (m_ready_to_destroy)
+	{
 		return;
+	}
 
-	setVisible					(TRUE);
-	setEnabled					(TRUE);
+	setVisible(TRUE);
+	setEnabled(TRUE);
 
 	if (!just_before_destroy)
-		activate_physic_shell	();
+	{
+		activate_physic_shell( );
+	}
 }
 
-void CPHItem::OnH_B_Chield		()
+void CPHItem::OnH_B_Chield( )
 {
-	inherited::OnH_B_Chield		();
+	inherited::OnH_B_Chield( );
 
-	setVisible					(FALSE);
-	setEnabled					(FALSE);
+	setVisible(FALSE);
+	setEnabled(FALSE);
 
-	inherited::deactivate_physics_shell();
+	inherited::deactivate_physics_shell( );
 }
 
-BOOL CPHItem::net_Spawn			(CSE_Abstract* DC)
+BOOL CPHItem::net_Spawn(CSE_Abstract* DC)
 {
 	if (!inherited::net_Spawn(DC))
-		return				(FALSE);
-	smart_cast<CKinematics*>(Visual())->CalculateBones_Invalidate	();
-	smart_cast<CKinematics*>(Visual())->CalculateBones				();
-	CSE_Abstract			*abstract = (CSE_Abstract*)DC;
+	{
+		return FALSE;
+	}
+	smart_cast<CKinematics*>(Visual( ))->CalculateBones_Invalidate( );
+	smart_cast<CKinematics*>(Visual( ))->CalculateBones( );
+	CSE_Abstract* abstract = (CSE_Abstract*) DC;
 	if (0xffff == abstract->ID_Parent)
 	{
-		if(!PPhysicsShell())setup_physic_shell	();
+		if (!PPhysicsShell( ))
+		{
+			setup_physic_shell( );
+		}
 		//else processing_deactivate();//.
 	}
 
-	setVisible				(TRUE);
-	setEnabled				(TRUE);
+	setVisible(TRUE);
+	setEnabled(TRUE);
 
-	return					(TRUE);
+	return TRUE;
 }
 
-void CPHItem::net_Destroy		()
+void CPHItem::net_Destroy( )
 {
-	inherited::net_Destroy	();
+	inherited::net_Destroy( );
 }
 
-void CPHItem::UpdateCL()
+void CPHItem::UpdateCL( )
 {
 //	if (!xr_strcmp("bolt",cName()))
 //		Log					("--- B - CBolt",renderable.xform);
-	if (!H_Parent() && m_pPhysicsShell && m_pPhysicsShell->isActive())
-		m_pPhysicsShell->InterpolateGlobalTransform(&XFORM());
+	if (!H_Parent( ) && m_pPhysicsShell && m_pPhysicsShell->isActive( ))
+	{
+		m_pPhysicsShell->InterpolateGlobalTransform(&XFORM( ));
+	}
 //	if (!xr_strcmp("bolt",cName()))
 //		Log						("--- C - CBolt",renderable.xform);
-	inherited::UpdateCL		();
+	inherited::UpdateCL( );
 //	if (!xr_strcmp("bolt",cName()))
 //		Log						("--- D - CBolt",renderable.xform);
 }
 
-void CPHItem::activate_physic_shell()
+void CPHItem::activate_physic_shell( )
 {
-	CObject						*object = smart_cast<CObject*>(H_Parent());
-	R_ASSERT					(object);
-	XFORM().set					(object->XFORM());
-	inherited::activate_physic_shell();
-	CKinematics* K=smart_cast<CKinematics*>(Visual());
-	if(K)
+	CObject* object = smart_cast<CObject*>(H_Parent( ));
+	R_ASSERT(object);
+	XFORM( ).set(object->XFORM( ));
+	inherited::activate_physic_shell( );
+	CKinematics* K = smart_cast<CKinematics*>(Visual( ));
+	if (K)
 	{
-		K->CalculateBones_Invalidate();
-		K->CalculateBones();
+		K->CalculateBones_Invalidate( );
+		K->CalculateBones( );
 	}
-	///m_pPhysicsShell->Update		();	
+
+	///m_pPhysicsShell->Update		();
 }
 
-void CPHItem::setup_physic_shell	()
+void CPHItem::setup_physic_shell( )
 {
-	inherited::setup_physic_shell();
-	CKinematics* K=smart_cast<CKinematics*>(Visual());
-	if(K)
+	inherited::setup_physic_shell( );
+	CKinematics* K = smart_cast<CKinematics*>(Visual( ));
+	if (K)
 	{
-		K->CalculateBones_Invalidate();
-		K->CalculateBones();
+		K->CalculateBones_Invalidate( );
+		K->CalculateBones( );
 	}
+
 	//m_pPhysicsShell->Update		();
 }
 
-void CPHItem::create_box_physic_shell	()
+void CPHItem::create_box_physic_shell( )
 {
 	// Physics (Box)
-	Fobb obb; 
-	Visual()->vis.box.get_CD(obb.m_translate,obb.m_halfsize); 
-	obb.m_rotate.identity();
-	
+	Fobb obb;
+	Visual( )->vis.box.get_CD(obb.m_translate, obb.m_halfsize);
+	obb.m_rotate.identity( );
+
 	// Physics (Elements)
-	CPhysicsElement* E = P_create_Element(); 
-	R_ASSERT(E); 
+	CPhysicsElement* E = P_create_Element( );
+	R_ASSERT(E);
 	E->add_Box(obb);
 	// Physics (Shell)
-	m_pPhysicsShell = P_create_Shell(); 
+	m_pPhysicsShell = P_create_Shell( );
 	R_ASSERT(m_pPhysicsShell);
 	m_pPhysicsShell->add_Element(E);
 	m_pPhysicsShell->setDensity(2000.0f);
 }
 
-void CPHItem::create_box2sphere_physic_shell()
+void CPHItem::create_box2sphere_physic_shell( )
 {
 	// Physics (Box)
 	Fobb								obb;
-	Visual()->vis.box.get_CD			(obb.m_translate,obb.m_halfsize);
-	obb.m_rotate.identity				();
+	Visual( )->vis.box.get_CD(obb.m_translate, obb.m_halfsize);
+	obb.m_rotate.identity( );
 
 	// Physics (Elements)
-	CPhysicsElement						*E = P_create_Element	();
-	R_ASSERT							(E);
+	CPhysicsElement* E = P_create_Element( );
+	R_ASSERT(E);
 
 	Fvector3								ax;
 	float								radius;
 	CHOOSE_MAX(
-		obb.m_halfsize.x,ax.set(obb.m_rotate.i) ; ax.mul(obb.m_halfsize.x); radius=_min(obb.m_halfsize.y,obb.m_halfsize.z) ;obb.m_halfsize.y/=2.f;obb.m_halfsize.z/=2.f,
-		obb.m_halfsize.y,ax.set(obb.m_rotate.j) ; ax.mul(obb.m_halfsize.y); radius=_min(obb.m_halfsize.x,obb.m_halfsize.z) ;obb.m_halfsize.x/=2.f;obb.m_halfsize.z/=2.f,
-		obb.m_halfsize.z,ax.set(obb.m_rotate.k) ; ax.mul(obb.m_halfsize.z); radius=_min(obb.m_halfsize.y,obb.m_halfsize.x) ;obb.m_halfsize.y/=2.f;obb.m_halfsize.x/=2.f
+		obb.m_halfsize.x, ax.set(obb.m_rotate.i); ax.mul(obb.m_halfsize.x); radius = _min(obb.m_halfsize.y, obb.m_halfsize.z); obb.m_halfsize.y /= 2.f; obb.m_halfsize.z /= 2.f,
+		obb.m_halfsize.y, ax.set(obb.m_rotate.j); ax.mul(obb.m_halfsize.y); radius = _min(obb.m_halfsize.x, obb.m_halfsize.z); obb.m_halfsize.x /= 2.f; obb.m_halfsize.z /= 2.f,
+		obb.m_halfsize.z, ax.set(obb.m_rotate.k); ax.mul(obb.m_halfsize.z); radius = _min(obb.m_halfsize.y, obb.m_halfsize.x); obb.m_halfsize.y /= 2.f; obb.m_halfsize.x /= 2.f
 	)
 		//radius*=1.4142f;
-	Fsphere								sphere1,sphere2;
-	sphere1.P.add						(obb.m_translate,ax);
-	sphere1.R							=radius*1.4142f;
+	Fsphere sphere1;
+	Fsphere sphere2;
+	sphere1.P.add(obb.m_translate, ax);
+	sphere1.R = radius * 1.4142f;
 
-	sphere2.P.sub						(obb.m_translate,ax);
-	sphere2.R							=radius/2.f;
+	sphere2.P.sub(obb.m_translate, ax);
+	sphere2.R = radius / 2.f;
 
-	E->add_Box							(obb);
-	E->add_Sphere						(sphere1);
-	E->add_Sphere						(sphere2);
+	E->add_Box(obb);
+	E->add_Sphere(sphere1);
+	E->add_Sphere(sphere2);
 
 	// Physics (Shell)
-	m_pPhysicsShell						= P_create_Shell	();
-	R_ASSERT							(m_pPhysicsShell);
-	m_pPhysicsShell->add_Element		(E);
-	m_pPhysicsShell->setDensity			(2000.f);
-	m_pPhysicsShell->SetAirResistance();
+	m_pPhysicsShell = P_create_Shell( );
+	R_ASSERT(m_pPhysicsShell);
+	m_pPhysicsShell->add_Element(E);
+	m_pPhysicsShell->setDensity(2000.f);
+	m_pPhysicsShell->SetAirResistance( );
 }
 
-void CPHItem::create_physic_shell()
+void CPHItem::create_physic_shell( )
 {
 	///create_box_physic_shell();
-	inherited::create_physic_shell();
+	inherited::create_physic_shell( );
 }
