@@ -30,298 +30,294 @@ class CMonsterCorpseCoverEvaluator;
 class CCoverEvaluatorFarFromEnemy;
 class CCoverEvaluatorCloseToEnemy;
 class CMonsterEventManager;
-//class CJumping;
 class CControlledEntityBase;
 class CMovementManager;
 class IStateManagerBase;
 class CAnomalyDetector;
-
 class CControlAnimationBase;
 class CControlMovementBase;
 class CControlPathBuilderBase;
 class CControlDirectionBase;
 class CMonsterCoverManager;
-
 class CMonsterHome;
 
 class CBaseMonster : public CCustomMonster, public CStepManager, public CInventoryOwner
 {
-	using inherited = CCustomMonster;
+	using inherited																		= CCustomMonster;
 
 public:
-										CBaseMonster( );
-	virtual								~CBaseMonster( );
+										CBaseMonster									( );
+	virtual								~CBaseMonster									( );
 
-	virtual	Feel::Sound*				dcast_FeelSound( )
+	virtual Feel::Sound*				dcast_FeelSound									( )
 	{
 		return this;
 	}
-	virtual CCharacterPhysicsSupport*	character_physics_support( )
+	virtual CCharacterPhysicsSupport*	character_physics_support						( )
 	{
 		return m_pPhysics_support;
 	}
-	virtual CPHDestroyable*				ph_destroyable( );
-	virtual CEntityAlive*				cast_entity_alive( )
+	virtual CPHDestroyable*				ph_destroyable									( );
+	virtual CEntityAlive*				cast_entity_alive								( )
 	{
 		return this;
 	}
-	virtual CEntity*					cast_entity( )
+	virtual CEntity*					cast_entity										( )
 	{
 		return this;
 	}
-	virtual CPHShellHolder*				cast_physics_shell_holder( )
+	virtual CPHShellHolder*				cast_physics_shell_holder						( )
 	{
 		return this;
 	}
-	virtual CParticlesPlayer*			cast_particles_player( )
+	virtual CParticlesPlayer*			cast_particles_player							( )
 	{
 		return this;
 	}
-	virtual CCustomMonster*				cast_custom_monster( )
+	virtual CCustomMonster*				cast_custom_monster								( )
 	{
 		return this;
 	}
-	virtual CScriptEntity*				cast_script_entity( )
+	virtual CScriptEntity*				cast_script_entity								( )
 	{
 		return this;
 	}
-	virtual CBaseMonster*				cast_base_monster( )
+	virtual CBaseMonster*				cast_base_monster								( )
+	{
+		return this;
+	}
+	virtual CInventoryOwner*			cast_inventory_owner							( )
+	{
+		return this;
+	}
+	virtual CGameObject*				cast_game_object								( )
 	{
 		return this;
 	}
 
-	virtual CInventoryOwner*			cast_inventory_owner( )
-	{
-		return this;
-	}
-	virtual CGameObject*				cast_game_object( )
-	{
-		return this;
-	}
-
-	virtual BOOL						renderable_ShadowReceive( )
+	virtual BOOL						renderable_ShadowReceive						( )
 	{
 		return TRUE;
 	}
-	virtual void						Die(CObject* who);
-	virtual void						HitSignal(float amount, Fvector3& vLocalDir, CObject* who, s16 element);
-	virtual	void						Hit(SHit* pHDS);
-	virtual	void						PHHit(float P, Fvector3& dir, CObject* who, s16 element, Fvector3 p_in_object_space, float impulse, ALife::EHitType hit_type = ALife::eHitTypeWound);
-	virtual void						SelectAnimation(const Fvector3& _view, const Fvector3& _move, float speed);
+	virtual void						Die												(CObject* who);
+	virtual void						HitSignal										(float amount, Fvector3& vLocalDir, CObject* who, s16 element);
+	virtual void						Hit												(SHit* pHDS);
+	virtual void						PHHit											(float P, Fvector3& dir, CObject* who, s16 element, Fvector3 p_in_object_space, float impulse, ALife::EHitType hit_type = ALife::eHitTypeWound);
+	virtual void						SelectAnimation									(const Fvector3& _view, const Fvector3& _move, float speed);
 
-	virtual void						Load(const char* section);
-	virtual DLL_Pure*					_construct( );
+	virtual void						Load											(const char* section);
+	virtual DLL_Pure*					_construct										( );
 
-	virtual BOOL						net_Spawn(CSE_Abstract* DC);
-	virtual void						net_Destroy( );
-	virtual void						net_Save(NET_Packet& P);
-	virtual	BOOL						net_SaveRelevant( );
-	virtual void						net_Export(NET_Packet& P);
-	virtual void						net_Import(NET_Packet& P);
-	virtual void						net_Relcase(CObject* O);
+	virtual BOOL						net_Spawn										(CSE_Abstract* DC);
+	virtual void						net_Destroy										( );
+	virtual void						net_Save										(NET_Packet& P);
+	virtual BOOL						net_SaveRelevant								( );
+	virtual void						net_Export										(NET_Packet& P);
+	virtual void						net_Import										(NET_Packet& P);
+	virtual void						net_Relcase										(CObject* O);
 
 	//save/load server serialization
-	virtual void						save(NET_Packet& output_packet)
+	virtual void						save											(NET_Packet& output_packet)
 	{
 		inherited::save(output_packet);
 	}
-	virtual void						load(IReader& input_packet)
+	virtual void						load											(IReader& input_packet)
 	{
 		inherited::load(input_packet);
 	}
 
-	virtual void						UpdateCL( );
-	virtual void						shedule_Update(u32 dt);
+	virtual void						UpdateCL										( );
+	virtual void						shedule_Update									(u32 dt);
 
-	virtual void						InitThink( )
+	virtual void						InitThink										( )
 	{ }
-	virtual void						Think( );
-	virtual	void						reinit( );
-	virtual void						reload(const char* section);
+	virtual void						Think											( );
+	virtual void						reinit											( );
+	virtual void						reload											(const char* section);
 
-	virtual void						init( )
+	virtual void						init											( )
 	{ }
 
-	virtual void						feel_sound_new(CObject* who, int eType, CSound_UserDataPtr user_data, const Fvector3& Position, float power);
-	virtual BOOL						feel_vision_isRelevant(CObject* O);
-	virtual BOOL						feel_touch_on_contact(CObject* O);
-	virtual BOOL						feel_touch_contact(CObject*);
+	virtual void						feel_sound_new									(CObject* who, int eType, CSound_UserDataPtr user_data, const Fvector3& Position, float power);
+	virtual BOOL						feel_vision_isRelevant							(CObject* O);
+	virtual BOOL						feel_touch_on_contact							(CObject* O);
+	virtual BOOL						feel_touch_contact								(CObject*);
 
-	virtual bool						useful(const CItemManager* manager, const CGameObject* object) const;
-	virtual float						evaluate(const CItemManager* manager, const CGameObject* object) const;
+	virtual bool						useful											(const CItemManager* manager, const CGameObject* object) const;
+	virtual float						evaluate										(const CItemManager* manager, const CGameObject* object) const;
 
-	virtual void						OnEvent(NET_Packet& P, u16 type);
-	virtual void						OnHUDDraw(CCustomHUD* hud)
+	virtual void						OnEvent											(NET_Packet& P, u16 type);
+	virtual void						OnHUDDraw										(CCustomHUD* hud)
 	{
 		return inherited::OnHUDDraw(hud);
 	}
-	virtual u16							PHGetSyncItemsNumber( )
+	virtual u16							PHGetSyncItemsNumber							( )
 	{
 		return inherited::PHGetSyncItemsNumber( );
 	}
-	virtual CPHSynchronize*				PHGetSyncItem(u16 item)
+	virtual CPHSynchronize*				PHGetSyncItem									(u16 item)
 	{
 		return inherited::PHGetSyncItem(item);
 	}
-	virtual void						PHUnFreeze( )
+	virtual void						PHUnFreeze										( )
 	{
 		return inherited::PHUnFreeze( );
 	}
-	virtual void						PHFreeze( )
+	virtual void						PHFreeze										( )
 	{
 		return inherited::PHFreeze( );
 	}
-	virtual BOOL						UsedAI_Locations( )
+	virtual BOOL						UsedAI_Locations								( )
 	{
 		return inherited::UsedAI_Locations( );
 	}
 
-	virtual const SRotation				Orientation( ) const
+	virtual const SRotation				Orientation										( ) const
 	{
 		return inherited::Orientation( );
 	}
-	virtual void						renderable_Render( )
+	virtual void						renderable_Render								( )
 	{
 		return inherited::renderable_Render( );
 	}
 
-	virtual void						on_restrictions_change( );
+	virtual void						on_restrictions_change							( );
 
-	virtual void						SetAttackEffector( );
+	virtual void						SetAttackEffector								( );
 
-	virtual void						update_fsm( );
+	virtual void						update_fsm										( );
 
-	virtual void						post_fsm_update( );
-	void								squad_notify( );
+	virtual void						post_fsm_update									( );
+	void								squad_notify									( );
 
-	virtual bool						IsTalkEnabled( )
+	virtual bool						IsTalkEnabled									( )
 	{
 		return false;
 	}
 
-	virtual void						HitEntity(const CEntity* pEntity, float fDamage, float impulse, Fvector3& dir);
-	virtual void						HitEntityInJump(const CEntity* pEntity)
+	virtual void						HitEntity										(const CEntity* pEntity, float fDamage, float impulse, Fvector3& dir);
+	virtual void						HitEntityInJump									(const CEntity* pEntity)
 	{ }
 
-	virtual void						on_before_sell(CInventoryItem* item);
-	float								GetSatiety( )
+	virtual void						on_before_sell									(CInventoryItem* item);
+	float								GetSatiety										( )
 	{
 		return 0.5f;
 	}
-	void								ChangeSatiety(float v)
+	void								ChangeSatiety									(float v)
 	{ }
 	// ---------------------------------------------------------------------------------
 	// Process scripts
 	// ---------------------------------------------------------------------------------
-	virtual bool						bfAssignMovement(CScriptEntityAction* tpEntityAction);
-	virtual bool						bfAssignObject(CScriptEntityAction* tpEntityAction);
-	virtual bool						bfAssignWatch(CScriptEntityAction* tpEntityAction);
-	virtual bool						bfAssignAnimation(CScriptEntityAction* tpEntityAction);
-	virtual bool						bfAssignMonsterAction(CScriptEntityAction* tpEntityAction);
-	virtual bool						bfAssignSound(CScriptEntityAction* tpEntityAction);
+	virtual bool						bfAssignMovement								(CScriptEntityAction* tpEntityAction);
+	virtual bool						bfAssignObject									(CScriptEntityAction* tpEntityAction);
+	virtual bool						bfAssignWatch									(CScriptEntityAction* tpEntityAction);
+	virtual bool						bfAssignAnimation								(CScriptEntityAction* tpEntityAction);
+	virtual bool						bfAssignMonsterAction							(CScriptEntityAction* tpEntityAction);
+	virtual bool						bfAssignSound									(CScriptEntityAction* tpEntityAction);
 
-	virtual void						vfFinishAction(CScriptEntityAction* tpEntityAction);
+	virtual void						vfFinishAction									(CScriptEntityAction* tpEntityAction);
 
-	virtual void						ProcessScripts( );
+	virtual void						ProcessScripts									( );
 
-	virtual CEntity*					GetCurrentEnemy( );
-	virtual CEntity*					GetCurrentCorpse( );
-	virtual int							get_enemy_strength( );
+	virtual CEntity*					GetCurrentEnemy									( );
+	virtual CEntity*					GetCurrentCorpse								( );
+	virtual int							get_enemy_strength								( );
 
-	virtual void						SetScriptControl(const bool bScriptControl, shared_str caSciptName);
+	virtual void						SetScriptControl								(const bool bScriptControl, shared_str caSciptName);
 
-	bool					m_force_real_speed;
-	bool					m_script_processing_active;
-	bool					m_script_state_must_execute;
+	bool																				m_force_real_speed;
+	bool																				m_script_processing_active;
+	bool																				m_script_state_must_execute;
 
-	virtual void						jump(const Fvector3& position, float factor)
+	virtual void						jump											(const Fvector3& position, float factor)
 	{ }
 
-	bool					m_skip_transfer_enemy;
-	inline void							skip_transfer_enemy(bool value)
+	bool																				m_skip_transfer_enemy;
+	inline void							skip_transfer_enemy								(bool value)
 	{
 		m_skip_transfer_enemy = value;
 	}
 
-	inline int							Rank( )
+	inline int							Rank											( )
 	{
 		return m_rank;
 	}
 	//----------------------------------------------------------------------------------
 
-	virtual void						SetTurnAnimation(bool turn_left);
+	virtual void						SetTurnAnimation								(bool turn_left);
 
 	// установка специфических анимаций
-	virtual void						CheckSpecParams(u32 /**spec_params/**/)
+	virtual void						CheckSpecParams									(u32 /**spec_params/**/)
 	{ }
-	virtual void						ForceFinalAnimation( )
+	virtual void						ForceFinalAnimation								( )
 	{ }
-	virtual void						LookPosition(Fvector3 to_point, float angular_speed = PI_DIV_3);		// каждый монстр может по-разному реализвать эту функ (e.g. кровосос с поворотом головы и т.п.)
+	virtual void						LookPosition									(Fvector3 to_point, float angular_speed = PI_DIV_3);		// каждый монстр может по-разному реализвать эту функ (e.g. кровосос с поворотом головы и т.п.)
 
 	// Team
-	virtual void						ChangeTeam(int team, int squad, int group);
+	virtual void						ChangeTeam										(int team, int squad, int group);
 
 	// ---------------------------------------------------------------------------------
 	// Abilities
 	// ---------------------------------------------------------------------------------
-	virtual bool						ability_invisibility( )
+	virtual bool						ability_invisibility							( )
 	{
 		return false;
 	}
-	virtual bool						ability_can_drag( )
+	virtual bool						ability_can_drag								( )
 	{
 		return false;
 	}
-	virtual bool						ability_psi_attack( )
+	virtual bool						ability_psi_attack								( )
 	{
 		return false;
 	}
-	virtual bool						ability_earthquake( )
+	virtual bool						ability_earthquake								( )
 	{
 		return false;
 	}
-	virtual bool						ability_can_jump( )
+	virtual bool						ability_can_jump								( )
 	{
 		return false;
 	}
-	virtual bool						ability_distant_feel( )
+	virtual bool						ability_distant_feel							( )
 	{
 		return false;
 	}
-	virtual bool						ability_run_attack( )
+	virtual bool						ability_run_attack								( )
 	{
 		return false;
 	}
-	virtual bool						ability_rotation_jump( )
+	virtual bool						ability_rotation_jump							( )
 	{
 		return false;
 	}
-	virtual bool						ability_jump_over_physics( )
+	virtual bool						ability_jump_over_physics						( )
 	{
 		return false;
 	}
-	virtual bool						ability_pitch_correction( )
+	virtual bool						ability_pitch_correction						( )
 	{
 		return true;
 	}
 	// ---------------------------------------------------------------------------------
 
-	virtual void						event_on_step( )
+	virtual void						event_on_step									( )
 	{ }
-	virtual void						on_threaten_execute( )
+	virtual void						on_threaten_execute								( )
 	{ }
 	// ---------------------------------------------------------------------------------
 	// Memory
-	void								UpdateMemory( );
+	void								UpdateMemory									( );
 
 	// Cover
-	bool								GetCorpseCover(Fvector3& position, u32& vertex_id);
-	bool								GetCoverFromEnemy(const Fvector3& enemy_pos, Fvector3& position, u32& vertex_id);
-	bool								GetCoverFromPoint(const Fvector3& pos, Fvector3& position, u32& vertex_id, float min_dist, float max_dist, float radius);
-	bool								GetCoverCloseToPoint(const Fvector3& dest_pos, float min_dist, float max_dist, float deviation, float radius, Fvector3& position, u32& vertex_id);
+	bool								GetCorpseCover									(Fvector3& position, u32& vertex_id);
+	bool								GetCoverFromEnemy								(const Fvector3& enemy_pos, Fvector3& position, u32& vertex_id);
+	bool								GetCoverFromPoint								(const Fvector3& pos, Fvector3& position, u32& vertex_id, float min_dist, float max_dist, float radius);
+	bool								GetCoverCloseToPoint							(const Fvector3& dest_pos, float min_dist, float max_dist, float deviation, float radius, Fvector3& position, u32& vertex_id);
 
-	// Movement Manager
 protected:
+	// Movement Manager
 	CControlPathBuilder*																m_movement_manager;
 
 	virtual CMovementManager*			create_movement_manager							( );
@@ -376,7 +372,7 @@ public:
 	// -----------------------------------------------------------------------------
 	enum EMonsterType
 	{
-		eMonsterTypeUniversal = u32(0),
+		eMonsterTypeUniversal															= u32(0),
 		eMonsterTypeIndoor,
 		eMonsterTypeOutdoor
 	} m_monster_type;
@@ -393,7 +389,7 @@ private:
 public:
 	CAnomalyDetector&					anomaly_detector								( )
 	{
-		return (*m_anomaly_detector);
+		return *m_anomaly_detector;
 	}
 	// -----------------------------------------------------------------------------
 

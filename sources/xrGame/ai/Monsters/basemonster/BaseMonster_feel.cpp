@@ -1,10 +1,6 @@
-////////////////////////////////////////////////////////////////////////////
 //	Module 		: base_monster_feel.cpp
-//	Created 	: 26.05.2003
-//  Modified 	: 26.05.2003
-//	Author		: Serge Zhem
 //	Description : Visibility and look for all the biting monsters
-////////////////////////////////////////////////////////////////////////////
+
 #include "stdafx.h"
 
 #include "BaseMonster.h"
@@ -134,7 +130,7 @@ void CBaseMonster::HitEntity(const CEntity *pEntity, float fDamage, float impuls
 			CEffectorCam* ce = Actor()->Cameras().GetCamEffector((ECameraEffectorType)effBigMonsterHit);
 			if(!ce)
 			{
-				const shared_str&	eff_sect = pSettings->r_string(cNameSect(), "actor_hit_effect");	
+				const shared_str&	eff_sect = pSettings->r_string(cNameSect(), "actor_hit_effect");
 				if(eff_sect.c_str())
 				{
 					int id						= -1;
@@ -159,21 +155,27 @@ void CBaseMonster::HitEntity(const CEntity *pEntity, float fDamage, float impuls
 					float _s3 = _s2+PI_DIV_4;
 					float _s4 = _s3+PI_DIV_4;
 
-					if(ang_diff<=_s1){
+					if (ang_diff <= _s1)
+					{
 						id = 2;
-					}else {
-						if(ang_diff>_s1 && ang_diff<=_s2){
-							id = (bUp)?5:7;
-						}else
-							if(ang_diff>_s2 && ang_diff<=_s3){
-								id = (bUp)?3:1;
-							}else
-								if(ang_diff>_s3 && ang_diff<=_s4){
-									id = (bUp)?4:6;
-								}else
-									if(ang_diff>_s4){
+					}
+					else {
+						if (ang_diff > _s1 && ang_diff <= _s2) {
+							id = (bUp) ? 5 : 7;
+						}
+						else
+							if (ang_diff > _s2 && ang_diff <= _s3) {
+								id = (bUp) ? 3 : 1;
+							}
+							else
+								if (ang_diff > _s3 && ang_diff <= _s4) {
+									id = (bUp) ? 4 : 6;
+								}
+								else
+									if (ang_diff > _s4) {
 										id = 0;
-									}else{
+									}
+									else {
 										VERIFY(0);
 									}
 					}
