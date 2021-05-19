@@ -1,12 +1,12 @@
-#ifndef TELE_WHIRLWIND
-#define TELE_WHIRLWIND
+#pragma once
 
-#include "ai/monsters/telekinesis.h"
-#include "ai/monsters/telekinetic_object.h"
+#include "ai\monsters\Telekinesis.h"
+#include "ai\monsters\TelekineticObject.h"
 #include "PHImpact.h"
 
 class CTeleWhirlwind;
 class CGameObject;
+
 class CTeleWhirlwindObject : public CTelekineticObject
 {
 	typedef			CTelekineticObject	inherited;
@@ -59,6 +59,3 @@ virtual CTelekineticObject*		alloc_tele_object		()										{return static_cast<
 		float					keep_radius				()										{return m_keep_radius;}
 		void					set_throw_power			(float throw_pow);
 };
-
-
-#endif

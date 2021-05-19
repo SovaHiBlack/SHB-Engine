@@ -3177,10 +3177,10 @@
     <ClInclude Include="ai\Monsters\corpse_cover.h">
       <Filter>AI\AMonsters\common\components\Cover</Filter>
     </ClInclude>
-    <ClInclude Include="ai\Monsters\telekinesis.h">
+    <ClInclude Include="ai\Monsters\Telekinesis.h">
       <Filter>AI\AMonsters\common\components\Abilities\Telekinesis</Filter>
     </ClInclude>
-    <ClInclude Include="ai\Monsters\telekinetic_object.h">
+    <ClInclude Include="ai\Monsters\TelekineticObject.h">
       <Filter>AI\AMonsters\common\components\Abilities\Telekinesis</Filter>
     </ClInclude>
     <ClInclude Include="TeleWhirlwind.h">
@@ -6350,10 +6350,10 @@
     <ClCompile Include="ai\Monsters\corpse_cover.cpp">
       <Filter>AI\AMonsters\common\components\Cover</Filter>
     </ClCompile>
-    <ClCompile Include="ai\Monsters\telekinesis.cpp">
+    <ClCompile Include="ai\Monsters\Telekinesis.cpp">
       <Filter>AI\AMonsters\common\components\Abilities\Telekinesis</Filter>
     </ClCompile>
-    <ClCompile Include="ai\Monsters\telekinetic_object.cpp">
+    <ClCompile Include="ai\Monsters\TelekineticObject.cpp">
       <Filter>AI\AMonsters\common\components\Abilities\Telekinesis</Filter>
     </ClCompile>
     <ClCompile Include="TeleWhirlwind.cpp">

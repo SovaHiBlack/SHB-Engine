@@ -6,7 +6,7 @@
 #pragma warning(default:4995)
 #pragma warning(default:4267)
 
-inline void spatialParsFromDGeom(dGeomID d_space, Fvector& center, Fvector& AABB, float& radius)
+inline void spatialParsFromDGeom(dGeomID d_space, Fvector3& center, Fvector3& AABB, float& radius)
 {
 	d_space->computeAABB( );
 	dReal* dAABB = d_space->aabb;

@@ -70,7 +70,7 @@ protected:
 	inline		bool					initialized					() const;
 			bool					affect						(CBaseRestrictionPtr bridge, const Fsphere &sphere) const;
 			bool					affect						(CBaseRestrictionPtr bridge, u32 start_vertex_id, float radius) const;
-			bool					affect						(CBaseRestrictionPtr bridge, const Fvector &start_position, const Fvector &dest_position) const;
+			bool					affect						(CBaseRestrictionPtr bridge, const Fvector3& start_position, const Fvector3& dest_position) const;
 			bool					affect						(CBaseRestrictionPtr bridge, u32 start_vertex_id, u32 dest_vertex_id) const;
 
 public:
@@ -79,7 +79,7 @@ public:
 			void					remove_border				();
 	template <typename T1, typename T2>
 	inline		void					add_border					(T1 p1, T2 p2);
-			u32						accessible_nearest			(const Fvector &position, Fvector &result);
+			u32						accessible_nearest			(const Fvector3& position, Fvector3& result);
 			bool					accessible					(const Fsphere &sphere);
 			bool					accessible					(u32 level_vertex_id, float radius);
 	inline		shared_str				out_restrictions			() const;

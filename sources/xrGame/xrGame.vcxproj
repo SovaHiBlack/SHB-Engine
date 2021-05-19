@@ -485,8 +485,8 @@
     <ClInclude Include="ai\Monsters\state_defs.h" />
     <ClInclude Include="ai\Monsters\state_inline.h" />
     <ClInclude Include="ai\Monsters\state_manager.h" />
-    <ClInclude Include="ai\Monsters\telekinesis.h" />
-    <ClInclude Include="ai\Monsters\telekinetic_object.h" />
+    <ClInclude Include="ai\Monsters\Telekinesis.h" />
+    <ClInclude Include="ai\Monsters\TelekineticObject.h" />
     <ClInclude Include="ai\Monsters\Tushkano\tushkano.h" />
     <ClInclude Include="ai\Monsters\Tushkano\tushkano_state_manager.h" />
     <ClInclude Include="ai\Monsters\Zombie\zombie.h" />
@@ -1606,8 +1606,8 @@
     <ClCompile Include="ai\Monsters\Snork\snork.cpp" />
     <ClCompile Include="ai\Monsters\Snork\snork_jump.cpp" />
     <ClCompile Include="ai\Monsters\Snork\snork_state_manager.cpp" />
-    <ClCompile Include="ai\Monsters\telekinesis.cpp" />
-    <ClCompile Include="ai\Monsters\telekinetic_object.cpp" />
+    <ClCompile Include="ai\Monsters\Telekinesis.cpp" />
+    <ClCompile Include="ai\Monsters\TelekineticObject.cpp" />
     <ClCompile Include="ai\Monsters\Tushkano\tushkano.cpp" />
     <ClCompile Include="ai\Monsters\Tushkano\tushkano_state_manager.cpp" />
     <ClCompile Include="ai\Monsters\Zombie\zombie.cpp" />

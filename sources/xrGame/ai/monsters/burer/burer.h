@@ -1,7 +1,7 @@
 #pragma once
 
 #include "../BaseMonster/BaseMonster.h"
-#include "../telekinesis.h"
+#include "..\Telekinesis.h"
 #include "../anim_triple.h"
 #include "../scanning_ability.h"
 #include "../../../script_export_space.h"

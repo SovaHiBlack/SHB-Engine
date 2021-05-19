@@ -18,7 +18,7 @@
 CSpaceRestrictor::~CSpaceRestrictor( )
 { }
 
-void CSpaceRestrictor::Center(Fvector& C) const
+void CSpaceRestrictor::Center(Fvector3& C) const
 {
 	XFORM( ).transform_tiny(C, CFORM( )->getSphere( ).P);
 }
@@ -146,7 +146,8 @@ void CSpaceRestrictor::prepare( ) const
 				sphere.mul_43(XFORM( ), box);
 
 				// Build points
-				Fvector					A, B[8];
+				Fvector3				A;
+				Fvector3				B[8];
 				CPlanes					temp;
 				A.set(-.5f, -.5f, -.5f);	sphere.transform_tiny(B[0], A);
 				A.set(-.5f, -.5f, +.5f);	sphere.transform_tiny(B[1], A);
@@ -221,7 +222,7 @@ void CSpaceRestrictor::OnRender( )
 		return;
 	}
 	RCache.OnFrameEnd( );
-	Fvector l_half;
+	Fvector3 l_half;
 	l_half.set(0.5f, 0.5f, 0.5f);
 	Fmatrix l_ball;
 	Fmatrix l_box;
@@ -247,7 +248,7 @@ void CSpaceRestrictor::OnRender( )
 			{
 				Fsphere& l_sphere = l_pShape->data.sphere;
 				l_ball.scale(l_sphere.R, l_sphere.R, l_sphere.R);
-				Fvector l_p;
+				Fvector3 l_p;
 				XFORM( ).transform(l_p, l_sphere.P);
 				l_ball.translate_add(l_p);
 				Level( ).debug_renderer( ).draw_ellipse(l_ball, Color);
@@ -272,7 +273,7 @@ void CSpaceRestrictor::OnRender( )
 		float		delta_height = 0.0f;
 
 		// get up on 2 meters
-		Fvector shift;
+		Fvector3 shift;
 		static float gx = 0.0f;
 		static float gy = 2.0f;
 		static float gz = 0.0f;

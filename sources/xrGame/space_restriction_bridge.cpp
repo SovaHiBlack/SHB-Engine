@@ -45,7 +45,7 @@ shared_str CSpaceRestrictionBridge::name				() const
 	return				(object().name());
 }
 
-u32	CSpaceRestrictionBridge::accessible_nearest			(const Fvector &position, Fvector &result, bool out_restriction)
+u32	CSpaceRestrictionBridge::accessible_nearest			(const Fvector3& position, Fvector3& result, bool out_restriction)
 {
 	return				(accessible_nearest(m_object,position,result,out_restriction));
 }
@@ -93,7 +93,7 @@ struct CFindByXZ_predicate {
 	}
 };
 
-bool CSpaceRestrictionBridge::on_border					(const Fvector &position) const
+bool CSpaceRestrictionBridge::on_border					(const Fvector3& position) const
 {
 	START_PROFILE("Restricted Object/Bridge/On Border");
 	
@@ -125,7 +125,7 @@ bool CSpaceRestrictionBridge::on_border					(const Fvector &position) const
 	STOP_PROFILE;
 }
 
-bool CSpaceRestrictionBridge::out_of_border				(const Fvector &position)
+bool CSpaceRestrictionBridge::out_of_border				(const Fvector3& position)
 {
 	START_PROFILE("Restricted Object/Bridge/Out Of Border");
 

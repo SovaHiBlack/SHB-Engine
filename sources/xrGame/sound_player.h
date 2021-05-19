@@ -127,7 +127,7 @@ private:
 	CObject										*m_object;
 	shared_str									m_sound_prefix;
 
-	inline		Fvector		compute_sound_point			(const CSoundSingle &sound);
+	inline		Fvector3		compute_sound_point			(const CSoundSingle &sound);
 			void		remove_inappropriate_sounds	(u32 sound_mask);
 			void		update_playing_sounds		();
 			bool		check_sound_legacy			(u32 internal_type) const;

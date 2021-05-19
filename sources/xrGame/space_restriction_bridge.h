@@ -30,7 +30,7 @@ public:
 			bool					inside						(u32 level_vertex_id, bool partially_inside);
 			bool					inside						(u32 level_vertex_id, bool partially_inside, float radius);
 			shared_str				name						() const;
-			u32						accessible_nearest			(const Fvector &position, Fvector &result, bool out_restriction);
+			u32						accessible_nearest			(const Fvector3& position, Fvector3& result, bool out_restriction);
 			bool					shape						() const;
 			bool					default_restrictor			() const;
 			bool					on_border					(const Fvector &position) const;

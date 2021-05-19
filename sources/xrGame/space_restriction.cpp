@@ -311,7 +311,7 @@ void CSpaceRestriction::remove_border			()
 #endif
 }
 
-u32	CSpaceRestriction::accessible_nearest		(const Fvector &position, Fvector &result)
+u32	CSpaceRestriction::accessible_nearest		(const Fvector3& position, Fvector3& result)
 {
 	if (m_out_space_restriction)
 		return						(m_out_space_restriction->accessible_nearest(this,position,result,true));
@@ -329,7 +329,7 @@ bool CSpaceRestriction::affect					(SpaceRestrictionHolder::CBaseRestrictionPtr 
 
 	//if (bridge->inside(start_position))
 	//	return						(false);
-	//Fvector							position;
+	//Fvector3							position;
 	//bridge->accessible_nearest		(start_position,position,false);
 	//return							(start_position.distance_to(position) <= radius + dependent_distance);
 }
@@ -342,13 +342,13 @@ bool CSpaceRestriction::affect					(SpaceRestrictionHolder::CBaseRestrictionPtr 
 	return							(affect(bridge,sphere));
 }
 
-bool CSpaceRestriction::affect					(SpaceRestrictionHolder::CBaseRestrictionPtr bridge, const Fvector &start_position, const Fvector &dest_position) const
+bool CSpaceRestriction::affect					(SpaceRestrictionHolder::CBaseRestrictionPtr bridge, const Fvector3& start_position, const Fvector3& dest_position) const
 {
 	Fsphere							sphere0, sphere1;
 	sphere0.P						= start_position;
-	sphere0.R						= 0.f;
+	sphere0.R						= 0.0f;
 	sphere1.P						= dest_position;
-	sphere1.R						= 0.f;
+	sphere1.R						= 0.0f;
 	return							(affect(bridge,sphere0) || affect(bridge,sphere1));
 }
 

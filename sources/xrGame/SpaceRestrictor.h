@@ -50,7 +50,7 @@ public:
 	virtual BOOL				net_Spawn(CSE_Abstract* data);
 	virtual void				net_Destroy( );
 	bool						inside(const Fsphere& sphere) const;
-	virtual void				Center(Fvector& C) const;
+	virtual void				Center(Fvector3& C) const;
 	virtual float				Radius( ) const;
 	virtual BOOL				UsedAI_Locations( );
 	virtual void				spatial_move( );
