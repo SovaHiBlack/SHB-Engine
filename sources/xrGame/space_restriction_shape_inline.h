@@ -8,7 +8,7 @@
 
 #pragma once
 
-inline	Fvector	CSpaceRestrictionShape::position		(const CCF_Shape::shape_def &data) const
+inline	Fvector3	CSpaceRestrictionShape::position		(const CCF_Shape::shape_def &data) const
 {
 	switch (data.type) {
 		case 0	: return(data.data.sphere.P);
@@ -16,7 +16,7 @@ inline	Fvector	CSpaceRestrictionShape::position		(const CCF_Shape::shape_def &da
 		default : NODEFAULT;
 	}
 #ifdef DEBUG
-	return	(Fvector().set(0.f,0.f,0.f));
+	return	(Fvector3().set(0.f,0.f,0.f));
 #endif
 }
 
@@ -24,7 +24,7 @@ inline	float CSpaceRestrictionShape::radius			(const CCF_Shape::shape_def &data)
 {
 	switch (data.type) {
 		case 0	: return(data.data.sphere.R);
-		case 1	: return(Fbox3().set(Fvector().set(-0.5f,-0.5f,-0.5f),Fvector().set(0.5f,0.5f,0.5f)).xform(data.data.box).getradius());
+		case 1	: return(Fbox3().set(Fvector3().set(-0.5f,-0.5f,-0.5f), Fvector3().set(0.5f,0.5f,0.5f)).xform(data.data.box).getradius());
 		default : NODEFAULT;
 	}
 #ifdef DEBUG

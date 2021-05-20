@@ -92,13 +92,13 @@ inline bool  TriPlaneContainPoint(const dReal* v0,const dReal* v1,const dReal* v
 	 cast_fv(triangle.norm).normalize()						;
 	 triangle.pos=dDOT(VRT[0],triangle.norm)					;
  }
- __forceinline	void InitTriangle(CDB::TRI* XTri,Triangle& triangle,const Fvector*	 V_array)
+ __forceinline	void InitTriangle(CDB::TRI* XTri,Triangle& triangle,const Fvector3*	 V_array)
  {
 	 const Point vertices[3]={Point((dReal*)&V_array[XTri->verts[0]]),Point((dReal*)&V_array[XTri->verts[1]]),Point((dReal*)&V_array[XTri->verts[2]])};
 	 InitTriangle(XTri,triangle,vertices);
  }
 
- __forceinline	void CalculateTri(CDB::TRI* XTri,const float* pos,Triangle& triangle,const Fvector* V_array)
+ __forceinline	void CalculateTri(CDB::TRI* XTri,const float* pos,Triangle& triangle,const Fvector3* V_array)
  {
 	 InitTriangle(XTri,triangle,V_array);
 	 triangle.dist=dDOT(pos,triangle.norm)-triangle.pos;

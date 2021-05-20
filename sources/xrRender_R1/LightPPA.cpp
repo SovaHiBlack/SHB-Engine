@@ -19,7 +19,7 @@ const float	SSM_tex_size 			=	32.f;
 // binders for lighting
 //////////////////////////////////////////////////////////////////////////
 void cl_light_PR::setup		(R_constant* C)					{
-	Fvector&	P	= RImplementation.r1_dlight_light->position;
+	Fvector3&	P	= RImplementation.r1_dlight_light->position;
 	float		R	= RImplementation.r1_dlight_light->range;
 	if (RImplementation.phase==CRender::PHASE_POINT)		RCache.set_c	(C,P.x,P.y,P.z,.5f/R);
 	else													RCache.set_c	(C,P.x,P.y,P.z,1.f/R);
@@ -35,7 +35,7 @@ void cl_light_XFORM::setup	(R_constant* C)					{
 
 //////////////////////////////////////////////////////////////////////////
 /*
-inline void mk_vertex					(CLightR_Vertex& D, Fvector& P, Fvector& N, Fvector& C, float r2)
+inline void mk_vertex					(CLightR_Vertex& D, Fvector3& P, Fvector3& N, Fvector3& C, float r2)
 {
 	D.P.set	(P);
 	D.N.set	(P);
@@ -79,7 +79,7 @@ void CLightR_Manager::render_point	()
 		{
 			// Build bbox
 			float				size_f	= PPL.range+EPS_L;
-			Fvector				size;	
+			Fvector3				size;	
 			size.set			(size_f,size_f,size_f);
 
 			// Query collision DB (Select polygons)
@@ -88,7 +88,7 @@ void CLightR_Manager::render_point	()
 			u32	triCount		= xrc.r_count	();
 			if	(0==triCount)	return;
 			CDB::TRI* tris		= g_pGameLevel->ObjectSpace.GetStaticTris();
-			Fvector* verts		= g_pGameLevel->ObjectSpace.GetStaticVerts();
+			Fvector3* verts		= g_pGameLevel->ObjectSpace.GetStaticVerts();
 
 			// Lock
 			RCache.set_Geometry		(hGeom);
@@ -97,16 +97,16 @@ void CLightR_Manager::render_point	()
 			CLightR_Vertex* VB		= (CLightR_Vertex*)RCache.Vertex.Lock(triLock*3,hGeom->vb_stride,vOffset);
 
 			// Cull and triangulate polygons
-			Fvector	cam		= Device.vCameraPosition;
+			Fvector3	cam		= Device.vCameraPosition;
 			float	r2		= PPL.range*2;
 			u32		actual	= 0;
 			for (u32 t=0; t<triCount; t++)
 			{
 				CDB::TRI&	T	= tris	[xrc.r_begin()[t].id];
 
-				Fvector	V1		= verts[T.verts[0]];
-				Fvector V2		= verts[T.verts[1]];
-				Fvector V3		= verts[T.verts[2]];
+				Fvector3	V1		= verts[T.verts[0]];
+				Fvector3 V2		= verts[T.verts[1]];
+				Fvector3 V3		= verts[T.verts[2]];
 				Fplane  Poly;	Poly.build(V1,V2,V3);
 
 				// Test for poly facing away from light or camera
@@ -145,7 +145,7 @@ void CLightR_Manager::render_point	()
 void CLightR_Manager::render_point	()
 {
 	// for each light
-	Fvector		lc_COP		= Device.vCameraPosition	;
+	Fvector3		lc_COP		= Device.vCameraPosition	;
 	float		lc_limit	= ps_r1_dlights_clip		;
 	for (xr_vector<light*>::iterator it=selected_point.begin(); it!=selected_point.end(); it++)
 	{
@@ -159,7 +159,10 @@ void CLightR_Manager::render_point	()
 		if		(L->range<0.01f)	continue;
 
 		//		1. Calculate light frustum
-		Fvector						L_dir,L_up,L_right,L_pos;
+		Fvector3					L_dir;
+		Fvector3					L_up;
+		Fvector3					L_right;
+		Fvector3					L_pos;
 		Fmatrix						L_view,L_project,L_combine;
 		L_dir.set					(0,-1, 0);				
 		L_up.set					(0,	0, 1);				
@@ -218,7 +221,7 @@ void CLightR_Manager::render_spot	()
 {
 	// for each light
 	//	Msg	("l=%d",selected_spot.size());
-	Fvector		lc_COP		= Device.vCameraPosition	;
+	Fvector3		lc_COP		= Device.vCameraPosition	;
 	float		lc_limit	= ps_r1_dlights_clip		;
 
 	for (xr_vector<light*>::iterator it=selected_spot.begin(); it!=selected_spot.end(); it++)
@@ -231,7 +234,10 @@ void CLightR_Manager::render_spot	()
 		if		(lc_scale<EPS)		continue;
 
 		//		1. Calculate light frustum
-		Fvector						L_dir,L_up,L_right,L_pos;
+		Fvector3					L_dir;
+		Fvector3					L_up;
+		Fvector3					L_right;
+		Fvector3					L_pos;
 		Fmatrix						L_view,L_project,L_combine;
 		L_dir.set					(L->direction);			L_dir.normalize		();
 		L_up.set					(0,1,0);				if (_abs(L_up.dotproduct(L_dir))>.99f)	L_up.set(0,0,1);

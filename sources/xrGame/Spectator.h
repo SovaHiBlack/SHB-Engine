@@ -49,7 +49,7 @@ public:
 	virtual BOOL			net_Spawn				(CSE_Abstract* DC);
 	virtual void			net_Destroy				( );
 
-	virtual void			Center					(Fvector& C) const
+	virtual void			Center					(Fvector3& C) const
 	{
 		C.set(Position( ));
 	}

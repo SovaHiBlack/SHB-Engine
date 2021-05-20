@@ -103,10 +103,13 @@ void	CROS_impl::update	(IRenderable* O)
 	CObject*	_object	= dynamic_cast<CObject*>	(O);
 
 	// select sample, randomize position inside object
-	Fvector	position;	O->renderable.xform.transform_tiny	(position,O->renderable.visual->vis.sphere.P);
-	float	radius;		radius	= O->renderable.visual->vis.sphere.R;
+	Fvector3	position;
+	O->renderable.xform.transform_tiny	(position,O->renderable.visual->vis.sphere.P);
+	float	radius;
+	radius	= O->renderable.visual->vis.sphere.R;
 	position.y			+=  .3f * radius;
-	Fvector	direction;	direction.random_dir();
+	Fvector3	direction;
+	direction.random_dir();
 //.			position.mad(direction,0.25f*radius);
 //.			position.mad(direction,0.025f*radius);
 
@@ -119,7 +122,8 @@ void	CROS_impl::update	(IRenderable* O)
 	if	(MODE & IRender_ObjectSpecific::TRACE_SUN)	{
 		if  (--result_sun	< 0)	{
 			result_sun		+=		::Random.randI(lt_hemisamples/4,lt_hemisamples/2)	;
-			Fvector	direction;	direction.set	(sun->direction).invert().normalize	();
+			Fvector3	direction;
+			direction.set	(sun->direction).invert().normalize	();
 			sun_value		=	!(g_pGameLevel->ObjectSpace.RayTest(position,direction,500.f,collide::rqtBoth,&cache_sun,_object))?1.f:0.f;
 		}
 	}
@@ -133,7 +137,8 @@ void	CROS_impl::update	(IRenderable* O)
 			else								{ sample=(result_iterator%lt_hemisamples); result_iterator++;	}
 
 			// take sample
-			Fvector	direction;	direction.set	(hdir[sample][0],hdir[sample][1],hdir[sample][2]).normalize	();
+			Fvector3	direction;
+			direction.set	(hdir[sample][0],hdir[sample][1],hdir[sample][2]).normalize	();
 //.			result[sample]	=	!g_pGameLevel->ObjectSpace.RayTest(position,direction,50.f,collide::rqtBoth,&cache[sample],_object);
 			result[sample]	=	!g_pGameLevel->ObjectSpace.RayTest(position,direction,50.f,collide::rqtStatic,&cache[sample],_object);
 			//	Msg				("%d:-- %s",sample,result[sample]?"true":"false");
@@ -155,7 +160,7 @@ void	CROS_impl::update	(IRenderable* O)
 	if		((!O->renderable_ShadowGenerate()) && (!O->renderable_ShadowReceive()))	bTraceLights = FALSE;
 	if		(bTraceLights)	{
 		// Select nearest lights
-		Fvector					bb_size	=	{radius,radius,radius};
+		Fvector3					bb_size	=	{radius,radius,radius};
 		g_SpatialSpace->q_box				(RImplementation.lstSpatial,0,STYPE_LIGHTSOURCE,position,bb_size);
 		for (u32 o_it=0; o_it<RImplementation.lstSpatial.size(); o_it++)	{
 			ISpatial*	spatial		= RImplementation.lstSpatial[o_it];
@@ -175,10 +180,11 @@ void	CROS_impl::update	(IRenderable* O)
 			if (I->frame_touched!=Device.dwFrame)	{ track.erase(I) ; id--	; continue ; }
 
 			// Trace visibility
-			Fvector				P,D;
+			Fvector3				P;
+			Fvector3				D;
 			float		amount	= 0;
 			light*		xrL		= I->source;
-			Fvector&	LP		= xrL->position;
+			Fvector3&	LP		= xrL->position;
 			P.mad				(position,P.random_dir(),traceR);		// Random point inside range
 
 			// point/spot
@@ -219,15 +225,15 @@ void	CROS_impl::update	(IRenderable* O)
 	// Process ambient lighting and approximate average lighting
 	// Process our lights to find average luminiscense
 	CEnvDescriptor&	desc	=	g_pGamePersistent->Environment().CurrentEnv;
-	Fvector			accum	=	{ desc.ambient.x,		desc.ambient.y,		desc.ambient.z		};
-	Fvector			hemi	=	{ desc.hemi_color.x,	desc.hemi_color.y,	desc.hemi_color.z	};
-	Fvector			sun_	=	{ desc.sun_color.x,		desc.sun_color.y,	desc.sun_color.z	};
+	Fvector3			accum	=	{ desc.ambient.x,		desc.ambient.y,		desc.ambient.z		};
+	Fvector3			hemi	=	{ desc.hemi_color.x,	desc.hemi_color.y,	desc.hemi_color.z	};
+	Fvector3			sun_	=	{ desc.sun_color.x,		desc.sun_color.y,	desc.sun_color.z	};
 	if (MODE & IRender_ObjectSpecific::TRACE_HEMI	)	hemi.mul(hemi_smooth); else hemi.mul(.2f);
 					accum.add	( hemi );
 	if (MODE & IRender_ObjectSpecific::TRACE_SUN	)	sun_.mul(sun_smooth); else sun_.mul(.2f);
 					accum.add	( sun_ );
 	if (MODE & IRender_ObjectSpecific::TRACE_LIGHTS )	{
-		Fvector		lacc	=	{ 0,0,0 };
+		Fvector3		lacc	=	{ 0,0,0 };
 		for (u32 lit=0; lit<lights.size(); lit++)	{
 			float	d	=	lights[lit].source->position.distance_to(position);
 			float	r	=	lights[lit].source->range;

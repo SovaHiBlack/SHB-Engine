@@ -350,11 +350,11 @@ void CTorch::UpdateCL( )
 			Fvector3 right;
 			Fvector3 up;
 			dir.setHP(m_prev_hp.x + m_delta_h, m_prev_hp.y);
-			Fvector::generate_orthonormal_basis_normalized(dir, up, right);
+			Fvector3::generate_orthonormal_basis_normalized(dir, up, right);
 
 			if (true)
 			{
-				Fvector offset = M.c;
+				Fvector3 offset = M.c;
 				offset.mad(M.i, TORCH_OFFSET.x);
 				offset.mad(M.j, TORCH_OFFSET.y);
 				offset.mad(M.k, TORCH_OFFSET.z);
@@ -391,7 +391,7 @@ void CTorch::UpdateCL( )
 				light_render->set_position(M.c);
 				light_render->set_rotation(M.k, M.i);
 
-				Fvector offset = M.c;
+				Fvector3 offset = M.c;
 				offset.mad(M.i, OMNI_OFFSET.x);
 				offset.mad(M.j, OMNI_OFFSET.y);
 				offset.mad(M.k, OMNI_OFFSET.z);

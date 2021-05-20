@@ -29,7 +29,7 @@ private:
 private:
 	u32								m_state;
 	u32								m_time_stamp;
-	Fvector							m_position;
+	Fvector3							m_position;
 
 private:
 	inline		const CEntity			&object					() const;
@@ -54,9 +54,9 @@ public:
 public:
 	virtual	BOOL					feel_vision_isRelevant	(CObject *object) = 0;
 	virtual	void					camera					(
-										Fvector &position,
-										Fvector &direction,
-										Fvector &normal,
+										Fvector3& position,
+										Fvector3& direction,
+										Fvector3& normal,
 										float &field_of_view,
 										float &aspect_ratio,
 										float &near_plane,

@@ -67,22 +67,22 @@ public:
 	inline		bool	turn_in_place					() const;
 
 	inline		void	set_head_orientation			(const MonsterSpace::SBoneRotation &orientation);
-			void	set_desired_position			(const Fvector *desired_position);
-	inline		void	set_desired_direction			(const Fvector *desired_direction);
+			void	set_desired_position			(const Fvector3* desired_position);
+	inline		void	set_desired_direction			(const Fvector3* desired_direction);
 	inline		void	set_body_state					(EBodyState body_state);
 	inline		void	set_movement_type				(EMovementType movement_type);
 	inline		void	set_mental_state				(EMentalState mental_state);
 	inline		void	set_path_type					(EPathType path_type);
 	inline		void	set_detail_path_type			(EDetailPathType detail_path_type);
 			void	set_nearest_accessible_position	();
-			void	set_nearest_accessible_position	(Fvector desired_position, u32 level_vertex_id);
+			void	set_nearest_accessible_position	(Fvector3 desired_position, u32 level_vertex_id);
 			float	speed							(const EMovementDirection &movement_direction);
 			void	setup_speed_from_animation		(const float &speed);
 
 public:
 	inline		const MonsterSpace::SBoneRotation		&head_orientation		() const;
-	inline		const Fvector							&desired_position		() const;
-	inline		const Fvector							&desired_direction		() const;
+	inline		const Fvector3&							desired_position		() const;
+	inline		const Fvector3&							desired_direction		() const;
 	inline		const MonsterSpace::EBodyState			body_state				() const;
 	inline		const MonsterSpace::EBodyState			target_body_state		() const;
 	inline		const MonsterSpace::EMovementType		movement_type			() const;
@@ -101,8 +101,8 @@ public:
 
 private:
 	const CGameObject	*m_last_query_object;
-	Fvector				m_last_query_position;
-	Fvector				m_last_query_object_position;
+	Fvector3				m_last_query_position;
+	Fvector3				m_last_query_object_position;
 	float				m_last_query_distance;
 	bool				m_last_query_result;
 	bool				m_force_update;

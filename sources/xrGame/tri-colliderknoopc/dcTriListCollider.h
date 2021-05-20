@@ -35,7 +35,7 @@ private:
 inline	int dSortTriPrimitiveCollide (T primitive,	
 				dxGeom		*o1,		dxGeom			*o2,
 				int			flags,		dContactGeom	*contact,	int skip,
-				const Fvector&	AABB
+				const Fvector3&	AABB
 				);
 	inline dReal PointSphereTest(const dReal* center, const dReal radius,
 		const dReal* pt,dReal* norm);

@@ -18,7 +18,7 @@ namespace PS
 
 		int					m_MemDT;
 
-		Fvector				m_InitialPosition;
+		Fvector3				m_InitialPosition;
 	public:
 		Fmatrix				m_XFORM;
 	protected:
@@ -46,7 +46,7 @@ namespace PS
 		virtual void 		OnDeviceCreate		();
 		virtual void 		OnDeviceDestroy		();
 
-		virtual void		UpdateParent		(const Fmatrix& m, const Fvector& velocity, BOOL bXFORM);
+		virtual void		UpdateParent		(const Fmatrix& m, const Fvector3& velocity, BOOL bXFORM);
 
 		BOOL				Compile				(CPEDef* def);
 

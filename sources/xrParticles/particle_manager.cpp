@@ -172,7 +172,7 @@ void CParticleManager::Render(int effect_id)
 //    ParticleEffect* pe	= GetEffectPtr(effect_id);
 }
 
-void CParticleManager::Transform(int alist_id, const Fmatrix& full, const Fvector& vel)
+void CParticleManager::Transform(int alist_id, const Fmatrix& full, const Fvector3& vel)
 {
 	// Execute the specified action list.
 	ParticleActions* pa = GetActionListPtr(alist_id);

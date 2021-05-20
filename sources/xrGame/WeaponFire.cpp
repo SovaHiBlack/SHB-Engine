@@ -31,14 +31,16 @@ float _nrand(float sigma)
 	else				return -y * sigma * ONE_OVER_SIGMA_EXP;
 }
 
-void random_dir(Fvector& tgt_dir, const Fvector& src_dir, float dispersion)
+void random_dir(Fvector3& tgt_dir, const Fvector3& src_dir, float dispersion)
 {
 	float sigma = dispersion / 3.f;
 	float alpha = clampr(_nrand(sigma), -dispersion, dispersion);
 	float theta = Random.randF(0, PI);
 	float r = tan(alpha);
-	Fvector 			U, V, T;
-	Fvector::generate_orthonormal_basis(src_dir, U, V);
+	Fvector3 			U;
+	Fvector3			V;
+	Fvector3			T;
+	Fvector3::generate_orthonormal_basis(src_dir, U, V);
 	U.mul(r * _sin(theta));
 	V.mul(r * _cos(theta));
 	T.add(U, V);
@@ -50,7 +52,7 @@ float CWeapon::GetWeaponDeterioration( )
 	return conditionDecreasePerShot;
 }
 
-void CWeapon::FireTrace(const Fvector& P, const Fvector& D)
+void CWeapon::FireTrace(const Fvector3& P, const Fvector3& D)
 {
 	VERIFY(m_magazine.size( ));
 

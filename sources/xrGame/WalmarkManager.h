@@ -8,7 +8,7 @@ class CWalmarkManager
 {
 private:
 	SHADER_VECTOR					m_wallmarks;
-	Fvector							m_pos;
+	Fvector3							m_pos;
 
 public:
 	CObject* m_owner;
@@ -16,9 +16,9 @@ public:
 	~CWalmarkManager( );
 	void	Load(const char* section);
 	void	Clear( );
-	void	AddWallmark(const Fvector& dir, const Fvector& start_pos, float range, float wallmark_size, SHADER_VECTOR& wallmarks_vector, int t);
+	void	AddWallmark(const Fvector3& dir, const Fvector3& start_pos, float range, float wallmark_size, SHADER_VECTOR& wallmarks_vector, int t);
 
-	void	PlaceWallmarks(const Fvector& start_pos);
+	void	PlaceWallmarks(const Fvector3& start_pos);
 
 	void	__stdcall StartWorkflow( );
 };

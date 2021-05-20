@@ -1,11 +1,12 @@
 #include "stdafx.h"
 #include "..\ENGINE\cl_intersect.h"
 
-extern Fvector du_cone_vertices			[DU_CONE_NUMVERTEX];
+extern Fvector3 du_cone_vertices			[DU_CONE_NUMVERTEX];
 
-BOOL	tri_vs_sphere_intersect			(Fvector& SC, float R, Fvector& v0, Fvector& v1, Fvector& v2)
+BOOL	tri_vs_sphere_intersect			(Fvector3& SC, float R, Fvector3& v0, Fvector3& v1, Fvector3& v2)
 {
-	Fvector	e0,e1;
+	Fvector3	e0;
+	Fvector3	e1;
 	return	CDB::TestSphereTri	(SC,R,v0,e0.sub(v1,v0),e1.sub(v2,v0));
 }
 

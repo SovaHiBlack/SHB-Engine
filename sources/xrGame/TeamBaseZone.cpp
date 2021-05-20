@@ -31,7 +31,7 @@ void CTeamBaseZone::reinit( )
 	inherited::reinit( );
 }
 
-void CTeamBaseZone::Center(Fvector& C) const
+void CTeamBaseZone::Center(Fvector3& C) const
 {
 	XFORM( ).transform_tiny(C, CFORM( )->getSphere( ).P);
 }
@@ -76,7 +76,7 @@ BOOL CTeamBaseZone::net_Spawn(CSE_Abstract* DC)
 	if (bOk)
 	{
 		l_pShape->ComputeBounds( );
-		Fvector						P;
+		Fvector3						P;
 		XFORM( ).transform_tiny(P, CFORM( )->getSphere( ).P);
 		setEnabled(TRUE);
 	}
@@ -95,7 +95,7 @@ void CTeamBaseZone::shedule_Update(u32 dt)
 	inherited::shedule_Update(dt);
 
 	const Fsphere& s = CFORM( )->getSphere( );
-	Fvector						P;
+	Fvector3						P;
 	XFORM( ).transform_tiny(P, s.P);
 	feel_touch_update(P, s.R);
 }
@@ -152,7 +152,7 @@ void CTeamBaseZone::OnRender( )
 		return;
 	}
 
-	Fvector l_half;
+	Fvector3 l_half;
 	l_half.set(0.5f, 0.5f, 0.5f);
 
 	Fmatrix l_ball;
@@ -168,7 +168,7 @@ void CTeamBaseZone::OnRender( )
 			{
 				Fsphere& l_sphere = l_pShape->data.sphere;
 				l_ball.scale(l_sphere.R, l_sphere.R, l_sphere.R);
-				Fvector l_p; XFORM( ).transform(l_p, l_sphere.P);
+				Fvector3 l_p; XFORM( ).transform(l_p, l_sphere.P);
 				l_ball.translate_add(l_p);
 				Level( ).debug_renderer( ).draw_ellipse(l_ball, D3DCOLOR_XRGB(0, 255, 255));
 			}

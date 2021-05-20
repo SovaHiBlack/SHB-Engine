@@ -147,7 +147,6 @@ CSE_ALifeTraderAbstract::CSE_ALifeTraderAbstract(const char* caSection)
 CSE_Abstract* CSE_ALifeTraderAbstract::init( )
 {
 	string4096					S;
-	//sprintf_s						(S,"%s\r\n[game_info]\r\nname_id = default\r\n",!*base()->m_ini_string ? "" : *base()->m_ini_string);
 	sprintf_s(S, "%s\r\n[game_info]\r\n", !*base( )->m_ini_string ? "" : *base( )->m_ini_string);
 	base( )->m_ini_string = S;
 
@@ -164,7 +163,6 @@ void CSE_ALifeTraderAbstract::STATE_Write(NET_Packet& tNetPacket)
 	tNetPacket.w_stringZ(m_SpecificCharacter);
 
 	tNetPacket.w_u32(m_trader_flags.get( ));
-//	tNetPacket.w_s32			(m_iCharacterProfile);
 	tNetPacket.w_stringZ(m_sCharacterProfile);
 
 	tNetPacket.w_s32(m_community_index);

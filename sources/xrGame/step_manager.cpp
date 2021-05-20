@@ -125,7 +125,7 @@ void CStepManager::update()
 			// Играть звук
 			if (!mtl_pair->StepSounds.empty() && is_on_ground() ) 
 			{
-				Fvector sound_pos = m_object->Position();
+				Fvector3 sound_pos = m_object->Position();
 				sound_pos.y += 0.5;
 				GET_RANDOM(mtl_pair->StepSounds).play_no_feedback(m_object,0,0,&sound_pos,&m_step_info.params.step[i].power);
 			}
@@ -141,13 +141,13 @@ void CStepManager::update()
 				Fmatrix pos; 
 
 				// установить направление
-				pos.k.set(Fvector().set(0.0f,1.0f,0.0f));
-				Fvector::generate_orthonormal_basis(pos.k, pos.j, pos.i);
+				pos.k.set(Fvector3().set(0.0f,1.0f,0.0f));
+				Fvector3::generate_orthonormal_basis(pos.k, pos.j, pos.i);
 
 				// установить позицию
 				pos.c.set(get_foot_position(ELegType(i)));
 
-				ps->UpdateParent(pos,Fvector().set(0.f,0.f,0.f));
+				ps->UpdateParent(pos, Fvector3().set(0.f,0.f,0.f));
 				GamePersistent().ps_needtoplay.push_back(ps);
 			}
 
@@ -181,7 +181,7 @@ void CStepManager::update()
 //////////////////////////////////////////////////////////////////////////
 // Function for foot processing
 //////////////////////////////////////////////////////////////////////////
-Fvector	CStepManager::get_foot_position(ELegType leg_type)
+Fvector3	CStepManager::get_foot_position(ELegType leg_type)
 {
 	R_ASSERT2(m_foot_bones[leg_type] != BI_NONE, make_string("[%s] foot bone had not been set", m_object->Name( )));
 

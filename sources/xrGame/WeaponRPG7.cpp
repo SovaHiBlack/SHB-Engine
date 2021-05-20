@@ -100,7 +100,8 @@ void CWeaponRPG7::switch2_Fire	()
 
 	if(GetState() == eFire	&& getRocketCount()) 
 	{
-		Fvector p1, d; 
+		Fvector3	p1;
+		Fvector3	d;
 		p1.set								(get_LastFP()); 
 		d.set								(get_LastFD());
 
@@ -121,7 +122,7 @@ void CWeaponRPG7::switch2_Fire	()
 		Fmatrix								launch_matrix;
 		launch_matrix.identity				();
 		launch_matrix.k.set					(d);
-		Fvector::generate_orthonormal_basis(launch_matrix.k,
+		Fvector3::generate_orthonormal_basis(launch_matrix.k,
 											launch_matrix.j, launch_matrix.i);
 		launch_matrix.c.set					(p1);
 

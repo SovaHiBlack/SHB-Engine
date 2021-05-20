@@ -52,7 +52,7 @@ namespace PS
 	{
 		const CPGDef*		m_Def;
 		float				m_CurrentTime;
-		Fvector				m_InitialPosition;
+		Fvector3				m_InitialPosition;
 	public:
 //		DEFINE_VECTOR(IRender_Visual*,VisualVec,VisualVecIt);
 		using VisualVec = xr_vector<IRender_Visual*>;
@@ -82,7 +82,7 @@ namespace PS
 			void			StopRelatedChild	(u32 idx);
 			void			StartFreeChild		(CParticleEffect* emitter, const char* eff_name, PAPI::Particle& m);
 
-			void 			UpdateParent	(const Fmatrix& m, const Fvector& velocity, BOOL bXFORM);
+			void 			UpdateParent	(const Fmatrix& m, const Fvector3& velocity, BOOL bXFORM);
 			void			OnFrame			(u32 u_dt, const CPGDef::SEffect& def, Fbox3& box, bool& bPlaying);
 
 			u32				ParticlesCount	();
@@ -111,7 +111,7 @@ namespace PS
 		virtual void 		OnDeviceCreate	();
 		virtual void 		OnDeviceDestroy	();
 
-		virtual void		UpdateParent	(const Fmatrix& m, const Fvector& velocity, BOOL bXFORM);
+		virtual void		UpdateParent	(const Fmatrix& m, const Fvector3& velocity, BOOL bXFORM);
 
 		BOOL				Compile			(CPGDef* def);
 

@@ -703,9 +703,8 @@ public:
 	}
 };
 
-typedef _vector3<int>		Ivector3;
-typedef _vector3<float>		Fvector;
-typedef _vector3<float>		Fvector3;
+using Ivector3									= _vector3<int>;
+using Fvector3									= _vector3<float>;
 
 template <class T>
 BOOL						_valid									(const _vector3<T>& v)

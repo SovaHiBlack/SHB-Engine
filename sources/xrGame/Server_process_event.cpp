@@ -97,14 +97,6 @@ void CServer::Process_event(NET_Packet& P, ClientID sender)
 			VERIFY(verify_entities( ));
 		}
 		break;
-/*		
-		case GE_OWNERSHIP_TAKE_MP_FORCED:
-		{
-			Process_event_ownership(P, sender, timestamp, destination, TRUE);
-			VERIFY(verify_entities( ));
-		}
-		break;
-		*/
 		case GE_TRADE_SELL:
 		case GE_OWNERSHIP_REJECT:
 		case GE_LAUNCH_ROCKET:

@@ -41,7 +41,9 @@ void vision_client::eye_pp_s01					()
 {
 	Device.Statistic->AI_Vis_Query.Begin		();
 	
-	Fvector						c, k, j;
+	Fvector3					c;
+	Fvector3					k;
+	Fvector3					j;
 	float						field_of_view, aspect_ratio, near_plane, far_plane;
 	camera						(c, k, j, field_of_view, aspect_ratio, near_plane, far_plane);
 

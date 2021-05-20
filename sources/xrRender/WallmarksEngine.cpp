@@ -113,7 +113,7 @@ void CWallmarksEngine::RecurseTri(u32 t, Fmatrix &mView, CWallmarksEngine::stati
 	
 	// Some vars
 	u32*		v_ids		= T->verts;
-	Fvector*	v_data		= sml_collector.getV();
+	Fvector3*	v_data		= sml_collector.getV();
 	sml_poly_src.clear		();
 	sml_poly_src.push_back	(v_data[v_ids[0]]);
 	sml_poly_src.push_back	(v_data[v_ids[1]]);
@@ -129,7 +129,7 @@ void CWallmarksEngine::RecurseTri(u32 t, Fmatrix &mView, CWallmarksEngine::stati
 	if (P) {
 		// Create vertices and triangulate poly (tri-fan style triangulation)
 		FVF::LIT			V0,V1,V2;
-		Fvector				UV;
+		Fvector3				UV;
 
 		mView.transform_tiny(UV, (*P)[0]);
 		V0.set				((*P)[0],0,(1+UV.x)*.5f,(1-UV.y)*.5f);
@@ -154,7 +154,7 @@ void CWallmarksEngine::RecurseTri(u32 t, Fmatrix &mView, CWallmarksEngine::stati
 			CDB::TRI*	SML			= sml_collector.getT() + adj;
 			v_ids					= SML->verts;
 
-			Fvector test_normal;
+			Fvector3 test_normal;
 			test_normal.mknormal	(v_data[v_ids[0]],v_data[v_ids[1]],v_data[v_ids[2]]);
 			float cosa				= test_normal.dotproduct(sml_normal);
 			if (cosa<0.034899f)		continue;	// cos(88)
@@ -163,11 +163,14 @@ void CWallmarksEngine::RecurseTri(u32 t, Fmatrix &mView, CWallmarksEngine::stati
 	}
 }
 
-void CWallmarksEngine::BuildMatrix	(Fmatrix &mView, float invsz, const Fvector& from)
+void CWallmarksEngine::BuildMatrix	(Fmatrix &mView, float invsz, const Fvector3& from)
 {
 	// build projection
 	Fmatrix				mScale;
-    Fvector				at,up,right,y;
+	Fvector3			at;
+	Fvector3			up;
+	Fvector3			right;
+	Fvector3			y;
 	at.sub				(from,sml_normal);
 	y.set				(0,1,0);
 	if (_abs(sml_normal.y)>.99f) y.set(1,0,0);
@@ -178,13 +181,14 @@ void CWallmarksEngine::BuildMatrix	(Fmatrix &mView, float invsz, const Fvector& 
 	mView.mulA_43		(mScale);
 }
 
-void CWallmarksEngine::AddWallmark_internal	(CDB::TRI* pTri, const Fvector* pVerts, const Fvector &contact_point, ref_shader hShader, float sz)
+void CWallmarksEngine::AddWallmark_internal	(CDB::TRI* pTri, const Fvector3* pVerts, const Fvector3& contact_point, ref_shader hShader, float sz)
 {
 	// query for polygons in bounding box
 	// calculate adjacency
 	{
 		Fbox3				bb_query;
-		Fvector				bbc,bbd;
+		Fvector3			bbc;
+		Fvector3			bbd;
 		bb_query.set		(contact_point,contact_point);
 		bb_query.grow		(sz*2.5f);
 		bb_query.get_CD		(bbc,bbd);
@@ -204,7 +208,7 @@ void CWallmarksEngine::AddWallmark_internal	(CDB::TRI* pTri, const Fvector* pVer
 	}
 
 	// calc face normal
-	Fvector	N;
+	Fvector3	N;
 	N.mknormal			(pVerts[pTri->verts[0]],pVerts[pTri->verts[1]],pVerts[pTri->verts[2]]);
 	sml_normal.set		(N);
 
@@ -255,7 +259,7 @@ void CWallmarksEngine::AddWallmark_internal	(CDB::TRI* pTri, const Fvector* pVer
 	}
 }
 
-void CWallmarksEngine::AddStaticWallmark	(CDB::TRI* pTri, const Fvector* pVerts, const Fvector &contact_point, ref_shader hShader, float sz)
+void CWallmarksEngine::AddStaticWallmark	(CDB::TRI* pTri, const Fvector3* pVerts, const Fvector3& contact_point, ref_shader hShader, float sz)
 {
 	// optimization cheat: don't allow wallmarks more than 50 m from viewer/actor
 	if (contact_point.distance_to_sqr(Device.vCameraPosition) > _sqr(100.f))	return;
@@ -266,7 +270,7 @@ void CWallmarksEngine::AddStaticWallmark	(CDB::TRI* pTri, const Fvector* pVerts,
 	lock.Leave				();
 }
 
-void CWallmarksEngine::AddSkeletonWallmark	(const Fmatrix* xf, CKinematics* obj, ref_shader& sh, const Fvector& start, const Fvector& dir, float size)
+void CWallmarksEngine::AddSkeletonWallmark	(const Fmatrix* xf, CKinematics* obj, ref_shader& sh, const Fvector3& start, const Fvector3& dir, float size)
 {	
 	if( 0==g_r || ::RImplementation.phase != CRender::PHASE_NORMAL)				return;
 	// optimization cheat: don't allow wallmarks more than 50 m from viewer/actor
@@ -330,7 +334,7 @@ void CWallmarksEngine::Render()
 	RCache.set_xform_project	(Device.mProject);
 
 	Fmatrix	mSavedView			= Device.mView;
-	Fvector	mViewPos			;
+	Fvector3	mViewPos			;
 			mViewPos.mad		(Device.vCameraPosition, Device.vCameraDirection,ps_r__WallmarkSHIFT_V);
 	Device.mView.build_camera_dir	(mViewPos,Device.vCameraDirection,Device.vCameraTop);
 	RCache.set_xform_view		(Device.mView);

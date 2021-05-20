@@ -130,7 +130,9 @@ void CWeapon::UpdateXForm( )
 		Fmatrix& mR = V->LL_GetTransform(u16(boneR));
 		// Calculate
 		Fmatrix				mRes;
-		Fvector				R, D, N;
+		Fvector3			R;
+		Fvector3			D;
+		Fvector3			N;
 		D.sub(mL.c, mR.c);
 
 		if (fis_zero(D.magnitude( )))
@@ -173,9 +175,9 @@ void CWeapon::UpdateFireDependencies_internal( )
 			Fmatrix& fire_mat = V->LL_GetTransform(u16(m_pHUD->FireBone( )));
 			Fmatrix& parent = m_pHUD->Transform( );
 
-			const Fvector& fp = m_pHUD->FirePoint( );
-			const Fvector& fp2 = m_pHUD->FirePoint2( );
-			const Fvector& sp = m_pHUD->ShellPoint( );
+			const Fvector3& fp = m_pHUD->FirePoint( );
+			const Fvector3& fp2 = m_pHUD->FirePoint2( );
+			const Fvector3& sp = m_pHUD->ShellPoint( );
 
 			fire_mat.transform_tiny(m_firedeps.vLastFP, fp);
 			parent.transform_tiny(m_firedeps.vLastFP);
@@ -190,16 +192,16 @@ void CWeapon::UpdateFireDependencies_internal( )
 
 			m_firedeps.m_FireParticlesXForm.identity( );
 			m_firedeps.m_FireParticlesXForm.k.set(m_firedeps.vLastFD);
-			Fvector::generate_orthonormal_basis_normalized(m_firedeps.m_FireParticlesXForm.k,
+			Fvector3::generate_orthonormal_basis_normalized(m_firedeps.m_FireParticlesXForm.k,
 														   m_firedeps.m_FireParticlesXForm.j, m_firedeps.m_FireParticlesXForm.i);
 		}
 		else
 		{
 			 // 3rd person or no parent
 			Fmatrix& parent = XFORM( );
-			Fvector& fp = vLoadedFirePoint;
-			Fvector& fp2 = vLoadedFirePoint2;
-			Fvector& sp = vLoadedShellPoint;
+			Fvector3& fp = vLoadedFirePoint;
+			Fvector3& fp2 = vLoadedFirePoint2;
+			Fvector3& sp = vLoadedShellPoint;
 
 			parent.transform_tiny(m_firedeps.vLastFP, fp);
 			parent.transform_tiny(m_firedeps.vLastFP2, fp2);
@@ -233,12 +235,13 @@ void CWeapon::ForceUpdateFireParticles( )
 			Log("H_Parent", H_Parent( )->cNameSect( ).c_str( ));
 		}
 
-		Fvector					p, d;
+		Fvector3					p;
+		Fvector3					d;
 		smart_cast<CEntity*>(H_Parent( ))->g_fireParams(this, p, d);
 
 		Fmatrix						_pxf;
 		_pxf.k = d;
-		_pxf.i.crossproduct(Fvector( ).set(0.0f, 1.0f, 0.0f), _pxf.k);
+		_pxf.i.crossproduct(Fvector3( ).set(0.0f, 1.0f, 0.0f), _pxf.k);
 		_pxf.j.crossproduct(_pxf.k, _pxf.i);
 		_pxf.c = XFORM( ).c;
 
@@ -1485,7 +1488,8 @@ void CWeapon::reload(const char* section)
 	}
 
 	{
-		Fvector				pos, ypr;
+		Fvector3				pos;
+		Fvector3				ypr;
 		pos = pSettings->r_fvector3(section, "position");
 		ypr = pSettings->r_fvector3(section, "orientation");
 		ypr.mul(PI / 180.f);
@@ -1497,7 +1501,8 @@ void CWeapon::reload(const char* section)
 	m_StrapOffset = m_Offset;
 	if (pSettings->line_exist(section, "strap_position") && pSettings->line_exist(section, "strap_orientation"))
 	{
-		Fvector				pos, ypr;
+		Fvector3				pos;
+		Fvector3				ypr;
 		pos = pSettings->r_fvector3(section, "strap_position");
 		ypr = pSettings->r_fvector3(section, "strap_orientation");
 		ypr.mul(PI / 180.f);
@@ -1651,7 +1656,7 @@ void CWeapon::UpdateHudAdditonal(Fmatrix& trans)
 		hud_rotation_y.rotateY(m_pHUD->ZoomRotateY( ) * m_fZoomRotationFactor);
 		hud_rotation.mulA_43(hud_rotation_y);
 
-		Fvector offset = m_pHUD->ZoomOffset( );
+		Fvector3 offset = m_pHUD->ZoomOffset( );
 		offset.mul(m_fZoomRotationFactor);
 		hud_rotation.translate_over(offset);
 		trans.mulB_43(hud_rotation);

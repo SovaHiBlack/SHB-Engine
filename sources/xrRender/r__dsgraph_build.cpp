@@ -20,19 +20,19 @@ float		r_ssaLOD_A,			r_ssaLOD_B;
 float		r_ssaGLOD_start,	r_ssaGLOD_end;
 float		r_ssaHZBvsTEX;
 
-__forceinline	float	CalcSSA				(float& distSQ, Fvector& C, IRender_Visual* V)
+__forceinline	float	CalcSSA				(float& distSQ, Fvector3& C, IRender_Visual* V)
 {
 	float R	= V->vis.sphere.R + 0;
 	distSQ	= Device.vCameraPosition.distance_to_sqr(C)+EPS;
 	return	R/distSQ;
 }
-__forceinline	float	CalcSSA				(float& distSQ, Fvector& C, float R)
+__forceinline	float	CalcSSA				(float& distSQ, Fvector3& C, float R)
 {
 	distSQ	= Device.vCameraPosition.distance_to_sqr(C)+EPS;
 	return	R/distSQ;
 }
 
-void R_dsgraph_structure::r_dsgraph_insert_dynamic	(IRender_Visual *pVisual, Fvector& Center)
+void R_dsgraph_structure::r_dsgraph_insert_dynamic	(IRender_Visual *pVisual, Fvector3& Center)
 {
 	CRender&	RI			=	RImplementation;
 
@@ -312,7 +312,8 @@ void CRender::add_leafs_Dynamic	(IRender_Visual *pVisual)
 			BOOL	_use_lod			= FALSE	;
 			if (pV->m_lod)				
 			{
-				Fvector							Tpos;	float		D;
+				Fvector3							Tpos;
+				float		D;
 				val_pTransform->transform_tiny	(Tpos, pV->vis.sphere.P);
 				float		ssa		=	CalcSSA	(D,Tpos,pV->vis.sphere.R/2.f);	// assume dynamics never consume full sphere
 				if (ssa<r_ssaLOD_A)	_use_lod	= TRUE;
@@ -333,7 +334,7 @@ void CRender::add_leafs_Dynamic	(IRender_Visual *pVisual)
 		{
 			// General type of visual
 			// Calculate distance to it's center
-			Fvector							Tpos;
+		Fvector3							Tpos;
 			val_pTransform->transform_tiny	(Tpos, pVisual->vis.sphere.P);
 			r_dsgraph_insert_dynamic		(pVisual,Tpos);
 		}
@@ -425,7 +426,7 @@ void CRender::add_leafs_Static(IRender_Visual *pVisual)
 BOOL CRender::add_Dynamic(IRender_Visual *pVisual, u32 planes)
 {
 	// Check frustum visibility and calculate distance to visual's center
-	Fvector		Tpos;	// transformed position
+	Fvector3		Tpos;	// transformed position
 	EFC_Visible	VIS;
 
 	val_pTransform->transform_tiny	(Tpos, pVisual->vis.sphere.P);
@@ -479,7 +480,8 @@ BOOL CRender::add_Dynamic(IRender_Visual *pVisual, u32 planes)
 			BOOL	_use_lod			= FALSE	;
 			if (pV->m_lod)				
 			{
-				Fvector							Tpos;	float		D;
+				Fvector3							Tpos;
+				float		D;
 				val_pTransform->transform_tiny	(Tpos, pV->vis.sphere.P);
 				float		ssa		=	CalcSSA	(D,Tpos,pV->vis.sphere.R/2.f);	// assume dynamics never consume full sphere
 				if (ssa<r_ssaLOD_A)	_use_lod	= TRUE		;

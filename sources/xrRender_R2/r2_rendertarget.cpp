@@ -107,19 +107,19 @@ u8		fpackZ			(float v)				{
 	clamp	(_v,0,255);
 	return	u8(_v);
 }
-Fvector	vunpack			(int x, int y, int z)	{
-	Fvector	pck;
+Fvector3	vunpack			(int x, int y, int z)	{
+	Fvector3	pck;
 	pck.x	= (float(x)/255.f - .5f)*2.f;
 	pck.y	= (float(y)/255.f - .5f)*2.f;
 	pck.z	= -float(z)/255.f;
 	return	pck;
 }
-Fvector	vunpack			(Ivector3 src)			{
+Fvector3	vunpack			(Ivector3 src)			{
 	return	vunpack	(src.x,src.y,src.z);
 }
-Ivector3	vpack			(Fvector src)
+Ivector3	vpack			(Fvector3 src)
 {
-	Fvector			_v;
+	Fvector3			_v;
 	int	bx			= fpack	(src.x);
 	int by			= fpack	(src.y);
 	int bz			= fpackZ(src.z);

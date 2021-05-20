@@ -111,15 +111,15 @@ public:
 	void					Perform_game_export( );
 	BOOL					PerformRP(CSE_Abstract* E);
 
-	inline void					clear_ids( )
+	inline void				clear_ids( )
 	{
 		m_tID_Generator = id_generator_type( );
 	}
-	inline u16					PerformIDgen(u16 ID)
+	inline u16				PerformIDgen(u16 ID)
 	{
 		return				(m_tID_Generator.tfGetID(ID));
 	}
-	inline void					FreeID(u16 ID, u32 time)
+	inline void				FreeID(u16 ID, u32 time)
 	{
 		return				(m_tID_Generator.vfFreeID(ID, time));
 	}
@@ -129,7 +129,7 @@ public:
 	void					Perform_reject(CSE_Abstract* what, CSE_Abstract* from, int delta);
 	void					Perform_destroy(CSE_Abstract* tpSE_Abstract, u32 mode);
 
-	CSE_Abstract* Process_spawn(NET_Packet& P, ClientID sender, BOOL bSpawnWithClientsMainEntityAsParent = FALSE, CSE_Abstract* tpExistedEntity = 0);
+	CSE_Abstract*			Process_spawn(NET_Packet& P, ClientID sender, BOOL bSpawnWithClientsMainEntityAsParent = FALSE, CSE_Abstract* tpExistedEntity = 0);
 	void					Process_update(NET_Packet& P, ClientID sender);
 	void					Process_save(NET_Packet& P, ClientID sender);
 	void					Process_event(NET_Packet& P, ClientID sender);
@@ -137,7 +137,7 @@ public:
 	bool					Process_event_reject(NET_Packet& P, const ClientID sender, const u32 time, const u16 id_parent, const u16 id_entity, bool send_message = true);
 	void					Process_event_destroy(NET_Packet& P, ClientID sender, u32 time, u16 ID, NET_Packet* pEPack);
 
-	xrClientData* SelectBestClientToMigrateTo(CSE_Abstract* E, BOOL bForceAnother = FALSE);
+	xrClientData*			SelectBestClientToMigrateTo(CSE_Abstract* E, BOOL bForceAnother = FALSE);
 	void					SendConnectResult(IClient* CL, u8 res, u8 res1, char* ResultStr);
 
 	void					AttachNewClient(IClient* CL);
@@ -145,7 +145,7 @@ public:
 
 protected:
 	bool					CheckAdminRights(const shared_str& user, const shared_str& pass, string512 reason);
-	virtual IClient* new_client(SClientConnectData* cl_data);
+	virtual IClient*		new_client(SClientConnectData* cl_data);
 
 	virtual bool			Check_ServerAccess(IClient* CL, string512& reason)
 	{
@@ -166,29 +166,29 @@ protected:
 
 public:
 	// constr / destr
-	CServer( );
-	virtual ~CServer( );
+							CServer( );
+	virtual					~CServer( );
 
 	// extended functionality
-	virtual u32				OnMessage(NET_Packet& P, ClientID sender);	// Non-Zero means broadcasting with "flags" as returned
+	virtual u32				OnMessage(NET_Packet& P, ClientID sender);		// Non-Zero means broadcasting with "flags" as returned
 	virtual void			OnCL_Connected(IClient* CL);
 	virtual void			OnCL_Disconnected(IClient* CL);
 	virtual bool			OnCL_QueryHost( );
 	virtual void			SendTo_LL(ClientID ID, void* data, u32 size, u32 dwFlags = DPNSEND_GUARANTEED, u32 dwTimeout = 0);
 
-	virtual IClient* client_Create( );								// create client info
-	virtual void			client_Replicate( );								// replicate current state to client
-	virtual IClient* client_Find_Get(ClientID ID);					// Find earlier disconnected client
-	virtual void			client_Destroy(IClient* C);					// destroy client info
+	virtual IClient*		client_Create( );								// create client info
+	virtual void			client_Replicate( );							// replicate current state to client
+	virtual IClient*		client_Find_Get(ClientID ID);					// Find earlier disconnected client
+	virtual void			client_Destroy(IClient* C);						// destroy client info
 
 	// utilities
-	CSE_Abstract* entity_Create(const char* name);
+	CSE_Abstract*			entity_Create(const char* name);
 	void					entity_Destroy(CSE_Abstract*& P);
 	u32						GetEntitiesNum( )
 	{
 		return entities.size( );
 	}
-	CSE_Abstract* GetEntity(u32 Num);
+	CSE_Abstract*			GetEntity(u32 Num);
 
 	inline void				clients_Lock( )
 	{
@@ -199,11 +199,11 @@ public:
 		csPlayers.Leave( );
 	}
 
-	xrClientData* ID_to_client(ClientID ID, bool ScanAll = false)
+	xrClientData*			ID_to_client(ClientID ID, bool ScanAll = false)
 	{
 		return (xrClientData*) (IPureServer::ID_to_client(ID, ScanAll));
 	}
-	CSE_Abstract* ID_to_entity(u16 ID);
+	CSE_Abstract*			ID_to_entity(u16 ID);
 
 	// main
 	virtual EConnect		Connect(shared_str& session_name);
@@ -213,7 +213,7 @@ public:
 	void					SLS_Clear( );
 	void					SLS_Save(IWriter& fs);
 	void					SLS_Load(IReader& fs);
-	shared_str		level_name(const shared_str& server_options) const;
+	shared_str				level_name(const shared_str& server_options) const;
 
 	void					create_direct_client( );
 
@@ -223,8 +223,8 @@ public:
 	xr_string				ent_name_safe(u16 eid);
 
 #ifdef DEBUG
-	bool			verify_entities( ) const;
-	void			verify_entity(const CSE_Abstract* entity) const;
+	bool					verify_entities( ) const;
+	void					verify_entity(const CSE_Abstract* entity) const;
 #endif
 
 };

@@ -18,7 +18,7 @@ inline void CStalkerMovementManager::set_head_orientation(const MonsterSpace::SB
 	m_head							= orientation;
 }
 
-inline	void CStalkerMovementManager::set_desired_direction(const Fvector *desired_direction)
+inline	void CStalkerMovementManager::set_desired_direction(const Fvector3* desired_direction)
 {
 	if (desired_direction) {
 		m_target.m_use_desired_direction	= true;
@@ -27,7 +27,7 @@ inline	void CStalkerMovementManager::set_desired_direction(const Fvector *desire
 	else {
 		m_target.m_use_desired_direction	= false;
 #ifdef DEBUG
-		m_target.m_desired_direction		= Fvector().set(flt_max,flt_max,flt_max);
+		m_target.m_desired_direction		= Fvector3().set(flt_max,flt_max,flt_max);
 #endif
 	}
 }
@@ -106,13 +106,13 @@ inline	const DetailPathManager::EDetailPathType	CStalkerMovementManager::detail_
 	return						(m_current.m_detail_path_type);
 }
 
-inline	const Fvector &CStalkerMovementManager::desired_position			() const
+inline	const Fvector3& CStalkerMovementManager::desired_position			() const
 {
 	VERIFY						(use_desired_position());
 	return						(m_current.m_desired_position);
 }
 
-inline	const Fvector &CStalkerMovementManager::desired_direction			() const
+inline	const Fvector3& CStalkerMovementManager::desired_direction			() const
 {
 	VERIFY						(use_desired_direction());
 	return						(m_current.m_desired_direction);

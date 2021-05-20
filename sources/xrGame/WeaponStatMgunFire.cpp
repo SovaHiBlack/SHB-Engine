@@ -8,7 +8,7 @@
 #include "ActorEffector.h"
 #include "EffectorShot.h"
 
-const Fvector&	CWeaponStatMgun::get_CurrentFirePoint()
+const Fvector3&	CWeaponStatMgun::get_CurrentFirePoint()
 {
 	return m_fire_pos;
 }

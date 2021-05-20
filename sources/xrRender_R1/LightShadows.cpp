@@ -93,7 +93,8 @@ void CLightShadows::set_object	(IRenderable* O)
 			return;
 		}
 
-		Fvector		C;	O->renderable.xform.transform_tiny		(C,O->renderable.visual->vis.sphere.P);
+		Fvector3		C;
+		O->renderable.xform.transform_tiny		(C,O->renderable.visual->vis.sphere.P);
 		float		R				= O->renderable.visual->vis.sphere.R;
 		float		D				= C.distance_to(Device.vCameraPosition)+R;
 					// D=0 -> P=0; 
@@ -132,9 +133,9 @@ void CLightShadows::add_element	(NODE& N)
 	casters.back()->nodes.push_back		(N);
 }
 
-inline float PLC_energy	(Fvector& P, Fvector& N, light* L, float E)
+inline float PLC_energy	(Fvector3& P, Fvector3& N, light* L, float E)
 {
-	Fvector Ldir;
+	Fvector3 Ldir;
 	if (L->flags.type==IRender_Light::DIRECT)
 	{
 		// Cos
@@ -164,7 +165,7 @@ inline float PLC_energy	(Fvector& P, Fvector& N, light* L, float E)
 	}
 }
 
-inline int PLC_calc	(Fvector& P, Fvector& N, light* L, float energy, Fvector& O)
+inline int PLC_calc	(Fvector3& P, Fvector3& N, light* L, float energy, Fvector3& O)
 {
 	float	E		= PLC_energy(P,N,L,energy);
 	float	C1		= clampr(Device.vCameraPosition.distance_to_sqr(P)/S_distance2,	0.f,1.f);
@@ -213,7 +214,7 @@ void CLightShadows::calculate	()
 			}
 
 			// calculate light center
-			Fvector		Lpos	= L.source->position;
+			Fvector3		Lpos	= L.source->position;
 			float		Lrange	= L.source->range;
 			//Log	("* l-pos:",Lpos);
 			//Msg	("* l-range: %f",Lrange);
@@ -236,7 +237,7 @@ void CLightShadows::calculate	()
 				float		_R		=	C.O->renderable.visual->vis.sphere.R+0.1f;
 				//Msg	("* o-r: %f",_R);
 				if (_dist<_R)		{
-					Fvector			Ldir;
+					Fvector3			Ldir;
 					Ldir.sub		(C.C,Lpos);
 					Ldir.normalize	();
 					Lpos.mad		(Lpos,Ldir,_dist-_R);
@@ -267,7 +268,9 @@ void CLightShadows::calculate	()
 			
 			// calculate view-matrix
 			Fmatrix		mView;
-			Fvector		v_D,v_N,v_R;
+			Fvector3	v_D;
+			Fvector3	v_N;
+			Fvector3	v_R;
 			v_D.sub					(C.C,Lpos);
 			v_D.normalize			();
 			if(1-_abs(v_D.y)<EPS)	v_N.set(1,0,0);
@@ -359,7 +362,7 @@ void CLightShadows::render	()
 	// Gain access to collision-DB
 	CDB::MODEL*		DB		= g_pGameLevel->ObjectSpace.GetStaticModel();
 	CDB::TRI*		TRIS	= DB->get_tris();
-	Fvector*		VERTS	= DB->get_verts();
+	Fvector3*		VERTS	= DB->get_verts();
 
 	int			slot_line	= S_rt_size/S_size;
 	
@@ -368,7 +371,7 @@ void CLightShadows::render	()
 	Device.mProject._43			-=	0.002f; 
 	RCache.set_xform_world		(Fidentity);
 	RCache.set_xform_project	(Device.mProject);
-	Fvector	View				= Device.vCameraPosition;
+	Fvector3	View				= Device.vCameraPosition;
 	
 	// Render shadows
 	RCache.set_Shader			(sh_World);
@@ -440,7 +443,9 @@ void CLightShadows::render	()
 
 				// Calc plane, throw away degenerate tris and invisible to light polygons
 				Fplane				P;	float mag = 0;
-				Fvector				t1,t2,n;
+				Fvector3			t1;
+				Fvector3			t2;
+				Fvector3			n;
 				t1.sub				(A[0],A[1]);
 				t2.sub				(A[0],A[2]);
 				n.crossproduct		(t1,t2);
@@ -484,8 +489,8 @@ void CLightShadows::render	()
 		// Fill VB
 		for (u32 tid=0; tid<CI->tcnt; tid++)	{
 			tess_tri&	TT		= CI->tris[tid];
-			Fvector* 	v		= TT.v;
-			Fvector		T;
+			Fvector3* 	v		= TT.v;
+			Fvector3		T;
 			Fplane		ttp;	ttp.build_unit_normal(v[0],TT.N);
 
 			if (ttp.classify(View)<0)						continue;

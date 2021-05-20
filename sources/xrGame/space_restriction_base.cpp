@@ -18,7 +18,7 @@ bool CSpaceRestrictionBase::inside	(u32 level_vertex_id, bool partially_inside)
 	return							(inside(level_vertex_id,partially_inside,DEFAULT_RADIUS));
 }
 
-inline	Fvector construct_position		(u32 level_vertex_id, float x, float z)
+inline	Fvector3 construct_position		(u32 level_vertex_id, float x, float z)
 {
 	return							Fvector3().set(x,ai().level_graph().vertex_plane_y(level_vertex_id,x,z),z);
 }

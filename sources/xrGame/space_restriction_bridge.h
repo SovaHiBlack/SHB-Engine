@@ -33,12 +33,12 @@ public:
 			u32						accessible_nearest			(const Fvector3& position, Fvector3& result, bool out_restriction);
 			bool					shape						() const;
 			bool					default_restrictor			() const;
-			bool					on_border					(const Fvector &position) const;
-			bool					out_of_border				(const Fvector &position);
+			bool					on_border					(const Fvector3& position) const;
+			bool					out_of_border				(const Fvector3& position);
 			Fsphere					sphere						() const;
 
 	template <typename T>
-	inline		u32						accessible_nearest			(T &restriction, const Fvector &position, Fvector &result, bool out_restriction);
+	inline		u32						accessible_nearest			(T &restriction, const Fvector3& position, Fvector3& result, bool out_restriction);
 	template <typename T>
 	inline		const xr_vector<u32>	&accessible_neighbour_border(T &restriction, bool out_restriction);
 };

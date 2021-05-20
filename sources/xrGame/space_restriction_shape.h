@@ -25,7 +25,7 @@ protected:
 	bool					m_default;
 
 protected:
-	inline			Fvector		position				(const CCF_Shape::shape_def &data) const;
+	inline			Fvector3		position				(const CCF_Shape::shape_def &data) const;
 	inline			float		radius					(const CCF_Shape::shape_def &data) const;
 				void		build_border			();
 				void		fill_shape				(const CCF_Shape::shape_def &shape);

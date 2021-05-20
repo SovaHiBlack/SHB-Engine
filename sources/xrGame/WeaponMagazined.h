@@ -154,8 +154,8 @@ protected:
 	int													m_iShotNum;
 	//после какого патрона, при непрерывной стрельбе, начинаетс€ отдача (сделано из-за јбакана)
 	int													m_iShootEffectorStart;
-	Fvector												m_vStartPos;
-	Fvector												m_vStartDir;
+	Fvector3											m_vStartPos;
+	Fvector3											m_vStartDir;
 	//флаг того, что мы остановились после того как выстрел€ли ровно столько патронов, сколько было задано в m_iQueueSize
 	bool												m_bStopedAfterQueueFired;
 	//флаг того, что хот€ бы один выстрел мы должны сделать (даже если очень быстро нажали на курок и вызвалось FireEnd)

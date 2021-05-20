@@ -186,8 +186,8 @@ void UpdateCameraDirection(CGameObject* pTo)
 {
 	CCameraBase* cam = Actor( )->cam_Active( );
 
-	Fvector des_dir;
-	Fvector des_pt;
+	Fvector3 des_dir;
+	Fvector3 des_pt;
 	pTo->Center(des_pt);
 	des_pt.y += pTo->Radius( ) * 0.5f;
 

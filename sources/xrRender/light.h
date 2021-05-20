@@ -16,9 +16,9 @@ public:
 		u32			bActive	:	1;
 		u32			bShadow	:	1;
 	}				flags;
-	Fvector			position	;
-	Fvector			direction	;
-	Fvector			right		;
+	Fvector3			position	;
+	Fvector3			direction	;
+	Fvector3			right		;
 	float			range		;
 	float			cone		;
 	Fcolor			color		;
@@ -81,8 +81,8 @@ public:
 	{ 
 		flags.bShadow=b;			
 	}
-	virtual void	set_position			(const Fvector& P);
-	virtual void	set_rotation			(const Fvector& D, const Fvector& R);
+	virtual void	set_position			(const Fvector3& P);
+	virtual void	set_rotation			(const Fvector3& D, const Fvector3& R);
 	virtual void	set_cone				(float angle);
 	virtual void	set_range				(float R);
 	virtual void	set_virtual_size		(float R)						{};
@@ -91,7 +91,7 @@ public:
 	virtual void	set_texture				(const char* name);
 
 	virtual	void	spatial_move			();
-	virtual	Fvector	spatial_sector_point	();
+	virtual	Fvector3	spatial_sector_point	();
 
 	virtual IRender_Light*	dcast_Light		()	{ return this; }
 

@@ -32,7 +32,8 @@ public:
 	__forceinline SelfRef	build_precise(const _vector3<TYPE>& v1, const _vector3<TYPE>& v2, const _vector3<TYPE>& v3)
 	{
 		_vector3<TYPE> t1, t2;
-		n.crossproduct(t1.sub(v1, v2), t2.sub(v1, v3)); exact_normalize(n);
+		n.crossproduct(t1.sub(v1, v2), t2.sub(v1, v3));
+		exact_normalize(n);
 		d = -n.dotproduct(v1);
 		return *this;
 	}

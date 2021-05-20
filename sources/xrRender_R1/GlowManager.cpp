@@ -53,12 +53,12 @@ void	CGlow::set_active		(bool a)
 }
 
 bool	CGlow::get_active		()					{return flags.bActive;}
-void	CGlow::set_position		(const Fvector& P)	{
+void	CGlow::set_position		(const Fvector3& P)	{
 	if (position.similar(P))	return;
 	position.set				(P);
 	spatial_move				();
 };
-void	CGlow::set_direction	(const Fvector& D)	{
+void	CGlow::set_direction	(const Fvector3& D)	{
 	direction.normalize_safe	(D);
 };
 void	CGlow::set_radius		(float R)			{
@@ -175,15 +175,19 @@ void CGlowManager::add	(ref_glow G_)
 #endif
 }
 
-inline void FillSprite	(FVF::LIT*& pv, const Fvector& pos, float r, u32 clr)
+inline void FillSprite	(FVF::LIT*& pv, const Fvector3& pos, float r, u32 clr)
 {
-	const Fvector& T 	= Device.vCameraTop;
-	const Fvector& R 	= Device.vCameraRight;
-	Fvector		Vr, Vt;
+	const Fvector3& T 	= Device.vCameraTop;
+	const Fvector3& R 	= Device.vCameraRight;
+	Fvector3		Vr;
+	Fvector3		Vt;
 	Vr.mul 		(R,r);
 	Vt.mul		(T,r);
 
-	Fvector 	a,b,c,d;
+	Fvector3 	a;
+	Fvector3	b;
+	Fvector3	c;
+	Fvector3	d;
 	a.sub		(Vt,Vr);
 	b.add		(Vt,Vr);
 	c.invert	(a);
@@ -210,14 +214,14 @@ void CGlowManager::render_sw		()
 	CObject*	o_main		= g_pGameLevel->CurrentViewEntity();
 
 	// 1. Test some number of glows
-	Fvector start	= Device.vCameraPosition;
+	Fvector3 start	= Device.vCameraPosition;
 	for (int i=0; i<ps_r1_GlowsPerFrame; i++,dwTestID++)
 	{
 		u32	ID		= dwTestID%Selected.size();
 		CGlow&	G	= *( (CGlow*)Selected[ID]._get() );
 		if (G.dwFrame=='test')	break;
 		G.dwFrame	=	'test';
-		Fvector		dir;
+		Fvector3		dir;
 		dir.sub		(G.spatial.sphere.P,start); float range = dir.magnitude();
 		if (range>EPS_S)	{
 			dir.div		(range);
@@ -237,7 +241,7 @@ void CGlowManager::render_hw		()
 	SelectedToTest_0.clear_not_free	();
 
 	// 1. Sort into two parts - 1(selected-to-test)[to-test], 2(selected)[just-draw]
-	// Fvector &start	= Device.vCameraPosition;
+	// Fvector3& start	= Device.vCameraPosition;
 	for (int i=0; (i<ps_r1_GlowsPerFrame) && Selected.size(); i++,dwTestID++)
 	{
 		u32	ID		= dwTestID%Selected.size();
@@ -282,7 +286,7 @@ void CGlowManager::render_selected()
 
 			// Now perform dotproduct if need it
 			float	scale	= 1.f, dist_sq;
-			Fvector	dir;
+			Fvector3	dir;
 			dir.sub			(Device.vCameraPosition,G.position);
 			dist_sq			= dir.square_magnitude();
 			if (G.direction.square_magnitude()>EPS)	{
@@ -299,7 +303,7 @@ void CGlowManager::render_selected()
 
 			u32 C			= iFloor(G.fade*scale*(1-(dist_sq/dlim2)));
 			u32 clr			= color_rgba(C,C,C,C);
-			Fvector	gp		;
+			Fvector3	gp		;
 					gp.mad	(G.position,dir,G.radius*scale);
 			FillSprite		(pv,G.position,G.radius,clr);
 		}

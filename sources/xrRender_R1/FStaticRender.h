@@ -40,7 +40,7 @@ public:
 public:
 	// Sector detection and visibility
 	CSector*													pLastSector;
-	Fvector														vLastCameraPos;
+	Fvector3														vLastCameraPos;
 	u32															uLastLTRACK;
 	xr_vector<IRender_Portal*>									Portals;
 	xr_vector<IRender_Sector*>									Sectors;
@@ -137,7 +137,7 @@ public:
 	virtual ref_shader				getShader				(int id);
 	virtual IRender_Sector*			getSector				(int id);
 	virtual IRender_Visual*			getVisual				(int id);
-	virtual IRender_Sector*			detectSector			(const Fvector& P);
+	virtual IRender_Sector*			detectSector			(const Fvector3& P);
 	virtual IRender_Target*			getTarget				();
 	
 	// Main 
@@ -148,10 +148,10 @@ public:
 	virtual void					add_Geometry			(IRender_Visual*	V	);			// add visual(s)	(all culling performed)
 
 	// wallmarks
-	virtual void					add_StaticWallmark		(ref_shader& S, const Fvector& P, float s, CDB::TRI* T, Fvector* V);
+	virtual void					add_StaticWallmark		(ref_shader& S, const Fvector3& P, float s, CDB::TRI* T, Fvector3* V);
 	virtual void					clear_static_wallmarks	();
 	virtual void					add_SkeletonWallmark	(intrusive_ptr<CSkeletonWallmark> wm);
-	virtual void					add_SkeletonWallmark	(const Fmatrix* xf, CKinematics* obj, ref_shader& sh, const Fvector& start, const Fvector& dir, float size);
+	virtual void					add_SkeletonWallmark	(const Fmatrix* xf, CKinematics* obj, ref_shader& sh, const Fvector3& start, const Fvector3& dir, float size);
 	
 	//
 	virtual IBlender*				blender_create			(CLASS_ID cls);

@@ -40,7 +40,7 @@ void _detail::callback		(CBoneInstance *B)
 {
 	CStalker*			A = static_cast<CStalker*>(B->Callback_Param);
 	VERIFY					(_valid(B->mTransform));
-	Fvector c				= B->mTransform.c;
+	Fvector3 c				= B->mTransform.c;
 	Fmatrix					spin;
 	float					yaw_factor = 0, pitch_factor = 0;
 	if (A->sight().use_torso_look()) {
@@ -54,7 +54,7 @@ void _detail::callback		(CBoneInstance *B)
 
 	float					effector_yaw = 0.f, effector_pitch = 0.f;
 	if (A->weapon_shot_effector().IsActive()) {
-		Fvector				temp;
+		Fvector3				temp;
 		A->weapon_shot_effector().GetDeltaAngle(temp);
 		effector_yaw		= temp.y;
 		VERIFY				(_valid(effector_yaw));

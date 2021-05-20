@@ -21,7 +21,8 @@ private:
 	u16						rotate_y_bone;
 	u16						camera_bone;
 
-	Fvector					fire_pos, fire_dir;
+	Fvector3				fire_pos;
+	Fvector3				fire_dir;
 	Fmatrix					fire_bone_xform;
 	Fvector2				m_dAngle;
 	static void 			BoneCallbackX		(CBoneInstance *B);
@@ -31,7 +32,7 @@ public:
 	virtual					~CWeaponMounted		();
 
 	// for shooting object
-	virtual const Fvector&	get_CurrentFirePoint()	{return fire_pos;}
+	virtual const Fvector3&	get_CurrentFirePoint()	{return fire_pos;}
 	virtual const Fmatrix&	get_ParticlesXFORM()	;
 
 	//////////////////////////////////////////////////
@@ -85,10 +86,10 @@ public:
 
 	virtual void			cam_Update			(float dt, float fov=90.0f);
 
-	virtual bool			Use					(const Fvector& pos,const Fvector& dir,const Fvector& foot_pos);
+	virtual bool			Use					(const Fvector3& pos,const Fvector3& dir,const Fvector3& foot_pos);
 	virtual bool			attach_Actor		(CGameObject* actor);
 	virtual void			detach_Actor		();
-	virtual Fvector			ExitPosition		();
+	virtual Fvector3			ExitPosition		();
 	virtual bool			allowWeapon			()	const		{return false;};
 	virtual bool			HUDView				()  const		{return true;};
 

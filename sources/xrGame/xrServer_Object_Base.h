@@ -84,8 +84,8 @@ public:
 	xr_vector<u16>					children;
 
 	// update data
-	Fvector							o_Position;
-	Fvector							o_Angle;
+	Fvector3							o_Position;
+	Fvector3							o_Angle;
 	CLASS_ID						m_tClassID;
 	int								m_script_clsid;
 	shared_str						m_ini_string;
@@ -129,8 +129,8 @@ public:
 		xr_free(s_name_replace);
 		s_name_replace = xr_strdup(s);
 	}
-	virtual Fvector& __stdcall	position( );
-	virtual Fvector& __stdcall	angle( );
+	virtual Fvector3& __stdcall	position( );
+	virtual Fvector3& __stdcall	angle( );
 	virtual Flags16& __stdcall	flags( );
 	virtual CSE_Visual* __stdcall	visual( );
 	virtual ISE_Shape* __stdcall	shape( );
@@ -140,7 +140,7 @@ public:
 	{ }
 //
 
-	inline		const Fvector& Position( ) const
+	inline		const Fvector3& Position( ) const
 	{
 		return o_Position;
 	}

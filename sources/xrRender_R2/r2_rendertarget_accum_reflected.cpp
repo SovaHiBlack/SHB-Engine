@@ -41,7 +41,10 @@ void CRenderTarget::accum_reflected		(light* L)
 	}
 
 	// Common constants
-	Fvector		L_dir,L_clr,L_pos;	float L_spec;
+	Fvector3		L_dir;
+	Fvector3		L_clr;
+	Fvector3		L_pos;
+	float			L_spec;
 	L_clr.set					(L->color.r,L->color.g,L->color.b);
 	L_spec						= u_diffuse2s	(L_clr);
 	Device.mView.transform_tiny	(L_pos,L->position);

@@ -26,7 +26,7 @@ float		ps_r__Detail_rainbow_hemi	= 0.75f	;
 float		ps_r__Tree_w_rot			= 10.0f	;
 float		ps_r__Tree_w_speed			= 1.00f	;
 float		ps_r__Tree_w_amp			= 0.005f;
-Fvector		ps_r__Tree_Wave				= {.1f, .01f, .11f};
+Fvector3		ps_r__Tree_Wave				= {.1f, .01f, .11f};
 float		ps_r__Tree_SBC				= 1.5f	;	// scale bias correct
 
 float		ps_r__WallmarkTTL			= 300.f	;
@@ -77,8 +77,8 @@ float		ps_r2_ls_dsm_kernel			= .7f;				// r2-only
 float		ps_r2_ls_psm_kernel			= .7f;				// r2-only
 float		ps_r2_ls_ssm_kernel			= .7f;				// r2-only
 float		ps_r2_ls_bloom_threshold	= .3f;				// r2-only
-Fvector		ps_r2_aa_barier				= { .8f, .1f, 0};	// r2-only
-Fvector		ps_r2_aa_weight				= { .25f,.25f,0};	// r2-only
+Fvector3		ps_r2_aa_barier				= { .8f, .1f, 0};	// r2-only
+Fvector3		ps_r2_aa_weight				= { .25f,.25f,0};	// r2-only
 float		ps_r2_aa_kernel				= .5f;				// r2-only
 float		ps_r2_mblur					= .5f;				// .5f
 int			ps_r2_GI_depth				= 1;				// 1..5
@@ -259,7 +259,8 @@ void xrRender_initconsole( )
 
 //	CMD4(CCC_Integer,	"r__supersample",		&ps_r__Supersample,			1,		4		);
 
-	Fvector	tw_min, tw_max;
+	Fvector3	tw_min;
+	Fvector3	tw_max;
 
 	CMD4(CCC_Float, "r__geometry_lod", &ps_r__LOD, 0.1f, 1.2f);
 //.	CMD4(CCC_Float,		"r__geometry_lod_pow",	&ps_r__LOD_Power,			0,		2		);

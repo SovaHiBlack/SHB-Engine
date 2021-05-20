@@ -4,10 +4,10 @@
 
 struct _hw 
 {
-	Fvector		p0		;
-	Fvector		p1		;
-	Fvector		n0		;
-	Fvector		n1		;
+	Fvector3		p0		;
+	Fvector3		p1		;
+	Fvector3		n0		;
+	Fvector3		n1		;
 	u32			sun_af	;
 	Fvector2	t0		;
 	Fvector2	t1		;
@@ -39,7 +39,8 @@ void FLOD::Load			(const char* N, IReader *data, u32 dwFlags)
 		data->r					(facets[f].v,sizeof(facets[f].v));
 		_vertex* v				= facets[f].v;
 
-		Fvector					N,T;
+		Fvector3					N;
+		Fvector3					T;
 		N.set					(0,0,0);
 		T.mknormal				(v[0].v,v[1].v,v[2].v);	N.add	(T);
 		T.mknormal				(v[1].v,v[2].v,v[3].v);	N.add	(T);
@@ -75,7 +76,7 @@ void FLOD::Copy			(IRender_Visual *pFrom	)
 void FLOD::Render		(float LOD)
 {
 	/*
-	Fvector				Ldir;
+	Fvector3				Ldir;
 	Ldir.sub			(vis.sphere.P,Device.vCameraPosition);
 	Ldir.normalize		();
 

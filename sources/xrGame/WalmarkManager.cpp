@@ -22,7 +22,7 @@ void CWalmarkManager::Clear()
 	m_wallmarks.clear();
 }
 
-void CWalmarkManager::AddWallmark(const Fvector& dir, const Fvector& start_pos, 
+void CWalmarkManager::AddWallmark(const Fvector3& dir, const Fvector3& start_pos,
 								  float range, float wallmark_size,
 								  SHADER_VECTOR& wallmarks_vector,int t)
 {
@@ -32,10 +32,10 @@ void CWalmarkManager::AddWallmark(const Fvector& dir, const Fvector& start_pos,
 	if(pMaterial->Flags.is(SGameMtl::flBloodmark))
 	{
 		//вычислить нормаль к пораженной поверхности
-		Fvector*	pVerts	= Level().ObjectSpace.GetStaticVerts();
+		Fvector3*	pVerts	= Level().ObjectSpace.GetStaticVerts();
 
 		//вычислить точку попадания
-		Fvector end_point;
+		Fvector3 end_point;
 		end_point.set(0,0,0);
 		end_point.mad(start_pos, dir, range);
 
@@ -50,7 +50,7 @@ void CWalmarkManager::AddWallmark(const Fvector& dir, const Fvector& start_pos,
 	}
 }
 
-void CWalmarkManager::PlaceWallmarks( const Fvector& start_pos)
+void CWalmarkManager::PlaceWallmarks( const Fvector3& start_pos)
 {
 	m_pos				= start_pos;
 	Load				("explosion_marks");
@@ -58,7 +58,7 @@ void CWalmarkManager::PlaceWallmarks( const Fvector& start_pos)
 	StartWorkflow		();
 }
 
-float Distance (const Fvector& rkPoint, const Fvector rkTri[3], float& pfSParam, float& pfTParam, Fvector& closest, Fvector& dir);
+float Distance (const Fvector3& rkPoint, const Fvector3 rkTri[3], float& pfSParam, float& pfTParam, Fvector3& closest, Fvector3& dir);
 
 void CWalmarkManager::StartWorkflow()
 {
@@ -68,15 +68,15 @@ void CWalmarkManager::StartWorkflow()
 	u32					max_wallmarks_count = pSettings->r_u32(sect,"max_count");
 
 	XRC.box_options							(0);
-	XRC.box_query							(Level().ObjectSpace.GetStaticModel(),m_pos,Fvector().set(m_trace_dist,m_trace_dist,m_trace_dist));
+	XRC.box_query							(Level().ObjectSpace.GetStaticModel(),m_pos, Fvector3().set(m_trace_dist,m_trace_dist,m_trace_dist));
 
 	CDB::TRI*		T_array					= Level().ObjectSpace.GetStaticTris();
-	Fvector*		V_array					= Level().ObjectSpace.GetStaticVerts();
+	Fvector3*		V_array					= Level().ObjectSpace.GetStaticVerts();
 	CDB::RESULT*	R_begin                 = XRC.r_begin();
 	CDB::RESULT*    R_end                   = XRC.r_end();
 //.	Triangle		ntri;
 //.	float			ndist					= dInfinity;
-//.	Fvector			npoint;
+//.	Fvector3			npoint;
 	u32				wm_count	= 0;
 
 	u32 _ray_test		= 0;
@@ -85,8 +85,8 @@ void CWalmarkManager::StartWorkflow()
 	u32 _not_dist		= 0;
 /*
 	DBG_OpenCashedDraw		();
-	DBG_DrawAABB			(m_pos,Fvector().set(m_trace_dist,m_trace_dist,m_trace_dist),D3DCOLOR_XRGB(255,0,0));
-	DBG_DrawAABB			(m_pos,Fvector().set(0.05f,0.05f,0.05f),D3DCOLOR_XRGB(0,255,0));
+	DBG_DrawAABB			(m_pos,Fvector3().set(m_trace_dist,m_trace_dist,m_trace_dist),D3DCOLOR_XRGB(255,0,0));
+	DBG_DrawAABB			(m_pos,Fvector3().set(0.05f,0.05f,0.05f),D3DCOLOR_XRGB(0,255,0));
 	
 	CTimer T; T.Start();
 */
@@ -97,16 +97,16 @@ void CWalmarkManager::StartWorkflow()
 		if(wm_count >= max_wallmarks_count) break;
 		
 //.		Triangle					tri;
-		Fvector						end_point;
+		Fvector3						end_point;
 //.		ETriDist					c;
-		Fvector						pdir;
+		Fvector3						pdir;
 		float						pfSParam;
 		float						pfTParam;
 
 //.		CalculateTriangle			(T_array+Res->id,cast_fp(m_pos),tri);
 		
 //.		float dist					= DistToTri(&tri,cast_fp(m_pos),cast_fp(pdir),cast_fp(end_point),c,V_array);
-		Fvector						_tri[3];
+		Fvector3						_tri[3];
 
 		CDB::TRI*		_t			= T_array + Res->id;
 
@@ -180,14 +180,16 @@ void CWalmarkManager::Load (const char* section)
 	}
 }
 
-float Distance (const Fvector& rkPoint, const Fvector rkTri[3], float& pfSParam, float& pfTParam, Fvector& closest, Fvector& dir)
+float Distance (const Fvector3& rkPoint, const Fvector3 rkTri[3], float& pfSParam, float& pfTParam, Fvector3& closest, Fvector3& dir)
 {
-	
-//.    Fvector kDiff = rkTri.Origin() - rkPoint;
-	Fvector kDiff;		kDiff.sub	( rkTri[0], rkPoint); //
+//.	Fvector3 kDiff = rkTri.Origin() - rkPoint;
+	Fvector3 kDiff;
+	kDiff.sub	( rkTri[0], rkPoint); //
 
-	Fvector Edge0; Edge0.sub(rkTri[1], rkTri[0]); //
-	Fvector Edge1; Edge1.sub(rkTri[2], rkTri[0]); //
+	Fvector3 Edge0;
+	Edge0.sub(rkTri[1], rkTri[0]); //
+	Fvector3 Edge1;
+	Edge1.sub(rkTri[2], rkTri[0]); //
 
 //.    float fA00 = rkTri.Edge0().SquaredLength();
 	float fA00 = Edge0.square_magnitude();

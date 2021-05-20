@@ -228,7 +228,7 @@ void CStalkerActionSmartTerrain::execute				()
 	object().movement().set_path_type			(MovementManager::ePathTypeLevelPath);
 	if (object().movement().accessible(task->level_vertex_id())) {
 		object().movement().set_level_dest_vertex	(task->level_vertex_id());
-		Fvector										temp = task->position();
+		Fvector3										temp = task->position();
 		object().movement().set_desired_position	(&temp);
 		return;
 	}

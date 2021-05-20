@@ -11,7 +11,7 @@ inline u32 convert				(float c)	{
 	if (C>255) C=255;
 	return C;
 }
-inline void MouseRayFromPoint	( Fvector& direction, int x, int y, Fmatrix& m_CamMat )
+inline void MouseRayFromPoint	(Fvector3& direction, int x, int y, Fmatrix& m_CamMat )
 {
 	int halfwidth		= Device.dwWidth/2;
 	int halfheight		= Device.dwHeight/2;

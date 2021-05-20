@@ -9,7 +9,7 @@ struct	ENGINE_API	CKey;
 struct	ENGINE_API	CKeyQR;
 struct	ENGINE_API	CKeyQT;
 
-template<class T>	struct _matrix;
+template<class T>	class _matrix;
 #define MATRIX		_matrix<float>
 
 // Skinning processor specific functions

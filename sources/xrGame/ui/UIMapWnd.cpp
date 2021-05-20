@@ -640,7 +640,7 @@ void CUIMapWnd::OnToolActorClicked(CUIWindow*, void*)
 		return;
 	}
 
-	Fvector v = Level( ).CurrentEntity( )->Position( );
+	Fvector3 v = Level( ).CurrentEntity( )->Position( );
 	Fvector2 v2;
 	v2.set(v.x, v.z);
 

@@ -81,7 +81,7 @@ void light::set_active(bool a)
 //		Msg("!!! L-register: %X", u32(this));
 
 #ifdef DEBUG
-		Fvector zero = { 0, -1000, 0 };
+		Fvector3 zero = { 0, -1000, 0 };
 		if (position.similar(zero))
 		{
 //			Msg("- Uninitialized light position.");
@@ -103,7 +103,7 @@ void light::set_active(bool a)
 	}
 }
 
-void	light::set_position(const Fvector& P)
+void	light::set_position(const Fvector3& P)
 {
 	float	eps = EPS_L;	//_max	(range*0.001f,EPS_L);
 	if (position.similar(P, eps))return;
@@ -127,9 +127,9 @@ void	light::set_cone(float angle)
 	spatial_move( );
 }
 
-void	light::set_rotation(const Fvector& D, const Fvector& R)
+void	light::set_rotation(const Fvector3& D, const Fvector3& R)
 {
-	Fvector	old_D = direction;
+	Fvector3	old_D = direction;
 	direction.normalize(D);
 	right.normalize(R);
 	if (!fsimilar(1.f, old_D.dotproduct(D)))	spatial_move( );
@@ -190,7 +190,7 @@ vis_data& light::get_homdata( )
 	return			hom;
 };
 
-Fvector	light::spatial_sector_point( )
+Fvector3	light::spatial_sector_point( )
 {
 	return position;
 }
@@ -204,7 +204,9 @@ void	light::xform_calc( )
 	m_xform_frame = Device.dwFrame;
 
 	// build final rotation / translation
-	Fvector					L_dir, L_up, L_right;
+	Fvector3					L_dir;
+	Fvector3					L_up;
+	Fvector3					L_right;
 
 	// dir
 	L_dir.set(direction);
@@ -269,8 +271,8 @@ void	light::xform_calc( )
 }
 
 //								+X,				-X,				+Y,				-Y,			+Z,				-Z
-static	Fvector cmNorm[6] = { {0.f,1.f,0.f}, {0.f,1.f,0.f}, {0.f,0.f,-1.f},{0.f,0.f,1.f}, {0.f,1.f,0.f}, {0.f,1.f,0.f} };
-static	Fvector cmDir[6] = { {1.f,0.f,0.f}, {-1.f,0.f,0.f},{0.f,1.f,0.f}, {0.f,-1.f,0.f},{0.f,0.f,1.f}, {0.f,0.f,-1.f} };
+static	Fvector3 cmNorm[6] = { {0.f,1.f,0.f}, {0.f,1.f,0.f}, {0.f,0.f,-1.f},{0.f,0.f,1.f}, {0.f,1.f,0.f}, {0.f,1.f,0.f} };
+static	Fvector3 cmDir[6] = { {1.f,0.f,0.f}, {-1.f,0.f,0.f},{0.f,1.f,0.f}, {0.f,-1.f,0.f},{0.f,0.f,1.f}, {0.f,0.f,-1.f} };
 
 void	light::export		(light_Package& package)
 {
@@ -285,7 +287,7 @@ void	light::export		(light_Package& package)
 				for (int f = 0; f < 6; f++)
 				{
 					light* L = omnipart[f];
-					Fvector				R;
+					Fvector3				R;
 					R.crossproduct(cmNorm[f], cmDir[f]);
 					L->set_type(IRender_Light::OMNIPART);
 					L->set_shadow(true);

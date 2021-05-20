@@ -68,7 +68,7 @@ void CParticleEffect::RefreshShader()
 	OnDeviceCreate();
 }
 
-void CParticleEffect::UpdateParent(const Fmatrix& m, const Fvector& velocity, BOOL bXFORM)
+void CParticleEffect::UpdateParent(const Fmatrix& m, const Fvector3& velocity, BOOL bXFORM)
 {
 	m_RT_Flags.set			(flRT_XFORM, bXFORM);
 	if (bXFORM)				m_XFORM.set	(m);
@@ -120,7 +120,7 @@ void CParticleEffect::OnFrame(u32 frame_dt)
 				float p_size = 0.f;
 				for(u32 i = 0; i < p_cnt; i++){
 					Particle &m 	= particles[i]; 
-					vis.box.modify((Fvector&)m.pos);
+					vis.box.modify(( Fvector3&)m.pos);
 					if (m.size.x>p_size) p_size = m.size.x;
 					if (m.size.y>p_size) p_size = m.size.y;
 					if (m.size.z>p_size) p_size = m.size.z;
@@ -198,11 +198,12 @@ void CParticleEffect::OnDeviceDestroy()
 	}
 }
 //----------------------------------------------------
-inline void FillSprite	(FVF::LIT*& pv, const Fvector& T, const Fvector& R, const Fvector& pos, const Fvector2& lt, const Fvector2& rb, float r1, float r2, u32 clr, float angle)
+inline void FillSprite	(FVF::LIT*& pv, const Fvector3& T, const Fvector3& R, const Fvector3& pos, const Fvector2& lt, const Fvector2& rb, float r1, float r2, u32 clr, float angle)
 {
 	float sa	= _sin(angle);  
 	float ca	= _cos(angle);  
-	Fvector Vr, Vt;
+	Fvector3 Vr;
+	Fvector3	Vt;
 	Vr.x 		= T.x*r1*sa+R.x*r1*ca;
 	Vr.y 		= T.y*r1*sa+R.y*r1*ca;
 	Vr.z 		= T.z*r1*sa+R.z*r1*ca;
@@ -210,7 +211,10 @@ inline void FillSprite	(FVF::LIT*& pv, const Fvector& T, const Fvector& R, const
 	Vt.y 		= T.y*r2*ca-R.y*r2*sa;
 	Vt.z 		= T.z*r2*ca-R.z*r2*sa;
 
-	Fvector 	a,b,c,d;
+	Fvector3 	a;
+	Fvector3	b;
+	Fvector3	c;
+	Fvector3	d;
 	a.sub		(Vt,Vr);
 	b.add		(Vt,Vr);
 	c.invert	(a);
@@ -221,13 +225,15 @@ inline void FillSprite	(FVF::LIT*& pv, const Fvector& T, const Fvector& R, const
 	pv->set		(b.x+pos.x,b.y+pos.y,b.z+pos.z,	clr, rb.x,lt.y);	pv++;
 }
 
-inline void FillSprite	(FVF::LIT*& pv, const Fvector& pos, const Fvector& dir, const Fvector2& lt, const Fvector2& rb, float r1, float r2, u32 clr, float angle)
+inline void FillSprite	(FVF::LIT*& pv, const Fvector3& pos, const Fvector3& dir, const Fvector2& lt, const Fvector2& rb, float r1, float r2, u32 clr, float angle)
 {
 	float sa	= _sin(angle);  
 	float ca	= _cos(angle);  
-	const Fvector& T 	= dir;
-	Fvector R; 	R.crossproduct(T,Device.vCameraDirection).normalize_safe();
-	Fvector Vr, Vt;
+	const Fvector3& T 	= dir;
+	Fvector3 R;
+	R.crossproduct(T,Device.vCameraDirection).normalize_safe();
+	Fvector3	Vr;
+	Fvector3	Vt;
 	Vr.x 		= T.x*r1*sa+R.x*r1*ca;
 	Vr.y 		= T.y*r1*sa+R.y*r1*ca;
 	Vr.z 		= T.z*r1*sa+R.z*r1*ca;
@@ -235,7 +241,10 @@ inline void FillSprite	(FVF::LIT*& pv, const Fvector& pos, const Fvector& dir, c
 	Vt.y 		= T.y*r2*ca-R.y*r2*sa;
 	Vt.z 		= T.z*r2*ca-R.z*r2*sa;
 
-	Fvector 	a,b,c,d;
+	Fvector3	a;
+	Fvector3	b;
+	Fvector3	c;
+	Fvector3	d;
 	a.sub		(Vt,Vr);
 	b.add		(Vt,Vr);
 	c.invert	(a);
@@ -278,7 +287,7 @@ void CParticleEffect::Render(float )
                     	Fmatrix	M;  	
                         M.setXYZ			(m_Def->m_APDefaultRotation);
                         if (m_RT_Flags.is(flRT_XFORM)){
-                            Fvector p;
+							Fvector3 p;
                             m_XFORM.transform_tiny(p,m.pos);
 	                        M.mulA_43		(m_XFORM);
                             FillSprite		(pv,M.k,M.i,p,lt,rb,r_x,r_y,m.color,m.rot.x);
@@ -292,7 +301,7 @@ void CParticleEffect::Render(float )
                         M.i.crossproduct	(M.j,M.k);	M.i.normalize	();
                         M.j.crossproduct   	(M.k,M.i);	M.j.normalize  ();
                         if (m_RT_Flags.is(flRT_XFORM)){
-                            Fvector p;
+							Fvector3 p;
                             m_XFORM.transform_tiny(p,m.pos);
 	                        M.mulA_43		(m_XFORM);
                             FillSprite		(pv,M.j,M.i,p,lt,rb,r_x,r_y,m.color,m.rot.x);
@@ -300,11 +309,12 @@ void CParticleEffect::Render(float )
                             FillSprite		(pv,M.j,M.i,m.pos,lt,rb,r_x,r_y,m.color,m.rot.x);
                         }
                     }else{
-						Fvector 			dir;
+						Fvector3 			dir;
                         if (speed>=EPS_S)	dir.div	(m.vel,speed);
                         else				dir.setHP(-m_Def->m_APDefaultRotation.y,-m_Def->m_APDefaultRotation.x);
                         if (m_RT_Flags.is(flRT_XFORM)){
-                            Fvector p,d;
+							Fvector3	p;
+							Fvector3	d;
                             m_XFORM.transform_tiny	(p,m.pos);
                             m_XFORM.transform_dir	(d,dir);
                             FillSprite	(pv,p,d,lt,rb,r_x,r_y,m.color,m.rot.x);
@@ -314,7 +324,7 @@ void CParticleEffect::Render(float )
                     }
 				}else{
 					if (m_RT_Flags.is(flRT_XFORM)){
-						Fvector p;
+						Fvector3 p;
 						m_XFORM.transform_tiny	(p,m.pos);
 						FillSprite	(pv,Device.vCameraTop,Device.vCameraRight,p,lt,rb,r_x,r_y,m.color,m.rot.x);
 					}else{

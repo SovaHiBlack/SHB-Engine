@@ -15,7 +15,7 @@ CPortalTraverser::CPortalTraverser	()
 xr_vector<IRender_Sector*>				dbg_sectors;
 #endif
 
-void CPortalTraverser::traverse			(IRender_Sector* start, CFrustum& F, Fvector& vBase, Fmatrix& mXFORM, u32 options)
+void CPortalTraverser::traverse			(IRender_Sector* start, CFrustum& F, Fvector3& vBase, Fmatrix& mXFORM, u32 options)
 {
 	Fmatrix			m_viewport_01	= {
 		1.f/2.f,			0.0f,				0.0f,		0.0f,
@@ -97,7 +97,7 @@ void CPortalTraverser::fade_render	()
 	u32			_offset				= 0;
 	FVF::L*		_v					= (FVF::L*)RCache.Vertex.Lock(_pcount*3,f_geom.stride(),_offset);
 	float		ssaRange			= r_ssaLOD_A - r_ssaLOD_B;
-	Fvector		_ambient_f			= g_pGamePersistent->Environment().CurrentEnv.ambient;
+	Fvector3		_ambient_f			= g_pGamePersistent->Environment().CurrentEnv.ambient;
 	u32			_ambient			= color_rgba_f	(_ambient_f.x,_ambient_f.y,_ambient_f.z,0);
 	for (u32 _it = 0; _it<f_portals.size(); _it++)
 	{

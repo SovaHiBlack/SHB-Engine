@@ -19,9 +19,9 @@ void CServer::Process_event_ownership(NET_Packet& P, ClientID sender, u32 time, 
 	CSE_Abstract*		e_parent	= game->get_entity_from_eid	(id_parent);
 	CSE_Abstract*		e_entity	= game->get_entity_from_eid	(id_entity);
 
-	#ifdef DEBUG
+#ifdef DEBUG
 	Msg("sv ownership id_parent %s id_entity %s [%d]",ent_name_safe(id_parent).c_str(), ent_name_safe(id_entity).c_str(), Device.dwFrame);
-	#endif
+#endif
 
 	if(!e_entity)		return;
 	R_ASSERT			(/*e_entity &&*/ e_parent);

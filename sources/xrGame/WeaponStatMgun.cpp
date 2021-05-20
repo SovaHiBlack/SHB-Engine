@@ -179,7 +179,7 @@ void CWeaponStatMgun::UpdateBarrelDir()
 	m_allow_fire		= true;
 	Fmatrix				XFi;
 	XFi.invert			(XFORM());
-	Fvector				dep;
+	Fvector3				dep;
 	XFi.transform_dir	(dep,m_destEnemyDir);
 	{// x angle
 		m_i_bind_x_xform.transform_dir(dep); dep.normalize();
@@ -203,7 +203,8 @@ void CWeaponStatMgun::UpdateBarrelDir()
 
 void CWeaponStatMgun::cam_Update			(float dt, float fov)
 {
-	Fvector							P,Da;
+	Fvector3						P;
+	Fvector3						Da;
 	Da.set							(0,0,0);
 
 	CKinematics* K					= smart_cast<CKinematics*>(Visual());
@@ -212,7 +213,7 @@ void CWeaponStatMgun::cam_Update			(float dt, float fov)
 	const Fmatrix& C				= K->LL_GetTransform(m_camera_bone);
 	XFORM().transform_tiny			(P,C.c);
 
-	Fvector d = C.k;
+	Fvector3 d = C.k;
 	XFORM().transform_dir			(d);
 	Fvector2 des_cam_dir;
 

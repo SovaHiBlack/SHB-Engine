@@ -172,7 +172,7 @@ void CUICustomMap::OptimalFit(const Frect& r)
 }
 
 // try to positioning clipRect center to vNewPoint
-void CUICustomMap::SetActivePoint(const Fvector& vNewPoint)
+void CUICustomMap::SetActivePoint(const Fvector3& vNewPoint)
 {
 	Fvector2 pos;
 	pos.set(vNewPoint.x, vNewPoint.z);

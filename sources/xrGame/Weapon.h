@@ -377,17 +377,17 @@ protected:
 
 public:
 	//загружаемые параметры
-	Fvector					vLoadedFirePoint;
-	Fvector					vLoadedFirePoint2;
+	Fvector3					vLoadedFirePoint;
+	Fvector3					vLoadedFirePoint2;
 
 private:
 	//текущее положение и напрвление для партиклов
 	struct					_firedeps
 	{
 		Fmatrix				m_FireParticlesXForm;	//направление для партиклов огня и дыма
-		Fvector				vLastFP, vLastFP2;	//огня
-		Fvector				vLastFD;	// direction
-		Fvector				vLastSP;	//гильз	
+		Fvector3				vLastFP, vLastFP2;	//огня
+		Fvector3				vLastFD;	// direction
+		Fvector3				vLastSP;	//гильз	
 
 		_firedeps( )
 		{
@@ -412,32 +412,32 @@ protected:
 	virtual void			LoadFireParams(const char* section, const char* prefix);
 
 public:
-	inline		const Fvector& get_LastFP( )
+	inline		const Fvector3& get_LastFP( )
 	{
 		UpdateFireDependencies( );
 		return m_firedeps.vLastFP;
 	}
-	inline		const Fvector& get_LastFP2( )
+	inline		const Fvector3& get_LastFP2( )
 	{
 		UpdateFireDependencies( );
 		return m_firedeps.vLastFP2;
 	}
-	inline		const Fvector& get_LastFD( )
+	inline		const Fvector3& get_LastFD( )
 	{
 		UpdateFireDependencies( );
 		return m_firedeps.vLastFD;
 	}
-	inline		const Fvector& get_LastSP( )
+	inline		const Fvector3& get_LastSP( )
 	{
 		UpdateFireDependencies( );
 		return m_firedeps.vLastSP;
 	}
 
-	virtual const Fvector& get_CurrentFirePoint( )
+	virtual const Fvector3& get_CurrentFirePoint( )
 	{
 		return get_LastFP( );
 	}
-	virtual const Fvector& get_CurrentFirePoint2( )
+	virtual const Fvector3& get_CurrentFirePoint2( )
 	{
 		return get_LastFP2( );
 	}
@@ -455,7 +455,7 @@ protected:
 	virtual void			SetDefaults( );
 
 	//трассирование полета пули
-	void					FireTrace(const Fvector& P, const Fvector& D);
+	void					FireTrace(const Fvector3& P, const Fvector3& D);
 	virtual float			GetWeaponDeterioration( );
 
 	virtual void			FireStart( )
@@ -519,7 +519,7 @@ protected:
 
 protected:
 	//для отдачи оружия
-	Fvector					m_vRecoilDeltaAngle;
+	Fvector3					m_vRecoilDeltaAngle;
 
 //////////////////////////////////////////////////////////////////////////
 // партиклы
