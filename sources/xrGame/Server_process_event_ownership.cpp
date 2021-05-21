@@ -3,14 +3,14 @@
 #include "Server.h"
 #include "xrserver_objects.h"
 
-void ReplaceOwnershipHeader	(NET_Packet& P)
+void ReplaceOwnershipHeader	(CNetPacket& P)
 {
 	//способ очень грубый, но на данный момент иного выбора нет. Заранее приношу извинения
 	u16 NewType = GE_OWNERSHIP_TAKE;
 	CopyMemory(&P.B.data[6],&NewType,2);
 };
 
-void CServer::Process_event_ownership(NET_Packet& P, ClientID sender, u32 time, u16 ID, BOOL bForced)
+void CServer::Process_event_ownership(CNetPacket& P, ClientID sender, u32 time, u16 ID, BOOL bForced)
 {
 	u32 MODE			= net_flags(TRUE,TRUE, FALSE, TRUE);
 

@@ -140,7 +140,7 @@ BOOL CTrader::net_Spawn			(CSE_Abstract* DC)
 	return					(TRUE);
 }
 
-void CTrader::net_Export		(NET_Packet& P)
+void CTrader::net_Export		(CNetPacket& P)
 {
 	R_ASSERT						(Local());
 
@@ -148,7 +148,7 @@ void CTrader::net_Export		(NET_Packet& P)
 	//	P.w_u32							(m_dwMoney);
 }
 
-void CTrader::net_Import		(NET_Packet& P)
+void CTrader::net_Import		(CNetPacket& P)
 {
 	R_ASSERT						(Remote());
 
@@ -160,7 +160,7 @@ void CTrader::net_Import		(NET_Packet& P)
 	setEnabled						(TRUE);
 }
 
-void CTrader::OnEvent		(NET_Packet& P, u16 type)
+void CTrader::OnEvent		(CNetPacket& P, u16 type)
 {
 	inherited::OnEvent			(P,type);
 	CInventoryOwner::OnEvent	(P,type);
@@ -178,7 +178,7 @@ void CTrader::OnEvent		(NET_Packet& P, u16 type)
 				inventory().Take(smart_cast<CGameObject*>(Obj), false, false);
 			}else
 			{
-				NET_Packet				P;
+				CNetPacket				P;
 				u_EventGen				(P,GE_OWNERSHIP_REJECT,ID());
 				P.w_u16					(u16(Obj->ID()));
 				u_EventSend				(P);
@@ -209,7 +209,7 @@ void CTrader::feel_touch_new				(CObject* O)
 
 	if (I && I->useful_for_NPC()) {
 		Msg("Taking item %s!",*I->object().cName());
-		NET_Packet		P;
+		CNetPacket		P;
 		u_EventGen		(P,GE_OWNERSHIP_TAKE,ID());
 		P.w_u16			(u16(I->object().ID()));
 		u_EventSend		(P);
@@ -223,7 +223,7 @@ void CTrader::DropItemSendMessage(CObject *O)
 
 	Msg("Dropping item!");
 	// We doesn't have similar weapon - pick up it
-	NET_Packet				P;
+	CNetPacket				P;
 	u_EventGen				(P,GE_OWNERSHIP_REJECT,ID());
 	P.w_u16					(u16(O->ID()));
 	u_EventSend				(P);
@@ -315,7 +315,7 @@ void CTrader::spawn_supplies			()
 	CInventoryOwner::spawn_supplies	();
 }
 
-void CTrader::save (NET_Packet &output_packet)
+void CTrader::save (CNetPacket &output_packet)
 {
 	inherited::save(output_packet);
 	CInventoryOwner::save(output_packet);

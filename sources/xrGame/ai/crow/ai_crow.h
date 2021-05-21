@@ -120,8 +120,8 @@ public:
 
 	virtual CEntity*cast_entity					()			{return this;}
 
-	virtual void	net_Export					(NET_Packet& P);
-	virtual void	net_Import					(NET_Packet& P);
+	virtual void	net_Export					(CNetPacket& P);
+	virtual void	net_Import					(CNetPacket& P);
 
 	virtual void	g_fireParams				(const CHudItem* /**pHudItem/**/, Fvector3& /**P/**/, Fvector3& /**D/**/)	{};
 	virtual void	g_WeaponBones				(int &/**L/**/, int &/**R1/**/, int &/**R2/**/)	{};

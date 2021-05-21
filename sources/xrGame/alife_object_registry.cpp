@@ -1,14 +1,10 @@
-////////////////////////////////////////////////////////////////////////////
 //	Module 		: alife_object_registry.cpp
-//	Created 	: 15.01.2003
-//  Modified 	: 12.05.2004
-//	Author		: Dmitriy Iassenev
 //	Description : ALife object registry
-////////////////////////////////////////////////////////////////////////////
 
 #include "stdafx.h"
+
 #include "alife_object_registry.h"
-#include "../ENGINE/net_utils.h"
+#include "..\ENGINE\NetPacket.h"
 #include "ai_debug.h"
 
 CALifeObjectRegistry::CALifeObjectRegistry	(const char* section)
@@ -30,7 +26,7 @@ void CALifeObjectRegistry::save				(IWriter &memory_stream, CSE_ALifeDynamicObje
 {
 	++object_count;
 
-	NET_Packet					tNetPacket;
+	CNetPacket					tNetPacket;
 	// Spawn
 	object->Spawn_Write			(tNetPacket,TRUE);
 	memory_stream.w_u16			(u16(tNetPacket.B.count));
@@ -90,7 +86,7 @@ void CALifeObjectRegistry::save				(IWriter &memory_stream)
 
 CSE_ALifeDynamicObject *CALifeObjectRegistry::get_object		(IReader &file_stream)
 {
-	NET_Packet				tNetPacket;
+	CNetPacket				tNetPacket;
 	u16						u_id;
 	// Spawn
 	tNetPacket.B.count		= file_stream.r_u16();

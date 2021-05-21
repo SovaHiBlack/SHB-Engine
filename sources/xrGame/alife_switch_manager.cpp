@@ -54,7 +54,7 @@ void CALifeSwitchManager::add_online(CSE_ALifeDynamicObject *object, bool update
 
 	object->m_bOnline				= true;
 
-	NET_Packet						tNetPacket;
+	CNetPacket						tNetPacket;
 	CSE_Abstract					*l_tpAbstract = smart_cast<CSE_Abstract*>(object);
 	server().entity_Destroy			(l_tpAbstract);
 	object->s_flags.or				(M_SPAWN_UPDATE);

@@ -11,7 +11,7 @@
 //#include "..\ENGINE\Object.h"
 #include "..\ENGINE\IGamePersistent.h"//==>
 
-void CLevel::cl_Process_Spawn(NET_Packet& P)
+void CLevel::cl_Process_Spawn(CNetPacket& P)
 {
 	// Begin analysis
 	shared_str s_name;
@@ -66,7 +66,7 @@ void CLevel::g_cl_Spawn(const char* name, u8 rp, u16 flags, Fvector3 pos)
 	E->o_Position = pos;
 
 	// Send
-	NET_Packet P;
+	CNetPacket P;
 	E->Spawn_Write(P, TRUE);
 	Send(P, net_flags(TRUE));
 
@@ -123,7 +123,7 @@ void CLevel::g_sv_Spawn(CSE_Abstract* E)
 
 		if (0xffff != E->ID_Parent)
 		{
-			NET_Packet	GEN;
+			CNetPacket	GEN;
 			GEN.write_start( );
 			GEN.read_start( );
 			GEN.w_u16(u16(O->ID( )));
@@ -170,7 +170,7 @@ CSE_Abstract* CLevel::spawn_item(const char* section, const Fvector3& position, 
 
 	if (!return_item)
 	{
-		NET_Packet P;
+		CNetPacket P;
 		abstract->Spawn_Write(P, TRUE);
 		Send(P, net_flags(TRUE));
 		F_entity_Destroy(abstract);

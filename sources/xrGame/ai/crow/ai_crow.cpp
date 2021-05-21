@@ -333,7 +333,7 @@ void CCrow::shedule_Update		(u32 DT)
 }
 
 // Core events
-void CCrow::net_Export	(NET_Packet& P)					// export to server
+void CCrow::net_Export	(CNetPacket& P)					// export to server
 {
 	// export 
 	R_ASSERT			(Local());
@@ -359,7 +359,7 @@ void CCrow::net_Export	(NET_Packet& P)					// export to server
 	P.w_u8				(u8(g_Group()));
 }
 //---------------------------------------------------------------------
-void CCrow::net_Import	(NET_Packet& P)
+void CCrow::net_Import	(CNetPacket& P)
 {
 	// import
 	R_ASSERT			(Remote());

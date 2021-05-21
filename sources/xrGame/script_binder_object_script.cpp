@@ -11,7 +11,7 @@
 #include "script_export_space.h"
 #include "script_binder_object_wrapper.h"
 #include "xrServer_Objects_ALife.h"
-#include "../ENGINE/net_utils.h"
+#include "..\ENGINE\NetPacket.h"
 
 using namespace luabind;
 

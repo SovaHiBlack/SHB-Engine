@@ -5,7 +5,7 @@
 #include "game_base.h"
 #include "alife_space.h"
 #include "script_export_space.h"
-#include "../../ENGINE/client_id.h"
+#include "..\ENGINE\ClientID.h"
 
 enum ERoundEnd_Result
 {
@@ -37,7 +37,7 @@ protected:
 //	BOOL							m_bVotingEnabled;
 		
 	//Events
-	virtual		void				OnEvent					(NET_Packet &tNetPacket, u16 type, u32 time, ClientID sender );
+	virtual		void				OnEvent					(CNetPacket &tNetPacket, u16 type, u32 time, ClientID sender );
 
 	virtual		void				ReadOptions				(shared_str &options);
 	virtual		void				ConsoleCommands_Create	();
@@ -80,9 +80,9 @@ public:
 	virtual		void				OnPlayerReady			(ClientID id_who)							   {};
 	virtual		void				OnPlayerEnteredGame		(ClientID id_who)	{};
 	virtual		void				OnPlayerConnectFinished	(ClientID id_who)	{};
-	virtual		void				OnPlayerFire			(ClientID id_who, NET_Packet &P) {};
-	virtual		void				OnPlayer_Sell_Item		(ClientID id_who, NET_Packet &P) {};
-				void				GenerateGameMessage		(NET_Packet &P);
+	virtual		void				OnPlayerFire			(ClientID id_who, CNetPacket &P) {};
+	virtual		void				OnPlayer_Sell_Item		(ClientID id_who, CNetPacket &P) {};
+				void				GenerateGameMessage		(CNetPacket &P);
 
 	virtual		void				OnRoundStart			();									// старт раунда
 	virtual		void				OnRoundEnd				();	//	round_end_reason			// конец раунда
@@ -131,8 +131,8 @@ public:
 	string64&						get_option_s			(const char* lst, const char* name, const char* def = 0);
 	virtual		u32					get_alive_count			(u32 team);
 	virtual		xr_vector<u16>*		get_children			(ClientID id_who);
-	void							u_EventGen				(NET_Packet& P, u16 type, u16 dest	);
-	void							u_EventSend				(NET_Packet& P, u32 dwFlags = DPNSEND_GUARANTEED);
+	void							u_EventGen				(CNetPacket& P, u16 type, u16 dest	);
+	void							u_EventSend				(CNetPacket& P, u32 dwFlags = DPNSEND_GUARANTEED);
 
 	// Events
 	virtual		BOOL				OnPreCreate				(CSE_Abstract* E)				{return TRUE;};
@@ -142,30 +142,30 @@ public:
 	virtual		void				OnDetach				(u16 eid_who, u16 eid_target)	= 0;
 	virtual		void				OnDestroyObject			(u16 eid_who)							{};			
 
-	virtual		void				OnHit					(u16 id_hitter, u16 id_hitted, NET_Packet& P);	//кто-то получил Hit
-	virtual		void				OnPlayerHitPlayer		(u16 id_hitter, u16 id_hitted, NET_Packet& P){}; //игрок получил Hit
+	virtual		void				OnHit					(u16 id_hitter, u16 id_hitted, CNetPacket& P);	//кто-то получил Hit
+	virtual		void				OnPlayerHitPlayer		(u16 id_hitter, u16 id_hitted, CNetPacket& P){}; //игрок получил Hit
 
 	// Main
 	virtual		void				Create					(shared_str& options);
 	virtual		void				Update					();
-	virtual		void				net_Export_State		(NET_Packet& P, ClientID id_to);				// full state
-	virtual		void				net_Export_Update		(NET_Packet& P, ClientID id_to, ClientID id);		// just incremental update for specific client
-	virtual		void				net_Export_GameTime		(NET_Packet& P);						// update GameTime only for remote clients
+	virtual		void				net_Export_State		(CNetPacket& P, ClientID id_to);				// full state
+	virtual		void				net_Export_Update		(CNetPacket& P, ClientID id_to, ClientID id);		// just incremental update for specific client
+	virtual		void				net_Export_GameTime		(CNetPacket& P);						// update GameTime only for remote clients
 
-	virtual		bool				change_level			(NET_Packet &net_packet, ClientID sender);
-	virtual		void				save_game				(NET_Packet &net_packet, ClientID sender);
-	virtual		bool				load_game				(NET_Packet &net_packet, ClientID sender);
-	virtual		void				reload_game				(NET_Packet &net_packet, ClientID sender);
-	virtual		void				switch_distance			(NET_Packet &net_packet, ClientID sender);
+	virtual		bool				change_level			(CNetPacket &net_packet, ClientID sender);
+	virtual		void				save_game				(CNetPacket &net_packet, ClientID sender);
+	virtual		bool				load_game				(CNetPacket &net_packet, ClientID sender);
+	virtual		void				reload_game				(CNetPacket &net_packet, ClientID sender);
+	virtual		void				switch_distance			(CNetPacket &net_packet, ClientID sender);
 
-				void				AddDelayedEvent			(NET_Packet &tNetPacket, u16 type, u32 time, ClientID sender );
+				void				AddDelayedEvent			(CNetPacket &tNetPacket, u16 type, u32 time, ClientID sender );
 				void				ProcessDelayedEvent		();
 	virtual		BOOL				isFriendlyFireEnabled	()	{return FALSE;};
 	virtual		BOOL				CanHaveFriendlyFire		()	= 0;
-	virtual		void				teleport_object			(NET_Packet &packet, u16 id);
-	virtual		void				add_restriction			(NET_Packet &packet, u16 id);
-	virtual		void				remove_restriction		(NET_Packet &packet, u16 id);
-	virtual		void				remove_all_restrictions	(NET_Packet &packet, u16 id);
+	virtual		void				teleport_object			(CNetPacket &packet, u16 id);
+	virtual		void				add_restriction			(CNetPacket &packet, u16 id);
+	virtual		void				remove_restriction		(CNetPacket &packet, u16 id);
+	virtual		void				remove_all_restrictions	(CNetPacket &packet, u16 id);
 	virtual		bool				custom_sls_default		() {return false;};
 	virtual		void				sls_default				() {};
 	virtual		shared_str			level_name				(const shared_str &server_options) const;

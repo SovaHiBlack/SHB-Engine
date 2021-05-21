@@ -88,7 +88,7 @@ void CBaseMonster::HitEntity(const CEntity *pEntity, float fDamage, float impuls
 		CEntity		*pEntityNC	= const_cast<CEntity*>(pEntity);
 		VERIFY		(pEntityNC);
 		
-		NET_Packet	l_P;
+		CNetPacket	l_P;
 		SHit		HS;
 		HS.GenHeader(GE_HIT, pEntityNC->ID());
 		HS.whoID			= (ID());
@@ -272,7 +272,7 @@ void CBaseMonster::SetAttackEffector()
 
 void CBaseMonster::Hit_Psy(CObject *object, float value) 
 {
-	NET_Packet		P;
+	CNetPacket		P;
 	SHit			HS;
 	HS.GenHeader		(GE_HIT, object->ID());// 
 	HS.whoID			= (ID());// own
@@ -289,7 +289,7 @@ void CBaseMonster::Hit_Psy(CObject *object, float value)
 
 void CBaseMonster::Hit_Wound(CObject *object, float value, const Fvector3& dir, float impulse)
 {
-	NET_Packet	P;
+	CNetPacket	P;
 	SHit		HS;
 	HS.GenHeader(GE_HIT, object->ID());
 	HS.whoID			= (ID());

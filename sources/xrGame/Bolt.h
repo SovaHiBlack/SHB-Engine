@@ -13,7 +13,7 @@ public:
 	virtual						~CBolt					( );
 
 	virtual void				OnH_A_Chield			( );
-	virtual void				OnEvent					(NET_Packet& P, u16 type);
+	virtual void				OnEvent					(CNetPacket& P, u16 type);
 
 	virtual bool				Activate				( );
 	virtual void				Deactivate				( );

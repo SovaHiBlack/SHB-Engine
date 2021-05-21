@@ -36,16 +36,16 @@ public:
 	virtual		float				GetEnvironmentGameTimeFactor		();
 	virtual		void				SetEnvironmentGameTimeFactor		(const float fTimeFactor);
 
-	virtual		bool				change_level			(NET_Packet &net_packet, ClientID sender);
-	virtual		void				save_game				(NET_Packet &net_packet, ClientID sender);
-	virtual		bool				load_game				(NET_Packet &net_packet, ClientID sender);
-	virtual		void				reload_game				(NET_Packet &net_packet, ClientID sender);
-	virtual		void				switch_distance			(NET_Packet &net_packet, ClientID sender);
+	virtual		bool				change_level			(CNetPacket &net_packet, ClientID sender);
+	virtual		void				save_game				(CNetPacket &net_packet, ClientID sender);
+	virtual		bool				load_game				(CNetPacket &net_packet, ClientID sender);
+	virtual		void				reload_game				(CNetPacket &net_packet, ClientID sender);
+	virtual		void				switch_distance			(CNetPacket &net_packet, ClientID sender);
 	virtual		BOOL				CanHaveFriendlyFire		()	{return FALSE;}
-	virtual		void				teleport_object			(NET_Packet &packet, u16 id);
-	virtual		void				add_restriction			(NET_Packet &packet, u16 id);
-	virtual		void				remove_restriction		(NET_Packet &packet, u16 id);
-	virtual		void				remove_all_restrictions	(NET_Packet &packet, u16 id);
+	virtual		void				teleport_object			(CNetPacket &packet, u16 id);
+	virtual		void				add_restriction			(CNetPacket &packet, u16 id);
+	virtual		void				remove_restriction		(CNetPacket &packet, u16 id);
+	virtual		void				remove_all_restrictions	(CNetPacket &packet, u16 id);
 	virtual		bool				custom_sls_default		() {return !!m_alife_simulator;};
 	virtual		void				sls_default				();
 	virtual		shared_str			level_name				(const shared_str &server_options) const;

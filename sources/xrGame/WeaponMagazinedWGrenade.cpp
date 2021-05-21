@@ -444,7 +444,7 @@ void CWeaponMagazinedWGrenade::SwitchState(u32 S)
 
 		if (Local( ) && OnServer( ))
 		{
-			NET_Packet P;
+			CNetPacket P;
 			u_EventGen(P, GE_LAUNCH_ROCKET, ID( ));
 			P.w_u16(getCurrentRocket( )->ID( ));
 			u_EventSend(P);
@@ -452,7 +452,7 @@ void CWeaponMagazinedWGrenade::SwitchState(u32 S)
 	}
 }
 
-void CWeaponMagazinedWGrenade::OnEvent(NET_Packet& P, u16 type)
+void CWeaponMagazinedWGrenade::OnEvent(CNetPacket& P, u16 type)
 {
 	inherited::OnEvent(P, type);
 	u16 id;
@@ -816,7 +816,7 @@ void CWeaponMagazinedWGrenade::UpdateGrenadeVisibility(bool visibility)
 	pHudVisual->CalculateBones( );
 }
 
-void CWeaponMagazinedWGrenade::save(NET_Packet& output_packet)
+void CWeaponMagazinedWGrenade::save(CNetPacket& output_packet)
 {
 	inherited::save(output_packet);
 	save_data(m_bGrenadeMode, output_packet);
@@ -845,14 +845,14 @@ void CWeaponMagazinedWGrenade::load(IReader& input_packet)
 	}
 }
 
-void CWeaponMagazinedWGrenade::net_Export(NET_Packet& P)
+void CWeaponMagazinedWGrenade::net_Export(CNetPacket& P)
 {
 	P.w_u8(m_bGrenadeMode ? 1 : 0);
 
 	inherited::net_Export(P);
 }
 
-void CWeaponMagazinedWGrenade::net_Import(NET_Packet& P)
+void CWeaponMagazinedWGrenade::net_Import(CNetPacket& P)
 {
 	bool NewMode = false;
 	NewMode = !!P.r_u8( );

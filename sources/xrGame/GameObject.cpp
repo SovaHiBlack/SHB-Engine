@@ -22,7 +22,7 @@
 #include "ai_debug.h"
 //#include "..\ENGINE\IGameLevel.h"
 #include "Level.h"
-#include "../ENGINE/net_utils.h"
+#include "..\ENGINE\NetPacket.h"
 #include "script_callback_ex.h"
 #include "MathUtils.h"
 #include "game_cl_base_weapon_usage_statistic.h"
@@ -140,7 +140,7 @@ void CGameObject::net_Destroy( )
 	m_spawned = false;
 }
 
-void CGameObject::OnEvent(NET_Packet& P, u16 type)
+void CGameObject::OnEvent(CNetPacket& P, u16 type)
 {
 	switch (type)
 	{
@@ -359,7 +359,7 @@ BOOL CGameObject::net_Spawn(CSE_Abstract* DC)
 
 }
 
-void CGameObject::net_Save(NET_Packet& net_packet)
+void CGameObject::net_Save(CNetPacket& net_packet)
 {
 	u32 position;
 	net_packet.w_chunk_open16(position);
@@ -419,7 +419,7 @@ void CGameObject::net_Load(IReader& ireader)
 
 }
 
-void CGameObject::save(NET_Packet& output_packet)
+void CGameObject::save(CNetPacket& output_packet)
 { }
 
 void CGameObject::load(IReader& input_packet)
@@ -516,7 +516,7 @@ void CGameObject::spawn_supplies( )
 					}
 				}
 
-				NET_Packet P;
+				CNetPacket P;
 				A->Spawn_Write(P, TRUE);
 				Level( ).Send(P, net_flags(TRUE));
 				F_entity_Destroy(A);
@@ -713,7 +713,7 @@ CObject::SavedPosition CGameObject::ps_Element(u32 ID) const
 	return SP;
 }
 
-void CGameObject::u_EventGen(NET_Packet& P, u32 type, u32 dest)
+void CGameObject::u_EventGen(CNetPacket& P, u32 type, u32 dest)
 {
 	P.w_begin(M_EVENT);
 	P.w_u32(Level( ).timeServer( ));
@@ -721,7 +721,7 @@ void CGameObject::u_EventGen(NET_Packet& P, u32 type, u32 dest)
 	P.w_u16(u16(dest & 0xffff));
 }
 
-void CGameObject::u_EventSend(NET_Packet& P, u32 dwFlags)
+void CGameObject::u_EventSend(CNetPacket& P, u32 dwFlags)
 {
 	Level( ).Send(P, dwFlags);
 }
@@ -868,7 +868,7 @@ void CGameObject::DestroyObject( )
 
 	if (Local( ))
 	{
-		NET_Packet P;
+		CNetPacket P;
 		u_EventGen(P, GE_DESTROY, ID( ));
 		u_EventSend(P);
 	}

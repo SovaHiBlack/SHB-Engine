@@ -25,11 +25,11 @@ public:
 		return CInventoryItemObject::net_Spawn(DC);
 	}
 	virtual void				net_Destroy( );
-	virtual void				net_Export(NET_Packet& P)
+	virtual void				net_Export(CNetPacket& P)
 	{
 		CInventoryItemObject::net_Export(P);
 	}
-	virtual void				net_Import(NET_Packet& P)
+	virtual void				net_Import(CNetPacket& P)
 	{
 		CInventoryItemObject::net_Import(P);
 	}
@@ -48,7 +48,7 @@ public:
 	}
 	virtual void				GetRayExplosionSourcePos(Fvector3& pos);
 	virtual void				ActivateExplosionBox(const Fvector3& size, Fvector3& in_out_pos);
-	virtual void				OnEvent(NET_Packet& P, u16 type);
+	virtual void				OnEvent(CNetPacket& P, u16 type);
 	virtual void				Hit(SHit* pHDS);
 	virtual void				shedule_Update(u32 dt);
 	virtual bool				shedule_Needed( );

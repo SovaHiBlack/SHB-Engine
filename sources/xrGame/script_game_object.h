@@ -24,7 +24,7 @@ namespace MovementManager { enum EPathType;};
 namespace DetailPathManager { enum EDetailPathType;};
 namespace SightManager {enum ESightType;};
 
-class NET_Packet;
+class CNetPacket;
 class CGameTask;
 
 namespace PatrolPathManager { 

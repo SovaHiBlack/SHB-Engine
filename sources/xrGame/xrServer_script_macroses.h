@@ -5,12 +5,12 @@
 
 #include "script_export_macroses.h"
 #include "xrEProps.h"
-#include "../ENGINE/net_utils.h"
+#include "..\ENGINE\NetPacket.h"
 #include "ai_space.h"
 #include "script_engine.h"
 
 class CSE_Abstract;
-class NET_Packet;
+class CNetPacket;
 class CSE_ALifeMonsterAbstract;
 class CALifeSmartTerrainTask;
 
@@ -18,8 +18,8 @@ class CALifeSmartTerrainTask;
 
 #define INHERIT_ABSTRACT \
 	INHERIT_PURE\
-	DEFINE_LUA_WRAPPER_METHOD_R2P1_V1	(STATE_Write,	NET_Packet)\
-	DEFINE_LUA_WRAPPER_METHOD_R2P1_V2	(STATE_Read,	NET_Packet,	u16)\
+	DEFINE_LUA_WRAPPER_METHOD_R2P1_V1	(STATE_Write,	CNetPacket)\
+	DEFINE_LUA_WRAPPER_METHOD_R2P1_V2	(STATE_Read,	CNetPacket,	u16)\
 	DEFINE_LUA_WRAPPER_METHOD_R2P2_V2	(FillProps,		const char*,	PropItemVec)\
 	DEFINE_LUA_WRAPPER_METHOD_0			(init,			CSE_Abstract*)
 

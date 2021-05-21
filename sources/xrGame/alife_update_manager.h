@@ -51,7 +51,7 @@ public:
 			void		load					(const char* game_name = 0, bool no_assert = false, bool new_only = false);
 			bool		load_game				(const char* game_name, bool no_assert = false);
 	inline		float		update_monster_factor	() const;
-			bool		change_level			(NET_Packet	&net_packet);
+			bool		change_level			(CNetPacket	&net_packet);
 			void		set_process_time		(int microseconds);
 			void		objects_per_update		(const u32 &objects_per_update);
 			void		set_switch_online		(ALife::_OBJECT_ID id, bool value);

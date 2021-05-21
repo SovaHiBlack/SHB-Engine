@@ -38,7 +38,7 @@ void CActor::UpdateSleep( )
 		if (ai( ).get_alife( ))
 		{
 			m_fOldOnlineRadius = ai( ).alife( ).switch_distance( );
-			NET_Packet P;
+			CNetPacket P;
 			P.w_begin(M_SWITCH_DISTANCE);
 			P.w_float(ONLINE_RADIUS);
 			Level( ).Send(P, net_flags(TRUE, TRUE));

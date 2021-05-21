@@ -11,7 +11,7 @@
 #include "xrServer_Objects_ALife_Items.h"
 #include "xrServer_Objects_ALife_Monsters.h"
 
-void CServer::Process_event(NET_Packet& P, ClientID sender)
+void CServer::Process_event(CNetPacket& P, ClientID sender)
 {
 
 #ifdef SLOW_VERIFY_ENTITIES

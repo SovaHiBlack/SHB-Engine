@@ -1,7 +1,7 @@
 #pragma once
 
 class CWound;
-class NET_Packet;
+class CNetPacket;
 class CEntityAlive;
 class CLevel;
 
@@ -49,7 +49,7 @@ public:
 	virtual void			LoadCondition(const char* section);
 	virtual void			remove_links(const CObject* object);
 
-	virtual void			save(NET_Packet& output_packet);
+	virtual void			save(CNetPacket& output_packet);
 	virtual void			load(IReader& input_packet);
 
 	inline float				GetPower( ) const

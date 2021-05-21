@@ -2,7 +2,7 @@
 
 #pragma once
 
-#include "../../ENGINE/net_server.h"
+#include "..\ENGINE\NET_Server.h"
 #include "game_sv_base.h"
 #include "ID_Generator.h"
 
@@ -63,12 +63,12 @@ private:
 	xr_multiset<svs_respawn>	q_respawn;
 
 	u16							m_iCurUpdatePacket;
-	xr_vector<NET_Packet>		m_aUpdatePackets;
+	xr_vector<CNetPacket>		m_aUpdatePackets;
 
 	struct DelayedPacket
 	{
 		ClientID		SenderID;
-		NET_Packet		Packet;
+		CNetPacket		Packet;
 		bool operator == (const DelayedPacket& other)
 		{
 			return SenderID == other.SenderID;
@@ -78,8 +78,8 @@ private:
 	xrCriticalSection			DelayedPackestCS;
 	xr_deque<DelayedPacket>		m_aDelayedPackets;
 	void						ProceedDelayedPackets( );
-	void						AddDelayedPacket(NET_Packet& Packet, ClientID Sender);
-	u32							OnDelayedMessage(NET_Packet& P, ClientID sender);			// Non-Zero means broadcasting with "flags" as returned
+	void						AddDelayedPacket(CNetPacket& Packet, ClientID Sender);
+	u32							OnDelayedMessage(CNetPacket& P, ClientID sender);			// Non-Zero means broadcasting with "flags" as returned
 
 	void						SendUpdatesToAll( );
 
@@ -124,24 +124,24 @@ public:
 		return				(m_tID_Generator.vfFreeID(ID, time));
 	}
 
-	void					Perform_connect_spawn(CSE_Abstract* E, xrClientData* to, NET_Packet& P);
-	void					Perform_transfer(NET_Packet& PR, NET_Packet& PT, CSE_Abstract* what, CSE_Abstract* from, CSE_Abstract* to);
+	void					Perform_connect_spawn(CSE_Abstract* E, xrClientData* to, CNetPacket& P);
+	void					Perform_transfer(CNetPacket& PR, CNetPacket& PT, CSE_Abstract* what, CSE_Abstract* from, CSE_Abstract* to);
 	void					Perform_reject(CSE_Abstract* what, CSE_Abstract* from, int delta);
 	void					Perform_destroy(CSE_Abstract* tpSE_Abstract, u32 mode);
 
-	CSE_Abstract*			Process_spawn(NET_Packet& P, ClientID sender, BOOL bSpawnWithClientsMainEntityAsParent = FALSE, CSE_Abstract* tpExistedEntity = 0);
-	void					Process_update(NET_Packet& P, ClientID sender);
-	void					Process_save(NET_Packet& P, ClientID sender);
-	void					Process_event(NET_Packet& P, ClientID sender);
-	void					Process_event_ownership(NET_Packet& P, ClientID sender, u32 time, u16 ID, BOOL bForced = FALSE);
-	bool					Process_event_reject(NET_Packet& P, const ClientID sender, const u32 time, const u16 id_parent, const u16 id_entity, bool send_message = true);
-	void					Process_event_destroy(NET_Packet& P, ClientID sender, u32 time, u16 ID, NET_Packet* pEPack);
+	CSE_Abstract*			Process_spawn(CNetPacket& P, ClientID sender, BOOL bSpawnWithClientsMainEntityAsParent = FALSE, CSE_Abstract* tpExistedEntity = 0);
+	void					Process_update(CNetPacket& P, ClientID sender);
+	void					Process_save(CNetPacket& P, ClientID sender);
+	void					Process_event(CNetPacket& P, ClientID sender);
+	void					Process_event_ownership(CNetPacket& P, ClientID sender, u32 time, u16 ID, BOOL bForced = FALSE);
+	bool					Process_event_reject(CNetPacket& P, const ClientID sender, const u32 time, const u16 id_parent, const u16 id_entity, bool send_message = true);
+	void					Process_event_destroy(CNetPacket& P, ClientID sender, u32 time, u16 ID, CNetPacket* pEPack);
 
 	xrClientData*			SelectBestClientToMigrateTo(CSE_Abstract* E, BOOL bForceAnother = FALSE);
 	void					SendConnectResult(IClient* CL, u8 res, u8 res1, char* ResultStr);
 
 	void					AttachNewClient(IClient* CL);
-	virtual void			OnBuildVersionRespond(IClient* CL, NET_Packet& P);
+	virtual void			OnBuildVersionRespond(IClient* CL, CNetPacket& P);
 
 protected:
 	bool					CheckAdminRights(const shared_str& user, const shared_str& pass, string512 reason);
@@ -162,7 +162,7 @@ protected:
 	virtual void			Check_BuildVersion_Success(IClient* CL);
 
 	void					SendConnectionData(IClient* CL);
-	void					OnChatMessage(NET_Packet* P, xrClientData* CL);
+	void					OnChatMessage(CNetPacket* P, xrClientData* CL);
 
 public:
 	// constr / destr
@@ -170,7 +170,7 @@ public:
 	virtual					~CServer( );
 
 	// extended functionality
-	virtual u32				OnMessage(NET_Packet& P, ClientID sender);		// Non-Zero means broadcasting with "flags" as returned
+	virtual u32				OnMessage(CNetPacket& P, ClientID sender);		// Non-Zero means broadcasting with "flags" as returned
 	virtual void			OnCL_Connected(IClient* CL);
 	virtual void			OnCL_Disconnected(IClient* CL);
 	virtual bool			OnCL_QueryHost( );

@@ -742,7 +742,7 @@ void CActor::g_Physics(Fvector3& _accel, float jump, float dt)
 			{
 				SHit HDS = SHit(character_physics_support( )->movement( )->gcontact_HealthLost, hdir, di->DamageInitiator( ), character_physics_support( )->movement( )->ContactBone( ), di->HitPos( ), 0.f, di->HitType( ));
 
-				NET_Packet	l_P;
+				CNetPacket	l_P;
 				HDS.GenHeader(GE_HIT, ID( ));
 				HDS.whoID = di->DamageInitiator( )->ID( );
 				HDS.weaponID = di->DamageInitiator( )->ID( );
@@ -924,7 +924,7 @@ void CActor::shedule_Update(u32 DT)
 /*
 			if (mstate_real & mcJump)
 			{
-				NET_Packet	P;
+				CNetPacket	P;
 				u_EventGen(P, GE_ACTOR_JUMPING, ID());
 				P.w_sdir(NET_SavedAccel);
 				P.w_float(NET_Jump);

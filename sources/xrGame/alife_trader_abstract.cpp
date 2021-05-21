@@ -155,7 +155,7 @@ void CSE_ALifeDynamicObject::detach(CSE_ALifeInventoryItem *tpALifeInventoryItem
 
 void add_online_impl						(CSE_ALifeDynamicObject *object, const bool &update_registries)
 {
-	NET_Packet					tNetPacket;
+	CNetPacket					tNetPacket;
 	ClientID					clientID;
 	clientID.set				(object->alife().server().GetServerClient() ? object->alife().server().GetServerClient()->ID.value() : 0);
 

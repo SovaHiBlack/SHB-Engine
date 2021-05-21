@@ -327,7 +327,7 @@ void CDangerManager::ignore			(const CGameObject *object)
 	m_ignored.push_back		(object->ID());
 }
 
-void CDangerManager::save			(NET_Packet &packet) const
+void CDangerManager::save			(CNetPacket &packet) const
 {
 	save_data				(m_ignored,packet);
 }

@@ -13,7 +13,7 @@
 #include "..\..\Inventory.h"
 #include "..\..\Messages.h"
 #include "..\..\ShootingObject.h"
-#include "../../../ENGINE/net_utils.h"
+#include "..\..\..\ENGINE\NetPacket.h"
 #include "..\..\Level.h"
 #include "../../ai_monster_space.h"
 
@@ -22,7 +22,7 @@ using namespace MonsterSpace;
 
 #define SILENCE
 
-void CStalker::OnEvent		(NET_Packet& P, u16 type)
+void CStalker::OnEvent		(CNetPacket& P, u16 type)
 {
 	inherited::OnEvent			(P,type);
 	CInventoryOwner::OnEvent	(P,type);
@@ -57,7 +57,7 @@ void CStalker::OnEvent		(NET_Packet& P, u16 type)
 			}
 			else {
 //				DropItemSendMessage(O);
-				NET_Packet				P;
+				CNetPacket				P;
 				u_EventGen				(P,GE_OWNERSHIP_REJECT,ID());
 				P.w_u16					(u16(O->ID()));
 				u_EventSend				(P);
@@ -105,7 +105,7 @@ void CStalker::feel_touch_new				(CObject* O)
 #ifndef SILENCE
 		Msg("Taking item %s (%d)!",*I->cName(),I->ID());
 #endif
-		NET_Packet		P;
+		CNetPacket		P;
 		u_EventGen		(P,GE_OWNERSHIP_TAKE,ID());
 		P.w_u16			(u16(I->object().ID()));
 		u_EventSend		(P);
@@ -121,7 +121,7 @@ void CStalker::DropItemSendMessage(CObject *O)
 	Msg("Dropping item!");
 #endif
 	// We doesn't have similar weapon - pick up it
-	NET_Packet				P;
+	CNetPacket				P;
 	u_EventGen				(P,GE_OWNERSHIP_REJECT,ID());
 	P.w_u16					(u16(O->ID()));
 	u_EventSend				(P);

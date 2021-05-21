@@ -58,7 +58,7 @@ public:
 		return PhysicsShellHolder( );
 	};
 	virtual	void	CopySpawnInit( );
-	virtual void	net_Save(NET_Packet& P);
+	virtual void	net_Save(CNetPacket& P);
 	virtual	BOOL	net_SaveRelevant( );
 
 	virtual BOOL	renderable_ShadowGenerate( )
@@ -71,8 +71,8 @@ public:
 	}
 
 	virtual	void	Hit(SHit* pHDS);
-	virtual void	net_Export(NET_Packet& P);
-	virtual void	net_Import(NET_Packet& P);
+	virtual void	net_Export(CNetPacket& P);
+	virtual void	net_Import(CNetPacket& P);
 	virtual BOOL	UsedAI_Locations( );
 
 	virtual void	Center(Fvector3& C)	const;

@@ -180,7 +180,7 @@ CSE_Abstract *CALifeSimulator__spawn_item2		(CALifeSimulator *self, const char* 
 	if (!object->m_bOnline)
 		return							(self->spawn_item(section,position,level_vertex_id,game_vertex_id,id_parent));
 
-	NET_Packet							packet;
+	CNetPacket							packet;
 	packet.w_begin						(M_SPAWN);
 	packet.w_stringZ					(section);
 	
@@ -222,7 +222,7 @@ CSE_Abstract *CALifeSimulator__spawn_ammo		(CALifeSimulator *self, const char* s
 		return							(item);
 	}
 
-	NET_Packet							packet;
+	CNetPacket							packet;
 	packet.w_begin						(M_SPAWN);
 	packet.w_stringZ					(section);
 	
@@ -265,7 +265,7 @@ void CALifeSimulator__release					(CALifeSimulator *self, CSE_Abstract *object, 
 	}
 
 	// awful hack, for stohe only
-	NET_Packet							packet;
+	CNetPacket							packet;
 	packet.w_begin						(M_EVENT);
 	packet.w_u32						(Level().timeServer());
 	packet.w_u16						(GE_DESTROY);

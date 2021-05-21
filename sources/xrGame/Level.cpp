@@ -314,7 +314,7 @@ int	CLevel::get_RPID(const char* /**name/**/)
 
 BOOL g_bDebugEvents = FALSE;
 
-void CLevel::cl_Process_Event(u16 dest, u16 type, NET_Packet& P)
+void CLevel::cl_Process_Event(u16 dest, u16 type, CNetPacket& P)
 {
 //	Msg("--- event[%d] for [%d]", type,dest);
 	CObject* O = Objects.net_Find(dest);
@@ -375,7 +375,7 @@ void CLevel::ProcessGameEvents( )
 {
 	// Game events
 	{
-		NET_Packet P;
+		CNetPacket P;
 		u32 svT = timeServer( ) - NET_Latency;
 
 		/*

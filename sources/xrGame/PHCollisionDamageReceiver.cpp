@@ -7,7 +7,7 @@
 #include "PhysicsShell.h"
 #include "GameMtlLib.h"
 #include "Physics.h"
-#include "../ENGINE/net_utils.h"
+#include "..\ENGINE\NetPacket.h"
 #include "Messages.h"
 #include "CharacterPhysicsSupport.h"
 
@@ -106,7 +106,7 @@ void CPHCollisionDamageReceiver::Hit(u16 source_id, u16 bone_id, float power, co
 		return;
 	}
 
-	NET_Packet P;
+	CNetPacket P;
 	CPHShellHolder* ph = PPhysicsShellHolder( );
 	SHit HS;
 

@@ -320,7 +320,7 @@ void CEntityAlive::Die(CObject* who)
 
 	if (!getDestroy( ))
 	{
-		NET_Packet P;
+		CNetPacket P;
 		u_EventGen(P, GE_ASSIGN_KILLER, ID( ));
 		P.w_u16(u16(who->ID( )));
 		u_EventSend(P);
@@ -605,7 +605,7 @@ void CEntityAlive::UpdateBloodDrops( )
 	}
 }
 
-void CEntityAlive::save(NET_Packet& output_packet)
+void CEntityAlive::save(CNetPacket& output_packet)
 {
 	inherited::save(output_packet);
 	conditions( ).save(output_packet);

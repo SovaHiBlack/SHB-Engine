@@ -2,7 +2,7 @@
 
 #include "UIGameCustom.h"//
 #include "UIDialogWnd.h"//
-#include "../../ENGINE/net_utils.h"
+#include "..\..\ENGINE\NetPacket.h"
 #include "..\game_graph_space.h"
 
 class CUIInventoryWnd;
@@ -49,7 +49,7 @@ public:
 	CChangeLevelWnd*									UIChangeLevelWnd;
 };
 
-class CChangeLevelWnd :public CUIDialogWnd
+class CChangeLevelWnd : public CUIDialogWnd
 {
 	CUIMessageBox*										m_messageBox;
 	using inherited										= CUIDialogWnd;
@@ -60,10 +60,10 @@ class CChangeLevelWnd :public CUIDialogWnd
 public:
 	GameGraph::_GRAPH_ID								m_game_vertex_id;
 	u32													m_level_vertex_id;
-	Fvector3												m_position;
-	Fvector3												m_angles;
-	Fvector3												m_position_cancel;
-	Fvector3												m_angles_cancel;
+	Fvector3											m_position;
+	Fvector3											m_angles;
+	Fvector3											m_position_cancel;
+	Fvector3											m_angles_cancel;
 	bool												m_b_position_cancel;
 
 							CChangeLevelWnd				( );

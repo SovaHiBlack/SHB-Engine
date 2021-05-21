@@ -187,7 +187,7 @@ void CPda::ActivePDAContacts(xr_vector<CPda*>& res)
 	}
 }
 
-void CPda::save(NET_Packet& output_packet)
+void CPda::save(CNetPacket& output_packet)
 {
 	inherited::save(output_packet);
 	save_data(m_sFullName, output_packet);

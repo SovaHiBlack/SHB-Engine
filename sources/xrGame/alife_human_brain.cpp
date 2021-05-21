@@ -63,13 +63,13 @@ CALifeHumanBrain::~CALifeHumanBrain			()
 	xr_delete						(m_object_handler);
 }
 
-void CALifeHumanBrain::on_state_write		(NET_Packet &packet)
+void CALifeHumanBrain::on_state_write		(CNetPacket &packet)
 {
 	save_data						(m_cpEquipmentPreferences,packet);
 	save_data						(m_cpMainWeaponPreferences,packet);
 }
 
-void CALifeHumanBrain::on_state_read		(NET_Packet &packet)
+void CALifeHumanBrain::on_state_read		(CNetPacket &packet)
 {
 	if (object().m_wVersion <= 19)
 		return;

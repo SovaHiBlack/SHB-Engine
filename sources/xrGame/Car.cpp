@@ -250,7 +250,7 @@ void	CCar::net_Destroy()
 	b_breaks=false;
 }
 
-void CCar::net_Save(NET_Packet& P)
+void CCar::net_Save(CNetPacket& P)
 {
 	inherited::net_Save(P);
 	SaveNetState(P);
@@ -266,7 +266,7 @@ BOOL CCar::net_SaveRelevant()
 	//return !m_explosion_flags.test(CExplosive::flExploding)&&!CExplosive::IsExploded()&&!CPHDestroyable::Destroyed()&&!b_exploded;
 }
 
-void CCar::SaveNetState(NET_Packet& P)
+void CCar::SaveNetState(CNetPacket& P)
 {
 
 	CPHSkeleton::SaveNetState	   (P);
@@ -480,14 +480,14 @@ void	CCar::renderable_Render				( )
 		m_car_weapon->Render_internal();
 }
 
-void	CCar::net_Export			(NET_Packet& P)
+void	CCar::net_Export			(CNetPacket& P)
 {
 	inherited::net_Export(P);
 //	P.w_u32 (Level().timeServer());
 //	P.w_u16 (0);
 }
 
-void	CCar::net_Import			(NET_Packet& P)
+void	CCar::net_Import			(CNetPacket& P)
 {
 	inherited::net_Import(P);
 //	u32 TimeStamp = 0;
@@ -1653,7 +1653,7 @@ void CCar::ResetKeys()
 
 #undef   _USE_MATH_DEFINES
 
-void CCar::OnEvent(NET_Packet& P, u16 type)
+void CCar::OnEvent(CNetPacket& P, u16 type)
 {
 	inherited::OnEvent		(P,type);
 	CExplosive::OnEvent		(P,type);
@@ -1674,7 +1674,7 @@ void CCar::OnEvent(NET_Packet& P, u16 type)
 			else 
 			{
 				if (!O || !O->H_Parent() || (this != O->H_Parent())) return;
-				NET_Packet P;
+				CNetPacket P;
 				u_EventGen(P,GE_OWNERSHIP_REJECT,ID());
 				P.w_u16(u16(O->ID()));
 				u_EventSend(P);

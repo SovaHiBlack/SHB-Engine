@@ -5,7 +5,7 @@
 #include "alife_space.h"
 #include "hit_immunity_space.h"
 
-class NET_Packet;
+class CNetPacket;
 
 class CWound
 {
@@ -14,7 +14,7 @@ public:
 	virtual ~CWound( );
 
 	//serialization
-	virtual void save(NET_Packet& output_packet);
+	virtual void save(CNetPacket& output_packet);
 	virtual void load(IReader& input_packet);
 
 	float	TotalSize( );

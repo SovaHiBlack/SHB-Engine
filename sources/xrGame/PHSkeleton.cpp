@@ -167,7 +167,7 @@ void CPHSkeleton::Update(u32 dt)
 	}
 }
 
-void CPHSkeleton::SaveNetState(NET_Packet& P)
+void CPHSkeleton::SaveNetState(CNetPacket& P)
 {
 	CPHShellHolder* obj = PPhysicsShellHolder( );
 	CPhysicsShell* pPhysicsShell = obj->PPhysicsShell( );
@@ -249,7 +249,7 @@ void CPHSkeleton::SaveNetState(NET_Packet& P)
 	}
 }
 
-void CPHSkeleton::LoadNetState(NET_Packet& P)
+void CPHSkeleton::LoadNetState(CNetPacket& P)
 {
 	CPHShellHolder* obj = PPhysicsShellHolder( );
 	CKinematics* K = smart_cast<CKinematics*>(obj->Visual( ));
@@ -320,7 +320,7 @@ void CPHSkeleton::SpawnCopy( )
 		/////////////////////////////////////////////////////////////////////////////////////////////
 		InitServerObject(D);
 		// Send
-		NET_Packet P;
+		CNetPacket P;
 		D->Spawn_Write(P, TRUE);
 		Level( ).Send(P, net_flags(TRUE));
 		// Destroy

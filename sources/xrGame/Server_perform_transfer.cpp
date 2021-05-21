@@ -4,7 +4,7 @@
 #include "Messages.h"
 #include "xrserver_objects.h"
 
-void CServer::Perform_transfer(NET_Packet &PR, NET_Packet &PT,	CSE_Abstract* what, CSE_Abstract* from, CSE_Abstract* to)
+void CServer::Perform_transfer(CNetPacket &PR, CNetPacket &PT,	CSE_Abstract* what, CSE_Abstract* from, CSE_Abstract* to)
 {
 	// Sanity check
 	R_ASSERT	(what && from && to);
@@ -38,7 +38,7 @@ void CServer::Perform_reject(CSE_Abstract* what, CSE_Abstract* from, int delta)
 	R_ASSERT				(what && from);
 	R_ASSERT				(what->ID_Parent == from->ID);
 
-	NET_Packet				P;
+	CNetPacket				P;
 	u32						time = Device.dwTimeGlobal - delta;
 
 	P.w_begin				(M_EVENT);

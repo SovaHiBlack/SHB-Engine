@@ -44,7 +44,7 @@ game_cl_GameState::~game_cl_GameState( )
 	xr_delete(m_WeaponUsageStatistic);
 }
 
-void	game_cl_GameState::net_import_GameTime(NET_Packet& P)
+void	game_cl_GameState::net_import_GameTime(CNetPacket& P)
 {
 	//time
 	u64				GameTime;
@@ -67,7 +67,7 @@ void	game_cl_GameState::net_import_GameTime(NET_Packet& P)
 //		GamePersistent().Environment().Invalidate();
 }
 
-void	game_cl_GameState::net_import_state(NET_Packet& P)
+void	game_cl_GameState::net_import_state(CNetPacket& P)
 {
 	// Generic
 	P.r_clientID(local_svdpnid);
@@ -139,7 +139,7 @@ void	game_cl_GameState::net_import_state(NET_Packet& P)
 	net_import_GameTime(P);
 }
 
-void	game_cl_GameState::net_import_update(NET_Packet& P)
+void	game_cl_GameState::net_import_update(CNetPacket& P)
 {
 	// Read
 	ClientID			ID;
@@ -163,10 +163,10 @@ void	game_cl_GameState::net_import_update(NET_Packet& P)
 	net_import_GameTime(P);
 }
 
-void	game_cl_GameState::net_signal(NET_Packet& P)
+void	game_cl_GameState::net_signal(CNetPacket& P)
 { }
 
-void game_cl_GameState::TranslateGameMessage(u32 msg, NET_Packet& P)
+void game_cl_GameState::TranslateGameMessage(u32 msg, CNetPacket& P)
 {
 	CStringTable st;
 
@@ -215,7 +215,7 @@ void game_cl_GameState::TranslateGameMessage(u32 msg, NET_Packet& P)
 	}
 }
 
-void	game_cl_GameState::OnGameMessage(NET_Packet& P)
+void	game_cl_GameState::OnGameMessage(CNetPacket& P)
 {
 	VERIFY(this && &P);
 	u32 msg;
@@ -289,7 +289,7 @@ void game_cl_GameState::StartStopMenu(CUIDialogWnd* pDialog, bool bDoHideIndicat
 	HUD( ).GetUI( )->StartStopMenu(pDialog, bDoHideIndicators);
 }
 
-void game_cl_GameState::sv_GameEventGen(NET_Packet& P)
+void game_cl_GameState::sv_GameEventGen(CNetPacket& P)
 {
 	P.w_begin(M_EVENT);
 	P.w_u32(Level( ).timeServer( ));
@@ -297,7 +297,7 @@ void game_cl_GameState::sv_GameEventGen(NET_Packet& P)
 	P.w_u16(0);//dest==0
 }
 
-void	game_cl_GameState::sv_EventSend(NET_Packet& P)
+void	game_cl_GameState::sv_EventSend(CNetPacket& P)
 {
 	Level( ).Send(P, net_flags(TRUE, TRUE));
 }
@@ -336,7 +336,7 @@ bool game_cl_GameState::IR_OnMouseWheel(int direction)
 	return false;
 }
 
-void game_cl_GameState::u_EventGen(NET_Packet& P, u16 type, u16 dest)
+void game_cl_GameState::u_EventGen(CNetPacket& P, u16 type, u16 dest)
 {
 	P.w_begin(M_EVENT);
 	P.w_u32(Level( ).timeServer( ));
@@ -344,7 +344,7 @@ void game_cl_GameState::u_EventGen(NET_Packet& P, u16 type, u16 dest)
 	P.w_u16(dest);
 }
 
-void game_cl_GameState::u_EventSend(NET_Packet& P)
+void game_cl_GameState::u_EventSend(CNetPacket& P)
 {
 	Level( ).Send(P, net_flags(TRUE, TRUE));
 }
@@ -379,7 +379,7 @@ void				game_cl_GameState::OnSwitchPhase(u32 old_phase, u32 new_phase)
 
 void				game_cl_GameState::SendPickUpEvent(u16 ID_who, u16 ID_what)
 {
-	NET_Packet P;
+	CNetPacket P;
 	u_EventGen(P, GE_OWNERSHIP_TAKE, ID_who);
 	P.w_u16(ID_what);
 	u_EventSend(P);

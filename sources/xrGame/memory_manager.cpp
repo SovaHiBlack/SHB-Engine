@@ -337,7 +337,7 @@ void CMemoryManager::make_object_visible_somewhen	(const CEntityAlive *enemy)
 	obj1->visible				(mask,prev);
 }
 
-void CMemoryManager::save							(NET_Packet &packet) const
+void CMemoryManager::save							(CNetPacket &packet) const
 {
 	visual().save				(packet);
 	sound().save				(packet);

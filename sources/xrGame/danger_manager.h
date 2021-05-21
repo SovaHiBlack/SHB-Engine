@@ -66,7 +66,7 @@ public:
 	inline		const OBJECTS		&objects	() const;
 
 public:
-			void		save				(NET_Packet &packet) const;
+			void		save				(CNetPacket &packet) const;
 			void		load				(IReader &packet);
 };
 

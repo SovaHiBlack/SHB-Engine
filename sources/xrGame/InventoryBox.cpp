@@ -14,7 +14,7 @@ CInventoryBox::CInventoryBox()
 	m_in_use = false;
 }
 
-void CInventoryBox::OnEvent(NET_Packet& P, u16 type)
+void CInventoryBox::OnEvent(CNetPacket& P, u16 type)
 {
 	inherited::OnEvent	(P, type);
 

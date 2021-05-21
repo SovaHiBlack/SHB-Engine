@@ -184,7 +184,7 @@ void CCustomMonster::mk_orientation(Fvector3& dir, Fmatrix& mR)
 	}
 }
 
-void CCustomMonster::net_Export(NET_Packet& P)					// export to server
+void CCustomMonster::net_Export(CNetPacket& P)					// export to server
 {
 	R_ASSERT(Local( ));
 
@@ -204,7 +204,7 @@ void CCustomMonster::net_Export(NET_Packet& P)					// export to server
 	P.w_u8(u8(g_Group( )));
 }
 
-void CCustomMonster::net_Import(NET_Packet& P)
+void CCustomMonster::net_Import(CNetPacket& P)
 {
 	R_ASSERT(Remote( ));
 	net_update				N;
@@ -685,7 +685,7 @@ void			CCustomMonster::Hit(SHit* pHDS)
 		inherited::Hit(pHDS);
 }
 
-void CCustomMonster::OnEvent(NET_Packet& P, u16 type)
+void CCustomMonster::OnEvent(CNetPacket& P, u16 type)
 {
 	inherited::OnEvent(P, type);
 }
@@ -941,7 +941,7 @@ CVisualMemoryManager* CCustomMonster::visual_memory( ) const
 	return						(&memory( ).visual( ));
 }
 
-void CCustomMonster::save(NET_Packet& packet)
+void CCustomMonster::save(CNetPacket& packet)
 {
 	inherited::save(packet);
 	if (g_Alive( ))

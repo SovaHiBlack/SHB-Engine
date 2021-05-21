@@ -13,7 +13,7 @@
 #include "../../xrCDB/xrCDB.h"
 #include "ShapeData.h"
 
-class NET_Packet;
+class CNetPacket;
 class CDUInterface;
 
 #include "xrEProps.h"
@@ -41,8 +41,8 @@ public:
 									CSE_Visual		(const char* name=0);
 	virtual							~CSE_Visual		();
 
-	void							visual_read		(NET_Packet& P, u16 version);
-	void							visual_write	(NET_Packet& P);
+	void							visual_read		(CNetPacket& P, u16 version);
+	void							visual_write	(CNetPacket& P);
 
     void							set_visual		(const char* name, bool load=true);
 	const char* get_visual		() const {return *visual_name;};
@@ -61,8 +61,8 @@ public:
 									CSE_Motion 		(const char* name=0);
 	virtual							~CSE_Motion		();
 
-	void							motion_read		(NET_Packet& P);
-	void							motion_write	(NET_Packet& P);
+	void							motion_read		(CNetPacket& P);
+	void							motion_write	(CNetPacket& P);
 
     void							set_motion		(const char* name);
 	const char* get_motion		() const {return *motion_name;};
@@ -90,8 +90,8 @@ public:
 	inline	void						set_editor_flag	(u32 mask)	{m_editor_flags.set	(mask,TRUE);}
 
 public:
-	virtual void		__stdcall	Spawn_Write		(NET_Packet &tNetPacket, BOOL bLocal) = 0;
-	virtual BOOL		__stdcall	Spawn_Read		(NET_Packet &tNetPacket) = 0;
+	virtual void		__stdcall	Spawn_Write		(CNetPacket &tNetPacket, BOOL bLocal) = 0;
+	virtual BOOL		__stdcall	Spawn_Read		(CNetPacket &tNetPacket) = 0;
 	virtual void		__stdcall	FillProp		(const char* pref, PropItemVec &items) = 0;
 	virtual const char* __stdcall	name			() const = 0;
 	virtual void		__stdcall	set_name		(const char*) = 0;

@@ -286,7 +286,7 @@ public:
 			}
 			else
 			{
-				NET_Packet		P;
+				CNetPacket		P;
 				P.w_begin(M_SWITCH_DISTANCE);
 				P.w_float(id1);
 				Level( ).Send(P, net_flags(TRUE, TRUE));
@@ -495,7 +495,7 @@ public:
 		if (!xr_strlen(S))
 		{
 			strconcat(sizeof(S), S, Core.UserName, "_", "quicksave");
-			NET_Packet			net_packet;
+			CNetPacket			net_packet;
 			net_packet.w_begin(M_SAVE_GAME);
 			net_packet.w_stringZ(S);
 			net_packet.w_u8(0);
@@ -509,7 +509,7 @@ public:
 				return;
 			}
 
-			NET_Packet			net_packet;
+			CNetPacket			net_packet;
 			net_packet.w_begin(M_SAVE_GAME);
 			net_packet.w_stringZ(S);
 			net_packet.w_u8(1);
@@ -588,7 +588,7 @@ public:
 			Device.Pause(FALSE, TRUE, TRUE, "CCC_ALifeLoadFrom");
 		}
 
-		NET_Packet					net_packet;
+		CNetPacket					net_packet;
 		net_packet.w_begin(M_LOAD_GAME);
 		net_packet.w_stringZ(saved_game);
 		Level( ).Send(net_packet, net_flags(TRUE));

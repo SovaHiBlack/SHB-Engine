@@ -56,10 +56,10 @@ CALifeMonsterBrain::~CALifeMonsterBrain			()
 	xr_delete						(m_movement_manager);
 }
 
-void CALifeMonsterBrain::on_state_write		(NET_Packet &packet)
+void CALifeMonsterBrain::on_state_write		(CNetPacket &packet)
 { }
 
-void CALifeMonsterBrain::on_state_read		(NET_Packet &packet)
+void CALifeMonsterBrain::on_state_read		(CNetPacket &packet)
 { }
 
 bool CALifeMonsterBrain::perform_attack		()

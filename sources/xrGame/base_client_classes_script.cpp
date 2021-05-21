@@ -13,7 +13,7 @@
 #include "..\ENGINE\fbasicvisual.h"
 #include "..\ENGINE\skeletonanimated.h"
 #include "ai/stalker/Stalker.h"
-#include "..\ENGINE/net_utils.h"
+#include "..\ENGINE\NetPacket.h"
 
 using namespace luabind;
 

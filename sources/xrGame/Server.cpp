@@ -41,7 +41,7 @@ xrClientData::~xrClientData( )
 CServer::CServer( ) : IPureServer(Device.GetTimerGlobal( ))
 {
 	m_iCurUpdatePacket = 0;
-	m_aUpdatePackets.push_back(NET_Packet( ));
+	m_aUpdatePackets.push_back(CNetPacket( ));
 	m_aDelayedPackets.clear( );
 }
 
@@ -133,7 +133,7 @@ void CServer::client_Destroy(IClient* C)
 			CSE_Spectator* pS = smart_cast<CSE_Spectator*>(pOwner);
 			if (pS)
 			{
-				NET_Packet			P;
+				CNetPacket			P;
 				P.w_begin(M_EVENT);
 				P.w_u32(Level( ).timeServer( ));//Device.TimerAsync());
 				P.w_u16(GE_DESTROY);
@@ -189,7 +189,7 @@ INT g_sv_SendUpdate = 0;
 
 void CServer::Update( )
 {
-	NET_Packet		Packet;
+	CNetPacket		Packet;
 	csPlayers.Enter( );
 
 	VERIFY(verify_entities( ));
@@ -248,7 +248,7 @@ void CServer::Update( )
 void CServer::SendUpdatesToAll( )
 {
 	m_iCurUpdatePacket = 0;
-	NET_Packet* pCurUpdatePacket = &(m_aUpdatePackets[0]);
+	CNetPacket* pCurUpdatePacket = &(m_aUpdatePackets[0]);
 	pCurUpdatePacket->B.count = 0;
 	u32	 position;
 
@@ -270,7 +270,7 @@ void CServer::SendUpdatesToAll( )
 			) continue;
 
 		// Send relevant entities to client
-		NET_Packet						Packet;
+		CNetPacket						Packet;
 		u16 PacketType = M_UPDATE;
 		Packet.w_begin(PacketType);
 		// GameUpdate
@@ -303,7 +303,7 @@ void CServer::SendUpdatesToAll( )
 				}
 			}
 
-			NET_Packet						tmpPacket;
+			CNetPacket						tmpPacket;
 
 			xrS_entities::iterator I = entities.begin( );
 			xrS_entities::iterator E = entities.end( );
@@ -358,7 +358,7 @@ void CServer::SendUpdatesToAll( )
 
 						if (m_aUpdatePackets.size( ) == m_iCurUpdatePacket)
 						{
-							m_aUpdatePackets.push_back(NET_Packet( ));
+							m_aUpdatePackets.push_back(CNetPacket( ));
 						}
 
 						PacketType = M_UPDATE_OBJECTS;
@@ -379,7 +379,7 @@ void CServer::SendUpdatesToAll( )
 		//.#endif			
 		for (u32 p = 0; p <= m_iCurUpdatePacket; p++)
 		{
-			NET_Packet& ToSend = m_aUpdatePackets[p];
+			CNetPacket& ToSend = m_aUpdatePackets[p];
 			if (ToSend.B.count > 2)
 			{
 				//.#ifdef DEBUG
@@ -415,7 +415,7 @@ void console_log_cb(const char* text)
 	_tmp_log.push_back(text);
 }
 
-u32 CServer::OnDelayedMessage(NET_Packet& P, ClientID sender)			// Non-Zero means broadcasting with "flags" as returned
+u32 CServer::OnDelayedMessage(CNetPacket& P, ClientID sender)			// Non-Zero means broadcasting with "flags" as returned
 {
 	if (g_pGameLevel && Level( ).IsDemoSave( ))
 	{
@@ -449,7 +449,7 @@ u32 CServer::OnDelayedMessage(NET_Packet& P, ClientID sender)			// Non-Zero mean
 				Console->Execute(buff);
 				SetLogCB(NULL);
 
-				NET_Packet			P_answ;
+				CNetPacket			P_answ;
 				for (u32 i = 0; i < _tmp_log.size( ); ++i)
 				{
 					P_answ.w_begin(M_REMOTE_CONTROL_CMD);
@@ -459,7 +459,7 @@ u32 CServer::OnDelayedMessage(NET_Packet& P, ClientID sender)			// Non-Zero mean
 			}
 			else
 			{
-				NET_Packet			P_answ;
+				CNetPacket			P_answ;
 				P_answ.w_begin(M_REMOTE_CONTROL_CMD);
 				P_answ.w_stringZ("you dont have admin rights");
 				SendTo(CL->ID, P_answ, net_flags(TRUE, TRUE));
@@ -475,7 +475,7 @@ u32 CServer::OnDelayedMessage(NET_Packet& P, ClientID sender)			// Non-Zero mean
 }
 
 extern float	g_fCatchObjectTime;
-u32 CServer::OnMessage(NET_Packet& P, ClientID sender)			// Non-Zero means broadcasting with "flags" as returned
+u32 CServer::OnMessage(CNetPacket& P, ClientID sender)			// Non-Zero means broadcasting with "flags" as returned
 {
 	if (g_pGameLevel && Level( ).IsDemoSave( ))
 	{
@@ -516,7 +516,7 @@ u32 CServer::OnMessage(NET_Packet& P, ClientID sender)			// Non-Zero means broad
 		break;
 		case M_EVENT_PACK:
 		{
-			NET_Packet	tmpP;
+			CNetPacket	tmpP;
 			while (!P.r_eof( ))
 			{
 				tmpP.B.count = P.r_u8( );
@@ -722,7 +722,7 @@ u32 CServer::OnMessage(NET_Packet& P, ClientID sender)			// Non-Zero means broad
 				}
 			}
 
-			NET_Packet			P_answ;
+			CNetPacket			P_answ;
 			P_answ.w_begin(M_REMOTE_CONTROL_CMD);
 			P_answ.w_stringZ(reason);
 			SendTo(CL->ID, P_answ, net_flags(TRUE, TRUE));
@@ -881,7 +881,7 @@ CSE_Abstract* CServer::GetEntity(u32 Num)
 	return nullptr;
 }
 
-void		CServer::OnChatMessage(NET_Packet* P, xrClientData* CL)
+void		CServer::OnChatMessage(CNetPacket* P, xrClientData* CL)
 {
 	s16 team = P->r_s16( );
 	if (!CL->net_Ready)
@@ -1004,14 +1004,14 @@ void CServer::ProceedDelayedPackets( )
 	DelayedPackestCS.Leave( );
 };
 
-void CServer::AddDelayedPacket(NET_Packet& Packet, ClientID Sender)
+void CServer::AddDelayedPacket(CNetPacket& Packet, ClientID Sender)
 {
 	DelayedPackestCS.Enter( );
 
 	m_aDelayedPackets.push_back(DelayedPacket( ));
 	DelayedPacket* NewPacket = &(m_aDelayedPackets.back( ));
 	NewPacket->SenderID = Sender;
-	CopyMemory(&(NewPacket->Packet), &Packet, sizeof(NET_Packet));
+	CopyMemory(&(NewPacket->Packet), &Packet, sizeof(CNetPacket));
 
 	DelayedPackestCS.Leave( );
 }
@@ -1037,7 +1037,7 @@ void CServer::PerformCheckClientsForMaxPing( )
 			}
 			else
 			{ //send warning
-				NET_Packet		P;
+				CNetPacket		P;
 				P.w_begin(M_CLIENT_WARN);
 				P.w_u8(1); // 1 means max-ping-warning
 				P.w_u16(ps->ping);

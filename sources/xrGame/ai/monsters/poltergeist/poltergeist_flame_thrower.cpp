@@ -5,7 +5,7 @@
 #include "../../../ai_object_location.h"
 #include "../../../level_graph.h"
 #include "..\..\..\Level.h"
-#include "../../../../ENGINE/net_utils.h"
+#include "..\..\..\..\ENGINE\NetPacket.h"
 #include "../../../ai_space.h"
 #include "../../../restricted_object.h"
 #include "../../../actor.h"
@@ -197,7 +197,7 @@ void CPolterFlame::update_schedule()
 							float		hit_value;
 							hit_value	= m_hit_value - m_hit_value * rq.range / m_length;
 
-							NET_Packet			P;
+							CNetPacket			P;
 							SHit				HS;
 							HS.GenHeader		(GE_HIT, elem->target_object->ID());
 							HS.whoID			= (m_object->ID());

@@ -275,7 +275,7 @@ inline	void CPlanner::show				(const char* offset)
 #endif
 
 TEMPLATE_SPECIALIZATION
-inline	void CPlanner::save	(NET_Packet &packet)
+inline	void CPlanner::save	(CNetPacket &packet)
 {
 	{
 		EVALUATORS::iterator		I = m_evaluators.begin();

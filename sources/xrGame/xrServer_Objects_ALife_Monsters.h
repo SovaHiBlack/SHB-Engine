@@ -316,7 +316,7 @@ Fvector3							velocity;
 	virtual CSE_Abstract			*base					();
 	virtual const CSE_Abstract		*base					() const;
 	virtual CSE_Abstract			*init					();
-	virtual void					load					(NET_Packet &tNetPacket);
+	virtual void					load					(CNetPacket &tNetPacket);
 	virtual bool					can_save				()const{return true;}
 	virtual bool					natural_weapon			() const {return false;}
 	virtual bool					natural_detector		() const {return false;}
@@ -376,7 +376,7 @@ SERVER_ENTITY_DECLARE_BEGIN2(CSE_ALifeMonsterBase,CSE_ALifeMonsterAbstract,CSE_P
 
 									CSE_ALifeMonsterBase	(const char* caSection);				// constructor for variable initialization
 	virtual							~CSE_ALifeMonsterBase	();
-	virtual	void					load					(NET_Packet &tNetPacket);
+	virtual	void					load					(CNetPacket &tNetPacket);
 	virtual CSE_Abstract			*cast_abstract			() {return this;}
 	virtual void					spawn_supplies			(const char*){}
 	virtual void					spawn_supplies			(){}
@@ -446,7 +446,7 @@ SERVER_ENTITY_DECLARE_BEGIN2(CSE_ALifeHumanStalker,CSE_ALifeHumanAbstract,CSE_PH
 
 									CSE_ALifeHumanStalker	(const char* caSection);
 	virtual							~CSE_ALifeHumanStalker	();
-	virtual	void					load					(NET_Packet &tNetPacket);
+	virtual	void					load					(CNetPacket &tNetPacket);
 	virtual CSE_Abstract			*cast_abstract			() {return this;}
 SERVER_ENTITY_DECLARE_END
 add_to_type_list(CSE_ALifeHumanStalker)

@@ -43,7 +43,7 @@ public:
 
 	static float				ExplosionEffect				(collide::rq_results& storage, CExplosive* exp_obj, CPHShellHolder* blasted_obj, const Fvector3& expl_centre, const float expl_radius);
 
-	virtual void				OnEvent						(NET_Packet& P, unsigned short type);
+	virtual void				OnEvent						(CNetPacket& P, unsigned short type);
 	virtual void				OnAfterExplosion			( );
 	virtual void				OnBeforeExplosion			( );
 	virtual void				SetCurrentParentID			(unsigned short parent_id)

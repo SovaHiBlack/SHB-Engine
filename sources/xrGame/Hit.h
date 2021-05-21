@@ -41,10 +41,10 @@ struct SHit
 		VERIFY(is_valide( ));
 		return hit_type;
 	}
-	void				Read_Packet(NET_Packet	P);
-	void				Read_Packet_Cont(NET_Packet	P);
-	void				Write_Packet(NET_Packet& P);
-	void				Write_Packet_Cont(NET_Packet& P);
+	void				Read_Packet(CNetPacket	P);
+	void				Read_Packet_Cont(CNetPacket	P);
+	void				Write_Packet(CNetPacket& P);
+	void				Write_Packet_Cont(CNetPacket& P);
 
 	void				GenHeader(u16 PacketType, u16 ID);
 //private:

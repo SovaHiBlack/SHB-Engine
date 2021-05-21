@@ -162,7 +162,7 @@ bool CALifeStorageManager::load	(const char* save_name)
 	return						(true);
 }
 
-void CALifeStorageManager::save	(NET_Packet &net_packet)
+void CALifeStorageManager::save	(CNetPacket &net_packet)
 {
 	prepare_objects_for_save	();
 

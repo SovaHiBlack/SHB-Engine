@@ -72,7 +72,7 @@ public:
 		return m_active_contacts.size( );
 	}
 
-	virtual void				save					(NET_Packet& output_packet);
+	virtual void				save					(CNetPacket& output_packet);
 	virtual void				load					(IReader& input_packet);
 
 	virtual const char*			Name					( );

@@ -7,7 +7,7 @@ class CPHShellHolder;
 class CSE_ALifePHSkeletonObject;
 class CSE_Abstract;
 class CSE_PHSkeleton;
-class NET_Packet;
+class CNetPacket;
 
 class CPHSkeleton : public CPHDestroyableNotificate
 {
@@ -33,7 +33,7 @@ private:
 	void	RecursiveBonesCheck(u16 id);
 
 protected:
-	void			LoadNetState(NET_Packet& P);
+	void			LoadNetState(CNetPacket& P);
 	void			UnsplitSingle(CPHSkeleton* SO);
 
 protected:
@@ -43,7 +43,7 @@ protected:
 		return this;
 	}
 	virtual void	SpawnInitPhysics(CSE_Abstract* D) = 0;
-	virtual void	SaveNetState(NET_Packet& P);
+	virtual void	SaveNetState(CNetPacket& P);
 	virtual	void	RestoreNetState(CSE_PHSkeleton* po);
 
 	virtual	void	InitServerObject(CSE_Abstract* D);//

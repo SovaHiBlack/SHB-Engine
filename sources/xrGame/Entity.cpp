@@ -46,7 +46,7 @@ CEntityConditionSimple *CEntity::create_entity_condition(CEntityConditionSimple*
 	return		m_entity_condition;
 }
 
-void CEntity::OnEvent		(NET_Packet& P, u16 type)
+void CEntity::OnEvent		(CNetPacket& P, u16 type)
 {
 	inherited::OnEvent		(P,type);
 
@@ -259,7 +259,7 @@ void CEntity::KillEntity(u16 whoID)
 	set_death_time		();
 
 	if (!getDestroy()){
-		NET_Packet		P;
+		CNetPacket		P;
 		u_EventGen		(P,GE_DIE,ID());
 		P.w_u16			(u16(whoID));
 		P.w_u32			(0);
@@ -316,7 +316,7 @@ void CEntity::shedule_Update	(u32 dt)
 	if (!getDestroy() && !g_Alive() && (m_killer_id != u16(-1))) {
 		if (Device.dwTimeGlobal > m_level_death_time + FORGET_KILLER_TIME) {
 			m_killer_id			= u16(-1);
-			NET_Packet			P;
+			CNetPacket			P;
 			u_EventGen			(P,GE_ASSIGN_KILLER,ID());
 			P.w_u16				(u16(-1));
 			u_EventSend			(P);

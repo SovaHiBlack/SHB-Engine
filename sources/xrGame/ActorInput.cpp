@@ -62,7 +62,7 @@ void CActor::IR_OnKeyboardPress(int dik)
 			mstate_wishful &= ~mcSprint;
 			if (OnServer( ))
 			{
-				NET_Packet P;
+				CNetPacket P;
 				P.w_begin(M_PLAYER_FIRE);
 				P.w_u16(ID( ));
 				u_EventSend(P);
@@ -514,7 +514,7 @@ void CActor::ActorUse( )
 	if (m_holder)
 	{
 		CGameObject* GO = smart_cast<CGameObject*>(m_holder);
-		NET_Packet P;
+		CNetPacket P;
 		CGameObject::u_EventGen(P, GEG_PLAYER_DETACH_HOLDER, ID( ));
 		P.w_u32(GO->ID( ));
 		CGameObject::u_EventSend(P);
@@ -585,7 +585,7 @@ void CActor::ActorUse( )
 		{
 			if (object && smart_cast<CHolderCustom*>(object))
 			{
-				NET_Packet P;
+				CNetPacket P;
 				CGameObject::u_EventGen(P, GEG_PLAYER_ATTACH_HOLDER, ID( ));
 				P.w_u32(object->ID( ));
 				CGameObject::u_EventSend(P);

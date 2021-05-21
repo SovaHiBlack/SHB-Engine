@@ -470,7 +470,7 @@ void CTorch::setup_physic_shell( )
 	CPHShellHolder::setup_physic_shell( );
 }
 
-void CTorch::net_Export(NET_Packet& P)
+void CTorch::net_Export(CNetPacket& P)
 {
 	inherited::net_Export(P);
 //	P.w_u8						(m_switched_on ? 1 : 0);
@@ -491,7 +491,7 @@ void CTorch::net_Export(NET_Packet& P)
 //	Msg("CTorch::net_export - NV[%d]", m_bNightVisionOn);
 }
 
-void CTorch::net_Import(NET_Packet& P)
+void CTorch::net_Import(CNetPacket& P)
 {
 	inherited::net_Import(P);
 

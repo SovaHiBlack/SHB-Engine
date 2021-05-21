@@ -282,7 +282,7 @@ void CHelicopter::SpawnInitPhysics	(CSE_Abstract	*D)
 	}
 }
 
-void	CHelicopter::net_Save			(NET_Packet& P)	
+void	CHelicopter::net_Save			(CNetPacket& P)	
 {
 	inherited::net_Save					(P);
 	CPHSkeleton::SaveNetState			(P);
@@ -459,7 +459,7 @@ void CHelicopter::LookAtPoint(Fvector3 point, bool do_it)
 	m_body.LookAtPoint(point,do_it);
 }
 
-void CHelicopter::save(NET_Packet &output_packet)
+void CHelicopter::save(CNetPacket &output_packet)
 {
 	m_movement.save	(output_packet);
 	m_body.save		(output_packet);
@@ -830,7 +830,7 @@ void SHeliEnemy::Update( )
 	};
 }
 
-void SHeliEnemy::save(NET_Packet& output_packet)
+void SHeliEnemy::save(CNetPacket& output_packet)
 {
 	output_packet.w_s16((s16) type);
 	output_packet.w_vec3(destEnemyPos);
@@ -898,7 +898,7 @@ void SHeliBodyState::LookAtPoint(Fvector3 point, bool do_it)
 	type = (do_it) ? eBodyToPoint : eBodyByPath;
 }
 
-void SHeliBodyState::save(NET_Packet& output_packet)
+void SHeliBodyState::save(CNetPacket& output_packet)
 {
 	output_packet.w_s16((s16) type);
 	output_packet.w_u8(b_looking_at_point ? 1 : 0);

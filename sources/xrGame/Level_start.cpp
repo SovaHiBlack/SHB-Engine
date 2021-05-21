@@ -225,7 +225,7 @@ bool CLevel::net_start5( )
 {
 	if (net_start_result_total)
 	{
-		NET_Packet NP;
+		CNetPacket NP;
 		NP.w_begin(M_CLIENTREADY);
 		Send(NP, net_flags(TRUE, TRUE));
 
@@ -284,7 +284,7 @@ bool CLevel::net_start6( )
 	return false;
 }
 
-void CLevel::InitializeClientGame(NET_Packet& P)
+void CLevel::InitializeClientGame(CNetPacket& P)
 {
 	string256 game_type_name;
 	P.r_stringZ(game_type_name);

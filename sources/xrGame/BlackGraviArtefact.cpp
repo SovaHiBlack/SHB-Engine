@@ -6,7 +6,7 @@
 #include "BlackGraviArtefact.h"
 #include "PHMovementControl.h"
 #include "Explosive.h"
-#include "../ENGINE/net_utils.h"
+#include "..\ENGINE\NetPacket.h"
 #include "PHWorld.h"
 #include "CharacterPhysicsSupport.h"
 
@@ -223,7 +223,7 @@ void CBlackGraviArtefact::GraviStrike( )
 				s16 element = elements_list.front( );
 				Fvector3 bone_pos = bone_position_list.front( );
 
-				NET_Packet P;
+				CNetPacket P;
 				SHit HS;
 				HS.GenHeader(GE_HIT, pGameObject->ID( ));
 				HS.whoID = ID( );

@@ -1,11 +1,11 @@
 #pragma once
 
 #include "game_base.h"
-#include "../../ENGINE/client_id.h"
+#include "..\ENGINE\ClientID.h"
 #include "WeaponAmmo.h"
 //#include "Level_Bullet_Manager.h"
 
-class NET_Packet;
+class CNetPacket;
 class CGameObject;
 class CUIGameCustom;
 class CUI;
@@ -65,7 +65,7 @@ protected:
 	virtual void				OnSwitchPhase				(u32 old_phase, u32 new_phase);
 
 	//for scripting enhancement
-	virtual void				TranslateGameMessage		(u32 msg, NET_Packet& P);
+	virtual void				TranslateGameMessage		(u32 msg, CNetPacket& P);
 
 	virtual shared_str			shedule_Name				( ) const
 	{
@@ -77,8 +77,8 @@ protected:
 		return true;
 	}
 
-	void						sv_GameEventGen				(NET_Packet& P);
-	void						sv_EventSend				(NET_Packet& P);
+	void						sv_GameEventGen				(CNetPacket& P);
+	void						sv_EventSend				(CNetPacket& P);
 
 public:
 								game_cl_GameState			( );
@@ -90,10 +90,10 @@ public:
 	void						set_type_name				(const char* s);
 	virtual void				Init						( )
 	{ }
-	virtual void				net_import_state			(NET_Packet& P);
-	virtual void				net_import_update			(NET_Packet& P);
-	virtual void				net_import_GameTime			(NET_Packet& P);						// update GameTime only for remote clients
-	virtual void				net_signal					(NET_Packet& P);
+	virtual void				net_import_state			(CNetPacket& P);
+	virtual void				net_import_update			(CNetPacket& P);
+	virtual void				net_import_GameTime			(CNetPacket& P);						// update GameTime only for remote clients
+	virtual void				net_signal					(CNetPacket& P);
 
 	bool						IR_OnKeyboardPress			(int dik);
 	bool						IR_OnKeyboardRelease		(int dik);
@@ -108,7 +108,7 @@ public:
 	{
 		return false;
 	}
-	void						OnGameMessage				(NET_Packet& P);
+	void						OnGameMessage				(CNetPacket& P);
 
 	virtual char*				getTeamSection				(int Team)
 	{
@@ -132,14 +132,14 @@ public:
 	void						StartStopMenu				(CUIDialogWnd* pDialog, bool bDoHideIndicators);
 	virtual void				shedule_Update				(u32 dt);
 
-	void						u_EventGen					(NET_Packet& P, u16 type, u16 dest);
-	void						u_EventSend					(NET_Packet& P);
+	void						u_EventGen					(CNetPacket& P, u16 type, u16 dest);
+	void						u_EventSend					(CNetPacket& P);
 
-	virtual void				OnChatMessage				(NET_Packet* P)
+	virtual void				OnChatMessage				(CNetPacket* P)
 	{ }
-	virtual void				OnWarnMessage				(NET_Packet* P)
+	virtual void				OnWarnMessage				(CNetPacket* P)
 	{ }
-	virtual void				OnRadminMessage				(u16 type, NET_Packet* P)
+	virtual void				OnRadminMessage				(u16 type, CNetPacket* P)
 	{ }
 
 	virtual void				OnRender					( )

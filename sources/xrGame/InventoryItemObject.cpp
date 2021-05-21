@@ -70,7 +70,7 @@ void CInventoryItemObject::UpdateCL( )
 	CInventoryItem::UpdateCL( );
 }
 
-void CInventoryItemObject::OnEvent(NET_Packet& P, u16 type)
+void CInventoryItemObject::OnEvent(CNetPacket& P, u16 type)
 {
 	CPHItem::OnEvent(P, type);
 	CInventoryItem::OnEvent(P, type);
@@ -89,17 +89,17 @@ void CInventoryItemObject::net_Destroy( )
 	CPHItem::net_Destroy( );
 }
 
-void CInventoryItemObject::net_Import(NET_Packet& P)
+void CInventoryItemObject::net_Import(CNetPacket& P)
 {
 	CInventoryItem::net_Import(P);
 }
 
-void CInventoryItemObject::net_Export(NET_Packet& P)
+void CInventoryItemObject::net_Export(CNetPacket& P)
 {
 	CInventoryItem::net_Export(P);
 }
 
-void CInventoryItemObject::save(NET_Packet& packet)
+void CInventoryItemObject::save(CNetPacket& packet)
 {
 	CPHItem::save(packet);
 	CInventoryItem::save(packet);

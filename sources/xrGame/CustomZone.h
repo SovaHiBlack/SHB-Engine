@@ -47,8 +47,8 @@ public:
 	virtual				~CCustomZone					();
 
 	virtual		BOOL	net_Spawn						(CSE_Abstract* DC);
-	virtual		void	net_Import						(NET_Packet& P);
-	virtual		void	net_Export						(NET_Packet& P);
+	virtual		void	net_Import						(CNetPacket& P);
+	virtual		void	net_Export						(CNetPacket& P);
 	virtual		void	Load							(const char* section);
 	virtual		void	net_Destroy						();
 	
@@ -65,7 +65,7 @@ public:
 	virtual		float	distance_to_center				(CObject* O	);			
 	virtual		void	Postprocess						(float val)					{}
 	virtual		void	net_Relcase						(CObject* O	);
-	virtual		void	OnEvent							(NET_Packet& P, u16 type);
+	virtual		void	OnEvent							(CNetPacket& P, u16 type);
 				void	OnOwnershipTake					(u16 id);
 
 				float	GetMaxPower						()							{return m_fMaxPower;}

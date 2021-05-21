@@ -10,7 +10,7 @@
 
 #include "alife_simulator_base.h"
 
-class NET_Packet;
+class CNetPacket;
 
 class CALifeStorageManager : public virtual CALifeSimulatorBase {
 protected:
@@ -28,7 +28,7 @@ public:
 	virtual			~CALifeStorageManager	();
 			bool	load					(const char* save_name = 0);
 			void	save					(const char* save_name = 0, bool update_name = true);
-			void	save					(NET_Packet &net_packet);
+			void	save					(CNetPacket &net_packet);
 };
 
 #include "alife_storage_manager_inline.h"

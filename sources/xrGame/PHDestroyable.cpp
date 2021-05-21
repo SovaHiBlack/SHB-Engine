@@ -66,7 +66,7 @@ void CPHDestroyable::GenSpawnReplace(u16 ref_id, const char* section, shared_str
 	InitServerObject(D);
 	if (OnServer( ))
 	{
-		NET_Packet			P;
+		CNetPacket			P;
 		D->Spawn_Write(P, TRUE);
 		Level( ).Send(P, net_flags(TRUE));
 		// Destroy

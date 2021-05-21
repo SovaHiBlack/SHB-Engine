@@ -6,7 +6,7 @@
 
 #pragma pack(push,1)
 struct	game_PlayerState;//fw
-class	NET_Packet;
+class	CNetPacket;
 
 struct		RPoint
 {
@@ -91,8 +91,8 @@ public:
 			
 			s16		frags					() const {return m_iRivalKills - m_iSelfKills - m_iTeamKills;} 
 
-	virtual void	net_Export				(NET_Packet& P, BOOL Full = FALSE);
-	virtual void	net_Import				(NET_Packet& P);
+	virtual void	net_Export				(CNetPacket& P, BOOL Full = FALSE);
+	virtual void	net_Import				(CNetPacket& P);
 	//---------------------------------------
 	
 //	DEF_VECTOR(PLAYER_ITEMS_LIST, u16);

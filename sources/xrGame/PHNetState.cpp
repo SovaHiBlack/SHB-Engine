@@ -1,11 +1,11 @@
 #include "stdafx.h"
 
 #include "PHNetState.h"
-#include "../ENGINE/net_utils.h"
+#include "..\ENGINE\NetPacket.h"
 
-//////////////////////////////////////8/////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////
 
-static void w_vec_q8(NET_Packet& P, const Fvector3& vec, const Fvector3& min, const Fvector3& max)
+static void w_vec_q8(CNetPacket& P, const Fvector3& vec, const Fvector3& min, const Fvector3& max)
 {
 	P.w_float_q8(vec.x, min.x, max.x);
 	P.w_float_q8(vec.y, min.y, max.y);
@@ -24,7 +24,7 @@ static void r_vec_q8(src& P, Fvector3& vec, const Fvector3& min, const Fvector3&
 	clamp(vec.z, min.z, max.z);
 }
 
-static void w_qt_q8(NET_Packet& P, const Fquaternion& q)
+static void w_qt_q8(CNetPacket& P, const Fquaternion& q)
 {
 	//Fvector3 Q;
 	//Q.set(q.x,q.y,q.z);
@@ -71,13 +71,13 @@ static void r_qt_q8(src& P, Fquaternion& q)
 }
 
 /////////////////////////////////16////////////////////////////////////////////////////////////////
-static void w_vec_q16(NET_Packet& P, const Fvector3& vec, const Fvector3& min, const Fvector3& max)
+static void w_vec_q16(CNetPacket& P, const Fvector3& vec, const Fvector3& min, const Fvector3& max)
 {
 	P.w_float_q16(vec.x, min.x, max.x);
 	P.w_float_q16(vec.y, min.y, max.y);
 	P.w_float_q16(vec.z, min.z, max.z);
 }
-static void r_vec_q16(NET_Packet& P, Fvector3& vec, const Fvector3& min, const Fvector3& max)
+static void r_vec_q16(CNetPacket& P, Fvector3& vec, const Fvector3& min, const Fvector3& max)
 {
 	P.r_float_q16(vec.x, min.x, max.x);
 	P.r_float_q16(vec.y, min.y, max.y);
@@ -103,7 +103,7 @@ static void w_qt_q16(src& P, const Fquaternion& q)
 	P.w_float_q16(q.w, -1.f, 1.f);
 }
 
-static void r_qt_q16(NET_Packet& P, Fquaternion& q)
+static void r_qt_q16(CNetPacket& P, Fquaternion& q)
 {
 	// x^2 + y^2 + z^2 + w^2 = 1
 	//P.r_float_q16(q.x,-1.f,1.f);
@@ -125,7 +125,7 @@ static void r_qt_q16(NET_Packet& P, Fquaternion& q)
 }
 
 ///////////////////////////////////////////////////////////////////////////////////
-void	SPHNetState::net_Export(NET_Packet& P)
+void	SPHNetState::net_Export(CNetPacket& P)
 {
 	P.w_vec3(linear_vel);
 	//P.w_vec3(angular_vel);
@@ -150,7 +150,7 @@ void	SPHNetState::read(src& P)
 	enabled = !!P.r_u8( );
 }
 
-void	SPHNetState::net_Import(NET_Packet& P)
+void	SPHNetState::net_Import(CNetPacket& P)
 {
 	read(P);
 }
@@ -159,12 +159,12 @@ void SPHNetState::net_Import(IReader& P)
 	read(P);
 }
 
-void SPHNetState::net_Save(NET_Packet& P)
+void SPHNetState::net_Save(CNetPacket& P)
 {
 	net_Export(P);
 }
 
-void SPHNetState::net_Load(NET_Packet& P)
+void SPHNetState::net_Load(CNetPacket& P)
 {
 	net_Import(P);
 	previous_position.set(position);
@@ -174,7 +174,7 @@ void SPHNetState::net_Load(IReader& P)
 	net_Import(P);
 	previous_position.set(position);
 }
-void SPHNetState::net_Save(NET_Packet& P, const Fvector3& min, const Fvector3& max)
+void SPHNetState::net_Save(CNetPacket& P, const Fvector3& min, const Fvector3& max)
 {
 	//P.w_vec3(linear_vel);
 	//P.w_vec3(angular_vel);
@@ -202,7 +202,7 @@ void SPHNetState::read(src& P, const Fvector3& min, const Fvector3& max)
 	enabled = !!P.r_u8( );
 }
 
-void SPHNetState::net_Load(NET_Packet& P, const Fvector3& min, const Fvector3& max)
+void SPHNetState::net_Load(CNetPacket& P, const Fvector3& min, const Fvector3& max)
 {
 	VERIFY(!(fsimilar(min.x, max.x) && fsimilar(min.y, max.y) && fsimilar(min.z, max.z)));
 	read(P, min, max);
@@ -224,7 +224,7 @@ SPHBonesData::SPHBonesData( )
 	_mx.set(100.f, 100.f, 100.f);
 	set_min_max(_mn, _mx);
 }
-void SPHBonesData::net_Save(NET_Packet& P)
+void SPHBonesData::net_Save(CNetPacket& P)
 {
 	P.w_u64(bones_mask);
 	P.w_u16(root_bone);
@@ -243,7 +243,7 @@ void SPHBonesData::net_Save(NET_Packet& P)
 	//	bones.clear		();
 }
 
-void SPHBonesData::net_Load(NET_Packet& P)
+void SPHBonesData::net_Load(CNetPacket& P)
 {
 	bones.clear( );
 

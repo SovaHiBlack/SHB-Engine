@@ -126,7 +126,7 @@ void CWeaponRG6::FireStart ()
 
 		if (OnServer())
 		{
-			NET_Packet P;
+			CNetPacket P;
 			u_EventGen(P,GE_LAUNCH_ROCKET,ID());
 			P.w_u16(u16(getCurrentRocket()->ID()));
 			u_EventSend(P);
@@ -147,7 +147,7 @@ u8 CWeaponRG6::AddCartridge		(u8 cnt)
 	return k;
 }
 
-void CWeaponRG6::OnEvent(NET_Packet& P, u16 type) 
+void CWeaponRG6::OnEvent(CNetPacket& P, u16 type) 
 {
 	inheritedSG::OnEvent(P,type);
 

@@ -587,7 +587,7 @@ void CExplosive::HideExplosive( )
 	m_bAlreadyHidden = true;
 }
 
-void CExplosive::OnEvent(NET_Packet& P, u16 type)
+void CExplosive::OnEvent(CNetPacket& P, u16 type)
 {
 	switch (type)
 	{
@@ -627,7 +627,7 @@ void CExplosive::GenExplodeEvent(const Fvector3& pos, const Fvector3& normal)
 	VERIFY(!m_explosion_flags.test(flExplodEventSent));
 	VERIFY(0xffff != Initiator( ));
 
-	NET_Packet P;
+	CNetPacket P;
 	cast_game_object( )->u_EventGen(P, GE_GRENADE_EXPLODE, cast_game_object( )->ID( ));
 	P.w_u16(Initiator( ));
 	P.w_vec3(pos);
@@ -733,7 +733,7 @@ void CExplosive::ExplodeWaveProcessObject(collide::rq_results& storage, CPHShell
 		l_dir.y += m_fUpThrowFactor;
 		//rmag -модуль l_dir после l_dir.y += m_fUpThrowFactor, модуль=_sqrt(l_dir^2+y^2+2.*(l_dir,y)),y=(0,m_fUpThrowFactor,0) (до этого модуль l_dir =1)
 		l_dir.mul(1.0f / rmag);//перенормировка
-		NET_Packet P;
+		CNetPacket P;
 		SHit HS;
 		HS.GenHeader(GE_HIT, l_pGO->ID( ));
 		HS.whoID = Initiator( );

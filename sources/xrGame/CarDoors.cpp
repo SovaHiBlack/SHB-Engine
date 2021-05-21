@@ -9,7 +9,7 @@
 #include "hit.h"
 #include "PHDestroyable.h"
 #include "Car.h"
-#include "../ENGINE/net_utils.h"
+#include "..\ENGINE\NetPacket.h"
 #include "..\ENGINE\skeletoncustom.h"
 #include "MathUtils.h"
 #include "GameObject_space.h"
@@ -638,7 +638,7 @@ bool CCar::SDoor::CanEnter(const Fvector3& pos,const Fvector3& dir,const Fvector
 	return (state==opened || state == broken || !joint) && TestPass(foot_pos,dir)&& IsInArea(pos,dir);//
 }
 
-void CCar::SDoor::SaveNetState(NET_Packet& P)
+void CCar::SDoor::SaveNetState(CNetPacket& P)
 {
 	CSE_ALifeCar::SDoorState ds;
 	ds.health=Health();

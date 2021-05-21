@@ -525,7 +525,7 @@ bool CEntityCondition::IsLimping( ) const
 	return (m_fPower * GetHealth( ) <= m_limping_threshold);
 }
 
-void CEntityCondition::save(NET_Packet& output_packet)
+void CEntityCondition::save(CNetPacket& output_packet)
 {
 	u8 is_alive = (GetHealth( ) > 0.0f) ? 1 : 0;
 

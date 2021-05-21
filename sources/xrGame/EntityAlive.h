@@ -44,7 +44,7 @@ public:
 	virtual void			reload(const char* section);
 
 	//object serialization
-	virtual void			save(NET_Packet& output_packet);
+	virtual void			save(CNetPacket& output_packet);
 	virtual void			load(IReader& input_packet);
 
 	virtual BOOL			net_Spawn(CSE_Abstract* DC);

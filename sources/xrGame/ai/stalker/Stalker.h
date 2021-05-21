@@ -175,15 +175,15 @@ public:
 	virtual void						LoadSounds							(const char* section );
 	
 	virtual BOOL						net_Spawn							(CSE_Abstract* DC);
-	virtual void						net_Export							(NET_Packet& P);
-	virtual void						net_Import							(NET_Packet& P);
+	virtual void						net_Export							(CNetPacket& P);
+	virtual void						net_Import							(CNetPacket& P);
 	virtual void						net_Destroy							();
-	virtual void						net_Save							(NET_Packet& P);
+	virtual void						net_Save							(CNetPacket& P);
 	virtual	BOOL						net_SaveRelevant					();
 	virtual void						net_Relcase							(CObject*	 O);
 
 	//save/load server serialization
-	virtual void						save								(NET_Packet &output_packet);
+	virtual void						save								(CNetPacket &output_packet);
 	virtual void						load								(IReader &input_packet);
 
 	virtual void						UpdateCL							();
@@ -197,7 +197,7 @@ public:
 	virtual void						HitSignal							(float P, Fvector3& vLocalDir, CObject* who, s16 element);
 	virtual void						Die									(CObject* who);
 
-	virtual void						OnEvent								(NET_Packet& P, u16 type);
+	virtual void						OnEvent								(CNetPacket& P, u16 type);
 	virtual void						feel_touch_new						(CObject* O);
 
 	virtual void						renderable_Render					();

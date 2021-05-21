@@ -30,7 +30,7 @@ struct SHeliEnemy{
 	float							fStartFireTime;
 	void reinit						();
 	void Update						();
-	void save						(NET_Packet &output_packet);
+	void save						(CNetPacket &output_packet);
 	void load						(IReader &input_packet);
 	void Load						(const char* section);
 };
@@ -53,7 +53,7 @@ struct SHeliBodyState{
 	void		reinit				();
 	void		LookAtPoint			(Fvector3 point, bool do_it);
 
-	void save						(NET_Packet &output_packet);
+	void save						(CNetPacket &output_packet);
 	void load						(IReader &input_packet);
 	void Load						(const char* section);
 };
@@ -121,7 +121,7 @@ public:
 	void	SetDestPosition				(Fvector3* pos);
 	void	goPatrolByPatrolPath		(const char* path_name,int start_idx);
 	void	CreateRoundPoints			(Fvector3 center, float radius, float start_h, float end_h, xr_vector<STmpPt>& round_points);
-	void	save						(NET_Packet &output_packet);
+	void	save						(CNetPacket &output_packet);
 	void	load						(IReader &input_packet);
 	void	Load						(const char* section);
 	void	net_Destroy					();
@@ -267,22 +267,22 @@ public:
 
 	virtual BOOL					net_Spawn			(CSE_Abstract*		DC);
 	virtual void					net_Destroy			();
-	virtual void					net_Export			(NET_Packet &P){};
-	virtual void					net_Import			(NET_Packet &P){};
+	virtual void					net_Export			(CNetPacket &P){};
+	virtual void					net_Import			(CNetPacket &P){};
 	virtual void					net_Relcase			(CObject* O );
-	virtual void					save				(NET_Packet &output_packet);
+	virtual void					save				(CNetPacket &output_packet);
 	virtual void					load				(IReader &input_packet);
 
 	virtual void					SpawnInitPhysics	(CSE_Abstract	*D);
 	virtual CPHShellHolder*	PPhysicsShellHolder	()						{return PhysicsShellHolder();}
-	virtual void					net_Save			(NET_Packet& P);
+	virtual void					net_Save			(CNetPacket& P);
 	virtual	BOOL					net_SaveRelevant	()						{return (inherited::net_SaveRelevant() && BOOL(PPhysicsShell()!=NULL))||m_exploded;};					
 
 	virtual void					renderable_Render				()			{ inherited::renderable_Render();};
 	virtual BOOL					renderable_ShadowGenerate		()			{ return FALSE;	}
 	virtual BOOL					renderable_ShadowReceive		()			{ return TRUE;	}
 
-	virtual void					OnEvent				(NET_Packet& P, u16 type);
+	virtual void					OnEvent				(CNetPacket& P, u16 type);
 	virtual void					UpdateCL			();
 	virtual void					shedule_Update		(u32		time_delta);
 			void					MoveStep			();

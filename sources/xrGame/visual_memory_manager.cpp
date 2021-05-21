@@ -677,7 +677,7 @@ void CVisualMemoryManager::update				(float time_delta)
 	STOP_PROFILE
 }
 
-void CVisualMemoryManager::save	(NET_Packet &packet) const
+void CVisualMemoryManager::save	(CNetPacket &packet) const
 {
 	if (m_client)
 		return;

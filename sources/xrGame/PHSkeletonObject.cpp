@@ -76,7 +76,7 @@ void CPHSkeletonObject::shedule_Update(u32 dt)
 	CPHSkeleton::Update(dt);
 }
 
-void CPHSkeletonObject::net_Save(NET_Packet& P)
+void CPHSkeletonObject::net_Save(CNetPacket& P)
 {
 	inherited::net_Save(P);
 	CPHSkeleton::SaveNetState(P);

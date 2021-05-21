@@ -81,7 +81,7 @@ u32 CStalker::fill_items						(CInventory &inventory, CGameObject *old_owner, AL
 
 void CStalker::transfer_item					(CInventoryItem *item, CGameObject *old_owner, CGameObject *new_owner)
 {
-	NET_Packet			P;
+	CNetPacket			P;
 	CGameObject			*O = old_owner;
 	O->u_EventGen		(P,GE_TRADE_SELL,O->ID());
 	P.w_u16				(u16(item->object().ID()));
@@ -436,7 +436,7 @@ void CStalker::remove_personal_only_ammo			(const CInventoryItem *item)
 			if (xr_strcmp(*I,(*i)->object().cNameSect()))
 				continue;
 
-			NET_Packet		packet;
+			CNetPacket		packet;
 			u_EventGen		(packet,GE_DESTROY,(*i)->object().ID());
 			u_EventSend		(packet);
 		}

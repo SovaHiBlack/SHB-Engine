@@ -82,7 +82,7 @@ IClient* CServer::new_client(SClientConnectData* cl_data)
 	CL->name._set(new_name);
 	CL->pass._set(cl_data->pass);
 
-	NET_Packet P;
+	CNetPacket P;
 	P.B.count = 0;
 	P.r_pos = 0;
 

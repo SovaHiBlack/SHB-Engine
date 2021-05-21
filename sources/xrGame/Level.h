@@ -3,7 +3,7 @@
 #pragma once
 
 #include "..\ENGINE\IGameLevel.h"
-#include "../ENGINE/net_client.h"
+#include "..\ENGINE\NET_Client.h"
 #include "script_export_space.h"
 #include "..\ENGINE\StatGraph.h"//
 #include "Messages.h"
@@ -172,7 +172,7 @@ private:
 
 public:
 	void						OnBuildVersionChallenge( );
-	void						OnConnectResult(NET_Packet* P);
+	void						OnConnectResult(CNetPacket* P);
 
 	//////////////////////////////////////////////	
 	// static particles
@@ -217,7 +217,7 @@ protected:
 
 	bool xr_stdcall			net_start_finalizer( );
 
-	void						net_OnChangeSelfName(NET_Packet* P);
+	void						net_OnChangeSelfName(CNetPacket* P);
 
 public:
 	// sounds
@@ -243,8 +243,8 @@ public:
 	virtual void				OnEvent(EVENT E, u64 P1, u64 P2);
 	virtual void				OnFrame( );
 	virtual void				OnRender( );
-	void						cl_Process_Event(u16 dest, u16 type, NET_Packet& P);
-	void						cl_Process_Spawn(NET_Packet& P);
+	void						cl_Process_Event(u16 dest, u16 type, CNetPacket& P);
+	void						cl_Process_Spawn(CNetPacket& P);
 	void						ProcessGameEvents( );
 	void						ProcessGameSpawns( );
 
@@ -263,12 +263,12 @@ public:
 	int					get_RPID(const char* name);
 
 	// Game
-	void						InitializeClientGame(NET_Packet& P);
+	void						InitializeClientGame(CNetPacket& P);
 	void						ClientReceive( );
 	void						ClientSend( );
 	void						ClientSave( );
-	u32					Objects_net_Save(NET_Packet* _Packet, u32 start, u32 count);
-	virtual void				Send(NET_Packet& P, u32 dwFlags = DPNSEND_GUARANTEED, u32 dwTimeout = 0);
+	u32					Objects_net_Save(CNetPacket* _Packet, u32 start, u32 count);
+	virtual void				Send(CNetPacket& P, u32 dwFlags = DPNSEND_GUARANTEED, u32 dwTimeout = 0);
 
 	void						g_cl_Spawn(const char* name, u8 rp, u16 flags, Fvector3 pos);	// only ask server
 	void						g_sv_Spawn(CSE_Abstract* E);					// server reply/command spawning

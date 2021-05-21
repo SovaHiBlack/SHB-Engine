@@ -1,13 +1,13 @@
 #pragma once
 
-#include "../ENGINE/net_utils.h"
+#include "..\ENGINE\NetPacket.h"
 
 struct GameEvent
 {
 	u16			type;
 	u32			time;
 	ClientID	sender;
-	NET_Packet	P;
+	CNetPacket	P;
 };
 
 class GameEventQueue
@@ -21,7 +21,7 @@ public:
 	~GameEventQueue();
 
 	GameEvent*			Create	();
-	GameEvent*			Create	(NET_Packet& P, u16 type, u32 time, ClientID clientID);
+	GameEvent*			Create	(CNetPacket& P, u16 type, u32 time, ClientID clientID);
 	GameEvent*			Retreive();
 	void				Release	();
 };

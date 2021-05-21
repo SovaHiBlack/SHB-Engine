@@ -10,7 +10,7 @@
 
 class CSE_Abstract;
 class CScriptBinderObject;
-class NET_Packet;
+class CNetPacket;
 
 class CScriptBinder {
 protected:
@@ -27,7 +27,7 @@ public:
 	virtual BOOL				net_Spawn		(CSE_Abstract* DC);
 	virtual void				net_Destroy		();
 	virtual void				shedule_Update	(u32 time_delta);
-	virtual void				save			(NET_Packet &output_packet);
+	virtual void				save			(CNetPacket &output_packet);
 	virtual void				load			(IReader &input_packet);
 	virtual BOOL				net_SaveRelevant();
 	virtual void				net_Relcase		(CObject *object);

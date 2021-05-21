@@ -1,7 +1,7 @@
 #include "stdafx.h"
 
 #include "phantom.h"
-#include "../../../ENGINE/net_utils.h"
+#include "..\..\..\ENGINE\NetPacket.h"
 #include "..\..\Level.h"
 #include "../../xrServer_Objects_ALife_Monsters.h"
 #include "../../..\ENGINE\motion.h"
@@ -64,7 +64,7 @@ BOOL CPhantom::net_Spawn(CSE_Abstract* DC)
 		string256 tmp;
 		OBJ->set_visual	(_GetItem(visuals,Random.randI(cnt),tmp));
 		// inform server
-		NET_Packet		P;
+		CNetPacket		P;
 		u_EventGen		(P, GE_CHANGE_VISUAL, OBJ->ID);
 		P.w_stringZ		(tmp);
 		u_EventSend		(P);
@@ -304,7 +304,7 @@ void CPhantom::UpdatePosition(const Fvector3& tgt_pos)
 
 void CPhantom::PsyHit(const CObject *object, float value) 
 {
-	NET_Packet			P;
+	CNetPacket			P;
 	SHit				HS;
 	HS.GenHeader		(GE_HIT, object->ID());				//
 	HS.whoID			= (ID());					// own
@@ -322,7 +322,7 @@ void CPhantom::PsyHit(const CObject *object, float value)
 
 //---------------------------------------------------------------------
 // Core events
-void CPhantom::save(NET_Packet &output_packet)
+void CPhantom::save(CNetPacket &output_packet)
 {
 	output_packet.w_s32	(int(m_CurState));
 }
@@ -330,7 +330,7 @@ void CPhantom::load(IReader &input_packet)
 {
 	SwitchToState	(EState(input_packet.r_s32()));
 }
-void CPhantom::net_Export	(NET_Packet& P)					// export to server
+void CPhantom::net_Export	(CNetPacket& P)					// export to server
 {
 	// export 
 	R_ASSERT			(Local());
@@ -356,7 +356,7 @@ void CPhantom::net_Export	(NET_Packet& P)					// export to server
 	P.w_u8				(u8(g_Group()));
 }
 
-void CPhantom::net_Import	(NET_Packet& P)
+void CPhantom::net_Import	(CNetPacket& P)
 {
 	// import
 	R_ASSERT			(Remote());

@@ -385,13 +385,13 @@ void CCustomZone::net_Destroy()
 	m_ObjectInfoMap.clear();	
 }
 
-void CCustomZone::net_Import(NET_Packet& P)
+void CCustomZone::net_Import(CNetPacket& P)
 {
 	inherited::net_Import(P);
 //	P.r_u32				(m_owner_id);
 }
 
-void CCustomZone::net_Export(NET_Packet& P)
+void CCustomZone::net_Export(CNetPacket& P)
 {
 	inherited::net_Export(P);
 //	P.w_u32				(m_owner_id);
@@ -1053,7 +1053,7 @@ void  CCustomZone::OnMove()
      }
 }
 
-void	CCustomZone::OnEvent (NET_Packet& P, u16 type)
+void	CCustomZone::OnEvent (CNetPacket& P, u16 type)
 {	
 	switch (type)
 	{
@@ -1133,7 +1133,7 @@ void CCustomZone::SwitchZoneState(EZoneState new_state)
 	if (OnServer())
 	{
 		// !!! Just single entry for given state !!!
-		NET_Packet		P;
+		CNetPacket		P;
 		u_EventGen		(P,GE_ZONE_STATE_CHANGE,ID());
 		P.w_u8			(u8(new_state));
 		u_EventSend		(P);
@@ -1214,7 +1214,7 @@ void CCustomZone::BornArtefact()
 	if (Local())	{
 		if (pArtefact->H_Parent() && (pArtefact->H_Parent()->ID() == this->ID())  )	//. todo: need to remove on actual message parsing
 		{
-			NET_Packet						P;
+			CNetPacket						P;
 			u_EventGen						(P,GE_OWNERSHIP_REJECT,ID());
 			P.w_u16							(pArtefact->ID());
 			u_EventSend						(P);
@@ -1317,7 +1317,7 @@ void CCustomZone::CreateHit	(	u16 id_to,
 		if(m_owner_id != u32(-1) )
 			id_from	= (u16)m_owner_id;
 
-		NET_Packet	l_P;
+		CNetPacket	l_P;
 		Fvector3 hdir = hit_dir;
 		SHit	Hit = SHit(hit_power, hdir, this, bone_id, pos_in_bone, hit_impulse, hit_type);
 		Hit.GenHeader(GE_HIT, id_to);
@@ -1403,7 +1403,7 @@ void CCustomZone::UpdateOnOffState	()
 void CCustomZone::GoDisabledState()
 {
 	//switch to disable	
-	NET_Packet P;
+	CNetPacket P;
 	u_EventGen		(P,GE_ZONE_STATE_CHANGE,ID());
 	P.w_u8			(u8(eZoneStateDisabled));
 	u_EventSend		(P);
@@ -1421,7 +1421,7 @@ void CCustomZone::GoDisabledState()
 void CCustomZone::GoEnabledState()
 {
 		//switch to idle	
-		NET_Packet P;
+		CNetPacket P;
 		u_EventGen		(P,GE_ZONE_STATE_CHANGE,ID());
 		P.w_u8			(u8(eZoneStateIdle));
 		u_EventSend		(P);

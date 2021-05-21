@@ -10,7 +10,7 @@
 #include "script_binder_object_wrapper.h"
 #include "script_game_object.h"
 #include "xrServer_Objects_ALife.h"
-#include "../ENGINE/net_utils.h"
+#include "..\ENGINE\NetPacket.h"
 
 CScriptBinderObjectWrapper::CScriptBinderObjectWrapper	(CScriptGameObject *object) :
 	CScriptBinderObject	(object)
@@ -59,22 +59,22 @@ void CScriptBinderObjectWrapper::net_Destroy_static		(CScriptBinderObject *scrip
 	script_binder_object->CScriptBinderObject::net_Destroy();
 }
 
-void CScriptBinderObjectWrapper::net_Import				(NET_Packet *net_packet)
+void CScriptBinderObjectWrapper::net_Import				(CNetPacket *net_packet)
 {
 	luabind::call_member<void>		(this,"net_import",net_packet);
 }
 
-void CScriptBinderObjectWrapper::net_Import_static		(CScriptBinderObject *script_binder_object, NET_Packet *net_packet)
+void CScriptBinderObjectWrapper::net_Import_static		(CScriptBinderObject *script_binder_object, CNetPacket *net_packet)
 {
 	script_binder_object->CScriptBinderObject::net_Import	(net_packet);
 }
 
-void CScriptBinderObjectWrapper::net_Export				(NET_Packet *net_packet)
+void CScriptBinderObjectWrapper::net_Export				(CNetPacket *net_packet)
 {
 	luabind::call_member<void>		(this,"net_export",net_packet);
 }
 
-void CScriptBinderObjectWrapper::net_Export_static		(CScriptBinderObject *script_binder_object, NET_Packet *net_packet)
+void CScriptBinderObjectWrapper::net_Export_static		(CScriptBinderObject *script_binder_object, CNetPacket *net_packet)
 {
 	script_binder_object->CScriptBinderObject::net_Export	(net_packet);
 }
@@ -89,12 +89,12 @@ void CScriptBinderObjectWrapper::shedule_Update_static	(CScriptBinderObject *scr
 	script_binder_object->CScriptBinderObject::shedule_Update	(time_delta);
 }
 
-void CScriptBinderObjectWrapper::save					(NET_Packet *output_packet)
+void CScriptBinderObjectWrapper::save					(CNetPacket *output_packet)
 {
 	luabind::call_member<void>		(this,"save",output_packet);
 }
 
-void CScriptBinderObjectWrapper::save_static			(CScriptBinderObject *script_binder_object, NET_Packet *output_packet)
+void CScriptBinderObjectWrapper::save_static			(CScriptBinderObject *script_binder_object, CNetPacket *output_packet)
 {
 	script_binder_object->CScriptBinderObject::save		(output_packet);
 }

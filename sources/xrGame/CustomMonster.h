@@ -148,8 +148,8 @@ public:
 	virtual void		UpdateCL				( );
 
 	// Network
-	virtual void		net_Export				(NET_Packet& P);				// export to server
-	virtual void		net_Import				(NET_Packet& P);				// import from server
+	virtual void		net_Export				(CNetPacket& P);				// export to server
+	virtual void		net_Import				(CNetPacket& P);				// import from server
 	virtual void		net_Relcase				(CObject*	 O);
 
 	virtual void		SelectAnimation			( const Fvector3& _view, const Fvector3& _move, float speed ) = 0;
@@ -176,7 +176,7 @@ public:
 	virtual	Feel::Sound*		dcast_FeelSound			()			{ return this;	}
 	virtual	void				Hit						(SHit* pHDS);
 
-	virtual void				OnEvent					( NET_Packet& P, u16 type		);
+	virtual void				OnEvent					( CNetPacket& P, u16 type		);
 	virtual void				net_Destroy				();
 	virtual BOOL				UsedAI_Locations		();
 	///////////////////////////////////////////////////////////////////////
@@ -197,7 +197,7 @@ public:
 	}
 	virtual	void				PitchCorrection			();
 
-	virtual void				save					(NET_Packet &output_packet);
+	virtual void				save					(CNetPacket &output_packet);
 	virtual void				load					(IReader &input_packet);
 	virtual BOOL				net_SaveRelevant		()							{return inherited::net_SaveRelevant();}
 	

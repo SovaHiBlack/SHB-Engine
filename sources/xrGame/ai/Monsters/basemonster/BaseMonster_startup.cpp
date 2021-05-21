@@ -206,7 +206,7 @@ BOOL CBaseMonster::net_Spawn (CSE_Abstract* DC)
 //				alife_object->m_flags.set	(CSE_ALifeObject::flCanSave,FALSE);
 //
 //			{
-//				NET_Packet				P;
+//				CNetPacket				P;
 //				object->Spawn_Write		(P,TRUE);
 //				Level().Send			(P,net_flags(TRUE));
 //				F_entity_Destroy		(object);

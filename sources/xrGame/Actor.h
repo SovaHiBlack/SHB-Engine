@@ -120,7 +120,7 @@ public:
 	virtual void						shedule_Update(u32 T);
 	virtual void						UpdateCL( );
 
-	virtual void						OnEvent(NET_Packet& P, u16 type);
+	virtual void						OnEvent(CNetPacket& P, u16 type);
 
 	// Render
 	virtual void						renderable_Render( );
@@ -209,7 +209,7 @@ public:
 	virtual void OnItemDrop(CInventoryItem* inventory_item);
 	virtual void OnItemDropUpdate( );
 
-	virtual void OnPlayHeadShotParticle(NET_Packet P);
+	virtual void OnPlayHeadShotParticle(CNetPacket P);
 
 	virtual void						Die(CObject* who);
 	virtual void						Hit(SHit* pHDS);
@@ -589,16 +589,16 @@ protected:
 
 public:
 	virtual BOOL						net_Spawn(CSE_Abstract* DC);
-	virtual void						net_Export(NET_Packet& P);				// export to server
-	virtual void						net_Import(NET_Packet& P);				// import from server
+	virtual void						net_Export(CNetPacket& P);				// export to server
+	virtual void						net_Import(CNetPacket& P);				// import from server
 	virtual void						net_Destroy( );
 	virtual BOOL						net_Relevant( );//	{ return getSVU() | getLocal(); };		// relevant for export to server
 	virtual void						net_Relcase(CObject* O);					//
 	virtual void xr_stdcall				on_requested_spawn(CObject* object);
 	//object serialization
-	virtual void						save(NET_Packet& output_packet);
+	virtual void						save(CNetPacket& output_packet);
 	virtual void						load(IReader& input_packet);
-	virtual void						net_Save(NET_Packet& P);
+	virtual void						net_Save(CNetPacket& P);
 	virtual BOOL						net_SaveRelevant( );
 
 protected:
@@ -609,8 +609,8 @@ protected:
 	u32						NET_Time;				// server time of last update
 
 	//---------------------------------------------
-	void					net_Import_Base(NET_Packet& P);
-	void					net_Import_Physic(NET_Packet& P);
+	void					net_Import_Base(CNetPacket& P);
+	void					net_Import_Physic(CNetPacket& P);
 	void					net_Import_Base_proceed( );
 	void					net_Import_Physic_proceed( );
 	//---------------------------------------------
@@ -656,7 +656,7 @@ protected:
 	using PH_STATES = xr_deque<SPHNetState>;
 	PH_STATES				m_States;
 	u16						m_u16NumBones;
-	void					net_ExportDeadBody(NET_Packet& P);
+	void					net_ExportDeadBody(CNetPacket& P);
 	//---------------------------------------------
 	void					CalculateInterpolationParams( );
 	//---------------------------------------------

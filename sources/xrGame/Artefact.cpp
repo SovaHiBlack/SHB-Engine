@@ -480,7 +480,7 @@ void CArtefact::OnAnimationEnd(u32 state)
 			if (Local( ))
 			{
 				SwitchState(eHiding);
-				NET_Packet		P;
+				CNetPacket		P;
 				u_EventGen(P, GEG_PLAYER_ACTIVATEARTEFACT, H_Parent( )->ID( ));
 				P.w_u16(ID( ));
 				u_EventSend(P);
@@ -534,7 +534,7 @@ void SArtefactActivation::Start( )
 
 	m_af->processing_activate( );
 
-	NET_Packet P;
+	CNetPacket P;
 	CGameObject::u_EventGen(P, GE_OWNERSHIP_REJECT, m_af->H_Parent( )->ID( ));
 	P.w_u16(m_af->ID( ));
 	if (OnServer( ))
@@ -668,7 +668,7 @@ void SArtefactActivation::SpawnAnomaly( )
 	AlifeZone->m_owner_id = m_owner_id;
 	AlifeZone->m_space_restrictor_type = RestrictionSpace::eRestrictorTypeNone;
 
-	NET_Packet					P;
+	CNetPacket					P;
 	object->Spawn_Write(P, TRUE);
 	Level( ).Send(P, net_flags(TRUE));
 	F_entity_Destroy(object);

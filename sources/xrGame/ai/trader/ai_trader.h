@@ -49,11 +49,11 @@ public:
 	virtual DLL_Pure	*_construct		();
 	virtual void		Load			(const char* section );
 	virtual BOOL		net_Spawn		( CSE_Abstract* DC );
-	virtual void		net_Export		(NET_Packet& P);
-	virtual void		net_Import		(NET_Packet& P);
+	virtual void		net_Export		(CNetPacket& P);
+	virtual void		net_Import		(CNetPacket& P);
 	virtual void		net_Destroy		();
 
-	virtual void		save			(NET_Packet &output_packet);
+	virtual void		save			(CNetPacket &output_packet);
 	virtual void		load			(IReader &input_packet);
 	virtual BOOL		net_SaveRelevant()							{return inherited::net_SaveRelevant();}
 
@@ -68,7 +68,7 @@ public:
 	virtual void		g_WeaponBones			(int &L, int &R1, int &R2);
 	virtual float		ffGetFov				()	const {return 150.f;}
 	virtual float		ffGetRange				()	const {return 30.f;}
-	virtual void		OnEvent					(NET_Packet& P, u16 type);
+	virtual void		OnEvent					(CNetPacket& P, u16 type);
 	virtual void		feel_touch_new			(CObject* O);
 	virtual void		DropItemSendMessage		(CObject *O);
 	virtual void		shedule_Update			(u32 dt);

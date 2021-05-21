@@ -10,7 +10,7 @@ void CServer::Perform_game_export	()
 	// Broadcase game state to every body
 	// But it is slightly different view for each "player"
 
-	NET_Packet		P;
+	CNetPacket		P;
 	u32				mode			= net_flags(TRUE,TRUE);
 
 	// Game config (all, info includes _new_ player)
@@ -31,7 +31,7 @@ void CServer::Perform_game_export	()
 
 void CServer::Export_game_type(IClient* CL)
 {
-	NET_Packet			P;
+	CNetPacket			P;
 	u32					mode = net_flags(TRUE,TRUE);
 	csPlayers.Enter		();
 

@@ -8,7 +8,7 @@
 
 xr_vector<u16> g_perform_spawn_ids;
 
-void CServer::Perform_connect_spawn(CSE_Abstract* E, xrClientData* CL, NET_Packet& P)
+void CServer::Perform_connect_spawn(CSE_Abstract* E, xrClientData* CL, CNetPacket& P)
 {
 	xr_vector<u16>::iterator it = std::find(g_perform_spawn_ids.begin( ), g_perform_spawn_ids.end( ), E->ID);
 	if (it != g_perform_spawn_ids.end( ))
@@ -69,7 +69,7 @@ void CServer::SendConnectionData(IClient* _CL)
 {
 	g_perform_spawn_ids.clear_not_free( );
 	xrClientData* CL = (xrClientData*) _CL;
-	NET_Packet		P;
+	CNetPacket		P;
 	u32			mode = net_flags(TRUE, TRUE);
 	// Replicate current entities on to this client
 	xrS_entities::iterator	I = entities.begin( ), E = entities.end( );
@@ -101,7 +101,7 @@ void CServer::OnCL_Connected(IClient* _CL)
 	SendConnectionData(CL);
 
 	//
-	NET_Packet P;
+	CNetPacket P;
 	P.B.count = 0;
 	P.w_clientID(CL->ID);
 	P.r_pos = 0;
@@ -113,7 +113,7 @@ void CServer::OnCL_Connected(IClient* _CL)
 
 void CServer::SendConnectResult(IClient* CL, u8 res, u8 res1, char* ResultStr)
 {
-	NET_Packet	P;
+	CNetPacket	P;
 	P.w_begin(M_CLIENT_CONNECT_RESULT);
 	P.w_u8(res);
 	P.w_u8(res1);
@@ -153,7 +153,7 @@ bool CServer::NeedToCheckClient_BuildVersion(IClient* CL)
 
 	if (g_SV_Disable_Auth_Check) return false;
 	CL->flags.bVerified = FALSE;
-	NET_Packet	P;
+	CNetPacket	P;
 	P.w_begin(M_AUTH_CHALLENGE);
 	SendTo(CL->ID, P);
 	return true;
@@ -161,7 +161,7 @@ bool CServer::NeedToCheckClient_BuildVersion(IClient* CL)
 //#endif
 }
 
-void CServer::OnBuildVersionRespond(IClient* CL, NET_Packet& P)
+void CServer::OnBuildVersionRespond(IClient* CL, CNetPacket& P)
 {
 	u16 Type;
 	P.r_begin(Type);

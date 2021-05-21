@@ -1,6 +1,6 @@
 #pragma once
 
-class NET_Packet;
+class CNetPacket;
 
 struct SPHNetState
 {
@@ -21,14 +21,14 @@ struct SPHNetState
 	};
 	Fquaternion	previous_quaternion;
 	bool		enabled;
-	void								net_Export(NET_Packet& P);
-	void								net_Import(NET_Packet& P);
+	void								net_Export(CNetPacket& P);
+	void								net_Import(CNetPacket& P);
 	void								net_Import(IReader& P);
-	void								net_Save(NET_Packet& P);
-	void								net_Load(NET_Packet& P);
+	void								net_Save(CNetPacket& P);
+	void								net_Load(CNetPacket& P);
 	void								net_Load(IReader& P);
-	void								net_Save(NET_Packet& P, const Fvector3& min, const Fvector3& max);
-	void								net_Load(NET_Packet& P, const Fvector3& min, const Fvector3& max);
+	void								net_Save(CNetPacket& P, const Fvector3& min, const Fvector3& max);
+	void								net_Load(CNetPacket& P, const Fvector3& min, const Fvector3& max);
 	void								net_Load(IReader& P, const Fvector3& min, const Fvector3& max);
 
 private:
@@ -52,8 +52,8 @@ struct SPHBonesData
 
 public:
 	SPHBonesData( );
-	void								net_Save(NET_Packet& P);
-	void								net_Load(NET_Packet& P);
+	void								net_Save(CNetPacket& P);
+	void								net_Load(CNetPacket& P);
 	void								net_Load(IReader& P);
 	void								set_min_max(const Fvector3& _min, const Fvector3& _max);
 	const Fvector3& get_min( ) const

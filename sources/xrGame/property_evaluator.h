@@ -35,7 +35,7 @@ public:
 	virtual	_value_type			evaluate			();
 	inline		const _value_type	&property			(const _condition_type &condition_id) const;
 
-	virtual	void				save				(NET_Packet &packet) {}
+	virtual	void				save				(CNetPacket &packet) {}
 	virtual	void				load				(IReader &packet) {}
 
 public:

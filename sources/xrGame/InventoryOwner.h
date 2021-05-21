@@ -19,7 +19,7 @@ class CGameObject;
 class CEntityAlive;
 class CCustomZone;
 class CInfoPortionWrapper;
-class NET_Packet;
+class CNetPacket;
 class CCharacterInfo;
 class CSpecificCharacter;
 class CTradeParameters;
@@ -45,10 +45,10 @@ public:
 	virtual void		Load(const char* section);
 	virtual void		reinit( );
 	virtual void		reload(const char* section);
-	virtual void		OnEvent(NET_Packet& P, u16 type);
+	virtual void		OnEvent(CNetPacket& P, u16 type);
 
 	//serialization
-	virtual void	save(NET_Packet& output_packet);
+	virtual void	save(CNetPacket& output_packet);
 	virtual void	load(IReader& input_packet);
 
 	//обновление

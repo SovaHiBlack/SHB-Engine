@@ -11,7 +11,7 @@
 #include "Messages.h"
 #include "ui/UIInventoryUtilities.h"//
 #include "xrTime.h"
-#include "../ENGINE/net_utils.h"
+#include "..\ENGINE\NetPacket.h"
 #include "ui/UIGameTutorial.h"//
 #include "StringTable.h"
 #include "object_broker.h"

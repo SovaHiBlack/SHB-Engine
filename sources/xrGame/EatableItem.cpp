@@ -2,7 +2,7 @@
 
 #include "EatableItem.h"
 #include "Messages.h"
-#include "../ENGINE/net_utils.h"
+#include "..\ENGINE\NetPacket.h"
 #include "PHItem.h"
 #include "Level.h"
 #include "EntityAlive.h"

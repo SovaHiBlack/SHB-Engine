@@ -21,7 +21,7 @@ xr_string CServer::ent_name_safe(u16 eid)
 	return buff;
 }
 
-void CServer::Process_event_destroy	(NET_Packet& P, ClientID sender, u32 time, u16 ID, NET_Packet* pEPack)
+void CServer::Process_event_destroy	(CNetPacket& P, ClientID sender, u32 time, u16 ID, CNetPacket* pEPack)
 {
 	u32								MODE = net_flags(TRUE,TRUE);
 	// Parse message
@@ -47,7 +47,7 @@ void CServer::Process_event_destroy	(NET_Packet& P, ClientID sender, u32 time, u
 	u16								parent_id = e_dest->ID_Parent;
 
 	//---------------------------------------------
-	NET_Packet	P2, *pEventPack = pEPack;
+	CNetPacket	P2, *pEventPack = pEPack;
 	P2.w_begin	(M_EVENT_PACK);
 	//---------------------------------------------
 	// check if we have children 
@@ -64,7 +64,7 @@ void CServer::Process_event_destroy	(NET_Packet& P, ClientID sender, u32 time, u
 	}
 	else
 	{
-		NET_Packet	tmpP;
+		CNetPacket	tmpP;
 		if (0xffff != parent_id && Process_event_reject(P,sender,time,parent_id,ID,false)) 
 		{
 			game->u_EventGen(tmpP, GE_OWNERSHIP_REJECT, parent_id);

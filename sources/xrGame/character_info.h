@@ -6,7 +6,7 @@
 #include "shared_data.h"
 #include "XML_IdToIndex.h"
 
-class NET_Packet;
+class CNetPacket;
 
 #include "SpecificCharacter.h"
 #include "PhraseDialog_defs.h"
@@ -55,7 +55,7 @@ public:
 	virtual void Load	(shared_str id);
 
 	void 						load				(IReader&);
-	void 						save				(NET_Packet&);
+	void 						save				(CNetPacket&);
 
 	//инициализация профиля подразумевает
 	//загрузку соответствующего CSpecificCharacter, по 

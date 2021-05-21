@@ -80,7 +80,7 @@ public:
 	inline		CStalker			&stalker					() const;
 
 public:
-			void				save						(NET_Packet &packet) const;
+			void				save						(CNetPacket &packet) const;
 			void				load						(IReader &packet);
 			void xr_stdcall		on_requested_spawn			(CObject *object);
 };

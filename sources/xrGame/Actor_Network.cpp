@@ -124,7 +124,7 @@ void CActor::ConvState(u32 mstate_rl, string128* buf)
 	}
 }
 //--------------------------------------------------------------------
-void CActor::net_Export(NET_Packet& P)					// export to server
+void CActor::net_Export(CNetPacket& P)					// export to server
 {
 	//CSE_ALifeCreatureAbstract
 	u8 flags = 0;
@@ -189,14 +189,14 @@ void CActor::net_Export(NET_Packet& P)					// export to server
 	}
 }
 
-static void w_vec_q8(NET_Packet& P, const Fvector3& vec, const Fvector3& min, const Fvector3& max)
+static void w_vec_q8(CNetPacket& P, const Fvector3& vec, const Fvector3& min, const Fvector3& max)
 {
 	P.w_float_q8(vec.x, min.x, max.x);
 	P.w_float_q8(vec.y, min.y, max.y);
 	P.w_float_q8(vec.z, min.z, max.z);
 }
 
-static void r_vec_q8(NET_Packet& P, Fvector3& vec, const Fvector3& min, const Fvector3& max)
+static void r_vec_q8(CNetPacket& P, Fvector3& vec, const Fvector3& min, const Fvector3& max)
 {
 	P.r_float_q8(vec.x, min.x, max.x);
 	P.r_float_q8(vec.y, min.y, max.y);
@@ -207,7 +207,7 @@ static void r_vec_q8(NET_Packet& P, Fvector3& vec, const Fvector3& min, const Fv
 	clamp(vec.z, min.z, max.z);
 }
 
-static void w_qt_q8(NET_Packet& P, const Fquaternion& q)
+static void w_qt_q8(CNetPacket& P, const Fquaternion& q)
 {
 	P.w_float_q8(q.x, -1.f, 1.f);
 	P.w_float_q8(q.y, -1.f, 1.f);
@@ -215,7 +215,7 @@ static void w_qt_q8(NET_Packet& P, const Fquaternion& q)
 	P.w_float_q8(q.w, -1.f, 1.f);
 }
 
-static void r_qt_q8(NET_Packet& P, Fquaternion& q)
+static void r_qt_q8(CNetPacket& P, Fquaternion& q)
 {
 	P.r_float_q8(q.x, -1.f, 1.f);
 	P.r_float_q8(q.y, -1.f, 1.f);
@@ -272,7 +272,7 @@ static void	UpdateLimits(Fvector3& p, Fvector3& min, Fvector3& max)
 	}
 }
 
-void CActor::net_ExportDeadBody(NET_Packet& P)
+void CActor::net_ExportDeadBody(CNetPacket& P)
 {
 	/////////////////////////////
 	Fvector3 min;
@@ -315,7 +315,7 @@ void CActor::net_ExportDeadBody(NET_Packet& P)
 	}
 }
 
-void CActor::net_Import(NET_Packet& P)					// import from server
+void CActor::net_Import(CNetPacket& P)					// import from server
 {
 	//-----------------------------------------------
 	net_Import_Base(P);
@@ -331,7 +331,7 @@ void CActor::net_Import(NET_Packet& P)					// import from server
 	//-----------------------------------------------
 }
 
-void CActor::net_Import_Base(NET_Packet& P)
+void CActor::net_Import_Base(CNetPacket& P)
 {
 	net_update N;
 
@@ -449,7 +449,7 @@ void CActor::net_Import_Base_proceed( )
 	net_update N = NET.back( );
 }
 
-void CActor::net_Import_Physic(NET_Packet& P)
+void CActor::net_Import_Physic(CNetPacket& P)
 {
 	m_States.clear( );
 	if (m_u16NumBones != 1)
@@ -1355,7 +1355,7 @@ void CActor::make_Interpolation( )
 
 }
 
-void CActor::save(NET_Packet& output_packet)
+void CActor::save(CNetPacket& output_packet)
 {
 	inherited::save(output_packet);
 	CInventoryOwner::save(output_packet);
@@ -1727,7 +1727,7 @@ void CActor::OnRender_Network( )
 					UpdateLimits(px, min, max);
 				}
 
-				NET_Packet PX;
+				CNetPacket PX;
 				for (u16 i = 0; i < NumBones; i++)
 				{
 					SPHNetState state;
@@ -1771,7 +1771,7 @@ void CActor::OnRender_Network( )
 
 #endif
 
-void CActor::net_Save(NET_Packet& P)
+void CActor::net_Save(CNetPacket& P)
 {
 #ifdef DEBUG
 	u32					pos;
@@ -1818,7 +1818,7 @@ void CActor::SetHitInfo(CObject* who, CObject* weapon, s16 element, Fvector3 Pos
 	m_vLastHitPos = Pos;
 }
 
-void CActor::OnPlayHeadShotParticle(NET_Packet P)
+void CActor::OnPlayHeadShotParticle(CNetPacket P)
 {
 	Fvector3 HitDir;
 	Fvector3 HitPos;

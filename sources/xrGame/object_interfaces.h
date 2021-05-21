@@ -8,7 +8,7 @@
 
 #pragma once
 
-class NET_Packet;
+class CNetPacket;
 
 class IPureDestroyableObject {
 public:
@@ -34,10 +34,10 @@ public:
 
 class IPureServerObject : public IPureSerializeObject<IReader,IWriter> {
 public:
-	virtual void					STATE_Write	(NET_Packet &tNetPacket)				= 0;
-	virtual void					STATE_Read	(NET_Packet &tNetPacket, u16 size)		= 0;
-	virtual void					UPDATE_Write(NET_Packet &tNetPacket)				= 0;
-	virtual void					UPDATE_Read	(NET_Packet &tNetPacket)				= 0;
+	virtual void					STATE_Write	(CNetPacket &tNetPacket)				= 0;
+	virtual void					STATE_Read	(CNetPacket &tNetPacket, u16 size)		= 0;
+	virtual void					UPDATE_Write(CNetPacket &tNetPacket)				= 0;
+	virtual void					UPDATE_Read	(CNetPacket &tNetPacket)				= 0;
 };
 
 class IPureSchedulableObject {

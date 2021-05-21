@@ -285,7 +285,7 @@ void CStalker::Die				(CObject* who)
 			if (std::find(weapon->m_ammoTypes.begin(),weapon->m_ammoTypes.end(),(*I)->object().cNameSect()) == weapon->m_ammoTypes.end())
 				continue;
 
-			NET_Packet				packet;
+			CNetPacket				packet;
 			u_EventGen				(packet,GE_DESTROY,(*I)->object().ID());
 			u_EventSend				(packet);
 		}
@@ -436,7 +436,7 @@ void CStalker::net_Destroy()
 	xr_delete						(m_boneHitProtection);
 }
 
-void CStalker::net_Save			(NET_Packet& P)
+void CStalker::net_Save			(CNetPacket& P)
 {
 	inherited::net_Save(P);
 	m_pPhysics_support->in_NetSave(P);
@@ -447,7 +447,7 @@ BOOL CStalker::net_SaveRelevant	()
 	return (inherited::net_SaveRelevant() || BOOL(PPhysicsShell()!=NULL));
 }
 
-void CStalker::net_Export		(NET_Packet& P)
+void CStalker::net_Export		(CNetPacket& P)
 {
 	R_ASSERT						(Local());
 
@@ -486,7 +486,7 @@ void CStalker::net_Export		(NET_Packet& P)
 	P.w_stringZ						(m_sStartDialog);
 }
 
-void CStalker::net_Import		(NET_Packet& P)
+void CStalker::net_Import		(CNetPacket& P)
 {
 	R_ASSERT						(Remote());
 	net_update						N;
@@ -967,7 +967,7 @@ bool CStalker::can_attach			(const CInventoryItem *inventory_item) const
 	return								(CObjectHandler::can_attach(inventory_item));
 }
 
-void CStalker::save (NET_Packet &packet)
+void CStalker::save (CNetPacket &packet)
 {
 	inherited::save			(packet);
 	CInventoryOwner::save	(packet);

@@ -76,7 +76,7 @@ public:
 	inline		void 				set_weight			(const _edge_value_type &weight);
 	inline		bool				first_time			() const;
 
-	virtual	void				save				(NET_Packet &packet) {}
+	virtual	void				save				(CNetPacket &packet) {}
 	virtual	void				load				(IReader &packet) {}
 
 public:

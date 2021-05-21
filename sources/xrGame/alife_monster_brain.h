@@ -16,7 +16,7 @@
 class CSE_ALifeMonsterAbstract;
 class CALifeMonsterMovementManager;
 class CSE_ALifeSmartZone;
-class NET_Packet;
+class CNetPacket;
 
 class CALifeMonsterBrain {
 public:
@@ -47,8 +47,8 @@ public:
 	virtual								~CALifeMonsterBrain		();
 
 public:
-			void						on_state_write			(NET_Packet &packet);
-			void						on_state_read			(NET_Packet &packet);
+			void						on_state_write			(CNetPacket &packet);
+			void						on_state_read			(CNetPacket &packet);
 			void						on_register				();
 			void						on_unregister			();
 			void						on_location_change		();

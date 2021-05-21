@@ -441,9 +441,6 @@
     <ClInclude Include="RenderDevice.h">
       <Filter>Render\Execution &amp; 3D</Filter>
     </ClInclude>
-    <ClInclude Include="client_id.h">
-      <Filter>NET</Filter>
-    </ClInclude>
     <ClInclude Include="NET_Client.h">
       <Filter>NET</Filter>
     </ClInclude>
@@ -454,9 +451,6 @@
       <Filter>NET</Filter>
     </ClInclude>
     <ClInclude Include="NET_Shared.h">
-      <Filter>NET</Filter>
-    </ClInclude>
-    <ClInclude Include="NET_utils.h">
       <Filter>NET</Filter>
     </ClInclude>
     <ClInclude Include="GammaControl.h">
@@ -503,6 +497,12 @@
     </ClInclude>
     <ClInclude Include="Camera_defs.h">
       <Filter>Game API\Cameras</Filter>
+    </ClInclude>
+    <ClInclude Include="ClientID.h">
+      <Filter>NET</Filter>
+    </ClInclude>
+    <ClInclude Include="NetPacket.h">
+      <Filter>NET</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

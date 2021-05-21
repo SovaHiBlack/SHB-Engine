@@ -12,9 +12,9 @@
 #include "object_interfaces.h"
 #include "script_value_container.h"
 #include "alife_space.h"
-#include "../../ENGINE/client_id.h"
+#include "..\ENGINE\ClientID.h"
 
-class NET_Packet;
+class CNetPacket;
 class xrClientData;
 class CSE_ALifeGroupAbstract;
 class CSE_ALifeSchedulable;
@@ -42,8 +42,8 @@ virtual							~CPureServerObject( )
 { }
 virtual void					load(IReader& tFileStream);
 virtual void					save(IWriter& tMemoryStream);
-virtual void					load(NET_Packet& tNetPacket);
-virtual void					save(NET_Packet& tNetPacket);
+virtual void					load(CNetPacket& tNetPacket);
+virtual void					save(CNetPacket& tNetPacket);
 };
 add_to_type_list(CPureServerObject)
 #define script_type_list save_type_list(CPureServerObject)
@@ -101,13 +101,13 @@ public:
 
 	//client object custom data serialization
 	xr_vector<u8>					client_data;
-	virtual void					load(NET_Packet& tNetPacket);
+	virtual void					load(CNetPacket& tNetPacket);
 
 	//////////////////////////////////////////////////////////////////////////
 
 	CSE_Abstract(const char* caSection);
 	virtual							~CSE_Abstract( );
-	virtual void					OnEvent(NET_Packet& tNetPacket, u16 type, u32 time, ClientID sender)
+	virtual void					OnEvent(CNetPacket& tNetPacket, u16 type, u32 time, ClientID sender)
 	{ }
 	virtual void					FillProps(const char* pref, PropItemVec& items);
 	virtual BOOL					Net_Relevant( )
@@ -115,8 +115,8 @@ public:
 		return TRUE;
 	}
 //
-	virtual void		__stdcall	Spawn_Write(NET_Packet& tNetPacket, BOOL bLocal);
-	virtual BOOL		__stdcall	Spawn_Read(NET_Packet& tNetPacket);
+	virtual void		__stdcall	Spawn_Write(CNetPacket& tNetPacket, BOOL bLocal);
+	virtual BOOL		__stdcall	Spawn_Read(CNetPacket& tNetPacket);
 	virtual void		__stdcall	FillProp(const char* pref, PropItemVec& items);
 	virtual const char* __stdcall	name( ) const;
 	virtual const char* __stdcall	name_replace( ) const;

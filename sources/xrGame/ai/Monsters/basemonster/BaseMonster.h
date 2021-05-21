@@ -110,14 +110,14 @@ public:
 
 	virtual BOOL						net_Spawn										(CSE_Abstract* DC);
 	virtual void						net_Destroy										( );
-	virtual void						net_Save										(NET_Packet& P);
+	virtual void						net_Save										(CNetPacket& P);
 	virtual BOOL						net_SaveRelevant								( );
-	virtual void						net_Export										(NET_Packet& P);
-	virtual void						net_Import										(NET_Packet& P);
+	virtual void						net_Export										(CNetPacket& P);
+	virtual void						net_Import										(CNetPacket& P);
 	virtual void						net_Relcase										(CObject* O);
 
 	//save/load server serialization
-	virtual void						save											(NET_Packet& output_packet)
+	virtual void						save											(CNetPacket& output_packet)
 	{
 		inherited::save(output_packet);
 	}
@@ -146,7 +146,7 @@ public:
 	virtual bool						useful											(const CItemManager* manager, const CGameObject* object) const;
 	virtual float						evaluate										(const CItemManager* manager, const CGameObject* object) const;
 
-	virtual void						OnEvent											(NET_Packet& P, u16 type);
+	virtual void						OnEvent											(CNetPacket& P, u16 type);
 	virtual void						OnHUDDraw										(CCustomHUD* hud)
 	{
 		return inherited::OnHUDDraw(hud);

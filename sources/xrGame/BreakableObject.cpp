@@ -6,7 +6,7 @@
 #include "PhysicsShell.h"
 #include "Physics.h"
 #include "..\ENGINE\xr_collide_form.h"
-#include "../ENGINE/net_utils.h"
+#include "..\ENGINE\NetPacket.h"
 #include "clsid_game.h"
 #include "..\ENGINE\skeletoncustom.h"
 
@@ -93,12 +93,12 @@ void	CBreakableObject::Hit(SHit* pHDS)
 	}
 }
 
-void CBreakableObject::net_Export(NET_Packet& P)
+void CBreakableObject::net_Export(CNetPacket& P)
 {
 	VERIFY(Local( ));
 }
 
-void CBreakableObject::net_Import(NET_Packet& P)
+void CBreakableObject::net_Import(CNetPacket& P)
 {
 	VERIFY(Remote( ));
 }
@@ -231,7 +231,7 @@ void CBreakableObject::Break( )
 void CBreakableObject::SendDestroy( )
 {
 	if (Local( ))	DestroyObject( );
-//	NET_Packet		P;
+//	CNetPacket		P;
 //	u_EventGen		(P,GE_DESTROY,ID());
 //	Msg				("ge_destroy: [%d] - %s",ID(),*cName());
 //	if (Local())	u_EventSend			(P);
@@ -284,7 +284,7 @@ void CBreakableObject::ObjectContactCallback(bool&/**do_colide/**/, bool bo1, dC
 
 void CBreakableObject::ProcessDamage( )
 {
-	NET_Packet			P;
+	CNetPacket			P;
 	SHit				HS;
 	HS.GenHeader(GE_HIT, ID( ));
 	HS.whoID = (ID( ));

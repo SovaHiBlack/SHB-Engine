@@ -20,7 +20,7 @@
 #include "InfoPortion.h"
 #include "memory_manager.h"
 #include "AI_PhraseDialogManager.h"
-#include "../ENGINE/net_utils.h"
+#include "..\ENGINE\NetPacket.h"
 #include "Messages.h"
 #include "custommonster.h"
 #include "memory_manager.h"
@@ -142,7 +142,7 @@ void CScriptGameObject::play_cycle(const char* anim)
 void CScriptGameObject::Hit(CScriptHit *tpLuaHit)
 {
 	CScriptHit		&tLuaHit = *tpLuaHit;
-	NET_Packet		P;
+	CNetPacket		P;
 	SHit			HS;
 	HS.GenHeader(GE_HIT,object().ID());
 	THROW2			(tLuaHit.m_tpDraftsman,"Where is hit initiator??!");

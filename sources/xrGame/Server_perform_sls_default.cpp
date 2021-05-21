@@ -26,7 +26,7 @@ void CServer::SLS_Default	()
 	string_path				fn_spawn;
 	if (FS.exist(fn_spawn, "$level$", "level.spawn")) {
 		IReader*			SP		= FS.r_open(fn_spawn);
-		NET_Packet			P;
+		CNetPacket			P;
 		u32					S_id;
 		for (IReader *S = SP->open_chunk_iterator(S_id); S; S = SP->open_chunk_iterator(S_id,S)) {
 			P.B.count		= S->length();
@@ -63,7 +63,7 @@ void CServer::SLS_Default	()
 	_actor->o_Position		= Fvector3().set(0.f,0.f,0.f);
 	_actor->set_name_replace("designer");
 	_actor->s_flags.flags	|= M_SPAWN_OBJECT_ASPLAYER;
-	NET_Packet				packet;
+	CNetPacket				packet;
 	packet.w_begin			(M_SPAWN);
 	_actor->Spawn_Write		(packet,TRUE);
 

@@ -188,25 +188,25 @@ public:
 		virtual							~CSE_ALifeGroupTemplate( )
 		{ 	}
 
-		virtual void STATE_Read(NET_Packet& tNetPacket, u16 size)
+		virtual void STATE_Read(CNetPacket& tNetPacket, u16 size)
 		{
 			inherited1::STATE_Read(tNetPacket, size);
 			inherited2::STATE_Read(tNetPacket, size);
 		}
 
-		virtual void STATE_Write(NET_Packet& tNetPacket)
+		virtual void STATE_Write(CNetPacket& tNetPacket)
 		{
 			inherited1::STATE_Write(tNetPacket);
 			inherited2::STATE_Write(tNetPacket);
 		}
 
-		virtual void UPDATE_Read(NET_Packet& tNetPacket)
+		virtual void UPDATE_Read(CNetPacket& tNetPacket)
 		{
 			inherited1::UPDATE_Read(tNetPacket);
 			inherited2::UPDATE_Read(tNetPacket);
 		}
 
-		virtual void UPDATE_Write(NET_Packet& tNetPacket)
+		virtual void UPDATE_Write(CNetPacket& tNetPacket)
 		{
 			inherited1::UPDATE_Write(tNetPacket);
 			inherited2::UPDATE_Write(tNetPacket);
@@ -319,7 +319,7 @@ public:
 	virtual							~CSE_ALifePHSkeletonObject( );
 	virtual bool					can_save( ) const;
 	virtual bool					used_ai_locations( ) const;
-	virtual	void					load(NET_Packet& tNetPacket);
+	virtual	void					load(CNetPacket& tNetPacket);
 	virtual CSE_Abstract* cast_abstract( )
 	{
 		return this;
@@ -416,7 +416,7 @@ public:
 	virtual 						~CSE_ALifeObjectPhysic( );
 	virtual bool					used_ai_locations( ) const;
 	virtual bool					can_save( ) const;
-	virtual	void					load(NET_Packet& tNetPacket);
+	virtual	void					load(CNetPacket& tNetPacket);
 	virtual CSE_Abstract* cast_abstract( )
 	{
 		return this;
@@ -469,7 +469,7 @@ public:
 
 	CSE_ALifeObjectHangingLamp(const char* caSection);
 	virtual							~CSE_ALifeObjectHangingLamp( );
-	virtual	void					load(NET_Packet& tNetPacket);
+	virtual	void					load(CNetPacket& tNetPacket);
 	virtual bool					used_ai_locations( ) const;
 	virtual bool					match_configuration( ) const;
 	virtual bool		__stdcall	validate( );
@@ -494,7 +494,7 @@ public:
 		shared_str							engine_sound;
 	CSE_ALifeHelicopter(const char* caSection);
 	virtual							~CSE_ALifeHelicopter( );
-	virtual	void					load(NET_Packet& tNetPacket);
+	virtual	void					load(CNetPacket& tNetPacket);
 	virtual bool					can_save( ) const;
 	virtual bool					used_ai_locations( ) const;
 	virtual CSE_Motion* __stdcall	motion( );
@@ -510,15 +510,15 @@ public:
 		SERVER_ENTITY_DECLARE_BEGIN2(CSE_ALifeCar, CSE_ALifeDynamicObjectVisual, CSE_PHSkeleton)
 		struct SDoorState
 	{
-		void read(NET_Packet& P);
-		void write(NET_Packet& P);
+		void read(CNetPacket& P);
+		void write(CNetPacket& P);
 		u8 open_state;
 		float health;
 	};
 	struct SWheelState
 	{
-		void read(NET_Packet& P);
-		void write(NET_Packet& P);
+		void read(CNetPacket& P);
+		void write(CNetPacket& P);
 		float health;
 	};
 	xr_vector<SDoorState>			door_states;
@@ -527,15 +527,15 @@ public:
 	CSE_ALifeCar(const char* caSection);
 	virtual							~CSE_ALifeCar( );
 	virtual bool					used_ai_locations( ) const;
-	virtual	void					load(NET_Packet& tNetPacket);
+	virtual	void					load(CNetPacket& tNetPacket);
 	virtual bool					can_save( ) const;
 	virtual CSE_Abstract* cast_abstract( )
 	{
 		return this;
 	}
 protected:
-	virtual void					data_load(NET_Packet& tNetPacket);
-	virtual void					data_save(NET_Packet& tNetPacket);
+	virtual void					data_load(CNetPacket& tNetPacket);
+	virtual void					data_save(CNetPacket& tNetPacket);
 	SERVER_ENTITY_DECLARE_END
 		add_to_type_list(CSE_ALifeCar)
 #define script_type_list save_type_list(CSE_ALifeCar)

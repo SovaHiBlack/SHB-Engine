@@ -151,7 +151,7 @@ void CALifeUpdateManager::init_ef_storage() const
 	ai().ef_storage().alife_evaluation(true);
 }
 
-bool CALifeUpdateManager::change_level	(NET_Packet &net_packet)
+bool CALifeUpdateManager::change_level	(CNetPacket &net_packet)
 {
 	if (m_changing_level)
 		return						(false);
@@ -352,7 +352,7 @@ void CALifeUpdateManager::jump_to_level			(const char* level_name) const
 	}
 	else
 		dest							= (GameGraph::_GRAPH_ID)evaluator.selected_vertex_id();
-	NET_Packet							net_packet;
+	CNetPacket							net_packet;
 	net_packet.w_begin					(M_CHANGE_LEVEL);
 	net_packet.w						(&dest,sizeof(dest));
 	

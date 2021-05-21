@@ -205,7 +205,7 @@ void CUICarBodyWnd::InitCarBody(CInventoryOwner* pOur, CInventoryOwner* pOthers)
 		KNOWN_INFO_VECTOR_IT it = known_info.begin( );
 		for (int i = 0; it != known_info.end( ); ++it, ++i)
 		{
-			NET_Packet P;
+			CNetPacket P;
 			CGameObject::u_EventGen(P, GE_INFO_TRANSFER, our_id);
 			P.w_u16(0);							//not used
 			P.w_stringZ((*it).info_id);			//сообщение
@@ -498,7 +498,7 @@ void CUICarBodyWnd::EatItem( )
 				  CurrentIItem( )->object( ).ID( ));
 	}
 
-	NET_Packet P;
+	CNetPacket P;
 	CGameObject::u_EventGen(P, GEG_PLAYER_ITEM_EAT, Actor( )->ID( ));
 	P.w_u16(CurrentIItem( )->object( ).ID( ));
 	CGameObject::u_EventSend(P);
@@ -590,7 +590,7 @@ bool CUICarBodyWnd::OnItemRButtonClick(CUICellItem* itm)
 
 void move_item(u16 from_id, u16 to_id, u16 what_id)
 {
-	NET_Packet P;
+	CNetPacket P;
 
 	CGameObject::u_EventGen(P, GE_OWNERSHIP_REJECT, from_id);
 	P.w_u16(what_id);

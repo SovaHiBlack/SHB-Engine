@@ -42,7 +42,7 @@ GameEvent*		GameEventQueue::Create	()
 	return	ge;
 }
 
-GameEvent*		GameEventQueue::Create	(NET_Packet& P, u16 type, u32 time, ClientID clientID)
+GameEvent*		GameEventQueue::Create	(CNetPacket& P, u16 type, u32 time, ClientID clientID)
 {
 	GameEvent*	ge			= 0;
 	cs.Enter		();
@@ -61,7 +61,7 @@ GameEvent*		GameEventQueue::Create	(NET_Packet& P, u16 type, u32 time, ClientID 
 		unused.pop_back		();
 		ge					= ready.back	();
 	}
-	CopyMemory	(&(ge->P),&P,sizeof(NET_Packet));
+	CopyMemory	(&(ge->P),&P,sizeof(CNetPacket));
 	ge->sender	= clientID;
 	ge->time	= time;
 	ge->type	= type;

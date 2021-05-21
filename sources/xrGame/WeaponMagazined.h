@@ -105,8 +105,8 @@ public:
 
 	virtual void				UpdateCL( );
 	virtual void				net_Destroy( );
-	virtual void				net_Export(NET_Packet& P);
-	virtual void				net_Import(NET_Packet& P);
+	virtual void				net_Export(CNetPacket& P);
+	virtual void				net_Import(CNetPacket& P);
 
 	virtual void				OnH_A_Chield( );
 
@@ -191,7 +191,7 @@ public:
 		return m_sCurFireMode;
 	}
 
-	virtual void				save(NET_Packet& output_packet);
+	virtual void				save(CNetPacket& output_packet);
 	virtual void				load(IReader& input_packet);
 
 protected:

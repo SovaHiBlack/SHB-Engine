@@ -9,9 +9,9 @@
 #pragma once
 
 #include "script_export_space.h"
-class NET_Packet;
+class CNetPacket;
 
-typedef class_exporter<NET_Packet> CScriptNetPacket;
+typedef class_exporter<CNetPacket> CScriptNetPacket;
 
 add_to_type_list(CScriptNetPacket)
 #undef script_type_list

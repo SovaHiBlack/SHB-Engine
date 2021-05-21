@@ -147,7 +147,7 @@ void CScriptBinder::shedule_Update	(u32 time_delta)
 	}
 }
 
-void CScriptBinder::save			(NET_Packet &output_packet)
+void CScriptBinder::save			(CNetPacket &output_packet)
 {
 	if (m_object) {
 		try {

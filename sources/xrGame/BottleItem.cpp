@@ -4,7 +4,7 @@
 
 #include "BottleItem.h"
 #include "Messages.h"
-#include "../ENGINE/net_utils.h"
+#include "..\ENGINE\NetPacket.h"
 #include "EntityAlive.h"
 #include "EntityCondition.h"
 
@@ -35,7 +35,7 @@ void CBottleItem::Load(const char* section)
 	m_alcohol = READ_IF_EXISTS(pSettings, r_float, section, "eat_alcohol", 0.0f);
 }
 
-void CBottleItem::OnEvent(NET_Packet& P, unsigned short type)
+void CBottleItem::OnEvent(CNetPacket& P, unsigned short type)
 {
 	inherited::OnEvent(P, type);
 
@@ -58,7 +58,7 @@ void CBottleItem::Hit(SHit* pHDS)
 		// Generate Expode event
 		if (Local( ))
 		{
-			NET_Packet P;
+			CNetPacket P;
 			u_EventGen(P, GE_GRENADE_EXPLODE, ID( ));
 			u_EventSend(P);
 		}

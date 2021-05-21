@@ -223,7 +223,7 @@ void SHeliMovementState::goPatrolByPatrolPath (const char* path_name, int start_
 	type = eMovPatrolPath;
 }
 
-void SHeliMovementState::save(NET_Packet &output_packet)
+void SHeliMovementState::save(CNetPacket &output_packet)
 {
 	output_packet.w_s16		((s16)type);
 	output_packet.w_u32		(patrol_begin_idx);

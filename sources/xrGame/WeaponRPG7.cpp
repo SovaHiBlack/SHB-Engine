@@ -137,7 +137,7 @@ void CWeaponRPG7::switch2_Fire	()
 
 		if (OnServer())
 		{
-			NET_Packet						P;
+			CNetPacket						P;
 			u_EventGen						(P,GE_LAUNCH_ROCKET,ID());
 			P.w_u16							(u16(getCurrentRocket()->ID()));
 			u_EventSend						(P);
@@ -145,7 +145,7 @@ void CWeaponRPG7::switch2_Fire	()
 	}
 }
 
-void CWeaponRPG7::OnEvent(NET_Packet& P, u16 type) 
+void CWeaponRPG7::OnEvent(CNetPacket& P, u16 type) 
 {
 	inherited::OnEvent(P,type);
 	u16 id;
@@ -164,7 +164,7 @@ void CWeaponRPG7::OnEvent(NET_Packet& P, u16 type)
 	}
 }
 
-void CWeaponRPG7::net_Import( NET_Packet& P)
+void CWeaponRPG7::net_Import( CNetPacket& P)
 {
 	inherited::net_Import		(P);
 	UpdateMissileVisibility		();

@@ -318,7 +318,7 @@ float CPHShellHolder::EffectiveGravity( )
 	return ph_world->Gravity( );
 }
 
-void CPHShellHolder::save(NET_Packet& output_packet)
+void CPHShellHolder::save(CNetPacket& output_packet)
 {
 	inherited::save(output_packet);
 	u8 enable_state = (u8) stNotDefitnite;
@@ -336,7 +336,7 @@ void CPHShellHolder::load(IReader& input_packet)
 	st_enable_state = input_packet.r_u8( );
 }
 
-void CPHShellHolder::PHSaveState(NET_Packet& P)
+void CPHShellHolder::PHSaveState(CNetPacket& P)
 {
 	//CPhysicsShell* pPhysicsShell=PPhysicsShell();
 	CKinematics* K = smart_cast<CKinematics*>(Visual( ));

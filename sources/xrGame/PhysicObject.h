@@ -32,7 +32,7 @@ public:
 	virtual void						Load(const char* section);
 	virtual void						shedule_Update(u32 dt);	//
 	virtual void						UpdateCL( );
-	virtual void						net_Save(NET_Packet& P);
+	virtual void						net_Save(CNetPacket& P);
 	virtual BOOL						net_SaveRelevant( );
 	virtual BOOL						UsedAI_Locations( );
 	virtual SCollisionHitCallback* get_collision_hit_callback( );

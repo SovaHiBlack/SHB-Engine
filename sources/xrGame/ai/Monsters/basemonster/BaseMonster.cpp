@@ -574,7 +574,7 @@ bool CBaseMonster::check_start_conditions(ControlCom::EControlType type)
 	return true;
 }
 
-void CBaseMonster::OnEvent(NET_Packet& P, u16 type)
+void CBaseMonster::OnEvent(CNetPacket& P, u16 type)
 {
 	inherited::OnEvent(P, type);
 	CInventoryOwner::OnEvent(P, type);

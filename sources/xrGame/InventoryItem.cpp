@@ -229,7 +229,7 @@ void CInventoryItem::UpdateCL()
 
 }
 
-void CInventoryItem::OnEvent (NET_Packet& P, u16 type)
+void CInventoryItem::OnEvent (CNetPacket& P, u16 type)
 {
 	switch (type)
 	{
@@ -305,7 +305,7 @@ bool CInventoryItem::Detach(const char* item_section_name, bool b_spawn_item)
 		D->s_flags.assign	(M_SPAWN_OBJECT_LOCAL);
 		D->RespawnTime		=	0;
 		// Send
-		NET_Packet			P;
+		CNetPacket			P;
 		D->Spawn_Write		(P,TRUE);
 		Level().Send		(P,net_flags(TRUE));
 		// Destroy
@@ -347,7 +347,7 @@ void CInventoryItem::net_Destroy		()
 //.	m_pCurrentInventory = NULL;
 }
 
-void CInventoryItem::save(NET_Packet &packet)
+void CInventoryItem::save(CNetPacket &packet)
 {
 	packet.w_u8				((u8)m_eItemPlace);
 	packet.w_float			(m_fCondition);
@@ -364,7 +364,7 @@ void CInventoryItem::save(NET_Packet &packet)
 
 typedef CSE_ALifeInventoryItem::mask_num_items	mask_num_items;
 
-void CInventoryItem::net_Import			(NET_Packet& P) 
+void CInventoryItem::net_Import			(CNetPacket& P) 
 {	
 	u8							NumItems = 0;
 	NumItems					= P.r_u8();
@@ -427,7 +427,7 @@ void CInventoryItem::net_Import			(NET_Packet& P)
 	}
 };
 
-void CInventoryItem::net_Export			(NET_Packet& P) 
+void CInventoryItem::net_Export			(CNetPacket& P) 
 {	
 	P.w_u8				(0);
 }

@@ -258,7 +258,7 @@ void CHitMemoryManager::remove_links	(CObject *object)
 
 }
 
-void CHitMemoryManager::save	(NET_Packet &packet) const
+void CHitMemoryManager::save	(CNetPacket &packet) const
 {
 	if (!m_object->g_Alive())
 		return;

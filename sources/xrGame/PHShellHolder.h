@@ -125,7 +125,7 @@ public:
 	virtual void			PHSetLinearVell(Fvector3& velocity);
 	virtual void			PHSetMaterial(const char* m);
 	virtual void			PHSetMaterial(u16 m);
-	void					PHSaveState(NET_Packet& P);
+	void					PHSaveState(CNetPacket& P);
 	void					PHLoadState(IReader& P);
 	virtual float			GetMass( );
 	virtual	void			PHHit(float P, Fvector3& dir, CObject* who, s16 element, Fvector3 p_in_object_space, float impulse, ALife::EHitType hit_type = ALife::eHitTypeWound);
@@ -144,7 +144,7 @@ public:
 
 	virtual void			net_Destroy( );
 	virtual BOOL			net_Spawn(CSE_Abstract* DC);
-	virtual void			save(NET_Packet& output_packet);
+	virtual void			save(CNetPacket& output_packet);
 	virtual void			load(IReader& input_packet);
 	void					init( );
 
