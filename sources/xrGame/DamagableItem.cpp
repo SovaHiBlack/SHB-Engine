@@ -36,7 +36,7 @@ void CDamagableItem::RestoreEffect( )
 
 float CDamagableItem::DamageLevelToHealth(u16 dl)
 {
-	return				m_max_health * (float(m_levels_num - dl) / m_levels_num);
+	return m_max_health * (float(m_levels_num - dl) / m_levels_num);
 }
 
 u16 CDamagableItem::DamageLevel( )

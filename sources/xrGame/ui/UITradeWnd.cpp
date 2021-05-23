@@ -2,26 +2,17 @@
 
 #include "UITradeWnd.h"//
 
-//#include "xrUIXmlParser.h"//
 #include "UIXmlInit.h"//
-
-//#include "../Entity.h"
-#include "../HUDManager.h"//
-//#include "..\WeaponAmmo.h"
+#include "..\HUDManager.h"//
 #include "..\Actor.h"
 #include "..\Trade.h"
 #include "UIGameSP.h"//
 #include "UIInventoryUtilities.h"//
-//#include "../inventoryowner.h"
-//#include "../EatableItem.h"
 #include "..\Inventory.h"
-//#include "..\Level.h"
 #include "..\StringTable.h"
-//#include "../character_info.h"
 #include "UIMultiTextStatic.h"//
 #include "UI3tButton.h"//
 #include "UIItemInfo.h"//
-
 #include "UICharacterInfo.h"//
 #include "UIDragDropListEx.h"//
 #include "UICellItem.h"//

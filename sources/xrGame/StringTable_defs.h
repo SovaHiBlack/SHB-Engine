@@ -1,4 +1,4 @@
 #pragma once
 
-typedef shared_str	STRING_ID;
-typedef shared_str	STRING_VALUE;
+using STRING_ID		= shared_str;
+using STRING_VALUE	= shared_str;

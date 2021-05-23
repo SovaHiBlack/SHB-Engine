@@ -1,13 +1,8 @@
 #include "stdafx.h"
 
-//#include "PHDynamicData.h"
 #include "Physics.h"
 #include "tri-colliderknoopc/dTriList.h"
-//#include "PHContactBodyEffector.h"
 #include "gamemtllib.h"
-//#include "GameObject.h"
-//#include "PHShellHolder.h"
-//#include "PHCollideValidator.h"
 
 #ifdef DEBUG
 #	include "PHDebug.h"

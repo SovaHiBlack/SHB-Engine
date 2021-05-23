@@ -130,7 +130,7 @@ STRING_VALUE CStringTable::ParseLine(const char* str, const char* skey, bool bFi
 		k += LEN;
 		k += 2;
 		b_hit = true;
-	};
+	}
 
 	if (k < (int) xr_strlen(str))
 	{
