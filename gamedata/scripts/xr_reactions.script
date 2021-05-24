@@ -116,13 +116,13 @@ function reset_reactions(npc, scheme, st, section)
 	local reac_section = utils.cfg_get_string(st.ini, section, "reactions", npc, false, "")
 
 	xr_reactions.reset_rules(npc)
-    if reac_section ~= nil then
-    	local i = 1
-        while st.ini:line_exist(reac_section, "rule_"..i) == true do
+	if reac_section ~= nil then
+		local i = 1
+		while st.ini:line_exist(reac_section, "rule_"..i) == true do
 			xr_reactions.add_rule(npc, st.ini:r_string(reac_section, "rule_"..i))
-            i = i + 1
-        end
-    end	
+			i = i + 1
+		end
+	end	
 end
 
 

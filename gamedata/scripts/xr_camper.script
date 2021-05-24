@@ -3,8 +3,6 @@
 --'	автор: Диденко Руслан (Stohe)
 --'	TODO: 
 ----------------------------------------------------------------------------------------------------------------------
-function printf()
-end
 
 ----------------------------------------------------------------------------------------------------------------------
 -- EVALUATORS
@@ -139,16 +137,16 @@ function action_patrol:reset_scheme()
 	self.a.scan_begin = nil
 end
 function action_patrol:activate_scheme()
-    self:reset_scheme()
+	self:reset_scheme()
 end
 function action_patrol:can_shoot()
-    if self.a.shoot == "always" then
+	if self.a.shoot == "always" then
 		return true
 	end
-    if self.a.shoot == "none" then
+	if self.a.shoot == "none" then
 		return false
 	end
-    if self.a.shoot == "terminal" then
+	if self.a.shoot == "terminal" then
 		if self.move_mgr:standing_on_terminal_waypoint() then
 			return true
 		else
@@ -471,7 +469,7 @@ function action_patrol:finalize()
 	action_base.finalize (self)
 end
 function action_patrol:on_place()
-    if self.a.no_retreat == true then return false end
+	if self.a.no_retreat == true then return false end
 	
 	local path = patrol(self.a.path_walk)
 	if path ~= nil then
@@ -496,10 +494,10 @@ end
 -- BINDER
 ----------------------------------------------------------------------------------------------------------------------
 function add_to_binder(object, ini, scheme, section, storage)
-  		local operators	= {}
-	  	local properties  = {}
+		local operators	= {}
+		local properties  = {}
 		
-	   	local manager = object:motivation_action_manager()
+		local manager = object:motivation_action_manager()
 
 		operators["patrol"]			= xr_actions_id.stohe_camper_base + 1
 	
@@ -547,7 +545,7 @@ function set_scheme(npc, ini, scheme, section, gulag_name)
 	
 	st.radius = utils.cfg_get_number(ini, section, "radius", npc, false, 20)
 	st.suggested_state = {}
-    st.suggested_state.standing = utils.cfg_get_string(ini, section, "def_state_standing", npc, false, "")
+	st.suggested_state.standing = utils.cfg_get_string(ini, section, "def_state_standing", npc, false, "")
 	st.suggested_state.moving = utils.cfg_get_string(ini, section, "def_state_moving", npc, false, "")
 	st.suggested_state.moving1 = st.suggested_state.moving
 	st.suggested_state.moving2 = st.suggested_state.moving

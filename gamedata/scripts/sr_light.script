@@ -20,7 +20,7 @@ function action_light:__init (obj, storage)
 	self.id = obj:id()
 end
 function action_light:reset_scheme()
-    light_zones[self.id] = self
+	light_zones[self.id] = self
 end
 function action_light:update(delta)
 	local actor = db.actor
@@ -34,10 +34,10 @@ function action_light:update(delta)
 	self.active = true
 end
 function action_light:check_stalker(stalker)
-    if self.active == false then 
-       return false, false
-    end
-    
+	if self.active == false then 
+	   return false, false
+	end
+	
 	if self.object:inside(stalker:position()) then
 		return self.st.light, true
 	end
@@ -63,15 +63,15 @@ end
 ---------------------------------------------------------------------------------------------------------------------
 function check_light(stalker)
 	--'printf("[check_light %s] start", stalker:name())
-    if stalker == nil then 
-       return 
-    end
+	if stalker == nil then 
+	   return 
+	end
 
 	--'printf("[check_light %s] start_passed", stalker:name())
-    local torch = stalker:object("device_torch")
-    if torch == nil then
-       return
-    end
+	local torch = stalker:object("device_torch")
+	if torch == nil then
+	   return
+	end
 
 	--'printf("[check_light %s] torch_passed", stalker:name())
 	local light = false
@@ -83,14 +83,14 @@ function check_light(stalker)
 	end
 
 	--'printf("[check_light %s] alive_passed: light=%s, forced=%s", stalker:name(), tostring(light), tostring(forced))
-    --' Проверка по лайтзонам
-    if not forced then
-	    for k,v in pairs(light_zones) do
+	--' Проверка по лайтзонам
+	if not forced then
+		for k,v in pairs(light_zones) do
 			light, forced = v:check_stalker(stalker)
 			if forced == true then
 				break
 			end
-	    end
+		end
 	end
 
 	--'printf("[check_light %s] lightzone_passed: light=%s, forced=%s", stalker:name(), tostring(light), tostring(forced))

@@ -3,8 +3,6 @@
 --	автор: Диденко Руслан (Stohe)
 --	TODO: 
 ----------------------------------------------------------------------------------------------------------------------
-function printf()
-end
 
 aim_ratio = 1000/50
 min_ratio = 1500
@@ -481,14 +479,14 @@ function bind_manager(object)
 	action = manager:action(xr_actions_id.alife)
 	action:add_precondition(world_property(properties["state_mgr_idle_alife"],true))
 
-  	action = manager:action(stalker_ids.action_combat_planner)
-  	action:add_precondition(world_property(properties["state_mgr_idle_combat"],true))
+	action = manager:action(stalker_ids.action_combat_planner)
+	action:add_precondition(world_property(properties["state_mgr_idle_combat"],true))
 
-  	action = manager:action(stalker_ids.action_anomaly_planner)
-  	action:add_precondition(world_property(properties["state_mgr_idle_combat"],true))
-  	
-  	action = manager:action(stalker_ids.action_danger_planner)
-  	action:add_precondition(world_property(properties["state_mgr_idle_combat"],true))
+	action = manager:action(stalker_ids.action_anomaly_planner)
+	action:add_precondition(world_property(properties["state_mgr_idle_combat"],true))
+	
+	action = manager:action(stalker_ids.action_danger_planner)
+	action:add_precondition(world_property(properties["state_mgr_idle_combat"],true))
 
 	action = manager:action(stalker_ids.action_gather_items)
 	action:add_precondition(world_property(properties["state_mgr_idle_alife"],true))

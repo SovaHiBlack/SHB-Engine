@@ -3,8 +3,6 @@
 --	автор: Диденко Руслан (Stohe)
 --	TODO: 
 ----------------------------------------------------------------------------------------------------------------------
---function printf()
---end
 
 --' Сам менеджер
 function goap_graph(st, npc)
@@ -262,7 +260,7 @@ function goap_graph(st, npc)
 	action:add_precondition    (world_property(st.properties["weapon"],                 true))
 	action:add_precondition    (world_property(st.properties["animation_none_now"],     true))
 	action:add_precondition    (world_property(st.properties["animstate_idle_now"],     true))
-    action:add_precondition    (world_property(st.properties["movement"],               true))
+	action:add_precondition    (world_property(st.properties["movement"],               true))
 	action:add_effect    (world_property(st.properties["direction"],                true))
 	st.planner:add_action(st.operators["direction_turn"], action)
 
@@ -273,7 +271,7 @@ function goap_graph(st, npc)
 	action:add_precondition    (world_property(st.properties["weapon"],                 true))
 	action:add_precondition    (world_property(st.properties["animation_none_now"],     true))
 	action:add_precondition    (world_property(st.properties["animstate_idle_now"],     true))
-    action:add_precondition    (world_property(st.properties["movement"],               true))
+	action:add_precondition    (world_property(st.properties["movement"],               true))
 	action:add_effect    (world_property(st.properties["direction"],                true))
 	st.planner:add_action(st.operators["direction_search"], action)
 

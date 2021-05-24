@@ -14,11 +14,11 @@ function PPEffector:__init (id_number, host) super (id_number, 10000000)
 end
 -------------------
 function PPEffector:process (pp)
-    self.host:update_params ()
+	self.host:update_params ()
 	pp:assign (self.params)
-    effector.process (self, pp)
-    
-    return true
+	effector.process (self, pp)
+	
+	return true
 end
 -------------------
 
@@ -33,7 +33,7 @@ function action_postprocess:__init (obj, storage)
 end
 -------------------
 function action_postprocess:reset_scheme ()
-    self.actor_inside = false
+	self.actor_inside = false
 -- ----------------------------------------------------------------------------------------
 -- postprocess
 -- ----------------------------------------------------------------------------------------
@@ -64,31 +64,31 @@ end
 -------------------
 function action_postprocess:deactivate()
 	if self.state == state_inside then
-       self.pp:finish 	    ()
+	   self.pp:finish 	    ()
 	   level.set_snd_volume (self.snd_volume)
 	   self:zone_leave      ()
 	end
 end
 -------------------
 function action_postprocess:update_params ()
-    
+	
 	local c_time = (time_global () - self.old_time) * 0.001
 	self.old_time = time_global ()
 	
 	if self.actor_inside == true then
 	   self.intensity = self.intensity + self.intensity_inertion * c_time
 	   if self.intensity_base < 0.0 then
-	      if self.intensity < self.intensity_base then self.intensity = self.intensity_base end
+		  if self.intensity < self.intensity_base then self.intensity = self.intensity_base end
 	   else   
-	      if self.intensity > self.intensity_base then self.intensity = self.intensity_base end
+		  if self.intensity > self.intensity_base then self.intensity = self.intensity_base end
 	   end
 	else
 	   if self.intensity_base < 0.0 then
-	      self.intensity = self.intensity - self.intensity_inertion * c_time
-	      if self.intensity > 0.0 then self.intensity = 0.0 end
+		  self.intensity = self.intensity - self.intensity_inertion * c_time
+		  if self.intensity > 0.0 then self.intensity = 0.0 end
 	   else   
-	      self.intensity = self.intensity - self.intensity_inertion * c_time  
-	      if self.intensity < 0.0 then self.intensity = 0.0 end
+		  self.intensity = self.intensity - self.intensity_inertion * c_time  
+		  if self.intensity < 0.0 then self.intensity = 0.0 end
 	   end   
 	   
 	end
@@ -116,18 +116,18 @@ function action_postprocess:update (delta)
 end
 -------------------
 function action_postprocess:update_hit		(delta)
-    if self.actor_inside == false then
-       self.hit_power = 0
-       return
-    end
-    self.hit_power = self.hit_power + (delta * 0.001) * (self.st.hit_intensity * 0.01)
-    if time_global () - self.hit_time < 1000 then
-       return 
-    end    
-    --printf ("HIT POWER = %f", self.hit_power)
-    self.hit_time = time_global ();
-    local h = hit ();
-    h.power = self.hit_power
+	if self.actor_inside == false then
+	   self.hit_power = 0
+	   return
+	end
+	self.hit_power = self.hit_power + (delta * 0.001) * (self.st.hit_intensity * 0.01)
+	if time_global () - self.hit_time < 1000 then
+	   return 
+	end    
+	--printf ("HIT POWER = %f", self.hit_power)
+	self.hit_time = time_global ();
+	local h = hit ();
+	h.power = self.hit_power
 	h.direction = vector ():set (0, 0, 0);
 	h.impulse	= 0;
 	h.draftsman = db.actor;
@@ -157,6 +157,6 @@ function set_scheme(npc, ini, scheme, section, gulag_name)
 
 	st.intensity = utils.cfg_get_number (ini, section, "intensity", npc, true) * 0.01
 	st.intensity_speed = utils.cfg_get_number (ini, section, "intensity_speed", npc, true) * 0.01
-    st.hit_intensity = utils.cfg_get_number (ini, section, "hit_intensity", npc, true)
+	st.hit_intensity = utils.cfg_get_number (ini, section, "hit_intensity", npc, true)
 	
 end

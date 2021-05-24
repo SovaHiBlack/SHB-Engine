@@ -1,11 +1,5 @@
-
-
 local trade_manager = {
 }
-
-
-
-
 
 function trade_init(npc, cfg)
 	printf("TRADE INIT[%s]", npc:name())

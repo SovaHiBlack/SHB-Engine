@@ -40,7 +40,7 @@ end
 ---------------------------------------------------------------------------------------------------------------------
 function add_to_binder(npc, ini, scheme, section, storage)
 --	printf("DEBUG PH_ON_HIT: add_to_binder: npc:name()='%s', scheme='%s', section='%s'", npc:name(), scheme, section)
- 	local action = ph_on_hit(npc, storage)
+	local action = ph_on_hit(npc, storage)
 	storage.action = action
 end
 

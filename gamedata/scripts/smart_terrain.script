@@ -392,24 +392,24 @@ end
    подходит ли он гулагу, подходит ли он хоть на одну работу
 ]]
 local level_groups = {
-    l01_escape = "group1",
-    l02_garbage = "group1",
-    l03_agroprom = "group1",
-    l03u_agr_underground = "group1",
-    l04_darkvalley = "group1",
-    l04u_labx18 = "group1",
-    l05_bar = "group1",
-    l06_rostok = "group1",
-    l07_military = "group1",
-    l08_yantar = "group1",
-    l08u_brainlab = "group1",
-    l10_radar = "group1",
-    l10u_bunker = "group1",
-    l11_pripyat = "group1",
-    l12_stancia = "group3",
-    l12u_sarcofag = "group3",
-    l12u_control_monolith = "group3",
-    l12_stancia_2 = "group3"
+	l01_escape = "group1",
+	l02_garbage = "group1",
+	l03_agroprom = "group1",
+	l03u_agr_underground = "group1",
+	l04_darkvalley = "group1",
+	l04u_labx18 = "group1",
+	l05_bar = "group1",
+	l06_rostok = "group1",
+	l07_military = "group1",
+	l08_yantar = "group1",
+	l08u_brainlab = "group1",
+	l10_radar = "group1",
+	l10u_bunker = "group1",
+	l11_pripyat = "group1",
+	l12_stancia = "group3",
+	l12u_sarcofag = "group3",
+	l12u_control_monolith = "group3",
+	l12_stancia_2 = "group3"
 }
 
 function se_smart_terrain:smart_terrain_accepts_obj( obj, obj_agreement )
@@ -427,18 +427,18 @@ function se_smart_terrain:smart_terrain_accepts_obj( obj, obj_agreement )
 	then
 		local community, is_stalker = self:get_obj_community( obj )
 
-        --' Проверка что смарттеррейн и НПС находятся в одном кластере уровней (чтобы не ходили через БАР)
-        local smart_level_group = self:get_level_name()
-        local npc_level_group = alife():level_name(game_graph():vertex(obj.m_game_vertex_id):level_id())
+		--' Проверка что смарттеррейн и НПС находятся в одном кластере уровней (чтобы не ходили через БАР)
+		local smart_level_group = self:get_level_name()
+		local npc_level_group = alife():level_name(game_graph():vertex(obj.m_game_vertex_id):level_id())
 
 --'		if obj:name() == "esc_wolf" then
 --'			printf("smart=%s stalker=%s", tostring(smart_level_group), tostring(npc_level_group))
 --'		end
 
-        if level_groups[smart_level_group] ~= level_groups[npc_level_group] then
-            return false
-        end
-    
+		if level_groups[smart_level_group] ~= level_groups[npc_level_group] then
+			return false
+		end
+	
 
 --'	if obj:name() == "esc_wolf" then
 --'		printf( "comm=%s is_stalker=%s", community, tostring( is_stalker ) )
@@ -496,7 +496,7 @@ function se_smart_terrain:obj_accepts_smart_terrain( obj )
 			if s ~= nil then
 				if name == "none" then				
 					return disagreed
-			 	elseif name == self:name() then
+				elseif name == self:name() then
 --'					if obj:name() == "esc_wolf" then
 --'						printf("[%s] obj_accepts_smart_terrain[%s] = agreed_exclusive", self:name(), obj:name())
 --'					end
@@ -667,7 +667,7 @@ function se_smart_terrain:unregister_npc( obj )
 			s = xr_logic.pick_section_from_condlist( db.actor_proxy, obj, condlist )
 
 			if s ~= nil then
-			 	if name == self:name() then
+				if name == self:name() then
 					--' уменьшаем счетчик
 					self.exclusives = self.exclusives - 1
 					self.gulag.capacity_non_exclusive = self.gulag.capacity_non_exclusive + 1

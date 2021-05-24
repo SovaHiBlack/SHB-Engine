@@ -29,7 +29,7 @@ end
 -- binder
 ----------------------------------------------------------------------------------------------------------------------
 function add_to_binder(npc, ini, scheme, section, storage) 	
- 	local new_action = this.action_process_hit(npc, storage)
+	local new_action = this.action_process_hit(npc, storage)
 	storage.action = new_action
 end
 

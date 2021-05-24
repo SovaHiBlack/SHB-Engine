@@ -68,7 +68,7 @@ end
 function add_to_binder(npc, ini, scheme, section, storage)
 	printf("DEBUG: add_to_binder: npc:name()='%s', scheme='%s', section='%s'", npc:name(), scheme, section)
 
- 	local new_action = ph_button(npc, storage)
+	local new_action = ph_button(npc, storage)
 
 	xr_logic.subscribe_action_for_events(npc, storage, new_action)
 end
@@ -89,8 +89,8 @@ function set_scheme(npc, ini, scheme, section, gulag_name)
 
 	st.anim = utils.cfg_get_string(ini, section, "anim", npc, true, "")
 	st.blending = utils.cfg_get_bool (ini, section, "anim_blend", npc, false, true)
-    if st.blending == nil then 	
-       st.blending = true 
-    end
+	if st.blending == nil then 	
+	   st.blending = true 
+	end
 end
 

@@ -143,7 +143,7 @@ function action_sound:update( delta )
 	--if self.st.play_at_actor == true and self.snd_obj ~= nil and self.snd_obj:playing () == true then
 	  -- self.snd_obj:set_position (actor:position ())
 	--end    
-	    
+		
 
 	-- если мы ещё нигде, то не считать ни входа, ни выхода
 	if self.is_actor_inside == nil then
@@ -156,7 +156,7 @@ function action_sound:update( delta )
 			self:on_enter( actor )
 			self.is_actor_inside = true
 		end
-        if self.snd_obj ~= nil and self.snd_obj:playing () == false then
+		if self.snd_obj ~= nil and self.snd_obj:playing () == false then
 		   self.st.signals["sound_end"] = true
 		end    
 	else
@@ -199,7 +199,7 @@ function action_sound:on_enter( obj )
 			printf( "sr_sound: restrictor=%s pos_type=%d snd=%s", self.object:name(), self.st.pos_type, snd_name )
 
 			self.snd_obj	= xr_sound.get_safe_sound_object(snd_name)
-	        if self.st.play_at_actor == false then
+			if self.st.play_at_actor == false then
 			   self.snd_obj:play_at_pos( obj, pos, self.st.delay )
 			else
 			   self.snd_obj:play_at_pos( obj, vector ():set (0, 0, 0), self.st.delay, sound_object.s2d )
@@ -220,10 +220,10 @@ function action_sound:next_point()
 end
 
 function action_sound:deactivate ()
-    if self.snd_obj ~= nil and self.snd_obj:playing () == false then
-       self.snd_obj:stop ()
-       self.snd_obj = nil
-    end    
+	if self.snd_obj ~= nil and self.snd_obj:playing () == false then
+	   self.snd_obj:stop ()
+	   self.snd_obj = nil
+	end    
 end
 
 function action_sound:set_positions()
@@ -294,10 +294,10 @@ function set_scheme( obj, ini, scheme, section, gulag_name )
 	end
 	
 	st.play_at_actor = utils.cfg_get_bool (ini, section, "play_at_actor", obj, false)
-    if st.play_at_actor ~= nil and st.play_at_actor == true then
-       if st.pos_type ~= pos_obj then
-          abort ("Can't define play sound at actor and path !!!")
-       end
-    end               
+	if st.play_at_actor ~= nil and st.play_at_actor == true then
+	   if st.pos_type ~= pos_obj then
+		  abort ("Can't define play sound at actor and path !!!")
+	   end
+	end               
 	
 end

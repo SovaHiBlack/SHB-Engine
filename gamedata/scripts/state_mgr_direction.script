@@ -5,12 +5,12 @@ function eva_state_mgr_direction:__init(name, st) super (nil, name)
 	self.st = st
 end
 function eva_state_mgr_direction:evaluate()
-    local sight_type = self.object:sight_params()
-    
+	local sight_type = self.object:sight_params()
+	
 	-- Если задан объект на который смотреть
 	if self.st.look_object ~= nil then
 		if sight_type.m_object == nil or
-           sight_type.m_object:id() ~= self.st.look_object or
+		   sight_type.m_object:id() ~= self.st.look_object or
 		   self.st.point_obj_dir ~= look_object_type(self.object, self.st)
 		then
 			return false
@@ -22,21 +22,21 @@ function eva_state_mgr_direction:evaluate()
 
 	-- Если задана позиция в которую смотреть
 	if self.st.look_position ~= nil then
-        if sight_type.m_sight_type ~= look_position_type(self.object, self.st) then
-            return false
-        end
+		if sight_type.m_sight_type ~= look_position_type(self.object, self.st) then
+			return false
+		end
 
 
 		local dir = vector():sub(self.st.look_position, self.object:position())
 		if look_object_type(self.object, self.st) == true then
 			dir.y = 0
 		end		
-        if utils.vector_cmp_prec(sight_type.m_vector, dir, 0.01) ~= true then
-            --printf("%s false vector", self.object:name())
-            --printf("%s %s %s", sight_type.m_vector.x, sight_type.m_vector.y, sight_type.m_vector.z)
-            --printf("%s %s %s", dir.x, dir.y, dir.z)
-            return false
-        end
+		if utils.vector_cmp_prec(sight_type.m_vector, dir, 0.01) ~= true then
+			--printf("%s false vector", self.object:name())
+			--printf("%s %s %s", sight_type.m_vector.x, sight_type.m_vector.y, sight_type.m_vector.z)
+			--printf("%s %s %s", dir.x, dir.y, dir.z)
+			return false
+		end
 
 		self:callback()
 		return true
@@ -49,9 +49,9 @@ function eva_state_mgr_direction:evaluate()
 	end
 		
 	--' Или если мы смотрели не так как надо
-    if sight_type.m_sight_type ~= look_position_type(self.object, self.st) then
-        return false
-    end
+	if sight_type.m_sight_type ~= look_position_type(self.object, self.st) then
+		return false
+	end
 
 	self:callback()
 	return true
@@ -130,7 +130,7 @@ end
 function act_state_mgr_direction_search:initialize()
 	action_base.initialize(self)
 --'    printf("set sight %s nil", self.object:name())
-    self.object:set_sight(look_position_type(self.object, self.st), nil, 0)
+	self.object:set_sight(look_position_type(self.object, self.st), nil, 0)
 end
 function act_state_mgr_direction_search:execute()
 	action_base.execute(self)
@@ -166,26 +166,26 @@ function look_object_type(npc, st)
 end
 
 function look_position_type(npc, st)
-    if st == nil then
-        return look.path_dir
-    end
+	if st == nil then
+		return look.path_dir
+	end
 
-    --' Для движения
+	--' Для движения
 	if not st.planner:evaluator(st.properties["movement_stand"]):evaluate() then
-        if st.look_position ~= nil then
-            return look.direction
-        end
-        return look.path_dir       
-    end
+		if st.look_position ~= nil then
+			return look.direction
+		end
+		return look.path_dir       
+	end
 
-    --' Смотрим в позицию
-    if st.look_position ~= nil then
-         return look.direction
-    end
+	--' Смотрим в позицию
+	if st.look_position ~= nil then
+		 return look.direction
+	end
 
-    --' Никуда не смотрим
-    if state_lib.states[st.target_state].direction then
+	--' Никуда не смотрим
+	if state_lib.states[st.target_state].direction then
 		return state_lib.states[st.target_state].direction
-    end
-    return look.danger
+	end
+	return look.danger
 end

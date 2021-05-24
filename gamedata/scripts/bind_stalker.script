@@ -27,7 +27,7 @@ function actor_binder:__init (obj) super(obj)
 end
 ----------------------------------------------------------------------------------------------------------------------
 function actor_binder:net_spawn(data)
-	printf("actor net spawn")		
+	printf("actor net spawn")
 
 	level.show_indicators()
 
@@ -65,7 +65,7 @@ function actor_binder:net_destroy()
 --	game_stats.shutdown ()
 	db.del_actor(self.object)
 
-    sr_light.clean_up ()
+	sr_light.clean_up ()
 
 	self.object:set_callback(callback.inventory_info, nil)
 	self.object:set_callback(callback.article_info, nil)
@@ -134,10 +134,10 @@ function actor_binder:take_item_from_box(box, item)
 	end
 
 	local npc = smart_terrain.gulag:get_nearest_online_obj(db.actor:position())
-    if npc ~= nil then
-	    xr_sound.set_sound_play(npc, "reac_box")
-	    xr_gulag.setGulagEnemy(smart_terrain:name() , db.actor)		
-    end
+	if npc ~= nil then
+		xr_sound.set_sound_play(npc, "reac_box")
+		xr_gulag.setGulagEnemy(smart_terrain:name() , db.actor)		
+	end
 ]]
 end
 ----------------------------------------------------------------------------------------------------------------------
@@ -158,11 +158,11 @@ function actor_binder:info_callback(npc, info_id)
 end
 ----------------------------------------------------------------------------------------------------------------------
 function actor_binder:on_trade (item, sell_bye, money)
-    if sell_bye == true then
-       game_stats.money_trade_update (money)
-    else       
-       game_stats.money_trade_update (-money) 
-    end   
+	if sell_bye == true then
+	   game_stats.money_trade_update (money)
+	else
+	   game_stats.money_trade_update (-money) 
+	end
 end
 ----------------------------------------------------------------------------------------------------------------------
 function actor_binder:article_callback(npc, group, name)
@@ -177,13 +177,13 @@ function actor_binder:article_callback(npc, group, name)
 end
 ----------------------------------------------------------------------------------------------------------------------
 function actor_binder:on_item_take (obj)
-    level_tasks.proceed(self.object)
-    --game_stats.update_take_item (obj, self.object)
+	level_tasks.proceed(self.object)
+	--game_stats.update_take_item (obj, self.object)
 end
 ----------------------------------------------------------------------------------------------------------------------
 function actor_binder:on_item_drop (obj)
-    level_tasks.proceed(self.object)
-    --game_stats.update_drop_item (obj, self.object)
+	level_tasks.proceed(self.object)
+	--game_stats.update_drop_item (obj, self.object)
 end
 ----------------------------------------------------------------------------------------------------------------------
 
@@ -308,7 +308,7 @@ function actor_binder:update(delta)
 
 
 
- 	if self.bCheckStart then
+	if self.bCheckStart then
 		printf("SET DEFAULT INFOS")		
 
 		if not has_alife_info("storyline_actor_start") and

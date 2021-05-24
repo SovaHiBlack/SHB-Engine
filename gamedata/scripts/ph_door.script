@@ -6,9 +6,6 @@
 -- Доработка: Oleg Kreptul (Haron) haronk@ukr.net
 ----------------------------------------------------------------------------------------------------
 
-function printf()
-end
-
 class "action_door"
 
 function action_door:__init(obj, storage)
@@ -60,11 +57,11 @@ function action_door:reset_scheme(loading)
 end
 
 function action_door:door_play_snd_from_set(sndset)   
-    if self.snd_obj ~= nil then
-       self.snd_obj:stop ()
-       self.snd_obj = nil 
-    end
-        	
+	if self.snd_obj ~= nil then
+	   self.snd_obj:stop ()
+	   self.snd_obj = nil 
+	end
+			
 	self.snd_obj = xr_sound.get_sound_object(sndset, "random")
 	if not self.snd_obj then
 		abort("object '%s': unable to create a sound object for sound '%s' (soundset '%s')",

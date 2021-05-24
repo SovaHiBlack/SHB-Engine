@@ -19,7 +19,7 @@ function motivator_binder:__init (obj) super(obj)
 	self.last_update = 0
 	----memusage.collect_info(self.object, "__init")
 
-    self.first_update = false
+	self.first_update = false
 	self.treasure_processed = false
 end
 
@@ -36,23 +36,23 @@ function motivator_binder:extrapolate_callback(cur_pt)
 end
 
 function motivator_binder:reinit()
-    object_binder.reinit(self)
-    --memusage.collect_info(self.object, "reinit_start")
-    --printf("motivator_binder:reinit(): self.object:name()='%s'", self.object:name())
+	object_binder.reinit(self)
+	--memusage.collect_info(self.object, "reinit_start")
+	--printf("motivator_binder:reinit(): self.object:name()='%s'", self.object:name())
 
-    -- КОЛЛБЕКИ ЗДЕСЬ СТАВИТЬ НЕЛЬЗЯ! Здесь еще неизвестна активная схема.
-    -- Ставьте коллбеки в методе update в отмеченном комментарием месте.
+	-- КОЛЛБЕКИ ЗДЕСЬ СТАВИТЬ НЕЛЬЗЯ! Здесь еще неизвестна активная схема.
+	-- Ставьте коллбеки в методе update в отмеченном комментарием месте.
 
-    local char_ini = self.object:spawn_ini() or ini_file("scripts\\dummy.ltx")
+	local char_ini = self.object:spawn_ini() or ini_file("scripts\\dummy.ltx")
 
 ----------------------------------------------------------------------------------------------------------------------
 -- Общие скрипты
 ----------------------------------------------------------------------------------------------------------------------
-    db.storage[self.object:id()] = {  followers = {} }
-    self.st = db.storage[self.object:id()]
+	db.storage[self.object:id()] = {  followers = {} }
+	self.st = db.storage[self.object:id()]
 
-    --' Создание менеджера контроля положений тела
-    --memusage.collect_info(self.object, "before_statemgr")
+	--' Создание менеджера контроля положений тела
+	--memusage.collect_info(self.object, "before_statemgr")
 	self.st.state_mgr = state_mgr.bind_manager(self.object)
 
 	self.st.move_mgr = move_mgr.move_mgr(self.object)
@@ -85,7 +85,7 @@ function motivator_binder:net_spawn(sobject)
 
 	--self.object:set_callback(callback.sound, motivator_binder.hear_callback, self)
 
-    --' Загрузка историй для лагеря.
+	--' Загрузка историй для лагеря.
 	if self.loaded == false then
 		local char_ini = self.object:spawn_ini() or ini_file("scripts\\dummy.ltx")
 		xr_info.loadInfo(self.object, char_ini)
@@ -102,10 +102,10 @@ function motivator_binder:net_spawn(sobject)
 		manager:add_evaluator		(stalker_ids.property_anomaly, property_evaluator_const(false))
 --	end
 	
-    --' загрузка озвучки
-    --memusage.collect_info(self.object, "before_soundmgr")
-    xr_sound.load_sound(self.object)
-    --memusage.collect_info(self.object, "after_soundmgr_netspawn_end")
+	--' загрузка озвучки
+	--memusage.collect_info(self.object, "before_soundmgr")
+	xr_sound.load_sound(self.object)
+	--memusage.collect_info(self.object, "after_soundmgr_netspawn_end")
 
 	xr_gulag.setup_gulag_and_logic_on_spawn( self.object, self.st, sobject, modules.stype_stalker, self.loaded )
 
@@ -219,17 +219,17 @@ end
 function motivator_binder:update(delta)
 	object_binder.update(self, delta)
 
-    if self.first_update == false then
-        if self.object:alive() == false then
+	if self.first_update == false then
+		if self.object:alive() == false then
 			death_manager.drop_manager(self.object):create_release_item()
-        end        
-        self.first_update = true
-    end
+		end        
+		self.first_update = true
+	end
 
-    if time_global() - self.last_update > 1000 then
-       sr_light.check_light(self.object)
-       self.last_update = time_global()
-    end
+	if time_global() - self.last_update > 1000 then
+	   sr_light.check_light(self.object)
+	   self.last_update = time_global()
+	end
 
 	--' Апдейт менеджера состояний тела
 	if self.st.state_mgr then

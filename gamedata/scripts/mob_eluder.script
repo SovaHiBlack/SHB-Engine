@@ -21,7 +21,7 @@ end
 -- RESET SCHEME
 ----------------------------------------------------------------------------------------------------
 function mob_eluder:reset_scheme()
-    printf("Eluder: reset_scheme: %s", self.object:name())
+	printf("Eluder: reset_scheme: %s", self.object:name())
 	
 	xr_logic.mob_capture		(self.object, true)
 

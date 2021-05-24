@@ -17,7 +17,7 @@ end
 function get_infos_from_data(npc, s)
 --	printf("get_infos_from_data [%s]", utils.to_str(s))
 	local t = {}
-    if s then
+	if s then
 		for name in string.gfind( s, "(%|*[^%|]+%|*)%p*" ) do
 --			printf("[%s]", utils.to_str(name))
 			local condlist = xr_logic.parse_condlist(npc, "in", name, name)
@@ -26,7 +26,7 @@ function get_infos_from_data(npc, s)
 			end
 		end
 	end
-    return t
+	return t
 end
 
 
@@ -77,11 +77,11 @@ function reset_show_spot(npc, scheme, st, section)
 		spot_section = "true"
 	end
 	
-    local spot = "false"
-    if npc:character_community() ~= "zombied" then
-	    local spot_condlist = xr_logic.parse_condlist(npc, section, "show_spot", spot_section)
-	    spot = xr_logic.pick_section_from_condlist(db.actor, npc, spot_condlist)
-    end
+	local spot = "false"
+	if npc:character_community() ~= "zombied" then
+		local spot_condlist = xr_logic.parse_condlist(npc, section, "show_spot", spot_section)
+		spot = xr_logic.pick_section_from_condlist(db.actor, npc, spot_condlist)
+	end
 
 	local sim  = alife()
 	if not sim then

@@ -91,7 +91,7 @@ function eva_state_mgr_weapon_unstrapped:__init(name, st) super (nil, name)
 end
 function eva_state_mgr_weapon_unstrapped:evaluate()
 	return state_lib.states[self.st.target_state].weapon == "unstrapped" or
-	       state_lib.states[self.st.target_state].weapon == "fire" or
+		   state_lib.states[self.st.target_state].weapon == "fire" or
 		   state_lib.states[self.st.target_state].weapon == "sniper_fire"
 end
 --' Держит ли уже он оружие в руках
@@ -138,7 +138,7 @@ function eva_state_mgr_weapon_fire:__init(name, st) super (nil, name)
 end
 function eva_state_mgr_weapon_fire:evaluate()
 	return state_lib.states[self.st.target_state].weapon == "fire" or
-	       state_lib.states[self.st.target_state].weapon == "sniper_fire"
+		   state_lib.states[self.st.target_state].weapon == "sniper_fire"
 end
 
 
@@ -236,20 +236,20 @@ function get_weapon(obj, target_state)
 end
 
 function strappable_weapon(obj)
-    local id = get_clsid(obj)
-    if id == nil then return false end
+	local id = get_clsid(obj)
+	if id == nil then return false end
 
-    if id == clsid.wpn_vintorez_s then return true
-    elseif id == clsid.wpn_ak74_s then return true
-    elseif id == clsid.wpn_lr300_s then return true
-    elseif id == clsid.wpn_shotgun_s then return true
-    elseif id == clsid.wpn_bm16_s then return true    
-    elseif id == clsid.wpn_svd_s then return true
-    elseif id == clsid.wpn_svu_s then return true
-    elseif id == clsid.wpn_rpg7_s then return true
-    elseif id == clsid.wpn_val_s then return true
-    elseif id == clsid.wpn_groza_s then return true
-    else return false end
+	if id == clsid.wpn_vintorez_s then return true
+	elseif id == clsid.wpn_ak74_s then return true
+	elseif id == clsid.wpn_lr300_s then return true
+	elseif id == clsid.wpn_shotgun_s then return true
+	elseif id == clsid.wpn_bm16_s then return true    
+	elseif id == clsid.wpn_svd_s then return true
+	elseif id == clsid.wpn_svu_s then return true
+	elseif id == clsid.wpn_rpg7_s then return true
+	elseif id == clsid.wpn_val_s then return true
+	elseif id == clsid.wpn_groza_s then return true
+	else return false end
 end
 
 function get_queue_params(npc, target)

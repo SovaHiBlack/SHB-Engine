@@ -22,17 +22,17 @@ function action_sleep:reset_scheme()
 	self.cond = self.st.cond
 	
 	if dream.dream_types[self.st.type] then
-	    dream.type = self.st.type
+		dream.type = self.st.type
 	else
-	    dream.type = "all"
+		dream.type = "all"
 	end
 
 	dream.dream_prob = -1
 	if type(self.st.dream_prob) == "number" then
-	    local p = tonumber(self.st.dream_prob)
-	    if p >= 0 and p <= 100 then
-	        dream.dream_prob = p
-	    end
+		local p = tonumber(self.st.dream_prob)
+		if p >= 0 and p <= 100 then
+			dream.dream_prob = p
+		end
 	end
 	
 	self:switch_state(db.actor)
@@ -59,19 +59,19 @@ function action_sleep:switch_state(actor)
 	local state = self.state
 	
 	if self.object:inside(actor:position()) then
-	    if self.cond then
-	        local cs = xr_logic.pick_section_from_condlist(db.actor, self.object, self.cond.condlist)
-	        dream.can_sleep = (cs == "true" or cs == "")
-	    else
-	        dream.can_sleep = true
-	    end
+		if self.cond then
+			local cs = xr_logic.pick_section_from_condlist(db.actor, self.object, self.cond.condlist)
+			dream.can_sleep = (cs == "true" or cs == "")
+		else
+			dream.can_sleep = true
+		end
 	else
-	    dream.can_sleep = false
+		dream.can_sleep = false
 	end
 end
 
 function action_sleep:deactivate()
-    --dream.can_sleep = false
+	--dream.can_sleep = false
 end
 
 ---------------------------------------------------------------------------------------------------------------------
@@ -88,8 +88,8 @@ function set_scheme(npc, ini, scheme, section, gulag_name)
 	local st = xr_logic.assign_storage_and_bind(npc, ini, scheme, section)
 	st.logic = xr_logic.cfg_get_switch_conditions(ini, section, npc)
 --[[
-    st.type = utils.cfg_get_string(ini, section, "type", npc, false, "", "all")
-    st.dream_prob = utils.cfg_get_number(ini, section, "dream_prob", npc, false, nil)
+	st.type = utils.cfg_get_string(ini, section, "type", npc, false, "", "all")
+	st.dream_prob = utils.cfg_get_number(ini, section, "dream_prob", npc, false, nil)
 	st.cond = xr_logic.cfg_get_condlist(ini, section, "cond", npc)
 --]]
 end

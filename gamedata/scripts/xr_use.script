@@ -1,7 +1,3 @@
-
---function printf()
---end
-
 class "action_process_use"
 function action_process_use:__init(obj, storage)
 	self.object = obj

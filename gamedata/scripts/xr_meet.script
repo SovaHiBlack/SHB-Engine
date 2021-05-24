@@ -130,7 +130,7 @@ function action_meet_wait:execute ()
 
 	--' Туториал на спрятать оружие
 	if meet_manager.disable_talk_weapon == true and 
-       not has_alife_info("tutorial_part_15_hide_weapon") 
+	   not has_alife_info("tutorial_part_15_hide_weapon") 
 	then
 		game.start_tutorial("part_15_hide_weapon")
 		db.actor:give_info_portion("tutorial_part_15_hide_weapon")		
@@ -159,7 +159,7 @@ function Cmeet_manager:__init(npc, storage)
 end
 function Cmeet_manager:update()
 	-- стартовый диалог
-	if self.a.meet_dialog ~= nil then			
+	if self.a.meet_dialog ~= nil then
 		local tmp = xr_logic.pick_section_from_condlist(db.actor, self.npc, self.a.meet_dialog)
 		if self.startdialog ~= tmp then
 			self.startdialog = tmp
@@ -171,7 +171,7 @@ function Cmeet_manager:update()
 			else
 --				printf("SET")
 				-- установка нового
-				self.npc:set_start_dialog(tmp)				
+				self.npc:set_start_dialog(tmp)
 			end
 		end
 	end
@@ -232,8 +232,8 @@ function Cmeet_manager:process_meet()
 	local key
 	local is_talking = self.npc:is_talking()
 	if isWeapon(db.actor:active_item())	and
-       self.npc:relation(db.actor) ~= game_object.friend
-    then
+	   self.npc:relation(db.actor) ~= game_object.friend
+	then
 		key = self:get_key_from_distance(self.a.meet_state_wpn)
 		if key ~= nil then
 			local r1,r2
@@ -542,7 +542,7 @@ end
 function parse_data(npc,s)
 	local t = {}
 
-    if s then
+	if s then
 		for name in string.gfind( s, "(%|*%d+%|[^%|]+)%p*" ) do
 --			printf("[%s]", utils.to_str(name))
 			local dat = {	dist = nil,
@@ -576,13 +576,13 @@ function parse_data(npc,s)
 			table.insert(t, dat)
 		end
 	end
-    return t
+	return t
 end
 function parse_zone_data(npc,s)
 --	printf("parse_zone_data [%s]", utils.to_str(s))
 	local t = {}
 
-    if s then
+	if s then
 		for name in string.gfind( s, "(%|*[^%|]+%|[^%|]+)%p*" ) do
 --			printf("[%s]", utils.to_str(name))
 			local dat = {	zone = nil,
@@ -617,12 +617,12 @@ function parse_zone_data(npc,s)
 		end
 	end
 
-    return t
+	return t
 end
 function parse_syn_data(npc,s)
 --	printf("parse_syn_data [%s]", utils.to_str(s))
 	local t = {}
-    if s then
+	if s then
 		for name in string.gfind( s, "(%|*[^%|]+%|*)%p*" ) do
 			local dat = {	zone = nil,
 							state = nil,
@@ -646,7 +646,7 @@ function parse_syn_data(npc,s)
 		end
 	end
 
-    return t
+	return t
 end
 
 -- ДИАЛОГИ ПОКА НЕ ТРОГАЕМ!!!

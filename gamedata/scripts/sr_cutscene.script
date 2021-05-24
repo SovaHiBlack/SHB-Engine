@@ -29,7 +29,7 @@ function action_cutscene:reset_scheme()
 
 	self.state = state_nowhere --' еще не€сно, находитс€ ли персонаж в пределах пространственного ограничител€ или нет
 
-    self.st.signals = {} --' обнул€ем сигналы
+	self.st.signals = {} --' обнул€ем сигналы
 
 	self:switch_state(db.actor)
 
@@ -41,26 +41,26 @@ end
 function action_cutscene:update( delta )
 
 	--' храним персонажа локально (так быстрее обращатьс€)
-    local actor = db.actor
+	local actor = db.actor
 
-    if self.ui_disabled then
-        if cutscene_finished == true then
-           if not db.actor:is_talking() then 
+	if self.ui_disabled then
+		if cutscene_finished == true then
+		   if not db.actor:is_talking() then 
 				xr_effects.enable_ui(db.actor, nil)
 		   else
 				level.enable_input()	
 		   end
-           self.ui_disabled = false
-           self.st.signals["cameff_end"] = true
-        end
-    end
+		   self.ui_disabled = false
+		   self.st.signals["cameff_end"] = true
+		end
+	end
 	
-    --' собственно наша функци€, осуществл€юща€ вызов начала сцены
+	--' собственно наша функци€, осуществл€юща€ вызов начала сцены
 	self:switch_state( actor )
 
-    --' выполн€ем архитектурное требование
+	--' выполн€ем архитектурное требование
 	if xr_logic.try_switch_to_another_section( self.object, self.st, actor ) 
-    then
+	then
 		return
 	end	
 end
@@ -71,27 +71,27 @@ end
 function action_cutscene:switch_state( actor )
 
 	--' храним состо€ние персонажа локально (так быстрее)
-    local state = self.state
+	local state = self.state
 	
-    --' если снаружи или ешЄ не определились где
+	--' если снаружи или ешЄ не определились где
 	if state ~= state_inside 
-    then
-        --' то провер€ем на вхождение в пространственный ограничитель
+	then
+		--' то провер€ем на вхождение в пространственный ограничитель
 		if self.object:inside( actor:center() ) 
-        then
-            --' и если внутри то вызываем функцию входа внутрь и выходим из функции
+		then
+			--' и если внутри то вызываем функцию входа внутрь и выходим из функции
 			self:zone_enter()
 			return
 		end
 	end
 	
-    --' если внутри или ешЄ не определились где
+	--' если внутри или ешЄ не определились где
 	if state ~= state_outside
-    then
-        --' то провер€ем на не вхождение в пространственный ограничитель
+	then
+		--' то провер€ем на не вхождение в пространственный ограничитель
 		if not self.object:inside( actor:center() ) 
-        then
-            --' и если снаружи то вызываем функцию выхода наружу и выходим из функции
+		then
+			--' и если снаружи то вызываем функцию выхода наружу и выходим из функции
 			self:zone_leave()
 			return
 		end
@@ -106,13 +106,13 @@ function action_cutscene:zone_enter()
 	self.state = state_inside
 	--' тут нужно запустить сцену
 
-    --' телепорт в выбранную точку
-    xr_effects.teleport_actor(db.actor, nil, {self.st.point, self.st.look})
-    level.add_pp_effector (self.st.pp_effector, 234, false)
-    
+	--' телепорт в выбранную точку
+	xr_effects.teleport_actor(db.actor, nil, {self.st.point, self.st.look})
+	level.add_pp_effector (self.st.pp_effector, 234, false)
+	
 	level.add_cam_effector2(self.st.cam_effector, 123, false, "sr_cutscene.effector_callback")
-    xr_effects.disable_ui(db.actor, nil)
-    self.ui_disabled = true
+	xr_effects.disable_ui(db.actor, nil)
+	self.ui_disabled = true
 	cutscene_finished = false
   
 
@@ -124,7 +124,7 @@ end
 function action_cutscene:zone_leave()
 
 	self.state = state_outside
-    --' по идее больше ничего тут делать не надо
+	--' по идее больше ничего тут делать не надо
 
 end
 
@@ -151,8 +151,8 @@ function set_scheme(obj, ini, scheme, section, gulag_name)
 	st.point = utils.cfg_get_string(ini, section, "point", obj, true, "", "none")
 	st.look = utils.cfg_get_string(ini, section, "look", obj, true, "", "none")
 	st.pp_effector = utils.cfg_get_string(ini, section, "pp_effector", obj, false, "", "blink") .. ".ppe"
-    st.cam_effector = utils.cfg_get_string(ini, section, "cam_effector", obj, true, "") .. ".anm"
-    st.cam_effector = "camera_effects\\" .. st.cam_effector
+	st.cam_effector = utils.cfg_get_string(ini, section, "cam_effector", obj, true, "") .. ".anm"
+	st.cam_effector = "camera_effects\\" .. st.cam_effector
 
 end
 

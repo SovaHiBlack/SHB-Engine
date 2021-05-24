@@ -223,7 +223,6 @@ function draw_t_keys(t)
 end
 
 function precondition(npc, actor, tbl, sel_tbl, p1, p2, p3)
-
 	--' Надо проверить доступна ли запомненная фраза
 	if ( (sel_tbl ~= nil) and (sel_tbl[npc:id()] ~= nil) ) then
 		
@@ -238,7 +237,6 @@ function precondition(npc, actor, tbl, sel_tbl, p1, p2, p3)
 			print_table(tbl)
 			local a = lll.phrase + 1
 --[[		
-		
 			printf("%d", get_t_size(tbl))
 			printf("%d", get_t_size(sel_tbl))
 			printf("needed phrase=[%s]",lll.phrase)
@@ -249,7 +247,7 @@ function precondition(npc, actor, tbl, sel_tbl, p1, p2, p3)
 			printf("%d", get_t_size(phrase.intro))
 			printf("%d", get_t_size(phrase.cool_info))
 			printf("%d", get_t_size(phrase.help_thanks))
-]]			
+]]
 		end
 		
 		local value, number = calculate_predicate(npc, ttt )

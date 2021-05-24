@@ -24,39 +24,39 @@ function mob_home:reset_scheme()
 --[[
 Добавлено: Haron
 Описание: Теперь можно задавать радиусы home_min_radius и home_max_radius во флагах
-          пути path_home. Для этого введены флаги minr, maxr. Они должны быть
-          прописаны в первой точке пути. У радиусов заданых в секции приоритет
-          больший чем для тех что заданы во флагах, т.е. если задано и там и там, то
-          берутся значения из секции (сделано для обратной совместимости).
+		  пути path_home. Для этого введены флаги minr, maxr. Они должны быть
+		  прописаны в первой точке пути. У радиусов заданых в секции приоритет
+		  больший чем для тех что заданы во флагах, т.е. если задано и там и там, то
+		  берутся значения из секции (сделано для обратной совместимости).
 --]]
-    local minr, maxr = def_min_radius, def_max_radius
+	local minr, maxr = def_min_radius, def_max_radius
 	local ptr = patrol(self.st.home)
 	local path_info = utils.parse_waypoint_data(self.st.home, ptr:flags(0), ptr:name(0))				
-    local r = 0
+	local r = 0
 
-    if self.st.home_min_radius then
-        minr = self.st.home_min_radius
-    else
-        r = path_info.minr
-        if r then
-            r = tonumber(r)
-            if r then
-                minr = r
-            end
-        end
-    end
-    
-    if self.st.home_max_radius then
-        maxr = self.st.home_max_radius
-    else
-        r = path_info.maxr
-        if r then
-            r = tonumber(r)
-            if r then
-                maxr = r
-            end
-        end
-    end
+	if self.st.home_min_radius then
+		minr = self.st.home_min_radius
+	else
+		r = path_info.minr
+		if r then
+			r = tonumber(r)
+			if r then
+				minr = r
+			end
+		end
+	end
+	
+	if self.st.home_max_radius then
+		maxr = self.st.home_max_radius
+	else
+		r = path_info.maxr
+		if r then
+			r = tonumber(r)
+			if r then
+				maxr = r
+			end
+		end
+	end
 
 	-- check min and max radius
 	if	minr > maxr then

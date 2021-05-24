@@ -683,7 +683,7 @@ function try_switch_to_another_section(npc, st, actor)
 		elseif cond_name(c.name, "on_signal") then
 			--printf("_bp: on_signal (c.v1 = %s)", c.v1)
 			if st.signals and st.signals[c.v1] then
-			    printf("_bp: on_signal (c.v1 = %s) signalled [%s]", c.v1, npc:name())
+				printf("_bp: on_signal (c.v1 = %s) signalled [%s]", c.v1, npc:name())
 				--printf("_bp: signalled")
 				switched = switch_to_section(npc, st, pick_section_from_condlist(actor, npc, c.condlist))
 			end
@@ -1085,12 +1085,12 @@ function cfg_get_npc_and_zone(ini, section, field, npc)
 			else
 				t.npc_id = -1
 				abort("object '%s': section '%s': field '%s': there is no object with story_id '%s'",
-				            npc:name(), section, field, t.v1)
+							npc:name(), section, field, t.v1)
 			end
 		else
 			t.npc_id = -1
 			printf("WARNING: object '%s': section '%s': field '%s': can't use story_id without simulation!",
-			        npc:name(), section, field)
+					npc:name(), section, field)
 		end
 	end
 
@@ -1135,7 +1135,7 @@ function save_logic(obj, packet)
 	if not activation_time then
 		activation_time = 0
 	end
- 	packet:w_s32(activation_time - cur_tm)
+	packet:w_s32(activation_time - cur_tm)
 
 	-- GAMETIME added by Stohe.
 	utils.w_CTime(packet, db.storage[npc_id].activation_game_time)
@@ -1207,17 +1207,17 @@ function pstor_save_all(obj, packet)
 
 	for k, v in pairs(pstor) do
 		printf("_bp: pstor_save_all: saving [%s]='%s'", utils.to_str(k), utils.to_str(v))
- 		packet:w_stringZ(k)
+		packet:w_stringZ(k)
 		local tv = type(v)
 		if tv == "number" then
 			packet:w_u8(pstor_number)
-	 		packet:w_float(v)
-	 	elseif tv == "string" then
+			packet:w_float(v)
+		elseif tv == "string" then
 			packet:w_u8(pstor_string)
-	 		packet:w_stringZ(v)
-	 	elseif tv == "boolean" then
+			packet:w_stringZ(v)
+		elseif tv == "boolean" then
 			packet:w_u8(pstor_boolean)
-	 		packet:w_bool(v)
+			packet:w_bool(v)
 		else
 			abort("xr_logic: pstor_save_all: not registered type '%s' encountered", tv)
 		end
