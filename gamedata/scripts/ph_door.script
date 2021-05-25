@@ -1,23 +1,20 @@
 ----------------------------------------------------------------------------------------------------
 -- Physic door control
 ----------------------------------------------------------------------------------------------------
--- Исходный скрипт: Evgeniy Negrobov (Jon) jon@gsc-game.kiev.ua
--- Перевод на xr_logic: Andrey Fidrya (Zmey) af@svitonline.com
--- Доработка: Oleg Kreptul (Haron) haronk@ukr.net
-----------------------------------------------------------------------------------------------------
 
 class "action_door"
 
 function action_door:__init(obj, storage)
-	printf	("action_door::action_door() called")
+	printf("action_door::action_door() called")
 	self.object = obj
 	self.st = storage
 	self.snd_obj = nil
 end
+
 function action_door:reset_scheme(loading)
 	printf("_bp: action_door:reset_scheme: self.object:name()='%s'", self.object:name())
 	self.initialized = false
-	
+
 	local ph_shell = self.object:get_physics_shell()
 	if not ph_shell then
 		return
@@ -25,7 +22,7 @@ function action_door:reset_scheme(loading)
 	self.joint = ph_shell:get_joint_by_bone_name("door")
 
 	self.low_limits, self.hi_limits = 0, 0
-	self.low_limits, self.hi_limits	= self.joint:get_limits(self.low_limits, self.hi_limits, 0)
+	self.low_limits, self.hi_limits = self.joint:get_limits(self.low_limits, self.hi_limits, 0)
 
 	self.block = false
 	self.soundless_block = false
@@ -40,7 +37,7 @@ function action_door:reset_scheme(loading)
 		disable_snd = true
 		self.st.script_used_more_than_once = true
 	end
-	
+
 	if self.st.closed then
 		--' Если дверь уже закрыта - то нужно закрыть без звука
 		if self:is_closed() then
@@ -56,12 +53,12 @@ function action_door:reset_scheme(loading)
 	self.initialized = true
 end
 
-function action_door:door_play_snd_from_set(sndset)   
+function action_door:door_play_snd_from_set(sndset)
 	if self.snd_obj ~= nil then
-	   self.snd_obj:stop ()
-	   self.snd_obj = nil 
+		self.snd_obj:stop()
+		self.snd_obj = nil
 	end
-			
+
 	self.snd_obj = xr_sound.get_sound_object(sndset, "random")
 	if not self.snd_obj then
 		abort("object '%s': unable to create a sound object for sound '%s' (soundset '%s')",
@@ -117,7 +114,7 @@ function action_door:open_door(disable_snd)
 			self:door_play_snd_from_set(self.st.snd_open_start)
 		end
 	end
-	
+
 	if self.st.no_force == true then
 		self.joint:set_max_force_and_velocity(0, 0, 0)
 	else
@@ -161,7 +158,7 @@ function action_door:close_door(disable_snd)
 	else
 		self.joint:set_max_force_and_velocity(200, 3, 0)
 	end
-	self.block = true -- Закрываем и блокируем	
+	self.block = true -- Закрываем и блокируем
 	self.soundless_block = disable_snd
 
 	if self.show_tips then
@@ -178,9 +175,8 @@ end
 
 function action_door:try_switch()
 	printf("_bp: action_door: object '%s': try_switch", self.object:name())
-	if self.st.on_use then		
-		if xr_logic.switch_to_section(self.object, self.st,
-		   xr_logic.pick_section_from_condlist(db.actor, self.object, self.st.on_use.condlist)) then
+	if self.st.on_use then
+		if xr_logic.switch_to_section(self.object, self.st, xr_logic.pick_section_from_condlist(db.actor, self.object, self.st.on_use.condlist)) then
 			return true
 		end
 	end
@@ -206,6 +202,7 @@ function action_door:use_callback(door, actor)
 --		self:close_door(false)
 --	end
 end
+
 function action_door:hit_callback(obj, amount, local_direction, who, bone_index)
 	local who_name
 	if who then
@@ -222,6 +219,7 @@ function action_door:hit_callback(obj, amount, local_direction, who, bone_index)
 		return
 	end
 end
+
 function action_door:deactivate()
 	self.object:set_tip_text("")
 end
@@ -247,18 +245,16 @@ function set_scheme(npc, ini, scheme, section, gulag_name)
 
 	st.show_tips = utils.cfg_get_bool(ini, section, "show_tips", npc, false, true)
 
-	st.tip_open  = utils.cfg_get_string(ini, section, "tip_open", npc, false, "", "tip_door_open")		
+	st.tip_open  = utils.cfg_get_string(ini, section, "tip_open", npc, false, "", "tip_door_open")
 	st.tip_unlock  = utils.cfg_get_string(ini, section, "tip_open", npc, false, "", "tip_door_locked")
 	st.tip_close = utils.cfg_get_string(ini, section, "tip_close", npc, false, "", "tip_door_close")
-	
-	
+
 --	st.snd_init        = utils.cfg_get_string(ini, section, "snd_init", npc, false, "")
 	st.snd_open_start  = utils.cfg_get_string(ini, section, "snd_open_start", npc, false, "", "trader_door_open_start")
 	st.snd_close_start = utils.cfg_get_string(ini, section, "snd_close_start", npc, false, "", "trader_door_close_start")
 	st.snd_close_stop  = utils.cfg_get_string(ini, section, "snd_close_stop", npc, false, "", "trader_door_close_stop")
-	
+
 	st.on_use    = xr_logic.cfg_get_condlist(ini, section, "on_use", npc)
-	
-		
+
 	st.hit_on_bone = utils.parse_data_1v(npc, utils.cfg_get_string(ini, section, "hit_on_bone", npc, false, ""))
 end

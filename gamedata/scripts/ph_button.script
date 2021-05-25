@@ -1,8 +1,6 @@
 ----------------------------------------------------------------------------------------------------
 -- Button
 ----------------------------------------------------------------------------------------------------
--- Разработчик: Andrey Fidrya (Zmey) af@svitonline.com
-----------------------------------------------------------------------------------------------------
 
 class "ph_button"
 
@@ -13,7 +11,6 @@ end
 
 function ph_button:reset_scheme()
 	self.object:play_cycle(self.st.anim, self.st.blending)
-
 	self.last_hit_tm = time_global()
 end
 
@@ -89,8 +86,7 @@ function set_scheme(npc, ini, scheme, section, gulag_name)
 
 	st.anim = utils.cfg_get_string(ini, section, "anim", npc, true, "")
 	st.blending = utils.cfg_get_bool (ini, section, "anim_blend", npc, false, true)
-	if st.blending == nil then 	
-	   st.blending = true 
+	if st.blending == nil then
+		st.blending = true
 	end
 end
-

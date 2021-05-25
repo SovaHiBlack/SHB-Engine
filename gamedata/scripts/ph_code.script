@@ -1,9 +1,6 @@
 ----------------------------------------------------------------------------------------------------
 -- Code Pad
 ----------------------------------------------------------------------------------------------------
--- Author: Jim
--- Доработка: 2006 @ Oleg Kreptul (Haron) okreptul@yahoo.com
-----------------------------------------------------------------------------------------------------
 
 class "codepad"
 
@@ -22,7 +19,7 @@ end
 
 function codepad:use_callback(obj, who)
 	local numpad = ui_numpad.numpad(self)
-	level.start_stop_menu(numpad,true)
+	level.start_stop_menu(numpad, true)
 end
 
 function codepad:OnNumberReceive(text)
@@ -41,6 +38,7 @@ function codepad:OnNumberReceive(text)
 		end
 	end
 end
+
 function codepad:deactivate()
 	self.object:set_tip_text("")
 end
@@ -61,8 +59,8 @@ function set_scheme(npc, ini, scheme, section, gulag_name)
 
 	st.tips  = utils.cfg_get_string(ini, section, "tips", npc, false, "", "st_codelock")
 	npc:set_tip_text(st.tips)
-	
-	st.code = utils.cfg_get_number(ini, section, "code", npc, false)    
+
+	st.code = utils.cfg_get_number(ini, section, "code", npc, false)
 	if st.code then
 		st.on_code = xr_logic.cfg_get_condlist(ini, section, "on_code", npc)
 		printf("ph_code <set_scheme>: on_code [%d]", st.code)

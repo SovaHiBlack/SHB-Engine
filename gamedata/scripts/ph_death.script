@@ -1,8 +1,6 @@
 ----------------------------------------------------------------------------------------------------
 -- Physics death checker
 ----------------------------------------------------------------------------------------------------
--- Разработчик: Tunduk Vladimir aka Sidorovich
-----------------------------------------------------------------------------------------------------
 
 class "ph_on_death"
 
@@ -40,7 +38,5 @@ function set_scheme(npc, ini, scheme, section, gulag_name)
 end
 
 function disable_scheme(npc, scheme)
----	npc:set_callback(callback.death, nil)
+--	npc:set_callback(callback.death, nil)
 end
-
-

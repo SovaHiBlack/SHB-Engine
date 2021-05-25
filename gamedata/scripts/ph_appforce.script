@@ -1,5 +1,4 @@
 -- Приложение силы к физическому объекту
--- Created by Tunduk Vladimir aka Sidorovich
 
 ----------------
 class "ph_force"

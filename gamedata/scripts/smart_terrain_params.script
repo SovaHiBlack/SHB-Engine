@@ -1,8 +1,8 @@
---[[----------------------------------------------------------------------------------------------
-Распарсевание и хранение настроек смарт террейнов
-Чугай Александр
-------------------------------------------------------------------------------------------------]]
+--' -----------------------------------------------------------------------------------------------
+--' Распарсевание и хранение настроек смарт террейнов
+--' -----------------------------------------------------------------------------------------------
 
+--' -----------------------------------------------------------------------------------------------
 local params_loaded = false
 
 local stay_times
@@ -21,27 +21,29 @@ local stay_times
 false означает, что пытались прочитать, но не нашли такой предустановки
 ]]
 local presets = {}
+--' -----------------------------------------------------------------------------------------------
 
--- возвращает таблицу с предустановкой или false
-function read_preset( preset_name )
-	local ltx = ini_file( "misc\\smart_terrain_presets.ltx" )
+--' -----------------------------------------------------------------------------------------------
+--' возвращает таблицу с предустановкой или false
+function read_preset(preset_name)
+	local ltx = ini_file("misc\\smart_terrain_presets.ltx")
 
-	if ltx and ltx:section_exist( preset_name ) then
+	if ltx and ltx:section_exist(preset_name) then
 		local preset = {}
 		local result, field, str
 		local t
-		local n = ltx:line_count( preset_name )
+		local n = ltx:line_count(preset_name)
 		local rank_min, rank_max, rank_interval
 
 		for i = 0, n-1 do
-			result, field, str = ltx:r_line( preset_name, i, "", "" )
+			result, field, str = ltx:r_line(preset_name, i, "", "")
 
-			t = parse_names( str )
+			t = parse_names(str)
 
 			rank_min, rank_max = 10000, 0
 
-			for i, rank_name in ipairs( t ) do
-				rank_interval = ranks.get_rank_interval( rank_name )
+			for i, rank_name in ipairs(t) do
+				rank_interval = ranks.get_rank_interval(rank_name)
 
 				if rank_interval[1] < rank_min then
 					rank_min = rank_interval[1]
@@ -60,8 +62,10 @@ function read_preset( preset_name )
 		return false
 	end
 end
+--' -----------------------------------------------------------------------------------------------
 
--- загрузить различные общие для всех смартов настройки
+--' -----------------------------------------------------------------------------------------------
+--' загрузить различные общие для всех смартов настройки
 function load_params()
 	params_loaded = true
 
@@ -70,36 +74,38 @@ function load_params()
 	stay_times = {}
 
 	local result, field, str
-	local n = ltx:line_count( "smart_terrain_stay_time" )
+	local n = ltx:line_count("smart_terrain_stay_time")
 
 	for i = 0, n-1 do
-		result, field, str = ltx:r_line( "smart_terrain_stay_time", i, "", "" )
+		result, field, str = ltx:r_line("smart_terrain_stay_time", i, "", "")
 
-		stay_times[field] = parse_nums( str )
+		stay_times[field] = parse_nums(str)
 	end
 end
+--' -----------------------------------------------------------------------------------------------
 
--- получить временной интервал
-function get_stay_time_interval( name )
+--' -----------------------------------------------------------------------------------------------
+--' получить временной интервал
+function get_stay_time_interval(name)
 	if not params_loaded then
 		load_params()
---		print_table( stay_times )
+--		print_table(stay_times)
 	end
 
 	if not stay_times[name] then
-		abort( "unknown stay_time interval '%s'", name )
+		abort("unknown stay_time interval '%s'", name)
 --		name = "default"
 	end
 
 	return stay_times[name][1], stay_times[name][2]
 end
 
--- получить предустановку
-function get_preset( preset_name )
+--' получить предустановку
+function get_preset(preset_name)
 	if presets[preset_name] == nil then
-		presets[preset_name] = read_preset( preset_name )
+		presets[preset_name] = read_preset(preset_name)
 	end
 
 	return presets[preset_name]
 end
-
+--' -----------------------------------------------------------------------------------------------

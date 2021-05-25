@@ -1,8 +1,6 @@
 ----------------------------------------------------------------------------------------------------
 -- Mob Camp
 ----------------------------------------------------------------------------------------------------
--- Разработчик: Jim
-----------------------------------------------------------------------------------------------------
 
 local STATE_CAMP					= 1
 local STATE_ALIFE					= 2
@@ -26,10 +24,10 @@ function mob_camp:reset_scheme()
 	xr_logic.mob_capture		(self.object, true)
 
 	mob_state_mgr.set_state		(self.object, db.actor, self.st.state)
-	
+
 	-- reset signals
 	self.st.signals				= {}
-	
+
 	-- initialize look point
 	self.look_path = patrol(self.st.look_point)
 	if not self.look_path then
@@ -62,15 +60,15 @@ function mob_camp:reset_scheme()
 
 	self.state_current		= STATE_CAMP
 	self.state_prev			= self.state_current
-	
+
 	-- select cur point
 	self.cur_point_index	= 0
 	self:select_current_home_point(true)
-	
+
 	self.time_point_changed = time_global()
-	
+
 	self.prev_enemy			= false
-	
+
 	-- check enemy transfering
 	if self.st.skip_transfer_enemy then
 		self.object:skip_transfer_enemy(true)
@@ -231,12 +229,11 @@ function mob_camp:execute_state()
 --		
 --		printf("~MOB_CAMP: From [%s] To [%s]", str2, str1)		
 --	end
-		
-	
+
 	if (self.state_current == STATE_ALIFE) and (self.state_prev == STATE_ALIFE) then
 		return
 	end
-	
+
 	if (self.state_current == STATE_ALIFE) and (self.state_prev ~= STATE_ALIFE) then
 		xr_logic.mob_release(self.object)
 		return
@@ -245,8 +242,7 @@ function mob_camp:execute_state()
 	if (self.state_current ~= STATE_ALIFE) and (self.state_prev == STATE_ALIFE) then
 		xr_logic.mob_capture(self.object, true)
 	end
-	
-	
+
 	-- STATE_CAMP
 	if self.state_current == STATE_CAMP then
 		-- handle look point
@@ -257,10 +253,10 @@ function mob_camp:execute_state()
 					cond(cond.look_end)
 			)
 		end
-	
+
 		return
 	end
-	
+
 	-- STATE_MOVE_HOME
 	if self.state_current == STATE_MOVE_HOME then
 		if not self.object:action() then
@@ -281,7 +277,6 @@ function mob_camp:execute_state()
 		end
 		return
 	end
-
 end
 
 function mob_camp:deactivate()
@@ -341,4 +336,3 @@ function set_scheme(npc, ini, scheme, section, gulag_name)
 	-- load transfer enemy flag ()
 	storage.skip_transfer_enemy = ini:line_exist( section, "skip_transfer_enemy")
 end
-

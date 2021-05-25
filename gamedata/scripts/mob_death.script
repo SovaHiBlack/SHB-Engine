@@ -1,8 +1,6 @@
 ----------------------------------------------------------------------------------------------------
 -- Mob death
 ----------------------------------------------------------------------------------------------------
--- Разработчик: Andrey Fidrya (Zmey) af@svitonline.com
-----------------------------------------------------------------------------------------------------
 
 class "mob_death"
 
@@ -34,7 +32,7 @@ end
 ---------------------------------------------------------------------------------------------------------------------
 function add_to_binder(npc, ini, scheme, section, storage)
 	local action = mob_death(npc, storage)
-	xr_logic.subscribe_action_for_events(npc, storage, action) 	
+	xr_logic.subscribe_action_for_events(npc, storage, action)
 end
 
 function set_scheme(npc, ini, scheme, section, gulag_name)

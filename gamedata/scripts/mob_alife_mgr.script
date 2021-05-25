@@ -65,4 +65,3 @@ function alife_control(obj, actor, mode)
 	-- Остальные монстры работают под схемой
 	return false
 end
-

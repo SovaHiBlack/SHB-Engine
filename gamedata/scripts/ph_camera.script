@@ -1,8 +1,6 @@
 ----------------------------------------------------------------------------------------------------
 -- Cameras
 ----------------------------------------------------------------------------------------------------
--- »сходный скрипт: Oleg Hryptul (Haron) haronk@ukr.net
-----------------------------------------------------------------------------------------------------
 
 local camera_off = 0
 local camera_enemy_tracking = 1
@@ -26,33 +24,33 @@ function action_camera_activity:__init(obj, storage)
 	self.ocular_joint = nil -- джоинт окул€ра камеры
 	self.pause = false
 	self.pause_start = 0
-	
+
 	self.state = camera_off
 	self.enemy_pos = nil
-	
+
 	printf("_hr: action_camera_activity:__init")
 end
 
 function action_camera_activity:reset_scheme()
 	printf("_hr: action_camera_activity:reset_scheme: self.object:name()='%s'", self.object:name())
-	
+
 	--self.st.signals = {}
 
 	xr_logic.mob_capture(self.object, true)
 
 	if self.st.state == "path_tracking" then
 		self.state = camera_move
-		
+
 		if self.path == nil then
 			self.path = patrol(self.st.path_look)
 		end
 		self.num_wp = self.path:count()
 		self.cur_wp = self.st.start_wp
-		
+
 		action(self.object, look(self.path:point(self.cur_wp), self.st.speed_h, self.st.speed_p), cond(cond.look_end))
 	--elseif self.st.state == "range_tracking" then
 	end
-	
+
 	self.st.signals = {}
 end
 

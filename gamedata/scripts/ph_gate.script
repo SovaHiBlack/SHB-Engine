@@ -1,11 +1,7 @@
 ----------------------------------------------------------------------------------------------------
 -- Physic gate control
 ----------------------------------------------------------------------------------------------------
--- Исходный скрипт (ph_door): Evgeniy Negrobov (Jon) jon@gsc-game.kiev.ua
--- Доработка: Oleg Kreptul (Haron) haronk@ukr.net
-----------------------------------------------------------------------------------------------------
 
-----------------------------------------------------------------------------------------------------
 --[[
 Состояния:
 state: состояние, в котором дверь находится при инициализации
@@ -60,7 +56,7 @@ local def_soft_lock_velocity = 5
 class "action_gate"
 
 function action_gate:__init(obj, storage)
-	printf	("action_gate::action_gate() called")
+	printf("action_gate::action_gate() called")
 	self.object = obj
 	self.st = storage
 	self.snd_obj = nil
@@ -68,13 +64,13 @@ function action_gate:__init(obj, storage)
 end
 
 function action_gate:__finalize()
-	printf	("action_gate::~action_gate() called")
+	printf("action_gate::~action_gate() called")
 end
 
 function action_gate:reset_scheme(loading)
 	printf("_bp: action_gate:reset_scheme: self.object:name()='%s'", self.object:name())
 	self.initialized = false
-	
+
 	self:initialize(loading)
 end
 
@@ -129,7 +125,7 @@ function action_gate:initialize(loading)
 	if not self.ph_shell then
 		return
 	end
-	
+
 	local left_open_limit, right_open_limit
 	if self.st.la and self.st.la >= 0 and self.st.la <= 180 then
 		left_open_limit = -utils.deg2rad(self.st.la)
@@ -141,15 +137,15 @@ function action_gate:initialize(loading)
 	else
 		right_open_limit = -utils.deg2rad(def_open_limit)
 	end
-	
+
 	self.bone_id[1] = self:get_bone_id("door_left")
 	self.bone_id[2] = self:get_bone_id("door_right")
 	--self.joint_left = ph_shell:get_joint_by_bone_name("door_left")
 	--self.joint_right = ph_shell:get_joint_by_bone_name("door_right")
-	
+
 	local angle_left = 0
 	local angle_right = 0
-	
+
 	if self.joint_left then
 		angle_left = self.joint_left:get_axis_angle(1)
 		printf("_bp: gate left angle %f", angle_left)
@@ -186,17 +182,17 @@ function action_gate:initialize(loading)
 		printf("_bp: ph_gate.state = none")
 		self.state = state_none
 	end
-	
+
 	self.left_open_limit = left_open_limit
 	self.left_close_limit = def_close_limit
 	self.right_open_limit = right_open_limit
 	self.right_close_limit = def_close_limit
-	
+
 	self:set_limits(1, left_open_limit, def_close_limit)
 	self:set_limits(2, right_open_limit, def_close_limit)
 
 	self.breakable = self.st.breakable
-	
+
 	if self.breakable then
 		self.ph_shell:unblock_breaking()
 	else
@@ -312,14 +308,13 @@ end
 
 function action_gate:gate_play_snd_from_set(sndset)
 	if self.snd_obj ~= nil then
-	   self.snd_obj:stop ()
-	   self.snd_obj = nil
-	end    
-		
+		self.snd_obj:stop ()
+		self.snd_obj = nil
+	end
+
 	self.snd_obj = xr_sound.get_sound_object(sndset, "random")
 	if not self.snd_obj then
-		abort("object '%s': unable to create a sound object for sound '%s' (soundset '%s')",
-			self.object:name(), snd, sndset)
+		abort("object '%s': unable to create a sound object for sound '%s' (soundset '%s')", self.object:name(), snd, sndset)
 	end
 	self.snd_obj:play_at_pos(self.object, self.object:position())
 end
@@ -485,7 +480,7 @@ function action_gate:hit_callback(obj, amount, local_direction, who, bone_index)
 		else
 			force = 0
 			velocity = 0
-		end	    
+		end
 		self:set_max_fv(1, force, velocity)
 		--self.joint_left:set_max_force_and_velocity(force, velocity, 1)
 
@@ -533,7 +528,7 @@ function action_gate:use_callback(obj, who)
 	if self:try_switch() then
 		return
 	end
-	
+
 	if self.locking == state_lock_hard or self.locking == state_lock_soft then
 		if self.st.snd_open_start then
 			self:gate_play_snd_from_set(self.st.snd_open_start)
