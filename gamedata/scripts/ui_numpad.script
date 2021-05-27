@@ -151,12 +151,12 @@ function numpad:OnButton_OK_clicked()
 	self.owner:OnNumberReceive(text)
 end
 
-function numpad:OnKeyboard(dik, keyboard_action)  --virtual function
-	CUIScriptWnd.OnKeyboard(self,dik,keyboard_action)
+function numpad:OnKeyboard(dik, keyboard_action)		--' virtual function
+	CUIScriptWnd.OnKeyboard(self, dik, keyboard_action)
 
 	if keyboard_action == ui_events.WINDOW_KEY_PRESSED then
 		if dik == DIK_keys.DIK_ESCAPE then
-			self:GetHolder():start_stop_menu(self,true)
+			self:GetHolder():start_stop_menu(self, true)
 		end
 
 		if dik == DIK_keys.DIK_0 or dik == DIK_keys.DIK_NUMPAD0 then
