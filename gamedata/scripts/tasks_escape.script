@@ -2,71 +2,45 @@
 function proceed()
 	local actor = db.actor
 
-	if not has_alife_info("tutorial_artefact_start") and 
-		not has_alife_info("tutorial_artefact_gain") and 
-		actor:object("af_blood_tutorial") ~= nil 
-	then
+	if not has_alife_info("tutorial_artefact_start") and not has_alife_info("tutorial_artefact_gain") and actor:object("af_blood_tutorial") ~= nil then
 		actor:give_info_portion("tutorial_artefact_gain")
 	end
 
-	if (has_alife_info("tutorial_end") or 
-		has_alife_info("esc_kill_bandits_quest_done")) and 
-		not has_alife_info("esc_path_to_lager") 
-	then
+	if (has_alife_info("tutorial_end") or has_alife_info("esc_kill_bandits_quest_done")) and not has_alife_info("esc_path_to_lager") then
 		actor:give_info_portion("esc_path_to_lager")
 	end
 
-	if not has_alife_info("tutorial_wounded_fail") and 
-		not has_alife_info("tutorial_wounded_help") 
-	then
-		if has_alife_info("tutorial_wounded_die") or 
-			has_alife_info("tutorial_wounded_death") 
-		then
+	if not has_alife_info("tutorial_wounded_fail") and not has_alife_info("tutorial_wounded_help") then
+		if has_alife_info("tutorial_wounded_die") or has_alife_info("tutorial_wounded_death") then
 			actor:give_info_portion("tutorial_wounded_fail")
 		end
 	end
 
-	if has_alife_info("garbage_meetstalker_die") and 
-		has_alife_info("escape_stalker_give") and 
-		not has_alife_info("agr_krot_band_start") 
-	then
+	if has_alife_info("garbage_meetstalker_die") and has_alife_info("escape_stalker_give") and not has_alife_info("agr_krot_band_start") then
 		actor:give_info_portion("agr_krot_band_start")
 		news_manager.send_tip(db.actor, "gar_seryi_info")
 	end
 
-	if not has_alife_info("tutorial_wounded_give_info") and 
-		actor:object("esc_wounded_flash") ~= nil
-	then
+	if not has_alife_info("tutorial_wounded_give_info") and actor:object("esc_wounded_flash") ~= nil then
 		actor:give_info_portion("tutorial_wounded_give_info")
 		actor:disable_info_portion("esc_trader_direct")
 	end
 
 	--' Туториальный труп
-	if has_alife_info("escape_blockpost_case") and 
-		not has_alife_info("escape_blockpost_case_have") and 
-		actor:object("quest_case_01") ~= nil 
-	then
+	if has_alife_info("escape_blockpost_case") and not has_alife_info("escape_blockpost_case_have") and actor:object("quest_case_01") ~= nil then
 		actor:give_info_portion("escape_blockpost_case_have")
 	end
 
-	if has_alife_info("escape_stalker_meet") and 
-		not has_alife_info("escape_stalker_done") and 
-		actor:object("fox_flash") ~= nil 
-	then
+	if has_alife_info("escape_stalker_meet") and not has_alife_info("escape_stalker_done") and actor:object("fox_flash") ~= nil then
 		actor:give_info_portion("escape_stalker_done")
 		actor:give_info_portion("garbage_meetstalker_start")
 	end
 
-	if has_alife_info("escape_blockpost_case") and 
-		not has_alife_info("escape_blockpost_case_have") and 
-		actor:object("quest_case_01") ~= nil 
-	then
+	if has_alife_info("escape_blockpost_case") and not has_alife_info("escape_blockpost_case_have") and actor:object("quest_case_01") ~= nil then
 		actor:give_info_portion("escape_blockpost_case_have")
 	end
 
-	if has_alife_info("esc_kill_bandits_quest_done") and 
-		not has_alife_info("esc_petruha_great")
-	then
+	if has_alife_info("esc_kill_bandits_quest_done") and not has_alife_info("esc_petruha_great") then
 		actor:give_info_portion("esc_petruha_great")
 	end
 end
@@ -74,11 +48,7 @@ end
 
 --' -----------------------------------------------------------------------------------------------
 function task_lager_complete()
-	if has_alife_info("escape_lager_help") and 
-		has_alife_info("escape_lager_killers_die") and 
-		(has_alife_info("esc_fanat_die") or 
-		has_alife_info("escape_lager_complete")) 
-	then
+	if has_alife_info("escape_lager_help") and has_alife_info("escape_lager_killers_die") and (has_alife_info("esc_fanat_die") or has_alife_info("escape_lager_complete")) then
 		return true
 	else
 		return false
@@ -88,9 +58,7 @@ end
 
 --' -----------------------------------------------------------------------------------------------
 function task_fox_complete()
-	if has_alife_info("garbage_meetstalker_start") or 
-		has_alife_info("escape_stalker_done") 
-	then
+	if has_alife_info("garbage_meetstalker_start") or has_alife_info("escape_stalker_done") then
 		return true
 	else
 		return false
@@ -100,9 +68,7 @@ end
 
 --' -----------------------------------------------------------------------------------------------
 function kill_tutorial_bandits()
-	if has_alife_info("esc_first_novice_dead") and 
-		has_alife_info("esc_second_novice_dead") 
-	then
+	if has_alife_info("esc_first_novice_dead") and has_alife_info("esc_second_novice_dead") then
 		return true
 	else
 		return false
@@ -122,9 +88,7 @@ end
 
 --' -----------------------------------------------------------------------------------------------
 function petruha_talk()
-	if has_alife_info("escape_factory_assault_say_hello") or 
-		has_alife_info("esc_petruha_great")
-	then
+	if has_alife_info("escape_factory_assault_say_hello") or has_alife_info("esc_petruha_great") then
 		return true
 	else
 		return false
@@ -143,7 +107,9 @@ function is_actor_enemy_lager()
 	end
 	return true
 end
+--' -----------------------------------------------------------------------------------------------
 
+--' -----------------------------------------------------------------------------------------------
 function process_info_portion(info_id)
 	--' пометки на карте
 	if info_id == "esc_tutorial_secret_place" then

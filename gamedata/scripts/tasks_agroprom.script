@@ -1,4 +1,3 @@
--- AGROPROM
 --' -----------------------------------------------------------------------------------------------
 function proceed()
 	local actor = db.actor
@@ -14,9 +13,7 @@ end
 
 --' -----------------------------------------------------------------------------------------------
 function process_info_portion(info_id)
-	if info_id == "agr_krot_secret_info" and
-		not has_alife_info("agr_find_gunslinger_cache_start")
-	then
+	if info_id == "agr_krot_secret_info" and not has_alife_info("agr_find_gunslinger_cache_start") then
 		db.actor:give_info_portion("agr_find_gunslinger_cache_start")
 		db.actor:give_info_portion("agr_krot_task_complete")
 		db.actor:give_info_portion("agr_factory_spawn_spetsnaz")

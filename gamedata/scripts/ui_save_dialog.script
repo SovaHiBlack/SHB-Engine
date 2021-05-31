@@ -229,7 +229,6 @@ function save_dialog:OnKeyboard(dik, keyboard_action)		--' virtual function
 		self:OnButton_ok_clicked()
 		self.owner:Show(true)
 	end
-
 	return true
 end
 --' --------------------
