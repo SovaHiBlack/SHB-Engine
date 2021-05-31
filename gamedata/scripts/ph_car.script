@@ -1,12 +1,8 @@
 ----------------------------------------------------------------------------------------------------
 -- Physic vehicle control
 ----------------------------------------------------------------------------------------------------
--- Исходный скрипт: Evgeniy Negrobov (Jon) jon@gsc-game.kiev.ua
--- Перевод на xr_logic: Andrey Fidrya (Zmey) af@svitonline.com
--- Доработка для БТР: Oleg Kreptul (Haron) haronk@ukr.net
-----------------------------------------------------------------------------------------------------
 
-local pi_2 = math.pi / 3 -- 60 degree
+local pi_2 = math.pi / 3							--' 60 degree
 
 local def_min_delta_per_sec = 0.2
 local def_min_car_explode_time = 1000
@@ -18,7 +14,7 @@ local def_min_fire_time = 0
 local def_update_time = 1.6
 local def_fire_range = 50
 
-local def_max_fc_upd_num = 1000 -- default maximum fastcall updates num
+local def_max_fc_upd_num = 1000						--' default maximum fastcall updates num
 local def_arriving_koef = 3 --70
 
 local delay_after_ignition = 500
@@ -73,17 +69,17 @@ function action_car:reset_scheme(loading)
 	end
 	printf("car <state>: headlights %s", self.st.headlights)
 	xr_logic.mob_capture(self.object, true)
-	action(self.object, object("left_light",  self.headlights), cond(cond.time_end, time_infinite))
+	action(self.object, object("left_light", self.headlights), cond(cond.time_end, time_infinite))
 	xr_logic.mob_capture(self.object, true)
 	action(self.object, object("right_light", self.headlights), cond(cond.time_end, time_infinite))
 
 	self.usable = self.st.usable
 	
 	--if self.usable ~= nil then
-	--    self.car_holder = self.object.get_current_holder() --engaged()
+	--    self.car_holder = self.object.get_current_holder()				--engaged()
 	--else
 	if self.usable == nil then
-		self.car:SetExplodeTime(0) -- (-1)
+		self.car:SetExplodeTime(0)					-- (-1)
 
 		if self.car:HasWeapon() then
 		printf("car <fire>: car has weapon.")
@@ -165,15 +161,15 @@ function action_car:reset_scheme(loading)
 			self.state_moving = state_moving_stop
 		end
 		printf("car <move>: start target_pt1 = %d", self.target_walk_pt)
-		
+
 		self.state_firetarget = state_none
 		self.state_cannon = state_none
 		self.state_shooting = state_none
-		
+
 		self.target_fire_pt = nil
 		self.target_fire_pt_idx = 0
 		self.target_obj = nil
-		
+
 		self.on_target_vis = nil
 		self.on_target_nvis = nil
 
@@ -182,7 +178,7 @@ function action_car:reset_scheme(loading)
 			--    self.state_cannon = xr_logic.pstor_retrieve(self.object, "state_cannon")
 			--    self.state_shooting = xr_logic.pstor_retrieve(self.object, "state_shooting")
 			--end
-			
+
 			self:set_shooting(self.state_shooting)
 
 			--printf("car <fire>: target = %s", self.st.fire_target)

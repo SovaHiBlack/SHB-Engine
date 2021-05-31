@@ -31,7 +31,7 @@ function mob_home:reset_scheme()
 --]]
 	local minr, maxr = def_min_radius, def_max_radius
 	local ptr = patrol(self.st.home)
-	local path_info = utils.parse_waypoint_data(self.st.home, ptr:flags(0), ptr:name(0))				
+	local path_info = utils.parse_waypoint_data(self.st.home, ptr:flags(0), ptr:name(0))
 	local r = 0
 
 	if self.st.home_min_radius then
@@ -59,7 +59,7 @@ function mob_home:reset_scheme()
 	end
 
 	-- check min and max radius
-	if	minr > maxr then
+	if minr > maxr then
 		_G.abort("Mob_Home : Home Min Radius MUST be < Max Radius. Got: min radius = %d, max radius = %d.", minr, maxr)
 	end 
 
@@ -106,4 +106,3 @@ function set_scheme(npc, ini, scheme, section, gulag_name)
 	
 	storage.aggressive			= ini:line_exist( section, "aggressive_home")
 end
-

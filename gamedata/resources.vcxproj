@@ -1518,7 +1518,7 @@
     <Xml Include="config\gameplay\tasks_radar.xml" />
     <Xml Include="config\gameplay\tasks_sarcofag.xml" />
     <Xml Include="config\gameplay\tasks_yantar.xml" />
-    <Xml Include="config\text\eng\stable_bio_name.xml" />
+    <Xml Include="config\text\eng\bio_name.xml" />
     <Xml Include="config\text\eng\stable_dialogs.xml" />
     <Xml Include="config\text\eng\stable_dialogs_aes.xml" />
     <Xml Include="config\text\eng\stable_dialogs_agroprom.xml" />

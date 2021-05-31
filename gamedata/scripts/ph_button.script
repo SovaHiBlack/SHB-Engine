@@ -23,9 +23,8 @@ end
 function ph_button:try_switch()
 	local st = db.storage[self.object:id()]
 	if st.active_scheme and st.active_scheme == "ph_button" and self.st.on_press then
-		--if xr_logic.try_switch_to_another_section(obj, self.st, db.actor) then
-		if xr_logic.switch_to_section(self.object, self.st,
-		   xr_logic.pick_section_from_condlist(db.actor, self.object, self.st.on_press.condlist)) then
+--		if xr_logic.try_switch_to_another_section(obj, self.st, db.actor) then
+		if xr_logic.switch_to_section(self.object, self.st, xr_logic.pick_section_from_condlist(db.actor, self.object, self.st.on_press.condlist)) then
 			return true
 		end
 	end
@@ -34,7 +33,9 @@ end
 
 function ph_button:hit_callback(obj, amount, local_direction, who, bone_index)
 	return
---[[	local who_name
+
+--[[
+	local who_name
 	if who then
 		who_name = who:name()
 	else
@@ -50,11 +51,11 @@ function ph_button:hit_callback(obj, amount, local_direction, who, bone_index)
 		end
 	end
 	]]
+
 end
 
 function ph_button:use_callback(victim, who)
-	printf("_bp: ph_button:use_callback: [%s] used by [%s]",
-		victim:name(), who:name())
+	printf("_bp: ph_button:use_callback: [%s] used by [%s]", victim:name(), who:name())
 
 	if self:try_switch() then
 		return
@@ -73,11 +74,11 @@ end
 function set_scheme(npc, ini, scheme, section, gulag_name)
 	local st = xr_logic.assign_storage_and_bind(npc, ini, scheme, section)
 
-	st.logic     = xr_logic.cfg_get_switch_conditions(ini, section, npc)
-	
-	st.on_press  = xr_logic.cfg_get_condlist(ini, section, "on_press", npc)
+	st.logic = xr_logic.cfg_get_switch_conditions(ini, section, npc)
 
-	st.tooltip  = utils.cfg_get_string(ini, section, "tooltip", npc, false, "")
+	st.on_press = xr_logic.cfg_get_condlist(ini, section, "on_press", npc)
+
+	st.tooltip = utils.cfg_get_string(ini, section, "tooltip", npc, false, "")
 	if st.tooltip then
 		npc:set_tip_text(st.tooltip)
 	else

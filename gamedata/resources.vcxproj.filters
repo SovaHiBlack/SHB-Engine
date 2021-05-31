@@ -4674,7 +4674,7 @@
     <Xml Include="config\text\rus\ui_st_pda.xml">
       <Filter>config\text\rus</Filter>
     </Xml>
-    <Xml Include="config\text\eng\stable_bio_name.xml">
+    <Xml Include="config\text\eng\bio_name.xml">
       <Filter>config\text\eng</Filter>
     </Xml>
     <Xml Include="config\text\eng\stable_dialog_manager.xml">

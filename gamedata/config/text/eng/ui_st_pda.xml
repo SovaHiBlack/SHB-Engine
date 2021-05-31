@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="windows-1251"?>
 <string_table>
 	<string id="st_actor_btn_hint">
 		<text>Center on actor</text>
@@ -188,9 +188,6 @@
 	</string>
 	<string id="st_tip">
 		<text>Message</text>
-	</string>
-	<string id="svoboda_outfit_description_m1">
-		<text>There is a metal wire mesh integrated into the suit which protects from electric and magnetic fields. The set also includes an instrument for night vision.</text>
 	</string>
 	<string id="Tasks">
 		<text>Tasks</text>

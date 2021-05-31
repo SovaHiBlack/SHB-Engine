@@ -58,4 +58,3 @@ function set_scheme(npc, ini, scheme, section, gulag_name)
 	local storage		= xr_logic.assign_storage_and_bind(npc, ini, scheme, section)
 	storage.logic		= xr_logic.cfg_get_switch_conditions(ini, section, npc)
 end
-

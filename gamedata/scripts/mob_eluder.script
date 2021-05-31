@@ -40,70 +40,66 @@ end
 ----------------------------------------------------------------------------------------------------
 
 function mob_eluder:update(delta)
-	
-	-- Check for alife control 
-	if not self:check_script_control() then	return end
-	
+	--' Check for alife control
+	if not self:check_script_control() then
+		return
+	end
+
 	if xr_logic.try_switch_to_another_section(self.object, self.st, db.actor) then
 		return
 	end
 
 	if not self.object:action() then
-		-- Select point here
-		self:update_distances	()
-		
+		--' Select point here
+		self:update_distances()
 		action(self.object, move(move.run_fwd, patrol(self.st.path):level_vertex_id(self.best_point_id), patrol(self.st.path):point(self.best_point_id), DIST_TO_END), cond(cond.move_end))
 	end
-	
 end
 
 ----------------------------------------------------------------------------------------------------
 -- SERVICE FUNCTIONS
 ----------------------------------------------------------------------------------------------------
 function mob_eluder:update_distances()
-	
-	local max_self_dist		= 0
-	local max_actor_dist	= 0
-	
+	local max_self_dist = 0
+	local max_actor_dist = 0
+
 	for i = 1, patrol(self.st.path):count() do
-		-- вычислить свое расстояние
-		self.self_distances[i]	= patrol(self.st.path):point(i-1):distance_to(self.object:position())
-		
+		--' вычислить свое расстояние
+		self.self_distances[i] = patrol(self.st.path):point(i-1):distance_to(self.object:position())
+
 		-- запомнить максимальное свое расстояние
 		if self.self_distances[i] > max_self_dist then
 			max_self_dist = self.self_distances[i]
 		end
-		
-		-- вычислить расстояние от актера
-		self.actor_distances[i]	= patrol(self.st.path):point(i-1):distance_to(db.actor:position())
-		
-		-- запомнить максимальное расстояние от актера
+
+		--' вычислить расстояние от актера
+		self.actor_distances[i] = patrol(self.st.path):point(i-1):distance_to(db.actor:position())
+
+		--' запомнить максимальное расстояние от актера
 		if self.actor_distances[i] > max_actor_dist then
 			max_actor_dist = self.actor_distances[i]
 		end
 	end
-	
-	local max_value		= 0
-	self.best_point_id	= 0
-	
-	local k_self		= 1
-	local k_actor		= 2
-	
-	-- пересчитать в соответствии с максимальным расстоянием
+
+	local max_value = 0
+	self.best_point_id = 0
+
+	local k_self = 1
+	local k_actor = 2
+
+	--' пересчитать в соответствии с максимальным расстоянием
 	for i = 1, patrol(self.st.path):count() do
-		self.self_distances[i]	= 1 - self.self_distances[i] / max_self_dist
-		self.actor_distances[i]	= self.actor_distances[i] / max_actor_dist
-		
-		-- сохранить результат
-		self.self_distances[i]	= self.actor_distances[i]*k_actor + self.self_distances[i]*k_self
-		
+		self.self_distances[i] = 1 - self.self_distances[i] / max_self_dist
+		self.actor_distances[i] = self.actor_distances[i] / max_actor_dist
+
+		--' сохранить результат
+		self.self_distances[i] = self.actor_distances[i] * k_actor + self.self_distances[i] * k_self
+
 		-- show
-		
-		if max_value < self.self_distances[i] and self.prev_point_id ~= i-1 then
-			max_value			= self.self_distances[i]
-			self.best_point_id	= i-1
+		if max_value < self.self_distances[i] and self.prev_point_id ~= i - 1 then
+			max_value = self.self_distances[i]
+			self.best_point_id = i - 1
 		end
-		
 	end
 	
 	self.prev_point_id = self.best_point_id
