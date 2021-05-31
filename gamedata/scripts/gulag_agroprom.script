@@ -1,4 +1,3 @@
-
 --'--------------------------------------------------------------------------
 --' AGROPROM
 --'--------------------------------------------------------------------------
@@ -41,8 +40,8 @@ function load_job( sj, gname, type, squad, groups )
 			idle = 0, position_threshold = 150, 
 			prior = 9, state = {0},
 			predicate = function(obj_info)
-			            	return obj_info.name == "agr_nii_commander"
-			            end,
+							return obj_info.name == "agr_nii_commander"
+						end,
 			in_rest = "", out_rest = "agr_nii_space_restrictor"
 		}
 		table.insert(sj, t)
@@ -50,8 +49,8 @@ function load_job( sj, gname, type, squad, groups )
 			idle = 0, position_threshold = 150, 
 			prior = 9, state = {1,2},
 			predicate = function(obj_info)
-			            	return obj_info.name == "agr_nii_commander"
-			            end,
+							return obj_info.name == "agr_nii_commander"
+						end,
 			in_rest = "", out_rest = "agr_nii_space_restrictor"
 		}
 		table.insert(sj, t)
@@ -65,8 +64,8 @@ function load_job( sj, gname, type, squad, groups )
 			idle = 0, position_threshold = 150, 
 			prior = 9, state = {3},
 			predicate = function(obj_info)
-			            	return obj_info.name == "agr_nii_commander"
-			            end,
+							return obj_info.name == "agr_nii_commander"
+						end,
 			in_rest = "", out_rest = "agr_nii_sr_building"
 		}
 		table.insert(sj, t)
@@ -132,7 +131,7 @@ function load_job( sj, gname, type, squad, groups )
 			prior = 3, state = {3},
 			in_rest = "", out_rest = "agr_nii_sr_building"
 		}
-        table.insert(sj, t)
+		table.insert(sj, t)
 		-- 2-й этаж основного здани€
 		t = { section = "logic@agr_nii_floor2_day_walker1",
 			idle = 0, position_threshold = 150, 
@@ -239,8 +238,8 @@ function load_job( sj, gname, type, squad, groups )
 			prior = 0, state = {0},
 			squad = squad, group = groups[1],
 			predicate = function(obj_info)
-			            	return obj_info.name == "agr_factory_assault_soldier1"
-			            end,
+							return obj_info.name == "agr_factory_assault_soldier1"
+						end,
 			in_rest = "", out_rest = ""
 		}
 		table.insert(sj, t)
@@ -249,8 +248,8 @@ function load_job( sj, gname, type, squad, groups )
 			prior = 0, state = {0},
 			squad = squad, group = groups[1],
 			predicate = function(obj_info)
-			            	return obj_info.name == "agr_factory_assault_soldier2"
-			            end,
+							return obj_info.name == "agr_factory_assault_soldier2"
+						end,
 			in_rest = "", out_rest = ""
 		}
 		table.insert(sj, t)
@@ -259,8 +258,8 @@ function load_job( sj, gname, type, squad, groups )
 			prior = 0, state = {0},
 			squad = squad, group = groups[1],
 			predicate = function(obj_info)
-			            	return obj_info.name == "agr_factory_assault_soldier3"
-			            end,
+							return obj_info.name == "agr_factory_assault_soldier3"
+						end,
 			in_rest = "", out_rest = ""
 		}
 		table.insert(sj, t)
@@ -269,8 +268,8 @@ function load_job( sj, gname, type, squad, groups )
 			prior = 0, state = {0},
 			squad = squad, group = groups[1],
 			predicate = function(obj_info)
-			            	return obj_info.name == "agr_factory_assault_soldier4"
-			            end,
+							return obj_info.name == "agr_factory_assault_soldier4"
+						end,
 			in_rest = "", out_rest = ""
 		}
 		table.insert(sj, t)
@@ -279,8 +278,8 @@ function load_job( sj, gname, type, squad, groups )
 			prior = 0, state = {0},
 			squad = squad, group = groups[1],
 			predicate = function(obj_info)
-			            	return obj_info.name == "agr_factory_assault_soldier5"
-			            end,
+							return obj_info.name == "agr_factory_assault_soldier5"
+						end,
 			in_rest = "", out_rest = ""
 		}
 		table.insert(sj, t)
@@ -289,8 +288,8 @@ function load_job( sj, gname, type, squad, groups )
 			prior = 0, state = {0},
 			squad = squad, group = groups[1],
 			predicate = function(obj_info)
-			            	return obj_info.name == "agr_factory_assault_soldier6"
-			            end,
+							return obj_info.name == "agr_factory_assault_soldier6"
+						end,
 			in_rest = "", out_rest = ""
 		}
 		table.insert(sj, t)
@@ -299,8 +298,8 @@ function load_job( sj, gname, type, squad, groups )
 			prior = 0, state = {0},
 			squad = squad, group = groups[1],
 			predicate = function(obj_info)
-			            	return obj_info.name == "agr_factory_assault_soldier7"
-			            end,
+							return obj_info.name == "agr_factory_assault_soldier7"
+						end,
 			in_rest = "", out_rest = ""
 		}
 		table.insert(sj, t)
@@ -309,8 +308,8 @@ function load_job( sj, gname, type, squad, groups )
 			prior = 0, state = {0},
 			squad = squad, group = groups[1],
 			predicate = function(obj_info)
-			            	return obj_info.name == "agr_factory_assault_soldier8"
-			            end,
+							return obj_info.name == "agr_factory_assault_soldier8"
+						end,
 			in_rest = "", out_rest = ""
 		}
 		table.insert(sj, t)
@@ -380,7 +379,7 @@ function load_job( sj, gname, type, squad, groups )
 		end
 
 ------ —талкеры ждут начала атаки ---------------------------------------------------------------
-        for i = 1, 3 do
+		for i = 1, 3 do
 			t = { section = "logic@agr_factory_defence_waiting_stalker"..i,
 				idle = 0, position_threshold = 150, 
 				prior = 0, state = {0,1},
@@ -612,7 +611,7 @@ function load_ltx(gname, type)
 end
 
 function load_ltx_agr_road_patrol1(gname, type)
-    local i, res = 0, ""
+	local i, res = 0, ""
 	for i = 1, 2 do
 	res = res .. "[logic@" .. gname .. i .. "]\n" ..
 					"active = walker1@" .. gname .. i .. "\n" ..
@@ -664,7 +663,7 @@ function load_ltx_agr_road_patrol1(gname, type)
 end
 
 function load_ltx_agr_road_patrol2(gname, type)
-    local i, res = 0, ""
+	local i, res = 0, ""
 	for i = 1, 2 do
 	res = res .. "[logic@" .. gname .. i .. "]\n" ..
 					"active = walker1@" .. gname .. i .. "\n" ..
