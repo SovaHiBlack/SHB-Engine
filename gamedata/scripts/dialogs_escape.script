@@ -120,9 +120,7 @@ end
 function tutorial_wounded_end(first_speaker, second_speaker)
 	local actor = db.actor
 	-- local wounded_flash = first_speaker:object("esc_wounded_flash")
-	if has_alife_info("tutorial_wounded_start")	and 
-		has_alife_info("tutorial_wounded_give_info")	and 	
-	   not has_alife_info("esc_serious_talk")
+	if has_alife_info("tutorial_wounded_start") and has_alife_info("tutorial_wounded_give_info") and not has_alife_info("esc_serious_talk") 
  -- and   wounded_flash ~= nil
 	then
 		return true

@@ -20,8 +20,8 @@ function disable_talk_victim(first_speaker, second_speaker)
 end
 
 function punch(first_speaker, second_speaker)
-	--abort("KICK ASS !!!!")
-	--xr_punch.punch[first_speaker:id()] = second_speaker
+--	abort("KICK ASS !!!!")
+--	xr_punch.punch[first_speaker:id()] = second_speaker
 	db.storage[second_speaker:id()].punch.enabled = true
 end
 
@@ -31,9 +31,7 @@ function get_money_then_leave(first_speaker, second_speaker)
 end
 
 function is_wounded(first_speaker, second_speaker)
-	if db.storage[first_speaker:id()].wounded ~= nil and
-	   db.storage[first_speaker:id()].wounded.wound_manager.can_use_medkit == true
-	then
+	if db.storage[first_speaker:id()].wounded ~= nil and db.storage[first_speaker:id()].wounded.wound_manager.can_use_medkit == true then
 		return false
 	end
 
@@ -41,9 +39,7 @@ function is_wounded(first_speaker, second_speaker)
 end
 
 function is_opp_wounded(first_speaker, second_speaker, dialog_id)
-	if db.storage[second_speaker:id()].wounded ~= nil and
-	   db.storage[second_speaker:id()].wounded.wound_manager.can_use_medkit == true
-	then
+	if db.storage[second_speaker:id()].wounded ~= nil and db.storage[second_speaker:id()].wounded.wound_manager.can_use_medkit == true then
 		return false
 	end
 
@@ -55,9 +51,7 @@ function is_not_wounded(first_speaker, second_speaker)
 end
 
 function actor_have_medkit(first_speaker, second_speaker)
-	return first_speaker:object("medkit") ~= nil or
-		   first_speaker:object("medkit_army") ~= nil or
-		   first_speaker:object("medkit_scientic") ~= nil
+	return first_speaker:object("medkit") ~= nil or first_speaker:object("medkit_army") ~= nil or first_speaker:object("medkit_scientic") ~= nil
 end
 
 function actor_have_bandage(first_speaker, second_speaker)
@@ -110,16 +104,10 @@ function relocate_item_section(victim, section, type)
 	if db.actor and victim then
 		if type == "in" then
 			--' Трансферить нужно только квестовые предметы.
-			if quest_section[section] == true and
-			   victim:object(section) ~= nil 
-			then
+			if quest_section[section] == true and victim:object(section) ~= nil then
 				victim:transfer_item(victim:object(section), db.actor)
 			else
-				alife():create(section,
-						db.actor:position(),
-						db.actor:level_vertex_id(),
-						db.actor:game_vertex_id(),
-						db.actor:id())
+				alife():create(section, db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
 			end
 		elseif type == "out" then
 			db.actor:transfer_item(db.actor:object(section), victim)
@@ -133,10 +121,10 @@ function relocate_money(victim, num, type)
 	if db.actor and victim then
 		if type == "in" then
 			db.actor:give_money(num)
-			game_stats.money_quest_update (num) 
+			game_stats.money_quest_update(num)
 		elseif type == "out" then
 			db.actor:transfer_money(num, victim)
-			game_stats.money_quest_update (-num) 
+			game_stats.money_quest_update(-num)
 		end
 
 		news_manager.relocate_money(db.actor, type, num)
@@ -154,8 +142,10 @@ function dialog_allowed(object, victim, id)
 	end
 
 	if db.storage[victim:id()].actor_dialogs ~= nil then
-		for k,v in pairs(db.storage[victim:id()].actor_dialogs) do
-			if v == id then return true end
+		for k, v in pairs(db.storage[victim:id()].actor_dialogs) do
+			if v == id then
+				return true
+			end
 		end
 	end
 
@@ -170,8 +160,10 @@ function dialog_not_disable(object, victim, id)
 	end
 
 	if db.storage[victim:id()].actor_disable ~= nil then
-		for k,v in pairs(db.storage[victim:id()].actor_disable) do
-			if v == id then return false end
+		for k, v in pairs(db.storage[victim:id()].actor_disable) do
+			if v == id then
+				return false
+			end
 		end
 	end
 
@@ -265,16 +257,13 @@ end
 -----------------------------------------------------------------------------------
 --' Инициализация торговли
 function trade_init(seller, buyer)
-	db.storage[seller:id()].meet.begin_wait_to_see.begin = time_global()/1000
-	xr_position.setPosition(db.storage[seller:id()].meet.Seller,
-							db.storage[seller:id()].meet.Seller:level_vertex_id())
+	db.storage[seller:id()].meet.begin_wait_to_see.begin = time_global() / 1000
+	xr_position.setPosition(db.storage[seller:id()].meet.Seller, db.storage[seller:id()].meet.Seller:level_vertex_id())
 	db.storage[seller:id()].meet.Buyer = buyer
 end
 
 function want_trade(seller, buyer)
-	if seller:relation(buyer) == game_object.friend or
-		seller:relation(buyer) == game_object.neutral
-	then
+	if seller:relation(buyer) == game_object.friend or seller:relation(buyer) == game_object.neutral then
 		return true
 	else
 		return false

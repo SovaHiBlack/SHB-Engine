@@ -17,10 +17,7 @@ function give_agroprom_reward(first_speaker, second_speaker)
 end
 
 function give_extra_task(actor, npc)
-	if barman_darklab_documents_given(actor, npc) or
-	   barman_x16_given(actor, npc) or
-	   has_alife_info("bar_deactivate_radar_start")
-	then
+	if barman_darklab_documents_given(actor, npc) or barman_x16_given(actor, npc) or has_alife_info("bar_deactivate_radar_start") then
 		return true
 	end
 
@@ -44,9 +41,7 @@ function barman_has_room_job(actor, npc)
 end
 
 function barman_need_complete_job(actor, npc)
-	if barman_darklab_documents_given(actor, npc) and 
-	   have_darklab_documents(actor, npc)
-	then
+	if barman_darklab_documents_given(actor, npc) and have_darklab_documents(actor, npc) then
 		return true
 	end
 
