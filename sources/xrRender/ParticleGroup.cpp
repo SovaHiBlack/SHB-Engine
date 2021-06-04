@@ -1,7 +1,7 @@
 //---------------------------------------------------------------------------
 #include "stdafx.h"
 
-#include "..\xrParticles\psystem.h"
+//#include "..\Particles\psystem.h"
 #include "ParticleGroup.h"
 #include "PSLibrary.h"
 

@@ -327,7 +327,7 @@
     <ProjectReference Include="..\Core\Core.vcxproj">
       <Project>{a0f7d1fb-59a7-4717-a7e4-96f37e91998e}</Project>
     </ProjectReference>
-    <ProjectReference Include="..\xrParticles\xrParticles.vcxproj">
+    <ProjectReference Include="..\Particles\Particles.vcxproj">
       <Project>{94a1c366-3d19-48e6-8170-4adc2e70df97}</Project>
     </ProjectReference>
     <ProjectReference Include="..\xrCPU_Pipe\xrCPU_Pipe.vcxproj">

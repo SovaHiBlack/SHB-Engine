@@ -22,7 +22,7 @@
 #include "..\ENGINE\IGameLevel.h"
 #include "..\ENGINE\blenders\blender.h"
 #include "..\ENGINE\blenders\blender_clsid.h"
-#include "..\xrParticles\psystem.h"
+#include "..\Particles\psystem.h"
 #include "..\xrRender\xrRender_console.h"
 #include "r2.h"
 

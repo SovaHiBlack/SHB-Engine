@@ -6,7 +6,7 @@
 	#define PARTICLES_API __declspec(dllexport)
 #else
 	#define PARTICLES_API __declspec(dllimport)
-	#pragma comment(lib,"xrParticles.lib")
+	#pragma comment(lib,"Particles.lib")
 #endif
 
 // Actually this must be < sqrt(MAXFLOAT) since we store this value squared.
