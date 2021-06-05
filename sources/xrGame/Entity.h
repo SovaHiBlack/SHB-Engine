@@ -13,7 +13,7 @@ class	ENGINE_API CBoneInstance;
 class   CPHMovementControl;
 class	CHudItem;
 
-class CEntity : public CPHShellHolder, public CDamageManager
+class CEntity : public CPHShellHolder, public C_DamageManager
 {
 	friend class CEntityCondition;
 

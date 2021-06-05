@@ -10,7 +10,7 @@
 #include "../monster_enemy_manager.h"
 #include "../monster_corpse_manager.h"
 
-#include "../../../step_manager.h"
+#include "..\..\..\StepManager.h"
 #include "../monster_event_manager.h"
 #include "..\MeleeChecker.h"
 #include "..\MonsterMorale.h"
@@ -41,7 +41,7 @@ class CControlDirectionBase;
 class CMonsterCoverManager;
 class CMonsterHome;
 
-class CBaseMonster : public CCustomMonster, public CStepManager, public CInventoryOwner
+class CBaseMonster : public CCustomMonster, public C_StepManager, public CInventoryOwner
 {
 	using inherited																		= CCustomMonster;
 

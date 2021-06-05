@@ -107,7 +107,7 @@ void CBaseMonster::UpdateCL( )
 
 	if (g_Alive( ))
 	{
-		CStepManager::update( );
+		C_StepManager::update( );
 	}
 
 	control( ).update_frame( );
@@ -457,7 +457,7 @@ DLL_Pure* CBaseMonster::_construct( )
 	control( ).set_base_controller(m_dir_base, ControlCom::eControlDir);
 
 	inherited::_construct( );
-	CStepManager::_construct( );
+	C_StepManager::_construct( );
 	CInventoryOwner::_construct( );
 	return this;
 }

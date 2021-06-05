@@ -1,38 +1,29 @@
-///////////////////////////////////////////////////////////////////////////////
-//	Module		: DamageManager.cpp
-//	Created		: 02.10.2001
-//	Modified	: 19.11.2003
-//	Author		: Dmitriy Iassenev
-//	Description	: Damage manager
-///////////////////////////////////////////////////////////////////////////////
-
 #include "stdafx.h"
 
 #include "DamageManager.h"
-//#include "..\ENGINE\Object.h"
 #include "..\ENGINE\skeletoncustom.h"
 
-CDamageManager::CDamageManager( )
+C_DamageManager::C_DamageManager( )
 { }
 
-CDamageManager::~CDamageManager( )
+C_DamageManager::~C_DamageManager( )
 { }
 
-DLL_Pure* CDamageManager::_construct( )
+DLL_Pure* C_DamageManager::_construct( )
 {
 	m_object								= smart_cast<CObject*>(this);
 	VERIFY									(m_object);
 	return									m_object;
 }
 
-void CDamageManager::reload(const char* section, CIniFile* ini)
+void C_DamageManager::reload(const char* section, CIniFile* ini)
 {
 	m_default_hit_factor					= 1.0f;
 	m_default_wound_factor					= 1.0f;
 
 	bool section_exist						= ini && ini->section_exist(section);
 
-	//прочитать дефолтные параметры
+	// прочитать дефолтные параметры
 	if (section_exist)
 	{
 		string32							buffer;
@@ -44,17 +35,17 @@ void CDamageManager::reload(const char* section, CIniFile* ini)
 		}
 	}
 
-	//инициализировать default параметрами
+	// инициализировать default параметрами
 	init_bones								(section, ini);
 
-	//записать поверху прописанные параметры
+	// записать поверху прописанные параметры
 	if (section_exist)
 	{
 		load_section						(section, ini);
 	}
 }
 
-void CDamageManager::reload(const char* section, const char* line, CIniFile* ini)
+void C_DamageManager::reload(const char* section, const char* line, CIniFile* ini)
 {
 	if (ini && ini->section_exist(section) && ini->line_exist(section, line))
 	{
@@ -66,17 +57,19 @@ void CDamageManager::reload(const char* section, const char* line, CIniFile* ini
 	}
 }
 
-void CDamageManager::HitScale(const int element, float& hit_scale, float& wound_scale, bool aim_bullet)
+void C_DamageManager::HitScale(const int element, float& hit_scale, float& wound_scale, bool aim_bullet)
 {
 	if (BI_NONE == u16(element))
-	{	//считаем что параметры для BI_NONE заданы как 1.0f
+	{	// считаем что параметры для BI_NONE заданы как 1.0f
 		hit_scale							= 1.0f * m_default_hit_factor;
 		wound_scale							= 1.0f * m_default_wound_factor;
 		return;
 	}
 
-	CKinematics* V							= smart_cast<CKinematics*>(m_object->Visual( ));			VERIFY(V);
-	//get hit scale
+	CKinematics* V							= smart_cast<CKinematics*>(m_object->Visual( ));
+	VERIFY									(V);
+
+	// get hit scale
 	float scale;
 	if (aim_bullet)
 	{
@@ -89,12 +82,12 @@ void CDamageManager::HitScale(const int element, float& hit_scale, float& wound_
 
 	hit_scale								= scale;
 
-	//get wound scale
+	// get wound scale
 	scale									= V->LL_GetBoneInstance(u16(element)).get_param(2);
 	wound_scale								= scale;
 }
 
-void CDamageManager::load_section(const char* section, CIniFile* ini)
+void C_DamageManager::load_section(const char* section, CIniFile* ini)
 {
 	string32								buffer;
 	CKinematics* kinematics					= smart_cast<CKinematics*>(m_object->Visual( ));
@@ -102,7 +95,8 @@ void CDamageManager::load_section(const char* section, CIniFile* ini)
 	for (CIniFile::SectCIt i = damages.Data.begin( ); damages.Data.end( ) != i; ++i)
 	{
 		if (xr_strcmp(*(*i).first, "default"))
-		{	//read all except default line
+		{
+			// read all except default line
 			VERIFY							(m_object);
 			int bone						= kinematics->LL_BoneID(i->first);
 			R_ASSERT2						(BI_NONE != bone, *(*i).first);
@@ -129,7 +123,7 @@ void CDamageManager::load_section(const char* section, CIniFile* ini)
 	}
 }
 
-void CDamageManager::init_bones(const char* section, CIniFile* ini)
+void C_DamageManager::init_bones(const char* section, CIniFile* ini)
 {
 	CKinematics* kinematics					= smart_cast<CKinematics*>(m_object->Visual( ));
 	VERIFY									(kinematics);

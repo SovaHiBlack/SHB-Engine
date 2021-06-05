@@ -124,7 +124,7 @@ void CStalkerAnimationPair::play			(CKinematicsAnimated *skeleton_animated, Play
 	m_actual				= true;
 
 	if (m_step_dependence)
-		object->CStepManager::on_animation_start(animation(),blend());
+		object->C_StepManager::on_animation_start(animation(),blend());
 
 #ifdef DEBUG
 	if (psAI_Flags.is(aiAnimation)) {

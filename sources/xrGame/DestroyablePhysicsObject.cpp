@@ -67,7 +67,7 @@ BOOL CDestroyablePhysicsObject::net_Spawn(CSE_Abstract* DC)
 		CPHDestroyable::Load(ini, "destroyed");
 	}
 
-	CDamageManager::reload("damage_section", ini);
+	C_DamageManager::reload("damage_section", ini);
 	if (ini)
 	{
 		if (ini->section_exist("immunities"))
@@ -104,7 +104,7 @@ void CDestroyablePhysicsObject::Hit(SHit* pHDS)
 		);
 	HDS.power = CHitImmunity::AffectHit(HDS.power, HDS.hit_type);
 	float hit_scale = 1.0f, wound_scale = 1.0f;
-	CDamageManager::HitScale(HDS.bone( ), hit_scale, wound_scale);
+	C_DamageManager::HitScale(HDS.bone( ), hit_scale, wound_scale);
 	HDS.power *= hit_scale;
 	inherited::Hit(&HDS);
 	m_fHealth -= HDS.power;
@@ -191,6 +191,6 @@ bool CDestroyablePhysicsObject::CanRemoveObject( )
 
 DLL_Pure* CDestroyablePhysicsObject::_construct( )
 {
-	CDamageManager::_construct( );
+	C_DamageManager::_construct( );
 	return inherited::_construct( );
 }

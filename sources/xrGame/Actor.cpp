@@ -240,7 +240,7 @@ void CActor::reload(const char* section)
 	CEntityAlive::reload(section);
 	CInventoryOwner::reload(section);
 	material( ).reload(section);
-	CStepManager::reload(section);
+	C_StepManager::reload(section);
 	memory( ).reload(section);
 	m_location_manager->reload(section);
 }
@@ -856,7 +856,7 @@ void CActor::UpdateCL( )
 
 	if (g_Alive( ))
 	{
-		CStepManager::update( );
+		C_StepManager::update( );
 	}
 
 	spatial.type |= STYPE_REACTTOSOUND;
@@ -1706,7 +1706,7 @@ DLL_Pure* CActor::_construct( )
 	m_pPhysics_support = xr_new<CCharacterPhysicsSupport>(CCharacterPhysicsSupport::etActor, this);
 	CEntityAlive::_construct( );
 	CInventoryOwner::_construct( );
-	CStepManager::_construct( );
+	C_StepManager::_construct( );
 
 	return this;
 }

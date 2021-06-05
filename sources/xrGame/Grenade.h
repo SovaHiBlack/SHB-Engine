@@ -88,7 +88,7 @@ public:
 	{
 		return this;
 	}
-	virtual IDamageSource* cast_IDamageSource( )
+	virtual I_DamageSource* cast_IDamageSource( )
 	{
 		return CExplosive::cast_IDamageSource( );
 	}

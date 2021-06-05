@@ -3,7 +3,7 @@
 #include "Missile.h"
 #include "IDamageSource.h"
 
-class CBolt : public CMissile, public IDamageSource
+class CBolt : public CMissile, public I_DamageSource
 {
 	using inherited = CMissile;
 	u16													m_thrower_id;
@@ -31,7 +31,7 @@ public:
 	{
 		return FALSE;
 	}
-	virtual IDamageSource*		cast_IDamageSource		( )
+	virtual I_DamageSource*		cast_IDamageSource		( )
 	{
 		return this;
 	}

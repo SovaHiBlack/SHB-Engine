@@ -60,7 +60,7 @@ void CActor::attach_Vehicle(CHolderCustom* vehicle)
 
 	SetWeaponHideState(INV_STATE_CAR, true);
 
-	CStepManager::on_animation_start(MotionID( ), 0);
+	C_StepManager::on_animation_start(MotionID( ), 0);
 }
 
 void CActor::detach_Vehicle( )

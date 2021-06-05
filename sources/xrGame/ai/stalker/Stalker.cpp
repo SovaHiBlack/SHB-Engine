@@ -208,7 +208,7 @@ void CStalker::reload			(const char* section)
 
 	CCustomMonster::reload			(section);
 	if (!already_dead())
-		CStepManager::reload		(section);
+		C_StepManager::reload		(section);
 
 //	if (!already_dead())
 		CObjectHandler::reload		(section);
@@ -645,7 +645,7 @@ void CStalker::UpdateCL()
 		STOP_PROFILE
 
 		START_PROFILE("stalker/client_update/step_manager")
-		CStepManager::update		();
+			C_StepManager::update		();
 		STOP_PROFILE
 
 		START_PROFILE("stalker/client_update/weapon_shot_effector")
@@ -930,7 +930,7 @@ DLL_Pure *CStalker::_construct			()
 	m_pPhysics_support					= xr_new<CCharacterPhysicsSupport>(CCharacterPhysicsSupport::etStalker,this);
 	CCustomMonster::_construct			();
 	CObjectHandler::_construct			();
-	CStepManager::_construct			();
+	C_StepManager::_construct			();
 
 	m_actor_relation_flags.zero			();
 	m_animation_manager					= xr_new<CStalkerAnimationManager>();

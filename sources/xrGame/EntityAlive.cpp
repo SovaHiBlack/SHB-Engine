@@ -269,7 +269,7 @@ void CEntityAlive::Hit(SHit* pHDS)
 		HDS.hit_type = ALife::eHitTypeWound;
 	}
 	//-------------------------------------------------------------------
-	CDamageManager::HitScale(HDS.boneID, conditions( ).hit_bone_scale( ), conditions( ).wound_bone_scale( ), pHDS->aim_bullet);
+	C_DamageManager::HitScale(HDS.boneID, conditions( ).hit_bone_scale( ), conditions( ).wound_bone_scale( ), pHDS->aim_bullet);
 
 	//изменить состояние, перед тем как родительский класс обработает хит
 	CWound* pWound = conditions( ).ConditionHit(&HDS);

@@ -1778,7 +1778,7 @@ u16 CPHSimpleCharacter::DamageInitiatorID( )const
 	CPHShellHolder* object = static_cast<CPHShellHolder*>(Level( ).Objects.net_Find(m_collision_damage_info.m_obj_id));
 	if (object && !object->getDestroy( ))
 	{
-		IDamageSource* ds = object->cast_IDamageSource( );
+		I_DamageSource* ds = object->cast_IDamageSource( );
 		if (ds)
 		{
 			ret = ds->Initiator( );

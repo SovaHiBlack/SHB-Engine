@@ -213,7 +213,7 @@ BOOL CEntity::net_Spawn		(CSE_Abstract* DC)
 	if(pKinematics) ini = pKinematics->LL_UserData();
 	if (ini) {
 		if (ini->section_exist("damage_section") && !use_simplified_visual())
-			CDamageManager::reload(pSettings->r_string("damage_section","damage"),ini);
+			C_DamageManager::reload(pSettings->r_string("damage_section","damage"),ini);
 
 		CParticlesPlayer::LoadParticles(pKinematics);
 	}
@@ -284,7 +284,7 @@ void CEntity::reload			(const char* section)
 {
 	inherited::reload			(section);
 	if (!use_simplified_visual())
-		CDamageManager::reload	(section,"damage",pSettings);
+		C_DamageManager::reload	(section,"damage",pSettings);
 }
 
 void CEntity::set_death_time	()
@@ -303,7 +303,7 @@ void CEntity::set_ready_to_save	()
 DLL_Pure *CEntity::_construct	()
 {
 	inherited::_construct		();
-	CDamageManager::_construct	();
+	C_DamageManager::_construct	();
 	m_entity_condition			= create_entity_condition(NULL);
 	return						(this);
 }

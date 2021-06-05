@@ -6,7 +6,7 @@
 class CPHDestroyable;
 class CPHCollisionDamageReceiver;
 class CPHSoundPlayer;
-class IDamageSource;
+class I_DamageSource;
 class CPHSkeleton;
 class CCharacterPhysicsSupport;
 class ICollisionDamageInfo;
@@ -89,7 +89,7 @@ public:
 	{
 		return this;
 	}
-	virtual IDamageSource* cast_IDamageSource( )
+	virtual I_DamageSource* cast_IDamageSource( )
 	{
 		return nullptr;
 	}

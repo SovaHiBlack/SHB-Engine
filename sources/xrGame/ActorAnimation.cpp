@@ -742,7 +742,7 @@ void CActor::g_SetAnimation(u32 mstate_rl)
 
 		m_current_legs = M_legs;
 
-		CStepManager::on_animation_start(M_legs, m_current_legs_blend);
+		C_StepManager::on_animation_start(M_legs, m_current_legs_blend);
 	}
 
 #ifdef _DEBUG

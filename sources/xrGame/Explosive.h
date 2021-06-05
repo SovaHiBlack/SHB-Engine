@@ -19,7 +19,7 @@ class IRender_Light;
 using BLASTED_OBJECTS_V										= xr_vector<CPHShellHolder*>;
 using BLASTED_OBJECTS_I										= BLASTED_OBJECTS_V::iterator;
 
-class CExplosive : public IDamageSource
+class CExplosive : public I_DamageSource
 {
 private:
 	collide::rq_results										rq_storage;
@@ -73,7 +73,7 @@ public:
 	{
 		return this;
 	}
-	virtual IDamageSource*		cast_IDamageSource			( )
+	virtual I_DamageSource*		cast_IDamageSource			( )
 	{
 		return this;
 	}

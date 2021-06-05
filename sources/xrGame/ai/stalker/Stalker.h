@@ -11,7 +11,7 @@
 #include "../../CustomMonster.h"
 #include "../../object_handler.h"
 #include "..\..\AI_PhraseDialogManager.h"
-#include "../../step_manager.h"
+#include "..\..\StepManager.h"
 #include "../../script_export_space.h"
 
 #ifdef DEBUG
@@ -79,7 +79,7 @@ class CStalker :
 	public CCustomMonster, 
 	public CObjectHandler,
 	public CAI_PhraseDialogManager,
-	public CStepManager
+	public C_StepManager
 {
 private:
 	typedef CCustomMonster								inherited;

@@ -76,7 +76,7 @@ void CBaseMonster::reload	(const char* section)
 	CCustomMonster::reload		(section);
 	
 	if (!CCustomMonster::use_simplified_visual())
-		CStepManager::reload	(section);
+		C_StepManager::reload	(section);
 
 	CInventoryOwner::reload		(section);
 	movement().reload	(section);

@@ -133,7 +133,7 @@ void CControlAnimation::play_part(SAnimationPart &part, PlayCallback callback)
 	m_man->notify		(ControlCom::eventAnimationStart, 0);
 
 	if ((part.motion != m_data.torso.motion) && part.blend)
-		m_object->CStepManager::on_animation_start(part.motion, part.blend);
+		m_object->C_StepManager::on_animation_start(part.motion, part.blend);
 
 
 	ANIMATION_EVENT_MAP_IT it = m_anim_events.find(part.motion);

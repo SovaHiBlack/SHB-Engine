@@ -217,9 +217,6 @@
     <Filter Include="AI\AComponents\SpaceRestrictionManager\SpaceRestrictionHolder\SpaceRestrictionShape">
       <UniqueIdentifier>{9a16ef20-b2f3-4381-ba08-bb9c9c0b039f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="AI\AComponents\Step Manager">
-      <UniqueIdentifier>{eb212181-a4f8-4f6a-9717-0c779516cc4d}</UniqueIdentifier>
-    </Filter>
     <Filter Include="AI\ACover">
       <UniqueIdentifier>{590217d7-4847-4186-8a95-1e9ef7ffd736}</UniqueIdentifier>
     </Filter>
@@ -2068,6 +2065,9 @@
     <Filter Include="Core\Client\Effectors\Monsters">
       <UniqueIdentifier>{35c13714-8f7c-4874-95a1-e99a6e6b97e7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="AI\AComponents\StepManager">
+      <UniqueIdentifier>{eb212181-a4f8-4f6a-9717-0c779516cc4d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="mt_config.h">
@@ -2457,11 +2457,11 @@
     <ClInclude Include="space_restriction_shape_inline.h">
       <Filter>AI\AComponents\SpaceRestrictionManager\SpaceRestrictionHolder\SpaceRestrictionShape</Filter>
     </ClInclude>
-    <ClInclude Include="step_manager.h">
-      <Filter>AI\AComponents\Step Manager</Filter>
+    <ClInclude Include="StepManager.h">
+      <Filter>AI\AComponents\StepManager</Filter>
     </ClInclude>
-    <ClInclude Include="step_manager_defs.h">
-      <Filter>AI\AComponents\Step Manager</Filter>
+    <ClInclude Include="StepManager_defs.h">
+      <Filter>AI\AComponents\StepManager</Filter>
     </ClInclude>
     <ClInclude Include="cover_manager.h">
       <Filter>AI\ACover</Filter>
@@ -6068,8 +6068,8 @@
     <ClCompile Include="space_restriction_shape.cpp">
       <Filter>AI\AComponents\SpaceRestrictionManager\SpaceRestrictionHolder\SpaceRestrictionShape</Filter>
     </ClCompile>
-    <ClCompile Include="step_manager.cpp">
-      <Filter>AI\AComponents\Step Manager</Filter>
+    <ClCompile Include="StepManager.cpp">
+      <Filter>AI\AComponents\StepManager</Filter>
     </ClCompile>
     <ClCompile Include="cover_manager.cpp">
       <Filter>AI\ACover</Filter>

@@ -12,7 +12,7 @@
 #include "InventoryOwner.h"
 #include "..\ENGINE\StatGraph.h"//
 #include "PhraseDialogManager.h"
-#include "step_manager.h"
+#include "StepManager.h"
 
 using namespace ACTOR_DEFS;
 
@@ -60,7 +60,7 @@ class	CActor :
 	public Feel::Touch,
 	public CInventoryOwner,
 	public CPhraseDialogManager,
-	public CStepManager,
+	public C_StepManager,
 	public Feel::Sound
 #ifdef DEBUG
 	, public pureRender
