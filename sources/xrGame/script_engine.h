@@ -14,9 +14,9 @@
 #include "associative_vector.h"
 
 extern "C" {
-	#include "..\..\xrLua\src\lua.h"
-	#include "..\..\xrLua\src\luajit.h"
-	#include "..\..\xrLua\src\lcoco.h"
+	#include "..\Lua\src\lua.h"
+	#include "..\Lua\src\luajit.h"
+	#include "..\Lua\src\lcoco.h"
 };
 
 #include "script_engine_space.h"

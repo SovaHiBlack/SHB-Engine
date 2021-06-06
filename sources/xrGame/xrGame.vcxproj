@@ -89,7 +89,7 @@
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <DisableSpecificWarnings>4237;%(DisableSpecificWarnings)</DisableSpecificWarnings>
-      <AdditionalIncludeDirectories>..\third-party;..\third-party\dxsdk\include;..\third-party\loki;.\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\third-party;..\third-party\dxsdk\include;..\third-party\loki;.\;..\lua\luabind</AdditionalIncludeDirectories>
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -145,7 +145,7 @@
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <DisableSpecificWarnings>4237;%(DisableSpecificWarnings)</DisableSpecificWarnings>
-      <AdditionalIncludeDirectories>..\third-party;..\third-party\dxsdk\include;..\third-party\loki;.\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\third-party;..\third-party\dxsdk\include;..\third-party\loki;.\;..\lua\luabind</AdditionalIncludeDirectories>
       <ExceptionHandling>false</ExceptionHandling>
     </ClCompile>
     <ResourceCompile>
@@ -2421,7 +2421,7 @@
     <ProjectReference Include="..\Core\Core.vcxproj">
       <Project>{a0f7d1fb-59a7-4717-a7e4-96f37e91998e}</Project>
     </ProjectReference>
-    <ProjectReference Include="..\xrLua\xrLua.vcxproj">
+    <ProjectReference Include="..\Lua\Lua.vcxproj">
       <Project>{9ace5473-6d68-4b96-ac42-b39eaba0fe1f}</Project>
     </ProjectReference>
     <ProjectReference Include="..\xrODE\contrib\msvc7\ode_default\default.vcxproj">

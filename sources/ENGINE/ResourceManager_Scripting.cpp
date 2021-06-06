@@ -7,7 +7,7 @@
 #include "blenders\blender_recorder.h"
 #include "ai_script_space.h"
 #include "ai_script_lua_extension.h"
-#include "luabind/return_reference_to_policy.hpp"
+#include "..\lua\luabind/return_reference_to_policy.hpp"
 
 using namespace				luabind;
 

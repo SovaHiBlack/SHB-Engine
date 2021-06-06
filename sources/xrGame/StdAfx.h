@@ -37,23 +37,23 @@ inline	void		throw_and_log(const xr_string &s) {Msg("! %s",s.c_str()); throw *sh
 #endif
 
 extern "C" {
-#include "..\..\xrLua\src\lua.h"
-#include "..\..\xrLua\src\lualib.h"
-#include "..\..\xrLua\src\lauxlib.h"
-#include "..\..\xrLua\src\luajit.h"
+#include "..\LUA\src\lua.h"
+#include "..\LUA\src\lualib.h"
+#include "..\LUA\src\lauxlib.h"
+#include "..\LUA\src\luajit.h"
 };
 
 #pragma warning(push)
 #pragma warning(disable:4995)
-#include <luabind/luabind.hpp>
+#include "..\LUA\luabind/luabind.hpp"
 #pragma warning(pop)
 
-#include <luabind/object.hpp>
-#include <luabind/functor.hpp>
-#include <luabind/operator.hpp>
-#include <luabind/adopt_policy.hpp>
-#include <luabind/return_reference_to_policy.hpp>
-#include <luabind/out_value_policy.hpp>
-#include <luabind/iterator_policy.hpp>
+#include "..\LUA\luabind\object.hpp"
+#include "..\LUA\luabind/functor.hpp"
+#include "..\LUA\luabind/operator.hpp"
+#include "..\LUA\luabind/adopt_policy.hpp"
+#include "..\LUA\luabind/return_reference_to_policy.hpp"
+#include "..\LUA\luabind/out_value_policy.hpp"
+#include "..\LUA\luabind/iterator_policy.hpp"
 
 #include <depr/dplay8.h>// раньше небыло

@@ -20,15 +20,15 @@ extern "C"
 {
 	//#define BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION
 
-#include "..\xrLua\src\lua.h"
-#include "..\xrLua\src\lualib.h"
-#include "..\xrLua\src\lauxlib.h"
-#include "..\xrLua\src\luajit.h"
+#include "..\Lua\src\lua.h"
+#include "..\Lua\src\lualib.h"
+#include "..\Lua\src\lauxlib.h"
+#include "..\Lua\src\luajit.h"
 }
 
 // Lua-bind
-#include <luabind/luabind.hpp>
-#include <luabind/object.hpp>
+#include "..\Lua\luabind/luabind.hpp"
+#include "..\Lua\luabind/object.hpp"
 
 #pragma warning(default:4244)
 #pragma warning(default:4995)

@@ -48,7 +48,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ode", "xrODE\contrib\msvc7\
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Particles", "Particles\Particles.vcxproj", "{94A1C366-3D19-48E6-8170-4ADC2E70DF97}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "xrLUA", "xrLua\xrLua.vcxproj", "{9ACE5473-6D68-4B96-AC42-B39EABA0FE1F}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LUA", "Lua\Lua.vcxproj", "{9ACE5473-6D68-4B96-AC42-B39EABA0FE1F}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "openal32", "xrOpenAL\OpenAL-Windows\Router\Router.vcxproj", "{566551F4-4EF1-4CB4-A131-F982E7606907}"
 EndProject
