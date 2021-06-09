@@ -443,4 +443,4 @@ inline bool					OnClient( )
 
 class CPHWorld;
 extern CPHWorld* ph_world;
-extern BOOL						g_bDebugEvents;
+extern bool						g_bDebugEvents;

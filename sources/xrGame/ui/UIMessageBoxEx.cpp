@@ -62,15 +62,3 @@ void CUIMessageBoxEx::SendMessage(CUIWindow* pWnd, s16 msg, void* pData)
 	}
 
 }
-/*
-const char* CUIMessageBoxEx::GetHost( )
-{
-	return m_pMessageBox->GetHost( );
-}
-*/
-/*
-const char* CUIMessageBoxEx::GetPassword( )
-{
-	return m_pMessageBox->GetPassword( );
-}
-*/

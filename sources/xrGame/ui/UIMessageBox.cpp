@@ -13,13 +13,6 @@ CUIMessageBox::CUIMessageBox( )
 	m_UIButtonCancel = nullptr;
 	m_UIStaticPicture = nullptr;
 	m_UIStaticText = nullptr;
-
-//	m_UIEditPass		= NULL;
-//	m_UIEditUserPass	= NULL;
-//	m_UIEditHost		= NULL;
-//	m_UIStaticPass		= NULL;
-//	m_UIStaticUserPass	= NULL;
-//	m_UIStaticHost		= NULL;
 }
 
 CUIMessageBox::~CUIMessageBox( )
@@ -37,12 +30,6 @@ void CUIMessageBox::Clear( )
 	xr_delete(m_UIButtonCancel);
 	xr_delete(m_UIStaticPicture);
 	xr_delete(m_UIStaticText);
-//	xr_delete(m_UIEditPass);
-//	xr_delete(m_UIEditUserPass);
-//	xr_delete(m_UIEditHost);
-//	xr_delete(m_UIStaticPass);
-//	xr_delete(m_UIStaticUserPass);
-//	xr_delete(m_UIStaticHost);
 }
 
 bool CUIMessageBox::OnMouse(float x, float y, EUIMessages mouse_action)
@@ -224,59 +211,3 @@ const char* CUIMessageBox::GetText( )
 {
 	return m_UIStaticText->GetText( );
 }
-/*
-const char* CUIMessageBox::GetHost(){
-	if (m_UIEditHost){
-		m_ret_val.clear();
-		xr_string tmp= m_UIEditHost->GetText();
-		xr_string::size_type pos = tmp.find(":");
-
-		if (xr_string::npos != pos)
-		{
-			m_ret_val.assign(tmp.begin(), tmp.begin()+pos);
-			tmp.erase(tmp.begin(), tmp.begin()+pos + 1);
-
-			m_ret_val += "/port=";
-		}
-		m_ret_val += tmp;
-
-		return m_ret_val.c_str();
-	}
-	else
-		return NULL;
-}
-*/
-/*
-const char* CUIMessageBox::GetPassword(){
-	if (m_UIEditPass)
-		return m_UIEditPass->GetText();
-	else
-		return NULL;
-}
-*/
-/*
-const char* CUIMessageBox::GetUserPassword(){
-	if (m_UIEditUserPass)
-		return m_UIEditUserPass->GetText();
-	else
-		return NULL;
-}
-*/
-/*
-void CUIMessageBox::SetUserPasswordMode(bool b)
-{
-	if(m_UIEditUserPass)
-		m_UIEditUserPass->Show(b);
-	if(m_UIStaticUserPass)
-		m_UIStaticUserPass->Show(b);
-}
-*/
-/*
-void CUIMessageBox::SetPasswordMode(bool b)
-{
-	if(m_UIEditPass)
-		m_UIEditPass->Show(b);
-	if(m_UIStaticPass)
-		m_UIStaticPass->Show(b);
-}
-*/

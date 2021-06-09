@@ -61,7 +61,6 @@ public:
 
 	void			SetTextComplexMode(bool mode = true);
 	bool			GetTextComplexMode( ) const;
-//	void			SetPasswordMode(bool mode = true);
 	void			SetColoringMode(bool mode);
 	void			SetCutWordsMode(bool mode);
 	void			SetUseNewLineMode(bool mode);

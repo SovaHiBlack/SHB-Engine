@@ -111,12 +111,7 @@ void CUICustomEdit::SetLightAnim(const char* lanim)
 		m_lanim = nullptr;
 	}
 }
-/*
-void CUICustomEdit::SetPasswordMode(bool mode)
-{
-	m_lines.SetPasswordMode(mode);
-}
-*/
+
 void CUICustomEdit::OnFocusLost( )
 {
 	CUIWindow::OnFocusLost( );

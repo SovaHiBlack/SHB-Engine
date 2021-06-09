@@ -46,16 +46,7 @@ bool CUILines::GetTextComplexMode( ) const
 {
 	return uFlags.test(flComplexMode) ? true : false;
 }
-/*
-void CUILines::SetPasswordMode(bool mode)
-{
-	uFlags.set(flPasswordMode, mode);
-	if (mode)
-	{
-		uFlags.set(flComplexMode, false);
-	}
-}
-*/
+
 void CUILines::SetColoringMode(bool mode)
 {
 	uFlags.set(flColoringMode, mode);

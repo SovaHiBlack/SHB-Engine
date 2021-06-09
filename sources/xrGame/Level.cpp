@@ -64,7 +64,7 @@ u32			lvInterpSteps = 0;
 
 CLevel::CLevel( ) :IPureClient(Device.GetTimerGlobal( ))
 {
-	g_bDebugEvents = strstr(Core.Params, "-debug_ge") ? TRUE : FALSE;
+	g_bDebugEvents = strstr(Core.Params, "-debug_ge") ? true : false;
 
 	Server = nullptr;
 
@@ -312,7 +312,7 @@ int	CLevel::get_RPID(const char* /**name/**/)
 	return -1;
 }
 
-BOOL g_bDebugEvents = FALSE;
+bool g_bDebugEvents = false;
 
 void CLevel::cl_Process_Event(u16 dest, u16 type, CNetPacket& P)
 {

@@ -57,7 +57,7 @@ inline std::string __cdecl		make_string			(const char* format, ...)
 	return temp;
 }
 
-extern CORE_API	CDebug								Debug;
+extern CORE_API CDebug								Debug;
 
 CORE_API void					LogStackTrace		(const char* header);
 
