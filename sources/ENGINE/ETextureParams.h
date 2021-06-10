@@ -87,7 +87,7 @@ struct STextureParams{
     u32			        border_color;
     u32			        fade_color;
     u32			        fade_amount;
-	u8					fade_delay;
+	U8					fade_delay;
     u32			        mip_filter;
     int			        width;
     int			        height;

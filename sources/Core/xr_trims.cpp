@@ -3,7 +3,7 @@
 char* _TrimLeft(char* str )
 {
 	char* p 	= str;
-	while( *p && (u8(*p)<=u8(' ')) ) p++;
+	while( *p && (U8(*p)<= U8(' ')) ) p++;
     if (p!=str){
         for (char* t=str; *p; t++,p++) *t=*p;
         *t = 0;
@@ -14,7 +14,7 @@ char* _TrimLeft(char* str )
 char* _TrimRight(char* str )
 {
 	char* p 	= str+xr_strlen(str);
-	while( (p!=str) && (u8(*p)<=u8(' ')) ) p--;
+	while( (p!=str) && (U8(*p)<= U8(' ')) ) p--;
     *(++p) 		= 0;
 	return str;
 }
@@ -219,7 +219,7 @@ xr_string& _TrimLeft( xr_string& str )
 {
 	const char* b		= str.c_str();
 	const char* p 		= str.c_str();
-	while( *p && (u8(*p)<=u8(' ')) ) p++;
+	while( *p && (U8(*p)<= U8(' ')) ) p++;
     if (p!=b)
     	str.erase	(0,p-b);
 	return str;
@@ -231,7 +231,7 @@ xr_string& _TrimRight( xr_string& str )
     size_t l		= str.length();
     if (l){
 		const char* p 		= str.c_str()+l-1;
-        while( (p!=b) && (u8(*p)<=u8(' ')) ) p--;
+        while( (p!=b) && (U8(*p)<= U8(' ')) ) p--;
         if (p!=(str+b))	str.erase	(p-b+1,l-(p-b));
     }
 	return str;

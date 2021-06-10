@@ -42,11 +42,11 @@ public:
 	inline void			w_u64	(u64 d)					{	w(&d,sizeof(u64));	}
 	inline void			w_u32	(u32 d)					{	w(&d,sizeof(u32));	}
 	inline void			w_u16	(u16 d)					{	w(&d,sizeof(u16));	}
-	inline void			w_u8	(u8 d)					{	w(&d,sizeof(u8));	}
+	inline void			w_u8	(U8 d)					{	w(&d,sizeof(U8));	}
 	inline void			w_s64	(s64 d)					{	w(&d,sizeof(s64));	}
 	inline void			w_s32	(int d)					{	w(&d,sizeof(int));	}
 	inline void			w_s16	(s16 d)					{	w(&d,sizeof(s16));	}
-	inline void			w_s8	(s8 d)					{	w(&d,sizeof(s8));	}
+	inline void			w_s8	(S8 d)					{	w(&d,sizeof(S8));	}
 	inline void			w_float	(float d)				{	w(&d,sizeof(float));}
 	inline void			w_string(const char* p)			{	w(p,(u32)xr_strlen(p));w_u8(13);w_u8(10);	}
 	inline void			w_stringZ(const char* p)		{	w(p,(u32)xr_strlen(p)+1);					}
@@ -72,7 +72,7 @@ public:
 	{
 		VERIFY		(a>=min && a<=max);
 		float q		= (a-min)/(max-min);
-		w_u8		(u8(iFloor(q*255.f+.5f)));
+		w_u8		(U8(iFloor(q*255.f+.5f)));
 	}
 	inline void 		w_angle16	(float a)		    {	w_float_q16	(angle_normalize(a),0,PI_MUL_2);}
 	inline void 		w_angle8	(float a)		    {	w_float_q8	(angle_normalize(a),0,PI_MUL_2);}
@@ -92,7 +92,7 @@ public:
 
 class CORE_API CMemoryWriter : public IWriter
 {
-	u8*				data;
+	U8*				data;
 	u32				position;
 	u32				mem_size;
 	u32				file_size;
@@ -112,7 +112,7 @@ public:
 	virtual u32		tell		() 			{	return position;			}
 
 	// specific
-	inline u8*			pointer		()			{	return data;				}
+	inline U8*			pointer		()			{	return data;				}
 	inline u32			size		() const 	{	return file_size;			}
 	inline void			clear		()			{	file_size=0; position=0;	}
 #pragma warning(push)
@@ -143,11 +143,11 @@ public:
 	inline u64			r_u64		()			{	u64 tmp;	r(&tmp,sizeof(tmp)); return tmp;	};
 	inline u32			r_u32		()			{	u32 tmp;	r(&tmp,sizeof(tmp)); return tmp;	};
 	inline u16			r_u16		()			{	u16 tmp;	r(&tmp,sizeof(tmp)); return tmp;	};
-	inline u8			r_u8		()			{	u8 tmp;		r(&tmp,sizeof(tmp)); return tmp;	};
+	inline U8			r_u8		()			{	U8 tmp;		r(&tmp,sizeof(tmp)); return tmp;	};
 	inline s64			r_s64		()			{	s64 tmp;	r(&tmp,sizeof(tmp)); return tmp;	};
 	inline int			r_s32		()			{	int tmp;	r(&tmp,sizeof(tmp)); return tmp;	};
 	inline s16			r_s16		()			{	s16 tmp;	r(&tmp,sizeof(tmp)); return tmp;	};
-	inline s8			r_s8		()			{	s8 tmp;		r(&tmp,sizeof(tmp)); return tmp;	};
+	inline S8			r_s8		()			{	S8 tmp;		r(&tmp,sizeof(tmp)); return tmp;	};
 	inline float		r_float		()			{	float tmp;	r(&tmp,sizeof(tmp)); return tmp;	};
 	inline void			r_fvector4	(Fvector4 &v){	r(&v,sizeof(Fvector4));	}
 	inline void			r_fvector3	(Fvector3 &v){	r(&v,sizeof(Fvector3));	}
@@ -166,7 +166,7 @@ public:
 	}
 	inline float		r_float_q8	(float min, float max)
 	{
-		u8 val		= r_u8();
+		U8 val		= r_u8();
 		float	A	= (float(val)/255.0001f) *(max-min) + min;	// floating-point-error possible
 		VERIFY		((A >= min) && (A <= max));
 		return	A;

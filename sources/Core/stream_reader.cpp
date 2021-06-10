@@ -44,7 +44,7 @@ void CStreamReader::map						(const u32 &new_offset)
 		end_offset				= m_archive_size;
 	
 	m_current_window_size		= end_offset - start_offset;
-	m_current_map_view_of_file	= (u8*)
+	m_current_map_view_of_file	= (U8*)
 		MapViewOfFile(
 			m_file_mapping_handle,
 			FILE_MAP_READ,
@@ -90,7 +90,7 @@ void CStreamReader::r						(void *_buffer, u32 buffer_size)
 		return;
 	}
 
-	u8							*buffer = (u8*)_buffer;
+	U8* buffer					= (U8*) _buffer;
 	u32							elapsed_in_window = m_current_window_size - (m_current_pointer - m_start_pointer);
 
 	do {

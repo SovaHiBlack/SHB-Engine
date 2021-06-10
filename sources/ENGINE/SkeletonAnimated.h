@@ -67,7 +67,7 @@ public:
 	float			timeTotal;
 	MotionID		motionID;
 	u16				bone_or_part;	// startup parameters
-	u8				channel;
+	U8				channel;
 	ECurvature		blend;
 	float			blendAccrue;	// increasing
 	float			blendFalloff;	// decreasing
@@ -135,12 +135,12 @@ private:
 
 	// Calculation
 private:
-			void				BoneChain_Calculate		(const CBoneData* bd, CBoneInstance &bi,u8 channel_mask, bool ignore_callbacks);
-			void				CLBone					(const CBoneData* bd, CBoneInstance &bi, const Fmatrix *parent,const CBlendInstance::BlendSVec &Blend, u8 mask_channel = (1<<0));
+			void				BoneChain_Calculate		(const CBoneData* bd, CBoneInstance &bi, U8 channel_mask, bool ignore_callbacks);
+			void				CLBone					(const CBoneData* bd, CBoneInstance &bi, const Fmatrix *parent,const CBlendInstance::BlendSVec &Blend, U8 mask_channel = (1<<0));
 
 public:
 	virtual void				Bone_Calculate			(CBoneData* bd, Fmatrix* parent);
-			void				Bone_GetAnimPos			(Fmatrix& pos,u16 id, u8 channel_mask, bool ignore_callbacks);
+			void				Bone_GetAnimPos			(Fmatrix& pos,u16 id, U8 channel_mask, bool ignore_callbacks);
 	virtual void				OnCalculateBones		();
 
 private:
@@ -175,7 +175,7 @@ protected:
 	CBlend*						IBlend_Create			();
 
 private:
-	void						IBlendSetup				(CBlend& B,u16 part,u8 channel, MotionID motion_ID, BOOL  bMixing, float blendAccrue, float blendFalloff, float Speed, BOOL noloop, PlayCallback Callback, LPVOID CallbackParam);
+	void						IBlendSetup				(CBlend& B,u16 part, U8 channel, MotionID motion_ID, BOOL  bMixing, float blendAccrue, float blendFalloff, float Speed, BOOL noloop, PlayCallback Callback, LPVOID CallbackParam);
 	void						IFXBlendSetup			(CBlend &B, MotionID motion_ID, float blendAccrue, float blendFalloff,float Power ,float Speed,u16 bone);
 //.	bool						LoadMotions				(const char* N, IReader *data);
 
@@ -197,10 +197,10 @@ public:
 	u16							LL_PartID		(const char* B);
 
 	CBlend*						LL_PlayFX		(u16 bone,		MotionID motion, float blendAccrue,	float blendFalloff, float Speed, float Power);
-	CBlend*						LL_PlayCycle	(u16 partition, MotionID motion, BOOL  bMixing,		float blendAccrue,	float blendFalloff, float Speed, BOOL noloop, PlayCallback Callback, LPVOID CallbackParam, u8 channel = 0);
-	CBlend*						LL_PlayCycle	(u16 partition, MotionID motion, BOOL bMixIn, PlayCallback Callback, LPVOID CallbackParam, u8 channel = 0);
-	void						LL_FadeCycle	(u16 partition, float	falloff, u8 mask_channel = (1<<0));
-	void						LL_CloseCycle	(u16 partition, u8 mask_channel = (1<<0));
+	CBlend*						LL_PlayCycle	(u16 partition, MotionID motion, BOOL  bMixing,		float blendAccrue,	float blendFalloff, float Speed, BOOL noloop, PlayCallback Callback, LPVOID CallbackParam, U8 channel = 0);
+	CBlend*						LL_PlayCycle	(u16 partition, MotionID motion, BOOL bMixIn, PlayCallback Callback, LPVOID CallbackParam, U8 channel = 0);
+	void						LL_FadeCycle	(u16 partition, float	falloff, U8 mask_channel = (1<<0));
+	void						LL_CloseCycle	(u16 partition, U8 mask_channel = (1<<0));
 	void						LL_SetChannelFactor (u16 channel,float factor);
 	CBlendInstance&				LL_GetBlendInstance	(u16 bone_id)	{	VERIFY(bone_id<LL_BoneCount()); return blend_instances[bone_id];	}
 																	
@@ -213,8 +213,8 @@ public:
 	MotionID					ID_Cycle_Safe	(const char* N);
 	MotionID					ID_Cycle		(shared_str  N);
 	MotionID					ID_Cycle_Safe	(shared_str  N);
-	CBlend*						PlayCycle		(const char* N,  BOOL bMixIn=TRUE, PlayCallback Callback=0, LPVOID CallbackParam=0, u8 channel = 0);
-	CBlend*						PlayCycle		(MotionID M, BOOL bMixIn=TRUE, PlayCallback Callback=0, LPVOID CallbackParam=0, u8 channel = 0);
+	CBlend*						PlayCycle		(const char* N,  BOOL bMixIn=TRUE, PlayCallback Callback=0, LPVOID CallbackParam=0, U8 channel = 0);
+	CBlend*						PlayCycle		(MotionID M, BOOL bMixIn=TRUE, PlayCallback Callback=0, LPVOID CallbackParam=0, U8 channel = 0);
 	// fx'es
 	MotionID					ID_FX			(const char* N);
 	MotionID					ID_FX_Safe		(const char* N);

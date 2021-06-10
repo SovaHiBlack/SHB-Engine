@@ -81,10 +81,10 @@ struct ogf_bsphere	{
 };
 
 // OGF_HEADER
-const u8	xrOGF_FormatVersion		= 4;
+const U8	xrOGF_FormatVersion		= 4;
 struct ogf_header {
-	u8			format_version;			// = xrOGF_FormatVersion
-	u8			type;					// MT
+	U8			format_version;			// = xrOGF_FormatVersion
+	U8			type;					// MT
 	u16			shader_id;				// should not be ZERO
 	ogf_bbox	bb;
 	ogf_bsphere	bs;

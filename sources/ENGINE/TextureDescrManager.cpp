@@ -231,7 +231,7 @@ void CTextureDescrMngr::GetTextureUsage	(const shared_str& tex_name, BOOL& bDiff
 	{
 		if(I->second.m_assoc)
 		{
-			u8 usage	= I->second.m_assoc->usage;
+			U8 usage	= I->second.m_assoc->usage;
 			bDiffuse	= !!(usage & (1<<0));
 			bBump		= !!(usage & (1<<1));
 		}	

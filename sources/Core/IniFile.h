@@ -79,14 +79,14 @@ public:
 	const char* r_string		( const shared_str& S, const char* L)				{ return r_string(*S,L);		}	// оставляет кавычки
 	shared_str		r_string_wb		(const char* S, const char* L);															// убирает кавычки
 	shared_str		r_string_wb		( const shared_str& S, const char* L)				{ return r_string_wb(*S,L);		}	// убирает кавычки
-	u8	 		r_u8			(const char* S, const char* L );
-	u8	 		r_u8			( const shared_str& S, const char* L )				{ return r_u8(*S,L);			}
+	U8	 		r_u8			(const char* S, const char* L );
+	U8	 		r_u8			( const shared_str& S, const char* L )				{ return r_u8(*S,L);			}
 	u16	 		r_u16			(const char* S, const char* L );
 	u16	 		r_u16			( const shared_str& S, const char* L )				{ return r_u16(*S,L);			}
 	u32	 		r_u32			(const char* S, const char* L );
 	u32	 		r_u32			( const shared_str& S, const char* L )				{ return r_u32(*S,L);			}
-	s8	 		r_s8			(const char* S, const char* L );
-	s8	 		r_s8			( const shared_str& S, const char* L )				{ return r_s8(*S,L);			}
+	S8	 		r_s8			(const char* S, const char* L );
+	S8	 		r_s8			( const shared_str& S, const char* L )				{ return r_s8(*S,L);			}
 	s16	 		r_s16			(const char* S, const char* L );
 	s16	 		r_s16			( const shared_str& S, const char* L )				{ return r_s16(*S,L);			}
 	int	 		r_s32			(const char* S, const char* L );
@@ -116,10 +116,10 @@ public:
 	BOOL		r_line			( const shared_str& S, int L, const char** N, const char** V );
 
 	void		w_string		(const char* S, const char* L, const char* V, const char* comment=0 );
-	void		w_u8			(const char* S, const char* L, u8				V, const char* comment=0 );
+	void		w_u8			(const char* S, const char* L, U8				V, const char* comment=0 );
 	void		w_u16			(const char* S, const char* L, u16				V, const char* comment=0 );
 	void		w_u32			(const char* S, const char* L, u32				V, const char* comment=0 );
-	void		w_s8			(const char* S, const char* L, s8				V, const char* comment=0 );
+	void		w_s8			(const char* S, const char* L, S8				V, const char* comment=0 );
 	void		w_s16			(const char* S, const char* L, s16				V, const char* comment=0 );
 	void		w_s32			(const char* S, const char* L, int				V, const char* comment=0 );
 	void		w_float			(const char* S, const char* L, float				V, const char* comment=0 );

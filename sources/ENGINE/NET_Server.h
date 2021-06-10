@@ -24,10 +24,10 @@ struct ENGINE_API ip_address
 	{
 		struct
 		{
-			u8					a1;
-			u8					a2;
-			u8					a3;
-			u8					a4;
+			U8					a1;
+			U8					a2;
+			U8					a3;
+			U8					a4;
 		};
 		u32						data;
 	}							m_data;

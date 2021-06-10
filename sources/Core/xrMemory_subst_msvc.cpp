@@ -8,7 +8,7 @@
 MEMPOOL		mem_pools			[mem_pools_count];
 
 // MSVC
-__forceinline	u8*		acc_header			(void* P)	{	u8*		_P		= (u8*)P;	return	_P-1;	}
+__forceinline	U8*		acc_header			(void* P)	{	U8*		_P		= (U8*)P;	return	_P-1;	}
 __forceinline	u32		get_header			(void* P)	{	return	(u32)*acc_header(P);				}
 __forceinline	u32		get_pool			(size_t size)
 {
@@ -55,7 +55,7 @@ void*	xrMemory::mem_alloc		(size_t size
 		//	Igor: Reserve 1 byte for xrMemory header
 		void*	_real			=	xr_aligned_offset_malloc	(1 + size + _footer, 16, 0x1);
 		//void*	_real			=	xr_aligned_offset_malloc	(size + _footer, 16, 0x1);
-		_ptr					=	(void*)(((u8*)_real)+1);
+		_ptr					=	(void*)(((U8*)_real)+1);
 		*acc_header(_ptr)		=	mem_generic;
 	} else {
 		//	accelerated
@@ -68,15 +68,15 @@ void*	xrMemory::mem_alloc		(size_t size
 			//	Igor: Reserve 1 byte for xrMemory header
 			void*	_real		=	xr_aligned_offset_malloc	(1 + size + _footer,16,0x1);
 			//void*	_real		=	xr_aligned_offset_malloc	(size + _footer,16,0x1);
-			_ptr				=	(void*)(((u8*)_real)+1);
+			_ptr				=	(void*)(((U8*)_real)+1);
 			*acc_header(_ptr)	=	mem_generic;
 		} else {
 			// pooled
 			//	Igor: Reserve 1 byte for xrMemory header
 			//	Already reserved when getting pool id
 			void*	_real		=	mem_pools[pool].create();
-			_ptr				=	(void*)(((u8*)_real)+1);
-			*acc_header(_ptr)	=	(u8)pool;
+			_ptr				=	(void*)(((U8*)_real)+1);
+			*acc_header(_ptr)	=	(U8)pool;
 		}
 	}
 
@@ -102,7 +102,7 @@ void	xrMemory::mem_free		(void* P)
 
 	if		(debug_mode)		dbg_unregister	(P);
 	u32	pool					= get_header	(P);
-	void* _real					= (void*)(((u8*)P)-1);
+	void* _real					= (void*)(((U8*)P)-1);
 	if (mem_generic==pool)		
 	{
 		// generic
@@ -152,7 +152,7 @@ void*	xrMemory::mem_realloc	(void* P, size_t size
 		else						p_mode	= 0	;
 	} else 							p_mode	= 1	;
 
-	void*	_real				= (void*)(((u8*)P)-1);
+	void*	_real				= (void*)(((U8*)P)-1);
 	void*	_ptr				= NULL;
 	if		(0==p_mode)
 	{
@@ -160,7 +160,7 @@ void*	xrMemory::mem_realloc	(void* P, size_t size
 		//	Igor: Reserve 1 byte for xrMemory header
 		void*	_real2			=	xr_aligned_offset_realloc	(_real,1+size+_footer,16,0x1);
 		//void*	_real2			=	xr_aligned_offset_realloc	(_real,size+_footer,16,0x1);
-		_ptr					= (void*)(((u8*)_real2)+1);
+		_ptr					= (void*)(((U8*)_real2)+1);
 		*acc_header(_ptr)		= mem_generic;
 
 #ifdef USE_MEMORY_MONITOR

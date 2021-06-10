@@ -110,12 +110,12 @@ inline BOOL		_valid	(const double x)
 }
 
 // int8
-inline s8		_abs	(s8  x)			{ return (x>=0)? x : s8(-x); }
-inline s8 		_min	(s8  x, s8  y)	{ return y + ((x - y) & ((x - y) >> (sizeof(s8 ) * 8 - 1))); };
-inline s8 		_max	(s8  x, s8  y)	{ return x - ((x - y) & ((x - y) >> (sizeof(s8 ) * 8 - 1))); };
+inline S8		_abs	(S8  x)			{ return (x>=0)? x : S8(-x); }
+inline S8 		_min	(S8  x, S8  y)	{ return y + ((x - y) & ((x - y) >> (sizeof(S8) * 8 - 1))); };
+inline S8 		_max	(S8  x, S8  y)	{ return x - ((x - y) & ((x - y) >> (sizeof(S8) * 8 - 1))); };
 
 // unsigned int8
-inline u8		_abs	(u8 x)			{ return x; }
+inline U8		_abs	(U8 x)			{ return x; }
 
 // int16
 inline s16		_abs	(s16 x)			{ return (x>=0)? x : s16(-x); }

@@ -17,10 +17,10 @@ struct bonesAxis {
 struct bonesBone {
 	CBoneInstance	*bone;
 	bonesAxis		params;
-	u8				axis;
+	U8				axis;
 
 	bonesBone	() {bone = 0;}
-	void	Set			(CBoneInstance *b, u8 a, float ty, float cy, float r_s);
+	void	Set			(CBoneInstance *b, U8 a, float ty, float cy, float r_s);
 	bool	NeedTurn	();					// необходим поворот по оси p_axis?
 	void	Turn		(u32 dt);			// выполнить поворот по оси p_axis
 	void	Apply		();					// установить углы у боны
@@ -40,12 +40,12 @@ class bonesManipulation {
 public:
 	void 		Reset				();
 
-	void 		AddBone				(CBoneInstance *bone, u8 axis_used);
-	void 		SetMotion			(CBoneInstance *bone, u8 axis_used, float target_yaw, float r_speed, u32 t);
+	void 		AddBone				(CBoneInstance *bone, U8 axis_used);
+	void 		SetMotion			(CBoneInstance *bone, U8 axis_used, float target_yaw, float r_speed, u32 t);
 
 	void 		Update				(CBoneInstance *bone, u32 cur_time);
 	bool 		IsActive			() {return bActive;}
 	bool 		IsReturn			() {return in_return_state;}
 
-	bonesAxis	&GetBoneParams		(CBoneInstance *bone, u8 axis_used);
+	bonesAxis	&GetBoneParams		(CBoneInstance *bone, U8 axis_used);
 };

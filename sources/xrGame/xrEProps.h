@@ -78,7 +78,7 @@ public:
 	virtual CanvasValue*		__stdcall	CreateCanvas	    (PropItemVec& items, shared_str key, shared_str val, int height)=0;
 	virtual ButtonValue*		__stdcall	CreateButton	    (PropItemVec& items, shared_str key, shared_str val, u32 flags)=0;
 	virtual ChooseValue*		__stdcall	CreateChoose	    (PropItemVec& items, shared_str key, shared_str* val, u32 mode, const char* path=0, void* fill_param=0, u32 sub_item_count=1, u32 choose_flags=cfAllowNone)=0;
-	virtual S8Value* 			__stdcall	CreateS8		    (PropItemVec& items, shared_str key, s8* val, s8 mn=0, s8 mx=100, s8 inc=1)=0;
+	virtual S8Value* 			__stdcall	CreateS8		    (PropItemVec& items, shared_str key, S8* val, S8 mn=0, S8 mx=100, S8 inc=1)=0;
 	virtual S16Value* 			__stdcall	CreateS16		    (PropItemVec& items, shared_str key, s16* val, s16 mn=0, s16 mx=100, s16 inc=1)=0;
 	virtual S32Value* 	 		__stdcall	CreateS32		    (PropItemVec& items, shared_str key, int* val, int mn=0, int mx=100, int inc=1)=0;
 	virtual U8Value* 			__stdcall	CreateU8		    (PropItemVec& items, shared_str key, u8* val, u8 mn=0, u8 mx=100, u8 inc=1)=0;

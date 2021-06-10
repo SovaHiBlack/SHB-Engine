@@ -81,7 +81,7 @@ struct	hdrNODES
 #pragma pack(push,1)
 #pragma pack(1)
 class NodePosition {
-	u8	data[5];
+	U8	data[5];
 	
 	__forceinline	void xz	(u32 value)	{ CopyMemory	(data,&value,3);		}
 	__forceinline	void y	(u16 value)	{ CopyMemory	(data + 3,&value,2);	}
@@ -107,10 +107,10 @@ public:
 struct NodeCompressed
 {
 public:
-	u8				data[12];
+	U8				data[12];
+
 private:
-	
-	__forceinline	void link(u8 link_index, u32 value)
+	__forceinline	void link(U8 link_index, u32 value)
 	{
 		value			&= 0x007fffff;
 		switch (link_index) {
@@ -140,7 +140,7 @@ private:
 		}
 	}
 	
-	__forceinline	void light(u8 value)
+	__forceinline	void light(U8 value)
 	{
 		data[11]		&= 0x0f;
 		data[11]		|= value << 4;
@@ -155,7 +155,7 @@ public:
 	NodePosition	p;
 	// 4 + 4 + 4 + 4 + 16 + 40 + 96 = 168 bits = 21 byte
 
-	__forceinline	u32	link(u8 index) const
+	__forceinline	u32	link(U8 index) const
 	{
 		switch (index) {
 			case 0 :	return	((*(u32*)data) & 0x007fffff);
@@ -169,12 +169,12 @@ public:
 #endif
 	}
 	
-	__forceinline	u8	light() const
+	__forceinline	U8	light() const
 	{
 		return			(data[11] >> 4);
 	}
 	
-	__forceinline	u16	cover(u8 index) const
+	__forceinline	u16	cover(U8 index) const
 	{
 		switch (index) {
 			case 0 : return(cover0);
@@ -184,7 +184,7 @@ public:
 			default : NODEFAULT;
 		}
 #ifdef DEBUG
-		return				(u8(-1));
+		return				(U8(-1));
 #endif
 	}
 

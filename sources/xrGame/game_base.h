@@ -61,7 +61,7 @@ struct	game_PlayerState
 
 	u16			lasthitter;
 	u16			lasthitweapon;
-	s8			skin;
+	S8			skin;
 	u32			RespawnTime;
 	u32			DeathTime;
 	s16			money_delta;

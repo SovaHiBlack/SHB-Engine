@@ -136,8 +136,8 @@ float CEnvelope::Evaluate(float time){
 
 void CEnvelope::Save(IWriter& F)
 {
-	F.w_u8		((u8)behavior[0]);
-	F.w_u8		((u8)behavior[1]);
+	F.w_u8		((U8)behavior[0]);
+	F.w_u8		((U8)behavior[1]);
 	F.w_u16		((u16)keys.size());
 	for (KeyIt k_it=keys.begin(); k_it!=keys.end(); k_it++)
     	(*k_it)->Save(F);
@@ -188,7 +188,7 @@ void CEnvelope::LoadA(IReader& F)
             R_ASSERT(cnt==9);
 			K.value = f[ 0 ];
       		K.time  = f[ 1 ];
-      		K.shape = ( u8 ) f[ 2 ];
+      		K.shape = (U8) f[ 2 ];
 			if ( K.shape == SHAPE_TCB ) {
          		K.tension    = f[ 3 ];
          		K.continuity = f[ 4 ];

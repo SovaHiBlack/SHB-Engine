@@ -11,7 +11,7 @@ enum EPropType{
 	PROP_SHORTCUT,
 	PROP_BUTTON,
 	PROP_CHOOSE,
-	PROP_NUMERIC,	// {u8,u16,u32,s8,s16,int,float}
+	PROP_NUMERIC,	// {u8,u16,u32,S8,s16,int,float}
 	PROP_BOOLEAN,
 	PROP_FLAG,
 	PROP_VECTOR, 
@@ -497,7 +497,7 @@ inline xr_string draw_sprintf(xr_string& s, const Fvector3& V, int dec)
 typedef NumericValue<u8>	U8Value;
 typedef NumericValue<u16>	U16Value;
 typedef NumericValue<u32>	U32Value;
-typedef NumericValue<s8>	S8Value;
+typedef NumericValue<S8>	S8Value;
 typedef NumericValue<s16>	S16Value;
 typedef NumericValue<int>	S32Value;
 typedef NumericValue<float>	FloatValue;

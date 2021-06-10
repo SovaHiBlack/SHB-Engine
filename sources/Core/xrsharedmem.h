@@ -9,7 +9,7 @@ struct		CORE_API	smem_value
 	u32					dwCRC;
 	u32					dwLength;
 	u32					_align_16;
-	u8					value[ ];
+	U8					value[ ];
 };
 // generic predicate for "less"
 inline bool					smem_sort(const smem_value* A, const smem_value* B)
@@ -30,7 +30,7 @@ inline bool					smem_search(const smem_value* A, const smem_value* B)
 }
 
 // predicate for exact (byte level) comparition
-inline bool					smem_equal(const smem_value* A, u32 dwCRC, u32 dwLength, u8* ptr)
+inline bool					smem_equal(const smem_value* A, u32 dwCRC, u32 dwLength, U8* ptr)
 {
 	if (A->dwCRC != dwCRC)			return		false;
 	if (A->dwLength != dwLength)		return		false;

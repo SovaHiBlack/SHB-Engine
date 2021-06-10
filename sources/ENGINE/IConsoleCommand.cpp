@@ -177,18 +177,18 @@ void 			crashthread(void*)
 			{
 				struct
 				{
-					u8	_b0;
-					u8	_b1;
-					u8	_b2;
-					u8	_b3;
+					U8	_b0;
+					U8	_b1;
+					U8	_b2;
+					U8	_b3;
 				};
 				uintptr_t	_ptri;
 				u32* _ptr;
 			}		rndptr;
-			rndptr._b0 = u8(rndg.randI(0, 256));
-			rndptr._b1 = u8(rndg.randI(0, 256));
-			rndptr._b2 = u8(rndg.randI(0, 256));
-			rndptr._b3 = u8(rndg.randI(0, 256));
+			rndptr._b0 = U8(rndg.randI(0, 256));
+			rndptr._b1 = U8(rndg.randI(0, 256));
+			rndptr._b2 = U8(rndg.randI(0, 256));
+			rndptr._b3 = U8(rndg.randI(0, 256));
 			rndptr._ptri &= (1ul < 31ul) - 1;
 			*rndptr._ptr = 0xBAADF00D;
 		//} catch(...) {

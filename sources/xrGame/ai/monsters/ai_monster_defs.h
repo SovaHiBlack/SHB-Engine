@@ -232,7 +232,7 @@ struct SAnimItem {
 
 	anim_string		target_name;	// "stand_idle_"
 	int				spec_id;		// (-1) - any,  (0 - ...) - идентификатор 3
-	u8				count;			// количество анимаций : "idle_0", "idle_1", "idle_2" 
+	U8				count;			// количество анимаций : "idle_0", "idle_1", "idle_2" 
 	
 	SVelocityParam	velocity;
 
@@ -334,7 +334,7 @@ struct SCurrentAnimationInfo {
 	shared_str		name;
 
 	EMotionAnim	motion;
-	u8			index;
+	U8			index;
 
 	TTime		time_started;
 
@@ -355,8 +355,8 @@ struct SCurrentAnimationInfo {
 //////////////////////////////////////////////////////////////////////////
 
 struct t_fx_index {
-	s8 front;	
-	s8 back;	
+	S8 front;
+	S8 back;
 };
 
 enum EHitSide {

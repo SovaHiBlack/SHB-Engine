@@ -264,7 +264,7 @@ IReader* open_chunk(void* ptr, u32 ID)
 		res			= ReadFile	(ptr,&dwSize,4,&read_byte,0); 
 		VERIFY(res&&(read_byte==4));
 		if ((dwType&(~CFS_CompressMark)) == ID) {
-			u8* src_data	= xr_alloc<u8>(dwSize);
+			U8* src_data	= xr_alloc<U8>(dwSize);
 			res				= ReadFile	(ptr,src_data,dwSize,&read_byte,0); VERIFY(res&&(read_byte==dwSize));
 			if (dwType&CFS_CompressMark) {
 				BYTE*			dest;
@@ -342,7 +342,7 @@ void CLocatorAPI::ProcessArchive(const char* _path, const char* base_path)
 		u16				buffer_size	= hdr->r_u16();
 		VERIFY			(buffer_size < sizeof(name) + 4*sizeof(u32));
 		VERIFY			(buffer_size < sizeof(buffer_start));
-		u8				*buffer = (u8*)&*buffer_start;
+		U8* buffer		= (U8*) &*buffer_start;
 		hdr->r			(buffer,buffer_size);
 
 		u32 size_real	= *(u32*)buffer;
@@ -966,7 +966,7 @@ void CLocatorAPI::file_from_archive	(IReader *&R, const char* fname, const file 
 	// Archived one
 	archive& A					= archives[desc.vfs];
 #if 0
-	u8*							dest = xr_alloc<u8>(desc.size_real);
+	U8*							dest = xr_alloc<U8>(desc.size_real);
 	DWORD						bytes_read;
 	SetFilePointer				(A.hSrcFile,desc.ptr,0,FILE_BEGIN);
 	ReadFile					(A.hSrcFile,dest,desc.size_real,&bytes_read,0);
@@ -979,7 +979,8 @@ void CLocatorAPI::file_from_archive	(IReader *&R, const char* fname, const file 
 	end							*= dwAllocGranularity;
 	if (end>A.size)				end = A.size;
 	u32 sz						= (end-start);
-	u8* ptr						= (u8*)MapViewOfFile(A.hSrcMap, FILE_MAP_READ, 0, start, sz); VERIFY3(ptr,"cannot create file mapping on file",fname);
+	U8* ptr						= (U8*)MapViewOfFile(A.hSrcMap, FILE_MAP_READ, 0, start, sz);
+	VERIFY3						(ptr, "cannot create file mapping on file", fname);
 
 	string512					temp;
 	sprintf_s					(temp, sizeof(temp),"%s:%s",*A.path,fname);
@@ -994,7 +995,7 @@ void CLocatorAPI::file_from_archive	(IReader *&R, const char* fname, const file 
 	}
 
 	// Compressed
-	u8*							dest = xr_alloc<u8>(desc.size_real);
+	U8*							dest = xr_alloc<U8>(desc.size_real);
 	rtc_decompress				(dest,desc.size_real,ptr+ptr_offs,desc.size_compressed);
 	R							= xr_new<CTempReader>(dest,desc.size_real,0);
 	UnmapViewOfFile				(ptr);
@@ -1033,7 +1034,7 @@ void CLocatorAPI::copy_file_to_build	(IWriter *W, IReader *r)
 void CLocatorAPI::copy_file_to_build	(IWriter *W, CStreamReader *r)
 {
 	u32					buffer_size = r->length();
-	u8					*buffer = xr_alloc<u8>(buffer_size);
+	U8* buffer			= xr_alloc<U8>(buffer_size);
 	r->r				(buffer,buffer_size);
     W->w				(buffer,buffer_size);
 	xr_free				(buffer);

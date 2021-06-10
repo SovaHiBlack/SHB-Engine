@@ -18,7 +18,7 @@
 
 class trivial_encryptor {
 private:
-	typedef u8					type;
+	typedef U8					type;
 	typedef void*				pvoid;
 	typedef const void*			pcvoid;
 
@@ -102,9 +102,9 @@ private:
 
 		random32				temp;
 		temp.seed				(m_encrypt_seed);
-		const u8				*I = (const u8*)source;
-		const u8				*E = (const u8*)source + source_size;
-		u8						*J = (u8*)destination;
+		const U8* I				= (const U8*) source;
+		const U8* E				= (const U8*) source + source_size;
+		U8* J					= (U8*) destination;
 		for ( ; I != E; ++I, ++J)
 			*J					= m_alphabet[*I] ^ type(temp.random(256) & 0xff);
 	}
@@ -123,9 +123,9 @@ private:
 
 		random32				temp;
 		temp.seed				(m_encrypt_seed);
-		const u8				*I = (const u8*)source;
-		const u8				*E = (const u8*)source + source_size;
-		u8						*J = (u8*)destination;
+		const U8*I				= (const U8*)source;
+		const U8*E				= (const U8*)source + source_size;
+		U8*J					= (U8*)destination;
 		for ( ; I != E; ++I, ++J)
 			*J					= m_alphabet_back[(*I) ^ type(temp.random(256) & 0xff)];
 	}

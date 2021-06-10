@@ -141,12 +141,12 @@ struct CORE_API xr_shortcut{
 	};
 	union{
 		struct{
-			u8	 	key;
+			U8	 	key;
 			Flags8	ext;
 		};
 		u16		hotkey;
 	};
-				xr_shortcut		(u8 k, BOOL a, BOOL c, BOOL s):key(k){ext.assign(u8((a?flAlt:0)|(c?flCtrl:0)|(s?flShift:0)));}
+				xr_shortcut		(U8 k, BOOL a, BOOL c, BOOL s):key(k){ext.assign(U8((a?flAlt:0)|(c?flCtrl:0)|(s?flShift:0)));}
 				xr_shortcut		(){ext.zero();key=0;}
 	bool		similar			(const xr_shortcut& v)const{return ext.equal(v.ext)&&(key==v.key);}
 };

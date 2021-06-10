@@ -1,17 +1,31 @@
 #pragma once
 
 // Type defs
-typedef signed char			s8;
+using S8 = signed char;
+using U8 = unsigned char;
+
 typedef unsigned char		u8;
+
+using S16 = signed short;
+using U16 = unsigned short;
 
 typedef signed short		s16;
 typedef unsigned short		u16;
 
+using S32 = signed int;
+using U32 = unsigned int;
+
 typedef signed int			s32;
 typedef unsigned int		u32;
 
+using S64 = signed __int64;
+using U64 = unsigned __int64;
+
 typedef signed __int64		s64;
 typedef unsigned __int64	u64;
+
+using F32 = float;
+using F64 = double;
 
 typedef float				f32;
 typedef double				f64;

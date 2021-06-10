@@ -57,7 +57,7 @@ u32				crc32		(const void* P, u32 len)
 
 	// Start out with all bits set high. 
 	u32		ulCRC		= 0xffffffff; 
-	u8*		buffer		= (u8*)P;
+	U8*		buffer		= (U8*)P;
 
 	// Perform the algorithm on each character 
 	// in the string, using the lookup table values. 

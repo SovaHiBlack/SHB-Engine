@@ -33,7 +33,9 @@ struct ENGINE_API CKeyQR
 };
 struct ENGINE_API CKeyQT
 {
-	s8			x,y,z;
+	S8			x;
+	S8			y;
+	S8			z;
 };
 #pragma pack(pop)
 
@@ -50,9 +52,9 @@ public:
 	Fvector3				_initT;
 	Fvector3				_sizeT;
 public:    
-	void				set_flags			(u8 val)			{_flags=val;}
-	void				set_flag			(u8 mask, u8 val)	{if (val)_flags|=mask; else _flags&=~mask;}
-	BOOL				test_flag			(u8 mask) const		{return BOOL(_flags&mask);}
+	void				set_flags			(U8 val)			{_flags=val;}
+	void				set_flag			(U8 mask, U8 val)	{if (val)_flags|=mask; else _flags&=~mask;}
+	BOOL				test_flag			(U8 mask) const		{return BOOL(_flags&mask);}
 
 	void				set_count			(u32 cnt){VERIFY(cnt); _count=cnt;}
 	u32					get_count			() const {return (u32(_count)&0x00FFFFFF);}

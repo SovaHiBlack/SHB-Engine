@@ -279,7 +279,7 @@ void CGameFont::OnRender( )
 				for (int j = 0; j < len; j++)
 				{
 					Fvector3	l;
-					l			= IsMultibyte( ) ? GetCharTC(wsStr[1 + j]) : GetCharTC((u16) (u8) PS.string[j]);
+					l			= IsMultibyte( ) ? GetCharTC(wsStr[1 + j]) : GetCharTC((u16) (U8) PS.string[j]);
 
 					float scw	= l.z * g_current_font_scale.x;
 					float fTCWidth = l.z / vTS.x;
@@ -467,7 +467,7 @@ void CGameFont::OutSkip(float val)
 float CGameFont::SizeOf_(const char cChar)
 {
 	VERIFY						(!IsMultibyte( ));
-	return						(GetCharTC((u16) (u8) cChar).z * vInterval.x);
+	return						(GetCharTC((u16) (U8) cChar).z * vInterval.x);
 }
 
 float CGameFont::SizeOf_(const char* s)
@@ -490,7 +490,7 @@ float CGameFont::SizeOf_(const char* s)
 	{
 		for (int j = 0; j < len; j++)
 		{
-			X					+= GetCharTC((u16) (u8) s[j]).z;
+			X					+= GetCharTC((u16) (U8) s[j]).z;
 		}
 	}
 

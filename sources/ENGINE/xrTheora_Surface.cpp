@@ -166,15 +166,15 @@ void CTheoraSurface::DecompressFrame(u32* data, u32 _width, int& _pos)
 		u32 pos = 0;
 		for (u32 h=0; h<height; ++h)
 		{
-			u8* Y		= yuv.y+yuv.y_stride*h;
-			u8* U		= yuv.u+yuv.uv_stride*(h/uv_h);
-			u8* V		= yuv.v+yuv.uv_stride*(h/uv_h);
+			U8* Y		= yuv.y+yuv.y_stride*h;
+			U8* U		= yuv.u+yuv.uv_stride*(h/uv_h);
+			U8* V		= yuv.v+yuv.uv_stride*(h/uv_h);
 
 			for (u32 w=0; w<width; ++w)
 			{
-				u8 y	= Y[w];
-				u8 u	= U[w/uv_w];
-				u8 v	= V[w/uv_w];
+				U8 y	= Y[w];
+				U8 u	= U[w/uv_w];
+				U8 v	= V[w/uv_w];
 if(!bShaderYUV2RGB)
 {
 				int C	= y - 16;
@@ -209,15 +209,15 @@ if(!bShaderYUV2RGB)
 		for (u32 h=0; h<height; ++h)
 		{
 
-			u8* Y		= yuv.y+yuv.y_stride*h;
-			u8* U		= yuv.u+yuv.uv_stride*(h/uv_h);
-			u8* V		= yuv.v+yuv.uv_stride*(h/uv_h);
+			U8* Y		= yuv.y+yuv.y_stride*h;
+			U8* U		= yuv.u+yuv.uv_stride*(h/uv_h);
+			U8* V		= yuv.v+yuv.uv_stride*(h/uv_h);
 
 			for (u32 w=0; w<width; ++w)
 			{
-				u8 y			= Y[w];
-				u8 u			= U[w/uv_w];
-				u8 v			= V[w/uv_w];
+				U8 y			= Y[w];
+				U8 u			= U[w/uv_w];
+				U8 v			= V[w/uv_w];
 				data[++pos]		= color_rgba(int(y),int(u),int(v),255);
 			}
 		}
@@ -233,10 +233,10 @@ if(!bShaderYUV2RGB)
 		u32 pos					= 0;
 		for (u32 h=0; h<height; ++h)
 		{
-			u8* Y		= yuv.y+yuv.y_stride*h;
+			U8* Y		= yuv.y+yuv.y_stride*h;
 			for (u32 w=0; w<width; ++w)
 			{
-				u8 y			= Y[w];
+				U8 y			= Y[w];
 				u32& clr		= data[++pos];
 				clr				= subst_alpha(clr,iFloor(float((y-16))/K));
 			}

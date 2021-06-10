@@ -46,7 +46,7 @@ inline	u32		btwPow2_Ceil(u32 v)
 
 // Couple more tricks 
 // Counting number of nonzero bits for 8bit number: 
-inline	u8		btwCount1(u8 v)
+inline	U8		btwCount1(U8 v)
 {
 	v = (v & 0x55) + ((v >> 1) & 0x55);
 	v = (v & 0x33) + ((v >> 2) & 0x33);
@@ -112,7 +112,7 @@ __forceinline int iCeil (float x)
 // Validity checks
 inline bool fis_gremlin		( const float &f )
 {
-	u8		value = u8(((*(int*)&f & 0x7f800000)>>23)-0x20);
+	U8		value = U8(((*(int*)&f & 0x7f800000)>>23)-0x20);
 	return	value > 0xc0;
 }
 inline bool fis_denormal	( const float &f )

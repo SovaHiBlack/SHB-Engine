@@ -5,7 +5,7 @@
 //****************************************************************************************************
 // class bonesBone
 //****************************************************************************************************
-void bonesBone::Set(CBoneInstance *b, u8 a, float ty, float cy, float r_s)
+void bonesBone::Set(CBoneInstance *b, U8 a, float ty, float cy, float r_s)
 {
 	bone			= b; 
 	axis			= a;
@@ -63,7 +63,7 @@ void bonesManipulation::Reset()
 	time_last_delta		= 1;
 }
 
-void bonesManipulation::AddBone (CBoneInstance *bone, u8 axis_used)
+void bonesManipulation::AddBone (CBoneInstance *bone, U8 axis_used)
 {
 	bonesBone tempB;
 
@@ -72,7 +72,7 @@ void bonesManipulation::AddBone (CBoneInstance *bone, u8 axis_used)
 	m_Bones.push_back(tempB);
 }
 
-void bonesManipulation::SetMotion(CBoneInstance *bone, u8 axis, float target_yaw, float r_speed, u32 t)
+void bonesManipulation::SetMotion(CBoneInstance *bone, U8 axis, float target_yaw, float r_speed, u32 t)
 {
 	int index = -1;
 	// найти бону bone в m_Bones
@@ -149,7 +149,7 @@ void bonesManipulation::Update(CBoneInstance *bone, u32 cur_time)
 	}
 }
 
-bonesAxis &bonesManipulation::GetBoneParams(CBoneInstance *bone, u8 axis_used)
+bonesAxis &bonesManipulation::GetBoneParams(CBoneInstance *bone, U8 axis_used)
 {
 	// найти бону bone в m_Bones
 	for (u32 i=0; i<m_Bones.size(); ++i)  {

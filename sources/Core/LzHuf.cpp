@@ -28,7 +28,7 @@ char		wterr[] = "Can't write.";
 #define MAX_FREQ    0x4000					/* updates tree when the */
 
 
-u8				text_buf[N + F];
+U8				text_buf[N + F];
 int					match_position, match_length, lson[N + 1], rson[N + 257], dad[N + 1];
 
 unsigned			code, len;
@@ -52,13 +52,14 @@ private:
 	unsigned	putbuf;
 	unsigned	putlen;
 	
-	u8*			in_start;
-	u8*			in_end;
-	u8*			in_iterator;
+	U8*			in_start;
+	U8*			in_end;
+	U8*			in_iterator;
 	
-	u8*			out_start;
-	u8*			out_end;
-	u8*			out_iterator;
+	U8*			out_start;
+	U8*			out_end;
+	U8*			out_iterator;
+
 public:
 	inline int		_getb() {
 		if (in_iterator==in_end) return EOF;
@@ -67,11 +68,12 @@ public:
 	inline void		_putb(int c) {
 		if (out_iterator==out_end) {
 			u32	out_size= u32(out_end-out_start);
-			out_start	= (u8*) xr_realloc(out_start,out_size+1024);
+			out_start	= (U8*) xr_realloc(out_start,out_size+1024);
 			out_iterator= out_start+out_size;
 			out_end		= out_iterator+1024;
 		}
-		*out_iterator++ = u8(c&0xFF);
+
+		*out_iterator++ = U8(c&0xFF);
 	}
 	
 	LZfs() {
@@ -79,7 +81,7 @@ public:
 		out_start	= out_end	= out_iterator = 0;
 	}
 	
-	inline void		Init_Input(u8* _start, u8* _end) {
+	inline void		Init_Input(U8* _start, U8* _end) {
 		// input
 		in_start	= _start;
 		in_end		= _end;
@@ -90,7 +92,7 @@ public:
 	}
 	inline void		Init_Output(int _rsize) {
 		// output
-		out_start	= (u8*)xr_malloc(_rsize);
+		out_start	= (U8*)xr_malloc(_rsize);
 		out_end		= out_start + _rsize;
 		out_iterator= out_start;
 	}
@@ -100,7 +102,7 @@ public:
 	inline u32		OutSize		() {
 		return u32(out_iterator-out_start);
 	}
-	inline u8*		OutPointer	() {
+	inline U8*		OutPointer	() {
 		return out_start;
 	}
 	inline void		OutRelease	() {
@@ -176,7 +178,7 @@ inline void InitTree(void)  /* initialize trees */
 void InsertNode(int r)  /* insert to tree */
 {
 	int				i, p, cmp;
-	u8			*key;
+	U8*				key;
 	unsigned		c;
 	
 	cmp = 1;
@@ -272,7 +274,7 @@ void DeleteNode(int p)  /* remove from tree */
 
 /* table for encoding and decoding the upper 6 bits of position */
 /* for encoding */
-u8 p_len[64] = {
+U8 p_len[64] = {
 	0x03, 0x04, 0x04, 0x04, 0x05, 0x05, 0x05, 0x05,
 	0x05, 0x05, 0x05, 0x05, 0x06, 0x06, 0x06, 0x06,
 	0x06, 0x06, 0x06, 0x06, 0x06, 0x06, 0x06, 0x06,
@@ -283,7 +285,7 @@ u8 p_len[64] = {
 	0x08, 0x08, 0x08, 0x08, 0x08, 0x08, 0x08, 0x08
 };
 
-u8 p_code[64] = {
+U8 p_code[64] = {
 	0x00, 0x20, 0x30, 0x40, 0x50, 0x58, 0x60, 0x68,
 	0x70, 0x78, 0x80, 0x88, 0x90, 0x94, 0x98, 0x9C,
 	0xA0, 0xA4, 0xA8, 0xAC, 0xB0, 0xB4, 0xB8, 0xBC,
@@ -295,7 +297,7 @@ u8 p_code[64] = {
 };
 
 /* for decoding */
-u8 d_code[256] = {
+U8 d_code[256] = {
 	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
 	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
 	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
@@ -330,7 +332,7 @@ u8 d_code[256] = {
 	0x38, 0x39, 0x3A, 0x3B, 0x3C, 0x3D, 0x3E, 0x3F,
 };
 
-u8 d_len[256] = {
+U8 d_len[256] = {
 	0x03, 0x03, 0x03, 0x03, 0x03, 0x03, 0x03, 0x03,
 	0x03, 0x03, 0x03, 0x03, 0x03, 0x03, 0x03, 0x03,
 	0x03, 0x03, 0x03, 0x03, 0x03, 0x03, 0x03, 0x03,
@@ -636,7 +638,7 @@ void Decode(void)  /* recover */
 
 unsigned _writeLZ	(int hf, void* d, unsigned size)
 {
-	u8*	start = (u8*) d;
+	U8*	start = (U8*) d;
 	fs.Init_Input(start,start+size);
 	
 	// Actual compression
@@ -648,18 +650,18 @@ unsigned _writeLZ	(int hf, void* d, unsigned size)
 	return size_out;
 }
 
-void _compressLZ	(u8** dest, unsigned* dest_sz, void* src, unsigned src_sz)
+void _compressLZ	(U8** dest, unsigned* dest_sz, void* src, unsigned src_sz)
 {
-	u8*	start = (u8*) src;
+	U8*	start = (U8*) src;
 	fs.Init_Input(start,start+src_sz);
 	Encode();
 	*dest		= fs.OutPointer();
 	*dest_sz	= fs.OutSize();
 }
 
-void _decompressLZ	(u8** dest, unsigned* dest_sz, void* src, unsigned src_sz)
+void _decompressLZ	(U8** dest, unsigned* dest_sz, void* src, unsigned src_sz)
 {
-	u8*	start = (u8*) src;
+	U8*	start = (U8*) src;
 	fs.Init_Input(start,start+src_sz);
 	Decode();
 	*dest		= fs.OutPointer();
@@ -669,7 +671,7 @@ void _decompressLZ	(u8** dest, unsigned* dest_sz, void* src, unsigned src_sz)
 unsigned _readLZ	(int hf, void* &d, unsigned size)
 {
 	// Read file in memory
-	u8*	data	= (u8*)xr_malloc(size);
+	U8*	data	= (U8*)xr_malloc(size);
 	_read	(hf,data,size);
 	
 	fs.Init_Input(data,data+size);

@@ -12,7 +12,7 @@ smem_value*			smem_container::dock			(u32 dwCRC, u32 dwLength, void* ptr)
 	smem_value*		result		= 0;
 
 	// search a place to insert
-	u8				storage		[4*sizeof(u32)];
+	U8				storage		[4*sizeof(u32)];
 	smem_value*		value		= (smem_value*)storage;
 	value->dwReference			= 0;
 	value->dwCRC				= dwCRC;

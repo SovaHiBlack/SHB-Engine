@@ -8,7 +8,7 @@ class CTextureDescrMngr
 	{
 		shared_str			detail_name;
 		R_constant_setup*	        cs;
-		u8				usage;
+		U8				usage;
                 texture_assoc                   ():cs(NULL),usage(0){}
 	};
 	struct texture_spec
