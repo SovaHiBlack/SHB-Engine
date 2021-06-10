@@ -269,7 +269,7 @@ void CBloodsucker::LookDirection(Fvector3 to_dir, float bone_turn_speed)
 
 void CBloodsucker::ActivateVampireEffector()
 {
-	Actor()->Cameras().AddCamEffector(xr_new<CVampireCameraEffector>(6.0f, get_head_position(this), get_head_position(Actor())));
+	Actor()->Cameras().addCamEffector(xr_new<CVampireCameraEffector>(6.0f, get_head_position(this), get_head_position(Actor())));
 	Actor()->Cameras().AddPPEffector(xr_new<CVampirePPEffector>(pp_vampire_effector, 6.0f));
 }
 

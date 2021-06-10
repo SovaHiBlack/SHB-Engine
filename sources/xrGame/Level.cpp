@@ -123,7 +123,7 @@ CLevel::CLevel( ) :IPureClient(Device.GetTimerGlobal( ))
 	//---------------------------------------------------------
 	m_dwCL_PingLastSendTime = 0;
 	m_dwCL_PingDeltaSend = 1000;
-	m_dwRealPing = 0;
+	//m_dwRealPing = 0;
 
 	//---------------------------------------------------------	
 	m_sDemoName[0] = 0;
@@ -288,8 +288,8 @@ void CLevel::PrefetchSound(const char* name)
 }
 
 // Game interface ////////////////////////////////////////////////////
-int	CLevel::get_RPID(const char* /**name/**/)
-{
+//int	CLevel::get_RPID(const char* /**name/**/)
+//{
 	/*
 	// Gain access to string
 	const char* params = pLevel->r_string("respawn_point", name);
@@ -309,8 +309,8 @@ int	CLevel::get_RPID(const char* /**name/**/)
 	for (int i = 0; i < (int)(rp.size()); ++i)
 		if (pos.similar(rp[i],EPS_L))	return i;
 	*/
-	return -1;
-}
+//	return -1;
+//}
 
 bool g_bDebugEvents = false;
 
@@ -653,7 +653,7 @@ void CLevel::OnEvent(EVENT E, u64 P1, u64 /**P2/**/)
 		string_path RealName;
 		strcpy_s(RealName, name);
 		strcat(RealName, ".xrdemo");
-		Cameras( ).AddCamEffector(xr_new<CDemoPlay>(RealName, 1.3f, 0));
+		Cameras( ).addCamEffector(xr_new<CDemoPlay>(RealName, 1.3f, 0));
 	}
 	else if (E == eChangeTrack && P1)
 	{

@@ -32,7 +32,7 @@ extern ENGINE_API CIniFile* pGameIni;
 #pragma comment(lib, "Core.lib")
 #pragma comment(lib, "xrCDB.lib")
 #pragma comment(lib, "xrSound.lib")
-#pragma comment(lib, "xrLUA.lib")
+#pragma comment(lib, "LUA.lib")
 
 #pragma comment(lib, "winmm.lib")
 

@@ -145,7 +145,7 @@ CEffectorCam* CCameraManager::GetCamEffector(ECameraEffectorType type)
 	return 0;
 }
 
-CEffectorCam* CCameraManager::AddCamEffector(CEffectorCam* ef)
+CEffectorCam* CCameraManager::addCamEffector(CEffectorCam* ef)
 {
 	m_EffectorsCam_added_deffered.push_back(ef);
 	return m_EffectorsCam_added_deffered.back();

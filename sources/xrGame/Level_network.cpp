@@ -470,14 +470,14 @@ void			CLevel::ClearAllObjects( )
 	ProcessGameEvents( );
 }
 
-void				CLevel::OnInvalidHost( )
-{ }
+//void				CLevel::OnInvalidHost( )
+//{ }
 
-void				CLevel::OnInvalidPassword( )
-{ }
+//void				CLevel::OnInvalidPassword( )
+//{ }
 
-void				CLevel::OnSessionFull( )
-{ }
+//void				CLevel::OnSessionFull( )
+//{ }
 
 void				CLevel::OnConnectRejected( )
 {

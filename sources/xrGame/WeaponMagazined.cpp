@@ -1229,7 +1229,7 @@ void CWeaponMagazined::OnZoomIn( )
 		CEffectorZoomInertion* S = smart_cast<CEffectorZoomInertion*>	(pActor->Cameras( ).GetCamEffector(eCEZoom));
 		if (!S)
 		{
-			S = (CEffectorZoomInertion*) pActor->Cameras( ).AddCamEffector(xr_new<CEffectorZoomInertion>( ));
+			S = (CEffectorZoomInertion*) pActor->Cameras( ).addCamEffector(xr_new<CEffectorZoomInertion>( ));
 			S->Init(this);
 		}
 

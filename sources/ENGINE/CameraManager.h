@@ -152,7 +152,8 @@ public:
 #endif // def DEBUG
 
 	void					Dump				( );
-	CEffectorCam*			AddCamEffector		(CEffectorCam* ef);
+
+	CEffectorCam*			addCamEffector		(CEffectorCam* ef);
 	CEffectorCam*			GetCamEffector		(ECameraEffectorType type);
 	void					RemoveCamEffector	(ECameraEffectorType type);
 

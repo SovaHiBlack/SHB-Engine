@@ -35,7 +35,7 @@ inline	u16	 CAttachableItem::bone_id					() const
 	return m_bone_id;
 }
 
-inline	void CAttachableItem::set_bone_id				(u16 bone_id)
+inline	void CAttachableItem::set_bone_id				(unsigned short bone_id)
 {
 	VERIFY				(m_valid);
 	m_bone_id			= bone_id;

@@ -33,7 +33,6 @@ class CDebugRenderer;
 extern float g_fov;
 
 const int maxRP = 64;
-//const int maxTeams = 32;
 
 class CBulletManager;
 class CMapManager;
@@ -122,9 +121,9 @@ public:
 	}
 
 	virtual void				OnMessage(void* data, u32 size);
-	virtual void				OnInvalidHost( );
-	virtual void				OnInvalidPassword( );
-	virtual void				OnSessionFull( );
+	//virtual void				OnInvalidHost( );
+	//virtual void				OnInvalidPassword( );
+	//virtual void				OnSessionFull( );
 	virtual void				OnConnectRejected( );
 
 private:
@@ -260,7 +259,7 @@ public:
 	virtual void				IR_OnMouseWheel(int direction);
 	virtual void				IR_OnActivate( );
 
-	int					get_RPID(const char* name);
+	//int					get_RPID(const char* name);
 
 	// Game
 	void						InitializeClientGame(CNetPacket& P);
@@ -345,13 +344,13 @@ public:
 protected:
 	u32		m_dwCL_PingDeltaSend;
 	u32		m_dwCL_PingLastSendTime;
-	u32		m_dwRealPing;
+	//u32		m_dwRealPing;
 
 public:
-	virtual u32				GetRealPing( )
-	{
-		return m_dwRealPing;
-	}
+	//virtual u32				GetRealPing( )
+	//{
+		//return m_dwRealPing;
+	//}
 
 	void			remove_objects( );
 	virtual void			OnSessionTerminate(const char* reason);

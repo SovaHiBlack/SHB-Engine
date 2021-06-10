@@ -729,7 +729,7 @@ void CActor::g_Physics(Fvector3& _accel, float jump, float dt)
 	{
 		if (character_physics_support( )->movement( )->gcontact_Was)
 		{
-			Cameras( ).AddCamEffector(xr_new<CEffectorFall>(character_physics_support( )->movement( )->gcontact_Power));
+			Cameras( ).addCamEffector(xr_new<CEffectorFall>(character_physics_support( )->movement( )->gcontact_Power));
 		}
 
 		if (!fis_zero(character_physics_support( )->movement( )->gcontact_HealthLost))
@@ -1030,7 +1030,7 @@ void CActor::shedule_Update(u32 DT)
 	if (!pCamBobbing)
 	{
 		pCamBobbing = xr_new<CEffectorBobbing>( );
-		Cameras( ).AddCamEffector(pCamBobbing);
+		Cameras( ).addCamEffector(pCamBobbing);
 	}
 
 	pCamBobbing->SetState(mstate_real, conditions( ).IsLimping( ), IsZoomAimingMode( ));

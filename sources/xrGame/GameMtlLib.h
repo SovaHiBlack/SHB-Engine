@@ -183,7 +183,7 @@ public:
 	{
 		return ID_parent;
 	}
-	BOOL				SetParent(int parent);
+	//BOOL				SetParent(int parent);
 
 #ifdef DEBUG
 	const char* dbg_Name( );
@@ -232,10 +232,12 @@ public:
 		}
 
 		materials.clear( );
+
 		for (GameMtlPairIt p_it = material_pairs.begin( ); material_pairs.end( ) != p_it; ++p_it)
 		{
 			xr_delete(*p_it);
 		}
+
 		material_pairs.clear( );
 	}
 	// material routine

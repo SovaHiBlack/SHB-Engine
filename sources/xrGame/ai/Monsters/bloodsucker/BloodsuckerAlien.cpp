@@ -237,7 +237,7 @@ void CBloodsuckerAlien::activate( )
 	Actor( )->Cameras( ).AddPPEffector(m_effector_pp);
 
 	m_effector = xr_new<CAlienEffector>(EFFECTOR_ID_GEN(ECameraEffectorType), m_object);
-	Actor( )->Cameras( ).AddCamEffector(m_effector);
+	Actor( )->Cameras( ).addCamEffector(m_effector);
 
 	//make invisible
 	m_object->state_invisible = true;

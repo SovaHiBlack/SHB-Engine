@@ -459,7 +459,7 @@ float add_cam_effector(const char* fn, int id, bool cyclic, const char* cb_func)
 	e->SetType((ECameraEffectorType) id);
 	e->SetCyclic(cyclic);
 	e->Start(fn);
-	Actor( )->Cameras( ).AddCamEffector(e);
+	Actor( )->Cameras( ).addCamEffector(e);
 	return e->GetAnimatorLength( );
 }
 
@@ -470,7 +470,7 @@ float add_cam_effector2(const char* fn, int id, bool cyclic, const char* cb_func
 	e->SetType((ECameraEffectorType) id);
 	e->SetCyclic(cyclic);
 	e->Start(fn);
-	Actor( )->Cameras( ).AddCamEffector(e);
+	Actor( )->Cameras( ).addCamEffector(e);
 	return e->GetAnimatorLength( );
 }
 

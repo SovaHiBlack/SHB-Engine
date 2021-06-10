@@ -13,17 +13,18 @@ class CCameraLook : public CCameraBase
 public:
 					CCameraLook		(CObject* p, u32 flags = 0);
 	virtual			~CCameraLook	( );
+
 	virtual void	Load			(const char* section);
 	virtual void	Move			(int cmd, float val = 0.0f, float factor = 1.0f);
 
 	virtual void	OnActivate		(CCameraBase* old_cam);
 	virtual void	Update			(Fvector3& point, Fvector3& noise_dangle);
 
-	virtual float	GetWorldYaw		( )
+	virtual float	getWorldYaw		( )
 	{
 		return -yaw;
 	}
-	virtual float	GetWorldPitch	( )
+	virtual float	getWorldPitch	( )
 	{
 		return pitch;
 	}

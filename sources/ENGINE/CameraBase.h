@@ -76,16 +76,12 @@ public:
 		roll = R;
 	}
 
-	virtual float	GetWorldYaw		( )
+	virtual float	getWorldYaw		( )
 	{
 		return 0.0f;
 	}
-	virtual float	GetWorldPitch	( )
+	virtual float	getWorldPitch	( )
 	{
 		return 0.0f;
 	}
-
-	virtual float	CheckLimYaw		( );
-	virtual float	CheckLimPitch	( );
-	virtual float	CheckLimRoll	( );
 };

@@ -16,11 +16,11 @@ public:
 	virtual void	OnActivate			(CCameraBase* old_cam);
 	virtual void	Update				(Fvector3& point, Fvector3& noise_angle);
 
-	virtual float	GetWorldYaw			( )
+	virtual float	getWorldYaw			( )
 	{
 		return -yaw;
 	}
-	virtual float	GetWorldPitch		( )
+	virtual float	getWorldPitch		( )
 	{
 		return pitch;
 	}

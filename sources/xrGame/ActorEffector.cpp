@@ -30,7 +30,7 @@ void AddEffector(CActor* A, int type, const shared_str& sect_name)
 
 		const char* fn = pSettings->r_string(sect_name, "cam_eff_name");
 		cam_anm->Start(fn);
-		A->Cameras( ).AddCamEffector(cam_anm);
+		A->Cameras( ).addCamEffector(cam_anm);
 	}
 }
 
@@ -57,7 +57,7 @@ void AddEffector(CActor* A, int type, const shared_str& sect_name, CEffectorCont
 
 		const char* fn = pSettings->r_string(sect_name, "cam_eff_name");
 		cam_anm->Start(fn);
-		A->Cameras( ).AddCamEffector(cam_anm);
+		A->Cameras( ).addCamEffector(cam_anm);
 	}
 }
 
@@ -86,7 +86,7 @@ void AddEffector(CActor* A, int type, const shared_str& sect_name, GET_KOEFF_FUN
 
 		const char* fn = pSettings->r_string(sect_name, "cam_eff_name");
 		cam_anm->Start(fn);
-		A->Cameras( ).AddCamEffector(cam_anm);
+		A->Cameras( ).addCamEffector(cam_anm);
 	}
 }
 
@@ -116,7 +116,7 @@ void AddEffector(CActor* A, int type, const shared_str& sect_name, float factor)
 
 		const char* fn = pSettings->r_string(sect_name, "cam_eff_name");
 		cam_anm->Start(fn);
-		A->Cameras( ).AddCamEffector(cam_anm);
+		A->Cameras( ).addCamEffector(cam_anm);
 	}
 }
 

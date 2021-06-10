@@ -414,7 +414,7 @@ public:
 		string_path		fn;
 		FS.update_path(fn, "$game_saves$", fn_);
 
-		g_pGameLevel->Cameras( ).AddCamEffector(xr_new<CDemoRecord>(fn));
+		g_pGameLevel->Cameras( ).addCamEffector(xr_new<CDemoRecord>(fn));
 	}
 };
 
@@ -445,7 +445,7 @@ public:
 
 			strconcat(sizeof(fn), fn, args, ".xrdemo");
 			FS.update_path(fn, "$game_saves$", fn);
-			g_pGameLevel->Cameras( ).AddCamEffector(xr_new<CDemoPlay>(fn, 1.0f, loops));
+			g_pGameLevel->Cameras( ).addCamEffector(xr_new<CDemoPlay>(fn, 1.0f, loops));
 		}
 	}
 };

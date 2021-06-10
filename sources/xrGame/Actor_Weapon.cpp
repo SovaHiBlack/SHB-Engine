@@ -155,7 +155,7 @@ void CActor::on_weapon_shot_start(CWeapon* weapon)
 	CCameraShotEffector* effector = smart_cast<CCameraShotEffector*> (Cameras( ).GetCamEffector(eCEShot));
 	if (!effector)
 	{
-		effector = (CCameraShotEffector*) Cameras( ).AddCamEffector(xr_new<CCameraShotEffector>(weapon->camMaxAngle,
+		effector = (CCameraShotEffector*) Cameras( ).addCamEffector(xr_new<CCameraShotEffector>(weapon->camMaxAngle,
 																	weapon->camRelaxSpeed,
 																	weapon->camMaxAngleHorz,
 																	weapon->camStepAngleHorz,
