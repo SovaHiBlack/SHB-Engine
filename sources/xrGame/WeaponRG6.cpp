@@ -101,7 +101,7 @@ void CWeaponRG6::FireStart ()
 				DBG_OpenCashedDraw();
 				DBG_DrawLine(p1, Fvector3().add(p1,d),D3DCOLOR_XRGB(255,0,0));
 #endif
-				u8 canfire0 = TransferenceAndThrowVelToThrowDir(Transference, CRocketLauncher::m_fLaunchSpeed, EffectiveGravity(), res);
+				U8 canfire0 = TransferenceAndThrowVelToThrowDir(Transference, CRocketLauncher::m_fLaunchSpeed, EffectiveGravity(), res);
 #ifdef DEBUG
 				if(canfire0>0)DBG_DrawLine(p1, Fvector3().add(p1,res[0]),D3DCOLOR_XRGB(0,255,0));
 				if(canfire0>1)DBG_DrawLine(p1, Fvector3().add(p1,res[1]),D3DCOLOR_XRGB(0,0,255));
@@ -135,10 +135,10 @@ void CWeaponRG6::FireStart ()
 	}
 }
 
-u8 CWeaponRG6::AddCartridge		(u8 cnt)
+U8 CWeaponRG6::AddCartridge		(U8 cnt)
 {
-	u8 t = inheritedSG::AddCartridge(cnt);
-	u8 k = cnt-t;
+	U8 t = inheritedSG::AddCartridge(cnt);
+	U8 k = cnt-t;
 	shared_str fake_grenade_name = pSettings->r_string(*m_ammoTypes[m_ammoType], "fake_grenade_name");
 	while(k){
 		--k;

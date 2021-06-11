@@ -247,7 +247,7 @@ void CActor::reload(const char* section)
 
 void CActor::Load(const char* section)
 {
-//	Msg("Loading actor: %s",section);
+	//	Msg("Loading actor: %s",section);
 	inherited::Load(section);
 	material( ).Load(section);
 	CInventoryOwner::Load(section);
@@ -406,7 +406,7 @@ void CActor::Load(const char* section)
 	m_sHeadShotParticle = READ_IF_EXISTS(pSettings, r_string, section, "HeadShotParticle", 0);
 }
 
-void CActor::PHHit(float P, Fvector3& dir, CObject* who, s16 element, Fvector3  p_in_object_space, float impulse, ALife::EHitType hit_type /* = ALife::eHitTypeWound */)
+void CActor::PHHit(float P, Fvector3& dir, CObject* who, S16 element, Fvector3 p_in_object_space, float impulse, ALife::EHitType hit_type /* = ALife::eHitTypeWound */)
 {
 	m_pPhysics_support->in_Hit(P, dir, who, element, p_in_object_space, impulse, hit_type, !g_Alive( ));
 }
@@ -501,7 +501,7 @@ void CActor::Hit(SHit* pHDS)
 		HDS.hit_type != ALife::eHitTypeRadiation
 		)
 	{
-//		mstate_real	&=~mcSprint;
+		//		mstate_real	&=~mcSprint;
 		mstate_wishful &= ~mcSprint;
 	}
 
@@ -525,7 +525,7 @@ void CActor::Hit(SHit* pHDS)
 void CActor::HitMark(float P,
 					 Fvector3 dir,
 					 CObject* who,
-					 s16 element,
+					 S16 element,
 					 Fvector3 position_in_bone_space,
 					 float impulse,
 					 ALife::EHitType hit_type)
@@ -593,7 +593,7 @@ void CActor::HitMark(float P,
 	}
 }
 
-void CActor::HitSignal(float perc, Fvector3& vLocalDir, CObject* who, s16 element)
+void CActor::HitSignal(float perc, Fvector3& vLocalDir, CObject* who, S16 element)
 {
 	if (g_Alive( ))
 	{
@@ -688,7 +688,7 @@ void CActor::SwitchOutBorder(bool new_border_state)
 	}
 	else
 	{
-//.		Msg("enter level border");
+		//.		Msg("enter level border");
 		callback(GameObject::eEnterLevelBorder)(lua_game_object( ));
 	}
 	m_bOutBorder = new_border_state;
@@ -900,12 +900,12 @@ void CActor::shedule_Update(u32 DT)
 		m_sDefaultObjAction = NULL;
 		inherited::shedule_Update(DT);
 
-/*
-		if (OnServer())
-		{
-			Check_Weapon_ShowHideState();
-		}
-*/
+		/*
+				if (OnServer())
+				{
+					Check_Weapon_ShowHideState();
+				}
+		*/
 		return;
 	}
 
@@ -917,20 +917,20 @@ void CActor::shedule_Update(u32 DT)
 
 	//----------- for E3 -----------------------------
 	if (Level( ).CurrentControlEntity( ) == this && (!Level( ).IsDemoPlay( ) || Level( ).IsServerDemo( )))
-	//------------------------------------------------
+		//------------------------------------------------
 	{
 		g_cl_CheckControls(mstate_wishful, NET_SavedAccel, NET_Jump, dt);
 		{
-/*
-			if (mstate_real & mcJump)
-			{
-				CNetPacket	P;
-				u_EventGen(P, GE_ACTOR_JUMPING, ID());
-				P.w_sdir(NET_SavedAccel);
-				P.w_float(NET_Jump);
-				u_EventSend(P);
-			}
-*/
+			/*
+						if (mstate_real & mcJump)
+						{
+							CNetPacket	P;
+							u_EventGen(P, GE_ACTOR_JUMPING, ID());
+							P.w_sdir(NET_SavedAccel);
+							P.w_float(NET_Jump);
+							u_EventSend(P);
+						}
+			*/
 		}
 		g_cl_Orientate(mstate_real, dt);
 		g_Orientate(mstate_real, dt);
@@ -984,8 +984,8 @@ void CActor::shedule_Update(u32 DT)
 
 		if (NET.size( ))
 		{
-//			NET_SavedAccel = NET_Last.p_accel;
-//			mstate_real = mstate_wishful = NET_Last.mstate;
+			//			NET_SavedAccel = NET_Last.p_accel;
+			//			mstate_real = mstate_wishful = NET_Last.mstate;
 
 			g_sv_Orientate(mstate_real, dt);
 			g_Orientate(mstate_real, dt);
@@ -1137,8 +1137,8 @@ void CActor::shedule_Update(u32 DT)
 			{
 				m_sDefaultObjAction = m_sInventoryItemUseAction;
 			}
-//.			else if (m_pInvBoxWeLookingAt)
-//.				m_sDefaultObjAction = m_sInventoryBoxUseAction;
+			//.			else if (m_pInvBoxWeLookingAt)
+			//.				m_sDefaultObjAction = m_sInventoryBoxUseAction;
 			else
 			{
 				m_sDefaultObjAction = NULL;
@@ -1156,9 +1156,9 @@ void CActor::shedule_Update(u32 DT)
 		m_pInvBoxWeLookingAt = nullptr;
 	}
 
-//	UpdateSleep( );
+	//	UpdateSleep( );
 
-	//для свойст артефактов, находящихся на поясе
+		//для свойст артефактов, находящихся на поясе
 	UpdateArtefactsOnBelt( );
 	m_pPhysics_support->in_shedule_Update(DT);
 	Check_for_AutoPickUp( );
@@ -1210,7 +1210,7 @@ void CActor::OnHUDDraw(CCustomHUD* /**hud/**/)
 {
 	CHudItem* pHudItem = smart_cast<CHudItem*>(inventory( ).ActiveItem( ));
 	if (pHudItem && pHudItem->GetHUDmode( ))
-//	if(inventory().ActiveItem()  ) 
+		//	if(inventory().ActiveItem()  ) 
 	{
 		inventory( ).ActiveItem( )->renderable_Render( );
 	}
@@ -1561,7 +1561,7 @@ void CActor::UpdateArtefactsOnBelt( )
 			conditions( ).ChangeBleeding(artefact->m_fBleedingRestoreSpeed * f_update_time);
 			conditions( ).ChangeHealth(artefact->m_fHealthRestoreSpeed * f_update_time);
 			conditions( ).ChangePower(artefact->m_fPowerRestoreSpeed * f_update_time);
-//			conditions().ChangeSatiety(artefact->m_fSatietyRestoreSpeed*f_update_time);
+			//			conditions().ChangeSatiety(artefact->m_fSatietyRestoreSpeed*f_update_time);
 			conditions( ).ChangeRadiation(artefact->m_fRadiationRestoreSpeed * f_update_time);
 		}
 	}
@@ -1672,14 +1672,14 @@ void CActor::UpdateMotionIcon(u32 mstate_rl)
 		}
 	}
 
-/*
-						stNormal, --
-						stCrouch, --
-						stCreep,  --
-						stClimb,  --
-						stRun,    --
-						stSprint, --
-*/
+	/*
+							stNormal, --
+							stCrouch, --
+							stCreep,  --
+							stClimb,  --
+							stRun,    --
+							stSprint, --
+	*/
 }
 
 CPHDestroyable* CActor::ph_destroyable( )

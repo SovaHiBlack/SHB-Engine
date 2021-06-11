@@ -138,7 +138,7 @@ void CEnvelope::Save(IWriter& F)
 {
 	F.w_u8		((U8)behavior[0]);
 	F.w_u8		((U8)behavior[1]);
-	F.w_u16		((u16)keys.size());
+	F.w_u16		((U16)keys.size());
 	for (KeyIt k_it=keys.begin(); k_it!=keys.end(); k_it++)
     	(*k_it)->Save(F);
 }

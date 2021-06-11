@@ -269,7 +269,7 @@ public:
 	u32					Objects_net_Save(CNetPacket* _Packet, u32 start, u32 count);
 	virtual void				Send(CNetPacket& P, u32 dwFlags = DPNSEND_GUARANTEED, u32 dwTimeout = 0);
 
-	void						g_cl_Spawn(const char* name, u8 rp, u16 flags, Fvector3 pos);	// only ask server
+	void						g_cl_Spawn(const char* name, U8 rp, u16 flags, Fvector3 pos);	// only ask server
 	void						g_sv_Spawn(CSE_Abstract* E);					// server reply/command spawning
 
 	// Save/Load/State
@@ -313,7 +313,7 @@ public:
 //	void				SetGameTime(ALife::_TIME_ID GameTime);
 
 	// gets current daytime [0..23]
-	u8					GetDayTime( );
+	U8					GetDayTime( );
 	u32					GetGameDayTimeMS( );
 	float				GetGameDayTimeSec( );
 	float				GetEnvironmentGameDayTimeSec( );

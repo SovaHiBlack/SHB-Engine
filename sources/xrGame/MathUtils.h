@@ -420,7 +420,7 @@ inline float			ThrowMinVelTime						(const Fvector3& transference, float gravity
 }
 
 // returns num result, tgA result tangents of throw angle 
-inline u8				TransferenceAndThrowVelToTgA		(const Fvector3& transference, float throw_vel, float gravity_accel, Fvector2& tgA, float& s)
+inline U8				TransferenceAndThrowVelToTgA		(const Fvector3& transference, float throw_vel, float gravity_accel, Fvector2& tgA, float& s)
 {
 	float sqx = transference.x * transference.x + transference.z * transference.z;
 	float sqv = throw_vel * throw_vel;
@@ -444,18 +444,18 @@ inline u8				TransferenceAndThrowVelToTgA		(const Fvector3& transference, float 
 	return 2;
 }
 
-inline u8				TransferenceAndThrowVelToTgA		(const Fvector3& transference, float throw_vel, float gravity_accel, Fvector2& tgA)
+inline U8				TransferenceAndThrowVelToTgA		(const Fvector3& transference, float throw_vel, float gravity_accel, Fvector2& tgA)
 {
 	float s;
 	return TransferenceAndThrowVelToTgA(transference, throw_vel, gravity_accel, tgA, s);
 }
 
-inline u8				TransferenceAndThrowVelToThrowDir	(const Fvector3& transference, float throw_vel, float gravity_accel, Fvector3	throw_dir[2])
+inline U8				TransferenceAndThrowVelToThrowDir	(const Fvector3& transference, float throw_vel, float gravity_accel, Fvector3	throw_dir[2])
 {
 	throw_dir[0] = throw_dir[1] = transference;
 	Fvector2 tgA;
 	float s;
-	u8 ret = TransferenceAndThrowVelToTgA(transference, throw_vel, gravity_accel, tgA, s);
+	U8 ret = TransferenceAndThrowVelToTgA(transference, throw_vel, gravity_accel, tgA, s);
 	switch (ret)
 	{
 		case 0:

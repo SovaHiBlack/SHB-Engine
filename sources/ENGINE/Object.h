@@ -82,8 +82,8 @@ public:
 	// Network
 	__forceinline BOOL							Local				()			const	{ return Props.net_Local;	}
 	__forceinline BOOL							Remote				()			const	{ return !Props.net_Local;	}
-	__forceinline u16								ID					()			const	{ return Props.net_ID;		}
-	__forceinline void							setID				(u16 _ID)			{ Props.net_ID = _ID;		}
+	__forceinline U16								ID					()			const	{ return Props.net_ID;		}
+	__forceinline void							setID				(U16 _ID)			{ Props.net_ID = _ID;		}
 	virtual BOOL						Ready				()					{ return Props.net_Ready;	}
 	BOOL								GetTmpPreDestroy		()		const	{ return Props.bPreDestroy;	}
 	void								SetTmpPreDestroy	(BOOL b)			{ Props.bPreDestroy = b;}

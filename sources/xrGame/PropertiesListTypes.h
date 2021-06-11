@@ -11,7 +11,7 @@ enum EPropType{
 	PROP_SHORTCUT,
 	PROP_BUTTON,
 	PROP_CHOOSE,
-	PROP_NUMERIC,	// {u8,u16,u32,S8,s16,int,float}
+	PROP_NUMERIC,	// {U8,u16,u32,S8,S16,int,float}
 	PROP_BOOLEAN,
 	PROP_FLAG,
 	PROP_VECTOR, 
@@ -494,11 +494,11 @@ inline xr_string draw_sprintf(xr_string& s, const Fvector3& V, int dec)
 	return s;
 }
 //------------------------------------------------------------------------------
-typedef NumericValue<u8>	U8Value;
+typedef NumericValue<U8>	U8Value;
 typedef NumericValue<u16>	U16Value;
 typedef NumericValue<u32>	U32Value;
 typedef NumericValue<S8>	S8Value;
-typedef NumericValue<s16>	S16Value;
+typedef NumericValue<S16>	S16Value;
 typedef NumericValue<int>	S32Value;
 typedef NumericValue<float>	FloatValue;
 class VectorValue: public NumericValue<Fvector3>{
@@ -590,7 +590,7 @@ public:
 	}
 };
 //------------------------------------------------------------------------------
-typedef TokenValue<u8>	Token8Value;
+typedef TokenValue<U8>	Token8Value;
 typedef TokenValue<u16>	Token16Value;
 typedef TokenValue<u32>	Token32Value;
 //------------------------------------------------------------------------------
@@ -615,7 +615,7 @@ public:
 	}
 };
 //------------------------------------------------------------------------------
-typedef RTokenValue<u8>	RToken8Value;
+typedef RTokenValue<U8>	RToken8Value;
 typedef RTokenValue<u16>RToken16Value;
 typedef RTokenValue<u32>RToken32Value;
 //------------------------------------------------------------------------------

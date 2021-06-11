@@ -32,7 +32,7 @@ void CUITabButton::Update( )
 	CUI3tButton::Update( );
 }
 
-void CUITabButton::SendMessage(CUIWindow* pWnd, s16 msg, void* pData)
+void CUITabButton::SendMessage(CUIWindow* pWnd, S16 msg, void* pData)
 {
 	if (!IsEnabled( ))
 	{

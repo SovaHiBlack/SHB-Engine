@@ -194,7 +194,7 @@ public:
 
 	virtual void						g_WeaponBones						(int &L, int &R1, int &R2);
 	virtual void						g_fireParams						(const CHudItem* pHudItem, Fvector3& P, Fvector3& D);
-	virtual void						HitSignal							(float P, Fvector3& vLocalDir, CObject* who, s16 element);
+	virtual void						HitSignal							(float P, Fvector3& vLocalDir, CObject* who, S16 element);
 	virtual void						Die									(CObject* who);
 
 	virtual void						OnEvent								(CNetPacket& P, u16 type);
@@ -203,7 +203,7 @@ public:
 	virtual void						renderable_Render					();
 	virtual void						Exec_Look							(float dt);
 	virtual	void						Hit									(SHit* pHDS);
-	virtual	void						PHHit								(float P, Fvector3& dir, CObject *who,s16 element, Fvector3 p_in_object_space, float impulse, ALife::EHitType hit_type = ALife::eHitTypeWound);
+	virtual	void						PHHit								(float P, Fvector3& dir, CObject *who, S16 element, Fvector3 p_in_object_space, float impulse, ALife::EHitType hit_type = ALife::eHitTypeWound);
 	virtual BOOL						feel_vision_isRelevant				(CObject* who);
 	virtual float						Radius								() const;
 #ifdef DEBUG

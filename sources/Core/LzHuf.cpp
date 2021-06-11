@@ -9,8 +9,6 @@
 
 #define MODULE
 
-//typedef unsigned char BYTE;
-
 unsigned	textsize = 0, codesize = 0;
 
 char		wterr[] = "Can't write.";
@@ -558,7 +556,7 @@ void Encode(void)  /* compression */
 	for (i = s; i < r; i++)
 		text_buf[i] = 0x20;
 	for (len = 0; len < F && (c = fs._getb()) != EOF; len++)
-		text_buf[r + len] = (unsigned char)c;
+		text_buf[r + len] = (U8)c;
 	textsize = len;
 	for (i = 1; i <= F; i++)
 		InsertNode(r - i);
@@ -578,9 +576,9 @@ void Encode(void)  /* compression */
 		for (i = 0; i < last_match_length &&
 			(c = fs._getb()) != EOF; i++) {
 			DeleteNode(s);
-			text_buf[s] = (unsigned char)c;
+			text_buf[s] = (U8)c;
 			if (s < F - 1)
-				text_buf[s + N] = (unsigned char)c;
+				text_buf[s + N] = (U8)c;
 			s = (s + 1) & (N - 1);
 			r = (r + 1) & (N - 1);
 			InsertNode(r);
@@ -618,7 +616,7 @@ void Decode(void)  /* recover */
 		c = DecodeChar();
 		if (c < 256) {
 			fs._putb(c);
-			text_buf[r++] = (unsigned char)c;
+			text_buf[r++] = (U8)c;
 			r &= (N - 1);
 			count++;
 		} else {
@@ -627,7 +625,7 @@ void Decode(void)  /* recover */
 			for (k = 0; k < j; k++) {
 				c = text_buf[(i + k) & (N - 1)];
 				fs._putb(c);
-				text_buf[r++] = (unsigned char)c;
+				text_buf[r++] = (U8)c;
 				r &= (N - 1);
 				count++;
 			}

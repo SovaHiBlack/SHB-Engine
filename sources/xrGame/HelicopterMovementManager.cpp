@@ -225,7 +225,7 @@ void SHeliMovementState::goPatrolByPatrolPath (const char* path_name, int start_
 
 void SHeliMovementState::save(CNetPacket &output_packet)
 {
-	output_packet.w_s16		((s16)type);
+	output_packet.w_s16		((S16)type);
 	output_packet.w_u32		(patrol_begin_idx);
 	output_packet.w_stringZ	(patrol_path_name);
 

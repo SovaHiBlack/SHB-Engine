@@ -1108,7 +1108,7 @@ int dCollideCylS(dxGeom* o1, dxGeom* o2, int flags,
 	p[2] = p2[2] - p1[2];
 
 	dReal s, s2;
-	unsigned char code;
+	U8 code;
 #define TEST(expr1,expr2,norm,cc) \
   s2 = dFabs(expr1) - (expr2); \
   if (s2 > 0) return 0; \

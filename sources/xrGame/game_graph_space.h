@@ -13,8 +13,8 @@
 
 namespace GameGraph {
 	typedef u16	_GRAPH_ID;
-	typedef u8	_LEVEL_ID;
-	typedef u8	_LOCATION_ID;
+	typedef U8	_LEVEL_ID;
+	typedef U8	_LOCATION_ID;
 
 	enum {
 		LOCATION_TYPE_COUNT = 4,
@@ -83,20 +83,20 @@ namespace GameGraph {
 		Fvector3						tGlobalPoint;
 		u32							tLevelID:8;
 		u32							tNodeID:24;
-		u8							tVertexTypes[LOCATION_TYPE_COUNT];
+		U8							tVertexTypes[LOCATION_TYPE_COUNT];
 		u32							dwEdgeOffset;
 		u32							dwPointOffset;
-		u8							tNeighbourCount;
-		u8							tDeathPointCount;
+		U8							tNeighbourCount;
+		U8							tDeathPointCount;
 	public:
 		inline	const Fvector3&				level_point		() const;
 		inline	const Fvector3&			game_point			() const;
 		inline	_LEVEL_ID				level_id			() const;
 		inline	u32						level_vertex_id		() const;
-		inline	const u8				*vertex_type		() const;
-		inline	const u8				&edge_count			() const;
+		inline	const U8* vertex_type( ) const;
+		inline	const U8& edge_count( ) const;
 		inline	const u32				&edge_offset		() const;
-		inline	const u8				&death_point_count	() const;
+		inline	const U8& death_point_count( ) const;
 		inline	const u32				&death_point_offset	() const;
 		friend class CGameGraph;
 	};
@@ -104,7 +104,7 @@ namespace GameGraph {
 	class
 
 		CHeader {
-		u8							m_version;
+		U8							m_version;
 		_GRAPH_ID					m_vertex_count;
 		u32							m_edge_count;
 		u32							m_death_point_count;
@@ -112,7 +112,7 @@ namespace GameGraph {
 		LEVEL_MAP					m_levels;
 
 	public:
-		inline	const u8				&version			() const;
+		inline	const U8& version( ) const;
 		inline	_LEVEL_ID				level_count			() const;
 		inline	const _GRAPH_ID			&vertex_count		() const;
 		inline	const u32				&edge_count			() const;

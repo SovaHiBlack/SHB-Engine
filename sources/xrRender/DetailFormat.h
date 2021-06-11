@@ -108,19 +108,19 @@ public:
 
 //	static void		verify		()						{	VERIFY(16==sizeof(DetailSlot));	}
     void			color_editor(){c_dir=w_qclr(0.5f,15);c_hemi=w_qclr(0.5f,15);c_r=w_qclr(0.f,15);c_g=w_qclr(0.f,15);c_b=w_qclr(0.f,15);}
-    u8				r_id		(u32 idx) {	
+	U8				r_id		(u32 idx) {
         switch(idx)	{
-        case 0: return (u8)id0;
-        case 1: return (u8)id1;
-        case 2: return (u8)id2;
-        case 3: return (u8)id3;
+        case 0: return (U8)id0;
+        case 1: return (U8)id1;
+        case 2: return (U8)id2;
+        case 3: return (U8)id3;
         default: NODEFAULT;	
         }
 #ifdef DEBUG
 		return 0;
 #endif
     }
-    void			w_id		(u32 idx, u8 val) {	
+    void			w_id		(u32 idx, U8 val) {
         switch(idx){
         case 0: id0=val; break;
         case 1: id1=val; break;

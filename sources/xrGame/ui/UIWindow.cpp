@@ -630,7 +630,7 @@ void CUIWindow::SetKeyboardCapture(CUIWindow* pChildWindow, bool capture_status)
 }
 
 //обработка сообщений
-void CUIWindow::SendMessage(CUIWindow* pWnd, s16 msg, void* pData)
+void CUIWindow::SendMessage(CUIWindow* pWnd, S16 msg, void* pData)
 {
 	//оповестить дочерние окна
 	for (WINDOW_LIST_it it = m_ChildWndList.begin( ); m_ChildWndList.end( ) != it; ++it)

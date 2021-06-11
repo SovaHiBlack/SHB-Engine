@@ -30,7 +30,7 @@ class CUIFrameLine : public CUICustomItem
 protected:
 	float		iSize;
 	Fvector2	iPos;
-	u8			uFlags;
+	U8			uFlags;
 	bool		bHorizontalOrientation;
 
 	void		UpdateSize( );

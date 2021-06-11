@@ -33,7 +33,7 @@ public:
 			u32						point				(const char* name) const;
 			u32						point				(const Fvector3& point) const;
 			const char* name				(u32 index) const;
-			bool					flag				(u32 index, u8 flag_index) const;
+			bool					flag				(u32 index, U8 flag_index) const;
 			Flags32					flags				(u32 index) const;
 			bool					terminal			(u32 index) const;
 

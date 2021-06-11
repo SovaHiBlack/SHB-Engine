@@ -222,7 +222,7 @@ BOOL  CBaseMonster::feel_vision_isRelevant(CObject* O)
 	return TRUE;
 }
 
-void CBaseMonster::HitSignal(float amount, Fvector3& vLocalDir, CObject* who, s16 element)
+void CBaseMonster::HitSignal(float amount, Fvector3& vLocalDir, CObject* who, S16 element)
 {
 	if (!g_Alive()) return;
 	

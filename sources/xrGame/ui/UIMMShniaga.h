@@ -22,7 +22,7 @@ public:
 
 	virtual bool	OnMouse					(float x, float y, EUIMessages mouse_action);
 	virtual bool	OnKeyboard				(int dik, EUIMessages keyboard_action);
-	virtual void	SendMessage				(CUIWindow* pWnd, s16 msg, void* pData = nullptr);
+	virtual void	SendMessage				(CUIWindow* pWnd, S16 msg, void* pData = nullptr);
 	void			SetVisibleMagnifier		(bool f);
 	virtual void	OnDeviceReset			( );
 

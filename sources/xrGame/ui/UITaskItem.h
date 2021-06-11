@@ -25,7 +25,7 @@ protected:
 public:
 							CUITaskItem						(CUIEventsWnd* w);
 	virtual					~CUITaskItem					( );
-	virtual void			SendMessage						(CUIWindow* pWnd, s16 msg, void* pData = nullptr);
+	virtual void			SendMessage						(CUIWindow* pWnd, S16 msg, void* pData = nullptr);
 
 	virtual void			SetGameTask						(CGameTask* gt, u16 obj_idx);
 

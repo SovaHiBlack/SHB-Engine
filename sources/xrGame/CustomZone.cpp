@@ -1059,7 +1059,7 @@ void	CCustomZone::OnEvent (CNetPacket& P, u16 type)
 	{
 		case GE_ZONE_STATE_CHANGE:
 			{
-				u8				S;
+			U8				S;
 				P.r_u8			(S);
 				OnStateSwitch	(EZoneState(S));
 				break;
@@ -1135,7 +1135,7 @@ void CCustomZone::SwitchZoneState(EZoneState new_state)
 		// !!! Just single entry for given state !!!
 		CNetPacket		P;
 		u_EventGen		(P,GE_ZONE_STATE_CHANGE,ID());
-		P.w_u8			(u8(new_state));
+		P.w_u8			(U8(new_state));
 		u_EventSend		(P);
 	};
 
@@ -1307,7 +1307,7 @@ void CCustomZone::CreateHit	(	u16 id_to,
 								u16 id_from, 
 								const Fvector3& hit_dir,
 								float hit_power, 
-								s16 bone_id, 
+							 S16 bone_id,
 								const Fvector3& pos_in_bone,
 								float hit_impulse, 
 								ALife::EHitType hit_type)
@@ -1405,7 +1405,7 @@ void CCustomZone::GoDisabledState()
 	//switch to disable	
 	CNetPacket P;
 	u_EventGen		(P,GE_ZONE_STATE_CHANGE,ID());
-	P.w_u8			(u8(eZoneStateDisabled));
+	P.w_u8			(U8(eZoneStateDisabled));
 	u_EventSend		(P);
 
 	OBJECT_INFO_VEC_IT it		= m_ObjectInfoMap.begin();
@@ -1423,7 +1423,7 @@ void CCustomZone::GoEnabledState()
 		//switch to idle	
 		CNetPacket P;
 		u_EventGen		(P,GE_ZONE_STATE_CHANGE,ID());
-		P.w_u8			(u8(eZoneStateIdle));
+		P.w_u8			(U8(eZoneStateIdle));
 		u_EventSend		(P);
 }
 

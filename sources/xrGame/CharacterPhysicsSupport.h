@@ -162,7 +162,7 @@ public:
 	void							in_NetRelcase(CObject* O);
 	void 							in_Init( );
 	void 							in_Load(const char* section);
-	void 							in_Hit(float P, Fvector3& dir, CObject* who, s16 element, Fvector3 p_in_object_space, float impulse, ALife::EHitType hit_type, bool is_killing = false);
+	void 							in_Hit(float P, Fvector3& dir, CObject* who, S16 element, Fvector3 p_in_object_space, float impulse, ALife::EHitType hit_type, bool is_killing = false);
 	void							in_NetSave(CNetPacket& P);
 	void							in_ChangeVisual( );
 	void							on_create_anim_mov_ctrl( );

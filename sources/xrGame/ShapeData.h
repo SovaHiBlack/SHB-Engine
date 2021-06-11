@@ -14,7 +14,7 @@ struct CShapeData
 	};
 	struct shape_def
 	{
-		u8			type;
+		U8			type;
 		shape_data	data;
 	};
 //	DEFINE_VECTOR	(shape_def, ShapeVec, ShapeIt);

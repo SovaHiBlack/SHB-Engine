@@ -29,7 +29,10 @@ struct ENGINE_API CKey
 };
 struct ENGINE_API CKeyQR
 {
-	s16			x,y,z,w;	// rotation
+	S16			x;		// rotation
+	S16			y;
+	S16			z;
+	S16			w;
 };
 struct ENGINE_API CKeyQT
 {

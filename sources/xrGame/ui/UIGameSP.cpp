@@ -250,7 +250,7 @@ CChangeLevelWnd::CChangeLevelWnd( )
 	SetWndSize(m_messageBox->GetWndSize( ));
 }
 
-void CChangeLevelWnd::SendMessage(CUIWindow* pWnd, s16 msg, void* pData)
+void CChangeLevelWnd::SendMessage(CUIWindow* pWnd, S16 msg, void* pData)
 {
 	if (pWnd == m_messageBox)
 	{

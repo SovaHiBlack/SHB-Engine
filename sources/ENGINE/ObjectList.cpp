@@ -248,7 +248,7 @@ u32	CObjectList::net_Export			(CNetPacket* _Packet,	u32 start, u32 max_object_si
 	for (; start<objects_active.size() + objects_sleeping.size(); start++)			{
 		CObject* P = (start<objects_active.size()) ? objects_active[start] : objects_sleeping[start-objects_active.size()];
 		if (P->net_Relevant() && !P->getDestroy())	{			
-			Packet.w_u16			(u16(P->ID())	);
+			Packet.w_u16			(U16(P->ID())	);
 			Packet.w_chunk_open8	(position);
 			//Msg						("cl_export: %d '%s'",P->ID(),*P->cName());
 			P->net_Export			(Packet);
@@ -284,7 +284,8 @@ void CObjectList::net_Import		(CNetPacket* Packet)
 
 	while (!Packet->r_eof())
 	{
-		u16 ID;		Packet->r_u16	(ID);
+		U16 ID;
+		Packet->r_u16	(ID);
 		U8  size;	Packet->r_u8	(size);
 		CObject* P  = net_Find		(u32(ID));
 		if (P)		

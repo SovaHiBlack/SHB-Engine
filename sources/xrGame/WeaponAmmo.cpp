@@ -27,7 +27,7 @@ CCartridge::CCartridge( )
 	bullet_material_idx = u16(-1);
 }
 
-void CCartridge::Load(const char* section, u8 LocalAmmoType)
+void CCartridge::Load(const char* section, U8 LocalAmmoType)
 {
 	m_ammoSect = section;
 	m_LocalAmmoType = LocalAmmoType;

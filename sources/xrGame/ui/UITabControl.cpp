@@ -99,7 +99,7 @@ void CUITabControl::RemoveAll( )
 }
 
 // переключение закладок.
-void CUITabControl::SendMessage(CUIWindow* pWnd, s16 msg, void* pData)
+void CUITabControl::SendMessage(CUIWindow* pWnd, S16 msg, void* pData)
 {
 	if (TAB_CHANGED == msg)
 	{
@@ -121,7 +121,7 @@ void CUITabControl::SendMessage(CUIWindow* pWnd, s16 msg, void* pData)
 	}
 	else if (STATIC_FOCUS_RECEIVED == msg || STATIC_FOCUS_LOST == msg)
 	{
-		for (u8 i = 0; i < m_TabsArr.size( ); ++i)
+		for (U8 i = 0; i < m_TabsArr.size( ); ++i)
 		{
 			if (pWnd == m_TabsArr[i])
 			{

@@ -337,7 +337,7 @@ void WeaponUsageStatistic::OnBullet_Fire(SBullet* pBullet, const CCartridge& car
 //	Msg("! OnBullet Fire ID[%d]", pBullet->m_dwID);
 }
 
-void WeaponUsageStatistic::OnBullet_Hit(SBullet* pBullet, u16 TargetID, s16 element, Fvector3 HitLocation)
+void WeaponUsageStatistic::OnBullet_Hit(SBullet* pBullet, u16 TargetID, S16 element, Fvector3 HitLocation)
 {
 	if (!pBullet || !pBullet->flags.allow_sendhit)
 	{
@@ -414,7 +414,7 @@ void WeaponUsageStatistic::OnBullet_Check_Request(SHit* pHDS)
 		return;
 	}
 
-	s16 BoneID = pHDS->bone( );
+	S16 BoneID = pHDS->bone( );
 	u32 BulletID = pHDS->BulletID;
 	u32 SenderID = pHDS->SenderID;
 
@@ -542,10 +542,10 @@ void WeaponUsageStatistic::On_Check_Respond(CNetPacket* P)
 		return;
 	}
 
-	u8 NumFalse = P->r_u8( );
-	u8 NumTrue = P->r_u8( );
+	U8 NumFalse = P->r_u8( );
+	U8 NumTrue = P->r_u8( );
 
-	u8 i;
+	U8 i;
 	ABULLETS_it BulletIt;
 	for (i = 0; i < NumFalse; i++)
 	{
@@ -563,7 +563,7 @@ void WeaponUsageStatistic::On_Check_Respond(CNetPacket* P)
 	for (i = 0; i < NumTrue; i++)
 	{
 		u32 BulletID = P->r_u32( );
-		s16 BoneID = P->r_s16( );
+		S16 BoneID = P->r_s16( );
 		if (!FindBullet(BulletID, BulletIt))
 		{
 			Msg("! Warning: No bullet found! ID[%d]", BulletID);

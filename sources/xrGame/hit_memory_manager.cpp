@@ -91,7 +91,7 @@ void CHitMemoryManager::reload				(const char* section)
 	m_max_hit_count			= READ_IF_EXISTS(pSettings,r_s32,section,"DynamicHitCount",1);
 }
 
-void CHitMemoryManager::add					(float amount, const Fvector3& vLocalDir, const CObject *who, s16 element)
+void CHitMemoryManager::add					(float amount, const Fvector3& vLocalDir, const CObject *who, S16 element)
 {
 
 #ifndef MASTER_GOLD
@@ -263,7 +263,7 @@ void CHitMemoryManager::save	(CNetPacket &packet) const
 	if (!m_object->g_Alive())
 		return;
 
-	packet.w_u8					((u8)objects().size());
+	packet.w_u8					((U8)objects().size());
 
 	HITS::const_iterator		I = objects().begin();
 	HITS::const_iterator		E = objects().end();

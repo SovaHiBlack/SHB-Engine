@@ -1,7 +1,7 @@
 #pragma once
 
 struct	r_aabb_ssa	{
-	u8	ssa	[6]		;
+	U8	ssa	[6]		;
 };
 
 class	r_pixel_calculator

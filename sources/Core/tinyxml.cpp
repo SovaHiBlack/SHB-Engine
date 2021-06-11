@@ -41,7 +41,7 @@ void TiXmlBase::PutString( const TIXML_STRING& str, TIXML_STRING* outString )
 
 	while( i<(int)str.length() )
 	{
-		unsigned char c = (unsigned char) str[i];
+		U8 c = (U8) str[i];
 
 		if (    c == '&' 
 		     && i < ( (int)str.length() - 2 )
@@ -1094,9 +1094,9 @@ bool TiXmlDocument::SaveFile( FILE* fp ) const
 {
 	if ( useMicrosoftBOM ) 
 	{
-		const unsigned char TIXML_UTF_LEAD_0 = 0xefU;
-		const unsigned char TIXML_UTF_LEAD_1 = 0xbbU;
-		const unsigned char TIXML_UTF_LEAD_2 = 0xbfU;
+		const U8 TIXML_UTF_LEAD_0 = 0xefU;
+		const U8 TIXML_UTF_LEAD_1 = 0xbbU;
+		const U8 TIXML_UTF_LEAD_2 = 0xbfU;
 
 		fputc( TIXML_UTF_LEAD_0, fp );
 		fputc( TIXML_UTF_LEAD_1, fp );

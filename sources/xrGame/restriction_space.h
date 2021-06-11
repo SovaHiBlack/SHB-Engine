@@ -24,12 +24,12 @@ namespace RestrictionSpace {
 	};
 
 	enum ERestrictorTypes {
-		eDefaultRestrictorTypeNone = u8(0),
-		eDefaultRestrictorTypeOut  = u8(1),
-		eDefaultRestrictorTypeIn   = u8(2),
-		eRestrictorTypeNone		   = u8(3),
-		eRestrictorTypeIn		   = u8(4),
-		eRestrictorTypeOut		   = u8(5),
+		eDefaultRestrictorTypeNone = U8(0),
+		eDefaultRestrictorTypeOut  = U8(1),
+		eDefaultRestrictorTypeIn   = U8(2),
+		eRestrictorTypeNone		   = U8(3),
+		eRestrictorTypeIn		   = U8(4),
+		eRestrictorTypeOut		   = U8(5)
 	};
 };
 

@@ -133,7 +133,7 @@ int PsiEquation::crit_points(float *t) const
     if (!(*status_ptr & GOT_CRITS))
     {
 	// CANNOT use solve_trig1_aux here 
-	*num_crits_ptr = (u8)solve_trig1(beta, -alpha, 0, (float *) crit_pts);
+	*num_crits_ptr = (U8)solve_trig1(beta, -alpha, 0, (float *) crit_pts);
 	*status_ptr |= GOT_CRITS;
     }
 
@@ -160,7 +160,7 @@ int PsiEquation::roots(float *t) const
 {
     if (!(*status_ptr & GOT_ROOTS))
     {
-	*num_roots_ptr =(u8) solve_trig1_aux(-xi, a2b2, atan2ba, (float *) root_pts);
+	*num_roots_ptr =(U8) solve_trig1_aux(-xi, a2b2, atan2ba, (float *) root_pts);
 	*status_ptr  |= GOT_ROOTS;
     }
 

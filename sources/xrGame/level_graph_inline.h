@@ -278,17 +278,17 @@ __forceinline const xrGUID &CLevelGraph::CHeader::guid() const
 	return				(hdrNODES::guid);
 }
 
-__forceinline u8	CLevelGraph::CVertex::light() const
+__forceinline U8	CLevelGraph::CVertex::light() const
 {
 	return				(NodeCompressed::light());
 }
 
 __forceinline u32	CLevelGraph::CVertex::link(int index) const
 {
-	return				(NodeCompressed::link(u8(index)));
+	return				(NodeCompressed::link(U8(index)));
 }
 
-__forceinline u16	CLevelGraph::CVertex::cover(u8 index) const
+__forceinline u16	CLevelGraph::CVertex::cover(U8 index) const
 {
 	return				(NodeCompressed::cover(index));
 }

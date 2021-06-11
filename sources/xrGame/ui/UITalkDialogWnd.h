@@ -26,7 +26,7 @@ public:
 
 	virtual void		Init					(float x, float y, float width, float height);
 
-	virtual void		SendMessage				(CUIWindow* pWnd, s16 msg, void* pData = nullptr);
+	virtual void		SendMessage				(CUIWindow* pWnd, S16 msg, void* pData = nullptr);
 
 	virtual void		Show					( );
 	virtual void		Hide					( );
@@ -95,7 +95,7 @@ public:
 						CUIQuestionItem			(CUIXml* xml_doc, const char* path);
 	void				Init					(const char* val, const char* text);
 
-	virtual void		SendMessage				(CUIWindow* pWnd, s16 msg, void* pData = nullptr);
+	virtual void		SendMessage				(CUIWindow* pWnd, S16 msg, void* pData = nullptr);
 	void __stdcall		OnTextClicked			(CUIWindow* w, void*);
 };
 

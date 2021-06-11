@@ -194,7 +194,7 @@ __forceinline static BOOL grenade_hit_callback(collide::rq_result& result, LPVOI
 		p.set(ep.l_dir);
 		p.mul(result.range);
 		p.add(ep.source_p);
-		u8 c = u8(mtl->fShootFactor * 255.0f);
+		U8 c = U8(mtl->fShootFactor * 255.0f);
 		DBG_DrawPoint(p, 0.1f, D3DCOLOR_XRGB(255 - c, 0, c));
 	}
 #endif

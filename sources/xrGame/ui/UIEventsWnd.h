@@ -56,7 +56,7 @@ public:
 
 								CUIEventsWnd			( );
 	virtual						~CUIEventsWnd			( );
-	virtual void				SendMessage				(CUIWindow* pWnd, s16 msg, void* pData);
+	virtual void				SendMessage				(CUIWindow* pWnd, S16 msg, void* pData);
 	void						Init					( );
 	virtual void				Update					( );
 	virtual void				Draw					( );

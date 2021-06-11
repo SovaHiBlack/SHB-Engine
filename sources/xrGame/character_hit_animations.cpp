@@ -43,7 +43,7 @@ inline void set_blend_params(CBlend* B)
 	B->blendAmount = 1.0;
 }
 
-inline void	play_cycle(CKinematicsAnimated* CA, const MotionID& m, u8 channel, u32& time_block, float base_power)
+inline void	play_cycle(CKinematicsAnimated* CA, const MotionID& m, U8 channel, u32& time_block, float base_power)
 {
 	const BOOL mixin = TRUE;
 	const u32  dellay = 1;

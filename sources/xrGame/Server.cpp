@@ -337,7 +337,7 @@ void CServer::SendUpdatesToAll( )
 					tmpPacket.w_u16(Test.ID);
 					tmpPacket.w_chunk_open8(position);
 					Test.UPDATE_Write(tmpPacket);
-					u32 ObjectSize = u32(tmpPacket.w_tell( ) - position) - sizeof(u8);
+					u32 ObjectSize = u32(tmpPacket.w_tell( ) - position) - sizeof(U8);
 					tmpPacket.w_chunk_close8(position);
 
 					if (ObjectSize == 0)
@@ -883,7 +883,7 @@ CSE_Abstract* CServer::GetEntity(u32 Num)
 
 void		CServer::OnChatMessage(CNetPacket* P, xrClientData* CL)
 {
-	s16 team = P->r_s16( );
+	S16 team = P->r_s16( );
 	if (!CL->net_Ready)
 	{
 		return;
@@ -1018,7 +1018,7 @@ void CServer::AddDelayedPacket(CNetPacket& Packet, ClientID Sender)
 
 u32 g_sv_dwMaxClientPing = 2000;
 u32 g_sv_time_for_ping_check = 15000;// 15 sec
-u8	g_sv_maxPingWarningsCount = 5;
+U8	g_sv_maxPingWarningsCount = 5;
 
 void CServer::PerformCheckClientsForMaxPing( )
 {

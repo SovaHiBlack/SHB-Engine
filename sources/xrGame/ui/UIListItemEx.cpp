@@ -17,7 +17,7 @@ CUIListItemEx::CUIListItemEx( )
 CUIListItemEx::~CUIListItemEx( )
 { }
 
-void CUIListItemEx::SendMessage(CUIWindow* pWnd, s16 msg, void* pData)
+void CUIListItemEx::SendMessage(CUIWindow* pWnd, S16 msg, void* pData)
 {
 //inherited::SendMessage(pWnd, msg, pData);
 

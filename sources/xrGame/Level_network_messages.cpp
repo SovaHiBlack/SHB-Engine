@@ -145,8 +145,8 @@ void CLevel::ClientReceive( )
 			break;
 			case M_MOVE_PLAYERS:
 			{
-				u8 Count = P->r_u8( );
-				for (u8 i = 0; i < Count; i++)
+				U8 Count = P->r_u8( );
+				for (U8 i = 0; i < Count; i++)
 				{
 					u16 ID = P->r_u16( );
 					Fvector3 NewPos;

@@ -40,15 +40,15 @@ public:
 	CBoneInstance			*bone_head;
 
 	SAnimationTripleData	anim_triple_death[FAKE_DEATH_TYPES_COUNT];
-	u8				active_triple_idx;
+	U8				active_triple_idx;
 	
 	u32				time_dead_start;
 	u32				last_hit_frame;
 	u32				time_resurrect;
 
-	u8				fake_death_count;
+	U8				fake_death_count;
 	float			health_death_threshold;
-	u8				fake_death_left;
+	U8				fake_death_left;
 
 	bool			fake_death_fall_down	(); //return true if everything is ok
 	void			fake_death_stand_up		();

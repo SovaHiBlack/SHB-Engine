@@ -15,50 +15,50 @@ CORE_API	Fmatrix			Fidentity;
 CORE_API	Dmatrix			Didentity;
 CORE_API	CRandom			Random;
 
-u16 getFPUsw( )
+U16 getFPUsw( )
 {
-	u16		SW;
+	U16		SW;
 	__asm	fstcw SW;
 	return	SW;
 }
 
 namespace FPU
 {
-	u16			_24 = 0;
-	u16			_24r = 0;
-	u16			_53 = 0;
-	u16			_53r = 0;
-	u16			_64 = 0;
-	u16			_64r = 0;
+	U16			_24 = 0;
+	U16			_24r = 0;
+	U16			_53 = 0;
+	U16			_53r = 0;
+	U16			_64 = 0;
+	U16			_64r = 0;
 
 	CORE_API void	m24( )
 	{
-		u16		p = _24;
+		U16		p = _24;
 		__asm fldcw p;
 	}
 	CORE_API void	m24r( )
 	{
-		u16		p = _24r;
+		U16		p = _24r;
 		__asm fldcw p;
 	}
 	CORE_API void	m53( )
 	{
-		u16		p = _53;
+		U16		p = _53;
 		__asm fldcw p;
 	}
 	CORE_API void	m53r( )
 	{
-		u16		p = _53r;
+		U16		p = _53r;
 		__asm fldcw p;
 	}
 	CORE_API void	m64( )
 	{
-		u16		p = _64;
+		U16		p = _64;
 		__asm fldcw p;
 	}
 	CORE_API void	m64r( )
 	{
-		u16		p = _64r;
+		U16		p = _64r;
 		__asm fldcw p;
 	}
 

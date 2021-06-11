@@ -39,8 +39,8 @@ protected:
 	void			TriStateReload		();
 	virtual void	OnStateSwitch		(u32 S);
 
-	bool			HaveCartridgeInInventory(u8 cnt);
-	virtual u8		AddCartridge		(u8 cnt);
+	bool			HaveCartridgeInInventory(U8 cnt);
+	virtual U8		AddCartridge		(U8 cnt);
 
 	HUD_SOUND		sndShotBoth;
 	ESoundTypes		m_eSoundShotBoth;

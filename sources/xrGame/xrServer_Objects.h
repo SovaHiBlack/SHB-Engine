@@ -33,7 +33,7 @@
 // 22 - CSE_AnomalousZone				appended with a artefact spawns
 // 23 - CSE_ALifeObject					appended with a spawn ID
 // 24 - CSE_ALifeObject					appended with a group control
-// 25 - CSE_ALifeObject					changed type of the property probability from u8 to float
+// 25 - CSE_ALifeObject					changed type of the property probability from U8 to float
 // 26 - CSE_AnomalousZone				appended with artefact spawn information
 // 27 - CSE_AnomalousZone				weights changed type from u32 to float
 // 28 - CSE_AnomalousZone				appended with an anomalous zone type
@@ -168,7 +168,7 @@ add_to_type_list(CSE_Shape)
 SERVER_ENTITY_DECLARE_BEGIN(CSE_Spectator,CSE_Abstract)
 									CSE_Spectator	(const char* caSection);
 	virtual							~CSE_Spectator	();
-	virtual u8						g_team			();
+	virtual U8						g_team			();
 SERVER_ENTITY_DECLARE_END
 add_to_type_list(CSE_Spectator)
 #define script_type_list save_type_list(CSE_Spectator)

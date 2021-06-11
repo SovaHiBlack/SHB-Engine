@@ -12,7 +12,7 @@ public:
 	u32					timestamp;
 	u16					type;
 	u16					destination;
-	xr_vector<u8>		data;
+	xr_vector<U8>		data;
 
 	void				import(CNetPacket& P)
 	{

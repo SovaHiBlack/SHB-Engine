@@ -15,7 +15,7 @@ struct MONSTER_COMMUNITY_DATA
 
 	MONSTER_COMMUNITY_ID	id;
 	MONSTER_COMMUNITY_INDEX	index;
-	u8						team;
+	U8						team;
 };
 
 class MONSTER_COMMUNITY;
@@ -36,7 +36,7 @@ public:
 
 	MONSTER_COMMUNITY_ID		id				() const;
 	MONSTER_COMMUNITY_INDEX		index			() const;
-	u8							team			() const;
+	U8							team			() const;
 
 private:
 	MONSTER_COMMUNITY_INDEX		m_current_index;

@@ -47,7 +47,7 @@ void C_StepManager::reload(const char* section)
 	{
 		_GetItem(val, 0, cur_elem);
 
-		param.cycles = u8(atoi(cur_elem));
+		param.cycles = U8(atoi(cur_elem));
 		R_ASSERT(param.cycles >= 1);
 
 		for (u32 j = 0; j < m_legs_count; j++)
@@ -198,7 +198,7 @@ void C_StepManager::update( )
 	// определить текущий цикл
 	if (m_step_info.cur_cycle < step.cycles)
 	{
-		m_step_info.cur_cycle = 1 + u8(float(cur_time - m_time_anim_started) / (1000.0f * cycle_anim_time));
+		m_step_info.cur_cycle = 1 + U8(float(cur_time - m_time_anim_started) / (1000.0f * cycle_anim_time));
 	}
 
 	// если анимация циклическая...

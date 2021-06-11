@@ -27,8 +27,8 @@ struct st_BoneMotion
 	shared_str		name;
 	CEnvelope*	envs			[ctMaxChannel];
 	Flags8		m_Flags;
-    			st_BoneMotion()	{name=0; m_Flags.zero(); ZeroMemory(envs,sizeof(CEnvelope*)*ctMaxChannel);}
-    void        SetName(const char* nm)	{	name=nm;	}
+				st_BoneMotion()	{name=0; m_Flags.zero(); ZeroMemory(envs,sizeof(CEnvelope*)*ctMaxChannel);}
+	void        SetName(const char* nm)	{	name=nm;	}
 };
 // vector по костям
 //DEFINE_VECTOR(st_BoneMotion,BoneMotionVec,BoneMotionIt);
@@ -58,10 +58,10 @@ public:
 
 	void			SetName			(const char* n)	{string256 tmp; tmp[0]=0; if(n){strcpy_s(tmp,n); strlwr(tmp);} name=tmp;}
 	const char* Name			()				{return name.c_str();}
-    int				FrameStart		()				{return iFrameStart;}
-    int				FrameEnd		()				{return iFrameEnd;}
-    float			FPS				()				{return fFPS;}
-    int				Length			()				{return iFrameEnd-iFrameStart;}
+	int				FrameStart		()				{return iFrameStart;}
+	int				FrameEnd		()				{return iFrameEnd;}
+	float			FPS				()				{return fFPS;}
+	int				Length			()				{return iFrameEnd-iFrameStart;}
 
 	void			SetParam		(int s, int e, float fps){iFrameStart=s; iFrameEnd=e; fFPS=fps;}
 
@@ -91,48 +91,48 @@ public:
 };
 
 enum ESMFlags{
-    esmFX		= 1<<0,
-    esmStopAtEnd= 1<<1,
-    esmNoMix	= 1<<2,
-    esmSyncPart	= 1<<3
+	esmFX		= 1<<0,
+	esmStopAtEnd= 1<<1,
+	esmNoMix	= 1<<2,
+	esmSyncPart	= 1<<3
 };
 
 struct SAnimParams		{
-    float			t;
-    float			min_t;
-    float			max_t;
-    BOOL			bPlay;
+	float			t;
+	float			min_t;
+	float			max_t;
+	BOOL			bPlay;
 	BOOL			bWrapped;
 public:
 					SAnimParams(){bWrapped=false;bPlay=false;t=0.f;min_t=0.f;max_t=0.f;}
-    void			Set		(CCustomMotion* M);
+	void			Set		(CCustomMotion* M);
 	void 			Set		(float start_frame, float end_frame, float fps);
-    float			Frame	()			{ return t;}
-    void			Update	(float dt, float speed, bool loop);
-    void			Play	(){bPlay=true; t=min_t;}
-    void			Stop	(){bPlay=false; t=min_t;}
-    void			Pause	(bool val){bPlay=!val;}
+	float			Frame	()			{ return t;}
+	void			Update	(float dt, float speed, bool loop);
+	void			Play	(){bPlay=true; t=min_t;}
+	void			Stop	(){bPlay=false; t=min_t;}
+	void			Pause	(bool val){bPlay=!val;}
 };
 
 class ENGINE_API CClip{
 public:
 	struct AnimItem{
-    	shared_str	name;
-        u16			slot;
-        			AnimItem	():slot(u16(-1)){}
-        void		set			(shared_str nm, u16 s){name=nm;slot=s;}
-        void		clear		(){set("",u16(-1));}
-        bool		valid		(){return !!(name.size()&&(slot!=u16(-1)));}
-        bool		equal		(const AnimItem& d) const {return name.equal(d.name)&&(slot==d.slot);}
-    };
+		shared_str	name;
+		U16			slot;
+					AnimItem	():slot(U16(-1)){}
+		void		set			(shared_str nm, U16 s){name=nm;slot=s;}
+		void		clear		(){set("", U16(-1));}
+		bool		valid		(){return !!(name.size()&&(slot!= U16(-1)));}
+		bool		equal		(const AnimItem& d) const {return name.equal(d.name)&&(slot==d.slot);}
+	};
 	shared_str		name;
-    AnimItem		cycles[4];
-    AnimItem		fx;
-    
-    float			fx_power;
-    float			length;
+	AnimItem		cycles[4];
+	AnimItem		fx;
+	
+	float			fx_power;
+	float			length;
 
 	virtual void	Save	(IWriter& F);
 	virtual bool	Load	(IReader& F);
-    bool			Equal	(CClip* c);
+	bool			Equal	(CClip* c);
 };

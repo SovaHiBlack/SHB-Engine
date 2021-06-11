@@ -95,7 +95,7 @@ void CUIEncyclopediaWnd::Init( )
 	xml_init.InitAutoStatic(uiXml, "right_auto_static", UIEncyclopediaIdxBkg);
 }
 
-void CUIEncyclopediaWnd::SendMessage(CUIWindow* pWnd, s16 msg, void* pData)
+void CUIEncyclopediaWnd::SendMessage(CUIWindow* pWnd, S16 msg, void* pData)
 {
 	if (UIIdxList == pWnd && LIST_ITEM_CLICKED == msg)
 	{

@@ -5,7 +5,7 @@
 #pragma warning(default:4995)
 #include "fmesh.h"
 
-BOOL ValidateIndices(u32 vCount, u32 iCount, u16* pIndices)
+BOOL ValidateIndices(u32 vCount, u32 iCount, U16* pIndices)
 {
 	if (vCount>65535)	return FALSE;
 	if (iCount%3)		return FALSE;

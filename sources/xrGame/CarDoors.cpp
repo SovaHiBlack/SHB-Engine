@@ -15,7 +15,7 @@
 #include "GameObject_space.h"
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-bool CCar::DoorHit(float P,s16 element,ALife::EHitType hit_type)
+bool CCar::DoorHit(float P, S16 element,ALife::EHitType hit_type)
 {
 	if(hit_type==ALife::eHitTypeStrike && P > 20.f)
 	{
@@ -642,7 +642,7 @@ void CCar::SDoor::SaveNetState(CNetPacket& P)
 {
 	CSE_ALifeCar::SDoorState ds;
 	ds.health=Health();
-	ds.open_state=u8(state);
+	ds.open_state= U8(state);
 	ds.write(P);
 }
 

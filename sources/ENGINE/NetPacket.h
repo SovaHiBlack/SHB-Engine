@@ -30,7 +30,7 @@ public:
 	{
 		B.count = 0;
 	}
-	inline void		w_begin			(u16 type)				// begin of packet 'type'
+	inline void		w_begin			(U16 type)				// begin of packet 'type'
 	{
 		B.count = 0;
 		w_u16(type);
@@ -86,11 +86,11 @@ public:
 	{
 		w(&a, 3);
 	}
-	inline void		w_u16			(u16 a)
+	inline void		w_u16			(U16 a)
 	{
 		w(&a, 2);
 	}
-	inline void		w_s16			(s16 a)
+	inline void		w_s16			(S16 a)
 	{
 		w(&a, 2);
 	}
@@ -107,7 +107,7 @@ public:
 	{
 		VERIFY(a >= min && a <= max);
 		float q = (a - min) / (max - min);
-		w_u16(u16(iFloor(q * 65535.0f + 0.5f)));
+		w_u16(U16(iFloor(q * 65535.0f + 0.5f)));
 	}
 	inline void		w_float_q8		(float a, float min, float max)
 	{
@@ -194,9 +194,9 @@ public:
 	}
 	inline void		w_chunk_close16	(u32 position)
 	{
-		u32 size = u32(w_tell( ) - position) - sizeof(u16);
+		u32 size = u32(w_tell( ) - position) - sizeof(U16);
 		VERIFY(size < 65536);
-		u16 _size = ( u16) size;
+		U16 _size = (U16) size;
 		w_seek(position, &_size, sizeof(_size));
 	}
 
@@ -206,7 +206,7 @@ public:
 		r_pos = 0;
 	}
 
-	inline u32		r_begin			(u16& type)	// returns time of receiving
+	inline u32		r_begin			(U16& type)	// returns time of receiving
 	{
 		r_pos = 0;
 		r_u16(type);
@@ -278,11 +278,11 @@ public:
 		A = 0;		//???
 		r(&A, 3);
 	}
-	inline void		r_u16			(u16& A)
+	inline void		r_u16			(U16& A)
 	{
 		r(&A, 2);
 	}
-	inline void		r_s16			(s16& A)
+	inline void		r_s16			(S16& A)
 	{
 		r(&A, 2);
 	}
@@ -356,15 +356,15 @@ public:
 		r(&A, 3);
 		return A;
 	}
-	inline u16		r_u16			( )
+	inline U16		r_u16			( )
 	{
-		u16 A;
+		U16 A;
 		r(&A, 2);
 		return A;
 	}
-	inline s16		r_s16			( )
+	inline S16		r_s16			( )
 	{
-		s16 A;
+		S16 A;
 		r(&A, 2);
 		return A;
 	} 
@@ -383,7 +383,7 @@ public:
 
 	inline void		r_float_q16		(float& A, float min, float max)
 	{
-		u16 val;
+		U16 val;
 		r_u16(val);
 		A = (float(val) * (max - min)) / 65535.0f + min;		// floating-point-error possible
 		VERIFY((A >= min - EPS_S) && (A <= max + EPS_S));
@@ -406,13 +406,13 @@ public:
 
 	inline void		r_dir			(Fvector3& A)
 	{
-		u16 t;
+		U16 t;
 		r_u16(t);
 		pvDecompress(A, t);
 	}
 	inline void		r_sdir			(Fvector3& A)
 	{
-		u16 t;
+		U16 t;
 		r_u16(t);
 		float s;
 		r_float(s);

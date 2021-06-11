@@ -117,7 +117,7 @@ void CUICustomEdit::OnFocusLost( )
 	CUIWindow::OnFocusLost( );
 }
 
-void CUICustomEdit::SendMessage(CUIWindow* pWnd, s16 msg, void* pData)
+void CUICustomEdit::SendMessage(CUIWindow* pWnd, S16 msg, void* pData)
 {
 //	if(pWnd == GetParent())
 //	{	//кто-то другой захватил клавиатуру

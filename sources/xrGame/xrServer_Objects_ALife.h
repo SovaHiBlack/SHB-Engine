@@ -77,7 +77,7 @@ SERVER_ENTITY_DECLARE_BEGIN(CSE_ALifeGraphPoint, CSE_Abstract)
 public:
 	shared_str						m_caConnectionLevelName;
 	shared_str						m_caConnectionPointName;
-	u8								m_tLocations[GameGraph::LOCATION_TYPE_COUNT];
+	U8								m_tLocations[GameGraph::LOCATION_TYPE_COUNT];
 
 	CSE_ALifeGraphPoint(const char* caSection);
 	virtual							~CSE_ALifeGraphPoint( );
@@ -330,7 +330,7 @@ public:
 #define script_type_list save_type_list(CSE_ALifePHSkeletonObject)
 
 		SERVER_ENTITY_DECLARE_BEGIN2(CSE_ALifeSpaceRestrictor, CSE_ALifeDynamicObject, CSE_Shape)
-		u8								m_space_restrictor_type;
+		U8								m_space_restrictor_type;
 
 	CSE_ALifeSpaceRestrictor(const char* caSection);
 	virtual							~CSE_ALifeSpaceRestrictor( );
@@ -512,7 +512,7 @@ public:
 	{
 		void read(CNetPacket& P);
 		void write(CNetPacket& P);
-		u8 open_state;
+		U8 open_state;
 		float health;
 	};
 	struct SWheelState
@@ -582,7 +582,7 @@ protected:
 		CSE_ALifeTeamBaseZone(const char* caSection);
 	virtual							~CSE_ALifeTeamBaseZone( );
 
-	u8								m_team;
+	U8								m_team;
 	SERVER_ENTITY_DECLARE_END
 		add_to_type_list(CSE_ALifeTeamBaseZone)
 #define script_type_list save_type_list(CSE_ALifeTeamBaseZone)

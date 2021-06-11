@@ -323,7 +323,7 @@ void CWeaponShotgun::PlayAnimCloseWeapon()
 	m_pHUD->animPlay(random_anim(mhud_close),TRUE,this,GetState());
 }
 
-bool CWeaponShotgun::HaveCartridgeInInventory		(u8 cnt)
+bool CWeaponShotgun::HaveCartridgeInInventory		(U8 cnt)
 {
 	if (unlimited_ammo()) return true;
 	m_pAmmo = NULL;
@@ -349,7 +349,7 @@ bool CWeaponShotgun::HaveCartridgeInInventory		(u8 cnt)
 	return (m_pAmmo!=NULL)&&(m_pAmmo->m_boxCurr>=cnt) ;
 }
 
-u8 CWeaponShotgun::AddCartridge		(u8 cnt)
+U8 CWeaponShotgun::AddCartridge		(U8 cnt)
 {
 	if(IsMisfire())	bMisfire = false;
 
@@ -366,7 +366,7 @@ u8 CWeaponShotgun::AddCartridge		(u8 cnt)
 
 
 	if (m_DefaultCartridge.m_LocalAmmoType != m_ammoType)
-		m_DefaultCartridge.Load(*m_ammoTypes[m_ammoType], u8(m_ammoType));
+		m_DefaultCartridge.Load(*m_ammoTypes[m_ammoType], U8(m_ammoType));
 	CCartridge l_cartridge = m_DefaultCartridge;
 	while(cnt)// && m_pAmmo->Get(l_cartridge)) 
 	{
@@ -376,7 +376,7 @@ u8 CWeaponShotgun::AddCartridge		(u8 cnt)
 		}
 		--cnt;
 		++iAmmoElapsed;
-		l_cartridge.m_LocalAmmoType = u8(m_ammoType);
+		l_cartridge.m_LocalAmmoType = U8(m_ammoType);
 		m_magazine.push_back(l_cartridge);
 //		m_fCurrentCartirdgeDisp = l_cartridge.m_kDisp;
 	}
@@ -394,7 +394,7 @@ u8 CWeaponShotgun::AddCartridge		(u8 cnt)
 void	CWeaponShotgun::net_Export	(CNetPacket& P)
 {
 	inherited::net_Export(P);	
-	P.w_u8(u8(m_magazine.size()));	
+	P.w_u8(U8(m_magazine.size()));
 	for (u32 i=0; i<m_magazine.size(); i++)
 	{
 		CCartridge& l_cartridge = *(m_magazine.begin()+i);
@@ -405,10 +405,10 @@ void	CWeaponShotgun::net_Export	(CNetPacket& P)
 void	CWeaponShotgun::net_Import	(CNetPacket& P)
 {
 	inherited::net_Import(P);	
-	u8 AmmoCount = P.r_u8();
+	U8 AmmoCount = P.r_u8();
 	for (u32 i=0; i<AmmoCount; i++)
 	{
-		u8 LocalAmmoType = P.r_u8();
+		U8 LocalAmmoType = P.r_u8();
 		if (i>=m_magazine.size()) continue;
 		CCartridge& l_cartridge = *(m_magazine.begin()+i);
 		if (LocalAmmoType == l_cartridge.m_LocalAmmoType) continue;

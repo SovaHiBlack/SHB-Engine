@@ -17,7 +17,8 @@ struct SRotationEventData : public ControlCom::IEventData {
 		eHeading		= u32(1) << 0,
 		ePitch			= u32(1) << 1,
 	};
-	u8 angle;
+
+	U8 angle;
 };
 
 class CControlDirection : public CControl_ComPure<SControlDirectionData> {

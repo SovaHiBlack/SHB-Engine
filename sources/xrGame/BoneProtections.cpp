@@ -3,7 +3,7 @@
 #include "BoneProtections.h"
 #include "..\ENGINE\skeletonanimated.h"
 
-float SBoneProtections::getBoneProtection(s16 bone_id)
+float SBoneProtections::getBoneProtection(S16 bone_id)
 {
 	storage_it it = m_bones_koeff.find(bone_id);
 	if (it != m_bones_koeff.end( ))
@@ -12,7 +12,7 @@ float SBoneProtections::getBoneProtection(s16 bone_id)
 		return m_default.koeff;
 }
 
-float SBoneProtections::getBoneArmour(s16 bone_id)
+float SBoneProtections::getBoneArmour(S16 bone_id)
 {
 	storage_it it = m_bones_koeff.find(bone_id);
 	if (it != m_bones_koeff.end( ))
@@ -21,7 +21,7 @@ float SBoneProtections::getBoneArmour(s16 bone_id)
 		return m_default.armour;
 }
 
-BOOL SBoneProtections::getBonePassBullet(s16 bone_id)
+BOOL SBoneProtections::getBonePassBullet(S16 bone_id)
 {
 	storage_it it = m_bones_koeff.find(bone_id);
 	if (it != m_bones_koeff.end( ))
@@ -62,7 +62,7 @@ void SBoneProtections::reload(const shared_str& bone_sect, CKinematics* kinemati
 		{
 			if (!xr_strcmp(*(*i).first, "hit_fraction")) continue;
 
-			s16	bone_id = kinematics->LL_BoneID(i->first);
+			S16	bone_id = kinematics->LL_BoneID(i->first);
 			R_ASSERT2(BI_NONE != bone_id, *(*i).first);
 			m_bones_koeff.insert(mk_pair(bone_id, BP));
 		}

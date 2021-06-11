@@ -219,7 +219,7 @@ public:
 	{ CHK_DX(HW.pDevice->SetSamplerState(sampler,type,value)); }
 
 #ifdef DEBUG
-	void dbg_Draw					(D3DPRIMITIVETYPE T, FVF::L* pVerts, int vcnt, u16* pIdx, int pcnt);
+	void dbg_Draw					(D3DPRIMITIVETYPE T, FVF::L* pVerts, int vcnt, U16* pIdx, int pcnt);
 	void dbg_Draw					(D3DPRIMITIVETYPE T, FVF::L* pVerts, int pcnt);
 	inline void dbg_DrawAABB			(Fvector3& T, float sx, float sy, float sz, u32 C)						{
 		Fvector3 half_dim;	half_dim.set(sx,sy,sz); Fmatrix	TM;	TM.translate(T); dbg_DrawOBB(TM,half_dim,C);	}

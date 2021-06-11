@@ -141,7 +141,7 @@ void CUIMessageBox::Init(const char* box_template)
 	}
 }
 
-void CUIMessageBox::SendMessage(CUIWindow* pWnd, s16 msg, void* pData)
+void CUIMessageBox::SendMessage(CUIWindow* pWnd, S16 msg, void* pData)
 {
 	if (msg == BUTTON_CLICKED)
 	{

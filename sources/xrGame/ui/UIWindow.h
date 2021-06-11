@@ -194,7 +194,7 @@ public:
 	//ф-ция должна переопределяться
 	//pWnd - указатель на окно, которое послало сообщение
 	//pData - указатель на дополнительные данные, которые могут понадобиться
-	virtual void				SendMessage				(CUIWindow* pWnd, s16 msg, void* pData = nullptr);
+	virtual void				SendMessage				(CUIWindow* pWnd, S16 msg, void* pData = nullptr);
 
 	//запрещение/разрешение на ввод с клавиатуры
 	virtual void				Enable					(bool status)

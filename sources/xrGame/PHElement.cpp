@@ -811,8 +811,7 @@ void CPHElement::GetAnimBonePos(Fmatrix &bp)
 		return;
 	}
 
-	ak->Bone_GetAnimPos( bp, m_SelfID, u8(-1), true );
-
+	ak->Bone_GetAnimPos( bp, m_SelfID, U8(-1), true );
 }
 
 inline bool put_in_range(Fvector3& v, float range )

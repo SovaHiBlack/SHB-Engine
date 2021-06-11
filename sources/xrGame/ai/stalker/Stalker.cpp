@@ -464,9 +464,9 @@ void CStalker::net_Export		(CNetPacket& P)
 	P.w_float						(N.o_torso.yaw);
 	P.w_float						(N.o_torso.pitch);
 	P.w_float						(N.o_torso.roll);
-	P.w_u8							(u8(g_Team()));
-	P.w_u8							(u8(g_Squad()));
-	P.w_u8							(u8(g_Group()));
+	P.w_u8							(U8(g_Team()));
+	P.w_u8							(U8(g_Squad()));
+	P.w_u8							(U8(g_Group()));
 
 	float					f1 = 0;
 	GameGraph::_GRAPH_ID		l_game_vertex_id = ai_location().game_vertex_id();
@@ -491,7 +491,7 @@ void CStalker::net_Import		(CNetPacket& P)
 	R_ASSERT						(Remote());
 	net_update						N;
 
-	u8 flags;
+	U8 flags;
 
 	P.r_float						();
 	set_money						( P.r_u32(), false );
@@ -657,7 +657,7 @@ void CStalker::UpdateCL()
 	STOP_PROFILE
 }
 
-void CStalker ::PHHit				(float P, Fvector3& dir, CObject *who,s16 element, Fvector3 p_in_object_space, float impulse, ALife::EHitType hit_type /*ALife::eHitTypeWound*/)
+void CStalker ::PHHit				(float P, Fvector3& dir, CObject *who, S16 element, Fvector3 p_in_object_space, float impulse, ALife::EHitType hit_type /*ALife::eHitTypeWound*/)
 {
 	m_pPhysics_support->in_Hit(P,dir,who,element,p_in_object_space,impulse,hit_type,!g_Alive());
 }

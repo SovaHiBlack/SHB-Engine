@@ -13,7 +13,7 @@ MONSTER_COMMUNITY_DATA::MONSTER_COMMUNITY_DATA (MONSTER_COMMUNITY_INDEX idx, MON
 {
 	index = idx;
 	id = idn;
-	team = (u8)atoi(team_str);
+	team = (U8)atoi(team_str);
 }
 
 //////////////////////////////////////////////////////////////////////////
@@ -44,7 +44,7 @@ MONSTER_COMMUNITY_INDEX	 MONSTER_COMMUNITY::index			() const
 	return m_current_index;
 }
 
-u8							 MONSTER_COMMUNITY::team			() const
+U8							 MONSTER_COMMUNITY::team			() const
 {
 	return (*m_pItemDataVector)[m_current_index].team;
 }

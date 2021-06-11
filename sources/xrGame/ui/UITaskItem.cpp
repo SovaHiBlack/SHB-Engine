@@ -27,7 +27,7 @@ void CUITaskItem::SetGameTask(CGameTask* gt, u16 obj_idx)
 	m_TaskObjectiveIdx = obj_idx;
 }
 
-void CUITaskItem::SendMessage(CUIWindow* pWnd, s16 msg, void* pData)
+void CUITaskItem::SendMessage(CUIWindow* pWnd, S16 msg, void* pData)
 {
 	CUIWndCallback::OnEvent(pWnd, msg, pData);
 }

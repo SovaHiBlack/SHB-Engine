@@ -21,7 +21,7 @@ unsigned short mbhMulti2WideDumb(wide_char* WideStr, wide_char* WidePos, const u
 {
 	unsigned short spos = 0;
 	unsigned short dpos = 0;
-	unsigned char b1;
+	U8 b1;
 	wide_char wc = 0;
 
 	VERIFY(MultiStr);
@@ -79,9 +79,9 @@ unsigned short mbhMulti2Wide(wide_char* WideStr, wide_char* WidePos, const unsig
 {
 	unsigned short spos = 0;
 	unsigned short dpos = 0;
-	unsigned char b1;
-	unsigned char b2;
-	unsigned char b3;
+	U8 b1;
+	U8 b2;
+	U8 b3;
 	wide_char wc = 0;
 
 	VERIFY(MultiStr);

@@ -59,7 +59,7 @@ public:
 
 	virtual void		Die				(CObject* who);
 	virtual void		Think			();
-	virtual void		HitSignal		(float /**P/**/, Fvector3&/**local_dir/**/,	CObject* /**who/**/, s16 /**element/**/){};
+	virtual void		HitSignal		(float /**P/**/, Fvector3&/**local_dir/**/,	CObject* /**who/**/, S16 /**element/**/){};
 	virtual void		HitImpulse		(float /**P/**/, Fvector3&/**vWorldDir/**/, Fvector3& /**vLocalDir/**/){};
 	virtual void		Hit				(SHit* pHDS){inherited::Hit(pHDS);}
 	virtual void		UpdateCL		();

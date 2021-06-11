@@ -34,7 +34,7 @@ public:
 	virtual bool	OnMouse(float x, float y, EUIMessages mouse_action);
 	virtual bool	OnKeyboard(int dik, EUIMessages keyboard_action);
 
-	virtual void	SendMessage(CUIWindow* pWnd, s16 msg, void* pData);
+	virtual void	SendMessage(CUIWindow* pWnd, S16 msg, void* pData);
 	virtual void	Draw( );
 	virtual void	Update( );
 	virtual void	DetachChild(CUIWindow* pChild);

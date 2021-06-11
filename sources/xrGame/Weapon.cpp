@@ -437,7 +437,7 @@ void CWeapon::Load(const char* section)
 	//////////////////////////////////////////////////////////
 
 	m_bHasTracers = READ_IF_EXISTS(pSettings, r_bool, section, "tracers", true);
-	m_u8TracerColorID = READ_IF_EXISTS(pSettings, r_u8, section, "tracers_color_ID", u8(-1));
+	m_u8TracerColorID = READ_IF_EXISTS(pSettings, r_u8, section, "tracers_color_ID", U8(-1));
 
 	string256 temp;
 	for (int i = egdNovice; i < egdCount; ++i)
@@ -508,7 +508,7 @@ BOOL CWeapon::net_Spawn(CSE_Abstract* DC)
 	SetState(E->wpn_state);
 	SetNextState(E->wpn_state);
 
-	m_DefaultCartridge.Load(*m_ammoTypes[m_ammoType], u8(m_ammoType));
+	m_DefaultCartridge.Load(*m_ammoTypes[m_ammoType], U8(m_ammoType));
 	if (iAmmoElapsed)
 	{
 		m_fCurrentCartirdgeDisp = m_DefaultCartridge.m_kDisp;
@@ -557,13 +557,13 @@ void CWeapon::net_Export(CNetPacket& P)
 
 	P.w_float_q8(m_fCondition, 0.0f, 1.0f);
 
-	u8 need_upd = IsUpdating( ) ? 1 : 0;
+	U8 need_upd = IsUpdating( ) ? 1 : 0;
 	P.w_u8(need_upd);
 	P.w_u16(u16(iAmmoElapsed));
 	P.w_u8(m_flagsAddOnState);
-	P.w_u8((u8) m_ammoType);
-	P.w_u8((u8) GetState( ));
-	P.w_u8((u8) m_bZoomMode);
+	P.w_u8((U8) m_ammoType);
+	P.w_u8((U8) GetState( ));
+	P.w_u8((U8) m_bZoomMode);
 }
 
 void CWeapon::net_Import(CNetPacket& P)
@@ -572,24 +572,24 @@ void CWeapon::net_Import(CNetPacket& P)
 
 	P.r_float_q8(m_fCondition, 0.0f, 1.0f);
 
-	u8 flags = 0;
+	U8 flags = 0;
 	P.r_u8(flags);
 
 	u16 ammo_elapsed = 0;
 	P.r_u16(ammo_elapsed);
 
-	u8 NewAddonState;
+	U8 NewAddonState;
 	P.r_u8(NewAddonState);
 
 	m_flagsAddOnState = NewAddonState;
 	UpdateAddonsVisibility( );
 
-	u8 ammoType;
-	u8 wstate;
+	U8 ammoType;
+	U8 wstate;
 	P.r_u8(ammoType);
 	P.r_u8(wstate);
 
-	u8 Zoom;
+	U8 Zoom;
 	P.r_u8(Zoom);
 
 	if (H_Parent( ) && H_Parent( )->Remote( ))
@@ -672,20 +672,20 @@ void CWeapon::OnEvent(CNetPacket& P, u16 type)
 		break;
 		case GE_WPN_STATE_CHANGE:
 		{
-			u8 state;
+			U8 state;
 			P.r_u8(state);
 			P.r_u8(m_sub_state);
-//			u8 NewAmmoType = 
+//			U8 NewAmmoType = 
 			P.r_u8( );
-			u8 AmmoElapsed = P.r_u8( );
-			u8 NextAmmo = P.r_u8( );
-			if (NextAmmo == u8(-1))
+			U8 AmmoElapsed = P.r_u8( );
+			U8 NextAmmo = P.r_u8( );
+			if (NextAmmo == U8(-1))
 			{
 				m_set_next_ammoType_on_reload = u32(-1);
 			}
 			else
 			{
-				m_set_next_ammoType_on_reload = u8(NextAmmo);
+				m_set_next_ammoType_on_reload = U8(NextAmmo);
 			}
 
 			if (OnClient( ))
@@ -897,7 +897,7 @@ bool CWeapon::Action(int cmd, u32 flags)
 						m_pAmmo = NULL;
 						if (unlimited_ammo())
 						{
-							m_DefaultCartridge.Load(*m_ammoTypes[m_ammoType], u8(m_ammoType));
+							m_DefaultCartridge.Load(*m_ammoTypes[m_ammoType], U8(m_ammoType));
 						}
 */
 					if (OnServer( ))
@@ -989,7 +989,7 @@ void CWeapon::SpawnAmmo(u32 boxCurr, const char* ammoSect, u32 ParentID)
 		l_pA->m_boxSize = (u16) pSettings->r_s32(ammoSect, "box_size");
 		D->s_name = ammoSect;
 		D->set_name_replace("");
-		D->s_gameid = u8(GameID( ));
+		D->s_gameid = U8(GameID( ));
 		D->s_RP = 0xff;
 		D->ID = 0xffff;
 		if (ParentID == 0xffffffff)
@@ -1430,11 +1430,11 @@ void CWeapon::SwitchState(u32 S)
 	{	// !!! Just single entry for given state !!!
 		CNetPacket		P;
 		CHudItem::object( ).u_EventGen(P, GE_WPN_STATE_CHANGE, CHudItem::object( ).ID( ));
-		P.w_u8(u8(S));
-		P.w_u8(u8(m_sub_state));
-		P.w_u8(u8(m_ammoType & 0xff));
-		P.w_u8(u8(iAmmoElapsed & 0xff));
-		P.w_u8(u8(m_set_next_ammoType_on_reload & 0xff));
+		P.w_u8(U8(S));
+		P.w_u8(U8(m_sub_state));
+		P.w_u8(U8(m_ammoType & 0xff));
+		P.w_u8(U8(iAmmoElapsed & 0xff));
+		P.w_u8(U8(m_set_next_ammoType_on_reload & 0xff));
 		CHudItem::object( ).u_EventSend(P, net_flags(TRUE, TRUE, FALSE, TRUE));
 	}
 }
@@ -1685,7 +1685,7 @@ void CWeapon::SetAmmoElapsed(int ammo_count)
 		if (uAmmo > m_magazine.size( ))
 		{
 			CCartridge l_cartridge;
-			l_cartridge.Load(*m_ammoTypes[m_ammoType], u8(m_ammoType));
+			l_cartridge.Load(*m_ammoTypes[m_ammoType], U8(m_ammoType));
 			while (uAmmo > m_magazine.size( ))
 			{
 				m_magazine.push_back(l_cartridge);

@@ -339,7 +339,7 @@ void CLocatorAPI::ProcessArchive(const char* _path, const char* base_path)
 		u32 size_compr	= hdr->r_u32();
 #else // PROTECTED_BUILD
 		string1024		buffer_start;
-		u16				buffer_size	= hdr->r_u16();
+		U16				buffer_size	= hdr->r_u16();
 		VERIFY			(buffer_size < sizeof(name) + 4*sizeof(u32));
 		VERIFY			(buffer_size < sizeof(buffer_start));
 		U8* buffer		= (U8*) &*buffer_start;

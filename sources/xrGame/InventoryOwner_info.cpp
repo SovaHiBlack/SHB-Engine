@@ -24,7 +24,7 @@ void CInventoryOwner::OnEvent(CNetPacket& P, u16 type)
 		{
 			u16 id;
 			shared_str info_id;
-			u8 add_info;
+			U8 add_info;
 
 			P.r_u16(id);				//отправитель
 			P.r_stringZ(info_id);		//номер полученной информации

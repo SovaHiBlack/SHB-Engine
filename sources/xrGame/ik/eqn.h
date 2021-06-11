@@ -66,8 +66,8 @@ inline float sin_and_cos(float x, float alpha, float beta)
 
 struct PsiEquation
 {
-    unsigned char  status, num_crits, num_roots;
-    unsigned char *status_ptr, *num_roots_ptr, *num_crits_ptr;
+    U8  status, num_crits, num_roots;
+    U8* status_ptr, *num_roots_ptr, *num_crits_ptr;
     float alpha, beta, xi; 
     float crit_pts[2], root_pts[2];
 

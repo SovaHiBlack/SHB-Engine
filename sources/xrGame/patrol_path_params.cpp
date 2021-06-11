@@ -68,7 +68,7 @@ u32	CPatrolPathParams::point			(const Fvector3& point) const
 	return				(m_path->point(point)->vertex_id());
 }
 
-bool CPatrolPathParams::flag			(u32 index, u8 flag_index) const
+bool CPatrolPathParams::flag			(u32 index, U8 flag_index) const
 {
 	VERIFY				(m_path->vertex(index));
 	return				(!!(m_path->vertex(index)->data().flags() & (u32(1) << flag_index)));

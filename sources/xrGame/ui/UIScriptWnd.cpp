@@ -8,9 +8,9 @@
 struct event_comparer
 {
 	shared_str name;
-	s16 event;
+	S16 event;
 
-	event_comparer(shared_str n, s16 e) : name(n), event(e)
+	event_comparer(shared_str n, S16 e) : name(n), event(e)
 	{ }
 	bool operator ()(SCallbackInfo* i)
 	{
@@ -45,7 +45,7 @@ void CUIDialogWndEx::Register(CUIWindow* pChild, const char* name)
 	pChild->SetMessageTarget(this);
 }
 
-void CUIDialogWndEx::SendMessage(CUIWindow* pWnd, s16 msg, void* pData)
+void CUIDialogWndEx::SendMessage(CUIWindow* pWnd, S16 msg, void* pData)
 {
 	event_comparer ec(pWnd->WindowName( ), msg);
 
@@ -74,7 +74,7 @@ SCallbackInfo* CUIDialogWndEx::NewCallback( )
 	return m_callbacks.back( );
 }
 
-void CUIDialogWndEx::AddCallback(const char* control_id, s16 event, const luabind::functor<void>& lua_function)
+void CUIDialogWndEx::AddCallback(const char* control_id, S16 event, const luabind::functor<void>& lua_function)
 {
 	SCallbackInfo* c = NewCallback( );
 	c->m_callback.set(lua_function);
@@ -82,7 +82,7 @@ void CUIDialogWndEx::AddCallback(const char* control_id, s16 event, const luabin
 	c->m_event = event;
 }
 
-void CUIDialogWndEx::AddCallback(const char* control_id, s16 event, const luabind::functor<void>& functor, const luabind::object& object)
+void CUIDialogWndEx::AddCallback(const char* control_id, S16 event, const luabind::functor<void>& functor, const luabind::object& object)
 {
 	SCallbackInfo* c = NewCallback( );
 	c->m_callback.set(functor, object);

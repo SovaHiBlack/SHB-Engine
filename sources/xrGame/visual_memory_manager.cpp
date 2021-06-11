@@ -685,7 +685,7 @@ void CVisualMemoryManager::save	(CNetPacket &packet) const
 	if (!m_object->g_Alive())
 		return;
 
-	packet.w_u8					((u8)objects().size());
+	packet.w_u8					((U8)objects().size());
 
 	VISIBLES::const_iterator	I = objects().begin();
 	VISIBLES::const_iterator	E = objects().end();

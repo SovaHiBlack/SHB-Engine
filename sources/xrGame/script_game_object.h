@@ -205,7 +205,7 @@ public:
 			const char* WhoHitName			();
 			const char* WhoHitSectionName	();
 
-			void				ChangeTeam			(u8 team, u8 squad, u8 group);
+			void				ChangeTeam			(U8 team, U8 squad, U8 group);
 
 	// CStalker
 			CScriptGameObject	*GetCurrentWeapon	() const;

@@ -97,15 +97,15 @@ void	CRenderTarget::u_compute_texgen_jitter	(Fmatrix&		m_Texgen_J)
 	m_Texgen_J.mulA_44			(m_TexelAdjust);
 }
 
-u8		fpack			(float v)				{
+U8		fpack			(float v)				{
 	int	_v	= iFloor	(((v+1)*.5f)*255.f + .5f);
 	clamp	(_v,0,255);
-	return	u8(_v);
+	return	U8(_v);
 }
-u8		fpackZ			(float v)				{
+U8		fpackZ			(float v)				{
 	int	_v	= iFloor	(_abs(v)*255.f + .5f);
 	clamp	(_v,0,255);
-	return	u8(_v);
+	return	U8(_v);
 }
 Fvector3	vunpack			(int x, int y, int z)	{
 	Fvector3	pck;

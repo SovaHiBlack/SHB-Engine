@@ -30,7 +30,7 @@ CWound::~CWound( )
 //serialization
 void CWound::save(CNetPacket& output_packet)
 {
-	output_packet.w_u8((u8) m_iBoneNum);
+	output_packet.w_u8((U8) m_iBoneNum);
 	for (int i = 0; i < ALife::eHitTypeMax; i++)
 	{
 		output_packet.w_float_q8(m_Wounds[i], 0.0f, WOUND_MAX);
@@ -39,7 +39,7 @@ void CWound::save(CNetPacket& output_packet)
 
 void CWound::load(IReader& input_packet)
 {
-	m_iBoneNum = (u8) input_packet.r_u8( );
+	m_iBoneNum = (U8) input_packet.r_u8( );
 	for (int i = 0; i < ALife::eHitTypeMax; i++)
 	{
 		m_Wounds[i] = input_packet.r_float_q8(0.0f, WOUND_MAX);

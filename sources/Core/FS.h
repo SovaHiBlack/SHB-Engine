@@ -41,11 +41,11 @@ public:
 	// generalized writing functions
 	inline void			w_u64	(u64 d)					{	w(&d,sizeof(u64));	}
 	inline void			w_u32	(u32 d)					{	w(&d,sizeof(u32));	}
-	inline void			w_u16	(u16 d)					{	w(&d,sizeof(u16));	}
+	inline void			w_u16	(U16 d)					{	w(&d,sizeof(U16));	}
 	inline void			w_u8	(U8 d)					{	w(&d,sizeof(U8));	}
 	inline void			w_s64	(s64 d)					{	w(&d,sizeof(s64));	}
 	inline void			w_s32	(int d)					{	w(&d,sizeof(int));	}
-	inline void			w_s16	(s16 d)					{	w(&d,sizeof(s16));	}
+	inline void			w_s16	(S16 d)					{	w(&d,sizeof(S16));	}
 	inline void			w_s8	(S8 d)					{	w(&d,sizeof(S8));	}
 	inline void			w_float	(float d)				{	w(&d,sizeof(float));}
 	inline void			w_string(const char* p)			{	w(p,(u32)xr_strlen(p));w_u8(13);w_u8(10);	}
@@ -66,7 +66,7 @@ public:
 	{
 		VERIFY		(a>=min && a<=max);
 		float q		= (a-min)/(max-min);
-		w_u16		(u16(iFloor(q*65535.f+.5f)));
+		w_u16(U16(iFloor(q * 65535.0f + 0.5f)));
 	}
 	inline void 		w_float_q8	(float a, float min, float max)
 	{
@@ -142,11 +142,11 @@ public:
 	inline Fvector4		r_vec4		()			{Fvector4 tmp;r(&tmp,4*sizeof(float));return tmp;	};
 	inline u64			r_u64		()			{	u64 tmp;	r(&tmp,sizeof(tmp)); return tmp;	};
 	inline u32			r_u32		()			{	u32 tmp;	r(&tmp,sizeof(tmp)); return tmp;	};
-	inline u16			r_u16		()			{	u16 tmp;	r(&tmp,sizeof(tmp)); return tmp;	};
+	inline U16			r_u16		()			{	U16 tmp;	r(&tmp,sizeof(tmp)); return tmp;	};
 	inline U8			r_u8		()			{	U8 tmp;		r(&tmp,sizeof(tmp)); return tmp;	};
 	inline s64			r_s64		()			{	s64 tmp;	r(&tmp,sizeof(tmp)); return tmp;	};
 	inline int			r_s32		()			{	int tmp;	r(&tmp,sizeof(tmp)); return tmp;	};
-	inline s16			r_s16		()			{	s16 tmp;	r(&tmp,sizeof(tmp)); return tmp;	};
+	inline S16			r_s16		()			{	S16 tmp;	r(&tmp,sizeof(tmp)); return tmp;	};
 	inline S8			r_s8		()			{	S8 tmp;		r(&tmp,sizeof(tmp)); return tmp;	};
 	inline float		r_float		()			{	float tmp;	r(&tmp,sizeof(tmp)); return tmp;	};
 	inline void			r_fvector4	(Fvector4 &v){	r(&v,sizeof(Fvector4));	}
@@ -159,7 +159,7 @@ public:
 	
 	inline float		r_float_q16	(float min, float max)
 	{
-		u16	val 	= r_u16();
+		U16	val 	= r_u16();
 		float A		= (float(val)*(max-min))/65535.f + min;		// floating-point-error possible
 		VERIFY		((A >= min-EPS_S) && (A <= max+EPS_S));
 		return A;
@@ -173,10 +173,10 @@ public:
 	}
 	inline float		r_angle16	()			{ return r_float_q16(0,PI_MUL_2);	}
 	inline float		r_angle8	()			{ return r_float_q8	(0,PI_MUL_2);	}
-	inline void			r_dir		(Fvector3& A){ u16 t=r_u16(); pvDecompress(A,t); }
+	inline void			r_dir		(Fvector3& A){ U16 t=r_u16(); pvDecompress(A,t); }
 	inline void			r_sdir		(Fvector3& A)
 	{
-		u16	t		= r_u16();
+		U16	t		= r_u16();
 		float s		= r_float();
 		pvDecompress(A,t);
 		A.mul		(s);

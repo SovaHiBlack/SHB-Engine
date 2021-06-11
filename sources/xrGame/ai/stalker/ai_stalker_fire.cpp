@@ -269,7 +269,7 @@ void			CStalker::Hit					(SHit* pHDS)
 	inherited::Hit					(&HDS);
 }
 
-void CStalker::HitSignal				(float amount, Fvector3& vLocalDir, CObject* who, s16 element)
+void CStalker::HitSignal				(float amount, Fvector3& vLocalDir, CObject* who, S16 element)
 {
 	if (getDestroy())
 		return;

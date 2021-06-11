@@ -70,9 +70,9 @@ inline	void CConditionStateAbstract::clear	()
 }
 
 TEMPLATE_SPECIALIZATION
-inline	u8	CConditionStateAbstract::weight		(const CConditionState &condition) const
+inline	U8	CConditionStateAbstract::weight		(const CConditionState &condition) const
 {
-	u8						result = 0;
+	U8						result = 0;
 	xr_vector<COperatorCondition>::const_iterator	I = conditions().begin();
 	xr_vector<COperatorCondition>::const_iterator	E = conditions().end();
 	xr_vector<COperatorCondition>::const_iterator	i = condition.conditions().begin();

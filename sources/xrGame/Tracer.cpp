@@ -17,7 +17,7 @@ CTracer::CTracer( )
 	sh_Tracer.create("effects\\bullet_tracer", "fx\\fx_tracer");
 	sh_Geom.create(FVF::F_LIT, RCache.Vertex.Buffer( ), RCache.QuadIB);
 	m_aColors.clear( );
-	for (u8 i = 0; i < 255; i++)
+	for (U8 i = 0; i < 255; i++)
 	{
 		shared_str LineName;
 		LineName.sprintf("color_%d", i);
@@ -88,7 +88,7 @@ inline void FillSprite_Line(FVF::LIT*& pv, const Fvector3& pos, const Fvector3& 
 	pv->set(b.x + pos.x, b.y + pos.y, b.z + pos.z, color, 1.f, 0.5f);        pv++;
 }
 
-void  CTracer::Render(FVF::LIT*& verts, const Fvector3& pos, const Fvector3& center, const Fvector3& dir, float length, float width, u8 colorID)
+void  CTracer::Render(FVF::LIT*& verts, const Fvector3& pos, const Fvector3& center, const Fvector3& dir, float length, float width, U8 colorID)
 {
 	if (::Render->ViewBase.testSphere_dirty(( Fvector3&) center, length * .5f))
 	{

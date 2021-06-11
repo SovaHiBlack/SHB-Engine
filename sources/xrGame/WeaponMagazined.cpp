@@ -406,7 +406,7 @@ void CWeaponMagazined::ReloadMagazine( )
 
 	if (m_DefaultCartridge.m_LocalAmmoType != m_ammoType)
 	{
-		m_DefaultCartridge.Load(*m_ammoTypes[m_ammoType], u8(m_ammoType));
+		m_DefaultCartridge.Load(*m_ammoTypes[m_ammoType], U8(m_ammoType));
 	}
 
 	CCartridge l_cartridge = m_DefaultCartridge;
@@ -421,7 +421,7 @@ void CWeaponMagazined::ReloadMagazine( )
 		}
 
 		++iAmmoElapsed;
-		l_cartridge.m_LocalAmmoType = u8(m_ammoType);
+		l_cartridge.m_LocalAmmoType = U8(m_ammoType);
 		m_magazine.push_back(l_cartridge);
 	}
 
@@ -1394,7 +1394,7 @@ void CWeaponMagazined::net_Export(CNetPacket& P)
 {
 	inherited::net_Export(P);
 
-	P.w_u8(u8(m_iCurFireMode & 0x00ff));
+	P.w_u8(U8(m_iCurFireMode & 0x00ff));
 }
 
 void CWeaponMagazined::net_Import(CNetPacket& P)

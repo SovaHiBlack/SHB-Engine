@@ -159,7 +159,7 @@ void CControlAnimationBase::select_animation(bool anim_end)
 	strconcat	(sizeof(st),st,*anim_it->target_name,itoa(index,tmp,10));
 	//	sprintf_s		(st, "%s%d", *anim_it->second.target_name, index);
 	m_cur_anim.name				= st; 
-	m_cur_anim.index			= u8(index);
+	m_cur_anim.index			= U8(index);
 	m_cur_anim.time_started		= Device.dwTimeGlobal;
 	m_cur_anim.speed._set_current	(1.f);
 	m_cur_anim.speed._set_target	(-1.f);
@@ -402,8 +402,9 @@ void CControlAnimationBase::UpdateAnimCount()
 		// проверить, были ли уже загружены данные
 		if ((*it)->count != 0) return;
 
-		string128	s, s_temp; 
-		u8 count = 0;
+		string128	s;
+		string128	s_temp;
+		U8 count = 0;
 
 		for (int i=0; ; ++i) {
 			strconcat	(sizeof(s_temp),s_temp, *((*it)->target_name),itoa(i,s,10));

@@ -371,10 +371,10 @@ U8 CIniFile::r_u8(const char* S, const char* L)
 	const char* C = r_string(S,L);
 	return		U8(atoi(C));
 }
-u16 CIniFile::r_u16(const char* S, const char* L)
+U16 CIniFile::r_u16(const char* S, const char* L)
 {
 	const char* C = r_string(S,L);
-	return		u16(atoi(C));
+	return		U16(atoi(C));
 }
 u32 CIniFile::r_u32(const char* S, const char* L)
 {
@@ -386,10 +386,10 @@ S8 CIniFile::r_s8(const char* S, const char* L)
 	const char* C = r_string(S,L);
 	return		S8(atoi(C));
 }
-s16 CIniFile::r_s16(const char* S, const char* L)
+S16 CIniFile::r_s16(const char* S, const char* L)
 {
 	const char* C = r_string(S,L);
-	return		s16(atoi(C));
+	return		S16(atoi(C));
 }
 int CIniFile::r_s32(const char* S, const char* L)
 {
@@ -552,7 +552,7 @@ void	CIniFile::w_u8			(const char* S, const char* L, U8				V, const char* commen
 	string128 temp; sprintf_s		(temp,sizeof(temp),"%d",V);
 	w_string	(S,L,temp,comment);
 }
-void	CIniFile::w_u16			(const char* S, const char* L, u16				V, const char* comment )
+void	CIniFile::w_u16			(const char* S, const char* L, U16				V, const char* comment )
 {
 	string128 temp; sprintf_s		(temp,sizeof(temp),"%d",V);
 	w_string	(S,L,temp,comment);
@@ -567,7 +567,7 @@ void	CIniFile::w_s8			(const char* S, const char* L, S8				V, const char* commen
 	string128 temp; sprintf_s		(temp,sizeof(temp),"%d",V);
 	w_string	(S,L,temp,comment);
 }
-void	CIniFile::w_s16			(const char* S, const char* L, s16				V, const char* comment )
+void	CIniFile::w_s16			(const char* S, const char* L, S16				V, const char* comment )
 {
 	string128 temp; sprintf_s		(temp,sizeof(temp),"%d",V);
 	w_string	(S,L,temp,comment);

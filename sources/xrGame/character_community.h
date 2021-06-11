@@ -14,7 +14,7 @@ struct COMMUNITY_DATA
 
 	CHARACTER_COMMUNITY_ID		id;
 	CHARACTER_COMMUNITY_INDEX	index;
-	u8 team;
+	U8 team;
 };
 
 class CHARACTER_COMMUNITY;
@@ -35,7 +35,7 @@ public:
 
 	CHARACTER_COMMUNITY_ID		id				() const;
 	CHARACTER_COMMUNITY_INDEX	index			() const	{return m_current_index;};
-	u8							team			() const;
+	U8							team			() const;
 
 private:
 	CHARACTER_COMMUNITY_INDEX	m_current_index;

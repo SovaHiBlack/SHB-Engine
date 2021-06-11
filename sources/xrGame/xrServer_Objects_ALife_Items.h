@@ -23,17 +23,18 @@ class CSE_ALifeItemAmmo;
 SERVER_ENTITY_DECLARE_BEGIN0(CSE_ALifeInventoryItem)
 public:
 	enum {
-		inventory_item_state_enabled	= u8(1) << 0,
-		inventory_item_angular_null		= u8(1) << 1,
-		inventory_item_linear_null		= u8(1) << 2
+		inventory_item_state_enabled	= U8(1) << 0,
+		inventory_item_angular_null		= U8(1) << 1,
+		inventory_item_linear_null		= U8(1) << 2
 	};
 
 	union mask_num_items {
 		struct {
-			u8	num_items : 5;
-			u8	mask      : 3;
+			U8	num_items : 5;
+			U8	mask      : 3;
 		};
-		u8		common;
+
+		U8		common;
 	};
 
 public:
@@ -64,7 +65,7 @@ public:
 	virtual bool					bfUseful();
 
 	/////////// network ///////////////
-	u8								m_u8NumItems;
+	U8								m_u8NumItems;
 	SPHNetState						State;
 	///////////////////////////////////
 SERVER_ENTITY_DECLARE_END
@@ -140,9 +141,9 @@ SERVER_ENTITY_DECLARE_BEGIN(CSE_ALifeItemWeapon,CSE_ALifeItem)
 	EWeaponAddonStatus				m_grenade_launcher_status;
 
 	u32								timestamp;
-	u8								wpn_flags;
-	u8								wpn_state;
-	u8								ammo_type;
+	U8								wpn_flags;
+	U8								wpn_state;
+	U8								ammo_type;
 	u16								a_current;
 	u16								a_elapsed;
 	float							m_fHitPower;
@@ -150,7 +151,7 @@ SERVER_ENTITY_DECLARE_BEGIN(CSE_ALifeItemWeapon,CSE_ALifeItem)
 	const char* m_caAmmoSections;
 	u32								m_dwAmmoAvailable;
 	Flags8							m_addon_flags;
-	u8								m_bZoom;
+	U8								m_bZoom;
 	u32								m_ef_main_weapon_type;
 	u32								m_ef_weapon_type;
 
@@ -159,7 +160,7 @@ SERVER_ENTITY_DECLARE_BEGIN(CSE_ALifeItemWeapon,CSE_ALifeItem)
 	virtual void					OnEvent				(CNetPacket& P, u16 type, u32 time, ClientID sender );
 	virtual u32						ef_main_weapon_type	() const;
 	virtual u32						ef_weapon_type		() const;
-	u8								get_slot			();
+	U8								get_slot			();
 	u16								get_ammo_total		();
 	u16								get_ammo_elapsed	();
 	u16								get_ammo_magsize	();
@@ -172,7 +173,7 @@ add_to_type_list(CSE_ALifeItemWeapon)
 #define script_type_list save_type_list(CSE_ALifeItemWeapon)
 
 SERVER_ENTITY_DECLARE_BEGIN(CSE_ALifeItemWeaponMagazined,CSE_ALifeItemWeapon)
-u8			m_u8CurFireMode;
+U8			m_u8CurFireMode;
 CSE_ALifeItemWeaponMagazined(const char* caSection);
 virtual							~CSE_ALifeItemWeaponMagazined();
 
@@ -192,7 +193,7 @@ add_to_type_list(CSE_ALifeItemWeaponMagazinedWGL)
 #define script_type_list save_type_list(CSE_ALifeItemWeaponMagazinedWGL)
 
 SERVER_ENTITY_DECLARE_BEGIN(CSE_ALifeItemWeaponShotGun,CSE_ALifeItemWeaponMagazined)
-	xr_vector<u8>				m_AmmoIDs;
+	xr_vector<U8>				m_AmmoIDs;
 								CSE_ALifeItemWeaponShotGun(const char* caSection);
 virtual							~CSE_ALifeItemWeaponShotGun();
 

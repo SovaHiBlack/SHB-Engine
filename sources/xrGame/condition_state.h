@@ -23,7 +23,7 @@ public:
 	inline											CConditionState		();
 	virtual										~CConditionState	();
 	inline		const xr_vector<COperatorCondition>	&conditions			() const;
-	inline		u8									weight				(const CConditionState &condition) const;
+	inline		U8									weight				(const CConditionState &condition) const;
 	inline		void								add_condition		(const COperatorCondition &condition);
 	inline		void								remove_condition	(const typename COperatorCondition::_condition_type &condition);
 	inline		void								add_condition		(typename xr_vector<COperatorCondition>::const_iterator &J, const COperatorCondition &condition);

@@ -219,7 +219,7 @@ void ELightAnimLibrary::Load( )
 	IReader* fs = FS.r_open(fn);
 	if (fs)
 	{
-		u16 version = 0;
+		U16 version = 0;
 		if (fs->find_chunk(CHUNK_VERSION))
 		{
 			version = fs->r_u16( );

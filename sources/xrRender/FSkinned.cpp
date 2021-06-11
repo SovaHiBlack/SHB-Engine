@@ -19,27 +19,27 @@
 static	shared_str	sbones_array;
 
 #pragma pack(push,1)
-float u_P	(s16 v)
+float u_P	(S16 v)
 {
 	return	float(v)/(32767.f/12.f);
 }
-s16	q_P		(float v)
+S16	q_P		(float v)
 {
 	int		_v	= clampr(iFloor(v*(32767.f/12.f)), -32768, 32767);
-	return	s16	(_v);
+	return	S16(_v);
 }
-u8	q_N		(float v)
+U8	q_N		(float v)
 {
 	int		_v	= clampr(iFloor((v+1.f)*127.5f), 0, 255);
-	return	u8	(_v);
+	return	U8(_v);
 }
-s16	q_tc	(float v)
+S16	q_tc	(float v)
 {
 	int		_v	= clampr(iFloor(v*(32767.f/16.f)), -32768, 32767);
-	return	s16	(_v);
+	return	S16(_v);
 }
 #ifdef _DEBUG
-float errN	(Fvector3 v, u8* qv)
+float errN	(Fvector3 v, U8* qv)
 {
 	Fvector3	uv;	
 	uv.set		(float(qv[0]),float(qv[1]),float(qv[2])).div(255.f).mul(2.f).sub(1.f);
@@ -47,7 +47,7 @@ float errN	(Fvector3 v, u8* qv)
 	return		v.dotproduct(uv);
 }
 #else
-float errN	(Fvector3 v, u8* qv)	{ return 0; }
+float errN	(Fvector3 v, U8* qv)	{ return 0; }
 #endif
 
 static	D3DVERTEXELEMENT9 dwDecl_01W	[] =	// 24bytes
@@ -61,11 +61,11 @@ static	D3DVERTEXELEMENT9 dwDecl_01W	[] =	// 24bytes
 };
 struct	vertHW_1W
 {
-	s16			_P		[4];
+	S16			_P		[4];
 	u32			_N_I	;
 	u32			_T		;
 	u32			_B		;
-	s16			_tc		[2];
+	S16			_tc		[2];
 	void set	(Fvector3& P, Fvector3 N, Fvector3 T, Fvector3 B, Fvector2& tc, int index)
 	{
 		N.normalize_safe();
@@ -75,7 +75,7 @@ struct	vertHW_1W
 		_P[1]		= q_P(P.y);
 		_P[2]		= q_P(P.z);
 		_P[3]		= q_P(1);
-		_N_I		= color_rgba(q_N(N.x), q_N(N.y), q_N(N.z), u8(index));
+		_N_I		= color_rgba(q_N(N.x), q_N(N.y), q_N(N.z), U8(index));
 		_T			= color_rgba(q_N(T.x), q_N(T.y), q_N(T.z), 0);
 		_B			= color_rgba(q_N(B.x), q_N(B.y), q_N(B.z), 0);
 		_tc[0]		= q_tc(tc.x);
@@ -104,11 +104,11 @@ static	D3DVERTEXELEMENT9 dwDecl_2W	[] =	// 28bytes
 };
 struct	vertHW_2W
 {
-	s16			_P		[4];
+	S16			_P		[4];
 	u32			_N_w	;
 	u32			_T		;
 	u32			_B		;
-	s16			_tc_i	[4];
+	S16			_tc_i	[4];
 	void set	(Fvector3& P, Fvector3 N, Fvector3 T, Fvector3 B, Fvector2& tc, int index0, int index1, float w)
 	{
 		N.normalize_safe	();
@@ -118,13 +118,13 @@ struct	vertHW_2W
 		_P[1]		= q_P	(P.y);
 		_P[2]		= q_P	(P.z);
 		_P[3]		= 1;
-		_N_w		= color_rgba(q_N(N.x), q_N(N.y), q_N(N.z), u8(clampr(iFloor(w*255.f+.5f),0,255)));
+		_N_w		= color_rgba(q_N(N.x), q_N(N.y), q_N(N.z), U8(clampr(iFloor(w*255.f+.5f),0,255)));
 		_T			= color_rgba(q_N(T.x), q_N(T.y), q_N(T.z), 0);
 		_B			= color_rgba(q_N(B.x), q_N(B.y), q_N(B.z), 0);
 		_tc_i[0]	= q_tc	(tc.x);
 		_tc_i[1]	= q_tc	(tc.y);
-		_tc_i[2]	= s16	(index0);
-		_tc_i[3]	= s16	(index1);
+		_tc_i[2]	= S16(index0);
+		_tc_i[3]	= S16(index1);
 	}
 	float get_weight()
 	{

@@ -96,7 +96,7 @@ inline	void CGameLocationSelector::select_random_location(const _vertex_id_type 
 		if (!accessible((*i).vertex_id()))
 			continue;
 
-		const u8				*curr_types = m_graph->vertex((*i).vertex_id())->vertex_type();
+		const U8* curr_types = m_graph->vertex((*i).vertex_id( ))->vertex_type( );
 
 		// * подходит по маске
 		for (I = B; I != E; ++I)
@@ -128,7 +128,7 @@ inline	void CGameLocationSelector::select_random_location(const _vertex_id_type 
 			if (!accessible((*i).vertex_id()))
 				continue;
 
-			const u8			*curr_types = m_graph->vertex((*i).vertex_id())->vertex_type();
+			const U8* curr_types = m_graph->vertex((*i).vertex_id( ))->vertex_type( );
 
 			// * подходит по маске
 			for (I = B; I != E; ++I)

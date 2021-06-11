@@ -38,7 +38,8 @@ private:
 	mutable bool				m_actuality;
 
 private:
-	u8					m_space_restrictor_type;
+	U8					m_space_restrictor_type;
+
 private:
 	inline void				actual(bool value) const;
 	void				prepare( ) const;

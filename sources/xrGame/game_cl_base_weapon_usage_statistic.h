@@ -29,7 +29,7 @@ struct HitData
 	Fvector3 Pos0;
 	Fvector3 Pos1;
 	
-	s16		BoneID;
+	S16		BoneID;
 	shared_str	BoneName;
 	u16		TargetID;
 	shared_str	TargetName;
@@ -90,11 +90,11 @@ struct Player_Statistic
 	u32				m_dwTotalAliveTime[3];
 	int				m_dwTotalMoneyRound[3];
 	u32				m_dwNumRespawned[3];
-	u8				m_dwArtefacts[3];
+	U8				m_dwArtefacts[3];
 	
 	u32				m_dwSpecialKills	[3];//headshot, backstab, knifekill
 
-	u8				m_dwCurrentTeam;
+	U8				m_dwCurrentTeam;
 
 	WEAPON_STATS	aWeaponStats;
 	//-----------------------------------------------
@@ -118,11 +118,11 @@ using PLAYERS_STATS_it = PLAYERS_STATS::iterator;
 struct Bullet_Check_Request
 {
 	u32	BulletID;
-	s16 BoneID;
+	S16 BoneID;
 	bool Result;
 	bool Processed;
 	Bullet_Check_Request() : BulletID(0), Result(false) {};
-	Bullet_Check_Request(u32 ID, s16 BID) : BulletID(ID), BoneID(BID), Result(false), Processed(false) {};
+	Bullet_Check_Request(u32 ID, S16 BID) : BulletID(ID), BoneID(BID), Result(false), Processed(false) {};
 };
 
 //DEF_VECTOR(BChR, Bullet_Check_Request);
@@ -134,8 +134,8 @@ struct Bullet_Check_Array
 	u32	SenderID;
 
 	BChR	Requests;
-	u8		NumTrue;
-	u8		NumFalse;
+	U8		NumTrue;
+	U8		NumFalse;
 
 	bool			operator	==		(u32 ID){return	ID == SenderID;}
 	bool			operator	!=		(u32 ID){return	ID != SenderID;}
@@ -178,7 +178,7 @@ struct WeaponUsageStatistic {
 	//-----------------------------------------------
 	void				OnWeaponBought			(game_PlayerState* ps, const char* WeaponName);
 	void				OnBullet_Fire			(SBullet* pBullet, const CCartridge& cartridge);
-	void				OnBullet_Hit			(SBullet* pBullet, u16 TargetID, s16 element, Fvector3 HitLocation);
+	void				OnBullet_Hit			(SBullet* pBullet, u16 TargetID, S16 element, Fvector3 HitLocation);
 	void				OnBullet_Remove			(SBullet* pBullet);
 	//-----------------------------------------------
 
@@ -209,5 +209,5 @@ struct WeaponUsageStatistic {
 struct Bullet_Check_Respond_True
 {
 	u32	BulletID;
-	s16 BoneID;
+	S16 BoneID;
 };

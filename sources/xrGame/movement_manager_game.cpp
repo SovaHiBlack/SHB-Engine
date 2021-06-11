@@ -65,7 +65,7 @@ void CMovementManager::process_game_path()
 				Msg			("! TARGET LEVEL : %s",*ai().game_graph().header().level(vertex->level_id()).name());
 				temp		= vertex->level_point();
 				Msg			("! TARGET  game point position : [%f][%f][%f]",VPUSH(temp));
-				const u8	*target_vertex_type = ai().game_graph().vertex(game_dest_vertex_id())->vertex_type();
+				const U8* target_vertex_type = ai( ).game_graph( ).vertex(game_dest_vertex_id( ))->vertex_type( );
 				Msg			(
 					"! Target point mask [%d][%d][%d][%d]",
 					target_vertex_type[0],

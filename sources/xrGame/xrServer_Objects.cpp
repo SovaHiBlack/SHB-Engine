@@ -24,7 +24,7 @@ CSE_Shape::~CSE_Shape( )
 void CSE_Shape::cform_read(CNetPacket& tNetPacket)
 {
 	shapes.clear( );
-	u8							count;
+	U8							count;
 	tNetPacket.r_u8(count);
 
 	while (count)
@@ -47,7 +47,7 @@ void CSE_Shape::cform_read(CNetPacket& tNetPacket)
 
 void CSE_Shape::cform_write(CNetPacket& tNetPacket)
 {
-	tNetPacket.w_u8(u8(shapes.size( )));
+	tNetPacket.w_u8(U8(shapes.size( )));
 	for (u32 i = 0; i < shapes.size( ); ++i)
 	{
 		shape_def& S = shapes[i];
@@ -80,7 +80,7 @@ CSE_Spectator::CSE_Spectator(const char* caSection) : CSE_Abstract(caSection)
 CSE_Spectator::~CSE_Spectator( )
 { }
 
-u8	 CSE_Spectator::g_team( )
+U8 CSE_Spectator::g_team( )
 {
 	return 0;
 }

@@ -196,9 +196,9 @@ public:
 
 struct SNodePositionOld
 {
-	s16				x;
+	S16				x;
 	u16				y;
-	s16				z;
+	S16				z;
 };
 #pragma pack	(pop)
 

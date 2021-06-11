@@ -38,11 +38,11 @@ public:
 	u32				dwRefreshRate;
 
 	// caps itself
-	u16				geometry_major	;
-	u16				geometry_minor	;
+	U16				geometry_major	;
+	U16				geometry_minor	;
 	caps_Geometry	geometry		;
-	u16				raster_major	;
-	u16				raster_minor	;
+	U16				raster_major	;
+	U16				raster_minor	;
 	caps_Raster		raster			;
 
 	u32				id_vendor		;

@@ -138,7 +138,7 @@ void CWeaponStatMgun::net_Export(CNetPacket& P)	// export to server
 void CWeaponStatMgun::net_Import(CNetPacket& P)	// import from server
 {
 	inheritedPH::net_Import			(P);
-	u8 state = P.r_u8();
+	U8 state = P.r_u8();
 	load_data						(m_destEnemyDir, P);
 
 	if(TRUE==IsWorking()&&!state)			FireEnd		();

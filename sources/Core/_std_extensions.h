@@ -118,12 +118,12 @@ inline S8 		_max	(S8  x, S8  y)	{ return x - ((x - y) & ((x - y) >> (sizeof(S8) 
 inline U8		_abs	(U8 x)			{ return x; }
 
 // int16
-inline s16		_abs	(s16 x)			{ return (x>=0)? x : s16(-x); }
-inline s16		_min	(s16 x, s16 y)	{ return y + ((x - y) & ((x - y) >> (sizeof(s16) * 8 - 1))); };
-inline s16		_max	(s16 x, s16 y)	{ return x - ((x - y) & ((x - y) >> (sizeof(s16) * 8 - 1))); };
+inline S16		_abs	(S16 x)			{ return (x>=0)? x : S16(-x); }
+inline S16		_min	(S16 x, S16 y)	{ return y + ((x - y) & ((x - y) >> (sizeof(S16) * 8 - 1))); };
+inline S16		_max	(S16 x, S16 y)	{ return x - ((x - y) & ((x - y) >> (sizeof(S16) * 8 - 1))); };
 
 // unsigned int16
-inline u16		_abs	(u16 x)			{ return x; }
+inline U16		_abs	(U16 x)			{ return x; }
 
 // int32
 inline int		_abs	(int x)			{ return (x>=0)? x : int(-x); }

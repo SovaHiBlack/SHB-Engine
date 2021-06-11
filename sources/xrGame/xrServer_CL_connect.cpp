@@ -111,7 +111,7 @@ void CServer::OnCL_Connected(IClient* _CL)
 	game->ProcessDelayedEvent( );
 }
 
-void CServer::SendConnectResult(IClient* CL, u8 res, u8 res1, char* ResultStr)
+void CServer::SendConnectResult(IClient* CL, U8 res, U8 res1, char* ResultStr)
 {
 	CNetPacket	P;
 	P.w_begin(M_CLIENT_CONNECT_RESULT);

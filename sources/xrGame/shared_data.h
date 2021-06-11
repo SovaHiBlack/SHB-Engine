@@ -124,8 +124,8 @@ public:
 //-----------------------------------------
 ////1. define shared class storage
 //struct shared_struc : public CSharedResource {
-//	u8 a;
-//	u8 b;
+//	U8 a;
+//	U8 b;
 //};
 //
 ////2. define custom class inherited CSharedClass

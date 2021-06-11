@@ -48,7 +48,7 @@ public:
 	}
 
 	virtual void			Update								( );
-	virtual void			SendMessage							(CUIWindow* pWnd, s16 msg, void* pData);
+	virtual void			SendMessage							(CUIWindow* pWnd, S16 msg, void* pData);
 	bool					IsRectVisible						(Frect r);
 	bool					NeedShowPointer						(Frect r);
 	bool					Locked								( )
@@ -145,7 +145,7 @@ public:
 	virtual void			Draw								( );
 	virtual void			Update								( );
 	virtual bool			OnMouse								(float x, float y, EUIMessages mouse_action);
-	virtual void			SendMessage							(CUIWindow* pWnd, s16 msg, void* pData);
+	virtual void			SendMessage							(CUIWindow* pWnd, S16 msg, void* pData);
 
 	Frect					CalcWndRectOnGlobal					( );
 	CUIMapWnd*				MapWnd								( )

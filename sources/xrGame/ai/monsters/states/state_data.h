@@ -28,7 +28,7 @@ struct SStateDataMoveToPoint {
 	
 	bool				accelerated;
 	bool				braking;
-	u8					accel_type;
+	U8					accel_type;
 	
 	float				completion_dist;
 	
@@ -62,7 +62,7 @@ struct SStateHideFromPoint {
 	
 	bool				accelerated;
 	bool				braking;
-	u8					accel_type;
+	U8					accel_type;
 	
 	float				distance;
 	
@@ -110,7 +110,7 @@ struct SStateDataMoveAroundPoint {
 
 	bool				accelerated;
 	bool				braking;
-	u8					accel_type;
+	U8					accel_type;
 	
 	SStateDataAction	action;
 

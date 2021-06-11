@@ -31,10 +31,10 @@ enum
 
 struct	R_constant_load
 {
-	u16						index;		// linear index (pixel)
-	u16						cls;		// element class
+	U16						index;		// linear index (pixel)
+	U16						cls;		// element class
 
-	R_constant_load() : index(u16(-1)), cls(u16(-1)) {};
+	R_constant_load() : index(U16(-1)), cls(U16(-1)) {};
 
 	inline BOOL					equal		(R_constant_load& C)
 	{

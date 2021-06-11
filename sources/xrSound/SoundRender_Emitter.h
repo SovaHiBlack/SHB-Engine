@@ -75,7 +75,7 @@ public:
 	virtual	const CSound_params* get_params				( )						{ return &p_source;										}
 
 	void						fill_block				(void*	ptr, u32 size);
-	void						fill_data				(u8*	ptr, u32 offset, u32 size);
+	void						fill_data				(U8*	ptr, u32 offset, u32 size);
 
 	float						priority				();
 	void						start					(ref_sound* _owner, BOOL _loop, float delay);

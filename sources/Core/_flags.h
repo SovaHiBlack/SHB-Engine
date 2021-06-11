@@ -105,6 +105,6 @@ public:
 };
 
 typedef _flags<U8>	Flags8;	//	typedef _flags<U8>	flags8;
-typedef _flags<u16>	Flags16;//	typedef _flags<u16>	flags16;
+typedef _flags<U16>	Flags16;//	typedef _flags<U16>	flags16;
 typedef _flags<u32>	Flags32;//	typedef _flags<u32>	flags32;
 typedef _flags<u64>	Flags64;//	typedef _flags<u64>	flags64;

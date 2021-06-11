@@ -92,7 +92,7 @@ class_<CScriptGameObject> &script_register_game_object1(class_<CScriptGameObject
 		.def("team",						&CScriptGameObject::Team)
 		.def("squad",						&CScriptGameObject::Squad)
 		.def("group",						&CScriptGameObject::Group)
-		.def("change_team",					(void (CScriptGameObject::*)(u8,u8,u8))(&CScriptGameObject::ChangeTeam))
+		.def("change_team",					(void (CScriptGameObject::*)(U8, U8, U8))(&CScriptGameObject::ChangeTeam))
 		.def("kill",						&CScriptGameObject::Kill)
 		.def("hit",							&CScriptGameObject::Hit)
 		.def("play_cycle",					(void (CScriptGameObject::*)(const char*))(&CScriptGameObject::play_cycle))

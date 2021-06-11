@@ -39,13 +39,13 @@ void pvInitializeStatics( )
 	}
 }
 
-u16 pvCompress(const Fvector3& vec)
+U16 pvCompress(const Fvector3& vec)
 {
 	// save copy
 	Fvector3 tmp = vec;
 
 	// input vector3 does not have to be unit length
-	u16 mVec = 0;
+	U16 mVec = 0;
 
 	if (negative(tmp.x))
 	{
@@ -102,7 +102,7 @@ u16 pvCompress(const Fvector3& vec)
 	return mVec;
 }
 
-void pvDecompress(Fvector3& vec, u16 mVec)
+void pvDecompress(Fvector3& vec, U16 mVec)
 {
 	// if we do a straightforward backward transform
 	// we will get points on the plane X0,Y0,Z0

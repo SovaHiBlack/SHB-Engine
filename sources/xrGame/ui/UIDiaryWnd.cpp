@@ -128,7 +128,7 @@ void CUIDiaryWnd::Init( )
 	RearrangeTabButtons(m_FilterTab, m_sign_places);
 }
 
-void CUIDiaryWnd::SendMessage(CUIWindow* pWnd, s16 msg, void* pData)
+void CUIDiaryWnd::SendMessage(CUIWindow* pWnd, S16 msg, void* pData)
 {
 	CUIWndCallback::OnEvent(pWnd, msg, pData);
 }

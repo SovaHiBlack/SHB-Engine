@@ -279,7 +279,7 @@ void CEntityCondition::UpdateCondition( )
 	clamp(m_fPsyHealth, 0.0f, m_fPsyHealthMax);
 }
 
-float CEntityCondition::HitOutfitEffect(float hit_power, ALife::EHitType hit_type, s16 element, float AP)
+float CEntityCondition::HitOutfitEffect(float hit_power, ALife::EHitType hit_type, S16 element, float AP)
 {
 	CInventoryOwner* pInvOwner = smart_cast<CInventoryOwner*>(m_object);
 	if (!pInvOwner)
@@ -527,7 +527,7 @@ bool CEntityCondition::IsLimping( ) const
 
 void CEntityCondition::save(CNetPacket& output_packet)
 {
-	u8 is_alive = (GetHealth( ) > 0.0f) ? 1 : 0;
+	U8 is_alive = (GetHealth( ) > 0.0f) ? 1 : 0;
 
 	output_packet.w_u8(is_alive);
 	if (is_alive)
@@ -537,7 +537,7 @@ void CEntityCondition::save(CNetPacket& output_packet)
 		save_data(m_fEntityMorale, output_packet);
 		save_data(m_fPsyHealth, output_packet);
 
-		output_packet.w_u8((u8) m_WoundVector.size( ));
+		output_packet.w_u8((U8) m_WoundVector.size( ));
 		for (WOUND_VECTOR_IT it = m_WoundVector.begin( ); m_WoundVector.end( ) != it; it++)
 		{
 			(*it)->save(output_packet);
@@ -549,7 +549,7 @@ void CEntityCondition::load(IReader& input_packet)
 {
 	m_bTimeValid = false;
 
-	u8 is_alive = input_packet.r_u8( );
+	U8 is_alive = input_packet.r_u8( );
 	if (is_alive)
 	{
 		load_data(m_fPower, input_packet);

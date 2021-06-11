@@ -1807,7 +1807,7 @@ void CActor::Check_for_AutoPickUp( )
 	return;
 }
 
-void CActor::SetHitInfo(CObject* who, CObject* weapon, s16 element, Fvector3 Pos, Fvector3 Dir)
+void CActor::SetHitInfo(CObject* who, CObject* weapon, S16 element, Fvector3 Pos, Fvector3 Dir)
 {
 	m_iLastHitterID = (who != NULL) ? who->ID( ) : u16(-1);
 	m_iLastHittingWeaponID = (weapon != NULL) ? weapon->ID( ) : u16(-1);
@@ -1822,7 +1822,7 @@ void CActor::OnPlayHeadShotParticle(CNetPacket P)
 {
 	Fvector3 HitDir;
 	Fvector3 HitPos;
-	s16	element = P.r_s16( );
+	S16	element = P.r_s16( );
 	P.r_dir(HitDir);
 	HitDir.invert( );
 	P.r_vec3(HitPos);

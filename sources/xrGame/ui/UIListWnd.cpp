@@ -76,8 +76,8 @@ void CUIListWnd::Init(float x, float y, float width, float height, float item_he
 	m_iRowNum = iFloor(height / m_iItemHeight);
 
 	m_ScrollBar->SetRange(0, 0);
-	m_ScrollBar->SetPageSize(s16(0));
-	m_ScrollBar->SetScrollPos(s16(m_iFirstShownIndex));
+	m_ScrollBar->SetPageSize(S16(0));
+	m_ScrollBar->SetScrollPos(S16(m_iFirstShownIndex));
 
 	m_ScrollBar->Show(false);
 	m_ScrollBar->Enable(false);
@@ -125,15 +125,15 @@ void CUIListWnd::RemoveItem(int index)
 	//обновить полосу прокрутки
 	if (m_ItemList.size( ) > 0)
 	{
-		m_ScrollBar->SetRange(0, s16(m_ItemList.size( ) - 1));
+		m_ScrollBar->SetRange(0, S16(m_ItemList.size( ) - 1));
 	}
 	else
 	{
 		m_ScrollBar->SetRange(0, 0);
 	}
 
-	m_ScrollBar->SetPageSize(s16((u32) m_iRowNum < m_ItemList.size( ) ? m_iRowNum : m_ItemList.size( )));
-	m_ScrollBar->SetScrollPos(s16(m_iFirstShownIndex));
+	m_ScrollBar->SetPageSize(S16((u32) m_iRowNum < m_ItemList.size( ) ? m_iRowNum : m_ItemList.size( )));
+	m_ScrollBar->SetScrollPos(S16(m_iFirstShownIndex));
 	m_ScrollBar->Refresh( );
 
 	//перенумеровать индексы заново
@@ -198,7 +198,7 @@ void CUIListWnd::RemoveAll( )
 	//обновить полосу прокрутки
 	m_ScrollBar->SetRange(0, 0);
 	m_ScrollBar->SetPageSize(0);
-	m_ScrollBar->SetScrollPos(s16(m_iFirstShownIndex));
+	m_ScrollBar->SetScrollPos(S16(m_iFirstShownIndex));
 
 	UpdateScrollBar( );
 }
@@ -252,7 +252,7 @@ void CUIListWnd::UpdateList( )
 
 //////////////////////////////////////////////////////////////////////////
 
-void CUIListWnd::SendMessage(CUIWindow* pWnd, s16 msg, void* pData)
+void CUIListWnd::SendMessage(CUIWindow* pWnd, S16 msg, void* pData)
 {
 	if (pWnd == m_ScrollBar)
 	{
@@ -575,7 +575,7 @@ void CUIListWnd::ActivateList(bool activity)
 
 void CUIListWnd::ScrollToBegin( )
 {
-	m_ScrollBar->SetScrollPos((s16) m_ScrollBar->GetMinRange( ));
+	m_ScrollBar->SetScrollPos((S16) m_ScrollBar->GetMinRange( ));
 	m_iFirstShownIndex = m_ScrollBar->GetScrollPos( );
 	UpdateList( );
 }

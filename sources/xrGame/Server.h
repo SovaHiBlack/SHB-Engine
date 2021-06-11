@@ -30,7 +30,7 @@ public:
 	game_PlayerState* ps;
 	struct
 	{
-		u8						m_maxPingWarnings;
+		U8						m_maxPingWarnings;
 		u32						m_dwLastMaxPingWarningTime;
 	}m_ping_warn;
 	struct
@@ -87,9 +87,9 @@ private:
 	typedef
 		CID_Generator<
 		u32,		// time identifier type
-		u8,			// compressed id type 
+		U8,			// compressed id type 
 		u16,		// id type
-		u8,			// block id type
+		U8,			// block id type
 		u16,		// chunk id type
 		0,			// min value
 		u16(-2),	// max value
@@ -138,7 +138,7 @@ public:
 	void					Process_event_destroy(CNetPacket& P, ClientID sender, u32 time, u16 ID, CNetPacket* pEPack);
 
 	xrClientData*			SelectBestClientToMigrateTo(CSE_Abstract* E, BOOL bForceAnother = FALSE);
-	void					SendConnectResult(IClient* CL, u8 res, u8 res1, char* ResultStr);
+	void					SendConnectResult(IClient* CL, U8 res, U8 res1, char* ResultStr);
 
 	void					AttachNewClient(IClient* CL);
 	virtual void			OnBuildVersionRespond(IClient* CL, CNetPacket& P);

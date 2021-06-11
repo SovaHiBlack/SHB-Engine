@@ -402,7 +402,7 @@ BOOL CRenderDevice::Paused()
 
 void CRenderDevice::OnWM_Activate(WPARAM wParam, LPARAM lParam)
 {
-	u16 fActive						= LOWORD(wParam);
+	U16 fActive						= LOWORD(wParam);
 	BOOL fMinimized					= (BOOL) HIWORD(wParam);
 	BOOL bActive					= ((fActive!=WA_INACTIVE) && (!fMinimized))?TRUE:FALSE;
 

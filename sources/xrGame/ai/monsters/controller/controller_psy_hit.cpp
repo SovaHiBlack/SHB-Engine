@@ -80,7 +80,7 @@ void CControllerPsyHit::deactivate()
 
 		Actor()->u_EventGen	(P, GEG_PLAYER_WEAPON_HIDE_STATE, Actor()->ID());
 		P.w_u32				(INV_STATE_BLOCK_ALL);
-		P.w_u8				(u8(false));
+		P.w_u8				(U8(false));
 		Actor()->u_EventSend(P);
 	}
 
@@ -235,7 +235,7 @@ void CControllerPsyHit::death_glide_start()
 	CNetPacket			P;
 	Actor()->u_EventGen	(P, GEG_PLAYER_WEAPON_HIDE_STATE, Actor()->ID());
 	P.w_u32				(INV_STATE_BLOCK_ALL);
-	P.w_u8				(u8(true));
+	P.w_u8				(U8(true));
 	Actor()->u_EventSend(P);
 	
 	m_blocked			= true;

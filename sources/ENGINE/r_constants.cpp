@@ -47,7 +47,7 @@ ref_constant R_constant_table::get	(shared_str& S)
 	}
 	return	0;
 }
-BOOL	R_constant_table::parse	(void* _desc, u16 destination)
+BOOL	R_constant_table::parse	(void* _desc, U16 destination)
 {
 	D3DXSHADER_CONSTANTTABLE* desc	= (D3DXSHADER_CONSTANTTABLE*) _desc;
 	D3DXSHADER_CONSTANTINFO* it		= (D3DXSHADER_CONSTANTINFO*) (LPBYTE(desc)+desc->ConstantInfo);
@@ -58,13 +58,13 @@ BOOL	R_constant_table::parse	(void* _desc, u16 destination)
 		const char* name		= (const char*) (ptr+it->Name);
 
 		// Type
-		u16		type		=	RC_float;
+		U16		type		=	RC_float;
 		if	(D3DXRS_BOOL == it->RegisterSet)	type	= RC_bool;
 		if	(D3DXRS_INT4 == it->RegisterSet)	type	= RC_int;
 
 		// Rindex,Rcount
-		u16		r_index		=	it->RegisterIndex;
-		u16		r_type		=	u16(-1);
+		U16		r_index		=	it->RegisterIndex;
+		U16		r_type		= U16(-1);
 
 		// TypeInfo + class
 		D3DXSHADER_TYPEINFO*	T	= (D3DXSHADER_TYPEINFO*)(ptr+it->TypeInfo);
@@ -127,7 +127,7 @@ BOOL	R_constant_table::parse	(void* _desc, u16 destination)
 							C->destination		=	RC_dest_sampler;
 							C->type				=	RC_sampler;
 							R_constant_load& L	=	C->samp;
-							L.index				=	u16(r_index	+ ( (destination&1)? 0 : D3DVERTEXTEXTURESAMPLER0 ));
+							L.index				= U16(r_index	+ ( (destination&1)? 0 : D3DVERTEXTEXTURESAMPLER0 ));
 							L.cls				=	RC_sampler	;
 							table.push_back		(C);
 						} else {

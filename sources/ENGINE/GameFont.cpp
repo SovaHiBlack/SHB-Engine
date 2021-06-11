@@ -279,7 +279,7 @@ void CGameFont::OnRender( )
 				for (int j = 0; j < len; j++)
 				{
 					Fvector3	l;
-					l			= IsMultibyte( ) ? GetCharTC(wsStr[1 + j]) : GetCharTC((u16) (U8) PS.string[j]);
+					l			= IsMultibyte( ) ? GetCharTC(wsStr[1 + j]) : GetCharTC((U16) (U8) PS.string[j]);
 
 					float scw	= l.z * g_current_font_scale.x;
 					float fTCWidth = l.z / vTS.x;
@@ -325,7 +325,7 @@ void CGameFont::OnRender( )
 	strings.clear_not_free		( );
 }
 
-u16 CGameFont::GetCutLengthPos(float fTargetWidth, const char* pszText)
+U16 CGameFont::GetCutLengthPos(float fTargetWidth, const char* pszText)
 {
 	VERIFY						(pszText);
 
@@ -334,9 +334,9 @@ u16 CGameFont::GetCutLengthPos(float fTargetWidth, const char* pszText)
 	float fCurWidth				= 0.0f;
 	float fDelta				= 0.0f;
 
-	u16 len						= mbhMulti2Wide(wsStr, wsPos, MAX_MB_CHARS, pszText);
+	U16 len						= mbhMulti2Wide(wsStr, wsPos, MAX_MB_CHARS, pszText);
 
-	for (u16 i = 1; i <= len; i++)
+	for (U16 i = 1; i <= len; i++)
 	{
 		fDelta					= GetCharTC(wsStr[i]).z - 2;
 
@@ -358,7 +358,7 @@ u16 CGameFont::GetCutLengthPos(float fTargetWidth, const char* pszText)
 	return						wsPos[i - 1];
 }
 
-u16 CGameFont::SplitByWidth(u16* puBuffer, u16 uBufferSize, float fTargetWidth, const char* pszText)
+U16 CGameFont::SplitByWidth(U16* puBuffer, U16 uBufferSize, float fTargetWidth, const char* pszText)
 {
 	VERIFY						(puBuffer && uBufferSize && pszText);
 
@@ -366,11 +366,11 @@ u16 CGameFont::SplitByWidth(u16* puBuffer, u16 uBufferSize, float fTargetWidth, 
 	wide_char wsPos				[MAX_MB_CHARS];
 	float fCurWidth				= 0.0f;
 	float fDelta				= 0.0f;
-	u16 nLines					= 0;
+	U16 nLines					= 0;
 
-	u16 len						= mbhMulti2Wide(wsStr, wsPos, MAX_MB_CHARS, pszText);
+	U16 len						= mbhMulti2Wide(wsStr, wsPos, MAX_MB_CHARS, pszText);
 
-	for (u16 i = 1; i <= len; i++)
+	for (U16 i = 1; i <= len; i++)
 	{
 		fDelta					= GetCharTC(wsStr[i]).z - 2;
 
@@ -467,7 +467,7 @@ void CGameFont::OutSkip(float val)
 float CGameFont::SizeOf_(const char cChar)
 {
 	VERIFY						(!IsMultibyte( ));
-	return						(GetCharTC((u16) (U8) cChar).z * vInterval.x);
+	return						(GetCharTC((U16) (U8) cChar).z * vInterval.x);
 }
 
 float CGameFont::SizeOf_(const char* s)
@@ -490,7 +490,7 @@ float CGameFont::SizeOf_(const char* s)
 	{
 		for (int j = 0; j < len; j++)
 		{
-			X					+= GetCharTC((u16) (U8) s[j]).z;
+			X					+= GetCharTC((U16) (U8) s[j]).z;
 		}
 	}
 

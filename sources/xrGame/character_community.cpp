@@ -11,7 +11,7 @@ COMMUNITY_DATA::COMMUNITY_DATA (CHARACTER_COMMUNITY_INDEX idx, CHARACTER_COMMUNI
 {
 	index = idx;
 	id = idn;
-	team = (u8)atoi(team_str);
+	team = (U8)atoi(team_str);
 }
 
 //////////////////////////////////////////////////////////////////////////
@@ -39,7 +39,7 @@ CHARACTER_COMMUNITY_ID		 CHARACTER_COMMUNITY::id			() const
 	return IndexToId(m_current_index);
 }
 
-u8							 CHARACTER_COMMUNITY::team			() const
+U8							 CHARACTER_COMMUNITY::team			() const
 {
 	return (*m_pItemDataVector)[m_current_index].team;
 }

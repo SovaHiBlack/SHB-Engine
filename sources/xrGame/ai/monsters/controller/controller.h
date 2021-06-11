@@ -13,7 +13,7 @@ class CControllerAura;
 class CController : public CBaseMonster {
 	typedef		CBaseMonster	inherited;
 
-	u8					m_max_controlled_number;
+	U8					m_max_controlled_number;
 	ref_sound			control_start_sound;		// звук, который играется в голове у актера
 	ref_sound			control_hit_sound;			// звук, который играется в голове у актера
 

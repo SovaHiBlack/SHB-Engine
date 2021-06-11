@@ -1,15 +1,12 @@
 #pragma once
 
 // Type defs
-using S8 = signed char;
-using U8 = unsigned char;
+using S8 = signed char;				// s8
+using U8 = unsigned char;			// u8
 
-typedef unsigned char		u8;
-
-using S16 = signed short;
+using S16 = signed short;			// s16
 using U16 = unsigned short;
 
-typedef signed short		s16;
 typedef unsigned short		u16;
 
 using S32 = signed int;

@@ -1038,7 +1038,7 @@ public:
 		u32				value2;
 
 		sscanf(param2, "%u", &value2);
-		monster->set_show_debug_info(u8(value2));
+		monster->set_show_debug_info(U8(value2));
 	}
 };
 

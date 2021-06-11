@@ -126,7 +126,7 @@ void DBG_DrawLine(const Fvector3& p0, const Fvector3& p1, u32 c);
 void DBG_DrawAABB(const Fvector3& center, const Fvector3& AABB, u32 c);
 void DBG_DrawOBB(const Fmatrix& m, const Fvector3 h, u32 c);
 void DBG_DrawPoint(const Fvector3& p, float size, u32 c);
-void DBG_DrawMatrix(const Fmatrix& m, float size, u8 a = 255);
+void DBG_DrawMatrix(const Fmatrix& m, float size, U8 a = 255);
 void DBG_DrawRotationX(const Fmatrix& m, float ang0, float ang1, float size, u32 ac, bool solid = false, u32 tessel = 7);
 void DBG_DrawRotationY(const Fmatrix& m, float ang0, float ang1, float size, u32 ac, bool solid = false, u32 tessel = 7);
 void DBG_DrawRotationZ(const Fmatrix& m, float ang0, float ang1, float size, u32 ac, bool solid = false, u32 tessel = 7);

@@ -153,7 +153,7 @@ void CBaseMonster::Die(CObject* who)
 		sound( ).play(MonsterSound::eMonsterSoundDie);
 	}
 
-	monster_squad( ).remove_member(( u8) g_Team( ), ( u8) g_Squad( ), ( u8) g_Group( ), this);
+	monster_squad( ).remove_member((U8) g_Team( ), (U8) g_Squad( ), (U8) g_Group( ), this);
 
 	if (m_controlled)
 	{
@@ -184,7 +184,7 @@ void CBaseMonster::Hit(SHit* pHDS)
 	inherited::Hit(pHDS);
 }
 
-void CBaseMonster::PHHit(float P, Fvector3& dir, CObject* who, s16 element, Fvector3 p_in_object_space, float impulse, ALife::EHitType hit_type /*=ALife::eHitTypeWound*/)
+void CBaseMonster::PHHit(float P, Fvector3& dir, CObject* who, S16 element, Fvector3 p_in_object_space, float impulse, ALife::EHitType hit_type /*=ALife::eHitTypeWound*/)
 {
 	m_pPhysics_support->in_Hit(P, dir, who, element, p_in_object_space, impulse, hit_type);
 }
@@ -243,9 +243,9 @@ void CBaseMonster::ChangeTeam(int team, int squad, int group)
 #endif // def DEBUG
 
 	// remove from current team
-	monster_squad( ).remove_member(( u8) g_Team( ), ( u8) g_Squad( ), ( u8) g_Group( ), this);
+	monster_squad( ).remove_member((U8) g_Team( ), (U8) g_Squad( ), (U8) g_Group( ), this);
 	inherited::ChangeTeam(team, squad, group);
-	monster_squad( ).register_member(( u8) g_Team( ), ( u8) g_Squad( ), ( u8) g_Group( ), this);
+	monster_squad( ).register_member((U8) g_Team( ), (U8) g_Squad( ), (U8) g_Group( ), this);
 }
 
 void CBaseMonster::SetTurnAnimation(bool turn_left)
@@ -269,7 +269,7 @@ void CBaseMonster::set_state_sound(u32 type, bool once)
 		else
 		{
 			// get count of monsters in squad
-			u8 objects_count = monster_squad( ).get_squad(this)->get_count(this, 20.f);
+			U8 objects_count = monster_squad( ).get_squad(this)->get_count(this, 20.0f);
 
 			// include myself
 			objects_count++;

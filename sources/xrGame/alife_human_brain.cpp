@@ -52,10 +52,10 @@ CALifeHumanBrain::CALifeHumanBrain			(object_type *object) : inherited(object)
 	R_ASSERT2						((iFloor(ai().ef_storage().m_pfEquipmentType->ffGetMaxResultValue() + .5f) == 5) && (iFloor(ai().ef_storage().m_pfMainWeaponType->ffGetMaxResultValue() + .5f) == 4),"Recompile Level Editor and xrAI and rebuild file \"game.spawn\"!");
 
 	for (int i=0, n=m_cpEquipmentPreferences.size(); i<n; ++i)
-		m_cpEquipmentPreferences[i]	= u8(::Random.randI(3));
+		m_cpEquipmentPreferences[i]	= U8(::Random.randI(3));
 
 	for (int i=0, n=m_cpMainWeaponPreferences.size(); i<n; ++i)
-		m_cpMainWeaponPreferences[i]= u8(::Random.randI(3));
+		m_cpMainWeaponPreferences[i]= U8(::Random.randI(3));
 }
 
 CALifeHumanBrain::~CALifeHumanBrain			()

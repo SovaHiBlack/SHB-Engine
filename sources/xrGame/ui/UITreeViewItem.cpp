@@ -256,7 +256,7 @@ void CUITreeViewItem::SetText(const char* str)
 	inherited::SetText(s.c_str( ));
 }
 
-void CUITreeViewItem::SendMessage(CUIWindow* pWnd, s16 msg, void* pData)
+void CUITreeViewItem::SendMessage(CUIWindow* pWnd, S16 msg, void* pData)
 {
 	static CUITreeViewItem* pPrevFocusedItem = nullptr;
 

@@ -144,7 +144,8 @@ struct CORE_API xr_shortcut{
 			U8	 	key;
 			Flags8	ext;
 		};
-		u16		hotkey;
+
+		U16		hotkey;
 	};
 				xr_shortcut		(U8 k, BOOL a, BOOL c, BOOL s):key(k){ext.assign(U8((a?flAlt:0)|(c?flCtrl:0)|(s?flShift:0)));}
 				xr_shortcut		(){ext.zero();key=0;}

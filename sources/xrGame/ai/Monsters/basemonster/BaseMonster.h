@@ -100,9 +100,9 @@ public:
 		return TRUE;
 	}
 	virtual void						Die												(CObject* who);
-	virtual void						HitSignal										(float amount, Fvector3& vLocalDir, CObject* who, s16 element);
+	virtual void						HitSignal										(float amount, Fvector3& vLocalDir, CObject* who, S16 element);
 	virtual void						Hit												(SHit* pHDS);
-	virtual void						PHHit											(float P, Fvector3& dir, CObject* who, s16 element, Fvector3 p_in_object_space, float impulse, ALife::EHitType hit_type = ALife::eHitTypeWound);
+	virtual void						PHHit											(float P, Fvector3& dir, CObject* who, S16 element, Fvector3 p_in_object_space, float impulse, ALife::EHitType hit_type = ALife::eHitTypeWound);
 	virtual void						SelectAnimation									(const Fvector3& _view, const Fvector3& _move, float speed);
 
 	virtual void						Load											(const char* section);
@@ -552,8 +552,8 @@ public:
 		{ }
 	};
 
-	u8																					m_show_debug_info;	// 0 - none, 1 - first column, 2 - second column
-	void								set_show_debug_info								(u8 show = 1)
+	U8																					m_show_debug_info;	// 0 - none, 1 - first column, 2 - second column
+	void								set_show_debug_info								(U8 show = 1)
 	{
 		m_show_debug_info = show;
 	}

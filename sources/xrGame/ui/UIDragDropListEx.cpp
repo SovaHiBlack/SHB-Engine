@@ -80,7 +80,7 @@ bool CUIDragDropListEx::GetCustomPlacement( )
 	return !!m_flags.test(flCustomPlacement);
 }
 
-void CUIDragDropListEx::SendMessage(CUIWindow* pWnd, s16 msg, void* pData)
+void CUIDragDropListEx::SendMessage(CUIWindow* pWnd, S16 msg, void* pData)
 {
 	CUIWndCallback::OnEvent(pWnd, msg, pData);
 }

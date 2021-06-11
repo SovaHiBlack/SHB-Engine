@@ -45,7 +45,7 @@ void CUISleepWnd::Init( )
 	ResetTime( );
 }
 
-void CUISleepWnd::SendMessage(CUIWindow* pWnd, s16 msg, void* pData)
+void CUISleepWnd::SendMessage(CUIWindow* pWnd, S16 msg, void* pData)
 {
 	const S8 deltaMinutes = 30;
 
@@ -122,7 +122,7 @@ void CUISleepWnd::ModifyRestTime(S8 dHours, S8 dMinutes)
 	SetRestTime(m_Hours, m_Minutes);
 }
 
-void CUISleepWnd::SetRestTime(u8 hours, u8 minutes)
+void CUISleepWnd::SetRestTime(U8 hours, U8 minutes)
 {
 	string32 buf;
 	static S8 _h = pSettings->r_s8("actor", "max_sleep_hours");

@@ -213,10 +213,10 @@ public:
 
 	virtual void						Die(CObject* who);
 	virtual void						Hit(SHit* pHDS);
-	virtual void						PHHit(float P, Fvector3& dir, CObject* who, s16 element, Fvector3 p_in_object_space, float impulse, ALife::EHitType hit_type /* = ALife::eHitTypeWound */);
-	virtual void						HitSignal(float P, Fvector3& vLocalDir, CObject* who, s16 element);
+	virtual void						PHHit(float P, Fvector3& dir, CObject* who, S16 element, Fvector3 p_in_object_space, float impulse, ALife::EHitType hit_type /* = ALife::eHitTypeWound */);
+	virtual void						HitSignal(float P, Fvector3& vLocalDir, CObject* who, S16 element);
 	void						HitSector(CObject* who, CObject* weapon);
-	void						HitMark(float P, Fvector3 dir, CObject* who, s16 element, Fvector3 position_in_bone_space, float impulse, ALife::EHitType hit_type);
+	void						HitMark(float P, Fvector3 dir, CObject* who, S16 element, Fvector3 position_in_bone_space, float impulse, ALife::EHitType hit_type);
 
 	virtual float						GetMass( );
 	virtual float						Radius( ) const;
@@ -772,7 +772,7 @@ public:
 protected:
 	u16							m_iLastHitterID;
 	u16							m_iLastHittingWeaponID;
-	s16							m_s16LastHittedElement;
+	S16							m_s16LastHittedElement;
 	Fvector3						m_vLastHitDir;
 	Fvector3						m_vLastHitPos;
 	float						m_fLastHealth;
@@ -782,7 +782,7 @@ protected:
 	virtual bool			Check_for_BackStab_Bone(u16 element);
 
 public:
-	virtual void				SetHitInfo(CObject* who, CObject* weapon, s16 element, Fvector3 Pos, Fvector3 Dir);
+	virtual void				SetHitInfo(CObject* who, CObject* weapon, S16 element, Fvector3 Pos, Fvector3 Dir);
 
 	virtual bool				InventoryAllowSprint( );
 	virtual void				OnNextWeaponSlot( );

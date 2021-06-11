@@ -29,7 +29,7 @@ private:
 
 	struct DemoHeaderStruct
 	{
-		u8			bServerClient;
+		U8			bServerClient;
 		char		Head[31];
 		shared_str		ServerOptions;
 //		string64		LevelName;
@@ -64,7 +64,7 @@ private:
 
 	xrCriticalSection			DemoCS;
 	u32							m_dwStoredDemoDataSize;
-	u8* m_pStoredDemoData;
+	U8* m_pStoredDemoData;
 
 	void						Demo_PrepareToStore( );
 	void						Demo_StoreData(void* data, u32 size, DEMO_CHUNK DataType);

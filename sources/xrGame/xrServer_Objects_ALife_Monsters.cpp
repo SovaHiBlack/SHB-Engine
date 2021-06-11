@@ -1069,17 +1069,17 @@ void CSE_ALifeCreatureAbstract::UPDATE_Read(CNetPacket& tNetPacket)
 	tNetPacket.r_u8(s_group);
 }
 
-u8 CSE_ALifeCreatureAbstract::g_team( )
+U8 CSE_ALifeCreatureAbstract::g_team( )
 {
 	return s_team;
 }
 
-u8 CSE_ALifeCreatureAbstract::g_squad( )
+U8 CSE_ALifeCreatureAbstract::g_squad( )
 {
 	return s_squad;
 }
 
-u8 CSE_ALifeCreatureAbstract::g_group( )
+U8 CSE_ALifeCreatureAbstract::g_group( )
 {
 	return s_group;
 }
@@ -1404,7 +1404,7 @@ void CSE_ALifeCreatureActor::UPDATE_Read(CNetPacket& tNetPacket)
 
 	if (m_u16NumItems == 1)
 	{
-		tNetPacket.r_u8(*((u8*) &(m_AliveState.enabled)));
+		tNetPacket.r_u8(*((U8*) &(m_AliveState.enabled)));
 
 		tNetPacket.r_vec3(m_AliveState.angular_vel);
 		tNetPacket.r_vec3(m_AliveState.linear_vel);
