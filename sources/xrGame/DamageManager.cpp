@@ -59,7 +59,7 @@ void C_DamageManager::reload(const char* section, const char* line, CIniFile* in
 
 void C_DamageManager::HitScale(const int element, float& hit_scale, float& wound_scale, bool aim_bullet)
 {
-	if (BI_NONE == u16(element))
+	if (BI_NONE == U16(element))
 	{	// считаем что параметры для BI_NONE заданы как 1.0f
 		hit_scale							= 1.0f * m_default_hit_factor;
 		wound_scale							= 1.0f * m_default_wound_factor;
@@ -73,17 +73,17 @@ void C_DamageManager::HitScale(const int element, float& hit_scale, float& wound
 	float scale;
 	if (aim_bullet)
 	{
-		scale								= V->LL_GetBoneInstance(u16(element)).get_param(3);
+		scale								= V->LL_GetBoneInstance(U16(element)).get_param(3);
 	}
 	else
 	{
-		scale								= V->LL_GetBoneInstance(u16(element)).get_param(0);
+		scale								= V->LL_GetBoneInstance(U16(element)).get_param(0);
 	}
 
 	hit_scale								= scale;
 
 	// get wound scale
-	scale									= V->LL_GetBoneInstance(u16(element)).get_param(2);
+	scale									= V->LL_GetBoneInstance(U16(element)).get_param(2);
 	wound_scale								= scale;
 }
 
@@ -100,7 +100,7 @@ void C_DamageManager::load_section(const char* section, CIniFile* ini)
 			VERIFY							(m_object);
 			int bone						= kinematics->LL_BoneID(i->first);
 			R_ASSERT2						(BI_NONE != bone, *(*i).first);
-			CBoneInstance& bone_instance	= kinematics->LL_GetBoneInstance(u16(bone));
+			CBoneInstance& bone_instance	= kinematics->LL_GetBoneInstance(U16(bone));
 			bone_instance.set_param			(0, (float) atof(_GetItem(*(*i).second, 0, buffer)));
 			bone_instance.set_param			(1, (float) atoi(_GetItem(*(*i).second, 1, buffer)));
 			bone_instance.set_param			(2, (float) atof(_GetItem(*(*i).second, 2, buffer)));
@@ -127,7 +127,7 @@ void C_DamageManager::init_bones(const char* section, CIniFile* ini)
 {
 	CKinematics* kinematics					= smart_cast<CKinematics*>(m_object->Visual( ));
 	VERIFY									(kinematics);
-	for (u16 i = 0; i < kinematics->LL_BoneCount( ); i++)
+	for (U16 i = 0; i < kinematics->LL_BoneCount( ); i++)
 	{
 		CBoneInstance& bone_instance		= kinematics->LL_GetBoneInstance(i);
 		bone_instance.set_param				(0, m_default_hit_factor);

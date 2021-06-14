@@ -373,7 +373,7 @@ void CInventoryOwner::spawn_supplies( )
 		CSE_Abstract* abstract = Level( ).spawn_item("device_pda", game_object->Position( ), game_object->ai_location( ).level_vertex_id( ), game_object->ID( ), true);
 		CSE_ALifeItemPDA* pda = smart_cast<CSE_ALifeItemPDA*>(abstract);
 		R_ASSERT(pda);
-		pda->m_original_owner = (u16) game_object->ID( );
+		pda->m_original_owner = (U16) game_object->ID( );
 		CNetPacket P;
 		abstract->Spawn_Write(P, TRUE);
 		Level( ).Send(P, net_flags(TRUE));
@@ -396,7 +396,7 @@ void CInventoryOwner::LostPdaContact(CInventoryOwner* pInvOwner)
 
 //////////////////////////////////////////////////////////////////////////
 //для работы с relation system
-u16 CInventoryOwner::object_id( )  const
+U16 CInventoryOwner::object_id( ) const
 {
 	return smart_cast<const CGameObject*>(this)->ID( );
 }

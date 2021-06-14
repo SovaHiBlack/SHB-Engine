@@ -2,7 +2,7 @@
 
 struct SHit
 {
-	SHit(float Power, Fvector3& dir, CObject* who, u16 element, Fvector3 p_in_object_space, float impulse, ALife::EHitType hit_type, float ap = 0.0f, bool AimBullet = false);
+	SHit(float Power, Fvector3& dir, CObject* who, U16 element, Fvector3 p_in_object_space, float impulse, ALife::EHitType hit_type, float ap = 0.0f, bool AimBullet = false);
 	SHit( );
 	bool				is_valide( ) const;
 	void				invalidate( );
@@ -21,7 +21,7 @@ struct SHit
 		VERIFY(is_valide( ));
 		return who;
 	}
-	inline			u16			bone( ) const
+	inline			U16			bone( ) const
 	{
 		VERIFY(is_valide( ));
 		return boneID;
@@ -46,19 +46,19 @@ struct SHit
 	void				Write_Packet(CNetPacket& P);
 	void				Write_Packet_Cont(CNetPacket& P);
 
-	void				GenHeader(u16 PacketType, u16 ID);
-//private:
+	void				GenHeader(U16 PacketType, U16 ID);
+
 	//GE_HIT
 	u32					Time;
-	u16					PACKET_TYPE;
-	u16					DestID;
+	U16					PACKET_TYPE;
+	U16					DestID;
 
 	float				power;
 	Fvector3				dir;
 	CObject* who;
-	u16					whoID;
-	u16					weaponID;
-	u16					boneID;
+	U16					whoID;
+	U16					weaponID;
+	U16					boneID;
 	Fvector3				p_in_bone_space;
 	float				impulse;
 	ALife::EHitType		hit_type;

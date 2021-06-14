@@ -31,7 +31,7 @@ public:
 	inline		const xr_vector<CAttachableItem*> &attached_objects	()		const;
 
 	CAttachableItem*		attachedItem		(CLASS_ID clsid)		const;
-	CAttachableItem*		attachedItem		(u16 id)				const;
+	CAttachableItem*		attachedItem		(U16 id)				const;
 	CAttachableItem*		attachedItem		(shared_str& section)	const;
 };
 

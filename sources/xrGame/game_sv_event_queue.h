@@ -4,7 +4,7 @@
 
 struct GameEvent
 {
-	u16			type;
+	U16			type;
 	u32			time;
 	ClientID	sender;
 	CNetPacket	P;
@@ -21,7 +21,7 @@ public:
 	~GameEventQueue();
 
 	GameEvent*			Create	();
-	GameEvent*			Create	(CNetPacket& P, u16 type, u32 time, ClientID clientID);
+	GameEvent*			Create	(CNetPacket& P, U16 type, u32 time, ClientID clientID);
 	GameEvent*			Retreive();
 	void				Release	();
 };

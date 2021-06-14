@@ -304,7 +304,7 @@ void CControlJump::stop()
 // Get target point in world space
 Fvector3 CControlJump::get_target(CObject *obj)
 {
-	u16 bone_id			= smart_cast<CKinematics*>(obj->Visual())->LL_GetBoneRoot			();
+	U16 bone_id			= smart_cast<CKinematics*>(obj->Visual())->LL_GetBoneRoot			();
 	CBoneInstance &bone = smart_cast<CKinematics*>(obj->Visual())->LL_GetBoneInstance		(bone_id);
 
 	Fmatrix	global_transform;

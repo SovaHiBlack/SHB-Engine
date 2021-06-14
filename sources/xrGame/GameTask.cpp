@@ -20,7 +20,7 @@
 #include "ui/UITextureMaster.h"//
 
 ALife::_STORY_ID	story_id(const char* story_id);
-u16					storyId2GameId(ALife::_STORY_ID);
+U16					storyId2GameId(ALife::_STORY_ID);
 
 using namespace luabind;
 
@@ -41,12 +41,12 @@ ALife::_STORY_ID	story_id(const char* story_id)
 	return ALife::_STORY_ID(res);
 }
 
-u16 storyId2GameId(ALife::_STORY_ID id)
+U16 storyId2GameId(ALife::_STORY_ID id)
 {
 	if (ai( ).get_alife( ))
 	{
 		CSE_ALifeDynamicObject* so = ai( ).alife( ).story_objects( ).object(id, true);
-		return (so) ? so->ID : u16(-1);
+		return (so) ? so->ID : U16(-1);
 	}
 	else
 	{
@@ -61,7 +61,7 @@ u16 storyId2GameId(ALife::_STORY_ID id)
 			}
 		}
 
-		return u16(-1);
+		return U16(-1);
 	}
 }
 
@@ -168,7 +168,7 @@ void CGameTask::Load(const TASK_ID& id)
 		b2 = (NULL == object_story_id);
 		VERIFY3(b1 == b2, "check [map_location_type] and [object_story_id] fields in objective definition for: ", *objective.description);
 
-		objective.object_id = u16(-1);
+		objective.object_id = U16(-1);
 
 		objective.map_hint = g_gameTaskXml->ReadAttrib(l_root, "map_location_type", 0, "hint", NULL);
 
@@ -289,7 +289,7 @@ SGameTaskObjective::SGameTaskObjective(CGameTask* parent, int _idx)
 	:description(NULL),
 	article_id(NULL),
 	map_location(NULL),
-	object_id(u16(-1)),
+	object_id(U16(-1)),
 	task_state(eTaskStateInProgress),
 	def_location_enabled(true),
 	parent(parent),
@@ -300,7 +300,7 @@ SGameTaskObjective::SGameTaskObjective( )
 	:description(NULL),
 	article_id(NULL),
 	map_location(NULL),
-	object_id(u16(-1)),
+	object_id(U16(-1)),
 	task_state(eTaskStateInProgress),
 	def_location_enabled(true),
 	parent(NULL),
@@ -452,7 +452,7 @@ void SGameTaskObjective::SetMapLocation_script(const char* _str)
 	map_location = _str;
 }
 
-void SGameTaskObjective::SetObjectID_script(u16 id)
+void SGameTaskObjective::SetObjectID_script(U16 id)
 {
 	object_id = id;
 }

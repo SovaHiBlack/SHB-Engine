@@ -147,7 +147,7 @@ struct profile_timer_script {
 	inline		float					time					() const
 	{
 		FPU::m64r				();
-		float					result = (float(double(m_accumulator)/double(CPU::clk_per_second))*1000000.f);
+		float					result = (float(F64(m_accumulator)/ F64(CPU::clk_per_second))*1000000.f);
 		FPU::m24r				();
 		return					(result);
 	}

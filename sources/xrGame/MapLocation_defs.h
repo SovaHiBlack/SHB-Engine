@@ -7,10 +7,10 @@ class CMapLocation;
 struct SLocationKey : public IPureSerializeObject<IReader, IWriter>, public IPureDestroyableObject
 {
 	shared_str		spot_type;
-	u16				object_id;
+	U16				object_id;
 	CMapLocation* location;
 	bool			actual;
-	SLocationKey(shared_str s, u16 id) :spot_type(s), object_id(id), location(NULL), actual(true)
+	SLocationKey(shared_str s, U16 id) :spot_type(s), object_id(id), location(NULL), actual(true)
 	{ }
 	SLocationKey( ) : spot_type(NULL), object_id(0), location(NULL), actual(true)
 	{ }
@@ -29,7 +29,7 @@ struct SLocationKey : public IPureSerializeObject<IReader, IWriter>, public IPur
 using Locations = xr_vector<SLocationKey>;
 using Locations_it = Locations::iterator;
 
-struct CMapLocationRegistry : public CALifeAbstractRegistry<u16, Locations>
+struct CMapLocationRegistry : public CALifeAbstractRegistry<U16, Locations>
 {
 	virtual void save(IWriter& stream);
 };

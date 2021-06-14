@@ -229,7 +229,7 @@ void CInventoryItem::UpdateCL()
 
 }
 
-void CInventoryItem::OnEvent (CNetPacket& P, u16 type)
+void CInventoryItem::OnEvent (CNetPacket& P, U16 type)
 {
 	switch (type)
 	{
@@ -299,7 +299,7 @@ bool CInventoryItem::Detach(const char* item_section_name, bool b_spawn_item)
 		D->s_gameid			= U8(GameID());
 		D->s_RP				=	0xff;
 		D->ID				=	0xffff;
-		D->ID_Parent		=	u16(object().H_Parent()->ID());
+		D->ID_Parent		= U16(object().H_Parent()->ID());
 		D->ID_Phantom		=	0xffff;
 		D->o_Position		=	object().Position();
 		D->s_flags.assign	(M_SPAWN_OBJECT_LOCAL);
@@ -837,8 +837,8 @@ void CInventoryItem::UpdateXForm	()
 	//		boneL = boneR2;
 #pragma todo("TO ALL: serious performance problem")
 	V->CalculateBones	();
-	Fmatrix& mL			= V->LL_GetTransform(u16(boneL));
-	Fmatrix& mR			= V->LL_GetTransform(u16(boneR));
+	Fmatrix& mL			= V->LL_GetTransform(U16(boneL));
+	Fmatrix& mR			= V->LL_GetTransform(U16(boneR));
 	// Calculate
 	Fmatrix			mRes;
 	Fvector3			R;
@@ -1013,7 +1013,7 @@ BOOL CInventoryItem::IsInvalid() const
 	return object().getDestroy() || GetDropManual();
 }
 
-u16 CInventoryItem::bone_count_to_synchronize	() const
+U16 CInventoryItem::bone_count_to_synchronize	() const
 {
 	return 0;
 }

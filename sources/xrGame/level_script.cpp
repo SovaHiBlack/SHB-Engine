@@ -218,7 +218,7 @@ Fvector3 vertex_position(u32 level_vertex_id)
 	return ai( ).level_graph( ).vertex_position(level_vertex_id);
 }
 
-void map_add_object_spot(u16 id, const char* spot_type, const char* text)
+void map_add_object_spot(U16 id, const char* spot_type, const char* text)
 {
 	CMapLocation* ml = Level( ).MapManager( ).AddMapLocation(spot_type, id);
 	if (xr_strlen(text))
@@ -227,7 +227,7 @@ void map_add_object_spot(u16 id, const char* spot_type, const char* text)
 	}
 }
 
-void map_add_object_spot_ser(u16 id, const char* spot_type, const char* text)
+void map_add_object_spot_ser(U16 id, const char* spot_type, const char* text)
 {
 	CMapLocation* ml = Level( ).MapManager( ).AddMapLocation(spot_type, id);
 	if (xr_strlen(text))
@@ -238,7 +238,7 @@ void map_add_object_spot_ser(u16 id, const char* spot_type, const char* text)
 	ml->SetSerializable(true);
 }
 
-void map_change_spot_hint(u16 id, const char* spot_type, const char* text)
+void map_change_spot_hint(U16 id, const char* spot_type, const char* text)
 {
 	CMapLocation* ml = Level( ).MapManager( ).GetMapLocation(spot_type, id);
 	if (!ml)
@@ -249,12 +249,12 @@ void map_change_spot_hint(u16 id, const char* spot_type, const char* text)
 	ml->SetHint(text);
 }
 
-void map_remove_object_spot(u16 id, const char* spot_type)
+void map_remove_object_spot(U16 id, const char* spot_type)
 {
 	Level( ).MapManager( ).RemoveMapLocation(spot_type, id);
 }
 
-u16 map_has_object_spot(u16 id, const char* spot_type)
+U16 map_has_object_spot(U16 id, const char* spot_type)
 {
 	return Level( ).MapManager( ).HasMapLocation(spot_type, id);
 }
@@ -406,7 +406,7 @@ void enable_input( )
 
 void spawn_phantom(const Fvector3& position)
 {
-	Level( ).spawn_item("m_phantom", position, u32(-1), u16(-1), false);
+	Level( ).spawn_item("m_phantom", position, u32(-1), U16(-1), false);
 }
 
 Fbox3 get_bounding_volume( )
@@ -506,8 +506,8 @@ int get_actor_points(const char* sect)
 }
 
 extern int get_actor_ranking( );
-extern void add_human_to_top_list(u16 id);
-extern void remove_human_from_top_list(u16 id);
+extern void add_human_to_top_list(U16 id);
+extern void remove_human_from_top_list(U16 id);
 
 void add_complex_effector(const char* section, int id)
 {
@@ -561,21 +561,21 @@ int g_community_goodwill(const char* _community, int _entity_id)
 	CHARACTER_COMMUNITY c;
 	c.set(_community);
 
-	return RELATION_REGISTRY( ).GetCommunityGoodwill(c.index( ), u16(_entity_id));
+	return RELATION_REGISTRY( ).GetCommunityGoodwill(c.index( ), U16(_entity_id));
 }
 
 void g_set_community_goodwill(const char* _community, int _entity_id, int val)
 {
 	CHARACTER_COMMUNITY	c;
 	c.set(_community);
-	RELATION_REGISTRY( ).SetCommunityGoodwill(c.index( ), u16(_entity_id), val);
+	RELATION_REGISTRY( ).SetCommunityGoodwill(c.index( ), U16(_entity_id), val);
 }
 
 void g_change_community_goodwill(const char* _community, int _entity_id, int val)
 {
 	CHARACTER_COMMUNITY	c;
 	c.set(_community);
-	RELATION_REGISTRY( ).ChangeCommunityGoodwill(c.index( ), u16(_entity_id), val);
+	RELATION_REGISTRY( ).ChangeCommunityGoodwill(c.index( ), U16(_entity_id), val);
 }
 
 #pragma optimize("s",on)

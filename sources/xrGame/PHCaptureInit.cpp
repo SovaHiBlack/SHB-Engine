@@ -79,7 +79,8 @@ CPHCapture::CPHCapture(CPHCharacter* a_character, CPHShellHolder* a_taget_object
 		b_failed = true;
 		return;
 	}
-	u16 capture_bone_id = p_kinematics->LL_BoneID(ini->r_string("capture", "bone"));
+
+	U16 capture_bone_id = p_kinematics->LL_BoneID(ini->r_string("capture", "bone"));
 	R_ASSERT2(capture_bone_id != BI_NONE, "wrong capture bone");
 	m_capture_bone = &p_kinematics->LL_GetBoneInstance(capture_bone_id);
 
@@ -89,7 +90,7 @@ CPHCapture::CPHCapture(CPHCharacter* a_character, CPHShellHolder* a_taget_object
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////
-CPHCapture::CPHCapture(CPHCharacter* a_character, CPHShellHolder* a_taget_object, u16 a_taget_element)
+CPHCapture::CPHCapture(CPHCharacter* a_character, CPHShellHolder* a_taget_object, U16 a_taget_element)
 {
 	CPHUpdateObject::Activate( );
 	m_joint = NULL;
@@ -157,19 +158,19 @@ CPHCapture::CPHCapture(CPHCharacter* a_character, CPHShellHolder* a_taget_object
 
 	if (!ini->section_exist("capture"))
 	{
-		m_taget_object = NULL;
+		m_taget_object = nullptr;
 		b_failed = true;
 		return;
 	}
 
-	u16 capture_bone_id = p_kinematics->LL_BoneID(ini->r_string("capture", "bone"));
+	U16 capture_bone_id = p_kinematics->LL_BoneID(ini->r_string("capture", "bone"));
 	R_ASSERT2(capture_bone_id != BI_NONE, "wrong capture bone");
 	m_capture_bone = &p_kinematics->LL_GetBoneInstance(capture_bone_id);
 
 	IRender_Visual* V = m_taget_object->Visual( );
 	if (!V)
 	{
-		m_taget_object = NULL;
+		m_taget_object = nullptr;
 		b_failed = true;
 		return;
 	}

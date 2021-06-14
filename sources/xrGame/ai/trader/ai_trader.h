@@ -68,7 +68,7 @@ public:
 	virtual void		g_WeaponBones			(int &L, int &R1, int &R2);
 	virtual float		ffGetFov				()	const {return 150.f;}
 	virtual float		ffGetRange				()	const {return 30.f;}
-	virtual void		OnEvent					(CNetPacket& P, u16 type);
+	virtual void		OnEvent					(CNetPacket& P, U16 type);
 	virtual void		feel_touch_new			(CObject* O);
 	virtual void		DropItemSendMessage		(CObject *O);
 	virtual void		shedule_Update			(u32 dt);
@@ -76,8 +76,8 @@ public:
 	virtual BOOL		UsedAI_Locations		();
 
 	///////////////////////////////////////////////////////////////////////
-	virtual u16					PHGetSyncItemsNumber	()			{return inherited ::PHGetSyncItemsNumber();}
-	virtual CPHSynchronize*		PHGetSyncItem			(u16 item)	{return inherited ::PHGetSyncItem(item);}
+	virtual U16					PHGetSyncItemsNumber	()			{return inherited ::PHGetSyncItemsNumber();}
+	virtual CPHSynchronize*		PHGetSyncItem			(U16 item)	{return inherited ::PHGetSyncItem(item);}
 	virtual void				PHUnFreeze				()			{return inherited ::PHUnFreeze();}
 	virtual void				PHFreeze				()			{return inherited ::PHFreeze();}
 	///////////////////////////////////////////////////////////////////////

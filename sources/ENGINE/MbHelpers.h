@@ -2,9 +2,9 @@
 
 #define MAX_MB_CHARS 4096
 
-using wide_char = unsigned short;
+using wide_char = U16;
 
-unsigned short mbhMulti2Wide(wide_char* WideStr, wide_char* WidePos, const unsigned short WideStrSize, const char* MultiStr);
+unsigned short mbhMulti2Wide(wide_char* WideStr, wide_char* WidePos, const U16 WideStrSize, const char* MultiStr);
 
 inline BOOL IsNeedSpaceCharacter(wide_char wc)
 {

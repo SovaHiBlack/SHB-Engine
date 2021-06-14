@@ -12,7 +12,7 @@
 #include "GameObject.h"
 #include "Explosive.h"
 
-bool CDangerExplosive::operator==	(const u16 &object_id) const
+bool CDangerExplosive::operator==	(const U16& object_id) const
 {
 	if (!m_grenade)
 		return	(false);

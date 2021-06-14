@@ -74,7 +74,7 @@ inline float	_cos	(float x)		{ return cosf(x); }
 inline BOOL		_valid	(const float x)
 {
 	// check for: Signaling NaN, Quiet NaN, Negative infinity ( –INF), Positive infinity (+INF), Negative denormalized, Positive denormalized
-	int			cls			= _fpclass		(double(x));
+	int			cls			= _fpclass		(F64(x));
 	if (cls&(_FPCLASS_SNAN+_FPCLASS_QNAN+_FPCLASS_NINF+_FPCLASS_PINF+_FPCLASS_ND+_FPCLASS_PD))	
 		return	false;	
 
@@ -89,11 +89,11 @@ inline BOOL		_valid	(const float x)
 
 
 // double
-inline double	_abs	(double x)		{ return fabs(x); }
-inline double	_sqrt	(double x)		{ return sqrt(x); }
-inline double	_sin	(double x)		{ return sin(x); }
-inline double	_cos	(double x)		{ return cos(x); }
-inline BOOL		_valid	(const double x)
+inline F64	_abs	(F64 x)		{ return fabs(x); }
+inline F64	_sqrt	(F64 x)		{ return sqrt(x); }
+inline F64	_sin	(F64 x)		{ return sin(x); }
+inline F64	_cos	(F64 x)		{ return cos(x); }
+inline BOOL		_valid	(const F64 x)
 {
 	// check for: Signaling NaN, Quiet NaN, Negative infinity ( –INF), Positive infinity (+INF), Negative denormalized, Positive denormalized
 	int			cls			= _fpclass		(x);

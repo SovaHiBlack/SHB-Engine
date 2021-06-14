@@ -49,8 +49,8 @@ namespace ObjectHandlerSpace {
 		eWorldPropertyUsed,
 		eWorldPropertyUseEnough,
 
-		eWorldPropertyNoItems				= u32((u16(-1) << 16) | eWorldPropertyItemID),
-		eWorldPropertyNoItemsIdle			= u32((u16(-1) << 16) | eWorldPropertyIdle),
+		eWorldPropertyNoItems				= u32((U16(-1) << 16) | eWorldPropertyItemID),
+		eWorldPropertyNoItemsIdle			= u32((U16(-1) << 16) | eWorldPropertyIdle),
 		eWorldPropertyDummy					= u32(-1)
 	};
 
@@ -92,7 +92,7 @@ namespace ObjectHandlerSpace {
 		eWorldOperatorPrepare,
 		eWorldOperatorUse,
 
-		eWorldOperatorNoItemsIdle	= u32((u16(-1) << 16) | eWorldOperatorIdle),
+		eWorldOperatorNoItemsIdle	= u32((U16(-1) << 16) | eWorldOperatorIdle),
 		eWorldOperatorDummy			= u32(-1)
 	};
 };

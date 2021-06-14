@@ -159,9 +159,9 @@ namespace CDB
 
 		u32				VPack				( const Fvector3& V, float eps);
 	public:
-		void			add_face			( const Fvector3& v0, const Fvector3& v1, const Fvector3& v2, u16 material, u16 sector	);
+		void			add_face			( const Fvector3& v0, const Fvector3& v1, const Fvector3& v2, U16 material, U16 sector	);
 		void			add_face_D			( const Fvector3& v0, const Fvector3& v1, const Fvector3& v2, u32 dummy );
-		void			add_face_packed		( const Fvector3& v0, const Fvector3& v1, const Fvector3& v2, u16 material, u16 sector, float eps = EPS );
+		void			add_face_packed		( const Fvector3& v0, const Fvector3& v1, const Fvector3& v2, U16 material, U16 sector, float eps = EPS );
 		void			add_face_packed_D	( const Fvector3& v0, const Fvector3& v1, const Fvector3& v2, u32 dummy, float eps = EPS );
         void			remove_duplicate_T	( );
 		void			calc_adjacency		( xr_vector<u32>& dest		);
@@ -204,7 +204,7 @@ namespace CDB
 		//			verts
 		//		}
 
-		void				add_face	( const Fvector3& v0, const Fvector3& v1, const Fvector3& v2, u16 material, u16 sector );
+		void				add_face	( const Fvector3& v0, const Fvector3& v1, const Fvector3& v2, U16 material, U16 sector );
 		void				add_face_D	( const Fvector3& v0, const Fvector3& v1, const Fvector3& v2, u32 dummy );
 		xr_vector<Fvector3>& getV_Vec()	{ return verts;				}
 		Fvector3*			getV()		{ return &*verts.begin();	}

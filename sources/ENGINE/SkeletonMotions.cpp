@@ -5,12 +5,18 @@
 #include "fmesh.h"
 #include "motion.h"
 
-motions_container*	g_pMotionsContainer	= 0;
+motions_container* g_pMotionsContainer	= nullptr;
 
-u16 find_bone_id(vecBones* bones, shared_str nm)
+U16 find_bone_id(vecBones* bones, shared_str nm)
 {
-	for (u16 i=0; i<(u16)bones->size(); i++)
-		if (bones->at(i)->name==nm) return i;
+	for (U16 i = 0; i < (U16) bones->size( ); i++)
+	{
+		if (bones->at(i)->name == nm)
+		{
+			return i;
+		}
+	}
+
 	return BI_NONE;
 }
 
@@ -26,16 +32,16 @@ BOOL motions_value::load		(const char* N, IReader *data, vecBones* bones)
 
 	if (MP)
 	{
-		u16 vers 				= MP->r_u16();
-		u16 part_bone_cnt		= 0;
+		U16 vers 				= MP->r_u16();
+		U16 part_bone_cnt		= 0;
 		string128 				buf;
 		R_ASSERT3				(vers<=xrOGF_SMParamsVersion,"Invalid OGF/OMF version:",N);
 		
 		// partitions
-		u16						part_count;
+		U16						part_count;
 		part_count 				= MP->r_u16();
 
-		for (u16 part_i=0; part_i<part_count; part_i++)
+		for (U16 part_i=0; part_i<part_count; part_i++)
 		{
 			CPartDef& PART		= m_partition[part_i];
 			MP->r_stringZ		(buf,sizeof(buf));
@@ -45,53 +51,70 @@ BOOL motions_value::load		(const char* N, IReader *data, vecBones* bones)
 			for (xr_vector<u32>::iterator b_it=PART.bones.begin(); b_it<PART.bones.end(); b_it++)
 			{
 				MP->r_stringZ	(buf,sizeof(buf));
-				u16 m_idx 		= u16			(MP->r_u32());
+				U16 m_idx 		= U16(MP->r_u32());
 				*b_it			= find_bone_id	(bones,buf); 
 
 				VERIFY3			(*b_it!=BI_NONE,"Can't find bone:",buf);
 
-				if (bRes)		rm_bones[m_idx] = u16(*b_it);
+				if (bRes)
+				{
+					rm_bones[m_idx] = U16(*b_it);
+				}
 			}
-			part_bone_cnt		= u16(part_bone_cnt + (u16)PART.bones.size());
+
+			part_bone_cnt		= U16(part_bone_cnt + (U16)PART.bones.size());
 		}
 
-		VERIFY3(part_bone_cnt==(u16)bones->size(),"Different bone count '%s'",N);
+		VERIFY3(part_bone_cnt==(U16)bones->size(),"Different bone count '%s'",N);
 
 		if (bRes)
 		{
 			// motion defs (cycle&fx)
-			u16 mot_count			= MP->r_u16();
+			U16 mot_count			= MP->r_u16();
 			m_mdefs.resize			(mot_count);
 
-			for (u16 mot_i=0; mot_i<mot_count; mot_i++)
+			for (U16 mot_i=0; mot_i<mot_count; mot_i++)
 			{
 				MP->r_stringZ		(buf,sizeof(buf));
 				shared_str nm		= _strlwr		(buf);
 				u32 dwFlags			= MP->r_u32		();
 				CMotionDef&	D		= m_mdefs[mot_i];
 				D.Load				(MP,dwFlags,vers);
-//.             m_mdefs.push_back	(D);
+//.				m_mdefs.push_back	(D);
 				
-				if (dwFlags&esmFX)	
-					m_fx.insert		(mk_pair(nm,mot_i));
-				else				
-					m_cycle.insert	(mk_pair(nm,mot_i));
+				if (dwFlags & esmFX)
+				{
+					m_fx.insert(mk_pair(nm, mot_i));
+				}
+				else
+				{
+					m_cycle.insert(mk_pair(nm, mot_i));
+				}
 
 				m_motion_map.insert	(mk_pair(nm,mot_i));
 			}
 		}
+
 		MP->close();
-	}else
-	{
-		Debug.fatal	(DEBUG_INFO,"Old skinned model version unsupported! (%s)",N);
 	}
-	if (!bRes)	return false;
+	else
+	{
+		Debug.fatal(DEBUG_INFO,"Old skinned model version unsupported! (%s)", N);
+	}
+
+	if (!bRes)
+	{
+		return false;
+	}
 
 	// Load animation
-	IReader*	MS		= data->open_chunk(OGF_S_MOTIONS);
-	if (!MS) 			return false;
+	IReader* MS = data->open_chunk(OGF_S_MOTIONS);
+	if (!MS)
+	{
+		return false;
+	}
 
-	u32			dwCNT	= 0;
+	u32 dwCNT	= 0;
 	MS->r_chunk_safe	(0,&dwCNT,sizeof(dwCNT));
 	VERIFY		(dwCNT<0x3FFF); // MotionID 2 bit - slot, 14 bit - motion index
 
@@ -100,7 +123,7 @@ BOOL motions_value::load		(const char* N, IReader *data, vecBones* bones)
 		m_motions[bones->at(i)->name].resize(dwCNT);
 
 	// load motions
-	for (u16 m_idx=0; m_idx<(u16)dwCNT; m_idx++){
+	for (U16 m_idx=0; m_idx<(U16)dwCNT; m_idx++){
 		string128			mname;
 		R_ASSERT			(MS->find_chunk(m_idx+1));             
 		MS->r_stringZ		(mname,sizeof(mname));
@@ -113,7 +136,7 @@ BOOL motions_value::load		(const char* N, IReader *data, vecBones* bones)
 #endif
 		u32 dwLen			= MS->r_u32();
 		for (u32 i=0; i<bones->size(); i++){
-			u16 bone_id		= rm_bones[i];
+			U16 bone_id		= rm_bones[i];
 			VERIFY2			(bone_id!=BI_NONE,"Invalid remap index.");
 			CMotion&		M	= m_motions[bones->at(bone_id)->name][m_idx];
 			M.set_count			(dwLen);
@@ -228,7 +251,7 @@ void motions_container::dump()
 
 //////////////////////////////////////////////////////////////////////////
 // High level control
-void CMotionDef::Load(IReader* MP, u32 fl, u16 version)
+void CMotionDef::Load(IReader* MP, u32 fl, U16 version)
 {
 	// params
 	bone_or_part= MP->r_u16(); // bCycle?part_id:bone_id;
@@ -237,8 +260,11 @@ void CMotionDef::Load(IReader* MP, u32 fl, u16 version)
 	power		= Quantize(MP->r_float());
 	accrue		= Quantize(MP->r_float());
 	falloff		= Quantize(MP->r_float());
-	flags		= (u16)fl;
-	if (!(flags&esmFX) && (falloff>=accrue)) falloff = u16(accrue-1);
+	flags		= (U16)fl;
+	if (!(flags & esmFX) && (falloff >= accrue))
+	{
+		falloff = U16(accrue - 1);
+	}
 
 	if(version>=4)
 	{

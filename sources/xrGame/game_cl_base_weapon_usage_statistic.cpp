@@ -337,7 +337,7 @@ void WeaponUsageStatistic::OnBullet_Fire(SBullet* pBullet, const CCartridge& car
 //	Msg("! OnBullet Fire ID[%d]", pBullet->m_dwID);
 }
 
-void WeaponUsageStatistic::OnBullet_Hit(SBullet* pBullet, u16 TargetID, S16 element, Fvector3 HitLocation)
+void WeaponUsageStatistic::OnBullet_Hit(SBullet* pBullet, U16 TargetID, S16 element, Fvector3 HitLocation)
 {
 	if (!pBullet || !pBullet->flags.allow_sendhit)
 	{
@@ -691,7 +691,7 @@ void WeaponUsageStatistic::OnExplosionKill(game_PlayerState* ps, const SHit& hit
 	CObject* killer = hit.who;
 	if (!killer)									return;
 
-	u16 killer_id = hit.whoID;
+	U16 killer_id = hit.whoID;
 	game_PlayerState* killerPS = Game( ).GetPlayerByGameID(killer_id);
 	Player_Statistic& PlayerStatKiller = *(FindPlayer(killerPS->getName( )));
 

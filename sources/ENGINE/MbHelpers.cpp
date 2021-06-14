@@ -17,10 +17,10 @@
 
 #ifdef MB_DUMB_CONVERSION
 
-unsigned short mbhMulti2WideDumb(wide_char* WideStr, wide_char* WidePos, const unsigned short int WideStrSize, const char* MultiStr)
+unsigned short mbhMulti2WideDumb(wide_char* WideStr, wide_char* WidePos, const U16 WideStrSize, const char* MultiStr)
 {
-	unsigned short spos = 0;
-	unsigned short dpos = 0;
+	U16 spos = 0;
+	U16 dpos = 0;
 	U8 b1;
 	wide_char wc = 0;
 
@@ -75,10 +75,10 @@ unsigned short mbhMulti2WideDumb(wide_char* WideStr, wide_char* WidePos, const u
 
 #endif // MB_DUMB_CONVERSION
 
-unsigned short mbhMulti2Wide(wide_char* WideStr, wide_char* WidePos, const unsigned short WideStrSize, const char* MultiStr)
+U16 mbhMulti2Wide(wide_char* WideStr, wide_char* WidePos, const U16 WideStrSize, const char* MultiStr)
 {
-	unsigned short spos = 0;
-	unsigned short dpos = 0;
+	U16 spos = 0;
+	U16 dpos = 0;
 	U8 b1;
 	U8 b2;
 	U8 b3;

@@ -26,7 +26,7 @@ void CCar::SExhaust::Init()
 	VERIFY(!ph_world->Processing());
 	pelement=(bone_map.find(bone_id))->second.element;
 	CKinematics* K=smart_cast<CKinematics*>(pcar->Visual());
-	CBoneData&	bone_data=K->LL_GetData(u16(bone_id));
+	CBoneData&	bone_data=K->LL_GetData(U16(bone_id));
 	transform.set(bone_data.bind_transform);
 	///transform.mulA(pcar->XFORM());
 	//Fmatrix element_transform;

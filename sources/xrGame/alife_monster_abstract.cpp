@@ -191,7 +191,7 @@ void CSE_ALifeMonsterAbstract::vfCheckForPopulationChanges	()
 					CSE_Abstract		*l_tpAbstract = alife().create	(l_tpALifeGroupAbstract,this);
 					*I					= l_tpAbstract->ID;
 				}
-				l_tpALifeGroupAbstract->m_wCount = l_tpALifeGroupAbstract->m_wCount + u16(l_dwBornCount);
+				l_tpALifeGroupAbstract->m_wCount = l_tpALifeGroupAbstract->m_wCount + U16(l_dwBornCount);
 			}
 		}
 	}

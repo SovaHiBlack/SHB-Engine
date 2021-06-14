@@ -322,7 +322,7 @@ void CEntityAlive::Die(CObject* who)
 	{
 		CNetPacket P;
 		u_EventGen(P, GE_ASSIGN_KILLER, ID( ));
-		P.w_u16(u16(who->ID( )));
+		P.w_u16(U16(who->ID( )));
 		u_EventSend(P);
 	}
 
@@ -344,7 +344,7 @@ float CEntityAlive::CalcCondition(float /**hit/**/)
 }
 
 ///////////////////////////////////////////////////////////////////////
-u16 CEntityAlive::PHGetSyncItemsNumber( )
+U16 CEntityAlive::PHGetSyncItemsNumber( )
 {
 	if (character_physics_support( )->movement( )->CharacterExist( ))
 	{
@@ -356,7 +356,7 @@ u16 CEntityAlive::PHGetSyncItemsNumber( )
 	}
 }
 
-CPHSynchronize* CEntityAlive::PHGetSyncItem(u16 item)
+CPHSynchronize* CEntityAlive::PHGetSyncItem(U16 item)
 {
 	if (character_physics_support( )->movement( )->CharacterExist( ))
 	{
@@ -396,7 +396,7 @@ void CEntityAlive::PHFreeze( )
 //добавление кровавых отметок на стенах, после получения хита
 void CEntityAlive::BloodyWallmarks(float P, const Fvector3& dir, S16 element, const Fvector3& position_in_object_space)
 {
-	if (BI_NONE == (u16) element)
+	if (BI_NONE == (U16) element)
 	{
 		return;
 	}
@@ -407,7 +407,7 @@ void CEntityAlive::BloodyWallmarks(float P, const Fvector3& dir, S16 element, co
 	Fvector3 start_pos = position_in_object_space;
 	if (V)
 	{
-		Fmatrix& m_bone = (V->LL_GetBoneInstance(u16(element))).mTransform;
+		Fmatrix& m_bone = (V->LL_GetBoneInstance(U16(element))).mTransform;
 		m_bone.transform_tiny(start_pos);
 	}
 
@@ -470,7 +470,7 @@ void CEntityAlive::StartFireParticles(CWound* pWound)
 
 		CKinematics* V = smart_cast<CKinematics*>(Visual( ));
 
-		u16 particle_bone = CParticlesPlayer::GetNearestBone(V, pWound->GetBoneNum( ));
+		U16 particle_bone = CParticlesPlayer::GetNearestBone(V, pWound->GetBoneNum( ));
 		VERIFY(particle_bone < 64 || BI_NONE == particle_bone);
 
 		pWound->SetParticleBoneNum(particle_bone);

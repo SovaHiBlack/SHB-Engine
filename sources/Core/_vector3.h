@@ -37,7 +37,7 @@ public:
 		z = TYPE(v.z);
 		return *this;
 	}
-	__forceinline SelfRef	set										(const _vector3<double>& v)
+	__forceinline SelfRef	set										(const _vector3<F64>& v)
 	{
 		x = TYPE(v.x);
 		y = TYPE(v.y);
@@ -51,7 +51,7 @@ public:
 		z = p[2];
 		return *this;
 	}
-	__forceinline SelfRef	set										(double* p)
+	__forceinline SelfRef	set										(F64* p)
 	{
 		x = p[0];
 		y = p[1];
@@ -715,24 +715,30 @@ BOOL						_valid									(const _vector3<T>& v)
 //////////////////////////////////////////////////////////////////////////
 #pragma warning(push)
 #pragma warning(disable:4244)
-__forceinline double	rsqrt(double v)
+__forceinline F64	rsqrt(F64 v)
 {
 	return 1.0 / _sqrt(v);
 }
 inline BOOL	exact_normalize(float* a)
 {
-	double	sqr_magnitude = a[0] * a[0] + a[1] * a[1] + a[2] * a[2];
-	double	epsilon = 1.192092896e-05F;
+	F64	sqr_magnitude = a[0] * a[0] + a[1] * a[1] + a[2] * a[2];
+	F64	epsilon = 1.192092896e-05F;
 	if (sqr_magnitude > epsilon)
 	{
-		double	l = rsqrt(sqr_magnitude);
+		F64	l = rsqrt(sqr_magnitude);
 		a[0] *= l;
 		a[1] *= l;
 		a[2] *= l;
 		return		TRUE;
 	}
 
-	double a0, a1, a2, aa0, aa1, aa2, l;
+	F64 a0;
+	F64 a1;
+	F64 a2;
+	F64 aa0;
+	F64 aa1;
+	F64 aa2;
+	F64 l;
 	a0 = a[0];
 	a1 = a[1];
 	a2 = a[2];
@@ -751,7 +757,7 @@ inline BOOL	exact_normalize(float* a)
 			a2 /= aa1;
 			l = rsqrt(a0 * a0 + a2 * a2 + 1);
 			a[0] = a0 * l;
-			a[1] = (double) _copysign(l, a1);
+			a[1] = (F64) _copysign(l, a1);
 			a[2] = a2 * l;
 		}
 	}
@@ -765,7 +771,7 @@ aa2_largest:	// aa2 is largest
 			l = rsqrt(a0 * a0 + a1 * a1 + 1);
 			a[0] = a0 * l;
 			a[1] = a1 * l;
-			a[2] = (double) _copysign(l, a2);
+			a[2] = (F64) _copysign(l, a2);
 		}
 		else
 		{		// aa0 is largest
@@ -780,7 +786,7 @@ aa2_largest:	// aa2 is largest
 			a1 /= aa0;
 			a2 /= aa0;
 			l = rsqrt(a1 * a1 + a2 * a2 + 1);
-			a[0] = (double) _copysign(l, a0);
+			a[0] = (F64) _copysign(l, a0);
 			a[1] = a1 * l;
 			a[2] = a2 * l;
 		}

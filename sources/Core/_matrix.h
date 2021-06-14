@@ -1000,7 +1000,7 @@ public:
 };
 
 using Fmatrix = _matrix<float>;
-using Dmatrix = _matrix<double>;
+using Dmatrix = _matrix<F64>;
 
 template <class T>
 BOOL	_valid(const _matrix<T>& m)

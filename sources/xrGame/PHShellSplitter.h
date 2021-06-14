@@ -21,12 +21,12 @@ private:
 
 //class CPHShellSplitter;
 class CPHShell;
-class CODEGeom;
+class CCodeGeom;
 
-using id_geom = std::pair<u16, CODEGeom*>;
+using id_geom = std::pair<u16, CCodeGeom*>;
 
-//DEFINE_MAP(u16,CODEGeom*,GEOM_MAP,GEOM_MAP_I)
-using GEOM_MAP = xr_map<u16, CODEGeom*>;
+//DEFINE_MAP(u16,CCodeGeom*,GEOM_MAP,GEOM_MAP_I)
+using GEOM_MAP = xr_map<u16, CCodeGeom*>;
 using GEOM_MAP_I = GEOM_MAP::iterator;
 
 //DEFINE_VECTOR(CPHShellSplitter,SPLITTER_STORAGE,SPLITTER_I)

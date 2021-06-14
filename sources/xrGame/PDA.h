@@ -36,7 +36,7 @@ public:
 	virtual void 				feel_touch_delete		(CObject* O);
 	virtual BOOL 				feel_touch_contact		(CObject* O);
 
-	virtual u16					GetOriginalOwnerID		( )
+	virtual U16					GetOriginalOwnerID		( )
 	{
 		return m_idOriginalOwner;
 	}
@@ -83,7 +83,7 @@ protected:
 	xr_vector<CObject*>									m_active_contacts;
 	float												m_fRadius;
 
-	u16													m_idOriginalOwner;
+	U16													m_idOriginalOwner;
 	shared_str											m_SpecificChracterOwner;
 	xr_string											m_sFullName;
 

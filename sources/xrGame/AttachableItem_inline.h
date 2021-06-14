@@ -29,13 +29,13 @@ inline	const Fmatrix &CAttachableItem::offset			() const
 	return m_offset;
 }
 
-inline	u16	 CAttachableItem::bone_id					() const
+inline	U16	 CAttachableItem::bone_id					() const
 {
 	VERIFY				(m_valid);
 	return m_bone_id;
 }
 
-inline	void CAttachableItem::set_bone_id				(unsigned short bone_id)
+inline void CAttachableItem::set_bone_id				(U16 bone_id)
 {
 	VERIFY				(m_valid);
 	m_bone_id			= bone_id;

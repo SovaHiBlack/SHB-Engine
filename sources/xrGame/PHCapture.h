@@ -11,7 +11,7 @@ class CPHCapture : public CPHUpdateObject
 {
 public:
 	CPHCapture(CPHCharacter* a_character, CPHShellHolder* a_taget_object);
-	CPHCapture(CPHCharacter* a_character, CPHShellHolder* a_taget_object, u16 a_taget_elemrnt);
+	CPHCapture(CPHCharacter* a_character, CPHShellHolder* a_taget_object, U16 a_taget_elemrnt);
 	virtual				~CPHCapture( );
 
 	bool				Failed( )

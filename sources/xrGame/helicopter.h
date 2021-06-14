@@ -161,7 +161,7 @@ public:
 	Fvector3						m_fire_dir;
 	Fvector3						m_fire_pos;
 
-	u16								m_left_rocket_bone, m_right_rocket_bone, m_fire_bone, m_rotate_x_bone, m_rotate_y_bone;
+	U16								m_left_rocket_bone, m_right_rocket_bone, m_fire_bone, m_rotate_x_bone, m_rotate_y_bone;
 
 	Fmatrix							m_fire_bone_xform;
 	Fmatrix							m_i_bind_x_xform, m_i_bind_y_xform;
@@ -172,7 +172,7 @@ public:
 	Fvector3						m_bind_x;
 	Fvector3						m_bind_y;
 	bool							m_allow_fire;
-	u16								m_last_launched_rocket;
+	U16								m_last_launched_rocket;
 	u32								m_last_rocket_attack;
 
 	shared_str						m_sAmmoType, m_sRocketSection;
@@ -183,7 +183,7 @@ public:
 
 	static void 					BoneMGunCallbackX		(CBoneInstance *B);
 	static void						BoneMGunCallbackY		(CBoneInstance *B);
-	void							startRocket(u16 idx);
+	void							startRocket(U16 idx);
 
 	//CShootingObject
 	virtual const Fmatrix&			ParticlesXFORM		()const					{return m_fire_bone_xform;}
@@ -222,7 +222,7 @@ protected:
 //	ref_sound						m_explodeSound;
 	ref_light						m_light_render;
 	CLAItem*						m_lanim;
-	u16								m_light_bone, m_smoke_bone;
+	U16								m_light_bone, m_smoke_bone;
 	float							m_light_range, m_light_brightness;
 	Fcolor							m_light_color;
 	shared_str						m_smoke_particle;
@@ -282,7 +282,7 @@ public:
 	virtual BOOL					renderable_ShadowGenerate		()			{ return FALSE;	}
 	virtual BOOL					renderable_ShadowReceive		()			{ return TRUE;	}
 
-	virtual void					OnEvent				(CNetPacket& P, u16 type);
+	virtual void					OnEvent				(CNetPacket& P, U16 type);
 	virtual void					UpdateCL			();
 	virtual void					shedule_Update		(u32		time_delta);
 			void					MoveStep			();

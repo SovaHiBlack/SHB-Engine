@@ -13,7 +13,7 @@ struct SAllDDOParams
 	void				Load	(CIniFile* ini);
 	SOneDDOParams				translational;
 	SOneDDOParams				rotational;
-	u16							L2frames;
+	U16							L2frames;
 };
 
 struct SAllDDWParams

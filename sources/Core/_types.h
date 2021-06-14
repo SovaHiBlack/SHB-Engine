@@ -22,10 +22,9 @@ typedef signed __int64		s64;
 typedef unsigned __int64	u64;
 
 using F32 = float;
-using F64 = double;
+using F64 = double;					// f64
 
 typedef float				f32;
-typedef double				f64;
 
 typedef char*				pstr;
 typedef const char*			pcstr;
@@ -50,10 +49,10 @@ typedef const char*			pcstr;
 #define flt_zero		type_zero(float)
 #define flt_eps			type_epsilon(float)
 
-#define dbl_max			type_max(double)
-#define dbl_min			type_min(double)
-#define dbl_zero		type_zero(double)
-#define dbl_eps			type_epsilon(double)
+#define dbl_max			type_max(F64)
+#define dbl_min			type_min(F64)
+#define dbl_zero		type_zero(F64)
+#define dbl_eps			type_epsilon(F64)
 
 typedef	char	string16	[16];
 typedef	char	string32	[32];

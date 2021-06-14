@@ -1071,7 +1071,7 @@ void CPHShell::AddElementRecursive(CPhysicsElement* root_e, u16 id, Fmatrix glob
 
 	if (!no_physics_shape(bone_data.shape))
 	{
-		CODEGeom* added_geom = E->last_geom( );
+		CCodeGeom* added_geom = E->last_geom( );
 		if (added_geom)	added_geom->set_bone_id(id);
 	}
 #ifdef DEBUG
@@ -1668,7 +1668,7 @@ void CPHShell::BonesBindCalculateRecursive(Fmatrix parent, u16 id)
 
 void CPHShell::AddTracedGeom(u16 element/*=0*/, u16 geom/*=0*/)
 {
-	CODEGeom* g = elements[element]->Geom(geom);
+	CCodeGeom* g = elements[element]->Geom(geom);
 	g->set_ph_object(this);
 	m_traced_geoms.add(g);
 }
@@ -1684,7 +1684,7 @@ void CPHShell::SetAllGeomTraced( )
 		u16 gn = (*i)->numberOfGeoms( );
 		for (u16 j = 0; j < gn; ++j)
 		{
-			CODEGeom* g = (*i)->Geom(j);
+			CCodeGeom* g = (*i)->Geom(j);
 			g->set_ph_object(this);
 			m_traced_geoms.add(g);
 		}
@@ -1716,7 +1716,7 @@ void CPHShell::add_Joint(CPhysicsJoint* J)
 	joints.back( )->SetShell(this);
 }
 
-CODEGeom* CPHShell::get_GeomByID(u16 bone_id)
+CCodeGeom* CPHShell::get_GeomByID(u16 bone_id)
 {
 	ELEMENT_I i;
 	ELEMENT_I e;
@@ -1724,7 +1724,7 @@ CODEGeom* CPHShell::get_GeomByID(u16 bone_id)
 	e = elements.end( );
 	for (; i != e; ++i)
 	{
-		CODEGeom* ret = (*i)->GeomByBoneID(bone_id);
+		CCodeGeom* ret = (*i)->GeomByBoneID(bone_id);
 		if (ret)
 		{
 			return ret;

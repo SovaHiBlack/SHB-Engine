@@ -102,7 +102,7 @@ inline	const CLevelGraph::CPosition &CLevelGraph::vertex_position	(CLevelGraph::
 	VERIFY				(pxz < (1 << MAX_NODE_BIT_COUNT) - 1);
 	dest_position.xz	(u32(pxz));
 	clamp				(py,0,65535);
-	dest_position.y		(u16(py));
+	dest_position.y		(U16(py));
 	return				(dest_position);
 }
 
@@ -288,12 +288,12 @@ __forceinline u32	CLevelGraph::CVertex::link(int index) const
 	return				(NodeCompressed::link(U8(index)));
 }
 
-__forceinline u16	CLevelGraph::CVertex::cover(U8 index) const
+__forceinline U16	CLevelGraph::CVertex::cover(U8 index) const
 {
 	return				(NodeCompressed::cover(index));
 }
 
-__forceinline u16	CLevelGraph::CVertex::plane() const
+__forceinline U16	CLevelGraph::CVertex::plane() const
 {
 	return				(NodeCompressed::plane);
 }

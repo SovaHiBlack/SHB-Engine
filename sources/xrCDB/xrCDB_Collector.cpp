@@ -30,7 +30,7 @@ namespace CDB
 		faces.push_back(T);
 	}
 
-	void	Collector::add_face		(	const Fvector3& v0, const Fvector3& v1, const Fvector3& v2, u16 material, u16 sector )
+	void	Collector::add_face		(	const Fvector3& v0, const Fvector3& v1, const Fvector3& v2, U16 material, U16 sector )
 	{
 		TRI			T;
 		T.verts	[0]		= verts.size();
@@ -47,7 +47,7 @@ namespace CDB
 
 	void	Collector::add_face_packed	(
 		const Fvector3& v0, const Fvector3& v1, const Fvector3& v2,	// vertices
-		u16		material, u16 sector,								// misc
+		U16		material, U16 sector,								// misc
 		float	eps
 		)
 	{
@@ -82,8 +82,8 @@ namespace CDB
 	struct edge {
 		u32		face_id		: 30;
 		u32		edge_id		: 2;
-		u16		vertex_id0;
-		u16		vertex_id1;
+		U16		vertex_id0;
+		U16		vertex_id1;
 	};
 #pragma pack(pop)
 
@@ -122,24 +122,24 @@ namespace CDB
 
 			(*i).face_id				= face_id;
 			(*i).edge_id				= 0;
-			(*i).vertex_id0				= (u16)(*I).verts[0];
-			(*i).vertex_id1				= (u16)(*I).verts[1];
+			(*i).vertex_id0				= (U16)(*I).verts[0];
+			(*i).vertex_id1				= (U16)(*I).verts[1];
 			if ((*i).vertex_id0 > (*i).vertex_id1)
 				std::swap				((*i).vertex_id0,(*i).vertex_id1);
 			++i;
 			
 			(*i).face_id				= face_id;
 			(*i).edge_id				= 1;
-			(*i).vertex_id0				= (u16)(*I).verts[1];
-			(*i).vertex_id1				= (u16)(*I).verts[2];
+			(*i).vertex_id0				= (U16)(*I).verts[1];
+			(*i).vertex_id1				= (U16)(*I).verts[2];
 			if ((*i).vertex_id0 > (*i).vertex_id1)
 				std::swap				((*i).vertex_id0,(*i).vertex_id1);
 			++i;
 			
 			(*i).face_id				= face_id;
 			(*i).edge_id				= 2;
-			(*i).vertex_id0				= (u16)(*I).verts[2];
-			(*i).vertex_id1				= (u16)(*I).verts[0];
+			(*i).vertex_id0				= (U16)(*I).verts[2];
+			(*i).vertex_id1				= (U16)(*I).verts[0];
 			if ((*i).vertex_id0 > (*i).vertex_id1)
 				std::swap				((*i).vertex_id0,(*i).vertex_id1);
 			++i;
@@ -244,34 +244,34 @@ namespace CDB
 		}
 #endif
 	}
-    inline BOOL similar(TRI& T1, TRI& T2)
-    {
-        if ((T1.verts[0]==T2.verts[0]) && (T1.verts[1]==T2.verts[1]) && (T1.verts[2]==T2.verts[2]) && (T1.dummy==T2.dummy)) return TRUE;
-        if ((T1.verts[0]==T2.verts[0]) && (T1.verts[2]==T2.verts[1]) && (T1.verts[1]==T2.verts[2]) && (T1.dummy==T2.dummy)) return TRUE;
-        if ((T1.verts[2]==T2.verts[0]) && (T1.verts[0]==T2.verts[1]) && (T1.verts[1]==T2.verts[2]) && (T1.dummy==T2.dummy)) return TRUE;
-        if ((T1.verts[2]==T2.verts[0]) && (T1.verts[1]==T2.verts[1]) && (T1.verts[0]==T2.verts[2]) && (T1.dummy==T2.dummy)) return TRUE;
-        if ((T1.verts[1]==T2.verts[0]) && (T1.verts[0]==T2.verts[1]) && (T1.verts[2]==T2.verts[2]) && (T1.dummy==T2.dummy)) return TRUE;
-        if ((T1.verts[1]==T2.verts[0]) && (T1.verts[2]==T2.verts[1]) && (T1.verts[0]==T2.verts[2]) && (T1.dummy==T2.dummy)) return TRUE;
-        return FALSE;
-    }
-    void Collector::remove_duplicate_T( )
-    {
+	inline BOOL similar(TRI& T1, TRI& T2)
+	{
+		if ((T1.verts[0]==T2.verts[0]) && (T1.verts[1]==T2.verts[1]) && (T1.verts[2]==T2.verts[2]) && (T1.dummy==T2.dummy)) return TRUE;
+		if ((T1.verts[0]==T2.verts[0]) && (T1.verts[2]==T2.verts[1]) && (T1.verts[1]==T2.verts[2]) && (T1.dummy==T2.dummy)) return TRUE;
+		if ((T1.verts[2]==T2.verts[0]) && (T1.verts[0]==T2.verts[1]) && (T1.verts[1]==T2.verts[2]) && (T1.dummy==T2.dummy)) return TRUE;
+		if ((T1.verts[2]==T2.verts[0]) && (T1.verts[1]==T2.verts[1]) && (T1.verts[0]==T2.verts[2]) && (T1.dummy==T2.dummy)) return TRUE;
+		if ((T1.verts[1]==T2.verts[0]) && (T1.verts[0]==T2.verts[1]) && (T1.verts[2]==T2.verts[2]) && (T1.dummy==T2.dummy)) return TRUE;
+		if ((T1.verts[1]==T2.verts[0]) && (T1.verts[2]==T2.verts[1]) && (T1.verts[0]==T2.verts[2]) && (T1.dummy==T2.dummy)) return TRUE;
+		return FALSE;
+	}
+	void Collector::remove_duplicate_T( )
+	{
 		for (u32 f=0; f<faces.size(); f++)
 		{
 			for (u32 t=f+1; t<faces.size();)
 			{
 				if (t==f)	continue;
-                TRI& T1	= faces[f];
-                TRI& T2	= faces[t];
-                if (similar(T1,T2)){
-                	faces[t] = faces.back();
-                    faces.pop_back();
-                }else{
-                	t++;
-                }
-            }
-        }
-    }
+				TRI& T1	= faces[f];
+				TRI& T2	= faces[t];
+				if (similar(T1,T2)){
+					faces[t] = faces.back();
+					faces.pop_back();
+				}else{
+					t++;
+				}
+			}
+		}
+	}
 
 	CollectorPacked::CollectorPacked(const Fbox3& bb, int apx_vertices, int apx_faces)
 	{
@@ -297,7 +297,7 @@ namespace CDB
 
 	void	CollectorPacked::add_face(
 		const Fvector3& v0, const Fvector3& v1, const Fvector3& v2,	// vertices
-		u16 material, u16 sector									// misc
+		U16 material, U16 sector									// misc
 		)
 	{
 		TRI T;

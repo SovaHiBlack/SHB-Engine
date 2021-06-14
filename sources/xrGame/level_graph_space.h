@@ -31,8 +31,8 @@ namespace LevelGraph {
 	public:
 		__forceinline	u32				link					(int i) const;
 		__forceinline	U8				light					() const;
-		__forceinline	u16				cover					(U8 index) const;
-		__forceinline	u16				plane					() const;
+		__forceinline	U16				cover					(U8 index) const;
+		__forceinline	U16				plane					() const;
 		__forceinline	const CPosition &position				() const;
 		__forceinline	bool			operator<				(const LevelGraph::CVertex &vertex) const;
 		__forceinline	bool			operator>				(const LevelGraph::CVertex &vertex) const;

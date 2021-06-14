@@ -8,8 +8,8 @@ struct BulletData
 	shared_str		FirerName;
 	shared_str		WeaponName;
 
-	u16				HitRefCount;
-	u16				HitResponds;
+	U16				HitRefCount;
+	U16				HitResponds;
 
 	bool			Removed;
 
@@ -31,7 +31,7 @@ struct HitData
 	
 	S16		BoneID;
 	shared_str	BoneName;
-	u16		TargetID;
+	U16		TargetID;
 	shared_str	TargetName;
 	u32		BulletID;
 	bool	Deadly;
@@ -178,7 +178,7 @@ struct WeaponUsageStatistic {
 	//-----------------------------------------------
 	void				OnWeaponBought			(game_PlayerState* ps, const char* WeaponName);
 	void				OnBullet_Fire			(SBullet* pBullet, const CCartridge& cartridge);
-	void				OnBullet_Hit			(SBullet* pBullet, u16 TargetID, S16 element, Fvector3 HitLocation);
+	void				OnBullet_Hit			(SBullet* pBullet, U16 TargetID, S16 element, Fvector3 HitLocation);
 	void				OnBullet_Remove			(SBullet* pBullet);
 	//-----------------------------------------------
 

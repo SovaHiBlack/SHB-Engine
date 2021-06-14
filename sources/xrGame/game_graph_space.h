@@ -12,7 +12,7 @@
 #include "..\ENGINE\xrLevel.h"
 
 namespace GameGraph {
-	typedef u16	_GRAPH_ID;
+	typedef U16	_GRAPH_ID;
 	typedef U8	_LEVEL_ID;
 	typedef U8	_LOCATION_ID;
 

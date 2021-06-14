@@ -29,8 +29,8 @@
 #include "Profiler.h"
 
 #define EFFECTOR_RADIUS 30.0f
-const u16	TEST_RAYS_PER_OBJECT = 5;
-const u16	BLASTED_OBJ_PROCESSED_PER_FRAME = 3;
+const U16	TEST_RAYS_PER_OBJECT = 5;
+const U16	BLASTED_OBJ_PROCESSED_PER_FRAME = 3;
 const float	exp_dist_extinction_factor = 3.0f;//(>1.f, 1.f -means no dist change of exp effect)	on the dist of m_fBlastRadius exp. wave effect in exp_dist_extinction_factor times less than maximum
 
 CExplosive::CExplosive( )
@@ -167,13 +167,13 @@ struct SExpQParams
 __forceinline static BOOL grenade_hit_callback(collide::rq_result& result, LPVOID params)
 {
 	SExpQParams& ep = *(SExpQParams*) params;
-	u16 mtl_idx = GAMEMTL_NONE_IDX;
+	U16 mtl_idx = GAMEMTL_NONE_IDX;
 	if (result.O)
 	{
 		CKinematics* V = 0;
 		if (0 != (V = smart_cast<CKinematics*>(result.O->Visual( ))))
 		{
-			CBoneData& B = V->LL_GetData((u16) result.element);
+			CBoneData& B = V->LL_GetData((U16) result.element);
 			mtl_idx = B.game_mtl_idx;
 		}
 	}
@@ -241,7 +241,7 @@ float CExplosive::ExplosionEffect(collide::rq_results& storage, CExplosive* exp_
 	}
 #endif
 
-	for (u16 i = 0; i < TEST_RAYS_PER_OBJECT; ++i)
+	for (U16 i = 0; i < TEST_RAYS_PER_OBJECT; ++i)
 	{
 		Fvector3 l_source_p;
 		Fvector3 l_end_p;
@@ -587,7 +587,7 @@ void CExplosive::HideExplosive( )
 	m_bAlreadyHidden = true;
 }
 
-void CExplosive::OnEvent(CNetPacket& P, u16 type)
+void CExplosive::OnEvent(CNetPacket& P, U16 type)
 {
 	switch (type)
 	{
@@ -595,7 +595,7 @@ void CExplosive::OnEvent(CNetPacket& P, u16 type)
 		{
 			Fvector3 pos;
 			Fvector3 normal;
-			u16 parent_id;
+			U16 parent_id;
 			P.r_u16(parent_id);
 			P.r_vec3(pos);
 			P.r_vec3(normal);
@@ -770,7 +770,7 @@ void CExplosive::ExplodeWaveProcess( )
 	BLASTED_OBJECTS_I I = std::remove_if(m_blasted_objects.begin( ), m_blasted_objects.end( ), SRemovePred( ));
 	m_blasted_objects.erase(I, m_blasted_objects.end( ));
 	rq_storage.r_clear( );
-	u16 i = BLASTED_OBJ_PROCESSED_PER_FRAME;
+	U16 i = BLASTED_OBJ_PROCESSED_PER_FRAME;
 	while (m_blasted_objects.size( ) && 0 != i)
 	{
 		ExplodeWaveProcessObject(rq_storage, m_blasted_objects.back( ));
@@ -815,7 +815,7 @@ void CExplosive::net_Relcase(CObject* O)
 {
 	if (O->ID( ) == m_iCurrentParentID)
 	{
-		m_iCurrentParentID = u16(-1);
+		m_iCurrentParentID = U16(-1);
 	}
 
 	BLASTED_OBJECTS_I I = std::find(m_blasted_objects.begin( ), m_blasted_objects.end( ), smart_cast<CPHShellHolder*>(O));
@@ -825,10 +825,10 @@ void CExplosive::net_Relcase(CObject* O)
 	}
 }
 
-u16 CExplosive::Initiator( )
+U16 CExplosive::Initiator( )
 {
-	u16 initiator = CurrentParentID( );
-	if (initiator == u16(-1))
+	U16 initiator = CurrentParentID( );
+	if (initiator == U16(-1))
 	{
 		initiator = cast_game_object( )->ID( );
 	}

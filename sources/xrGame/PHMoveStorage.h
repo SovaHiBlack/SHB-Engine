@@ -49,6 +49,6 @@ public:
 	inline	iterator	begin	()					{return	CPHPositionsPairs(m_trace_geometries.begin());}
 	inline	iterator	end		()					{return	CPHPositionsPairs(m_trace_geometries.end());}
 	inline	bool		empty	()const				{return m_trace_geometries.empty();}
-		void		add		(CODEGeom* g)		{m_trace_geometries.push_back(g);}
+		void		add		(CCodeGeom* g)		{m_trace_geometries.push_back(g);}
 		void		clear	()					{m_trace_geometries.clear();}
 };

@@ -111,11 +111,11 @@ void CGamePersistent::RegisterModel(IRender_Visual* V)
 		case MT_SKELETON_ANIM:
 		case MT_SKELETON_RIGID:
 		{
-			u16 def_idx = GMLib.GetMaterialIdx("default_object");
+			U16 def_idx = GMLib.GetMaterialIdx("default_object");
 			R_ASSERT2(GMLib.GetMaterialByIdx(def_idx)->Flags.is(SGameMtl::flDynamic), "'default_object' - must be dynamic");
 			CKinematics* K = smart_cast<CKinematics*>(V); VERIFY(K);
 			int cnt = K->LL_BoneCount( );
-			for (u16 k = 0; k < cnt; k++)
+			for (U16 k = 0; k < cnt; k++)
 			{
 				CBoneData& bd = K->LL_GetData(k);
 				if (*(bd.game_mtl_name))
@@ -534,7 +534,7 @@ void CGamePersistent::Statistics(CGameFont* F)
 
 float CGamePersistent::MtlTransparent(u32 mtl_idx)
 {
-	return GMLib.GetMaterialByIdx((u16) mtl_idx)->fVisTransparencyFactor;
+	return GMLib.GetMaterialByIdx((U16) mtl_idx)->fVisTransparencyFactor;
 }
 
 static BOOL bRestorePause = FALSE;

@@ -57,7 +57,7 @@ public:
 	shared_str				article_id;
 	shared_str				map_hint;
 	shared_str				map_location;
-	u16						object_id;
+	U16						object_id;
 	shared_str				article_key;
 	CMapLocation* LinkedMapLocation( );
 	ETaskState				TaskState( )
@@ -90,7 +90,7 @@ public:
 	}
 	void					SetMapHint_script(const char* _str);
 	void					SetMapLocation_script(const char* _str);
-	void					SetObjectID_script(u16 id);
+	void					SetObjectID_script(U16 id);
 	void					SetArticleKey_script(const char* _str);
 
 	void					SetIconName_script(const char* _str);

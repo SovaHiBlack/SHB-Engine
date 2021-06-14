@@ -83,7 +83,7 @@ void CExplosiveRocket::UpdateCL( )
 	}
 }
 
-void  CExplosiveRocket::OnEvent(CNetPacket& P, u16 type)
+void  CExplosiveRocket::OnEvent(CNetPacket& P, U16 type)
 {
 	CExplosive::OnEvent(P, type);
 	inherited::OnEvent(P, type);

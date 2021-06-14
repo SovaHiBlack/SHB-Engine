@@ -71,7 +71,7 @@ namespace GraphEngineSpace {
 	typedef float		_dist_type;
 	typedef u32			_index_type;
 	typedef u32			_iteration_type;
-	typedef u16			_solver_dist_type;
+	typedef U16			_solver_dist_type;
 	typedef u32			_solver_condition_type;
 	typedef bool		_solver_value_type;
 

@@ -33,8 +33,8 @@ void CAnomalyDetector::update_schedule()
 	if (m_storage.empty())
 		return;
 
-	xr_vector<u16>			temp_out_restrictors;
-	xr_vector<u16>			temp_in_restrictors;
+	xr_vector<U16>			temp_out_restrictors;
+	xr_vector<U16>			temp_in_restrictors;
 	
 	temp_in_restrictors.reserve(m_storage.size());
 	

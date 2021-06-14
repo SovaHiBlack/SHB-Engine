@@ -40,11 +40,11 @@ void CPHFracturesHolder::ApplyImpactsToElement(CPHElement* E)
 	//E->bActive=ac_state;
 	E->m_flags.set(CPHElement::flActive, ac_state);
 }
-element_fracture CPHFracturesHolder::SplitFromEnd(CPHElement* element, u16 fracture)
+element_fracture CPHFracturesHolder::SplitFromEnd(CPHElement* element, U16 fracture)
 {
 	FRACTURE_I fract_i = m_fractures.begin( ) + fracture;
-	u16 geom_num = fract_i->m_start_geom_num;
-	u16 end_geom_num = fract_i->m_end_geom_num;
+	U16 geom_num = fract_i->m_start_geom_num;
+	U16 end_geom_num = fract_i->m_end_geom_num;
 	SubFractureMass(fracture);
 
 	CPHElement* new_element = cast_PHElement(P_create_Element( ));
@@ -98,18 +98,18 @@ element_fracture CPHFracturesHolder::SplitFromEnd(CPHElement* element, u16 fract
 	return ret;
 }
 
-void CPHFracturesHolder::PassEndFractures(u16 from, CPHElement* dest)
+void CPHFracturesHolder::PassEndFractures(U16 from, CPHElement* dest)
 {
 	FRACTURE_I i = m_fractures.begin( ), i_from = m_fractures.begin( ) + from, e = m_fractures.end( );
-	u16 end_geom = i_from->m_end_geom_num;
-	u16 begin_geom_num = i_from->m_start_geom_num;
-	u16 leaved_geoms = begin_geom_num;
-	u16 passed_geoms = end_geom - begin_geom_num;
+	U16 end_geom = i_from->m_end_geom_num;
+	U16 begin_geom_num = i_from->m_start_geom_num;
+	U16 leaved_geoms = begin_geom_num;
+	U16 passed_geoms = end_geom - begin_geom_num;
 	if (i_from == e) return;
 
 	for (; i != i_from; ++i)//correct end geoms for fractures leaved in source
 	{
-		u16& cur_end_geom = i->m_end_geom_num;
+		U16& cur_end_geom = i->m_end_geom_num;
 		if (cur_end_geom > begin_geom_num) cur_end_geom = cur_end_geom - passed_geoms;
 	}
 
@@ -371,7 +371,7 @@ bool CPHFracture::Update(CPHElement* element)
 			CPHJoint* J = (CPHJoint*) dJointGetData(joint);
 			if (!J)continue;//hack..
 			J->PSecondElement( )->InterpolateGlobalPosition(&joint_position);
-			CODEGeom* root_geom = J->RootGeom( );
+			CCodeGeom* root_geom = J->RootGeom( );
 			if (root_geom)
 			{
 				u16 el_position = root_geom->element_position( );

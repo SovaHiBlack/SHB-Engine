@@ -16,8 +16,8 @@
 struct FindLocationBySpotID
 {
 	shared_str	spot_id;
-	u16			object_id;
-	FindLocationBySpotID(const shared_str& s, u16 id) : spot_id(s), object_id(id)
+	U16			object_id;
+	FindLocationBySpotID(const shared_str& s, U16 id) : spot_id(s), object_id(id)
 	{ }
 	bool operator () (const SLocationKey& key)
 	{
@@ -27,8 +27,8 @@ struct FindLocationBySpotID
 
 struct FindLocationByID
 {
-	u16			object_id;
-	FindLocationByID(u16 id) : object_id(id)
+	U16			object_id;
+	FindLocationByID(U16 id) : object_id(id)
 	{ }
 	bool operator () (const SLocationKey& key)
 	{
@@ -125,13 +125,13 @@ CMapManager::~CMapManager( )
 	delete_data(m_locations);
 }
 
-void CMapManager::initialize(u16 id)
+void CMapManager::initialize(U16 id)
 {
 	VERIFY(0);
 	m_locations->registry( ).init(id);// actor's id
 }
 
-CMapLocation* CMapManager::AddMapLocation(const shared_str& spot_type, u16 id)
+CMapLocation* CMapManager::AddMapLocation(const shared_str& spot_type, U16 id)
 {
 	FindLocationBySpotID key(spot_type, id);
 	Locations_it it = std::find_if(Locations( ).begin( ), Locations( ).end( ), key);
@@ -193,7 +193,7 @@ CMapLocation* CMapManager::AddRelationLocation(CInventoryOwner* pInvOwner)
 /*
 CMapLocation* CMapManager::AddUserLocation(const shared_str& spot_type, const shared_str& level_name, Fvector3 position)
 {
-	u16 _id	= Level().Server->PerformIDgen(0xffff);
+	U16 _id	= Level().Server->PerformIDgen(0xffff);
 	CUserDefinedMapLocation* l = xr_new<CUserDefinedMapLocation>(*spot_type, _id);
 	l->InitExternal	(level_name, position);
 	Locations().push_back( SLocationKey(spot_type, _id) );
@@ -202,7 +202,7 @@ CMapLocation* CMapManager::AddUserLocation(const shared_str& spot_type, const sh
 }
 */
 
-void CMapManager::RemoveMapLocation(const shared_str& spot_type, u16 id)
+void CMapManager::RemoveMapLocation(const shared_str& spot_type, U16 id)
 {
 	FindLocationBySpotID key(spot_type, id);
 	Locations_it it = std::find_if(Locations( ).begin( ), Locations( ).end( ), key);
@@ -221,7 +221,7 @@ void CMapManager::RemoveMapLocation(const shared_str& spot_type, u16 id)
 	}
 }
 
-void CMapManager::RemoveMapLocationByObjectID(u16 id) //call on destroy object
+void CMapManager::RemoveMapLocationByObjectID(U16 id) //call on destroy object
 {
 	FindLocationByID key(id);
 	Locations_it it = std::find_if(Locations( ).begin( ), Locations( ).end( ), key);
@@ -249,14 +249,14 @@ void CMapManager::RemoveMapLocation(CMapLocation* ml)
 	}
 }
 
-u16 CMapManager::HasMapLocation(const shared_str& spot_type, u16 id)
+U16 CMapManager::HasMapLocation(const shared_str& spot_type, U16 id)
 {
 	CMapLocation* l = GetMapLocation(spot_type, id);
 
 	return (l) ? l->RefCount( ) : 0;
 }
 
-CMapLocation* CMapManager::GetMapLocation(const shared_str& spot_type, u16 id)
+CMapLocation* CMapManager::GetMapLocation(const shared_str& spot_type, U16 id)
 {
 	FindLocationBySpotID key(spot_type, id);
 	Locations_it it = std::find_if(Locations( ).begin( ), Locations( ).end( ), key);

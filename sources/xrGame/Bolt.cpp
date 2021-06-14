@@ -10,7 +10,7 @@ CBolt::CBolt( )
 	m_weight = 0.1f;
 	m_slot = BOLT_SLOT;
 	m_flags.set(Fruck, FALSE);
-	m_thrower_id = u16(-1);
+	m_thrower_id = U16(-1);
 }
 
 CBolt::~CBolt( )
@@ -26,7 +26,7 @@ void CBolt::OnH_A_Chield( )
 	}
 }
 
-void CBolt::OnEvent(CNetPacket& P, u16 type)
+void CBolt::OnEvent(CNetPacket& P, U16 type)
 {
 	inherited::OnEvent(P, type);
 }
@@ -106,12 +106,12 @@ void CBolt::activate_physic_shell( )
 	m_pPhysicsShell->SetAirResistance(0.0001f);
 }
 
-void CBolt::SetInitiator(u16 id)
+void CBolt::SetInitiator(U16 id)
 {
 	m_thrower_id = id;
 }
 
-u16 CBolt::Initiator( )
+U16 CBolt::Initiator( )
 {
 	return m_thrower_id;
 }

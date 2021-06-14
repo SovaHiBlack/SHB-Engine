@@ -168,13 +168,17 @@ namespace CPU
 
 		_control87(_PC_64, MCW_PC);
 //		_control87	( _RC_CHOP, MCW_RC );
-		double a, b;
-		a = 1;		b = double(clk_per_second);
-		clk_to_seconds = float(double(a / b));
-		a = 1000;	b = double(clk_per_second);
-		clk_to_milisec = float(double(a / b));
-		a = 1000000; b = double(clk_per_second);
-		clk_to_microsec = float(double(a / b));
+		F64 a;
+		F64 b;
+		a = 1;
+		b = F64(clk_per_second);
+		clk_to_seconds = float(F64(a / b));
+		a = 1000;
+		b = F64(clk_per_second);
+		clk_to_milisec = float(F64(a / b));
+		a = 1000000;
+		b = F64(clk_per_second);
+		clk_to_microsec = float(F64(a / b));
 	}
 };
 

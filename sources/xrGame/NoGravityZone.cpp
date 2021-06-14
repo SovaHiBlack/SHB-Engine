@@ -38,7 +38,7 @@ void CNoGravityZone::switchGravity(SZoneObjectInfo& io, bool val)
 		shell->set_ApplyByGravity(val);
 		if(!val&&shell->get_ApplyByGravity())
 		{
-			CPhysicsElement* e=shell->get_ElementByStoreOrder(u16(Random.randI(0,shell->get_ElementsNumber())));
+			CPhysicsElement* e=shell->get_ElementByStoreOrder(U16(Random.randI(0,shell->get_ElementsNumber())));
 			if(e->isActive())
 			{
 				e->applyImpulseTrace(Fvector3().random_point(e->getRadius()), Fvector3().random_dir(),shell->getMass()*ph_world->Gravity()*fixed_step,e->m_SelfID);

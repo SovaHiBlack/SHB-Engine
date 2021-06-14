@@ -314,7 +314,7 @@ void CLevel::PrefetchSound(const char* name)
 
 bool g_bDebugEvents = false;
 
-void CLevel::cl_Process_Event(u16 dest, u16 type, CNetPacket& P)
+void CLevel::cl_Process_Event(U16 dest, U16 type, CNetPacket& P)
 {
 //	Msg("--- event[%d] for [%d]", type,dest);
 	CObject* O = Objects.net_Find(dest);
@@ -343,7 +343,7 @@ void CLevel::cl_Process_Event(u16 dest, u16 type, CNetPacket& P)
 	else
 	{	// handle GE_DESTROY_REJECT here
 		u32 pos = P.r_tell( );
-		u16 id = P.r_u16( );
+		U16 id = P.r_u16( );
 		P.r_seek(pos);
 
 		bool ok = true;
@@ -385,16 +385,16 @@ void CLevel::ProcessGameEvents( )
 
 		while (game_events->available(svT))
 		{
-			u16 ID;
-			u16 dest;
-			u16 type;
+			U16 ID;
+			U16 dest;
+			U16 type;
 			game_events->get(ID, dest, type, P);
 
 			switch (ID)
 			{
 				case M_SPAWN:
 				{
-					u16 dummy16;
+					U16 dummy16;
 					P.r_begin(dummy16);
 					cl_Process_Spawn(P);
 				}

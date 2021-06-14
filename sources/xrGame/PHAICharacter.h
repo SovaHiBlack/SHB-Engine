@@ -31,7 +31,7 @@ public:
 	{
 		m_max_velocity = vel;
 	}
-	virtual		void		InitContact(dContact* c, bool& do_collide, u16 material_idx_1, u16 material_idx_2);
+	virtual		void		InitContact(dContact* c, bool& do_collide, U16 material_idx_1, U16 material_idx_2);
 	virtual		void		SetForcedPhysicsControl(bool v)
 	{
 		m_forced_physics_control = v;

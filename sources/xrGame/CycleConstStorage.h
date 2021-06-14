@@ -4,7 +4,8 @@ template<class T,int size>
 class CCycleConstStorage
 {
 	T array[size];
-	u16 first;
+	U16 first;
+
 public:
 	inline CCycleConstStorage()
 	{

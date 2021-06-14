@@ -24,7 +24,7 @@ CALifeInteractionManager::CALifeInteractionManager	(CServer*server, const char* 
 /**
 	m_inventory_slot_count		= pSettings->r_u32("inventory","slots");
 	m_temp_weapons.resize		(m_inventory_slot_count);
-	m_temp_marks.assign			(u16(-1),false);
+	m_temp_marks.assign			(U16(-1),false);
 /**/
 }
 

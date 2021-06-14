@@ -94,19 +94,19 @@ const float	fQuantizerRangeExt	= 1.5f;
 class ENGINE_API		CMotionDef
 {
 public:
-	u16						bone_or_part;
-	u16						motion;
-	u16						speed;				// quantized: 0..10
-	u16						power;				// quantized: 0..10
-	u16						accrue;				// quantized: 0..10
-	u16						falloff;			// quantized: 0..10
-	u16						flags;
+	U16						bone_or_part;
+	U16						motion;
+	U16						speed;				// quantized: 0..10
+	U16						power;				// quantized: 0..10
+	U16						accrue;				// quantized: 0..10
+	U16						falloff;			// quantized: 0..10
+	U16						flags;
 	xr_vector<motion_marks>	marks;
 
-	inline float				Dequantize			(u16 V)		{	return  float(V)/655.35f; }
-	inline u16					Quantize			(float V)	{ int		t = iFloor(V*655.35f); clamp(t,0,65535); return u16(t); }
+	inline float				Dequantize			(U16 V)		{	return  float(V)/655.35f; }
+	inline U16					Quantize			(float V)	{ int		t = iFloor(V*655.35f); clamp(t,0,65535); return U16(t); }
 
-	void					Load				(IReader* MP, u32 fl, u16 vers);
+	void					Load				(IReader* MP, u32 fl, U16 vers);
 	u32						mem_usage			(){ return sizeof(*this);}
 
 	__forceinline float				Accrue				(){return fQuantizerRangeExt*Dequantize(accrue);}
@@ -118,7 +118,7 @@ public:
 struct accel_str_pred : public std::binary_function<shared_str, shared_str, bool>	{	
 	inline bool operator()(const shared_str& x, const shared_str& y) const	{	return xr_strcmp(x,y)<0;	}
 };
-typedef xr_map<shared_str,u16,accel_str_pred> 	accel_map;
+typedef xr_map<shared_str, U16,accel_str_pred> 	accel_map;
 //DEFINE_VECTOR			(CMotionDef,MotionDefVec,MotionDefVecIt);
 using MotionDefVec = xr_vector<CMotionDef>;
 using MotionDefVecIt = MotionDefVec::iterator;
@@ -146,8 +146,8 @@ class ENGINE_API		CPartition
 {
 	CPartDef			P[MAX_PARTS];
 public:
-	inline CPartDef&		operator[] 			(u16 id){ return P[id]; }
-	inline CPartDef&		part				(u16 id){ return P[id]; }
+	inline CPartDef&		operator[] 			(U16 id){ return P[id]; }
+	inline CPartDef&		part				(U16 id){ return P[id]; }
 	u32					mem_usage			()		{ return P[0].mem_usage()*MAX_PARTS;}
 };
 
@@ -223,7 +223,7 @@ public:
 	accel_map*			fx				()							{	VERIFY(p_); return &p_->m_fx;					}
 	CPartition*			partition		()							{	VERIFY(p_); return &p_->m_partition;			}
 	MotionDefVec*		motion_defs		()							{	VERIFY(p_); return &p_->m_mdefs;				}
-	CMotionDef*			motion_def		(u16 idx)					{	VERIFY(p_); return &p_->m_mdefs[idx];			}
+	CMotionDef*			motion_def		(U16 idx)					{	VERIFY(p_); return &p_->m_mdefs[idx];			}
 
 	const shared_str	&id				() const					{	VERIFY(p_); return p_->m_id;					}
 

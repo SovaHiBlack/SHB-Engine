@@ -50,21 +50,21 @@ struct	game_PlayerState
 	float		experience_D;
 	U8			rank;
 	U8			af_count;
-	u16			flags__;
+	U16			flags__;
 
-	u16			ping;
+	U16			ping;
 
-	u16			GameID;
+	U16			GameID;
 
-	u16			lasthitter;
-	u16			lasthitweapon;
+	U16			lasthitter;
+	U16			lasthitweapon;
 	S8			skin;
 	u32			RespawnTime;
 	u32			DeathTime;
 	S16			money_delta;
 	U8			m_bCurrentVoteAgreed;
-//	DEF_DEQUE	(OLD_GAME_ID, u16);
-	using OLD_GAME_ID = xr_deque<u16>;
+//	DEF_DEQUE	(OLD_GAME_ID, U16);
+	using OLD_GAME_ID = xr_deque<U16>;
 	using OLD_GAME_ID_it = OLD_GAME_ID::iterator;
 	OLD_GAME_ID	mOldIDs;
 	int			money_added;
@@ -75,13 +75,13 @@ public:
 					game_PlayerState		();
 					~game_PlayerState		();
 	virtual void	clear					();
-			bool	testFlag				(u16 f) const;
-			void	setFlag					(u16 f);
-			void	resetFlag				(u16 f);
+			bool	testFlag				(U16 f) const;
+			void	setFlag					(U16 f);
+			void	resetFlag				(U16 f);
 			const char* getName					(){return name;}
 			void	setName					(const char* s){strcpy(name,s);}
-			void	SetGameID				(u16 NewID);
-			bool	HasOldID				(u16 ID);
+			void	SetGameID				(U16 NewID);
+			bool	HasOldID				(U16 ID);
 			bool	IsSkip					() const {return testFlag(GAME_PLAYER_FLAG_SKIP);}
 			
 			S16		frags					() const {return m_iRivalKills - m_iSelfKills - m_iTeamKills;}
@@ -90,8 +90,8 @@ public:
 	virtual void	net_Import				(CNetPacket& P);
 	//---------------------------------------
 	
-//	DEF_VECTOR(PLAYER_ITEMS_LIST, u16);
-	using PLAYER_ITEMS_LIST = xr_vector<u16>;
+//	DEF_VECTOR(PLAYER_ITEMS_LIST, U16);
+	using PLAYER_ITEMS_LIST = xr_vector<U16>;
 	using PLAYER_ITEMS_LIST_it = PLAYER_ITEMS_LIST::iterator;
 
 	PLAYER_ITEMS_LIST	pItemList;
@@ -112,10 +112,10 @@ add_to_type_list(game_PlayerState)
 #undef script_type_list
 #define script_type_list save_type_list(game_PlayerState)
 
-struct	game_TeamState
+struct game_TeamState
 {
 	int			score;
-	u16			num_targets;
+	U16			num_targets;
 
 	game_TeamState();
 };
@@ -125,7 +125,7 @@ class	game_GameState : public DLL_Pure
 {
 protected:
 	int								m_type;
-	u16								m_phase;
+	U16								m_phase;
 	int								m_round;
 	u32								m_start_time;
 
@@ -140,7 +140,7 @@ public:
 									game_GameState			();
 	virtual							~game_GameState			()								{}
 				u32					Type					() const						{return m_type;};
-				u16					Phase					() const						{return m_phase;};
+				U16					Phase					() const						{return m_phase;};
 				int					Round					() const						{return m_round;};
 				u32					StartTime				() const						{return m_start_time;};
 	virtual		void				Create					(shared_str& options)				{};

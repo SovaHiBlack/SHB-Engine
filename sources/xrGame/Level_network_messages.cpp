@@ -30,8 +30,8 @@ void CLevel::ClientReceive( )
 		m_dwRPC++;
 		m_dwRPS += P->B.count;
 		//-----------------------------------------------------
-		u16 m_type;
-		u16 ID;
+		U16 m_type;
+		U16 ID;
 		P->r_begin(m_type);
 		switch (m_type)
 		{
@@ -148,7 +148,7 @@ void CLevel::ClientReceive( )
 				U8 Count = P->r_u8( );
 				for (U8 i = 0; i < Count; i++)
 				{
-					u16 ID = P->r_u16( );
+					U16 ID = P->r_u16( );
 					Fvector3 NewPos;
 					Fvector3 NewDir;
 					P->r_vec3(NewPos);

@@ -15,16 +15,16 @@ public:
 							CMapManager					( );
 							~CMapManager				( );
 	void					Update						( );
-	void					initialize					(u16 id);
+	void					initialize					(U16 id);
 	Locations&				Locations					( );
-	CMapLocation*			AddMapLocation				(const shared_str& spot_type, u16 id);
+	CMapLocation*			AddMapLocation				(const shared_str& spot_type, U16 id);
 	CMapLocation*			AddRelationLocation			(CInventoryOwner* pInvOwner);
 //.	CMapLocation*			AddUserLocation				(const shared_str& spot_type, const shared_str& level_name, Fvector3 position);
-	void					RemoveMapLocation			(const shared_str& spot_type, u16 id);
-	u16						HasMapLocation				(const shared_str& spot_type, u16 id);
-	void					RemoveMapLocationByObjectID	(u16 id); //call on destroy object
+	void					RemoveMapLocation			(const shared_str& spot_type, U16 id);
+	U16						HasMapLocation				(const shared_str& spot_type, U16 id);
+	void					RemoveMapLocationByObjectID	(U16 id); //call on destroy object
 	void					RemoveMapLocation			(CMapLocation* ml);
-	CMapLocation*			GetMapLocation				(const shared_str& spot_type, u16 id);
+	CMapLocation*			GetMapLocation				(const shared_str& spot_type, U16 id);
 	void					DisableAllPointers			( );
 
 #ifdef DEBUG

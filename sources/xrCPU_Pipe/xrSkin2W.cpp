@@ -6,8 +6,8 @@
 /*
 struct vertBoned2W	// (1+3+3 + 1+3+3 + 2)*4 = 16*4 = 64 bytes
 {
-	u16	matrix0;
-	u16	matrix1;
+	U16	matrix0;
+	U16	matrix1;
 	Fvector3	P0;
 	Fvector3	N0;
 	Fvector3	P1;

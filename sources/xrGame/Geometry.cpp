@@ -76,20 +76,18 @@ void TransformedGeometryExtensionLocalParams(dGeomID geom_transform,const dReal*
 	local_center_prg=center_prg-dDOT(local_pos,local_axis);
 }
 
-
-
-CODEGeom::CODEGeom()
+CCodeGeom::CCodeGeom()
 {
 	m_geom_transform=NULL;
-	m_bone_id=u16(-1);
+	m_bone_id= U16(-1);
 }
 
-CODEGeom::~CODEGeom()
+CCodeGeom::~CCodeGeom()
 {
 	if(m_geom_transform) destroy();
 }
 
-void CODEGeom::get_mass(dMass& m,const Fvector3& ref_point, float density)
+void CCodeGeom::get_mass(dMass& m,const Fvector3& ref_point, float density)
 {
 	get_mass(m);
 	dMassAdjust(&m,density*volume());
@@ -98,7 +96,7 @@ void CODEGeom::get_mass(dMass& m,const Fvector3& ref_point, float density)
 	dMassTranslate(&m,l.x,l.y,l.z);
 }
 
-void CODEGeom::get_mass(dMass& m,const Fvector3& ref_point)
+void CCodeGeom::get_mass(dMass& m,const Fvector3& ref_point)
 {
 	get_mass(m);
 	Fvector3 l;
@@ -106,21 +104,21 @@ void CODEGeom::get_mass(dMass& m,const Fvector3& ref_point)
 	dMassTranslate(&m,l.x,l.y,l.z);
 }
 
-void CODEGeom::add_self_mass(dMass& m,const Fvector3& ref_point, float density)
+void CCodeGeom::add_self_mass(dMass& m,const Fvector3& ref_point, float density)
 {
 	dMass self_mass;
 	get_mass(self_mass,ref_point,density);
 	dMassAdd(&m,&self_mass);
 }
 
-void CODEGeom::add_self_mass(dMass& m,const Fvector3& ref_point)
+void CCodeGeom::add_self_mass(dMass& m,const Fvector3& ref_point)
 {
 	dMass self_mass;
 	get_mass(self_mass,ref_point);
 	dMassAdd(&m,&self_mass);
 }
 
-void CODEGeom::get_local_center_bt(Fvector3& center)
+void CCodeGeom::get_local_center_bt(Fvector3& center)
 {
 	if(! m_geom_transform) return;
 	if(!geom())		//geom is not transformed
@@ -129,11 +127,11 @@ void CODEGeom::get_local_center_bt(Fvector3& center)
 	}
 	center.set(*((const Fvector3*)dGeomGetPosition(geom())));
 }
-void CODEGeom::get_local_form_bt(Fmatrix& form)
+void CCodeGeom::get_local_form_bt(Fmatrix& form)
 {
 	PHDynamicData::DMXPStoFMX(dGeomGetRotation(geom()),dGeomGetPosition(geom()),form);
 }
-void CODEGeom::get_global_center_bt(Fvector3& center)
+void CCodeGeom::get_global_center_bt(Fvector3& center)
 {
 	center.set(*((const Fvector3*)dGeomGetPosition(m_geom_transform)));
 	dVector3 add;
@@ -142,7 +140,7 @@ void CODEGeom::get_global_center_bt(Fvector3& center)
 	center.y += add[1];
 	center.z += add[2];
 }
-void CODEGeom::get_global_form_bt(Fmatrix& form)
+void CCodeGeom::get_global_form_bt(Fmatrix& form)
 {
 	dMULTIPLY0_331 ((dReal*)(&form.c),dGeomGetRotation(m_geom_transform),dGeomGetPosition(geom()));
 	form.c.add(*((const Fvector3*)dGeomGetPosition(m_geom_transform)));
@@ -150,7 +148,7 @@ void CODEGeom::get_global_form_bt(Fmatrix& form)
 	//PHDynamicData::DMXtoFMX((dReal*)(&form),form);
 }
 
-void CODEGeom::set_static_ref_form(const Fmatrix& form)
+void CCodeGeom::set_static_ref_form(const Fmatrix& form)
 {
 	dGeomSetPosition(geometry_transform(),form.c.x,form.c.y,form.c.z);
 	Fmatrix33 m33;
@@ -160,25 +158,25 @@ void CODEGeom::set_static_ref_form(const Fmatrix& form)
 	dGeomSetRotation(geometry_transform(),R);
 }
 
-void CODEGeom::set_position(const Fvector3& /*ref_point*/)
+void CCodeGeom::set_position(const Fvector3& /*ref_point*/)
 {
 	dGeomUserDataResetLastPos(geom());
 }
 
-void CODEGeom::set_body(dBodyID body)
+void CCodeGeom::set_body(dBodyID body)
 {
 	if(m_geom_transform) dGeomSetBody(m_geom_transform,body);
 }
 
-void CODEGeom::add_to_space(dSpaceID space)
+void CCodeGeom::add_to_space(dSpaceID space)
 {
 	if(m_geom_transform) dSpaceAdd(space,m_geom_transform);
 }
-void CODEGeom::remove_from_space(dSpaceID space)
+void CCodeGeom::remove_from_space(dSpaceID space)
 {
 	if(m_geom_transform) dSpaceRemove(space,m_geom_transform);
 }
-void CODEGeom::clear_cashed_tries()
+void CCodeGeom::clear_cashed_tries()
 {
 	if(!m_geom_transform)return;
 	dGeomID g=geom();
@@ -193,7 +191,7 @@ void CODEGeom::clear_cashed_tries()
 		dGeomUserDataClearCashedTries(m_geom_transform);
 	}
 }
-void CODEGeom::set_material(u16 ul_material)
+void CCodeGeom::set_material(U16 ul_material)
 {
 	if(!m_geom_transform) return;
 	if(geom())
@@ -208,7 +206,7 @@ void CODEGeom::set_material(u16 ul_material)
 	}
 }
 
-void CODEGeom::set_contact_cb(ContactCallbackFun* ccb)
+void CCodeGeom::set_contact_cb(ContactCallbackFun* ccb)
 {
 	if(!m_geom_transform) return;
 	if(geom())
@@ -223,7 +221,7 @@ void CODEGeom::set_contact_cb(ContactCallbackFun* ccb)
 	}
 }
 
-void CODEGeom::set_obj_contact_cb(ObjectContactCallbackFun* occb)
+void CCodeGeom::set_obj_contact_cb(ObjectContactCallbackFun* occb)
 {
 	if(!m_geom_transform) return;
 	if(geom())
@@ -237,7 +235,7 @@ void CODEGeom::set_obj_contact_cb(ObjectContactCallbackFun* occb)
 		dGeomUserDataSetObjectContactCallback(m_geom_transform,occb);
 	}
 }
-void CODEGeom::add_obj_contact_cb(ObjectContactCallbackFun* occb)
+void CCodeGeom::add_obj_contact_cb(ObjectContactCallbackFun* occb)
 {
 	if(!m_geom_transform) return;
 	if(geom())
@@ -251,7 +249,7 @@ void CODEGeom::add_obj_contact_cb(ObjectContactCallbackFun* occb)
 		dGeomUserDataAddObjectContactCallback(m_geom_transform,occb);
 	}
 }
-void CODEGeom::remove_obj_contact_cb(ObjectContactCallbackFun* occb)
+void CCodeGeom::remove_obj_contact_cb(ObjectContactCallbackFun* occb)
 {
 	if(!m_geom_transform) return;
 	if(geom())
@@ -265,7 +263,7 @@ void CODEGeom::remove_obj_contact_cb(ObjectContactCallbackFun* occb)
 		dGeomUserDataRemoveObjectContactCallback(m_geom_transform,occb);
 	}
 }
-void CODEGeom::set_callback_data(void *cd)
+void CCodeGeom::set_callback_data(void *cd)
 {
 	if(!m_geom_transform) return;
 	if(geom())
@@ -279,7 +277,7 @@ void CODEGeom::set_callback_data(void *cd)
 		dGeomUserDataSetCallbackData(m_geom_transform,cd);
 	}
 }
-void* CODEGeom::get_callback_data()
+void* CCodeGeom::get_callback_data()
 {
 	if(!m_geom_transform) return	NULL;
 	if(geom())
@@ -293,7 +291,7 @@ void* CODEGeom::get_callback_data()
 		return dGeomGetUserData(m_geom_transform)->callback_data;
 	}
 }
-void CODEGeom::set_ref_object(CPHShellHolder* ro)
+void CCodeGeom::set_ref_object(CPHShellHolder* ro)
 {
 	if(!m_geom_transform) return;
 	if(geom())
@@ -308,7 +306,7 @@ void CODEGeom::set_ref_object(CPHShellHolder* ro)
 	}
 }
 
-void CODEGeom::set_ph_object(CPHObject* o)
+void CCodeGeom::set_ph_object(CPHObject* o)
 {
 	if(!m_geom_transform) return;
 	if(geom())
@@ -322,19 +320,19 @@ void CODEGeom::set_ph_object(CPHObject* o)
 		dGeomGetUserData(m_geom_transform)->ph_object=o;
 	}
 }
-void CODEGeom::move_local_basis(const Fmatrix& inv_new_mul_old)
+void CCodeGeom::move_local_basis(const Fmatrix& inv_new_mul_old)
 {
 	Fmatrix new_form;
 	get_local_form		(new_form);
 	new_form.mulA_43	(inv_new_mul_old);
 	set_local_form		(new_form);
 }
-void CODEGeom::build(const Fvector3& ref_point)
+void CCodeGeom::build(const Fvector3& ref_point)
 {
 	init();
 	set_position(ref_point);
 }
-void CODEGeom::init()
+void CCodeGeom::init()
 {
 	dGeomID	geom=create();
 	m_geom_transform=dCreateGeomTransform(0);
@@ -345,7 +343,7 @@ void CODEGeom::init()
 	dGeomCreateUserData(geom);
 	dGeomUserDataSetBoneId(geom,m_bone_id);
 }
-void CODEGeom::destroy()
+void CCodeGeom::destroy()
 {
 	if(!m_geom_transform) return;
 	if(geom())
@@ -382,14 +380,14 @@ float CBoxGeom::radius()
 {
 	return m_box.m_halfsize.x;
 }
-void CODEGeom::get_final_tx_bt(const dReal*	&p,	const dReal*	&R,dReal *bufV, dReal *bufM)
+void CCodeGeom::get_final_tx_bt(const dReal*	&p,	const dReal*	&R,dReal *bufV, dReal *bufM)
 {
 	VERIFY(m_geom_transform);
 	//dGeomID		g		=	geometry_bt()						;
 							get_final_tx	(m_geom_transform,p,R,bufV,bufM)	;
 
 }
-void CODEGeom::get_final_tx(dGeomID g,const dReal*	&p,const dReal*	&R,dReal * bufV, dReal* bufM)
+void CCodeGeom::get_final_tx(dGeomID g,const dReal*	&p,const dReal*	&R,dReal * bufV, dReal* bufM)
 {
 	if(is_transform(g))
 	{

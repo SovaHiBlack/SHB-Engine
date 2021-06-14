@@ -195,7 +195,7 @@ public:
 	virtual		CPhysicsJoint* get_Joint(const char* bone_name);
 	virtual		CPhysicsJoint* get_JointByStoreOrder(u16 num);
 	virtual		u16					get_JointsNumber( );
-	virtual		CODEGeom* get_GeomByID(u16 bone_id);
+	virtual		CCodeGeom* get_GeomByID(u16 bone_id);
 
 	virtual		void				Enable( );
 	virtual		void				Disable( );

@@ -29,6 +29,6 @@ void CScriptActionCondition::script_register(lua_State *L)
 			]
 			.def(					constructor<>())
 			.def(					constructor<u32>())
-			.def(					constructor<u32,double>())
+			.def(					constructor<u32, F64>())
 	];
 }

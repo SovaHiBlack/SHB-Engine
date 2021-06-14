@@ -10,12 +10,12 @@
 #include "alife_human_object_handler.h"
 #include "xrServer_Objects_ALife_Monsters.h"
 
-u16	 CALifeHumanObjectHandler::get_available_ammo_count			(const CSE_ALifeItemWeapon *weapon, ALife::OBJECT_VECTOR &objects)
+U16	 CALifeHumanObjectHandler::get_available_ammo_count			(const CSE_ALifeItemWeapon *weapon, ALife::OBJECT_VECTOR &objects)
 {
 	return	(0);
 }
 
-u16	 CALifeHumanObjectHandler::get_available_ammo_count			(const CSE_ALifeItemWeapon *weapon, ALife::ITEM_P_VECTOR &items, ALife::OBJECT_VECTOR *objects)
+U16	 CALifeHumanObjectHandler::get_available_ammo_count			(const CSE_ALifeItemWeapon *weapon, ALife::ITEM_P_VECTOR &items, ALife::OBJECT_VECTOR *objects)
 {
 	return	(0);
 }

@@ -76,7 +76,7 @@ public:
 	virtual void				GetBriefInfo(xr_string& str_name, xr_string& icon_sect_name, xr_string& str_count)
 	{ }
 
-	virtual void				OnEvent(CNetPacket& P, u16 type);
+	virtual void				OnEvent(CNetPacket& P, U16 type);
 
 	virtual bool				Useful( ) const;									// !!! Переопределить. (см. в Inventory.cpp)
 	virtual bool				Attach(PIItem pIItem, bool b_send_event)
@@ -274,7 +274,7 @@ public:
 
 public:
 	virtual void				activate_physic_shell( );
-	virtual u16					bone_count_to_synchronize( ) const;
+	virtual U16					bone_count_to_synchronize( ) const;
 
 	virtual bool				NeedToDestroyObject( ) const;
 	virtual ALife::_TIME_ID		TimePassedAfterIndependant( ) const;

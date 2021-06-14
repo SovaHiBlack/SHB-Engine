@@ -31,7 +31,7 @@ public:
 
 public:
 	inline					CScriptActionCondition	();
-	inline					CScriptActionCondition	(u32 dwFlags, double dTime = -1);
+	inline					CScriptActionCondition	(u32 dwFlags, F64 dTime = -1);
 	virtual				~CScriptActionCondition	();
 	inline		void		initialize				();
 

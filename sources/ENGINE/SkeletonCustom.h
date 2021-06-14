@@ -67,8 +67,9 @@ public:
 class ENGINE_API		CBoneData
 {
 protected:
-	u16					SelfID;
-	u16					ParentID;
+	U16					SelfID;
+	U16					ParentID;
+
 public:
 	shared_str			name;
 
@@ -79,20 +80,21 @@ public:
 	Fmatrix				m2b_transform;	// model to bone conversion transform
 	SBoneShape			shape;
 	shared_str			game_mtl_name;
-	u16					game_mtl_idx;
+	U16					game_mtl_idx;
 	SJointIKData		IK_data;
 	float				mass;
 	Fvector3				center_of_mass;
 
-//	DEFINE_VECTOR(u16, FacesVec, FacesVecIt);
-	using FacesVec = xr_vector<u16>;
+//	DEFINE_VECTOR(U16, FacesVec, FacesVecIt);
+	using FacesVec = xr_vector<U16>;
 	using FacesVecIt = FacesVec::iterator;
 //	DEFINE_VECTOR(FacesVec, ChildFacesVec, ChildFacesVecIt);
 	using ChildFacesVec = xr_vector<FacesVec>;
 	using ChildFacesVecIt = ChildFacesVec::iterator;
 	ChildFacesVec		child_faces;	// shared
+
 public:
-	CBoneData(u16 ID) :SelfID(ID)
+	CBoneData(U16 ID) :SelfID(ID)
 	{
 		VERIFY(SelfID != BI_NONE);
 	}
@@ -102,22 +104,23 @@ public:
 	typedef svector<int, 128>	BoneDebug;
 	void						DebugQuery(BoneDebug& L);
 #endif
-	inline void				SetParentID(u16 id)
+
+	inline void				SetParentID(U16 id)
 	{
 		ParentID = id;
 	}
 
-	inline u16				GetSelfID( ) const
+	inline U16				GetSelfID( ) const
 	{
 		return SelfID;
 	}
-	inline u16				GetParentID( ) const
+	inline U16				GetParentID( ) const
 	{
 		return ParentID;
 	}
 
-// assign face
-	void				AppendFace(u16 child_idx, u16 idx)
+	// assign face
+	void				AppendFace(U16 child_idx, U16 idx)
 	{
 		child_faces[child_idx].push_back(idx);
 	}
@@ -152,16 +155,17 @@ public:
 	{
 		Fvector3		vert[3];
 		Fvector2		uv[3];
-		u16				bone_id[3][2];
+		U16				bone_id[3][2];
 		float			weight[3];
 	};
 //	DEFINE_VECTOR(WMFace, WMFacesVec, WMFacesVecIt);
 	using WMFacesVec = xr_vector<WMFace>;
 	using WMFacesVecIt = WMFacesVec::iterator;
 	WMFacesVec			m_Faces;		// 16 
+
 public:
 	Fsphere				m_Bounds;		// 16		world space
-public:
+
 	CSkeletonWallmark(CKinematics* p, const Fmatrix* m, ref_shader s, const Fvector3& cp, float ts) :
 		m_Parent(p), m_XForm(m), m_Shader(s), m_fTimeStart(ts), m_ContactPoint(cp)
 	{
@@ -243,10 +247,11 @@ public:
 	virtual void				Bone_Calculate(CBoneData* bd, Fmatrix* parent);
 	virtual void				OnCalculateBones( )
 	{ }
-public:
-	typedef xr_vector<std::pair<shared_str, u16> >	accel;
-public:
+
+	typedef xr_vector<std::pair<shared_str, U16>> accel;
+
 	IRender_Visual* m_lod;
+
 protected:
 	SkeletonWMVec				wallmarks;
 	u32							wm_frame;
@@ -257,7 +262,7 @@ protected:
 	CIniFile* pUserData;
 	CBoneInstance* bone_instances;	// bone instances
 	vecBones* bones;			// all bones	(shared)
-	u16							iRoot;			// Root bone index
+	U16							iRoot;			// Root bone index
 
 	// Fast search
 	accel* bone_map_N;		// bones  associations	(shared)	- sorted by name
@@ -272,7 +277,7 @@ protected:
 	CSkeletonX* LL_GetChild(u32 idx);
 
 	// internal functions
-	virtual CBoneData* CreateBoneData(u16 ID)
+	virtual CBoneData* CreateBoneData(U16 ID)
 	{
 		return xr_new<CBoneData>(ID);
 	}
@@ -294,18 +299,17 @@ public:
 	void						CalculateWallmarks( );
 	void						RenderWallmark(intrusive_ptr<CSkeletonWallmark> wm, FVF::LIT*& verts);
 	void						ClearWallmarks( );
-public:
 
-	bool			PickBone(const Fmatrix& parent_xform, Fvector3& normal, float& dist, const Fvector3& start, const Fvector3& dir, u16 bone_id);
-	virtual		void			EnumBoneVertices(SEnumVerticesCallback& C, u16 bone_id);
-public:
+	bool			PickBone(const Fmatrix& parent_xform, Fvector3& normal, float& dist, const Fvector3& start, const Fvector3& dir, U16 bone_id);
+	virtual		void			EnumBoneVertices(SEnumVerticesCallback& C, U16 bone_id);
+
 	CKinematics( );
 	virtual						~CKinematics( );
 
 	// Low level interface
-	u16							LL_BoneID(const char* B);
-	u16							LL_BoneID(const shared_str& B);
-	const char* LL_BoneName_dbg(u16 ID);
+	U16							LL_BoneID(const char* B);
+	U16							LL_BoneID(const shared_str& B);
+	const char* LL_BoneName_dbg(U16 ID);
 
 	CIniFile* LL_UserData( )
 	{
@@ -315,51 +319,52 @@ public:
 	{
 		return bone_map_N;
 	}
-	__forceinline CBoneInstance& LL_GetBoneInstance(u16 bone_id)
+	__forceinline CBoneInstance& LL_GetBoneInstance(U16 bone_id)
 	{
 		VERIFY(bone_id < LL_BoneCount( )); VERIFY(bone_instances); return bone_instances[bone_id];
 	}
-	CBoneData& LL_GetData(u16 bone_id)
+	CBoneData& LL_GetData(U16 bone_id)
 	{
 		VERIFY(bone_id < LL_BoneCount( )); VERIFY(bones);			return *((*bones)[bone_id]);
 	}
-	u16							LL_BoneCount( )
+	U16							LL_BoneCount( )
 	{
-		return u16(bones->size( ));
+		return U16(bones->size( ));
 	}
-	u16							LL_VisibleBoneCount( )
+	U16							LL_VisibleBoneCount( )
 	{
-		u64 F = visimask.flags & ((u64(1) << u64(LL_BoneCount( ))) - 1); return (u16) btwCount1(F);
+		u64 F = visimask.flags & ((u64(1) << u64(LL_BoneCount( ))) - 1);
+		return (U16) btwCount1(F);
 	}
-	__forceinline Fmatrix& LL_GetTransform(u16 bone_id)
+	__forceinline Fmatrix& LL_GetTransform(U16 bone_id)
 	{
 		return LL_GetBoneInstance(bone_id).mTransform;
 	}
-	__forceinline Fmatrix& LL_GetTransform_R(u16 bone_id)
+	__forceinline Fmatrix& LL_GetTransform_R(U16 bone_id)
 	{
 		return LL_GetBoneInstance(bone_id).mRenderTransform;
 	}	// rendering only
-	Fobb& LL_GetBox(u16 bone_id)
+	Fobb& LL_GetBox(U16 bone_id)
 	{
 		VERIFY(bone_id < LL_BoneCount( ));	return (*bones)[bone_id]->obb;
 	}
 	void						LL_GetBindTransform(xr_vector<Fmatrix>& matrices);
-	int 						LL_GetBoneGroups(xr_vector<xr_vector<u16> >& groups);
+	int							LL_GetBoneGroups(xr_vector<xr_vector<U16>>& groups);
 
-	u16							LL_GetBoneRoot( )
+	U16							LL_GetBoneRoot( )
 	{
 		return iRoot;
 	}
-	void						LL_SetBoneRoot(u16 bone_id)
+	void						LL_SetBoneRoot(U16 bone_id)
 	{
 		VERIFY(bone_id < LL_BoneCount( ));	iRoot = bone_id;
 	}
 
-	BOOL						LL_GetBoneVisible(u16 bone_id)
+	BOOL						LL_GetBoneVisible(U16 bone_id)
 	{
 		VERIFY(bone_id < LL_BoneCount( )); return visimask.is(u64(1) << bone_id);
 	}
-	void						LL_SetBoneVisible(u16 bone_id, BOOL val, BOOL bRecursive);
+	void						LL_SetBoneVisible(U16 bone_id, BOOL val, BOOL bRecursive);
 	u64							LL_GetBonesVisible( )
 	{
 		return visimask.get( );

@@ -8,7 +8,7 @@
 #include "Messages.h"
 #include "Level.h"
 
-SHit::SHit(float aPower, Fvector3& adir, CObject* awho, u16 aelement, Fvector3 ap_in_bone_space, float aimpulse, ALife::EHitType ahit_type, float aAP, bool AimBullet)
+SHit::SHit(float aPower, Fvector3& adir, CObject* awho, U16 aelement, Fvector3 ap_in_bone_space, float aimpulse, ALife::EHitType ahit_type, float aAP, bool AimBullet)
 {
 	power = aPower;
 	dir.set(adir);
@@ -67,7 +67,7 @@ bool SHit::is_valide( ) const
 	return hit_type != ALife::eHitTypeMax;
 }
 
-void SHit::GenHeader(u16 PacketType, u16 ID)
+void SHit::GenHeader(U16 PacketType, U16 ID)
 {
 	DestID = ID;
 	PACKET_TYPE = PacketType;
@@ -76,7 +76,7 @@ void SHit::GenHeader(u16 PacketType, u16 ID)
 
 void SHit::Read_Packet(CNetPacket Packet)
 {
-	u16 type_dummy;
+	U16 type_dummy;
 	Packet.r_begin(type_dummy);
 	Packet.r_u32(Time);
 	Packet.r_u16(PACKET_TYPE);
@@ -119,7 +119,7 @@ void SHit::Write_Packet_Cont(CNetPacket& Packet)
 	Packet.w_vec3(p_in_bone_space);
 	Packet.w_float(impulse);
 	Packet.w_u16(aim_bullet != 0);
-	Packet.w_u16(u16(hit_type & 0xffff));
+	Packet.w_u16(U16(hit_type & 0xffff));
 	if (hit_type == ALife::eHitTypeFireWound)
 	{
 		Packet.w_float(ap);
@@ -136,8 +136,8 @@ void SHit::Write_Packet(CNetPacket& Packet)
 {
 	Packet.w_begin(M_EVENT);
 	Packet.w_u32(Time);
-	Packet.w_u16(u16(PACKET_TYPE & 0xffff));
-	Packet.w_u16(u16(DestID & 0xffff));
+	Packet.w_u16(U16(PACKET_TYPE & 0xffff));
+	Packet.w_u16(U16(DestID & 0xffff));
 
 	Write_Packet_Cont(Packet);
 }

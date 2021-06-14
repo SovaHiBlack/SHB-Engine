@@ -146,16 +146,16 @@ public:
 	virtual bool						useful											(const CItemManager* manager, const CGameObject* object) const;
 	virtual float						evaluate										(const CItemManager* manager, const CGameObject* object) const;
 
-	virtual void						OnEvent											(CNetPacket& P, u16 type);
+	virtual void						OnEvent											(CNetPacket& P, U16 type);
 	virtual void						OnHUDDraw										(CCustomHUD* hud)
 	{
 		return inherited::OnHUDDraw(hud);
 	}
-	virtual u16							PHGetSyncItemsNumber							( )
+	virtual U16							PHGetSyncItemsNumber							( )
 	{
 		return inherited::PHGetSyncItemsNumber( );
 	}
-	virtual CPHSynchronize*				PHGetSyncItem									(u16 item)
+	virtual CPHSynchronize*				PHGetSyncItem									(U16 item)
 	{
 		return inherited::PHGetSyncItem(item);
 	}

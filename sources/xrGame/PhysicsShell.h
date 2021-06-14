@@ -10,7 +10,7 @@ class CPhysicsElement;
 class CPhysicsShell;
 class CPHFracture;
 class CPHJointDestroyInfo;
-class CODEGeom;
+class CCodeGeom;
 class CPHSynchronize;
 class CPHShellHolder;
 class CGameObject;
@@ -116,7 +116,7 @@ public:
 	virtual		void							add_Cylinder							(const Fcylinder&	V)																								= 0;
 	virtual		void							add_Shape								(const SBoneShape& shape)																							= 0;
 	virtual		void							add_Shape								(const SBoneShape& shape,const Fmatrix& offset)																		= 0;
-	virtual		CODEGeom						*last_geom								()																													= 0;
+	virtual		CCodeGeom*						last_geom								()																													= 0;
 	virtual		bool							has_geoms								()																													= 0;
 	virtual		void							add_Mass								(const SBoneShape& shape,const Fmatrix& offset,const Fvector3& mass_center,float mass,CPHFracture* fracture=NULL)	= 0;
 	virtual		void							set_ParentElement						(CPhysicsElement* p)																								= 0;
@@ -288,7 +288,7 @@ inline					CKinematics					*PKinematics								()																{return m_pKine
 	virtual			CPhysicsJoint				*get_Joint									(const char* bone_name)																			= 0;
 	virtual			CPhysicsJoint				*get_JointByStoreOrder						(u16 num)																					= 0;
 	virtual			u16							get_JointsNumber							()																							= 0;
-	virtual			CODEGeom					*get_GeomByID								(u16 bone_id)																				= 0;
+	virtual			CCodeGeom*					get_GeomByID								(u16 bone_id)																				= 0;
 	virtual			void						Freeze										()																							= 0;
 	virtual			void						UnFreeze									()																							= 0;
 	virtual			void						NetInterpolationModeON						()																							= 0;

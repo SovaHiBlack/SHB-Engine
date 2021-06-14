@@ -15,7 +15,7 @@ inline	CScriptActionCondition::CScriptActionCondition	()
 	m_tStartTime		= ALife::_TIME_ID(-1);
 }
 
-inline	CScriptActionCondition::CScriptActionCondition	(u32 dwFlags, double dTime)
+inline	CScriptActionCondition::CScriptActionCondition	(u32 dwFlags, F64 dTime)
 {
 	m_dwFlags			= dwFlags;
 	m_tLifeTime			= ALife::_TIME_ID(dTime);

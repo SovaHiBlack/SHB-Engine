@@ -51,7 +51,7 @@ protected:
 	virtual void					UpdateCLChild( )
 	{ }
 
-	u16								m_CarringBoneID;
+	U16								m_CarringBoneID;
 	shared_str						m_sParticlesName;
 
 	SArtefactActivation* m_activationObj;
@@ -117,7 +117,7 @@ public:
 	{
 		return GetState( ) == eHidden;
 	}
-	virtual u16						bone_count_to_synchronize( ) const;
+	virtual U16						bone_count_to_synchronize( ) const;
 
 	// optimization FAST/SLOW mode
 	u32						o_render_frame;

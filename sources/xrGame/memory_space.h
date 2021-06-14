@@ -127,7 +127,7 @@ namespace MemorySpace {
 		_flags<squad_mask_type>		m_squad_mask;
 
 		inline			CMemoryObject	();
-		inline	bool	operator==		(u16 id) const;
+		inline	bool	operator==		(U16 id) const;
 		inline	void	fill			(const T *game_object, const T *self, const squad_mask_type &mask);
 	};
 
@@ -160,7 +160,7 @@ namespace MemorySpace {
 
 	struct CHitObject : public CMemoryObject<CEntityAlive> {
 		Fvector3						m_direction;
-		u16							m_bone_index;
+		U16							m_bone_index;
 		float						m_amount;
 	};
 	

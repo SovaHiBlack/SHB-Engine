@@ -242,7 +242,7 @@ public:
 	virtual void				OnEvent(EVENT E, u64 P1, u64 P2);
 	virtual void				OnFrame( );
 	virtual void				OnRender( );
-	void						cl_Process_Event(u16 dest, u16 type, CNetPacket& P);
+	void						cl_Process_Event(U16 dest, U16 type, CNetPacket& P);
 	void						cl_Process_Spawn(CNetPacket& P);
 	void						ProcessGameEvents( );
 	void						ProcessGameSpawns( );
@@ -269,7 +269,7 @@ public:
 	u32					Objects_net_Save(CNetPacket* _Packet, u32 start, u32 count);
 	virtual void				Send(CNetPacket& P, u32 dwFlags = DPNSEND_GUARANTEED, u32 dwTimeout = 0);
 
-	void						g_cl_Spawn(const char* name, U8 rp, u16 flags, Fvector3 pos);	// only ask server
+	void						g_cl_Spawn(const char* name, U8 rp, U16 flags, Fvector3 pos);	// only ask server
 	void						g_sv_Spawn(CSE_Abstract* E);					// server reply/command spawning
 
 	// Save/Load/State
@@ -339,7 +339,7 @@ public:
 
 	bool			IsServer( );
 	bool			IsClient( );
-	CSE_Abstract* spawn_item(const char* section, const Fvector3& position, u32 level_vertex_id, u16 parent_id, bool return_item = false);
+	CSE_Abstract* spawn_item(const char* section, const Fvector3& position, u32 level_vertex_id, U16 parent_id, bool return_item = false);
 
 protected:
 	u32		m_dwCL_PingDeltaSend;

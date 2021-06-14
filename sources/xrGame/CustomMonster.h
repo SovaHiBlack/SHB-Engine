@@ -176,12 +176,12 @@ public:
 	virtual	Feel::Sound*		dcast_FeelSound			()			{ return this;	}
 	virtual	void				Hit						(SHit* pHDS);
 
-	virtual void				OnEvent					( CNetPacket& P, u16 type		);
+	virtual void				OnEvent					( CNetPacket& P, U16 type		);
 	virtual void				net_Destroy				();
 	virtual BOOL				UsedAI_Locations		();
 	///////////////////////////////////////////////////////////////////////
-	virtual u16					PHGetSyncItemsNumber	()			{return inherited ::PHGetSyncItemsNumber();}
-	virtual CPHSynchronize*		PHGetSyncItem			(u16 item)	{return inherited ::PHGetSyncItem(item);}
+	virtual U16					PHGetSyncItemsNumber	()			{return inherited ::PHGetSyncItemsNumber();}
+	virtual CPHSynchronize*		PHGetSyncItem			(U16 item)	{return inherited ::PHGetSyncItem(item);}
 	virtual void				PHUnFreeze				()			{return inherited ::PHUnFreeze();}
 	virtual void				PHFreeze				()			{return inherited ::PHFreeze();}
 	///////////////////////////////////////////////////////////////////////
@@ -276,7 +276,7 @@ public:
 public:
 	typedef u32											CriticalWoundType;
 private:
-	typedef associative_vector<u16,CriticalWoundType>	BODY_PART;
+	typedef associative_vector<U16,CriticalWoundType>	BODY_PART;
 
 protected:
 	u32								m_last_hit_time;
@@ -292,7 +292,7 @@ protected:
 	virtual bool					critical_wound_external_conditions_suitable	() {return true;}
 	virtual void					critical_wounded_state_start				() {}
 
-			bool					update_critical_wounded						(const u16 &bone_id, const float &power);
+			bool					update_critical_wounded						(const U16& bone_id, const float &power);
 
 public:
 	inline		void					critical_wounded_state_stop					();

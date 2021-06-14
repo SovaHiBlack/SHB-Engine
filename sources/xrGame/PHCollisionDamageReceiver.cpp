@@ -11,7 +11,7 @@
 #include "Messages.h"
 #include "CharacterPhysicsSupport.h"
 
-void CPHCollisionDamageReceiver::BoneInsert(u16 id, float k)
+void CPHCollisionDamageReceiver::BoneInsert(U16 id, float k)
 {
 	R_ASSERT2(FindBone(id) == m_controled_bones.end( ), "duplicate bone!");
 	m_controled_bones.push_back(SControledBone(id, k));
@@ -28,10 +28,10 @@ void CPHCollisionDamageReceiver::Init( )
 		for (CIniFile::SectCIt I = data.Data.begin( ); I != data.Data.end( ); I++)
 		{
 			const CIniFile::Item& item = *I;
-			u16 index = K->LL_BoneID(*item.first);
+			U16 index = K->LL_BoneID(*item.first);
 			R_ASSERT3(index != BI_NONE, "Wrong bone name", *item.first);
 			BoneInsert(index, float(atof(*item.second)));
-			CODEGeom* og = sh->PPhysicsShell( )->get_GeomByID(index);
+			CCodeGeom* og = sh->PPhysicsShell( )->get_GeomByID(index);
 			//R_ASSERT3(og, "collision damage bone has no physics collision", *item.first);
 			if (og)
 			{
@@ -63,7 +63,7 @@ void CPHCollisionDamageReceiver::CollisionCallback(bool& do_colide, bool bo1, dC
 		o_damager = ud_damager->ph_ref_object;
 	}
 
-	u16 source_id = o_damager ? o_damager->ID( ) : u16(-1);
+	U16 source_id = o_damager ? o_damager->ID( ) : U16(-1);
 	CPHCollisionDamageReceiver* dr = o_self->PHCollisionDamageReceiver( );
 	VERIFY2(dr, "wrong callback");
 
@@ -92,7 +92,7 @@ void CPHCollisionDamageReceiver::CollisionCallback(bool& do_colide, bool bo1, dC
 }
 
 const static float hit_threthhold = 5.f;
-void CPHCollisionDamageReceiver::Hit(u16 source_id, u16 bone_id, float power, const Fvector3& dir, Fvector3& pos)
+void CPHCollisionDamageReceiver::Hit(U16 source_id, U16 bone_id, float power, const Fvector3& dir, Fvector3& pos)
 {
 	DAMAGE_BONES_I i = FindBone(bone_id);
 	if (i == m_controled_bones.end( ))
@@ -127,10 +127,10 @@ void CPHCollisionDamageReceiver::Hit(u16 source_id, u16 bone_id, float power, co
 void CPHCollisionDamageReceiver::Clear( )
 {
 	//CPHShellHolder *sh	=PPhysicsShellHolder	();
-	//xr_map<u16,float>::iterator i=m_controled_bones.begin(),e=m_controled_bones.end();
+	//xr_map<U16,float>::iterator i=m_controled_bones.begin(),e=m_controled_bones.end();
 	//for(;e!=i;++i)
 	//{
-	//	CODEGeom* og= sh->PPhysicsShell()->get_GeomByID(i->first);
+	//	CCodeGeom* og= sh->PPhysicsShell()->get_GeomByID(i->first);
 	//	if(og)og->set_obj_contact_cb(NULL);
 	//}
 	m_controled_bones.clear( );

@@ -47,7 +47,7 @@ public:
 	virtual void		OnH_A_Chield						( );
 	virtual void		OnH_B_Independent					(bool just_before_destroy);
 
-	virtual void		OnEvent								(CNetPacket& P, u16 type);
+	virtual void		OnEvent								(CNetPacket& P, U16 type);
 
 	virtual void		OnAnimationEnd						(u32 state);
 
@@ -155,5 +155,5 @@ public:
 		return m_dwDestroyTime;
 	};
 	static void			ExitContactCallback					(bool& do_colide, bool bo1, dContact& c, SGameMtl* material_1, SGameMtl* material_2);
-	virtual u16			bone_count_to_synchronize			( ) const;
+	virtual U16			bone_count_to_synchronize			( ) const;
 };

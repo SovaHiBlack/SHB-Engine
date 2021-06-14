@@ -14,7 +14,7 @@ CInventoryBox::CInventoryBox()
 	m_in_use = false;
 }
 
-void CInventoryBox::OnEvent(CNetPacket& P, u16 type)
+void CInventoryBox::OnEvent(CNetPacket& P, U16 type)
 {
 	inherited::OnEvent	(P, type);
 
@@ -22,7 +22,7 @@ void CInventoryBox::OnEvent(CNetPacket& P, u16 type)
 	{
 	case GE_OWNERSHIP_TAKE:
 		{
-			u16 id;
+		U16 id;
             P.r_u16(id);
 			CObject* itm = Level().Objects.net_Find(id);  VERIFY(itm);
 			m_items.push_back	(id);
@@ -32,11 +32,13 @@ void CInventoryBox::OnEvent(CNetPacket& P, u16 type)
 		}break;
 	case GE_OWNERSHIP_REJECT:
 		{
-			u16 id;
+		U16 id;
             P.r_u16(id);
-			CObject* itm = Level().Objects.net_Find(id);  VERIFY(itm);
-			xr_vector<u16>::iterator it;
-			it = std::find(m_items.begin(),m_items.end(),id); VERIFY(it!=m_items.end());
+			CObject* itm = Level().Objects.net_Find(id);
+			VERIFY(itm);
+			xr_vector<U16>::iterator it;
+			it = std::find(m_items.begin(),m_items.end(),id);
+			VERIFY(it!=m_items.end());
 			m_items.erase		(it);
 			itm->H_SetParent	(NULL,!P.r_eof() && P.r_u8());
 
@@ -66,8 +68,8 @@ void CInventoryBox::net_Relcase(CObject* O)
 
 void CInventoryBox::AddAvailableItems(TIItemContainer& items_container) const
 {
-	xr_vector<u16>::const_iterator it = m_items.begin();
-	xr_vector<u16>::const_iterator it_e = m_items.end();
+	xr_vector<U16>::const_iterator it = m_items.begin();
+	xr_vector<U16>::const_iterator it_e = m_items.end();
 
 	for(;it!=it_e;++it)
 	{

@@ -44,7 +44,7 @@ void CHudItemObject::OnStateSwitch(u32 S)
 	CHudItem::OnStateSwitch(S);
 }
 
-void CHudItemObject::OnEvent(CNetPacket& P, u16 type)
+void CHudItemObject::OnEvent(CNetPacket& P, U16 type)
 {
 	CInventoryItemObject::OnEvent(P, type);
 	CHudItem::OnEvent(P, type);

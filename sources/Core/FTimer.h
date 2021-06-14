@@ -57,7 +57,7 @@ public:
 	inline float	GetElapsed_sec( )const
 	{
 		FPU::m64r( );
-		float _result = float(double(GetElapsed_ticks( )) / double(CPU::qpc_freq));
+		float _result = float(F64(GetElapsed_ticks( )) / F64(CPU::qpc_freq));
 		FPU::m24r( );
 
 		return _result;
@@ -80,9 +80,9 @@ private:
 	inline u64				GetElapsed_ticks(const u64& current_ticks) const
 	{
 		u64				delta = current_ticks - m_real_ticks;
-		double			delta_d = (double) delta;
-		double			time_factor_d = time_factor( );
-		double			time = delta_d * time_factor_d + 0.5;
+		F64			delta_d = (F64) delta;
+		F64			time_factor_d = time_factor( );
+		F64			time = delta_d * time_factor_d + 0.5;
 		u64				result = (u64) time;
 		return			(m_ticks + result);
 	}
@@ -134,7 +134,7 @@ public:
 	float			GetElapsed_sec( ) const
 	{
 		FPU::m64r( );
-		float result = float(double(GetElapsed_ticks( )) / double(CPU::qpc_freq));
+		float result = float(F64(GetElapsed_ticks( )) / F64(CPU::qpc_freq));
 		FPU::m24r( );
 
 		return result;
@@ -239,7 +239,7 @@ public:
 	inline float			GetElapsed_sec		( ) const
 	{
 		FPU::m64r( );
-		float _result = float(double(GetElapsed_ticks( )) / double(CPU::qpc_freq));
+		float _result = float(F64(GetElapsed_ticks( )) / F64(CPU::qpc_freq));
 		FPU::m24r( );
 
 		return _result;

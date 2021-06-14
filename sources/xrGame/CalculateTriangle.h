@@ -37,7 +37,7 @@ __forceinline void CalculateTriangle(CDB::TRI* XTri, dGeomID g, Triangle& triang
 	const float* p = NULL;
 	const float* r = NULL;
 	VERIFY(g);
-	CODEGeom::get_final_tx(g, p, r, v, m);
+	CCodeGeom::get_final_tx(g, p, r, v, m);
 	VERIFY(p);
 	CalculateTriangle(XTri, p, triangle);
 
@@ -45,7 +45,7 @@ __forceinline void CalculateTriangle(CDB::TRI* XTri, dGeomID g, Triangle& triang
 
 inline bool  TriContainPoint(const dReal* v0, const dReal* v1, const dReal* v2,
 							 const dReal* triSideAx0, const dReal* triSideAx1, const dReal* triSideAx2,
-							 const dReal* triAx, const dReal* pos, u16& c)
+							 const dReal* triAx, const dReal* pos, U16& c)
 {
 	c = 0;
 	dVector3 cross0, cross1, cross2;
@@ -70,12 +70,12 @@ inline bool  TriContainPoint(const dReal* v0, const dReal* v1, const dReal* v2,
 	return true;
 }
 
-__forceinline bool  TriContainPoint(const dReal* v0, const dReal* v1, const dReal* v2, const dReal* triAx, const dReal* triSideAx0, const dReal* triSideAx1, const dReal* pos, u16& c)
+__forceinline bool  TriContainPoint(const dReal* v0, const dReal* v1, const dReal* v2, const dReal* triAx, const dReal* triSideAx0, const dReal* triSideAx1, const dReal* pos, U16& c)
 {
 	dVector3 triSideAx2 = { v0[0] - v2[0],v0[1] - v2[1],v0[2] - v2[2] };
 	return TriContainPoint(v0, v1, v2, triSideAx0, triSideAx1, triSideAx2, triAx, pos, c);
 }
-__forceinline bool TriContainPoint(Triangle* T, const float* pos, u16& c)
+__forceinline bool TriContainPoint(Triangle* T, const float* pos, U16& c)
 {
 	//TriContainPoint(const dReal* v0,const dReal* v1,const dReal* v2,const dReal* triAx,const dReal* triSideAx0,const dReal* triSideAx1, const dReal* pos)
 	const Fvector3* V_array = Level( ).ObjectSpace.GetStaticVerts( );
@@ -92,7 +92,7 @@ enum ETriDist
 	tdVert
 };
 
-inline float DistToFragmenton(const dReal* point, const dReal* pt1, const dReal* pt2, dReal* p, dReal* to_point, u16& c)
+inline float DistToFragmenton(const dReal* point, const dReal* pt1, const dReal* pt2, dReal* p, dReal* to_point, U16& c)
 {
 	dVector3 V = { pt2[0] - pt1[0],pt2[1] - pt1[1],pt2[2] - pt1[2] };
 	dVector3 L = { pt1[0] - point[0],pt1[1] - point[1],pt1[2] - point[2] };
@@ -127,7 +127,8 @@ __forceinline float DistToTri(Triangle* T, const float* pos, float* dir, float* 
 	{
 		c = tdBehind; return -1.f;
 	}
-	u16 code;
+
+	U16 code;
 	if (TriContainPoint(T, pos, code))
 	{
 		c = tdPlane;
@@ -138,7 +139,7 @@ __forceinline float DistToTri(Triangle* T, const float* pos, float* dir, float* 
 	}
 	CDB::TRI* XTri = T->T;
 	const float* VRT[3] = { (dReal*) &V_array[XTri->verts[0]],(dReal*) &V_array[XTri->verts[1]],(dReal*) &V_array[XTri->verts[2]] };
-	u16 cd = u16(-1);
+	U16 cd = U16(-1);
 	float tdist = 0.f;
 
 	switch (code)
@@ -171,11 +172,11 @@ __forceinline float DistToTri(Triangle* T, const float* pos, float* dir, float* 
 	}
 	else tdist = 0.f;
 	return tdist;
-	//u16 c2;
+	//U16 c2;
 	//float tdist2=DistToFragmenton(pos,VRT[0],VRT[1],p,dir,c);
-	//u16 c3;
+	//U16 c3;
 	//float tdist3=DistToFragmenton(pos,VRT[0],VRT[1],p,dir,c);
-	//u16 cc;float tdist;
+	//U16 cc;float tdist;
 	//MIN_OF(tdist1,cc=c1;tdist=tdist1,tdist2,cc=c2;tdist=tdist2,tdist3,cc=c3;tdist=tdist3);
 
 	//return _min(_min(DistToFragmenton(pos)))

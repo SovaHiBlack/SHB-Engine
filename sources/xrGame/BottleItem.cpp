@@ -35,7 +35,7 @@ void CBottleItem::Load(const char* section)
 	m_alcohol = READ_IF_EXISTS(pSettings, r_float, section, "eat_alcohol", 0.0f);
 }
 
-void CBottleItem::OnEvent(CNetPacket& P, unsigned short type)
+void CBottleItem::OnEvent(CNetPacket& P, U16 type)
 {
 	inherited::OnEvent(P, type);
 

@@ -50,11 +50,11 @@ struct calculate_state
 class CIKLimb {
 public:
 							CIKLimb				();
-				void		Create				( u16 id, CKinematics* K, const u16 bones[3], const Fvector3& toe_pos, bool collide_ );
+				void		Create				(U16 id, CKinematics* K, const U16 bones[3], const Fvector3& toe_pos, bool collide_ );
 				void		Destroy				( );
 				void		Calculate			( SCalculateData& cd );
-				void		Update				( CGameObject *O, const	CBlend *b, u16 interval );
-inline				u16			get_id				()	{ return m_id; }
+				void		Update				( CGameObject *O, const	CBlend *b, U16 interval );
+inline				U16			get_id				()	{ return m_id; }
 private:
 				void		Invalidate			();
 				void		GetFootStepMatrix	( Fmatrix	&m, const Fmatrix &gl_anim, const  SIKCollideData &cld, bool collide );
@@ -72,7 +72,7 @@ inline				void		AnimGoal			( Fmatrix &gl, CKinematicsAnimated	&K );
 				float		SwivelAngle			( const Fmatrix &ihip, const SCalculateData& cd );
 				void		GetKnee				(Fvector3& knee, const SCalculateData& cd ) const;
 				void		GetPickDir			(Fvector3& v, const Fmatrix &gl_bone ) ;
-inline		static	void		get_start			( Fmatrix &start, SCalculateData &D, u16 bone );
+inline		static	void		get_start			( Fmatrix &start, SCalculateData &D, U16 bone );
 private:
 		static	void 		BonesCallback0		( CBoneInstance* B );
 		static	void 		BonesCallback1		( CBoneInstance* B );
@@ -81,8 +81,8 @@ private:
 private:
 	Limb		m_limb;
 	Fvector3		m_toe_position;
-	u16			m_bones[4];	
-	u16			m_id;
+	U16			m_bones[4];
+	U16			m_id;
 	bool		m_collide;
 	SIKCollideData	collide_data;
 	ik_anim_state	anim_state;

@@ -329,7 +329,7 @@ float CEntityCondition::HitPowerEffect(float power_loss)
 	return new_power_loss;
 }
 
-CWound* CEntityCondition::AddWound(float hit_power, ALife::EHitType hit_type, u16 element)
+CWound* CEntityCondition::AddWound(float hit_power, ALife::EHitType hit_type, U16 element)
 {
 	//максимальное число косточек 64
 	VERIFY(element < 64 || BI_NONE == element);

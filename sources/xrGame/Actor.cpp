@@ -141,7 +141,7 @@ CActor::CActor( ) : CEntityAlive( )
 	m_pPhysicsShell = nullptr;
 
 	m_holder = nullptr;
-	m_holderID = u16(-1);
+	m_holderID = U16(-1);
 
 #ifdef DEBUG
 	Device.seqRender.Add(this, REG_PRIORITY_LOW);
@@ -172,8 +172,8 @@ CActor::CActor( ) : CEntityAlive( )
 	m_anims = xr_new<SActorMotions>( );
 	m_vehicle_anims = xr_new<SActorVehicleAnims>( );
 	m_entity_condition = nullptr;
-	m_iLastHitterID = u16(-1);
-	m_iLastHittingWeaponID = u16(-1);
+	m_iLastHitterID = U16(-1);
+	m_iLastHittingWeaponID = U16(-1);
 	m_game_task_manager = nullptr;
 	m_statistic_manager = nullptr;
 	//-----------------------------------------------------------------------------------
@@ -1259,7 +1259,7 @@ void CActor::RenderIndicator(Fvector3 dpos, float r1, float r2, ref_shader IndSh
 	FVF::LIT* pv = pv_start;
 	// base rect
 
-	CBoneInstance& BI = smart_cast<CKinematics*>(Visual( ))->LL_GetBoneInstance(u16(m_head));
+	CBoneInstance& BI = smart_cast<CKinematics*>(Visual( ))->LL_GetBoneInstance(U16(m_head));
 	Fmatrix M;
 	smart_cast<CKinematics*>(Visual( ))->CalculateBones( );
 	M.mul(XFORM( ), BI.mTransform);
@@ -1313,7 +1313,7 @@ void CActor::RenderText(const char* Text, Fvector3 dpos, float* pdup, u32 color)
 		return;
 	}
 
-	CBoneInstance& BI = smart_cast<CKinematics*>(Visual( ))->LL_GetBoneInstance(u16(m_head));
+	CBoneInstance& BI = smart_cast<CKinematics*>(Visual( ))->LL_GetBoneInstance(U16(m_head));
 	Fmatrix M;
 	smart_cast<CKinematics*>(Visual( ))->CalculateBones( );
 	M.mul(XFORM( ), BI.mTransform);
@@ -1632,7 +1632,7 @@ void CActor::AnimTorsoPlayCallBack(CBlend* B)
 	actor->m_bAnimTorsoPlayed = FALSE;
 }
 
-void CActor::SetActorVisibility(u16 who, float value)
+void CActor::SetActorVisibility(U16 who, float value)
 {
 	CUIMotionIcon& motion_icon = HUD( ).GetUI( )->UIMainIngameWnd->MotionIcon( );
 	motion_icon.SetActorVisibility(who, value);

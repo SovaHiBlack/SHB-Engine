@@ -156,7 +156,7 @@ void CPHElement::calc_it_fract_data_use_density(const Fvector3& mc,float density
 	recursive_mass_summ(0,m_fratures_holder->m_fractures.begin());
 }
 
-dMass CPHElement::recursive_mass_summ(u16 start_geom,FRACTURE_I cur_fracture)
+dMass CPHElement::recursive_mass_summ(U16 start_geom,FRACTURE_I cur_fracture)
 {
 	dMass end_mass;
 	dMassSetZero(&end_mass);
@@ -585,7 +585,7 @@ void	CPHElement::applyImpulseVsGF(const Fvector3& pos,const Fvector3& dir, float
 	////////////////////////////////////////////////////////////////////////
 }
 
-void	CPHElement::	applyImpulseTrace		(const Fvector3& pos, const Fvector3& dir, float val,u16 id)
+void	CPHElement::	applyImpulseTrace		(const Fvector3& pos, const Fvector3& dir, float val, U16 id)
 {
 	VERIFY(_valid(pos)&&_valid(dir)&&_valid(val));
 	if(!isActive()||m_flags.test(flFixed)) return;
@@ -986,7 +986,7 @@ void CPHElement::set_ContactCallback(ContactCallbackFun* callback)
 	CPHGeometryOwner::set_ContactCallback(callback);
 }
 
-void CPHElement::SetMaterial(u16 m)
+void CPHElement::SetMaterial(U16 m)
 {
 	CPHGeometryOwner::SetMaterial(m);
 }
@@ -1198,7 +1198,7 @@ void CPHElement::add_Mass(const SBoneShape& shape,const Fmatrix& offset,const Fv
 	dMassTranslate(&m_mass,m_mass_center.x,m_mass_center.y,m_mass_center.z);
 	if(m_fratures_holder)
 	{
-		m_fratures_holder->DistributeAdditionalMass(u16(m_geoms.size()-1),m);
+		m_fratures_holder->DistributeAdditionalMass(U16(m_geoms.size()-1),m);
 	}
 
 	if(fracture)
@@ -1289,10 +1289,10 @@ void	CPHElement::SetShell(CPHShell* p)
 	}
 
 }
-void CPHElement::PassEndGeoms(u16 from,u16 to,CPHElement* dest)
+void CPHElement::PassEndGeoms(U16 from, U16 to,CPHElement* dest)
 {
 	GEOM_I i_from=m_geoms.begin()+from,e=m_geoms.begin()+to;
-	u16 shift=to-from;
+	U16 shift=to-from;
 	GEOM_I i=i_from;
 	for(;i!=e;++i)
 	{
@@ -1300,13 +1300,13 @@ void CPHElement::PassEndGeoms(u16 from,u16 to,CPHElement* dest)
 		//(*i)->add_to_space(dest->m_group);
 		//(*i)->set_body(dest->m_body);
 		(*i)->set_body(0);
-		u16& element_pos=(*i)->element_position();
+		U16& element_pos=(*i)->element_position();
 		element_pos=element_pos-shift;
 	}
 	GEOM_I last=m_geoms.end();
 	for(;i!=last;++i)
 	{
-		u16& element_pos=(*i)->element_position();
+		U16& element_pos=(*i)->element_position();
 		element_pos=element_pos-shift;
 	}
 
@@ -1434,19 +1434,19 @@ bool CPHElement::isBreakable()
 {
 	return !!m_fratures_holder;
 }
-u16	CPHElement::setGeomFracturable(CPHFracture& fracture)
+U16	CPHElement::setGeomFracturable(CPHFracture& fracture)
 {
 	if(!m_fratures_holder) m_fratures_holder=xr_new<CPHFracturesHolder>();
 	return m_fratures_holder->AddFracture(fracture);
 }
 
-CPHFracture& CPHElement::Fracture(u16 num)
+CPHFracture& CPHElement::Fracture(U16 num)
 {
 	R_ASSERT2(m_fratures_holder,"no fractures!");
 	return m_fratures_holder->Fracture(num);
 }
 
-u16	CPHElement::numberOfGeoms()
+U16	CPHElement::numberOfGeoms()
 {
 	return CPHGeometryOwner::numberOfGeoms();
 }

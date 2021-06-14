@@ -248,7 +248,7 @@ SActorVehicleAnims::SActorVehicleAnims( )
 
 void SActorVehicleAnims::Create(CKinematicsAnimated* V)
 {
-	for (u16 i = 0; TYPES_NUMBER > i; ++i)
+	for (U16 i = 0; TYPES_NUMBER > i; ++i)
 	{
 		m_vehicles_type_collections[i].Create(V, i);
 	}
@@ -256,7 +256,7 @@ void SActorVehicleAnims::Create(CKinematicsAnimated* V)
 
 SVehicleAnimCollection::SVehicleAnimCollection( )
 {
-	for (u16 i = 0; MAX_IDLES > i; ++i)
+	for (U16 i = 0; MAX_IDLES > i; ++i)
 	{
 		idles[i].invalidate( );
 	}
@@ -266,7 +266,7 @@ SVehicleAnimCollection::SVehicleAnimCollection( )
 	steer_right.invalidate( );
 }
 
-void SVehicleAnimCollection::Create(CKinematicsAnimated* V, u16 num)
+void SVehicleAnimCollection::Create(CKinematicsAnimated* V, U16 num)
 {
 	string128 buf, buff1, buff2;
 	strconcat(sizeof(buff1), buff1, itoa(num, buf, 10), "_");
@@ -295,7 +295,7 @@ void CActor::steer_Vehicle(float angle)
 	}
 
 	CCar* car = smart_cast<CCar*>(m_holder);
-	u16 anim_type = car->DriverAnimationType( );
+	U16 anim_type = car->DriverAnimationType( );
 	SVehicleAnimCollection& anims = m_vehicle_anims->m_vehicles_type_collections[anim_type];
 	if (angle == 0.0f)
 	{

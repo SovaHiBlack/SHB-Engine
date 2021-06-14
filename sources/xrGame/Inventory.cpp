@@ -681,7 +681,7 @@ void CInventory::UpdateDropItem(PIItem pIItem)
 		{
 			CNetPacket					P;
 			pIItem->object().u_EventGen	(P, GE_OWNERSHIP_REJECT, pIItem->object().H_Parent()->ID());
-			P.w_u16						(u16(pIItem->object().ID()));
+			P.w_u16						(U16(pIItem->object().ID()));
 			pIItem->object().u_EventSend(P);
 		}
 	}// dropManual
@@ -749,7 +749,7 @@ PIItem CInventory::Get(CLASS_ID cls_id, bool bSearchRuck) const
 	return NULL;
 }
 
-PIItem CInventory::Get(const u16 id, bool bSearchRuck) const
+PIItem CInventory::Get(const U16 id, bool bSearchRuck) const
 {
 	const TIItemContainer &list = bSearchRuck ? m_ruck : m_belt;
 
@@ -1062,7 +1062,7 @@ void CInventory::Items_SetCurrentEntityHud(bool current_entity)
 };
 
 //call this only via Actor()->SetWeaponHideState()
-void CInventory::SetSlotsBlocked(u16 mask, bool bBlock)
+void CInventory::SetSlotsBlocked(U16 mask, bool bBlock)
 {
 	bool bChanged = false;
 	for(int i =0; i<SLOTS_TOTAL; ++i)

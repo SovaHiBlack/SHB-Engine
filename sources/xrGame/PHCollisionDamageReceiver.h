@@ -6,7 +6,7 @@ struct SGameMtl;
 
 class CPHCollisionDamageReceiver
 {
-	using SControledBone = std::pair<u16, float>;
+	using SControledBone = std::pair<U16, float>;
 
 //	DEFINE_VECTOR(SControledBone, DAMAGE_CONTROLED_BONES_V, DAMAGE_BONES_I);
 	using DAMAGE_CONTROLED_BONES_V = xr_vector<SControledBone>;
@@ -14,8 +14,8 @@ class CPHCollisionDamageReceiver
 
 	struct SFind
 	{
-		u16 id;
-		SFind(u16 _id)
+		U16 id;
+		SFind(U16 _id)
 		{
 			id = _id;
 		}
@@ -29,12 +29,12 @@ class CPHCollisionDamageReceiver
 protected:
 	virtual CPHShellHolder* PPhysicsShellHolder( ) = 0;
 	void						Init( );
-	void						Hit(u16 source_id, u16 bone_id, float power, const Fvector3& dir, Fvector3& pos);
+	void						Hit(U16 source_id, U16 bone_id, float power, const Fvector3& dir, Fvector3& pos);
 	void						Clear( );
 private:
-	void						BoneInsert(u16 id, float k);
+	void						BoneInsert(U16 id, float k);
 
-	inline		DAMAGE_BONES_I				FindBone(u16 id)
+	inline		DAMAGE_BONES_I				FindBone(U16 id)
 	{
 		return std::find_if(m_controled_bones.begin( ), m_controled_bones.end( ), SFind(id));
 	}

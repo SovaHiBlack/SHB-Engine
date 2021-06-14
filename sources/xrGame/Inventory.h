@@ -75,7 +75,7 @@ public:
 	//ищет на поясе или в рюкзаке IItem с указанным именем (cName())
 	PIItem						Get								(const char* name, bool bSearchRuck) const;
 	//ищет на поясе или в рюкзаке IItem с указанным именем (id)
-	PIItem						Get								(const u16  id, bool bSearchRuck) const;
+	PIItem						Get								(const U16 id, bool bSearchRuck) const;
 	//ищет на поясе или в рюкзаке IItem с указанным CLS_ID
 	PIItem						Get								(CLASS_ID cls_id, bool bSearchRuck) const;
 	PIItem						GetAny							(const char* name) const;//search both (ruck and belt)
@@ -134,7 +134,7 @@ public:
 		m_bBeltUseful = belt_useful;
 	}
 
-	void						SetSlotsBlocked					(u16 mask, bool bBlock);
+	void						SetSlotsBlocked					(U16 mask, bool bBlock);
 	TIItemContainer												m_all;
 	TIItemContainer												m_ruck;
 	TIItemContainer												m_belt;

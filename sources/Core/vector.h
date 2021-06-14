@@ -68,7 +68,7 @@ __forceinline float	deg2rad(float val)
 {
 	return implement::deg2rad(val);
 }
-__forceinline double	deg2rad(double val)
+__forceinline F64	deg2rad(F64 val)
 {
 	return implement::deg2rad(val);
 }
@@ -76,7 +76,7 @@ __forceinline float	rad2deg(float val)
 {
 	return implement::rad2deg(val);
 }
-__forceinline double	rad2deg(double val)
+__forceinline F64	rad2deg(F64 val)
 {
 	return implement::rad2deg(val);
 }

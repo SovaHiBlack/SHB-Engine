@@ -12,7 +12,7 @@ class CPHJoint : public CPhysicsJoint
 	u16									m_bone_id;
 	CPHElement* pFirst_element;
 	CPHElement* pSecond_element;
-	CODEGeom* pFirstGeom;
+	CCodeGeom* pFirstGeom;
 /////////////////////////////////////////////////////////
 	CPHShell* pShell;
 	dJointID							m_joint;
@@ -162,7 +162,7 @@ public:
 	virtual		float					GetAxisAngle(int axis_num);
 	virtual		void 					Deactivate( );
 	void 					ReattachFirstElement(CPHElement* new_element);
-	CODEGeom*& RootGeom( )
+	CCodeGeom*& RootGeom( )
 	{
 		return pFirstGeom;
 	}

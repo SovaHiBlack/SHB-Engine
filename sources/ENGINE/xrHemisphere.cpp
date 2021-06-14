@@ -37,7 +37,7 @@ const Fvector3 hemi_1[HEMI1_VERTS] = {
 	{ 0.587788,	 0.000000,	-0.809013},
 	{ 0.951057,	 0.000000,	-0.309017},
 };
-const u16 hemi_1v[HEMI1_FACES*3] = {
+const U16 hemi_1v[HEMI1_FACES * 3] = {
 	0,		1,		2,
 	1,		3,		2,
 	3,		4,		2,
@@ -173,8 +173,8 @@ const Fvector3 hemi_2[HEMI2_VERTS] =
 	{-0.309015,	 0.000000,	-0.951057},
 	{ 0.309017,	 0.000000,	-0.951057},
 	{ 0.809021,	 0.000000,	-0.587788},
-};					   	
-const u16 hemi_2v[HEMI2_FACES*3] = {
+};
+const U16 hemi_2v[HEMI2_FACES * 3] = {
 	0,		1,		2,
 	3,		4,		0,
 	4,		1,		0,
@@ -338,7 +338,7 @@ const u16 hemi_2v[HEMI2_FACES*3] = {
 };
 
 const Fvector3 hemi_3[HEMI3_VERTS] =
-{					   	
+{
 	{+0.0000,	+0.5000,	+0.0000	},
 	{+0.2629,	+0.4253,	+0.0000	},
 	{+0.0812,	+0.4253,	+0.2500	},
@@ -538,69 +538,70 @@ const Fvector3 hemi_3[HEMI3_VERTS] =
 };
 #pragma warning(default:4305)
 
-void xrHemisphereBuild	(int quality, float energy, xrHemisphereIterator* iterator, LPVOID param)
+void xrHemisphereBuild(int quality, float energy, xrHemisphereIterator* iterator, LPVOID param)
 {
-	const Fvector3* hemi=0;
-	int h_count		= xrHemisphereVertices(quality,hemi); VERIFY(h_count>0);
+	const Fvector3* hemi = 0;
+	int h_count = xrHemisphereVertices(quality, hemi); VERIFY(h_count > 0);
 	// Calculate energy
-	float total		= (float)h_count;
-	float E			= 1.f/total;
-		
+	float total = (float) h_count;
+	float E = 1.f / total;
+
 	// Iterate
-	for (int i=0; i<h_count; i++){
-		float x		=	-float	(hemi[i][0]);
-		float y		=	-float	(hemi[i][1]);
-		float z		=	-float	(hemi[i][2]);
-		float mag	=	_sqrt	(x*x + y*y + z*z);
+	for (int i = 0; i < h_count; i++)
+	{
+		float x = -float(hemi[i][0]);
+		float y = -float(hemi[i][1]);
+		float z = -float(hemi[i][2]);
+		float mag = _sqrt(x * x + y * y + z * z);
 		x /= mag;	y /= mag;	z /= mag;
-		iterator	(x,y,z,E*energy,param);
+		iterator(x, y, z, E * energy, param);
 	}
 }
 
-int xrHemisphereVertices	(int quality, const Fvector3*& verts)
+int xrHemisphereVertices(int quality, const Fvector3*& verts)
 {
 	// SELECT table
-	int				h_count	= 0;
+	int				h_count = 0;
 	switch (quality)
 	{
-	case 1:	// LOW quality
-		h_count		= HEMI1_VERTS;
-		verts		= hemi_1;
-		break;
-	case 2:	// HIGH quality
-		h_count		= HEMI2_VERTS;
-		verts		= hemi_2;
-		break;
-	case 3:	// SUPER HIGH quality
-		h_count		= HEMI3_VERTS;
-		verts		= hemi_3;
-		break;
-	default:// NO 	
-		NODEFAULT;
+		case 1:	// LOW quality
+			h_count = HEMI1_VERTS;
+			verts = hemi_1;
+			break;
+		case 2:	// HIGH quality
+			h_count = HEMI2_VERTS;
+			verts = hemi_2;
+			break;
+		case 3:	// SUPER HIGH quality
+			h_count = HEMI3_VERTS;
+			verts = hemi_3;
+			break;
+		default:// NO 	
+			NODEFAULT;
 	}
 	return h_count;
 }
 
-int xrHemisphereIndices	(int quality, const u16*& indices)
+int xrHemisphereIndices(int quality, const U16*& indices)
 {
 	// SELECT table
-	int				h_count	= 0;
+	int h_count = 0;
 	switch (quality)
 	{
-	case 1:	// LOW quality
-		h_count		= HEMI1_FACES*3;
-		indices		= hemi_1v;
-		break;
-	case 2:	// HIGH quality
-		h_count		= HEMI2_FACES*3;
-		indices		= hemi_2v;
-		break;
-//	case 3:	// SUPER HIGH quality
-//		h_count		= HEMI3_FACES*3;
-//		indices		= hemi_3v;
-//		break;
-	default:// NO 	
-		NODEFAULT;
+		case 1:	// LOW quality
+			h_count = HEMI1_FACES * 3;
+			indices = hemi_1v;
+			break;
+		case 2:	// HIGH quality
+			h_count = HEMI2_FACES * 3;
+			indices = hemi_2v;
+			break;
+	//	case 3:	// SUPER HIGH quality
+	//		h_count		= HEMI3_FACES*3;
+	//		indices		= hemi_3v;
+	//		break;
+		default:// NO 	
+			NODEFAULT;
 	}
 	return h_count;
 }

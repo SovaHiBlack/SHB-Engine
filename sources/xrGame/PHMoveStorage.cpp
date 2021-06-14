@@ -28,7 +28,7 @@ struct dxGeomTransform : public dxGeom {
 };
 void CPHPositionsPairs::Positions(const Fvector3* & p0,const  Fvector3* & p1)
 {
-	CODEGeom	*g=*geom;
+	CCodeGeom*g=*geom;
 	if(g->is_transformed_bt())
 	{
 		g->geometry_transform()->recomputeAABB();

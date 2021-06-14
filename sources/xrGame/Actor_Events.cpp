@@ -33,12 +33,12 @@ inline BOOL BE(BOOL A, BOOL B)
 	return a == b;
 }
 
-void CActor::OnEvent(CNetPacket& P, u16 type)
+void CActor::OnEvent(CNetPacket& P, U16 type)
 {
 	inherited::OnEvent(P, type);
 	CInventoryOwner::OnEvent(P, type);
 
-	u16 id;
+	U16 id;
 	switch (type)
 	{
 		case GE_TRADE_BUY:
@@ -90,7 +90,7 @@ void CActor::OnEvent(CNetPacket& P, u16 type)
 			{
 				CNetPacket P;
 				u_EventGen(P, GE_OWNERSHIP_REJECT, ID( ));
-				P.w_u16(u16(O->ID( )));
+				P.w_u16(U16(O->ID( )));
 				u_EventSend(P);
 			}
 		}
@@ -216,7 +216,7 @@ void CActor::OnEvent(CNetPacket& P, u16 type)
 		{
 			u32 State = P.r_u32( );
 			BOOL	Set = !!P.r_u8( );
-			inventory( ).SetSlotsBlocked((u16) State, !!Set);
+			inventory( ).SetSlotsBlocked((U16) State, !!Set);
 		}
 		break;
 		case GE_MOVE_ACTOR:

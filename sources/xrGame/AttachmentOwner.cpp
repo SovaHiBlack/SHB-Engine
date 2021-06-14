@@ -189,7 +189,7 @@ CAttachableItem* CAttachmentOwner::attachedItem			(CLASS_ID clsid) const
 	return nullptr;
 }
 
-CAttachableItem* CAttachmentOwner::attachedItem			(u16 id) const
+CAttachableItem* CAttachmentOwner::attachedItem			(U16 id) const
 {
 	xr_vector<CAttachableItem*>::const_iterator	I = m_attached_objects.begin();
 	xr_vector<CAttachableItem*>::const_iterator	E = m_attached_objects.end();

@@ -492,8 +492,9 @@ void CCustomMonster::eye_pp_s0( )
 	// Eye matrix
 	CKinematics* V = smart_cast<CKinematics*>(Visual( ));
 	V->CalculateBones( );
-	Fmatrix& mEye = V->LL_GetTransform(u16(eye_bone));
-	Fmatrix		X;							X.mul_43(XFORM( ), mEye);
+	Fmatrix& mEye = V->LL_GetTransform(U16(eye_bone));
+	Fmatrix		X;
+	X.mul_43(XFORM( ), mEye);
 	VERIFY(_valid(mEye));
 
 	const MonsterSpace::SBoneRotation& rotation = head_orientation( );
@@ -685,7 +686,7 @@ void			CCustomMonster::Hit(SHit* pHDS)
 		inherited::Hit(pHDS);
 }
 
-void CCustomMonster::OnEvent(CNetPacket& P, u16 type)
+void CCustomMonster::OnEvent(CNetPacket& P, U16 type)
 {
 	inherited::OnEvent(P, type);
 }
@@ -956,7 +957,7 @@ void CCustomMonster::load(IReader& packet)
 }
 
 
-bool CCustomMonster::update_critical_wounded(const u16& bone_id, const float& power)
+bool CCustomMonster::update_critical_wounded(const U16& bone_id, const float& power)
 {
 	// object should not be critical wounded
 	VERIFY(m_critical_wound_type == u32(-1));

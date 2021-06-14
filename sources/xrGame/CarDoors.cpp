@@ -17,12 +17,12 @@
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 bool CCar::DoorHit(float P, S16 element,ALife::EHitType hit_type)
 {
-	if(hit_type==ALife::eHitTypeStrike && P > 20.f)
+	if(hit_type==ALife::eHitTypeStrike && P > 20.0f)
 	{
-		xr_map<u16,SDoor>::iterator	   i=m_doors.begin(),e=m_doors.end();
+		xr_map<U16,SDoor>::iterator i=m_doors.begin(),e=m_doors.end();
 		for(;e!=i;++i)i->second.Open();
 	}
-	xr_map   <u16,SDoor>::iterator i=m_doors.find(element);
+	xr_map   <U16,SDoor>::iterator i=m_doors.find(element);
 	if(i!=m_doors.end())
 	{
 		i->second.Hit(P);
@@ -345,8 +345,8 @@ void CCar::SDoor::ClosedToOpening()
 	if(joint->bActive)return;
 	Fmatrix door_form,root_form;
 	CKinematics* pKinematics=smart_cast<CKinematics*>(pcar->Visual());
-//	CBoneData& bone_data= pKinematics->LL_GetData(u16(bone_id));
-	CBoneInstance& bone_instance=pKinematics->LL_GetBoneInstance(u16(bone_id));
+//	CBoneData& bone_data= pKinematics->LL_GetData(U16(bone_id));
+	CBoneInstance& bone_instance=pKinematics->LL_GetBoneInstance(U16(bone_id));
 	bone_instance.set_callback(bctPhysics,pcar->PPhysicsShell()->GetBonesCallback(),joint->PSecond_element());
 	
 	door_form.set(bone_instance.mTransform);
@@ -367,8 +367,8 @@ void CCar::SDoor::ClosingToClosed()
 
 //	Fmatrix door_form;
 	CKinematics* pKinematics=smart_cast<CKinematics*>(pcar->Visual());
-//	CBoneData& bone_data= pKinematics->LL_GetData(u16(bone_id));
-	CBoneInstance& bone_instance=pKinematics->LL_GetBoneInstance(u16(bone_id));
+//	CBoneData& bone_data= pKinematics->LL_GetData(U16(bone_id));
+	CBoneInstance& bone_instance=pKinematics->LL_GetBoneInstance(U16(bone_id));
 	bone_instance.set_callback(bctPhysics,0,joint->PFirst_element());
 	bone_instance.Callback_overwrite=FALSE;
 	joint->PSecond_element()->Deactivate();
@@ -697,7 +697,7 @@ void CCar::SDoor::Break()
 	state=broken;
 }
 
-void CCar::SDoor::ApplyDamage(u16 level)
+void CCar::SDoor::ApplyDamage(U16 level)
 {
 	inherited::ApplyDamage(level);
 	switch(level)
@@ -705,6 +705,7 @@ void CCar::SDoor::ApplyDamage(u16 level)
 		case 1: Break();
 	}
 }
+
 CCar::SDoor::SDoorway::SDoorway()
 {
 	door=NULL;

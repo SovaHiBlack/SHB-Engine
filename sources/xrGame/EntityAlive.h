@@ -82,8 +82,8 @@ public:
 
 //	inline CPHMovementControl*				PMovement( )						{return m_PhysicMovementControl;}
 
-	virtual u16								PHGetSyncItemsNumber( );
-	virtual CPHSynchronize* PHGetSyncItem(u16 item);
+	virtual U16								PHGetSyncItemsNumber( );
+	virtual CPHSynchronize* PHGetSyncItem(U16 item);
 	virtual void							PHUnFreeze( );
 	virtual void							PHFreeze( );
 

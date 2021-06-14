@@ -21,7 +21,7 @@ public:
 		//Fvector3				dir;
 		//Fmatrix				x_form;
 		Fvector3				angles;
-		u16					sender_id;	//id - объекта, который запустил партиклы
+		U16					sender_id;	//id - объекта, который запустил партиклы
 		u32					life_time;	//время жизни партикла (-1) - бесконечно
 
 		//int					cur_time;	//текущее время существования партикла
@@ -34,17 +34,17 @@ public:
 	//структура для косточки с списком запущенных партиклов
 	struct SBoneInfo
 	{
-		u16					index;
+		U16					index;
 		Fvector3				offset;
 		ParticlesInfoList	particles;
 		SParticlesInfo* FindParticles(const shared_str& ps_name);
 
 	public:
-		SBoneInfo(u16 idx, const Fvector3& offs) :index(idx), offset(offs)
+		SBoneInfo(U16 idx, const Fvector3& offs) :index(idx), offset(offs)
 		{ }
 		SParticlesInfo* AppendParticles(CObject* object, const shared_str& ps_name);
 		void				StopParticles(const shared_str& ps_name, bool bDestroy);
-		void				StopParticles(u16 sender_id, bool bDestroy);
+		void				StopParticles(U16 sender_id, bool bDestroy);
 	};
 
 	using BoneInfoVec = xr_vector<SBoneInfo>;
@@ -60,7 +60,7 @@ protected:
 	bool					m_bActiveBones;	//есть ли косточки на которых играются партиклы
 
 public:
-	inline SBoneInfo* get_bone_info(u16 bone_index)
+	inline SBoneInfo* get_bone_info(U16 bone_index)
 	{
 		if (BI_NONE == bone_index)
 		{
@@ -77,7 +77,7 @@ public:
 
 		return nullptr;
 	}
-	SBoneInfo* get_nearest_bone_info(CKinematics* K, u16 bone_index);
+	SBoneInfo* get_nearest_bone_info(CKinematics* K, U16 bone_index);
 	Fvector3					parent_vel;
 
 	CParticlesPlayer( );
@@ -89,26 +89,26 @@ public:
 
 	void					UpdateParticles( );
 
-	void					StartParticles(const shared_str& ps_name, u16 bone_num, const Fvector3& dir, u16 sender_id, int life_time = -1, bool auto_stop = true);
-	void					StartParticles(const shared_str& ps_name, const Fvector3& dir, u16 sender_id, int life_time = -1, bool auto_stop = true);
+	void					StartParticles(const shared_str& ps_name, U16 bone_num, const Fvector3& dir, U16 sender_id, int life_time = -1, bool auto_stop = true);
+	void					StartParticles(const shared_str& ps_name, const Fvector3& dir, U16 sender_id, int life_time = -1, bool auto_stop = true);
 
-	void					StartParticles(const shared_str& ps_name, u16 bone_num, const Fmatrix& dir, u16 sender_id, int life_time = -1, bool auto_stop = true);
-	void					StartParticles(const shared_str& ps_name, const Fmatrix& dir, u16 sender_id, int life_time = -1, bool auto_stop = true);
+	void					StartParticles(const shared_str& ps_name, U16 bone_num, const Fmatrix& dir, U16 sender_id, int life_time = -1, bool auto_stop = true);
+	void					StartParticles(const shared_str& ps_name, const Fmatrix& dir, U16 sender_id, int life_time = -1, bool auto_stop = true);
 
 
-	void					StopParticles(u16 sender_ID, u16 bone_id, bool bDestroy);
-	void					StopParticles(const shared_str& particles_name, u16 bone_id, bool bDestroy);
-	void					AutoStopParticles(const shared_str& ps_name, u16 bone_id, u32 life_time);
+	void					StopParticles(U16 sender_ID, U16 bone_id, bool bDestroy);
+	void					StopParticles(const shared_str& particles_name, U16 bone_id, bool bDestroy);
+	void					AutoStopParticles(const shared_str& ps_name, U16 bone_id, u32 life_time);
 
-	static void				MakeXFORM(CObject* pObject, u16 bone_id, const Fvector3& dir, const Fvector3& offset, Fmatrix& result);
-	static void				GetBonePos(CObject* pObject, u16 bone_id, const Fvector3& offset, Fvector3& result);
-	u16						GetNearestBone(CKinematics* K, u16 bone_id);
-	inline u16					GetRandomBone( )
+	static void				MakeXFORM(CObject* pObject, U16 bone_id, const Fvector3& dir, const Fvector3& offset, Fmatrix& result);
+	static void				GetBonePos(CObject* pObject, U16 bone_id, const Fvector3& offset, Fvector3& result);
+	U16						GetNearestBone(CKinematics* K, U16 bone_id);
+	inline U16					GetRandomBone( )
 	{
-		u16 l_PBCount = u16(m_Bones.size( ));
+		U16 l_PBCount = U16(m_Bones.size( ));
 		if (l_PBCount)
 		{
-			return m_Bones[(u16) Random.randI(l_PBCount)].index;
+			return m_Bones[(U16) Random.randI(l_PBCount)].index;
 		}
 		else
 		{

@@ -22,21 +22,21 @@ private:
 public:
 	union{
 		struct{
-			u16		idx:14;
-			u16		slot:2;
+			U16		idx:14;
+			U16		slot:2;
 		};
-		u16			val;
+		U16			val;
 	};
-public:
+
 					MotionID	(){invalidate();}
-					MotionID	(u16 motion_slot, u16 motion_idx){set(motion_slot,motion_idx);}
+					MotionID	(U16 motion_slot, U16 motion_idx){set(motion_slot,motion_idx);}
 					__forceinline bool		operator==	(const MotionID& tgt) const {return tgt.val==val;}
 					__forceinline bool		operator!=	(const MotionID& tgt) const {return tgt.val!=val;}
 					__forceinline bool		operator<	(const MotionID& tgt) const {return val<tgt.val;}
 					__forceinline	bool		operator!	() const					{return !valid();}
-					__forceinline void		set			(u16 motion_slot, u16 motion_idx){slot=motion_slot; idx=motion_idx;}
-					__forceinline void		invalidate	() {val=u16(-1);}
-					__forceinline bool		valid		() const {return val!=u16(-1);}
+					__forceinline void		set			(U16 motion_slot, U16 motion_idx){slot=motion_slot; idx=motion_idx;}
+					__forceinline void		invalidate	() {val= U16(-1);}
+					__forceinline bool		valid		() const {return val!= U16(-1);}
 	const MotionID*	get			() const {return this;};
 	__forceinline	operator	unspecified_bool_type () const
 	{
@@ -46,8 +46,8 @@ public:
 	}
 };
 
-//. typedef u16 	BoneID;
-//. typedef u16 	PartitionID;
+//. typedef U16 	BoneID;
+//. typedef U16 	PartitionID;
 
 //*** Run-time Blend definition *******************************************************************
 class ENGINE_API CBlend {
@@ -66,7 +66,7 @@ public:
 	float			timeCurrent;
 	float			timeTotal;
 	MotionID		motionID;
-	u16				bone_or_part;	// startup parameters
+	U16				bone_or_part;	// startup parameters
 	U8				channel;
 	ECurvature		blend;
 	float			blendAccrue;	// increasing
@@ -140,7 +140,7 @@ private:
 
 public:
 	virtual void				Bone_Calculate			(CBoneData* bd, Fmatrix* parent);
-			void				Bone_GetAnimPos			(Fmatrix& pos,u16 id, U8 channel_mask, bool ignore_callbacks);
+			void				Bone_GetAnimPos			(Fmatrix& pos, U16 id, U8 channel_mask, bool ignore_callbacks);
 	virtual void				OnCalculateBones		();
 
 private:
@@ -175,8 +175,8 @@ protected:
 	CBlend*						IBlend_Create			();
 
 private:
-	void						IBlendSetup				(CBlend& B,u16 part, U8 channel, MotionID motion_ID, BOOL  bMixing, float blendAccrue, float blendFalloff, float Speed, BOOL noloop, PlayCallback Callback, LPVOID CallbackParam);
-	void						IFXBlendSetup			(CBlend &B, MotionID motion_ID, float blendAccrue, float blendFalloff,float Power ,float Speed,u16 bone);
+	void						IBlendSetup				(CBlend& B, U16 part, U8 channel, MotionID motion_ID, BOOL bMixing, float blendAccrue, float blendFalloff, float Speed, BOOL noloop, PlayCallback Callback, LPVOID CallbackParam);
+	void						IFXBlendSetup			(CBlend &B, MotionID motion_ID, float blendAccrue, float blendFalloff,float Power ,float Speed, U16 bone);
 //.	bool						LoadMotions				(const char* N, IReader *data);
 
 public:
@@ -185,24 +185,24 @@ public:
 	std::pair<const char*, const char*>	LL_MotionDefName_dbg	(MotionID	ID);
 #endif
 
-	u16							LL_MotionsSlotCount(){return (u16)m_Motions.size();}
-	const shared_motions&		LL_MotionsSlot	(u16 idx){return m_Motions[idx].motions;}
+	U16							LL_MotionsSlotCount(){return (U16)m_Motions.size();}
+	const shared_motions&		LL_MotionsSlot	(U16 idx){return m_Motions[idx].motions;}
 
 	inline CMotionDef*				LL_GetMotionDef	(MotionID id){return m_Motions[id.slot].motions.motion_def(id.idx);}
 	inline CMotion*					LL_GetRootMotion(MotionID id){return &m_Motions[id.slot].bone_motions[iRoot]->at(id.idx);}
-	inline CMotion*					LL_GetMotion	(MotionID id, u16 bone_id){return &m_Motions[id.slot].bone_motions[bone_id]->at(id.idx);}
+	inline CMotion*					LL_GetMotion	(MotionID id, U16 bone_id){return &m_Motions[id.slot].bone_motions[bone_id]->at(id.idx);}
 
 	// Low level interface
 	MotionID					LL_MotionID		(const char* B);
-	u16							LL_PartID		(const char* B);
+	U16							LL_PartID		(const char* B);
 
-	CBlend*						LL_PlayFX		(u16 bone,		MotionID motion, float blendAccrue,	float blendFalloff, float Speed, float Power);
-	CBlend*						LL_PlayCycle	(u16 partition, MotionID motion, BOOL  bMixing,		float blendAccrue,	float blendFalloff, float Speed, BOOL noloop, PlayCallback Callback, LPVOID CallbackParam, U8 channel = 0);
-	CBlend*						LL_PlayCycle	(u16 partition, MotionID motion, BOOL bMixIn, PlayCallback Callback, LPVOID CallbackParam, U8 channel = 0);
-	void						LL_FadeCycle	(u16 partition, float	falloff, U8 mask_channel = (1<<0));
-	void						LL_CloseCycle	(u16 partition, U8 mask_channel = (1<<0));
-	void						LL_SetChannelFactor (u16 channel,float factor);
-	CBlendInstance&				LL_GetBlendInstance	(u16 bone_id)	{	VERIFY(bone_id<LL_BoneCount()); return blend_instances[bone_id];	}
+	CBlend*						LL_PlayFX		(U16 bone,		MotionID motion, float blendAccrue,	float blendFalloff, float Speed, float Power);
+	CBlend*						LL_PlayCycle	(U16 partition, MotionID motion, BOOL  bMixing,		float blendAccrue,	float blendFalloff, float Speed, BOOL noloop, PlayCallback Callback, LPVOID CallbackParam, U8 channel = 0);
+	CBlend*						LL_PlayCycle	(U16 partition, MotionID motion, BOOL bMixIn, PlayCallback Callback, LPVOID CallbackParam, U8 channel = 0);
+	void						LL_FadeCycle	(U16 partition, float	falloff, U8 mask_channel = (1<<0));
+	void						LL_CloseCycle	(U16 partition, U8 mask_channel = (1<<0));
+	void						LL_SetChannelFactor (U16 channel,float factor);
+	CBlendInstance&				LL_GetBlendInstance	(U16 bone_id)	{	VERIFY(bone_id<LL_BoneCount()); return blend_instances[bone_id];	}
 																	
 	// Main functionality
 	void						UpdateTracks	();								// Update motions

@@ -116,7 +116,7 @@ void	_IndexStream::Destroy()
 	_clear					();
 }
 
-u16*	_IndexStream::Lock	( u32 Count, u32& vOffset )
+U16*	_IndexStream::Lock	( u32 Count, u32& vOffset )
 {
 	PGO						(Msg("PGO:IB_LOCK:%d",Count));
 	vOffset					= 0;

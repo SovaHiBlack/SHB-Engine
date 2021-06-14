@@ -8,10 +8,10 @@ static int g_dwEventDelay = 0;
 class	NET_Event
 {
 public:
-	u16					ID;
+	U16					ID;
 	u32					timestamp;
-	u16					type;
-	u16					destination;
+	U16					type;
+	U16					destination;
 	xr_vector<U8>		data;
 
 	void				import(CNetPacket& P)
@@ -47,7 +47,7 @@ public:
 	}
 	void				export		(CNetPacket& P)
 	{
-		u16	ID = M_EVENT;
+		U16	ID = M_EVENT;
 		P.w_begin(ID);
 		P.w_u32(timestamp);
 		P.w_u16(type);
@@ -118,7 +118,7 @@ public:
 		/**/
 		return			TRUE;
 	}
-	inline void				get(u16& ID, u16& dest, u16& type, CNetPacket& P)
+	inline void				get(U16& ID, U16& dest, U16& type, CNetPacket& P)
 	{
 		const NET_Event& E = *queue.begin( );
 		ID = E.ID;

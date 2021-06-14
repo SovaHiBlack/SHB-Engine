@@ -27,8 +27,8 @@ public:
 	inline		object_type				&object						() const;
 
 public:
-			u16						get_available_ammo_count	(const CSE_ALifeItemWeapon *weapon, ALife::OBJECT_VECTOR &objects);
-			u16						get_available_ammo_count	(const CSE_ALifeItemWeapon *weapon, ALife::ITEM_P_VECTOR &items, ALife::OBJECT_VECTOR *objects = 0);
+	U16						get_available_ammo_count	(const CSE_ALifeItemWeapon *weapon, ALife::OBJECT_VECTOR &objects);
+	U16						get_available_ammo_count	(const CSE_ALifeItemWeapon *weapon, ALife::ITEM_P_VECTOR &items, ALife::OBJECT_VECTOR *objects = 0);
 			void					attach_available_ammo		(CSE_ALifeItemWeapon *weapon, ALife::ITEM_P_VECTOR	&items, ALife::OBJECT_VECTOR *objects = 0);
 			bool					can_take_item				(CSE_ALifeInventoryItem	*inventory_item);
 			void					collect_ammo_boxes			();

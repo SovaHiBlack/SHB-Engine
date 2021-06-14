@@ -25,7 +25,7 @@ struct SPHCharacterRestrictor
 	dGeomID					m_restrictor_transform;
 	float					m_restrictor_radius;
 	void					SetObjectContactCallback(ObjectContactCallbackFun* callback);
-	void					SetMaterial(u16 material);
+	void					SetMaterial(U16 material);
 	void					Create(CPHCharacter* ch, dVector3 sizes);
 	void					Destroy(void);
 	void					SetPhysicsRefObject(CPHShellHolder* ref_object);
@@ -105,14 +105,14 @@ public:
 		return this;
 	}
 	virtual	void		SetObjectContactCallback(ObjectContactCallbackFun* callback);
-	virtual void		SetMaterial(u16 material);
+	virtual void		SetMaterial(U16 material);
 	virtual void		Create(dVector3 sizes);
 	virtual void		Destroy(void);
 	virtual void		SetPhysicsRefObject(CPHShellHolder* ref_object);
 	virtual void		SetAcceleration(Fvector3 accel);
 	virtual	void		Disable( );
 	virtual	void		Jump(const Fvector3& jump_velocity);
-	virtual void		InitContact(dContact* c, bool& do_collide, u16	material_idx_1, u16 material_idx_2);
+	virtual void		InitContact(dContact* c, bool& do_collide, U16 material_idx_1, U16 material_idx_2);
 	void		SetRestrictorRadius(CPHCharacter::ERestrictionType rtype, float r);
 	virtual		void		ChooseRestrictionType(ERestrictionType my_type, float my_depth, CPHCharacter* ch);
 	CPHActorCharacter( );

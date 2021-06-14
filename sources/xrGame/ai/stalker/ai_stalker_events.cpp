@@ -22,7 +22,7 @@ using namespace MonsterSpace;
 
 #define SILENCE
 
-void CStalker::OnEvent		(CNetPacket& P, u16 type)
+void CStalker::OnEvent		(CNetPacket& P, U16 type)
 {
 	inherited::OnEvent			(P,type);
 	CInventoryOwner::OnEvent	(P,type);
@@ -32,7 +32,7 @@ void CStalker::OnEvent		(CNetPacket& P, u16 type)
 		case GE_TRADE_BUY :
 		case GE_OWNERSHIP_TAKE : {
 
-			u16			id;
+			U16			id;
 			P.r_u16		(id);
 			CObject		*O = Level().Objects.net_Find	(id);
 
@@ -59,7 +59,7 @@ void CStalker::OnEvent		(CNetPacket& P, u16 type)
 //				DropItemSendMessage(O);
 				CNetPacket				P;
 				u_EventGen				(P,GE_OWNERSHIP_REJECT,ID());
-				P.w_u16					(u16(O->ID()));
+				P.w_u16					(U16(O->ID()));
 				u_EventSend				(P);
 
 #ifndef SILENCE
@@ -70,7 +70,7 @@ void CStalker::OnEvent		(CNetPacket& P, u16 type)
 		}
 		case GE_TRADE_SELL :
 		case GE_OWNERSHIP_REJECT : {
-			u16 id;
+			U16 id;
 			P.r_u16		(id);
 			CObject		*O = Level().Objects.net_Find(id);
 
@@ -107,7 +107,7 @@ void CStalker::feel_touch_new				(CObject* O)
 #endif
 		CNetPacket		P;
 		u_EventGen		(P,GE_OWNERSHIP_TAKE,ID());
-		P.w_u16			(u16(I->object().ID()));
+		P.w_u16			(U16(I->object().ID()));
 		u_EventSend		(P);
 	}
 }
@@ -123,7 +123,7 @@ void CStalker::DropItemSendMessage(CObject *O)
 	// We doesn't have similar weapon - pick up it
 	CNetPacket				P;
 	u_EventGen				(P,GE_OWNERSHIP_REJECT,ID());
-	P.w_u16					(u16(O->ID()));
+	P.w_u16					(U16(O->ID()));
 	u_EventSend				(P);
 }
 

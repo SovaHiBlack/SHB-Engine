@@ -93,10 +93,10 @@ public:
 
 	virtual void			Die					(CObject* who);
 //			void			KillEntity			(CObject* who);
-			void			KillEntity			(u16 whoID);
+			void			KillEntity			(U16 whoID);
 		
 	// Events
-	virtual void			OnEvent				( CNetPacket& P, u16 type		);
+	virtual void			OnEvent				( CNetPacket& P, U16 type		);
 
 	virtual BOOL			IsVisibleForHUD		()	{return g_Alive();	}
 	virtual void			g_fireParams		(const CHudItem*, Fvector3&, Fvector3&){};
@@ -112,12 +112,11 @@ private:
 	ALife::_OBJECT_ID		m_killer_id;
 
 public:
-	inline		u16				killer_id				() const {return m_killer_id;};
-	virtual	bool			use_simplified_visual	() const {return false;};
+	inline		U16				killer_id				() const {return m_killer_id;};
+	virtual bool			use_simplified_visual	() const {return false;};
 
-public:
-	virtual	void			on_before_change_team	();
-	virtual	void			on_after_change_team	();
+	virtual void			on_before_change_team	();
+	virtual void			on_after_change_team	();
 
 private:
 	bool					m_registered_member;

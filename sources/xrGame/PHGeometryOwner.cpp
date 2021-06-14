@@ -20,7 +20,7 @@ CPHGeometryOwner::~CPHGeometryOwner()
 	for(;i_geom!=e;++i_geom)xr_delete(*i_geom);
 	m_geoms.clear();
 }
-void CPHGeometryOwner::			build_Geom	(CODEGeom& geom)
+void CPHGeometryOwner::			build_Geom	(CCodeGeom& geom)
 {
 
 	geom.build(m_mass_center);
@@ -37,7 +37,7 @@ void CPHGeometryOwner::			build_Geom	(CODEGeom& geom)
 
 void CPHGeometryOwner::build_Geom(u16 i)
 {
-	CODEGeom& geom=*m_geoms[i];
+	CCodeGeom& geom=*m_geoms[i];
 	build_Geom(geom);
 	geom.element_position()=i;
 }
@@ -151,18 +151,18 @@ void CPHGeometryOwner::			add_Box		(const Fobb&		V)
 	if(box.m_halfsize.x<0.005f) box.m_halfsize.x=0.005f;
 	if(box.m_halfsize.y<0.005f) box.m_halfsize.y=0.005f;
 	if(box.m_halfsize.z<0.005f) box.m_halfsize.z=0.005f;
-	m_geoms.push_back(smart_cast<CODEGeom*>(xr_new<CBoxGeom>(box)));
+	m_geoms.push_back(smart_cast<CCodeGeom*>(xr_new<CBoxGeom>(box)));
 
 }
 
 void CPHGeometryOwner::			add_Sphere	(const Fsphere&	V)
 {
-	m_geoms.push_back(smart_cast<CODEGeom*>(xr_new<CSphereGeom>(V)));
+	m_geoms.push_back(smart_cast<CCodeGeom*>(xr_new<CSphereGeom>(V)));
 }
 
 void CPHGeometryOwner::add_Cylinder	(const Fcylinder& V)
 {
-	m_geoms.push_back(smart_cast<CODEGeom*>(xr_new<CCylinderGeom>(V)));
+	m_geoms.push_back(smart_cast<CCodeGeom*>(xr_new<CCylinderGeom>(V)));
 }
 
 
@@ -377,12 +377,12 @@ struct SFindPred
 	{
 		m_val=val;
 	}
-bool	operator () (CODEGeom* g)
+bool	operator () (CCodeGeom* g)
 	{
 		return g->bone_id()==m_val;
 	}
 };
-CODEGeom* CPHGeometryOwner::GeomByBoneID(u16 bone_id)
+CCodeGeom* CPHGeometryOwner::GeomByBoneID(u16 bone_id)
 {
 	
 	GEOM_I g=std::find_if(m_geoms.begin(),m_geoms.end(),SFindPred(bone_id));

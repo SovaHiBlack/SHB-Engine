@@ -20,7 +20,7 @@
 #pragma warning(pop)
 
 shared_str	g_active_task_id = "";
-u16			g_active_task_objective_id = u16(-1);
+U16			g_active_task_objective_id = U16(-1);
 
 struct FindTaskByID
 {
@@ -54,7 +54,7 @@ CGameTaskManager::~CGameTaskManager( )
 	delete_data(m_gametasks);
 }
 
-void CGameTaskManager::initialize(u16 id)
+void CGameTaskManager::initialize(U16 id)
 {
 	m_gametasks->registry( ).init(id);// actor's id
 }
@@ -121,7 +121,7 @@ CGameTask* CGameTaskManager::GiveGameTaskToActor(CGameTask* t, u32 timeToComplet
 			}
 		}
 
-		if (obj->object_id != u16(-1) && obj->map_location.size( ) && obj->def_location_enabled)
+		if (obj->object_id != U16(-1) && obj->map_location.size( ) && obj->def_location_enabled)
 		{
 			CMapLocation* ml = Level( ).MapManager( ).AddMapLocation(obj->map_location, obj->object_id);
 			if (obj->map_hint.size( ))
@@ -158,7 +158,7 @@ CGameTask* CGameTaskManager::GiveGameTaskToActor(CGameTask* t, u32 timeToComplet
 	return t;
 }
 
-void CGameTaskManager::SetTaskState(CGameTask* t, u16 objective_num, ETaskState state)
+void CGameTaskManager::SetTaskState(CGameTask* t, U16 objective_num, ETaskState state)
 {
 	m_flags.set(eChanged, TRUE);
 	bool isRoot = (objective_num == 0);
@@ -171,7 +171,7 @@ void CGameTaskManager::SetTaskState(CGameTask* t, u16 objective_num, ETaskState 
 	{
 		Level( ).MapManager( ).RemoveMapLocation(o->map_location, o->object_id);
 		o->map_location = NULL;
-		o->object_id = u16(-1);
+		o->object_id = U16(-1);
 	}
 
 	o->SetTaskState(state);
@@ -188,7 +188,7 @@ void CGameTaskManager::SetTaskState(CGameTask* t, u16 objective_num, ETaskState 
 
 	if (isRoot)
 	{	//setState for task and all sub-tasks
-		for (u16 i = 0; i < t->m_Objectives.size( ); ++i)
+		for (U16 i = 0; i < t->m_Objectives.size( ); ++i)
 		{
 			if (t->Objective(i).TaskState( ) == eTaskStateInProgress)
 			{
@@ -209,7 +209,7 @@ void CGameTaskManager::SetTaskState(CGameTask* t, u16 objective_num, ETaskState 
 	}
 }
 
-void CGameTaskManager::SetTaskState(const TASK_ID& id, u16 objective_num, ETaskState state)
+void CGameTaskManager::SetTaskState(const TASK_ID& id, U16 objective_num, ETaskState state)
 {
 	CGameTask* t = HasGameTask(id);
 	if (NULL == t)
@@ -241,7 +241,7 @@ void CGameTaskManager::UpdateTasks( )
 	for (I = tasks; I != E; ++I)
 	{
 		CGameTask* t = (*I).game_task;
-		for (u16 i = 0; i < t->m_Objectives.size( ); ++i)
+		for (U16 i = 0; i < t->m_Objectives.size( ); ++i)
 		{
 			SGameTaskObjective& obj = t->Objective(i);
 			if (obj.TaskState( ) != eTaskStateInProgress && i == 0)
@@ -307,7 +307,7 @@ void CGameTaskManager::UpdateActiveTask( )
 			//1-st enable hidden locations
 			if ((!obj.def_location_enabled) && (obj.TaskState( ) == eTaskStateInProgress) && (t->Objective(i - 1).TaskState( ) == eTaskStateCompleted))
 			{
-				if (obj.object_id != u16(-1) && *obj.map_location)
+				if (obj.object_id != U16(-1) && *obj.map_location)
 				{
 					CMapLocation* ml = Level( ).MapManager( ).AddMapLocation(obj.map_location, obj.object_id);
 					if (obj.map_hint.size( ))
@@ -339,7 +339,7 @@ void CGameTaskManager::UpdateActiveTask( )
 				continue;
 			}
 
-			for (u16 i = 0; (i < t->m_Objectives.size( )) && (!bDone); ++i)
+			for (U16 i = 0; (i < t->m_Objectives.size( )) && (!bDone); ++i)
 			{
 				if ((i == 0) || (t->Objective(i).TaskState( ) != eTaskStateInProgress))
 				{
@@ -366,7 +366,7 @@ CGameTask* CGameTaskManager::ActiveTask( )
 	return HasGameTask(t_id);
 }
 
-void CGameTaskManager::SetActiveTask(const TASK_ID& id, u16 idx)
+void CGameTaskManager::SetActiveTask(const TASK_ID& id, U16 idx)
 {
 	if (idx == 0)
 	{

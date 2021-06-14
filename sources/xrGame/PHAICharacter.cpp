@@ -166,7 +166,7 @@ void	CPHAICharacter::ValidateWalkOn( )
 	inherited::ValidateWalkOn( );
 }
 
-void CPHAICharacter::InitContact(dContact* c, bool& do_collide, u16 material_idx_1, u16 material_idx_2)
+void CPHAICharacter::InitContact(dContact* c, bool& do_collide, U16 material_idx_1, U16 material_idx_2)
 {
 	inherited::InitContact(c, do_collide, material_idx_1, material_idx_2);
 	if (is_control || b_lose_control || b_jumping)

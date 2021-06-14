@@ -8,12 +8,12 @@
 
 #pragma once
 
-inline	u16	CMaterialManager::last_material_idx		() const
+inline	U16	CMaterialManager::last_material_idx		() const
 {
 	return				(m_last_material_idx);
 }
 
-inline	u16	CMaterialManager::self_material_idx		() const
+inline	U16	CMaterialManager::self_material_idx		() const
 {
 	return				(m_my_material_idx);
 }

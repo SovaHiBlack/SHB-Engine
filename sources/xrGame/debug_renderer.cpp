@@ -13,19 +13,21 @@
 CDebugRenderer::CDebugRenderer( )
 {
 	m_line_indices.resize(line_vertex_limit);
-	xr_vector<u16>::iterator		I = m_line_indices.begin( );
-	xr_vector<u16>::iterator		E = m_line_indices.end( );
-	for (u16 i = 0; I != E; ++I, ++i)
+	xr_vector<U16>::iterator		I = m_line_indices.begin( );
+	xr_vector<U16>::iterator		E = m_line_indices.end( );
+	for (U16 i = 0; I != E; ++I, ++i)
+	{
 		*I = i;
+	}
 }
 
-void CDebugRenderer::add_lines(const Fvector3* vertices, const u16* pairs, const int& pair_count, const u32& color)
+void CDebugRenderer::add_lines(const Fvector3* vertices, const U16* pairs, const int& pair_count, const u32& color)
 {
 	if ((m_line_vertices.size( ) + 2 * pair_count) >= line_vertex_limit)
 		render( );
 
-	const u16* I = pairs;
-	const u16* E = pairs + 2 * pair_count;
+	const U16* I = pairs;
+	const U16* E = pairs + 2 * pair_count;
 	FVF::L							temp;
 	temp.color = color;
 	for (; I != E; ++I)
@@ -57,7 +59,7 @@ void CDebugRenderer::draw_obb(const Fmatrix& matrix, const Fvector3& half_size, 
 	mL2W_Transform.transform_tiny(aabb[6], Fvector3( ).set(+1, +1, +1)); // 6
 	mL2W_Transform.transform_tiny(aabb[7], Fvector3( ).set(+1, -1, +1)); // 7
 
-	u16								aabb_id[12 * 2] = {
+	U16								aabb_id[12 * 2] = {
 		0,1,  1,2,  2,3,  3,0,  4,5,  5,6,  6,7,  7,4,  1,5,  2,6,  3,7,  0,4
 	};
 
@@ -107,7 +109,7 @@ void CDebugRenderer::draw_ellipse(const Fmatrix& matrix, const u32& color)
 			0.2706f,0.2706f,-0.9239f,  0.1464f,0.3536f,-0.9239f,  0.0000f,0.0000f,-1.0000f
 	};
 
-	u16 pairs[ ] = {
+	U16 pairs[ ] = {
 		0,1, 0,2, 0,3, 0,4, 0,5, 0,6, 0,7, 0,8, 0,9, 0,10, 0,11, 0,12, 0,13, 0,14, 0,15,
 		0,16, 1,2, 1,17, 1,18, 2,3, 2,18, 2,19, 3,4, 3,19, 3,20, 4,5, 4,20, 4,21, 5,6,
 		5,21, 5,22, 6,7, 6,22, 6,23, 7,8, 7,23, 7,24, 8,9, 8,24, 8,25, 9,10, 9,25, 9,26,

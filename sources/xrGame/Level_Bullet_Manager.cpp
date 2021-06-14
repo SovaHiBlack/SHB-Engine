@@ -32,8 +32,8 @@ void SBullet::Init(const Fvector3& position,
 				   float starting_speed,
 				   float power,
 				   float impulse,
-				   u16	sender_id,
-				   u16 sendersweapon_id,
+					U16 sender_id,
+					U16 sendersweapon_id,
 				   ALife::EHitType e_hit_type,
 				   float maximum_distance,
 				   const CCartridge& cartridge,
@@ -65,7 +65,7 @@ void SBullet::Init(const Fvector3& position,
 	m_u8ColorID			= cartridge.m_u8ColorID;
 
 	bullet_material_idx = cartridge.bullet_material_idx;
-	VERIFY			(u16(-1)!=bullet_material_idx);
+	VERIFY			(U16(-1)!=bullet_material_idx);
 
 	flags.allow_tracer					= !!cartridge.m_flags.test(CCartridge::cfTracer);
 	flags.allow_ricochet				= !!cartridge.m_flags.test(CCartridge::cfRicochet);
@@ -152,8 +152,8 @@ void CBulletManager::AddBullet(const Fvector3& position,
 							   float starting_speed,
 							   float power,
 							   float impulse,
-							   u16	sender_id,
-							   u16 sendersweapon_id,
+								U16 sender_id,
+								U16 sendersweapon_id,
 							   ALife::EHitType e_hit_type,
 							   float maximum_distance,
 							   const CCartridge& cartridge,
@@ -161,7 +161,7 @@ void CBulletManager::AddBullet(const Fvector3& position,
 							   bool AimBullet)
 {
 	m_Lock.Enter	();
-	VERIFY		(u16(-1)!=cartridge.bullet_material_idx);
+	VERIFY		(U16(-1)!=cartridge.bullet_material_idx);
 //	u32 CurID = Level().CurrentControlEntity()->ID();
 //	u32 OwnerID = sender_id;
 	m_Bullets.push_back(SBullet());
@@ -200,7 +200,7 @@ void CBulletManager::UpdateWorkload()
 		for(u32 i=0; i<cur_step_num; i++){
 			if(!CalcBullet(rq_storage,rq_spatial,&bullet, m_dwStepTime)){
 				collide::rq_result res;
-				RegisterEvent(EVENT_REMOVE, FALSE, &bullet, Fvector3().set(0, 0, 0), res, (u16)k);
+				RegisterEvent(EVENT_REMOVE, FALSE, &bullet, Fvector3().set(0, 0, 0), res, (U16)k);
 //				m_Bullets[k] = m_Bullets.back();
 //				m_Bullets.pop_back();
 				break;
@@ -442,7 +442,7 @@ void CBulletManager::CommitEvents			()	// @ the start of frame
 	m_Events.clear_and_reserve	()	;
 }
 
-void CBulletManager::RegisterEvent			(EventType Type, BOOL _dynamic, SBullet* bullet, const Fvector3& end_point, collide::rq_result& R, u16 tgt_material)
+void CBulletManager::RegisterEvent			(EventType Type, BOOL _dynamic, SBullet* bullet, const Fvector3& end_point, collide::rq_result& R, U16 tgt_material)
 {
 	m_Events.push_back	(_event())		;
 	_event&	E		= m_Events.back()	;

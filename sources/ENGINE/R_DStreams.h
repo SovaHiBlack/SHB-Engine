@@ -77,7 +77,7 @@ public:
 	inline u32						DiscardID()		{ return mDiscardID;	}
 	void						Flush()			{ mPosition=mSize;		}
 
-	u16*						Lock			( u32 Count, u32& vOffset );
+	U16*						Lock			( u32 Count, u32& vOffset );
 	void						Unlock			(u32 RealCount);
 
 	_IndexStream()				{ _clear();		};

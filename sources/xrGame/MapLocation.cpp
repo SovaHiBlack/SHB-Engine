@@ -26,7 +26,7 @@
 #include "visual_memory_manager.h"
 #include "location_manager.h"
 
-CMapLocation::CMapLocation(const char* type, u16 object_id)
+CMapLocation::CMapLocation(const char* type, U16 object_id)
 {
 	m_flags.zero( );
 	m_level_spot = nullptr;
@@ -563,7 +563,7 @@ void CMapLocation::UpdateLevelMap(CUICustomMap* map)
 	}
 }
 
-u16	CMapLocation::AddRef( )
+U16 CMapLocation::AddRef( )
 {
 	++m_refCount;
 	if (m_flags.test(eTTL))
@@ -583,7 +583,7 @@ void CMapLocation::save(IWriter& stream)
 
 void CMapLocation::load(IReader& stream)
 {
-	u16 c = stream.r_u16( );
+	U16 c = stream.r_u16( );
 	xr_string hint;
 	stream.r_stringZ(hint);
 	SetHint(hint.c_str( ));
@@ -654,7 +654,7 @@ CMapSpot* CMapLocation::GetSpotBorder(CMapSpot* sp)
 	return nullptr;
 }
 
-CRelationMapLocation::CRelationMapLocation(const shared_str& type, u16 object_id, u16 pInvOwnerActorID, u16 pInvOwnerEntityID) : CMapLocation(*type, object_id)
+CRelationMapLocation::CRelationMapLocation(const shared_str& type, U16 object_id, U16 pInvOwnerActorID, U16 pInvOwnerEntityID) : CMapLocation(*type, object_id)
 {
 	m_curr_spot_name = type;
 	m_pInvOwnerEntityID = pInvOwnerEntityID;
@@ -790,7 +790,7 @@ void CRelationMapLocation::Dump( )
 }
 #endif // def DEBUG
 
-CUserDefinedMapLocation::CUserDefinedMapLocation(const char* type, u16 object_id) : inherited(type, object_id)
+CUserDefinedMapLocation::CUserDefinedMapLocation(const char* type, U16 object_id) : inherited(type, object_id)
 {
 	m_flags.set(eSerailizable, TRUE);
 	m_flags.set(eUserDefined, TRUE);

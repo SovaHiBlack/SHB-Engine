@@ -58,17 +58,17 @@ game_PlayerState::~game_PlayerState()
 	pSpawnPointsList.clear	();
 };
 
-bool game_PlayerState::testFlag	(u16 f) const
+bool game_PlayerState::testFlag	(U16 f) const
 {
 	return !!(flags__ & f);
 }
 
-void game_PlayerState::setFlag	(u16 f)
+void game_PlayerState::setFlag	(U16 f)
 {
 	flags__ |= f;
 }
 
-void game_PlayerState::resetFlag(u16 f)
+void game_PlayerState::resetFlag(U16 f)
 {
 	flags__ &= ~(f);
 }
@@ -127,7 +127,7 @@ void	game_PlayerState::net_Import(CNetPacket& P)
 	DeathTime = P.r_u32();
 };
 
-void	game_PlayerState::SetGameID				(u16 NewID)
+void game_PlayerState::SetGameID				(U16 NewID)
 {
 	if (mOldIDs.size()>=10)
 	{
@@ -136,7 +136,8 @@ void	game_PlayerState::SetGameID				(u16 NewID)
 	mOldIDs.push_back(GameID);
 	GameID = NewID;
 }
-bool	game_PlayerState::HasOldID				(u16 ID)
+
+bool game_PlayerState::HasOldID				(U16 ID)
 {
 	OLD_GAME_ID_it ID_i = std::find(mOldIDs.begin(), mOldIDs.end(), ID);
 	if (ID_i != mOldIDs.end() && *(ID_i)== ID)
@@ -204,7 +205,7 @@ void game_GameState::switch_Phase		(u32 new_phase)
 {
 	OnSwitchPhase(m_phase, new_phase);
 
-	m_phase				= u16(new_phase);
+	m_phase				= U16(new_phase);
 	m_start_time		= Level().timeServer();
 }
 

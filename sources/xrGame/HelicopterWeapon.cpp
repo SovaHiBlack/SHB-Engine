@@ -21,11 +21,11 @@ void CHelicopter::BoneMGunCallbackY(CBoneInstance *B)
 	B->mTransform.mulB_43			(rY);
 }
 
-void CHelicopter::OnEvent(	CNetPacket& P, u16 type) 
+void CHelicopter::OnEvent(	CNetPacket& P, U16 type)
 {
 	inherited::OnEvent(P,type);
 	CExplosive::OnEvent(P,type);
-	u16 id;
+	U16 id;
 	switch (type) {
 		case GE_OWNERSHIP_TAKE : 
 			{
@@ -274,7 +274,7 @@ void CHelicopter::UpdateMGunDir()
 		m_allow_fire=FALSE;
 }
 
-void CHelicopter::startRocket(u16 idx)
+void CHelicopter::startRocket(U16 idx)
 {
 	if((getRocketCount()>=1)&&m_use_rocket_on_attack) {
 		CExplosiveRocket* pGrenade = smart_cast<CExplosiveRocket*>(getCurrentRocket());
@@ -299,7 +299,7 @@ void CHelicopter::startRocket(u16 idx)
 
 		CNetPacket P;
 		u_EventGen(P,GE_LAUNCH_ROCKET,ID());
-		P.w_u16(u16( getCurrentRocket()->ID()));
+		P.w_u16(U16( getCurrentRocket()->ID()));
 		u_EventSend(P);
 
 		dropCurrentRocket();

@@ -447,14 +447,14 @@ void						CLevel::Demo_Update( )
 				break;
 				case DATA_CLIENT_PACKET:
 				{
-					u16 m_type;
+					U16 m_type;
 					P->Packet.r_begin(m_type);
 					IPureClient::OnMessage(P->Packet.B.data, P->Packet.B.count);
 				}
 				break;
 				case DATA_SERVER_PACKET:
 				{
-					u16 m_type;
+					U16 m_type;
 					P->Packet.r_begin(m_type);
 					Server->OnMessage(P->Packet, ClientID( ));
 				}

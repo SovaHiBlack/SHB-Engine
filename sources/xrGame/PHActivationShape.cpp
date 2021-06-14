@@ -104,7 +104,7 @@ CPHActivationShape::~CPHActivationShape		( )
 	VERIFY(!m_body && !m_geom);
 }
 
-void CPHActivationShape::Create				(const Fvector3  start_pos, const Fvector3  start_size, CPHShellHolder* ref_obj, EType _type, u16 flags)
+void CPHActivationShape::Create				(const Fvector3  start_pos, const Fvector3 start_size, CPHShellHolder* ref_obj, EType _type, U16 flags)
 {
 	VERIFY(ref_obj);
 	m_body = dBodyCreate(0);
@@ -150,7 +150,7 @@ void CPHActivationShape::Destroy			( )
 	m_body = NULL;
 }
 
-bool CPHActivationShape::Activate			(const Fvector3  need_size, u16 steps, float max_displacement, float max_rotation, bool un_freeze_later)
+bool CPHActivationShape::Activate			(const Fvector3  need_size, U16 steps, float max_displacement, float max_rotation, bool un_freeze_later)
 {
 
 #ifdef DEBUG
@@ -175,7 +175,7 @@ bool CPHActivationShape::Activate			(const Fvector3  need_size, u16 steps, float
 	dGeomUserDataSetObjectContactCallback(m_geom, GetMaxDepthCallback);
 	//ph_world->Step();
 	ph_world->StepTouch( );
-	u16 num_it = 15;
+	U16 num_it = 15;
 	float fnum_it = float(num_it);
 	float fnum_steps = float(steps);
 	float fnum_steps_r = 1.0f / fnum_steps;
@@ -224,7 +224,7 @@ bool CPHActivationShape::Activate			(const Fvector3  need_size, u16 steps, float
 		//InterpolateBox(id,param);
 		size.add(step_size);
 		dGeomBoxSetLengths(m_geom, size.x, size.y, size.z);
-		u16 attempts = 10;
+		U16 attempts = 10;
 		do
 		{
 			ret = false;
@@ -304,7 +304,7 @@ void CPHActivationShape::get_spatial_params	( )
 	spatialParsFromDGeom(m_geom, spatial.sphere.P, AABB, spatial.sphere.R);
 }
 
-void CPHActivationShape::InitContact		(dContact* c, bool& do_collide, u16, u16)
+void CPHActivationShape::InitContact		(dContact* c, bool& do_collide, U16, U16)
 { }
 
 void CPHActivationShape::CutVelocity		(float l_limit, float a_limit)

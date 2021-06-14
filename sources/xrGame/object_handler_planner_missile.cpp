@@ -20,7 +20,7 @@ using namespace ObjectHandlerSpace;
 
 void CObjectHandlerPlanner::add_evaluators		(CMissile *missile)
 {
-	u16					id = missile->ID();
+	U16					id = missile->ID();
 	// dynamic state properties
 	add_evaluator		(uid(id,eWorldPropertyHidden)		,xr_new<CObjectPropertyEvaluatorMissile>(missile,m_object,MS_HIDDEN));
 	add_evaluator		(uid(id,eWorldPropertyThrowStarted)	,xr_new<CObjectPropertyEvaluatorMissile>(missile,m_object,MS_THREATEN));
@@ -37,7 +37,8 @@ void CObjectHandlerPlanner::add_evaluators		(CMissile *missile)
 
 void CObjectHandlerPlanner::add_operators		(CMissile *missile)
 {
-	u16					id = missile->ID(), ff = u16(-1);
+	U16 id = missile->ID( );
+	U16 ff = U16(-1);
 	CActionBase<CStalker>	*action;
 
 	// show

@@ -18,7 +18,7 @@ public:
 		y = TYPE(_v);
 		return *this;
 	}
-	inline SelfRef		set						(double _u, double _v)
+	inline SelfRef		set						(F64 _u, F64 _v)
 	{
 		x = TYPE(_u);
 		y = TYPE(_v);

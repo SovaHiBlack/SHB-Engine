@@ -49,14 +49,14 @@ enum EBuildQuality
 	ebqDraft			= 0,
 	ebqHigh,
 	ebqCustom,
-	ebq_force_u16		= u16(-1)
+	ebq_force_u16		= U16(-1)
 };
 
 #pragma pack(push,8)
 struct hdrLEVEL
 {
-	u16		XRLC_version;
-	u16		XRLC_quality;
+	U16		XRLC_version;
+	U16		XRLC_quality;
 };
 
 struct hdrCFORM
@@ -84,7 +84,8 @@ class NodePosition {
 	U8	data[5];
 	
 	__forceinline	void xz	(u32 value)	{ CopyMemory	(data,&value,3);		}
-	__forceinline	void y	(u16 value)	{ CopyMemory	(data + 3,&value,2);	}
+	__forceinline	void y	(U16 value)	{ CopyMemory	(data + 3,&value,2);	}
+
 public:
 	__forceinline	u32	xz	() const	{
 		return			((*((u32*)data)) & 0x00ffffff);
@@ -96,12 +97,10 @@ public:
 		return			(xz() % row);
 	}
 	__forceinline	u32	y	() const			{
-		return			(*((u16*)(data + 3)));
+		return			(*((U16*)(data + 3)));
 	}
 
 	friend class	CLevelGraph;
-//	friend struct	CNodePositionCompressor;
-//	friend struct	CNodePositionConverter;
 };
 
 struct NodeCompressed
@@ -147,11 +146,11 @@ private:
 	}
 
 public:
-	u16				cover0 : 4;
-	u16				cover1 : 4;
-	u16				cover2 : 4;
-	u16				cover3 : 4; 
-	u16				plane;
+	U16				cover0 : 4;
+	U16				cover1 : 4;
+	U16				cover2 : 4;
+	U16				cover3 : 4;
+	U16				plane;
 	NodePosition	p;
 	// 4 + 4 + 4 + 4 + 16 + 40 + 96 = 168 bits = 21 byte
 
@@ -174,7 +173,7 @@ public:
 		return			(data[11] >> 4);
 	}
 	
-	__forceinline	u16	cover(U8 index) const
+	__forceinline	U16	cover(U8 index) const
 	{
 		switch (index) {
 			case 0 : return(cover0);
@@ -197,7 +196,7 @@ public:
 struct SNodePositionOld
 {
 	S16				x;
-	u16				y;
+	U16				y;
 	S16				z;
 };
 #pragma pack	(pop)

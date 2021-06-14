@@ -53,7 +53,7 @@ inline	CMemoryObject<T>::CMemoryObject			()
 }
 
 template <typename T>
-inline	bool CMemoryObject<T>::operator==		(u16 id) const
+inline	bool CMemoryObject<T>::operator==		(U16 id) const
 {
 	return					(object_id(m_object) == id);
 }
@@ -84,7 +84,7 @@ inline	void CMemoryObject<T>::fill				(const T *game_object, const T *self, cons
 }
 
 template <typename T>
-inline	u16 object_id(const T *object)
+inline	U16 object_id(const T *object)
 {
-	return					(object ? u16(object->ID()) : u16(0xffff));
+	return					(object ? U16(object->ID()) : U16(0xffff));
 }

@@ -25,7 +25,7 @@ struct PrimitiveGroup
 {
 	PrimType		type;
 	unsigned int	numIndices;
-	unsigned short* indices;
+	U16*			indices;
 
 ////////////////////////////////////////////////////////////////////////////////////////
 

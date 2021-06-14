@@ -120,7 +120,7 @@ public:
 	virtual void						shedule_Update(u32 T);
 	virtual void						UpdateCL( );
 
-	virtual void						OnEvent(CNetPacket& P, u16 type);
+	virtual void						OnEvent(CNetPacket& P, U16 type);
 
 	// Render
 	virtual void						renderable_Render( );
@@ -310,7 +310,7 @@ public:
 
 protected:
 	CHolderCustom* m_holder;
-	u16						m_holderID;
+	U16						m_holderID;
 	bool					use_Holder(CHolderCustom* holder);
 
 	bool					use_Vehicle(CHolderCustom* object);
@@ -655,7 +655,7 @@ protected:
 	//---------------------------------------------
 	using PH_STATES = xr_deque<SPHNetState>;
 	PH_STATES				m_States;
-	u16						m_u16NumBones;
+	U16						m_u16NumBones;
 	void					net_ExportDeadBody(CNetPacket& P);
 	//---------------------------------------------
 	void					CalculateInterpolationParams( );
@@ -770,8 +770,8 @@ public:
 	virtual bool				use_center_to_aim( ) const;
 
 protected:
-	u16							m_iLastHitterID;
-	u16							m_iLastHittingWeaponID;
+	U16							m_iLastHitterID;
+	U16							m_iLastHittingWeaponID;
 	S16							m_s16LastHittedElement;
 	Fvector3						m_vLastHitDir;
 	Fvector3						m_vLastHitPos;
@@ -779,7 +779,7 @@ protected:
 	bool						m_bWasHitted;
 	bool						m_bWasBackStabbed;
 
-	virtual bool			Check_for_BackStab_Bone(u16 element);
+	virtual bool			Check_for_BackStab_Bone(U16 element);
 
 public:
 	virtual void				SetHitInfo(CObject* who, CObject* weapon, S16 element, Fvector3 Pos, Fvector3 Dir);
@@ -803,7 +803,7 @@ private:
 	CActorMemory* m_memory;
 
 public:
-	void				SetActorVisibility(u16 who, float value);
+	void				SetActorVisibility(U16 who, float value);
 	inline CActorMemory& memory( ) const
 	{
 		VERIFY(m_memory);

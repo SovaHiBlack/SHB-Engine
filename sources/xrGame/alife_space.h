@@ -34,12 +34,12 @@ class CGameGraph;
 
 namespace ALife {
 	typedef u64	_CLASS_ID;									// Class ID
-	typedef u16	_OBJECT_ID;									// Object ID
+	typedef U16	_OBJECT_ID;									// Object ID
 	typedef u64	_TIME_ID;									// Time  ID
 	typedef u32	_EVENT_ID;									// Event ID
 	typedef u32	_TASK_ID;									// Event ID
-	typedef u16	_SPAWN_ID;									// Spawn ID
-	typedef u16	_TERRAIN_ID;								// Terrain ID
+	typedef U16	_SPAWN_ID;									// Spawn ID
+	typedef U16	_TERRAIN_ID;								// Terrain ID
 	typedef u32 _STORY_ID;									// Story ID
 	typedef u32 _SPAWN_STORY_ID;							// Spawn Story ID
 

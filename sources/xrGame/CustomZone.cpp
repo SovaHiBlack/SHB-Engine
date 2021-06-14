@@ -272,7 +272,7 @@ void CCustomZone::Load(const char* section)
 		m_fArtefactSpawnHeight = pSettings->r_float (section,	"artefact_spawn_height");
 
 		const char* l_caParameters = pSettings->r_string(section, "artefacts");
-		u16 m_wItemCount			= (u16)_GetItemCount(l_caParameters);
+		U16 m_wItemCount			= (U16)_GetItemCount(l_caParameters);
 		R_ASSERT2					(!(m_wItemCount & 1),"Invalid number of parameters in string 'artefacts' in the 'system.ltx'!");
 		m_wItemCount				>>= 1;
 
@@ -282,7 +282,7 @@ void CCustomZone::Load(const char* section)
 		float total_probability = 0.f;
 
 		m_ArtefactSpawn.resize(m_wItemCount);
-		for (u16 i=0; i<m_wItemCount; ++i) 
+		for (U16 i=0; i<m_wItemCount; ++i)
 		{
 			ARTEFACT_SPAWN& artefact_spawn = m_ArtefactSpawn[i];
 			artefact_spawn.section = _GetItem(l_caParameters,i << 1,l_caBuffer);
@@ -768,7 +768,7 @@ void CCustomZone::PlayHitParticles(CGameObject* pObject)
 	{
 		CParticlesPlayer* PP = smart_cast<CParticlesPlayer*>(pObject);
 		if (PP){
-			u16 play_bone = PP->GetRandomBone(); 
+			U16 play_bone = PP->GetRandomBone();
 			if (play_bone != BI_NONE)
 			{
 				PP->StartParticles(particle_str, play_bone, Fvector3( ).set(0, 1, 0), ID( ));
@@ -821,14 +821,16 @@ void CCustomZone::PlayEntranceParticles(CGameObject* pObject)
 	//выбрать случайную косточку на объекте
 	CParticlesPlayer* PP = smart_cast<CParticlesPlayer*>(pObject);
 	if (PP){
-		u16 play_bone = PP->GetRandomBone(); 
+		U16 play_bone = PP->GetRandomBone();
 		if (play_bone!=BI_NONE){
 			CParticlesObject* pParticles = CParticlesObject::Create(*particle_str,TRUE);
 			Fmatrix xform;
 
 			Fvector3 dir;
-			if(fis_zero(vel.magnitude()))
-				dir.set(0,1,0);
+			if (fis_zero(vel.magnitude( )))
+			{
+				dir.set(0, 1, 0);
+			}
 			else
 			{
 				dir.set(vel);
@@ -1050,10 +1052,10 @@ void  CCustomZone::OnMove()
 
 		if(m_pIdleLight && m_pIdleLight->get_active())
 			m_pIdleLight->set_position(Position());
-     }
+	 }
 }
 
-void	CCustomZone::OnEvent (CNetPacket& P, u16 type)
+void CCustomZone::OnEvent (CNetPacket& P, U16 type)
 {	
 	switch (type)
 	{
@@ -1066,16 +1068,16 @@ void	CCustomZone::OnEvent (CNetPacket& P, u16 type)
 			}
 		case GE_OWNERSHIP_TAKE : 
 			{
-				u16 id;
-                P.r_u16(id);
+			U16 id;
+				P.r_u16(id);
 				OnOwnershipTake(id);
 				break;
 			} 
-         case GE_OWNERSHIP_REJECT : 
+		 case GE_OWNERSHIP_REJECT : 
 			 {
-				 u16 id;
-                 P.r_u16			(id);
-                 CArtefact *artefact = smart_cast<CArtefact*>(Level().Objects.net_Find(id)); 
+			 U16 id;
+				 P.r_u16			(id);
+				 CArtefact *artefact = smart_cast<CArtefact*>(Level().Objects.net_Find(id)); 
 				 if(artefact)
 				 {
 					 bool			just_before_destroy = !P.r_eof() && P.r_u8();
@@ -1083,13 +1085,13 @@ void	CCustomZone::OnEvent (CNetPacket& P, u16 type)
 					if (!just_before_destroy)
 						ThrowOutArtefact(artefact);
 				 }
-                 break;
+				 break;
 			}
 	}
 	inherited::OnEvent(P, type);
 };
 
-void CCustomZone::OnOwnershipTake(u16 id)
+void CCustomZone::OnOwnershipTake(U16 id)
 {
 	CGameObject* GO  = smart_cast<CGameObject*>(Level().Objects.net_Find(id));  VERIFY(GO);
 	if(!smart_cast<CArtefact*>(GO))
@@ -1303,8 +1305,8 @@ u32	CCustomZone::ef_weapon_type		() const
 	return	(m_ef_weapon_type);
 }
 
-void CCustomZone::CreateHit	(	u16 id_to, 
-								u16 id_from, 
+void CCustomZone::CreateHit	(U16 id_to,
+							U16 id_from,
 								const Fvector3& hit_dir,
 								float hit_power, 
 							 S16 bone_id,
@@ -1315,7 +1317,7 @@ void CCustomZone::CreateHit	(	u16 id_to,
 	if (OnServer())
 	{
 		if(m_owner_id != u32(-1) )
-			id_from	= (u16)m_owner_id;
+			id_from	= (U16)m_owner_id;
 
 		CNetPacket	l_P;
 		Fvector3 hdir = hit_dir;

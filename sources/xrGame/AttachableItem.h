@@ -12,7 +12,7 @@ private:
 	CInventoryItem*										m_item;
 	shared_str											m_bone_name;
 	Fmatrix												m_offset;
-	unsigned short										m_bone_id;
+	U16													m_bone_id;
 	bool												m_enabled;
 //	bool												m_auto_attach;
 
@@ -38,8 +38,8 @@ public:
 	inline CInventoryItem&		item					( ) const;
 	inline CPHShellHolder&		object					( ) const;
 	inline shared_str			bone_name				( ) const;
-	inline unsigned short		bone_id					( ) const;
-	inline void					set_bone_id				(unsigned short bone_id);
+	inline U16					bone_id					( ) const;
+	inline void					set_bone_id				(U16 bone_id);
 	inline const Fmatrix&		offset					( ) const;
 	inline bool					enabled					( ) const;
 	void						enable					(bool value);

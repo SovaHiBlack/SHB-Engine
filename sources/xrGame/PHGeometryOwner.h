@@ -3,8 +3,8 @@
 #include "Geometry.h"
 #include "gamemtllib.h"
 
-//DEFINE_VECTOR(CODEGeom*,GEOM_STORAGE,GEOM_I)
-using GEOM_STORAGE = xr_vector<CODEGeom*>;
+//DEFINE_VECTOR(CCodeGeom*,GEOM_STORAGE,GEOM_I)
+using GEOM_STORAGE = xr_vector<CCodeGeom*>;
 using GEOM_I = GEOM_STORAGE::iterator;
 
 struct SBoneShape;
@@ -30,7 +30,7 @@ public:
 		void						add_Cylinder							(const Fcylinder&	V);															//aux
 		void						add_Shape								(const SBoneShape& shape);														//aux
 		void						add_Shape								(const SBoneShape& shape,const Fmatrix& offset);								//aux
-		CODEGeom*					last_geom								(){if(m_geoms.empty())return NULL; return m_geoms.back();}						//aux
+		CCodeGeom*					last_geom								(){if(m_geoms.empty())return NULL; return m_geoms.back();}						//aux
 		bool						has_geoms								(){return !m_geoms.empty();}
 		void						set_ContactCallback						(ContactCallbackFun* callback);													//aux (may not be)
 		void						set_ObjectContactCallback				(ObjectContactCallbackFun* callback);											//called anywhere ph state influent
@@ -45,8 +45,8 @@ public:
 
 		void						SetMaterial								(u16 m)		  ;
 		void						SetMaterial								(const char* m){SetMaterial(GMLib.GetMaterialIdx(m));}								//aux
-	inline	CODEGeom*					Geom									(u16 num)		{R_ASSERT2 (num<m_geoms.size(),"out of range"); return m_geoms[num]; }
-		CODEGeom*					GeomByBoneID							(u16 bone_id);
+	inline	CCodeGeom*					Geom									(u16 num)		{R_ASSERT2 (num<m_geoms.size(),"out of range"); return m_geoms[num]; }
+	CCodeGeom*					GeomByBoneID							(u16 bone_id);
 		u16							numberOfGeoms							();																				//aux
 		dGeomID						dSpacedGeometry							();																				//aux
 		Fvector3						get_mc_data								();																				//aux
@@ -67,7 +67,7 @@ protected:
 		void						build									();
 		void						CreateSimulBase							();
 		void						destroy									();
-		void						build_Geom								(CODEGeom&	V);																	//aux
+		void						build_Geom								(CCodeGeom&	V);																	//aux
 		void						build_Geom								(u16 i);							
 		void						set_body								(dBodyID body);
 

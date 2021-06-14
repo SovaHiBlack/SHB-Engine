@@ -566,10 +566,10 @@ void CCharacterPhysicsSupport::in_UpdateCL( )
 		DBG_DrawMatrix(m, 1.5f);
 /*
 		CKinematicsAnimated	*K = smart_cast<CKinematicsAnimated*>(m_EntityAlife.Visual());
-		u16 hb = K->LL_BoneID("bip01_head");
-		u16 pb = K->LL_GetBoneRoot();
-		u16 nb = K->LL_BoneID("bip01_neck");
-		u16 eb = K->LL_BoneID("eye_right");
+		U16 hb = K->LL_BoneID("bip01_head");
+		U16 pb = K->LL_GetBoneRoot();
+		U16 nb = K->LL_BoneID("bip01_neck");
+		U16 eb = K->LL_BoneID("eye_right");
 		Fmatrix &mh  = K->LL_GetTransform(hb);
 		Fmatrix &mp  = K->LL_GetTransform(pb);
 		Fmatrix &me	 = K->LL_GetTransform(eb);
@@ -755,7 +755,7 @@ void CCharacterPhysicsSupport::ActivateShell(CObject* who)
 	}
 
 //////////////////////this needs to evaluate object box//////////////////////////////////////////////////////
-	for (u16 I = K->LL_BoneCount( ) - 1; I != u16(-1); --I)
+	for (U16 I = K->LL_BoneCount( ) - 1; I != U16(-1); --I)
 	{
 		K->LL_GetBoneInstance(I).reset_callback( );
 	}
@@ -994,17 +994,17 @@ void CCharacterPhysicsSupport::FlyTo(const Fvector3& disp)
 	m_pPhysicsShell->UnFreeze( );
 	Fvector3 vel;
 	vel.set(disp);
-	const u16 steps_num = 10;
+	const U16 steps_num = 10;
 	const float fsteps_num = steps_num;
 	vel.mul(1.0f / fsteps_num / fixed_step);
 
-	for (u16 i = 0; steps_num > i; ++i)
+	for (U16 i = 0; steps_num > i; ++i)
 	{
 		m_pPhysicsShell->set_LinearVel(vel);
 		ph_world->Step( );
 	}
 
-	//u16 step_num=disp.magnitude()/fixed_step;
+	//U16 step_num=disp.magnitude()/fixed_step;
 	m_pPhysicsShell->set_ApplyByGravity(g);
 	m_pPhysicsShell->set_CallbackData(cd);
 	m_pPhysicsShell->remove_ObjectContactCallback(StaticEnvironmentCB);

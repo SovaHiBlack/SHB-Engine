@@ -13,24 +13,24 @@ struct SBullet
 	u32				frame_num			;			//номер кадра на котором была запущена пуля
 	union			{
 		struct			{
-			u16			ricochet_was	: 1	;			//пуля срикошетила
-			u16			explosive		: 1	;			//special explosive mode for particles
-			u16			allow_tracer	: 1	;
-			u16			allow_ricochet	: 1	;			//разрешить рикошет
-			u16			allow_sendhit	: 1	;			//statistics
-			u16			skipped_frame	: 1	;			//пропуск первой отрисовки
-			u16			aim_bullet		: 1 ;			//прицеленная пуля( вылетевшая первой после длительного молчания оружия (1-3 сек.))
+			U16			ricochet_was	: 1	;			//пуля срикошетила
+			U16			explosive		: 1	;			//special explosive mode for particles
+			U16			allow_tracer	: 1	;
+			U16			allow_ricochet	: 1	;			//разрешить рикошет
+			U16			allow_sendhit	: 1	;			//statistics
+			U16			skipped_frame	: 1	;			//пропуск первой отрисовки
+			U16			aim_bullet		: 1 ;			//прицеленная пуля( вылетевшая первой после длительного молчания оружия (1-3 сек.))
 		};
-		u16				_storage			;
+		U16				_storage			;
 	}				flags				;
-	u16				bullet_material_idx	;
+	U16				bullet_material_idx	;
 
 	Fvector3			pos					;			//текущая позиция
 	Fvector3			dir					;
 	float			speed				;			//текущая скорость
 	
-	u16				parent_id			;			//ID персонажа который иницировал действие
-	u16				weapon_id			;			//ID оружия из которого была выпущены пуля
+	U16				parent_id			;			//ID персонажа который иницировал действие
+	U16				weapon_id			;			//ID оружия из которого была выпущены пуля
 	
 	float			fly_dist			;			//дистанция которую пуля пролетела
 
@@ -55,7 +55,7 @@ struct SBullet
 	ref_sound		m_whine_snd			;
 	ref_sound		m_mtl_snd			;
 	//---------------------------------
-	u16				targetID			;
+	U16				targetID			;
 	bool			operator	==		(u32 ID){return	ID == m_dwID;}
 public:
 					SBullet				();
@@ -66,8 +66,8 @@ public:
 										float	start_speed,
 										float	power,
 										float	impulse,
-										u16		sender_id,
-										u16		sendersweapon_id,
+										U16		sender_id,
+										U16		sendersweapon_id,
 										ALife::EHitType e_hit_type,
 										float	maximum_distance,
 										const	CCartridge& cartridge,
@@ -110,7 +110,7 @@ private:
 		Fvector3				normal		;
 		Fvector3				point		;
 		collide::rq_result	R			;
-		u16					tgt_material;
+		U16					tgt_material;
 	};
 protected:
 	SoundVec				m_WhineSounds		;
@@ -157,7 +157,7 @@ protected:
 	static BOOL				firetrace_callback	(collide::rq_result& result, LPVOID params);
 
 	// Deffer event
-	void					RegisterEvent		(EventType Type, BOOL _dynamic, SBullet* bullet, const Fvector3& end_point, collide::rq_result& R, u16 target_material);
+	void					RegisterEvent		(EventType Type, BOOL _dynamic, SBullet* bullet, const Fvector3& end_point, collide::rq_result& R, U16 target_material);
 	
 	//попадание по динамическому объекту
 	void					DynamicObjectHit	(_event& E);
@@ -167,10 +167,10 @@ protected:
 
 	//попадание по любому объекту, на выходе - импульс и сила переданные пулей объекту
 	_hit					ObjectHit			(SBullet* bullet, const Fvector3& end_point,
-												collide::rq_result& R, u16 target_material, Fvector3& hit_normal);
+												collide::rq_result& R, U16 target_material, Fvector3& hit_normal);
 	//отметка на пораженном объекте
 	void					FireShotmark		(SBullet* bullet, const Fvector3& vDir,
-												const Fvector3& vEnd,    collide::rq_result& R,  u16 target_material,
+												const Fvector3& vEnd,    collide::rq_result& R, U16 target_material,
 												const Fvector3& vNormal, bool ShowMark = true);
 	//просчет полета пули за некоторый промежуток времени
 	//принимается что на этом участке пуля движется прямолинейно
@@ -187,7 +187,7 @@ public:
 	void 					Clear				();
 	void 					AddBullet			(const Fvector3& position, const Fvector3& direction,
 												float starting_speed, float power, float impulse, 
-												u16	sender_id, u16 sendersweapon_id,
+												U16 sender_id, U16 sendersweapon_id,
 												ALife::EHitType e_hit_type, float maximum_distance, 
 												const CCartridge& cartridge, bool SendHit,bool AimBullet=false);
 
