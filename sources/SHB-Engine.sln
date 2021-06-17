@@ -89,6 +89,31 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "vorbisenc", "libvorbis\win3
 		{3A214E06-B95E-4D61-A291-1F8DF2EC10FD} = {3A214E06-B95E-4D61-A291-1F8DF2EC10FD}
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Doki", "Doki", "{33D5854A-2893-4CD4-A085-C4121AB84181}"
+	ProjectSection(SolutionItems) = preProject
+		Doki\Advanced - Effective Modern C++ 11 & 14, 2016 (перевод, на русском).pdf = Doki\Advanced - Effective Modern C++ 11 & 14, 2016 (перевод, на русском).pdf
+		Doki\Advanced - Principles and Practice Using C++ 11 & 14, 2nd Edition 2016 (перевод, на русском).pdf = Doki\Advanced - Principles and Practice Using C++ 11 & 14, 2nd Edition 2016 (перевод, на русском).pdf
+		Doki\Beginner - Beginning C++ 11 Through Game Programming, 4rd Edition 2015 (перевод, на русском).pdf = Doki\Beginner - Beginning C++ 11 Through Game Programming, 4rd Edition 2015 (перевод, на русском).pdf
+		Doki\Beginner - C++ and Algorithmic Thinking Part 1 of 5, 2015.pdf = Doki\Beginner - C++ and Algorithmic Thinking Part 1 of 5, 2015.pdf
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Именование", "Именование", "{E352454D-75B7-4D17-84FB-17FF39FD83B8}"
+	ProjectSection(SolutionItems) = preProject
+		Doki\Именование\Изменения в именовании.txt = Doki\Именование\Изменения в именовании.txt
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Стандарт кодирования", "Стандарт кодирования", "{B0C4594B-4C29-4C0A-AB2E-23DDD1EE90C4}"
+	ProjectSection(SolutionItems) = preProject
+		Doki\Стандарт кодирования\90 рекомендаций по стилю написания программ на C++.docx = Doki\Стандарт кодирования\90 рекомендаций по стилю написания программ на C++.docx
+		Doki\Стандарт кодирования\C++ Coding Standard v1.02.docx = Doki\Стандарт кодирования\C++ Coding Standard v1.02.docx
+		Doki\Стандарт кодирования\CppCodingStandards_RU.chm = Doki\Стандарт кодирования\CppCodingStandards_RU.chm
+		Doki\Стандарт кодирования\RUS - Sutter - CPP Coding Standards..pdf = Doki\Стандарт кодирования\RUS - Sutter - CPP Coding Standards..pdf
+		Doki\Стандарт кодирования\SHB Coding Standart.docx = Doki\Стандарт кодирования\SHB Coding Standart.docx
+		Doki\Стандарт кодирования\Гайд по оформлению кода на С++ от Стэнфордского университета.docx = Doki\Стандарт кодирования\Гайд по оформлению кода на С++ от Стэнфордского университета.docx
+		Doki\Стандарт кодирования\Рекомендации по написанию кода в C++.docx = Doki\Стандарт кодирования\Рекомендации по написанию кода в C++.docx
+		Doki\Стандарт кодирования\рекомендации по написанию программ на С++.pdf = Doki\Стандарт кодирования\рекомендации по написанию программ на С++.pdf
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -186,6 +211,8 @@ Global
 		{CEBDE98B-A6AA-46E6-BC79-FAAF823DB9EC} = {3FF06E0C-F96D-4051-9FFA-4B8DEB93A00F}
 		{5833EEA1-1068-431F-A6E5-316E7DC5D90A} = {3FF06E0C-F96D-4051-9FFA-4B8DEB93A00F}
 		{E48B6A8B-F7FE-4DA8-8248-E64DBAC4F56C} = {3FF06E0C-F96D-4051-9FFA-4B8DEB93A00F}
+		{E352454D-75B7-4D17-84FB-17FF39FD83B8} = {33D5854A-2893-4CD4-A085-C4121AB84181}
+		{B0C4594B-4C29-4C0A-AB2E-23DDD1EE90C4} = {33D5854A-2893-4CD4-A085-C4121AB84181}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9EACFA5F-9C9C-4E1F-B7C4-7ED6A0E0D3B5}
