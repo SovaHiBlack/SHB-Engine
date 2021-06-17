@@ -35,7 +35,7 @@ void CPHGeometryOwner::			build_Geom	(CCodeGeom& geom)
 	}
 }
 
-void CPHGeometryOwner::build_Geom(u16 i)
+void CPHGeometryOwner::build_Geom(U16 i)
 {
 	CCodeGeom& geom=*m_geoms[i];
 	build_Geom(geom);
@@ -50,8 +50,8 @@ void CPHGeometryOwner::build()
 		m_group=dSimpleSpaceCreate(0);
 		dSpaceSetCleanup(m_group,0);
 	}
-	u16 geoms_size=u16(m_geoms.size());
-	for(u16 i=0;i<geoms_size;++i) build_Geom(i);
+	U16 geoms_size= U16(m_geoms.size());
+	for(U16 i=0;i<geoms_size;++i) build_Geom(i);
 	b_builded=true;
 }
 void CPHGeometryOwner::destroy()
@@ -122,7 +122,7 @@ void CPHGeometryOwner::			calc_volume_data	()
 	}
 }
 
-void CPHGeometryOwner::SetMaterial(u16 m)
+void CPHGeometryOwner::SetMaterial(U16 m)
 {
 	ul_material=m;
 	if(!b_builded) return;
@@ -305,9 +305,9 @@ void CPHGeometryOwner::set_PhysicsRefObject(CPHShellHolder* ref_object)
 	for(;i!=e;++i) (*i)->set_ref_object(ref_object);
 }
 
-u16	CPHGeometryOwner::numberOfGeoms()
+U16	CPHGeometryOwner::numberOfGeoms()
 {
-	return (u16)m_geoms.size();
+	return (U16)m_geoms.size();
 }
 
 void CPHGeometryOwner::get_Extensions(const Fvector3& axis,float center_prg,float& lo_ext, float& hi_ext)
@@ -370,19 +370,21 @@ void CPHGeometryOwner::CreateSimulBase()
 		dSpaceSetCleanup(m_group,0);
 	}
 }
+
 struct SFindPred
 {
-	u16 m_val;
-	SFindPred(u16 val)
+	U16 m_val;
+	SFindPred(U16 val)
 	{
-		m_val=val;
+		m_val = val;
 	}
-bool	operator () (CCodeGeom* g)
+	bool	operator () (CCodeGeom* g)
 	{
-		return g->bone_id()==m_val;
+		return g->bone_id( ) == m_val;
 	}
 };
-CCodeGeom* CPHGeometryOwner::GeomByBoneID(u16 bone_id)
+
+CCodeGeom* CPHGeometryOwner::GeomByBoneID(U16 bone_id)
 {
 	
 	GEOM_I g=std::find_if(m_geoms.begin(),m_geoms.end(),SFindPred(bone_id));

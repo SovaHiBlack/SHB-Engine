@@ -23,30 +23,30 @@ public:
 CPHFracturesHolder			();
 
 ~CPHFracturesHolder			();
-void				DistributeAdditionalMass	(u16 geom_num,const dMass& m);//
-void				SubFractureMass				(u16 fracture_num);
-void				AddImpact		(const Fvector3& force,const Fvector3& point,u16 id);
+void				DistributeAdditionalMass	(U16 geom_num,const dMass& m);//
+void				SubFractureMass				(U16 fracture_num);
+void				AddImpact		(const Fvector3& force,const Fvector3& point, U16 id);
 PH_IMPACT_STORAGE&	Impacts			(){return m_impacts;}
 
 CPHFracture&		LastFracture	(){return m_fractures.back();}
 protected:
 private:
 
-u16 				CheckFractured	();										//returns first breaked fracture
+	U16 				CheckFractured	();										//returns first breaked fracture
 
-element_fracture	SplitFromEnd	(CPHElement* element,u16 geom_num);
+element_fracture	SplitFromEnd	(CPHElement* element, U16 geom_num);
 void				InitNewElement	(CPHElement* element,const Fmatrix &shift_pivot,float density);
-void				PassEndFractures(u16 from,CPHElement* dest);
+void				PassEndFractures(U16 from,CPHElement* dest);
 public:
 void				SplitProcess	(CPHElement* element,ELEMENT_PAIR_VECTOR &new_elements);
-u16					AddFracture		(const CPHFracture& fracture);
-CPHFracture&		Fracture		(u16 num);
+U16					AddFracture		(const CPHFracture& fracture);
+CPHFracture&		Fracture		(U16 num);
 void				PhTune			(dBodyID body);										//set feedback for joints called from PhTune of ShellSplitterHolder
 bool				PhDataUpdate	(CPHElement* element);										//collect joints and external impacts in fractures Update which set m_fractured; called from PhDataUpdate of ShellSplitterHolder returns true if has breaks
 void				ApplyImpactsToElement(CPHElement* element);
 };
 
-using shell_root = std::pair<CPhysicsShell*, u16>;
+using shell_root = std::pair<CPhysicsShell*, U16>;
 using element_fracture = std::pair<CPHElement*, CShellSplitInfo>;
 
 //DEFINE_VECTOR(CPHElement*,ELEMENT_STORAGE,ELEMENT_I)
