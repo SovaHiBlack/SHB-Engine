@@ -10,7 +10,10 @@ class ENGINE_API CCameraManager;
 class ENGINE_API CCursor;
 class ENGINE_API CCustomHUD;
 class ENGINE_API ISpatial;
-namespace Feel { class ENGINE_API Sound; }
+namespace Feel
+{
+	class ENGINE_API Sound;
+}
 
 class ENGINE_API CServerInfo
 {
@@ -20,25 +23,33 @@ private:
 		string128	name;
 		u32			color;
 	};
-	enum { max_item = 15 };
-	svector<SItem_ServerInfo,max_item>	data;
+	enum
+	{
+		max_item = 15
+	};
+	svector<SItem_ServerInfo, max_item>	data;
 
 public:
-	u32		Size()			{ return data.size(); }
-	void	ResetData()		{ data.clear(); }
-	
-	void	AddItem(const char* name_, const char* value_, u32 color_ = RGB(255,255,255) );
-	void	AddItem( shared_str& name_, const char* value_, u32 color_ = RGB(255,255,255) );
+	u32		Size( )
+	{
+		return data.size( );
+	}
+	void	ResetData( )
+	{
+		data.clear( );
+	}
 
-	inline SItem_ServerInfo&	operator[] ( u32 id ) { VERIFY( id < max_item ); return data[id]; }
+	void	AddItem(const char* name_, const char* value_, u32 color_ = RGB(255, 255, 255));
+	void	AddItem(shared_str& name_, const char* value_, u32 color_ = RGB(255, 255, 255));
 
-	//CServerInfo() {};
-	//~CServerInfo() {};
+	inline SItem_ServerInfo& operator[] (u32 id)
+	{
+		VERIFY(id < max_item); return data[id];
+	}
 };
 
-
 //-----------------------------------------------------------------------------------------------------------
-class ENGINE_API	IGameLevel		: 
+class ENGINE_API	IGameLevel :
 	public DLL_Pure,
 	public IInputReceiver,
 	public pureRender,
@@ -47,87 +58,112 @@ class ENGINE_API	IGameLevel		:
 {
 protected:
 	// Network interface
-	CObject*					pCurrentEntity;
-	CObject*					pCurrentViewEntity;
-   
+	CObject* pCurrentEntity;
+	CObject* pCurrentViewEntity;
+
 	// Static sounds
 	xr_vector<ref_sound>		Sounds_Random;
 	u32							Sounds_Random_dwNextTime;
-	BOOL						Sounds_Random_Enabled;
-	CCameraManager*				m_pCameras;
+	bool						Sounds_Random_Enabled;
+	CCameraManager* m_pCameras;
 
 	// temporary
 	xr_vector<ISpatial*>		snd_ER;
+
 public:
-	CObjectList					Objects; 
+	CObjectList					Objects;
 	CObjectSpace				ObjectSpace;
-	CCameraManager&				Cameras			()				{return *m_pCameras;};
+	CCameraManager& Cameras( )
+	{
+		return *m_pCameras;
+	}
 
-	BOOL						bReady;
+	bool						bReady;
 
-	CIniFile*					pLevel;
-	CCustomHUD*					pHUD;
-public:	// deferred sound events
-	struct	_esound_delegate	{
-		Feel::Sound*			dest	;
-		ref_sound_data_ptr		source	;
-		float					power	;
+	CIniFile* pLevel;
+	CCustomHUD* pHUD;
+
+	struct	_esound_delegate
+	{
+		Feel::Sound* dest;
+		ref_sound_data_ptr		source;
+		float					power;
 	};
 	xr_vector<_esound_delegate>	snd_Events;
-public:
+
 	// Main, global functions
-	IGameLevel();
-	virtual ~IGameLevel();
+	IGameLevel( );
+	virtual ~IGameLevel( );
 
-	virtual shared_str			name					() const = 0;
-	virtual void				GetLevelInfo			( CServerInfo* si ) = 0;
+	virtual shared_str			name( ) const = 0;
+	virtual void				GetLevelInfo(CServerInfo* si) = 0;
 
-	virtual BOOL				net_Start				(const char* op_server, const char* op_client)	= 0;
-	virtual void				net_Load				(const char* name )							= 0;
-	virtual void				net_Save				(const char* name )							= 0;
-	virtual void				net_Stop				( );
-	virtual void				net_Update				( )										= 0;
+	virtual BOOL				net_Start(const char* op_server, const char* op_client) = 0;
+	virtual void				net_Load(const char* name) = 0;
+	virtual void				net_Save(const char* name) = 0;
+	virtual void				net_Stop( );
+	virtual void				net_Update( ) = 0;
 
-	virtual BOOL				Load					( u32 dwNum );
-	virtual BOOL				Load_GameSpecific_Before( )										{ return TRUE; };		// before object loading
-	virtual BOOL				Load_GameSpecific_After	( )										{ return TRUE; };		// after object loading
-	virtual void				Load_GameSpecific_CFORM	( CDB::TRI* T, u32 count )				= 0;
+	virtual BOOL				Load(u32 dwNum);
+	virtual BOOL				Load_GameSpecific_Before( )
+	{
+		// before object loading
+		return TRUE;
+	}
+	virtual BOOL				Load_GameSpecific_After( )
+	{
+		// after object loading
+		return TRUE;
+	}
+	virtual void				Load_GameSpecific_CFORM(CDB::TRI* T, u32 count) = 0;
 
-	virtual void				OnFrame					( );
-	virtual void				OnRender				( );
+	virtual void				OnFrame( );
+	virtual void				OnRender( );
 
 	// Main interface
-	CObject*					CurrentEntity			( void ) const							{ return pCurrentEntity;				}
-	CObject*					CurrentViewEntity		( void ) const							{ return pCurrentViewEntity;			}
-	void						SetEntity				( CObject* O  )							{ pCurrentEntity=pCurrentViewEntity=O;	}
-	void						SetViewEntity			( CObject* O  )							{ pCurrentViewEntity=O;					}
-	
-	void						SoundEvent_Register		( ref_sound_data_ptr S, float range );
-	void						SoundEvent_Dispatch		( );
+	CObject* CurrentEntity( ) const
+	{
+		return pCurrentEntity;
+	}
+	CObject* CurrentViewEntity( ) const
+	{
+		return pCurrentViewEntity;
+	}
+	void						SetEntity(CObject* O)
+	{
+		pCurrentEntity = pCurrentViewEntity = O;
+	}
+	void						SetViewEntity(CObject* O)
+	{
+		pCurrentViewEntity = O;
+	}
+
+	void						SoundEvent_Register(ref_sound_data_ptr S, float range);
+	void						SoundEvent_Dispatch( );
 
 	// Loader interface
-	void						LL_CheckTextures		();
+	void						LL_CheckTextures( );
 };
 
 //-----------------------------------------------------------------------------------------------------------
-extern ENGINE_API	IGameLevel*	g_pGameLevel;
+extern ENGINE_API	IGameLevel* g_pGameLevel;
 
 template <typename _class_type>
-	void relcase_register	(_class_type *self, void (xr_stdcall _class_type::* function_to_bind)(CObject*))
-	{
-		g_pGameLevel->Objects.relcase_register	(
-			CObjectList::RELCASE_CALLBACK (
-				self,
-				function_to_bind)
-		);
-	}
+void relcase_register(_class_type* self, void (xr_stdcall _class_type::* function_to_bind)(CObject*))
+{
+	g_pGameLevel->Objects.relcase_register(
+		CObjectList::RELCASE_CALLBACK(
+		self,
+		function_to_bind)
+	);
+}
 
 template <typename _class_type>
-	void relcase_unregister	(_class_type *self, void (xr_stdcall _class_type::* function_to_bind)(CObject*))
-	{
-		g_pGameLevel->Objects.relcase_unregister	(
-			CObjectList::RELCASE_CALLBACK (
-				self,
-				function_to_bind)
-		);
-	}
+void relcase_unregister(_class_type* self, void (xr_stdcall _class_type::* function_to_bind)(CObject*))
+{
+	g_pGameLevel->Objects.relcase_unregister(
+		CObjectList::RELCASE_CALLBACK(
+		self,
+		function_to_bind)
+	);
+}

@@ -4,7 +4,7 @@
 
 //#include "..\ENGINE\DemoRecord.h"
 #include "..\ENGINE\DemoPlay.h"
-#include "..\ENGINE\environment.h"
+//#include "..\ENGINE\Environment.h"
 #include "..\ENGINE\IGamePersistent.h"//==>
 #include "ParticlesObject.h"
 #include "Level.h"

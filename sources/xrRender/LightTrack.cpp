@@ -8,7 +8,7 @@
 #include "..\ENGINE\Object.h"
 
 #include "..\ENGINE\IGamePersistent.h"//==>
-#include "..\ENGINE\environment.h"
+//#include "..\ENGINE\Environment.h"
 
 //////////////////////////////////////////////////////////////////////
 // Construction/Destruction

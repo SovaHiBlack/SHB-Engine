@@ -8,7 +8,7 @@
 #include "..\ENGINE\cl_intersect.h"
 
 #include "..\ENGINE\IGamePersistent.h"//==>
-#include "..\ENGINE\environment.h"
+//#include "..\ENGINE\Environment.h"
 
 const float dbgOffset			= 0.f;
 const int	dbgItems			= 128;

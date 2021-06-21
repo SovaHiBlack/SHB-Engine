@@ -11,23 +11,25 @@
 #include "CameraManager.h"
 #include "ResourceManager.h"
 
-ENGINE_API	IGameLevel*	g_pGameLevel	= nullptr;
+ENGINE_API IGameLevel* g_pGameLevel = nullptr;
 
 IGameLevel::IGameLevel()
 {
 	m_pCameras					= xr_new<CCameraManager>(true);
 	g_pGameLevel				= this;
-	pLevel						= NULL;
+	pLevel						= nullptr;
 	bReady						= false;
-	pCurrentEntity				= NULL;
-	pCurrentViewEntity			= NULL;
-	pHUD						= NULL;
+	pCurrentEntity				= nullptr;
+	pCurrentViewEntity			= nullptr;
+	pHUD						= nullptr;
 }
 
-IGameLevel::~IGameLevel()
+IGameLevel::~IGameLevel( )
 {
-	if(strstr(Core.Params,"-nes_texture_storing") )
-		Device.Resources->StoreNecessaryTextures();
+	if (strstr(Core.Params, "-nes_texture_storing"))
+	{
+		Device.Resources->StoreNecessaryTextures( );
+	}
 
 	xr_delete					( pLevel		);
 
@@ -42,8 +44,11 @@ IGameLevel::~IGameLevel()
 
 void IGameLevel::net_Stop			()
 {
-	for (int i=0; i<6; i++)
+	for (int i = 0; i < 6; i++)
+	{
 		Objects.Update(true);
+	}
+
 	// Destroy all objects
 	Objects.Unload				( );
 	IR_Release					( );
@@ -60,7 +65,10 @@ BOOL IGameLevel::Load			(u32 dwNum)
 	pApp->Level_Set				( dwNum );
 	string_path					temp;
 	if (!FS.exist(temp, "$level$", "level.ltx"))
-		Debug.fatal	(DEBUG_INFO,"Can't find level configuration file '%s'.",temp);
+	{
+		Debug.fatal(DEBUG_INFO, "Can't find level configuration file '%s'.", temp);
+	}
+
 	pLevel						= xr_new<CIniFile>	( temp );
 	
 	// Open
@@ -78,10 +86,14 @@ BOOL IGameLevel::Load			(u32 dwNum)
 	ObjectSpace.Load			();
 
 	// HUD + Environment
-	if(g_hud)
-		pHUD					= g_hud;
+	if (g_hud)
+	{
+		pHUD = g_hud;
+	}
 	else
-		pHUD					= (CCustomHUD*)NEW_INSTANCE	(CLSID_HUDMANAGER);
+	{
+		pHUD = (CCustomHUD*) NEW_INSTANCE(CLSID_HUDMANAGER);
+	}
 
 	// Render-level Load
 	Render->level_Load			(LL_Stream);
@@ -106,7 +118,7 @@ BOOL IGameLevel::Load			(u32 dwNum)
 }
 
 int		psNET_DedicatedSleep	= 5;
-void	IGameLevel::OnRender		( )
+void IGameLevel::OnRender		( )
 {
 //	if (_abs(Device.fTimeDelta)<EPS_S) return;
 
@@ -136,7 +148,8 @@ void	IGameLevel::OnFrame		( )
 		Fvector3	pos;
 		pos.random_dir().normalize().mul(::Random.randF(30,100)).add	(Device.vCameraPosition);
 		int		id						= ::Random.randI(Sounds_Random.size());
-		if (Sounds_Random_Enabled)		{
+		if (Sounds_Random_Enabled)	
+		{
 			Sounds_Random[id].play_at_pos	(0,pos,0);
 			Sounds_Random[id].set_volume	(1.f);
 			Sounds_Random[id].set_range		(10,200);
@@ -176,17 +189,18 @@ void IGameLevel::LL_CheckTextures( )
 
 	Msg("* t-report - base: %d, %d K", c_base, m_base / 1024);
 	Msg("* t-report - lmap: %d, %d K", c_lmaps, m_lmaps / 1024);
-	BOOL	bError = FALSE;
+	bool	bError = false;
 	if (m_base > 64 * 1024 * 1024 || c_base > 400)
 	{
 		// const char* msg	= "Too many base-textures (limit: 400 textures or 64M).\n        Reduce number of textures (better) or their resolution (worse).";
 		// Msg		("***FATAL***: %s",msg);
-		bError = TRUE;
+		bError = true;
 	}
+
 	if (m_lmaps > 32 * 1024 * 1024 || c_lmaps > 8)
 	{
 		const char* msg = "Too many lmap-textures (limit: 8 textures or 32M).\n        Reduce pixel density (worse) or use more vertex lighting (better).";
 		Msg("***FATAL***: %s", msg);
-		bError = TRUE;
+		bError = true;
 	}
 }

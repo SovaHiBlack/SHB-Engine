@@ -4,12 +4,10 @@
 
 #include "IGameLevel.h"
 #include "IGamePersistent.h"
-//#include "Application.h"
 #include "Console.h"
 #include "IConsoleCommand.h"
 #include "Input.h"
 #include "GameFont.h"
-//#include "CustomHUD.h"
 
 #define LDIST 0.05f
 

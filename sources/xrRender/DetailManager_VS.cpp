@@ -3,7 +3,7 @@
 #include "detailmanager.h"
 
 #include "..\ENGINE\IGamePersistent.h"//==>
-#include "..\ENGINE\environment.h"
+//#include "..\ENGINE\Environment.h"
 
 const int			quant	= 16384;
 const int			c_hdr	= 10;

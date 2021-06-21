@@ -7,7 +7,7 @@
 //#include "IGameLevel.h"
 #include "IGamePersistent.h"//==>
 
-#include "Environment.h"
+//#include "Environment.h"
 #include "CameraBase.h"
 #include "CameraManager.h"
 #include "Effector.h"

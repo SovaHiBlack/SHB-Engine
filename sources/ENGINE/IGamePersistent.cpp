@@ -1,7 +1,7 @@
 #include "stdafx.h"
 
 #include "IGamePersistent.h"//==>
-#include "environment.h"
+//#include "Environment.h"
 //#include "Application.h"
 #include "IGameLevel.h"
 #include "Console.h"

@@ -5,7 +5,7 @@
 #include "stdafx.h"
 
 #include "..\ENGINE\IGamePersistent.h"//==>
-#include "..\ENGINE\environment.h"
+//#include "..\ENGINE\Environment.h"
 //#include "..\ENGINE\Application.h"
 #include "..\ENGINE\GameFont.h"
 #include "GlowManager.h"

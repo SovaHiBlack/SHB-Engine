@@ -2,7 +2,7 @@
 
 #include "xr_efflensflare.h"
 #include "IGamePersistent.h"//==>
-#include "Environment.h"
+//#include "Environment.h"
 #include "SkeletonCustom.h"
 #include "cl_intersect.h"
 #include "Object.h"

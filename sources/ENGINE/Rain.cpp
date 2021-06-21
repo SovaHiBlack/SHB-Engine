@@ -2,7 +2,7 @@
 
 #include "Rain.h"
 #include "IGamePersistent.h"//==>
-#include "environment.h"
+//#include "Environment.h"
 #include "render.h"
 #include "IGameLevel.h"
 #include "xr_area.h"

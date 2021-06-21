@@ -3,7 +3,7 @@
 #include "..\ENGINE\_d3d_extensions.h"
 #include "..\ENGINE\xrLevel.h"
 #include "..\ENGINE\IGamePersistent.h"//==>
-#include "..\ENGINE\environment.h"
+//#include "..\ENGINE\Environment.h"
 #include "light_db.h"
 
 CLight_DB::CLight_DB()

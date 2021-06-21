@@ -28,8 +28,8 @@ CSound_manager_interface*		Sound		= 0;
 CSoundRender_Core::CSoundRender_Core	()
 {
 	bPresent					= FALSE;
-    bEAX						= FALSE;
-    bDeferredEAX				= FALSE;
+	bEAX						= FALSE;
+	bDeferredEAX				= FALSE;
 	bUserEnvironment			= FALSE;
 	geom_MODEL					= NULL;
 	geom_ENV					= NULL;
@@ -38,11 +38,11 @@ CSoundRender_Core::CSoundRender_Core	()
 	Handler						= NULL;
 	s_targets_pu				= 0;
 	s_emitters_u				= 0;
-    e_current.set_identity		();
-    e_target.set_identity		();
-    bListenerMoved				= FALSE;
-    bReady						= FALSE;
-    bLocked						= FALSE;
+	e_current.set_identity		();
+	e_target.set_identity		();
+	bListenerMoved				= FALSE;
+	bReady						= false;
+	bLocked						= FALSE;
 	Timer_Value					= Timer.GetElapsed_ms();
 	Timer_Delta					= 0;
 	m_iPauseCounter				= 1;
@@ -56,38 +56,38 @@ CSoundRender_Core::~CSoundRender_Core()
 
 void CSoundRender_Core::_initialize	(u64 window)
 {
-    Log							("* sound: EAX 2.0 extension:",bEAX?"present":"absent");
-    Log							("* sound: EAX 2.0 deferred:",bDeferredEAX?"present":"absent");
+	Log							("* sound: EAX 2.0 extension:",bEAX?"present":"absent");
+	Log							("* sound: EAX 2.0 deferred:",bDeferredEAX?"present":"absent");
 	Timer.Start					( );
 
-    // load environment
+	// load environment
 	env_load					();
 
 	bPresent					= TRUE;
 
 	// Cache
 	cache_bytes_per_line		= (sdef_target_block/8)*wfm.nAvgBytesPerSec/1000;
-    cache.initialize			(psSoundCacheSizeMB*1024,cache_bytes_per_line);
+	cache.initialize			(psSoundCacheSizeMB*1024,cache_bytes_per_line);
 
-    bReady						= TRUE;
+	bReady						= true;
 }
 
 extern xr_vector<U8> g_target_temp_data;
 void CSoundRender_Core::_clear	()
 {
-    bReady						= FALSE;
+	bReady						= false;
 	cache.destroy				();
 	env_unload					();
 
-    // remove sources
+	// remove sources
 	for (u32 sit=0; sit<s_sources.size(); sit++)
-    	xr_delete				(s_sources[sit]);
-    s_sources.clear				();
-    
-    // remove emmiters
+		xr_delete				(s_sources[sit]);
+	s_sources.clear				();
+	
+	// remove emmiters
 	for (u32 eit=0; eit<s_emitters.size(); eit++)
-    	xr_delete				(s_emitters[eit]);
-    s_emitters.clear			();
+		xr_delete				(s_emitters[eit]);
+	s_emitters.clear			();
 
 	g_target_temp_data.clear	();
 }
@@ -258,7 +258,7 @@ void	CSoundRender_Core::create				( ref_sound& S, const char* fName, esound_type
 {
 	if (!bPresent)		return;
 	verify_refsound		(S);
-    S._p				= xr_new<ref_sound_data>(fName,sound_type,game_type);
+	S._p				= xr_new<ref_sound_data>(fName,sound_type,game_type);
 }
 
 void	CSoundRender_Core::clone				( ref_sound& S, const ref_sound& from, esound_type sound_type, int	game_type )
@@ -320,13 +320,13 @@ void CSoundRender_Core::_create_data( ref_sound_data& S, const char* fName, esou
 {
 	string_path			fn;
 	strcpy				(fn,fName);
-    if (strext(fn))		*strext(fn)	= 0;
+	if (strext(fn))		*strext(fn)	= 0;
 	S.handle			= (CSound_source*)SoundRender->i_create_source(fn);
 	S.g_type			= (game_type==sg_SourceType)?S.handle->game_type():game_type;
 	S.s_type			= sound_type;
 	S.feedback			= 0; 
-    S.g_object			= 0; 
-    S.g_userdata		= 0;
+	S.g_object			= 0; 
+	S.g_userdata		= 0;
 }
 void CSoundRender_Core::_destroy_data( ref_sound_data& S)
 {
@@ -353,7 +353,7 @@ CSoundRender_Environment*	CSoundRender_Core::get_environment			( const Fvector3&
 			geom_DB.ray_query		(geom_ENV,P,dir,1000.f);
 			if (geom_DB.r_count()){
 				CDB::RESULT*		r	= geom_DB.r_begin();
-           
+		   
 				CDB::TRI*			T	= geom_ENV->get_tris()+r->id;
 				Fvector3*			V	= geom_ENV->get_verts();
 				Fvector3 tri_norm;
@@ -389,7 +389,7 @@ void						CSoundRender_Core::env_apply		()
 		pEmitter->set_position	(pParams->position);
 	}
 */
-    bListenerMoved			= TRUE;
+	bListenerMoved			= TRUE;
 }
 
 void CSoundRender_Core::update_listener( const Fvector3& P, const Fvector3& D, const Fvector3& N, float dt )
@@ -399,74 +399,74 @@ void CSoundRender_Core::update_listener( const Fvector3& P, const Fvector3& D, c
 void	CSoundRender_Core::i_eax_listener_set	(CSound_environment* _E)
 {
 	VERIFY(bEAX);
-    CSoundRender_Environment* E = static_cast<CSoundRender_Environment*>(_E);
-    EAXLISTENERPROPERTIES 		ep;
-    ep.lRoom					= iFloor(E->Room)				;	// room effect level at low frequencies
-    ep.lRoomHF					= iFloor(E->RoomHF)				;   // room effect high-frequency level re. low frequency level
-    ep.flRoomRolloffFactor		= E->RoomRolloffFactor			;   // like DS3D flRolloffFactor but for room effect
-    ep.flDecayTime				= E->DecayTime					;   // reverberation decay time at low frequencies
-    ep.flDecayHFRatio			= E->DecayHFRatio				;   // high-frequency to low-frequency decay time ratio
-    ep.lReflections				= iFloor(E->Reflections)		;   // early reflections level relative to room effect
-    ep.flReflectionsDelay		= E->ReflectionsDelay			;   // initial reflection delay time
-    ep.lReverb					= iFloor(E->Reverb)	 			;   // late reverberation level relative to room effect
-    ep.flReverbDelay			= E->ReverbDelay				;   // late reverberation delay time relative to initial reflection
-    ep.dwEnvironment			= EAXLISTENER_DEFAULTENVIRONMENT;  	// sets all listener properties
-    ep.flEnvironmentSize		= E->EnvironmentSize			;  	// environment size in meters
-    ep.flEnvironmentDiffusion	= E->EnvironmentDiffusion		; 	// environment diffusion
-    ep.flAirAbsorptionHF		= E->AirAbsorptionHF			;	// change in level per meter at 5 kHz
-    ep.dwFlags					= EAXLISTENER_DEFAULTFLAGS		;	// modifies the behavior of properties
+	CSoundRender_Environment* E = static_cast<CSoundRender_Environment*>(_E);
+	EAXLISTENERPROPERTIES 		ep;
+	ep.lRoom					= iFloor(E->Room)				;	// room effect level at low frequencies
+	ep.lRoomHF					= iFloor(E->RoomHF)				;   // room effect high-frequency level re. low frequency level
+	ep.flRoomRolloffFactor		= E->RoomRolloffFactor			;   // like DS3D flRolloffFactor but for room effect
+	ep.flDecayTime				= E->DecayTime					;   // reverberation decay time at low frequencies
+	ep.flDecayHFRatio			= E->DecayHFRatio				;   // high-frequency to low-frequency decay time ratio
+	ep.lReflections				= iFloor(E->Reflections)		;   // early reflections level relative to room effect
+	ep.flReflectionsDelay		= E->ReflectionsDelay			;   // initial reflection delay time
+	ep.lReverb					= iFloor(E->Reverb)	 			;   // late reverberation level relative to room effect
+	ep.flReverbDelay			= E->ReverbDelay				;   // late reverberation delay time relative to initial reflection
+	ep.dwEnvironment			= EAXLISTENER_DEFAULTENVIRONMENT;  	// sets all listener properties
+	ep.flEnvironmentSize		= E->EnvironmentSize			;  	// environment size in meters
+	ep.flEnvironmentDiffusion	= E->EnvironmentDiffusion		; 	// environment diffusion
+	ep.flAirAbsorptionHF		= E->AirAbsorptionHF			;	// change in level per meter at 5 kHz
+	ep.dwFlags					= EAXLISTENER_DEFAULTFLAGS		;	// modifies the behavior of properties
 
-    u32 deferred				= bDeferredEAX?DSPROPERTY_EAXLISTENER_DEFERRED:0;
-    
-    i_eax_set(&DSPROPSETID_EAX_ListenerProperties, deferred | DSPROPERTY_EAXLISTENER_ROOM, 					&ep.lRoom,					sizeof(LONG));
-    i_eax_set(&DSPROPSETID_EAX_ListenerProperties, deferred | DSPROPERTY_EAXLISTENER_ROOMHF, 				&ep.lRoomHF,				sizeof(LONG));
-    i_eax_set(&DSPROPSETID_EAX_ListenerProperties, deferred | DSPROPERTY_EAXLISTENER_ROOMROLLOFFFACTOR, 	&ep.flRoomRolloffFactor,	sizeof(float));
-    i_eax_set(&DSPROPSETID_EAX_ListenerProperties, deferred | DSPROPERTY_EAXLISTENER_DECAYTIME, 		  	&ep.flDecayTime,			sizeof(float));
-    i_eax_set(&DSPROPSETID_EAX_ListenerProperties, deferred | DSPROPERTY_EAXLISTENER_DECAYHFRATIO,			&ep.flDecayHFRatio,			sizeof(float));
-    i_eax_set(&DSPROPSETID_EAX_ListenerProperties, deferred | DSPROPERTY_EAXLISTENER_REFLECTIONS, 			&ep.lReflections,			sizeof(LONG));
-    i_eax_set(&DSPROPSETID_EAX_ListenerProperties, deferred | DSPROPERTY_EAXLISTENER_REFLECTIONSDELAY,    	&ep.flReflectionsDelay,		sizeof(float));
-    i_eax_set(&DSPROPSETID_EAX_ListenerProperties, deferred | DSPROPERTY_EAXLISTENER_REVERB, 				&ep.lReverb,				sizeof(LONG));
-    i_eax_set(&DSPROPSETID_EAX_ListenerProperties, deferred | DSPROPERTY_EAXLISTENER_REVERBDELAY, 			&ep.flReverbDelay,			sizeof(float));
-    i_eax_set(&DSPROPSETID_EAX_ListenerProperties, deferred | DSPROPERTY_EAXLISTENER_ENVIRONMENTDIFFUSION,	&ep.flEnvironmentDiffusion,	sizeof(float));
-    i_eax_set(&DSPROPSETID_EAX_ListenerProperties, deferred | DSPROPERTY_EAXLISTENER_AIRABSORPTIONHF, 		&ep.flAirAbsorptionHF,		sizeof(float));
-    i_eax_set(&DSPROPSETID_EAX_ListenerProperties, deferred | DSPROPERTY_EAXLISTENER_FLAGS, 				&ep.dwFlags,				sizeof(DWORD));
+	u32 deferred				= bDeferredEAX?DSPROPERTY_EAXLISTENER_DEFERRED:0;
+	
+	i_eax_set(&DSPROPSETID_EAX_ListenerProperties, deferred | DSPROPERTY_EAXLISTENER_ROOM, 					&ep.lRoom,					sizeof(LONG));
+	i_eax_set(&DSPROPSETID_EAX_ListenerProperties, deferred | DSPROPERTY_EAXLISTENER_ROOMHF, 				&ep.lRoomHF,				sizeof(LONG));
+	i_eax_set(&DSPROPSETID_EAX_ListenerProperties, deferred | DSPROPERTY_EAXLISTENER_ROOMROLLOFFFACTOR, 	&ep.flRoomRolloffFactor,	sizeof(float));
+	i_eax_set(&DSPROPSETID_EAX_ListenerProperties, deferred | DSPROPERTY_EAXLISTENER_DECAYTIME, 		  	&ep.flDecayTime,			sizeof(float));
+	i_eax_set(&DSPROPSETID_EAX_ListenerProperties, deferred | DSPROPERTY_EAXLISTENER_DECAYHFRATIO,			&ep.flDecayHFRatio,			sizeof(float));
+	i_eax_set(&DSPROPSETID_EAX_ListenerProperties, deferred | DSPROPERTY_EAXLISTENER_REFLECTIONS, 			&ep.lReflections,			sizeof(LONG));
+	i_eax_set(&DSPROPSETID_EAX_ListenerProperties, deferred | DSPROPERTY_EAXLISTENER_REFLECTIONSDELAY,    	&ep.flReflectionsDelay,		sizeof(float));
+	i_eax_set(&DSPROPSETID_EAX_ListenerProperties, deferred | DSPROPERTY_EAXLISTENER_REVERB, 				&ep.lReverb,				sizeof(LONG));
+	i_eax_set(&DSPROPSETID_EAX_ListenerProperties, deferred | DSPROPERTY_EAXLISTENER_REVERBDELAY, 			&ep.flReverbDelay,			sizeof(float));
+	i_eax_set(&DSPROPSETID_EAX_ListenerProperties, deferred | DSPROPERTY_EAXLISTENER_ENVIRONMENTDIFFUSION,	&ep.flEnvironmentDiffusion,	sizeof(float));
+	i_eax_set(&DSPROPSETID_EAX_ListenerProperties, deferred | DSPROPERTY_EAXLISTENER_AIRABSORPTIONHF, 		&ep.flAirAbsorptionHF,		sizeof(float));
+	i_eax_set(&DSPROPSETID_EAX_ListenerProperties, deferred | DSPROPERTY_EAXLISTENER_FLAGS, 				&ep.dwFlags,				sizeof(DWORD));
 }
 
 void	CSoundRender_Core::i_eax_listener_get	(CSound_environment* _E)
 {
 	VERIFY(bEAX);
-    CSoundRender_Environment* E = static_cast<CSoundRender_Environment*>(_E);
-    EAXLISTENERPROPERTIES 		ep;
+	CSoundRender_Environment* E = static_cast<CSoundRender_Environment*>(_E);
+	EAXLISTENERPROPERTIES 		ep;
 	i_eax_get					(&DSPROPSETID_EAX_ListenerProperties, DSPROPERTY_EAXLISTENER_ALLPARAMETERS, &ep, sizeof(EAXLISTENERPROPERTIES));
-    E->Room						= (float)ep.lRoom					;
-    E->RoomHF					= (float)ep.lRoomHF					;
-    E->RoomRolloffFactor		= (float)ep.flRoomRolloffFactor		;
-    E->DecayTime			   	= (float)ep.flDecayTime				;
-    E->DecayHFRatio				= (float)ep.flDecayHFRatio			;
-    E->Reflections				= (float)ep.lReflections			;
-    E->ReflectionsDelay			= (float)ep.flReflectionsDelay		;
-    E->Reverb					= (float)ep.lReverb					;
-    E->ReverbDelay				= (float)ep.flReverbDelay			;
-    E->EnvironmentSize			= (float)ep.flEnvironmentSize		;
-    E->EnvironmentDiffusion		= (float)ep.flEnvironmentDiffusion	;
-    E->AirAbsorptionHF			= (float)ep.flAirAbsorptionHF		;
+	E->Room						= (float)ep.lRoom					;
+	E->RoomHF					= (float)ep.lRoomHF					;
+	E->RoomRolloffFactor		= (float)ep.flRoomRolloffFactor		;
+	E->DecayTime			   	= (float)ep.flDecayTime				;
+	E->DecayHFRatio				= (float)ep.flDecayHFRatio			;
+	E->Reflections				= (float)ep.lReflections			;
+	E->ReflectionsDelay			= (float)ep.flReflectionsDelay		;
+	E->Reverb					= (float)ep.lReverb					;
+	E->ReverbDelay				= (float)ep.flReverbDelay			;
+	E->EnvironmentSize			= (float)ep.flEnvironmentSize		;
+	E->EnvironmentDiffusion		= (float)ep.flEnvironmentDiffusion	;
+	E->AirAbsorptionHF			= (float)ep.flAirAbsorptionHF		;
 }
 
 void CSoundRender_Core::i_eax_commit_setting()
 {
 	// commit eax 
-    if (bDeferredEAX)
-    	i_eax_set(&DSPROPSETID_EAX_ListenerProperties, DSPROPERTY_EAXLISTENER_COMMITDEFERREDSETTINGS,NULL,0);
+	if (bDeferredEAX)
+		i_eax_set(&DSPROPSETID_EAX_ListenerProperties, DSPROPERTY_EAXLISTENER_COMMITDEFERREDSETTINGS,NULL,0);
 }
 
 void CSoundRender_Core::object_relcase( CObject* obj )
 {
 	if (obj){
 		for (u32 eit=0; eit<s_emitters.size(); eit++){
-        	if (s_emitters[eit])
-                if (s_emitters[eit]->owner_data)
-                 	if (obj==s_emitters[eit]->owner_data->g_object) 
-	                    s_emitters[eit]->owner_data->g_object	= 0;     
-        }
-    }
+			if (s_emitters[eit])
+				if (s_emitters[eit]->owner_data)
+					if (obj==s_emitters[eit]->owner_data->g_object) 
+						s_emitters[eit]->owner_data->g_object	= 0;     
+		}
+	}
 }

@@ -1,15 +1,14 @@
 #include "stdafx.h"
 
-//#include "EventAPI.h"
 #include "Console.h"
 
 extern void			msRead			( );
 extern void			msCreate		(const char* name);
 
-//---------------------------------------------------------------------
 class ENGINE_API CEvent
 {
 	friend class CEventAPI;
+
 private:
 	char*							Name;
 	xr_vector<IEventReceiver*>		Handlers;

@@ -5,7 +5,7 @@
 //#include "..\ENGINE\Object.h"
 //#include "..\ENGINE\CustomHUD.h"
 #include "..\ENGINE\IGamePersistent.h"//==>
-#include "..\ENGINE\environment.h"
+//#include "..\ENGINE\Environment.h"
 #include "..\ENGINE\SkeletonCustom.h"
 #include "..\xrRender\LightTrack.h"
 

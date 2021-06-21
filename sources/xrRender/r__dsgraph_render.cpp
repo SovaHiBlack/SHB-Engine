@@ -3,7 +3,7 @@
 #include "..\ENGINE\render.h"
 #include "..\ENGINE\irenderable.h"
 #include "..\ENGINE\IGamePersistent.h"//==>
-#include "..\ENGINE\environment.h"
+//#include "..\ENGINE\Environment.h"
 #include "..\ENGINE\fhierrarhyvisual.h"
 #include "..\ENGINE\SkeletonCustom.h"
 #include "..\ENGINE\fmesh.h"

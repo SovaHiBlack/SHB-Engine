@@ -94,7 +94,7 @@ BOOL CLevel::Load_GameSpecific_After( )
 		}
 
 		Sounds_Random_dwNextTime = Device.TimerAsync( ) + 50000;
-		Sounds_Random_Enabled = FALSE;
+		Sounds_Random_Enabled = false;
 	}
 
 	// loading scripts

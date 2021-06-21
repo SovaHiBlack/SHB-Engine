@@ -2,7 +2,7 @@
 
 #include "..\ENGINE\IGamePersistent.h"//==>
 //#include "..\ENGINE\IGameLevel.h"
-#include "..\ENGINE\environment.h"
+//#include "..\ENGINE\Environment.h"
 #include "..\ENGINE\fmesh.h"
 
 #include "ftreevisual.h"

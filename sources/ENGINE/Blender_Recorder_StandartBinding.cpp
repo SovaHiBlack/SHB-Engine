@@ -10,7 +10,7 @@
 #include "blenders\Blender.h"
 
 #include "IGamePersistent.h"//==>
-#include "environment.h"
+//#include "Environment.h"
 
 // matrices
 #define	BIND_DECLARE(xf)	\

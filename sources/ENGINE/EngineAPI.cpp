@@ -1,7 +1,5 @@
 #include "stdafx.h"
 
-//void __cdecl dummy(void)
-//{ };
 CEngineAPI::CEngineAPI( )
 {
 	hGame = 0;
@@ -17,7 +15,6 @@ extern u32 renderer_value; //con cmd
 
 void CEngineAPI::Initialize(void)
 {
-	//////////////////////////////////////////////////////////////////////////
 	// render
 	const char* r1_name = "xrRender_R1.dll";
 	const char* r2_name = "xrRender_R2.dll";

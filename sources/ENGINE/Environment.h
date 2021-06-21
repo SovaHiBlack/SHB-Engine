@@ -1,39 +1,39 @@
 #pragma once
 
 // refs
-class ENGINE_API	IRender_Visual;
-class ENGINE_API	CIniFile;
-class ENGINE_API 	CEnvironment;
+class ENGINE_API IRender_Visual;
+class ENGINE_API CIniFile;
+class ENGINE_API CEnvironment;
 
 // refs - effects
-class ENGINE_API	CEnvironment;
-class ENGINE_API	CLensFlare;
-class ENGINE_API	CEffect_Rain;
-class ENGINE_API	CEffect_Thunderbolt;
+class ENGINE_API CEnvironment;
+class ENGINE_API CLensFlare;
+class ENGINE_API CEffect_Rain;
+class ENGINE_API CEffect_Thunderbolt;
 
-class ENGINE_API	CPerlinNoise1D;
+class ENGINE_API CPerlinNoise1D;
 
-#define DAY_LENGTH		86400.0f
+#define DAY_LENGTH							86400.0f
 
 #include "blenders\blender.h"
 
 class CBlender_skybox : public IBlender
 {
 public:
-	virtual const char* getComment( )
+	virtual const char* getComment			( )
 	{
 		return "INTERNAL: combiner";
 	}
-	virtual BOOL		canBeDetailed( )
+	virtual BOOL		canBeDetailed		( )
 	{
 		return FALSE;
 	}
-	virtual BOOL		canBeLMAPped( )
+	virtual BOOL		canBeLMAPped		( )
 	{
 		return FALSE;
 	}
 
-	virtual void		Compile(CBlender_Compile& C)
+	virtual void		Compile				(CBlender_Compile& C)
 	{
 		C.r_Pass("sky2", "sky2", FALSE, TRUE, FALSE);
 		C.r_Sampler_clf("s_sky0", "$null");
@@ -47,19 +47,19 @@ public:
 class ENGINE_API CEnvModifier
 {
 public:
-	Fvector3			position;
-	float				radius;
-	float				power;
+	Fvector3								position;
+	float									radius;
+	float									power;
 
-	float				far_plane;
-	Fvector3			fog_color;
-	float				fog_density;
-	Fvector3			ambient;
-	Fvector3			sky_color;
-	Fvector3			hemi_color;
+	float									far_plane;
+	Fvector3								fog_color;
+	float									fog_density;
+	Fvector3								ambient;
+	Fvector3								sky_color;
+	Fvector3								hemi_color;
 
-	void				load(IReader* fs);
-	float				sum(CEnvModifier& _another, Fvector3& view);
+	void				load				(IReader* fs);
+	float				sum					(CEnvModifier& _another, Fvector3& view);
 };
 
 class ENGINE_API CEnvAmbient
@@ -67,56 +67,55 @@ class ENGINE_API CEnvAmbient
 public:
 	struct SEffect
 	{
-		u32 			life_time;
-		ref_sound		sound;
-		shared_str		particles;
-		Fvector3			offset;
-		float			wind_gust_factor;
+		u32									life_time;
+		ref_sound							sound;
+		shared_str							particles;
+		Fvector3							offset;
+		float								wind_gust_factor;
 	};
-	//DEFINE_VECTOR(SEffect, EffectVec, EffectVecIt);
-	using EffectVec = xr_vector<SEffect>;
-	using EffectVecIt = EffectVec::iterator;
+
+	using EffectVec							= xr_vector<SEffect>;
 
 protected:
-	shared_str			section;
-	EffectVec			effects;
-	xr_vector<ref_sound>sounds;
-	Fvector2			sound_dist;
-	Ivector2			sound_period;
-	Ivector2			effect_period;
+	shared_str								section;
+	EffectVec								effects;
+	xr_vector<ref_sound>					sounds;
+	Fvector2								sound_dist;
+	Ivector2								sound_period;
+	Ivector2								effect_period;
 
 public:
-	void				load(const shared_str& section);
-	inline SEffect* get_rnd_effect( )
+	void						load				(const shared_str& section);
+	inline SEffect*				get_rnd_effect		( )
 	{
 		return effects.empty( ) ? 0 : &effects[Random.randI(effects.size( ))];
 	}
-	inline ref_sound* get_rnd_sound( )
+	inline ref_sound*			get_rnd_sound		( )
 	{
 		return sounds.empty( ) ? 0 : &sounds[Random.randI(sounds.size( ))];
 	}
-	inline const shared_str& name( )
+	inline const shared_str&	name				( )
 	{
 		return section;
 	}
-	inline u32				get_rnd_sound_time( )
+	inline u32					get_rnd_sound_time	( )
 	{
 		return Random.randI(sound_period.x, sound_period.y);
 	}
-	inline float			get_rnd_sound_dist( )
+	inline float				get_rnd_sound_dist	( )
 	{
 		return Random.randF(sound_dist.x, sound_dist.y);
 	}
-	inline u32				get_rnd_effect_time( )
+	inline u32					get_rnd_effect_time	( )
 	{
 		return Random.randI(effect_period.x, effect_period.y);
 	}
 };
 
-class ENGINE_API	CEnvDescriptor
+class ENGINE_API CEnvDescriptor
 {
 public:
-	float				exec_time;
+	float											exec_time;
 	float				exec_time_loaded;
 
 	shared_str			sky_texture_name;
@@ -176,7 +175,7 @@ public:
 	void				on_device_destroy( );
 };
 
-class ENGINE_API		CEnvDescriptorMixer : public CEnvDescriptor
+class ENGINE_API CEnvDescriptorMixer : public CEnvDescriptor
 {
 public:
 	STextureList		sky_r_textures;
@@ -204,14 +203,12 @@ class ENGINE_API CEnvironment
 	};
 
 public:
-//	DEFINE_VECTOR(CEnvAmbient*, EnvAmbVec, EnvAmbVecIt);
 	using EnvAmbVec = xr_vector<CEnvAmbient*>;
 	using EnvAmbVecIt = EnvAmbVec::iterator;
-//	DEFINE_VECTOR(CEnvDescriptor*, EnvVec, EnvIt);
+
 	using EnvVec = xr_vector<CEnvDescriptor*>;
 	using EnvIt = EnvVec::iterator;
 
-//	DEFINE_MAP_PRED(shared_str, EnvVec, EnvsMap, EnvsMapIt, str_pred);
 	using EnvsMap = xr_map<shared_str, EnvVec, str_pred>;
 	using EnvsMapIt = EnvsMap::iterator;
 
@@ -220,14 +217,13 @@ private:
 	FvectorVec				CloudsVerts;
 	U16Vec					CloudsIndices;
 
-private:
 	float					NormalizeTime(float tm);
 	float					TimeDiff(float prev, float cur);
 	float					TimeWeight(float val, float min_t, float max_t);
 	void					SelectEnvs(EnvVec* envs, CEnvDescriptor*& e0, CEnvDescriptor*& e1, float tm);
 	void					SelectEnv(EnvVec* envs, CEnvDescriptor*& e, float tm);
 	void					StopWFX( );
-	void calculate_dynamic_sun_dir( );
+	void					calculate_dynamic_sun_dir( );
 
 public:
 	static bool sort_env_pred(const CEnvDescriptor* x, const CEnvDescriptor* y)
@@ -285,7 +281,6 @@ public:
 
 	void					Invalidate( );
 
-public:
 	CEnvironment( );
 	~CEnvironment( );
 

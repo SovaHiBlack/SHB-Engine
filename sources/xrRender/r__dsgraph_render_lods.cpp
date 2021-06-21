@@ -3,7 +3,7 @@
 #include "flod.h"
 
 #include "..\ENGINE\IGamePersistent.h"//==>
-#include "..\ENGINE\environment.h"
+//#include "..\ENGINE\Environment.h"
 
 extern float	r_ssaLOD_A;
 extern float	r_ssaLOD_B;

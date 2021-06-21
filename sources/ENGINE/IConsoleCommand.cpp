@@ -1,18 +1,13 @@
 #include "stdafx.h"
 
-//#include "IGameLevel.h"
 #include "GammaControl.h"
-//#include "Application.h"
 #include "Console.h"
 #include "IConsoleCommand.h"
 #include "fbasicvisual.h"
 #include "CameraManager.h"
-#include "environment.h"
-//#include "Input.h"
-//#include "CustomHUD.h"
+#include "Environment.h"
 #include "SkeletonAnimated.h"
 #include "ResourceManager.h"
-//#include "Object.h"
 
 xr_token							snd_freq_token[ ] = {
 	{ "22khz",						sf_22K										},
@@ -48,7 +43,7 @@ public:
 	CCC_Quit(const char* N) : IConsoleCommand(N)
 	{
 		bEmptyArgsHandled = true;
-	};
+	}
 	virtual void Execute(const char* args)
 	{
 //		TerminateProcess(GetCurrentProcess(),0);
@@ -65,7 +60,7 @@ public:
 	CCC_DbgStrCheck(const char* N) : IConsoleCommand(N)
 	{
 		bEmptyArgsHandled = true;
-	};
+	}
 	virtual void Execute(const char* args)
 	{
 		g_pStringContainer->verify( );
@@ -78,7 +73,7 @@ public:
 	CCC_DbgStrDump(const char* N) : IConsoleCommand(N)
 	{
 		bEmptyArgsHandled = true;
-	};
+	}
 	virtual void Execute(const char* args)
 	{
 		g_pStringContainer->dump( );
@@ -92,7 +87,7 @@ public:
 	CCC_MotionsStat(const char* N) : IConsoleCommand(N)
 	{
 		bEmptyArgsHandled = true;
-	};
+	}
 	virtual void Execute(const char* args)
 	{
 		g_pMotionsContainer->dump( );
@@ -104,7 +99,7 @@ public:
 	CCC_TexturesStat(const char* N) : IConsoleCommand(N)
 	{
 		bEmptyArgsHandled = true;
-	};
+	}
 	virtual void Execute(const char* args)
 	{
 		Device.Resources->_DumpMemoryUsage( );
@@ -117,7 +112,7 @@ public:
 	CCC_E_Dump(const char* N) : IConsoleCommand(N)
 	{
 		bEmptyArgsHandled = true;
-	};
+	}
 	virtual void Execute(const char* args)
 	{
 		Engine.Event.Dump( );
@@ -127,7 +122,7 @@ class CCC_E_Signal : public IConsoleCommand
 {
 public:
 	CCC_E_Signal(const char* N) : IConsoleCommand(N)
-	{ };
+	{ }
 	virtual void Execute(const char* args)
 	{
 		char	Event[128], Param[128];
@@ -143,7 +138,7 @@ public:
 	CCC_Help(const char* N) : IConsoleCommand(N)
 	{
 		bEmptyArgsHandled = true;
-	};
+	}
 	virtual void Execute(const char* args)
 	{
 		Log("- --- Command listing: start ---");
@@ -201,13 +196,14 @@ void 			crashthread(void*)
 		}
 	}
 }
+
 class CCC_Crash : public IConsoleCommand
 {
 public:
 	CCC_Crash(const char* N) : IConsoleCommand(N)
 	{
 		bEmptyArgsHandled = true;
-	};
+	}
 	virtual void Execute(const char* args)
 	{
 		thread_spawn(crashthread, "crash", 0, 0);
@@ -220,7 +216,7 @@ public:
 	CCC_DumpResources(const char* N) : IConsoleCommand(N)
 	{
 		bEmptyArgsHandled = true;
-	};
+	}
 	virtual void Execute(const char* args)
 	{
 		Device.Resources->Dump(args != NULL);
@@ -234,7 +230,7 @@ public:
 	CCC_DumpOpenFiles(const char* N) : IConsoleCommand(N)
 	{
 		bEmptyArgsHandled = false;
-	};
+	}
 	virtual void Execute(const char* args)
 	{
 		int _mode = atoi(args);
@@ -249,7 +245,7 @@ public:
 	CCC_SaveCFG(const char* N) : IConsoleCommand(N)
 	{
 		bEmptyArgsHandled = true;
-	};
+	}
 	virtual void Execute(const char* args)
 	{
 		string_path			cfg_full_name;
@@ -281,6 +277,7 @@ public:
 			Msg("!Cannot store config file [%s]", cfg_full_name);
 	}
 };
+
 CCC_LoadCFG::CCC_LoadCFG(const char* N) : IConsoleCommand(N)
 { };
 
@@ -341,7 +338,7 @@ class CCC_Start : public IConsoleCommand
 	}
 public:
 	CCC_Start(const char* N) : IConsoleCommand(N)
-	{ };
+	{ }
 	virtual void Execute(const char* args)
 	{
 /*		if (g_pGameLevel)	{
@@ -374,7 +371,7 @@ public:
 	CCC_Disconnect(const char* N) : IConsoleCommand(N)
 	{
 		bEmptyArgsHandled = true;
-	};
+	}
 	virtual void Execute(const char* args)
 	{
 		Engine.Event.Defer("KERNEL:disconnect");
@@ -387,7 +384,7 @@ public:
 	CCC_VID_Reset(const char* N) : IConsoleCommand(N)
 	{
 		bEmptyArgsHandled = true;
-	};
+	}
 	virtual void Execute(const char* args)
 	{
 		if (Device.b_is_Ready)
@@ -403,7 +400,7 @@ public:
 	CCC_VidMode(const char* N) : CCC_Token(N, &_dummy, NULL)
 	{
 		bEmptyArgsHandled = false;
-	};
+	}
 	virtual void	Execute(const char* args)
 	{
 		u32 _w, _h;
@@ -439,7 +436,7 @@ public:
 	CCC_SND_Restart(const char* N) : IConsoleCommand(N)
 	{
 		bEmptyArgsHandled = true;
-	};
+	}
 	virtual void Execute(const char* args)
 	{
 		Sound->_restart( );
@@ -478,7 +475,7 @@ public:
 	CCC_DR_ClearPoint(const char* N) : IConsoleCommand(N)
 	{
 		bEmptyArgsHandled = true;
-	};
+	}
 	virtual void Execute(const char* args)
 	{
 		g_DR_LM_Min.x = 1000000.0f;
@@ -497,7 +494,7 @@ public:
 	CCC_DR_TakePoint(const char* N) : IConsoleCommand(N)
 	{
 		bEmptyArgsHandled = true;
-	};
+	}
 	virtual void Execute(const char* args)
 	{
 		Fvector3 CamPos = Device.vCameraPosition;
@@ -516,9 +513,9 @@ class CCC_DR_UsePoints : public CCC_Integer
 {
 public:
 	CCC_DR_UsePoints(const char* N, int* V, int _min = 0, int _max = 999) : CCC_Integer(N, V, _min, _max)
-	{ };
+	{ }
 	virtual void	Save(IWriter* F)
-	{ };
+	{ }
 };
 
 ENGINE_API BOOL r2_sun_static = TRUE;
@@ -531,7 +528,7 @@ public:
 	CCC_r2(const char* N) : inherited(N, &renderer_value, vid_quality_token)
 	{
 		renderer_value = 0;
-	};
+	}
 
 	virtual void	Execute(const char* args)
 	{
@@ -548,7 +545,6 @@ public:
 			inherited::Save(F);
 		}
 	}
-
 };
 //-----------------------------------------------------------------------
 ENGINE_API float	psHUD_FOV = 0.45f;

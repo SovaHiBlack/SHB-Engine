@@ -1,7 +1,7 @@
 #include "stdafx.h"
 
 #include "..\ENGINE\IGamePersistent.h"//==>
-#include "..\ENGINE\environment.h"
+//#include "..\ENGINE\Environment.h"
 
 #pragma pack(push,4)
 struct v_build	{

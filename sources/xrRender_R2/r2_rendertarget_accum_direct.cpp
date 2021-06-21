@@ -1,7 +1,7 @@
 #include "stdafx.h"
 
 #include "..\ENGINE\IGamePersistent.h"//==>
-#include "..\ENGINE\environment.h"
+//#include "..\ENGINE\Environment.h"
 
 void CRenderTarget::accum_direct		(u32 sub_phase)
 {

@@ -74,7 +74,7 @@ protected:
 
 public:
 						CCC_Mask			(const char* N, Flags32* V, u32 M) : IConsoleCommand(N), value(V), mask(M)
-	{ };
+	{ }
 
 	const BOOL			GetValue			( ) const
 	{
@@ -122,7 +122,7 @@ protected:
 
 public:
 						CCC_Token			(const char* N, u32* V, xr_token* T) : IConsoleCommand(N), value(V), tokens(T)
-	{ };
+	{ }
 
 	virtual xr_token*	GetToken			( )
 	{
@@ -191,20 +191,20 @@ protected:
 
 public:
 						CCC_Float			(const char* N, float* V, float _min = 0, float _max = 1) : IConsoleCommand(N), value(V), min(_min), max(_max)
-	{ };
+	{ }
 
 	const float			GetValue			( ) const
 	{
 		return *value;
-	};
+	}
 	const float			GetMin				( ) const
 	{
 		return min;
-	};
+	}
 	const float			GetMax				( ) const
 	{
 		return max;
-	};
+	}
 
 	virtual void		Execute				(const char* args)
 	{
@@ -244,7 +244,7 @@ public:
 	{
 		min.set								(_min);
 		max.set								(_max);
-	};
+	}
 
 	virtual void		Execute				(const char* args)
 	{
@@ -288,20 +288,20 @@ protected:
 
 public:
 						CCC_Integer			(const char* N, int* V, int _min = 0, int _max = 999) : IConsoleCommand(N), value(V), min(_min), max(_max)
-	{ };
+	{ }
 
 	const int			GetValue			( ) const
 	{
 		return *value;
-	};
+	}
 	const int			GetMin				( ) const
 	{
 		return min;
-	};
+	}
 	const int			GetMax				( ) const
 	{
 		return max;
-	};
+	}
 
 	virtual void		Execute				(const char* args)
 	{
@@ -337,7 +337,7 @@ public:
 		bLowerCaseArgs						= false;
 		R_ASSERT							(V);
 		R_ASSERT							(size > 1);
-	};
+	}
 
 	virtual void		Execute				(const char* args)
 	{
@@ -361,7 +361,7 @@ public:
 	virtual bool		allow				(const char* cmd)
 	{
 		return true;
-	};
+	}
 
 	virtual void		Execute				(const char* args);
 };

@@ -1,7 +1,7 @@
 #include "stdafx.h"
 
 #include "..\ENGINE\IGamePersistent.h"//==>
-#include "..\ENGINE\environment.h"
+//#include "..\ENGINE\Environment.h"
 
 #define STENCIL_CULL 0
 
