@@ -607,7 +607,10 @@ void CCustomZone::feel_touch_new	(CObject* O)
 void CCustomZone::feel_touch_delete(CObject* O) 
 {
 #ifdef DEBUG
-	if(bDebug) Msg("%s %s",*O->cName(),"leaving a zone.");
+	if (bDebug)
+	{
+		Msg("%s %s", *O->cName( ), "leaving a zone.");
+	}
 #endif
 
 	if(smart_cast<CActor*>(O)) m_pLocalActor = NULL;

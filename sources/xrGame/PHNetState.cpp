@@ -231,7 +231,7 @@ void SPHBonesData::net_Save(CNetPacket& P)
 
 	P.w_vec3(get_min( ));
 	P.w_vec3(get_max( ));
-	P.w_u16((u16) bones.size( ));//bones number;
+	P.w_u16((U16) bones.size( ));//bones number;
 	PHNETSTATE_I	i = bones.begin( ), e = bones.end( );
 	for (; e != i; i++)
 	{
@@ -255,7 +255,7 @@ void SPHBonesData::net_Load(CNetPacket& P)
 	P.r_vec3(_mx);
 	set_min_max(_mn, _mx);
 
-	u16 bones_number = P.r_u16( );//bones number /**/
+	U16 bones_number = P.r_u16( );//bones number /**/
 	for (int i = 0; i < bones_number; i++)
 	{
 		SPHNetState	S;

@@ -120,7 +120,7 @@ public:
 	virtual 	void 			PhDataUpdate(dReal	step) = 0;
 	virtual 	void 			PhTune(dReal	step) = 0;
 	virtual		void 			spatial_move( );
-	virtual 	void 			InitContact(dContact* c, bool& do_collide, u16 /*material_idx_1*/, u16 /*material_idx_2*/) = 0;
+	virtual 	void 			InitContact(dContact* c, bool& do_collide, U16 /*material_idx_1*/, U16 /*material_idx_2*/) = 0;
 	virtual		void			CutVelocity(float l_limit, float a_limit)
 	{ };
 
@@ -142,8 +142,8 @@ public:
 	{
 		return !!(m_flags.test(st_net_interpolation));
 	}
-	virtual		u16				get_elements_number( ) = 0;
-	virtual		CPHSynchronize* get_element_sync(u16 element) = 0;
+	virtual		U16				get_elements_number( ) = 0;
+	virtual		CPHSynchronize* get_element_sync(U16 element) = 0;
 	//virtual void StepFrameUpdate(dReal step)=0;
 
 	CPHObject( );

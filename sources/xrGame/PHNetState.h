@@ -45,7 +45,7 @@ using PHNETSTATE_I = PHNETSTATE_VECTOR::iterator;
 struct SPHBonesData
 {
 	u64				  bones_mask;
-	u16				  root_bone;
+	U16				  root_bone;
 	PHNETSTATE_VECTOR bones;
 	Fvector3			  m_min;
 	Fvector3			  m_max;

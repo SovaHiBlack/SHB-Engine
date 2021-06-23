@@ -40,10 +40,14 @@ void CLevelGraph::render	()
 	}
 
 	if (!bDebug && !psAI_Flags.test(aiMotion))
+	{
 		return;
+	}
 
 	if (bDebug && psAI_Flags.test(aiDebug))
-		draw_nodes			();
+	{
+		draw_nodes( );
+	}
 
 	draw_restrictions		();
 

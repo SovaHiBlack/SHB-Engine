@@ -49,16 +49,22 @@ void CPortal::OnRender	()
 		RCache.dbg_Draw		(D3DPT_TRIANGLEFAN,&*V.begin(),V.size()-2);
 
 		// draw wire
-		if (bDebug){
-			RImplementation.rmNear();
-		}else{
+		if (bDebug)
+		{
+			RImplementation.rmNear( );
+		}
+		else
+		{
 			Device.SetNearer(TRUE);
 		}
 		RCache.set_Shader	(Device.m_WireShader);
 		RCache.dbg_Draw		(D3DPT_LINESTRIP,&*(V.begin()+1),V.size()-2);
-		if (bDebug){
-			RImplementation.rmNormal();
-		}else{
+		if (bDebug)
+		{
+			RImplementation.rmNormal( );
+		}
+		else
+		{
 			Device.SetNearer(FALSE);
 		}
 		

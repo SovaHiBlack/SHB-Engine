@@ -67,10 +67,11 @@ void CHairsZone::Affect(SZoneObjectInfo* O)
 	XFORM().transform_tiny(P,CFORM()->getSphere().P);
 
 #ifdef DEBUG
-	if(bDebug){
-		char l_pow[255]; 
-		sprintf_s(l_pow, "zone hit. %.1f", Power(pGameObject->Position().distance_to(P)));
-		Msg("%s %s",*pGameObject->cName(), l_pow);
+	if (bDebug)
+	{
+		char l_pow[255];
+		sprintf_s(l_pow, "zone hit. %.1f", Power(pGameObject->Position( ).distance_to(P)));
+		Msg("%s %s", *pGameObject->cName( ), l_pow);
 	}
 #endif
 

@@ -257,12 +257,12 @@ void CUIDragDropListEx::Draw( )
 {
 	inherited::Draw( );
 
-	if (0 && bDebug)
+	if (bDebug)
 	{
 		CGameFont* F = UI( )->Font( )->pFontDI;
 		F->SetAligment(CGameFont::alCenter);
 		F->SetHeightI(0.02f);
-		F->OutSetI(0.f, -0.5f);
+		F->OutSetI(0.0f, -0.5f);
 		F->SetColor(0xffffffff);
 		Ivector2 pt = m_container->PickCell(GetUICursor( )->GetCursorPosition( ));
 		F->OutNext("%d-%d", pt.x, pt.y);

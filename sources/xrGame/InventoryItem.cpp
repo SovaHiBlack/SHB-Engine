@@ -214,17 +214,18 @@ void CInventoryItem::UpdateCL()
 {
 
 #ifdef DEBUG
-	if(bDebug){
-		if (dbg_net_Draw_Flags.test(1<<4) )
+	if (bDebug)
+	{
+		if (dbg_net_Draw_Flags.test(1 << 4))
 		{
 			Device.seqRender.Remove(this);
 			Device.seqRender.Add(this);
-		}else
+		}
+		else
 		{
 			Device.seqRender.Remove(this);
 		}
 	}
-
 #endif
 
 }

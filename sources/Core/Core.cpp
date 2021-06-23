@@ -66,7 +66,7 @@ void CCore::_initialize	(const char* _ApplicationName, LogCallback cb, BOOL init
 		// Mathematics & PSI detection
 		CPU::Detect			();
 		
-		Memory._initialize	(strstr(Params,"-mem_debug") ? TRUE : FALSE);
+		Memory._initialize	(strstr(Params, "-mem_debug") ? true : false);
 
 		DUMP_PHASE;
 

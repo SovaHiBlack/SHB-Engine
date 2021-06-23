@@ -22,7 +22,7 @@ xrMemory::xrMemory( )
 	mem_fill32 = xrMemFill32_x86;
 }
 
-void	xrMemory::_initialize(BOOL bDebug)
+void	xrMemory::_initialize(bool bDebug)
 {
 	stat_calls = 0;
 	stat_counter = 0;

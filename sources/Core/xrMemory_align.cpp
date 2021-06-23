@@ -92,7 +92,7 @@ void * __stdcall xr_aligned_offset_malloc(
 	if (!IS_2_POW_N(align))
 	{
 		errno = EINVAL;
-		return NULL;
+		return nullptr;
 	}
 	if ( offset >= size && offset != 0)
 		size	= offset+1;
@@ -103,7 +103,7 @@ void * __stdcall xr_aligned_offset_malloc(
 	gap = (0 - offset)&(PTR_SZ -1);
 
 	if ( (ptr =(uintptr_t)malloc(PTR_SZ +gap +align +size)) == (uintptr_t)NULL)
-		return NULL;
+		return nullptr;
 
 	retptr =((ptr +PTR_SZ +gap +align +offset)&~align)- offset;
 	((uintptr_t *)(retptr - gap))[-1] = ptr;
@@ -183,19 +183,19 @@ void * __stdcall xr_aligned_offset_realloc(
 	uintptr_t movsz, reqsz;
 	int bFree = 0;
 
-	if (memblock == NULL)
+	if (memblock == nullptr)
 	{
 		return xr_aligned_offset_malloc(size, align, offset);
 	}
 	if ( size == 0)
 	{
 		xr_aligned_free(memblock);
-		return NULL;
+		return nullptr;
 	}
 	if ( offset >= size && offset != 0)
 	{
 		errno = EINVAL;
-		return NULL;
+		return nullptr;
 	}
 
 	stptr = (uintptr_t)memblock;

@@ -240,7 +240,7 @@ CSkeletonX* CKinematics::LL_GetChild(u32 idx)
 
 void CKinematics::Load(const char* N, IReader* data, u32 dwFlags)
 {
-//	Msg("skeleton: %s", N);
+	Msg("skeleton: %s", N);
 	inherited::Load(N, data, dwFlags);
 
 	pUserData = nullptr;
@@ -288,17 +288,16 @@ void CKinematics::Load(const char* N, IReader* data, u32 dwFlags)
 	bone_map_N = xr_new<accel>( );
 	bone_map_P = xr_new<accel>( );
 	bones = xr_new<vecBones>( );
-	bone_instances = NULL;
+	bone_instances = nullptr;
 
 	// Load bones
-#pragma todo("container is created in stack!")
 	xr_vector<shared_str> L_parents;
 
 	R_ASSERT(data->find_chunk(OGF_S_BONE_NAMES));
 
 	visimask.zero( );
 	int dwCount = data->r_u32( );
-//	Msg("!!! %d bones", dwCount);
+	Msg("!!! %d bones", dwCount);
 
 	VERIFY3(dwCount < 64, "More than 64 bones is a crazy thing!", N);
 	for (; dwCount; dwCount--)
@@ -430,45 +429,43 @@ inline void iBuildGroups(CBoneData* B, U16Vec& tgt, U16 id, U16& last_id)
 void CKinematics::LL_Validate( )
 {
 	// check breakable
-	bool bCheckBreakable = false;
+	bool bCheckBreakable			= false;
 	for (U16 k = 0; k < LL_BoneCount( ); k++)
 	{
 		if (LL_GetData(k).IK_data.ik_flags.is(SJointIKData::flBreakable) && (LL_GetData(k).IK_data.type != jtNone))
 		{
-			bCheckBreakable = true;
+			bCheckBreakable			= true;
 			break;
 		}
 	}
 
 	if (bCheckBreakable)
 	{
-		bool bValidBreakable = true;
+		bool bValidBreakable		= true;
 
-#pragma todo("container is created in stack!")
-		xr_vector<xr_vector<U16>> groups;
-		LL_GetBoneGroups(groups);
+		xr_vector<xr_vector<U16>>	groups;
+		LL_GetBoneGroups			(groups);
 
-#pragma todo("container is created in stack!")
-		xr_vector<U16> b_parts(LL_BoneCount( ), BI_NONE);
-		CBoneData* root = &LL_GetData(LL_GetBoneRoot( ));
-		U16 last_id = 0;
-		iBuildGroups(root, b_parts, 0, last_id);
+		xr_vector<U16> b_parts		(LL_BoneCount( ), BI_NONE);
+		CBoneData* root				= &LL_GetData(LL_GetBoneRoot( ));
+		U16 last_id					= 0;
+		iBuildGroups				(root, b_parts, 0, last_id);
 
 		for (U16 g = 0; g < (U16) groups.size( ); ++g)
 		{
-			xr_vector<U16>& group = groups[g];
-			U16 bp_id = b_parts[group[0]];
+			xr_vector<U16>& group	= groups[g];
+			U16 bp_id				= b_parts[group[0]];
 			for (u32 b = 1; b < groups[g].size( ); b++)
 			{
 				if (bp_id != b_parts[groups[g][b]])
 				{
-					bValidBreakable = false;
+					bValidBreakable	= false;
 					break;
 				}
 			}
 		}
 
-		if (!bValidBreakable == false)
+		if (bValidBreakable) /*(!bValidBreakable == false)*/
 		{
 			for (U16 k = 0; k < LL_BoneCount( ); k++)
 			{
@@ -481,7 +478,7 @@ void CKinematics::LL_Validate( )
 
 #ifdef DEBUG
 			Msg("! ERROR: Invalid breakable object: '%s'", *dbg_name);
-#endif
+#endif // def DEBUG
 
 		}
 	}

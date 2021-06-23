@@ -16,7 +16,7 @@
 												class_name** tome;
 #define DECLARE_PHSTACK_ITEM(class_name)		DECLARE_PHLIST_ITEM(class_name)\
 												friend class CPHItemStack<class_name>;\
-												u16 stack_pos;
+												U16 stack_pos;
 						
 //#define TPI(item)								((T::CPHListItem*)item)	
 
@@ -26,7 +26,7 @@ template<class T>
 			T				*first_next							;
 			T			   **last_tome							;
 		protected:
-			u16				size								;
+			U16				size								;
 	
 		public:
 		
@@ -43,7 +43,7 @@ template<class T>
 					bool		operator !=	 (iterator right){return my_ptr!=right.my_ptr;}
 			};
 							CPHItemList		()		{  empty();}
-			u16				count			()		{return size;}
+							U16				count			()		{return size;}
 			void			push_back		(T* item)	
 			{
 				*(last_tome)=item;

@@ -407,13 +407,14 @@ void CHelicopter::UpdateCL()
 	}
 
 #ifdef DEBUG
-	if(bDebug){
-		CGameFont* F		= UI()->Font()->pFontDI;
-		F->SetAligment		(CGameFont::alCenter);
-//		F->SetSizeI			(0.02f);
-		F->OutSetI			(0.f,-0.8f);
-		F->SetColor			(0xffffffff);
-		F->OutNext			("Heli: speed=%4.4f acc=%4.4f dist=%4.4f",m_movement.curLinearSpeed, m_movement.curLinearAcc, m_movement.GetDistanceToDestPosition());
+	if (bDebug)
+	{
+		CGameFont* F = UI( )->Font( )->pFontDI;
+		F->SetAligment(CGameFont::alCenter);
+//		F->SetSizeI(0.02f);
+		F->OutSetI(0.0f, -0.8f);
+		F->SetColor(0xffffffff);
+		F->OutNext("Heli: speed=%4.4f acc=%4.4f dist=%4.4f", m_movement.curLinearSpeed, m_movement.curLinearAcc, m_movement.GetDistanceToDestPosition( ));
 	}
 #endif
 
@@ -606,7 +607,9 @@ void CHelicopter::SetDestPosition(Fvector3* pos)
 {
 	m_movement.SetDestPosition(pos);
 	if (bDebug)
+	{
 		Msg("---SetDestPosition %f %f %f", pos->x, pos->y, pos->z);
+	}
 }
 
 float CHelicopter::GetDistanceToDestPosition( )
@@ -657,7 +660,9 @@ void CHelicopter::SetSpeedInDestPoint(float sp)
 {
 	m_movement.SetSpeedInDestPoint(sp);
 	if (bDebug)
+	{
 		Msg("---SetSpeedInDestPoint %f", sp);
+	}
 }
 
 float CHelicopter::GetSpeedInDestPoint(float sp)
@@ -669,7 +674,9 @@ void CHelicopter::SetOnPointRangeDist(float d)
 {
 	m_movement.onPointRangeDist = d;
 	if (bDebug)
+	{
 		Msg("---SetOnPointRangeDist %f", d);
+	}
 }
 
 float CHelicopter::GetOnPointRangeDist( )
@@ -706,9 +713,14 @@ void	CHelicopter::Hit(SHit* pHDS)
 		float curHealth = GetfHealth( );
 		curHealth -= pHDS->damage( ) * It->second * 1000.0f;
 		SetfHealth(curHealth);
+
 #ifdef DEBUG
-		if (bDebug)	Log("----Helicopter::PilotHit(). health=", curHealth);
+		if (bDebug)
+		{
+			Log("----Helicopter::PilotHit(). health=", curHealth);
+		}
 #endif
+
 	}
 	else
 	{
@@ -716,11 +728,16 @@ void	CHelicopter::Hit(SHit* pHDS)
 		hit_power *= m_HitTypeK[pHDS->hit_type];
 
 		SetfHealth(GetfHealth( ) - hit_power);
+
 #ifdef DEBUG
 		if (bDebug)
+		{
 			Log("----Helicopter::Hit(). health=", GetfHealth( ));
+		}
 #endif
-	};
+
+	}
+
 	if (pHDS->who &&
 		(pHDS->who->CLS_ID == CLSID_OBJECT_ACTOR ||
 		 smart_cast<CStalker*>(pHDS->who) ||

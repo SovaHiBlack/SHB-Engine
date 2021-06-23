@@ -67,7 +67,7 @@ private:
 	u64							m_auth_code		;
 
 	void						Register		(const char* name, u32 vfs, u32 crc, u32 ptr, u32 size_real, u32 size_compressed, u32 modif);
-	void						ProcessArchive	(const char* path, const char* base_path=NULL);
+	void						ProcessArchive	(const char* path, const char* base_path = 0);
 	void						ProcessOne		(const char* path,/* void* F */ const _finddata_t& F);
 	bool						Recurse			(const char* path);
 //	bool						CheckExistance	(const char* path);

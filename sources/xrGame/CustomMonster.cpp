@@ -1092,16 +1092,22 @@ void CCustomMonster::OnRender( )
 		float					new_range = eye_range, new_fov = eye_fov;
 
 		if (g_Alive( ))
+		{
 			update_range_fov(new_range, new_fov, memory( ).visual( ).current_state( ).m_max_view_distance * eye_range, eye_fov);
+		}
 
 		dbg_draw_frustum(new_fov, new_range, 1, eye_matrix.c, eye_matrix.k, eye_matrix.j);
 	}
 
 	if (psAI_Flags.test(aiMotion))
+	{
 		character_physics_support( )->movement( )->dbg_Draw( );
+	}
 
 	if (bDebug)
+	{
 		smart_cast<CKinematics*>(Visual( ))->DebugRender(XFORM( ));
+	}
 }
 #endif // DEBUG
 

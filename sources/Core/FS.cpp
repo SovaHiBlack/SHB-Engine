@@ -141,7 +141,7 @@ void*  FileDecompress	(const char* fn, const char* sign, u32* size)
 	if (strncmp(M,F,8)!=0)		{
 		F[8]=0;		Msg("FATAL: signatures doesn't match, file(%s) / requested(%s)",F,sign);
 	}
-    R_ASSERT(strncmp(M,F,8)==0);
+	R_ASSERT(strncmp(M,F,8)==0);
 
 	void* ptr = 0;
 	u32 SZ;
@@ -185,12 +185,12 @@ void CMemoryWriter::w	(const void* ptr, u32 count)
 bool CMemoryWriter::save_to	(const char* fn)
 {
 	IWriter* F 		= FS.w_open(fn);
-    if (F){
-	    F->w		(pointer(),size());
-    	FS.w_close	(F);
-        return 		true;
-    }
-    return false;
+	if (F){
+		F->w		(pointer(),size());
+		FS.w_close	(F);
+		return 		true;
+	}
+	return false;
 }
 
 
@@ -291,7 +291,7 @@ IReader*	IReader::open_chunk_iterator	(u32& ID, IReader* _prev)
 	}
 
 	//	open
-	if			(elapsed()<8)	return		NULL;
+	if			(elapsed()<8)	return		nullptr;
 	ID			= r_u32	()		;
 	u32 _size	= r_u32	()		;
 	if ( ID & CFS_CompressMark )
@@ -317,7 +317,7 @@ void	IReader::r	(void *p,int cnt)
 	if (dynamic_cast<CFileReader*>(this))			bShow = TRUE;
 	if (dynamic_cast<CVirtualFileReader*>(this))	bShow = TRUE;
 	if (bShow)			{
-  		FS.dwOpenCounter	++		;
+		FS.dwOpenCounter	++		;
 	}
 #endif
 };
@@ -328,34 +328,34 @@ inline u32	IReader::advance_term_string()
 	u32 sz		= 0;
 	char *src 	= (char *) data;
 	while (!eof()) {
-        Pos++;
-        sz++;
+		Pos++;
+		sz++;
 		if (!eof()&&is_term(src[Pos])) {
-        	while(!eof()&&is_term(src[Pos])) Pos++;
+			while(!eof()&&is_term(src[Pos])) Pos++;
 			break;
 		}
 	}
-    return sz;
+	return sz;
 }
 void	IReader::r_string	(char *dest, u32 tgt_sz)
 {
 	char *src 	= (char *) data+Pos;
 	u32 sz 		= advance_term_string();
-    R_ASSERT2(sz<(tgt_sz-1),"Dest string less than needed.");
-    strncpy		(dest,src,sz);
-    dest[sz]	= 0;
+	R_ASSERT2(sz<(tgt_sz-1),"Dest string less than needed.");
+	strncpy		(dest,src,sz);
+	dest[sz]	= 0;
 }
 void	IReader::r_string	(xr_string& dest)
 {
 	char *src 	= (char *) data+Pos;
 	u32 sz 		= advance_term_string();
-    dest.assign	(src,sz);
+	dest.assign	(src,sz);
 }
 void	IReader::r_stringZ	(char *dest, u32 tgt_sz)
 {
 	char *src 	= (char *) data;
 	u32 sz 		= xr_strlen(src);
-    R_ASSERT2(sz<tgt_sz,"Dest string less than needed.");
+	R_ASSERT2(sz<tgt_sz,"Dest string less than needed.");
 	while ((src[Pos]!=0) && (!eof())) *dest++ = src[Pos++];
 	*dest		=	0;
 	Pos++;
@@ -363,12 +363,12 @@ void	IReader::r_stringZ	(char *dest, u32 tgt_sz)
 void 	IReader::r_stringZ	(shared_str& dest)
 {
 	dest		= (char*)(data+Pos);
-    Pos			+=(dest.size()+1);
+	Pos			+=(dest.size()+1);
 }
 void	IReader::r_stringZ	(xr_string& dest)
 {
-    dest 		= (char*)(data+Pos);
-    Pos			+=int(dest.size()+1);
+	dest 		= (char*)(data+Pos);
+	Pos			+=int(dest.size()+1);
 };
 
 void	IReader::skip_stringZ	()
@@ -397,8 +397,8 @@ CPackReader::~CPackReader()
 // file stream
 CFileReader::CFileReader(const char* name)
 {
-    data	= (char*)FileDownload(name,(u32*)&Size);
-    Pos		= 0;
+	data	= (char*)FileDownload(name,(u32*)&Size);
+	Pos		= 0;
 };
 
 CFileReader::~CFileReader()
@@ -407,8 +407,8 @@ CFileReader::~CFileReader()
 // compressed stream
 CCompressedReader::CCompressedReader(const char* name, const char* sign)
 {
-    data	= (char *)FileDecompress(name,sign,(u32*)&Size);
-    Pos		= 0;
+	data	= (char *)FileDecompress(name,sign,(u32*)&Size);
+	Pos		= 0;
 }
 CCompressedReader::~CCompressedReader()
 {	xr_free(data);	};

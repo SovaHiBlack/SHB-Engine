@@ -9,7 +9,7 @@ class CPHJointDestroyInfo;
 class CPHJoint : public CPhysicsJoint
 {
 ///////////////////////////////////////////////////////
-	u16									m_bone_id;
+	U16									m_bone_id;
 	CPHElement* pFirst_element;
 	CPHElement* pSecond_element;
 	CCodeGeom* pFirstGeom;
@@ -68,7 +68,7 @@ class CPHJoint : public CPhysicsJoint
 	void					SetLimitsActive(int axis_num);
 	void 					CalcAxis(int ax_num, Fvector3& axis, float& lo, float& hi, const Fmatrix& first_matrix, const Fmatrix& second_matrix);
 	void 					CalcAxis(int ax_num, Fvector3& axis, float& lo, float& hi, const Fmatrix& first_matrix, const Fmatrix& second_matrix, const Fmatrix& rotate);
-	virtual		u16						GetAxesNumber( );
+	virtual		U16						GetAxesNumber( );
 	virtual		void 					SetAxisSDfactors(float spring_factor, float damping_factor, int axis_num);
 	virtual		void 					SetJointSDfactors(float spring_factor, float damping_factor);
 	virtual		void					SetJointSDfactorsActive( );
@@ -116,11 +116,11 @@ class CPHJoint : public CPhysicsJoint
 public:
 	virtual		CPhysicsElement* PFirst_element( );
 	virtual		CPhysicsElement* PSecond_element( );
-	virtual		u16					 	BoneID( )
+	virtual		U16					 	BoneID( )
 	{
 		return m_bone_id;
 	}
-	virtual		void					SetBoneID(u16 bone_id)
+	virtual		void					SetBoneID(U16 bone_id)
 	{
 		m_bone_id = bone_id;
 	}

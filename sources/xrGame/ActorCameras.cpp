@@ -385,7 +385,7 @@ void CActor::update_camera(CCameraShotEffector* effector)
 
 #ifdef DEBUG
 void dbg_draw_frustum(float FOV, float _FAR, float A, Fvector3& P, Fvector3& D, Fvector3& U);
-extern	Flags32	dbg_net_Draw_Flags;
+extern Flags32	dbg_net_Draw_Flags;
 
 void CActor::OnRender( )
 {

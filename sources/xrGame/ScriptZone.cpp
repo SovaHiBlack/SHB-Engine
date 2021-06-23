@@ -96,7 +96,10 @@ BOOL CScriptZone::feel_touch_contact	(CObject* O)
 #ifdef DEBUG
 void CScriptZone::OnRender() 
 {
-	if(!bDebug) return;
+	if (!bDebug)
+	{
+		return;
+	}
 	RCache.OnFrameEnd();
 	Fvector3 l_half;
 	l_half.set(.5f, .5f, .5f);

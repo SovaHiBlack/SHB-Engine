@@ -24,7 +24,7 @@ public:
 
 public:
 	xrMemory( );
-	void				_initialize(BOOL _debug_mode = FALSE);
+	void				_initialize(bool bDebug = false);
 	void				_destroy( );
 
 	u32					stat_calls;
@@ -35,7 +35,7 @@ public:
 	void				dbg_unregister(void* _p);
 	void				dbg_check( );
 
-	u32					mem_usage(u32* pBlocksUsed = NULL, u32* pBlocksFree = NULL);
+	u32					mem_usage(u32* pBlocksUsed = nullptr, u32* pBlocksFree = nullptr);
 	void				mem_compact( );
 	void				mem_counter_set(u32 _val)
 	{
@@ -85,7 +85,7 @@ inline void		xr_free(T*& P)
 	if (P)
 	{
 		Memory.mem_free((void*) P);
-		P = NULL;
+		P = nullptr;
 	}
 }
 inline void* xr_malloc(size_t size)
@@ -108,7 +108,7 @@ inline void		xr_free(T*& P)
 	if (P)
 	{
 		Memory.mem_free((void*) P);
-		P = NULL;
+		P = nullptr;
 	}
 }
 inline void* xr_malloc(size_t size)

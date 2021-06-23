@@ -5,7 +5,7 @@ static string_path			logFName		= "engine.log";
 static BOOL 				no_log			= TRUE;
 static xrCriticalSection	logCS;
 
-xr_vector<shared_str>*		LogFile			= NULL;
+xr_vector<shared_str>*		LogFile			= nullptr;
 static LogCallback			LogCB			= 0;
 
 void FlushLog			(const char* file_name)
@@ -87,7 +87,7 @@ void __cdecl Msg		(const char* format, ...)
 }
 
 void Log				(const char* msg, const char* dop) {
-	char buf[1024];
+	string1024 buf;
 
 	if (dop)	sprintf_s(buf,sizeof(buf),"%s %s",msg,dop);
 	else		sprintf_s(buf,sizeof(buf),"%s",msg);
@@ -96,35 +96,35 @@ void Log				(const char* msg, const char* dop) {
 }
 
 void Log				(const char* msg, u32 dop) {
-	char buf[1024];
+	string1024 buf;
 
 	sprintf_s	(buf,sizeof(buf),"%s %d",msg,dop);
 	Log			(buf);
 }
 
 void Log				(const char* msg, int dop) {
-	char buf[1024];
+	string1024 buf;
 
 	sprintf_s	(buf, sizeof(buf),"%s %d",msg,dop);
 	Log		(buf);
 }
 
 void Log				(const char* msg, float dop) {
-	char buf[1024];
+	string1024 buf;
 
 	sprintf_s	(buf, sizeof(buf),"%s %f",msg,dop);
 	Log		(buf);
 }
 
 void Log				(const char* msg, const Fvector3& dop) {
-	char buf[1024];
+	string1024 buf;
 
 	sprintf_s	(buf,sizeof(buf),"%s (%f,%f,%f)",msg,dop.x,dop.y,dop.z);
 	Log		(buf);
 }
 
 void Log				(const char* msg, const Fmatrix &dop)	{
-	char	buf	[1024];
+	string1024	buf;
 
 	sprintf_s	(buf,sizeof(buf),"%s:\n%f,%f,%f,%f\n%f,%f,%f,%f\n%f,%f,%f,%f\n%f,%f,%f,%f\n",msg,dop.i.x,dop.i.y,dop.i.z,dop._14_
 																				,dop.j.x,dop.j.y,dop.j.z,dop._24_
@@ -149,7 +149,7 @@ const char* log_name			()
 
 void InitLog()
 {
-	R_ASSERT			(LogFile==NULL);
+	R_ASSERT			(LogFile==nullptr);
 	LogFile				= xr_new< xr_vector<shared_str> >();
 }
 
@@ -161,7 +161,7 @@ void CreateLog			(BOOL nl)
 		FS.update_path	(logFName,"$logs$",logFName);
 	if (!no_log){
 		IWriter *f		= FS.w_open	(logFName);
-		if (f==NULL){
+		if (f==nullptr){
 			MessageBox	(NULL,"Can't create log file.","Error",MB_ICONERROR);
 			abort();
 		}
