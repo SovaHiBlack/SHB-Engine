@@ -65,10 +65,10 @@ void CDetailManager::soft_Render	()
 				// Lock buffers
 				u32	vBase,iBase,iOffset=0;
 				CDetail::fvfVertexOut* vDest	= (CDetail::fvfVertexOut*)	_VS.Lock(vCount_Lock,soft_Geom->vb_stride,vBase);
-				u16*	iDest					= (u16*)					_IS.Lock(iCount_Lock,iBase);
+				U16*	iDest					= (U16*)					_IS.Lock(iCount_Lock,iBase);
 
 				// Filling itself
-                for (u32 item_idx=item_start; item_idx<item_end; ++item_idx){
+				for (u32 item_idx=item_start; item_idx<item_end; ++item_idx){
 					SlotItem&	Instance	= *items->at(item_idx);
 					float	scale			= Instance.scale_calculated;
 
@@ -86,10 +86,10 @@ void CDetailManager::soft_Render	()
 						CDetail::fvfVertexOut	*dstIt = vDest;
 
 						for	(; srcIt!=srcEnd; srcIt++, dstIt++){
-                            mXform.transform_tiny	(dstIt->P,srcIt->P);
-                            dstIt->C	= C;
-                            dstIt->u	= srcIt->u;
-                            dstIt->v	= srcIt->v;
+							mXform.transform_tiny	(dstIt->P,srcIt->P);
+							dstIt->C	= C;
+							dstIt->u	= srcIt->u;
+							dstIt->v	= srcIt->v;
 						}
 					}
 
@@ -103,7 +103,7 @@ void CDetailManager::soft_Render	()
 						LPDWORD	dit		= LPDWORD(iDest);
 						for		(; sit!=send; dit++,sit++)	*dit=*sit+item;
 						if		(Object.number_indices&1)
-							iDest[Object.number_indices-1]=(u16)(Object.indices[Object.number_indices-1]+u16(iOffset));
+							iDest[Object.number_indices-1]=(U16)(Object.indices[Object.number_indices-1]+ U16(iOffset));
 					}
 
 					// Increment counters
@@ -127,14 +127,14 @@ void CDetailManager::soft_Render	()
 
 /*
 //.
-                VERIFY(sizeof(CDetail::fvfVertexOut)==soft_Geom->vb_stride);
-                
-                CDetail::fvfVertexOut	*dstIt = vDest;
+				VERIFY(sizeof(CDetail::fvfVertexOut)==soft_Geom->vb_stride);
+				
+				CDetail::fvfVertexOut	*dstIt = vDest;
 
-                VERIFY(items->size()*Object.number_vertices==vCount_Lock);
-                
-                for	(u32 k=0; k<vCount_Lock; k++)
-                {
+				VERIFY(items->size()*Object.number_vertices==vCount_Lock);
+				
+				for	(u32 k=0; k<vCount_Lock; k++)
+				{
 					// Transfer vertices
 					{
 						u32					C = 0xffffffff;
@@ -149,6 +149,6 @@ void CDetailManager::soft_Render	()
 							dstIt->v	= srcIt->v;
 						}
 					}
-                }
+				}
 */                
 

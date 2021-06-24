@@ -25,9 +25,9 @@ private:
 
 	struct _npc_visibility
 	{
-		u16												id;
+		U16												id;
 		float											value;
-		bool operator ==								(const u16& _id)
+		bool operator ==								(const U16& _id)
 		{
 			return id == _id;
 		}
@@ -51,6 +51,6 @@ public:
 	void						SetPower				(float Pos);
 	void						SetNoise				(float Pos);
 	void						SetLuminosity			(float Pos);
-	void						SetActorVisibility		(u16 who_id, float value);
+	void						SetActorVisibility		(U16 who_id, float value);
 	void						ResetVisibility			( );
 };

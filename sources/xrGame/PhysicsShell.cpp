@@ -73,11 +73,13 @@ void	fix_bones(const char* fixed_bones,CPhysicsShell* shell )
 		{
 			string64					fixed_bone							;
 			_GetItem					(fixed_bones,i,fixed_bone)			;
-			u16 fixed_bone_id=pKinematics->LL_BoneID(fixed_bone)			;
+			U16 fixed_bone_id=pKinematics->LL_BoneID(fixed_bone)			;
 			R_ASSERT2(BI_NONE!=fixed_bone_id,"wrong fixed bone")			;
 			CPhysicsElement* E = shell->get_Element(fixed_bone_id)			;
-			if(E)
-				E->Fix();
+			if (E)
+			{
+				E->Fix( );
+			}
 		}
 }
 
@@ -92,7 +94,7 @@ CPhysicsShell*				P_build_Shell			(CGameObject* obj,bool not_active_state,BONE_P
 		{
 			string64					fixed_bone							;
 			_GetItem					(fixed_bones,i,fixed_bone)			;
-			u16 fixed_bone_id=pKinematics->LL_BoneID(fixed_bone)			;
+			U16 fixed_bone_id=pKinematics->LL_BoneID(fixed_bone)			;
 			R_ASSERT2(BI_NONE!=fixed_bone_id,"wrong fixed bone")			;
 			p_bone_map->insert(mk_pair(fixed_bone_id,physicsBone()))			;
 		}
@@ -102,11 +104,16 @@ CPhysicsShell*				P_build_Shell			(CGameObject* obj,bool not_active_state,BONE_P
 		//m_pPhysicsShell->add_Joint(P_create_Joint(CPhysicsJoint::enumType::full_control,0,fixed_element));
 	}
 	else
-		pPhysicsShell=P_build_Shell(obj,not_active_state);
-
+	{
+		pPhysicsShell = P_build_Shell(obj, not_active_state);
+	}
 
 	BONE_P_PAIR_IT i=p_bone_map->begin(),e=p_bone_map->end();
-	if(i!=e) pPhysicsShell->SetPrefereExactIntegration();
+	if (i != e)
+	{
+		pPhysicsShell->SetPrefereExactIntegration( );
+	}
+
 	for(;i!=e;i++)
 	{
 		CPhysicsElement* fixed_element=i->second.element;
@@ -114,6 +121,7 @@ CPhysicsShell*				P_build_Shell			(CGameObject* obj,bool not_active_state,BONE_P
 		//if(!fixed_element) continue;
 		fixed_element->Fix();
 	}
+
 	return pPhysicsShell;
 }
 
@@ -130,6 +138,7 @@ CPhysicsShell*				P_build_Shell			(CGameObject* obj,bool not_active_state, const
 			R_ASSERT2(BI_NONE!=f_bones.back(),"wrong fixed bone")			;
 		}
 	}
+
 	return P_build_Shell	(obj,not_active_state,f_bones);
 }
 

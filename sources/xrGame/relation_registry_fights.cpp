@@ -16,7 +16,7 @@ RELATION_REGISTRY::FIGHT_DATA::FIGHT_DATA( )
 	defender_to_attacker = ALife::eRelationTypeDummy;
 }
 
-void RELATION_REGISTRY::FightRegister(u16 attacker, u16 defender, ALife::ERelationType defender_to_attacker, float hit_amount)
+void RELATION_REGISTRY::FightRegister(U16 attacker, U16 defender, ALife::ERelationType defender_to_attacker, float hit_amount)
 {
 	UpdateFightRegister( );
 
@@ -45,20 +45,20 @@ void RELATION_REGISTRY::FightRegister(u16 attacker, u16 defender, ALife::ERelati
 	}
 }
 
-RELATION_REGISTRY::FIGHT_DATA* RELATION_REGISTRY::FindFight(u16 object_id, bool by_attacker)
+RELATION_REGISTRY::FIGHT_DATA* RELATION_REGISTRY::FindFight(U16 object_id, bool by_attacker)
 {
 	FIGHT_VECTOR& fights = fight_registry( );
 	for (FIGHT_VECTOR_IT it = fights.begin( ); it != fights.end( ); it++)
 	{
 		FIGHT_DATA& fight_data = *it;
-		u16 id_to_find = by_attacker ? fight_data.attacker : fight_data.defender;
+		U16 id_to_find = by_attacker ? fight_data.attacker : fight_data.defender;
 		if (object_id == id_to_find)
 		{
 			return &fight_data;
 		}
 	}
 
-	return NULL;
+	return nullptr;
 }
 
 bool fight_time_pred(RELATION_REGISTRY::FIGHT_DATA& fight_data)

@@ -303,7 +303,7 @@ Fvector3	CScriptGameObject::bone_position	(const char* bone_name) const
 		return			Fvector3( );
 	}
 
-	u16					bone_id;
+	U16					bone_id;
 
 	if (xr_strlen(bone_name))
 		bone_id = k->LL_BoneID(bone_name);

@@ -5,10 +5,10 @@
 
 #pragma pack(push,1)
 struct tgaImgSpecHeader{
-	u16		tgaXOrigin;
-	u16		tgaYOrigin;
-	u16		tgaXSize;
-	u16		tgaYSize;
+	U16		tgaXOrigin;
+	U16		tgaYOrigin;
+	U16		tgaXSize;
+	U16		tgaYSize;
 	BYTE	tgaDepth;
 	BYTE	tgaImgDesc;
 };

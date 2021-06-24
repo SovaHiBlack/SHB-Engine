@@ -85,7 +85,7 @@ U8 CSE_Spectator::g_team( )
 	return 0;
 }
 
-void CSE_Spectator::STATE_Read(CNetPacket& tNetPacket, u16 size)
+void CSE_Spectator::STATE_Read(CNetPacket& tNetPacket, U16 size)
 { }
 
 void CSE_Spectator::STATE_Write(CNetPacket& tNetPacket)
@@ -113,7 +113,7 @@ CSE_Temporary::CSE_Temporary(const char* caSection) : CSE_Abstract(caSection)
 CSE_Temporary::~CSE_Temporary( )
 { }
 
-void CSE_Temporary::STATE_Read(CNetPacket& tNetPacket, u16 size)
+void CSE_Temporary::STATE_Read(CNetPacket& tNetPacket, U16 size)
 {
 	tNetPacket.r_u32(m_tNodeID);
 }
@@ -137,14 +137,14 @@ void CSE_Temporary::FillProps(const char* pref, PropItemVec& values)
 ////////////////////////////////////////////////////////////////////////////
 CSE_PHSkeleton::CSE_PHSkeleton(const char* caSection)
 {
-	source_id = u16(-1);
+	source_id = U16(-1);
 	_flags.zero( );
 }
 
 CSE_PHSkeleton::~CSE_PHSkeleton( )
 { }
 
-void CSE_PHSkeleton::STATE_Read(CNetPacket& tNetPacket, u16 size)
+void CSE_PHSkeleton::STATE_Read(CNetPacket& tNetPacket, U16 size)
 {
 	CSE_Visual* visual = smart_cast<CSE_Visual*>(this);
 	R_ASSERT(visual);
@@ -190,7 +190,7 @@ void CSE_PHSkeleton::load(CNetPacket& tNetPacket)
 {
 	_flags.assign(tNetPacket.r_u8( ));
 	data_load(tNetPacket);
-	source_id = u16(-1);//.
+	source_id = U16(-1);//.
 }
 void CSE_PHSkeleton::UPDATE_Write(CNetPacket& tNetPacket)
 { }
@@ -207,7 +207,7 @@ CSE_AbstractVisual::CSE_AbstractVisual(const char* section) :inherited1(section)
 CSE_AbstractVisual::~CSE_AbstractVisual( )
 { }
 
-void CSE_AbstractVisual::STATE_Read(CNetPacket& tNetPacket, u16 size)
+void CSE_AbstractVisual::STATE_Read(CNetPacket& tNetPacket, U16 size)
 {
 	visual_read(tNetPacket, m_wVersion);
 	tNetPacket.r_stringZ(startup_animation);

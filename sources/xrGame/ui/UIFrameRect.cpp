@@ -185,7 +185,7 @@ void CUIFrameRect::Draw( )
 
 	for (int k = 0; k < fmMax; ++k)
 	{
-		if (m_itm_mask.test(u16(1 << k)))
+		if (m_itm_mask.test(U16(1 << k)))
 		{
 			frame[k].Render( );
 		}

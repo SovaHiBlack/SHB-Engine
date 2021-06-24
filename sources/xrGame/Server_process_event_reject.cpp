@@ -3,7 +3,7 @@
 #include "Server.h"
 #include "xrserver_objects.h"
 
-bool CServer::Process_event_reject	(CNetPacket& P, const ClientID sender, const u32 time, const u16 id_parent, const u16 id_entity, bool send_message)
+bool CServer::Process_event_reject	(CNetPacket& P, const ClientID sender, const u32 time, const U16 id_parent, const U16 id_entity, bool send_message)
 {
 	// Parse message
 	CSE_Abstract*		e_parent	= game->get_entity_from_eid	(id_parent);
@@ -25,9 +25,9 @@ bool CServer::Process_event_reject	(CNetPacket& P, const ClientID sender, const 
 	// Rebuild parentness
 	R_ASSERT3				(e_entity->ID_Parent == id_parent, e_entity->name_replace(), e_parent->name_replace());
 	e_entity->ID_Parent		= 0xffff;
-	xr_vector<u16>& C		= e_parent->children;
+	xr_vector<U16>& C		= e_parent->children;
 
-	xr_vector<u16>::iterator c	= std::find	(C.begin(),C.end(),id_entity);
+	xr_vector<U16>::iterator c	= std::find	(C.begin(),C.end(),id_entity);
 	R_ASSERT3				(C.end()!=c,e_entity->name_replace(),e_parent->name_replace());
 	C.erase					(c);
 

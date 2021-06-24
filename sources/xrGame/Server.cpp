@@ -61,7 +61,7 @@ CServer::~CServer( )
 	m_aDelayedPackets.clear( );
 }
 
-CSE_Abstract* CServer::ID_to_entity(u16 ID)
+CSE_Abstract* CServer::ID_to_entity(U16 ID)
 {
 	if (0xffff == ID)
 	{
@@ -210,7 +210,7 @@ void CServer::Update( )
 		// 
 		CSE_Abstract* E = ID_to_entity(R.phantom);
 		E->Spawn_Write(Packet, FALSE);
-		u16					ID;
+		U16					ID;
 		Packet.r_begin(ID);
 		R_ASSERT(M_SPAWN == ID);
 		ClientID clientID;
@@ -271,7 +271,7 @@ void CServer::SendUpdatesToAll( )
 
 		// Send relevant entities to client
 		CNetPacket						Packet;
-		u16 PacketType = M_UPDATE;
+		U16 PacketType = M_UPDATE;
 		Packet.w_begin(PacketType);
 		// GameUpdate
 		game->net_Export_Update(Packet, Client->ID, Client->ID);
@@ -386,7 +386,7 @@ void CServer::SendUpdatesToAll( )
 				if (g_Dump_Update_Write && Client->ps != NULL)
 				{
 					Msg("- Server Update[%d] to Client[%s]  : %d",
-						*((u16*) ToSend.B.data),
+						*((U16*) ToSend.B.data),
 						Client->ps->getName( ),
 						ToSend.B.count);
 				}
@@ -422,7 +422,7 @@ u32 CServer::OnDelayedMessage(CNetPacket& P, ClientID sender)			// Non-Zero mean
 		Level( ).Demo_StoreServerData(P.B.data, P.B.count);
 	}
 
-	u16						type;
+	U16						type;
 	P.r_begin(type);
 
 	csPlayers.Enter( );
@@ -482,7 +482,7 @@ u32 CServer::OnMessage(CNetPacket& P, ClientID sender)			// Non-Zero means broad
 		Level( ).Demo_StoreServerData(P.B.data, P.B.count);
 	}
 
-	u16								type;
+	U16								type;
 	P.r_begin(type);
 
 	csPlayers.Enter( );
@@ -960,8 +960,8 @@ void CServer::verify_entity(const CSE_Abstract* entity) const
 		VERIFY3(std::find((*J).second->children.begin( ), (*J).second->children.end( ), entity->ID) != (*J).second->children.end( ), "SERVER : Parent/Children relationship mismatch - Object has parent, but corresponding parent doesn't have children", (*J).second->name_replace( ));
 	}
 
-	xr_vector<u16>::const_iterator		I = entity->children.begin( );
-	xr_vector<u16>::const_iterator		E = entity->children.end( );
+	xr_vector<U16>::const_iterator		I = entity->children.begin( );
+	xr_vector<U16>::const_iterator		E = entity->children.end( );
 	for (; I != E; ++I)
 	{
 		VERIFY3(*I != 0xffff, "SERVER : Invalid entity children id - 0xffff", entity->name_replace( ));

@@ -15,11 +15,11 @@ private:
 	//////////////////////////////////////////////////////////////////////////
 	typedef CPHShellHolder inherited;
 	CCameraBase*			camera;
-	u16						fire_bone;
-	u16						actor_bone;
-	u16						rotate_x_bone;
-	u16						rotate_y_bone;
-	u16						camera_bone;
+	U16						fire_bone;
+	U16						actor_bone;
+	U16						rotate_x_bone;
+	U16						rotate_y_bone;
+	U16						camera_bone;
 
 	Fvector3				fire_pos;
 	Fvector3				fire_dir;

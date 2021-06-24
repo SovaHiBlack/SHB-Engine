@@ -18,7 +18,7 @@ void	CBlender_deffer_aref::Save	(	IWriter& fs )
 	xrPWRITE_PROP	(fs,"Alpha ref",	xrPID_INTEGER,	oAREF);
 	xrPWRITE_PROP	(fs,"Alpha-blend",	xrPID_BOOL,		oBlend);
 }
-void	CBlender_deffer_aref::Load	(	IReader& fs, u16 version )
+void	CBlender_deffer_aref::Load	(	IReader& fs, U16 version )
 {
 	IBlender::Load	(fs,version);
 	if (1==version)	{

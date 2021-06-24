@@ -255,8 +255,8 @@ void CRender::LoadLights(IReader *fs)
 
 struct b_portal
 {
-	u16				sector_front;
-	u16				sector_back;
+	U16				sector_front;
+	U16				sector_back;
 	svector<Fvector3,6>	vertices;
 };
 

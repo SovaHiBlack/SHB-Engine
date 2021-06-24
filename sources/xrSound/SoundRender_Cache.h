@@ -21,13 +21,13 @@ struct	cache_line						// internal, LRU queue
 	cache_line*				prev;
 	cache_line*				next;
 	void*					data;		// pre-formatted
-	u16*					loopback;	// dual-connectivity
-	u16						id;			// need this for dual-connectivity
+	U16*					loopback;	// dual-connectivity
+	U16						id;			// need this for dual-connectivity
 };
 //////////////////////////////////////////////////////////////////////////
 struct	cache_cat						// cache allocation table
 {
-	u16*					table;		// page-table
+	U16*					table;		// page-table
 	u32						size;		// in pages
 };
 #define CAT_FREE			0xffff

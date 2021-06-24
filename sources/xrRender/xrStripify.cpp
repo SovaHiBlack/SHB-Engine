@@ -4,7 +4,7 @@
 #include "NvTriStrip.h"
 #include "VertexCache.h"
 
-int xrSimulate (xr_vector<u16> &indices, int iCacheSize )
+int xrSimulate (xr_vector<U16> &indices, int iCacheSize )
 {
 	VertexCache C(iCacheSize);
 
@@ -19,7 +19,7 @@ int xrSimulate (xr_vector<u16> &indices, int iCacheSize )
 	return count;
 }
 
-void xrStripify		(xr_vector<u16> &indices, xr_vector<u16> &perturb, int iCacheSize, int iMinStripLength)
+void xrStripify		(xr_vector<U16> &indices, xr_vector<U16> &perturb, int iCacheSize, int iMinStripLength)
 {
 	SetCacheSize	(iCacheSize);
 	SetMinStripSize	(iMinStripLength);
@@ -34,14 +34,14 @@ void xrStripify		(xr_vector<u16> &indices, xr_vector<u16> &perturb, int iCacheSi
 
 	// Remap indices
 	xr_vector<PrimitiveGroup>	xPGROUP;
-	RemapIndices	(PGROUP,u16(perturb.size()),xPGROUP);
+	RemapIndices	(PGROUP, U16(perturb.size()),xPGROUP);
 	VERIFY			(xPGROUP.size()==1);
 	VERIFY			(xPGROUP[0].type==PT_LIST);
 
 	// Build perturberation table
 	for(u32 index = 0; index < PGROUP[0].numIndices; index++)
 	{
-		u16 oldIndex = PGROUP[0].indices	[index];
+		U16 oldIndex = PGROUP[0].indices	[index];
 		int newIndex = xPGROUP[0].indices	[index];
 		VERIFY(oldIndex<(int)perturb.size());
 		VERIFY(newIndex<(int)perturb.size());
@@ -49,7 +49,7 @@ void xrStripify		(xr_vector<u16> &indices, xr_vector<u16> &perturb, int iCacheSi
 	}
 
 	// Copy indices
-	CopyMemory	(&*indices.begin(),xPGROUP[0].indices,indices.size()*sizeof(u16));
+	CopyMemory	(&*indices.begin(),xPGROUP[0].indices,indices.size()*sizeof(U16));
 
 	// Release memory
 	xPGROUP.clear	();

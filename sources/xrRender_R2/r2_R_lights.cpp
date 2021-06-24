@@ -12,7 +12,7 @@ void	CRender::render_lights	(light_Package& LP)
 	//////////////////////////////////////////////////////////////////////////
 	// Refactor order based on ability to pack shadow-maps
 	// 1. calculate area + sort in descending order
-	// const	u16		smap_unassigned		= u16(-1);
+	// const	U16		smap_unassigned		= U16(-1);
 	{
 		xr_vector<light*>&	source			= LP.v_shadowed;
 		for (u32 it=0; it<source.size(); it++)
@@ -35,7 +35,7 @@ void	CRender::render_lights	(light_Package& LP)
 		refactored.reserve		(source.size());
 		u32						total		= source.size();
 
-		for		(u16 smap_ID=0; refactored.size()!=total; smap_ID++)
+		for		(U16 smap_ID=0; refactored.size()!=total; smap_ID++)
 		{
 			LP_smap_pool.initialize	(RImplementation.o.smapsize);
 			std::sort				(source.begin(),source.end(),pred_area);
@@ -84,7 +84,7 @@ void	CRender::render_lights	(light_Package& LP)
 		Target->phase_smap_spot_clear	();
 		xr_vector<light*>&	source		= LP.v_shadowed;
 		light*		L		= source.back	()	;
-		u16			sid		= L->vis.smap_ID	;
+		U16			sid		= L->vis.smap_ID	;
 		while (true)	
 		{
 			if	(source.empty())		break;

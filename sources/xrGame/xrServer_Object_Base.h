@@ -67,13 +67,13 @@ public:
 	BOOL							net_Ready;
 	BOOL							net_Processed;	// Internal flag for connectivity-graph
 
-	u16								m_wVersion;
-	u16								m_script_version;
-	u16								RespawnTime;
+	U16								m_wVersion;
+	U16								m_script_version;
+	U16								RespawnTime;
 
-	u16								ID;				// internal ID
-	u16								ID_Parent;		// internal ParentID, 0xffff means no parent
-	u16								ID_Phantom;		// internal PhantomID, 0xffff means no phantom
+	U16								ID;				// internal ID
+	U16								ID_Parent;		// internal ParentID, 0xffff means no parent
+	U16								ID_Phantom;		// internal PhantomID, 0xffff means no phantom
 	xrClientData* owner;
 
 	// spawn data
@@ -81,7 +81,7 @@ public:
 	U8								s_gameid;
 	U8								s_RP;
 	Flags16							s_flags;		// state flags
-	xr_vector<u16>					children;
+	xr_vector<U16>					children;
 
 	// update data
 	Fvector3							o_Position;
@@ -107,7 +107,7 @@ public:
 
 	CSE_Abstract(const char* caSection);
 	virtual							~CSE_Abstract( );
-	virtual void					OnEvent(CNetPacket& tNetPacket, u16 type, u32 time, ClientID sender)
+	virtual void					OnEvent(CNetPacket& tNetPacket, U16 type, u32 time, ClientID sender)
 	{ }
 	virtual void					FillProps(const char* pref, PropItemVec& items);
 	virtual BOOL					Net_Relevant( )

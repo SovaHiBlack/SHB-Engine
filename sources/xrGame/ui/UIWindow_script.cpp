@@ -11,7 +11,7 @@
 #include "UITextureMaster.h"//
 #include "UIScrollView.h"//
 
-int GetARGB(u16 a, u16 r, u16 g, u16 b)
+int GetARGB(U16 a, U16 r, U16 g, U16 b)
 {
 	return color_argb(a, r, g, b);
 }

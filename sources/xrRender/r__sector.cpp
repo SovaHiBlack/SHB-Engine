@@ -258,7 +258,7 @@ void CSector::load		(IReader& fs)
 	u32 count			= size/2;
 	m_portals.reserve	(count);
 	while (count) {
-		u16 ID		= fs.r_u16();
+		U16 ID		= fs.r_u16();
 		CPortal* P	= (CPortal*)RImplementation.getPortal	(ID);
 		m_portals.push_back(P);
 		count--;

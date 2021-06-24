@@ -33,7 +33,7 @@ void	CBlender_LmEbB::Save(	IWriter& fs )
 	xrPWRITE_PROP		(fs,"Alpha-Blend",		xrPID_BOOL,		oBlend);
 }
 
-void	CBlender_LmEbB::Load(	IReader& fs, u16 version )
+void	CBlender_LmEbB::Load(	IReader& fs, U16 version )
 {
 	IBlender::Load	(fs,version);
 	xrPREAD_MARKER	(fs);

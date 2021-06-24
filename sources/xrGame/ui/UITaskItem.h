@@ -18,7 +18,7 @@ class CUITaskItem : public CUIListItem, public CUIWndCallback
 
 protected:
 	CGameTask*												m_GameTask;
-	u16														m_TaskObjectiveIdx;
+	U16														m_TaskObjectiveIdx;
 	void __stdcall			OnItemClicked					(CUIWindow*, void*);
 	void					Init							( );
 
@@ -27,13 +27,13 @@ public:
 	virtual					~CUITaskItem					( );
 	virtual void			SendMessage						(CUIWindow* pWnd, S16 msg, void* pData = nullptr);
 
-	virtual void			SetGameTask						(CGameTask* gt, u16 obj_idx);
+	virtual void			SetGameTask						(CGameTask* gt, U16 obj_idx);
 
 	CGameTask*				GameTask						( )
 	{
 		return m_GameTask;
 	}
-	u16						ObjectiveIdx					( )
+	U16						ObjectiveIdx					( )
 	{
 		return m_TaskObjectiveIdx;
 	}
@@ -59,7 +59,7 @@ public:
 							CUITaskRootItem					(CUIEventsWnd* w);
 	virtual					~CUITaskRootItem				( );
 	virtual void			Update							( );
-	virtual void			SetGameTask						(CGameTask* gt, u16 obj_idx);
+	virtual void			SetGameTask						(CGameTask* gt, U16 obj_idx);
 	void __stdcall			OnSwitchDescriptionClicked		(CUIWindow*, void*);
 
 	virtual void			MarkSelected					(bool b);
@@ -86,7 +86,7 @@ public:
 							CUITaskSubItem					(CUIEventsWnd* w);
 	virtual					~CUITaskSubItem					( );
 	virtual void			Update							( );
-	virtual void			SetGameTask						(CGameTask* gt, u16 obj_idx);
+	virtual void			SetGameTask						(CGameTask* gt, U16 obj_idx);
 	void					OnActiveObjectiveClicked		( );
 	void __stdcall			OnShowDescriptionClicked		(CUIWindow*, void*);
 	virtual void			MarkSelected					(bool b);

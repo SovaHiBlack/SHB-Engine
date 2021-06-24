@@ -13,8 +13,8 @@ void CServer::Perform_transfer(CNetPacket &PR, CNetPacket &PT,	CSE_Abstract* wha
 	u32			time		= Device.dwTimeGlobal;
 
 	// Detach "FROM"
-	xr_vector<u16>& C			= from->children;
-	xr_vector<u16>::iterator c	= std::find	(C.begin(),C.end(),what->ID);
+	xr_vector<U16>& C			= from->children;
+	xr_vector<U16>::iterator c	= std::find	(C.begin(),C.end(),what->ID);
 	R_ASSERT				(C.end()!=c);
 	C.erase					(c);
 	PR.w_begin				(M_EVENT);

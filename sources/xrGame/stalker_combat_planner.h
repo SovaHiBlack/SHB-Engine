@@ -21,9 +21,8 @@ public:
 private:
 	typedef CActionPlannerActionScript<CStalker> inherited;
 
-private:
 	u32					m_last_level_time;
-	u16					m_last_enemy_id;
+	U16					m_last_enemy_id;
 	bool				m_last_wounded;
 
 protected:
@@ -33,7 +32,6 @@ protected:
 public:
 			void xr_stdcall	on_best_cover_changed	(const CCoverPoint *new_cover, const CCoverPoint *old_cover);
 
-public:
 						CStalkerCombatPlanner		(CStalker *object = 0, const char* action_name = "");
 	virtual				~CStalkerCombatPlanner		();
 	virtual	void		setup						(CStalker *object, CPropertyStorage *storage);

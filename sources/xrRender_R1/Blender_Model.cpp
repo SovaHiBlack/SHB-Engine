@@ -28,7 +28,7 @@ void	CBlender_Model::Save	( IWriter& fs	)
 	xrPWRITE_PROP		(fs,"Alpha ref",			xrPID_INTEGER,	oAREF);
 }
 
-void	CBlender_Model::Load	( IReader& fs, u16 version)
+void	CBlender_Model::Load	( IReader& fs, U16 version)
 {
 	IBlender::Load		(fs,version);
 

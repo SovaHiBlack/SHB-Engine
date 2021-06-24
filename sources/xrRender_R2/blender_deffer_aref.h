@@ -12,7 +12,7 @@ public:
 	virtual		BOOL		canBeLMAPped()	{ return lmapped;	}
 
 	virtual		void		Save			(IWriter&	fs);
-	virtual		void		Load			(IReader&	fs, u16 version);
+	virtual		void		Load			(IReader&	fs, U16 version);
 	virtual		void		Compile			(CBlender_Compile& C);
 
 	CBlender_deffer_aref					(bool _lmapped=false);

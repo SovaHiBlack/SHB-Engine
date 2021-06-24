@@ -139,16 +139,16 @@ void CWeaponRPG7::switch2_Fire	()
 		{
 			CNetPacket						P;
 			u_EventGen						(P,GE_LAUNCH_ROCKET,ID());
-			P.w_u16							(u16(getCurrentRocket()->ID()));
+			P.w_u16							(U16(getCurrentRocket()->ID()));
 			u_EventSend						(P);
 		}
 	}
 }
 
-void CWeaponRPG7::OnEvent(CNetPacket& P, u16 type) 
+void CWeaponRPG7::OnEvent(CNetPacket& P, U16 type)
 {
 	inherited::OnEvent(P,type);
-	u16 id;
+	U16 id;
 	switch (type) {
 		case GE_OWNERSHIP_TAKE : {
 			P.r_u16(id);

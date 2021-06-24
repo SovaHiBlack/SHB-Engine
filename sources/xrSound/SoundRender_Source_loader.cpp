@@ -71,7 +71,7 @@ void CSoundRender_Source::LoadWave	(const char* pName)
 	R_ASSERT3				(ovi->rate==44100,"Invalid source rate:",pName);
 
 	WAVEFORMATEX wfxdest 	= SoundRender->wfm;
-	wfxdest.nChannels		= u16(ovi->channels); 
+	wfxdest.nChannels		= U16(ovi->channels);
 	wfxdest.nBlockAlign		= wfxdest.nChannels * wfxdest.wBitsPerSample / 8;
 	wfxdest.nAvgBytesPerSec = wfxdest.nSamplesPerSec * wfxdest.nBlockAlign;
 

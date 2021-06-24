@@ -33,7 +33,7 @@
 #define CAR_BODY_XML		"carbody_new.xml"
 #define CARBODY_ITEM_XML	"carbody_item.xml"
 
-void move_item(u16 from_id, u16 to_id, u16 what_id);
+void move_item(U16 from_id, U16 to_id, U16 what_id);
 
 CUICarBodyWnd::CUICarBodyWnd( )
 {
@@ -151,7 +151,7 @@ void CUICarBodyWnd::InitCarBody(CInventoryOwner* pOur, CInventoryBox* pInvBox)
 	m_pInventoryBox = pInvBox;
 	m_pInventoryBox->m_in_use = true;
 
-	u16 our_id = smart_cast<CGameObject*>(m_pOurObject)->ID( );
+	U16 our_id = smart_cast<CGameObject*>(m_pOurObject)->ID( );
 	m_pUICharacterInfoLeft->InitCharacter(our_id);
 	m_pUIOthersIcon->Show(false);
 	m_pUICharacterInfoRight->ClearInfo( );
@@ -166,8 +166,8 @@ void CUICarBodyWnd::InitCarBody(CInventoryOwner* pOur, CInventoryOwner* pOthers)
 	m_pOthersObject = pOthers;
 	m_pInventoryBox = nullptr;
 
-	u16 our_id = smart_cast<CGameObject*>(m_pOurObject)->ID( );
-	u16 other_id = smart_cast<CGameObject*>(m_pOthersObject)->ID( );
+	U16 our_id = smart_cast<CGameObject*>(m_pOurObject)->ID( );
+	U16 other_id = smart_cast<CGameObject*>(m_pOthersObject)->ID( );
 
 	m_pUICharacterInfoLeft->InitCharacter(our_id);
 	m_pUIOthersIcon->Show(true);
@@ -375,7 +375,7 @@ void CUICarBodyWnd::SetCurrentItem(CUICellItem* itm)
 void CUICarBodyWnd::TakeAll( )
 {
 	u32 cnt = m_pUIOthersBagList->ItemsCount( );
-	u16 tmp_id = 0;
+	U16 tmp_id = 0;
 	if (m_pInventoryBox)
 	{
 		tmp_id = (smart_cast<CGameObject*>(m_pOurObject))->ID( );
@@ -491,7 +491,7 @@ void CUICarBodyWnd::EatItem( )
 	CUIDragDropListEx* owner_list = CurrentItem( )->OwnerList( );
 	if (owner_list == m_pUIOthersBagList)
 	{
-		u16 owner_id = (m_pInventoryBox) ? m_pInventoryBox->ID( ) : smart_cast<CGameObject*>(m_pOthersObject)->ID( );
+		U16 owner_id = (m_pInventoryBox) ? m_pInventoryBox->ID( ) : smart_cast<CGameObject*>(m_pOthersObject)->ID( );
 
 		move_item(owner_id, //from
 				  Actor( )->ID( ), //to
@@ -524,7 +524,7 @@ bool CUICarBodyWnd::OnItemDrop(CUICellItem* itm)
 	}
 	else
 	{
-		u16 tmp_id = (smart_cast<CGameObject*>(m_pOurObject))->ID( );
+		U16 tmp_id = (smart_cast<CGameObject*>(m_pOurObject))->ID( );
 
 		bool bMoveDirection = (old_owner == m_pUIOthersBagList);
 
@@ -566,7 +566,7 @@ bool CUICarBodyWnd::OnItemDbClick(CUICellItem* itm)
 
 		bool bMoveDirection = (old_owner == m_pUIOthersBagList);
 
-		u16 tmp_id = (smart_cast<CGameObject*>(m_pOurObject))->ID( );
+		U16 tmp_id = (smart_cast<CGameObject*>(m_pOurObject))->ID( );
 		move_item(bMoveDirection ? m_pInventoryBox->ID( ) : tmp_id, bMoveDirection ? tmp_id : m_pInventoryBox->ID( ), CurrentIItem( )->object( ).ID( ));
 	}
 
@@ -588,7 +588,7 @@ bool CUICarBodyWnd::OnItemRButtonClick(CUICellItem* itm)
 	return false;
 }
 
-void move_item(u16 from_id, u16 to_id, u16 what_id)
+void move_item(U16 from_id, U16 to_id, U16 what_id)
 {
 	CNetPacket P;
 

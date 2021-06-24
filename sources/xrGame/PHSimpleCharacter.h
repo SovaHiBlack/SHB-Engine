@@ -37,7 +37,7 @@ protected:
 		void					Reinit( );
 		dContact				m_damege_contact;
 		SCollisionHitCallback* m_hit_callback;
-		u16						m_obj_id;
+		U16						m_obj_id;
 		float					m_dmc_signum;
 		enum
 		{
@@ -132,7 +132,7 @@ public:
 /////////////////CPHObject//////////////////////////////////////////////
 	virtual		void		PhDataUpdate(dReal step);
 	virtual		void		PhTune(dReal step);
-	virtual		void		InitContact(dContact* c, bool& do_collide, u16 /*material_idx_1*/, u16 /*material_idx_2*/);
+	virtual		void		InitContact(dContact* c, bool& do_collide, U16 /*material_idx_1*/, U16 /*material_idx_2*/);
 	virtual		dSpaceID	dSpace( )
 	{
 		return m_space;
@@ -167,22 +167,23 @@ private:
 	{
 		return m_collision_damage_info.ContactVelocity( );
 	}
-	virtual		void			 	HitDir(Fvector3& dir)const
+	virtual		void			 	HitDir(Fvector3& dir) const
 	{
 		return m_collision_damage_info.HitDir(dir);
 	}
-	virtual		const Fvector3& HitPos( )const
+	virtual		const Fvector3& HitPos( ) const
 	{
 		return m_collision_damage_info.HitPos( );
 	}
-	virtual		u16				 	DamageInitiatorID( )const;
-	virtual		CObject* DamageInitiator( )const;
-	virtual		ALife::EHitType	 	HitType( )const;
-	virtual SCollisionHitCallback* HitCallback( )const;
+	virtual		U16				 	DamageInitiatorID( ) const;
+	virtual		CObject* DamageInitiator( ) const;
+	virtual		ALife::EHitType	 	HitType( ) const;
+	virtual SCollisionHitCallback* HitCallback( ) const;
 	virtual		void				Reinit( )
 	{
 		m_collision_damage_info.Reinit( );
-	};
+	}
+
 public:
 	//Creating
 	virtual		void		Create(dVector3 sizes);
@@ -208,13 +209,13 @@ public:
 	virtual		Fvector3		GetAcceleration( )
 	{
 		return m_acceleration;
-	};
+	}
 	virtual     void		SetCamDir(const Fvector3& cam_dir);
 	virtual	const Fvector3& CamDir( )const
 	{
 		return m_cam_dir;
 	}
-	virtual		void		SetMaterial(u16 material);
+	virtual		void		SetMaterial(U16 material);
 	virtual		void		SetPosition(Fvector3 pos);
 	virtual		void		GetVelocity(Fvector3& vvel);
 	virtual		void		GetSmothedVelocity(Fvector3& vvel);
@@ -237,7 +238,7 @@ public:
 	virtual		float		FootRadius( );
 	virtual		void		DeathPosition(Fvector3& deathPos);
 	virtual		void		IPosition(Fvector3& pos);
-	virtual		u16			ContactBone( );
+	virtual		U16			ContactBone( );
 	virtual		void		ApplyImpulse(const Fvector3& dir, const dReal P);
 	virtual		void		ApplyForce(const Fvector3& force);
 	virtual		void		ApplyForce(const Fvector3& dir, float force);
@@ -284,17 +285,19 @@ public:
 	virtual		void		ValidateWalkOn( );
 	bool		ValidateWalkOnMesh( );
 	bool		ValidateWalkOnObject( );
+
 private:
 	void		CheckCaptureJoint( );
 	void		ApplyAcceleration( );
 
-	u16			RetriveContactBone( );
+	U16			RetriveContactBone( );
 	void		SafeAndLimitVelocity( );
 	void		UpdateStaticDamage(dContact* c, SGameMtl* tri_material, bool bo1);
-	void		UpdateDynamicDamage(dContact* c, u16 obj_material_idx, dBodyID b, bool bo1);
+	void		UpdateDynamicDamage(dContact* c, U16 obj_material_idx, dBodyID b, bool bo1);
 	inline	void 		FootProcess(dContact* c, bool& do_collide, bool bo);
-	inline	void		foot_material_update(u16	tri_material, u16	foot_material_idx);
+	inline	void		foot_material_update(U16	tri_material, U16	foot_material_idx);
 	static void	TestPathCallback(bool& do_colide, bool bo1, dContact& c, SGameMtl* /*material_1*/, SGameMtl* /*material_2*/);
+
 public:
 #ifdef DEBUG
 	virtual		void		OnRender( );

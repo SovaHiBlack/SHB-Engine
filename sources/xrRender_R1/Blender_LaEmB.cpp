@@ -32,7 +32,7 @@ void	CBlender_LaEmB::Save(	IWriter& fs )
 	xrPWRITE_PROP	(fs,"Constant",			xrPID_CONSTANT,	oT2_const);
 }
 
-void	CBlender_LaEmB::Load(	IReader& fs, u16 version )
+void	CBlender_LaEmB::Load(	IReader& fs, U16 version )
 {
 	IBlender::Load	(fs,version);
 	xrPREAD_MARKER	(fs);

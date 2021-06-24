@@ -29,13 +29,13 @@ struct physicsBone
 	CPhysicsElement* element;
 	physicsBone()
 	{
-		joint=NULL;
-		element=NULL;
+		joint=nullptr;
+		element=nullptr;
 	}
 };
 
-//DEFINE_MAP	(u16,	physicsBone,	BONE_P_MAP,	BONE_P_PAIR_IT);
-using BONE_P_MAP = xr_map<u16, physicsBone>;
+//DEFINE_MAP	(U16,	physicsBone,	BONE_P_MAP,	BONE_P_PAIR_IT);
+using BONE_P_MAP = xr_map<U16, physicsBone>;
 using BONE_P_PAIR_IT = BONE_P_MAP::iterator;
 typedef const  BONE_P_MAP :: iterator			BONE_P_PAIR_CIT;
 
@@ -94,7 +94,7 @@ public:
 	virtual		void			set_ApplyByGravity						(bool flag)																												= 0;
 	virtual		bool			get_ApplyByGravity						()																														= 0;
 
-	virtual		void			SetMaterial								(u16 m)																													= 0;
+	virtual		void			SetMaterial								(U16 m)																													= 0;
 	virtual		void			SetMaterial								(const char* m)																												= 0;
 	virtual		void			set_DisableParams						(const SAllDDOParams& params)																							= 0;
 	virtual		void			SetTransform							(const Fmatrix& m0)																										= 0;
@@ -103,11 +103,10 @@ public:
 
 // ABSTRACT:
 // Element is fully Rigid and consists of one or more forms, such as sphere, box, cylinder, etc.
-class	CPhysicsElement		: public CPhysicsBase
+class CPhysicsElement		: public CPhysicsBase
 {
-
 public:
-				u16								m_SelfID																						;
+				U16								m_SelfID																						;
 	virtual		CPhysicsShell					*PhysicsShell							()																													= 0;		
 	virtual		void							set_ContactCallback						(ContactCallbackFun	*callback)																						= 0;
 	virtual		CPHShellHolder*PhysicsRefObject						()																													= 0;
@@ -127,13 +126,13 @@ public:
 	virtual		void							setMassMC								(float M,const Fvector3& mass_center)																				= 0;
 	virtual		void							applyImpulseVsMC						(const Fvector3& pos,const Fvector3& dir, float val)																	= 0;
 	virtual		void							applyImpulseVsGF						(const Fvector3& pos,const Fvector3& dir, float val)																	= 0;
-	virtual		void							applyImpulseTrace						(const Fvector3& pos, const Fvector3& dir, float val,const u16 id)													= 0;
+	virtual		void							applyImpulseTrace						(const Fvector3& pos, const Fvector3& dir, float val,const U16 id)													= 0;
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	virtual		void							setDensityMC							(float M,const Fvector3& mass_center)																				= 0;
-	virtual		u16								setGeomFracturable						(CPHFracture &fracture)																								= 0;
-	virtual		CPHFracture						&Fracture								(u16 num)																											= 0;
+	virtual		U16								setGeomFracturable						(CPHFracture &fracture)																								= 0;
+	virtual		CPHFracture						&Fracture								(U16 num)																											= 0;
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	virtual		u16								numberOfGeoms							()																													= 0;
+	virtual		U16								numberOfGeoms							()																													= 0;
 	virtual				dBodyID					get_body								()																													= 0;
 	virtual		const	Fvector3&				mass_Center							()																													= 0;
 	virtual		const	Fvector3&				local_mass_Center						()																													= 0;
@@ -178,11 +177,11 @@ public:
 				enumType				eType																										;          //type of the joint
 public:
 	virtual		~CPhysicsJoint										()																				{};
-	virtual		u16					 	BoneID						()																				=0;
-	virtual		void					SetBoneID					(u16 bone_id)																	=0;
+	virtual		U16					 	BoneID						()																				=0;
+	virtual		void					SetBoneID					(U16 bone_id)																	=0;
 	virtual		CPhysicsElement*		PFirst_element				()																				=0;
 	virtual		CPhysicsElement*		PSecond_element				()																				=0;
-	virtual		u16						GetAxesNumber				()																				=0;
+	virtual		U16						GetAxesNumber				()																				=0;
 	virtual		void 					Activate					()																				=0;
 	virtual		void 					Create						()																				=0;
 	virtual		void 					RunSimulation				()																				=0;
@@ -266,8 +265,8 @@ inline					CKinematics					*PKinematics								()																{return m_pKine
 	virtual			void						UnblockBreaking								()																							= 0;
 	virtual			bool						IsBreakingBlocked							()																							= 0;
 	virtual			void						applyImpulseTrace							(const Fvector3& pos, const Fvector3& dir, float val)											= 0;
-	virtual			void						applyImpulseTrace							(const Fvector3& pos, const Fvector3& dir, float val,const u16 id)							= 0;
-	virtual			void						applyHit									(const Fvector3& pos, const Fvector3& dir, float val,const u16 id,ALife::EHitType hit_type)	= 0;
+	virtual			void						applyImpulseTrace							(const Fvector3& pos, const Fvector3& dir, float val,const U16 id)							= 0;
+	virtual			void						applyHit									(const Fvector3& pos, const Fvector3& dir, float val,const U16 id,ALife::EHitType hit_type)	= 0;
 	virtual			BoneCallbackFun*			GetBonesCallback							()																							= 0;
 	virtual			BoneCallbackFun*			GetStaticObjectBonesCallback				()																							= 0;
 	virtual			void						Update										()																							= 0;
@@ -277,18 +276,18 @@ inline					CKinematics					*PKinematics								()																{return m_pKine
 	virtual			void						setEquelInertiaForEls						(const dMass& M)																			= 0;
 	virtual			void						addEquelInertiaToEls						(const dMass& M)																			= 0;
 	virtual			ELEMENT_STORAGE				&Elements									()																							= 0;
-	virtual			CPhysicsElement				*get_Element								(u16 bone_id)																				= 0;
+	virtual			CPhysicsElement				*get_Element								(U16 bone_id)																				= 0;
 	virtual			CPhysicsElement				*get_Element								(const shared_str & bone_name)																= 0;
 	virtual			CPhysicsElement				*get_Element								(const char* bone_name)																			= 0;
-	virtual			CPhysicsElement				*get_ElementByStoreOrder					(u16 num)																					= 0;
-	virtual			u16							get_ElementsNumber							()																							= 0;
-	virtual			CPHSynchronize				*get_ElementSync							(u16 element)																				= 0;
-	virtual			CPhysicsJoint				*get_Joint									(u16 bone_id)																				= 0;
+	virtual			CPhysicsElement				*get_ElementByStoreOrder					(U16 num)																					= 0;
+	virtual			U16							get_ElementsNumber							()																							= 0;
+	virtual			CPHSynchronize				*get_ElementSync							(U16 element)																				= 0;
+	virtual			CPhysicsJoint				*get_Joint									(U16 bone_id)																				= 0;
 	virtual			CPhysicsJoint				*get_Joint									(const shared_str & bone_name)																= 0;
 	virtual			CPhysicsJoint				*get_Joint									(const char* bone_name)																			= 0;
-	virtual			CPhysicsJoint				*get_JointByStoreOrder						(u16 num)																					= 0;
-	virtual			u16							get_JointsNumber							()																							= 0;
-	virtual			CCodeGeom*					get_GeomByID								(u16 bone_id)																				= 0;
+	virtual			CPhysicsJoint				*get_JointByStoreOrder						(U16 num)																					= 0;
+	virtual			U16							get_JointsNumber							()																							= 0;
+	virtual			CCodeGeom*					get_GeomByID								(U16 bone_id)																				= 0;
 	virtual			void						Freeze										()																							= 0;
 	virtual			void						UnFreeze									()																							= 0;
 	virtual			void						NetInterpolationModeON						()																							= 0;
@@ -306,12 +305,12 @@ inline					CKinematics					*PKinematics								()																{return m_pKine
 	virtual			void						preBuild_FromKinematics						(CKinematics* K,BONE_P_MAP* p_geting_map=NULL)												= 0;
 	virtual			void						Build										(bool disable=false)																		= 0;
 	virtual			void						SetMaxAABBRadius							(float size)																				 {};
-	virtual			void						AddTracedGeom								(u16 element=0,u16 geom=0)																	= 0;
+	virtual			void						AddTracedGeom								(U16 element=0, U16 geom=0)																	= 0;
 	virtual			void						SetAllGeomTraced							()																							= 0;
 	virtual			void						RunSimulation								(bool place_current_forms=true)																= 0;
 	virtual			void						UpdateRoot									()																							= 0;
 	virtual			void            		    ZeroCallbacks								()																							= 0;
-	virtual			void						ResetCallbacks								(u16 id,Flags64 &mask)																		= 0;
+	virtual			void						ResetCallbacks								(U16 id,Flags64 &mask)																		= 0;
 	virtual			void						SetCallbacks								(BoneCallbackFun* callback)																	= 0;
 	virtual			void						EnabledCallbacks							(BOOL val)																					= 0;
 	virtual			void						ToAnimBonesPositions						()																							= 0;

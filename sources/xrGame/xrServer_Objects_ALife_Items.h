@@ -83,7 +83,7 @@ SERVER_ENTITY_DECLARE_BEGIN2(CSE_ALifeItem,CSE_ALifeDynamicObjectVisual,CSE_ALif
 	virtual CSE_Abstract			*cast_abstract			() {return this;};
 	virtual CSE_ALifeInventoryItem	*cast_inventory_item	() {return this;};
 	virtual BOOL					Net_Relevant			();
-	virtual void					OnEvent					(CNetPacket &tNetPacket, u16 type, u32 time, ClientID sender );
+	virtual void					OnEvent					(CNetPacket &tNetPacket, U16 type, u32 time, ClientID sender );
 SERVER_ENTITY_DECLARE_END
 add_to_type_list(CSE_ALifeItem)
 #define script_type_list save_type_list(CSE_ALifeItem)
@@ -107,8 +107,8 @@ add_to_type_list(CSE_ALifeItemTorch)
 #define script_type_list save_type_list(CSE_ALifeItemTorch)
 
 SERVER_ENTITY_DECLARE_BEGIN(CSE_ALifeItemAmmo,CSE_ALifeItem)
-	u16								a_elapsed;
-	u16								m_boxSize;
+U16								a_elapsed;
+U16								m_boxSize;
 
 									CSE_ALifeItemAmmo	(const char* caSection);
 	virtual							~CSE_ALifeItemAmmo	();
@@ -144,8 +144,8 @@ SERVER_ENTITY_DECLARE_BEGIN(CSE_ALifeItemWeapon,CSE_ALifeItem)
 	U8								wpn_flags;
 	U8								wpn_state;
 	U8								ammo_type;
-	u16								a_current;
-	u16								a_elapsed;
+	U16								a_current;
+	U16								a_elapsed;
 	float							m_fHitPower;
 	ALife::EHitType					m_tHitType;
 	const char* m_caAmmoSections;
@@ -157,13 +157,13 @@ SERVER_ENTITY_DECLARE_BEGIN(CSE_ALifeItemWeapon,CSE_ALifeItem)
 
 									CSE_ALifeItemWeapon	(const char* caSection);
 	virtual							~CSE_ALifeItemWeapon();
-	virtual void					OnEvent				(CNetPacket& P, u16 type, u32 time, ClientID sender );
+	virtual void					OnEvent				(CNetPacket& P, U16 type, u32 time, ClientID sender );
 	virtual u32						ef_main_weapon_type	() const;
 	virtual u32						ef_weapon_type		() const;
 	U8								get_slot			();
-	u16								get_ammo_total		();
-	u16								get_ammo_elapsed	();
-	u16								get_ammo_magsize	();
+	U16								get_ammo_total		();
+	U16								get_ammo_elapsed	();
+	U16								get_ammo_magsize	();
 
 	virtual BOOL					Net_Relevant		();
 
@@ -223,7 +223,7 @@ add_to_type_list(CSE_ALifeItemArtefact)
 #define script_type_list save_type_list(CSE_ALifeItemArtefact)
 
 SERVER_ENTITY_DECLARE_BEGIN(CSE_ALifeItemPDA,CSE_ALifeItem)
-	u16								m_original_owner;
+U16								m_original_owner;
 	shared_str						m_specific_character;
 	shared_str						m_info_portion;
 

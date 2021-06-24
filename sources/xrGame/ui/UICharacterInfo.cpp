@@ -23,7 +23,7 @@
 
 using namespace InventoryUtilities;
 
-CSE_ALifeTraderAbstract* ch_info_get_from_id(u16 id)
+CSE_ALifeTraderAbstract* ch_info_get_from_id(U16 id)
 {
 	if (ai( ).get_alife( ) && ai( ).get_game_graph( ))
 	{
@@ -35,7 +35,7 @@ CSE_ALifeTraderAbstract* ch_info_get_from_id(u16 id)
 	}
 }
 
-CUICharacterInfo::CUICharacterInfo( ) : m_ownerID(u16(-1)), pUIBio(nullptr)
+CUICharacterInfo::CUICharacterInfo( ) : m_ownerID(U16(-1)), pUIBio(nullptr)
 {
 	ZeroMemory(m_icons, sizeof(m_icons));
 	m_bForceUpdate = false;
@@ -160,7 +160,7 @@ void CUICharacterInfo::Init(float x, float y, float width, float height, const c
 	Init(x, y, width, height, &uiXml);
 }
 
-void CUICharacterInfo::InitCharacter(u16 id)
+void CUICharacterInfo::InitCharacter(U16 id)
 {
 	m_ownerID = id;
 
@@ -312,7 +312,7 @@ void CUICharacterInfo::Update( )
 		CSE_ALifeTraderAbstract* T = ch_info_get_from_id(m_ownerID);
 		if (NULL == T)
 		{
-			m_ownerID = u16(-1);
+			m_ownerID = U16(-1);
 			return;
 		}
 		else

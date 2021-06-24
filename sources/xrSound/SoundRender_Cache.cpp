@@ -50,7 +50,7 @@ BOOL	CSoundRender_Cache::request		(cache_cat& cat, u32 id)
 	// 1. check if cached version available
 	id				%= cat.size;
 //.	R_ASSERT		(id<cat.size);
-	u16&	cptr	= cat.table[id];
+	U16&	cptr	= cat.table[id];
 	if (CAT_FREE != cptr)	{
 		// cache line exists - change it's priority and return
 		_stat_hit		++;
@@ -118,7 +118,7 @@ void	CSoundRender_Cache::format		()
 		L->next				= ((_count-1) == it)	? NULL : c_storage+it+1;
 		L->data				= data + it*_line;
 		L->loopback			= NULL;
-		L->id				= u16	(it);
+		L->id				= U16(it);
 	}
 
 	// start-end
@@ -149,7 +149,7 @@ void	CSoundRender_Cache::cat_create	(cache_cat& cat, u32 bytes)
 	cat.size			=	bytes / _line;
 	if	(bytes%_line)	cat.size += 1;
 	u32 allocsize		=	(cat.size&1)?cat.size+1:cat.size;
-	cat.table			=	xr_alloc<u16>(allocsize);
+	cat.table			=	xr_alloc<U16>(allocsize);
 	Memory.mem_fill32	(cat.table,0xffffffff,allocsize/2);
 }
 

@@ -193,7 +193,7 @@ void CSoundRender_Core::set_geometry_env(IReader* I)
 	if (0==s_environment)	return;
 
 	// Assosiate names
-	xr_vector<u16>			ids;
+	xr_vector<U16>			ids;
 	IReader*				names	= I->open_chunk(0);
 	while (!names->eof())
 	{
@@ -201,7 +201,7 @@ void CSoundRender_Core::set_geometry_env(IReader* I)
 		names->r_stringZ	(n,sizeof(n));
 		int id				= s_environment->GetID(n);
 		R_ASSERT			(id>=0);
-		ids.push_back		(u16(id));
+		ids.push_back		(U16(id));
 	}
 	names->close		();
 
@@ -221,10 +221,10 @@ void CSoundRender_Core::set_geometry_env(IReader* I)
 	for (u32 it=0; it<H.facecount; it++)
 	{
 		CDB::TRI*	T	= tris+it;
-		u16		id_front= (u16)((T->dummy&0x0000ffff)>>0);		//	front face
-		u16		id_back	= (u16)((T->dummy&0xffff0000)>>16);		//	back face
-		R_ASSERT		(id_front<(u16)ids.size());
-		R_ASSERT		(id_back<(u16)ids.size());
+		U16		id_front= (U16)((T->dummy&0x0000ffff)>>0);		//	front face
+		U16		id_back	= (U16)((T->dummy&0xffff0000)>>16);		//	back face
+		R_ASSERT		(id_front<(U16)ids.size());
+		R_ASSERT		(id_back<(U16)ids.size());
 		T->dummy		= u32(ids[id_back]<<16) | u32(ids[id_front]);
 	}
 
@@ -360,10 +360,10 @@ CSoundRender_Environment*	CSoundRender_Core::get_environment			( const Fvector3&
 				tri_norm.mknormal		(V[T->verts[0]],V[T->verts[1]],V[T->verts[2]]);
 				float	dot				= dir.dotproduct(tri_norm);
 				if (dot<0){
-					u16		id_front	= (u16)((T->dummy&0x0000ffff)>>0);		//	front face
+					U16		id_front	= (U16)((T->dummy&0x0000ffff)>>0);		//	front face
 					return	s_environment->Get(id_front);
 				}else{
-					u16		id_back		= (u16)((T->dummy&0xffff0000)>>16);	//	back face
+					U16		id_back		= (U16)((T->dummy&0xffff0000)>>16);	//	back face
 					return	s_environment->Get(id_back);
 				}
 			}else{

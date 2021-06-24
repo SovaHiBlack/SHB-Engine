@@ -11,8 +11,8 @@ public:
 
 	virtual void Load(const char* section);
 
-	void AttachRocket(u16 rocket_id, CGameObject* parent_rocket_launcher);
-	void DetachRocket(u16 rocket_id, bool bLaunch);
+	void AttachRocket(U16 rocket_id, CGameObject* parent_rocket_launcher);
+	void DetachRocket(U16 rocket_id, bool bLaunch);
 
 	void SpawnRocket(const char* rocket_section, CGameObject* parent_rocket_launcher);
 	void LaunchRocket(const Fmatrix& xform, const Fvector3& vel, const Fvector3& angular_vel);

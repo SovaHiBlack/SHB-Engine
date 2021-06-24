@@ -11,7 +11,7 @@ enum EPropType{
 	PROP_SHORTCUT,
 	PROP_BUTTON,
 	PROP_CHOOSE,
-	PROP_NUMERIC,	// {U8,u16,u32,S8,S16,int,float}
+	PROP_NUMERIC,	// {U8,U16,u32,S8,S16,int,float}
 	PROP_BOOLEAN,
 	PROP_FLAG,
 	PROP_VECTOR, 
@@ -495,7 +495,7 @@ inline xr_string draw_sprintf(xr_string& s, const Fvector3& V, int dec)
 }
 //------------------------------------------------------------------------------
 typedef NumericValue<U8>	U8Value;
-typedef NumericValue<u16>	U16Value;
+typedef NumericValue<U16>	U16Value;
 typedef NumericValue<u32>	U32Value;
 typedef NumericValue<S8>	S8Value;
 typedef NumericValue<S16>	S16Value;
@@ -591,7 +591,7 @@ public:
 };
 //------------------------------------------------------------------------------
 typedef TokenValue<U8>	Token8Value;
-typedef TokenValue<u16>	Token16Value;
+typedef TokenValue<U16>	Token16Value;
 typedef TokenValue<u32>	Token32Value;
 //------------------------------------------------------------------------------
 
@@ -616,7 +616,7 @@ public:
 };
 //------------------------------------------------------------------------------
 typedef RTokenValue<U8>	RToken8Value;
-typedef RTokenValue<u16>RToken16Value;
+typedef RTokenValue<U16>RToken16Value;
 typedef RTokenValue<u32>RToken32Value;
 //------------------------------------------------------------------------------
 

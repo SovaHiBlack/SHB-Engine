@@ -45,7 +45,7 @@ SERVER_ENTITY_DECLARE_BEGIN0(CSE_ALifeTraderAbstract)
 	xr_string						m_character_name;
 
 	//для работы с relation system
-	u16								object_id				() const;
+	U16								object_id				() const;
 	CHARACTER_COMMUNITY_INDEX		Community				() const;
 	const char*						CommunityName			() const;
 	CHARACTER_RANK_VALUE			Rank					();
@@ -126,7 +126,7 @@ SERVER_ENTITY_DECLARE_BEGIN(CSE_ALifeAnomalousZone,CSE_ALifeCustomZone)
 	CSE_ALifeItemWeapon				*m_tpCurrentBestWeapon;
 	float							m_offline_interactive_radius;
 	u32								m_artefact_position_offset;
-	u16								m_artefact_spawn_count;
+	U16								m_artefact_spawn_count;
 
 									CSE_ALifeAnomalousZone	(const char* caSection);
 	virtual							~CSE_ALifeAnomalousZone	();
@@ -294,15 +294,15 @@ add_to_type_list(CSE_ALifeMonsterAbstract)
 
 SERVER_ENTITY_DECLARE_BEGIN3(CSE_ALifeCreatureActor,CSE_ALifeCreatureAbstract,CSE_ALifeTraderAbstract,CSE_PHSkeleton)
 	
-	u16								mstate;
+U16								mstate;
 Fvector3							accel;
 Fvector3							velocity;
 //	float							fArmor;
 	float							fRadiation;
 	U8								weapon;
 	///////////////////////////////////////////
-	u16								m_u16NumItems;
-	u16								m_holderID;
+	U16								m_u16NumItems;
+	U16								m_holderID;
 //	DEF_DEQUE		(PH_STATES, SPHNetState); 
 	SPHNetState						m_AliveState;
 //	PH_STATES						m_DeadStates;
@@ -361,7 +361,7 @@ SERVER_ENTITY_DECLARE_BEGIN(CSE_ALifeMonsterZombie,CSE_ALifeMonsterAbstract)
 	float							fMaxHomeRadius;
 	// attack
 	float							fHitPower;
-	u16								u16HitInterval;
+	U16								u16HitInterval;
 	float							fAttackDistance;
 	float							fAttackAngle;
 
@@ -372,7 +372,7 @@ add_to_type_list(CSE_ALifeMonsterZombie)
 #define script_type_list save_type_list(CSE_ALifeMonsterZombie)
 
 SERVER_ENTITY_DECLARE_BEGIN2(CSE_ALifeMonsterBase,CSE_ALifeMonsterAbstract,CSE_PHSkeleton)
-	u16								m_spec_object_id;
+U16								m_spec_object_id;
 
 									CSE_ALifeMonsterBase	(const char* caSection);				// constructor for variable initialization
 	virtual							~CSE_ALifeMonsterBase	();

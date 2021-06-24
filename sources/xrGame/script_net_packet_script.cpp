@@ -37,7 +37,7 @@ ClientID r_clientID(CNetPacket *self)
 	return clientID;
 }
 
-extern u16	script_server_object_version	();
+extern U16	script_server_object_version	();
 
 #pragma optimize("s",on)
 void CScriptNetPacket::script_register(lua_State *L)
@@ -94,7 +94,7 @@ void CScriptNetPacket::script_register(lua_State *L)
 			.def("r_u32",			(void (CNetPacket::*)(u32&	))(&CNetPacket::r_u32		))
 			.def("r_s32",			(void (CNetPacket::*)(int&	))(&CNetPacket::r_s32		))
 			.def("r_u24",			(void (CNetPacket::*)(u32&	))(&CNetPacket::r_u24		))
-			.def("r_u16",			(void (CNetPacket::*)(u16&	))(&CNetPacket::r_u16		))
+			.def("r_u16",			(void (CNetPacket::*)(U16&	))(&CNetPacket::r_u16		))
 			.def("r_s16",			(void (CNetPacket::*)(S16&	))(&CNetPacket::r_s16		))
 			.def("r_u8",			(void (CNetPacket::*)(U8&)	)(&CNetPacket::r_u8			))
 			.def("r_s8",			(void (CNetPacket::*)(S8&)	)(&CNetPacket::r_s8			))
@@ -105,7 +105,7 @@ void CScriptNetPacket::script_register(lua_State *L)
 			.def("r_u32",			(u32	(CNetPacket::*)()	)(&CNetPacket::r_u32		))
 			.def("r_s32",			(int	(CNetPacket::*)()	)(&CNetPacket::r_s32		))
 			.def("r_u24",			(u32	(CNetPacket::*)()	)(&CNetPacket::r_u24		))
-			.def("r_u16",			(u16	(CNetPacket::*)()	)(&CNetPacket::r_u16		))
+			.def("r_u16",			(U16(CNetPacket::*)()	)(&CNetPacket::r_u16		))
 			.def("r_s16",			(S16(CNetPacket::*)()	)(&CNetPacket::r_s16		))
 			.def("r_u8",			(U8(CNetPacket::*)()	)(&CNetPacket::r_u8			))
 			.def("r_s8",			(S8(CNetPacket::*)()	)(&CNetPacket::r_s8			))

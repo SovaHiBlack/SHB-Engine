@@ -154,7 +154,7 @@ void CUIEventsWnd::ReloadList(bool bClearOnly)
 
 		CUITaskItem* pTaskItem = nullptr;
 
-		for (u16 i = 0; i < task->m_Objectives.size( ); ++i)
+		for (U16 i = 0; i < task->m_Objectives.size( ); ++i)
 		{
 			if (i == 0)
 			{

@@ -32,7 +32,7 @@ void CServer::Perform_destroy	(CSE_Abstract* object, u32 mode)
 	}
 
 //	Msg						("SLS-CLEAR : DESTROY [%s][%s]",object->name(),object->name_replace());
-	u16						object_id = object->ID;
+	U16						object_id = object->ID;
 	entity_Destroy			(object);
 
 #ifdef DEBUG

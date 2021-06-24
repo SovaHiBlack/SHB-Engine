@@ -30,7 +30,7 @@ void	CBlender_Tree::Save		(IWriter& fs )
 	xrPWRITE_PROP		(fs,"Object LOD",	xrPID_BOOL,		oNotAnTree);
 }
 
-void	CBlender_Tree::Load		(IReader& fs, u16 version )
+void	CBlender_Tree::Load		(IReader& fs, U16 version )
 {
 	IBlender::Load		(fs,version);
 	xrPREAD_PROP		(fs,xrPID_BOOL,		oBlend);

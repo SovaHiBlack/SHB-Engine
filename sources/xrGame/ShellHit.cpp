@@ -11,9 +11,9 @@
 //#include "PHElement.h"
 #include "PHShell.h"
 
-void CPHShell::applyHit(const Fvector3& pos, const Fvector3& dir, float val, const u16 id, ALife::EHitType hit_type)
+void CPHShell::applyHit(const Fvector3& pos, const Fvector3& dir, float val, const U16 id, ALife::EHitType hit_type)
 {
-	if (id == u16(-1))
+	if (id == U16(-1))
 	{
 		return;
 	}
@@ -38,7 +38,7 @@ void CPHShell::applyHit(const Fvector3& pos, const Fvector3& dir, float val, con
 	}
 }
 
-void CPHShell::ExplosionHit(const Fvector3& pos, const Fvector3& dir, float val, const u16 id)
+void CPHShell::ExplosionHit(const Fvector3& pos, const Fvector3& dir, float val, const U16 id)
 {
 	if (!isActive( ))
 	{
@@ -51,9 +51,9 @@ void CPHShell::ExplosionHit(const Fvector3& pos, const Fvector3& dir, float val,
 	for (; i != e; i++)
 	{
 		CPHElement* element = (*i);
-		u16 gn = element->CPHGeometryOwner::numberOfGeoms( );
+		U16 gn = element->CPHGeometryOwner::numberOfGeoms( );
 		float g_impulse = impulse / gn;
-		for (u16 j = 0; j < gn; ++j)
+		for (U16 j = 0; j < gn; ++j)
 		{
 			Fvector3 r_dir;
 			Fvector3 r_pos;

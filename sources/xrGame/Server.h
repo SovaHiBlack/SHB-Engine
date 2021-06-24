@@ -15,7 +15,7 @@ class CSE_Abstract;
 const u32	NET_Latency = 50;		// time in (ms)
 
 // t-defs
-typedef xr_map<u16, CSE_Abstract*>	xrS_entities;
+typedef xr_map<U16, CSE_Abstract*>	xrS_entities;
 
 class xrClientData : public IClient
 {
@@ -48,7 +48,7 @@ public:
 struct	svs_respawn
 {
 	u32		timestamp;
-	u16		phantom;
+	U16		phantom;
 };
 
 inline bool operator < (const svs_respawn& A, const svs_respawn& B)
@@ -62,7 +62,7 @@ private:
 	xrS_entities				entities;
 	xr_multiset<svs_respawn>	q_respawn;
 
-	u16							m_iCurUpdatePacket;
+	U16							m_iCurUpdatePacket;
 	xr_vector<CNetPacket>		m_aUpdatePackets;
 
 	struct DelayedPacket
@@ -88,16 +88,15 @@ private:
 		CID_Generator<
 		u32,		// time identifier type
 		U8,			// compressed id type 
-		u16,		// id type
+		U16,		// id type
 		U8,			// block id type
-		u16,		// chunk id type
+		U16,		// chunk id type
 		0,			// min value
-		u16(-2),	// max value
+		U16(-2),	// max value
 		256,		// block size
-		u16(-1)		// invalid id
+		U16(-1)		// invalid id
 		> id_generator_type;
 
-private:
 	id_generator_type		m_tID_Generator;
 
 protected:
@@ -115,11 +114,11 @@ public:
 	{
 		m_tID_Generator = id_generator_type( );
 	}
-	inline u16				PerformIDgen(u16 ID)
+	inline U16				PerformIDgen(U16 ID)
 	{
 		return				(m_tID_Generator.tfGetID(ID));
 	}
-	inline void				FreeID(u16 ID, u32 time)
+	inline void				FreeID(U16 ID, u32 time)
 	{
 		return				(m_tID_Generator.vfFreeID(ID, time));
 	}
@@ -133,9 +132,9 @@ public:
 	void					Process_update(CNetPacket& P, ClientID sender);
 	void					Process_save(CNetPacket& P, ClientID sender);
 	void					Process_event(CNetPacket& P, ClientID sender);
-	void					Process_event_ownership(CNetPacket& P, ClientID sender, u32 time, u16 ID, BOOL bForced = FALSE);
-	bool					Process_event_reject(CNetPacket& P, const ClientID sender, const u32 time, const u16 id_parent, const u16 id_entity, bool send_message = true);
-	void					Process_event_destroy(CNetPacket& P, ClientID sender, u32 time, u16 ID, CNetPacket* pEPack);
+	void					Process_event_ownership(CNetPacket& P, ClientID sender, u32 time, U16 ID, BOOL bForced = FALSE);
+	bool					Process_event_reject(CNetPacket& P, const ClientID sender, const u32 time, const U16 id_parent, const U16 id_entity, bool send_message = true);
+	void					Process_event_destroy(CNetPacket& P, ClientID sender, u32 time, U16 ID, CNetPacket* pEPack);
 
 	xrClientData*			SelectBestClientToMigrateTo(CSE_Abstract* E, BOOL bForceAnother = FALSE);
 	void					SendConnectResult(IClient* CL, U8 res, U8 res1, char* ResultStr);
@@ -203,7 +202,7 @@ public:
 	{
 		return (xrClientData*) (IPureServer::ID_to_client(ID, ScanAll));
 	}
-	CSE_Abstract*			ID_to_entity(u16 ID);
+	CSE_Abstract*			ID_to_entity(U16 ID);
 
 	// main
 	virtual EConnect		Connect(shared_str& session_name);
@@ -219,8 +218,7 @@ public:
 
 	virtual void			GetServerInfo(CServerInfo* si);
 
-public:
-	xr_string				ent_name_safe(u16 eid);
+	xr_string				ent_name_safe(U16 eid);
 
 #ifdef DEBUG
 	bool					verify_entities( ) const;

@@ -58,7 +58,7 @@ void	CBlender_Screen_SET::Save	( IWriter& fs	)
 	xrPWRITE_PROP		(fs,"Fog",			xrPID_BOOL,		oFog);
 }
 
-void	CBlender_Screen_SET::Load	( IReader& fs, u16 version)
+void	CBlender_Screen_SET::Load	( IReader& fs, U16 version)
 {
 	IBlender::Load		(fs,version);
 

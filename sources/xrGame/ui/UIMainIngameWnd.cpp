@@ -1442,7 +1442,7 @@ void CUIMainIngameWnd::draw_adjust_mode( )
 			V->CalculateBones( );
 
 			// fire point&direction
-			Fmatrix& fire_mat = V->LL_GetTransform(u16(pWpnHud->FireBone( )));
+			Fmatrix& fire_mat = V->LL_GetTransform(U16(pWpnHud->FireBone( )));
 			Fmatrix& parent = pWpnHud->Transform( );
 
 			const Fvector3& fp = pWpnHud->FirePoint( );

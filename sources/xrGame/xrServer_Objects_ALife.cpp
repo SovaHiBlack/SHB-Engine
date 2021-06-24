@@ -57,7 +57,7 @@ CSE_ALifeGraphPoint::CSE_ALifeGraphPoint	(const char* caSection) : CSE_Abstract(
 CSE_ALifeGraphPoint::~CSE_ALifeGraphPoint	()
 { }
 
-void CSE_ALifeGraphPoint::STATE_Read		(CNetPacket	&tNetPacket, u16 size)
+void CSE_ALifeGraphPoint::STATE_Read		(CNetPacket	&tNetPacket, U16 size)
 {
 	tNetPacket.r_stringZ		(m_caConnectionPointName);
 	if (m_wVersion < 33)
@@ -156,7 +156,7 @@ void CSE_ALifeObject::STATE_Write			(CNetPacket &tNetPacket)
 	tNetPacket.w				(&m_spawn_story_id,sizeof(m_spawn_story_id));
 }
 
-void CSE_ALifeObject::STATE_Read			(CNetPacket &tNetPacket, u16 size)
+void CSE_ALifeObject::STATE_Read			(CNetPacket &tNetPacket, U16 size)
 {
 	if (m_wVersion >= 1) {
 		if (m_wVersion > 24) {
@@ -176,7 +176,7 @@ void CSE_ALifeObject::STATE_Read			(CNetPacket &tNetPacket, u16 size)
 			tNetPacket.r_u32	();
 		}
 		if (m_wVersion < 4) {
-			u16					wDummy;
+			U16					wDummy;
 			tNetPacket.r_u16	(wDummy);
 		}
 		tNetPacket.r			(&m_tGraphID,	sizeof(m_tGraphID));
@@ -331,9 +331,9 @@ CSE_ALifeGroupAbstract::~CSE_ALifeGroupAbstract()
 {
 }
 
-void CSE_ALifeGroupAbstract::STATE_Read		(CNetPacket	&tNetPacket, u16 size)
+void CSE_ALifeGroupAbstract::STATE_Read		(CNetPacket	&tNetPacket, U16 size)
 {
-	u16 m_wVersion = base()->m_wVersion;
+	U16 m_wVersion = base()->m_wVersion;
 	u32							dwDummy;
 	tNetPacket.r_u32			(dwDummy);
 	m_bCreateSpawnPositions		= !!dwDummy;
@@ -385,7 +385,7 @@ void CSE_ALifeDynamicObject::STATE_Write	(CNetPacket &tNetPacket)
 	inherited::STATE_Write		(tNetPacket);
 }
 
-void CSE_ALifeDynamicObject::STATE_Read		(CNetPacket &tNetPacket, u16 size)
+void CSE_ALifeDynamicObject::STATE_Read		(CNetPacket &tNetPacket, U16 size)
 {
 	inherited::STATE_Read		(tNetPacket, size);
 }
@@ -429,7 +429,7 @@ void CSE_ALifeDynamicObjectVisual::STATE_Write(CNetPacket &tNetPacket)
 	visual_write				(tNetPacket);
 }
 
-void CSE_ALifeDynamicObjectVisual::STATE_Read(CNetPacket &tNetPacket, u16 size)
+void CSE_ALifeDynamicObjectVisual::STATE_Read(CNetPacket &tNetPacket, U16 size)
 {
 	inherited1::STATE_Read		(tNetPacket, size);
 	if (m_wVersion > 31)
@@ -462,17 +462,16 @@ CSE_ALifePHSkeletonObject::CSE_ALifePHSkeletonObject(const char* caSection) : CS
 }
 
 CSE_ALifePHSkeletonObject::~CSE_ALifePHSkeletonObject()
-{
-
-}
+{ }
 
 
-void CSE_ALifePHSkeletonObject::STATE_Read		(CNetPacket	&tNetPacket, u16 size)
+void CSE_ALifePHSkeletonObject::STATE_Read		(CNetPacket	&tNetPacket, U16 size)
 {
 	inherited1::STATE_Read(tNetPacket,size);
-	if (m_wVersion>=64)
-		inherited2::STATE_Read(tNetPacket,size);
-
+	if (m_wVersion >= 64)
+	{
+		inherited2::STATE_Read(tNetPacket, size);
+	}
 }
 
 void CSE_ALifePHSkeletonObject::STATE_Write		(CNetPacket	&tNetPacket)
@@ -546,7 +545,7 @@ ISE_Shape* CSE_ALifeSpaceRestrictor::shape		()
 	return						(this);
 }
 
-void CSE_ALifeSpaceRestrictor::STATE_Read		(CNetPacket	&tNetPacket, u16 size)
+void CSE_ALifeSpaceRestrictor::STATE_Read		(CNetPacket	&tNetPacket, U16 size)
 {
 	inherited1::STATE_Read		(tNetPacket,size);
 	cform_read					(tNetPacket);
@@ -601,7 +600,7 @@ CSE_ALifeLevelChanger::CSE_ALifeLevelChanger(const char* caSection) : CSE_ALifeS
 CSE_ALifeLevelChanger::~CSE_ALifeLevelChanger()
 { }
 
-void CSE_ALifeLevelChanger::STATE_Read		(CNetPacket	&tNetPacket, u16 size)
+void CSE_ALifeLevelChanger::STATE_Read		(CNetPacket	&tNetPacket, U16 size)
 {
 	inherited::STATE_Read		(tNetPacket,size);
 	if (m_wVersion < 34) {
@@ -680,7 +679,7 @@ CSE_ALifeObjectPhysic::~CSE_ALifeObjectPhysic		()
 {
 }
 
-void CSE_ALifeObjectPhysic::STATE_Read		(CNetPacket	&tNetPacket, u16 size) 
+void CSE_ALifeObjectPhysic::STATE_Read		(CNetPacket	&tNetPacket, U16 size)
 {
 	if (m_wVersion >= 14)
 		if (m_wVersion >= 16) {
@@ -809,7 +808,7 @@ CSE_ALifeObjectHangingLamp::~CSE_ALifeObjectHangingLamp()
 {
 }
 
-void CSE_ALifeObjectHangingLamp::STATE_Read	(CNetPacket	&tNetPacket, u16 size)
+void CSE_ALifeObjectHangingLamp::STATE_Read	(CNetPacket	&tNetPacket, U16 size)
 {
 	if (m_wVersion > 20)
 		inherited1::STATE_Read	(tNetPacket,size);
@@ -1040,7 +1039,7 @@ CSE_ALifeObjectProjector::~CSE_ALifeObjectProjector()
 {
 }
 
-void CSE_ALifeObjectProjector::STATE_Read	(CNetPacket	&tNetPacket, u16 size)
+void CSE_ALifeObjectProjector::STATE_Read	(CNetPacket	&tNetPacket, U16 size)
 {
 	inherited::STATE_Read	(tNetPacket,size);
 }
@@ -1143,7 +1142,7 @@ CSE_Motion* CSE_ALifeHelicopter::motion		()
 	return						(this);
 }
 
-void CSE_ALifeHelicopter::STATE_Read		(CNetPacket	&tNetPacket, u16 size)
+void CSE_ALifeHelicopter::STATE_Read		(CNetPacket	&tNetPacket, U16 size)
 {
 	inherited1::STATE_Read		(tNetPacket,size);
     CSE_Motion::motion_read		(tNetPacket);
@@ -1217,7 +1216,7 @@ CSE_ALifeCar::~CSE_ALifeCar				()
 {
 }
 
-void CSE_ALifeCar::STATE_Read			(CNetPacket	&tNetPacket, u16 size)
+void CSE_ALifeCar::STATE_Read			(CNetPacket	&tNetPacket, U16 size)
 {
 	inherited1::STATE_Read		(tNetPacket,size);
 
@@ -1275,22 +1274,24 @@ void CSE_ALifeCar::data_load(CNetPacket	&tNetPacket)
 	tNetPacket.r_vec3(o_Position);
 	tNetPacket.r_vec3(o_Angle);
 	door_states.clear();
-	u16 doors_number=tNetPacket.r_u16();
-	for(u16 i=0;i<doors_number;++i)
+	U16 doors_number=tNetPacket.r_u16();
+	for(U16 i=0;i<doors_number;++i)
 	{
 		SDoorState ds;ds.read(tNetPacket);
 		door_states.push_back(ds);
 	}
 
 	wheel_states.clear();
-	u16 wheels_number=tNetPacket.r_u16();
-	for(u16 i=0;i<wheels_number;++i)
+	U16 wheels_number=tNetPacket.r_u16();
+	for(U16 i=0;i<wheels_number;++i)
 	{
 		SWheelState ws;ws.read(tNetPacket);
 		wheel_states.push_back(ws);
 	}
+
 	health=tNetPacket.r_float();
 }
+
 void CSE_ALifeCar::data_save(CNetPacket &tNetPacket)
 {
 	//inherited1::data_save(tNetPacket);
@@ -1298,7 +1299,7 @@ void CSE_ALifeCar::data_save(CNetPacket &tNetPacket)
 	tNetPacket.w_vec3(o_Position);
 	tNetPacket.w_vec3(o_Angle);
 	{
-		tNetPacket.w_u16(u16(door_states.size()));
+		tNetPacket.w_u16(U16(door_states.size()));
 		xr_vector<SDoorState>::iterator i=door_states.begin(),e=door_states.end();
 		for(;e!=i;++i)
 		{
@@ -1307,7 +1308,7 @@ void CSE_ALifeCar::data_save(CNetPacket &tNetPacket)
 		//door_states.clear();
 	}
 	{
-		tNetPacket.w_u16(u16(wheel_states.size()));
+		tNetPacket.w_u16(U16(wheel_states.size()));
 		xr_vector<SWheelState>::iterator i=wheel_states.begin(),e=wheel_states.end();
 		for(;e!=i;++i)
 		{
@@ -1356,7 +1357,7 @@ CSE_ALifeObjectBreakable::~CSE_ALifeObjectBreakable	()
 {
 }
 
-void CSE_ALifeObjectBreakable::STATE_Read		(CNetPacket	&tNetPacket, u16 size)
+void CSE_ALifeObjectBreakable::STATE_Read		(CNetPacket	&tNetPacket, U16 size)
 {
 	inherited::STATE_Read		(tNetPacket,size);
 	tNetPacket.r_float			(m_health);
@@ -1413,7 +1414,7 @@ ISE_Shape* CSE_ALifeObjectClimable::shape					()
 	return						(this);
 }
 
-void CSE_ALifeObjectClimable::STATE_Read		(CNetPacket	&tNetPacket, u16 size)
+void CSE_ALifeObjectClimable::STATE_Read		(CNetPacket	&tNetPacket, U16 size)
 {
 	//inherited1::STATE_Read		(tNetPacket,size);
 	if(m_wVersion==99)
@@ -1469,7 +1470,7 @@ CSE_ALifeMountedWeapon::CSE_ALifeMountedWeapon	(const char* caSection) : CSE_ALi
 CSE_ALifeMountedWeapon::~CSE_ALifeMountedWeapon	()
 { }
 
-void CSE_ALifeMountedWeapon::STATE_Read			(CNetPacket	&tNetPacket, u16 size)
+void CSE_ALifeMountedWeapon::STATE_Read			(CNetPacket	&tNetPacket, U16 size)
 {
 	inherited::STATE_Read		(tNetPacket,size);
 }
@@ -1516,7 +1517,7 @@ void CSE_ALifeStationaryMgun::UPDATE_Write		(CNetPacket	&tNetPacket)
 }
 
 
-void CSE_ALifeStationaryMgun::STATE_Read			(CNetPacket	&tNetPacket, u16 size)
+void CSE_ALifeStationaryMgun::STATE_Read			(CNetPacket	&tNetPacket, U16 size)
 {
 	inherited::STATE_Read		(tNetPacket,size);
 }
@@ -1543,7 +1544,7 @@ CSE_ALifeTeamBaseZone::~CSE_ALifeTeamBaseZone()
 {
 }
 
-void CSE_ALifeTeamBaseZone::STATE_Read		(CNetPacket	&tNetPacket, u16 size)
+void CSE_ALifeTeamBaseZone::STATE_Read		(CNetPacket	&tNetPacket, U16 size)
 {
 	inherited::STATE_Read		(tNetPacket,size);
 	tNetPacket.r_u8				(m_team);
@@ -1600,7 +1601,7 @@ CSE_Abstract *CSE_ALifeSmartZone::init		()
 	return						(this);
 }
 
-void CSE_ALifeSmartZone::STATE_Read		(CNetPacket	&tNetPacket, u16 size)
+void CSE_ALifeSmartZone::STATE_Read		(CNetPacket	&tNetPacket, U16 size)
 {
 	inherited1::STATE_Read		(tNetPacket,size);
 }

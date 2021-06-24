@@ -24,7 +24,7 @@ void	CBlender_Screen_GRAY::Save	( IWriter& fs	)
 	IBlender::Save	(fs);
 }
 
-void	CBlender_Screen_GRAY::Load	( IReader& fs, u16 version	)
+void	CBlender_Screen_GRAY::Load	( IReader& fs, U16 version	)
 {
 	IBlender::Load	(fs,version);
 }

@@ -6,7 +6,7 @@
 #include "..\ENGINE\NetPacket.h"
 #include "..\ENGINE\bone.h"
 
-CWound::CWound(u16 bone_num)
+CWound::CWound(U16 bone_num)
 {
 	m_bToBeDestroy = false;
 

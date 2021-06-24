@@ -54,7 +54,7 @@
 	u32				index_count;
 
 	fvfVertexIn*	vertices;
-	u16*			indices;
+	U16*			indices;
 */
 
 #define DO_NO_WAVING	0x0001
@@ -66,13 +66,15 @@ struct DetailHeader
 	int		offs_x,	offs_z;
 	u32		size_x,	size_z;
 };
+
 struct DetailPalette
 {
-	u16		a0:4;
-	u16		a1:4;
-	u16		a2:4;
-	u16		a3:4;
+	U16		a0:4;
+	U16		a1:4;
+	U16		a2:4;
+	U16		a3:4;
 };
+
 struct DetailSlot					// was(4+4+3*4+2 = 22b), now(8+2*4=16b)
 {
 	u32				y_base	:	12;	// 11	// 1 unit = 20 cm, low = -200m, high = 4096*20cm - 200 = 619.2m

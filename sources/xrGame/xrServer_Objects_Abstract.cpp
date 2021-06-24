@@ -46,7 +46,7 @@ void CSE_Visual::set_visual	   	(const char* name, bool load)
 	visual_name					= tmp; 
 }
 
-void CSE_Visual::visual_read   	(CNetPacket &tNetPacket, u16 version)
+void CSE_Visual::visual_read   	(CNetPacket &tNetPacket, U16 version)
 {
 	tNetPacket.r_stringZ		(visual_name);
 	if (version>103)

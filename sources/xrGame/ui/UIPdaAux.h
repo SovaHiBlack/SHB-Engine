@@ -12,7 +12,7 @@ enum EPdaTabs
 	eptRanking,
 	eptActorStatistic,
 	eptEncyclopedia,
-	eptNoActiveTab		= u16(-1)
+	eptNoActiveTab		= U16(-1)
 };
 
 extern const char*		ALL_PDA_HEADER_PREFIX;

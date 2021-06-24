@@ -41,7 +41,7 @@ public:
 									CSE_Visual		(const char* name=0);
 	virtual							~CSE_Visual		();
 
-	void							visual_read		(CNetPacket& P, u16 version);
+	void							visual_read		(CNetPacket& P, U16 version);
 	void							visual_write	(CNetPacket& P);
 
     void							set_visual		(const char* name, bool load=true);

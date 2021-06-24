@@ -49,14 +49,14 @@ class CPHWorld : public pureFrame
 	CPHCommander				*m_commander;
 public:
 	xr_vector<ISpatial*>		r_spatial;
-public:
+
 	u64							m_steps_num													;
 	F64						m_frame_sum													;
 	dReal						m_previous_frame_time										;
 	bool						b_frame_mark												;
 	dReal						m_frame_time												;
 	float						m_update_time												;
-	u16							disable_count												;
+	U16							disable_count												;
 	float						m_gravity													;
 								CPHWorld						()							;
 	virtual						~CPHWorld						(){}						;
@@ -90,8 +90,8 @@ inline	float						FrameTime						(bool frame_mark){return b_frame_mark==frame_ma
 	bool 						IsFreezed						()							;
 inline	bool						Processing						()							{return b_processing;}
 	u32							CalcNumSteps					(u32 dTime)					;
-	u16							ObjectsNumber					()							;
-	u16							UpdateObjectsNumber				()							;
+	U16							ObjectsNumber					()							;
+	U16							UpdateObjectsNumber				()							;
 	void						NetRelcase						(CPhysicsShell* s)			;
 	void						AddCall							(CPHCondition*c,CPHAction*a);
 #ifdef DEBUG

@@ -32,7 +32,7 @@ void CServer::SLS_Default	()
 			P.B.count		= S->length();
 			S->r			(P.B.data,P.B.count);
 			
-			u16				ID;
+			U16				ID;
 			P.r_begin		(ID);
 			R_ASSERT		(M_SPAWN==ID);
 			ClientID clientID;clientID.set(0);
@@ -67,7 +67,7 @@ void CServer::SLS_Default	()
 	packet.w_begin			(M_SPAWN);
 	_actor->Spawn_Write		(packet,TRUE);
 
-	u16						id;
+	U16						id;
 	packet.r_begin			(id);
 	R_ASSERT				(id == M_SPAWN);
 	ClientID				clientID;

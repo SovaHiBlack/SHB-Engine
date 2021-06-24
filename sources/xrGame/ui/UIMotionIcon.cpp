@@ -144,7 +144,7 @@ void CUIMotionIcon::Update( )
 	}
 }
 
-void CUIMotionIcon::SetActorVisibility(u16 who_id, float value)
+void CUIMotionIcon::SetActorVisibility(U16 who_id, float value)
 {
 	float v = float(m_luminosity_progress.GetRange_max( ) - m_luminosity_progress.GetRange_min( ));
 	value *= v;

@@ -66,7 +66,7 @@ public:
 		u32										m_start_time;
 		u32										m_stop_time;
 		bool									m_started;
-		u16										m_bone_id;
+		U16										m_bone_id;
 
 				CSoundSingle					()
 		{

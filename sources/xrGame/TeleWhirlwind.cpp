@@ -178,7 +178,7 @@ bool	CTeleWhirlwindObject::destroy_object(const Fvector3 dir, float val)
 		CParticlesPlayer* PP = smart_cast<CParticlesPlayer*>(object);
 		if (PP)
 		{
-			u16 root = (smart_cast<CKinematics*>(object->Visual( )))->LL_GetBoneRoot( );
+			U16 root = (smart_cast<CKinematics*>(object->Visual( )))->LL_GetBoneRoot( );
 			PP->StartParticles(m_telekinesis->destroing_particles( ), root, Fvector3( ).set(0, 1, 0), m_telekinesis->OwnerObject( )->ID( ));
 		}
 
@@ -202,10 +202,10 @@ void		CTeleWhirlwindObject::raise(float step)
 		p->set_ApplyByGravity(TRUE);
 	}
 
-	u16				element_number = p->get_ElementsNumber( );
+	U16				element_number = p->get_ElementsNumber( );
 	Fvector3			center = m_telekinesis->Center( );
 	CPhysicsElement* maxE = p->get_ElementByStoreOrder(0);
-	for (u16 element = 0; element < element_number; ++element)
+	for (U16 element = 0; element < element_number; ++element)
 	{
 		float k = strength;//600.f;
 		float predict_v_eps = 0.1f;
@@ -303,11 +303,11 @@ void		CTeleWhirlwindObject::keep( )
 		p->set_ApplyByGravity(FALSE);
 	}
 
-	u16				element_number = p->get_ElementsNumber( );
+	U16				element_number = p->get_ElementsNumber( );
 	Fvector3			center = m_telekinesis->Center( );
 
 	CPhysicsElement* maxE = p->get_ElementByStoreOrder(0);
-	for (u16 element = 0; element < element_number; ++element)
+	for (U16 element = 0; element < element_number; ++element)
 	{
 
 		CPhysicsElement* E = p->get_ElementByStoreOrder(element);

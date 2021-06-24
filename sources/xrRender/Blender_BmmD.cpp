@@ -29,7 +29,7 @@ void CBlender_BmmD::Save(IWriter& fs)
 	xrPWRITE_PROP(fs, "R2-A", xrPID_TEXTURE, oA_Name);
 }
 
-void CBlender_BmmD::Load(IReader& fs, u16 version)
+void CBlender_BmmD::Load(IReader& fs, U16 version)
 {
 	IBlender::Load(fs, version);
 	if (version < 3)
