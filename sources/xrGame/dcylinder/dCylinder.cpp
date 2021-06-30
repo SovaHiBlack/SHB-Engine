@@ -1286,7 +1286,7 @@ int dCollideCylPlane
 	contact->g1 = const_cast<dxGeom*> (o1);
 	contact->g2 = const_cast<dxGeom*> (o2);
 
-	unsigned int ret = 0;
+	U32 ret = 0;
 
 	dReal radius;
 	dReal hlz;
@@ -1351,37 +1351,41 @@ int dCollideCylPlane
 
 	if (dFabs(Q2) > M_SQRT1_2)
 	{
+		CONTACT(contact, ret * skip)->pos[0] = pos[0] + 2.0f * A1 * R[0];
+		CONTACT(contact, ret * skip)->pos[1] = pos[1] + 2.0f * A1 * R[4];
+		CONTACT(contact, ret * skip)->pos[2] = pos[2] + 2.0f * A1 * R[8];
+		CONTACT(contact, ret * skip)->depth = outDepth - dFabs(Q1 * 2.0f * A1);
 
-		CONTACT(contact, ret * skip)->pos[0] = pos[0] + 2.f * A1 * R[0];
-		CONTACT(contact, ret * skip)->pos[1] = pos[1] + 2.f * A1 * R[4];
-		CONTACT(contact, ret * skip)->pos[2] = pos[2] + 2.f * A1 * R[8];
-		CONTACT(contact, ret * skip)->depth = outDepth - dFabs(Q1 * 2.f * A1);
-
-		if (CONTACT(contact, ret * skip)->depth > 0.f)
+		if (CONTACT(contact, ret * skip)->depth > 0.0f)
+		{
 			++ret;
+		}
 
+		CONTACT(contact, ret * skip)->pos[0] = pos[0] + 2.0f * A3 * R[2];
+		CONTACT(contact, ret * skip)->pos[1] = pos[1] + 2.0f * A3 * R[6];
+		CONTACT(contact, ret * skip)->pos[2] = pos[2] + 2.0f * A3 * R[10];
+		CONTACT(contact, ret * skip)->depth = outDepth - dFabs(Q3 * 2.0f * A3);
 
-		CONTACT(contact, ret * skip)->pos[0] = pos[0] + 2.f * A3 * R[2];
-		CONTACT(contact, ret * skip)->pos[1] = pos[1] + 2.f * A3 * R[6];
-		CONTACT(contact, ret * skip)->pos[2] = pos[2] + 2.f * A3 * R[10];
-		CONTACT(contact, ret * skip)->depth = outDepth - dFabs(Q3 * 2.f * A3);
-
-		if (CONTACT(contact, ret * skip)->depth > 0.f) ++ret;
+		if (CONTACT(contact, ret * skip)->depth > 0.0f)
+		{
+			++ret;
+		}
 	}
 	else
 	{
 
-		CONTACT(contact, ret * skip)->pos[0] = pos[0] + 2.f * (A2 > 0 ? hlz * R[1] : -hlz * R[1]);
-		CONTACT(contact, ret * skip)->pos[1] = pos[1] + 2.f * (A2 > 0 ? hlz * R[5] : -hlz * R[5]);
-		CONTACT(contact, ret * skip)->pos[2] = pos[2] + 2.f * (A2 > 0 ? hlz * R[9] : -hlz * R[9]);
-		CONTACT(contact, ret * skip)->depth = outDepth - dFabs(Q2 * 2.f * A2);
+		CONTACT(contact, ret * skip)->pos[0] = pos[0] + 2.0f * (A2 > 0 ? hlz * R[1] : -hlz * R[1]);
+		CONTACT(contact, ret * skip)->pos[1] = pos[1] + 2.0f * (A2 > 0 ? hlz * R[5] : -hlz * R[5]);
+		CONTACT(contact, ret * skip)->pos[2] = pos[2] + 2.0f * (A2 > 0 ? hlz * R[9] : -hlz * R[9]);
+		CONTACT(contact, ret * skip)->depth = outDepth - dFabs(Q2 * 2.0f * A2);
 
-		if (CONTACT(contact, ret * skip)->depth > 0.f) ++ret;
+		if (CONTACT(contact, ret * skip)->depth > 0.0f)
+		{
+			++ret;
+		}
 	}
 
-
-
-	for (unsigned int i = 0; i < ret; ++i)
+	for (U32 i = 0; i < ret; ++i)
 	{
 		CONTACT(contact, i * skip)->g1 = const_cast<dxGeom*> (o1);
 		CONTACT(contact, i * skip)->g2 = const_cast<dxGeom*> (o2);
@@ -1389,6 +1393,7 @@ int dCollideCylPlane
 		CONTACT(contact, i * skip)->normal[1] = n[1];
 		CONTACT(contact, i * skip)->normal[2] = n[2];
 	}
+
 	return ret;
 }
 

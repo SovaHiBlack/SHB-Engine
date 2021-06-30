@@ -86,7 +86,7 @@ namespace FPU
 
 		m24r( );
 
-		::Random.seed(u32(CPU::GetCLK( ) % (1i64 << 32i64)));
+		::Random.seed(U32(CPU::GetCLK( ) % (1i64 << 32i64)));
 	}
 };
 
@@ -101,7 +101,7 @@ namespace CPU
 	CORE_API float				clk_to_microsec;
 	CORE_API u64				qpc_freq = 0;
 	CORE_API u64				qpc_overhead = 0;
-	CORE_API u32				qpc_counter = 0;
+	CORE_API U32				qpc_counter = 0;
 
 	CORE_API _processor_info	ID;
 
@@ -124,7 +124,8 @@ namespace CPU
 
 		// Timers & frequency
 		u64			start, end;
-		u32			dwStart, dwTest;
+		U32			dwStart;
+		U32			dwTest;
 
 		SetPriorityClass(GetCurrentProcess( ), REALTIME_PRIORITY_CLASS);
 
@@ -189,7 +190,7 @@ void _initialize_cpu( )
 		CPU::ID.v_name, CPU::ID.model_name,
 		CPU::ID.family, CPU::ID.model, CPU::ID.stepping,
 		float(CPU::clk_per_second / u64(1000000)),
-		u32(CPU::clk_overhead)
+		U32(CPU::clk_overhead)
 	);
 
 	if (strstr(Core.Params, "-x86"))
@@ -279,15 +280,16 @@ struct	THREAD_STARTUP
 {
 	thread_t* entry;
 	char* name;
-	void* args;
+	Pvoid args;
 };
-void	__cdecl			thread_entry(void* _params)
+
+void	__cdecl			thread_entry(Pvoid _params)
 {
-// initialize
+	// initialize
 	THREAD_STARTUP* startup = (THREAD_STARTUP*) _params;
 	thread_name(startup->name);
 	thread_t* entry = startup->entry;
-	void* arglist = startup->args;
+	Pvoid arglist = startup->args;
 	xr_delete(startup);
 	_initialize_cpu_thread( );
 
@@ -295,7 +297,7 @@ void	__cdecl			thread_entry(void* _params)
 	entry(arglist);
 }
 
-void	thread_spawn(thread_t* entry, const char* name, unsigned	stack, void* arglist)
+void	thread_spawn(thread_t* entry, const char* name, unsigned	stack, Pvoid arglist)
 {
 	THREAD_STARTUP* startup = xr_new<THREAD_STARTUP>( );
 	startup->entry = entry;

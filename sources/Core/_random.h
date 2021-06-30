@@ -6,9 +6,9 @@ private:
 	volatile int		holdrand;
 
 public:
-									CRandom( ) : holdrand(1)
+	CRandom( ) : holdrand(1)
 	{ }
-									CRandom(int _seed) : holdrand(_seed)
+	CRandom(int _seed) : holdrand(_seed)
 	{ }
 
 	inline void						seed(int val)

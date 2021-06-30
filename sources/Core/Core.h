@@ -12,27 +12,27 @@
 
 #if (defined(DEBUG) && !defined(FORCE_NO_EXCEPTIONS))
 	// "debug"
-	#ifndef _CPPUNWIND
-		#error Please enable exceptions...
-	#endif
-	#define _HAS_EXCEPTIONS		1	// STL
-	#define XRAY_EXCEPTIONS		1	// XRAY
-	#define BOOST_NO_EXCEPTIONS
+#ifndef _CPPUNWIND
+#error Please enable exceptions...
+#endif
+#define _HAS_EXCEPTIONS		1	// STL
+#define XRAY_EXCEPTIONS		1	// XRAY
+#define BOOST_NO_EXCEPTIONS
 #else
 	// "release"
-	#ifdef _CPPUNWIND
-		#error Please disable exceptions...
-	#endif
+#ifdef _CPPUNWIND
+#error Please disable exceptions...
+#endif
 //	#define _HAS_EXCEPTIONS		1	// STL
-	#define XRAY_EXCEPTIONS		0	// XRAY
-	#define LUABIND_NO_EXCEPTIONS
-	#define BOOST_NO_EXCEPTIONS
-	#pragma warning(disable:4530)
+#define XRAY_EXCEPTIONS		0	// XRAY
+#define LUABIND_NO_EXCEPTIONS
+#define BOOST_NO_EXCEPTIONS
+#pragma warning(disable:4530)
 #endif
 
 #ifndef _MT
 	// multithreading disabled
-	#error Please enable multi-threaded library...
+#error Please enable multi-threaded library...
 #endif
 
 #include "Core_platform.h"
@@ -63,9 +63,9 @@
 //#define ICN				__declspec (noinline)
 
 #ifndef DEBUG
-	#pragma inline_depth	( 254 )
-	#pragma inline_recursion( on )
-	#pragma intrinsic	(abs, fabs, fmod, sin, cos, tan, asin, acos, atan, sqrt, exp, log, log10, strcpy, strcat)
+#pragma inline_depth	( 254 )
+#pragma inline_recursion( on )
+#pragma intrinsic	(abs, fabs, fmod, sin, cos, tan, asin, acos, atan, sqrt, exp, log, log10, strcpy, strcat)
 #endif // DEBUG
 
 #include <time.h>
@@ -108,6 +108,7 @@
 #	define CORE_API __declspec(dllimport)
 #endif
 
+#include "_types.h"
 #include "Debug.h"
 #include "vector.h"
 
@@ -123,48 +124,66 @@
 #include "xr_shared.h"
 
 // stl ext
-struct CORE_API xr_rtoken{
+struct CORE_API xr_rtoken
+{
 	shared_str	name;
 	int	   	id;
-			xr_rtoken	(const char* _nm, int _id){name=_nm;id=_id;}
+	xr_rtoken(Pcstr _nm, int _id)
+	{
+		name = _nm; id = _id;
+	}
 public:
-	void	rename		(const char* _nm)		{name=_nm;}
-	bool	equal		(const char* _nm)		{return (0==xr_strcmp(*name,_nm));}
+	void	rename(Pcstr _nm)
+	{
+		name = _nm;
+	}
+	bool	equal(Pcstr _nm)
+	{
+		return (0 == xr_strcmp(*name, _nm));
+	}
 };
 
 #pragma pack (push,1)
-struct CORE_API xr_shortcut{
-	enum{
-		flShift	= 0x20,
-		flCtrl	= 0x40,
-		flAlt	= 0x80
+struct CORE_API xr_shortcut
+{
+	enum
+	{
+		flShift = 0x20,
+		flCtrl = 0x40,
+		flAlt = 0x80
 	};
-	union{
-		struct{
+	union
+	{
+		struct
+		{
 			U8	 	key;
 			Flags8	ext;
 		};
 
 		U16		hotkey;
 	};
-				xr_shortcut		(U8 k, BOOL a, BOOL c, BOOL s):key(k){ext.assign(U8((a?flAlt:0)|(c?flCtrl:0)|(s?flShift:0)));}
-				xr_shortcut		(){ext.zero();key=0;}
-	bool		similar			(const xr_shortcut& v)const{return ext.equal(v.ext)&&(key==v.key);}
+	xr_shortcut(U8 k, BOOL a, BOOL c, BOOL s) :key(k)
+	{
+		ext.assign(U8((a ? flAlt : 0) | (c ? flCtrl : 0) | (s ? flShift : 0)));
+	}
+	xr_shortcut( )
+	{
+		ext.zero( ); key = 0;
+	}
+	bool		similar(const xr_shortcut& v)const
+	{
+		return ext.equal(v.ext) && (key == v.key);
+	}
 };
 #pragma pack (pop)
 
 using RStringVec = xr_vector<shared_str>;
-
-//DEFINE_VECTOR	(shared_str,RStringVec,RStringVecIt);
-//DEFINE_SET		(shared_str,RStringSet,RStringSetIt);
-//DEFINE_VECTOR	(xr_rtoken,RTokenVec,RTokenVecIt);
 
 #include "FS.h"
 #include "Log.h"
 #include "xr_trims.h"
 #include "IniFile.h"
 #include "LocatorAPI.h"
-#include "FileSystem.h"
 #include "FTimer.h"
 #include "fastdelegate.h"
 #include "intrusive_ptr.h"
@@ -175,14 +194,22 @@ class destructor
 {
 	T* ptr;
 public:
-	destructor(T* p)	{ ptr=p;			}
-	~destructor()		{ xr_delete(ptr);	}
-	inline T& operator() ()
-	{	return *ptr; }
+	destructor(T* p)
+	{
+		ptr = p;
+	}
+	~destructor( )
+	{
+		xr_delete(ptr);
+	}
+	inline T& operator() ( )
+	{
+		return *ptr;
+	}
 };
 
 // ********************************************** The Core definition
-class CORE_API CCore 
+class CORE_API CCore
 {
 public:
 	string64	ApplicationName;
@@ -193,7 +220,7 @@ public:
 	string512	Params;
 
 public:
-	void		_initialize	(const char* ApplicationName, LogCallback cb=0, BOOL init_fs=TRUE, const char* fs_fname=0);
-	void		_destroy	();
+	void		_initialize(Pcstr ApplicationName, LogCallback cb = 0, BOOL init_fs = TRUE, Pcstr fs_fname = 0);
+	void		_destroy( );
 };
 extern CORE_API CCore Core;

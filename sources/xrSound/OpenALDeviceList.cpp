@@ -189,7 +189,7 @@ void ALDeviceList::GetDeviceVersion(int index, int *major, int *minor)
 void ALDeviceList::FilterDevicesMinVer(int major, int minor)
 {
 	int dMajor, dMinor;
-	for (unsigned int i = 0; i < m_devices.size(); i++) {
+	for (U32 i = 0; i < m_devices.size(); i++) {
 		GetDeviceVersion(i, &dMajor, &dMinor);
 		if ((dMajor < major) || ((dMajor == major) && (dMinor < minor))) 
 			m_devices[i].selected = false;
@@ -202,7 +202,7 @@ void ALDeviceList::FilterDevicesMinVer(int major, int minor)
 void ALDeviceList::FilterDevicesMaxVer(int major, int minor)
 {
 	int dMajor, dMinor;
-	for (unsigned int i = 0; i < m_devices.size(); i++) {
+	for (U32 i = 0; i < m_devices.size(); i++) {
 		GetDeviceVersion(i, &dMajor, &dMinor);
 		if ((dMajor > major) || ((dMajor == major) && (dMinor > minor))) {
 			m_devices[i].selected = false;
@@ -215,7 +215,7 @@ void ALDeviceList::FilterDevicesMaxVer(int major, int minor)
  */
 void ALDeviceList::FilterDevicesXRAMOnly()
 {
-	for (unsigned int i = 0; i < m_devices.size(); i++) {		
+	for (U32 i = 0; i < m_devices.size(); i++) {
 		if (m_devices[i].xram == false) {
 			m_devices[i].selected = false;
 		}

@@ -124,13 +124,21 @@ public:
 	BOOL					o_fastmode;
 	inline void					o_switch_2_fast( )
 	{
-		if (o_fastmode)		return;
+		if (o_fastmode)
+		{
+			return;
+		}
+
 		o_fastmode = TRUE;
 		//processing_activate		();
 	}
 	inline void					o_switch_2_slow( )
 	{
-		if (!o_fastmode)	return;
+		if (!o_fastmode)
+		{
+			return;
+		}
+
 		o_fastmode = FALSE;
 		//processing_deactivate		();
 	}

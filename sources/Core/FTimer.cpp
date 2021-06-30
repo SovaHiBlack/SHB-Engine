@@ -5,7 +5,7 @@ CORE_API BOOL			g_bEnableStatGather = FALSE;
 CStatTimer::CStatTimer( )
 {
 	accum = 0;
-	result = 0.f;
+	result = 0.0f;
 	count = 0;
 }
 

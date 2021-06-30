@@ -6,7 +6,7 @@ class CAlienEffectorPP;
 
 class CBloodsuckerAlien
 {
-	CBloodsucker*							m_object;
+	CBloodsucker*								m_object;
 
 	bool										m_active;
 

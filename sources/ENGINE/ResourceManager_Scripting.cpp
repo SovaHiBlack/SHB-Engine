@@ -84,9 +84,7 @@ void LuaError(lua_State* L)
 }
 
 #ifndef PURE_ALLOC
-#	ifndef USE_MEMORY_MONITOR
-#		define USE_DL_ALLOCATOR
-#	endif // USE_MEMORY_MONITOR
+#	define USE_DL_ALLOCATOR
 #endif // PURE_ALLOC
 
 #ifndef USE_DL_ALLOCATOR
@@ -98,11 +96,7 @@ void LuaError(lua_State* L)
 		return	NULL;
 	}
 	else
-#	ifdef DEBUG_MEMORY_NAME
-		return Memory.mem_realloc		(ptr, nsize, "LUA:Render");
-#	else // DEBUG_MEMORY_NAME
 		return Memory.mem_realloc		(ptr, nsize);
-#	endif // DEBUG_MEMORY_NAME
 	}
 #else // USE_DL_ALLOCATOR
 #	include "doug_lea_memory_allocator.h"

@@ -43,10 +43,10 @@ CInventorySlot::CInventorySlot()
 CInventorySlot::~CInventorySlot() 
 { }
 
-bool CInventorySlot::CanBeActivated() const 
+bool CInventorySlot::CanBeActivated() const
 {
 	return (m_bVisible && !IsBlocked());
-};
+}
 
 bool CInventorySlot::IsBlocked() const 
 {
@@ -74,7 +74,7 @@ CInventory::CInventory()
 		sprintf_s(temp, "slot_persistent_%d", i+1);
 		if(pSettings->line_exist("inventory",temp)) 
 			m_slots[i].m_bPersistent = !!pSettings->r_bool("inventory",temp);
-	};
+	}
 
 	m_slots[PDA_SLOT].m_bVisible				= false;
 	m_slots[OUTFIT_SLOT].m_bVisible				= false;
@@ -228,7 +228,7 @@ bool CInventory::DropItem(CGameObject *pObj)
 		}break;
 	default:
 		NODEFAULT;
-	};
+	}
 
 	TIItemContainer::iterator	it = std::find(m_all.begin(), m_all.end(), pIItem);
 	if ( it != m_all.end())
@@ -536,7 +536,7 @@ void CInventory::SendActionEvent(int cmd, u32 flags)
 	P.w_s32					(pActor->GetZoomRndSeed());
 	P.w_s32					(pActor->GetShotRndSeed());
 	pActor->u_EventSend		(P, net_flags(TRUE, TRUE, FALSE, TRUE));
-};
+}
 
 bool CInventory::Action(int cmd, u32 flags)
 {
@@ -554,7 +554,7 @@ bool CInventory::Action(int cmd, u32 flags)
 			{
 				pActor->SetZoomRndSeed();
 			}break;
-		};
+		}
 	}
 
 	if (g_pGameLevel && OnClient() && pActor) {
@@ -653,7 +653,7 @@ void CInventory::UpdateDropTasks()
 			UpdateDropItem		(m_slots[i].m_pIItem);
 	}
 
-	for(i = 0; i < 2; ++i)	
+	for(i = 0; i < 2; ++i)
 	{
 		TIItemContainer &list			= i?m_ruck:m_belt;
 		TIItemContainer::iterator it	= list.begin();
@@ -1028,7 +1028,7 @@ void  CInventory::AddAvailableItems(TIItemContainer& items_container, bool for_t
 					items_container.push_back(S.m_pIItem);
 			}
 		}
-	}		
+	}
 }
 
 bool CInventory::isBeautifulForActiveSlot	(CInventoryItem *pIItem)
@@ -1051,7 +1051,8 @@ void CInventory::Items_SetCurrentEntityHud(bool current_entity)
 		if (pHudItem) 
 		{
 			pHudItem->GetHUD()->Visible(current_entity);
-		};
+		}
+
 		CWeapon* pWeapon = smart_cast<CWeapon*>(pIItem);
 		if (pWeapon)
 		{
@@ -1059,7 +1060,7 @@ void CInventory::Items_SetCurrentEntityHud(bool current_entity)
 			pWeapon->UpdateAddonsVisibility();
 		}
 	}
-};
+}
 
 //call this only via Actor()->SetWeaponHideState()
 void CInventory::SetSlotsBlocked(U16 mask, bool bBlock)

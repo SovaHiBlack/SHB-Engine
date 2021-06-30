@@ -26,7 +26,7 @@ void CMedkit::net_Destroy( )
 	inherited::net_Destroy( );
 }
 
-void CMedkit::shedule_Update(unsigned int dt)
+void CMedkit::shedule_Update(U32 dt)
 {
 	inherited::shedule_Update(dt);
 }

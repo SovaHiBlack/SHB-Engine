@@ -29,7 +29,7 @@ void CStateBurerAttackGraviAbstract::execute( )
 {
 	switch (m_action)
 	{
-/************************/
+			/************************/
 		case ACTION_GRAVI_STARTED:
 			/************************/
 

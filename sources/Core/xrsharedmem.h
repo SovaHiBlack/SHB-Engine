@@ -5,10 +5,10 @@
 #pragma warning(disable : 4200)
 struct		CORE_API	smem_value
 {
-	u32					dwReference;
-	u32					dwCRC;
-	u32					dwLength;
-	u32					_align_16;
+	U32					dwReference;
+	U32					dwCRC;
+	U32					dwLength;
+	U32					_align_16;
 	U8					value[ ];
 };
 // generic predicate for "less"
@@ -30,7 +30,7 @@ inline bool					smem_search(const smem_value* A, const smem_value* B)
 }
 
 // predicate for exact (byte level) comparition
-inline bool					smem_equal(const smem_value* A, u32 dwCRC, u32 dwLength, U8* ptr)
+inline bool					smem_equal(const smem_value* A, U32 dwCRC, U32 dwLength, U8* ptr)
 {
 	if (A->dwCRC != dwCRC)			return		false;
 	if (A->dwLength != dwLength)		return		false;
@@ -47,10 +47,10 @@ private:
 	cdb									container;
 
 public:
-	smem_value* dock(u32 dwCRC, u32 dwLength, void* ptr);
+	smem_value* dock(U32 dwCRC, U32 dwLength, Pvoid ptr);
 	void				clean( );
 	void				dump( );
-	u32					stat_economy( );
+	U32					stat_economy( );
 	~smem_container( );
 };
 CORE_API	extern		smem_container* g_pSharedMemoryContainer;
@@ -93,7 +93,7 @@ public:
 		_dec( );
 	}
 
-	void				create(u32 dwCRC, u32 dwLength, T* ptr)
+	void				create(U32 dwCRC, U32 dwLength, T* ptr)
 	{
 		smem_value* v = g_pSharedMemoryContainer->dock(dwCRC, dwLength * sizeof(T), ptr);
 		if (0 != v)		v->dwReference++; _dec( ); p_ = v;
@@ -121,7 +121,7 @@ public:
 		return ((T*) (p_->value))[id];
 	}
 	// misc func
-	u32					size( )
+	U32					size( )
 	{
 		if (0 == p_) return 0; else return p_->dwLength / sizeof(T);
 	}
@@ -133,7 +133,7 @@ public:
 	{
 		return p_ == rhs.p_;
 	}
-	u32					ref_count( )
+	U32					ref_count( )
 	{
 		if (0 == p_) return 0; else return p_->dwReference;
 	}

@@ -4,12 +4,12 @@ template <class T>
 class _box3
 {
 public:
-	using TYPE								= T;
-	using Self								= _box3<TYPE>;
-	using SelfRef							= Self&;
-	using SelfCRef							= const Self&;
-	using Tvector							= _vector3<TYPE>;
-	using Tmatrix							= _matrix<TYPE>;
+	using TYPE = T;
+	using Self = _box3<TYPE>;
+	using SelfRef = Self&;
+	using SelfCRef = const Self&;
+	using Tvector = _vector3<TYPE>;
+	using Tmatrix = _matrix<TYPE>;
 
 	union
 	{
@@ -29,153 +29,153 @@ public:
 		};
 	};
 
-	inline BOOL				is_valid		( )
+	inline BOOL				is_valid( )
 	{
 		return (x2 >= x1) && (y2 >= y1) && (z2 >= z1);
 	}
 
-	inline const TYPE*		data			( ) const
+	inline const TYPE* data( ) const
 	{
 		return &min.x;
 	}
 
-	inline SelfRef			set				(const Tvector& _min, const Tvector& _max)
+	inline SelfRef			set(const Tvector& _min, const Tvector& _max)
 	{
 		min.set(_min);
 		max.set(_max);
 		return *this;
 	}
-	inline SelfRef			set				(TYPE x1, TYPE y1, TYPE z1, TYPE x2, TYPE y2, TYPE z2)
+	inline SelfRef			set(TYPE x1, TYPE y1, TYPE z1, TYPE x2, TYPE y2, TYPE z2)
 	{
 		min.set(x1, y1, z1);
 		max.set(x2, y2, z2);
 		return *this;
 	}
-	inline SelfRef			set				(SelfCRef b)
+	inline SelfRef			set(SelfCRef b)
 	{
 		min.set(b.min);
 		max.set(b.max);
 		return *this;
 	}
-	inline SelfRef			setb			(const Tvector& center, const Tvector& dim)
+	inline SelfRef			setb(const Tvector& center, const Tvector& dim)
 	{
 		min.sub(center, dim);
 		max.add(center, dim);
 		return *this;
 	}
 
-	inline SelfRef			null			( )
+	inline SelfRef			null( )
 	{
 		min.set(0, 0, 0);
 		max.set(0, 0, 0);
 		return *this;
 	}
-	inline SelfRef			identity		( )
+	inline SelfRef			identity( )
 	{
 		min.set(-0.5, -0.5, -0.5);
 		max.set(0.5, 0.5, 0.5);
 		return *this;
 	}
-	inline SelfRef			invalidate		( )
+	inline SelfRef			invalidate( )
 	{
 		min.set(type_max(TYPE), type_max(TYPE), type_max(TYPE));
 		max.set(type_min(TYPE), type_min(TYPE), type_min(TYPE));
 		return *this;
 	}
 
-	inline SelfRef			shrink			(TYPE s)
+	inline SelfRef			shrink(TYPE s)
 	{
 		min.add(s);
 		max.sub(s);
 		return *this;
 	}
-	inline SelfRef			shrink			(const Tvector& s)
+	inline SelfRef			shrink(const Tvector& s)
 	{
 		min.add(s);
 		max.sub(s);
 		return *this;
 	}
-	inline SelfRef			grow			(TYPE s)
+	inline SelfRef			grow(TYPE s)
 	{
 		min.sub(s);
 		max.add(s);
 		return *this;
 	}
-	inline SelfRef			grow			(const Tvector& s)
+	inline SelfRef			grow(const Tvector& s)
 	{
 		min.sub(s);
 		max.add(s);
 		return *this;
 	}
 
-	inline SelfRef			add				(const Tvector& p)
+	inline SelfRef			add(const Tvector& p)
 	{
 		min.add(p);
 		max.add(p);
 		return *this;
 	}
-	inline SelfRef			sub				(const Tvector& p)
+	inline SelfRef			sub(const Tvector& p)
 	{
 		min.sub(p);
 		max.sub(p);
 		return *this;
 	}
-	inline SelfRef			offset			(const Tvector& p)
+	inline SelfRef			offset(const Tvector& p)
 	{
 		min.add(p);
 		max.add(p);
 		return *this;
 	}
-	inline SelfRef			add				(SelfCRef b, const Tvector& p)
+	inline SelfRef			add(SelfCRef b, const Tvector& p)
 	{
 		min.add(b.min, p);
 		max.add(b.max, p);
 		return *this;
 	}
 
-	__forceinline BOOL		contains		(TYPE x, TYPE y, TYPE z) const
+	__forceinline BOOL		contains(TYPE x, TYPE y, TYPE z) const
 	{
 		return (x >= x1) && (x <= x2) && (y >= y1) && (y <= y2) && (z >= z1) && (z <= z2);
 	}
-	__forceinline BOOL		contains		(const Tvector& p) const
+	__forceinline BOOL		contains(const Tvector& p) const
 	{
 		return contains(p.x, p.y, p.z);
 	}
-	__forceinline BOOL		contains		(SelfCRef b) const
+	__forceinline BOOL		contains(SelfCRef b) const
 	{
 		return contains(b.min) && contains(b.max);
 	}
 
-	inline BOOL				similar			(SelfCRef b) const
+	inline BOOL				similar(SelfCRef b) const
 	{
 		return min.similar(b.min) && max.similar(b.max);
 	}
 
-	__forceinline SelfRef	modify			(const Tvector& p)
+	__forceinline SelfRef	modify(const Tvector& p)
 	{
 		min.min(p);
 		max.max(p);
 		return *this;
 	}
-	__forceinline SelfRef	modify			(TYPE x, TYPE y, TYPE z)
+	__forceinline SelfRef	modify(TYPE x, TYPE y, TYPE z)
 	{
 		_vector3<TYPE> tmp = { x, y, z };
 		return modify(tmp);
 	}
-	inline SelfRef			merge			(SelfCRef b)
+	inline SelfRef			merge(SelfCRef b)
 	{
 		modify(b.min);
 		modify(b.max);
 		return *this;
 	}
-	inline SelfRef			merge			(SelfCRef b1, SelfCRef b2)
+	inline SelfRef			merge(SelfCRef b1, SelfCRef b2)
 	{
 		invalidate( );
 		merge(b1);
 		merge(b2);
 		return *this;
 	}
-	__forceinline SelfRef	xform			(SelfCRef B, const Tmatrix& m)
+	__forceinline SelfRef	xform(SelfCRef B, const Tmatrix& m)
 	{
 		// The three edges transformed: you can efficiently transform an X-only vector3
 		// by just getting the "X" column of the matrix
@@ -275,55 +275,55 @@ public:
 
 		return *this;
 	}
-	__forceinline SelfRef	xform			(const Tmatrix& m)
+	__forceinline SelfRef	xform(const Tmatrix& m)
 	{
 		Self b;
 		b.set(*this);
 		return xform(b, m);
 	}
 
-	inline void				getsize			(Tvector& R) const
+	inline void				getsize(Tvector& R) const
 	{
 		R.sub(max, min);
 	}
-	inline void				getradius		(Tvector& R) const
+	inline void				getradius(Tvector& R) const
 	{
 		getsize(R);
 		R.mul(0.5f);
 	}
-	inline TYPE				getradius		( ) const
+	inline TYPE				getradius( ) const
 	{
 		Tvector R;
 		getradius(R);
 		return R.magnitude( );
 	}
-	inline TYPE				getvolume		( ) const
+	inline TYPE				getvolume( ) const
 	{
 		Tvector sz;
 		getsize(sz);
 		return sz.x * sz.y * sz.z;
 	}
-	inline SelfCRef			getcenter		(Tvector& C) const
+	inline SelfCRef			getcenter(Tvector& C) const
 	{
 		C.x = (min.x + max.x) * 0.5f;
 		C.y = (min.y + max.y) * 0.5f;
 		C.z = (min.z + max.z) * 0.5f;
 		return *this;
 	}
-	inline SelfCRef			get_CD			(Tvector& bc, Tvector& bd) const // center + dimensions
+	inline SelfCRef			get_CD(Tvector& bc, Tvector& bd) const // center + dimensions
 	{
 		bd.sub(max, min).mul(0.5f);
 		bc.add(min, bd);
 		return *this;
 	}
-	inline SelfRef			scale			(float s)					// 0.1 means make 110%, -0.1 means make 90%
+	inline SelfRef			scale(float s)					// 0.1 means make 110%, -0.1 means make 90%
 	{
 		Fvector3 bd;
 		bd.sub(max, min).mul(s);
 		grow(bd);
 		return *this;
 	}
-	inline SelfCRef			getsphere		(Tvector& C, TYPE& R) const
+	inline SelfCRef			getsphere(Tvector& C, TYPE& R) const
 	{
 		getcenter(C);
 		R = C.distance_to(max);
@@ -331,7 +331,7 @@ public:
 	}
 
 	// Detects if this box intersect other
-	__forceinline BOOL		intersect		(SelfCRef box)
+	__forceinline BOOL		intersect(SelfCRef box)
 	{
 		if (max.x < box.min.x)
 		{
@@ -367,7 +367,7 @@ public:
 	}
 
 	// Does the vector3 intersects box
-	inline BOOL				Pick			(const Tvector& start, const Tvector& dir)
+	inline BOOL				Pick(const Tvector& start, const Tvector& dir)
 	{
 		TYPE alpha;
 		TYPE xt;
@@ -457,18 +457,18 @@ public:
 		return false;
 	}
 
-	inline u32&				IR				(TYPE& x)
+	inline U32& IR(TYPE& x)
 	{
-		return (u32&) x;
+		return (U32&) x;
 	}
 	enum ERP_Result
 	{
 		rpNone = 0,
 		rpOriginInside = 1,
 		rpOriginOutside = 2,
-		fcv_forcedword = u32(-1)
+		fcv_forcedword = U32(-1)
 	};
-	inline ERP_Result		Pick2			(const Tvector& origin, const Tvector& dir, Tvector& coord)
+	inline ERP_Result		Pick2(const Tvector& origin, const Tvector& dir, Tvector& coord)
 	{
 		BOOL Inside = TRUE;
 		Tvector MaxT;
@@ -540,7 +540,7 @@ public:
 		}
 
 		// Get largest of the maxT's for final choice of intersection
-		u32 WhichPlane = 0;
+		U32 WhichPlane = 0;
 		if (MaxT[1] > MaxT[0])
 		{
 			WhichPlane = 1;
@@ -611,7 +611,7 @@ public:
 		return rpNone;
 	}
 
-	inline void				getpoint		(int index, Tvector& result) const
+	inline void				getpoint(int index, Tvector& result) const
 	{
 		switch (index)
 		{
@@ -662,7 +662,7 @@ public:
 			break;
 		}
 	}
-	inline void				getpoints		(Tvector* result)
+	inline void				getpoints(Tvector* result)
 	{
 		result[0].set(min.x, min.y, min.z);
 		result[1].set(min.x, min.y, max.z);
@@ -674,7 +674,7 @@ public:
 		result[7].set(max.x, max.y, min.z);
 	}
 
-	inline SelfRef			modify			(SelfCRef src, const Tmatrix& M)
+	inline SelfRef			modify(SelfCRef src, const Tmatrix& M)
 	{
 		Tvector pt;
 		for (int i = 0; i < 8; i++)

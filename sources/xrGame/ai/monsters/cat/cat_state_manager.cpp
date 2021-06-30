@@ -74,4 +74,3 @@ void CStateManagerCat::execute()
 
 	prev_substate = current_substate;
 }
-

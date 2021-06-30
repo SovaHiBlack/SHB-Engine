@@ -219,7 +219,6 @@
     <ClCompile Include="clsid.cpp" />
     <ClCompile Include="cpuid.cpp" />
     <ClCompile Include="crc32.cpp" />
-    <ClCompile Include="FileSystem.cpp" />
     <ClCompile Include="file_stream_reader.cpp" />
     <ClCompile Include="FS.cpp" />
     <ClCompile Include="FTimer.cpp" />
@@ -228,7 +227,6 @@
     <ClCompile Include="LocatorAPI_defs.cpp" />
     <ClCompile Include="Log.cpp" />
     <ClCompile Include="LzHuf.cpp" />
-    <ClCompile Include="memory_monitor.cpp" />
     <ClCompile Include="memory_usage.cpp" />
     <ClCompile Include="rt_compressor.cpp" />
     <ClCompile Include="rt_lzo1x_1.cpp" />
@@ -285,7 +283,6 @@
     <ClInclude Include="clsid.h" />
     <ClInclude Include="cpuid.h" />
     <ClInclude Include="fastdelegate.h" />
-    <CustomBuild Include="FileSystem.h" />
     <ClInclude Include="file_stream_reader.h" />
     <ClInclude Include="FixedMap.h" />
     <ClInclude Include="FixedVector.h" />
@@ -298,7 +295,6 @@
     <ClInclude Include="LocatorAPI_defs.h" />
     <ClInclude Include="Log.h" />
     <ClInclude Include="lzhuf.h" />
-    <ClInclude Include="memory_monitor.h" />
     <ClInclude Include="rt_compressor.h" />
     <ClInclude Include="rt_config1x.h" />
     <ClInclude Include="rt_lzo1x.h" />

@@ -17,21 +17,23 @@ PHDynamicData::PHDynamicData()
 	p_parent_body_interpolation=NULL;
 }
 
-PHDynamicData::~PHDynamicData()
+PHDynamicData::~PHDynamicData( )
 {
-	if(numOfChilds){
-		//for(unsigned int i=0;i<numOfChilds;++i)
+	if (numOfChilds)
+	{
 		//	delete
-		for(unsigned int i=0;i<numOfChilds;++i){
-			Childs[i].Destroy();
+		for (U32 i = 0; i < numOfChilds; ++i)
+		{
+			Childs[i].Destroy( );
 		}
-		Childs.clear();
+
+		Childs.clear( );
 		//Childs=NULL;
-		numOfChilds=0;
+		numOfChilds = 0;
 	}
 }
 
-PHDynamicData::PHDynamicData(unsigned int numOfchilds,dBodyID Body)
+PHDynamicData::PHDynamicData(U32 numOfchilds,dBodyID Body)
 {
 	numOfChilds=numOfchilds;
 	body=Body;
@@ -41,7 +43,7 @@ PHDynamicData::PHDynamicData(unsigned int numOfchilds,dBodyID Body)
 	ZeroTransform.identity();
 }
 
-bool PHDynamicData::SetChild(unsigned int childNum,unsigned int numOfchilds,dBodyID body)
+bool PHDynamicData::SetChild(U32 childNum, U32 numOfchilds,dBodyID body)
 {
 
 	if(childNum<numOfChilds){
@@ -80,7 +82,7 @@ void PHDynamicData::CalculateR_N_PosOfChilds(dBodyID parent)
 	//BoneTransform.mulA(mYM);
 	BoneTransform.mulA_43		(parent_transform);
 
-	for(unsigned int i=0;i<numOfChilds;++i){
+	for(U32 i=0;i<numOfChilds;++i){
 
 		Childs[i].CalculateR_N_PosOfChilds(body);
 	}
@@ -89,7 +91,7 @@ void PHDynamicData::CalculateR_N_PosOfChilds(dBodyID parent)
 void PHDynamicData::UpdateInterpolationRecursive(){
 	UpdateInterpolation();
 
-	for(unsigned int i=0;i<numOfChilds;++i){
+	for(U32 i=0;i<numOfChilds;++i){
 		Childs[i].UpdateInterpolationRecursive();
 	}
 }
@@ -124,7 +126,7 @@ void PHDynamicData::InterpolateTransformVsParent(Fmatrix &transform){
 	transform.mulA_43	(parent_transform);
 }
 
-PHDynamicData * PHDynamicData::GetChild(unsigned int ChildNum)
+PHDynamicData * PHDynamicData::GetChild(U32 ChildNum)
 {
 	if(ChildNum<numOfChilds)
 		return &Childs[ChildNum];
@@ -133,20 +135,18 @@ PHDynamicData * PHDynamicData::GetChild(unsigned int ChildNum)
 
 void PHDynamicData::CalculateData()
 {
-
-	DMXPStoFMX(dBodyGetRotation(body),
-		dBodyGetPosition(body),BoneTransform);
+	DMXPStoFMX(dBodyGetRotation(body), dBodyGetPosition(body), BoneTransform);
 	Fmatrix zero;
 	zero.set(ZeroTransform);
 	zero.invert();
 	BoneTransform.mulB_43(zero);
-	for(unsigned int i=0;i<numOfChilds;++i){
-
+	for (U32 i = 0; i < numOfChilds; ++i)
+	{
 		Childs[i].CalculateR_N_PosOfChilds(body);
 	}
 }
 
-void PHDynamicData::Create(unsigned int numOfchilds, dBodyID Body)
+void PHDynamicData::Create(U32 numOfchilds, dBodyID Body)
 {
 	ZeroTransform.identity();
 	numOfChilds=numOfchilds;
@@ -159,7 +159,7 @@ void PHDynamicData::Create(unsigned int numOfchilds, dBodyID Body)
 void PHDynamicData::Destroy()
 {
 	if(numOfChilds){
-		for(unsigned int i=0;i<numOfChilds;++i)
+		for(U32 i=0;i<numOfChilds;++i)
 			Childs[i].Destroy();
 
 		Childs.clear();
@@ -192,7 +192,7 @@ void PHDynamicData::SetAsZero(){
 
 void PHDynamicData::SetAsZeroRecursive(){
 	ZeroTransform.set(BoneTransform);
-	for(unsigned int i=0;  i<numOfChilds;++i)
+	for(U32 i=0;  i<numOfChilds;++i)
 	{
 		Childs[i].SetAsZeroRecursive();
 	}

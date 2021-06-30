@@ -1,32 +1,32 @@
 #include "stdafx.h"
 
-xrCriticalSection::xrCriticalSection	()
+xrCriticalSection::xrCriticalSection( )
 {
-	pmutex							= xr_alloc<CRITICAL_SECTION>(1);
-	InitializeCriticalSection		( (CRITICAL_SECTION*)pmutex	);
+	pmutex = xr_alloc<CRITICAL_SECTION>(1);
+	InitializeCriticalSection((CRITICAL_SECTION*) pmutex);
 }
 
-xrCriticalSection::~xrCriticalSection	()
+xrCriticalSection::~xrCriticalSection( )
 {
-	DeleteCriticalSection			( (CRITICAL_SECTION*)pmutex	);
-	xr_free							( pmutex		);
+	DeleteCriticalSection((CRITICAL_SECTION*) pmutex);
+	xr_free(pmutex);
 }
 
 #ifdef DEBUG
-	extern void OutputDebugStackTrace	(const char* header);
+extern void OutputDebugStackTrace(const char* header);
 #endif // DEBUG
 
-void	xrCriticalSection::Enter	()
+void	xrCriticalSection::Enter( )
 {
-	EnterCriticalSection			( (CRITICAL_SECTION*)pmutex );
+	EnterCriticalSection((CRITICAL_SECTION*) pmutex);
 }
 
-void	xrCriticalSection::Leave	()
+void	xrCriticalSection::Leave( )
 {
-	LeaveCriticalSection			( (CRITICAL_SECTION*)pmutex );
+	LeaveCriticalSection((CRITICAL_SECTION*) pmutex);
 }
 
-BOOL	xrCriticalSection::TryEnter	()
+BOOL	xrCriticalSection::TryEnter( )
 {
-	return TryEnterCriticalSection	( (CRITICAL_SECTION*)pmutex );
+	return TryEnterCriticalSection((CRITICAL_SECTION*) pmutex);
 }

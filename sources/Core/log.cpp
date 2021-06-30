@@ -1,178 +1,201 @@
 #include "stdafx.h"
 
-extern BOOL					LogExecCB		= TRUE;
-static string_path			logFName		= "engine.log";
-static BOOL 				no_log			= TRUE;
+extern BOOL					LogExecCB = TRUE;
+static string_path			logFName = "engine.log";
+static BOOL 				no_log = TRUE;
 static xrCriticalSection	logCS;
 
-xr_vector<shared_str>*		LogFile			= nullptr;
-static LogCallback			LogCB			= 0;
+xr_vector<shared_str>* LogFile = nullptr;
+static LogCallback			LogCB = 0;
 
-void FlushLog			(const char* file_name)
+void FlushLog(Pcstr file_name)
 {
 	if (no_log)
+	{
 		return;
-
-	logCS.Enter			();
-	
-	IWriter				*f = FS.w_open(file_name);
-	if (f) {
-		for (u32 it=0; it<LogFile->size(); it++)	{
-			const char* s	= *((*LogFile)[it]);
-			f->w_string	(s?s:"");
-		}
-		FS.w_close		(f);
 	}
 
-	logCS.Leave			();
+	logCS.Enter( );
+
+	IWriter* f = FS.w_open(file_name);
+	if (f)
+	{
+		for (U32 it = 0; it < LogFile->size( ); it++)
+		{
+			Pcstr s = *((*LogFile)[it]);
+			f->w_string(s ? s : "");
+		}
+
+		FS.w_close(f);
+	}
+
+	logCS.Leave( );
 }
 
-void FlushLog			()
+void FlushLog( )
 {
-	FlushLog		(logFName);
+	FlushLog(logFName);
 }
 
-void AddOne				(const char* split)
+void AddOne(Pcstr split)
 {
-	if(!LogFile)		
-						return;
+	if (!LogFile)
+	{
+		return;
+	}
 
-	logCS.Enter			();
+	logCS.Enter( );
 
 #ifdef DEBUG
-	OutputDebugString	(split);
-	OutputDebugString	("\n");
+	OutputDebugString(split);
+	OutputDebugString("\n");
 #endif
 
 //	DUMP_PHASE;
 	{
 		shared_str			temp = shared_str(split);
 //		DUMP_PHASE;
-		LogFile->push_back	(temp);
+		LogFile->push_back(temp);
 	}
 
 	//exec CallBack
-	if (LogExecCB&&LogCB)LogCB(split);
+	if (LogExecCB && LogCB)LogCB(split);
 
-	logCS.Leave				();
+	logCS.Leave( );
 }
 
-void Log				(const char* s)
+void Log(Pcstr s)
 {
-	int		i,j;
+	int		i, j;
 	char	split[1024];
 
-	for (i=0,j=0; s[i]!=0; i++) {
-		if (s[i]=='\n') {
-			split[j]=0;	// end of line
-			if (split[0]==0) { split[0]=' '; split[1]=0; }
+	for (i = 0, j = 0; s[i] != 0; i++)
+	{
+		if (s[i] == '\n')
+		{
+			split[j] = 0;	// end of line
+			if (split[0] == 0)
+			{
+				split[0] = ' '; split[1] = 0;
+			}
 			AddOne(split);
-			j=0;
-		} else {
-			split[j++]=s[i];
+			j = 0;
+		}
+		else
+		{
+			split[j++] = s[i];
 		}
 	}
-	split[j]=0;
+	split[j] = 0;
 	AddOne(split);
 }
 
-void __cdecl Msg		(const char* format, ...)
+void __cdecl Msg(Pcstr format, ...)
 {
 	va_list mark;
 	string1024	buf;
-	va_start	(mark, format );
-	int sz		= _vsnprintf(buf, sizeof(buf)-1, format, mark ); buf[sizeof(buf)-1]=0;
-	va_end		(mark);
+	va_start(mark, format);
+	int sz = _vsnprintf(buf, sizeof(buf) - 1, format, mark); buf[sizeof(buf) - 1] = 0;
+	va_end(mark);
 	if (sz)		Log(buf);
 }
 
-void Log				(const char* msg, const char* dop) {
+void Log(Pcstr msg, Pcstr dop)
+{
 	string1024 buf;
 
-	if (dop)	sprintf_s(buf,sizeof(buf),"%s %s",msg,dop);
-	else		sprintf_s(buf,sizeof(buf),"%s",msg);
+	if (dop)	sprintf_s(buf, sizeof(buf), "%s %s", msg, dop);
+	else		sprintf_s(buf, sizeof(buf), "%s", msg);
 
-	Log		(buf);
+	Log(buf);
 }
 
-void Log				(const char* msg, u32 dop) {
+void Log(Pcstr msg, U32 dop)
+{
 	string1024 buf;
 
-	sprintf_s	(buf,sizeof(buf),"%s %d",msg,dop);
-	Log			(buf);
+	sprintf_s(buf, sizeof(buf), "%s %d", msg, dop);
+	Log(buf);
 }
 
-void Log				(const char* msg, int dop) {
+void Log(Pcstr msg, int dop)
+{
 	string1024 buf;
 
-	sprintf_s	(buf, sizeof(buf),"%s %d",msg,dop);
-	Log		(buf);
+	sprintf_s(buf, sizeof(buf), "%s %d", msg, dop);
+	Log(buf);
 }
 
-void Log				(const char* msg, float dop) {
+void Log(Pcstr msg, float dop)
+{
 	string1024 buf;
 
-	sprintf_s	(buf, sizeof(buf),"%s %f",msg,dop);
-	Log		(buf);
+	sprintf_s(buf, sizeof(buf), "%s %f", msg, dop);
+	Log(buf);
 }
 
-void Log				(const char* msg, const Fvector3& dop) {
+void Log(Pcstr msg, const Fvector3& dop)
+{
 	string1024 buf;
 
-	sprintf_s	(buf,sizeof(buf),"%s (%f,%f,%f)",msg,dop.x,dop.y,dop.z);
-	Log		(buf);
+	sprintf_s(buf, sizeof(buf), "%s (%f,%f,%f)", msg, dop.x, dop.y, dop.z);
+	Log(buf);
 }
 
-void Log				(const char* msg, const Fmatrix &dop)	{
+void Log(Pcstr msg, const Fmatrix& dop)
+{
 	string1024	buf;
 
-	sprintf_s	(buf,sizeof(buf),"%s:\n%f,%f,%f,%f\n%f,%f,%f,%f\n%f,%f,%f,%f\n%f,%f,%f,%f\n",msg,dop.i.x,dop.i.y,dop.i.z,dop._14_
-																				,dop.j.x,dop.j.y,dop.j.z,dop._24_
-																				,dop.k.x,dop.k.y,dop.k.z,dop._34_
-																				,dop.c.x,dop.c.y,dop.c.z,dop._44_);
-	Log		(buf);
+	sprintf_s(buf, sizeof(buf), "%s:\n%f,%f,%f,%f\n%f,%f,%f,%f\n%f,%f,%f,%f\n%f,%f,%f,%f\n", msg, dop.i.x, dop.i.y, dop.i.z, dop._14_
+		, dop.j.x, dop.j.y, dop.j.z, dop._24_
+		, dop.k.x, dop.k.y, dop.k.z, dop._34_
+		, dop.c.x, dop.c.y, dop.c.z, dop._44_);
+	Log(buf);
 }
 
-void LogWinErr			(const char* msg, long err_code)	{
-	Msg					("%s: %s",msg,Debug.error2string(err_code)	);
-}
-
-void SetLogCB			(LogCallback cb)
+void LogWinErr(Pcstr msg, long err_code)
 {
-	LogCB				= cb;
+	Msg("%s: %s", msg, Debug.error2string(err_code));
 }
 
-const char* log_name			()
+void SetLogCB(LogCallback cb)
 {
-	return				(logFName);
+	LogCB = cb;
 }
 
-void InitLog()
+Pcstr log_name( )
 {
-	R_ASSERT			(LogFile==nullptr);
-	LogFile				= xr_new< xr_vector<shared_str> >();
+	return logFName;
 }
 
-void CreateLog			(BOOL nl)
+void InitLog( )
 {
-	no_log				= nl;
-	strconcat			(sizeof(logFName),logFName,Core.ApplicationName,"_",Core.UserName,".log");
+	R_ASSERT(LogFile == nullptr);
+	LogFile = xr_new< xr_vector<shared_str> >( );
+}
+
+void CreateLog(BOOL nl)
+{
+	no_log = nl;
+	strconcat(sizeof(logFName), logFName, Core.ApplicationName, "_", Core.UserName, ".log");
 	if (FS.path_exist("$logs$"))
-		FS.update_path	(logFName,"$logs$",logFName);
-	if (!no_log){
-		IWriter *f		= FS.w_open	(logFName);
-		if (f==nullptr){
-			MessageBox	(NULL,"Can't create log file.","Error",MB_ICONERROR);
-			abort();
+		FS.update_path(logFName, "$logs$", logFName);
+	if (!no_log)
+	{
+		IWriter* f = FS.w_open(logFName);
+		if (f == nullptr)
+		{
+			MessageBox(NULL, "Can't create log file.", "Error", MB_ICONERROR);
+			abort( );
 		}
-		FS.w_close		(f);
+		FS.w_close(f);
 	}
-	LogFile->reserve		(128);
+	LogFile->reserve(128);
 }
 
 void CloseLog(void)
 {
-	FlushLog		();
-	LogFile->clear	();
-	xr_delete		(LogFile);
+	FlushLog( );
+	LogFile->clear( );
+	xr_delete(LogFile);
 }

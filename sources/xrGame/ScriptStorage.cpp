@@ -50,25 +50,19 @@ const char* file_header = 0;
 #endif
 
 #ifndef PURE_ALLOC
-#	ifndef USE_MEMORY_MONITOR
-#		define USE_DL_ALLOCATOR
-#	endif // USE_MEMORY_MONITOR
-#endif // PURE_ALLOC
+#	define USE_DL_ALLOCATOR
+#endif // ndef PURE_ALLOC
 
 #ifndef USE_DL_ALLOCATOR
 static void *lua_alloc_xr	(void *ud, void *ptr, size_t osize, size_t nsize) {
   (void)ud;
   (void)osize;
   if (nsize == 0) {
-    xr_free	(ptr);
-    return	NULL;
+	xr_free	(ptr);
+	return	NULL;
   }
   else
-#ifdef DEBUG_MEMORY_NAME
-    return Memory.mem_realloc		(ptr, nsize, "LUA");
-#else // DEBUG_MEMORY_NAME
-    return Memory.mem_realloc		(ptr, nsize);
-#endif // DEBUG_MEMORY_NAME
+	return Memory.mem_realloc		(ptr, nsize);
 }
 #else // USE_DL_ALLOCATOR
 static void *lua_alloc_dl	(void *ud, void *ptr, size_t osize, size_t nsize) {
@@ -373,8 +367,8 @@ bool CScriptStorage::do_file	(const char* caScriptName, const char* caNameSpaceN
 #endif
 	if (0)	//.
 	{
-	    for (int i=0; lua_type(lua(), -i-1); i++)
-            Msg	("%2d : %s",-i-1,lua_typename(lua(), lua_type(lua(), -i-1)));
+		for (int i=0; lua_type(lua(), -i-1); i++)
+			Msg	("%2d : %s",-i-1,lua_typename(lua(), lua_type(lua(), -i-1)));
 	}
 
 	// because that's the first and the only call of the main chunk - there is no point to compile it

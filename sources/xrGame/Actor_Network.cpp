@@ -355,7 +355,12 @@ void CActor::net_Import_Base(CNetPacket& P)
 	P.r_float(N.o_model);
 	P.r_float(N.o_torso.yaw);
 	P.r_float(N.o_torso.pitch);
-	P.r_float(N.o_torso.roll); if (N.o_torso.roll > PI) N.o_torso.roll -= PI_MUL_2;
+	P.r_float(N.o_torso.roll);
+	if (N.o_torso.roll > PI)
+	{
+		N.o_torso.roll -= PI_MUL_2;
+	}
+
 	id_Team = P.r_u8( );
 	id_Squad = P.r_u8( );
 	id_Group = P.r_u8( );

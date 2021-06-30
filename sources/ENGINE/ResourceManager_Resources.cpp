@@ -419,7 +419,7 @@ void	CResourceManager::DBG_VerifyGeoms	()
 
 	D3DVERTEXELEMENT9		test	[MAX_FVF_DECL_SIZE];
 	u32						size	= 0;
-	G->dcl->GetDeclaration			(test,(unsigned int*)&size);
+	G->dcl->GetDeclaration			(test,(U32*)&size);
 	u32 vb_stride					= D3DXGetDeclVertexSize	(test,0);
 	u32 vb_stride_cached			= G->vb_stride;
 	R_ASSERT						(vb_stride == vb_stride_cached);

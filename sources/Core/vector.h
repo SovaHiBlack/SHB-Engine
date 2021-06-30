@@ -32,8 +32,7 @@ const float PI_DIV_4 = 0.7853981633974483096156608458199f;
 const float PI_DIV_6 = 0.5235987755982988730771072305466f;
 const float PI_DIV_8 = 0.3926990816987241548078304229099f;
 
-// Define types and namespaces (CPU & FPU)
-#include	"_types.h"
+// Define namespaces (CPU & FPU)
 #include	"_math.h"
 #include	"_bitwise.h"
 #include	"_std_extensions.h"

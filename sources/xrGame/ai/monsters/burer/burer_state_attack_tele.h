@@ -19,7 +19,7 @@ class CStateBurerAttackTele : public CState<_Object>
 		ACTION_TELE_CONTINUE,
 		ACTION_TELE_FIRE,
 		ACTION_WAIT_TRIPLE_END,
-		ACTION_COMPLETED,
+		ACTION_COMPLETED
 	} m_action;
 
 public:
@@ -34,7 +34,7 @@ public:
 	virtual bool		check_completion( );
 
 private:
-			// Поиск объектов для телекинеза	
+	// Поиск объектов для телекинеза
 	void		FindObjects( );
 
 	// выполнять состояние

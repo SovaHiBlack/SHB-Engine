@@ -98,13 +98,13 @@ void CEntity::Die(CObject* who)
 //обновление состояния
 float CEntity::CalcCondition(float hit)
 {
-
 	// If Local() - perform some logic
 	if (Local( ) && g_Alive( ))
 	{
 		SetfHealth(GetfHealth( ) - hit);
 		SetfHealth((GetfHealth( ) < -1000) ? -1000 : GetfHealth( ));
 	}
+
 	return hit;
 }
 
@@ -183,7 +183,9 @@ BOOL CEntity::net_Spawn(CSE_Abstract* DC)
 			m_killer_id = ALife::_OBJECT_ID(-1);
 	}
 	else
+	{
 		SetfHealth(1.0f);
+	}
 
 	// load damage params
 	if (!E)

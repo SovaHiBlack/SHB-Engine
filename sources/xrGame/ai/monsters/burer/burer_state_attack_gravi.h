@@ -13,7 +13,7 @@ class CStateBurerAttackGravi : public CState<_Object>
 		ACTION_GRAVI_CONTINUE,
 		ACTION_GRAVI_FIRE,
 		ACTION_WAIT_TRIPLE_END,
-		ACTION_COMPLETED,
+		ACTION_COMPLETED
 	} m_action;
 
 	u32			time_gravi_started;

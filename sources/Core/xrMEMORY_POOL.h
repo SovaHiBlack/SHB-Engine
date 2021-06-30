@@ -6,38 +6,50 @@ class	MEMPOOL
 {
 private:
 	xrCriticalSection	cs;
-	u32					s_sector;		// large-memory sector size
-	u32					s_element;		// element size, for example 32
-	u32					s_count;		// element count = [s_sector/s_element]
-	u32					s_offset;		// header size
-	u32					block_count;	// block count
-	U8*					list;
+	U32					s_sector;		// large-memory sector size
+	U32					s_element;		// element size, for example 32
+	U32					s_count;		// element count = [s_sector/s_element]
+	U32					s_offset;		// header size
+	U32					block_count;	// block count
+	U8* list;
 
 private:
-	__forceinline void**			access			(void* P)	{ return (void**) ((void*)(P));	}
-	void				block_create	();
+	__forceinline Pvoid* access(Pvoid P)
+	{
+		return (Pvoid*) ((Pvoid) (P));
+	}
+	void				block_create( );
 
 public:
-	void				_initialize		(u32 _element, u32 _sector, u32 _header);
+	void				_initialize(U32 _element, U32 _sector, U32 _header);
 
-	__forceinline u32				get_block_count	()	{ return block_count; }
-	__forceinline u32				get_element		()	{ return s_element; }
-
-	__forceinline void*			create			()
+	__forceinline U32				get_block_count( )
 	{
-		cs.Enter		();
-		if (0==list)	block_create();
+		return block_count;
+	}
+	__forceinline U32				get_element( )
+	{
+		return s_element;
+	}
 
-		void* E			= list;
-		list			= (U8*)*access(list);
-		cs.Leave		();
+	__forceinline Pvoid create( )
+	{
+		cs.Enter( );
+		if (0 == list)
+		{
+			block_create( );
+		}
+
+		Pvoid E = list;
+		list = (U8*) *access(list);
+		cs.Leave( );
 		return			E;
 	}
-	__forceinline void			destroy			(void* &P)
+	__forceinline void			destroy(Pvoid& P)
 	{
-		cs.Enter		();
-		*access(P)		= list;
-		list			= (U8*)P;
-		cs.Leave		();
+		cs.Enter( );
+		*access(P) = list;
+		list = (U8*) P;
+		cs.Leave( );
 	}
 };

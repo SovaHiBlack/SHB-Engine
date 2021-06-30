@@ -5,39 +5,42 @@ class Basis;
 
 // Basis
 // -----
-class Basis 
+class Basis
 {
 private:
-	enum { d = 3 }		eDimensions;
+	enum
+	{
+		d = 3
+	}		eDimensions;
 
-	// data members
+// data members
 	int					m, s;			// size and number of support vectors
 
 	Fvector3				q0;
 
-	float				z[d+1];
-	float				f[d+1];
-	Fvector3				v[d+1];
-	Fvector3				a[d+1];
-	Fvector3				c[d+1];
-	float				sqr_r[d+1];
+	float				z[d + 1];
+	float				f[d + 1];
+	Fvector3				v[d + 1];
+	Fvector3				a[d + 1];
+	Fvector3				c[d + 1];
+	float				sqr_r[d + 1];
 
-	Fvector3*			current_c;      // vectors to some c[j]
+	Fvector3* current_c;      // vectors to some c[j]
 	float				current_sqr_r;
 public:
-	Basis();
+	Basis( );
 
 	// access
-	const Fvector3*		center			() const;
-	float				squared_radius	() const;
-	int                 size			() const;
-	int                 support_size	() const;
-	float				excess			(const Fvector3& p) const;
+	const Fvector3* center( ) const;
+	float				squared_radius( ) const;
+	int                 size( ) const;
+	int                 support_size( ) const;
+	float				excess(const Fvector3& p) const;
 
 	// modification
-	void                reset			(); // generates empty sphere with m=s=0
-	bool                push			(const Fvector3& p);
-	void                pop				();
+	void                reset( ); // generates empty sphere with m=s=0
+	bool                push(const Fvector3& p);
+	void                pop( );
 };
 
 // Miniball
@@ -57,109 +60,117 @@ private:
 	It          support_end;			// past-the-end iterator of support set
 
 	// private methods
-	void		mtf_mb					(It k);
-	void		pivot_mb				(It k);
-	void		move_to_front			(It j);
-	float		max_excess				(It t, It i, It& pivot) const;
-	float		abs						(float r) const {return (r>0)? r: (-r);}
-	float		sqr						(float r) const {return r*r;}
+	void		mtf_mb(It k);
+	void		pivot_mb(It k);
+	void		move_to_front(It j);
+	float		max_excess(It t, It i, It& pivot) const;
+	float		abs(float r) const
+	{
+		return (r > 0) ? r : (-r);
+	}
+	float		sqr(float r) const
+	{
+		return r * r;
+	}
 public:
 	// construction
-	Miniball() {}
-	void        check_in				(const Fvector3& p);
-	void        build					();
+	Miniball( )
+	{ }
+	void        check_in(const Fvector3& p);
+	void        build( );
 
 	// access
-	Fvector3     center					() const;
-	float		squared_radius			() const;
-	int         num_points				() const;
-	Cit         points_begin			() const;
-	Cit         points_end				() const;
-	int         nr_support_gVectors		() const;
-	Cit         support_points_begin	() const;
-	Cit         support_points_end		() const;
+	Fvector3     center( ) const;
+	float		squared_radius( ) const;
+	int         num_points( ) const;
+	Cit         points_begin( ) const;
+	Cit         points_end( ) const;
+	int         nr_support_gVectors( ) const;
+	Cit         support_points_begin( ) const;
+	Cit         support_points_end( ) const;
 };
 
 // Miniball
 // --------
 
-void Miniball::check_in (const Fvector3& p)
+void Miniball::check_in(const Fvector3& p)
 {
 	L.push_back(p);
 }
 
-void Miniball::build ()
+void Miniball::build( )
 {
-	B.reset();
-	support_end = L.begin();
+	B.reset( );
+	support_end = L.begin( );
 
 	// @@ pivotting or not ?
-	if ( 1 )
-		pivot_mb	(L.end());
+	if (1)
+		pivot_mb(L.end( ));
 	else
-		mtf_mb		(L.end());
+		mtf_mb(L.end( ));
 }
 
-void Miniball::mtf_mb (It i)
+void Miniball::mtf_mb(It i)
 {
-	support_end = L.begin();
+	support_end = L.begin( );
 
-	if ((B.size())== 4) 
+	if ((B.size( )) == 4)
 		return;
 
-	for (It k=L.begin(); k!=i;) 
+	for (It k = L.begin( ); k != i;)
 	{
-		It j=k++;
-		if (B.excess(*j) > 0) 
+		It j = k++;
+		if (B.excess(*j) > 0)
 		{
-			if (B.push(*j)) 
+			if (B.push(*j))
 			{
-				mtf_mb (j);
-				B.pop();
+				mtf_mb(j);
+				B.pop( );
 				move_to_front(j);
 			}
 		}
 	}
 }
 
-void Miniball::move_to_front (It j)
+void Miniball::move_to_front(It j)
 {
 	if (support_end == j)
 		support_end++;
-	L.splice (L.begin(), L, j);
+	L.splice(L.begin( ), L, j);
 }
 
 
-void Miniball::pivot_mb (It i)
+void Miniball::pivot_mb(It i)
 {
-	It t = ++L.begin();
-	mtf_mb (t);
+	It t = ++L.begin( );
+	mtf_mb(t);
 	float max_e, old_sqr_r = 0;
-	do 
+	do
 	{
-		It pivot = L.begin();
-		max_e = max_excess (t, i, pivot);
-		if (max_e > 0) 
+		It pivot = L.begin( );
+		max_e = max_excess(t, i, pivot);
+		if (max_e > 0)
 		{
 			t = support_end;
-			if (t==pivot) ++t;
-			old_sqr_r = B.squared_radius();
-			B.push (*pivot);
-			mtf_mb (support_end);
-			B.pop();
-			move_to_front (pivot);
+			if (t == pivot) ++t;
+			old_sqr_r = B.squared_radius( );
+			B.push(*pivot);
+			mtf_mb(support_end);
+			B.pop( );
+			move_to_front(pivot);
 		}
-	} while ((max_e > 0) && (B.squared_radius() > old_sqr_r));
+	}
+	while ((max_e > 0) && (B.squared_radius( ) > old_sqr_r));
 }
 
-float Miniball::max_excess (It t, It i, It& pivot) const
+float Miniball::max_excess(It t, It i, It& pivot) const
 {
-	const	Fvector3* pCenter = B.center();
-	float				sqr_r	= B.squared_radius();
+	const	Fvector3* pCenter = B.center( );
+	float				sqr_r = B.squared_radius( );
 
 	float e, max_e = 0;
 
-	for (It k=t; k!=i; ++k)
+	for (It k = t; k != i; ++k)
 	{
 		const Fvector3& point = (*k);
 		e = -sqr_r;
@@ -176,42 +187,42 @@ float Miniball::max_excess (It t, It i, It& pivot) const
 	return max_e;
 }
 
-Fvector3 Miniball::center () const
+Fvector3 Miniball::center( ) const
 {
-	return *((Fvector3*)B.center());
+	return *((Fvector3*) B.center( ));
 }
 
-float Miniball::squared_radius () const
+float Miniball::squared_radius( ) const
 {
-	return B.squared_radius();
+	return B.squared_radius( );
 }
 
-int Miniball::num_points () const
+int Miniball::num_points( ) const
 {
-	return L.size();
+	return L.size( );
 }
 
-Miniball::Cit Miniball::points_begin () const
+Miniball::Cit Miniball::points_begin( ) const
 {
-	return L.begin();
+	return L.begin( );
 }
 
-Miniball::Cit Miniball::points_end () const
+Miniball::Cit Miniball::points_end( ) const
 {
-	return L.end();
+	return L.end( );
 }
 
-int Miniball::nr_support_gVectors () const
+int Miniball::nr_support_gVectors( ) const
 {
-	return B.support_size();
+	return B.support_size( );
 }
 
-Miniball::Cit Miniball::support_points_begin () const
+Miniball::Cit Miniball::support_points_begin( ) const
 {
-	return L.begin();
+	return L.begin( );
 }
 
-Miniball::Cit Miniball::support_points_end () const
+Miniball::Cit Miniball::support_points_end( ) const
 {
 	return support_end;
 }
@@ -220,57 +231,57 @@ Miniball::Cit Miniball::support_points_end () const
 //----------------------------------------------------------------------
 // Basis
 //---------------------------------------------------------------------
-const Fvector3* Basis::center () const
+const Fvector3* Basis::center( ) const
 {
 	return current_c;
 }
 
-float Basis::squared_radius() const
+float Basis::squared_radius( ) const
 {
 	return current_sqr_r;
 }
 
-int Basis::size() const
+int Basis::size( ) const
 {
 	return m;
 }
 
-int Basis::support_size() const
+int Basis::support_size( ) const
 {
 	return s;
 }
 
-float Basis::excess (const Fvector3& p) const
+float Basis::excess(const Fvector3& p) const
 {
 	float e = -current_sqr_r;
 	e += p.distance_to_sqr(*current_c);
 	return e;
 }
 
-void Basis::reset ()
+void Basis::reset( )
 {
 	m = s = 0;
 	// we misuse c[0] for the center of the empty sphere
-	c[0].set(0,0,0);
+	c[0].set(0, 0, 0);
 	current_c = c;
 	current_sqr_r = -1;
 }
 
 
-Basis::Basis ()
+Basis::Basis( )
 {
-	reset();
+	reset( );
 }
 
 
-void Basis::pop ()
+void Basis::pop( )
 {
 	--m;
 }
 
-bool Basis::push (const Fvector3& p)
+bool Basis::push(const Fvector3& p)
 {
-	if (m==0)
+	if (m == 0)
 	{
 		q0 = p;
 		c[0] = q0;
@@ -282,44 +293,44 @@ bool Basis::push (const Fvector3& p)
 		const float eps = 1e-16f;
 
 		// set v_m to Q_m
-		v[m].sub(p,q0);
+		v[m].sub(p, q0);
 
 		// compute the a_{m,i}, i< m
-		for (i=1; i<m; ++i)
+		for (i = 1; i < m; ++i)
 		{
-			a[m][i] =  v[i].dotproduct(v[m]);
-			a[m][i] *= (2.f/z[i]);
+			a[m][i] = v[i].dotproduct(v[m]);
+			a[m][i] *= (2.f / z[i]);
 		}
 
 		// update v_m to Q_m-\bar{Q}_m
-		for (i=1; i<m; ++i)
+		for (i = 1; i < m; ++i)
 		{
-			v[m].mad(v[m],v[i],-a[m][i]);
+			v[m].mad(v[m], v[i], -a[m][i]);
 		}
 
 		// compute z_m
-		z[m]=0;
-		z[m] += v[m].square_magnitude();
-		z[m]*=2;
+		z[m] = 0;
+		z[m] += v[m].square_magnitude( );
+		z[m] *= 2;
 
 		// reject push if z_m too small
-		if (z[m]<eps*current_sqr_r)
+		if (z[m] < eps * current_sqr_r)
 		{
 			return false;
 		}
 
 		// update c, sqr_r
-		float e = -sqr_r[m-1];
-		e += p.distance_to_sqr(c[m-1]);
+		float e = -sqr_r[m - 1];
+		e += p.distance_to_sqr(c[m - 1]);
 
-		f[m]=e/z[m];
+		f[m] = e / z[m];
 
-		c[m].mad(c[m-1],v[m],f[m]);
+		c[m].mad(c[m - 1], v[m], f[m]);
 
-		sqr_r[m] = sqr_r[m-1] + e*f[m]/2;
+		sqr_r[m] = sqr_r[m - 1] + e * f[m] / 2;
 	}
 
-	current_c = c+m;
+	current_c = c + m;
 	current_sqr_r = sqr_r[m];
 	s = ++m;
 	return true;
@@ -329,11 +340,11 @@ void Fsphere_compute(Fsphere& dest, const Fvector3* verts, int count)
 {
 	Miniball mb;
 
-	for(int i=0;i<count;i++)
+	for (int i = 0; i < count; i++)
 		mb.check_in(verts[i]);
 
-	mb.build	();
+	mb.build( );
 
-	dest.P.set	(mb.center());
-	dest.R =	( _sqrt( mb.squared_radius() ));
+	dest.P.set(mb.center( ));
+	dest.R = (_sqrt(mb.squared_radius( )));
 }

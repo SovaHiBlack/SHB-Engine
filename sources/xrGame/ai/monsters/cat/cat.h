@@ -22,7 +22,6 @@ public:
 
 	virtual	void	HitEntityInJump		(const CEntity *pEntity);
 
-public:
 	static void script_register(lua_State*);
 };
 

@@ -1,6 +1,6 @@
 #include "stdafx.h"
 
-void	__stdcall	xrMemFill_x86	(void* dest,  int value, u32 count)
+void	__stdcall	xrMemFill_x86(Pvoid dest, int value, U32 count)
 {
-	memset	(dest,int(value),count);
+	memset(dest, int(value), count);
 }

@@ -1,19 +1,18 @@
 #include "stdafx.h"
 
 #include "xrMemory_pure.h"
-
 #include <malloc.h>
 
 xrMemory	Memory;
-BOOL		mem_initialized = FALSE;
+bool		mem_initialized = false;
 bool		shared_str_initialized = false;
 
 // Processor specific implementations
-extern		pso_MemCopy		xrMemCopy_MMX;
-extern		pso_MemCopy		xrMemCopy_x86;
-extern		pso_MemFill		xrMemFill_x86;
-extern		pso_MemFill32	xrMemFill32_MMX;
-extern		pso_MemFill32	xrMemFill32_x86;
+extern pso_MemCopy		xrMemCopy_MMX;
+extern pso_MemCopy		xrMemCopy_x86;
+extern pso_MemFill		xrMemFill_x86;
+extern pso_MemFill32	xrMemFill32_MMX;
+extern pso_MemFill32	xrMemFill32_x86;
 
 xrMemory::xrMemory( )
 {
@@ -22,12 +21,12 @@ xrMemory::xrMemory( )
 	mem_fill32 = xrMemFill32_x86;
 }
 
-void	xrMemory::_initialize(bool bDebug)
+void xrMemory::_initialize(bool bDebug)
 {
 	stat_calls = 0;
 	stat_counter = 0;
 
-	u32	features = CPU::ID.feature & CPU::ID.os_support;
+	U32 features = CPU::ID.feature & CPU::ID.os_support;
 	if (features & _CPU_FEATURE_MMX)
 	{
 		mem_copy = xrMemCopy_MMX;
@@ -42,17 +41,18 @@ void	xrMemory::_initialize(bool bDebug)
 	}
 
 	if (!strstr(Core.Params, "-pure_alloc"))
-	{	// initialize POOLs
-		u32	element = mem_pools_ebase;
-		u32 sector = mem_pools_ebase * 1024;
-		for (u32 pid = 0; pid < mem_pools_count; pid++)
+	{
+		// initialize POOLs
+		U32 element = mem_pools_ebase;
+		U32 sector = mem_pools_ebase * 1024;
+		for (U32 pid = 0; pid < mem_pools_count; pid++)
 		{
 			mem_pools[pid]._initialize(element, sector, 0x1);
 			element += mem_pools_ebase;
 		}
 	}
 
-	mem_initialized = TRUE;
+	mem_initialized = true;
 
 	g_pStringContainer = xr_new<str_container>( );
 	shared_str_initialized = true;
@@ -60,47 +60,50 @@ void	xrMemory::_initialize(bool bDebug)
 	g_pSharedMemoryContainer = xr_new<smem_container>( );
 }
 
-void	xrMemory::_destroy( )
+void xrMemory::_destroy( )
 {
 	xr_delete(g_pSharedMemoryContainer);
 	xr_delete(g_pStringContainer);
 
-	mem_initialized = FALSE;
+	mem_initialized = false;
 }
 
-void	xrMemory::mem_compact( )
+void xrMemory::mem_compact( )
 {
 	RegFlushKey(HKEY_CLASSES_ROOT);
 	RegFlushKey(HKEY_CURRENT_USER);
 	_heapmin( );
 	HeapCompact(GetProcessHeap( ), 0);
-	if (g_pStringContainer)			g_pStringContainer->clean( );
-	if (g_pSharedMemoryContainer)	g_pSharedMemoryContainer->clean( );
+	if (g_pStringContainer)
+	{
+		g_pStringContainer->clean( );
+	}
+
+	if (g_pSharedMemoryContainer)
+	{
+		g_pSharedMemoryContainer->clean( );
+	}
+
 	if (strstr(Core.Params, "-swap_on_compact"))
+	{
 		SetProcessWorkingSetSize(GetCurrentProcess( ), size_t(-1), size_t(-1));
+	}
 }
 
-// xr_strdup
 char* xr_strdup(const char* string)
 {
 	VERIFY(string);
-	u32		len = u32(xr_strlen(string)) + 1;
-	char* memory = (char*) Memory.mem_alloc(len
-
-#ifdef DEBUG_MEMORY_NAME
-											, "strdup"
-#endif // DEBUG_MEMORY_NAME
-
-	);
+	U32 len = U32(xr_strlen(string)) + 1;
+	char* memory = (char*) Memory.mem_alloc(len);
 	CopyMemory(memory, string, len);
 	return	memory;
 }
 
-CORE_API		BOOL			is_stack_ptr(void* _ptr)
+CORE_API		BOOL			is_stack_ptr(Pvoid _ptr)
 {
 	int			local_value = 0;
-	void* ptr_refsound = _ptr;
-	void* ptr_local = &local_value;
+	Pvoid ptr_refsound = _ptr;
+	Pvoid ptr_local = &local_value;
 	ptrdiff_t	difference = (ptrdiff_t) _abs(s64(ptrdiff_t(ptr_local) - ptrdiff_t(ptr_refsound)));
 	return		(difference < (512 * 1024));
 }

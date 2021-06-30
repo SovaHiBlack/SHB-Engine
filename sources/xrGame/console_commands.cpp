@@ -118,9 +118,7 @@ enum E_COMMON_FLAGS
 };
 
 #ifndef PURE_ALLOC
-#	ifndef USE_MEMORY_MONITOR
-#		define SEVERAL_ALLOCATORS
-#	endif // ndef USE_MEMORY_MONITOR
+#	define SEVERAL_ALLOCATORS
 #endif // ndef PURE_ALLOC
 
 #ifdef SEVERAL_ALLOCATORS

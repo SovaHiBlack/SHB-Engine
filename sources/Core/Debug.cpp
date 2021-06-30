@@ -18,17 +18,12 @@ extern bool shared_str_initialized;
 #include <new.h>							// for _set_new_mode
 #include <signal.h>							// for signals
 
-#if 0//def DEBUG
-#	define USE_OWN_ERROR_MESSAGE_WINDOW
-#	define USE_OWN_MINI_DUMP
-#endif // DEBUG
-
 CORE_API CDebug		Debug;
 
 static bool error_after_dialog = false;
-extern void copy_to_clipboard(const char* string);
+extern void copy_to_clipboard(Pcstr string);
 
-void copy_to_clipboard(const char* string)
+void copy_to_clipboard(Pcstr string)
 {
 	if (IsDebuggerPresent( ))
 	{
@@ -55,7 +50,7 @@ void copy_to_clipboard(const char* string)
 	CloseClipboard( );
 }
 
-void update_clipboard(const char* string)
+void update_clipboard(Pcstr string)
 {
 
 #ifdef DEBUG
@@ -78,8 +73,8 @@ void update_clipboard(const char* string)
 	}
 
 	char* memory = (char*) GlobalLock(handle);
-	u32 memory_length = xr_strlen(memory);
-	u32 string_length = xr_strlen(string);
+	U32 memory_length = xr_strlen(memory);
+	U32 string_length = xr_strlen(string);
 	char* buffer = (char*) _alloca((memory_length + string_length + 1) * sizeof(char));
 	strcpy(buffer, memory);
 	GlobalUnlock(handle);
@@ -95,7 +90,7 @@ extern void BuildStackTrace( );
 extern char g_stackTrace[100][4096];
 extern int	g_stackTraceCount;
 
-void LogStackTrace(const char* header)
+void LogStackTrace(Pcstr header)
 {
 	if (!shared_str_initialized)
 	{
@@ -112,11 +107,11 @@ void LogStackTrace(const char* header)
 	}
 }
 
-void gather_info(const char* expression, const char* description, const char* argument0, const char* argument1, const char* file, int line, const char* function, char* assertion_info)
+void gather_info(Pcstr expression, Pcstr description, Pcstr argument0, Pcstr argument1, Pcstr file, int line, Pcstr function, char* assertion_info)
 {
 	char* buffer = assertion_info;
-	const char* endline = "\n";
-	const char* prefix = "[error]";
+	Pcstr endline = "\n";
+	Pcstr prefix = "[error]";
 	bool extended_description = (description && !argument0 && strchr(description, '\n'));
 	for (int i = 0; i < 2; ++i)
 	{
@@ -166,21 +161,12 @@ void gather_info(const char* expression, const char* description, const char* ar
 		}
 	}
 
-#ifdef USE_MEMORY_MONITOR
-	memory_monitor::flush_each_time(true);
-	memory_monitor::flush_each_time(false);
-#endif // def USE_MEMORY_MONITOR
-
 	if (!IsDebuggerPresent( ) && !strstr(GetCommandLine( ), "-no_call_stack_assert"))
 	{
 		if (shared_str_initialized)
 		{
 			Msg("stack trace:\n");
 		}
-
-#ifdef USE_OWN_ERROR_MESSAGE_WINDOW
-		buffer += sprintf(buffer, "stack trace:%s%s", endline, endline);
-#endif // def USE_OWN_ERROR_MESSAGE_WINDOW
 
 		BuildStackTrace( );
 
@@ -190,10 +176,6 @@ void gather_info(const char* expression, const char* description, const char* ar
 			{
 				Msg("%s", g_stackTrace[i]);
 			}
-
-#ifdef USE_OWN_ERROR_MESSAGE_WINDOW
-			buffer += sprintf(buffer, "%s%s", g_stackTrace[i], endline);
-#endif // def USE_OWN_ERROR_MESSAGE_WINDOW
 		}
 
 		if (shared_str_initialized)
@@ -212,7 +194,7 @@ void CDebug::do_exit(const std::string& message)
 	TerminateProcess(GetCurrentProcess( ), 1);
 }
 
-void CDebug::backend(const char* expression, const char* description, const char* argument0, const char* argument1, const char* file, int line, const char* function, bool& ignore_always)
+void CDebug::backend(Pcstr expression, Pcstr description, Pcstr argument0, Pcstr argument1, Pcstr file, int line, Pcstr function, bool& ignore_always)
 {
 	static xrCriticalSection CS;
 	CS.Enter( );
@@ -221,14 +203,6 @@ void CDebug::backend(const char* expression, const char* description, const char
 
 	string4096 assertion_info;
 	gather_info(expression, description, argument0, argument1, file, line, function, assertion_info);
-
-#ifdef USE_OWN_ERROR_MESSAGE_WINDOW
-	const char* endline = "\r\n";
-	char* buffer = assertion_info + xr_strlen(assertion_info);
-	buffer += sprintf(buffer, "%sPress CANCEL to abort execution%s", endline, endline);
-	buffer += sprintf(buffer, "Press TRY AGAIN to continue execution%s", endline);
-	buffer += sprintf(buffer, "Press CONTINUE to continue execution and ignore all the errors of this type%s%s", endline, endline);
-#endif // def USE_OWN_ERROR_MESSAGE_WINDOW
 
 	if (handler)
 	{
@@ -240,33 +214,7 @@ void CDebug::backend(const char* expression, const char* description, const char
 		get_on_dialog( )	(true);
 	}
 
-#ifdef USE_OWN_ERROR_MESSAGE_WINDOW
-	int result = MessageBox(GetTopWindow(NULL), assertion_info, "Fatal Error", MB_CANCELTRYCONTINUE | MB_ICONERROR | MB_SYSTEMMODAL);
-
-	switch (result)
-	{
-		case IDCANCEL:
-		{
-			DEBUG_INVOKE;
-			break;
-		}
-		case IDTRYAGAIN:
-		{
-			error_after_dialog = false;
-			break;
-		}
-		case IDCONTINUE:
-		{
-			error_after_dialog = false;
-			ignore_always = true;
-			break;
-		}
-		default: NODEFAULT;
-	}
-#else // def USE_OWN_ERROR_MESSAGE_WINDOW
 	DEBUG_INVOKE;
-#endif // def USE_OWN_ERROR_MESSAGE_WINDOW
-
 
 	if (get_on_dialog( ))
 	{
@@ -276,9 +224,9 @@ void CDebug::backend(const char* expression, const char* description, const char
 	CS.Leave( );
 }
 
-const char* CDebug::error2string(long code)
+Pcstr CDebug::error2string(long code)
 {
-	const char* result = 0;
+	Pcstr result = 0;
 	static string1024 desc_storage;
 
 	result = DXGetErrorDescription(code);
@@ -292,42 +240,42 @@ const char* CDebug::error2string(long code)
 	return result;
 }
 
-void CDebug::error(long hr, const char* expr, const char* file, int line, const char* function, bool& ignore_always)
+void CDebug::error(long hr, Pcstr expr, Pcstr file, int line, Pcstr function, bool& ignore_always)
 {
 	backend(error2string(hr), expr, 0, 0, file, line, function, ignore_always);
 }
 
-void CDebug::error(long hr, const char* expr, const char* e2, const char* file, int line, const char* function, bool& ignore_always)
+void CDebug::error(long hr, Pcstr expr, Pcstr e2, Pcstr file, int line, Pcstr function, bool& ignore_always)
 {
 	backend(error2string(hr), expr, e2, 0, file, line, function, ignore_always);
 }
 
-void CDebug::fail(const char* e1, const char* file, int line, const char* function, bool& ignore_always)
+void CDebug::fail(Pcstr e1, Pcstr file, int line, Pcstr function, bool& ignore_always)
 {
 	backend("assertion failed", e1, 0, 0, file, line, function, ignore_always);
 }
 
-void CDebug::fail(const char* e1, const std::string& e2, const char* file, int line, const char* function, bool& ignore_always)
+void CDebug::fail(Pcstr e1, const std::string& e2, Pcstr file, int line, Pcstr function, bool& ignore_always)
 {
 	backend(e1, e2.c_str( ), 0, 0, file, line, function, ignore_always);
 }
 
-void CDebug::fail(const char* e1, const char* e2, const char* file, int line, const char* function, bool& ignore_always)
+void CDebug::fail(Pcstr e1, Pcstr e2, Pcstr file, int line, Pcstr function, bool& ignore_always)
 {
 	backend(e1, e2, 0, 0, file, line, function, ignore_always);
 }
 
-void CDebug::fail(const char* e1, const char* e2, const char* e3, const char* file, int line, const char* function, bool& ignore_always)
+void CDebug::fail(Pcstr e1, Pcstr e2, Pcstr e3, Pcstr file, int line, Pcstr function, bool& ignore_always)
 {
 	backend(e1, e2, e3, 0, file, line, function, ignore_always);
 }
 
-void CDebug::fail(const char* e1, const char* e2, const char* e3, const char* e4, const char* file, int line, const char* function, bool& ignore_always)
+void CDebug::fail(Pcstr e1, Pcstr e2, Pcstr e3, Pcstr e4, Pcstr file, int line, Pcstr function, bool& ignore_always)
 {
 	backend(e1, e2, e3, e4, file, line, function, ignore_always);
 }
 
-void __cdecl CDebug::fatal(const char* file, int line, const char* function, const char* F, ...)
+void __cdecl CDebug::fatal(Pcstr file, int line, Pcstr function, Pcstr F, ...)
 {
 	string1024 buffer;
 
@@ -344,16 +292,16 @@ void __cdecl CDebug::fatal(const char* file, int line, const char* function, con
 int out_of_memory_handler(size_t size)
 {
 	Memory.mem_compact( );
-	u32 process_heap = mem_usage_impl(nullptr, nullptr);
-	u32 eco_strings = g_pStringContainer->stat_economy( );
-	u32 eco_smem = g_pSharedMemoryContainer->stat_economy( );
+	U32 process_heap = mem_usage_impl(nullptr, nullptr);
+	U32 eco_strings = g_pStringContainer->stat_economy( );
+	U32 eco_smem = g_pSharedMemoryContainer->stat_economy( );
 	Msg("* [x-ray]: process heap[%d K]", process_heap / 1024);
 	Msg("* [x-ray]: economy: strings[%d K], smem[%d K]", eco_strings / 1024, eco_smem);
 	Debug.fatal(DEBUG_INFO, "Out of memory. Memory request: %d K", size / 1024);
 	return 1;
 }
 
-extern const char* log_name( );
+extern Pcstr log_name( );
 
 #if 1
 extern void BuildStackTrace(struct _EXCEPTION_POINTERS* pExceptionInfo);
@@ -363,129 +311,9 @@ extern "C" BOOL __stdcall SetCrashHandlerFilter(PFNCHFILTFN pFn);
 
 static UnhandledExceptionFilterType* previous_filter = 0;
 
-#ifdef USE_OWN_MINI_DUMP
-typedef BOOL(WINAPI* MINIDUMPWRITEDUMP)(HANDLE hProcess, DWORD dwPid, HANDLE hFile, MINIDUMP_TYPE DumpType,
-										CONST PMINIDUMP_EXCEPTION_INFORMATION ExceptionParam,
-										CONST PMINIDUMP_USER_STREAM_INFORMATION UserStreamParam,
-										CONST PMINIDUMP_CALLBACK_INFORMATION CallbackParam
-										);
-
-void FlushLog(const char* file_name);
-
-void save_mini_dump(_EXCEPTION_POINTERS* pExceptionInfo)
+void format_message(char* buffer, const U32& buffer_size)
 {
-	// firstly see if dbghelp.dll is around and has the function we need
-	// look next to the EXE first, as the one in System32 might be old 
-	// (e.g. Windows 2000)
-	HMODULE hDll = NULL;
-	string_path		szDbgHelpPath;
-
-	if (GetModuleFileName(NULL, szDbgHelpPath, _MAX_PATH))
-	{
-		char* pSlash = strchr(szDbgHelpPath, '\\');
-		if (pSlash)
-		{
-			strcpy(pSlash + 1, "DBGHELP.DLL");
-			hDll = ::LoadLibrary(szDbgHelpPath);
-		}
-	}
-
-	if (hDll == NULL)
-	{
-		// load any version we can
-		hDll = ::LoadLibrary("DBGHELP.DLL");
-	}
-
-	LPCTSTR szResult = NULL;
-
-	if (hDll)
-	{
-		MINIDUMPWRITEDUMP pDump = (MINIDUMPWRITEDUMP)::GetProcAddress(hDll, "MiniDumpWriteDump");
-		if (pDump)
-		{
-			string_path	szDumpPath;
-			string_path	szScratch;
-			string64	t_stemp;
-
-			timestamp(t_stemp);
-			strcpy(szDumpPath, Core.ApplicationName);
-			strcat(szDumpPath, "_");
-			strcat(szDumpPath, Core.UserName);
-			strcat(szDumpPath, "_");
-			strcat(szDumpPath, t_stemp);
-			strcat(szDumpPath, ".mdmp");
-
-			__try
-			{
-				if (FS.path_exist("$logs$"))
-					FS.update_path(szDumpPath, "$logs$", szDumpPath);
-			}
-			__except (EXCEPTION_EXECUTE_HANDLER)
-			{
-				string_path	temp;
-				strcpy(temp, szDumpPath);
-				strcpy(szDumpPath, "logs/");
-				strcat(szDumpPath, temp);
-			}
-
-			string_path	log_file_name;
-			strconcat(sizeof(log_file_name), log_file_name, szDumpPath, ".log");
-			FlushLog(log_file_name);
-
-			// create the file
-			HANDLE hFile = ::CreateFile(szDumpPath, GENERIC_WRITE, FILE_SHARE_WRITE, NULL, CREATE_ALWAYS, FILE_ATTRIBUTE_NORMAL, NULL);
-			if (INVALID_HANDLE_VALUE == hFile)
-			{
-				// try to place into current directory
-				MoveMemory(szDumpPath, szDumpPath + 5, strlen(szDumpPath));
-				hFile = ::CreateFile(szDumpPath, GENERIC_WRITE, FILE_SHARE_WRITE, NULL, CREATE_ALWAYS, FILE_ATTRIBUTE_NORMAL, NULL);
-			}
-			if (hFile != INVALID_HANDLE_VALUE)
-			{
-				_MINIDUMP_EXCEPTION_INFORMATION ExInfo;
-
-				ExInfo.ThreadId = ::GetCurrentThreadId( );
-				ExInfo.ExceptionPointers = pExceptionInfo;
-				ExInfo.ClientPointers = NULL;
-
-				// write the dump
-				MINIDUMP_TYPE	dump_flags = MINIDUMP_TYPE(MiniDumpNormal | MiniDumpFilterMemory | MiniDumpScanMemory);
-
-				BOOL bOK = pDump(GetCurrentProcess( ), GetCurrentProcessId( ), hFile, dump_flags, &ExInfo, NULL, NULL);
-				if (bOK)
-				{
-					sprintf(szScratch, "Saved dump file to '%s'", szDumpPath);
-					szResult = szScratch;
-//					retval = EXCEPTION_EXECUTE_HANDLER;
-				}
-				else
-				{
-					sprintf(szScratch, "Failed to save dump file to '%s' (error %d)", szDumpPath, GetLastError( ));
-					szResult = szScratch;
-				}
-				::CloseHandle(hFile);
-			}
-			else
-			{
-				sprintf(szScratch, "Failed to create dump file '%s' (error %d)", szDumpPath, GetLastError( ));
-				szResult = szScratch;
-			}
-		}
-		else
-		{
-			szResult = "DBGHELP.DLL too old";
-		}
-	}
-	else
-	{
-		szResult = "DBGHELP.DLL not found";
-	}
-}
-#endif // USE_OWN_MINI_DUMP
-
-void format_message(char* buffer, const u32& buffer_size)
-{
-	LPVOID message;
+	Pvoid message;
 	DWORD error_code = GetLastError( );
 
 	if (!error_code)
@@ -547,39 +375,15 @@ LONG WINAPI UnhandledFilter(_EXCEPTION_POINTERS* pExceptionInfo)
 		FlushLog( );
 	}
 
-#ifndef USE_OWN_ERROR_MESSAGE_WINDOW
-#	ifdef USE_OWN_MINI_DUMP
-	save_mini_dump(pExceptionInfo);
-#	endif // USE_OWN_MINI_DUMP
-#else // USE_OWN_ERROR_MESSAGE_WINDOW
-	if (!error_after_dialog)
-	{
-		if (Debug.get_on_dialog( ))
-			Debug.get_on_dialog( )	(true);
-
-		MessageBox(NULL, "Fatal error occured\n\nPress OK to abort program execution", "Fatal error", MB_OK | MB_ICONERROR | MB_SYSTEMMODAL);
-	}
-#endif // USE_OWN_ERROR_MESSAGE_WINDOW
-
 	if (!previous_filter)
 	{
-#ifdef USE_OWN_ERROR_MESSAGE_WINDOW
-		if (Debug.get_on_dialog( ))
-			Debug.get_on_dialog( )	(false);
-#endif // USE_OWN_ERROR_MESSAGE_WINDOW
-
 		return				(EXCEPTION_CONTINUE_SEARCH);
 	}
 
 	previous_filter(pExceptionInfo);
 
-#ifdef USE_OWN_ERROR_MESSAGE_WINDOW
-	if (Debug.get_on_dialog( ))
-		Debug.get_on_dialog( )		(false);
-#endif // USE_OWN_ERROR_MESSAGE_WINDOW
-
 	return					(EXCEPTION_CONTINUE_SEARCH);
-	}
+}
 #endif
 
 //////////////////////////////////////////////////////////////////////
@@ -607,7 +411,7 @@ void _terminate( )
 		assertion_info
 	);
 
-	const char* endline = "\r\n";
+	Pcstr endline = "\r\n";
 	char* buffer = assertion_info + xr_strlen(assertion_info);
 	buffer += sprintf(buffer, "Press OK to abort execution%s", endline);
 
@@ -626,7 +430,7 @@ void debug_on_thread_spawn( )
 	std::set_terminate(_terminate);
 }
 
-static void handler_base(const char* reason_string)
+static void handler_base(Pcstr reason_string)
 {
 	bool							ignore_always = false;
 	Debug.backend(
@@ -643,7 +447,7 @@ static void invalid_parameter_handler(
 	const wchar_t* expression,
 	const wchar_t* function,
 	const wchar_t* file,
-	unsigned int line,
+	U32 line,
 	uintptr_t reserved
 )
 {

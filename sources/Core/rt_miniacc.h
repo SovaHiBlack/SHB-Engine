@@ -836,21 +836,21 @@
 extern "C" {
 #endif
 #if (ACC_CC_BORLANDC && (__BORLANDC__ >= 0x0200))
-   extern void __near __cdecl _AHSHIFT(void);
+	extern void __near __cdecl _AHSHIFT(void);
 #  define ACC_MM_AHSHIFT      ((unsigned) _AHSHIFT)
 #elif (ACC_CC_DMC || ACC_CC_SYMANTECC || ACC_CC_ZORTECHC)
-   extern void __near __cdecl _AHSHIFT(void);
+	extern void __near __cdecl _AHSHIFT(void);
 #  define ACC_MM_AHSHIFT      ((unsigned) _AHSHIFT)
 #elif (ACC_CC_MSC || ACC_CC_TOPSPEEDC)
-   extern void __near __cdecl _AHSHIFT(void);
+	extern void __near __cdecl _AHSHIFT(void);
 #  define ACC_MM_AHSHIFT      ((unsigned) _AHSHIFT)
 #elif (ACC_CC_TURBOC && (__TURBOC__ >= 0x0295))
-   extern void __near __cdecl _AHSHIFT(void);
+	extern void __near __cdecl _AHSHIFT(void);
 #  define ACC_MM_AHSHIFT      ((unsigned) _AHSHIFT)
 #elif ((ACC_CC_AZTECC || ACC_CC_PACIFICC || ACC_CC_TURBOC) && ACC_OS_DOS16)
 #  define ACC_MM_AHSHIFT      12
 #elif (ACC_CC_WATCOMC)
-   extern unsigned char _HShift;
+	extern unsigned char _HShift;
 #  define ACC_MM_AHSHIFT      ((unsigned) _HShift)
 #else
 #  error "FIXME - implement ACC_MM_AHSHIFT"
@@ -2204,8 +2204,8 @@ __acc_gnuc_extension__ typedef unsigned long long acc_ullong_t;
 #  define acc_int16e_t          short int
 #  define acc_uint16e_t         unsigned short int
 #elif 1 && !defined(ACC_CFG_TYPE_NO_MODE_HI) && (ACC_CC_GNUC >= 0x025f00ul)
-   typedef int __acc_int16e_hi_t __attribute__((__mode__(__HI__)));
-   typedef unsigned int __acc_uint16e_hi_t __attribute__((__mode__(__HI__)));
+typedef int __acc_int16e_hi_t __attribute__((__mode__(__HI__)));
+typedef unsigned int __acc_uint16e_hi_t __attribute__((__mode__(__HI__)));
 #  define acc_int16e_t          __acc_int16e_hi_t
 #  define acc_uint16e_t         __acc_uint16e_hi_t
 #elif (ACC_SIZEOF___INT16 == 2)
@@ -2231,13 +2231,13 @@ __acc_gnuc_extension__ typedef unsigned long long acc_ullong_t;
 #  define acc_int32e_t          acc_llong_t
 #  define acc_uint32e_t         acc_ullong_t
 #elif 1 && !defined(ACC_CFG_TYPE_NO_MODE_SI) && (ACC_CC_GNUC >= 0x025f00ul) && (__INT_MAX__+0 > 2147483647L)
-   typedef int __acc_int32e_si_t __attribute__((__mode__(__SI__)));
-   typedef unsigned int __acc_uint32e_si_t __attribute__((__mode__(__SI__)));
+typedef int __acc_int32e_si_t __attribute__((__mode__(__SI__)));
+typedef unsigned int __acc_uint32e_si_t __attribute__((__mode__(__SI__)));
 #  define acc_int32e_t          __acc_int32e_si_t
 #  define acc_uint32e_t         __acc_uint32e_si_t
 #elif 1 && !defined(ACC_CFG_TYPE_NO_MODE_SI) && (ACC_CC_GNUC >= 0x025f00ul) && defined(__AVR__) && (__LONG_MAX__+0 == 32767L)
-   typedef int __acc_int32e_si_t __attribute__((__mode__(__SI__)));
-   typedef unsigned int __acc_uint32e_si_t __attribute__((__mode__(__SI__)));
+typedef int __acc_int32e_si_t __attribute__((__mode__(__SI__)));
+typedef unsigned int __acc_uint32e_si_t __attribute__((__mode__(__SI__)));
 #  define acc_int32e_t          __acc_int32e_si_t
 #  define acc_uint32e_t         __acc_uint32e_si_t
 #  define ACC_INT32_C(c)        c##LL
@@ -2321,14 +2321,14 @@ __acc_gnuc_extension__ typedef unsigned long long acc_ullong_t;
 #if !defined(acc_intptr_t)
 #if 1 && (ACC_OS_OS400 && (ACC_SIZEOF_VOID_P == 16))
 #  define __ACC_INTPTR_T_IS_POINTER 1
-   typedef char*                acc_intptr_t;
-   typedef char*                acc_uintptr_t;
+typedef char* acc_intptr_t;
+typedef char* acc_uintptr_t;
 #  define acc_intptr_t          acc_intptr_t
 #  define acc_uintptr_t         acc_uintptr_t
 #  define ACC_SIZEOF_ACC_INTPTR_T   ACC_SIZEOF_VOID_P
 #elif (ACC_ARCH_I386 && ACC_CC_MSC && (_MSC_VER >= 1300))
-   typedef __w64 int            acc_intptr_t;
-   typedef __w64 unsigned int   acc_uintptr_t;
+typedef __w64 int            acc_intptr_t;
+typedef __w64 unsigned int   acc_uintptr_t;
 #  define acc_intptr_t          acc_intptr_t
 #  define acc_uintptr_t         acc_uintptr_t
 #  define ACC_SIZEOF_ACC_INTPTR_T   ACC_SIZEOF_INT
@@ -2462,11 +2462,11 @@ __acc_gnuc_extension__ typedef unsigned long long acc_ullong_t;
 #  define acc_signo_t           int
 #endif
 #if (ACC_BROKEN_CDECL_ALT_SYNTAX)
-typedef void __acc_cdecl_sighandler (*acc_sighandler_t)(acc_signo_t);
+typedef void __acc_cdecl_sighandler(*acc_sighandler_t)(acc_signo_t);
 #elif defined(RETSIGTYPE)
-typedef RETSIGTYPE (__acc_cdecl_sighandler *acc_sighandler_t)(acc_signo_t);
+typedef RETSIGTYPE(__acc_cdecl_sighandler* acc_sighandler_t)(acc_signo_t);
 #else
-typedef void (__acc_cdecl_sighandler *acc_sighandler_t)(acc_signo_t);
+typedef void (__acc_cdecl_sighandler* acc_sighandler_t)(acc_signo_t);
 #endif
 #  if defined(ACC_CFG_NO_ACC_UA_H)
 #  else
@@ -2477,15 +2477,24 @@ typedef void (__acc_cdecl_sighandler *acc_sighandler_t)(acc_signo_t);
 #elif (ACC_CC_LLVM)
 #elif (ACC_CC_GNUC || ACC_CC_INTELC || ACC_CC_PATHSCALE)
 #if !defined(__acc_ua16_t) && (ACC_OPT_UNALIGNED16) && defined(acc_int16e_t)
-   typedef struct { acc_uint16e_t v __attribute__((__packed__)); } __acc_ua16_t;
+typedef struct
+{
+	acc_uint16e_t v __attribute__((__packed__));
+} __acc_ua16_t;
 #  define __acc_ua16_t __acc_ua16_t
 #endif
 #if !defined(__acc_ua32_t) && (ACC_OPT_UNALIGNED32) && defined(acc_int32e_t)
-   typedef struct { acc_uint32e_t v __attribute__((__packed__)); } __acc_ua32_t;
+typedef struct
+{
+	acc_uint32e_t v __attribute__((__packed__));
+} __acc_ua32_t;
 #  define __acc_ua32_t __acc_ua32_t
 #endif
 #if !defined(__acc_ua64_t) && (ACC_OPT_UNALIGNED64) && defined(acc_int64l_t)
-   typedef struct { acc_uint64l_t v __attribute__((__packed__)); } __acc_ua64_t;
+typedef struct
+{
+	acc_uint64l_t v __attribute__((__packed__));
+} __acc_ua64_t;
 #  define __acc_ua64_t __acc_ua64_t
 #endif
 #endif
@@ -2503,19 +2512,21 @@ typedef void (__acc_cdecl_sighandler *acc_sighandler_t)(acc_signo_t);
 #if (ACC_ARCH_POWERPC && ACC_ABI_BIG_ENDIAN) && (ACC_CC_GNUC)
 #if !defined(ACC_UA_GET_LE16)
 extern __acc_forceinline unsigned long __ACC_UA_GET_LE16(const void* pp);
-extern __acc_forceinline unsigned long __ACC_UA_GET_LE16(const void* pp) {
-    const acc_uint16e_t* p = (const acc_uint16e_t*) pp;
-    unsigned long v;
-    __asm__ __volatile__("lhbrx %0,0,%1" : "=r" (v) : "r" (p), "m" (*p));
-    return v;
+extern __acc_forceinline unsigned long __ACC_UA_GET_LE16(const void* pp)
+{
+	const acc_uint16e_t* p = (const acc_uint16e_t*) pp;
+	unsigned long v;
+	__asm__ __volatile__("lhbrx %0,0,%1" : "=r" (v) : "r" (p), "m" (*p));
+	return v;
 }
 #define ACC_UA_GET_LE16(p)      __ACC_UA_GET_LE16(p)
 #endif
 #if !defined(ACC_UA_SET_LE16)
 extern __acc_forceinline void __ACC_UA_SET_LE16(void* pp, unsigned long v);
-extern __acc_forceinline void __ACC_UA_SET_LE16(void* pp, unsigned long v) {
-    acc_uint16e_t* p = (acc_uint16e_t*) pp;
-    __asm__ __volatile__("sthbrx %2,0,%1" : "=m" (*p) : "r" (p), "r" (v));
+extern __acc_forceinline void __ACC_UA_SET_LE16(void* pp, unsigned long v)
+{
+	acc_uint16e_t* p = (acc_uint16e_t*) pp;
+	__asm__ __volatile__("sthbrx %2,0,%1" : "=m" (*p) : "r" (p), "r" (v));
 }
 #define ACC_UA_SET_LE16(p,v)    __ACC_UA_SET_LE16(p,v)
 #endif
@@ -2539,19 +2550,21 @@ extern __acc_forceinline void __ACC_UA_SET_LE16(void* pp, unsigned long v) {
 #if (ACC_ARCH_POWERPC && ACC_ABI_BIG_ENDIAN) && (ACC_CC_GNUC)
 #if !defined(ACC_UA_GET_LE32)
 extern __acc_forceinline unsigned long __ACC_UA_GET_LE32(const void* pp);
-extern __acc_forceinline unsigned long __ACC_UA_GET_LE32(const void* pp) {
-    const acc_uint32e_t* p = (const acc_uint32e_t*) pp;
-    unsigned long v;
-    __asm__ __volatile__("lwbrx %0,0,%1" : "=r" (v) : "r" (p), "m" (*p));
-    return v;
+extern __acc_forceinline unsigned long __ACC_UA_GET_LE32(const void* pp)
+{
+	const acc_uint32e_t* p = (const acc_uint32e_t*) pp;
+	unsigned long v;
+	__asm__ __volatile__("lwbrx %0,0,%1" : "=r" (v) : "r" (p), "m" (*p));
+	return v;
 }
 #define ACC_UA_GET_LE32(p)      __ACC_UA_GET_LE32(p)
 #endif
 #if !defined(ACC_UA_SET_LE32)
 extern __acc_forceinline void __ACC_UA_SET_LE32(void* pp, unsigned long v);
-extern __acc_forceinline void __ACC_UA_SET_LE32(void* pp, unsigned long v) {
-    acc_uint32e_t* p = (acc_uint32e_t*) pp;
-    __asm__ __volatile__("stwbrx %2,0,%1" : "=m" (*p) : "r" (p), "r" (v));
+extern __acc_forceinline void __ACC_UA_SET_LE32(void* pp, unsigned long v)
+{
+	acc_uint32e_t* p = (acc_uint32e_t*) pp;
+	__asm__ __volatile__("stwbrx %2,0,%1" : "=m" (*p) : "r" (p), "r" (v));
 }
 #define ACC_UA_SET_LE32(p,v)    __ACC_UA_SET_LE32(p,v)
 #endif
@@ -2604,8 +2617,8 @@ __acc_gnuc_extension__ typedef unsigned long long acc_ullong_t;
 #  define acc_int16e_t          short int
 #  define acc_uint16e_t         unsigned short int
 #elif 1 && !defined(ACC_CFG_TYPE_NO_MODE_HI) && (ACC_CC_GNUC >= 0x025f00ul)
-   typedef int __acc_int16e_hi_t __attribute__((__mode__(__HI__)));
-   typedef unsigned int __acc_uint16e_hi_t __attribute__((__mode__(__HI__)));
+typedef int __acc_int16e_hi_t __attribute__((__mode__(__HI__)));
+typedef unsigned int __acc_uint16e_hi_t __attribute__((__mode__(__HI__)));
 #  define acc_int16e_t          __acc_int16e_hi_t
 #  define acc_uint16e_t         __acc_uint16e_hi_t
 #elif (ACC_SIZEOF___INT16 == 2)
@@ -2631,13 +2644,13 @@ __acc_gnuc_extension__ typedef unsigned long long acc_ullong_t;
 #  define acc_int32e_t          acc_llong_t
 #  define acc_uint32e_t         acc_ullong_t
 #elif 1 && !defined(ACC_CFG_TYPE_NO_MODE_SI) && (ACC_CC_GNUC >= 0x025f00ul) && (__INT_MAX__+0 > 2147483647L)
-   typedef int __acc_int32e_si_t __attribute__((__mode__(__SI__)));
-   typedef unsigned int __acc_uint32e_si_t __attribute__((__mode__(__SI__)));
+typedef int __acc_int32e_si_t __attribute__((__mode__(__SI__)));
+typedef unsigned int __acc_uint32e_si_t __attribute__((__mode__(__SI__)));
 #  define acc_int32e_t          __acc_int32e_si_t
 #  define acc_uint32e_t         __acc_uint32e_si_t
 #elif 1 && !defined(ACC_CFG_TYPE_NO_MODE_SI) && (ACC_CC_GNUC >= 0x025f00ul) && defined(__AVR__) && (__LONG_MAX__+0 == 32767L)
-   typedef int __acc_int32e_si_t __attribute__((__mode__(__SI__)));
-   typedef unsigned int __acc_uint32e_si_t __attribute__((__mode__(__SI__)));
+typedef int __acc_int32e_si_t __attribute__((__mode__(__SI__)));
+typedef unsigned int __acc_uint32e_si_t __attribute__((__mode__(__SI__)));
 #  define acc_int32e_t          __acc_int32e_si_t
 #  define acc_uint32e_t         __acc_uint32e_si_t
 #  define ACC_INT32_C(c)        c##LL
@@ -2721,14 +2734,14 @@ __acc_gnuc_extension__ typedef unsigned long long acc_ullong_t;
 #if !defined(acc_intptr_t)
 #if 1 && (ACC_OS_OS400 && (ACC_SIZEOF_VOID_P == 16))
 #  define __ACC_INTPTR_T_IS_POINTER 1
-   typedef char*                acc_intptr_t;
-   typedef char*                acc_uintptr_t;
+typedef char* acc_intptr_t;
+typedef char* acc_uintptr_t;
 #  define acc_intptr_t          acc_intptr_t
 #  define acc_uintptr_t         acc_uintptr_t
 #  define ACC_SIZEOF_ACC_INTPTR_T   ACC_SIZEOF_VOID_P
 #elif (ACC_ARCH_I386 && ACC_CC_MSC && (_MSC_VER >= 1300))
-   typedef __w64 int            acc_intptr_t;
-   typedef __w64 unsigned int   acc_uintptr_t;
+typedef __w64 int            acc_intptr_t;
+typedef __w64 unsigned int   acc_uintptr_t;
 #  define acc_intptr_t          acc_intptr_t
 #  define acc_uintptr_t         acc_uintptr_t
 #  define ACC_SIZEOF_ACC_INTPTR_T   ACC_SIZEOF_INT
@@ -2862,11 +2875,11 @@ __acc_gnuc_extension__ typedef unsigned long long acc_ullong_t;
 #  define acc_signo_t           int
 #endif
 #if (ACC_BROKEN_CDECL_ALT_SYNTAX)
-typedef void __acc_cdecl_sighandler (*acc_sighandler_t)(acc_signo_t);
+typedef void __acc_cdecl_sighandler(*acc_sighandler_t)(acc_signo_t);
 #elif defined(RETSIGTYPE)
-typedef RETSIGTYPE (__acc_cdecl_sighandler *acc_sighandler_t)(acc_signo_t);
+typedef RETSIGTYPE(__acc_cdecl_sighandler* acc_sighandler_t)(acc_signo_t);
 #else
-typedef void (__acc_cdecl_sighandler *acc_sighandler_t)(acc_signo_t);
+typedef void (__acc_cdecl_sighandler* acc_sighandler_t)(acc_signo_t);
 #endif
 #  if !defined(ACC_CFG_NO_ACC_UA_H)
 #if (ACC_CC_GNUC && (ACC_CC_GNUC < 0x020700ul))
@@ -2876,15 +2889,24 @@ typedef void (__acc_cdecl_sighandler *acc_sighandler_t)(acc_signo_t);
 #elif (ACC_CC_LLVM)
 #elif (ACC_CC_GNUC || ACC_CC_INTELC || ACC_CC_PATHSCALE)
 #if !defined(__acc_ua16_t) && (ACC_OPT_UNALIGNED16) && defined(acc_int16e_t)
-   typedef struct { acc_uint16e_t v __attribute__((__packed__)); } __acc_ua16_t;
+typedef struct
+{
+	acc_uint16e_t v __attribute__((__packed__));
+} __acc_ua16_t;
 #  define __acc_ua16_t __acc_ua16_t
 #endif
 #if !defined(__acc_ua32_t) && (ACC_OPT_UNALIGNED32) && defined(acc_int32e_t)
-   typedef struct { acc_uint32e_t v __attribute__((__packed__)); } __acc_ua32_t;
+typedef struct
+{
+	acc_uint32e_t v __attribute__((__packed__));
+} __acc_ua32_t;
 #  define __acc_ua32_t __acc_ua32_t
 #endif
 #if !defined(__acc_ua64_t) && (ACC_OPT_UNALIGNED64) && defined(acc_int64l_t)
-   typedef struct { acc_uint64l_t v __attribute__((__packed__)); } __acc_ua64_t;
+typedef struct
+{
+	acc_uint64l_t v __attribute__((__packed__));
+} __acc_ua64_t;
 #  define __acc_ua64_t __acc_ua64_t
 #endif
 #endif
@@ -2902,19 +2924,21 @@ typedef void (__acc_cdecl_sighandler *acc_sighandler_t)(acc_signo_t);
 #if (ACC_ARCH_POWERPC && ACC_ABI_BIG_ENDIAN) && (ACC_CC_GNUC)
 #if !defined(ACC_UA_GET_LE16)
 extern __acc_forceinline unsigned long __ACC_UA_GET_LE16(const void* pp);
-extern __acc_forceinline unsigned long __ACC_UA_GET_LE16(const void* pp) {
-    const acc_uint16e_t* p = (const acc_uint16e_t*) pp;
-    unsigned long v;
-    __asm__ __volatile__("lhbrx %0,0,%1" : "=r" (v) : "r" (p), "m" (*p));
-    return v;
+extern __acc_forceinline unsigned long __ACC_UA_GET_LE16(const void* pp)
+{
+	const acc_uint16e_t* p = (const acc_uint16e_t*) pp;
+	unsigned long v;
+	__asm__ __volatile__("lhbrx %0,0,%1" : "=r" (v) : "r" (p), "m" (*p));
+	return v;
 }
 #define ACC_UA_GET_LE16(p)      __ACC_UA_GET_LE16(p)
 #endif
 #if !defined(ACC_UA_SET_LE16)
 extern __acc_forceinline void __ACC_UA_SET_LE16(void* pp, unsigned long v);
-extern __acc_forceinline void __ACC_UA_SET_LE16(void* pp, unsigned long v) {
-    acc_uint16e_t* p = (acc_uint16e_t*) pp;
-    __asm__ __volatile__("sthbrx %2,0,%1" : "=m" (*p) : "r" (p), "r" (v));
+extern __acc_forceinline void __ACC_UA_SET_LE16(void* pp, unsigned long v)
+{
+	acc_uint16e_t* p = (acc_uint16e_t*) pp;
+	__asm__ __volatile__("sthbrx %2,0,%1" : "=m" (*p) : "r" (p), "r" (v));
 }
 #define ACC_UA_SET_LE16(p,v)    __ACC_UA_SET_LE16(p,v)
 #endif
@@ -2938,19 +2962,21 @@ extern __acc_forceinline void __ACC_UA_SET_LE16(void* pp, unsigned long v) {
 #if (ACC_ARCH_POWERPC && ACC_ABI_BIG_ENDIAN) && (ACC_CC_GNUC)
 #if !defined(ACC_UA_GET_LE32)
 extern __acc_forceinline unsigned long __ACC_UA_GET_LE32(const void* pp);
-extern __acc_forceinline unsigned long __ACC_UA_GET_LE32(const void* pp) {
-    const acc_uint32e_t* p = (const acc_uint32e_t*) pp;
-    unsigned long v;
-    __asm__ __volatile__("lwbrx %0,0,%1" : "=r" (v) : "r" (p), "m" (*p));
-    return v;
+extern __acc_forceinline unsigned long __ACC_UA_GET_LE32(const void* pp)
+{
+	const acc_uint32e_t* p = (const acc_uint32e_t*) pp;
+	unsigned long v;
+	__asm__ __volatile__("lwbrx %0,0,%1" : "=r" (v) : "r" (p), "m" (*p));
+	return v;
 }
 #define ACC_UA_GET_LE32(p)      __ACC_UA_GET_LE32(p)
 #endif
 #if !defined(ACC_UA_SET_LE32)
 extern __acc_forceinline void __ACC_UA_SET_LE32(void* pp, unsigned long v);
-extern __acc_forceinline void __ACC_UA_SET_LE32(void* pp, unsigned long v) {
-    acc_uint32e_t* p = (acc_uint32e_t*) pp;
-    __asm__ __volatile__("stwbrx %2,0,%1" : "=m" (*p) : "r" (p), "r" (v));
+extern __acc_forceinline void __ACC_UA_SET_LE32(void* pp, unsigned long v)
+{
+	acc_uint32e_t* p = (acc_uint32e_t*) pp;
+	__asm__ __volatile__("stwbrx %2,0,%1" : "=m" (*p) : "r" (p), "r" (v));
 }
 #define ACC_UA_SET_LE32(p,v)    __ACC_UA_SET_LE32(p,v)
 #endif
@@ -3261,8 +3287,8 @@ typedef unsigned short wchar_t;
 #  define acclib_handle_t       acc_int64l_t
 #  define acclib_uhandle_t      acc_uint64l_t
 #elif (ACC_ARCH_I386 && ACC_CC_MSC && (_MSC_VER >= 1300))
-   typedef __w64 long           acclib_handle_t;
-   typedef __w64 unsigned long  acclib_uhandle_t;
+typedef __w64 long           acclib_handle_t;
+typedef __w64 unsigned long  acclib_uhandle_t;
 #  define acclib_handle_t       acclib_handle_t
 #  define acclib_uhandle_t      acclib_uhandle_t
 #else
@@ -3348,8 +3374,8 @@ ACCLIB_EXTERN(acc_hchar_p, acc_ascii_hstrlwr) (acc_hchar_p);
 ACCLIB_EXTERN(acc_hchar_p, acc_ascii_hstrupr) (acc_hchar_p);
 ACCLIB_EXTERN(acc_hvoid_p, acc_ascii_hmemlwr) (acc_hvoid_p, acc_hsize_t);
 ACCLIB_EXTERN(acc_hvoid_p, acc_ascii_hmemupr) (acc_hvoid_p, acc_hsize_t);
-ACCLIB_EXTERN(acc_hsize_t, acc_hfread) (void *, acc_hvoid_p, acc_hsize_t);
-ACCLIB_EXTERN(acc_hsize_t, acc_hfwrite) (void *, const acc_hvoid_p, acc_hsize_t);
+ACCLIB_EXTERN(acc_hsize_t, acc_hfread) (void*, acc_hvoid_p, acc_hsize_t);
+ACCLIB_EXTERN(acc_hsize_t, acc_hfwrite) (void*, const acc_hvoid_p, acc_hsize_t);
 #if (ACC_HAVE_MM_HUGE_PTR)
 ACCLIB_EXTERN(long, acc_hread) (int, acc_hvoid_p, long);
 ACCLIB_EXTERN(long, acc_hwrite) (int, const acc_hvoid_p, long);
@@ -3434,31 +3460,31 @@ ACCLIB_EXTERN(int, acc_fnmatch) (const acc_hchar_p, const acc_hchar_p, int);
 typedef struct
 {
 #if defined(__ACCLIB_USE_OPENDIR)
-    void* u_dirp;
+	void* u_dirp;
 # if (ACC_CC_WATCOMC)
-    unsigned short f_time;
-    unsigned short f_date;
-    unsigned long f_size;
+	unsigned short f_time;
+	unsigned short f_date;
+	unsigned long f_size;
 # endif
-    char f_name[ACC_FN_NAME_MAX+1];
+	char f_name[ACC_FN_NAME_MAX + 1];
 #elif (ACC_OS_WIN32 || ACC_OS_WIN64)
-    acclib_handle_t u_handle;
-    unsigned f_attr;
-    unsigned f_size_low;
-    unsigned f_size_high;
-    char f_name[ACC_FN_NAME_MAX+1];
+	acclib_handle_t u_handle;
+	unsigned f_attr;
+	unsigned f_size_low;
+	unsigned f_size_high;
+	char f_name[ACC_FN_NAME_MAX + 1];
 #elif (ACC_OS_DOS16 || ACC_OS_DOS32 || ACC_OS_TOS || ACC_OS_WIN16)
-    char u_dta[21];
-    unsigned char f_attr;
-    unsigned short f_time;
-    unsigned short f_date;
-    unsigned short f_size_low;
-    unsigned short f_size_high;
-    char f_name[ACC_FN_NAME_MAX+1];
-    char u_dirp;
+	char u_dta[21];
+	unsigned char f_attr;
+	unsigned short f_time;
+	unsigned short f_date;
+	unsigned short f_size_low;
+	unsigned short f_size_high;
+	char f_name[ACC_FN_NAME_MAX + 1];
+	char u_dirp;
 #else
-    void* u_dirp;
-    char f_name[ACC_FN_NAME_MAX+1];
+	void* u_dirp;
+	char f_name[ACC_FN_NAME_MAX + 1];
 #endif
 } acc_dir_t;
 #ifndef acc_dir_p
@@ -3493,7 +3519,7 @@ ACCLIB_EXTERN(int, acc_closedir) (acc_dir_p);
 #elif ((ACC_ARCH_I086 || ACC_ARCH_I386) && ACC_CC_TURBOC && (__TURBOC__ >= 0x0450))
 #  define acc_stackavail()  stackavail()
 #elif (ACC_ARCH_I086 && ACC_CC_TURBOC && (__TURBOC__ >= 0x0400))
-   ACC_EXTERN_C size_t __cdecl stackavail(void);
+ACC_EXTERN_C size_t __cdecl stackavail(void);
 #  define acc_stackavail()  stackavail()
 #elif ((ACC_ARCH_I086 || ACC_ARCH_I386) && (ACC_CC_WATCOMC))
 #  define acc_stackavail()  stackavail()
@@ -3517,19 +3543,21 @@ ACCLIB_EXTERN_NOINLINE(int, acc_debug_running_on_valgrind) (void);
 #  undef __ACCLIB_UCLOCK_USE_RDTSC
 #  undef __ACCLIB_UCLOCK_USE_PERFCTR
 #else
-typedef struct {
-    void* h;
-    int mode;
-    double tsc_to_seconds;
-    unsigned cpu_type, cpu_features, cpu_khz, cpu_nrctrs;
-    const char* cpu_name;
+typedef struct
+{
+	void* h;
+	int mode;
+	double tsc_to_seconds;
+	unsigned cpu_type, cpu_features, cpu_khz, cpu_nrctrs;
+	const char* cpu_name;
 } acc_perfctr_handle_t;
-typedef struct {
-    acc_uint64l_t tsc;
+typedef struct
+{
+	acc_uint64l_t tsc;
 #if (ACC_OS_POSIX_LINUX)
-    acc_uint64l_t pmc[18];
+	acc_uint64l_t pmc[18];
 #else
-    acc_uint64l_t pmc[1];
+	acc_uint64l_t pmc[1];
 #endif
 } acc_perfctr_clock_t;
 #ifndef acc_perfctr_handle_p
@@ -3559,36 +3587,39 @@ ACCLIB_EXTERN(int, acc_tsc_read) (acc_uint32e_t*);
 #else
 #  undef __ACCLIB_UCLOCK_USE_QPC
 #endif
-typedef struct {
-    acclib_handle_t h;
-    int mode;
+typedef struct
+{
+	acclib_handle_t h;
+	int mode;
 #if defined(__ACCLIB_UCLOCK_USE_PERFCTR)
-    acc_perfctr_handle_t pch;
+	acc_perfctr_handle_t pch;
 #endif
 #if defined(__ACCLIB_UCLOCK_USE_QPC)
-    double qpf;
+	double qpf;
 #endif
 } acc_uclock_handle_t;
-typedef struct {
-    union {
-        acc_uint32l_t t32;
+typedef struct
+{
+	union
+	{
+		acc_uint32l_t t32;
 #if !(ACC_OS_DOS16 || ACC_OS_WIN16)
 #  if !defined(ACC_CFG_NO_DOUBLE)
-        double td;
+		double td;
 #  endif
 #  if defined(acc_int64l_t)
-        acc_int64l_t t64;
+		acc_int64l_t t64;
 #  endif
 #endif
-    } ticks;
+	} ticks;
 #if defined(__ACCLIB_UCLOCK_USE_RDTSC)
-    acc_uint64l_t tsc;
+	acc_uint64l_t tsc;
 #endif
 #if defined(__ACCLIB_UCLOCK_USE_PERFCTR)
-    acc_perfctr_clock_t pcc;
+	acc_perfctr_clock_t pcc;
 #endif
 #if defined(__ACCLIB_UCLOCK_USE_QPC)
-    acc_int64l_t qpc;
+	acc_int64l_t qpc;
 #endif
 } acc_uclock_t;
 #ifndef acc_uclock_handle_p
@@ -3604,24 +3635,26 @@ ACCLIB_EXTERN(void, acc_uclock_read) (acc_uclock_handle_p, acc_uclock_p);
 ACCLIB_EXTERN(double, acc_uclock_get_elapsed) (acc_uclock_handle_p, const acc_uclock_p, const acc_uclock_p);
 #endif
 ACCLIB_EXTERN(int, acc_uclock_flush_cpu_cache) (acc_uclock_handle_p, unsigned);
-typedef struct {
-    const char* name;
-    int has_arg;
-    int* flag;
-    int val;
+typedef struct
+{
+	const char* name;
+	int has_arg;
+	int* flag;
+	int val;
 } acc_getopt_longopt_t;
 #ifndef acc_getopt_longopt_p
 #define acc_getopt_longopt_p acc_getopt_longopt_t *
 #endif
-typedef struct {
-    int go_argc;
-    char** go_argv;
-    const char* go_shortopts;
-    const acc_getopt_longopt_p longopts;
+typedef struct
+{
+	int go_argc;
+	char** go_argv;
+	const char* go_shortopts;
+	const acc_getopt_longopt_p longopts;
 #if (ACC_BROKEN_CDECL_ALT_SYNTAX)
-    int __acc_cdecl_va (*go_error)(const char *, ...);
+	int __acc_cdecl_va(*go_error)(const char*, ...);
 #else
-    int (__acc_cdecl_va *go_error)(const char *, ...);
+	int (__acc_cdecl_va* go_error)(const char*, ...);
 #endif
 } acc_getopt_t;
 #ifndef acc_getopt_p
@@ -3630,8 +3663,9 @@ typedef struct {
 ACCLIB_EXTERN(void, acc_getopt_init) (acc_getopt_p);
 ACCLIB_EXTERN(int, acc_getopt) (acc_getopt_p);
 ACCLIB_EXTERN(void, acc_getopt_close)(acc_getopt_p);
-typedef struct {
-    acc_uint32l_t seed;
+typedef struct
+{
+	acc_uint32l_t seed;
 } acc_rand31_t;
 #ifndef acc_rand31_p
 #define acc_rand31_p acc_rand31_t *
@@ -3639,8 +3673,9 @@ typedef struct {
 ACCLIB_EXTERN(void, acc_srand31) (acc_rand31_p, acc_uint32l_t);
 ACCLIB_EXTERN(acc_uint32l_t, acc_rand31) (acc_rand31_p);
 #if defined(acc_int64l_t)
-typedef struct {
-    acc_uint64l_t seed;
+typedef struct
+{
+	acc_uint64l_t seed;
 } acc_rand48_t;
 #ifndef acc_rand48_p
 #define acc_rand48_p acc_rand48_t *
@@ -3650,8 +3685,9 @@ ACCLIB_EXTERN(acc_uint32l_t, acc_rand48) (acc_rand48_p);
 ACCLIB_EXTERN(acc_uint32l_t, acc_rand48_r32) (acc_rand48_p);
 #endif
 #if defined(acc_int64l_t)
-typedef struct {
-    acc_uint64l_t seed;
+typedef struct
+{
+	acc_uint64l_t seed;
 } acc_rand64_t;
 #ifndef acc_rand64_p
 #define acc_rand64_p acc_rand64_t *
@@ -3660,9 +3696,10 @@ ACCLIB_EXTERN(void, acc_srand64) (acc_rand64_p, acc_uint64l_t);
 ACCLIB_EXTERN(acc_uint32l_t, acc_rand64) (acc_rand64_p);
 ACCLIB_EXTERN(acc_uint32l_t, acc_rand64_r32) (acc_rand64_p);
 #endif
-typedef struct {
-    unsigned n;
-    acc_uint32l_t s[624];
+typedef struct
+{
+	unsigned n;
+	acc_uint32l_t s[624];
 } acc_randmt_t;
 #ifndef acc_randmt_p
 #define acc_randmt_p acc_randmt_t *
@@ -3671,9 +3708,10 @@ ACCLIB_EXTERN(void, acc_srandmt) (acc_randmt_p, acc_uint32l_t);
 ACCLIB_EXTERN(acc_uint32l_t, acc_randmt) (acc_randmt_p);
 ACCLIB_EXTERN(acc_uint32l_t, acc_randmt_r32) (acc_randmt_p);
 #if defined(acc_int64l_t)
-typedef struct {
-    unsigned n;
-    acc_uint64l_t s[312];
+typedef struct
+{
+	unsigned n;
+	acc_uint64l_t s[312];
 } acc_randmt64_t;
 #ifndef acc_randmt64_p
 #define acc_randmt64_p acc_randmt64_t *
@@ -3683,9 +3721,9 @@ ACCLIB_EXTERN(acc_uint64l_t, acc_randmt64_r64) (acc_randmt64_p);
 #endif
 #define ACC_SPAWN_P_WAIT    0
 #define ACC_SPAWN_P_NOWAIT  1
-ACCLIB_EXTERN(int, acc_spawnv)  (int mode, const char* fn, const char* const * argv);
-ACCLIB_EXTERN(int, acc_spawnvp) (int mode, const char* fn, const char* const * argv);
-ACCLIB_EXTERN(int, acc_spawnve) (int mode, const char* fn, const char* const * argv, const char * const envp);
+ACCLIB_EXTERN(int, acc_spawnv)  (int mode, const char* fn, const char* const* argv);
+ACCLIB_EXTERN(int, acc_spawnvp) (int mode, const char* fn, const char* const* argv);
+ACCLIB_EXTERN(int, acc_spawnve) (int mode, const char* fn, const char* const* argv, const char* const envp);
 #endif
 #endif
 #if defined(ACC_WANT_ACC_CXX_H)
@@ -3837,353 +3875,353 @@ ACCLIB_EXTERN(int, acc_spawnve) (int mode, const char* fn, const char* const * a
 #undef ACCCHK_TMP2
 #if 0 || defined(ACCCHK_CFG_PEDANTIC)
 #  if (ACC_ARCH_MIPS) && defined(_MIPS_SZINT)
-    ACCCHK_ASSERT((_MIPS_SZINT) == 8 * sizeof(int))
+ACCCHK_ASSERT((_MIPS_SZINT) == 8 * sizeof(int))
 #  endif
 #  if (ACC_ARCH_MIPS) && defined(_MIPS_SZLONG)
-    ACCCHK_ASSERT((_MIPS_SZLONG) == 8 * sizeof(long))
+ACCCHK_ASSERT((_MIPS_SZLONG) == 8 * sizeof(long))
 #  endif
 #  if (ACC_ARCH_MIPS) && defined(_MIPS_SZPTR)
-    ACCCHK_ASSERT((_MIPS_SZPTR) == 8 * sizeof(void *))
+ACCCHK_ASSERT((_MIPS_SZPTR) == 8 * sizeof(void*))
 #  endif
 #endif
-    ACCCHK_ASSERT(1 == 1)
-    ACCCHK_ASSERT(__ACC_MASK_GEN(1U,2) == 3)
-    ACCCHK_ASSERT(__ACC_MASK_GEN(1U,8) == 255)
+ACCCHK_ASSERT(1 == 1)
+ACCCHK_ASSERT(__ACC_MASK_GEN(1U, 2) == 3)
+ACCCHK_ASSERT(__ACC_MASK_GEN(1U, 8) == 255)
 #if (SIZEOF_INT >= 2)
-    ACCCHK_ASSERT(__ACC_MASK_GEN(1,15) == 32767)
-    ACCCHK_ASSERT(__ACC_MASK_GEN(1U,16) == 0xffffU)
+ACCCHK_ASSERT(__ACC_MASK_GEN(1, 15) == 32767)
+ACCCHK_ASSERT(__ACC_MASK_GEN(1U, 16) == 0xffffU)
 #else
-    ACCCHK_ASSERT(__ACC_MASK_GEN(1UL,16) == 0xffffUL)
+ACCCHK_ASSERT(__ACC_MASK_GEN(1UL, 16) == 0xffffUL)
 #endif
 #if (SIZEOF_INT >= 4)
-    ACCCHK_ASSERT(__ACC_MASK_GEN(1,31) == 2147483647)
-    ACCCHK_ASSERT(__ACC_MASK_GEN(1U,32) == 0xffffffffU)
+ACCCHK_ASSERT(__ACC_MASK_GEN(1, 31) == 2147483647)
+ACCCHK_ASSERT(__ACC_MASK_GEN(1U, 32) == 0xffffffffU)
 #endif
 #if (SIZEOF_LONG >= 4)
-    ACCCHK_ASSERT(__ACC_MASK_GEN(1UL,32) == 0xffffffffUL)
+ACCCHK_ASSERT(__ACC_MASK_GEN(1UL, 32) == 0xffffffffUL)
 #endif
 #if (SIZEOF_LONG >= 8)
-    ACCCHK_ASSERT(__ACC_MASK_GEN(1UL,64) == 0xffffffffffffffffUL)
+ACCCHK_ASSERT(__ACC_MASK_GEN(1UL, 64) == 0xffffffffffffffffUL)
 #endif
 #if !defined(ACC_BROKEN_INTEGRAL_PROMOTION)
-    ACCCHK_ASSERT(__ACC_MASK_GEN(1U,SIZEOF_INT*8) == ~(0u))
-    ACCCHK_ASSERT(__ACC_MASK_GEN(1UL,SIZEOF_LONG*8) == ~(0ul))
+ACCCHK_ASSERT(__ACC_MASK_GEN(1U, SIZEOF_INT * 8) == ~(0u))
+ACCCHK_ASSERT(__ACC_MASK_GEN(1UL, SIZEOF_LONG * 8) == ~(0ul))
 #endif
-    ACCCHK_ASSERT(((-1) >> 7) == -1)
-    ACCCHK_ASSERT(((1)  >> 7) == 0)
-    ACCCHK_ASSERT_IS_SIGNED_T(signed char)
-    ACCCHK_ASSERT_IS_UNSIGNED_T(unsigned char)
-    ACCCHK_ASSERT(sizeof(signed char) == sizeof(char))
-    ACCCHK_ASSERT(sizeof(unsigned char) == sizeof(char))
-    ACCCHK_ASSERT(sizeof(char) == 1)
+ACCCHK_ASSERT(((-1) >> 7) == -1)
+ACCCHK_ASSERT(((1) >> 7) == 0)
+ACCCHK_ASSERT_IS_SIGNED_T(signed char)
+ACCCHK_ASSERT_IS_UNSIGNED_T(unsigned char)
+ACCCHK_ASSERT(sizeof(signed char) == sizeof(char))
+ACCCHK_ASSERT(sizeof(unsigned char) == sizeof(char))
+ACCCHK_ASSERT(sizeof(char) == 1)
 #if (ACC_CC_CILLY) && (!defined(__CILLY__) || (__CILLY__ < 0x010302L))
 #else
-    ACCCHK_ASSERT(sizeof(char) == sizeof((char)0))
+	ACCCHK_ASSERT(sizeof(char) == sizeof((char) 0))
 #endif
 #if defined(__cplusplus)
-    ACCCHK_ASSERT(sizeof('\0') == sizeof(char))
+	ACCCHK_ASSERT(sizeof('\0') == sizeof(char))
 #else
 #  if (ACC_CC_DMC)
 #  else
-    ACCCHK_ASSERT(sizeof('\0') == sizeof(int))
+	ACCCHK_ASSERT(sizeof('\0') == sizeof(int))
 #  endif
 #endif
 #if defined(acc_alignof)
-    ACCCHK_ASSERT(acc_alignof(char) == 1)
-    ACCCHK_ASSERT(acc_alignof(signed char) == 1)
-    ACCCHK_ASSERT(acc_alignof(unsigned char) == 1)
+	ACCCHK_ASSERT(acc_alignof(char) == 1)
+	ACCCHK_ASSERT(acc_alignof(signed char) == 1)
+	ACCCHK_ASSERT(acc_alignof(unsigned char) == 1)
 #if defined(acc_int16e_t)
-    ACCCHK_ASSERT(acc_alignof(acc_int16e_t) >= 1)
-    ACCCHK_ASSERT(acc_alignof(acc_int16e_t) <= 2)
+	ACCCHK_ASSERT(acc_alignof(acc_int16e_t) >= 1)
+	ACCCHK_ASSERT(acc_alignof(acc_int16e_t) <= 2)
 #endif
 #if defined(acc_int32e_t)
-    ACCCHK_ASSERT(acc_alignof(acc_int32e_t) >= 1)
-    ACCCHK_ASSERT(acc_alignof(acc_int32e_t) <= 4)
+	ACCCHK_ASSERT(acc_alignof(acc_int32e_t) >= 1)
+	ACCCHK_ASSERT(acc_alignof(acc_int32e_t) <= 4)
 #endif
 #endif
-    ACCCHK_ASSERT_IS_SIGNED_T(short)
-    ACCCHK_ASSERT_IS_UNSIGNED_T(unsigned short)
-    ACCCHK_ASSERT(sizeof(short) == sizeof(unsigned short))
+	ACCCHK_ASSERT_IS_SIGNED_T(short)
+	ACCCHK_ASSERT_IS_UNSIGNED_T(unsigned short)
+	ACCCHK_ASSERT(sizeof(short) == sizeof(unsigned short))
 #if !defined(ACC_ABI_I8LP16)
-    ACCCHK_ASSERT(sizeof(short) >= 2)
+	ACCCHK_ASSERT(sizeof(short) >= 2)
 #endif
-    ACCCHK_ASSERT(sizeof(short) >= sizeof(char))
+	ACCCHK_ASSERT(sizeof(short) >= sizeof(char))
 #if (ACC_CC_CILLY) && (!defined(__CILLY__) || (__CILLY__ < 0x010302L))
 #else
-    ACCCHK_ASSERT(sizeof(short) == sizeof((short)0))
+	ACCCHK_ASSERT(sizeof(short) == sizeof((short) 0))
 #endif
 #if (SIZEOF_SHORT > 0)
-    ACCCHK_ASSERT(sizeof(short) == SIZEOF_SHORT)
+	ACCCHK_ASSERT(sizeof(short) == SIZEOF_SHORT)
 #endif
-    ACCCHK_ASSERT_IS_SIGNED_T(int)
-    ACCCHK_ASSERT_IS_UNSIGNED_T(unsigned int)
-    ACCCHK_ASSERT(sizeof(int) == sizeof(unsigned int))
+	ACCCHK_ASSERT_IS_SIGNED_T(int)
+	ACCCHK_ASSERT_IS_UNSIGNED_T(unsigned int)
+	ACCCHK_ASSERT(sizeof(int) == sizeof(unsigned int))
 #if !defined(ACC_ABI_I8LP16)
-    ACCCHK_ASSERT(sizeof(int) >= 2)
+	ACCCHK_ASSERT(sizeof(int) >= 2)
 #endif
-    ACCCHK_ASSERT(sizeof(int) >= sizeof(short))
-    ACCCHK_ASSERT(sizeof(int) == sizeof(0))
-    ACCCHK_ASSERT(sizeof(int) == sizeof((int)0))
+	ACCCHK_ASSERT(sizeof(int) >= sizeof(short))
+	ACCCHK_ASSERT(sizeof(int) == sizeof(0))
+	ACCCHK_ASSERT(sizeof(int) == sizeof((int) 0))
 #if (SIZEOF_INT > 0)
-    ACCCHK_ASSERT(sizeof(int) == SIZEOF_INT)
+	ACCCHK_ASSERT(sizeof(int) == SIZEOF_INT)
 #endif
-    ACCCHK_ASSERT(sizeof(0) == sizeof(int))
-    ACCCHK_ASSERT_IS_SIGNED_T(long)
-    ACCCHK_ASSERT_IS_UNSIGNED_T(unsigned long)
-    ACCCHK_ASSERT(sizeof(long) == sizeof(unsigned long))
+	ACCCHK_ASSERT(sizeof(0) == sizeof(int))
+	ACCCHK_ASSERT_IS_SIGNED_T(long)
+	ACCCHK_ASSERT_IS_UNSIGNED_T(unsigned long)
+	ACCCHK_ASSERT(sizeof(long) == sizeof(unsigned long))
 #if !defined(ACC_ABI_I8LP16)
-    ACCCHK_ASSERT(sizeof(long) >= 4)
+	ACCCHK_ASSERT(sizeof(long) >= 4)
 #endif
-    ACCCHK_ASSERT(sizeof(long) >= sizeof(int))
-    ACCCHK_ASSERT(sizeof(long) == sizeof(0L))
-    ACCCHK_ASSERT(sizeof(long) == sizeof((long)0))
+	ACCCHK_ASSERT(sizeof(long) >= sizeof(int))
+	ACCCHK_ASSERT(sizeof(long) == sizeof(0L))
+	ACCCHK_ASSERT(sizeof(long) == sizeof((long) 0))
 #if (SIZEOF_LONG > 0)
-    ACCCHK_ASSERT(sizeof(long) == SIZEOF_LONG)
+	ACCCHK_ASSERT(sizeof(long) == SIZEOF_LONG)
 #endif
-    ACCCHK_ASSERT(sizeof(0L) == sizeof(long))
-    ACCCHK_ASSERT_IS_UNSIGNED_T(size_t)
-    ACCCHK_ASSERT(sizeof(size_t) >= sizeof(int))
-    ACCCHK_ASSERT(sizeof(size_t) == sizeof(sizeof(0)))
+	ACCCHK_ASSERT(sizeof(0L) == sizeof(long))
+	ACCCHK_ASSERT_IS_UNSIGNED_T(size_t)
+	ACCCHK_ASSERT(sizeof(size_t) >= sizeof(int))
+	ACCCHK_ASSERT(sizeof(size_t) == sizeof(sizeof(0)))
 #if (SIZEOF_SIZE_T > 0)
-    ACCCHK_ASSERT(sizeof(size_t) == SIZEOF_SIZE_T)
+	ACCCHK_ASSERT(sizeof(size_t) == SIZEOF_SIZE_T)
 #endif
-    ACCCHK_ASSERT_IS_SIGNED_T(ptrdiff_t)
-    ACCCHK_ASSERT(sizeof(ptrdiff_t) >= sizeof(int))
-    ACCCHK_ASSERT(sizeof(ptrdiff_t) >= sizeof(size_t))
+	ACCCHK_ASSERT_IS_SIGNED_T(ptrdiff_t)
+	ACCCHK_ASSERT(sizeof(ptrdiff_t) >= sizeof(int))
+	ACCCHK_ASSERT(sizeof(ptrdiff_t) >= sizeof(size_t))
 #if !defined(ACC_BROKEN_SIZEOF)
-    ACCCHK_ASSERT(sizeof(ptrdiff_t) == sizeof((char*)0 - (char*)0))
+	ACCCHK_ASSERT(sizeof(ptrdiff_t) == sizeof((char*) 0 - (char*) 0))
 # if (ACC_HAVE_MM_HUGE_PTR)
-    ACCCHK_ASSERT(4 == sizeof((char __huge*)0 - (char __huge*)0))
+	ACCCHK_ASSERT(4 == sizeof((char __huge*)0 - (char __huge*)0))
 # endif
 #endif
 #if (SIZEOF_PTRDIFF_T > 0)
-    ACCCHK_ASSERT(sizeof(ptrdiff_t) == SIZEOF_PTRDIFF_T)
+	ACCCHK_ASSERT(sizeof(ptrdiff_t) == SIZEOF_PTRDIFF_T)
 #endif
-    ACCCHK_ASSERT(sizeof(void*) >= sizeof(char*))
+	ACCCHK_ASSERT(sizeof(void*) >= sizeof(char*))
 #if (SIZEOF_VOID_P > 0)
-    ACCCHK_ASSERT(sizeof(void*) == SIZEOF_VOID_P)
-    ACCCHK_ASSERT(sizeof(char*) == SIZEOF_VOID_P)
+	ACCCHK_ASSERT(sizeof(void*) == SIZEOF_VOID_P)
+	ACCCHK_ASSERT(sizeof(char*) == SIZEOF_VOID_P)
 #endif
 #if (ACC_HAVE_MM_HUGE_PTR)
-    ACCCHK_ASSERT(4 == sizeof(void __huge*))
-    ACCCHK_ASSERT(4 == sizeof(char __huge*))
+	ACCCHK_ASSERT(4 == sizeof(void __huge*))
+	ACCCHK_ASSERT(4 == sizeof(char __huge*))
 #endif
 #if defined(ACC_ABI_I8LP16)
-    ACCCHK_ASSERT((((1u  <<  7) + 1) >>  7) == 1)
-    ACCCHK_ASSERT((((1ul << 15) + 1) >> 15) == 1)
+	ACCCHK_ASSERT((((1u << 7) + 1) >> 7) == 1)
+	ACCCHK_ASSERT((((1ul << 15) + 1) >> 15) == 1)
 #else
-    ACCCHK_ASSERT((((1u  << 15) + 1) >> 15) == 1)
-    ACCCHK_ASSERT((((1ul << 31) + 1) >> 31) == 1)
+	ACCCHK_ASSERT((((1u << 15) + 1) >> 15) == 1)
+	ACCCHK_ASSERT((((1ul << 31) + 1) >> 31) == 1)
 #endif
 #if (ACC_CC_TURBOC && (__TURBOC__ < 0x0150))
 #else
-    ACCCHK_ASSERT((1   << (8*SIZEOF_INT-1)) < 0)
+	ACCCHK_ASSERT((1 << (8 * SIZEOF_INT - 1)) < 0)
 #endif
-    ACCCHK_ASSERT((1u  << (8*SIZEOF_INT-1)) > 0)
-    ACCCHK_ASSERT((1l  << (8*SIZEOF_LONG-1)) < 0)
-    ACCCHK_ASSERT((1ul << (8*SIZEOF_LONG-1)) > 0)
+	ACCCHK_ASSERT((1u << (8 * SIZEOF_INT - 1)) > 0)
+	ACCCHK_ASSERT((1l << (8 * SIZEOF_LONG - 1)) < 0)
+	ACCCHK_ASSERT((1ul << (8 * SIZEOF_LONG - 1)) > 0)
 #if defined(acc_int16e_t)
-    ACCCHK_ASSERT(sizeof(acc_int16e_t) == 2)
-    ACCCHK_ASSERT(sizeof(acc_int16e_t) == SIZEOF_ACC_INT16E_T)
-    ACCCHK_ASSERT(sizeof(acc_uint16e_t) == 2)
-    ACCCHK_ASSERT(sizeof(acc_int16e_t) == sizeof(acc_uint16e_t))
-    ACCCHK_ASSERT_IS_SIGNED_T(acc_int16e_t)
-    ACCCHK_ASSERT_IS_UNSIGNED_T(acc_uint16e_t)
+	ACCCHK_ASSERT(sizeof(acc_int16e_t) == 2)
+	ACCCHK_ASSERT(sizeof(acc_int16e_t) == SIZEOF_ACC_INT16E_T)
+	ACCCHK_ASSERT(sizeof(acc_uint16e_t) == 2)
+	ACCCHK_ASSERT(sizeof(acc_int16e_t) == sizeof(acc_uint16e_t))
+	ACCCHK_ASSERT_IS_SIGNED_T(acc_int16e_t)
+	ACCCHK_ASSERT_IS_UNSIGNED_T(acc_uint16e_t)
 #if (ACC_CC_TURBOC && (__TURBOC__ < 0x0150))
 #else
-    ACCCHK_ASSERT(((acc_uint16e_t)(~(acc_uint16e_t)0ul) >> 15) == 1)
+	ACCCHK_ASSERT(((acc_uint16e_t) (~(acc_uint16e_t) 0ul) >> 15) == 1)
 #endif
-    ACCCHK_ASSERT( (acc_int16e_t) (1 + ~(acc_int16e_t)0) == 0)
+	ACCCHK_ASSERT((acc_int16e_t) (1 + ~(acc_int16e_t) 0) == 0)
 #if defined(ACCCHK_CFG_PEDANTIC)
-    ACCCHK_ASSERT( (acc_uint16e_t)(1 + ~(acc_uint16e_t)0) == 0)
+	ACCCHK_ASSERT((acc_uint16e_t) (1 + ~(acc_uint16e_t) 0) == 0)
 #endif
 #endif
 #if defined(acc_int32e_t)
-    ACCCHK_ASSERT(sizeof(acc_int32e_t) == 4)
-    ACCCHK_ASSERT(sizeof(acc_int32e_t) == SIZEOF_ACC_INT32E_T)
-    ACCCHK_ASSERT(sizeof(acc_uint32e_t) == 4)
-    ACCCHK_ASSERT(sizeof(acc_int32e_t) == sizeof(acc_uint32e_t))
-    ACCCHK_ASSERT_IS_SIGNED_T(acc_int32e_t)
-    ACCCHK_ASSERT(((( (acc_int32e_t)1 << 30) + 1) >> 30) == 1)
-    ACCCHK_ASSERT_IS_UNSIGNED_T(acc_uint32e_t)
-    ACCCHK_ASSERT(((( (acc_uint32e_t)1 << 31) + 1) >> 31) == 1)
-    ACCCHK_ASSERT(((acc_uint32e_t)(~(acc_uint32e_t)0ul) >> 31) == 1)
-    ACCCHK_ASSERT( (acc_int32e_t) (1 + ~(acc_int32e_t)0) == 0)
+	ACCCHK_ASSERT(sizeof(acc_int32e_t) == 4)
+	ACCCHK_ASSERT(sizeof(acc_int32e_t) == SIZEOF_ACC_INT32E_T)
+	ACCCHK_ASSERT(sizeof(acc_uint32e_t) == 4)
+	ACCCHK_ASSERT(sizeof(acc_int32e_t) == sizeof(acc_uint32e_t))
+	ACCCHK_ASSERT_IS_SIGNED_T(acc_int32e_t)
+	ACCCHK_ASSERT(((((acc_int32e_t) 1 << 30) + 1) >> 30) == 1)
+	ACCCHK_ASSERT_IS_UNSIGNED_T(acc_uint32e_t)
+	ACCCHK_ASSERT(((((acc_uint32e_t) 1 << 31) + 1) >> 31) == 1)
+	ACCCHK_ASSERT(((acc_uint32e_t) (~(acc_uint32e_t) 0ul) >> 31) == 1)
+	ACCCHK_ASSERT((acc_int32e_t) (1 + ~(acc_int32e_t) 0) == 0)
 #if defined(ACCCHK_CFG_PEDANTIC)
-    ACCCHK_ASSERT( (acc_uint32e_t)(1 + ~(acc_uint32e_t)0) == 0)
+	ACCCHK_ASSERT((acc_uint32e_t) (1 + ~(acc_uint32e_t) 0) == 0)
 #endif
 #endif
 #if defined(acc_int32e_t)
-    ACCCHK_ASSERT(sizeof(acc_int32l_t) >= sizeof(acc_int32e_t))
+	ACCCHK_ASSERT(sizeof(acc_int32l_t) >= sizeof(acc_int32e_t))
 #endif
-    ACCCHK_ASSERT(sizeof(acc_int32l_t) >= 4)
-    ACCCHK_ASSERT(sizeof(acc_int32l_t) == SIZEOF_ACC_INT32L_T)
-    ACCCHK_ASSERT(sizeof(acc_uint32l_t) >= 4)
-    ACCCHK_ASSERT(sizeof(acc_int32l_t) == sizeof(acc_uint32l_t))
-    ACCCHK_ASSERT_IS_SIGNED_T(acc_int32l_t)
-    ACCCHK_ASSERT(((( (acc_int32l_t)1 << 30) + 1) >> 30) == 1)
-    ACCCHK_ASSERT_IS_UNSIGNED_T(acc_uint32l_t)
-    ACCCHK_ASSERT(((( (acc_uint32l_t)1 << 31) + 1) >> 31) == 1)
-    ACCCHK_ASSERT(sizeof(acc_int32f_t) >= sizeof(int))
+	ACCCHK_ASSERT(sizeof(acc_int32l_t) >= 4)
+	ACCCHK_ASSERT(sizeof(acc_int32l_t) == SIZEOF_ACC_INT32L_T)
+	ACCCHK_ASSERT(sizeof(acc_uint32l_t) >= 4)
+	ACCCHK_ASSERT(sizeof(acc_int32l_t) == sizeof(acc_uint32l_t))
+	ACCCHK_ASSERT_IS_SIGNED_T(acc_int32l_t)
+	ACCCHK_ASSERT(((((acc_int32l_t) 1 << 30) + 1) >> 30) == 1)
+	ACCCHK_ASSERT_IS_UNSIGNED_T(acc_uint32l_t)
+	ACCCHK_ASSERT(((((acc_uint32l_t) 1 << 31) + 1) >> 31) == 1)
+	ACCCHK_ASSERT(sizeof(acc_int32f_t) >= sizeof(int))
 #if defined(acc_int32e_t)
-    ACCCHK_ASSERT(sizeof(acc_int32f_t) >= sizeof(acc_int32e_t))
+	ACCCHK_ASSERT(sizeof(acc_int32f_t) >= sizeof(acc_int32e_t))
 #endif
-    ACCCHK_ASSERT(sizeof(acc_int32f_t) >= sizeof(acc_int32l_t))
-    ACCCHK_ASSERT(sizeof(acc_int32f_t) >= 4)
-    ACCCHK_ASSERT(sizeof(acc_int32f_t) >= sizeof(acc_int32l_t))
-    ACCCHK_ASSERT(sizeof(acc_int32f_t) == SIZEOF_ACC_INT32F_T)
-    ACCCHK_ASSERT(sizeof(acc_uint32f_t) >= 4)
-    ACCCHK_ASSERT(sizeof(acc_uint32f_t) >= sizeof(acc_uint32l_t))
-    ACCCHK_ASSERT(sizeof(acc_int32f_t) == sizeof(acc_uint32f_t))
-    ACCCHK_ASSERT_IS_SIGNED_T(acc_int32f_t)
-    ACCCHK_ASSERT(((( (acc_int32f_t)1 << 30) + 1) >> 30) == 1)
-    ACCCHK_ASSERT_IS_UNSIGNED_T(acc_uint32f_t)
-    ACCCHK_ASSERT(((( (acc_uint32f_t)1 << 31) + 1) >> 31) == 1)
+	ACCCHK_ASSERT(sizeof(acc_int32f_t) >= sizeof(acc_int32l_t))
+	ACCCHK_ASSERT(sizeof(acc_int32f_t) >= 4)
+	ACCCHK_ASSERT(sizeof(acc_int32f_t) >= sizeof(acc_int32l_t))
+	ACCCHK_ASSERT(sizeof(acc_int32f_t) == SIZEOF_ACC_INT32F_T)
+	ACCCHK_ASSERT(sizeof(acc_uint32f_t) >= 4)
+	ACCCHK_ASSERT(sizeof(acc_uint32f_t) >= sizeof(acc_uint32l_t))
+	ACCCHK_ASSERT(sizeof(acc_int32f_t) == sizeof(acc_uint32f_t))
+	ACCCHK_ASSERT_IS_SIGNED_T(acc_int32f_t)
+	ACCCHK_ASSERT(((((acc_int32f_t) 1 << 30) + 1) >> 30) == 1)
+	ACCCHK_ASSERT_IS_UNSIGNED_T(acc_uint32f_t)
+	ACCCHK_ASSERT(((((acc_uint32f_t) 1 << 31) + 1) >> 31) == 1)
 #if defined(acc_int64l_t)
-    ACCCHK_ASSERT(sizeof(acc_int64l_t) >= 8)
-    ACCCHK_ASSERT(sizeof(acc_int64l_t) == SIZEOF_ACC_INT64L_T)
-    ACCCHK_ASSERT(sizeof(acc_uint64l_t) >= 8)
-    ACCCHK_ASSERT(sizeof(acc_int64l_t) == sizeof(acc_uint64l_t))
-    ACCCHK_ASSERT_IS_SIGNED_T(acc_int64l_t)
-    ACCCHK_ASSERT(((( (acc_int64l_t)1 << 62) + 1) >> 62) == 1)
-    ACCCHK_ASSERT(((( ACC_INT64_C(1) << 62) + 1) >> 62) == 1)
+	ACCCHK_ASSERT(sizeof(acc_int64l_t) >= 8)
+	ACCCHK_ASSERT(sizeof(acc_int64l_t) == SIZEOF_ACC_INT64L_T)
+	ACCCHK_ASSERT(sizeof(acc_uint64l_t) >= 8)
+	ACCCHK_ASSERT(sizeof(acc_int64l_t) == sizeof(acc_uint64l_t))
+	ACCCHK_ASSERT_IS_SIGNED_T(acc_int64l_t)
+	ACCCHK_ASSERT(((((acc_int64l_t) 1 << 62) + 1) >> 62) == 1)
+	ACCCHK_ASSERT((((ACC_INT64_C(1) << 62) + 1) >> 62) == 1)
 #if (ACC_CC_BORLANDC && (__BORLANDC__ < 0x0530))
 #else
-    ACCCHK_ASSERT_IS_UNSIGNED_T(acc_uint64l_t)
-    ACCCHK_ASSERT(ACC_UINT64_C(18446744073709551615)     > 0)
+	ACCCHK_ASSERT_IS_UNSIGNED_T(acc_uint64l_t)
+	ACCCHK_ASSERT(ACC_UINT64_C(18446744073709551615) > 0)
 #endif
-    ACCCHK_ASSERT(((( (acc_uint64l_t)1 << 63) + 1) >> 63) == 1)
-    ACCCHK_ASSERT(((( ACC_UINT64_C(1) << 63) + 1) >> 63) == 1)
+	ACCCHK_ASSERT(((((acc_uint64l_t) 1 << 63) + 1) >> 63) == 1)
+	ACCCHK_ASSERT((((ACC_UINT64_C(1) << 63) + 1) >> 63) == 1)
 #if (ACC_CC_GNUC && (ACC_CC_GNUC < 0x020600ul))
-    ACCCHK_ASSERT(ACC_INT64_C(9223372036854775807)       > ACC_INT64_C(0))
+	ACCCHK_ASSERT(ACC_INT64_C(9223372036854775807) > ACC_INT64_C(0))
 #else
-    ACCCHK_ASSERT(ACC_INT64_C(9223372036854775807)       > 0)
+	ACCCHK_ASSERT(ACC_INT64_C(9223372036854775807) > 0)
 #endif
-    ACCCHK_ASSERT(ACC_INT64_C(-9223372036854775807) - 1  < 0)
-    ACCCHK_ASSERT( ACC_INT64_C(9223372036854775807) % ACC_INT32_C(2147483629)  == 721)
-    ACCCHK_ASSERT( ACC_INT64_C(9223372036854775807) % ACC_INT32_C(2147483647)  == 1)
-    ACCCHK_ASSERT(ACC_UINT64_C(9223372036854775807) % ACC_UINT32_C(2147483629) == 721)
-    ACCCHK_ASSERT(ACC_UINT64_C(9223372036854775807) % ACC_UINT32_C(2147483647) == 1)
+	ACCCHK_ASSERT(ACC_INT64_C(-9223372036854775807) - 1 < 0)
+	ACCCHK_ASSERT(ACC_INT64_C(9223372036854775807) % ACC_INT32_C(2147483629) == 721)
+	ACCCHK_ASSERT(ACC_INT64_C(9223372036854775807) % ACC_INT32_C(2147483647) == 1)
+	ACCCHK_ASSERT(ACC_UINT64_C(9223372036854775807) % ACC_UINT32_C(2147483629) == 721)
+	ACCCHK_ASSERT(ACC_UINT64_C(9223372036854775807) % ACC_UINT32_C(2147483647) == 1)
 #endif
 #if !defined(__ACC_INTPTR_T_IS_POINTER)
-    ACCCHK_ASSERT_IS_SIGNED_T(acc_intptr_t)
-    ACCCHK_ASSERT_IS_UNSIGNED_T(acc_uintptr_t)
+	ACCCHK_ASSERT_IS_SIGNED_T(acc_intptr_t)
+	ACCCHK_ASSERT_IS_UNSIGNED_T(acc_uintptr_t)
 #endif
-    ACCCHK_ASSERT(sizeof(acc_intptr_t) >= sizeof(void *))
-    ACCCHK_ASSERT(sizeof(acc_intptr_t) == SIZEOF_ACC_INTPTR_T)
-    ACCCHK_ASSERT(sizeof(acc_intptr_t) == sizeof(acc_uintptr_t))
+	ACCCHK_ASSERT(sizeof(acc_intptr_t) >= sizeof(void*))
+	ACCCHK_ASSERT(sizeof(acc_intptr_t) == SIZEOF_ACC_INTPTR_T)
+	ACCCHK_ASSERT(sizeof(acc_intptr_t) == sizeof(acc_uintptr_t))
 #if defined(acc_word_t)
-    ACCCHK_ASSERT(ACC_WORDSIZE == SIZEOF_ACC_WORD_T)
-    ACCCHK_ASSERT_IS_UNSIGNED_T(acc_word_t)
-    ACCCHK_ASSERT_IS_SIGNED_T(acc_sword_t)
-    ACCCHK_ASSERT(sizeof(acc_word_t) == SIZEOF_ACC_WORD_T)
-    ACCCHK_ASSERT(sizeof(acc_word_t) == sizeof(acc_sword_t))
+	ACCCHK_ASSERT(ACC_WORDSIZE == SIZEOF_ACC_WORD_T)
+	ACCCHK_ASSERT_IS_UNSIGNED_T(acc_word_t)
+	ACCCHK_ASSERT_IS_SIGNED_T(acc_sword_t)
+	ACCCHK_ASSERT(sizeof(acc_word_t) == SIZEOF_ACC_WORD_T)
+	ACCCHK_ASSERT(sizeof(acc_word_t) == sizeof(acc_sword_t))
 #endif
 #if defined(ACC_INT16_C)
-    ACCCHK_ASSERT(sizeof(ACC_INT16_C(0)) >= 2)
-    ACCCHK_ASSERT(sizeof(ACC_UINT16_C(0)) >= 2)
-    ACCCHK_ASSERT((ACC_UINT16_C(0xffff) >> 15) == 1)
+	ACCCHK_ASSERT(sizeof(ACC_INT16_C(0)) >= 2)
+	ACCCHK_ASSERT(sizeof(ACC_UINT16_C(0)) >= 2)
+	ACCCHK_ASSERT((ACC_UINT16_C(0xffff) >> 15) == 1)
 #endif
 #if defined(ACC_INT32_C)
-    ACCCHK_ASSERT(sizeof(ACC_INT32_C(0)) >= 4)
-    ACCCHK_ASSERT(sizeof(ACC_UINT32_C(0)) >= 4)
-    ACCCHK_ASSERT((ACC_UINT32_C(0xffffffff) >> 31) == 1)
+	ACCCHK_ASSERT(sizeof(ACC_INT32_C(0)) >= 4)
+	ACCCHK_ASSERT(sizeof(ACC_UINT32_C(0)) >= 4)
+	ACCCHK_ASSERT((ACC_UINT32_C(0xffffffff) >> 31) == 1)
 #endif
 #if defined(ACC_INT64_C)
 #if (ACC_CC_BORLANDC && (__BORLANDC__ < 0x0560))
 #else
-    ACCCHK_ASSERT(sizeof(ACC_INT64_C(0)) >= 8)
-    ACCCHK_ASSERT(sizeof(ACC_UINT64_C(0)) >= 8)
+	ACCCHK_ASSERT(sizeof(ACC_INT64_C(0)) >= 8)
+	ACCCHK_ASSERT(sizeof(ACC_UINT64_C(0)) >= 8)
 #endif
-    ACCCHK_ASSERT((ACC_UINT64_C(0xffffffffffffffff) >> 63) == 1)
+	ACCCHK_ASSERT((ACC_UINT64_C(0xffffffffffffffff) >> 63) == 1)
 #endif
 #if (ACC_MM_TINY || ACC_MM_SMALL || ACC_MM_MEDIUM)
-    ACCCHK_ASSERT(sizeof(void*) == 2)
-    ACCCHK_ASSERT(sizeof(ptrdiff_t) == 2)
+	ACCCHK_ASSERT(sizeof(void*) == 2)
+	ACCCHK_ASSERT(sizeof(ptrdiff_t) == 2)
 #elif (ACC_MM_COMPACT || ACC_MM_LARGE || ACC_MM_HUGE)
-    ACCCHK_ASSERT(sizeof(void*) == 4)
+	ACCCHK_ASSERT(sizeof(void*) == 4)
 #endif
 #if (ACC_MM_TINY || ACC_MM_SMALL || ACC_MM_COMPACT)
-    ACCCHK_ASSERT(sizeof(void (*)(void)) == 2)
+	ACCCHK_ASSERT(sizeof(void (*)(void)) == 2)
 #elif (ACC_MM_MEDIUM || ACC_MM_LARGE || ACC_MM_HUGE)
-    ACCCHK_ASSERT(sizeof(void (*)(void)) == 4)
+	ACCCHK_ASSERT(sizeof(void (*)(void)) == 4)
 #endif
 #if (ACC_ABI_ILP32)
-    ACCCHK_ASSERT(sizeof(int) == 4)
-    ACCCHK_ASSERT(sizeof(long) == 4)
-    ACCCHK_ASSERT(sizeof(void*) == 4)
-    ACCCHK_ASSERT(sizeof(ptrdiff_t) == sizeof(void*))
-    ACCCHK_ASSERT(sizeof(size_t) == sizeof(void*))
-    ACCCHK_ASSERT(sizeof(acc_intptr_t) == sizeof(void *))
+	ACCCHK_ASSERT(sizeof(int) == 4)
+	ACCCHK_ASSERT(sizeof(long) == 4)
+	ACCCHK_ASSERT(sizeof(void*) == 4)
+	ACCCHK_ASSERT(sizeof(ptrdiff_t) == sizeof(void*))
+	ACCCHK_ASSERT(sizeof(size_t) == sizeof(void*))
+	ACCCHK_ASSERT(sizeof(acc_intptr_t) == sizeof(void*))
 #endif
 #if (ACC_ABI_ILP64)
-    ACCCHK_ASSERT(sizeof(int) == 8)
-    ACCCHK_ASSERT(sizeof(long) == 8)
-    ACCCHK_ASSERT(sizeof(void*) == 8)
-    ACCCHK_ASSERT(sizeof(ptrdiff_t) == sizeof(void*))
-    ACCCHK_ASSERT(sizeof(size_t) == sizeof(void*))
-    ACCCHK_ASSERT(sizeof(acc_intptr_t) == sizeof(void *))
+	ACCCHK_ASSERT(sizeof(int) == 8)
+	ACCCHK_ASSERT(sizeof(long) == 8)
+	ACCCHK_ASSERT(sizeof(void*) == 8)
+	ACCCHK_ASSERT(sizeof(ptrdiff_t) == sizeof(void*))
+	ACCCHK_ASSERT(sizeof(size_t) == sizeof(void*))
+	ACCCHK_ASSERT(sizeof(acc_intptr_t) == sizeof(void*))
 #endif
 #if (ACC_ABI_IP32L64)
-    ACCCHK_ASSERT(sizeof(int) == 4)
-    ACCCHK_ASSERT(sizeof(long) == 8)
-    ACCCHK_ASSERT(sizeof(void*) == 4)
-    ACCCHK_ASSERT(sizeof(ptrdiff_t) == sizeof(void*))
-    ACCCHK_ASSERT(sizeof(size_t) == sizeof(void*))
-    ACCCHK_ASSERT(sizeof(acc_intptr_t) == sizeof(void *))
+	ACCCHK_ASSERT(sizeof(int) == 4)
+	ACCCHK_ASSERT(sizeof(long) == 8)
+	ACCCHK_ASSERT(sizeof(void*) == 4)
+	ACCCHK_ASSERT(sizeof(ptrdiff_t) == sizeof(void*))
+	ACCCHK_ASSERT(sizeof(size_t) == sizeof(void*))
+	ACCCHK_ASSERT(sizeof(acc_intptr_t) == sizeof(void*))
 #endif
 #if (ACC_ABI_LLP64)
-    ACCCHK_ASSERT(sizeof(int) == 4)
-    ACCCHK_ASSERT(sizeof(long) == 4)
-    ACCCHK_ASSERT(sizeof(void*) == 8)
-    ACCCHK_ASSERT(sizeof(ptrdiff_t) == sizeof(void*))
-    ACCCHK_ASSERT(sizeof(size_t) == sizeof(void*))
-    ACCCHK_ASSERT(sizeof(acc_intptr_t) == sizeof(void *))
+	ACCCHK_ASSERT(sizeof(int) == 4)
+	ACCCHK_ASSERT(sizeof(long) == 4)
+	ACCCHK_ASSERT(sizeof(void*) == 8)
+	ACCCHK_ASSERT(sizeof(ptrdiff_t) == sizeof(void*))
+	ACCCHK_ASSERT(sizeof(size_t) == sizeof(void*))
+	ACCCHK_ASSERT(sizeof(acc_intptr_t) == sizeof(void*))
 #endif
 #if (ACC_ABI_LP32)
-    ACCCHK_ASSERT(sizeof(int) == 2)
-    ACCCHK_ASSERT(sizeof(long) == 4)
-    ACCCHK_ASSERT(sizeof(void*) == 4)
-    ACCCHK_ASSERT(sizeof(acc_intptr_t) == sizeof(void *))
+	ACCCHK_ASSERT(sizeof(int) == 2)
+	ACCCHK_ASSERT(sizeof(long) == 4)
+	ACCCHK_ASSERT(sizeof(void*) == 4)
+	ACCCHK_ASSERT(sizeof(acc_intptr_t) == sizeof(void*))
 #endif
 #if (ACC_ABI_LP64)
-    ACCCHK_ASSERT(sizeof(int) == 4)
-    ACCCHK_ASSERT(sizeof(long) == 8)
-    ACCCHK_ASSERT(sizeof(void*) == 8)
-    ACCCHK_ASSERT(sizeof(ptrdiff_t) == sizeof(void*))
-    ACCCHK_ASSERT(sizeof(size_t) == sizeof(void*))
-    ACCCHK_ASSERT(sizeof(acc_intptr_t) == sizeof(void *))
+	ACCCHK_ASSERT(sizeof(int) == 4)
+	ACCCHK_ASSERT(sizeof(long) == 8)
+	ACCCHK_ASSERT(sizeof(void*) == 8)
+	ACCCHK_ASSERT(sizeof(ptrdiff_t) == sizeof(void*))
+	ACCCHK_ASSERT(sizeof(size_t) == sizeof(void*))
+	ACCCHK_ASSERT(sizeof(acc_intptr_t) == sizeof(void*))
 #endif
 #if (ACC_ARCH_I086)
-    ACCCHK_ASSERT(sizeof(size_t) == 2)
-    ACCCHK_ASSERT(sizeof(acc_intptr_t) == sizeof(void *))
+	ACCCHK_ASSERT(sizeof(size_t) == 2)
+	ACCCHK_ASSERT(sizeof(acc_intptr_t) == sizeof(void*))
 #elif (ACC_ARCH_I386 || ACC_ARCH_M68K)
-    ACCCHK_ASSERT(sizeof(size_t) == 4)
-    ACCCHK_ASSERT(sizeof(ptrdiff_t) == 4)
-    ACCCHK_ASSERT(sizeof(acc_intptr_t) == sizeof(void *))
+	ACCCHK_ASSERT(sizeof(size_t) == 4)
+	ACCCHK_ASSERT(sizeof(ptrdiff_t) == 4)
+	ACCCHK_ASSERT(sizeof(acc_intptr_t) == sizeof(void*))
 #elif (ACC_ARCH_AMD64 || ACC_ARCH_IA64)
-    ACCCHK_ASSERT(sizeof(size_t) == 8)
-    ACCCHK_ASSERT(sizeof(ptrdiff_t) == 8)
-    ACCCHK_ASSERT(sizeof(acc_intptr_t) == sizeof(void *))
+	ACCCHK_ASSERT(sizeof(size_t) == 8)
+	ACCCHK_ASSERT(sizeof(ptrdiff_t) == 8)
+	ACCCHK_ASSERT(sizeof(acc_intptr_t) == sizeof(void*))
 #endif
 #if (ACC_OS_DOS32 || ACC_OS_OS2 || ACC_OS_WIN32)
-    ACCCHK_ASSERT(sizeof(size_t) == 4)
-    ACCCHK_ASSERT(sizeof(ptrdiff_t) == 4)
-    ACCCHK_ASSERT(sizeof(void (*)(void)) == 4)
+	ACCCHK_ASSERT(sizeof(size_t) == 4)
+	ACCCHK_ASSERT(sizeof(ptrdiff_t) == 4)
+	ACCCHK_ASSERT(sizeof(void (*)(void)) == 4)
 #elif (ACC_OS_WIN64)
-    ACCCHK_ASSERT(sizeof(size_t) == 8)
-    ACCCHK_ASSERT(sizeof(ptrdiff_t) == 8)
-    ACCCHK_ASSERT(sizeof(void (*)(void)) == 8)
+	ACCCHK_ASSERT(sizeof(size_t) == 8)
+	ACCCHK_ASSERT(sizeof(ptrdiff_t) == 8)
+	ACCCHK_ASSERT(sizeof(void (*)(void)) == 8)
 #endif
 #if (ACC_CC_NDPC)
 #elif (SIZEOF_INT > 1)
-    ACCCHK_ASSERT( (int) ((unsigned char) ((signed char) -1)) == 255)
+	ACCCHK_ASSERT((int) ((unsigned char) ((signed char) -1)) == 255)
 #endif
 #if (ACC_CC_KEILC)
 #elif (ACC_CC_NDPC)
 #elif 1 && (ACC_CC_LCC || ACC_CC_LCCWIN32)
 #elif !defined(ACC_BROKEN_INTEGRAL_PROMOTION) && (SIZEOF_INT > 1)
-    ACCCHK_ASSERT( (((unsigned char)128) << (int)(8*sizeof(int)-8)) < 0)
+	ACCCHK_ASSERT((((unsigned char) 128) << (int) (8 * sizeof(int) - 8)) < 0)
 #endif
 #if (ACC_CC_BORLANDC && (__BORLANDC__ >= 0x0530) && (__BORLANDC__ < 0x0560))
 #  pragma option pop
@@ -4195,164 +4233,164 @@ ACCLIB_EXTERN(int, acc_spawnve) (int mode, const char* fn, const char* const * a
 #if !defined(ACCLIB_PUBLIC)
 #  define ACCLIB_PUBLIC(r,f)    r __ACCLIB_FUNCNAME(f)
 #endif
-ACCLIB_PUBLIC(unsigned, acc_ua_get_be16) (const acc_hvoid_p p)
+	ACCLIB_PUBLIC(unsigned, acc_ua_get_be16) (const acc_hvoid_p p)
 {
 #if defined(ACC_UA_GET_BE16)
-    return ACC_UA_GET_BE16(p);
+	return ACC_UA_GET_BE16(p);
 #else
-    const acc_hbyte_p b = (const acc_hbyte_p) p;
-    return ((unsigned)b[1]) | ((unsigned)b[0] << 8);
+	const acc_hbyte_p b = (const acc_hbyte_p) p;
+	return ((unsigned) b[1]) | ((unsigned) b[0] << 8);
 #endif
 }
 ACCLIB_PUBLIC(acc_uint32l_t, acc_ua_get_be24) (const acc_hvoid_p p)
 {
-    const acc_hbyte_p b = (const acc_hbyte_p) p;
-    return ((acc_uint32l_t)b[2]) | ((acc_uint32l_t)b[1] << 8) | ((acc_uint32l_t)b[0] << 16);
+	const acc_hbyte_p b = (const acc_hbyte_p) p;
+	return ((acc_uint32l_t) b[2]) | ((acc_uint32l_t) b[1] << 8) | ((acc_uint32l_t) b[0] << 16);
 }
 ACCLIB_PUBLIC(acc_uint32l_t, acc_ua_get_be32) (const acc_hvoid_p p)
 {
 #if defined(ACC_UA_GET_BE32)
-    return ACC_UA_GET_BE32(p);
+	return ACC_UA_GET_BE32(p);
 #else
-    const acc_hbyte_p b = (const acc_hbyte_p) p;
-    return ((acc_uint32l_t)b[3]) | ((acc_uint32l_t)b[2] << 8) | ((acc_uint32l_t)b[1] << 16) | ((acc_uint32l_t)b[0] << 24);
+	const acc_hbyte_p b = (const acc_hbyte_p) p;
+	return ((acc_uint32l_t) b[3]) | ((acc_uint32l_t) b[2] << 8) | ((acc_uint32l_t) b[1] << 16) | ((acc_uint32l_t) b[0] << 24);
 #endif
 }
 ACCLIB_PUBLIC(void, acc_ua_set_be16) (acc_hvoid_p p, unsigned v)
 {
 #if defined(ACC_UA_SET_BE16)
-    ACC_UA_SET_BE16(p, v);
+	ACC_UA_SET_BE16(p, v);
 #else
-    acc_hbyte_p b = (acc_hbyte_p) p;
-    b[1] = (unsigned char) ((v >>  0) & 0xff);
-    b[0] = (unsigned char) ((v >>  8) & 0xff);
+	acc_hbyte_p b = (acc_hbyte_p) p;
+	b[1] = (unsigned char) ((v >> 0) & 0xff);
+	b[0] = (unsigned char) ((v >> 8) & 0xff);
 #endif
 }
 ACCLIB_PUBLIC(void, acc_ua_set_be24) (acc_hvoid_p p, acc_uint32l_t v)
 {
-    acc_hbyte_p b = (acc_hbyte_p) p;
-    b[2] = (unsigned char) ((v >>  0) & 0xff);
-    b[1] = (unsigned char) ((v >>  8) & 0xff);
-    b[0] = (unsigned char) ((v >> 16) & 0xff);
+	acc_hbyte_p b = (acc_hbyte_p) p;
+	b[2] = (unsigned char) ((v >> 0) & 0xff);
+	b[1] = (unsigned char) ((v >> 8) & 0xff);
+	b[0] = (unsigned char) ((v >> 16) & 0xff);
 }
 ACCLIB_PUBLIC(void, acc_ua_set_be32) (acc_hvoid_p p, acc_uint32l_t v)
 {
 #if defined(ACC_UA_SET_BE32)
-    ACC_UA_SET_BE32(p, v);
+	ACC_UA_SET_BE32(p, v);
 #else
-    acc_hbyte_p b = (acc_hbyte_p) p;
-    b[3] = (unsigned char) ((v >>  0) & 0xff);
-    b[2] = (unsigned char) ((v >>  8) & 0xff);
-    b[1] = (unsigned char) ((v >> 16) & 0xff);
-    b[0] = (unsigned char) ((v >> 24) & 0xff);
+	acc_hbyte_p b = (acc_hbyte_p) p;
+	b[3] = (unsigned char) ((v >> 0) & 0xff);
+	b[2] = (unsigned char) ((v >> 8) & 0xff);
+	b[1] = (unsigned char) ((v >> 16) & 0xff);
+	b[0] = (unsigned char) ((v >> 24) & 0xff);
 #endif
 }
 ACCLIB_PUBLIC(unsigned, acc_ua_get_le16) (const acc_hvoid_p p)
 {
 #if defined(ACC_UA_GET_LE16)
-    return ACC_UA_GET_LE16(p);
+	return ACC_UA_GET_LE16(p);
 #else
-    const acc_hbyte_p b = (const acc_hbyte_p) p;
-    return ((unsigned)b[0]) | ((unsigned)b[1] << 8);
+	const acc_hbyte_p b = (const acc_hbyte_p) p;
+	return ((unsigned) b[0]) | ((unsigned) b[1] << 8);
 #endif
 }
 ACCLIB_PUBLIC(acc_uint32l_t, acc_ua_get_le24) (const acc_hvoid_p p)
 {
-    const acc_hbyte_p b = (const acc_hbyte_p) p;
-    return ((acc_uint32l_t)b[0]) | ((acc_uint32l_t)b[1] << 8) | ((acc_uint32l_t)b[2] << 16);
+	const acc_hbyte_p b = (const acc_hbyte_p) p;
+	return ((acc_uint32l_t) b[0]) | ((acc_uint32l_t) b[1] << 8) | ((acc_uint32l_t) b[2] << 16);
 }
 ACCLIB_PUBLIC(acc_uint32l_t, acc_ua_get_le32) (const acc_hvoid_p p)
 {
 #if defined(ACC_UA_GET_LE32)
-    return ACC_UA_GET_LE32(p);
+	return ACC_UA_GET_LE32(p);
 #else
-    const acc_hbyte_p b = (const acc_hbyte_p) p;
-    return ((acc_uint32l_t)b[0]) | ((acc_uint32l_t)b[1] << 8) | ((acc_uint32l_t)b[2] << 16) | ((acc_uint32l_t)b[3] << 24);
+	const acc_hbyte_p b = (const acc_hbyte_p) p;
+	return ((acc_uint32l_t) b[0]) | ((acc_uint32l_t) b[1] << 8) | ((acc_uint32l_t) b[2] << 16) | ((acc_uint32l_t) b[3] << 24);
 #endif
 }
 ACCLIB_PUBLIC(void, acc_ua_set_le16) (acc_hvoid_p p, unsigned v)
 {
 #if defined(ACC_UA_SET_LE16)
-    ACC_UA_SET_LE16(p, v);
+	ACC_UA_SET_LE16(p, v);
 #else
-    acc_hbyte_p b = (acc_hbyte_p) p;
-    b[0] = (unsigned char) ((v >>  0) & 0xff);
-    b[1] = (unsigned char) ((v >>  8) & 0xff);
+	acc_hbyte_p b = (acc_hbyte_p) p;
+	b[0] = (unsigned char) ((v >> 0) & 0xff);
+	b[1] = (unsigned char) ((v >> 8) & 0xff);
 #endif
 }
 ACCLIB_PUBLIC(void, acc_ua_set_le24) (acc_hvoid_p p, acc_uint32l_t v)
 {
-    acc_hbyte_p b = (acc_hbyte_p) p;
-    b[0] = (unsigned char) ((v >>  0) & 0xff);
-    b[1] = (unsigned char) ((v >>  8) & 0xff);
-    b[2] = (unsigned char) ((v >> 16) & 0xff);
+	acc_hbyte_p b = (acc_hbyte_p) p;
+	b[0] = (unsigned char) ((v >> 0) & 0xff);
+	b[1] = (unsigned char) ((v >> 8) & 0xff);
+	b[2] = (unsigned char) ((v >> 16) & 0xff);
 }
 ACCLIB_PUBLIC(void, acc_ua_set_le32) (acc_hvoid_p p, acc_uint32l_t v)
 {
 #if defined(ACC_UA_SET_LE32)
-    ACC_UA_SET_LE32(p, v);
+	ACC_UA_SET_LE32(p, v);
 #else
-    acc_hbyte_p b = (acc_hbyte_p) p;
-    b[0] = (unsigned char) ((v >>  0) & 0xff);
-    b[1] = (unsigned char) ((v >>  8) & 0xff);
-    b[2] = (unsigned char) ((v >> 16) & 0xff);
-    b[3] = (unsigned char) ((v >> 24) & 0xff);
+	acc_hbyte_p b = (acc_hbyte_p) p;
+	b[0] = (unsigned char) ((v >> 0) & 0xff);
+	b[1] = (unsigned char) ((v >> 8) & 0xff);
+	b[2] = (unsigned char) ((v >> 16) & 0xff);
+	b[3] = (unsigned char) ((v >> 24) & 0xff);
 #endif
 }
 #if defined(acc_int64l_t)
 ACCLIB_PUBLIC(acc_uint64l_t, acc_ua_get_be64) (const acc_hvoid_p p)
 {
 #if defined(ACC_UA_GET_BE64)
-    return ACC_UA_GET_BE64(p);
+	return ACC_UA_GET_BE64(p);
 #elif defined(ACC_UA_GET_BE32)
-    const acc_hbyte_p b = (const acc_hbyte_p) p;
-    acc_uint32e_t v0, v1;
-    v1 = ACC_UA_GET_BE32(b + 0);
-    v0 = ACC_UA_GET_BE32(b + 4);
-    return ((acc_uint64l_t)v0) | ((acc_uint64l_t)v1 << 32);
+	const acc_hbyte_p b = (const acc_hbyte_p) p;
+	acc_uint32e_t v0, v1;
+	v1 = ACC_UA_GET_BE32(b + 0);
+	v0 = ACC_UA_GET_BE32(b + 4);
+	return ((acc_uint64l_t) v0) | ((acc_uint64l_t) v1 << 32);
 #elif (ACC_SIZEOF_LONG >= 8) || (ACC_SIZEOF_SIZE_T >= 8)
-    const acc_hbyte_p b = (const acc_hbyte_p) p;
-    return ((acc_uint64l_t)b[7]) | ((acc_uint64l_t)b[6] << 8) | ((acc_uint64l_t)b[5] << 16) | ((acc_uint64l_t)b[4] << 24) | ((acc_uint64l_t)b[3] << 32) | ((acc_uint64l_t)b[2] << 40) | ((acc_uint64l_t)b[1] << 48) | ((acc_uint64l_t)b[0] << 56);
+	const acc_hbyte_p b = (const acc_hbyte_p) p;
+	return ((acc_uint64l_t) b[7]) | ((acc_uint64l_t) b[6] << 8) | ((acc_uint64l_t) b[5] << 16) | ((acc_uint64l_t) b[4] << 24) | ((acc_uint64l_t) b[3] << 32) | ((acc_uint64l_t) b[2] << 40) | ((acc_uint64l_t) b[1] << 48) | ((acc_uint64l_t) b[0] << 56);
 #else
-    const acc_hbyte_p b = (const acc_hbyte_p) p;
-    acc_uint32l_t v0, v1;
-    v1 = ((acc_uint32l_t)b[3]) | ((acc_uint32l_t)b[2] << 8) | ((acc_uint32l_t)b[1] << 16) | ((acc_uint32l_t)b[0] << 24);
-    b += 4;
-    v0 = ((acc_uint32l_t)b[3]) | ((acc_uint32l_t)b[2] << 8) | ((acc_uint32l_t)b[1] << 16) | ((acc_uint32l_t)b[0] << 24);
-    return ((acc_uint64l_t)v0) | ((acc_uint64l_t)v1 << 32);
+	const acc_hbyte_p b = (const acc_hbyte_p) p;
+	acc_uint32l_t v0, v1;
+	v1 = ((acc_uint32l_t) b[3]) | ((acc_uint32l_t) b[2] << 8) | ((acc_uint32l_t) b[1] << 16) | ((acc_uint32l_t) b[0] << 24);
+	b += 4;
+	v0 = ((acc_uint32l_t) b[3]) | ((acc_uint32l_t) b[2] << 8) | ((acc_uint32l_t) b[1] << 16) | ((acc_uint32l_t) b[0] << 24);
+	return ((acc_uint64l_t) v0) | ((acc_uint64l_t) v1 << 32);
 #endif
 }
 ACCLIB_PUBLIC(void, acc_ua_set_be64) (acc_hvoid_p p, acc_uint64l_t v)
 {
 #if defined(ACC_UA_SET_BE64)
-    ACC_UA_SET_BE64(p, v);
+	ACC_UA_SET_BE64(p, v);
 #elif defined(ACC_UA_SET_BE32)
-    acc_hbyte_p b = (acc_hbyte_p) p;
-    ACC_UA_SET_BE32(b + 4, (v >>  0));
-    ACC_UA_SET_BE32(b + 0, (v >> 32));
+	acc_hbyte_p b = (acc_hbyte_p) p;
+	ACC_UA_SET_BE32(b + 4, (v >> 0));
+	ACC_UA_SET_BE32(b + 0, (v >> 32));
 #elif (ACC_SIZEOF_LONG >= 8) || (ACC_SIZEOF_SIZE_T >= 8)
-    acc_hbyte_p b = (acc_hbyte_p) p;
-    b[7] = (unsigned char) ((v >>  0) & 0xff);
-    b[6] = (unsigned char) ((v >>  8) & 0xff);
-    b[5] = (unsigned char) ((v >> 16) & 0xff);
-    b[4] = (unsigned char) ((v >> 24) & 0xff);
-    b[3] = (unsigned char) ((v >> 32) & 0xff);
-    b[2] = (unsigned char) ((v >> 40) & 0xff);
-    b[1] = (unsigned char) ((v >> 48) & 0xff);
-    b[0] = (unsigned char) ((v >> 56) & 0xff);
+	acc_hbyte_p b = (acc_hbyte_p) p;
+	b[7] = (unsigned char) ((v >> 0) & 0xff);
+	b[6] = (unsigned char) ((v >> 8) & 0xff);
+	b[5] = (unsigned char) ((v >> 16) & 0xff);
+	b[4] = (unsigned char) ((v >> 24) & 0xff);
+	b[3] = (unsigned char) ((v >> 32) & 0xff);
+	b[2] = (unsigned char) ((v >> 40) & 0xff);
+	b[1] = (unsigned char) ((v >> 48) & 0xff);
+	b[0] = (unsigned char) ((v >> 56) & 0xff);
 #else
-    acc_hbyte_p b = (acc_hbyte_p) p;
-    acc_uint32l_t x;
-    x = (acc_uint32l_t) (v >>  0);
-    b[7] = (unsigned char) ((x >>  0) & 0xff);
-    b[6] = (unsigned char) ((x >>  8) & 0xff);
-    b[5] = (unsigned char) ((x >> 16) & 0xff);
-    b[4] = (unsigned char) ((x >> 24) & 0xff);
-    x = (acc_uint32l_t) (v >> 32);
-    b[3] = (unsigned char) ((x >>  0) & 0xff);
-    b[2] = (unsigned char) ((x >>  8) & 0xff);
-    b[1] = (unsigned char) ((x >> 16) & 0xff);
-    b[0] = (unsigned char) ((x >> 24) & 0xff);
+	acc_hbyte_p b = (acc_hbyte_p) p;
+	acc_uint32l_t x;
+	x = (acc_uint32l_t) (v >> 0);
+	b[7] = (unsigned char) ((x >> 0) & 0xff);
+	b[6] = (unsigned char) ((x >> 8) & 0xff);
+	b[5] = (unsigned char) ((x >> 16) & 0xff);
+	b[4] = (unsigned char) ((x >> 24) & 0xff);
+	x = (acc_uint32l_t) (v >> 32);
+	b[3] = (unsigned char) ((x >> 0) & 0xff);
+	b[2] = (unsigned char) ((x >> 8) & 0xff);
+	b[1] = (unsigned char) ((x >> 16) & 0xff);
+	b[0] = (unsigned char) ((x >> 24) & 0xff);
 #endif
 }
 #endif
@@ -4360,56 +4398,56 @@ ACCLIB_PUBLIC(void, acc_ua_set_be64) (acc_hvoid_p p, acc_uint64l_t v)
 ACCLIB_PUBLIC(acc_uint64l_t, acc_ua_get_le64) (const acc_hvoid_p p)
 {
 #if defined(ACC_UA_GET_LE64)
-    return ACC_UA_GET_LE64(p);
+	return ACC_UA_GET_LE64(p);
 #elif defined(ACC_UA_GET_LE32)
-    const acc_hbyte_p b = (const acc_hbyte_p) p;
-    acc_uint32e_t v0, v1;
-    v0 = ACC_UA_GET_LE32(b + 0);
-    v1 = ACC_UA_GET_LE32(b + 4);
-    return ((acc_uint64l_t)v0) | ((acc_uint64l_t)v1 << 32);
+	const acc_hbyte_p b = (const acc_hbyte_p) p;
+	acc_uint32e_t v0, v1;
+	v0 = ACC_UA_GET_LE32(b + 0);
+	v1 = ACC_UA_GET_LE32(b + 4);
+	return ((acc_uint64l_t) v0) | ((acc_uint64l_t) v1 << 32);
 #elif (ACC_SIZEOF_LONG >= 8) || (ACC_SIZEOF_SIZE_T >= 8)
-    const acc_hbyte_p b = (const acc_hbyte_p) p;
-    return ((acc_uint64l_t)b[0]) | ((acc_uint64l_t)b[1] << 8) | ((acc_uint64l_t)b[2] << 16) | ((acc_uint64l_t)b[3] << 24) | ((acc_uint64l_t)b[4] << 32) | ((acc_uint64l_t)b[5] << 40) | ((acc_uint64l_t)b[6] << 48) | ((acc_uint64l_t)b[7] << 56);
+	const acc_hbyte_p b = (const acc_hbyte_p) p;
+	return ((acc_uint64l_t) b[0]) | ((acc_uint64l_t) b[1] << 8) | ((acc_uint64l_t) b[2] << 16) | ((acc_uint64l_t) b[3] << 24) | ((acc_uint64l_t) b[4] << 32) | ((acc_uint64l_t) b[5] << 40) | ((acc_uint64l_t) b[6] << 48) | ((acc_uint64l_t) b[7] << 56);
 #else
-    const acc_hbyte_p b = (const acc_hbyte_p) p;
-    acc_uint32l_t v0, v1;
-    v0 = ((acc_uint32l_t)b[0]) | ((acc_uint32l_t)b[1] << 8) | ((acc_uint32l_t)b[2] << 16) | ((acc_uint32l_t)b[3] << 24);
-    b += 4;
-    v1 = ((acc_uint32l_t)b[0]) | ((acc_uint32l_t)b[1] << 8) | ((acc_uint32l_t)b[2] << 16) | ((acc_uint32l_t)b[3] << 24);
-    return ((acc_uint64l_t)v0) | ((acc_uint64l_t)v1 << 32);
+	const acc_hbyte_p b = (const acc_hbyte_p) p;
+	acc_uint32l_t v0, v1;
+	v0 = ((acc_uint32l_t) b[0]) | ((acc_uint32l_t) b[1] << 8) | ((acc_uint32l_t) b[2] << 16) | ((acc_uint32l_t) b[3] << 24);
+	b += 4;
+	v1 = ((acc_uint32l_t) b[0]) | ((acc_uint32l_t) b[1] << 8) | ((acc_uint32l_t) b[2] << 16) | ((acc_uint32l_t) b[3] << 24);
+	return ((acc_uint64l_t) v0) | ((acc_uint64l_t) v1 << 32);
 #endif
 }
 ACCLIB_PUBLIC(void, acc_ua_set_le64) (acc_hvoid_p p, acc_uint64l_t v)
 {
 #if defined(ACC_UA_SET_LE64)
-    ACC_UA_SET_LE64(p, v);
+	ACC_UA_SET_LE64(p, v);
 #elif defined(ACC_UA_SET_LE32)
-    acc_hbyte_p b = (acc_hbyte_p) p;
-    ACC_UA_SET_LE32(b + 0, (v >>  0));
-    ACC_UA_SET_LE32(b + 4, (v >> 32));
+	acc_hbyte_p b = (acc_hbyte_p) p;
+	ACC_UA_SET_LE32(b + 0, (v >> 0));
+	ACC_UA_SET_LE32(b + 4, (v >> 32));
 #elif (ACC_SIZEOF_LONG >= 8) || (ACC_SIZEOF_SIZE_T >= 8)
-    acc_hbyte_p b = (acc_hbyte_p) p;
-    b[0] = (unsigned char) ((v >>  0) & 0xff);
-    b[1] = (unsigned char) ((v >>  8) & 0xff);
-    b[2] = (unsigned char) ((v >> 16) & 0xff);
-    b[3] = (unsigned char) ((v >> 24) & 0xff);
-    b[4] = (unsigned char) ((v >> 32) & 0xff);
-    b[5] = (unsigned char) ((v >> 40) & 0xff);
-    b[6] = (unsigned char) ((v >> 48) & 0xff);
-    b[7] = (unsigned char) ((v >> 56) & 0xff);
+	acc_hbyte_p b = (acc_hbyte_p) p;
+	b[0] = (unsigned char) ((v >> 0) & 0xff);
+	b[1] = (unsigned char) ((v >> 8) & 0xff);
+	b[2] = (unsigned char) ((v >> 16) & 0xff);
+	b[3] = (unsigned char) ((v >> 24) & 0xff);
+	b[4] = (unsigned char) ((v >> 32) & 0xff);
+	b[5] = (unsigned char) ((v >> 40) & 0xff);
+	b[6] = (unsigned char) ((v >> 48) & 0xff);
+	b[7] = (unsigned char) ((v >> 56) & 0xff);
 #else
-    acc_hbyte_p b = (acc_hbyte_p) p;
-    acc_uint32l_t x;
-    x = (acc_uint32l_t) (v >>  0);
-    b[0] = (unsigned char) ((x >>  0) & 0xff);
-    b[1] = (unsigned char) ((x >>  8) & 0xff);
-    b[2] = (unsigned char) ((x >> 16) & 0xff);
-    b[3] = (unsigned char) ((x >> 24) & 0xff);
-    x = (acc_uint32l_t) (v >> 32);
-    b[4] = (unsigned char) ((x >>  0) & 0xff);
-    b[5] = (unsigned char) ((x >>  8) & 0xff);
-    b[6] = (unsigned char) ((x >> 16) & 0xff);
-    b[7] = (unsigned char) ((x >> 24) & 0xff);
+	acc_hbyte_p b = (acc_hbyte_p) p;
+	acc_uint32l_t x;
+	x = (acc_uint32l_t) (v >> 0);
+	b[0] = (unsigned char) ((x >> 0) & 0xff);
+	b[1] = (unsigned char) ((x >> 8) & 0xff);
+	b[2] = (unsigned char) ((x >> 16) & 0xff);
+	b[3] = (unsigned char) ((x >> 24) & 0xff);
+	x = (acc_uint32l_t) (v >> 32);
+	b[4] = (unsigned char) ((x >> 0) & 0xff);
+	b[5] = (unsigned char) ((x >> 8) & 0xff);
+	b[6] = (unsigned char) ((x >> 16) & 0xff);
+	b[7] = (unsigned char) ((x >> 24) & 0xff);
 #endif
 }
 #endif
@@ -4428,7 +4466,7 @@ ACCLIB_PUBLIC(void, acc_ua_set_le64) (acc_hvoid_p p, acc_uint64l_t v)
 #  endif
 #endif
 extern void* volatile __acc_vget_ptr;
-void* volatile __acc_vget_ptr = (void *) 0;
+void* volatile __acc_vget_ptr = (void*) 0;
 #ifndef __ACC_VGET_BODY
 #define __ACC_VGET_BODY(T) \
     if __acc_unlikely(__acc_vget_ptr) { \
@@ -4440,48 +4478,48 @@ void* volatile __acc_vget_ptr = (void *) 0;
 #endif
 ACCLIB_PUBLIC_NOINLINE(int, acc_vget_int) (int v, int expr)
 {
-    __ACC_VGET_BODY(int)
+	__ACC_VGET_BODY(int)
 }
 ACCLIB_PUBLIC_NOINLINE(long, acc_vget_long) (long v, int expr)
 {
-    __ACC_VGET_BODY(long)
+	__ACC_VGET_BODY(long)
 }
 #if defined(acc_int64l_t)
 ACCLIB_PUBLIC_NOINLINE(acc_int64l_t, acc_vget_acc_int64l_t) (acc_int64l_t v, int expr)
 {
-    __ACC_VGET_BODY(acc_int64l_t)
+	__ACC_VGET_BODY(acc_int64l_t)
 }
 #endif
 ACCLIB_PUBLIC_NOINLINE(acc_hsize_t, acc_vget_acc_hsize_t) (acc_hsize_t v, int expr)
 {
-    __ACC_VGET_BODY(acc_hsize_t)
+	__ACC_VGET_BODY(acc_hsize_t)
 }
 #if !defined(ACC_CFG_NO_FLOAT)
 ACCLIB_PUBLIC_NOINLINE(float, acc_vget_float) (float v, int expr)
 {
-    __ACC_VGET_BODY(float)
+	__ACC_VGET_BODY(float)
 }
 #endif
 #if !defined(ACC_CFG_NO_DOUBLE)
 ACCLIB_PUBLIC_NOINLINE(double, acc_vget_double) (double v, int expr)
 {
-    __ACC_VGET_BODY(double)
+	__ACC_VGET_BODY(double)
 }
 #endif
 ACCLIB_PUBLIC_NOINLINE(acc_hvoid_p, acc_vget_acc_hvoid_p) (acc_hvoid_p v, int expr)
 {
-    __ACC_VGET_BODY(acc_hvoid_p)
+	__ACC_VGET_BODY(acc_hvoid_p)
 }
 #if (ACC_ARCH_I086 && ACC_CC_TURBOC && (__TURBOC__ == 0x0295)) && !defined(__cplusplus)
 ACCLIB_PUBLIC_NOINLINE(acc_hvoid_p, acc_vget_acc_hvoid_cp) (const acc_hvoid_p vv, int expr)
 {
-    acc_hvoid_p v = (acc_hvoid_p) vv;
-    __ACC_VGET_BODY(acc_hvoid_p)
+	acc_hvoid_p v = (acc_hvoid_p) vv;
+	__ACC_VGET_BODY(acc_hvoid_p)
 }
 #else
 ACCLIB_PUBLIC_NOINLINE(const acc_hvoid_p, acc_vget_acc_hvoid_cp) (const acc_hvoid_p v, int expr)
 {
-    __ACC_VGET_BODY(const acc_hvoid_p)
+	__ACC_VGET_BODY(const acc_hvoid_p)
 }
 #endif
 #endif
@@ -4494,71 +4532,72 @@ ACCLIB_PUBLIC_NOINLINE(const acc_hvoid_p, acc_vget_acc_hvoid_cp) (const acc_hvoi
 ACCLIB_PUBLIC(int, acc_hmemcmp) (const acc_hvoid_p s1, const acc_hvoid_p s2, acc_hsize_t len)
 {
 #if (ACC_HAVE_MM_HUGE_PTR) || !defined(HAVE_MEMCMP)
-    const acc_hbyte_p p1 = (const acc_hbyte_p) s1;
-    const acc_hbyte_p p2 = (const acc_hbyte_p) s2;
-    if __acc_likely(len > 0) do
-    {
-        int d = *p1 - *p2;
-        if (d != 0)
-            return d;
-        p1++; p2++;
-    } while __acc_likely(--len > 0);
-    return 0;
+	const acc_hbyte_p p1 = (const acc_hbyte_p) s1;
+	const acc_hbyte_p p2 = (const acc_hbyte_p) s2;
+	if __acc_likely(len > 0) do
+	{
+		int d = *p1 - *p2;
+		if (d != 0)
+			return d;
+		p1++; p2++;
+	}
+	while __acc_likely(--len > 0);
+	return 0;
 #else
-    return memcmp(s1, s2, len);
+	return memcmp(s1, s2, len);
 #endif
 }
 ACCLIB_PUBLIC(acc_hvoid_p, acc_hmemcpy) (acc_hvoid_p dest, const acc_hvoid_p src, acc_hsize_t len)
 {
 #if (ACC_HAVE_MM_HUGE_PTR) || !defined(HAVE_MEMCPY)
-    acc_hbyte_p p1 = (acc_hbyte_p) dest;
-    const acc_hbyte_p p2 = (const acc_hbyte_p) src;
-    if (len <= 0 || p1 == p2)
-        return dest;
-    do
-        *p1++ = *p2++;
-    while __acc_likely(--len > 0);
-    return dest;
+	acc_hbyte_p p1 = (acc_hbyte_p) dest;
+	const acc_hbyte_p p2 = (const acc_hbyte_p) src;
+	if (len <= 0 || p1 == p2)
+		return dest;
+	do
+		*p1++ = *p2++;
+	while __acc_likely(--len > 0);
+	return dest;
 #else
-    return memcpy(dest, src, len);
+	return memcpy(dest, src, len);
 #endif
 }
 ACCLIB_PUBLIC(acc_hvoid_p, acc_hmemmove) (acc_hvoid_p dest, const acc_hvoid_p src, acc_hsize_t len)
 {
 #if (ACC_HAVE_MM_HUGE_PTR) || !defined(HAVE_MEMMOVE)
-    acc_hbyte_p p1 = (acc_hbyte_p) dest;
-    const acc_hbyte_p p2 = (const acc_hbyte_p) src;
-    if (len <= 0 || p1 == p2)
-        return dest;
-    if (p1 < p2)
-    {
-        do
-            *p1++ = *p2++;
-        while __acc_likely(--len > 0);
-    }
-    else
-    {
-        p1 += len;
-        p2 += len;
-        do
-            *--p1 = *--p2;
-        while __acc_likely(--len > 0);
-    }
-    return dest;
+	acc_hbyte_p p1 = (acc_hbyte_p) dest;
+	const acc_hbyte_p p2 = (const acc_hbyte_p) src;
+	if (len <= 0 || p1 == p2)
+		return dest;
+	if (p1 < p2)
+	{
+		do
+			*p1++ = *p2++;
+		while __acc_likely(--len > 0);
+	}
+	else
+	{
+		p1 += len;
+		p2 += len;
+		do
+			*--p1 = *--p2;
+		while __acc_likely(--len > 0);
+	}
+	return dest;
 #else
-    return memmove(dest, src, len);
+	return memmove(dest, src, len);
 #endif
 }
 ACCLIB_PUBLIC(acc_hvoid_p, acc_hmemset) (acc_hvoid_p s, int c, acc_hsize_t len)
 {
 #if (ACC_HAVE_MM_HUGE_PTR) || !defined(HAVE_MEMSET)
-    acc_hbyte_p p = (acc_hbyte_p) s;
-    if __acc_likely(len > 0) do
-        *p++ = (unsigned char) c;
-    while __acc_likely(--len > 0);
-    return s;
+	acc_hbyte_p p = (acc_hbyte_p) s;
+	if __acc_likely(len > 0) do
+		*p++ = (unsigned char) c;
+	while __acc_likely(--len > 0);
+	return s;
 #else
-    return memset(s, c, len);
+	return memset(s, c, len);
 #endif
 }
 #endif
@@ -4570,126 +4609,136 @@ ACCLIB_PUBLIC(acc_hvoid_p, acc_hmemset) (acc_hvoid_p s, int c, acc_hsize_t len)
 #endif
 ACCLIB_PUBLIC(void, acc_srand31) (acc_rand31_p r, acc_uint32l_t seed)
 {
-    r->seed = seed & ACC_UINT32_C(0xffffffff);
+	r->seed = seed & ACC_UINT32_C(0xffffffff);
 }
 ACCLIB_PUBLIC(acc_uint32l_t, acc_rand31) (acc_rand31_p r)
 {
-    r->seed = r->seed * ACC_UINT32_C(1103515245) + 12345;
-    r->seed &= ACC_UINT32_C(0x7fffffff);
-    return r->seed;
+	r->seed = r->seed * ACC_UINT32_C(1103515245) + 12345;
+	r->seed &= ACC_UINT32_C(0x7fffffff);
+	return r->seed;
 }
 #if defined(acc_int64l_t)
 ACCLIB_PUBLIC(void, acc_srand48) (acc_rand48_p r, acc_uint32l_t seed)
 {
-    r->seed = seed & ACC_UINT32_C(0xffffffff);
-    r->seed <<= 16; r->seed |= 0x330e;
+	r->seed = seed & ACC_UINT32_C(0xffffffff);
+	r->seed <<= 16; r->seed |= 0x330e;
 }
 ACCLIB_PUBLIC(acc_uint32l_t, acc_rand48) (acc_rand48_p r)
 {
-    r->seed = r->seed * ACC_UINT64_C(25214903917) + 11;
-    r->seed &= ACC_UINT64_C(0xffffffffffff);
-    return (acc_uint32l_t) (r->seed >> 17);
+	r->seed = r->seed * ACC_UINT64_C(25214903917) + 11;
+	r->seed &= ACC_UINT64_C(0xffffffffffff);
+	return (acc_uint32l_t) (r->seed >> 17);
 }
 ACCLIB_PUBLIC(acc_uint32l_t, acc_rand48_r32) (acc_rand48_p r)
 {
-    r->seed = r->seed * ACC_UINT64_C(25214903917) + 11;
-    r->seed &= ACC_UINT64_C(0xffffffffffff);
-    return (acc_uint32l_t) (r->seed >> 16);
+	r->seed = r->seed * ACC_UINT64_C(25214903917) + 11;
+	r->seed &= ACC_UINT64_C(0xffffffffffff);
+	return (acc_uint32l_t) (r->seed >> 16);
 }
 #endif
 #if defined(acc_int64l_t)
 ACCLIB_PUBLIC(void, acc_srand64) (acc_rand64_p r, acc_uint64l_t seed)
 {
-    r->seed = seed & ACC_UINT64_C(0xffffffffffffffff);
+	r->seed = seed & ACC_UINT64_C(0xffffffffffffffff);
 }
 ACCLIB_PUBLIC(acc_uint32l_t, acc_rand64) (acc_rand64_p r)
 {
-    r->seed = r->seed * ACC_UINT64_C(6364136223846793005) + 1;
+	r->seed = r->seed * ACC_UINT64_C(6364136223846793005) + 1;
 #if (ACC_SIZEOF_ACC_INT64L_T > 8)
-    r->seed &= ACC_UINT64_C(0xffffffffffffffff);
+	r->seed &= ACC_UINT64_C(0xffffffffffffffff);
 #endif
-    return (acc_uint32l_t) (r->seed >> 33);
+	return (acc_uint32l_t) (r->seed >> 33);
 }
 ACCLIB_PUBLIC(acc_uint32l_t, acc_rand64_r32) (acc_rand64_p r)
 {
-    r->seed = r->seed * ACC_UINT64_C(6364136223846793005) + 1;
+	r->seed = r->seed * ACC_UINT64_C(6364136223846793005) + 1;
 #if (ACC_SIZEOF_ACC_INT64L_T > 8)
-    r->seed &= ACC_UINT64_C(0xffffffffffffffff);
+	r->seed &= ACC_UINT64_C(0xffffffffffffffff);
 #endif
-    return (acc_uint32l_t) (r->seed >> 32);
+	return (acc_uint32l_t) (r->seed >> 32);
 }
 #endif
 ACCLIB_PUBLIC(void, acc_srandmt) (acc_randmt_p r, acc_uint32l_t seed)
 {
-    unsigned i = 0;
-    do {
-        r->s[i++] = (seed &= ACC_UINT32_C(0xffffffff));
-        seed ^= seed >> 30;
-        seed = seed * ACC_UINT32_C(0x6c078965) + i;
-    } while (i != 624);
-    r->n = i;
+	unsigned i = 0;
+	do
+	{
+		r->s[i++] = (seed &= ACC_UINT32_C(0xffffffff));
+		seed ^= seed >> 30;
+		seed = seed * ACC_UINT32_C(0x6c078965) + i;
+	}
+	while (i != 624);
+	r->n = i;
 }
 ACCLIB_PUBLIC(acc_uint32l_t, acc_randmt) (acc_randmt_p r)
 {
-    return (__ACCLIB_FUNCNAME(acc_randmt_r32)(r)) >> 1;
+	return (__ACCLIB_FUNCNAME(acc_randmt_r32)(r)) >> 1;
 }
 ACCLIB_PUBLIC(acc_uint32l_t, acc_randmt_r32) (acc_randmt_p r)
 {
-    acc_uint32l_t v;
-    if __acc_unlikely(r->n == 624) {
-        int i = 0, j;
-        r->n = 0;
-        do {
-            j = i - 623; if (j < 0) j += 624;
-            v = (r->s[i] & ACC_UINT32_C(0x80000000)) ^ (r->s[j] & ACC_UINT32_C(0x7fffffff));
-            j = i - 227; if (j < 0) j += 624;
-            r->s[i] = r->s[j] ^ (v >> 1);
-            if (v & 1) r->s[i] ^= ACC_UINT32_C(0x9908b0df);
-        } while (++i != 624);
-    }
-    v = r->s[r->n++];
-    v ^= v >> 11; v ^= (v & ACC_UINT32_C(0x013a58ad)) << 7;
-    v ^= (v & ACC_UINT32_C(0x0001df8c)) << 15; v ^= v >> 18;
-    return v;
+	acc_uint32l_t v;
+	if __acc_unlikely(r->n == 624)
+	{
+		int i = 0, j;
+		r->n = 0;
+		do
+		{
+			j = i - 623; if (j < 0) j += 624;
+			v = (r->s[i] & ACC_UINT32_C(0x80000000)) ^ (r->s[j] & ACC_UINT32_C(0x7fffffff));
+			j = i - 227; if (j < 0) j += 624;
+			r->s[i] = r->s[j] ^ (v >> 1);
+			if (v & 1) r->s[i] ^= ACC_UINT32_C(0x9908b0df);
+		}
+		while (++i != 624);
+	}
+	v = r->s[r->n++];
+	v ^= v >> 11; v ^= (v & ACC_UINT32_C(0x013a58ad)) << 7;
+	v ^= (v & ACC_UINT32_C(0x0001df8c)) << 15; v ^= v >> 18;
+	return v;
 }
 #if defined(acc_int64l_t)
 ACCLIB_PUBLIC(void, acc_srandmt64) (acc_randmt64_p r, acc_uint64l_t seed)
 {
-    unsigned i = 0;
-    do {
-        r->s[i++] = (seed &= ACC_UINT64_C(0xffffffffffffffff));
-        seed ^= seed >> 62;
-        seed = seed * ACC_UINT64_C(0x5851f42d4c957f2d) + i;
-    } while (i != 312);
-    r->n = i;
+	unsigned i = 0;
+	do
+	{
+		r->s[i++] = (seed &= ACC_UINT64_C(0xffffffffffffffff));
+		seed ^= seed >> 62;
+		seed = seed * ACC_UINT64_C(0x5851f42d4c957f2d) + i;
+	}
+	while (i != 312);
+	r->n = i;
 }
 #if 0
 ACCLIB_PUBLIC(acc_uint32l_t, acc_randmt64) (acc_randmt64_p r)
 {
-    acc_uint64l_t v;
-    v = (__ACCLIB_FUNCNAME(acc_randmt64_r64)(r)) >> 33;
-    return (acc_uint32l_t) v;
+	acc_uint64l_t v;
+	v = (__ACCLIB_FUNCNAME(acc_randmt64_r64)(r)) >> 33;
+	return (acc_uint32l_t) v;
 }
 #endif
 ACCLIB_PUBLIC(acc_uint64l_t, acc_randmt64_r64) (acc_randmt64_p r)
 {
-    acc_uint64l_t v;
-    if __acc_unlikely(r->n == 312) {
-        int i = 0, j;
-        r->n = 0;
-        do {
-            j = i - 311; if (j < 0) j += 312;
-            v = (r->s[i] & ACC_UINT64_C(0xffffffff80000000)) ^ (r->s[j] & ACC_UINT64_C(0x7fffffff));
-            j = i - 156; if (j < 0) j += 312;
-            r->s[i] = r->s[j] ^ (v >> 1);
-            if (v & 1) r->s[i] ^= ACC_UINT64_C(0xb5026f5aa96619e9);
-        } while (++i != 312);
-    }
-    v = r->s[r->n++];
-    v ^= (v & ACC_UINT64_C(0xaaaaaaaaa0000000)) >> 29;
-    v ^= (v & ACC_UINT64_C(0x38eb3ffff6d3)) << 17;
-    v ^= (v & ACC_UINT64_C(0x7ffbf77)) << 37;
-    return v ^ (v >> 43);
+	acc_uint64l_t v;
+	if __acc_unlikely(r->n == 312)
+	{
+		int i = 0, j;
+		r->n = 0;
+		do
+		{
+			j = i - 311; if (j < 0) j += 312;
+			v = (r->s[i] & ACC_UINT64_C(0xffffffff80000000)) ^ (r->s[j] & ACC_UINT64_C(0x7fffffff));
+			j = i - 156; if (j < 0) j += 312;
+			r->s[i] = r->s[j] ^ (v >> 1);
+			if (v & 1) r->s[i] ^= ACC_UINT64_C(0xb5026f5aa96619e9);
+		}
+		while (++i != 312);
+	}
+	v = r->s[r->n++];
+	v ^= (v & ACC_UINT64_C(0xaaaaaaaaa0000000)) >> 29;
+	v ^= (v & ACC_UINT64_C(0x38eb3ffff6d3)) << 17;
+	v ^= (v & ACC_UINT64_C(0x7ffbf77)) << 37;
+	return v ^ (v >> 43);
 }
 #endif
 #endif
@@ -4724,29 +4773,29 @@ ACCLIB_PUBLIC(acc_uint64l_t, acc_randmt64_r64) (acc_randmt64_p r)
 ACCLIB_PUBLIC(int, acc_tsc_read) (acc_uint32e_t* t)
 {
 #if (ACC_ARCH_AMD64 || ACC_ARCH_I386) && (ACC_ASM_SYNTAX_GNUC)
-    __asm__ __volatile__(
-        "clc \n" ".byte 0x0f,0x31\n"
-        "movl %%eax,(%0)\n" "movl %%edx,4(%0)\n"
-        __ACCLIB_RDTSC_REGS
-    );
-    return 0;
+	__asm__ __volatile__(
+		"clc \n" ".byte 0x0f,0x31\n"
+		"movl %%eax,(%0)\n" "movl %%edx,4(%0)\n"
+		__ACCLIB_RDTSC_REGS
+	);
+	return 0;
 #elif (ACC_ARCH_I386) && (ACC_ASM_SYNTAX_MSC)
-    ACC_UNUSED(t);
-    __asm {
-        mov ecx, t
-        clc
+	ACC_UNUSED(t);
+	__asm {
+		mov ecx, t
+		clc
 #  if (ACC_CC_MSC && (_MSC_VER < 1200))
-        _emit 0x0f
-        _emit 0x31
+		_emit 0x0f
+		_emit 0x31
 #  else
-        rdtsc
+		rdtsc
 #  endif
-        mov [ecx], eax
-        mov [ecx+4], edx
-    }
-    return 0;
+		mov[ecx], eax
+		mov[ecx + 4], edx
+	}
+	return 0;
 #else
-    t[0] = t[1] = 0; return -1;
+	t[0] = t[1] = 0; return -1;
 #endif
 }
 #if (ACC_OS_WIN32 && ACC_CC_PELLESC && (__POCC__ >= 290))
@@ -4761,65 +4810,65 @@ ACCLIB_PUBLIC(int, acc_tsc_read) (acc_uint32e_t* t)
 #  define ACCLIB_PUBLIC(r,f)    r __ACCLIB_FUNCNAME(f)
 #endif
 #if (ACC_OS_OS216)
-ACC_EXTERN_C unsigned short __far __pascal DosAllocHuge(unsigned short, unsigned short, unsigned short __far *, unsigned short, unsigned short);
+ACC_EXTERN_C unsigned short __far __pascal DosAllocHuge(unsigned short, unsigned short, unsigned short __far*, unsigned short, unsigned short);
 ACC_EXTERN_C unsigned short __far __pascal DosFreeSeg(unsigned short);
 #endif
 #if (ACC_OS_DOS16 || ACC_OS_WIN16)
 #if !defined(ACC_CC_AZTECC)
 ACCLIB_PUBLIC(void __far*, acc_dos_alloc) (unsigned long size)
 {
-    void __far* p = 0;
-    union REGS ri, ro;
-    if ((long)size <= 0)
-        return p;
-    size = (size + 15) >> 4;
-    if (size > 0xffffu)
-        return p;
-    ri.x.ax = 0x4800;
-    ri.x.bx = (unsigned short) size;
-    int86(0x21, &ri, &ro);
-    if ((ro.x.cflag & 1) == 0)
-        p = (void __far*) ACC_PTR_MK_FP(ro.x.ax, 0);
-    return p;
+	void __far* p = 0;
+	union REGS ri, ro;
+	if ((long) size <= 0)
+		return p;
+	size = (size + 15) >> 4;
+	if (size > 0xffffu)
+		return p;
+	ri.x.ax = 0x4800;
+	ri.x.bx = (unsigned short) size;
+	int86(0x21, &ri, &ro);
+	if ((ro.x.cflag & 1) == 0)
+		p = (void __far*) ACC_PTR_MK_FP(ro.x.ax, 0);
+	return p;
 }
 ACCLIB_PUBLIC(int, acc_dos_free) (void __far* p)
 {
-    union REGS ri, ro;
-    struct SREGS rs;
-    if (!p)
-        return 0;
-    if (ACC_PTR_FP_OFF(p) != 0)
-        return -1;
-    segread(&rs);
-    ri.x.ax = 0x4900;
-    rs.es = ACC_PTR_FP_SEG(p);
-    int86x(0x21, &ri, &ro, &rs);
-    if (ro.x.cflag & 1)
-        return -1;
-    return 0;
+	union REGS ri, ro;
+	struct SREGS rs;
+	if (!p)
+		return 0;
+	if (ACC_PTR_FP_OFF(p) != 0)
+		return -1;
+	segread(&rs);
+	ri.x.ax = 0x4900;
+	rs.es = ACC_PTR_FP_SEG(p);
+	int86x(0x21, &ri, &ro, &rs);
+	if (ro.x.cflag & 1)
+		return -1;
+	return 0;
 }
 #endif
 #endif
 #if (ACC_OS_OS216)
 ACCLIB_PUBLIC(void __far*, acc_dos_alloc) (unsigned long size)
 {
-    void __far* p = 0;
-    unsigned short sel = 0;
-    if ((long)size <= 0)
-        return p;
-    if (DosAllocHuge((unsigned short)(size >> 16), (unsigned short)size, &sel, 0, 0) == 0)
-        p = (void __far*) ACC_PTR_MK_FP(sel, 0);
-    return p;
+	void __far* p = 0;
+	unsigned short sel = 0;
+	if ((long) size <= 0)
+		return p;
+	if (DosAllocHuge((unsigned short) (size >> 16), (unsigned short) size, &sel, 0, 0) == 0)
+		p = (void __far*) ACC_PTR_MK_FP(sel, 0);
+	return p;
 }
 ACCLIB_PUBLIC(int, acc_dos_free) (void __far* p)
 {
-    if (!p)
-        return 0;
-    if (ACC_PTR_FP_OFF(p) != 0)
-        return -1;
-    if (DosFreeSeg(ACC_PTR_FP_SEG(p)) != 0)
-        return -1;
-    return 0;
+	if (!p)
+		return 0;
+	if (ACC_PTR_FP_OFF(p) != 0)
+		return -1;
+	if (DosFreeSeg(ACC_PTR_FP_SEG(p)) != 0)
+		return -1;
+	return 0;
 }
 #endif
 #endif
@@ -4846,7 +4895,7 @@ ACCLIB_PUBLIC(int, acc_dos_free) (void __far* p)
 #if 0 && (ACC_OS_OS216)
 #include <os2.h>
 #else
-ACC_EXTERN_C unsigned short __far __pascal DosAllocHuge(unsigned short, unsigned short, unsigned short __far *, unsigned short, unsigned short);
+ACC_EXTERN_C unsigned short __far __pascal DosAllocHuge(unsigned short, unsigned short, unsigned short __far*, unsigned short, unsigned short);
 ACC_EXTERN_C unsigned short __far __pascal DosFreeSeg(unsigned short);
 #endif
 #endif
@@ -4864,83 +4913,87 @@ ACC_EXTERN_C int __far __pascal GlobalUnlock(const void __near*);
 #endif
 ACCLIB_PUBLIC(acc_hvoid_p, acc_halloc) (acc_hsize_t size)
 {
-    acc_hvoid_p p = 0;
-    if (size <= 0)
-        return p;
+	acc_hvoid_p p = 0;
+	if (size <= 0)
+		return p;
 #if 0 && defined(__palmos__)
-    p = MemPtrNew(size);
+	p = MemPtrNew(size);
 #elif !defined(ACC_HAVE_MM_HUGE_PTR)
-    if (size < (size_t) -1)
-        p = malloc((size_t) size);
+	if (size < (size_t) -1)
+		p = malloc((size_t) size);
 #else
-    if ((long)size <= 0)
-        return p;
-{
+	if ((long) size <= 0)
+		return p;
+	{
 #if (__ACCLIB_HALLOC_USE_DAH)
-    unsigned short sel = 0;
-    if (DosAllocHuge((unsigned short)(size >> 16), (unsigned short)size, &sel, 0, 0) == 0)
-        p = (acc_hvoid_p) ACC_PTR_MK_FP(sel, 0);
+		unsigned short sel = 0;
+		if (DosAllocHuge((unsigned short) (size >> 16), (unsigned short) size, &sel, 0, 0) == 0)
+			p = (acc_hvoid_p) ACC_PTR_MK_FP(sel, 0);
 #elif (__ACCLIB_HALLOC_USE_GA)
-    const void __near* h = GlobalAlloc(2, size);
-    if (h) {
-        p = GlobalLock(h);
-        if (p && ACC_PTR_FP_OFF(p) != 0) {
-            GlobalUnlock(h);
-            p = 0;
-        }
-        if (!p)
-            GlobalFree(h);
-    }
+		const void __near* h = GlobalAlloc(2, size);
+		if (h)
+		{
+			p = GlobalLock(h);
+			if (p && ACC_PTR_FP_OFF(p) != 0)
+			{
+				GlobalUnlock(h);
+				p = 0;
+			}
+			if (!p)
+				GlobalFree(h);
+		}
 #elif (ACC_CC_MSC && (_MSC_VER >= 700))
-    p = _halloc(size, 1);
+		p = _halloc(size, 1);
 #elif (ACC_CC_MSC || ACC_CC_WATCOMC)
-    p = halloc(size, 1);
+		p = halloc(size, 1);
 #elif (ACC_CC_DMC || ACC_CC_SYMANTECC || ACC_CC_ZORTECHC)
-    p = farmalloc(size);
+		p = farmalloc(size);
 #elif (ACC_CC_BORLANDC || ACC_CC_TURBOC)
-    p = farmalloc(size);
+		p = farmalloc(size);
 #elif defined(ACC_CC_AZTECC)
-    p = lmalloc(size);
+		p = lmalloc(size);
 #else
-    if (size < (size_t) -1)
-        p = malloc((size_t) size);
+		if (size < (size_t) -1)
+			p = malloc((size_t) size);
 #endif
-}
+	}
 #endif
-    return p;
+	return p;
 }
 ACCLIB_PUBLIC(void, acc_hfree) (acc_hvoid_p p)
 {
-    if (!p)
-        return;
+	if (!p)
+		return;
 #if 0 && defined(__palmos__)
-    MemPtrFree(p);
+	MemPtrFree(p);
 #elif !defined(ACC_HAVE_MM_HUGE_PTR)
-    free(p);
+	free(p);
 #else
 #if (__ACCLIB_HALLOC_USE_DAH)
-    if (ACC_PTR_FP_OFF(p) == 0)
-        DosFreeSeg((unsigned short) ACC_PTR_FP_SEG(p));
+	if (ACC_PTR_FP_OFF(p) == 0)
+		DosFreeSeg((unsigned short) ACC_PTR_FP_SEG(p));
 #elif (__ACCLIB_HALLOC_USE_GA)
-    if (ACC_PTR_FP_OFF(p) == 0) {
-        const void __near* h = (const void __near*) (unsigned) GlobalHandle(ACC_PTR_FP_SEG(p));
-        if (h) {
-            GlobalUnlock(h);
-            GlobalFree(h);
-        }
-    }
+	if (ACC_PTR_FP_OFF(p) == 0)
+	{
+		const void __near* h = (const void __near*) (unsigned) GlobalHandle(ACC_PTR_FP_SEG(p));
+		if (h)
+		{
+			GlobalUnlock(h);
+			GlobalFree(h);
+		}
+	}
 #elif (ACC_CC_MSC && (_MSC_VER >= 700))
-    _hfree(p);
+	_hfree(p);
 #elif (ACC_CC_MSC || ACC_CC_WATCOMC)
-    hfree(p);
+	hfree(p);
 #elif (ACC_CC_DMC || ACC_CC_SYMANTECC || ACC_CC_ZORTECHC)
-    farfree((void __far*) p);
+	farfree((void __far*) p);
 #elif (ACC_CC_BORLANDC || ACC_CC_TURBOC)
-    farfree((void __far*) p);
+	farfree((void __far*) p);
 #elif defined(ACC_CC_AZTECC)
-    lfree(p);
+	lfree(p);
 #else
-    free(p);
+	free(p);
 #endif
 #endif
 }
@@ -4953,82 +5006,82 @@ ACCLIB_PUBLIC(void, acc_hfree) (acc_hvoid_p p)
 #endif
 ACCLIB_PUBLIC(acc_hsize_t, acc_hfread) (void* vfp, acc_hvoid_p buf, acc_hsize_t size)
 {
-    FILE* fp = (FILE *) vfp;
+	FILE* fp = (FILE*) vfp;
 #if (ACC_HAVE_MM_HUGE_PTR)
 #if (ACC_MM_TINY || ACC_MM_SMALL || ACC_MM_MEDIUM)
 #define __ACCLIB_REQUIRE_HMEMCPY_CH 1
-    unsigned char tmp[512];
-    acc_hsize_t l = 0;
-    while (l < size)
-    {
-        size_t n = size - l > sizeof(tmp) ? sizeof(tmp) : (size_t) (size - l);
-        n = fread(tmp, 1, n, fp);
-        if (n == 0)
-            break;
-        __ACCLIB_FUNCNAME(acc_hmemcpy)((acc_hbyte_p)buf + l, tmp, (acc_hsize_t)n);
-        l += n;
-    }
-    return l;
+	unsigned char tmp[512];
+	acc_hsize_t l = 0;
+	while (l < size)
+	{
+		size_t n = size - l > sizeof(tmp) ? sizeof(tmp) : (size_t) (size - l);
+		n = fread(tmp, 1, n, fp);
+		if (n == 0)
+			break;
+		__ACCLIB_FUNCNAME(acc_hmemcpy)((acc_hbyte_p) buf + l, tmp, (acc_hsize_t) n);
+		l += n;
+	}
+	return l;
 #elif (ACC_MM_COMPACT || ACC_MM_LARGE || ACC_MM_HUGE)
-    acc_hbyte_p b = (acc_hbyte_p) buf;
-    acc_hsize_t l = 0;
-    while (l < size)
-    {
-        size_t n;
-        n = ACC_PTR_FP_OFF(b); n = (n <= 1) ? 0x8000u : (0u - n);
-        if ((acc_hsize_t) n > size - l)
-            n = (size_t) (size - l);
-        n = fread((void __far*)b, 1, n, fp);
-        if (n == 0)
-            break;
-        b += n; l += n;
-    }
-    return l;
+	acc_hbyte_p b = (acc_hbyte_p) buf;
+	acc_hsize_t l = 0;
+	while (l < size)
+	{
+		size_t n;
+		n = ACC_PTR_FP_OFF(b); n = (n <= 1) ? 0x8000u : (0u - n);
+		if ((acc_hsize_t) n > size - l)
+			n = (size_t) (size - l);
+		n = fread((void __far*)b, 1, n, fp);
+		if (n == 0)
+			break;
+		b += n; l += n;
+	}
+	return l;
 #else
 #  error "unknown memory model"
 #endif
 #else
-    return fread(buf, 1, size, fp);
+	return fread(buf, 1, size, fp);
 #endif
 }
 ACCLIB_PUBLIC(acc_hsize_t, acc_hfwrite) (void* vfp, const acc_hvoid_p buf, acc_hsize_t size)
 {
-    FILE* fp = (FILE *) vfp;
+	FILE* fp = (FILE*) vfp;
 #if (ACC_HAVE_MM_HUGE_PTR)
 #if (ACC_MM_TINY || ACC_MM_SMALL || ACC_MM_MEDIUM)
 #define __ACCLIB_REQUIRE_HMEMCPY_CH 1
-    unsigned char tmp[512];
-    acc_hsize_t l = 0;
-    while (l < size)
-    {
-        size_t n = size - l > sizeof(tmp) ? sizeof(tmp) : (size_t) (size - l);
-        __ACCLIB_FUNCNAME(acc_hmemcpy)(tmp, (const acc_hbyte_p)buf + l, (acc_hsize_t)n);
-        n = fwrite(tmp, 1, n, fp);
-        if (n == 0)
-            break;
-        l += n;
-    }
-    return l;
+	unsigned char tmp[512];
+	acc_hsize_t l = 0;
+	while (l < size)
+	{
+		size_t n = size - l > sizeof(tmp) ? sizeof(tmp) : (size_t) (size - l);
+		__ACCLIB_FUNCNAME(acc_hmemcpy)(tmp, (const acc_hbyte_p) buf + l, (acc_hsize_t) n);
+		n = fwrite(tmp, 1, n, fp);
+		if (n == 0)
+			break;
+		l += n;
+	}
+	return l;
 #elif (ACC_MM_COMPACT || ACC_MM_LARGE || ACC_MM_HUGE)
-    const acc_hbyte_p b = (const acc_hbyte_p) buf;
-    acc_hsize_t l = 0;
-    while (l < size)
-    {
-        size_t n;
-        n = ACC_PTR_FP_OFF(b); n = (n <= 1) ? 0x8000u : (0u - n);
-        if ((acc_hsize_t) n > size - l)
-            n = (size_t) (size - l);
-        n = fwrite((void __far*)b, 1, n, fp);
-        if (n == 0)
-            break;
-        b += n; l += n;
-    }
-    return l;
+	const acc_hbyte_p b = (const acc_hbyte_p) buf;
+	acc_hsize_t l = 0;
+	while (l < size)
+	{
+		size_t n;
+		n = ACC_PTR_FP_OFF(b); n = (n <= 1) ? 0x8000u : (0u - n);
+		if ((acc_hsize_t) n > size - l)
+			n = (size_t) (size - l);
+		n = fwrite((void __far*)b, 1, n, fp);
+		if (n == 0)
+			break;
+		b += n; l += n;
+	}
+	return l;
 #else
 #  error "unknown memory model"
 #endif
 #else
-    return fwrite(buf, 1, size, fp);
+	return fwrite(buf, 1, size, fp);
 #endif
 }
 #endif
@@ -5040,71 +5093,73 @@ ACCLIB_PUBLIC(acc_hsize_t, acc_hfwrite) (void* vfp, const acc_hvoid_p buf, acc_h
 #endif
 ACCLIB_PUBLIC(long, acc_safe_hread) (int fd, acc_hvoid_p buf, long size)
 {
-    acc_hbyte_p b = (acc_hbyte_p) buf;
-    long l = 0;
-    int saved_errno;
-    saved_errno = errno;
-    while (l < size)
-    {
-        long n = size - l;
+	acc_hbyte_p b = (acc_hbyte_p) buf;
+	long l = 0;
+	int saved_errno;
+	saved_errno = errno;
+	while (l < size)
+	{
+		long n = size - l;
 #if (ACC_HAVE_MM_HUGE_PTR)
 #  define __ACCLIB_REQUIRE_HREAD_CH 1
-        errno = 0; n = acc_hread(fd, b, n);
+		errno = 0; n = acc_hread(fd, b, n);
 #elif (ACC_OS_DOS32) && defined(__DJGPP__)
-        errno = 0; n = _read(fd, b, n);
+		errno = 0; n = _read(fd, b, n);
 #else
-        errno = 0; n = read(fd, b, n);
+		errno = 0; n = read(fd, b, n);
 #endif
-        if (n == 0)
-            break;
-        if (n < 0) {
+		if (n == 0)
+			break;
+		if (n < 0)
+		{
 #if defined(EAGAIN)
-            if (errno == (EAGAIN)) continue;
+			if (errno == (EAGAIN)) continue;
 #endif
 #if defined(EINTR)
-            if (errno == (EINTR)) continue;
+			if (errno == (EINTR)) continue;
 #endif
-            if (errno == 0) errno = 1;
-            return l;
-        }
-        b += n; l += n;
-    }
-    errno = saved_errno;
-    return l;
+			if (errno == 0) errno = 1;
+			return l;
+		}
+		b += n; l += n;
+	}
+	errno = saved_errno;
+	return l;
 }
 ACCLIB_PUBLIC(long, acc_safe_hwrite) (int fd, const acc_hvoid_p buf, long size)
 {
-    const acc_hbyte_p b = (const acc_hbyte_p) buf;
-    long l = 0;
-    int saved_errno;
-    saved_errno = errno;
-    while (l < size)
-    {
-        long n = size - l;
+	const acc_hbyte_p b = (const acc_hbyte_p) buf;
+	long l = 0;
+	int saved_errno;
+	saved_errno = errno;
+	while (l < size)
+	{
+		long n = size - l;
 #if (ACC_HAVE_MM_HUGE_PTR)
 #  define __ACCLIB_REQUIRE_HREAD_CH 1
-        errno = 0; n = acc_hwrite(fd, b, n);
+		errno = 0; n = acc_hwrite(fd, b, n);
 #elif (ACC_OS_DOS32) && defined(__DJGPP__)
-        errno = 0; n = _write(fd, b, n);
+		errno = 0; n = _write(fd, b, n);
 #else
-        errno = 0; n = write(fd, b, n);
+		errno = 0; n = write(fd, b, n);
 #endif
-        if (n == 0)
-            break;
-        if (n < 0) {
+		if (n == 0)
+			break;
+		if (n < 0)
+		{
 #if defined(EAGAIN)
-            if (errno == (EAGAIN)) continue;
+			if (errno == (EAGAIN)) continue;
 #endif
 #if defined(EINTR)
-            if (errno == (EINTR)) continue;
+			if (errno == (EINTR)) continue;
 #endif
-            if (errno == 0) errno = 1;
-            return l;
-        }
-        b += n; l += n;
-    }
-    errno = saved_errno;
-    return l;
+			if (errno == 0) errno = 1;
+			return l;
+		}
+		b += n; l += n;
+	}
+	errno = saved_errno;
+	return l;
 }
 #endif
 #if defined(ACC_WANT_ACCLIB_UCLOCK)
@@ -5133,9 +5188,9 @@ ACCLIB_PUBLIC(long, acc_safe_hwrite) (int fd, const acc_hvoid_p buf, long size)
 #      include <mmsystem.h>
 #    else
 #      if (ACC_CC_INTELC || ACC_CC_MSC || ACC_CC_PELLESC)
-         ACC_EXTERN_C __declspec(dllimport) unsigned long __stdcall timeGetTime(void);
+ACC_EXTERN_C __declspec(dllimport) unsigned long __stdcall timeGetTime(void);
 #      else
-         ACC_EXTERN_C unsigned long __stdcall timeGetTime(void);
+ACC_EXTERN_C unsigned long __stdcall timeGetTime(void);
 #      endif
 #    endif
 #    if (ACC_CC_DMC)
@@ -5166,164 +5221,177 @@ ACCLIB_PUBLIC(long, acc_safe_hwrite) (int fd, const acc_hvoid_p buf, long size)
 #endif
 ACCLIB_PUBLIC(int, acc_uclock_open) (acc_uclock_handle_p h)
 {
-    int i;
+	int i;
 #if (__ACCLIB_UCLOCK_USE_QPC)
-    LARGE_INTEGER li;
+	LARGE_INTEGER li;
 #endif
-    h->h = (acclib_handle_t) 1;
-    h->mode = 0;
+	h->h = (acclib_handle_t) 1;
+	h->mode = 0;
 #if (__ACCLIB_UCLOCK_USE_PERFCTR)
-    h->pch.h = 0;
-    if (h->mode == 0 && acc_perfctr_open(&h->pch) == 0)
-        h->mode = 2;
+	h->pch.h = 0;
+	if (h->mode == 0 && acc_perfctr_open(&h->pch) == 0)
+		h->mode = 2;
 #endif
 #if (__ACCLIB_UCLOCK_USE_QPC)
-    h->qpf = 0.0;
-    if (h->mode == 0 && QueryPerformanceFrequency(&li) != 0) {
-        double d = (double) li.QuadPart;
-        if (d > 0.0 && QueryPerformanceCounter(&li) != 0) {
-            h->mode = 3;
-            h->qpf = d;
-        }
-    }
+	h->qpf = 0.0;
+	if (h->mode == 0 && QueryPerformanceFrequency(&li) != 0)
+	{
+		double d = (double) li.QuadPart;
+		if (d > 0.0 && QueryPerformanceCounter(&li) != 0)
+		{
+			h->mode = 3;
+			h->qpf = d;
+		}
+	}
 #endif
-    for (i = 0; i < 10; i++) {
-        acc_uclock_t c;
-        acc_uclock_read(h, &c);
-    }
-    return 0;
+	for (i = 0; i < 10; i++)
+	{
+		acc_uclock_t c;
+		acc_uclock_read(h, &c);
+	}
+	return 0;
 }
 ACCLIB_PUBLIC(int, acc_uclock_close) (acc_uclock_handle_p h)
 {
-    h->h = (acclib_handle_t) 0;
-    h->mode = -1;
+	h->h = (acclib_handle_t) 0;
+	h->mode = -1;
 #if (__ACCLIB_UCLOCK_USE_PERFCTR)
-    acc_perfctr_close(&h->pch);
+	acc_perfctr_close(&h->pch);
 #endif
-    return 0;
+	return 0;
 }
 ACCLIB_PUBLIC(void, acc_uclock_read) (acc_uclock_handle_p h, acc_uclock_p c)
 {
 #if (__ACCLIB_UCLOCK_USE_RDTSC)
-    acc_tsc_read((acc_uint32e_t*) &c->tsc);
+	acc_tsc_read((acc_uint32e_t*) &c->tsc);
 #endif
 #if (__ACCLIB_UCLOCK_USE_PERFCTR)
-    if (h->pch.h) {
-        acc_perfctr_read(&h->pch, &c->pcc);
-        if (h->mode > 0 && h->mode <= 2)
-            return;
-    }
+	if (h->pch.h)
+	{
+		acc_perfctr_read(&h->pch, &c->pcc);
+		if (h->mode > 0 && h->mode <= 2)
+			return;
+	}
 #endif
 #if (__ACCLIB_UCLOCK_USE_QPC)
-    if (h->qpf > 0.0) {
-        LARGE_INTEGER li;
-        if (QueryPerformanceCounter(&li) != 0) {
-            c->qpc = (acc_int64l_t) li.QuadPart;
-            if (h->mode > 0 && h->mode <= 3)
-                return;
-        } else {
-            h->mode = 0; h->qpf = 0.0; c->qpc = 0;
-        }
-    }
+	if (h->qpf > 0.0)
+	{
+		LARGE_INTEGER li;
+		if (QueryPerformanceCounter(&li) != 0)
+		{
+			c->qpc = (acc_int64l_t) li.QuadPart;
+			if (h->mode > 0 && h->mode <= 3)
+				return;
+		}
+		else
+		{
+			h->mode = 0; h->qpf = 0.0; c->qpc = 0;
+		}
+	}
 #endif
-    {
+	{
 #if (ACC_OS_DOS16 || ACC_OS_WIN16)
 # if (ACC_CC_AZTECC)
-    c->ticks.t32 = 0;
+		c->ticks.t32 = 0;
 # else
-    union REGS ri, ro;
-    ri.x.ax = 0x2c00; int86(0x21, &ri, &ro);
-    c->ticks.t32 = ro.h.ch*60UL*60UL*100UL + ro.h.cl*60UL*100UL + ro.h.dh*100UL + ro.h.dl;
+		union REGS ri, ro;
+		ri.x.ax = 0x2c00; int86(0x21, &ri, &ro);
+		c->ticks.t32 = ro.h.ch * 60UL * 60UL * 100UL + ro.h.cl * 60UL * 100UL + ro.h.dh * 100UL + ro.h.dl;
 # endif
 #elif (ACC_OS_DOS32 && ACC_CC_GNUC) && defined(__DJGPP__)
-    c->ticks.t64 = uclock();
+		c->ticks.t64 = uclock( );
 #elif (__ACCLIB_UCLOCK_USE_CLOCK) && defined(acc_int64l_t)
-    c->ticks.t64 = clock();
+		c->ticks.t64 = clock( );
 #elif (__ACCLIB_UCLOCK_USE_CLOCK)
-    c->ticks.t32 = clock();
+		c->ticks.t32 = clock( );
 #elif (__ACCLIB_UCLOCK_USE_WINMM)
-    c->ticks.t32 = timeGetTime();
+		c->ticks.t32 = timeGetTime( );
 #elif (__ACCLIB_UCLOCK_USE_GETRUSAGE)
-    struct rusage ru;
-    if (getrusage(RUSAGE_SELF, &ru) != 0) c->ticks.rd = 0;
-    else c->ticks.td = ru.ru_utime.tv_sec + ru.ru_utime.tv_usec / 1000000.0;
+		struct rusage ru;
+		if (getrusage(RUSAGE_SELF, &ru) != 0) c->ticks.rd = 0;
+		else c->ticks.td = ru.ru_utime.tv_sec + ru.ru_utime.tv_usec / 1000000.0;
 #elif (HAVE_GETTIMEOFDAY)
-    struct timeval tv;
-    if (gettimeofday(&tv, 0) != 0) c->ticks.td = 0;
-    else c->ticks.td = tv.tv_sec + tv.tv_usec / 1000000.0;
+		struct timeval tv;
+		if (gettimeofday(&tv, 0) != 0) c->ticks.td = 0;
+		else c->ticks.td = tv.tv_sec + tv.tv_usec / 1000000.0;
 #else
-    ACC_UNUSED(c);
+		ACC_UNUSED(c);
 #endif
-    }
-    ACC_UNUSED(h);
+	}
+	ACC_UNUSED(h);
 }
 ACCLIB_PUBLIC(double, acc_uclock_get_elapsed) (acc_uclock_handle_p h, const acc_uclock_p start, const acc_uclock_p stop)
 {
-    double d;
-    if (!h->h) {
-        h->mode = -1;
-        return 0.0;
-    }
+	double d;
+	if (!h->h)
+	{
+		h->mode = -1;
+		return 0.0;
+	}
 #if (__ACCLIB_UCLOCK_USE_RDTSC)
-    if (h->mode == 1) {
-        d = (double) ((acc_int64l_t)stop->tsc - (acc_int64l_t)start->tsc);
-        return d / 1000000000.0;
-    }
+	if (h->mode == 1)
+	{
+		d = (double) ((acc_int64l_t) stop->tsc - (acc_int64l_t) start->tsc);
+		return d / 1000000000.0;
+	}
 #endif
 #if (__ACCLIB_UCLOCK_USE_PERFCTR)
-    if (h->pch.h && h->mode == 2) {
-        return acc_perfctr_get_elapsed(&h->pch, &start->pcc, &stop->pcc);
-    }
+	if (h->pch.h && h->mode == 2)
+	{
+		return acc_perfctr_get_elapsed(&h->pch, &start->pcc, &stop->pcc);
+	}
 #endif
 #if (__ACCLIB_UCLOCK_USE_QPC)
-    if (h->qpf > 0.0 && h->mode == 3) {
-        if (start->qpc == 0 || stop->qpc == 0) return 0.0;
-        return (double) (stop->qpc - start->qpc) / h->qpf;
-    }
+	if (h->qpf > 0.0 && h->mode == 3)
+	{
+		if (start->qpc == 0 || stop->qpc == 0) return 0.0;
+		return (double) (stop->qpc - start->qpc) / h->qpf;
+	}
 #endif
 #if (ACC_OS_DOS16 || ACC_OS_WIN16)
-    h->mode = 11;
-    d = (double) (stop->ticks.t32 - start->ticks.t32) / 100.0;
-    if (d < 0.0) d += 86400.0;
+	h->mode = 11;
+	d = (double) (stop->ticks.t32 - start->ticks.t32) / 100.0;
+	if (d < 0.0) d += 86400.0;
 #elif (ACC_OS_DOS32 && ACC_CC_GNUC) && defined(__DJGPP__)
-    h->mode = 12;
-    d = (double) (stop->ticks.t64 - start->ticks.t64) / (UCLOCKS_PER_SEC);
+	h->mode = 12;
+	d = (double) (stop->ticks.t64 - start->ticks.t64) / (UCLOCKS_PER_SEC);
 #elif (__ACCLIB_UCLOCK_USE_CLOCK) && defined(acc_int64l_t)
-    h->mode = 13;
-    {
-    acc_int64l_t t;
-    t = stop->ticks.t64 - start->ticks.t64;
-    if (t < 0)
-        t += sizeof(clock_t) == 4 ? ACC_INT64_C(0x100000000) : ACC_INT64_C(0);
-    d = (double) t / (CLOCKS_PER_SEC);
-    }
+	h->mode = 13;
+	{
+		acc_int64l_t t;
+		t = stop->ticks.t64 - start->ticks.t64;
+		if (t < 0)
+			t += sizeof(clock_t) == 4 ? ACC_INT64_C(0x100000000) : ACC_INT64_C(0);
+		d = (double) t / (CLOCKS_PER_SEC);
+	}
 #elif (__ACCLIB_UCLOCK_USE_CLOCK)
-    h->mode = 14;
-    d = (double) (stop->ticks.t32 - start->ticks.t32) / (CLOCKS_PER_SEC);
+	h->mode = 14;
+	d = (double) (stop->ticks.t32 - start->ticks.t32) / (CLOCKS_PER_SEC);
 #elif (__ACCLIB_UCLOCK_USE_WINMM)
-    h->mode = 15;
-    d = (double) (stop->ticks.t32 - start->ticks.t32) / 1000.0;
+	h->mode = 15;
+	d = (double) (stop->ticks.t32 - start->ticks.t32) / 1000.0;
 #elif (__ACCLIB_UCLOCK_USE_GETRUSAGE)
-    h->mode = 16;
-    d = stop->ticks.td - start->ticks.td;
+	h->mode = 16;
+	d = stop->ticks.td - start->ticks.td;
 #elif (HAVE_GETTIMEOFDAY)
-    h->mode = 17;
-    d = stop->ticks.td - start->ticks.td;
+	h->mode = 17;
+	d = stop->ticks.td - start->ticks.td;
 #else
-    h->mode = 0;
-    d = 0.0;
+	h->mode = 0;
+	d = 0.0;
 #endif
-    return d;
+	return d;
 }
 ACCLIB_PUBLIC(int, acc_uclock_flush_cpu_cache) (acc_uclock_handle_p h, unsigned flags)
 {
-    if (h->h) {
+	if (h->h)
+	{
 #if (__ACCLIB_UCLOCK_USE_PERFCTR)
-        return acc_perfctr_flush_cpu_cache(&h->pch, flags);
+		return acc_perfctr_flush_cpu_cache(&h->pch, flags);
 #endif
-    }
-    ACC_UNUSED(h); ACC_UNUSED(flags);
-    return -1;
+	}
+	ACC_UNUSED(h); ACC_UNUSED(flags);
+	return -1;
 }
 #if defined(__ACCLIB_UCLOCK_NEED_WARN_POP)
 #  if (ACC_CC_MSC && (_MSC_VER >= 1200))
@@ -5349,158 +5417,158 @@ ACCLIB_PUBLIC(int, acc_uclock_flush_cpu_cache) (acc_uclock_handle_p h, unsigned 
 #endif
 ACCLIB_PUBLIC(acclib_handle_t, acc_get_osfhandle) (int fd)
 {
-    if (fd < 0)
-        return -1;
+	if (fd < 0)
+		return -1;
 #if (ACC_OS_CYGWIN)
-    return get_osfhandle(fd);
+	return get_osfhandle(fd);
 #elif (ACC_OS_EMX && defined(__RSXNT__))
-    return -1;
+	return -1;
 #elif (ACC_OS_WIN32 && ACC_CC_GNUC) && defined(__PW32__)
-    return -1;
+	return -1;
 #elif (ACC_OS_WIN32 || ACC_OS_WIN64)
 # if (ACC_CC_PELLESC && (__POCC__ < 280))
-    return -1;
+	return -1;
 # elif (ACC_CC_WATCOMC && (__WATCOMC__ < 1000))
-    return -1;
+	return -1;
 # elif (ACC_CC_WATCOMC && (__WATCOMC__ < 1100))
-    return _os_handle(fd);
+	return _os_handle(fd);
 # else
-    return _get_osfhandle(fd);
+	return _get_osfhandle(fd);
 # endif
 #else
-    return fd;
+	return fd;
 #endif
 }
 ACCLIB_PUBLIC(int, acc_set_binmode) (int fd, int binary)
 {
 #if (ACC_OS_TOS && defined(__MINT__))
-    FILE* fp; int old_binary;
-    if (fd == STDIN_FILENO) fp = stdin;
-    else if (fd == STDOUT_FILENO) fp = stdout;
-    else if (fd == STDERR_FILENO) fp = stderr;
-    else return -1;
-    old_binary = fp->__mode.__binary;
-    __set_binmode(fp, binary ? 1 : 0);
-    return old_binary ? 1 : 0;
+	FILE* fp; int old_binary;
+	if (fd == STDIN_FILENO) fp = stdin;
+	else if (fd == STDOUT_FILENO) fp = stdout;
+	else if (fd == STDERR_FILENO) fp = stderr;
+	else return -1;
+	old_binary = fp->__mode.__binary;
+	__set_binmode(fp, binary ? 1 : 0);
+	return old_binary ? 1 : 0;
 #elif (ACC_OS_TOS)
-    ACC_UNUSED(fd); ACC_UNUSED(binary);
-    return -1;
+	ACC_UNUSED(fd); ACC_UNUSED(binary);
+	return -1;
 #elif (ACC_OS_DOS16 && (ACC_CC_AZTECC || ACC_CC_PACIFICC))
-    ACC_UNUSED(fd); ACC_UNUSED(binary);
-    return -1;
+	ACC_UNUSED(fd); ACC_UNUSED(binary);
+	return -1;
 #elif (ACC_OS_DOS32 && ACC_CC_GNUC) && defined(__DJGPP__)
-    int r; unsigned old_flags = __djgpp_hwint_flags;
-    ACC_COMPILE_TIME_ASSERT(O_BINARY > 0)
-    ACC_COMPILE_TIME_ASSERT(O_TEXT > 0)
-    if (fd < 0) return -1;
-    r = setmode(fd, binary ? O_BINARY : O_TEXT);
-    if ((old_flags & 1u) != (__djgpp_hwint_flags & 1u))
-        __djgpp_set_ctrl_c(!(old_flags & 1));
-    if (r == -1) return -1;
-    return (r & O_TEXT) ? 0 : 1;
+	int r; unsigned old_flags = __djgpp_hwint_flags;
+	ACC_COMPILE_TIME_ASSERT(O_BINARY > 0)
+		ACC_COMPILE_TIME_ASSERT(O_TEXT > 0)
+		if (fd < 0) return -1;
+	r = setmode(fd, binary ? O_BINARY : O_TEXT);
+	if ((old_flags & 1u) != (__djgpp_hwint_flags & 1u))
+		__djgpp_set_ctrl_c(!(old_flags & 1));
+	if (r == -1) return -1;
+	return (r & O_TEXT) ? 0 : 1;
 #elif (ACC_OS_WIN32 && ACC_CC_GNUC) && defined(__PW32__)
-    if (fd < 0) return -1;
-    ACC_UNUSED(binary);
-    return 1;
+	if (fd < 0) return -1;
+	ACC_UNUSED(binary);
+	return 1;
 #elif (ACC_OS_DOS32 && ACC_CC_HIGHC)
-    FILE* fp; int r;
-    if (fd == fileno(stdin)) fp = stdin;
-    else if (fd == fileno(stdout)) fp = stdout;
-    else if (fd == fileno(stderr)) fp = stderr;
-    else return -1;
-    r = _setmode(fp, binary ? _BINARY : _TEXT);
-    if (r == -1) return -1;
-    return (r & _BINARY) ? 1 : 0;
+	FILE* fp; int r;
+	if (fd == fileno(stdin)) fp = stdin;
+	else if (fd == fileno(stdout)) fp = stdout;
+	else if (fd == fileno(stderr)) fp = stderr;
+	else return -1;
+	r = _setmode(fp, binary ? _BINARY : _TEXT);
+	if (r == -1) return -1;
+	return (r & _BINARY) ? 1 : 0;
 #elif (ACC_OS_WIN32 && ACC_CC_MWERKS) && defined(__MSL__)
-    ACC_UNUSED(fd); ACC_UNUSED(binary);
-    return -1;
+	ACC_UNUSED(fd); ACC_UNUSED(binary);
+	return -1;
 #elif (ACC_OS_CYGWIN && (ACC_CC_GNUC < 0x025a00ul))
-    ACC_UNUSED(fd); ACC_UNUSED(binary);
-    return -1;
+	ACC_UNUSED(fd); ACC_UNUSED(binary);
+	return -1;
 #elif (ACC_OS_CYGWIN || ACC_OS_DOS16 || ACC_OS_DOS32 || ACC_OS_EMX || ACC_OS_OS2 || ACC_OS_OS216 || ACC_OS_WIN16 || ACC_OS_WIN32 || ACC_OS_WIN64)
-    int r;
+	int r;
 #if !defined(ACC_CC_ZORTECHC)
-    ACC_COMPILE_TIME_ASSERT(O_BINARY > 0)
+	ACC_COMPILE_TIME_ASSERT(O_BINARY > 0)
 #endif
-    ACC_COMPILE_TIME_ASSERT(O_TEXT > 0)
-    if (fd < 0) return -1;
-    r = setmode(fd, binary ? O_BINARY : O_TEXT);
-    if (r == -1) return -1;
-    return (r & O_TEXT) ? 0 : 1;
+		ACC_COMPILE_TIME_ASSERT(O_TEXT > 0)
+		if (fd < 0) return -1;
+	r = setmode(fd, binary ? O_BINARY : O_TEXT);
+	if (r == -1) return -1;
+	return (r & O_TEXT) ? 0 : 1;
 #else
-    if (fd < 0) return -1;
-    ACC_UNUSED(binary);
-    return 1;
+	if (fd < 0) return -1;
+	ACC_UNUSED(binary);
+	return 1;
 #endif
 }
 ACCLIB_PUBLIC(int, acc_isatty) (int fd)
 {
-    if (fd < 0)
-        return 0;
+	if (fd < 0)
+		return 0;
 #if (ACC_OS_DOS16 && !defined(ACC_CC_AZTECC))
-    {
-        union REGS ri, ro;
-        ri.x.ax = 0x4400; ri.x.bx = fd;
-        int86(0x21, &ri, &ro);
-        if ((ro.x.cflag & 1) == 0)
-            if ((ro.x.ax & 0x83) != 0x83)
-                return 0;
-    }
+	{
+		union REGS ri, ro;
+		ri.x.ax = 0x4400; ri.x.bx = fd;
+		int86(0x21, &ri, &ro);
+		if ((ro.x.cflag & 1) == 0)
+			if ((ro.x.ax & 0x83) != 0x83)
+				return 0;
+	}
 #elif (ACC_OS_DOS32 && ACC_CC_WATCOMC)
-    {
-        union REGS ri, ro;
-        ri.w.ax = 0x4400; ri.w.bx = (unsigned short) fd;
-        int386(0x21, &ri, &ro);
-        if ((ro.w.cflag & 1) == 0)
-            if ((ro.w.ax & 0x83) != 0x83)
-                return 0;
-    }
+	{
+		union REGS ri, ro;
+		ri.w.ax = 0x4400; ri.w.bx = (unsigned short) fd;
+		int386(0x21, &ri, &ro);
+		if ((ro.w.cflag & 1) == 0)
+			if ((ro.w.ax & 0x83) != 0x83)
+				return 0;
+	}
 #elif (ACC_HAVE_WINDOWS_H)
-    {
-        acclib_handle_t h = __ACCLIB_FUNCNAME(acc_get_osfhandle)(fd);
-        if ((HANDLE)h != INVALID_HANDLE_VALUE)
-        {
-            DWORD d = 0;
-            if (GetConsoleMode((HANDLE)h, &d) == 0)
-                return 0;
-        }
-    }
+	{
+		acclib_handle_t h = __ACCLIB_FUNCNAME(acc_get_osfhandle)(fd);
+		if ((HANDLE) h != INVALID_HANDLE_VALUE)
+		{
+			DWORD d = 0;
+			if (GetConsoleMode((HANDLE) h, &d) == 0)
+				return 0;
+		}
+	}
 #endif
-    return (isatty(fd)) ? 1 : 0;
+	return (isatty(fd)) ? 1 : 0;
 }
 ACCLIB_PUBLIC(int, acc_mkdir) (const char* name, unsigned mode)
 {
 #if (ACC_OS_TOS && (ACC_CC_PUREC || ACC_CC_TURBOC))
-    ACC_UNUSED(mode);
-    return Dcreate(name);
+	ACC_UNUSED(mode);
+	return Dcreate(name);
 #elif (ACC_OS_DOS32 && ACC_CC_GNUC) && defined(__DJGPP__)
-    return mkdir(name, mode);
+	return mkdir(name, mode);
 #elif (ACC_OS_WIN32 && ACC_CC_GNUC) && defined(__PW32__)
-    return mkdir(name, mode);
+	return mkdir(name, mode);
 #elif (ACC_OS_DOS16 || ACC_OS_DOS32 || ACC_OS_OS2 || ACC_OS_OS216 || ACC_OS_WIN16 || ACC_OS_WIN32 || ACC_OS_WIN64)
-    ACC_UNUSED(mode);
+	ACC_UNUSED(mode);
 # if (ACC_CC_HIGHC || ACC_CC_PACIFICC)
-    return mkdir((char*) name);
+	return mkdir((char*) name);
 # else
-    return mkdir(name);
+	return mkdir(name);
 # endif
 #else
-    return mkdir(name, mode);
+	return mkdir(name, mode);
 #endif
 }
 ACCLIB_PUBLIC(acc_int32l_t, acc_muldiv32) (acc_int32l_t a, acc_int32l_t b, acc_int32l_t x)
 {
-    acc_int32l_t r = 0;
-    if (x == 0) return x;
-    ACC_UNUSED(a); ACC_UNUSED(b);
-    return r;
+	acc_int32l_t r = 0;
+	if (x == 0) return x;
+	ACC_UNUSED(a); ACC_UNUSED(b);
+	return r;
 }
 ACCLIB_PUBLIC(acc_uint32l_t, acc_umuldiv32) (acc_uint32l_t a, acc_uint32l_t b, acc_uint32l_t x)
 {
-    acc_uint32l_t r = 0;
-    if (x == 0) return x;
-    ACC_UNUSED(a); ACC_UNUSED(b);
-    return r;
+	acc_uint32l_t r = 0;
+	if (x == 0) return x;
+	ACC_UNUSED(a); ACC_UNUSED(b);
+	return r;
 }
 #if (ACC_OS_WIN32 && ACC_CC_PELLESC && (__POCC__ >= 290))
 #  pragma warn(push)
@@ -5512,85 +5580,97 @@ ACC_EXTERN_C void __far __pascal DebugBreak(void);
 ACCLIB_PUBLIC_NOINLINE(void, acc_debug_break) (void)
 {
 #if (ACC_OS_WIN16)
-    DebugBreak();
+	DebugBreak( );
 #elif (ACC_ARCH_I086)
 #elif (ACC_OS_WIN64) && (ACC_HAVE_WINDOWS_H)
-    DebugBreak();
+	DebugBreak( );
 #elif defined(ACC_CFG_NO_INLINE_ASM) && (ACC_OS_WIN32) && (ACC_HAVE_WINDOWS_H)
-    DebugBreak();
+	DebugBreak( );
 #elif (ACC_ARCH_AMD64 || ACC_ARCH_I386) && (ACC_ASM_SYNTAX_GNUC)
-    __asm__ __volatile__("int $3\n" : : : __ACC_ASM_CLOBBER);
+	__asm__ __volatile__("int $3\n" : : : __ACC_ASM_CLOBBER);
 #elif (ACC_ARCH_I386) && (ACC_ASM_SYNTAX_MSC)
-    __asm { int 3 }
+	__asm { int 3 }
 #elif (ACC_OS_WIN32) && (ACC_HAVE_WINDOWS_H)
-    DebugBreak();
+	DebugBreak( );
 #else
-    * (int *) 0x1 = -1;
+	* (int*) 0x1 = -1;
 #endif
 }
 ACCLIB_PUBLIC_NOINLINE(void, acc_debug_nop) (void)
-{
-}
+{ }
 ACCLIB_PUBLIC_NOINLINE(int, acc_debug_align_check_query) (void)
 {
 #if (ACC_ARCH_AMD64 || ACC_ARCH_I386) && (ACC_ASM_SYNTAX_GNUC)
-    long r;
-    __asm__ __volatile__("pushf\n pop %0\n" : "=a" (r) : : __ACC_ASM_CLOBBER);
-    return (int)(r >> 18) & 1;
+	long r;
+	__asm__ __volatile__("pushf\n pop %0\n" : "=a" (r) : : __ACC_ASM_CLOBBER);
+	return (int) (r >> 18) & 1;
 #elif (ACC_ARCH_I386) && (ACC_ASM_SYNTAX_MSC)
-    long r;
-    __asm {
-        pushf
-        pop eax
-        mov r,eax
-    }
-    return (int)(r >> 18) & 1;
+	long r;
+	__asm {
+		pushf
+		pop eax
+		mov r, eax
+	}
+	return (int) (r >> 18) & 1;
 #else
-    return -1;
+	return -1;
 #endif
 }
 ACCLIB_PUBLIC_NOINLINE(int, acc_debug_align_check_enable) (int v)
 {
-    int r;
+	int r;
 #if (ACC_ARCH_AMD64) && (ACC_ASM_SYNTAX_GNUC)
-    if (v) {
-        __asm__ __volatile__("pushf\n orl $262144,(%%rsp)\n popf\n" : : : __ACC_ASM_CLOBBER);
-    } else {
-        __asm__ __volatile__("pushf\n andl $-262145,(%%rsp)\n popf\n" : : : __ACC_ASM_CLOBBER);
-    }
-    r = 0;
+	if (v)
+	{
+		__asm__ __volatile__("pushf\n orl $262144,(%%rsp)\n popf\n" : : : __ACC_ASM_CLOBBER);
+	}
+	else
+	{
+		__asm__ __volatile__("pushf\n andl $-262145,(%%rsp)\n popf\n" : : : __ACC_ASM_CLOBBER);
+	}
+	r = 0;
 #elif (ACC_ARCH_I386) && (ACC_ASM_SYNTAX_GNUC)
-    if (v) {
-        __asm__ __volatile__("pushf\n orl $262144,(%%esp)\n popf\n" : : : __ACC_ASM_CLOBBER);
-    } else {
-        __asm__ __volatile__("pushf\n andl $-262145,(%%esp)\n popf\n" : : : __ACC_ASM_CLOBBER);
-    }
-    r = 0;
+	if (v)
+	{
+		__asm__ __volatile__("pushf\n orl $262144,(%%esp)\n popf\n" : : : __ACC_ASM_CLOBBER);
+	}
+	else
+	{
+		__asm__ __volatile__("pushf\n andl $-262145,(%%esp)\n popf\n" : : : __ACC_ASM_CLOBBER);
+	}
+	r = 0;
 #elif (ACC_ARCH_I386) && (ACC_ASM_SYNTAX_MSC)
-    if (v) { __asm {
-        pushf
-        or dword ptr [esp],262144
-        popf
-    }} else { __asm {
-        pushf
-        and dword ptr [esp],-262145
-        popf
-    }}
-    r = 0;
+	if (v)
+	{
+		__asm {
+			pushf
+			or dword ptr[esp], 262144
+			popf
+		}
+	}
+	else
+	{
+		__asm {
+			pushf
+			and dword ptr[esp], -262145
+			popf
+		}
+	}
+	r = 0;
 #else
-    r = -1;
+	r = -1;
 #endif
-    ACC_UNUSED(v); return r;
+	ACC_UNUSED(v); return r;
 }
 ACCLIB_PUBLIC_NOINLINE(int, acc_debug_running_on_valgrind) (void)
 {
 #if (ACC_ARCH_AMD64 || ACC_ARCH_I386) && (ACC_ASM_SYNTAX_GNUC)
-    volatile unsigned long args[5] = { 0x1001, 0, 0, 0, 0 };
-    long r = 0;
-    __asm__ __volatile__(".byte 0xc1,0xc0,0x1d,0xc1,0xc0,0x03,0xc1,0xc8,0x1b,0xc1,0xc8,0x05,0xc1,0xc0,0x0d,0xc1,0xc0,0x13\n" : "=d" (r) : "a" (&args[0]), "d" (r) : __ACC_ASM_CLOBBER);
-    return (int) r;
+	volatile unsigned long args[5] = { 0x1001, 0, 0, 0, 0 };
+	long r = 0;
+	__asm__ __volatile__(".byte 0xc1,0xc0,0x1d,0xc1,0xc0,0x03,0xc1,0xc8,0x1b,0xc1,0xc8,0x05,0xc1,0xc0,0x0d,0xc1,0xc0,0x13\n" : "=d" (r) : "a" (&args[0]), "d" (r) : __ACC_ASM_CLOBBER);
+	return (int) r;
 #else
-    return 0;
+	return 0;
 #endif
 }
 #if (ACC_OS_WIN32 && ACC_CC_PELLESC && (__POCC__ >= 290))
@@ -5607,24 +5687,31 @@ ACCLIB_PUBLIC_NOINLINE(int, acc_debug_running_on_valgrind) (void)
 #if 0 && (ACC_CC_MSC)
 ACC_EXTERN_C int __acc_cdecl __setargv(void);
 ACC_EXTERN_C int __acc_cdecl _setargv(void);
-ACC_EXTERN_C int __acc_cdecl _setargv(void) { return __setargv(); }
+ACC_EXTERN_C int __acc_cdecl _setargv(void)
+{
+	return __setargv( );
+}
 #endif
 #endif
 #if (ACC_OS_WIN32 || ACC_OS_WIN64)
 #if (ACC_CC_INTELC || ACC_CC_MSC)
 ACC_EXTERN_C int __acc_cdecl __setargv(void);
 ACC_EXTERN_C int __acc_cdecl _setargv(void);
-ACC_EXTERN_C int __acc_cdecl _setargv(void) { return __setargv(); }
+ACC_EXTERN_C int __acc_cdecl _setargv(void)
+{
+	return __setargv( );
+}
 #endif
 #endif
 #if (ACC_OS_EMX)
 #define __ACCLIB_HAVE_ACC_WILDARGV 1
 ACCLIB_PUBLIC(void, acc_wildargv) (int* argc, char*** argv)
 {
-    if (argc && argv) {
-        _response(argc, argv);
-        _wildcard(argc, argv);
-    }
+	if (argc && argv)
+	{
+		_response(argc, argv);
+		_wildcard(argc, argv);
+	}
 }
 #endif
 #if (ACC_OS_CONSOLE_PSP) && defined(__PSPSDK_DEBUG__)
@@ -5632,7 +5719,7 @@ ACCLIB_PUBLIC(void, acc_wildargv) (int* argc, char*** argv)
 ACC_EXTERN_C int acc_psp_init_module(int*, char***, int);
 ACCLIB_PUBLIC(void, acc_wildargv) (int* argc, char*** argv)
 {
-    acc_psp_init_module(argc, argv, -1);
+	acc_psp_init_module(argc, argv, -1);
 }
 #endif
 #if !defined(__ACCLIB_HAVE_ACC_WILDARGV)
@@ -5640,13 +5727,16 @@ ACCLIB_PUBLIC(void, acc_wildargv) (int* argc, char*** argv)
 ACCLIB_PUBLIC(void, acc_wildargv) (int* argc, char*** argv)
 {
 #if 1 && (ACC_ARCH_I086PM)
-    if (ACC_MM_AHSHIFT != 3) { exit(1); }
+	if (ACC_MM_AHSHIFT != 3)
+	{
+		exit(1);
+	}
 #elif 1 && (ACC_ARCH_M68K && ACC_OS_TOS && ACC_CC_GNUC) && defined(__MINT__)
-    __binmode(1);
-    if (isatty(1)) __set_binmode(stdout, 0);
-    if (isatty(2)) __set_binmode(stderr, 0);
+	__binmode(1);
+	if (isatty(1)) __set_binmode(stdout, 0);
+	if (isatty(2)) __set_binmode(stderr, 0);
 #endif
-    ACC_UNUSED(argc); ACC_UNUSED(argv);
+	ACC_UNUSED(argc); ACC_UNUSED(argv);
 }
 #endif
 #endif

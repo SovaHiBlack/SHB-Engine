@@ -215,12 +215,12 @@ extern "C" {
 
 #if !defined(DVAL_ASSERT)
 #if defined(__LZO_HASH_INCREMENTAL) && !defined(NDEBUG)
-static void DVAL_ASSERT(lzo_xint dv, const lzo_bytep p)
-{
-    lzo_xint df;
-    DVAL_FIRST(df,(p));
-    assert(DINDEX(dv,p) == DINDEX(df,p));
-}
+	static void DVAL_ASSERT(lzo_xint dv, const lzo_bytep p)
+	{
+		lzo_xint df;
+		DVAL_FIRST(df, (p));
+		assert(DINDEX(dv, p) == DINDEX(df, p));
+	}
 #else
 #  define DVAL_ASSERT(dv,p) ((void) 0)
 #endif

@@ -4,54 +4,54 @@ template <class T>
 class _vector3
 {
 public:
-	using TYPE														= T;
-	using Self														= _vector3<TYPE>;
-	using SelfRef													= Self&;
-	using SelfCRef													= const Self&;
+	using TYPE = T;
+	using Self = _vector3<TYPE>;
+	using SelfRef = Self&;
+	using SelfCRef = const Self&;
 
 	TYPE															x;
 	TYPE															y;
 	TYPE															z;
 
 	// access operators
-	__forceinline TYPE&		operator []								(int i)
+	__forceinline TYPE& operator []								(int i)
 	{
 		return *((TYPE*) this + i);
 	}
-	__forceinline TYPE&		operator []								(int i) const
+	__forceinline TYPE& operator []								(int i) const
 	{
 		return *((TYPE*) this + i);
 	}
 
-	__forceinline SelfRef	set										(TYPE _x, TYPE _y, TYPE _z)
+	__forceinline SelfRef	set(TYPE _x, TYPE _y, TYPE _z)
 	{
 		x = _x;
 		y = _y;
 		z = _z;
 		return *this;
 	}
-	__forceinline SelfRef	set										(const _vector3<float>& v)
+	__forceinline SelfRef	set(const _vector3<float>& v)
 	{
 		x = TYPE(v.x);
 		y = TYPE(v.y);
 		z = TYPE(v.z);
 		return *this;
 	}
-	__forceinline SelfRef	set										(const _vector3<F64>& v)
+	__forceinline SelfRef	set(const _vector3<F64>& v)
 	{
 		x = TYPE(v.x);
 		y = TYPE(v.y);
 		z = TYPE(v.z);
 		return *this;
 	}
-	__forceinline SelfRef	set										(float* p)
+	__forceinline SelfRef	set(float* p)
 	{
 		x = p[0];
 		y = p[1];
 		z = p[2];
 		return *this;
 	}
-	__forceinline SelfRef	set										(F64* p)
+	__forceinline SelfRef	set(F64* p)
 	{
 		x = p[0];
 		y = p[1];
@@ -59,28 +59,28 @@ public:
 		return *this;
 	}
 
-	__forceinline SelfRef	add										(SelfCRef v)
+	__forceinline SelfRef	add(SelfCRef v)
 	{
 		x += v.x;
 		y += v.y;
 		z += v.z;
 		return *this;
 	}
-	__forceinline SelfRef	add										(TYPE s)
+	__forceinline SelfRef	add(TYPE s)
 	{
 		x += s;
 		y += s;
 		z += s;
 		return *this;
 	}
-	__forceinline SelfRef	add										(SelfCRef a, SelfCRef v)
+	__forceinline SelfRef	add(SelfCRef a, SelfCRef v)
 	{
 		x = a.x + v.x;
 		y = a.y + v.y;
 		z = a.z + v.z;
 		return *this;
 	}
-	__forceinline SelfRef	add										(SelfCRef a, TYPE s)
+	__forceinline SelfRef	add(SelfCRef a, TYPE s)
 	{
 		x = a.x + s;
 		y = a.y + s;
@@ -88,28 +88,28 @@ public:
 		return *this;
 	}
 
-	__forceinline SelfRef	sub										(SelfCRef v)
+	__forceinline SelfRef	sub(SelfCRef v)
 	{
 		x -= v.x;
 		y -= v.y;
 		z -= v.z;
 		return *this;
 	}
-	__forceinline SelfRef	sub										(TYPE s)
+	__forceinline SelfRef	sub(TYPE s)
 	{
 		x -= s;
 		y -= s;
 		z -= s;
 		return *this;
 	}
-	__forceinline SelfRef	sub										(SelfCRef a, SelfCRef v)
+	__forceinline SelfRef	sub(SelfCRef a, SelfCRef v)
 	{
 		x = a.x - v.x;
 		y = a.y - v.y;
 		z = a.z - v.z;
 		return *this;
 	}
-	__forceinline SelfRef	sub										(SelfCRef a, TYPE s)
+	__forceinline SelfRef	sub(SelfCRef a, TYPE s)
 	{
 		x = a.x - s;
 		y = a.y - s;
@@ -117,28 +117,28 @@ public:
 		return *this;
 	}
 
-	__forceinline SelfRef	mul										(SelfCRef v)
+	__forceinline SelfRef	mul(SelfCRef v)
 	{
 		x *= v.x;
 		y *= v.y;
 		z *= v.z;
 		return *this;
 	}
-	__forceinline SelfRef	mul										(TYPE s)
+	__forceinline SelfRef	mul(TYPE s)
 	{
 		x *= s;
 		y *= s;
 		z *= s;
 		return *this;
 	}
-	__forceinline SelfRef	mul										(SelfCRef a, SelfCRef v)
+	__forceinline SelfRef	mul(SelfCRef a, SelfCRef v)
 	{
 		x = a.x * v.x;
 		y = a.y * v.y;
 		z = a.z * v.z;
 		return *this;
 	}
-	__forceinline SelfRef	mul										(SelfCRef a, TYPE s)
+	__forceinline SelfRef	mul(SelfCRef a, TYPE s)
 	{
 		x = a.x * s;
 		y = a.y * s;
@@ -146,28 +146,28 @@ public:
 		return *this;
 	}
 
-	__forceinline SelfRef	div										(SelfCRef v)
+	__forceinline SelfRef	div(SelfCRef v)
 	{
 		x /= v.x;
 		y /= v.y;
 		z /= v.z;
 		return *this;
 	}
-	__forceinline SelfRef	div										(TYPE s)
+	__forceinline SelfRef	div(TYPE s)
 	{
 		x /= s;
 		y /= s;
 		z /= s;
 		return *this;
 	}
-	__forceinline SelfRef	div										(SelfCRef a, SelfCRef v)
+	__forceinline SelfRef	div(SelfCRef a, SelfCRef v)
 	{
 		x = a.x / v.x;
 		y = a.y / v.y;
 		z = a.z / v.z;
 		return *this;
 	}
-	__forceinline SelfRef	div										(SelfCRef a, TYPE s)
+	__forceinline SelfRef	div(SelfCRef a, TYPE s)
 	{
 		x = a.x / s;
 		y = a.y / s;
@@ -175,14 +175,14 @@ public:
 		return *this;
 	}
 
-	inline SelfRef			invert									( )
+	inline SelfRef			invert( )
 	{
 		x = -x;
 		y = -y;
 		z = -z;
 		return *this;
 	}
-	inline SelfRef			invert									(SelfCRef a)
+	inline SelfRef			invert(SelfCRef a)
 	{
 		x = -a.x;
 		y = -a.y;
@@ -190,28 +190,28 @@ public:
 		return *this;
 	}
 
-	inline SelfRef			min										(SelfCRef v1, SelfCRef v2)
+	inline SelfRef			min(SelfCRef v1, SelfCRef v2)
 	{
 		x = _min(v1.x, v2.x);
 		y = _min(v1.y, v2.y);
 		z = _min(v1.z, v2.z);
 		return *this;
 	}
-	inline SelfRef			min										(SelfCRef v)
+	inline SelfRef			min(SelfCRef v)
 	{
 		x = _min(x, v.x);
 		y = _min(y, v.y);
 		z = _min(z, v.z);
 		return *this;
 	}
-	inline SelfRef			max										(SelfCRef v1, SelfCRef v2)
+	inline SelfRef			max(SelfCRef v1, SelfCRef v2)
 	{
 		x = _max(v1.x, v2.x);
 		y = _max(v1.y, v2.y);
 		z = _max(v1.z, v2.z);
 		return *this;
 	}
-	inline SelfRef			max										(SelfCRef v)
+	inline SelfRef			max(SelfCRef v)
 	{
 		x = _max(x, v.x);
 		y = _max(y, v.y);
@@ -219,26 +219,26 @@ public:
 		return *this;
 	}
 
-	inline SelfRef			abs										(SelfCRef v)
+	inline SelfRef			abs(SelfCRef v)
 	{
 		x = _abs(v.x);
 		y = _abs(v.y);
 		z = _abs(v.z);
 		return *this;
 	}
-	__forceinline BOOL		similar									(SelfCRef v, TYPE E = EPS_L) const
+	__forceinline BOOL		similar(SelfCRef v, TYPE E = EPS_L) const
 	{
 		return _abs(x - v.x) < E && _abs(y - v.y) < E && _abs(z - v.z) < E;
 	}
 
-	inline SelfRef			set_length								(TYPE l)
+	inline SelfRef			set_length(TYPE l)
 	{
 		mul(l / magnitude( ));
 		return *this;
 	}
 
 	// Align vector3 by axis (!y)
-	inline SelfRef			align									( )
+	inline SelfRef			align( )
 	{
 		y = 0;
 		if (_abs(z) >= _abs(x))
@@ -254,7 +254,7 @@ public:
 	}
 
 	// Squeeze
-	inline SelfRef			squeeze									(TYPE Epsilon)
+	inline SelfRef			squeeze(TYPE Epsilon)
 	{
 		if (_abs(x) < Epsilon)
 		{
@@ -275,7 +275,7 @@ public:
 	}
 
 	// Clamp vector3
-	inline SelfRef			clamp									(SelfCRef min, SelfCRef max)
+	inline SelfRef			clamp(SelfCRef min, SelfCRef max)
 	{
 		::clamp(x, min.x, max.x);
 		::clamp(y, min.y, max.y);
@@ -283,7 +283,7 @@ public:
 		return *this;
 	}
 
-	inline SelfRef			clamp									(SelfCRef _v)
+	inline SelfRef			clamp(SelfCRef _v)
 	{
 		Self v;
 		v.x = _abs(_v.x);
@@ -296,7 +296,7 @@ public:
 	}
 
 	// Interpolate vectors (inertion)
-	inline SelfRef			inertion								(SelfCRef p, TYPE v)
+	inline SelfRef			inertion(SelfCRef p, TYPE v)
 	{
 		TYPE inv = 1.0f - v;
 		x = v * x + inv * p.x;
@@ -304,21 +304,21 @@ public:
 		z = v * z + inv * p.z;
 		return *this;
 	}
-	inline SelfRef			average									(SelfCRef p)
+	inline SelfRef			average(SelfCRef p)
 	{
 		x = (x + p.x) * 0.5f;
 		y = (y + p.y) * 0.5f;
 		z = (z + p.z) * 0.5f;
 		return *this;
 	}
-	inline SelfRef			average									(SelfCRef p1, SelfCRef p2)
+	inline SelfRef			average(SelfCRef p1, SelfCRef p2)
 	{
 		x = (p1.x + p2.x) * 0.5f;
 		y = (p1.y + p2.y) * 0.5f;
 		z = (p1.z + p2.z) * 0.5f;
 		return *this;
 	}
-	inline SelfRef			lerp									(SelfCRef p1, SelfCRef p2, TYPE t)
+	inline SelfRef			lerp(SelfCRef p1, SelfCRef p2, TYPE t)
 	{
 		TYPE invt = 1.0f - t;
 		x = p1.x * invt + p2.x * t;
@@ -328,28 +328,28 @@ public:
 	}
 
 	// Direct vector3 from point P by dir D with length M
-	inline SelfRef			mad										(SelfCRef d, TYPE m)
+	inline SelfRef			mad(SelfCRef d, TYPE m)
 	{
 		x += d.x * m;
 		y += d.y * m;
 		z += d.z * m;
 		return *this;
 	}
-	inline SelfRef			mad										(SelfCRef p, SelfCRef d, TYPE m)
+	inline SelfRef			mad(SelfCRef p, SelfCRef d, TYPE m)
 	{
 		x = p.x + d.x * m;
 		y = p.y + d.y * m;
 		z = p.z + d.z * m;
 		return *this;
 	}
-	inline SelfRef			mad										(SelfCRef d, SelfCRef s)
+	inline SelfRef			mad(SelfCRef d, SelfCRef s)
 	{
 		x += d.x * s.x;
 		y += d.y * s.y;
 		z += d.z * s.z;
 		return *this;
 	}
-	inline SelfRef			mad										(SelfCRef p, SelfCRef d, SelfCRef s)
+	inline SelfRef			mad(SelfCRef p, SelfCRef d, SelfCRef s)
 	{
 		x = p.x + d.x * s.x;
 		y = p.y + d.y * s.y;
@@ -358,18 +358,18 @@ public:
 	}
 
 	// SQ magnitude
-	inline TYPE				square_magnitude						( ) const
+	inline TYPE				square_magnitude( ) const
 	{
 		return x * x + y * y + z * z;
 	}
 	// magnitude
-	inline TYPE				magnitude								( ) const
+	inline TYPE				magnitude( ) const
 	{
 		return _sqrt(square_magnitude( ));
 	}
 
 	// Normalize
-	inline TYPE				normalize_magn							( )
+	inline TYPE				normalize_magn( )
 	{
 		VERIFY(square_magnitude( ) > std::numeric_limits<TYPE>::min( ));
 		TYPE len = magnitude( );
@@ -380,7 +380,7 @@ public:
 		return len;
 	}
 
-	__forceinline SelfRef	normalize								( )
+	__forceinline SelfRef	normalize( )
 	{
 		VERIFY(square_magnitude( ) > std::numeric_limits<TYPE>::min( ));
 		TYPE mag = _sqrt(TYPE(1) / (x * x + y * y + z * z));
@@ -391,7 +391,7 @@ public:
 	}
 
 	// Safe-Normalize
-	__forceinline SelfRef	normalize_safe							( )
+	__forceinline SelfRef	normalize_safe( )
 	{
 		TYPE magnitude = x * x + y * y + z * z;
 		if (magnitude > std::numeric_limits<TYPE>::min( ))
@@ -406,7 +406,7 @@ public:
 	}
 
 	// Normalize
-	__forceinline SelfRef	normalize								(SelfCRef v)
+	__forceinline SelfRef	normalize(SelfCRef v)
 	{
 		VERIFY((v.x * v.x + v.y * v.y + v.z * v.z) > flt_zero);
 		TYPE mag = _sqrt(1 / (v.x * v.x + v.y * v.y + v.z * v.z));
@@ -417,7 +417,7 @@ public:
 	}
 
 	// Safe-Normalize
-	__forceinline SelfRef	normalize_safe							(SelfCRef v)
+	__forceinline SelfRef	normalize_safe(SelfCRef v)
 	{
 		TYPE magnitude = v.x * v.x + v.y * v.y + v.z * v.z;
 		if (magnitude > std::numeric_limits<TYPE>::min( ))
@@ -430,7 +430,7 @@ public:
 
 		return *this;
 	}
-	inline SelfRef			random_dir								(CRandom& R = ::Random)
+	inline SelfRef			random_dir(CRandom& R = ::Random)
 	{
 		//z	= R.randF(-1,1);
 		z = _cos(R.randF(PI));
@@ -442,7 +442,7 @@ public:
 		y = r * sa;
 		return *this;
 	}
-	inline SelfRef			random_dir								(SelfCRef ConeAxis, float ConeAngle, CRandom& R = ::Random)
+	inline SelfRef			random_dir(SelfCRef ConeAxis, float ConeAngle, CRandom& R = ::Random)
 	{
 		Self rnd;
 		rnd.random_dir(R);
@@ -450,14 +450,14 @@ public:
 		normalize( );
 		return *this;
 	}
-	inline SelfRef			random_point							(SelfCRef BoxSize, CRandom& R = ::Random)
+	inline SelfRef			random_point(SelfCRef BoxSize, CRandom& R = ::Random)
 	{
 		x = R.randFs(BoxSize.x);
 		y = R.randFs(BoxSize.y);
 		z = R.randFs(BoxSize.z);
 		return *this;
 	}
-	inline SelfRef			random_point							(TYPE r, CRandom& R = ::Random)
+	inline SelfRef			random_point(TYPE r, CRandom& R = ::Random)
 	{
 		random_dir(R);
 		mul(R.randF(r));
@@ -465,13 +465,13 @@ public:
 	}
 
 	// DotProduct
-	__forceinline TYPE		dotproduct								(SelfCRef v) const		   // v1*v2
+	__forceinline TYPE		dotproduct(SelfCRef v) const		   // v1*v2
 	{
 		return x * v.x + y * v.y + z * v.z;
 	}
 
 	// CrossProduct
-	__forceinline SelfRef	crossproduct							(SelfCRef v1, SelfCRef v2) // (v1,v2) -> this
+	__forceinline SelfRef	crossproduct(SelfCRef v1, SelfCRef v2) // (v1,v2) -> this
 	{
 		x = v1.y * v2.z - v1.z * v2.y;
 		y = v1.z * v2.x - v1.x * v2.z;
@@ -480,42 +480,42 @@ public:
 	}
 
 	// Distance calculation
-	inline TYPE				distance_to_xz							(SelfCRef v) const
+	inline TYPE				distance_to_xz(SelfCRef v) const
 	{
 		return _sqrt((x - v.x) * (x - v.x) + (z - v.z) * (z - v.z));
 	}
-	inline TYPE				distance_to_xz_sqr						(SelfCRef v) const
+	inline TYPE				distance_to_xz_sqr(SelfCRef v) const
 	{
 		return (x - v.x) * (x - v.x) + (z - v.z) * (z - v.z);
 	}
 
 	// Distance calculation
-	__forceinline TYPE		distance_to_sqr							(SelfCRef v) const
+	__forceinline TYPE		distance_to_sqr(SelfCRef v) const
 	{
 		return (x - v.x) * (x - v.x) + (y - v.y) * (y - v.y) + (z - v.z) * (z - v.z);
 	}
 
 	// Distance calculation
-	__forceinline TYPE		distance_to								(SelfCRef v) const
+	__forceinline TYPE		distance_to(SelfCRef v) const
 	{
 		return _sqrt(distance_to_sqr(v));
 	}
 
 	// Barycentric coords
-	inline SelfRef			from_bary								(SelfCRef V1, SelfCRef V2, SelfCRef V3, TYPE u, TYPE v, TYPE w)
+	inline SelfRef			from_bary(SelfCRef V1, SelfCRef V2, SelfCRef V3, TYPE u, TYPE v, TYPE w)
 	{
 		x = V1.x * u + V2.x * v + V3.x * w;
 		y = V1.y * u + V2.y * v + V3.y * w;
 		z = V1.z * u + V2.z * v + V3.z * w;
 		return *this;
 	}
-	inline SelfRef			from_bary								(SelfCRef V1, SelfCRef V2, SelfCRef V3, SelfCRef B)
+	inline SelfRef			from_bary(SelfCRef V1, SelfCRef V2, SelfCRef V3, SelfCRef B)
 	{
 		from_bary(V1, V2, V3, B.x, B.y, B.z);
 		return *this;
 	}
 
-	inline SelfRef			from_bary4								(const Self& V1, const Self& V2, const Self& V3, const Self& V4, TYPE u, TYPE v, TYPE w, TYPE t)
+	inline SelfRef			from_bary4(const Self& V1, const Self& V2, const Self& V3, const Self& V4, TYPE u, TYPE v, TYPE w, TYPE t)
 	{
 		x = V1.x * u + V2.x * v + V3.x * w + V4.x * t;
 		y = V1.y * u + V2.y * v + V3.y * w + V4.y * t;
@@ -523,7 +523,7 @@ public:
 		return *this;
 	}
 
-	inline SelfRef			mknormal_non_normalized					(SelfCRef p0, SelfCRef p1, SelfCRef p2)
+	inline SelfRef			mknormal_non_normalized(SelfCRef p0, SelfCRef p1, SelfCRef p2)
 	{
 		_vector3<TYPE> v01;
 		_vector3<TYPE> v12;
@@ -532,13 +532,13 @@ public:
 		crossproduct(v01, v12);
 		return *this;
 	}
-	inline SelfRef			mknormal								(SelfCRef p0, SelfCRef p1, SelfCRef p2)
+	inline SelfRef			mknormal(SelfCRef p0, SelfCRef p1, SelfCRef p2)
 	{
 		mknormal_non_normalized(p0, p1, p2);
 		normalize_safe( );
 		return *this;
 	}
-	inline SelfRef			setHP									(TYPE h, TYPE p)
+	inline SelfRef			setHP(TYPE h, TYPE p)
 	{
 		TYPE _ch = _cos(h);
 		TYPE _cp = _cos(p);
@@ -549,7 +549,7 @@ public:
 		z = _cp * _ch;
 		return *this;
 	}
-	__forceinline void		getHP									(TYPE& h, TYPE& p) const
+	__forceinline void		getHP(TYPE& h, TYPE& p) const
 	{
 		float hyp;
 
@@ -591,7 +591,7 @@ public:
 			}
 		}
 	}
-	__forceinline float		getH									( ) const
+	__forceinline float		getH( ) const
 	{
 		if (fis_zero(x) && fis_zero(z))
 		{
@@ -613,7 +613,7 @@ public:
 			}
 		}
 	}
-	__forceinline float		getP									( ) const
+	__forceinline float		getP( ) const
 	{
 		if (fis_zero(x) && fis_zero(z))
 		{
@@ -639,15 +639,15 @@ public:
 			}
 		}
 	}
-	inline SelfRef			reflect									(SelfCRef dir, SelfCRef norm)
+	inline SelfRef			reflect(SelfCRef dir, SelfCRef norm)
 	{
 		return mad(dir, norm, -2 * dir.dotproduct(norm));
 	}
-	inline SelfRef			slide									(SelfCRef dir, SelfCRef norm)
+	inline SelfRef			slide(SelfCRef dir, SelfCRef norm)
 	{	// non normalized
 		return mad(dir, norm, -dir.dotproduct(norm));
 	}
-	inline static void		generate_orthonormal_basis				(const _vector3<TYPE>& dir, _vector3<TYPE>& up, _vector3<TYPE>& right)
+	inline static void		generate_orthonormal_basis(const _vector3<TYPE>& dir, _vector3<TYPE>& up, _vector3<TYPE>& right)
 	{
 		TYPE fInvLength;
 
@@ -670,7 +670,7 @@ public:
 
 		right.crossproduct(up, dir); //. <->
 	}
-	inline static void		generate_orthonormal_basis_normalized	(_vector3<TYPE>& dir, _vector3<TYPE>& up, _vector3<TYPE>& right)
+	inline static void		generate_orthonormal_basis_normalized(_vector3<TYPE>& dir, _vector3<TYPE>& up, _vector3<TYPE>& right)
 	{
 		TYPE fInvLength;
 		dir.normalize( );
@@ -703,11 +703,11 @@ public:
 	}
 };
 
-using Ivector3									= _vector3<int>;
-using Fvector3									= _vector3<float>;
+using Ivector3 = _vector3<int>;
+using Fvector3 = _vector3<float>;
 
 template <class T>
-BOOL						_valid									(const _vector3<T>& v)
+BOOL						_valid(const _vector3<T>& v)
 {
 	return _valid((T) v.x) && _valid((T) v.y) && _valid((T) v.z);
 }

@@ -29,11 +29,11 @@ template <class T>
 class _matrix
 {
 public:
-	using TYPE										= T;
-	using Self										= _matrix<TYPE>;
-	using SelfRef									= Self&;
-	using SelfCRef									= const Self&;
-	using Tvector									= _vector3<TYPE>;
+	using TYPE = T;
+	using Self = _matrix<TYPE>;
+	using SelfRef = Self&;
+	using SelfCRef = const Self&;
+	using Tvector = _vector3<TYPE>;
 
 	union
 	{
@@ -77,7 +77,7 @@ public:
 	};
 
 	// Class members
-	__forceinline SelfRef	set						(SelfCRef a)
+	__forceinline SelfRef	set(SelfCRef a)
 	{
 		i.set(a.i);
 		_14_ = a._14;
@@ -93,7 +93,7 @@ public:
 
 		return *this;
 	}
-	__forceinline SelfRef	set						(const Tvector& R, const Tvector& N, const Tvector& D, const Tvector& C)
+	__forceinline SelfRef	set(const Tvector& R, const Tvector& N, const Tvector& D, const Tvector& C)
 	{
 		i.set(R);
 		_14_ = 0;
@@ -109,7 +109,7 @@ public:
 
 		return *this;
 	}
-	__forceinline SelfRef	identity				( )
+	__forceinline SelfRef	identity( )
 	{
 		_11 = 1;
 		_12 = 0;
@@ -133,11 +133,11 @@ public:
 
 		return *this;
 	}
-	inline SelfRef			rotation				(const _quaternion<TYPE>& Q);
-	__forceinline SelfRef	mk_xform				(const _quaternion<TYPE>& Q, const Tvector& V);
+	inline SelfRef			rotation(const _quaternion<TYPE>& Q);
+	__forceinline SelfRef	mk_xform(const _quaternion<TYPE>& Q, const Tvector& V);
 
 	// Multiply RES = A[4x4]*B[4x4] (WITH projection)
-	__forceinline SelfRef	mul						(SelfCRef A, SelfCRef B)
+	__forceinline SelfRef	mul(SelfCRef A, SelfCRef B)
 	{
 		VERIFY((this != &A) && (this != &B));
 		m[0][0] = A.m[0][0] * B.m[0][0] + A.m[1][0] * B.m[0][1] + A.m[2][0] * B.m[0][2] + A.m[3][0] * B.m[0][3];
@@ -164,7 +164,7 @@ public:
 	}
 
 	// Multiply RES = A[4x3]*B[4x3] (no projection), faster than ordinary multiply
-	__forceinline SelfRef	mul_43					(SelfCRef A, SelfCRef B)
+	__forceinline SelfRef	mul_43(SelfCRef A, SelfCRef B)
 	{
 		VERIFY((this != &A) && (this != &B));
 		m[0][0] = A.m[0][0] * B.m[0][0] + A.m[1][0] * B.m[0][1] + A.m[2][0] * B.m[0][2];
@@ -189,35 +189,35 @@ public:
 
 		return *this;
 	}
-	inline SelfRef			mulA_44					(SelfCRef A)			// mul after 
+	inline SelfRef			mulA_44(SelfCRef A)			// mul after 
 	{
 		Self B;
 		B.set(*this);
 		mul(A, B);
 		return *this;
 	}
-	inline SelfRef			mulB_44					(SelfCRef B)			// mul before
+	inline SelfRef			mulB_44(SelfCRef B)			// mul before
 	{
 		Self A;
 		A.set(*this);
 		mul(A, B);
 		return *this;
 	}
-	__forceinline SelfRef	mulA_43					(SelfCRef A)			// mul after (no projection)
+	__forceinline SelfRef	mulA_43(SelfCRef A)			// mul after (no projection)
 	{
 		Self B;
 		B.set(*this);
 		mul_43(A, B);
 		return *this;
 	}
-	__forceinline SelfRef	mulB_43					(SelfCRef B)			// mul before (no projection)
+	__forceinline SelfRef	mulB_43(SelfCRef B)			// mul before (no projection)
 	{
 		Self A;
 		A.set(*this);
 		mul_43(A, B);
 		return *this;
 	}
-	inline SelfRef			invert					(SelfCRef a)
+	inline SelfRef			invert(SelfCRef a)
 	{	// important: this is 4x3 invert, not the 4x4 one faster than self-invert
 		T fDetInv = (a._11 * (a._22 * a._33 - a._23 * a._32) - a._12 * (a._21 * a._33 - a._23 * a._31) + a._13 * (a._21 * a._32 - a._22 * a._31));
 
@@ -247,7 +247,7 @@ public:
 		return *this;
 	}
 
-	inline bool				invert_b				(SelfCRef a)
+	inline bool				invert_b(SelfCRef a)
 	{	// important: this is 4x3 invert, not the 4x4 one faster than self-invert
 		TYPE fDetInv = (a._11 * (a._22 * a._33 - a._23 * a._32) - a._12 * (a._21 * a._33 - a._23 * a._31) + a._13 * (a._21 * a._32 - a._22 * a._31));
 
@@ -281,14 +281,14 @@ public:
 		return true;
 	}
 
-	inline SelfRef			invert					( )					// slower than invert other matrix
+	inline SelfRef			invert( )					// slower than invert other matrix
 	{
 		Self a;
 		a.set(*this);
 		invert(a);
 		return *this;
 	}
-	inline SelfRef			transpose				(SelfCRef matSource)	// faster version of transpose
+	inline SelfRef			transpose(SelfCRef matSource)	// faster version of transpose
 	{
 		_11 = matSource._11;
 		_12 = matSource._21;
@@ -312,41 +312,41 @@ public:
 
 		return *this;
 	}
-	inline SelfRef			transpose				( )						// self transpose - slower
+	inline SelfRef			transpose( )						// self transpose - slower
 	{
 		Self a;
 		a.set(*this);
 		transpose(a);
 		return *this;
 	}
-	inline SelfRef			translate				(const Tvector& Loc)		// setup translation matrix
+	inline SelfRef			translate(const Tvector& Loc)		// setup translation matrix
 	{
 		identity( );
 		c.set(Loc.x, Loc.y, Loc.z);
 		return *this;
 	}
-	inline SelfRef			translate				(TYPE _x, TYPE _y, TYPE _z) // setup translation matrix
+	inline SelfRef			translate(TYPE _x, TYPE _y, TYPE _z) // setup translation matrix
 	{
 		identity( );
 		c.set(_x, _y, _z);
 		return *this;
 	}
-	inline SelfRef			translate_over			(const Tvector& Loc)	// modify only translation
+	inline SelfRef			translate_over(const Tvector& Loc)	// modify only translation
 	{
 		c.set(Loc.x, Loc.y, Loc.z);
 		return *this;
 	}
-	inline SelfRef			translate_over			(TYPE _x, TYPE _y, TYPE _z) // modify only translation
+	inline SelfRef			translate_over(TYPE _x, TYPE _y, TYPE _z) // modify only translation
 	{
 		c.set(_x, _y, _z);
 		return *this;
 	}
-	inline SelfRef			translate_add			(const Tvector& Loc)	// combine translation
+	inline SelfRef			translate_add(const Tvector& Loc)	// combine translation
 	{
 		c.add(Loc);
 		return *this;
 	}
-	inline SelfRef			scale					(TYPE x, TYPE y, TYPE z)	// setup scale matrix
+	inline SelfRef			scale(TYPE x, TYPE y, TYPE z)	// setup scale matrix
 	{
 		identity( );
 		m[0][0] = x;
@@ -354,12 +354,12 @@ public:
 		m[2][2] = z;
 		return *this;
 	}
-	inline SelfRef			scale					(const Tvector& v)			// setup scale matrix
+	inline SelfRef			scale(const Tvector& v)			// setup scale matrix
 	{
 		return scale(v.x, v.y, v.z);
 	}
 
-	inline SelfRef			rotateX					(TYPE Angle)				// rotation about X axis
+	inline SelfRef			rotateX(TYPE Angle)				// rotation about X axis
 	{
 		TYPE cosa = _cos(Angle);
 		TYPE sina = _sin(Angle);
@@ -378,7 +378,7 @@ public:
 
 		return *this;
 	}
-	inline SelfRef			rotateY					(TYPE Angle)				// rotation about Y axis
+	inline SelfRef			rotateY(TYPE Angle)				// rotation about Y axis
 	{
 		TYPE cosa = _cos(Angle);
 		TYPE sina = _sin(Angle);
@@ -397,7 +397,7 @@ public:
 
 		return *this;
 	}
-	inline SelfRef			rotateZ					(TYPE Angle)				// rotation about Z axis
+	inline SelfRef			rotateZ(TYPE Angle)				// rotation about Z axis
 	{
 		TYPE cosa = _cos(Angle);
 		TYPE sina = _sin(Angle);
@@ -417,7 +417,7 @@ public:
 		return *this;
 	}
 
-	inline SelfRef			rotation				(const Tvector& vdir, const Tvector& vnorm)
+	inline SelfRef			rotation(const Tvector& vdir, const Tvector& vnorm)
 	{
 		Tvector vright;
 		vright.crossproduct(vnorm, vdir).normalize( );
@@ -445,7 +445,7 @@ public:
 		return *this;
 	}
 
-	inline SelfRef			mapXYZ					( )
+	inline SelfRef			mapXYZ( )
 	{
 		i.set(1, 0, 0);
 		_14 = 0;
@@ -461,7 +461,7 @@ public:
 
 		return *this;
 	}
-	inline SelfRef			mapXZY					( )
+	inline SelfRef			mapXZY( )
 	{
 		i.set(1, 0, 0);
 		_14 = 0;
@@ -477,7 +477,7 @@ public:
 
 		return *this;
 	}
-	inline SelfRef			mapYXZ					( )
+	inline SelfRef			mapYXZ( )
 	{
 		i.set(0, 1, 0);
 		_14 = 0;
@@ -493,7 +493,7 @@ public:
 
 		return *this;
 	}
-	inline SelfRef			mapYZX					( )
+	inline SelfRef			mapYZX( )
 	{
 		i.set(0, 1, 0);
 		_14 = 0;
@@ -509,7 +509,7 @@ public:
 
 		return *this;
 	}
-	inline SelfRef			mapZXY					( )
+	inline SelfRef			mapZXY( )
 	{
 		i.set(0, 0, 1);
 		_14 = 0;
@@ -525,7 +525,7 @@ public:
 
 		return *this;
 	}
-	inline SelfRef			mapZYX					( )
+	inline SelfRef			mapZYX( )
 	{
 		i.set(0, 0, 1);
 		_14 = 0;
@@ -542,7 +542,7 @@ public:
 		return *this;
 	}
 
-	inline SelfRef			rotation				(const Tvector& axis, TYPE Angle)
+	inline SelfRef			rotation(const Tvector& axis, TYPE Angle)
 	{
 		TYPE Cosine = _cos(Angle);
 		TYPE Sine = _sin(Angle);
@@ -571,60 +571,60 @@ public:
 	}
 
 	// mirror X
-	inline SelfRef			mirrorX					( )
+	inline SelfRef			mirrorX( )
 	{
 		identity( );
 		m[0][0] = -1;
 		return *this;
 	}
-	inline SelfRef			mirrorX_over			( )
+	inline SelfRef			mirrorX_over( )
 	{
 		m[0][0] = -1;
 		return *this;
 	}
-	inline SelfRef			mirrorX_add				( )
+	inline SelfRef			mirrorX_add( )
 	{
 		m[0][0] *= -1;
 		return *this;
 	}
 
 	// mirror Y
-	inline SelfRef			mirrorY					( )
+	inline SelfRef			mirrorY( )
 	{
 		identity( );
 		m[1][1] = -1;
 		return *this;
 	}
-	inline SelfRef			mirrorY_over			( )
+	inline SelfRef			mirrorY_over( )
 	{
 		m[1][1] = -1;
 		return *this;
 	}
-	inline SelfRef			mirrorY_add				( )
+	inline SelfRef			mirrorY_add( )
 	{
 		m[1][1] *= -1;
 		return *this;
 	}
 
 	// mirror Z
-	inline SelfRef			mirrorZ					( )
+	inline SelfRef			mirrorZ( )
 	{
 		identity( );
 		m[2][2] = -1;
 		return *this;
 	}
-	inline SelfRef			mirrorZ_over			( )
+	inline SelfRef			mirrorZ_over( )
 	{
 		m[2][2] = -1;
 		return *this;
 	}
-	inline SelfRef			mirrorZ_add				( )
+	inline SelfRef			mirrorZ_add( )
 	{
 		m[2][2] *= -1;
 		return *this;
 	}
 
-	inline SelfRef			mul						(SelfCRef A, TYPE v)
+	inline SelfRef			mul(SelfCRef A, TYPE v)
 	{
 		m[0][0] = A.m[0][0] * v;
 		m[0][1] = A.m[0][1] * v;
@@ -648,7 +648,7 @@ public:
 
 		return *this;
 	}
-	inline SelfRef			mul						(TYPE v)
+	inline SelfRef			mul(TYPE v)
 	{
 		m[0][0] *= v;
 		m[0][1] *= v;
@@ -673,23 +673,23 @@ public:
 		return *this;
 	}
 
-	inline SelfRef			div						(SelfCRef A, TYPE v)
+	inline SelfRef			div(SelfCRef A, TYPE v)
 	{
 		VERIFY(_abs(v) > 0.000001f);
 		return mul(A, 1.0f / v);
 	}
-	inline SelfRef			div						(TYPE v)
+	inline SelfRef			div(TYPE v)
 	{
 		VERIFY(_abs(v) > 0.000001f);
 		return mul(1.0f / v);
 	}
 	// fov
-	inline SelfRef			build_projection		(TYPE fFOV, TYPE fAspect, TYPE fNearPlane, TYPE fFarPlane)
+	inline SelfRef			build_projection(TYPE fFOV, TYPE fAspect, TYPE fNearPlane, TYPE fFarPlane)
 	{
 		return build_projection_HAT(tanf(fFOV / 2.0f), fAspect, fNearPlane, fFarPlane);
 	}
 	// half_fov-angle-tangent
-	inline SelfRef			build_projection_HAT	(TYPE HAT, TYPE fAspect, TYPE fNearPlane, TYPE fFarPlane)
+	inline SelfRef			build_projection_HAT(TYPE HAT, TYPE fAspect, TYPE fNearPlane, TYPE fFarPlane)
 	{
 		VERIFY(_abs(fFarPlane - fNearPlane) > EPS_S);
 		VERIFY(_abs(HAT) > EPS_S);
@@ -721,7 +721,7 @@ public:
 
 		return *this;
 	}
-	inline SelfRef			build_projection_ortho	(TYPE w, TYPE h, TYPE zn, TYPE zf)
+	inline SelfRef			build_projection_ortho(TYPE w, TYPE h, TYPE zn, TYPE zf)
 	{
 		_11 = TYPE(2) / w;
 		_12 = 0;
@@ -745,7 +745,7 @@ public:
 
 		return *this;
 	}
-	inline SelfRef			build_camera			(const Tvector& vFrom, const Tvector& vAt, const Tvector& vWorldUp)
+	inline SelfRef			build_camera(const Tvector& vFrom, const Tvector& vAt, const Tvector& vWorldUp)
 	{
 		// Get the z basis vector3, which points straight ahead. This is the
 		// difference from the eyepoint to the lookat point.
@@ -789,7 +789,7 @@ public:
 
 		return *this;
 	}
-	inline SelfRef			build_camera_dir		(const Tvector& vFrom, const Tvector& vView, const Tvector& vWorldUp)
+	inline SelfRef			build_camera_dir(const Tvector& vFrom, const Tvector& vView, const Tvector& vWorldUp)
 	{
 		// Get the dot product, and calculate the projection of the z basis
 		// vector3 onto the up vector3. The projection is the y basis vector3.
@@ -829,7 +829,7 @@ public:
 		return *this;
 	}
 
-	inline SelfRef			inertion				(SelfCRef mat, TYPE v)
+	inline SelfRef			inertion(SelfCRef mat, TYPE v)
 	{
 		TYPE iv = 1.0f - v;
 		for (int i = 0; i < 4; i++)
@@ -842,37 +842,37 @@ public:
 
 		return *this;
 	}
-	__forceinline void		transform_tiny			(Tvector& dest, const Tvector& v)	const // preferred to use
+	__forceinline void		transform_tiny(Tvector& dest, const Tvector& v)	const // preferred to use
 	{
 		dest.x = v.x * _11 + v.y * _21 + v.z * _31 + _41;
 		dest.y = v.x * _12 + v.y * _22 + v.z * _32 + _42;
 		dest.z = v.x * _13 + v.y * _23 + v.z * _33 + _43;
 	}
-	__forceinline void		transform_tiny32		(Fvector2& dest, const Tvector& v) const // preferred to use
+	__forceinline void		transform_tiny32(Fvector2& dest, const Tvector& v) const // preferred to use
 	{
 		dest.x = v.x * _11 + v.y * _21 + v.z * _31 + _41;
 		dest.y = v.x * _12 + v.y * _22 + v.z * _32 + _42;
 	}
-	__forceinline void		transform_tiny23		(Tvector& dest, const Fvector2& v) const // preferred to use
+	__forceinline void		transform_tiny23(Tvector& dest, const Fvector2& v) const // preferred to use
 	{
 		dest.x = v.x * _11 + v.y * _21 + _41;
 		dest.y = v.x * _12 + v.y * _22 + _42;
 		dest.z = v.x * _13 + v.y * _23 + _43;
 	}
-	__forceinline void		transform_dir			(Tvector& dest, const Tvector& v) const 	// preferred to use
+	__forceinline void		transform_dir(Tvector& dest, const Tvector& v) const 	// preferred to use
 	{
 		dest.x = v.x * _11 + v.y * _21 + v.z * _31;
 		dest.y = v.x * _12 + v.y * _22 + v.z * _32;
 		dest.z = v.x * _13 + v.y * _23 + v.z * _33;
 	}
-	inline void				transform				(Fvector4& dest, const Tvector& v) const 	// preferred to use
+	inline void				transform(Fvector4& dest, const Tvector& v) const 	// preferred to use
 	{
 		dest.w = v.x * _14 + v.y * _24 + v.z * _34 + _44;
 		dest.x = (v.x * _11 + v.y * _21 + v.z * _31 + _41) / dest.w;
 		dest.y = (v.x * _12 + v.y * _22 + v.z * _32 + _42) / dest.w;
 		dest.z = (v.x * _13 + v.y * _23 + v.z * _33 + _43) / dest.w;
 	}
-	inline void				transform				(Tvector& dest, const Tvector& v) const 	// preferred to use
+	inline void				transform(Tvector& dest, const Tvector& v) const 	// preferred to use
 	{
 		TYPE iw = 1.0f / (v.x * _14 + v.y * _24 + v.z * _34 + _44);
 		dest.x = (v.x * _11 + v.y * _21 + v.z * _31 + _41) * iw;
@@ -880,25 +880,25 @@ public:
 		dest.z = (v.x * _13 + v.y * _23 + v.z * _33 + _43) * iw;
 	}
 
-	__forceinline void		transform_tiny			(Tvector& v) const
+	__forceinline void		transform_tiny(Tvector& v) const
 	{
 		Tvector res;
 		transform_tiny(res, v);
 		v.set(res);
 	}
-	inline void				transform				(Tvector& v) const
+	inline void				transform(Tvector& v) const
 	{
 		Tvector res;
 		transform(res, v);
 		v.set(res);
 	}
-	__forceinline void		transform_dir			(Tvector& v) const
+	__forceinline void		transform_dir(Tvector& v) const
 	{
 		Tvector res;
 		transform_dir(res, v);
 		v.set(res);
 	}
-	__forceinline SelfRef	setHPB					(TYPE h, TYPE p, TYPE b)
+	__forceinline SelfRef	setHPB(TYPE h, TYPE p, TYPE b)
 	{
 		TYPE _ch;
 		TYPE _cp;
@@ -937,25 +937,25 @@ public:
 		return *this;
 	}
 
-	inline SelfRef			setXYZ					(TYPE x, TYPE y, TYPE z)
+	inline SelfRef			setXYZ(TYPE x, TYPE y, TYPE z)
 	{
 		return setHPB(y, x, z);
 	}
-	inline SelfRef			setXYZ					(Tvector& xyz)
+	inline SelfRef			setXYZ(Tvector& xyz)
 	{
 		return setHPB(xyz.y, xyz.x, xyz.z);
 	}
 
-	inline SelfRef			setXYZi					(TYPE x, TYPE y, TYPE z)
+	inline SelfRef			setXYZi(TYPE x, TYPE y, TYPE z)
 	{
 		return setHPB(-y, -x, -z);
 	}
-	inline SelfRef			setXYZi					(Tvector& xyz)
+	inline SelfRef			setXYZi(Tvector& xyz)
 	{
 		return setHPB(-xyz.y, -xyz.x, -xyz.z);
 	}
 //
-	inline void				getHPB					(TYPE& h, TYPE& p, TYPE& b) const
+	inline void				getHPB(TYPE& h, TYPE& p, TYPE& b) const
 	{
 		TYPE  cy = _sqrt(j.y * j.y + i.y * i.y);
 		if (cy > 16.0f * type_epsilon(TYPE))
@@ -971,28 +971,28 @@ public:
 			b = 0;
 		}
 	}
-	inline void				getHPB					(Tvector& hpb) const
+	inline void				getHPB(Tvector& hpb) const
 	{
 		getHPB(hpb.x, hpb.y, hpb.z);
 	}
 
-	inline void				getXYZ					(TYPE& x, TYPE& y, TYPE& z) const
+	inline void				getXYZ(TYPE& x, TYPE& y, TYPE& z) const
 	{
 		getHPB(y, x, z);
 	}
-	inline void				getXYZ					(Tvector& xyz) const
+	inline void				getXYZ(Tvector& xyz) const
 	{
 		getXYZ(xyz.x, xyz.y, xyz.z);
 	}
 
-	inline void				getXYZi					(TYPE& x, TYPE& y, TYPE& z) const
+	inline void				getXYZi(TYPE& x, TYPE& y, TYPE& z) const
 	{
 		getHPB(y, x, z);
 		x *= -1.0f;
 		y *= -1.0f;
 		z *= -1.0f;
 	}
-	inline void				getXYZi					(Tvector& xyz) const
+	inline void				getXYZi(Tvector& xyz) const
 	{
 		getXYZ(xyz.x, xyz.y, xyz.z);
 		xyz.mul(-1.0f);

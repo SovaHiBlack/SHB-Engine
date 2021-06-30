@@ -8,7 +8,7 @@ class CChimera : public CBaseMonster
 	using inherited = CBaseMonster;
 
 	bool		b_upper_state;
-							   	
+
 	SVelocityParam		m_fsVelocityWalkUpper;
 	SVelocityParam		m_fsVelocityJumpGround;
 	SVelocityParam		m_fsVelocityRunAttack;
@@ -29,7 +29,6 @@ public:
 
 	inline		void	SetUpperState				(bool state = true) {b_upper_state = state;}
 	
-public:
 	static void script_register(lua_State*);
 };
 

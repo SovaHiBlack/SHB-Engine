@@ -4,13 +4,13 @@
 class CORE_API		xrCriticalSection
 {
 private:
-	void*				pmutex;
+	Pvoid pmutex;
 
 public:
-    xrCriticalSection	();
-    ~xrCriticalSection	();
+	xrCriticalSection( );
+	~xrCriticalSection( );
 
-    void				Enter	();
-    void				Leave	();
-	BOOL				TryEnter();
+	void				Enter( );
+	void				Leave( );
+	BOOL				TryEnter( );
 };

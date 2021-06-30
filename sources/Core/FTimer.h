@@ -36,7 +36,7 @@ public:
 		{
 			return;
 		}
-		
+
 		qwStartTime = CPU::QPC( ) - qwPauseAccum;
 	}
 	__forceinline u64		GetElapsed_ticks( )const
@@ -50,9 +50,9 @@ public:
 			return CPU::QPC( ) - qwStartTime - CPU::qpc_overhead - qwPauseAccum;
 		}
 	}
-	inline u32		GetElapsed_ms( )const
+	inline U32		GetElapsed_ms( )const
 	{
-		return u32(GetElapsed_ticks( ) * u64(1000) / CPU::qpc_freq);
+		return U32(GetElapsed_ticks( ) * u64(1000) / CPU::qpc_freq);
 	}
 	inline float	GetElapsed_sec( )const
 	{
@@ -126,9 +126,9 @@ public:
 		return result;
 	}
 
-	u32				GetElapsed_ms( ) const
+	U32				GetElapsed_ms( ) const
 	{
-		return			(u32(GetElapsed_ticks( ) * u64(1000) / CPU::qpc_freq));
+		return			(U32(GetElapsed_ticks( ) * u64(1000) / CPU::qpc_freq));
 	}
 
 	float			GetElapsed_sec( ) const
@@ -151,15 +151,15 @@ class CORE_API CTimer_paused_ex : public CTimer
 	u64											save_clock;
 
 public:
-							CTimer_paused_ex	( )
+	CTimer_paused_ex( )
 	{ }
-	virtual					~CTimer_paused_ex	( )
+	virtual					~CTimer_paused_ex( )
 	{ }
-	inline BOOL				Paused				( ) const
+	inline BOOL				Paused( ) const
 	{
 		return bPause;
 	}
-	inline void				Pause				(BOOL b)
+	inline void				Pause(BOOL b)
 	{
 		if (bPause == b)
 		{
@@ -184,11 +184,11 @@ public:
 class CORE_API CTimer_paused : public CTimer_paused_ex
 {
 public:
-							CTimer_paused		( )
+	CTimer_paused( )
 	{
 		g_pauseMngr.Register(this);
 	}
-	virtual					~CTimer_paused		( )
+	virtual					~CTimer_paused( )
 	{
 		g_pauseMngr.UnRegister(this);
 	}
@@ -201,13 +201,13 @@ public:
 	CTimer										T;
 	u64											accum;
 	float										result;
-	u32											count;
+	U32											count;
 
-							CStatTimer			( );
-	void					FrameStart			( );
-	void					FrameEnd			( );
+	CStatTimer( );
+	void					FrameStart( );
+	void					FrameEnd( );
 
-	__forceinline void		Begin				( )
+	__forceinline void		Begin( )
 	{
 		if (!g_bEnableStatGather)
 		{
@@ -217,7 +217,7 @@ public:
 		count++;
 		T.Start( );
 	}
-	__forceinline void		End					( )
+	__forceinline void		End( )
 	{
 		if (!g_bEnableStatGather)
 		{
@@ -227,16 +227,16 @@ public:
 		accum += T.GetElapsed_ticks( );
 	}
 
-	__forceinline u64		GetElapsed_ticks	( ) const
+	__forceinline u64		GetElapsed_ticks( ) const
 	{
 		return accum;
 	}
 
-	inline u32				GetElapsed_ms		( ) const
+	inline U32				GetElapsed_ms( ) const
 	{
-		return u32(GetElapsed_ticks( ) * u64(1000) / CPU::qpc_freq);
+		return U32(GetElapsed_ticks( ) * u64(1000) / CPU::qpc_freq);
 	}
-	inline float			GetElapsed_sec		( ) const
+	inline float			GetElapsed_sec( ) const
 	{
 		FPU::m64r( );
 		float _result = float(F64(GetElapsed_ticks( )) / F64(CPU::qpc_freq));

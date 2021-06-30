@@ -203,7 +203,7 @@
 #if !defined(DMUL)
 #if 0
    /* 32*32 multiplies may be faster than 64*64 on some 64-bit machines,
-    * but then we need extra casts from unsigned<->size_t */
+	* but then we need extra casts from unsigned<->size_t */
 #  define DMUL(a,b) ((lzo_xint) ((lzo_uint32)(a) * (lzo_uint32)(b)))
 #else
 #  define DMUL(a,b) ((lzo_xint) ((a) * (b)))
@@ -232,12 +232,12 @@
 #endif
 
 #if defined(LZO_UNALIGNED_OK_2)
-  LZO_COMPILE_TIME_ASSERT_HEADER(sizeof(short) == 2)
+LZO_COMPILE_TIME_ASSERT_HEADER(sizeof(short) == 2)
 #endif
 #if defined(LZO_UNALIGNED_OK_4)
-  LZO_COMPILE_TIME_ASSERT_HEADER(sizeof(lzo_uint32) == 4)
+LZO_COMPILE_TIME_ASSERT_HEADER(sizeof(lzo_uint32) == 4)
 #elif defined(LZO_ALIGNED_OK_4)
-  LZO_COMPILE_TIME_ASSERT_HEADER(sizeof(lzo_uint32) == 4)
+LZO_COMPILE_TIME_ASSERT_HEADER(sizeof(lzo_uint32) == 4)
 #endif
 
 
@@ -262,7 +262,7 @@
 ************************************************************************/
 
 __LZO_EXTERN_C int __lzo_init_done;
-__LZO_EXTERN_C const char __lzo_copyright[];
+__LZO_EXTERN_C const char __lzo_copyright[ ];
 LZO_EXTERN(const lzo_bytep) lzo_copyright(void);
 
 

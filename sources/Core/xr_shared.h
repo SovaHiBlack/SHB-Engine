@@ -15,6 +15,7 @@ protected:
 	typedef xr_map< shared_str, T* >			SharedMap;
 	typedef typename SharedMap::iterator	SharedMapIt;
 	SharedMap				container;
+
 public:
 	shared_container( )
 	{ }
@@ -81,11 +82,27 @@ protected:
 	// ref-counting
 	void					destroy( )
 	{
-		if (0 == p_) return;	p_->m_ref_cnt--; 	if (0 == p_->m_ref_cnt)	p_ = 0;
+		if (0 == p_)
+		{
+			return;
+		}
+
+		p_->m_ref_cnt--;
+		if (0 == p_->m_ref_cnt)
+		{
+			p_ = 0;
+		}
 	}
 	void					create(shared_item const& rhs)
 	{
-		T* v = rhs.p_; if (0 != v) v->m_ref_cnt++; destroy( ); p_ = v;
+		T* v = rhs.p_;
+		if (0 != v)
+		{
+			v->m_ref_cnt++;
+		}
+
+		destroy( );
+		p_ = v;
 	}
 
 public:
@@ -102,19 +119,27 @@ public:
 	{
 		destroy( );
 	}
-// assignment & accessors
+	// assignment & accessors
 	shared_item<T>& operator=			(shared_item const& rhs)
 	{
-		create(rhs); return *this;
+		create(rhs);
+		return *this;
 	}
 	const T* get_value( )
 	{
 		return p_;
 	}
-// creating
+	// creating
 	template <typename _on_new>
 	void					create(shared_str key, shared_container<T>* container, const _on_new& p)
 	{
-		T* v = container->dock(key, p); if (0 != v) v->m_ref_cnt++; destroy( ); p_ = v;
+		T* v = container->dock(key, p);
+		if (0 != v)
+		{
+			v->m_ref_cnt++;
+		}
+
+		destroy( );
+		p_ = v;
 	}
 };

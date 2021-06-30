@@ -4,11 +4,11 @@ template <class T>
 class _rect
 {
 public:
-	using TYPE								= T;
-	using Self								= _rect<TYPE>;
-	using SelfRef							= Self&;
-	using SelfCRef							= const Self&;
-	using Tvector							= _vector2<TYPE>;
+	using TYPE = T;
+	using Self = _rect<TYPE>;
+	using SelfRef = Self&;
+	using SelfCRef = const Self&;
+	using Tvector = _vector2<TYPE>;
 
 	union
 	{
@@ -34,7 +34,7 @@ public:
 		TYPE								m[4];
 	};
 
-	inline SelfRef		set					(const TYPE _x1, const TYPE _y1, const TYPE _x2, const TYPE _y2)
+	inline SelfRef		set(const TYPE _x1, const TYPE _y1, const TYPE _x2, const TYPE _y2)
 	{
 		x1 = _x1;
 		y1 = _y1;
@@ -42,7 +42,7 @@ public:
 		y2 = _y2;
 		return *this;
 	}
-	inline SelfRef		set					(const Tvector& mn, const Tvector& mx)
+	inline SelfRef		set(const Tvector& mn, const Tvector& mx)
 	{
 		x1 = mn.x;
 		y1 = mn.y;
@@ -50,7 +50,7 @@ public:
 		y2 = mx.y;
 		return *this;
 	}
-	inline SelfRef		set					(SelfCRef r)
+	inline SelfRef		set(SelfCRef r)
 	{
 		x1 = r.x1;
 		y1 = r.y1;
@@ -58,7 +58,7 @@ public:
 		y2 = r.y2;
 		return *this;
 	}
-	inline SelfRef		null				( )
+	inline SelfRef		null( )
 	{
 		x1 = TYPE(0);
 		y1 = TYPE(0);
@@ -67,7 +67,7 @@ public:
 		return *this;
 	}
 
-	inline SelfRef		add					(TYPE x, TYPE y)
+	inline SelfRef		add(TYPE x, TYPE y)
 	{
 		x1 += x;
 		y1 += y;
@@ -75,7 +75,7 @@ public:
 		y2 += y;
 		return *this;
 	}
-	inline SelfRef		sub					(TYPE x, TYPE y)
+	inline SelfRef		sub(TYPE x, TYPE y)
 	{
 		x1 -= x;
 		y1 -= y;
@@ -83,7 +83,7 @@ public:
 		y2 -= y;
 		return *this;
 	}
-	inline SelfRef		mul					(TYPE x, TYPE y)
+	inline SelfRef		mul(TYPE x, TYPE y)
 	{
 		x1 *= x;
 		y1 *= y;
@@ -91,7 +91,7 @@ public:
 		y2 *= y;
 		return *this;
 	}
-	inline SelfRef		div					(TYPE x, TYPE y)
+	inline SelfRef		div(TYPE x, TYPE y)
 	{
 		x1 /= x;
 		y1 /= y;
@@ -100,7 +100,7 @@ public:
 		return *this;
 	}
 
-	inline SelfRef		add					(SelfCRef r, TYPE x, TYPE y)
+	inline SelfRef		add(SelfCRef r, TYPE x, TYPE y)
 	{
 		x1 = r.x1 + x;
 		y1 = r.y1 + y;
@@ -108,7 +108,7 @@ public:
 		y2 = r.y2 + y;
 		return *this;
 	}
-	inline SelfRef		sub					(SelfCRef r, TYPE x, TYPE y)
+	inline SelfRef		sub(SelfCRef r, TYPE x, TYPE y)
 	{
 		x1 = r.x1 - x;
 		y1 = r.y1 - y;
@@ -116,7 +116,7 @@ public:
 		y2 = r.y2 - y;
 		return *this;
 	}
-	inline SelfRef		mul					(SelfCRef r, TYPE x, TYPE y)
+	inline SelfRef		mul(SelfCRef r, TYPE x, TYPE y)
 	{
 		x1 = r.x1 * x;
 		y1 = r.y1 * y;
@@ -124,7 +124,7 @@ public:
 		y2 = r.y2 * y;
 		return *this;
 	}
-	inline SelfRef		div					(SelfCRef r, TYPE x, TYPE y)
+	inline SelfRef		div(SelfCRef r, TYPE x, TYPE y)
 	{
 		x1 = r.x1 / x;
 		y1 = r.y1 / y;
@@ -133,43 +133,43 @@ public:
 		return *this;
 	}
 
-	inline BOOL			in					(TYPE x, TYPE y) const
+	inline BOOL			in(TYPE x, TYPE y) const
 	{
 		return (x >= x1) && (x <= x2) && (y >= y1) && (y <= y2);
 	}
-	inline BOOL			in					(Tvector& p) const
+	inline BOOL			in(Tvector& p) const
 	{
 		return (p.x >= x1) && (p.x <= x2) && (p.y >= y1) && (p.y <= y2);
 	}
-	inline BOOL			cmp					(_rect<int>& r)
+	inline BOOL			cmp(_rect<int>& r)
 	{
 		return x1 == r.x1 && y1 == r.y1 && x2 == r.x2 && y2 == r.y2;
 	}
-	inline BOOL			cmp					(_rect<float>& r)
+	inline BOOL			cmp(_rect<float>& r)
 	{
 		return fsimilar(x1, r.x1) && fsimilar(y1, r.y1) && fsimilar(x2, r.x2) && fsimilar(y2, r.y2);
 	}
 
-	inline void			getcenter			(Tvector& center)
+	inline void			getcenter(Tvector& center)
 	{
 		center.add(rb, lt);
 		center.div(2);
 	}
-	inline void			getsize				(Tvector& sz)
+	inline void			getsize(Tvector& sz)
 	{
 		sz.sub(rb, lt);
 	}
 
-	inline TYPE			width				( ) const
+	inline TYPE			width( ) const
 	{
 		return rb.x - lt.x;
 	}
-	inline TYPE			height				( ) const
+	inline TYPE			height( ) const
 	{
 		return rb.y - lt.y;
 	}
 
-	inline SelfRef		shrink				(TYPE x, TYPE y)
+	inline SelfRef		shrink(TYPE x, TYPE y)
 	{
 		lt.x += x;
 		lt.y += y;
@@ -177,7 +177,7 @@ public:
 		rb.y -= y;
 		return *this;
 	}
-	inline SelfRef		grow				(TYPE x, TYPE y)
+	inline SelfRef		grow(TYPE x, TYPE y)
 	{
 		lt.x -= x;
 		lt.y -= y;
@@ -186,16 +186,16 @@ public:
 		return *this;
 	}
 
-	inline BOOL			intersected			(SelfCRef b1, SelfCRef b2) const
+	inline BOOL			intersected(SelfCRef b1, SelfCRef b2) const
 	{
 		return !(b1.x1 > b2.x2 || b1.x2<b2.x1 || b1.y1>b2.y2 || b1.y2 < b2.y1);
 	}
-	inline BOOL			intersected			(SelfCRef b) const
+	inline BOOL			intersected(SelfCRef b) const
 	{
 		return intersected(*this, b);
 	}
 
-	inline BOOL			intersection		(SelfCRef b1, SelfCRef b2)
+	inline BOOL			intersection(SelfCRef b1, SelfCRef b2)
 	{
 		if (!intersected(b1, b2))
 		{

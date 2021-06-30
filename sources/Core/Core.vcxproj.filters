@@ -40,9 +40,6 @@
     <Filter Include="intrusive_ptr">
       <UniqueIdentifier>{521caee9-5c83-4db4-be11-e1b4ec801719}</UniqueIdentifier>
     </Filter>
-    <Filter Include="memory_monitor">
-      <UniqueIdentifier>{768f90cb-e3f1-4a14-ad49-0f90f8ca0252}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Compression">
       <UniqueIdentifier>{2b495d18-577e-4470-8088-b4535c038729}</UniqueIdentifier>
     </Filter>
@@ -86,9 +83,6 @@
     </ClCompile>
     <ClCompile Include="xr_trims.cpp">
       <Filter>Math\Extensions</Filter>
-    </ClCompile>
-    <ClCompile Include="FileSystem.cpp">
-      <Filter>FS</Filter>
     </ClCompile>
     <ClCompile Include="FS.cpp">
       <Filter>FS</Filter>
@@ -170,9 +164,6 @@
     </ClCompile>
     <ClCompile Include="xrstring.cpp">
       <Filter>shared memory/string library</Filter>
-    </ClCompile>
-    <ClCompile Include="memory_monitor.cpp">
-      <Filter>memory_monitor</Filter>
     </ClCompile>
     <ClCompile Include="rt_compressor.cpp">
       <Filter>Compression\rt</Filter>
@@ -399,9 +390,6 @@
     <ClInclude Include="intrusive_ptr_inline.h">
       <Filter>intrusive_ptr</Filter>
     </ClInclude>
-    <ClInclude Include="memory_monitor.h">
-      <Filter>memory_monitor</Filter>
-    </ClInclude>
     <ClInclude Include="rt_compressor.h">
       <Filter>Compression\rt</Filter>
     </ClInclude>
@@ -472,10 +460,5 @@
     <ClInclude Include="_box3.h">
       <Filter>Math</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <CustomBuild Include="FileSystem.h">
-      <Filter>FS</Filter>
-    </CustomBuild>
   </ItemGroup>
 </Project>
