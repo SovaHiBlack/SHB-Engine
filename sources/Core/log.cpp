@@ -126,7 +126,7 @@ void Log(Pcstr msg, int dop)
 	Log(buf);
 }
 
-void Log(Pcstr msg, float dop)
+void Log(Pcstr msg, F32 dop)
 {
 	string1024 buf;
 

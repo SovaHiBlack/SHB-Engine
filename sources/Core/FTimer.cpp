@@ -16,7 +16,7 @@ void CStatTimer::FrameStart( )
 }
 void CStatTimer::FrameEnd( )
 {
-	float _time = 1000.0f * float(F64(accum) / F64(CPU::qpc_freq));
+	F32 _time = 1000.0f * F32(F64(accum) / F64(CPU::qpc_freq));
 	if (_time > result)
 	{
 		result = _time;

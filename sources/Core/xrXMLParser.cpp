@@ -235,36 +235,41 @@ int CXml::ReadInt(XML_NODE* start_node, const char* path, int index, int default
 	return atoi(result_str);
 }
 
-float   CXml::ReadFlt(const char* path, int index, float default_flt_val)
+F32 CXml::ReadFlt(const char* path, int index, F32 default_flt_val)
 {
 	const char* result_str = Read(path, index, NULL);
 	if (result_str == NULL)
+	{
 		return				default_flt_val;
+	}
 
-	return (float) atof(result_str);
+	return (F32) atof(result_str);
 }
 
-float   CXml::ReadFlt(XML_NODE* start_node, const char* path, int index, float default_flt_val)
+F32 CXml::ReadFlt(XML_NODE* start_node, const char* path, int index, F32 default_flt_val)
 {
 	const char* result_str = Read(start_node, path, index, NULL);
 	if (result_str == NULL)
+	{
 		return				default_flt_val;
+	}
 
-	return (float) atof(result_str);
+	return (F32) atof(result_str);
 }
 
-float   CXml::ReadFlt(XML_NODE* node, float default_flt_val)
+F32 CXml::ReadFlt(XML_NODE* node, F32 default_flt_val)
 {
 	const char* result_str = Read(node, NULL);
 
 	if (result_str == NULL)
+	{
 		return				default_flt_val;
+	}
 
-	return (float) atof(result_str);
+	return (F32) atof(result_str);
 }
 
-const char* CXml::ReadAttrib(XML_NODE* start_node, const char* path, int index,
-	const char* attrib, const char* default_str_val)
+const char* CXml::ReadAttrib(XML_NODE* start_node, const char* path, int index, const char* attrib, const char* default_str_val)
 {
 	XML_NODE* node = NavigateToNode(start_node, path, index);
 	const char* result = ReadAttrib(node, attrib, default_str_val);
@@ -341,34 +346,40 @@ int CXml::ReadAttribInt(XML_NODE* start_node, const char* path, int index, const
 	return atoi(result_str);
 }
 
-float   CXml::ReadAttribFlt(const char* path, int index, const char* attrib, float default_flt_val)
+F32 CXml::ReadAttribFlt(const char* path, int index, const char* attrib, F32 default_flt_val)
 {
 	const char* result_str = ReadAttrib(path, index, attrib, NULL);
 
 	if (result_str == NULL)
+	{
 		return				default_flt_val;
+	}
 
-	return (float) atof(result_str);
+	return (F32) atof(result_str);
 }
 
-float   CXml::ReadAttribFlt(XML_NODE* start_node, const char* path, int index, const char* attrib, float default_flt_val)
+F32 CXml::ReadAttribFlt(XML_NODE* start_node, const char* path, int index, const char* attrib, F32 default_flt_val)
 {
 	const char* result_str = ReadAttrib(start_node, path, index, attrib, NULL);
 
 	if (result_str == NULL)
+	{
 		return				default_flt_val;
+	}
 
-	return (float) atof(result_str);
+	return (F32) atof(result_str);
 }
 
-float   CXml::ReadAttribFlt(XML_NODE* node, const char* attrib, float default_flt_val)
+F32 CXml::ReadAttribFlt(XML_NODE* node, const char* attrib, F32 default_flt_val)
 {
 	const char* result_str = ReadAttrib(node, attrib, NULL);
 
 	if (result_str == NULL)
+	{
 		return				default_flt_val;
+	}
 
-	return (float) atof(result_str);
+	return (F32) atof(result_str);
 }
 
 int CXml::GetNodesNum(const char* path, int index, const char* tag_name)
@@ -381,12 +392,19 @@ int CXml::GetNodesNum(const char* path, int index, const char* tag_name)
 		node = NavigateToNode(path, index);
 
 		if (node == NULL)
+		{
 			node = root;
+		}
 	}
 	else
+	{
 		node = root;
+	}
 
-	if (node == NULL) return 0;
+	if (node == NULL)
+	{
+		return 0;
+	}
 
 	return GetNodesNum(node, tag_name);
 }

@@ -96,9 +96,9 @@ namespace CPU
 	CORE_API u64				clk_per_milisec;
 	CORE_API u64				clk_per_microsec;
 	CORE_API u64				clk_overhead;
-	CORE_API float				clk_to_seconds;
-	CORE_API float				clk_to_milisec;
-	CORE_API float				clk_to_microsec;
+	CORE_API F32				clk_to_seconds;
+	CORE_API F32				clk_to_milisec;
+	CORE_API F32				clk_to_microsec;
 	CORE_API u64				qpc_freq = 0;
 	CORE_API u64				qpc_overhead = 0;
 	CORE_API U32				qpc_counter = 0;
@@ -173,13 +173,13 @@ namespace CPU
 		F64 b;
 		a = 1;
 		b = F64(clk_per_second);
-		clk_to_seconds = float(F64(a / b));
+		clk_to_seconds = F32(F64(a / b));
 		a = 1000;
 		b = F64(clk_per_second);
-		clk_to_milisec = float(F64(a / b));
+		clk_to_milisec = F32(F64(a / b));
 		a = 1000000;
 		b = F64(clk_per_second);
-		clk_to_microsec = float(F64(a / b));
+		clk_to_microsec = F32(F64(a / b));
 	}
 };
 
@@ -189,7 +189,7 @@ void _initialize_cpu( )
 	Msg("* Detected CPU: %s %s, F%d/M%d/S%d, %.2f mhz, %d-clk 'rdtsc'",
 		CPU::ID.v_name, CPU::ID.model_name,
 		CPU::ID.family, CPU::ID.model, CPU::ID.stepping,
-		float(CPU::clk_per_second / u64(1000000)),
+		F32(CPU::clk_per_second / u64(1000000)),
 		U32(CPU::clk_overhead)
 	);
 
@@ -306,11 +306,11 @@ void	thread_spawn(thread_t* entry, const char* name, unsigned	stack, Pvoid argli
 	_beginthread(thread_entry, stack, startup);
 }
 
-void spline1(float t, Fvector3* p, Fvector3* ret)
+void spline1(F32 t, Fvector3* p, Fvector3* ret)
 {
-	float     t2 = t * t;
-	float     t3 = t2 * t;
-	float     m[4];
+	F32     t2 = t * t;
+	F32     t3 = t2 * t;
+	F32     m[4];
 
 	ret->x = 0.0f;
 	ret->y = 0.0f;
@@ -328,12 +328,12 @@ void spline1(float t, Fvector3* p, Fvector3* ret)
 	}
 }
 
-void spline2(float t, Fvector3* p, Fvector3* ret)
+void spline2(F32 t, Fvector3* p, Fvector3* ret)
 {
-	float	s = 1.0f - t;
-	float   t2 = t * t;
-	float   t3 = t2 * t;
-	float   m[4];
+	F32 s = 1.0f - t;
+	F32 t2 = t * t;
+	F32 t3 = t2 * t;
+	F32 m[4];
 
 	m[0] = s * s * s;
 	m[1] = 3.0f * t3 - 6.0f * t2 + 4.0f;

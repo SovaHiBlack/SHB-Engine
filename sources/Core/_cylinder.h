@@ -252,7 +252,7 @@ public:
 	}
 };
 
-using Fcylinder = _cylinder<float>;
+using Fcylinder = _cylinder<F32>;
 
 template <class T>
 BOOL	_valid(const _cylinder<T>& c)

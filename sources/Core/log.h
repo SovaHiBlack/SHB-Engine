@@ -7,7 +7,7 @@ void 	CORE_API		Log(Pcstr msg);
 void 	CORE_API		Log(Pcstr msg, Pcstr dop);
 void 	CORE_API		Log(Pcstr msg, U32			dop);
 void 	CORE_API		Log(Pcstr msg, int  			dop);
-void 	CORE_API		Log(Pcstr msg, float			dop);
+void 	CORE_API		Log(Pcstr msg, F32			dop);
 void 	CORE_API		Log(Pcstr msg, const Fvector3& dop);
 void 	CORE_API		Log(Pcstr msg, const Fmatrix& dop);
 void 	CORE_API		LogWinErr(Pcstr msg, long 			err_code);

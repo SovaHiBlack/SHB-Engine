@@ -238,10 +238,12 @@ void	IWriter::w_chunk(U32 type, Pvoid data, U32 size)
 	else							w(data, size);
 	close_chunk( );
 }
-void 	IWriter::w_sdir(const Fvector3& D)
+
+
+void IWriter::w_sdir(const Fvector3& D)
 {
 	Fvector3 C;
-	float mag = D.magnitude( );
+	F32 mag = D.magnitude( );
 	if (mag > EPS_S)
 	{
 		C.div(D, mag);
@@ -251,6 +253,7 @@ void 	IWriter::w_sdir(const Fvector3& D)
 		C.set(0, 0, 1);
 		mag = 0;
 	}
+
 	w_dir(C);
 	w_float(mag);
 }

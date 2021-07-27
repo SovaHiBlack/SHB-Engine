@@ -50,14 +50,14 @@ public:
 			return CPU::QPC( ) - qwStartTime - CPU::qpc_overhead - qwPauseAccum;
 		}
 	}
-	inline U32		GetElapsed_ms( )const
+	inline U32		GetElapsed_ms( ) const
 	{
 		return U32(GetElapsed_ticks( ) * u64(1000) / CPU::qpc_freq);
 	}
-	inline float	GetElapsed_sec( )const
+	inline F32	GetElapsed_sec( ) const
 	{
 		FPU::m64r( );
-		float _result = float(F64(GetElapsed_ticks( )) / F64(CPU::qpc_freq));
+		F32 _result = F32(F64(GetElapsed_ticks( )) / F64(CPU::qpc_freq));
 		FPU::m24r( );
 
 		return _result;
@@ -73,7 +73,7 @@ class CORE_API CTimer : public CTimerBase
 private:
 	using inherited = CTimerBase;
 
-	float				m_time_factor;
+	F32				m_time_factor;
 	u64					m_real_ticks;
 	u64					m_ticks;
 
@@ -104,7 +104,7 @@ public:
 		m_ticks = 0;
 	}
 
-	inline const float& time_factor( ) const
+	inline const F32& time_factor( ) const
 	{
 		return m_time_factor;
 	}
@@ -131,10 +131,10 @@ public:
 		return			(U32(GetElapsed_ticks( ) * u64(1000) / CPU::qpc_freq));
 	}
 
-	float			GetElapsed_sec( ) const
+	F32			GetElapsed_sec( ) const
 	{
 		FPU::m64r( );
-		float result = float(F64(GetElapsed_ticks( )) / F64(CPU::qpc_freq));
+		F32 result = F32(F64(GetElapsed_ticks( )) / F64(CPU::qpc_freq));
 		FPU::m24r( );
 
 		return result;
@@ -200,7 +200,7 @@ class CORE_API CStatTimer
 public:
 	CTimer										T;
 	u64											accum;
-	float										result;
+	F32										result;
 	U32											count;
 
 	CStatTimer( );
@@ -236,10 +236,10 @@ public:
 	{
 		return U32(GetElapsed_ticks( ) * u64(1000) / CPU::qpc_freq);
 	}
-	inline float			GetElapsed_sec( ) const
+	inline F32			GetElapsed_sec( ) const
 	{
 		FPU::m64r( );
-		float _result = float(F64(GetElapsed_ticks( )) / F64(CPU::qpc_freq));
+		F32 _result = F32(F64(GetElapsed_ticks( )) / F64(CPU::qpc_freq));
 		FPU::m24r( );
 
 		return _result;

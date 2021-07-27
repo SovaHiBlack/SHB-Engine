@@ -448,7 +448,7 @@ public:
 	}
 };
 
-using Fbox2 = _box2<float>;
+using Fbox2 = _box2<F32>;
 
 template <class T>
 BOOL _valid(const _box2<T>& c)

@@ -15,22 +15,22 @@
 #endif
 
 // Constants
-const float EPS_S = 0.0000001f;
-const float EPS = 0.00001f;
-const float EPS_L = 0.001f;
+const F32 EPS_S = 0.0000001f;
+const F32 EPS = 0.00001f;
+const F32 EPS_L = 0.001f;
 
-const float M_PI = 3.1415926535897932384626433832795f;
-const float PI = 3.1415926535897932384626433832795f;
-const float PI_MUL_2 = 6.2831853071795864769252867665590f;
-const float PI_MUL_3 = 9.4247779607693797153879301498385f;
-const float PI_MUL_4 = 12.566370614359172953850573533118f;
-const float PI_MUL_6 = 18.849555921538759430775860299677f;
-const float PI_MUL_8 = 25.132741228718345907701147066236f;
-const float PI_DIV_2 = 1.5707963267948966192313216916398f;
-const float PI_DIV_3 = 1.0471975511965977461542144610932f;
-const float PI_DIV_4 = 0.7853981633974483096156608458199f;
-const float PI_DIV_6 = 0.5235987755982988730771072305466f;
-const float PI_DIV_8 = 0.3926990816987241548078304229099f;
+const F32 M_PI = 3.1415926535897932384626433832795f;
+const F32 PI = 3.1415926535897932384626433832795f;
+const F32 PI_MUL_2 = 6.2831853071795864769252867665590f;
+const F32 PI_MUL_3 = 9.4247779607693797153879301498385f;
+const F32 PI_MUL_4 = 12.566370614359172953850573533118f;
+const F32 PI_MUL_6 = 18.849555921538759430775860299677f;
+const F32 PI_MUL_8 = 25.132741228718345907701147066236f;
+const F32 PI_DIV_2 = 1.5707963267948966192313216916398f;
+const F32 PI_DIV_3 = 1.0471975511965977461542144610932f;
+const F32 PI_DIV_4 = 0.7853981633974483096156608458199f;
+const F32 PI_DIV_6 = 0.5235987755982988730771072305466f;
+const F32 PI_DIV_8 = 0.3926990816987241548078304229099f;
 
 // Define namespaces (CPU & FPU)
 #include	"_math.h"
@@ -38,12 +38,12 @@ const float PI_DIV_8 = 0.3926990816987241548078304229099f;
 #include	"_std_extensions.h"
 
 // comparisions
-inline BOOL fsimilar(float a, float b, float cmp = EPS)
+inline BOOL fsimilar(F32 a, F32 b, F32 cmp = EPS)
 {
 	return _abs(a - b) < cmp;
 }
 
-inline BOOL fis_zero(float val, float cmp = EPS_S)
+inline BOOL fis_zero(F32 val, F32 cmp = EPS_S)
 {
 	return _abs(val) < cmp;
 }
@@ -63,7 +63,7 @@ namespace implement
 		return (val * T(180) / T(M_PI));
 	}
 };
-__forceinline float	deg2rad(float val)
+__forceinline F32	deg2rad(F32 val)
 {
 	return implement::deg2rad(val);
 }
@@ -71,7 +71,7 @@ __forceinline F64	deg2rad(F64 val)
 {
 	return implement::deg2rad(val);
 }
-__forceinline float	rad2deg(float val)
+__forceinline F32	rad2deg(F32 val)
 {
 	return implement::rad2deg(val);
 }
@@ -97,15 +97,29 @@ inline void clamp(T& val, const T& _low, const T& _high)
 template <class T>
 inline T clampr(const T& val, const T& _low, const T& _high)
 {
-	if (val < _low)	return _low;
-	else if (val > _high)	return _high;
-	else					return val;
-};
-inline float snapto(float value, float snap)
+	if (val < _low)
+	{
+		return _low;
+	}
+	else if (val > _high)
+	{
+		return _high;
+	}
+	else
+	{
+		return val;
+	}
+}
+
+inline F32 snapto(F32 value, F32 snap)
 {
-	if (snap <= 0.f) return value;
-	return float(iFloor((value + (snap * 0.5f)) / snap)) * snap;
-};
+	if (snap <= 0.f)
+	{
+		return value;
+	}
+
+	return F32(iFloor((value + (snap * 0.5f)) / snap)) * snap;
+}
 
 // pre-definitions
 template <class T> struct _quaternion;
@@ -133,11 +147,11 @@ template <class T> struct _quaternion;
 #pragma pack(pop)
 
 // normalize angle (0..2PI)
-__forceinline float		angle_normalize_always(float a)
+__forceinline F32		angle_normalize_always(F32 a)
 {
-	float div = a / PI_MUL_2;
+	F32 div = a / PI_MUL_2;
 	int rnd = (div > 0) ? iFloor(div) : iCeil(div);
-	float frac = div - rnd;
+	F32 frac = div - rnd;
 	if (frac < 0)
 	{
 		frac += 1.0f;
@@ -147,7 +161,7 @@ __forceinline float		angle_normalize_always(float a)
 }
 
 // normalize angle (0..2PI)
-__forceinline float angle_normalize(float a)
+__forceinline F32 angle_normalize(F32 a)
 {
 	if (a >= 0 && a <= PI_MUL_2)
 	{
@@ -160,14 +174,14 @@ __forceinline float angle_normalize(float a)
 }
 
 // -PI .. +PI
-__forceinline float angle_normalize_signed(float a)
+__forceinline F32 angle_normalize_signed(F32 a)
 {
 	if (a >= (-PI) && a <= PI)
 	{
 		return a;
 	}
 
-	float angle = angle_normalize_always(a);
+	F32 angle = angle_normalize_always(a);
 	if (angle > PI)
 	{
 		angle -= PI_MUL_2;
@@ -177,9 +191,9 @@ __forceinline float angle_normalize_signed(float a)
 }
 
 // -PI..PI
-__forceinline float angle_difference_signed(float a, float b)
+__forceinline F32 angle_difference_signed(F32 a, F32 b)
 {
-	float diff = angle_normalize_signed(a) - angle_normalize_signed(b);
+	F32 diff = angle_normalize_signed(a) - angle_normalize_signed(b);
 	if (diff > 0)
 	{
 		if (diff > PI)
@@ -199,15 +213,15 @@ __forceinline float angle_difference_signed(float a, float b)
 }
 
 // 0..PI
-__forceinline float angle_difference(float a, float b)
+__forceinline F32 angle_difference(F32 a, F32 b)
 {
 	return _abs(angle_difference_signed(a, b));
 }
 
 // c=current, t=target, s=speed, dt=dt
-inline bool angle_lerp(float& c, float t, float s, float dt)
+inline bool angle_lerp(F32& c, F32 t, F32 s, F32 dt)
 {
-	float diff = t - c;
+	F32 diff = t - c;
 	if (diff > 0)
 	{
 		if (diff > PI)
@@ -223,14 +237,14 @@ inline bool angle_lerp(float& c, float t, float s, float dt)
 		}
 	}
 
-	float diff_a = _abs(diff);
+	F32 diff_a = _abs(diff);
 
 	if (diff_a < EPS_S)
 	{
 		return true;
 	}
 
-	float mot = s * dt;
+	F32 mot = s * dt;
 	if (mot > diff_a)
 	{
 		mot = diff_a;
@@ -251,9 +265,9 @@ inline bool angle_lerp(float& c, float t, float s, float dt)
 }
 
 // Just lerp :) expects normalized angles in range [0..2PI)
-__forceinline float angle_lerp(float A, float B, float f)
+__forceinline F32 angle_lerp(F32 A, F32 B, F32 f)
 {
-	float diff = B - A;
+	F32 diff = B - A;
 	if (diff > PI)
 	{
 		diff -= PI_MUL_2;
@@ -266,26 +280,26 @@ __forceinline float angle_lerp(float A, float B, float f)
 	return A + diff * f;
 }
 
-inline float angle_inertion(float src, float tgt, float speed, float clmp, float dt)
+inline F32 angle_inertion(F32 src, F32 tgt, F32 speed, F32 clmp, F32 dt)
 {
-	float a = angle_normalize_signed(tgt);
+	F32 a = angle_normalize_signed(tgt);
 	angle_lerp(src, a, speed, dt);
 	src = angle_normalize_signed(src);
-	float dH = angle_difference_signed(src, a);
-	float dCH = clampr(dH, -clmp, clmp);
+	F32 dH = angle_difference_signed(src, a);
+	F32 dCH = clampr(dH, -clmp, clmp);
 	src -= dH - dCH;
 	return src;
 }
 
-inline float angle_inertion_var(float src, float tgt, float min_speed, float max_speed, float clmp, float dt)
+inline F32 angle_inertion_var(F32 src, F32 tgt, F32 min_speed, F32 max_speed, F32 clmp, F32 dt)
 {
 	tgt = angle_normalize_signed(tgt);
 	src = angle_normalize_signed(src);
-	float speed = _abs((max_speed - min_speed) * angle_difference(tgt, src) / clmp) + min_speed;
+	F32 speed = _abs((max_speed - min_speed) * angle_difference(tgt, src) / clmp) + min_speed;
 	angle_lerp(src, tgt, speed, dt);
 	src = angle_normalize_signed(src);
-	float dH = angle_difference_signed(src, tgt);
-	float dCH = clampr(dH, -clmp, clmp);
+	F32 dH = angle_difference_signed(src, tgt);
+	F32 dCH = clampr(dH, -clmp, clmp);
 	src -= dH - dCH;
 	return src;
 }
@@ -360,8 +374,8 @@ inline _matrix<T>& _matrix<T>::mk_xform(const _quaternion<T>& Q, const Tvector& 
 template <class T>
 inline _quaternion<T>& _quaternion<T>::set(const _matrix<T>& M)
 {
-	float trace;
-	float s;
+	F32 trace;
+	F32 s;
 
 	trace = M._11 + M._22 + M._33;
 	if (trace > 0.0f)

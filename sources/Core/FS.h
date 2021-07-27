@@ -1,5 +1,5 @@
 // FS.h: interface for the CFS class.
-/////////////////////////////////////////////////////////////////////
+
 #pragma once
 
 #define CFS_CompressMark	(1ul << 31ul)
@@ -71,9 +71,9 @@ public:
 	{
 		w(&d, sizeof(S8));
 	}
-	inline void			w_float(float d)
+	inline void			w_float(F32 d)
 	{
-		w(&d, sizeof(float));
+		w(&d, sizeof(F32));
 	}
 	inline void			w_string(Pcstr p)
 	{
@@ -127,23 +127,23 @@ public:
 	}
 
 	// quant writing functions
-	inline void 		w_float_q16(float a, float min, float max)
+	inline void 		w_float_q16(F32 a, F32 min, F32 max)
 	{
 		VERIFY(a >= min && a <= max);
-		float q = (a - min) / (max - min);
+		F32 q = (a - min) / (max - min);
 		w_u16(U16(iFloor(q * 65535.0f + 0.5f)));
 	}
-	inline void 		w_float_q8(float a, float min, float max)
+	inline void 		w_float_q8(F32 a, F32 min, F32 max)
 	{
 		VERIFY(a >= min && a <= max);
-		float q = (a - min) / (max - min);
-		w_u8(U8(iFloor(q * 255.f + .5f)));
+		F32 q = (a - min) / (max - min);
+		w_u8(U8(iFloor(q * 255.0f + 0.5f)));
 	}
-	inline void 		w_angle16(float a)
+	inline void 		w_angle16(F32 a)
 	{
 		w_float_q16(angle_normalize(a), 0, PI_MUL_2);
 	}
-	inline void 		w_angle8(float a)
+	inline void 		w_angle8(F32 a)
 	{
 		w_float_q8(angle_normalize(a), 0, PI_MUL_2);
 	}
@@ -207,7 +207,8 @@ public:
 	}
 	inline void			clear( )
 	{
-		file_size = 0; position = 0;
+		file_size = 0;
+		position = 0;
 	}
 #pragma warning(push)
 #pragma warning(disable:4995)
@@ -241,7 +242,7 @@ public:
 		return *(implementation_type*) this;
 	}
 
-	inline BOOL			eof( )	const
+	inline BOOL			eof( ) const
 	{
 		return impl( ).elapsed( ) <= 0;
 	};
@@ -253,48 +254,70 @@ public:
 
 	inline Fvector3		r_vec3( )
 	{
-		Fvector3 tmp; r(&tmp, 3 * sizeof(float)); return tmp;
-	};
+		Fvector3 tmp;
+		r(&tmp, 3 * sizeof(F32));
+		return tmp;
+	}
 	inline Fvector4		r_vec4( )
 	{
-		Fvector4 tmp; r(&tmp, 4 * sizeof(float)); return tmp;
-	};
+		Fvector4 tmp;
+		r(&tmp, 4 * sizeof(F32));
+		return tmp;
+	}
 	inline u64			r_u64( )
 	{
-		u64 tmp;	r(&tmp, sizeof(tmp)); return tmp;
-	};
+		u64 tmp;
+		r(&tmp, sizeof(tmp));
+		return tmp;
+	}
 	inline U32			r_u32( )
 	{
-		U32 tmp;	r(&tmp, sizeof(tmp)); return tmp;
-	};
+		U32 tmp;
+		r(&tmp, sizeof(tmp));
+		return tmp;
+	}
 	inline U16			r_u16( )
 	{
-		U16 tmp;	r(&tmp, sizeof(tmp)); return tmp;
-	};
+		U16 tmp;
+		r(&tmp, sizeof(tmp));
+		return tmp;
+	}
 	inline U8			r_u8( )
 	{
-		U8 tmp;		r(&tmp, sizeof(tmp)); return tmp;
-	};
+		U8 tmp;	
+		r(&tmp, sizeof(tmp));
+		return tmp;
+	}
 	inline s64			r_s64( )
 	{
-		s64 tmp;	r(&tmp, sizeof(tmp)); return tmp;
-	};
+		s64 tmp;
+		r(&tmp, sizeof(tmp));
+		return tmp;
+	}
 	inline int			r_s32( )
 	{
-		int tmp;	r(&tmp, sizeof(tmp)); return tmp;
-	};
+		int tmp;
+		r(&tmp, sizeof(tmp));
+		return tmp;
+	}
 	inline S16			r_s16( )
 	{
-		S16 tmp;	r(&tmp, sizeof(tmp)); return tmp;
-	};
+		S16 tmp;
+		r(&tmp, sizeof(tmp));
+		return tmp;
+	}
 	inline S8			r_s8( )
 	{
-		S8 tmp;		r(&tmp, sizeof(tmp)); return tmp;
-	};
-	inline float		r_float( )
+		S8 tmp;	
+		r(&tmp, sizeof(tmp)); 
+		return tmp;
+	}
+	inline F32		r_float( )
 	{
-		float tmp;	r(&tmp, sizeof(tmp)); return tmp;
-	};
+		F32 tmp;
+		r(&tmp, sizeof(tmp));
+		return tmp;
+	}
 	inline void			r_fvector4(Fvector4& v)
 	{
 		r(&v, sizeof(Fvector4));
@@ -324,25 +347,25 @@ public:
 		r(&v, sizeof(Fcolor));
 	}
 
-	inline float		r_float_q16(float min, float max)
+	inline F32		r_float_q16(F32 min, F32 max)
 	{
-		U16	val = r_u16( );
-		float A = (float(val) * (max - min)) / 65535.f + min;		// floating-point-error possible
+		U16 val = r_u16( );
+		F32 A = (F32(val) * (max - min)) / 65535.0f + min;		// floating-point-error possible
 		VERIFY((A >= min - EPS_S) && (A <= max + EPS_S));
 		return A;
 	}
-	inline float		r_float_q8(float min, float max)
+	inline F32		r_float_q8(F32 min, F32 max)
 	{
 		U8 val = r_u8( );
-		float	A = (float(val) / 255.0001f) * (max - min) + min;	// floating-point-error possible
+		F32 A = (F32(val) / 255.0001f) * (max - min) + min;	// floating-point-error possible
 		VERIFY((A >= min) && (A <= max));
 		return	A;
 	}
-	inline float		r_angle16( )
+	inline F32		r_angle16( )
 	{
 		return r_float_q16(0, PI_MUL_2);
 	}
-	inline float		r_angle8( )
+	inline F32		r_angle8( )
 	{
 		return r_float_q8(0, PI_MUL_2);
 	}
@@ -352,18 +375,18 @@ public:
 	}
 	inline void			r_sdir(Fvector3& A)
 	{
-		U16	t = r_u16( );
-		float s = r_float( );
+		U16 t = r_u16( );
+		F32 s = r_float( );
 		pvDecompress(A, t);
 		A.mul(s);
 	}
 	// Set file pointer to start of chunk data (0 for root chunk)
-	inline	void		rewind( )
+	inline void		rewind( )
 	{
 		impl( ).seek(0);
 	}
 
-	inline	U32 		find_chunk(U32 ID, BOOL* bCompressed = 0)
+	inline U32 		find_chunk(U32 ID, BOOL* bCompressed = 0)
 	{
 		U32 dwSize;
 		U32 dwType;
@@ -380,23 +403,30 @@ public:
 				if (bCompressed) *bCompressed = dwType & CFS_CompressMark;
 				return dwSize;
 			}
-			else	impl( ).advance(dwSize);
+			else
+			{
+				impl( ).advance(dwSize);
+			}
 		}
+
 		return 0;
 	}
 
-	inline	BOOL		r_chunk(U32 ID, Pvoid dest)	// чтение XR Chunk'ов (4b-ID,4b-size,??b-data)
+	inline BOOL		r_chunk(U32 ID, Pvoid dest)	// чтение XR Chunk'ов (4b-ID,4b-size,??b-data)
 	{
-		U32	dwSize = find_chunk(ID);
+		U32 dwSize = find_chunk(ID);
 		if (dwSize != 0)
 		{
 			r(dest, dwSize);
 			return TRUE;
 		}
-		else return FALSE;
+		else
+		{
+			return FALSE;
+		}
 	}
 
-	inline	BOOL		r_chunk_safe(U32 ID, Pvoid dest, U32 dest_size)	// чтение XR Chunk'ов (4b-ID,4b-size,??b-data)
+	inline BOOL		r_chunk_safe(U32 ID, Pvoid dest, U32 dest_size)	// чтение XR Chunk'ов (4b-ID,4b-size,??b-data)
 	{
 		U32 dwSize = find_chunk(ID);
 		if (dwSize != 0)
@@ -405,7 +435,10 @@ public:
 			r(dest, dwSize);
 			return TRUE;
 		}
-		else return FALSE;
+		else
+		{
+			return FALSE;
+		}
 	}
 };
 
@@ -437,38 +470,41 @@ protected:
 		if (p % 16)
 		{
 			return ((p % 16) + 1) * 16 - p;
-		} return 0;
+		}
+		
+		return 0;
 	}
 
 	U32 			advance_term_string( );
 
 public:
-	inline int			elapsed( )	const
+	inline int			elapsed( ) const
 	{
 		return Size - Pos;
-	};
-	inline int			tell( )	const
+	}
+	inline int			tell( ) const
 	{
 		return Pos;
-	};
+	}
 	inline void			seek(int ptr)
 	{
-		Pos = ptr; VERIFY((Pos <= Size) && (Pos >= 0));
-	};
-	inline int			length( )	const
+		Pos = ptr;
+		VERIFY((Pos <= Size) && (Pos >= 0));
+	}
+	inline int			length( ) const
 	{
 		return Size;
-	};
+	}
 	inline Pvoid pointer( )	const
 	{
 		return &(data[Pos]);
-	};
+	}
 	inline void			advance(int cnt)
 	{
-		Pos += cnt; VERIFY((Pos <= Size) && (Pos >= 0));
-	};
+		Pos += cnt;
+		VERIFY((Pos <= Size) && (Pos >= 0));
+	}
 
-public:
 	void			r(Pvoid p, int cnt);
 
 	void			r_string(char* dest, U32 tgt_sz);
@@ -480,10 +516,8 @@ public:
 	void			r_stringZ(shared_str& dest);
 	void			r_stringZ(xr_string& dest);
 
-public:
 	void			close( );
 
-public:
 	// поиск XR Chunk'ов - возврат - размер или 0
 	IReader* open_chunk(U32 ID);
 

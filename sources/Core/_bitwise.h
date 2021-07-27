@@ -14,19 +14,19 @@
 #define fdRLE10	0x03ede5bdb     // 1/ln10
 
 // integer math on floats
-inline BOOL negative(const float& f)
+inline BOOL negative(const F32& f)
 {
 	return (*((unsigned*) (&f)) & fdSGN);
 }
-inline BOOL positive(const float& f)
+inline BOOL positive(const F32& f)
 {
 	return (*((unsigned*) (&f)) & fdSGN) == 0;
 }
-inline void set_negative(float& f)
+inline void set_negative(F32& f)
 {
 	(*(unsigned*) (&f)) |= fdSGN;
 }
-inline void set_positive(float& f)
+inline void set_positive(F32& f)
 {
 	(*(unsigned*) (&f)) &= ~fdSGN;
 }
@@ -35,33 +35,33 @@ inline void set_positive(float& f)
  * Here are a few nice tricks for 2's complement based machines
  * that I discovered a few months ago.
  */
-inline	int		btwLowestBitMask(int v)
+inline int		btwLowestBitMask(int v)
 {
 	return (v & -v);
 }
-inline	U32		btwLowestBitMask(U32 x)
+inline U32		btwLowestBitMask(U32 x)
 {
 	return x & ~(x - 1);
 }
 
 /* Ok, so now we are cooking on gass. Here we use this function for some */
 /* rather useful utility functions */
-inline	bool	btwIsPow2(int v)
+inline bool	btwIsPow2(int v)
 {
 	return (btwLowestBitMask(v) == v);
 }
-inline	bool	btwIsPow2(U32 v)
+inline bool	btwIsPow2(U32 v)
 {
 	return (btwLowestBitMask(v) == v);
 }
 
-inline	int		btwPow2_Ceil(int v)
+inline int		btwPow2_Ceil(int v)
 {
 	int i = btwLowestBitMask(v);
 	while (i < v) i <<= 1;
 	return i;
 }
-inline	U32		btwPow2_Ceil(U32 v)
+inline U32		btwPow2_Ceil(U32 v)
 {
 	U32 i = btwLowestBitMask(v);
 	while (i < v) i <<= 1;
@@ -70,7 +70,7 @@ inline	U32		btwPow2_Ceil(U32 v)
 
 // Couple more tricks 
 // Counting number of nonzero bits for 8bit number: 
-inline	U8		btwCount1(U8 v)
+inline U8		btwCount1(U8 v)
 {
 	v = (v & 0x55) + ((v >> 1) & 0x55);
 	v = (v & 0x33) + ((v >> 2) & 0x33);
@@ -113,7 +113,7 @@ __forceinline int iFloor(float x)
 /* intCeil() is a non-interesting variant, since effectively
    ceil(x) == -floor(-x)
 */
-__forceinline int iCeil(float x)
+__forceinline int iCeil(F32 x)
 {
 	int a = (*(const int*) (&x));
 	int exponent = (127 + 31) - ((a >> 23) & 0xFF);
@@ -133,38 +133,38 @@ __forceinline int iCeil(float x)
 }
 
 // Validity checks
-inline bool fis_gremlin(const float& f)
+inline bool fis_gremlin(const F32& f)
 {
 	U8		value = U8(((*(int*) &f & 0x7f800000) >> 23) - 0x20);
 	return	value > 0xc0;
 }
-inline bool fis_denormal(const float& f)
+inline bool fis_denormal(const F32& f)
 {
 	return !(*(int*) &f & 0x7f800000);
 }
 
 // Approximated calculations
-inline float apx_InvSqrt(const float& n)
+inline F32 apx_InvSqrt(const F32& n)
 {
 	long tmp = (long(0xBE800000) - *(long*) &n) >> 1;
-	float y = *(float*) &tmp;
+	F32 y = *(F32*) &tmp;
 	return y * (1.47f - 0.47f * n * y * y);
 }
 // Only for [0..1] (positive) range 
-inline float apx_asin(const float x)
+inline F32 apx_asin(const F32 x)
 {
-	const float c1 = 0.892399f;
-	const float c3 = 1.693204f;
-	const float c5 = -3.853735f;
-	const float c7 = 2.838933f;
+	const F32 c1 = 0.892399f;
+	const F32 c3 = 1.693204f;
+	const F32 c5 = -3.853735f;
+	const F32 c7 = 2.838933f;
 
-	const float x2 = x * x;
-	const float d = x * (c1 + x2 * (c3 + x2 * (c5 + x2 * c7)));
+	const F32 x2 = x * x;
+	const F32 d = x * (c1 + x2 * (c3 + x2 * (c5 + x2 * c7)));
 
 	return d;
 }
 // Only for [0..1] (positive) range 
-inline float apx_acos(const float x)
+inline F32 apx_acos(const F32 x)
 {
 	return PI_DIV_2 - apx_asin(x);
 }
