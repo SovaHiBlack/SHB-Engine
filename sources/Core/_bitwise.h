@@ -92,7 +92,7 @@ inline	u64	btwCount1(u64 v)
 	return btwCount1(U32(v & U32(-1))) + btwCount1(U32(v >> u64(32)));
 }
 
-__forceinline int iFloor(float x)
+__forceinline int iFloor(F32 x)
 {
 	int a = *(const int*) (&x);
 	int exponent = (127 + 31) - ((a >> 23) & 0xFF);

@@ -6,12 +6,12 @@ struct ENGINE_API SPPInfo
 {
 	struct SColor
 	{
-		float									r;
-		float									g;
-		float									b;
+		F32									r;
+		F32									g;
+		F32									b;
 							SColor				( )
 		{ }
-							SColor				(float _r, float _g, float _b) : r(_r), g(_g), b(_b)
+							SColor				(F32 _r, F32 _g, F32 _b) : r(_r), g(_g), b(_b)
 		{ }
 		inline				operator u32		( )
 		{
@@ -34,7 +34,7 @@ struct ENGINE_API SPPInfo
 			b -= ppi.b;
 			return *this;
 		}
-		inline SColor&		set					(float _r, float _g, float _b)
+		inline SColor&		set					(F32 _r, F32 _g, F32 _b)
 		{
 			r = _r;
 			g = _g;
@@ -42,17 +42,17 @@ struct ENGINE_API SPPInfo
 			return *this;
 		}
 	};
-	float										blur;
-	float										gray;
+	F32										blur;
+	F32										gray;
 	struct SDuality
 	{
-		float									h;
-		float									v;
+		F32									h;
+		F32									v;
 							SDuality			( )
 		{ }
-							SDuality			(float _h, float _v) : h(_h), v(_v)
+							SDuality			(F32 _h, F32 _v) : h(_h), v(_v)
 		{ }
-		inline SDuality&	set					(float _h, float _v)
+		inline SDuality&	set					(F32 _h, F32 _v)
 		{
 			h = _h;
 			v = _v;
@@ -61,14 +61,14 @@ struct ENGINE_API SPPInfo
 	}											duality;
 	struct SNoise
 	{
-		float									intensity;
-		float									grain;
-		float									fps;
+		F32									intensity;
+		F32									grain;
+		F32									fps;
 							SNoise				( )
 		{ }
-							SNoise				(float _i, float _g, float _f) : intensity(_i), grain(_g), fps(_f)
+							SNoise				(F32 _i, F32 _g, F32 _f) : intensity(_i), grain(_g), fps(_f)
 		{ }
-		inline SNoise&		set					(float _i, float _g, float _f)
+		inline SNoise&		set					(F32 _i, F32 _g, F32 _f)
 		{
 			intensity = _i;
 			grain = _g;
@@ -116,7 +116,7 @@ struct ENGINE_API SPPInfo
 		color_gray.set(0.333f, 0.333f, 0.333f);
 		color_add.set(0.0f, 0.0f, 0.0f);
 	}
-	SPPInfo&				lerp				(const SPPInfo& def, const SPPInfo& to, float factor);
+	SPPInfo&				lerp				(const SPPInfo& def, const SPPInfo& to, F32 factor);
 	void					validate			(const char* str);
 };
 
@@ -138,9 +138,9 @@ class ENGINE_API CCameraManager
 	EffectorCamVec								m_EffectorsCam_removed_deffered;
 	EffectorPPVec								m_EffectorsPP;
 
-	float										fFov;
-	float										fFar;
-	float										fAspect;
+	F32										fFov;
+	F32										fFar;
+	F32										fAspect;
 	bool										m_bAutoApply;
 	SPPInfo										pp_affected;
 	void					UpdateDeffered		( );
@@ -182,9 +182,9 @@ public:
 	{
 		M.set(vRight, vNormal, vDirection, vPosition);
 	}
-	void					Update				(const Fvector3& P, const Fvector3& D, const Fvector3& N, float fFOV_Dest, float fASPECT_Dest, float fFAR_Dest, u32 flags = 0);
+	void					Update				(const Fvector3& P, const Fvector3& D, const Fvector3& N, F32 fFOV_Dest, F32 fASPECT_Dest, F32 fFAR_Dest, u32 flags = 0);
 	void					Update				(const CCameraBase* C);
-	void					ApplyDevice			(float _viewport_near);
+	void					ApplyDevice			(F32 _viewport_near);
 	static void				ResetPP				( );
 
 							CCameraManager		(bool bApplyOnUpdate);
@@ -194,5 +194,5 @@ public:
 ENGINE_API extern SPPInfo						pp_identity;
 ENGINE_API extern SPPInfo						pp_zero;
 
-ENGINE_API extern float							psCamInert;
-ENGINE_API extern float							psCamSlideInert;
+ENGINE_API extern F32							psCamInert;
+ENGINE_API extern F32							psCamSlideInert;

@@ -76,23 +76,23 @@ template <class T>	inline T		_sqr(T a)
 }
 
 // float
-inline float	_abs(float x)
+inline F32	_abs(F32 x)
 {
 	return fabsf(x);
 }
-inline float	_sqrt(float x)
+inline F32	_sqrt(F32 x)
 {
 	return sqrtf(x);
 }
-inline float	_sin(float x)
+inline F32	_sin(F32 x)
 {
 	return sinf(x);
 }
-inline float	_cos(float x)
+inline F32	_cos(F32 x)
 {
 	return cosf(x);
 }
-inline BOOL		_valid(const float x)
+inline BOOL		_valid(const F32 x)
 {
 	// check for: Signaling NaN, Quiet NaN, Negative infinity ( –INF), Positive infinity (+INF), Negative denormalized, Positive denormalized
 	int			cls = _fpclass(F64(x));

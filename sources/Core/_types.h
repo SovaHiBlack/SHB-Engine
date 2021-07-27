@@ -39,14 +39,14 @@ using Pcvoid = const void*;
 #define int_min			type_min(int)
 #define int_zero		type_zero(int)
 
-#define flt_max			type_max(float)
-#define flt_min			type_min(float)
+#define flt_max			type_max(F32)
+#define flt_min			type_min(F32)
 
 #define FLT_MAX			flt_max
 #define FLT_MIN			flt_min
 
-#define flt_zero		type_zero(float)
-#define flt_eps			type_epsilon(float)
+#define flt_zero		type_zero(F32)
+#define flt_eps			type_epsilon(F32)
 
 #define dbl_max			type_max(F64)
 #define dbl_min			type_min(F64)

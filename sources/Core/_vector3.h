@@ -30,7 +30,7 @@ public:
 		z = _z;
 		return *this;
 	}
-	__forceinline SelfRef	set(const _vector3<float>& v)
+	__forceinline SelfRef	set(const _vector3<F32>& v)
 	{
 		x = TYPE(v.x);
 		y = TYPE(v.y);
@@ -44,7 +44,7 @@ public:
 		z = TYPE(v.z);
 		return *this;
 	}
-	__forceinline SelfRef	set(float* p)
+	__forceinline SelfRef	set(F32* p)
 	{
 		x = p[0];
 		y = p[1];
@@ -442,7 +442,7 @@ public:
 		y = r * sa;
 		return *this;
 	}
-	inline SelfRef			random_dir(SelfCRef ConeAxis, float ConeAngle, CRandom& R = ::Random)
+	inline SelfRef			random_dir(SelfCRef ConeAxis, F32 ConeAngle, CRandom& R = ::Random)
 	{
 		Self rnd;
 		rnd.random_dir(R);
@@ -551,12 +551,12 @@ public:
 	}
 	__forceinline void		getHP(TYPE& h, TYPE& p) const
 	{
-		float hyp;
+		F32 hyp;
 
 		if (fis_zero(x) && fis_zero(z))
 		{
 			h = 0.0f;
-			if (!fis_zero(float(y)))
+			if (!fis_zero(F32(y)))
 			{
 				p = (y > 0.0f) ? PI_DIV_2 : -PI_DIV_2;
 			}
@@ -581,7 +581,7 @@ public:
 			}
 
 			hyp = _sqrt(x * x + z * z);
-			if (fis_zero(float(hyp)))
+			if (fis_zero(F32(hyp)))
 			{
 				p = (y > 0.0f) ? PI_DIV_2 : -PI_DIV_2;
 			}
@@ -591,7 +591,7 @@ public:
 			}
 		}
 	}
-	__forceinline float		getH( ) const
+	__forceinline F32		getH( ) const
 	{
 		if (fis_zero(x) && fis_zero(z))
 		{
@@ -613,11 +613,11 @@ public:
 			}
 		}
 	}
-	__forceinline float		getP( ) const
+	__forceinline F32		getP( ) const
 	{
 		if (fis_zero(x) && fis_zero(z))
 		{
-			if (!fis_zero(float(y)))
+			if (!fis_zero(F32(y)))
 			{
 				return (y > 0.0f) ? PI_DIV_2 : -PI_DIV_2;
 			}
@@ -628,8 +628,8 @@ public:
 		}
 		else
 		{
-			float hyp = _sqrt(x * x + z * z);
-			if (fis_zero(float(hyp)))
+			F32 hyp = _sqrt(x * x + z * z);
+			if (fis_zero(F32(hyp)))
 			{
 				return (y > 0.0f) ? PI_DIV_2 : -PI_DIV_2;
 			}
@@ -704,7 +704,7 @@ public:
 };
 
 using Ivector3 = _vector3<int>;
-using Fvector3 = _vector3<float>;
+using Fvector3 = _vector3<F32>;
 
 template <class T>
 BOOL						_valid(const _vector3<T>& v)
@@ -719,7 +719,7 @@ __forceinline F64	rsqrt(F64 v)
 {
 	return 1.0 / _sqrt(v);
 }
-inline BOOL	exact_normalize(float* a)
+inline BOOL	exact_normalize(F32* a)
 {
 	F64	sqr_magnitude = a[0] * a[0] + a[1] * a[1] + a[2] * a[2];
 	F64	epsilon = 1.192092896e-05F;

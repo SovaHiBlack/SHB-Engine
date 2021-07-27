@@ -17,8 +17,8 @@
 #include "gamefont.h"
 #include "render.h"
 
-float	psCamInert		= 0.7f;
-float	psCamSlideInert	= 0.25f;
+F32	psCamInert		= 0.7f;
+F32	psCamSlideInert	= 0.25f;
 
 SPPInfo		pp_identity;
 SPPInfo		pp_zero;
@@ -58,7 +58,7 @@ void SPPInfo::validate(const char* str)
 	VERIFY2(_valid(color_add.b),str);
 }
 
-SPPInfo& SPPInfo::lerp(const SPPInfo& def, const SPPInfo& to, float factor)
+SPPInfo& SPPInfo::lerp(const SPPInfo& def, const SPPInfo& to, F32 factor)
 {
 	VERIFY(_valid(factor));
 	SPPInfo& pp = *this;
@@ -202,7 +202,8 @@ void CCameraManager::Update(const CCameraBase* C)
 {	
 	Update(C->vPosition,C->vDirection,C->vNormal, C->f_fov, C->f_aspect, g_pGamePersistent->Environment().CurrentEnv.far_plane, C->m_Flags.flags); 
 }
-void CCameraManager::Update(const Fvector3& P, const Fvector3& D, const Fvector3& N, float fFOV_Dest, float fASPECT_Dest, float fFAR_Dest, u32 flags)
+
+void CCameraManager::Update(const Fvector3& P, const Fvector3& D, const Fvector3& N, float fFOV_Dest, F32 fASPECT_Dest, F32 fFAR_Dest, u32 flags)
 {
 
 #ifdef DEBUG
@@ -229,9 +230,9 @@ void CCameraManager::Update(const Fvector3& P, const Fvector3& D, const Fvector3
 	vRight.crossproduct		(vNormal,vDirection);
 	vNormal.crossproduct	(vDirection,vRight);
 
-	float aspect				= Device.fHeight_2/Device.fWidth_2;
-	float src					= 10*Device.fTimeDelta;	clamp(src,0.f,1.f);
-	float dst					= 1-src;
+	F32 aspect				= Device.fHeight_2/Device.fWidth_2;
+	F32 src					= 10*Device.fTimeDelta;	clamp(src,0.f,1.f);
+	F32 dst					= 1-src;
 	fFov						= fFov*dst		+ fFOV_Dest*src;
 	fFar						= fFar*dst		+ fFAR_Dest*src;
 	fAspect						= fAspect*dst	+ (fASPECT_Dest*aspect)*src;
@@ -298,7 +299,7 @@ void CCameraManager::Update(const Fvector3& P, const Fvector3& D, const Fvector3
 	UpdateDeffered			();
 }
 
-void CCameraManager::ApplyDevice (float _viewport_near)
+void CCameraManager::ApplyDevice (F32 _viewport_near)
 {
 	// Device params
 	Device.mView.build_camera_dir(vPosition, vDirection, vNormal);

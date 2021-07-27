@@ -218,7 +218,7 @@ public:
 };
 
 using Ivector4 = _vector4<int>;
-using Fvector4 = _vector4<float>;
+using Fvector4 = _vector4<F32>;
 
 template <class T>
 BOOL					_valid(const _vector4<T>& v)

@@ -17,9 +17,9 @@ namespace CPU
 	CORE_API extern u64				clk_per_milisec;
 	CORE_API extern u64				clk_per_microsec;
 	CORE_API extern u64				clk_overhead;
-	CORE_API extern float			clk_to_seconds;
-	CORE_API extern float			clk_to_milisec;
-	CORE_API extern float			clk_to_microsec;
+	CORE_API extern F32				clk_to_seconds;
+	CORE_API extern F32				clk_to_milisec;
+	CORE_API extern F32				clk_to_microsec;
 
 	CORE_API extern u64				qpc_freq;
 	CORE_API extern u64				qpc_overhead;

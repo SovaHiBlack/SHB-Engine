@@ -23,8 +23,8 @@ enum EJointType
 struct SJointLimit
 {
 	Fvector2		limit;
-	float 			spring_factor;
-	float 			damping_factor;
+	F32 			spring_factor;
+	F32 			damping_factor;
 	SJointLimit		(){Reset();}
 	void 			Reset()
 	{
@@ -80,16 +80,16 @@ struct SJointIKData
 	// IK
 	EJointType		type;
 	SJointLimit		limits	[3];// by [axis XYZ on joint] and[Z-wheel,X-steer on wheel]
-	float			spring_factor;
-	float			damping_factor;
+	F32			spring_factor;
+	F32			damping_factor;
 	enum{
 		flBreakable	= (1<<0),
 	};
 	Flags32			ik_flags;
-	float			break_force;	// [0..+INF]
-	float			break_torque;	// [0..+INF]
+	F32			break_force;	// [0..+INF]
+	F32			break_torque;	// [0..+INF]
 
-	float			friction;
+	F32			friction;
 				
 	SJointIKData	(){ Reset();}
 	void			Reset	()
@@ -156,11 +156,11 @@ class CBone
 	shared_str			wmap;
 	Fvector3			rest_offset;
 	Fvector3			rest_rotate;    // XYZ format (Game format)
-	float			    rest_length;
+	F32			    rest_length;
 
 	Fvector3			mot_offset;
 	Fvector3			mot_rotate;		// XYZ format (Game format)
-	float			    mot_length;
+	F32			    mot_length;
 
 	Fmatrix			    mot_transform;
 
@@ -170,11 +170,12 @@ class CBone
 	Fmatrix			    last_transform;
 
 	Fmatrix				render_transform;
+
 public:
 	int				    SelfID;
 	CBone*			    parent;
 	BoneVec				children;
-public:
+
 	// editor part
 	Flags8			    flags;    
 	enum{
@@ -184,16 +185,16 @@ public:
 	shared_str			   game_mtl;
 	SBoneShape		    shape;
 
-	float			    mass;
+	F32			    mass;
 	Fvector3			    center_of_mass;
-public:
+
 						CBone			();
 	virtual			    ~CBone			();
 
 	void			    SetName			(const char* p){name		= p; xr_strlwr(name);		}
 	void			    SetParentName	(const char* p){parent_name	= p; xr_strlwr(parent_name);}
 	void			    SetWMap			(const char* p){wmap		= p;}
-	void			    SetRestParams	(float length, const Fvector3& offset, const Fvector3& rotate){rest_offset.set(offset);rest_rotate.set(rotate);rest_length=length;};
+	void			    SetRestParams	(F32 length, const Fvector3& offset, const Fvector3& rotate){rest_offset.set(offset);rest_rotate.set(rotate);rest_length=length;};
 
 	shared_str		    Name			(){return name;}
 	shared_str		    ParentName		(){return parent_name;}
@@ -204,7 +205,7 @@ public:
 	// transformation
 	const Fvector3&      _Offset			(){return mot_offset;}
 	const Fvector3&      _Rotate			(){return mot_rotate;}
-	float			    _Length			(){return mot_length;}
+	F32			    _Length			(){return mot_length;}
 	inline Fmatrix&		    _RTransform		(){return rest_transform;}
 	inline Fmatrix&		    _RITransform	(){return rest_i_transform;}
 	inline Fmatrix&		    _MTransform		(){return mot_transform;}

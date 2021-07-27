@@ -109,7 +109,7 @@ public:
 		return m_time_factor;
 	}
 
-	inline void			time_factor(const float& time_factor)
+	inline void			time_factor(const F32& time_factor)
 	{
 		u64 current = inherited::GetElapsed_ticks( );
 		m_ticks = GetElapsed_ticks(current);

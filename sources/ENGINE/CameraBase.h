@@ -15,9 +15,9 @@ public:
 	BOOL							bClampYaw;
 	BOOL							bClampPitch;
 	BOOL							bClampRoll;
-	float							yaw;
-	float							pitch;
-	float							roll;
+	F32							yaw;
+	F32							pitch;
+	F32							roll;
 
 	enum
 	{
@@ -36,8 +36,8 @@ public:
 	Fvector3						vPosition;
 	Fvector3						vDirection;
 	Fvector3						vNormal;
-	float							f_fov;
-	float							f_aspect;
+	F32							f_fov;
+	F32							f_aspect;
 
 	int								tag;
 
@@ -53,7 +53,7 @@ public:
 	{ }
 	virtual void	OnDeactivate	( )
 	{ }
-	virtual void	Move			(int cmd, float val = 0.0f, float factor = 1.0f)
+	virtual void	Move			(int cmd, F32 val = 0.0f, F32 factor = 1.0f)
 	{ }
 	virtual void	Update			(Fvector3& point, Fvector3& noise_angle)
 	{ }
@@ -69,18 +69,18 @@ public:
 		vDirection.set(D);
 		vNormal.set(N);
 	}
-	virtual void	Set				(float Y, float P, float R)
+	virtual void	Set				(F32 Y, F32 P, F32 R)
 	{
 		yaw = Y;
 		pitch = P;
 		roll = R;
 	}
 
-	virtual float	getWorldYaw		( )
+	virtual F32	getWorldYaw		( )
 	{
 		return 0.0f;
 	}
-	virtual float	getWorldPitch	( )
+	virtual F32	getWorldPitch	( )
 	{
 		return 0.0f;
 	}

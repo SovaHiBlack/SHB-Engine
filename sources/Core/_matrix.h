@@ -999,7 +999,7 @@ public:
 	}
 };
 
-using Fmatrix = _matrix<float>;
+using Fmatrix = _matrix<F32>;
 using Dmatrix = _matrix<F64>;
 
 template <class T>

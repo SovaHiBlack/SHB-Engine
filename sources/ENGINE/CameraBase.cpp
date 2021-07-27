@@ -48,7 +48,7 @@ void CCameraBase::Load(const char* section)
 	}
 }
 
-inline float AClamp(Fvector2& l, float v)
+inline F32 AClamp(Fvector2& l, F32 v)
 {
 	return (2 * v - l[0] - l[1]) / (l[1] - l[0]);
 }

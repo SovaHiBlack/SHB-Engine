@@ -12,7 +12,7 @@ public:
 	TYPE										x;
 	TYPE										y;
 
-	inline SelfRef		set(float _u, float _v)
+	inline SelfRef		set(F32 _u, F32 _v)
 	{
 		x = TYPE(_u);
 		y = TYPE(_v);
@@ -84,7 +84,7 @@ public:
 		y = p1.y - p2.y;
 		return *this;
 	}
-	inline SelfRef		sub(SelfCRef p, float d)
+	inline SelfRef		sub(SelfCRef p, F32 d)
 	{
 		x = p.x - d;
 		y = p.y - d;
@@ -108,7 +108,7 @@ public:
 		y = p1.y + p2.y;
 		return *this;
 	}
-	inline SelfRef		add(SelfCRef p, float d)
+	inline SelfRef		add(SelfCRef p, F32 d)
 	{
 		x = p.x + d;
 		y = p.y + d;
@@ -134,7 +134,7 @@ public:
 	}
 	inline SelfRef		rot90( )
 	{
-		float t = -x;
+		F32 t = -x;
 		x = y;
 		y = t;
 		return *this;
@@ -155,14 +155,14 @@ public:
 	}
 	inline SelfRef		norm( )
 	{
-		float m = _sqrt(x * x + y * y);
+		F32 m = _sqrt(x * x + y * y);
 		x /= m;
 		y /= m;
 		return *this;
 	}
 	inline SelfRef		norm_safe( )
 	{
-		float m = _sqrt(x * x + y * y);
+		F32 m = _sqrt(x * x + y * y);
 		if (m)
 		{
 			x /= m;
@@ -204,7 +204,7 @@ public:
 		return _abs(x - p.x) < eu && _abs(y - p.y) < ev;
 	}
 
-	inline bool			similar(SelfCRef p, float E = EPS_L) const
+	inline bool			similar(SelfCRef p, F32 E = EPS_L) const
 	{
 		return _abs(x - p.x) < E && _abs(y - p.y) < E;
 	}
@@ -226,7 +226,7 @@ public:
 
 	TYPE& operator []				(int i) const
 	{
-		// assert:  0 <= i < 2; x and y are packed into 2*sizeof(float) bytes
+		// assert:  0 <= i < 2; x and y are packed into 2*sizeof(F32) bytes
 		return (TYPE&) *(&x + i);
 	}
 
@@ -240,14 +240,14 @@ public:
 	}
 	inline SelfRef		normalize(SelfCRef v)
 	{
-		float m = _sqrt(v.x * v.x + v.y * v.y);
+		F32 m = _sqrt(v.x * v.x + v.y * v.y);
 		x = v.x / m;
 		y = v.y / m;
 		return *this;
 	}
 	inline SelfRef		normalize_safe(SelfCRef v)
 	{
-		float m = _sqrt(v.x * v.x + v.y * v.y);
+		F32 m = _sqrt(v.x * v.x + v.y * v.y);
 		if (m)
 		{
 			x = v.x / m;
@@ -256,15 +256,15 @@ public:
 
 		return *this;
 	}
-	inline float		dotproduct(SelfCRef p) const
+	inline F32		dotproduct(SelfCRef p) const
 	{
 		return dot(p);
 	}
-	inline float		crossproduct(SelfCRef p) const
+	inline F32		crossproduct(SelfCRef p) const
 	{
 		return y * p.x - x * p.y;
 	}
-	inline float		getH( ) const
+	inline F32		getH( ) const
 	{
 		if (fis_zero(y))
 		{
@@ -292,7 +292,7 @@ public:
 };
 
 using Ivector2 = _vector2<int>;
-using Fvector2 = _vector2<float>;
+using Fvector2 = _vector2<F32>;
 
 template <class T>
 BOOL					_valid(const _vector2<T>& v)
