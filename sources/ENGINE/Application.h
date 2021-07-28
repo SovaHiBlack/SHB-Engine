@@ -22,9 +22,8 @@ private:
 	ref_shader						sh_progress;
 	int								load_stage;
 
-	u32								ll_dwReference;
+	U32								ll_dwReference;
 
-private:
 	EVENT							eQuit;
 	EVENT							eStart;
 	EVENT							eStartLoad;
@@ -37,10 +36,10 @@ public:
 
 	// Levels
 	xr_vector<SLevelInfo>			Levels;
-	u32								Level_Current;
+	U32								Level_Current;
 	void							Level_Scan					( );
 	int								Level_ID					(const char* name);
-	void							Level_Set					(u32 ID);
+	void							Level_Set					(U32 ID);
 
 	// Loading
 	void							LoadBegin					( );
@@ -48,7 +47,7 @@ public:
 	void							LoadTitleInt				(const char* str);
 	void							LoadDraw					( );
 
-	virtual void					OnEvent						(EVENT E, u64 P1, u64 P2);
+	virtual void					OnEvent						(EVENT E, U64 P1, U64 P2);
 
 	// Other
 									CApplication				( );

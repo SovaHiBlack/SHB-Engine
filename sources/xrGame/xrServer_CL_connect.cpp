@@ -165,8 +165,8 @@ void CServer::OnBuildVersionRespond(IClient* CL, CNetPacket& P)
 {
 	U16 Type;
 	P.r_begin(Type);
-	u64 _our = FS.auth_get( );
-	u64 _him = P.r_u64( );
+	U64 _our = FS.auth_get( );
+	U64 _him = P.r_u64( );
 
 #ifdef DEBUG
 	Msg("_our = %d", _our);

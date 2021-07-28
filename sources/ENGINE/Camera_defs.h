@@ -7,7 +7,7 @@ enum ECameraStyle
 	csLookAt,
 	csMax,
 	csFixed,
-	cs_forcedword = u32(-1)
+	cs_forcedword = U32(-1)
 };
 
 enum ECameraEffectorType

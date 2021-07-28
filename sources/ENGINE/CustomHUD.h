@@ -34,7 +34,7 @@ public:
 
 	virtual void			OnFrame					( )
 	{ }
-	virtual void			OnEvent					(EVENT E, u64 P1, u64 P2)
+	virtual void			OnEvent					(EVENT E, U64 P1, U64 P2)
 	{ }
 
 	virtual inline CUI*		GetUI					( ) = 0;

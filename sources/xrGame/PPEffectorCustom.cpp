@@ -4,7 +4,7 @@
 #include "Actor.h"
 #include "..\ENGINE\CameraManager.h"
 
-#define TRANSLATE_TYPE(val) EEffectorPostProcessType(val ? u32(u64(typeid(this).name())) : u32(u64(this) & u32(-1)))
+#define TRANSLATE_TYPE(val) EEffectorPostProcessType(val ? u32(U64(typeid(this).name())) : u32(U64(this) & u32(-1)))
 
 #pragma warning(push)
 #pragma warning(disable:4355) // 'this' : used in base member initializer list

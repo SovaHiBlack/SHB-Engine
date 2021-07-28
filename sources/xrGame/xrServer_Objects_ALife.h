@@ -24,7 +24,7 @@ class CALifeSmartTerrainTask;
 SERVER_ENTITY_DECLARE_BEGIN(CSE_ALifeSchedulable, IPureSchedulableObject)
 CSE_ALifeItemWeapon* m_tpCurrentBestWeapon;
 CSE_ALifeDynamicObject* m_tpBestDetector;
-u64								m_schedule_counter;
+U64								m_schedule_counter;
 
 CSE_ALifeSchedulable(const char* caSection);
 virtual							~CSE_ALifeSchedulable( );
@@ -278,7 +278,7 @@ public:
 
 	SERVER_ENTITY_DECLARE_BEGIN(CSE_ALifeDynamicObject, CSE_ALifeObject)
 		ALife::_TIME_ID					m_tTimeID;
-	u64								m_switch_counter;
+	U64								m_switch_counter;
 
 	CSE_ALifeDynamicObject(const char* caSection);
 	virtual							~CSE_ALifeDynamicObject( );

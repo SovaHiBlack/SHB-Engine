@@ -10,8 +10,8 @@ CORE_API void VerifyPath(Pcstr path);
 CORE_API	extern	U32		g_file_mapped_memory;
 CORE_API	extern	U32		g_file_mapped_count;
 CORE_API			void	dump_file_mappings( );
-extern	void	register_file_mapping(Pvoid address, const U32& size, Pcstr file_name);
-extern	void	unregister_file_mapping(Pvoid address, const U32& size);
+extern	void	register_file_mapping(void* address, const U32& size, Pcstr file_name);
+extern	void	unregister_file_mapping(void* address, const U32& size);
 #endif // DEBUG
 
 //------------------------------------------------------------------------------------
@@ -39,9 +39,9 @@ public:
 	virtual void	w(Pcvoid ptr, U32 count) = 0;
 
 	// generalized writing functions
-	inline void			w_u64(u64 d)
+	inline void			w_u64(U64 d)
 	{
-		w(&d, sizeof(u64));
+		w(&d, sizeof(U64));
 	}
 	inline void			w_u32(U32 d)
 	{
@@ -55,9 +55,9 @@ public:
 	{
 		w(&d, sizeof(U8));
 	}
-	inline void			w_s64(s64 d)
+	inline void			w_s64(S64 d)
 	{
-		w(&d, sizeof(s64));
+		w(&d, sizeof(S64));
 	}
 	inline void			w_s32(int d)
 	{
@@ -159,8 +159,8 @@ public:
 	void			open_chunk(U32 type);
 	void			close_chunk( );
 	U32				chunk_size( );					// returns size of currently opened chunk, 0 otherwise
-	void			w_compressed(Pvoid ptr, U32 count);
-	void			w_chunk(U32 type, Pvoid data, U32 size);
+	void			w_compressed(void* ptr, U32 count);
+	void			w_chunk(U32 type, void* data, U32 size);
 	virtual bool	valid( )
 	{
 		return true;
@@ -247,7 +247,7 @@ public:
 		return impl( ).elapsed( ) <= 0;
 	};
 
-	inline void			r(Pvoid p, int cnt)
+	inline void			r(void* p, int cnt)
 	{
 		impl( ).r(p, cnt);
 	}
@@ -264,9 +264,9 @@ public:
 		r(&tmp, 4 * sizeof(F32));
 		return tmp;
 	}
-	inline u64			r_u64( )
+	inline U64			r_u64( )
 	{
-		u64 tmp;
+		U64 tmp;
 		r(&tmp, sizeof(tmp));
 		return tmp;
 	}
@@ -288,9 +288,9 @@ public:
 		r(&tmp, sizeof(tmp));
 		return tmp;
 	}
-	inline s64			r_s64( )
+	inline S64			r_s64( )
 	{
-		s64 tmp;
+		S64 tmp;
 		r(&tmp, sizeof(tmp));
 		return tmp;
 	}
@@ -412,7 +412,7 @@ public:
 		return 0;
 	}
 
-	inline BOOL		r_chunk(U32 ID, Pvoid dest)	// чтение XR Chunk'ов (4b-ID,4b-size,??b-data)
+	inline BOOL		r_chunk(U32 ID, void* dest)	// чтение XR Chunk'ов (4b-ID,4b-size,??b-data)
 	{
 		U32 dwSize = find_chunk(ID);
 		if (dwSize != 0)
@@ -426,7 +426,7 @@ public:
 		}
 	}
 
-	inline BOOL		r_chunk_safe(U32 ID, Pvoid dest, U32 dest_size)	// чтение XR Chunk'ов (4b-ID,4b-size,??b-data)
+	inline BOOL		r_chunk_safe(U32 ID, void* dest, U32 dest_size)	// чтение XR Chunk'ов (4b-ID,4b-size,??b-data)
 	{
 		U32 dwSize = find_chunk(ID);
 		if (dwSize != 0)
@@ -456,7 +456,7 @@ public:
 		Pos = 0;
 	}
 
-	inline				IReader(Pvoid _data, int _size, int _iterpos = 0)
+	inline				IReader(void* _data, int _size, int _iterpos = 0)
 	{
 		data = (char*) _data;
 		Size = _size;
@@ -495,7 +495,7 @@ public:
 	{
 		return Size;
 	}
-	inline Pvoid pointer( )	const
+	inline void* pointer( ) const
 	{
 		return &(data[Pos]);
 	}
@@ -505,7 +505,7 @@ public:
 		VERIFY((Pos <= Size) && (Pos >= 0));
 	}
 
-	void			r(Pvoid p, int cnt);
+	void			r(void* p, int cnt);
 
 	void			r_string(char* dest, U32 tgt_sz);
 	void			r_string(xr_string& dest);
@@ -528,8 +528,8 @@ public:
 class CORE_API CVirtualFileRW : public IReader
 {
 private:
-	Pvoid hSrcFile;
-	Pvoid hSrcMap;
+	void* hSrcFile;
+	void* hSrcMap;
 
 public:
 	CVirtualFileRW(Pcstr cFileName);

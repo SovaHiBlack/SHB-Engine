@@ -21,7 +21,7 @@ int max_load_stage				= 0;
 
 // computing build id
 CORE_API const char*			build_date;
-CORE_API u32					build_id;
+CORE_API U32					build_id;
 
 #define NO_MULTI_INSTANCES
 
@@ -79,7 +79,7 @@ struct _SoundProcessor : public pureFrame
 {
 	virtual void OnFrame( )
 	{
-//		Msg("------------- sound: %d [%3.2f,%3.2f,%3.2f]",u32(Device.dwFrame),VPUSH(Device.vCameraPosition));
+//		Msg("------------- sound: %d [%3.2f,%3.2f,%3.2f]",U32(Device.dwFrame),VPUSH(Device.vCameraPosition));
 		Device.Statistic->Sound.Begin( );
 		::Sound->update(Device.vCameraPosition, Device.vCameraDirection, Device.vCameraTop);
 		Device.Statistic->Sound.End( );
@@ -152,7 +152,7 @@ void destroyInput( )
 
 void InitSound( )
 {
-	CSound_manager_interface::_create(u64(Device.m_hWnd));
+	CSound_manager_interface::_create(U64(Device.m_hWnd));
 }
 
 void destroySound( )
@@ -446,7 +446,7 @@ struct damn_keys_filter
 #undef dwFilterKeysStructSize
 #undef dwToggleKeysStructSize
 
-typedef void DUMMY_STUFF(const void*, const u32&, void*);
+typedef void DUMMY_STUFF(const void*, const U32&, void*);
 CORE_API DUMMY_STUFF* g_temporary_stuff;
 
 #define TRIVIAL_ENCRYPTOR_DECODER
@@ -631,7 +631,7 @@ const char* _GetFontTexName(const char* section)
 	int idx = def_idx;
 
 #if 0
-	u32 w = Device.dwWidth;
+	U32 w = Device.dwWidth;
 
 	if (w <= 800)
 	{
@@ -646,7 +646,7 @@ const char* _GetFontTexName(const char* section)
 		idx = 2;
 	}
 #else
-	u32 h = Device.dwHeight;
+	U32 h = Device.dwHeight;
 
 	if (h <= 600)
 	{
@@ -675,7 +675,7 @@ const char* _GetFontTexName(const char* section)
 	return pSettings->r_string(section, tex_names[def_idx]);
 }
 
-void _InitializeFont(CGameFont*& F, const char* section, u32 flags)
+void _InitializeFont(CGameFont*& F, const char* section, U32 flags)
 {
 	const char* font_tex_name = _GetFontTexName(section);
 	R_ASSERT(font_tex_name);
@@ -765,13 +765,13 @@ CApplication::~CApplication( )
 
 extern CRenderDevice Device;
 
-void CApplication::OnEvent(EVENT E, u64 P1, u64 P2)
+void CApplication::OnEvent(EVENT E, U64 P1, U64 P2)
 {
 	if (E == eQuit)
 	{
 		PostQuitMessage(0);
 
-		for (u32 i = 0; i < Levels.size( ); i++)
+		for (U32 i = 0; i < Levels.size( ); i++)
 		{
 			xr_free(Levels[i].folder);
 			xr_free(Levels[i].name);
@@ -862,7 +862,7 @@ void CApplication::destroy_loading_shaders( )
 //.	::Sound->mute(false);
 }
 
-u32 calc_progress_color(u32, u32, int, int);
+U32 calc_progress_color(U32, U32, int, int);
 
 void CApplication::LoadDraw( )
 {
@@ -945,7 +945,7 @@ void CApplication::Level_Scan( )
 {
 	xr_vector<char*>* folder = FS.file_list_open("$game_levels$", FS_ListFolders | FS_RootOnly);
 	R_ASSERT(folder && folder->size( ));
-	for (u32 i = 0; i < folder->size( ); i++)
+	for (U32 i = 0; i < folder->size( ); i++)
 	{
 		Level_Append((*folder)[i]);
 	}
@@ -957,7 +957,7 @@ void CApplication::Level_Scan( )
 	if (folder)
 	{
 		string_path tmp_path;
-		for (u32 i = 0; i < folder->size( ); i++)
+		for (U32 i = 0; i < folder->size( ); i++)
 		{
 			strconcat(sizeof(tmp_path), tmp_path, "$debug$\\", (*folder)[i]);
 			Level_Append(tmp_path);
@@ -969,7 +969,7 @@ void CApplication::Level_Scan( )
 
 }
 
-void CApplication::Level_Set(u32 ID)
+void CApplication::Level_Set(U32 ID)
 {
 	if (ID >= Levels.size( ))
 	{
@@ -997,7 +997,7 @@ int CApplication::Level_ID(const char* name)
 {
 	char buffer[256];
 	strconcat(sizeof(buffer), buffer, name, "\\");
-	for (u32 I = 0; I < Levels.size( ); I++)
+	for (U32 I = 0; I < Levels.size( ); I++)
 	{
 		if (0 == stricmp(buffer, Levels[I].folder))
 		{
@@ -1058,10 +1058,10 @@ void CApplication::load_draw_internal( )
 	}
 
 	// Draw logo
-	u32 Offset;
-	u32 C = 0xffffffff;
-	u32 _w = Device.dwWidth;
-	u32 _h = Device.dwHeight;
+	U32 Offset;
+	U32 C = 0xffffffff;
+	U32 _w = Device.dwWidth;
+	U32 _h = Device.dwHeight;
 	FVF::TL* pv = nullptr;
 
 	//progress
@@ -1123,14 +1123,14 @@ void CApplication::load_draw_internal( )
 	back_text_coords.rb.x /= tsz.x;
 	back_text_coords.rb.y /= tsz.y;
 
-	u32 v_cnt = 40;
+	U32 v_cnt = 40;
 	pv = (FVF::TL*) RCache.Vertex.Lock(2 * (v_cnt + 1), ll_hGeom2.stride( ), Offset);
 	FVF::TL* _pv = pv;
 	F32 pos_delta = back_coords.width( ) / v_cnt;
 	F32 tc_delta = back_text_coords.width( ) / v_cnt;
-	u32 clr = C;
+	U32 clr = C;
 
-	for (u32 idx = 0; idx < v_cnt + 1; ++idx)
+	for (U32 idx = 0; idx < v_cnt + 1; ++idx)
 	{
 		clr = calc_progress_color(idx, v_cnt, load_stage, max_load_stage);
 		pv->set(back_coords.lt.x + pos_delta * idx + offs, back_coords.rb.y + offs, 0 + EPS_S, 1, clr, back_text_coords.lt.x + tc_delta * idx, back_text_coords.rb.y);
@@ -1139,7 +1139,7 @@ void CApplication::load_draw_internal( )
 		pv++;
 	}
 
-	VERIFY(u32(pv - _pv) == 2 * (v_cnt + 1));
+	VERIFY(U32(pv - _pv) == 2 * (v_cnt + 1));
 	RCache.Vertex.Unlock(2 * (v_cnt + 1), ll_hGeom2.stride( ));
 
 	RCache.set_Geometry(ll_hGeom2);
@@ -1180,7 +1180,7 @@ void CApplication::load_draw_internal( )
 	}
 }
 
-u32 calc_progress_color(u32 idx, u32 total, int stage, int max_stage)
+U32 calc_progress_color(U32 idx, U32 total, int stage, int max_stage)
 {
 	if (idx > (total / 2))
 	{

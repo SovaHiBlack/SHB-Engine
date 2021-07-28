@@ -11,7 +11,7 @@ public:
 	u32					dwHeight;
 	D3DFORMAT			fmt;
 
-	u64					_order;
+	U64					_order;
 
 	CRT					();
 	~CRT				();
@@ -30,7 +30,8 @@ struct ENGINE_API		resptrcode_crt	: public resptr_base<CRT>
 typedef	resptr_core<CRT,resptrcode_crt>		ref_rt;
 
 //////////////////////////////////////////////////////////////////////////
-class	ENGINE_API	CRTC	:	public xr_resource_named	{
+class	ENGINE_API	CRTC	:	public xr_resource_named
+{
 public:
 	IDirect3DCubeTexture9*	pSurface;
 	IDirect3DSurface9*		pRT[6];
@@ -39,7 +40,7 @@ public:
 	u32						dwSize;
 	D3DFORMAT				fmt;
 
-	u64						_order;
+	U64						_order;
 
 	CRTC					();
 	~CRTC					();

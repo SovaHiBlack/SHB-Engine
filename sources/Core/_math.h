@@ -13,23 +13,23 @@ namespace FPU
 };
 namespace CPU
 {
-	CORE_API extern u64				clk_per_second;
-	CORE_API extern u64				clk_per_milisec;
-	CORE_API extern u64				clk_per_microsec;
-	CORE_API extern u64				clk_overhead;
+	CORE_API extern U64				clk_per_second;
+	CORE_API extern U64				clk_per_milisec;
+	CORE_API extern U64				clk_per_microsec;
+	CORE_API extern U64				clk_overhead;
 	CORE_API extern F32				clk_to_seconds;
 	CORE_API extern F32				clk_to_milisec;
 	CORE_API extern F32				clk_to_microsec;
 
-	CORE_API extern u64				qpc_freq;
-	CORE_API extern u64				qpc_overhead;
+	CORE_API extern U64				qpc_freq;
+	CORE_API extern U64				qpc_overhead;
 	CORE_API extern U32				qpc_counter;
 
 	CORE_API extern	_processor_info	ID;
-	CORE_API extern	u64				QPC( );
+	CORE_API extern	U64				QPC( );
 
 #pragma warning(disable:4035)
-	inline u64	GetCLK(void)
+	inline U64	GetCLK(void)
 	{
 		_asm    _emit 0x0F;
 		_asm    _emit 0x31;

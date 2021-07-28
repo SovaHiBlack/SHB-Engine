@@ -23,10 +23,11 @@ extern CORE_API pauseMngr		g_pauseMngr;
 class CORE_API CTimerBase
 {
 protected:
-	u64			qwStartTime;
-	u64			qwPausedTime;
-	u64			qwPauseAccum;
+	U64			qwStartTime;
+	U64			qwPausedTime;
+	U64			qwPauseAccum;
 	BOOL		bPause;
+
 public:
 	CTimerBase( ) : qwStartTime(0), qwPausedTime(0), qwPauseAccum(0), bPause(FALSE)
 	{ }
@@ -39,7 +40,7 @@ public:
 
 		qwStartTime = CPU::QPC( ) - qwPauseAccum;
 	}
-	__forceinline u64		GetElapsed_ticks( )const
+	__forceinline U64		GetElapsed_ticks( )const
 	{
 		if (bPause)
 		{
@@ -52,7 +53,7 @@ public:
 	}
 	inline U32		GetElapsed_ms( ) const
 	{
-		return U32(GetElapsed_ticks( ) * u64(1000) / CPU::qpc_freq);
+		return U32(GetElapsed_ticks( ) * U64(1000) / CPU::qpc_freq);
 	}
 	inline F32	GetElapsed_sec( ) const
 	{
@@ -74,16 +75,16 @@ private:
 	using inherited = CTimerBase;
 
 	F32				m_time_factor;
-	u64					m_real_ticks;
-	u64					m_ticks;
+	U64					m_real_ticks;
+	U64					m_ticks;
 
-	inline u64				GetElapsed_ticks(const u64& current_ticks) const
+	inline U64				GetElapsed_ticks(const U64& current_ticks) const
 	{
-		u64				delta = current_ticks - m_real_ticks;
+		U64				delta = current_ticks - m_real_ticks;
 		F64			delta_d = (F64) delta;
 		F64			time_factor_d = time_factor( );
 		F64			time = delta_d * time_factor_d + 0.5;
-		u64				result = (u64) time;
+		U64				result = (U64) time;
 		return			(m_ticks + result);
 	}
 
@@ -111,16 +112,16 @@ public:
 
 	inline void			time_factor(const F32& time_factor)
 	{
-		u64 current = inherited::GetElapsed_ticks( );
+		U64 current = inherited::GetElapsed_ticks( );
 		m_ticks = GetElapsed_ticks(current);
 		m_real_ticks = current;
 		m_time_factor = time_factor;
 	}
 
-	inline u64				GetElapsed_ticks( ) const
+	inline U64				GetElapsed_ticks( ) const
 	{
 		FPU::m64r( );
-		u64 result = GetElapsed_ticks(inherited::GetElapsed_ticks( ));
+		U64 result = GetElapsed_ticks(inherited::GetElapsed_ticks( ));
 		FPU::m24r( );
 
 		return result;
@@ -128,7 +129,7 @@ public:
 
 	U32				GetElapsed_ms( ) const
 	{
-		return			(U32(GetElapsed_ticks( ) * u64(1000) / CPU::qpc_freq));
+		return			(U32(GetElapsed_ticks( ) * U64(1000) / CPU::qpc_freq));
 	}
 
 	F32			GetElapsed_sec( ) const
@@ -148,7 +149,7 @@ public:
 
 class CORE_API CTimer_paused_ex : public CTimer
 {
-	u64											save_clock;
+	U64											save_clock;
 
 public:
 	CTimer_paused_ex( )
@@ -166,7 +167,7 @@ public:
 			return;
 		}
 
-		u64 _current = CPU::QPC( ) - CPU::qpc_overhead;
+		U64 _current = CPU::QPC( ) - CPU::qpc_overhead;
 		if (b)
 		{
 			save_clock = _current;
@@ -199,7 +200,7 @@ class CORE_API CStatTimer
 {
 public:
 	CTimer										T;
-	u64											accum;
+	U64											accum;
 	F32										result;
 	U32											count;
 
@@ -227,14 +228,14 @@ public:
 		accum += T.GetElapsed_ticks( );
 	}
 
-	__forceinline u64		GetElapsed_ticks( ) const
+	__forceinline U64		GetElapsed_ticks( ) const
 	{
 		return accum;
 	}
 
 	inline U32				GetElapsed_ms( ) const
 	{
-		return U32(GetElapsed_ticks( ) * u64(1000) / CPU::qpc_freq);
+		return U32(GetElapsed_ticks( ) * U64(1000) / CPU::qpc_freq);
 	}
 	inline F32			GetElapsed_sec( ) const
 	{

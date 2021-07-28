@@ -69,14 +69,14 @@ public:
 		manager->vfFillCombatGroup	(tpALifeSchedulable,0);
 	}
 
-	inline	bool operator()	(CALifeGraphRegistry::OBJECT_REGISTRY::_iterator &I, u64 counter, bool) const
+	inline	bool operator()	(CALifeGraphRegistry::OBJECT_REGISTRY::_iterator &I, U64 counter, bool) const
 	{
 		if (counter == (*I).second->m_switch_counter)
 			return				(false);
 		return					(!manager->m_tpaCombatGroups[0].empty());
 	}
 
-	inline	void operator()	(CALifeGraphRegistry::OBJECT_REGISTRY::_iterator &I, u64 counter) const
+	inline	void operator()	(CALifeGraphRegistry::OBJECT_REGISTRY::_iterator &I, U64 counter) const
 	{
 		(*I).second->m_switch_counter = counter;
 

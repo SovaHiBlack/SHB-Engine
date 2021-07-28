@@ -635,7 +635,7 @@ void CLevel::OnRender( )
 #endif
 }
 
-void CLevel::OnEvent(EVENT E, u64 P1, u64 /**P2/**/)
+void CLevel::OnEvent(EVENT E, U64 P1, U64 /**P2/**/)
 {
 	if (E == eEntitySpawn)
 	{
@@ -737,7 +737,7 @@ void CLevel::make_NetCorrectionPrediction( )
 {
 	m_bNeed_CrPr = false;
 	m_bIn_CrPr = true;
-	u64 NumPhSteps = ph_world->m_steps_num;
+	U64 NumPhSteps = ph_world->m_steps_num;
 	ph_world->m_steps_num -= m_dwNumSteps;
 	if (g_bDebugDumpPhysicsStep && m_dwNumSteps > 10)
 	{
@@ -914,17 +914,17 @@ U8 CLevel::GetDayTime( )
 
 float CLevel::GetGameDayTimeSec( )
 {
-	return (float(s64(GetGameTime( ) % (24 * 60 * 60 * 1000))) / 1000.0f);
+	return (float(S64(GetGameTime( ) % (24 * 60 * 60 * 1000))) / 1000.0f);
 }
 
 u32 CLevel::GetGameDayTimeMS( )
 {
-	return (u32(s64(GetGameTime( ) % (24 * 60 * 60 * 1000))));
+	return (u32(S64(GetGameTime( ) % (24 * 60 * 60 * 1000))));
 }
 
 float CLevel::GetEnvironmentGameDayTimeSec( )
 {
-	return (float(s64(GetEnvironmentGameTime( ) % (24 * 60 * 60 * 1000))) / 1000.0f);
+	return (float(S64(GetEnvironmentGameTime( ) % (24 * 60 * 60 * 1000))) / 1000.0f);
 }
 
 void CLevel::GetGameDateTime(u32& year, u32& month, u32& day, u32& hours, u32& mins, u32& secs, u32& milisecs)

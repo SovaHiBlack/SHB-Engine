@@ -39,8 +39,8 @@ private:
 	struct	archive
 	{
 		shared_str				path;
-		Pvoid hSrcFile;
-		Pvoid hSrcMap;
+		void* hSrcFile;
+		void* hSrcMap;
 		U32						size;
 	};
 //	DEFINE_MAP_PRED				(Pcstr,FS_Path*,PathMap,PathPairIt,pred_str);
@@ -69,7 +69,7 @@ private:
 	BOOL						bNoRecurse;
 
 	xrCriticalSection			m_auth_lock;
-	u64							m_auth_code;
+	U64							m_auth_code;
 
 	void						Register(Pcstr name, U32 vfs, U32 crc, U32 ptr, U32 size_real, U32 size_compressed, U32 modif);
 	void						ProcessArchive(Pcstr path, Pcstr base_path = 0);
@@ -186,8 +186,8 @@ public:
 	// 
 	void						register_archieve(Pcstr path);
 	void						auth_generate(xr_vector<xr_string>& ignore, xr_vector<xr_string>& important);
-	u64							auth_get( );
-	void						auth_runtime(Pvoid);
+	U64							auth_get( );
+	void						auth_runtime(void*);
 
 	// editor functions
 	void						rescan_pathes( );

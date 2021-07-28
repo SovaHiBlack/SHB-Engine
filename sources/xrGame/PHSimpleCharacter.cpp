@@ -159,7 +159,7 @@ CPHSimpleCharacter::CPHSimpleCharacter( )
 	m_hat_transform = NULL;
 	m_acceleration.set(0, 0, 0);
 	b_external_impulse = false;
-	m_ext_impuls_stop_step = u64(-1);
+	m_ext_impuls_stop_step = U64(-1);
 	m_ext_imulse.set(0, 0, 0);
 	m_phys_ref_object = nullptr;
 	b_on_object = false;
@@ -458,7 +458,7 @@ void CPHSimpleCharacter::Destroy( )
 	}
 }
 
-const static u64 impulse_time_constant = 30;
+const static U64 impulse_time_constant = 30;
 void CPHSimpleCharacter::ApplyImpulse(const Fvector3& dir, dReal P)
 {
 	if (!b_exist || b_external_impulse)
@@ -522,7 +522,7 @@ void CPHSimpleCharacter::PhDataUpdate(dReal /**step/**/)
 	if (ph_world->m_steps_num > m_ext_impuls_stop_step)
 	{
 		b_external_impulse = false;
-		m_ext_impuls_stop_step = u64(-1);
+		m_ext_impuls_stop_step = U64(-1);
 		m_ext_imulse.set(0.0f, 0.0f, 0.0f);
 		Fvector3 vel;
 		GetVelocity(vel);

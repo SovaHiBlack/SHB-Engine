@@ -10,7 +10,7 @@
 #include "../../../..\ENGINE\effector.h"
 #include "../../../..\ENGINE\effectorPP.h"
 
-#define EFFECTOR_ID_GEN(type) (type( u32(u64(this) & u32(-1)) ))
+#define EFFECTOR_ID_GEN(type) (type( u32(U64(this) & u32(-1)) ))
 
 ////////////////////////////////////////////////////////////////////////////////////
 // CAlienEffectorPP

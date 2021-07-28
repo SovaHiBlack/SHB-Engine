@@ -29,7 +29,8 @@ using namespace ALife;
 
 extern string_path g_last_saved_game;
 
-class CSwitchPredicate {
+class CSwitchPredicate
+{
 private:
 	CALifeSwitchManager *m_switch_manager;
 
@@ -39,16 +40,18 @@ public:
 		m_switch_manager			= switch_manager;
 	}
 
-	inline	bool	operator()		(CALifeLevelRegistry::_iterator &i, u64 cycle_count, bool) const
+	inline bool	operator()		(CALifeLevelRegistry::_iterator &i, U64 cycle_count, bool) const
 	{
-		if ((*i).second->m_switch_counter	== cycle_count)
-			return					(false);
+		if ((*i).second->m_switch_counter == cycle_count)
+		{
+			return false;
+		}
 
 		(*i).second->m_switch_counter	= cycle_count;
-		return						(true);
+		return true;
 	}
 
-	inline	void	operator()		(CALifeLevelRegistry::_iterator &i, u64 cycle_count) const
+	inline	void	operator()		(CALifeLevelRegistry::_iterator &i, U64 cycle_count) const
 	{
 		m_switch_manager->switch_object((*i).second);
 	}

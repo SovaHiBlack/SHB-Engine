@@ -106,7 +106,7 @@ U32					smem_container::stat_economy( )
 	cs.Enter( );
 	cdb::iterator	it = container.begin( );
 	cdb::iterator	end = container.end( );
-	s64				counter = 0;
+	S64				counter = 0;
 	counter -= sizeof(*this);
 	counter -= sizeof(cdb::allocator_type);
 	const int		node_size = 20;
@@ -114,12 +114,12 @@ U32					smem_container::stat_economy( )
 	{
 		counter -= 16;
 		counter -= node_size;
-		counter += s64((s64((*it)->dwReference) - 1) * s64((*it)->dwLength));
+		counter += S64((S64((*it)->dwReference) - 1) * S64((*it)->dwLength));
 	}
 
 	cs.Leave( );
 
-	return U32(s64(counter) / s64(1024));
+	return U32(S64(counter) / S64(1024));
 }
 
 smem_container::~smem_container( )

@@ -87,9 +87,9 @@ void prefetch_module(const char* file_name)
 }
 
 struct profile_timer_script {
-	u64							m_start_cpu_tick_count;
-	u64							m_accumulator;
-	u64							m_count;
+	U64							m_start_cpu_tick_count;
+	U64							m_accumulator;
+	U64							m_count;
 	int							m_recurse_mark;
 	
 	inline								profile_timer_script	()
@@ -139,7 +139,7 @@ struct profile_timer_script {
 		if (m_recurse_mark)
 			return;
 		
-		u64						finish = CPU::GetCLK();
+		U64						finish = CPU::GetCLK();
 		if (finish > m_start_cpu_tick_count)
 			m_accumulator		+= finish - m_start_cpu_tick_count;
 	}

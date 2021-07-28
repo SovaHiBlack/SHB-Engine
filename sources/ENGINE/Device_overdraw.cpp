@@ -38,8 +38,8 @@ void CRenderDevice::overdrawEnd		()
 	// Render gradients
 	for (int I=0; I<12; I++ ) 
 	{
-		u32	_c	= I*256/13;
-		u32	c	= D3DCOLOR_XRGB(_c,_c,_c);
+		U32	_c	= I*256/13;
+		U32	c	= D3DCOLOR_XRGB(_c,_c,_c);
 
 		FVF::TL	pv[4];
 		pv[0].set(float(0),			float(dwHeight),	c,0,0);			

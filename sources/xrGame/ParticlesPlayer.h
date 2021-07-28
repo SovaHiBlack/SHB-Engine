@@ -52,7 +52,7 @@ public:
 
 private:
 	// список костей
-	u64						bone_mask; // используемые кости
+	U64						bone_mask; // используемые кости
 	BoneInfoVec				m_Bones;
 	CObject* m_self_object;
 

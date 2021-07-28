@@ -305,10 +305,10 @@ once_more:
 		TNode* _end = end( );
 		for (TNode* cur = begin( ); cur != _end; cur++, _it++) *_it = cur;
 	}
-	inline void		getANY_P(xr_vector<Pvoid, typename allocator::template helper<Pvoid>::result>& D)
+	inline void		getANY_P(xr_vector<void*, typename allocator::template helper<void*>::result>& D)
 	{
 		D.resize(size( ));
-		Pvoid* _it = &*D.begin( );
+		void** _it = &*D.begin( );
 		TNode* _end = end( );
 		for (TNode* cur = begin( ); cur != _end; cur++, _it++) *_it = cur;
 	}

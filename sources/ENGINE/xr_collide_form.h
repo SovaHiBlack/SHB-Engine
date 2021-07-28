@@ -160,7 +160,7 @@ public:
 	using ElementVecIt = ElementVec::iterator;
 
 private:
-	u64					vis_mask;
+	U64					vis_mask;
 	ElementVec			elements;
 
 	u32					dwFrame;		// The model itself
@@ -168,6 +168,7 @@ private:
 
 	void				BuildState( );
 	void				BuildTopLevel( );
+
 public:
 	CCF_Skeleton(CObject* _owner);
 

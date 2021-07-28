@@ -61,8 +61,8 @@ extern void show_smart_cast_stats( );
 extern void clear_smart_cast_stats( );
 extern void release_smart_cast_stats( );
 
-extern u64		g_qwStartGameTime;
-extern u64		g_qwEStartGameTime;
+extern U64		g_qwStartGameTime;
+extern U64		g_qwEStartGameTime;
 
 ENGINE_API
 extern float	psHUD_FOV;

@@ -6,9 +6,9 @@
 #include <sys\stat.h>
 #include <share.h>
 
-Pvoid FileDownload(Pcstr fn, U32* pdwSize = nullptr);
-void			FileCompress(Pcstr fn, Pcstr sign, Pvoid data, U32 size);
-Pvoid FileDecompress(Pcstr fn, Pcstr sign, U32* size = nullptr);
+void* FileDownload(Pcstr fn, U32* pdwSize = nullptr);
+void			FileCompress(Pcstr fn, Pcstr sign, void* data, U32 size);
+void* FileDecompress(Pcstr fn, Pcstr sign, U32* size = nullptr);
 
 class CFileWriter : public IWriter
 {
@@ -85,15 +85,16 @@ public:
 class CTempReader : public IReader
 {
 public:
-	CTempReader(Pvoid _data, int _size, int _iterpos) : IReader(_data, _size, _iterpos)
+	CTempReader(void* _data, int _size, int _iterpos) : IReader(_data, _size, _iterpos)
 	{ }
 	virtual		~CTempReader( );
 };
 class CPackReader : public IReader
 {
-	Pvoid base_address;
+	void* base_address;
+
 public:
-	CPackReader(Pvoid _base, Pvoid _data, int _size) : IReader(_data, _size)
+	CPackReader(void* _base, void* _data, int _size) : IReader(_data, _size)
 	{
 		base_address = _base;
 	}
@@ -111,11 +112,13 @@ public:
 	CCompressedReader(Pcstr name, Pcstr sign);
 	virtual		~CCompressedReader( );
 };
+
 class CVirtualFileReader : public IReader
 {
 private:
-	Pvoid hSrcFile;
-	Pvoid hSrcMap;
+	void* hSrcFile;
+	void* hSrcMap;
+
 public:
 	CVirtualFileReader(Pcstr cFileName);
 	virtual		~CVirtualFileReader( );

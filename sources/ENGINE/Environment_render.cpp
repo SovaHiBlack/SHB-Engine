@@ -52,10 +52,10 @@ static	U16			hbox_faces[20*3]	=
 #pragma pack(push,1)
 struct v_skybox				{
 	Fvector3	p;
-	u32			color;
+	U32			color;
 	Fvector3	uv	[2];
 
-	void		set			(Fvector3& _p, u32 _c, Fvector3& _tc)
+	void		set			(Fvector3& _p, U32 _c, Fvector3& _tc)
 	{
 		p					= _p;
 		color				= _c;
@@ -63,19 +63,19 @@ struct v_skybox				{
 		uv[1]				= _tc;
 	}
 };
-const	u32 v_skybox_fvf	= D3DFVF_XYZ | D3DFVF_DIFFUSE | D3DFVF_TEX2 | D3DFVF_TEXCOORDSIZE3(0) | D3DFVF_TEXCOORDSIZE3(1);
+const	U32 v_skybox_fvf	= D3DFVF_XYZ | D3DFVF_DIFFUSE | D3DFVF_TEX2 | D3DFVF_TEXCOORDSIZE3(0) | D3DFVF_TEXCOORDSIZE3(1);
 struct v_clouds				{
 	Fvector3	p;
-	u32			color;
-	u32			intensity;
-	void		set			(Fvector3& _p, u32 _c, u32 _i)
+	U32			color;
+	U32			intensity;
+	void		set			(Fvector3& _p, U32 _c, U32 _i)
 	{
 		p					= _p;
 		color				= _c;
 		intensity			= _i;
 	}
 };
-const	u32 v_clouds_fvf	= D3DFVF_XYZ | D3DFVF_DIFFUSE | D3DFVF_SPECULAR;
+const	U32 v_clouds_fvf	= D3DFVF_XYZ | D3DFVF_DIFFUSE | D3DFVF_SPECULAR;
 #pragma pack(pop)
 
 //-----------------------------------------------------------------------------
@@ -113,8 +113,9 @@ void CEnvironment::RenderSky		()
 	mSky.rotateY				(CurrentEnv.sky_rotation);
 	mSky.translate_over			(Device.vCameraPosition);
 
-	u32		i_offset,v_offset;
-	u32		C					= color_rgba(iFloor(CurrentEnv.sky_color.x*255.f), iFloor(CurrentEnv.sky_color.y*255.f), iFloor(CurrentEnv.sky_color.z*255.f), iFloor(CurrentEnv.weight*255.f));
+	U32		i_offset;
+	U32		v_offset;
+	U32		C					= color_rgba(iFloor(CurrentEnv.sky_color.x*255.f), iFloor(CurrentEnv.sky_color.y*255.f), iFloor(CurrentEnv.sky_color.z*255.f), iFloor(CurrentEnv.weight*255.f));
 
 	// Fill index buffer
 	U16*	pib					= RCache.Index.Lock	(20*3,i_offset);
@@ -123,7 +124,7 @@ void CEnvironment::RenderSky		()
 
 	// Fill vertex buffer
 	v_skybox* pv				= (v_skybox*)	RCache.Vertex.Lock	(12,sh_2geom.stride(),v_offset);
-	for (u32 v = 0; v < 12; v++)
+	for (U32 v = 0; v < 12; v++)
 	{
 		pv[v].set(hbox_verts[v * 2], C, hbox_verts[v * 2 + 1]);
 	}
@@ -169,9 +170,10 @@ void CEnvironment::RenderClouds			()
 	wd0.setHP					(PI_DIV_4,0);
 	wd1.setHP					(PI_DIV_4+PI_DIV_8,0);
 	wind_dir.set				(wd0.x,wd0.z,wd1.x,wd1.z).mul(0.5f).add(0.5f).mul(255.f);
-	u32		i_offset,v_offset;
-	u32		C0					= color_rgba(iFloor(wind_dir.x),iFloor(wind_dir.y),iFloor(wind_dir.w),iFloor(wind_dir.z));
-	u32		C1					= color_rgba(iFloor(CurrentEnv.clouds_color.x*255.f),iFloor(CurrentEnv.clouds_color.y*255.f),iFloor(CurrentEnv.clouds_color.z*255.f),iFloor(CurrentEnv.clouds_color.w*255.f));
+	U32		i_offset;
+	U32		v_offset;
+	U32		C0					= color_rgba(iFloor(wind_dir.x),iFloor(wind_dir.y),iFloor(wind_dir.w),iFloor(wind_dir.z));
+	U32		C1					= color_rgba(iFloor(CurrentEnv.clouds_color.x*255.f),iFloor(CurrentEnv.clouds_color.y*255.f),iFloor(CurrentEnv.clouds_color.z*255.f),iFloor(CurrentEnv.clouds_color.w*255.f));
 
 	// Fill index buffer
 	U16*	pib					= RCache.Index.Lock	(CloudsIndices.size(),i_offset);

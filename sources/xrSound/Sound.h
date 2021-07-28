@@ -258,7 +258,7 @@ typedef		void __stdcall sound_event						(ref_sound_data_ptr S, float range);
 /// definition (Sound Manager Interface)
 class XRSOUND_API	CSound_manager_interface
 {
-	virtual void	  				_initialize				( u64 window )																			= 0;
+	virtual void	  				_initialize				(U64 window )																			= 0;
 	virtual void					_clear					( )																						= 0;
 
 protected:
@@ -269,7 +269,7 @@ public:
 	virtual							~CSound_manager_interface(){}
 	//@{
 	/// General
-	static void						_create					( u64 window );
+	static void						_create					(U64 window );
 	static void						_destroy				( );
 
 	virtual void					_restart				( )																						= 0;

@@ -8,7 +8,7 @@ using EVENT = CEvent*;
 class ENGINE_API IEventReceiver
 {
 public:
-	virtual void	OnEvent			(EVENT E, u64 P1, u64 P2) = 0;
+	virtual void	OnEvent			(EVENT E, U64 P1, U64 P2) = 0;
 };
 
 class ENGINE_API CEventAPI
@@ -16,8 +16,8 @@ class ENGINE_API CEventAPI
 	struct Deferred
 	{
 		EVENT						E;
-		u64							P1;
-		u64							P2;
+		U64							P1;
+		U64							P2;
 	};
 
 private:
@@ -32,10 +32,10 @@ public:
 	EVENT			Handler_Attach	(const char* N, IEventReceiver* H);
 	void			Handler_Detach	(EVENT& E, IEventReceiver* H);
 
-	void			Signal			(EVENT E, u64 P1 = 0, u64 P2 = 0);
-	void			Signal			(const char* E, u64 P1 = 0, u64 P2 = 0);
-	void			Defer			(EVENT E, u64 P1 = 0, u64 P2 = 0);
-	void			Defer			(const char* E, u64 P1 = 0, u64 P2 = 0);
+	void			Signal			(EVENT E, U64 P1 = 0, U64 P2 = 0);
+	void			Signal			(const char* E, U64 P1 = 0, U64 P2 = 0);
+	void			Defer			(EVENT E, U64 P1 = 0, U64 P2 = 0);
+	void			Defer			(const char* E, U64 P1 = 0, U64 P2 = 0);
 
 	void			OnFrame			( );
 	void			Dump			( );

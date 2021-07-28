@@ -80,7 +80,7 @@ void CStreamReader::advance(const int& offset)
 	m_current_pointer += offset;
 }
 
-void CStreamReader::r(Pvoid _buffer, U32 buffer_size)
+void CStreamReader::r(void* _buffer, U32 buffer_size)
 {
 	VERIFY(m_current_pointer >= m_start_pointer);
 	VERIFY(U32(m_current_pointer - m_start_pointer) <= m_current_window_size);

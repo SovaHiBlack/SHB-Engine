@@ -33,9 +33,9 @@ class CSE_ALifeSchedulable;
 class CGameGraph;
 
 namespace ALife {
-	typedef u64	_CLASS_ID;									// Class ID
+	typedef U64	_CLASS_ID;									// Class ID
 	typedef U16	_OBJECT_ID;									// Object ID
-	typedef u64	_TIME_ID;									// Time  ID
+	typedef U64	_TIME_ID;									// Time  ID
 	typedef u32	_EVENT_ID;									// Event ID
 	typedef u32	_TASK_ID;									// Event ID
 	typedef U16	_SPAWN_ID;									// Spawn ID

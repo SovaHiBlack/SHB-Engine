@@ -6,7 +6,7 @@
 
 void fix_texture_name(char* fn);
 
-void	CBlender_Compile::r_Pass		(const char* _vs, const char* _ps, bool bFog, BOOL bZtest, BOOL bZwrite,	BOOL bABlend, D3DBLEND abSRC, D3DBLEND abDST, BOOL aTest, u32 aRef)
+void	CBlender_Compile::r_Pass		(const char* _vs, const char* _ps, bool bFog, BOOL bZtest, BOOL bZwrite,	BOOL bABlend, D3DBLEND abSRC, D3DBLEND abDST, BOOL aTest, U32 aRef)
 {
 	RS.Invalidate			();
 	ctable.clear			();
@@ -43,7 +43,7 @@ void	CBlender_Compile::r_Constant	(const char* name, R_constant_setup* s)
 	if (C)					C->handler	= s;
 }
 
-u32		CBlender_Compile::i_Sampler		(const char* _name)
+U32		CBlender_Compile::i_Sampler		(const char* _name)
 {
 	//
 	string256				name;
@@ -53,51 +53,51 @@ u32		CBlender_Compile::i_Sampler		(const char* _name)
 
 	// Find index
 	ref_constant C			= ctable.get(name);
-	if (!C)					return	u32(-1);
+	if (!C)					return	U32(-1);
 	R_ASSERT				(C->type == RC_sampler);
-	u32 stage				= C->samp.index;
+	U32 stage				= C->samp.index;
 
 	// Create texture
 	// while (stage>=passTextures.size())	passTextures.push_back		(NULL);
 	return					stage;
 }
-void	CBlender_Compile::i_Texture		(u32 s, const char* name)
+void	CBlender_Compile::i_Texture		(U32 s, const char* name)
 {
 	if (name)	passTextures.push_back	(mk_pair(s, ref_texture(Device.Resources->_CreateTexture(name))));
 }
-void	CBlender_Compile::i_Projective	(u32 s, bool b)
+void	CBlender_Compile::i_Projective	(U32 s, bool b)
 {
 	if	(b)	RS.SetTSS	(s,D3DTSS_TEXTURETRANSFORMFLAGS, D3DTTFF_DISABLE | D3DTTFF_PROJECTED);
 	else	RS.SetTSS	(s,D3DTSS_TEXTURETRANSFORMFLAGS, D3DTTFF_DISABLE );
 }
-void	CBlender_Compile::i_Address		(u32 s, u32	address)
+void	CBlender_Compile::i_Address		(U32 s, U32	address)
 {
 	RS.SetSAMP			(s,D3DSAMP_ADDRESSU,	address);
 	RS.SetSAMP			(s,D3DSAMP_ADDRESSV,	address);
 	RS.SetSAMP			(s,D3DSAMP_ADDRESSW,	address);
 }
-void	CBlender_Compile::i_Filter_Min		(u32 s, u32	f)
+void	CBlender_Compile::i_Filter_Min		(U32 s, U32	f)
 {
 	RS.SetSAMP			(s,D3DSAMP_MINFILTER,	f);
 }
-void	CBlender_Compile::i_Filter_Mip		(u32 s, u32	f)
+void	CBlender_Compile::i_Filter_Mip		(U32 s, U32	f)
 {
 	RS.SetSAMP			(s,D3DSAMP_MIPFILTER,	f);
 }
-void	CBlender_Compile::i_Filter_Mag		(u32 s, u32	f)
+void	CBlender_Compile::i_Filter_Mag		(U32 s, U32	f)
 {
 	RS.SetSAMP			(s,D3DSAMP_MAGFILTER,	f);
 }
-void	CBlender_Compile::i_Filter			(u32 s, u32 _min, u32 _mip, u32 _mag)
+void	CBlender_Compile::i_Filter			(U32 s, U32 _min, U32 _mip, U32 _mag)
 {
 	i_Filter_Min	(s,_min);
 	i_Filter_Mip	(s,_mip);
 	i_Filter_Mag	(s,_mag);
 }
-u32		CBlender_Compile::r_Sampler		(const char* _name, const char* texture, bool b_ps1x_ProjectiveDivide, u32 address, u32 fmin, u32 fmip, u32 fmag)
+U32		CBlender_Compile::r_Sampler		(const char* _name, const char* texture, bool b_ps1x_ProjectiveDivide, U32 address, U32 fmin, U32 fmip, U32 fmag)
 {
 	dwStage					= i_Sampler	(_name);
-	if (u32(-1)!=dwStage)
+	if (U32(-1)!=dwStage)
 	{
 		i_Texture				(dwStage,texture);
 
@@ -124,8 +124,8 @@ void	CBlender_Compile::r_Sampler_clf	(const char* name, const char* texture, boo
 }
 void	CBlender_Compile::r_Sampler_clw	(const char* name, const char* texture, bool b_ps1x_ProjectiveDivide)
 {
-	u32 s			= r_Sampler	(name,texture,b_ps1x_ProjectiveDivide,D3DTADDRESS_CLAMP,D3DTEXF_LINEAR,D3DTEXF_NONE,D3DTEXF_LINEAR);
-	if (u32(-1)!=s)	RS.SetSAMP	(s,D3DSAMP_ADDRESSW, D3DTADDRESS_WRAP);
+	U32 s			= r_Sampler	(name,texture,b_ps1x_ProjectiveDivide,D3DTADDRESS_CLAMP,D3DTEXF_LINEAR,D3DTEXF_NONE,D3DTEXF_LINEAR);
+	if (U32(-1)!=s)	RS.SetSAMP	(s,D3DSAMP_ADDRESSW, D3DTADDRESS_WRAP);
 }
 void	CBlender_Compile::r_End			()
 {

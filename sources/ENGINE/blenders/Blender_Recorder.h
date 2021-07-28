@@ -35,12 +35,13 @@ private:
 	STextureList		passTextures;
 	SMatrixList			passMatrices;
 	SConstantList		passConstants;
-	u32					dwStage;
+	U32					dwStage;
 
 	string128			pass_vs;
 	string128			pass_ps;
 
-	u32					BC					(BOOL v)	{ return v?0xff:0; }
+	U32					BC					(BOOL v)	{ return v?0xff:0; }
+
 public:
 	CSimulator&			R()					{ return RS; }
 	
@@ -49,50 +50,50 @@ public:
 
 	// R1-compiler
 	void				PassBegin			();
-	u32					Pass				()  { return SH->passes.size(); }
+	U32					Pass				()  { return SH->passes.size(); }
 	void				PassSET_ZB			(BOOL bZTest,	BOOL bZWrite, BOOL bInvertZTest=FALSE);
-	void				PassSET_ablend_mode	(BOOL bABlend,	u32 abSRC, u32 abDST);
-	void				PassSET_ablend_aref	(BOOL aTest,	u32 aRef);
-	void				PassSET_Blend		(BOOL bABlend,	u32 abSRC, u32 abDST, BOOL aTest, u32 aRef);
-	void				PassSET_Blend_BLEND	(BOOL bAref=FALSE, u32 ref=0)	{ PassSET_Blend	(TRUE,D3DBLEND_SRCALPHA,D3DBLEND_INVSRCALPHA,bAref,ref);	}
-	void				PassSET_Blend_SET	(BOOL bAref=FALSE, u32 ref=0)	{ PassSET_Blend	(FALSE,D3DBLEND_ONE,D3DBLEND_ZERO,bAref,ref);				}
-	void				PassSET_Blend_ADD	(BOOL bAref=FALSE, u32 ref=0)	{ PassSET_Blend	(TRUE, D3DBLEND_ONE,D3DBLEND_ONE, bAref,ref);				}
-	void				PassSET_Blend_MUL	(BOOL bAref=FALSE, u32 ref=0)	{ PassSET_Blend	(TRUE, D3DBLEND_DESTCOLOR,D3DBLEND_ZERO,bAref,ref);			}
-	void				PassSET_Blend_MUL2X	(BOOL bAref=FALSE, u32 ref=0)	{ PassSET_Blend	(TRUE, D3DBLEND_DESTCOLOR,D3DBLEND_SRCCOLOR,bAref,ref);		}
+	void				PassSET_ablend_mode	(BOOL bABlend, U32 abSRC, U32 abDST);
+	void				PassSET_ablend_aref	(BOOL aTest, U32 aRef);
+	void				PassSET_Blend		(BOOL bABlend, U32 abSRC, U32 abDST, BOOL aTest, U32 aRef);
+	void				PassSET_Blend_BLEND	(BOOL bAref=FALSE, U32 ref=0)	{ PassSET_Blend	(TRUE,D3DBLEND_SRCALPHA,D3DBLEND_INVSRCALPHA,bAref,ref);	}
+	void				PassSET_Blend_SET	(BOOL bAref=FALSE, U32 ref=0)	{ PassSET_Blend	(FALSE,D3DBLEND_ONE,D3DBLEND_ZERO,bAref,ref);				}
+	void				PassSET_Blend_ADD	(BOOL bAref=FALSE, U32 ref=0)	{ PassSET_Blend	(TRUE, D3DBLEND_ONE,D3DBLEND_ONE, bAref,ref);				}
+	void				PassSET_Blend_MUL	(BOOL bAref=FALSE, U32 ref=0)	{ PassSET_Blend	(TRUE, D3DBLEND_DESTCOLOR,D3DBLEND_ZERO,bAref,ref);			}
+	void				PassSET_Blend_MUL2X	(BOOL bAref=FALSE, U32 ref=0)	{ PassSET_Blend	(TRUE, D3DBLEND_DESTCOLOR,D3DBLEND_SRCCOLOR,bAref,ref);		}
 	void				PassSET_LightFog	(BOOL bLight, BOOL bFog);
 	void				PassSET_PS			(const char* name);
 	void				PassSET_VS			(const char* name);
 	void				PassEnd				();
 
 	void				StageBegin			();
-	u32					Stage				()	{ return dwStage; }
+	U32					Stage				()	{ return dwStage; }
 	void				StageTemplate_LMAP0	();
-	void				StageSET_Address	(u32 adr);
-	void				StageSET_XForm		(u32 tf, u32 tc);
-	void				StageSET_Color		(u32 a1, u32 op, u32 a2);
-	void				StageSET_Color3		(u32 a1, u32 op, u32 a2, u32 a3);
-	void				StageSET_Alpha		(u32 a1, u32 op, u32 a2);
+	void				StageSET_Address	(U32 adr);
+	void				StageSET_XForm		(U32 tf, U32 tc);
+	void				StageSET_Color		(U32 a1, U32 op, U32 a2);
+	void				StageSET_Color3		(U32 a1, U32 op, U32 a2, U32 a3);
+	void				StageSET_Alpha		(U32 a1, U32 op, U32 a2);
 	void				StageSET_TMC		(const char* T, const char* M, const char* C, int UVW_channel);
-	void				Stage_Texture		(const char* name, u32 address=D3DTADDRESS_WRAP,	u32	 fmin=D3DTEXF_LINEAR, u32 fmip=D3DTEXF_LINEAR,	u32 fmag=D3DTEXF_LINEAR);
+	void				Stage_Texture		(const char* name, U32 address=D3DTADDRESS_WRAP, U32	 fmin=D3DTEXF_LINEAR, U32 fmip=D3DTEXF_LINEAR, U32 fmag=D3DTEXF_LINEAR);
 	void				Stage_Matrix		(const char* name, int UVW_channel);
 	void				Stage_Constant		(const char* name);
 	void				StageEnd			();
 
 	// R1/R2-compiler	[programmable]
-	u32					i_Sampler			(const char* name);
-	void				i_Texture			(u32 s, const char* name);
-	void				i_Projective		(u32 s, bool	b);
-	void				i_Address			(u32 s, u32		address);
-	void				i_Filter_Min		(u32 s, u32		f);
-	void				i_Filter_Mip		(u32 s, u32		f);
-	void				i_Filter_Mag		(u32 s, u32		f);
-	void				i_Filter			(u32 s, u32 _min, u32 _mip, u32 _mag);
+	U32					i_Sampler			(const char* name);
+	void				i_Texture			(U32 s, const char* name);
+	void				i_Projective		(U32 s, bool	b);
+	void				i_Address			(U32 s, U32		address);
+	void				i_Filter_Min		(U32 s, U32		f);
+	void				i_Filter_Mip		(U32 s, U32		f);
+	void				i_Filter_Mag		(U32 s, U32		f);
+	void				i_Filter			(U32 s, U32 _min, U32 _mip, U32 _mag);
 
 	// R1/R2-compiler	[programmable]		- templates
-	void				r_Pass				(const char* vs, const char* ps,		bool bFog,	BOOL	bZtest=TRUE,				BOOL	bZwrite=TRUE,			BOOL	bABlend=FALSE,			D3DBLEND	abSRC=D3DBLEND_ONE,		D3DBLEND abDST=D3DBLEND_ZERO,	BOOL aTest=FALSE,	u32 aRef=0);
+	void				r_Pass				(const char* vs, const char* ps,		bool bFog,	BOOL	bZtest=TRUE,				BOOL	bZwrite=TRUE,			BOOL	bABlend=FALSE,			D3DBLEND	abSRC=D3DBLEND_ONE,		D3DBLEND abDST=D3DBLEND_ZERO,	BOOL aTest=FALSE, U32 aRef=0);
 	void				r_Constant			(const char* name,	R_constant_setup* s);
-	u32					r_Sampler			(const char* name, const char* texture,		bool b_ps1x_ProjectiveDivide=false, u32	address=D3DTADDRESS_WRAP,	u32		fmin=D3DTEXF_LINEAR,	u32		fmip=D3DTEXF_LINEAR,	u32 fmag=D3DTEXF_LINEAR);
-	u32					r_Sampler			(const char* name,	shared_str texture, bool b_ps1x_ProjectiveDivide=false, u32	address=D3DTADDRESS_WRAP,	u32		fmin=D3DTEXF_LINEAR,	u32		fmip=D3DTEXF_LINEAR,	u32 fmag=D3DTEXF_LINEAR)	{
+	U32					r_Sampler			(const char* name, const char* texture,		bool b_ps1x_ProjectiveDivide=false, U32	address=D3DTADDRESS_WRAP, U32		fmin=D3DTEXF_LINEAR, U32		fmip=D3DTEXF_LINEAR, U32 fmag=D3DTEXF_LINEAR);
+	U32					r_Sampler			(const char* name,	shared_str texture, bool b_ps1x_ProjectiveDivide=false, U32	address=D3DTADDRESS_WRAP, U32		fmin=D3DTEXF_LINEAR, U32		fmip=D3DTEXF_LINEAR, U32 fmag=D3DTEXF_LINEAR)	{
 		return r_Sampler	(name,texture.c_str(),b_ps1x_ProjectiveDivide,address,fmin,fmip,fmag);
 	}
 	void				r_Sampler_rtf		(const char* name, const char* texture,		bool b_ps1x_ProjectiveDivide=false);

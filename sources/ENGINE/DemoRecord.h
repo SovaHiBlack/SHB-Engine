@@ -11,7 +11,7 @@ private:
 	Fvector3								m_HPB;
 	Fvector3								m_Position;
 	Fmatrix									m_Camera;
-	u32										m_Stage;
+	U32										m_Stage;
 
 	Fvector3								m_vT;
 	Fvector3								m_vR;

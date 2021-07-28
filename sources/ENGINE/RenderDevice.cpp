@@ -305,10 +305,10 @@ void CRenderDevice::FrameMove()
 
 		if(Paused())		fTimeDelta = 0.0f;
 
-//		u64	qTime		= TimerGlobal.GetElapsed_clk();
+//		U64	qTime		= TimerGlobal.GetElapsed_clk();
 		fTimeGlobal		= TimerGlobal.GetElapsed_sec(); //float(qTime)*CPU::cycles2seconds;
 		u32	_old_global	= dwTimeGlobal;
-		dwTimeGlobal	= TimerGlobal.GetElapsed_ms	();	//u32((qTime*u64(1000))/CPU::cycles_per_second);
+		dwTimeGlobal	= TimerGlobal.GetElapsed_ms	();	//u32((qTime*U64(1000))/CPU::cycles_per_second);
 		dwTimeDelta		= dwTimeGlobal-_old_global;
 	}
 

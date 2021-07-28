@@ -54,7 +54,7 @@ CSoundRender_Core::~CSoundRender_Core()
 	xr_delete					(geom_SOM);
 }
 
-void CSoundRender_Core::_initialize	(u64 window)
+void CSoundRender_Core::_initialize	(U64 window)
 {
 	Log							("* sound: EAX 2.0 extension:",bEAX?"present":"absent");
 	Log							("* sound: EAX 2.0 deferred:",bDeferredEAX?"present":"absent");
@@ -243,7 +243,7 @@ void	CSoundRender_Core::verify_refsound		( ref_sound& S)
 	int			local_value		= 0;
 	void*		ptr_refsound	= &S;
 	void*		ptr_local		= &local_value;
-	ptrdiff_t	difference		= (ptrdiff_t)_abs(s64(ptrdiff_t(ptr_local) - ptrdiff_t(ptr_refsound)));
+	ptrdiff_t	difference		= (ptrdiff_t)_abs(S64(ptrdiff_t(ptr_local) - ptrdiff_t(ptr_refsound)));
 	string256	err_str;
 	if(difference < (4*1024))
 	{

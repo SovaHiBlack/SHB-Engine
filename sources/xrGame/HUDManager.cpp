@@ -326,7 +326,7 @@ void CHUDManager::RenderUI( )
 	}
 }
 
-void CHUDManager::OnEvent(EVENT E, u64 P1, u64 P2)
+void CHUDManager::OnEvent(EVENT E, U64 P1, U64 P2)
 { }
 
 collide::rq_result& CHUDManager::GetCurrentRayQuery( )

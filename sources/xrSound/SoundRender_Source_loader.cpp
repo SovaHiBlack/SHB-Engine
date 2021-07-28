@@ -8,7 +8,7 @@
 //	SEEK_SET	0	File beginning
 //	SEEK_CUR	1	Current file pointer position
 //	SEEK_END	2	End-of-file
-int ov_seek_func(void *datasource, s64 offset, int whence)	
+int ov_seek_func(void *datasource, S64 offset, int whence)
 {
 	switch (whence){
 	case SEEK_SET: ((IReader*)datasource)->seek((int)offset);	 break;
@@ -34,17 +34,17 @@ long ov_tell_func(void *datasource)
 	return ((IReader*)datasource)->tell(); 
 }
 
-void CSoundRender_Source::decompress		(u32 line, OggVorbis_File* ovf)
+void CSoundRender_Source::decompress		(U32 line, OggVorbis_File* ovf)
 {
 	VERIFY	(ovf);
 	// decompression of one cache-line
-	u32		line_size		= SoundRender->cache.get_linesize();
+	U32		line_size		= SoundRender->cache.get_linesize();
 	char*	dest			= (char*)	SoundRender->cache.get_dataptr	(CAT,line);
-	u32		buf_offs		= (psSoundFreq==sf_22K)?(line*line_size):(line*line_size)/2;
-	u32		left_file		= dwBytesTotal - buf_offs;
-	u32		left			= (u32)_min	(left_file,line_size);
+	U32		buf_offs		= (psSoundFreq==sf_22K)?(line*line_size):(line*line_size)/2;
+	U32		left_file		= dwBytesTotal - buf_offs;
+	U32		left			= (U32)_min	(left_file,line_size);
 	// seek
-	u32	cur_pos				= u32	(ov_pcm_tell(ovf));
+	U32	cur_pos				= U32(ov_pcm_tell(ovf));
 	if (cur_pos!=buf_offs){
 		ov_pcm_seek			(ovf,buf_offs);
 	}
@@ -75,17 +75,17 @@ void CSoundRender_Source::LoadWave	(const char* pName)
 	wfxdest.nBlockAlign		= wfxdest.nChannels * wfxdest.wBitsPerSample / 8;
 	wfxdest.nAvgBytesPerSec = wfxdest.nSamplesPerSec * wfxdest.nBlockAlign;
 
-	s64 pcm_total			= ov_pcm_total(&ovf,-1);
+	S64 pcm_total			= ov_pcm_total(&ovf,-1);
 	if (psSoundFreq==sf_22K) pcm_total/=2;
-	dwBytesTotal			= u32(pcm_total*wfxdest.nBlockAlign); 
+	dwBytesTotal			= U32(pcm_total*wfxdest.nBlockAlign);
 	dwBytesPerMS			= wfxdest.nAvgBytesPerSec/1000;
 //	dwBytesPerSec			= wfxdest.nAvgBytesPerSec;
-	dwTimeTotal				= u32 ( sdef_source_footer + u64( (u64(dwBytesTotal)*u64(1000))/u64(wfxdest.nAvgBytesPerSec) ) );
+	dwTimeTotal				= U32( sdef_source_footer + U64( (U64(dwBytesTotal)* U64(1000))/ U64(wfxdest.nAvgBytesPerSec) ) );
 
 	vorbis_comment*	ovm		= ov_comment(&ovf,-1);
 	if (ovm->comments){
 		IReader F			(ovm->user_comments[0],ovm->comment_lengths[0]);
-		u32 vers			= F.r_u32	();
+		U32 vers			= F.r_u32	();
         if (vers==0x0001){
 			m_fMinDist		= F.r_float	();
 			m_fMaxDist		= F.r_float	();

@@ -214,7 +214,7 @@ void SPHNetState::net_Load(IReader& P, const Fvector3& min, const Fvector3& max)
 }
 SPHBonesData::SPHBonesData( )
 {
-	bones_mask = u64(-1);
+	bones_mask = U64(-1);
 	root_bone = 0;
 
 	Fvector3 _mn;

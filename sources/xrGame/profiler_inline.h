@@ -28,7 +28,7 @@ inline	CProfilePortion::~CProfilePortion	()
 	if (!psDeviceFlags.test(rsStatistic))
 		return;
 
-	u64									temp = CPU::QPC();
+	U64									temp = CPU::QPC();
 	m_time								= temp - m_time;
 	profiler().add_profile_portion		(*this);
 }

@@ -106,9 +106,9 @@ void Script::vfLoadStandardScripts(CLuaVirtualMachine *tpLuaVM)
 	R_ASSERT		(l_tpIniFile);
 	const char* caScriptString = l_tpIniFile->r_string("common","script");
 
-	u32				caNamespaceName = _GetItemCount(caScriptString);
+	U32				caNamespaceName = _GetItemCount(caScriptString);
 	string256		I;
-	for (u32 i=0; i<caNamespaceName; ++i) {
+	for (U32 i=0; i<caNamespaceName; ++i) {
 		FS.update_path(S,"$game_scripts$",strconcat(S1,_GetItem(caScriptString,i,I),".script"));
 		bfLoadFile	(tpLuaVM,S,true);
 		if (bfIsObjectPresent(tpLuaVM,"_G",strcat(I,"_initialize"),LUA_TFUNCTION))
@@ -227,9 +227,9 @@ bool Script::bfLoadBuffer(CLuaVirtualMachine *tpLuaVM, const char* caBuffer, siz
 		string256		insert;
 		sprintf_s		(insert,sizeof(insert),"local this = %s\n",caNameSpaceName);
 		size_t			str_len = xr_strlen(insert);
-		char* script = xr_alloc<char>(u32(str_len + tSize));
+		char* script = xr_alloc<char>(U32(str_len + tSize));
 		strcpy_s		(script, str_len+tSize, insert);
-		CopyMemory		(script+str_len, caBuffer, u32(tSize));
+		CopyMemory		(script+str_len, caBuffer, U32(tSize));
 		l_iErrorCode	= luaL_loadbuffer(tpLuaVM,script,tSize + str_len,caScriptName);
 		xr_free			(script);
 	}

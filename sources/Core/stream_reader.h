@@ -43,7 +43,7 @@ public:
 	inline void			close( );
 
 	void			advance(const int& offset);
-	void			r(Pvoid buffer, U32 buffer_size);
+	void			r(void* buffer, U32 buffer_size);
 	CStreamReader* open_chunk(const U32& chunk_id);
 };
 

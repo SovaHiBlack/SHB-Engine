@@ -92,22 +92,22 @@ namespace FPU
 
 namespace CPU
 {
-	CORE_API u64				clk_per_second;
-	CORE_API u64				clk_per_milisec;
-	CORE_API u64				clk_per_microsec;
-	CORE_API u64				clk_overhead;
+	CORE_API U64				clk_per_second;
+	CORE_API U64				clk_per_milisec;
+	CORE_API U64				clk_per_microsec;
+	CORE_API U64				clk_overhead;
 	CORE_API F32				clk_to_seconds;
 	CORE_API F32				clk_to_milisec;
 	CORE_API F32				clk_to_microsec;
-	CORE_API u64				qpc_freq = 0;
-	CORE_API u64				qpc_overhead = 0;
+	CORE_API U64				qpc_freq = 0;
+	CORE_API U64				qpc_overhead = 0;
 	CORE_API U32				qpc_counter = 0;
 
 	CORE_API _processor_info	ID;
 
-	CORE_API u64				QPC( )
+	CORE_API U64				QPC( )
 	{
-		u64		_dest;
+		U64		_dest;
 		QueryPerformanceCounter((PLARGE_INTEGER) &_dest);
 		qpc_counter++;
 		return	_dest;
@@ -123,7 +123,8 @@ namespace CPU
 		}
 
 		// Timers & frequency
-		u64			start, end;
+		U64			start;
+		U64			end;
 		U32			dwStart;
 		U32			dwTest;
 
@@ -143,7 +144,7 @@ namespace CPU
 
 		// Detect RDTSC Overhead
 		clk_overhead = 0;
-		u64 dummy = 0;
+		U64 dummy = 0;
 		for (int i = 0; i < 256; i++)
 		{
 			start = GetCLK( );
@@ -189,7 +190,7 @@ void _initialize_cpu( )
 	Msg("* Detected CPU: %s %s, F%d/M%d/S%d, %.2f mhz, %d-clk 'rdtsc'",
 		CPU::ID.v_name, CPU::ID.model_name,
 		CPU::ID.family, CPU::ID.model, CPU::ID.stepping,
-		F32(CPU::clk_per_second / u64(1000000)),
+		F32(CPU::clk_per_second / U64(1000000)),
 		U32(CPU::clk_overhead)
 	);
 

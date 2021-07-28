@@ -7,7 +7,7 @@ ENGINE_API extern bool			bDebug;
 #endif // def DEBUG
 
 #define _RELEASE(x)				{ if(x) { (x)->Release( ); (x) = NULL; } }
-#define _SHOW_REF(msg, x)		{ if(x) { x->AddRef( ); Log(msg, u32(x->Release( ))); } }
+#define _SHOW_REF(msg, x)		{ if(x) { x->AddRef( ); Log(msg, U32(x->Release( ))); } }
 
 // textures
 ENGINE_API extern int			psTextureLOD;
@@ -40,6 +40,6 @@ enum
 	rsR2						= (1ul << 19ul)
 };
 
-ENGINE_API extern u32			psCurrentVidMode[ ];
-ENGINE_API extern u32			psCurrentBPP;
+ENGINE_API extern U32			psCurrentVidMode[ ];
+ENGINE_API extern U32			psCurrentBPP;
 ENGINE_API extern Flags32		psDeviceFlags;

@@ -54,6 +54,6 @@ void CContextMenu::Select(int I)
 	if (I >= 0 && I < (int) (Items.size( )))
 	{
 		MenuItem& M = Items[I];
-		Engine.Event.Signal(M.Event, u64(M.Param));
+		Engine.Event.Signal(M.Event, U64(M.Param));
 	}
 }

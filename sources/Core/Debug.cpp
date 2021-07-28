@@ -313,7 +313,7 @@ static UnhandledExceptionFilterType* previous_filter = 0;
 
 void format_message(char* buffer, const U32& buffer_size)
 {
-	Pvoid message;
+	void* message;
 	DWORD error_code = GetLastError( );
 
 	if (!error_code)

@@ -63,7 +63,7 @@ inline	void CProfiler::convert_string	(const char* str, shared_str &out, u32 max
 	out							= m_temp;
 }
 
-void CProfiler::setup_timer			(const char* timer_id, const u64 &timer_time, const u32 &call_count)
+void CProfiler::setup_timer			(const char* timer_id, const U64& timer_time, const u32 &call_count)
 {
 	string256					m_temp;
 	float						_time = float(timer_time)*1000.f/CPU::qpc_freq;
@@ -130,7 +130,7 @@ void CProfiler::show_stats			(CGameFont *game_font, bool show)
 
 	if (!m_portions.empty()) {
 		std::sort				(m_portions.begin(),m_portions.end(),CProfilePortionPredicate());
-		u64						timer_time = 0;
+		U64						timer_time = 0;
 		u32						call_count = 0;
 
 		PORTIONS::const_iterator	I = m_portions.begin(), J = I;

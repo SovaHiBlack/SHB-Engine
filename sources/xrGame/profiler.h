@@ -16,8 +16,9 @@
 #	include "ai_debug.h"
 
 #pragma pack(push,4)
-struct CProfileResultPortion {
-	u64				m_time;
+struct CProfileResultPortion
+{
+	U64				m_time;
 	const char* m_timer_id;
 };
 #pragma pack(pop)
@@ -60,7 +61,7 @@ protected:
 	u32					m_call_count;
 
 protected:
-			void		setup_timer			(const char* timer_id, const u64 &timer_time, const u32 &call_count);
+			void		setup_timer			(const char* timer_id, const U64& timer_time, const u32 &call_count);
 	inline		void		convert_string		(const char* str, shared_str &out, u32 max_string_size);
 
 public:

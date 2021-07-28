@@ -197,17 +197,17 @@ inline int		_max(int x, int y)
 };
 
 // int64
-inline s64		_abs(s64 x)
+inline S64		_abs(S64 x)
 {
-	return (x >= 0) ? x : s64(-x);
+	return (x >= 0) ? x : S64(-x);
 }
-inline s64		_min(s64 x, s64 y)
+inline S64		_min(S64 x, S64 y)
 {
-	return y + ((x - y) & ((x - y) >> (sizeof(s64) * 8 - 1)));
+	return y + ((x - y) & ((x - y) >> (sizeof(S64) * 8 - 1)));
 };
-inline s64		_max(s64 x, s64 y)
+inline S64		_max(S64 x, S64 y)
 {
-	return x - ((x - y) & ((x - y) >> (sizeof(s64) * 8 - 1)));
+	return x - ((x - y) & ((x - y) >> (sizeof(S64) * 8 - 1)));
 };
 
 inline U32							xr_strlen(const char* S);

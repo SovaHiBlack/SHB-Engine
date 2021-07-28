@@ -13,7 +13,7 @@ struct ENGINE_API SPPInfo
 		{ }
 							SColor				(F32 _r, F32 _g, F32 _b) : r(_r), g(_g), b(_b)
 		{ }
-		inline				operator u32		( )
+		inline				operator U32		( )
 		{
 			int _r = clampr(iFloor(r * 255.0f + 0.5f), 0, 255);
 			int _g = clampr(iFloor(g * 255.0f + 0.5f), 0, 255);
@@ -148,7 +148,7 @@ class ENGINE_API CCameraManager
 public:
 
 #ifdef DEBUG
-	u32											dbg_upd_frame;
+	U32											dbg_upd_frame;
 #endif // def DEBUG
 
 	void					Dump				( );
@@ -182,7 +182,7 @@ public:
 	{
 		M.set(vRight, vNormal, vDirection, vPosition);
 	}
-	void					Update				(const Fvector3& P, const Fvector3& D, const Fvector3& N, F32 fFOV_Dest, F32 fASPECT_Dest, F32 fFAR_Dest, u32 flags = 0);
+	void					Update				(const Fvector3& P, const Fvector3& D, const Fvector3& N, F32 fFOV_Dest, F32 fASPECT_Dest, F32 fFAR_Dest, U32 flags = 0);
 	void					Update				(const CCameraBase* C);
 	void					ApplyDevice			(F32 _viewport_near);
 	static void				ResetPP				( );

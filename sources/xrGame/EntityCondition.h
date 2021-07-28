@@ -199,8 +199,8 @@ protected:
 	//потеря здоровья от последнего хита
 	float				m_fHealthLost;
 
-	//для отслеживания времени 
-	u64					m_iLastTimeCalled;
+	//для отслеживания времени
+	U64					m_iLastTimeCalled;
 	float				m_fDeltaTime;
 
 	//кто нанес последний хит

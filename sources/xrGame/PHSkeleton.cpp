@@ -185,7 +185,7 @@ void CPHSkeleton::SaveNetState(CNetPacket& P)
 	}
 	else
 	{
-		P.w_u64(u64(-1));
+		P.w_u64(U64(-1));
 		P.w_u16(0);
 	}
 	/////////////////////////////
@@ -434,7 +434,7 @@ void CPHSkeleton::RecursiveBonesCheck(U16 id)
 	mask.assign(K->LL_GetBonesVisible( ));
 	///////////////////////////////////////////
 	if (
-		mask.is(1ui64 << (u64) id) &&
+		mask.is(1ui64 << (U64) id) &&
 		!(BD.shape.flags.is(SBoneShape::sfRemoveAfterBreak))
 		)
 	{

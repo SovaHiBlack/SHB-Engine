@@ -6,7 +6,7 @@ struct	auth_options
 	xr_vector<xr_string>				important;
 };
 
-void	auth_entry(Pvoid p)
+void	auth_entry(void* p)
 {
 	FS.auth_runtime(p);
 }
@@ -24,14 +24,14 @@ void	CLocatorAPI::auth_generate(xr_vector<xr_string>& ignore, xr_vector<xr_strin
 #endif
 }
 
-u64		CLocatorAPI::auth_get( )
+U64		CLocatorAPI::auth_get( )
 {
 	m_auth_lock.Enter( );
 	m_auth_lock.Leave( );
 	return	m_auth_code;
 }
 
-void	CLocatorAPI::auth_runtime(Pvoid params)
+void	CLocatorAPI::auth_runtime(void* params)
 {
 	m_auth_lock.Enter( );
 	auth_options* _o = (auth_options*) params;
@@ -78,7 +78,7 @@ void	CLocatorAPI::auth_runtime(Pvoid params)
 #endif // DEBUG
 
 					FS.r_close(r);
-					m_auth_code ^= u64(crc);
+					m_auth_code ^= U64(crc);
 				}
 			}
 

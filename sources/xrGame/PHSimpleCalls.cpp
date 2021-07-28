@@ -28,7 +28,7 @@ bool	CPHCallOnStepCondition::obsolete() const
 }
 
 
-void CPHCallOnStepCondition::set_steps_interval(u64 steps)
+void CPHCallOnStepCondition::set_steps_interval(U64 steps)
 {
 	set_step(ph_world->m_steps_num+steps);
 }
@@ -80,7 +80,7 @@ CPHReqComparerHasShell::CPHReqComparerHasShell(CPhysicsShell	*shell)
 }
 //CPHTimeCondition::CPHTimeCondition(u32 time)
 //{
-//	//m_step=u64(ph_world->CalcNumSteps(time))+ph_world->m_steps_num;
+//	//m_step=U64(ph_world->CalcNumSteps(time))+ph_world->m_steps_num;
 //}
 //
 //CPHTimeCondition::CPHTimeCondition(float time)

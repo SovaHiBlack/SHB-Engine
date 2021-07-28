@@ -163,21 +163,21 @@ void	CBlender_Compile::PassSET_ZB		(BOOL bZTest, BOOL bZWrite, BOOL bInvertZTest
 	*/
 }
 
-void	CBlender_Compile::PassSET_ablend_mode	(BOOL bABlend,	u32 abSRC, u32 abDST)
+void	CBlender_Compile::PassSET_ablend_mode	(BOOL bABlend, U32 abSRC, U32 abDST)
 {
 	if (bABlend && D3DBLEND_ONE==abSRC && D3DBLEND_ZERO==abDST)		bABlend = FALSE;
 	RS.SetRS(D3DRS_ALPHABLENDENABLE,	BC(bABlend));
 	RS.SetRS(D3DRS_SRCBLEND,			bABlend?abSRC:D3DBLEND_ONE	);
 	RS.SetRS(D3DRS_DESTBLEND,			bABlend?abDST:D3DBLEND_ZERO	);
 }
-void	CBlender_Compile::PassSET_ablend_aref	(BOOL bATest,	u32 aRef)
+void	CBlender_Compile::PassSET_ablend_aref	(BOOL bATest, U32 aRef)
 {
 	clamp		(aRef,0u,255u);
 	RS.SetRS	(D3DRS_ALPHATESTENABLE,		BC(bATest));
-	if (bATest)	RS.SetRS(D3DRS_ALPHAREF,	u32(aRef));
+	if (bATest)	RS.SetRS(D3DRS_ALPHAREF, U32(aRef));
 }
 
-void	CBlender_Compile::PassSET_Blend	(BOOL bABlend, u32 abSRC, u32 abDST, BOOL bATest, u32 aRef)
+void	CBlender_Compile::PassSET_Blend	(BOOL bABlend, U32 abSRC, U32 abDST, BOOL bATest, U32 aRef)
 {
 	PassSET_ablend_mode					(bABlend,abSRC,abDST);
 
@@ -204,22 +204,22 @@ void	CBlender_Compile::StageEnd		()
 {
 	dwStage	++;
 }
-void	CBlender_Compile::StageSET_Address	(u32 adr)
+void	CBlender_Compile::StageSET_Address	(U32 adr)
 {
 	RS.SetSAMP	(Stage(),D3DSAMP_ADDRESSU,	adr);
 	RS.SetSAMP	(Stage(),D3DSAMP_ADDRESSV,	adr);
 }
-void	CBlender_Compile::StageSET_XForm	(u32 tf, u32 tc)
+void	CBlender_Compile::StageSET_XForm	(U32 tf, U32 tc)
 { }
-void	CBlender_Compile::StageSET_Color	(u32 a1, u32 op, u32 a2)
+void	CBlender_Compile::StageSET_Color	(U32 a1, U32 op, U32 a2)
 {
 	RS.SetColor	(Stage(),a1,op,a2);
 }
-void	CBlender_Compile::StageSET_Color3	(u32 a1, u32 op, u32 a2, u32 a3)
+void	CBlender_Compile::StageSET_Color3	(U32 a1, U32 op, U32 a2, U32 a3)
 {
 	RS.SetColor3(Stage(),a1,op,a2,a3);
 }
-void	CBlender_Compile::StageSET_Alpha	(u32 a1, u32 op, u32 a2)
+void	CBlender_Compile::StageSET_Alpha	(U32 a1, U32 op, U32 a2)
 {
 	RS.SetAlpha	(Stage(),a1,op,a2);
 }
@@ -238,7 +238,7 @@ void	CBlender_Compile::StageTemplate_LMAP0	()
 	StageSET_TMC		("$base1","$null","$null",1);
 }
 
-void	CBlender_Compile::Stage_Texture	(const char* name, u32 ,	u32	 fmin, u32 fmip, u32 fmag)
+void	CBlender_Compile::Stage_Texture	(const char* name, U32, U32	 fmin, U32 fmip, U32 fmag)
 {
 	sh_list& lst=	L_textures;
 	int id		=	ParseName(name);
@@ -259,7 +259,7 @@ void	CBlender_Compile::Stage_Matrix		(const char* name, int iChannel)
 	passMatrices.push_back(M);
 
 	// Setup transform pipeline
-	u32	ID = Stage();
+	U32	ID = Stage();
 	if (M) {
 		switch (M->dwMode)
 		{

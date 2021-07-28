@@ -10,7 +10,7 @@ class CORE_API		xrMemory
 public:
 	struct				mdbg
 	{
-		Pvoid _p;
+		void* _p;
 		size_t 			_size;
 		const char* _name;
 		U32				_dummy;
@@ -23,8 +23,8 @@ public:
 	U32					stat_calls;
 	int					stat_counter;
 
-	void				dbg_register(Pvoid _p, size_t _size, const char* _name);
-	void				dbg_unregister(Pvoid _p);
+	void				dbg_register(void* _p, size_t _size, const char* _name);
+	void				dbg_unregister(void* _p);
 	void				dbg_check( );
 
 	U32					mem_usage(U32* pBlocksUsed = nullptr, U32* pBlocksFree = nullptr);
@@ -38,9 +38,9 @@ public:
 		return stat_counter;
 	}
 
-	Pvoid mem_alloc(size_t	size);
-	Pvoid mem_realloc(Pvoid p, size_t size);
-	void				mem_free(Pvoid p);
+	void* mem_alloc(size_t	size);
+	void* mem_realloc(void* p, size_t size);
+	void				mem_free(void* p);
 
 	pso_MemCopy* mem_copy;
 	pso_MemFill* mem_fill;
@@ -71,39 +71,39 @@ inline void		xr_free(T*& P)
 {
 	if (P)
 	{
-		Memory.mem_free((Pvoid) P);
+		Memory.mem_free((void*) P);
 		P = nullptr;
 	}
 }
 
-inline Pvoid xr_malloc(size_t size)
+inline void* xr_malloc(size_t size)
 {
 	return	Memory.mem_alloc(size);
 }
 
-inline Pvoid xr_realloc(Pvoid P, size_t size)
+inline void* xr_realloc(void* P, size_t size)
 {
 	return Memory.mem_realloc(P, size);
 }
 
 CORE_API	char* xr_strdup(const char* string);
 
-inline Pvoid operator new		(size_t size)
+inline void* operator new		(size_t size)
 {
 	return Memory.mem_alloc(size ? size : 1);
 }
 
-inline void		operator delete		(Pvoid p)
+inline void		operator delete		(void* p)
 {
 	xr_free(p);
 }
 
-inline Pvoid operator new[ ] (size_t size)
+inline void* operator new[ ] (size_t size)
 {
 	return Memory.mem_alloc(size ? size : 1);
 }
 
-inline void		operator delete[ ] (Pvoid p)
+inline void		operator delete[ ] (void* p)
 {
 	xr_free(p);
 }

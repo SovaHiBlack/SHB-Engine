@@ -18,7 +18,7 @@ const U32 BIG_FILE_READER_WINDOW_SIZE = 1024 * 1024;
 
 #define PROTECTED_BUILD
 
-typedef void DUMMY_STUFF(Pcvoid, const U32&, Pvoid);
+typedef void DUMMY_STUFF(Pcvoid, const U32&, void*);
 CORE_API DUMMY_STUFF* g_temporary_stuff = nullptr;
 
 #ifdef PROTECTED_BUILD
@@ -283,7 +283,7 @@ void CLocatorAPI::Register(Pcstr name, U32 vfs, U32 crc, U32 ptr, U32 size_real,
 	}
 }
 
-IReader* open_chunk(Pvoid ptr, U32 ID)
+IReader* open_chunk(void* ptr, U32 ID)
 {
 	BOOL res;
 	U32 dwType;

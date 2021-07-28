@@ -760,7 +760,7 @@ void CPHShell::AddElementRecursive(CPhysicsElement* root_e, U16 id, Fmatrix glob
 	fm_position.mulA_43(global_parent);
 	Flags64 mask;
 	mask.assign(m_pKinematics->LL_GetBonesVisible( ));
-	bool no_visible = !mask.is(1ui64 << (u64) id);
+	bool no_visible = !mask.is(1ui64 << (U64) id);
 	bool lvis_check = false;
 	if (no_visible)
 	{
@@ -1154,7 +1154,7 @@ void CPHShell::ResetCallbacksRecursive(U16 id, U16 element, Flags64& mask)
 	CBoneData& bone_data = m_pKinematics->LL_GetData(U16(id));
 	SJointIKData& joint_data = bone_data.IK_data;
 
-	if (mask.is(1ui64 << (u64) id))
+	if (mask.is(1ui64 << (U64) id))
 	{
 		if (no_physics_shape(bone_data.shape) || joint_data.type == jtRigid && element != U16(-1))
 		{
@@ -1213,7 +1213,7 @@ void CPHShell::SetCallbacksRecursive(U16 id, U16 element)
 	SJointIKData& joint_data = bone_data.IK_data;
 	Flags64 mask;
 	mask.assign(m_pKinematics->LL_GetBonesVisible( ));
-	if (mask.is(1ui64 << (u64) id))
+	if (mask.is(1ui64 << (U64) id))
 	{
 		if ((no_physics_shape(bone_data.shape) || joint_data.type == jtRigid) && element != U16(-1))
 		{
@@ -1627,7 +1627,7 @@ void CPHShell::PlaceBindToElFormsRecursive(Fmatrix parent, U16 id, U16 element, 
 	CBoneData& bone_data = m_pKinematics->LL_GetData(U16(id));
 	SJointIKData& joint_data = bone_data.IK_data;
 
-	if (mask.is(1ui64 << (u64) id))
+	if (mask.is(1ui64 << (U64) id))
 	{
 		if (no_physics_shape(bone_data.shape) || joint_data.type == jtRigid && element != U16(-1))
 		{

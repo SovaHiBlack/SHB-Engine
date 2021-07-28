@@ -116,7 +116,7 @@ protected:
 	bool	b_jumping;
 	bool	b_clamb_jump;
 	bool	b_external_impulse;
-	u64		m_ext_impuls_stop_step;
+	U64		m_ext_impuls_stop_step;
 	Fvector3 m_ext_imulse;
 	bool	b_death_pos;
 	bool	b_foot_mtl_check;

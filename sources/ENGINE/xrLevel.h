@@ -2,7 +2,7 @@
 
 struct xrGUID
 {
-	u64	g[2];
+	U64	g[2];
 
 	__forceinline	bool operator==	(const xrGUID &o) const
 	{

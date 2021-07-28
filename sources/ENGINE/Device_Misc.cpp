@@ -7,7 +7,7 @@
 //----------------------------- FLAGS
 static struct _DF {
 	char *	name;
-	u32	mask;
+	U32	mask;
 } DF[] = {
 	{"rsFullscreen",	rsFullscreen	},
 	{"rsClearBB",		rsClearBB 		},

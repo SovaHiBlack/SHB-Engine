@@ -41,7 +41,7 @@ public:
 
 	int								tag;
 
-					CCameraBase		(CObject* p, u32 flags);
+					CCameraBase		(CObject* p, U32 flags);
 	virtual			~CCameraBase	( );
 	virtual void	Load			(const char* section);
 	void			SetParent		(CObject* p)

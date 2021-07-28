@@ -50,7 +50,7 @@ class CPHWorld : public pureFrame
 public:
 	xr_vector<ISpatial*>		r_spatial;
 
-	u64							m_steps_num													;
+	U64							m_steps_num													;
 	F64						m_frame_sum													;
 	dReal						m_previous_frame_time										;
 	bool						b_frame_mark												;

@@ -239,7 +239,7 @@ public:
 	virtual void				Load_GameSpecific_CFORM(CDB::TRI* T, u32 count);
 
 	// Events
-	virtual void				OnEvent(EVENT E, u64 P1, u64 P2);
+	virtual void				OnEvent(EVENT E, U64 P1, U64 P2);
 	virtual void				OnFrame( );
 	virtual void				OnRender( );
 	void						cl_Process_Event(U16 dest, U16 type, CNetPacket& P);

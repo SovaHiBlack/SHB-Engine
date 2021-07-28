@@ -55,7 +55,7 @@ void	CSoundRender_TargetA::start			(CSoundRender_Emitter* E)
 
 void	CSoundRender_TargetA::render		()
 {
-	for (u32 buf_idx=0; buf_idx<sdef_target_count; buf_idx++)
+	for (U32 buf_idx=0; buf_idx<sdef_target_count; buf_idx++)
 		fill_block	(pBuffers[buf_idx]);
 
 	A_CHK			(alSourceQueueBuffers	(pSource, sdef_target_count, pBuffers));	
@@ -81,7 +81,7 @@ void	CSoundRender_TargetA::rewind			()
 
 	A_CHK			(alSourceStop(pSource));
 	A_CHK			(alSourcei	(pSource, AL_BUFFER,   NULL));
-	for (u32 buf_idx=0; buf_idx<sdef_target_count; buf_idx++)
+	for (U32 buf_idx=0; buf_idx<sdef_target_count; buf_idx++)
 		fill_block	(pBuffers[buf_idx]);
 	A_CHK			(alSourceQueueBuffers	(pSource, sdef_target_count, pBuffers));	
 	A_CHK			(alSourcePlay			(pSource));

@@ -126,10 +126,10 @@ void	CSoundRender_TargetD::rewind			()
 	}
 }
 
-u32		CSoundRender_TargetD::calc_interval	(u32 ptr)
+U32		CSoundRender_TargetD::calc_interval	(U32 ptr)
 {
-	u32		norm_ptr	= ptr%buf_size;
-	u32		range		= norm_ptr/buf_block;
+	U32		norm_ptr	= ptr%buf_size;
+	U32		range		= norm_ptr/buf_block;
 	return	range;
 }
 
@@ -138,10 +138,10 @@ void	CSoundRender_TargetD::update			()
 	inherited::update();
 
 	// Analyze if we really need more data to stream them ahead
-	u32				cursor_write;
+	U32				cursor_write;
 	R_CHK			(pBuffer->GetCurrentPosition(0,LPDWORD(&cursor_write)));
-	u32				r_write		= calc_interval(pos_write);
-	u32				r_cursor	= (calc_interval(cursor_write)+1)%sdef_target_count;
+	U32				r_write		= calc_interval(pos_write);
+	U32				r_cursor	= (calc_interval(cursor_write)+1)%sdef_target_count;
 	if (r_write==r_cursor)	fill_block	();     
 //	Msg				("write: 0x%8x",cursor_write);
 }
@@ -187,7 +187,8 @@ void	CSoundRender_TargetD::fill_block		()
 
 	// Obtain memory address of write block. This will be in two parts if the block wraps around.
     LPVOID			ptr1, ptr2;
-    u32				bytes1,bytes2;
+	U32				bytes1;
+	U32				bytes2;
     R_CHK			(pBuffer->Lock(pos_write%buf_size, buf_block, &ptr1, LPDWORD(&bytes1), &ptr2, LPDWORD(&bytes2), 0));
 	R_ASSERT		(0==ptr2 && 0==bytes2);
 

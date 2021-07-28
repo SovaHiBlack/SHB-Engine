@@ -1,5 +1,3 @@
-#ifndef SoundRender_SourceH
-#define SoundRender_SourceH
 #pragma once
 
 #include "soundrender_cache.h"
@@ -13,31 +11,32 @@ public:
 	shared_str				pname;
 	shared_str				fname;
 	cache_cat				CAT;
-	u32						dwTimeTotal;			// всего
-	u32						dwBytesTotal;
-//	u32						dwBytesPerSec;
-	u32						dwBytesPerMS;
+	U32						dwTimeTotal;			// всего
+	U32						dwBytesTotal;
+//	U32						dwBytesPerSec;
+	U32						dwBytesPerMS;
 
 	float					m_fBaseVolume;
 	float					m_fMinDist;
 	float					m_fMaxDist;
 	float					m_fMaxAIDist;
-	u32						m_uGameType;
+	U32						m_uGameType;
+
 private:
-	void 					i_decompress_fr			(OggVorbis_File* ovf, char* dest, u32 size);    
-	void 					i_decompress_hr			(OggVorbis_File* ovf, char* dest, u32 size);
+	void 					i_decompress_fr			(OggVorbis_File* ovf, char* dest, U32 size);
+	void 					i_decompress_hr			(OggVorbis_File* ovf, char* dest, U32 size);
 	void					LoadWave 				(const char* name);
+
 public:
 							CSoundRender_Source		();
 							~CSoundRender_Source	();
 
 	void					load					(const char* name);
-    void					unload					();
-	void					decompress				(u32 line, OggVorbis_File* ovf);
+	void					unload					();
+	void					decompress				(U32 line, OggVorbis_File* ovf);
 	
-	virtual	u32				length_ms				()	{return dwTimeTotal;	}
-	virtual u32				game_type				()	{return m_uGameType;	}
+	virtual	U32				length_ms				()	{return dwTimeTotal;	}
+	virtual U32				game_type				()	{return m_uGameType;	}
 	virtual const char* file_name				()	{return *fname;	}
 	virtual float			base_volume				()	{return m_fBaseVolume; }
 };
-#endif

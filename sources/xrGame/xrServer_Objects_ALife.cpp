@@ -373,7 +373,7 @@ void CSE_ALifeGroupAbstract::FillProps		(const char* pref, PropItemVec& items)
 CSE_ALifeDynamicObject::CSE_ALifeDynamicObject(const char* caSection) : CSE_ALifeObject(caSection)
 {
 	m_tTimeID					= 0;
-	m_switch_counter			= u64(-1);
+	m_switch_counter			= U64(-1);
 }
 
 CSE_ALifeDynamicObject::~CSE_ALifeDynamicObject()
@@ -1077,7 +1077,7 @@ CSE_ALifeSchedulable::CSE_ALifeSchedulable	(const char* caSection)
 {
 	m_tpCurrentBestWeapon		= 0;
 	m_tpBestDetector			= 0;
-	m_schedule_counter			= u64(-1);
+	m_schedule_counter			= U64(-1);
 }
 
 CSE_ALifeSchedulable::~CSE_ALifeSchedulable	()

@@ -7,7 +7,7 @@
 #include "Render.h"
 #include "CameraManager.h"
 
-CDemoPlay::CDemoPlay(const char* name, float ms, u32 cycles, float life_time) : CEffectorCam(cetDemo, life_time)
+CDemoPlay::CDemoPlay(const char* name, float ms, U32 cycles, float life_time) : CEffectorCam(cetDemo, life_time)
 {
 	Msg("*** Playing demo: %s", name);
 	Console->Execute("hud_weapon 0");
@@ -47,7 +47,7 @@ CDemoPlay::CDemoPlay(const char* name, float ms, u32 cycles, float life_time) : 
 		}
 
 		IReader* fs = FS.r_open(name);
-		u32 sz = fs->length( );
+		U32 sz = fs->length( );
 		if (sz % sizeof(Fmatrix) != 0)
 		{
 			FS.r_close(fs);
@@ -113,14 +113,14 @@ void CDemoPlay::stat_Stop( )
 	float rfps_average;
 
 	// total
-	u32 dwFramesTotal = Device.dwFrame - stat_StartFrame;
+	U32 dwFramesTotal = Device.dwFrame - stat_StartFrame;
 	rfps_average = float(dwFramesTotal) / stat_total;
 
 	// min/max/average
 	rfps_min = flt_max;
 	rfps_max = flt_min;
 	rfps_middlepoint = 0;
-	for (u32 it = 1; it < stat_table.size( ); it++)
+	for (U32 it = 1; it < stat_table.size( ); it++)
 	{
 		float fps = 1.0f / stat_table[it];
 		if (fps < rfps_min)
@@ -160,11 +160,11 @@ void CDemoPlay::stat_Stop( )
 		res.w_float("general", "max", rfps_max, "absolute maximum");
 		res.w_float("general", "average", rfps_average, "average for this run");
 		res.w_float("general", "middle", rfps_middlepoint, "per-frame middle-point");
-		for (u32 it = 1; it < stat_table.size( ); it++)
+		for (U32 it = 1; it < stat_table.size( ); it++)
 		{
 			string32 id;
 			sprintf_s(id, sizeof(id), "%7d", it);
-			for (u32 c = 0; id[c]; c++)
+			for (U32 c = 0; id[c]; c++)
 			{
 				if (' ' == id[c])
 				{

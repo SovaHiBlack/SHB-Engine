@@ -14,9 +14,9 @@ private:
 	U8* list;
 
 private:
-	__forceinline Pvoid* access(Pvoid P)
+	__forceinline void** access(void* P)
 	{
-		return (Pvoid*) ((Pvoid) (P));
+		return (void**) ((void*) (P));
 	}
 	void				block_create( );
 
@@ -32,7 +32,7 @@ public:
 		return s_element;
 	}
 
-	__forceinline Pvoid create( )
+	__forceinline void* create( )
 	{
 		cs.Enter( );
 		if (0 == list)
@@ -40,7 +40,7 @@ public:
 			block_create( );
 		}
 
-		Pvoid E = list;
+		void* E = list;
 		list = (U8*) *access(list);
 		cs.Leave( );
 		return			E;

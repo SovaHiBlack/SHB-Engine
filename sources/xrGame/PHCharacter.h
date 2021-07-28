@@ -28,7 +28,7 @@ class CPHCharacter : public CPHObject, public CPHSynchronize, public CPHDisablin
 
 {
 public:
-	u64						m_creation_step;
+	U64						m_creation_step;
 	bool					b_exist;
 
 protected:

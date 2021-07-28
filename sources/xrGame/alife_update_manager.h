@@ -26,7 +26,7 @@ private:
 	bool				m_first_time;
 
 protected:
-	u64					m_max_process_time;
+	U64					m_max_process_time;
 	float				m_update_monster_factor;
 	u32					m_objects_per_update;
 	bool				m_changing_level;

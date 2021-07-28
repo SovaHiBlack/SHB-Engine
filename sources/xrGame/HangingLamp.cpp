@@ -41,7 +41,7 @@ void CHangingLamp::RespawnInit()
 	Init();
 	if(Visual()){
 		CKinematics* K = smart_cast<CKinematics*>(Visual());
-		K->LL_SetBonesVisible(u64(-1));
+		K->LL_SetBonesVisible(U64(-1));
 		K->CalculateBones_Invalidate();
 		K->CalculateBones	();
 	}

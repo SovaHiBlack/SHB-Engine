@@ -54,7 +54,7 @@ BOOL CSoundRender_CoreD::EAXTestSupport	(BOOL bDeferred)
 }
 
 
-void CSoundRender_CoreD::_initialize	(u64 window)
+void CSoundRender_CoreD::_initialize	(U64 window)
 {
 	bPresent			= FALSE;
 

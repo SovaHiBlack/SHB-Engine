@@ -99,11 +99,11 @@ char* xr_strdup(const char* string)
 	return	memory;
 }
 
-CORE_API		BOOL			is_stack_ptr(Pvoid _ptr)
+CORE_API		BOOL			is_stack_ptr(void* _ptr)
 {
 	int			local_value = 0;
-	Pvoid ptr_refsound = _ptr;
-	Pvoid ptr_local = &local_value;
-	ptrdiff_t	difference = (ptrdiff_t) _abs(s64(ptrdiff_t(ptr_local) - ptrdiff_t(ptr_refsound)));
+	void* ptr_refsound = _ptr;
+	void* ptr_local = &local_value;
+	ptrdiff_t	difference = (ptrdiff_t) _abs(S64(ptrdiff_t(ptr_local) - ptrdiff_t(ptr_refsound)));
 	return		(difference < (512 * 1024));
 }

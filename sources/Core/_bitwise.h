@@ -87,9 +87,9 @@ inline	U32	btwCount1(U32 v)
 	return (v + (v >> 9) + (v >> 18) + (v >> 27)) & 0x3f;
 }
 
-inline	u64	btwCount1(u64 v)
+inline	U64	btwCount1(U64 v)
 {
-	return btwCount1(U32(v & U32(-1))) + btwCount1(U32(v >> u64(32)));
+	return btwCount1(U32(v & U32(-1))) + btwCount1(U32(v >> U64(32)));
 }
 
 __forceinline int iFloor(F32 x)

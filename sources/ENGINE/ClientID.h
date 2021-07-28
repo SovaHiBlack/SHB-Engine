@@ -2,24 +2,24 @@
 
 class ClientID
 {
-	u32					id;
+	U32					id;
 
 public:
 			ClientID	( ) : id(0)
 	{ }
-			ClientID	(u32 val) : id(val)
+			ClientID	(U32 val) : id(val)
 	{ }
 
-	u32		value		( ) const
+	U32		value		( ) const
 	{
 		return id;
 	}
-	void	set			(u32 v)
+	void	set			(U32 v)
 	{
 		id = v;
 	}
 
-	bool	compare		(u32 v) const
+	bool	compare		(U32 v) const
 	{
 		return id == v;
 	}

@@ -1,15 +1,13 @@
-#ifndef soundrender_environmentH
-#define soundrender_environmentH
 #pragma once
 
 // refs
 class CSoundRender_Environment		: public CSound_environment
 {
 public:
-	u32				version;
+	U32				version;
 	shared_str			name;
 
-    u32				Environment;				// sorce environment
+	U32				Environment;				// sorce environment
     float           Room;                       // room effect level at low frequencies
     float           RoomHF;                     // room effect high-frequency level re. low frequency level
     float           RoomRolloffFactor;          // like DS3D flRolloffFactor but for room effect
@@ -53,4 +51,3 @@ public:
 	void						Remove	(int id);
 	SE_VEC&						Library	();
 };
-#endif

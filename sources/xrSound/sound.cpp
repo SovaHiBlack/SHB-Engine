@@ -3,7 +3,7 @@
 #include "SoundRender_CoreA.h"
 #include "SoundRender_CoreD.h"
 
-void CSound_manager_interface::_create		(u64 window)
+void CSound_manager_interface::_create		(U64 window)
 {
 	if (strstr( Core.Params,"-dsound"))
 	{

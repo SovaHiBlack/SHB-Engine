@@ -261,11 +261,11 @@ public:
 		return location.col + 1;
 	}	///< See Row()
 
-	void  SetUserData(Pvoid user)
+	void  SetUserData(void* user)
 	{
 		userData = user;
 	}	///< Set a pointer to arbitrary user data.
-	Pvoid GetUserData( )
+	void* GetUserData( )
 	{
 		return userData;
 	}	///< Get a pointer to arbitrary user data.
@@ -399,7 +399,7 @@ protected:
 	TiXmlCursor location;
 
 	/// Field containing a generic user pointer
-	Pvoid userData;
+	void* userData;
 
 	// None of these methods are reliable for any language except English.
 	// Good for approximation, not great for accuracy.

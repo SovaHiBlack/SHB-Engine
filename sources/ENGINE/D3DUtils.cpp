@@ -21,7 +21,7 @@ static Fvector3 circledef1[LINE_DIVISION];
 static Fvector3 circledef2[LINE_DIVISION];
 static Fvector3 circledef3[LINE_DIVISION];
 
-const u32 boxcolor = D3DCOLOR_RGBA(255,255,255,0);
+const U32 boxcolor = D3DCOLOR_RGBA(255,255,255,0);
 static const int boxvertcount = 48;
 static Fvector3 boxvert[boxvertcount];
 

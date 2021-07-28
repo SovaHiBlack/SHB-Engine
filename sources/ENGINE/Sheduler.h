@@ -38,10 +38,11 @@ private:
 	void			internal_Register		(ISheduled* A, BOOL RT=FALSE		);
 	bool			internal_Unregister		(ISheduled* A, BOOL RT, bool warn_on_not_found = true);
 	void			internal_Registration	();
+
 public:
-	u64				cycles_start;
-	u64				cycles_limit;
-public:
+	U64				cycles_start;
+	U64				cycles_limit;
+
 	void			ProcessStep	();
 //	void			Process		();
 	void			Update		();

@@ -416,7 +416,7 @@ void CSheduler::Update				()
 	// Initialize
 	Device.Statistic->Sheduler.Begin();
 	cycles_start					= CPU::QPC			();
-	cycles_limit					= CPU::qpc_freq * u64 (iCeil(psShedulerCurrent)) / 1000i64 + cycles_start;
+	cycles_limit					= CPU::qpc_freq * U64(iCeil(psShedulerCurrent)) / 1000i64 + cycles_start;
 	internal_Registration			();
 // not use?	g_bSheduleInProgress			= true;
 
