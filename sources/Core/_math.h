@@ -41,11 +41,11 @@ extern CORE_API	void	_initialize_cpu( );
 extern CORE_API	void	_initialize_cpu_thread( );
 
 // threading
-typedef				void	thread_t(Pvoid);
+typedef				void	thread_t(void*);
 extern CORE_API	void	thread_name(const char* name);
 extern CORE_API	void	thread_spawn(
 	thread_t* entry,
 	const char* name,
 	unsigned	stack,
-	Pvoid arglist
+	void* arglist
 );

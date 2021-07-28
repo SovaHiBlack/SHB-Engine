@@ -8,12 +8,12 @@
 MEMPOOL		mem_pools[mem_pools_count];
 
 // MSVC
-__forceinline	U8* acc_header(Pvoid P)
+__forceinline	U8* acc_header(void* P)
 {
 	U8* _P = (U8*) P;
 	return	_P - 1;
 }
-__forceinline	U32		get_header(Pvoid P)
+__forceinline	U32		get_header(void* P)
 {
 	return	(U32) *acc_header(P);
 }
@@ -28,7 +28,7 @@ __forceinline	U32		get_pool(size_t size)
 bool	g_use_pure_alloc = false;
 #endif // PURE_ALLOC
 
-Pvoid xrMemory::mem_alloc(size_t size)
+void* xrMemory::mem_alloc(size_t size)
 {
 	stat_calls++;
 
@@ -42,22 +42,21 @@ Pvoid xrMemory::mem_alloc(size_t size)
 
 	if (g_use_pure_alloc)
 	{
-		Pvoid result = malloc(size);
+		void* result = malloc(size);
 		return							(result);
 	}
 #endif // PURE_ALLOC
 
 	U32		_footer = debug_mode ? 4 : 0;
-	Pvoid _ptr = nullptr;
+	void* _ptr = nullptr;
 
 	//
 	if (!mem_initialized)
 	{
 		// generic
 		// Reserve 1 byte for xrMemory header
-		Pvoid _real = xr_aligned_offset_malloc(1 + size + _footer, 16, 0x1);
-		//Pvoid	_real			=	xr_aligned_offset_malloc	(size + _footer, 16, 0x1);
-		_ptr = (Pvoid) (((U8*) _real) + 1);
+		void* _real = xr_aligned_offset_malloc(1 + size + _footer, 16, 0x1);
+		_ptr = (void*) (((U8*) _real) + 1);
 		*acc_header(_ptr) = mem_generic;
 	}
 	else
@@ -70,9 +69,8 @@ Pvoid xrMemory::mem_alloc(size_t size)
 		{
 			// generic
 			// Reserve 1 byte for xrMemory header
-			Pvoid _real = xr_aligned_offset_malloc(1 + size + _footer, 16, 0x1);
-			//Pvoid*	_real		=	xr_aligned_offset_malloc	(size + _footer,16,0x1);
-			_ptr = (Pvoid) (((U8*) _real) + 1);
+			void* _real = xr_aligned_offset_malloc(1 + size + _footer, 16, 0x1);
+			_ptr = (void*) (((U8*) _real) + 1);
 			*acc_header(_ptr) = mem_generic;
 		}
 		else
@@ -80,8 +78,8 @@ Pvoid xrMemory::mem_alloc(size_t size)
 			// pooled
 			// Reserve 1 byte for xrMemory header
 			// Already reserved when getting pool id
-			Pvoid _real = mem_pools[pool].create( );
-			_ptr = (Pvoid) (((U8*) _real) + 1);
+			void* _real = mem_pools[pool].create( );
+			_ptr = (void*) (((U8*) _real) + 1);
 			*acc_header(_ptr) = (U8) pool;
 		}
 	}
@@ -89,7 +87,7 @@ Pvoid xrMemory::mem_alloc(size_t size)
 	return	_ptr;
 }
 
-void	xrMemory::mem_free(Pvoid P)
+void	xrMemory::mem_free(void* P)
 {
 	stat_calls++;
 
@@ -107,7 +105,7 @@ void	xrMemory::mem_free(Pvoid P)
 	}
 
 	U32 pool = get_header(P);
-	Pvoid _real = (Pvoid) (((U8*) P) - 1);
+	void* _real = (void*) (((U8*) P) - 1);
 	if (mem_generic == pool)
 	{
 		// generic
@@ -123,14 +121,14 @@ void	xrMemory::mem_free(Pvoid P)
 
 extern BOOL g_bDbgFillMemory;
 
-Pvoid xrMemory::mem_realloc(Pvoid P, size_t size)
+void* xrMemory::mem_realloc(void* P, size_t size)
 {
 	stat_calls++;
 
 #ifdef PURE_ALLOC
 	if (g_use_pure_alloc)
 	{
-		Pvoid result = realloc(P, size);
+		void* result = realloc(P, size);
 		return result;
 	}
 #endif // def PURE_ALLOC
@@ -162,15 +160,14 @@ Pvoid xrMemory::mem_realloc(Pvoid P, size_t size)
 		p_mode = 1;
 	}
 
-	Pvoid _real = (Pvoid) (((U8*) P) - 1);
-	Pvoid _ptr = nullptr;
+	void* _real = (void*) (((U8*) P) - 1);
+	void* _ptr = nullptr;
 	if (0 == p_mode)
 	{
 		U32 _footer = debug_mode ? 4 : 0;
 		// Reserve 1 byte for xrMemory header
-		Pvoid _real2 = xr_aligned_offset_realloc(_real, 1 + size + _footer, 16, 0x1);
-//		Pvoid _real2 = xr_aligned_offset_realloc(_real, size + _footer, 16, 0x1);
-		_ptr = (Pvoid) (((U8*) _real2) + 1);
+		void* _real2 = xr_aligned_offset_realloc(_real, 1 + size + _footer, 16, 0x1);
+		_ptr = (void*) (((U8*) _real2) + 1);
 		*acc_header(_ptr) = mem_generic;
 	}
 	else if (1 == p_mode)
@@ -179,21 +176,20 @@ Pvoid xrMemory::mem_realloc(Pvoid P, size_t size)
 		R_ASSERT2(p_current < mem_pools_count, "Memory corruption");
 		U32		s_current = mem_pools[p_current].get_element( );
 		U32		s_dest = (U32) size;
-		Pvoid p_old = P;
+		void* p_old = P;
 
-		Pvoid p_new = mem_alloc(size);
+		void* p_new = mem_alloc(size);
 		// Reserve 1 byte for xrMemory header
 		// Don't bother in this case?
 		mem_copy(p_new, p_old, _min(s_current - 1, s_dest));
-		//mem_copy				(p_new,p_old,_min(s_current,s_dest));
 		mem_free(p_old);
 		_ptr = p_new;
 	}
 	else if (2 == p_mode)
 	{
 		// relocate into another mmgr(pooled) from real
-		Pvoid p_old = P;
-		Pvoid p_new = mem_alloc(size);
+		void* p_old = P;
+		void* p_new = mem_alloc(size);
 		mem_copy(p_new, p_old, (U32) size);
 		mem_free(p_old);
 		_ptr = p_new;

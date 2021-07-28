@@ -126,18 +126,19 @@
 // stl ext
 struct CORE_API xr_rtoken
 {
-	shared_str	name;
-	int	   	id;
-	xr_rtoken(Pcstr _nm, int _id)
+	shared_str name;
+	int id;
+	xr_rtoken(const char* _nm, int _id)
 	{
 		name = _nm; id = _id;
 	}
+
 public:
-	void	rename(Pcstr _nm)
+	void rename(const char* _nm)
 	{
 		name = _nm;
 	}
-	bool	equal(Pcstr _nm)
+	bool equal(const char* _nm)
 	{
 		return (0 == xr_strcmp(*name, _nm));
 	}
@@ -219,8 +220,7 @@ public:
 	string64	CompName;
 	string512	Params;
 
-public:
-	void		_initialize(Pcstr ApplicationName, LogCallback cb = 0, BOOL init_fs = TRUE, Pcstr fs_fname = 0);
+	void		_initialize(const char* ApplicationName, LogCallback cb = 0, BOOL init_fs = TRUE, const char* fs_fname = 0);
 	void		_destroy( );
 };
 extern CORE_API CCore Core;

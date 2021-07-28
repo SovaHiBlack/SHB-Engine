@@ -38,7 +38,7 @@ void			crc32_init( )
 	}
 }
 
-U32				crc32(Pcvoid P, U32 len)
+U32				crc32(const void* P, U32 len)
 {
 	if (!crc32_ready)
 	{

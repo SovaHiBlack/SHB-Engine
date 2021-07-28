@@ -13,7 +13,7 @@
 
 CORE_API		CCore	Core;
 CORE_API		U32		build_id;
-CORE_API		Pcstr build_date;
+CORE_API		const char* build_date;
 
 namespace CPU
 {
@@ -26,7 +26,7 @@ extern char g_application_path[256];
 
 //. extern xr_vector<shared_str>*	LogFile;
 
-void CCore::_initialize(Pcstr _ApplicationName, LogCallback cb, BOOL init_fs, Pcstr fs_fname)
+void CCore::_initialize(const char* _ApplicationName, LogCallback cb, BOOL init_fs, const char* fs_fname)
 {
 	strcpy_s(ApplicationName, _ApplicationName);
 	if (0 == init_counter)

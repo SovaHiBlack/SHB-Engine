@@ -2,9 +2,9 @@
 
 using namespace std;
 
-CORE_API	smem_container* g_pSharedMemoryContainer = NULL;
+CORE_API	smem_container* g_pSharedMemoryContainer = nullptr;
 
-smem_value* smem_container::dock(U32 dwCRC, U32 dwLength, Pvoid ptr)
+smem_value* smem_container::dock(U32 dwCRC, U32 dwLength, void* ptr)
 {
 	VERIFY(dwCRC && dwLength && ptr);
 

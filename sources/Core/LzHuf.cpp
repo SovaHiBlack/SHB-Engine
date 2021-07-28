@@ -695,7 +695,7 @@ void Decode(void)  /* recover */
 	tim_size = count;
 }
 
-unsigned _writeLZ(int hf, Pvoid d, unsigned size)
+unsigned _writeLZ(int hf, void* d, unsigned size)
 {
 	U8* start = (U8*) d;
 	fs.Init_Input(start, start + size);
@@ -709,7 +709,7 @@ unsigned _writeLZ(int hf, Pvoid d, unsigned size)
 	return size_out;
 }
 
-void _compressLZ(U8** dest, unsigned* dest_sz, Pvoid src, unsigned src_sz)
+void _compressLZ(U8** dest, unsigned* dest_sz, void* src, unsigned src_sz)
 {
 	U8* start = (U8*) src;
 	fs.Init_Input(start, start + src_sz);
@@ -718,7 +718,7 @@ void _compressLZ(U8** dest, unsigned* dest_sz, Pvoid src, unsigned src_sz)
 	*dest_sz = fs.OutSize( );
 }
 
-void _decompressLZ(U8** dest, unsigned* dest_sz, Pvoid src, unsigned src_sz)
+void _decompressLZ(U8** dest, unsigned* dest_sz, void* src, unsigned src_sz)
 {
 	U8* start = (U8*) src;
 	fs.Init_Input(start, start + src_sz);
@@ -727,7 +727,7 @@ void _decompressLZ(U8** dest, unsigned* dest_sz, Pvoid src, unsigned src_sz)
 	*dest_sz = fs.OutSize( );
 }
 
-unsigned _readLZ(int hf, Pvoid& d, unsigned size)
+unsigned _readLZ(int hf, void*& d, unsigned size)
 {
 	// Read file in memory
 	U8* data = (U8*) xr_malloc(size);

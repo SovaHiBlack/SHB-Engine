@@ -16,55 +16,55 @@ public:
 	virtual				~CXml( );
 	void				ClearInternal( );
 
-	bool 				Init(Pcstr path_alias, Pcstr path, Pcstr xml_filename);
-	bool 				Init(Pcstr path_alias, Pcstr xml_filename);
+	bool 				Init(const char* path_alias, const char* path, const char* xml_filename);
+	bool 				Init(const char* path_alias, const char* xml_filename);
 
 	// чтение элементов
-	const char* Read(Pcstr path, int index, Pcstr default_str_val);
-	const char* Read(XML_NODE* start_node, Pcstr path, int index, Pcstr default_str_val);
-	const char* Read(XML_NODE* node, Pcstr default_str_val);
+	const char* Read(const char* path, int index, const char* default_str_val);
+	const char* Read(XML_NODE* start_node, const char* path, int index, const char* default_str_val);
+	const char* Read(XML_NODE* node, const char* default_str_val);
 
-	int   				ReadInt(Pcstr path, int index, int default_int_val);
-	int   				ReadInt(XML_NODE* start_node, Pcstr path, int index, int default_int_val);
+	int   				ReadInt(const char* path, int index, int default_int_val);
+	int   				ReadInt(XML_NODE* start_node, const char* path, int index, int default_int_val);
 	int   				ReadInt(XML_NODE* node, int default_int_val);
 
-	F32   			ReadFlt(Pcstr path, int index, F32 default_flt_val);
-	F32   			ReadFlt(XML_NODE* start_node, Pcstr path, int index, F32 default_flt_val);
+	F32   			ReadFlt(const char* path, int index, F32 default_flt_val);
+	F32   			ReadFlt(XML_NODE* start_node, const char* path, int index, F32 default_flt_val);
 	F32   			ReadFlt(XML_NODE* node, F32 default_flt_val);
 
-	const char* ReadAttrib(Pcstr path, int index, Pcstr attrib, Pcstr default_str_val = "");
-	const char* ReadAttrib(XML_NODE* start_node, Pcstr path, int index, Pcstr attrib, Pcstr default_str_val = "");
-	const char* ReadAttrib(XML_NODE* node, Pcstr attrib, Pcstr default_str_val);
+	const char* ReadAttrib(const char* path, int index, const char* attrib, const char* default_str_val = "");
+	const char* ReadAttrib(XML_NODE* start_node, const char* path, int index, const char* attrib, const char* default_str_val = "");
+	const char* ReadAttrib(XML_NODE* node, const char* attrib, const char* default_str_val);
 
-	int					ReadAttribInt(Pcstr path, int index, Pcstr attrib, int default_int_val = 0);
-	int					ReadAttribInt(XML_NODE* start_node, Pcstr path, int index, Pcstr attrib, int default_int_val = 0);
-	int					ReadAttribInt(XML_NODE* node, Pcstr attrib, int default_int_val);
+	int					ReadAttribInt(const char* path, int index, const char* attrib, int default_int_val = 0);
+	int					ReadAttribInt(XML_NODE* start_node, const char* path, int index, const char* attrib, int default_int_val = 0);
+	int					ReadAttribInt(XML_NODE* node, const char* attrib, int default_int_val);
 
-	F32   			ReadAttribFlt(Pcstr path, int index, Pcstr attrib, F32 default_flt_val = 0.0f);
-	F32   			ReadAttribFlt(XML_NODE* start_node, Pcstr path, int index, Pcstr attrib, F32 default_flt_val = 0.0f);
-	F32   			ReadAttribFlt(XML_NODE* node, Pcstr attrib, F32 default_flt_val = 0.0f);
+	F32   			ReadAttribFlt(const char* path, int index, const char* attrib, F32 default_flt_val = 0.0f);
+	F32   			ReadAttribFlt(XML_NODE* start_node, const char* path, int index, const char* attrib, F32 default_flt_val = 0.0f);
+	F32   			ReadAttribFlt(XML_NODE* node, const char* attrib, F32 default_flt_val = 0.0f);
 
-	XML_NODE* SearchForAttribute(Pcstr path, int index, Pcstr tag_name, Pcstr attrib, Pcstr attrib_value_pattern);
-	XML_NODE* SearchForAttribute(XML_NODE* start_node, Pcstr tag_name, Pcstr attrib, Pcstr attrib_value_pattern);
+	XML_NODE* SearchForAttribute(const char* path, int index, const char* tag_name, const char* attrib, const char* attrib_value_pattern);
+	XML_NODE* SearchForAttribute(XML_NODE* start_node, const char* tag_name, const char* attrib, const char* attrib_value_pattern);
 
 	//возвращает количество узлов с заданым именем
-	int					GetNodesNum(Pcstr path, int index, Pcstr tag_name);
-	int					GetNodesNum(XML_NODE* node, Pcstr tag_name);
+	int					GetNodesNum(const char* path, int index, const char* tag_name);
+	int					GetNodesNum(XML_NODE* node, const char* tag_name);
 
 
 #ifdef DEBUG // debug & mixed
 	//проверка того, что аттрибуты у тегов уникальны
 	//(если не NULL, то уникальность нарушена и возврашается имя 
 	//повторяющегося атрибута)
-	const char* CheckUniqueAttrib(XML_NODE* start_node, Pcstr tag_name, Pcstr attrib_name);
+	const char* CheckUniqueAttrib(XML_NODE* start_node, const char* tag_name, const char* attrib_name);
 #endif
 
 	//переместиться по XML дереву 
 	//путь задается в форме PARENT:CHILD:CHIDLS_CHILD
 	//node_index - номер, если узлов с одним именем несколько
-	XML_NODE* NavigateToNode(Pcstr path, int node_index = 0);
-	XML_NODE* NavigateToNode(XML_NODE* start_node, Pcstr path, int node_index = 0);
-	XML_NODE* NavigateToNodeWithAttribute(Pcstr tag_name, Pcstr attrib_name, Pcstr attrib_value);
+	XML_NODE* NavigateToNode(const char* path, int node_index = 0);
+	XML_NODE* NavigateToNode(XML_NODE* start_node, const char* path, int node_index = 0);
+	XML_NODE* NavigateToNodeWithAttribute(const char* tag_name, const char* attrib_name, const char* attrib_value);
 
 	void				SetLocalRoot(XML_NODE* pLocalRoot)
 	{
@@ -90,7 +90,7 @@ protected:
 #endif // def DEBUG
 
 public:
-	virtual shared_str correct_file_name(Pcstr path, Pcstr fn)
+	virtual shared_str correct_file_name(const char* path, const char* fn)
 	{
 		return fn;
 	}

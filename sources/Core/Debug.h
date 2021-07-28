@@ -30,23 +30,23 @@ public:
 		m_on_dialog = on_dialog;
 	}
 
-	Pcstr error2string(long code);
+	const char* error2string(long code);
 
-	void						fail(Pcstr e1, Pcstr file, int line, Pcstr unction, bool& ignore_always);
-	void						fail(Pcstr e1, const std::string& e2, Pcstr file, int line, Pcstr function, bool& ignore_always);
-	void						fail(Pcstr e1, Pcstr e2, Pcstr file, int line, Pcstr function, bool& ignore_always);
-	void						fail(Pcstr e1, Pcstr e2, Pcstr e3, Pcstr file, int line, Pcstr function, bool& ignore_always);
-	void						fail(Pcstr e1, Pcstr e2, Pcstr e3, Pcstr e4, Pcstr file, int line, Pcstr function, bool& ignore_always);
-	void						error(long code, Pcstr e1, Pcstr file, int line, Pcstr function, bool& ignore_always);
-	void						error(long code, Pcstr e1, Pcstr e2, Pcstr file, int line, Pcstr function, bool& ignore_always);
-	void _cdecl					fatal(Pcstr file, int line, Pcstr function, Pcstr F, ...);
-	void						backend(Pcstr reason, Pcstr expression, Pcstr argument0, Pcstr argument1, Pcstr file, int line, Pcstr function, bool& ignore_always);
+	void						fail(const char* e1, const char* file, int line, const char* unction, bool& ignore_always);
+	void						fail(const char* e1, const std::string& e2, const char* file, int line, const char* function, bool& ignore_always);
+	void						fail(const char* e1, const char* e2, const char* file, int line, const char* function, bool& ignore_always);
+	void						fail(const char* e1, const char* e2, const char* e3, const char* file, int line, const char* function, bool& ignore_always);
+	void						fail(const char* e1, const char* e2, const char* e3, const char* e4, const char* file, int line, const char* function, bool& ignore_always);
+	void						error(long code, const char* e1, const char* file, int line, const char* function, bool& ignore_always);
+	void						error(long code, const char* e1, const char* e2, const char* file, int line, const char* function, bool& ignore_always);
+	void _cdecl					fatal(const char* file, int line, const char* function, const char* F, ...);
+	void						backend(const char* reason, const char* expression, const char* argument0, const char* argument1, const char* file, int line, const char* function, bool& ignore_always);
 	void						do_exit(const std::string& message);
 };
 
 // warning
 // this function can be used for debug purposes only
-inline std::string __cdecl		make_string(Pcstr format, ...)
+inline std::string __cdecl		make_string(const char* format, ...)
 {
 	va_list			args;
 	va_start(args, format);
@@ -59,6 +59,6 @@ inline std::string __cdecl		make_string(Pcstr format, ...)
 
 extern CORE_API CDebug								Debug;
 
-CORE_API void					LogStackTrace(Pcstr header);
+CORE_API void					LogStackTrace(const char* header);
 
 #include "Debug_macros.h"

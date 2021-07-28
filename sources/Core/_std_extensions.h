@@ -313,4 +313,4 @@ inline int							xr_strcmp(const char* S1, const char* S2)
 
 CORE_API	char* timestamp(string64& dest);
 
-extern CORE_API U32			crc32(Pcvoid P, U32 len);
+extern CORE_API U32			crc32(const void* P, U32 len);

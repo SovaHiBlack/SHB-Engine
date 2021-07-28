@@ -269,7 +269,7 @@ public:
 	{
 		return userData;
 	}	///< Get a pointer to arbitrary user data.
-	Pcvoid GetUserData( ) const
+	const void* GetUserData( ) const
 	{
 		return userData;
 	}	///< Get a pointer to arbitrary user data.

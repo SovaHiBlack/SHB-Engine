@@ -9,7 +9,7 @@ private:
 
 	T** access(T* P)
 	{
-		return (T**) Pvoid(P);
+		return (T**) void* (P);
 	}
 	void				block_create( )
 	{

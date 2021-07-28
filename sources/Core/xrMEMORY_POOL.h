@@ -45,7 +45,7 @@ public:
 		cs.Leave( );
 		return			E;
 	}
-	__forceinline void			destroy(Pvoid& P)
+	__forceinline void			destroy(void*& P)
 	{
 		cs.Enter( );
 		*access(P) = list;

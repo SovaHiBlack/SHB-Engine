@@ -47,7 +47,7 @@ private:
 	cdb									container;
 
 public:
-	smem_value* dock(U32 dwCRC, U32 dwLength, Pvoid ptr);
+	smem_value* dock(U32 dwCRC, U32 dwLength, void* ptr);
 	void				clean( );
 	void				dump( );
 	U32					stat_economy( );

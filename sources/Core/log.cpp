@@ -8,7 +8,7 @@ static xrCriticalSection	logCS;
 xr_vector<shared_str>* LogFile = nullptr;
 static LogCallback			LogCB = 0;
 
-void FlushLog(Pcstr file_name)
+void FlushLog(const char* file_name)
 {
 	if (no_log)
 	{
@@ -22,7 +22,7 @@ void FlushLog(Pcstr file_name)
 	{
 		for (U32 it = 0; it < LogFile->size( ); it++)
 		{
-			Pcstr s = *((*LogFile)[it]);
+			const char* s = *((*LogFile)[it]);
 			f->w_string(s ? s : "");
 		}
 
@@ -37,7 +37,7 @@ void FlushLog( )
 	FlushLog(logFName);
 }
 
-void AddOne(Pcstr split)
+void AddOne(const char* split)
 {
 	if (!LogFile)
 	{
@@ -64,7 +64,7 @@ void AddOne(Pcstr split)
 	logCS.Leave( );
 }
 
-void Log(Pcstr s)
+void Log(const char* s)
 {
 	int		i, j;
 	char	split[1024];
@@ -90,7 +90,7 @@ void Log(Pcstr s)
 	AddOne(split);
 }
 
-void __cdecl Msg(Pcstr format, ...)
+void __cdecl Msg(const char* format, ...)
 {
 	va_list mark;
 	string1024	buf;
@@ -100,7 +100,7 @@ void __cdecl Msg(Pcstr format, ...)
 	if (sz)		Log(buf);
 }
 
-void Log(Pcstr msg, Pcstr dop)
+void Log(const char* msg, const char* dop)
 {
 	string1024 buf;
 
@@ -110,7 +110,7 @@ void Log(Pcstr msg, Pcstr dop)
 	Log(buf);
 }
 
-void Log(Pcstr msg, U32 dop)
+void Log(const char* msg, U32 dop)
 {
 	string1024 buf;
 
@@ -118,7 +118,7 @@ void Log(Pcstr msg, U32 dop)
 	Log(buf);
 }
 
-void Log(Pcstr msg, int dop)
+void Log(const char* msg, int dop)
 {
 	string1024 buf;
 
@@ -126,7 +126,7 @@ void Log(Pcstr msg, int dop)
 	Log(buf);
 }
 
-void Log(Pcstr msg, F32 dop)
+void Log(const char* msg, F32 dop)
 {
 	string1024 buf;
 
@@ -134,7 +134,7 @@ void Log(Pcstr msg, F32 dop)
 	Log(buf);
 }
 
-void Log(Pcstr msg, const Fvector3& dop)
+void Log(const char* msg, const Fvector3& dop)
 {
 	string1024 buf;
 
@@ -142,7 +142,7 @@ void Log(Pcstr msg, const Fvector3& dop)
 	Log(buf);
 }
 
-void Log(Pcstr msg, const Fmatrix& dop)
+void Log(const char* msg, const Fmatrix& dop)
 {
 	string1024	buf;
 
@@ -153,7 +153,7 @@ void Log(Pcstr msg, const Fmatrix& dop)
 	Log(buf);
 }
 
-void LogWinErr(Pcstr msg, long err_code)
+void LogWinErr(const char* msg, long err_code)
 {
 	Msg("%s: %s", msg, Debug.error2string(err_code));
 }
@@ -163,7 +163,7 @@ void SetLogCB(LogCallback cb)
 	LogCB = cb;
 }
 
-Pcstr log_name( )
+const char* log_name( )
 {
 	return logFName;
 }
@@ -193,7 +193,7 @@ void CreateLog(BOOL nl)
 	LogFile->reserve(128);
 }
 
-void CloseLog(void)
+void CloseLog( )
 {
 	FlushLog( );
 	LogFile->clear( );

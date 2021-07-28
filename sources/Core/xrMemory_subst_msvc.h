@@ -74,7 +74,7 @@ struct xr_special_free
 {
 	inline void operator( )(T*& ptr)
 	{
-		Pvoid _real_ptr = dynamic_cast<Pvoid>(ptr);
+		void* _real_ptr = dynamic_cast<void*>(ptr);
 		ptr->~T( );
 		Memory.mem_free(_real_ptr);
 	}

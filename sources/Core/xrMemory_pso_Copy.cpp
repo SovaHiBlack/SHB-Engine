@@ -1,7 +1,7 @@
 #include "stdafx.h"
 
 #pragma warning(disable:4995)
-void	__stdcall xrMemCopy_x86(Pvoid dest, Pcvoid src, U32 n)
+void	__stdcall xrMemCopy_x86(void* dest, const void* src, U32 n)
 {
 	memcpy(dest, src, n);
 }
@@ -27,7 +27,7 @@ void	__stdcall xrMemCopy_x86(Pvoid dest, Pcvoid src, U32 n)
 //one address per cache line,for a series of cache lines,in a short loop.
 //This is faster than using software prefetch.The technique is great for
 //getting maximum read bandwidth,especially in DDR memory systems.
-void	__stdcall xrMemCopy_MMX(Pvoid dest, Pcvoid src, U32 n)
+void	__stdcall xrMemCopy_MMX(void* dest, const void* src, U32 n)
 {
 	__asm {
 		mov ecx, [n];							// number of bytes to copy

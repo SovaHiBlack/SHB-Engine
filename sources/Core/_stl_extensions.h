@@ -44,7 +44,7 @@ public:
 	{
 		return (*this);
 	}
-	pointer					allocate(size_type n, Pcvoid p = nullptr) const
+	pointer					allocate(size_type n, const void* p = nullptr) const
 	{
 		return xr_alloc<T>((U32) n);
 	}
@@ -56,7 +56,7 @@ public:
 	{
 		xr_free(p);
 	}
-	void					deallocate(Pvoid p, size_type n) const
+	void					deallocate(void* p, size_type n) const
 	{
 		xr_free(p);
 	}
@@ -82,7 +82,7 @@ struct xr_allocator
 		typedef xalloc<T>	result;
 	};
 
-	static Pvoid alloc(const U32& n)
+	static void* alloc(const U32& n)
 	{
 		return xr_malloc((U32) n);
 	}

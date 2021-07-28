@@ -26,9 +26,9 @@ public:
 	char* m_FilterCaption;
 	Flags32							m_Flags;
 
-	FS_Path(Pcstr _Root, Pcstr _Add, Pcstr _DefExt = 0, Pcstr _FilterString = 0, U32 flags = 0);
+	FS_Path(const char* _Root, const char* _Add, const char* _DefExt = 0, const char* _FilterString = 0, U32 flags = 0);
 	~FS_Path( );
-	Pcstr _update(string_path& dest, Pcstr src) const;
+	const char* _update(string_path& dest, const char* src) const;
 	void			_set(char* add);
 	void			_set_root(char* root);
 
@@ -68,4 +68,4 @@ public:
 using FS_FileSet = xr_set<FS_File>;
 using FS_FileSetIt = FS_FileSet::iterator;
 
-extern bool CORE_API PatternMatch(Pcstr s, Pcstr mask);
+extern bool CORE_API PatternMatch(const char* s, const char* mask);

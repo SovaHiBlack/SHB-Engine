@@ -281,16 +281,16 @@ struct	THREAD_STARTUP
 {
 	thread_t* entry;
 	char* name;
-	Pvoid args;
+	void* args;
 };
 
-void	__cdecl			thread_entry(Pvoid _params)
+void	__cdecl			thread_entry(void* _params)
 {
 	// initialize
 	THREAD_STARTUP* startup = (THREAD_STARTUP*) _params;
 	thread_name(startup->name);
 	thread_t* entry = startup->entry;
-	Pvoid arglist = startup->args;
+	void* arglist = startup->args;
 	xr_delete(startup);
 	_initialize_cpu_thread( );
 
@@ -298,7 +298,7 @@ void	__cdecl			thread_entry(Pvoid _params)
 	entry(arglist);
 }
 
-void	thread_spawn(thread_t* entry, const char* name, unsigned	stack, Pvoid arglist)
+void	thread_spawn(thread_t* entry, const char* name, unsigned	stack, void* arglist)
 {
 	THREAD_STARTUP* startup = xr_new<THREAD_STARTUP>( );
 	startup->entry = entry;

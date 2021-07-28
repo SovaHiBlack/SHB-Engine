@@ -4,13 +4,13 @@
 
 #define CFS_CompressMark	(1ul << 31ul)
 
-CORE_API void VerifyPath(Pcstr path);
+CORE_API void VerifyPath(const char* path);
 
 #ifdef DEBUG
 CORE_API	extern	U32		g_file_mapped_memory;
 CORE_API	extern	U32		g_file_mapped_count;
 CORE_API			void	dump_file_mappings( );
-extern	void	register_file_mapping(void* address, const U32& size, Pcstr file_name);
+extern	void	register_file_mapping(void* address, const U32& size, const char* file_name);
 extern	void	unregister_file_mapping(void* address, const U32& size);
 #endif // DEBUG
 
@@ -36,7 +36,7 @@ public:
 	virtual void	seek(U32 pos) = 0;
 	virtual U32		tell( ) = 0;
 
-	virtual void	w(Pcvoid ptr, U32 count) = 0;
+	virtual void	w(const void* ptr, U32 count) = 0;
 
 	// generalized writing functions
 	inline void			w_u64(U64 d)
@@ -75,13 +75,13 @@ public:
 	{
 		w(&d, sizeof(F32));
 	}
-	inline void			w_string(Pcstr p)
+	inline void			w_string(const char* p)
 	{
 		w(p, (U32) xr_strlen(p));
 		w_u8(13);
 		w_u8(10);
 	}
-	inline void			w_stringZ(Pcstr p)
+	inline void			w_stringZ(const char* p)
 	{
 		w(p, (U32) xr_strlen(p) + 1);
 	}
@@ -152,7 +152,7 @@ public:
 		w_u16(pvCompress(D));
 	}
 	void 			w_sdir(const Fvector3& D);
-	void	__cdecl	w_printf(Pcstr format, ...);
+	void	__cdecl	w_printf(const char* format, ...);
 
 	// generalized chunking
 	U32				align( );
@@ -185,7 +185,7 @@ public:
 	virtual	~CMemoryWriter( );
 
 	// kernel
-	virtual void	w(Pcvoid ptr, U32 count);
+	virtual void	w(const void* ptr, U32 count);
 
 	virtual void	seek(U32 pos)
 	{
@@ -220,7 +220,7 @@ public:
 		xr_free(data);
 	}
 #pragma warning(pop)
-	bool			save_to(Pcstr fn);
+	bool			save_to(const char* fn);
 };
 
 //------------------------------------------------------------------------------------
@@ -532,6 +532,6 @@ private:
 	void* hSrcMap;
 
 public:
-	CVirtualFileRW(Pcstr cFileName);
+	CVirtualFileRW(const char* cFileName);
 	virtual ~CVirtualFileRW( );
 };

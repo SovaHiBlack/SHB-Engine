@@ -86,7 +86,7 @@ void _os_support(int feature, int& res)
 *
 ****************************************************/
 
-void map_mname(int family, int model, Pcstr v_name, char* m_name)
+void map_mname(int family, int model, const char* v_name, char* m_name)
 {
 	if (!strncmp("AuthenticAMD", v_name, 12))
 	{

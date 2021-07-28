@@ -326,7 +326,7 @@ bool TiXmlNode::RemoveChild(TiXmlNode* removeThis)
 	return true;
 }
 
-const TiXmlNode* TiXmlNode::FirstChild(Pcstr _value) const
+const TiXmlNode* TiXmlNode::FirstChild(const char* _value) const
 {
 	const TiXmlNode* node;
 	for (node = firstChild; node; node = node->next)
@@ -338,7 +338,7 @@ const TiXmlNode* TiXmlNode::FirstChild(Pcstr _value) const
 }
 
 
-const TiXmlNode* TiXmlNode::LastChild(Pcstr _value) const
+const TiXmlNode* TiXmlNode::LastChild(const char* _value) const
 {
 	const TiXmlNode* node;
 	for (node = lastChild; node; node = node->prev)
@@ -364,7 +364,7 @@ const TiXmlNode* TiXmlNode::IterateChildren(const TiXmlNode* previous) const
 }
 
 
-const TiXmlNode* TiXmlNode::IterateChildren(Pcstr val, const TiXmlNode* previous) const
+const TiXmlNode* TiXmlNode::IterateChildren(const char* val, const TiXmlNode* previous) const
 {
 	if (!previous)
 	{
@@ -378,7 +378,7 @@ const TiXmlNode* TiXmlNode::IterateChildren(Pcstr val, const TiXmlNode* previous
 }
 
 
-const TiXmlNode* TiXmlNode::NextSibling(Pcstr _value) const
+const TiXmlNode* TiXmlNode::NextSibling(const char* _value) const
 {
 	const TiXmlNode* node;
 	for (node = next; node; node = node->next)
@@ -390,7 +390,7 @@ const TiXmlNode* TiXmlNode::NextSibling(Pcstr _value) const
 }
 
 
-const TiXmlNode* TiXmlNode::PreviousSibling(Pcstr _value) const
+const TiXmlNode* TiXmlNode::PreviousSibling(const char* _value) const
 {
 	const TiXmlNode* node;
 	for (node = prev; node; node = node->prev)
@@ -402,7 +402,7 @@ const TiXmlNode* TiXmlNode::PreviousSibling(Pcstr _value) const
 }
 
 
-void TiXmlElement::RemoveAttribute(Pcstr name)
+void TiXmlElement::RemoveAttribute(const char* name)
 {
 #ifdef TIXML_USE_STL
 	TIXML_STRING str(name);
@@ -432,7 +432,7 @@ const TiXmlElement* TiXmlNode::FirstChildElement( ) const
 }
 
 
-const TiXmlElement* TiXmlNode::FirstChildElement(Pcstr _value) const
+const TiXmlElement* TiXmlNode::FirstChildElement(const char* _value) const
 {
 	const TiXmlNode* node;
 
@@ -462,7 +462,7 @@ const TiXmlElement* TiXmlNode::NextSiblingElement( ) const
 }
 
 
-const TiXmlElement* TiXmlNode::NextSiblingElement(Pcstr _value) const
+const TiXmlElement* TiXmlNode::NextSiblingElement(const char* _value) const
 {
 	const TiXmlNode* node;
 
@@ -490,7 +490,7 @@ const TiXmlDocument* TiXmlNode::GetDocument( ) const
 }
 
 
-TiXmlElement::TiXmlElement(Pcstr _value) : TiXmlNode(TiXmlNode::ELEMENT)
+TiXmlElement::TiXmlElement(const char* _value) : TiXmlNode(TiXmlNode::ELEMENT)
 {
 	firstChild = lastChild = 0;
 	value = _value;
@@ -540,7 +540,7 @@ void TiXmlElement::ClearThis( )
 }
 
 
-Pcstr TiXmlElement::Attribute(Pcstr name) const
+const char* TiXmlElement::Attribute(const char* name) const
 {
 	const TiXmlAttribute* node = attributeSet.Find(name);
 	if (node)
@@ -560,9 +560,9 @@ const xr_string* TiXmlElement::Attribute(const xr_string& name) const
 #endif
 
 
-Pcstr TiXmlElement::Attribute(Pcstr name, int* i) const
+const char* TiXmlElement::Attribute(const char* name, int* i) const
 {
-	Pcstr s = Attribute(name);
+	const char* s = Attribute(name);
 	if (i)
 	{
 		if (s)
@@ -598,9 +598,9 @@ const xr_string* TiXmlElement::Attribute(const xr_string& name, int* i) const
 #endif
 
 
-Pcstr TiXmlElement::Attribute(Pcstr name, double* d) const
+const char* TiXmlElement::Attribute(const char* name, double* d) const
 {
-	Pcstr s = Attribute(name);
+	const char* s = Attribute(name);
 	if (d)
 	{
 		if (s)
@@ -636,7 +636,7 @@ const xr_string* TiXmlElement::Attribute(const xr_string& name, double* d) const
 #endif
 
 
-int TiXmlElement::QueryIntAttribute(Pcstr name, int* ival) const
+int TiXmlElement::QueryIntAttribute(const char* name, int* ival) const
 {
 	const TiXmlAttribute* node = attributeSet.Find(name);
 	if (!node)
@@ -656,7 +656,7 @@ int TiXmlElement::QueryIntAttribute(const xr_string& name, int* ival) const
 #endif
 
 
-int TiXmlElement::QueryDoubleAttribute(Pcstr name, double* dval) const
+int TiXmlElement::QueryDoubleAttribute(const char* name, double* dval) const
 {
 	const TiXmlAttribute* node = attributeSet.Find(name);
 	if (!node)
@@ -676,7 +676,7 @@ int TiXmlElement::QueryDoubleAttribute(const xr_string& name, double* dval) cons
 #endif
 
 
-void TiXmlElement::SetAttribute(Pcstr name, int val)
+void TiXmlElement::SetAttribute(const char* name, int val)
 {
 	string64 buf;
 #if defined(TIXML_SNPRINTF)		

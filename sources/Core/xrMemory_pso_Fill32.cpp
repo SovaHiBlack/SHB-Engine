@@ -1,6 +1,6 @@
 #include "stdafx.h"
 
-void	__stdcall	xrMemFill32_x86(Pvoid dest, U32 value, U32 count)
+void	__stdcall	xrMemFill32_x86(void* dest, U32 value, U32 count)
 {
 	U32* ptr = (U32*) dest;
 	U32* end = ptr + count;
@@ -11,7 +11,7 @@ void	__stdcall	xrMemFill32_x86(Pvoid dest, U32 value, U32 count)
 block fill:fill a number of DWORDs at DWORD aligned destination
 with DWORD initializer using cacheable stores
 */
-void	__stdcall	xrMemFill32_MMX(Pvoid dest, U32 value, U32 count)
+void	__stdcall	xrMemFill32_MMX(void* dest, U32 value, U32 count)
 {
 	__asm {
 		MOV EDI, [dest];								// pointer to dst,DWORD aligned

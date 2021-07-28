@@ -4,7 +4,7 @@
 
 using wide_char = U16;
 
-unsigned short mbhMulti2Wide(wide_char* WideStr, wide_char* WidePos, const U16 WideStrSize, const char* MultiStr);
+U16 mbhMulti2Wide(wide_char* WideStr, wide_char* WidePos, const U16 WideStrSize, const char* MultiStr);
 
 inline BOOL IsNeedSpaceCharacter(wide_char wc)
 {

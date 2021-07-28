@@ -4,7 +4,7 @@
 class CORE_API		xrCriticalSection
 {
 private:
-	Pvoid pmutex;
+	void* pmutex;
 
 public:
 	xrCriticalSection( );

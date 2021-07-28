@@ -18,13 +18,6 @@ using U64 = unsigned __int64;		// u64
 using F32 = float;					// f32
 using F64 = double;					// f64
 
-
-using Pstr = char*;
-using Pcstr = const char*;
-
-using Pvoid = void*;
-using Pcvoid = const void*;
-
 // Type limits
 #define type_max(T)		(std::numeric_limits<T>::max())
 #define type_min(T)		(-std::numeric_limits<T>::max())

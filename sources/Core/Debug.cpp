@@ -21,9 +21,9 @@ extern bool shared_str_initialized;
 CORE_API CDebug		Debug;
 
 static bool error_after_dialog = false;
-extern void copy_to_clipboard(Pcstr string);
+extern void copy_to_clipboard(const char* string);
 
-void copy_to_clipboard(Pcstr string)
+void copy_to_clipboard(const char* string)
 {
 	if (IsDebuggerPresent( ))
 	{
@@ -50,7 +50,7 @@ void copy_to_clipboard(Pcstr string)
 	CloseClipboard( );
 }
 
-void update_clipboard(Pcstr string)
+void update_clipboard(const char* string)
 {
 
 #ifdef DEBUG
@@ -90,7 +90,7 @@ extern void BuildStackTrace( );
 extern char g_stackTrace[100][4096];
 extern int	g_stackTraceCount;
 
-void LogStackTrace(Pcstr header)
+void LogStackTrace(const char* header)
 {
 	if (!shared_str_initialized)
 	{
@@ -107,11 +107,11 @@ void LogStackTrace(Pcstr header)
 	}
 }
 
-void gather_info(Pcstr expression, Pcstr description, Pcstr argument0, Pcstr argument1, Pcstr file, int line, Pcstr function, char* assertion_info)
+void gather_info(const char* expression, const char* description, const char* argument0, const char* argument1, const char* file, int line, const char* function, char* assertion_info)
 {
 	char* buffer = assertion_info;
-	Pcstr endline = "\n";
-	Pcstr prefix = "[error]";
+	const char* endline = "\n";
+	const char* prefix = "[error]";
 	bool extended_description = (description && !argument0 && strchr(description, '\n'));
 	for (int i = 0; i < 2; ++i)
 	{
@@ -194,7 +194,7 @@ void CDebug::do_exit(const std::string& message)
 	TerminateProcess(GetCurrentProcess( ), 1);
 }
 
-void CDebug::backend(Pcstr expression, Pcstr description, Pcstr argument0, Pcstr argument1, Pcstr file, int line, Pcstr function, bool& ignore_always)
+void CDebug::backend(const char* expression, const char* description, const char* argument0, const char* argument1, const char* file, int line, const char* function, bool& ignore_always)
 {
 	static xrCriticalSection CS;
 	CS.Enter( );
@@ -224,9 +224,9 @@ void CDebug::backend(Pcstr expression, Pcstr description, Pcstr argument0, Pcstr
 	CS.Leave( );
 }
 
-Pcstr CDebug::error2string(long code)
+const char* CDebug::error2string(long code)
 {
-	Pcstr result = 0;
+	const char* result = 0;
 	static string1024 desc_storage;
 
 	result = DXGetErrorDescription(code);
@@ -240,42 +240,42 @@ Pcstr CDebug::error2string(long code)
 	return result;
 }
 
-void CDebug::error(long hr, Pcstr expr, Pcstr file, int line, Pcstr function, bool& ignore_always)
+void CDebug::error(long hr, const char* expr, const char* file, int line, const char* function, bool& ignore_always)
 {
 	backend(error2string(hr), expr, 0, 0, file, line, function, ignore_always);
 }
 
-void CDebug::error(long hr, Pcstr expr, Pcstr e2, Pcstr file, int line, Pcstr function, bool& ignore_always)
+void CDebug::error(long hr, const char* expr, const char* e2, const char* file, int line, const char* function, bool& ignore_always)
 {
 	backend(error2string(hr), expr, e2, 0, file, line, function, ignore_always);
 }
 
-void CDebug::fail(Pcstr e1, Pcstr file, int line, Pcstr function, bool& ignore_always)
+void CDebug::fail(const char* e1, const char* file, int line, const char* function, bool& ignore_always)
 {
 	backend("assertion failed", e1, 0, 0, file, line, function, ignore_always);
 }
 
-void CDebug::fail(Pcstr e1, const std::string& e2, Pcstr file, int line, Pcstr function, bool& ignore_always)
+void CDebug::fail(const char* e1, const std::string& e2, const char* file, int line, const char* function, bool& ignore_always)
 {
 	backend(e1, e2.c_str( ), 0, 0, file, line, function, ignore_always);
 }
 
-void CDebug::fail(Pcstr e1, Pcstr e2, Pcstr file, int line, Pcstr function, bool& ignore_always)
+void CDebug::fail(const char* e1, const char* e2, const char* file, int line, const char* function, bool& ignore_always)
 {
 	backend(e1, e2, 0, 0, file, line, function, ignore_always);
 }
 
-void CDebug::fail(Pcstr e1, Pcstr e2, Pcstr e3, Pcstr file, int line, Pcstr function, bool& ignore_always)
+void CDebug::fail(const char* e1, const char* e2, const char* e3, const char* file, int line, const char* function, bool& ignore_always)
 {
 	backend(e1, e2, e3, 0, file, line, function, ignore_always);
 }
 
-void CDebug::fail(Pcstr e1, Pcstr e2, Pcstr e3, Pcstr e4, Pcstr file, int line, Pcstr function, bool& ignore_always)
+void CDebug::fail(const char* e1, const char* e2, const char* e3, const char* e4, const char* file, int line, const char* function, bool& ignore_always)
 {
 	backend(e1, e2, e3, e4, file, line, function, ignore_always);
 }
 
-void __cdecl CDebug::fatal(Pcstr file, int line, Pcstr function, Pcstr F, ...)
+void __cdecl CDebug::fatal(const char* file, int line, const char* function, const char* F, ...)
 {
 	string1024 buffer;
 
@@ -301,7 +301,7 @@ int out_of_memory_handler(size_t size)
 	return 1;
 }
 
-extern Pcstr log_name( );
+extern const char* log_name( );
 
 #if 1
 extern void BuildStackTrace(struct _EXCEPTION_POINTERS* pExceptionInfo);
@@ -411,7 +411,7 @@ void _terminate( )
 		assertion_info
 	);
 
-	Pcstr endline = "\r\n";
+	const char* endline = "\r\n";
 	char* buffer = assertion_info + xr_strlen(assertion_info);
 	buffer += sprintf(buffer, "Press OK to abort execution%s", endline);
 
@@ -430,7 +430,7 @@ void debug_on_thread_spawn( )
 	std::set_terminate(_terminate);
 }
 
-static void handler_base(Pcstr reason_string)
+static void handler_base(const char* reason_string)
 {
 	bool							ignore_always = false;
 	Debug.backend(

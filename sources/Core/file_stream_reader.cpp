@@ -2,7 +2,7 @@
 
 #include "file_stream_reader.h"
 
-void CFileStreamReader::construct(Pcstr file_name, const U32& window_size)
+void CFileStreamReader::construct(const char* file_name, const U32& window_size)
 {
 	m_file_handle =
 		CreateFile(

@@ -6,9 +6,9 @@
 #include <sys\stat.h>
 #include <share.h>
 
-void* FileDownload(Pcstr fn, U32* pdwSize = nullptr);
-void			FileCompress(Pcstr fn, Pcstr sign, void* data, U32 size);
-void* FileDecompress(Pcstr fn, Pcstr sign, U32* size = nullptr);
+void* FileDownload(const char* fn, U32* pdwSize = nullptr);
+void			FileCompress(const char* fn, const char* sign, void* data, U32 size);
+void* FileDecompress(const char* fn, const char* sign, U32* size = nullptr);
 
 class CFileWriter : public IWriter
 {
@@ -16,7 +16,7 @@ private:
 	FILE* hf;
 
 public:
-	CFileWriter(Pcstr name, bool exclusive)
+	CFileWriter(const char* name, bool exclusive)
 	{
 		R_ASSERT(name && name[0]);
 		fName = name;
@@ -49,7 +49,7 @@ public:
 		}
 	}
 	// kernel
-	virtual void	w(Pcvoid _ptr, U32 count)
+	virtual void	w(const void* _ptr, U32 count)
 	{
 		if ((0 != hf) && (0 != count))
 		{
@@ -103,13 +103,13 @@ public:
 class CFileReader : public IReader
 {
 public:
-	CFileReader(Pcstr name);
+	CFileReader(const char* name);
 	virtual		~CFileReader( );
 };
 class CCompressedReader : public IReader
 {
 public:
-	CCompressedReader(Pcstr name, Pcstr sign);
+	CCompressedReader(const char* name, const char* sign);
 	virtual		~CCompressedReader( );
 };
 
@@ -120,6 +120,6 @@ private:
 	void* hSrcMap;
 
 public:
-	CVirtualFileReader(Pcstr cFileName);
+	CVirtualFileReader(const char* cFileName);
 	virtual		~CVirtualFileReader( );
 };

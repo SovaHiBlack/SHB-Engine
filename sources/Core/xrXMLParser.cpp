@@ -15,7 +15,7 @@ void CXml::ClearInternal( )
 	m_Doc.Clear( );
 }
 
-void ParseFile(Pcstr path, CMemoryWriter& W, IReader* F, CXml* xml)
+void ParseFile(const char* path, CMemoryWriter& W, IReader* F, CXml* xml)
 {
 	string4096 str;
 
@@ -60,7 +60,7 @@ void ParseFile(Pcstr path, CMemoryWriter& W, IReader* F, CXml* xml)
 	}
 }
 
-bool CXml::Init(Pcstr path_alias, Pcstr path, Pcstr _xml_filename)
+bool CXml::Init(const char* path_alias, const char* path, const char* _xml_filename)
 {
 	shared_str fn = correct_file_name(path, _xml_filename);
 
@@ -70,7 +70,7 @@ bool CXml::Init(Pcstr path_alias, Pcstr path, Pcstr _xml_filename)
 }
 
 //инициализация и загрузка XML файла
-bool CXml::Init(Pcstr path, Pcstr xml_filename)
+bool CXml::Init(const char* path, const char* xml_filename)
 {
 	strcpy(m_xml_file_name, xml_filename);
 	// Load and parse xml file
@@ -99,7 +99,7 @@ bool CXml::Init(Pcstr path, Pcstr xml_filename)
 	return true;
 }
 
-XML_NODE* CXml::NavigateToNode(XML_NODE* start_node, Pcstr path, int node_index)
+XML_NODE* CXml::NavigateToNode(XML_NODE* start_node, const char* path, int node_index)
 {
 	R_ASSERT3(start_node && path, "NavigateToNode failed in XML file ", m_xml_file_name);
 	XML_NODE* node = nullptr;
@@ -144,20 +144,19 @@ XML_NODE* CXml::NavigateToNode(XML_NODE* start_node, Pcstr path, int node_index)
 	return node;
 }
 
-XML_NODE* CXml::NavigateToNode(Pcstr path, int node_index)
+XML_NODE* CXml::NavigateToNode(const char* path, int node_index)
 {
 	return NavigateToNode(GetLocalRoot( ) ? GetLocalRoot( ) : GetRoot( ), path, node_index);
 }
 
-XML_NODE* CXml::NavigateToNodeWithAttribute(Pcstr tag_name, Pcstr attrib_name, Pcstr attrib_value)
+XML_NODE* CXml::NavigateToNodeWithAttribute(const char* tag_name, const char* attrib_name, const char* attrib_value)
 {
-
 	XML_NODE* root = GetLocalRoot( ) ? GetLocalRoot( ) : GetRoot( );
 	int tabsCount = GetNodesNum(root, tag_name);
 
 	for (int i = 0; i < tabsCount; ++i)
 	{
-		Pcstr result = ReadAttrib(root, tag_name, i, attrib_name, "");
+		const char* result = ReadAttrib(root, tag_name, i, attrib_name, "");
 		if (result && xr_strcmp(result, attrib_value) == 0)
 		{
 			return NavigateToNode(root, tag_name, i);
@@ -167,21 +166,21 @@ XML_NODE* CXml::NavigateToNodeWithAttribute(Pcstr tag_name, Pcstr attrib_name, P
 	return nullptr;
 }
 
-Pcstr CXml::Read(Pcstr path, int index, Pcstr default_str_val)
+const char* CXml::Read(const char* path, int index, const char* default_str_val)
 {
 	XML_NODE* node = NavigateToNode(path, index);
-	Pcstr result = Read(node, default_str_val);
+	const char* result = Read(node, default_str_val);
 	return					result;
 }
 
-Pcstr CXml::Read(XML_NODE* start_node, Pcstr path, int index, Pcstr default_str_val)
+const char* CXml::Read(XML_NODE* start_node, const char* path, int index, const char* default_str_val)
 {
 	XML_NODE* node = NavigateToNode(start_node, path, index);
-	Pcstr result = Read(node, default_str_val);
+	const char* result = Read(node, default_str_val);
 	return					result;
 }
 
-Pcstr CXml::Read(XML_NODE* node, Pcstr default_str_val)
+const char* CXml::Read(XML_NODE* node, const char* default_str_val)
 {
 	if (node == nullptr)
 	{
@@ -209,7 +208,7 @@ Pcstr CXml::Read(XML_NODE* node, Pcstr default_str_val)
 
 int CXml::ReadInt(XML_NODE* node, int default_int_val)
 {
-	Pcstr result_str = Read(node, NULL);
+	const char* result_str = Read(node, NULL);
 
 	if (result_str == NULL)
 		return				default_int_val;
@@ -470,7 +469,7 @@ XML_NODE* CXml::SearchForAttribute(XML_NODE* start_node, const char* tag_name, c
 }
 
 #ifdef DEBUG
-Pcstr CXml::CheckUniqueAttrib(XML_NODE* start_node, Pcstr tag_name, Pcstr attrib_name)
+const char* CXml::CheckUniqueAttrib(XML_NODE* start_node, const char* tag_name, const char* attrib_name)
 {
 	m_AttribValues.clear_not_free( );
 
@@ -478,7 +477,7 @@ Pcstr CXml::CheckUniqueAttrib(XML_NODE* start_node, Pcstr tag_name, Pcstr attrib
 
 	for (int i = 0; i < tags_num; i++)
 	{
-		Pcstr attrib = ReadAttrib(start_node, tag_name, i, attrib_name, NULL);
+		const char* attrib = ReadAttrib(start_node, tag_name, i, attrib_name, NULL);
 
 		xr_vector<shared_str>::iterator it = std::find(m_AttribValues.begin( ), m_AttribValues.end( ), attrib);
 

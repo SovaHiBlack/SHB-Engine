@@ -17,7 +17,7 @@ U32		rtc_csize(U32 in)
 	return			in + in / 64 + 16 + 3;
 }
 
-U32		rtc_compress(Pvoid dst, U32 dst_len, Pcvoid src, U32 src_len)
+U32		rtc_compress(void* dst, U32 dst_len, const void* src, U32 src_len)
 {
 	U32		out_size = dst_len;
 	int r = lzo1x_1_compress(
@@ -28,7 +28,7 @@ U32		rtc_compress(Pvoid dst, U32 dst_len, Pcvoid src, U32 src_len)
 	return	out_size;
 }
 
-U32		rtc_decompress(Pvoid dst, U32 dst_len, Pcvoid src, U32 src_len)
+U32		rtc_decompress(void* dst, U32 dst_len, const void* src, U32 src_len)
 {
 	U32		out_size = dst_len;
 	int r = lzo1x_decompress(

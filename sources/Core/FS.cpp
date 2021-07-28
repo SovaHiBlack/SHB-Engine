@@ -9,7 +9,7 @@
 #include <sys\stat.h>
 #pragma warning(default:4995)
 
-typedef void DUMMY_STUFF(Pcvoid, const U32&, void*);
+typedef void DUMMY_STUFF(const void*, const U32&, void*);
 CORE_API DUMMY_STUFF* g_dummy_stuff = 0;
 
 #ifdef DEBUG
@@ -19,7 +19,7 @@ U32								g_file_mapped_count = 0;
 using FILE_MAPPINGS = std::map<U32, std::pair<U32, shared_str>>;
 FILE_MAPPINGS					g_file_mappings;
 
-void register_file_mapping(void* address, const U32& size, Pcstr file_name)
+void register_file_mapping(void* address, const U32& size, const char* file_name)
 {
 	FILE_MAPPINGS::const_iterator	I = g_file_mappings.find(*(U32*) &address);
 	VERIFY(I == g_file_mappings.end( ));
@@ -59,7 +59,7 @@ CORE_API void dump_file_mappings( )
 //////////////////////////////////////////////////////////////////////
 // Tools
 //////////////////////////////////////////////////////////////////////
-void VerifyPath(Pcstr path)
+void VerifyPath(const char* path)
 {
 	string1024 tmp;
 	for (int i = 0; path[i]; i++)
@@ -75,7 +75,7 @@ void VerifyPath(Pcstr path)
 	}
 }
 
-void* FileDownload(Pcstr fn, U32* pdwSize)
+void* FileDownload(const char* fn, U32* pdwSize)
 {
 	int		hFile;
 	U32		size;
@@ -101,12 +101,12 @@ void* FileDownload(Pcstr fn, U32* pdwSize)
 }
 
 typedef char MARK[9];
-inline void mk_mark(MARK& M, Pcstr S)
+inline void mk_mark(MARK& M, const char* S)
 {
 	strncpy(M, S, 8);
 }
 
-void  FileCompress(Pcstr fn, Pcstr sign, void* data, U32 size)
+void  FileCompress(const char* fn, const char* sign, void* data, U32 size)
 {
 	MARK M; mk_mark(M, sign);
 
@@ -117,9 +117,10 @@ void  FileCompress(Pcstr fn, Pcstr sign, void* data, U32 size)
 	_close(H);
 }
 
-void* FileDecompress(Pcstr fn, Pcstr sign, U32* size)
+void* FileDecompress(const char* fn, const char* sign, U32* size)
 {
-	MARK M, F; mk_mark(M, sign);
+	MARK M, F;
+	mk_mark(M, sign);
 
 	int	H = open(fn, O_BINARY | O_RDONLY);
 	R_ASSERT2(H > 0, fn);
@@ -148,7 +149,7 @@ CMemoryWriter::~CMemoryWriter( )
 	xr_free(data);
 }
 
-void CMemoryWriter::w(Pcvoid ptr, U32 count)
+void CMemoryWriter::w(const void* ptr, U32 count)
 {
 	if (position + count > mem_size)
 	{
@@ -181,7 +182,7 @@ void CMemoryWriter::w(Pcvoid ptr, U32 count)
 	}
 }
 
-bool CMemoryWriter::save_to(Pcstr fn)
+bool CMemoryWriter::save_to(const char* fn)
 {
 	IWriter* F = FS.w_open(fn);
 	if (F)
@@ -257,7 +258,7 @@ void IWriter::w_sdir(const Fvector3& D)
 	w_dir(C);
 	w_float(mag);
 }
-void	IWriter::w_printf(Pcstr format, ...)
+void	IWriter::w_printf(const char* format, ...)
 {
 	va_list mark;
 	string1024 buf;
@@ -425,7 +426,7 @@ CPackReader::~CPackReader( )
 };
 //---------------------------------------------------
 // file stream
-CFileReader::CFileReader(Pcstr name)
+CFileReader::CFileReader(const char* name)
 {
 	data = (char*) FileDownload(name, (U32*) &Size);
 	Pos = 0;
@@ -437,7 +438,7 @@ CFileReader::~CFileReader( )
 };
 //---------------------------------------------------
 // compressed stream
-CCompressedReader::CCompressedReader(Pcstr name, Pcstr sign)
+CCompressedReader::CCompressedReader(const char* name, const char* sign)
 {
 	data = (char*) FileDecompress(name, sign, (U32*) &Size);
 	Pos = 0;
@@ -448,7 +449,7 @@ CCompressedReader::~CCompressedReader( )
 };
 
 
-CVirtualFileRW::CVirtualFileRW(Pcstr cFileName)
+CVirtualFileRW::CVirtualFileRW(const char* cFileName)
 {
 	// Open the file
 	hSrcFile = CreateFile(cFileName, GENERIC_READ | GENERIC_WRITE, FILE_SHARE_READ, 0, OPEN_EXISTING, 0, 0);
@@ -479,7 +480,7 @@ CVirtualFileRW::~CVirtualFileRW( )
 	CloseHandle(hSrcFile);
 }
 
-CVirtualFileReader::CVirtualFileReader(Pcstr cFileName)
+CVirtualFileReader::CVirtualFileReader(const char* cFileName)
 {
 	// Open the file
 	hSrcFile = CreateFile(cFileName, GENERIC_READ, FILE_SHARE_READ | FILE_SHARE_WRITE, 0, OPEN_EXISTING, 0, 0);
