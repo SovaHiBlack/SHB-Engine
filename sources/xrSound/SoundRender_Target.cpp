@@ -1,9 +1,9 @@
 #include "stdafx.h"
 
-#include "soundrender_target.h"
-#include "soundrender_core.h"
-#include "soundrender_emitter.h"
-#include "soundrender_source.h"
+#include "SoundRender_Target.h"
+#include "SoundRender_Core.h"
+#include "SoundRender_Emitter.h"
+#include "SoundRender_Source.h"
 
 CSoundRender_Target::CSoundRender_Target(void)
 {
@@ -27,7 +27,7 @@ BOOL CSoundRender_Target::_initialize()
 	wfx.nBlockAlign			= wfx.nChannels * wfx.wBitsPerSample / 8;
 	wfx.nAvgBytesPerSec		= wfx.nSamplesPerSec * wfx.nBlockAlign;
 	wfx.cbSize				= 0;
-    return					TRUE;
+	return					TRUE;
 }
 
 void	CSoundRender_Target::start			(CSoundRender_Emitter* E)
@@ -85,7 +85,7 @@ void	CSoundRender_Target::attach()
 	ov_callbacks ovc= {ov_read_func,ov_seek_func,ov_close_func,ov_tell_func};
 	wave			= FS.r_open		(pEmitter->source->pname.c_str()); 
 	R_ASSERT3		(wave&&wave->length(),"Can't open wave file:",pEmitter->source->pname.c_str());
- 	ov_open_callbacks(wave,&ovf,NULL,0,ovc);
+	ov_open_callbacks(wave,&ovf,NULL,0,ovc);
 	VERIFY			(0!=wave);
 }
 

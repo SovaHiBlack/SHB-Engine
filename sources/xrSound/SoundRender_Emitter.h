@@ -1,13 +1,12 @@
-#ifndef SoundRender_EmitterH
-#define SoundRender_EmitterH
 #pragma once
 
-#include "soundrender.h"
-#include "soundrender_environment.h"
+#include "SoundRender.h"
+#include "SoundRender_Environment.h"
 
 class CSoundRender_Emitter		:	public CSound_emitter
 {
 	float						starting_delay;
+
 public:
 	enum State
 	{
@@ -27,10 +26,10 @@ public:
 
 		stFORCEDWORD	= u32(-1)
 	};
-public:
+
 #ifdef DEBUG
 	u32							dbg_ID;
-#endif
+#endif // def DEBUG
 
 	CSoundRender_Target*		target;
 	CSoundRender_Source*		source;
@@ -40,7 +39,7 @@ public:
 	float						smooth_volume;
 	float 						occluder_volume;		// USER
 	float						fade_volume;
-	Fvector3						occluder	[3];
+	Fvector3					occluder	[3];
 
 	State						state;
 	u32							position;
@@ -59,10 +58,10 @@ public:
 
 	u32							marker;
 	void						i_stop					();
-public:
+
 	void						Event_Propagade			();
 	void						Event_ReleaseOwner		();
-	BOOL						isPlaying				(void)					{ return state!=stStopped; }
+	BOOL						isPlaying				( )						{ return state!=stStopped; }
 
 	virtual BOOL				is_2D					()						{ return b2D; }
 	virtual void				switch_to_2D			();
@@ -92,4 +91,3 @@ public:
 	CSoundRender_Emitter		();
 	~CSoundRender_Emitter		();
 };
-#endif

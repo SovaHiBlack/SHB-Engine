@@ -25,7 +25,7 @@
 #include "defines.h"
 #include "RenderDevice.h"
 #include "xrXRC.h"
-#include "../xrSound/sound.h"
+#include "../xrSound/Sound.h"
 
 extern ENGINE_API CIniFile* pGameIni;
 

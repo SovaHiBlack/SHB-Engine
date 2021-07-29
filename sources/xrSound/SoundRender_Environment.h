@@ -8,21 +8,21 @@ public:
 	shared_str			name;
 
 	U32				Environment;				// sorce environment
-    float           Room;                       // room effect level at low frequencies
-    float           RoomHF;                     // room effect high-frequency level re. low frequency level
-    float           RoomRolloffFactor;          // like DS3D flRolloffFactor but for room effect
-    float           DecayTime;                  // reverberation decay time at low frequencies
-    float           DecayHFRatio;               // high-frequency to low-frequency decay time ratio
-    float           Reflections;                // early reflections level relative to room effect
-    float           ReflectionsDelay;           // initial reflection delay time
-    float           Reverb;                     // late reverberation level relative to room effect
-    float           ReverbDelay;                // late reverberation delay time relative to initial reflection
-    float           EnvironmentSize;            // environment size in meters
-    float           EnvironmentDiffusion;       // environment diffusion
-    float           AirAbsorptionHF;            // change in level per meter at 5 kHz
+	float           Room;                       // room effect level at low frequencies
+	float           RoomHF;                     // room effect high-frequency level re. low frequency level
+	float           RoomRolloffFactor;          // like DS3D flRolloffFactor but for room effect
+	float           DecayTime;                  // reverberation decay time at low frequencies
+	float           DecayHFRatio;               // high-frequency to low-frequency decay time ratio
+	float           Reflections;                // early reflections level relative to room effect
+	float           ReflectionsDelay;           // initial reflection delay time
+	float           Reverb;                     // late reverberation level relative to room effect
+	float           ReverbDelay;                // late reverberation delay time relative to initial reflection
+	float           EnvironmentSize;            // environment size in meters
+	float           EnvironmentDiffusion;       // environment diffusion
+	float           AirAbsorptionHF;            // change in level per meter at 5 kHz
 public:
-                    CSoundRender_Environment	(void);
-                    ~CSoundRender_Environment	(void);
+					CSoundRender_Environment	( );
+					~CSoundRender_Environment	( );
 	void			set_identity	            ();
 	void			set_default		            ();
 	void			clamp			            ();
@@ -31,23 +31,24 @@ public:
 	void			save			            (IWriter* fs);
 };
 
-class SoundEnvironment_LIB
+class CSoundEnvironmentLib
 {
 public:
-//	DEFINE_VECTOR				(CSoundRender_Environment*,SE_VEC,SE_IT);
 	using SE_VEC = xr_vector<CSoundRender_Environment*>;
 	using SE_IT = SE_VEC::iterator;
+
 private:
 	SE_VEC						library;
+
 public:
-	void						Load	(const char* name);
-	bool						Save	(const char* name);
-	void						Unload	();
-	int							GetID	(const char* name);
-	CSoundRender_Environment*	Get		(const char* name);
-	CSoundRender_Environment*	Get		(int id);
-	CSoundRender_Environment*	Append	(CSoundRender_Environment* parent=0);
-	void						Remove	(const char* name);
-	void						Remove	(int id);
-	SE_VEC&						Library	();
+	void						Load(const char* name);
+	bool						Save(const char* name);
+	void						Unload( );
+	int							GetID(const char* name);
+	CSoundRender_Environment* Get(const char* name);
+	CSoundRender_Environment* Get(int id);
+	CSoundRender_Environment* Append(CSoundRender_Environment* parent = 0);
+	void						Remove(const char* name);
+	void						Remove(int id);
+	SE_VEC& Library( );
 };

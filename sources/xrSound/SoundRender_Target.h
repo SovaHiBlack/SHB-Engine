@@ -1,8 +1,6 @@
-#ifndef SoundRender_TargetH
-#define SoundRender_TargetH
 #pragma once
 
-#include "soundrender.h"
+#include "SoundRender.h"
 
 class CSoundRender_Target
 {
@@ -10,19 +8,22 @@ protected:
 	WAVEFORMATEX				wfx;
 	CSoundRender_Emitter*		pEmitter;
 	BOOL						rendering;
+
 public:
 	float						priority;
+
 protected:
 	OggVorbis_File				ovf;
 	IReader*					wave;					
 	void						attach				();
 	void						dettach				();
+
 public:
 	OggVorbis_File*				get_data			()	{
 		if (!wave)	attach		();
 		return &ovf;
 	}
-public:
+
 								CSoundRender_Target	(void);
 	virtual 					~CSoundRender_Target(void);
 
@@ -39,4 +40,3 @@ public:
 	virtual void				update				()=0;
 	virtual void				fill_parameters		()=0;
 };
-#endif

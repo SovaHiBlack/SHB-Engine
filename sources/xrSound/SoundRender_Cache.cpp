@@ -1,6 +1,6 @@
 #include "stdafx.h"
 
-#include ".\soundrender_cache.h"
+#include "SoundRender_Cache.h"
 
 CSoundRender_Cache::CSoundRender_Cache	()
 {
@@ -14,9 +14,7 @@ CSoundRender_Cache::CSoundRender_Cache	()
 }
 
 CSoundRender_Cache::~CSoundRender_Cache	()
-{
-}
-
+{ }
 
 void	CSoundRender_Cache::move2top	(cache_line* line)
 {

@@ -1,9 +1,9 @@
 #include "stdafx.h"
 
-#include "soundrender_targetD.h"
-#include "soundrender.h"
-#include "soundrender_coreD.h"
-#include "soundrender_emitter.h"
+#include "SoundRender_TargetD.h"
+#include "SoundRender.h"
+#include "SoundRender_CoreD.h"
+#include "SoundRender_Emitter.h"
 
 CSoundRender_TargetD::CSoundRender_TargetD():CSoundRender_Target()
 {
@@ -50,8 +50,8 @@ BOOL CSoundRender_TargetD::_initialize	()
 	case sq_HIGH:		dsBD.guid3DAlgorithm = DS3DALG_HRTF_FULL;			break;
 	default:			FATAL("Unknown 3D-ref_sound algorithm");			break;
 	}
-    if (psSoundFlags.test(ss_Hardware)) 
-    	dsBD.guid3DAlgorithm = DS3DALG_HRTF_FULL;
+	if (psSoundFlags.test(ss_Hardware)) 
+		dsBD.guid3DAlgorithm = DS3DALG_HRTF_FULL;
 
 	// Create
 	bDX7				= FALSE;
@@ -65,7 +65,7 @@ BOOL CSoundRender_TargetD::_initialize	()
 	R_CHK	(pControl->SetConeOutsideVolume	(0,DS3D_DEFERRED));
 	R_CHK	(pControl->SetVelocity			(0,0,0,DS3D_DEFERRED));
 
-    return TRUE;
+	return TRUE;
 }
 
 void	CSoundRender_TargetD::_destroy		()
@@ -77,7 +77,7 @@ void	CSoundRender_TargetD::_destroy		()
 
 void	CSoundRender_TargetD::start			(CSoundRender_Emitter* E)
 {
-    inherited::start(E);
+	inherited::start(E);
 	pos_write		= 0;
 }
 
@@ -86,7 +86,7 @@ void	CSoundRender_TargetD::render			()
 	fill_block		();
 	fill_block		();
 
-    R_CHK			(pBuffer->SetCurrentPosition	(0));
+	R_CHK			(pBuffer->SetCurrentPosition	(0));
 	HRESULT _hr		= pBuffer->Play(0,0,DSBPLAY_LOOPING);
 	if (DSERR_BUFFERLOST==_hr)	{
 		R_CHK(pBuffer->Restore());
@@ -94,7 +94,7 @@ void	CSoundRender_TargetD::render			()
 	}else{
 		R_CHK		(_hr);
 	}
-    inherited::render();
+	inherited::render();
 }
 
 void	CSoundRender_TargetD::stop			()
@@ -104,7 +104,7 @@ void	CSoundRender_TargetD::stop			()
 		R_CHK		(pControl->SetMode(DS3DMODE_HEADRELATIVE,DS3D_DEFERRED));
 //		R_CHK		(pControl->SetMode(DS3DMODE_DISABLE,DS3D_DEFERRED));
 	}
-    inherited::stop	();
+	inherited::stop	();
 }
 
 void	CSoundRender_TargetD::rewind			()
@@ -186,10 +186,10 @@ void	CSoundRender_TargetD::fill_block		()
 	if (0==pEmitter)					return;
 
 	// Obtain memory address of write block. This will be in two parts if the block wraps around.
-    LPVOID			ptr1, ptr2;
+	LPVOID			ptr1, ptr2;
 	U32				bytes1;
 	U32				bytes2;
-    R_CHK			(pBuffer->Lock(pos_write%buf_size, buf_block, &ptr1, LPDWORD(&bytes1), &ptr2, LPDWORD(&bytes2), 0));
+	R_CHK			(pBuffer->Lock(pos_write%buf_size, buf_block, &ptr1, LPDWORD(&bytes1), &ptr2, LPDWORD(&bytes2), 0));
 	R_ASSERT		(0==ptr2 && 0==bytes2);
 
 	// Copy data (and clear the end)

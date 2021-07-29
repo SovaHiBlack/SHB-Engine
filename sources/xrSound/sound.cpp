@@ -25,7 +25,6 @@ void CSound_manager_interface::_create		(U64 window)
 void CSound_manager_interface::_destroy	()
 {
 	Sound->_clear		();
-    xr_delete			(SoundRender);
-    Sound				= 0;
+	xr_delete			(SoundRender);
+	Sound				= 0;
 }
-

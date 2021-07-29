@@ -1,9 +1,3 @@
-// stdafx.h : include file for standard system include files,
-// or project specific include files that are used frequently, but
-// are changed infrequently
-//
-#ifndef stdafxH
-#define stdafxH
 #pragma once
 
 #include "../Core/Core.h"
@@ -28,10 +22,6 @@
 #include <vorbis/vorbisfile.h>
 
 #include "../xrCDB/xrCDB.h"
-#include "sound.h"
+#include "Sound.h"
 
 #define ENGINE_API
-
-// TODO: reference additional headers your program requires here
-#endif
-

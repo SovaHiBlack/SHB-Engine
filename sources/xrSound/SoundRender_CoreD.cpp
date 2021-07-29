@@ -1,7 +1,7 @@
 #include "stdafx.h"
 
-#include "soundrender_coreD.h"
-#include "soundrender_targetD.h"
+#include "SoundRender_CoreD.h"
+#include "SoundRender_TargetD.h"
 #include <eax.h>
 
 CSoundRender_CoreD*	SoundRenderD= 0;
@@ -20,37 +20,37 @@ CSoundRender_CoreD::~CSoundRender_CoreD()
 
 BOOL CSoundRender_CoreD::EAXQuerySupport(const GUID* guid, u32 prop)
 {
-    ULONG ulSupport = 0;
-    HRESULT hr = pExtensions->QuerySupport(*guid, prop, &ulSupport);
-    if (FAILED(hr)) return FALSE;
+	ULONG ulSupport = 0;
+	HRESULT hr = pExtensions->QuerySupport(*guid, prop, &ulSupport);
+	if (FAILED(hr)) return FALSE;
  
-    if ((ulSupport&(KSPROPERTY_SUPPORT_GET|KSPROPERTY_SUPPORT_SET)) == (KSPROPERTY_SUPPORT_GET|KSPROPERTY_SUPPORT_SET))
-        return TRUE;
+	if ((ulSupport&(KSPROPERTY_SUPPORT_GET|KSPROPERTY_SUPPORT_SET)) == (KSPROPERTY_SUPPORT_GET|KSPROPERTY_SUPPORT_SET))
+		return TRUE;
  
-    return FALSE;
+	return FALSE;
 }
 
 BOOL CSoundRender_CoreD::EAXTestSupport	(BOOL bDeferred)
 {
 	BOOL support 	= TRUE;
-    u32 ext			= bDeferred?DSPROPERTY_EAXLISTENER_DEFERRED:0;
-    if (!EAXQuerySupport(&DSPROPSETID_EAX_ListenerProperties, ext | DSPROPERTY_EAXLISTENER_NONE)) 					support = FALSE;
-    if (!EAXQuerySupport(&DSPROPSETID_EAX_ListenerProperties, ext | DSPROPERTY_EAXLISTENER_ALLPARAMETERS)) 			support = FALSE;
-    if (!EAXQuerySupport(&DSPROPSETID_EAX_ListenerProperties, ext | DSPROPERTY_EAXLISTENER_ROOM)) 					support = FALSE;
-    if (!EAXQuerySupport(&DSPROPSETID_EAX_ListenerProperties, ext | DSPROPERTY_EAXLISTENER_ROOMHF)) 			  	support = FALSE;
-    if (!EAXQuerySupport(&DSPROPSETID_EAX_ListenerProperties, ext | DSPROPERTY_EAXLISTENER_ROOMROLLOFFFACTOR)) 		support = FALSE;
-    if (!EAXQuerySupport(&DSPROPSETID_EAX_ListenerProperties, ext | DSPROPERTY_EAXLISTENER_DECAYTIME)) 				support = FALSE;
-    if (!EAXQuerySupport(&DSPROPSETID_EAX_ListenerProperties, ext | DSPROPERTY_EAXLISTENER_DECAYHFRATIO)) 			support = FALSE;
-    if (!EAXQuerySupport(&DSPROPSETID_EAX_ListenerProperties, ext | DSPROPERTY_EAXLISTENER_REFLECTIONS)) 			support = FALSE;
-    if (!EAXQuerySupport(&DSPROPSETID_EAX_ListenerProperties, ext | DSPROPERTY_EAXLISTENER_REFLECTIONSDELAY)) 		support = FALSE;
-    if (!EAXQuerySupport(&DSPROPSETID_EAX_ListenerProperties, ext | DSPROPERTY_EAXLISTENER_REVERB)) 		      	support = FALSE;
-    if (!EAXQuerySupport(&DSPROPSETID_EAX_ListenerProperties, ext | DSPROPERTY_EAXLISTENER_REVERBDELAY)) 		    support = FALSE;
-    if (!EAXQuerySupport(&DSPROPSETID_EAX_ListenerProperties, ext | DSPROPERTY_EAXLISTENER_ENVIRONMENT)) 		    support = FALSE;
-    if (!EAXQuerySupport(&DSPROPSETID_EAX_ListenerProperties, ext | DSPROPERTY_EAXLISTENER_ENVIRONMENTSIZE)) 	    support = FALSE;
-    if (!EAXQuerySupport(&DSPROPSETID_EAX_ListenerProperties, ext | DSPROPERTY_EAXLISTENER_ENVIRONMENTDIFFUSION)) 	support = FALSE;
-    if (!EAXQuerySupport(&DSPROPSETID_EAX_ListenerProperties, ext | DSPROPERTY_EAXLISTENER_AIRABSORPTIONHF)) 		support = FALSE;
-    if (!EAXQuerySupport(&DSPROPSETID_EAX_ListenerProperties, ext | DSPROPERTY_EAXLISTENER_FLAGS)) 					support = FALSE;
-    return support;
+	u32 ext			= bDeferred?DSPROPERTY_EAXLISTENER_DEFERRED:0;
+	if (!EAXQuerySupport(&DSPROPSETID_EAX_ListenerProperties, ext | DSPROPERTY_EAXLISTENER_NONE)) 					support = FALSE;
+	if (!EAXQuerySupport(&DSPROPSETID_EAX_ListenerProperties, ext | DSPROPERTY_EAXLISTENER_ALLPARAMETERS)) 			support = FALSE;
+	if (!EAXQuerySupport(&DSPROPSETID_EAX_ListenerProperties, ext | DSPROPERTY_EAXLISTENER_ROOM)) 					support = FALSE;
+	if (!EAXQuerySupport(&DSPROPSETID_EAX_ListenerProperties, ext | DSPROPERTY_EAXLISTENER_ROOMHF)) 			  	support = FALSE;
+	if (!EAXQuerySupport(&DSPROPSETID_EAX_ListenerProperties, ext | DSPROPERTY_EAXLISTENER_ROOMROLLOFFFACTOR)) 		support = FALSE;
+	if (!EAXQuerySupport(&DSPROPSETID_EAX_ListenerProperties, ext | DSPROPERTY_EAXLISTENER_DECAYTIME)) 				support = FALSE;
+	if (!EAXQuerySupport(&DSPROPSETID_EAX_ListenerProperties, ext | DSPROPERTY_EAXLISTENER_DECAYHFRATIO)) 			support = FALSE;
+	if (!EAXQuerySupport(&DSPROPSETID_EAX_ListenerProperties, ext | DSPROPERTY_EAXLISTENER_REFLECTIONS)) 			support = FALSE;
+	if (!EAXQuerySupport(&DSPROPSETID_EAX_ListenerProperties, ext | DSPROPERTY_EAXLISTENER_REFLECTIONSDELAY)) 		support = FALSE;
+	if (!EAXQuerySupport(&DSPROPSETID_EAX_ListenerProperties, ext | DSPROPERTY_EAXLISTENER_REVERB)) 		      	support = FALSE;
+	if (!EAXQuerySupport(&DSPROPSETID_EAX_ListenerProperties, ext | DSPROPERTY_EAXLISTENER_REVERBDELAY)) 		    support = FALSE;
+	if (!EAXQuerySupport(&DSPROPSETID_EAX_ListenerProperties, ext | DSPROPERTY_EAXLISTENER_ENVIRONMENT)) 		    support = FALSE;
+	if (!EAXQuerySupport(&DSPROPSETID_EAX_ListenerProperties, ext | DSPROPERTY_EAXLISTENER_ENVIRONMENTSIZE)) 	    support = FALSE;
+	if (!EAXQuerySupport(&DSPROPSETID_EAX_ListenerProperties, ext | DSPROPERTY_EAXLISTENER_ENVIRONMENTDIFFUSION)) 	support = FALSE;
+	if (!EAXQuerySupport(&DSPROPSETID_EAX_ListenerProperties, ext | DSPROPERTY_EAXLISTENER_AIRABSORPTIONHF)) 		support = FALSE;
+	if (!EAXQuerySupport(&DSPROPSETID_EAX_ListenerProperties, ext | DSPROPERTY_EAXLISTENER_FLAGS)) 					support = FALSE;
+	return support;
 }
 
 
@@ -105,36 +105,36 @@ void CSoundRender_CoreD::_initialize	(U64 window)
 	R_CHK(pBuffer->QueryInterface( IID_IDirectSound3DListener, (VOID**)&pListener ));
 	R_ASSERT					(pListener);
 
-    // Create property set
+	// Create property set
 	{
-        IDirectSoundBuffer*		pTempBuf;
-        WAVEFORMATEX 			wave;
-        Memory.mem_fill			(&wave, 0, sizeof(WAVEFORMATEX));
-        wave.wFormatTag 		= WAVE_FORMAT_PCM;
-        wave.nChannels 			= 1; 
-        wave.nSamplesPerSec 	= 22050; 
-        wave.wBitsPerSample 	= 16; 
-        wave.nBlockAlign 		= wave.wBitsPerSample / 8 * wave.nChannels;
-        wave.nAvgBytesPerSec	= wave.nSamplesPerSec * wave.nBlockAlign;
+		IDirectSoundBuffer*		pTempBuf;
+		WAVEFORMATEX 			wave;
+		Memory.mem_fill			(&wave, 0, sizeof(WAVEFORMATEX));
+		wave.wFormatTag 		= WAVE_FORMAT_PCM;
+		wave.nChannels 			= 1; 
+		wave.nSamplesPerSec 	= 22050; 
+		wave.wBitsPerSample 	= 16; 
+		wave.nBlockAlign 		= wave.wBitsPerSample / 8 * wave.nChannels;
+		wave.nAvgBytesPerSec	= wave.nSamplesPerSec * wave.nBlockAlign;
 
-        DSBUFFERDESC 			desc;
-        Memory.mem_fill			(&desc, 0, sizeof(DSBUFFERDESC));
-        desc.dwSize 			= sizeof(DSBUFFERDESC); 
-        desc.dwFlags 			= DSBCAPS_STATIC|DSBCAPS_CTRL3D; 
-        desc.dwBufferBytes 		= 64;  
-        desc.lpwfxFormat 		= &wave; 
+		DSBUFFERDESC 			desc;
+		Memory.mem_fill			(&desc, 0, sizeof(DSBUFFERDESC));
+		desc.dwSize 			= sizeof(DSBUFFERDESC); 
+		desc.dwFlags 			= DSBCAPS_STATIC|DSBCAPS_CTRL3D; 
+		desc.dwBufferBytes 		= 64;  
+		desc.lpwfxFormat 		= &wave; 
 
 		if (DS_OK==pDevice->CreateSoundBuffer(&desc, &pTempBuf, NULL)){
-        	bEAX				= TRUE;
+			bEAX				= TRUE;
 			if (FAILED(pTempBuf->QueryInterface(IID_IKsPropertySet, (LPVOID *)&pExtensions))){
-                bEAX			= FALSE;
-            }else{
-            	bEAX 			= EAXTestSupport(FALSE);
-            	bDeferredEAX	= EAXTestSupport(TRUE);
-            }
-        }
-        _RELEASE				(pTempBuf);
-    }
+				bEAX			= FALSE;
+			}else{
+				bEAX 			= EAXTestSupport(FALSE);
+				bDeferredEAX	= EAXTestSupport(TRUE);
+			}
+		}
+		_RELEASE				(pTempBuf);
+	}
 
 	// Initialize listener data
 	Listener.dwSize				= sizeof(DS3DLISTENER);
@@ -147,8 +147,8 @@ void CSoundRender_CoreD::_initialize	(U64 window)
 	Listener.fDopplerFactor		= DS3D_DEFAULTDOPPLERFACTOR;
 
 	Msg				        	("DirectSound: Create device successfully.");
-    // inherited initialize
-    inherited::_initialize		(window);
+	// inherited initialize
+	inherited::_initialize		(window);
 
 	// Pre-create targets
 	CSoundRender_Target*	T	= 0;
@@ -174,15 +174,15 @@ void CSoundRender_CoreD::_clear	()
 {
 	inherited::_clear			();
 
-    // remove targets
+	// remove targets
 	CSoundRender_Target*	T	= 0;
 	for (u32 tit=0; tit<s_targets.size(); tit++)
 	{
 		T						= s_targets[tit];
 		T->_destroy				();
-        xr_delete				(T);
+		xr_delete				(T);
 	}
-    // cleanup dx
+	// cleanup dx
 	_RELEASE					( pExtensions	);
 	_RELEASE					( pListener		);
 	_RELEASE					( pBuffer		);
@@ -216,7 +216,7 @@ void CSoundRender_CoreD::update_listener( const Fvector3& P, const Fvector3& D, 
 	Listener.fDopplerFactor			= EPS_S;
 	Listener.fRolloffFactor			= psSoundRolloff;
 	// apply listener params
-    pListener->SetAllParameters		((DS3DLISTENER*)&Listener, DS3D_DEFERRED );
-    // commit deffered settings
-    pListener->CommitDeferredSettings	();
+	pListener->SetAllParameters		((DS3DLISTENER*)&Listener, DS3D_DEFERRED );
+	// commit deffered settings
+	pListener->CommitDeferredSettings	();
 }

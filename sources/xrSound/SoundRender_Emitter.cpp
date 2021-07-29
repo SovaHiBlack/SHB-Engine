@@ -1,26 +1,27 @@
 #include "stdafx.h"
 
-#include "soundrender_emitter.h"
-#include "soundrender_core.h"
+#include "SoundRender_Emitter.h"
+#include "SoundRender_Core.h"
 
 extern	u32				psSoundModel;
 extern	u32				psSoundFreq;
 extern	float			psSoundVEffects;
 
 //////////////////////////////////////////////////////////////////////
-CSoundRender_Emitter::CSoundRender_Emitter(void)
+CSoundRender_Emitter::CSoundRender_Emitter( )
 {
 
 #ifdef DEBUG
 	static	u32			incrementalID = 0;
 	dbg_ID				= ++incrementalID;
-#endif
+#endif // def DEBUG
+
 	target				= NULL;
 	source				= NULL;
 	owner_data			= NULL;
-	smooth_volume		= 1.f;
-	occluder_volume		= 1.f;
-	fade_volume			= 1.f;
+	smooth_volume		= 1.0f;
+	occluder_volume		= 1.0f;
+	fade_volume			= 1.0f;
 	occluder[0].set		(0,0,0);
 	occluder[1].set		(0,0,0);
 	occluder[2].set		(0,0,0);
@@ -35,11 +36,11 @@ CSoundRender_Emitter::CSoundRender_Emitter(void)
 	dwTimeToStop		= 0;
 	dwTimeToPropagade	= 0;
 	marker				= 0xabababab;
-	starting_delay		= 0.f;
-	priority_scale		= 1.f;
+	starting_delay		= 0.0f;
+	priority_scale		= 1.0f;
 }
 
-CSoundRender_Emitter::~CSoundRender_Emitter(void)
+CSoundRender_Emitter::~CSoundRender_Emitter( )
 {
 	// try to release dependencies, events, for example
 	Event_ReleaseOwner	();
@@ -78,19 +79,19 @@ void CSoundRender_Emitter::Event_Propagade	()
 
 void CSoundRender_Emitter::switch_to_2D()
 {
- 	b2D 						= TRUE;	
-	set_priority				(100.f);
+	b2D 						= TRUE;
+	set_priority				(100.0f);
 }
 
-void CSoundRender_Emitter::switch_to_3D()						
-{ 	
-	b2D 						= FALSE;											
+void CSoundRender_Emitter::switch_to_3D()
+{
+	b2D 						= FALSE;
 }
 
 u32	CSoundRender_Emitter::play_time	( )
-{ 
+{
 	return (state==stPlaying		|| 
 			state==stPlayingLooped	|| 
 			state==stSimulating		|| 
-			state==stSimulatingLooped)?SoundRender->Timer_Value-dwTimeStarted:0; 
+			state==stSimulatingLooped)?SoundRender->Timer_Value-dwTimeStarted:0;
 }

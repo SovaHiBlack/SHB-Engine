@@ -1,12 +1,9 @@
-#ifndef SoundRender_CoreAH
-#define SoundRender_CoreAH
 #pragma once
 
-#include "SoundRender_Core.h"            
+#include "SoundRender_Core.h"
 
 #include <al.h>
 #include <alc.h>
-//.#include <alut.h>
 #include <eax.h>
 
 #include "OpenALDeviceList.h"
@@ -25,7 +22,7 @@ class CSoundRender_CoreA: public CSoundRender_Core
 	EAXSet					eaxSet;					// EAXSet function, retrieved if EAX Extension is supported
 	EAXGet					eaxGet;					// EAXGet function, retrieved if EAX Extension is supported
 	ALCdevice* 				pDevice;
-    ALCcontext*				pContext;
+	ALCcontext*				pContext;
 	ALDeviceList*			pDeviceList;
 
 	struct SListener{
@@ -34,22 +31,23 @@ class CSoundRender_CoreA: public CSoundRender_Core
 	};
 	SListener				Listener;
 
-    BOOL 					EAXQuerySupport			(BOOL bDeferred, const GUID* guid, u32 prop, void* val, u32 sz);
+	BOOL 					EAXQuerySupport			(BOOL bDeferred, const GUID* guid, u32 prop, void* val, u32 sz);
 	BOOL 					EAXTestSupport			(BOOL bDeferred);
+
 protected:
 	virtual void			i_eax_set				(const GUID* guid, u32 prop, void* val, u32 sz);
 	virtual void			i_eax_get				(const GUID* guid, u32 prop, void* val, u32 sz);
 	virtual void			update_listener			( const Fvector3& P, const Fvector3& D, const Fvector3& N, float dt );
-public:	
-						    CSoundRender_CoreA		();
-    virtual					~CSoundRender_CoreA		();
+
+public:
+							CSoundRender_CoreA		();
+	virtual					~CSoundRender_CoreA		();
 
 	virtual void			_initialize				(U64 window );
 	virtual void			_clear					( );
-    
+	
 	virtual void			set_master_volume		( float f		);
 
 	virtual const Fvector3&	listener_position		( ){return Listener.position;}
 };
 extern CSoundRender_CoreA* SoundRenderA;
-#endif

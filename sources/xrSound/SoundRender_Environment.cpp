@@ -1,7 +1,8 @@
 #include "stdafx.h"
 
-#include "soundrender.h"
-#include "soundrender_environment.h"
+#include "SoundRender.h"
+#include "SoundRender_Environment.h"
+
 #pragma warning(push)
 #pragma warning(disable:4995)
 #include <eax.h>
@@ -14,8 +15,7 @@ CSoundRender_Environment::CSoundRender_Environment(void)
 }
 
 CSoundRender_Environment::~CSoundRender_Environment(void)
-{
-}
+{ }
 
 void CSoundRender_Environment::set_default	()
 {
@@ -45,18 +45,18 @@ void CSoundRender_Environment::lerp			(CSoundRender_Environment& A, CSoundRender
 {
 	float	fi				= 1.f-f;
 
-	Room                    = fi*A.Room                	+ f*B.Room;                
-	RoomHF                  = fi*A.RoomHF              	+ f*B.RoomHF;              
+	Room                    = fi*A.Room                	+ f*B.Room;
+	RoomHF                  = fi*A.RoomHF              	+ f*B.RoomHF;
 	RoomRolloffFactor       = fi*A.RoomRolloffFactor   	+ f*B.RoomRolloffFactor;
-	DecayTime               = fi*A.DecayTime           	+ f*B.DecayTime;           
-	DecayHFRatio            = fi*A.DecayHFRatio        	+ f*B.DecayHFRatio;        
-	Reflections             = fi*A.Reflections         	+ f*B.Reflections;         
-	ReflectionsDelay        = fi*A.ReflectionsDelay    	+ f*B.ReflectionsDelay;    
-	Reverb                  = fi*A.Reverb              	+ f*B.Reverb;              
-	ReverbDelay             = fi*A.ReverbDelay         	+ f*B.ReverbDelay;         
-	EnvironmentSize         = fi*A.EnvironmentSize     	+ f*B.EnvironmentSize;     
+	DecayTime               = fi*A.DecayTime           	+ f*B.DecayTime;
+	DecayHFRatio            = fi*A.DecayHFRatio        	+ f*B.DecayHFRatio;
+	Reflections             = fi*A.Reflections         	+ f*B.Reflections;
+	ReflectionsDelay        = fi*A.ReflectionsDelay    	+ f*B.ReflectionsDelay;
+	Reverb                  = fi*A.Reverb              	+ f*B.Reverb;
+	ReverbDelay             = fi*A.ReverbDelay         	+ f*B.ReverbDelay;
+	EnvironmentSize         = fi*A.EnvironmentSize     	+ f*B.EnvironmentSize;
 	EnvironmentDiffusion    = fi*A.EnvironmentDiffusion	+ f*B.EnvironmentDiffusion;
-	AirAbsorptionHF         = fi*A.AirAbsorptionHF     	+ f*B.AirAbsorptionHF;     
+	AirAbsorptionHF         = fi*A.AirAbsorptionHF     	+ f*B.AirAbsorptionHF;
 
 	clamp					();
 }
@@ -144,7 +144,7 @@ void CSoundRender_Environment::save	(IWriter* fs)
 }
 
 //////////////////////////////////////////////////////////////////////////
-void	SoundEnvironment_LIB::Load	(const char* name)
+void	CSoundEnvironmentLib::Load	(const char* name)
 {
 	R_ASSERT			(library.empty());
 	IReader* F			= FS.r_open(name);
@@ -158,7 +158,7 @@ void	SoundEnvironment_LIB::Load	(const char* name)
 	}
 	FS.r_close			(F);
 }
-bool	SoundEnvironment_LIB::Save	(const char* name)
+bool	CSoundEnvironmentLib::Save	(const char* name)
 {
 	IWriter* F			= FS.w_open(name);
 	if (F){
@@ -170,37 +170,37 @@ bool	SoundEnvironment_LIB::Save	(const char* name)
 		}
 		FS.w_close		(F);
 		return 			true;
-	}   
+	}
 	return 				false;
 }
-void	SoundEnvironment_LIB::Unload	()
+void	CSoundEnvironmentLib::Unload	()
 {
 	for (U32 chunk=0; chunk<library.size(); chunk++)
 		xr_delete(library[chunk]);
 	library.clear		();
 }
-int		SoundEnvironment_LIB::GetID		(const char* name)
+int		CSoundEnvironmentLib::GetID		(const char* name)
 {
 	for (SE_IT it=library.begin(); it!=library.end(); it++)
 		if (0==stricmp(name,*(*it)->name)) return int(it-library.begin());
 	return -1;
 }
-CSoundRender_Environment*	SoundEnvironment_LIB::Get		(const char* name)
+CSoundRender_Environment* CSoundEnvironmentLib::Get		(const char* name)
 {
 	for (SE_IT it=library.begin(); it!=library.end(); it++)
 		if (0==stricmp(name,*(*it)->name)) return *it;
 	return NULL;
 }
-CSoundRender_Environment*	SoundEnvironment_LIB::Get		(int id)
+CSoundRender_Environment* CSoundEnvironmentLib::Get		(int id)
 {
 	return library[id];
 }
-CSoundRender_Environment*	SoundEnvironment_LIB::Append	(CSoundRender_Environment* parent)
+CSoundRender_Environment* CSoundEnvironmentLib::Append	(CSoundRender_Environment* parent)
 {
 	library.push_back	(parent?xr_new<CSoundRender_Environment>(*parent):xr_new<CSoundRender_Environment>());
 	return library.back	();
 }
-void						SoundEnvironment_LIB::Remove	(const char* name)
+void						CSoundEnvironmentLib::Remove	(const char* name)
 {
 	for (SE_IT it=library.begin(); it!=library.end(); it++)
 		if (0==stricmp(name,*(*it)->name))
@@ -210,12 +210,12 @@ void						SoundEnvironment_LIB::Remove	(const char* name)
 			break;
 		}
 }
-void						SoundEnvironment_LIB::Remove	(int id)
+void						CSoundEnvironmentLib::Remove	(int id)
 {
 	xr_delete		(library[id]);
 	library.erase	(library.begin()+id);
 }
-SoundEnvironment_LIB::SE_VEC& SoundEnvironment_LIB::Library	()	
-{ 
+CSoundEnvironmentLib::SE_VEC& CSoundEnvironmentLib::Library	()
+{
 	return library;
 }

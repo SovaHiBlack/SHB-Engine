@@ -1,9 +1,10 @@
 #include "stdafx.h"
 
 #include "../ENGINE/xrLevel.h"
-#include "soundrender_core.h"
-#include "soundrender_source.h"
-#include "soundrender_emitter.h"
+#include "SoundRender_Core.h"
+#include "SoundRender_Source.h"
+#include "SoundRender_Emitter.h"
+
 #pragma warning(push)
 #pragma warning(disable:4995)
 #include <eax.h>
@@ -115,7 +116,7 @@ void CSoundRender_Core::env_load	()
 	string_path					fn;
 	if (FS.exist(fn,"$game_data$",SNDENV_FILENAME))
 	{
-		s_environment				= xr_new<SoundEnvironment_LIB>();
+		s_environment				= xr_new<CSoundEnvironmentLib>();
 		s_environment->Load			(fn);
 	}
 
@@ -173,7 +174,7 @@ void CSoundRender_Core::set_geometry_som(IReader* I)
 		float		occ;
 	};
 	// Create AABB-tree
-	CDB::Collector				CL;			
+	CDB::Collector				CL;
 	while (!geom->eof()){
 		SOM_poly				P;
 		geom->r					(&P,sizeof(P));
@@ -270,7 +271,6 @@ void	CSoundRender_Core::clone				( ref_sound& S, const ref_sound& from, esound_t
 	S._p->s_type		= sound_type;
 }
 
-
 void	CSoundRender_Core::play					( ref_sound& S, CObject* O, u32 flags, float delay)
 {
 	if (!bPresent || 0==S._handle())return;
@@ -280,6 +280,7 @@ void	CSoundRender_Core::play					( ref_sound& S, CObject* O, u32 flags, float de
 	else				i_play					(&S,flags&sm_Looped,delay);
 	if (flags&sm_2D)	S._feedback()->switch_to_2D();
 }
+
 void	CSoundRender_Core::play_no_feedback		( ref_sound& S, CObject* O, u32 flags, float delay, Fvector3* pos, float* vol, float* freq, Fvector2* range)
 {
 	if (!bPresent || 0==S._handle())return;
@@ -297,6 +298,7 @@ void	CSoundRender_Core::play_no_feedback		( ref_sound& S, CObject* O, u32 flags,
 	if (vol)			S._feedback()->set_volume   (*vol);
 	S._p				= orig;
 }
+
 void	CSoundRender_Core::play_at_pos			( ref_sound& S, CObject* O, const Fvector3& pos, u32 flags, float delay)
 {
 	if (!bPresent || 0==S._handle())return;
@@ -307,6 +309,7 @@ void	CSoundRender_Core::play_at_pos			( ref_sound& S, CObject* O, const Fvector3
 	S._feedback()->set_position					(pos);
 	if (flags&sm_2D)	S._feedback()->switch_to_2D();
 }
+
 void	CSoundRender_Core::destroy	(ref_sound& S )
 {
 	if (S._feedback()){                   
@@ -328,6 +331,7 @@ void CSoundRender_Core::_create_data( ref_sound_data& S, const char* fName, esou
 	S.g_object			= 0; 
 	S.g_userdata		= 0;
 }
+
 void CSoundRender_Core::_destroy_data( ref_sound_data& S)
 {
 	if (S.feedback){                   
@@ -393,8 +397,7 @@ void						CSoundRender_Core::env_apply		()
 }
 
 void CSoundRender_Core::update_listener( const Fvector3& P, const Fvector3& D, const Fvector3& N, float dt )
-{
-}
+{ }
 
 void	CSoundRender_Core::i_eax_listener_set	(CSound_environment* _E)
 {
@@ -465,8 +468,8 @@ void CSoundRender_Core::object_relcase( CObject* obj )
 		for (u32 eit=0; eit<s_emitters.size(); eit++){
 			if (s_emitters[eit])
 				if (s_emitters[eit]->owner_data)
-					if (obj==s_emitters[eit]->owner_data->g_object) 
-						s_emitters[eit]->owner_data->g_object	= 0;     
+					if (obj==s_emitters[eit]->owner_data->g_object)
+						s_emitters[eit]->owner_data->g_object	= 0;
 		}
 	}
 }

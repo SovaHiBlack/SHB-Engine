@@ -2,8 +2,8 @@
 
 #include <msacm.h>
 
-#include "soundrender_core.h"
-#include "soundrender_source.h"
+#include "SoundRender_Core.h"
+#include "SoundRender_Source.h"
 
 //	SEEK_SET	0	File beginning
 //	SEEK_CUR	1	Current file pointer position
@@ -17,21 +17,21 @@ int ov_seek_func(void *datasource, S64 offset, int whence)
 	}
 	return 0; 
 }
-size_t ov_read_func(void *ptr, size_t size, size_t nmemb, void *datasource)
-{ 
-	IReader* F			= (IReader*)datasource; 
-	size_t exist_block	= _max(0ul,iFloor(F->elapsed()/(float)size));
-	size_t read_block	= _min(exist_block,nmemb);
-	F->r				(ptr,(int)(read_block*size));	
+size_t ov_read_func(void* ptr, size_t size, size_t nmemb, void* datasource)
+{
+	IReader* F = (IReader*) datasource;
+	size_t exist_block = _max(0ul, iFloor(F->elapsed( ) / (float) size));
+	size_t read_block = _min(exist_block, nmemb);
+	F->r(ptr, (int) (read_block * size));
 	return read_block;
 }
-int ov_close_func(void *datasource)									
-{	
-	return 0; 
+int ov_close_func(void* datasource)
+{
+	return 0;
 }
-long ov_tell_func(void *datasource)									
-{	
-	return ((IReader*)datasource)->tell(); 
+long ov_tell_func(void* datasource)
+{
+	return ((IReader*) datasource)->tell( );
 }
 
 void CSoundRender_Source::decompress		(U32 line, OggVorbis_File* ovf)
@@ -86,10 +86,10 @@ void CSoundRender_Source::LoadWave	(const char* pName)
 	if (ovm->comments){
 		IReader F			(ovm->user_comments[0],ovm->comment_lengths[0]);
 		U32 vers			= F.r_u32	();
-        if (vers==0x0001){
+		if (vers==0x0001){
 			m_fMinDist		= F.r_float	();
 			m_fMaxDist		= F.r_float	();
-	        m_fBaseVolume	= 1.f;
+			m_fBaseVolume	= 1.f;
 			m_uGameType		= F.r_u32	();
 			m_fMaxAIDist	= m_fMaxDist;
 		}else if (vers==0x0002){
@@ -101,7 +101,7 @@ void CSoundRender_Source::LoadWave	(const char* pName)
 		}else if (vers==OGG_COMMENT_VERSION){
 			m_fMinDist		= F.r_float	();
 			m_fMaxDist		= F.r_float	();
-            m_fBaseVolume	= F.r_float	();
+			m_fBaseVolume	= F.r_float	();
 			m_uGameType		= F.r_u32	();
 			m_fMaxAIDist	= F.r_float	();
 		}else{
@@ -145,8 +145,8 @@ void CSoundRender_Source::load(const char* name)
 void CSoundRender_Source::unload()
 {
 	SoundRender->cache.cat_destroy	(CAT);
-    dwTimeTotal						= 0;
-    dwBytesTotal					= 0;
-    dwBytesPerMS					= 0;
+	dwTimeTotal						= 0;
+	dwBytesTotal					= 0;
+	dwBytesPerMS					= 0;
 }
 

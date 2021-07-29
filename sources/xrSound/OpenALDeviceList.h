@@ -1,5 +1,4 @@
-#ifndef ALDEVICELIST_H
-#define ALDEVICELIST_H
+#pragma once
 
 #define AL_GENERIC_HARDWARE "Generic Hardware"
 #define AL_GENERIC_SOFTWARE "Generic Software"
@@ -25,6 +24,7 @@ private:
 	int					m_defaultDeviceIndex;
 	int					m_filterIndex;
 	void				Enumerate				();
+
 public:
 						ALDeviceList			();
 						~ALDeviceList			();
@@ -42,5 +42,3 @@ public:
 	int					GetNextFilteredDevice	();
 	void				SelectBestDevice		();
 };
-
-#endif // ALDEVICELIST_H

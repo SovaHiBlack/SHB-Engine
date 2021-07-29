@@ -1,5 +1,3 @@
-#ifndef SoundH
-#define SoundH
 #pragma once
 
 #ifdef XRSOUND_EXPORTS
@@ -34,7 +32,7 @@ XRSOUND_API extern int				psSoundCacheSizeMB		;
 // Flags
 enum {
 	ss_Hardware			= (1ul<<1ul),	//!< Use hardware mixing only
-    ss_EAX				= (1ul<<2ul),	//!< Use eax
+	ss_EAX				= (1ul<<2ul),	//!< Use eax
 	ss_forcedword		= u32(-1)
 };
 enum {
@@ -101,8 +99,8 @@ struct	ref_sound
 {
 	ref_sound_data_ptr		_p;
 public:
-    //! A constructor
-    /*!
+	//! A constructor
+	/*!
 		\sa ~ref_sound()
 	*/
 							ref_sound				(){ }
@@ -163,7 +161,7 @@ public:
 	inline void					set_priority			( float vol );
 
 	inline const CSound_params*	get_params				( );
-    inline void					set_params				( CSound_params* p );
+	inline void					set_params				( CSound_params* p );
 };
 
 /// definition (Sound Source)
@@ -273,7 +271,7 @@ public:
 	static void						_destroy				( );
 
 	virtual void					_restart				( )																						= 0;
-    virtual BOOL					i_locked 				( )																						= 0;
+	virtual BOOL					i_locked 				( )																						= 0;
 	//@}
 
 	//@{
@@ -328,10 +326,9 @@ inline void	ref_sound::set_params					( CSound_params* p )
 {	
 	VERIFY(!::Sound->i_locked()); 	
 	if (_feedback()){
-    	_feedback()->set_position	(p->position);
-    	_feedback()->set_frequency	(p->freq);
-        _feedback()->set_range   	(p->min_distance,p->max_distance);
-        _feedback()->set_volume   	(p->volume);
-    }
+		_feedback()->set_position	(p->position);
+		_feedback()->set_frequency	(p->freq);
+		_feedback()->set_range   	(p->min_distance,p->max_distance);
+		_feedback()->set_volume   	(p->volume);
+	}
 }
-#endif

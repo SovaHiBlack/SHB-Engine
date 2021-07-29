@@ -1,5 +1,3 @@
-#ifndef SoundRender_CoreDH
-#define SoundRender_CoreDH
 #pragma once
 
 #include "SoundRender_Core.h"
@@ -25,30 +23,32 @@ class CSoundRender_CoreD: public CSoundRender_Core
 		float			fRolloffFactor;
 		float			fDopplerFactor;
 	};
-    BOOL 				EAXQuerySupport			(const GUID* guid, u32 prop);
+	BOOL 				EAXQuerySupport			(const GUID* guid, u32 prop);
 	BOOL 				EAXTestSupport			(BOOL bDeferred);
+
 public:
 	// DSound interface
 	IDirectSound*				pDevice;		// The device itself
 	IDirectSoundBuffer*			pBuffer;		// The primary buffer (mixer destination)
-	IDirectSound3DListener*	pListener;
+	IDirectSound3DListener*		pListener;
 	LPKSPROPERTYSET				pExtensions;
 	DSCAPS						dsCaps;
 	SListener					Listener;
+
 private:
 	virtual void			update_listener			(const Fvector3& P, const Fvector3& D, const Fvector3& N, float dt);
 	virtual void			i_eax_set				(const GUID* guid, u32 prop, void* val, u32 sz);
 	virtual void			i_eax_get				(const GUID* guid, u32 prop, void* val, u32 sz);
+
 public:
 							CSoundRender_CoreD		();
-    virtual					~CSoundRender_CoreD		();
+	virtual					~CSoundRender_CoreD		();
 
 	virtual void			_initialize				(U64 window	);
 	virtual void			_clear					( );
 
 	virtual void			set_master_volume		( float f		);
-    
+	
 	virtual const Fvector3&	listener_position		( )				{ return Listener.vPosition; }
 };
 extern CSoundRender_CoreD* SoundRenderD;
-#endif

@@ -1,30 +1,29 @@
-#ifndef SoundRender_CoreH
-#define SoundRender_CoreH
 #pragma once
-										  
+
 #include "SoundRender.h"
 #include "SoundRender_Environment.h"
 #include "SoundRender_Cache.h"
-#include "soundrender_environment.h"
 
 class CSoundRender_Core					: public CSound_manager_interface
 {
 	volatile BOOL						bLocked;
+
 protected:
-	virtual void						_create_data			( ref_sound_data& S, const char* fName,	esound_type sound_type, int game_type);
-	virtual void						_destroy_data			( ref_sound_data& S);
-protected:
+	virtual void						_create_data			(ref_sound_data& S, const char* fName,	esound_type sound_type, int game_type);
+	virtual void						_destroy_data			(ref_sound_data& S);
+
 	BOOL								bListenerMoved;
 
 	CSoundRender_Environment			e_current;
 	CSoundRender_Environment			e_target;
+
 public:
-	typedef	std::pair<ref_sound_data_ptr,float>	event;                                               
+	typedef	std::pair<ref_sound_data_ptr,float>	event;
 	xr_vector<event>					s_events;
-public:
+
 	BOOL								bPresent;
 	BOOL								bUserEnvironment;
-	BOOL	 							bEAX;					// Boolean variable to indicate presence of EAX Extension 
+	BOOL								bEAX;					// Boolean variable to indicate presence of EAX Extension 
 	BOOL								bDeferredEAX;
 	bool								bReady;
 
@@ -33,6 +32,7 @@ public:
 	u32									Timer_Value;
 	u32									Timer_Delta;
 	sound_event*						Handler;
+
 protected:
 	// Collider
 	CDB::COLLIDER						geom_DB;
@@ -48,23 +48,26 @@ protected:
 	xr_vector<CSoundRender_Target*>		s_targets;
 	xr_vector<CSoundRender_Target*>		s_targets_defer;
 	u32									s_targets_pu;			// parameters update
-	SoundEnvironment_LIB*				s_environment;
+	CSoundEnvironmentLib*				s_environment;
 	CSoundRender_Environment			s_user_environment;
 
 	int									m_iPauseCounter;
+
 public:
 	// Cache
 	CSoundRender_Cache					cache;
 	u32									cache_bytes_per_line;
+
 protected:
 	virtual void						i_eax_set				(const GUID* guid, u32 prop, void* val, u32 sz)=0;
 	virtual void						i_eax_get				(const GUID* guid, u32 prop, void* val, u32 sz)=0;
+
 public:
 										CSoundRender_Core		();
 	virtual								~CSoundRender_Core		();
 
 	// General
-	virtual void  						_initialize				(U64 window )=0;
+	virtual void						_initialize				(U64 window )=0;
 	virtual void						_clear					( )=0;
 	virtual void						_restart				( );
 
@@ -97,7 +100,6 @@ public:
 	void								i_eax_listener_set		(CSound_environment* E);
 	void								i_eax_listener_get		(CSound_environment* E);
 
-public:
 	CSoundRender_Source*				i_create_source			(const char* name				);
 	void								i_destroy_source		( CSoundRender_Source*  S	);
 	CSoundRender_Emitter*				i_play					( ref_sound* S, BOOL _loop, float delay	);
@@ -118,4 +120,3 @@ public:
 	void								env_apply				();
 };
 extern CSoundRender_Core* SoundRender;
-#endif
