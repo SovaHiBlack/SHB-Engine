@@ -148,14 +148,15 @@ void CEnvDescriptor::load(const char* exec_tm, const char* S, CEnvironment* pare
 	R_ASSERT3((tm.x >= 0) && (tm.x < 24) && (tm.y >= 0) && (tm.y < 60) && (tm.z >= 0) && (tm.z < 60), "Incorrect weather time", S);
 	exec_time = tm.x * 3600.0f + tm.y * 60.f + tm.z;
 	exec_time_loaded = exec_time;
-	string_path				st, st_env;
+	string_path st;
+	string_path st_env;
 	strcpy_s(st, pSettings->r_string(S, "sky_texture"));
 	strconcat(sizeof(st_env), st_env, st, "#small");
 	sky_texture_name = st;
 	sky_texture_env_name = st_env;
 	clouds_texture_name = pSettings->r_string(S, "clouds_texture");
 	const char* cldclr = pSettings->r_string(S, "clouds_color");
-	F32	multiplier = 0, save = 0;
+	float	multiplier = 0, save = 0;
 	sscanf(cldclr, "%f,%f,%f,%f,%f", &clouds_color.x, &clouds_color.y, &clouds_color.z, &clouds_color.w, &multiplier);
 	save = clouds_color.w;	clouds_color.mul(.5f * multiplier);		clouds_color.w = save;
 	sky_color = pSettings->r_fvector3(S, "sky_color");		sky_color.mul(.5f);
@@ -397,7 +398,7 @@ void CEnvironment::load( )
 
 #ifdef DEBUG
 						D->sect_name = sect_e;
-#endif // DEBUG
+#endif // def DEBUG
 
 					}
 				}
@@ -442,7 +443,7 @@ void CEnvironment::load( )
 
 #ifdef DEBUG
 						D->sect_name = sect_e;
-#endif // DEBUG
+#endif // def DEBUG
 
 					}
 				}

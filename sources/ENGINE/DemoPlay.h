@@ -12,8 +12,8 @@ class ENGINE_API CDemoPlay : public CEffectorCam
 
 	xr_vector<Fmatrix>				seq;
 	int								m_count;
-	F32							fStartTime;
-	F32							fSpeed;
+	float							fStartTime;
+	float							fSpeed;
 	U32								dwCyclesLeft;
 
 	// statistics
@@ -21,7 +21,7 @@ class ENGINE_API CDemoPlay : public CEffectorCam
 	CTimer							stat_Timer_frame;
 	CTimer							stat_Timer_total;
 	U32								stat_StartFrame;
-	xr_vector<F32>				stat_table;
+	xr_vector<float>				stat_table;
 
 	void			stat_Start		( );
 	void			stat_Stop		( );

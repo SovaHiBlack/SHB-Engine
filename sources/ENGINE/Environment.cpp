@@ -7,9 +7,6 @@
 #include "thunderbolt.h"
 #include "xrHemisphere.h"
 #include "perlin.h"
-
-//#include "Input.h"
-
 #include "ResourceManager.h"
 #include "IGameLevel.h"
 #include "D3DUtils.h"
@@ -17,14 +14,12 @@
 //////////////////////////////////////////////////////////////////////
 // Construction/Destruction
 //////////////////////////////////////////////////////////////////////
-ENGINE_API F32			psVisDistance = 1.0f;
-static const F32			MAX_NOISE_FREQ = 0.03f;
+ENGINE_API float			psVisDistance = 1.0f;
+static const float			MAX_NOISE_FREQ = 0.03f;
 
 // real WEATHER->WFX transition time
 #define WFX_TRANS_TIME		5.0f
 
-//////////////////////////////////////////////////////////////////////////
-// environment
 CEnvironment::CEnvironment( )
 {
 	bWFX = false;

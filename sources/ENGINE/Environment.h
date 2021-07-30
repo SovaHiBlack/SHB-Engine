@@ -20,7 +20,7 @@ class ENGINE_API CPerlinNoise1D;
 class CBlender_skybox : public IBlender
 {
 public:
-	virtual const char* getComment			( )
+	virtual const char*	getComment			( )
 	{
 		return "INTERNAL: combiner";
 	}
@@ -48,18 +48,18 @@ class ENGINE_API CEnvModifier
 {
 public:
 	Fvector3								position;
-	F32									radius;
-	F32									power;
+	float									radius;
+	float									power;
 
-	F32									far_plane;
+	float									far_plane;
 	Fvector3								fog_color;
-	F32									fog_density;
+	float									fog_density;
 	Fvector3								ambient;
 	Fvector3								sky_color;
 	Fvector3								hemi_color;
 
 	void				load				(IReader* fs);
-	F32				sum					(CEnvModifier& _another, Fvector3& view);
+	float				sum					(CEnvModifier& _another, Fvector3& view);
 };
 
 class ENGINE_API CEnvAmbient
@@ -71,7 +71,7 @@ public:
 		ref_sound							sound;
 		shared_str							particles;
 		Fvector3							offset;
-		F32								wind_gust_factor;
+		float								wind_gust_factor;
 	};
 
 	using EffectVec							= xr_vector<SEffect>;
@@ -102,7 +102,7 @@ public:
 	{
 		return Random.randI(sound_period.x, sound_period.y);
 	}
-	inline F32				get_rnd_sound_dist	( )
+	inline float				get_rnd_sound_dist	( )
 	{
 		return Random.randF(sound_dist.x, sound_dist.y);
 	}
@@ -115,8 +115,8 @@ public:
 class ENGINE_API CEnvDescriptor
 {
 public:
-	F32											exec_time;
-	F32				exec_time_loaded;
+	float											exec_time;
+	float				exec_time_loaded;
 
 	shared_str			sky_texture_name;
 	shared_str			sky_texture_env_name;
@@ -128,22 +128,22 @@ public:
 
 	Fvector4			clouds_color;
 	Fvector3			sky_color;
-	F32				sky_rotation;
+	float				sky_rotation;
 
-	F32				far_plane;
+	float				far_plane;
 
 	Fvector3			fog_color;
-	F32				fog_density;
-	F32				fog_distance;
+	float				fog_density;
+	float				fog_distance;
 
-	F32				rain_density;
+	float				rain_density;
 	Fvector3			rain_color;
 
-	F32				bolt_period;
-	F32				bolt_duration;
+	float				bolt_period;
+	float				bolt_duration;
 
-	F32				wind_velocity;
-	F32				wind_direction;
+	float				wind_velocity;
+	float				wind_direction;
 
 	Fvector3			ambient;
 	Fvector4			hemi_color;	// w = R2 correction
@@ -153,11 +153,11 @@ public:
 	int					lens_flare_id;
 	int					tb_id;
 
-	CEnvAmbient* env_ambient;
+	CEnvAmbient*		env_ambient;
 
 #ifdef DEBUG
 	shared_str			sect_name;
-#endif // DEBUG
+#endif // def DEBUG
 
 	CEnvDescriptor( );
 
@@ -181,13 +181,13 @@ public:
 	STextureList		sky_r_textures;
 	STextureList		sky_r_textures_env;
 	STextureList		clouds_r_textures;
-	F32				weight;
+	float				weight;
 
-	F32				fog_near;
-	F32				fog_far;
+	float				fog_near;
+	float				fog_far;
 
 public:
-	void				lerp(CEnvironment* parent, CEnvDescriptor& A, CEnvDescriptor& B, F32 f, CEnvModifier& M, F32 m_power);
+	void				lerp(CEnvironment* parent, CEnvDescriptor& A, CEnvDescriptor& B, float f, CEnvModifier& M, float m_power);
 	void				clear( );
 	void				destroy( );
 };
@@ -217,11 +217,11 @@ private:
 	FvectorVec				CloudsVerts;
 	U16Vec					CloudsIndices;
 
-	F32					NormalizeTime(F32 tm);
-	F32					TimeDiff(F32 prev, F32 cur);
-	F32					TimeWeight(F32 val, F32 min_t, F32 max_t);
-	void					SelectEnvs(EnvVec* envs, CEnvDescriptor*& e0, CEnvDescriptor*& e1, F32 tm);
-	void					SelectEnv(EnvVec* envs, CEnvDescriptor*& e, F32 tm);
+	float					NormalizeTime(float tm);
+	float					TimeDiff(float prev, float cur);
+	float					TimeWeight(float val, float min_t, float max_t);
+	void					SelectEnvs(EnvVec* envs, CEnvDescriptor*& e0, CEnvDescriptor*& e1, float tm);
+	void					SelectEnv(EnvVec* envs, CEnvDescriptor*& e, float tm);
 	void					StopWFX( );
 	void					calculate_dynamic_sun_dir( );
 
