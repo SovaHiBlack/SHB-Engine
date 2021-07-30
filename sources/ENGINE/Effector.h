@@ -8,10 +8,10 @@ protected:
 	ECameraEffectorType	eType;
 	
 	friend class		CCameraManager;
-	float				fLifeTime;
+	F32				fLifeTime;
 
 public:
-						CEffectorCam	(ECameraEffectorType type, float tm)	{eType=type; fLifeTime=tm;};
+						CEffectorCam	(ECameraEffectorType type, F32 tm)	{eType=type; fLifeTime=tm;};
 						CEffectorCam	()									{eType=(ECameraEffectorType)0; fLifeTime=0.0f;};
 	virtual				~CEffectorCam	()									{};
 			void		SetType			(ECameraEffectorType type)				{eType=type;}
@@ -19,8 +19,8 @@ public:
 	virtual	BOOL		Valid			()									{return fLifeTime>0.0f;}
 	inline virtual BOOL		Overlapped		()									{return FALSE;}
 
-	virtual	BOOL		Process			(Fvector3& p, Fvector3& d, Fvector3& n, float& fFov, float& fFar, float& fAspect){fLifeTime-=Device.fTimeDelta; return Valid();};
+	virtual	BOOL		Process			(Fvector3& p, Fvector3& d, Fvector3& n, F32& fFov, F32& fFar, F32& fAspect){fLifeTime-=Device.fTimeDelta; return Valid();};
 
-	virtual	void		ProcessIfInvalid(Fvector3& p, Fvector3& d, Fvector3& n, float& fFov, float& fFar, float& fAspect){};
+	virtual	void		ProcessIfInvalid(Fvector3& p, Fvector3& d, Fvector3& n, F32& fFov, F32& fFar, F32& fAspect){};
 	virtual BOOL		AllowProcessingIfInvalid()							{return FALSE;}
 };

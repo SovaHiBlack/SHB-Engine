@@ -23,16 +23,16 @@ void CEnvModifier::load(IReader* fs)
 	fs->r_fvector3(hemi_color);
 }
 
-float CEnvModifier::sum(CEnvModifier& M, Fvector3& view)
+F32 CEnvModifier::sum(CEnvModifier& M, Fvector3& view)
 {
-	float _dist_sq = view.distance_to_sqr(M.position);
+	F32 _dist_sq = view.distance_to_sqr(M.position);
 	if (_dist_sq >= (M.radius * M.radius))
 	{
 		return 0.0f;
 	}
 
-	float _att = 1 - _sqrt(_dist_sq) / M.radius;	//[0..1];
-	float _power = M.power * _att;
+	F32 _att = 1 - _sqrt(_dist_sq) / M.radius;	//[0..1];
+	F32 _power = M.power * _att;
 	far_plane += M.far_plane * _power;
 	fog_color.mad(M.fog_color, _power);
 	fog_density += M.fog_density * _power;
@@ -155,7 +155,7 @@ void CEnvDescriptor::load(const char* exec_tm, const char* S, CEnvironment* pare
 	sky_texture_env_name = st_env;
 	clouds_texture_name = pSettings->r_string(S, "clouds_texture");
 	const char* cldclr = pSettings->r_string(S, "clouds_color");
-	float	multiplier = 0, save = 0;
+	F32	multiplier = 0, save = 0;
 	sscanf(cldclr, "%f,%f,%f,%f,%f", &clouds_color.x, &clouds_color.y, &clouds_color.z, &clouds_color.w, &multiplier);
 	save = clouds_color.w;	clouds_color.mul(.5f * multiplier);		clouds_color.w = save;
 	sky_color = pSettings->r_fvector3(S, "sky_color");		sky_color.mul(.5f);
@@ -260,10 +260,10 @@ void CEnvDescriptorMixer::clear( )
 }
 
 int get_ref_count(IUnknown* ii);
-void CEnvDescriptorMixer::lerp(CEnvironment*, CEnvDescriptor& A, CEnvDescriptor& B, float f, CEnvModifier& M, float m_power)
+void CEnvDescriptorMixer::lerp(CEnvironment*, CEnvDescriptor& A, CEnvDescriptor& B, F32 f, CEnvModifier& M, F32 m_power)
 {
-	float	_power = 1.0f / (m_power + 1);	// the environment itself
-	float	fi = 1 - f;
+	F32	_power = 1.0f / (m_power + 1);	// the environment itself
+	F32	fi = 1 - f;
 
 	sky_r_textures.clear( );
 	sky_r_textures.push_back(mk_pair(0, A.sky_texture));
