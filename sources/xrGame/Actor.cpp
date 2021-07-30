@@ -1173,11 +1173,11 @@ void CActor::renderable_Render( )
 	}
 }
 
-BOOL CActor::renderable_ShadowGenerate( )
+bool CActor::renderable_ShadowGenerate( )
 {
 	if (m_holder)
 	{
-		return FALSE;
+		return false;
 	}
 
 	return inherited::renderable_ShadowGenerate( );

@@ -61,13 +61,13 @@ public:
 	virtual void	net_Save(CNetPacket& P);
 	virtual	BOOL	net_SaveRelevant( );
 
-	virtual BOOL	renderable_ShadowGenerate( )
+	virtual bool	renderable_ShadowGenerate( )
 	{
-		return TRUE;
+		return true;
 	}
-	virtual BOOL	renderable_ShadowReceive( )
+	virtual bool	renderable_ShadowReceive( )
 	{
-		return TRUE;
+		return true;
 	}
 
 	virtual	void	Hit(SHit* pHDS);

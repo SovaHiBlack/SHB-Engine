@@ -299,13 +299,13 @@ IRender_Visual*			CRender::model_Create			(const char* name, IReader* data)		{ r
 IRender_Visual*			CRender::model_CreateChild		(const char* name, IReader* data)		{ return Models->CreateChild(name,data);}
 IRender_Visual*			CRender::model_Duplicate		(IRender_Visual* V)					{ return Models->Instance_Duplicate(V);	}
 void					CRender::model_Delete			(IRender_Visual* &V, BOOL bDiscard)	{ Models->Delete(V, bDiscard);			}
-IRender_DetailModel*	CRender::model_CreateDM			(IReader*	F)
+IRenderDetailModel*	CRender::model_CreateDM			(IReader*	F)
 {
 	CDetail*	D		= xr_new<CDetail> ();
 	D->Load				(F);
 	return D;
 }
-void					CRender::model_Delete			(IRender_DetailModel* & F)
+void					CRender::model_Delete			(IRenderDetailModel* & F)
 {
 	if (F)
 	{

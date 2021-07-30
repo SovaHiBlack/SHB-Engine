@@ -95,9 +95,9 @@ public:
 		return this;
 	}
 
-	virtual BOOL						renderable_ShadowReceive						( )
+	virtual bool						renderable_ShadowReceive						( )
 	{
-		return TRUE;
+		return true;
 	}
 	virtual void						Die												(CObject* who);
 	virtual void						HitSignal										(float amount, Fvector3& vLocalDir, CObject* who, S16 element);

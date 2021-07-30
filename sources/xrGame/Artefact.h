@@ -31,13 +31,13 @@ public:
 	virtual bool					CanTake( ) const;
 
 	//virtual void					renderable_Render				();
-	virtual BOOL					renderable_ShadowGenerate( )
+	virtual bool					renderable_ShadowGenerate( )
 	{
-		return FALSE;
+		return false;
 	}
-	virtual BOOL					renderable_ShadowReceive( )
+	virtual bool					renderable_ShadowReceive( )
 	{
-		return TRUE;
+		return true;
 	}
 	virtual void					create_physic_shell( );
 

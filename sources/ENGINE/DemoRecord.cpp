@@ -275,7 +275,7 @@ void CDemoRecord::MakeCubeMapFace(Fvector3& D, Fvector3& N)
 	m_Stage++;
 }
 
-BOOL CDemoRecord::Process(Fvector3& P, Fvector3& D, Fvector3& N, float& fFov, float& fFar, float& fAspect)
+BOOL CDemoRecord::Process(Fvector3& P, Fvector3& D, Fvector3& N, F32& fFov, F32& fFar, F32& fAspect)
 {
 	if (0 == file)
 	{
@@ -332,8 +332,8 @@ BOOL CDemoRecord::Process(Fvector3& P, Fvector3& D, Fvector3& N, float& fFov, fl
 		m_vVelocity.lerp(m_vVelocity, m_vT, 0.3f);
 		m_vAngularVelocity.lerp(m_vAngularVelocity, m_vR, 0.3f);
 
-		float speed = m_fSpeed1;
-		float ang_speed = m_fAngSpeed1;
+		F32 speed = m_fSpeed1;
+		F32 ang_speed = m_fAngSpeed1;
 		if (Console->IR_GetKeyState(DIK_LSHIFT))
 		{
 			speed = m_fSpeed0;
@@ -349,6 +349,7 @@ BOOL CDemoRecord::Process(Fvector3& P, Fvector3& D, Fvector3& N, float& fFov, fl
 			speed = m_fSpeed3;
 			ang_speed = m_fAngSpeed3;
 		}
+
 		m_vT.mul(m_vVelocity, Device.fTimeDelta * speed);
 		m_vR.mul(m_vAngularVelocity, Device.fTimeDelta * ang_speed);
 
@@ -435,6 +436,7 @@ void CDemoRecord::IR_OnKeyboardPress(int dik)
 			fLifeTime = -1;
 		}
 	}
+
 	if (dik == DIK_PAUSE)
 	{
 		Device.Pause(!Device.Paused( ), TRUE, TRUE, "demo_record");
@@ -467,11 +469,11 @@ void CDemoRecord::IR_OnKeyboardHold(int dik)
 
 void CDemoRecord::IR_OnMouseMove(int dx, int dy)
 {
-	float scale = 0.5f;//psMouseSens;
+	F32 scale = 0.5f;//psMouseSens;
 	if (dx || dy)
 	{
-		m_vR.y += float(dx) * scale; // heading
-		m_vR.x += ((psMouseInvert.test(1)) ? -1 : 1) * float(dy) * scale * (3.0f / 4.0f); // pitch
+		m_vR.y += F32(dx) * scale; // heading
+		m_vR.x += ((psMouseInvert.test(1)) ? -1 : 1) * F32(dy) * scale * (3.0f / 4.0f); // pitch
 	}
 }
 

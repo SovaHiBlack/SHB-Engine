@@ -124,7 +124,7 @@ public:
 
 	// Render
 	virtual void						renderable_Render( );
-	virtual BOOL						renderable_ShadowGenerate( );
+	virtual bool						renderable_ShadowGenerate( );
 	virtual	void						feel_sound_new(CObject* who, int type, CSound_UserDataPtr user_data, const Fvector3& Position, float power);
 	virtual	Feel::Sound* dcast_FeelSound( )
 	{

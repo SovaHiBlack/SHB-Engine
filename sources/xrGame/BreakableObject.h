@@ -38,13 +38,13 @@ public:
 	virtual void	net_Destroy( );
 	virtual void	shedule_Update(u32 dt);							// Called by sheduler
 	virtual void	UpdateCL( );
-	virtual BOOL	renderable_ShadowGenerate( )
+	virtual bool	renderable_ShadowGenerate( )
 	{
-		return FALSE;
+		return false;
 	}
-	virtual BOOL	renderable_ShadowReceive( )
+	virtual bool	renderable_ShadowReceive( )
 	{
-		return TRUE;
+		return true;
 	}
 
 	virtual void	Hit(SHit* pHDS);

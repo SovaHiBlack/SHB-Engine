@@ -2,7 +2,7 @@
 #define DetailModelH
 #pragma once
 
-class CDetail		: public IRender_DetailModel
+class CDetail		: public IRenderDetailModel
 {
 public:
 	void			Load		(IReader* S);

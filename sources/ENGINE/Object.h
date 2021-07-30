@@ -174,13 +174,13 @@ public:
 	{
 		return renderable_ROS( );
 	}
-	virtual BOOL						renderable_ShadowGenerate	( )
+	virtual bool						renderable_ShadowGenerate	( )
 	{
-		return TRUE;
+		return true;
 	}
-	virtual BOOL						renderable_ShadowReceive	( )
+	virtual bool						renderable_ShadowReceive	( )
 	{
-		return TRUE;
+		return true;
 	}
 
 	// Accessors and converters

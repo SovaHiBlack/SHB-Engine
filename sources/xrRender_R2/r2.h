@@ -249,12 +249,12 @@ public:
 
 	// Models
 	virtual IRender_Visual*			model_CreateParticles		(const char* name);
-	virtual IRender_DetailModel*	model_CreateDM				(IReader* F);
+	virtual IRenderDetailModel*	model_CreateDM				(IReader* F);
 	virtual IRender_Visual*			model_Create				(const char* name, IReader* data=0);
 	virtual IRender_Visual*			model_CreateChild			(const char* name, IReader* data);
 	virtual IRender_Visual*			model_Duplicate				(IRender_Visual*	V);
 	virtual void					model_Delete				(IRender_Visual* &	V, BOOL bDiscard);
-	virtual void 					model_Delete				(IRender_DetailModel* & F);
+	virtual void 					model_Delete				(IRenderDetailModel* & F);
 	virtual void					model_Logging				(BOOL bEnable)				{ Models->Logging(bEnable);	}
 	virtual void					models_Prefetch				();
 	virtual void					models_Clear				(BOOL b_complete);

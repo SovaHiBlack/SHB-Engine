@@ -3,11 +3,10 @@
 #include "render.h"
 
 IRender_interface::~IRender_interface( )
-{ };
+{ }
 
-ENGINE_API IRender_interface* Render = NULL;
+ENGINE_API IRender_interface* Render = nullptr;
 
-// resources
 IRender_Light::~IRender_Light( )
 {
 	::Render->light_destroy(this);

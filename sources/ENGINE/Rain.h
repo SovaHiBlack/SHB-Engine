@@ -6,7 +6,7 @@
 #include "xr_collide_defs.h"
 
 //refs
-class ENGINE_API IRender_DetailModel;
+class ENGINE_API IRenderDetailModel;
 //
 class ENGINE_API CEffect_Rain
 {
@@ -43,7 +43,7 @@ private:
 	ref_geom						hGeom_Rain;
 
 	// Visualization	(drops)
-	IRender_DetailModel*			DM_Drop;
+	IRenderDetailModel*			DM_Drop;
 	ref_geom						hGeom_Drops;
 	
 	// Data and logic
