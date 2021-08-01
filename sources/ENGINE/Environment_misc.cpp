@@ -1,9 +1,9 @@
 #include "stdafx.h"
 
 #include "Environment.h"
-#include "xr_efflensflare.h"
-#include "thunderbolt.h"
-#include "rain.h"
+#include "EffectLensFlare.h"//==Y
+#include "EffectThunderbolt.h"//==Y
+#include "EffectRain.h"//==?
 #include "ResourceManager.h"
 
 //-----------------------------------------------------------------------------
@@ -360,17 +360,17 @@ void CEnvironment::load( )
 	tonemap = Device.Resources->_CreateTexture("$user$tonemap");	//. hack
 	if (!eff_Rain)
 	{
-		eff_Rain = xr_new<CEffect_Rain>( );
+		eff_Rain = xr_new<CEffectRain>( );
 	}
 
 	if (!eff_LensFlare)
 	{
-		eff_LensFlare = xr_new<CLensFlare>( );
+		eff_LensFlare = xr_new<CEffectLensFlare>( );
 	}
 
 	if (!eff_Thunderbolt)
 	{
-		eff_Thunderbolt = xr_new<CEffect_Thunderbolt>( );
+		eff_Thunderbolt = xr_new<CEffectThunderbolt>( );
 	}
 
 	// load weathers

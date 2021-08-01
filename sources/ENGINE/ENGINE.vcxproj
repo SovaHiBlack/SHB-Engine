@@ -245,7 +245,7 @@
     <ClInclude Include="PS_instance.h" />
     <ClInclude Include="pure.h" />
     <ClInclude Include="pure_relcase.h" />
-    <ClInclude Include="Rain.h" />
+    <ClInclude Include="EffectRain.h" />
     <ClInclude Include="Render.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="ResourceManager.h" />
@@ -270,7 +270,7 @@
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="std_classes.h" />
     <ClInclude Include="TextureDescrManager.h" />
-    <ClInclude Include="thunderbolt.h" />
+    <ClInclude Include="EffectThunderbolt.h" />
     <ClInclude Include="tntQAVI.h" />
     <ClInclude Include="trivial_encryptor.h" />
     <ClInclude Include="tss.h" />
@@ -290,7 +290,7 @@
     <ClInclude Include="xr_collide_defs.h" />
     <ClInclude Include="xr_collide_form.h" />
     <ClInclude Include="GammaControl.h" />
-    <ClInclude Include="xr_efflensflare.h" />
+    <ClInclude Include="EffectLensFlare.h" />
     <ClInclude Include="Input.h" />
     <ClInclude Include="Console.h" />
     <ClInclude Include="IConsoleCommand.h" />
@@ -377,7 +377,7 @@
     <ClCompile Include="PS_instance.cpp" />
     <ClCompile Include="pure.cpp" />
     <ClCompile Include="pure_relcase.cpp" />
-    <ClCompile Include="Rain.cpp" />
+    <ClCompile Include="EffectRain.cpp" />
     <ClCompile Include="Render.cpp" />
     <ClCompile Include="ResourceManager.cpp" />
     <ClCompile Include="ResourceManager_Loader.cpp" />
@@ -415,7 +415,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="TextureDescrManager.cpp" />
-    <ClCompile Include="thunderbolt.cpp" />
+    <ClCompile Include="EffectThunderbolt.cpp" />
     <ClCompile Include="tntQAVI.cpp" />
     <ClCompile Include="tss_def.cpp" />
     <ClCompile Include="xrHemisphere.cpp" />
@@ -429,7 +429,7 @@
     <ClCompile Include="xr_area_raypick.cpp" />
     <ClCompile Include="xr_collide_form.cpp" />
     <ClCompile Include="GammaControl.cpp" />
-    <ClCompile Include="xr_efflensflare.cpp" />
+    <ClCompile Include="EffectLensFlare.cpp" />
     <ClCompile Include="Input.cpp" />
     <ClCompile Include="Console.cpp" />
     <ClCompile Include="IConsoleCommand.cpp" />

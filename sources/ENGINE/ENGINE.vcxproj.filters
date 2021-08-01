@@ -189,13 +189,13 @@
     <ClInclude Include="xrHemisphere.h">
       <Filter>Game API\Environment</Filter>
     </ClInclude>
-    <ClInclude Include="Rain.h">
+    <ClInclude Include="EffectRain.h">
       <Filter>Game API\Environment\Effects</Filter>
     </ClInclude>
-    <ClInclude Include="thunderbolt.h">
+    <ClInclude Include="EffectThunderbolt.h">
       <Filter>Game API\Environment\Effects</Filter>
     </ClInclude>
-    <ClInclude Include="xr_efflensflare.h">
+    <ClInclude Include="EffectLensFlare.h">
       <Filter>Game API\Environment\Effects</Filter>
     </ClInclude>
     <ClInclude Include="CameraBase.h">
@@ -560,13 +560,13 @@
     <ClCompile Include="xrHemisphere.cpp">
       <Filter>Game API\Environment</Filter>
     </ClCompile>
-    <ClCompile Include="Rain.cpp">
+    <ClCompile Include="EffectRain.cpp">
       <Filter>Game API\Environment\Effects</Filter>
     </ClCompile>
-    <ClCompile Include="thunderbolt.cpp">
+    <ClCompile Include="EffectThunderbolt.cpp">
       <Filter>Game API\Environment\Effects</Filter>
     </ClCompile>
-    <ClCompile Include="xr_efflensflare.cpp">
+    <ClCompile Include="EffectLensFlare.cpp">
       <Filter>Game API\Environment\Effects</Filter>
     </ClCompile>
     <ClCompile Include="CameraBase.cpp">

@@ -2,9 +2,9 @@
 
 #include "render.h"
 #include "Environment.h"
-#include "xr_efflensflare.h"
-#include "rain.h"
-#include "thunderbolt.h"
+#include "EffectLensFlare.h"//==Y
+#include "EffectRain.h"//==Y
+#include "EffectThunderbolt.h"//==?
 #include "xrHemisphere.h"
 #include "perlin.h"
 #include "ResourceManager.h"
@@ -188,7 +188,8 @@ bool CEnvironment::SetWeatherFX(shared_str name)
 	{
 		EnvsMapIt it = WeatherFXs.find(name);
 		R_ASSERT3(it != WeatherFXs.end( ), "Invalid weather effect name.", *name);
-		EnvVec* PrevWeather = CurrentWeather; VERIFY(PrevWeather);
+		EnvVec* PrevWeather = CurrentWeather;
+		VERIFY(PrevWeather);
 		CurrentWeather = &it->second;
 		CurrentWeatherName = it->first;
 
@@ -326,6 +327,7 @@ void CEnvironment::SelectEnvs(F32 gt)
 		{
 			bSelect = (gt > Current[1]->exec_time);
 		}
+
 		if (bSelect)
 		{
 			Current[0] = Current[1];

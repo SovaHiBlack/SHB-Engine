@@ -7,9 +7,9 @@ class ENGINE_API CEnvironment;
 
 // refs - effects
 class ENGINE_API CEnvironment;
-class ENGINE_API CLensFlare;
-class ENGINE_API CEffect_Rain;
-class ENGINE_API CEffect_Thunderbolt;
+class ENGINE_API CEffectLensFlare;
+class ENGINE_API CEffectRain;
+class ENGINE_API CEffectThunderbolt;
 
 class ENGINE_API CPerlinNoise1D;
 
@@ -267,9 +267,9 @@ public:
 	ref_shader				clouds_sh;
 	ref_geom				clouds_geom;
 
-	CEffect_Rain* eff_Rain;
-	CLensFlare* eff_LensFlare;
-	CEffect_Thunderbolt* eff_Thunderbolt;
+	CEffectRain* eff_Rain;
+	CEffectLensFlare* eff_LensFlare;
+	CEffectThunderbolt* eff_Thunderbolt;
 
 	F32					fTimeFactor;
 	ref_texture				tonemap;

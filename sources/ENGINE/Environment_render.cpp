@@ -2,9 +2,9 @@
 
 #include "Environment.h"
 #include "render.h"
-#include "xr_efflensflare.h"
-#include "rain.h"
-#include "thunderbolt.h"
+#include "EffectLensFlare.h"//==Y
+#include "EffectRain.h"//==Y
+#include "EffectThunderbolt.h"//==Y
 #include "IGameLevel.h"
 
 //////////////////////////////////////////////////////////////////////////
