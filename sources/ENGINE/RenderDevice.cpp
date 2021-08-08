@@ -15,13 +15,13 @@
 #pragma warning(default:4995)
 
 #include "Application.h"
-#include "render.h"
+#include "Render.h"
 #include "IGameLevel.h"
 #include "ResourceManager.h"
 #include "Console.h"
 
 ENGINE_API CRenderDevice Device;
-ENGINE_API BOOL g_bRendering = FALSE; 
+ENGINE_API BOOL g_bRendering = FALSE;
 
 BOOL		g_bLoaded = FALSE;
 ref_light	precache_light = 0;

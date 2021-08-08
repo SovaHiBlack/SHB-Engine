@@ -1,6 +1,6 @@
 #pragma once
 
-#include "render.h"
+#include "Render.h"
 
 class ENGINE_API IRenderable
 {
@@ -16,13 +16,13 @@ public:
 								IRenderable					( );
 	virtual						~IRenderable				( );
 	IRender_ObjectSpecific*		renderable_ROS				( );
-	virtual	void				renderable_Render			( ) = 0;
-	virtual	BOOL				renderable_ShadowGenerate	( )
+	virtual void				renderable_Render			( ) = 0;
+	virtual BOOL				renderable_ShadowGenerate	( )
 	{
 		return FALSE;
-	};
-	virtual	BOOL				renderable_ShadowReceive	( )
+	}
+	virtual BOOL				renderable_ShadowReceive	( )
 	{
 		return FALSE;
-	};
+	}
 };

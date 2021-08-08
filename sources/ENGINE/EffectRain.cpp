@@ -3,7 +3,7 @@
 #include "EffectRain.h"
 #include "IGamePersistent.h"//==>
 //#include "Environment.h"
-#include "render.h"
+#include "Render.h"
 #include "IGameLevel.h"
 #include "xr_area.h"
 #include "Object.h"
@@ -365,7 +365,7 @@ void CEffectRain::Render( )
 		unsigned int i_offset;
 		unsigned int vCount_Lock = particles_cache * DM_Drop->number_vertices;
 		unsigned int iCount_Lock = particles_cache * DM_Drop->number_indices;
-		IRender_DetailModel::fvfVertexOut* v_ptr = (IRender_DetailModel::fvfVertexOut*) RCache.Vertex.Lock(vCount_Lock, hGeom_Drops->vb_stride, v_offset);
+		IRenderDetailModel::fvfVertexOut* v_ptr = (IRenderDetailModel::fvfVertexOut*) RCache.Vertex.Lock(vCount_Lock, hGeom_Drops->vb_stride, v_offset);
 		unsigned short* i_ptr = _IS.Lock(iCount_Lock, i_offset);
 		while (P)
 		{
@@ -404,7 +404,7 @@ void CEffectRain::Render( )
 					RCache.set_Geometry(hGeom_Drops);
 					RCache.Render(D3DPT_TRIANGLELIST, v_offset, 0, vCount_Lock, i_offset, dwNumPrimitives);
 
-					v_ptr = (IRender_DetailModel::fvfVertexOut*) RCache.Vertex.Lock(vCount_Lock, hGeom_Drops->vb_stride, v_offset);
+					v_ptr = (IRenderDetailModel::fvfVertexOut*) RCache.Vertex.Lock(vCount_Lock, hGeom_Drops->vb_stride, v_offset);
 					i_ptr = _IS.Lock(iCount_Lock, i_offset);
 
 					pcount = 0;

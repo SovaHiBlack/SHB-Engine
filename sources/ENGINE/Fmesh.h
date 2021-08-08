@@ -97,11 +97,11 @@ struct ENGINE_API	FSlideWindow		{
 	U16				num_verts;
 };
 
-struct ENGINE_API	FSlideWindowItem	{
+struct ENGINE_API	SSlideWindowItem	{
 	FSlideWindow*	sw;
 	u32				count;
 	u32				reserved[4];
-	FSlideWindowItem() : sw(0),count(0)	{};
+	SSlideWindowItem() : sw(0),count(0)	{};
 };
 
 // OGF_TEXTURE1

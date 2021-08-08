@@ -90,7 +90,7 @@ public:
 	R_occlusion													HWOCC;
 
 	// Global vertex-buffer container
-	xr_vector<FSlideWindowItem>									SWIs;
+	xr_vector<SSlideWindowItem>									SWIs;
 	xr_vector<ref_shader>										Shaders;
 	typedef svector<D3DVERTEXELEMENT9,MAXD3DDECLLENGTH+1>		VertexDeclarator;
 	xr_vector<VertexDeclarator>									nDC,xDC;
@@ -151,7 +151,7 @@ public:
 	D3DVERTEXELEMENT9*				getVB_Format				(int id, BOOL	_alt=FALSE);
 	IDirect3DVertexBuffer9*			getVB						(int id, BOOL	_alt=FALSE);
 	IDirect3DIndexBuffer9*			getIB						(int id, BOOL	_alt=FALSE);
-	FSlideWindowItem*				getSWI						(int id);
+	SSlideWindowItem*				getSWI						(int id);
 	IRender_Portal*					getPortal					(int id);
 	IRender_Sector*					getSectorActive				();
 	IRender_Visual*					model_CreatePE				(const char* name);
@@ -249,12 +249,12 @@ public:
 
 	// Models
 	virtual IRender_Visual*			model_CreateParticles		(const char* name);
-	virtual IRender_DetailModel*	model_CreateDM				(IReader* F);
+	virtual IRenderDetailModel*	model_CreateDM				(IReader* F);
 	virtual IRender_Visual*			model_Create				(const char* name, IReader* data=0);
 	virtual IRender_Visual*			model_CreateChild			(const char* name, IReader* data);
 	virtual IRender_Visual*			model_Duplicate				(IRender_Visual*	V);
 	virtual void					model_Delete				(IRender_Visual* &	V, BOOL bDiscard);
-	virtual void 					model_Delete				(IRender_DetailModel* & F);
+	virtual void 					model_Delete				(IRenderDetailModel* & F);
 	virtual void					model_Logging				(BOOL bEnable)				{ Models->Logging(bEnable);	}
 	virtual void					models_Prefetch				();
 	virtual void					models_Clear				(BOOL b_complete);

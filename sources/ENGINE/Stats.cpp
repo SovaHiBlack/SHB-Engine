@@ -3,7 +3,7 @@
 #include "GameFont.h"
 //#include "ISpatial.h"
 #include "IGamePersistent.h"//==>
-#include "render.h"
+#include "Render.h"
 #include "Object.h"
 
 int		g_ErrorLineCount	= 15;

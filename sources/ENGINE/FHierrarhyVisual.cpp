@@ -4,7 +4,7 @@
 
 #include "FHierrarhyVisual.h"
 #include "fmesh.h"
-#include "render.h"
+#include "Render.h"
 
 //////////////////////////////////////////////////////////////////////
 // Construction/Destruction

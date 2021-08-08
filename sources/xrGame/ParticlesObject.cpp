@@ -7,7 +7,7 @@
 //#include "..\ENGINE\defines.h"
 #include "..\ENGINE\fbasicvisual.h"
 #include "..\ENGINE\IParticleCustom.h"
-#include "..\ENGINE\render.h"
+#include "..\ENGINE\Render.h"
 #include "..\ENGINE\IGamePersistent.h"//==>
 
 const Fvector3 zero_vel		= {0.f,0.f,0.f};

@@ -2,32 +2,32 @@
 
 struct xrGUID
 {
-	U64	g[2];
+	U64 g[2];
 
-	__forceinline	bool operator==	(const xrGUID &o) const
+	__forceinline bool operator ==	(const xrGUID& o) const
 	{
-		return	((g[0] == o.g[0]) && (g[1] == o.g[1]));
+		return ((g[0] == o.g[0]) && (g[1] == o.g[1]));
 	}
 
-	__forceinline	bool operator!=	(const xrGUID &o) const
+	__forceinline bool operator !=	(const xrGUID& o) const
 	{
-		return	!(*this == o);
+		return !(*this == o);
 	}
 };
 
 enum fsL_Chunks
 {
-	fsL_HEADER			=1,		//*
-	fsL_SHADERS			=2,		//*
-	fsL_VISUALS			=3,		//*
-	fsL_PORTALS			=4,		//*		- Portal polygons
-	fsL_LIGHT_DYNAMIC	=6,		//*
-	fsL_GLOWS			=7,		//*		- All glows inside level
-	fsL_SECTORS			=8,		//*		- All sectors on level
-	fsL_VB				=9,		//*		- Static geometry
-	fsL_IB				=10,	//*
-	fsL_SWIS			=11,	//*		- collapse info, usually for trees
-	fsL_forcedword		= 0xFFFFFFFF
+	fsL_HEADER = 1,		//*
+	fsL_SHADERS = 2,		//*
+	fsL_VISUALS = 3,		//*
+	fsL_PORTALS = 4,		//*		- Portal polygons
+	fsL_LIGHT_DYNAMIC = 6,		//*
+	fsL_GLOWS = 7,		//*		- All glows inside level
+	fsL_SECTORS = 8,		//*		- All sectors on level
+	fsL_VB = 9,		//*		- Static geometry
+	fsL_IB = 10,	//*
+	fsL_SWIS = 11,	//*		- collapse info, usually for trees
+	fsL_forcedword = 0xFFFFFFFF
 };
 
 enum fsESectorChunks
@@ -39,17 +39,17 @@ enum fsESectorChunks
 
 enum fsSLS_Chunks
 {
-	fsSLS_Description	= 1,	// Name of level
+	fsSLS_Description = 1,	// Name of level
 	fsSLS_ServerState,
 	fsSLS_forcedword = u32(-1)
 };
 
 enum EBuildQuality
 {
-	ebqDraft			= 0,
+	ebqDraft = 0,
 	ebqHigh,
 	ebqCustom,
-	ebq_force_u16		= U16(-1)
+	ebq_force_u16 = U16(-1)
 };
 
 #pragma pack(push,8)
@@ -80,24 +80,35 @@ struct	hdrNODES
 
 #pragma pack(push,1)
 #pragma pack(1)
-class NodePosition {
+class NodePosition
+{
 	U8	data[5];
-	
-	__forceinline	void xz	(u32 value)	{ CopyMemory	(data,&value,3);		}
-	__forceinline	void y	(U16 value)	{ CopyMemory	(data + 3,&value,2);	}
+
+	__forceinline	void xz(u32 value)
+	{
+		CopyMemory(data, &value, 3);
+	}
+	__forceinline	void y(U16 value)
+	{
+		CopyMemory(data + 3, &value, 2);
+	}
 
 public:
-	__forceinline	u32	xz	() const	{
-		return			((*((u32*)data)) & 0x00ffffff);
+	__forceinline	u32	xz( ) const
+	{
+		return			((*((u32*) data)) & 0x00ffffff);
 	}
-	__forceinline	u32	x	(u32 row) const		{
-		return			(xz() / row);
+	__forceinline	u32	x(u32 row) const
+	{
+		return			(xz( ) / row);
 	}
-	__forceinline	u32	z	(u32 row) const		{
-		return			(xz() % row);
+	__forceinline	u32	z(u32 row) const
+	{
+		return			(xz( ) % row);
 	}
-	__forceinline	u32	y	() const			{
-		return			(*((U16*)(data + 3)));
+	__forceinline	u32	y( ) const
+	{
+		return			(*((U16*) (data + 3)));
 	}
 
 	friend class	CLevelGraph;
@@ -111,38 +122,43 @@ public:
 private:
 	__forceinline	void link(U8 link_index, u32 value)
 	{
-		value			&= 0x007fffff;
-		switch (link_index) {
-			case 0 : {
-				value	|= (*(u32*)data) & 0xff800000;
+		value &= 0x007fffff;
+		switch (link_index)
+		{
+			case 0:
+			{
+				value |= (*(u32*) data) & 0xff800000;
 				CopyMemory(data, &value, sizeof(u32));
 				break;
 			}
-			case 1 : {
-				value	<<= 7;
-				value	|= (*(u32*)(data + 2)) & 0xc000007f;
+			case 1:
+			{
+				value <<= 7;
+				value |= (*(u32*) (data + 2)) & 0xc000007f;
 				CopyMemory(data + 2, &value, sizeof(u32));
 				break;
 			}
-			case 2 : {
-				value	<<= 6;
-				value	|= (*(u32*)(data + 5)) & 0xe000003f;
+			case 2:
+			{
+				value <<= 6;
+				value |= (*(u32*) (data + 5)) & 0xe000003f;
 				CopyMemory(data + 5, &value, sizeof(u32));
 				break;
 			}
-			case 3 : {
-				value	<<= 5;
-				value	|= (*(u32*)(data + 8)) & 0xf000001f;
+			case 3:
+			{
+				value <<= 5;
+				value |= (*(u32*) (data + 8)) & 0xf000001f;
 				CopyMemory(data + 8, &value, sizeof(u32));
 				break;
 			}
 		}
 	}
-	
+
 	__forceinline	void light(U8 value)
 	{
-		data[11]		&= 0x0f;
-		data[11]		|= value << 4;
+		data[11] &= 0x0f;
+		data[11] |= value << 4;
 	}
 
 public:
@@ -156,31 +172,33 @@ public:
 
 	__forceinline	u32	link(U8 index) const
 	{
-		switch (index) {
-			case 0 :	return	((*(u32*)data) & 0x007fffff);
-			case 1 :	return	(((*(u32*)(data + 2)) >> 7) & 0x007fffff);
-			case 2 :	return	(((*(u32*)(data + 5)) >> 6) & 0x007fffff);
-			case 3 :	return	(((*(u32*)(data + 8)) >> 5) & 0x007fffff);
-			default :	NODEFAULT;
+		switch (index)
+		{
+			case 0:	return	((*(u32*) data) & 0x007fffff);
+			case 1:	return	(((*(u32*) (data + 2)) >> 7) & 0x007fffff);
+			case 2:	return	(((*(u32*) (data + 5)) >> 6) & 0x007fffff);
+			case 3:	return	(((*(u32*) (data + 8)) >> 5) & 0x007fffff);
+			default:	NODEFAULT;
 		}
 #ifdef DEBUG
 		return			(0);
 #endif
 	}
-	
-	__forceinline	U8	light() const
+
+	__forceinline	U8	light( ) const
 	{
 		return			(data[11] >> 4);
 	}
-	
+
 	__forceinline	U16	cover(U8 index) const
 	{
-		switch (index) {
-			case 0 : return(cover0);
-			case 1 : return(cover1);
-			case 2 : return(cover2);
-			case 3 : return(cover3);
-			default : NODEFAULT;
+		switch (index)
+		{
+			case 0: return(cover0);
+			case 1: return(cover1);
+			case 2: return(cover2);
+			case 3: return(cover3);
+			default: NODEFAULT;
 		}
 #ifdef DEBUG
 		return				(U8(-1));
@@ -188,9 +206,6 @@ public:
 	}
 
 	friend class	CLevelGraph;
-//	friend struct	CNodeCompressed;
-//	friend class	CNodeRenumberer;
-//	friend class	CRenumbererConverter;
 };									// 2+2+5+12 = 21b
 
 struct SNodePositionOld
@@ -201,8 +216,8 @@ struct SNodePositionOld
 };
 #pragma pack	(pop)
 
-const u32 XRCL_PRODUCTION_VERSION	= 14;	// output 
-const u32 CFORM_CURRENT_VERSION		= 4;
-const u32 MAX_NODE_BIT_COUNT		= 23;
+const u32 XRCL_PRODUCTION_VERSION = 14;	// output 
+const u32 CFORM_CURRENT_VERSION = 4;
+const u32 MAX_NODE_BIT_COUNT = 23;
 
-const u32 XRAI_CURRENT_VERSION		= 8;
+const u32 XRAI_CURRENT_VERSION = 8;

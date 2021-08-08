@@ -1,7 +1,5 @@
 #include "stdafx.h"
 
-//#include <dxerr.h>
-
 #include "NET_Server.h"
 
 ENGINE_API ClientID BroadcastCID(0xffffffff);

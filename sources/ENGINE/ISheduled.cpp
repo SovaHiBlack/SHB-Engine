@@ -15,8 +15,6 @@ ISheduled::ISheduled( )
 
 }
 
-// not use? extern bool g_bSheduleInProgress;
-
 ISheduled::~ISheduled( )
 {
 	VERIFY2(!Engine.Sheduler.Registered(this), make_string("0x%08x : %s", this, *shedule_Name( )));

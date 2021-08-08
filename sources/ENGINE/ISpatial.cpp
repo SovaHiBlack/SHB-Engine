@@ -1,12 +1,12 @@
 #include "stdafx.h"
 
 //#include "ispatial.h"
-#include "render.h"
+#include "Render.h"
 #include "Object.h"
 #include "PS_Instance.h"
 
-ENGINE_API ISpatial_DB*		g_SpatialSpace			= NULL;
-ENGINE_API ISpatial_DB*		g_SpatialSpacePhysic	= NULL;
+ENGINE_API ISpatial_DB*		g_SpatialSpace			= nullptr;
+ENGINE_API ISpatial_DB*		g_SpatialSpacePhysic	= nullptr;
 
 Fvector3	c_spatial_offset	[8]	=
 {

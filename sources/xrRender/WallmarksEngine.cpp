@@ -1,8 +1,7 @@
 // WallmarksEngine.cpp: implementation of the CWallmarksEngine class.
-//
-//////////////////////////////////////////////////////////////////////
 
 #include "stdafx.h"
+
 #include "WallmarksEngine.h"
 
 #include "..\ENGINE\Object.h"

@@ -1,12 +1,12 @@
 #pragma once
 
-class ENGINE_API IRender_DetailModel;
+class ENGINE_API IRenderDetailModel;
 class ENGINE_API CLAItem;
 
 struct SThunderboltDesc
 {
 	// geom
-	IRender_DetailModel*		l_model;
+	IRenderDetailModel*		l_model;
 	// sound
 	ref_sound					snd;
 	// gradient

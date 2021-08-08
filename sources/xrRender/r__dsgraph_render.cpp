@@ -1,6 +1,6 @@
 #include "stdafx.h"
 
-#include "..\ENGINE\render.h"
+#include "..\ENGINE\Render.h"
 #include "..\ENGINE\irenderable.h"
 #include "..\ENGINE\IGamePersistent.h"//==>
 //#include "..\ENGINE\Environment.h"

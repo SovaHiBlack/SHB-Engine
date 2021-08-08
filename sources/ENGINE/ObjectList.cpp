@@ -2,7 +2,6 @@
 
 #include "IGameLevel.h"
 #include "IGamePersistent.h"//==>
-//#include "Sheduler.h"
 #include "ObjectList.h"
 #include "std_classes.h"
 #include "Object.h"

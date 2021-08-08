@@ -26,7 +26,7 @@ inline	void		throw_and_log(const xr_string &s) {Msg("! %s",s.c_str()); throw *sh
 #	define		THROW3					VERIFY3
 #endif
 
-#include "../ENGINE\gamefont.h"
+#include "..\ENGINE\GameFont.h"
 #include "..\ENGINE\Object.h"
 #include "..\ENGINE\IGameLevel.h"
 

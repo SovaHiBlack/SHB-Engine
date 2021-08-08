@@ -2,12 +2,12 @@
 
 #include "IGameLevel.h"
 #include "Application.h"
-#include "gamefont.h"
+#include "GameFont.h"
 #include "DemoRecord.h"
 #include "Console.h"
 #include "Input.h"
 #include "Object.h"
-#include "render.h"
+#include "Render.h"
 #include "CustomHUD.h"
 
 CDemoRecord* xrDemoRecord = nullptr;

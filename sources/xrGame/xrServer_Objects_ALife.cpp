@@ -16,7 +16,7 @@
 #include "restriction_space.h"
 #include "character_info.h"
 #include "..\ENGINE\bone.h"
-#include "..\ENGINE\render.h"
+#include "..\ENGINE\Render.h"
 
 bool SortStringsByAlphabetPred (const shared_str& s1, const shared_str& s2)
 {

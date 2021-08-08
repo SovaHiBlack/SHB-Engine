@@ -10,94 +10,102 @@
 #include "ps_instance.h"
 #include "CustomHUD.h"
 
-ENGINE_API	IGamePersistent*		g_pGamePersistent	= nullptr;
+ENGINE_API	IGamePersistent* g_pGamePersistent = nullptr;
 
-IGamePersistent::IGamePersistent()
+IGamePersistent::IGamePersistent( )
 {
-	Device.seqAppStart.Add			(this);
-	Device.seqAppEnd.Add			(this);
-	Device.seqFrame.Add				(this,REG_PRIORITY_HIGH+1);
-	Device.seqAppActivate.Add		(this);
-	Device.seqAppDeactivate.Add		(this);
+	Device.seqAppStart.Add(this);
+	Device.seqAppEnd.Add(this);
+	Device.seqFrame.Add(this, REG_PRIORITY_HIGH + 1);
+	Device.seqAppActivate.Add(this);
+	Device.seqAppDeactivate.Add(this);
 
-	m_pMainMenu						= NULL;
+	m_pMainMenu = nullptr;
 
-	pEnvironment					= xr_new<CEnvironment>();
+	pEnvironment = xr_new<CEnvironment>( );
 }
 
-IGamePersistent::~IGamePersistent	()
+IGamePersistent::~IGamePersistent( )
 {
-	Device.seqFrame.Remove			(this);
-	Device.seqAppStart.Remove		(this);
-	Device.seqAppEnd.Remove			(this);
-	Device.seqAppActivate.Remove	(this);
-	Device.seqAppDeactivate.Remove	(this);
-	xr_delete						(pEnvironment);
+	Device.seqFrame.Remove(this);
+	Device.seqAppStart.Remove(this);
+	Device.seqAppEnd.Remove(this);
+	Device.seqAppActivate.Remove(this);
+	Device.seqAppDeactivate.Remove(this);
+	xr_delete(pEnvironment);
 }
 
-void IGamePersistent::OnAppActivate		()
+void IGamePersistent::OnAppActivate( )
+{ }
+
+void IGamePersistent::OnAppDeactivate( )
+{ }
+
+void IGamePersistent::OnAppStart( )
 {
+	Environment( ).load( );
 }
 
-void IGamePersistent::OnAppDeactivate		()
+void IGamePersistent::OnAppEnd( )
 {
+	Environment( ).unload( );
+	OnGameEnd( );
+
+	DEL_INSTANCE(g_hud);
 }
 
-void IGamePersistent::OnAppStart	()
+void IGamePersistent::PreStart(const char* op)
 {
-	Environment().load				();
-}
-
-void IGamePersistent::OnAppEnd		()
-{
-	Environment().unload				();
-	OnGameEnd						();
-
-	DEL_INSTANCE					(g_hud);
-}
-
-
-void IGamePersistent::PreStart		(const char* op)
-{
-	string256						prev_type;
-	params							new_game_params;
-	strcpy_s							(prev_type,m_game_params.m_game_type);
-	new_game_params.parse_cmd_line	(op);
+	string256 prev_type;
+	params new_game_params;
+	strcpy_s(prev_type, m_game_params.m_game_type);
+	new_game_params.parse_cmd_line(op);
 
 	// change game type
-	if (0!=xr_strcmp(prev_type,new_game_params.m_game_type)){
-		OnGameEnd					();
+	if (0 != xr_strcmp(prev_type, new_game_params.m_game_type))
+	{
+		OnGameEnd( );
 	}
 }
-void IGamePersistent::Start		(const char* op)
+
+void IGamePersistent::Start(const char* op)
 {
-	string256						prev_type;
-	strcpy_s							(prev_type,m_game_params.m_game_type);
-	m_game_params.parse_cmd_line	(op);
+	string256 prev_type;
+	strcpy_s(prev_type, m_game_params.m_game_type);
+	m_game_params.parse_cmd_line(op);
 	// change game type
-	if ((0!=xr_strcmp(prev_type,m_game_params.m_game_type))) 
+	if ((0 != xr_strcmp(prev_type, m_game_params.m_game_type)))
 	{
 		if (*m_game_params.m_game_type)
-			OnGameStart					();
+		{
+			OnGameStart( );
+		}
 
-		if(g_hud)
-			DEL_INSTANCE			(g_hud);
+		if (g_hud)
+		{
+			DEL_INSTANCE(g_hud);
+		}
 	}
-	else UpdateGameType();
+	else
+	{
+		UpdateGameType( );
+	}
 
-	VERIFY							(ps_destroy.empty());
+	VERIFY(ps_destroy.empty( ));
 }
 
-void IGamePersistent::Disconnect	()
+void IGamePersistent::Disconnect( )
 {
 	// clear "need to play" particles
-	destroy_particles					(true);
+	destroy_particles(true);
 
-	if(g_hud)
-		g_hud->OnDisconnected			();
+	if (g_hud)
+	{
+		g_hud->OnDisconnected( );
+	}
 }
 
-void IGamePersistent::OnGameStart()
+void IGamePersistent::OnGameStart( )
 {
 //KRodin: префетчинг выключен ввиду своей бесполезности и прожорливости.
 /*
@@ -122,78 +130,89 @@ void IGamePersistent::OnGameStart()
 */
 }
 
-void IGamePersistent::OnGameEnd	()
+void IGamePersistent::OnGameEnd( )
 {
-	ObjectPool.clear					();
-	Render->models_Clear				(TRUE);
+	ObjectPool.clear( );
+	Render->models_Clear(TRUE);
 }
 
-void IGamePersistent::OnFrame		()
+void IGamePersistent::OnFrame( )
 {
-	if(!Device.Paused() || Device.dwPrecacheFrame)
-		Environment().OnFrame				();
+	if (!Device.Paused( ) || Device.dwPrecacheFrame)
+	{
+		Environment( ).OnFrame( );
+	}
 
-	Device.Statistic->Particles_starting= ps_needtoplay.size	();
-	Device.Statistic->Particles_active	= ps_active.size		();
-	Device.Statistic->Particles_destroy	= ps_destroy.size		();
+	Device.Statistic->Particles_starting = ps_needtoplay.size( );
+	Device.Statistic->Particles_active = ps_active.size( );
+	Device.Statistic->Particles_destroy = ps_destroy.size( );
 
 	// Play req particle systems
-	while (ps_needtoplay.size())
+	while (ps_needtoplay.size( ))
 	{
-		CPS_Instance*	psi		= ps_needtoplay.back	();
-		ps_needtoplay.pop_back	();
-		psi->Play				();
+		CPS_Instance* psi = ps_needtoplay.back( );
+		ps_needtoplay.pop_back( );
+		psi->Play( );
 	}
+
 	// Destroy inactive particle systems
-	while (ps_destroy.size())
+	while (ps_destroy.size( ))
 	{
-//		u32 cnt					= ps_destroy.size();
-		CPS_Instance*	psi		= ps_destroy.back();
-		VERIFY					(psi);
-		if (psi->Locked())
+//		u32 cnt = ps_destroy.size();
+		CPS_Instance* psi = ps_destroy.back( );
+		VERIFY(psi);
+		if (psi->Locked( ))
 		{
 			Log("--locked");
 			break;
 		}
-		ps_destroy.pop_back		();
-		psi->PSI_internal_delete();
+
+		ps_destroy.pop_back( );
+		psi->PSI_internal_delete( );
 	}
 }
 
-void IGamePersistent::destroy_particles		(const bool &all_particles)
+void IGamePersistent::destroy_particles(const bool& all_particles)
 {
-	ps_needtoplay.clear				();
+	ps_needtoplay.clear( );
 
-	while (ps_destroy.size())
+	while (ps_destroy.size( ))
 	{
-		CPS_Instance*	psi		= ps_destroy.back	();		
-		VERIFY					(psi);
-		VERIFY					(!psi->Locked());
-		ps_destroy.pop_back		();
-		psi->PSI_internal_delete();
+		CPS_Instance* psi = ps_destroy.back( );
+		VERIFY(psi);
+		VERIFY(!psi->Locked( ));
+		ps_destroy.pop_back( );
+		psi->PSI_internal_delete( );
 	}
 
 	// delete active particles
-	if (all_particles) {
-		for (;!ps_active.empty();)
-			(*ps_active.begin())->PSI_internal_delete	();
+	if (all_particles)
+	{
+		for (; !ps_active.empty( );)
+		{
+			(*ps_active.begin( ))->PSI_internal_delete( );
+		}
 	}
-	else {
-		u32								active_size = ps_active.size();
-		CPS_Instance					**I = (CPS_Instance**)_alloca(active_size*sizeof(CPS_Instance*));
-		std::copy						(ps_active.begin(),ps_active.end(),I);
+	else
+	{
+		u32 active_size = ps_active.size( );
+		CPS_Instance** I = (CPS_Instance**) _alloca(active_size * sizeof(CPS_Instance*));
+		std::copy(ps_active.begin( ), ps_active.end( ), I);
 
-		struct destroy_on_game_load {
-			static inline bool predicate (CPS_Instance*const& object)
+		struct destroy_on_game_load
+		{
+			static inline bool predicate(CPS_Instance* const& object)
 			{
-				return					(!object->destroy_on_game_load());
+				return (!object->destroy_on_game_load( ));
 			}
 		};
 
-		CPS_Instance					**E = std::remove_if(I,I + active_size,&destroy_on_game_load::predicate);
-		for ( ; I != E; ++I)
-			(*I)->PSI_internal_delete	();
+		CPS_Instance** E = std::remove_if(I, I + active_size, &destroy_on_game_load::predicate);
+		for (; I != E; ++I)
+		{
+			(*I)->PSI_internal_delete( );
+		}
 	}
 
-	VERIFY								(ps_needtoplay.empty() && ps_destroy.empty() && (!all_particles || ps_active.empty()));
+	VERIFY(ps_needtoplay.empty( ) && ps_destroy.empty( ) && (!all_particles || ps_active.empty( )));
 }

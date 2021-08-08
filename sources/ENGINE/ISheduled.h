@@ -27,6 +27,6 @@ public:
 	virtual shared_str	shedule_Name		( ) const
 	{
 		return shared_str("unknown");
-	};
+	}
 	virtual bool		shedule_Needed		( ) = 0;
 };

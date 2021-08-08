@@ -89,7 +89,7 @@ extern float	g_fTimeFactor;
 
 bool	g_bCheckTime = false;
 int		net_cl_inputupdaterate = 50;
-Flags32	g_mt_config = { mtLevelPath | mtDetailPath | mtObjectHandler | mtSoundPlayer | mtAiVision | mtBullets | mtLUA_GC | mtLevelSounds | mtALife };
+Flags32 g_mt_config = { mtLevelPath | mtDetailPath | mtObjectHandler | mtSoundPlayer | mtAiVision | mtBullets | mtLUA_GC | mtLevelSounds | mtALife };
 
 #ifdef DEBUG
 Flags32	dbg_net_Draw_Flags = { 0 };

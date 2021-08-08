@@ -1,6 +1,6 @@
 #include "stdafx.h"
 
-#include "gamefont.h"
+#include "GameFont.h"
 #include "d3dutils.h"
 #include "du_box.h"
 #include "du_sphere.h"

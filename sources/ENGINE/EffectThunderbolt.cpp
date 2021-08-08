@@ -1,6 +1,6 @@
 #include "stdafx.h"
 
-#include "render.h"
+#include "Render.h"
 #include "EffectThunderbolt.h"
 #include "IGamePersistent.h"//==>
 #include "LightAnimLibrary.h"
@@ -285,7 +285,7 @@ void CEffectThunderbolt::Render( )
 		unsigned int i_offset;
 		unsigned int vCount_Lock = current->l_model->number_vertices;
 		unsigned int iCount_Lock = current->l_model->number_indices;
-		IRender_DetailModel::fvfVertexOut* v_ptr = (IRender_DetailModel::fvfVertexOut*) RCache.Vertex.Lock(vCount_Lock, hGeom_model->vb_stride, v_offset);
+		IRenderDetailModel::fvfVertexOut* v_ptr = (IRenderDetailModel::fvfVertexOut*) RCache.Vertex.Lock(vCount_Lock, hGeom_model->vb_stride, v_offset);
 		unsigned short* i_ptr = RCache.Index.Lock(iCount_Lock, i_offset);
 		// XForm verts
 		current->l_model->transfer(current_xform, v_ptr, 0xffffffff, i_ptr, 0, 0.0f, dv);

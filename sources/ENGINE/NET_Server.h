@@ -90,9 +90,9 @@ public:
 		ErrConnect,
 		ErrNoLevel,
 		ErrMax,
-		ErrNoError								= ErrMax,
-
+		ErrNoError								= ErrMax
 	};
+
 protected:
 	shared_str									connect_options;
 

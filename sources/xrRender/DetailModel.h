@@ -1,8 +1,6 @@
-#ifndef DetailModelH
-#define DetailModelH
 #pragma once
 
-class CDetail		: public IRender_DetailModel
+class CDetail		: public IRenderDetailModel
 {
 public:
 	void			Load		(IReader* S);
@@ -13,4 +11,3 @@ public:
 	virtual void	transfer	(Fmatrix& mXform, fvfVertexOut* vDest, u32 C, U16* iDest, u32 iOffset, float du, float dv);
 	virtual			~CDetail	();
 };
-#endif

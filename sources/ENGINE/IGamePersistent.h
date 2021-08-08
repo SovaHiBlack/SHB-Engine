@@ -50,15 +50,12 @@ public:
 	};
 	params								m_game_params;
 
-public:
 	xr_set<CPS_Instance*>				ps_active;
 	xr_vector<CPS_Instance*>			ps_destroy;
 	xr_vector<CPS_Instance*>			ps_needtoplay;
 
-public:
 	void								destroy_particles	(const bool& all_particles);
 
-public:
 	virtual void						PreStart			(const char* op);
 	virtual void						Start				(const char* op);
 	virtual void						Disconnect			( );
@@ -71,16 +68,16 @@ public:
 	CEnvironment&						Environment			( )
 	{
 		return *pEnvironment;
-	};
+	}
 
 	virtual bool						OnRenderPPUI_query	( )
 	{	// should return true if we want to have second function called
 		return FALSE;
-	};
+	}
 	virtual void						OnRenderPPUI_main	( )
-	{ };
+	{ }
 	virtual void						OnRenderPPUI_PP		( )
-	{ };
+	{ }
 
 	virtual void						OnAppStart			( );
 	virtual void						OnAppEnd			( );
@@ -93,7 +90,7 @@ public:
 	virtual void						OnGameEnd			( );
 
 	virtual void						UpdateGameType		( )
-	{ };
+	{ }
 
 	virtual void						RegisterModel		(IRender_Visual* V) = 0;
 
@@ -105,7 +102,7 @@ public:
 	u32									GameType			( )
 	{
 		return m_game_params.m_e_game_type;
-	};
+	}
 	virtual void						Statistics			(CGameFont* F) = 0;
 
 	virtual void						LoadTitle			(const char* str)
@@ -116,7 +113,7 @@ class IMainMenu
 {
 public:
 	virtual								~IMainMenu			( )
-	{ };
+	{ }
 	virtual void						Activate			(bool bActive) = 0;
 	virtual bool						IsActive			( ) = 0;
 	virtual void						DestroyInternal		(bool bForce) = 0;

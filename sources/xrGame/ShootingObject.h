@@ -3,7 +3,7 @@
 #pragma once
 
 #include "alife_space.h"
-#include "..\ENGINE\render.h"
+#include "..\ENGINE\Render.h"
 
 class CCartridge;
 class CParticlesObject;

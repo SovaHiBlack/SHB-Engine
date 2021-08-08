@@ -1,6 +1,6 @@
 #pragma once
 
-#include "..\ENGINE\render.h"
+#include "..\ENGINE\Render.h"
 #include "..\ENGINE\ispatial.h"
 #include "r__dsgraph_types.h"
 #include "r__sector.h"

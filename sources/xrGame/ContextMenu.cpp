@@ -1,7 +1,7 @@
 #include "stdafx.h"
 
 #include "ContextMenu.h"//
-#include "..\ENGINE\gamefont.h"
+#include "..\ENGINE\GameFont.h"
 
 const float fade_speed = 8.0f;
 

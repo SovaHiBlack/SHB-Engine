@@ -1,7 +1,7 @@
 #include "stdafx.h"
 
 #include "HitMarker.h"//
-#include "..\ENGINE\render.h"
+#include "..\ENGINE\Render.h"
 #include "..\ENGINE\LightAnimLibrary.h"
 #include "ui/UIStaticItem.h"//
 

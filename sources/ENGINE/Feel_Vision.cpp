@@ -1,7 +1,7 @@
 #include "stdafx.h"
 
 #include "feel_vision.h"
-#include "render.h"
+#include "Render.h"
 #include "Object.h"
 #include "xr_collide_form.h"
 #include "IGameLevel.h"

@@ -2,7 +2,7 @@
 
 #include "ResourceManager.h"
 #include "GammaControl.h"
-#include "render.h"
+#include "Render.h"
 
 void CRenderDevice::_SetupStates	()
 {

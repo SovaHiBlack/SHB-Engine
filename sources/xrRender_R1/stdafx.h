@@ -16,7 +16,7 @@
 
 #include "..\ENGINE\ResourceManager.h"
 #include "..\ENGINE\vis_common.h"
-#include "..\ENGINE\render.h"
+#include "..\ENGINE\Render.h"
 #include "..\ENGINE\IGameLevel.h"
 #include "..\ENGINE\blenders\blender.h"
 #include "..\ENGINE\blenders\blender_clsid.h"

@@ -9,9 +9,9 @@
 #include "stdafx.h"
 
 #include "Profiler.h"
-#include "..\ENGINE\gamefont.h"
+#include "..\ENGINE\GameFont.h"
 
-CProfiler	*g_profiler			= 0;
+CProfiler	*g_profiler			= nullptr;
 const char* indent				= "  ";
 char		white_character		= '.';
 

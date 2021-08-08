@@ -4,13 +4,13 @@
 #pragma once
 
 #include "FVisual.h"
-struct	FSlideWindowItem;
+struct	SSlideWindowItem;
 
 class	FProgressive	: public Fvisual
 {
 protected:
-	FSlideWindowItem	nSWI		;
-	FSlideWindowItem*	xSWI		;
+	SSlideWindowItem	nSWI		;
+	SSlideWindowItem*	xSWI		;
 	u32					last_lod	;
 public:
     					FProgressive();

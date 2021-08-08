@@ -1,8 +1,6 @@
 #include "stdafx.h"
 
 #include "NET_Client.h"
-//#include "NET_Server.h"
-//#include "NET_Messages.h"
 
 INetQueue::INetQueue( )
 {

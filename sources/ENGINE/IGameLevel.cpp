@@ -5,8 +5,8 @@
 #include "Application.h"
 #include "std_classes.h"
 #include "CustomHUD.h"
-#include "render.h"
-#include "gamefont.h"
+#include "Render.h"
+#include "GameFont.h"
 #include "xrLevel.h"
 #include "CameraManager.h"
 #include "ResourceManager.h"
@@ -98,7 +98,7 @@ BOOL IGameLevel::Load			(u32 dwNum)
 	// Render-level Load
 	Render->level_Load			(LL_Stream);
 	tscreate.FrameEnd			();
-	// Msg						("* S-CREATE: %f ms, %d times",tscreate.result,tscreate.count);
+//	Msg("* S-CREATE: %f ms, %d times",tscreate.result,tscreate.count);
 
 	// Objects
 	g_pGamePersistent->Environment().mods_load	();
@@ -120,21 +120,17 @@ BOOL IGameLevel::Load			(u32 dwNum)
 int		psNET_DedicatedSleep	= 5;
 void IGameLevel::OnRender		( )
 {
-//	if (_abs(Device.fTimeDelta)<EPS_S) return;
+//	if (_abs(Device.fTimeDelta) < EPS_S) return;
 
 	// Level render, only when no client output required
 	Render->Calculate			();
 	Render->Render				();
-
-	// Font
-//	pApp->pFontSystem->SetSizeI(0.023f);
-//	pApp->pFontSystem->OnRender	();
 }
 
 void	IGameLevel::OnFrame		( )
 {
-	// Log				("- level:on-frame: ",u32(Device.dwFrame));
-//	if (_abs(Device.fTimeDelta)<EPS_S) return;
+//	Log("- level:on-frame: ", u32(Device.dwFrame));
+//	if (_abs(Device.fTimeDelta) < EPS_S) return;
 
 	// Update all objects
 	VERIFY						(bReady);

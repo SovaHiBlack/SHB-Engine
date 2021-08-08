@@ -1,4 +1,5 @@
 #include "stdafx.h"
+
 #include "ISpatial.h"
 
 extern Fvector3	c_spatial_offset[8];

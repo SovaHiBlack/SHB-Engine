@@ -23,7 +23,7 @@ Requirements:
 	* Should have at least "bounding-sphere" or "bounding-box"
 */
 
-const float						c_spatial_min	= 8.f;
+const float c_spatial_min = 8.0f;
 //////////////////////////////////////////////////////////////////////////
 enum
 {

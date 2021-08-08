@@ -1,7 +1,7 @@
 #include "stdafx.h"
 
 #include "Environment.h"
-#include "render.h"
+#include "Render.h"
 #include "EffectLensFlare.h"//==Y
 #include "EffectRain.h"//==Y
 #include "EffectThunderbolt.h"//==Y

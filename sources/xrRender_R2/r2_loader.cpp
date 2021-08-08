@@ -336,8 +336,8 @@ void CRender::LoadSWIs(CStreamReader* base_fs)
 		CStreamReader		*fs	= base_fs->open_chunk(fsL_SWIS);
 		u32 item_count		= fs->r_u32();
 
-		xr_vector<FSlideWindowItem>::iterator it	= SWIs.begin();
-		xr_vector<FSlideWindowItem>::iterator it_e	= SWIs.end();
+		xr_vector<SSlideWindowItem>::iterator it	= SWIs.begin();
+		xr_vector<SSlideWindowItem>::iterator it_e	= SWIs.end();
 
 		for(;it!=it_e;++it)
 			xr_free( (*it).sw );
@@ -346,7 +346,7 @@ void CRender::LoadSWIs(CStreamReader* base_fs)
 
 		SWIs.resize			(item_count);
 		for (u32 c=0; c<item_count; c++){
-			FSlideWindowItem& swi = SWIs[c];
+			SSlideWindowItem& swi = SWIs[c];
 			swi.reserved[0]	= fs->r_u32();	
 			swi.reserved[1]	= fs->r_u32();	
 			swi.reserved[2]	= fs->r_u32();	

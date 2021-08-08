@@ -12,6 +12,7 @@
 #include "..\ENGINE\fmesh.h"
 #include "..\ENGINE\SkeletonCustom.h"
 #include "..\xrRender\lighttrack.h"
+#include "..\ENGINE\GameFont.h"
 
 using	namespace		R_dsgraph;
 
@@ -125,13 +126,13 @@ IRender_Visual*			CRender::model_Create			(const char* name, IReader* data)			{ 
 IRender_Visual*			CRender::model_CreateChild		(const char* name, IReader* data)			{ return Models->CreateChild(name,data);}
 IRender_Visual*			CRender::model_Duplicate		(IRender_Visual* V)						{ return Models->Instance_Duplicate(V);	}
 void					CRender::model_Delete			(IRender_Visual* &V, BOOL bDiscard)		{ Models->Delete(V,bDiscard);			}
-IRender_DetailModel*	CRender::model_CreateDM			(IReader*F)
+IRenderDetailModel*	CRender::model_CreateDM			(IReader*F)
 {
 	CDetail*	D		= xr_new<CDetail> ();
 	D->Load				(F);
 	return D;
 }
-void					CRender::model_Delete			(IRender_DetailModel* & F)
+void					CRender::model_Delete			(IRenderDetailModel* & F)
 {
 	if (F)
 	{
@@ -168,7 +169,7 @@ D3DVERTEXELEMENT9*		CRender::getVB_Format			(int id)			{ VERIFY(id<int(DCL.size(
 IDirect3DVertexBuffer9*	CRender::getVB					(int id)			{ VERIFY(id<int(VB.size()));		return VB[id];		}
 IDirect3DIndexBuffer9*	CRender::getIB					(int id)			{ VERIFY(id<int(IB.size()));		return IB[id];		}
 IRender_Target*			CRender::getTarget				()					{ return Target;										}
-FSlideWindowItem*		CRender::getSWI					(int id)			{ VERIFY(id<int(SWIs.size()));		return &SWIs[id];	}
+SSlideWindowItem*		CRender::getSWI					(int id)			{ VERIFY(id<int(SWIs.size()));		return &SWIs[id];	}
 
 IRender_Light*			CRender::light_create			()					{ return L_DB->Create();								}
 
@@ -556,7 +557,6 @@ void	CRender::ApplyBlur4		(FVF::TL4uv* pv, u32 w, u32 h, float k)
 	pv->p.set(float(_w+EPS),EPS,			EPS,1.f); pv->color=_c; pv->uv[0].set(p1.x-kw,p0.y-kh);pv->uv[1].set(p1.x+kw,p0.y+kh);pv->uv[2].set(p1.x+kw,p0.y-kh);pv->uv[3].set(p1.x-kw,p0.y+kh);pv++;
 }
 
-#include "..\ENGINE\GameFont.h"
 void	CRender::Statistics	(CGameFont* _F)
 {
 	CGameFont&	F	= *_F;

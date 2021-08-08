@@ -1,7 +1,7 @@
 #pragma once
 
 // refs
-struct	FSlideWindowItem;
+struct	SSlideWindowItem;
 
 class	FTreeVisual				:	public IRender_Visual, public IRender_Mesh
 {
@@ -46,7 +46,7 @@ class FTreeVisual_PM :	public FTreeVisual
 {
 	typedef FTreeVisual inherited;
 private:
-	FSlideWindowItem*	pSWI;
+	SSlideWindowItem*	pSWI;
 	u32					last_lod;
 public:
 					FTreeVisual_PM	(void);

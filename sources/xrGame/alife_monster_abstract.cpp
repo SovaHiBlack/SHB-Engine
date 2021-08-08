@@ -134,21 +134,6 @@ CSE_ALifeItemWeapon	*CSE_ALifeMonsterAbstract::tpfGetBestWeapon(ALife::EHitType 
 ALife::EMeetActionType	CSE_ALifeMonsterAbstract::tfGetActionType(CSE_ALifeSchedulable *tpALifeSchedulable, int iGroupIndex, bool bMutualDetection)
 {
 	return						(ALife::eMeetActionTypeIgnore);
-	/**
-	if (ALife::eCombatTypeMonsterMonster == ai().alife().combat_type()) {
-		CSE_ALifeMonsterAbstract	*l_tpALifeMonsterAbstract = smart_cast<CSE_ALifeMonsterAbstract*>(tpALifeSchedulable);
-		R_ASSERT2					(l_tpALifeMonsterAbstract,"Inconsistent meet action type");
-		return						(ALife::eRelationTypeFriend == ai().alife().relation_type(this,smart_cast<CSE_ALifeMonsterAbstract*>(tpALifeSchedulable)) ? ALife::eMeetActionTypeIgnore : ((bMutualDetection || alife().choose_combat_action(iGroupIndex) == ALife::eCombatActionAttack) ? ALife::eMeetActionTypeAttack : ALife::eMeetActionTypeIgnore));
-	}
-	else
-		if (ALife::eCombatTypeSmartTerrain == ai().alife().combat_type()) {
-			CSE_ALifeSmartZone		*smart_zone = smart_cast<CSE_ALifeSmartZone*>(tpALifeSchedulable);
-			VERIFY					(smart_zone);
-			return					(smart_zone->tfGetActionType(this,iGroupIndex ? 0 : 1,bMutualDetection));
-		}
-		else
-			return					(ALife::eMeetActionTypeAttack);
-	/**/
 }
 
 bool CSE_ALifeMonsterAbstract::bfActive()

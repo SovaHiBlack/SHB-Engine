@@ -14,8 +14,8 @@
 #include "EffectorPP.h"
 
 //#include "Application.h"
-#include "gamefont.h"
-#include "render.h"
+#include "GameFont.h"
+#include "Render.h"
 
 F32	psCamInert		= 0.7f;
 F32	psCamSlideInert	= 0.25f;

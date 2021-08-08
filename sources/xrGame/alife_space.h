@@ -1,13 +1,6 @@
-////////////////////////////////////////////////////////////////////////////
 //	Module 		: alife_space.h
-//	Created 	: 08.01.2002
-//  Modified 	: 08.01.2003
-//	Author		: Dmitriy Iassenev
 //	Description : ALife space
-////////////////////////////////////////////////////////////////////////////
 
-//#ifndef XRAY_ALIFE_SPACE
-//#define XRAY_ALIFE_SPACE
 #pragma once
 // ALife objects, events and tasks
 #define ALIFE_VERSION				0x0003
@@ -16,11 +9,8 @@
 #define OBJECT_CHUNK_DATA			0x0002
 #define GAME_TIME_CHUNK_DATA		0x0005
 #define REGISTRY_CHUNK_DATA			0x0009
-#define SECTION_HEADER				"location_"
 #define SAVE_EXTENSION				".sav"
-#define SPAWN_NAME					"game.spawn"
-// inventory rukzak size
-#define MAX_ITEM_VOLUME				100
+
 #define INVALID_STORY_ID			ALife::_STORY_ID(-1)
 #define INVALID_SPAWN_STORY_ID		ALife::_SPAWN_STORY_ID(-1)
 
@@ -32,7 +22,8 @@ class CSE_ALifeItemWeapon;
 class CSE_ALifeSchedulable;
 class CGameGraph;
 
-namespace ALife {
+namespace ALife
+{
 	typedef U64	_CLASS_ID;									// Class ID
 	typedef U16	_OBJECT_ID;									// Object ID
 	typedef U64	_TIME_ID;									// Time  ID
@@ -43,37 +34,24 @@ namespace ALife {
 	typedef u32 _STORY_ID;									// Story ID
 	typedef u32 _SPAWN_STORY_ID;							// Spawn Story ID
 
-	struct SSumStackCell {
+	struct SSumStackCell
+	{
 		int						i1;
 		int						i2;
 		int						iCurrentSum;
 	};
 
-	enum ECombatResult {
-		eCombatResultRetreat1 = u32(0),
-		eCombatResultRetreat2,
-		eCombatResultRetreat12,
-		eCombatResult1Kill2,
-		eCombatResult2Kill1,
-		eCombatResultBothKilled,
-		eCombatDummy = u32(-1),
-	};
-
-	enum ECombatAction {
-		eCombatActionAttack = u32(0),
-		eCombatActionRetreat,
-		eCombatActionDummy = u32(-1),
-	};
-
-	enum EMeetActionType {
+	enum EMeetActionType
+	{
 		eMeetActionTypeAttack = u32(0),
-		eMeetActionTypeInteract,
-		eMeetActionTypeIgnore,
-		eMeetActionSmartTerrain,
-		eMeetActionTypeDummy = u32(-1),
+//		eMeetActionTypeInteract,
+eMeetActionTypeIgnore,
+eMeetActionSmartTerrain,
+eMeetActionTypeDummy = u32(-1),
 	};
 
-	enum ERelationType {
+	enum ERelationType
+	{
 		eRelationTypeFriend = u32(0),
 		eRelationTypeNeutral,
 		eRelationTypeEnemy,
@@ -82,7 +60,8 @@ namespace ALife {
 		eRelationTypeDummy = u32(-1),
 	};
 
-	enum EHitType {
+	enum EHitType
+	{
 		eHitTypeBurn = u32(0),
 		eHitTypeShock,
 		eHitTypeStrike,
@@ -97,69 +76,88 @@ namespace ALife {
 		eHitTypeMax,
 	};
 
-	enum ETakeType {
-		eTakeTypeAll,
-		eTakeTypeMin,
-		eTakeTypeRest,
+	enum ETakeType
+	{
+		eTakeTypeAll//,
+//		eTakeTypeMin,
+//		eTakeTypeRest,
 	};
 
-	enum EWeaponPriorityType {
+	enum EWeaponPriorityType
+	{
 		eWeaponPriorityTypeKnife = u32(0),
 		eWeaponPriorityTypeSecondary,
 		eWeaponPriorityTypePrimary,
 		eWeaponPriorityTypeGrenade,
-		eWeaponPriorityTypeDummy = u32(-1),
-	};
-
-	enum ECombatType {
-		eCombatTypeMonsterMonster = u32(0),
-		eCombatTypeMonsterAnomaly,
-		eCombatTypeAnomalyMonster,
-		eCombatTypeSmartTerrain,
-		eCombatTypeDummy = u32(-1),
+		eWeaponPriorityTypeDummy = u32(-1)
 	};
 
 	//возможность подключения аддонов
-	enum EWeaponAddonStatus{
-		eAddonDisabled				= 0,	//нельзя присоеденить
-		eAddonPermanent				= 1,	//постоянно подключено по умолчанию
-		eAddonAttachable			= 2		//можно присоединять
+	enum EWeaponAddonStatus
+	{
+		eAddonDisabled = 0,	//нельзя присоеденить
+		eAddonPermanent = 1,	//постоянно подключено по умолчанию
+		eAddonAttachable = 2		//можно присоединять
 	};
 
-	inline EHitType	g_tfString2HitType(const char* caHitType)
+	inline EHitType g_tfString2HitType(const char* caHitType)
 	{
-		if (!stricmp(caHitType,"burn"))
+		if (!stricmp(caHitType, "burn"))
+		{
 			return(eHitTypeBurn);
-		else if (!stricmp(caHitType,"shock"))
-				return(eHitTypeShock);
-		else if (!stricmp(caHitType,"strike"))
-				return(eHitTypeStrike);
-		else if (!stricmp(caHitType,"wound"))
-				return(eHitTypeWound);
-		else if (!stricmp(caHitType,"radiation"))
-				return(eHitTypeRadiation);
-		else if (!stricmp(caHitType,"telepatic"))
-				return(eHitTypeTelepatic);
-		else if (!stricmp(caHitType,"fire_wound"))
-				return(eHitTypeFireWound);
-		else if (!stricmp(caHitType,"chemical_burn"))
-				return(eHitTypeChemicalBurn);
-		else if (!stricmp(caHitType,"explosion"))
-				return(eHitTypeExplosion);
-		else if (!stricmp(caHitType,"wound_2"))
-				return(eHitTypeWound_2);
+		}
+		else if (!stricmp(caHitType, "shock"))
+		{
+			return(eHitTypeShock);
+		}
+		else if (!stricmp(caHitType, "strike"))
+		{
+			return(eHitTypeStrike);
+		}
+		else if (!stricmp(caHitType, "wound"))
+		{
+			return(eHitTypeWound);
+		}
+		else if (!stricmp(caHitType, "radiation"))
+		{
+			return(eHitTypeRadiation);
+		}
+		else if (!stricmp(caHitType, "telepatic"))
+		{
+			return(eHitTypeTelepatic);
+		}
+		else if (!stricmp(caHitType, "fire_wound"))
+		{
+			return(eHitTypeFireWound);
+		}
+		else if (!stricmp(caHitType, "chemical_burn"))
+		{
+			return(eHitTypeChemicalBurn);
+		}
+		else if (!stricmp(caHitType, "explosion"))
+		{
+			return(eHitTypeExplosion);
+		}
+		else if (!stricmp(caHitType, "wound_2"))
+		{
+			return(eHitTypeWound_2);
+		}
 		else
-				FATAL	("Unsupported hit type!");
+		{
+			FATAL("Unsupported hit type!");
+		}
+
 		NODEFAULT;
 
 #ifdef DEBUG
 		return(eHitTypeMax);
-#endif
+#endif // def DEBUG
 
 	}
-xr_token							hit_types_token							[ ];
 
-inline const char* g_cafHitType2String(EHitType tHitType)
+	xr_token hit_types_token[ ];
+
+	inline const char* g_cafHitType2String(EHitType tHitType)
 	{
 		return get_token_name(hit_types_token, tHitType);
 	}
@@ -187,5 +185,3 @@ inline const char* g_cafHitType2String(EHitType tHitType)
 	using STORY_P_MAP = xr_map<_STORY_ID, CSE_ALifeDynamicObject*>;
 	using STORY_P_PAIR_IT = STORY_P_MAP::iterator;
 };
-
-//#endif //XRAY_ALIFE_SPACE

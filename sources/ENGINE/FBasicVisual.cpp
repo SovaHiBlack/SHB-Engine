@@ -2,7 +2,7 @@
 
 #include "stdafx.h"
 
-#include "render.h"
+#include "Render.h"
 #include "fbasicvisual.h"
 #include "fmesh.h"
 
