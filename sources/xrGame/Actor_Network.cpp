@@ -905,7 +905,7 @@ void CActor::OnChangeVisual( )
 	}
 }
 
-void CActor::ChangeVisual(shared_str NewVisual)
+void CActor::ChangeVisual(CSharedString NewVisual)
 {
 	if (!NewVisual.size( ))
 	{

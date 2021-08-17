@@ -10,7 +10,7 @@
 #include "fmesh.h"
 #include "cl_intersect.h"
 
-shared_str s_bones_array_const;
+CSharedString s_bones_array_const;
 
 #pragma pack(push, 1)
 //////////////////////////////////////////////////////////////////////

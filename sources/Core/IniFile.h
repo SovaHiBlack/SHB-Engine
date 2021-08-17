@@ -9,11 +9,11 @@ class CORE_API CIniFile
 public:
 	struct CORE_API	Item
 	{
-		shared_str	first;
-		shared_str	second;
+		CSharedString	first;
+		CSharedString	second;
 
 #ifdef DEBUG
-		shared_str	comment;
+		CSharedString	comment;
 #endif // def DEBUG
 
 		Item( ) : first(0), second(0)
@@ -31,7 +31,7 @@ public:
 
 	struct CORE_API Sect
 	{
-		shared_str		Name;
+		CSharedString		Name;
 		Items			Data;
 
 		BOOL			line_exist(const char* L, const char** val = 0);
@@ -68,116 +68,116 @@ public:
 	}
 
 	Sect& r_section(const char* S);
-	Sect& r_section(const shared_str& S);
+	Sect& r_section(const CSharedString& S);
 	BOOL		line_exist(const char* S, const char* L);
-	BOOL		line_exist(const shared_str& S, const shared_str& L);
+	BOOL		line_exist(const CSharedString& S, const CSharedString& L);
 	U32			line_count(const char* S);
-	U32			line_count(const shared_str& S);
+	U32			line_count(const CSharedString& S);
 	BOOL		section_exist(const char* S);
-	BOOL		section_exist(const shared_str& S);
+	BOOL		section_exist(const CSharedString& S);
 	Root& sections( )
 	{
 		return DATA;
 	}
 
 	CLASS_ID	r_clsid(const char* S, const char* L);
-	CLASS_ID	r_clsid(const shared_str& S, const char* L)
+	CLASS_ID	r_clsid(const CSharedString& S, const char* L)
 	{
 		return r_clsid(*S, L);
 	}
 	const char* r_string(const char* S, const char* L);															// оставляет кавычки
-	const char* r_string(const shared_str& S, const char* L)
+	const char* r_string(const CSharedString& S, const char* L)
 	{
 		return r_string(*S, L);
 	}	// оставляет кавычки
-	shared_str		r_string_wb(const char* S, const char* L);															// убирает кавычки
-	shared_str		r_string_wb(const shared_str& S, const char* L)
+	CSharedString		r_string_wb(const char* S, const char* L);															// убирает кавычки
+	CSharedString		r_string_wb(const CSharedString& S, const char* L)
 	{
 		return r_string_wb(*S, L);
 	}	// убирает кавычки
 	U8	 		r_u8(const char* S, const char* L);
-	U8	 		r_u8(const shared_str& S, const char* L)
+	U8	 		r_u8(const CSharedString& S, const char* L)
 	{
 		return r_u8(*S, L);
 	}
 	U16	 		r_u16(const char* S, const char* L);
-	U16	 		r_u16(const shared_str& S, const char* L)
+	U16	 		r_u16(const CSharedString& S, const char* L)
 	{
 		return r_u16(*S, L);
 	}
 	U32	 		r_u32(const char* S, const char* L);
-	U32	 		r_u32(const shared_str& S, const char* L)
+	U32	 		r_u32(const CSharedString& S, const char* L)
 	{
 		return r_u32(*S, L);
 	}
 	S8	 		r_s8(const char* S, const char* L);
-	S8	 		r_s8(const shared_str& S, const char* L)
+	S8	 		r_s8(const CSharedString& S, const char* L)
 	{
 		return r_s8(*S, L);
 	}
 	S16	 		r_s16(const char* S, const char* L);
-	S16	 		r_s16(const shared_str& S, const char* L)
+	S16	 		r_s16(const CSharedString& S, const char* L)
 	{
 		return r_s16(*S, L);
 	}
 	int	 		r_s32(const char* S, const char* L);
-	int	 		r_s32(const shared_str& S, const char* L)
+	int	 		r_s32(const CSharedString& S, const char* L)
 	{
 		return r_s32(*S, L);
 	}
 	F32		r_float(const char* S, const char* L);
-	F32		r_float(const shared_str& S, const char* L)
+	F32		r_float(const CSharedString& S, const char* L)
 	{
 		return r_float(*S, L);
 	}
 	Fcolor		r_fcolor(const char* S, const char* L);
-	Fcolor		r_fcolor(const shared_str& S, const char* L)
+	Fcolor		r_fcolor(const CSharedString& S, const char* L)
 	{
 		return r_fcolor(*S, L);
 	}
 	U32			r_color(const char* S, const char* L);
-	U32			r_color(const shared_str& S, const char* L)
+	U32			r_color(const CSharedString& S, const char* L)
 	{
 		return r_color(*S, L);
 	}
 	Ivector2	r_ivector2(const char* S, const char* L);
-	Ivector2	r_ivector2(const shared_str& S, const char* L)
+	Ivector2	r_ivector2(const CSharedString& S, const char* L)
 	{
 		return r_ivector2(*S, L);
 	}
 	Ivector3	r_ivector3(const char* S, const char* L);
-	Ivector3	r_ivector3(const shared_str& S, const char* L)
+	Ivector3	r_ivector3(const CSharedString& S, const char* L)
 	{
 		return r_ivector3(*S, L);
 	}
 	Ivector4	r_ivector4(const char* S, const char* L);
-	Ivector4	r_ivector4(const shared_str& S, const char* L)
+	Ivector4	r_ivector4(const CSharedString& S, const char* L)
 	{
 		return r_ivector4(*S, L);
 	}
 	Fvector2	r_fvector2(const char* S, const char* L);
-	Fvector2	r_fvector2(const shared_str& S, const char* L)
+	Fvector2	r_fvector2(const CSharedString& S, const char* L)
 	{
 		return r_fvector2(*S, L);
 	}
 	Fvector3	r_fvector3(const char* S, const char* L);
-	Fvector3	r_fvector3(const shared_str& S, const char* L)
+	Fvector3	r_fvector3(const CSharedString& S, const char* L)
 	{
 		return r_fvector3(*S, L);
 	}
 	Fvector4	r_fvector4(const char* S, const char* L);
-	Fvector4	r_fvector4(const shared_str& S, const char* L)
+	Fvector4	r_fvector4(const CSharedString& S, const char* L)
 	{
 		return r_fvector4(*S, L);
 	}
 	BOOL		r_bool(const char* S, const char* L);
-	BOOL		r_bool(const shared_str& S, const char* L)
+	BOOL		r_bool(const CSharedString& S, const char* L)
 	{
 		return r_bool(*S, L);
 	}
 	int			r_token(const char* S, const char* L, const xr_token* token_list);
 	BOOL		r_line(const char* S, int L, const char** N, const char** V);
-	BOOL		r_line(const shared_str& S, int L, const char** N, const char** V);
+	BOOL		r_line(const CSharedString& S, int L, const char** N, const char** V);
 
 	void		w_string(const char* S, const char* L, const char* V, const char* comment = 0);
 	void		w_u8(const char* S, const char* L, U8				V, const char* comment = 0);

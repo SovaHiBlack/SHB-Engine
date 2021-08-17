@@ -86,11 +86,11 @@ protected:
 
 #ifdef DEBUG
 	//буфферный вектор для проверки уникальность аттрибутов
-	xr_vector<shared_str> m_AttribValues;
+	xr_vector<CSharedString> m_AttribValues;
 #endif // def DEBUG
 
 public:
-	virtual shared_str correct_file_name(const char* path, const char* fn)
+	virtual CSharedString correct_file_name(const char* path, const char* fn)
 	{
 		return fn;
 	}

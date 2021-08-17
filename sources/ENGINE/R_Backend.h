@@ -174,7 +174,7 @@ public:
 
 	// constants
 	__forceinline	ref_constant				get_c				(const char* n)													{ if (ctable)	return ctable->get(n);else return 0;}
-	__forceinline	ref_constant				get_c				(shared_str&	n)													{ if (ctable)	return ctable->get(n);else return 0;}
+	__forceinline	ref_constant				get_c				(CSharedString&	n)													{ if (ctable)	return ctable->get(n);else return 0;}
 
 	// constants - direct (fast)
 	__forceinline	void						set_c				(R_constant* C, const Fmatrix& A)									{ if (C)		constants.set(C,A);					}
@@ -192,13 +192,13 @@ public:
 	__forceinline	void						set_ca				(const char* n, u32 e, const Fvector4& A)								{ if(ctable)	set_ca	(&*ctable->get(n),e,A);		}
 	__forceinline	void						set_ca				(const char* n, u32 e, float x, float y, float z, float w)				{ if(ctable)	set_ca	(&*ctable->get(n),e,x,y,z,w);}
 
-	// constants - shared_str (average)
-	__forceinline	void						set_c				(shared_str& n, const Fmatrix& A)									{ if(ctable)	set_c	(&*ctable->get(n),A);			}
-	__forceinline	void						set_c				(shared_str& n, const Fvector4& A)									{ if(ctable)	set_c	(&*ctable->get(n),A);			}
-	__forceinline	void						set_c				(shared_str& n, float x, float y, float z, float w)					{ if(ctable)	set_c	(&*ctable->get(n),x,y,z,w);	}
-	__forceinline	void						set_ca				(shared_str& n, u32 e, const Fmatrix& A)							{ if(ctable)	set_ca	(&*ctable->get(n),e,A);		}
-	__forceinline	void						set_ca				(shared_str& n, u32 e, const Fvector4& A)							{ if(ctable)	set_ca	(&*ctable->get(n),e,A);		}
-	__forceinline	void						set_ca				(shared_str& n, u32 e, float x, float y, float z, float w)			{ if(ctable)	set_ca	(&*ctable->get(n),e,x,y,z,w);}
+	// constants - CSharedString (average)
+	__forceinline	void						set_c				(CSharedString& n, const Fmatrix& A)									{ if(ctable)	set_c	(&*ctable->get(n),A);			}
+	__forceinline	void						set_c				(CSharedString& n, const Fvector4& A)									{ if(ctable)	set_c	(&*ctable->get(n),A);			}
+	__forceinline	void						set_c				(CSharedString& n, float x, float y, float z, float w)					{ if(ctable)	set_c	(&*ctable->get(n),x,y,z,w);	}
+	__forceinline	void						set_ca				(CSharedString& n, u32 e, const Fmatrix& A)							{ if(ctable)	set_ca	(&*ctable->get(n),e,A);		}
+	__forceinline	void						set_ca				(CSharedString& n, u32 e, const Fvector4& A)							{ if(ctable)	set_ca	(&*ctable->get(n),e,A);		}
+	__forceinline	void						set_ca				(CSharedString& n, u32 e, float x, float y, float z, float w)			{ if(ctable)	set_ca	(&*ctable->get(n),e,x,y,z,w);}
 
 	__forceinline	void						Render				(D3DPRIMITIVETYPE T, u32 baseV, u32 startV, u32 countV, u32 startI, u32 PC);
 	__forceinline	void						Render				(D3DPRIMITIVETYPE T, u32 startV, u32 PC);

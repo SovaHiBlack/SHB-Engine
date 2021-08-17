@@ -150,7 +150,7 @@ public:
 	{
 		w(S, (u32) xr_strlen(S) + 1);
 	}
-	inline void		w_stringZ		(shared_str& p)
+	inline void		w_stringZ		(CSharedString& p)
 	{
 		if (*p)
 		{
@@ -431,7 +431,7 @@ public:
 		dest = ( const char*) (&B.data[r_pos]);
 		r_advance(u32(dest.size( ) + 1));
 	}
-	void			r_stringZ		(shared_str& dest)
+	void			r_stringZ		(CSharedString& dest)
 	{
 		dest = ( const char*) (&B.data[r_pos]);
 		r_advance(dest.size( ) + 1);

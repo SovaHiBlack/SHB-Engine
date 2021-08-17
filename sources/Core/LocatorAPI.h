@@ -38,7 +38,7 @@ private:
 	};
 	struct	archive
 	{
-		shared_str				path;
+		CSharedString				path;
 		void* hSrcFile;
 		void* hSrcMap;
 		U32						size;

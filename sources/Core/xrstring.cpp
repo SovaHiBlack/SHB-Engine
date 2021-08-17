@@ -1,16 +1,19 @@
 #include "stdafx.h"
 
-CORE_API	extern		str_container* g_pStringContainer = NULL;
+CORE_API extern CStringContainer* g_pStringContainer = nullptr;
 
 #define		HEADER		12			// ref + len + crc
 
-str_value* str_container::dock(str_c value)
+SStringValue* CStringContainer::dock(const char* value)
 {
-	if (0 == value)				return 0;
+	if (0 == value)
+	{
+		return nullptr;
+	}
 
 	cs.Enter( );
 
-	str_value* result = 0;
+	SStringValue* result = nullptr;
 
 	// calc len
 	U32		s_len = xr_strlen(value);
@@ -19,7 +22,7 @@ str_value* str_container::dock(str_c value)
 
 	// setup find structure
 	string16	header;
-	str_value* sv = (str_value*) header;
+	SStringValue* sv = (SStringValue*) header;
 	sv->dwReference = 0;
 	sv->dwLength = s_len;
 	sv->dwCRC = crc32(value, s_len);
@@ -32,7 +35,7 @@ str_value* str_container::dock(str_c value)
 		cdb::iterator	save = I;
 		for (; I != container.end( ) && (*I)->dwCRC == sv->dwCRC; ++I)
 		{
-			str_value* V = (*I);
+			SStringValue* V = (*I);
 			if (V->dwLength != sv->dwLength)			continue;
 			if (0 != memcmp(V->value, value, s_len))	continue;
 			result = V;				// found
@@ -46,7 +49,7 @@ str_value* str_container::dock(str_c value)
 // Insert string
 //		DUMP_PHASE;
 
-		result = (str_value*) Memory.mem_alloc(HEADER + s_len_with_zero);
+		result = (SStringValue*) Memory.mem_alloc(HEADER + s_len_with_zero);
 
 //		DUMP_PHASE;
 
@@ -61,14 +64,14 @@ str_value* str_container::dock(str_c value)
 	return	result;
 }
 
-void		str_container::clean( )
+void		CStringContainer::clean( )
 {
 	cs.Enter( );
 	cdb::iterator	it = container.begin( );
 	cdb::iterator	end = container.end( );
 	for (; it != end; )
 	{
-		str_value* sv = *it;
+		SStringValue* sv = *it;
 		if (0 == sv->dwReference)
 		{
 			cdb::iterator	i_current = it;
@@ -86,14 +89,14 @@ void		str_container::clean( )
 	cs.Leave( );
 }
 
-void		str_container::verify( )
+void		CStringContainer::verify( )
 {
 	cs.Enter( );
 	cdb::iterator	it = container.begin( );
 	cdb::iterator	end = container.end( );
 	for (; it != end; ++it)
 	{
-		str_value* sv = *it;
+		SStringValue* sv = *it;
 		U32			crc = crc32(sv->value, sv->dwLength);
 		string32	crc_str;
 		R_ASSERT3(crc == sv->dwCRC, "CorePanic: read-only memory corruption (shared_strings)", itoa(sv->dwCRC, crc_str, 16));
@@ -102,7 +105,7 @@ void		str_container::verify( )
 	cs.Leave( );
 }
 
-void		str_container::dump( )
+void		CStringContainer::dump( )
 {
 	cs.Enter( );
 	cdb::iterator	it = container.begin( );
@@ -114,7 +117,7 @@ void		str_container::dump( )
 	cs.Leave( );
 }
 
-U32			str_container::stat_economy( )
+U32			CStringContainer::stat_economy( )
 {
 	cs.Enter( );
 	cdb::iterator	it = container.begin( );
@@ -134,7 +137,7 @@ U32			str_container::stat_economy( )
 	return			U32(counter);
 }
 
-str_container::~str_container( )
+CStringContainer::~CStringContainer( )
 {
 	clean( );
 	//R_ASSERT(container.empty());

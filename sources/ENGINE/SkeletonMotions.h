@@ -84,7 +84,7 @@ private:
 
 	STORAGE			intervals;	
 public:
-	shared_str		name;
+	CSharedString		name;
 	void			Load			(IReader*);
 
 	bool			pick_mark		(const float& t) const;
@@ -115,10 +115,10 @@ public:
 	__forceinline float				Power				(){return Dequantize(power);}
 	bool					StopAtEnd			();
 };
-struct accel_str_pred : public std::binary_function<shared_str, shared_str, bool>	{	
-	inline bool operator()(const shared_str& x, const shared_str& y) const	{	return xr_strcmp(x,y)<0;	}
+struct accel_str_pred : public std::binary_function<CSharedString, CSharedString, bool>	{
+	inline bool operator()(const CSharedString& x, const CSharedString& y) const	{	return xr_strcmp(x,y)<0;	}
 };
-typedef xr_map<shared_str, U16,accel_str_pred> 	accel_map;
+typedef xr_map<CSharedString, U16,accel_str_pred> 	accel_map;
 //DEFINE_VECTOR			(CMotionDef,MotionDefVec,MotionDefVecIt);
 using MotionDefVec = xr_vector<CMotionDef>;
 using MotionDefVecIt = MotionDefVec::iterator;
@@ -128,15 +128,15 @@ using MotionVecIt = MotionVec::iterator;
 //DEFINE_VECTOR			(MotionVec*,BoneMotionsVec,BoneMotionsVecIt);
 using BoneMotionsVec = xr_vector<MotionVec*>;
 using BoneMotionsVecIt = BoneMotionsVec::iterator;
-//DEFINE_MAP				(shared_str,MotionVec,BoneMotionMap,BoneMotionMapIt);
-using BoneMotionMap = xr_map<shared_str, MotionVec>;
+//DEFINE_MAP				(CSharedString,MotionVec,BoneMotionMap,BoneMotionMapIt);
+using BoneMotionMap = xr_map<CSharedString, MotionVec>;
 using BoneMotionMapIt = BoneMotionMap::iterator;
 
 // partition
 class ENGINE_API		CPartDef
 {
 public:
-	shared_str			Name;
+	CSharedString			Name;
 	xr_vector<u32>		bones;
 	CPartDef()			: Name(0) {};
 
@@ -162,11 +162,10 @@ struct ENGINE_API		motions_value
 	BoneMotionMap		m_motions;
 	MotionDefVec		m_mdefs;
 
-	shared_str			m_id;
-
+	CSharedString			m_id;
 
 	BOOL				load				(const char* N, IReader *data, vecBones* bones);
-	MotionVec*			bone_motions		(shared_str bone_name);
+	MotionVec*			bone_motions		(CSharedString bone_name);
 
 	u32					mem_usage			(){ 
 		u32 sz			=	sizeof(*this)+m_motion_map.size()*6+m_partition.mem_usage();
@@ -181,15 +180,15 @@ struct ENGINE_API		motions_value
 
 class ENGINE_API		motions_container
 {
-//	DEFINE_MAP			(shared_str,motions_value*,SharedMotionsMap,SharedMotionsMapIt);
-	using SharedMotionsMap = xr_map<shared_str, motions_value*>;
+//	DEFINE_MAP			(CSharedString,motions_value*,SharedMotionsMap,SharedMotionsMapIt);
+	using SharedMotionsMap = xr_map<CSharedString, motions_value*>;
 	using SharedMotionsMapIt = SharedMotionsMap::iterator;
 	SharedMotionsMap	container;
 public:
 						motions_container	();
 						~motions_container	();
-	bool				has					(shared_str key);
-	motions_value*		dock				(shared_str key, IReader *data, vecBones* bones);
+	bool				has					(CSharedString key);
+	motions_value*		dock				(CSharedString key, IReader *data, vecBones* bones);
 	void				dump				();
 	void				clean				(bool force_destroy);
 };
@@ -204,7 +203,7 @@ protected:
 	// ref-counting
 	void				destroy			()							{	if (0==p_) return;	p_->m_dwReference--; 	if (0==p_->m_dwReference)	p_=0;	}
 public:
-	void				create			(shared_str key, IReader *data, vecBones* bones){	motions_value* v = g_pMotionsContainer->dock(key,data,bones); if (0!=v) v->m_dwReference++; destroy(); p_ = v;	}
+	void				create			(CSharedString key, IReader *data, vecBones* bones){	motions_value* v = g_pMotionsContainer->dock(key,data,bones); if (0!=v) v->m_dwReference++; destroy(); p_ = v;	}
 	void				create			(shared_motions const &rhs)	{	motions_value* v = rhs.p_; if (0!=v) v->m_dwReference++; destroy(); p_ = v;	}
 public:
 	// construction
@@ -217,7 +216,7 @@ public:
 	bool				operator==		(shared_motions const &rhs)	const {return (p_ == rhs.p_);}
 
 	// misc func
-	MotionVec*			bone_motions	(shared_str bone_name)		{	VERIFY(p_); return p_->bone_motions(bone_name);	}
+	MotionVec*			bone_motions	(CSharedString bone_name)		{	VERIFY(p_); return p_->bone_motions(bone_name);	}
 	accel_map*			motion_map		()							{	VERIFY(p_); return &p_->m_motion_map;			}
 	accel_map*			cycle			()							{	VERIFY(p_); return &p_->m_cycle;				}
 	accel_map*			fx				()							{	VERIFY(p_); return &p_->m_fx;					}
@@ -225,6 +224,6 @@ public:
 	MotionDefVec*		motion_defs		()							{	VERIFY(p_); return &p_->m_mdefs;				}
 	CMotionDef*			motion_def		(U16 idx)					{	VERIFY(p_); return &p_->m_mdefs[idx];			}
 
-	const shared_str	&id				() const					{	VERIFY(p_); return p_->m_id;					}
+	const CSharedString&	id				() const					{	VERIFY(p_); return p_->m_id;					}
 
 };

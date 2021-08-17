@@ -35,14 +35,14 @@ struct SArtefactActivation
 	struct SStateDef
 	{
 		float		m_time;
-		shared_str	m_snd;
+		CSharedString	m_snd;
 		Fcolor		m_light_color;
 		float		m_light_range;
-		shared_str	m_particle;
-		shared_str	m_animation;
+		CSharedString	m_particle;
+		CSharedString	m_animation;
 
 		SStateDef( ) : m_time(0.0f)
-		{ };
+		{ }
 		void		Load(const char* section, const char* name);
 	};
 
@@ -677,16 +677,16 @@ void SArtefactActivation::SpawnAnomaly( )
 //. #endif
 }
 
-shared_str clear_brackets(const char* src)
+CSharedString clear_brackets(const char* src)
 {
 	if (0 == src)
 	{
-		return	shared_str(0);
+		return	CSharedString(0);
 	}
 
 	if (NULL == strchr(src, '"'))
 	{
-		return	shared_str(src);
+		return	CSharedString(src);
 	}
 
 	string512						_original;
@@ -694,7 +694,7 @@ shared_str clear_brackets(const char* src)
 	u32			_len = xr_strlen(_original);
 	if (0 == _len)
 	{
-		return	shared_str("");
+		return	CSharedString("");
 	}
 
 	if ('"' == _original[_len - 1])
@@ -704,10 +704,10 @@ shared_str clear_brackets(const char* src)
 	
 	if ('"' == _original[0])
 	{	// skip begin
-		return	shared_str(&_original[0] + 1);
+		return	CSharedString(&_original[0] + 1);
 	}
 
-	return shared_str(_original);
+	return CSharedString(_original);
 }
 
 void SArtefactActivation::SStateDef::Load(const char* section, const char* name)

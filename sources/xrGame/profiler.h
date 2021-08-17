@@ -62,7 +62,7 @@ protected:
 
 protected:
 			void		setup_timer			(const char* timer_id, const U64& timer_time, const u32 &call_count);
-	inline		void		convert_string		(const char* str, shared_str &out, u32 max_string_size);
+	inline void		convert_string		(const char* str, shared_str &out, u32 max_string_size);
 
 public:
 						CProfiler			();

@@ -24,7 +24,7 @@
 #include "ef_pattern.h"
 #include "trade_parameters.h"
 
-u32 get_rank(const shared_str&)
+u32 get_rank(const CSharedString&)
 {
 	return u32(-1);
 }
@@ -407,8 +407,8 @@ void CStalker::remove_personal_only_ammo			(const CInventoryItem *item)
 	const CWeapon			*weapon = smart_cast<const CWeapon*>(item);
 	VERIFY					(weapon);
 
-	xr_vector<shared_str>::const_iterator	I = weapon->m_ammoTypes.begin();
-	xr_vector<shared_str>::const_iterator	E = weapon->m_ammoTypes.end();
+	xr_vector<CSharedString>::const_iterator	I = weapon->m_ammoTypes.begin();
+	xr_vector<CSharedString>::const_iterator	E = weapon->m_ammoTypes.end();
 	for ( ; I != E; ++I) {
 		bool				found = false;
 

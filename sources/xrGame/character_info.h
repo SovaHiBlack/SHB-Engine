@@ -24,9 +24,9 @@ struct SCharacterProfile : CSharedResource
 	SCharacterProfile ();
 	virtual ~SCharacterProfile ();
 
-    //если задано, то выбирается именно такой профиль,
+	//если задано, то выбирается именно такой профиль,
 	//иначе ищется случайно,удовлетворяющее шаблону
-	shared_str		m_CharacterId;	
+	CSharedString		m_CharacterId;
 
 	//требуемые параметры персонажа
 	CHARACTER_CLASS					m_Class;
@@ -37,11 +37,11 @@ struct SCharacterProfile : CSharedResource
 class CInventoryOwner;
 class CSE_ALifeTraderAbstract;
 
-class CCharacterInfo: public CSharedClass<SCharacterProfile, shared_str, false>,
+class CCharacterInfo: public CSharedClass<SCharacterProfile, CSharedString, false>,
 					  public CXML_IdToIndex<CCharacterInfo>
 {
 private:
-	typedef CSharedClass	<SCharacterProfile, shared_str, false>	inherited_shared;
+	typedef CSharedClass	<SCharacterProfile, CSharedString, false>	inherited_shared;
 	typedef CXML_IdToIndex	<CCharacterInfo>						id_to_index;
 
 	friend id_to_index;
@@ -52,7 +52,7 @@ public:
 								CCharacterInfo		();
 								~CCharacterInfo		();
 
-	virtual void Load	(shared_str id);
+	virtual void Load	(CSharedString id);
 
 	void 						load				(IReader&);
 	void 						save				(CNetPacket&);
@@ -61,7 +61,7 @@ public:
 	//загрузку соответствующего CSpecificCharacter, по 
 	//указанному индексу
 	void	Init				(CSE_ALifeTraderAbstract* trader);
-	void InitSpecificCharacter	(shared_str new_id);
+	void InitSpecificCharacter	(CSharedString new_id);
 
 protected:
 	const SCharacterProfile*	data				() const	{ VERIFY(inherited_shared::get_sd()); return inherited_shared::get_sd();}
@@ -73,21 +73,21 @@ protected:
 	virtual void				load_shared			(const char*);
 
 	//индекс загруженного профиля
-	shared_str					m_ProfileId;
+	CSharedString					m_ProfileId;
 	
 	//индекс данных о конкретном персонаже, который
 	//используется в данном экземпляре класса
-	shared_str					m_SpecificCharacterId;
+	CSharedString					m_SpecificCharacterId;
 
-	shared_str					m_StartDialog;
+	CSharedString					m_StartDialog;
 
 	//загруженная информация о конкретном персонаже
 	CSpecificCharacter			m_SpecificCharacter;
 
 public:
-	shared_str					Profile() const;
+	CSharedString					Profile() const;
 	const char*					Name() const;
-	shared_str					Bio() const;
+	CSharedString					Bio() const;
 
 	const CHARACTER_COMMUNITY&	Community()			const	{return m_CurrentCommunity;};
 	const CHARACTER_RANK&		Rank()				const	{ return m_CurrentRank;};
@@ -97,13 +97,13 @@ public:
 protected:
 	void						SetRank				(CHARACTER_RANK_VALUE			rank);
 	void						SetReputation		(CHARACTER_REPUTATION_VALUE		reputation);
-	void						SetCommunity		(const CHARACTER_COMMUNITY&		community)		{m_CurrentCommunity = community;};
+	void						SetCommunity		(const CHARACTER_COMMUNITY&		community)		{m_CurrentCommunity = community;}
 
 public:
-	const shared_str&			IconName			()	const;
+	const CSharedString&			IconName			() const;
 
-	shared_str					StartDialog			()	const;
-	const DIALOG_ID_VECTOR&		ActorDialogs		()	const;
+	CSharedString					StartDialog			() const;
+	const DIALOG_ID_VECTOR&		ActorDialogs		() const;
 
 protected:
 	CHARACTER_RANK					m_CurrentRank;

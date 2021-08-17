@@ -115,7 +115,7 @@ void IGameObjectPool::clear	( )
 CObject*	IGameObjectPool::create			( const char*	name	)
 {
 	string256			l_name;
-	POOL_IT	it			=	map_POOL.find	(shared_str(strlwr(strcpy_s(l_name,name))));
+	POOL_IT	it			=	map_POOL.find	(CSharedString(strlwr(strcpy_s(l_name,name))));
 	if (it!=map_POOL.end())
 	{
 		// Instance found

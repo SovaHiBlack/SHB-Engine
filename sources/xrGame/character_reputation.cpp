@@ -9,7 +9,7 @@
 #define REPUTATION_TABLE		"reputation_relations"
 
 //////////////////////////////////////////////////////////////////////////
-REPUTATION_DATA::REPUTATION_DATA(int idx, shared_str idn, const char* threshold_str)
+REPUTATION_DATA::REPUTATION_DATA(int idx, CSharedString idn, const char* threshold_str)
 {
 	index = idx;
 	id = idn;
@@ -41,7 +41,7 @@ void CHARACTER_REPUTATION::set(CHARACTER_REPUTATION_VALUE new_val)
 	m_current_index = ValueToIndex(new_val);
 }
 
-shared_str CHARACTER_REPUTATION::id( ) const
+CSharedString CHARACTER_REPUTATION::id( ) const
 {
 	return IndexToId(m_current_index);
 }

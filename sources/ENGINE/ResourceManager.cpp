@@ -275,7 +275,7 @@ void	CResourceManager::_GetMemoryUsage(u32& m_base, u32& c_base, u32& m_lmaps, u
 }
 void	CResourceManager::_DumpMemoryUsage		()
 {
-	xr_multimap<u32,std::pair<u32,shared_str> >		mtex	;
+	xr_multimap<u32,std::pair<u32, CSharedString> >		mtex	;
 
 	// sort
 	{
@@ -284,15 +284,15 @@ void	CResourceManager::_DumpMemoryUsage		()
 		for (; I!=E; I++)
 		{
 			u32			m = I->second->flags.MemoryUsage;
-			shared_str	n = I->second->cName;
+			CSharedString	n = I->second->cName;
 			mtex.insert (mk_pair(m,mk_pair(I->second->dwReference,n) ));
 		}
 	}
 
 	// dump
 	{
-		xr_multimap<u32,std::pair<u32,shared_str> >::iterator I = mtex.begin	();
-		xr_multimap<u32,std::pair<u32,shared_str> >::iterator E = mtex.end		();
+		xr_multimap<u32,std::pair<u32, CSharedString> >::iterator I = mtex.begin	();
+		xr_multimap<u32,std::pair<u32, CSharedString> >::iterator E = mtex.end		();
 		for (; I!=E; I++)
 			Msg			("* %4.1f : [%4d] %s",float(I->first)/1024.f, I->second.first, I->second.second.c_str());
 	}

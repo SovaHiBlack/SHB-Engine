@@ -1,10 +1,5 @@
-////////////////////////////////////////////////////////////////////////////
 //	Module 		: alife_update_manager.h
-//	Created 	: 25.12.2002
-//  Modified 	: 12.05.2004
-//	Author		: Dmitriy Iassenev
 //	Description : ALife Simulator update manager
-////////////////////////////////////////////////////////////////////////////
 
 #pragma once
 
@@ -42,7 +37,7 @@ protected:
 public:
 						CALifeUpdateManager		(CServer*server, const char* section);
 	virtual 			~CALifeUpdateManager	();
-	virtual	shared_str	shedule_Name			() const		{ return shared_str("alife_simulator"); };
+	virtual	CSharedString	shedule_Name			() const		{ return CSharedString("alife_simulator"); };
 	virtual float		shedule_Scale			();
 	virtual void		shedule_Update			(u32 dt);	
 	virtual bool		shedule_Needed			()				{return true;};

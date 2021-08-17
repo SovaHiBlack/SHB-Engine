@@ -31,7 +31,7 @@ private:
 	CALifeSpawnHeader						m_header;
 	SPAWN_GRAPH								m_spawns;
 	ARTEFACT_SPAWNS							m_artefact_spawn_positions;
-	shared_str								m_spawn_name;
+	CSharedString							m_spawn_name;
 	SPAWN_IDS								m_spawn_roots;
 	SPAWN_IDS								m_temp0;
 	SPAWN_IDS								m_temp1;

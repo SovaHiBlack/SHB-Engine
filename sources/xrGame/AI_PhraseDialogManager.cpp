@@ -66,7 +66,7 @@ void CAI_PhraseDialogManager::AnswerPhrase (DIALOG_SHARED_PTR& phrase_dialog)
 		
 		phrase_num = phrases[Random.randI(0, phrases.size())];
 
-		shared_str phrase_id = phrase_dialog->PhraseList()[phrase_num]->GetID();
+		CSharedString phrase_id = phrase_dialog->PhraseList()[phrase_num]->GetID();
 		
 		CUIGame* pGame				= smart_cast<CUIGame*>(HUD().GetUI()->UIGame());
 		pGame->TalkMenu->AddAnswer	(phrase_dialog->GetPhraseText(phrase_id), pInvOwner->Name());
@@ -75,12 +75,12 @@ void CAI_PhraseDialogManager::AnswerPhrase (DIALOG_SHARED_PTR& phrase_dialog)
 	}
 }
 
-void CAI_PhraseDialogManager::SetStartDialog(shared_str phrase_dialog)
+void CAI_PhraseDialogManager::SetStartDialog(CSharedString phrase_dialog)
 {
 	m_sStartDialog = phrase_dialog;
 }
 
-void CAI_PhraseDialogManager::SetDefaultStartDialog(shared_str phrase_dialog)
+void CAI_PhraseDialogManager::SetDefaultStartDialog(CSharedString phrase_dialog)
 {
 	m_sDefaultStartDialog = phrase_dialog;
 }

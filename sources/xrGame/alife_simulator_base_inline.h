@@ -151,7 +151,7 @@ inline	CRandom32							&CALifeSimulatorBase::random				()
 	return						(m_random);
 }
 
-inline	void								CALifeSimulatorBase::setup_command_line		(shared_str *command_line)
+inline	void								CALifeSimulatorBase::setup_command_line		(CSharedString* command_line)
 {
 	m_server_command_line		= command_line;
 }
@@ -176,7 +176,7 @@ inline	const CALifeTimeManager				&CALifeSimulatorBase::time_manager			() const
 	return						(*m_time_manager);
 }
 
-inline	shared_str							*CALifeSimulatorBase::server_command_line	() const
+inline	CSharedString* CALifeSimulatorBase::server_command_line	() const
 {
 	VERIFY						(m_server_command_line);
 	return						(m_server_command_line);

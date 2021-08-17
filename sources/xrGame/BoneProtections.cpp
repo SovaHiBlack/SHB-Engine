@@ -30,7 +30,7 @@ BOOL SBoneProtections::getBonePassBullet(S16 bone_id)
 		return m_default.BonePassBullet;
 }
 
-void SBoneProtections::reload(const shared_str& bone_sect, CKinematics* kinematics)
+void SBoneProtections::reload(const CSharedString& bone_sect, CKinematics* kinematics)
 {
 	VERIFY(kinematics);
 	m_bones_koeff.clear( );

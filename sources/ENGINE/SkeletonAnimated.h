@@ -211,9 +211,9 @@ public:
 	// cycles
 	MotionID					ID_Cycle		(const char* N);
 	MotionID					ID_Cycle_Safe	(const char* N);
-	MotionID					ID_Cycle		(shared_str  N);
-	MotionID					ID_Cycle_Safe	(shared_str  N);
-	CBlend*						PlayCycle		(const char* N,  BOOL bMixIn=TRUE, PlayCallback Callback=0, LPVOID CallbackParam=0, U8 channel = 0);
+	MotionID					ID_Cycle		(CSharedString N);
+	MotionID					ID_Cycle_Safe	(CSharedString N);
+	CBlend*						PlayCycle		(const char* N, BOOL bMixIn=TRUE, PlayCallback Callback=0, LPVOID CallbackParam=0, U8 channel = 0);
 	CBlend*						PlayCycle		(MotionID M, BOOL bMixIn=TRUE, PlayCallback Callback=0, LPVOID CallbackParam=0, U8 channel = 0);
 	// fx'es
 	MotionID					ID_FX			(const char* N);

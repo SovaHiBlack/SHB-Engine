@@ -224,7 +224,7 @@ enum EPState {
 	PS_STAND_UPPER
 };
 
-typedef		shared_str			anim_string;
+typedef		CSharedString			anim_string;
 #define		DEFAULT_ANIM		eAnimStandIdle
 
 // элемент анимации
@@ -331,7 +331,7 @@ using AA_VECTOR = xr_vector<SAAParam>;
 using AA_VECTOR_IT = AA_VECTOR::iterator;
 
 struct SCurrentAnimationInfo {
-	shared_str		name;
+	CSharedString		name;
 
 	EMotionAnim	motion;
 	U8			index;
@@ -387,8 +387,8 @@ using REPLACED_ANIM_IT = REPLACED_ANIM::iterator;
 //DEFINE_MAP		(U16,				t_fx_index,				FX_MAP_U16,					FX_MAP_U16_IT);
 using FX_MAP_U16 = xr_map<U16, t_fx_index>;
 using FX_MAP_U16_IT = FX_MAP_U16::iterator;
-//DEFINE_MAP		(shared_str,			t_fx_index,				FX_MAP_STRING,				FX_MAP_STRING_IT);
-using FX_MAP_STRING = xr_map<shared_str, t_fx_index>;
+//DEFINE_MAP		(CSharedString,			t_fx_index,				FX_MAP_STRING,				FX_MAP_STRING_IT);
+using FX_MAP_STRING = xr_map<CSharedString, t_fx_index>;
 using FX_MAP_STRING_IT = FX_MAP_STRING::iterator;
 
 //DEFINE_VECTOR	(SEQ_VECTOR, VELOCITY_CHAIN_VEC, VELOCITY_CHAIN_VEC_IT);
@@ -483,6 +483,6 @@ enum EDangerType {
 	eNone
 };
 
-//DEFINE_MAP(MotionID, shared_str, ANIM_TO_MOTION_MAP, ANIM_TO_MOTION_MAP_IT);
-using ANIM_TO_MOTION_MAP = xr_map<MotionID, shared_str>;
+//DEFINE_MAP(MotionID, CSharedString, ANIM_TO_MOTION_MAP, ANIM_TO_MOTION_MAP_IT);
+using ANIM_TO_MOTION_MAP = xr_map<MotionID, CSharedString>;
 using ANIM_TO_MOTION_MAP_IT = ANIM_TO_MOTION_MAP::iterator;

@@ -39,7 +39,7 @@ struct _open_file
 		IReader* _reader;
 		CStreamReader* _stream_reader;
 	};
-	shared_str			_fn;
+	CSharedString			_fn;
 	U32					_used;
 };
 
@@ -70,8 +70,8 @@ struct eq_pointer<CStreamReader>
 };
 struct eq_fname_free
 {
-	shared_str _val;
-	eq_fname_free(shared_str s)
+	CSharedString _val;
+	eq_fname_free(CSharedString s)
 	{
 		_val = s;
 	}
@@ -82,8 +82,8 @@ struct eq_fname_free
 };
 struct eq_fname_check
 {
-	shared_str _val;
-	eq_fname_check(shared_str s)
+	CSharedString _val;
+	eq_fname_check(CSharedString s)
 	{
 		_val = s;
 	}
@@ -95,7 +95,7 @@ struct eq_fname_check
 
 CORE_API xr_vector<_open_file>	g_open_files;
 
-void _check_open_file(const shared_str& _fname)
+void _check_open_file(const CSharedString& _fname)
 {
 	xr_vector<_open_file>::iterator it = std::find_if(g_open_files.begin( ), g_open_files.end( ), eq_fname_check(_fname));
 	if (it != g_open_files.end( ))
@@ -104,7 +104,7 @@ void _check_open_file(const shared_str& _fname)
 	}
 }
 
-_open_file& find_free_item(const shared_str& _fname)
+_open_file& find_free_item(const CSharedString& _fname)
 {
 	xr_vector<_open_file>::iterator it = std::find_if(g_open_files.begin( ), g_open_files.end( ), eq_fname_free(_fname));
 	if (it == g_open_files.end( ))
@@ -135,7 +135,7 @@ void _register_open_file(T* _r, const char* _fname)
 	xrCriticalSection _lock;
 	_lock.Enter( );
 
-	shared_str f = _fname;
+	CSharedString f = _fname;
 	_check_open_file(f);
 
 	_open_file& _of = find_free_item(_fname);
@@ -336,7 +336,7 @@ IReader* open_chunk(void* ptr, U32 ID)
 void CLocatorAPI::ProcessArchive(const char* _path, const char* base_path)
 {
 	// find existing archive
-	shared_str path = _path;
+	CSharedString path = _path;
 
 	for (archives_it it = archives.begin( ); it != archives.end( ); ++it)
 	{

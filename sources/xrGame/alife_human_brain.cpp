@@ -89,7 +89,7 @@ void CALifeHumanBrain::on_state_read		(CNetPacket &packet)
 		return;
 
 	if (object().m_wVersion < 110) {
-		shared_str					temp;
+		CSharedString					temp;
 		packet.r_stringZ			(temp);
 	}
 

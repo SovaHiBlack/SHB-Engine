@@ -5,7 +5,7 @@ static string_path			logFName = "engine.log";
 static BOOL 				no_log = TRUE;
 static xrCriticalSection	logCS;
 
-xr_vector<shared_str>* LogFile = nullptr;
+xr_vector<CSharedString>* LogFile = nullptr;
 static LogCallback			LogCB = 0;
 
 void FlushLog(const char* file_name)
@@ -53,7 +53,7 @@ void AddOne(const char* split)
 
 //	DUMP_PHASE;
 	{
-		shared_str			temp = shared_str(split);
+		CSharedString			temp = CSharedString(split);
 //		DUMP_PHASE;
 		LogFile->push_back(temp);
 	}
@@ -171,7 +171,7 @@ const char* log_name( )
 void InitLog( )
 {
 	R_ASSERT(LogFile == nullptr);
-	LogFile = xr_new< xr_vector<shared_str> >( );
+	LogFile = xr_new< xr_vector<CSharedString> >( );
 }
 
 void CreateLog(BOOL nl)

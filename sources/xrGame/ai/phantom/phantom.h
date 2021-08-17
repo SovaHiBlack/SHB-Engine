@@ -35,7 +35,7 @@ private:
 
 private:
 	struct SStateData{
-		shared_str		particles;
+		CSharedString		particles;
 		ref_sound		sound;
 		MotionID		motion;
 	};
@@ -56,7 +56,7 @@ private:
 
 	Fmatrix				XFORM_center				();
 
-	CParticlesObject*	PlayParticles				(const shared_str& name, BOOL bAutoRemove, const Fmatrix& xform);
+	CParticlesObject*	PlayParticles				(const CSharedString& name, BOOL bAutoRemove, const Fmatrix& xform);
 //	void				PlayMotion					(MotionID);
 
 	void				UpdatePosition				(const Fvector3& tgt_pos);

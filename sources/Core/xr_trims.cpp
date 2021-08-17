@@ -286,7 +286,7 @@ const char* _GetItem(const char* src, int index, xr_string& dst, char separator,
 	return		dst.c_str( );
 }
 
-shared_str	_ListToSequence(const RStringVec& lst)
+CSharedString	_ListToSequence(const RStringVec& lst)
 {
 	xr_string		out;
 	if (lst.size( ))
@@ -298,6 +298,6 @@ shared_str	_ListToSequence(const RStringVec& lst)
 			out += **s_it;
 		}
 	}
-	return shared_str(out.c_str( ));
+	return CSharedString(out.c_str( ));
 }
 

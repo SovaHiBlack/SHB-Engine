@@ -137,7 +137,7 @@ void  CActor::AddGameNews(GAME_NEWS_DATA& news_data)
 	}
 }
 
-bool CActor::OnReceiveInfo(shared_str info_id) const
+bool CActor::OnReceiveInfo(CSharedString info_id) const
 {
 	if (!CInventoryOwner::OnReceiveInfo(info_id))
 	{
@@ -172,7 +172,7 @@ bool CActor::OnReceiveInfo(shared_str info_id) const
 	return true;
 }
 
-void CActor::OnDisableInfo(shared_str info_id) const
+void CActor::OnDisableInfo(CSharedString info_id) const
 {
 	CInventoryOwner::OnDisableInfo(info_id);
 

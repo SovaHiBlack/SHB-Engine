@@ -157,14 +157,14 @@ void	IGameLevel::OnFrame		( )
 
 void CServerInfo::AddItem(const char* name_, const char* value_, u32 color_ )
 {
-	shared_str s_name( name_ );
+	CSharedString s_name( name_ );
 	AddItem( s_name, value_, color_ );
 }
 
-void CServerInfo::AddItem( shared_str& name_, const char* value_, u32 color_ )
+void CServerInfo::AddItem(CSharedString& name_, const char* value_, u32 color_ )
 {
 	SItem_ServerInfo it;
-//	shared_str s_name = CStringTable().translate( name_ );
+//	CSharedString s_name = CStringTable().translate( name_ );
 	
 //	strcpy_s( it.name, s_name.c_str() );
 	strcpy_s( it.name, name_.c_str() );

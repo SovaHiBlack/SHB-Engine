@@ -18,7 +18,7 @@
 #	include "game_graph.h"
 #endif
 
-void CALifeSmartTerrainTask::setup_patrol_point				(const shared_str &patrol_path_name, const u32 &patrol_point_index)
+void CALifeSmartTerrainTask::setup_patrol_point				(const CSharedString& patrol_path_name, const u32 &patrol_point_index)
 {
 	VERIFY					(!m_patrol_point);
 

@@ -6,23 +6,23 @@ class CTextureDescrMngr
 {
 	struct texture_assoc
 	{
-		shared_str			detail_name;
+		CSharedString			detail_name;
 		R_constant_setup*	        cs;
 		U8				usage;
-                texture_assoc                   ():cs(NULL),usage(0){}
+				texture_assoc                   ():cs(NULL),usage(0){}
 	};
 	struct texture_spec
 	{
-		shared_str			m_bump_name;
+		CSharedString			m_bump_name;
 		float				m_material;
 	};
 	struct texture_desc{
 		texture_assoc*		m_assoc;
 		texture_spec*		m_spec;
-        texture_desc            ():m_assoc(NULL),m_spec(NULL){}
+		texture_desc            ():m_assoc(NULL),m_spec(NULL){}
 	};
-//	DEFINE_MAP(shared_str, texture_desc,	map_TD,	map_TDIt);
-	using map_TD = xr_map<shared_str, texture_desc>;
+//	DEFINE_MAP(CSharedString, texture_desc,	map_TD,	map_TDIt);
+	using map_TD = xr_map<CSharedString, texture_desc>;
 	using map_TDIt = map_TD::iterator;
 	map_TD									m_texture_details;
 
@@ -33,8 +33,8 @@ public:
 	void		Load		();
 	void		UnLoad		();
 public:
-	shared_str	GetBumpName		(const shared_str& tex_name) const;
-	float		GetMaterial		(const shared_str& tex_name) const;
-	void		GetTextureUsage	(const shared_str& tex_name, BOOL& bDiffuse, BOOL& bBump) const;
-	BOOL		GetDetailTexture(const shared_str& tex_name, const char*& res, R_constant_setup* &CS) const;
+	CSharedString	GetBumpName		(const CSharedString& tex_name) const;
+	float		GetMaterial		(const CSharedString& tex_name) const;
+	void		GetTextureUsage	(const CSharedString& tex_name, BOOL& bDiffuse, BOOL& bBump) const;
+	BOOL		GetDetailTexture(const CSharedString& tex_name, const char*& res, R_constant_setup* &CS) const;
 };

@@ -12,7 +12,7 @@ template <class T>
 class shared_container
 {
 protected:
-	typedef xr_map< shared_str, T* >			SharedMap;
+	typedef xr_map< CSharedString, T* >			SharedMap;
 	typedef typename SharedMap::iterator	SharedMapIt;
 	SharedMap				container;
 
@@ -24,7 +24,7 @@ public:
 		VERIFY(container.empty( ));
 	}
 	template <typename _on_new>
-	T* dock(shared_str key, const _on_new& p)
+	T* dock(CSharedString key, const _on_new& p)
 	{
 		T* result = 0;
 		SharedMapIt	I = container.find(key);
@@ -131,7 +131,7 @@ public:
 	}
 	// creating
 	template <typename _on_new>
-	void					create(shared_str key, shared_container<T>* container, const _on_new& p)
+	void					create(CSharedString key, shared_container<T>* container, const _on_new& p)
 	{
 		T* v = container->dock(key, p);
 		if (0 != v)

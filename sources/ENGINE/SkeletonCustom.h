@@ -71,7 +71,7 @@ protected:
 	U16					ParentID;
 
 public:
-	shared_str			name;
+	CSharedString			name;
 
 	vecBones			children;		// bones which are slaves to this
 	Fobb				obb;
@@ -79,7 +79,7 @@ public:
 	Fmatrix				bind_transform;
 	Fmatrix				m2b_transform;	// model to bone conversion transform
 	SBoneShape			shape;
-	shared_str			game_mtl_name;
+	CSharedString			game_mtl_name;
 	U16					game_mtl_idx;
 	SJointIKData		IK_data;
 	float				mass;
@@ -248,7 +248,7 @@ public:
 	virtual void				OnCalculateBones( )
 	{ }
 
-	typedef xr_vector<std::pair<shared_str, U16>> accel;
+	typedef xr_vector<std::pair<CSharedString, U16>> accel;
 
 	IRender_Visual* m_lod;
 
@@ -308,7 +308,7 @@ public:
 
 	// Low level interface
 	U16							LL_BoneID(const char* B);
-	U16							LL_BoneID(const shared_str& B);
+	U16							LL_BoneID(const CSharedString& B);
 	const char* LL_BoneName_dbg(U16 ID);
 
 	CIniFile* LL_UserData( )

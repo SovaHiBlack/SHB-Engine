@@ -204,22 +204,22 @@ public:
 	{ }
 
 	// Name management
-	__forceinline shared_str			cName						( ) const
+	__forceinline CSharedString			cName						( ) const
 	{
 		return NameObject;
 	}
-	void								cName_set					(shared_str N);
-	__forceinline shared_str			cNameSect					( ) const
+	void								cName_set					(CSharedString N);
+	__forceinline CSharedString			cNameSect					( ) const
 	{
 		return NameSection;
 	}
-	void								cNameSect_set				(shared_str N);
-	__forceinline shared_str			cNameVisual					( ) const
+	void								cNameSect_set				(CSharedString N);
+	__forceinline CSharedString			cNameVisual					( ) const
 	{
 		return NameVisual;
 	}
-	void								cNameVisual_set				(shared_str N);
-	virtual shared_str					shedule_Name				( ) const
+	void								cNameVisual_set				(CSharedString N);
+	virtual CSharedString					shedule_Name				( ) const
 	{
 		return cName( );
 	}
@@ -333,9 +333,9 @@ public:
 private:
 	// Some property variables
 	ObjectProperties												Props;
-	shared_str														NameObject;
-	shared_str														NameSection;
-	shared_str														NameVisual;
+	CSharedString														NameObject;
+	CSharedString														NameSection;
+	CSharedString														NameVisual;
 
 protected:
 	// Parentness

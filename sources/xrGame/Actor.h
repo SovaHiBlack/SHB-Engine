@@ -140,8 +140,8 @@ public:
 	// Inventory Owner 
 
 	//information receive & dialogs
-	virtual bool OnReceiveInfo(shared_str info_id) const;
-	virtual void OnDisableInfo(shared_str info_id) const;
+	virtual bool OnReceiveInfo(CSharedString info_id) const;
+	virtual void OnDisableInfo(CSharedString info_id) const;
 
 	virtual void	NewPdaContact(CInventoryOwner*);
 	virtual void	LostPdaContact(CInventoryOwner*);
@@ -454,13 +454,13 @@ protected:
 	CInventoryBox* m_pInvBoxWeLookingAt;
 
 	// Tip for action for object we're looking at
-	shared_str				m_sDefaultObjAction;
-	shared_str				m_sCharacterUseAction;
-	shared_str				m_sDeadCharacterUseAction;
-	shared_str				m_sDeadCharacterUseOrDragAction;
-	shared_str				m_sCarCharacterUseAction;
-	shared_str				m_sInventoryItemUseAction;
-	shared_str				m_sInventoryBoxUseAction;
+	CSharedString				m_sDefaultObjAction;
+	CSharedString				m_sCharacterUseAction;
+	CSharedString				m_sDeadCharacterUseAction;
+	CSharedString				m_sDeadCharacterUseOrDragAction;
+	CSharedString				m_sCarCharacterUseAction;
+	CSharedString				m_sInventoryItemUseAction;
+	CSharedString				m_sInventoryBoxUseAction;
 
 	//режим подбирания предметов
 	bool					m_bPickupMode;
@@ -688,11 +688,11 @@ public:
 		return true;
 	}
 
-	virtual shared_str		GetDefaultVisualOutfit( ) const
+	virtual CSharedString		GetDefaultVisualOutfit( ) const
 	{
 		return m_DefaultVisualOutfit;
 	}
-	virtual void			SetDefaultVisualOutfit(shared_str DefaultOutfit)
+	virtual void			SetDefaultVisualOutfit(CSharedString DefaultOutfit)
 	{
 		m_DefaultVisualOutfit = DefaultOutfit;
 	}
@@ -701,7 +701,7 @@ public:
 		g_SetAnimation(mstate_real);
 	}
 
-	virtual void			ChangeVisual(shared_str NewVisual);
+	virtual void			ChangeVisual(CSharedString NewVisual);
 	virtual void			OnChangeVisual( );
 
 	virtual void			RenderIndicator(Fvector3 dpos, float r1, float r2, ref_shader IndShader);
@@ -730,11 +730,11 @@ private:
 protected:
 	CStatGraph* pStatGraph;
 
-	shared_str				m_DefaultVisualOutfit;
+	CSharedString				m_DefaultVisualOutfit;
 
 	const char* invincibility_fire_shield_3rd;
 	const char* invincibility_fire_shield_1st;
-	shared_str				m_sHeadShotParticle;
+	CSharedString				m_sHeadShotParticle;
 	u32						last_hit_frame;
 
 #ifdef DEBUG

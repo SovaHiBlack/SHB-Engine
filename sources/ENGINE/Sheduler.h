@@ -9,7 +9,7 @@ private:
 	{
 		u32										dwTimeForExecute;
 		u32										dwTimeOfLastExecute;
-		shared_str								scheduled_name;
+		CSharedString								scheduled_name;
 		ISheduled*								Object;
 		u32										dwPadding;				// for align-issues
 

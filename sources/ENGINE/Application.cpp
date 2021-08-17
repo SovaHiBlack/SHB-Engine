@@ -1017,7 +1017,7 @@ void doBenchmark(const char* name)
 	int test_count = ini.line_count("benchmark");
 	const char* test_name;
 	const char* t;
-	shared_str test_command;
+	CSharedString test_command;
 	for (int i = 0; i < test_count; ++i)
 	{
 		ini.r_line("benchmark", i, &test_name, &t);

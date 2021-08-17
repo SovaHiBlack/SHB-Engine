@@ -31,7 +31,7 @@ void CSE_ALifeTraderAbstract::spawn_supplies	()
 	pda->m_original_owner		= base()->ID;
 
 	character_profile			();
-	m_SpecificCharacter			= shared_str();
+	m_SpecificCharacter			= CSharedString();
 	m_community_index			= NO_COMMUNITY_INDEX;
 	pda->m_specific_character	= specific_character();
 

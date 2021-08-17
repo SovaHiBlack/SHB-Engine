@@ -319,7 +319,7 @@ CEntity *CBaseMonster::GetCurrentCorpse()
 	return (corpse);
 }
 
-void CBaseMonster::SetScriptControl(const bool bScriptControl, shared_str caScriptName)
+void CBaseMonster::SetScriptControl(const bool bScriptControl, CSharedString caScriptName)
 {
 	if (StateMan) StateMan->critical_finalize();
 

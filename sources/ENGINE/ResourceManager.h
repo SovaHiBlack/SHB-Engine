@@ -91,7 +91,7 @@ private:
 public:
 	// misc
 	CTextureDescrMngr										m_textures_description;
-	xr_vector<std::pair<shared_str,R_constant_setup*>>		v_constant_setup;
+	xr_vector<std::pair<CSharedString,R_constant_setup*>>		v_constant_setup;
 	lua_State*												LSVM;
 	BOOL													bDeferredLoad;
 
@@ -184,7 +184,7 @@ public:
 	Shader*							Create						(const char* s_shader=0, const char* s_textures=0, const char* s_constants=0, const char* s_matrices=0);
 	Shader*							Create						(IBlender*	B, const char* s_shader=0, const char* s_textures=0, const char* s_constants=0, const char* s_matrices=0);
 	void							Delete						(const Shader*		S	);
-	void							RegisterConstantSetup		(const char* name,		R_constant_setup* s)	{	v_constant_setup.push_back(mk_pair(shared_str(name),s));	}
+	void							RegisterConstantSetup		(const char* name,		R_constant_setup* s)	{	v_constant_setup.push_back(mk_pair(CSharedString(name),s));	}
 
 	SGeometry*						CreateGeom					(D3DVERTEXELEMENT9* decl, IDirect3DVertexBuffer9* vb, IDirect3DIndexBuffer9* ib);
 	SGeometry*						CreateGeom					(u32 FVF				, IDirect3DVertexBuffer9* vb, IDirect3DIndexBuffer9* ib);

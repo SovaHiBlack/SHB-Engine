@@ -53,5 +53,5 @@ protected:
 	//и теперь может совершить бросок
 	bool m_bStrike;
 
-	shared_str	m_sParticleName;
+	CSharedString	m_sParticleName;
 };

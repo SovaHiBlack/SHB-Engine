@@ -206,18 +206,18 @@ protected:
 	// имена партиклов зоны
 
 	//обычное состояние зоны
-	shared_str				m_sIdleParticles;
+	CSharedString				m_sIdleParticles;
 	//выброс зоны
-	shared_str				m_sBlowoutParticles;
-	shared_str				m_sAccumParticles;
-	shared_str				m_sAwakingParticles;
+	CSharedString				m_sBlowoutParticles;
+	CSharedString				m_sAccumParticles;
+	CSharedString				m_sAwakingParticles;
 
 	//появление большого и мальнекого объекта в зоне
-	shared_str				m_sEntranceParticlesSmall;
-	shared_str				m_sEntranceParticlesBig;
+	CSharedString				m_sEntranceParticlesSmall;
+	CSharedString				m_sEntranceParticlesBig;
 	//поражение большого и мальнекого объекта в зоне
-	shared_str				m_sHitParticlesSmall;
-	shared_str				m_sHitParticlesBig;
+	CSharedString				m_sHitParticlesSmall;
+	CSharedString				m_sHitParticlesBig;
 	//нахождение большого и мальнекого объекта в зоне
 	shared_str				m_sIdleObjectParticlesSmall;
 	shared_str				m_sIdleObjectParticlesBig;

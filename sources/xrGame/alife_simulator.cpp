@@ -1,10 +1,6 @@
-////////////////////////////////////////////////////////////////////////////
 //	Module 		: alife_simulator.cpp
-//	Created 	: 25.12.2002
-//  Modified 	: 13.05.2004
-//	Author		: Dmitriy Iassenev
 //	Description : ALife Simulator
-////////////////////////////////////////////////////////////////////////////
+
 #include "stdafx.h"
 
 #include "alife_simulator.h"
@@ -21,8 +17,10 @@ extern void destroy_lua_wpn_params	();
 
 void restart_all				()
 {
-	if (strstr(Core.Params,"-keep_lua"))
+	if (strstr(Core.Params, "-keep_lua"))
+	{
 		return;
+	}
 
 	destroy_lua_wpn_params		();
 	MainMenu()->DestroyInternal	(true);
@@ -30,7 +28,7 @@ void restart_all				()
 	ai().script_engine().init	();
 }
 
-CALifeSimulator::CALifeSimulator		(CServer*server, shared_str *command_line) :
+CALifeSimulator::CALifeSimulator		(CServer*server, CSharedString* command_line) :
 	CALifeUpdateManager			(server,alife_section),
 	CALifeInteractionManager	(server,alife_section),
 	CALifeSimulatorBase			(server,alife_section)

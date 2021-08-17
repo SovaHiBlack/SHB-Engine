@@ -12,8 +12,8 @@ public:
 		float									fOpacity;
 		float									fRadius;
 		float									fPosition;
-		shared_str								texture;
-		shared_str								shader;
+		CSharedString							texture;
+		CSharedString							shader;
 		ref_shader								hShader;
 		SFlare( )
 		{
@@ -52,7 +52,7 @@ public:
 	void				AddFlare				(float fRadius, float fOpacity, float fPosition, const char* tex_name, const char* sh_name);
 	ref_shader			CreateShader			(const char* tex_name, const char* sh_name);
 
-	shared_str									section;
+	CSharedString								section;
 
 						CLensFlareDescriptor	( )
 	{

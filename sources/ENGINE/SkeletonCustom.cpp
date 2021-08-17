@@ -63,7 +63,7 @@ void CBoneData::DebugQuery(BoneDebug& L)
 //////////////////////////////////////////////////////////////////////
 // Construction/Destruction
 //////////////////////////////////////////////////////////////////////
-bool pred_N(const std::pair<shared_str, u32>& N, const char* B)
+bool pred_N(const std::pair<CSharedString, u32>& N, const char* B)
 {
 	return xr_strcmp(*N.first, B) < 0;
 }
@@ -84,12 +84,12 @@ U16 CKinematics::LL_BoneID(const char* B)
 	return U16(I->second);
 }
 
-bool pred_P(const std::pair<shared_str, u32>& N, const shared_str& B)
+bool pred_P(const std::pair<CSharedString, u32>& N, const CSharedString& B)
 {
 	return N.first._get( ) < B._get( );
 }
 
-U16 CKinematics::LL_BoneID(const shared_str& B)
+U16 CKinematics::LL_BoneID(const CSharedString& B)
 {
 	accel::iterator I = std::lower_bound(bone_map_P->begin( ), bone_map_P->end( ), B, pred_P);
 	if (I == bone_map_P->end( ))
@@ -207,12 +207,12 @@ void CKinematics::IBoneInstances_Destroy( )
 	}
 }
 
-bool pred_sort_N(const std::pair<shared_str, u32>& A, const std::pair<shared_str, u32>& B)
+bool pred_sort_N(const std::pair<CSharedString, u32>& A, const std::pair<CSharedString, u32>& B)
 {
 	return xr_strcmp(A.first, B.first) < 0;
 }
 
-bool pred_sort_P(const std::pair<shared_str, u32>& A, const std::pair<shared_str, u32>& B)
+bool pred_sort_P(const std::pair<CSharedString, u32>& A, const std::pair<CSharedString, u32>& B)
 {
 	return A.first._get( ) < B.first._get( );
 }
@@ -291,7 +291,7 @@ void CKinematics::Load(const char* N, IReader* data, u32 dwFlags)
 	bone_instances = nullptr;
 
 	// Load bones
-	xr_vector<shared_str> L_parents;
+	xr_vector<CSharedString> L_parents;
 
 	R_ASSERT(data->find_chunk(OGF_S_BONE_NAMES));
 
@@ -308,7 +308,7 @@ void CKinematics::Load(const char* N, IReader* data, u32 dwFlags)
 		U16 ID = U16(bones->size( ));
 		data->r_stringZ(buf, sizeof(buf));	strlwr(buf);
 		CBoneData* pBone = CreateBoneData(ID);
-		pBone->name = shared_str(buf);
+		pBone->name = CSharedString(buf);
 		pBone->child_faces.resize(children.size( ));
 		bones->push_back(pBone);
 		bone_map_N->push_back(mk_pair(pBone->name, ID));
@@ -329,7 +329,7 @@ void CKinematics::Load(const char* N, IReader* data, u32 dwFlags)
 	iRoot = BI_NONE;
 	for (u32 i = 0; i < bones->size( ); i++)
 	{
-		shared_str P = L_parents[i];
+		CSharedString P = L_parents[i];
 		CBoneData* B = (*bones)[i];
 		if (!P || !P[0])
 		{

@@ -117,7 +117,7 @@ void	CCustomOutfit::OnMoveToSlot( )
 		{
 			if (m_ActorVisual.size( ))
 			{
-				shared_str NewVisual = NULL;
+				CSharedString NewVisual = NULL;
 				char* TeamSection = Game( ).getTeamSection(pActor->g_Team( ));
 				if (TeamSection)
 				{
@@ -158,13 +158,14 @@ void	CCustomOutfit::OnMoveToRuck( )
 			{
 				pTorch->SwitchNightVision(false);
 			}
+
 			if (m_ActorVisual.size( ))
 			{
-				shared_str DefVisual = pActor->GetDefaultVisualOutfit( );
+				CSharedString DefVisual = pActor->GetDefaultVisualOutfit( );
 				if (DefVisual.size( ))
 				{
 					pActor->ChangeVisual(DefVisual);
-				};
+				}
 			}
 		}
 	}

@@ -57,7 +57,7 @@ protected:
 	float			m_fEnergy;
 	float			m_fEnergyMax;
 	float			m_fEnergyDecreasePerTime;
-	shared_str		m_sParticleName;
+	CSharedString		m_sParticleName;
 
 	float			m_fRadius;
 	float			m_fStrikeImpulse;

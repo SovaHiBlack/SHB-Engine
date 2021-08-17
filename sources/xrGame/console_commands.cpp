@@ -752,7 +752,7 @@ public:
 			}
 #else
 			string4096		S;
-			shared_str		m_script_name = "console command";
+			CSharedString		m_script_name = "console command";
 			sprintf_s(S, "%s\n", args);
 			int				l_iErrorCode = luaL_loadbuffer(ai( ).script_engine( ).lua( ), S, xr_strlen(S), "@console_command");
 			if (!l_iErrorCode)
@@ -1402,7 +1402,7 @@ public:
 		CObject* obj = Level( ).CurrentViewEntity( );
 		VERIFY(obj);
 		CAttachmentOwner* owner = smart_cast<CAttachmentOwner*>(obj);
-		shared_str ssss = args;
+		CSharedString ssss = args;
 		CAttachableItem* itm = owner->attachedItem(ssss);
 		if (itm)
 		{

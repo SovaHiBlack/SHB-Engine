@@ -22,9 +22,9 @@ enum EChannelType{
 struct st_BoneMotion
 {
 	enum {
-		flWorldOrient = 1<<0,
+		flWorldOrient = 1<<0
 	};
-	shared_str		name;
+	CSharedString		name;
 	CEnvelope*	envs			[ctMaxChannel];
 	Flags8		m_Flags;
 				st_BoneMotion()	{name=0; m_Flags.zero(); ZeroMemory(envs,sizeof(CEnvelope*)*ctMaxChannel);}
@@ -50,7 +50,7 @@ protected:
 	float			fFPS;
 
 public:
-	shared_str		name;
+	CSharedString		name;
 
 	CCustomMotion	();
 					CCustomMotion	(CCustomMotion* src);
@@ -117,15 +117,15 @@ public:
 class ENGINE_API CClip{
 public:
 	struct AnimItem{
-		shared_str	name;
+		CSharedString	name;
 		U16			slot;
 					AnimItem	():slot(U16(-1)){}
-		void		set			(shared_str nm, U16 s){name=nm;slot=s;}
+		void		set			(CSharedString nm, U16 s){name=nm;slot=s;}
 		void		clear		(){set("", U16(-1));}
 		bool		valid		(){return !!(name.size()&&(slot!= U16(-1)));}
 		bool		equal		(const AnimItem& d) const {return name.equal(d.name)&&(slot==d.slot);}
 	};
-	shared_str		name;
+	CSharedString		name;
 	AnimItem		cycles[4];
 	AnimItem		fx;
 	

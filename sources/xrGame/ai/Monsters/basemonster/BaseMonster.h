@@ -224,7 +224,7 @@ public:
 	virtual CEntity*					GetCurrentCorpse								( );
 	virtual int							get_enemy_strength								( );
 
-	virtual void						SetScriptControl								(const bool bScriptControl, shared_str caSciptName);
+	virtual void						SetScriptControl								(const bool bScriptControl, CSharedString caSciptName);
 
 	bool																				m_force_real_speed;
 	bool																				m_script_processing_active;
@@ -415,7 +415,7 @@ public:
 	void								on_kill_enemy									(const CEntity* obj);
 	void								Hit_Psy											(CObject* object, float value);
 	void								Hit_Wound										(CObject* object, float value, const Fvector3& dir, float impulse);
-	CParticlesObject*					PlayParticles									(const shared_str& name, const Fvector3& position, const Fvector3& dir, BOOL auto_remove = TRUE, BOOL xformed = TRUE);
+	CParticlesObject*					PlayParticles									(const CSharedString& name, const Fvector3& position, const Fvector3& dir, BOOL auto_remove = TRUE, BOOL xformed = TRUE);
 	void								load_effector									(const char* section, const char* line, SAttackEffector& effector);
 
 	// --------------------------------------------------------------------------------------

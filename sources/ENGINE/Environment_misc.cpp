@@ -46,7 +46,7 @@ F32 CEnvModifier::sum(CEnvModifier& M, Fvector3& view)
 //-----------------------------------------------------------------------------
 // Environment ambient
 //-----------------------------------------------------------------------------
-void CEnvAmbient::load(const shared_str& sect)
+void CEnvAmbient::load(const CSharedString& sect)
 {
 	section = sect;
 	string_path tmp;
@@ -315,7 +315,7 @@ void CEnvDescriptorMixer::lerp(CEnvironment*, CEnvDescriptor& A, CEnvDescriptor&
 //-----------------------------------------------------------------------------
 // Environment IO
 //-----------------------------------------------------------------------------
-CEnvAmbient* CEnvironment::AppendEnvAmb(const shared_str& sect)
+CEnvAmbient* CEnvironment::AppendEnvAmb(const CSharedString& sect)
 {
 	for (EnvAmbVecIt it = Ambients.begin( ); it != Ambients.end( ); it++)
 	{

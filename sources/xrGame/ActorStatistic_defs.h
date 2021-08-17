@@ -4,10 +4,10 @@
 
 struct SStatDetailBData : public IPureSerializeObject<IReader, IWriter>
 {
-	shared_str							key;
+	CSharedString							key;
 	int									int_count;
 	int									int_points;
-	shared_str							str_value;
+	CSharedString							str_value;
 
 	virtual void		save			(IWriter& stream);
 	virtual void		load			(IReader& stream);
@@ -17,10 +17,10 @@ using vStatDetailData					= xr_vector<SStatDetailBData>;
 
 struct SStatSectionData : public IPureSerializeObject<IReader, IWriter>
 {
-	shared_str							key;
+	CSharedString							key;
 	vStatDetailData						data;
 
-	SStatDetailBData&	GetData			(const shared_str&);
+	SStatDetailBData&	GetData			(const CSharedString&);
 	int					GetTotalPoints	( ) const;
 	virtual void		save			(IWriter& stream);
 	virtual void		load			(IReader& stream);

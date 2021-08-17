@@ -36,7 +36,7 @@ ref_constant R_constant_table::get(const char* S)
 	if (I == table.end( ) || (0 != xr_strcmp(*(*I)->name, S)))	return 0;
 	else												return *I;
 }
-ref_constant R_constant_table::get(shared_str& S)
+ref_constant R_constant_table::get(CSharedString& S)
 {
 	// linear search, but only ptr-compare
 	c_table::iterator I = table.begin( );

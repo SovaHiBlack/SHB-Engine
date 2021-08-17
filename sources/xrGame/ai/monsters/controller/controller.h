@@ -106,7 +106,7 @@ public:
 	//-------------------------------------------------------------------
 
 	virtual	bool	is_relation_enemy	(const CEntityAlive *tpEntityAlive) const;
-	xr_vector<shared_str>				m_friend_community_overrides;
+	xr_vector<CSharedString>				m_friend_community_overrides;
 	void								load_friend_community_overrides	(const char* section);
 	bool								is_community_friend_overrides	(const CEntityAlive *tpEntityAlive) const;
 	//-------------------------------------------------------------------

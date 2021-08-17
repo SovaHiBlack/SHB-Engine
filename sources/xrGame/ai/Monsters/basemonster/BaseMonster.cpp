@@ -498,7 +498,7 @@ void CBaseMonster::set_action(EAction action)
 	anim( ).m_tAction = action;
 }
 
-CParticlesObject* CBaseMonster::PlayParticles(const shared_str& name, const Fvector3& position, const Fvector3& dir, BOOL auto_remove, BOOL xformed)
+CParticlesObject* CBaseMonster::PlayParticles(const CSharedString& name, const Fvector3& position, const Fvector3& dir, BOOL auto_remove, BOOL xformed)
 {
 	CParticlesObject* ps = CParticlesObject::Create(name.c_str( ), auto_remove);
 

@@ -137,7 +137,7 @@ F32 CEnvironment::NormalizeTime(F32 tm)
 	}
 }
 
-void CEnvironment::SetWeather(shared_str name, bool forced)
+void CEnvironment::SetWeather(CSharedString name, bool forced)
 {
 	if (name.size( ))
 	{
@@ -177,7 +177,7 @@ void CEnvironment::SetWeather(shared_str name, bool forced)
 	}
 }
 
-bool CEnvironment::SetWeatherFX(shared_str name)
+bool CEnvironment::SetWeatherFX(CSharedString name)
 {
 	if (bWFX)
 	{

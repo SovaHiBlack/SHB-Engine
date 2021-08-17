@@ -69,7 +69,7 @@ public:
 	{
 		U32									life_time;
 		ref_sound							sound;
-		shared_str							particles;
+		CSharedString						particles;
 		Fvector3							offset;
 		float								wind_gust_factor;
 	};
@@ -77,7 +77,7 @@ public:
 	using EffectVec							= xr_vector<SEffect>;
 
 protected:
-	shared_str								section;
+	CSharedString							section;
 	EffectVec								effects;
 	xr_vector<ref_sound>					sounds;
 	Fvector2								sound_dist;
@@ -85,7 +85,7 @@ protected:
 	Ivector2								effect_period;
 
 public:
-	void						load				(const shared_str& section);
+	void						load				(const CSharedString& section);
 	inline SEffect*				get_rnd_effect		( )
 	{
 		return effects.empty( ) ? 0 : &effects[Random.randI(effects.size( ))];
@@ -94,7 +94,7 @@ public:
 	{
 		return sounds.empty( ) ? 0 : &sounds[Random.randI(sounds.size( ))];
 	}
-	inline const shared_str&	name				( )
+	inline const CSharedString&	name				( )
 	{
 		return section;
 	}
@@ -118,9 +118,9 @@ public:
 	float											exec_time;
 	float				exec_time_loaded;
 
-	shared_str			sky_texture_name;
-	shared_str			sky_texture_env_name;
-	shared_str			clouds_texture_name;
+	CSharedString		sky_texture_name;
+	CSharedString		sky_texture_env_name;
+	CSharedString		clouds_texture_name;
 
 	ref_texture			sky_texture;
 	ref_texture			sky_texture_env;
@@ -156,7 +156,7 @@ public:
 	CEnvAmbient*		env_ambient;
 
 #ifdef DEBUG
-	shared_str			sect_name;
+	CSharedString		sect_name;
 #endif // def DEBUG
 
 	CEnvDescriptor( );
@@ -194,9 +194,9 @@ public:
 
 class ENGINE_API CEnvironment
 {
-	struct str_pred : public std::binary_function<shared_str, shared_str, bool>
+	struct str_pred : public std::binary_function<CSharedString, CSharedString, bool>
 	{
-		inline bool operator()(const shared_str& x, const shared_str& y) const
+		inline bool operator()(const CSharedString& x, const CSharedString& y) const
 		{
 			return xr_strcmp(x, y) < 0;
 		}
@@ -209,7 +209,7 @@ public:
 	using EnvVec = xr_vector<CEnvDescriptor*>;
 	using EnvIt = EnvVec::iterator;
 
-	using EnvsMap = xr_map<shared_str, EnvVec, str_pred>;
+	using EnvsMap = xr_map<CSharedString, EnvVec, str_pred>;
 	using EnvsMapIt = EnvsMap::iterator;
 
 private:
@@ -253,8 +253,8 @@ public:
 	CEnvDescriptor* WFX_end_desc[2];
 
 	EnvVec* CurrentWeather;
-	shared_str				CurrentWeatherName;
-	shared_str				CurrentCycleName;
+	CSharedString				CurrentWeatherName;
+	CSharedString				CurrentCycleName;
 
 	EnvsMap					WeatherCycles;
 	EnvsMap					WeatherFXs;
@@ -277,7 +277,7 @@ public:
 
 	void					SelectEnvs(F32 gt);
 
-	CEnvAmbient* AppendEnvAmb(const shared_str& sect);
+	CEnvAmbient* AppendEnvAmb(const CSharedString& sect);
 
 	void					Invalidate( );
 
@@ -297,13 +297,13 @@ public:
 	void					RenderFlares( );
 	void					RenderLast( );
 
-	bool					SetWeatherFX(shared_str name);
+	bool					SetWeatherFX(CSharedString name);
 	bool					IsWFXPlaying( )
 	{
 		return bWFX;
 	}
-	void					SetWeather(shared_str name, bool forced = false);
-	shared_str				GetWeather( )
+	void					SetWeather(CSharedString name, bool forced = false);
+	CSharedString				GetWeather( )
 	{
 		return CurrentWeatherName;
 	}

@@ -391,7 +391,7 @@ private:
 	xr_vector <SWheelSteer> m_steering_wheels;
 	xr_vector <SWheelBreak> m_breaking_wheels;
 	xr_vector <SExhaust>	m_exhausts;
-	shared_str				m_exhaust_particles;
+	CSharedString				m_exhaust_particles;
 	xr_map	  <U16,SDoor>	m_doors;
 	xr_vector <SDoor*>		m_doors_update;
 	xr_vector <Fvector3>		m_gear_ratious;

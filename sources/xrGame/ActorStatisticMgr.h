@@ -13,10 +13,10 @@ private:
 public:
 								CActorStatisticMgr		( );
 								~CActorStatisticMgr		( );
-	SStatSectionData&			GetSection				(const shared_str& key);
+	SStatSectionData&			GetSection				(const CSharedString& key);
 
-	void						AddPoints				(const shared_str& key, const shared_str& detail_key, const shared_str& str_value);
-	void						AddPoints				(const shared_str& key, const shared_str& detail_key, int cnt, int pts);
-	int							GetSectionPoints		(const shared_str& key);
+	void						AddPoints				(const CSharedString& key, const CSharedString& detail_key, const CSharedString& str_value);
+	void						AddPoints				(const CSharedString& key, const CSharedString& detail_key, int cnt, int pts);
+	int							GetSectionPoints		(const CSharedString& key);
 	const vStatSectionData&		GetCStorage				( );
 };

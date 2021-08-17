@@ -16,14 +16,14 @@ CORE_API DUMMY_STUFF* g_dummy_stuff = 0;
 CORE_API U32					g_file_mapped_memory = 0;
 U32								g_file_mapped_count = 0;
 
-using FILE_MAPPINGS = std::map<U32, std::pair<U32, shared_str>>;
+using FILE_MAPPINGS = std::map<U32, std::pair<U32, CSharedString>>;
 FILE_MAPPINGS					g_file_mappings;
 
 void register_file_mapping(void* address, const U32& size, const char* file_name)
 {
 	FILE_MAPPINGS::const_iterator	I = g_file_mappings.find(*(U32*) &address);
 	VERIFY(I == g_file_mappings.end( ));
-	g_file_mappings.insert(std::make_pair(*(U32*) &address, std::make_pair(size, shared_str(file_name))));
+	g_file_mappings.insert(std::make_pair(*(U32*) &address, std::make_pair(size, CSharedString(file_name))));
 
 	g_file_mapped_memory += size;
 	++g_file_mapped_count;
@@ -389,7 +389,7 @@ void	IReader::r_stringZ(char* dest, U32 tgt_sz)
 	*dest = 0;
 	Pos++;
 }
-void 	IReader::r_stringZ(shared_str& dest)
+void 	IReader::r_stringZ(CSharedString& dest)
 {
 	dest = (char*) (data + Pos);
 	Pos += (dest.size( ) + 1);

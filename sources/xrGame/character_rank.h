@@ -8,16 +8,16 @@
 
 struct RANK_DATA
 {
-	RANK_DATA (int, shared_str, const char*);
+	RANK_DATA (int, CSharedString, const char*);
 
-	shared_str				id;
+	CSharedString				id;
 	int						index;
 	CHARACTER_RANK_VALUE	threshold;
 };
 
 class CHARACTER_RANK;
 
-typedef CIni_IdToIndex<1, RANK_DATA, shared_str, int, CHARACTER_RANK> CHARACTER_RANK_base;
+typedef CIni_IdToIndex<1, RANK_DATA, CSharedString, int, CHARACTER_RANK> CHARACTER_RANK_base;
 
 class CHARACTER_RANK: public CHARACTER_RANK_base
 {
@@ -31,7 +31,7 @@ public:
 
 	void						set				(CHARACTER_RANK_VALUE);
 
-	shared_str					id				() const;
+	CSharedString					id				() const;
 	int							index			() const	{return m_current_index;};
 	CHARACTER_RANK_VALUE		value			() const	{return m_current_value;};
 

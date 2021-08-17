@@ -21,7 +21,7 @@ void MK_Frustum(CFrustum& F, float FOV, float _FAR, float A, Fvector3& P, Fvecto
 
 	// calc x-axis (viewhoriz) and store cop
 	// here we are assuring that vectors are perpendicular & normalized
-	Fvector3			R;
+	Fvector3		R;
 	Fvector3		COP;
 	D.normalize		();
 	R.crossproduct	(D,U);
@@ -31,9 +31,9 @@ void MK_Frustum(CFrustum& F, float FOV, float _FAR, float A, Fvector3& P, Fvecto
 	COP.set			(P);
 
 	// calculate the corner vertices of the window
-	Fvector3			sPts[4];  // silhouette points (corners of window)
-	Fvector3			Offset;
-	Fvector3			T;
+	Fvector3		sPts[4];  // silhouette points (corners of window)
+	Fvector3		Offset;
+	Fvector3		T;
 	Offset.add		(D,COP);
 
 	sPts[0].mul(R,wR);	T.mad(Offset,U,wT);	sPts[0].add(T);

@@ -151,9 +151,9 @@ using BoneIt = BoneVec::iterator;
 
 class CBone
 {
-	shared_str			name;
-	shared_str			parent_name;
-	shared_str			wmap;
+	CSharedString			name;
+	CSharedString			parent_name;
+	CSharedString			wmap;
 	Fvector3			rest_offset;
 	Fvector3			rest_rotate;    // XYZ format (Game format)
 	F32			    rest_length;
@@ -182,7 +182,7 @@ public:
 		flSelected	    = (1<<0),
 	};
 	SJointIKData	    IK_data;
-	shared_str			   game_mtl;
+	CSharedString			   game_mtl;
 	SBoneShape		    shape;
 
 	F32			    mass;
@@ -196,9 +196,9 @@ public:
 	void			    SetWMap			(const char* p){wmap		= p;}
 	void			    SetRestParams	(F32 length, const Fvector3& offset, const Fvector3& rotate){rest_offset.set(offset);rest_rotate.set(rotate);rest_length=length;};
 
-	shared_str		    Name			(){return name;}
-	shared_str		    ParentName		(){return parent_name;}
-	shared_str		    WMap			(){return wmap;}
+	CSharedString		    Name			(){return name;}
+	CSharedString		    ParentName		(){return parent_name;}
+	CSharedString		    WMap			(){return wmap;}
 	inline CBone*		    Parent			(){return parent;}
 	inline BOOL			    IsRoot			(){return (parent==0);}
 

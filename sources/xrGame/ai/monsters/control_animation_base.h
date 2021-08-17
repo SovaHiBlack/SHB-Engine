@@ -197,7 +197,7 @@ public:
 
 	// MotionDef to animation name translation
 	void		AddAnimTranslation		(const MotionID &motion, const char* str);
-	shared_str	GetAnimTranslation		(const MotionID &motion);
+	CSharedString	GetAnimTranslation		(const MotionID &motion);
 
 public:
 	// информация о текущей анимации

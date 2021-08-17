@@ -10,7 +10,7 @@ class CAttachableItem
 {
 private:
 	CInventoryItem*										m_item;
-	shared_str											m_bone_name;
+	CSharedString											m_bone_name;
 	Fmatrix												m_offset;
 	U16													m_bone_id;
 	bool												m_enabled;
@@ -37,7 +37,7 @@ public:
 	virtual void				afterDetach				( );
 	inline CInventoryItem&		item					( ) const;
 	inline CPHShellHolder&		object					( ) const;
-	inline shared_str			bone_name				( ) const;
+	inline CSharedString			bone_name				( ) const;
 	inline U16					bone_id					( ) const;
 	inline void					set_bone_id				(U16 bone_id);
 	inline const Fmatrix&		offset					( ) const;

@@ -61,8 +61,8 @@ public:
 
 	ClientID					ID;
 	string128					m_guid;
-	shared_str					name;
-	shared_str					pass;
+	CSharedString					name;
+	CSharedString					pass;
 
 	Flags						flags;	// local/host/normal
 	u32							dwTime_LastUpdate;
@@ -94,7 +94,7 @@ public:
 	};
 
 protected:
-	shared_str									connect_options;
+	CSharedString									connect_options;
 
 	xrCriticalSection							csPlayers;
 	xr_vector<IClient*>							net_Players;
@@ -155,7 +155,7 @@ public:
 	{
 		return SV_Client;
 	}
-	const shared_str&		GetConnectOptions	( ) const
+	const CSharedString&		GetConnectOptions	( ) const
 	{
 		return connect_options;
 	}

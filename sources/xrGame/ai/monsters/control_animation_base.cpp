@@ -268,7 +268,7 @@ void CControlAnimationBase::FX_Play(EHitSide side, float amount)
 
 	clamp(amount,0.f,1.f);
 
-	shared_str	*p_str = 0;
+	CSharedString* p_str = 0;
 	switch (side) {
 		case eSideFront:	p_str = &anim_it->fxs.front;	break;
 		case eSideBack:		p_str = &anim_it->fxs.back;	break;
@@ -438,12 +438,16 @@ void CControlAnimationBase::AddAnimTranslation(const MotionID &motion, const cha
 {
 	m_anim_motion_map.insert(mk_pair(motion, str));	
 }
-shared_str CControlAnimationBase::GetAnimTranslation(const MotionID &motion)
+
+CSharedString CControlAnimationBase::GetAnimTranslation(const MotionID &motion)
 {
-	shared_str				ret_value;
+	CSharedString				ret_value;
 
 	ANIM_TO_MOTION_MAP_IT	anim_it = m_anim_motion_map.find(motion);
-	if (anim_it != m_anim_motion_map.end()) ret_value = anim_it->second;
+	if (anim_it != m_anim_motion_map.end( ))
+	{
+		ret_value = anim_it->second;
+	}
 
 	return ret_value;
 }

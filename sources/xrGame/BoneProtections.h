@@ -17,7 +17,7 @@ struct SBoneProtections
 	}
 	BoneProtection		m_default;
 	storage_type		m_bones_koeff;
-	void				reload(const shared_str& outfit_section, CKinematics* kinematics);
+	void				reload(const CSharedString& outfit_section, CKinematics* kinematics);
 	float				getBoneProtection(S16 bone_id);
 	float				getBoneArmour(S16 bone_id);
 	BOOL				getBonePassBullet(S16 bone_id);

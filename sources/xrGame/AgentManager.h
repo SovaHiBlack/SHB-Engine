@@ -49,24 +49,25 @@ private:
 
 public:
 	CAgentManager( );
-// final class, no virtual destructor needed
+	// final class, no virtual destructor needed
 	~CAgentManager( );
+
 #ifdef USE_SCHEDULER_IN_AGENT_MANAGER
 	virtual bool					shedule_Needed( )
 	{
 		return true;
-	};
+	}
 	virtual float					shedule_Scale( );
 	virtual void					shedule_Update(u32 time_delta);
-	virtual	shared_str				shedule_Name( ) const
+	virtual CSharedString				shedule_Name( ) const
 	{
-		return shared_str("agent_manager");
-	};
+		return CSharedString("agent_manager");
+	}
 #else // def USE_SCHEDULER_IN_AGENT_MANAGER
 	void							update( );
 #endif // def USE_SCHEDULER_IN_AGENT_MANAGER
 
-	shared_str						cName( ) const;
+	CSharedString						cName( ) const;
 	void							remove_links(CObject* object);
 
 public:

@@ -1,10 +1,6 @@
-////////////////////////////////////////////////////////////////////////////
 //	Module 		: alife_simulator_script.cpp
-//	Created 	: 25.12.2002
-//  Modified 	: 13.05.2004
-//	Author		: Dmitriy Iassenev
 //	Description : ALife Simulator script export
-////////////////////////////////////////////////////////////////////////////
+
 #include "stdafx.h"
 
 #include "alife_simulator.h"
@@ -22,7 +18,7 @@
 
 using namespace luabind;
 
-typedef xr_vector<std::pair<shared_str,int> >	STORY_PAIRS;
+typedef xr_vector<std::pair<CSharedString,int> >	STORY_PAIRS;
 typedef STORY_PAIRS								SPAWN_STORY_PAIRS;
 const char* _INVALID_STORY_ID		= "INVALID_STORY_ID";
 const char* _INVALID_SPAWN_STORY_ID	= "INVALID_SPAWN_STORY_ID";
@@ -85,13 +81,13 @@ void generate_story_ids		(
 	result.clear			();
 
 	CIniFile*Ini = pGameIni;
-    
+
 	const char* N;
 	const char* V;
 	u32 					k;
-	shared_str				temp;
+	CSharedString				temp;
 	const char* section = section_name;
-    R_ASSERT				(Ini->section_exist(section));
+	R_ASSERT				(Ini->section_exist(section));
 
 	for (k = 0; Ini->r_line(section,k,&N,&V); ++k) {
 		temp				= Ini->r_string_wb(section,N);
@@ -169,16 +165,21 @@ CSE_Abstract *CALifeSimulator__spawn_item		(CALifeSimulator *self, const char* s
 CSE_Abstract *CALifeSimulator__spawn_item2		(CALifeSimulator *self, const char* section, const Fvector3& position, u32 level_vertex_id, GameGraph::_GRAPH_ID game_vertex_id, ALife::_OBJECT_ID id_parent)
 {
 	if (id_parent == ALife::_OBJECT_ID(-1))
-		return							(self->spawn_item(section,position,level_vertex_id,game_vertex_id,id_parent));
+	{
+		return							(self->spawn_item(section, position, level_vertex_id, game_vertex_id, id_parent));
+	}
 
 	CSE_ALifeDynamicObject				*object = ai().alife().objects().object(id_parent,true);
-	if (!object) {
+	if (!object)
+	{
 		Msg								("! invalid parent id [%d] specified",id_parent);
 		return							(0);
 	}
 
 	if (!object->m_bOnline)
-		return							(self->spawn_item(section,position,level_vertex_id,game_vertex_id,id_parent));
+	{
+		return							(self->spawn_item(section, position, level_vertex_id, game_vertex_id, id_parent));
+	}
 
 	CNetPacket							packet;
 	packet.w_begin						(M_SPAWN);
@@ -203,15 +204,18 @@ CSE_Abstract *CALifeSimulator__spawn_ammo		(CALifeSimulator *self, const char* s
 //	if (id_parent == ALife::_OBJECT_ID(-1))
 //		return							(self->spawn_item(section,position,level_vertex_id,game_vertex_id,id_parent));
 	CSE_ALifeDynamicObject				*object = 0;
-	if (id_parent != ALife::_OBJECT_ID(-1)) {
+	if (id_parent != ALife::_OBJECT_ID(-1))
+	{
 		object							= ai().alife().objects().object(id_parent,true);
-		if (!object) {
+		if (!object)
+		{
 			Msg							("! invalid parent id [%d] specified",id_parent);
 			return						(0);
 		}
 	}
 
-	if (!object || !object->m_bOnline) {
+	if (!object || !object->m_bOnline)
+	{
 		CSE_Abstract					*item = self->spawn_item(section,position,level_vertex_id,game_vertex_id,id_parent);
 
 		CSE_ALifeItemAmmo				*ammo = smart_cast<CSE_ALifeItemAmmo*>(item);
@@ -259,7 +263,8 @@ void CALifeSimulator__release					(CALifeSimulator *self, CSE_Abstract *object, 
 	THROW								(object);
 	CSE_ALifeObject						*alife_object = smart_cast<CSE_ALifeObject*>(object);
 	THROW								(alife_object);
-	if (!alife_object->m_bOnline) {
+	if (!alife_object->m_bOnline)
+	{
 		self->release					(object,true);
 		return;
 	}
@@ -294,29 +299,34 @@ KNOWN_INFO_VECTOR *registry						(const CALifeSimulator *self, const ALife::_OBJ
 class CFindByIDPred
 {
 public:
-	CFindByIDPred(shared_str element_to_find) {element = element_to_find;}
+	CFindByIDPred(CSharedString element_to_find) {element = element_to_find;}
 	bool operator () (const INFO_DATA& data) const {return data.info_id == element;}
+
 private:
-	shared_str element;
+	CSharedString element;
 };
 
 bool has_info									(const CALifeSimulator *self, const ALife::_OBJECT_ID &id, const char* info_id)
 {
 	const KNOWN_INFO_VECTOR				*known_info = registry(self,id);
 	if (!known_info)
-		return							(false);
+	{
+		return							false;
+	}
 
-	if (std::find_if(known_info->begin(), known_info->end(), CFindByIDPred(info_id)) == known_info->end())
-		return							(false);
+	if (std::find_if(known_info->begin( ), known_info->end( ), CFindByIDPred(info_id)) == known_info->end( ))
+	{
+		return							false;
+	}
 
-	return								(true);
+	return								true;
 }
 
 bool dont_has_info								(const CALifeSimulator *self, const ALife::_OBJECT_ID &id, const char* info_id)
 {
 	THROW								(self);
 	// absurdly, but only because of scriptwriters needs
-	return								(!has_info(self,id,info_id));
+	return								!has_info(self, id, info_id);
 }
 
 //void disable_info_portion						(const CALifeSimulator *self, const ALife::_OBJECT_ID &id)
@@ -384,15 +394,18 @@ void CALifeSimulator::script_register			(lua_State *L)
 
 		STORY_PAIRS::const_iterator	I = story_ids.begin();
 		STORY_PAIRS::const_iterator	E = story_ids.end();
-		for ( ; I != E; ++I)
-			instance.enum_		("_story_ids")[luabind::value(*(*I).first,(*I).second)];
+		for (; I != E; ++I)
+		{
+			instance.enum_("_story_ids")[luabind::value(*(*I).first, (*I).second)];
+		}
 
 		luabind::module			(L)[instance];
 	}
 
 	{
-		if (spawn_story_ids.empty())
-			generate_story_ids	(
+		if (spawn_story_ids.empty( ))
+		{
+			generate_story_ids(
 				spawn_story_ids,
 				INVALID_SPAWN_STORY_ID,
 				"spawn_story_ids",
@@ -401,13 +414,16 @@ void CALifeSimulator::script_register			(lua_State *L)
 				"INVALID_SPAWN_STORY_ID redifinition!",
 				"Duplicated spawn story id description!"
 			);
+		}
 
 		luabind::class_<class_exporter<class_exporter<CALifeSimulator> > >	instance("spawn_story_ids");
 
 		SPAWN_STORY_PAIRS::const_iterator	I = spawn_story_ids.begin();
 		SPAWN_STORY_PAIRS::const_iterator	E = spawn_story_ids.end();
-		for ( ; I != E; ++I)
-			instance.enum_		("_spawn_story_ids")[luabind::value(*(*I).first,(*I).second)];
+		for (; I != E; ++I)
+		{
+			instance.enum_("_spawn_story_ids")[luabind::value(*(*I).first, (*I).second)];
+		}
 
 		luabind::module			(L)[instance];
 	}
@@ -415,9 +431,9 @@ void CALifeSimulator::script_register			(lua_State *L)
 
 #if 0//def DEBUG
 struct dummy {
-    int count;
-    lua_State* state;
-    int ref;
+	int count;
+	lua_State* state;
+	int ref;
 };
 
 void CALifeSimulator::validate			()

@@ -3,7 +3,7 @@
 
 #pragma once
 
-inline shared_str CAgentManager::cName( ) const
+inline CSharedString CAgentManager::cName( ) const
 {
 	return ("agent_manager");
 }

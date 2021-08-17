@@ -21,7 +21,7 @@ public:
 	CAviPlayerCustom*					pAVI;
 	CTheoraSurface*						pTheora;
 	float								m_material;
-	shared_str							m_bumpmap;
+	CSharedString							m_bumpmap;
 
 	union{
 		u32								m_play_time;		// sync theora time
@@ -70,7 +70,7 @@ struct ENGINE_API		resptrcode_texture	: public resptr_base<CTexture>
 {
 	void				create			(const char* _name);
 	void				destroy			()					{ _set(NULL);					}
-	shared_str			bump_get		()					{ return _get()->m_bumpmap;		}
+	CSharedString			bump_get		()					{ return _get()->m_bumpmap;		}
 	bool				bump_exist		()					{ return 0!=bump_get().size();	}
 };
 typedef	resptr_core<CTexture,resptrcode_texture >	

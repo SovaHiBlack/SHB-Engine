@@ -7,7 +7,7 @@
 #include "object_broker.h"
 #include "Actor.h"
 
-void AddEffector(CActor* A, int type, const shared_str& sect_name)
+void AddEffector(CActor* A, int type, const CSharedString& sect_name)
 {
 	if (pSettings->line_exist(sect_name, "pp_eff_name"))
 	{
@@ -34,7 +34,7 @@ void AddEffector(CActor* A, int type, const shared_str& sect_name)
 	}
 }
 
-void AddEffector(CActor* A, int type, const shared_str& sect_name, CEffectorController* ec)
+void AddEffector(CActor* A, int type, const CSharedString& sect_name, CEffectorController* ec)
 {
 	if (pSettings->line_exist(sect_name, "pp_eff_name"))
 	{
@@ -61,7 +61,7 @@ void AddEffector(CActor* A, int type, const shared_str& sect_name, CEffectorCont
 	}
 }
 
-void AddEffector(CActor* A, int type, const shared_str& sect_name, GET_KOEFF_FUNC k_func)
+void AddEffector(CActor* A, int type, const CSharedString& sect_name, GET_KOEFF_FUNC k_func)
 {
 	if (pSettings->line_exist(sect_name, "pp_eff_name"))
 	{
@@ -90,7 +90,7 @@ void AddEffector(CActor* A, int type, const shared_str& sect_name, GET_KOEFF_FUN
 	}
 }
 
-void AddEffector(CActor* A, int type, const shared_str& sect_name, float factor)
+void AddEffector(CActor* A, int type, const CSharedString& sect_name, float factor)
 {
 	clamp(factor, 0.001f, 1.5f);
 	if (pSettings->line_exist(sect_name, "pp_eff_name"))

@@ -166,7 +166,7 @@ void CALifeStorageManager::save	(CNetPacket &net_packet)
 {
 	prepare_objects_for_save	();
 
-	shared_str					game_name;
+	CSharedString				game_name;
 	net_packet.r_stringZ		(game_name);
 	save						(*game_name,!!net_packet.r_u8());
 }

@@ -7,7 +7,7 @@
 
 motions_container* g_pMotionsContainer	= nullptr;
 
-U16 find_bone_id(vecBones* bones, shared_str nm)
+U16 find_bone_id(vecBones* bones, CSharedString nm)
 {
 	for (U16 i = 0; i < (U16) bones->size( ); i++)
 	{
@@ -76,7 +76,7 @@ BOOL motions_value::load		(const char* N, IReader *data, vecBones* bones)
 			for (U16 mot_i=0; mot_i<mot_count; mot_i++)
 			{
 				MP->r_stringZ		(buf,sizeof(buf));
-				shared_str nm		= _strlwr		(buf);
+				CSharedString nm		= _strlwr		(buf);
 				u32 dwFlags			= MP->r_u32		();
 				CMotionDef&	D		= m_mdefs[mot_i];
 				D.Load				(MP,dwFlags,vers);
@@ -169,7 +169,7 @@ BOOL motions_value::load		(const char* N, IReader *data, vecBones* bones)
 	return bRes;
 }
 
-MotionVec* motions_value::bone_motions(shared_str bone_name)
+MotionVec* motions_value::bone_motions(CSharedString bone_name)
 {
 	BoneMotionMapIt it			= m_motions.find(bone_name); VERIFY(it!=m_motions.end());
 	return &it->second;
@@ -178,7 +178,7 @@ MotionVec* motions_value::bone_motions(shared_str bone_name)
 motions_container::motions_container()
 {
 }
-extern shared_str s_bones_array_const;
+extern CSharedString s_bones_array_const;
 motions_container::~motions_container()
 {
 //	clean	(false);
@@ -188,12 +188,12 @@ motions_container::~motions_container()
 	s_bones_array_const = 0;
 }
 
-bool motions_container::has(shared_str key)
+bool motions_container::has(CSharedString key)
 {
 	return (container.find(key)!=container.end());
 }
 
-motions_value* motions_container::dock(shared_str key, IReader *data, vecBones* bones)
+motions_value* motions_container::dock(CSharedString key, IReader *data, vecBones* bones)
 {
 	motions_value*	result		= 0	;
 	SharedMotionsMapIt	I		= container.find	(key);

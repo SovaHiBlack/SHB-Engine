@@ -40,7 +40,7 @@ public:
 	}
 
 	void	AddItem(const char* name_, const char* value_, u32 color_ = RGB(255, 255, 255));
-	void	AddItem(shared_str& name_, const char* value_, u32 color_ = RGB(255, 255, 255));
+	void	AddItem(CSharedString& name_, const char* value_, u32 color_ = RGB(255, 255, 255));
 
 	inline SItem_ServerInfo& operator[] (u32 id)
 	{
@@ -95,7 +95,7 @@ public:
 	IGameLevel( );
 	virtual ~IGameLevel( );
 
-	virtual shared_str			name( ) const = 0;
+	virtual CSharedString			name( ) const = 0;
 	virtual void				GetLevelInfo(CServerInfo* si) = 0;
 
 	virtual BOOL				net_Start(const char* op_server, const char* op_client) = 0;

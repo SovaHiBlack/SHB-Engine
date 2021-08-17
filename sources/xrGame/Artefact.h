@@ -52,7 +52,7 @@ protected:
 	{ }
 
 	U16								m_CarringBoneID;
-	shared_str						m_sParticlesName;
+	CSharedString						m_sParticlesName;
 
 	SArtefactActivation* m_activationObj;
 	//////////////////////////////////////////////////////////////////////////

@@ -27,4 +27,4 @@ CORE_API xr_string& _ChangeSymbol(xr_string& name, char src, char dest);
 CORE_API const char* _CopyVal(const char* src, xr_string& dst, char separator = ',');
 CORE_API const char* _GetItem(const char* src, int, xr_string& p, char separator = ',', const char* = "", bool trim = true);
 CORE_API xr_string		_ListToSequence(const SStringVec& lst);
-CORE_API shared_str		_ListToSequence(const RStringVec& lst);
+CORE_API CSharedString		_ListToSequence(const RStringVec& lst);

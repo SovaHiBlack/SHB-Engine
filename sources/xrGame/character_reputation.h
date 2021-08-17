@@ -10,9 +10,9 @@
 
 struct REPUTATION_DATA
 {
-	REPUTATION_DATA (int, shared_str, const char*);
+	REPUTATION_DATA (int, CSharedString, const char*);
 
-	shared_str					id;
+	CSharedString					id;
 	int							index;
 	CHARACTER_REPUTATION_VALUE	threshold;
 };
@@ -20,10 +20,10 @@ struct REPUTATION_DATA
 class CHARACTER_REPUTATION;
 
 class CHARACTER_REPUTATION: 
-	public CIni_IdToIndex<1, REPUTATION_DATA, shared_str, int, CHARACTER_REPUTATION>
+	public CIni_IdToIndex<1, REPUTATION_DATA, CSharedString, int, CHARACTER_REPUTATION>
 {
 private:
-	typedef CIni_IdToIndex<1, REPUTATION_DATA, shared_str, int, CHARACTER_REPUTATION> inherited;
+	typedef CIni_IdToIndex<1, REPUTATION_DATA, CSharedString, int, CHARACTER_REPUTATION> inherited;
 	friend inherited;
 
 public:
@@ -32,7 +32,7 @@ public:
 
 	void						set				(CHARACTER_REPUTATION_VALUE);
 
-	shared_str					id				() const;
+	CSharedString					id				() const;
 	int							index			() const	{return m_current_index;};
 	CHARACTER_REPUTATION_VALUE	value			() const	{return m_current_value;};
 

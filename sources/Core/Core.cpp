@@ -24,8 +24,6 @@ static U32	init_counter = 0;
 
 extern char g_application_path[256];
 
-//. extern xr_vector<shared_str>*	LogFile;
-
 void CCore::_initialize(const char* _ApplicationName, LogCallback cb, BOOL init_fs, const char* fs_fname)
 {
 	strcpy_s(ApplicationName, _ApplicationName);

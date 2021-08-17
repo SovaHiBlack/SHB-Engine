@@ -132,7 +132,7 @@ bool CAttachmentOwner::attached				(const CInventoryItem *inventory_item) const
 	return (attachedItem(inventory_item->object().ID())!= NULL);
 }
 
-bool  CAttachmentOwner::attached			(shared_str sect_name) const
+bool  CAttachmentOwner::attached			(CSharedString sect_name) const
 {
 	return (attachedItem(sect_name)!= NULL);
 }
@@ -204,7 +204,7 @@ CAttachableItem* CAttachmentOwner::attachedItem			(U16 id) const
 	return nullptr;
 }
 
-CAttachableItem* CAttachmentOwner::attachedItem			(shared_str& section) const
+CAttachableItem* CAttachmentOwner::attachedItem			(CSharedString& section) const
 {
 	xr_vector<CAttachableItem*>::const_iterator	I = m_attached_objects.begin();
 	xr_vector<CAttachableItem*>::const_iterator	E = m_attached_objects.end();

@@ -1,10 +1,5 @@
-////////////////////////////////////////////////////////////////////////////
 //	Module 		: alife_simulator.h
-//	Created 	: 25.12.2002
-//  Modified 	: 13.05.2004
-//	Author		: Dmitriy Iassenev
 //	Description : ALife Simulator
-////////////////////////////////////////////////////////////////////////////
 
 #pragma once
 
@@ -24,9 +19,9 @@ protected:
 	virtual void	reload				(const char* section);
 
 public:
-					CALifeSimulator		(CServer*server, shared_str* command_line);
+					CALifeSimulator		(CServer*server, CSharedString* command_line);
 	virtual			~CALifeSimulator	();
-	virtual	void	destroy				();
+	virtual void	destroy				();
 
 #if 0//def DEBUG
 			void	validate			();

@@ -19,16 +19,16 @@ public:
 	virtual void	AnswerPhrase					(DIALOG_SHARED_PTR& phrase_dialog);
 
 
-	virtual void				SetStartDialog				(shared_str phrase_dialog);
-	virtual void				SetDefaultStartDialog		(shared_str phrase_dialog);
-	virtual shared_str	GetStartDialog						()								{return m_sStartDialog;}
+	virtual void				SetStartDialog				(CSharedString phrase_dialog);
+	virtual void				SetDefaultStartDialog		(CSharedString phrase_dialog);
+	virtual CSharedString	GetStartDialog						()								{return m_sStartDialog;}
 	virtual void				RestoreDefaultStartDialog	();
 
 protected:
 	//диалог, если не NULL, то его персонаж запустит
 	//при встрече с актером
-	shared_str m_sStartDialog;
-	shared_str m_sDefaultStartDialog;
+	CSharedString m_sStartDialog;
+	CSharedString m_sDefaultStartDialog;
 
 //	DEFINE_VECTOR(DIALOG_SHARED_PTR, DIALOG_SHARED_VECTOR, DIALOG_SHARED_IT);
 	using DIALOG_SHARED_VECTOR = xr_vector<DIALOG_SHARED_PTR>;

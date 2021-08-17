@@ -86,7 +86,7 @@ void SStatSectionData::load(IReader& stream)
 	}
 }
 
-SStatDetailBData& SStatSectionData::GetData(const shared_str& key)
+SStatDetailBData& SStatSectionData::GetData(const CSharedString& key)
 {
 	vStatDetailData::iterator it = data.begin( );
 	vStatDetailData::iterator it_e = data.end( );
@@ -145,7 +145,7 @@ const vStatSectionData& CActorStatisticMgr::GetCStorage( )
 	return m_actor_stats_wrapper->registry( ).objects( );
 }
 
-SStatSectionData& CActorStatisticMgr::GetSection(const shared_str& key)
+SStatSectionData& CActorStatisticMgr::GetSection(const CSharedString& key)
 {
 	vStatSectionData& d = GetStorage( );
 	vStatSectionData::iterator it = d.begin( );
@@ -163,14 +163,14 @@ SStatSectionData& CActorStatisticMgr::GetSection(const shared_str& key)
 	return d.back( );
 }
 
-void CActorStatisticMgr::AddPoints(const shared_str& key, const shared_str& detail_key, const shared_str& str_value)
+void CActorStatisticMgr::AddPoints(const CSharedString& key, const CSharedString& detail_key, const CSharedString& str_value)
 {
 	SStatSectionData& sect = GetSection(key);
 	SStatDetailBData& d = sect.GetData(detail_key);
 	d.str_value = str_value;
 }
 
-void CActorStatisticMgr::AddPoints(const shared_str& key, const shared_str& detail_key, int cnt, int pts)
+void CActorStatisticMgr::AddPoints(const CSharedString& key, const CSharedString& detail_key, int cnt, int pts)
 {
 	SStatSectionData& sect = GetSection(key);
 	SStatDetailBData& d = sect.GetData(detail_key);
@@ -178,7 +178,7 @@ void CActorStatisticMgr::AddPoints(const shared_str& key, const shared_str& deta
 	d.int_points += cnt * pts;
 }
 
-int CActorStatisticMgr::GetSectionPoints(const shared_str& key)
+int CActorStatisticMgr::GetSectionPoints(const CSharedString& key)
 {
 	if (key != "total")
 	{

@@ -35,7 +35,7 @@ CALifeMonsterPatrolPathManager::CALifeMonsterPatrolPathManager	(object_type *obj
 	use_randomness			(true);
 }
 
-void CALifeMonsterPatrolPathManager::path						(const shared_str &path_name)
+void CALifeMonsterPatrolPathManager::path						(const CSharedString& path_name)
 {
 	path					(ai().patrol_paths().path(path_name));
 }

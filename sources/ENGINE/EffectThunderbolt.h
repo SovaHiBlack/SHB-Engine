@@ -14,8 +14,8 @@ struct SThunderboltDesc
 	{
 		float					fOpacity;
 		Fvector2				fRadius;
-		shared_str				texture;
-		shared_str				shader;
+		CSharedString			texture;
+		CSharedString			shader;
 		ref_shader				hShader;
 		SFlare( )
 		{
@@ -25,7 +25,7 @@ struct SThunderboltDesc
 	};
 	SFlare						m_GradientTop;
 	SFlare						m_GradientCenter;
-	shared_str					name;
+	CSharedString				name;
 	CLAItem*					color_anim;
 
 public:
@@ -38,7 +38,7 @@ struct SThunderboltCollection
 	using ThunderboltDescVec		= xr_vector<SThunderboltDesc*>;
 	using ThunderboltDescVec_it		= ThunderboltDescVec::iterator;
 	ThunderboltDescVec				palette;
-	shared_str						section;
+	CSharedString					section;
 
 public:
 	SThunderboltCollection(CIniFile* pIni, const char* sect);

@@ -79,16 +79,16 @@ public:
 	CStatTimer	TEST2;				// debug counter
 	CStatTimer	TEST3;				// debug counter
 
-	shared_str	eval_line_1;
-	shared_str	eval_line_2;
-	shared_str	eval_line_3;
+	CSharedString	eval_line_1;
+	CSharedString	eval_line_2;
+	CSharedString	eval_line_3;
 
 	void			Show			(void);
 	virtual void 	OnRender		();
 	void			OnDeviceCreate	(void);
 	void			OnDeviceDestroy	(void);
 public:
-	xr_vector		<shared_str>	errors;
+	xr_vector		<CSharedString>	errors;
 	CRegistrator	<pureStats>		seqStats;
 public:
 					CStats			();

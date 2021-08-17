@@ -23,7 +23,7 @@ private:
 	xr_stack<U32>		chunk_pos;
 
 public:
-	shared_str			fName;
+	CSharedString			fName;
 
 	IWriter( )
 	{ }
@@ -85,11 +85,11 @@ public:
 	{
 		w(p, (U32) xr_strlen(p) + 1);
 	}
-	inline void			w_stringZ(const shared_str& p)
+	inline void			w_stringZ(const CSharedString& p)
 	{
 		w(*p ? *p : "", p.size( )); w_u8(0);
 	}
-	inline void			w_stringZ(shared_str& p)
+	inline void			w_stringZ(CSharedString& p)
 	{
 		w(*p ? *p : "", p.size( )); w_u8(0);
 	}
@@ -513,7 +513,7 @@ public:
 	void			skip_stringZ( );
 
 	void			r_stringZ(char* dest, U32 tgt_sz);
-	void			r_stringZ(shared_str& dest);
+	void			r_stringZ(CSharedString& dest);
 	void			r_stringZ(xr_string& dest);
 
 	void			close( );

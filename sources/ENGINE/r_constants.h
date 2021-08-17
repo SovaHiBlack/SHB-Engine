@@ -44,7 +44,7 @@ struct	R_constant_load
 
 struct	R_constant			:public xr_resource
 {
-	shared_str				name;		// HLSL-name
+	CSharedString				name;		// HLSL-name
 	U16						type;		// float=0/integer=1/boolean=2
 	U16						destination;// pixel/vertex/(or both)/sampler
 
@@ -86,7 +86,7 @@ public:
 	BOOL					parse		(void* desc, U16 destination);
 	void					merge		(R_constant_table* C);
 	ref_constant			get			(const char* name);		// slow search
-	ref_constant			get			(shared_str&	name);		// fast search
+	ref_constant			get			(CSharedString&	name);		// fast search
 
 	BOOL					equal		(R_constant_table& C);
 	BOOL					equal		(R_constant_table* C)	{	return equal(*C);		}

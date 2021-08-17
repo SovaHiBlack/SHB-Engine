@@ -93,7 +93,7 @@ public:
 	void				r_Pass				(const char* vs, const char* ps,		bool bFog,	BOOL	bZtest=TRUE,				BOOL	bZwrite=TRUE,			BOOL	bABlend=FALSE,			D3DBLEND	abSRC=D3DBLEND_ONE,		D3DBLEND abDST=D3DBLEND_ZERO,	BOOL aTest=FALSE, U32 aRef=0);
 	void				r_Constant			(const char* name,	R_constant_setup* s);
 	U32					r_Sampler			(const char* name, const char* texture,		bool b_ps1x_ProjectiveDivide=false, U32	address=D3DTADDRESS_WRAP, U32		fmin=D3DTEXF_LINEAR, U32		fmip=D3DTEXF_LINEAR, U32 fmag=D3DTEXF_LINEAR);
-	U32					r_Sampler			(const char* name,	shared_str texture, bool b_ps1x_ProjectiveDivide=false, U32	address=D3DTADDRESS_WRAP, U32		fmin=D3DTEXF_LINEAR, U32		fmip=D3DTEXF_LINEAR, U32 fmag=D3DTEXF_LINEAR)	{
+	U32					r_Sampler			(const char* name, CSharedString texture, bool b_ps1x_ProjectiveDivide=false, U32	address=D3DTADDRESS_WRAP, U32		fmin=D3DTEXF_LINEAR, U32		fmip=D3DTEXF_LINEAR, U32 fmag=D3DTEXF_LINEAR)	{
 		return r_Sampler	(name,texture.c_str(),b_ps1x_ProjectiveDivide,address,fmin,fmip,fmag);
 	}
 	void				r_Sampler_rtf		(const char* name, const char* texture,		bool b_ps1x_ProjectiveDivide=false);

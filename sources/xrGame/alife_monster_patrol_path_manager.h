@@ -51,7 +51,7 @@ private:
 public:
 									CALifeMonsterPatrolPathManager(object_type *object);
 			void					update						();
-			void					path						(const shared_str &path_name);
+			void					path						(const CSharedString& path_name);
 
 public:
 	inline		object_type				&object						() const;

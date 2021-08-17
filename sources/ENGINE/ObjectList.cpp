@@ -31,7 +31,7 @@ CObjectList::~CObjectList	( )
 	xr_free					( objects_dup);
 }
 
-CObject*	CObjectList::FindObjectByName	( shared_str name )
+CObject*	CObjectList::FindObjectByName	(CSharedString name )
 {
 	for (xr_vector<CObject*>::iterator I=objects_active.begin(); I!=objects_active.end(); I++)
 		if ((*I)->cName().equal(name))	return (*I);
@@ -41,7 +41,7 @@ CObject*	CObjectList::FindObjectByName	( shared_str name )
 }
 CObject*	CObjectList::FindObjectByName	(const char* name )
 {
-	return	FindObjectByName				(shared_str(name));
+	return	FindObjectByName				(CSharedString(name));
 }
 
 CObject*	CObjectList::FindObjectByCLS_ID	( CLASS_ID cls )

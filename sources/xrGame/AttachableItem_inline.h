@@ -17,7 +17,7 @@ inline CAttachableItem::CAttachableItem( )
 
 }
 
-inline	shared_str CAttachableItem::bone_name			() const
+inline	CSharedString CAttachableItem::bone_name			() const
 {
 	VERIFY				(m_valid);
 	return m_bone_name;

@@ -19,5 +19,5 @@ void 							InitLog( );
 void 							CloseLog( );
 void	CORE_API				FlushLog( );
 
-extern 	CORE_API	xr_vector<shared_str>* LogFile;
+extern 	CORE_API	xr_vector<CSharedString>* LogFile;
 extern 	CORE_API	BOOL						LogExecCB;

@@ -54,7 +54,7 @@ void xrMemory::_initialize(bool bDebug)
 
 	mem_initialized = true;
 
-	g_pStringContainer = xr_new<str_container>( );
+	g_pStringContainer = xr_new<CStringContainer>( );
 	shared_str_initialized = true;
 
 	g_pSharedMemoryContainer = xr_new<smem_container>( );

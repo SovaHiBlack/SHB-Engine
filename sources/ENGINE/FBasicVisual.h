@@ -44,7 +44,7 @@ class	ENGINE_API				IRender_Visual
 public:
 
 #ifdef DEBUG
-	shared_str					dbg_name;
+	CSharedString					dbg_name;
 #endif // DEBUG
 
 public:

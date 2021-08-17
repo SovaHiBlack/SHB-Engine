@@ -375,7 +375,7 @@ void CStats::Show()
 void	_LogCallback				(const char* string)
 {
 	if (string && '!'==string[0] && ' '==string[1])
-		Device.Statistic->errors.push_back	(shared_str(string));
+		Device.Statistic->errors.push_back	(CSharedString(string));
 }
 
 void CStats::OnDeviceCreate			()

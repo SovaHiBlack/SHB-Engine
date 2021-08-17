@@ -27,7 +27,7 @@ public:
 		return GetTimeLimit( ) < 0.0f;
 	}
 
-	virtual const shared_str	Name						( ) = 0;
+	virtual const CSharedString	Name						( ) = 0;
 
 	virtual IParticleCustom*	dcast_ParticleCustom		( )
 	{

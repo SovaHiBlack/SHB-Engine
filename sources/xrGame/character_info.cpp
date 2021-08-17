@@ -29,13 +29,13 @@ CCharacterInfo::CCharacterInfo( )
 CCharacterInfo::~CCharacterInfo( )
 { }
 
-void CCharacterInfo::Load(shared_str id)
+void CCharacterInfo::Load(CSharedString id)
 {
 	m_ProfileId = id;
 	inherited_shared::load_shared(m_ProfileId, NULL);
 }
 
-void CCharacterInfo::InitSpecificCharacter(shared_str new_id)
+void CCharacterInfo::InitSpecificCharacter(CSharedString new_id)
 {
 	R_ASSERT(new_id.size( ));
 	m_SpecificCharacterId = new_id;
@@ -111,7 +111,7 @@ void CCharacterInfo::Init(CSE_ALifeTraderAbstract* trader)
 	InitSpecificCharacter(trader->specific_character( ));
 }
 
-shared_str CCharacterInfo::Profile( ) const
+CSharedString CCharacterInfo::Profile( ) const
 {
 	return m_ProfileId;
 }
@@ -122,7 +122,7 @@ const char* CCharacterInfo::Name( ) const
 	return m_SpecificCharacter.Name( );
 }
 
-shared_str CCharacterInfo::Bio( ) const
+CSharedString CCharacterInfo::Bio( ) const
 {
 	return m_SpecificCharacter.Bio( );
 }
@@ -137,13 +137,13 @@ void CCharacterInfo::SetReputation(CHARACTER_REPUTATION_VALUE reputation)
 	m_CurrentReputation.set(reputation);
 }
 
-const shared_str& CCharacterInfo::IconName( ) const
+const CSharedString& CCharacterInfo::IconName( ) const
 {
 	R_ASSERT(m_SpecificCharacterId.size( ));
 	return m_SpecificCharacter.IconName( );
 }
 
-shared_str	CCharacterInfo::StartDialog( ) const
+CSharedString	CCharacterInfo::StartDialog( ) const
 {
 	return m_StartDialog;
 }

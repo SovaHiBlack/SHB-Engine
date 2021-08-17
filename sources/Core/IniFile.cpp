@@ -464,19 +464,19 @@ U32 CIniFile::line_count(const char* Sname)
 }
 
 //--------------------------------------------------------------------------------------
-CIniFile::Sect& CIniFile::r_section(const shared_str& S)
+CIniFile::Sect& CIniFile::r_section(const CSharedString& S)
 {
 	return r_section(*S);
 }
-BOOL CIniFile::line_exist(const shared_str& S, const shared_str& L)
+BOOL CIniFile::line_exist(const CSharedString& S, const CSharedString& L)
 {
 	return line_exist(*S, *L);
 }
-U32 CIniFile::line_count(const shared_str& S)
+U32 CIniFile::line_count(const CSharedString& S)
 {
 	return line_count(*S);
 }
-BOOL CIniFile::section_exist(const shared_str& S)
+BOOL CIniFile::section_exist(const CSharedString& S)
 {
 	return section_exist(*S);
 }
@@ -514,13 +514,13 @@ const char* CIniFile::r_string(const char* S, const char* L)
 	return 0;
 }
 
-shared_str CIniFile::r_string_wb(const char* S, const char* L)
+CSharedString CIniFile::r_string_wb(const char* S, const char* L)
 {
 	const char* _base = r_string(S, L);
 
 	if (0 == _base)
 	{
-		return shared_str(0);
+		return CSharedString(0);
 	}
 
 	string512 _original;
@@ -528,7 +528,7 @@ shared_str CIniFile::r_string_wb(const char* S, const char* L)
 	U32 _len = xr_strlen(_original);
 	if (0 == _len)
 	{
-		return	shared_str("");
+		return	CSharedString("");
 	}
 
 	// skip end
@@ -540,10 +540,10 @@ shared_str CIniFile::r_string_wb(const char* S, const char* L)
 	// skip begin
 	if ('"' == _original[0])
 	{
-		return shared_str(&_original[0] + 1);
+		return CSharedString(&_original[0] + 1);
 	}
 	
-	return shared_str(_original);
+	return CSharedString(_original);
 }
 
 U8 CIniFile::r_u8(const char* S, const char* L)
@@ -689,7 +689,7 @@ BOOL CIniFile::r_line(const char* S, int L, const char** N, const char** V)
 
 	return FALSE;
 }
-BOOL CIniFile::r_line(const shared_str& S, int L, const char** N, const char** V)
+BOOL CIniFile::r_line(const CSharedString& S, int L, const char** N, const char** V)
 {
 	return r_line(*S, L, N, V);
 }

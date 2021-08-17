@@ -99,12 +99,12 @@ MotionID CKinematicsAnimated::ID_Cycle_Safe(const char* N)
 	}
 	return motion_ID;
 }
-MotionID CKinematicsAnimated::ID_Cycle	(shared_str  N)
+MotionID CKinematicsAnimated::ID_Cycle	(CSharedString  N)
 {
 	MotionID motion_ID		= ID_Cycle_Safe	(N);	R_ASSERT3(motion_ID.valid(),"! MODEL: can't find cycle: ", N.c_str());
 	return motion_ID;
 }
-MotionID CKinematicsAnimated::ID_Cycle_Safe(shared_str  N)
+MotionID CKinematicsAnimated::ID_Cycle_Safe(CSharedString N)
 {
 	MotionID motion_ID;
 	for (int k=int(m_Motions.size())-1; k>=0; --k){

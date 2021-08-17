@@ -181,7 +181,7 @@ void CTextureDescrMngr::UnLoad()
 			m_bumpmap		=	bmode+4;
 		}
 */
-shared_str CTextureDescrMngr::GetBumpName(const shared_str& tex_name) const
+CSharedString CTextureDescrMngr::GetBumpName(const CSharedString& tex_name) const
 {
 	map_TD::const_iterator I = m_texture_details.find	(tex_name);
 	if (I!=m_texture_details.end())
@@ -194,7 +194,7 @@ shared_str CTextureDescrMngr::GetBumpName(const shared_str& tex_name) const
 	return "";
 }
 
-float CTextureDescrMngr::GetMaterial(const shared_str& tex_name) const
+float CTextureDescrMngr::GetMaterial(const CSharedString& tex_name) const
 {
 	map_TD::const_iterator I = m_texture_details.find	(tex_name);
 	if (I!=m_texture_details.end())
@@ -224,7 +224,7 @@ float CTextureDescrMngr::GetMaterial(const shared_str& tex_name) const
 			bDetail_Bump		= TRUE; 
 		}
 */
-void CTextureDescrMngr::GetTextureUsage	(const shared_str& tex_name, BOOL& bDiffuse, BOOL& bBump) const
+void CTextureDescrMngr::GetTextureUsage	(const CSharedString& tex_name, BOOL& bDiffuse, BOOL& bBump) const
 {
 	map_TD::const_iterator I = m_texture_details.find	(tex_name);
 	if (I!=m_texture_details.end())
@@ -238,7 +238,7 @@ void CTextureDescrMngr::GetTextureUsage	(const shared_str& tex_name, BOOL& bDiff
 	}
 }
 
-BOOL CTextureDescrMngr::GetDetailTexture(const shared_str& tex_name, const char*& res, R_constant_setup* &CS) const
+BOOL CTextureDescrMngr::GetDetailTexture(const CSharedString& tex_name, const char*& res, R_constant_setup* &CS) const
 {
 	map_TD::const_iterator I = m_texture_details.find	(tex_name);
 	if (I!=m_texture_details.end())

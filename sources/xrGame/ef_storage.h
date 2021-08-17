@@ -137,7 +137,6 @@ public:
 	typedef CEnemyFunction<CPersonalEyeRange>				CEnemyEyeRange;
 	typedef CEnemyFunction<CPersonalMaxHealth>				CEnemyMaxHealth;
 
-public:
 	CNonALifeParams							m_non_alife_params;
 	CALifeParams							m_alife_params;
 	// primary functions
@@ -209,7 +208,7 @@ public:
 	inline void							alife_evaluation(bool value);
 	inline CNonALifeParams& non_alife( );
 	inline CALifeParams& alife( );
-public:
+
 	static void script_register(lua_State*);
 };
 

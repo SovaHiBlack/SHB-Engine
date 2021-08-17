@@ -18,17 +18,17 @@ inline	CALifeSmartTerrainTask::CALifeSmartTerrainTask				(const char* patrol_pat
 	init					(patrol_path_name,patrol_point_index);
 }
 
-inline	CALifeSmartTerrainTask::CALifeSmartTerrainTask				(const shared_str &patrol_path_name)
+inline	CALifeSmartTerrainTask::CALifeSmartTerrainTask				(const CSharedString& patrol_path_name)
 {
 	init					(patrol_path_name,0);
 }
 
-inline	CALifeSmartTerrainTask::CALifeSmartTerrainTask				(const shared_str &patrol_path_name, const u32 &patrol_point_index)
+inline	CALifeSmartTerrainTask::CALifeSmartTerrainTask				(const CSharedString& patrol_path_name, const u32 &patrol_point_index)
 {
 	init					(patrol_path_name,patrol_point_index);
 }
 
-inline	void CALifeSmartTerrainTask::init							(const shared_str &patrol_path_name, const u32 &patrol_point_index)
+inline	void CALifeSmartTerrainTask::init							(const CSharedString& patrol_path_name, const u32 &patrol_point_index)
 {
 
 #ifdef DEBUG
@@ -41,7 +41,7 @@ inline	void CALifeSmartTerrainTask::init							(const shared_str &patrol_path_na
 }
 
 #ifdef DEBUG
-inline	const shared_str &CALifeSmartTerrainTask::patrol_path_name	() const
+inline	const CSharedString& CALifeSmartTerrainTask::patrol_path_name	() const
 {
 	return					(m_patrol_path_name);
 }

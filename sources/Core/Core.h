@@ -126,7 +126,7 @@
 // stl ext
 struct CORE_API xr_rtoken
 {
-	shared_str name;
+	CSharedString name;
 	int id;
 	xr_rtoken(const char* _nm, int _id)
 	{
@@ -178,7 +178,7 @@ struct CORE_API xr_shortcut
 };
 #pragma pack (pop)
 
-using RStringVec = xr_vector<shared_str>;
+using RStringVec = xr_vector<CSharedString>;
 
 #include "FS.h"
 #include "Log.h"

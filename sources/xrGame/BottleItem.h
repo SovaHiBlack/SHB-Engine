@@ -22,6 +22,6 @@ protected:
 	float							m_alcohol;
 
 	// партиклы и звук разбивания бутылки
-	shared_str						m_sBreakParticles;
+	CSharedString						m_sBreakParticles;
 	ref_sound						sndBreaking;
 };

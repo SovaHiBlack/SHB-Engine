@@ -31,7 +31,7 @@ void ParseFile(const char* path, CMemoryWriter& W, IReader* F, CXml* xml)
 				IReader* I = nullptr;
 				if (inc_name == strstr(inc_name, "ui\\"))
 				{
-					shared_str fn = xml->correct_file_name("ui", strchr(inc_name, '\\') + 1);
+					CSharedString fn = xml->correct_file_name("ui", strchr(inc_name, '\\') + 1);
 					string_path buff;
 					strconcat(sizeof(buff), buff, "ui\\", fn.c_str( ));
 					I = FS.r_open(path, buff);
@@ -62,7 +62,7 @@ void ParseFile(const char* path, CMemoryWriter& W, IReader* F, CXml* xml)
 
 bool CXml::Init(const char* path_alias, const char* path, const char* _xml_filename)
 {
-	shared_str fn = correct_file_name(path, _xml_filename);
+	CSharedString fn = correct_file_name(path, _xml_filename);
 
 	string_path str;
 	sprintf(str, "%s\\%s", path, *fn);
@@ -293,7 +293,7 @@ const char* CXml::ReadAttrib(XML_NODE* node, const char* attrib, const char* def
 /*
 		//обязательно делаем ref_str, а то
 		//не сможем запомнить строку и return вернет левый указатель
-		shared_str result_str;
+		CSharedString result_str;
 */
 		const char* result_str = NULL;
 		// Кастаем ниже по иерархии
@@ -479,7 +479,7 @@ const char* CXml::CheckUniqueAttrib(XML_NODE* start_node, const char* tag_name, 
 	{
 		const char* attrib = ReadAttrib(start_node, tag_name, i, attrib_name, NULL);
 
-		xr_vector<shared_str>::iterator it = std::find(m_AttribValues.begin( ), m_AttribValues.end( ), attrib);
+		xr_vector<CSharedString>::iterator it = std::find(m_AttribValues.begin( ), m_AttribValues.end( ), attrib);
 
 		if (m_AttribValues.end( ) != it)
 		{

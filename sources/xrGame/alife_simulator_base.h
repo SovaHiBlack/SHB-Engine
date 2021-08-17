@@ -46,7 +46,7 @@ protected:
 	CALifeRegistryContainer						*m_registry_container;
 	CRandom32									m_random;
 	bool										m_initialized;
-	shared_str									*m_server_command_line;
+	CSharedString*								m_server_command_line;
 	bool										m_can_register_objects;
 	// temp
 	ALife::SCHEDULE_P_VECTOR					m_tpaCombatGroups[2];
@@ -85,14 +85,14 @@ public:
 	inline		CRandom32							&random						();
 	inline		CServer&							server						() const;
 	inline		const CALifeTimeManager				&time_manager				() const;
-	inline		shared_str							*server_command_line		() const;
+	inline		CSharedString*						server_command_line		() const;
 	template <typename T>
 	inline		T									&registry					(T *t) const;
 
 protected:
 			void								unload						();
 	virtual	void								reload						(const char* section);
-	inline		void								setup_command_line			(shared_str *command_line);
+	inline		void								setup_command_line			(CSharedString* command_line);
 			void								assign_death_position		(CSE_ALifeCreatureAbstract *tpALifeCreatureAbstract, GameGraph::_GRAPH_ID tGraphID,	CSE_ALifeSchedulable *tpALifeSchedulable = 0);
 	virtual void								setup_simulator				(CSE_ALifeObject *object) = 0;
 
@@ -105,10 +105,9 @@ public:
 			CSE_Abstract						*create						(CSE_ALifeGroupAbstract	*object, CSE_ALifeDynamicObject	*j);
 			CSE_Abstract						*spawn_item					(const char* section,		const Fvector3& position, u32 level_vertex_id, GameGraph::_GRAPH_ID game_vertex_id, U16 parent_id, bool registration = true);
 			void								append_item_vector			(ALife::OBJECT_VECTOR	&tObjectVector,	ALife::ITEM_P_VECTOR &tItemList);
-			shared_str							level_name					() const;
+			CSharedString							level_name					() const;
 			void								on_death					(CSE_Abstract *killed, CSE_Abstract *killer);
 
-public:
 	ALife::ITEM_P_VECTOR						m_temp_item_vector;
 };
 

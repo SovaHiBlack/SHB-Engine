@@ -14,7 +14,7 @@ struct ZONE_TYPE
 	//звук реакции детектора на конкретную зону
 	HUD_SOUND	detect_snds;
 
-	shared_str	zone_map_location;
+	CSharedString	zone_map_location;
 };
 
 //описание зоны, обнаруженной детектором
@@ -90,7 +90,7 @@ protected:
 	using ZONE_INFO_MAP_IT = ZONE_INFO_MAP::iterator;
 	ZONE_INFO_MAP m_ZoneInfoMap;
 
-	shared_str						m_nightvision_particle;
+	CSharedString						m_nightvision_particle;
 
 protected:
 	u32					m_ef_detector_type;

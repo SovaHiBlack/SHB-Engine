@@ -24,9 +24,9 @@ public:
 
 	virtual float		shedule_Scale		( ) = 0;
 	virtual void		shedule_Update		(u32 dt);
-	virtual shared_str	shedule_Name		( ) const
+	virtual CSharedString	shedule_Name		( ) const
 	{
-		return shared_str("unknown");
+		return CSharedString("unknown");
 	}
 	virtual bool		shedule_Needed		( ) = 0;
 };

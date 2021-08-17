@@ -4,7 +4,7 @@
 //#include "motion.h"
 
 bool motion_sort_pred	(COMotion* a, 	COMotion* b)	{	return a->name<b->name;}
-bool motion_find_pred	(COMotion* a, 	shared_str b)	{	return a->name<b;}
+bool motion_find_pred	(COMotion* a, CSharedString b)	{	return a->name<b;}
 
 //////////////////////////////////////////////////////////////////////
 // Construction/Destruction

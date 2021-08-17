@@ -10,7 +10,7 @@
 #define RANK_KILL_TABLE_SECT	"rank_kill_points"
 
 //////////////////////////////////////////////////////////////////////////
-RANK_DATA::RANK_DATA (int idx, shared_str idn, const char* threshold_str)
+RANK_DATA::RANK_DATA (int idx, CSharedString idn, const char* threshold_str)
 {
 	index		= idx;
 	id			= idn;
@@ -36,12 +36,10 @@ void  CHARACTER_RANK::set	(CHARACTER_RANK_VALUE new_val)
 	m_current_index = ValueToIndex(new_val);
 }
 
-shared_str					CHARACTER_RANK::id			() const
+CSharedString					CHARACTER_RANK::id			() const
 {
 	return IndexToId(m_current_index);
 }
-
-
 
 void CHARACTER_RANK::InitIdToIndex	()
 {

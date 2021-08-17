@@ -15,17 +15,17 @@ void CObject::MakeMeCrow_internal( )
 	g_pGameLevel->Objects.o_crow(this);
 }
 
-void CObject::cName_set(shared_str N)
+void CObject::cName_set(CSharedString N)
 {
 	NameObject = N;
 }
 
-void CObject::cNameSect_set(shared_str N)
+void CObject::cNameSect_set(CSharedString N)
 {
 	NameSection = N;
 }
 
-void CObject::cNameVisual_set(shared_str N)
+void CObject::cNameVisual_set(CSharedString N)
 {
 	// check if equal
 	if (*N && *NameVisual)

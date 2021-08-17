@@ -275,7 +275,7 @@ Fmatrix	CPhantom::XFORM_center()
 	return			xform.translate_over(center);
 }
 
-CParticlesObject* CPhantom::PlayParticles(const shared_str& name, BOOL bAutoRemove, const Fmatrix& xform)
+CParticlesObject* CPhantom::PlayParticles(const CSharedString& name, BOOL bAutoRemove, const Fmatrix& xform)
 {
 	CParticlesObject* ps = CParticlesObject::Create(name.c_str(),bAutoRemove);
 	ps->UpdateParent	(xform, zero_vel);

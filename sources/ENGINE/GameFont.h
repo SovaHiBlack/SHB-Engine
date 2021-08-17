@@ -131,7 +131,7 @@ public:
 	}
 
 #ifdef DEBUG
-	shared_str										m_font_name;
+	CSharedString										m_font_name;
 #endif // def DEBUG
 
 };

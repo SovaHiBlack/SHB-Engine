@@ -8,10 +8,10 @@ class CActor;
 
 using GET_KOEFF_FUNC											= fastdelegate::FastDelegate0<float>;
 
-void AddEffector(CActor* A, int type, const shared_str& sect_name);
-void AddEffector(CActor* A, int type, const shared_str& sect_name, float factor);
-void AddEffector(CActor* A, int type, const shared_str& sect_name, GET_KOEFF_FUNC);
-void AddEffector(CActor* A, int type, const shared_str& sect_name, CEffectorController*);
+void AddEffector(CActor* A, int type, const CSharedString& sect_name);
+void AddEffector(CActor* A, int type, const CSharedString& sect_name, float factor);
+void AddEffector(CActor* A, int type, const CSharedString& sect_name, GET_KOEFF_FUNC);
+void AddEffector(CActor* A, int type, const CSharedString& sect_name, CEffectorController*);
 void RemoveEffector(CActor* A, int type);
 
 class CEffectorController
@@ -73,7 +73,7 @@ public:
 class CAnimatorCamEffectorScriptCB : public CAnimatorCamEffector
 {
 	using inherited												= CAnimatorCamEffector;
-	shared_str													cb_name;
+	CSharedString													cb_name;
 
 public:
 								CAnimatorCamEffectorScriptCB	(const char* _cb)

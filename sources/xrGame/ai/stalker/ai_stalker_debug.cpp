@@ -187,7 +187,7 @@ const char* animation_name(CStalker *self, const MotionID &animation)
 	return				(name);
 }
 
-void draw_restrictions(const shared_str &restrictions, const char* start_indent, const char* indent, const char* header)
+void draw_restrictions(const CSharedString& restrictions, const char* start_indent, const char* indent, const char* header)
 {
 	HUD().Font().pFontSmall->OutNext	("%s%s%s",start_indent,indent,header);
 	string256	temp;

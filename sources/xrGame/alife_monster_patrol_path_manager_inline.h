@@ -22,7 +22,7 @@ inline	void CALifeMonsterPatrolPathManager::path					(const CPatrolPath *path)
 
 inline	void CALifeMonsterPatrolPathManager::path					(const char* path_name)
 {
-	path					(shared_str(path_name));
+	path					(CSharedString(path_name));
 }
 
 inline	bool CALifeMonsterPatrolPathManager::actual				() const

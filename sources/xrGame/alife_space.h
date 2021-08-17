@@ -45,9 +45,9 @@ namespace ALife
 	{
 		eMeetActionTypeAttack = u32(0),
 //		eMeetActionTypeInteract,
-eMeetActionTypeIgnore,
-eMeetActionSmartTerrain,
-eMeetActionTypeDummy = u32(-1),
+		eMeetActionTypeIgnore,
+		eMeetActionSmartTerrain,
+		eMeetActionTypeDummy = u32(-1)
 	};
 
 	enum ERelationType
@@ -57,7 +57,7 @@ eMeetActionTypeDummy = u32(-1),
 		eRelationTypeEnemy,
 		eRelationTypeWorstEnemy,
 		eRelationTypeLast,
-		eRelationTypeDummy = u32(-1),
+		eRelationTypeDummy = u32(-1)
 	};
 
 	enum EHitType
@@ -73,7 +73,7 @@ eMeetActionTypeDummy = u32(-1),
 		eHitTypeFireWound,
 		eHitTypeWound_2,		//knife's alternative fire
 		eHitTypePhysicStrike,
-		eHitTypeMax,
+		eHitTypeMax
 	};
 
 	enum ETakeType

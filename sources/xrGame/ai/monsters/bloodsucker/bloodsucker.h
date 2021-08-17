@@ -93,7 +93,7 @@ public:
 	//--------------------------------------------------------------------
 	// Predator
 	//--------------------------------------------------------------------
-	shared_str				m_visual_default;
+			CSharedString				m_visual_default;
 	const char* m_visual_predator;
 	bool					m_predator;
 			

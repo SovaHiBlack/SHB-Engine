@@ -11,7 +11,7 @@ private:
 protected:
 	bool									bLoop;
 
-	shared_str								m_Name;
+	CSharedString								m_Name;
 
 	Fmatrix									m_XFORM;
 	SAnimParams								m_MParam;

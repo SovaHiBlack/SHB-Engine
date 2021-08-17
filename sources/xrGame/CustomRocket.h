@@ -73,7 +73,6 @@ public:
 	//////////////////////////////////////////////////////////////////////////
 	//	Rocket Properties
 	//////////////////////////////////////////////////////////////////////////
-public:
 
 #ifdef DEBUG
 	CGameObject* owner( )
@@ -134,7 +133,6 @@ protected:
 	//////////////////////////////////////////////////////////////////////////
 	//	Lights
 	//////////////////////////////////////////////////////////////////////////
-protected:
 	//флаг, что подсветка может быть включена
 	bool										m_bLightsEnabled;
 	//флаг, что подсветка будет остановлена вместе с двигателем
@@ -145,7 +143,6 @@ protected:
 	float										m_fTrailLightRange;
 	ref_sound									m_flyingSound;
 
-protected:
 	virtual void		StartLights( );
 	virtual void		StopLights( );
 	virtual void		UpdateLights( );
@@ -153,12 +150,11 @@ protected:
 	//////////////////////////////////////////////////////////////////////////
 	//	Particles
 	//////////////////////////////////////////////////////////////////////////
-protected:
 	//имя партиклов двигателя
-	shared_str									m_sEngineParticles;
+	CSharedString									m_sEngineParticles;
 	CParticlesObject* m_pEngineParticles;
 	//имя партиклов полета
-	shared_str									m_sFlyParticles;
+	CSharedString									m_sFlyParticles;
 	CParticlesObject* m_pFlyParticles;
 
 	Fvector3										m_vPrevVel;

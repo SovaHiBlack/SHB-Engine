@@ -31,7 +31,7 @@ public:
 									CObjectList						( );
 									~CObjectList					( );
 
-	CObject*						FindObjectByName				(shared_str name);
+	CObject*						FindObjectByName				(CSharedString name);
 	CObject*						FindObjectByName				(const char* name);
 	CObject*						FindObjectByCLS_ID				(CLASS_ID cls);
 
