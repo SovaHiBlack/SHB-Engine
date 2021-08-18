@@ -66,7 +66,7 @@ public:
 				R_ASSERT3(W == 1, "Can't write mem block to file. Disk maybe full.", _sys_errlist[errno]);
 			}
 		}
-	};
+	}
 	virtual void	seek(U32 pos)
 	{
 		if (0 != hf) fseek(hf, pos, SEEK_SET);

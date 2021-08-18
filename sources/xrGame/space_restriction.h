@@ -91,5 +91,4 @@ public:
 	virtual CSharedString				name						() const;
 };
 
-#include "space_restriction_inline.h
-"
+#include "space_restriction_inline.h"

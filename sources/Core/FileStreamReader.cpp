@@ -1,8 +1,8 @@
 #include "stdafx.h"
 
-#include "file_stream_reader.h"
+#include "FileStreamReader.h"
 
-void CFileStreamReader::construct(const char* file_name, const U32& window_size)
+void CFileStreamReader::construct(const char* file_name, const unsigned int& window_size)
 {
 	m_file_handle =
 		CreateFile(
@@ -16,7 +16,7 @@ void CFileStreamReader::construct(const char* file_name, const U32& window_size)
 		);
 
 	VERIFY(m_file_handle != INVALID_HANDLE_VALUE);
-	U32						file_size = (U32) GetFileSize(m_file_handle, NULL);
+	unsigned int						file_size = (unsigned int) GetFileSize(m_file_handle, NULL);
 
 	HANDLE					file_mapping_handle =
 		CreateFileMapping(

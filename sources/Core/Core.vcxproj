@@ -219,7 +219,7 @@
     <ClCompile Include="clsid.cpp" />
     <ClCompile Include="cpuid.cpp" />
     <ClCompile Include="crc32.cpp" />
-    <ClCompile Include="file_stream_reader.cpp" />
+    <ClCompile Include="FileStreamReader.cpp" />
     <ClCompile Include="FS.cpp" />
     <ClCompile Include="FTimer.cpp" />
     <ClCompile Include="LocatorAPI.cpp" />
@@ -283,7 +283,7 @@
     <ClInclude Include="clsid.h" />
     <ClInclude Include="cpuid.h" />
     <ClInclude Include="fastdelegate.h" />
-    <ClInclude Include="file_stream_reader.h" />
+    <ClInclude Include="FileStreamReader.h" />
     <ClInclude Include="FixedMap.h" />
     <ClInclude Include="FixedVector.h" />
     <ClInclude Include="FS.h" />
