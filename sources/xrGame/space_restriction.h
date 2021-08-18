@@ -49,12 +49,13 @@ private:
 
 protected:
 	bool							m_applied;
-	shared_str						m_out_restrictions;
-	shared_str						m_in_restrictions;
+	CSharedString						m_out_restrictions;
+	CSharedString						m_in_restrictions;
 	xr_vector<u32>					m_temp;
 	CSpaceRestrictionManager		*m_space_restriction_manager;
 	CBaseRestrictionPtr				m_out_space_restriction;
 	CBaseRestrictionPtr				m_in_space_restriction;
+
 #ifdef USE_FREE_IN_RESTRICTIONS
 	FREE_IN_RESTRICTIONS			m_free_in_restrictions;
 #endif
@@ -74,7 +75,7 @@ protected:
 			bool					affect						(CBaseRestrictionPtr bridge, u32 start_vertex_id, u32 dest_vertex_id) const;
 
 public:
-									CSpaceRestriction			(CSpaceRestrictionManager *space_restriction_manager, shared_str out_restrictions, shared_str in_restrictions);
+									CSpaceRestriction			(CSpaceRestrictionManager *space_restriction_manager, CSharedString out_restrictions, CSharedString in_restrictions);
 			void					initialize					();
 			void					remove_border				();
 	template <typename T1, typename T2>
@@ -82,12 +83,13 @@ public:
 			u32						accessible_nearest			(const Fvector3& position, Fvector3& result);
 			bool					accessible					(const Fsphere &sphere);
 			bool					accessible					(u32 level_vertex_id, float radius);
-	inline		shared_str				out_restrictions			() const;
-	inline		shared_str				in_restrictions				() const;
+	inline		CSharedString				out_restrictions			() const;
+	inline		CSharedString				in_restrictions				() const;
 	inline		bool					applied						() const;
 	inline		bool					inside						(const Fsphere &sphere);
 	inline		bool					inside						(u32 level_vertex_id, bool partially_inside);
-	virtual shared_str				name						() const;
+	virtual CSharedString				name						() const;
 };
 
-#include "space_restriction_inline.h"
+#include "space_restriction_inline.h
+"

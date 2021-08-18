@@ -77,7 +77,7 @@ static bool PhraseGoodwillPred(const CPhrase* phrase1, const CPhrase* phrase2)
 	return phrase1->GoodwillLevel( ) > phrase2->GoodwillLevel( );
 }
 
-bool CPhraseDialog::SayPhrase(DIALOG_SHARED_PTR& phrase_dialog, const shared_str& phrase_id)
+bool CPhraseDialog::SayPhrase(DIALOG_SHARED_PTR& phrase_dialog, const CSharedString& phrase_id)
 {
 	THROW(phrase_dialog->IsInited( ));
 
@@ -123,7 +123,7 @@ bool CPhraseDialog::SayPhrase(DIALOG_SHARED_PTR& phrase_dialog, const shared_str
 			const CPhraseGraph::CEdge& edge = *it;
 			CPhraseGraph::CVertex* next_phrase_vertex = phrase_dialog->data( )->m_PhraseGraph.vertex(edge.vertex_id( ));
 			THROW(next_phrase_vertex);
-			shared_str next_phrase_id = next_phrase_vertex->vertex_id( );
+			CSharedString next_phrase_id = next_phrase_vertex->vertex_id( );
 			if (next_phrase_vertex->data( )->m_PhraseScript.Precondition(pSpeakerGO2, pSpeakerGO1, *phrase_dialog->m_DialogId, phrase_id.c_str( ), next_phrase_id.c_str( )))
 			{
 				phrase_dialog->m_PhraseVector.push_back(next_phrase_vertex->data( ));
@@ -132,7 +132,7 @@ bool CPhraseDialog::SayPhrase(DIALOG_SHARED_PTR& phrase_dialog, const shared_str
 				if (psAI_Flags.test(aiDialogs))
 				{
 					const char* phrase_text = next_phrase_vertex->data( )->GetText( );
-					shared_str id = next_phrase_vertex->data( )->GetID( );
+					CSharedString id = next_phrase_vertex->data( )->GetID( );
 					Msg("----added phrase text [%s]phrase_id=[%s] id=[%s] to dialog [%s]", phrase_text, phrase_id.c_str( ), id.c_str( ), *phrase_dialog->m_DialogId.c_str( ));
 				}
 #endif // def DEBUG
@@ -165,7 +165,7 @@ bool CPhraseDialog::SayPhrase(DIALOG_SHARED_PTR& phrase_dialog, const shared_str
 	return phrase_dialog ? !phrase_dialog->m_bFinished : true;
 }
 
-const char* CPhraseDialog::GetPhraseText(const shared_str& phrase_id, bool current_speaking)
+const char* CPhraseDialog::GetPhraseText(const CSharedString& phrase_id, bool current_speaking)
 {
 	CPhraseGraph::CVertex* phrase_vertex = data( )->m_PhraseGraph.vertex(phrase_id);
 	THROW(phrase_vertex);
@@ -183,7 +183,7 @@ int CPhraseDialog::Priority( )
 	return data( )->m_iPriority;
 }
 
-void CPhraseDialog::Load(shared_str dialog_id)
+void CPhraseDialog::Load(CSharedString dialog_id)
 {
 	m_DialogId = dialog_id;
 	inherited_shared::load_shared(m_DialogId, NULL);
@@ -251,7 +251,7 @@ void CPhraseDialog::SetPriority(int val)
 	data( )->m_iPriority = val;
 }
 
-CPhrase* CPhraseDialog::AddPhrase(const char* text, const shared_str& phrase_id, const shared_str& prev_phrase_id, int goodwil_level)
+CPhrase* CPhraseDialog::AddPhrase(const char* text, const CSharedString& phrase_id, const CSharedString& prev_phrase_id, int goodwil_level)
 {
 	CPhrase* phrase = nullptr;
 	CPhraseGraph::CVertex* _vertex = data( )->m_PhraseGraph.vertex(phrase_id);
@@ -275,7 +275,7 @@ CPhrase* CPhraseDialog::AddPhrase(const char* text, const shared_str& phrase_id,
 	return phrase;
 }
 
-void CPhraseDialog::AddPhrase(CUIXml* pXml, XML_NODE* phrase_node, const shared_str& phrase_id, const shared_str& prev_phrase_id)
+void CPhraseDialog::AddPhrase(CUIXml* pXml, XML_NODE* phrase_node, const CSharedString& phrase_id, const CSharedString& prev_phrase_id)
 {
 	const char* sText = pXml->Read(phrase_node, "text", 0, "");
 	int gw = pXml->ReadInt(phrase_node, "goodwill", 0, -10000);

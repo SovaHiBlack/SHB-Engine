@@ -114,7 +114,7 @@ extern void					CCC_RegisterInput		( );
 
 struct _conCmd
 {
-	shared_str										cmd;
+	CSharedString										cmd;
 };
 
 class ConsoleBindCmds

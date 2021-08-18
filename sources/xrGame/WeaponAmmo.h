@@ -8,7 +8,7 @@ public:
 	CCartridge( );
 	void						Load(const char* section, U8 LocalAmmoType);
 
-	shared_str										m_ammoSect;
+	CSharedString										m_ammoSect;
 	enum
 	{
 		cfTracer = (1 << 0),
@@ -34,7 +34,7 @@ public:
 	U16												bullet_material_idx;
 	Flags8											m_flags;
 
-	shared_str										m_InvShortName;
+	CSharedString										m_InvShortName;
 };
 
 class CWeaponAmmo : public CInventoryItemObject

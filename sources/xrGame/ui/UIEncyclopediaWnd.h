@@ -36,9 +36,9 @@ public:
 	virtual void		SendMessage				(CUIWindow* pWnd, S16 msg, void* pData = nullptr);
 	virtual void		Draw					( );
 
-	void				AddArticle				(shared_str, bool bReaded);
+	void				AddArticle				(CSharedString, bool bReaded);
 	void				DeleteArticles			( );
-	bool				HasArticle				(shared_str);
+	bool				HasArticle				(CSharedString);
 
 	void				ReloadArticles			( );
 	virtual void		Reset					( );

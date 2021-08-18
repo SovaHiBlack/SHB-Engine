@@ -19,27 +19,27 @@ inline	void CTradeActionParameters::clear( )
 	m_disabled.clear( );
 }
 
-inline	void CTradeActionParameters::enable(const shared_str& section, const CTradeFactors& trade_factors)
+inline	void CTradeActionParameters::enable(const CSharedString& section, const CTradeFactors& trade_factors)
 {
 	m_enabled.enable(section, trade_factors);
 }
 
-inline	void CTradeActionParameters::disable(const shared_str& section)
+inline	void CTradeActionParameters::disable(const CSharedString& section)
 {
 	m_disabled.disable(section);
 }
 
-inline	bool CTradeActionParameters::enabled(const shared_str& section) const
+inline	bool CTradeActionParameters::enabled(const CSharedString& section) const
 {
 	return m_enabled.enabled(section);
 }
 
-inline	bool CTradeActionParameters::disabled(const shared_str& section) const
+inline	bool CTradeActionParameters::disabled(const CSharedString& section) const
 {
 	return m_disabled.disabled(section);
 }
 
-inline	const CTradeFactors& CTradeActionParameters::factors(const shared_str& section) const
+inline	const CTradeFactors& CTradeActionParameters::factors(const CSharedString& section) const
 {
 	return m_enabled.factors(section);
 }

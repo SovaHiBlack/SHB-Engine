@@ -730,7 +730,7 @@ bool CUIWindow::IsChild(CUIWindow* pPossibleChild) const
 	return it != m_ChildWndList.end( );
 }
 
-CUIWindow* CUIWindow::FindChild(const shared_str name)
+CUIWindow* CUIWindow::FindChild(const CSharedString name)
 {
 	if (WindowName( ) == name)
 	{

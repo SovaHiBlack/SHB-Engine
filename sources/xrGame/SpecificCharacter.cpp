@@ -49,7 +49,7 @@ void CSpecificCharacter::InitXmlIdToIndex( )
 	}
 }
 
-void CSpecificCharacter::Load(shared_str id)
+void CSpecificCharacter::Load(CSharedString id)
 {
 	R_ASSERT(id.size( ));
 	m_OwnId = id;
@@ -93,7 +93,7 @@ void CSpecificCharacter::load_shared(const char*)
 		data( )->m_bDefaultForCommunity = false;
 	}
 
-	R_ASSERT3(!(data( )->m_bNoRandom && data( )->m_bDefaultForCommunity), "cannot set 'no_random' and 'team_default' flags simultaneously, profile id", *shared_str(item_data.id));
+	R_ASSERT3(!(data( )->m_bNoRandom && data( )->m_bDefaultForCommunity), "cannot set 'no_random' and 'team_default' flags simultaneously, profile id", *CSharedString(item_data.id));
 
 	const char* start_dialog = pXML->Read("start_dialog", 0, NULL);
 	if (start_dialog)
@@ -109,7 +109,7 @@ void CSpecificCharacter::load_shared(const char*)
 	data( )->m_ActorDialogs.clear( );
 	for (int i = 0; i < dialogs_num; ++i)
 	{
-		shared_str dialog_name = pXML->Read(pXML->GetLocalRoot( ), "actor_dialog", i, "");
+		CSharedString dialog_name = pXML->Read(pXML->GetLocalRoot( ), "actor_dialog", i, "");
 		data( )->m_ActorDialogs.push_back(dialog_name);
 	}
 
@@ -203,7 +203,7 @@ const char* CSpecificCharacter::Name( ) const
 	return data( )->m_sGameName.c_str( );
 }
 
-shared_str CSpecificCharacter::Bio( ) const
+CSharedString CSpecificCharacter::Bio( ) const
 {
 	return data( )->m_sBioText;
 }
@@ -248,7 +248,7 @@ const char* CSpecificCharacter::critical_wound_weights( ) const
 	return data( )->m_critical_wound_weights.c_str( );
 }
 
-shared_str CSpecificCharacter::terrain_sect( ) const
+CSharedString CSpecificCharacter::terrain_sect( ) const
 {
 	return data( )->m_terrain_sect;
 }

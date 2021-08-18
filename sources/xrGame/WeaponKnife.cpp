@@ -248,7 +248,7 @@ void CWeaponKnife::LoadFireParams(const char* section, const char* prefix)
 
 	string256			full_name;
 	string32			buffer;
-	shared_str			s_sHitPower_2;
+	CSharedString			s_sHitPower_2;
 	//fHitPower_1		= fHitPower;
 	fvHitPower_1		= fvHitPower;
 	fHitImpulse_1		= fHitImpulse;

@@ -142,7 +142,7 @@ void CUIActorInfoWnd::FillPointsInfo( )
 	UIMasterList->SetSelected(UIMasterList->GetItem(1));
 }
 
-void CUIActorInfoWnd::FillMasterPart(CUIXml* xml, const shared_str& key_name)
+void CUIActorInfoWnd::FillMasterPart(CUIXml* xml, const CSharedString& key_name)
 {
 	CUIActorStaticticHeader* itm = xr_new<CUIActorStaticticHeader>(this);
 	string128 buff;
@@ -175,7 +175,7 @@ void CUIActorInfoWnd::FillMasterPart(CUIXml* xml, const shared_str& key_name)
 	UIMasterList->AddWindow(itm, true);
 }
 
-void CUIActorInfoWnd::FillPointsDetail(const shared_str& id)
+void CUIActorInfoWnd::FillPointsDetail(const CSharedString& id)
 {
 	UIDetailList->Clear( );
 	CUIXml uiXml;

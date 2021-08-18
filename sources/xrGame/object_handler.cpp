@@ -93,7 +93,7 @@ void CObjectHandler::OnItemTake(CInventoryItem* inventory_item)
 
 	if (inventory_item->useful_for_NPC( ) && (inventory_item->object( ).cNameSect( ) == m_item_to_spawn))
 	{
-		m_item_to_spawn = shared_str( );
+		m_item_to_spawn = CSharedString( );
 		m_ammo_in_box_to_spawn = 0;
 	}
 

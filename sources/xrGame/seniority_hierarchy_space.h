@@ -12,11 +12,11 @@
 
 namespace SeniorityHierarchy
 {
-	inline	shared_str to_string(u32 number)
+	inline	CSharedString to_string(u32 number)
 	{
 		string16	S;
 		itoa(number, S, 10);
-		return shared_str(S);
+		return CSharedString(S);
 	}
 
 	template <typename T1>

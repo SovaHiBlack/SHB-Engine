@@ -29,10 +29,10 @@ public:
 	virtual void net_Import(CNetPacket& P);				// import from server
 
 protected:
-	shared_str	m_sGrenadeBoneName;
-	shared_str	m_sHudGrenadeBoneName;
+	CSharedString	m_sGrenadeBoneName;
+	CSharedString	m_sHudGrenadeBoneName;
 
-	shared_str	m_sRocketSection;
+	CSharedString	m_sRocketSection;
 
 public:
 	static void script_register(lua_State*);

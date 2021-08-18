@@ -13,7 +13,7 @@
 
 weapon_hud_container* g_pWeaponHUDContainer = nullptr;
 
-BOOL weapon_hud_value::load(const shared_str& section, CHudItem* owner)
+BOOL weapon_hud_value::load(const CSharedString& section, CHudItem* owner)
 {
 	// Geometry and transform
 	Fvector3 pos;

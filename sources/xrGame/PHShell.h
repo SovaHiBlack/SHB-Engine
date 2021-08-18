@@ -173,7 +173,7 @@ public:
 		return elements;
 	}
 	virtual		CPhysicsElement* get_Element(U16 bone_id);
-	virtual		CPhysicsElement* get_Element(const shared_str& bone_name);
+	virtual		CPhysicsElement* get_Element(const CSharedString& bone_name);
 	virtual		CPhysicsElement* get_Element(const char* bone_name);
 	virtual		CPhysicsElement* get_ElementByStoreOrder(U16 num);
 	virtual		U16					get_ElementsNumber( )
@@ -191,7 +191,7 @@ public:
 	}
 	virtual		CPhysicsElement* NearestToPoint(const Fvector3& point);
 	virtual		CPhysicsJoint* get_Joint(U16 bone_id);
-	virtual		CPhysicsJoint* get_Joint(const shared_str& bone_name);
+	virtual		CPhysicsJoint* get_Joint(const CSharedString& bone_name);
 	virtual		CPhysicsJoint* get_Joint(const char* bone_name);
 	virtual		CPhysicsJoint* get_JointByStoreOrder(U16 num);
 	virtual		U16					get_JointsNumber( );

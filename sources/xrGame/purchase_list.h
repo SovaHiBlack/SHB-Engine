@@ -15,18 +15,18 @@ class CGameObject;
 
 class CPurchaseList {
 public:
-	typedef associative_vector<shared_str,float>	DEFICITS;
+	typedef associative_vector<CSharedString,float>	DEFICITS;
 
 private:
 	DEFICITS				m_deficits;
 
-			void			process			(const CGameObject &owner, const shared_str &name, const u32 &count, const float &probability);
+			void			process			(const CGameObject &owner, const CSharedString& name, const u32 &count, const float &probability);
 
 public:
 			void			process			(CIniFile&ini_file, const char* section, CInventoryOwner &owner);
 
-	inline		void			deficit			(const shared_str &section, const float &deficit);
-	inline		float			deficit			(const shared_str &section) const;
+	inline		void			deficit			(const CSharedString& section, const float &deficit);
+	inline		float			deficit			(const CSharedString& section) const;
 	inline		const DEFICITS	&deficits		() const;
 };
 

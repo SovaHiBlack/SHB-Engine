@@ -19,7 +19,7 @@
 #include <malloc.h>
 #pragma warning(pop)
 
-shared_str	g_active_task_id = "";
+CSharedString	g_active_task_id = "";
 U16			g_active_task_objective_id = U16(-1);
 
 struct FindTaskByID

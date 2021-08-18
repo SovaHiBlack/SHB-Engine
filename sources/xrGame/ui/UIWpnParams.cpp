@@ -84,7 +84,7 @@ void CUIWpnParams::InitFromXml(CUIXml& xml_doc)
 	m_progressRPM.SetRange(0.0f, 100.0f);
 }
 
-void CUIWpnParams::SetInfo(const shared_str& wpn_section)
+void CUIWpnParams::SetInfo(const CSharedString& wpn_section)
 {
 	if (!g_lua_wpn_params)
 	{
@@ -97,7 +97,7 @@ void CUIWpnParams::SetInfo(const shared_str& wpn_section)
 	m_progressHandling.SetProgressPos(g_lua_wpn_params->m_functorHandling(*wpn_section));
 }
 
-bool CUIWpnParams::Check(const shared_str& wpn_section)
+bool CUIWpnParams::Check(const CSharedString& wpn_section)
 {
 	if (pSettings->line_exist(wpn_section, "fire_dispersion_base"))
 	{

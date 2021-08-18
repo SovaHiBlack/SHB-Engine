@@ -144,7 +144,7 @@ public:
 	_DECLARE_FUNCTION10	(story_id	,	ALife::_STORY_ID);
 	
 	const char* Name				() const;
-			shared_str			cName				() const;
+	CSharedString			cName				() const;
 			const char* Section				() const;
 	// CInventoryItem
 			u32					Cost				() const;

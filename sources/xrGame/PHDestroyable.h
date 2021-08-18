@@ -14,7 +14,7 @@ public:
 
 class CPHDestroyable : public  CPHDestroyableNotificator
 {
-	xr_vector<shared_str>						m_destroyed_obj_visual_names;
+	xr_vector<CSharedString>						m_destroyed_obj_visual_names;
 	xr_vector<CPHDestroyableNotificate*>		m_notificate_objects;
 	U16											m_depended_objects;
 	Flags8										m_flags;
@@ -59,7 +59,7 @@ public:
 		return true;
 	}
 	virtual void						SheduleUpdate(u32 dt);
-	virtual void						GenSpawnReplace(U16 source_id, const char* section, shared_str visual_name);
+	virtual void						GenSpawnReplace(U16 source_id, const char* section, CSharedString visual_name);
 	virtual void						InitServerObject(CSE_Abstract* D);
 
 private:

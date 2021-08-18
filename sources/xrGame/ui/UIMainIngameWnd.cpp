@@ -187,7 +187,7 @@ void CUIMainIngameWnd::Init( )
 	xml_init.InitStatic(uiXml, "invincible_static", 0, &UIInvincibleIcon);
 	UIInvincibleIcon.Show(false);
 
-	shared_str warningStrings[6] =
+	CSharedString warningStrings[6] =
 	{
 		"jammed",
 		"radiation",
@@ -202,7 +202,7 @@ void CUIMainIngameWnd::Init( )
 	while (j < ewiInvincible)
 	{
 		// „итаем данные порогов дл€ каждого индикатора
-		shared_str cfgRecord = pSettings->r_string("main_ingame_indicators_thresholds", *warningStrings[static_cast<int>(j) - 1]);
+		CSharedString cfgRecord = pSettings->r_string("main_ingame_indicators_thresholds", *warningStrings[static_cast<int>(j) - 1]);
 		u32 count = _GetItemCount(*cfgRecord);
 
 		char singleThreshold[8];
@@ -288,7 +288,7 @@ void CUIMainIngameWnd::Draw( )
 
 }
 
-void CUIMainIngameWnd::SetAmmoIcon(const shared_str& sect_name)
+void CUIMainIngameWnd::SetAmmoIcon(const CSharedString& sect_name)
 {
 	if (!sect_name.size( ))
 	{
@@ -1210,7 +1210,7 @@ void CUIMainIngameWnd::InitFlashingIcons(CUIXml* node)
 	{
 		pIcon = xr_new<CUIStatic>( );
 		xml_init.InitStatic(*node, flashingIconNodeName, i, pIcon);
-		shared_str iconType = node->ReadAttrib(flashingIconNodeName, i, "type", "none");
+		CSharedString iconType = node->ReadAttrib(flashingIconNodeName, i, "type", "none");
 
 		// “еперь запоминаем иконку и ее тип
 		EFlashingIcons type = efiPdaTask;
@@ -1280,7 +1280,7 @@ void CUIMainIngameWnd::UpdatePickUpItem( )
 		return;
 	}
 
-	shared_str sect_name = m_pPickUpItem->object( ).cNameSect( );
+	CSharedString sect_name = m_pPickUpItem->object( ).cNameSect( );
 
 	//properties used by inventory menu
 	int m_iGridWidth = pSettings->r_u32(sect_name, "inv_grid_width");

@@ -267,7 +267,7 @@ void CBinocularsVision::Draw( )
 	}
 }
 
-void CBinocularsVision::Load(const shared_str& section)
+void CBinocularsVision::Load(const CSharedString& section)
 {
 	m_rotating_speed = pSettings->r_float(section, "vis_frame_speed");
 	m_frame_color = pSettings->r_fcolor(section, "vis_frame_color");

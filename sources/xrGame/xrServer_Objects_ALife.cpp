@@ -18,7 +18,7 @@
 #include "..\ENGINE\bone.h"
 #include "..\ENGINE\Render.h"
 
-bool SortStringsByAlphabetPred (const shared_str& s1, const shared_str& s2)
+bool SortStringsByAlphabetPred (const CSharedString& s1, const CSharedString& s2)
 {
 	R_ASSERT(s1.size());
 	R_ASSERT(s2.size());
@@ -195,7 +195,7 @@ void CSE_ALifeObject::STATE_Read			(CNetPacket &tNetPacket, U16 size)
 		tNetPacket.r			(&m_tSpawnID,	sizeof(m_tSpawnID));
 	
 	if ((m_wVersion > 23) && (m_wVersion < 84)) {
-		shared_str				temp;
+		CSharedString				temp;
 		tNetPacket.r_stringZ	(temp);//m_spawn_control);
 	}
 
@@ -818,7 +818,7 @@ void CSE_ALifeObjectHangingLamp::STATE_Read	(CNetPacket	&tNetPacket, U16 size)
 		visual_read				(tNetPacket,m_wVersion);
 
 	if (m_wVersion < 49){
-		shared_str s_tmp;
+		CSharedString s_tmp;
 		float	f_tmp;
 		// model
 		tNetPacket.r_u32			(color);

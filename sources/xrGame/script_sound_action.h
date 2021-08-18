@@ -23,9 +23,8 @@ public:
 		eGoalTypeDummy = u32(-1),
 	};
 
-public:
-	shared_str								m_caSoundToPlay;
-	shared_str								m_caBoneName;
+	CSharedString								m_caSoundToPlay;
+	CSharedString								m_caBoneName;
 	EGoalType							m_tGoalType;
 	bool								m_bLooped;
 	bool								m_bStartedToPlay;
@@ -36,7 +35,6 @@ public:
 	int									m_monster_sound_delay;
 	MonsterSpace::EMonsterHeadAnimType	m_tHeadAnimType;
 
-public:
 	inline				CScriptSoundAction	();
 	inline				CScriptSoundAction	(const char* caSoundToPlay, const char* caBoneName, const Fvector3& tPositionOffset = Fvector3().set(0,0,0), const Fvector3& tAngleOffset = Fvector3().set(0,0,0), bool bLooped = false, ESoundTypes sound_type = SOUND_TYPE_NO_SOUND);
 	inline				CScriptSoundAction	(const char* caSoundToPlay, const Fvector3& tPosition, const Fvector3& tAngleOffset = Fvector3().set(0,0,0), bool bLooped = false, ESoundTypes sound_type = SOUND_TYPE_NO_SOUND);
@@ -60,7 +58,6 @@ public:
 	inline		void	SetSoundType		(const ESoundTypes sound_type);
 	inline		void	initialize			();
 
-public:
 	static void script_register(lua_State*);
 };
 

@@ -90,7 +90,7 @@ void CShootingObject::LoadFireParams(const char* section, const char* prefix)
 {
 	string256	full_name;
 	string32	buffer;
-	shared_str	s_sHitPower;
+	CSharedString	s_sHitPower;
 	//базовая дисперсия оружия
 	fireDispersionBase = pSettings->r_float(section, "fire_dispersion_base");
 	fireDispersionBase = deg2rad(fireDispersionBase);

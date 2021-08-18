@@ -5,8 +5,8 @@
 
 struct BulletData
 {
-	shared_str		FirerName;
-	shared_str		WeaponName;
+	CSharedString		FirerName;
+	CSharedString		WeaponName;
 
 	U16				HitRefCount;
 	U16				HitResponds;
@@ -17,7 +17,7 @@ struct BulletData
 	bool			operator	==		(u32 BulletID)	{return BulletID == Bullet.m_dwID;};
 	bool			operator	!=		(u32 BulletID)	{return BulletID != Bullet.m_dwID;};
 
-	BulletData		(shared_str FName, shared_str WName, SBullet* pBullet);
+	BulletData		(CSharedString FName, CSharedString WName, SBullet* pBullet);
 };
 
 //DEF_VECTOR		(ABULLETS, BulletData);
@@ -30,9 +30,9 @@ struct HitData
 	Fvector3 Pos1;
 	
 	S16		BoneID;
-	shared_str	BoneName;
+	CSharedString	BoneName;
 	U16		TargetID;
-	shared_str	TargetName;
+	CSharedString	TargetName;
 	u32		BulletID;
 	bool	Deadly;
 
@@ -52,8 +52,8 @@ using HITS_VEC_it = HITS_VEC::iterator;
 #define MAX_BASKET		34
 struct Weapon_Statistic
 {
-	shared_str		WName;
-	shared_str		InvName;
+	CSharedString		WName;
+	CSharedString		InvName;
 	u32				NumBought;
 	//---------------------------
 	u32				m_dwRoundsFired, m_dwRoundsFired_d;
@@ -82,7 +82,7 @@ using WEAPON_STATS_it = WEAPON_STATS::iterator;
 
 struct Player_Statistic
 {
-	shared_str		PName;
+	CSharedString		PName;
 	
 	u32				m_dwTotalShots;
 	u32				m_dwTotalShots_d;

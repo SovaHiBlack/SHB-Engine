@@ -178,7 +178,7 @@ void CUIMapWnd::Init(const char* xml_name, const char* start_from)
 		CIniFile::SectCIt	it = S.Data.begin( ), end = S.Data.end( );
 		for (; it != end; it++)
 		{
-			shared_str map_name = it->first;
+			CSharedString map_name = it->first;
 			xr_strlwr(map_name);
 			R_ASSERT2(m_GameMaps.end( ) == m_GameMaps.find(map_name), "Duplicate level name not allowed");
 
@@ -286,7 +286,7 @@ void CUIMapWnd::RemoveMapToRender(CUICustomMap* m)
 	}
 }
 
-void CUIMapWnd::SetTargetMap(const shared_str& name, const Fvector2& pos, bool bZoomIn)
+void CUIMapWnd::SetTargetMap(const CSharedString& name, const Fvector2& pos, bool bZoomIn)
 {
 	U16 idx = GetIdxByName(name);
 	if (idx != U16(-1))
@@ -296,7 +296,7 @@ void CUIMapWnd::SetTargetMap(const shared_str& name, const Fvector2& pos, bool b
 	}
 }
 
-void CUIMapWnd::SetTargetMap(const shared_str& name, bool bZoomIn)
+void CUIMapWnd::SetTargetMap(const CSharedString& name, bool bZoomIn)
 {
 	U16 idx = GetIdxByName(name);
 	if (idx != U16(-1))
@@ -501,7 +501,7 @@ CUICustomMap* CUIMapWnd::GetMapByIdx(U16 idx)
 	return it->second;
 }
 
-U16 CUIMapWnd::GetIdxByName(const shared_str& map_name)
+U16 CUIMapWnd::GetIdxByName(const CSharedString& map_name)
 {
 	GameMapsPairIt it = m_GameMaps.find(map_name);
 	if (it == m_GameMaps.end( ))
@@ -717,7 +717,7 @@ void CUIMapWnd::HideHint(CUIWindow* parent)
 	}
 }
 
-void CUIMapWnd::Hint(const shared_str& text)
+void CUIMapWnd::Hint(const CSharedString& text)
 {
 	m_text_hint->SetTextST(*text);
 }

@@ -42,7 +42,7 @@ inline	u32 compute_string_length		(const char* str)
 	return						(count*xr_strlen(indent) + xr_strlen(j));
 }
 
-inline	void CProfiler::convert_string	(const char* str, shared_str &out, u32 max_string_size)
+inline	void CProfiler::convert_string	(const char* str, CSharedString& out, u32 max_string_size)
 {
 	string256					m_temp;
 	const char* i;
@@ -76,11 +76,11 @@ void CProfiler::setup_timer			(const char* timer_id, const U64& timer_time, cons
 			*j					= 0;
 			TIMERS::iterator	m = m_timers.find(m_temp);
 			if (m == m_timers.end())
-				m_timers.insert	(std::make_pair(shared_str(m_temp),CProfileStats()));
+				m_timers.insert	(std::make_pair(CSharedString(m_temp),CProfileStats()));
 			*j					= '/';
 			k					= j + 1;
 		}
-		i						= m_timers.insert(std::make_pair(shared_str(timer_id),CProfileStats())).first;
+		i						= m_timers.insert(std::make_pair(CSharedString(timer_id),CProfileStats())).first;
 
 		CProfileStats			&current = (*i).second;
 		current.m_min_time		= _time;

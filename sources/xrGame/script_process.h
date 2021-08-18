@@ -46,7 +46,7 @@ public:
 protected:
 	SCRIPT_REGISTRY					m_scripts;
 	SCRIPTS_TO_RUN					m_scripts_to_run;
-	shared_str						m_name;
+	CSharedString						m_name;
 
 protected:
 	u32								m_iterator;				// Oles: iterative update
@@ -55,12 +55,12 @@ protected:
 			void					run_scripts		();
 
 public:
-									CScriptProcess	(shared_str anme, shared_str scripts);
+									CScriptProcess	(CSharedString anme, CSharedString scripts);
 	virtual							~CScriptProcess	();
 			void					update			();
 			void					add_script		(const char* script_name, bool string, bool reload);
 	inline		const SCRIPT_REGISTRY	&scripts		() const;
-	inline		shared_str				name			() const;
+	inline		CSharedString				name			() const;
 };
 
 #include "script_process_inline.h"

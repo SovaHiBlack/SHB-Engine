@@ -318,8 +318,7 @@ u32 CPatrolPathManager::get_next_point(u32 prev_point_index)
 	return target;
 }
 
-
-shared_str	CPatrolPathManager::path_name	() const
+CSharedString	CPatrolPathManager::path_name	() const
 {
 	if (!m_path) {
 		ai().script_engine().script_log(eLuaMessageTypeError,"Path not specified (object %s)!",*m_game_object->cName());

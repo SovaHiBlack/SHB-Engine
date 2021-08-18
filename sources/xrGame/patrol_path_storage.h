@@ -21,7 +21,7 @@ private:
 	typedef IPureSerializeObject<IReader,IWriter>		inherited;
 
 public:
-	typedef associative_vector<shared_str,CPatrolPath*>	PATROL_REGISTRY;
+	typedef associative_vector<CSharedString,CPatrolPath*>	PATROL_REGISTRY;
 	typedef PATROL_REGISTRY::iterator					iterator;
 	typedef PATROL_REGISTRY::const_iterator				const_iterator;
 
@@ -36,7 +36,7 @@ public:
 
 public:
 			void					load_raw			(const CLevelGraph *level_graph, const CGameLevelCrossTable *cross, const CGameGraph *game_graph, IReader &stream);
-	inline		const CPatrolPath		*path				(shared_str patrol_name, bool no_assert = false) const;
+	inline		const CPatrolPath		*path				(CSharedString patrol_name, bool no_assert = false) const;
 	inline		const PATROL_REGISTRY	&patrol_paths		() const;
 };
 

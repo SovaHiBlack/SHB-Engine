@@ -25,8 +25,8 @@ const char* goodwillField			= "goodwill_names";
 
 ref_shader g_EquipmentIconsShader = nullptr;
 
-using CharInfoStringID = std::pair<CHARACTER_RANK_VALUE, shared_str>;
-using CharInfoStrings = xr_map<CHARACTER_RANK_VALUE, shared_str>;
+using CharInfoStringID = std::pair<CHARACTER_RANK_VALUE, CSharedString>;
+using CharInfoStrings = xr_map<CHARACTER_RANK_VALUE, CSharedString>;
 using CharInfoStrings_it = CharInfoStrings::iterator;
 
 CharInfoStrings* charInfoReputationStrings = nullptr;
@@ -176,17 +176,17 @@ ref_shader& InventoryUtilities::GetEquipmentIconsShader( )
 	return g_EquipmentIconsShader;
 }
 
-const shared_str InventoryUtilities::GetGameDateAsString(EDatePrecision datePrec, char dateSeparator)
+const CSharedString InventoryUtilities::GetGameDateAsString(EDatePrecision datePrec, char dateSeparator)
 {
 	return GetDateAsString(Level( ).GetGameTime( ), datePrec, dateSeparator);
 }
 
-const shared_str InventoryUtilities::GetGameTimeAsString(ETimePrecision timePrec, char timeSeparator)
+const CSharedString InventoryUtilities::GetGameTimeAsString(ETimePrecision timePrec, char timeSeparator)
 {
 	return GetTimeAsString(Level( ).GetGameTime( ), timePrec, timeSeparator);
 }
 
-const shared_str InventoryUtilities::GetTimeAsString(ALife::_TIME_ID time, ETimePrecision timePrec, char timeSeparator)
+const CSharedString InventoryUtilities::GetTimeAsString(ALife::_TIME_ID time, ETimePrecision timePrec, char timeSeparator)
 {
 	string64 bufTime;
 
@@ -240,7 +240,7 @@ const shared_str InventoryUtilities::GetTimeAsString(ALife::_TIME_ID time, ETime
 	return bufTime;
 }
 
-const shared_str InventoryUtilities::GetDateAsString(ALife::_TIME_ID date, EDatePrecision datePrec, char dateSeparator)
+const CSharedString InventoryUtilities::GetDateAsString(ALife::_TIME_ID date, EDatePrecision datePrec, char dateSeparator)
 {
 	string32 bufDate;
 

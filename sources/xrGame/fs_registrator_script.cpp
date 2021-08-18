@@ -13,7 +13,7 @@ CLocatorAPI* getFS()
 const char* update_path_script(CLocatorAPI* fs, const char* initial, const char* src)
 {
 	string_path			temp;
-	shared_str			temp_2;
+	CSharedString			temp_2;
 	fs->update_path(temp, initial,src);
 	temp_2 = temp;
 	return *temp_2;

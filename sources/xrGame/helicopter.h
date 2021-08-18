@@ -73,7 +73,7 @@ struct SHeliMovementState{
 	const CPatrolPath::CVertex*		currPatrolVertex;
 	
 	int								patrol_begin_idx;
-	shared_str						patrol_path_name;
+	CSharedString						patrol_path_name;
 	bool							need_to_del_path;
 	float							safe_altitude_add;
 	float							maxLinearSpeed;
@@ -175,7 +175,8 @@ public:
 	U16								m_last_launched_rocket;
 	u32								m_last_rocket_attack;
 
-	shared_str						m_sAmmoType, m_sRocketSection;
+	CSharedString					m_sAmmoType;
+	CSharedString					m_sRocketSection;
 	CCartridge						m_CurrentAmmo;
 	float							delta_t;
 	float							flag_by_fire;
@@ -212,7 +213,7 @@ protected:
 // on death...
 	Fvector3							m_death_ang_vel;
 	float							m_death_lin_vel_k;
-	shared_str						m_death_bones_to_hide;
+	CSharedString						m_death_bones_to_hide;
 
 //////////////////////////////////////////////////
 
@@ -225,7 +226,7 @@ protected:
 	U16								m_light_bone, m_smoke_bone;
 	float							m_light_range, m_light_brightness;
 	Fcolor							m_light_color;
-	shared_str						m_smoke_particle;
+	CSharedString						m_smoke_particle;
 	CParticlesObject*				m_pParticle;
 	Fmatrix							m_particleXFORM;
 

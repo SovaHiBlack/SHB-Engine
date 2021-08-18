@@ -26,7 +26,7 @@ public:
 
 protected:
 	Flags32												m_flags;
-	shared_str											m_hint;
+	CSharedString											m_hint;
 	CMapSpot*											m_level_spot;
 	CMapSpotPointer*									m_level_spot_pointer;
 	CMiniMapSpot*										m_minimap_spot;
@@ -47,7 +47,7 @@ protected:
 		u32												m_updatedFrame;
 		Fvector2										m_Position;
 		Fvector2										m_Direction;
-		shared_str										m_LevelName;
+		CSharedString										m_LevelName;
 		bool											m_Actuality;
 	};
 	SCachedValues										m_cached;
@@ -68,7 +68,7 @@ public:
 	virtual					~CMapLocation				( );
 	virtual void			destroy						( );
 	const char*				GetHint						( );
-	void					SetHint						(const shared_str& hint);
+	void					SetHint						(const CSharedString& hint);
 	bool					PointerEnabled				( )
 	{
 		return SpotEnabled( ) && !!m_flags.test(ePointerEnabled);
@@ -103,7 +103,7 @@ public:
 
 	virtual Fvector2		Position					( );
 	virtual Fvector2		Direction					( );
-	virtual shared_str		LevelName					( );
+	virtual CSharedString		LevelName					( );
 	U16						RefCount					( )
 	{
 		return m_refCount;
@@ -157,7 +157,7 @@ public:
 class CRelationMapLocation : public CMapLocation
 {
 	using inherited										= CMapLocation;
-	shared_str											m_curr_spot_name;
+	CSharedString											m_curr_spot_name;
 	U16													m_pInvOwnerEntityID;
 	U16													m_pInvOwnerActorID;
 	ALife::ERelationType								m_last_relation;
@@ -167,7 +167,7 @@ protected:
 	bool					IsVisible					( );
 
 public:
-							CRelationMapLocation		(const shared_str& type, U16 object_id, U16 pInvOwnerActorID, U16 pInvOwnerEntityID);
+							CRelationMapLocation		(const CSharedString& type, U16 object_id, U16 pInvOwnerActorID, U16 pInvOwnerEntityID);
 	virtual					~CRelationMapLocation		( );
 	virtual bool			Update						( ); //returns actual
 
@@ -183,7 +183,7 @@ public:
 class CUserDefinedMapLocation : public CMapLocation
 {
 	using inherited										= CMapLocation;
-	shared_str											m_level_name;
+	CSharedString											m_level_name;
 	Fvector3												m_position;
 
 public:
@@ -193,9 +193,9 @@ public:
 	virtual bool			Update						( ); //returns actual
 	virtual Fvector2		Position					( );
 	virtual Fvector2		Direction					( );
-	virtual shared_str		LevelName					( );
+	virtual CSharedString		LevelName					( );
 
-	void					InitExternal				(const shared_str& level_name, const Fvector3& pos);
+	void					InitExternal				(const CSharedString& level_name, const Fvector3& pos);
 	virtual void			save						(IWriter& stream);
 	virtual void			load						(IReader& stream);
 

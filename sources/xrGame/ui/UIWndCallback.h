@@ -20,5 +20,5 @@ public:
 	virtual void		OnEvent				(CUIWindow* pWnd, S16 msg, void* pData = nullptr);
 	void				Register			(CUIWindow* pChild);
 	void				AddCallback			(const char* control_id, S16 event, const void_function& f);
-	void				AddCallback			(const shared_str& control_id, S16 event, const void_function& f);
+	void				AddCallback			(const CSharedString& control_id, S16 event, const void_function& f);
 };

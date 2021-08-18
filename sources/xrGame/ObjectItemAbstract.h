@@ -12,12 +12,12 @@
 class CObjectItemAbstract {
 protected:
 	CLASS_ID									m_clsid;
-	shared_str									m_script_clsid;
+	CSharedString									m_script_clsid;
 
 public:
 	inline											CObjectItemAbstract	(const CLASS_ID &clsid, const char* script_clsid);
 	inline		const CLASS_ID						&clsid				() const;
-	inline		shared_str							script_clsid		() const;
+	inline		CSharedString							script_clsid		() const;
 
 	virtual ObjectFactory::CLIENT_BASE_CLASS	*client_object		() const = 0;
 	virtual ObjectFactory::SERVER_BASE_CLASS	*server_object		(const char* section) const = 0;

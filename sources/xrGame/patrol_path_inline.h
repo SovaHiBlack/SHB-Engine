@@ -8,7 +8,7 @@
 
 #pragma once
 
-inline	const CPatrolPath::CVertex *CPatrolPath::point	(shared_str name) const
+inline	const CPatrolPath::CVertex *CPatrolPath::point	(CSharedString name) const
 {
 	const_vertex_iterator		I = vertices().begin();
 	const_vertex_iterator		E = vertices().end();
@@ -43,7 +43,7 @@ inline	const CPatrolPath::CVertex *CPatrolPath::point	(const Fvector3& position)
 }
 
 #ifdef DEBUG
-inline	void CPatrolPath::name							(const shared_str &name)
+inline	void CPatrolPath::name							(const CSharedString& name)
 {
 	VERIFY						(!m_name.size());
 	VERIFY						(name.size());

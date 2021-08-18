@@ -26,7 +26,7 @@ public:
 	using CUICustomItem::SetOriginalRect;
 
 #ifdef DEBUG
-	shared_str										dbg_tex_name;
+	CSharedString										dbg_tex_name;
 #endif // def DEBUG
 
 							CUIStaticItem			( );

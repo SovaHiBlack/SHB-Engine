@@ -87,7 +87,7 @@ public:
 //////////////////////////////////////////////////////////////////////////
 //  Network
 //////////////////////////////////////////////////////////////////////////
-public:
+
 	virtual bool			can_kill( ) const;
 	virtual CInventoryItem* can_kill(CInventory* inventory) const;
 	virtual const CInventoryItem* can_kill(const xr_vector<const CGameObject*>& items) const;
@@ -111,13 +111,13 @@ public:
 //////////////////////////////////////////////////////////////////////////
 //  InventoryItem methods
 //////////////////////////////////////////////////////////////////////////
-public:
+
 	virtual bool			Action(int cmd, u32 flags);
 
 //////////////////////////////////////////////////////////////////////////
 //  Weapon state
 //////////////////////////////////////////////////////////////////////////
-public:
+
 	enum EWeaponStates
 	{
 		eIdle = 0,
@@ -235,15 +235,15 @@ public:
 		return m_iGrenadeLauncherY;
 	}
 
-	const shared_str& GetGrenadeLauncherName( )
+	const CSharedString& GetGrenadeLauncherName( )
 	{
 		return m_sGrenadeLauncherName;
 	}
-	const shared_str& GetScopeName( )
+	const CSharedString& GetScopeName( )
 	{
 		return m_sScopeName;
 	}
-	const shared_str& GetSilencerName( )
+	const CSharedString& GetSilencerName( )
 	{
 		return m_sSilencerName;
 	}
@@ -267,9 +267,9 @@ protected:
 	ALife::EWeaponAddonStatus	m_eGrenadeLauncherStatus;
 
 	//названия секций подключаемых аддонов
-	shared_str		m_sScopeName;
-	shared_str		m_sSilencerName;
-	shared_str		m_sGrenadeLauncherName;
+	CSharedString		m_sScopeName;
+	CSharedString		m_sSilencerName;
+	CSharedString		m_sGrenadeLauncherName;
 
 	//смещение иконов апгрейдов в инвентаре
 	int	m_iScopeX, m_iScopeY;
@@ -279,7 +279,6 @@ protected:
 ///////////////////////////////////////////////////
 //	для режима приближения и снайперского прицела
 ///////////////////////////////////////////////////
-protected:
 	//разрешение режима приближения
 	bool			m_bZoomEnabled;
 	//текущий фактор приближения
@@ -335,7 +334,6 @@ public:
 
 	virtual float				Weight( );
 
-public:
 	virtual EHandDependence		HandDependence( )	const
 	{
 		return eHandDependence;
@@ -345,7 +343,6 @@ public:
 		return m_bIsSingleHanded;
 	}
 
-public:
 	inline		const char* strap_bone0( ) const
 	{
 		return m_strap_bone0;
@@ -517,7 +514,6 @@ protected:
 	float					m_fPDM_disp_crouch_no_acc;
 	//  [8/2/2005]
 
-protected:
 	//для отдачи оружия
 	Fvector3					m_vRecoilDeltaAngle;
 
@@ -525,14 +521,13 @@ protected:
 // партиклы
 //////////////////////////////////////////////////////////////////////////
 
-protected:
+
 	//для второго ствола
 	void			StartFlameParticles2( );
 	void			StopFlameParticles2( );
 	void			UpdateFlameParticles2( );
 
-protected:
-	shared_str					m_sFlameParticles2;
+	CSharedString					m_sFlameParticles2;
 	//объект партиклов для стрельбы из 2-го ствола
 	CParticlesObject* m_pFlameParticles2;
 
@@ -591,14 +586,14 @@ protected:
 	bool					m_bAmmoWasSpawned;
 	//  [10/5/2005]
 
-	virtual bool			IsNecessaryItem(const shared_str& item_sect);
+	virtual bool			IsNecessaryItem(const CSharedString& item_sect);
 
 public:
-	xr_vector<shared_str>	m_ammoTypes;
+	xr_vector<CSharedString>	m_ammoTypes;
 
 	CWeaponAmmo* m_pAmmo;
 	u32						m_ammoType;
-	shared_str				m_ammoName;
+	CSharedString				m_ammoName;
 	BOOL					m_bHasTracers;
 	U8						m_u8TracerColorID;
 	u32						m_set_next_ammoType_on_reload;

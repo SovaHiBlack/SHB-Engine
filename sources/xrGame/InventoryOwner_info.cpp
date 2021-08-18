@@ -23,7 +23,7 @@ void CInventoryOwner::OnEvent(CNetPacket& P, U16 type)
 		case GE_INFO_TRANSFER:
 		{
 			U16 id;
-			shared_str info_id;
+			CSharedString info_id;
 			U8 add_info;
 
 			P.r_u16(id);				//отправитель
@@ -46,7 +46,7 @@ void CInventoryOwner::OnEvent(CNetPacket& P, U16 type)
 class CFindByIDPred
 {
 public:
-	CFindByIDPred(shared_str element_to_find)
+	CFindByIDPred(CSharedString element_to_find)
 	{
 		element = element_to_find;
 	}
@@ -56,10 +56,10 @@ public:
 	}
 
 private:
-	shared_str element;
+	CSharedString element;
 };
 
-bool CInventoryOwner::OnReceiveInfo(shared_str info_id) const
+bool CInventoryOwner::OnReceiveInfo(CSharedString info_id) const
 {
 	VERIFY(info_id.size( ));
 	//добавить запись в реестр
@@ -120,7 +120,7 @@ void CInventoryOwner::DumpInfo( ) const
 }
 #endif
 
-void CInventoryOwner::OnDisableInfo(shared_str info_id) const
+void CInventoryOwner::OnDisableInfo(CSharedString info_id) const
 {
 	VERIFY(info_id.size( ));
 	//удалить запись из реестра
@@ -139,7 +139,7 @@ void CInventoryOwner::OnDisableInfo(shared_str info_id) const
 	known_info.erase(it);
 }
 
-void CInventoryOwner::TransferInfo(shared_str info_id, bool add_info) const
+void CInventoryOwner::TransferInfo(CSharedString info_id, bool add_info) const
 {
 	VERIFY(info_id.size( ));
 	const CObject* pThisObject = smart_cast<const CObject*>(this); VERIFY(pThisObject);
@@ -162,7 +162,7 @@ void CInventoryOwner::TransferInfo(shared_str info_id, bool add_info) const
 	}
 }
 
-bool CInventoryOwner::HasInfo(shared_str info_id) const
+bool CInventoryOwner::HasInfo(CSharedString info_id) const
 {
 	VERIFY(info_id.size( ));
 	const KNOWN_INFO_VECTOR* known_info = m_known_info_registry->registry( ).objects_ptr( );
@@ -174,7 +174,7 @@ bool CInventoryOwner::HasInfo(shared_str info_id) const
 	return true;
 }
 
-bool CInventoryOwner::GetInfo(shared_str info_id, INFO_DATA& info_data) const
+bool CInventoryOwner::GetInfo(CSharedString info_id, INFO_DATA& info_data) const
 {
 	VERIFY(info_id.size( ));
 	const KNOWN_INFO_VECTOR* known_info = m_known_info_registry->registry( ).objects_ptr( );

@@ -7,10 +7,10 @@
 
 struct event_comparer
 {
-	shared_str name;
+	CSharedString name;
 	S16 event;
 
-	event_comparer(shared_str n, S16 e) : name(n), event(e)
+	event_comparer(CSharedString n, S16 e) : name(n), event(e)
 	{ }
 	bool operator ( ) (SCallbackInfo* i)
 	{
@@ -65,7 +65,7 @@ void CUIWndCallback::AddCallback(const char* control_id, S16 event, const void_f
 	c->m_event = event;
 }
 
-void CUIWndCallback::AddCallback(const shared_str& control_id, S16 event, const void_function& f)
+void CUIWndCallback::AddCallback(const CSharedString& control_id, S16 event, const void_function& f)
 {
 	SCallbackInfo* c = NewCallback( );
 	c->m_cpp_callback = f;

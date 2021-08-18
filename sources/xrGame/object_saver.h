@@ -87,7 +87,7 @@ struct CSaver {
 		stream.w_stringZ				(data);
 	}
 
-	inline	static void save_data(const shared_str &data, M &stream, const P &p)
+	inline	static void save_data(const CSharedString& data, M &stream, const P &p)
 	{
 		stream.w_stringZ				(data);
 	}

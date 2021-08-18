@@ -35,7 +35,7 @@ struct CCloner {
 		_2							= xr_strdup(_1);
 	}
 
-	inline	static void clone(const shared_str &_1, shared_str &_2)
+	inline	static void clone(const CSharedString& _1, CSharedString& _2)
 	{
 		_2							= _1;
 	}

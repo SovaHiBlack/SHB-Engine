@@ -53,7 +53,7 @@ public:
 	void				PerformSwitchGL				( );
 	void				OnAnimationEnd				(u32 state);
 
-	virtual bool		IsNecessaryItem				(const shared_str& item_sect);
+	virtual bool		IsNecessaryItem				(const CSharedString& item_sect);
 
 	//виртуальные функции для проигрывания анимации HUD
 	virtual void		PlayAnimShow				( );
@@ -87,10 +87,10 @@ public:
 
 	//дополнительные параметры патронов для подствольника
 	CWeaponAmmo*									m_pAmmo2;
-	shared_str										m_ammoSect2;
-	xr_vector<shared_str>							m_ammoTypes2;
+	CSharedString										m_ammoSect2;
+	xr_vector<CSharedString>							m_ammoTypes2;
 	u32												m_ammoType2;
-	shared_str										m_ammoName2;
+	CSharedString										m_ammoName2;
 	int												iMagazineSize2;
 	xr_vector<CCartridge>							m_magazine2;
 	bool											m_bGrenadeMode;
@@ -100,5 +100,5 @@ public:
 	virtual void		UpdateGrenadeVisibility		(bool visibility);
 
 	//название косточки для гранаты подствольника в HUD
-	shared_str										grenade_bone_name;
+	CSharedString										grenade_bone_name;
 };

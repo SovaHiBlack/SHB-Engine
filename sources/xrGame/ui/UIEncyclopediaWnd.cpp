@@ -172,7 +172,7 @@ void CUIEncyclopediaWnd::Show(bool status)
 	inherited::Show(status);
 }
 
-bool CUIEncyclopediaWnd::HasArticle(shared_str id)
+bool CUIEncyclopediaWnd::HasArticle(CSharedString id)
 {
 	ReloadArticles( );
 	for (std::size_t i = 0; i < m_ArticlesDB.size( ); ++i)
@@ -228,7 +228,7 @@ void CUIEncyclopediaWnd::SetCurrentArtice(CUITreeViewItem* pTVItem)
 	}
 }
 
-void CUIEncyclopediaWnd::AddArticle(shared_str article_id, bool bReaded)
+void CUIEncyclopediaWnd::AddArticle(CSharedString article_id, bool bReaded)
 {
 	for (std::size_t i = 0; i < m_ArticlesDB.size( ); i++)
 	{

@@ -13,7 +13,7 @@
 
 class CTradeFactorParameters {
 public:
-	typedef associative_vector<shared_str,CTradeFactors>	FACTORS;
+	typedef associative_vector<CSharedString,CTradeFactors>	FACTORS;
 
 private:
 	FACTORS					m_factors;
@@ -21,9 +21,9 @@ private:
 public:
 	inline						CTradeFactorParameters	();
 	inline	void				clear					();
-	inline	void				enable					(const shared_str &section, const CTradeFactors &factors);
-	inline	bool				enabled					(const shared_str &section) const;
-	inline	const CTradeFactors	&factors				(const shared_str &section) const;
+	inline	void				enable					(const CSharedString& section, const CTradeFactors &factors);
+	inline	bool				enabled					(const CSharedString& section) const;
+	inline	const CTradeFactors	&factors				(const CSharedString& section) const;
 };
 
 #include "trade_factor_parameters_inline.h"

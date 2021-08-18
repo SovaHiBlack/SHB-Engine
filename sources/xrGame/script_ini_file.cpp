@@ -31,7 +31,7 @@ const char* CScriptIniFile::update		(const char* file_name)
 {
 	string_path			S1;
 	FS.update_path		(S1,"$game_config$",file_name);
-	return				(*shared_str(S1));
+	return				(*CSharedString(S1));
 }
 
 bool CScriptIniFile::line_exist		(const char* S, const char* L)

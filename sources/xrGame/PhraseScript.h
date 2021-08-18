@@ -27,14 +27,14 @@ public:
 	virtual bool							Precondition		(const CGameObject* pSpeaker1, const CGameObject* pSpeaker2, const char* dialog_id, const char* phrase_id, const char* next_phrase_id) const;
 	virtual void							Action				(const CGameObject* pSpeaker1, const CGameObject* pSpeaker2, const char* dialog_id, const char* phrase_id) const;
 
-	using PRECONDITION_VECTOR									= xr_vector<shared_str>;
+	using PRECONDITION_VECTOR									= xr_vector<CSharedString>;
 
 	virtual const PRECONDITION_VECTOR&		Preconditions		( ) const
 	{
 		return m_Preconditions;
 	}
 
-	using ACTION_NAME_VECTOR									= xr_vector<shared_str>;
+	using ACTION_NAME_VECTOR									= xr_vector<CSharedString>;
 
 	virtual const ACTION_NAME_VECTOR&		Actions				( ) const
 	{
@@ -58,15 +58,15 @@ protected:
 	virtual void							TransferInfo		(const CInventoryOwner* pOwner) const;
 
 	//скриптовые действия, которые активируется после того как говорится фраза
-	using ACTION_NAME_VECTOR									= xr_vector<shared_str>;
+	using ACTION_NAME_VECTOR									= xr_vector<CSharedString>;
 	ACTION_NAME_VECTOR											m_ScriptActions;
 
-	using INFO_VECTOR											= xr_vector<shared_str>;
+	using INFO_VECTOR											= xr_vector<CSharedString>;
 	INFO_VECTOR													m_GiveInfo;
 	INFO_VECTOR													m_DisableInfo;
 
 	//список скриптовых предикатов, выполнение, которых необходимо для того чтоб фраза стала доступной
-	using PRECONDITION_VECTOR									= xr_vector<shared_str>;
+	using PRECONDITION_VECTOR									= xr_vector<CSharedString>;
 	PRECONDITION_VECTOR											m_Preconditions;
 
 	//проверка наличия/отсутствия информации

@@ -18,7 +18,7 @@ CPhraseDialogManager::CPhraseDialogManager( )
 CPhraseDialogManager::~CPhraseDialogManager( )
 { }
 
-const DIALOG_SHARED_PTR& CPhraseDialogManager::GetDialogByID(const shared_str& dialog_id) const
+const DIALOG_SHARED_PTR& CPhraseDialogManager::GetDialogByID(const CSharedString& dialog_id) const
 {
 	R_ASSERT2(HaveAvailableDialog(dialog_id), dialog_id.c_str( ));
 	DIALOG_VECTOR::const_iterator it = m_AvailableDialogs.begin( );
@@ -36,7 +36,7 @@ const DIALOG_SHARED_PTR& CPhraseDialogManager::GetDialogByID(const shared_str& d
 	return m_AvailableDialogs.front( );
 }
 
-bool CPhraseDialogManager::HaveAvailableDialog(const shared_str& dialog_id) const
+bool CPhraseDialogManager::HaveAvailableDialog(const CSharedString& dialog_id) const
 {
 	DIALOG_VECTOR::const_iterator it = m_AvailableDialogs.begin( );
 	DIALOG_VECTOR::const_iterator it_e = m_AvailableDialogs.end( );
@@ -70,7 +70,7 @@ void CPhraseDialogManager::AddDialog(DIALOG_SHARED_PTR& phrase_dialog)
 void CPhraseDialogManager::ReceivePhrase(DIALOG_SHARED_PTR& phrase_dialog)
 { }
 
-void CPhraseDialogManager::SayPhrase(DIALOG_SHARED_PTR& phrase_dialog, const shared_str& phrase_id)
+void CPhraseDialogManager::SayPhrase(DIALOG_SHARED_PTR& phrase_dialog, const CSharedString& phrase_id)
 {
 	DIALOG_VECTOR_IT it = std::find(m_ActiveDialogs.begin( ), m_ActiveDialogs.end( ), phrase_dialog);
 	THROW(m_ActiveDialogs.end( ) != it);
@@ -101,7 +101,7 @@ void CPhraseDialogManager::UpdateAvailableDialogs(CPhraseDialogManager* partner)
 	std::sort(m_AvailableDialogs.begin( ), m_AvailableDialogs.end( ), dialog_priority);
 }
 
-bool CPhraseDialogManager::AddAvailableDialog(shared_str dialog_id, CPhraseDialogManager* partner)
+bool CPhraseDialogManager::AddAvailableDialog(CSharedString dialog_id, CPhraseDialogManager* partner)
 {
 //	PHRASE_DIALOG_INDEX dialog_index = CPhraseDialog::IdToIndex(dialog_id);
 	if (std::find(m_CheckedDialogs.begin( ), m_CheckedDialogs.end( ), dialog_id) != m_CheckedDialogs.end( ))

@@ -39,7 +39,7 @@ protected:
 	//Events
 	virtual		void				OnEvent					(CNetPacket &tNetPacket, U16 type, u32 time, ClientID sender );
 
-	virtual		void				ReadOptions				(shared_str &options);
+	virtual		void				ReadOptions				(CSharedString& options);
 	virtual		void				ConsoleCommands_Create	();
 	virtual		void				ConsoleCommands_Clear	();
 
@@ -146,7 +146,7 @@ public:
 	virtual		void				OnPlayerHitPlayer		(U16 id_hitter, U16 id_hitted, CNetPacket& P){}; //игрок получил Hit
 
 	// Main
-	virtual		void				Create					(shared_str& options);
+	virtual		void				Create					(CSharedString& options);
 	virtual		void				Update					();
 	virtual		void				net_Export_State		(CNetPacket& P, ClientID id_to);				// full state
 	virtual		void				net_Export_Update		(CNetPacket& P, ClientID id_to, ClientID id);		// just incremental update for specific client
@@ -168,7 +168,7 @@ public:
 	virtual		void				remove_all_restrictions	(CNetPacket &packet, U16 id);
 	virtual		bool				custom_sls_default		() {return false;};
 	virtual		void				sls_default				() {};
-	virtual		shared_str			level_name				(const shared_str &server_options) const;
+	virtual		CSharedString			level_name				(const CSharedString& server_options) const;
 	virtual		void				on_death				(CSE_Abstract *e_dest, CSE_Abstract *e_src);
 
 	virtual		void				DumpOnlineStatistic		(){};

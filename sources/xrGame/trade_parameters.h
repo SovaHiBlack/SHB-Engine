@@ -36,21 +36,21 @@ private:
 	inline	CTradeBoolParameters			&action			(action_show);
 
 public:
-	inline									CTradeParameters(const shared_str &section = "trade");
+	inline									CTradeParameters(const CSharedString& section = "trade");
 	inline	void							clear			();
 
 	inline	static CTradeParameters			&instance		();
 	inline	static void						clean			();
 
 	template <typename _action_type>
-	inline	bool							enabled			(_action_type type, const shared_str &section) const;
+	inline	bool							enabled			(_action_type type, const CSharedString& section) const;
 
 	template <typename _action_type>
-	inline	const CTradeFactors				&factors		(_action_type type, const shared_str &section) const;
+	inline	const CTradeFactors				&factors		(_action_type type, const CSharedString& section) const;
 
 	template <typename _action_type>
-	inline	void							process			(_action_type type, CIniFile&ini_file, const shared_str &section);
-		void							process			(action_show, CIniFile&ini_file, const shared_str &section);
+	inline	void							process			(_action_type type, CIniFile&ini_file, const CSharedString& section);
+		void							process			(action_show, CIniFile&ini_file, const CSharedString& section);
 
 	template <typename _action_type>
 	inline	void							default_factors	(_action_type type, const CTradeFactors &trade_factors);

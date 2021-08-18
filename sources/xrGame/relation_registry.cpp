@@ -81,7 +81,7 @@ void RELATION_REGISTRY::clear_relation_registry()
 	xr_delete(m_spot_names);
 }
 
-const shared_str& RELATION_REGISTRY::GetSpotName(ALife::ERelationType& type)
+const CSharedString& RELATION_REGISTRY::GetSpotName(ALife::ERelationType& type)
 {
 	if (!m_spot_names)
 	{

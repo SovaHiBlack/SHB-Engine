@@ -140,7 +140,7 @@ BOOL CWeaponMagazinedWGrenade::net_Spawn(CSE_Abstract* DC)
 
 	if (b_if_grenade_mode || b_if_simple_mode)
 	{
-		shared_str fake_grenade_name = pSettings->r_string(pM->back( ).m_ammoSect, "fake_grenade_name");
+		CSharedString fake_grenade_name = pSettings->r_string(pM->back( ).m_ammoSect, "fake_grenade_name");
 		CRocketLauncher::SpawnRocket(*fake_grenade_name, this);
 	}
 
@@ -482,7 +482,7 @@ void CWeaponMagazinedWGrenade::ReloadMagazine( )
 	//перезарядка подствольного гранатомета
 	if (iAmmoElapsed && !getRocketCount( ) && m_bGrenadeMode)
 	{
-		shared_str fake_grenade_name = pSettings->r_string(*m_ammoTypes[m_ammoType], "fake_grenade_name");
+		CSharedString fake_grenade_name = pSettings->r_string(*m_ammoTypes[m_ammoType], "fake_grenade_name");
 		CRocketLauncher::SpawnRocket(*fake_grenade_name, this);
 	}
 }
@@ -864,7 +864,7 @@ void CWeaponMagazinedWGrenade::net_Import(CNetPacket& P)
 	inherited::net_Import(P);
 }
 
-bool CWeaponMagazinedWGrenade::IsNecessaryItem(const shared_str& item_sect)
+bool CWeaponMagazinedWGrenade::IsNecessaryItem(const CSharedString& item_sect)
 {
 	return (std::find(m_ammoTypes.begin( ), m_ammoTypes.end( ), item_sect) != m_ammoTypes.end( ) || std::find(m_ammoTypes2.begin( ), m_ammoTypes2.end( ), item_sect) != m_ammoTypes2.end( ));
 }

@@ -18,7 +18,7 @@ bool r_eof(IReader *self)
 
 const char* r_stringZ(IReader *self)
 {
-	shared_str		temp;
+	CSharedString		temp;
 	self->r_stringZ	(temp);
 	return			(*temp);
 }

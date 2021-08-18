@@ -23,7 +23,7 @@ game_sv_Single::~game_sv_Single			()
 	delete_data					(m_alife_simulator);
 }
 
-void	game_sv_Single::Create			(shared_str& options)
+void	game_sv_Single::Create			(CSharedString& options)
 {
 	inherited::Create					(options);
 
@@ -227,7 +227,7 @@ bool game_sv_Single::load_game					(CNetPacket &net_packet, ClientID sender)
 {
 	if (!ai().get_alife())
 		return					(inherited::load_game(net_packet,sender));
-	shared_str						game_name;
+	CSharedString						game_name;
 	net_packet.r_stringZ		(game_name);
 	return						(alife().load_game(*game_name,true));
 }
@@ -304,7 +304,7 @@ void game_sv_Single::sls_default				()
 	alife().update_switch	();
 }
 
-shared_str game_sv_Single::level_name			(const shared_str &server_options) const
+CSharedString game_sv_Single::level_name			(const CSharedString& server_options) const
 {
 	if (!ai().get_alife())
 		return				(inherited::level_name(server_options));
@@ -323,7 +323,7 @@ void game_sv_Single::on_death					(CSE_Abstract *e_dest, CSE_Abstract *e_src)
 
 void game_sv_Single::restart_simulator			(const char* saved_game_name)
 {
-	shared_str				&options = *alife().server_command_line();
+	CSharedString&			options = *alife().server_command_line();
 
 	delete_data				(m_alife_simulator);
 	server().clear_ids		();

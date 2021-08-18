@@ -31,19 +31,19 @@ public:
 	using ParticlesInfoList = xr_vector<SParticlesInfo>;
 	using ParticlesInfoListIt = ParticlesInfoList::iterator;
 
-	//структура для косточки с списком запущенных партиклов
+	//структура для косточки со списком запущенных партиклов
 	struct SBoneInfo
 	{
 		U16					index;
 		Fvector3				offset;
 		ParticlesInfoList	particles;
-		SParticlesInfo* FindParticles(const shared_str& ps_name);
+		SParticlesInfo* FindParticles(const CSharedString& ps_name);
 
 	public:
 		SBoneInfo(U16 idx, const Fvector3& offs) :index(idx), offset(offs)
 		{ }
-		SParticlesInfo* AppendParticles(CObject* object, const shared_str& ps_name);
-		void				StopParticles(const shared_str& ps_name, bool bDestroy);
+		SParticlesInfo* AppendParticles(CObject* object, const CSharedString& ps_name);
+		void				StopParticles(const CSharedString& ps_name, bool bDestroy);
 		void				StopParticles(U16 sender_id, bool bDestroy);
 	};
 
@@ -89,16 +89,16 @@ public:
 
 	void					UpdateParticles( );
 
-	void					StartParticles(const shared_str& ps_name, U16 bone_num, const Fvector3& dir, U16 sender_id, int life_time = -1, bool auto_stop = true);
-	void					StartParticles(const shared_str& ps_name, const Fvector3& dir, U16 sender_id, int life_time = -1, bool auto_stop = true);
+	void					StartParticles(const CSharedString& ps_name, U16 bone_num, const Fvector3& dir, U16 sender_id, int life_time = -1, bool auto_stop = true);
+	void					StartParticles(const CSharedString& ps_name, const Fvector3& dir, U16 sender_id, int life_time = -1, bool auto_stop = true);
 
-	void					StartParticles(const shared_str& ps_name, U16 bone_num, const Fmatrix& dir, U16 sender_id, int life_time = -1, bool auto_stop = true);
-	void					StartParticles(const shared_str& ps_name, const Fmatrix& dir, U16 sender_id, int life_time = -1, bool auto_stop = true);
+	void					StartParticles(const CSharedString& ps_name, U16 bone_num, const Fmatrix& dir, U16 sender_id, int life_time = -1, bool auto_stop = true);
+	void					StartParticles(const CSharedString& ps_name, const Fmatrix& dir, U16 sender_id, int life_time = -1, bool auto_stop = true);
 
 
 	void					StopParticles(U16 sender_ID, U16 bone_id, bool bDestroy);
-	void					StopParticles(const shared_str& particles_name, U16 bone_id, bool bDestroy);
-	void					AutoStopParticles(const shared_str& ps_name, U16 bone_id, u32 life_time);
+	void					StopParticles(const CSharedString& particles_name, U16 bone_id, bool bDestroy);
+	void					AutoStopParticles(const CSharedString& ps_name, U16 bone_id, u32 life_time);
 
 	static void				MakeXFORM(CObject* pObject, U16 bone_id, const Fvector3& dir, const Fvector3& offset, Fmatrix& result);
 	static void				GetBonePos(CObject* pObject, U16 bone_id, const Fvector3& offset, Fvector3& result);

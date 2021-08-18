@@ -70,7 +70,7 @@ inline	void CScriptMovementAction::SetPathType			(const DetailPathManager::EDeta
 	m_bCompleted		= false;
 }
 
-inline	void CScriptMovementAction::SetPatrolPath		(const CPatrolPath *path, shared_str path_name)
+inline	void CScriptMovementAction::SetPatrolPath		(const CPatrolPath *path, CSharedString path_name)
 {
 	m_path				= path;
 	m_path_name			= path_name;

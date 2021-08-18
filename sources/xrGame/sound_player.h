@@ -17,12 +17,12 @@ public:
 	struct CSoundParams {
 		u32										m_priority;
 		u32										m_synchro_mask;
-		shared_str								m_bone_name;
+		CSharedString								m_bone_name;
 	};
 
 	struct CSoundCollectionParams {
-		shared_str								m_sound_prefix;
-		shared_str								m_sound_player_prefix;
+		CSharedString								m_sound_prefix;
+		CSharedString								m_sound_player_prefix;
 		u32										m_max_count;
 		ESoundTypes								m_type;
 
@@ -125,7 +125,7 @@ private:
 	xr_vector<CSoundSingle>						m_playing_sounds;
 	u32											m_sound_mask;
 	CObject										*m_object;
-	shared_str									m_sound_prefix;
+	CSharedString									m_sound_prefix;
 
 	inline		Fvector3		compute_sound_point			(const CSoundSingle &sound);
 			void		remove_inappropriate_sounds	(u32 sound_mask);
@@ -150,8 +150,8 @@ public:
 			bool		need_bone_data				() const;
 	inline	const SOUND_COLLECTIONS &objects			() const;
 	inline		bool		active_sound_type			(u32 synchro_mask) const;
-	inline		void		sound_prefix				(const shared_str &sound_prefix);
-	inline	const shared_str &sound_prefix				() const;
+	inline		void		sound_prefix				(const CSharedString& sound_prefix);
+	inline	const CSharedString& sound_prefix				() const;
 };
 
 #include "sound_player_inline.h"

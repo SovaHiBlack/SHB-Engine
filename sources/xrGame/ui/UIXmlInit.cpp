@@ -113,7 +113,7 @@ bool CUIXmlInit::InitFrameWindow(CUIXml& xml_doc, const char* path, int index, C
 	string256 buf;
 /*
 	strconcat(buf, path, ":left_top_texture");
-	shared_str tex_name = xml_doc.Read(buf, index, NULL);
+	CSharedString tex_name = xml_doc.Read(buf, index, NULL);
 
 	float x = xml_doc.ReadAttribFlt(buf, index, "x");
 	float y = xml_doc.ReadAttribFlt(buf, index, "y");
@@ -153,8 +153,8 @@ bool CUIXmlInit::InitOptionsItem(CUIXml& xml_doc, const char* paht, int index, C
 
 	if (xml_doc.NavigateToNode(buf, index))
 	{
-		shared_str entry = xml_doc.ReadAttrib(buf, index, "entry");
-		shared_str group = xml_doc.ReadAttrib(buf, index, "group");
+		CSharedString entry = xml_doc.ReadAttrib(buf, index, "entry");
+		CSharedString group = xml_doc.ReadAttrib(buf, index, "group");
 
 		pWnd->Register(*entry, *group);
 		return true;
@@ -255,7 +255,7 @@ bool CUIXmlInit::InitSpin(CUIXml& xml_doc, const char* path, int index, CUICusto
 bool CUIXmlInit::InitText(CUIXml& xml_doc, const char* path, int index, CUIStatic* pWnd)
 {
 	InitText(xml_doc, path, index, (IUITextControl*) pWnd);
-	shared_str al = xml_doc.ReadAttrib(path, index, "vert_align", "");
+	CSharedString al = xml_doc.ReadAttrib(path, index, "vert_align", "");
 	if (0 == xr_strcmp(al, "c"))
 	{
 		pWnd->SetVTextAlignment(valCenter);
@@ -291,7 +291,7 @@ bool CUIXmlInit::InitText(CUIXml& xml_doc, const char* path, int index, IUITextC
 		pWnd->SetFont(pTmpFont);
 	}
 	// Load font alignment
-	shared_str al = xml_doc.ReadAttrib(path, index, "align");
+	CSharedString al = xml_doc.ReadAttrib(path, index, "align");
 	if (0 == xr_strcmp(al, "c"))
 	{
 		pWnd->SetTextAlignment(CGameFont::alCenter);
@@ -305,7 +305,7 @@ bool CUIXmlInit::InitText(CUIXml& xml_doc, const char* path, int index, IUITextC
 		pWnd->SetTextAlignment(CGameFont::alLeft);
 	}
 
-	shared_str text = xml_doc.Read(path, index, NULL);
+	CSharedString text = xml_doc.Read(path, index, NULL);
 	CStringTable st;
 	if (!!text)
 	{
@@ -377,8 +377,8 @@ bool CUIXmlInit::InitSound(CUIXml& xml_doc, const char* path, int index, CUI3tBu
 	strconcat(sizeof(sound_h), sound_h, path, ":sound_h");
 	strconcat(sizeof(sound_t), sound_t, path, ":sound_t");
 
-	shared_str sound_h_result = xml_doc.Read(sound_h, index, "");
-	shared_str sound_t_result = xml_doc.Read(sound_t, index, "");
+	CSharedString sound_h_result = xml_doc.Read(sound_h, index, "");
+	CSharedString sound_t_result = xml_doc.Read(sound_t, index, "");
 
 	if (xr_strlen(sound_h_result) != 0)
 	{
@@ -482,7 +482,7 @@ bool CUIXmlInit::InitListWnd(CUIXml& xml_doc, const char* path, int index, CUILi
 	CGameFont* LocalFont = nullptr;
 	u32 cl;
 
-	shared_str text_path = strconcat(sizeof(buf), buf, path, ":font");
+	CSharedString text_path = strconcat(sizeof(buf), buf, path, ":font");
 	InitFont(xml_doc, *text_path, index, cl, LocalFont);
 	if (LocalFont)
 	{
@@ -654,7 +654,7 @@ bool CUIXmlInit::InitFont(CUIXml& xml_doc, const char* path, int index, u32& col
 {
 	color = GetColor(xml_doc, path, index, 0xff);
 
-	shared_str font_name = xml_doc.ReadAttrib(path, index, "font", NULL);
+	CSharedString font_name = xml_doc.ReadAttrib(path, index, "font", NULL);
 	if (*font_name == NULL || xr_strlen(*font_name) < 1)
 	{
 		pFnt = nullptr;
@@ -761,7 +761,7 @@ bool CUIXmlInit::InitFrameLine(CUIXml& xml_doc, const char* path, int index, CUI
 	bool vertical = !!xml_doc.ReadAttribInt(path, index, "vertical");
 
 	strconcat(sizeof(buf), buf, path, ":texture");
-	shared_str base_name = xml_doc.Read(buf, index, NULL);
+	CSharedString base_name = xml_doc.Read(buf, index, NULL);
 	VERIFY(base_name);
 
 	u32 color = GetColor(xml_doc, buf, index, 0xff);
@@ -887,7 +887,7 @@ bool CUIXmlInit::InitTextBanner(CUIXml& xml_doc, const char* path, int index, CU
 {
 	R_ASSERT3(xml_doc.NavigateToNode(path, index), "XML node not found", path);
 
-	xr_map<shared_str, CUITextBanner::TextBannerStyles> conformityTable;
+	xr_map<CSharedString, CUITextBanner::TextBannerStyles> conformityTable;
 	conformityTable["none"] = CUITextBanner::tbsNone;
 	conformityTable["fade"] = CUITextBanner::tbsFade;
 	conformityTable["flicker"] = CUITextBanner::tbsFlicker;
@@ -898,7 +898,7 @@ bool CUIXmlInit::InitTextBanner(CUIXml& xml_doc, const char* path, int index, CU
 	XML_NODE* old_node = xml_doc.GetLocalRoot( );
 	xml_doc.SetLocalRoot(tab_node);
 
-	shared_str a;
+	CSharedString a;
 
 	for (int i = 0; i < animationsCount; ++i)
 	{
@@ -992,7 +992,7 @@ bool CUIXmlInit::InitAnimatedStatic(CUIXml& xml_doc, const char* path, int index
 bool CUIXmlInit::InitTexture(CUIXml& xml_doc, const char* path, int index, IUIMultiTextureOwner* pWnd)
 {
 	string256 buf;
-	shared_str texture;
+	CSharedString texture;
 
 	strconcat(sizeof(buf), buf, path, ":texture");
 	if (xml_doc.NavigateToNode(buf))
@@ -1062,7 +1062,7 @@ bool CUIXmlInit::InitMultiTexture(CUIXml& xml_doc, const char* path, int index, 
 	bool success = false;
 
 	strconcat(sizeof(buff), buff, path, ":texture");
-	shared_str texture = xml_doc.Read(buff, index, NULL);
+	CSharedString texture = xml_doc.Read(buff, index, NULL);
 
 	if (texture.size( ) > 0)
 	{
@@ -1173,7 +1173,7 @@ bool CUIXmlInit::InitAlignment(CUIXml& xml_doc, const char* path, int index, flo
 	}
 
 	// Alignment: right: "r", bottom: "b". Top, left - useless
-	shared_str	alignStr = xml_doc.ReadAttrib(path, index, "align", "");
+	CSharedString	alignStr = xml_doc.ReadAttrib(path, index, "align", "");
 
 	bool result = false;
 
@@ -1213,7 +1213,7 @@ void CUIXmlInit::InitColorDefs( )
 
 	int num = uiXml.GetNodesNum("colors", 0, "color");
 
-	shared_str name;
+	CSharedString name;
 	int r;
 	int b;
 	int g;
@@ -1302,7 +1302,7 @@ bool CUIXmlInit::InitListBox(CUIXml& xml_doc, const char* path, int index, CUILi
 	pWnd->SetTextColorS(t_color);
 
 	// Load font alignment
-	shared_str al = xml_doc.ReadAttrib(_path, index, "align");
+	CSharedString al = xml_doc.ReadAttrib(_path, index, "align");
 	if (0 == xr_strcmp(al, "c"))
 	{
 		pWnd->SetTextAlignment(CGameFont::alCenter);

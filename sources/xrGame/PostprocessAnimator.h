@@ -108,7 +108,7 @@ class CPostprocessAnimator : public CEffectorPP
 {
 protected:
 	CPostProcessParam*									m_Params[POSTPROCESS_PARAMS_COUNT];
-	shared_str											m_Name;
+	CSharedString											m_Name;
 	SPPInfo												m_EffectorParams;
 	float												m_factor;
 	float												m_dest_factor;

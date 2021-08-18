@@ -14,7 +14,7 @@ static void generate_orthonormal_basis(const Fvector3& dir, Fmatrix& result)
 	Fvector3::generate_orthonormal_basis(result.k, result.j, result.i);
 }
 
-CParticlesPlayer::SParticlesInfo* CParticlesPlayer::SBoneInfo::FindParticles(const shared_str& ps_name)
+CParticlesPlayer::SParticlesInfo* CParticlesPlayer::SBoneInfo::FindParticles(const CSharedString& ps_name)
 {
 	for (ParticlesInfoListIt it = particles.begin( ); it != particles.end( ); it++)
 	{
@@ -27,7 +27,7 @@ CParticlesPlayer::SParticlesInfo* CParticlesPlayer::SBoneInfo::FindParticles(con
 	return nullptr;
 }
 
-CParticlesPlayer::SParticlesInfo* CParticlesPlayer::SBoneInfo::AppendParticles(CObject* object, const shared_str& ps_name)
+CParticlesPlayer::SParticlesInfo* CParticlesPlayer::SBoneInfo::AppendParticles(CObject* object, const CSharedString& ps_name)
 {
 	SParticlesInfo* pi = FindParticles(ps_name);
 	if (pi)
@@ -41,7 +41,7 @@ CParticlesPlayer::SParticlesInfo* CParticlesPlayer::SBoneInfo::AppendParticles(C
 	return pi;
 }
 
-void CParticlesPlayer::SBoneInfo::StopParticles(const shared_str& ps_name, bool bDestroy)
+void CParticlesPlayer::SBoneInfo::StopParticles(const CSharedString& ps_name, bool bDestroy)
 {
 	SParticlesInfo* pi = FindParticles(ps_name);
 	if (pi)
@@ -157,14 +157,14 @@ CParticlesPlayer::SBoneInfo* CParticlesPlayer::get_nearest_bone_info(CKinematics
 	return get_bone_info(play_bone);
 }
 
-void CParticlesPlayer::StartParticles(const shared_str& particles_name, U16 bone_num, const Fvector3& dir, U16 sender_id, int life_time, bool auto_stop)
+void CParticlesPlayer::StartParticles(const CSharedString& particles_name, U16 bone_num, const Fvector3& dir, U16 sender_id, int life_time, bool auto_stop)
 {
 	Fmatrix xform;
 	generate_orthonormal_basis(dir, xform);
 	StartParticles(particles_name, bone_num, xform, sender_id, life_time, auto_stop);
 }
 
-void CParticlesPlayer::StartParticles(const shared_str& particles_name, U16 bone_num, const Fmatrix& xform, U16 sender_id, int life_time, bool auto_stop)
+void CParticlesPlayer::StartParticles(const CSharedString& particles_name, U16 bone_num, const Fmatrix& xform, U16 sender_id, int life_time, bool auto_stop)
 {
 	VERIFY(fis_zero(xform.c.magnitude( )));
 	R_ASSERT(*particles_name);
@@ -196,7 +196,7 @@ void CParticlesPlayer::StartParticles(const shared_str& particles_name, U16 bone
 	m_bActiveBones = true;
 }
 
-void CParticlesPlayer::StartParticles(const shared_str& ps_name, const Fmatrix& xform, U16 sender_id, int life_time, bool auto_stop)
+void CParticlesPlayer::StartParticles(const CSharedString& ps_name, const Fmatrix& xform, U16 sender_id, int life_time, bool auto_stop)
 {
 	CObject* object = m_self_object;
 	VERIFY(object);
@@ -222,7 +222,7 @@ void CParticlesPlayer::StartParticles(const shared_str& ps_name, const Fmatrix& 
 	m_bActiveBones = true;
 }
 
-void CParticlesPlayer::StartParticles(const shared_str& ps_name, const Fvector3& dir, U16 sender_id, int life_time, bool auto_stop)
+void CParticlesPlayer::StartParticles(const CSharedString& ps_name, const Fvector3& dir, U16 sender_id, int life_time, bool auto_stop)
 {
 	Fmatrix xform;
 	generate_orthonormal_basis(dir, xform);
@@ -248,7 +248,7 @@ void CParticlesPlayer::StopParticles(U16 sender_id, U16 bone_id, bool bDestroy)
 	UpdateParticles( );
 }
 
-void CParticlesPlayer::StopParticles(const shared_str& ps_name, U16 bone_id, bool bDestroy)
+void CParticlesPlayer::StopParticles(const CSharedString& ps_name, U16 bone_id, bool bDestroy)
 {
 	if (BI_NONE == bone_id)
 	{
@@ -267,7 +267,7 @@ void CParticlesPlayer::StopParticles(const shared_str& ps_name, U16 bone_id, boo
 }
 
 //остановка партиклов, по истечении их времени жизни
-void CParticlesPlayer::AutoStopParticles(const shared_str& ps_name, U16 bone_id, u32 life_time)
+void CParticlesPlayer::AutoStopParticles(const CSharedString& ps_name, U16 bone_id, u32 life_time)
 {
 	if (BI_NONE == bone_id)
 	{

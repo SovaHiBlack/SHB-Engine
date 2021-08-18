@@ -154,7 +154,7 @@ void CEntityAlive::LoadFireParticles(const char* section)
 
 	int cnt = _GetItemCount(particles_name);
 
-	shared_str s;
+	CSharedString s;
 	for (int k = 0; k < cnt; ++k)
 	{
 		s = _GetItem(particles_name, k, tmp);

@@ -208,28 +208,28 @@ void CRestrictedObject::remove_border		() const
 	STOP_PROFILE;
 }
 
-shared_str	CRestrictedObject::in_restrictions	() const
+CSharedString	CRestrictedObject::in_restrictions	() const
 {
 	START_PROFILE("Restricted Object/in_restrictions")
 	return						(Level().space_restriction_manager().in_restrictions(object().ID()));
 	STOP_PROFILE
 }
 
-shared_str CRestrictedObject::out_restrictions	() const
+CSharedString CRestrictedObject::out_restrictions	() const
 {
 	START_PROFILE("Restricted Object/out_restrictions")
 	return						(Level().space_restriction_manager().out_restrictions(object().ID()));
 	STOP_PROFILE
 }
 
-shared_str CRestrictedObject::base_in_restrictions	() const
+CSharedString CRestrictedObject::base_in_restrictions	() const
 {
 	START_PROFILE("Restricted Object/base_in_restrictions")
 	return						(Level().space_restriction_manager().base_in_restrictions(object().ID()));
 	STOP_PROFILE
 }
 
-shared_str CRestrictedObject::base_out_restrictions	() const
+CSharedString CRestrictedObject::base_out_restrictions	() const
 {
 	START_PROFILE("Restricted Object/out_restrictions")
 	return						(Level().space_restriction_manager().base_out_restrictions(object().ID()));
@@ -255,7 +255,7 @@ inline	void CRestrictedObject::remove_object_restriction(ALife::_OBJECT_ID id, c
 }
 
 template <typename P, bool value>
-inline	void CRestrictedObject::construct_restriction_string(char* temp_restrictions, const xr_vector<ALife::_OBJECT_ID> &restrictions, shared_str current_restrictions, const P &p)
+inline	void CRestrictedObject::construct_restriction_string(char* temp_restrictions, const xr_vector<ALife::_OBJECT_ID> &restrictions, CSharedString current_restrictions, const P &p)
 {
 	u32							count = 0;
 	strcpy						(temp_restrictions,"");
@@ -335,7 +335,7 @@ void CRestrictedObject::remove_restrictions	(const xr_vector<ALife::_OBJECT_ID> 
 	STOP_PROFILE;
 }
 
-void CRestrictedObject::add_restrictions	(const shared_str &out_restrictions, const shared_str &in_restrictions)
+void CRestrictedObject::add_restrictions	(const CSharedString& out_restrictions, const CSharedString& in_restrictions)
 {
 	if (!out_restrictions.size() && !in_restrictions.size())
 		return;
@@ -349,7 +349,7 @@ void CRestrictedObject::add_restrictions	(const shared_str &out_restrictions, co
 	STOP_PROFILE;
 }
 
-void CRestrictedObject::remove_restrictions	(const shared_str &out_restrictions, const shared_str &in_restrictions)
+void CRestrictedObject::remove_restrictions	(const CSharedString& out_restrictions, const CSharedString& in_restrictions)
 {
 	if (!out_restrictions.size() && !in_restrictions.size())
 		return;

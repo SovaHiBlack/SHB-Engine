@@ -8,7 +8,7 @@
 
 #pragma once
 
-inline	CTradeParameters::CTradeParameters						(const shared_str &section) :
+inline	CTradeParameters::CTradeParameters						(const CSharedString& section) :
 	m_buy	(
 		CTradeFactors(
 			pSettings->r_float(section,"buy_price_factor_hostile"),
@@ -80,7 +80,7 @@ inline	CTradeBoolParameters &CTradeParameters::action		(action_show)
 }
 
 template <typename _action_type>
-inline	bool CTradeParameters::enabled							(_action_type type, const shared_str &section) const
+inline	bool CTradeParameters::enabled							(_action_type type, const CSharedString& section) const
 {
 	if (action(type).disabled(section))
 		return				(false);
@@ -92,7 +92,7 @@ inline	bool CTradeParameters::enabled							(_action_type type, const shared_str
 }
 
 template <typename _action_type>
-inline	const CTradeFactors &CTradeParameters::factors			(_action_type type, const shared_str &section) const
+inline	const CTradeFactors &CTradeParameters::factors			(_action_type type, const CSharedString& section) const
 {
 	VERIFY					(enabled(type,section));
 
@@ -106,7 +106,7 @@ inline	const CTradeFactors &CTradeParameters::factors			(_action_type type, cons
 }
 
 template <typename _action_type>
-inline	void CTradeParameters::process							(_action_type type, CIniFile&ini_file, const shared_str &section)
+inline	void CTradeParameters::process							(_action_type type, CIniFile&ini_file, const CSharedString& section)
 {
 	R_ASSERT2				(ini_file.section_exist(section),make_string("cannot find section %s",*section));
 

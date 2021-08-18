@@ -167,7 +167,7 @@ void CUIPdaWnd::Hide( )
 
 void CUIPdaWnd::UpdateDateTime( )
 {
-	static shared_str prevStrTime = " ";
+	static CSharedString prevStrTime = " ";
 	xr_string strTime = *InventoryUtilities::GetGameTimeAsString(InventoryUtilities::etpTimeToMinutes);
 	strTime += " ";
 	strTime += *InventoryUtilities::GetGameDateAsString(InventoryUtilities::edpDateToDay);

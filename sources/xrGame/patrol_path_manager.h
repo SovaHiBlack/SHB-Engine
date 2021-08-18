@@ -32,7 +32,7 @@ private:
 
 private:
 	const CPatrolPath				*m_path;
-	shared_str						m_path_name;
+	CSharedString						m_path_name;
 	EPatrolStartType				m_start_type;
 	EPatrolRouteType				m_route_type;
 	bool							m_actuality;
@@ -60,14 +60,14 @@ public:
 	inline			CExtrapolateCallback&extrapolate_callback	();
 	inline			void				make_inactual			();
 	inline			const CPatrolPath	*get_path				() const;
-	inline			void				set_path				(const CPatrolPath *path, shared_str path_name);
-	inline			void				set_path				(shared_str path_name);
-	inline			void				set_path				(shared_str path_name, const EPatrolStartType patrol_start_type = ePatrolStartTypeNearest, const EPatrolRouteType patrol_route_type = ePatrolRouteTypeContinue, bool random = true);
+	inline			void				set_path				(const CPatrolPath *path, CSharedString path_name);
+	inline			void				set_path				(CSharedString path_name);
+	inline			void				set_path				(CSharedString path_name, const EPatrolStartType patrol_start_type = ePatrolStartTypeNearest, const EPatrolRouteType patrol_route_type = ePatrolRouteTypeContinue, bool random = true);
 	inline			void				set_start_type			(const EPatrolStartType patrol_start_type);
 	inline			void				set_route_type			(const EPatrolRouteType patrol_route_type);
 	inline			void				set_random				(bool random);
 	inline			bool				actual					() const;
-				shared_str			path_name				() const;
+	CSharedString			path_name				() const;
 				void				set_previous_point		(int point_index);
 				void				set_start_point			(int point_index);
 	inline			bool				completed				() const;

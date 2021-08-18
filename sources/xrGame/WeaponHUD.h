@@ -18,7 +18,7 @@ public:
 
 public:
 	virtual				~weapon_hud_value		();
-	BOOL				load					(const shared_str& section, CHudItem* owner);
+	BOOL				load					(const CSharedString& section, CHudItem* owner);
 };
 
 typedef shared_container<weapon_hud_value>		weapon_hud_container;
@@ -30,11 +30,11 @@ protected:
 	struct	on_new_pred{
 		CHudItem*		owner;
 						on_new_pred				(CHudItem* _owner):owner(_owner){}
-		BOOL			operator()				(const shared_str& key, weapon_hud_value* val) const {return val->load(key,owner);}
+		BOOL			operator()				(const CSharedString& key, weapon_hud_value* val) const {return val->load(key,owner);}
 	};
 
 public:
-	void				create					(shared_str key, CHudItem* owner)
+	void				create					(CSharedString key, CHudItem* owner)
 	{	
 		shared_item<weapon_hud_value>::create	(key,g_pWeaponHUDContainer,on_new_pred(owner));	
 	}

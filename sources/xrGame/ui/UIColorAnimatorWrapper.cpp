@@ -23,14 +23,14 @@ CUIColorAnimatorWrapper::CUIColorAnimatorWrapper(u32* colorToModify) : colorAnim
 	currColor = 0xffff0000;
 }
 
-CUIColorAnimatorWrapper::CUIColorAnimatorWrapper(const shared_str& animationName) : colorAnimation(LALib.FindItem(*animationName)), animationTime(0.0f), color(NULL), isDone(false), reverse(false), kRev(0.0f)
+CUIColorAnimatorWrapper::CUIColorAnimatorWrapper(const CSharedString& animationName) : colorAnimation(LALib.FindItem(*animationName)), animationTime(0.0f), color(NULL), isDone(false), reverse(false), kRev(0.0f)
 {
 	VERIFY(colorAnimation);
 	prevGlobalTime = Device.dwTimeContinual / 1000.0f;
 	currColor = 0xffff0000;
 }
 
-void CUIColorAnimatorWrapper::SetColorAnimation(const shared_str& animationName)
+void CUIColorAnimatorWrapper::SetColorAnimation(const CSharedString& animationName)
 {
 	if (animationName.size( ) != 0)
 	{

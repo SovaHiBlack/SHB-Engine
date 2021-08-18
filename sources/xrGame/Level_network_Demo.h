@@ -31,7 +31,7 @@ private:
 	{
 		U8			bServerClient;
 		char		Head[31];
-		shared_str		ServerOptions;
+		CSharedString		ServerOptions;
 //		string64		LevelName;
 //		string64		GameType;
 	};

@@ -7,14 +7,14 @@
 
 #include "ftreevisual.h"
 
-shared_str					m_xform		;
-shared_str					m_xform_v	;
-shared_str					c_consts	;
-shared_str					c_wave		;
-shared_str					c_wind		;
-shared_str					c_c_bias	;
-shared_str					c_c_scale	;
-shared_str					c_c_sun		;
+CSharedString					m_xform		;
+CSharedString					m_xform_v	;
+CSharedString					c_consts	;
+CSharedString					c_wave		;
+CSharedString					c_wind		;
+CSharedString					c_c_bias	;
+CSharedString					c_c_scale	;
+CSharedString					c_c_sun		;
 
 FTreeVisual::FTreeVisual	(void)
 {

@@ -18,7 +18,7 @@ CStalkerVelocityHolder::~CStalkerVelocityHolder									()
 	delete_data					(m_collections);
 }
 
-const CStalkerVelocityHolder::COLLECTION &CStalkerVelocityHolder::collection	(const shared_str &section)
+const CStalkerVelocityHolder::COLLECTION &CStalkerVelocityHolder::collection	(const CSharedString& section)
 {
 	COLLECTIONS::const_iterator	I = m_collections.find(section);
 	if (I != m_collections.end())

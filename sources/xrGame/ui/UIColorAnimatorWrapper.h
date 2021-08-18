@@ -22,11 +22,11 @@ public:
 
 	// colorToModify - указатель на цвет который меняем
 	// animationName - имя цветовой анимации
-	explicit			CUIColorAnimatorWrapper			(const shared_str& animationName);
+	explicit			CUIColorAnimatorWrapper			(const CSharedString& animationName);
 						CUIColorAnimatorWrapper			(u32* colorToModify);
 
 	// Установить новую цветовую анимацию
-	void				SetColorAnimation				(const shared_str& animationName);
+	void				SetColorAnimation				(const CSharedString& animationName);
 	void				SetColorToModify				(u32* colorToModify);
 
 	// Функция которую необходимо обязательно поместить в Update диалога, для обновления анимации

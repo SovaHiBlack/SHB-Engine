@@ -55,7 +55,7 @@ public:
 class CPHScriptObjectCondition : public CPHCondition, public CPHReqComparerV
 {
 	luabind::object* m_lua_object;
-	shared_str						m_method_name;
+	CSharedString						m_method_name;
 
 public:
 	CPHScriptObjectCondition(const luabind::object& lua_object, const char* method);
@@ -80,7 +80,8 @@ class CPHScriptObjectAction :
 {
 	bool	b_obsolete;
 	luabind::object* m_lua_object;
-	shared_str						m_method_name;
+	CSharedString						m_method_name;
+
 public:
 	CPHScriptObjectAction(const luabind::object& lua_object, const char* method);
 	CPHScriptObjectAction(const CPHScriptObjectAction& object);

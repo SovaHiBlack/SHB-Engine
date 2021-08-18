@@ -114,12 +114,13 @@ public:
 
 	xr_vector<Fbox3,render_alloc<Fbox3> >						main_coarse_structure;
 
-	shared_str													c_sbase			;
-	shared_str													c_lmaterial		;
+	CSharedString													c_sbase			;
+	CSharedString													c_lmaterial		;
 	float														o_hemi			;
 	float														o_sun			;
 	IDirect3DQuery9*											q_sync_point[2]	;
 	u32															q_sync_count	;
+
 private:
 	// Loading / Unloading
 	void							LoadBuffers					(CStreamReader	*fs,	BOOL	_alternative);

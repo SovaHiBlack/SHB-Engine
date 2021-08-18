@@ -34,7 +34,7 @@ public:
 	inline						CSpaceRestrictionShape	(CSpaceRestrictor *space_restrictor, bool default_restrictor);
 	inline	virtual void		initialize				();
 		virtual bool		inside					(const Fsphere &sphere);
-		virtual shared_str	name					() const;
+		virtual CSharedString	name					() const;
 	inline	virtual bool		shape					() const;
 	inline	virtual bool		default_restrictor		() const;
 		virtual	Fsphere		sphere					() const;

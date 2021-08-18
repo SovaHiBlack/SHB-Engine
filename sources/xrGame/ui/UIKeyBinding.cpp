@@ -45,7 +45,7 @@ void CUIKeyBinding::FillUpList(CUIXml& xml_doc_ui, const char* path_ui)
 	for (int i = 0; i < groupsCount; i++)
 	{
 		// add group
-		shared_str grp_name = xml_doc.ReadAttrib("group", i, "name");
+		CSharedString grp_name = xml_doc.ReadAttrib("group", i, "name");
 		R_ASSERT(xr_strlen(grp_name));
 
 		CUIStatic* pItem = xr_new<CUIStatic>( );
@@ -61,14 +61,14 @@ void CUIKeyBinding::FillUpList(CUIXml& xml_doc_ui, const char* path_ui)
 		for (int j = 0; j < commandsCount; j++)
 		{
 			// first field of list item
-			shared_str command_id = xml_doc.ReadAttrib("command", j, "id");
+			CSharedString command_id = xml_doc.ReadAttrib("command", j, "id");
 
 			pItem = xr_new<CUIStatic>( );
 			CUIXmlInit::InitStatic(xml_doc_ui, strconcat(sizeof(buf), buf, path_ui, ":scroll_view:item_key"), 0, pItem);
 			pItem->SetTextST(command_id.c_str( ));
 			m_scroll_wnd->AddWindow(pItem, true);
 
-			shared_str exe = xml_doc.ReadAttrib("command", j, "exe");
+			CSharedString exe = xml_doc.ReadAttrib("command", j, "exe");
 
 #ifdef DEBUG
 			if (kNOTBINDED == action_name_to_id(*exe))
@@ -160,7 +160,7 @@ bool CUIKeyBinding::IsActionExist(const char* action, CUIXml& xml_doc)
 		for (int j = 0; j < commandsCount; j++)
 		{
 			// first field of list item
-			shared_str command_id = xml_doc.ReadAttrib("command", j, "exe");
+			CSharedString command_id = xml_doc.ReadAttrib("command", j, "exe");
 			if (0 == xr_strcmp(action, *command_id))
 			{
 				ret = true;

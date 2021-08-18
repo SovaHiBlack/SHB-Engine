@@ -7,10 +7,10 @@
 
 struct event_comparer
 {
-	shared_str name;
+	CSharedString name;
 	S16 event;
 
-	event_comparer(shared_str n, S16 e) : name(n), event(e)
+	event_comparer(CSharedString n, S16 e) : name(n), event(e)
 	{ }
 	bool operator ()(SCallbackInfo* i)
 	{

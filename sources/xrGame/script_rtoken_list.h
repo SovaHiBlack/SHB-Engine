@@ -12,7 +12,8 @@
 
 class CScriptRTokenList {
 public:
-	typedef xr_vector<shared_str> RTOKEN_LIST;
+	typedef xr_vector<CSharedString> RTOKEN_LIST;
+
 protected:
 	RTOKEN_LIST			m_values;
 
@@ -23,7 +24,7 @@ public:
 	inline		u32			size	();
 	inline		void		clear	();
 	inline		RTOKEN_LIST	&tokens	();
-public:
+
 	static void script_register(lua_State*);
 };
 

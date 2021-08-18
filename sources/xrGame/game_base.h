@@ -143,7 +143,7 @@ public:
 				U16					Phase					() const						{return m_phase;};
 				int					Round					() const						{return m_round;};
 				u32					StartTime				() const						{return m_start_time;};
-	virtual		void				Create					(shared_str& options)				{};
+	virtual		void				Create					(CSharedString& options)				{};
 	virtual		const char* type_name				() const						{return "base game";};
 //for scripting enhancement
 	static		CLASS_ID			getCLASS_ID				(const char* game_type_name, bool bServer);

@@ -74,7 +74,7 @@ SGameMtlPair::~SGameMtlPair( )
 
 void SGameMtlPair::Load(IReader& fs)
 {
-	shared_str buf;
+	CSharedString buf;
 
 	R_ASSERT(fs.find_chunk(GAMEMTLPAIR_CHUNK_PAIR));
 	mtl0 = fs.r_u32( );

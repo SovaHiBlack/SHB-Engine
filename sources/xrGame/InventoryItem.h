@@ -69,7 +69,7 @@ public:
 
 	virtual const char* Name( );
 	virtual const char* NameShort( );
-	shared_str					ItemDescription( )
+	CSharedString					ItemDescription( )
 	{
 		return m_Description;
 	}
@@ -169,9 +169,9 @@ public:
 public:
 	CInventory* m_pCurrentInventory;
 
-	shared_str					m_name;
-	shared_str					m_nameShort;
-	shared_str					m_nameComplex;
+	CSharedString					m_name;
+	CSharedString					m_nameShort;
+	CSharedString					m_nameComplex;
 
 	EItemPlace					m_eItemPlace;
 
@@ -185,7 +185,7 @@ public:
 
 	int					GetGridWidth( ) const;
 	int					GetGridHeight( ) const;
-	const shared_str& GetIconName( ) const
+	const CSharedString& GetIconName( ) const
 	{
 		return m_icon_name;
 	}
@@ -239,7 +239,7 @@ public:
 	}
 	bool				CanTrade( ) const;
 	virtual bool 				IsNecessaryItem(CInventoryItem* item);
-	virtual bool				IsNecessaryItem(const shared_str& item_sect)
+	virtual bool				IsNecessaryItem(const CSharedString& item_sect)
 	{
 		return false;
 	}
@@ -249,13 +249,13 @@ protected:
 	u32							m_cost;
 	float						m_weight;
 	float						m_fCondition;
-	shared_str					m_Description;
+	CSharedString					m_Description;
 
 	ALife::_TIME_ID				m_dwItemRemoveTime;
 	ALife::_TIME_ID				m_dwItemIndependencyTime;
 
 	float						m_fControlInertionFactor;
-	shared_str					m_icon_name;
+	CSharedString					m_icon_name;
 
 	////////// network //////////////////////////////////////////////////
 public:

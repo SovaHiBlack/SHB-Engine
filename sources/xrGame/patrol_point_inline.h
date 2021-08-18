@@ -20,7 +20,7 @@ inline	const u32 &CPatrolPoint::flags								() const
 	return				(m_flags);
 }
 
-inline	const shared_str &CPatrolPoint::name						() const
+inline	const CSharedString& CPatrolPoint::name						() const
 {
 	VERIFY				(m_initialized);
 	return				(m_name);

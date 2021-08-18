@@ -13,17 +13,16 @@
 #define READ_IF_EXISTS(ltx,method,section,name,default_value)\
 	((ltx->line_exist(section,name)) ? (ltx->method(section,name)) : (default_value))
 
-
 #if XRAY_EXCEPTIONS
-inline	xr_string	string2xr_string(const char* s) {return *shared_str(s ? s : "");}
-inline	void		throw_and_log(const xr_string &s) {Msg("! %s",s.c_str()); throw *shared_str(s.c_str());}
-#	define		THROW(xpr)				if (!(xpr)) {throw_and_log (__FILE__LINE__" Expression \""#xpr"\"");}
-#	define		THROW2(xpr,msg0)		if (!(xpr)) {throw *shared_str(xr_string(__FILE__LINE__).append(" \"").append(#xpr).append(string2xr_string(msg0)).c_str());}
-#	define		THROW3(xpr,msg0,msg1)	if (!(xpr)) {throw *shared_str(xr_string(__FILE__LINE__).append(" \"").append(#xpr).append(string2xr_string(msg0)).append(", ").append(string2xr_string(msg1)).c_str());}
+inline xr_string	string2xr_string(const char* s) {return *CSharedString(s ? s : "");}
+inline void		throw_and_log(const xr_string &s) {Msg("! %s",s.c_str()); throw * CSharedString(s.c_str());}
+#	define THROW(xpr)				if (!(xpr)) {throw_and_log (__FILE__LINE__" Expression \""#xpr"\"");}
+#	define THROW2(xpr, msg0)		if (!(xpr)) {throw *CSharedString(xr_string(__FILE__LINE__).append(" \"").append(#xpr).append(string2xr_string(msg0)).c_str());}
+#	define THROW3(xpr, msg0, msg1)	if (!(xpr)) {throw *CSharedString(xr_string(__FILE__LINE__).append(" \"").append(#xpr).append(string2xr_string(msg0)).append(", ").append(string2xr_string(msg1)).c_str());}
 #else
-#	define		THROW					VERIFY
-#	define		THROW2					VERIFY2
-#	define		THROW3					VERIFY3
+#	define THROW					VERIFY
+#	define THROW2					VERIFY2
+#	define THROW3					VERIFY3
 #endif
 
 #include "..\ENGINE\GameFont.h"

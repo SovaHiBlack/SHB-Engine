@@ -10,7 +10,7 @@ namespace PS
 	class CPGDef
 	{
 	public:
-		shared_str			m_Name;
+		CSharedString			m_Name;
 		Flags32				m_Flags;
 		float				m_fTimeLimit;
 		struct SEffect{
@@ -20,13 +20,13 @@ namespace PS
 				flEnabled			= (1<<2),
 				flOnPlayChildRewind	= (1<<4),
 				flOnBirthChild		= (1<<5),
-				flOnDeadChild		= (1<<6),
+				flOnDeadChild		= (1<<6)
 			};
 			Flags32			m_Flags;
-			shared_str		m_EffectName;  
-			shared_str		m_OnPlayChildName;
-			shared_str		m_OnBirthChildName;
-			shared_str		m_OnDeadChildName;
+			CSharedString		m_EffectName;
+			CSharedString		m_OnPlayChildName;
+			CSharedString		m_OnBirthChildName;
+			CSharedString		m_OnDeadChildName;
 			float			m_Time0;
 			float			m_Time1;
 							SEffect				(){m_Flags.zero();/*set(flEnabled)*/m_Time0=0;m_Time1=0;}
@@ -123,7 +123,7 @@ namespace PS
 
 		virtual float		GetTimeLimit	(){VERIFY(m_Def); return m_Def->m_fTimeLimit;}
 
-		virtual const shared_str	Name		(){VERIFY(m_Def); return m_Def->m_Name;}
+		virtual const CSharedString	Name		(){VERIFY(m_Def); return m_Def->m_Name;}
 
 		virtual u32 		ParticlesCount	();
 	};

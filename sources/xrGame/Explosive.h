@@ -165,7 +165,7 @@ protected:
 	float													fWallmarkSize;
 
 	//эффекты и подсветка
-	shared_str												m_sExplodeParticles;
+	CSharedString												m_sExplodeParticles;
 
 	//подсветка взрыва
 	ref_light												m_pLight;
@@ -183,7 +183,7 @@ protected:
 	//эффектор
 	struct
 	{
-		shared_str											effect_sect_name;
+		CSharedString											effect_sect_name;
 	} effector;
 
 public:

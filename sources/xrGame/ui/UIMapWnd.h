@@ -16,7 +16,7 @@ class CUILevelMap;
 class CUIMapHint;
 class CMapLocation;
 
-using GameMaps												= xr_map<shared_str, CUICustomMap*>;
+using GameMaps												= xr_map<CSharedString, CUICustomMap*>;
 using GameMapsPairIt										= GameMaps::iterator;
 
 class CUIMapWnd : public CUIWindow, public CUIWndCallback
@@ -86,7 +86,7 @@ public:
 
 	void						ShowHint					(CUIWindow* parent, const char* text);
 	void						HideHint					(CUIWindow* parent);
-	void						Hint						(const shared_str& text);
+	void						Hint						(const CSharedString& text);
 	virtual bool				OnMouse						(float x, float y, EUIMessages mouse_action);
 	virtual bool				OnKeyboard					(int dik, EUIMessages keyboard_action);
 	virtual bool				OnKeyboardHold				(int dik);
@@ -95,8 +95,8 @@ public:
 
 	void						SetTargetMap				(CUICustomMap* m, bool bZoomIn = false);
 	void						SetTargetMap				(CUICustomMap* m, const Fvector2& pos, bool bZoomIn = false);
-	void						SetTargetMap				(const shared_str& name, const Fvector2& pos, bool bZoomIn = false);
-	void						SetTargetMap				(const shared_str& name, bool bZoomIn = false);
+	void						SetTargetMap				(const CSharedString& name, const Fvector2& pos, bool bZoomIn = false);
+	void						SetTargetMap				(const CSharedString& name, bool bZoomIn = false);
 
 	Frect						ActiveMapRect				( )
 	{
@@ -115,9 +115,9 @@ public:
 		return m_GameMaps;
 	};
 	CUICustomMap*				GetMapByIdx					(U16 idx);
-	U16							GetIdxByName				(const shared_str& map_name);
+	U16							GetIdxByName				(const CSharedString& map_name);
 	void						UpdateScroll				( );
-	shared_str					cName						( ) const
+	CSharedString					cName						( ) const
 	{
 		return "ui_map_wnd";
 	}

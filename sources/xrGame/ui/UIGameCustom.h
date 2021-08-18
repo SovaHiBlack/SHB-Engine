@@ -20,7 +20,7 @@ struct SDrawStaticStruct :public IPureDestroyableObject
 	virtual void		destroy					( );
 	CUIStatic*									m_static;
 	float										m_endTime;
-	shared_str									m_name;
+	CSharedString									m_name;
 	void				Draw					( );
 	void				Update					( );
 	CUIStatic*			wnd						( )
@@ -38,15 +38,15 @@ using st_vec = xr_vector<SDrawStaticStruct>;
 
 struct SGameTypeMaps
 {
-	shared_str									m_game_type_name;
+	CSharedString									m_game_type_name;
 	EGameTypes									m_game_type_id;
-	xr_vector<shared_str>						m_map_names;
+	xr_vector<CSharedString>						m_map_names;
 };
 
 struct SGameWeathers
 {
-	shared_str									m_weather_name;
-	shared_str									m_start_time;
+	CSharedString									m_weather_name;
+	CSharedString									m_start_time;
 };
 
 using GAME_WEATHERS								= xr_vector<SGameWeathers>;
@@ -133,9 +133,9 @@ public:
 	SDrawStaticStruct*	GetCustomStatic			(const char* id);
 	void				RemoveCustomStatic		(const char* id);
 
-	virtual shared_str	shedule_Name			( ) const
+	virtual CSharedString	shedule_Name			( ) const
 	{
-		return shared_str("CUIGameCustom");
+		return CSharedString("CUIGameCustom");
 	}
 	virtual bool		shedule_Needed			( )
 	{

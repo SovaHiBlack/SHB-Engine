@@ -261,7 +261,7 @@ void CSE_ALifeTraderAbstract::OnChangeProfile(PropValue* sender)
 #include "game_base_space.h"
 #include "Level.h"
 
-shared_str CSE_ALifeTraderAbstract::specific_character( )
+CSharedString CSE_ALifeTraderAbstract::specific_character( )
 {
 	if (m_SpecificCharacter.size( ))
 		return m_SpecificCharacter;
@@ -287,7 +287,7 @@ shared_str CSE_ALifeTraderAbstract::specific_character( )
 		for (int i = 0; i <= CSpecificCharacter::GetMaxIndex( ); i++)
 		{
 			CSpecificCharacter spec_char;
-			shared_str id = CSpecificCharacter::IndexToId(i);
+			CSharedString id = CSpecificCharacter::IndexToId(i);
 			spec_char.Load(id);
 
 			if (spec_char.data( )->m_bNoRandom)
@@ -348,7 +348,7 @@ shared_str CSE_ALifeTraderAbstract::specific_character( )
 	}
 }
 
-void CSE_ALifeTraderAbstract::set_specific_character(shared_str new_spec_char)
+void CSE_ALifeTraderAbstract::set_specific_character(CSharedString new_spec_char)
 {
 	R_ASSERT(new_spec_char.size( ));
 
@@ -447,12 +447,12 @@ void CSE_ALifeTraderAbstract::set_specific_character(shared_str new_spec_char)
 	}
 }
 
-void CSE_ALifeTraderAbstract::set_character_profile(shared_str new_profile)
+void CSE_ALifeTraderAbstract::set_character_profile(CSharedString new_profile)
 {
 	m_sCharacterProfile = new_profile;
 }
 
-shared_str CSE_ALifeTraderAbstract::character_profile( )
+CSharedString CSE_ALifeTraderAbstract::character_profile( )
 {
 	return m_sCharacterProfile;
 }
@@ -556,7 +556,7 @@ void CSE_ALifeTrader::STATE_Read(CNetPacket& tNetPacket, U16 size)
 		u32 l_dwCount = tNetPacket.r_u32( );
 		for (int i = 0; i < (int) l_dwCount; ++i)
 		{
-			shared_str			temp;
+			CSharedString			temp;
 			tNetPacket.r_stringZ(temp);
 			tNetPacket.r_u32( );
 			for (int i = 0, n = tNetPacket.r_u32( ); i < n; ++i)
@@ -571,7 +571,7 @@ void CSE_ALifeTrader::STATE_Read(CNetPacket& tNetPacket, U16 size)
 	if ((m_wVersion > 30) && (m_wVersion < 118))
 	{
 		u32						count = tNetPacket.r_u32( );
-		shared_str				temp;
+		CSharedString				temp;
 		for (u32 i = 0; i < count; ++i)
 		{
 			tNetPacket.r_stringZ(temp);
@@ -748,7 +748,7 @@ void CSE_ALifeAnomalousZone::STATE_Read(CNetPacket& tNetPacket, U16 size)
 		{
 			tNetPacket.r_float( );
 
-			shared_str					temp;
+			CSharedString					temp;
 			for (U16 i = 0, n = tNetPacket.r_u16( ); i < n; ++i)
 			{
 				tNetPacket.r_stringZ(temp);

@@ -22,11 +22,11 @@ public:
 	}
 	const char*			GetText				( ) const;
 
-	void				SetID				(const shared_str& id)
+	void				SetID				(const CSharedString& id)
 	{
 		m_ID = id;
 	}
-	const shared_str&	GetID				( ) const
+	const CSharedString&	GetID				( ) const
 	{
 		return m_ID;
 	}
@@ -44,7 +44,7 @@ public:
 
 protected:
 	// уникальный индекс в списке фраз диалога
-	shared_str								m_ID;
+	CSharedString								m_ID;
 
 	// текстовое представление фразы
 	xr_string								m_text;

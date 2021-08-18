@@ -19,7 +19,7 @@ struct SSpecificCharacterData : CSharedResource
 	// игровое имя персонажа
 	xr_string								m_sGameName;
 	// текст с биографией персонажа (линк на string table)
-	shared_str								m_sBioText;
+	CSharedString								m_sBioText;
 	// строка содержащая предметы, которые нужно проспавнить
 	xr_string								m_sSupplySpawn;
 	// имя секции конфигурации настроек NPC для персонажа
@@ -33,17 +33,17 @@ struct SSpecificCharacterData : CSharedResource
 
 	xr_string								m_critical_wound_weights;
 
-	shared_str								m_terrain_sect;
+	CSharedString								m_terrain_sect;
 
 	// имя модели
 	xr_string								m_sVisual;
 
 	// начальный диалог
-	shared_str								m_StartDialog;
+	CSharedString								m_StartDialog;
 	// диалоги актера, которые будут доступны только при встрече с данным персонажем
 	DIALOG_ID_VECTOR						m_ActorDialogs;
 
-	shared_str								m_icon_name;
+	CSharedString								m_icon_name;
 	// команда 
 	CHARACTER_COMMUNITY						m_Community;
 	// ранг
@@ -74,10 +74,10 @@ class CInventoryOwner;
 class CCharacterInfo;
 class CSE_ALifeTraderAbstract;
 
-class CSpecificCharacter : public CSharedClass<SSpecificCharacterData, shared_str, false>, public CXML_IdToIndex<CSpecificCharacter>
+class CSpecificCharacter : public CSharedClass<SSpecificCharacterData, CSharedString, false>, public CXML_IdToIndex<CSpecificCharacter>
 {
 private:
-	using inherited_shared											= CSharedClass<SSpecificCharacterData, shared_str, false>;
+	using inherited_shared											= CSharedClass<SSpecificCharacterData, CSharedString, false>;
 	using id_to_index												= CXML_IdToIndex<CSpecificCharacter>;
 
 	friend id_to_index;
@@ -89,7 +89,7 @@ public:
 											CSpecificCharacter		( );
 											~CSpecificCharacter		( );
 
-	virtual void							Load					(shared_str id);
+	virtual void							Load					(CSharedString id);
 
 protected:
 	const SSpecificCharacterData*			data					( ) const	{ VERIFY(inherited_shared::get_sd()); return inherited_shared::get_sd(); }
@@ -99,11 +99,11 @@ protected:
 	virtual void							load_shared				(const char*);
 	static void								InitXmlIdToIndex		( );
 
-	shared_str														m_OwnId;
+	CSharedString														m_OwnId;
 
 public:
 	const char*								Name					( ) const;
-	shared_str								Bio						( ) const;
+	CSharedString							Bio						( ) const;
 	const CHARACTER_COMMUNITY&				Community				( ) const;
 	SSpecificCharacterData::SMoneyDef&		MoneyDef				( )			{ return data()->money_def; }
 
@@ -119,7 +119,7 @@ public:
 	int										crouch_type				( ) const;
 	const char*								critical_wound_weights	( ) const;
 
-	const shared_str&						IconName				( ) const	{ return data()->m_icon_name; };
+	const CSharedString&						IconName				( ) const	{ return data()->m_icon_name; };
 
-	shared_str								terrain_sect			( ) const;
+	CSharedString								terrain_sect			( ) const;
 };

@@ -13,7 +13,7 @@ inline	bool CScriptThread::active				() const
 	return		(m_active);
 }
 
-inline	shared_str CScriptThread::script_name	() const
+inline	CSharedString CScriptThread::script_name	() const
 {
 	return		(m_script_name);
 }

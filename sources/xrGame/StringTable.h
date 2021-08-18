@@ -8,7 +8,7 @@ using STRING_TABLE_MAP_IT								= STRING_TABLE_MAP::iterator;
 
 struct STRING_TABLE_DATA
 {
-	shared_str											m_sLanguage;
+	CSharedString											m_sLanguage;
 	STRING_TABLE_MAP									m_StringTable;
 	STRING_TABLE_MAP									m_string_key_binding;
 };

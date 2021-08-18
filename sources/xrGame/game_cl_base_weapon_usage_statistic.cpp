@@ -10,7 +10,7 @@
 #include "HUDManager.h"//
 #include "game_cl_base_weapon_usage_statistic.h"
 
-BulletData::BulletData(shared_str FName, shared_str WName, SBullet* pBullet)
+BulletData::BulletData(CSharedString FName, CSharedString WName, SBullet* pBullet)
 {
 	FirerName = FName;
 	WeaponName = WName;
@@ -145,7 +145,7 @@ void Player_Statistic::net_load(CNetPacket* P)
 	u32 NumWeapons = P->r_u32( );
 	for (u32 i = 0; i < NumWeapons; i++)
 	{
-		shared_str WName;
+		CSharedString WName;
 		P->r_stringZ(WName);
 		Weapon_Statistic& WS = *(FindPlayersWeapon(*WName));
 		WS.net_load(P);
@@ -761,7 +761,7 @@ void WeaponUsageStatistic::OnUpdateRequest(CNetPacket*)
 void WeaponUsageStatistic::OnUpdateRespond(CNetPacket* P)
 {
 	if (!P) return;
-	shared_str PName;
+	CSharedString PName;
 	P->r_stringZ(PName);
 	Player_Statistic& PS = *(FindPlayer(*PName));
 	PS.net_load(P);

@@ -7,7 +7,7 @@ class IUISimpleTextureControl;
 
 struct TEX_INFO
 {
-	shared_str									file;
+	CSharedString									file;
 	Frect										rect;
 	const char*			get_file_name			( )
 	{
@@ -37,7 +37,7 @@ public:
 protected:
 	inline static bool	IsSh					(const char* texture_name);
 
-	static xr_map<shared_str, TEX_INFO>			m_textures;
+	static xr_map<CSharedString, TEX_INFO>			m_textures;
 
 #ifdef DEBUG
 	static u32									m_time;

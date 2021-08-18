@@ -20,11 +20,11 @@ private:
 public:
 	inline						CTradeActionParameters	(const CTradeFactors &default_factors = CTradeFactors());
 	inline	void				clear					();
-	inline	void				enable					(const shared_str &section, const CTradeFactors &trade_factors);
-	inline	void				disable					(const shared_str &section);
-	inline	bool				enabled					(const shared_str &section) const;
-	inline	bool				disabled				(const shared_str &section) const;
-	inline	const CTradeFactors	&factors				(const shared_str &section) const;
+	inline	void				enable					(const CSharedString& section, const CTradeFactors &trade_factors);
+	inline	void				disable					(const CSharedString& section);
+	inline	bool				enabled					(const CSharedString& section) const;
+	inline	bool				disabled				(const CSharedString& section) const;
+	inline	const CTradeFactors	&factors				(const CSharedString& section) const;
 	inline	const CTradeFactors	&default_factors		() const;
 	inline	void				default_factors			(const CTradeFactors &trade_factors);
 };

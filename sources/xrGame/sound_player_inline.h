@@ -73,14 +73,14 @@ inline	bool CSoundPlayer::active_sound_type							(u32 synchro_mask) const
 	return				(false);
 }
 
-inline	void CSoundPlayer::sound_prefix									(const shared_str &sound_prefix)
+inline	void CSoundPlayer::sound_prefix									(const CSharedString& sound_prefix)
 {
 	m_sound_prefix		= sound_prefix;
 	if (!m_sound_prefix)
 		m_sound_prefix	= "";
 }
 
-inline	const shared_str &CSoundPlayer::sound_prefix					() const
+inline	const CSharedString& CSoundPlayer::sound_prefix					() const
 {
 	return				(m_sound_prefix);
 }

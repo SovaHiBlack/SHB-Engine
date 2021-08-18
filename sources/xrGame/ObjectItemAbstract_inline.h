@@ -18,7 +18,7 @@ inline	const CLASS_ID &CObjectItemAbstract::clsid	() const
 	return				(m_clsid);
 }
 
-inline	shared_str	CObjectItemAbstract::script_clsid	() const
+inline	CSharedString	CObjectItemAbstract::script_clsid	() const
 {
 	return				(m_script_clsid);
 }

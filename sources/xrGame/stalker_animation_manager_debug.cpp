@@ -17,7 +17,7 @@
 #	include <malloc.h>
 #	pragma warning(pop)
 
-typedef std::pair<shared_str,shared_str>	ANIMATION_ID;
+typedef std::pair<CSharedString, CSharedString>	ANIMATION_ID;
 
 struct animation_id_predicate {
 	inline	bool operator()	(const ANIMATION_ID &_1, const ANIMATION_ID &_2) const
@@ -32,20 +32,20 @@ struct animation_id_predicate {
 	}
 };
 
-//inline	bool shared_str_predicate	(const shared_str &_1, const shared_str &_2)
+//inline	bool shared_str_predicate	(const CSharedString& _1, const CSharedString& _2)
 //{
 //	return		(_1._get() < _2._get());
 //}
 //
-//typedef xr_set<shared_str,shared_str_predicate>	VISUALS;
+//typedef xr_set<CSharedString,shared_str_predicate>	VISUALS;
 
 struct animation_stats {
-//	shared_str	m_visual_id;
+//	CSharedString	m_visual_id;
 	u32			m_frame_count;
 	u32			m_start_count;
 
 	inline	animation_stats	(
-			const shared_str &visual_id,
+			const CSharedString& visual_id,
 			const u32		 &frame_count,
 			const u32		 &start_count
 		) :
@@ -63,7 +63,7 @@ static ANIMATION_STATS	g_animation_stats;
 typedef std::pair<ANIMATION_ID,ANIMATION_ID>	BLEND_ID;
 
 struct blend_id_predicate {
-	inline	bool less		(const shared_str &_1, const shared_str &_2) const
+	inline	bool less		(const CSharedString& _1, const CSharedString& _2) const
 	{
 		return		(_1._get() < _2._get());
 	}
@@ -165,7 +165,7 @@ void show_animation_stats	()
 #endif
 }
 
-void add_animation			(const shared_str &animation_id, const shared_str &animation_set_id, const shared_str &visual_id, bool just_started)
+void add_animation			(const CSharedString& animation_id, const CSharedString& animation_set_id, const CSharedString& visual_id, bool just_started)
 {
 	ANIMATION_ID				query(animation_id,animation_set_id);
 	ANIMATION_STATS::iterator	I = g_animation_stats.find(query);
@@ -189,7 +189,7 @@ void add_animation			(const shared_str &animation_id, const shared_str &animatio
 	);
 }
 
-void add_blend				(const shared_str &animation_id, const shared_str &animation_set_id, const shared_str &visual_id, const std::pair<const char*, const char*> *blend_id)
+void add_blend				(const CSharedString& animation_id, const CSharedString& animation_set_id, const CSharedString& visual_id, const std::pair<const char*, const char*> *blend_id)
 {
 	if (!blend_id)
 		return;
@@ -201,8 +201,8 @@ void add_blend				(const shared_str &animation_id, const shared_str &animation_s
 				animation_set_id
 			),
 			std::make_pair(
-				shared_str(blend_id->first),
-				shared_str(blend_id->second)
+		CSharedString(blend_id->first),
+		CSharedString(blend_id->second)
 			)
 		);
 
@@ -220,7 +220,7 @@ void add_blend				(const shared_str &animation_id, const shared_str &animation_s
 	);
 }
 
-void add_animation_stats	(const shared_str &animation_id, const shared_str &animation_set_id, const shared_str &visual_id, const std::pair<const char*, const char*> *blend_id, bool just_started)
+void add_animation_stats	(const CSharedString& animation_id, const CSharedString& animation_set_id, const CSharedString& visual_id, const std::pair<const char*, const char*> *blend_id, bool just_started)
 {
 	add_animation				(animation_id,animation_set_id,visual_id,just_started);
 	add_blend					(animation_id,animation_set_id,visual_id,blend_id);

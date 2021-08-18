@@ -179,7 +179,7 @@ CLASS_ID game_GameState::getCLASS_ID(const char* game_type_name, bool isServer)
 
 	luabind::functor<const char*>	result;
 	R_ASSERT					(ai().script_engine().functor(I,result));
-	shared_str clsid = result	(game_type_name, isServer);
+	CSharedString clsid = result	(game_type_name, isServer);
 
 	xr_delete			(l_tpIniFile);
 	if(clsid.size()==0)

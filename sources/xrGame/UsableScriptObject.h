@@ -21,6 +21,6 @@ public:
 	void					set_nonscript_usable	(bool usable);
 
 private:
-	shared_str										m_sTipText;
+	CSharedString										m_sTipText;
 	bool											m_bNonscriptUsable;
 };

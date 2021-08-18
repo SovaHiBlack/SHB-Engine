@@ -7,7 +7,7 @@ class CUIOutfitDragDropList : public CUIDragDropListEx
 	using inherited										= CUIDragDropListEx;
 
 	CUIStatic*											m_background;
-	shared_str											m_default_outfit;
+	CSharedString											m_default_outfit;
 	void					SetOutfit					(CUICellItem* itm);
 
 public:

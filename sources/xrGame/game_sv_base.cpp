@@ -315,8 +315,8 @@ void game_sv_GameState::OnPlayerDisconnect		(ClientID /**id_who/**/, char*, U16)
 	signal_Syncronize	();
 }
 
-static float							rpoints_Dist [TEAM_COUNT] = {1000.f, 1000.f, 1000.f, 1000.f};
-void game_sv_GameState::Create					(shared_str &options)
+static float							rpoints_Dist [TEAM_COUNT] = {1000.0f, 1000.0f, 1000.0f, 1000.0f};
+void game_sv_GameState::Create					(CSharedString& options)
 {
 	string_path	fn_game;	
 	if (FS.exist(fn_game, "$level$", "level.game"))
@@ -402,7 +402,7 @@ void game_sv_GameState::Create					(shared_str &options)
 	ReadOptions(options);
 }
 
-void	game_sv_GameState::ReadOptions				(shared_str &options)
+void	game_sv_GameState::ReadOptions				(CSharedString& options)
 {
 	g_sv_base_dwRPointFreezeTime = get_option_i(*options, "rpfrz", g_sv_base_dwRPointFreezeTime/1000) * 1000;
 
@@ -843,7 +843,7 @@ void game_sv_GameState::SaveMapList				()
 	FS.w_close		(fs);
 };
 
-shared_str game_sv_GameState::level_name		(const shared_str &server_options) const
+CSharedString game_sv_GameState::level_name		(const CSharedString& server_options) const
 {
 	string64			l_name = "";
 	VERIFY				(_GetItemCount(*server_options,'/'));

@@ -8,8 +8,8 @@ struct OggVorbis_File;
 class CSoundRender_Source : public CSound_source
 {
 public:
-	shared_str				pname;
-	shared_str				fname;
+	CSharedString				pname;
+	CSharedString				fname;
 	cache_cat				CAT;
 	U32						dwTimeTotal;			// всего
 	U32						dwBytesTotal;

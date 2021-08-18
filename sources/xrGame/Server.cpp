@@ -409,7 +409,7 @@ void CServer::SendUpdatesToAll( )
 	VERIFY(verify_entities( ));
 }
 
-xr_vector<shared_str>	_tmp_log;
+xr_vector<CSharedString>	_tmp_log;
 void console_log_cb(const char* text)
 {
 	_tmp_log.push_back(text);
@@ -697,8 +697,8 @@ u32 CServer::OnMessage(CNetPacket& P, ClientID sender)			// Non-Zero means broad
 		case M_REMOTE_CONTROL_AUTH:
 		{
 			string512				reason;
-			shared_str				user;
-			shared_str				pass;
+			CSharedString				user;
+			CSharedString				pass;
 			P.r_stringZ(user);
 			if (0 == stricmp(user.c_str( ), "logoff"))
 			{
@@ -742,14 +742,14 @@ u32 CServer::OnMessage(CNetPacket& P, ClientID sender)			// Non-Zero means broad
 	return							IPureServer::OnMessage(P, sender);
 }
 
-bool CServer::CheckAdminRights(const shared_str& user, const shared_str& pass, string512 reason)
+bool CServer::CheckAdminRights(const CSharedString& user, const CSharedString& pass, string512 reason)
 {
 	bool res = false;
-	string_path			fn;
+	string_path fn;
 	FS.update_path(fn, "$app_data_root$", "radmins.ltx");
 	if (FS.exist(fn))
 	{
-		CIniFile			ini(fn);
+		CIniFile ini(fn);
 		if (ini.line_exist("radmins", user.c_str( )))
 		{
 			if (ini.r_string("radmins", user.c_str( )) == pass)
@@ -975,7 +975,7 @@ void CServer::verify_entity(const CSE_Abstract* entity) const
 
 #endif // DEBUG
 
-shared_str CServer::level_name(const shared_str& server_options) const
+CSharedString CServer::level_name(const CSharedString& server_options) const
 {
 	return game->level_name(server_options);
 }

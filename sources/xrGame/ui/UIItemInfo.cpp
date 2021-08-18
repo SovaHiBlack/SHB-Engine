@@ -211,7 +211,7 @@ void CUIItemInfo::InitItem(CInventoryItem* pInvItem)
 	}
 }
 
-void CUIItemInfo::TryAddWpnInfo(const shared_str& wpn_section)
+void CUIItemInfo::TryAddWpnInfo(const CSharedString& wpn_section)
 {
 	if (UIWpnParams->Check(wpn_section))
 	{
@@ -220,7 +220,7 @@ void CUIItemInfo::TryAddWpnInfo(const shared_str& wpn_section)
 	}
 }
 
-void CUIItemInfo::TryAddArtefactInfo(const shared_str& af_section)
+void CUIItemInfo::TryAddArtefactInfo(const CSharedString& af_section)
 {
 	if (UIArtefactParams->Check(af_section))
 	{

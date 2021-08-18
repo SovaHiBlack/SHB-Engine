@@ -3,7 +3,7 @@
 #include "xrUIXmlParser.h"//
 #include "ui_base.h"//
 
-shared_str CUIXml::correct_file_name(const char* path, const char* fn)
+CSharedString CUIXml::correct_file_name(const char* path, const char* fn)
 {
 	if (0 == xr_strcmp(path, "ui") || 0 == xr_strcmp(path, "UI"))
 	{

@@ -41,11 +41,11 @@ inline	CProfiler&	profiler				()
 inline	CProfileStats::CProfileStats		()
 {
 	m_update_time	= 0;
-	m_name			= shared_str("");
-	m_time			= 0.f;
-	m_min_time		= 0.f;
-	m_max_time		= 0.f;
-	m_total_time	= 0.f;
+	m_name			= CSharedString("");
+	m_time			= 0.0f;
+	m_min_time		= 0.0f;
+	m_max_time		= 0.0f;
+	m_total_time	= 0.0f;
 	m_count			= 0;
 	m_call_count	= 0;
 }

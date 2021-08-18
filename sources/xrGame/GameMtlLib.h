@@ -31,7 +31,7 @@
 using SoundVec = xr_vector<ref_sound>;
 using SoundIt = SoundVec::iterator;
 
-using PSVec = xr_vector<shared_str>;
+using PSVec = xr_vector<CSharedString>;
 using PSIt = PSVec::iterator;
 
 using ShaderVec = xr_vector<ref_shader>;
@@ -66,8 +66,8 @@ public:
 		flSlowDown = (1ul << 31ul) // flSlowDown = (fFlotationFactor<1.0f)
 	};
 
-	shared_str			m_Name;
-	shared_str			m_Desc;
+	CSharedString			m_Name;
+	CSharedString			m_Desc;
 
 	Flags32				Flags;
 	//physics part
@@ -253,7 +253,7 @@ public:
 
 		return materials.end( );
 	}
-	inline GameMtlIt 		GetMaterialIt(shared_str& name)
+	inline GameMtlIt 		GetMaterialIt(CSharedString& name)
 	{
 		for (GameMtlIt it = materials.begin( ); materials.end( ) != it; ++it)
 		{

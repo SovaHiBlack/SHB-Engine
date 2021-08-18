@@ -58,7 +58,7 @@ public:
 	};
 
 public:
-	shared_str									m_path_name;
+	CSharedString									m_path_name;
 	MonsterSpace::EBodyState					m_tBodyState;
 	MonsterSpace::EMovementType					m_tMovementType;
 	DetailPathManager::EDetailPathType			m_tPathType;
@@ -100,7 +100,7 @@ public:
 	inline		void	SetMovementType			(const MonsterSpace::EMovementType tMovementType);
 	inline		void	SetPathType				(const DetailPathManager::EDetailPathType tPathType);
 			void	SetObjectToGo			(CScriptGameObject *tpObjectToGo);
-	inline		void	SetPatrolPath			(const CPatrolPath *path, shared_str path_name);
+	inline		void	SetPatrolPath			(const CPatrolPath *path, CSharedString path_name);
 	inline		void	SetPosition				(const Fvector3& tPosition);
 	inline		void	SetSpeed				(float fSpeed);
 	inline		void	SetPatrolStart			(PatrolPathManager::EPatrolStartType tPatrolPathStart);

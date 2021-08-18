@@ -84,7 +84,7 @@ public:
 		/*
 		//-------------------------------------------
 #ifdef DEBUG
-		shared_str EventName;
+		CSharedString EventName;
 		string16 tmp;
 
 		switch (E.type)

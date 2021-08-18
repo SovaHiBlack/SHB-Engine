@@ -129,7 +129,7 @@ void CWeaponMagazined::Load(const char* section)
 	if (pSettings->line_exist(section, "fire_modes"))
 	{
 		m_bHasDifferentFireModes = true;
-		shared_str FireModesList = pSettings->r_string(section, "fire_modes");
+		CSharedString FireModesList = pSettings->r_string(section, "fire_modes");
 		int ModesCount = _GetItemCount(FireModesList.c_str( ));
 		m_aFireModes.clear( );
 		for (int i = 0; i < ModesCount; i++)
@@ -1039,7 +1039,7 @@ void CWeaponMagazined::InitAddons( )
 			m_iScopeX = pSettings->r_s32(cNameSect( ), "scope_x");
 			m_iScopeY = pSettings->r_s32(cNameSect( ), "scope_y");
 
-			shared_str scope_tex_name;
+			CSharedString scope_tex_name;
 			scope_tex_name = pSettings->r_string(*m_sScopeName, "scope_texture");
 			m_fScopeZoomFactor = pSettings->r_float(*m_sScopeName, "scope_zoom_factor");
 
@@ -1055,7 +1055,7 @@ void CWeaponMagazined::InitAddons( )
 		else if (m_eScopeStatus == ALife::eAddonPermanent)
 		{
 			m_fScopeZoomFactor = pSettings->r_float(cNameSect( ), "scope_zoom_factor");
-			shared_str scope_tex_name;
+			CSharedString scope_tex_name;
 			scope_tex_name = pSettings->r_string(cNameSect( ), "scope_texture");
 
 			if (m_UIScope)

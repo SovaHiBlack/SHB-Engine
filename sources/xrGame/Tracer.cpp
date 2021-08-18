@@ -19,7 +19,7 @@ CTracer::CTracer( )
 	m_aColors.clear( );
 	for (U8 i = 0; i < 255; i++)
 	{
-		shared_str LineName;
+		CSharedString LineName;
 		LineName.sprintf("color_%d", i);
 		if (!pSettings->line_exist(TRACERS_COLOR_TABLE, LineName)) break;
 		float r, g, b;

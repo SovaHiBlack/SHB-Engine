@@ -260,7 +260,7 @@ void CUIEventsWnd::ShowDescription(CGameTask* t, int idx)
 					CEncyclopediaArticle A;
 					A.Load(it->article_id);
 
-					const shared_str& group = A.data( )->group;
+					const CSharedString& group = A.data( )->group;
 
 					if (strstr(group.c_str( ), need_group) == group.c_str( ))
 					{

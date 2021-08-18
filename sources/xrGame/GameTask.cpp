@@ -375,19 +375,19 @@ ETaskState SGameTaskObjective::UpdateState( )
 	return TaskState( );
 }
 
-void SGameTaskObjective::SendInfo(xr_vector<shared_str>& v)
+void SGameTaskObjective::SendInfo(xr_vector<CSharedString>& v)
 {
-	xr_vector<shared_str>::iterator it = v.begin( );
+	xr_vector<CSharedString>::iterator it = v.begin( );
 	for (; it != v.end( ); ++it)
 	{
 		Actor( )->TransferInfo((*it), true);
 	}
 }
 
-bool SGameTaskObjective::CheckInfo(xr_vector<shared_str>& v)
+bool SGameTaskObjective::CheckInfo(xr_vector<CSharedString>& v)
 {
 	bool res = false;
-	xr_vector<shared_str>::iterator it = v.begin( );
+	xr_vector<CSharedString>::iterator it = v.begin( );
 	for (; it != v.end( ); ++it)
 	{
 		res = Actor( )->HasInfo(*it);
@@ -601,10 +601,10 @@ void SGameTaskObjective::load(IReader& stream)
 	}
 }
 
-void SScriptObjectiveHelper::init_functors(xr_vector<shared_str>& v_src, xr_vector<luabind::functor<bool> >& v_dest)
+void SScriptObjectiveHelper::init_functors(xr_vector<CSharedString>& v_src, xr_vector<luabind::functor<bool> >& v_dest)
 {
-	xr_vector<shared_str>::iterator it = v_src.begin( );
-	xr_vector<shared_str>::iterator it_e = v_src.end( );
+	xr_vector<CSharedString>::iterator it = v_src.begin( );
+	xr_vector<CSharedString>::iterator it_e = v_src.end( );
 	v_dest.resize(v_src.size( ));
 
 	for (u32 idx = 0; it != it_e; ++it, ++idx)

@@ -13,7 +13,7 @@ inline	const CScriptProcess::SCRIPT_REGISTRY &CScriptProcess::scripts	() const
 	return	(m_scripts);
 }
 
-inline	shared_str CScriptProcess::name									() const
+inline	CSharedString CScriptProcess::name									() const
 {
 	return	(m_name);
 }

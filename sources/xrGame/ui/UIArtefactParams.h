@@ -11,8 +11,8 @@ public:
 								CUIArtefactParams		( );
 	virtual						~CUIArtefactParams		( );
 	void						InitFromXml				(CUIXml& xml_doc);
-	bool						Check					(const shared_str& af_section);
-	void						SetInfo					(const shared_str& af_section);
+	bool						Check					(const CSharedString& af_section);
+	void						SetInfo					(const CSharedString& af_section);
 
 protected:
 	enum

@@ -53,10 +53,10 @@ namespace InventoryUtilities
 		edpDateToYear
 	};
 
-	const shared_str		GetGameDateAsString				(EDatePrecision datePrec, char dateSeparator = '/');
-	const shared_str		GetGameTimeAsString				(ETimePrecision timePrec, char timeSeparator = ':');
-	const shared_str		GetDateAsString					(ALife::_TIME_ID time, EDatePrecision datePrec, char dateSeparator = '/');
-	const shared_str		GetTimeAsString					(ALife::_TIME_ID time, ETimePrecision timePrec, char timeSeparator = ':');
+	const CSharedString		GetGameDateAsString				(EDatePrecision datePrec, char dateSeparator = '/');
+	const CSharedString		GetGameTimeAsString				(ETimePrecision timePrec, char timeSeparator = ':');
+	const CSharedString		GetDateAsString					(ALife::_TIME_ID time, EDatePrecision datePrec, char dateSeparator = '/');
+	const CSharedString		GetTimeAsString					(ALife::_TIME_ID time, ETimePrecision timePrec, char timeSeparator = ':');
 	const char*				GetTimePeriodAsString			(char* _buff, u32 buff_sz, ALife::_TIME_ID _from, ALife::_TIME_ID _to);
 	// Отобразить вес, который несет актер
 	void					UpdateWeight					(CUIStatic& wnd, bool withPrefix = false);

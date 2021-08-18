@@ -55,7 +55,7 @@ private:
 protected:
 	ACTIONS						m_tpActionQueue;
 	bool						m_bScriptControl;
-	shared_str					m_caScriptName;
+	CSharedString					m_caScriptName;
 	MotionID					m_tpNextAnimation;
 	bool						m_use_animation_movement_controller;
 	CScriptEntityAction			*m_tpCurrentEntityAction;
@@ -80,11 +80,11 @@ public:
 	virtual DLL_Pure			*_construct				();
 
 public:
-			const Fmatrix		GetUpdatedMatrix		(shared_str caBoneName, const Fvector3& tPositionOffset, const Fvector3& tAngleOffset);
+			const Fmatrix		GetUpdatedMatrix		(CSharedString caBoneName, const Fvector3& tPositionOffset, const Fvector3& tAngleOffset);
 			void				vfUpdateParticles		();
 			void				vfUpdateSounds			();
 	virtual	void				vfFinishAction			(CScriptEntityAction		*tpEntityAction);
-	virtual	void				SetScriptControl		(const bool			bScriptControl, shared_str	caSciptName);
+	virtual	void				SetScriptControl		(const bool			bScriptControl, CSharedString	caSciptName);
 	virtual	bool				GetScriptControl		() const;
 	virtual	const char* GetScriptControlName	() const;
 	virtual bool				CheckObjectVisibility	(const CGameObject	*tpObject);

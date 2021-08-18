@@ -10,7 +10,7 @@
 
 class CTradeBoolParameters {
 public:
-	typedef xr_vector<shared_str>	SECTIONS;
+	typedef xr_vector<CSharedString>	SECTIONS;
 
 private:
 	SECTIONS	m_sections;
@@ -18,8 +18,8 @@ private:
 public:
 	inline			CTradeBoolParameters	();
 	inline	void	clear					();
-	inline	void	disable					(const shared_str &section);
-	inline	bool	disabled				(const shared_str &section) const;
+	inline	void	disable					(const CSharedString& section);
+	inline	bool	disabled				(const CSharedString& section) const;
 };
 
 #include "trade_bool_parameters_inline.h"

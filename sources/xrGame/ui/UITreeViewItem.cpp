@@ -462,7 +462,7 @@ void CUITreeViewItem::CheckParentMark(CUITreeViewItem* pOwner)
 // Standalone function for tree hierarchy creation
 //////////////////////////////////////////////////////////////////////////
 
-void CreateTreeBranch(shared_str nesting, shared_str leafName, CUIListWnd* pListToAdd, int leafProperty, CGameFont* pRootFont, u32 rootColor, CGameFont* pLeafFont, u32 leafColor, bool markRead)
+void CreateTreeBranch(CSharedString nesting, CSharedString leafName, CUIListWnd* pListToAdd, int leafProperty, CGameFont* pRootFont, u32 rootColor, CGameFont* pLeafFont, u32 leafColor, bool markRead)
 {	// Nested function emulation
 	class AddTreeTail_
 	{
@@ -516,7 +516,7 @@ void CreateTreeBranch(shared_str nesting, shared_str leafName, CUIListWnd* pList
 		if (pos != xr_string::npos)
 		{
 			oneLevel.assign(group, 0, pos);
-			shared_str str(oneLevel.c_str( ));
+			CSharedString str(oneLevel.c_str( ));
 			groupTree.push_back(CStringTable( ).translate(str));
 			group.erase(0, pos + 1);
 		}

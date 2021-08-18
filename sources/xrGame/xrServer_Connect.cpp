@@ -11,7 +11,7 @@
 #include <malloc.h>
 #pragma warning(pop)
 
-CServer::EConnect CServer::Connect(shared_str& session_name)
+CServer::EConnect CServer::Connect(CSharedString& session_name)
 {
 
 #ifdef DEBUG

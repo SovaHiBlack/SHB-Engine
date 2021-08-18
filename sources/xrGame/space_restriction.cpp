@@ -192,7 +192,7 @@ CSpaceRestriction::CBaseRestrictionPtr CSpaceRestriction::merge	(CBaseRestrictio
 	
 	char* S = xr_alloc<char>(acc_length);
 	S[0]							= 0;
-	shared_str						temp = bridge->name();
+	CSharedString						temp = bridge->name();
 	RESTRICTIONS::const_iterator	I = temp_restrictions.begin();
 	RESTRICTIONS::const_iterator	E = temp_restrictions.end();
 	for ( ; I != E; ++I)
@@ -209,7 +209,7 @@ void CSpaceRestriction::merge_free_in_retrictions	()
 	START_PROFILE("Restricted Object/Merge Free In");
 	string256								temp;
 	for (u32 i=0, n=_GetItemCount(*m_in_restrictions); i<n ;++i) {
-		SpaceRestrictionHolder::CBaseRestrictionPtr bridge = m_space_restriction_manager->restriction(shared_str(_GetItem(*m_in_restrictions,i,temp)));
+		SpaceRestrictionHolder::CBaseRestrictionPtr bridge = m_space_restriction_manager->restriction(CSharedString(_GetItem(*m_in_restrictions,i,temp)));
 		m_free_in_restrictions.push_back	(CFreeInRestriction(bridge,false));
 	}
 
@@ -357,7 +357,7 @@ bool CSpaceRestriction::affect					(SpaceRestrictionHolder::CBaseRestrictionPtr 
 	return							(affect(bridge,start_vertex_id,0.f) || affect(bridge,dest_vertex_id,0.f));
 }
 
-shared_str CSpaceRestriction::name				() const
+CSharedString CSpaceRestriction::name				() const
 {
 	return							(m_out_restrictions);
 }

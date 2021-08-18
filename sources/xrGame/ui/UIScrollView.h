@@ -30,7 +30,7 @@ protected:
 	float			m_vertInterval;
 
 	Flags16			m_flags;
-	shared_str		m_scrollbar_profile;
+	CSharedString		m_scrollbar_profile;
 
 	virtual void		RecalcSize( );
 	void		UpdateScroll( );

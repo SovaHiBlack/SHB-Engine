@@ -284,7 +284,7 @@ void CUITalkWnd::AskQuestion( )
 		return;
 	}
 
-	shared_str phrase_id;
+	CSharedString phrase_id;
 
 	//игрок выбрал тему разговора
 	if (TopicMode( ))
@@ -310,7 +310,7 @@ void CUITalkWnd::AskQuestion( )
 	NeedUpdateQuestions( );
 }
 
-void CUITalkWnd::SayPhrase(const shared_str& phrase_id)
+void CUITalkWnd::SayPhrase(const CSharedString& phrase_id)
 {
 	AddAnswer(m_pCurrentDialog->GetPhraseText(phrase_id), m_pOurInvOwner->Name( ));
 	m_pOurDialogManager->SayPhrase(m_pCurrentDialog, phrase_id);
@@ -322,7 +322,7 @@ void CUITalkWnd::SayPhrase(const shared_str& phrase_id)
 	}
 }
 
-void CUITalkWnd::AddQuestion(const shared_str& text, const shared_str& value)
+void CUITalkWnd::AddQuestion(const CSharedString& text, const CSharedString& value)
 {
 	if (text.size( ) == 0)
 	{
@@ -332,7 +332,7 @@ void CUITalkWnd::AddQuestion(const shared_str& text, const shared_str& value)
 	UITalkDialogWnd->AddQuestion(*CStringTable( ).translate(text), value.c_str( ));
 }
 
-void CUITalkWnd::AddAnswer(const shared_str& text, const char* SpeakerName)
+void CUITalkWnd::AddAnswer(const CSharedString& text, const char* SpeakerName)
 {
 	//для пустой фразы вообще ничего не выводим
 	if (text.size( ) == 0)

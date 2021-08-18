@@ -33,9 +33,9 @@ protected:
 	};
 
 	struct CObjectItemPredicateScript {
-		shared_str					m_script_clsid_name;
+		CSharedString					m_script_clsid_name;
 
-		inline							CObjectItemPredicateScript			(const shared_str &script_clsid_name);
+		inline							CObjectItemPredicateScript			(const CSharedString& script_clsid_name);
 		inline	bool					operator()							(const CObjectItemAbstract *item) const;
 	};
 

@@ -15,9 +15,9 @@
 
 struct FindLocationBySpotID
 {
-	shared_str	spot_id;
+	CSharedString	spot_id;
 	U16			object_id;
-	FindLocationBySpotID(const shared_str& s, U16 id) : spot_id(s), object_id(id)
+	FindLocationBySpotID(const CSharedString& s, U16 id) : spot_id(s), object_id(id)
 	{ }
 	bool operator () (const SLocationKey& key)
 	{
@@ -131,7 +131,7 @@ void CMapManager::initialize(U16 id)
 	m_locations->registry( ).init(id);// actor's id
 }
 
-CMapLocation* CMapManager::AddMapLocation(const shared_str& spot_type, U16 id)
+CMapLocation* CMapManager::AddMapLocation(const CSharedString& spot_type, U16 id)
 {
 	FindLocationBySpotID key(spot_type, id);
 	Locations_it it = std::find_if(Locations( ).begin( ), Locations( ).end( ), key);
@@ -165,7 +165,7 @@ CMapLocation* CMapManager::AddRelationLocation(CInventoryOwner* pInvOwner)
 	ALife::ERelationType relation = ALife::eRelationTypeFriend;
 	CInventoryOwner* pActor = smart_cast<CInventoryOwner*>(Level( ).CurrentViewEntity( ));
 	relation = RELATION_REGISTRY( ).GetRelationType(pInvOwner, pActor);
-	shared_str sname = RELATION_REGISTRY( ).GetSpotName(relation);
+	CSharedString sname = RELATION_REGISTRY( ).GetSpotName(relation);
 
 	CEntityAlive* pEntAlive = smart_cast<CEntityAlive*>(pInvOwner);
 	if (!pEntAlive->g_Alive( ))
@@ -191,7 +191,7 @@ CMapLocation* CMapManager::AddRelationLocation(CInventoryOwner* pInvOwner)
 }
 
 /*
-CMapLocation* CMapManager::AddUserLocation(const shared_str& spot_type, const shared_str& level_name, Fvector3 position)
+CMapLocation* CMapManager::AddUserLocation(const CSharedString& spot_type, const CSharedString& level_name, Fvector3 position)
 {
 	U16 _id	= Level().Server->PerformIDgen(0xffff);
 	CUserDefinedMapLocation* l = xr_new<CUserDefinedMapLocation>(*spot_type, _id);
@@ -202,7 +202,7 @@ CMapLocation* CMapManager::AddUserLocation(const shared_str& spot_type, const sh
 }
 */
 
-void CMapManager::RemoveMapLocation(const shared_str& spot_type, U16 id)
+void CMapManager::RemoveMapLocation(const CSharedString& spot_type, U16 id)
 {
 	FindLocationBySpotID key(spot_type, id);
 	Locations_it it = std::find_if(Locations( ).begin( ), Locations( ).end( ), key);
@@ -249,14 +249,14 @@ void CMapManager::RemoveMapLocation(CMapLocation* ml)
 	}
 }
 
-U16 CMapManager::HasMapLocation(const shared_str& spot_type, U16 id)
+U16 CMapManager::HasMapLocation(const CSharedString& spot_type, U16 id)
 {
 	CMapLocation* l = GetMapLocation(spot_type, id);
 
 	return (l) ? l->RefCount( ) : 0;
 }
 
-CMapLocation* CMapManager::GetMapLocation(const shared_str& spot_type, U16 id)
+CMapLocation* CMapManager::GetMapLocation(const CSharedString& spot_type, U16 id)
 {
 	FindLocationBySpotID key(spot_type, id);
 	Locations_it it = std::find_if(Locations( ).begin( ), Locations( ).end( ), key);

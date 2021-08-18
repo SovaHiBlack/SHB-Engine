@@ -9,8 +9,8 @@
 
 struct SArticleData : CSharedResource
 {
-	shared_str name;
-	shared_str group;
+	CSharedString name;
+	CSharedString group;
 
 	//картинка
 	CUIStatic image;
@@ -19,19 +19,19 @@ struct SArticleData : CSharedResource
 	xr_string	text;
 
 	//секция ltx, откуда читать данные
-//	shared_str ltx;
+//	CSharedString ltx;
 
 	// Тип статьи
 	ARTICLE_DATA::EArticleType	articleType;
-	shared_str					ui_template_name;
+	CSharedString					ui_template_name;
 };
 
 class CEncyclopediaArticle;
 
-class CEncyclopediaArticle : public CSharedClass<SArticleData, shared_str, false>, public CXML_IdToIndex<CEncyclopediaArticle>
+class CEncyclopediaArticle : public CSharedClass<SArticleData, CSharedString, false>, public CXML_IdToIndex<CEncyclopediaArticle>
 {
 private:
-	using inherited_shared = CSharedClass<SArticleData, shared_str, false>;
+	using inherited_shared = CSharedClass<SArticleData, CSharedString, false>;
 	using id_to_index = CXML_IdToIndex<CEncyclopediaArticle>;
 
 	friend id_to_index;
@@ -40,15 +40,15 @@ public:
 	CEncyclopediaArticle( );
 	virtual				~CEncyclopediaArticle( );
 
-	virtual void Load(shared_str str_id);
+	virtual void Load(CSharedString str_id);
 
 protected:
-	shared_str			m_ArticleId;
+	CSharedString			m_ArticleId;
 	virtual void		load_shared(const char*);
 	static void		InitXmlIdToIndex( );
 
 public:
-	const shared_str	Id( )
+	const CSharedString	Id( )
 	{
 		return m_ArticleId;
 	}

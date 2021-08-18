@@ -12,7 +12,7 @@
 
 CTradeParameters *CTradeParameters::m_instance = 0;
 
-void CTradeParameters::process	(action_show, CIniFile&ini_file, const shared_str &section)
+void CTradeParameters::process	(action_show, CIniFile&ini_file, const CSharedString& section)
 {
 	VERIFY					(ini_file.section_exist(section));
 	m_show.clear			();

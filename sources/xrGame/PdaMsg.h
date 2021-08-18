@@ -20,7 +20,7 @@ typedef struct tagSPdaMessage
 	bool			question;
 	
 	// информаци
-	shared_str		info_id;
+	CSharedString		info_id;
 
 	//время получения/отправки сообщения
 	ALife::_TIME_ID	time;

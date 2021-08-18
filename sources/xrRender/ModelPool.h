@@ -14,22 +14,22 @@ class CModelPool
 private:
 	friend class CRender;
 
-	struct str_pred : public std::binary_function<const shared_str&, const shared_str&, bool> 
+	struct str_pred : public std::binary_function<const CSharedString&, const CSharedString&, bool>
 	{	
-		inline bool operator()(const shared_str& x, const shared_str& y) const
+		inline bool operator()(const CSharedString& x, const CSharedString& y) const
 		{	return xr_strcmp(x,y)<0;}
 	};
 	struct ModelDef
 	{
-		shared_str			name;
+		CSharedString			name;
 		IRender_Visual*		model;
-        u32					refs;
-        ModelDef()			{ refs=0;model=0; }
+		u32					refs;
+		ModelDef()			{ refs=0;model=0; }
 	};
 
-	typedef xr_multimap<shared_str,IRender_Visual*,str_pred>	POOL;
+	typedef xr_multimap<CSharedString,IRender_Visual*,str_pred>	POOL;
 	typedef POOL::iterator										POOL_IT;
-	typedef xr_map<IRender_Visual*,shared_str>					REGISTRY;
+	typedef xr_map<IRender_Visual*, CSharedString>					REGISTRY;
 	typedef REGISTRY::iterator									REGISTRY_IT;
 private:
 	xr_vector<ModelDef>			Models;				// Reference / Base
@@ -37,12 +37,12 @@ private:
 	REGISTRY					Registry;			// Just pairing of pointer / Name
 	POOL						Pool;				// Unused / Inactive
 	BOOL						bLogging;
-    BOOL						bForceDiscard;
-    BOOL						bAllowChildrenDuplicate;
+	BOOL						bForceDiscard;
+	BOOL						bAllowChildrenDuplicate;
 
 	void						Destroy	();
 public:
-                            CModelPool			();
+							CModelPool			();
 	virtual 				~CModelPool			();
 	IRender_Visual*			Instance_Create		(u32 Type);
 	IRender_Visual*			Instance_Duplicate	(IRender_Visual* V);

@@ -38,7 +38,7 @@ class CTeleWhirlwind : public CTelekinesis
 		float				m_throw_power;
 		CGameObject*		m_owner_object;
 		PH_IMPACT_STORAGE	m_saved_impacts;
-		shared_str			m_destroying_particles;
+		CSharedString			m_destroying_particles;
 
 public: 
 								CTeleWhirlwind			();
@@ -49,8 +49,8 @@ public:
 		void					add_impact				(const Fvector3& dir,float val)			;
 		void					draw_out_impact			(Fvector3& dir,float& val)				;
 		void					clear_impacts			()										;
-		void					set_destroing_particles (const shared_str& destroying_particles){m_destroying_particles=destroying_particles;}
-		const shared_str&		destroing_particles		()										{return m_destroying_particles;}
+		void					set_destroing_particles (const CSharedString& destroying_particles){m_destroying_particles=destroying_particles;}
+		const CSharedString&		destroing_particles		()										{return m_destroying_particles;}
 		void					play_destroy			(CTeleWhirlwindObject* obj);
 virtual	CTelekineticObject*		activate				(CPHShellHolder*obj, float strength, float height, u32 max_time_keep, bool rot = true);
 virtual void					clear					()										;

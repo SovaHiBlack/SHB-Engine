@@ -26,7 +26,7 @@ public:
 	{
 		return *UIMasterList;
 	}
-	void					FillPointsDetail			(const shared_str& idx);
+	void					FillPointsDetail			(const CSharedString& idx);
 	virtual void			Reset						( );
 
 protected:
@@ -43,7 +43,7 @@ protected:
 	CUIScrollView*										UIDetailList;
 	void					FillPointsInfo				( );
 	void					FillReputationDetails		(CUIXml* xml, const char* path);
-	void					FillMasterPart				(CUIXml* xml, const shared_str& key_name);
+	void					FillMasterPart				(CUIXml* xml, const CSharedString& key_name);
 };
 
 class CUIActorStaticticHeader : public CUIWindow, public CUISelectable
@@ -62,7 +62,7 @@ public:
 	virtual bool			OnMouseDown					(int mouse_btn);
 	virtual void			SetSelected					(bool b);
 
-	shared_str											m_id;
+	CSharedString											m_id;
 };
 
 class CUIActorStaticticDetail : public CUIWindow

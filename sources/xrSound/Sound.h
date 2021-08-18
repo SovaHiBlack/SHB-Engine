@@ -75,14 +75,14 @@ typedef resptr_core<CSound_UserData,resptr_base<CSound_UserData> >	CSound_UserDa
 
 class ref_sound_data	: public xr_resource		{
 public:
-	shared_str						nm;
+	CSharedString						nm;
 	CSound_source*					handle;			//!< Pointer to wave-source interface
 	CSound_emitter*					feedback;		//!< Pointer to emitter, automaticaly clears on emitter-stop
 	esound_type						s_type;
 	int								g_type;			//!< Sound type, usually for AI
 	CObject*						g_object;		//!< Game object that emitts ref_sound
 	CSound_UserDataPtr				g_userdata;
-public:
+
 									ref_sound_data	();
 									ref_sound_data	(const char* fName, esound_type sound_type, int game_type);
 	virtual							~ref_sound_data	();
@@ -230,7 +230,7 @@ class XRSOUND_API			CSound_stats_ext
 {
 public:
 	struct SItem{
-		shared_str			name;
+		CSharedString			name;
 		CSound_params		params;
 		float				volume;
 		esound_type			type;

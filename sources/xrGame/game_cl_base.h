@@ -35,7 +35,7 @@ struct WeaponUsageStatistic;
 class game_cl_GameState : public game_GameState, public ISheduled
 {
 	using inherited											= game_GameState;
-	shared_str												m_game_type_name;
+	CSharedString												m_game_type_name;
 
 protected:
 	CUIGameCustom*											m_game_ui_custom;
@@ -67,9 +67,9 @@ protected:
 	//for scripting enhancement
 	virtual void				TranslateGameMessage		(u32 msg, CNetPacket& P);
 
-	virtual shared_str			shedule_Name				( ) const
+	virtual CSharedString			shedule_Name				( ) const
 	{
-		return shared_str("game_cl_GameState");
+		return CSharedString("game_cl_GameState");
 	}
 	virtual float				shedule_Scale				( );
 	virtual bool				shedule_Needed				( )

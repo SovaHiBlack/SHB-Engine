@@ -99,7 +99,7 @@ void vision_client::shedule_Update				(u32 dt)
 	visual().update				(float(dt)/1000.f);
 }
 
-shared_str vision_client::shedule_Name			() const
+CSharedString vision_client::shedule_Name			() const
 {
 	string256					temp;
 	sprintf_s						(temp,"vision_client[%s]",*object().cName());

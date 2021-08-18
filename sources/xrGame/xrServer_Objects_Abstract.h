@@ -28,11 +28,11 @@ public:
 };
 
 SERVER_ENTITY_DECLARE_BEGIN0(CSE_Visual)
-    void __stdcall					OnChangeVisual	(PropValue* sender);  
-    void __stdcall					OnChangeAnim	(PropValue* sender);  
+	void __stdcall					OnChangeVisual	(PropValue* sender);  
+	void __stdcall					OnChangeAnim	(PropValue* sender);  
 public:
-	shared_str						visual_name;
-	shared_str						startup_animation;
+	shCSharedStringared_str						visual_name;
+	CSharedString						startup_animation;
 	enum{
 		flObstacle					= (1<<0)
 	};
@@ -44,7 +44,7 @@ public:
 	void							visual_read		(CNetPacket& P, U16 version);
 	void							visual_write	(CNetPacket& P);
 
-    void							set_visual		(const char* name, bool load=true);
+	void							set_visual		(const char* name, bool load=true);
 	const char* get_visual		() const {return *visual_name;};
 	virtual void					FillProps		(const char* pref, PropItemVec &items);
 
@@ -56,15 +56,15 @@ add_to_type_list(CSE_Visual)
 SERVER_ENTITY_DECLARE_BEGIN0(CSE_Motion)
 	void __stdcall	OnChangeMotion	(PropValue* sender);  
 public:
-	shared_str						motion_name;
-public:
+	CSharedString						motion_name;
+
 									CSE_Motion 		(const char* name=0);
 	virtual							~CSE_Motion		();
 
 	void							motion_read		(CNetPacket& P);
 	void							motion_write	(CNetPacket& P);
 
-    void							set_motion		(const char* name);
+	void							set_motion		(const char* name);
 	const char* get_motion		() const {return *motion_name;};
 
 	virtual void					FillProps		(const char* pref, PropItemVec &items);

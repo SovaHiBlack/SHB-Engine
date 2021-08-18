@@ -121,21 +121,21 @@ struct CLoader {
 		NODEFAULT;
 	}
 
-	inline	static void load_data(char*&data, M &stream, const P &p)
+	inline static void load_data(char*&data, M &stream, const P &p)
 	{
-		shared_str						S;
+		CSharedString						S;
 		stream.r_stringZ				(S);
 		data							= xr_strdup(*S);
 	}
 
-	inline	static void load_data(shared_str &data, M &stream, const P &p)
+	inline	static void load_data(CSharedString& data, M &stream, const P &p)
 	{
 		stream.r_stringZ				(data);
 	}
 
 	inline	static void load_data(xr_string &data, M &stream, const P &p)
 	{
-		shared_str						S;
+		CSharedString						S;
 		stream.r_stringZ				(S);
 		data							= *S;
 	}

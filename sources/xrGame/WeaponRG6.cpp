@@ -23,8 +23,8 @@ BOOL	CWeaponRG6::net_Spawn				(CSE_Abstract* DC)
 
 	if (iAmmoElapsed && !getCurrentRocket())
 	{
-		shared_str grenade_name = m_ammoTypes[0];
-		shared_str fake_grenade_name = pSettings->r_string(grenade_name, "fake_grenade_name");
+		CSharedString grenade_name = m_ammoTypes[0];
+		CSharedString fake_grenade_name = pSettings->r_string(grenade_name, "fake_grenade_name");
 
 		if (fake_grenade_name.size())
 		{
@@ -139,7 +139,7 @@ U8 CWeaponRG6::AddCartridge		(U8 cnt)
 {
 	U8 t = inheritedSG::AddCartridge(cnt);
 	U8 k = cnt-t;
-	shared_str fake_grenade_name = pSettings->r_string(*m_ammoTypes[m_ammoType], "fake_grenade_name");
+	CSharedString fake_grenade_name = pSettings->r_string(*m_ammoTypes[m_ammoType], "fake_grenade_name");
 	while(k){
 		--k;
 		inheritedRL::SpawnRocket(*fake_grenade_name, this);

@@ -10,7 +10,7 @@
 
 inline	void	CScriptRTokenList::add		(const char* value)
 {
-	m_values.push_back(shared_str(value));
+	m_values.push_back(CSharedString(value));
 }
 
 inline	void	CScriptRTokenList::remove	(u32 index)

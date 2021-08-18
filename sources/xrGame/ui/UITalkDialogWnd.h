@@ -45,7 +45,7 @@ public:
 	}
 
 	//список вопросов, которые мы можем задавать персонажу
-	shared_str									m_ClickedQuestionID;
+	CSharedString									m_ClickedQuestionID;
 
 	//элементы интерфейса диалога
 	CUIFrameLineWnd								UIDialogFrame;
@@ -91,7 +91,7 @@ class CUIQuestionItem : public CUIWindow, public CUIWndCallback
 
 public:
 	CUI3tButton*								m_text;
-	shared_str									m_s_value;
+	CSharedString									m_s_value;
 						CUIQuestionItem			(CUIXml* xml_doc, const char* path);
 	void				Init					(const char* val, const char* text);
 

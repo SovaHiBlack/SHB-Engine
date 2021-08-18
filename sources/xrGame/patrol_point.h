@@ -18,13 +18,12 @@ class CGameGraph;
 
 class CPatrolPoint : public IPureSerializeObject<IReader,IWriter> {
 protected:
-	shared_str							m_name;
+	CSharedString							m_name;
 	Fvector3 								m_position;
 	u32									m_flags;
 	u32									m_level_vertex_id;
 	GameGraph::_GRAPH_ID				m_game_vertex_id;
 
-protected:
 #ifdef DEBUG
 	bool								m_initialized;
 	const CPatrolPath					*m_path;
@@ -37,7 +36,7 @@ private:
 #endif
 
 public:
-										CPatrolPoint		(const CLevelGraph *level_graph, const CGameLevelCrossTable *cross, const CGameGraph *game_graph, const CPatrolPath *path, const Fvector3& position, u32 level_vertex_id, u32 flags, shared_str name);
+										CPatrolPoint		(const CLevelGraph *level_graph, const CGameLevelCrossTable *cross, const CGameGraph *game_graph, const CPatrolPath *path, const Fvector3& position, u32 level_vertex_id, u32 flags, CSharedString name);
 										CPatrolPoint		(const CPatrolPath *path = 0);
 	virtual	void						load				(IReader &stream);
 	virtual	void						save				(IWriter &stream);
@@ -46,7 +45,7 @@ public:
 	inline		const u32					&level_vertex_id	(const CLevelGraph *level_graph, const CGameLevelCrossTable *cross, const CGameGraph *game_graph) const;
 	inline		const GameGraph::_GRAPH_ID	&game_vertex_id		(const CLevelGraph *level_graph, const CGameLevelCrossTable *cross, const CGameGraph *game_graph) const;
 	inline		const u32					&flags				() const;
-	inline		const shared_str			&name				() const;
+	inline		const CSharedString&	name				() const;
 
 public:
 			const u32					&level_vertex_id	() const;

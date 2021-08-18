@@ -11,7 +11,7 @@
 
 using namespace MonsterSpace;
 
-CStalkerVelocityCollection::CStalkerVelocityCollection	(const shared_str &section)
+CStalkerVelocityCollection::CStalkerVelocityCollection	(const CSharedString& section)
 {
 	m_danger[eBodyStateCrouch][eMovementTypeWalk][eMovementDirectionForward]	= pSettings->r_float(section,"danger_crouch_walk_forward");
 	m_danger[eBodyStateCrouch][eMovementTypeWalk][eMovementDirectionBackward]	= pSettings->r_float(section,"danger_crouch_walk_backward");

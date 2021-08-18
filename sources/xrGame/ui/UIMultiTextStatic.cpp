@@ -83,7 +83,7 @@ void CUIMultiTextStatic::SPh::SetText(const char* fmt, ...)
 	str = buf.c_str( );
 }
 
-void CUICaption::addCustomMessage(const shared_str& msg_name, float x, float y, float font_size, CGameFont* pFont, CGameFont::EAligment al, u32 color, const char* def_str)
+void CUICaption::addCustomMessage(const CSharedString& msg_name, float x, float y, float font_size, CGameFont* pFont, CGameFont::EAligment al, u32 color, const char* def_str)
 {
 	R_ASSERT2(u32(-1) == findIndexOf_(msg_name), "message already defined !!!");
 
@@ -99,7 +99,7 @@ void CUICaption::addCustomMessage(const shared_str& msg_name, float x, float y, 
 	sp->key = msg_name;
 }
 
-u32 CUICaption::findIndexOf_(const shared_str& key_)
+u32 CUICaption::findIndexOf_(const CSharedString& key_)
 {
 	for (Phrases_it it = m_vPhrases.begin( ); it != m_vPhrases.end( ); ++it)
 	{
@@ -112,26 +112,26 @@ u32 CUICaption::findIndexOf_(const shared_str& key_)
 	return u32(-1);
 }
 
-u32 CUICaption::findIndexOf(const shared_str& key_)
+u32 CUICaption::findIndexOf(const CSharedString& key_)
 {
 	u32 res = findIndexOf_(key_);
 	R_ASSERT3(res != u32(-1), "cannot find msg ", *key_);
 	return res;
 }
 
-void CUICaption::removeCustomMessage(const shared_str& msg_name)
+void CUICaption::removeCustomMessage(const CSharedString& msg_name)
 {
 	RemovePhraseByIndex(findIndexOf(msg_name));
 }
 
-EffectParams* CUICaption::customizeMessage(const shared_str& msg_name, const CUITextBanner::TextBannerStyles styleName)
+EffectParams* CUICaption::customizeMessage(const CSharedString& msg_name, const CUITextBanner::TextBannerStyles styleName)
 {
 	SinglePhrase* sp = GetPhraseByIndex(findIndexOf(msg_name));
 	sp->effect.PlayAnimation( );
 	return sp->effect.SetStyleParams(styleName);
 }
 
-void CUICaption::setCaption(const shared_str& msg_name, const char* message_to_out, u32 color, bool replaceColor)
+void CUICaption::setCaption(const CSharedString& msg_name, const char* message_to_out, u32 color, bool replaceColor)
 {
 	SinglePhrase* sp = GetPhraseByIndex(findIndexOf(msg_name));
 	sp->str = *CStringTable( ).translate(message_to_out);

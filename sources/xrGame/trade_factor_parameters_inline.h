@@ -16,20 +16,20 @@ inline	void CTradeFactorParameters::clear						()
 	m_factors.clear			();
 }
 
-inline	void CTradeFactorParameters::enable						(const shared_str &section, const CTradeFactors &factors)
+inline	void CTradeFactorParameters::enable						(const CSharedString& section, const CTradeFactors &factors)
 {
 	FACTORS::const_iterator	I = m_factors.find(section);
 	VERIFY					(I == m_factors.end());
 	m_factors.insert		(std::make_pair(section,factors));
 }
 
-inline	bool CTradeFactorParameters::enabled					(const shared_str &section) const
+inline	bool CTradeFactorParameters::enabled					(const CSharedString& section) const
 {
 	FACTORS::const_iterator	I = m_factors.find(section);
 	return					(I != m_factors.end());
 }
 
-inline	const CTradeFactors &CTradeFactorParameters::factors	(const shared_str &section) const
+inline	const CTradeFactors &CTradeFactorParameters::factors	(const CSharedString& section) const
 {
 	FACTORS::const_iterator	I = m_factors.find(section);
 	VERIFY					(I != m_factors.end());

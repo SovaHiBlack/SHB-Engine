@@ -7,7 +7,7 @@
 #include "uiabstract.h"
 #include "xrUIXmlParser.h"//
 
-xr_map<shared_str, TEX_INFO>	CUITextureMaster::m_textures;
+xr_map<CSharedString, TEX_INFO>	CUITextureMaster::m_textures;
 
 #ifdef DEBUG
 u32 CUITextureMaster::m_time = 0;
@@ -26,7 +26,7 @@ void CUITextureMaster::ParseShTexInfo(const char* xml_file)
 {
 	CUIXml xml;
 	xml.Init("$game_config$", "ui", xml_file);
-	shared_str file = xml.Read("file_name", 0, "");
+	CSharedString file = xml.Read("file_name", 0, "");
 
 	int num = xml.GetNodesNum("", 0, "texture");
 
@@ -40,7 +40,7 @@ void CUITextureMaster::ParseShTexInfo(const char* xml_file)
 		info.rect.x2 = xml.ReadAttribFlt("texture", i, "width") + info.rect.x1;
 		info.rect.y1 = xml.ReadAttribFlt("texture", i, "y");
 		info.rect.y2 = xml.ReadAttribFlt("texture", i, "height") + info.rect.y1;
-		shared_str id = xml.ReadAttrib("texture", i, "id");
+		CSharedString id = xml.ReadAttrib("texture", i, "id");
 
 		m_textures.insert(mk_pair(id, info));
 	}
@@ -59,7 +59,7 @@ void CUITextureMaster::InitTexture(const char* texture_name, IUISimpleTextureCon
 	T.Start( );
 #endif // def DEBUG
 
-	xr_map<shared_str, TEX_INFO>::iterator	it;
+	xr_map<CSharedString, TEX_INFO>::iterator	it;
 	it = m_textures.find(texture_name);
 	if (it != m_textures.end( ))
 	{
@@ -89,7 +89,7 @@ void CUITextureMaster::InitTexture(const char* texture_name, const char* shader_
 	T.Start( );
 #endif // def DEBUG
 
-	xr_map<shared_str, TEX_INFO>::iterator	it;
+	xr_map<CSharedString, TEX_INFO>::iterator	it;
 	it = m_textures.find(texture_name);
 	if (it != m_textures.end( ))
 	{
@@ -113,7 +113,7 @@ void CUITextureMaster::InitTexture(const char* texture_name, const char* shader_
 
 float CUITextureMaster::GetTextureHeight(const char* texture_name)
 {
-	xr_map<shared_str, TEX_INFO>::iterator	it;
+	xr_map<CSharedString, TEX_INFO>::iterator	it;
 	it = m_textures.find(texture_name);
 
 	if (it != m_textures.end( ))
@@ -127,7 +127,7 @@ float CUITextureMaster::GetTextureHeight(const char* texture_name)
 
 Frect CUITextureMaster::GetTextureRect(const char* texture_name)
 {
-	xr_map<shared_str, TEX_INFO>::iterator	it;
+	xr_map<CSharedString, TEX_INFO>::iterator	it;
 	it = m_textures.find(texture_name);
 	if (it != m_textures.end( ))
 	{
@@ -140,7 +140,7 @@ Frect CUITextureMaster::GetTextureRect(const char* texture_name)
 
 float CUITextureMaster::GetTextureWidth(const char* texture_name)
 {
-	xr_map<shared_str, TEX_INFO>::iterator	it;
+	xr_map<CSharedString, TEX_INFO>::iterator	it;
 	it = m_textures.find(texture_name);
 	if (it != m_textures.end( ))
 	{
@@ -153,7 +153,7 @@ float CUITextureMaster::GetTextureWidth(const char* texture_name)
 
 const char* CUITextureMaster::GetTextureFileName(const char* texture_name)
 {
-	xr_map<shared_str, TEX_INFO>::iterator	it;
+	xr_map<CSharedString, TEX_INFO>::iterator	it;
 	it = m_textures.find(texture_name);
 	if (it != m_textures.end( ))
 	{
@@ -166,7 +166,7 @@ const char* CUITextureMaster::GetTextureFileName(const char* texture_name)
 
 TEX_INFO CUITextureMaster::FindItem(const char* texture_name, const char* def_texture_name)
 {
-	xr_map<shared_str, TEX_INFO>::iterator	it;
+	xr_map<CSharedString, TEX_INFO>::iterator	it;
 	it = m_textures.find(texture_name);
 	if (it != m_textures.end( ))
 	{
@@ -181,7 +181,7 @@ TEX_INFO CUITextureMaster::FindItem(const char* texture_name, const char* def_te
 
 void CUITextureMaster::GetTextureShader(const char* texture_name, ref_shader& sh)
 {
-	xr_map<shared_str, TEX_INFO>::iterator	it;
+	xr_map<CSharedString, TEX_INFO>::iterator	it;
 	it = m_textures.find(texture_name);
 
 	R_ASSERT3(it != m_textures.end( ), "can't find texture", texture_name);

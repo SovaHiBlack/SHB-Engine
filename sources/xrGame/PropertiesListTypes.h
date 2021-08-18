@@ -120,7 +120,7 @@ class PropItem
 {
 //	friend class		CPropHelper;
 	friend class		TProperties;
-	shared_str			key;
+	CSharedString			key;
 	EPropType			type;
 	void*				item;
 public:
@@ -159,7 +159,7 @@ public:
 			xr_delete	(*it);
 	};
 	inline TProperties*		Owner			(){return m_Owner;}
-	void				SetName			(const shared_str& name)
+	void				SetName			(const CSharedString& name)
 	{
 		key=name;
 	}
@@ -252,17 +252,17 @@ public:
 // values
 //------------------------------------------------------------------------------
 class CaptionValue: public PropValue{
-	shared_str			value;
+	CSharedString			value;
 public:
-						CaptionValue	(const shared_str& val){value=val;}
+						CaptionValue	(const CSharedString& val){value=val;}
 	virtual xr_string	GetDrawText		(TOnDrawTextEvent)	{return value.c_str()?value.c_str():"";}
 	virtual	void		ResetValue		(){;}
 	virtual	bool		Equal			(PropValue* val)	{return (value==((CaptionValue*)val)->value);}
-	bool				ApplyValue		(const shared_str& val){value=val; return false;}
+	bool				ApplyValue		(const CSharedString& val){value=val; return false;}
 };
 
 class CanvasValue: public PropValue{
-	shared_str			value;
+	CSharedString			value;
 public:
 	typedef fastdelegate::FastDelegate3<CanvasValue*,CanvasValue*,bool&>					TOnTestEqual;
 	typedef fastdelegate::FastDelegate3<CanvasValue*,void* /* TCanvas* */, const Irect&>	TOnDrawCanvasEvent;
@@ -271,7 +271,7 @@ public:
 	TOnTestEqual		OnTestEqual;
 	TOnDrawCanvasEvent	OnDrawCanvasEvent;
 public:
-						CanvasValue		(const shared_str& val, int h):OnDrawCanvasEvent(0),OnTestEqual(0),height(h){value=val;}
+						CanvasValue		(const CSharedString& val, int h):OnDrawCanvasEvent(0),OnTestEqual(0),height(h){value=val;}
 	virtual xr_string	GetDrawText		(TOnDrawTextEvent){return value.c_str()?value.c_str():"";}
 	virtual	void		ResetValue		(){;}
 	virtual	bool		Equal			(PropValue* val)
@@ -292,7 +292,7 @@ public:
 	};
 	Flags32				m_Flags;
 public:
-						ButtonValue		(const shared_str& val, u32 flags)
+						ButtonValue		(const CSharedString& val, u32 flags)
 	{
 		m_Flags.assign	(flags);
 		OnBtnClickEvent	= 0;
@@ -304,7 +304,7 @@ public:
 	}
 	virtual xr_string	GetDrawText		(TOnDrawTextEvent)
 	{
-		shared_str t	= _ListToSequence(value);
+		CSharedString t	= _ListToSequence(value);
 		return 			t.c_str()?t.c_str():"";
 	}
 	virtual	void		ResetValue		(){;}
@@ -335,9 +335,9 @@ public:
 		return 			false;
 	}
 };
-class RTextValue: public CustomValue<shared_str>{
+class RTextValue: public CustomValue<CSharedString>{
 public:
-						RTextValue		(TYPE* val):CustomValue<shared_str>(val){};
+						RTextValue		(TYPE* val):CustomValue<CSharedString>(val){};
 	virtual xr_string	GetDrawText		(TOnDrawTextEvent OnDrawText)
 	{
 		xr_string txt	= GetValue().c_str()?GetValue().c_str():"";
@@ -401,7 +401,7 @@ public:
 	int					subitem;		
 	u32					m_ChooseID;
 	u32 				m_ChooseFlags;
-	shared_str	 		m_StartPath;
+	CSharedString	 		m_StartPath;
 	ChooseItemVec*		m_Items;
 	typedef fastdelegate::FastDelegate1<ChooseValue*>	TOnChooseValueFill;
 	TOnChooseValueFill	OnChooseFillEvent;
@@ -410,7 +410,7 @@ public:
 // utils
 	void				AppendChooseItem	(const char* name, const char* hint){VERIFY(m_Items); m_Items->push_back(SChooseItem(name,hint));}
 public:
-						ChooseValue			(shared_str* val, u32 cid, const char* path, void* param, u32 sub_item_count, u32 choose_flags):RTextValue(val),m_ChooseID(cid),m_StartPath(path),subitem(sub_item_count),m_Items(0),m_FillParam(param),OnChooseFillEvent(0),OnDrawThumbnailEvent(0),m_ChooseFlags(choose_flags){}
+						ChooseValue			(CSharedString* val, u32 cid, const char* path, void* param, u32 sub_item_count, u32 choose_flags):RTextValue(val),m_ChooseID(cid),m_StartPath(path),subitem(sub_item_count),m_Items(0),m_FillParam(param),OnChooseFillEvent(0),OnDrawThumbnailEvent(0),m_ChooseFlags(choose_flags){}
 };
 
 typedef CustomValue<BOOL>		BOOLValue;
@@ -516,12 +516,12 @@ public:
 class FlagValueCustom
 {
 public:
-	shared_str				caption[2];
+	CSharedString				caption[2];
 	enum{
 		flInvertedDraw	= (1<<0),
 	};
 	Flags32				m_Flags;
-public:
+
 						FlagValueCustom	(u32 mask, const char* c0, const char* c1)
 	{
 		caption[0]		= c0;
@@ -640,11 +640,11 @@ public:
 //------------------------------------------------------------------------------
 
 class RListValue: public RTextValue{
-public:                                   
-	shared_str*			items;
+public:
+	CSharedString*			items;
 	u32					item_count;
-public:                                   
-						RListValue		(shared_str* val, shared_str* _items, u32 cnt):RTextValue(val),items(_items),item_count(cnt){};
+
+						RListValue		(CSharedString* val, CSharedString* _items, u32 cnt):RTextValue(val),items(_items),item_count(cnt){};
 	virtual bool		Equal			(PropValue* val)
 	{
 		if (items!=((RListValue*)val)->items){

@@ -18,13 +18,13 @@ public:
 		float										maxWidth;
 		CUIStatic::EElipsisPosition					elipsisPos;
 		CUITextBanner								effect;
-		shared_str									str;
+		CSharedString									str;
 
 		void						SetText			(const char* fmt, ...);
 
 		// Ctor		
 									SPh				( );
-		shared_str									key;
+									CSharedString									key;
 	} SinglePhrase;
 
 	using Phrases									= xr_vector<SinglePhrase>;
@@ -51,13 +51,13 @@ class CUICaption :protected CUIMultiTextStatic
 {
 	using inherited									= CUIMultiTextStatic;
 
-	u32					findIndexOf					(const shared_str& key);
-	u32					findIndexOf_				(const shared_str& key);
+	u32					findIndexOf					(const CSharedString& key);
+	u32					findIndexOf_				(const CSharedString& key);
 
 public:
 	virtual void		Draw						( );
-	void				addCustomMessage			(const shared_str& msg_name, float x, float y, float font_size, CGameFont* pFont, CGameFont::EAligment al, u32 color, const char* def_str = "");
-	EffectParams*		customizeMessage			(const shared_str& msg_name, const CUITextBanner::TextBannerStyles styleName);
-	void				setCaption					(const shared_str& msg_name, const char* message_to_out, u32 color = 0, bool replaceColor = false);
-	void				removeCustomMessage			(const shared_str& msg_name);
+	void				addCustomMessage			(const CSharedString& msg_name, float x, float y, float font_size, CGameFont* pFont, CGameFont::EAligment al, u32 color, const char* def_str = "");
+	EffectParams*		customizeMessage			(const CSharedString& msg_name, const CUITextBanner::TextBannerStyles styleName);
+	void				setCaption					(const CSharedString& msg_name, const char* message_to_out, u32 color = 0, bool replaceColor = false);
+	void				removeCustomMessage			(const CSharedString& msg_name);
 };

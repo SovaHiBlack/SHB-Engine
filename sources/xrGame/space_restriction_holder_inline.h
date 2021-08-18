@@ -14,12 +14,12 @@ inline	CSpaceRestrictionHolder::CSpaceRestrictionHolder		()
 	m_default_in_restrictions	= "";
 }
 
-inline	shared_str	CSpaceRestrictionHolder::default_out_restrictions	() const
+inline	CSharedString	CSpaceRestrictionHolder::default_out_restrictions	() const
 {
 	return					(m_default_out_restrictions);
 }
 
-inline	shared_str	CSpaceRestrictionHolder::default_in_restrictions	() const
+inline	CSharedString	CSpaceRestrictionHolder::default_in_restrictions	() const
 {
 	return					(m_default_in_restrictions);
 }

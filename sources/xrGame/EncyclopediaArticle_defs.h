@@ -20,7 +20,7 @@ struct ARTICLE_DATA : public IPureSerializeObject<IReader, IWriter>
 		article_type(eEncyclopediaArticle)
 	{ }
 
-	ARTICLE_DATA(shared_str id, ALife::_TIME_ID time, EArticleType articleType)
+	ARTICLE_DATA(CSharedString id, ALife::_TIME_ID time, EArticleType articleType)
 		: article_id(id),
 		receive_time(time),
 		readed(false),
@@ -31,19 +31,19 @@ struct ARTICLE_DATA : public IPureSerializeObject<IReader, IWriter>
 	virtual void save(IWriter&);
 
 	ALife::_TIME_ID			receive_time;
-	shared_str				article_id;
+	CSharedString				article_id;
 	bool					readed;
 
 	EArticleType			article_type;
 };
 
-using ARTICLE_ID_VECTOR = xr_vector<shared_str>;
+using ARTICLE_ID_VECTOR = xr_vector<CSharedString>;
 using ARTICLE_VECTOR = xr_vector<ARTICLE_DATA>;
 
 class FindArticleByIDPred
 {
 public:
-	FindArticleByIDPred(shared_str id)
+	FindArticleByIDPred(CSharedString id)
 	{
 		object_id = id;
 	}
@@ -60,5 +60,5 @@ public:
 	}
 
 private:
-	shared_str object_id;
+	CSharedString object_id;
 };

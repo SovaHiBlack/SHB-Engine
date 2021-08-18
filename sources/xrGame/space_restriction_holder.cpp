@@ -35,7 +35,7 @@ void CSpaceRestrictionHolder::clear							()
 	m_default_in_restrictions	= "";
 }
 
-shared_str CSpaceRestrictionHolder::normalize_string		(shared_str space_restrictors)
+CSharedString CSpaceRestrictionHolder::normalize_string		(CSharedString space_restrictors)
 {
 	u32						n = xr_strlen(space_restrictors);
 	if (!n)
@@ -88,11 +88,11 @@ shared_str CSpaceRestrictionHolder::normalize_string		(shared_str space_restrict
 	}
 	*(pointer - 1)			= 0;
 
-	//4. finally, dock shared_str
+	//4. finally, dock CSharedString
 	return					(result_string);
 }
 
-SpaceRestrictionHolder::CBaseRestrictionPtr CSpaceRestrictionHolder::restriction	(shared_str space_restrictors)
+SpaceRestrictionHolder::CBaseRestrictionPtr CSpaceRestrictionHolder::restriction	(CSharedString space_restrictors)
 {
 	if (!xr_strlen(space_restrictors))
 		return				(0);
@@ -114,9 +114,10 @@ SpaceRestrictionHolder::CBaseRestrictionPtr CSpaceRestrictionHolder::restriction
 void CSpaceRestrictionHolder::register_restrictor				(CSpaceRestrictor *space_restrictor, const RestrictionSpace::ERestrictorTypes &restrictor_type)
 {
 	string4096					m_temp_string;
-	shared_str					space_restrictors = space_restrictor->cName();
+	CSharedString					space_restrictors = space_restrictor->cName();
 	if (restrictor_type != RestrictionSpace::eDefaultRestrictorTypeNone) {
-		shared_str				*temp = 0, temp1;
+		CSharedString* temp = nullptr;
+		CSharedString temp1;
 		if (restrictor_type == RestrictionSpace::eDefaultRestrictorTypeOut)
 			temp			= &m_default_out_restrictions;
 		else
@@ -148,7 +149,7 @@ void CSpaceRestrictionHolder::register_restrictor				(CSpaceRestrictor *space_re
 	(*I).second->change_implementation(shape);
 }
 
-bool try_remove_string				(shared_str &search_string, const shared_str &string_to_search)
+bool try_remove_string				(CSharedString& search_string, const CSharedString& string_to_search)
 {
 	bool					found = false;
 	string256				temp;
@@ -175,7 +176,7 @@ bool try_remove_string				(shared_str &search_string, const shared_str &string_t
 
 void CSpaceRestrictionHolder::unregister_restrictor			(CSpaceRestrictor *space_restrictor)
 {
-	shared_str				restrictor_id = space_restrictor->cName();
+	CSharedString				restrictor_id = space_restrictor->cName();
 	RESTRICTIONS::iterator	I = m_restrictions.find(restrictor_id);
 	VERIFY					(I != m_restrictions.end());
 	m_restrictions.erase	(I);

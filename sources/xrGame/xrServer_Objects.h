@@ -112,9 +112,9 @@
 // 93 - CSE_AlifeCar					health added in STATE_Read STATE_Write
 // 94 - CSE_Abstract					client_data size increased
 // 95 - CSE_ALifeCreatureAbstract		appended with m_killer_id property
-// 96 - CSE_ALifeTraderAbstract			changed m_iCharacterProfile(int) to m_sCharacterProfile(shared_str)
-// 97 - CSE_ALifeItemPDA				changed m_info_portion(int) to m_info_portion(shared_str) +m_specific_character +CSE_ALifeItemDocument m_wDoc (int-> shared_str)
-// 98 - CSE_ALifeItemPDA				changed m_info_portion(int) to m_info_portion(shared_str) +m_specific_character +CSE_ALifeItemDocument m_wDoc (int-> shared_str)
+// 96 - CSE_ALifeTraderAbstract			changed m_iCharacterProfile(int) to m_sCharacterProfile(CSharedString)
+// 97 - CSE_ALifeItemPDA				changed m_info_portion(int) to m_info_portion(CSharedString) +m_specific_character +CSE_ALifeItemDocument m_wDoc (int-> CSharedString)
+// 98 - CSE_ALifeItemPDA				changed m_info_portion(int) to m_info_portion(CSharedString) +m_specific_character +CSE_ALifeItemDocument m_wDoc (int-> CSharedString)
 // 99 - CSE_ALifeObjectClimable			inheritance changed CSE_Abstruct -> CSE_AlifeObject
 // 100 - CSE_ALifeObjectClimable		inheritance changed CSE_AlifeObject -> CSE_AlifeDynamicObject
 // 101 - CSE_ALifeCreaturePhantom		new class based on CSE_ALifeCreatureAbstract

@@ -137,14 +137,14 @@ protected:
 	// сюжетная информация
 public:
 	//персонаж получил новую порцию информации
-	virtual bool OnReceiveInfo(shared_str info_id) const;
+	virtual bool OnReceiveInfo(CSharedString info_id) const;
 	//убрать информацию
-	virtual void OnDisableInfo(shared_str info_id) const;
+	virtual void OnDisableInfo(CSharedString info_id) const;
 	//передать/удалить информацию через сервер
-	virtual void TransferInfo(shared_str info_id, bool add_info) const;
+	virtual void TransferInfo(CSharedString info_id, bool add_info) const;
 	//есть ли информация у персонажа
-	virtual bool				HasInfo(shared_str info_id) const;
-	virtual bool				GetInfo(shared_str info_id, INFO_DATA&) const;
+	virtual bool				HasInfo(CSharedString info_id) const;
+	virtual bool				GetInfo(CSharedString info_id, INFO_DATA&) const;
 
 #ifdef DEBUG
 	void CInventoryOwner::DumpInfo( ) const;
@@ -240,11 +240,11 @@ public:
 	// связь со скриптами
 	//////////////////////////////////////////////////////////////////////////
 protected:
-	shared_str					m_item_to_spawn;
+	CSharedString					m_item_to_spawn;
 	u32							m_ammo_in_box_to_spawn;
 
 public:
-	inline		const shared_str& item_to_spawn( ) const
+	inline		const CSharedString& item_to_spawn( ) const
 	{
 		return m_item_to_spawn;
 	}
@@ -270,7 +270,7 @@ private:
 public:
 	inline		CTradeParameters& trade_parameters( ) const;
 	virtual	const char* trade_section( ) const;
-	float				deficit_factor(const shared_str& section) const;
+	float				deficit_factor(const CSharedString& section) const;
 	void				buy_supplies(CIniFile& ini_file, const char* section);
 	void				sell_useless_items( );
 	virtual	void				on_before_sell(CInventoryItem* item)

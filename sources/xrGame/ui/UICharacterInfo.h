@@ -45,7 +45,7 @@ protected:
 	};
 
 	CUIStatic*								m_icons[eMaxCaption];
-	shared_str								m_texture_name;
+	CSharedString								m_texture_name;
 
 public:
 						CUICharacterInfo	( );
@@ -72,7 +72,7 @@ public:
 		VERIFY(m_icons[eUIName]);
 		return *m_icons[eUIName];
 	}
-	const shared_str&	IconName			( )
+	const CSharedString&	IconName			( )
 	{
 		return m_texture_name;
 	}

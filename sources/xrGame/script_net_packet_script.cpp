@@ -15,7 +15,7 @@ bool r_eof(CNetPacket *self)
 
 const char* r_stringZ(CNetPacket *self)
 {
-	shared_str			temp;
+	CSharedString			temp;
 	self->r_stringZ	(temp);
 	return			(*temp);
 }

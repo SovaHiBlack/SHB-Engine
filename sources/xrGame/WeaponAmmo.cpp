@@ -244,7 +244,7 @@ CInventoryItem* CWeaponAmmo::can_make_killing(const CInventory* inventory) const
 			continue;
 		}
 
-		xr_vector<shared_str>::const_iterator	i = std::find(weapon->m_ammoTypes.begin( ), weapon->m_ammoTypes.end( ), cNameSect( ));
+		xr_vector<CSharedString>::const_iterator	i = std::find(weapon->m_ammoTypes.begin( ), weapon->m_ammoTypes.end( ), cNameSect( ));
 		if (i != weapon->m_ammoTypes.end( ))
 		{
 			return weapon;

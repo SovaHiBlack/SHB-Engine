@@ -36,7 +36,7 @@ CInfoPortion::CInfoPortion( )
 CInfoPortion::~CInfoPortion( )
 { }
 
-void CInfoPortion::Load(shared_str info_id)
+void CInfoPortion::Load(CSharedString info_id)
 {
 	m_InfoId = info_id;
 	inherited_shared::load_shared(m_InfoId, NULL);
@@ -58,7 +58,7 @@ void CInfoPortion::load_shared(const char*)
 	info_data( )->m_DialogNames.clear( );
 	for (int i = 0; i < dialogs_num; ++i)
 	{
-		shared_str dialog_name = pXML->Read(pNode, "dialog", i, "");
+		CSharedString dialog_name = pXML->Read(pNode, "dialog", i, "");
 		info_data( )->m_DialogNames.push_back(dialog_name);
 	}
 
@@ -67,7 +67,7 @@ void CInfoPortion::load_shared(const char*)
 	info_data( )->m_DisableInfo.clear( );
 	for (i = 0; i < disable_num; ++i)
 	{
-		shared_str info_id = pXML->Read(pNode, "disable", i, "");
+		CSharedString info_id = pXML->Read(pNode, "disable", i, "");
 		info_data( )->m_DisableInfo.push_back(info_id);
 	}
 

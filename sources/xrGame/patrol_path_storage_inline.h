@@ -16,7 +16,7 @@ inline	const CPatrolPathStorage::PATROL_REGISTRY &CPatrolPathStorage::patrol_pat
 	return			(m_registry);
 }
 
-inline	const CPatrolPath *CPatrolPathStorage::path	(shared_str patrol_name, bool no_assert) const
+inline	const CPatrolPath *CPatrolPathStorage::path	(CSharedString patrol_name, bool no_assert) const
 {
 	const_iterator	I = patrol_paths().find(patrol_name);
 	if (I == patrol_paths().end()) {

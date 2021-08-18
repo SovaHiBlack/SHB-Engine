@@ -290,7 +290,7 @@ public:
 	}
 
 	// Name of the window
-	const shared_str			WindowName				( ) const
+	const CSharedString			WindowName				( ) const
 	{
 		return m_windowName;
 	}
@@ -302,7 +302,7 @@ public:
 	{
 		return *m_windowName;
 	}
-	CUIWindow*					FindChild				(const shared_str name);
+	CUIWindow*					FindChild				(const CSharedString name);
 
 	inline bool					CursorOverWindow		( ) const
 	{
@@ -319,7 +319,7 @@ protected:
 		}
 	}
 
-	shared_str											m_windowName;
+	CSharedString											m_windowName;
 	//список дочерних окон
 	WINDOW_LIST											m_ChildWndList;
 

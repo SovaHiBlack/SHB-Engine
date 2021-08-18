@@ -430,7 +430,7 @@ const char* CScriptGameObject::ProfileName			()
 		return NULL;
 	}
 	
-	shared_str profile_id =  pInventoryOwner->CharacterInfo().Profile();
+	CSharedString profile_id =  pInventoryOwner->CharacterInfo().Profile();
 	if(!profile_id || !profile_id.size() )
 		return NULL;
 	else
@@ -552,7 +552,7 @@ ETaskState CScriptGameObject::GetGameTaskState	(const char* task_id, int objecti
 		return eTaskStateDummy;
 	}
 */
-	shared_str shared_name = task_id;
+	CSharedString shared_name = task_id;
 	CGameTask* t= Actor()->GameTaskManager().HasGameTask(shared_name);
 	if(NULL==t) return eTaskStateDummy;
 
@@ -565,7 +565,7 @@ ETaskState CScriptGameObject::GetGameTaskState	(const char* task_id, int objecti
 
 void CScriptGameObject::SetGameTaskState	(ETaskState state, const char* task_id, int objective_num)
 {
-	shared_str shared_name = task_id;
+	CSharedString shared_name = task_id;
 	Actor()->GameTaskManager().SetTaskState(shared_name, (U16)objective_num, state);
 }
 
@@ -624,7 +624,7 @@ bool CScriptGameObject::IsActorSleepeng()
 */
 //////////////////////////////////////////////////////////////////////////
 
-void construct_restriction_vector(shared_str restrictions, xr_vector<ALife::_OBJECT_ID> &result)
+void construct_restriction_vector(CSharedString restrictions, xr_vector<ALife::_OBJECT_ID> &result)
 {
 	result.clear();
 	string64	temp;

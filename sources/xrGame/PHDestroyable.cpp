@@ -48,7 +48,7 @@ CPHDestroyable::CPHDestroyable( )
 	m_depended_objects = 0;
 }
 /////////spawn object representing destroyed item//////////////////////////////////////////////////////////////////////////////////
-void CPHDestroyable::GenSpawnReplace(U16 ref_id, const char* section, shared_str visual_name)
+void CPHDestroyable::GenSpawnReplace(U16 ref_id, const char* section, CSharedString visual_name)
 {
 
 	CSE_Abstract* D = F_entity_Create(section);//*cNameSect()
@@ -145,7 +145,7 @@ void CPHDestroyable::Destroy(U16 source_id, const char* section)
 	{
 		m_flags.set(fl_released, FALSE);
 	}
-	xr_vector<shared_str>::iterator i = m_destroyed_obj_visual_names.begin( ), e = m_destroyed_obj_visual_names.end( );
+	xr_vector<CSharedString>::iterator i = m_destroyed_obj_visual_names.begin( ), e = m_destroyed_obj_visual_names.end( );
 
 	for (; e != i; i++)
 		GenSpawnReplace(source_id, section, *i);

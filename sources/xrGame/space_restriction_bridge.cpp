@@ -40,7 +40,7 @@ void CSpaceRestrictionBridge::initialize				()
 	object().initialize	();
 }
 
-shared_str CSpaceRestrictionBridge::name				() const
+CSharedString CSpaceRestrictionBridge::name				() const
 {
 	return				(object().name());
 }

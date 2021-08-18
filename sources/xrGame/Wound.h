@@ -43,11 +43,11 @@ public:
 		m_iParticleBoneNum = bone_num;
 	}
 
-	const shared_str& GetParticleName( )
+	const CSharedString& GetParticleName( )
 	{
 		return m_sParticleName;
 	}
-	void	SetParticleName(shared_str particle_name)
+	void	SetParticleName(CSharedString particle_name)
 	{
 		m_sParticleName = particle_name;
 	}
@@ -71,7 +71,7 @@ protected:
 	//косточка, если на ране отыгрывается партикл
 	U16 m_iParticleBoneNum;
 	//имя этого партикла
-	shared_str m_sParticleName;
+	CSharedString m_sParticleName;
 
 	//список составляющих раны 
 	HitImmunity::HitTypeSVec m_Wounds;

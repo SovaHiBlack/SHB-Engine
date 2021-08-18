@@ -224,7 +224,7 @@ void CUICharacterInfo::InitCharacter(U16 id)
 
 void CUICharacterInfo::SetRelation(ALife::ERelationType relation, CHARACTER_GOODWILL goodwill)
 {
-	shared_str relation_str;
+	CSharedString relation_str;
 
 	CStringTable stbl;
 

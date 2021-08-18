@@ -70,7 +70,7 @@ IRender_Visual*	CModelPool::Instance_Duplicate	(IRender_Visual* V)
 	IRender_Visual* N		= Instance_Create(V->Type);
 	N->Copy			(V);
 	N->Spawn		();
-    // inc ref counter
+	// inc ref counter
 	for (xr_vector<ModelDef>::iterator I=Models.begin(); I!=Models.end(); I++) 
 		if (I->model==V){ I->refs++; break;}
 	return N;
@@ -172,8 +172,8 @@ void CModelPool::Destroy()
 CModelPool::CModelPool()
 {
 	bLogging				= TRUE;
-    bForceDiscard 			= FALSE;
-    bAllowChildrenDuplicate	= TRUE; 
+	bForceDiscard 			= FALSE;
+	bAllowChildrenDuplicate	= TRUE; 
 	g_pMotionsContainer		= xr_new<motions_container>();
 }
 
@@ -209,7 +209,7 @@ IRender_Visual* CModelPool::Create(const char* name, IReader* data)
 	if (it!=Pool.end())
 	{
 		// 1. Instance found
-        IRender_Visual*		Model	= it->second;
+		IRender_Visual*		Model	= it->second;
 		Model->Spawn		();
 		Pool.erase			(it);
 		return				Model;
@@ -221,13 +221,13 @@ IRender_Visual* CModelPool::Create(const char* name, IReader* data)
 			// 2. If not found
 			bAllowChildrenDuplicate	= FALSE;
 			if (data)		Base = Instance_Load(low_name,data,TRUE);
-            else			Base = Instance_Load(low_name,TRUE);
+			else			Base = Instance_Load(low_name,TRUE);
 			bAllowChildrenDuplicate	= TRUE;
 		}
-        // 3. If found - return (cloned) reference
-        IRender_Visual*		Model	= Instance_Duplicate(Base);
-        Registry.insert		( mk_pair(Model,low_name) );
-        return				Model;
+		// 3. If found - return (cloned) reference
+		IRender_Visual*		Model	= Instance_Duplicate(Base);
+		Registry.insert		( mk_pair(Model,low_name) );
+		return				Model;
 	}
 }
 
@@ -246,18 +246,18 @@ IRender_Visual* CModelPool::CreateChild(const char* name, IReader* data)
 		else			Base = Instance_Load	(low_name,FALSE);
 	}
 
-    IRender_Visual* Model	= bAllowChildrenDuplicate?Instance_Duplicate(Base):Base;
-    return					Model;
+	IRender_Visual* Model	= bAllowChildrenDuplicate?Instance_Duplicate(Base):Base;
+	return					Model;
 }
 
 extern ENGINE_API BOOL				g_bRendering; 
 void	CModelPool::DeleteInternal	(IRender_Visual* &V, BOOL bDiscard)
 {
 	VERIFY					(!g_bRendering);
-    if (!V)					return;
+	if (!V)					return;
 	V->Depart				();
 	if (bDiscard||bForceDiscard){
-    	Discard	(V, TRUE); 
+		Discard	(V, TRUE); 
 	}else{
 		//
 		REGISTRY_IT	it		= Registry.find	(V);
@@ -301,7 +301,7 @@ void	CModelPool::Discard	(IRender_Visual* &V, BOOL b_complete)
 		// Pool - OK
 
 			// Base
-			const shared_str&	name	= it->second;
+			const CSharedString&	name	= it->second;
 			xr_vector<ModelDef>::iterator I = Models.begin();
 			xr_vector<ModelDef>::iterator I_e = Models.end();
 			
@@ -312,11 +312,11 @@ void	CModelPool::Discard	(IRender_Visual* &V, BOOL b_complete)
 					if(b_complete || strchr(*name,'#'))
 					{
 						VERIFY(I->refs>0);
-            			I->refs--; 
+						I->refs--; 
 						if (0==I->refs)
 						{
-                			bForceDiscard		= TRUE;
-	            			I->model->Release	();
+							bForceDiscard		= TRUE;
+							I->model->Release	();
 							xr_delete			(I->model);	
 							Models.erase		(I);
 							bForceDiscard		= FALSE;

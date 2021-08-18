@@ -19,12 +19,11 @@ public:
 	enum EGoalType {
 		eGoalTypeParticleAttached = u32(0),
 		eGoalTypeParticlePosition,
-		eGoalTypeDummy = u32(-1),
+		eGoalTypeDummy = u32(-1)
 	};
 
-public:
-	shared_str			m_caParticleToRun;
-	shared_str			m_caBoneName;
+	CSharedString			m_caParticleToRun;
+	CSharedString			m_caBoneName;
 	EGoalType			m_tGoalType;
 	CParticlesObject	*m_tpParticleSystem;
 	bool				m_bStartedToPlay;
@@ -33,7 +32,6 @@ public:
 	Fvector3				m_tParticleVelocity;
 	bool				m_bAutoRemove;
 
-public:
 	inline					CScriptParticleAction	();
 	inline					CScriptParticleAction	(const char* caPartcileToRun, const char* caBoneName, const CParticleParams &tParticleParams = CParticleParams(), bool bAutoRemove = false);
 	inline					CScriptParticleAction	(const char* caPartcileToRun, const CParticleParams &tParticleParams = CParticleParams(), bool bAutoRemove = false);
@@ -45,7 +43,6 @@ public:
 	inline		void		SetVelocity				(const Fvector3& tVelocity);
 	inline		void		initialize				();
 
-public:
 	static void script_register(lua_State*);
 };
 

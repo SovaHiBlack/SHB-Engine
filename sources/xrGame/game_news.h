@@ -18,12 +18,12 @@ struct GAME_NEWS_DATA : public IPureSerializeObject<IReader, IWriter>
 	virtual void		load(IReader&);
 	virtual void		save(IWriter&);
 
-	shared_str			news_text;
+	CSharedString			news_text;
 	int					show_time;
 
 	ALife::_TIME_ID		receive_time;
 
-	shared_str			texture_name;
+	CSharedString			texture_name;
 	Frect				tex_rect;
 
 	const char* SingleLineText( );

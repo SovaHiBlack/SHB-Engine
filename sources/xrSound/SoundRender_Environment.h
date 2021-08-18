@@ -5,7 +5,7 @@ class CSoundRender_Environment		: public CSound_environment
 {
 public:
 	U32				version;
-	shared_str			name;
+	CSharedString			name;
 
 	U32				Environment;				// sorce environment
 	float           Room;                       // room effect level at low frequencies

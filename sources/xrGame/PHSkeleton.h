@@ -16,7 +16,7 @@ class CPHSkeleton : public CPHDestroyableNotificate
 	u32					m_remove_time;
 	PHSHELL_PAIR_VECTOR m_unsplited_shels;
 
-	shared_str			m_startup_anim;
+	CSharedString			m_startup_anim;
 	Flags8				m_flags;
 
 private:

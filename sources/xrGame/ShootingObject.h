@@ -145,7 +145,7 @@ protected:
 
 protected:
 	//им€ пратиклов дл€ гильз
-	shared_str				m_sShellParticles;
+	CSharedString				m_sShellParticles;
 
 public:
 	Fvector3					vLoadedShellPoint;
@@ -155,16 +155,16 @@ public:
 
 protected:
 	//им€ пратиклов дл€ огн€
-	shared_str				m_sFlameParticlesCurrent;
+	CSharedString				m_sFlameParticlesCurrent;
 	//дл€ выстрела 1м и 2м видом стрельбы
-	shared_str				m_sFlameParticles;
+	CSharedString				m_sFlameParticles;
 	//объект партиклов огн€
 	CParticlesObject* m_pFlameParticles;
 
 	//им€ пратиклов дл€ дыма
-	shared_str				m_sSmokeParticlesCurrent;
-	shared_str				m_sSmokeParticles;
+	CSharedString				m_sSmokeParticlesCurrent;
+	CSharedString				m_sSmokeParticles;
 
 	//им€ партиклов следа от пули
-	shared_str				m_sShotParticles;
+	CSharedString				m_sShotParticles;
 };

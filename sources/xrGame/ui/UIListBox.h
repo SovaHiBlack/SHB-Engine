@@ -51,7 +51,7 @@ protected:
 	u32				m_text_color;
 	u32				m_text_color_s;
 	ETextAlignment	m_text_al;
-	shared_str		m_selection_texture;
+	CSharedString		m_selection_texture;
 
 	bool			m_bImmediateSelection;
 };

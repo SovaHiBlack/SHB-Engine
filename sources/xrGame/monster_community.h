@@ -6,7 +6,7 @@
 #include "ini_table_loader.h"
 
 typedef int			MONSTER_COMMUNITY_INDEX;
-typedef shared_str	MONSTER_COMMUNITY_ID;
+typedef CSharedString	MONSTER_COMMUNITY_ID;
 #define NO_MONSTER_COMMUNITY_INDEX MONSTER_COMMUNITY_INDEX(-1)
 
 struct MONSTER_COMMUNITY_DATA

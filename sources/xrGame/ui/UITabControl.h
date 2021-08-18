@@ -66,8 +66,8 @@ public:
 		return &m_TabsArr;
 	}
 	CUIButton*			GetButtonByIndex			(int i);
-	const shared_str	GetCommandName				(int i);
-	CUIButton*			GetButtonByCommand			(const shared_str& n);
+	const CSharedString	GetCommandName				(int i);
+	CUIButton*			GetButtonByCommand			(const CSharedString& n);
 	void				ResetTab					( );
 
 protected:

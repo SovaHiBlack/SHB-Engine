@@ -32,7 +32,7 @@ public:
 	SightManager::ESightType	m_tWatchType;
 	EGoalType					m_tGoalType;
 	Fvector3						m_tWatchVector;
-	shared_str						m_bone_to_watch;
+	CSharedString						m_bone_to_watch;
 
 	// Searchlight 
 	Fvector3						m_tTargetPoint;

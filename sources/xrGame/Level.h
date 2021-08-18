@@ -82,7 +82,7 @@ protected:
 	CPHCommander* m_ph_commander_scripts;
 
 	// level name
-	shared_str					m_name;
+	CSharedString					m_name;
 	// Local events
 	EVENT						eChangeRP;
 	EVENT						eDemoPlay;
@@ -189,7 +189,7 @@ public:
 
 private:
 	// preload sounds registry
-	using SoundRegistryMap = xr_map<shared_str, ref_sound>;
+	using SoundRegistryMap = xr_map<CSharedString, ref_sound>;
 	using SoundRegistryMapIt = SoundRegistryMap::iterator;
 	SoundRegistryMap			sound_registry;
 
@@ -223,8 +223,8 @@ public:
 	xr_vector<ref_sound*>		static_Sounds;
 
 	// startup options
-	shared_str					m_caServerOptions;
-	shared_str					m_caClientOptions;
+	CSharedString					m_caServerOptions;
+	CSharedString					m_caClientOptions;
 
 	// Starting/Loading
 	virtual BOOL				net_Start(const char* op_server, const char* op_client);
@@ -294,7 +294,7 @@ public:
 	virtual ~CLevel( );
 
 	//названияе текущего уровня
-	virtual shared_str			name( ) const;
+	virtual CSharedString			name( ) const;
 	virtual void				GetLevelInfo(CServerInfo* si);
 
 	//gets the time from the game simulation

@@ -30,7 +30,7 @@ void CPatrolPathStorage::load_raw			(const CLevelGraph *level_graph, const CGame
 		R_ASSERT				(sub_chunk->r_u16() == WAYOBJECT_VERSION);
 		R_ASSERT				(sub_chunk->find_chunk(WAYOBJECT_CHUNK_NAME));
 
-		shared_str				patrol_name;
+		CSharedString				patrol_name;
 		sub_chunk->r_stringZ	(patrol_name);
 		const_iterator			I = m_registry.find(patrol_name);
 		VERIFY3					(I == m_registry.end(),"Duplicated patrol path found",*patrol_name);

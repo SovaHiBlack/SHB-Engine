@@ -22,7 +22,7 @@ CUIMessagesWindow::CUIMessagesWindow( )
 CUIMessagesWindow::~CUIMessagesWindow( )
 { }
 
-void CUIMessagesWindow::AddLogMessage(const shared_str& msg)
+void CUIMessagesWindow::AddLogMessage(const CSharedString& msg)
 {
 	m_pGameLog->AddLogMessage(*msg);
 }

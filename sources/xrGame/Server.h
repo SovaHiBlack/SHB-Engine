@@ -143,7 +143,7 @@ public:
 	virtual void			OnBuildVersionRespond(IClient* CL, CNetPacket& P);
 
 protected:
-	bool					CheckAdminRights(const shared_str& user, const shared_str& pass, string512 reason);
+	bool					CheckAdminRights(const CSharedString& user, const CSharedString& pass, string512 reason);
 	virtual IClient*		new_client(SClientConnectData* cl_data);
 
 	virtual bool			Check_ServerAccess(IClient* CL, string512& reason)
@@ -205,14 +205,14 @@ public:
 	CSE_Abstract*			ID_to_entity(U16 ID);
 
 	// main
-	virtual EConnect		Connect(shared_str& session_name);
+	virtual EConnect		Connect(CSharedString& session_name);
 	virtual void			Disconnect( );
 	virtual void			Update( );
 	void					SLS_Default( );
 	void					SLS_Clear( );
 	void					SLS_Save(IWriter& fs);
 	void					SLS_Load(IReader& fs);
-	shared_str				level_name(const shared_str& server_options) const;
+	CSharedString				level_name(const CSharedString& server_options) const;
 
 	void					create_direct_client( );
 

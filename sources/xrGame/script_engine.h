@@ -42,9 +42,8 @@ private:
 protected:
 	CScriptProcessStorage		m_script_processes;
 	int							m_stack_level;
-	shared_str					m_class_registrators;
+	CSharedString					m_class_registrators;
 
-protected:
 #ifdef USE_DEBUGGER
 	CScriptDebugger				*m_scriptDebugger;
 #endif

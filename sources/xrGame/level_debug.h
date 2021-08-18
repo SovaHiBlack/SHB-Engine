@@ -64,7 +64,7 @@ public:
 	//////////////////////////////////////////////////////////////////////////
 
 	struct SInfoItem {
-		shared_str	text;
+		CSharedString	text;
 		u32			color;
 		u32			id;
 
@@ -95,7 +95,7 @@ public:
 	//////////////////////////////////////////////////////////////////////////
 
 	struct STextItem {
-		shared_str	text;
+		CSharedString	text;
 		
 		float		x;
 		float		y;

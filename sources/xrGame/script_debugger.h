@@ -20,7 +20,7 @@ struct lua_State;
 #define DMOD_STOP					11
 
 struct SBreakPoint{
-	shared_str	fileName;
+	CSharedString	fileName;
 	int			nLine;
 	SBreakPoint()	{nLine=0;};
 	SBreakPoint(const SBreakPoint& other)

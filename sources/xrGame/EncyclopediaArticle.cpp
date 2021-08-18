@@ -39,7 +39,7 @@ CEncyclopediaArticle::~CEncyclopediaArticle( )
 	}
 }
 
-void CEncyclopediaArticle::Load(shared_str id)
+void CEncyclopediaArticle::Load(CSharedString id)
 {
 	m_ArticleId = id;
 	inherited_shared::load_shared(m_ArticleId, NULL);

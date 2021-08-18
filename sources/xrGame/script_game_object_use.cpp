@@ -82,7 +82,7 @@ const char* CScriptGameObject::Name				() const
 	return			(*object().cName());
 }
 
-shared_str CScriptGameObject::cName				() const
+CSharedString CScriptGameObject::cName				() const
 {
 	return			(object().cName());
 }

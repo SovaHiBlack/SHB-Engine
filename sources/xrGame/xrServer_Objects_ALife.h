@@ -75,8 +75,8 @@ add_to_type_list(CSE_ALifeSchedulable)
 
 SERVER_ENTITY_DECLARE_BEGIN(CSE_ALifeGraphPoint, CSE_Abstract)
 public:
-	shared_str						m_caConnectionLevelName;
-	shared_str						m_caConnectionPointName;
+	CSharedString						m_caConnectionLevelName;
+	CSharedString						m_caConnectionPointName;
 	U8								m_tLocations[GameGraph::LOCATION_TYPE_COUNT];
 
 	CSE_ALifeGraphPoint(const char* caSection);
@@ -346,8 +346,8 @@ public:
 	u32								m_dwNextNodeID;
 	Fvector3							m_tNextPosition;
 	Fvector3							m_tAngles;
-	shared_str						m_caLevelToChange;
-	shared_str						m_caLevelPointToChange;
+	CSharedString						m_caLevelToChange;
+	CSharedString						m_caLevelPointToChange;
 	BOOL							m_bSilentMode;
 
 	CSE_ALifeLevelChanger(const char* caSection);
@@ -411,7 +411,7 @@ public:
 		SERVER_ENTITY_DECLARE_BEGIN2(CSE_ALifeObjectPhysic, CSE_ALifeDynamicObjectVisual, CSE_PHSkeleton)
 		u32 							type;
 	float 							mass;
-	shared_str 						fixed_bones;
+	CSharedString 						fixed_bones;
 	CSE_ALifeObjectPhysic(const char* caSection);
 	virtual 						~CSE_ALifeObjectPhysic( );
 	virtual bool					used_ai_locations( ) const;
@@ -445,24 +445,24 @@ public:
 // light color    
 	u32								color;
 	float							brightness;
-	shared_str						color_animator;
+	CSharedString						color_animator;
 // light texture    
-	shared_str						light_texture;
+	CSharedString						light_texture;
 // range
 	float							range;
 	float							m_virtual_size;
 // bones&motions
-	shared_str						light_ambient_bone;
-	shared_str						light_main_bone;
-	shared_str						fixed_bones;
+	CSharedString						light_ambient_bone;
+	CSharedString						light_main_bone;
+	CSharedString						fixed_bones;
 // spot
 	float							spot_cone_angle;
 // ambient    
 	float							m_ambient_radius;
 	float							m_ambient_power;
-	shared_str						m_ambient_texture;
+	CSharedString						m_ambient_texture;
 // glow    
-	shared_str						glow_texture;
+	CSharedString						glow_texture;
 	float							glow_radius;
 // game
 	float							m_health;
@@ -491,7 +491,7 @@ public:
 #define script_type_list save_type_list(CSE_ALifeObjectProjector)
 
 		SERVER_ENTITY_DECLARE_BEGIN3(CSE_ALifeHelicopter, CSE_ALifeDynamicObjectVisual, CSE_Motion, CSE_PHSkeleton)
-		shared_str							engine_sound;
+		CSharedString							engine_sound;
 	CSE_ALifeHelicopter(const char* caSection);
 	virtual							~CSE_ALifeHelicopter( );
 	virtual	void					load(CNetPacket& tNetPacket);

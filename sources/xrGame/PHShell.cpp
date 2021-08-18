@@ -372,7 +372,7 @@ void CPHShell::applyImpulseTrace(const Fvector3& pos, const Fvector3& dir, float
 	EnableObject(0);
 }
 
-CPhysicsElement* CPHShell::get_Element(const shared_str& bone_name)
+CPhysicsElement* CPHShell::get_Element(const CSharedString& bone_name)
 {
 	VERIFY(m_pKinematics);
 	return get_Element(m_pKinematics->LL_BoneID(bone_name));
@@ -380,7 +380,7 @@ CPhysicsElement* CPHShell::get_Element(const shared_str& bone_name)
 
 CPhysicsElement* CPHShell::get_Element(const char* bone_name)
 {
-	return get_Element((const shared_str&) (bone_name));
+	return get_Element((const CSharedString&) (bone_name));
 }
 
 CPhysicsElement* CPHShell::get_ElementByStoreOrder(U16 num)
@@ -431,7 +431,7 @@ CPhysicsJoint* CPHShell::get_Joint(U16 bone_id)
 	return nullptr;
 }
 
-CPhysicsJoint* CPHShell::get_Joint(const shared_str& bone_name)
+CPhysicsJoint* CPHShell::get_Joint(const CSharedString& bone_name)
 {
 	VERIFY(m_pKinematics);
 	return get_Joint(m_pKinematics->LL_BoneID(bone_name));
@@ -439,7 +439,7 @@ CPhysicsJoint* CPHShell::get_Joint(const shared_str& bone_name)
 
 CPhysicsJoint* CPHShell::get_Joint(const char* bone_name)
 {
-	return get_Joint((const shared_str&) bone_name);
+	return get_Joint((const CSharedString&) bone_name);
 }
 
 CPhysicsJoint* CPHShell::get_JointByStoreOrder(U16 num)

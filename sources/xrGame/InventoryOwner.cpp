@@ -98,7 +98,7 @@ void CInventoryOwner::reload(const char* section)
 void CInventoryOwner::reinit( )
 {
 	CAttachmentOwner::reinit( );
-	m_item_to_spawn = shared_str( );
+	m_item_to_spawn = CSharedString( );
 	m_ammo_in_box_to_spawn = 0;
 }
 
@@ -521,7 +521,7 @@ const char* CInventoryOwner::trade_section( ) const
 	return READ_IF_EXISTS(pSettings, r_string, game_object->cNameSect( ), "trade_section", "trade");
 }
 
-float CInventoryOwner::deficit_factor(const shared_str& section) const
+float CInventoryOwner::deficit_factor(const CSharedString& section) const
 {
 	if (!m_purchase_list)
 	{

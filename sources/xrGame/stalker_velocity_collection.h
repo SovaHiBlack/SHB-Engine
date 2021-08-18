@@ -17,7 +17,7 @@ private:
 	float				m_panic;
 
 public:
-						CStalkerVelocityCollection	(const shared_str &section);
+						CStalkerVelocityCollection	(const CSharedString& section);
 	inline	float		velocity					(
 		const MonsterSpace::EMentalState		&mental_state,
 		const MonsterSpace::EBodyState			&body_state,

@@ -24,15 +24,15 @@ protected:
 	typedef CGraphAbstractSerialize<CPatrolPoint,float,u32> inherited;
 
 public:
+
 #ifdef DEBUG
-	shared_str				m_name;
+	CSharedString				m_name;
 #endif
 
-public:
-							CPatrolPath		(shared_str name = "");
+							CPatrolPath		(CSharedString name = "");
 	virtual					~CPatrolPath	();
 			CPatrolPath		&load_raw		(const CLevelGraph *level_graph, const CGameLevelCrossTable *cross, const CGameGraph *game_graph, IReader &stream);
-	inline		const CVertex	*point			(shared_str name) const;
+	inline		const CVertex	*point			(CSharedString name) const;
 	template <typename T>
 	inline		const CVertex	*point			(const Fvector3& position, const T &evaluator) const;
 	inline		const CVertex	*point			(const Fvector3& position) const;
@@ -40,7 +40,7 @@ public:
 #ifdef DEBUG
 public:
 	virtual void			load			(IReader &stream);
-	inline		void			name			(const shared_str &name);
+	inline		void			name			(const CSharedString& name);
 #endif
 };
 

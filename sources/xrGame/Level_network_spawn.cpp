@@ -14,7 +14,7 @@
 void CLevel::cl_Process_Spawn(CNetPacket& P)
 {
 	// Begin analysis
-	shared_str s_name;
+	CSharedString s_name;
 	P.r_stringZ(s_name);
 
 	// Create DC (xrSE)

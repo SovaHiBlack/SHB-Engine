@@ -11,11 +11,11 @@ class CGameTask;
 class SScriptObjectiveHelper : public IPureSerializeObject<IReader, IWriter>
 {
 public:
-	xr_vector<shared_str>	m_s_complete_lua_functions;
-	xr_vector<shared_str>	m_s_fail_lua_functions;
+	xr_vector<CSharedString>	m_s_complete_lua_functions;
+	xr_vector<CSharedString>	m_s_fail_lua_functions;
 
-	xr_vector<shared_str>	m_s_lua_functions_on_complete;
-	xr_vector<shared_str>	m_s_lua_functions_on_fail;
+	xr_vector<CSharedString>	m_s_lua_functions_on_complete;
+	xr_vector<CSharedString>	m_s_lua_functions_on_fail;
 
 	bool			not_empty( )
 	{
@@ -28,7 +28,7 @@ public:
 	virtual void			save(IWriter& stream);
 	virtual void			load(IReader& stream);
 
-	void			init_functors(xr_vector<shared_str>& v_src, xr_vector<luabind::functor<bool> >& v_dest);
+	void			init_functors(xr_vector<CSharedString>& v_src, xr_vector<luabind::functor<bool> >& v_dest);
 };
 
 class SGameTaskObjective : public IPureSerializeObject<IReader, IWriter>
@@ -40,9 +40,9 @@ private:
 	ETaskState				task_state;
 	CGameTask* parent;
 	int						idx;
-	void					SendInfo(xr_vector<shared_str>&);
+	void					SendInfo(xr_vector<CSharedString>&);
 	void					CallAllFuncs(xr_vector<luabind::functor<bool> >& v);
-	bool					CheckInfo(xr_vector<shared_str>&);
+	bool					CheckInfo(xr_vector<CSharedString>&);
 	bool					CheckFunctions(xr_vector<luabind::functor<bool> >& v);
 	void					SetTaskState(ETaskState new_state);
 
@@ -53,12 +53,12 @@ public:
 
 	SGameTaskObjective(CGameTask* parent, int idx);
 	SGameTaskObjective( );
-	shared_str				description;
-	shared_str				article_id;
-	shared_str				map_hint;
-	shared_str				map_location;
+	CSharedString				description;
+	CSharedString				article_id;
+	CSharedString				map_hint;
+	CSharedString				map_location;
 	U16						object_id;
-	shared_str				article_key;
+	CSharedString				article_key;
 	CMapLocation* LinkedMapLocation( );
 	ETaskState				TaskState( )
 	{
@@ -66,14 +66,14 @@ public:
 	}
 	ETaskState				UpdateState( );
 
-	shared_str							icon_texture_name;
+	CSharedString							icon_texture_name;
 	Frect								icon_rect;
 	bool								def_location_enabled;
 	//complete/fail stuff
-	xr_vector<shared_str>				m_completeInfos;
-	xr_vector<shared_str>				m_failInfos;
-	xr_vector<shared_str>				m_infos_on_complete;
-	xr_vector<shared_str>				m_infos_on_fail;
+	xr_vector<CSharedString>				m_completeInfos;
+	xr_vector<CSharedString>				m_failInfos;
+	xr_vector<CSharedString>				m_infos_on_complete;
+	xr_vector<CSharedString>				m_infos_on_fail;
 
 	xr_vector<luabind::functor<bool> >	m_complete_lua_functions;
 	xr_vector<luabind::functor<bool> >	m_fail_lua_functions;
@@ -137,7 +137,7 @@ public:
 	}
 
 	TASK_ID					m_ID;
-	shared_str				m_Title;
+	CSharedString				m_Title;
 	OBJECTIVE_VECTOR		m_Objectives;
 	ALife::_TIME_ID			m_ReceiveTime;
 	ALife::_TIME_ID			m_FinishTime;

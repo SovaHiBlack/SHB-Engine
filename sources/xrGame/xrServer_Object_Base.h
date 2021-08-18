@@ -77,7 +77,7 @@ public:
 	xrClientData* owner;
 
 	// spawn data
-	shared_str						s_name;
+	CSharedString						s_name;
 	U8								s_gameid;
 	U8								s_RP;
 	Flags16							s_flags;		// state flags
@@ -88,7 +88,7 @@ public:
 	Fvector3							o_Angle;
 	CLASS_ID						m_tClassID;
 	int								m_script_clsid;
-	shared_str						m_ini_string;
+	CSharedString						m_ini_string;
 	CIniFile* m_ini_file;
 
 	// for ALife control

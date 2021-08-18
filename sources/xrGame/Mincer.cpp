@@ -44,7 +44,7 @@ void CMincer::Load (const char* section)
 {
 	inherited::Load(section);
 	
-	m_telekinetics.set_destroing_particles(shared_str(pSettings->r_string(section,"tearing_particles")));
+	m_telekinetics.set_destroing_particles(CSharedString(pSettings->r_string(section,"tearing_particles")));
 	m_telekinetics.set_throw_power(pSettings->r_float(section,"throw_out_impulse"));
 	m_torn_particles=pSettings->r_string(section,"torn_particles");
 	m_tearing_sound.create(pSettings->r_string(section,"body_tearing_sound"),st_Effect,sg_SourceType);

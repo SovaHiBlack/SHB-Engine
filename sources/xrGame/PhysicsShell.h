@@ -277,13 +277,13 @@ inline					CKinematics					*PKinematics								()																{return m_pKine
 	virtual			void						addEquelInertiaToEls						(const dMass& M)																			= 0;
 	virtual			ELEMENT_STORAGE				&Elements									()																							= 0;
 	virtual			CPhysicsElement				*get_Element								(U16 bone_id)																				= 0;
-	virtual			CPhysicsElement				*get_Element								(const shared_str & bone_name)																= 0;
+	virtual			CPhysicsElement				*get_Element								(const CSharedString& bone_name)																= 0;
 	virtual			CPhysicsElement				*get_Element								(const char* bone_name)																			= 0;
 	virtual			CPhysicsElement				*get_ElementByStoreOrder					(U16 num)																					= 0;
 	virtual			U16							get_ElementsNumber							()																							= 0;
 	virtual			CPHSynchronize				*get_ElementSync							(U16 element)																				= 0;
 	virtual			CPhysicsJoint				*get_Joint									(U16 bone_id)																				= 0;
-	virtual			CPhysicsJoint				*get_Joint									(const shared_str & bone_name)																= 0;
+	virtual			CPhysicsJoint				*get_Joint									(const CSharedString& bone_name)																= 0;
 	virtual			CPhysicsJoint				*get_Joint									(const char* bone_name)																			= 0;
 	virtual			CPhysicsJoint				*get_JointByStoreOrder						(U16 num)																					= 0;
 	virtual			U16							get_JointsNumber							()																							= 0;

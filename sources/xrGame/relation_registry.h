@@ -85,8 +85,8 @@ public:
 	struct RELATION_MAP_SPOTS
 	{
 		RELATION_MAP_SPOTS	();
-		shared_str			spot_names[ALife::eRelationTypeLast+1];
-		const shared_str&	GetSpotName (ALife::ERelationType& type){
+		CSharedString			spot_names[ALife::eRelationTypeLast+1];
+		const CSharedString&	GetSpotName (ALife::ERelationType& type){
 									if(type<ALife::eRelationTypeLast)return spot_names[type];
 									else return spot_names[ALife::eRelationTypeLast];};
 	};
@@ -106,7 +106,7 @@ private:
 	static RELATION_MAP_SPOTS*					m_spot_names;
 
 public:
-	const shared_str&							GetSpotName			(ALife::ERelationType& type);
+	const CSharedString&							GetSpotName			(ALife::ERelationType& type);
 	static CRelationRegistryWrapper&			relation_registry();
 	static void									clear_relation_registry();
 

@@ -13,7 +13,7 @@
 
 //const char* TEST_PATROL_PATH_NAME		= "val_dogs_nest4_centre";
 
-CPatrolPath::CPatrolPath			(shared_str name)
+CPatrolPath::CPatrolPath			(CSharedString name)
 {
 #ifdef DEBUG
 	m_name			= name;

@@ -8,7 +8,7 @@
 
 #pragma once
 
-inline	CSpaceRestriction::CSpaceRestriction			(CSpaceRestrictionManager *space_restriction_manager, shared_str out_restrictions, shared_str in_restrictions)
+inline	CSpaceRestriction::CSpaceRestriction			(CSpaceRestrictionManager *space_restriction_manager, CSharedString out_restrictions, CSharedString in_restrictions)
 {
 	VERIFY							(space_restriction_manager);
 	m_space_restriction_manager		= space_restriction_manager;
@@ -23,12 +23,12 @@ inline	bool CSpaceRestriction::initialized				() const
 	return							(m_initialized);
 }
 
-inline	shared_str CSpaceRestriction::out_restrictions		() const
+inline	CSharedString CSpaceRestriction::out_restrictions		() const
 {
 	return							(m_out_restrictions);
 }
 
-inline	shared_str CSpaceRestriction::in_restrictions		() const
+inline	CSharedString CSpaceRestriction::in_restrictions		() const
 {
 	return							(m_in_restrictions);
 }

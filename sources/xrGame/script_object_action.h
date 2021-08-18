@@ -19,9 +19,8 @@ public:
 	CObject								*m_tpObject;
 	MonsterSpace::EObjectAction			m_tGoalType;
 	u32									m_dwQueueSize;
-	shared_str							m_caBoneName;
+	CSharedString							m_caBoneName;
 
-public:
 	inline				CScriptObjectAction	();
 	inline				CScriptObjectAction	(CScriptGameObject *tpLuaGameObject, MonsterSpace::EObjectAction tObjectActionType, u32 dwQueueSize = u32(-1));
 	inline				CScriptObjectAction	(const char* caBoneName, MonsterSpace::EObjectAction tObjectActionType);
@@ -33,7 +32,6 @@ public:
 	inline		void	SetQueueSize		(u32 dwQueueSize);
 	inline		void	initialize			();
 
-public:
 	static void script_register(lua_State*);
 };
 

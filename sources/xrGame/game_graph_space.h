@@ -24,14 +24,14 @@ namespace GameGraph {
 	class
 
 		SLevel {
-		shared_str				m_name;
+		CSharedString				m_name;
 		Fvector3					m_offset;
 		_LEVEL_ID				m_id;
-		shared_str				m_section;
+		CSharedString				m_section;
 		xrGUID					m_guid;
 
 	public:
-		inline const shared_str &name		() const
+		inline const CSharedString& name		() const
 		{
 			return				(m_name);
 		}
@@ -46,7 +46,7 @@ namespace GameGraph {
 			return				(m_id);
 		}
 
-		inline const shared_str &section	() const
+		inline const CSharedString& section	() const
 		{
 			return				(m_section);
 		}

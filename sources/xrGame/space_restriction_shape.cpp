@@ -218,7 +218,7 @@ bool CSpaceRestrictionShape::inside	(const Fsphere &sphere)
 	return							(m_restrictor->inside(sphere));
 }
 
-shared_str	CSpaceRestrictionShape::name() const
+CSharedString	CSpaceRestrictionShape::name() const
 {
 	VERIFY							(m_restrictor);
 	return							(m_restrictor->cName());

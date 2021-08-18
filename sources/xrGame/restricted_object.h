@@ -34,7 +34,7 @@ private:
 
 protected:
 	template <typename P, bool value>
-	inline		void			construct_restriction_string	(char* temp_restrictions, const xr_vector<ALife::_OBJECT_ID> &restrictions, shared_str current_restrictions, const P &p);
+	inline		void			construct_restriction_string	(char* temp_restrictions, const xr_vector<ALife::_OBJECT_ID> &restrictions, CSharedString current_restrictions, const P &p);
 	inline		void			add_object_restriction			(ALife::_OBJECT_ID id, const RestrictionSpace::ERestrictorTypes &restrictor_type);
 	inline		void			remove_object_restriction		(ALife::_OBJECT_ID id, const RestrictionSpace::ERestrictorTypes &restrictor_type);
 
@@ -54,19 +54,18 @@ public:
 			bool			accessible						(u32 level_vertex_id, float radius) const;
 			void			add_restrictions				(const xr_vector<ALife::_OBJECT_ID> &out_restrictions, const xr_vector<ALife::_OBJECT_ID> &in_restrictions);
 			void			remove_restrictions				(const xr_vector<ALife::_OBJECT_ID> &out_restrictions, const xr_vector<ALife::_OBJECT_ID> &in_restrictions);
-			void			add_restrictions				(const shared_str &out_restrictions, const shared_str &in_restrictions);
-			void			remove_restrictions				(const shared_str &out_restrictions, const shared_str &in_restrictions);
+			void			add_restrictions				(const CSharedString& out_restrictions, const CSharedString& in_restrictions);
+			void			remove_restrictions				(const CSharedString& out_restrictions, const CSharedString& in_restrictions);
 			void			remove_all_restrictions			(const RestrictionSpace::ERestrictorTypes &restrictor_type);
 			void			remove_all_restrictions			();
-			shared_str		in_restrictions					() const;
-			shared_str		out_restrictions				() const;
-			shared_str		base_in_restrictions			() const;
-			shared_str		base_out_restrictions			() const;
+			CSharedString		in_restrictions					() const;
+			CSharedString		out_restrictions				() const;
+			CSharedString		base_in_restrictions			() const;
+			CSharedString		base_out_restrictions			() const;
 	inline		bool			applied							() const;
 	inline		CCustomMonster	&object							() const;
 	inline		bool			actual							() const;
 			void			actual							(bool value);
-
 
 public:
 #ifdef DEBUG

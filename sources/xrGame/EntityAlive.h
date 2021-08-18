@@ -5,7 +5,7 @@
 using SHADER_VECTOR = xr_vector<ref_shader>;
 using SHADER_VECTOR_IT = SHADER_VECTOR::iterator;
 
-using STR_VECTOR = xr_vector<shared_str>;
+using STR_VECTOR = xr_vector<CSharedString>;
 using STR_VECTOR_IT = STR_VECTOR::iterator;
 
 class MONSTER_COMMUNITY;

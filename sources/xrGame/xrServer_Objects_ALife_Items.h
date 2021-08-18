@@ -224,8 +224,8 @@ add_to_type_list(CSE_ALifeItemArtefact)
 
 SERVER_ENTITY_DECLARE_BEGIN(CSE_ALifeItemPDA,CSE_ALifeItem)
 U16								m_original_owner;
-	shared_str						m_specific_character;
-	shared_str						m_info_portion;
+CSharedString						m_specific_character;
+CSharedString						m_info_portion;
 
 									CSE_ALifeItemPDA(const char* caSection);
 	virtual							~CSE_ALifeItemPDA();
@@ -235,7 +235,7 @@ add_to_type_list(CSE_ALifeItemPDA)
 #define script_type_list save_type_list(CSE_ALifeItemPDA)
 
 SERVER_ENTITY_DECLARE_BEGIN(CSE_ALifeItemDocument,CSE_ALifeItem)
-	shared_str							m_wDoc;
+CSharedString							m_wDoc;
 									CSE_ALifeItemDocument(const char* caSection);
 	virtual							~CSE_ALifeItemDocument();
 SERVER_ENTITY_DECLARE_END

@@ -47,7 +47,8 @@ public:
 	bool				IsPlaying			();
 	void				SetAutoRemove		(bool auto_remove);
 
-	const shared_str			Name		();
+	const CSharedString			Name		();
+
 public:
 	static CParticlesObject*	Create		(const char* p_name, BOOL bAutoRemove=TRUE, bool remove_on_game_load = true)
 	{

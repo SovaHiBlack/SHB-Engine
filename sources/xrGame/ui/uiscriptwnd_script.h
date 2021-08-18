@@ -40,7 +40,7 @@ using BaseType = CUIDialogWndEx;
 template<typename T>
 inline T* CUIDialogWndEx::GetControl(const char* name)
 {
-	shared_str n = name;
+	CSharedString n = name;
 	CUIWindow* pWnd = FindChild(n);
 	if (pWnd == NULL)
 	{

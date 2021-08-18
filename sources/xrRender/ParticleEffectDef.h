@@ -72,11 +72,11 @@ namespace PS
 			dfCulling		= (1<<22),
 			dfCullCCW		= (1<<23),
 		};
-		shared_str		  	m_Name;
+		CSharedString		  	m_Name;
 		Flags32				m_Flags;
 	// texture
-		shared_str		  	m_ShaderName;
-		shared_str		  	m_TextureName;
+		CSharedString		  	m_ShaderName;
+		CSharedString		  	m_TextureName;
 		ref_shader			m_CachedShader;
 		SFrame				m_Frame;
 	// compiled actions

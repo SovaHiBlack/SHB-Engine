@@ -88,12 +88,12 @@ void CUIArtefactParams::InitFromXml(CUIXml& xml_doc)
 	}
 }
 
-bool CUIArtefactParams::Check(const shared_str& af_section)
+bool CUIArtefactParams::Check(const CSharedString& af_section)
 {
 	return !!pSettings->line_exist(af_section, "af_actor_properties");
 }
 
-void CUIArtefactParams::SetInfo(const shared_str& af_section)
+void CUIArtefactParams::SetInfo(const CSharedString& af_section)
 {
 	string128 _buff;
 	float _h = 0.0f;
@@ -117,7 +117,7 @@ void CUIArtefactParams::SetInfo(const shared_str& af_section)
 		}
 		else
 		{
-			shared_str _sect = pSettings->r_string(af_section, "hit_absorbation_sect");
+			CSharedString _sect = pSettings->r_string(af_section, "hit_absorbation_sect");
 			_val = pSettings->r_float(_sect, af_item_sect_names[i]);
 			if (fsimilar(_val, 1.0f))
 			{

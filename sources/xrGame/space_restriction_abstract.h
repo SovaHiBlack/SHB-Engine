@@ -34,7 +34,7 @@ public:
 	inline		const xr_vector<u32>	&accessible_neighbour_border		(T &restriction, bool out_restriction);
 
 public:
-	virtual shared_str				name								() const = 0;
+	virtual CSharedString				name								() const = 0;
 };
 
 #include "space_restriction_abstract_inline.h"

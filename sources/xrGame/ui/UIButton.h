@@ -105,7 +105,7 @@ public:
 	{
 		m_ShadowOffset = offset;
 	}
-	shared_str							m_hint_text;
+	CSharedString							m_hint_text;
 
 protected:
 	E_BUTTON_STATE						m_eButtonState;

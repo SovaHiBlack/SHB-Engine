@@ -24,7 +24,7 @@ namespace SpaceRestrictionHolder {
 
 class CSpaceRestrictionHolder {
 public:
-	typedef xr_map<shared_str,CSpaceRestrictionBridge*>	RESTRICTIONS;
+	typedef xr_map<CSharedString,CSpaceRestrictionBridge*>	RESTRICTIONS;
 
 private:
 	enum {
@@ -34,11 +34,11 @@ private:
 
 private:
 	RESTRICTIONS					m_restrictions;
-	shared_str						m_default_out_restrictions;
-	shared_str						m_default_in_restrictions;
+	CSharedString						m_default_out_restrictions;
+	CSharedString						m_default_in_restrictions;
 
 protected:
-			shared_str				normalize_string				(shared_str space_restrictors);
+	CSharedString				normalize_string				(CSharedString space_restrictors);
 	inline		void					collect_garbage					();
 	virtual void					on_default_restrictions_changed	() = 0;
 			void					clear							();
@@ -46,11 +46,11 @@ protected:
 public:
 	inline								CSpaceRestrictionHolder			();
 	virtual							~CSpaceRestrictionHolder		();
-			SpaceRestrictionHolder::CBaseRestrictionPtr	restriction	(shared_str space_restrictors);
+			SpaceRestrictionHolder::CBaseRestrictionPtr	restriction	(CSharedString space_restrictors);
 			void					register_restrictor				(CSpaceRestrictor *space_restrictor, const RestrictionSpace::ERestrictorTypes &restrictor_type);
 			void					unregister_restrictor			(CSpaceRestrictor *space_restrictor);
-	inline		shared_str				default_out_restrictions		() const;
-	inline		shared_str				default_in_restrictions			() const;
+	inline		CSharedString				default_out_restrictions		() const;
+	inline		CSharedString				default_in_restrictions			() const;
 };
 
 #include "space_restriction_holder_inline.h"

@@ -141,11 +141,11 @@ private:
 //  Function for automatic tree hierarchy creation
 //////////////////////////////////////////////////////////////////////////
 
-//DEF_VECTOR(GroupTree, shared_str);
-using GroupTree = xr_vector<shared_str>;
+//DEF_VECTOR(GroupTree, CSharedString);
+using GroupTree = xr_vector<CSharedString>;
 using GroupTree_it = GroupTree::iterator;
 
 //////////////////////////////////////////////////////////////////////////
 
-void CreateTreeBranch(shared_str nestingTree, shared_str leafName, CUIListWnd* pListToAdd, int leafProperty,
+void CreateTreeBranch(CSharedString nestingTree, CSharedString leafName, CUIListWnd* pListToAdd, int leafProperty,
 					  CGameFont* pRootFont, u32 rootColor, CGameFont* pLeafFont, u32 leafColor, bool markRead);

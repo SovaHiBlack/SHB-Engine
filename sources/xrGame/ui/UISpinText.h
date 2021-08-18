@@ -31,8 +31,8 @@ protected:
 	void	SetItem( );
 	struct SInfo
 	{
-		shared_str	_orig;
-		shared_str	_transl;
+		CSharedString	_orig;
+		CSharedString	_transl;
 		int			_id;
 	};
 	typedef xr_vector< SInfo >		Items;

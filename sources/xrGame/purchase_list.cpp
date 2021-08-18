@@ -40,7 +40,7 @@ void CPurchaseList::process	(CIniFile&ini_file, const char* section, CInventoryO
 	}
 }
 
-void CPurchaseList::process	(const CGameObject &owner, const shared_str &name, const u32 &count, const float &probability)
+void CPurchaseList::process	(const CGameObject &owner, const CSharedString& name, const u32 &count, const float &probability)
 {
 	VERIFY3					(count,"Invalid count for section in the purchase list",*name);
 	VERIFY3					(!fis_zero(probability,EPS_S),"Invalid probability for section in the purchase list",*name);

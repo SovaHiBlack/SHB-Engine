@@ -34,10 +34,10 @@ SERVER_ENTITY_DECLARE_BEGIN0(CSE_ALifeTraderAbstract)
 	////////////////////////////////////////////////////
 	//character profile info
 
-	shared_str						character_profile		();
-	void							set_character_profile	(shared_str);
-	shared_str						specific_character		();
-	void							set_specific_character	(shared_str);
+	CSharedString						character_profile		();
+	void							set_character_profile	(CSharedString);
+	CSharedString						specific_character		();
+	void							set_specific_character	(CSharedString);
 
 	CHARACTER_COMMUNITY_INDEX		m_community_index;
 	CHARACTER_REPUTATION_VALUE		m_reputation;
@@ -52,12 +52,12 @@ SERVER_ENTITY_DECLARE_BEGIN0(CSE_ALifeTraderAbstract)
 	CHARACTER_REPUTATION_VALUE		Reputation				();
 	void							SetRank					(CHARACTER_RANK_VALUE val);
 
-	shared_str						m_sCharacterProfile;
-	shared_str						m_SpecificCharacter;
+	CSharedString						m_sCharacterProfile;
+	CSharedString						m_SpecificCharacter;
 
 	//буферный вектор проверенных персонажей
-	xr_vector<shared_str> m_CheckedCharacters;
-	xr_vector<shared_str> m_DefaultCharacters;
+	xr_vector<CSharedString> m_CheckedCharacters;
+	xr_vector<CSharedString> m_DefaultCharacters;
 
 public:	
 									CSE_ALifeTraderAbstract		(const char* caSection);
@@ -159,7 +159,7 @@ add_to_type_list(CSE_ALifeTorridZone)
 #define script_type_list save_type_list(CSE_ALifeTorridZone)
 
 SERVER_ENTITY_DECLARE_BEGIN2(CSE_ALifeZoneVisual,CSE_ALifeAnomalousZone,CSE_Visual)
-shared_str attack_animation;
+CSharedString attack_animation;
 CSE_ALifeZoneVisual	(const char* caSection);
 virtual							~CSE_ALifeZoneVisual	();
 virtual CSE_Visual* __stdcall	visual					();
@@ -235,8 +235,8 @@ SERVER_ENTITY_DECLARE_BEGIN2(CSE_ALifeMonsterAbstract,CSE_ALifeCreatureAbstract,
 	float								m_fEyeRange;
 	float								m_fHitPower;
 	ALife::EHitType						m_tHitType;
-	shared_str							m_out_space_restrictors;
-	shared_str							m_in_space_restrictors;
+	CSharedString							m_out_space_restrictors;
+	CSharedString							m_in_space_restrictors;
 	svector<float,ALife::eHitTypeMax>	m_fpImmunityFactors;
 
 	ALife::_OBJECT_ID					m_smart_terrain_id;
@@ -442,7 +442,7 @@ add_to_type_list(CSE_ALifeHumanAbstract)
 #define script_type_list save_type_list(CSE_ALifeHumanAbstract)
 
 SERVER_ENTITY_DECLARE_BEGIN2(CSE_ALifeHumanStalker,CSE_ALifeHumanAbstract,CSE_PHSkeleton)
-	shared_str						m_start_dialog;
+CSharedString						m_start_dialog;
 
 									CSE_ALifeHumanStalker	(const char* caSection);
 	virtual							~CSE_ALifeHumanStalker	();

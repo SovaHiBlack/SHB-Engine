@@ -269,7 +269,7 @@ Fvector2 CMapLocation::Direction( )
 	return res;
 }
 
-shared_str CMapLocation::LevelName( )
+CSharedString CMapLocation::LevelName( )
 {
 	if (m_cached.m_updatedFrame == Device.dwFrame)
 	{
@@ -591,7 +591,7 @@ void CMapLocation::load(IReader& stream)
 	m_flags.flags = stream.r_u32( );
 }
 
-void CMapLocation::SetHint(const shared_str& hint)
+void CMapLocation::SetHint(const CSharedString& hint)
 {
 	m_hint = hint;
 }
@@ -654,7 +654,7 @@ CMapSpot* CMapLocation::GetSpotBorder(CMapSpot* sp)
 	return nullptr;
 }
 
-CRelationMapLocation::CRelationMapLocation(const shared_str& type, U16 object_id, U16 pInvOwnerActorID, U16 pInvOwnerEntityID) : CMapLocation(*type, object_id)
+CRelationMapLocation::CRelationMapLocation(const CSharedString& type, U16 object_id, U16 pInvOwnerActorID, U16 pInvOwnerEntityID) : CMapLocation(*type, object_id)
 {
 	m_curr_spot_name = type;
 	m_pInvOwnerEntityID = pInvOwnerEntityID;
@@ -715,7 +715,7 @@ bool CRelationMapLocation::Update( )
 		}
 	}
 
-	shared_str sname;
+	CSharedString sname;
 
 	if (bAlive == false)
 	{
@@ -799,7 +799,7 @@ CUserDefinedMapLocation::CUserDefinedMapLocation(const char* type, U16 object_id
 CUserDefinedMapLocation::~CUserDefinedMapLocation( )
 { }
 
-void CUserDefinedMapLocation::InitExternal(const shared_str& level_name, const Fvector3& pos)
+void CUserDefinedMapLocation::InitExternal(const CSharedString& level_name, const Fvector3& pos)
 {
 	m_level_name = level_name;
 	m_position_global = pos;
@@ -839,7 +839,7 @@ bool CUserDefinedMapLocation::Update( )
 	return true;
 }
 
-shared_str CUserDefinedMapLocation::LevelName( )
+CSharedString CUserDefinedMapLocation::LevelName( )
 {
 	return m_level_name;
 }

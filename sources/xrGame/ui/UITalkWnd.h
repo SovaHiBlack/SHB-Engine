@@ -58,12 +58,12 @@ protected:
 	void					InitTalkDialog				( );
 	void					AskQuestion					( );
 
-	void					SayPhrase					(const shared_str& phrase_id);
+	void					SayPhrase					(const CSharedString& phrase_id);
 
 public:
 	//Функции добавления строк в листы вопросов и ответов
-	void					AddQuestion					(const shared_str& text, const shared_str& id);
-	void					AddAnswer					(const shared_str& text, const char* SpeakerName);
+	void					AddQuestion					(const CSharedString& text, const CSharedString& id);
+	void					AddAnswer					(const CSharedString& text, const char* SpeakerName);
 
 protected:
 	//для режима торговли

@@ -17,8 +17,8 @@ const u32 time_to_delete = 300000;
 
 struct CSpaceRestrictionManager::CClientRestriction {
 	CRestrictionPtr					m_restriction;
-	shared_str						m_base_out_restrictions;
-	shared_str						m_base_in_restrictions;
+	CSharedString						m_base_out_restrictions;
+	CSharedString						m_base_in_restrictions;
 };
 
 CSpaceRestrictionManager::CSpaceRestrictionManager			()
@@ -32,7 +32,7 @@ CSpaceRestrictionManager::~CSpaceRestrictionManager			()
 	delete_data						(m_space_restrictions);
 }
 
-void show_restriction				(const shared_str &restrictions)
+void show_restriction				(const CSharedString& restrictions)
 {
 	string256						temp;
 	for (int i=0, n=_GetItemCount(*restrictions); i<n; ++i)
@@ -63,7 +63,7 @@ void CSpaceRestrictionManager::remove_border				(ALife::_OBJECT_ID id)
 		client_restriction->remove_border	();
 }
 
-shared_str	CSpaceRestrictionManager::in_restrictions			(ALife::_OBJECT_ID id)
+CSharedString	CSpaceRestrictionManager::in_restrictions			(ALife::_OBJECT_ID id)
 {
 	CRestrictionPtr				client_restriction = restriction(id);
 	if (client_restriction)
@@ -71,7 +71,7 @@ shared_str	CSpaceRestrictionManager::in_restrictions			(ALife::_OBJECT_ID id)
 	return						("");
 }
 
-shared_str	CSpaceRestrictionManager::out_restrictions			(ALife::_OBJECT_ID id)
+CSharedString	CSpaceRestrictionManager::out_restrictions			(ALife::_OBJECT_ID id)
 {
 	CRestrictionPtr				client_restriction = restriction(id);
 	if (client_restriction)
@@ -79,14 +79,14 @@ shared_str	CSpaceRestrictionManager::out_restrictions			(ALife::_OBJECT_ID id)
 	return						("");
 }
 
-shared_str	CSpaceRestrictionManager::base_in_restrictions		(ALife::_OBJECT_ID id)
+CSharedString	CSpaceRestrictionManager::base_in_restrictions		(ALife::_OBJECT_ID id)
 {
 	CLIENT_RESTRICTIONS::iterator	I = m_clients->find(id);
 	VERIFY							(m_clients->end() != I);
 	return							((*I).second.m_base_in_restrictions);
 }
 
-shared_str	CSpaceRestrictionManager::base_out_restrictions		(ALife::_OBJECT_ID id)
+CSharedString	CSpaceRestrictionManager::base_out_restrictions		(ALife::_OBJECT_ID id)
 {
 	CLIENT_RESTRICTIONS::iterator	I = m_clients->find(id);
 	VERIFY							(m_clients->end() != I);
@@ -116,12 +116,12 @@ inline	void CSpaceRestrictionManager::collect_garbage				()
 	}
 }
 
-void CSpaceRestrictionManager::restrict							(ALife::_OBJECT_ID id, shared_str out_restrictors, shared_str in_restrictors)
+void CSpaceRestrictionManager::restrict							(ALife::_OBJECT_ID id, CSharedString out_restrictors, CSharedString in_restrictors)
 {
-	shared_str									merged_out_restrictions = out_restrictors;
-	shared_str									merged_in_restrictions = in_restrictors;
-	shared_str									_default_out_restrictions = default_out_restrictions();
-	shared_str									_default_in_restrictions = default_in_restrictions();
+	CSharedString									merged_out_restrictions = out_restrictors;
+	CSharedString									merged_in_restrictions = in_restrictors;
+	CSharedString									_default_out_restrictions = default_out_restrictions();
+	CSharedString									_default_in_restrictions = default_in_restrictions();
 	
 	difference_restrictions						(_default_out_restrictions,merged_in_restrictions);
 	difference_restrictions						(_default_in_restrictions,merged_out_restrictions);
@@ -162,7 +162,7 @@ bool CSpaceRestrictionManager::accessible					(ALife::_OBJECT_ID id, u32 level_v
 	return						(true);
 }
 
-CSpaceRestrictionManager::CRestrictionPtr	CSpaceRestrictionManager::restriction	(shared_str out_restrictors, shared_str in_restrictors)
+CSpaceRestrictionManager::CRestrictionPtr	CSpaceRestrictionManager::restriction	(CSharedString out_restrictors, CSharedString in_restrictors)
 {
 	string4096					m_temp;
 	if (!xr_strlen(out_restrictors) && !xr_strlen(in_restrictors))
@@ -172,7 +172,7 @@ CSpaceRestrictionManager::CRestrictionPtr	CSpaceRestrictionManager::restriction	
 	in_restrictors				= normalize_string(in_restrictors);
 
 	strconcat					(sizeof(m_temp),m_temp,*out_restrictors,"\x01",*in_restrictors);
-	shared_str					space_restrictions = m_temp;
+	CSharedString					space_restrictions = m_temp;
 	
 	SPACE_RESTRICTIONS::const_iterator	I = m_space_restrictions.find(space_restrictions);
 	if (I != m_space_restrictions.end())
@@ -190,7 +190,7 @@ u32	CSpaceRestrictionManager::accessible_nearest			(ALife::_OBJECT_ID id, const 
 	return						(client_restriction->accessible_nearest(position,result));
 }
 
-inline	bool CSpaceRestrictionManager::restriction_presented	(shared_str restrictions, shared_str restriction) const
+inline	bool CSpaceRestrictionManager::restriction_presented	(CSharedString restrictions, CSharedString restriction) const
 {
 	string4096					m_temp;
 	for (u32 i=0, n=_GetItemCount(*restrictions); i<n; ++i)
@@ -199,7 +199,7 @@ inline	bool CSpaceRestrictionManager::restriction_presented	(shared_str restrict
 	return						(false);
 }
 
-inline	void CSpaceRestrictionManager::join_restrictions		(shared_str &restrictions, shared_str update)
+inline	void CSpaceRestrictionManager::join_restrictions		(CSharedString& restrictions, CSharedString update)
 {
 	string4096					m_temp1;
 	string4096					m_temp2;
@@ -211,10 +211,10 @@ inline	void CSpaceRestrictionManager::join_restrictions		(shared_str &restrictio
 			strcat				(m_temp2,m_temp1);
 			++count;
 		}
-	restrictions				= shared_str(m_temp2);
+	restrictions				= CSharedString(m_temp2);
 }
 
-inline	void CSpaceRestrictionManager::difference_restrictions	(shared_str &restrictions, shared_str update)
+inline	void CSpaceRestrictionManager::difference_restrictions	(CSharedString& restrictions, CSharedString update)
 {
 	string4096					m_temp1;
 	string4096					m_temp2;
@@ -226,10 +226,10 @@ inline	void CSpaceRestrictionManager::difference_restrictions	(shared_str &restr
 			strcat				(m_temp2,m_temp1);
 			++count;
 		}
-	restrictions				= shared_str(m_temp2);
+	restrictions				= CSharedString(m_temp2);
 }
 
-void CSpaceRestrictionManager::add_restrictions				(ALife::_OBJECT_ID id, shared_str add_out_restrictions, shared_str add_in_restrictions)
+void CSpaceRestrictionManager::add_restrictions				(ALife::_OBJECT_ID id, CSharedString add_out_restrictions, CSharedString add_in_restrictions)
 {
 	CRestrictionPtr				_client_restriction = restriction(id);
 	if (!_client_restriction) {
@@ -241,8 +241,8 @@ void CSpaceRestrictionManager::add_restrictions				(ALife::_OBJECT_ID id, shared
 
 	CClientRestriction			&client_restriction = (*m_clients)[id];
 
-	shared_str					new_out_restrictions = client_restriction.m_base_out_restrictions;
-	shared_str					new_in_restrictions = client_restriction.m_base_in_restrictions;
+	CSharedString					new_out_restrictions = client_restriction.m_base_out_restrictions;
+	CSharedString					new_in_restrictions = client_restriction.m_base_in_restrictions;
 
 	join_restrictions			(new_out_restrictions,add_out_restrictions);
 	join_restrictions			(new_in_restrictions,add_in_restrictions);
@@ -250,7 +250,7 @@ void CSpaceRestrictionManager::add_restrictions				(ALife::_OBJECT_ID id, shared
 	restrict					(id,new_out_restrictions,new_in_restrictions);
 }
 
-void CSpaceRestrictionManager::remove_restrictions			(ALife::_OBJECT_ID id, shared_str remove_out_restrictions, shared_str remove_in_restrictions)
+void CSpaceRestrictionManager::remove_restrictions			(ALife::_OBJECT_ID id, CSharedString remove_out_restrictions, CSharedString remove_in_restrictions)
 {
 	CRestrictionPtr				_client_restriction = restriction(id);
 	if (!_client_restriction)
@@ -260,8 +260,8 @@ void CSpaceRestrictionManager::remove_restrictions			(ALife::_OBJECT_ID id, shar
 
 	CClientRestriction			&client_restriction = (*m_clients)[id];
 
-	shared_str					new_out_restrictions = client_restriction.m_base_out_restrictions;
-	shared_str					new_in_restrictions = client_restriction.m_base_in_restrictions;
+	CSharedString					new_out_restrictions = client_restriction.m_base_out_restrictions;
+	CSharedString					new_in_restrictions = client_restriction.m_base_in_restrictions;
 
 	difference_restrictions		(new_out_restrictions,remove_out_restrictions);
 	difference_restrictions		(new_in_restrictions,remove_in_restrictions);
@@ -269,7 +269,7 @@ void CSpaceRestrictionManager::remove_restrictions			(ALife::_OBJECT_ID id, shar
 	restrict					(id,new_out_restrictions,new_in_restrictions);
 }
 
-void CSpaceRestrictionManager::change_restrictions			(ALife::_OBJECT_ID id, shared_str add_out_restrictions, shared_str add_in_restrictions, shared_str remove_out_restrictions, shared_str remove_in_restrictions)
+void CSpaceRestrictionManager::change_restrictions			(ALife::_OBJECT_ID id, CSharedString add_out_restrictions, CSharedString add_in_restrictions, CSharedString remove_out_restrictions, CSharedString remove_in_restrictions)
 {
 	CRestrictionPtr				_client_restriction = restriction(id);
 	if (!_client_restriction) {
@@ -281,8 +281,8 @@ void CSpaceRestrictionManager::change_restrictions			(ALife::_OBJECT_ID id, shar
 	
 	CClientRestriction			&client_restriction = (*m_clients)[id];
 
-	shared_str					new_out_restrictions = client_restriction.m_base_out_restrictions;
-	shared_str					new_in_restrictions = client_restriction.m_base_in_restrictions;
+	CSharedString					new_out_restrictions = client_restriction.m_base_out_restrictions;
+	CSharedString					new_in_restrictions = client_restriction.m_base_in_restrictions;
 
 	difference_restrictions		(new_out_restrictions,remove_out_restrictions);
 	difference_restrictions		(new_in_restrictions,remove_in_restrictions);

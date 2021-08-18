@@ -21,7 +21,7 @@ struct lua_State;
 #endif
 {
 private:
-	shared_str				m_script_name;
+	CSharedString				m_script_name;
 	int						m_thread_reference;
 	bool					m_active;
 	lua_State				*m_virtual_machine;
@@ -36,7 +36,7 @@ public:
 	virtual					~CScriptThread		();
 			bool			update				();
 	inline		bool			active				() const;
-	inline		shared_str		script_name			() const;
+	inline		CSharedString		script_name			() const;
 	inline		int				thread_reference	() const;
 	inline		lua_State		*lua				() const;
 };

@@ -18,7 +18,7 @@ protected:
 	float										time2hide;
 
 	U16											guid_bone;
-	shared_str									light_trace_bone;
+	CSharedString									light_trace_bone;
 
 	float										m_delta_h;
 	Fvector2									m_prev_hp;

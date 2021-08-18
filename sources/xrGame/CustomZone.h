@@ -219,8 +219,8 @@ protected:
 	CSharedString				m_sHitParticlesSmall;
 	CSharedString				m_sHitParticlesBig;
 	//нахождение большого и мальнекого объекта в зоне
-	shared_str				m_sIdleObjectParticlesSmall;
-	shared_str				m_sIdleObjectParticlesBig;
+	CSharedString				m_sIdleObjectParticlesSmall;
+	CSharedString				m_sIdleObjectParticlesBig;
 	BOOL					m_bIdleObjectParticlesDontStop;
 
 	ref_sound				m_idle_sound;
@@ -336,13 +336,13 @@ protected:
 	float					m_fArtefactSpawnHeight;
 
 	//имя партиклов, которые проигрываются во время и на месте рождения артефакта
-	shared_str				m_sArtefactSpawnParticles;
+	CSharedString				m_sArtefactSpawnParticles;
 	//звук рождения артефакта
 	ref_sound				m_ArtefactBornSound;
 
 	struct ARTEFACT_SPAWN
 	{
-		shared_str	section;
+		CSharedString	section;
 		float		probability;
 	};
 

@@ -3,7 +3,7 @@
 class ListItem{
 //	friend class		CListHelper;
 //	friend class		TItemList;
-	shared_str		  	key;
+	CSharedString		  	key;
 	int					type;
 	void*				item;
 public:                        

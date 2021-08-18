@@ -39,7 +39,7 @@ bool CUISequenceSimpleItem::IsPlaying( )
 	return ((m_time_start + m_time_length) > (Device.dwTimeContinual / 1000.0f));
 }
 
-CUIWindow* find_child_window(CUIWindow* parent, const shared_str& _name)
+CUIWindow* find_child_window(CUIWindow* parent, const CSharedString& _name)
 {
 	CUIWindow::WINDOW_LIST& wl = parent->GetChildWndList( );
 	CUIWindow::WINDOW_LIST_it _I = wl.begin( );

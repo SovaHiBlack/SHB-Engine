@@ -256,7 +256,7 @@ CLevel::~CLevel( )
 	}
 }
 
-shared_str	CLevel::name( ) const
+CSharedString	CLevel::name( ) const
 {
 	return m_name;
 }
@@ -277,7 +277,7 @@ void CLevel::PrefetchSound(const char* name)
 		*strext(tmp) = 0;
 	}
 
-	shared_str snd_name = tmp;
+	CSharedString snd_name = tmp;
 	// find in registry
 	SoundRegistryMapIt it = sound_registry.find(snd_name);
 	// if find failed - preload sound

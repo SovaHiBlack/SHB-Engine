@@ -29,7 +29,7 @@ struct SInfoPortionData : CSharedResource
 	CPhraseScript		m_PhraseScript;
 
 	//массив с индексами тех порций информации, которые исчезнут, после получения этой info_portion
-	using INFO_ID_VECTOR = xr_vector<shared_str>;
+	using INFO_ID_VECTOR = xr_vector<CSharedString>;
 	using INFO_ID_VECTOR_IT = INFO_ID_VECTOR::iterator;
 	INFO_ID_VECTOR		m_DisableInfo;
 };
@@ -37,10 +37,10 @@ struct SInfoPortionData : CSharedResource
 class CInfoPortion;
 
 //квант - порция информации
-class CInfoPortion : public CSharedClass<SInfoPortionData, shared_str, false>, public CXML_IdToIndex<CInfoPortion>
+class CInfoPortion : public CSharedClass<SInfoPortionData, CSharedString, false>, public CXML_IdToIndex<CInfoPortion>
 {
 private:
-	using inherited_shared = CSharedClass<SInfoPortionData, shared_str, false>;
+	using inherited_shared = CSharedClass<SInfoPortionData, CSharedString, false>;
 	using id_to_index = CXML_IdToIndex<CInfoPortion>;
 
 	friend id_to_index;
@@ -51,7 +51,7 @@ public:
 
 	//инициализация info данными
 	//если info с таким id раньше не использовался он будет загружен из файла
-	virtual void Load(shared_str info_str_id);
+	virtual void Load(CSharedString info_str_id);
 
 	const ARTICLE_ID_VECTOR& Articles( ) const
 	{
@@ -80,10 +80,10 @@ public:
 	}
 
 	//текстовое представление информации
-//	shared_str								GetText( ) const;
+//	CSharedString								GetText( ) const;
 
 protected:
-	shared_str		m_InfoId;
+	CSharedString		m_InfoId;
 
 	void			load_shared(const char*);
 	SInfoPortionData* info_data( )

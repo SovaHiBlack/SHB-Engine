@@ -26,7 +26,7 @@ protected:
 
 protected:
 	RESTRICTIONS			m_restrictions;
-	shared_str				m_space_restrictors;
+	CSharedString				m_space_restrictors;
 	CSpaceRestrictionHolder	*m_space_restriction_holder;
 	Fsphere					m_sphere;
 
@@ -39,11 +39,11 @@ protected:
 	inline			void		merge							(CBaseRestrictionPtr restriction);
 
 public:
-	inline						CSpaceRestrictionComposition	(CSpaceRestrictionHolder *space_restriction_holder, shared_str space_restrictors);
+	inline						CSpaceRestrictionComposition	(CSpaceRestrictionHolder *space_restriction_holder, CSharedString space_restrictors);
 		virtual				~CSpaceRestrictionComposition	();
 		virtual void		initialize						();
 		virtual bool		inside							(const Fsphere &sphere);
-	inline	virtual shared_str	name							() const;
+	inline	virtual CSharedString	name							() const;
 	inline	virtual bool		shape							() const;
 	inline	virtual bool		default_restrictor				() const;
 		virtual	Fsphere		sphere							() const;

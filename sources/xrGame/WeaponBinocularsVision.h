@@ -42,6 +42,6 @@ protected :
 	CWeaponBinoculars*			m_parent;
 	Fcolor						m_frame_color;
 	float						m_rotating_speed;
-	void	Load				(const shared_str& section);
+	void	Load				(const CSharedString& section);
 	ref_sound					m_snd_found;
 };

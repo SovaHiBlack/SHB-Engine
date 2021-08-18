@@ -45,8 +45,8 @@ protected:
 	virtual	void			OnShot		();
 			void			AddShotEffector		();
 			void			RemoveShotEffector	();
-protected:
-	shared_str					m_sAmmoType;
+
+	CSharedString					m_sAmmoType;
 	CCartridge				m_CurrentAmmo;
 
 	//звук стрельбы

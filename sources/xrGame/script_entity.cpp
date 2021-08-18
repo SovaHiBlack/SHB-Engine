@@ -92,7 +92,7 @@ void CScriptEntity::reinit()
 	set_script_capture		();
 }
 
-void CScriptEntity::SetScriptControl(const bool bScriptControl, shared_str caSciptName)
+void CScriptEntity::SetScriptControl(const bool bScriptControl, CSharedString caSciptName)
 {
 	if (!(
 		(
@@ -353,7 +353,7 @@ bool CScriptEntity::bfAssignAnimation(CScriptEntityAction *tpEntityAction)
 	return							(true);
 }
 
-const Fmatrix CScriptEntity::GetUpdatedMatrix(shared_str caBoneName, const Fvector3& tPositionOffset, const Fvector3& tAngleOffset)
+const Fmatrix CScriptEntity::GetUpdatedMatrix(CSharedString caBoneName, const Fvector3& tPositionOffset, const Fvector3& tAngleOffset)
 {
 	Fmatrix			l_tMatrix;
 

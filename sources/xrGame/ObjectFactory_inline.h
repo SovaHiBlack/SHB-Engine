@@ -36,7 +36,7 @@ inline	bool CObjectFactory::CObjectItemPredicateCLSID::operator()	(const CObject
 	return				(m_clsid == item->clsid());
 }
 
-inline	CObjectFactory::CObjectItemPredicateScript::CObjectItemPredicateScript	(const shared_str &script_clsid_name) :
+inline	CObjectFactory::CObjectItemPredicateScript::CObjectItemPredicateScript	(const CSharedString& script_clsid_name) :
 	m_script_clsid_name	(script_clsid_name)
 {
 }

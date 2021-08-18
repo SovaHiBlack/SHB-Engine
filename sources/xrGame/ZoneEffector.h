@@ -10,7 +10,7 @@ class CZoneEffector
 	float									radius;
 	float									m_factor;
 	CPostprocessAnimatorLerp*				m_pp_effector;
-	shared_str								m_pp_fname;
+	CSharedString								m_pp_fname;
 
 public:
 						CZoneEffector		( );
