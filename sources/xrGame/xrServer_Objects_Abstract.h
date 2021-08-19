@@ -28,8 +28,8 @@ public:
 };
 
 SERVER_ENTITY_DECLARE_BEGIN0(CSE_Visual)
-	void __stdcall					OnChangeVisual	(PropValue* sender);  
-	void __stdcall					OnChangeAnim	(PropValue* sender);  
+	void __stdcall					OnChangeVisual	(PropValue* sender);
+	void __stdcall					OnChangeAnim	(PropValue* sender);
 public:
 	CSharedString						visual_name;
 	CSharedString						startup_animation;
@@ -45,7 +45,7 @@ public:
 	void							visual_write	(CNetPacket& P);
 
 	void							set_visual		(const char* name, bool load=true);
-	const char* get_visual		() const {return *visual_name;}
+	const char* get_visual		() const {return *visual_name;};
 	virtual void					FillProps		(const char* pref, PropItemVec &items);
 
 	virtual CSE_Visual* __stdcall	visual			() = 0;
