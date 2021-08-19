@@ -26,7 +26,7 @@
 #include "script_callback_ex.h"
 #include "MathUtils.h"
 #include "game_cl_base_weapon_usage_statistic.h"
-#include "game_level_cross_table.h"
+#include "GameLevelCrossTable.h"
 #include "animation_movement_controller.h"
 #include "GameObject_space.h"
 

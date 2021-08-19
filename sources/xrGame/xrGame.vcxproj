@@ -731,8 +731,8 @@
     <ClInclude Include="game_graph.h" />
     <ClInclude Include="game_graph_inline.h" />
     <ClInclude Include="game_graph_space.h" />
-    <ClInclude Include="game_level_cross_table.h" />
-    <ClInclude Include="game_level_cross_table_inline.h" />
+    <ClInclude Include="GameLevelCrossTable.h" />
+    <ClInclude Include="GameLevelCrossTable_inline.h" />
     <ClInclude Include="game_location_selector.h" />
     <ClInclude Include="game_location_selector_inline.h" />
     <ClInclude Include="game_news.h" />

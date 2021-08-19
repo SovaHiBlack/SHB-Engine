@@ -1,10 +1,5 @@
-////////////////////////////////////////////////////////////////////////////
-//	Module 		: game_level_cross_table_inline.h
-//	Created 	: 20.02.2003
-//  Modified 	: 13.11.2003
-//	Author		: Dmitriy Iassenev
+//	Module 		: GameLevelCrossTable_inline.h
 //	Description : Cross table between game and level graphs inline functions
-////////////////////////////////////////////////////////////////////////////
 
 #pragma once
 

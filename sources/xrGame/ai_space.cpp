@@ -4,7 +4,7 @@
 #include "stdafx.h"
 
 #include "game_graph.h"
-#include "game_level_cross_table.h"
+#include "GameLevelCrossTable.h"
 #include "level_graph.h"
 #include "GraphEngine.h"
 #include "ef_storage.h"

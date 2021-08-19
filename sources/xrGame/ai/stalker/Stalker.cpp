@@ -14,7 +14,7 @@
 #include "..\..\PHDestroyable.h"
 #include "../../CharacterPhysicsSupport.h"
 #include "../../script_entity_action.h"
-#include "../../game_level_cross_table.h"
+#include "../../GameLevelCrossTable.h"
 #include "../../game_graph.h"
 #include "..\..\Inventory.h"
 //#include "..\..\Artefact.h"

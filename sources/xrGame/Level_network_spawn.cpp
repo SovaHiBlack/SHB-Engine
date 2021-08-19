@@ -5,7 +5,7 @@
 #include "game_cl_base.h"
 #include "net_queue.h"
 #include "ai_space.h"
-#include "game_level_cross_table.h"
+#include "GameLevelCrossTable.h"
 #include "level_graph.h"
 #include "client_spawn_manager.h"
 //#include "..\ENGINE\Object.h"

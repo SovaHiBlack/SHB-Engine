@@ -14,7 +14,7 @@
 #include "xrServer_Objects_ALife_Monsters.h"
 #include "game_graph.h"
 #include "level_graph.h"
-#include "game_level_cross_table.h"
+#include "GameLevelCrossTable.h"
 #include "alife_smart_terrain_task.h"
 #include "alife_graph_registry.h"
 #include "GraphEngine.h"

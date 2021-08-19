@@ -5,7 +5,7 @@
 #include "../../../hit.h"
 #include "..\..\..\PHDestroyable.h"
 #include "../../../CharacterPhysicsSupport.h"
-#include "../../../game_level_cross_table.h"
+#include "../../../GameLevelCrossTable.h"
 #include "../../../game_graph.h"
 #include "../../../PHMovementControl.h"
 #include "../ai_monster_squad_manager.h"

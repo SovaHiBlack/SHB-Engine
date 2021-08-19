@@ -8,7 +8,7 @@
 
 #include "stdafx.h"
 #include "level_graph.h"
-#include "game_level_cross_table.h"
+#include "GameLevelCrossTable.h"
 
 #include "ai_space.h"
 

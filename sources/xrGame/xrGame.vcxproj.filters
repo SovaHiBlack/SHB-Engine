@@ -3816,10 +3816,10 @@
     <ClInclude Include="game_graph_space.h">
       <Filter>AI\ANavigation\GameGraph</Filter>
     </ClInclude>
-    <ClInclude Include="game_level_cross_table.h">
+    <ClInclude Include="GameLevelCrossTable.h">
       <Filter>AI\ANavigation\GameLevelCrossTable</Filter>
     </ClInclude>
-    <ClInclude Include="game_level_cross_table_inline.h">
+    <ClInclude Include="GameLevelCrossTable_inline.h">
       <Filter>AI\ANavigation\GameLevelCrossTable</Filter>
     </ClInclude>
     <ClInclude Include="graph_edge.h">

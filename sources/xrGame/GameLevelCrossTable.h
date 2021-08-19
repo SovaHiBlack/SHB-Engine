@@ -64,4 +64,4 @@ public:
 	inline		const CHeader	&header					() const;
 };
 
-#include "game_level_cross_table_inline.h"
+#include "GameLevelCrossTable_inline.h"
