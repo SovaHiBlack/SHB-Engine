@@ -71,7 +71,7 @@ struct SStepSound {
 };
 
 struct SAttackEffector {
-	SPPInfo	ppi;
+	SPostProcessInfo	ppi;
 	float	time;
 	float	time_attack;
 	float	time_release;

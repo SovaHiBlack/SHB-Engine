@@ -1,6 +1,6 @@
 #pragma once
 
-#include "effector.h"
+#include "EffectorCam.h"
 
 class COMotion;
 struct SAnimParams;

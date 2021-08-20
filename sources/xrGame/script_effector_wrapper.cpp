@@ -12,12 +12,12 @@
 CScriptEffectorWrapper::~CScriptEffectorWrapper	()
 { }
 
-bool CScriptEffectorWrapper::process		(SPPInfo *pp)
+bool CScriptEffectorWrapper::process		(SPostProcessInfo* pp)
 {
 	return		(luabind::call_member<bool>(this,"process",pp));
 }
 
-bool CScriptEffectorWrapper::process_static	(CScriptEffector *tpLuaEffector, SPPInfo *pp)
+bool CScriptEffectorWrapper::process_static	(CScriptEffector *tpLuaEffector, SPostProcessInfo* pp)
 {
 	return		(!!tpLuaEffector->CScriptEffector::process(pp));
 }

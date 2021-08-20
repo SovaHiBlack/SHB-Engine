@@ -120,8 +120,8 @@ void CCustomRocket::activate_physic_shell( )
 	m_pPhysicsShell->set_PhysicsRefObject(this);
 	m_pPhysicsShell->set_ObjectContactCallback(ObjectContactCallback);
 	m_pPhysicsShell->set_ContactCallback(NULL);
-	m_pPhysicsShell->SetAirResistance(0.f, 0.f);
-	m_pPhysicsShell->set_DynamicScales(1.f, 1.f);
+	m_pPhysicsShell->SetAirResistance(0.0f, 0.0f);
+	m_pPhysicsShell->set_DynamicScales(1.0f, 1.0f);
 	m_pPhysicsShell->SetAllGeomTraced( );
 }
 

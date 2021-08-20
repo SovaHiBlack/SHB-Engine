@@ -1,10 +1,8 @@
-// CameraBase.cpp: implementation of the CCameraBase class.
-
 #include "stdafx.h"
 
 #include "CameraBase.h"
 
-CCameraBase::CCameraBase(CObject* p, U32 flags)
+CCameraBase::CCameraBase(CObject* p, unsigned int flags)
 {
 	m_Flags.assign		(flags);
 	vPosition.set		(0.0f, 0.0f, 0.0f);
@@ -31,7 +29,6 @@ CCameraBase::~CCameraBase( )
 void CCameraBase::Load(const char* section)
 {
 	rot_speed			= pSettings->r_fvector3(section, "rot_speed");
-
 	lim_yaw				= pSettings->r_fvector2(section, "lim_yaw");
 	lim_pitch			= pSettings->r_fvector2(section, "lim_pitch");
 
@@ -48,7 +45,7 @@ void CCameraBase::Load(const char* section)
 	}
 }
 
-inline F32 AClamp(Fvector2& l, F32 v)
+inline float AClamp(Fvector2& l, float v)
 {
 	return (2 * v - l[0] - l[1]) / (l[1] - l[0]);
 }

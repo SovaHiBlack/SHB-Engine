@@ -1,7 +1,7 @@
 #pragma once
 
 #include "..\ENGINE\Envelope.h"
-#include "..\ENGINE\EffectorPP.h"
+#include "..\ENGINE\EffectorPostProcess.h"
 #include "..\ENGINE\CameraManager.h"
 
 class CEffectorController;
@@ -73,10 +73,10 @@ protected:
 	CEnvelope											m_Red;
 	CEnvelope											m_Green;
 	CEnvelope											m_Blue;
-	SPPInfo::SColor*									m_pColor;
+	SPostProcessInfo::SColor*									m_pColor;
 
 public:
-						CPostProcessColor				(SPPInfo::SColor* pcolor)
+						CPostProcessColor				(SPostProcessInfo::SColor* pcolor)
 	{
 		m_pColor = pcolor;
 	}
@@ -104,12 +104,12 @@ public:
 	}
 };
 
-class CPostprocessAnimator : public CEffectorPP
+class CPostprocessAnimator : public CEffectorPostProcess
 {
 protected:
 	CPostProcessParam*									m_Params[POSTPROCESS_PARAMS_COUNT];
-	CSharedString											m_Name;
-	SPPInfo												m_EffectorParams;
+	CSharedString										m_Name;
+	SPostProcessInfo									m_EffectorParams;
 	float												m_factor;
 	float												m_dest_factor;
 	bool												m_bStop;
@@ -139,7 +139,7 @@ public:
 	}
 	float				GetLength						( );
 	virtual BOOL		Valid							( );
-	virtual BOOL		Process							(SPPInfo& PPInfo);
+	virtual BOOL		Process							(SPostProcessInfo& PPInfo);
 
 	void				Create							( );
 };
@@ -154,7 +154,7 @@ public:
 	{
 		m_get_factor_func = f;
 	}
-	virtual BOOL		Process							(SPPInfo& PPInfo);
+	virtual BOOL		Process							(SPostProcessInfo& PPInfo);
 };
 
 class CPostprocessAnimatorLerpConst : public CPostprocessAnimator
@@ -171,7 +171,7 @@ public:
 	{
 		m_power = val;
 	}
-	virtual BOOL		Process							(SPPInfo& PPInfo);
+	virtual BOOL		Process							(SPostProcessInfo& PPInfo);
 };
 
 class CPostprocessAnimatorControlled : public CPostprocessAnimatorLerp

@@ -12,7 +12,7 @@
 #include "..\xrRender\modelpool.h"
 
 #include "lightShadows.h"
-#include "lightProjector.h"
+#include "LightProjector.h"
 #include "lightPPA.h"
 #include "..\xrRender\light_DB.h"
 

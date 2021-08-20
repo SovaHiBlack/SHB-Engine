@@ -7,24 +7,24 @@
 //#include "..\..\..\Inventory.h"
 //#include "..\..\..\HudItem.h"
 #include "..\..\..\..\ENGINE\CustomHUD.h"
-#include "../../../..\ENGINE\effector.h"
-#include "../../../..\ENGINE\effectorPP.h"
+#include "../../../..\ENGINE\EffectorCam.h"
+#include "../../../..\ENGINE\EffectorPostProcess.h"
 
 #define EFFECTOR_ID_GEN(type) (type( u32(U64(this) & u32(-1)) ))
 
 ////////////////////////////////////////////////////////////////////////////////////
 // CAlienEffectorPP
 ////////////////////////////////////////////////////////////////////////////////////
-class CAlienEffectorPP : public CEffectorPP
+class CAlienEffectorPP : public CEffectorPostProcess
 {
-	typedef CEffectorPP inherited;
+	typedef CEffectorPostProcess inherited;
 
-	SPPInfo		state;
+	SPostProcessInfo		state;
 	float		factor;
 	float		target_factor;
 
 public:
-	CAlienEffectorPP(const SPPInfo& ppi, EEffectorPostProcessType type);
+	CAlienEffectorPP(const SPostProcessInfo& ppi, EEffectorPostProcessType type);
 	virtual			~CAlienEffectorPP( );
 
 	void	Update(float new_factor)
@@ -34,10 +34,10 @@ public:
 	void	Destroy( );
 
 private:
-	virtual BOOL	Process(SPPInfo& pp);
+	virtual BOOL	Process(SPostProcessInfo& pp);
 };
 
-CAlienEffectorPP::CAlienEffectorPP(const SPPInfo& ppi, EEffectorPostProcessType type) : CEffectorPP(type, flt_max, false)
+CAlienEffectorPP::CAlienEffectorPP(const SPostProcessInfo& ppi, EEffectorPostProcessType type) : CEffectorPostProcess(type, flt_max, false)
 {
 	state = ppi;
 	factor = 0.0f;
@@ -49,7 +49,7 @@ CAlienEffectorPP::~CAlienEffectorPP( )
 
 #define PERIOD_SPEED	0.3f
 
-BOOL CAlienEffectorPP::Process(SPPInfo& pp)
+BOOL CAlienEffectorPP::Process(SPostProcessInfo& pp)
 {
 	inherited::Process(pp);
 

@@ -8,7 +8,7 @@
 
 #pragma warning(push)
 #pragma warning(disable:4355) // 'this' : used in base member initializer list
-CPPEffectorCustom::CPPEffectorCustom(const SPPInfo& ppi, bool one_instance, bool destroy_from_engine) : inherited(TRANSLATE_TYPE(one_instance), flt_max, destroy_from_engine)
+CPPEffectorCustom::CPPEffectorCustom(const SPostProcessInfo& ppi, bool one_instance, bool destroy_from_engine) : inherited(TRANSLATE_TYPE(one_instance), flt_max, destroy_from_engine)
 {
 	m_state = ppi;
 	m_factor = 0.0f;
@@ -18,7 +18,7 @@ CPPEffectorCustom::CPPEffectorCustom(const SPPInfo& ppi, bool one_instance, bool
 
 #define SET_VALUE(def, target, factor) (def + (target-def) * factor)
 
-BOOL CPPEffectorCustom::Process(SPPInfo& pp)
+BOOL CPPEffectorCustom::Process(SPostProcessInfo& pp)
 {
 	if (!inherited::Process(pp))
 	{
@@ -36,7 +36,7 @@ BOOL CPPEffectorCustom::Process(SPPInfo& pp)
 	return TRUE;
 }
 
-CPPEffectorControlled::CPPEffectorControlled(CPPEffectorController* controller, const SPPInfo& ppi, bool one_instance, bool destroy_from_engine) : inherited(ppi, one_instance, destroy_from_engine)
+CPPEffectorControlled::CPPEffectorControlled(CPPEffectorController* controller, const SPostProcessInfo& ppi, bool one_instance, bool destroy_from_engine) : inherited(ppi, one_instance, destroy_from_engine)
 {
 	m_controller = controller;
 }

@@ -2,12 +2,9 @@
 
 enum ECameraStyle
 {
-	csCamDebug,
 	csFirstEye,
 	csLookAt,
-	csMax,
-	csFixed,
-	cs_forcedword = U32(-1)
+	cs_forcedword = unsigned int(-1)
 };
 
 enum ECameraEffectorType
@@ -23,4 +20,4 @@ enum EEffectorPostProcessType
 
 class ENGINE_API CCameraBase;
 class ENGINE_API CEffectorCam;
-class ENGINE_API CEffectorPP;
+class ENGINE_API CEffectorPostProcess;

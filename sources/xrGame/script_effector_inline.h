@@ -9,7 +9,7 @@
 #pragma once
 
 inline	CScriptEffector::CScriptEffector	(int iType, float time) : 
-	CEffectorPP			(EEffectorPostProcessType(iType),time,false)
+	CEffectorPostProcess(EEffectorPostProcessType(iType),time,false)
 {
 	m_tEffectorType		= EEffectorPostProcessType(iType);
 }

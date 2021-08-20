@@ -4,7 +4,7 @@
 
 #include "SleepEffector.h"
 
-CSleepEffectorPP::CSleepEffectorPP(const SPPInfo& ppi, float life_time, float attack_time, float release_time) : CEffectorPP(EEffectorPostProcessType(SLEEP_EFFECTOR_TYPE_ID), life_time)
+CSleepEffectorPP::CSleepEffectorPP(const SPostProcessInfo& ppi, float life_time, float attack_time, float release_time) : CEffectorPostProcess(EEffectorPostProcessType(SLEEP_EFFECTOR_TYPE_ID), life_time)
 {
 	state = ppi;
 	m_total = life_time;
@@ -18,7 +18,7 @@ CSleepEffectorPP::CSleepEffectorPP(const SPPInfo& ppi, float life_time, float at
 	m_eSleepState = BEGIN_SLEEP;
 }
 
-BOOL CSleepEffectorPP::Process(SPPInfo& pp)
+BOOL CSleepEffectorPP::Process(SPostProcessInfo& pp)
 {
 	inherited::Process(pp);
 
@@ -53,7 +53,7 @@ BOOL CSleepEffectorPP::Process(SPPInfo& pp)
 		return TRUE;
 	}
 
-	SPPInfo def;
+	SPostProcessInfo def;
 
 	pp.duality.h = def.duality.h + (state.duality.h - def.duality.h) * factor;
 	pp.duality.v = def.duality.v + (state.duality.v - def.duality.v) * factor;

@@ -43,7 +43,7 @@ private:
 	ref_geom							hGeom_Rain;
 
 	// Visualization	(drops)
-	IRenderDetailModel*				DM_Drop;
+	IRenderDetailModel*					DM_Drop;
 	ref_geom							hGeom_Drops;
 
 	// Data and logic

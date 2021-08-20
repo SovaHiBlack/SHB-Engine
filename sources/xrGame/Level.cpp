@@ -54,8 +54,8 @@
 
 extern BOOL	g_bDebugDumpPhysicsStep;
 
-CPHWorld* ph_world = 0;
-float		g_cl_lvInterp = 0;
+CPHWorld* ph_world = nullptr;
+float		g_cl_lvInterp = 0.0f;
 u32			lvInterpSteps = 0;
 
 //////////////////////////////////////////////////////////////////////
@@ -72,8 +72,8 @@ CLevel::CLevel( ) :IPureClient(Device.GetTimerGlobal( ))
 //	game = xr_new<game_cl_GameState>();
 	game_events = xr_new<NET_Queue_Event>( );
 
-	game_configured = FALSE;
-	m_bGameConfigStarted = FALSE;
+	game_configured = false;
+	m_bGameConfigStarted = false;
 
 	eChangeRP = Engine.Event.Handler_Attach("LEVEL:ChangeRP", this);
 	eDemoPlay = Engine.Event.Handler_Attach("LEVEL:PlayDEMO", this);
@@ -121,9 +121,8 @@ CLevel::CLevel( ) :IPureClient(Device.GetTimerGlobal( ))
 	pCurrentControlEntity = nullptr;
 
 	//---------------------------------------------------------
-	m_dwCL_PingLastSendTime = 0;
-	m_dwCL_PingDeltaSend = 1000;
-	//m_dwRealPing = 0;
+//	m_dwCL_PingLastSendTime = 0;
+//	m_dwCL_PingDeltaSend = 1000;
 
 	//---------------------------------------------------------	
 	m_sDemoName[0] = 0;

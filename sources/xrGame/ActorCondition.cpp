@@ -163,7 +163,7 @@ void CActorCondition::UpdateCondition( )
 		}
 	}
 
-	CEffectorPP* ppe = object( ).Cameras( ).GetPPEffector((EEffectorPostProcessType) effPsyHealth);
+	CEffectorPostProcess* ppe = object( ).Cameras( ).GetPPEffector((EEffectorPostProcessType) effPsyHealth);
 
 	string64 pp_sect_name;
 	CSharedString ln = Level( ).name( );

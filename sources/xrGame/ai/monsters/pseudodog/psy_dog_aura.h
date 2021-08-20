@@ -13,7 +13,7 @@ class CPPEffectorPsyDogAura : public CPPEffectorCustom {
 	u32				m_time_to_fade;
 
 public:
-					CPPEffectorPsyDogAura	(const SPPInfo &ppi, u32 time_to_fade);
+					CPPEffectorPsyDogAura	(const SPostProcessInfo& ppi, u32 time_to_fade);
 	virtual BOOL	update					();
 			void	switch_off				();
 };

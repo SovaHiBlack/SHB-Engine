@@ -7,7 +7,7 @@
 #include "../../../visual_memory_manager.h"
 #include "..\..\..\Level.h"
 
-CPPEffectorPsyDogAura::CPPEffectorPsyDogAura(const SPPInfo &ppi, u32 time_to_fade)
+CPPEffectorPsyDogAura::CPPEffectorPsyDogAura(const SPostProcessInfo& ppi, u32 time_to_fade)
 : inherited(ppi)
 {
 	m_time_to_fade			= time_to_fade;

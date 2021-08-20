@@ -97,8 +97,8 @@ void CLevel::net_Stop( )
 {
 	Msg("- Disconnect");
 	bReady = false;
-	m_bGameConfigStarted = FALSE;
-	game_configured = FALSE;
+	m_bGameConfigStarted = false;
+	game_configured = false;
 
 	remove_objects( );
 

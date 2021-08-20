@@ -44,8 +44,8 @@ void CNoGravityZone::switchGravity(SZoneObjectInfo& io, bool val)
 				e->applyImpulseTrace(Fvector3().random_point(e->getRadius()), Fvector3().random_dir(),shell->getMass()*ph_world->Gravity()*fixed_step,e->m_SelfID);
 			}
 		}
-		//shell->SetAirResistance(0.f,0.f);
-		//shell->set_DynamicScales(1.f);
+		//shell->SetAirResistance(0.0f,0.0f);
+		//shell->set_DynamicScales(1.0f);
 		return;
 	}
 

@@ -67,7 +67,7 @@ public:
 	u32						m_vampire_min_delay;
 	SAnimationTripleData	anim_triple_vampire;
 
-	SPPInfo					pp_vampire_effector;
+	SPostProcessInfo					pp_vampire_effector;
 
 			
 			void			ActivateVampireEffector	();

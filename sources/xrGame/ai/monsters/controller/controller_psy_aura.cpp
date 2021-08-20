@@ -7,7 +7,7 @@
 #include "../../../CameraEffector.h"
 #include "../../../ActorEffector.h"
 
-CPPEffectorControllerAura::CPPEffectorControllerAura(const SPPInfo &ppi, u32 time_to_fade, const ref_sound &snd_left, const ref_sound &snd_right)
+CPPEffectorControllerAura::CPPEffectorControllerAura(const SPostProcessInfo& ppi, u32 time_to_fade, const ref_sound &snd_left, const ref_sound &snd_right)
 : inherited(ppi)
 {
 	m_time_to_fade			= time_to_fade;

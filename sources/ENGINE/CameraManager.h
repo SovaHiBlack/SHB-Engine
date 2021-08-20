@@ -2,7 +2,7 @@
 
 #include "Camera_defs.h"
 
-struct ENGINE_API SPPInfo
+struct ENGINE_API SPostProcessInfo
 {
 	struct SColor
 	{
@@ -81,7 +81,7 @@ struct ENGINE_API SPPInfo
 	SColor										color_gray;
 	SColor										color_add;
 
-	inline SPPInfo&			operator +=			(const SPPInfo& ppi)
+	inline SPostProcessInfo&			operator +=			(const SPostProcessInfo& ppi)
 	{
 		blur += ppi.blur;
 		gray += ppi.gray;
@@ -93,7 +93,7 @@ struct ENGINE_API SPPInfo
 		color_add += ppi.color_add;
 		return *this;
 	}
-	inline SPPInfo&			operator -=			(const SPPInfo& ppi)
+	inline SPostProcessInfo&			operator -=			(const SPostProcessInfo& ppi)
 	{
 		blur -= ppi.blur;
 		gray -= ppi.gray;
@@ -106,7 +106,7 @@ struct ENGINE_API SPPInfo
 		return *this;
 	}
 	void					normalize			( );
-							SPPInfo				( )
+	SPostProcessInfo( )
 	{
 		blur = gray = duality.h = duality.v = 0.0f;
 		noise.intensity = 0.0f;
@@ -116,15 +116,15 @@ struct ENGINE_API SPPInfo
 		color_gray.set(0.333f, 0.333f, 0.333f);
 		color_add.set(0.0f, 0.0f, 0.0f);
 	}
-	SPPInfo&				lerp				(const SPPInfo& def, const SPPInfo& to, F32 factor);
+	SPostProcessInfo&		lerp				(const SPostProcessInfo& def, const SPostProcessInfo& to, F32 factor);
 	void					validate			(const char* str);
 };
 
 using EffectorCamVec							= xr_vector<CEffectorCam*>;
-using EffectorCamIt								= EffectorCamVec::iterator;
+using EffectorCamVec_it							= EffectorCamVec::iterator;
 
-using EffectorPPVec								= xr_vector<CEffectorPP*>;
-using EffectorPPIt								= EffectorPPVec::iterator;
+using EffectorPostProcessVec					= xr_vector<CEffectorPostProcess*>;
+using EffectorPostProcessVec_it					= EffectorPostProcessVec::iterator;
 
 class ENGINE_API CCameraManager
 {
@@ -136,13 +136,13 @@ class ENGINE_API CCameraManager
 	EffectorCamVec								m_EffectorsCam;
 	EffectorCamVec								m_EffectorsCam_added_deffered;
 	EffectorCamVec								m_EffectorsCam_removed_deffered;
-	EffectorPPVec								m_EffectorsPP;
+	EffectorPostProcessVec						m_EffectorsPP;
 
-	F32										fFov;
-	F32										fFar;
-	F32										fAspect;
+	float										fFov;
+	float										fFar;
+	float										fAspect;
 	bool										m_bAutoApply;
-	SPPInfo										pp_affected;
+	SPostProcessInfo							pp_affected;
 	void					UpdateDeffered		( );
 
 public:
@@ -157,8 +157,8 @@ public:
 	CEffectorCam*			GetCamEffector		(ECameraEffectorType type);
 	void					RemoveCamEffector	(ECameraEffectorType type);
 
-	CEffectorPP*			GetPPEffector		(EEffectorPostProcessType type);
-	CEffectorPP*			AddPPEffector		(CEffectorPP* ef);
+	CEffectorPostProcess*	GetPPEffector		(EEffectorPostProcessType type);
+	CEffectorPostProcess*	AddPPEffector		(CEffectorPostProcess* ef);
 	void					RemovePPEffector	(EEffectorPostProcessType type);
 
 	inline Fvector3			Pos					( ) const
@@ -182,17 +182,17 @@ public:
 	{
 		M.set(vRight, vNormal, vDirection, vPosition);
 	}
-	void					Update				(const Fvector3& P, const Fvector3& D, const Fvector3& N, F32 fFOV_Dest, F32 fASPECT_Dest, F32 fFAR_Dest, U32 flags = 0);
+	void					Update				(const Fvector3& P, const Fvector3& D, const Fvector3& N, float fFOV_Dest, float fASPECT_Dest, float fFAR_Dest, float flags = 0);
 	void					Update				(const CCameraBase* C);
-	void					ApplyDevice			(F32 _viewport_near);
+	void					ApplyDevice			(float _viewport_near);
 	static void				ResetPP				( );
 
 							CCameraManager		(bool bApplyOnUpdate);
 							~CCameraManager		( );
 };
 
-ENGINE_API extern SPPInfo						pp_identity;
-ENGINE_API extern SPPInfo						pp_zero;
+ENGINE_API extern SPostProcessInfo				pp_identity;
+ENGINE_API extern SPostProcessInfo				pp_zero;
 
-ENGINE_API extern F32							psCamInert;
-ENGINE_API extern F32							psCamSlideInert;
+ENGINE_API extern float							psCamInert;
+ENGINE_API extern float							psCamSlideInert;

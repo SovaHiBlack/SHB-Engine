@@ -180,8 +180,8 @@ public:
 	POVec						m_StaticParticles;
 
 	game_cl_GameState* game;
-	BOOL						m_bGameConfigStarted;
-	BOOL						game_configured;
+	bool						m_bGameConfigStarted;
+	bool						game_configured;
 	NET_Queue_Event* game_events;
 	xr_deque<CSE_Abstract*>		game_spawn_queue;
 	CServer* Server;
@@ -342,16 +342,10 @@ public:
 	CSE_Abstract* spawn_item(const char* section, const Fvector3& position, u32 level_vertex_id, U16 parent_id, bool return_item = false);
 
 protected:
-	u32		m_dwCL_PingDeltaSend;
-	u32		m_dwCL_PingLastSendTime;
-	//u32		m_dwRealPing;
+//	u32		m_dwCL_PingDeltaSend;
+//	u32		m_dwCL_PingLastSendTime;
 
 public:
-	//virtual u32				GetRealPing( )
-	//{
-		//return m_dwRealPing;
-	//}
-
 	void			remove_objects( );
 	virtual void			OnSessionTerminate(const char* reason);
 

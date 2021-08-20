@@ -17,12 +17,12 @@ CScriptEffector::~CScriptEffector	()
 	Msg								("CScriptEffector::~CScriptEffector() called");
 }
 
-BOOL CScriptEffector::Process		(SPPInfo	&pp)
+BOOL CScriptEffector::Process		(SPostProcessInfo& pp)
 {
 	return							(!!process(&pp));
 }
 
-bool CScriptEffector::process		(SPPInfo *pp)
+bool CScriptEffector::process		(SPostProcessInfo* pp)
 {
 	return							(!!inherited::Process(*pp));
 }

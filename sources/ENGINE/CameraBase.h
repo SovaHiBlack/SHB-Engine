@@ -15,9 +15,9 @@ public:
 	BOOL							bClampYaw;
 	BOOL							bClampPitch;
 	BOOL							bClampRoll;
-	F32							yaw;
-	F32							pitch;
-	F32							roll;
+	float							yaw;
+	float							pitch;
+	float							roll;
 
 	enum
 	{
@@ -36,12 +36,12 @@ public:
 	Fvector3						vPosition;
 	Fvector3						vDirection;
 	Fvector3						vNormal;
-	F32							f_fov;
-	F32							f_aspect;
+	float							f_fov;
+	float							f_aspect;
 
 	int								tag;
 
-					CCameraBase		(CObject* p, U32 flags);
+					CCameraBase		(CObject* p, unsigned int flags);
 	virtual			~CCameraBase	( );
 	virtual void	Load			(const char* section);
 	void			SetParent		(CObject* p)
@@ -53,7 +53,7 @@ public:
 	{ }
 	virtual void	OnDeactivate	( )
 	{ }
-	virtual void	Move			(int cmd, F32 val = 0.0f, F32 factor = 1.0f)
+	virtual void	Move			(int cmd, float val = 0.0f, float factor = 1.0f)
 	{ }
 	virtual void	Update			(Fvector3& point, Fvector3& noise_angle)
 	{ }
@@ -69,18 +69,18 @@ public:
 		vDirection.set(D);
 		vNormal.set(N);
 	}
-	virtual void	Set				(F32 Y, F32 P, F32 R)
+	virtual void	Set				(float Y, float P, float R)
 	{
 		yaw = Y;
 		pitch = P;
 		roll = R;
 	}
 
-	virtual F32	getWorldYaw		( )
+	virtual float	getWorldYaw		( )
 	{
 		return 0.0f;
 	}
-	virtual F32	getWorldPitch	( )
+	virtual float	getWorldPitch	( )
 	{
 		return 0.0f;
 	}

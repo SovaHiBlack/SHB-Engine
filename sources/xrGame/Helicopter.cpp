@@ -81,8 +81,7 @@ void CHelicopter::reinit(){
 	m_movement.reinit	();
 	m_body.reinit		(); 
 	m_enemy.reinit		();
-};
-
+}
 
 void CHelicopter::Load(const char* section)
 {

@@ -37,7 +37,7 @@ CPostprocessAnimator::CPostprocessAnimator( )
 	Create( );
 }
 
-CPostprocessAnimator::CPostprocessAnimator(int id, bool cyclic) : CEffectorPP((EEffectorPostProcessType) id, 100000, true), m_bCyclic(cyclic)
+CPostprocessAnimator::CPostprocessAnimator(int id, bool cyclic) : CEffectorPostProcess((EEffectorPostProcessType) id, 100000, true), m_bCyclic(cyclic)
 {
 	Create( );
 }
@@ -54,7 +54,7 @@ BOOL CPostprocessAnimator::Valid( )
 		return TRUE;
 	}
 
-	return CEffectorPP::Valid( );
+	return CEffectorPostProcess::Valid( );
 }
 
 void CPostprocessAnimator::Clear( )
@@ -180,14 +180,14 @@ void CPostprocessAnimator::SetCurrentFactor(float f)
 	VERIFY(_valid(m_dest_factor));
 }
 
-BOOL CPostprocessAnimator::Process(SPPInfo& PPInfo)
+BOOL CPostprocessAnimator::Process(SPostProcessInfo& PPInfo)
 {
 	if (m_bCyclic)
 	{
 		fLifeTime = 100000.0f;
 	}
 
-	CEffectorPP::Process(PPInfo);
+	CEffectorPostProcess::Process(PPInfo);
 
 	if (m_start_time < 0.0f)
 	{
@@ -287,7 +287,7 @@ void CPostprocessAnimator::Create( )
 	VERIFY(m_Params[9]);
 }
 
-BOOL CPostprocessAnimatorLerp::Process(SPPInfo& PPInfo)
+BOOL CPostprocessAnimatorLerp::Process(SPostProcessInfo& PPInfo)
 {
 	if (!m_bStop)
 	{
@@ -297,7 +297,7 @@ BOOL CPostprocessAnimatorLerp::Process(SPPInfo& PPInfo)
 	return CPostprocessAnimator::Process(PPInfo);
 }
 
-BOOL CPostprocessAnimatorLerpConst::Process(SPPInfo& PPInfo)
+BOOL CPostprocessAnimatorLerpConst::Process(SPostProcessInfo& PPInfo)
 {
 	if (!m_bStop)
 	{

@@ -299,5 +299,5 @@ void CLevel::InitializeClientGame(CNetPacket& P)
 	game = smart_cast<game_cl_GameState*> (NEW_INSTANCE(clsid));
 	game->set_type_name(game_type_name);
 	game->Init( );
-	m_bGameConfigStarted = TRUE;
+	m_bGameConfigStarted = true;
 }

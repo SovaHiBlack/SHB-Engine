@@ -12,7 +12,7 @@
 
 using namespace luabind;
 
-void SPPInfo_assign(SPPInfo *self, SPPInfo *obj)
+void SPPInfo_assign(SPostProcessInfo* self, SPostProcessInfo* obj)
 {
 	*self	= *obj;
 }
@@ -32,37 +32,37 @@ void CScriptEffector::script_register(lua_State *L)
 {
 	module(L)
 	[
-		class_<SPPInfo::SDuality>("duality")
-			.def_readwrite("h",					&SPPInfo::SDuality::h)
-			.def_readwrite("v",					&SPPInfo::SDuality::v)
+		class_<SPostProcessInfo::SDuality>("duality")
+			.def_readwrite("h",					&SPostProcessInfo::SDuality::h)
+			.def_readwrite("v",					&SPostProcessInfo::SDuality::v)
 			.def(								constructor<>())
 			.def(								constructor<float,float>())
-			.def("set",							&SPPInfo::SDuality::set),
+			.def("set",							&SPostProcessInfo::SDuality::set),
 
-		class_<SPPInfo::SColor>	("color")
-			.def_readwrite("r",					&SPPInfo::SColor::r)
-			.def_readwrite("g",					&SPPInfo::SColor::g)
-			.def_readwrite("b",					&SPPInfo::SColor::b)
+		class_<SPostProcessInfo::SColor>	("color")
+			.def_readwrite("r",					&SPostProcessInfo::SColor::r)
+			.def_readwrite("g",					&SPostProcessInfo::SColor::g)
+			.def_readwrite("b",					&SPostProcessInfo::SColor::b)
 			.def(								constructor<>())
 			.def(								constructor<float,float,float>())
-			.def("set",							&SPPInfo::SColor::set),
+			.def("set",							&SPostProcessInfo::SColor::set),
 
-		class_<SPPInfo::SNoise>("noise")
-			.def_readwrite("intensity",			&SPPInfo::SNoise::intensity)
-			.def_readwrite("grain",				&SPPInfo::SNoise::grain)
-			.def_readwrite("fps",				&SPPInfo::SNoise::fps)
+		class_<SPostProcessInfo::SNoise>("noise")
+			.def_readwrite("intensity",			&SPostProcessInfo::SNoise::intensity)
+			.def_readwrite("grain",				&SPostProcessInfo::SNoise::grain)
+			.def_readwrite("fps",				&SPostProcessInfo::SNoise::fps)
 			.def(								constructor<>())
 			.def(								constructor<float,float,float>())
-			.def("set",							&SPPInfo::SNoise::set),
+			.def("set",							&SPostProcessInfo::SNoise::set),
 
-		class_<SPPInfo>("effector_params")
-			.def_readwrite("blur",				&SPPInfo::blur)
-			.def_readwrite("gray",				&SPPInfo::gray)
-			.def_readwrite("dual",				&SPPInfo::duality)
-			.def_readwrite("noise",				&SPPInfo::noise)
-			.def_readwrite("color_base",		&SPPInfo::color_base)
-			.def_readwrite("color_gray",		&SPPInfo::color_gray)
-			.def_readwrite("color_add",			&SPPInfo::color_add)
+		class_<SPostProcessInfo>("effector_params")
+			.def_readwrite("blur",				&SPostProcessInfo::blur)
+			.def_readwrite("gray",				&SPostProcessInfo::gray)
+			.def_readwrite("dual",				&SPostProcessInfo::duality)
+			.def_readwrite("noise",				&SPostProcessInfo::noise)
+			.def_readwrite("color_base",		&SPostProcessInfo::color_base)
+			.def_readwrite("color_gray",		&SPostProcessInfo::color_gray)
+			.def_readwrite("color_add",			&SPostProcessInfo::color_add)
 			.def(								constructor<>())
 			.def("assign",						&SPPInfo_assign),
 

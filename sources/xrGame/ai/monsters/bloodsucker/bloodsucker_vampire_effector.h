@@ -1,22 +1,22 @@
 #pragma once
 
-#include "../../../..\ENGINE\effectorPP.h"
+#include "../../../..\ENGINE\EffectorPostProcess.h"
 #include "../../../CameraEffector.h"
 #include "../../../..\ENGINE\CameraManager.h"
 
 //////////////////////////////////////////////////////////////////////////
 // Vampire Postprocess Effector
 //////////////////////////////////////////////////////////////////////////
-class CVampirePPEffector : public CEffectorPP
+class CVampirePPEffector : public CEffectorPostProcess
 {
-	using  inherited = CEffectorPP;
+	using inherited = CEffectorPostProcess;
 
-	SPPInfo state;			//current state
+	SPostProcessInfo state;			//current state
 	float	m_total;		// total PP time
 
 public:
-					CVampirePPEffector		(const SPPInfo &ppi, float life_time);
-	virtual	BOOL	Process					(SPPInfo& pp);
+					CVampirePPEffector		(const SPostProcessInfo& ppi, float life_time);
+	virtual	BOOL	Process					(SPostProcessInfo& pp);
 };
 
 //////////////////////////////////////////////////////////////////////////

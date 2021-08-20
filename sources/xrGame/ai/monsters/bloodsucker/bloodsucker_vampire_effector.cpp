@@ -6,7 +6,7 @@
 // Vampire Postprocess Effector
 //////////////////////////////////////////////////////////////////////////
 
-CVampirePPEffector::CVampirePPEffector(const SPPInfo& ppi, float life_time) : inherited(EEffectorPostProcessType(eCEHit), life_time)
+CVampirePPEffector::CVampirePPEffector(const SPostProcessInfo& ppi, float life_time) : inherited(EEffectorPostProcessType(eCEHit), life_time)
 {
 	state = ppi;
 	m_total = life_time;
@@ -17,7 +17,7 @@ CVampirePPEffector::CVampirePPEffector(const SPPInfo& ppi, float life_time) : in
 #define RAD_TO_PERC(rad)	((rad - PI_DIV_2) / (PERIODS * PI_MUL_2))
 #define PERC_TO_RAD(perc)	(perc * (PERIODS * PI_MUL_2) + PI_DIV_2)
 
-BOOL CVampirePPEffector::Process(SPPInfo& pp)
+BOOL CVampirePPEffector::Process(SPostProcessInfo& pp)
 {
 	inherited::Process(pp);
 

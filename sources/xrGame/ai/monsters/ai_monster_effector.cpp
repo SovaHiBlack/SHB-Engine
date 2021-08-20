@@ -4,7 +4,7 @@
 
 #define MONSTER_EFFECTOR_TYPE_ID 5
 
-CMonsterEffector::CMonsterEffector(const SPPInfo& ppi, float life_time, float attack_time, float release_time, float spec_factor) : CEffectorPP(EEffectorPostProcessType(eCEHit), life_time)
+CMonsterEffector::CMonsterEffector(const SPostProcessInfo& ppi, float life_time, float attack_time, float release_time, float spec_factor) : CEffectorPostProcess(EEffectorPostProcessType(eCEHit), life_time)
 {
 	state = ppi;
 	m_total = life_time;
@@ -18,7 +18,7 @@ CMonsterEffector::CMonsterEffector(const SPPInfo& ppi, float life_time, float at
 	VERIFY(!fis_zero(m_attack));
 }
 
-BOOL CMonsterEffector::Process(SPPInfo& pp)
+BOOL CMonsterEffector::Process(SPostProcessInfo& pp)
 {
 	inherited::Process(pp);
 

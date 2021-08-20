@@ -1,21 +1,21 @@
 #pragma once
 
-#include "..\ENGINE\effectorPP.h"
+#include "..\ENGINE\EffectorPostProcess.h"
 #include "..\ENGINE\CameraManager.h"
 
-class CPPEffectorCustom : public CEffectorPP
+class CPPEffectorCustom : public CEffectorPostProcess
 {
-	using inherited													= CEffectorPP;
+	using inherited													= CEffectorPostProcess;
 
 public:
-									CPPEffectorCustom				(const SPPInfo& ppi, bool one_instance = false, bool destroy_from_engine = true);
+									CPPEffectorCustom				(const SPostProcessInfo& ppi, bool one_instance = false, bool destroy_from_engine = true);
 	EEffectorPostProcessType		get_type						( )
 	{
 		return m_type;
 	}
 
 protected:
-	virtual BOOL					Process							(SPPInfo& pp);
+	virtual BOOL					Process							(SPostProcessInfo& pp);
 
 	// update factor; if return FALSE - destroy
 	virtual BOOL					update							( )
@@ -24,7 +24,7 @@ protected:
 	}
 
 private:
-	SPPInfo															m_state;
+	SPostProcessInfo												m_state;
 	EEffectorPostProcessType										m_type;
 
 protected:
@@ -44,7 +44,7 @@ public:
 
 protected:
 	_Effector*														m_effector;
-	SPPInfo															m_state;
+	SPostProcessInfo												m_state;
 };
 
 template<class _Effector>
@@ -79,7 +79,7 @@ class CPPEffectorControlled : public CPPEffectorCustom
 	CPPEffectorController*											m_controller;
 
 public:
-									CPPEffectorControlled			(CPPEffectorController* controller, const SPPInfo& ppi, bool one_instance = false, bool destroy_from_engine = true);
+									CPPEffectorControlled			(CPPEffectorController* controller, const SPostProcessInfo& ppi, bool one_instance = false, bool destroy_from_engine = true);
 	virtual BOOL					update							( );
 	inline void						set_factor						(float value)
 	{

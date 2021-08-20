@@ -22,7 +22,7 @@ class CScanningAbility {
 
 	float		scan_value;
 
-	SPPInfo		m_effector_info;
+	SPostProcessInfo		m_effector_info;
 	float		m_effector_time;
 	float		m_effector_time_attack;
 	float		m_effector_time_release;

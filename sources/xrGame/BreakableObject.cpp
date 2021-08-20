@@ -115,54 +115,31 @@ void CBreakableObject::CreateUnbroken( )
 
 void CBreakableObject::DestroyUnbroken( )
 {
-	if (!m_pUnbrokenObject) return;
+	if (!m_pUnbrokenObject)
+	{
+		return;
+	}
+
 	m_pUnbrokenObject->Deactivate( );
 	xr_delete(m_pUnbrokenObject);
 }
 
-//void CBreakableObject::CreateBroken()
-//{
-	//CPhysicsShell* shell=P_create_splited_Shell();
-	//shell->preBuild_FromKinematics(smart_cast<CKinematics*>(Visual()));
-	//shell->mXFORM.set(XFORM());
-	//shell->set_PhysicsRefObject(this);
-	////m_Shell->Build();
-	//shell->setDensity(1000.f);
-	//dMass m;
-	//dMassSetBox(&m,m_Shell->getMass()/100.f,1.f,1.f,1.f);
-	//shell->addEquelInertiaToEls(m);
-	//shell->SmoothElementsInertia(0.3f);
-	////shell->SetAirResistance(0.002f*skel_airr_lin_factor,
-	////	0.3f*skel_airr_ang_factor);
-	//ELEMENT_STORAGE& elements = pshell->Elements();
-	//ELEMENT_I i=elements.begin(),e=elements.end();
-	//for(;e!=i;i++)
-	//{
-	//	m_Shells.push_back(P_create_splited_Shell());
-	//	m_Shells.back()->mXFORM.set(XFORM());
-	//	m_Shells.back()->add_Element	(*i);
-	//	m_Shells.back()->Build();
-	//}
-
-//}
 void CBreakableObject::CreateBroken( )
 {
 	processing_activate( );
 	m_Shell = P_create_splited_Shell( );
 	m_Shell->preBuild_FromKinematics(smart_cast<CKinematics*>(Visual( )));
 	m_Shell->mXFORM.set(XFORM( ));
-	//m_Shell->SetAirResistance(0.002f*skel_airr_lin_factor,
-	//	0.3f*skel_airr_ang_factor);
 	m_Shell->set_PhysicsRefObject(this);
 	m_Shell->Build( );
-	m_Shell->setMass(m_Shell->getMass( ) * 0.1f * 100.f);
+	m_Shell->setMass(m_Shell->getMass( ) * 0.1f * 100.0f);
 	dMass m;
-	dMassSetBox(&m, m_Shell->getMass( ) / 100.f, 1.f, 1.f, 1.f);
+	dMassSetBox(&m, m_Shell->getMass( ) / 100.0f, 1.0f, 1.0f, 1.0f);
 	m_Shell->addEquelInertiaToEls(m);
 	m_Shell->SmoothElementsInertia(0.3f);
 	Fobb b;
 	Visual( )->vis.box.getradius(b.m_halfsize);
-	m_Shell->SetMaxAABBRadius(_max(_max(b.m_halfsize.x, b.m_halfsize.y), b.m_halfsize.z) * 2.f);//+2.f
+	m_Shell->SetMaxAABBRadius(_max(_max(b.m_halfsize.x, b.m_halfsize.y), b.m_halfsize.z) * 2.0f);//+2.f
 }
 
 void CBreakableObject::ActivateBroken( )
@@ -191,7 +168,7 @@ void CBreakableObject::net_Destroy( )
 	inherited::net_Destroy( );
 	xr_delete(collidable.model);
 	Init( );
-	//Visual()->vis.box.set(m_saved_box);
+
 	Render->model_Delete(renderable.visual, TRUE);
 	cNameVisual_set("");
 }
@@ -210,7 +187,11 @@ void CBreakableObject::Split( )
 
 void CBreakableObject::Break( )
 {
-	if (m_pPhysicsShell)return;
+	if (m_pPhysicsShell)
+	{
+		return;
+	}
+
 	DestroyUnbroken( );
 	CreateBroken( );
 	ActivateBroken( );
@@ -224,6 +205,7 @@ void CBreakableObject::Break( )
 		dir.normalize( );
 		m_pPhysicsShell->get_ElementByStoreOrder(i)->applyImpulseTrace(pos, dir, Random.randF(0.5f, 3.f), 0);
 	}
+
 	m_break_time = Device.dwTimeGlobal;
 	SheduleRegister( );
 }
@@ -252,9 +234,13 @@ void CBreakableObject::ObjectContactCallback(bool&/**do_colide/**/, bool bo1, dC
 		)
 	{
 		body = dGeomGetBody(c.geom.g2);
-		if (!body) return;
+		if (!body)
+		{
+			return;
+		}
+
 		this_object = static_cast<CBreakableObject*>(usr_data_1->ph_ref_object);
-		norm_sign = -1.f;
+		norm_sign = -1.0f;
 	}
 	else if (
 		usr_data_2 &&
@@ -263,13 +249,24 @@ void CBreakableObject::ObjectContactCallback(bool&/**do_colide/**/, bool bo1, dC
 		)
 	{
 		body = dGeomGetBody(c.geom.g1);
-		if (!body) return;
-		this_object = static_cast<CBreakableObject*>(usr_data_2->ph_ref_object);
-		norm_sign = 1.f;
-	}
-	else return;
+		if (!body)
+		{
+			return;
+		}
 
-	if (!this_object->m_pUnbrokenObject) return;
+		this_object = static_cast<CBreakableObject*>(usr_data_2->ph_ref_object);
+		norm_sign = 1.0f;
+	}
+	else
+	{
+		return;
+	}
+
+	if (!this_object->m_pUnbrokenObject)
+	{
+		return;
+	}
+
 	float c_damage = E_NlS(body, c.geom.normal, norm_sign);
 	if (this_object->m_damage_threshold < c_damage &&
 		this_object->m_max_frame_damage < c_damage
@@ -299,7 +296,7 @@ void CBreakableObject::ProcessDamage( )
 
 	u_EventSend(P);
 
-	m_max_frame_damage = 0.f;
+	m_max_frame_damage = 0.0f;
 	b_resived_damage = false;
 }
 
@@ -308,30 +305,40 @@ void CBreakableObject::CheckHitBreak(float power, ALife::EHitType hit_type)
 	if (hit_type != ALife::eHitTypeStrike)
 	{
 		float res_power = power * m_immunity_factor;
-		if (power > m_health_threshhold) fHealth -= res_power;
+		if (power > m_health_threshhold)
+		{
+			fHealth -= res_power;
+		}
 	}
 
-	if (fHealth <= 0.f)
+	if (fHealth <= 0.0f)
 	{
 		Break( );
 		return;
 	}
 
-	if (hit_type == ALife::eHitTypeStrike)Break( );
+	if (hit_type == ALife::eHitTypeStrike)
+	{
+		Break( );
+	}
 }
 
 void CBreakableObject::ApplyExplosion(const Fvector3& dir, float impulse)
 {
-	if (!m_pPhysicsShell) return;
+	if (!m_pPhysicsShell)
+	{
+		return;
+	}
+
 	Fvector3 pos;
-	pos.set(0.f, 0.f, 0.f);
+	pos.set(0.0f, 0.0f, 0.0f);
 	U16 el_num = m_pPhysicsShell->get_ElementsNumber( );
 	for (U16 i = 0; i < el_num; i++)
 	{
 		Fvector3 max_area_dir;
 		CPhysicsElement* element = m_pPhysicsShell->get_ElementByStoreOrder(i);
 		element->get_MaxAreaDir(max_area_dir);
-		float	sign = max_area_dir.dotproduct(dir) > 0.f ? 1.f : -1.f;
+		float sign = max_area_dir.dotproduct(dir) > 0.0f ? 1.0f : -1.0f;
 		max_area_dir.mul(sign);
 		element->applyImpulseTrace(pos, max_area_dir, impulse / el_num, 0);
 	}
@@ -339,13 +346,10 @@ void CBreakableObject::ApplyExplosion(const Fvector3& dir, float impulse)
 
 void CBreakableObject::Init( )
 {
-	fHealth = 1.f;
-	m_pUnbrokenObject = nullptr;
-	m_Shell = nullptr;
-	bRemoved = false;
-	m_max_frame_damage = 0.f;
-	b_resived_damage = false;
-	//m_damage_threshold		=5.f;
-	//m_health_threshhold		=0.f
+	fHealth				= 1.0f;
+	m_pUnbrokenObject	= nullptr;
+	m_Shell				= nullptr;
+	bRemoved			= false;
+	m_max_frame_damage	= 0.0f;
+	b_resived_damage	= false;
 }
-

@@ -696,8 +696,8 @@ void CMissile::activate_physic_shell( )
 	m_pPhysicsShell->add_ObjectContactCallback(ExitContactCallback);
 	m_pPhysicsShell->set_CallbackData(smart_cast<CPHShellHolder*>(entity_alive));
 //	m_pPhysicsShell->remove_ObjectContactCallback	(ExitContactCallback);
-	m_pPhysicsShell->SetAirResistance(0.f, 0.f);
-	m_pPhysicsShell->set_DynamicScales(1.f, 1.f);
+	m_pPhysicsShell->SetAirResistance(0.0f, 0.0f);
+	m_pPhysicsShell->set_DynamicScales(1.0f, 1.0f);
 
 	CKinematics* kinematics = smart_cast<CKinematics*>(Visual( ));
 	VERIFY(kinematics);

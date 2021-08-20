@@ -163,7 +163,7 @@ class CPolterFlame : public CPolterSpecialAbility {
 	u32						m_scan_delay_min;
 	u32						m_scan_delay_max;
 	
-	SPPInfo					m_scan_effector_info;
+	SPostProcessInfo		m_scan_effector_info;
 	float					m_scan_effector_time;
 	float					m_scan_effector_time_attack;
 	float					m_scan_effector_time_release;

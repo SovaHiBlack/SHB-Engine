@@ -1,15 +1,11 @@
 // LightProjector.cpp: implementation of the CLightProjector class.
-//
-//////////////////////////////////////////////////////////////////////
 
 #include "stdafx.h"
 
 #include "LightProjector.h"
 #include "..\ENGINE\Object.h"
 #include "..\xrRender\lighttrack.h"
-
-// tir2.xrdemo		-> 45.2
-// tir2.xrdemo		-> 61.8
+#include "..\ENGINE\SkeletonCustom.h"
 
 const	float		P_distance		= 50;					// switch distance between LOW-q light and HIGH-q light
 const	float		P_cam_dist		= 200;
@@ -119,7 +115,7 @@ void CLightProjector::OnAppActivate()
 }
 
 //
-#include "..\ENGINE\SkeletonCustom.h"
+
 void CLightProjector::calculate	()
 {
 	if (receivers.empty())		return;

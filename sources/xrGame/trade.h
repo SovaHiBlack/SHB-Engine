@@ -12,7 +12,7 @@ class CTrade
 	bool										TradeState;			// режим торговли. true - включен
 	u32											m_dwLastTradeTime;
 
-	typedef enum tagTraderType
+	typedef enum ETraderType
 	{
 		TT_NONE,
 		TT_TRADER,

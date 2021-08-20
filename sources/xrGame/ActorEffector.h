@@ -18,14 +18,14 @@ class CEffectorController
 {
 protected:
 	CEffectorCam*												m_ce;
-	CEffectorPP*												m_pe;
+	CEffectorPostProcess*												m_pe;
 
 public:
 								CEffectorController				( ) : m_ce(NULL), m_pe(NULL)
 	{ }
 	virtual						~CEffectorController			( );
 
-	void						SetPP							(CEffectorPP* p)
+	void						SetPP							(CEffectorPostProcess* p)
 	{
 		m_pe = p;
 	}

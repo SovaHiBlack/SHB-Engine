@@ -1,7 +1,7 @@
 #pragma once
 
 #include "IInputReceiver.h"
-#include "effector.h"
+#include "EffectorCam.h"
 
 class ENGINE_API CDemoRecord : public CEffectorCam, public IInputReceiver
 {

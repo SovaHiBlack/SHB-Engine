@@ -8,19 +8,20 @@
 
 #pragma once
 
-#include "..\ENGINE\effectorpp.h"
+#include "..\ENGINE\EffectorPostProcess.h"
 #include "script_export_space.h"
 #include "..\ENGINE\CameraManager.h"
 
-class CScriptEffector : public CEffectorPP {
+class CScriptEffector : public CEffectorPostProcess
+{
 public:
-	typedef CEffectorPP inherited;
+	typedef CEffectorPostProcess inherited;
 	EEffectorPostProcessType		m_tEffectorType;
 
 	inline					CScriptEffector		(int iType, float time);
 	virtual				~CScriptEffector	();
-	virtual	BOOL		Process				(SPPInfo &pp);
-	virtual	bool		process				(SPPInfo *pp);
+	virtual	BOOL		Process				(SPostProcessInfo& pp);
+	virtual	bool		process				(SPostProcessInfo* pp);
 	virtual	void		Add					();
 	virtual	void		Remove				();
 public:

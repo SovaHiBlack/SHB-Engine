@@ -299,7 +299,7 @@ void		CTeleWhirlwindObject::keep( )
 		return;
 	else
 	{
-		p->SetAirResistance(0.f, 0.f);
+		p->SetAirResistance(0.0f, 0.0f);
 		p->set_ApplyByGravity(FALSE);
 	}
 

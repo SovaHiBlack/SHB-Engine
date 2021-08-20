@@ -202,7 +202,7 @@ void CPHItem::create_box2sphere_physic_shell( )
 	m_pPhysicsShell = P_create_Shell( );
 	R_ASSERT(m_pPhysicsShell);
 	m_pPhysicsShell->add_Element(E);
-	m_pPhysicsShell->setDensity(2000.f);
+	m_pPhysicsShell->setDensity(2000.0f);
 	m_pPhysicsShell->SetAirResistance( );
 }
 
