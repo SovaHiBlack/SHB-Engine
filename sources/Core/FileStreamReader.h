@@ -1,6 +1,6 @@
 #pragma once
 
-#include "stream_reader.h"
+#include "StreamReader.h"
 
 class CFileStreamReader : public CStreamReader
 {

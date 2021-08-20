@@ -7,12 +7,12 @@
 CORE_API void VerifyPath(const char* path);
 
 #ifdef DEBUG
-CORE_API	extern	U32		g_file_mapped_memory;
-CORE_API	extern	U32		g_file_mapped_count;
-CORE_API			void	dump_file_mappings( );
-extern	void	register_file_mapping(void* address, const U32& size, const char* file_name);
-extern	void	unregister_file_mapping(void* address, const U32& size);
-#endif // DEBUG
+CORE_API extern unsigned int		g_file_mapped_memory;
+CORE_API extern unsigned int		g_file_mapped_count;
+CORE_API void	dump_file_mappings( );
+extern void		register_file_mapping(void* address, const unsigned int& size, const char* file_name);
+extern void		unregister_file_mapping(void* address, const unsigned int& size);
+#endif // def DEBUG
 
 //------------------------------------------------------------------------------------
 // Write
@@ -20,7 +20,7 @@ extern	void	unregister_file_mapping(void* address, const U32& size);
 class CORE_API IWriter
 {
 private:
-	xr_stack<U32>		chunk_pos;
+	xr_stack<unsigned int>		chunk_pos;
 
 public:
 	CSharedString			fName;
@@ -33,19 +33,19 @@ public:
 	}
 
 	// kernel
-	virtual void	seek(U32 pos) = 0;
-	virtual U32		tell( ) = 0;
+	virtual void	seek(unsigned int pos) = 0;
+	virtual unsigned int		tell( ) = 0;
 
-	virtual void	w(const void* ptr, U32 count) = 0;
+	virtual void	w(const void* ptr, unsigned int count) = 0;
 
 	// generalized writing functions
 	inline void			w_u64(U64 d)
 	{
 		w(&d, sizeof(U64));
 	}
-	inline void			w_u32(U32 d)
+	inline void			w_u32(unsigned int d)
 	{
-		w(&d, sizeof(U32));
+		w(&d, sizeof(unsigned int));
 	}
 	inline void			w_u16(U16 d)
 	{
@@ -77,25 +77,28 @@ public:
 	}
 	inline void			w_string(const char* p)
 	{
-		w(p, (U32) xr_strlen(p));
+		w(p, (unsigned int) xr_strlen(p));
 		w_u8(13);
 		w_u8(10);
 	}
 	inline void			w_stringZ(const char* p)
 	{
-		w(p, (U32) xr_strlen(p) + 1);
+		w(p, (unsigned int) xr_strlen(p) + 1);
 	}
 	inline void			w_stringZ(const CSharedString& p)
 	{
-		w(*p ? *p : "", p.size( )); w_u8(0);
+		w(*p ? *p : "", p.size( ));
+		w_u8(0);
 	}
 	inline void			w_stringZ(CSharedString& p)
 	{
-		w(*p ? *p : "", p.size( )); w_u8(0);
+		w(*p ? *p : "", p.size( ));
+		w_u8(0);
 	}
 	inline void			w_stringZ(const xr_string& p)
 	{
-		w(p.c_str( ) ? p.c_str( ) : "", (U32) p.size( )); w_u8(0);
+		w(p.c_str( ) ? p.c_str( ) : "", (unsigned int) p.size( ));
+		w_u8(0);
 	}
 	inline void			w_fcolor(const Fcolor& v)
 	{
@@ -155,12 +158,12 @@ public:
 	void	__cdecl	w_printf(const char* format, ...);
 
 	// generalized chunking
-	U32				align( );
-	void			open_chunk(U32 type);
+	unsigned int				align( );
+	void			open_chunk(unsigned int type);
 	void			close_chunk( );
-	U32				chunk_size( );					// returns size of currently opened chunk, 0 otherwise
-	void			w_compressed(void* ptr, U32 count);
-	void			w_chunk(U32 type, void* data, U32 size);
+	unsigned int				chunk_size( );					// returns size of currently opened chunk, 0 otherwise
+	void			w_compressed(void* ptr, unsigned int count);
+	void			w_chunk(unsigned int type, void* data, unsigned int size);
 	virtual bool	valid( )
 	{
 		return true;
@@ -170,9 +173,9 @@ public:
 class CORE_API CMemoryWriter : public IWriter
 {
 	U8* data;
-	U32				position;
-	U32				mem_size;
-	U32				file_size;
+	unsigned int				position;
+	unsigned int				mem_size;
+	unsigned int				file_size;
 
 public:
 	CMemoryWriter( )
@@ -185,13 +188,13 @@ public:
 	virtual	~CMemoryWriter( );
 
 	// kernel
-	virtual void	w(const void* ptr, U32 count);
+	virtual void	w(const void* ptr, unsigned int count);
 
-	virtual void	seek(U32 pos)
+	virtual void	seek(unsigned int pos)
 	{
 		position = pos;
 	}
-	virtual U32		tell( )
+	virtual unsigned int		tell( )
 	{
 		return position;
 	}
@@ -201,7 +204,7 @@ public:
 	{
 		return data;
 	}
-	inline U32			size( ) const
+	inline unsigned int			size( ) const
 	{
 		return file_size;
 	}
@@ -386,10 +389,10 @@ public:
 		impl( ).seek(0);
 	}
 
-	inline U32 		find_chunk(U32 ID, BOOL* bCompressed = 0)
+	inline unsigned int 		find_chunk(unsigned int ID, BOOL* bCompressed = 0)
 	{
-		U32 dwSize;
-		U32 dwType;
+		unsigned int dwSize;
+		unsigned int dwType;
 
 		rewind( );
 		while (!eof( ))
@@ -399,7 +402,7 @@ public:
 			if ((dwType & (~CFS_CompressMark)) == ID)
 			{
 
-				VERIFY((U32) impl( ).tell( ) + dwSize <= (U32) impl( ).length( ));
+				VERIFY((unsigned int) impl( ).tell( ) + dwSize <= (unsigned int) impl( ).length( ));
 				if (bCompressed) *bCompressed = dwType & CFS_CompressMark;
 				return dwSize;
 			}
@@ -412,9 +415,9 @@ public:
 		return 0;
 	}
 
-	inline BOOL		r_chunk(U32 ID, void* dest)	// чтение XR Chunk'ов (4b-ID,4b-size,??b-data)
+	inline BOOL		r_chunk(unsigned int ID, void* dest)	// чтение XR Chunk'ов (4b-ID,4b-size,??b-data)
 	{
-		U32 dwSize = find_chunk(ID);
+		unsigned int dwSize = find_chunk(ID);
 		if (dwSize != 0)
 		{
 			r(dest, dwSize);
@@ -426,9 +429,9 @@ public:
 		}
 	}
 
-	inline BOOL		r_chunk_safe(U32 ID, void* dest, U32 dest_size)	// чтение XR Chunk'ов (4b-ID,4b-size,??b-data)
+	inline BOOL		r_chunk_safe(unsigned int ID, void* dest, unsigned int dest_size)	// чтение XR Chunk'ов (4b-ID,4b-size,??b-data)
 	{
-		U32 dwSize = find_chunk(ID);
+		unsigned int dwSize = find_chunk(ID);
 		if (dwSize != 0)
 		{
 			R_ASSERT(dwSize == dest_size);
@@ -465,7 +468,7 @@ public:
 	}
 
 protected:
-	inline U32			correction(U32 p)
+	inline unsigned int			correction(unsigned int p)
 	{
 		if (p % 16)
 		{
@@ -475,7 +478,7 @@ protected:
 		return 0;
 	}
 
-	U32 			advance_term_string( );
+	unsigned int 			advance_term_string( );
 
 public:
 	inline int			elapsed( ) const
@@ -507,22 +510,22 @@ public:
 
 	void			r(void* p, int cnt);
 
-	void			r_string(char* dest, U32 tgt_sz);
+	void			r_string(char* dest, unsigned int tgt_sz);
 	void			r_string(xr_string& dest);
 
 	void			skip_stringZ( );
 
-	void			r_stringZ(char* dest, U32 tgt_sz);
+	void			r_stringZ(char* dest, unsigned int tgt_sz);
 	void			r_stringZ(CSharedString& dest);
 	void			r_stringZ(xr_string& dest);
 
 	void			close( );
 
 	// поиск XR Chunk'ов - возврат - размер или 0
-	IReader* open_chunk(U32 ID);
+	IReader* open_chunk(unsigned int ID);
 
 	// iterators
-	IReader* open_chunk_iterator(U32& ID, IReader* previous = nullptr);	// NULL=first
+	IReader* open_chunk_iterator(unsigned int& ID, IReader* previous = nullptr);	// NULL=first
 };
 
 class CORE_API CVirtualFileRW : public IReader

@@ -1,7 +1,7 @@
 #pragma once
 
 #include <theora/theora.h>
-#include "../Core/Stream_Reader.h"
+#include "../Core/StreamReader.h"
 
 class ENGINE_API CTheoraStream{
 	friend	class		CTheoraSurface;

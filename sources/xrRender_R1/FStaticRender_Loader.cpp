@@ -5,7 +5,7 @@
 #include "..\ENGINE\xrLevel.h"
 #include "..\ENGINE\Application.h"
 #include "..\ENGINE\IGamePersistent.h"//==>
-#include "..\Core\stream_reader.h"
+#include "..\Core\StreamReader.h"
 
 #pragma warning(push)
 #pragma warning(disable:4995)

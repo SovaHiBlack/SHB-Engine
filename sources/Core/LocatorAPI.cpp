@@ -11,7 +11,7 @@
 #pragma warning(default:4995)
 
 #include "FS_internal.h"
-#include "stream_reader.h"
+//#include "StreamReader.h"
 #include "FileStreamReader.h"
 
 const U32 BIG_FILE_READER_WINDOW_SIZE = 1024 * 1024;
