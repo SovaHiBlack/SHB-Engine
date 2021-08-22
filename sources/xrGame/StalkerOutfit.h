@@ -1,7 +1,5 @@
-///////////////////////////////////////////////////////////////
 // StalkerOutfit.cpp
 // StalkerOutfit - защитный костюм сталкера
-///////////////////////////////////////////////////////////////
 
 #pragma once
 
@@ -11,13 +9,12 @@
 class CStalkerOutfit : public CCustomOutfit
 {
 private:
-	typedef	CCustomOutfit inherited;
+	using inherited = CCustomOutfit;
 
 public:
 	CStalkerOutfit( );
 	virtual ~CStalkerOutfit( );
 
-public:
 	static void script_register(lua_State*);
 };
 

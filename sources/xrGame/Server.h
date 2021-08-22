@@ -223,6 +223,6 @@ public:
 #ifdef DEBUG
 	bool					verify_entities( ) const;
 	void					verify_entity(const CSE_Abstract* entity) const;
-#endif
+#endif // def DEBUG
 
 };

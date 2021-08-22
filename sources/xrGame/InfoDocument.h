@@ -27,5 +27,5 @@ public:
 
 protected:
 	//индекс информации, содержащейс€ в документе
-	CSharedString							m_Info;
+	CSharedString						m_Info;
 };

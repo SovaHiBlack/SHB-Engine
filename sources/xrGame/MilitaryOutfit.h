@@ -1,16 +1,14 @@
-///////////////////////////////////////////////////////////////
 // MilitaryOutfit.h
 // MilitaryOutfit - защитный костюм военного
-///////////////////////////////////////////////////////////////
 
 #pragma once
 
 #include "CustomOutfit.h"
 
-class CMilitaryOutfit: public CCustomOutfit
+class CMilitaryOutfit : public CCustomOutfit
 {
 private:
-    typedef	CCustomOutfit inherited;
+	using inherited = CCustomOutfit;
 
 public:
 	CMilitaryOutfit( );

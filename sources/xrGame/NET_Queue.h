@@ -5,7 +5,7 @@
 extern bool		g_bCheckTime;
 static int g_dwEventDelay = 0;
 
-class	NET_Event
+class NET_Event
 {
 public:
 	U16					ID;
@@ -24,18 +24,21 @@ public:
 			{
 				P.read_start( );
 //				timestamp = P->
-			}break;
+			}
+			break;
 			case M_EVENT:
 			{
 				P.r_u32(timestamp);
 				timestamp += u32(g_dwEventDelay);
 				P.r_u16(type);
 				P.r_u16(destination);
-			}break;
+			}
+			break;
 			default:
 			{
 				VERIFY(0);
-			}break;
+			}
+			break;
 		}
 
 		u32 size = P.r_elapsed( );

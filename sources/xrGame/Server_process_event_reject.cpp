@@ -38,5 +38,5 @@ bool CServer::Process_event_reject	(CNetPacket& P, const ClientID sender, const 
 		SendBroadcast	(BroadcastCID,P,MODE);
 	}
 	
-	return				(true);
+	return true;
 }

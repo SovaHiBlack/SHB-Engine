@@ -1,10 +1,5 @@
-////////////////////////////////////////////////////////////////////////////
 //	Module 		: xrServer_Objects_ALife.h
-//	Created 	: 19.09.2002
-//  Modified 	: 04.06.2003
-//	Author		: Oles Shyshkovtsov, Alexander Maksimchuk, Victor Reutskiy and Dmitriy Iassenev
 //	Description : Server objects monsters for ALife simulator
-////////////////////////////////////////////////////////////////////////////
 
 #pragma once
 
@@ -21,160 +16,188 @@ class CALifeOnlineOfflineGroupBrain;
 #pragma warning(disable:4005)
 
 SERVER_ENTITY_DECLARE_BEGIN0(CSE_ALifeTraderAbstract)
-	enum eTraderFlags {
-		eTraderFlagInfiniteAmmo		= u32(1) << 0,
-		eTraderFlagDummy			= u32(-1),
-	};
+enum eTraderFlags
+{
+	eTraderFlagInfiniteAmmo = u32(1) << 0,
+	eTraderFlagDummy = u32(-1),
+};
 //	float							m_fCumulativeItemMass;
 //	int								m_iCumulativeItemVolume;
-	u32								m_dwMoney;
-	float							m_fMaxItemMass;
-	Flags32							m_trader_flags;
+u32								m_dwMoney;
+float							m_fMaxItemMass;
+Flags32							m_trader_flags;
 
-	////////////////////////////////////////////////////
-	//character profile info
+////////////////////////////////////////////////////
+//character profile info
 
-	CSharedString						character_profile		();
-	void							set_character_profile	(CSharedString);
-	CSharedString						specific_character		();
-	void							set_specific_character	(CSharedString);
+CSharedString						character_profile( );
+void							set_character_profile(CSharedString);
+CSharedString						specific_character( );
+void							set_specific_character(CSharedString);
 
-	CHARACTER_COMMUNITY_INDEX		m_community_index;
-	CHARACTER_REPUTATION_VALUE		m_reputation;
-	CHARACTER_RANK_VALUE			m_rank;
-	xr_string						m_character_name;
+CHARACTER_COMMUNITY_INDEX		m_community_index;
+CHARACTER_REPUTATION_VALUE		m_reputation;
+CHARACTER_RANK_VALUE			m_rank;
+xr_string						m_character_name;
 
-	//для работы с relation system
-	U16								object_id				() const;
-	CHARACTER_COMMUNITY_INDEX		Community				() const;
-	const char*						CommunityName			() const;
-	CHARACTER_RANK_VALUE			Rank					();
-	CHARACTER_REPUTATION_VALUE		Reputation				();
-	void							SetRank					(CHARACTER_RANK_VALUE val);
+//для работы с relation system
+U16								object_id( ) const;
+CHARACTER_COMMUNITY_INDEX		Community( ) const;
+const char* CommunityName( ) const;
+CHARACTER_RANK_VALUE			Rank( );
+CHARACTER_REPUTATION_VALUE		Reputation( );
+void							SetRank(CHARACTER_RANK_VALUE val);
 
-	CSharedString						m_sCharacterProfile;
-	CSharedString						m_SpecificCharacter;
+CSharedString						m_sCharacterProfile;
+CSharedString						m_SpecificCharacter;
 
-	//буферный вектор проверенных персонажей
-	xr_vector<CSharedString> m_CheckedCharacters;
-	xr_vector<CSharedString> m_DefaultCharacters;
+//буферный вектор проверенных персонажей
+xr_vector<CSharedString> m_CheckedCharacters;
+xr_vector<CSharedString> m_DefaultCharacters;
 
-public:	
-									CSE_ALifeTraderAbstract		(const char* caSection);
-	virtual							~CSE_ALifeTraderAbstract	();
+public:
+	CSE_ALifeTraderAbstract(const char* caSection);
+	virtual							~CSE_ALifeTraderAbstract( );
 	// we need this to prevent virtual inheritance :-(
-	virtual CSE_Abstract			*base						() = 0;
-	virtual const CSE_Abstract		*base						() const = 0;
-	virtual CSE_Abstract			*init						();
-	virtual CSE_Abstract			*cast_abstract				() {return 0;};
-	virtual CSE_ALifeTraderAbstract	*cast_trader_abstract		() {return this;};
+	virtual CSE_Abstract* base( ) = 0;
+	virtual const CSE_Abstract* base( ) const = 0;
+	virtual CSE_Abstract* init( );
+	virtual CSE_Abstract* cast_abstract( )
+	{
+		return 0;
+	}
+	virtual CSE_ALifeTraderAbstract* cast_trader_abstract( )
+	{
+		return this;
+	}
 	// end of the virtual inheritance dependant code
-			void __stdcall			OnChangeProfile				(PropValue* sender);
+	void __stdcall			OnChangeProfile(PropValue* sender);
 
-	virtual	void					add_online					(const bool &update_registries);
-	virtual	void					add_offline					(const xr_vector<ALife::_OBJECT_ID> &saved_children, const bool &update_registries);
+	virtual	void					add_online(const bool& update_registries);
+	virtual	void					add_offline(const xr_vector<ALife::_OBJECT_ID>& saved_children, const bool& update_registries);
 #if 0//def DEBUG
-			bool					check_inventory_consistency	();
+	bool					check_inventory_consistency( );
 #endif
-			void					vfInitInventory				();
-	virtual void					spawn_supplies				();
+	void					vfInitInventory( );
+	virtual void					spawn_supplies( );
 
-SERVER_ENTITY_DECLARE_END
-add_to_type_list(CSE_ALifeTraderAbstract)
+	SERVER_ENTITY_DECLARE_END
+		add_to_type_list(CSE_ALifeTraderAbstract)
 #define script_type_list save_type_list(CSE_ALifeTraderAbstract)
 
-SERVER_ENTITY_DECLARE_BEGIN2(CSE_ALifeTrader,CSE_ALifeDynamicObjectVisual,CSE_ALifeTraderAbstract)
-									CSE_ALifeTrader			(const char* caSection);
-	virtual							~CSE_ALifeTrader		();
-	virtual	bool					interactive				() const;
-	virtual CSE_Abstract			*init					();
-	virtual CSE_Abstract			*base					();
-	virtual const CSE_Abstract		*base					() const;
-	virtual bool					natural_weapon			() const {return false;}
-	virtual bool					natural_detector		() const {return false;}
+		SERVER_ENTITY_DECLARE_BEGIN2(CSE_ALifeTrader, CSE_ALifeDynamicObjectVisual, CSE_ALifeTraderAbstract)
+		CSE_ALifeTrader(const char* caSection);
+	virtual							~CSE_ALifeTrader( );
+	virtual	bool					interactive( ) const;
+	virtual CSE_Abstract* init( );
+	virtual CSE_Abstract* base( );
+	virtual const CSE_Abstract* base( ) const;
+	virtual bool					natural_weapon( ) const
+	{
+		return false;
+	}
+	virtual bool					natural_detector( ) const
+	{
+		return false;
+	}
 
-			u32						dwfGetItemCost			(CSE_ALifeInventoryItem *tpALifeInventoryItem);
-	virtual void					spawn_supplies			();
-	virtual	void					add_online				(const bool &update_registries);
-	virtual	void					add_offline				(const xr_vector<ALife::_OBJECT_ID> &saved_children, const bool &update_registries);
+	u32						dwfGetItemCost(CSE_ALifeInventoryItem* tpALifeInventoryItem);
+	virtual void					spawn_supplies( );
+	virtual	void					add_online(const bool& update_registries);
+	virtual	void					add_offline(const xr_vector<ALife::_OBJECT_ID>& saved_children, const bool& update_registries);
 
 #ifdef DEBUG
-	virtual bool					match_configuration		() const;
+	virtual bool					match_configuration( ) const;
 #endif
-	virtual CSE_Abstract			*cast_abstract			() {return this;};
-	virtual CSE_ALifeTraderAbstract	*cast_trader_abstract	() {return this;};
-	virtual CSE_ALifeTrader			*cast_trader			() {return this;};
-SERVER_ENTITY_DECLARE_END
-add_to_type_list(CSE_ALifeTrader)
+	virtual CSE_Abstract* cast_abstract( )
+	{
+		return this;
+	}
+	virtual CSE_ALifeTraderAbstract* cast_trader_abstract( )
+	{
+		return this;
+	}
+	virtual CSE_ALifeTrader* cast_trader( )
+	{
+		return this;
+	}
+	SERVER_ENTITY_DECLARE_END
+		add_to_type_list(CSE_ALifeTrader)
 #define script_type_list save_type_list(CSE_ALifeTrader)
 
-SERVER_ENTITY_DECLARE_BEGIN(CSE_ALifeCustomZone,CSE_ALifeSpaceRestrictor)
-float								m_maxPower;
+		SERVER_ENTITY_DECLARE_BEGIN(CSE_ALifeCustomZone, CSE_ALifeSpaceRestrictor)
+		float								m_maxPower;
 	ALife::EHitType					m_tHitType;
 	u32								m_owner_id;
 	u32								m_enabled_time;
 	u32								m_disabled_time;
 	u32								m_start_time_shift;
 
-									CSE_ALifeCustomZone		(const char* caSection);
-	virtual							~CSE_ALifeCustomZone	();
-SERVER_ENTITY_DECLARE_END
-add_to_type_list(CSE_ALifeCustomZone)
+	CSE_ALifeCustomZone(const char* caSection);
+	virtual							~CSE_ALifeCustomZone( );
+	SERVER_ENTITY_DECLARE_END
+		add_to_type_list(CSE_ALifeCustomZone)
 #define script_type_list save_type_list(CSE_ALifeCustomZone)
 
-SERVER_ENTITY_DECLARE_BEGIN(CSE_ALifeAnomalousZone,CSE_ALifeCustomZone)
-	CSE_ALifeItemWeapon				*m_tpCurrentBestWeapon;
+		SERVER_ENTITY_DECLARE_BEGIN(CSE_ALifeAnomalousZone, CSE_ALifeCustomZone)
+		CSE_ALifeItemWeapon* m_tpCurrentBestWeapon;
 	float							m_offline_interactive_radius;
 	u32								m_artefact_position_offset;
 	U16								m_artefact_spawn_count;
 
-									CSE_ALifeAnomalousZone	(const char* caSection);
-	virtual							~CSE_ALifeAnomalousZone	();
-	virtual CSE_Abstract			*init					();
-	virtual CSE_Abstract			*base					();
-	virtual const CSE_Abstract		*base					() const;
-	virtual CSE_Abstract			*cast_abstract			() {return this;};
-	virtual CSE_ALifeAnomalousZone	*cast_anomalous_zone	() {return this;};
-	virtual u32						ef_anomaly_type			() const;
-	virtual u32						ef_weapon_type			() const;
-	virtual u32						ef_creature_type		() const;
+	CSE_ALifeAnomalousZone(const char* caSection);
+	virtual							~CSE_ALifeAnomalousZone( );
+	virtual CSE_Abstract* init( );
+	virtual CSE_Abstract* base( );
+	virtual const CSE_Abstract* base( ) const;
+	virtual CSE_Abstract* cast_abstract( )
+	{
+		return this;
+	}
+	virtual CSE_ALifeAnomalousZone* cast_anomalous_zone( )
+	{
+		return this;
+	}
+	virtual u32						ef_anomaly_type( ) const;
+	virtual u32						ef_weapon_type( ) const;
+	virtual u32						ef_creature_type( ) const;
 
-			void					spawn_artefacts			();
-	virtual void					on_spawn				();
-	virtual	CSE_ALifeItemWeapon		*tpfGetBestWeapon		(ALife::EHitType		&tHitType,				float &fHitPower);
-	virtual	ALife::EMeetActionType	tfGetActionType			(CSE_ALifeSchedulable	*tpALifeSchedulable,	int iGroupIndex, bool bMutualDetection);
-	virtual bool					bfActive				();
-	virtual CSE_ALifeDynamicObject	*tpfGetBestDetector		();
+	void					spawn_artefacts( );
+	virtual void					on_spawn( );
+	virtual	CSE_ALifeItemWeapon* tpfGetBestWeapon(ALife::EHitType& tHitType, float& fHitPower);
+	virtual	ALife::EMeetActionType	tfGetActionType(CSE_ALifeSchedulable* tpALifeSchedulable, int iGroupIndex, bool bMutualDetection);
+	virtual bool					bfActive( );
+	virtual CSE_ALifeDynamicObject* tpfGetBestDetector( );
 
-SERVER_ENTITY_DECLARE_END
-add_to_type_list(CSE_ALifeAnomalousZone)
+	SERVER_ENTITY_DECLARE_END
+		add_to_type_list(CSE_ALifeAnomalousZone)
 #define script_type_list save_type_list(CSE_ALifeAnomalousZone)
 
-SERVER_ENTITY_DECLARE_BEGIN2(CSE_ALifeTorridZone,CSE_ALifeCustomZone,CSE_Motion)
-									CSE_ALifeTorridZone		(const char* caSection);
-	virtual							~CSE_ALifeTorridZone	();
-	virtual CSE_Motion*	__stdcall	motion					();
-SERVER_ENTITY_DECLARE_END
-add_to_type_list(CSE_ALifeTorridZone)
+		SERVER_ENTITY_DECLARE_BEGIN2(CSE_ALifeTorridZone, CSE_ALifeCustomZone, CSE_Motion)
+		CSE_ALifeTorridZone(const char* caSection);
+	virtual							~CSE_ALifeTorridZone( );
+	virtual CSE_Motion* __stdcall	motion( );
+	SERVER_ENTITY_DECLARE_END
+		add_to_type_list(CSE_ALifeTorridZone)
 #define script_type_list save_type_list(CSE_ALifeTorridZone)
 
-SERVER_ENTITY_DECLARE_BEGIN2(CSE_ALifeZoneVisual,CSE_ALifeAnomalousZone,CSE_Visual)
-CSharedString attack_animation;
-CSE_ALifeZoneVisual	(const char* caSection);
-virtual							~CSE_ALifeZoneVisual	();
-virtual CSE_Visual* __stdcall	visual					();
-SERVER_ENTITY_DECLARE_END
-add_to_type_list(CSE_ALifeZoneVisual)
+		SERVER_ENTITY_DECLARE_BEGIN2(CSE_ALifeZoneVisual, CSE_ALifeAnomalousZone, CSE_Visual)
+		CSharedString attack_animation;
+	CSE_ALifeZoneVisual(const char* caSection);
+	virtual							~CSE_ALifeZoneVisual( );
+	virtual CSE_Visual* __stdcall	visual( );
+	SERVER_ENTITY_DECLARE_END
+		add_to_type_list(CSE_ALifeZoneVisual)
 #define script_type_list save_type_list(CSE_ALifeZoneVisual)
 
 //---------------------------------------------------------------------------------------------------------
 //---------------------------------------------------------------------------------------------------------
 //---------------------------------------------------------------------------------------------------------
 
-SERVER_ENTITY_DECLARE_BEGIN(CSE_ALifeCreatureAbstract,CSE_ALifeDynamicObjectVisual)
+SERVER_ENTITY_DECLARE_BEGIN(CSE_ALifeCreatureAbstract, CSE_ALifeDynamicObjectVisual)
 U8								s_team;
-U8								s_squad;
-U8								s_group;
+	U8								s_squad;
+	U8								s_group;
 	float							fHealth;
 	float							m_fMorale;
 	float							m_fAccuracy;
@@ -195,34 +218,43 @@ U8								s_group;
 
 	ALife::_OBJECT_ID				m_killer_id;
 	ALife::_TIME_ID					m_game_death_time;
-									
-									CSE_ALifeCreatureAbstract(const char* caSection);
-	virtual							~CSE_ALifeCreatureAbstract();
-	virtual U8						g_team					();
-	virtual U8						g_squad					();
-	virtual U8						g_group					();
-	inline		float					g_Health				() const								{ return fHealth;}
-	inline		bool					g_Alive					() const								{ return (g_Health() > 0.f);}
-	virtual bool					used_ai_locations		() const;
-	virtual bool					can_switch_online		() const;
-	virtual bool					can_switch_offline		() const;
-	virtual u32						ef_creature_type		() const;
-	virtual u32						ef_weapon_type			() const;
-	virtual u32						ef_detector_type		() const;
-	virtual CSE_ALifeCreatureAbstract	*cast_creature_abstract		() {return this;};
 
-	virtual void					on_death				(CSE_Abstract *killer);
-	virtual void					on_spawn				();
+	CSE_ALifeCreatureAbstract(const char* caSection);
+	virtual							~CSE_ALifeCreatureAbstract( );
+	virtual U8						g_team( );
+	virtual U8						g_squad( );
+	virtual U8						g_group( );
+	inline		float					g_Health( ) const
+	{
+		return fHealth;
+	}
+	inline		bool					g_Alive( ) const
+	{
+		return (g_Health( ) > 0.f);
+	}
+	virtual bool					used_ai_locations( ) const;
+	virtual bool					can_switch_online( ) const;
+	virtual bool					can_switch_offline( ) const;
+	virtual u32						ef_creature_type( ) const;
+	virtual u32						ef_weapon_type( ) const;
+	virtual u32						ef_detector_type( ) const;
+	virtual CSE_ALifeCreatureAbstract* cast_creature_abstract( )
+	{
+		return this;
+	}
+
+	virtual void					on_death(CSE_Abstract* killer);
+	virtual void					on_spawn( );
 
 #ifdef DEBUG
-	virtual bool					match_configuration		() const;
+	virtual bool					match_configuration( ) const;
 #endif
-SERVER_ENTITY_DECLARE_END
-add_to_type_list(CSE_ALifeCreatureAbstract)
+	SERVER_ENTITY_DECLARE_END
+		add_to_type_list(CSE_ALifeCreatureAbstract)
 #define script_type_list save_type_list(CSE_ALifeCreatureAbstract)
 
-SERVER_ENTITY_DECLARE_BEGIN2(CSE_ALifeMonsterAbstract,CSE_ALifeCreatureAbstract,CSE_ALifeSchedulable)
-	GameGraph::_GRAPH_ID				m_tNextGraphID;
+		SERVER_ENTITY_DECLARE_BEGIN2(CSE_ALifeMonsterAbstract, CSE_ALifeCreatureAbstract, CSE_ALifeSchedulable)
+		GameGraph::_GRAPH_ID				m_tNextGraphID;
 	GameGraph::_GRAPH_ID				m_tPrevGraphID;
 	float								m_fGoingSpeed;
 	float								m_fCurrentLevelGoingSpeed;
@@ -237,14 +269,14 @@ SERVER_ENTITY_DECLARE_BEGIN2(CSE_ALifeMonsterAbstract,CSE_ALifeCreatureAbstract,
 	ALife::EHitType						m_tHitType;
 	CSharedString							m_out_space_restrictors;
 	CSharedString							m_in_space_restrictors;
-	svector<float,ALife::eHitTypeMax>	m_fpImmunityFactors;
+	svector<float, ALife::eHitTypeMax>	m_fpImmunityFactors;
 
 	ALife::_OBJECT_ID					m_smart_terrain_id;
-	
+
 	//---------------------------------------------------------
 	// bool if monster under smart terrain and currently executes task
 	// if monster on the way then (m_smart_terrain_id != 0xffff) && (!m_task_reached)
-	bool								m_task_reached;		
+	bool								m_task_reached;
 	//---------------------------------------------------------
 
 	int									m_rank;
@@ -252,52 +284,71 @@ SERVER_ENTITY_DECLARE_BEGIN2(CSE_ALifeMonsterAbstract,CSE_ALifeCreatureAbstract,
 	ALife::_TIME_ID						m_stay_after_death_time_interval;
 
 public:
-									CSE_ALifeMonsterAbstract(const char* caSection);
-	virtual							~CSE_ALifeMonsterAbstract();
-	inline		float					g_MaxHealth				()	const									{ return m_fMaxHealthValue;	}
-	virtual CSE_Abstract			*init					();
-	virtual CSE_Abstract			*base					();
-	virtual const CSE_Abstract		*base					() const;
-	virtual CSE_Abstract			*cast_abstract			() {return this;};
-	virtual CSE_ALifeSchedulable	*cast_schedulable		() {return this;};
-	virtual CSE_ALifeMonsterAbstract*cast_monster_abstract	() {return this;};
+	CSE_ALifeMonsterAbstract(const char* caSection);
+	virtual							~CSE_ALifeMonsterAbstract( );
+	inline		float					g_MaxHealth( )	const
+	{
+		return m_fMaxHealthValue;
+	}
+	virtual CSE_Abstract* init( );
+	virtual CSE_Abstract* base( );
+	virtual const CSE_Abstract* base( ) const;
+	virtual CSE_Abstract* cast_abstract( )
+	{
+		return this;
+	}
+	virtual CSE_ALifeSchedulable* cast_schedulable( )
+	{
+		return this;
+	}
+	virtual CSE_ALifeMonsterAbstract* cast_monster_abstract( )
+	{
+		return this;
+	}
 
-	inline		CALifeMonsterBrain		&brain					() const {VERIFY(m_brain); return(*m_brain);}
-	virtual CALifeMonsterBrain		*create_brain			();
-	virtual u32						ef_creature_type		() const;
-	virtual u32						ef_weapon_type			() const;
-	virtual u32						ef_detector_type		() const;
-	
-	inline		int						Rank					(){return m_rank;}
+	inline		CALifeMonsterBrain& brain( ) const
+	{
+		VERIFY(m_brain); return(*m_brain);
+	}
+	virtual CALifeMonsterBrain* create_brain( );
+	virtual u32						ef_creature_type( ) const;
+	virtual u32						ef_weapon_type( ) const;
+	virtual u32						ef_detector_type( ) const;
 
-	virtual	void					update					();
-	virtual	CSE_ALifeItemWeapon		*tpfGetBestWeapon		(ALife::EHitType		&tHitType,				float	&fHitPower);
-	virtual	ALife::EMeetActionType	tfGetActionType			(CSE_ALifeSchedulable	*tpALifeSchedulable,	int		iGroupIndex,	bool bMutualDetection);
-	virtual bool					bfActive				();
-	virtual CSE_ALifeDynamicObject	*tpfGetBestDetector		();
-	virtual	void					vfDetachAll				(bool					bFictitious = false) {};
-			void					vfCheckForPopulationChanges();
-	virtual	void					add_online				(const bool &update_registries);
-	virtual	void					add_offline				(const xr_vector<ALife::_OBJECT_ID> &saved_children, const bool &update_registries);
-	virtual Fvector3					draw_level_position		() const;
-	virtual	bool					redundant				() const;
+	inline		int						Rank( )
+	{
+		return m_rank;
+	}
 
-	virtual bool					need_update				(CSE_ALifeDynamicObject *object);
+	virtual	void					update( );
+	virtual	CSE_ALifeItemWeapon* tpfGetBestWeapon(ALife::EHitType& tHitType, float& fHitPower);
+	virtual	ALife::EMeetActionType	tfGetActionType(CSE_ALifeSchedulable* tpALifeSchedulable, int		iGroupIndex, bool bMutualDetection);
+	virtual bool					bfActive( );
+	virtual CSE_ALifeDynamicObject* tpfGetBestDetector( );
+	virtual	void					vfDetachAll(bool					bFictitious = false)
+	{ }
+	void					vfCheckForPopulationChanges( );
+	virtual	void					add_online(const bool& update_registries);
+	virtual	void					add_offline(const xr_vector<ALife::_OBJECT_ID>& saved_children, const bool& update_registries);
+	virtual Fvector3					draw_level_position( ) const;
+	virtual	bool					redundant( ) const;
+
+	virtual bool					need_update(CSE_ALifeDynamicObject* object);
 
 private:
-	CALifeMonsterBrain				*m_brain;
+	CALifeMonsterBrain* m_brain;
 
 public:
-SERVER_ENTITY_DECLARE_END
-add_to_type_list(CSE_ALifeMonsterAbstract)
+	SERVER_ENTITY_DECLARE_END
+		add_to_type_list(CSE_ALifeMonsterAbstract)
 #define script_type_list save_type_list(CSE_ALifeMonsterAbstract)
 
-SERVER_ENTITY_DECLARE_BEGIN3(CSE_ALifeCreatureActor,CSE_ALifeCreatureAbstract,CSE_ALifeTraderAbstract,CSE_PHSkeleton)
-	
-U16								mstate;
-Fvector3							accel;
-Fvector3							velocity;
-//	float							fArmor;
+		SERVER_ENTITY_DECLARE_BEGIN3(CSE_ALifeCreatureActor, CSE_ALifeCreatureAbstract, CSE_ALifeTraderAbstract, CSE_PHSkeleton)
+
+		U16								mstate;
+	Fvector3							accel;
+	Fvector3							velocity;
+	//	float							fArmor;
 	float							fRadiation;
 	U8								weapon;
 	///////////////////////////////////////////
@@ -311,48 +362,63 @@ Fvector3							velocity;
 	U8								m_BoneDataSize;
 	char							m_DeadBodyData[1024];
 	///////////////////////////////////////////
-									CSE_ALifeCreatureActor	(const char* caSection);
-	virtual							~CSE_ALifeCreatureActor	();
-	virtual CSE_Abstract			*base					();
-	virtual const CSE_Abstract		*base					() const;
-	virtual CSE_Abstract			*init					();
-	virtual void					load					(CNetPacket &tNetPacket);
-	virtual bool					can_save				()const{return true;}
-	virtual bool					natural_weapon			() const {return false;}
-	virtual bool					natural_detector		() const {return false;}
+	CSE_ALifeCreatureActor(const char* caSection);
+	virtual							~CSE_ALifeCreatureActor( );
+	virtual CSE_Abstract* base( );
+	virtual const CSE_Abstract* base( ) const;
+	virtual CSE_Abstract* init( );
+	virtual void					load(CNetPacket& tNetPacket);
+	virtual bool					can_save( )const
+	{
+		return true;
+	}
+	virtual bool					natural_weapon( ) const
+	{
+		return false;
+	}
+	virtual bool					natural_detector( ) const
+	{
+		return false;
+	}
 
-	virtual void					spawn_supplies			();
-	virtual	void					add_online				(const bool &update_registries);
-	virtual	void					add_offline				(const xr_vector<ALife::_OBJECT_ID> &saved_children, const bool &update_registries);
+	virtual void					spawn_supplies( );
+	virtual	void					add_online(const bool& update_registries);
+	virtual	void					add_offline(const xr_vector<ALife::_OBJECT_ID>& saved_children, const bool& update_registries);
 
 #ifdef DEBUG
-	virtual bool					match_configuration		() const;
+	virtual bool					match_configuration( ) const;
 #endif
-	virtual CSE_Abstract			*cast_abstract			() {return this;};
-	virtual CSE_ALifeTraderAbstract	*cast_trader_abstract	() {return this;};
-SERVER_ENTITY_DECLARE_END
-add_to_type_list(CSE_ALifeCreatureActor)
+	virtual CSE_Abstract* cast_abstract( )
+	{
+		return this;
+	}
+	virtual CSE_ALifeTraderAbstract* cast_trader_abstract( )
+	{
+		return this;
+	}
+	SERVER_ENTITY_DECLARE_END
+		add_to_type_list(CSE_ALifeCreatureActor)
 #define script_type_list save_type_list(CSE_ALifeCreatureActor)
 
-SERVER_ENTITY_DECLARE_BEGIN(CSE_ALifeCreatureCrow,CSE_ALifeCreatureAbstract)
-									CSE_ALifeCreatureCrow	(const char* caSection);
-	virtual							~CSE_ALifeCreatureCrow	();
-	virtual bool					used_ai_locations		() const;
-SERVER_ENTITY_DECLARE_END
-add_to_type_list(CSE_ALifeCreatureCrow)
+		SERVER_ENTITY_DECLARE_BEGIN(CSE_ALifeCreatureCrow, CSE_ALifeCreatureAbstract)
+		CSE_ALifeCreatureCrow(const char* caSection);
+	virtual							~CSE_ALifeCreatureCrow( );
+	virtual bool					used_ai_locations( ) const;
+	SERVER_ENTITY_DECLARE_END
+		add_to_type_list(CSE_ALifeCreatureCrow)
 #define script_type_list save_type_list(CSE_ALifeCreatureCrow)
 
-SERVER_ENTITY_DECLARE_BEGIN(CSE_ALifeCreaturePhantom,CSE_ALifeCreatureAbstract)
-									CSE_ALifeCreaturePhantom	(const char* caSection);
-	virtual							~CSE_ALifeCreaturePhantom	();
-	virtual bool					used_ai_locations			() const;
-SERVER_ENTITY_DECLARE_END
-add_to_type_list(CSE_ALifeCreaturePhantom)
+		SERVER_ENTITY_DECLARE_BEGIN(CSE_ALifeCreaturePhantom, CSE_ALifeCreatureAbstract)
+		CSE_ALifeCreaturePhantom(const char* caSection);
+	virtual							~CSE_ALifeCreaturePhantom( );
+	virtual bool					used_ai_locations( ) const;
+	SERVER_ENTITY_DECLARE_END
+		add_to_type_list(CSE_ALifeCreaturePhantom)
 #define script_type_list save_type_list(CSE_ALifeCreaturePhantom)
 
-SERVER_ENTITY_DECLARE_BEGIN(CSE_ALifeMonsterZombie,CSE_ALifeMonsterAbstract)
-	// Personal characteristics:
-	float							fEyeFov;
+		SERVER_ENTITY_DECLARE_BEGIN(CSE_ALifeMonsterZombie, CSE_ALifeMonsterAbstract)
+			// Personal characteristics:
+		float							fEyeFov;
 	float							fEyeRange;
 	float							fMinSpeed;
 	float							fMaxSpeed;
@@ -365,139 +431,178 @@ SERVER_ENTITY_DECLARE_BEGIN(CSE_ALifeMonsterZombie,CSE_ALifeMonsterAbstract)
 	float							fAttackDistance;
 	float							fAttackAngle;
 
-									CSE_ALifeMonsterZombie	(const char* caSection);				// constructor for variable initialization
-	virtual							~CSE_ALifeMonsterZombie	();
-SERVER_ENTITY_DECLARE_END
-add_to_type_list(CSE_ALifeMonsterZombie)
+	CSE_ALifeMonsterZombie(const char* caSection);				// constructor for variable initialization
+	virtual							~CSE_ALifeMonsterZombie( );
+	SERVER_ENTITY_DECLARE_END
+		add_to_type_list(CSE_ALifeMonsterZombie)
 #define script_type_list save_type_list(CSE_ALifeMonsterZombie)
 
-SERVER_ENTITY_DECLARE_BEGIN2(CSE_ALifeMonsterBase,CSE_ALifeMonsterAbstract,CSE_PHSkeleton)
-U16								m_spec_object_id;
+		SERVER_ENTITY_DECLARE_BEGIN2(CSE_ALifeMonsterBase, CSE_ALifeMonsterAbstract, CSE_PHSkeleton)
+		U16								m_spec_object_id;
 
-									CSE_ALifeMonsterBase	(const char* caSection);				// constructor for variable initialization
-	virtual							~CSE_ALifeMonsterBase	();
-	virtual	void					load					(CNetPacket &tNetPacket);
-	virtual CSE_Abstract			*cast_abstract			() {return this;}
-	virtual void					spawn_supplies			(const char*){}
-	virtual void					spawn_supplies			(){}
+	CSE_ALifeMonsterBase(const char* caSection);				// constructor for variable initialization
+	virtual							~CSE_ALifeMonsterBase( );
+	virtual	void					load(CNetPacket& tNetPacket);
+	virtual CSE_Abstract* cast_abstract( )
+	{
+		return this;
+	}
+	virtual void					spawn_supplies(const char*)
+	{ }
+	virtual void					spawn_supplies( )
+	{ }
 
-	virtual void					on_spawn				();
-	virtual	void					add_online				(const bool &update_registries);
-	virtual	void					add_offline				(const xr_vector<ALife::_OBJECT_ID> &saved_children, const bool &update_registries);
+	virtual void					on_spawn( );
+	virtual	void					add_online(const bool& update_registries);
+	virtual	void					add_offline(const xr_vector<ALife::_OBJECT_ID>& saved_children, const bool& update_registries);
 
-SERVER_ENTITY_DECLARE_END
-add_to_type_list(CSE_ALifeMonsterBase)
+	SERVER_ENTITY_DECLARE_END
+		add_to_type_list(CSE_ALifeMonsterBase)
 #define script_type_list save_type_list(CSE_ALifeMonsterBase)
 
-SERVER_ENTITY_DECLARE_BEGIN(CSE_ALifePsyDogPhantom,CSE_ALifeMonsterBase)
-									CSE_ALifePsyDogPhantom	(const char* caSection);				// constructor for variable initialization
-	virtual							~CSE_ALifePsyDogPhantom	();
-	virtual CSE_Abstract			*cast_abstract			() {return this;}
-	virtual bool					bfActive				() {return false;}
-SERVER_ENTITY_DECLARE_END
-add_to_type_list(CSE_ALifePsyDogPhantom)
+		SERVER_ENTITY_DECLARE_BEGIN(CSE_ALifePsyDogPhantom, CSE_ALifeMonsterBase)
+		CSE_ALifePsyDogPhantom(const char* caSection);				// constructor for variable initialization
+	virtual							~CSE_ALifePsyDogPhantom( );
+	virtual CSE_Abstract* cast_abstract( )
+	{
+		return this;
+	}
+	virtual bool					bfActive( )
+	{
+		return false;
+	}
+	SERVER_ENTITY_DECLARE_END
+		add_to_type_list(CSE_ALifePsyDogPhantom)
 #define script_type_list save_type_list(CSE_ALifePsyDogPhantom)
 
 
 
 //-------------------------------
-SERVER_ENTITY_DECLARE_BEGIN2(CSE_ALifeHumanAbstract,CSE_ALifeTraderAbstract,CSE_ALifeMonsterAbstract)
+SERVER_ENTITY_DECLARE_BEGIN2(CSE_ALifeHumanAbstract, CSE_ALifeTraderAbstract, CSE_ALifeMonsterAbstract)
 public:
 	ALife::_OBJECT_ID				m_group_id;
 
 public:
-									CSE_ALifeHumanAbstract	(const char* caSection);
-	virtual							~CSE_ALifeHumanAbstract	();
-	virtual CSE_Abstract			*init					();
-	virtual CSE_Abstract			*base					();
-	virtual const CSE_Abstract		*base					() const;
-	virtual CSE_Abstract			*cast_abstract			() {return this;};
-	virtual CSE_ALifeTraderAbstract	*cast_trader_abstract	() {return this;};
-	virtual CSE_ALifeHumanAbstract	*cast_human_abstract	() {return this;};
-	virtual bool					natural_weapon			() const {return false;}
-	virtual bool					natural_detector		() const {return false;}
-	inline		CALifeHumanBrain		&brain					() const {VERIFY(m_brain); return(*m_brain);}
-	virtual CALifeMonsterBrain		*create_brain			();
+	CSE_ALifeHumanAbstract(const char* caSection);
+	virtual							~CSE_ALifeHumanAbstract( );
+	virtual CSE_Abstract* init( );
+	virtual CSE_Abstract* base( );
+	virtual const CSE_Abstract* base( ) const;
+	virtual CSE_Abstract* cast_abstract( )
+	{
+		return this;
+	}
+	virtual CSE_ALifeTraderAbstract* cast_trader_abstract( )
+	{
+		return this;
+	}
+	virtual CSE_ALifeHumanAbstract* cast_human_abstract( )
+	{
+		return this;
+	}
+	virtual bool					natural_weapon( ) const
+	{
+		return false;
+	}
+	virtual bool					natural_detector( ) const
+	{
+		return false;
+	}
+	inline		CALifeHumanBrain& brain( ) const
+	{
+		VERIFY(m_brain); return(*m_brain);
+	}
+	virtual CALifeMonsterBrain* create_brain( );
 
-	virtual	void					update					();
-	virtual	CSE_ALifeItemWeapon		*tpfGetBestWeapon		(ALife::EHitType &tHitType, float &fHitPower);
-	virtual bool					bfPerformAttack			();
-	virtual	void					vfUpdateWeaponAmmo		();
-	virtual	void					vfProcessItems			();
-	virtual	void					vfAttachItems			(ALife::ETakeType tTakeType = ALife::eTakeTypeAll);
-	virtual	ALife::EMeetActionType	tfGetActionType			(CSE_ALifeSchedulable *tpALifeSchedulable, int iGroupIndex, bool bMutualDetection);
-	virtual CSE_ALifeDynamicObject	*tpfGetBestDetector		();
-	virtual	void					vfDetachAll				(bool bFictitious = false);
-	virtual void					spawn_supplies			();
-	virtual void					on_register				();
-	virtual void					on_unregister			();
-	virtual	void					add_online				(const bool &update_registries);
-	virtual	void					add_offline				(const xr_vector<ALife::_OBJECT_ID> &saved_children, const bool &update_registries);
+	virtual	void					update( );
+	virtual	CSE_ALifeItemWeapon* tpfGetBestWeapon(ALife::EHitType& tHitType, float& fHitPower);
+	virtual bool					bfPerformAttack( );
+	virtual	void					vfUpdateWeaponAmmo( );
+	virtual	void					vfProcessItems( );
+	virtual	void					vfAttachItems(ALife::ETakeType tTakeType = ALife::eTakeTypeAll);
+	virtual	ALife::EMeetActionType	tfGetActionType(CSE_ALifeSchedulable* tpALifeSchedulable, int iGroupIndex, bool bMutualDetection);
+	virtual CSE_ALifeDynamicObject* tpfGetBestDetector( );
+	virtual	void					vfDetachAll(bool bFictitious = false);
+	virtual void					spawn_supplies( );
+	virtual void					on_register( );
+	virtual void					on_unregister( );
+	virtual	void					add_online(const bool& update_registries);
+	virtual	void					add_offline(const xr_vector<ALife::_OBJECT_ID>& saved_children, const bool& update_registries);
 
 private:
-	CALifeHumanBrain				*m_brain;
+	CALifeHumanBrain* m_brain;
 
-SERVER_ENTITY_DECLARE_END
-add_to_type_list(CSE_ALifeHumanAbstract)
+	SERVER_ENTITY_DECLARE_END
+		add_to_type_list(CSE_ALifeHumanAbstract)
 #define script_type_list save_type_list(CSE_ALifeHumanAbstract)
 
-SERVER_ENTITY_DECLARE_BEGIN2(CSE_ALifeHumanStalker,CSE_ALifeHumanAbstract,CSE_PHSkeleton)
-CSharedString						m_start_dialog;
+		SERVER_ENTITY_DECLARE_BEGIN2(CSE_ALifeHumanStalker, CSE_ALifeHumanAbstract, CSE_PHSkeleton)
+		CSharedString						m_start_dialog;
 
-									CSE_ALifeHumanStalker	(const char* caSection);
-	virtual							~CSE_ALifeHumanStalker	();
-	virtual	void					load					(CNetPacket &tNetPacket);
-	virtual CSE_Abstract			*cast_abstract			() {return this;}
-SERVER_ENTITY_DECLARE_END
-add_to_type_list(CSE_ALifeHumanStalker)
+	CSE_ALifeHumanStalker(const char* caSection);
+	virtual							~CSE_ALifeHumanStalker( );
+	virtual	void					load(CNetPacket& tNetPacket);
+	virtual CSE_Abstract* cast_abstract( )
+	{
+		return this;
+	}
+	SERVER_ENTITY_DECLARE_END
+		add_to_type_list(CSE_ALifeHumanStalker)
 #define script_type_list save_type_list(CSE_ALifeHumanStalker)
 
-SERVER_ENTITY_DECLARE_BEGIN2(CSE_ALifeOnlineOfflineGroup,CSE_ALifeDynamicObject,CSE_ALifeSchedulable)
+		SERVER_ENTITY_DECLARE_BEGIN2(CSE_ALifeOnlineOfflineGroup, CSE_ALifeDynamicObject, CSE_ALifeSchedulable)
 public:
-									CSE_ALifeOnlineOfflineGroup	(const char* caSection);
-	virtual							~CSE_ALifeOnlineOfflineGroup();
-	virtual CSE_Abstract			*base						();
-	virtual const CSE_Abstract		*base						() const;
-	virtual CSE_Abstract			*init						();
-	virtual CSE_Abstract			*cast_abstract				() {return this;};
-	virtual CSE_ALifeSchedulable	*cast_schedulable			() {return this;};
-	virtual CSE_ALifeOnlineOfflineGroup	*cast_online_offline_group	() {return this;};
+	CSE_ALifeOnlineOfflineGroup(const char* caSection);
+	virtual							~CSE_ALifeOnlineOfflineGroup( );
+	virtual CSE_Abstract* base( );
+	virtual const CSE_Abstract* base( ) const;
+	virtual CSE_Abstract* init( );
+	virtual CSE_Abstract* cast_abstract( )
+	{
+		return this;
+	}
+	virtual CSE_ALifeSchedulable* cast_schedulable( )
+	{
+		return this;
+	}
+	virtual CSE_ALifeOnlineOfflineGroup* cast_online_offline_group( )
+	{
+		return this;
+	}
 
 public:
 	typedef CSE_ALifeHumanStalker							MEMBER;
-	typedef associative_vector<ALife::_OBJECT_ID,MEMBER*>	MEMBERS;
+	typedef associative_vector<ALife::_OBJECT_ID, MEMBER*>	MEMBERS;
 
 private:
 	MEMBERS							m_members;
 
-
 private:
-	CALifeOnlineOfflineGroupBrain	*m_brain;
+	CALifeOnlineOfflineGroupBrain* m_brain;
 
 public:
-	inline		CALifeOnlineOfflineGroupBrain	&brain	() const;
+	inline		CALifeOnlineOfflineGroupBrain& brain( ) const;
 
-public:
-	virtual	CSE_ALifeItemWeapon		*tpfGetBestWeapon		(ALife::EHitType &tHitType, float &fHitPower);
-	virtual	ALife::EMeetActionType	tfGetActionType			(CSE_ALifeSchedulable *tpALifeSchedulable, int iGroupIndex, bool bMutualDetection);
-	virtual bool					bfActive				();
-	virtual CSE_ALifeDynamicObject	*tpfGetBestDetector		();
-	virtual void					update					();
-			void					register_member			(ALife::_OBJECT_ID member_id);
-			void					unregister_member		(ALife::_OBJECT_ID member_id);
-			void					notify_on_member_death	(MEMBER *member);
-			MEMBER					*member					(ALife::_OBJECT_ID member_id, bool no_assert = false);
-	virtual void					on_before_register		();
-			void					on_after_game_load		();
-	virtual	bool					synchronize_location	();
-	virtual	void					try_switch_online		();
-	virtual	void					try_switch_offline		();
-	virtual	void					switch_online			();
-	virtual	void					switch_offline			();
-	virtual	bool					redundant				() const;
+	virtual	CSE_ALifeItemWeapon* tpfGetBestWeapon(ALife::EHitType& tHitType, float& fHitPower);
+	virtual	ALife::EMeetActionType	tfGetActionType(CSE_ALifeSchedulable* tpALifeSchedulable, int iGroupIndex, bool bMutualDetection);
+	virtual bool					bfActive( );
+	virtual CSE_ALifeDynamicObject* tpfGetBestDetector( );
+	virtual void					update( );
+	void					register_member(ALife::_OBJECT_ID member_id);
+	void					unregister_member(ALife::_OBJECT_ID member_id);
+	void					notify_on_member_death(MEMBER* member);
+	MEMBER* member(ALife::_OBJECT_ID member_id, bool no_assert = false);
+	virtual void					on_before_register( );
+	void					on_after_game_load( );
+	virtual	bool					synchronize_location( );
+	virtual	void					try_switch_online( );
+	virtual	void					try_switch_offline( );
+	virtual	void					switch_online( );
+	virtual	void					switch_offline( );
+	virtual	bool					redundant( ) const;
 
-SERVER_ENTITY_DECLARE_END
-add_to_type_list(CSE_ALifeOnlineOfflineGroup)
+	SERVER_ENTITY_DECLARE_END
+		add_to_type_list(CSE_ALifeOnlineOfflineGroup)
 #define script_type_list save_type_list(CSE_ALifeOnlineOfflineGroup)
 
 #pragma warning(pop)

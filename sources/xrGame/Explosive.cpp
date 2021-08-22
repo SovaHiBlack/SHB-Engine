@@ -153,12 +153,12 @@ struct SExpQParams
 	}
 	Fvector3 source_p;
 	Fvector3 l_dir;
-#else
+#else // def DEBUG
 	SExpQParams( )
 	{
 		shoot_factor = 1.0f;
 	}
-#endif
+#endif // def DEBUG
 
 	float shoot_factor;
 };
@@ -197,7 +197,7 @@ __forceinline static BOOL grenade_hit_callback(collide::rq_result& result, LPVOI
 		U8 c = U8(mtl->fShootFactor * 255.0f);
 		DBG_DrawPoint(p, 0.1f, D3DCOLOR_XRGB(255 - c, 0, c));
 	}
-#endif
+#endif // def DEBUG
 
 	return (ep.shoot_factor > 0.01f);
 }
@@ -239,7 +239,7 @@ float CExplosive::ExplosionEffect(collide::rq_results& storage, CExplosive* exp_
 		dbg_box_m.c.set(l_c); obj_xform.transform(dbg_box_m.c);
 		DBG_DrawOBB(dbg_box_m, l_d, D3DCOLOR_XRGB(255, 255, 0));
 	}
-#endif
+#endif // def DEBUG
 
 	for (U16 i = 0; i < TEST_RAYS_PER_OBJECT; ++i)
 	{
@@ -275,7 +275,7 @@ float CExplosive::ExplosionEffect(collide::rq_results& storage, CExplosive* exp_
 			DBG_DrawPoint(l_end_p, 0.1f, D3DCOLOR_XRGB(0, 0, 255));
 			DBG_DrawLine(l_source_p, l_end_p, D3DCOLOR_XRGB(0, 0, 255));
 		}
-#endif
+#endif // def DEBUG
 
 #ifdef DEBUG
 		float l_S = effective_volume * (_abs(l_dir.dotproduct(obj_xform.i)) / l_d.x + _abs(l_dir.dotproduct(obj_xform.j)) / l_d.y + _abs(l_dir.dotproduct(obj_xform.k)) / l_d.z);
@@ -288,10 +288,10 @@ float CExplosive::ExplosionEffect(collide::rq_results& storage, CExplosive* exp_
 			Msg("S effect %f", _sqrt(l_S / max_s));
 			Msg("dist/overlap effect, %f", add_eff / _sqrt(l_S / max_s));
 		}
-#else
+#else // def DEBUG
 		float l_S = effective_volume * (_abs(l_dir.dotproduct(obj_xform.i)) / l_d.x + _abs(l_dir.dotproduct(obj_xform.j)) / l_d.y + _abs(l_dir.dotproduct(obj_xform.k)) / l_d.z);
 		effect += _sqrt(l_S / max_s) * TestPassEffect(l_source_p, l_dir, mag, expl_radius, storage, blasted_obj);
-#endif
+#endif // def DEBUG
 
 	}
 
@@ -300,7 +300,7 @@ float CExplosive::ExplosionEffect(collide::rq_results& storage, CExplosive* exp_
 	{
 		Msg("damage effect %f", effect / TEST_RAYS_PER_OBJECT);
 	}
-#endif
+#endif // def DEBUG
 
 	return effect / TEST_RAYS_PER_OBJECT;
 }
@@ -318,9 +318,9 @@ float CExplosive::TestPassEffect(const Fvector3& source_p, const Fvector3& dir, 
 
 #ifdef DEBUG
 		SExpQParams			ep(source_p, dir);
-#else
+#else // def DEBUG
 		SExpQParams			ep;
-#endif
+#endif // def DEBUG
 
 		g_pGameLevel->ObjectSpace.RayQuery(storage, RD, grenade_hit_callback, &ep, NULL, blasted_obj);
 		shoot_factor = ep.shoot_factor;
@@ -350,7 +350,7 @@ void CExplosive::Explode( )
 		DBG_OpenCashedDraw( );
 		DBG_DrawPoint(pos, 0.3f, D3DCOLOR_XRGB(255, 0, 0));
 	}
-#endif
+#endif // def DEBUG
 
 //	Msg("---------CExplosive Explode [%d] frame[%d]",cast_game_object()->ID(), Device.dwFrame);
 	OnBeforeExplosion( );
@@ -448,9 +448,9 @@ void CExplosive::Explode( )
 		{
 			DBG_ClosedCashedDraw(100000);
 		}
-#endif
+#endif // def DEBUG
 
-	// Explode Effector	//////////////
+	// Explode Effector
 	CGameObject* GO = smart_cast<CGameObject*>(Level( ).CurrentEntity( ));
 	CActor* pActor = smart_cast<CActor*>(GO);
 	if (pActor)
@@ -666,7 +666,7 @@ void CExplosive::StartLight( )
 	VERIFY(!ph_world->Processing( ));
 	if (m_fLightTime > 0)
 	{
-//		VERIFY					(!m_pLight);
+//		VERIFY(!m_pLight);
 		LightCreate( );
 
 		m_pLight->set_color(m_LightColor.r, m_LightColor.g, m_LightColor.b);
@@ -703,7 +703,7 @@ void CExplosive::GetRayExplosionSourcePos(Fvector3& pos)
 
 void CExplosive::ExplodeWaveProcessObject(collide::rq_results& storage, CPHShellHolder* l_pGO)
 {
-	Fvector3	l_goPos;
+	Fvector3 l_goPos;
 	if (l_pGO->Visual( ))
 	{
 		l_pGO->Center(l_goPos);
@@ -718,7 +718,7 @@ void CExplosive::ExplodeWaveProcessObject(collide::rq_results& storage, CPHShell
 	{
 		DBG_OpenCashedDraw( );
 	}
-#endif
+#endif // def DEBUG
 
 	float l_effect = ExplosionEffect(storage, this, l_pGO, m_vExplodePos, m_fBlastRadius);
 	float l_impuls = m_fBlastHitImpulse * l_effect;
@@ -753,7 +753,7 @@ void CExplosive::ExplodeWaveProcessObject(collide::rq_results& storage, CPHShell
 	{
 		DBG_ClosedCashedDraw(100000);
 	}
-#endif
+#endif // def DEBUG
 
 }
 

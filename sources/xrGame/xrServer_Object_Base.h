@@ -1,10 +1,5 @@
-////////////////////////////////////////////////////////////////////////////
 //	Module 		: xrServer_Object_Base.h
-//	Created 	: 19.09.2002
-//  Modified 	: 16.07.2004
-//	Author		: Oles Shyshkovtsov, Alexander Maksimchuk, Victor Reutskiy and Dmitriy Iassenev
 //	Description : Server base object
-////////////////////////////////////////////////////////////////////////////
 
 #pragma once
 

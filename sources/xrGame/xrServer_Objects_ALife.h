@@ -1,10 +1,5 @@
-////////////////////////////////////////////////////////////////////////////
 //	Module 		: xrServer_Objects_ALife.h
-//	Created 	: 19.09.2002
-//  Modified 	: 04.06.2003
-//	Author		: Oles Shyshkovtsov, Alexander Maksimchuk, Victor Reutskiy and Dmitriy Iassenev
 //	Description : Server objects for ALife simulator
-////////////////////////////////////////////////////////////////////////////
 
 #pragma once
 
@@ -183,10 +178,10 @@ public:
 		typedef CSE_ALifeGroupAbstract inherited2;
 	public:
 		CSE_ALifeGroupTemplate(const char* caSection) : __A(pSettings->line_exist(caSection, "monster_section") ? pSettings->r_string(caSection, "monster_section") : caSection), CSE_ALifeGroupAbstract(caSection)
-		{ 	}
+		{ }
 
 		virtual							~CSE_ALifeGroupTemplate( )
-		{ 	}
+		{ }
 
 		virtual void STATE_Read(CNetPacket& tNetPacket, U16 size)
 		{

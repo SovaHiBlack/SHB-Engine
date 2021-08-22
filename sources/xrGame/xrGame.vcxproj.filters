@@ -1483,9 +1483,6 @@
     <Filter Include="Core\Client\Objects\DelayedActionFuse">
       <UniqueIdentifier>{716aea6a-601b-4c18-989d-dff0db27a59a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Core\Client\Objects\inventory_box">
-      <UniqueIdentifier>{83466c17-f91d-4f67-b1a4-03c959eaa599}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Core\Client\Particles">
       <UniqueIdentifier>{2fc3af0c-6bd1-4133-aac3-5e246302b962}</UniqueIdentifier>
     </Filter>
@@ -2067,6 +2064,9 @@
     </Filter>
     <Filter Include="AI\AComponents\StepManager">
       <UniqueIdentifier>{eb212181-a4f8-4f6a-9717-0c779516cc4d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Client\Objects\InventoryBox">
+      <UniqueIdentifier>{83466c17-f91d-4f67-b1a4-03c959eaa599}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -4780,7 +4780,7 @@
       <Filter>Core\Client\Objects\DelayedActionFuse</Filter>
     </ClInclude>
     <ClInclude Include="InventoryBox.h">
-      <Filter>Core\Client\Objects\inventory_box</Filter>
+      <Filter>Core\Client\Objects\InventoryBox</Filter>
     </ClInclude>
     <ClInclude Include="ParticlesObject.h">
       <Filter>Core\Client\Particles</Filter>
@@ -7521,7 +7521,7 @@
       <Filter>Core\Client\Objects\DelayedActionFuse</Filter>
     </ClCompile>
     <ClCompile Include="InventoryBox.cpp">
-      <Filter>Core\Client\Objects\inventory_box</Filter>
+      <Filter>Core\Client\Objects\InventoryBox</Filter>
     </ClCompile>
     <ClCompile Include="ParticlesObject.cpp">
       <Filter>Core\Client\Particles</Filter>

@@ -51,7 +51,6 @@ public:
 
 	virtual bool	can_be_attached				( ) const;
 
-public:
 	void			SwitchNightVision			( );
 	void			SwitchNightVision			(bool light_on);
 	void			UpdateSwitchNightVision		( );

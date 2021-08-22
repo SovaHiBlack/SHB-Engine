@@ -10,7 +10,7 @@ CStalkerOutfit::~CStalkerOutfit( )
 
 using namespace luabind;
 
-#pragma optimize("s",on)
+#pragma optimize("s", on)
 void CStalkerOutfit::script_register(lua_State* L)
 {
 	module(L)

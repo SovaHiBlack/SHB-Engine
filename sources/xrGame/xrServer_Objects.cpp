@@ -1,10 +1,5 @@
-////////////////////////////////////////////////////////////////////////////
 //	Module 		: xrServer_Objects.cpp
-//	Created 	: 19.09.2002
-//  Modified 	: 04.06.2003
-//	Author		: Oles Shyshkovtsov, Alexander Maksimchuk, Victor Reutskiy and Dmitriy Iassenev
 //	Description : Server objects
-////////////////////////////////////////////////////////////////////////////
 
 #include "stdafx.h"
 
@@ -34,12 +29,17 @@ void CSE_Shape::cform_read(CNetPacket& tNetPacket)
 		switch (S.type)
 		{
 			case 0:
+			{
 				tNetPacket.r(&S.data.sphere, sizeof(S.data.sphere));
-				break;
+			}
+			break;
 			case 1:
+			{
 				tNetPacket.r_matrix(S.data.box);
-				break;
+			}
+			break;
 		}
+
 		shapes.push_back(S);
 		--count;
 	}
@@ -55,11 +55,15 @@ void CSE_Shape::cform_write(CNetPacket& tNetPacket)
 		switch (S.type)
 		{
 			case 0:
+			{
 				tNetPacket.w(&S.data.sphere, sizeof(S.data.sphere));
-				break;
+			}
+			break;
 			case 1:
+			{
 				tNetPacket.w_matrix(S.data.box);
-				break;
+			}
+			break;
 		}
 	}
 }
@@ -68,7 +72,9 @@ void CSE_Shape::assign_shapes(CShapeData::shape_def* _shapes, u32 _cnt)
 {
 	shapes.resize(_cnt);
 	for (u32 k = 0; k < _cnt; k++)
+	{
 		shapes[k] = _shapes[k];
+	}
 }
 
 ////////////////////////////////////////////////////////////////////////////

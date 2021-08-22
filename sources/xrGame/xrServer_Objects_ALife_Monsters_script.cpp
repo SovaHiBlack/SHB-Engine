@@ -1,10 +1,6 @@
-////////////////////////////////////////////////////////////////////////////
 //	Module 		: xrServer_Objects_ALife_Monsters_script.cpp
-//	Created 	: 19.09.2002
-//  Modified 	: 04.06.2003
-//	Author		: Dmitriy Iassenev
 //	Description : Server monsters for ALife simulator, script export
-////////////////////////////////////////////////////////////////////////////
+
 #include "stdafx.h"
 
 #include "xrServer_Objects_ALife_Monsters.h"
@@ -13,9 +9,9 @@
 
 using namespace luabind;
 
-const char* profile_name_script (CSE_ALifeTraderAbstract* ta)
+const char* profile_name_script(CSE_ALifeTraderAbstract* ta)
 {
-	return *ta->character_profile();
+	return *ta->character_profile( );
 }
 
 CALifeMonsterBrain* monster_brain(CSE_ALifeMonsterAbstract* monster)
@@ -55,20 +51,20 @@ ALife::_OBJECT_ID smart_terrain_id(CSE_ALifeMonsterAbstract* monster)
 }
 
 #pragma optimize("s",on)
-void CSE_ALifeTraderAbstract::script_register(lua_State *L)
+void CSE_ALifeTraderAbstract::script_register(lua_State* L)
 {
 	module(L)[
 		class_<CSE_ALifeTraderAbstract>
 			("cse_alife_trader_abstract")
 //			.def(		constructor<const char*>())
-			.def("community",		&CommunityName)
-			.def("profile_name",	&profile_name_script)
-			.def("rank",			&Rank)
-			.def("reputation",		&Reputation)
+.def("community", &CommunityName)
+.def("profile_name", &profile_name_script)
+.def("rank", &Rank)
+.def("reputation", &Reputation)
 	];
 }
 
-void CSE_ALifeTrader::script_register(lua_State *L)
+void CSE_ALifeTrader::script_register(lua_State* L)
 {
 	module(L)[
 		luabind_class_dynamic_alife2(
@@ -80,7 +76,7 @@ void CSE_ALifeTrader::script_register(lua_State *L)
 	];
 }
 
-void CSE_ALifeCustomZone::script_register(lua_State *L)
+void CSE_ALifeCustomZone::script_register(lua_State* L)
 {
 	module(L)[
 		luabind_class_dynamic_alife2(
@@ -92,7 +88,7 @@ void CSE_ALifeCustomZone::script_register(lua_State *L)
 	];
 }
 
-void CSE_ALifeAnomalousZone::script_register(lua_State *L)
+void CSE_ALifeAnomalousZone::script_register(lua_State* L)
 {
 	module(L)[
 		luabind_class_dynamic_alife1(
@@ -100,7 +96,7 @@ void CSE_ALifeAnomalousZone::script_register(lua_State *L)
 			"cse_anomalous_zone",
 			CSE_ALifeCustomZone
 		)
-		.def("spawn_artefacts",	&CSE_ALifeAnomalousZone::spawn_artefacts)
+			.def("spawn_artefacts", &CSE_ALifeAnomalousZone::spawn_artefacts)
 	];
 }
 

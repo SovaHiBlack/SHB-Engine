@@ -7,27 +7,39 @@ float SBoneProtections::getBoneProtection(S16 bone_id)
 {
 	storage_it it = m_bones_koeff.find(bone_id);
 	if (it != m_bones_koeff.end( ))
+	{
 		return it->second.koeff;
+	}
 	else
+	{
 		return m_default.koeff;
+	}
 }
 
 float SBoneProtections::getBoneArmour(S16 bone_id)
 {
 	storage_it it = m_bones_koeff.find(bone_id);
 	if (it != m_bones_koeff.end( ))
+	{
 		return it->second.armour;
+	}
 	else
+	{
 		return m_default.armour;
+	}
 }
 
 BOOL SBoneProtections::getBonePassBullet(S16 bone_id)
 {
 	storage_it it = m_bones_koeff.find(bone_id);
 	if (it != m_bones_koeff.end( ))
+	{
 		return it->second.BonePassBullet;
+	}
 	else
+	{
 		return m_default.BonePassBullet;
+	}
 }
 
 void SBoneProtections::reload(const CSharedString& bone_sect, CKinematics* kinematics)
@@ -49,7 +61,7 @@ void SBoneProtections::reload(const CSharedString& bone_sect, CKinematics* kinem
 		float Armour = (float) atof(_GetItem(*(*i).second, 1, buffer));
 		BOOL BonePassBullet = (BOOL) (atof(_GetItem(*(*i).second, 2, buffer)) > 0.5f);
 
-		BoneProtection	BP;
+		BoneProtection BP;
 		BP.koeff = Koeff;
 		BP.armour = Armour;
 		BP.BonePassBullet = BonePassBullet;
@@ -60,9 +72,12 @@ void SBoneProtections::reload(const CSharedString& bone_sect, CKinematics* kinem
 		}
 		else
 		{
-			if (!xr_strcmp(*(*i).first, "hit_fraction")) continue;
+			if (!xr_strcmp(*(*i).first, "hit_fraction"))
+			{
+				continue;
+			}
 
-			S16	bone_id = kinematics->LL_BoneID(i->first);
+			S16 bone_id = kinematics->LL_BoneID(i->first);
 			R_ASSERT2(BI_NONE != bone_id, *(*i).first);
 			m_bones_koeff.insert(mk_pair(bone_id, BP));
 		}

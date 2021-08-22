@@ -1,10 +1,5 @@
-////////////////////////////////////////////////////////////////////////////
 //	Module 		: xrServer_Objects_ALife_Items.cpp
-//	Created 	: 19.09.2002
-//  Modified 	: 04.06.2003
-//	Author		: Oles Shyshkovtsov, Alexander Maksimchuk, Victor Reutskiy and Dmitriy Iassenev
 //	Description : Server objects items for ALife simulator
-////////////////////////////////////////////////////////////////////////////
 
 #include "stdafx.h"
 
@@ -28,62 +23,73 @@
 CSE_ALifeInventoryItem::CSE_ALifeInventoryItem(const char* caSection)
 {
 	//текущее состояние вещи
-	m_fCondition				= 1.0f;
+	m_fCondition = 1.0f;
 
-	m_fMass						= pSettings->r_float(caSection, "inv_weight");
-	m_dwCost					= pSettings->r_u32(caSection, "cost");
+	m_fMass = pSettings->r_float(caSection, "inv_weight");
+	m_dwCost = pSettings->r_u32(caSection, "cost");
 
 	if (pSettings->line_exist(caSection, "condition"))
-		m_fCondition			= pSettings->r_float(caSection, "condition");
+	{
+		m_fCondition = pSettings->r_float(caSection, "condition");
+	}
 
 	if (pSettings->line_exist(caSection, "health_value"))
-		m_iHealthValue			= pSettings->r_s32(caSection, "health_value");
+	{
+		m_iHealthValue = pSettings->r_s32(caSection, "health_value");
+	}
 	else
-		m_iHealthValue			= 0;
+	{
+		m_iHealthValue = 0;
+	}
 
 	if (pSettings->line_exist(caSection, "food_value"))
-		m_iFoodValue			= pSettings->r_s32(caSection, "food_value");
+	{
+		m_iFoodValue = pSettings->r_s32(caSection, "food_value");
+	}
 	else
-		m_iFoodValue			= 0;
+	{
+		m_iFoodValue = 0;
+	}
 
-	m_fDeteriorationValue		= 0;
+	m_fDeteriorationValue = 0;
 
-	m_last_update_time			= 0;
+	m_last_update_time = 0;
 
-	State.quaternion.x			= 0.f;
-	State.quaternion.y			= 0.f;
-	State.quaternion.z			= 1.f;
-	State.quaternion.w			= 0.f;
+	State.quaternion.x = 0.0f;
+	State.quaternion.y = 0.0f;
+	State.quaternion.z = 1.0f;
+	State.quaternion.w = 0.0f;
 
-	State.angular_vel.set		(0.f,0.f,0.f);
-	State.linear_vel.set		(0.f,0.f,0.f);
+	State.angular_vel.set(0.0f, 0.0f, 0.0f);
+	State.linear_vel.set(0.0f, 0.0f, 0.0f);
 }
 
-CSE_Abstract *CSE_ALifeInventoryItem::init	()
+CSE_Abstract* CSE_ALifeInventoryItem::init( )
 {
-	m_self						= smart_cast<CSE_ALifeObject*>(this);
-	R_ASSERT					(m_self);
+	m_self = smart_cast<CSE_ALifeObject*>(this);
+	R_ASSERT(m_self);
 //	m_self->m_flags.set			(CSE_ALifeObject::flSwitchOffline,TRUE);
-	return						(base());
+	return						(base( ));
 }
 
-CSE_ALifeInventoryItem::~CSE_ALifeInventoryItem	()
+CSE_ALifeInventoryItem::~CSE_ALifeInventoryItem( )
+{ }
+
+void CSE_ALifeInventoryItem::STATE_Write(CNetPacket& tNetPacket)
 {
+	tNetPacket.w_float(m_fCondition);
+	State.position = base( )->o_Position;
 }
 
-void CSE_ALifeInventoryItem::STATE_Write	(CNetPacket &tNetPacket)
+void CSE_ALifeInventoryItem::STATE_Read(CNetPacket& tNetPacket, U16 size)
 {
-	tNetPacket.w_float			(m_fCondition);
-	State.position				= base()->o_Position;
-}
-
-void CSE_ALifeInventoryItem::STATE_Read		(CNetPacket &tNetPacket, U16 size)
-{
-	U16 m_wVersion = base()->m_wVersion;
+	U16 m_wVersion = base( )->m_wVersion;
 	if (m_wVersion > 52)
-		tNetPacket.r_float		(m_fCondition);
+	{
+		tNetPacket.r_float(m_fCondition);
+	}
 
-	State.position				= base()->o_Position;
+	State.position = base( )->o_Position;
 }
 
 static inline bool check(const U8& mask, const U8& test)
@@ -91,248 +97,282 @@ static inline bool check(const U8& mask, const U8& test)
 	return							(!!(mask & test));
 }
 
-void CSE_ALifeInventoryItem::UPDATE_Write	(CNetPacket &tNetPacket)
+void CSE_ALifeInventoryItem::UPDATE_Write(CNetPacket& tNetPacket)
 {
-	if (!m_u8NumItems) {
-		tNetPacket.w_u8				(0);
+	if (!m_u8NumItems)
+	{
+		tNetPacket.w_u8(0);
 		return;
 	}
 
 	mask_num_items					num_items;
-	num_items.mask					= 0;
-	num_items.num_items				= m_u8NumItems;
+	num_items.mask = 0;
+	num_items.num_items = m_u8NumItems;
 
-	R_ASSERT2						(
+	R_ASSERT2(
 		num_items.num_items < (U8(1) << 5),
-		make_string("%d",num_items.num_items)
+		make_string("%d", num_items.num_items)
 	);
 
-	if (State.enabled)									num_items.mask |= inventory_item_state_enabled;
-	if (fis_zero(State.angular_vel.square_magnitude()))	num_items.mask |= inventory_item_angular_null;
-	if (fis_zero(State.linear_vel.square_magnitude()))	num_items.mask |= inventory_item_linear_null;
-
-	tNetPacket.w_u8					(num_items.common);
-
-	tNetPacket.w_vec3				(State.position);
-
-	tNetPacket.w_float_q8			(State.quaternion.x,0.f,1.f);
-	tNetPacket.w_float_q8			(State.quaternion.y,0.f,1.f);
-	tNetPacket.w_float_q8			(State.quaternion.z,0.f,1.f);
-	tNetPacket.w_float_q8			(State.quaternion.w,0.f,1.f);	
-
-	if (!check(num_items.mask,inventory_item_angular_null)) {
-		tNetPacket.w_float_q8		(State.angular_vel.x,0.f,10*PI_MUL_2);
-		tNetPacket.w_float_q8		(State.angular_vel.y,0.f,10*PI_MUL_2);
-		tNetPacket.w_float_q8		(State.angular_vel.z,0.f,10*PI_MUL_2);
+	if (State.enabled)
+	{
+		num_items.mask |= inventory_item_state_enabled;
 	}
 
-	if (!check(num_items.mask,inventory_item_linear_null)) {
-		tNetPacket.w_float_q8		(State.linear_vel.x,-32.f,32.f);
-		tNetPacket.w_float_q8		(State.linear_vel.y,-32.f,32.f);
-		tNetPacket.w_float_q8		(State.linear_vel.z,-32.f,32.f);
+	if (fis_zero(State.angular_vel.square_magnitude( )))
+	{
+		num_items.mask |= inventory_item_angular_null;
 	}
-};
 
-void CSE_ALifeInventoryItem::UPDATE_Read	(CNetPacket &tNetPacket)
+	if (fis_zero(State.linear_vel.square_magnitude( )))
+	{
+		num_items.mask |= inventory_item_linear_null;
+	}
+
+	tNetPacket.w_u8(num_items.common);
+
+	tNetPacket.w_vec3(State.position);
+
+	tNetPacket.w_float_q8(State.quaternion.x, 0.f, 1.f);
+	tNetPacket.w_float_q8(State.quaternion.y, 0.f, 1.f);
+	tNetPacket.w_float_q8(State.quaternion.z, 0.f, 1.f);
+	tNetPacket.w_float_q8(State.quaternion.w, 0.f, 1.f);
+
+	if (!check(num_items.mask, inventory_item_angular_null))
+	{
+		tNetPacket.w_float_q8(State.angular_vel.x, 0.f, 10 * PI_MUL_2);
+		tNetPacket.w_float_q8(State.angular_vel.y, 0.f, 10 * PI_MUL_2);
+		tNetPacket.w_float_q8(State.angular_vel.z, 0.f, 10 * PI_MUL_2);
+	}
+
+	if (!check(num_items.mask, inventory_item_linear_null))
+	{
+		tNetPacket.w_float_q8(State.linear_vel.x, -32.f, 32.f);
+		tNetPacket.w_float_q8(State.linear_vel.y, -32.f, 32.f);
+		tNetPacket.w_float_q8(State.linear_vel.z, -32.f, 32.f);
+	}
+}
+
+void CSE_ALifeInventoryItem::UPDATE_Read(CNetPacket& tNetPacket)
 {
-	tNetPacket.r_u8					(m_u8NumItems);
-	if (!m_u8NumItems) {
+	tNetPacket.r_u8(m_u8NumItems);
+	if (!m_u8NumItems)
+	{
 		return;
 	}
 
 	mask_num_items					num_items;
-	num_items.common				= m_u8NumItems;
-	m_u8NumItems					= num_items.num_items;
+	num_items.common = m_u8NumItems;
+	m_u8NumItems = num_items.num_items;
 
-	R_ASSERT2						(
+	R_ASSERT2(
 		m_u8NumItems < (U8(1) << 5),
-		make_string("%d",m_u8NumItems)
+		make_string("%d", m_u8NumItems)
 	);
 
-	tNetPacket.r_vec3				(State.position);
+	tNetPacket.r_vec3(State.position);
 
-	tNetPacket.r_float_q8			(State.quaternion.x,0.f,1.f);
-	tNetPacket.r_float_q8			(State.quaternion.y,0.f,1.f);
-	tNetPacket.r_float_q8			(State.quaternion.z,0.f,1.f);
-	tNetPacket.r_float_q8			(State.quaternion.w,0.f,1.f);	
+	tNetPacket.r_float_q8(State.quaternion.x, 0.0f, 1.0f);
+	tNetPacket.r_float_q8(State.quaternion.y, 0.0f, 1.0f);
+	tNetPacket.r_float_q8(State.quaternion.z, 0.0f, 1.0f);
+	tNetPacket.r_float_q8(State.quaternion.w, 0.0f, 1.0f);
 
-	State.enabled					= check(num_items.mask,inventory_item_state_enabled);
+	State.enabled = check(num_items.mask, inventory_item_state_enabled);
 
-	if (!check(num_items.mask,inventory_item_angular_null)) {
-		tNetPacket.r_float_q8		(State.angular_vel.x,0.f,10*PI_MUL_2);
-		tNetPacket.r_float_q8		(State.angular_vel.y,0.f,10*PI_MUL_2);
-		tNetPacket.r_float_q8		(State.angular_vel.z,0.f,10*PI_MUL_2);
+	if (!check(num_items.mask, inventory_item_angular_null))
+	{
+		tNetPacket.r_float_q8(State.angular_vel.x, 0.0f, 10 * PI_MUL_2);
+		tNetPacket.r_float_q8(State.angular_vel.y, 0.0f, 10 * PI_MUL_2);
+		tNetPacket.r_float_q8(State.angular_vel.z, 0.0f, 10 * PI_MUL_2);
 	}
 	else
-		State.angular_vel.set		(0.f,0.f,0.f);
+	{
+		State.angular_vel.set(0.0f, 0.0f, 0.0f);
+	}
 
-	if (!check(num_items.mask,inventory_item_linear_null)) {
-		tNetPacket.r_float_q8		(State.linear_vel.x,-32.f,32.f);
-		tNetPacket.r_float_q8		(State.linear_vel.y,-32.f,32.f);
-		tNetPacket.r_float_q8		(State.linear_vel.z,-32.f,32.f);
+	if (!check(num_items.mask, inventory_item_linear_null))
+	{
+		tNetPacket.r_float_q8(State.linear_vel.x, -32.0f, 32.0f);
+		tNetPacket.r_float_q8(State.linear_vel.y, -32.0f, 32.0f);
+		tNetPacket.r_float_q8(State.linear_vel.z, -32.0f, 32.0f);
 	}
 	else
-		State.linear_vel.set		(0.f,0.f,0.f);
-};
-
-void CSE_ALifeInventoryItem::FillProps		(const char* pref, PropItemVec& values)
-{
-	PHelper().CreateFloat			(values, PrepareKey(pref, *base()->s_name, "Item condition"), 		&m_fCondition, 			0.f, 1.f);
-	CSE_ALifeObject					*alife_object = smart_cast<CSE_ALifeObject*>(base());
-	R_ASSERT						(alife_object);
-	PHelper().CreateFlag32			(values, PrepareKey(pref, *base()->s_name,"ALife\\Useful for AI"),	&alife_object->m_flags,	CSE_ALifeObject::flUsefulForAI);
-	PHelper().CreateFlag32			(values, PrepareKey(pref, *base()->s_name,"ALife\\Visible for AI"),	&alife_object->m_flags,	CSE_ALifeObject::flVisibleForAI);
+	{
+		State.linear_vel.set(0.0f, 0.0f, 0.0f);
+	}
 }
 
-bool CSE_ALifeInventoryItem::bfUseful		()
+void CSE_ALifeInventoryItem::FillProps(const char* pref, PropItemVec& values)
 {
-	return						(true);
+	PHelper( ).CreateFloat(values, PrepareKey(pref, *base( )->s_name, "Item condition"), &m_fCondition, 0.f, 1.f);
+	CSE_ALifeObject* alife_object = smart_cast<CSE_ALifeObject*>(base( ));
+	R_ASSERT(alife_object);
+	PHelper( ).CreateFlag32(values, PrepareKey(pref, *base( )->s_name, "ALife\\Useful for AI"), &alife_object->m_flags, CSE_ALifeObject::flUsefulForAI);
+	PHelper( ).CreateFlag32(values, PrepareKey(pref, *base( )->s_name, "ALife\\Visible for AI"), &alife_object->m_flags, CSE_ALifeObject::flVisibleForAI);
 }
 
-u32 CSE_ALifeInventoryItem::update_rate		() const
+bool CSE_ALifeInventoryItem::bfUseful( )
 {
-	return						(1000);
+	return true;
+}
+
+u32 CSE_ALifeInventoryItem::update_rate( ) const
+{
+	return 1000;
 }
 
 ////////////////////////////////////////////////////////////////////////////
 // CSE_ALifeItem
 ////////////////////////////////////////////////////////////////////////////
-CSE_ALifeItem::CSE_ALifeItem				(const char* caSection) : CSE_ALifeDynamicObjectVisual(caSection), CSE_ALifeInventoryItem(caSection)
+CSE_ALifeItem::CSE_ALifeItem(const char* caSection) : CSE_ALifeDynamicObjectVisual(caSection), CSE_ALifeInventoryItem(caSection)
 {
-	m_physics_disabled			= false;
+	m_physics_disabled = false;
 }
 
-CSE_ALifeItem::~CSE_ALifeItem				()
+CSE_ALifeItem::~CSE_ALifeItem( )
+{ }
+
+CSE_Abstract* CSE_ALifeItem::init( )
 {
+	inherited1::init( );
+	inherited2::init( );
+	return base( );
 }
 
-CSE_Abstract *CSE_ALifeItem::init			()
+CSE_Abstract* CSE_ALifeItem::base( )
 {
-	inherited1::init			();
-	inherited2::init			();
-	return						(base());
+	return inherited1::base( );
 }
 
-CSE_Abstract *CSE_ALifeItem::base			()
+const CSE_Abstract* CSE_ALifeItem::base( ) const
 {
-	return						(inherited1::base());
+	return inherited1::base( );
 }
 
-const CSE_Abstract *CSE_ALifeItem::base		() const
+void CSE_ALifeItem::STATE_Write(CNetPacket& tNetPacket)
 {
-	return						(inherited1::base());
+	inherited1::STATE_Write(tNetPacket);
+	inherited2::STATE_Write(tNetPacket);
 }
 
-void CSE_ALifeItem::STATE_Write				(CNetPacket &tNetPacket)
+void CSE_ALifeItem::STATE_Read(CNetPacket& tNetPacket, U16 size)
 {
-	inherited1::STATE_Write		(tNetPacket);
-	inherited2::STATE_Write		(tNetPacket);
-}
-
-void CSE_ALifeItem::STATE_Read				(CNetPacket &tNetPacket, U16 size)
-{
-	inherited1::STATE_Read		(tNetPacket, size);
-	if ((m_tClassID == CLSID_OBJECT_W_BINOCULAR) && (m_wVersion < 37)) {
-		tNetPacket.r_u16		();
-		tNetPacket.r_u16		();
-		tNetPacket.r_u8			();
+	inherited1::STATE_Read(tNetPacket, size);
+	if ((m_tClassID == CLSID_OBJECT_W_BINOCULAR) && (m_wVersion < 37))
+	{
+		tNetPacket.r_u16( );
+		tNetPacket.r_u16( );
+		tNetPacket.r_u8( );
 	}
-	inherited2::STATE_Read		(tNetPacket, size);
+
+	inherited2::STATE_Read(tNetPacket, size);
 }
 
-void CSE_ALifeItem::UPDATE_Write			(CNetPacket &tNetPacket)
+void CSE_ALifeItem::UPDATE_Write(CNetPacket& tNetPacket)
 {
-	inherited1::UPDATE_Write	(tNetPacket);
-	inherited2::UPDATE_Write	(tNetPacket);
+	inherited1::UPDATE_Write(tNetPacket);
+	inherited2::UPDATE_Write(tNetPacket);
 
-	m_last_update_time			= Device.dwTimeGlobal;
+	m_last_update_time = Device.dwTimeGlobal;
 }
 
-void CSE_ALifeItem::UPDATE_Read				(CNetPacket &tNetPacket)
+void CSE_ALifeItem::UPDATE_Read(CNetPacket& tNetPacket)
 {
-	inherited1::UPDATE_Read		(tNetPacket);
-	inherited2::UPDATE_Read		(tNetPacket);
+	inherited1::UPDATE_Read(tNetPacket);
+	inherited2::UPDATE_Read(tNetPacket);
 
-	m_physics_disabled			= false;
+	m_physics_disabled = false;
 }
 
-void CSE_ALifeItem::FillProps				(const char* pref, PropItemVec& values)
+void CSE_ALifeItem::FillProps(const char* pref, PropItemVec& values)
 {
-	inherited1::FillProps		(pref,	 values);
-	inherited2::FillProps		(pref,	 values);
+	inherited1::FillProps(pref, values);
+	inherited2::FillProps(pref, values);
 }
 
-BOOL CSE_ALifeItem::Net_Relevant			()
+BOOL CSE_ALifeItem::Net_Relevant( )
 {
-	if (attached())
-		return					(false);
+	if (attached( ))
+	{
+		return false;
+	}
 
-	if (!m_physics_disabled && !fis_zero(State.linear_vel.square_magnitude(),EPS_L))
-		return					(true);
+	if (!m_physics_disabled && !fis_zero(State.linear_vel.square_magnitude( ), EPS_L))
+	{
+		return true;
+	}
 
-	if (Device.dwTimeGlobal < (m_last_update_time + update_rate()))
-		return					(false);
+	if (Device.dwTimeGlobal < (m_last_update_time + update_rate( )))
+	{
+		return false;
+	}
 
-	return						(true);
+	return true;
 }
 
-void CSE_ALifeItem::OnEvent					(CNetPacket &tNetPacket, U16 type, u32 time, ClientID sender )
+void CSE_ALifeItem::OnEvent(CNetPacket& tNetPacket, U16 type, u32 time, ClientID sender)
 {
-	inherited1::OnEvent			(tNetPacket,type,time,sender);
+	inherited1::OnEvent(tNetPacket, type, time, sender);
 
 	if (type != GE_FREEZE_OBJECT)
+	{
 		return;
+	}
 
-//	R_ASSERT					(!m_physics_disabled);
-	m_physics_disabled			= true;
+//	R_ASSERT(!m_physics_disabled);
+	m_physics_disabled = true;
 }
 
 ////////////////////////////////////////////////////////////////////////////
 // CSE_ALifeItemTorch
 ////////////////////////////////////////////////////////////////////////////
-CSE_ALifeItemTorch::CSE_ALifeItemTorch		(const char* caSection) : CSE_ALifeItem(caSection)
+CSE_ALifeItemTorch::CSE_ALifeItemTorch(const char* caSection) : CSE_ALifeItem(caSection)
 {
-	m_active					= false;
-	m_nightvision_active		= false;
-	m_attached					= false;
+	m_active = false;
+	m_nightvision_active = false;
+	m_attached = false;
 }
 
-CSE_ALifeItemTorch::~CSE_ALifeItemTorch		()
+CSE_ALifeItemTorch::~CSE_ALifeItemTorch( )
+{ }
+
+BOOL CSE_ALifeItemTorch::Net_Relevant( )
 {
+	if (m_attached)
+	{
+		return true;
+	}
+
+	return inherited::Net_Relevant( );
 }
 
-BOOL	CSE_ALifeItemTorch::Net_Relevant			()
-{
-	if (m_attached) return true;
-	return inherited::Net_Relevant();
-}
 
-
-void CSE_ALifeItemTorch::STATE_Read			(CNetPacket	&tNetPacket, U16 size)
+void CSE_ALifeItemTorch::STATE_Read(CNetPacket& tNetPacket, U16 size)
 {
 	if (m_wVersion > 20)
-		inherited::STATE_Read	(tNetPacket,size);
-
+	{
+		inherited::STATE_Read(tNetPacket, size);
+	}
 }
 
-void CSE_ALifeItemTorch::STATE_Write		(CNetPacket	&tNetPacket)
+void CSE_ALifeItemTorch::STATE_Write(CNetPacket& tNetPacket)
 {
-	inherited::STATE_Write		(tNetPacket);
+	inherited::STATE_Write(tNetPacket);
 }
 
-void CSE_ALifeItemTorch::UPDATE_Read		(CNetPacket	&tNetPacket)
+void CSE_ALifeItemTorch::UPDATE_Read(CNetPacket& tNetPacket)
 {
-	inherited::UPDATE_Read		(tNetPacket);
-	
-	BYTE F = tNetPacket.r_u8();
-	m_active					= !!(F & eTorchActive);
-	m_nightvision_active		= !!(F & eNightVisionActive);
-	m_attached					= !!(F & eAttached);
+	inherited::UPDATE_Read(tNetPacket);
+
+	BYTE F = tNetPacket.r_u8( );
+	m_active = !!(F & eTorchActive);
+	m_nightvision_active = !!(F & eNightVisionActive);
+	m_attached = !!(F & eAttached);
 }
 
-void CSE_ALifeItemTorch::UPDATE_Write		(CNetPacket	&tNetPacket)
+void CSE_ALifeItemTorch::UPDATE_Write(CNetPacket& tNetPacket)
 {
-	inherited::UPDATE_Write		(tNetPacket);
+	inherited::UPDATE_Write(tNetPacket);
 
 	BYTE F = 0;
 	F |= (m_active ? eTorchActive : 0);
@@ -341,136 +381,142 @@ void CSE_ALifeItemTorch::UPDATE_Write		(CNetPacket	&tNetPacket)
 	tNetPacket.w_u8(F);
 }
 
-void CSE_ALifeItemTorch::FillProps			(const char* pref, PropItemVec& values)
+void CSE_ALifeItemTorch::FillProps(const char* pref, PropItemVec& values)
 {
-	inherited::FillProps			(pref,	 values);
+	inherited::FillProps(pref, values);
 }
 
 ////////////////////////////////////////////////////////////////////////////
 // CSE_ALifeItemWeapon
 ////////////////////////////////////////////////////////////////////////////
-CSE_ALifeItemWeapon::CSE_ALifeItemWeapon	(const char* caSection) : CSE_ALifeItem(caSection)
+CSE_ALifeItemWeapon::CSE_ALifeItemWeapon(const char* caSection) : CSE_ALifeItem(caSection)
 {
-	a_current					= 90;
-	a_elapsed					= 0;
-	wpn_flags					= 0;
-	wpn_state					= 0;
-	ammo_type					= 0;
+	a_current = 90;
+	a_elapsed = 0;
+	wpn_flags = 0;
+	wpn_state = 0;
+	ammo_type = 0;
 
-	m_fHitPower					= pSettings->r_float(caSection,"hit_power");
-	m_tHitType					= ALife::g_tfString2HitType(pSettings->r_string(caSection,"hit_type"));
-	m_caAmmoSections			= pSettings->r_string(caSection,"ammo_class");
-	if (pSettings->section_exist(caSection) && pSettings->line_exist(caSection,"visual"))
-        set_visual				(pSettings->r_string(caSection,"visual"));
+	m_fHitPower = pSettings->r_float(caSection, "hit_power");
+	m_tHitType = ALife::g_tfString2HitType(pSettings->r_string(caSection, "hit_type"));
+	m_caAmmoSections = pSettings->r_string(caSection, "ammo_class");
+	if (pSettings->section_exist(caSection) && pSettings->line_exist(caSection, "visual"))
+	{
+		set_visual(pSettings->r_string(caSection, "visual"));
+	}
 
-	m_addon_flags.zero			();
+	m_addon_flags.zero( );
 
-	m_scope_status				=	(EWeaponAddonStatus)pSettings->r_s32(s_name,"scope_status");
-	m_silencer_status			=	(EWeaponAddonStatus)pSettings->r_s32(s_name,"silencer_status");
-	m_grenade_launcher_status	=	(EWeaponAddonStatus)pSettings->r_s32(s_name,"grenade_launcher_status");
-	m_ef_main_weapon_type		= READ_IF_EXISTS(pSettings,r_u32,caSection,"ef_main_weapon_type",u32(-1));
-	m_ef_weapon_type			= READ_IF_EXISTS(pSettings,r_u32,caSection,"ef_weapon_type",u32(-1));
+	m_scope_status = (EWeaponAddonStatus) pSettings->r_s32(s_name, "scope_status");
+	m_silencer_status = (EWeaponAddonStatus) pSettings->r_s32(s_name, "silencer_status");
+	m_grenade_launcher_status = (EWeaponAddonStatus) pSettings->r_s32(s_name, "grenade_launcher_status");
+	m_ef_main_weapon_type = READ_IF_EXISTS(pSettings, r_u32, caSection, "ef_main_weapon_type", u32(-1));
+	m_ef_weapon_type = READ_IF_EXISTS(pSettings, r_u32, caSection, "ef_weapon_type", u32(-1));
 }
 
-CSE_ALifeItemWeapon::~CSE_ALifeItemWeapon	()
-{
-}
+CSE_ALifeItemWeapon::~CSE_ALifeItemWeapon( )
+{ }
 
-u32	CSE_ALifeItemWeapon::ef_main_weapon_type() const
+u32 CSE_ALifeItemWeapon::ef_main_weapon_type( ) const
 {
-	VERIFY	(m_ef_main_weapon_type != u32(-1));
+	VERIFY(m_ef_main_weapon_type != u32(-1));
 	return	(m_ef_main_weapon_type);
 }
 
-u32	CSE_ALifeItemWeapon::ef_weapon_type() const
+u32 CSE_ALifeItemWeapon::ef_weapon_type( ) const
 {
-	VERIFY	(m_ef_weapon_type != u32(-1));
+	VERIFY(m_ef_weapon_type != u32(-1));
 	return	(m_ef_weapon_type);
 }
 
-void CSE_ALifeItemWeapon::UPDATE_Read(CNetPacket	&tNetPacket)
+void CSE_ALifeItemWeapon::UPDATE_Read(CNetPacket& tNetPacket)
 {
-	inherited::UPDATE_Read		(tNetPacket);
+	inherited::UPDATE_Read(tNetPacket);
 
-	tNetPacket.r_float_q8		(m_fCondition,0.0f,1.0f);
-	tNetPacket.r_u8				(wpn_flags);
-	tNetPacket.r_u16			(a_elapsed);
-	tNetPacket.r_u8				(m_addon_flags.flags);
-	tNetPacket.r_u8				(ammo_type);
-	tNetPacket.r_u8				(wpn_state);
-	tNetPacket.r_u8				(m_bZoom);
+	tNetPacket.r_float_q8(m_fCondition, 0.0f, 1.0f);
+	tNetPacket.r_u8(wpn_flags);
+	tNetPacket.r_u16(a_elapsed);
+	tNetPacket.r_u8(m_addon_flags.flags);
+	tNetPacket.r_u8(ammo_type);
+	tNetPacket.r_u8(wpn_state);
+	tNetPacket.r_u8(m_bZoom);
 }
 
-void CSE_ALifeItemWeapon::UPDATE_Write(CNetPacket	&tNetPacket)
+void CSE_ALifeItemWeapon::UPDATE_Write(CNetPacket& tNetPacket)
 {
-	inherited::UPDATE_Write		(tNetPacket);
+	inherited::UPDATE_Write(tNetPacket);
 
-	tNetPacket.w_float_q8		(m_fCondition,0.0f,1.0f);
-	tNetPacket.w_u8				(wpn_flags);
-	tNetPacket.w_u16			(a_elapsed);
-	tNetPacket.w_u8				(m_addon_flags.get());
-	tNetPacket.w_u8				(ammo_type);
-	tNetPacket.w_u8				(wpn_state);
-	tNetPacket.w_u8				(m_bZoom);
+	tNetPacket.w_float_q8(m_fCondition, 0.0f, 1.0f);
+	tNetPacket.w_u8(wpn_flags);
+	tNetPacket.w_u16(a_elapsed);
+	tNetPacket.w_u8(m_addon_flags.get( ));
+	tNetPacket.w_u8(ammo_type);
+	tNetPacket.w_u8(wpn_state);
+	tNetPacket.w_u8(m_bZoom);
 }
 
-void CSE_ALifeItemWeapon::STATE_Read(CNetPacket	&tNetPacket, U16 size)
+void CSE_ALifeItemWeapon::STATE_Read(CNetPacket& tNetPacket, U16 size)
 {
-	inherited::STATE_Read		(tNetPacket, size);
-	tNetPacket.r_u16			(a_current);
-	tNetPacket.r_u16			(a_elapsed);
-	tNetPacket.r_u8				(wpn_state);
-	
+	inherited::STATE_Read(tNetPacket, size);
+	tNetPacket.r_u16(a_current);
+	tNetPacket.r_u16(a_elapsed);
+	tNetPacket.r_u8(wpn_state);
+
 	if (m_wVersion > 40)
-		tNetPacket.r_u8			(m_addon_flags.flags);
+	{
+		tNetPacket.r_u8(m_addon_flags.flags);
+	}
 
 	if (m_wVersion > 46)
-		tNetPacket.r_u8			(ammo_type);
-}
-
-void CSE_ALifeItemWeapon::STATE_Write		(CNetPacket	&tNetPacket)
-{
-	inherited::STATE_Write		(tNetPacket);
-	tNetPacket.w_u16			(a_current);
-	tNetPacket.w_u16			(a_elapsed);
-	tNetPacket.w_u8				(wpn_state);
-	tNetPacket.w_u8				(m_addon_flags.get());
-	tNetPacket.w_u8				(ammo_type);
-}
-
-void CSE_ALifeItemWeapon::OnEvent			(CNetPacket	&tNetPacket, U16 type, u32 time, ClientID sender )
-{
-	inherited::OnEvent			(tNetPacket,type,time,sender);
-	switch (type) {
-		case GE_WPN_STATE_CHANGE:
-			{			
-				tNetPacket.r_u8	(wpn_state);			
-//				U8 sub_state = 
-					tNetPacket.r_u8();		
-//				U8 NewAmmoType = 
-					tNetPacket.r_u8();
-//				U8 AmmoElapsed = 
-					tNetPacket.r_u8();	
-			}break;
+	{
+		tNetPacket.r_u8(ammo_type);
 	}
 }
 
-U8	 CSE_ALifeItemWeapon::get_slot			()
+void CSE_ALifeItemWeapon::STATE_Write(CNetPacket& tNetPacket)
 {
-	return						((U8)pSettings->r_u8(s_name,"slot"));
+	inherited::STATE_Write(tNetPacket);
+	tNetPacket.w_u16(a_current);
+	tNetPacket.w_u16(a_elapsed);
+	tNetPacket.w_u8(wpn_state);
+	tNetPacket.w_u8(m_addon_flags.get( ));
+	tNetPacket.w_u8(ammo_type);
 }
 
-U16	 CSE_ALifeItemWeapon::get_ammo_total	()
+void CSE_ALifeItemWeapon::OnEvent(CNetPacket& tNetPacket, U16 type, u32 time, ClientID sender)
 {
-	return						((U16)a_current);
+	inherited::OnEvent(tNetPacket, type, time, sender);
+	switch (type)
+	{
+		case GE_WPN_STATE_CHANGE:
+		{
+			tNetPacket.r_u8(wpn_state);
+//				U8 sub_state = 
+			tNetPacket.r_u8( );
+//				U8 NewAmmoType = 
+			tNetPacket.r_u8( );
+//				U8 AmmoElapsed = 
+			tNetPacket.r_u8( );
+		}break;
+	}
 }
 
-U16	 CSE_ALifeItemWeapon::get_ammo_elapsed	()
+U8 CSE_ALifeItemWeapon::get_slot( )
 {
-	return						((U16)a_elapsed);
+	return ((U8) pSettings->r_u8(s_name, "slot"));
 }
 
-U16	 CSE_ALifeItemWeapon::get_ammo_magsize	()
+U16 CSE_ALifeItemWeapon::get_ammo_total( )
+{
+	return ((U16) a_current);
+}
+
+U16 CSE_ALifeItemWeapon::get_ammo_elapsed( )
+{
+	return ((U16) a_elapsed);
+}
+
+U16 CSE_ALifeItemWeapon::get_ammo_magsize( )
 {
 	if (pSettings->line_exist(s_name, "ammo_mag_size"))
 	{
@@ -482,151 +528,160 @@ U16	 CSE_ALifeItemWeapon::get_ammo_magsize	()
 	}
 }
 
-BOOL CSE_ALifeItemWeapon::Net_Relevant()
+BOOL CSE_ALifeItemWeapon::Net_Relevant( )
 {
-	return (wpn_flags==1);
+	return (wpn_flags == 1);
 }
 
-void CSE_ALifeItemWeapon::FillProps			(const char* pref, PropItemVec& items)
+void CSE_ALifeItemWeapon::FillProps(const char* pref, PropItemVec& items)
 {
-	inherited::FillProps			(pref, items);
-	PHelper().CreateU8			(items,PrepareKey(pref,*s_name,"Ammo type:"), &ammo_type,0,255,1);
-	PHelper().CreateU16			(items,PrepareKey(pref,*s_name,"Ammo: in magazine"),	&a_elapsed,0,30,1);
-	
+	inherited::FillProps(pref, items);
+	PHelper( ).CreateU8(items, PrepareKey(pref, *s_name, "Ammo type:"), &ammo_type, 0, 255, 1);
+	PHelper( ).CreateU16(items, PrepareKey(pref, *s_name, "Ammo: in magazine"), &a_elapsed, 0, 30, 1);
 
 	if (m_scope_status == eAddonAttachable)
-	       PHelper().CreateFlag8(items,PrepareKey(pref,*s_name,"Addons\\Scope"), 	&m_addon_flags, eWeaponAddonScope);
+	{
+		PHelper( ).CreateFlag8(items, PrepareKey(pref, *s_name, "Addons\\Scope"), &m_addon_flags, eWeaponAddonScope);
+	}
 
 	if (m_silencer_status == eAddonAttachable)
-        PHelper().CreateFlag8	(items,PrepareKey(pref,*s_name,"Addons\\Silencer"), 	&m_addon_flags, eWeaponAddonSilencer);
+	{
+		PHelper( ).CreateFlag8(items, PrepareKey(pref, *s_name, "Addons\\Silencer"), &m_addon_flags, eWeaponAddonSilencer);
+	}
 
 	if (m_grenade_launcher_status == eAddonAttachable)
-        PHelper().CreateFlag8	(items,PrepareKey(pref,*s_name,"Addons\\Podstvolnik"),&m_addon_flags,eWeaponAddonGrenadeLauncher);
+	{
+		PHelper( ).CreateFlag8(items, PrepareKey(pref, *s_name, "Addons\\Podstvolnik"), &m_addon_flags, eWeaponAddonGrenadeLauncher);
+	}
 }
 ////////////////////////////////////////////////////////////////////////////
 // CSE_ALifeItemWeaponShotGun
 ////////////////////////////////////////////////////////////////////////////
-CSE_ALifeItemWeaponShotGun::CSE_ALifeItemWeaponShotGun	(const char* caSection) : CSE_ALifeItemWeaponMagazined(caSection)
+CSE_ALifeItemWeaponShotGun::CSE_ALifeItemWeaponShotGun(const char* caSection) : CSE_ALifeItemWeaponMagazined(caSection)
 {
-	m_AmmoIDs.clear();
+	m_AmmoIDs.clear( );
 }
 
-CSE_ALifeItemWeaponShotGun::~CSE_ALifeItemWeaponShotGun	()
-{
-}
+CSE_ALifeItemWeaponShotGun::~CSE_ALifeItemWeaponShotGun( )
+{ }
 
-void CSE_ALifeItemWeaponShotGun::UPDATE_Read		(CNetPacket& P)
+void CSE_ALifeItemWeaponShotGun::UPDATE_Read(CNetPacket& P)
 {
 	inherited::UPDATE_Read(P);
 
-	m_AmmoIDs.clear();
-	U8 AmmoCount = P.r_u8();
-	for (U8 i=0; i<AmmoCount; i++)
+	m_AmmoIDs.clear( );
+	U8 AmmoCount = P.r_u8( );
+	for (U8 i = 0; i < AmmoCount; i++)
 	{
-		m_AmmoIDs.push_back(P.r_u8());
+		m_AmmoIDs.push_back(P.r_u8( ));
 	}
 }
-void CSE_ALifeItemWeaponShotGun::UPDATE_Write	(CNetPacket& P)
+
+void CSE_ALifeItemWeaponShotGun::UPDATE_Write(CNetPacket& P)
 {
 	inherited::UPDATE_Write(P);
 
-	P.w_u8(U8(m_AmmoIDs.size()));
-	for (u32 i=0; i<m_AmmoIDs.size(); i++)
+	P.w_u8(U8(m_AmmoIDs.size( )));
+	for (u32 i = 0; i < m_AmmoIDs.size( ); i++)
 	{
 		P.w_u8(U8(m_AmmoIDs[i]));
 	}
 }
 
-void CSE_ALifeItemWeaponShotGun::STATE_Read		(CNetPacket& P, U16 size)
+void CSE_ALifeItemWeaponShotGun::STATE_Read(CNetPacket& P, U16 size)
 {
 	inherited::STATE_Read(P, size);
 }
 
-void CSE_ALifeItemWeaponShotGun::STATE_Write		(CNetPacket& P)
+void CSE_ALifeItemWeaponShotGun::STATE_Write(CNetPacket& P)
 {
 	inherited::STATE_Write(P);
 }
 
-void CSE_ALifeItemWeaponShotGun::FillProps			(const char* pref, PropItemVec& items)
+void CSE_ALifeItemWeaponShotGun::FillProps(const char* pref, PropItemVec& items)
 {
-	inherited::FillProps			(pref, items);
-};
+	inherited::FillProps(pref, items);
+}
 
 ////////////////////////////////////////////////////////////////////////////
 // CSE_ALifeItemWeaponMagazined
 ////////////////////////////////////////////////////////////////////////////
-CSE_ALifeItemWeaponMagazined::CSE_ALifeItemWeaponMagazined	(const char* caSection) : CSE_ALifeItemWeapon(caSection)
+CSE_ALifeItemWeaponMagazined::CSE_ALifeItemWeaponMagazined(const char* caSection) : CSE_ALifeItemWeapon(caSection)
 {
 	m_u8CurFireMode = 0;
 }
 
-CSE_ALifeItemWeaponMagazined::~CSE_ALifeItemWeaponMagazined	()
-{
-}
+CSE_ALifeItemWeaponMagazined::~CSE_ALifeItemWeaponMagazined( )
+{ }
 
-void CSE_ALifeItemWeaponMagazined::UPDATE_Read		(CNetPacket& P)
+void CSE_ALifeItemWeaponMagazined::UPDATE_Read(CNetPacket& P)
 {
 	inherited::UPDATE_Read(P);
 
-	m_u8CurFireMode = P.r_u8();
+	m_u8CurFireMode = P.r_u8( );
 }
-void CSE_ALifeItemWeaponMagazined::UPDATE_Write	(CNetPacket& P)
+
+void CSE_ALifeItemWeaponMagazined::UPDATE_Write(CNetPacket& P)
 {
 	inherited::UPDATE_Write(P);
 
-	P.w_u8(m_u8CurFireMode);	
+	P.w_u8(m_u8CurFireMode);
 }
-void CSE_ALifeItemWeaponMagazined::STATE_Read		(CNetPacket& P, U16 size)
+
+void CSE_ALifeItemWeaponMagazined::STATE_Read(CNetPacket& P, U16 size)
 {
 	inherited::STATE_Read(P, size);
 }
-void CSE_ALifeItemWeaponMagazined::STATE_Write		(CNetPacket& P)
+
+void CSE_ALifeItemWeaponMagazined::STATE_Write(CNetPacket& P)
 {
 	inherited::STATE_Write(P);
 }
 
-void CSE_ALifeItemWeaponMagazined::FillProps			(const char* pref, PropItemVec& items)
+void CSE_ALifeItemWeaponMagazined::FillProps(const char* pref, PropItemVec& items)
 {
-	inherited::FillProps			(pref, items);
-};
+	inherited::FillProps(pref, items);
+}
 
 ////////////////////////////////////////////////////////////////////////////
 // CSE_ALifeItemWeaponMagazinedWGL
 ////////////////////////////////////////////////////////////////////////////
-CSE_ALifeItemWeaponMagazinedWGL::CSE_ALifeItemWeaponMagazinedWGL	(const char* caSection) : CSE_ALifeItemWeaponMagazined(caSection)
+CSE_ALifeItemWeaponMagazinedWGL::CSE_ALifeItemWeaponMagazinedWGL(const char* caSection) : CSE_ALifeItemWeaponMagazined(caSection)
 {
 	m_bGrenadeMode = 0;
 }
 
-CSE_ALifeItemWeaponMagazinedWGL::~CSE_ALifeItemWeaponMagazinedWGL	()
-{
-}
+CSE_ALifeItemWeaponMagazinedWGL::~CSE_ALifeItemWeaponMagazinedWGL( )
+{ }
 
-void CSE_ALifeItemWeaponMagazinedWGL::UPDATE_Read		(CNetPacket& P)
+void CSE_ALifeItemWeaponMagazinedWGL::UPDATE_Read(CNetPacket& P)
 {
-	m_bGrenadeMode = !!P.r_u8();
+	m_bGrenadeMode = !!P.r_u8( );
 	inherited::UPDATE_Read(P);
 
 }
-void CSE_ALifeItemWeaponMagazinedWGL::UPDATE_Write	(CNetPacket& P)
+
+void CSE_ALifeItemWeaponMagazinedWGL::UPDATE_Write(CNetPacket& P)
 {
-	P.w_u8(m_bGrenadeMode ? 1 : 0);	
+	P.w_u8(m_bGrenadeMode ? 1 : 0);
 	inherited::UPDATE_Write(P);
 
 }
-void CSE_ALifeItemWeaponMagazinedWGL::STATE_Read		(CNetPacket& P, U16 size)
+
+void CSE_ALifeItemWeaponMagazinedWGL::STATE_Read(CNetPacket& P, U16 size)
 {
 	inherited::STATE_Read(P, size);
 }
-void CSE_ALifeItemWeaponMagazinedWGL::STATE_Write		(CNetPacket& P)
+
+void CSE_ALifeItemWeaponMagazinedWGL::STATE_Write(CNetPacket& P)
 {
 	inherited::STATE_Write(P);
 }
 
-void CSE_ALifeItemWeaponMagazinedWGL::FillProps			(const char* pref, PropItemVec& items)
+void CSE_ALifeItemWeaponMagazinedWGL::FillProps(const char* pref, PropItemVec& items)
 {
-	inherited::FillProps			(pref, items);
-};
+	inherited::FillProps(pref, items);
+}
 
 ////////////////////////////////////////////////////////////////////////////
 // CSE_ALifeItemAmmo
@@ -640,49 +695,49 @@ CSE_ALifeItemAmmo::CSE_ALifeItemAmmo(const char* caSection) : CSE_ALifeItem(caSe
 	}
 }
 
-CSE_ALifeItemAmmo::~CSE_ALifeItemAmmo		()
+CSE_ALifeItemAmmo::~CSE_ALifeItemAmmo( )
+{ }
+
+void CSE_ALifeItemAmmo::STATE_Read(CNetPacket& tNetPacket, U16 size)
 {
+	inherited::STATE_Read(tNetPacket, size);
+	tNetPacket.r_u16(a_elapsed);
 }
 
-void CSE_ALifeItemAmmo::STATE_Read			(CNetPacket	&tNetPacket, U16 size)
+void CSE_ALifeItemAmmo::STATE_Write(CNetPacket& tNetPacket)
 {
-	inherited::STATE_Read		(tNetPacket,size);
-	tNetPacket.r_u16			(a_elapsed);
+	inherited::STATE_Write(tNetPacket);
+	tNetPacket.w_u16(a_elapsed);
 }
 
-void CSE_ALifeItemAmmo::STATE_Write			(CNetPacket	&tNetPacket)
+void CSE_ALifeItemAmmo::UPDATE_Read(CNetPacket& tNetPacket)
 {
-	inherited::STATE_Write		(tNetPacket);
-	tNetPacket.w_u16			(a_elapsed);
+	inherited::UPDATE_Read(tNetPacket);
+
+	tNetPacket.r_u16(a_elapsed);
 }
 
-void CSE_ALifeItemAmmo::UPDATE_Read			(CNetPacket	&tNetPacket)
+void CSE_ALifeItemAmmo::UPDATE_Write(CNetPacket& tNetPacket)
 {
-	inherited::UPDATE_Read		(tNetPacket);
+	inherited::UPDATE_Write(tNetPacket);
 
-	tNetPacket.r_u16			(a_elapsed);
+	tNetPacket.w_u16(a_elapsed);
 }
 
-void CSE_ALifeItemAmmo::UPDATE_Write		(CNetPacket	&tNetPacket)
+void CSE_ALifeItemAmmo::FillProps(const char* pref, PropItemVec& values)
 {
-	inherited::UPDATE_Write		(tNetPacket);
-
-	tNetPacket.w_u16			(a_elapsed);
+	inherited::FillProps(pref, values);
+	PHelper( ).CreateU16(values, PrepareKey(pref, *s_name, "Ammo: left"), &a_elapsed, 0, m_boxSize, m_boxSize);
 }
 
-void CSE_ALifeItemAmmo::FillProps			(const char* pref, PropItemVec& values) {
-  	inherited::FillProps			(pref,values);
-	PHelper().CreateU16			(values, PrepareKey(pref, *s_name, "Ammo: left"), &a_elapsed, 0, m_boxSize, m_boxSize);
+bool CSE_ALifeItemAmmo::can_switch_online( ) const
+{
+	return inherited::can_switch_online( );
 }
 
-bool CSE_ALifeItemAmmo::can_switch_online	() const
+bool CSE_ALifeItemAmmo::can_switch_offline( ) const
 {
-	return inherited::can_switch_online();
-}
-
-bool CSE_ALifeItemAmmo::can_switch_offline	() const
-{
-	return ( inherited::can_switch_offline() && a_elapsed!=0 );
+	return (inherited::can_switch_offline( ) && a_elapsed != 0);
 }
 
 ////////////////////////////////////////////////////////////////////////////
@@ -690,42 +745,43 @@ bool CSE_ALifeItemAmmo::can_switch_offline	() const
 ////////////////////////////////////////////////////////////////////////////
 CSE_ALifeItemDetector::CSE_ALifeItemDetector(const char* caSection) : CSE_ALifeItem(caSection)
 {
-	m_ef_detector_type	= pSettings->r_u32(caSection,"ef_detector_type");
+	m_ef_detector_type = pSettings->r_u32(caSection, "ef_detector_type");
 }
 
-CSE_ALifeItemDetector::~CSE_ALifeItemDetector()
-{
-}
+CSE_ALifeItemDetector::~CSE_ALifeItemDetector( )
+{ }
 
-u32	 CSE_ALifeItemDetector::ef_detector_type	() const
+u32	 CSE_ALifeItemDetector::ef_detector_type( ) const
 {
 	return	(m_ef_detector_type);
 }
 
-void CSE_ALifeItemDetector::STATE_Read		(CNetPacket	&tNetPacket, U16 size)
+void CSE_ALifeItemDetector::STATE_Read(CNetPacket& tNetPacket, U16 size)
 {
 	if (m_wVersion > 20)
-		inherited::STATE_Read	(tNetPacket,size);
+	{
+		inherited::STATE_Read(tNetPacket, size);
+	}
 }
 
-void CSE_ALifeItemDetector::STATE_Write		(CNetPacket	&tNetPacket)
+void CSE_ALifeItemDetector::STATE_Write(CNetPacket& tNetPacket)
 {
-	inherited::STATE_Write		(tNetPacket);
+	inherited::STATE_Write(tNetPacket);
 }
 
-void CSE_ALifeItemDetector::UPDATE_Read		(CNetPacket	&tNetPacket)
+void CSE_ALifeItemDetector::UPDATE_Read(CNetPacket& tNetPacket)
 {
-	inherited::UPDATE_Read		(tNetPacket);
+	inherited::UPDATE_Read(tNetPacket);
 }
 
-void CSE_ALifeItemDetector::UPDATE_Write	(CNetPacket	&tNetPacket)
+void CSE_ALifeItemDetector::UPDATE_Write(CNetPacket& tNetPacket)
 {
-	inherited::UPDATE_Write		(tNetPacket);
+	inherited::UPDATE_Write(tNetPacket);
 }
 
-void CSE_ALifeItemDetector::FillProps		(const char* pref, PropItemVec& items)
+void CSE_ALifeItemDetector::FillProps(const char* pref, PropItemVec& items)
 {
-  	inherited::FillProps			(pref,items);
+	inherited::FillProps(pref, items);
 }
 
 ////////////////////////////////////////////////////////////////////////////
@@ -733,328 +789,329 @@ void CSE_ALifeItemDetector::FillProps		(const char* pref, PropItemVec& items)
 ////////////////////////////////////////////////////////////////////////////
 CSE_ALifeItemArtefact::CSE_ALifeItemArtefact(const char* caSection) : CSE_ALifeItem(caSection)
 {
-	m_fAnomalyValue				= 100.f;
+	m_fAnomalyValue = 100.0f;
 }
 
-CSE_ALifeItemArtefact::~CSE_ALifeItemArtefact()
+CSE_ALifeItemArtefact::~CSE_ALifeItemArtefact( )
+{ }
+
+void CSE_ALifeItemArtefact::STATE_Read(CNetPacket& tNetPacket, U16 size)
 {
+	inherited::STATE_Read(tNetPacket, size);
 }
 
-void CSE_ALifeItemArtefact::STATE_Read		(CNetPacket	&tNetPacket, U16 size)
+void CSE_ALifeItemArtefact::STATE_Write(CNetPacket& tNetPacket)
 {
-	inherited::STATE_Read		(tNetPacket,size);
+	inherited::STATE_Write(tNetPacket);
 }
 
-void CSE_ALifeItemArtefact::STATE_Write		(CNetPacket	&tNetPacket)
+void CSE_ALifeItemArtefact::UPDATE_Read(CNetPacket& tNetPacket)
 {
-	inherited::STATE_Write		(tNetPacket);
+	inherited::UPDATE_Read(tNetPacket);
 }
 
-void CSE_ALifeItemArtefact::UPDATE_Read		(CNetPacket	&tNetPacket)
+void CSE_ALifeItemArtefact::UPDATE_Write(CNetPacket& tNetPacket)
 {
-	inherited::UPDATE_Read		(tNetPacket);
+	inherited::UPDATE_Write(tNetPacket);
 }
 
-void CSE_ALifeItemArtefact::UPDATE_Write	(CNetPacket	&tNetPacket)
+void CSE_ALifeItemArtefact::FillProps(const char* pref, PropItemVec& items)
 {
-	inherited::UPDATE_Write		(tNetPacket);
+	inherited::FillProps(pref, items);
+	PHelper( ).CreateFloat(items, PrepareKey(pref, *s_name, "Anomaly value:"), &m_fAnomalyValue, 0.f, 200.f);
 }
 
-void CSE_ALifeItemArtefact::FillProps		(const char* pref, PropItemVec& items)
+BOOL CSE_ALifeItemArtefact::Net_Relevant( )
 {
-	inherited::FillProps			(pref,items);
-	PHelper().CreateFloat			(items, PrepareKey(pref, *s_name, "Anomaly value:"), &m_fAnomalyValue, 0.f, 200.f);
-}
-
-BOOL CSE_ALifeItemArtefact::Net_Relevant	()
-{
-	return							(inherited::Net_Relevant());
+	return inherited::Net_Relevant( );
 }
 
 ////////////////////////////////////////////////////////////////////////////
 // CSE_ALifeItemPDA
 ////////////////////////////////////////////////////////////////////////////
-CSE_ALifeItemPDA::CSE_ALifeItemPDA		(const char* caSection) : CSE_ALifeItem(caSection)
+CSE_ALifeItemPDA::CSE_ALifeItemPDA(const char* caSection) : CSE_ALifeItem(caSection)
 {
-	m_original_owner		= 0xffff;
-	m_specific_character	= NULL;
-	m_info_portion			= NULL;
+	m_original_owner = 0xffff;
+	m_specific_character = NULL;
+	m_info_portion = NULL;
 }
 
+CSE_ALifeItemPDA::~CSE_ALifeItemPDA( )
+{ }
 
-CSE_ALifeItemPDA::~CSE_ALifeItemPDA		()
+void CSE_ALifeItemPDA::STATE_Read(CNetPacket& tNetPacket, U16 size)
 {
-}
-
-void CSE_ALifeItemPDA::STATE_Read		(CNetPacket	&tNetPacket, U16 size)
-{
-	inherited::STATE_Read		(tNetPacket,size);
+	inherited::STATE_Read(tNetPacket, size);
 	if (m_wVersion > 58)
-		tNetPacket.r			(&m_original_owner,sizeof(m_original_owner));
+	{
+		tNetPacket.r(&m_original_owner, sizeof(m_original_owner));
+	}
 
 	if (m_wVersion > 89)
-
-	if ( (m_wVersion > 89)&&(m_wVersion < 98)  )
 	{
-		int tmp,tmp2;
-		tNetPacket.r			(&tmp,		sizeof(int));
-		tNetPacket.r			(&tmp2,		sizeof(int));
-		m_info_portion			=	NULL;
-		m_specific_character	= NULL;
-	}else{
-		tNetPacket.r_stringZ	(m_specific_character);
-		tNetPacket.r_stringZ	(m_info_portion);
-	
+		if ((m_wVersion > 89) && (m_wVersion < 98))
+		{
+			int tmp, tmp2;
+			tNetPacket.r(&tmp, sizeof(int));
+			tNetPacket.r(&tmp2, sizeof(int));
+			m_info_portion = NULL;
+			m_specific_character = NULL;
+		}
+		else
+		{
+			tNetPacket.r_stringZ(m_specific_character);
+			tNetPacket.r_stringZ(m_info_portion);
+		}
 	}
 }
 
-void CSE_ALifeItemPDA::STATE_Write		(CNetPacket	&tNetPacket)
+void CSE_ALifeItemPDA::STATE_Write(CNetPacket& tNetPacket)
 {
-	inherited::STATE_Write		(tNetPacket);
-	tNetPacket.w				(&m_original_owner,sizeof(m_original_owner));
-	tNetPacket.w_stringZ		(m_specific_character);
-	tNetPacket.w_stringZ		(m_info_portion);
+	inherited::STATE_Write(tNetPacket);
+	tNetPacket.w(&m_original_owner, sizeof(m_original_owner));
+	tNetPacket.w_stringZ(m_specific_character);
+	tNetPacket.w_stringZ(m_info_portion);
 }
 
-void CSE_ALifeItemPDA::UPDATE_Read		(CNetPacket	&tNetPacket)
+void CSE_ALifeItemPDA::UPDATE_Read(CNetPacket& tNetPacket)
 {
-	inherited::UPDATE_Read		(tNetPacket);
+	inherited::UPDATE_Read(tNetPacket);
 }
 
-void CSE_ALifeItemPDA::UPDATE_Write	(CNetPacket	&tNetPacket)
+void CSE_ALifeItemPDA::UPDATE_Write(CNetPacket& tNetPacket)
 {
-	inherited::UPDATE_Write		(tNetPacket);
+	inherited::UPDATE_Write(tNetPacket);
 }
 
-void CSE_ALifeItemPDA::FillProps		(const char* pref, PropItemVec& items)
+void CSE_ALifeItemPDA::FillProps(const char* pref, PropItemVec& items)
 {
-	inherited::FillProps			(pref,items);
+	inherited::FillProps(pref, items);
 }
 
 ////////////////////////////////////////////////////////////////////////////
 // CSE_ALifeItemDocument
 ////////////////////////////////////////////////////////////////////////////
-CSE_ALifeItemDocument::CSE_ALifeItemDocument(const char* caSection): CSE_ALifeItem(caSection)
+CSE_ALifeItemDocument::CSE_ALifeItemDocument(const char* caSection) : CSE_ALifeItem(caSection)
 {
-	m_wDoc					= NULL;
+	m_wDoc = NULL;
 }
 
-CSE_ALifeItemDocument::~CSE_ALifeItemDocument()
-{
-}
+CSE_ALifeItemDocument::~CSE_ALifeItemDocument( )
+{ }
 
-void CSE_ALifeItemDocument::STATE_Read		(CNetPacket	&tNetPacket, U16 size)
+void CSE_ALifeItemDocument::STATE_Read(CNetPacket& tNetPacket, U16 size)
 {
-	inherited::STATE_Read		(tNetPacket,size);
+	inherited::STATE_Read(tNetPacket, size);
 
-	if ( m_wVersion < 98  ){
+	if (m_wVersion < 98)
+	{
 		U16 tmp;
-		tNetPacket.r_u16			(tmp);
+		tNetPacket.r_u16(tmp);
 		m_wDoc = NULL;
-	}else
-		tNetPacket.r_stringZ		(m_wDoc);
+	}
+	else
+	{
+		tNetPacket.r_stringZ(m_wDoc);
+	}
 }
 
-void CSE_ALifeItemDocument::STATE_Write		(CNetPacket	&tNetPacket)
+void CSE_ALifeItemDocument::STATE_Write(CNetPacket& tNetPacket)
 {
-	inherited::STATE_Write		(tNetPacket);
-	tNetPacket.w_stringZ		(m_wDoc);
+	inherited::STATE_Write(tNetPacket);
+	tNetPacket.w_stringZ(m_wDoc);
 }
 
-void CSE_ALifeItemDocument::UPDATE_Read		(CNetPacket	&tNetPacket)
+void CSE_ALifeItemDocument::UPDATE_Read(CNetPacket& tNetPacket)
 {
-	inherited::UPDATE_Read		(tNetPacket);
+	inherited::UPDATE_Read(tNetPacket);
 }
 
-void CSE_ALifeItemDocument::UPDATE_Write	(CNetPacket	&tNetPacket)
+void CSE_ALifeItemDocument::UPDATE_Write(CNetPacket& tNetPacket)
 {
-	inherited::UPDATE_Write		(tNetPacket);
+	inherited::UPDATE_Write(tNetPacket);
 }
 
-void CSE_ALifeItemDocument::FillProps		(const char* pref, PropItemVec& items)
+void CSE_ALifeItemDocument::FillProps(const char* pref, PropItemVec& items)
 {
-	inherited::FillProps			(pref,items);
+	inherited::FillProps(pref, items);
 //	PHelper().CreateU16			(items, PrepareKey(pref, *s_name, "Document index :"), &m_wDocIndex, 0, 65535);
-	PHelper().CreateRText		(items, PrepareKey(pref, *s_name, "Info portion :"), &m_wDoc);
+	PHelper( ).CreateRText(items, PrepareKey(pref, *s_name, "Info portion :"), &m_wDoc);
 }
 
 ////////////////////////////////////////////////////////////////////////////
 // CSE_ALifeItemGrenade
 ////////////////////////////////////////////////////////////////////////////
-CSE_ALifeItemGrenade::CSE_ALifeItemGrenade	(const char* caSection): CSE_ALifeItem(caSection)
+CSE_ALifeItemGrenade::CSE_ALifeItemGrenade(const char* caSection) : CSE_ALifeItem(caSection)
 {
-	m_ef_weapon_type	= READ_IF_EXISTS(pSettings,r_u32,caSection,"ef_weapon_type",u32(-1));
+	m_ef_weapon_type = READ_IF_EXISTS(pSettings, r_u32, caSection, "ef_weapon_type", u32(-1));
 }
 
-CSE_ALifeItemGrenade::~CSE_ALifeItemGrenade	()
+CSE_ALifeItemGrenade::~CSE_ALifeItemGrenade( )
+{ }
+
+u32 CSE_ALifeItemGrenade::ef_weapon_type( ) const
 {
+	VERIFY(m_ef_weapon_type != u32(-1));
+	return m_ef_weapon_type;
 }
 
-u32	CSE_ALifeItemGrenade::ef_weapon_type() const
+void CSE_ALifeItemGrenade::STATE_Read(CNetPacket& tNetPacket, U16 size)
 {
-	VERIFY	(m_ef_weapon_type != u32(-1));
-	return	(m_ef_weapon_type);
+	inherited::STATE_Read(tNetPacket, size);
 }
 
-void CSE_ALifeItemGrenade::STATE_Read		(CNetPacket	&tNetPacket, U16 size)
+void CSE_ALifeItemGrenade::STATE_Write(CNetPacket& tNetPacket)
 {
-	inherited::STATE_Read		(tNetPacket,size);
+	inherited::STATE_Write(tNetPacket);
 }
 
-void CSE_ALifeItemGrenade::STATE_Write		(CNetPacket	&tNetPacket)
+void CSE_ALifeItemGrenade::UPDATE_Read(CNetPacket& tNetPacket)
 {
-	inherited::STATE_Write		(tNetPacket);
+	inherited::UPDATE_Read(tNetPacket);
 }
 
-void CSE_ALifeItemGrenade::UPDATE_Read		(CNetPacket	&tNetPacket)
+void CSE_ALifeItemGrenade::UPDATE_Write(CNetPacket& tNetPacket)
 {
-	inherited::UPDATE_Read		(tNetPacket);
+	inherited::UPDATE_Write(tNetPacket);
 }
 
-void CSE_ALifeItemGrenade::UPDATE_Write		(CNetPacket	&tNetPacket)
+void CSE_ALifeItemGrenade::FillProps(const char* pref, PropItemVec& items)
 {
-	inherited::UPDATE_Write		(tNetPacket);
-}
-
-void CSE_ALifeItemGrenade::FillProps			(const char* pref, PropItemVec& items)
-{
-	inherited::FillProps			(pref,items);
+	inherited::FillProps(pref, items);
 }
 
 ////////////////////////////////////////////////////////////////////////////
 // CSE_ALifeItemExplosive
 ////////////////////////////////////////////////////////////////////////////
-CSE_ALifeItemExplosive::CSE_ALifeItemExplosive	(const char* caSection): CSE_ALifeItem(caSection)
+CSE_ALifeItemExplosive::CSE_ALifeItemExplosive(const char* caSection) : CSE_ALifeItem(caSection)
+{ }
+
+CSE_ALifeItemExplosive::~CSE_ALifeItemExplosive( )
+{ }
+
+void CSE_ALifeItemExplosive::STATE_Read(CNetPacket& tNetPacket, U16 size)
 {
+	inherited::STATE_Read(tNetPacket, size);
 }
 
-CSE_ALifeItemExplosive::~CSE_ALifeItemExplosive	()
+void CSE_ALifeItemExplosive::STATE_Write(CNetPacket& tNetPacket)
 {
+	inherited::STATE_Write(tNetPacket);
 }
 
-void CSE_ALifeItemExplosive::STATE_Read		(CNetPacket	&tNetPacket, U16 size)
+void CSE_ALifeItemExplosive::UPDATE_Read(CNetPacket& tNetPacket)
 {
-	inherited::STATE_Read		(tNetPacket,size);
+	inherited::UPDATE_Read(tNetPacket);
 }
 
-void CSE_ALifeItemExplosive::STATE_Write		(CNetPacket	&tNetPacket)
+void CSE_ALifeItemExplosive::UPDATE_Write(CNetPacket& tNetPacket)
 {
-	inherited::STATE_Write		(tNetPacket);
+	inherited::UPDATE_Write(tNetPacket);
 }
 
-void CSE_ALifeItemExplosive::UPDATE_Read		(CNetPacket	&tNetPacket)
+void CSE_ALifeItemExplosive::FillProps(const char* pref, PropItemVec& items)
 {
-	inherited::UPDATE_Read		(tNetPacket);
-}
-
-void CSE_ALifeItemExplosive::UPDATE_Write		(CNetPacket	&tNetPacket)
-{
-	inherited::UPDATE_Write		(tNetPacket);
-}
-
-void CSE_ALifeItemExplosive::FillProps			(const char* pref, PropItemVec& items)
-{
-	inherited::FillProps			(pref,items);
+	inherited::FillProps(pref, items);
 }
 
 ////////////////////////////////////////////////////////////////////////////
 // CSE_ALifeItemBolt
 ////////////////////////////////////////////////////////////////////////////
-CSE_ALifeItemBolt::CSE_ALifeItemBolt		(const char* caSection) : CSE_ALifeItem(caSection)
+CSE_ALifeItemBolt::CSE_ALifeItemBolt(const char* caSection) : CSE_ALifeItem(caSection)
 {
-	m_flags.set					(flUseSwitches,FALSE);
-	m_flags.set					(flSwitchOffline,FALSE);
-	m_ef_weapon_type			= READ_IF_EXISTS(pSettings,r_u32,caSection,"ef_weapon_type",u32(-1));
+	m_flags.set(flUseSwitches, FALSE);
+	m_flags.set(flSwitchOffline, FALSE);
+	m_ef_weapon_type = READ_IF_EXISTS(pSettings, r_u32, caSection, "ef_weapon_type", u32(-1));
 }
 
-CSE_ALifeItemBolt::~CSE_ALifeItemBolt		()
+CSE_ALifeItemBolt::~CSE_ALifeItemBolt( )
+{ }
+
+u32 CSE_ALifeItemBolt::ef_weapon_type( ) const
 {
+	VERIFY(m_ef_weapon_type != u32(-1));
+	return m_ef_weapon_type;
 }
 
-u32	CSE_ALifeItemBolt::ef_weapon_type() const
+void CSE_ALifeItemBolt::STATE_Write(CNetPacket& tNetPacket)
 {
-	VERIFY	(m_ef_weapon_type != u32(-1));
-	return	(m_ef_weapon_type);
+	inherited::STATE_Write(tNetPacket);
 }
 
-void CSE_ALifeItemBolt::STATE_Write			(CNetPacket &tNetPacket)
+void CSE_ALifeItemBolt::STATE_Read(CNetPacket& tNetPacket, U16 size)
 {
-	inherited::STATE_Write		(tNetPacket);
+	inherited::STATE_Read(tNetPacket, size);
 }
 
-void CSE_ALifeItemBolt::STATE_Read			(CNetPacket &tNetPacket, U16 size)
+void CSE_ALifeItemBolt::UPDATE_Write(CNetPacket& tNetPacket)
 {
-	inherited::STATE_Read		(tNetPacket, size);
+	inherited::UPDATE_Write(tNetPacket);
 }
 
-void CSE_ALifeItemBolt::UPDATE_Write		(CNetPacket &tNetPacket)
+void CSE_ALifeItemBolt::UPDATE_Read(CNetPacket& tNetPacket)
 {
-	inherited::UPDATE_Write	(tNetPacket);
-};
-
-void CSE_ALifeItemBolt::UPDATE_Read			(CNetPacket &tNetPacket)
-{
-	inherited::UPDATE_Read		(tNetPacket);
-};
-
-bool CSE_ALifeItemBolt::can_save			() const
-{
-	return						(false);//!attached());
+	inherited::UPDATE_Read(tNetPacket);
 }
-bool CSE_ALifeItemBolt::used_ai_locations		() const
+
+bool CSE_ALifeItemBolt::can_save( ) const
+{
+	return false;//!attached());
+}
+
+bool CSE_ALifeItemBolt::used_ai_locations( ) const
 {
 	return false;
 }
-void CSE_ALifeItemBolt::FillProps			(const char* pref, PropItemVec& values)
+
+void CSE_ALifeItemBolt::FillProps(const char* pref, PropItemVec& values)
 {
-	inherited::FillProps			(pref,	 values);
+	inherited::FillProps(pref, values);
 }
 
 ////////////////////////////////////////////////////////////////////////////
 // CSE_ALifeItemCustomOutfit
 ////////////////////////////////////////////////////////////////////////////
-CSE_ALifeItemCustomOutfit::CSE_ALifeItemCustomOutfit	(const char* caSection): CSE_ALifeItem(caSection)
+CSE_ALifeItemCustomOutfit::CSE_ALifeItemCustomOutfit(const char* caSection) : CSE_ALifeItem(caSection)
 {
-	m_ef_equipment_type		= pSettings->r_u32(caSection,"ef_equipment_type");
+	m_ef_equipment_type = pSettings->r_u32(caSection, "ef_equipment_type");
 }
 
-CSE_ALifeItemCustomOutfit::~CSE_ALifeItemCustomOutfit	()
+CSE_ALifeItemCustomOutfit::~CSE_ALifeItemCustomOutfit( )
+{ }
+
+u32	CSE_ALifeItemCustomOutfit::ef_equipment_type( ) const
 {
+	return m_ef_equipment_type;
 }
 
-u32	CSE_ALifeItemCustomOutfit::ef_equipment_type		() const
+void CSE_ALifeItemCustomOutfit::STATE_Read(CNetPacket& tNetPacket, U16 size)
 {
-	return			(m_ef_equipment_type);
+	inherited::STATE_Read(tNetPacket, size);
 }
 
-void CSE_ALifeItemCustomOutfit::STATE_Read		(CNetPacket	&tNetPacket, U16 size)
+void CSE_ALifeItemCustomOutfit::STATE_Write(CNetPacket& tNetPacket)
 {
-	inherited::STATE_Read		(tNetPacket,size);
+	inherited::STATE_Write(tNetPacket);
 }
 
-void CSE_ALifeItemCustomOutfit::STATE_Write		(CNetPacket	&tNetPacket)
+void CSE_ALifeItemCustomOutfit::UPDATE_Read(CNetPacket& tNetPacket)
 {
-	inherited::STATE_Write		(tNetPacket);
+	inherited::UPDATE_Read(tNetPacket);
+	tNetPacket.r_float_q8(m_fCondition, 0.0f, 1.0f);
 }
 
-void CSE_ALifeItemCustomOutfit::UPDATE_Read		(CNetPacket	&tNetPacket)
+void CSE_ALifeItemCustomOutfit::UPDATE_Write(CNetPacket& tNetPacket)
 {
-	inherited::UPDATE_Read			(tNetPacket);
-	tNetPacket.r_float_q8			(m_fCondition,0.0f,1.0f);
+	inherited::UPDATE_Write(tNetPacket);
+	tNetPacket.w_float_q8(m_fCondition, 0.0f, 1.0f);
 }
 
-void CSE_ALifeItemCustomOutfit::UPDATE_Write		(CNetPacket	&tNetPacket)
+void CSE_ALifeItemCustomOutfit::FillProps(const char* pref, PropItemVec& items)
 {
-	inherited::UPDATE_Write			(tNetPacket);
-	tNetPacket.w_float_q8			(m_fCondition,0.0f,1.0f);
+	inherited::FillProps(pref, items);
 }
 
-void CSE_ALifeItemCustomOutfit::FillProps			(const char* pref, PropItemVec& items)
+BOOL CSE_ALifeItemCustomOutfit::Net_Relevant( )
 {
-	inherited::FillProps			(pref,items);
-}
-
-BOOL CSE_ALifeItemCustomOutfit::Net_Relevant		()
-{
-	return							(true);
+	return true;
 }

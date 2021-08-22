@@ -9,56 +9,59 @@
 #include "script_game_object.h"
 #include "InventoryItem.h"
 
-CInventoryBox::CInventoryBox()
+CInventoryBox::CInventoryBox( )
 {
 	m_in_use = false;
 }
 
-void CInventoryBox::OnEvent(CNetPacket& P, U16 type)
+void CInventoryBox::OnEvent(CNetPacket& P, unsigned short type)
 {
-	inherited::OnEvent	(P, type);
+	inherited::OnEvent(P, type);
 
 	switch (type)
 	{
-	case GE_OWNERSHIP_TAKE:
+		case GE_OWNERSHIP_TAKE:
 		{
-		U16 id;
-            P.r_u16(id);
-			CObject* itm = Level().Objects.net_Find(id);  VERIFY(itm);
-			m_items.push_back	(id);
-			itm->H_SetParent	(this);
-			itm->setVisible		(FALSE);
-			itm->setEnabled		(FALSE);
-		}break;
-	case GE_OWNERSHIP_REJECT:
-		{
-		U16 id;
-            P.r_u16(id);
-			CObject* itm = Level().Objects.net_Find(id);
+			unsigned short id;
+			P.r_u16(id);
+			CObject* itm = Level( ).Objects.net_Find(id);
 			VERIFY(itm);
-			xr_vector<U16>::iterator it;
-			it = std::find(m_items.begin(),m_items.end(),id);
-			VERIFY(it!=m_items.end());
-			m_items.erase		(it);
-			itm->H_SetParent	(NULL,!P.r_eof() && P.r_u8());
+			m_items.push_back(id);
+			itm->H_SetParent(this);
+			itm->setVisible(FALSE);
+			itm->setEnabled(FALSE);
+		}
+		break;
+		case GE_OWNERSHIP_REJECT:
+		{
+			unsigned short id;
+			P.r_u16(id);
+			CObject* itm = Level( ).Objects.net_Find(id);
+			VERIFY(itm);
+			xr_vector<unsigned short>::iterator it;
+			it = std::find(m_items.begin( ), m_items.end( ), id);
+			VERIFY(it != m_items.end( ));
+			m_items.erase(it);
+			itm->H_SetParent(NULL, !P.r_eof( ) && P.r_u8( ));
 
-			if( m_in_use )
+			if (m_in_use)
 			{
-				CGameObject* GO		= smart_cast<CGameObject*>(itm);
-				Actor()->callback(GameObject::eInvBoxItemTake)( this->lua_game_object(), GO->lua_game_object() );
+				CGameObject* GO = smart_cast<CGameObject*>(itm);
+				Actor( )->callback(GameObject::eInvBoxItemTake)(this->lua_game_object( ), GO->lua_game_object( ));
 			}
-		}break;
-	};
+		}
+		break;
+	}
 }
 
 BOOL CInventoryBox::net_Spawn(CSE_Abstract* DC)
 {
-	inherited::net_Spawn	(DC);
-	setVisible				(TRUE);
-	setEnabled				(TRUE);
-	set_tip_text			("inventory_box_use");
+	inherited::net_Spawn(DC);
+	setVisible(TRUE);
+	setEnabled(TRUE);
+	set_tip_text("inventory_box_use");
 
-	return					TRUE;
+	return TRUE;
 }
 
 void CInventoryBox::net_Relcase(CObject* O)
@@ -68,12 +71,13 @@ void CInventoryBox::net_Relcase(CObject* O)
 
 void CInventoryBox::AddAvailableItems(TIItemContainer& items_container) const
 {
-	xr_vector<U16>::const_iterator it = m_items.begin();
-	xr_vector<U16>::const_iterator it_e = m_items.end();
+	xr_vector<unsigned short>::const_iterator it = m_items.begin( );
+	xr_vector<unsigned short>::const_iterator it_e = m_items.end( );
 
-	for(;it!=it_e;++it)
+	for (; it != it_e; ++it)
 	{
-		PIItem itm = smart_cast<PIItem>(Level().Objects.net_Find(*it));VERIFY(itm);
-		items_container.push_back	(itm);
+		PIItem itm = smart_cast<PIItem>(Level( ).Objects.net_Find(*it));
+		VERIFY(itm);
+		items_container.push_back(itm);
 	}
 }

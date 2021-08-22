@@ -7,7 +7,7 @@ struct SBoneProtections;
 class CCustomOutfit : public CInventoryItemObject
 {
 private:
-	typedef	CInventoryItemObject inherited;
+	using inherited = CInventoryItemObject;
 
 public:
 	CCustomOutfit( );

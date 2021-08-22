@@ -1,10 +1,6 @@
-////////////////////////////////////////////////////////////////////////////
 //	Module 		: xrServer_Objects_ALife_Items_script.cpp
-//	Created 	: 19.09.2002
-//  Modified 	: 04.06.2003
-//	Author		: Dmitriy Iassenev
 //	Description : Server items for ALife simulator, script export
-////////////////////////////////////////////////////////////////////////////
+
 #include "stdafx.h"
 
 #include "xrServer_Objects_ALife_Items.h"
@@ -13,7 +9,7 @@
 using namespace luabind;
 
 #pragma optimize("s",on)
-void CSE_ALifeInventoryItem::script_register(lua_State *L)
+void CSE_ALifeInventoryItem::script_register(lua_State* L)
 {
 	module(L)[
 		class_<CSE_ALifeInventoryItem>
@@ -22,7 +18,7 @@ void CSE_ALifeInventoryItem::script_register(lua_State *L)
 	];
 }
 
-void CSE_ALifeItem::script_register(lua_State *L)
+void CSE_ALifeItem::script_register(lua_State* L)
 {
 	module(L)[
 //		luabind_class_item2(
@@ -35,7 +31,7 @@ void CSE_ALifeItem::script_register(lua_State *L)
 	];
 }
 
-void CSE_ALifeItemTorch::script_register(lua_State *L)
+void CSE_ALifeItemTorch::script_register(lua_State* L)
 {
 	module(L)[
 		luabind_class_item1(
@@ -46,7 +42,7 @@ void CSE_ALifeItemTorch::script_register(lua_State *L)
 	];
 }
 
-void CSE_ALifeItemAmmo::script_register(lua_State *L)
+void CSE_ALifeItemAmmo::script_register(lua_State* L)
 {
 	module(L)[
 		luabind_class_item1(
@@ -57,7 +53,7 @@ void CSE_ALifeItemAmmo::script_register(lua_State *L)
 	];
 }
 
-void CSE_ALifeItemWeapon::script_register(lua_State *L)
+void CSE_ALifeItemWeapon::script_register(lua_State* L)
 {
 	module(L)[
 		luabind_class_item1(
@@ -68,18 +64,18 @@ void CSE_ALifeItemWeapon::script_register(lua_State *L)
 	];
 }
 
-void CSE_ALifeItemWeaponShotGun::script_register(lua_State *L)
+void CSE_ALifeItemWeaponShotGun::script_register(lua_State* L)
 {
 	module(L)[
 		luabind_class_item1(
 			CSE_ALifeItemWeaponShotGun,
 			"cse_alife_item_weapon_shotgun",
 			CSE_ALifeItemWeapon
-			)
+		)
 	];
 }
 
-void CSE_ALifeItemDetector::script_register(lua_State *L)
+void CSE_ALifeItemDetector::script_register(lua_State* L)
 {
 	module(L)[
 		luabind_class_item1(
@@ -90,7 +86,7 @@ void CSE_ALifeItemDetector::script_register(lua_State *L)
 	];
 }
 
-void CSE_ALifeItemArtefact::script_register(lua_State *L)
+void CSE_ALifeItemArtefact::script_register(lua_State* L)
 {
 	module(L)[
 		luabind_class_item1(

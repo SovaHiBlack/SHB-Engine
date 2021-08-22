@@ -1,16 +1,14 @@
-///////////////////////////////////////////////////////////////
 // ExoOutfit.h
 // ExoOutfit - защитный костюм с усилением
-///////////////////////////////////////////////////////////////
 
 #pragma once
 
 #include "CustomOutfit.h"
 
-class CExoOutfit: public CCustomOutfit
+class CExoOutfit : public CCustomOutfit
 {
 private:
-    typedef	CCustomOutfit inherited;
+	using inherited = CCustomOutfit;
 
 public:
 	CExoOutfit( );

@@ -31,8 +31,8 @@ enum EItemPlace
 	eItemPlaceRuck
 };
 
-extern u32					INV_STATE_LADDER;
-extern u32					INV_STATE_CAR;
-extern u32					INV_STATE_BLOCK_ALL;
-extern u32					INV_STATE_INV_WND;
-extern u32					INV_STATE_BUY_MENU;
+extern unsigned int			INV_STATE_LADDER;
+extern unsigned int			INV_STATE_CAR;
+extern unsigned int			INV_STATE_BLOCK_ALL;
+extern unsigned int			INV_STATE_INV_WND;
+extern unsigned int			INV_STATE_BUY_MENU;

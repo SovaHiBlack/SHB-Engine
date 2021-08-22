@@ -1685,10 +1685,14 @@ void CSE_ALifeMonsterBase::STATE_Read(CNetPacket& tNetPacket, U16 size)
 {
 	inherited1::STATE_Read(tNetPacket, size);
 	if (m_wVersion >= 68)
+	{
 		inherited2::STATE_Read(tNetPacket, size);
+	}
 
 	if (m_wVersion >= 109)
+	{
 		tNetPacket.r_u16(m_spec_object_id);
+	}
 }
 
 void CSE_ALifeMonsterBase::STATE_Write(CNetPacket& tNetPacket)
@@ -1805,7 +1809,9 @@ void CSE_ALifeHumanAbstract::STATE_Read(CNetPacket& tNetPacket, U16 size)
 	inherited2::STATE_Read(tNetPacket, size);
 	brain( ).on_state_read(tNetPacket);
 	if ((m_wVersion >= 110) && (m_wVersion < 112))
+	{
 		tNetPacket.r(&m_smart_terrain_id, sizeof(m_smart_terrain_id));
+	}
 }
 
 void CSE_ALifeHumanAbstract::UPDATE_Write(CNetPacket& tNetPacket)
@@ -1857,10 +1863,14 @@ void CSE_ALifeHumanStalker::STATE_Read(CNetPacket& tNetPacket, U16 size)
 	inherited1::STATE_Read(tNetPacket, size);
 
 	if (m_wVersion > 67)
+	{
 		inherited2::STATE_Read(tNetPacket, size);
+	}
 
 	if ((m_wVersion > 90) && (m_wVersion < 111))
+	{
 		tNetPacket.r_u8( );
+	}
 }
 
 void CSE_ALifeHumanStalker::UPDATE_Write(CNetPacket& tNetPacket)
@@ -1933,7 +1943,9 @@ void CSE_ALifeOnlineOfflineGroup::STATE_Write(CNetPacket& tNetPacket)
 	MEMBERS::iterator			I = m_members.begin( );
 	MEMBERS::iterator			E = m_members.end( );
 	for (; I != E; ++I)
+	{
 		save_data((*I).first, tNetPacket);
+	}
 #endif
 }
 

@@ -132,7 +132,7 @@ public:
 	CCC_MemStats(const char* N) : IConsoleCommand(N)
 	{
 		bEmptyArgsHandled = true;
-	};
+	}
 	virtual void Execute(const char* args)
 	{
 		Memory.mem_compact( );
@@ -177,7 +177,7 @@ class CCC_GameDifficulty : public CCC_Token
 {
 public:
 	CCC_GameDifficulty(const char* N) : CCC_Token(N, (u32*) &g_SingleGameDifficulty, difficulty_type_token)
-	{ };
+	{ }
 	virtual void Execute(const char* args)
 	{
 		CCC_Token::Execute(args);
@@ -199,7 +199,7 @@ class CCC_ALifePath : public IConsoleCommand
 {
 public:
 	CCC_ALifePath(const char* N) : IConsoleCommand(N)
-	{ };
+	{ }
 	virtual void Execute(const char* args)
 	{
 		if (!ai( ).get_level_graph( ))
@@ -246,7 +246,7 @@ class CCC_ALifeTimeFactor : public IConsoleCommand
 {
 public:
 	CCC_ALifeTimeFactor(const char* N) : IConsoleCommand(N)
-	{ };
+	{ }
 	virtual void Execute(const char* args)
 	{
 		float id1 = 0.0f;
@@ -271,7 +271,7 @@ class CCC_ALifeSwitchDistance : public IConsoleCommand
 {
 public:
 	CCC_ALifeSwitchDistance(const char* N) : IConsoleCommand(N)
-	{ };
+	{ }
 	virtual void Execute(const char* args)
 	{
 		if (ai( ).get_alife( ))
@@ -301,7 +301,7 @@ class CCC_ALifeProcessTime : public IConsoleCommand
 {
 public:
 	CCC_ALifeProcessTime(const char* N) : IConsoleCommand(N)
-	{ };
+	{ }
 	virtual void Execute(const char* args)
 	{
 		if (ai( ).get_alife( ))
@@ -330,7 +330,7 @@ class CCC_ALifeObjectsPerUpdate : public IConsoleCommand
 {
 public:
 	CCC_ALifeObjectsPerUpdate(const char* N) : IConsoleCommand(N)
-	{ };
+	{ }
 	virtual void Execute(const char* args)
 	{
 		if (ai( ).get_alife( ))
@@ -352,7 +352,7 @@ class CCC_ALifeSwitchFactor : public IConsoleCommand
 {
 public:
 	CCC_ALifeSwitchFactor(const char* N) : IConsoleCommand(N)
-	{ };
+	{ }
 	virtual void Execute(const char* args)
 	{
 		if (ai( ).get_alife( ))
@@ -391,7 +391,7 @@ class CCC_DemoRecord : public IConsoleCommand
 {
 public:
 	CCC_DemoRecord(const char* N) : IConsoleCommand(N)
-	{ };
+	{ }
 	virtual void Execute(const char* args)
 	{
 		if (!g_pGameLevel)
@@ -422,7 +422,7 @@ public:
 	CCC_DemoPlay(const char* N) : IConsoleCommand(N)
 	{
 		bEmptyArgsHandled = true;
-	};
+	}
 	virtual void Execute(const char* args)
 	{
 		if (0 == g_pGameLevel)
@@ -460,7 +460,7 @@ bool valid_file_name(const char* file_name)
 		}
 
 		return false;
-	};
+	}
 
 	return true;
 }
@@ -471,7 +471,7 @@ public:
 	CCC_ALifeSave(const char* N) : IConsoleCommand(N)
 	{
 		bEmptyArgsHandled = true;
-	};
+	}
 	virtual void Execute(const char* args)
 	{
 		if (!g_actor || !Actor( )->g_Alive( ))
@@ -546,7 +546,7 @@ public:
 	CCC_ALifeLoadFrom(const char* N) : IConsoleCommand(N)
 	{
 		bEmptyArgsHandled = true;
-	};
+	}
 	virtual void Execute(const char* args)
 	{
 		if (!ai( ).get_alife( ))
@@ -644,7 +644,7 @@ public:
 	CCC_FlushLog(const char* N) : IConsoleCommand(N)
 	{
 		bEmptyArgsHandled = true;
-	};
+	}
 	virtual void Execute(const char* args)
 	{
 		FlushLog( );
@@ -658,7 +658,7 @@ public:
 	CCC_ClearLog(const char* N) : IConsoleCommand(N)
 	{
 		bEmptyArgsHandled = true;
-	};
+	}
 	virtual void Execute(const char*)
 	{
 		LogFile->clear_not_free( );
@@ -671,7 +671,7 @@ class CCC_FloatBlock : public CCC_Float
 {
 public:
 	CCC_FloatBlock(const char* N, float* V, float _min = 0, float _max = 1) : CCC_Float(N, V, _min, _max)
-	{ };
+	{ }
 
 	virtual void	Execute(const char* args)
 	{
@@ -686,7 +686,7 @@ protected:
 
 public:
 	CCC_Net_CL_InputUpdateRate(const char* N, int* V, int _min = 0, int _max = 999) : CCC_Integer(N, V, _min, _max), value_blin(V)
-	{ };
+	{ }
 
 	virtual void	Execute(const char* args)
 	{
@@ -705,7 +705,7 @@ public:
 	CCC_Script(const char* N) : IConsoleCommand(N)
 	{
 		bEmptyArgsHandled = true;
-	};
+	}
 	virtual void Execute(const char* args)
 	{
 		string256	S;
@@ -735,7 +735,7 @@ public:
 	CCC_ScriptCommand(const char* N) : IConsoleCommand(N)
 	{
 		bEmptyArgsHandled = true;
-	};
+	}
 	virtual void	Execute(const char* args)
 	{
 		if (!xr_strlen(args))
@@ -855,7 +855,7 @@ public:
 	CCC_ScriptDbg(const char* N) : IConsoleCommand(N)
 	{
 		bEmptyArgsHandled = true;
-	};
+	}
 	virtual void Execute(const char* args)
 	{
 		if (strstr(cName, "script_debug_break") == cName)
@@ -885,7 +885,7 @@ public:
 		{
 			ai( ).script_engine( ).restartDebugger( );
 		}
-	};
+	}
 
 	virtual void	Info(TInfo& I)
 	{
@@ -910,7 +910,7 @@ public:
 	CCC_DumpInfos(const char* N) : IConsoleCommand(N)
 	{
 		bEmptyArgsHandled = true;
-	};
+	}
 	virtual void	Execute(const char* args)
 	{
 		CActor* A = smart_cast<CActor*>(Level( ).CurrentEntity( ));
@@ -931,7 +931,7 @@ public:
 	CCC_DumpMap(const char* N) : IConsoleCommand(N)
 	{
 		bEmptyArgsHandled = true;
-	};
+	}
 	virtual void	Execute(const char* args)
 	{
 		Level( ).MapManager( ).Dump( );
@@ -948,7 +948,7 @@ public:
 	CCC_DumpCreatures(const char* N) : IConsoleCommand(N)
 	{
 		bEmptyArgsHandled = true;
-	};
+	}
 	virtual void	Execute(const char* args)
 	{
 		typedef CSafeMapIterator<ALife::_OBJECT_ID, CSE_ALifeDynamicObject>::_REGISTRY::const_iterator const_iterator;
@@ -987,7 +987,7 @@ class CCC_DebugNode : public IConsoleCommand
 {
 public:
 	CCC_DebugNode(const char* N) : IConsoleCommand(N)
-	{ };
+	{ }
 
 	virtual void Execute(const char* args)
 	{
@@ -1018,7 +1018,7 @@ class CCC_ShowMonsterInfo : public IConsoleCommand
 {
 public:
 	CCC_ShowMonsterInfo(const char* N) : IConsoleCommand(N)
-	{ };
+	{ }
 
 	virtual void Execute(const char* args)
 	{
@@ -1044,7 +1044,7 @@ class CCC_DbgPhTrackObj : public IConsoleCommand
 {
 public:
 	CCC_DbgPhTrackObj(const char* N) : IConsoleCommand(N)
-	{ };
+	{ }
 	virtual void Execute(const char* args/**/)
 	{
 		ph_dbg_draw_mask1.set(ph_m1_DbgTrackObject, TRUE);
@@ -1069,7 +1069,7 @@ class CCC_PHIterations : public CCC_Integer
 public:
 	CCC_PHIterations(const char* N) :
 		CCC_Integer(N, &phIterations, 15, 50)
-	{ };
+	{ }
 	virtual void	Execute(const char* args)
 	{
 		CCC_Integer::Execute(args);
@@ -1082,7 +1082,7 @@ class CCC_PHGravity : public IConsoleCommand
 {
 public:
 	CCC_PHGravity(const char* N) : IConsoleCommand(N)
-	{ };
+	{ }
 	virtual void	Execute(const char* args)
 	{
 		if (!ph_world)
@@ -1115,7 +1115,7 @@ class CCC_PHFps : public IConsoleCommand
 {
 public:
 	CCC_PHFps(const char* N) : IConsoleCommand(N)
-	{ };
+	{ }
 	virtual void	Execute(const char* args)
 	{
 		float				step_count = (float) atof(args);
@@ -1136,7 +1136,7 @@ struct CCC_LuaHelp : public IConsoleCommand
 	CCC_LuaHelp(const char* N) : IConsoleCommand(N)
 	{
 		bEmptyArgsHandled = true;
-	};
+	}
 
 	virtual void Execute(const char* args)
 	{
@@ -1149,7 +1149,7 @@ struct CCC_ShowSmartCastStats : public IConsoleCommand
 	CCC_ShowSmartCastStats(const char* N) : IConsoleCommand(N)
 	{
 		bEmptyArgsHandled = true;
-	};
+	}
 
 	virtual void Execute(const char* args)
 	{
@@ -1162,7 +1162,7 @@ struct CCC_ClearSmartCastStats : public IConsoleCommand
 	CCC_ClearSmartCastStats(const char* N) : IConsoleCommand(N)
 	{
 		bEmptyArgsHandled = true;
-	};
+	}
 
 	virtual void Execute(const char* args)
 	{
@@ -1176,7 +1176,7 @@ struct CCC_ClearSmartCastStats : public IConsoleCommand
 struct CCC_JumpToLevel : public IConsoleCommand
 {
 	CCC_JumpToLevel(const char* N) : IConsoleCommand(N)
-	{ };
+	{ }
 
 	virtual void Execute(const char* args)
 	{
@@ -1211,7 +1211,7 @@ public:
 	CCC_MainMenu(const char* N) : IConsoleCommand(N)
 	{
 		bEmptyArgsHandled = true;
-	};
+	}
 	virtual void Execute(const char* args)
 	{
 		bool bWhatToDo = true;
@@ -1237,7 +1237,7 @@ public:
 struct CCC_StartTimeSingle : public IConsoleCommand
 {
 	CCC_StartTimeSingle(const char* N) : IConsoleCommand(N)
-	{ };
+	{ }
 	virtual void	Execute(const char* args)
 	{
 		u32 year = 1, month = 1, day = 1, hours = 0, mins = 0, secs = 0, milisecs = 0;
@@ -1282,7 +1282,7 @@ struct CCC_StartTimeSingle : public IConsoleCommand
 struct CCC_TimeFactorSingle : public CCC_Float
 {
 	CCC_TimeFactorSingle(const char* N, float* V, float _min = 0.f, float _max = 1.f) : CCC_Float(N, V, _min, _max)
-	{ };
+	{ }
 
 	virtual void	Execute(const char* args)
 	{
@@ -1314,8 +1314,7 @@ class CCC_RadioMask :public CCC_Mask
 	CCC_RadioGroupMask2* group;
 
 public:
-	CCC_RadioMask(const char* N, Flags32* V, u32 M) :
-		CCC_Mask(N, V, M)
+	CCC_RadioMask(const char* N, Flags32* V, u32 M) : CCC_Mask(N, V, M)
 	{
 		group = nullptr;
 	}
@@ -1373,7 +1372,7 @@ static CCC_RadioGroupMask2 x##CCC_RadioGroupMask2(&x##CCC_RadioMask1,&x##CCC_Rad
 struct CCC_DbgBullets : public CCC_Integer
 {
 	CCC_DbgBullets(const char* N, int* V, int _min = 0, int _max = 999) : CCC_Integer(N, V, _min, _max)
-	{ };
+	{ }
 
 	virtual void	Execute(const char* args)
 	{
@@ -1389,7 +1388,7 @@ class CCC_TuneAttachableItem : public IConsoleCommand
 {
 public:
 	CCC_TuneAttachableItem(const char* N) :IConsoleCommand(N)
-	{ };
+	{ }
 	virtual void	Execute(const char* args)
 	{
 		if (CAttachableItem::m_dbgItem)
@@ -1427,7 +1426,7 @@ public:
 	CCC_Crash(const char* N) : IConsoleCommand(N)
 	{
 		bEmptyArgsHandled = true;
-	};
+	}
 	virtual void Execute(const char* args)
 	{
 		VERIFY3(false, "This is a test crash", "Do not post it as a bug");
@@ -1495,7 +1494,7 @@ public:
 	CCC_ShowAnimationStats(const char* N) : IConsoleCommand(N)
 	{
 		bEmptyArgsHandled = true;
-	};
+	}
 	virtual void Execute(const char*)
 	{
 		show_animation_stats( );
@@ -1509,7 +1508,7 @@ public:
 	CCC_DumpObjects(const char* N) : IConsoleCommand(N)
 	{
 		bEmptyArgsHandled = true;
-	};
+	}
 	virtual void Execute(const char*)
 	{
 		Level( ).Objects.dump_all_objects( );

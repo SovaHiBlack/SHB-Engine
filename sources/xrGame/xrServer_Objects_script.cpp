@@ -1,10 +1,6 @@
-////////////////////////////////////////////////////////////////////////////
 //	Module 		: xrServer_Objects_script.cpp
-//	Created 	: 19.09.2002
-//  Modified 	: 23.06.2004
-//	Author		: Dmitriy Iassenev
 //	Description : Server objects script export
-////////////////////////////////////////////////////////////////////////////
+
 #include "stdafx.h"
 
 #include "xrServer_Objects.h"
@@ -36,13 +32,13 @@ struct CWrapperBase : public T, public luabind::wrap_base
 	typedef CWrapperBase<T>	self_type;
 
 	inline			CWrapperBase(const char* section) : T(section)
-	{ 		}
+	{ }
 
 	virtual void STATE_Read(CNetPacket& p1)
 	{
 		call<void>("STATE_Read", &p1);
 	}
-	static  void STATE_Read_static(inherited* ptr, CNetPacket* p1)
+	static void STATE_Read_static(inherited* ptr, CNetPacket* p1)
 	{
 		Log("Attempt to call pure virtual method STATE_Read in CSE_Abstract");
 		//ptr->self_type::inherited::STATE_Read(*p1);
@@ -51,7 +47,7 @@ struct CWrapperBase : public T, public luabind::wrap_base
 	{
 		call<void>("STATE_Write", &p1);
 	}
-	static  void STATE_Write_static(inherited* ptr, CNetPacket* p1)
+	static void STATE_Write_static(inherited* ptr, CNetPacket* p1)
 	{
 		Log("Attempt to call pure virtual method STATE_Write in CSE_Abstract");
 		//ptr->self_type::inherited::STATE_Write(*p1);

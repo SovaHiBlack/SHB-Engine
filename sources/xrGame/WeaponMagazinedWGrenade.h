@@ -3,8 +3,6 @@
 #include "WeaponMagazined.h"
 #include "RocketLauncher.h"
 
-//class CWeaponFakeGrenade;
-
 class CWeaponMagazinedWGrenade : public CWeaponMagazined, public CRocketLauncher
 {
 	using inherited									= CWeaponMagazined;

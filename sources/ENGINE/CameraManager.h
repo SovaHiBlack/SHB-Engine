@@ -182,7 +182,7 @@ public:
 	{
 		M.set(vRight, vNormal, vDirection, vPosition);
 	}
-	void					Update				(const Fvector3& P, const Fvector3& D, const Fvector3& N, float fFOV_Dest, float fASPECT_Dest, float fFAR_Dest, float flags = 0);
+	void					Update				(const Fvector3& P, const Fvector3& D, const Fvector3& N, float fFOV_Dest, float fASPECT_Dest, float fFAR_Dest, unsigned int flags = 0);
 	void					Update				(const CCameraBase* C);
 	void					ApplyDevice			(float _viewport_near);
 	static void				ResetPP				( );

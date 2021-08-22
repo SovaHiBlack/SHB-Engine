@@ -1,8 +1,6 @@
-//////////////////////////////////////////////////////////////////////
 // ExplosiveItem.cpp:	класс для вещи которая взрывается под 
 //						действием различных хитов (канистры,
 //						балоны с газом и т.д.)
-//////////////////////////////////////////////////////////////////////
 
 #include "stdafx.h"
 
@@ -29,9 +27,13 @@ void CExplosiveItem::net_Destroy( )
 	CExplosive::net_Destroy( );
 }
 
-void	CExplosiveItem::Hit(SHit* pHDS)
+void CExplosiveItem::Hit(SHit* pHDS)
 {
-	if (CDelayedActionFuse::isActive( ))pHDS->power = 0.f;
+	if (CDelayedActionFuse::isActive( ))
+	{
+		pHDS->power = 0.0f;
+	}
+
 	inherited::Hit(pHDS);
 	if (!CDelayedActionFuse::isActive( ) && CDelayedActionFuse::CheckCondition(GetCondition( )) && CExplosive::Initiator( ) == U16(-1))
 	{
@@ -87,7 +89,7 @@ void CExplosiveItem::net_Relcase(CObject* O)
 	inherited::net_Relcase(O);
 }
 
-void	CExplosiveItem::ActivateExplosionBox(const Fvector3& size, Fvector3& in_out_pos)
+void CExplosiveItem::ActivateExplosionBox(const Fvector3& size, Fvector3& in_out_pos)
 {
 	//PKinematics(Visual())->CalculateBones();
 }

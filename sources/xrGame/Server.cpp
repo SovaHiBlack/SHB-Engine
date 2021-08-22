@@ -31,7 +31,7 @@ void xrClientData::Clear( )
 	m_ping_warn.m_maxPingWarnings = 0;
 	m_ping_warn.m_dwLastMaxPingWarningTime = 0;
 	m_admin_rights.m_has_admin_rights = FALSE;
-};
+}
 
 xrClientData::~xrClientData( )
 {
@@ -103,7 +103,7 @@ IClient* CServer::client_Find_Get(ClientID ID)
 
 	Msg("# Player not found. New player created.");
 	return newCL;
-};
+}
 
 INT	g_sv_Client_Reconnect_Time = 0;
 
@@ -308,7 +308,7 @@ void CServer::SendUpdatesToAll( )
 			xrS_entities::iterator I = entities.begin( );
 			xrS_entities::iterator E = entities.end( );
 			for (; I != E; ++I)
-			{//all entities
+			{	// all entities
 				CSE_Abstract& Test = *(I->second);
 
 				if (0 == Test.owner)
@@ -322,7 +322,7 @@ void CServer::SendUpdatesToAll( )
 				}
 
 				if (Test.s_flags.is(M_SPAWN_OBJECT_PHANTOM))
-				{  // Surely: phantom
+				{	// Surely: phantom
 					continue;
 				}
 
@@ -376,7 +376,7 @@ void CServer::SendUpdatesToAll( )
 		{
 			Msg("----------------------- ");
 		}
-		//.#endif			
+		//.#endif
 		for (u32 p = 0; p <= m_iCurUpdatePacket; p++)
 		{
 			CNetPacket& ToSend = m_aUpdatePackets[p];

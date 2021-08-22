@@ -8,7 +8,7 @@ class CWalmarkManager
 {
 private:
 	SHADER_VECTOR					m_wallmarks;
-	Fvector3							m_pos;
+	Fvector3						m_pos;
 
 public:
 	CObject* m_owner;

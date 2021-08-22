@@ -1,10 +1,6 @@
-////////////////////////////////////////////////////////////////////////////
 //	Module 		: xrServer_Objects_ALife_script.cpp
-//	Created 	: 19.09.2002
-//  Modified 	: 04.06.2003
-//	Author		: Dmitriy Iassenev
 //	Description : Server objects for ALife simulator, script export
-////////////////////////////////////////////////////////////////////////////
+
 #include "stdafx.h"
 
 #include "xrServer_Objects_ALife.h"
@@ -15,20 +11,20 @@
 using namespace luabind;
 
 #pragma optimize("s",on)
-void CSE_ALifeSchedulable::script_register(lua_State *L)
+void CSE_ALifeSchedulable::script_register(lua_State* L)
 {
 	module(L)[
 		class_<IPureSchedulableObject>
 			("ipure_schedulable_object"),
 //			.def(		constructor<>()),
-		
-		class_<CSE_ALifeSchedulable,IPureSchedulableObject>
-			("cse_alife_schedulable")
+
+class_<CSE_ALifeSchedulable, IPureSchedulableObject>
+("cse_alife_schedulable")
 //			.def(		constructor<const char*>())
 	];
 }
 
-void CSE_ALifeGraphPoint::script_register(lua_State *L)
+void CSE_ALifeGraphPoint::script_register(lua_State* L)
 {
 	module(L)[
 		luabind_class_abstract1(
@@ -39,7 +35,7 @@ void CSE_ALifeGraphPoint::script_register(lua_State *L)
 	];
 }
 
-void CSE_ALifeObject::script_register(lua_State *L)
+void CSE_ALifeObject::script_register(lua_State* L)
 {
 	module(L)[
 		luabind_class_alife1(
@@ -47,20 +43,20 @@ void CSE_ALifeObject::script_register(lua_State *L)
 			"cse_alife_object",
 			CSE_Abstract
 		)
-		.def_readonly	("online",				&CSE_ALifeObject::m_bOnline)
-		.def			("move_offline",		(bool (CSE_ALifeObject::*)() const)(&CSE_ALifeObject::move_offline))
-		.def			("move_offline",		(void (CSE_ALifeObject::*)(bool))(&CSE_ALifeObject::move_offline))
-		.def			("visible_for_map",		(bool (CSE_ALifeObject::*)() const)(&CSE_ALifeObject::visible_for_map))
-		.def			("visible_for_map",		(void (CSE_ALifeObject::*)(bool))(&CSE_ALifeObject::visible_for_map))
-		.def			("can_switch_online",	(void (CSE_ALifeObject::*)(bool))(&CSE_ALifeObject::can_switch_online))
-		.def			("can_switch_offline",	(void (CSE_ALifeObject::*)(bool))(&CSE_ALifeObject::can_switch_offline))
-		.def_readonly	("m_level_vertex_id",	&CSE_ALifeObject::m_tNodeID)
-		.def_readonly	("m_game_vertex_id",	&CSE_ALifeObject::m_tGraphID)
-		.def_readonly	("m_story_id",			&CSE_ALifeObject::m_story_id)
+			.def_readonly("online", &CSE_ALifeObject::m_bOnline)
+			.def("move_offline", (bool (CSE_ALifeObject::*)() const)(&CSE_ALifeObject::move_offline))
+			.def("move_offline", (void (CSE_ALifeObject::*)(bool))(&CSE_ALifeObject::move_offline))
+			.def("visible_for_map", (bool (CSE_ALifeObject::*)() const)(&CSE_ALifeObject::visible_for_map))
+			.def("visible_for_map", (void (CSE_ALifeObject::*)(bool))(&CSE_ALifeObject::visible_for_map))
+			.def("can_switch_online", (void (CSE_ALifeObject::*)(bool))(&CSE_ALifeObject::can_switch_online))
+			.def("can_switch_offline", (void (CSE_ALifeObject::*)(bool))(&CSE_ALifeObject::can_switch_offline))
+			.def_readonly("m_level_vertex_id", &CSE_ALifeObject::m_tNodeID)
+			.def_readonly("m_game_vertex_id", &CSE_ALifeObject::m_tGraphID)
+			.def_readonly("m_story_id", &CSE_ALifeObject::m_story_id)
 	];
 }
 
-void CSE_ALifeGroupAbstract::script_register(lua_State *L)
+void CSE_ALifeGroupAbstract::script_register(lua_State* L)
 {
 	module(L)[
 		class_<CSE_ALifeGroupAbstract>
@@ -69,7 +65,7 @@ void CSE_ALifeGroupAbstract::script_register(lua_State *L)
 	];
 }
 
-void CSE_ALifeDynamicObject::script_register(lua_State *L)
+void CSE_ALifeDynamicObject::script_register(lua_State* L)
 {
 	module(L)[
 		luabind_class_dynamic_alife1(
@@ -80,7 +76,7 @@ void CSE_ALifeDynamicObject::script_register(lua_State *L)
 	];
 }
 
-void CSE_ALifeDynamicObjectVisual::script_register(lua_State *L)
+void CSE_ALifeDynamicObjectVisual::script_register(lua_State* L)
 {
 	module(L)[
 		luabind_class_dynamic_alife2(
@@ -92,7 +88,7 @@ void CSE_ALifeDynamicObjectVisual::script_register(lua_State *L)
 	];
 }
 
-void CSE_ALifePHSkeletonObject::script_register(lua_State *L)
+void CSE_ALifePHSkeletonObject::script_register(lua_State* L)
 {
 	module(L)[
 		luabind_class_dynamic_alife2(
@@ -104,7 +100,7 @@ void CSE_ALifePHSkeletonObject::script_register(lua_State *L)
 	];
 }
 
-void CSE_ALifeSpaceRestrictor::script_register(lua_State *L)
+void CSE_ALifeSpaceRestrictor::script_register(lua_State* L)
 {
 	module(L)[
 		luabind_class_dynamic_alife2(
@@ -116,7 +112,7 @@ void CSE_ALifeSpaceRestrictor::script_register(lua_State *L)
 	];
 }
 
-void CSE_ALifeLevelChanger::script_register(lua_State *L)
+void CSE_ALifeLevelChanger::script_register(lua_State* L)
 {
 	module(L)[
 		luabind_class_dynamic_alife1(

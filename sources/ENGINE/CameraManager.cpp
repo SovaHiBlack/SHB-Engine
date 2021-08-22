@@ -230,7 +230,7 @@ void CCameraManager::Update(const CCameraBase* C)
 	Update(C->vPosition, C->vDirection, C->vNormal, C->f_fov, C->f_aspect, g_pGamePersistent->Environment( ).CurrentEnv.far_plane, C->m_Flags.flags);
 }
 
-void CCameraManager::Update(const Fvector3& P, const Fvector3& D, const Fvector3& N, F32 fFOV_Dest, F32 fASPECT_Dest, F32 fFAR_Dest, U32 flags)
+void CCameraManager::Update(const Fvector3& P, const Fvector3& D, const Fvector3& N, float fFOV_Dest, float fASPECT_Dest, float fFAR_Dest, unsigned int flags)
 {
 
 #ifdef DEBUG

@@ -2,7 +2,6 @@
 
 #include "CustomOutfit.h"
 #include "PhysicsShell.h"
-//#include "Inventory_space.h"
 #include "Inventory.h"
 #include "Actor.h"
 #include "game_cl_base.h"
@@ -18,7 +17,9 @@ CCustomOutfit::CCustomOutfit( )
 
 	m_HitTypeProtection.resize(ALife::eHitTypeMax);
 	for (int i = 0; i < ALife::eHitTypeMax; i++)
+	{
 		m_HitTypeProtection[i] = 1.0f;
+	}
 
 	m_boneProtection = xr_new<SBoneProtections>( );
 }
@@ -56,23 +57,35 @@ void CCustomOutfit::Load(const char* section)
 	m_HitTypeProtection[ALife::eHitTypePhysicStrike] = READ_IF_EXISTS(pSettings, r_float, section, "physic_strike_protection", 0.0f);
 
 	if (pSettings->line_exist(section, "actor_visual"))
+	{
 		m_ActorVisual = pSettings->r_string(section, "actor_visual");
+	}
 	else
+	{
 		m_ActorVisual = NULL;
+	}
 
 	m_ef_equipment_type = pSettings->r_u32(section, "ef_equipment_type");
 	if (pSettings->line_exist(section, "power_loss"))
+	{
 		m_fPowerLoss = pSettings->r_float(section, "power_loss");
+	}
 	else
+	{
 		m_fPowerLoss = 1.0f;
+	}
 
 	m_additional_weight = pSettings->r_float(section, "additional_inventory_weight");
 	m_additional_weight2 = pSettings->r_float(section, "additional_inventory_weight2");
 
 	if (pSettings->line_exist(section, "nightvision_sect"))
+	{
 		m_NightVisionSect = pSettings->r_string(section, "nightvision_sect");
+	}
 	else
+	{
 		m_NightVisionSect = NULL;
+	}
 
 	m_full_icon_name = pSettings->r_string(section, "full_icon_name");
 }
@@ -95,20 +108,24 @@ float CCustomOutfit::GetHitTypeProtection(ALife::EHitType hit_type, S16 element)
 	return 1.0f - fBase * bone;
 }
 
-float	CCustomOutfit::HitThruArmour(float hit_power, S16 element, float AP)
+float CCustomOutfit::HitThruArmour(float hit_power, S16 element, float AP)
 {
 	float BoneArmour = m_boneProtection->getBoneArmour(element) * GetCondition( ) * (1 - AP);
 	float NewHitPower = hit_power - BoneArmour;
-	if (NewHitPower < hit_power * m_boneProtection->m_fHitFrac) return hit_power * m_boneProtection->m_fHitFrac;
-	return NewHitPower;
-};
+	if (NewHitPower < hit_power * m_boneProtection->m_fHitFrac)
+	{
+		return hit_power * m_boneProtection->m_fHitFrac;
+	}
 
-BOOL	CCustomOutfit::BonePassBullet(int boneID)
+	return NewHitPower;
+}
+
+BOOL CCustomOutfit::BonePassBullet(int boneID)
 {
 	return m_boneProtection->getBonePassBullet(S16(boneID));
-};
+}
 
-void	CCustomOutfit::OnMoveToSlot( )
+void CCustomOutfit::OnMoveToSlot( )
 {
 	if (m_pCurrentInventory)
 	{
@@ -133,20 +150,22 @@ void	CCustomOutfit::OnMoveToSlot( )
 				}
 
 				if (!NewVisual.size( ))
+				{
 					NewVisual = m_ActorVisual;
+				}
 
 				pActor->ChangeVisual(NewVisual);
 			}
+
 			if (pSettings->line_exist(cNameSect( ), "bones_koeff_protection"))
 			{
 				m_boneProtection->reload(pSettings->r_string(cNameSect( ), "bones_koeff_protection"), smart_cast<CKinematics*>(pActor->Visual( )));
-
 			}
 		}
 	}
-};
+}
 
-void	CCustomOutfit::OnMoveToRuck( )
+void CCustomOutfit::OnMoveToRuck( )
 {
 	if (m_pCurrentInventory)
 	{
@@ -169,11 +188,11 @@ void	CCustomOutfit::OnMoveToRuck( )
 			}
 		}
 	}
-};
+}
 
-u32	CCustomOutfit::ef_equipment_type( ) const
+u32 CCustomOutfit::ef_equipment_type( ) const
 {
-	return		(m_ef_equipment_type);
+	return m_ef_equipment_type;
 }
 
 float CCustomOutfit::GetPowerLoss( )
@@ -181,6 +200,7 @@ float CCustomOutfit::GetPowerLoss( )
 	if (m_fPowerLoss < 1 && GetCondition( ) <= 0)
 	{
 		return 1.0f;
-	};
+	}
+
 	return m_fPowerLoss;
-};
+}
