@@ -10,7 +10,7 @@
 xr_map<CSharedString, TEX_INFO>	CUITextureMaster::m_textures;
 
 #ifdef DEBUG
-u32 CUITextureMaster::m_time = 0;
+unsigned int CUITextureMaster::m_time = 0;
 #endif // def DEBUG
 
 void CUITextureMaster::WriteLog( )

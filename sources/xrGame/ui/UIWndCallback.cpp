@@ -8,9 +8,9 @@
 struct event_comparer
 {
 	CSharedString name;
-	S16 event;
+	signed short event;
 
-	event_comparer(CSharedString n, S16 e) : name(n), event(e)
+	event_comparer(CSharedString n, signed short e) : name(n), event(e)
 	{ }
 	bool operator ( ) (SCallbackInfo* i)
 	{
@@ -28,7 +28,7 @@ void CUIWndCallback::Register(CUIWindow* pChild)
 	pChild->SetMessageTarget(smart_cast<CUIWindow*>(this));
 }
 
-void CUIWndCallback::OnEvent(CUIWindow* pWnd, S16 msg, void* pData)
+void CUIWndCallback::OnEvent(CUIWindow* pWnd, signed short msg, void* pData)
 {
 	if (!pWnd)
 	{
@@ -57,7 +57,7 @@ SCallbackInfo* CUIWndCallback::NewCallback( )
 	return m_callbacks.back( );
 }
 
-void CUIWndCallback::AddCallback(const char* control_id, S16 event, const void_function& f)
+void CUIWndCallback::AddCallback(const char* control_id, signed short event, const void_function& f)
 {
 	SCallbackInfo* c = NewCallback( );
 	c->m_cpp_callback = f;
@@ -65,7 +65,7 @@ void CUIWndCallback::AddCallback(const char* control_id, S16 event, const void_f
 	c->m_event = event;
 }
 
-void CUIWndCallback::AddCallback(const CSharedString& control_id, S16 event, const void_function& f)
+void CUIWndCallback::AddCallback(const CSharedString& control_id, signed short event, const void_function& f)
 {
 	SCallbackInfo* c = NewCallback( );
 	c->m_cpp_callback = f;

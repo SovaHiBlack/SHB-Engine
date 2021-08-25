@@ -51,7 +51,7 @@ void add_rect_to_draw(Frect r)
 	g_wnds_rects.push_back(r);
 }
 
-void draw_rect(Frect& r, u32 color)
+void draw_rect(Frect& r, unsigned int color)
 {
 	if (!dbg_draw_sh)
 	{
@@ -60,7 +60,7 @@ void draw_rect(Frect& r, u32 color)
 	}
 
 	RCache.set_Shader(dbg_draw_sh);
-	u32 vOffset;
+	unsigned int vOffset;
 	FVF::TL* pv = (FVF::TL*) RCache.Vertex.Lock(5, dbg_draw_gm.stride( ), vOffset);
 
 	pv->set(r.lt.x, r.lt.y, color, 0, 0); ++pv;
@@ -336,8 +336,8 @@ bool CUIWindow::OnMouse(float x, float y, EUIMessages mouse_action)
 
 	if (WINDOW_LBUTTON_DOWN == mouse_action)
 	{
-		static u32 _last_db_click_frame = 0;
-		u32 dwCurTime = Device.dwTimeContinual;
+		static unsigned int _last_db_click_frame = 0;
+		unsigned int dwCurTime = Device.dwTimeContinual;
 
 		if ((_last_db_click_frame != Device.dwFrame) && (dwCurTime - m_dwLastClickTime < DOUBLE_CLICK_TIME))
 		{
@@ -354,6 +354,7 @@ bool CUIWindow::OnMouse(float x, float y, EUIMessages mouse_action)
 		{
 			return false;
 		}
+
 		//получить координаты относительно окна
 		cursor_pos.x -= wndRect.left;
 		cursor_pos.y -= wndRect.top;
@@ -630,7 +631,7 @@ void CUIWindow::SetKeyboardCapture(CUIWindow* pChildWindow, bool capture_status)
 }
 
 //обработка сообщений
-void CUIWindow::SendMessage(CUIWindow* pWnd, S16 msg, void* pData)
+void CUIWindow::SendMessage(CUIWindow* pWnd, signed short msg, void* pData)
 {
 	//оповестить дочерние окна
 	for (WINDOW_LIST_it it = m_ChildWndList.begin( ); m_ChildWndList.end( ) != it; ++it)

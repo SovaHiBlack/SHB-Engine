@@ -9,10 +9,10 @@
 #undef PI
 #endif
 
-#ifdef FLT_MAX
-#undef FLT_MAX
-#undef FLT_MIN
-#endif
+//#ifdef FLT_MAX
+//#undef FLT_MAX
+//#undef FLT_MIN
+//#endif
 
 // Constants
 const F32 EPS_S = 0.0000001f;

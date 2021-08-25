@@ -105,9 +105,9 @@ template<typename T>
 class ui_list : public std::list<T, uialloc<T> >
 {
 public:
-	u32							size					( ) const
+	unsigned int				size					( ) const
 	{
-		return (u32)__super::size( );
+		return (unsigned int)__super::size( );
 	}
 };
 
@@ -194,7 +194,7 @@ public:
 	//ф-ция должна переопределяться
 	//pWnd - указатель на окно, которое послало сообщение
 	//pData - указатель на дополнительные данные, которые могут понадобиться
-	virtual void				SendMessage				(CUIWindow* pWnd, S16 msg, void* pData = nullptr);
+	virtual void				SendMessage				(CUIWindow* pWnd, signed short msg, void* pData = nullptr);
 
 	//запрещение/разрешение на ввод с клавиатуры
 	virtual void				Enable					(bool status)
@@ -347,8 +347,8 @@ protected:
 
 	//время прошлого клика мышки
 	//для определения DoubleClick
-	u32													m_dwLastClickTime;
-	u32													m_dwFocusReceiveTime;
+	unsigned int										m_dwLastClickTime;
+	unsigned int										m_dwFocusReceiveTime;
 
 	//флаг автоматического удаления во время вызова деструктора
 	bool												m_bAutoDelete;

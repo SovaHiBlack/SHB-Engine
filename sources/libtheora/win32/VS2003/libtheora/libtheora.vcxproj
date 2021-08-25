@@ -138,11 +138,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\lib\block_inline.h" />
-    <ClInclude Include="..\..\..\lib\encoder_internal.h" />
     <ClInclude Include="..\..\..\lib\encoder_lookup.h" />
     <ClInclude Include="..\..\..\lib\huffman.h" />
     <ClInclude Include="..\..\..\lib\hufftables.h" />
-    <ClInclude Include="..\..\..\lib\mcomp.h" />
     <ClInclude Include="..\..\..\lib\pp.h" />
     <ClInclude Include="..\..\..\lib\quant_lookup.h" />
     <ClInclude Include="..\..\..\include\theora\theora.h" />

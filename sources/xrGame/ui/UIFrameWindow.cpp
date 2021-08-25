@@ -69,7 +69,7 @@ void CUIFrameWindow::SetHeight(float height)
 	m_UIWndFrame.SetHeight(height);
 }
 
-void CUIFrameWindow::SetColor(u32 cl)
+void CUIFrameWindow::SetColor(unsigned int cl)
 {
 	m_UIWndFrame.SetTextureColor(cl);
 }

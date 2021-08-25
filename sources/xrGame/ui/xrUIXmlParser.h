@@ -10,5 +10,5 @@ public:
 							CUIXml				( );
 	virtual					~CUIXml				( );
 
-	virtual CSharedString		correct_file_name	(const char* path, const char* fn);
+	virtual CSharedString	correct_file_name	(const char* path, const char* fn);
 };

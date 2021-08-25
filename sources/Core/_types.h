@@ -31,8 +31,8 @@ using F64 = double;					// f64
 #define flt_max			type_max(F32)
 #define flt_min			type_min(F32)
 
-#define FLT_MAX			flt_max
-#define FLT_MIN			flt_min
+//#define FLT_MAX			flt_max
+//#define FLT_MIN			flt_min
 
 #define flt_zero		type_zero(F32)
 #define flt_eps			type_epsilon(F32)

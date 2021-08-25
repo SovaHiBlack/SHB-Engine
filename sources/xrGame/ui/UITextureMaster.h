@@ -37,7 +37,7 @@ public:
 protected:
 	inline static bool	IsSh					(const char* texture_name);
 
-	static xr_map<CSharedString, TEX_INFO>			m_textures;
+	static xr_map<CSharedString, TEX_INFO>		m_textures;
 
 #ifdef DEBUG
 	static u32									m_time;

@@ -1,11 +1,11 @@
-* Detected CPU: GenuineIntel P3 family, F6/M10/S7, 1996.00 mhz, 47-clk 'rdtsc'
+* Detected CPU: GenuineIntel P3 family, F6/M10/S7, 1996.00 mhz, 35-clk 'rdtsc'
 * CPU Features: RDTSC, MMX, SSE, SSE2
 
 Initializing File System...
 using fs-ltx fsgame.ltx
-FS: 27999 files cached, 4364Kb memory used.
-Init FileSystem 2.535533 sec
-'Core' build 82, Aug 22 2021
+FS: 27996 files cached, 4364Kb memory used.
+Init FileSystem 2.254141 sec
+'Core' build 85, Aug 25 2021
 
 Initializing Engine...
 Executing config-script "user.ltx"...
@@ -13,44 +13,11 @@ Executing config-script "user.ltx"...
 Starting INPUT device...
 Loading DLL: xrRender_R2.dll
 Loading DLL: xrGame.dll
-* [win32]: free[4064576 K], reserved[43156 K], committed[86508 K]
+* [win32]: free[4064576 K], reserved[42968 K], committed[86696 K]
 * [ D3D ]: textures[0 K]
 * [x-ray]: process heap[6436 K], game lua[0 K], engine lua[0 K], render[0 K]
 * [x-ray]: economy: strings[864 K], smem[0 K]
 Executing config-script "c:\engine\shb-engine\release-win32\..\gamedata\config\default_controls.ltx"...
-! cant convert dik_name for dik[16], prop=[
-! cant convert dik_name for dik[17], prop=[
-! cant convert dik_name for dik[18], prop=[
-! cant convert dik_name for dik[19], prop=[
-! cant convert dik_name for dik[20], prop=[
-! cant convert dik_name for dik[21], prop=[
-! cant convert dik_name for dik[22], prop=[
-! cant convert dik_name for dik[23], prop=[
-! cant convert dik_name for dik[24], prop=[
-! cant convert dik_name for dik[25], prop=[
-! cant convert dik_name for dik[26], prop=[
-! cant convert dik_name for dik[27], prop=[
-! cant convert dik_name for dik[30], prop=[
-! cant convert dik_name for dik[31], prop=[
-! cant convert dik_name for dik[32], prop=[
-! cant convert dik_name for dik[33], prop=[
-! cant convert dik_name for dik[34], prop=[
-! cant convert dik_name for dik[35], prop=[
-! cant convert dik_name for dik[36], prop=[
-! cant convert dik_name for dik[37], prop=[
-! cant convert dik_name for dik[38], prop=[
-! cant convert dik_name for dik[39], prop=[
-! cant convert dik_name for dik[40], prop=[
-! cant convert dik_name for dik[41], prop=[
-! cant convert dik_name for dik[44], prop=[
-! cant convert dik_name for dik[45], prop=[
-! cant convert dik_name for dik[46], prop=[
-! cant convert dik_name for dik[47], prop=[
-! cant convert dik_name for dik[48], prop=[
-! cant convert dik_name for dik[49], prop=[
-! cant convert dik_name for dik[50], prop=[
-! cant convert dik_name for dik[51], prop=[
-! cant convert dik_name for dik[52], prop=[
 ! cant convert dik_name for dik[144], prop=[
 [c:\engine\shb-engine\release-win32\..\gamedata\config\default_controls.ltx] successfully loaded.
 Executing config-script "user.ltx"...
@@ -82,10 +49,10 @@ Starting RENDER device...
 * GPU driver: 21.21.13.7654
 * CREATE: DeviceREF: 1
 * Vertex Processor: PURE HARDWARE
-*     Texture memory: 4087 M
+*     Texture memory: 4084 M
 *          DDI-level: 9.0
 * GPU shading: vs(fffe0300/3.0/30), ps(ffff0300/3.0/30)
-* GPU vertex cache: recognized, 24
+* GPU vertex cache: unrecognized, 16
 * DVB created: 1536K
 * DIB created: 512K
 ! Version conflict in shader 'def_shaders\def_aref'
@@ -97,51 +64,74 @@ Starting RENDER device...
 ! Renderer doesn't support blender 'effects\shadow_world'
 ! Version conflict in shader 'effects\watertest-1'
 count of .thm files=1
-load time=112 ms
+load time=46 ms
 * NULLRT supported
 * ...and used
 * HWDST/PCF supported and used
 * NV-DBT supported and used
 Starting engine...
+[16-9] get_xml_name for[td_ui_icons_map.xml] returns [td_ui_icons_map.xml]
+[16-9] get_xml_name for[td_ui_common.xml] returns [td_ui_common.xml]
+[16-9] get_xml_name for[td_ui_old_textures.xml] returns [td_ui_old_textures.xml]
+[16-9] get_xml_name for[td_ui_ingame.xml] returns [td_ui_ingame.xml]
+[16-9] get_xml_name for[td_ui_mainmenu.xml] returns [td_ui_mainmenu.xml]
+[16-9] get_xml_name for[td_ui_hud.xml] returns [td_ui_hud.xml]
+[16-9] get_xml_name for[td_ui_numpad.xml] returns [td_ui_numpad.xml]
+[16-9] get_xml_name for[td_ui_inventory.xml] returns [td_ui_inventory.xml]
+[16-9] get_xml_name for[td_ui_inventory2.xml] returns [td_ui_inventory2.xml]
+[16-9] get_xml_name for[td_ui_iconstotal.xml] returns [td_ui_iconstotal.xml]
+[16-9] get_xml_name for[td_ui_pda.xml] returns [td_ui_pda.xml]
+[16-9] get_xml_name for[td_ui_icons_npc.xml] returns [td_ui_icons_npc.xml]
+[16-9] get_xml_name for[td_ui_npc_monster.xml] returns [td_ui_npc_monster.xml]
+[16-9] get_xml_name for[td_ui_npc_unique.xml] returns [td_ui_npc_unique.xml]
+[16-9] get_xml_name for[td_ui_asus_intro.xml] returns [td_ui_asus_intro.xml]
+[16-9] get_xml_name for[color_defs.xml] returns [color_defs.xml]
+[16-9] get_xml_name for[hint_item.xml] returns [hint_item.xml]
+[16-9] get_xml_name for[ui_mm_main.xml] returns [ui_mm_main.xml]
+[16-9] get_xml_name for[scroll_bar.xml] returns [scroll_bar.xml]
+[16-9] get_xml_name for[message_box.xml] returns [message_box.xml]
 * DVB created: 1536K
 * DIB created: 512K
 * GPU shading: vs(fffe0300/3.0/30), ps(ffff0300/3.0/30)
 * GPU vertex cache: recognized, 24
-*** RESET [456 ms]
+*** RESET [505 ms]
 "c:\engine\shb-engine\release-win32\binaries\engine.exe" 
-* phase time: 5 ms
-* phase cmem: 79486 K
+* phase time: 6 ms
+* phase cmem: 62376 K
 Сервер: Старт...
-* phase time: 86 ms
-* phase cmem: 63757 K
+* phase time: 73 ms
+* phase cmem: 63632 K
 Сервер: Загрузка симуляции жизни...
-* phase time: 5 ms
-* phase cmem: 63884 K
-Загрузка игры "ffdsd.sav"...
+* phase time: 4 ms
+* phase cmem: 63632 K
+Создание новой игры...
+* Creating new game...
 * Loading spawn registry...
 * 8641 spawn points are successfully loaded
-* Loading objects...
-* 15387 objects are successfully loaded
-* Game ffdsd is successfully loaded from file '..\app_data\savedgames\ffdsd.sav' (3.341s)
-* phase time: 3340 ms
-* phase cmem: 93804 K
+* Saving spawns...
+* Saving objects...
+* 14932 objects are successfully saved
+* Game all.sav is successfully saved to file '..\app_data\savedgames\all.sav'
+* New game is successfully created!
+* phase time: 5830 ms
+* phase cmem: 92983 K
 Сервер: Соединяемся...
-* phase time: 21 ms
-* phase cmem: 93875 K
+* phase time: 18 ms
+* phase cmem: 93086 K
 Клиент: Соединение с localhost...
 # Player not found. New player created.
 * client : connection accepted - <>
 * phase time: 7 ms
-* phase cmem: 93883 K
+* phase cmem: 93082 K
 Открытие потока...
 * phase time: 5 ms
-* phase cmem: 93883 K
+* phase cmem: 93082 K
 Загрузка формы объектов...
-* phase time: 5693 ms
-* phase cmem: 166552 K
+* phase time: 5370 ms
+* phase cmem: 165751 K
 Загрузка шейдеров...
-* phase time: 481 ms
-* phase cmem: 168086 K
+* phase time: 523 ms
+* phase cmem: 167286 K
 Загрузка геометрии...
 * [Loading VB] 65532 verts, 2047 Kb
 * [Loading VB] 65525 verts, 2047 Kb
@@ -184,44 +174,131 @@ Starting engine...
 * [Loading IB] 1048575 indices, 2047 Kb
 * [Loading IB] 1048575 indices, 2047 Kb
 * [Loading IB] 718302 indices, 1402 Kb
-* phase time: 188 ms
-* phase cmem: 236913 K
+* phase time: 182 ms
+* phase cmem: 236113 K
 Загрузка базы пространств...
-* phase time: 1691 ms
-* phase cmem: 241285 K
+* phase time: 1647 ms
+* phase cmem: 240564 K
 Загрузка детальных объектов...
 * [DETAILS] VertexConsts(256), Batch(61)
 * [DETAILS] 40687 v(20), 26352 p
 * [DETAILS] Batch(61), VB(794K), IB(154K)
-* phase time: 50 ms
-* phase cmem: 242311 K
+* phase time: 79 ms
+* phase cmem: 241558 K
 Загрузка секторов и порталов...
 * Loading HOM: c:\engine\shb-engine\release-win32\..\gamedata\levels\l01_escape\level.hom
-* phase time: 13 ms
-* phase cmem: 242500 K
+* phase time: 17 ms
+* phase cmem: 241747 K
 Загрузка ИИ объектов...
 - Loading music tracks from 'l01_escape_musics'...
-* phase time: 13 ms
-* phase cmem: 242539 K
+* phase time: 16 ms
+* phase cmem: 241803 K
 Клиент: Создание...
 - Game configuring : Started 
 - Game configuring : Finished 
-* phase time: 230 ms
-* phase cmem: 251603 K
+[16-9] get_xml_name for[maingame.xml] returns [maingame_16.xml]
+[16-9] get_xml_name for[zone_map.xml] returns [zone_map_16.xml]
+[16-9] get_xml_name for[scroll_bar.xml] returns [scroll_bar.xml]
+[16-9] get_xml_name for[car_panel.xml] returns [car_panel_16.xml]
+[16-9] get_xml_name for[motion_icon.xml] returns [motion_icon_16.xml]
+[16-9] get_xml_name for[messages_window.xml] returns [messages_window.xml]
+[16-9] get_xml_name for[scroll_bar.xml] returns [scroll_bar.xml]
+[16-9] get_xml_name for[ui_custom_msgs.xml] returns [ui_custom_msgs.xml]
+[16-9] get_xml_name for[scroll_bar.xml] returns [scroll_bar.xml]
+[16-9] get_xml_name for[inventory_new.xml] returns [inventory_new_16.xml]
+[16-9] get_xml_name for[inventory_item.xml] returns [inventory_item_16.xml]
+[16-9] get_xml_name for[af_params_16.xml] returns [af_params_16.xml]
+[16-9] get_xml_name for[scroll_bar.xml] returns [scroll_bar.xml]
+[16-9] get_xml_name for[scroll_bar.xml] returns [scroll_bar.xml]
+[16-9] get_xml_name for[scroll_bar.xml] returns [scroll_bar.xml]
+[16-9] get_xml_name for[scroll_bar.xml] returns [scroll_bar.xml]
+[16-9] get_xml_name for[scroll_bar.xml] returns [scroll_bar.xml]
+[16-9] get_xml_name for[scroll_bar.xml] returns [scroll_bar.xml]
+[16-9] get_xml_name for[scroll_bar.xml] returns [scroll_bar.xml]
+[16-9] get_xml_name for[inventory_new.xml] returns [inventory_new_16.xml]
+[16-9] get_xml_name for[scroll_bar.xml] returns [scroll_bar.xml]
+[16-9] get_xml_name for[pda.xml] returns [pda.xml]
+[16-9] get_xml_name for[pda_map.xml] returns [pda_map.xml]
+[16-9] get_xml_name for[scroll_bar.xml] returns [scroll_bar.xml]
+[16-9] get_xml_name for[scroll_bar.xml] returns [scroll_bar.xml]
+[16-9] get_xml_name for[hint_item.xml] returns [hint_item.xml]
+[16-9] get_xml_name for[pda_contacts_new.xml] returns [pda_contacts_new.xml]
+[16-9] get_xml_name for[scroll_bar.xml] returns [scroll_bar.xml]
+[16-9] get_xml_name for[scroll_bar.xml] returns [scroll_bar.xml]
+[16-9] get_xml_name for[events_new.xml] returns [events_new.xml]
+[16-9] get_xml_name for[scroll_bar.xml] returns [scroll_bar.xml]
+[16-9] get_xml_name for[news.xml] returns [news.xml]
+[16-9] get_xml_name for[scroll_bar.xml] returns [scroll_bar.xml]
+[16-9] get_xml_name for[scroll_bar.xml] returns [scroll_bar.xml]
+[16-9] get_xml_name for[encyclopedia.xml] returns [encyclopedia.xml]
+[16-9] get_xml_name for[scroll_bar.xml] returns [scroll_bar.xml]
+[16-9] get_xml_name for[scroll_bar.xml] returns [scroll_bar.xml]
+[16-9] get_xml_name for[actor_statistic.xml] returns [actor_statistic.xml]
+[16-9] get_xml_name for[scroll_bar.xml] returns [scroll_bar.xml]
+[16-9] get_xml_name for[scroll_bar.xml] returns [scroll_bar.xml]
+[16-9] get_xml_name for[pda_dialog_character.xml] returns [pda_dialog_character_16.xml]
+[16-9] get_xml_name for[stalkers_ranking.xml] returns [stalkers_ranking.xml]
+[16-9] get_xml_name for[scroll_bar.xml] returns [scroll_bar.xml]
+[16-9] get_xml_name for[stalkers_ranking_character.xml] returns [stalkers_ranking_character_16.xml]
+[16-9] get_xml_name for[pda_events.xml] returns [pda_events.xml]
+[16-9] get_xml_name for[pda_events.xml] returns [pda_events.xml]
+[16-9] get_xml_name for[scroll_bar.xml] returns [scroll_bar.xml]
+[16-9] get_xml_name for[scroll_bar.xml] returns [scroll_bar.xml]
+[16-9] get_xml_name for[hint_item.xml] returns [hint_item.xml]
+[16-9] get_xml_name for[scroll_bar.xml] returns [scroll_bar.xml]
+[16-9] get_xml_name for[scroll_bar.xml] returns [scroll_bar.xml]
+[16-9] get_xml_name for[job_item.xml] returns [job_item.xml]
+[16-9] get_xml_name for[talk.xml] returns [talk_16.xml]
+[16-9] get_xml_name for[trade_character.xml] returns [trade_character_16.xml]
+[16-9] get_xml_name for[trade_character.xml] returns [trade_character_16.xml]
+[16-9] get_xml_name for[scroll_bar.xml] returns [scroll_bar.xml]
+[16-9] get_xml_name for[scroll_bar.xml] returns [scroll_bar.xml]
+[16-9] get_xml_name for[trade.xml] returns [trade_16.xml]
+[16-9] get_xml_name for[trade_character.xml] returns [trade_character_16.xml]
+[16-9] get_xml_name for[trade_character.xml] returns [trade_character_16.xml]
+[16-9] get_xml_name for[scroll_bar.xml] returns [scroll_bar.xml]
+[16-9] get_xml_name for[scroll_bar.xml] returns [scroll_bar.xml]
+[16-9] get_xml_name for[scroll_bar.xml] returns [scroll_bar.xml]
+[16-9] get_xml_name for[scroll_bar.xml] returns [scroll_bar.xml]
+[16-9] get_xml_name for[trade_item.xml] returns [trade_item_16.xml]
+[16-9] get_xml_name for[af_params_16.xml] returns [af_params_16.xml]
+[16-9] get_xml_name for[scroll_bar.xml] returns [scroll_bar.xml]
+[16-9] get_xml_name for[carbody_new.xml] returns [carbody_new_16.xml]
+[16-9] get_xml_name for[trade_character.xml] returns [trade_character_16.xml]
+[16-9] get_xml_name for[trade_character.xml] returns [trade_character_16.xml]
+[16-9] get_xml_name for[scroll_bar.xml] returns [scroll_bar.xml]
+[16-9] get_xml_name for[scroll_bar.xml] returns [scroll_bar.xml]
+[16-9] get_xml_name for[carbody_item.xml] returns [carbody_item_16.xml]
+[16-9] get_xml_name for[af_params_16.xml] returns [af_params_16.xml]
+[16-9] get_xml_name for[scroll_bar.xml] returns [scroll_bar.xml]
+[16-9] get_xml_name for[scroll_bar.xml] returns [scroll_bar.xml]
+[16-9] get_xml_name for[inventory_new.xml] returns [inventory_new_16.xml]
+[16-9] get_xml_name for[scroll_bar.xml] returns [scroll_bar.xml]
+[16-9] get_xml_name for[message_box.xml] returns [message_box.xml]
+* phase time: 196 ms
+* phase cmem: 249278 K
 Загрузка текстур...
-* t-report - base: 973, 373687 K
+* t-report - base: 972, 373671 K
 * t-report - lmap: 7, 7168 K
-* phase time: 2804 ms
-* phase cmem: 656157 K
+* phase time: 2887 ms
+* phase cmem: 653813 K
 Клиент: Синхронизация...
 * phase time: 26 ms
-* phase cmem: 656157 K
-* [win32]: free[3135780 K], reserved[196568 K], committed[861892 K]
-* [ D3D ]: textures[380856 K]
-* [x-ray]: process heap[656157 K], game lua[21253 K], engine lua[206 K], render[0 K]
-* [x-ray]: economy: strings[2716 K], smem[0 K]
+* phase cmem: 653813 K
+* [win32]: free[3130872 K], reserved[195572 K], committed[867796 K]
+* [ D3D ]: textures[380840 K]
+* [x-ray]: process heap[653813 K], game lua[24980 K], engine lua[206 K], render[0 K]
+* [x-ray]: economy: strings[2800 K], smem[0 K]
 skeleton: actors\hero\stalker_novice
 !!! 45 bones
+[16-9] get_xml_name for[map_spots.xml] returns [map_spots.xml]
+[16-9] get_xml_name for[map_spots_escape.xml] returns [map_spots_escape.xml]
+[16-9] get_xml_name for[map_spots_garbage.xml] returns [map_spots_garbage.xml]
+[16-9] get_xml_name for[map_spots_agroprom.xml] returns [map_spots_agroprom.xml]
+[16-9] get_xml_name for[map_spots_bar.xml] returns [map_spots_bar.xml]
+[16-9] get_xml_name for[map_spots_radar.xml] returns [map_spots_radar.xml]
+[16-9] get_xml_name for[map_spots_relations.xml] returns [map_spots_relations.xml]
+[16-9] get_xml_name for[map_spots_lchangers.xml] returns [map_spots_lchangers.xml]
 skeleton: meshes\brkbl#0
 !!! 9 bones
 skeleton: meshes\brkbl#1
@@ -324,8 +401,6 @@ skeleton: equipments\item_datchik1
 !!! 1 bones
 skeleton: equipments\light_night
 !!! 4 bones
-skeleton: actors\trader\trader
-!!! 55 bones
 skeleton: equipments\novice_suit
 !!! 1 bones
 skeleton: weapons\binoculars\wpn_binoculars
@@ -358,10 +433,24 @@ skeleton: physics\door\door_traders_box
 !!! 3 bones
 skeleton: physics\light\lampa_01_on
 !!! 7 bones
+skeleton: actors\trader\trader
+!!! 55 bones
+skeleton: weapons\ammo\ammo_9x18_fmj
+!!! 1 bones
+skeleton: weapons\pm\wpn_pm
+!!! 3 bones
+skeleton: weapons\pm\wpn_pm_hud
+!!! 51 bones
+skeleton: weapons\knife\wpn_knife
+!!! 2 bones
+skeleton: weapons\knife\wpn_knife_hud
+!!! 42 bones
 skeleton: equipments\item_notebook
 !!! 3 bones
 skeleton: monsters\flesh\flesh
 !!! 26 bones
+skeleton: equipments\item_flesh_eye
+!!! 1 bones
 skeleton: actors\novice\green_stalker_4
 !!! 45 bones
 skeleton: weapons\ammo\ammo_12x70_buck
@@ -372,24 +461,18 @@ skeleton: weapons\bm_16\wpn_bm-16_hud
 !!! 50 bones
 skeleton: food\conserv1
 !!! 1 bones
-skeleton: actors\novice\green_stalker_5
+skeleton: actors\novice\green_stalker_3
 !!! 45 bones
-skeleton: weapons\ammo\ammo_9x18_fmj
-!!! 1 bones
-skeleton: weapons\pm\wpn_pm
-!!! 3 bones
-skeleton: weapons\pm\wpn_pm_hud
-!!! 51 bones
 skeleton: equipments\item_bandage
 !!! 1 bones
 skeleton: actors\novice\green_stalker_2
 !!! 45 bones
 skeleton: weapons\bred\bred
 !!! 1 bones
-skeleton: actors\novice\green_stalker_3
-!!! 45 bones
 skeleton: weapons\kolbasa\kolbasa
 !!! 1 bones
+skeleton: actors\novice\green_stalker_5
+!!! 45 bones
 skeleton: actors\neytral\stalker_neytral_balon_1
 !!! 45 bones
 skeleton: weapons\ammo\ammo_545x39_fmj
@@ -406,26 +489,8 @@ skeleton: physics\small_trash\doski_br_02
 !!! 6 bones
 skeleton: physics\vehicles\mi24\veh_mi24_u_01
 !!! 29 bones
-skeleton: monsters\dog\dog
-!!! 33 bones
-skeleton: equipments\item_dog_tail
-!!! 1 bones
-skeleton: monsters\mutant_boar\mutant_boar
-!!! 48 bones
-skeleton: actors\novice\green_stalker_8
-!!! 45 bones
-skeleton: weapons\pb\wpn_pb
-!!! 3 bones
-skeleton: weapons\pb\wpn_pb_hud
-!!! 46 bones
 skeleton: physics\large_trash\poddon
 !!! 1 bones
-skeleton: actors\bandit\stalker_bandit_3
-!!! 45 bones
-skeleton: actors\bandit\stalker_bandit_4
-!!! 45 bones
-skeleton: actors\bandit\stalker_bandit_5
-!!! 45 bones
 skeleton: physics\dead_body\skelet_combine_pose_06
 !!! 15 bones
 skeleton: physics\rope\rope_01
@@ -436,9 +501,9 @@ skeleton: physics\decor\teapot_1
 !!! 8 bones
 skeleton: actors\soldier\soldier_spetsnaz
 !!! 45 bones
-skeleton: actors\soldier\soldier_obichniy
-!!! 45 bones
 skeleton: actors\soldier\soldier_bandana
+!!! 45 bones
+skeleton: actors\soldier\soldier_obichniy
 !!! 45 bones
 skeleton: actors\soldier\soldier_bandana_5
 !!! 45 bones
@@ -446,10 +511,8 @@ skeleton: actors\soldier\soldier_beret_1
 !!! 45 bones
 skeleton: physics\decor\rupor
 !!! 3 bones
-skeleton: monsters\dog\dog_white
-!!! 33 bones
-skeleton: monsters\dog\dog_bulterier
-!!! 33 bones
+skeleton: actors\bandit\stalker_bandit_5
+!!! 45 bones
 skeleton: monsters\crow\crow
 !!! 16 bones
 skeleton: physics\decor\bottle_bar_stakan
@@ -460,14 +523,14 @@ skeleton: equipments\drink_nonstop
 !!! 1 bones
 skeleton: equipments\drink_nonstop_old
 !!! 1 bones
-skeleton: actors\neytral\stalker_neytral_hood_2
+skeleton: actors\neytral\stalker_neytral_balon_8
 !!! 45 bones
 skeleton: actors\novice\green_stalker_1
 !!! 45 bones
 skeleton: equipments\item_minipda
 !!! 1 bones
-skeleton: monsters\dog\dog_red
-!!! 33 bones
+skeleton: actors\bandit\stalker_bandit_4
+!!! 45 bones
 skeleton: physics\anomaly\artefact_blackdrip
 !!! 2 bones
 skeleton: weapons\artefact\wpn_artefact_hud
@@ -482,10 +545,6 @@ skeleton: physics\light\new_light\light_white_glass
 !!! 3 bones
 skeleton: physics\light\new_light\light_alarm_glass
 !!! 3 bones
-skeleton: equipments\bandit_suit
-!!! 1 bones
-skeleton: actors\hero\stalker_bandit
-!!! 45 bones
 skeleton: physics\box\expl_dinamit
 !!! 1 bones
 skeleton: physics\equipment_cache\equipment_instrument_case_01_case
@@ -524,87 +583,75 @@ skeleton: physics\small_trash\wood_board_br_01b
 !!! 1 bones
 skeleton: physics\decor\fire_vedro
 !!! 8 bones
-skeleton: equipments\item_aptechka
-!!! 1 bones
-skeleton: weapons\knife\wpn_knife
-!!! 2 bones
-skeleton: weapons\knife\wpn_knife_hud
-!!! 42 bones
-skeleton: weapons\fort\wpn_fort
-!!! 3 bones
-skeleton: weapons\fort\wpn_fort_hud
-!!! 51 bones
-skeleton: weapons\grenade\wpn_f_1
-!!! 3 bones
-skeleton: weapons\grenade\wpn_f_1_hud
-!!! 51 bones
-skeleton: weapons\ammo\ammo_9x18_pmm
-!!! 1 bones
-skeleton: equipments\item_antirad
-!!! 1 bones
-skeleton: equipments\stalker_suit
-!!! 2 bones
-skeleton: weapons\mp5\wpn_mp5
-!!! 5 bones
-skeleton: weapons\mp5\wpn_mp5_hud
-!!! 48 bones
+[16-9] get_xml_name for[maingame_pda_msg.xml] returns [maingame_pda_msg.xml]
 skeleton: weapons\bolt\wpn_bolt
 !!! 2 bones
 skeleton: weapons\bolt\wpn_bolt_hud
 !!! 42 bones
 skeleton: weapons\rpg_7\wpn_rpg_7_grenade
 !!! 1 bones
-skeleton: monsters\pseudodog\pseudodog
-!!! 35 bones
-* MEMORY USAGE: 833460 K
+skeleton: weapons\grenade\wpn_rgd_5
+!!! 3 bones
+skeleton: weapons\grenade\wpn_rgd_5_hud
+!!! 51 bones
+skeleton: equipments\item_aptechka
+!!! 1 bones
+skeleton: equipments\item_antirad
+!!! 1 bones
+* MEMORY USAGE: 799503 K
 ~ Invalid syntax in call to 'r__tf_aniso'
 ~ Valid arguments: integer value in range [1,16]
-* DVB created: 1536K
-* DIB created: 512K
-* GPU shading: vs(fffe0300/3.0/30), ps(ffff0300/3.0/30)
-* GPU vertex cache: recognized, 24
-*** RESET [0 ms]
-* MEMORY USAGE: 850109 K
-~ Invalid syntax in call to 'r__tf_aniso'
-~ Valid arguments: integer value in range [1,16]
-* DVB created: 1536K
-* DIB created: 512K
-* GPU shading: vs(fffe0300/3.0/30), ps(ffff0300/3.0/30)
-* GPU vertex cache: recognized, 24
-*** RESET [428 ms]
-* MEMORY USAGE: 844922 K
-~ Invalid syntax in call to 'r__tf_aniso'
-~ Valid arguments: integer value in range [1,16]
+skeleton: monsters\dog\dog
+!!! 33 bones
+skeleton: monsters\dog\dog_white
+!!! 33 bones
+skeleton: monsters\dog\dog_bulterier
+!!! 33 bones
+skeleton: equipments\item_dog_tail
+!!! 1 bones
+part_3_jump
+[16-9] get_xml_name for[game_tutorials.xml] returns [game_tutorials.xml]
+[16-9] get_xml_name for[ui_credits.xml] returns [ui_credits.xml]
+[16-9] get_xml_name for[ui_movies.xml] returns [ui_movies.xml]
+part_4_crouch
+[16-9] get_xml_name for[game_tutorials.xml] returns [game_tutorials.xml]
+[16-9] get_xml_name for[ui_credits.xml] returns [ui_credits.xml]
+[16-9] get_xml_name for[ui_movies.xml] returns [ui_movies.xml]
+skeleton: monsters\mutant_boar\mutant_boar
+!!! 48 bones
+part_10_sprint
+[16-9] get_xml_name for[game_tutorials.xml] returns [game_tutorials.xml]
+[16-9] get_xml_name for[ui_credits.xml] returns [ui_credits.xml]
+[16-9] get_xml_name for[ui_movies.xml] returns [ui_movies.xml]
 skeleton: physics\equipment_cache\equipment_rucksack_02_case
 !!! 1 bones
-skeleton: physics\balon\kanistra
+part_2_binocular
+[16-9] get_xml_name for[game_tutorials.xml] returns [game_tutorials.xml]
+[16-9] get_xml_name for[ui_credits.xml] returns [ui_credits.xml]
+[16-9] get_xml_name for[ui_movies.xml] returns [ui_movies.xml]
+part_12_relations
+[16-9] get_xml_name for[game_tutorials.xml] returns [game_tutorials.xml]
+[16-9] get_xml_name for[ui_credits.xml] returns [ui_credits.xml]
+[16-9] get_xml_name for[ui_movies.xml] returns [ui_movies.xml]
+skeleton: equipments\bandit_suit
 !!! 1 bones
 skeleton: physics\equipment_cache\equipment_box_02_case
 !!! 1 bones
-skeleton: physics\anomaly\artefact_blackdrip_2
-!!! 2 bones
-skeleton: physics\anomaly\artefact_needles1
-!!! 2 bones
-skeleton: physics\equipment_cache\equipment_pipe_02_case
+skeleton: physics\balon\kanistra
 !!! 1 bones
-skeleton: actors\soldier\soldier_bandana_4
-!!! 45 bones
-part_pda_diary
-skeleton: actors\soldier\soldier_bandana_3
-!!! 45 bones
-skeleton: equipments\item_flesh_eye
-!!! 1 bones
-skeleton: physics\equipment_cache\equipment_seif_02_case
-!!! 1 bones
-skeleton: actors\neytral\stalker_neytral_hood_uzor
-!!! 45 bones
-skeleton: actors\neytral\stalker_neytral_balon_4
-!!! 45 bones
-part_15_hide_weapon
-skeleton: physics\equipment_cache\equipment_cross_1_case
-!!! 1 bones
-skeleton: equipments\item_aptechka3
-!!! 1 bones
+skeleton: monsters\dog\dog_red
+!!! 33 bones
+[16-9] get_xml_name for[ui_mm_main.xml] returns [ui_mm_main.xml]
+[16-9] get_xml_name for[scroll_bar.xml] returns [scroll_bar.xml]
+[16-9] get_xml_name for[ui_mm_main.xml] returns [ui_mm_main.xml]
+[16-9] get_xml_name for[scroll_bar.xml] returns [scroll_bar.xml]
+[16-9] get_xml_name for[ui_mm_save_dlg.xml] returns [ui_mm_save_dlg.xml]
+[16-9] get_xml_name for[scroll_bar.xml] returns [scroll_bar.xml]
+* Saving spawns...
+* Saving objects...
+* 15270 objects are successfully saved
+* Game ert.sav is successfully saved to file '..\app_data\savedgames\ert.sav'
+[16-9] get_xml_name for[message_box.xml] returns [message_box.xml]
 - Disconnect
 - Destroying level
 DestroySingleton::RefCounter: 0

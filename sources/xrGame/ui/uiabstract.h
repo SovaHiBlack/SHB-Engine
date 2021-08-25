@@ -13,8 +13,8 @@ class IUIFontControl
 public:
 	virtual					~IUIFontControl					( )
 	{ }
-	virtual void			SetTextColor					(u32 color) = 0;
-	virtual u32				GetTextColor					( ) = 0;
+	virtual void			SetTextColor					(unsigned int color) = 0;
+	virtual unsigned int	GetTextColor					( ) = 0;
 	virtual void			SetFont							(CGameFont* pFont) = 0;
 	virtual CGameFont*		GetFont							( ) = 0;
 	virtual void			SetTextAlignment				(ETextAlignment alignment) = 0;
@@ -45,8 +45,8 @@ public:
 	{ }
 	virtual void			CreateShader					(const char* tex, const char* sh = "hud\\default") = 0;
 	virtual void			SetShader						(const ref_shader& sh) = 0;
-	virtual void			SetTextureColor					(u32 color) = 0;
-	virtual u32				GetTextureColor					( ) const = 0;
+	virtual void			SetTextureColor					(unsigned int color) = 0;
+	virtual unsigned int	GetTextureColor					( ) const = 0;
 	virtual void			SetOriginalRect					(const Frect& r) = 0;
 	virtual void			SetOriginalRectEx				(const Frect& r) = 0;
 };
@@ -237,7 +237,9 @@ public:
 			}
 			break;
 			default:
+			{
 				NODEFAULT;
+			}
 		}
 	}
 	void					MoveWndDelta					(float dx, float dy)

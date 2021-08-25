@@ -19,7 +19,7 @@ public:
 	virtual void	Init				(const char* base_name, Frect* pRect);
 
 	virtual void	InitTexture			(const char* texture);
-	void			SetTextureColor		(u32 color)
+	void			SetTextureColor		(unsigned int color)
 	{
 		m_UIWndFrame.SetTextureColor(color);
 	}
@@ -27,7 +27,7 @@ public:
 	virtual void	SetWidth			(float width);
 	virtual void	SetHeight			(float height);
 
-	void			SetColor			(u32 cl);
+	void			SetColor			(unsigned int cl);
 
 	virtual void	Draw				( );
 	virtual void	Update				( );
