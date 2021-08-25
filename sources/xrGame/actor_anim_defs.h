@@ -8,11 +8,19 @@ struct SAnimState
 	MotionID	legs_back;
 	MotionID	legs_ls;
 	MotionID	legs_rs;
-	void		Create								(CKinematicsAnimated* K, const char* base0, const char* base1);
+	void		Create(CKinematicsAnimated* K, const char* base0, const char* base1);
 };
 
-struct STorsoWpn{
-	enum eMovingState{eIdle, eWalk, eRun, eSprint, eTotal};
+struct STorsoWpn
+{
+	enum eMovingState
+	{
+		eIdle,
+		eWalk,
+		eRun,
+		eSprint,
+		eTotal
+	};
 	MotionID	moving[eTotal];
 
 	MotionID	zoom;
@@ -31,7 +39,7 @@ struct STorsoWpn{
 	MotionID	all_attack_0;
 	MotionID	all_attack_1;
 	MotionID	all_attack_2;
-	void		Create								(CKinematicsAnimated* K, const char* base0, const char* base1);
+	void		Create(CKinematicsAnimated* K, const char* base0, const char* base1);
 };
 
 #define _total_anim_slots_ 13
@@ -51,17 +59,17 @@ struct SActorState
 	MotionID		m_head_idle;
 
 	MotionID		m_damage[DAMAGE_FX_COUNT];
-	void			Create							(CKinematicsAnimated* K, const char* base);
-	void			CreateClimb						(CKinematicsAnimated* K);
+	void			Create(CKinematicsAnimated* K, const char* base);
+	void			CreateClimb(CKinematicsAnimated* K);
 };
 
-struct SActorSprintState 
+struct SActorSprintState
 {
 	//leg anims
 	MotionID		legs_fwd;
 	MotionID		legs_ls;
 	MotionID		legs_rs;
-	void Create		(CKinematicsAnimated* K);
+	void Create(CKinematicsAnimated* K);
 };
 
 struct SActorMotions
@@ -82,14 +90,14 @@ struct SVehicleAnimCollection
 	MotionID		idles[MAX_IDLES];
 	MotionID		steer_left;
 	MotionID		steer_right;
-					SVehicleAnimCollection	();
-	void			Create				(CKinematicsAnimated* K, U16 num);
+	SVehicleAnimCollection( );
+	void			Create(CKinematicsAnimated* K, U16 num);
 };
 
 struct SActorVehicleAnims
 {
-	static const int TYPES_NUMBER=2;
-	SVehicleAnimCollection m_vehicles_type_collections	[TYPES_NUMBER];
-						SActorVehicleAnims				();
-	void				Create							(CKinematicsAnimated* K);
+	static const int TYPES_NUMBER = 2;
+	SVehicleAnimCollection m_vehicles_type_collections[TYPES_NUMBER];
+	SActorVehicleAnims( );
+	void				Create(CKinematicsAnimated* K);
 };

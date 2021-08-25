@@ -1,8 +1,8 @@
-// hit_immunity.cpp:	класс для тех объектов, которые поддерживают коэффициенты иммунитета для разных типов хитов
+// HitImmunity.cpp:	класс для тех объектов, которые поддерживают коэффициенты иммунитета для разных типов хитов
 
 #include "stdafx.h"
 
-#include "hit_immunity.h"
+#include "HitImmunity.h"
 
 CHitImmunity::CHitImmunity( )
 {

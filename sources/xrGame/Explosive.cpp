@@ -4,7 +4,7 @@
 
 #include "Explosive.h"
 #include "PhysicsShell.h"
-#include "entity.h"
+#include "Entity.h"
 //#include "PSObject.h"
 #include "ParticlesObject.h"
 

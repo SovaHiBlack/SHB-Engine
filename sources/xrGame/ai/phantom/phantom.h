@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../../entity.h"
+#include "../../Entity.h"
 #include "../../fastdelegate.h"
 #include "../../..\ENGINE\SkeletonAnimated.h"
 

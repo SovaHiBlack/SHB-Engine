@@ -22,7 +22,7 @@
 #include "ElevatorState.h"
 #include "CharacterPhysicsSupport.h"
 #include "EffectorShot.h"
-#include "phcollidevalidator.h"
+#include "PHCollideValidator.h"
 #include "PHShell.h"
 
 #include "Physics.h"
@@ -37,7 +37,7 @@ void CActor::cam_Set(EActorCameras style)
 	cam_Active( )->OnActivate(old_cam);
 }
 
-float CActor::f_Ladder_cam_limit = 1.f;
+float CActor::f_Ladder_cam_limit = 1.0f;
 void CActor::cam_SetLadder( )
 {
 	CCameraBase* C = cameras[eacFirstEye];
@@ -117,7 +117,7 @@ float CActor::CameraHeight( )
 
 inline float viewport_near(float& w, float& h)
 {
-	w = 2.f * VIEWPORT_NEAR * tan(deg2rad(Device.fFOV) / 2.f);
+	w = 2.0f * VIEWPORT_NEAR * tan(deg2rad(Device.fFOV) / 2.0f);
 	h = w * Device.fASPECT;
 	float	c = _sqrt(w * w + h * h);
 	return	_max(_max(VIEWPORT_NEAR, _max(w, h)), c);
@@ -212,19 +212,26 @@ void CActor::cam_Update(float dt, float fFOV)
 			u32 tri_count = xrc.r_count( );
 			if (tri_count)
 			{
-				float da = 0.f;
+				float da = 0.0f;
 				BOOL bIntersect = FALSE;
-				Fvector3	ext = { w,h,VIEWPORT_NEAR / 2 };
+				Fvector3	ext = { w, h, VIEWPORT_NEAR / 2 };
 				if (test_point(xrc, xform, mat, ext, radius, alpha))
 				{
-					da = PI / 1000.f;
+					da = PI / 1000.0f;
 					if (!fis_zero(r_torso.roll))
+					{
 						da *= r_torso.roll / _abs(r_torso.roll);
-					for (float angle = 0.f; _abs(angle) < _abs(alpha); angle += da)
+					}
+
+					for (float angle = 0.0f; _abs(angle) < _abs(alpha); angle += da)
+					{
 						if (test_point(xrc, xform, mat, ext, radius, angle))
 						{
-							bIntersect = TRUE; break;
+							bIntersect = TRUE;
+							break;
 						}
+					}
+
 					valid_angle = bIntersect ? angle : alpha;
 				}
 			}
@@ -241,7 +248,7 @@ void CActor::cam_Update(float dt, float fFOV)
 	if (!fis_zero(r_torso.roll))
 	{
 		float radius = point.y * 0.5f;
-		float valid_angle = r_torso.roll / 2.f;
+		float valid_angle = r_torso.roll / 2.0f;
 		calc_point(point, radius, 0, valid_angle);
 		dangle.z = (PI_DIV_2 - ((PI + valid_angle) / 2));
 	}
@@ -253,9 +260,15 @@ void CActor::cam_Update(float dt, float fFOV)
 	{
 		fPrevCamPos += dt * 1.5f;
 		if (fPrevCamPos > flCurrentPlayerY)
+		{
 			fPrevCamPos = flCurrentPlayerY;
+		}
+
 		if (flCurrentPlayerY - fPrevCamPos > 0.2f)
+		{
 			fPrevCamPos = flCurrentPlayerY - 0.2f;
+		}
+
 		point.y += fPrevCamPos - flCurrentPlayerY;
 	}
 	else
@@ -362,24 +375,43 @@ void CActor::cam_Update(float dt, float fFOV)
 // shot effector stuff
 void CActor::update_camera(CCameraShotEffector* effector)
 {
-	if (!effector) return;
+	if (!effector)
+	{
+		return;
+	}
+
 	//	if (Level().CurrentViewEntity() != this) return;
 
 	CCameraBase* pACam = cam_FirstEye( );
-	if (!pACam) return;
+	if (!pACam)
+	{
+		return;
+	}
 
 	if (pACam->bClampPitch)
 	{
 		while (pACam->pitch < pACam->lim_pitch[0])
+		{
 			pACam->pitch += PI_MUL_2;
+		}
+
 		while (pACam->pitch > pACam->lim_pitch[1])
+		{
 			pACam->pitch -= PI_MUL_2;
+		}
 	}
 
 	effector->ApplyLastAngles(&(pACam->pitch), &(pACam->yaw));
 
-	if (pACam->bClampYaw)	clamp(pACam->yaw, pACam->lim_yaw[0], pACam->lim_yaw[1]);
-	if (pACam->bClampPitch)	clamp(pACam->pitch, pACam->lim_pitch[0], pACam->lim_pitch[1]);
+	if (pACam->bClampYaw)
+	{
+		clamp(pACam->yaw, pACam->lim_yaw[0], pACam->lim_yaw[1]);
+	}
+
+	if (pACam->bClampPitch)
+	{
+		clamp(pACam->pitch, pACam->lim_pitch[0], pACam->lim_pitch[1]);
+	}
 }
 
 

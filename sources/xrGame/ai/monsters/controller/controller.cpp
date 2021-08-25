@@ -3,7 +3,7 @@
 #include "controller.h"
 #include "controller_state_manager.h"
 #include "../controlled_entity.h"
-#include "../../../actor.h"
+#include "../../../Actor.h"
 #include "../../../ActorEffector.h"
 #include "../ai_monster_effector.h"
 #include "../../../HUDManager.h"//

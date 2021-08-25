@@ -1,6 +1,6 @@
 #pragma once
 
-#include "entity.h"
+#include "Entity.h"
 
 using SHADER_VECTOR = xr_vector<ref_shader>;
 using SHADER_VECTOR_IT = SHADER_VECTOR::iterator;

@@ -1,7 +1,7 @@
 #include "stdafx.h"
 
 #include "WeaponRG6.h"
-#include "entity.h"
+#include "Entity.h"
 #include "ExplosiveRocket.h"
 #include "Level.h"
 #include "clsid_game.h"

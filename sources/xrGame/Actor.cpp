@@ -27,10 +27,6 @@
 #include "ui/UIGameCustom.h"//
 #include "game_cl_base_weapon_usage_statistic.h"
 
-// breakpoints
-//#include "..\ENGINE\Input.h"
-
-//
 #include "Actor.h"
 //#include "ActorAnimation.h"
 #include "actor_anim_defs.h"
@@ -59,7 +55,7 @@
 #include "ui/UIArtefactPanel.h"//
 #include "MapManager.h"
 #include "GameTaskManager.h"
-#include "actor_memory.h"
+#include "ActorMemory.h"
 #include "Script_Game_Object.h"
 #include "GameObject_space.h"
 #include "script_callback_ex.h"
@@ -523,12 +519,12 @@ void CActor::Hit(SHit* pHDS)
 }
 
 void CActor::HitMark(float P,
-					 Fvector3 dir,
-					 CObject* who,
-					 S16 element,
-					 Fvector3 position_in_bone_space,
-					 float impulse,
-					 ALife::EHitType hit_type)
+	Fvector3 dir,
+	CObject* who,
+	S16 element,
+	Fvector3 position_in_bone_space,
+	float impulse,
+	ALife::EHitType hit_type)
 {
 	// hit marker
 	if ((hit_type == ALife::eHitTypeFireWound || hit_type == ALife::eHitTypeWound_2) && g_Alive( ) && Local( ) && /*(this!=who) && */(Level( ).CurrentEntity( ) == this))
@@ -1205,6 +1201,7 @@ void CActor::g_PerformDrop( )
 #ifdef DEBUG
 extern BOOL	g_ShowAnimationInfo;
 #endif // DEBUG
+
 // HUD
 void CActor::OnHUDDraw(CCustomHUD* /**hud/**/)
 {
@@ -1244,6 +1241,7 @@ void CActor::OnHUDDraw(CCustomHUD* /**hud/**/)
 		}
 	}
 #endif
+
 }
 
 void CActor::RenderIndicator(Fvector3 dpos, float r1, float r2, ref_shader IndShader)
@@ -1361,7 +1359,8 @@ void CActor::RenderText(const char* Text, Fvector3 dpos, float* pdup, u32 color)
 	{
 		return;
 	}
-	if (v_res.x < -1.0f || v_res.x > 1.0f || v_res.y < -1.0f || v_res.y>1.0f)
+
+	if (v_res.x < -1.0f || v_res.x > 1.0f || v_res.y < -1.0f || v_res.y > 1.0f)
 	{
 		return;
 	}
@@ -1374,7 +1373,7 @@ void CActor::RenderText(const char* Text, Fvector3 dpos, float* pdup, u32 color)
 	pFont->Out(x, y, Text);
 	//-------------------------------------------------
 	*pdup = delta_up;
-};
+}
 
 void CActor::SetPhPosition(const Fmatrix& transform)
 {
@@ -1410,6 +1409,7 @@ float CActor::Radius( )const
 	{
 		R += W->Radius( );
 	}
+
 	//	if (HUDview()) R *= 1.f/psHUD_FOV;
 	return R;
 }
@@ -1671,15 +1671,6 @@ void CActor::UpdateMotionIcon(u32 mstate_rl)
 			motion_icon.ShowState(CUIMotionIcon::stNormal);
 		}
 	}
-
-	/*
-							stNormal, --
-							stCrouch, --
-							stCreep,  --
-							stClimb,  --
-							stRun,    --
-							stSprint, --
-	*/
 }
 
 CPHDestroyable* CActor::ph_destroyable( )

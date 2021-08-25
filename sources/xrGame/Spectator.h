@@ -2,7 +2,7 @@
 
 #include "..\ENGINE\feel_touch.h"
 #include "..\ENGINE\IInputReceiver.h"
-#include "entity.h"
+#include "Entity.h"
 #include "actor_flags.h"
 
 class CActor;

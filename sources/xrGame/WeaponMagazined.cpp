@@ -3,7 +3,7 @@
 #include "HUDManager.h"//
 #include "WeaponHUD.h"
 #include "WeaponMagazined.h"
-#include "entity.h"
+#include "Entity.h"
 #include "Actor.h"
 #include "ParticlesObject.h"
 #include "GrenadeLauncher.h"

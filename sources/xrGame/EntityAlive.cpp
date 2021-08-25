@@ -6,7 +6,7 @@
 #include "PhysicsShell.h"
 #include "gamemtllib.h"
 #include "PHMovementControl.h"
-#include "wound.h"
+#include "Wound.h"
 #include "Messages.h"
 #include "Level.h"
 #include "..\ENGINE\skeletoncustom.h"

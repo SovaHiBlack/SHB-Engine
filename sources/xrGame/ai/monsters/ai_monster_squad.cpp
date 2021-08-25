@@ -1,6 +1,7 @@
 #include "stdafx.h"
+
 #include "ai_monster_squad.h"
-#include "../../entity.h"
+#include "../../Entity.h"
 
 CMonsterSquad::CMonsterSquad() : leader(0) 
 {

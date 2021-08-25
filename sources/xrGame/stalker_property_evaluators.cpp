@@ -25,7 +25,7 @@
 #include "xrServer_Objects_ALife_Monsters.h"
 #include "alife_human_brain.h"
 #include "Actor.h"
-#include "actor_memory.h"
+#include "ActorMemory.h"
 #include "stalker_movement_manager.h"
 #include "AgentManager.h"
 #include "agent_enemy_manager.h"

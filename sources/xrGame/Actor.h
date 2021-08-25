@@ -24,7 +24,6 @@ class CKnownContactsRegistryWrapper;
 class CEncyclopediaRegistryWrapper;
 class CGameNewsRegistryWrapper;
 class CCharacterPhysicsSupport;
-// refs
 class ENGINE_API CCameraBase;
 class ENGINE_API CBoneInstance;
 class ENGINE_API CBlend;
@@ -54,7 +53,7 @@ class CActorStatisticMgr;
 
 class CLocationManager;
 
-class	CActor :
+class CActor :
 	public CEntityAlive,
 	public IInputReceiver,
 	public Feel::Touch,
@@ -101,11 +100,11 @@ public:
 	{
 		return this;
 	}
-	virtual	CCharacterPhysicsSupport* character_physics_support( )
+	virtual CCharacterPhysicsSupport* character_physics_support( )
 	{
 		return m_pPhysics_support;
 	}
-	virtual	CCharacterPhysicsSupport* character_physics_support( ) const
+	virtual CCharacterPhysicsSupport* character_physics_support( ) const
 	{
 		return m_pPhysics_support;
 	}
@@ -125,16 +124,16 @@ public:
 	// Render
 	virtual void						renderable_Render( );
 	virtual BOOL						renderable_ShadowGenerate( );
-	virtual	void						feel_sound_new(CObject* who, int type, CSound_UserDataPtr user_data, const Fvector3& Position, float power);
-	virtual	Feel::Sound* dcast_FeelSound( )
+	virtual void						feel_sound_new(CObject* who, int type, CSound_UserDataPtr user_data, const Fvector3& Position, float power);
+	virtual Feel::Sound* dcast_FeelSound( )
 	{
 		return this;
 	}
 	float						m_snd_noise;
+
 #ifdef DEBUG
 	virtual void						OnRender( );
 #endif
-
 
 	/////////////////////////////////////////////////////////////////
 	// Inventory Owner 
@@ -283,6 +282,7 @@ protected:
 	//разрешения на удаление трупа актера 
 	//после того как контролирующий его игрок зареспавнился заново. 
 	//устанавливается в game
+
 private:
 	void					SwitchOutBorder(bool new_border_state);
 
@@ -426,6 +426,7 @@ protected:
 	// для взаимодействия с другими персонажами 
 	// или предметами
 	///////////////////////////////////////////
+
 public:
 	virtual void			feel_touch_new(CObject* O);
 	virtual void			feel_touch_delete(CObject* O);

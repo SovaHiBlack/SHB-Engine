@@ -7,8 +7,9 @@
 ////////////////////////////////////////////////////////////////////////////
 
 #include "stdafx.h"
+
 #include "vision_client.h"
-#include "entity.h"
+#include "Entity.h"
 #include "visual_memory_manager.h"
 
 inline	const CEntity &vision_client::object		() const

@@ -3,7 +3,6 @@
 //#include "..\ENGINE\cl_intersect.h"
 //#include "alife_space.h"
 #include "PHMovementControl.h"
-//#include "entity.h"
 //#include "PHDynamicData.h"
 //#include "Physics.h"
 #include "PHAICharacter.h"

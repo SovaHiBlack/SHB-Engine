@@ -2,7 +2,7 @@
 
 #include "stdafx.h"
 
-#include "wound.h"
+#include "Wound.h"
 #include "..\ENGINE\NetPacket.h"
 #include "..\ENGINE\bone.h"
 

@@ -4,7 +4,7 @@
 #pragma once
 
 #include "Inventory_space.h"
-#include "hit_immunity.h"
+#include "HitImmunity.h"
 #include "AttachableItem.h"
 
 enum EHandDependence

@@ -3,7 +3,7 @@
 #include "poltergeist.h"
 #include "..\..\..\PHShellHolder.h"
 #include "..\..\..\Level.h"
-#include "../../../actor.h"
+#include "../../../Actor.h"
 
 CPolterTele::CPolterTele(CPoltergeist *polter) : inherited (polter)
 { }

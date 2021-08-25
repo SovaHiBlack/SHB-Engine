@@ -39,7 +39,7 @@ static const float r_spin1_factor = 0.3f;
 static const float r_shoulder_factor = 0.2f;
 static const float r_head_factor = 0.2f;
 
-void  CActor::Spin0Callback(CBoneInstance* B)
+void CActor::Spin0Callback(CBoneInstance* B)
 {
 	CActor* A = static_cast<CActor*>(B->Callback_Param);	VERIFY(A);
 
@@ -346,7 +346,7 @@ CMotion* FindMotionKeys(MotionID motion_ID, IRender_Visual* V)
 BOOL	g_ShowAnimationInfo = TRUE;
 #endif // DEBUG
 
-char* mov_state[ ] = 
+char* mov_state[ ] =
 {
 	"idle",
 	"walk",
@@ -816,4 +816,4 @@ void CActor::g_SetAnimation(u32 mstate_rl)
 	}
 
 	m_current_torso_blend->timeCurrent = m_current_legs_blend->timeCurrent / m_current_legs_blend->timeTotal * m_current_torso_blend->timeTotal;
-	}
+}

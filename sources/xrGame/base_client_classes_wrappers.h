@@ -16,7 +16,7 @@
 //#include "..\ENGINE\irenderable.h"
 //#include "..\ENGINE\ICollidable.h"
 #include "..\ENGINE\Object.h"
-#include "entity.h"
+#include "Entity.h"
 #include "ai_space.h"
 #include "script_engine.h"
 #include <typelist.h>

@@ -37,21 +37,27 @@ float CActor::GetWeaponAccuracy( ) const
 	if (g_State(state))
 	{
 		// angular factor
-		dispersion *= (1.f + (state.fAVelocity / VEL_A_MAX) * m_fDispVelFactor * GetWeaponParam(W, Get_PDM_Vel_F( ), 1.0f));
+		dispersion *= (1.0f + (state.fAVelocity / VEL_A_MAX) * m_fDispVelFactor * GetWeaponParam(W, Get_PDM_Vel_F( ), 1.0f));
 //		Msg("--- base=[%f] angular disp=[%f]",m_fDispBase, dispersion);
 		// linear movement factor
 		bool bAccelerated = isActorAccelerated(mstate_real, IsZoomAimingMode( ));
 		if (bAccelerated)
-			dispersion *= (1.f + (state.fVelocity / VEL_MAX) * m_fDispVelFactor * GetWeaponParam(W, Get_PDM_Vel_F( ), 1.0f) * (1.f + m_fDispAccelFactor * GetWeaponParam(W, Get_PDM_Accel_F( ), 1.0f)));
+		{
+			dispersion *= (1.0f + (state.fVelocity / VEL_MAX) * m_fDispVelFactor * GetWeaponParam(W, Get_PDM_Vel_F( ), 1.0f) * (1.0f + m_fDispAccelFactor * GetWeaponParam(W, Get_PDM_Accel_F( ), 1.0f)));
+		}
 		else
-			dispersion *= (1.f + (state.fVelocity / VEL_MAX) * m_fDispVelFactor * GetWeaponParam(W, Get_PDM_Vel_F( ), 1.0f));
+		{
+			dispersion *= (1.0f + (state.fVelocity / VEL_MAX) * m_fDispVelFactor * GetWeaponParam(W, Get_PDM_Vel_F( ), 1.0f));
+		}
 
 		if (state.bCrouch)
 		{
-			dispersion *= (1.f + m_fDispCrouchFactor * GetWeaponParam(W, Get_PDM_Crouch( ), 1.0f));
+			dispersion *= (1.0f + m_fDispCrouchFactor * GetWeaponParam(W, Get_PDM_Crouch( ), 1.0f));
 
 			if (!bAccelerated)
-				dispersion *= (1.f + m_fDispCrouchNoAccelFactor * GetWeaponParam(W, Get_PDM_Crouch_NA( ), 1.0f));
+			{
+				dispersion *= (1.0f + m_fDispCrouchNoAccelFactor * GetWeaponParam(W, Get_PDM_Crouch_NA( ), 1.0f));
+			}
 		}
 	}
 
@@ -60,7 +66,7 @@ float CActor::GetWeaponAccuracy( ) const
 
 void CActor::g_fireParams(const CHudItem* pHudItem, Fvector3& fire_pos, Fvector3& fire_dir)
 {
-//	VERIFY			(inventory().ActiveItem());
+//	VERIFY(inventory().ActiveItem());
 
 	fire_pos = Cameras( ).Pos( );
 	fire_dir = Cameras( ).Dir( );
@@ -96,7 +102,7 @@ void CActor::SetWeaponHideState(u32 State, bool bSet)
 {
 	if (g_Alive( ) && this == Level( ).CurrentControlEntity( ))
 	{
-		CNetPacket	P;
+		CNetPacket P;
 		u_EventGen(P, GEG_PLAYER_WEAPON_HIDE_STATE, ID( ));
 		P.w_u32(State);
 		P.w_u8(U8(bSet));
@@ -104,7 +110,8 @@ void CActor::SetWeaponHideState(u32 State, bool bSet)
 	}
 }
 
-static	U16 BestWeaponSlots[ ] = {
+static U16 BestWeaponSlots[ ] =
+{
 	RIFLE_SLOT		,		// 2
 	PISTOL_SLOT		,		// 1
 	GRENADE_SLOT	,		// 3
@@ -112,18 +119,22 @@ static	U16 BestWeaponSlots[ ] = {
 };
 
 #define ENEMY_HIT_SPOT	"hit_sector_location"
-BOOL	g_bShowHitSectors = TRUE;
 
 void CActor::HitSector(CObject* who, CObject* weapon)
 {
-	if (!g_bShowHitSectors) return;
-	if (!g_Alive( )) return;
+	if (!g_Alive( ))
+	{
+		return;
+	}
 
 	bool bShowHitSector = true;
 
 	CEntityAlive* pEntityAlive = smart_cast<CEntityAlive*>(who);
 
-	if (!pEntityAlive || this == who) bShowHitSector = false;
+	if (!pEntityAlive || this == who)
+	{
+		bShowHitSector = false;
+	}
 
 	if (weapon)
 	{
@@ -133,9 +144,6 @@ void CActor::HitSector(CObject* who, CObject* weapon)
 			if (pWeapon->IsSilencerAttached( ))
 			{
 				bShowHitSector = false;
-				if (pWeapon->IsGrenadeLauncherAttached( ))
-				{
-				}
 			}
 		}
 	}

@@ -6,7 +6,7 @@
 #include "stdafx.h"
 
 #include "Level_Bullet_Manager.h"
-#include "entity.h"
+#include "Entity.h"
 #include "gamemtllib.h"
 #include "Level.h"
 #include "gamepersistent.h"

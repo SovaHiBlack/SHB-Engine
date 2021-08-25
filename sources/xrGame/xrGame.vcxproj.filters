@@ -4401,7 +4401,7 @@
     <ClInclude Include="level_debug.h">
       <Filter>Core\Client\Level Debug</Filter>
     </ClInclude>
-    <ClInclude Include="actor_memory.h">
+    <ClInclude Include="ActorMemory.h">
       <Filter>Core\Client\Objects\actor\memory</Filter>
     </ClInclude>
     <ClInclude Include="Entity.h">
@@ -4416,10 +4416,10 @@
     <ClInclude Include="EntityCondition.h">
       <Filter>Core\Client\Objects\base\EntityCondition</Filter>
     </ClInclude>
-    <ClInclude Include="hit_immunity.h">
+    <ClInclude Include="HitImmunity.h">
       <Filter>Core\Client\Objects\base\EntityCondition</Filter>
     </ClInclude>
-    <ClInclude Include="hit_immunity_space.h">
+    <ClInclude Include="HitImmunity_space.h">
       <Filter>Core\Client\Objects\base\EntityCondition</Filter>
     </ClInclude>
     <ClInclude Include="Wound.h">
@@ -7142,7 +7142,7 @@
     <ClCompile Include="level_debug.cpp">
       <Filter>Core\Client\Level Debug</Filter>
     </ClCompile>
-    <ClCompile Include="actor_memory.cpp">
+    <ClCompile Include="ActorMemory.cpp">
       <Filter>Core\Client\Objects\actor\memory</Filter>
     </ClCompile>
     <ClCompile Include="Entity.cpp">
@@ -7154,7 +7154,7 @@
     <ClCompile Include="EntityCondition.cpp">
       <Filter>Core\Client\Objects\base\EntityCondition</Filter>
     </ClCompile>
-    <ClCompile Include="hit_immunity.cpp">
+    <ClCompile Include="HitImmunity.cpp">
       <Filter>Core\Client\Objects\base\EntityCondition</Filter>
     </ClCompile>
     <ClCompile Include="Wound.cpp">

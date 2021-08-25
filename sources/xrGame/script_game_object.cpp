@@ -33,7 +33,7 @@
 #include "detail_path_manager.h"
 #include "level_graph.h"
 #include "Actor.h"
-#include "actor_memory.h"
+#include "ActorMemory.h"
 #include "visual_memory_manager.h"
 
 class CScriptBinderObject;

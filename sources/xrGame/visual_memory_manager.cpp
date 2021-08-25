@@ -23,7 +23,7 @@
 #include "Actor.h"
 #include "..\ENGINE\camerabase.h"
 #include "gamepersistent.h"
-#include "actor_memory.h"
+#include "ActorMemory.h"
 #include "client_spawn_manager.h"
 #include "client_spawn_manager.h"
 #include "memory_manager.h"

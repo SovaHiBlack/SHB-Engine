@@ -191,7 +191,7 @@
     <ClInclude Include="actor_defs.h" />
     <ClInclude Include="Actor_Flags.h" />
     <ClInclude Include="ActorInputHandler.h" />
-    <ClInclude Include="actor_memory.h" />
+    <ClInclude Include="ActorMemory.h" />
     <ClInclude Include="ActorStatistic_defs.h" />
     <ClInclude Include="ActorStatisticMgr.h" />
     <ClInclude Include="agent_corpse_manager.h" />
@@ -763,8 +763,8 @@
     <ClInclude Include="Helicopter.h" />
     <ClInclude Include="Hit.h" />
     <ClInclude Include="HitMarker.h" />
-    <ClInclude Include="hit_immunity.h" />
-    <ClInclude Include="hit_immunity_space.h" />
+    <ClInclude Include="HitImmunity.h" />
+    <ClInclude Include="HitImmunity_space.h" />
     <ClInclude Include="hit_memory_manager.h" />
     <ClInclude Include="hit_memory_manager_inline.h" />
     <ClInclude Include="HolderCustom.h" />
@@ -1484,7 +1484,7 @@
     <ClCompile Include="Actor_events.cpp" />
     <ClCompile Include="Actor_feel.cpp" />
     <ClCompile Include="ActorInputHandler.cpp" />
-    <ClCompile Include="actor_memory.cpp" />
+    <ClCompile Include="ActorMemory.cpp" />
     <ClCompile Include="Actor_Movement.cpp" />
     <ClCompile Include="Actor_Network.cpp" />
     <ClCompile Include="Actor_Sleep.cpp" />
@@ -1824,7 +1824,7 @@
     <ClCompile Include="Helicopter_script.cpp" />
     <ClCompile Include="Hit.cpp" />
     <ClCompile Include="HitMarker.cpp" />
-    <ClCompile Include="hit_immunity.cpp" />
+    <ClCompile Include="HitImmunity.cpp" />
     <ClCompile Include="hit_memory_manager.cpp" />
     <ClCompile Include="HolderCustom.cpp" />
     <ClCompile Include="HUDCrosshair.cpp" />

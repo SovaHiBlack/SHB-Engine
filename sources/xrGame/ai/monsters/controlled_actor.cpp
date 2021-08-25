@@ -1,7 +1,7 @@
 #include "stdafx.h"
 
 #include "controlled_actor.h"
-#include "../../actor.h"
+#include "../../Actor.h"
 #include "../../..\ENGINE\CameraBase.h"
 #include "../../xr_level_controller.h"
 #include "..\..\Level.h"

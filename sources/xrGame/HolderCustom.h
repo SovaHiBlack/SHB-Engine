@@ -32,9 +32,7 @@ public:
 		m_ownerActor = nullptr;
 	}
 	virtual					~CHolderCustom( )
-	{
-		;
-	}
+	{ }
 	virtual	void			UpdateEx(float fov)
 	{ } //called by owner
 	virtual CHolderCustom* cast_holder_custom( )

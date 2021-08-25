@@ -8,7 +8,6 @@
 
 //#include "..\ENGINE\Environment.h"
 //#include "..\ENGINE\CustomHUD.h"
-//#include "Entity.h"
 //#include "Level.h"
 //#include "game_cl_base.h"
 #include "..\ENGINE\IGamePersistent.h"

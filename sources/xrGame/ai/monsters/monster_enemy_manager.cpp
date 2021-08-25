@@ -6,8 +6,8 @@
 #include "../../ai_object_location.h"
 #include "../../memory_manager.h"
 #include "../../visual_memory_manager.h"
-#include "../../actor.h"
-#include "../../actor_memory.h"
+#include "../../Actor.h"
+#include "../../ActorMemory.h"
 
 CMonsterEnemyManager::CMonsterEnemyManager()
 {

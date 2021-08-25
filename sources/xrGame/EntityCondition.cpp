@@ -4,7 +4,7 @@
 #include "inventoryowner.h"
 #include "CustomOutfit.h"
 #include "Inventory.h"
-#include "wound.h"
+#include "Wound.h"
 #include "Level.h"
 #include "game_cl_base.h"
 #include "EntityAlive.h"

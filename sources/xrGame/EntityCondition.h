@@ -5,7 +5,7 @@ class CNetPacket;
 class CEntityAlive;
 class CLevel;
 
-#include "hit_immunity.h"
+#include "HitImmunity.h"
 #include "Hit.h"
 #include "Level.h"
 

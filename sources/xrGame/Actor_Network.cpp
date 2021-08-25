@@ -32,7 +32,7 @@
 #include "GameTaskManager.h"
 #include "game_base_kill_type.h"
 #include "HolderCustom.h"
-#include "actor_memory.h"
+#include "ActorMemory.h"
 #include "ActorStatisticMgr.h"
 #include "characterphysicssupport.h"
 #include "game_cl_base_weapon_usage_statistic.h"

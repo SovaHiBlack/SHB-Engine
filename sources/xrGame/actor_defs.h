@@ -135,5 +135,4 @@ namespace ACTOR_DEFS
 		float				o_model;				// model yaw
 		SRotation			o_torso;				// torso in world coords
 	};
-
 };

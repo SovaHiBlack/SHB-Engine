@@ -3,7 +3,7 @@
 #include "Grenade.h"
 #include "PhysicsShell.h"
 #include "WeaponHUD.h"
-#include "entity.h"
+#include "Entity.h"
 #include "ParticlesObject.h"
 #include "Actor.h"
 #include "Inventory.h"

@@ -4,7 +4,7 @@
 #include "PhysicObject.h"
 #include "hit.h"
 #include "PHDestroyable.h"
-#include "hit_immunity.h"
+#include "HitImmunity.h"
 #include "DamageManager.h"
 #include "DestroyablePhysicsObject.h"
 #include "..\ENGINE\SkeletonCustom.h"

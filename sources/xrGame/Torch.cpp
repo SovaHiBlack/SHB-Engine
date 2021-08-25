@@ -1,7 +1,7 @@
 #include "stdafx.h"
 
 #include "Torch.h"
-#include "entity.h"
+#include "Entity.h"
 #include "Actor.h"
 #include "..\ENGINE\LightAnimLibrary.h"
 #include "PhysicsShell.h"

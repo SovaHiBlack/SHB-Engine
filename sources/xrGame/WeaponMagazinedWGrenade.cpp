@@ -3,7 +3,7 @@
 #include "WeaponMagazinedWGrenade.h"
 #include "WeaponHUD.h"
 #include "HUDManager.h"//
-#include "entity.h"
+#include "Entity.h"
 #include "ParticlesObject.h"
 #include "GrenadeLauncher.h"
 #include "xrserver_objects_alife_items.h"

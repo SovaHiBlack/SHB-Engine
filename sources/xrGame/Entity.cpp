@@ -1,14 +1,11 @@
 // Entity.cpp: implementation of the CEntity class.
 
-//////////////////////////////////////////////////////////////////////
-
 #include "stdafx.h"
 
 #include "HUDManager.h"//
 #include "Entity.h"
 #include "Actor.h"
 #include "xrserver_objects_alife_monsters.h"
-#include "entity.h"
 #include "Level.h"
 #include "seniority_hierarchy_holder.h"
 #include "team_hierarchy_holder.h"
@@ -35,13 +32,16 @@ CEntity::~CEntity( )
 	xr_delete(m_entity_condition);
 }
 
-
 CEntityConditionSimple* CEntity::create_entity_condition(CEntityConditionSimple* ec)
 {
 	if (!ec)
+	{
 		m_entity_condition = xr_new<CEntityConditionSimple>( );
+	}
 	else
+	{
 		m_entity_condition = smart_cast<CEntityCondition*>(ec);
+	}
 
 	return		m_entity_condition;
 }
@@ -85,7 +85,11 @@ void CEntity::OnEvent(CNetPacket& P, U16 type)
 
 void CEntity::Die(CObject* who)
 {
-	if (!AlreadyDie( )) set_death_time( );
+	if (!AlreadyDie( ))
+	{
+		set_death_time( );
+	}
+
 	set_ready_to_save( );
 	SetfHealth(-1.f);
 
@@ -108,7 +112,7 @@ float CEntity::CalcCondition(float hit)
 	return hit;
 }
 
-void	CEntity::Hit(SHit* pHDS)
+void CEntity::Hit(SHit* pHDS)
 {
 	if (bDebug)
 	{
@@ -180,7 +184,9 @@ BOOL CEntity::net_Spawn(CSE_Abstract* DC)
 		VERIFY((E->m_killer_id == ALife::_OBJECT_ID(-1)) || !g_Alive( ));
 		m_killer_id = E->m_killer_id;
 		if (m_killer_id == ID( ))
+		{
 			m_killer_id = ALife::_OBJECT_ID(-1);
+		}
 	}
 	else
 	{
@@ -211,7 +217,9 @@ BOOL CEntity::net_Spawn(CSE_Abstract* DC)
 			monster_community.set(pSettings->r_string(*cNameSect( ), "species"));
 
 			if (monster_community.team( ) != 255)
+			{
 				id_Team = monster_community.team( );
+			}
 		}
 	}
 
@@ -229,21 +237,30 @@ BOOL CEntity::net_Spawn(CSE_Abstract* DC)
 	}
 
 	if (!inherited::net_Spawn(DC))
-		return				(FALSE);
+	{
+		return FALSE;
+	}
 
 	//	SetfHealth			(E->fHealth);
 	CKinematics* pKinematics = smart_cast<CKinematics*>(Visual( ));
 	CIniFile* ini = nullptr;
 
-	if (pKinematics) ini = pKinematics->LL_UserData( );
+	if (pKinematics)
+	{
+		ini = pKinematics->LL_UserData( );
+	}
+
 	if (ini)
 	{
 		if (ini->section_exist("damage_section") && !use_simplified_visual( ))
+		{
 			C_DamageManager::reload(pSettings->r_string("damage_section", "damage"), ini);
+		}
 
 		CParticlesPlayer::LoadParticles(pKinematics);
 	}
-	return					TRUE;
+
+	return TRUE;
 }
 
 void CEntity::net_Destroy( )
@@ -263,6 +280,7 @@ void CEntity::KillEntity(U16 whoID)
 {
 	if (whoID != ID( ))
 	{
+
 #ifdef DEBUG
 		if (m_killer_id != ALife::_OBJECT_ID(-1))
 		{
@@ -277,11 +295,14 @@ void CEntity::KillEntity(U16 whoID)
 			VERIFY(m_killer_id == ALife::_OBJECT_ID(-1));
 		}
 #endif
+
 	}
 	else
 	{
 		if (m_killer_id != ALife::_OBJECT_ID(-1))
+		{
 			return;
+		}
 	}
 
 	m_killer_id = whoID;
@@ -295,7 +316,9 @@ void CEntity::KillEntity(U16 whoID)
 		P.w_u16(U16(whoID));
 		P.w_u32(0);
 		if (OnServer( ))
+		{
 			u_EventSend(P, net_flags(TRUE, TRUE, FALSE, TRUE));
+		}
 	}
 }
 
@@ -310,12 +333,13 @@ void CEntity::reinit( )
 	inherited::reinit( );
 }
 
-
 void CEntity::reload(const char* section)
 {
 	inherited::reload(section);
 	if (!use_simplified_visual( ))
+	{
 		C_DamageManager::reload(section, "damage", pSettings);
+	}
 }
 
 void CEntity::set_death_time( )
@@ -328,6 +352,7 @@ bool CEntity::IsFocused( )const
 {
 	return (smart_cast<const CEntity*>(g_pGameLevel->CurrentEntity( )) == this);
 }
+
 bool CEntity::IsMyCamera( )const
 {
 	return (smart_cast<const CEntity*>(g_pGameLevel->CurrentViewEntity( )) == this);
@@ -370,7 +395,10 @@ void CEntity::on_after_change_team( )
 
 void CEntity::ChangeTeam(int team, int squad, int group)
 {
-	if ((team == g_Team( )) && (squad == g_Squad( )) && (group == g_Group( ))) return;
+	if ((team == g_Team( )) && (squad == g_Squad( )) && (group == g_Group( )))
+	{
+		return;
+	}
 
 	VERIFY2(g_Alive( ), "Try to change team of a dead object");
 

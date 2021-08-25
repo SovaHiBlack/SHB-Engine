@@ -4,7 +4,7 @@
 #include "WeaponHUD.h"
 #include "xrserver_objects_alife_items.h"
 #include "ExplosiveRocket.h"
-#include "entity.h"
+#include "Entity.h"
 #include "Level.h"
 #include "..\ENGINE\skeletoncustom.h"
 #include "Inventory.h"

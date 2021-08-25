@@ -6,7 +6,7 @@
 #include "Actor.h"
 #include "..\ENGINE\Input.h"
 #include "visual_memory_manager.h"
-#include "actor_memory.h"
+#include "ActorMemory.h"
 
 CCameraLook::CCameraLook(CObject* p, u32 flags) : CCameraBase(p, flags)
 { }

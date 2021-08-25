@@ -22,7 +22,7 @@
 #include "object_broker.h"
 #include "StringTable.h"
 #include "LevelChanger.h"
-#include "actor_memory.h"
+#include "ActorMemory.h"
 #include "visual_memory_manager.h"
 #include "location_manager.h"
 

@@ -3,7 +3,7 @@
 #pragma once
 
 #include "alife_space.h"
-#include "hit_immunity_space.h"
+#include "HitImmunity_space.h"
 
 class CNetPacket;
 

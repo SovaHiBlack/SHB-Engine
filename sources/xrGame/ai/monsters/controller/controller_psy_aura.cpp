@@ -2,7 +2,7 @@
 
 #include "controller_psy_aura.h"
 #include "controller.h"
-#include "../../../actor.h"
+#include "../../../Actor.h"
 #include "..\..\..\Level.h"
 #include "../../../CameraEffector.h"
 #include "../../../ActorEffector.h"

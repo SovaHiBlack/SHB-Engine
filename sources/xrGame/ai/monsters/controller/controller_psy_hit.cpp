@@ -7,7 +7,7 @@
 #include "../control_direction_base.h"
 #include "../control_movement_base.h"
 #include "..\..\..\Level.h"
-#include "../../../actor.h"
+#include "../../../Actor.h"
 #include "../../../ActorEffector.h"
 #include "../../../..\ENGINE\CameraBase.h"
 #include "../../../CharacterPhysicsSupport.h"

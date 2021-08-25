@@ -2,7 +2,7 @@
 
 #include "WeaponShotgun.h"
 #include "WeaponHUD.h"
-#include "entity.h"
+#include "Entity.h"
 #include "ParticlesObject.h"
 #include "xr_level_controller.h"
 #include "Inventory.h"
