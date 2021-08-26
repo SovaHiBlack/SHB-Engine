@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="windows-1251" standalone="yes" ?>
+<game_dialogs>
+    <dialog id="test_dialog">
+        <phrase_list>
+            <phrase id="0">
+                <text>test_dialog_0</text>
+                <next>100</next>
+            </phrase>
+            <phrase id="201">
+                <text>test_dialog_201</text>
+            </phrase>
+            <phrase id="202">
+                <text>test_dialog_202</text>
+            </phrase>
+            <phrase id="100">
+                <text>test_dialog_100</text>
+                <next>200</next>
+                <next>201</next>
+                <next>202</next>
+            </phrase>
+            <phrase id="200">
+                <text>test_dialog_200</text>
+            </phrase>
+        </phrase_list>
+    </dialog>
+</game_dialogs>

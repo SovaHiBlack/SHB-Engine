@@ -1,0 +1,22 @@
+<player name="satan">
+	<weapon id="ak_47">
+		<frequency buy_t="16" respawn_t="30"/> <!-- buy times, respawn times -->
+		<bullets all="2590" efficient="100" frags="4"/> <!-- all fired bullest and efficient shots and frags-->
+			
+		<bullet num="00001">
+			<position x="1234" y="235"/>
+			<aim x="24" y="4357"/>
+		</bullet>
+		<bullet num="00002">
+			<!-- ... -->
+		</bullet>
+	</weapon>
+
+	<weapon id="fn-2000">
+		<!-- ... -->
+	</weapon>		
+</player>
+
+<player name="mad_max">
+	<!-- .. -->
+</mad_max>

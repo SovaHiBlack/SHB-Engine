@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="windows-1251" ?>
+<game_dialogs>
+    <dialog id="test">
+        <phrase_list>
+            <phrase id="2">
+                <text>test_2</text>
+                <script_text>this is test3</script_text>
+                <next>1</next>
+            </phrase>
+            <phrase id="1">
+                <text>test_1</text>
+                <script_text>this is test 2</script_text>
+                <next>2</next>
+            </phrase>
+            <phrase id="0">
+                <text>test_0</text>
+                <script_text>this is test 1</script_text>
+                <next>1</next>
+            </phrase>
+        </phrase_list>
+    </dialog>
+</game_dialogs>
