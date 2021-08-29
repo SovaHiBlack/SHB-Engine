@@ -116,7 +116,7 @@ void CWeapon::UpdateXForm( )
 		VERIFY(V);
 
 		// Get matrices
-		int				boneL;
+		int boneL;
 		int boneR;
 		int boneR2;
 		E->g_WeaponBones(boneL, boneR, boneR2);
@@ -124,7 +124,7 @@ void CWeapon::UpdateXForm( )
 		{
 			boneL = boneR2;
 		}
-#pragma todo("TO ALL: serious performance problem")
+
 		V->CalculateBones( );
 		Fmatrix& mL = V->LL_GetTransform(U16(boneL));
 		Fmatrix& mR = V->LL_GetTransform(U16(boneR));
@@ -193,7 +193,7 @@ void CWeapon::UpdateFireDependencies_internal( )
 			m_firedeps.m_FireParticlesXForm.identity( );
 			m_firedeps.m_FireParticlesXForm.k.set(m_firedeps.vLastFD);
 			Fvector3::generate_orthonormal_basis_normalized(m_firedeps.m_FireParticlesXForm.k,
-														   m_firedeps.m_FireParticlesXForm.j, m_firedeps.m_FireParticlesXForm.i);
+				m_firedeps.m_FireParticlesXForm.j, m_firedeps.m_FireParticlesXForm.i);
 		}
 		else
 		{
@@ -235,11 +235,11 @@ void CWeapon::ForceUpdateFireParticles( )
 			Log("H_Parent", H_Parent( )->cNameSect( ).c_str( ));
 		}
 
-		Fvector3					p;
-		Fvector3					d;
+		Fvector3 p;
+		Fvector3 d;
 		smart_cast<CEntity*>(H_Parent( ))->g_fireParams(this, p, d);
 
-		Fmatrix						_pxf;
+		Fmatrix _pxf;
 		_pxf.k = d;
 		_pxf.i.crossproduct(Fvector3( ).set(0.0f, 1.0f, 0.0f), _pxf.k);
 		_pxf.j.crossproduct(_pxf.k, _pxf.i);
@@ -283,7 +283,7 @@ void CWeapon::Load(const char* section)
 		m_StrapOffset.setHPB(ypr.x, ypr.y, ypr.z);
 		m_StrapOffset.translate_over(pos);
 	}
-#endif
+#endif // def DEBUG
 
 	// load ammo classes
 	m_ammoTypes.clear( );
@@ -368,10 +368,7 @@ void CWeapon::Load(const char* section)
 	{
 		m_bIsSingleHanded = !!pSettings->r_bool(section, "single_handed");
 	}
-/*	нигде не используется
-//	m_fMinRadius = pSettings->r_float(section, "min_radius");
-//	m_fMaxRadius = pSettings->r_float(section, "max_radius");
-*/
+
 	// информация о возможных апгрейдах и их визуализации в инвентаре
 	m_eScopeStatus = (ALife::EWeaponAddonStatus) pSettings->r_s32(section, "scope_status");
 	m_eSilencerStatus = (ALife::EWeaponAddonStatus) pSettings->r_s32(section, "silencer_status");
@@ -1137,21 +1134,21 @@ void CWeapon::Reload( )
 bool CWeapon::IsGrenadeLauncherAttached( ) const
 {
 	return (CSE_ALifeItemWeapon::eAddonAttachable == m_eGrenadeLauncherStatus &&
-			0 != (m_flagsAddOnState & CSE_ALifeItemWeapon::eWeaponAddonGrenadeLauncher)) ||
+		0 != (m_flagsAddOnState & CSE_ALifeItemWeapon::eWeaponAddonGrenadeLauncher)) ||
 		CSE_ALifeItemWeapon::eAddonPermanent == m_eGrenadeLauncherStatus;
 }
 
 bool CWeapon::IsScopeAttached( ) const
 {
 	return (CSE_ALifeItemWeapon::eAddonAttachable == m_eScopeStatus &&
-			0 != (m_flagsAddOnState & CSE_ALifeItemWeapon::eWeaponAddonScope)) ||
+		0 != (m_flagsAddOnState & CSE_ALifeItemWeapon::eWeaponAddonScope)) ||
 		CSE_ALifeItemWeapon::eAddonPermanent == m_eScopeStatus;
 }
 
 bool CWeapon::IsSilencerAttached( ) const
 {
 	return (CSE_ALifeItemWeapon::eAddonAttachable == m_eSilencerStatus &&
-			0 != (m_flagsAddOnState & CSE_ALifeItemWeapon::eWeaponAddonSilencer)) ||
+		0 != (m_flagsAddOnState & CSE_ALifeItemWeapon::eWeaponAddonSilencer)) ||
 		CSE_ALifeItemWeapon::eAddonPermanent == m_eSilencerStatus;
 }
 

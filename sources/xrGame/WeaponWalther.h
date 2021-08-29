@@ -5,14 +5,13 @@
 
 class CWeaponWalther : public CWeaponPistol
 {
-	typedef CWeaponPistol inherited;
+	using inherited = CWeaponPistol;
 
 public:
 	CWeaponWalther( );
-	virtual ~CWeaponWalther( );
+	virtual			~CWeaponWalther( );
 
-public:
-	static void script_register(lua_State*);
+	static void		script_register(lua_State*);
 };
 
 add_to_type_list(CWeaponWalther)

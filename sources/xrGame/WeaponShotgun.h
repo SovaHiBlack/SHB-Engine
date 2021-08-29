@@ -3,44 +3,45 @@
 #include "WeaponCustomPistol.h"
 #include "script_export_space.h"
 
-class CWeaponShotgun :	public CWeaponCustomPistol
+class CWeaponShotgun : public CWeaponCustomPistol
 {
-	typedef CWeaponCustomPistol inherited;
+	using inherited = CWeaponCustomPistol;
+
 public:
 	CWeaponShotgun( );
 	virtual ~CWeaponShotgun( );
 
-	virtual void	Load			(const char* section);
-	
-	virtual void	net_Destroy			();
-	virtual void	net_Export			(CNetPacket& P);
-	virtual void	net_Import			(CNetPacket& P);
+	virtual void	Load(const char* section);
 
-	virtual void	Reload				();
-	virtual void	Fire2Start			();
-	virtual void	Fire2End			();
-	virtual void	OnShot				();
-	virtual void	OnShotBoth			();
-	virtual void	switch2_Fire		();
-	virtual void	switch2_Fire2		();
-	void			switch2_StartReload ();
-	void			switch2_AddCartgidge();
-	void			switch2_EndReload	();
+	virtual void	net_Destroy( );
+	virtual void	net_Export(CNetPacket& P);
+	virtual void	net_Import(CNetPacket& P);
 
-	virtual void	UpdateSounds		();
-	virtual void	PlayAnimOpenWeapon	();
-	virtual void	PlayAnimAddOneCartridgeWeapon();
-	void			PlayAnimCloseWeapon	();
+	virtual void	Reload( );
+	virtual void	Fire2Start( );
+	virtual void	Fire2End( );
+	virtual void	OnShot( );
+	virtual void	OnShotBoth( );
+	virtual void	switch2_Fire( );
+	virtual void	switch2_Fire2( );
+	void			switch2_StartReload( );
+	void			switch2_AddCartgidge( );
+	void			switch2_EndReload( );
 
-	virtual bool	Action(int cmd, u32 flags);
+	virtual void	UpdateSounds( );
+	virtual void	PlayAnimOpenWeapon( );
+	virtual void	PlayAnimAddOneCartridgeWeapon( );
+	void			PlayAnimCloseWeapon( );
+
+	virtual bool	Action(int cmd, unsigned int flags);
 
 protected:
-	virtual void	OnAnimationEnd		(u32 state);
-	void			TriStateReload		();
-	virtual void	OnStateSwitch		(u32 S);
+	virtual void	OnAnimationEnd(unsigned int state);
+	void			TriStateReload( );
+	virtual void	OnStateSwitch(unsigned int S);
 
-	bool			HaveCartridgeInInventory(U8 cnt);
-	virtual U8		AddCartridge		(U8 cnt);
+	bool			HaveCartridgeInInventory(unsigned char cnt);
+	virtual unsigned char		AddCartridge(unsigned char cnt);
 
 	HUD_SOUND		sndShotBoth;
 	ESoundTypes		m_eSoundShotBoth;

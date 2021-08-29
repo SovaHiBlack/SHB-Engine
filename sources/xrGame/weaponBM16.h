@@ -5,7 +5,8 @@
 
 class CWeaponBM16 :public CWeaponShotgun
 {
-	typedef CWeaponShotgun inherited;
+	using inherited = CWeaponShotgun;
+
 protected:
 	MotionSVec		mhud_reload1;
 	MotionSVec		mhud_shot1;
@@ -18,14 +19,14 @@ protected:
 	HUD_SOUND		m_sndReload1;
 
 public:
-	virtual			~CWeaponBM16					();
-	virtual void	Load							(const char* section);
+	virtual			~CWeaponBM16( );
+	virtual void	Load(const char* section);
 
 protected:
-	virtual void	PlayAnimShoot					();
-	virtual void	PlayAnimReload					();
-	virtual void	PlayReloadSound					();
-	virtual void	PlayAnimIdle					();
+	virtual void	PlayAnimShoot( );
+	virtual void	PlayAnimReload( );
+	virtual void	PlayReloadSound( );
+	virtual void	PlayAnimIdle( );
 
 public:
 	static void script_register(lua_State*);

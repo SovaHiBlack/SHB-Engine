@@ -32,13 +32,13 @@ float CWeapon::GetFireDispersion(bool with_cartridge)
 	return GetFireDispersion(m_fCurrentCartirdgeDisp);
 }
 
-//текущая дисперсия (в радианах) оружия с учетом используемого патрона
+// текущая дисперсия (в радианах) оружия с учетом используемого патрона
 float CWeapon::GetFireDispersion(float cartridge_k)
 {
-	//учет базовой дисперсии, состояние оружия и влияение патрона
+	// учет базовой дисперсии, состояние оружия и влияение патрона
 	float fire_disp = fireDispersionBase * cartridge_k * GetConditionDispersionFactor( );
 
-	//вычислить дисперсию, вносимую самим стрелком
+	// вычислить дисперсию, вносимую самим стрелком
 	const CInventoryOwner* pOwner = smart_cast<const CInventoryOwner*>(H_Parent( ));
 	VERIFY(pOwner);
 
@@ -48,7 +48,6 @@ float CWeapon::GetFireDispersion(float cartridge_k)
 	return fire_disp;
 }
 
-//////////////////////////////////////////////////////////////////////////
 // Для эффекта отдачи оружия
 void CWeapon::AddShotEffector( )
 {

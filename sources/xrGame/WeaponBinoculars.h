@@ -7,10 +7,10 @@ class CUIFrameWindow;
 class CUIStatic;
 class CBinocularsVision;
 
-class CWeaponBinoculars: public CWeaponCustomPistol
+class CWeaponBinoculars : public CWeaponCustomPistol
 {
 private:
-	typedef CWeaponCustomPistol inherited;
+	using inherited = CWeaponCustomPistol;
 
 protected:
 	HUD_SOUND		sndZoomIn;
@@ -19,30 +19,33 @@ protected:
 	bool			m_bVision;
 
 public:
-					CWeaponBinoculars	(); 
-	virtual			~CWeaponBinoculars	();
+	CWeaponBinoculars( );
+	virtual			~CWeaponBinoculars( );
 
-	void			Load				(const char* section);
+	void			Load(const char* section);
 
-	virtual void	OnZoomIn			();
-	virtual void	OnZoomOut			();
-	virtual	void	ZoomInc				();
-	virtual	void	ZoomDec				();
-	virtual void	net_Destroy			();
-	virtual BOOL	net_Spawn			(CSE_Abstract* DC);
+	virtual void	OnZoomIn( );
+	virtual void	OnZoomOut( );
+	virtual void	ZoomInc( );
+	virtual void	ZoomDec( );
+	virtual void	net_Destroy( );
+	virtual BOOL	net_Spawn(CSE_Abstract* DC);
 
-	virtual void	save				(CNetPacket &output_packet);
-	virtual void	load				(IReader &input_packet);
+	virtual void	save(CNetPacket& output_packet);
+	virtual void	load(IReader& input_packet);
 
-	virtual bool	Action				(int cmd, u32 flags);
-	virtual void	UpdateCL			();
-	virtual void	OnDrawUI			();
-	virtual bool	use_crosshair		()	const {return false;}
-	virtual void	GetBriefInfo		(xr_string& str_name, xr_string& icon_sect_name, xr_string& str_count);
-	virtual void	net_Relcase			(CObject *object);
+	virtual bool	Action(int cmd, u32 flags);
+	virtual void	UpdateCL( );
+	virtual void	OnDrawUI( );
+	virtual bool	use_crosshair( ) const
+	{
+		return false;
+	}
+	virtual void	GetBriefInfo(xr_string& str_name, xr_string& icon_sect_name, xr_string& str_count);
+	virtual void	net_Relcase(CObject* object);
 
 protected:
-	CBinocularsVision*					m_binoc_vision;
+	CBinocularsVision* m_binoc_vision;
 
 public:
 	static void script_register(lua_State*);

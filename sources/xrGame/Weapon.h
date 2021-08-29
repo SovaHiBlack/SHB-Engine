@@ -23,7 +23,7 @@ class CUIStaticItem;
 class CWeapon : public CHudItemObject, public CShootingObject
 {
 private:
-	typedef CHudItemObject inherited;
+	using inherited = CHudItemObject;
 
 public:
 	CWeapon(const char* name);
@@ -46,7 +46,7 @@ public:
 		return 0;
 	}
 
-//serialization
+	// serialization
 	virtual void			save(CNetPacket& output_packet);
 	virtual void			load(IReader& input_packet);
 	virtual BOOL			net_SaveRelevant( )
@@ -66,7 +66,7 @@ public:
 	virtual void			OnH_A_Independent( );
 	virtual void			OnEvent(CNetPacket& P, U16 type);// {inherited::OnEvent(P,type);}
 
-	virtual	void			Hit(SHit* pHDS);
+	virtual void			Hit(SHit* pHDS);
 
 	virtual void			reinit( );
 	virtual void			reload(const char* section);
@@ -80,14 +80,11 @@ public:
 	virtual void			Hide( );
 	virtual void			Show( );
 
-	//инициализация если вещь в активном слоте или спрятана на OnH_B_Chield
+	// инициализация если вещь в активном слоте или спрятана на OnH_B_Chield
 	virtual void			OnActiveItem( );
 	virtual void			OnHiddenItem( );
 
-//////////////////////////////////////////////////////////////////////////
-//  Network
-//////////////////////////////////////////////////////////////////////////
-
+	// Network
 	virtual bool			can_kill( ) const;
 	virtual CInventoryItem* can_kill(CInventory* inventory) const;
 	virtual const CInventoryItem* can_kill(const xr_vector<const CGameObject*>& items) const;
@@ -138,24 +135,24 @@ public:
 		eSubstateReloadEnd
 	};
 
-	virtual bool			IsHidden( )	const
+	virtual bool			IsHidden( ) const
 	{
 		return GetState( ) == eHidden;
 	}						// Does weapon is in hidden state
-	virtual bool			IsHiding( )	const
+	virtual bool			IsHiding( ) const
 	{
 		return GetState( ) == eHiding;
 	}
-	virtual bool			IsShowing( )	const
+	virtual bool			IsShowing( ) const
 	{
 		return GetState( ) == eShowing;
 	}
 
-	inline BOOL					IsValid( )	const
+	inline BOOL					IsValid( ) const
 	{
 		return iAmmoElapsed;
 	}
-// Does weapon need's update?
+	// Does weapon need's update?
 	BOOL					IsUpdating( );
 
 	BOOL					IsMisfire( ) const;
@@ -203,13 +200,13 @@ public:
 		return true;
 	}
 
-//обновление видимости для косточек аддонов
+	// обновление видимости для косточек аддонов
 	void UpdateAddonsVisibility( );
 	void UpdateHUDAddonsVisibility( );
-//инициализация свойств присоединенных аддонов
+	// инициализация свойств присоединенных аддонов
 	virtual void InitAddons( );
 
-	//для отоброажения иконок апгрейдов в интерфейсе
+	// для отоброажения иконок апгрейдов в интерфейсе
 	int	GetScopeX( )
 	{
 		return m_iScopeX;
@@ -248,7 +245,7 @@ public:
 		return m_sSilencerName;
 	}
 
-	U8		GetAddonsState( )		const
+	U8 GetAddonsState( ) const
 	{
 		return m_flagsAddOnState;
 	}
@@ -258,32 +255,35 @@ public:
 	}//dont use!!! for buy menu only!!!
 
 protected:
-	//состояние подключенных аддонов
+	// состояние подключенных аддонов
 	U8 m_flagsAddOnState;
 
-	//возможность подключения различных аддонов
+	// возможность подключения различных аддонов
 	ALife::EWeaponAddonStatus	m_eScopeStatus;
 	ALife::EWeaponAddonStatus	m_eSilencerStatus;
 	ALife::EWeaponAddonStatus	m_eGrenadeLauncherStatus;
 
-	//названия секций подключаемых аддонов
+	// названия секций подключаемых аддонов
 	CSharedString		m_sScopeName;
 	CSharedString		m_sSilencerName;
 	CSharedString		m_sGrenadeLauncherName;
 
-	//смещение иконов апгрейдов в инвентаре
-	int	m_iScopeX, m_iScopeY;
-	int	m_iSilencerX, m_iSilencerY;
-	int	m_iGrenadeLauncherX, m_iGrenadeLauncherY;
+	// смещение иконов апгрейдов в инвентаре
+	int	m_iScopeX;
+	int	m_iScopeY;
+	int	m_iSilencerX;
+	int	m_iSilencerY;
+	int	m_iGrenadeLauncherX;
+	int	m_iGrenadeLauncherY;
 
 ///////////////////////////////////////////////////
 //	для режима приближения и снайперского прицела
 ///////////////////////////////////////////////////
-	//разрешение режима приближения
+	// разрешение режима приближения
 	bool			m_bZoomEnabled;
-	//текущий фактор приближения
+	// текущий фактор приближения
 	float			m_fZoomFactor;
-	//время приближения
+	// время приближения
 	float			m_fZoomRotateTime;
 	//текстура для снайперского прицела, в режиме приближения
 	CUIStaticItem* m_UIScope;
@@ -299,17 +299,17 @@ protected:
 	bool			m_bHideCrosshairInZoom;
 
 public:
-	inline bool					IsZoomEnabled( )	const
+	inline bool					IsZoomEnabled( ) const
 	{
 		return m_bZoomEnabled;
 	}
-	virtual	void			ZoomInc( )
+	virtual void			ZoomInc( )
 	{ }
-	virtual	void			ZoomDec( )
+	virtual void			ZoomDec( )
 	{ }
 	virtual void			OnZoomIn( );
 	virtual void			OnZoomOut( );
-	bool			IsZoomed( )	const
+	bool			IsZoomed( ) const
 	{
 		return m_bZoomMode;
 	}
@@ -323,7 +323,7 @@ public:
 	{
 		return m_fZoomFactor;
 	}
-	virtual	float			CurrentZoomFactor( );
+	virtual float			CurrentZoomFactor( );
 	//показывает, что оружие находится в соостоянии поворота для приближенного прицеливания
 	bool			IsRotatingToZoom( ) const
 	{
@@ -334,28 +334,28 @@ public:
 
 	virtual float				Weight( );
 
-	virtual EHandDependence		HandDependence( )	const
+	virtual EHandDependence		HandDependence( ) const
 	{
 		return eHandDependence;
 	}
-	bool				IsSingleHanded( )	const
+	bool				IsSingleHanded( ) const
 	{
 		return m_bIsSingleHanded;
 	}
 
-	inline		const char* strap_bone0( ) const
+	inline const char* strap_bone0( ) const
 	{
 		return m_strap_bone0;
 	}
-	inline		const char* strap_bone1( ) const
+	inline const char* strap_bone1( ) const
 	{
 		return m_strap_bone1;
 	}
-	inline		void			strapped_mode(bool value)
+	inline void			strapped_mode(bool value)
 	{
 		m_strapped_mode = value;
 	}
-	inline		bool			strapped_mode( ) const
+	inline bool			strapped_mode( ) const
 	{
 		return m_strapped_mode;
 	}
@@ -378,7 +378,7 @@ public:
 	Fvector3					vLoadedFirePoint2;
 
 private:
-	//текущее положение и напрвление для партиклов
+	// текущее положение и напрвление для партиклов
 	struct					_firedeps
 	{
 		Fmatrix				m_FireParticlesXForm;	//направление для партиклов огня и дыма
@@ -403,28 +403,33 @@ protected:
 	virtual void			UpdateHudAdditonal(Fmatrix&);
 	inline void			UpdateFireDependencies( )
 	{
-		if (dwFP_Frame == Device.dwFrame) return; UpdateFireDependencies_internal( );
+		if (dwFP_Frame == Device.dwFrame)
+		{
+			return;
+		}
+
+		UpdateFireDependencies_internal( );
 	}
 
 	virtual void			LoadFireParams(const char* section, const char* prefix);
 
 public:
-	inline		const Fvector3& get_LastFP( )
+	inline const Fvector3& get_LastFP( )
 	{
 		UpdateFireDependencies( );
 		return m_firedeps.vLastFP;
 	}
-	inline		const Fvector3& get_LastFP2( )
+	inline const Fvector3& get_LastFP2( )
 	{
 		UpdateFireDependencies( );
 		return m_firedeps.vLastFP2;
 	}
-	inline		const Fvector3& get_LastFD( )
+	inline const Fvector3& get_LastFD( )
 	{
 		UpdateFireDependencies( );
 		return m_firedeps.vLastFD;
 	}
-	inline		const Fvector3& get_LastSP( )
+	inline const Fvector3& get_LastSP( )
 	{
 		UpdateFireDependencies( );
 		return m_firedeps.vLastSP;
@@ -451,7 +456,7 @@ public:
 protected:
 	virtual void			SetDefaults( );
 
-	//трассирование полета пули
+	// трассирование полета пули
 	void					FireTrace(const Fvector3& P, const Fvector3& D);
 	virtual float			GetWeaponDeterioration( );
 
@@ -474,7 +479,7 @@ protected:
 	virtual void			ClearShotEffector( );
 
 public:
-	//текущая дисперсия (в радианах) оружия с учетом используемого патрона
+	// текущая дисперсия (в радианах) оружия с учетом используемого патрона
 	float					GetFireDispersion(bool with_cartridge);
 	float					GetFireDispersion(float cartridge_k);
 	virtual int				ShotsFired( )
@@ -482,12 +487,12 @@ public:
 		return 0;
 	}
 
-	//параметы оружия в зависимоти от его состояния исправности
+	// параметы оружия в зависимоти от его состояния исправности
 	float					GetConditionDispersionFactor( ) const;
 	float					GetConditionMisfireProbability( ) const;
 	virtual	float			GetConditionToShow( ) const;
 
-	//отдача при стрельбе
+	// отдача при стрельбе
 	float					camMaxAngle;		//максимальный угол отдачи
 	float					camRelaxSpeed;		//скорость возврата в исходное положение
 	float					camRelaxSpeed_AI;	//скорость возврата в исходное положение
@@ -520,8 +525,6 @@ protected:
 //////////////////////////////////////////////////////////////////////////
 // партиклы
 //////////////////////////////////////////////////////////////////////////
-
-
 	//для второго ствола
 	void			StartFlameParticles2( );
 	void			StopFlameParticles2( );
@@ -535,11 +538,11 @@ protected:
 // Weapon and ammo
 //////////////////////////////////////////////////////////////////////////
 public:
-	inline int					GetAmmoElapsed( )	const
+	inline int					GetAmmoElapsed( ) const
 	{
 		return /*int(m_magazine.size())*/iAmmoElapsed;
 	}
-	inline int					GetAmmoMagSize( )	const
+	inline int					GetAmmoMagSize( ) const
 	{
 		return iMagazineSize;
 	}
@@ -548,9 +551,7 @@ public:
 	void					SetAmmoElapsed(int ammo_count);
 
 	virtual void			OnMagazineEmpty( );
-	void			SpawnAmmo(u32 boxCurr = 0xffffffff,
-							  const char* ammoSect = NULL,
-							  u32 ParentID = 0xffffffff);
+	void			SpawnAmmo(u32 boxCurr = 0xffffffff, const char* ammoSect = NULL, u32 ParentID = 0xffffffff);
 
 //  [8/3/2005]
 	virtual float			Get_PDM_Base( ) const

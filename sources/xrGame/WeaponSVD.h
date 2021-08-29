@@ -5,17 +5,16 @@
 
 class CWeaponSVD : public CWeaponCustomPistol
 {
-	typedef CWeaponCustomPistol inherited;
+	using inherited = CWeaponCustomPistol;
 
 protected:
-	virtual void switch2_Fire	();
-	virtual void OnAnimationEnd (u32 state);
+	virtual void switch2_Fire( );
+	virtual void OnAnimationEnd(unsigned int state);
 
 public:
 	CWeaponSVD( );
 	virtual ~CWeaponSVD( );
 
-public:
 	static void script_register(lua_State*);
 };
 

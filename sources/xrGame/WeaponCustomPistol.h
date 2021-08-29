@@ -2,8 +2,6 @@
 
 #include "WeaponMagazined.h"
 
-//#define SND_RIC_COUNT 5
-
 class CWeaponCustomPistol : public CWeaponMagazined
 {
 private:

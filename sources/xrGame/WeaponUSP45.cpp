@@ -4,7 +4,7 @@
 
 CWeaponUSP45::CWeaponUSP45( ) : CWeaponPistol("USP")
 {
-	m_weight = .5f;
+	m_weight = 0.5f;
 	m_slot = 1;
 }
 
@@ -14,11 +14,11 @@ CWeaponUSP45::~CWeaponUSP45( )
 using namespace luabind;
 
 #pragma optimize("s",on)
-void CWeaponUSP45::script_register	(lua_State *L)
+void CWeaponUSP45::script_register(lua_State* L)
 {
 	module(L)
-	[
-		class_<CWeaponUSP45,CGameObject>("CWeaponUSP45")
-			.def(constructor<>())
-	];
+		[
+			class_<CWeaponUSP45, CGameObject>("CWeaponUSP45")
+			.def(constructor<>( ))
+		];
 }

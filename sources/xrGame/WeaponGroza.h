@@ -5,13 +5,12 @@
 
 class CWeaponGroza : public CWeaponMagazinedWGrenade
 {
-	typedef CWeaponMagazinedWGrenade inherited;
+	using inherited = CWeaponMagazinedWGrenade;
 
 public:
 	CWeaponGroza( );
 	virtual ~CWeaponGroza( );
 
-public:
 	static void script_register(lua_State*);
 };
 

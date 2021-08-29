@@ -17,11 +17,11 @@
 
 CShootingObject::CShootingObject(void)
 {
-	fTime = 0;
-	fTimeToFire = 0;
+	fTime = 0.0f;
+	fTimeToFire = 0.0f;
 	//fHitPower						= 0.0f;
 	fvHitPower.set(0.0f, 0.0f, 0.0f, 0.0f);
-	m_fStartBulletSpeed = 1000.f;
+	m_fStartBulletSpeed = 1000.0f;
 
 	m_vCurrentShootDir.set(0, 0, 0);
 	m_vCurrentShootPos.set(0, 0, 0);
@@ -64,7 +64,7 @@ void CShootingObject::Load(const char* section)
 
 	//время затрачиваемое на выстрел
 	fTimeToFire = pSettings->r_float(section, "rpm");
-	VERIFY(fTimeToFire > 0.f);
+	VERIFY(fTimeToFire > 0.0f);
 	fTimeToFire = 60.0f / fTimeToFire;
 
 	LoadFireParams(section, "");
@@ -77,8 +77,14 @@ void CShootingObject::Light_Create( )
 {
 	//lights
 	light_render = ::Render->light_create( );
-	if (::Render->get_generation( ) == IRender_interface::GENERATION_R2)	light_render->set_shadow(true);
-	else																light_render->set_shadow(false);
+	if (::Render->get_generation( ) == IRender_interface::GENERATION_R2)
+	{
+		light_render->set_shadow(true);
+	}
+	else
+	{
+		light_render->set_shadow(false);
+	}
 }
 
 void CShootingObject::Light_Destroy( )
@@ -149,7 +155,10 @@ void CShootingObject::LoadLights(const char* section, const char* prefix)
 
 void CShootingObject::Light_Start( )
 {
-	if (!light_render)		Light_Create( );
+	if (!light_render)
+	{
+		Light_Create( );
+	}
 
 	if (Device.dwFrame != light_frame)
 	{
@@ -181,9 +190,12 @@ void CShootingObject::Light_Render(const Fvector3& P)
 //////////////////////////////////////////////////////////////////////////
 
 void CShootingObject::StartParticles(CParticlesObject*& pParticles, const char* particles_name,
-									 const Fvector3& pos, const  Fvector3& vel, bool auto_remove_flag)
+	const Fvector3& pos, const  Fvector3& vel, bool auto_remove_flag)
 {
-	if (!particles_name) return;
+	if (!particles_name)
+	{
+		return;
+	}
 
 	if (pParticles != NULL)
 	{
@@ -199,16 +211,22 @@ void CShootingObject::StartParticles(CParticlesObject*& pParticles, const char* 
 
 void CShootingObject::StopParticles(CParticlesObject*& pParticles)
 {
-	if (pParticles == NULL) return;
+	if (pParticles == NULL)
+	{
+		return;
+	}
 
 	pParticles->Stop( );
 	CParticlesObject::Destroy(pParticles);
 }
 
 void CShootingObject::UpdateParticles(CParticlesObject*& pParticles,
-									  const Fvector3& pos, const Fvector3& vel)
+	const Fvector3& pos, const Fvector3& vel)
 {
-	if (!pParticles)		return;
+	if (!pParticles)
+	{
+		return;
+	}
 
 	Fmatrix particles_pos;
 	particles_pos.set(get_ParticlesXFORM( ));
@@ -243,26 +261,38 @@ void CShootingObject::LoadFlameParticles(const char* section, const char* prefix
 	// flames
 	strconcat(sizeof(full_name), full_name, prefix, "flame_particles");
 	if (pSettings->line_exist(section, full_name))
+	{
 		m_sFlameParticles = pSettings->r_string(section, full_name);
+	}
 
 	strconcat(sizeof(full_name), full_name, prefix, "smoke_particles");
 	if (pSettings->line_exist(section, full_name))
+	{
 		m_sSmokeParticles = pSettings->r_string(section, full_name);
+	}
 
 	strconcat(sizeof(full_name), full_name, prefix, "shot_particles");
 	if (pSettings->line_exist(section, full_name))
+	{
 		m_sShotParticles = pSettings->r_string(section, full_name);
+	}
 
 	//текущие партиклы
 	m_sFlameParticlesCurrent = m_sFlameParticles;
 	m_sSmokeParticlesCurrent = m_sSmokeParticles;
 }
 
-void CShootingObject::OnShellDrop(const Fvector3& play_pos,
-								  const Fvector3& parent_vel)
+void CShootingObject::OnShellDrop(const Fvector3& play_pos, const Fvector3& parent_vel)
 {
-	if (!m_sShellParticles) return;
-	if (Device.vCameraPosition.distance_to_sqr(play_pos) > 2 * 2) return;
+	if (!m_sShellParticles)
+	{
+		return;
+	}
+
+	if (Device.vCameraPosition.distance_to_sqr(play_pos) > 2 * 2)
+	{
+		return;
+	}
 
 	CParticlesObject* pShellParticles = CParticlesObject::Create(*m_sShellParticles, TRUE);
 
@@ -275,8 +305,7 @@ void CShootingObject::OnShellDrop(const Fvector3& play_pos,
 }
 
 //партиклы дыма
-void CShootingObject::StartSmokeParticles(const Fvector3& play_pos,
-										  const Fvector3& parent_vel)
+void CShootingObject::StartSmokeParticles(const Fvector3& play_pos,		const Fvector3& parent_vel)
 {
 	CParticlesObject* pSmokeParticles = nullptr;
 	StartParticles(pSmokeParticles, *m_sSmokeParticlesCurrent, play_pos, parent_vel, true);
@@ -284,11 +313,13 @@ void CShootingObject::StartSmokeParticles(const Fvector3& play_pos,
 
 void CShootingObject::StartFlameParticles( )
 {
-	if (0 == m_sFlameParticlesCurrent.size( )) return;
+	if (0 == m_sFlameParticlesCurrent.size( ))
+	{
+		return;
+	}
 
 	//если партиклы циклические
-	if (m_pFlameParticles && m_pFlameParticles->IsLooped( ) &&
-		m_pFlameParticles->IsPlaying( ))
+	if (m_pFlameParticles && m_pFlameParticles->IsLooped( ) && m_pFlameParticles->IsPlaying( ))
 	{
 		UpdateFlameParticles( );
 		return;
@@ -302,8 +333,15 @@ void CShootingObject::StartFlameParticles( )
 
 void CShootingObject::StopFlameParticles( )
 {
-	if (0 == m_sFlameParticlesCurrent.size( )) return;
-	if (m_pFlameParticles == NULL) return;
+	if (0 == m_sFlameParticlesCurrent.size( ))
+	{
+		return;
+	}
+
+	if (m_pFlameParticles == nullptr)
+	{
+		return;
+	}
 
 	m_pFlameParticles->SetAutoRemove(true);
 	m_pFlameParticles->Stop( );
@@ -312,10 +350,17 @@ void CShootingObject::StopFlameParticles( )
 
 void CShootingObject::UpdateFlameParticles( )
 {
-	if (0 == m_sFlameParticlesCurrent.size( ))		return;
-	if (!m_pFlameParticles)				return;
+	if (0 == m_sFlameParticlesCurrent.size( ))
+	{
+		return;
+	}
 
-	Fmatrix		pos;
+	if (!m_pFlameParticles)
+	{
+		return;
+	}
+
+	Fmatrix pos;
 	pos.set(get_ParticlesXFORM( ));
 	pos.c.set(get_CurrentFirePoint( ));
 
@@ -336,7 +381,10 @@ void CShootingObject::UpdateLight( )
 	if (light_render && light_time > 0)
 	{
 		light_time -= Device.fTimeDelta;
-		if (light_time <= 0) StopLight( );
+		if (light_time <= 0)
+		{
+			StopLight( );
+		}
 	}
 }
 
@@ -359,7 +407,9 @@ void CShootingObject::RenderLight( )
 bool CShootingObject::SendHitAllowed(CObject* pUser)
 {
 	if (Game( ).IsServerControlHits( ))
+	{
 		return OnServer( );
+	}
 
 	if (OnServer( ))
 	{
@@ -370,6 +420,7 @@ bool CShootingObject::SendHitAllowed(CObject* pUser)
 				return false;
 			}
 		}
+
 		return true;
 	}
 	else
@@ -388,12 +439,12 @@ bool CShootingObject::SendHitAllowed(CObject* pUser)
 extern void random_dir(Fvector3& tgt_dir, const Fvector3& src_dir, float dispersion);
 
 void CShootingObject::FireBullet(const Fvector3& pos,
-								 const Fvector3& shot_dir,
-								 float fire_disp,
-								 const CCartridge& cartridge,
+	const Fvector3& shot_dir,
+	float fire_disp,
+	const CCartridge& cartridge,
 	U16 parent_id,
 	U16 weapon_id,
-								 bool send_hit)
+	bool send_hit)
 {
 	Fvector3 dir;
 	random_dir(dir, shot_dir, fire_disp);
@@ -445,8 +496,8 @@ void CShootingObject::FireBullet(const Fvector3& pos,
 	}
 
 	Level( ).BulletManager( ).AddBullet(pos, dir, m_fStartBulletSpeed, l_fHitPower,
-										fHitImpulse, parent_id, weapon_id,
-										ALife::eHitTypeFireWound, fireDistance, cartridge, send_hit, aim_bullet);
+		fHitImpulse, parent_id, weapon_id,
+		ALife::eHitTypeFireWound, fireDistance, cartridge, send_hit, aim_bullet);
 }
 
 void CShootingObject::FireStart( )
@@ -462,6 +513,5 @@ void CShootingObject::FireEnd( )
 void CShootingObject::StartShotParticles( )
 {
 	CParticlesObject* pSmokeParticles = nullptr;
-	StartParticles(pSmokeParticles, *m_sShotParticles,
-				   m_vCurrentShootPos, m_vCurrentShootDir, true);
+	StartParticles(pSmokeParticles, *m_sShotParticles, m_vCurrentShootPos, m_vCurrentShootDir, true);
 }

@@ -2,8 +2,6 @@
 
 #pragma once
 
-//#define SND_RIC_COUNT 5
-
 #include "..\ENGINE\Render.h"
 #include "..\ENGINE\feel_touch.h"
 #include "InventoryItem.h"

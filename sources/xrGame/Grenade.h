@@ -4,8 +4,6 @@
 #include "Explosive.h"
 #include "..\ENGINE\feel_touch.h"
 
-//#define SND_RIC_COUNT 5
-
 class CGrenade : public CMissile, public CExplosive
 {
 	using inherited = CMissile;

@@ -3,10 +3,10 @@
 #include "WeaponCustomPistol.h"
 #include "script_export_space.h"
 
-class CWeaponKnife: public CWeapon
+class CWeaponKnife : public CWeapon
 {
 private:
-	typedef CWeapon inherited;
+	using inherited = CWeapon;
 
 protected:
 	MotionSVec			mhud_idle;
@@ -21,55 +21,49 @@ protected:
 
 	bool				m_attackStart;
 
-protected:
-	virtual void		switch2_Idle				();
-	virtual void		switch2_Hiding				();
-	virtual void		switch2_Hidden				();
-	virtual void		switch2_Showing				();
-			void		switch2_Attacking			(u32 state);
+	virtual void		switch2_Idle( );
+	virtual void		switch2_Hiding( );
+	virtual void		switch2_Hidden( );
+	virtual void		switch2_Showing( );
+	void				switch2_Attacking(u32 state);
 
-	virtual void		OnAnimationEnd				(u32 state);
-	virtual void		OnStateSwitch				(u32 S);
+	virtual void		OnAnimationEnd(u32 state);
+	virtual void		OnStateSwitch(u32 S);
 
-	void				state_Attacking				(float dt);
+	void				state_Attacking(float dt);
 
-	virtual void		KnifeStrike					(const Fvector3& pos, const Fvector3& dir);
+	virtual void		KnifeStrike(const Fvector3& pos, const Fvector3& dir);
 
 	float				fWallmarkSize;
 	U16					knife_material_idx;
 
-protected:	
 	ALife::EHitType		m_eHitType;
 
 	ALife::EHitType		m_eHitType_1;
-	//float				fHitPower_1;
 	Fvector4			fvHitPower_1;
 	float				fHitImpulse_1;
 
 	ALife::EHitType		m_eHitType_2;
-	//float				fHitPower_2;
 	Fvector4			fvHitPower_2;
 	float				fCurrentHit;
 	float				fHitImpulse_2;
 
-protected:
-	virtual void		LoadFireParams					(const char* section, const char* prefix);
+	virtual void		LoadFireParams(const char* section, const char* prefix);
 
 public:
-						CWeaponKnife(); 
-	virtual				~CWeaponKnife(); 
+	CWeaponKnife( );
+	virtual				~CWeaponKnife( );
 
-	void				Load							(const char* section);
+	void				Load(const char* section);
 
-	virtual void		Fire2Start						();
-	virtual void		FireStart						();
+	virtual void		Fire2Start( );
+	virtual void		FireStart( );
 
-	virtual bool		Action							(int cmd, u32 flags);
+	virtual bool		Action(int cmd, u32 flags);
 
-	virtual void		StartIdleAnim					();
-	virtual void		GetBriefInfo					(xr_string& str_name, xr_string& icon_sect_name, xr_string& str_count);
+	virtual void		StartIdleAnim( );
+	virtual void		GetBriefInfo(xr_string& str_name, xr_string& icon_sect_name, xr_string& str_count);
 
-public:
 	static void script_register(lua_State*);
 };
 

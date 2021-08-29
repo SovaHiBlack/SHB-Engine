@@ -4659,7 +4659,7 @@
     <ClInclude Include="WeaponBinoculars.h">
       <Filter>Core\Client\Objects\items &amp; weapons\Weapons\Various weapons\WeaponBinocular</Filter>
     </ClInclude>
-    <ClInclude Include="WeaponBinocularsVision.h">
+    <ClInclude Include="BinocularsVision.h">
       <Filter>Core\Client\Objects\items &amp; weapons\Weapons\Various weapons\WeaponBinocular</Filter>
     </ClInclude>
     <ClInclude Include="WeaponShotgun.h">
@@ -7361,7 +7361,7 @@
     <ClCompile Include="WeaponBinoculars.cpp">
       <Filter>Core\Client\Objects\items &amp; weapons\Weapons\Various weapons\WeaponBinocular</Filter>
     </ClCompile>
-    <ClCompile Include="WeaponBinocularsVision.cpp">
+    <ClCompile Include="BinocularsVision.cpp">
       <Filter>Core\Client\Objects\items &amp; weapons\Weapons\Various weapons\WeaponBinocular</Filter>
     </ClCompile>
     <ClCompile Include="WeaponShotgun.cpp">

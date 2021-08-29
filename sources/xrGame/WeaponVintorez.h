@@ -5,14 +5,13 @@
 
 class CWeaponVintorez : public CWeaponMagazined
 {
-	typedef CWeaponMagazined inherited;
+	using inherited = CWeaponMagazined;
 
 public:
 	CWeaponVintorez( );
-	virtual ~CWeaponVintorez( );
+	virtual			~CWeaponVintorez( );
 
-public:
-	static void script_register(lua_State*);
+	static void		script_register(lua_State*);
 };
 
 add_to_type_list(CWeaponVintorez)

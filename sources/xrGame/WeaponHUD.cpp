@@ -29,7 +29,7 @@ BOOL weapon_hud_value::load(const CSharedString& section, CHudItem* owner)
 	const char* visual_name = pSettings->r_string(section, "visual");
 	m_animations = smart_cast<CKinematicsAnimated*>(::Render->model_Create(visual_name));
 
-	// fire bone	
+	// fire bone
 	if (smart_cast<CWeapon*>(owner))
 	{
 		const char* fire_bone = pSettings->r_string(section, "fire_bone");
@@ -150,8 +150,8 @@ void CWeaponHUD::animDisplay(MotionID M, BOOL bMixIn)
 }
 void CWeaponHUD::animPlay(MotionID M, BOOL bMixIn, CHudItem* W, u32 state)
 {
-//.	if(m_bStopAtEndAnimIsRunning)	
-//.		StopCurrentAnim				();
+//.	if (m_bStopAtEndAnimIsRunning)
+//.		StopCurrentAnim( );
 
 	m_startedAnimState = state;
 	Show( );

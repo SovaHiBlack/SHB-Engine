@@ -6,13 +6,12 @@
 class CWeaponPM : public CWeaponPistol
 {
 private:
-	typedef CWeaponPistol inherited;
+	using inherited = CWeaponPistol;
 
 public:
 	CWeaponPM( );
 	virtual			~CWeaponPM( );
 
-public:
 	static void script_register(lua_State*);
 };
 

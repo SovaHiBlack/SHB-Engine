@@ -8,58 +8,65 @@
 #include "ActorEffector.h"
 #include "EffectorShot.h"
 
-const Fvector3&	CWeaponStatMgun::get_CurrentFirePoint()
+const Fvector3& CWeaponStatMgun::get_CurrentFirePoint( )
 {
 	return m_fire_pos;
 }
 
-const Fmatrix&	CWeaponStatMgun::get_ParticlesXFORM	()						
+const Fmatrix& CWeaponStatMgun::get_ParticlesXFORM( )
 {
 	return m_fire_bone_xform;
 }
 
-void CWeaponStatMgun::FireStart()
+void CWeaponStatMgun::FireStart( )
 {
-	m_dAngle.set(0.0f,0.0f);
-	inheritedShooting::FireStart();
+	m_dAngle.set(0.0f, 0.0f);
+	inheritedShooting::FireStart( );
 }
 
-void CWeaponStatMgun::FireEnd()	
+void CWeaponStatMgun::FireEnd( )
 {
-	m_dAngle.set(0.0f,0.0f);
-	inheritedShooting::FireEnd();
-	StopFlameParticles	();
-	RemoveShotEffector ();
+	m_dAngle.set(0.0f, 0.0f);
+	inheritedShooting::FireEnd( );
+	StopFlameParticles( );
+	RemoveShotEffector( );
 }
 
-void CWeaponStatMgun::UpdateFire()
+void CWeaponStatMgun::UpdateFire( )
 {
 	fTime -= Device.fTimeDelta;
-	
 
-	inheritedShooting::UpdateFlameParticles();
-	inheritedShooting::UpdateLight();
 
-	if(!IsWorking()){
-		if(fTime<0) fTime = 0.f;
+	inheritedShooting::UpdateFlameParticles( );
+	inheritedShooting::UpdateLight( );
+
+	if (!IsWorking( ))
+	{
+		if (fTime < 0)
+		{
+			fTime = 0.0f;
+		}
+
 		return;
 	}
 
-	if(fTime<=0){
-		OnShot();
+	if (fTime <= 0)
+	{
+		OnShot( );
 		fTime += fTimeToFire;
-	}else{
-		angle_lerp		(m_dAngle.x,0.f,5.f,Device.fTimeDelta);
-		angle_lerp		(m_dAngle.y,0.f,5.f,Device.fTimeDelta);
+	}
+	else
+	{
+		angle_lerp(m_dAngle.x, 0.0f, 5.0f, Device.fTimeDelta);
+		angle_lerp(m_dAngle.y, 0.0f, 5.0f, Device.fTimeDelta);
 	}
 }
 
-void CWeaponStatMgun::OnShot()
+void CWeaponStatMgun::OnShot( )
 {
-	VERIFY(Owner());
+	VERIFY(Owner( ));
 
-	FireBullet				(	m_fire_pos, m_fire_dir, fireDispersionBase, *m_Ammo, 
-								Owner()->ID(),ID(), SendHitAllowed(Owner()));
+	FireBullet(m_fire_pos, m_fire_dir, fireDispersionBase, *m_Ammo, Owner( )->ID( ), ID( ), SendHitAllowed(Owner( )));
 
 	StartShotParticles( );
 	if (m_bLightShotEnabled)
@@ -67,16 +74,15 @@ void CWeaponStatMgun::OnShot()
 		Light_Start( );
 	}
 
-	StartFlameParticles		();
-	StartSmokeParticles		(m_fire_pos, zero_vel);
-	OnShellDrop				(m_fire_pos, zero_vel);
+	StartFlameParticles( );
+	StartSmokeParticles(m_fire_pos, zero_vel);
+	OnShellDrop(m_fire_pos, zero_vel);
 
-	bool b_hud_mode =			(Level().CurrentEntity() == smart_cast<CObject*>(Owner()));
-	HUD_SOUND::PlaySound	(sndShot, m_fire_pos, Owner(), b_hud_mode);
+	bool b_hud_mode = (Level( ).CurrentEntity( ) == smart_cast<CObject*>(Owner( )));
+	HUD_SOUND::PlaySound(sndShot, m_fire_pos, Owner( ), b_hud_mode);
 
-	AddShotEffector			();
-	m_dAngle.set			(	::Random.randF(-fireDispersionBase,fireDispersionBase),
-								::Random.randF(-fireDispersionBase,fireDispersionBase));
+	AddShotEffector( );
+	m_dAngle.set(::Random.randF(-fireDispersionBase, fireDispersionBase), ::Random.randF(-fireDispersionBase, fireDispersionBase));
 }
 
 void CWeaponStatMgun::AddShotEffector( )
@@ -87,10 +93,10 @@ void CWeaponStatMgun::AddShotEffector( )
 		if (!S)
 		{
 			S = (CCameraShotEffector*) OwnerActor( )->Cameras( ).addCamEffector(xr_new<CCameraShotEffector>(camMaxAngle,
-																											camRelaxSpeed,
-																											0.25f,
-																											0.01f,
-																											0.7f));
+				camRelaxSpeed,
+				0.25f,
+				0.01f,
+				0.7f));
 		}
 
 		R_ASSERT(S);
@@ -98,8 +104,10 @@ void CWeaponStatMgun::AddShotEffector( )
 	}
 }
 
-void  CWeaponStatMgun::RemoveShotEffector	()
+void CWeaponStatMgun::RemoveShotEffector( )
 {
-	if(OwnerActor())
-		OwnerActor()->Cameras().RemoveCamEffector	(eCEShot);
+	if (OwnerActor( ))
+	{
+		OwnerActor( )->Cameras( ).RemoveCamEffector(eCEShot);
+	}
 }

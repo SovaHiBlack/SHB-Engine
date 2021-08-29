@@ -8,10 +8,10 @@ class CGrenadeF1 : public CGrenade
 	using inherited = CGrenade;
 
 public:
-					CGrenadeF1			( );
-	virtual			~CGrenadeF1			( );
+	CGrenadeF1( );
+	virtual			~CGrenadeF1( );
 
-	static void		script_register		(lua_State*);
+	static void		script_register(lua_State*);
 };
 
 add_to_type_list(CGrenadeF1)

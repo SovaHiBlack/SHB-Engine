@@ -13,13 +13,14 @@
 #include "effectorshot.h"
 #include "level_bullet_manager.h"
 
-#define FLAME_TIME 0.05f
-
 float _nrand(float sigma)
 {
 #define ONE_OVER_SIGMA_EXP (1.0f / 0.7975f)
 
-	if (sigma == 0) return 0;
+	if (sigma == 0.0f)
+	{
+		return 0.0f;
+	}
 
 	float y;
 	do
@@ -27,19 +28,26 @@ float _nrand(float sigma)
 		y = -logf(Random.randF( ));
 	}
 	while (Random.randF( ) > expf(-_sqr(y - 1.0f) * 0.5f));
-	if (rand( ) & 0x1)	return y * sigma * ONE_OVER_SIGMA_EXP;
-	else				return -y * sigma * ONE_OVER_SIGMA_EXP;
+
+	if (rand( ) & 0x1)
+	{
+		return y * sigma * ONE_OVER_SIGMA_EXP;
+	}
+	else
+	{
+		return -y * sigma * ONE_OVER_SIGMA_EXP;
+	}
 }
 
 void random_dir(Fvector3& tgt_dir, const Fvector3& src_dir, float dispersion)
 {
-	float sigma = dispersion / 3.f;
+	float sigma = dispersion / 3.0f;
 	float alpha = clampr(_nrand(sigma), -dispersion, dispersion);
 	float theta = Random.randF(0, PI);
 	float r = tan(alpha);
-	Fvector3 			U;
-	Fvector3			V;
-	Fvector3			T;
+	Fvector3 U;
+	Fvector3 V;
+	Fvector3 T;
 	Fvector3::generate_orthonormal_basis(src_dir, U, V);
 	U.mul(r * _sin(theta));
 	V.mul(r * _cos(theta));
@@ -64,7 +72,7 @@ void CWeapon::FireTrace(const Fvector3& P, const Fvector3& D)
 	if (m_u8TracerColorID != U8(-1))
 		l_cartridge.m_u8ColorID = m_u8TracerColorID;
 	//-------------------------------------------------------------
-	//повысить изношенность оружия с учетом влияния конкретного патрона
+	// повысить изношенность оружия с учетом влияния конкретного патрона
 //	float Deterioration = GetWeaponDeterioration();
 //	Msg("Deterioration = %f", Deterioration);
 	ChangeCondition(-GetWeaponDeterioration( ) * l_cartridge.m_impair);
@@ -72,7 +80,7 @@ void CWeapon::FireTrace(const Fvector3& P, const Fvector3& D)
 	float fire_disp = GetFireDispersion(true);
 
 	bool SendHit = SendHitAllowed(H_Parent( ));
-	//выстерлить пулю (с учетом возможной стрельбы дробью)
+	// выстерлить пулю (с учетом возможной стрельбы дробью)
 	for (int i = 0; i < l_cartridge.m_buckShot; ++i)
 	{
 		FireBullet(P, D, fire_disp, l_cartridge, H_Parent( )->ID( ), ID( ), SendHit);
@@ -88,7 +96,7 @@ void CWeapon::FireTrace(const Fvector3& P, const Fvector3& D)
 	m_magazine.pop_back( );
 	--iAmmoElapsed;
 
-	//проверить не произошла ли осечка
+	// проверить не произошла ли осечка
 	CheckForMisfire( );
 
 	VERIFY((u32) iAmmoElapsed == m_magazine.size( ));
@@ -101,9 +109,11 @@ void CWeapon::Fire2Start( )
 
 void CWeapon::Fire2End( )
 {
-	//принудительно останавливать зацикленные партиклы
+	// принудительно останавливать зацикленные партиклы
 	if (m_pFlameParticles2 && m_pFlameParticles2->IsLooped( ))
+	{
 		StopFlameParticles2( );
+	}
 
 	bWorking2 = false;
 }
@@ -112,14 +122,16 @@ void CWeapon::StopShooting( )
 {
 	m_bPending = true;
 
-	//принудительно останавливать зацикленные партиклы
+	// принудительно останавливать зацикленные партиклы
 	if (m_pFlameParticles && m_pFlameParticles->IsLooped( ))
+	{
 		StopFlameParticles( );
+	}
 
 	SwitchState(eIdle);
 
 	bWorking = false;
-	//if(IsWorking()) FireEnd();
+//	if (IsWorking( )) FireEnd( );
 }
 
 void CWeapon::FireEnd( )

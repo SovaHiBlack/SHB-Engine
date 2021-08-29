@@ -1420,7 +1420,7 @@
     <ClInclude Include="WeaponAK74.h" />
     <ClInclude Include="WeaponAmmo.h" />
     <ClInclude Include="WeaponBinoculars.h" />
-    <ClInclude Include="WeaponBinocularsVision.h" />
+    <ClInclude Include="BinocularsVision.h" />
     <ClInclude Include="WeaponBM16.h" />
     <ClInclude Include="WeaponCustomPistol.h" />
     <ClInclude Include="WeaponFN2000.h" />
@@ -2346,7 +2346,7 @@
     <ClCompile Include="WeaponAK74.cpp" />
     <ClCompile Include="WeaponAmmo.cpp" />
     <ClCompile Include="WeaponBinoculars.cpp" />
-    <ClCompile Include="WeaponBinocularsVision.cpp" />
+    <ClCompile Include="BinocularsVision.cpp" />
     <ClCompile Include="WeaponBM16.cpp" />
     <ClCompile Include="WeaponCustomPistol.cpp" />
     <ClCompile Include="WeaponDispersion.cpp" />

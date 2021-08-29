@@ -3,21 +3,15 @@
 #include "WeaponMagazined.h"
 #include "script_export_space.h"
 
-class CWeaponFN2000: public CWeaponMagazined
+class CWeaponFN2000 : public CWeaponMagazined
 {
 private:
-	typedef CWeaponMagazined inherited;
+	using inherited = CWeaponMagazined;
 
 public:
-	CWeaponFN2000	();
-	virtual			~CWeaponFN2000	();
-/*	virtual void	Load			(const char* section);
-	virtual void			Fire2Start			();
-	virtual void			Fire2End			();
+	CWeaponFN2000( );
+	virtual			~CWeaponFN2000( );
 
-	virtual bool Action(int cmd, u32 flags);*/
-
-public:
 	static void script_register(lua_State*);
 };
 

@@ -6,18 +6,18 @@
 
 class CWeaponRG6 : public CRocketLauncher, public CWeaponShotgun
 {
-	typedef CRocketLauncher		inheritedRL;
-	typedef CWeaponShotgun		inheritedSG;
-	
+	using inheritedRL = CRocketLauncher;
+	using inheritedSG = CWeaponShotgun;
+
 public:
-	virtual			~CWeaponRG6				();
-	virtual BOOL	net_Spawn				(CSE_Abstract* DC);
-	virtual void	Load					(const char* section);
-	virtual void	OnEvent					(CNetPacket& P, U16 type);
+	virtual			~CWeaponRG6( );
+	virtual BOOL	net_Spawn(CSE_Abstract* DC);
+	virtual void	Load(const char* section);
+	virtual void	OnEvent(CNetPacket& P, U16 type);
 
 protected:
-	virtual void	FireStart				();
-	virtual U8		AddCartridge			(U8 cnt);
+	virtual void	FireStart( );
+	virtual U8		AddCartridge(U8 cnt);
 
 public:
 	static void script_register(lua_State*);

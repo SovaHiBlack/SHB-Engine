@@ -5,13 +5,12 @@
 
 class CWeaponSVU : public CWeaponCustomPistol
 {
-	typedef CWeaponCustomPistol inherited;
+	using inherited = CWeaponCustomPistol;
 
 public:
 	CWeaponSVU( );
 	virtual ~CWeaponSVU( );
 
-public:
 	static void script_register(lua_State*);
 };
 

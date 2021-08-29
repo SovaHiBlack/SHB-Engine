@@ -3,24 +3,15 @@
 #include "WeaponMagazined.h"
 #include "script_export_space.h"
 
-class CWeaponLR300: public CWeaponMagazined
+class CWeaponLR300 : public CWeaponMagazined
 {
 private:
-	typedef CWeaponMagazined inherited;
+	using inherited = CWeaponMagazined;
 
 public:
-	/*
-	virtual	void	UpdateCL			();
-	virtual void	renderable_Render	();
-	virtual void	spatial_move		();
-	virtual void	spatial_register	();
-	virtual void	spatial_unregister	();
-	*/
+	CWeaponLR300( );
+	virtual			~CWeaponLR300( );
 
-					CWeaponLR300		();
-	virtual			~CWeaponLR300		();
-
-public:
 	static void script_register(lua_State*);
 };
 

@@ -1,6 +1,6 @@
 #include "stdafx.h"
 
-#include "WeaponBinocularsVision.h"
+#include "BinocularsVision.h"
 #include "WeaponBinoculars.h"
 #include "ui\UIFrameWindow.h"//
 #include "EntityAlive.h"
@@ -25,7 +25,7 @@ extern u32 C_ON_FRIEND;
 struct FindVisObjByObject
 {
 	const CObject* O;
-	FindVisObjByObject(const CObject* o) :O(o)
+	FindVisObjByObject(const CObject* o) : O(o)
 	{ }
 	bool operator () (const SBinocVisibleObj* vis)
 	{
@@ -90,6 +90,7 @@ void SBinocVisibleObj::Update( )
 		mx.x = _max(mx.x, p.x);
 		mx.y = _max(mx.y, p.y);
 	}
+
 	static Frect screen_rect = { -1.0f, -1.0f, 1.0f, 1.0f };
 
 	Frect new_rect;
@@ -128,7 +129,6 @@ void SBinocVisibleObj::Update( )
 			m_flags.set(flTargetLocked, TRUE);
 			u32 clr = subst_alpha(m_lt.GetColor( ), 255);
 
-			//-----------------------------------------------------
 			CActor* pActor = Actor( );
 			if (pActor)
 			{
@@ -141,8 +141,8 @@ void SBinocVisibleObj::Update( )
 					switch (RELATION_REGISTRY( ).GetRelationType(others_inv_owner, our_inv_owner))
 					{
 						case ALife::eRelationTypeEnemy:
-						{						
-						clr = C_ON_ENEMY;
+						{
+							clr = C_ON_ENEMY;
 						}
 						break;
 						case ALife::eRelationTypeNeutral:
@@ -194,10 +194,10 @@ void CBinocularsVision::Update( )
 	{
 		return;
 	}
-	//-----------------------------------------------------
+
 	const CVisualMemoryManager::VISIBLES& vVisibles = pActor->memory( ).visual( ).objects( );
 
-	VIS_OBJECTS_IT	it = m_active_objects.begin( );
+	VIS_OBJECTS_IT it = m_active_objects.begin( );
 	for (; it != m_active_objects.end( ); ++it)
 	{
 		(*it)->m_flags.set(flVisObjNotValid, TRUE);
@@ -220,7 +220,7 @@ void CBinocularsVision::Update( )
 			continue;
 		}
 
-		FindVisObjByObject	f(object_);
+		FindVisObjByObject f(object_);
 		VIS_OBJECTS_IT found;
 		found = std::find_if(m_active_objects.begin( ), m_active_objects.end( ), f);
 
@@ -276,7 +276,7 @@ void CBinocularsVision::Load(const CSharedString& section)
 
 void CBinocularsVision::remove_links(CObject* object)
 {
-	VIS_OBJECTS::iterator	I = std::find_if(m_active_objects.begin( ), m_active_objects.end( ), FindVisObjByObject(object));
+	VIS_OBJECTS::iterator I = std::find_if(m_active_objects.begin( ), m_active_objects.end( ), FindVisObjByObject(object));
 	if (I == m_active_objects.end( ))
 	{
 		return;

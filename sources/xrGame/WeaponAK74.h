@@ -9,10 +9,10 @@ private:
 	using inherited = CWeaponMagazinedWGrenade;
 
 public:
-					CWeaponAK74			(const char* name = "AK74", ESoundTypes eSoundType = SOUND_TYPE_WEAPON_SUBMACHINEGUN);
-	virtual			~CWeaponAK74		( );
+	CWeaponAK74(const char* name = "AK74", ESoundTypes eSoundType = SOUND_TYPE_WEAPON_SUBMACHINEGUN);
+	virtual			~CWeaponAK74( );
 
-	static void		script_register		(lua_State*);
+	static void		script_register(lua_State*);
 };
 
 add_to_type_list(CWeaponAK74)
