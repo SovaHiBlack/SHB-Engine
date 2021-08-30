@@ -1,8 +1,8 @@
-// character_info.cpp			игровая информация для персонажей в игре
+// CharacterInfo.cpp			игровая информация для персонажей в игре
 
 #include "stdafx.h"
 
-#include "character_info.h"
+#include "CharacterInfo.h"
 #include "ui/xrUIXmlParser.h"//
 #include "PhraseDialog.h"
 #include "xrServer_Objects_ALife_Monsters.h"
@@ -127,12 +127,12 @@ CSharedString CCharacterInfo::Bio( ) const
 	return m_SpecificCharacter.Bio( );
 }
 
-void CCharacterInfo::SetRank(CHARACTER_RANK_VALUE rank)
+void CCharacterInfo::SetRank(CharacterRankValue rank)
 {
 	m_CurrentRank.set(rank);
 }
 
-void CCharacterInfo::SetReputation(CHARACTER_REPUTATION_VALUE reputation)
+void CCharacterInfo::SetReputation(CharacterReputationValue reputation)
 {
 	m_CurrentReputation.set(reputation);
 }
@@ -143,12 +143,12 @@ const CSharedString& CCharacterInfo::IconName( ) const
 	return m_SpecificCharacter.IconName( );
 }
 
-CSharedString	CCharacterInfo::StartDialog( ) const
+CSharedString CCharacterInfo::StartDialog( ) const
 {
 	return m_StartDialog;
 }
 
-const DIALOG_ID_VECTOR& CCharacterInfo::ActorDialogs( ) const
+const DialogIdVec& CCharacterInfo::ActorDialogs( ) const
 {
 	R_ASSERT(m_SpecificCharacterId.size( ));
 	return m_SpecificCharacter.data( )->m_ActorDialogs;

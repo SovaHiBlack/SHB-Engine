@@ -7,7 +7,7 @@
 #include "Trade.h"
 #include "Inventory.h"
 #include "xrserver_objects_alife_items.h"
-#include "character_info.h"
+#include "CharacterInfo.h"
 #include "script_game_object.h"
 #include "script_engine.h"
 #include "AI_PhraseDialogManager.h"
@@ -22,8 +22,8 @@
 #include "script_callback_ex.h"
 #include "GameObject_space.h"
 #include "AI/Monsters/BaseMonster/BaseMonster.h"
-#include "trade_parameters.h"
-#include "purchase_list.h"
+#include "TradeParameters.h"
+#include "PurchaseList.h"
 #include "clsid_game.h"
 #include "alife_object_registry.h"
 #include "CustomOutfit.h"
@@ -265,7 +265,7 @@ bool CInventoryOwner::OfferTalk(CInventoryOwner* talk_partner)
 	CEntityAlive* pPartnerEntityAlive = smart_cast<CEntityAlive*>(talk_partner);
 	R_ASSERT(pPartnerEntityAlive);
 
-//	ALife::ERelationType relation = RELATION_REGISTRY().GetRelationType(this, talk_partner);
+//	ALife::ERelationType relation = SRelationRegistry().GetRelationType(this, talk_partner);
 //	if(relation == ALife::eRelationTypeEnemy) return false;
 
 	if (!pOurEntityAlive->g_Alive( ) || !pPartnerEntityAlive->g_Alive( ))
@@ -381,7 +381,7 @@ void CInventoryOwner::spawn_supplies( )
 	}
 }
 
-//игровое имя 
+//игровое имя
 const char* CInventoryOwner::Name( ) const
 {
 //	return CharacterInfo().Name();
@@ -403,7 +403,7 @@ U16 CInventoryOwner::object_id( ) const
 
 //////////////////////////////////////////////////////////////////////////
 //установка группировки на клиентском и серверном объкте
-void CInventoryOwner::SetCommunity(CHARACTER_COMMUNITY_INDEX new_community)
+void CInventoryOwner::SetCommunity(CharacterCommunityIndex new_community)
 {
 	CEntityAlive* EA = smart_cast<CEntityAlive*>(this); VERIFY(EA);
 
@@ -425,7 +425,7 @@ void CInventoryOwner::SetCommunity(CHARACTER_COMMUNITY_INDEX new_community)
 	trader->m_community_index = new_community;
 }
 
-void CInventoryOwner::SetRank(CHARACTER_RANK_VALUE rank)
+void CInventoryOwner::SetRank(CharacterRankValue rank)
 {
 	CEntityAlive* EA = smart_cast<CEntityAlive*>(this); VERIFY(EA);
 	CSE_Abstract* e_entity = ai( ).alife( ).objects( ).object(EA->ID( ), false);
@@ -444,12 +444,12 @@ void CInventoryOwner::SetRank(CHARACTER_RANK_VALUE rank)
 	trader->m_rank = rank;
 }
 
-void CInventoryOwner::ChangeRank(CHARACTER_RANK_VALUE delta)
+void CInventoryOwner::ChangeRank(CharacterRankValue delta)
 {
 	SetRank(Rank( ) + delta);
 }
 
-void CInventoryOwner::SetReputation(CHARACTER_REPUTATION_VALUE reputation)
+void CInventoryOwner::SetReputation(CharacterReputationValue reputation)
 {
 	CEntityAlive* EA = smart_cast<CEntityAlive*>(this); VERIFY(EA);
 	CSE_Abstract* e_entity = ai( ).alife( ).objects( ).object(EA->ID( ), false);
@@ -468,7 +468,7 @@ void CInventoryOwner::SetReputation(CHARACTER_REPUTATION_VALUE reputation)
 	trader->m_reputation = reputation;
 }
 
-void CInventoryOwner::ChangeReputation(CHARACTER_REPUTATION_VALUE delta)
+void CInventoryOwner::ChangeReputation(CharacterReputationValue delta)
 {
 	SetReputation(Reputation( ) + delta);
 }

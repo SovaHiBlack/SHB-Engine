@@ -6,14 +6,14 @@
 
 #define DEFAULT_NEWS_SHOW_TIME	5000
 
-struct GAME_NEWS_DATA : public IPureSerializeObject<IReader, IWriter>
+struct SGameNewsData : public IPureSerializeObject<IReader, IWriter>
 {
 	enum eNewsType
 	{
 		eNews = 0,
 		eTalk = 1
 	} m_type;
-	GAME_NEWS_DATA( );
+	SGameNewsData( );
 
 	virtual void		load(IReader&);
 	virtual void		save(IWriter&);
@@ -33,4 +33,4 @@ private:
 	xr_string full_news_text;
 };
 
-using GAME_NEWS_VECTOR = xr_vector<GAME_NEWS_DATA>;
+using GameNewsVec = xr_vector<SGameNewsData>;

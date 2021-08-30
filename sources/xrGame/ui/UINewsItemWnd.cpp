@@ -47,7 +47,7 @@ void CUINewsItemWnd::Init(const char* xml_name, const char* start_from)
 	xml_init.InitAutoStaticGroup(uiXml, str, 0, this);
 }
 
-void CUINewsItemWnd::Setup(GAME_NEWS_DATA& news_data)
+void CUINewsItemWnd::Setup(SGameNewsData& news_data)
 {
 	m_UIText->SetTextST(news_data.news_text.c_str( ));
 	m_UIText->AdjustHeightToText( );

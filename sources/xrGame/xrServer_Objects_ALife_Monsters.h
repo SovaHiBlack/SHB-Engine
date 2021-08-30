@@ -5,7 +5,7 @@
 
 #include "xrServer_Objects_ALife.h"
 #include "xrServer_Objects_ALife_Items.h"
-#include "character_info_defs.h"
+#include "CharacterInfo_defs.h"
 #include "associative_vector.h"
 
 class CALifeMonsterBrain;
@@ -35,18 +35,18 @@ void							set_character_profile(CSharedString);
 CSharedString						specific_character( );
 void							set_specific_character(CSharedString);
 
-CHARACTER_COMMUNITY_INDEX		m_community_index;
-CHARACTER_REPUTATION_VALUE		m_reputation;
-CHARACTER_RANK_VALUE			m_rank;
+CharacterCommunityIndex		m_community_index;
+CharacterReputationValue		m_reputation;
+CharacterRankValue			m_rank;
 xr_string						m_character_name;
 
 //для работы с relation system
 U16								object_id( ) const;
-CHARACTER_COMMUNITY_INDEX		Community( ) const;
+CharacterCommunityIndex		Community( ) const;
 const char* CommunityName( ) const;
-CHARACTER_RANK_VALUE			Rank( );
-CHARACTER_REPUTATION_VALUE		Reputation( );
-void							SetRank(CHARACTER_RANK_VALUE val);
+CharacterRankValue			Rank( );
+CharacterReputationValue		Reputation( );
+void							SetRank(CharacterRankValue val);
 
 CSharedString						m_sCharacterProfile;
 CSharedString						m_SpecificCharacter;

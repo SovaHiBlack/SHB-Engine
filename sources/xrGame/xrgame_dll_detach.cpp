@@ -14,12 +14,12 @@
 #include "GameTask.h"
 #include "EncyclopediaArticle.h"
 
-#include "character_info.h"
+#include "CharacterInfo.h"
 //#include "SpecificCharacter.h"
-#include "character_community.h"
-#include "monster_community.h"
-#include "character_rank.h"
-#include "character_reputation.h"
+#include "CharacterCommunity.h"
+#include "MonsterCommunity.h"
+#include "CharacterRank.h"
+#include "CharacterReputation.h"
 
 #include "Profiler.h"
 
@@ -54,10 +54,10 @@ void init_game_globals()
 
 	CCharacterInfo::InitInternal					();
 	CSpecificCharacter::InitInternal				();
-	CHARACTER_COMMUNITY::InitInternal				();
-	CHARACTER_RANK::InitInternal					();
-	CHARACTER_REPUTATION::InitInternal				();
-	MONSTER_COMMUNITY::InitInternal					();
+	CCharacterCommunity::InitInternal				();
+	CCharacterRank::InitInternal					();
+	CCharacterReputation::InitInternal				();
+	CMonsterCommunity::InitInternal					();
 }
 
 extern CUIXml*	g_gameTaskXml;
@@ -95,15 +95,15 @@ void clean_game_globals()
 	CSpecificCharacter::DeleteSharedData			();
 	CSpecificCharacter::DeleteIdToIndexData			();
 
-	CHARACTER_COMMUNITY::DeleteIdToIndexData		();
-	CHARACTER_RANK::DeleteIdToIndexData				();
-	CHARACTER_REPUTATION::DeleteIdToIndexData		();
-	MONSTER_COMMUNITY::DeleteIdToIndexData			();
+	CCharacterCommunity::DeleteIdToIndexData		();
+	CCharacterRank::DeleteIdToIndexData				();
+	CCharacterReputation::DeleteIdToIndexData		();
+	CMonsterCommunity::DeleteIdToIndexData			();
 
-	//static shader for blood
+	// static shader for blood
 	CEntityAlive::UnloadBloodyWallmarks				();
 	CEntityAlive::UnloadFireParticles				();
-	//очищение памяти таблицы строк
+	// очищение памяти таблицы строк
 	CStringTable::Destroy							();
 	// Очищение таблицы цветов
 	CUIXmlInit::DeleteColorDefs						();
@@ -117,7 +117,7 @@ void clean_game_globals()
 	release_smart_cast_stats						();
 #endif
 
-	RELATION_REGISTRY::clear_relation_registry		();
+	SRelationRegistry::clear_relation_registry		();
 
 	dump_list_wnd									();
 	dump_list_lines									();

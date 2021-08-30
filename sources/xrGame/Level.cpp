@@ -39,7 +39,7 @@
 #include "..\ENGINE\CameraManager.h"
 #include "level_sounds.h"
 #include "Car.h"
-#include "trade_parameters.h"
+#include "TradeParameters.h"
 #include "game_cl_base_weapon_usage_statistic.h"
 #include "clsid_game.h"
 #include "MainMenu.h"

@@ -7,32 +7,36 @@ class CGameObject;
 class CAttachableItem;
 class CInventoryItem;
 
-class CAttachmentOwner {
+class CAttachmentOwner
+{
 protected:
-	xr_vector<CSharedString>			m_attach_item_sections;
-	xr_vector<CAttachableItem*>		m_attached_objects;
+	xr_vector<CSharedString>											m_attach_item_sections;
+	xr_vector<CAttachableItem*>											m_attached_objects;
 
 public:
-	virtual CGameObject*		cast_game_object		() = 0;
-	virtual CAttachmentOwner*	cast_attachment_owner	() {return this;}
+	virtual CGameObject*						cast_game_object		( ) = 0;
+	virtual CAttachmentOwner*					cast_attachment_owner	( )
+	{
+		return this;
+	}
 
-	inline						CAttachmentOwner	();
-	virtual					~CAttachmentOwner	();
-	virtual	void			reinit				();
-	virtual	void			reload				(const char* section);
-	virtual void			net_Destroy			();
-	virtual void			renderable_Render	();
-	virtual	void			attach				(CInventoryItem *inventory_item);
-	virtual	void			detach				(CInventoryItem *inventory_item);
-	virtual	bool			can_attach			(const CInventoryItem *inventory_item) const;
-			bool			attached			(const CInventoryItem *inventory_item) const;
-			bool			attached			(CSharedString sect_name) const;
-			virtual void	reattach_items		();
-	inline		const xr_vector<CAttachableItem*> &attached_objects	() const;
+	inline										CAttachmentOwner		( );
+	virtual										~CAttachmentOwner		( );
+	virtual void								reinit					( );
+	virtual void								reload					(const char* section);
+	virtual void								net_Destroy				( );
+	virtual void								renderable_Render		( );
+	virtual void								attach					(CInventoryItem* inventory_item);
+	virtual void								detach					(CInventoryItem* inventory_item);
+	virtual bool								can_attach				(const CInventoryItem* inventory_item) const;
+	bool										attached				(const CInventoryItem* inventory_item) const;
+	bool										attached				(CSharedString sect_name) const;
+	virtual void								reattach_items			( );
+	inline const xr_vector<CAttachableItem*>&	attached_objects		( ) const;
 
-	CAttachableItem*		attachedItem		(CLASS_ID clsid) const;
-	CAttachableItem*		attachedItem		(U16 id) const;
-	CAttachableItem*		attachedItem		(CSharedString& section)	const;
+	CAttachableItem*							attachedItem			(CLASS_ID clsid) const;
+	CAttachableItem*							attachedItem			(unsigned short id) const;
+	CAttachableItem*							attachedItem			(CSharedString& section) const;
 };
 
 #include "AttachmentOwner_inline.h"

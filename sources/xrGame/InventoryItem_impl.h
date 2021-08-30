@@ -5,9 +5,9 @@
 
 #include "Inventory.h"
 
-inline	CInventoryOwner &CInventoryItem::inventory_owner	() const
+inline CInventoryOwner& CInventoryItem::inventory_owner( ) const
 {
-	VERIFY				(m_pCurrentInventory);
-	VERIFY				(m_pCurrentInventory->GetOwner());
-	return				(*m_pCurrentInventory->GetOwner());
+	VERIFY(m_pCurrentInventory);
+	VERIFY(m_pCurrentInventory->GetOwner( ));
+	return *m_pCurrentInventory->GetOwner( );
 }

@@ -8,7 +8,7 @@ using SHADER_VECTOR_IT = SHADER_VECTOR::iterator;
 using STR_VECTOR = xr_vector<CSharedString>;
 using STR_VECTOR_IT = STR_VECTOR::iterator;
 
-class MONSTER_COMMUNITY;
+class CMonsterCommunity;
 class CEntityCondition;
 class CWound;
 class CCharacterPhysicsSupport;
@@ -153,7 +153,7 @@ public:
 	virtual ALife::ERelationType tfGetRelationType(const CEntityAlive* tpEntityAlive) const;
 	virtual bool				 is_relation_enemy(const CEntityAlive* tpEntityAlive) const;
 
-	MONSTER_COMMUNITY* monster_community;
+	CMonsterCommunity* monster_community;
 
 private:
 	CEntityCondition* m_entity_condition;

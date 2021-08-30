@@ -5,7 +5,7 @@
 //#include "MercuryBallArtefact.h"
 #include "Inventory.h"
 #include "HUDManager.h"//
-#include "character_info.h"
+#include "CharacterInfo.h"
 #include "xr_level_controller.h"
 #include "UsableScriptObject.h"
 #include "CustomZone.h"

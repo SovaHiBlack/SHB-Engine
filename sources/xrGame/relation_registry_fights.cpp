@@ -1,12 +1,10 @@
-//////////////////////////////////////////////////////////////////////////
 // реестр для хранения данных об отношении персонажа к другим персонажам
-//////////////////////////////////////////////////////////////////////////
 
 #include "stdafx.h"
 
 #include "relation_registry.h"
 
-RELATION_REGISTRY::FIGHT_DATA::FIGHT_DATA( )
+SRelationRegistry::SFightData::SFightData( )
 {
 	attacker = defender = 0xffff;
 	total_hit = 0;
@@ -16,14 +14,14 @@ RELATION_REGISTRY::FIGHT_DATA::FIGHT_DATA( )
 	defender_to_attacker = ALife::eRelationTypeDummy;
 }
 
-void RELATION_REGISTRY::FightRegister(U16 attacker, U16 defender, ALife::ERelationType defender_to_attacker, float hit_amount)
+void SRelationRegistry::FightRegister(U16 attacker, U16 defender, ALife::ERelationType defender_to_attacker, float hit_amount)
 {
 	UpdateFightRegister( );
 
-	FIGHT_VECTOR& fights = fight_registry( );
-	for (FIGHT_VECTOR_IT it = fights.begin( ); it != fights.end( ); it++)
+	FightDataVec& fights = fight_registry( );
+	for (FightDataVec_it it = fights.begin( ); it != fights.end( ); it++)
 	{
-		FIGHT_DATA& fight_data = *it;
+		SFightData& fight_data = *it;
 		if (attacker == fight_data.attacker && defender == fight_data.defender)
 		{
 			fight_data.time_old = fight_data.time;
@@ -35,7 +33,7 @@ void RELATION_REGISTRY::FightRegister(U16 attacker, U16 defender, ALife::ERelati
 
 	if (it == fights.end( ))
 	{
-		FIGHT_DATA fight_data;
+		SFightData fight_data;
 		fight_data.attacker = attacker;
 		fight_data.defender = defender;
 		fight_data.total_hit = hit_amount;
@@ -45,12 +43,12 @@ void RELATION_REGISTRY::FightRegister(U16 attacker, U16 defender, ALife::ERelati
 	}
 }
 
-RELATION_REGISTRY::FIGHT_DATA* RELATION_REGISTRY::FindFight(U16 object_id, bool by_attacker)
+SRelationRegistry::SFightData* SRelationRegistry::FindFight(U16 object_id, bool by_attacker)
 {
-	FIGHT_VECTOR& fights = fight_registry( );
-	for (FIGHT_VECTOR_IT it = fights.begin( ); it != fights.end( ); it++)
+	FightDataVec& fights = fight_registry( );
+	for (FightDataVec_it it = fights.begin( ); it != fights.end( ); it++)
 	{
-		FIGHT_DATA& fight_data = *it;
+		SFightData& fight_data = *it;
 		U16 id_to_find = by_attacker ? fight_data.attacker : fight_data.defender;
 		if (object_id == id_to_find)
 		{
@@ -61,7 +59,7 @@ RELATION_REGISTRY::FIGHT_DATA* RELATION_REGISTRY::FindFight(U16 object_id, bool 
 	return nullptr;
 }
 
-bool fight_time_pred(RELATION_REGISTRY::FIGHT_DATA& fight_data)
+bool fight_time_pred(SRelationRegistry::SFightData& fight_data)
 {
 	//(c) время которое про драку помнит реестр (иначе считать неактуальным)
 	static u32 fight_remember_time = u32(1000.0f * pSettings->r_float(ACTIONS_POINTS_SECT, "fight_remember_time"));
@@ -75,9 +73,9 @@ bool fight_time_pred(RELATION_REGISTRY::FIGHT_DATA& fight_data)
 	return false;
 }
 
-void RELATION_REGISTRY::UpdateFightRegister( )
+void SRelationRegistry::UpdateFightRegister( )
 {
-	FIGHT_VECTOR& fights = fight_registry( );
-	FIGHT_VECTOR_IT it = std::remove_if(fights.begin( ), fights.end( ), fight_time_pred);
+	FightDataVec& fights = fight_registry( );
+	FightDataVec_it it = std::remove_if(fights.begin( ), fights.end( ), fight_time_pred);
 	fights.erase(it, fights.end( ));
 }

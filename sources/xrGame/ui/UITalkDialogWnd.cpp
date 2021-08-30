@@ -161,13 +161,13 @@ void CUITalkDialogWnd::AddAnswer(const char* SpeakerName, const char* str, bool 
 	UIAnswersList->AddWindow(itm, true);
 	UIAnswersList->ScrollToEnd( );
 
-	GAME_NEWS_DATA news_data;
+	SGameNewsData news_data;
 	xr_string str_;
 	str_ = SpeakerName;
 	str_ += " >> ";
 	str_ += str;
 
-	news_data.m_type = GAME_NEWS_DATA::eTalk;
+	news_data.m_type = SGameNewsData::eTalk;
 	news_data.news_text = str_.c_str( );
 	CUICharacterInfo& ci = bActor ? UICharacterInfoLeft : UICharacterInfoRight;
 

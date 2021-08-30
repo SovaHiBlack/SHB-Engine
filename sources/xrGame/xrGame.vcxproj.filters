@@ -1318,24 +1318,6 @@
     <Filter Include="Core\Client\Objects\inventory\InventoryOwner\trade_parameters">
       <UniqueIdentifier>{33229fd1-61b7-4ff7-9e27-0d22f4fe54e6}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Core\Client\Objects\inventory\InventoryOwner\trade_parameters\trade_bool_parameters">
-      <UniqueIdentifier>{8d64ad27-2522-4e53-8be3-9d22deac27ad}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Core\Client\Objects\inventory\InventoryOwner\trade_parameters\trade_factors">
-      <UniqueIdentifier>{e8a8fe4e-5b2b-4bba-ac26-dd259e0d8509}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Core\Client\Objects\inventory\InventoryOwner\trade_parameters\trade_factor_parameters">
-      <UniqueIdentifier>{955fc6f5-ffb8-4894-830f-35b6aac54f24}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Core\Client\Objects\inventory\InventoryOwner\trade_parameters\trade_action_parameters">
-      <UniqueIdentifier>{8c1276f6-57b2-405f-88df-15f874958ca6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Core\Client\Objects\inventory\InventoryOwner\trade_parameters\trade_parameters">
-      <UniqueIdentifier>{94287749-8c37-4d50-b644-754e622eef6e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Core\Client\Objects\inventory\InventoryOwner\trade_parameters\purchase_list">
-      <UniqueIdentifier>{2751576e-9cf2-45a8-9d72-5abb5a8ee93a}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Core\Client\Objects\inventory\PhysicItem">
       <UniqueIdentifier>{9d54dba9-9174-4518-a761-bc47b01756f9}</UniqueIdentifier>
     </Filter>
@@ -2067,6 +2049,24 @@
     </Filter>
     <Filter Include="Core\Client\Objects\InventoryBox">
       <UniqueIdentifier>{83466c17-f91d-4f67-b1a4-03c959eaa599}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Client\Objects\inventory\InventoryOwner\trade_parameters\TradeParameters">
+      <UniqueIdentifier>{94287749-8c37-4d50-b644-754e622eef6e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Client\Objects\inventory\InventoryOwner\trade_parameters\TradeFactors">
+      <UniqueIdentifier>{e8a8fe4e-5b2b-4bba-ac26-dd259e0d8509}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Client\Objects\inventory\InventoryOwner\trade_parameters\TradeFactorParameters">
+      <UniqueIdentifier>{955fc6f5-ffb8-4894-830f-35b6aac54f24}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Client\Objects\inventory\InventoryOwner\trade_parameters\TradeBoolParameters">
+      <UniqueIdentifier>{8d64ad27-2522-4e53-8be3-9d22deac27ad}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Client\Objects\inventory\InventoryOwner\trade_parameters\TradeActionParameters">
+      <UniqueIdentifier>{8c1276f6-57b2-405f-88df-15f874958ca6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Client\Objects\inventory\InventoryOwner\trade_parameters\PurchaseList">
+      <UniqueIdentifier>{2751576e-9cf2-45a8-9d72-5abb5a8ee93a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -4497,19 +4497,19 @@
     <ClInclude Include="InventoryOwner.h">
       <Filter>Core\Client\Objects\inventory\InventoryOwner</Filter>
     </ClInclude>
-    <ClInclude Include="character_community.h">
+    <ClInclude Include="CharacterCommunity.h">
       <Filter>Core\Client\Objects\inventory\InventoryOwner\character_info</Filter>
     </ClInclude>
-    <ClInclude Include="character_info.h">
+    <ClInclude Include="CharacterInfo.h">
       <Filter>Core\Client\Objects\inventory\InventoryOwner\character_info</Filter>
     </ClInclude>
-    <ClInclude Include="character_info_defs.h">
+    <ClInclude Include="CharacterInfo_defs.h">
       <Filter>Core\Client\Objects\inventory\InventoryOwner\character_info</Filter>
     </ClInclude>
-    <ClInclude Include="character_rank.h">
+    <ClInclude Include="CharacterRank.h">
       <Filter>Core\Client\Objects\inventory\InventoryOwner\character_info</Filter>
     </ClInclude>
-    <ClInclude Include="character_reputation.h">
+    <ClInclude Include="CharacterReputation.h">
       <Filter>Core\Client\Objects\inventory\InventoryOwner\character_info</Filter>
     </ClInclude>
     <ClInclude Include="ini_id_loader.h">
@@ -4518,7 +4518,7 @@
     <ClInclude Include="ini_table_loader.h">
       <Filter>Core\Client\Objects\inventory\InventoryOwner\character_info</Filter>
     </ClInclude>
-    <ClInclude Include="monster_community.h">
+    <ClInclude Include="MonsterCommunity.h">
       <Filter>Core\Client\Objects\inventory\InventoryOwner\character_info</Filter>
     </ClInclude>
     <ClInclude Include="relation_registry.h">
@@ -4530,41 +4530,41 @@
     <ClInclude Include="relation_registry_inline.h">
       <Filter>Core\Client\Objects\inventory\InventoryOwner\relation registry</Filter>
     </ClInclude>
-    <ClInclude Include="trade_bool_parameters.h">
-      <Filter>Core\Client\Objects\inventory\InventoryOwner\trade_parameters\trade_bool_parameters</Filter>
+    <ClInclude Include="TradeBoolParameters.h">
+      <Filter>Core\Client\Objects\inventory\InventoryOwner\trade_parameters\TradeBoolParameters</Filter>
     </ClInclude>
-    <ClInclude Include="trade_bool_parameters_inline.h">
-      <Filter>Core\Client\Objects\inventory\InventoryOwner\trade_parameters\trade_bool_parameters</Filter>
+    <ClInclude Include="TradeBoolParameters_inline.h">
+      <Filter>Core\Client\Objects\inventory\InventoryOwner\trade_parameters\TradeBoolParameters</Filter>
     </ClInclude>
-    <ClInclude Include="trade_factors.h">
-      <Filter>Core\Client\Objects\inventory\InventoryOwner\trade_parameters\trade_factors</Filter>
+    <ClInclude Include="TradeFactors.h">
+      <Filter>Core\Client\Objects\inventory\InventoryOwner\trade_parameters\TradeFactors</Filter>
     </ClInclude>
-    <ClInclude Include="trade_factors_inline.h">
-      <Filter>Core\Client\Objects\inventory\InventoryOwner\trade_parameters\trade_factors</Filter>
+    <ClInclude Include="TradeFactors_inline.h">
+      <Filter>Core\Client\Objects\inventory\InventoryOwner\trade_parameters\TradeFactors</Filter>
     </ClInclude>
-    <ClInclude Include="trade_factor_parameters.h">
-      <Filter>Core\Client\Objects\inventory\InventoryOwner\trade_parameters\trade_factor_parameters</Filter>
+    <ClInclude Include="TradeFactorParameters.h">
+      <Filter>Core\Client\Objects\inventory\InventoryOwner\trade_parameters\TradeFactorParameters</Filter>
     </ClInclude>
-    <ClInclude Include="trade_factor_parameters_inline.h">
-      <Filter>Core\Client\Objects\inventory\InventoryOwner\trade_parameters\trade_factor_parameters</Filter>
+    <ClInclude Include="TradeFactorParameters_inline.h">
+      <Filter>Core\Client\Objects\inventory\InventoryOwner\trade_parameters\TradeFactorParameters</Filter>
     </ClInclude>
-    <ClInclude Include="trade_action_parameters.h">
-      <Filter>Core\Client\Objects\inventory\InventoryOwner\trade_parameters\trade_action_parameters</Filter>
+    <ClInclude Include="TradeActionParameters.h">
+      <Filter>Core\Client\Objects\inventory\InventoryOwner\trade_parameters\TradeActionParameters</Filter>
     </ClInclude>
-    <ClInclude Include="trade_action_parameters_inline.h">
-      <Filter>Core\Client\Objects\inventory\InventoryOwner\trade_parameters\trade_action_parameters</Filter>
+    <ClInclude Include="TradeActionParameters_inline.h">
+      <Filter>Core\Client\Objects\inventory\InventoryOwner\trade_parameters\TradeActionParameters</Filter>
     </ClInclude>
-    <ClInclude Include="trade_parameters.h">
-      <Filter>Core\Client\Objects\inventory\InventoryOwner\trade_parameters\trade_parameters</Filter>
+    <ClInclude Include="TradeParameters.h">
+      <Filter>Core\Client\Objects\inventory\InventoryOwner\trade_parameters\TradeParameters</Filter>
     </ClInclude>
-    <ClInclude Include="trade_parameters_inline.h">
-      <Filter>Core\Client\Objects\inventory\InventoryOwner\trade_parameters\trade_parameters</Filter>
+    <ClInclude Include="TradeParameters_inline.h">
+      <Filter>Core\Client\Objects\inventory\InventoryOwner\trade_parameters\TradeParameters</Filter>
     </ClInclude>
-    <ClInclude Include="purchase_list.h">
-      <Filter>Core\Client\Objects\inventory\InventoryOwner\trade_parameters\purchase_list</Filter>
+    <ClInclude Include="PurchaseList.h">
+      <Filter>Core\Client\Objects\inventory\InventoryOwner\trade_parameters\PurchaseList</Filter>
     </ClInclude>
-    <ClInclude Include="purchase_list_inline.h">
-      <Filter>Core\Client\Objects\inventory\InventoryOwner\trade_parameters\purchase_list</Filter>
+    <ClInclude Include="PurchaseList_inline.h">
+      <Filter>Core\Client\Objects\inventory\InventoryOwner\trade_parameters\PurchaseList</Filter>
     </ClInclude>
     <ClInclude Include="ShootingObject.h">
       <Filter>Core\Client\Objects\items &amp; weapons\Weapons\Custom Weapon\Weapon Generic</Filter>
@@ -7232,19 +7232,19 @@
     <ClCompile Include="InventoryOwner.cpp">
       <Filter>Core\Client\Objects\inventory\InventoryOwner</Filter>
     </ClCompile>
-    <ClCompile Include="character_community.cpp">
+    <ClCompile Include="CharacterCommunity.cpp">
       <Filter>Core\Client\Objects\inventory\InventoryOwner\character_info</Filter>
     </ClCompile>
-    <ClCompile Include="character_info.cpp">
+    <ClCompile Include="CharacterInfo.cpp">
       <Filter>Core\Client\Objects\inventory\InventoryOwner\character_info</Filter>
     </ClCompile>
-    <ClCompile Include="character_rank.cpp">
+    <ClCompile Include="CharacterRank.cpp">
       <Filter>Core\Client\Objects\inventory\InventoryOwner\character_info</Filter>
     </ClCompile>
-    <ClCompile Include="character_reputation.cpp">
+    <ClCompile Include="CharacterReputation.cpp">
       <Filter>Core\Client\Objects\inventory\InventoryOwner\character_info</Filter>
     </ClCompile>
-    <ClCompile Include="monster_community.cpp">
+    <ClCompile Include="MonsterCommunity.cpp">
       <Filter>Core\Client\Objects\inventory\InventoryOwner\character_info</Filter>
     </ClCompile>
     <ClCompile Include="relation_registry.cpp">
@@ -7256,11 +7256,11 @@
     <ClCompile Include="relation_registry_fights.cpp">
       <Filter>Core\Client\Objects\inventory\InventoryOwner\relation registry</Filter>
     </ClCompile>
-    <ClCompile Include="trade_parameters.cpp">
-      <Filter>Core\Client\Objects\inventory\InventoryOwner\trade_parameters\trade_parameters</Filter>
+    <ClCompile Include="TradeParameters.cpp">
+      <Filter>Core\Client\Objects\inventory\InventoryOwner\trade_parameters\TradeParameters</Filter>
     </ClCompile>
-    <ClCompile Include="purchase_list.cpp">
-      <Filter>Core\Client\Objects\inventory\InventoryOwner\trade_parameters\purchase_list</Filter>
+    <ClCompile Include="PurchaseList.cpp">
+      <Filter>Core\Client\Objects\inventory\InventoryOwner\trade_parameters\PurchaseList</Filter>
     </ClCompile>
     <ClCompile Include="ShootingObject.cpp">
       <Filter>Core\Client\Objects\items &amp; weapons\Weapons\Custom Weapon\Weapon Generic</Filter>

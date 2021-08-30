@@ -16,7 +16,7 @@
 #include "..\ENGINE\skeletoncustom.h"
 #include "Actor.h"
 #include "AI/Stalker/Stalker.h"
-#include "character_info.h"
+#include "CharacterInfo.h"
 #include "game_cl_base_weapon_usage_statistic.h"
 #include "..\ENGINE\xr_collide_defs.h"
 #include "Weapon.h"

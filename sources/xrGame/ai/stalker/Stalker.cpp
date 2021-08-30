@@ -26,7 +26,7 @@
 #include "../../HUDManager.h"//
 #include "../../clsid_game.h"
 #include "../../..\ENGINE\skeletoncustom.h"
-#include "../../character_info.h"
+#include "../../CharacterInfo.h"
 #include "..\..\Actor.h"
 #include "../../relation_registry.h"
 #include "../../stalker_animation_manager.h"
@@ -371,7 +371,7 @@ BOOL CStalker::net_Spawn			(CSE_Abstract* DC)
 	static float novice_rank_dispersion			= pSettings->r_float("ranks_properties", "dispersion_novice_k");
 	static float expirienced_rank_dispersion	= pSettings->r_float("ranks_properties", "dispersion_experienced_k");
 
-	CHARACTER_RANK_VALUE rank = Rank();
+	CharacterRankValue rank = Rank();
 	clamp(rank, 0, 100);
 	float rank_k = float(rank)/100.f;
 	m_fRankImmunity = novice_rank_immunity + (expirienced_rank_immunity - novice_rank_immunity) * rank_k;

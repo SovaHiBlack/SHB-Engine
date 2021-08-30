@@ -7,7 +7,7 @@
 #include "Level.h"
 //#include "StringTable.h"
 #include "PhraseDialog.h"
-#include "character_info.h"
+#include "CharacterInfo.h"
 #include "relation_registry.h"
 #include "ai_space.h"
 #include "alife_simulator.h"
@@ -120,9 +120,9 @@ void CActor::AddGameTask(const CInfoPortion* info_portion) const
 	}
 }
 
-void  CActor::AddGameNews(GAME_NEWS_DATA& news_data)
+void  CActor::AddGameNews(SGameNewsData& news_data)
 {
-	GAME_NEWS_VECTOR& news_vector = game_news_registry->registry( ).objects( );
+	GameNewsVec& news_vector = game_news_registry->registry( ).objects( );
 	news_data.receive_time = Level( ).GetGameTime( );
 	news_vector.push_back(news_data);
 
@@ -329,7 +329,7 @@ void CActor::LostPdaContact(CInventoryOwner* pInvOwner)
 		for (int t = ALife::eRelationTypeFriend; t < ALife::eRelationTypeLast; ++t)
 		{
 			ALife::ERelationType tt = (ALife::ERelationType) t;
-			Level( ).MapManager( ).RemoveMapLocation(RELATION_REGISTRY( ).GetSpotName(tt), GO->ID( ));
+			Level( ).MapManager( ).RemoveMapLocation(SRelationRegistry( ).GetSpotName(tt), GO->ID( ));
 		}
 
 		Level( ).MapManager( ).RemoveMapLocation("deadbody_location", GO->ID( ));
@@ -345,9 +345,9 @@ void CActor::LostPdaContact(CInventoryOwner* pInvOwner)
 	}
 }
 
-void CActor::AddGameNews_deffered(GAME_NEWS_DATA& news_data, u32 delay)
+void CActor::AddGameNews_deffered(SGameNewsData& news_data, u32 delay)
 {
-	GAME_NEWS_DATA* d = xr_new<GAME_NEWS_DATA>(news_data);
+	SGameNewsData* d = xr_new<SGameNewsData>(news_data);
 	//*d = news_data;
 	m_defferedMessages.push_back(SDefNewsMsg( ));
 	m_defferedMessages.back( ).news_data = d;

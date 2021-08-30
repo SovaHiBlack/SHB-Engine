@@ -3,7 +3,7 @@
 #include "UIWindow.h"//
 
 class CUIStatic;
-struct GAME_NEWS_DATA;
+struct SGameNewsData;
 
 class CUINewsItemWnd : public CUIWindow
 {
@@ -17,5 +17,5 @@ public:
 					CUINewsItemWnd		( );
 	virtual			~CUINewsItemWnd		( );
 	void			Init				(const char* xml_name, const char* start_from);
-	void			Setup				(GAME_NEWS_DATA& news_data);
+	void			Setup				(SGameNewsData& news_data);
 };

@@ -11,7 +11,7 @@
 #include "../HUDManager.h"//
 #include "../Pda.h"
 //#include "..\WeaponHUD.h"
-//#include "../character_info.h"
+//#include "../CharacterInfo.h"
 #include "..\Inventory.h"
 //#include "UIGameSP.h"//
 #include "..\WeaponMagazined.h"
@@ -1083,7 +1083,7 @@ void CUIMainIngameWnd::RenderQuickInfos( )
 	}
 }
 
-void CUIMainIngameWnd::ReceiveNews(GAME_NEWS_DATA* news)
+void CUIMainIngameWnd::ReceiveNews(SGameNewsData* news)
 {
 	VERIFY(news->texture_name.size( ));
 

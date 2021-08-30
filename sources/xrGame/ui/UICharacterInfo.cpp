@@ -5,7 +5,7 @@
 #include "UICharacterInfo.h"//
 #include "..\Actor.h"
 //#include "..\Level.h"
-//#include "../character_info.h"
+//#include "../CharacterInfo.h"
 #include "..\StringTable.h"
 #include "../relation_registry.h"
 
@@ -222,7 +222,7 @@ void CUICharacterInfo::InitCharacter(U16 id)
 	}
 }
 
-void CUICharacterInfo::SetRelation(ALife::ERelationType relation, CHARACTER_GOODWILL goodwill)
+void CUICharacterInfo::SetRelation(ALife::ERelationType relation, CharacterGoodwill goodwill)
 {
 	CSharedString relation_str;
 
@@ -298,7 +298,7 @@ void CUICharacterInfo::UpdateRelation( )
 		CSE_ALifeTraderAbstract* T = ch_info_get_from_id(m_ownerID);
 		CSE_ALifeTraderAbstract* TA = ch_info_get_from_id(Actor( )->ID( ));
 
-		SetRelation(RELATION_REGISTRY( ).GetRelationType(T, TA), RELATION_REGISTRY( ).GetAttitude(T, TA));
+		SetRelation(SRelationRegistry( ).GetRelationType(T, TA), SRelationRegistry( ).GetAttitude(T, TA));
 	}
 }
 

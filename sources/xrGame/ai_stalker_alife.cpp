@@ -22,7 +22,7 @@
 #include "ef_storage.h"
 #include "ef_primary.h"
 #include "ef_pattern.h"
-#include "trade_parameters.h"
+#include "TradeParameters.h"
 
 u32 get_rank(const CSharedString&)
 {

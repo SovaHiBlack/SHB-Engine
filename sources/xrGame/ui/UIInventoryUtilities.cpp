@@ -25,8 +25,8 @@ const char* goodwillField			= "goodwill_names";
 
 ref_shader g_EquipmentIconsShader = nullptr;
 
-using CharInfoStringID = std::pair<CHARACTER_RANK_VALUE, CSharedString>;
-using CharInfoStrings = xr_map<CHARACTER_RANK_VALUE, CSharedString>;
+using CharInfoStringID = std::pair<CharacterRankValue, CSharedString>;
+using CharInfoStrings = xr_map<CharacterRankValue, CSharedString>;
 using CharInfoStrings_it = CharInfoStrings::iterator;
 
 CharInfoStrings* charInfoReputationStrings = nullptr;
@@ -447,7 +447,7 @@ void InventoryUtilities::ClearCharacterInfoStrings( )
 	xr_delete(charInfoGoodwillStrings);
 }
 
-const char* InventoryUtilities::GetRankAsText(CHARACTER_RANK_VALUE rankID)
+const char* InventoryUtilities::GetRankAsText(CharacterRankValue rankID)
 {
 	InitCharacterInfoStrings( );
 	CharInfoStrings::const_iterator cit = charInfoRankStrings->upper_bound(rankID);
@@ -459,7 +459,7 @@ const char* InventoryUtilities::GetRankAsText(CHARACTER_RANK_VALUE rankID)
 	return cit->second.c_str( );
 }
 
-const char* InventoryUtilities::GetReputationAsText(CHARACTER_REPUTATION_VALUE rankID)
+const char* InventoryUtilities::GetReputationAsText(CharacterReputationValue rankID)
 {
 	InitCharacterInfoStrings( );
 
@@ -472,7 +472,7 @@ const char* InventoryUtilities::GetReputationAsText(CHARACTER_REPUTATION_VALUE r
 	return cit->second.c_str( );
 }
 
-const char* InventoryUtilities::GetGoodwillAsText(CHARACTER_GOODWILL goodwill)
+const char* InventoryUtilities::GetGoodwillAsText(CharacterGoodwill goodwill)
 {
 	InitCharacterInfoStrings( );
 
@@ -495,7 +495,7 @@ void InventoryUtilities::SendInfoToActor(const char* info_id)
 	}
 }
 
-u32 InventoryUtilities::GetGoodwillColor(CHARACTER_GOODWILL gw)
+u32 InventoryUtilities::GetGoodwillColor(CharacterGoodwill gw)
 {
 	u32 res = 0xffc0c0c0;
 	if (gw == NEUTRAL_GOODWILL)
@@ -514,7 +514,7 @@ u32 InventoryUtilities::GetGoodwillColor(CHARACTER_GOODWILL gw)
 	return res;
 }
 
-u32 InventoryUtilities::GetReputationColor(CHARACTER_REPUTATION_VALUE rv)
+u32 InventoryUtilities::GetReputationColor(CharacterReputationValue rv)
 {
 	u32 res = 0xffc0c0c0;
 	if (rv == NEUTAL_REPUTATION)

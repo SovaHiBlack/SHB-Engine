@@ -7,7 +7,7 @@
 #include "pda_space.h"
 #include "AttachmentOwner.h"
 #include "script_space_forward.h"
-#include "character_info.h"
+#include "CharacterInfo.h"
 #include "Inventory_space.h"
 
 class CSE_Abstract;
@@ -47,11 +47,11 @@ public:
 	virtual void		reload(const char* section);
 	virtual void		OnEvent(CNetPacket& P, U16 type);
 
-	//serialization
+	// serialization
 	virtual void	save(CNetPacket& output_packet);
 	virtual void	load(IReader& input_packet);
 
-	//обновление
+	// обновление
 	virtual void	UpdateInventoryOwner(u32 deltaT);
 	virtual bool	CanPutInSlot(PIItem item, u32 slot)
 	{
@@ -64,17 +64,14 @@ public:
 	CInventory* m_inventory;
 
 	////////////////////////////////////
-	//торговля и общение с персонажем
+	// торговля и общение с персонажем
 
 	virtual bool	AllowItemToTrade(CInventoryItem const* item, EItemPlace place) const;
 
-	//	virtual void	OnFollowerCmd(int cmd)
-	//	{ };//redefine for CAI_Stalkker
-
-	//инициализация объекта торговли
+	// инициализация объекта торговли
 	CTrade* GetTrade( );
 
-	//для включения разговора
+	// для включения разговора
 	virtual bool OfferTalk(CInventoryOwner* talk_partner);
 	virtual void StartTalk(CInventoryOwner* talk_partner, bool start_trade = true);
 	virtual void StopTalk( );
@@ -113,7 +110,7 @@ public:
 	virtual void	 NewPdaContact(CInventoryOwner*);
 	virtual void	 LostPdaContact(CInventoryOwner*);
 
-	//игровое имя 
+	// игровое имя
 	virtual const char* Name( ) const;
 	u32					get_money( ) const
 	{
@@ -136,13 +133,13 @@ protected:
 	//////////////////////////////////////////////////////////////////////////
 	// сюжетная информация
 public:
-	//персонаж получил новую порцию информации
+	// персонаж получил новую порцию информации
 	virtual bool OnReceiveInfo(CSharedString info_id) const;
-	//убрать информацию
+	// убрать информацию
 	virtual void OnDisableInfo(CSharedString info_id) const;
-	//передать/удалить информацию через сервер
+	// передать/удалить информацию через сервер
 	virtual void TransferInfo(CSharedString info_id, bool add_info) const;
-	//есть ли информация у персонажа
+	// есть ли информация у персонажа
 	virtual bool				HasInfo(CSharedString info_id) const;
 	virtual bool				GetInfo(CSharedString info_id, INFO_DATA&) const;
 
@@ -153,7 +150,7 @@ public:
 	CInfoPortionWrapper* m_known_info_registry;
 
 	//////////////////////////////////////////////////////////////////////////
-	// инвентарь 
+	// инвентарь
 	const CInventory& inventory( ) const
 	{
 		VERIFY(m_inventory);
@@ -165,18 +162,18 @@ public:
 		return(*m_inventory);
 	}
 
-	//возвращает текуший разброс стрельбы (в радианах) с учетом движения
+	// возвращает текуший разброс стрельбы (в радианах) с учетом движения
 	virtual float GetWeaponAccuracy( ) const;
-	//максимальный переносимы вес
+	// максимальный переносимы вес
 	virtual float MaxCarryWeight( ) const;
 
-	virtual CCustomOutfit* GetOutfit( )	const
+	virtual CCustomOutfit* GetOutfit( ) const
 	{
 		return nullptr;
 	}
 
 	//////////////////////////////////////////////////////////////////////////
-	//игровые характеристики персонажа
+	// игровые характеристики персонажа
 	CCharacterInfo& CharacterInfo( ) const
 	{
 		VERIFY(m_pCharacterInfo);
@@ -191,24 +188,24 @@ public:
 		return CharacterInfo( ).m_SpecificCharacter.MoneyDef( ).inf_money;
 	}
 
-	//установка группировки на клиентском и серверном объкте
-	virtual void			SetCommunity(CHARACTER_COMMUNITY_INDEX);
-	virtual void			SetRank(CHARACTER_RANK_VALUE);
-	virtual void			ChangeRank(CHARACTER_RANK_VALUE);
-	virtual void			SetReputation(CHARACTER_REPUTATION_VALUE);
-	virtual void			ChangeReputation(CHARACTER_REPUTATION_VALUE);
+	// установка группировки на клиентском и серверном объкте
+	virtual void			SetCommunity(CharacterCommunityIndex);
+	virtual void			SetRank(CharacterRankValue);
+	virtual void			ChangeRank(CharacterRankValue);
+	virtual void			SetReputation(CharacterReputationValue);
+	virtual void			ChangeReputation(CharacterReputationValue);
 
-	//для работы с relation system
+	// для работы с relation system
 	U16								object_id( ) const;
-	CHARACTER_COMMUNITY_INDEX		Community( ) const
+	CharacterCommunityIndex		Community( ) const
 	{
 		return CharacterInfo( ).Community( ).index( );
 	}
-	CHARACTER_RANK_VALUE			Rank( ) const
+	CharacterRankValue			Rank( ) const
 	{
 		return CharacterInfo( ).Rank( ).value( );
 	}
-	CHARACTER_REPUTATION_VALUE		Reputation( ) const
+	CharacterReputationValue		Reputation( ) const
 	{
 		return CharacterInfo( ).Reputation( ).value( );
 	}
@@ -232,7 +229,7 @@ public:
 	{
 		return(true);
 	}
-	virtual	void			spawn_supplies( );
+	virtual void			spawn_supplies( );
 
 	CInventoryItem* CInventoryOwner::GetCurrentOutfit( ) const;
 
@@ -244,22 +241,22 @@ protected:
 	u32							m_ammo_in_box_to_spawn;
 
 public:
-	inline		const CSharedString& item_to_spawn( ) const
+	inline const CSharedString& item_to_spawn( ) const
 	{
 		return m_item_to_spawn;
 	}
-	inline		const u32& ammo_in_box_to_spawn( ) const
+	inline const u32& ammo_in_box_to_spawn( ) const
 	{
 		return m_ammo_in_box_to_spawn;
 	}
 
-	virtual	void				on_weapon_shot_start(CWeapon* weapon);
-	virtual	void				on_weapon_shot_stop(CWeapon* weapon);
-	virtual	void				on_weapon_hide(CWeapon* weapon);
+	virtual void				on_weapon_shot_start(CWeapon* weapon);
+	virtual void				on_weapon_shot_stop(CWeapon* weapon);
+	virtual void				on_weapon_hide(CWeapon* weapon);
 
-	virtual	bool				use_simplified_visual( ) const
+	virtual bool				use_simplified_visual( ) const
 	{
-		return (false);
+		return false;
 	}
 
 private:
@@ -268,22 +265,22 @@ private:
 	BOOL						m_need_osoznanie_mode;
 
 public:
-	inline		CTradeParameters& trade_parameters( ) const;
-	virtual	const char* trade_section( ) const;
+	inline CTradeParameters& trade_parameters( ) const;
+	virtual const char* trade_section( ) const;
 	float				deficit_factor(const CSharedString& section) const;
 	void				buy_supplies(CIniFile& ini_file, const char* section);
 	void				sell_useless_items( );
-	virtual	void				on_before_sell(CInventoryItem* item)
+	virtual void				on_before_sell(CInventoryItem* item)
 	{ }
-	virtual	void				on_before_buy(CInventoryItem* item)
+	virtual void				on_before_buy(CInventoryItem* item)
 	{ }
 	virtual bool				can_use_dynamic_lights( )
 	{
 		return true;
 	}
-	virtual	bool				use_default_throw_force( );
-	virtual	float				missile_throw_force( );
-	virtual	bool				use_throw_randomness( );
+	virtual bool				use_default_throw_force( );
+	virtual float				missile_throw_force( );
+	virtual bool				use_throw_randomness( );
 	virtual bool				NeedOsoznanieMode( )
 	{
 		return m_need_osoznanie_mode != FALSE;

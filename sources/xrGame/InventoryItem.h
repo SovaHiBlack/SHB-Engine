@@ -35,11 +35,11 @@ class CInventoryItem : public CAttachableItem, public CHitImmunity
 
 #ifdef DEBUG
 	, public pureRender
-#endif
+#endif // def DEBUG
 
 {
 private:
-	typedef CAttachableItem inherited;
+	using inherited = CAttachableItem;
 
 protected:
 	enum EIIFlags
@@ -64,7 +64,6 @@ public:
 	CInventoryItem( );
 	virtual						~CInventoryItem( );
 
-public:
 	virtual void				Load(const char* section);
 
 	virtual const char* Name( );
@@ -76,7 +75,7 @@ public:
 	virtual void				GetBriefInfo(xr_string& str_name, xr_string& icon_sect_name, xr_string& str_count)
 	{ }
 
-	virtual void				OnEvent(CNetPacket& P, U16 type);
+	virtual void				OnEvent(CNetPacket& P, unsigned short type);
 
 	virtual bool				Useful( ) const;									// !!! Переопределить. (см. в Inventory.cpp)
 	virtual bool				Attach(PIItem pIItem, bool b_send_event)
@@ -87,7 +86,7 @@ public:
 	{
 		return false;
 	}
-	//при детаче спаунится новая вещь при заданно названии секции
+	// при детаче спаунится новая вещь при заданно названии секции
 	virtual bool				Detach(const char* item_section_name, bool b_spawn_item);
 	virtual bool				CanAttach(PIItem pIItem)
 	{
@@ -98,30 +97,30 @@ public:
 		return false;
 	}
 
-	virtual EHandDependence		HandDependence( )	const
+	virtual EHandDependence		HandDependence( ) const
 	{
 		return hd1Hand;
 	}
-	virtual bool				IsSingleHanded( )	const
+	virtual bool				IsSingleHanded( ) const
 	{
 		return true;
 	}
 	virtual bool				Activate( );									// !!! Переопределить. (см. в Inventory.cpp)
 	virtual void				Deactivate( );								// !!! Переопределить. (см. в Inventory.cpp)
-	virtual bool				Action(int cmd, u32 flags)
-	{	//true если известная команда, иначе false
+	virtual bool				Action(int cmd, unsigned int flags)
+	{	// true если известная команда, иначе false
 		return false;
-	}	
+	}
 
-	virtual bool				IsHidden( )	const
+	virtual bool				IsHidden( ) const
 	{
 		return true;
 	}
-	virtual bool				IsHiding( )	const
+	virtual bool				IsHiding( ) const
 	{
 		return false;
 	}
-	virtual bool 				IsShowing( )  const
+	virtual bool 				IsShowing( ) const
 	{
 		return false;
 	}
@@ -140,7 +139,7 @@ public:
 
 	virtual void				UpdateCL( );
 
-	virtual	void				Hit(SHit* pHDS);
+	virtual void				Hit(SHit* pHDS);
 
 	BOOL				GetDropManual( ) const
 	{
@@ -153,11 +152,11 @@ public:
 
 	BOOL				IsInvalid( ) const;
 
-	BOOL				IsQuestItem( )	const
+	BOOL				IsQuestItem( ) const
 	{
 		return m_flags.test(FIsQuestItem);
 	}
-	u32					Cost( ) const
+	unsigned int					Cost( ) const
 	{
 		return m_cost;
 	}
@@ -166,7 +165,6 @@ public:
 		return m_weight;
 	}
 
-public:
 	CInventory* m_pCurrentInventory;
 
 	CSharedString					m_name;
@@ -174,7 +172,6 @@ public:
 	CSharedString					m_nameComplex;
 
 	EItemPlace					m_eItemPlace;
-
 
 	virtual void				OnMoveToSlot( )
 	{ }
@@ -191,23 +188,18 @@ public:
 	}
 	int					GetXPos( ) const;
 	int					GetYPos( ) const;
-//---------------------------------------------------------------------
-//	float				GetKillMsgXPos( ) const;
-//	float				GetKillMsgYPos( ) const;
-//	float				GetKillMsgWidth( ) const;
-//	float				GetKillMsgHeight( ) const;
-//---------------------------------------------------------------------
+
 	float				GetCondition( ) const
 	{
 		return m_fCondition;
 	}
-	virtual	float				GetConditionToShow( ) const
+	virtual float				GetConditionToShow( ) const
 	{
 		return GetCondition( );
 	}
 	void				ChangeCondition(float fDeltaCondition);
 
-	virtual u32					GetSlot( )  const
+	virtual unsigned int		GetSlot( ) const
 	{
 		return m_slot;
 	}
@@ -245,8 +237,8 @@ public:
 	}
 
 protected:
-	u32							m_slot;
-	u32							m_cost;
+	unsigned int							m_slot;
+	unsigned int							m_cost;
 	float						m_weight;
 	float						m_fCondition;
 	CSharedString					m_Description;
@@ -265,26 +257,25 @@ public:
 
 #ifdef DEBUG
 	virtual void				PH_Ch_CrPr( ); // 
-#endif
+#endif // def DEBUG
 
 	virtual void				PH_A_CrPr( ); // actions & operations after phisic correction-prediction steps
 
 	virtual void				net_Import(CNetPacket& P);					// import from server
 	virtual void				net_Export(CNetPacket& P);					// export to server
 
-public:
 	virtual void				activate_physic_shell( );
-	virtual U16					bone_count_to_synchronize( ) const;
+	virtual unsigned short					bone_count_to_synchronize( ) const;
 
 	virtual bool				NeedToDestroyObject( ) const;
 	virtual ALife::_TIME_ID		TimePassedAfterIndependant( ) const;
 
-	virtual	bool				IsSprintAllowed( ) const
+	virtual bool				IsSprintAllowed( ) const
 	{
 		return !!m_flags.test(FAllowSprint);
 	}
 
-	virtual	float				GetControlInertionFactor( ) const
+	virtual float				GetControlInertionFactor( ) const
 	{
 		return m_fControlInertionFactor;
 	}
@@ -292,7 +283,6 @@ public:
 protected:
 	virtual void				UpdateXForm( );
 
-protected:
 	net_updateData* m_net_updateData;
 	net_updateData* NetSync( );
 	void						CalculateInterpolationParams( );
@@ -307,13 +297,12 @@ public:
 	virtual const CInventoryItem* can_kill(const xr_vector<const CGameObject*>& items) const;
 	virtual CInventoryItem* can_make_killing(const CInventory* inventory) const;
 	virtual bool				ready_to_kill( ) const;
-	inline		bool				useful_for_NPC( ) const;
+	inline bool				useful_for_NPC( ) const;
 
 #ifdef DEBUG
 	virtual void				OnRender( );
-#endif
+#endif // def DEBUG
 
-public:
 	virtual DLL_Pure* _construct( );
 	inline CPHShellHolder& object( ) const
 	{
@@ -349,35 +338,35 @@ public:
 	}
 	virtual CPHShellHolder* cast_physics_shell_holder( )
 	{
-		return 0;
+		return nullptr;
 	}
 	virtual CEatableItem* cast_eatable_item( )
 	{
-		return 0;
+		return nullptr;
 	}
 	virtual CWeapon* cast_weapon( )
 	{
-		return 0;
+		return nullptr;
 	}
 	virtual CFoodItem* cast_food_item( )
 	{
-		return 0;
+		return nullptr;
 	}
 	virtual CMissile* cast_missile( )
 	{
-		return 0;
+		return nullptr;
 	}
 	virtual CHudItem* cast_hud_item( )
 	{
-		return 0;
+		return nullptr;
 	}
 	virtual CWeaponAmmo* cast_weapon_ammo( )
 	{
-		return 0;
+		return nullptr;
 	}
 	virtual CGameObject* cast_game_object( )
 	{
-		return 0;
+		return nullptr;
 	}
 };
 

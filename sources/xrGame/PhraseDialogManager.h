@@ -34,8 +34,8 @@ public:
 protected:
 	virtual bool					AddAvailableDialog(CSharedString dialog_id, CPhraseDialogManager* partner);
 
-	//буфферный список диалогов, которые были проверены во время UpdateAvailableDialogs
-	DIALOG_ID_VECTOR				m_CheckedDialogs;
+	// буфферный список диалогов, которые были проверены во время UpdateAvailableDialogs
+	DialogIdVec				m_CheckedDialogs;
 
 	//список активных диалогов
 	DIALOG_VECTOR					m_ActiveDialogs;

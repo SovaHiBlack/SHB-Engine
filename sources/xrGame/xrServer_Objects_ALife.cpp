@@ -9,7 +9,7 @@
 #include "game_base_space.h"
 #include "object_broker.h"
 #include "restriction_space.h"
-#include "character_info.h"
+#include "CharacterInfo.h"
 #include "..\ENGINE\bone.h"
 #include "..\ENGINE\Render.h"
 

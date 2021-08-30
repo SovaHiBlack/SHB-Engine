@@ -65,7 +65,7 @@ bool CEatableItem::Useful( ) const
 		return false;
 	}
 
-	//проверить не все ли еще съедено
+	// проверить не все ли еще съедено
 	if (Empty( ))
 	{
 		return false;
@@ -103,7 +103,7 @@ void CEatableItem::UseBy(CEntityAlive* entity_alive)
 
 	entity_alive->conditions( ).SetMaxPower(entity_alive->conditions( ).GetMaxPower( ) + m_fMaxPowerUpInfluence);
 
-	//уменьшить количество порций
+	// уменьшить количество порций
 	if (m_iPortionsNum > 0)
 	{
 		--(m_iPortionsNum);

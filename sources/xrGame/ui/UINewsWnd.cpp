@@ -51,12 +51,12 @@ void CUINewsWnd::LoadNews( )
 
 	if (Actor( ))
 	{
-		GAME_NEWS_VECTOR& news_vector = Actor( )->game_news_registry->registry( ).objects( );
+		GameNewsVec& news_vector = Actor( )->game_news_registry->registry( ).objects( );
 
 		// Показать только NEWS_TO_SHOW последних ньюсов
 		int currentNews = 0;
 
-		for (GAME_NEWS_VECTOR::reverse_iterator it = news_vector.rbegin( ); it != news_vector.rend( ) && currentNews < NEWS_TO_SHOW; ++it)
+		for (GameNewsVec::reverse_iterator it = news_vector.rbegin( ); it != news_vector.rend( ) && currentNews < NEWS_TO_SHOW; ++it)
 		{
 			AddNewsItem(*it);
 			++currentNews;
@@ -80,12 +80,12 @@ void CUINewsWnd::AddNews( )
 	m_flags.set(eNeedAdd, TRUE);
 }
 
-void CUINewsWnd::AddNewsItem(GAME_NEWS_DATA& news_data)
+void CUINewsWnd::AddNewsItem(SGameNewsData& news_data)
 {
 	CUIWindow* itm = NULL;
 	switch (news_data.m_type)
 	{
-		case GAME_NEWS_DATA::eNews:
+		case SGameNewsData::eNews:
 		{
 			CUINewsItemWnd* _itm = xr_new<CUINewsItemWnd>( );
 			_itm->Init(NEWS_XML, "news_item");
@@ -93,7 +93,7 @@ void CUINewsWnd::AddNewsItem(GAME_NEWS_DATA& news_data)
 			itm = _itm;
 		}
 		break;
-		case GAME_NEWS_DATA::eTalk:
+		case SGameNewsData::eTalk:
 		{
 			CUINewsItemWnd* _itm = xr_new<CUINewsItemWnd>( );
 			_itm->Init(NEWS_XML, "talk_item");

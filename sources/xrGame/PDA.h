@@ -4,7 +4,7 @@
 #include "InventoryItemObject.h"
 
 #include "InfoPortion_defs.h"
-#include "character_info_defs.h"
+#include "CharacterInfo_defs.h"
 
 #include "PdaMsg.h"
 

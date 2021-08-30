@@ -14,8 +14,8 @@
 #include "UICharacterInfo.h"//
 #include "UI3tButton.h"//
 #include "..\ActorStatisticMgr.h"
-//#include "../character_community.h"
-//#include "../character_reputation.h"
+//#include "../CharacterCommunity.h"
+//#include "../CharacterReputation.h"
 #include "../relation_registry.h"
 #include "..\StringTable.h"
 
@@ -252,14 +252,14 @@ void CUIActorInfoWnd::FillReputationDetails(CUIXml* xml, const char* path)
 	XML_NODE* _list_node = xml->NavigateToNode("relation_communities_list", 0);
 	int cnt = xml->GetNodesNum("relation_communities_list", 0, "r");
 
-	CHARACTER_COMMUNITY comm;
+	CCharacterCommunity comm;
 
-	CHARACTER_REPUTATION rep_actor;
-	CHARACTER_REPUTATION rep_neutral;
+	CCharacterReputation rep_actor;
+	CCharacterReputation rep_neutral;
 	rep_actor.set(Actor( )->Reputation( ));
 	rep_neutral.set(NEUTAL_REPUTATION);
 
-	CHARACTER_GOODWILL d_neutral = CHARACTER_REPUTATION::relation(rep_actor.index( ), rep_neutral.index( ));
+	CharacterGoodwill d_neutral = CCharacterReputation::relation(rep_actor.index( ), rep_neutral.index( ));
 
 	string64 buff;
 	for (int i = 0; i < cnt; ++i)
@@ -269,8 +269,8 @@ void CUIActorInfoWnd::FillReputationDetails(CUIXml* xml, const char* path)
 		comm.set(xml->Read(_list_node, "r", i, "unknown_community"));
 		itm->m_text1->SetTextST(*(comm.id( )));
 
-		CHARACTER_GOODWILL	gw = RELATION_REGISTRY( ).GetCommunityGoodwill(comm.index( ), Actor( )->ID( ));
-		gw += CHARACTER_COMMUNITY::relation(Actor( )->Community( ), comm.index( ));
+		CharacterGoodwill gw = SRelationRegistry( ).GetCommunityGoodwill(comm.index( ), Actor( )->ID( ));
+		gw += CCharacterCommunity::relation(Actor( )->Community( ), comm.index( ));
 		gw += d_neutral;
 
 		itm->m_text2->SetTextST(InventoryUtilities::GetGoodwillAsText(gw));

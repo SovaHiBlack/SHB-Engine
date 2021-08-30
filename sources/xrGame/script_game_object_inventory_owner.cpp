@@ -8,7 +8,7 @@
 #include "InventoryOwner.h"
 #include "Pda.h"
 #include "Messages.h"
-#include "character_info.h"
+#include "CharacterInfo.h"
 #include "GameTask.h"
 #include "Actor.h"
 #include "Level.h"
@@ -84,7 +84,7 @@ bool  CScriptGameObject::GiveGameNews		(const char* news, const char* texture_na
 
 bool _give_news	(const char* text, const char* texture_name, const Frect& tex_rect, int delay, int show_time)
 {
-	GAME_NEWS_DATA				news_data;
+	SGameNewsData				news_data;
 	news_data.news_text			= text;
 	if(show_time!=0)
 		news_data.show_time		= show_time;// override default
@@ -362,33 +362,39 @@ int	CScriptGameObject::GetGoodwill(CScriptGameObject* pToWho)
 {
 	CInventoryOwner* pInventoryOwner = smart_cast<CInventoryOwner*>(&object());
 
-	if (!pInventoryOwner) {
+	if (!pInventoryOwner)
+	{
 		ai().script_engine().script_log		(ScriptStorage::eLuaMessageTypeError,"GetGoodwill available only for InventoryOwner");
 		return 0;
 	}
-	return RELATION_REGISTRY().GetGoodwill(pInventoryOwner->object_id(), pToWho->object().ID());
+
+	return SRelationRegistry().GetGoodwill(pInventoryOwner->object_id(), pToWho->object().ID());
 }
 
 void CScriptGameObject::SetGoodwill(int goodwill, CScriptGameObject* pWhoToSet)
 {
 	CInventoryOwner* pInventoryOwner = smart_cast<CInventoryOwner*>(&object());
 
-	if (!pInventoryOwner) {
+	if (!pInventoryOwner)
+	{
 		ai().script_engine().script_log		(ScriptStorage::eLuaMessageTypeError,"SetGoodwill available only for InventoryOwner");
 		return ;
 	}
-	return RELATION_REGISTRY().SetGoodwill(pInventoryOwner->object_id(), pWhoToSet->object().ID(), goodwill);
+
+	return SRelationRegistry().SetGoodwill(pInventoryOwner->object_id(), pWhoToSet->object().ID(), goodwill);
 }
 
 void CScriptGameObject::ChangeGoodwill(int delta_goodwill, CScriptGameObject* pWhoToSet)
 {
 	CInventoryOwner* pInventoryOwner = smart_cast<CInventoryOwner*>(&object());
 
-	if (!pInventoryOwner) {
+	if (!pInventoryOwner)
+	{
 		ai().script_engine().script_log		(ScriptStorage::eLuaMessageTypeError,"ChangeGoodwill available only for InventoryOwner");
 		return ;
 	}
-	RELATION_REGISTRY().ChangeGoodwill(pInventoryOwner->object_id(), pWhoToSet->object().ID(), delta_goodwill);
+
+	SRelationRegistry().ChangeGoodwill(pInventoryOwner->object_id(), pWhoToSet->object().ID(), delta_goodwill);
 }
 
 //////////////////////////////////////////////////////////////////////////
@@ -404,23 +410,21 @@ void CScriptGameObject::SetRelation(ALife::ERelationType relation, CScriptGameOb
 
 	CInventoryOwner* pOthersInventoryOwner = smart_cast<CInventoryOwner*>(&pWhoToSet->object());
 	VERIFY(pOthersInventoryOwner);
-	if (!pOthersInventoryOwner) {
+	if (!pOthersInventoryOwner)
+	{
 		ai().script_engine().script_log		(ScriptStorage::eLuaMessageTypeError,"SetRelation available only for InventoryOwner");
 		return ;
 	}
-	RELATION_REGISTRY().SetRelationType(pInventoryOwner, pOthersInventoryOwner, relation);
+
+	SRelationRegistry().SetRelationType(pInventoryOwner, pOthersInventoryOwner, relation);
 }
 
-//////////////////////////////////////////////////////////////////////////
-
-int	CScriptGameObject::GetAttitude			(CScriptGameObject* pToWho)
+int CScriptGameObject::GetAttitude			(CScriptGameObject* pToWho)
 {
 	CInventoryOwner* pInventoryOwner = smart_cast<CInventoryOwner*>(&object());VERIFY(pInventoryOwner);
 	CInventoryOwner* pOthersInventoryOwner = smart_cast<CInventoryOwner*>(&pToWho->object());VERIFY(pOthersInventoryOwner);
-	return RELATION_REGISTRY().GetAttitude(pInventoryOwner, pOthersInventoryOwner);
+	return SRelationRegistry().GetAttitude(pInventoryOwner, pOthersInventoryOwner);
 }
-
-//////////////////////////////////////////////////////////////////////////
 
 const char* CScriptGameObject::ProfileName			()
 {
@@ -527,7 +531,7 @@ void CScriptGameObject::SetCharacterCommunity	(const char* comm, int squad, int 
 		ai().script_engine().script_log		(ScriptStorage::eLuaMessageTypeError,"SetCharacterCommunity available only for InventoryOwner");
 		return;
 	}
-	CHARACTER_COMMUNITY	community;
+	CCharacterCommunity	community;
 	community.set(comm);
 	pInventoryOwner->SetCommunity(community.index());
 	entity->ChangeTeam(community.team(), squad, group);

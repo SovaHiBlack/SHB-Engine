@@ -21,7 +21,7 @@
 #include "ActorEffector.h"
 #include "EffectorZoomInertion.h"
 #include "SleepEffector.h"
-#include "character_info.h"
+#include "CharacterInfo.h"
 #include "CustomOutfit.h"
 #include "actorcondition.h"
 #include "ui/UIGameCustom.h"//

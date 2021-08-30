@@ -2,57 +2,55 @@
 
 #pragma once
 
-#include "character_info_defs.h"
+#include "CharacterInfo_defs.h"
 
 class CRelationRegistryWrapper;
 
 class CInventoryOwner;
 class CEntityAlive;
 
-//////////////////////////////////////////////////////////////////////////
 #define GAME_RELATIONS_SECT "game_relations"
 #define ACTIONS_POINTS_SECT "action_points"
-//////////////////////////////////////////////////////////////////////////
 
-struct RELATION_REGISTRY 
+struct SRelationRegistry
 {
 public:
-	RELATION_REGISTRY  ();
-	virtual ~RELATION_REGISTRY ();
+	SRelationRegistry( );
+	virtual ~SRelationRegistry( );
 
 	template<typename T>
-	ALife::ERelationType GetRelationBetween			(T char1,T char2) const;
+	ALife::ERelationType GetRelationBetween(T char1, T char2) const;
 
 	template<typename T>
-	ALife::ERelationType GetRelationType			(T from, T to) const ;
+	ALife::ERelationType GetRelationType(T from, T to) const;
 	template<typename T>
-	void				 SetRelationType			(T from, T to, ALife::ERelationType new_relation);
+	void				 SetRelationType(T from, T to, ALife::ERelationType new_relation);
 
 	//общее отношение  одного персонажа к другому, вычисленное по формуле
 	//с учетом всех факторов - величина от 
 	//-100< (крайне враждебное) до >100 (очень дрюжелюбное)
-	
+
 	template<typename T>
-	CHARACTER_GOODWILL	 GetAttitude				(T from, T to)	const ;
+	CharacterGoodwill	 GetAttitude(T from, T to)	const;
 
 	//личное отношение (благосклонность) одного персонажа к другому - 
 	//величина от -100< (крайне враждебное) до >100 (очень дрюжелюбное)
-	CHARACTER_GOODWILL	 GetGoodwill				(U16 from, U16 to) const ;
-	void				 SetGoodwill				(U16 from, U16 to, CHARACTER_GOODWILL goodwill);
-	void				 ChangeGoodwill 			(U16 from, U16 to, CHARACTER_GOODWILL delta_goodwill);
+	CharacterGoodwill	 GetGoodwill(U16 from, U16 to) const;
+	void				 SetGoodwill(U16 from, U16 to, CharacterGoodwill goodwill);
+	void				 ChangeGoodwill(U16 from, U16 to, CharacterGoodwill delta_goodwill);
 
 	//отношени€ группировки к персонажу (именно так, а не наоборот)
 	//т.е. персонаж сам помнит, как к нему кака€ группировка отностис€
-	CHARACTER_GOODWILL	 GetCommunityGoodwill		(CHARACTER_COMMUNITY_INDEX from_community, U16 to_character) const ;
-	void				 SetCommunityGoodwill		(CHARACTER_COMMUNITY_INDEX from_community, U16 to_character, CHARACTER_GOODWILL goodwill);
-	void				 ChangeCommunityGoodwill	(CHARACTER_COMMUNITY_INDEX from_community, U16 to_character, CHARACTER_GOODWILL delta_goodwill);
-	
-	void				 ClearRelations				(U16 person_id);
+	CharacterGoodwill	 GetCommunityGoodwill(CharacterCommunityIndex from_community, U16 to_character) const;
+	void				 SetCommunityGoodwill(CharacterCommunityIndex from_community, U16 to_character, CharacterGoodwill goodwill);
+	void				 ChangeCommunityGoodwill(CharacterCommunityIndex from_community, U16 to_character, CharacterGoodwill delta_goodwill);
+
+	void				 ClearRelations(U16 person_id);
 
 private:
-	CHARACTER_GOODWILL	 GetCommunityRelation		(CHARACTER_COMMUNITY_INDEX, CHARACTER_COMMUNITY_INDEX) const;	
-	CHARACTER_GOODWILL	 GetRankRelation			(CHARACTER_RANK_VALUE, CHARACTER_RANK_VALUE) const;
-	CHARACTER_GOODWILL	 GetReputationRelation		(CHARACTER_REPUTATION_VALUE, CHARACTER_REPUTATION_VALUE) const;
+	CharacterGoodwill	 GetCommunityRelation(CharacterCommunityIndex, CharacterCommunityIndex) const;
+	CharacterGoodwill	 GetRankRelation(CharacterRankValue, CharacterRankValue) const;
+	CharacterGoodwill	 GetReputationRelation(CharacterReputationValue, CharacterReputationValue) const;
 
 	//реакцией на действи€ персонажей и соответствующее изменение отношени€
 public:
@@ -61,57 +59,59 @@ public:
 	//к группировке
 	enum ERelationAction
 	{
-		KILL				= 0x00,		//убийство персонажа
-		ATTACK				= 0x01,		//атака персонажа
-		FIGHT_HELP_HUMAN	= 0x02,		//помощь в драке персонажу с другим персонажем
-		FIGHT_HELP_MONSTER	= 0x04,		//помощь в драке персонажу c монстром
-		SOS_HELP			= 0x08		//приход на помощь по сигналу SOS
+		KILL = 0x00,		//убийство персонажа
+		ATTACK = 0x01,		//атака персонажа
+		FIGHT_HELP_HUMAN = 0x02,		//помощь в драке персонажу с другим персонажем
+		FIGHT_HELP_MONSTER = 0x04,		//помощь в драке персонажу c монстром
+		SOS_HELP = 0x08		//приход на помощь по сигналу SOS
 	};
-	void Action (CEntityAlive* from, CEntityAlive* to, ERelationAction action);
-	
-	struct FIGHT_DATA
+	void Action(CEntityAlive* from, CEntityAlive* to, ERelationAction action);
+
+	struct SFightData
 	{
-		FIGHT_DATA			();
+		SFightData( );
 		U16					attacker;
 		U16					defender;
 		float				total_hit;
 		u32					time;
 		u32					time_old;
-		
+
 		u32						attack_time;			//врем€ фиксировани€ событи€ "атака"
 		ALife::ERelationType	defender_to_attacker;	//как относилс€ атакованый к нападавшему во врем€ начальной атаки
 	};
 
-	struct RELATION_MAP_SPOTS
+	struct SRelationMapSpots
 	{
-		RELATION_MAP_SPOTS	();
-		CSharedString			spot_names[ALife::eRelationTypeLast+1];
-		const CSharedString&	GetSpotName (ALife::ERelationType& type){
-									if(type<ALife::eRelationTypeLast)return spot_names[type];
-									else return spot_names[ALife::eRelationTypeLast];};
+		SRelationMapSpots( );
+		CSharedString			spot_names[ALife::eRelationTypeLast + 1];
+		const CSharedString& GetSpotName(ALife::ERelationType& type)
+		{
+			if (type < ALife::eRelationTypeLast)return spot_names[type];
+			else return spot_names[ALife::eRelationTypeLast];
+		};
 	};
-	//зарегистрировать драку (реакци€ на Hit в EntityAlive)
-	void FightRegister (U16 attacker, U16 defender, ALife::ERelationType defender_to_attacker, float hit_amount);
-	void UpdateFightRegister ();
+
+	// зарегистрировать драку (реакци€ на Hit в EntityAlive)
+	void FightRegister(U16 attacker, U16 defender, ALife::ERelationType defender_to_attacker, float hit_amount);
+	void UpdateFightRegister( );
 
 private:
-//	DEFINE_VECTOR(FIGHT_DATA, FIGHT_VECTOR, FIGHT_VECTOR_IT);
-	using FIGHT_VECTOR = xr_vector<FIGHT_DATA>;
-	using FIGHT_VECTOR_IT = FIGHT_VECTOR::iterator;
+	using FightDataVec = xr_vector<SFightData>;
+	using FightDataVec_it = FightDataVec::iterator;
 
-	static FIGHT_VECTOR*						m_fight_registry;
-	static FIGHT_VECTOR&						fight_registry();
-	
-	FIGHT_DATA*									FindFight(U16 object_id, bool by_attacker/* = true*/);
-	static RELATION_MAP_SPOTS*					m_spot_names;
+	static FightDataVec* m_fight_registry;
+	static FightDataVec& fight_registry( );
+
+	SFightData* FindFight(U16 object_id, bool by_attacker/* = true*/);
+	static SRelationMapSpots* m_spot_names;
 
 public:
-	const CSharedString&							GetSpotName			(ALife::ERelationType& type);
-	static CRelationRegistryWrapper&			relation_registry();
-	static void									clear_relation_registry();
+	const CSharedString& GetSpotName(ALife::ERelationType& type);
+	static CRelationRegistryWrapper& relation_registry( );
+	static void									clear_relation_registry( );
 
 private:
-	static CRelationRegistryWrapper				*m_relation_registry;
+	static CRelationRegistryWrapper* m_relation_registry;
 };
 
 #include "relation_registry_inline.h"

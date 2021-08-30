@@ -33,7 +33,7 @@
 #include "detail_path_manager_space.h"
 #include "level_debug.h"
 #include "ai/monsters/BaseMonster/BaseMonster.h"
-#include "trade_parameters.h"
+#include "TradeParameters.h"
 #include "script_ini_file.h"
 #include "sound_player.h"
 #include "stalker_decision_space.h"
@@ -291,15 +291,17 @@ void CScriptGameObject::set_dest_level_vertex_id(u32 level_vertex_id)
 	}
 }
 
-CHARACTER_RANK_VALUE CScriptGameObject::GetRank		()
+CharacterRankValue CScriptGameObject::GetRank		()
 {
 	CStalker					*stalker = smart_cast<CStalker*>(&object());
 	if (!stalker) {
 		ai().script_engine().script_log	(ScriptStorage::eLuaMessageTypeError,"CStalker : cannot access class member GetRank!");
-		return					(CHARACTER_RANK_VALUE(0));
+		return					(CharacterRankValue(0));
 	}
 	else
-		return					(stalker->Rank());
+	{
+		return					(stalker->Rank( ));
+	}
 }
 
 void CScriptGameObject::set_desired_position	()

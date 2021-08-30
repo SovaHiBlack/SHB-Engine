@@ -10,7 +10,7 @@
 #include "alife_human_brain.h"
 
 #include "ai_space.h"
-#include "character_info.h"
+#include "CharacterInfo.h"
 //#include "SpecificCharacter.h"
 
 #include "ef_storage.h"
@@ -463,29 +463,29 @@ U16								CSE_ALifeTraderAbstract::object_id( ) const
 	return base( )->ID;
 }
 
-CHARACTER_COMMUNITY_INDEX		CSE_ALifeTraderAbstract::Community( ) const
+CharacterCommunityIndex		CSE_ALifeTraderAbstract::Community( ) const
 {
 	return m_community_index;
 }
 
 const char* CSE_ALifeTraderAbstract::CommunityName( ) const
 {
-	return *CHARACTER_COMMUNITY::IndexToId(m_community_index);
+	return *CCharacterCommunity::IndexToId(m_community_index);
 }
 
-CHARACTER_RANK_VALUE CSE_ALifeTraderAbstract::Rank( )
+CharacterRankValue CSE_ALifeTraderAbstract::Rank( )
 {
 	specific_character( );
 	return m_rank;
 }
 
-void CSE_ALifeTraderAbstract::SetRank(CHARACTER_RANK_VALUE val)
+void CSE_ALifeTraderAbstract::SetRank(CharacterRankValue val)
 {
 	specific_character( );
 	m_rank = val;
 }
 
-CHARACTER_REPUTATION_VALUE	CSE_ALifeTraderAbstract::Reputation( )
+CharacterReputationValue	CSE_ALifeTraderAbstract::Reputation( )
 {
 	specific_character( );
 	return m_reputation;

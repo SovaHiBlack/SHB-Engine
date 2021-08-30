@@ -14,8 +14,8 @@ struct SInfoPortionData : CSharedResource
 	SInfoPortionData( );
 	virtual				~SInfoPortionData( );
 
-	//массив с именами диалогов, которые могут быть инициированы из этого InfoPortion
-	DIALOG_ID_VECTOR	m_DialogNames;
+	// массив с именами диалогов, которые могут быть инициированы из этого InfoPortion
+	DialogIdVec	m_DialogNames;
 
 	//список статей в энциклопедии, которые становятся известными 
 	ARTICLE_ID_VECTOR	m_Articles;
@@ -65,7 +65,7 @@ public:
 	{
 		return info_data( )->m_GameTasks;
 	}
-	const DIALOG_ID_VECTOR& DialogNames( ) const
+	const DialogIdVec& DialogNames( ) const
 	{
 		return info_data( )->m_DialogNames;
 	}

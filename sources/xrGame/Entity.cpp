@@ -13,7 +13,7 @@
 #include "group_hierarchy_holder.h"
 #include "clsid_game.h"
 #include "..\ENGINE\skeletoncustom.h"
-#include "monster_community.h"
+#include "MonsterCommunity.h"
 #include "ai_space.h"
 
 #define BODY_REMOVE_TIME		600000
@@ -213,7 +213,7 @@ BOOL CEntity::net_Spawn(CSE_Abstract* DC)
 		CSE_ALifeMonsterBase* monster = smart_cast<CSE_ALifeMonsterBase*>(E);
 		if (monster)
 		{
-			MONSTER_COMMUNITY		monster_community;
+			CMonsterCommunity		monster_community;
 			monster_community.set(pSettings->r_string(*cNameSect( ), "species"));
 
 			if (monster_community.team( ) != 255)

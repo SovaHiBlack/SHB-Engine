@@ -17,7 +17,7 @@
 #include "UIDragDropListEx.h"//
 #include "UICellItem.h"//
 #include "UICellItemFactory.h"//
-#include "../trade_parameters.h"
+#include "../TradeParameters.h"
 
 #define TRADE_XML			"trade.xml"
 #define TRADE_CHARACTER_XML	"trade_character.xml"

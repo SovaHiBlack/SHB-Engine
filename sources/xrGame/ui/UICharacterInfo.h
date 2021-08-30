@@ -3,7 +3,7 @@
 
 #include "UIWindow.h"//
 #include "../alife_space.h"
-#include "../character_info_defs.h"
+#include "../CharacterInfo_defs.h"
 
 class CUIStatic;
 class CCharacterInfo;
@@ -16,7 +16,7 @@ private:
 	using inherited							= CUIWindow;
 
 protected:
-	void				SetRelation			(ALife::ERelationType relation, CHARACTER_GOODWILL goodwill);
+	void				SetRelation			(ALife::ERelationType relation, CharacterGoodwill goodwill);
 	void				ResetAllStrings		( );
 	void				UpdateRelation		( );
 	bool				hasOwner			( )

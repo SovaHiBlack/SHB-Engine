@@ -1,7 +1,7 @@
 #pragma once
 
 #include "..\InventoryItem.h"
-#include "../character_info_defs.h"
+#include "../CharacterInfo_defs.h"
 
 class CUIStatic;
 
@@ -62,14 +62,14 @@ namespace InventoryUtilities
 	void					UpdateWeight					(CUIStatic& wnd, bool withPrefix = false);
 
 	// Функции получения строки-идентификатора ранга и отношения по их числовому идентификатору
-	const char*				GetRankAsText					(CHARACTER_RANK_VALUE rankID);
-	const char*				GetReputationAsText				(CHARACTER_REPUTATION_VALUE rankID);
-	const char*				GetGoodwillAsText				(CHARACTER_GOODWILL goodwill);
+	const char*				GetRankAsText					(CharacterRankValue rankID);
+	const char*				GetReputationAsText				(CharacterReputationValue rankID);
+	const char*				GetGoodwillAsText				(CharacterGoodwill goodwill);
 
 	void					ClearCharacterInfoStrings		( );
 
 	void					SendInfoToActor					(const char* info_id);
-	u32						GetGoodwillColor				(CHARACTER_GOODWILL gw);
+	u32						GetGoodwillColor				(CharacterGoodwill gw);
 	u32						GetRelationColor				(ALife::ERelationType r);
-	u32						GetReputationColor				(CHARACTER_REPUTATION_VALUE rv);
+	u32						GetReputationColor				(CharacterReputationValue rv);
 };

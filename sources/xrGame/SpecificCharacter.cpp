@@ -115,7 +115,7 @@ void CSpecificCharacter::load_shared(const char*)
 
 	data( )->m_icon_name = pXML->Read("icon", 0, "ui_npc_u_barman");
 
-	//игровое имя персонажа
+	// игровое имя персонажа
 	data( )->m_sGameName = pXML->Read("name", 0, "");
 	data( )->m_sBioText = CStringTable( ).translate(pXML->Read("bio", 0, ""));
 
@@ -208,7 +208,7 @@ CSharedString CSpecificCharacter::Bio( ) const
 	return data( )->m_sBioText;
 }
 
-const CHARACTER_COMMUNITY& CSpecificCharacter::Community( ) const
+const CCharacterCommunity& CSpecificCharacter::Community( ) const
 {
 	return data( )->m_Community;
 }
@@ -253,12 +253,12 @@ CSharedString CSpecificCharacter::terrain_sect( ) const
 	return data( )->m_terrain_sect;
 }
 
-CHARACTER_RANK_VALUE CSpecificCharacter::Rank( ) const
+CharacterRankValue CSpecificCharacter::Rank( ) const
 {
 	return data( )->m_Rank;
 }
 
-CHARACTER_REPUTATION_VALUE CSpecificCharacter::Reputation( ) const
+CharacterReputationValue CSpecificCharacter::Reputation( ) const
 {
 	return data( )->m_Reputation;
 }

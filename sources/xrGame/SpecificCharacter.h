@@ -2,19 +2,17 @@
 
 #pragma once
 
-#include "character_info_defs.h"
+#include "CharacterInfo_defs.h"
 #include "shared_data.h"
 #include "XML_IdToIndex.h"
 #include "PhraseDialog_defs.h"
-#include "character_community.h"
+#include "CharacterCommunity.h"
 
-//////////////////////////////////////////////////////////////////////////
 // SSpecificCharacterData: данные о конкретном персонаже
-//////////////////////////////////////////////////////////////////////////
 struct SSpecificCharacterData : CSharedResource
 {
-											SSpecificCharacterData	( );
-	virtual									~SSpecificCharacterData	( );
+	SSpecificCharacterData( );
+	virtual									~SSpecificCharacterData( );
 
 	// игровое имя персонажа
 	xr_string								m_sGameName;
@@ -33,27 +31,27 @@ struct SSpecificCharacterData : CSharedResource
 
 	xr_string								m_critical_wound_weights;
 
-	CSharedString								m_terrain_sect;
+	CSharedString							m_terrain_sect;
 
 	// имя модели
 	xr_string								m_sVisual;
 
 	// начальный диалог
-	CSharedString								m_StartDialog;
+	CSharedString							m_StartDialog;
 	// диалоги актера, которые будут доступны только при встрече с данным персонажем
-	DIALOG_ID_VECTOR						m_ActorDialogs;
+	DialogIdVec								m_ActorDialogs;
 
-	CSharedString								m_icon_name;
-	// команда 
-	CHARACTER_COMMUNITY						m_Community;
+	CSharedString							m_icon_name;
+	// команда
+	CCharacterCommunity						m_Community;
 	// ранг
-	CHARACTER_RANK_VALUE					m_Rank;
+	CharacterRankValue						m_Rank;
 	// репутация
-	CHARACTER_REPUTATION_VALUE				m_Reputation;
+	CharacterReputationValue				m_Reputation;
 
 	// классы персонажа (военные-ветераны, ученые и т.д.)
 	// к которым он принадлежит
-	xr_vector<CHARACTER_CLASS>				m_Classes;
+	xr_vector<CharacterClass>				m_Classes;
 
 	// указание на то что персонаж не предназначен для случайного выбора
 	// и задается только через явное указание ID
@@ -77,8 +75,8 @@ class CSE_ALifeTraderAbstract;
 class CSpecificCharacter : public CSharedClass<SSpecificCharacterData, CSharedString, false>, public CXML_IdToIndex<CSpecificCharacter>
 {
 private:
-	using inherited_shared											= CSharedClass<SSpecificCharacterData, CSharedString, false>;
-	using id_to_index												= CXML_IdToIndex<CSpecificCharacter>;
+	using inherited_shared = CSharedClass<SSpecificCharacterData, CSharedString, false>;
+	using id_to_index = CXML_IdToIndex<CSpecificCharacter>;
 
 	friend id_to_index;
 	friend CInventoryOwner;
@@ -86,40 +84,54 @@ private:
 	friend CSE_ALifeTraderAbstract;
 
 public:
-											CSpecificCharacter		( );
-											~CSpecificCharacter		( );
+	CSpecificCharacter( );
+	~CSpecificCharacter( );
 
-	virtual void							Load					(CSharedString id);
+	virtual void							Load(CSharedString id);
 
 protected:
-	const SSpecificCharacterData*			data					( ) const	{ VERIFY(inherited_shared::get_sd()); return inherited_shared::get_sd(); }
-	SSpecificCharacterData*					data					( )			{ VERIFY(inherited_shared::get_sd()); return inherited_shared::get_sd(); }
+	const SSpecificCharacterData* data( ) const
+	{
+		VERIFY(inherited_shared::get_sd( ));
+		return inherited_shared::get_sd( );
+	}
+	SSpecificCharacterData* data( )
+	{
+		VERIFY(inherited_shared::get_sd( ));
+		return inherited_shared::get_sd( );
+	}
 
-	//загрузка из XML файла
-	virtual void							load_shared				(const char*);
-	static void								InitXmlIdToIndex		( );
+	// загрузка из XML файла
+	virtual void							load_shared(const char*);
+	static void								InitXmlIdToIndex( );
 
 	CSharedString														m_OwnId;
 
 public:
-	const char*								Name					( ) const;
-	CSharedString							Bio						( ) const;
-	const CHARACTER_COMMUNITY&				Community				( ) const;
-	SSpecificCharacterData::SMoneyDef&		MoneyDef				( )			{ return data()->money_def; }
+	const char* Name( ) const;
+	CSharedString							Bio( ) const;
+	const CCharacterCommunity& Community( ) const;
+	SSpecificCharacterData::SMoneyDef& MoneyDef( )
+	{
+		return data( )->money_def;
+	}
 
-	CHARACTER_RANK_VALUE					Rank					( ) const;
-	CHARACTER_REPUTATION_VALUE				Reputation				( ) const;
-	const char*								Visual					( ) const;
+	CharacterRankValue					Rank( ) const;
+	CharacterReputationValue				Reputation( ) const;
+	const char* Visual( ) const;
 
-	const char*								SupplySpawn				( ) const;
-	const char*								NpcConfigSect			( ) const;
-	const char*								sound_voice_prefix		( ) const;
-	float									panic_threshold			( ) const;
-	float									hit_probability_factor	( ) const;
-	int										crouch_type				( ) const;
-	const char*								critical_wound_weights	( ) const;
+	const char* SupplySpawn( ) const;
+	const char* NpcConfigSect( ) const;
+	const char* sound_voice_prefix( ) const;
+	float									panic_threshold( ) const;
+	float									hit_probability_factor( ) const;
+	int										crouch_type( ) const;
+	const char* critical_wound_weights( ) const;
 
-	const CSharedString&						IconName				( ) const	{ return data()->m_icon_name; };
+	const CSharedString& IconName( ) const
+	{
+		return data( )->m_icon_name;
+	}
 
-	CSharedString								terrain_sect			( ) const;
+	CSharedString								terrain_sect( ) const;
 };

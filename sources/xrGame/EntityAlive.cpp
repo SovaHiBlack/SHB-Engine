@@ -11,7 +11,7 @@
 #include "Level.h"
 #include "..\ENGINE\skeletoncustom.h"
 #include "relation_registry.h"
-#include "monster_community.h"
+#include "MonsterCommunity.h"
 #include "EntityCondition.h"
 #include "script_game_object.h"
 #include "hit.h"
@@ -53,7 +53,7 @@ STR_VECTOR* CEntityAlive::m_pFireParticlesVector = nullptr;
 /////////////////////////////////////////////
 CEntityAlive::CEntityAlive( )
 {
-	monster_community = xr_new<MONSTER_COMMUNITY>( );
+	monster_community = xr_new<CMonsterCommunity>( );
 
 	m_ef_weapon_type = u32(-1);
 	m_ef_detector_type = u32(-1);
@@ -304,15 +304,15 @@ void CEntityAlive::Hit(SHit* pHDS)
 		CEntityAlive* EA = smart_cast<CEntityAlive*>(HDS.who);
 		if (EA && EA->g_Alive( ) && EA->ID( ) != ID( ))
 		{
-			RELATION_REGISTRY( ).FightRegister(EA->ID( ), ID( ), this->tfGetRelationType(EA), HDS.damage( ));
-			RELATION_REGISTRY( ).Action(EA, this, RELATION_REGISTRY::ATTACK);
+			SRelationRegistry( ).FightRegister(EA->ID( ), ID( ), this->tfGetRelationType(EA), HDS.damage( ));
+			SRelationRegistry( ).Action(EA, this, SRelationRegistry::ATTACK);
 		}
 	}
 }
 
 void CEntityAlive::Die(CObject* who)
 {
-	RELATION_REGISTRY( ).Action(smart_cast<CEntityAlive*>(who), this, RELATION_REGISTRY::KILL);
+	SRelationRegistry( ).Action(smart_cast<CEntityAlive*>(who), this, SRelationRegistry::KILL);
 	inherited::Die(who);
 
 	const CGameObject* who_object = smart_cast<const CGameObject*>(who);
@@ -524,7 +524,7 @@ void CEntityAlive::UpdateFireParticles( )
 
 ALife::ERelationType CEntityAlive::tfGetRelationType(const CEntityAlive* tpEntityAlive) const
 {
-	int relation = MONSTER_COMMUNITY::relation(this->monster_community->index( ), tpEntityAlive->monster_community->index( ));
+	int relation = CMonsterCommunity::relation(this->monster_community->index( ), tpEntityAlive->monster_community->index( ));
 
 	switch (relation)
 	{

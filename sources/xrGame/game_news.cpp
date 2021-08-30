@@ -15,14 +15,14 @@
 
 //#include "SpecificCharacter.h"
 
-GAME_NEWS_DATA::GAME_NEWS_DATA( )
+SGameNewsData::SGameNewsData( )
 {
 	m_type = eNews;
 	tex_rect.set(0.0f, 0.0f, 0.0f, 0.0f);
 	show_time = DEFAULT_NEWS_SHOW_TIME;
 }
 
-void GAME_NEWS_DATA::save(IWriter& stream)
+void SGameNewsData::save(IWriter& stream)
 {
 	save_data(m_type, stream);
 	save_data(news_text, stream);
@@ -31,7 +31,7 @@ void GAME_NEWS_DATA::save(IWriter& stream)
 	save_data(tex_rect, stream);
 }
 
-void GAME_NEWS_DATA::load(IReader& stream)
+void SGameNewsData::load(IReader& stream)
 {
 	load_data(m_type, stream);
 	load_data(news_text, stream);
@@ -40,7 +40,7 @@ void GAME_NEWS_DATA::load(IReader& stream)
 	load_data(tex_rect, stream);
 }
 
-const char* GAME_NEWS_DATA::SingleLineText( )
+const char* SGameNewsData::SingleLineText( )
 {
 	if (xr_strlen(full_news_text.c_str( )))
 	{

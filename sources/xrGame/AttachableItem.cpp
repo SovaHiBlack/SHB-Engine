@@ -10,7 +10,7 @@
 
 #ifdef DEBUG
 CAttachableItem* CAttachableItem::m_dbgItem = nullptr;
-#endif
+#endif // def DEBUG
 
 inline CPHShellHolder& CAttachableItem::object( ) const
 {
@@ -22,7 +22,7 @@ DLL_Pure* CAttachableItem::_construct( )
 	VERIFY(!m_item);
 	m_item = smart_cast<CInventoryItem*>(this);
 	VERIFY(m_item);
-	return				(&item( ).object( ));
+	return &item( ).object( );
 }
 
 CAttachableItem::~CAttachableItem( )
@@ -35,23 +35,23 @@ void CAttachableItem::reload(const char* section)
 		return;
 	}
 
-	Fvector3							angle_offset = pSettings->r_fvector3(section, "attach_angle_offset");
-	Fvector3							position_offset = pSettings->r_fvector3(section, "attach_position_offset");
+	Fvector3 angle_offset = pSettings->r_fvector3(section, "attach_angle_offset");
+	Fvector3 position_offset = pSettings->r_fvector3(section, "attach_position_offset");
 	m_offset.setHPB(VPUSH(angle_offset));
 	m_offset.c = position_offset;
 	m_bone_name = pSettings->r_string(section, "attach_bone_name");
-//	enable							(m_auto_attach = !!(READ_IF_EXISTS(pSettings,r_bool,section,"auto_attach",TRUE)));
+//	enable(m_auto_attach = !!(READ_IF_EXISTS(pSettings, r_bool, section, "auto_attach", TRUE)));
 	enable(false);
 
 #ifdef DEBUG
 	m_valid = true;
-#endif
+#endif // def DEBUG
 
 }
 
 void CAttachableItem::OnH_A_Chield( )
 {
-//	VERIFY							(m_valid);
+//	VERIFY(m_valid);
 	const CInventoryOwner* inventory_owner = smart_cast<const CInventoryOwner*>(object( ).H_Parent( ));
 	if (inventory_owner && inventory_owner->attached(&item( )))
 	{
@@ -61,7 +61,7 @@ void CAttachableItem::OnH_A_Chield( )
 
 void CAttachableItem::renderable_Render( )
 {
-//	VERIFY							(m_valid);
+//	VERIFY(m_valid);
 	::Render->set_Transform(&object( ).XFORM( ));
 	::Render->add_Visual(object( ).Visual( ));
 }
@@ -108,7 +108,7 @@ void CAttachableItem::enable(bool value)
 	}
 }
 
-bool  CAttachableItem::can_be_attached( ) const
+bool CAttachableItem::can_be_attached( ) const
 {
 //	VERIFY(m_valid);
 	if (!item( ).m_pCurrentInventory)

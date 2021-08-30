@@ -164,8 +164,8 @@ CMapLocation* CMapManager::AddRelationLocation(CInventoryOwner* pInvOwner)
 
 	ALife::ERelationType relation = ALife::eRelationTypeFriend;
 	CInventoryOwner* pActor = smart_cast<CInventoryOwner*>(Level( ).CurrentViewEntity( ));
-	relation = RELATION_REGISTRY( ).GetRelationType(pInvOwner, pActor);
-	CSharedString sname = RELATION_REGISTRY( ).GetSpotName(relation);
+	relation = SRelationRegistry( ).GetRelationType(pInvOwner, pActor);
+	CSharedString sname = SRelationRegistry( ).GetSpotName(relation);
 
 	CEntityAlive* pEntAlive = smart_cast<CEntityAlive*>(pInvOwner);
 	if (!pEntAlive->g_Alive( ))

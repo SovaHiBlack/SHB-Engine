@@ -7,7 +7,7 @@
 #include "AI_PhraseDialogManager.h"
 #include "PhraseDialog.h"
 #include "inventoryowner.h"
-#include "character_info.h"
+#include "CharacterInfo.h"
 #include "GameObject.h"
 #include "relation_registry.h"
 #include "ui/UIGameSP.h"//
@@ -41,10 +41,10 @@ void CAI_PhraseDialogManager::AnswerPhrase (DIALOG_SHARED_PTR& phrase_dialog)
 
 	if(!phrase_dialog->IsFinished())
 	{
-		CHARACTER_GOODWILL attitude = RELATION_REGISTRY().GetAttitude(pOthersIO, pInvOwner);
+		CharacterGoodwill attitude = SRelationRegistry().GetAttitude(pOthersIO, pInvOwner);
 
 		xr_vector<int> phrases;
-		CHARACTER_GOODWILL phrase_goodwill = NO_GOODWILL;
+		CharacterGoodwill phrase_goodwill = NO_GOODWILL;
 		//если не найдем более подходяещей выводим фразу
 		//последнюю из списка (самую грубую)
 		int phrase_num = phrase_dialog->PhraseList().size()-1;

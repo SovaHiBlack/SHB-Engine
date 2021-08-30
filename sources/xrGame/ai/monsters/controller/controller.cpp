@@ -32,10 +32,10 @@
 #include "../../../level_graph.h"
 #include "../../../ai_object_location.h"
 
-#include "../../../monster_community.h"
-#include "../../../character_community.h"
+#include "../../../MonsterCommunity.h"
+#include "../../../CharacterCommunity.h"
 #include "../../../InventoryOwner.h"
-#include "../../../character_info.h"
+#include "../../../CharacterInfo.h"
 
 #include "controller_psy_hit.h"
 #include "../monster_cover_manager.h"
@@ -639,7 +639,7 @@ void CController::TranslateActionToPathParams()
 
 bool CController::is_relation_enemy(const CEntityAlive *tpEntityAlive) const
 {
-	//	MONSTER_COMMUNITY_ID
+	//	MonsterCommunityId
 	if (xr_strcmp(*(tpEntityAlive->cNameSect()), "stalker_zombied") == 0) return false;
 	if (is_community_friend_overrides(tpEntityAlive)) return false;
 

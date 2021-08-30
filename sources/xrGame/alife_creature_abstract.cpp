@@ -9,7 +9,7 @@
 #include "stdafx.h"
 
 #include "xrServer_Objects_ALife_Monsters.h"
-#include "monster_community.h"
+#include "MonsterCommunity.h"
 #include "Level.h"
 #include "ai_space.h"
 #include "alife_simulator.h"
@@ -25,7 +25,7 @@ void CSE_ALifeCreatureAbstract::on_spawn	()
 	if (smart_cast<CSE_ALifeGroupAbstract*>(this))
 		return;
 
-	MONSTER_COMMUNITY					monster_community;
+	CMonsterCommunity					monster_community;
 	monster_community.set				(pSettings->r_string(s_name, "species"));
 	if (monster_community.team() != 255)
 		s_team							= monster_community.team();

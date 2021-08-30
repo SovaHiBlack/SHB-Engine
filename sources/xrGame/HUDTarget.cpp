@@ -14,7 +14,7 @@
 
 #include "InventoryOwner.h"
 #include "relation_registry.h"
-//#include "character_info.h"
+//#include "CharacterInfo.h"
 
 #include "StringTable.h"
 #include "EntityAlive.h"
@@ -183,7 +183,7 @@ void CHUDTarget::Render( )
 
 				if (our_inv_owner && others_inv_owner)
 				{
-					switch (RELATION_REGISTRY( ).GetRelationType(others_inv_owner, our_inv_owner))
+					switch (SRelationRegistry( ).GetRelationType(others_inv_owner, our_inv_owner))
 					{
 						case ALife::eRelationTypeEnemy:
 						{

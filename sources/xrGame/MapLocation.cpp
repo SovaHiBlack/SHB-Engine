@@ -688,7 +688,7 @@ bool CRelationMapLocation::Update( )
 			return false;
 		}
 
-		m_last_relation = RELATION_REGISTRY( ).GetRelationType(pEnt, pAct);
+		m_last_relation = SRelationRegistry( ).GetRelationType(pEnt, pAct);
 		CSE_ALifeCreatureAbstract* pCreature = smart_cast<CSE_ALifeCreatureAbstract*>(temp);
 		if (pCreature) //maybe trader ?
 		{
@@ -707,7 +707,7 @@ bool CRelationMapLocation::Update( )
 			return false;
 		}
 
-		m_last_relation = RELATION_REGISTRY( ).GetRelationType(pEnt, pAct);
+		m_last_relation = SRelationRegistry( ).GetRelationType(pEnt, pAct);
 		CEntityAlive* pEntAlive = smart_cast<CEntityAlive*>(pEnt);
 		if (pEntAlive)
 		{
@@ -723,7 +723,7 @@ bool CRelationMapLocation::Update( )
 	}
 	else
 	{
-		sname = RELATION_REGISTRY( ).GetSpotName(m_last_relation);
+		sname = SRelationRegistry( ).GetSpotName(m_last_relation);
 	}
 
 	if (m_curr_spot_name != sname)

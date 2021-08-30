@@ -1,7 +1,4 @@
-//////////////////////////////////////////////////////////////////////////
-// relation_registry_defs.h:	реестр для хранения данных об отношении персонажа к 
-//								другим персонажам
-//////////////////////////////////////////////////////////////////////////
+// relation_registry_defs.h:	реестр для хранения данных об отношении персонажа к другим персонажам
 
 #pragma once
 
@@ -12,23 +9,20 @@ struct SRelation
 {
 	SRelation();
 	~SRelation();
-	CHARACTER_GOODWILL		Goodwill		() const							{return m_iGoodwill;};
-	void					SetGoodwill		(CHARACTER_GOODWILL new_goodwill)	{m_iGoodwill = new_goodwill;};
+	CharacterGoodwill		Goodwill		() const							{return m_iGoodwill;}
+	void					SetGoodwill		(CharacterGoodwill new_goodwill)	{m_iGoodwill = new_goodwill;}
 
 private:
 	//благосклонность
-	CHARACTER_GOODWILL m_iGoodwill;
+	CharacterGoodwill m_iGoodwill;
 };
 
-//DEFINE_MAP(U16,							SRelation, PERSONAL_RELATION_MAP, PERSONAL_RELATION_MAP_IT);
-using PERSONAL_RELATION_MAP = xr_map<U16, SRelation>;
-using PERSONAL_RELATION_MAP_IT = PERSONAL_RELATION_MAP::iterator;
-//DEFINE_MAP(CHARACTER_COMMUNITY_INDEX,	SRelation, COMMUNITY_RELATION_MAP, COMMUNITY_RELATION_MAP_IT);
-using COMMUNITY_RELATION_MAP = xr_map<CHARACTER_COMMUNITY_INDEX, SRelation>;
-using COMMUNITY_RELATION_MAP_IT = COMMUNITY_RELATION_MAP::iterator;
+using PersonalRelationMap = xr_map<U16, SRelation>;
+
+using CommunityRelationMap = xr_map<CharacterCommunityIndex, SRelation>;
 
 //структура, существует для каждого персонажа в игре
-struct RELATION_DATA : public IPureSerializeObject<IReader,IWriter>
+struct SRelationData : public IPureSerializeObject<IReader,IWriter>
 {
 	virtual void clear();
 
@@ -36,7 +30,7 @@ struct RELATION_DATA : public IPureSerializeObject<IReader,IWriter>
 	virtual void save (IWriter&);
 
 	//личные отношения
-	PERSONAL_RELATION_MAP personal; 
+	PersonalRelationMap personal;
 	//отношения с группировками
-	COMMUNITY_RELATION_MAP communities;
+	CommunityRelationMap communities;
 };

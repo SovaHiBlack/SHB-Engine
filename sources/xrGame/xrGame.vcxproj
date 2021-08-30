@@ -609,12 +609,12 @@
     <ClInclude Include="CarWeapon.h" />
     <ClInclude Include="car_memory.h" />
     <ClInclude Include="CharacterPhysicsSupport.h" />
-    <ClInclude Include="character_community.h" />
+    <ClInclude Include="CharacterCommunity.h" />
     <ClInclude Include="character_hit_animations.h" />
-    <ClInclude Include="character_info.h" />
-    <ClInclude Include="character_info_defs.h" />
-    <ClInclude Include="character_rank.h" />
-    <ClInclude Include="character_reputation.h" />
+    <ClInclude Include="CharacterInfo.h" />
+    <ClInclude Include="CharacterInfo_defs.h" />
+    <ClInclude Include="CharacterRank.h" />
+    <ClInclude Include="CharacterReputation.h" />
     <ClInclude Include="client_spawn_manager.h" />
     <ClInclude Include="client_spawn_manager_inline.h" />
     <ClInclude Include="ClimableObject.h" />
@@ -849,7 +849,7 @@
     <ClInclude Include="MilitaryOutfit.h" />
     <ClInclude Include="Mincer.h" />
     <ClInclude Include="Missile.h" />
-    <ClInclude Include="monster_community.h" />
+    <ClInclude Include="MonsterCommunity.h" />
     <ClInclude Include="MosquitoBald.h" />
     <ClInclude Include="movement_manager.h" />
     <ClInclude Include="movement_manager_inline.h" />
@@ -1012,8 +1012,8 @@
     <ClInclude Include="property_evaluator_member_inline.h" />
     <ClInclude Include="property_storage.h" />
     <ClInclude Include="property_storage_inline.h" />
-    <ClInclude Include="purchase_list.h" />
-    <ClInclude Include="purchase_list_inline.h" />
+    <ClInclude Include="PurchaseList.h" />
+    <ClInclude Include="PurchaseList_inline.h" />
     <ClInclude Include="QuadTree.h" />
     <ClInclude Include="QuadTree_inline.h" />
     <ClInclude Include="RadioactiveZone.h" />
@@ -1251,16 +1251,16 @@
     <ClInclude Include="TorridZone.h" />
     <ClInclude Include="Tracer.h" />
     <ClInclude Include="Trade.h" />
-    <ClInclude Include="trade_action_parameters.h" />
-    <ClInclude Include="trade_action_parameters_inline.h" />
-    <ClInclude Include="trade_bool_parameters.h" />
-    <ClInclude Include="trade_bool_parameters_inline.h" />
-    <ClInclude Include="trade_factors.h" />
-    <ClInclude Include="trade_factors_inline.h" />
-    <ClInclude Include="trade_factor_parameters.h" />
-    <ClInclude Include="trade_factor_parameters_inline.h" />
-    <ClInclude Include="trade_parameters.h" />
-    <ClInclude Include="trade_parameters_inline.h" />
+    <ClInclude Include="TradeActionParameters.h" />
+    <ClInclude Include="TradeActionParameters_inline.h" />
+    <ClInclude Include="TradeBoolParameters.h" />
+    <ClInclude Include="TradeBoolParameters_inline.h" />
+    <ClInclude Include="TradeFactors.h" />
+    <ClInclude Include="TradeFactors_inline.h" />
+    <ClInclude Include="TradeFactorParameters.h" />
+    <ClInclude Include="TradeFactorParameters_inline.h" />
+    <ClInclude Include="TradeParameters.h" />
+    <ClInclude Include="TradeParameters_inline.h" />
     <ClInclude Include="tri-colliderknoopc\dcTriangle.h" />
     <ClInclude Include="tri-colliderKNoOPC\dcTriListCollider.h" />
     <ClInclude Include="tri-colliderknoopc\dSortTriPrimitive.h" />
@@ -1712,11 +1712,11 @@
     <ClCompile Include="CarWheels.cpp" />
     <ClCompile Include="car_memory.cpp" />
     <ClCompile Include="CharacterPhysicsSupport.cpp" />
-    <ClCompile Include="character_community.cpp" />
+    <ClCompile Include="CharacterCommunity.cpp" />
     <ClCompile Include="character_hit_animations.cpp" />
-    <ClCompile Include="character_info.cpp" />
-    <ClCompile Include="character_rank.cpp" />
-    <ClCompile Include="character_reputation.cpp" />
+    <ClCompile Include="CharacterInfo.cpp" />
+    <ClCompile Include="CharacterRank.cpp" />
+    <ClCompile Include="CharacterReputation.cpp" />
     <ClCompile Include="client_spawn_manager.cpp" />
     <ClCompile Include="client_spawn_manager_script.cpp" />
     <ClCompile Include="ClimableObject.cpp" />
@@ -1894,7 +1894,7 @@
     <ClCompile Include="MilitaryOutfit.cpp" />
     <ClCompile Include="Mincer.cpp" />
     <ClCompile Include="Missile.cpp" />
-    <ClCompile Include="monster_community.cpp" />
+    <ClCompile Include="MonsterCommunity.cpp" />
     <ClCompile Include="MosquitoBald.cpp" />
     <ClCompile Include="movement_manager.cpp" />
     <ClCompile Include="movement_manager_game.cpp" />
@@ -1988,7 +1988,7 @@
     </ClCompile>
     <ClCompile Include="property_evaluator_script.cpp" />
     <ClCompile Include="property_storage_script.cpp" />
-    <ClCompile Include="purchase_list.cpp" />
+    <ClCompile Include="PurchaseList.cpp" />
     <ClCompile Include="r2_test_hw.cpp" />
     <ClCompile Include="RadioactiveZone.cpp" />
     <ClCompile Include="random32.cpp" />
@@ -2177,7 +2177,7 @@
     <ClCompile Include="TorridZone.cpp" />
     <ClCompile Include="Tracer.cpp" />
     <ClCompile Include="Trade.cpp" />
-    <ClCompile Include="trade_parameters.cpp" />
+    <ClCompile Include="TradeParameters.cpp" />
     <ClCompile Include="tri-colliderknoopc\dcTriListCollider.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>

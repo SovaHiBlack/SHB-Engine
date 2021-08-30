@@ -11,7 +11,7 @@
 #include "ai_stalker_space.h"
 #include "..\..\Bolt.h"
 #include "..\..\Inventory.h"
-#include "../../character_info.h"
+#include "../../CharacterInfo.h"
 #include "../../relation_registry.h"
 #include "../../memory_manager.h"
 #include "../../item_manager.h"
@@ -93,13 +93,19 @@ ALife::ERelationType CStalker::tfGetRelationType	(const CEntityAlive *tpEntityAl
 	
 	ALife::ERelationType relation = ALife::eRelationTypeDummy;
 		
-	if(pOtherIO && !(const_cast<CEntityAlive*>(tpEntityAlive)->cast_base_monster()))
-		relation = RELATION_REGISTRY().GetRelationType(static_cast<const CInventoryOwner*>(this), pOtherIO);
+	if (pOtherIO && !(const_cast<CEntityAlive*>(tpEntityAlive)->cast_base_monster( )))
+	{
+		relation = SRelationRegistry( ).GetRelationType(static_cast<const CInventoryOwner*>(this), pOtherIO);
+	}
 	
-	if(ALife::eRelationTypeDummy != relation)
+	if (ALife::eRelationTypeDummy != relation)
+	{
 		return relation;
+	}
 	else
+	{
 		return inherited::tfGetRelationType(tpEntityAlive);
+	}
 }
 
 void CStalker::react_on_grenades		()
