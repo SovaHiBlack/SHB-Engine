@@ -237,17 +237,17 @@ public:
 	}
 
 protected:
-	unsigned int							m_slot;
-	unsigned int							m_cost;
+	unsigned int				m_slot;
+	unsigned int				m_cost;
 	float						m_weight;
 	float						m_fCondition;
-	CSharedString					m_Description;
+	CSharedString				m_Description;
 
 	ALife::_TIME_ID				m_dwItemRemoveTime;
 	ALife::_TIME_ID				m_dwItemIndependencyTime;
 
 	float						m_fControlInertionFactor;
-	CSharedString					m_icon_name;
+	CSharedString				m_icon_name;
 
 	////////// network //////////////////////////////////////////////////
 public:
@@ -265,7 +265,7 @@ public:
 	virtual void				net_Export(CNetPacket& P);					// export to server
 
 	virtual void				activate_physic_shell( );
-	virtual unsigned short					bone_count_to_synchronize( ) const;
+	virtual unsigned short		bone_count_to_synchronize( ) const;
 
 	virtual bool				NeedToDestroyObject( ) const;
 	virtual ALife::_TIME_ID		TimePassedAfterIndependant( ) const;

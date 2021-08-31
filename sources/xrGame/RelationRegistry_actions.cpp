@@ -1,6 +1,6 @@
 #include "stdafx.h"
 
-#include "relation_registry.h"
+#include "RelationRegistry.h"
 #include "alife_registry_wrappers.h"
 
 #include "Actor.h"
@@ -26,7 +26,7 @@ struct SAttackGoodwillStorage
 
 	void load(const char* prefix)
 	{
-		string128					s;
+		char s[128];
 		strconcat(sizeof(s), s, prefix, "friend_attack_goodwill");
 		friend_attack_goodwill = pSettings->r_s32(ACTIONS_POINTS_SECT, s);
 
@@ -147,7 +147,7 @@ void SRelationRegistry::Action(CEntityAlive* from, CEntityAlive* to, ERelationAc
 
 				SAttackGoodwillStorage* st = bDangerScheme ? &gw_danger : &gw_free;
 				CharacterGoodwill delta_goodwill = 0;
-				CharacterReputationValue	delta_reputation = 0;
+				CharacterReputationValue delta_reputation = 0;
 				switch (relation)
 				{
 					case ALife::eRelationTypeEnemy:
@@ -211,8 +211,8 @@ void SRelationRegistry::Action(CEntityAlive* from, CEntityAlive* to, ERelationAc
 					relation_before_attack = relation;
 				}
 
-				CharacterGoodwill			delta_goodwill = 0;
-				CharacterReputationValue	delta_reputation = 0;
+				CharacterGoodwill delta_goodwill = 0;
+				CharacterReputationValue delta_reputation = 0;
 
 				switch (relation_before_attack)
 				{
@@ -267,7 +267,7 @@ void SRelationRegistry::Action(CEntityAlive* from, CEntityAlive* to, ERelationAc
 					inv_owner_from->ChangeReputation(delta_reputation);
 				}
 
-				CharacterRankValue		delta_rank = 0;
+				CharacterRankValue delta_rank = 0;
 				delta_rank = CCharacterRank::rank_kill_points(CCharacterRank::ValueToIndex(stalker->Rank( )));
 				if (delta_rank)
 				{
@@ -281,8 +281,8 @@ void SRelationRegistry::Action(CEntityAlive* from, CEntityAlive* to, ERelationAc
 		{
 			if (stalker && stalker->g_Alive( ))
 			{
-				CharacterGoodwill			delta_goodwill = 0;
-				CharacterReputationValue	delta_reputation = 0;
+				CharacterGoodwill delta_goodwill = 0;
+				CharacterReputationValue delta_reputation = 0;
 
 				switch (relation)
 				{

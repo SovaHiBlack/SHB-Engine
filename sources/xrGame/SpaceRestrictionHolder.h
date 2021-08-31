@@ -1,10 +1,5 @@
-////////////////////////////////////////////////////////////////////////////
-//	Module 		: space_restriction_holder.h
-//	Created 	: 17.08.2004
-//  Modified 	: 27.08.2004
-//	Author		: Dmitriy Iassenev
+//	Module 		: SpaceRestrictionHolder.h
 //	Description : Space restriction holder
-////////////////////////////////////////////////////////////////////////////
 
 #pragma once
 
@@ -53,4 +48,4 @@ public:
 	inline		CSharedString				default_in_restrictions			() const;
 };
 
-#include "space_restriction_holder_inline.h"
+#include "SpaceRestrictionHolder_inline.h"

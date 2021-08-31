@@ -28,7 +28,7 @@
 #include "../../..\ENGINE\skeletoncustom.h"
 #include "../../CharacterInfo.h"
 #include "..\..\Actor.h"
-#include "../../relation_registry.h"
+#include "../../RelationRegistry.h"
 #include "../../stalker_animation_manager.h"
 #include "../../stalker_planner.h"///
 #include "../../script_game_object.h"///

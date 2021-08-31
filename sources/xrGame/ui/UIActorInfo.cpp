@@ -16,7 +16,7 @@
 #include "..\ActorStatisticMgr.h"
 //#include "../CharacterCommunity.h"
 //#include "../CharacterReputation.h"
-#include "../relation_registry.h"
+#include "../RelationRegistry.h"
 #include "..\StringTable.h"
 
 #define ACTOR_STATISTIC_XML		"actor_statistic.xml"

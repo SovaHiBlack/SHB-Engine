@@ -9,7 +9,7 @@ struct SReputationData
 {
 	SReputationData(int, CSharedString, const char*);
 
-	CSharedString					id;
+	CSharedString				id;
 	int							index;
 	CharacterReputationValue	threshold;
 };
@@ -46,7 +46,7 @@ private:
 	CharacterReputationValue	m_current_value;
 	int							m_current_index;
 
-	static	void				InitIdToIndex( );
+	static void					InitIdToIndex( );
 
 public:
 	// отношение между репутациями

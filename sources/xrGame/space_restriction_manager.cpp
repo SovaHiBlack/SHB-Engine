@@ -7,10 +7,11 @@
 ////////////////////////////////////////////////////////////////////////////
 
 #include "stdafx.h"
-#include "space_restriction.h"
+
+#include "SpaceRestriction.h"
 #include "restriction_space.h"
 #include "space_restriction_manager.h"
-#include "space_restriction_bridge.h"
+#include "SpaceRestrictionBridge.h"
 #include "object_broker.h"
 
 const u32 time_to_delete = 300000;

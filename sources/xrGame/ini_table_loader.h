@@ -94,7 +94,9 @@ typename CSIni_Table::ITEM_TABLE& CSIni_Table::table( )
 //	T_INI_LOADER::InitIdToIndex ();
 
 	if (m_pTable)
+	{
 		return *m_pTable;
+	}
 
 	m_pTable = xr_new<ITEM_TABLE>( );
 
@@ -104,7 +106,7 @@ typename CSIni_Table::ITEM_TABLE& CSIni_Table::table( )
 
 	m_pTable->resize(table_size);
 
-	string64 buffer;
+	char buffer[64];
 	CIniFile::Sect& table_ini = pSettings->r_section(table_sect);
 
 	R_ASSERT3(table_ini.Data.size( ) == table_size, "wrong size for table in section", table_sect);

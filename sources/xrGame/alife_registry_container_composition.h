@@ -8,7 +8,7 @@
 #include "EncyclopediaArticle_defs.h"
 
 #include "CharacterInfo_defs.h"
-#include "relation_registry_defs.h"
+#include "RelationRegistry_defs.h"
 
 #include "GameTask_defs.h"
 #include "game_news.h"

@@ -1,7 +1,7 @@
 #pragma once
 
-typedef u32	CGID;
-typedef u32	CLClassBits;
+typedef u32 CGID;
+typedef u32 CLClassBits;
 typedef u32 CLBits;
 class CPHObject;
 
@@ -29,7 +29,7 @@ public:
 	{
 		return obj.collide_bits( );
 	}
-	////////////////////////////////////////////////////////////////////////////////
+
 	static void			InitObject(CPHObject& obj);
 	static void			RegisterObjToGroup(CGID group, CPHObject& obj);
 	static void			RegisterObjToLastGroup(CPHObject& obj);
@@ -68,7 +68,7 @@ public:
 
 #ifdef DEBUG
 		return false;
-#endif // DEBUG
+#endif // def DEBUG
 
 	}
 

@@ -27,7 +27,7 @@
 #include "ActorStatisticMgr.h"
 #include "ActorEffector.h"
 #include "PostprocessAnimator.h"
-#include "relation_registry.h"
+#include "RelationRegistry.h"
 
 using namespace luabind;
 

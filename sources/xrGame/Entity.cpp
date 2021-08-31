@@ -18,10 +18,6 @@
 
 #define BODY_REMOVE_TIME		600000
 
-//////////////////////////////////////////////////////////////////////
-// Construction/Destruction
-//////////////////////////////////////////////////////////////////////
-
 CEntity::CEntity( )
 {
 	m_registered_member = false;
@@ -46,7 +42,7 @@ CEntityConditionSimple* CEntity::create_entity_condition(CEntityConditionSimple*
 	return		m_entity_condition;
 }
 
-void CEntity::OnEvent(CNetPacket& P, U16 type)
+void CEntity::OnEvent(CNetPacket& P, unsigned short type)
 {
 	inherited::OnEvent(P, type);
 
@@ -54,7 +50,7 @@ void CEntity::OnEvent(CNetPacket& P, U16 type)
 	{
 		case GE_DIE:
 		{
-			U16				id;
+			unsigned short id;
 			u32				cl;
 			P.r_u16(id);
 			P.r_u32(cl);
@@ -121,31 +117,38 @@ void CEntity::Hit(SHit* pHDS)
 
 	// *** process hit calculations
 	// Calc impulse
-	Fvector3					vLocalDir;
-	float					m = pHDS->dir.magnitude( );
+	Fvector3 vLocalDir;
+	float m = pHDS->dir.magnitude( );
 	VERIFY(m > EPS);
 
 	// convert impulse into local coordinate system
-	Fmatrix					mInvXForm;
+	Fmatrix mInvXForm;
 	mInvXForm.invert(XFORM( ));
 	mInvXForm.transform_dir(vLocalDir, pHDS->dir);
 	vLocalDir.invert( );
 
 	// hit impulse
-	if (pHDS->impulse) HitImpulse(pHDS->impulse, pHDS->dir, vLocalDir); // @@@: WT
+	if (pHDS->impulse)
+	{
+		HitImpulse(pHDS->impulse, pHDS->dir, vLocalDir);
+	}
 
 	// Calc amount (correct only on local player)
 	float lost_health = CalcCondition(pHDS->damage( ));
 
 	// Signal hit
-	if (BI_NONE != pHDS->bone( ))	HitSignal(lost_health, vLocalDir, pHDS->who, pHDS->boneID);
+	if (BI_NONE != pHDS->bone( ))
+	{
+		HitSignal(lost_health, vLocalDir, pHDS->who, pHDS->boneID);
+	}
 
 	// If Local() - perform some logic
 	if (Local( ) && !g_Alive( ) && !AlreadyDie( ) && (m_killer_id == ALife::_OBJECT_ID(-1)))
 	{
 		KillEntity(pHDS->whoID);
 	}
-	//must be last!!! @slipch
+
+	// must be last!!! @slipch
 	inherited::Hit(pHDS);
 }
 
@@ -161,11 +164,10 @@ void CEntity::Load(const char* section)
 	id_Group = READ_IF_EXISTS(pSettings, r_s32, section, "group", -1);
 
 #pragma todo("Jim to Dima: no specific figures or comments needed")	
-	m_fMorale = 66.f;
+	m_fMorale = 66.0f;
 
 	//время убирания тела с уровня
 	m_dwBodyRemoveTime = READ_IF_EXISTS(pSettings, r_u32, section, "body_remove_time", BODY_REMOVE_TIME);
-	//////////////////////////////////////
 }
 
 BOOL CEntity::net_Spawn(CSE_Abstract* DC)
@@ -213,7 +215,7 @@ BOOL CEntity::net_Spawn(CSE_Abstract* DC)
 		CSE_ALifeMonsterBase* monster = smart_cast<CSE_ALifeMonsterBase*>(E);
 		if (monster)
 		{
-			CMonsterCommunity		monster_community;
+			CMonsterCommunity monster_community;
 			monster_community.set(pSettings->r_string(*cNameSect( ), "species"));
 
 			if (monster_community.team( ) != 255)
@@ -294,7 +296,7 @@ void CEntity::KillEntity(U16 whoID)
 
 			VERIFY(m_killer_id == ALife::_OBJECT_ID(-1));
 		}
-#endif
+#endif // def DEBUG
 
 	}
 	else
@@ -311,7 +313,7 @@ void CEntity::KillEntity(U16 whoID)
 
 	if (!getDestroy( ))
 	{
-		CNetPacket		P;
+		CNetPacket P;
 		u_EventGen(P, GE_DIE, ID( ));
 		P.w_u16(U16(whoID));
 		P.w_u32(0);

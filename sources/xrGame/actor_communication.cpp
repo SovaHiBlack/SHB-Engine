@@ -8,7 +8,7 @@
 //#include "StringTable.h"
 #include "PhraseDialog.h"
 #include "CharacterInfo.h"
-#include "relation_registry.h"
+#include "RelationRegistry.h"
 #include "ai_space.h"
 #include "alife_simulator.h"
 #include "alife_registry_container.h"

@@ -9,7 +9,7 @@
 #include "inventoryowner.h"
 #include "CharacterInfo.h"
 #include "GameObject.h"
-#include "relation_registry.h"
+#include "RelationRegistry.h"
 #include "ui/UIGameSP.h"//
 #include "HUDManager.h"//
 #include "Level.h"

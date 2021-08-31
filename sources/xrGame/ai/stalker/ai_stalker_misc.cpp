@@ -12,7 +12,7 @@
 #include "..\..\Bolt.h"
 #include "..\..\Inventory.h"
 #include "../../CharacterInfo.h"
-#include "../../relation_registry.h"
+#include "../../RelationRegistry.h"
 #include "../../memory_manager.h"
 #include "../../item_manager.h"
 #include "../../stalker_movement_manager.h"

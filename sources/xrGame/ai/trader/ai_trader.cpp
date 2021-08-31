@@ -15,7 +15,7 @@
 #include "../../xrserver_objects_alife_monsters.h"
 #include "..\..\Artefact.h"
 #include "..\..\Server.h"
-#include "../../relation_registry.h"
+#include "../../RelationRegistry.h"
 #include "../../object_broker.h"
 #include "../../sound_player.h"
 #include "..\..\Level.h"

@@ -26,7 +26,7 @@
 #include "HangingLamp.h"
 #include "HolderCustom.h"
 #include "ScriptZone.h"
-#include "relation_registry.h"
+#include "RelationRegistry.h"
 #include "GameTask.h"
 #include "Car.h"
 

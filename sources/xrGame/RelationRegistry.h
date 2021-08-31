@@ -1,4 +1,4 @@
-// relation_registry.h: реестр для хранения данных об отношении персонажа к другим персонажам
+// RelationRegistry.h: реестр для хранения данных об отношении персонажа к другим персонажам
 
 #pragma once
 
@@ -88,7 +88,7 @@ public:
 		{
 			if (type < ALife::eRelationTypeLast)return spot_names[type];
 			else return spot_names[ALife::eRelationTypeLast];
-		};
+		}
 	};
 
 	// зарегистрировать драку (реакция на Hit в EntityAlive)
@@ -114,4 +114,4 @@ private:
 	static CRelationRegistryWrapper* m_relation_registry;
 };
 
-#include "relation_registry_inline.h"
+#include "RelationRegistry_inline.h"

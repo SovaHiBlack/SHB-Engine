@@ -8,7 +8,7 @@
 #include "Inventory.h"
 #include "Messages.h"
 #include "CharacterInfo.h"
-#include "relation_registry.h"
+#include "RelationRegistry.h"
 #include "Level.h"
 #include "script_callback_ex.h"
 #include "script_game_object.h"

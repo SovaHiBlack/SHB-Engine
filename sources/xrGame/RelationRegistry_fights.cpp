@@ -2,12 +2,12 @@
 
 #include "stdafx.h"
 
-#include "relation_registry.h"
+#include "RelationRegistry.h"
 
 SRelationRegistry::SFightData::SFightData( )
 {
 	attacker = defender = 0xffff;
-	total_hit = 0;
+	total_hit = 0.0f;
 	time = 0;
 	time_old = 0;
 	attack_time = 0;

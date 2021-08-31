@@ -24,7 +24,7 @@
 #include "Profiler.h"
 
 #include "sound_collection_storage.h"
-#include "relation_registry.h"
+#include "RelationRegistry.h"
 
 #include "..\ENGINE\IGamePersistent.h"//==>
 

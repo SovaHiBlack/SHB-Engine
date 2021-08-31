@@ -42,7 +42,7 @@ protected:
 	{
 		for (u32 k = 0; k < count; k += 1)
 		{
-			string64 buf;
+			char buf[64];
 			const char* id_str = _GetItem(cfgRecord, k, buf);
 			char* id_str_lwr = xr_strdup(id_str);
 			xr_strlwr(id_str_lwr);
@@ -57,7 +57,8 @@ protected:
 	{
 		for (u32 k = 0; k < count; k += 2)
 		{
-			string64 buf, buf1;
+			char buf[64];
+			char buf1[64];
 			const char* id_str = _GetItem(cfgRecord, k, buf);
 			char* id_str_lwr = xr_strdup(id_str);
 			xr_strlwr(id_str_lwr);

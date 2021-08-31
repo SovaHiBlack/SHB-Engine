@@ -7,7 +7,7 @@
 #include "visual_memory_manager.h"
 #include "Actor.h"
 #include "ActorMemory.h"
-#include "relation_registry.h"
+#include "RelationRegistry.h"
 #include "object_broker.h"
 
 #include "game_base_space.h"

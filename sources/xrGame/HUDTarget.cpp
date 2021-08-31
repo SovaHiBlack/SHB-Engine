@@ -13,7 +13,7 @@
 #include "..\ENGINE\IGamePersistent.h"
 
 #include "InventoryOwner.h"
-#include "relation_registry.h"
+#include "RelationRegistry.h"
 //#include "CharacterInfo.h"
 
 #include "StringTable.h"

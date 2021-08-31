@@ -17,7 +17,7 @@
 #include "Server.h"
 #include "xrServer_Objects_ALife_Monsters.h"
 #include "alife_registry_wrappers.h"
-#include "relation_registry.h"
+#include "RelationRegistry.h"
 #include "ai_object_location.h"
 #include "script_callback_ex.h"
 #include "GameObject_space.h"

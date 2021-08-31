@@ -1873,9 +1873,6 @@
     <Filter Include="Core\Client\Objects\items &amp; weapons\Weapons\Various weapons\WeaponBinocular">
       <UniqueIdentifier>{a5b1b117-5ad6-4ed0-aa54-ef22f225d847}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Core\Client\Objects\items &amp; weapons\Weapons\Various weapons\WeaponBM-16">
-      <UniqueIdentifier>{524f4f0b-7105-42d2-9a20-ff9e038a6569}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Core\Client\Objects\items &amp; weapons\Weapons\Various weapons\WeaponFN2000">
       <UniqueIdentifier>{78500313-8bac-4602-a116-29fadf00a85d}</UniqueIdentifier>
     </Filter>
@@ -2067,6 +2064,9 @@
     </Filter>
     <Filter Include="Core\Client\Objects\inventory\InventoryOwner\trade_parameters\PurchaseList">
       <UniqueIdentifier>{2751576e-9cf2-45a8-9d72-5abb5a8ee93a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Client\Objects\items &amp; weapons\Weapons\Various weapons\WeaponBM16">
+      <UniqueIdentifier>{524f4f0b-7105-42d2-9a20-ff9e038a6569}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -2415,46 +2415,46 @@
     <ClInclude Include="space_restriction_manager_inline.h">
       <Filter>AI\AComponents\SpaceRestrictionManager</Filter>
     </ClInclude>
-    <ClInclude Include="space_restriction.h">
+    <ClInclude Include="SpaceRestriction.h">
       <Filter>AI\AComponents\SpaceRestrictionManager\SpaceRestriction</Filter>
     </ClInclude>
-    <ClInclude Include="space_restriction_inline.h">
+    <ClInclude Include="SpaceRestriction_inline.h">
       <Filter>AI\AComponents\SpaceRestrictionManager\SpaceRestriction</Filter>
     </ClInclude>
-    <ClInclude Include="space_restriction_holder.h">
+    <ClInclude Include="SpaceRestrictionHolder.h">
       <Filter>AI\AComponents\SpaceRestrictionManager\SpaceRestrictionHolder</Filter>
     </ClInclude>
-    <ClInclude Include="space_restriction_holder_inline.h">
+    <ClInclude Include="SpaceRestrictionHolder_inline.h">
       <Filter>AI\AComponents\SpaceRestrictionManager\SpaceRestrictionHolder</Filter>
     </ClInclude>
-    <ClInclude Include="space_restriction_abstract.h">
+    <ClInclude Include="SpaceRestrictionAbstract.h">
       <Filter>AI\AComponents\SpaceRestrictionManager\SpaceRestrictionHolder\SpaceRestrictionAbstract</Filter>
     </ClInclude>
-    <ClInclude Include="space_restriction_abstract_inline.h">
+    <ClInclude Include="SpaceRestrictionAbstract_inline.h">
       <Filter>AI\AComponents\SpaceRestrictionManager\SpaceRestrictionHolder\SpaceRestrictionAbstract</Filter>
     </ClInclude>
-    <ClInclude Include="space_restriction_base.h">
+    <ClInclude Include="SpaceRestrictionBase.h">
       <Filter>AI\AComponents\SpaceRestrictionManager\SpaceRestrictionHolder\SpaceRestrictionBase</Filter>
     </ClInclude>
-    <ClInclude Include="space_restriction_base_inline.h">
+    <ClInclude Include="SpaceRestrictionBase_inline.h">
       <Filter>AI\AComponents\SpaceRestrictionManager\SpaceRestrictionHolder\SpaceRestrictionBase</Filter>
     </ClInclude>
-    <ClInclude Include="space_restriction_bridge.h">
+    <ClInclude Include="SpaceRestrictionBridge.h">
       <Filter>AI\AComponents\SpaceRestrictionManager\SpaceRestrictionHolder\SpaceRestrictionBridge</Filter>
     </ClInclude>
-    <ClInclude Include="space_restriction_bridge_inline.h">
+    <ClInclude Include="SpaceRestrictionBridge_inline.h">
       <Filter>AI\AComponents\SpaceRestrictionManager\SpaceRestrictionHolder\SpaceRestrictionBridge</Filter>
     </ClInclude>
-    <ClInclude Include="space_restriction_composition.h">
+    <ClInclude Include="SpaceRestrictionComposition.h">
       <Filter>AI\AComponents\SpaceRestrictionManager\SpaceRestrictionHolder\SpaceRestrictionComposition</Filter>
     </ClInclude>
-    <ClInclude Include="space_restriction_composition_inline.h">
+    <ClInclude Include="SpaceRestrictionComposition_inline.h">
       <Filter>AI\AComponents\SpaceRestrictionManager\SpaceRestrictionHolder\SpaceRestrictionComposition</Filter>
     </ClInclude>
-    <ClInclude Include="space_restriction_shape.h">
+    <ClInclude Include="SpaceRestrictionShape.h">
       <Filter>AI\AComponents\SpaceRestrictionManager\SpaceRestrictionHolder\SpaceRestrictionShape</Filter>
     </ClInclude>
-    <ClInclude Include="space_restriction_shape_inline.h">
+    <ClInclude Include="SpaceRestrictionShape_inline.h">
       <Filter>AI\AComponents\SpaceRestrictionManager\SpaceRestrictionHolder\SpaceRestrictionShape</Filter>
     </ClInclude>
     <ClInclude Include="StepManager.h">
@@ -4521,13 +4521,13 @@
     <ClInclude Include="MonsterCommunity.h">
       <Filter>Core\Client\Objects\inventory\InventoryOwner\character_info</Filter>
     </ClInclude>
-    <ClInclude Include="relation_registry.h">
+    <ClInclude Include="RelationRegistry.h">
       <Filter>Core\Client\Objects\inventory\InventoryOwner\relation registry</Filter>
     </ClInclude>
-    <ClInclude Include="relation_registry_defs.h">
+    <ClInclude Include="RelationRegistry_defs.h">
       <Filter>Core\Client\Objects\inventory\InventoryOwner\relation registry</Filter>
     </ClInclude>
-    <ClInclude Include="relation_registry_inline.h">
+    <ClInclude Include="RelationRegistry_inline.h">
       <Filter>Core\Client\Objects\inventory\InventoryOwner\relation registry</Filter>
     </ClInclude>
     <ClInclude Include="TradeBoolParameters.h">
@@ -5668,7 +5668,7 @@
       <Filter>Core\Client\Objects\tasks_info_dialogs\encyclopedia</Filter>
     </ClInclude>
     <ClInclude Include="WeaponBM16.h">
-      <Filter>Core\Client\Objects\items &amp; weapons\Weapons\Various weapons\WeaponBM-16</Filter>
+      <Filter>Core\Client\Objects\items &amp; weapons\Weapons\Various weapons\WeaponBM16</Filter>
     </ClInclude>
     <ClInclude Include="GrenadeF1.h">
       <Filter>Core\Client\Objects\items &amp; weapons\Weapons\Various weapons\GrenadeF1</Filter>
@@ -6050,22 +6050,22 @@
     <ClCompile Include="space_restriction_manager.cpp">
       <Filter>AI\AComponents\SpaceRestrictionManager</Filter>
     </ClCompile>
-    <ClCompile Include="space_restriction.cpp">
+    <ClCompile Include="SpaceRestriction.cpp">
       <Filter>AI\AComponents\SpaceRestrictionManager\SpaceRestriction</Filter>
     </ClCompile>
-    <ClCompile Include="space_restriction_holder.cpp">
+    <ClCompile Include="SpaceRestrictionHolder.cpp">
       <Filter>AI\AComponents\SpaceRestrictionManager\SpaceRestrictionHolder</Filter>
     </ClCompile>
-    <ClCompile Include="space_restriction_base.cpp">
+    <ClCompile Include="SpaceRestrictionBase.cpp">
       <Filter>AI\AComponents\SpaceRestrictionManager\SpaceRestrictionHolder\SpaceRestrictionBase</Filter>
     </ClCompile>
-    <ClCompile Include="space_restriction_bridge.cpp">
+    <ClCompile Include="SpaceRestrictionBridge.cpp">
       <Filter>AI\AComponents\SpaceRestrictionManager\SpaceRestrictionHolder\SpaceRestrictionBridge</Filter>
     </ClCompile>
-    <ClCompile Include="space_restriction_composition.cpp">
+    <ClCompile Include="SpaceRestrictionComposition.cpp">
       <Filter>AI\AComponents\SpaceRestrictionManager\SpaceRestrictionHolder\SpaceRestrictionComposition</Filter>
     </ClCompile>
-    <ClCompile Include="space_restriction_shape.cpp">
+    <ClCompile Include="SpaceRestrictionShape.cpp">
       <Filter>AI\AComponents\SpaceRestrictionManager\SpaceRestrictionHolder\SpaceRestrictionShape</Filter>
     </ClCompile>
     <ClCompile Include="StepManager.cpp">
@@ -7247,13 +7247,13 @@
     <ClCompile Include="MonsterCommunity.cpp">
       <Filter>Core\Client\Objects\inventory\InventoryOwner\character_info</Filter>
     </ClCompile>
-    <ClCompile Include="relation_registry.cpp">
+    <ClCompile Include="RelationRegistry.cpp">
       <Filter>Core\Client\Objects\inventory\InventoryOwner\relation registry</Filter>
     </ClCompile>
-    <ClCompile Include="relation_registry_actions.cpp">
+    <ClCompile Include="RelationRegistry_actions.cpp">
       <Filter>Core\Client\Objects\inventory\InventoryOwner\relation registry</Filter>
     </ClCompile>
-    <ClCompile Include="relation_registry_fights.cpp">
+    <ClCompile Include="RelationRegistry_fights.cpp">
       <Filter>Core\Client\Objects\inventory\InventoryOwner\relation registry</Filter>
     </ClCompile>
     <ClCompile Include="TradeParameters.cpp">
@@ -8361,7 +8361,7 @@
       <Filter>Core\Client\Objects\tasks_info_dialogs\encyclopedia</Filter>
     </ClCompile>
     <ClCompile Include="WeaponBM16.cpp">
-      <Filter>Core\Client\Objects\items &amp; weapons\Weapons\Various weapons\WeaponBM-16</Filter>
+      <Filter>Core\Client\Objects\items &amp; weapons\Weapons\Various weapons\WeaponBM16</Filter>
     </ClCompile>
     <ClCompile Include="GrenadeF1.cpp">
       <Filter>Core\Client\Objects\items &amp; weapons\Weapons\Various weapons\GrenadeF1</Filter>

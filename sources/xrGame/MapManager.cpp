@@ -4,7 +4,7 @@
 #include "inventoryowner.h"
 #include "Level.h"
 #include "Actor.h"
-#include "relation_registry.h"
+#include "RelationRegistry.h"
 #include "GameObject.h"
 #include "MapLocation.h"
 #include "MapManager.h"

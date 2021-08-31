@@ -17,7 +17,7 @@
 #include "Actor.h"
 #include "ai_object_location.h"
 #include "alife_object_registry.h"
-#include "relation_registry.h"
+#include "RelationRegistry.h"
 #include "InventoryOwner.h"
 #include "object_broker.h"
 #include "StringTable.h"

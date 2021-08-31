@@ -21,7 +21,7 @@
 #include "script_entity.h"
 //#include "StringTable.h"
 #include "alife_registry_wrappers.h"
-#include "relation_registry.h"
+#include "RelationRegistry.h"
 #include "custommonster.h"
 #include "movement_manager.h"
 #include "actorcondition.h"

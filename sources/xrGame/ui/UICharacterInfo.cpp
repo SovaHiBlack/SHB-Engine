@@ -7,7 +7,7 @@
 //#include "..\Level.h"
 //#include "../CharacterInfo.h"
 #include "..\StringTable.h"
-#include "../relation_registry.h"
+#include "../RelationRegistry.h"
 
 //#include "xrUIXmlParser.h"//
 #include "UIXmlInit.h"//

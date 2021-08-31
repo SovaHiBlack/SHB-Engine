@@ -1,8 +1,8 @@
-// реестр для хранения данных об отношении персонажа к другим персонажам
+// RelationRegistry.cpp: реестр для хранения данных об отношении персонажа к другим персонажам
 
 #include "stdafx.h"
 
-#include "relation_registry.h"
+#include "RelationRegistry.h"
 #include "alife_registry_wrappers.h"
 #include "CharacterCommunity.h"
 #include "CharacterReputation.h"
