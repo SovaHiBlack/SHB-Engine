@@ -8,23 +8,27 @@ class CSpaceRestrictor;
 
 template <typename _1, typename _2> class intrusive_ptr;
 
-namespace RestrictionSpace {
+namespace Restriction
+{
 	struct CTimeIntrusiveBase;
 	enum ERestrictorTypes;
 };
 
-namespace SpaceRestrictionHolder {
-	typedef intrusive_ptr<CSpaceRestrictionBridge,RestrictionSpace::CTimeIntrusiveBase> CBaseRestrictionPtr;
+namespace SpaceRestrictionHolder
+{
+	using CBaseRestrictionPtr = intrusive_ptr<CSpaceRestrictionBridge, Restriction::CTimeIntrusiveBase>;
 };
 
-class CSpaceRestrictionHolder {
+class CSpaceRestrictionHolder
+{
 public:
-	typedef xr_map<CSharedString,CSpaceRestrictionBridge*>	RESTRICTIONS;
+	using RESTRICTIONS = xr_map<CSharedString, CSpaceRestrictionBridge*>;
 
 private:
-	enum {
-		MAX_RESTRICTION_PER_TYPE_COUNT	= u32(128),
-		dummy							= u32(-1),
+	enum
+	{
+		MAX_RESTRICTION_PER_TYPE_COUNT = u32(128),
+		dummy = u32(-1)
 	};
 
 private:
@@ -33,19 +37,19 @@ private:
 	CSharedString						m_default_in_restrictions;
 
 protected:
-	CSharedString				normalize_string				(CSharedString space_restrictors);
-	inline		void					collect_garbage					();
-	virtual void					on_default_restrictions_changed	() = 0;
-			void					clear							();
+	CSharedString				normalize_string(CSharedString space_restrictors);
+	inline		void					collect_garbage( );
+	virtual void					on_default_restrictions_changed( ) = 0;
+	void					clear( );
 
 public:
-	inline								CSpaceRestrictionHolder			();
-	virtual							~CSpaceRestrictionHolder		();
-			SpaceRestrictionHolder::CBaseRestrictionPtr	restriction	(CSharedString space_restrictors);
-			void					register_restrictor				(CSpaceRestrictor *space_restrictor, const RestrictionSpace::ERestrictorTypes &restrictor_type);
-			void					unregister_restrictor			(CSpaceRestrictor *space_restrictor);
-	inline		CSharedString				default_out_restrictions		() const;
-	inline		CSharedString				default_in_restrictions			() const;
+	inline								CSpaceRestrictionHolder( );
+	virtual							~CSpaceRestrictionHolder( );
+	SpaceRestrictionHolder::CBaseRestrictionPtr	restriction(CSharedString space_restrictors);
+	void					register_restrictor(CSpaceRestrictor* space_restrictor, const Restriction::ERestrictorTypes& restrictor_type);
+	void					unregister_restrictor(CSpaceRestrictor* space_restrictor);
+	inline		CSharedString				default_out_restrictions( ) const;
+	inline		CSharedString				default_in_restrictions( ) const;
 };
 
 #include "SpaceRestrictionHolder_inline.h"

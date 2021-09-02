@@ -8,7 +8,7 @@
 #include "xrServer_Objects_ALife_Monsters.h"
 #include "game_base_space.h"
 #include "object_broker.h"
-#include "restriction_space.h"
+#include "Restriction_space.h"
 #include "CharacterInfo.h"
 #include "..\ENGINE\bone.h"
 #include "..\ENGINE\Render.h"
@@ -534,7 +534,7 @@ void CSE_ALifePHSkeletonObject::FillProps(const char* pref, PropItemVec& items)
 CSE_ALifeSpaceRestrictor::CSE_ALifeSpaceRestrictor(const char* caSection) : CSE_ALifeDynamicObject(caSection)
 {
 	m_flags.set(flUseSwitches, FALSE);
-	m_space_restrictor_type = RestrictionSpace::eDefaultRestrictorTypeNone;
+	m_space_restrictor_type = Restriction::eDefaultRestrictorTypeNone;
 	m_flags.set(flUsedAI_Locations, FALSE);
 	m_spawn_flags.set(flSpawnDestroyOnSpawn, FALSE);
 	m_flags.set(flCheckForSeparator, TRUE);
@@ -584,10 +584,10 @@ void CSE_ALifeSpaceRestrictor::UPDATE_Write(CNetPacket& tNetPacket)
 }
 
 xr_token defaul_retrictor_types[ ] = {
-	{ "NOT A restrictor",			RestrictionSpace::eRestrictorTypeNone},
-	{ "NONE default restrictor",	RestrictionSpace::eDefaultRestrictorTypeNone},
-	{ "OUT default restrictor",		RestrictionSpace::eDefaultRestrictorTypeOut	},
-	{ "IN default restrictor",		RestrictionSpace::eDefaultRestrictorTypeIn	},
+	{ "NOT A restrictor",			Restriction::eRestrictorTypeNone},
+	{ "NONE default restrictor",	Restriction::eDefaultRestrictorTypeNone},
+	{ "OUT default restrictor",		Restriction::eDefaultRestrictorTypeOut},
+	{ "IN default restrictor",		Restriction::eDefaultRestrictorTypeIn},
 	{ 0,							0}
 };
 

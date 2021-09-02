@@ -24,8 +24,8 @@ class CObjectHandlerPlanner;
 class CObjectHandler : public CInventoryOwner {
 protected:
 	typedef CInventoryOwner								inherited;
-	typedef GraphEngineSpace::_solver_value_type		_value_type;
-	typedef GraphEngineSpace::_solver_condition_type	_condition_type;
+	typedef GraphEngine::_solver_value_type		_value_type;
+	typedef GraphEngine::_solver_condition_type	_condition_type;
 
 private:
 	int								m_r_hand;

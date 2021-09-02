@@ -16,8 +16,8 @@ class CScriptGameObject;
 template <typename _object_type>
 class CPropertyEvaluator {
 public:
-	typedef GraphEngineSpace::_solver_condition_type	_condition_type;
-	typedef GraphEngineSpace::_solver_value_type		_value_type;
+	typedef GraphEngine::_solver_condition_type	_condition_type;
+	typedef GraphEngine::_solver_value_type		_value_type;
 
 public:
 	_object_type		*m_object;

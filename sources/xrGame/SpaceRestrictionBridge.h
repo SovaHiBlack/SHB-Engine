@@ -3,11 +3,11 @@
 
 #pragma once
 
-#include "restriction_space.h"
+#include "Restriction_space.h"
 
 class CSpaceRestrictionBase;
 
-class CSpaceRestrictionBridge : public RestrictionSpace::CTimeIntrusiveBase
+class CSpaceRestrictionBridge : public Restriction::CTimeIntrusiveBase
 {
 protected:
 	CSpaceRestrictionBase* m_object;

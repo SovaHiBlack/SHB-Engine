@@ -20,7 +20,7 @@
 #include "level_graph.h"
 
 #if 1//def DEBUG
-#	include "space_restriction_manager.h"
+#	include "SpaceRestrictionManager.h"
 
 static void show_restrictions	(const char* restrictions)
 {

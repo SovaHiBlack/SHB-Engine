@@ -2079,10 +2079,10 @@
     <ClInclude Include="wrapper_abstract_inline.h">
       <Filter>AI\AComponents\DecisionManagement</Filter>
     </ClInclude>
-    <ClInclude Include="action_base.h">
+    <ClInclude Include="ActionBase.h">
       <Filter>AI\AComponents\DecisionManagement\ActionManagement\ActionBase</Filter>
     </ClInclude>
-    <ClInclude Include="action_base_inline.h">
+    <ClInclude Include="ActionBase_inline.h">
       <Filter>AI\AComponents\DecisionManagement\ActionManagement\ActionBase</Filter>
     </ClInclude>
     <ClInclude Include="action_planner.h">
@@ -2406,13 +2406,13 @@
     <ClInclude Include="sound_collection_storage_inline.h">
       <Filter>AI\AComponents\SoundPlayer\sound_collection_storage</Filter>
     </ClInclude>
-    <ClInclude Include="restriction_space.h">
+    <ClInclude Include="Restriction_space.h">
       <Filter>AI\AComponents\SpaceRestrictionManager</Filter>
     </ClInclude>
-    <ClInclude Include="space_restriction_manager.h">
+    <ClInclude Include="SpaceRestrictionManager.h">
       <Filter>AI\AComponents\SpaceRestrictionManager</Filter>
     </ClInclude>
-    <ClInclude Include="space_restriction_manager_inline.h">
+    <ClInclude Include="SpaceRestrictionManager_inline.h">
       <Filter>AI\AComponents\SpaceRestrictionManager</Filter>
     </ClInclude>
     <ClInclude Include="SpaceRestriction.h">
@@ -5924,7 +5924,7 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="action_base_script.cpp">
+    <ClCompile Include="ActionBase_script.cpp">
       <Filter>AI\AComponents\DecisionManagement\ActionManagement\ActionBase</Filter>
     </ClCompile>
     <ClCompile Include="action_planner_script.cpp">
@@ -6047,7 +6047,7 @@
     <ClCompile Include="sound_collection_storage.cpp">
       <Filter>AI\AComponents\SoundPlayer\sound_collection_storage</Filter>
     </ClCompile>
-    <ClCompile Include="space_restriction_manager.cpp">
+    <ClCompile Include="SpaceRestrictionManager.cpp">
       <Filter>AI\AComponents\SpaceRestrictionManager</Filter>
     </ClCompile>
     <ClCompile Include="SpaceRestriction.cpp">

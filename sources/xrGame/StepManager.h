@@ -12,40 +12,40 @@ class C_StepManager
 	StepsMap								m_steps_map;
 	S_StepInfo								m_step_info;
 
-	CEntityAlive*							m_object;
+	CEntityAlive* m_object;
 
 	U16										m_foot_bones[MAX_LEGS_COUNT];
-	CBlend*									m_blend;
+	CBlend* m_blend;
 
 	u32										m_time_anim_started;
 
 public:
-						C_StepManager		( );
-	virtual				~C_StepManager		( );
+	C_StepManager( );
+	virtual				~C_StepManager( );
 
 	// init on construction
-	virtual DLL_Pure*	_construct			( );
-	virtual void		reload				(const char* section);
+	virtual DLL_Pure* _construct( );
+	virtual void		reload(const char* section);
 
 	// call on set animation
-	void				on_animation_start	(MotionID motion_id, CBlend* blend);
+	void				on_animation_start(MotionID motion_id, CBlend* blend);
 	// call on updateCL
-	void				update				( );
+	void				update( );
 
 	// process event
-	virtual void		event_on_step		( )
+	virtual void		event_on_step( )
 	{ }
 
 protected:
-	Fvector3			get_foot_position	(E_LegType leg_type);
-	virtual bool		is_on_ground		( )
+	Fvector3			get_foot_position(E_LegType leg_type);
+	virtual bool		is_on_ground( )
 	{
 		return true;
 	}
 
 private:
-	void				reload_foot_bones	( );
-	void				load_foot_bones		(CIniFile::Sect& data);
+	void				reload_foot_bones( );
+	void				load_foot_bones(CIniFile::Sect& data);
 
-	float				get_blend_time		( );
+	float				get_blend_time( );
 };

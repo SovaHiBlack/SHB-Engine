@@ -268,7 +268,7 @@ void game_sv_Single::add_restriction			(CNetPacket &packet, U16 id)
 	ALife::_OBJECT_ID		restriction_id;
 	packet.r				(&restriction_id,sizeof(restriction_id));
 
-	RestrictionSpace::ERestrictorTypes	restriction_type;
+	Restriction::ERestrictorTypes	restriction_type;
 	packet.r				(&restriction_type,sizeof(restriction_type));
 	
 	alife().add_restriction (id,restriction_id,restriction_type);
@@ -282,7 +282,7 @@ void game_sv_Single::remove_restriction			(CNetPacket &packet, U16 id)
 	ALife::_OBJECT_ID		restriction_id;
 	packet.r				(&restriction_id,sizeof(restriction_id));
 
-	RestrictionSpace::ERestrictorTypes	restriction_type;
+	Restriction::ERestrictorTypes	restriction_type;
 	packet.r				(&restriction_type,sizeof(restriction_type));
 	
 	alife().remove_restriction (id,restriction_id,restriction_type);
@@ -293,7 +293,7 @@ void game_sv_Single::remove_all_restrictions	(CNetPacket &packet, U16 id)
 	if (!ai().get_alife())
 		return;
 
-	RestrictionSpace::ERestrictorTypes	restriction_type;
+	Restriction::ERestrictorTypes	restriction_type;
 	packet.r				(&restriction_type,sizeof(restriction_type));
 
 	alife().remove_all_restrictions (id,restriction_type);

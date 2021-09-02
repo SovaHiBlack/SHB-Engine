@@ -23,7 +23,7 @@
 #include "condition_state.h"
 #include "operator_abstract.h"
 
-using namespace GraphEngineSpace;
+using namespace GraphEngine;
 
 class CGraphEngine {
 public:

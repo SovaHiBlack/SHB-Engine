@@ -3,7 +3,7 @@
 
 #pragma once
 
-#include "restriction_space.h"
+#include "Restriction_space.h"
 #include "SpaceRestrictionHolder.h"
 #include "SpaceRestrictionBridge.h"
 #include "SpaceRestrictionAbstract.h"
@@ -12,7 +12,7 @@
 
 class CSpaceRestrictionManager;
 
-class CSpaceRestriction : public RestrictionSpace::CTimeIntrusiveBase, public CSpaceRestrictionAbstract
+class CSpaceRestriction : public Restriction::CTimeIntrusiveBase, public CSpaceRestrictionAbstract
 {
 private:
 	using inherited = CSpaceRestrictionAbstract;

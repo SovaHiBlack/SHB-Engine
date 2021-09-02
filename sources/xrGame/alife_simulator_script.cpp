@@ -9,7 +9,7 @@
 #include "alife_story_registry.h"
 #include "script_engine.h"
 #include "xrServer_Objects_ALife_Monsters.h"
-#include "restriction_space.h"
+#include "Restriction_space.h"
 #include "alife_graph_registry.h"
 #include "alife_spawn_registry.h"
 #include "alife_registry_container.h"
@@ -119,22 +119,22 @@ void kill_entity1			(CALifeSimulator *alife, CSE_ALifeMonsterAbstract *monster)
 
 void add_in_restriction		(CALifeSimulator *alife, CSE_ALifeMonsterAbstract *monster, ALife::_OBJECT_ID id)
 {
-	alife->add_restriction	(monster->ID,id,RestrictionSpace::eRestrictorTypeIn);
+	alife->add_restriction	(monster->ID,id, Restriction::eRestrictorTypeIn);
 }
 
 void add_out_restriction	(CALifeSimulator *alife, CSE_ALifeMonsterAbstract *monster, ALife::_OBJECT_ID id)
 {
-	alife->add_restriction	(monster->ID,id,RestrictionSpace::eRestrictorTypeOut);
+	alife->add_restriction	(monster->ID,id, Restriction::eRestrictorTypeOut);
 }
 
 void remove_in_restriction	(CALifeSimulator *alife, CSE_ALifeMonsterAbstract *monster, ALife::_OBJECT_ID id)
 {
-	alife->remove_restriction	(monster->ID,id,RestrictionSpace::eRestrictorTypeIn);
+	alife->remove_restriction	(monster->ID,id, Restriction::eRestrictorTypeIn);
 }
 
 void remove_out_restriction	(CALifeSimulator *alife, CSE_ALifeMonsterAbstract *monster, ALife::_OBJECT_ID id)
 {
-	alife->remove_restriction	(monster->ID,id,RestrictionSpace::eRestrictorTypeOut);
+	alife->remove_restriction	(monster->ID,id, Restriction::eRestrictorTypeOut);
 }
 
 u32 get_level_id(CALifeSimulator *self)

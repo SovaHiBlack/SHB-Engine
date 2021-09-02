@@ -6,8 +6,8 @@
 #include "SpaceRestrictor.h"
 #include "xrServer_Objects_ALife.h"
 #include "Level.h"
-#include "space_restriction_manager.h"
-#include "restriction_space.h"
+#include "SpaceRestrictionManager.h"
+#include "Restriction_space.h"
 #include "ai_space.h"
 #include "CustomZone.h"
 
@@ -69,10 +69,10 @@ BOOL CSpaceRestrictor::net_Spawn(CSE_Abstract* data)
 	setEnabled(FALSE);
 	setVisible(FALSE);
 
-	if (!ai( ).get_level_graph( ) || (RestrictionSpace::ERestrictorTypes(se_shape->m_space_restrictor_type) == RestrictionSpace::eRestrictorTypeNone))
+	if (!ai( ).get_level_graph( ) || (Restriction::ERestrictorTypes(se_shape->m_space_restrictor_type) == Restriction::eRestrictorTypeNone))
 		return TRUE;
 
-	Level( ).space_restriction_manager( ).register_restrictor(this, RestrictionSpace::ERestrictorTypes(se_shape->m_space_restrictor_type));
+	Level( ).space_restriction_manager( ).register_restrictor(this, Restriction::ERestrictorTypes(se_shape->m_space_restrictor_type));
 
 	return TRUE;
 }
@@ -84,7 +84,7 @@ void CSpaceRestrictor::net_Destroy( )
 	if (!ai( ).get_level_graph( ))
 		return;
 
-	if (RestrictionSpace::ERestrictorTypes(m_space_restrictor_type) == RestrictionSpace::eRestrictorTypeNone)
+	if (Restriction::ERestrictorTypes(m_space_restrictor_type) == Restriction::eRestrictorTypeNone)
 		return;
 
 	Level( ).space_restriction_manager( ).unregister_restrictor(this);

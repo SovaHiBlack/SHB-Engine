@@ -26,7 +26,7 @@
 #include "InfoPortion.h"
 #include "patrol_path_storage.h"
 #include "date_time.h"
-#include "space_restriction_manager.h"
+#include "SpaceRestrictionManager.h"
 #include "seniority_hierarchy_holder.h"
 #include "SpaceRestrictor.h"
 #include "client_spawn_manager.h"

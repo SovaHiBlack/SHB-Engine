@@ -15,7 +15,7 @@
 #include "Level.h"
 #include "GraphEngine.h"
 //#include "..\ENGINE\Application.h"
-#include "restriction_space.h"
+#include "Restriction_space.h"
 #include "Profiler.h"
 #include "mt_config.h"
 #include "..\ENGINE\IGamePersistent.h"//==>
@@ -344,7 +344,7 @@ void CALifeUpdateManager::jump_to_level(const char* level_name) const
 {
 	const CGameGraph::SLevel& level = ai( ).game_graph( ).header( ).level(level_name);
 	GameGraph::_GRAPH_ID dest = GameGraph::_GRAPH_ID(-1);
-	GraphEngineSpace::CGameLevelParams evaluator(level.id( ));
+	GraphEngine::CGameLevelParams evaluator(level.id( ));
 	bool failed = !ai( ).graph_engine( ).search(ai( ).game_graph( ), graph( ).actor( )->m_tGraphID, GameGraph::_GRAPH_ID(-1), 0, evaluator);
 	if (failed)
 	{
@@ -428,7 +428,7 @@ void CALifeUpdateManager::teleport_object(ALife::_OBJECT_ID id, GameGraph::_GRAP
 	}
 }
 
-void CALifeUpdateManager::add_restriction(ALife::_OBJECT_ID id, ALife::_OBJECT_ID restriction_id, const RestrictionSpace::ERestrictorTypes& restriction_type)
+void CALifeUpdateManager::add_restriction(ALife::_OBJECT_ID id, ALife::_OBJECT_ID restriction_id, const Restriction::ERestrictorTypes& restriction_type)
 {
 	CSE_ALifeDynamicObject* object = objects( ).object(id, true);
 	if (!object)
@@ -460,7 +460,7 @@ void CALifeUpdateManager::add_restriction(ALife::_OBJECT_ID id, ALife::_OBJECT_I
 
 	switch (restriction_type)
 	{
-		case RestrictionSpace::eRestrictorTypeOut:
+		case Restriction::eRestrictorTypeOut:
 		{
 
 #ifdef DEBUG
@@ -474,7 +474,7 @@ void CALifeUpdateManager::add_restriction(ALife::_OBJECT_ID id, ALife::_OBJECT_I
 			creature->m_dynamic_out_restrictions.push_back(restriction_id);
 		}
 		break;
-		case RestrictionSpace::eRestrictorTypeIn:
+		case Restriction::eRestrictorTypeIn:
 		{
 
 #ifdef DEBUG
@@ -496,7 +496,7 @@ void CALifeUpdateManager::add_restriction(ALife::_OBJECT_ID id, ALife::_OBJECT_I
 	}
 }
 
-void CALifeUpdateManager::remove_restriction(ALife::_OBJECT_ID id, ALife::_OBJECT_ID restriction_id, const RestrictionSpace::ERestrictorTypes& restriction_type)
+void CALifeUpdateManager::remove_restriction(ALife::_OBJECT_ID id, ALife::_OBJECT_ID restriction_id, const Restriction::ERestrictorTypes& restriction_type)
 {
 	CSE_ALifeDynamicObject* object = objects( ).object(id, true);
 	if (!object)
@@ -528,7 +528,7 @@ void CALifeUpdateManager::remove_restriction(ALife::_OBJECT_ID id, ALife::_OBJEC
 
 	switch (restriction_type)
 	{
-		case RestrictionSpace::eRestrictorTypeOut:
+		case Restriction::eRestrictorTypeOut:
 		{
 			xr_vector<ALife::_OBJECT_ID>::iterator	I = std::find(creature->m_dynamic_out_restrictions.begin( ), creature->m_dynamic_out_restrictions.end( ), restriction_id);
 			if (I == creature->m_dynamic_out_restrictions.end( ))
@@ -540,7 +540,7 @@ void CALifeUpdateManager::remove_restriction(ALife::_OBJECT_ID id, ALife::_OBJEC
 			creature->m_dynamic_out_restrictions.erase(I);
 		}
 		break;
-		case RestrictionSpace::eRestrictorTypeIn:
+		case Restriction::eRestrictorTypeIn:
 		{
 			xr_vector<ALife::_OBJECT_ID>::iterator	I = std::find(creature->m_dynamic_in_restrictions.begin( ), creature->m_dynamic_in_restrictions.end( ), restriction_id);
 			if (I == creature->m_dynamic_in_restrictions.end( ))
@@ -560,7 +560,7 @@ void CALifeUpdateManager::remove_restriction(ALife::_OBJECT_ID id, ALife::_OBJEC
 	}
 }
 
-void CALifeUpdateManager::remove_all_restrictions(ALife::_OBJECT_ID id, const RestrictionSpace::ERestrictorTypes& restriction_type)
+void CALifeUpdateManager::remove_all_restrictions(ALife::_OBJECT_ID id, const Restriction::ERestrictorTypes& restriction_type)
 {
 	CSE_ALifeDynamicObject* object = objects( ).object(id, true);
 	if (!object)
@@ -578,12 +578,12 @@ void CALifeUpdateManager::remove_all_restrictions(ALife::_OBJECT_ID id, const Re
 
 	switch (restriction_type)
 	{
-		case RestrictionSpace::eRestrictorTypeOut:
+		case Restriction::eRestrictorTypeOut:
 		{
 			creature->m_dynamic_out_restrictions.clear( );
 		}
 		break;
-		case RestrictionSpace::eRestrictorTypeIn:
+		case Restriction::eRestrictorTypeIn:
 		{
 			creature->m_dynamic_in_restrictions.clear( );
 		}

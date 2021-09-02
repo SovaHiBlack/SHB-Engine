@@ -19,8 +19,8 @@ class CStalker;
 class CStalkerActionBase : public CActionScriptBase<CStalker> {
 protected:
 	typedef CActionScriptBase<CStalker>				inherited;
-	typedef GraphEngineSpace::_solver_condition_type	_condition_type;
-	typedef GraphEngineSpace::_solver_value_type		_value_type;
+	typedef GraphEngine::_solver_condition_type	_condition_type;
+	typedef GraphEngine::_solver_value_type		_value_type;
 
 public:
 						CStalkerActionBase			(CStalker *object, const char* action_name = "");

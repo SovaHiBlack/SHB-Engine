@@ -368,9 +368,9 @@ inline	void CProblemSolverAbstract::solve			()
 			reverse_search ? target_state() : current_state(),
 			reverse_search ? current_state() : target_state(),
 			&m_solution,
-			GraphEngineSpace::CSolverBaseParameters(
-				GraphEngineSpace::_solver_dist_type(-1),
-				GraphEngineSpace::_solver_condition_type(-1),
+		GraphEngine::CSolverBaseParameters(
+		GraphEngine::_solver_dist_type(-1),
+		GraphEngine::_solver_condition_type(-1),
 				8000
 			)
 		);

@@ -27,8 +27,8 @@ namespace MonsterSpace {
 class CObjectHandlerPlanner : public CActionPlanner<CStalker,true> {
 public:
 	typedef CActionPlanner<CStalker,true>			inherited;
-	typedef GraphEngineSpace::_solver_value_type		_value_type;
-	typedef GraphEngineSpace::_solver_condition_type	_condition_type;
+	typedef GraphEngine::_solver_value_type		_value_type;
+	typedef GraphEngine::_solver_condition_type	_condition_type;
 	typedef ObjectHandlerSpace::EWorldProperties		EWorldProperties;
 	typedef MonsterSpace::EObjectAction					EObjectAction;
 	typedef CActionBase<CStalker>					CSActionBase;

@@ -7,7 +7,8 @@
 #include "alife_surge_manager.h"
 #include "alife_storage_manager.h"
 
-namespace RestrictionSpace {
+namespace Restriction
+{
 	enum ERestrictorTypes;
 }
 
@@ -54,9 +55,9 @@ public:
 			void		set_interactive			(ALife::_OBJECT_ID id, bool value);
 			void		jump_to_level			(const char* level_name) const;
 			void		teleport_object			(ALife::_OBJECT_ID id, GameGraph::_GRAPH_ID game_vertex_id, u32 level_vertex_id, const Fvector3& position);
-			void		add_restriction			(ALife::_OBJECT_ID id, ALife::_OBJECT_ID restriction_id, const RestrictionSpace::ERestrictorTypes &restriction_type);
-			void		remove_restriction		(ALife::_OBJECT_ID id, ALife::_OBJECT_ID restriction_id, const RestrictionSpace::ERestrictorTypes &restriction_type);
-			void		remove_all_restrictions	(ALife::_OBJECT_ID id, const RestrictionSpace::ERestrictorTypes &restriction_type);
+			void		add_restriction			(ALife::_OBJECT_ID id, ALife::_OBJECT_ID restriction_id, const Restriction::ERestrictorTypes &restriction_type);
+			void		remove_restriction		(ALife::_OBJECT_ID id, ALife::_OBJECT_ID restriction_id, const Restriction::ERestrictorTypes &restriction_type);
+			void		remove_all_restrictions	(ALife::_OBJECT_ID id, const Restriction::ERestrictorTypes &restriction_type);
 };
 
 #include "alife_update_manager_inline.h"

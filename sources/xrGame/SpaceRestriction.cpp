@@ -4,7 +4,7 @@
 #include "stdafx.h"
 
 #include "SpaceRestriction.h"
-#include "space_restriction_manager.h"
+#include "SpaceRestrictionManager.h"
 #include "ai_space.h"
 #include "level_graph.h"
 #include "SpaceRestrictionBase.h"

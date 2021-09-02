@@ -14,7 +14,8 @@ class CSE_Abstract;
 class CCustomMonster;
 class CGameObject;
 
-namespace RestrictionSpace {
+namespace Restriction
+{
 	enum ERestrictorTypes;
 };
 
@@ -35,8 +36,8 @@ private:
 protected:
 	template <typename P, bool value>
 	inline		void			construct_restriction_string	(char* temp_restrictions, const xr_vector<ALife::_OBJECT_ID> &restrictions, CSharedString current_restrictions, const P &p);
-	inline		void			add_object_restriction			(ALife::_OBJECT_ID id, const RestrictionSpace::ERestrictorTypes &restrictor_type);
-	inline		void			remove_object_restriction		(ALife::_OBJECT_ID id, const RestrictionSpace::ERestrictorTypes &restrictor_type);
+	inline		void			add_object_restriction			(ALife::_OBJECT_ID id, const Restriction::ERestrictorTypes &restrictor_type);
+	inline		void			remove_object_restriction		(ALife::_OBJECT_ID id, const Restriction::ERestrictorTypes &restrictor_type);
 
 public:
 	inline						CRestrictedObject				(CCustomMonster *object);
@@ -56,7 +57,7 @@ public:
 			void			remove_restrictions				(const xr_vector<ALife::_OBJECT_ID> &out_restrictions, const xr_vector<ALife::_OBJECT_ID> &in_restrictions);
 			void			add_restrictions				(const CSharedString& out_restrictions, const CSharedString& in_restrictions);
 			void			remove_restrictions				(const CSharedString& out_restrictions, const CSharedString& in_restrictions);
-			void			remove_all_restrictions			(const RestrictionSpace::ERestrictorTypes &restrictor_type);
+			void			remove_all_restrictions			(const Restriction::ERestrictorTypes &restrictor_type);
 			void			remove_all_restrictions			();
 			CSharedString		in_restrictions					() const;
 			CSharedString		out_restrictions				() const;

@@ -4,7 +4,7 @@
 #pragma once
 
 #include "GameObject.h"
-#include "restriction_space.h"
+#include "Restriction_space.h"
 #include "script_export_space.h"
 
 class CSpaceRestrictor : public CGameObject
@@ -65,7 +65,7 @@ public:
 		return false;
 	}
 
-	inline RestrictionSpace::ERestrictorTypes restrictor_type( ) const;
+	inline Restriction::ERestrictorTypes restrictor_type( ) const;
 
 public:
 #ifdef DEBUG
@@ -83,7 +83,7 @@ add_to_type_list(CSpaceRestrictor)
 // Description : Space restrictor inline functions
 inline CSpaceRestrictor::CSpaceRestrictor( )
 {
-	m_space_restrictor_type = RestrictionSpace::eRestrictorTypeNone;
+	m_space_restrictor_type = Restriction::eRestrictorTypeNone;
 }
 
 inline bool CSpaceRestrictor::actual( ) const
@@ -96,7 +96,7 @@ inline void CSpaceRestrictor::actual(bool value) const
 	m_actuality = value;
 }
 
-inline RestrictionSpace::ERestrictorTypes CSpaceRestrictor::restrictor_type( ) const
+inline Restriction::ERestrictorTypes CSpaceRestrictor::restrictor_type( ) const
 {
-	return RestrictionSpace::ERestrictorTypes(m_space_restrictor_type);
+	return Restriction::ERestrictorTypes(m_space_restrictor_type);
 }

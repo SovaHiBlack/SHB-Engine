@@ -5,7 +5,7 @@
 #include "../../restricted_object.h"
 #include "..\..\CustomZone.h"
 #include "..\..\Level.h"
-#include "../../space_restriction_manager.h"
+#include "../../SpaceRestrictionManager.h"
 
 CAnomalyDetector::CAnomalyDetector(CBaseMonster *monster) : m_object(monster)
 { }
@@ -77,7 +77,7 @@ void CAnomalyDetector::on_contact(CObject *obj)
 	if (!custom_zone) return;
 	
 	// if its NOT A restrictor - skip
-	if (custom_zone->restrictor_type() == RestrictionSpace::eRestrictorTypeNone) return;
+	if (custom_zone->restrictor_type() == Restriction::eRestrictorTypeNone) return;
 
 	if (Level().space_restriction_manager().restriction_presented(
 		m_object->control().path_builder().restrictions().in_restrictions(),custom_zone->cName())) return;

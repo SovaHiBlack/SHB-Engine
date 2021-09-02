@@ -25,7 +25,7 @@
 #include "alife_graph_registry.h"
 #include "alife_object_registry.h"
 #include "game_cl_base.h"
-#include "space_restriction_manager.h"
+#include "SpaceRestrictionManager.h"
 #include "SpaceRestriction.h"
 #include "SpaceRestrictor.h"
 #include "SpaceRestrictionBase.h"

@@ -12,7 +12,7 @@
 #include "script_game_object.h"
 #include "stalker_decision_space.h"
 #include "CustomZone.h"
-#include "space_restriction_manager.h"
+#include "SpaceRestrictionManager.h"
 #include "SpaceRestrictionBridge.h"
 #include "SpaceRestrictionBase.h"
 #include "Inventory.h"

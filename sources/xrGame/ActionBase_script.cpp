@@ -1,10 +1,6 @@
-////////////////////////////////////////////////////////////////////////////
-//	Module 		: action_base_script.cpp
-//	Created 	: 28.01.2004
-//  Modified 	: 10.03.2004
-//	Author		: Dmitriy Iassenev
+//	Module 		: ActionBase_script.cpp
 //	Description : Base action script export
-////////////////////////////////////////////////////////////////////////////
+
 #include "stdafx.h"
 
 #include "ScriptActionWrapper.h"

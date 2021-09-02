@@ -18,8 +18,8 @@ class CStalkerPlanner : public CActionPlannerScript<CStalker> {
 protected:
 	typedef CActionPlannerScript<CStalker>			inherited;
 	typedef CActionScriptBase<CStalker>				CAction;
-	typedef GraphEngineSpace::_solver_value_type		_value_type;
-	typedef GraphEngineSpace::_solver_condition_type	_condition_type;
+	typedef GraphEngine::_solver_value_type		_value_type;
+	typedef GraphEngine::_solver_condition_type	_condition_type;
 	typedef CActionPlannerActionScript<CStalker>		CActionPlannerAction;
 
 private:

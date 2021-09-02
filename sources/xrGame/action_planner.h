@@ -9,7 +9,7 @@
 #pragma once
 
 #include "problem_solver.h"
-#include "action_base.h"
+#include "ActionBase.h"
 #include "property_evaluator.h"
 #include "property_storage.h"
 #include "script_export_space.h"
@@ -27,8 +27,8 @@ template <
 >
 class CActionPlanner : 
 	public CProblemSolver<
-		GraphEngineSpace::CWorldProperty,
-		GraphEngineSpace::CWorldState,
+	GraphEngine::CWorldProperty,
+	GraphEngine::CWorldState,
 		_world_operator,
 		_condition_evaluator,
 		u32,
@@ -39,8 +39,8 @@ class CActionPlanner :
 {
 public:
 	typedef CProblemSolver<
-		GraphEngineSpace::CWorldProperty,
-		GraphEngineSpace::CWorldState,
+		GraphEngine::CWorldProperty,
+		GraphEngine::CWorldState,
 		_world_operator,
 		_condition_evaluator,
 		u32,
@@ -50,8 +50,8 @@ public:
 	>												CProblemSolver;
 	typedef CProblemSolver							inherited;
 	typedef typename inherited::_edge_type			_action_id_type;
-	typedef GraphEngineSpace::CWorldProperty		CWorldProperty;
-	typedef GraphEngineSpace::CWorldState			CWorldState;
+	typedef GraphEngine::CWorldProperty		CWorldProperty;
+	typedef GraphEngine::CWorldState			CWorldState;
 	typedef _world_operator							_world_operator;
 
 protected:

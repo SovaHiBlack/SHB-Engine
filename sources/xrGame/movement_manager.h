@@ -82,8 +82,8 @@ protected:
 	typedef MonsterSpace::SBoneRotation			CBoneRotation;
 	typedef MovementManager::EPathType			EPathType;
 	typedef DetailPathManager::STravelPathPoint	CTravelPathPoint;
-	typedef GraphEngineSpace::CBaseParameters 	CBaseParameters;
-	typedef GraphEngineSpace::CGameVertexParams	CGameVertexParams;
+	typedef GraphEngine::CBaseParameters 	CBaseParameters;
+	typedef GraphEngine::CGameVertexParams	CGameVertexParams;
 
 	typedef CBaseLocationSelector<
 				CGameGraph,

@@ -9,7 +9,7 @@
 #include "stdafx.h"
 
 #include "restricted_object.h"
-#include "space_restriction_manager.h"
+#include "SpaceRestrictionManager.h"
 #include "xrServer_Objects_ALife_Monsters.h"
 #include "Level.h"
 #include "ai_space.h"
@@ -236,7 +236,7 @@ CSharedString CRestrictedObject::base_out_restrictions	() const
 	STOP_PROFILE
 }
 
-inline	void CRestrictedObject::add_object_restriction(ALife::_OBJECT_ID id, const RestrictionSpace::ERestrictorTypes &restrictor_type)
+inline	void CRestrictedObject::add_object_restriction(ALife::_OBJECT_ID id, const Restriction::ERestrictorTypes &restrictor_type)
 {
 	CNetPacket			net_packet;
 	object().u_EventGen	(net_packet,GE_ADD_RESTRICTION,object().ID());
@@ -245,7 +245,7 @@ inline	void CRestrictedObject::add_object_restriction(ALife::_OBJECT_ID id, cons
 	Level().Send		(net_packet,net_flags(TRUE,TRUE));
 }
 
-inline	void CRestrictedObject::remove_object_restriction(ALife::_OBJECT_ID id, const RestrictionSpace::ERestrictorTypes &restrictor_type)
+inline	void CRestrictedObject::remove_object_restriction(ALife::_OBJECT_ID id, const Restriction::ERestrictorTypes &restrictor_type)
 {
 	CNetPacket			net_packet;
 	object().u_EventGen	(net_packet,GE_REMOVE_RESTRICTION,object().ID());
@@ -279,9 +279,9 @@ inline	void CRestrictedObject::construct_restriction_string(char* temp_restricti
 
 template <bool add>
 struct CRestrictionPredicate {
-	RestrictionSpace::ERestrictorTypes m_restrictor_type;
+	Restriction::ERestrictorTypes m_restrictor_type;
 
-    inline	CRestrictionPredicate	(RestrictionSpace::ERestrictorTypes restrictor_type)
+    inline	CRestrictionPredicate	(Restriction::ERestrictorTypes restrictor_type)
 	{
 		m_restrictor_type = restrictor_type;
 	}
@@ -305,8 +305,8 @@ void CRestrictedObject::add_restrictions	(const xr_vector<ALife::_OBJECT_ID> &ou
 	string4096					temp_out_restrictions;
 	string4096					temp_in_restrictions;
 	
-	construct_restriction_string<CRestrictionPredicate<true>,true>(temp_out_restrictions,out_restrictions,this->out_restrictions(),CRestrictionPredicate<true>(RestrictionSpace::eRestrictorTypeOut));
-	construct_restriction_string<CRestrictionPredicate<true>,true>(temp_in_restrictions,in_restrictions,this->in_restrictions(),CRestrictionPredicate<true>(RestrictionSpace::eRestrictorTypeIn));
+	construct_restriction_string<CRestrictionPredicate<true>,true>(temp_out_restrictions,out_restrictions,this->out_restrictions(),CRestrictionPredicate<true>(Restriction::eRestrictorTypeOut));
+	construct_restriction_string<CRestrictionPredicate<true>,true>(temp_in_restrictions,in_restrictions,this->in_restrictions(),CRestrictionPredicate<true>(Restriction::eRestrictorTypeIn));
 
 	Level().space_restriction_manager().add_restrictions	(object().ID(),temp_out_restrictions,temp_in_restrictions);
 
@@ -325,8 +325,8 @@ void CRestrictedObject::remove_restrictions	(const xr_vector<ALife::_OBJECT_ID> 
 	string4096					temp_out_restrictions;
 	string4096					temp_in_restrictions;
 
-	construct_restriction_string<CRestrictionPredicate<false>,false>(temp_out_restrictions,out_restrictions,this->out_restrictions(),CRestrictionPredicate<false>(RestrictionSpace::eRestrictorTypeOut));
-	construct_restriction_string<CRestrictionPredicate<false>,false>(temp_in_restrictions,in_restrictions,this->in_restrictions(),CRestrictionPredicate<false>(RestrictionSpace::eRestrictorTypeIn));
+	construct_restriction_string<CRestrictionPredicate<false>,false>(temp_out_restrictions,out_restrictions,this->out_restrictions(),CRestrictionPredicate<false>(Restriction::eRestrictorTypeOut));
+	construct_restriction_string<CRestrictionPredicate<false>,false>(temp_in_restrictions,in_restrictions,this->in_restrictions(),CRestrictionPredicate<false>(Restriction::eRestrictorTypeIn));
 
 	Level().space_restriction_manager().remove_restrictions	(object().ID(),temp_out_restrictions,temp_in_restrictions);
 	
@@ -363,7 +363,7 @@ void CRestrictedObject::remove_restrictions	(const CSharedString& out_restrictio
 	STOP_PROFILE;
 }
 
-void CRestrictedObject::remove_all_restrictions	(const RestrictionSpace::ERestrictorTypes &restrictor_type)
+void CRestrictedObject::remove_all_restrictions	(const Restriction::ERestrictorTypes &restrictor_type)
 {
 	CNetPacket			net_packet;
 	object().u_EventGen	(net_packet,GE_REMOVE_ALL_RESTRICTIONS,object().ID());
@@ -375,8 +375,8 @@ void CRestrictedObject::remove_all_restrictions	()
 {
 	START_PROFILE("Restricted Object/Remove Restrictions");
 	
-	remove_all_restrictions	(RestrictionSpace::eRestrictorTypeOut);
-	remove_all_restrictions	(RestrictionSpace::eRestrictorTypeIn);
+	remove_all_restrictions	(Restriction::eRestrictorTypeOut);
+	remove_all_restrictions	(Restriction::eRestrictorTypeIn);
 
 	if (Level().space_restriction_manager().in_restrictions(object().ID()).size() || Level().space_restriction_manager().out_restrictions(object().ID()).size())
 		actual			(false);

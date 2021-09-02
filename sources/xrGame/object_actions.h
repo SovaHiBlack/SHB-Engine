@@ -8,7 +8,7 @@
 
 #pragma once
 
-#include "action_base.h"
+#include "ActionBase.h"
 
 class CStalker;
 class CInventoryItem;
@@ -23,8 +23,8 @@ template <typename _item_type>
 class CObjectActionBase : public CActionBase<CStalker> {
 protected:
 	typedef CActionBase<CStalker>					inherited;
-	typedef GraphEngineSpace::_solver_condition_type	_condition_type;
-	typedef GraphEngineSpace::_solver_value_type		_value_type;
+	typedef GraphEngine::_solver_condition_type	_condition_type;
+	typedef GraphEngine::_solver_value_type		_value_type;
 
 protected:
 	_item_type			*m_item;

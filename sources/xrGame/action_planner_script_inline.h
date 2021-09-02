@@ -12,17 +12,17 @@
 #define _CActionPlannerScript	CActionPlannerScript<_object_type>
 
 TEMPLATE_SPECIALIZATION
-inline	_CActionPlannerScript::CActionPlannerScript		()
+inline	_CActionPlannerScript::CActionPlannerScript( )
 {
-	m_object			= 0;
+	m_object = 0;
 }
 
 TEMPLATE_SPECIALIZATION
-void _CActionPlannerScript::setup					(_object_type *object)
+void _CActionPlannerScript::setup(_object_type* object)
 {
-	VERIFY				(object);
-	inherited::setup	(object->lua_game_object());
-	m_object			= object;
+	VERIFY(object);
+	inherited::setup(object->lua_game_object( ));
+	m_object = object;
 }
 
 #undef TEMPLATE_SPECIALIZATION

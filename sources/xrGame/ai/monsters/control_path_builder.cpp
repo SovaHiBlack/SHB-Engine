@@ -276,7 +276,7 @@ u32	 CControlPathBuilder::find_nearest_vertex				(const u32 &level_vertex_id, co
 		level_vertex_id,
 		level_vertex_id,
 		&temp,
-		GraphEngineSpace::CNearestVertexParameters(
+		GraphEngine::CNearestVertexParameters(
 			target_position,
 			range
 		)

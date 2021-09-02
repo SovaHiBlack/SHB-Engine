@@ -32,7 +32,7 @@
 #include "script_binder_object.h"
 #include "action_planner_action.h"
 #include "action_planner.h"
-#include "action_base.h"
+#include "ActionBase.h"
 #include "property_storage.h"
 #include "property_evaluator.h"
 #include "script_world_state.h"

@@ -8,7 +8,7 @@
 #include "PHCommander.h"
 #include "net_queue.h"
 #include "MainMenu.h"
-#include "space_restriction_manager.h"
+#include "SpaceRestrictionManager.h"
 #include "ai_space.h"
 #include "script_engine.h"
 #include "stalker_animation_data_storage.h"

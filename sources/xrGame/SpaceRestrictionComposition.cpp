@@ -6,7 +6,7 @@
 #include "SpaceRestrictionBridge.h"
 #include "SpaceRestrictionComposition.h"
 #include "SpaceRestrictionHolder.h"
-#include "restriction_space.h"
+#include "Restriction_space.h"
 #include "ai_space.h"
 #include "level_graph.h"
 #include "GraphEngine.h"
@@ -189,7 +189,7 @@ void CSpaceRestrictionComposition::test_correctness( )
 			VERIFY3(!(*I)->object( ).m_test_storage.empty( ), "Restrictor has no border", *(*I)->object( ).name( ));
 			nodes.clear( );
 			ai( ).level_graph( ).set_mask(border( ));
-			ai( ).graph_engine( ).search(ai( ).level_graph( ), (*I)->object( ).m_test_storage.back( ), (*I)->object( ).m_test_storage.back( ), &nodes, GraphEngineSpace::CFlooder( ));
+			ai( ).graph_engine( ).search(ai( ).level_graph( ), (*I)->object( ).m_test_storage.back( ), (*I)->object( ).m_test_storage.back( ), &nodes, GraphEngine::CFlooder( ));
 			ai( ).level_graph( ).clear_mask(border( ));
 
 			if (nodes.size( ) == 65535)
@@ -241,7 +241,7 @@ void CSpaceRestrictionComposition::check_restrictor_type( )
 
 	CSpaceRestrictor* restrictor = smart_cast<CSpaceRestrictor*>(object);
 	VERIFY3(restrictor, "you are trying to use object as a restrictor", *m_space_restrictors);
-	VERIFY2(restrictor->restrictor_type( ) == RestrictionSpace::eRestrictorTypeNone, "you are trying to restrict yourself with restrictor with type eRestrictorTypeNone");
-	VERIFY2(restrictor->restrictor_type( ) != RestrictionSpace::eRestrictorTypeNone, "impossible situation: wrong net_Spawn branch used");
+	VERIFY2(restrictor->restrictor_type( ) == Restriction::eRestrictorTypeNone, "you are trying to restrict yourself with restrictor with type eRestrictorTypeNone");
+	VERIFY2(restrictor->restrictor_type( ) != Restriction::eRestrictorTypeNone, "impossible situation: wrong net_Spawn branch used");
 }
 #endif // def DEBUG

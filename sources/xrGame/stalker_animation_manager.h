@@ -21,8 +21,8 @@ public:
 	typedef xr_deque<CStalkerAnimationScript>					SCRIPT_ANIMATIONS;
 	typedef MonsterSpace::EMovementDirection					EMovementDirection;
 	typedef MonsterSpace::EBodyState							EBodyState;
-	typedef GraphEngineSpace::_solver_value_type				_value_type;
-	typedef GraphEngineSpace::_solver_condition_type			_condition_type;
+	typedef GraphEngine::_solver_value_type				_value_type;
+	typedef GraphEngine::_solver_condition_type			_condition_type;
 	typedef CStalkerAnimationPair::BLEND_ID						BLEND_ID;
 	typedef BLEND_ID											ANIMATION_ID;
 
