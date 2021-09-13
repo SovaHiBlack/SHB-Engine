@@ -6,7 +6,7 @@ enum EGameTypes
 	GAME_SINGLE							= 1,
 
 	//identifiers in range [100...254] are registered for script game type
-	GAME_DUMMY = 255	// temporary game type
+	GAME_DUMMY							= 255	// temporary game type
 };
 
 enum EGamePlayerFlags
@@ -29,13 +29,7 @@ enum EGamePhases
 	GAME_PHASE_NONE						= 0,
 	GAME_PHASE_INPROGRESS,
 	GAME_PHASE_PENDING,
-//	GAME_PHASE_TEAM1_SCORES,
-//	GAME_PHASE_TEAM2_SCORES,
-//	GAME_PHASE_TEAM1_ELIMINATED,
-//	GAME_PHASE_TEAM2_ELIMINATED,
-//	GAME_PHASE_TEAMS_IN_A_DRAW,
-//	GAME_PHASE_PLAYER_SCORES,
 
 	GAME_PHASE_SCRIPT_BEGINS_FROM,
-	GAME_PHASE_FORCEDWORD		= u32(-1)
+	GAME_PHASE_FORCEDWORD				= u32(-1)
 };

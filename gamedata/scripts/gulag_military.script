@@ -6,19 +6,19 @@ function load_job_base (sj, gname, type, squad, groups)
 	-----------------------------------------------------------------------
 	-- Нормальное состояние базы
 	-----------------------------------------------------------------------
-	-- Лукаш
+	--' Лукаш
 	t = {section = "logic@mil_freedom_lukash",
 		idle = 0,
 		prior = 20, state = {0, 3},
 		squad = squad, group = groups[0],
 		in_rest = "mil_freedom_wall_restrictor", out_rest = "",
 		position_threshold = 600,
-		predicate = function (info)
-							 return info.profile_name == "mil_Svoboda_leader" and info.story_id == 707
+		predicate = function(info)
+						return info.profile_name == "mil_Svoboda_leader" and info.story_id == 707
 					end
-		}
-	table.insert(sj, t)		
-	-- Повар
+	}
+	table.insert(sj, t)
+	--' Повар
 	t = {section = "logic@mil_freedom_cook",
 		idle = 0,
 		prior = 20, state = {0, 2, 3, 4},
@@ -118,92 +118,86 @@ function load_job_base (sj, gname, type, squad, groups)
 		predicate = function (info)
 							 return info.profile_name == "mil_Svoboda_specnaz"
 					end
-		}
-	table.insert(sj, t)		
-	-- Охранник Лукаша
+	}
+	table.insert(sj, t)
+	--' Охранник Лукаша
 	t = {section = "logic@mil_freedom_bodyguard1",
 		idle = 0,
 		prior = 19, state = {0, 3, 4},
 		squad = squad, group = groups[0],
 		in_rest = "mil_freedom_wall_restrictor", out_rest = "",
 		position_threshold = 600,
-		predicate = function (info)
-							 return info.profile_name == "mil_Svoboda_bodyguard"
+		predicate = function(info)
+						return info.profile_name == "mil_Svoboda_bodyguard"
 					end
-		}
-	table.insert(sj, t)		
-	-- Охранник Лукаша
+	}
+	table.insert(sj, t)
+	--' Охранник Лукаша
 	t = {section = "logic@mil_freedom_bodyguard2",
 		idle = 0,
 		prior = 19, state = {0, 3, 4},
 		squad = squad, group = groups[0],
 		in_rest = "mil_freedom_wall_restrictor", out_rest = "",
 		position_threshold = 600,
-		predicate = function (info)
-							 return info.profile_name == "mil_Svoboda_bodyguard"
+		predicate = function(info)
+						return info.profile_name == "mil_Svoboda_bodyguard"
 					end
-		}
-	table.insert(sj, t)		
-	-- Охранник арсенала
+	}
+	table.insert(sj, t)
+	--' Охранник арсенала
 	t = {section = "logic@mil_freedom_aguard",
 		idle = 0,
 		prior = 15, state = {0, 3, 4},
 		squad = squad, group = groups[0],
 		in_rest = "mil_freedom_wall_restrictor", out_rest = "",
 		position_threshold = 600,
-		predicate = function (info)
-							 return info.profile_name == "mil_Svoboda_specnaz"
+		predicate = function(info)
+						return info.profile_name == "mil_Svoboda_specnaz"
 					end
-		}
-	table.insert(sj, t)		
-	
-	
-	-- Max
+	}
+	table.insert(sj, t)
+	--' Max
 	t = {section = "logic@mil_freedom_max",
 		idle = 0,
 		prior = 20, state = {0, 4},
 		squad = squad, group = groups[0],
 		in_rest = "mil_freedom_wall_restrictor", out_rest = "",
 		position_threshold = 600,
-		predicate = function (info)
-							 return info.profile_name == "mil_Svoboda_master_Max"
+		predicate = function(info)
+						return info.profile_name == "mil_Svoboda_master_Max"
 					end
-		}
-	table.insert(sj, t)		
-	
+	}
+	table.insert(sj, t)
 	t = { section = "logic@mil_freedom_walker7",
 		idle = 0,
 		prior = 19, state = {0, 3, 4},
 		squad = squad, group = groups[0],
 		in_rest = "mil_freedom_wall_restrictor", out_rest = "",
 		position_threshold = 600,
-		predicate = function (info)
+		predicate = function(info)
 						return info.profile_name == "mil_Svoboda_engineer"
 					end
-		}
+	}
 	table.insert(sj, t)
-	------
-	-- мужик у костра 1
+	--' мужик у костра 1
 	t = {section = "logic@mil_freedom_stalker1",
 		idle = 0,
 		prior = 2, state = {0, 3, 4},
 		squad = squad, group = groups[0],
 		position_threshold = 600,
 		in_rest = "mil_freedom_wall_restrictor", out_rest = ""
-		}
-	table.insert(sj, t)		
-
-	-- мужик у костра 2
+	}
+	table.insert(sj, t)
+	--' мужик у костра 2
 	t = {section = "logic@mil_freedom_stalker2",
 		idle = 0,
 		prior = 2, state = {0, 3, 4},
 		squad = squad, group = groups[0],
 		position_threshold = 600,
 		in_rest = "mil_freedom_wall_restrictor", out_rest = ""
-		}
-	table.insert(sj, t)	
-	
-	-- одиночный патрульный на базе
+	}
+	table.insert(sj, t)
+	--' одиночный патрульный на базе
 	t = {section = "logic@mil_freedom_stalker4",
 		idle = 0,
 		prior = 10, state = {0, 3, 4},
@@ -211,36 +205,35 @@ function load_job_base (sj, gname, type, squad, groups)
 		in_rest = "mil_freedom_wall_restrictor", out_rest = "",
 		position_threshold = 600,
 		predicate = function (info)
-							 return info.profile_name == "mil_Svoboda_specnaz"
-					end         
-		}
-	table.insert(sj, t)		
-
-	-- патрульный на базе
+						return info.profile_name == "mil_Svoboda_specnaz"
+					end
+	}
+	table.insert(sj, t)
+	--' патрульный на базе
 	t = {section = "logic@mil_freedom_stalker5",
 		idle = 0,
 		prior = 10, state = {0, 4},
 		squad = squad, group = groups[0],
 		in_rest = "mil_freedom_wall_restrictor", out_rest = "",
 		position_threshold = 600,
-		predicate = function (info)
-							 return info.profile_name == "mil_Svoboda_specnaz"
-					end         
-		}
-	table.insert(sj, t)		
+		predicate = function(info)
+						return info.profile_name == "mil_Svoboda_specnaz"
+					end
+	}
+	table.insert(sj, t)
 
-	--охранник у входа 
+	--' охранник у входа
 	t = {section = "logic@mil_freedom_stalker8",
 		idle = 0,
 		prior = 13, state = {0, 3, 4},
 		squad = squad, group = groups[0],
 		in_rest = "mil_freedom_wall_restrictor", out_rest = "",
 		position_threshold = 600,
-		predicate = function (info)
-							 return info.profile_name == "mil_Svoboda_zoneguard"
-					end         
-		}
-	table.insert(sj, t)		
+		predicate = function(info)
+						return info.profile_name == "mil_Svoboda_zoneguard"
+					end
+	}
+	table.insert(sj, t)
 	-- просто мужик на входе
 	t = {section = "logic@mil_freedom_stalker9",
 		idle = 0,
@@ -248,8 +241,8 @@ function load_job_base (sj, gname, type, squad, groups)
 		squad = squad, group = groups[0],
 		position_threshold = 600,
 		in_rest = "mil_freedom_wall_restrictor", out_rest = ""
-		}
-	table.insert(sj, t)		
+	}
+	table.insert(sj, t)
 	-- просто мужик на входе
 	t = {section = "logic@mil_freedom_stalker10",
 		idle = 0,
@@ -258,9 +251,8 @@ function load_job_base (sj, gname, type, squad, groups)
 		position_threshold = 600,
 		in_rest = "mil_freedom_wall_restrictor", out_rest = ""
 		}
-	table.insert(sj, t)		
+	table.insert(sj, t)
 
-		
 	t = { section = "logic@mil_freedom_walker1",
 		idle = 0,
 		prior = 1, state = {0, 3, 4},

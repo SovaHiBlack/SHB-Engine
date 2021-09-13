@@ -1376,7 +1376,7 @@ gulags.val_watchtower.job = function(sj, gname, type, squad, groups)
 		ltx = ltx.."[logic@" .. idstr .. "]\n" ..
 				   "active = camper@" .. idstr .. "\n" ..
 
-				   "[camper@" .. idstr .. "]\n" ..                            
+				   "[camper@" .. idstr .. "]\n" ..
 				   "path_walk                   = sniper_" .. i .. "_walk\n" ..
 				   "path_look                   = sniper_" .. i .. "_look\n" ..
 				   "def_state_campering         = threat\n" ..

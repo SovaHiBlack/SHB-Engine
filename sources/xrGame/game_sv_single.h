@@ -39,9 +39,9 @@ public:
 	virtual		bool				change_level			(CNetPacket &net_packet, ClientID sender);
 	virtual		void				save_game				(CNetPacket &net_packet, ClientID sender);
 	virtual		bool				load_game				(CNetPacket &net_packet, ClientID sender);
-	virtual		void				reload_game				(CNetPacket &net_packet, ClientID sender);
+	//virtual		void				reload_game				(CNetPacket &net_packet, ClientID sender);
 	virtual		void				switch_distance			(CNetPacket &net_packet, ClientID sender);
-	virtual		BOOL				CanHaveFriendlyFire		()	{return FALSE;}
+	//virtual		BOOL				CanHaveFriendlyFire		()	{return FALSE;}
 	virtual		void				teleport_object			(CNetPacket &packet, U16 id);
 	virtual		void				add_restriction			(CNetPacket &packet, U16 id);
 	virtual		void				remove_restriction		(CNetPacket &packet, U16 id);

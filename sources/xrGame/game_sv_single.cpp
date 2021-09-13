@@ -232,9 +232,9 @@ bool game_sv_Single::load_game					(CNetPacket &net_packet, ClientID sender)
 	return						(alife().load_game(*game_name,true));
 }
 
-void game_sv_Single::reload_game				(CNetPacket &net_packet, ClientID sender)
-{
-}
+//void game_sv_Single::reload_game				(CNetPacket &net_packet, ClientID sender)
+//{
+//}
 
 void game_sv_Single::switch_distance			(CNetPacket &net_packet, ClientID sender)
 {

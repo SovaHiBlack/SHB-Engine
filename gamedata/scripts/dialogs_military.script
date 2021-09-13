@@ -1,26 +1,26 @@
--- Оплата долговцем наших услуг по устранению снайпера
-function mil_dolg_payment (stalker, player)
+--' Оплата долговцем наших услуг по устранению снайпера
+function mil_dolg_payment(stalker, player)
 	if not has_alife_info("military_scull_give_reward_1") then
 		dialogs.relocate_money(stalker, 4000, "in")
 		db.actor:give_info_portion("military_scull_give_reward_1")
 	end
 end
 
-function mil_dolg_payment2 (stalker, player)
+function mil_dolg_payment2(stalker, player)
 	if not has_alife_info("military_scull_give_reward_2") then
 		dialogs.relocate_money(stalker, 8000, "in")
 		db.actor:give_info_portion("military_scull_give_reward_2")
 	end
 end
 
-function lukash_payment (stalker, player)
+function lukash_payment(stalker, player)
 	dialogs.relocate_money (stalker, 7000, "in")
 end
 
--- Отмечаем провал задачи
-function mil_dolg_sniper_failed (stalker, player)
-	level_tasks.set_task_state (task.fail, "mil_kill_sniper", 0)
-	level_tasks.set_task_state (task.fail, "mil_kill_sniper", 1)
+--' Отмечаем провал задачи
+function mil_dolg_sniper_failed(stalker, player)
+	level_tasks.set_task_state(task.fail, "mil_kill_sniper", 0)
+	level_tasks.set_task_state(task.fail, "mil_kill_sniper", 1)
 end
 
 -- отмечаем выполнение задачи

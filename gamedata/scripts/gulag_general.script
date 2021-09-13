@@ -85,7 +85,6 @@ function load_job(sj, gname, type, squad, groups, st)
 			it = it + 1
 		end
 
-
 		-- Проверяем наличие путей брожения внутри лагеря.
 		it = 1
 		while level.patrol_path_exists(gname.."_walker_"..it.."_walk") do
@@ -291,7 +290,6 @@ function load_job(sj, gname, type, squad, groups, st)
 			ltx = ltx..job_ltx
 			it = it + 1
 		end
-
 	end
 
 	-- УНИВЕРСАЛЬНОЕ ЛОГОВО МОНСТРОВ
@@ -332,8 +330,6 @@ function load_job(sj, gname, type, squad, groups, st)
 
 		-- Необходим fake_death с патрульным путем
 
-
-
 		-- Необходима атака в лице mob_home с agressive
 		-- Проверяем возможность вырулить в рейд (наличие путей, алгоритм переключения)
 		it = 1
@@ -370,8 +366,6 @@ function load_job(sj, gname, type, squad, groups, st)
 			ltx = ltx..job_ltx
 			it = it + 1
 		end
-
-
 	end
 end
 
@@ -431,7 +425,6 @@ function load_states(gname, type)
 	end
 end
 
-
 function checkStalker(npc_community, type, npc_rank, se_obj, preset_name)
 	return type == "general_lager"
 end
@@ -440,16 +433,17 @@ function checkMonster(npc_community, type, npc_rank, se_obj, preset_name)
 	return type == "general_lair"
 end
 
-
---------------------------------------------------------------------------
--- Dynamic ltx
---------------------------------------------------------------------------
+--'----------------------------------------------------------------------------
+--' Dynamic ltx
+--'----------------------------------------------------------------------------
 function load_ltx(gname, type)
 	if type == "general_lager" then
 		return ltx
 	end
+
 	if type == "general_lair" then
 		return ltx
 	end
+
 	return nil
 end

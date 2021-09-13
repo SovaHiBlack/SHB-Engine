@@ -73,7 +73,7 @@ IClient* CServer::new_client(SClientConnectData* cl_data)
 	strcpy_s(new_name, cl_data->name);
 	CL->name._set(new_name);
 
-	if (/*!HasProtected( ) &&*/ game->NewPlayerName_Exists(CL, new_name))
+	if (game->NewPlayerName_Exists(CL, new_name))
 	{
 		game->NewPlayerName_Generate(CL, new_name);
 		game->NewPlayerName_Replace(CL, new_name);

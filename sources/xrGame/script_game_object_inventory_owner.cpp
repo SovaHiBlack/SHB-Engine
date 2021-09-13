@@ -567,10 +567,10 @@ ETaskState CScriptGameObject::GetGameTaskState	(const char* task_id, int objecti
 	return t->m_Objectives[objective_num].TaskState();
 }
 
-void CScriptGameObject::SetGameTaskState	(ETaskState state, const char* task_id, int objective_num)
+void CScriptGameObject::SetGameTaskState(ETaskState state, const char* task_id, int objective_num)
 {
 	CSharedString shared_name = task_id;
-	Actor()->GameTaskManager().SetTaskState(shared_name, (U16)objective_num, state);
+	Actor( )->GameTaskManager( ).SetTaskState(shared_name, (U16) objective_num, state);
 }
 
 //////////////////////////////////////////////////////////////////////////
