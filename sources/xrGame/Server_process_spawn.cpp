@@ -25,7 +25,7 @@ CSE_Abstract* CServer::Process_spawn(CNetPacket& P, ClientID sender, BOOL bSpawn
 		{
 //			Msg("- SERVER: Entity [%s] incompatible with current game type.", *E->s_name);
 			F_entity_Destroy(E);
-			return			NULL;
+			return nullptr;
 		}
 
 //		E->m_bALifeControl = false;
@@ -33,16 +33,9 @@ CSE_Abstract* CServer::Process_spawn(CNetPacket& P, ClientID sender, BOOL bSpawn
 	else
 	{
 		VERIFY(E->m_bALifeControl);
-//		E->owner			= CL;
-//		if (CL != NULL)
-//		{
-//			int x=0;
-//			x=x;
-//		};
-//		E->m_bALifeControl = true;
 	}
 
-	CSE_Abstract* e_parent = 0;
+	CSE_Abstract* e_parent = nullptr;
 	if (E->ID_Parent != 0xffff)
 	{
 		e_parent = ID_to_entity(E->ID_Parent);
@@ -51,7 +44,7 @@ CSE_Abstract* CServer::Process_spawn(CNetPacket& P, ClientID sender, BOOL bSpawn
 			R_ASSERT(!tpExistedEntity);
 //			VERIFY3(smart_cast<CSE_ALifeItemBolt*>(E) || smart_cast<CSE_ALifeItemGrenade*>(E),*E->s_name,E->name_replace());
 			F_entity_Destroy(E);
-			return			NULL;
+			return nullptr;
 		}
 	}
 
@@ -65,11 +58,12 @@ CSE_Abstract* CServer::Process_spawn(CNetPacket& P, ClientID sender, BOOL bSpawn
 	if (E->RespawnTime && (0xffff == E->ID_Phantom))
 	{
 		// Create phantom
-		CSE_Abstract* Phantom = entity_Create(*E->s_name); R_ASSERT(Phantom);
+		CSE_Abstract* Phantom = entity_Create(*E->s_name);
+		R_ASSERT(Phantom);
 		Phantom->Spawn_Read(P);
 		Phantom->ID = PerformIDgen(0xffff);
 		Phantom->ID_Phantom = Phantom->ID;						// Self-linked to avoid phantom-breeding
-		Phantom->owner = NULL;
+		Phantom->owner = nullptr;
 		entities.insert(mk_pair(Phantom->ID, Phantom));
 
 		Phantom->s_flags.set(M_SPAWN_OBJECT_PHANTOM, TRUE);

@@ -7,16 +7,16 @@
 #include "script_export_space.h"
 #include "..\ENGINE\ClientID.h"
 
-enum ERoundEnd_Result
-{
-	eRoundEnd_Finish		= u32(0),
-	eRoundEnd_GameRestarted,
-	eRoundEnd_GameRestartedFast,
-	eRoundEnd_TimeLimit,
-	eRoundEnd_FragLimit,
-	eRoundEnd_ArtrefactLimit,
-	eRoundEnd_Force			= u32(-1)
-};
+//enum ERoundEnd_Result
+//{
+//	eRoundEnd_Finish		= u32(0),
+//	eRoundEnd_GameRestarted,
+//	eRoundEnd_GameRestartedFast,
+//	eRoundEnd_TimeLimit,
+//	eRoundEnd_FragLimit,
+//	eRoundEnd_ArtrefactLimit,
+//	eRoundEnd_Force			= u32(-1)
+//};
 
 class CSE_Abstract;
 class CServer;
@@ -67,7 +67,7 @@ public:
 	using RPRef_it = RPRef::iterator;
 	RPRef							rpointsBlocked;
 
-	ERoundEnd_Result				round_end_reason;
+	//ERoundEnd_Result				round_end_reason;
 	
 	virtual		void				SaveMapList				();
 	//virtual		bool				HasMapRotation			() {return m_bMapRotation; };

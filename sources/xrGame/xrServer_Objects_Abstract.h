@@ -45,7 +45,7 @@ public:
 	const char* get_visual( ) const
 	{
 		return *visual_name;
-	};
+	}
 	virtual void					FillProps(const char* pref, PropItemVec& items);
 
 	virtual CSE_Visual* __stdcall	visual( ) = 0;
@@ -68,7 +68,7 @@ public:
 	const char* get_motion( ) const
 	{
 		return *motion_name;
-	};
+	}
 
 	virtual void					FillProps(const char* pref, PropItemVec& items);
 
@@ -79,7 +79,7 @@ add_to_type_list(CSE_Motion)
 
 struct ISE_AbstractLEOwner
 {
-	virtual void		__stdcall	get_bone_xform(const char* name, Fmatrix& xform) = 0;
+	virtual void __stdcall	get_bone_xform(const char* name, Fmatrix& xform) = 0;
 };
 
 struct ISE_Abstract
@@ -90,7 +90,7 @@ public:
 		flUpdateProperties = u32(1 << 0),
 		flVisualChange = u32(1 << 1),
 		flVisualAnimationChange = u32(1 << 2),
-		flMotionChange = u32(1 << 3),
+		flMotionChange = u32(1 << 3)
 	};
 	Flags32							m_editor_flags;
 	inline	void						set_editor_flag(u32 mask)

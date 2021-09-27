@@ -687,6 +687,7 @@ void CActor::SwitchOutBorder(bool new_border_state)
 		//.		Msg("enter level border");
 		callback(GameObject::eEnterLevelBorder)(lua_game_object( ));
 	}
+
 	m_bOutBorder = new_border_state;
 }
 
@@ -701,7 +702,7 @@ void CActor::g_Physics(Fvector3& _accel, float jump, float dt)
 		hit_slowmo = 0.0f;
 	}
 
-	accel.mul(1.f - hit_slowmo);
+	accel.mul(1.0f - hit_slowmo);
 
 	if (g_Alive( ))
 	{
@@ -1419,7 +1420,7 @@ bool CActor::use_bolts( ) const
 	return CInventoryOwner::use_bolts( );
 }
 
-int		g_iCorpseRemove = 1;
+int g_iCorpseRemove = 1;
 
 bool CActor::NeedToDestroyObject( ) const
 {
@@ -1441,7 +1442,7 @@ bool CActor::NeedToDestroyObject( ) const
 	return (TimePassedAfterDeath( ) > m_dwBodyRemoveTime && m_bAllowDeathRemove);
 }
 
-ALife::_TIME_ID	 CActor::TimePassedAfterDeath( ) const
+ALife::_TIME_ID CActor::TimePassedAfterDeath( ) const
 {
 	if (!g_Alive( ))
 	{

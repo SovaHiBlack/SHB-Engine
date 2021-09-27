@@ -698,7 +698,7 @@ end
 function check_enemy (gulag)
 	for k,v in pairs(gulag.Object) do
 		if v ~= true then
-		   if v:best_enemy () ~= nil and v:story_id () ~= 710 and is_object_monster (v:best_enemy ()) == false then
+		   if v:best_enemy () ~= nil and v:story_id () ~= 710 and is_object_monster (v:best_enemy()) == false then
 			  return true
 		   end
 		end

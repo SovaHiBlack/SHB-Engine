@@ -5,15 +5,15 @@
 #pragma warning(disable:4200)
 struct CORE_API SStringValue
 {
-	unsigned int						dwReference;
-	unsigned int						dwLength;
-	unsigned int						dwCRC;
-	char								value[ ];
+	unsigned int								dwReference;
+	unsigned int								dwLength;
+	unsigned int								dwCRC;
+	char										value[ ];
 };
 
 struct CORE_API SStringValueCompare
 {	// less
-	inline bool		operator ( )		(const SStringValue* A, const SStringValue* B) const
+	inline bool				operator( )			(const SStringValue* A, const SStringValue* B) const
 	{
 		return A->dwCRC < B->dwCRC;
 	}
@@ -23,28 +23,28 @@ struct CORE_API SStringValueCompare
 class CORE_API CStringContainer
 {
 private:
-	using cdb = xr_multiset<SStringValue*, SStringValueCompare>;
-	cdb									container;
-	xrCriticalSection					cs;
+	using cdb									= xr_multiset<SStringValue*, SStringValueCompare>;
+	cdb											container;
+	xrCriticalSection							cs;
 
 public:
-	SStringValue* dock(const char* value);
-	void			clean( );
-	void			dump( );
-	void			verify( );
-	unsigned int	stat_economy( );
-	~CStringContainer( );
+	SStringValue*			dock				(const char* value);
+	void					clean				( );
+	void					dump				( );
+	void					verify				( );
+	unsigned int			stat_economy		( );
+							~CStringContainer	( );
 };
 CORE_API extern CStringContainer* g_pStringContainer;
 
 class CSharedString				// shared_str
 {
 private:
-	SStringValue* p_;
+	SStringValue*							p_;
 
 protected:
 	// ref-counting
-	void				_dec( )
+	void					_dec			( )
 	{
 		if (0 == p_)
 		{
@@ -59,7 +59,7 @@ protected:
 	}
 
 public:
-	void				_set(const char* rhs)
+	void					_set			(const char* rhs)
 	{
 		SStringValue* v = g_pStringContainer->dock(rhs);
 		if (0 != v)
@@ -71,7 +71,7 @@ public:
 		p_ = v;
 	}
 
-	void				_set(const CSharedString& rhs)
+	void					_set			(const CSharedString& rhs)
 	{
 		SStringValue* v = rhs.p_;
 		if (0 != v)
@@ -83,69 +83,69 @@ public:
 		p_ = v;
 	}
 
-	const SStringValue* _get( ) const
+	const SStringValue*		_get			( ) const
 	{
 		return p_;
 	}
 
 	// construction
-	CSharedString( )
+							CSharedString	( )
 	{
 		p_ = 0;
 	}
 
-	CSharedString(const char* rhs)
-	{
-		p_ = 0;
-		_set(rhs);
-	}
-
-	CSharedString(const CSharedString& rhs)
+							CSharedString	(const char* rhs)
 	{
 		p_ = 0;
 		_set(rhs);
 	}
 
-	~CSharedString( )
+							CSharedString	(const CSharedString& rhs)
+	{
+		p_ = 0;
+		_set(rhs);
+	}
+
+							~CSharedString	( )
 	{
 		_dec( );
 	}
 
 	// assignment & accessors
-	CSharedString& operator=	(const char* rhs)
+	CSharedString&			operator=		(const char* rhs)
 	{
 		_set(rhs);
 		return (CSharedString&) *this;
 	}
 
-	CSharedString& operator=	(const CSharedString& rhs)
+	CSharedString&			operator=		(const CSharedString& rhs)
 	{
 		_set(rhs);
 		return (CSharedString&) *this;
 	}
 
-	const char* operator*	( ) const
+	const char*				operator*		( ) const
 	{
 		return p_ ? p_->value : 0;
 	}
 
-	bool				operator!	( ) const
+	bool					operator!		( ) const
 	{
 		return p_ == 0;
 	}
 
-	char				operator[ ]	(size_t id)
+	char					operator[ ]		(size_t id)
 	{
 		return p_->value[id];
 	}
 
-	const char*				c_str( ) const
+	const char*				c_str			( ) const
 	{
 		return p_ ? p_->value : 0;
 	}
 
 	// misc func
-	unsigned int			size( ) const
+	unsigned int			size			( ) const
 	{
 		if (0 == p_)
 		{
@@ -157,19 +157,19 @@ public:
 		}
 	}
 
-	void					swap(CSharedString& rhs)
+	void					swap			(CSharedString& rhs)
 	{
 		SStringValue* tmp = p_;
 		p_ = rhs.p_;
 		rhs.p_ = tmp;
 	}
 
-	bool					equal(const CSharedString& rhs) const
+	bool					equal			(const CSharedString& rhs) const
 	{
 		return (p_ == rhs.p_);
 	}
 
-	CSharedString& __cdecl	sprintf(const char* format, ...)
+	CSharedString& __cdecl	sprintf			(const char* format, ...)
 	{
 		char buf[4096];
 		va_list p;
@@ -194,48 +194,48 @@ public:
 // ptr != const res_ptr
 // res_ptr < res_ptr
 // res_ptr > res_ptr
-inline bool				operator==		(const CSharedString& a, const CSharedString& b)
+inline bool					operator==		(const CSharedString& a, const CSharedString& b)
 {
 	return a._get( ) == b._get( );
 }
 
-inline bool				operator!=		(const CSharedString& a, const CSharedString& b)
+inline bool					operator!=		(const CSharedString& a, const CSharedString& b)
 {
 	return a._get( ) != b._get( );
 }
 
-inline bool				operator<		(const CSharedString& a, const CSharedString& b)
+inline bool					operator<		(const CSharedString& a, const CSharedString& b)
 {
 	return a._get( ) < b._get( );
 }
 
-inline bool				operator>		(const CSharedString& a, const CSharedString& b)
+inline bool					operator>		(const CSharedString& a, const CSharedString& b)
 {
 	return a._get( ) > b._get( );
 }
 
 // externally visible standart functionality
-inline void				swap(CSharedString& lhs, CSharedString& rhs)
+inline void					swap			(CSharedString& lhs, CSharedString& rhs)
 {
 	lhs.swap(rhs);
 }
 
-inline unsigned int		xr_strlen(CSharedString& a)
+inline unsigned int			xr_strlen		(CSharedString& a)
 {
 	return a.size( );
 }
 
-inline int				xr_strcmp(const CSharedString& a, const char* b)
+inline int					xr_strcmp		(const CSharedString& a, const char* b)
 {
 	return xr_strcmp(*a, b);
 }
 
-inline int				xr_strcmp(const char* a, const CSharedString& b)
+inline int					xr_strcmp		(const char* a, const CSharedString& b)
 {
 	return xr_strcmp(a, *b);
 }
 
-inline int				xr_strcmp(const CSharedString& a, const CSharedString& b)
+inline int					xr_strcmp		(const CSharedString& a, const CSharedString& b)
 {
 	if (a.equal(b))
 	{
@@ -247,7 +247,7 @@ inline int				xr_strcmp(const CSharedString& a, const CSharedString& b)
 	}
 }
 
-inline void				xr_strlwr(xr_string& src)
+inline void					xr_strlwr		(xr_string& src)
 {
 	for (xr_string::iterator it = src.begin( ); it != src.end( ); it++)
 	{
@@ -255,7 +255,7 @@ inline void				xr_strlwr(xr_string& src)
 	}
 }
 
-inline void				xr_strlwr(CSharedString& src)
+inline void					xr_strlwr		(CSharedString& src)
 {
 	if (*src)
 	{

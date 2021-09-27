@@ -12,12 +12,12 @@ using namespace luabind;
 
 const char* get_section_name(const CSE_Abstract* abstract)
 {
-	return	(abstract->name( ));
+	return abstract->name( );
 }
 
 const char* get_name(const CSE_Abstract* abstract)
 {
-	return	(abstract->name_replace( ));
+	return abstract->name_replace( );
 }
 
 CScriptIniFile* get_spawn_ini(CSE_Abstract* abstract)

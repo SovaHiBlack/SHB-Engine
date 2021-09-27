@@ -12,7 +12,7 @@ end
 function danger_territory:update(delta)
 	if xr_logic.try_switch_to_another_section(self.object, self.st, db.actor) then
 		return
-	end	
+	end
 end
 function danger_territory:deactivate(delta)
 	sr_danger.territory[self.object:name()] = nil

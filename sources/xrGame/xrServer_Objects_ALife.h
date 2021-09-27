@@ -33,7 +33,7 @@ virtual CSE_ALifeSchedulable* cast_schedulable( )
 }
 virtual CSE_Abstract* cast_abstract( )
 {
-	return 0;
+	return nullptr;
 }
 // end of the virtual inheritance dependant code
 virtual bool					need_update(CSE_ALifeDynamicObject* object);
@@ -49,18 +49,18 @@ virtual bool					natural_detector( ) const
 {
 	return true;
 }
-virtual	CSE_ALifeItemWeapon* tpfGetBestWeapon(ALife::EHitType& tHitType, float& fHitPower) = 0;
+virtual CSE_ALifeItemWeapon* tpfGetBestWeapon(ALife::EHitType& tHitType, float& fHitPower) = 0;
 virtual bool					bfPerformAttack( )
 {
-	return(true);
+	return true;
 }
-virtual	void					vfUpdateWeaponAmmo( )
+virtual void					vfUpdateWeaponAmmo( )
 { }
-virtual	void					vfProcessItems( )
+virtual void					vfProcessItems( )
 { }
-virtual	void					vfAttachItems(ALife::ETakeType		tTakeType = ALife::eTakeTypeAll)
+virtual void					vfAttachItems(ALife::ETakeType		tTakeType = ALife::eTakeTypeAll)
 { }
-virtual	ALife::EMeetActionType	tfGetActionType(CSE_ALifeSchedulable* tpALifeSchedulable, int			iGroupIndex, bool bMutualDetection) = 0;
+virtual ALife::EMeetActionType	tfGetActionType(CSE_ALifeSchedulable* tpALifeSchedulable, int			iGroupIndex, bool bMutualDetection) = 0;
 virtual bool					bfActive( ) = 0;
 virtual CSE_ALifeDynamicObject* tpfGetBestDetector( ) = 0;
 };
@@ -159,7 +159,7 @@ public:
 	}
 	virtual CSE_Abstract* cast_abstract( )
 	{
-		return 0;
+		return nullptr;
 	}
 	virtual bool					synchronize_location( );
 	virtual void					try_switch_online( );
@@ -211,17 +211,17 @@ public:
 		{
 			inherited1::init( );
 			inherited2::init( );
-			return						(base( ));
+			return base( );
 		}
 
 		virtual CSE_Abstract* base( )
 		{
-			return						(inherited1::base( ));
+			return inherited1::base( );
 		}
 
 		virtual const CSE_Abstract* base( ) const
 		{
-			return						(inherited1::base( ));
+			return inherited1::base( );
 		}
 
 		virtual void		FillProps(const char* pref, PropItemVec& items)
@@ -232,42 +232,42 @@ public:
 
 		virtual CSE_Abstract* cast_abstract( )
 		{
-			return						(this);
+			return this;
 		}
 
 		virtual CSE_ALifeGroupAbstract* cast_group_abstract( )
 		{
-			return						(this);
+			return this;
 		}
 
-		virtual	void					switch_online( )
+		virtual void					switch_online( )
 		{
 			inherited2::switch_online( );
 		}
 
-		virtual	void					switch_offline( )
+		virtual void					switch_offline( )
 		{
 			inherited2::switch_offline( );
 		}
 
-		virtual	bool					synchronize_location( )
+		virtual bool					synchronize_location( )
 		{
-			return						(inherited2::synchronize_location( ));
+			return inherited2::synchronize_location( );
 		}
 
-		virtual	void					try_switch_online( )
+		virtual void					try_switch_online( )
 		{
 			inherited2::try_switch_online( );
 		}
 
-		virtual	void					try_switch_offline( )
+		virtual void					try_switch_offline( )
 		{
 			inherited2::try_switch_offline( );
 		}
 
-		virtual	bool					redundant( ) const
+		virtual bool					redundant( ) const
 		{
-			return							(inherited2::redundant( ));
+			return inherited2::redundant( );
 		}
 	};
 
@@ -282,16 +282,16 @@ public:
 	virtual void					on_before_register( );
 	virtual void					on_register( );
 	virtual void					on_unregister( );
-	virtual	bool					synchronize_location( );
-	virtual	void					try_switch_online( );
-	virtual	void					try_switch_offline( );
-	virtual	void					switch_online( );
-	virtual	void					switch_offline( );
-	virtual	void					add_online(const bool& update_registries);
-	virtual	void					add_offline(const xr_vector<ALife::_OBJECT_ID>& saved_children, const bool& update_registries);
-	virtual	bool					redundant( ) const;
+	virtual bool					synchronize_location( );
+	virtual void					try_switch_online( );
+	virtual void					try_switch_offline( );
+	virtual void					switch_online( );
+	virtual void					switch_offline( );
+	virtual void					add_online(const bool& update_registries);
+	virtual void					add_offline(const xr_vector<ALife::_OBJECT_ID>& saved_children, const bool& update_registries);
+	virtual bool					redundant( ) const;
 	void					attach(CSE_ALifeInventoryItem* tpALifeInventoryItem, bool		bALifeRequest, bool bAddChildren = true);
-	void					detach(CSE_ALifeInventoryItem* tpALifeInventoryItem, ALife::OBJECT_IT* I = 0, bool bALifeRequest = true, bool bRemoveChildren = true);
+	void					detach(CSE_ALifeInventoryItem* tpALifeInventoryItem, ALife::OBJECT_IT* I = nullptr, bool bALifeRequest = true, bool bRemoveChildren = true);
 
 	virtual CSE_ALifeDynamicObject* cast_alife_dynamic_object( )
 	{
@@ -388,15 +388,15 @@ public:
 	}
 	virtual float					suitable(CSE_ALifeMonsterAbstract* object) const
 	{
-		return 0.f;
+		return 0.0f;
 	}
 	virtual void					register_npc(CSE_ALifeMonsterAbstract* object)
 	{ }
 	virtual void					unregister_npc(CSE_ALifeMonsterAbstract* object)
 	{ }
-	virtual	CALifeSmartTerrainTask* task(CSE_ALifeMonsterAbstract* object)
+	virtual CALifeSmartTerrainTask* task(CSE_ALifeMonsterAbstract* object)
 	{
-		return 0;
+		return nullptr;
 	}
 
 	SERVER_ENTITY_DECLARE_END
@@ -467,8 +467,8 @@ public:
 	virtual	void					load(CNetPacket& tNetPacket);
 	virtual bool					used_ai_locations( ) const;
 	virtual bool					match_configuration( ) const;
-	virtual bool		__stdcall	validate( );
-	virtual void 		__stdcall	on_render(CDUInterface* du, ISE_AbstractLEOwner* owner, bool bSelected, const Fmatrix& parent, int priority, bool strictB2F);
+	virtual bool __stdcall	validate( );
+	virtual void __stdcall	on_render(CDUInterface* du, ISE_AbstractLEOwner* owner, bool bSelected, const Fmatrix& parent, int priority, bool strictB2F);
 	virtual CSE_Abstract* cast_abstract( )
 	{
 		return this;

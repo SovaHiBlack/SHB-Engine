@@ -23,7 +23,7 @@ CALifeMonsterBrain* monster_brain(CSE_ALifeMonsterAbstract* monster)
 CALifeHumanBrain* human_brain(CSE_ALifeHumanAbstract* human)
 {
 	THROW(human);
-	return	(&human->brain( ));
+	return &human->brain( );
 }
 
 void clear_smart_terrain(CSE_ALifeMonsterAbstract* monster)
@@ -47,7 +47,7 @@ void smart_terrain_task_deactivate(CSE_ALifeMonsterAbstract* monster)
 ALife::_OBJECT_ID smart_terrain_id(CSE_ALifeMonsterAbstract* monster)
 {
 	THROW(monster);
-	return						(monster->m_smart_terrain_id);
+	return monster->m_smart_terrain_id;
 }
 
 #pragma optimize("s",on)

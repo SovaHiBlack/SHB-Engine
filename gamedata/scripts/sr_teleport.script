@@ -34,7 +34,7 @@ function action_teleport:update(delta)
 			-- Производим телепортацию
 			local temp = {}
 			local max_rnd = 0
-			for k,v in pairs(self.st.points) do		
+			for k,v in pairs(self.st.points) do
 				-- Определяются допустимые состояния для лагеря.
 				temp[k] = v
 				max_rnd = max_rnd + v.prob

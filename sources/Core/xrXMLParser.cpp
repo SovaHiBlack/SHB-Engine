@@ -17,7 +17,7 @@ void CXml::ClearInternal( )
 
 void ParseFile(const char* path, CMemoryWriter& W, IReader* F, CXml* xml)
 {
-	string4096 str;
+	char str[4096];
 
 	while (!F->eof( ))
 	{
@@ -25,7 +25,7 @@ void ParseFile(const char* path, CMemoryWriter& W, IReader* F, CXml* xml)
 
 		if (str[0] && (str[0] == '#') && strstr(str, "#include"))
 		{
-			string256 inc_name;
+			char inc_name[256];
 			if (_GetItem(str, 1, inc_name, '"'))
 			{
 				IReader* I = nullptr;
@@ -44,7 +44,7 @@ void ParseFile(const char* path, CMemoryWriter& W, IReader* F, CXml* xml)
 
 				if (!I)
 				{
-					string1024 str;
+					char str[1024];
 					sprintf(str, "XML file[%s] parsing failed. Can't find include file:[%s]", path, inc_name);
 					R_ASSERT2(false, str);
 				}
@@ -89,7 +89,7 @@ bool CXml::Init(const char* path, const char* xml_filename)
 	m_Doc.Parse((const char*) W.pointer( ));
 	if (m_Doc.Error( ))
 	{
-		string1024 str;
+		char str[1024];
 		sprintf(str, "XML file:%s value:%s errDescr:%s", m_xml_file_name, m_Doc.Value( ), m_Doc.ErrorDesc( ));
 		R_ASSERT2(false, str);
 	}
@@ -170,14 +170,14 @@ const char* CXml::Read(const char* path, int index, const char* default_str_val)
 {
 	XML_NODE* node = NavigateToNode(path, index);
 	const char* result = Read(node, default_str_val);
-	return					result;
+	return result;
 }
 
 const char* CXml::Read(XML_NODE* start_node, const char* path, int index, const char* default_str_val)
 {
 	XML_NODE* node = NavigateToNode(start_node, path, index);
 	const char* result = Read(node, default_str_val);
-	return					result;
+	return result;
 }
 
 const char* CXml::Read(XML_NODE* node, const char* default_str_val)
@@ -209,9 +209,10 @@ const char* CXml::Read(XML_NODE* node, const char* default_str_val)
 int CXml::ReadInt(XML_NODE* node, int default_int_val)
 {
 	const char* result_str = Read(node, NULL);
-
 	if (result_str == NULL)
-		return				default_int_val;
+	{
+		return default_int_val;
+	}
 
 	return atoi(result_str);
 }
@@ -220,7 +221,9 @@ int CXml::ReadInt(const char* path, int index, int default_int_val)
 {
 	const char* result_str = Read(path, index, NULL);
 	if (result_str == NULL)
-		return				default_int_val;
+	{
+		return default_int_val;
+	}
 
 	return atoi(result_str);
 }
@@ -229,72 +232,71 @@ int CXml::ReadInt(XML_NODE* start_node, const char* path, int index, int default
 {
 	const char* result_str = Read(start_node, path, index, NULL);
 	if (result_str == NULL)
-		return				default_int_val;
+	{
+		return default_int_val;
+	}
 
 	return atoi(result_str);
 }
 
-F32 CXml::ReadFlt(const char* path, int index, F32 default_flt_val)
+float CXml::ReadFlt(const char* path, int index, float default_flt_val)
 {
 	const char* result_str = Read(path, index, NULL);
 	if (result_str == NULL)
 	{
-		return				default_flt_val;
+		return default_flt_val;
 	}
 
-	return (F32) atof(result_str);
+	return (float) atof(result_str);
 }
 
-F32 CXml::ReadFlt(XML_NODE* start_node, const char* path, int index, F32 default_flt_val)
+float CXml::ReadFlt(XML_NODE* start_node, const char* path, int index, float default_flt_val)
 {
 	const char* result_str = Read(start_node, path, index, NULL);
 	if (result_str == NULL)
 	{
-		return				default_flt_val;
+		return default_flt_val;
 	}
 
-	return (F32) atof(result_str);
+	return (float) atof(result_str);
 }
 
-F32 CXml::ReadFlt(XML_NODE* node, F32 default_flt_val)
+float CXml::ReadFlt(XML_NODE* node, float default_flt_val)
 {
 	const char* result_str = Read(node, NULL);
-
 	if (result_str == NULL)
 	{
-		return				default_flt_val;
+		return default_flt_val;
 	}
 
-	return (F32) atof(result_str);
+	return (float) atof(result_str);
 }
 
 const char* CXml::ReadAttrib(XML_NODE* start_node, const char* path, int index, const char* attrib, const char* default_str_val)
 {
 	XML_NODE* node = NavigateToNode(start_node, path, index);
 	const char* result = ReadAttrib(node, attrib, default_str_val);
-
-	return					result;
+	return result;
 }
 
-const char* CXml::ReadAttrib(const char* path, int index,
-	const char* attrib, const char* default_str_val)
+const char* CXml::ReadAttrib(const char* path, int index, const char* attrib, const char* default_str_val)
 {
 	XML_NODE* node = NavigateToNode(path, index);
 	const char* result = ReadAttrib(node, attrib, default_str_val);
-	return					result;
+	return result;
 }
 
 const char* CXml::ReadAttrib(XML_NODE* node, const char* attrib, const char* default_str_val)
 {
 	if (node == NULL)
+	{
 		return default_str_val;
+	}
 	else
 	{
-/*
 		//обязательно делаем ref_str, а то
 		//не сможем запомнить строку и return вернет левый указатель
-		CSharedString result_str;
-*/
+		//CSharedString result_str;
 		const char* result_str = NULL;
 		// Кастаем ниже по иерархии
 
@@ -304,9 +306,13 @@ const char* CXml::ReadAttrib(XML_NODE* node, const char* attrib, const char* def
 		{
 			result_str = el->Attribute(attrib);
 			if (result_str)
+			{
 				return result_str;
+			}
 			else
+			{
 				return default_str_val;
+			}
 		}
 		else
 		{
@@ -318,9 +324,10 @@ const char* CXml::ReadAttrib(XML_NODE* node, const char* attrib, const char* def
 int CXml::ReadAttribInt(XML_NODE* node, const char* attrib, int default_int_val)
 {
 	const char* result_str = ReadAttrib(node, attrib, NULL);
-
 	if (result_str == NULL)
-		return				default_int_val;
+	{
+		return default_int_val;
+	}
 
 	return atoi(result_str);
 }
@@ -328,9 +335,10 @@ int CXml::ReadAttribInt(XML_NODE* node, const char* attrib, int default_int_val)
 int CXml::ReadAttribInt(const char* path, int index, const char* attrib, int default_int_val)
 {
 	const char* result_str = ReadAttrib(path, index, attrib, NULL);
-
 	if (result_str == NULL)
-		return				default_int_val;
+	{
+		return default_int_val;
+	}
 
 	return atoi(result_str);
 }
@@ -339,52 +347,50 @@ int CXml::ReadAttribInt(const char* path, int index, const char* attrib, int def
 int CXml::ReadAttribInt(XML_NODE* start_node, const char* path, int index, const char* attrib, int default_int_val)
 {
 	const char* result_str = ReadAttrib(start_node, path, index, attrib, NULL);
-
 	if (result_str == NULL)
-		return				default_int_val;
+	{
+		return default_int_val;
+	}
+
 	return atoi(result_str);
 }
 
-F32 CXml::ReadAttribFlt(const char* path, int index, const char* attrib, F32 default_flt_val)
+float CXml::ReadAttribFlt(const char* path, int index, const char* attrib, float default_flt_val)
 {
 	const char* result_str = ReadAttrib(path, index, attrib, NULL);
-
 	if (result_str == NULL)
 	{
-		return				default_flt_val;
+		return default_flt_val;
 	}
 
-	return (F32) atof(result_str);
+	return (float) atof(result_str);
 }
 
-F32 CXml::ReadAttribFlt(XML_NODE* start_node, const char* path, int index, const char* attrib, F32 default_flt_val)
+float CXml::ReadAttribFlt(XML_NODE* start_node, const char* path, int index, const char* attrib, float default_flt_val)
 {
 	const char* result_str = ReadAttrib(start_node, path, index, attrib, NULL);
-
 	if (result_str == NULL)
 	{
-		return				default_flt_val;
+		return default_flt_val;
 	}
 
-	return (F32) atof(result_str);
+	return (float) atof(result_str);
 }
 
-F32 CXml::ReadAttribFlt(XML_NODE* node, const char* attrib, F32 default_flt_val)
+float CXml::ReadAttribFlt(XML_NODE* node, const char* attrib, float default_flt_val)
 {
 	const char* result_str = ReadAttrib(node, attrib, NULL);
-
 	if (result_str == NULL)
 	{
-		return				default_flt_val;
+		return default_flt_val;
 	}
 
-	return (F32) atof(result_str);
+	return (float) atof(result_str);
 }
 
 int CXml::GetNodesNum(const char* path, int index, const char* tag_name)
 {
-	XML_NODE* node = NULL;
-
+	XML_NODE* node = nullptr;
 	XML_NODE* root = GetLocalRoot( ) ? GetLocalRoot( ) : GetRoot( );
 	if (path != NULL)
 	{
@@ -410,14 +416,21 @@ int CXml::GetNodesNum(const char* path, int index, const char* tag_name)
 
 int CXml::GetNodesNum(XML_NODE* node, const char* tag_name)
 {
-	if (node == NULL)		return 0;
+	if (node == NULL)
+	{
+		return 0;
+	}
 
-	XML_NODE* el = NULL;
+	XML_NODE* el = nullptr;
 
 	if (!tag_name)
+	{
 		el = node->FirstChild( );
+	}
 	else
+	{
 		el = node->FirstChild(tag_name);
+	}
 
 	int result = 0;
 
@@ -425,9 +438,13 @@ int CXml::GetNodesNum(XML_NODE* node, const char* tag_name)
 	{
 		++result;
 		if (!tag_name)
+		{
 			el = el->NextSibling( );
+		}
 		else
+		{
 			el = el->NextSibling(tag_name);
+		}
 	}
 
 	return result;
@@ -438,7 +455,7 @@ XML_NODE* CXml::SearchForAttribute(const char* path, int index, const char* tag_
 {
 	XML_NODE* start_node = NavigateToNode(path, index);
 	XML_NODE* result = SearchForAttribute(start_node, tag_name, attrib, attrib_value_pattern);
-	return	result;
+	return result;
 }
 
 XML_NODE* CXml::SearchForAttribute(XML_NODE* start_node, const char* tag_name, const char* attrib, const char* attrib_value_pattern)
@@ -461,11 +478,14 @@ XML_NODE* CXml::SearchForAttribute(XML_NODE* start_node, const char* tag_name, c
 		XML_NODE* newEl = start_node->FirstChild(tag_name);
 		newEl = SearchForAttribute(newEl, tag_name, attrib, attrib_value_pattern);
 		if (newEl)
-			return					newEl;
+		{
+			return newEl;
+		}
 
 		start_node = start_node->NextSibling(tag_name);
 	}
-	return NULL;
+
+	return nullptr;
 }
 
 #ifdef DEBUG
@@ -474,13 +494,10 @@ const char* CXml::CheckUniqueAttrib(XML_NODE* start_node, const char* tag_name, 
 	m_AttribValues.clear_not_free( );
 
 	int tags_num = GetNodesNum(start_node, tag_name);
-
 	for (int i = 0; i < tags_num; i++)
 	{
 		const char* attrib = ReadAttrib(start_node, tag_name, i, attrib_name, NULL);
-
 		xr_vector<CSharedString>::iterator it = std::find(m_AttribValues.begin( ), m_AttribValues.end( ), attrib);
-
 		if (m_AttribValues.end( ) != it)
 		{
 			return	attrib;

@@ -374,7 +374,7 @@ const char* TiXmlBase::SkipWhiteSpace(const char* p, TiXmlEncoding encoding)
 // One of TinyXML's more performance demanding functions. Try to keep the memory overhead down. The
 // "assign" optimization removes over 10% of the execution time.
 //
-const char* TiXmlBase::ReadName(const char* p, TIXML_STRING* name, TiXmlEncoding encoding)
+const char* TiXmlBase::ReadName(const char* p, xr_string* name, TiXmlEncoding encoding)
 {
 	// Oddly, not supported on some comilers,
 	//name->clear();
@@ -415,7 +415,7 @@ const char* TiXmlBase::ReadName(const char* p, TIXML_STRING* name, TiXmlEncoding
 const char* TiXmlBase::GetEntity(const char* p, char* value, int* length, TiXmlEncoding encoding)
 {
 	// Presume an entity, and pull it out.
-	TIXML_STRING ent;
+	xr_string ent;
 	int i;
 	*length = 0;
 
@@ -549,7 +549,7 @@ bool TiXmlBase::StringEqual(const char* p,
 }
 
 const char* TiXmlBase::ReadText(const char* p,
-	TIXML_STRING* text,
+	xr_string* text,
 	bool trimWhiteSpace,
 	const char* endTag,
 	bool caseInsensitive,
@@ -852,7 +852,7 @@ const char* TiXmlElement::Parse(const char* p, TiXmlParsingData* data, TiXmlEnco
 		return 0;
 	}
 
-	TIXML_STRING endTag("</");
+	xr_string endTag("</");
 	endTag += value;
 	endTag += ">";
 
@@ -1172,15 +1172,13 @@ const char* TiXmlText::Parse(const char* p, TiXmlParsingData* data, TiXmlEncodin
 		p += xr_strlen(startTag);
 
 		// Keep all the white space, ignore the encoding, etc.
-		while (p && *p
-			&& !StringEqual(p, endTag, false, encoding)
-			)
+		while (p && *p && !StringEqual(p, endTag, false, encoding))
 		{
 			value += *p;
 			++p;
 		}
 
-		TIXML_STRING dummy;
+		xr_string dummy;
 		p = ReadText(p, &dummy, false, endTag, false, encoding);
 		return p;
 	}
@@ -1207,11 +1205,13 @@ const char* TiXmlDeclaration::Parse(const char* p, TiXmlParsingData* data, TiXml
 		if (document) document->SetError(TIXML_ERROR_PARSING_DECLARATION, 0, 0, _encoding);
 		return 0;
 	}
+
 	if (data)
 	{
 		data->Stamp(p, _encoding);
 		location = data->Cursor( );
 	}
+
 	p += 5;
 
 	version = "";
@@ -1252,14 +1252,19 @@ const char* TiXmlDeclaration::Parse(const char* p, TiXmlParsingData* data, TiXml
 				++p;
 		}
 	}
+
 	return 0;
 }
 
 bool TiXmlText::Blank( ) const
 {
 	for (unsigned i = 0; i < value.length( ); i++)
+	{
 		if (!IsWhiteSpace(value[i]))
+		{
 			return false;
+		}
+	}
+
 	return true;
 }
-

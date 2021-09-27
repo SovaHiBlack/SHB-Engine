@@ -190,12 +190,12 @@ enum
 Flags8							_flags;
 SPHBonesData					saved_bones;
 U16								source_id;//for break only
-virtual	void					load(CNetPacket& tNetPacket);
+virtual void					load(CNetPacket& tNetPacket);
 virtual bool					need_save( ) const
 {
 	return(!_flags.test(flNotSave));
 }
-virtual	void					set_sorce_id(U16 si)
+virtual void					set_sorce_id(U16 si)
 {
 	source_id = si;
 }
@@ -205,10 +205,11 @@ virtual U16						get_source_id( )
 }
 virtual CSE_Abstract* cast_abstract( )
 {
-	return 0;
+	return nullptr;
 }
 protected:
 	virtual void					data_load(CNetPacket& tNetPacket);
+
 	virtual void					data_save(CNetPacket& tNetPacket);
 public:
 	SERVER_ENTITY_DECLARE_END

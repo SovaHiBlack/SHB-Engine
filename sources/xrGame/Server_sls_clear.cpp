@@ -54,6 +54,7 @@ void CServer::Perform_destroy(CSE_Abstract* object, u32 mode)
 
 void CServer::SLS_Clear( )
 {
+
 #if 0
 	Msg("SLS-CLEAR : %d objects");
 	xrS_entities::const_iterator		I = entities.begin( );

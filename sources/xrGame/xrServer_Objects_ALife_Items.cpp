@@ -51,7 +51,7 @@ CSE_ALifeInventoryItem::CSE_ALifeInventoryItem(const char* caSection)
 		m_iFoodValue = 0;
 	}
 
-	m_fDeteriorationValue = 0;
+	m_fDeteriorationValue = 0.0f;
 
 	m_last_update_time = 0;
 
@@ -69,7 +69,7 @@ CSE_Abstract* CSE_ALifeInventoryItem::init( )
 	m_self = smart_cast<CSE_ALifeObject*>(this);
 	R_ASSERT(m_self);
 //	m_self->m_flags.set			(CSE_ALifeObject::flSwitchOffline,TRUE);
-	return						(base( ));
+	return base( );
 }
 
 CSE_ALifeInventoryItem::~CSE_ALifeInventoryItem( )
@@ -94,7 +94,7 @@ void CSE_ALifeInventoryItem::STATE_Read(CNetPacket& tNetPacket, U16 size)
 
 static inline bool check(const U8& mask, const U8& test)
 {
-	return							(!!(mask & test));
+	return !!(mask & test);
 }
 
 void CSE_ALifeInventoryItem::UPDATE_Write(CNetPacket& tNetPacket)
@@ -420,13 +420,13 @@ CSE_ALifeItemWeapon::~CSE_ALifeItemWeapon( )
 u32 CSE_ALifeItemWeapon::ef_main_weapon_type( ) const
 {
 	VERIFY(m_ef_main_weapon_type != u32(-1));
-	return	(m_ef_main_weapon_type);
+	return m_ef_main_weapon_type;
 }
 
 u32 CSE_ALifeItemWeapon::ef_weapon_type( ) const
 {
 	VERIFY(m_ef_weapon_type != u32(-1));
-	return	(m_ef_weapon_type);
+	return m_ef_weapon_type;
 }
 
 void CSE_ALifeItemWeapon::UPDATE_Read(CNetPacket& tNetPacket)
@@ -497,7 +497,8 @@ void CSE_ALifeItemWeapon::OnEvent(CNetPacket& tNetPacket, U16 type, u32 time, Cl
 			tNetPacket.r_u8( );
 //				U8 AmmoElapsed = 
 			tNetPacket.r_u8( );
-		}break;
+		}
+		break;
 	}
 }
 
@@ -658,14 +659,12 @@ void CSE_ALifeItemWeaponMagazinedWGL::UPDATE_Read(CNetPacket& P)
 {
 	m_bGrenadeMode = !!P.r_u8( );
 	inherited::UPDATE_Read(P);
-
 }
 
 void CSE_ALifeItemWeaponMagazinedWGL::UPDATE_Write(CNetPacket& P)
 {
 	P.w_u8(m_bGrenadeMode ? 1 : 0);
 	inherited::UPDATE_Write(P);
-
 }
 
 void CSE_ALifeItemWeaponMagazinedWGL::STATE_Read(CNetPacket& P, U16 size)
@@ -751,9 +750,9 @@ CSE_ALifeItemDetector::CSE_ALifeItemDetector(const char* caSection) : CSE_ALifeI
 CSE_ALifeItemDetector::~CSE_ALifeItemDetector( )
 { }
 
-u32	 CSE_ALifeItemDetector::ef_detector_type( ) const
+u32 CSE_ALifeItemDetector::ef_detector_type( ) const
 {
-	return	(m_ef_detector_type);
+	return m_ef_detector_type;
 }
 
 void CSE_ALifeItemDetector::STATE_Read(CNetPacket& tNetPacket, U16 size)

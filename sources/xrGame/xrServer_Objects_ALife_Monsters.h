@@ -21,8 +21,7 @@ enum eTraderFlags
 	eTraderFlagInfiniteAmmo = u32(1) << 0,
 	eTraderFlagDummy = u32(-1),
 };
-//	float							m_fCumulativeItemMass;
-//	int								m_iCumulativeItemVolume;
+
 u32								m_dwMoney;
 float							m_fMaxItemMass;
 Flags32							m_trader_flags;
@@ -75,10 +74,8 @@ public:
 
 	virtual	void					add_online(const bool& update_registries);
 	virtual	void					add_offline(const xr_vector<ALife::_OBJECT_ID>& saved_children, const bool& update_registries);
-#if 0//def DEBUG
-	bool					check_inventory_consistency( );
-#endif
-	void					vfInitInventory( );
+
+//	void					vfInitInventory( );
 	virtual void					spawn_supplies( );
 
 	SERVER_ENTITY_DECLARE_END

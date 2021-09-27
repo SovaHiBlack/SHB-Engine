@@ -53,7 +53,7 @@ public:
 	virtual CSE_Abstract* init( );
 	virtual CSE_Abstract* cast_abstract( )
 	{
-		return 0;
+		return nullptr;
 	}
 	virtual CSE_ALifeInventoryItem* cast_inventory_item( )
 	{
@@ -62,7 +62,7 @@ public:
 	virtual	u32						update_rate( ) const;
 	// end of the virtual inheritance dependant code
 
-	inline		bool					attached( ) const
+	inline bool					attached( ) const
 	{
 		return						(base( )->ID_Parent < 0xffff);
 	}

@@ -31,7 +31,7 @@ IPropHelper& PHelper( )
 const char* script_section = "script";
 const char* current_version = "current_server_entity_version";
 
-inline	U16	script_server_object_version( )
+inline U16	script_server_object_version( )
 {
 	static bool initialized = false;
 	static U16 script_version = 0;
@@ -46,7 +46,7 @@ inline	U16	script_server_object_version( )
 		script_version = pSettings->r_u16(script_section, current_version);
 	}
 
-	return						(script_version);
+	return script_version;
 }
 
 ////////////////////////////////////////////////////////////////////////////
@@ -75,14 +75,14 @@ CSE_Abstract::CSE_Abstract(const char* caSection)
 	ID = 0xffff;
 	ID_Parent = 0xffff;
 	ID_Phantom = 0xffff;
-	owner = 0;
+	owner = nullptr;
 	s_gameid = 0;
 	s_RP = 0xFE;			// Use supplied coords
 	s_flags.assign(0);
 	s_name = caSection;
 	s_name_replace = 0;			//xr_strdup("");
-	o_Angle.set(0.f, 0.f, 0.f);
-	o_Position.set(0.f, 0.f, 0.f);
+	o_Angle.set(0.0f, 0.0f, 0.0f);
+	o_Position.set(0.0f, 0.0f, 0.0f);
 	m_bALifeControl = false;
 	m_wVersion = 0;
 	m_script_version = 0;
@@ -321,7 +321,7 @@ BOOL CSE_Abstract::Spawn_Read(CNetPacket& tNetPacket)
 	return						TRUE;
 }
 
-void	CSE_Abstract::load(CNetPacket& tNetPacket)
+void CSE_Abstract::load(CNetPacket& tNetPacket)
 {
 	CPureServerObject::load(tNetPacket);
 	U16 client_data_size = (m_wVersion > 93) ? tNetPacket.r_u16( ) : tNetPacket.r_u8( ); //не может быть больше 256 байт
@@ -345,42 +345,42 @@ void	CSE_Abstract::load(CNetPacket& tNetPacket)
 
 CSE_Abstract* CSE_Abstract::base( )
 {
-	return						(this);
+	return this;
 }
 
 const CSE_Abstract* CSE_Abstract::base( ) const
 {
-	return						(this);
+	return this;
 }
 
 CSE_Abstract* CSE_Abstract::init( )
 {
-	return						(this);
+	return this;
 }
 
 const char* CSE_Abstract::name( ) const
 {
-	return	(*s_name);
+	return *s_name;
 }
 
 const char* CSE_Abstract::name_replace( ) const
 {
-	return	(s_name_replace);
+	return s_name_replace;
 }
 
 Fvector3& CSE_Abstract::position( )
 {
-	return	(o_Position);
+	return o_Position;
 }
 
 Fvector3& CSE_Abstract::angle( )
 {
-	return	(o_Angle);
+	return o_Angle;
 }
 
 Flags16& CSE_Abstract::flags( )
 {
-	return	(s_flags);
+	return s_flags;
 }
 
 xr_token game_types[ ] = {
@@ -399,7 +399,7 @@ void CSE_Abstract::FillProp(const char* pref, PropItemVec& items)
 
 bool CSE_Abstract::validate( )
 {
-	return						(true);
+	return true;
 }
 
 /**

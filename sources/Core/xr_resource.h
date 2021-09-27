@@ -75,7 +75,7 @@ protected:
 	}
 
 public:
-	__forceinline		void		_set(T* rhs)
+	__forceinline void		_set(T* rhs)
 	{
 		if (0 != rhs)
 		{
@@ -85,12 +85,12 @@ public:
 		_dec( );
 		p_ = rhs;
 	}
-	__forceinline		void		_set(resptr_base<T> const& rhs)
+	__forceinline void		_set(resptr_base<T> const& rhs)
 	{
 		T* prhs = rhs._get( );
 		_set(prhs);
 	}
-	__forceinline		T* _get( ) const
+	__forceinline T* _get( ) const
 	{
 		return p_;
 	}
@@ -105,8 +105,8 @@ template <class T, typename C>
 class resptr_core : public C
 {
 protected:
-	typedef resptr_core			this_type;
-	typedef resptr_core<T, C>	self;
+	using this_type = resptr_core;
+	using self = resptr_core<T, C>;
 
 public:
 						// construction

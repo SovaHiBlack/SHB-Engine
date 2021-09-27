@@ -37,17 +37,14 @@ private:
 		}
 	};
 
-private:
 	enum
 	{
 		m_tBlockCount = u32(tMaxValue - tMinValue) / tBlockSize + 1,
 	};
 
-private:
 	u32							m_available_count;
 	SID_Block					m_tppBlocks[m_tBlockCount];
 
-private:
 	inline		BLOCK_ID			tfGetBlockByValue(VALUE_ID tValueID)
 	{
 		BLOCK_ID				l_tBlockID = BLOCK_ID((tValueID - tMinValue) / tBlockSize);

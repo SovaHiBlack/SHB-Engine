@@ -22,6 +22,7 @@ CSE_Visual::CSE_Visual(const char* name)
 		{
 			*strext(tmp) = 0;
 		}
+
 		xr_strlwr(tmp);
 		visual_name = tmp;
 	}

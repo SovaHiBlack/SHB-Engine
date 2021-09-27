@@ -32,10 +32,6 @@
 #	include "MapManager.h"
 #endif
 
-//#define MAX_ITEM_FOOD_COUNT			3
-//#define MAX_ITEM_MEDIKIT_COUNT		3
-//#define MAX_AMMO_ATTACH_COUNT		10
-
 CALifeHumanBrain::CALifeHumanBrain			(object_type *object) : inherited(object)
 {
 	VERIFY							(object);

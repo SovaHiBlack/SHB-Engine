@@ -52,7 +52,7 @@ public:
 		flSpawnSingleItemOnly = u32(1 << 2),
 		flSpawnIfDestroyedOnly = u32(1 << 3),
 		flSpawnInfiniteCount = u32(1 << 4),
-		flSpawnDestroyOnSpawn = u32(1 << 5),
+		flSpawnDestroyOnSpawn = u32(1 << 5)
 	};
 
 private:
@@ -110,16 +110,16 @@ public:
 		return TRUE;
 	}
 //
-	virtual void		__stdcall	Spawn_Write(CNetPacket& tNetPacket, BOOL bLocal);
-	virtual BOOL		__stdcall	Spawn_Read(CNetPacket& tNetPacket);
-	virtual void		__stdcall	FillProp(const char* pref, PropItemVec& items);
+	virtual void __stdcall	Spawn_Write(CNetPacket& tNetPacket, BOOL bLocal);
+	virtual BOOL __stdcall	Spawn_Read(CNetPacket& tNetPacket);
+	virtual void __stdcall	FillProp(const char* pref, PropItemVec& items);
 	virtual const char* __stdcall	name( ) const;
 	virtual const char* __stdcall	name_replace( ) const;
-	virtual void		__stdcall	set_name(const char* s)
+	virtual void __stdcall	set_name(const char* s)
 	{
 		s_name = s;
 	}
-	virtual void		__stdcall	set_name_replace(const char* s)
+	virtual void __stdcall	set_name_replace(const char* s)
 	{
 		xr_free(s_name_replace);
 		s_name_replace = xr_strdup(s);
@@ -130,12 +130,12 @@ public:
 	virtual CSE_Visual* __stdcall	visual( );
 	virtual ISE_Shape* __stdcall	shape( );
 	virtual CSE_Motion* __stdcall	motion( );
-	virtual bool		__stdcall	validate( );
-	virtual void 		__stdcall	on_render(CDUInterface* du, ISE_AbstractLEOwner* owner, bool bSelected, const Fmatrix& parent, int priority, bool strictB2F)
+	virtual bool __stdcall	validate( );
+	virtual void __stdcall	on_render(CDUInterface* du, ISE_AbstractLEOwner* owner, bool bSelected, const Fmatrix& parent, int priority, bool strictB2F)
 	{ }
 //
 
-	inline		const Fvector3& Position( ) const
+	inline const Fvector3& Position( ) const
 	{
 		return o_Position;
 	}
@@ -148,82 +148,83 @@ public:
 		return true;
 	}
 // end of the virtual inheritance dependant code
-	inline		int						script_clsid( ) const
+	inline int						script_clsid( ) const
 	{
-		VERIFY(m_script_clsid >= 0); return (m_script_clsid);
+		VERIFY(m_script_clsid >= 0);
+		return (m_script_clsid);
 	}
 	CIniFile& spawn_ini( );
 
 // for smart cast
 	virtual CSE_ALifeGroupAbstract* cast_group_abstract( )
 	{
-		return 0;
+		return nullptr;
 	}
 	virtual CSE_ALifeSchedulable* cast_schedulable( )
 	{
-		return 0;
+		return nullptr;
 	}
 	virtual CSE_ALifeInventoryItem* cast_inventory_item( )
 	{
-		return 0;
+		return nullptr;
 	}
 	virtual CSE_ALifeTraderAbstract* cast_trader_abstract( )
 	{
-		return 0;
+		return nullptr;
 	}
 
 	virtual CSE_ALifeObject* cast_alife_object( )
 	{
-		return 0;
+		return nullptr;
 	}
 	virtual CSE_ALifeDynamicObject* cast_alife_dynamic_object( )
 	{
-		return 0;
+		return nullptr;
 	}
 	virtual CSE_ALifeItemAmmo* cast_item_ammo( )
 	{
-		return 0;
+		return nullptr;
 	}
 	virtual CSE_ALifeItemWeapon* cast_item_weapon( )
 	{
-		return 0;
+		return nullptr;
 	}
 	virtual CSE_ALifeItemDetector* cast_item_detector( )
 	{
-		return 0;
+		return nullptr;
 	}
 	virtual CSE_ALifeMonsterAbstract* cast_monster_abstract( )
 	{
-		return 0;
+		return nullptr;
 	}
 	virtual CSE_ALifeHumanAbstract* cast_human_abstract( )
 	{
-		return 0;
+		return nullptr;
 	}
 	virtual CSE_ALifeAnomalousZone* cast_anomalous_zone( )
 	{
-		return 0;
+		return nullptr;
 	}
 	virtual CSE_ALifeTrader* cast_trader( )
 	{
-		return 0;
+		return nullptr;
 	}
 
 	virtual CSE_ALifeCreatureAbstract* cast_creature_abstract( )
 	{
-		return 0;
+		return nullptr;
 	}
 	virtual CSE_ALifeSmartZone* cast_smart_zone( )
 	{
-		return 0;
+		return nullptr;
 	}
 	virtual CSE_ALifeOnlineOfflineGroup* cast_online_offline_group( )
 	{
-		return 0;
+		return nullptr;
 	}
 	virtual CSE_ALifeItemPDA* cast_item_pda( )
 	{
-		return 0;
+		return nullptr;
 	}
 };
 

@@ -24,17 +24,17 @@ u32		g_sv_base_dwRPointFreezeTime = 0;
 int		g_sv_base_iVotingEnabled = 0x00ff;
 //-----------------------------------------------------------------
 
-xr_token	round_end_result_str[ ] =
-{
-	{ "Finish",					eRoundEnd_Finish			},
-	{ "Game restarted",			eRoundEnd_GameRestarted		},
-	{ "Game restarted fast",	eRoundEnd_GameRestartedFast	},
-	{ "Time limit",				eRoundEnd_TimeLimit			},
-	{ "Frag limit",				eRoundEnd_FragLimit			},
-	{ "Artefact limit",			eRoundEnd_ArtrefactLimit	},
-	{ "Unknown",				eRoundEnd_Force				},
-	{ 0,						0							}
-};
+//xr_token	round_end_result_str[ ] =
+//{
+//	{ "Finish",					eRoundEnd_Finish			},
+//	{ "Game restarted",			eRoundEnd_GameRestarted		},
+//	{ "Game restarted fast",	eRoundEnd_GameRestartedFast	},
+//	{ "Time limit",				eRoundEnd_TimeLimit			},
+//	{ "Frag limit",				eRoundEnd_FragLimit			},
+//	{ "Artefact limit",			eRoundEnd_ArtrefactLimit	},
+//	{ "Unknown",				eRoundEnd_Force				},
+//	{ 0,						0							}
+//};
 
 // Main
 game_PlayerState* game_sv_GameState::get_it(u32 it)
@@ -699,10 +699,10 @@ void game_sv_GameState::OnEvent(CNetPacket& tNetPacket, U16 type, u32 time, Clie
 			OnPlayerDisconnect(ID, PlayerName, GameID);
 		}
 		break;
-		case GAME_EVENT_PLAYER_KILLED:
-		{
-		}
-		break;
+		//case GAME_EVENT_PLAYER_KILLED:
+		//{
+		//}
+		//break;
 		case GAME_EVENT_ON_HIT:
 		{
 			U16		id_dest = tNetPacket.r_u16( );

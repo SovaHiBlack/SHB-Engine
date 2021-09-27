@@ -15,9 +15,9 @@
 
 game_cl_GameState::game_cl_GameState( )
 {
-	m_WeaponUsageStatistic = xr_new<WeaponUsageStatistic>( );
+	m_WeaponUsageStatistic = xr_new<SWeaponUsageStatistic>( );
 
-	local_player = 0;
+	local_player = nullptr;
 	m_game_type_name = 0;
 
 	shedule.t_min = 5;
@@ -44,7 +44,7 @@ game_cl_GameState::~game_cl_GameState( )
 	xr_delete(m_WeaponUsageStatistic);
 }
 
-void	game_cl_GameState::net_import_GameTime(CNetPacket& P)
+void game_cl_GameState::net_import_GameTime(CNetPacket& P)
 {
 	//time
 	U64				GameTime;
@@ -67,7 +67,7 @@ void	game_cl_GameState::net_import_GameTime(CNetPacket& P)
 //		GamePersistent().Environment().Invalidate();
 }
 
-void	game_cl_GameState::net_import_state(CNetPacket& P)
+void game_cl_GameState::net_import_state(CNetPacket& P)
 {
 	// Generic
 	P.r_clientID(local_svdpnid);
@@ -139,7 +139,7 @@ void	game_cl_GameState::net_import_state(CNetPacket& P)
 	net_import_GameTime(P);
 }
 
-void	game_cl_GameState::net_import_update(CNetPacket& P)
+void game_cl_GameState::net_import_update(CNetPacket& P)
 {
 	// Read
 	ClientID			ID;
@@ -163,7 +163,7 @@ void	game_cl_GameState::net_import_update(CNetPacket& P)
 	net_import_GameTime(P);
 }
 
-void	game_cl_GameState::net_signal(CNetPacket& P)
+void game_cl_GameState::net_signal(CNetPacket& P)
 { }
 
 void game_cl_GameState::TranslateGameMessage(u32 msg, CNetPacket& P)
@@ -171,7 +171,7 @@ void game_cl_GameState::TranslateGameMessage(u32 msg, CNetPacket& P)
 	CStringTable st;
 
 	string512 Text;
-	char	Color_Main[ ] = "%c[255,192,192,192]";
+	char Color_Main[ ] = "%c[255,192,192,192]";
 	char* Color_Teams[3] = { "%c[255,255,240,190]", "%c[255,64,255,64]", "%c[255,64,64,255]" };
 
 	switch (msg)
@@ -215,7 +215,7 @@ void game_cl_GameState::TranslateGameMessage(u32 msg, CNetPacket& P)
 	}
 }
 
-void	game_cl_GameState::OnGameMessage(CNetPacket& P)
+void game_cl_GameState::OnGameMessage(CNetPacket& P)
 {
 	VERIFY(this && &P);
 	u32 msg;
@@ -297,7 +297,7 @@ void game_cl_GameState::sv_GameEventGen(CNetPacket& P)
 	P.w_u16(0);//dest==0
 }
 
-void	game_cl_GameState::sv_EventSend(CNetPacket& P)
+void game_cl_GameState::sv_EventSend(CNetPacket& P)
 {
 	Level( ).Send(P, net_flags(TRUE, TRUE));
 }
@@ -349,7 +349,7 @@ void game_cl_GameState::u_EventSend(CNetPacket& P)
 	Level( ).Send(P, net_flags(TRUE, TRUE));
 }
 
-void				game_cl_GameState::OnSwitchPhase(u32 old_phase, u32 new_phase)
+void game_cl_GameState::OnSwitchPhase(u32 old_phase, u32 new_phase)
 {
 	switch (old_phase)
 	{

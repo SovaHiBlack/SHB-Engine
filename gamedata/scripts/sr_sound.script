@@ -186,13 +186,12 @@ function action_sound:on_enter( obj )
 				
 				if not self.st.sound_slide then
 					pos = self.st.path:point( math.random( 0, self.st.path:count()-1 ) )
-				else 
+				else
 					self.slide_active = true
 					self.cur_point	  = 0
 					self:set_positions()
 					pos = self.st.path:point(self.cur_point)
 				end
-					
 			end
 
 			local snd_name = self.st.sound_names[math.random(1, table.getn(self.st.sound_names))]
@@ -295,9 +294,8 @@ function set_scheme( obj, ini, scheme, section, gulag_name )
 	
 	st.play_at_actor = utils.cfg_get_bool (ini, section, "play_at_actor", obj, false)
 	if st.play_at_actor ~= nil and st.play_at_actor == true then
-	   if st.pos_type ~= pos_obj then
-		  abort ("Can't define play sound at actor and path !!!")
-	   end
-	end               
-	
+		if st.pos_type ~= pos_obj then
+			abort("Can't define play sound at actor and path !!!")
+		end
+	end
 end

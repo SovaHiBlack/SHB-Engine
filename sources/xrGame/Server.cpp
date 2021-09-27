@@ -65,7 +65,7 @@ CSE_Abstract* CServer::ID_to_entity(U16 ID)
 {
 	if (0xffff == ID)
 	{
-		return 0;
+		return nullptr;
 	}
 
 	xrS_entities::iterator	I = entities.find(ID);
@@ -75,7 +75,7 @@ CSE_Abstract* CServer::ID_to_entity(U16 ID)
 	}
 	else
 	{
-		return 0;
+		return nullptr;
 	}
 }
 
@@ -105,7 +105,7 @@ IClient* CServer::client_Find_Get(ClientID ID)
 	return newCL;
 }
 
-INT	g_sv_Client_Reconnect_Time = 0;
+INT g_sv_Client_Reconnect_Time = 0;
 
 void CServer::client_Destroy(IClient* C)
 {
@@ -739,7 +739,7 @@ u32 CServer::OnMessage(CNetPacket& P, ClientID sender)			// Non-Zero means broad
 
 	csPlayers.Leave( );
 
-	return							IPureServer::OnMessage(P, sender);
+	return IPureServer::OnMessage(P, sender);
 }
 
 bool CServer::CheckAdminRights(const CSharedString& user, const CSharedString& pass, string512 reason)
@@ -772,7 +772,7 @@ bool CServer::CheckAdminRights(const CSharedString& user, const CSharedString& p
 		strcpy(reason, "Access denied.");
 	}
 
-	return				res;
+	return res;
 }
 
 void CServer::SendTo_LL(ClientID ID, void* data, u32 size, u32 dwFlags, u32 dwTimeout)
@@ -785,7 +785,10 @@ void CServer::SendTo_LL(ClientID ID, void* data, u32 size, u32 dwFlags, u32 dwTi
 	else
 	{
 		IClient* pClient = ID_to_client(ID);
-		if (!pClient) return;
+		if (!pClient)
+		{
+			return;
+		}
 
 		FATAL(""); //Это не должно быть вызвано
 	}
@@ -810,10 +813,10 @@ void CServer::entity_Destroy(CSE_Abstract*& P)
 
 	if (P->owner && P->owner->owner == P)
 	{
-		P->owner->owner = NULL;
+		P->owner->owner = nullptr;
 	}
 
-	P->owner = NULL;
+	P->owner = nullptr;
 	if (!ai( ).get_alife( ) || !P->m_bALifeControl)
 	{
 		F_entity_Destroy(P);
@@ -829,7 +832,7 @@ void CServer::Server_Client_Check(IClient* CL)
 	{
 		if (!CL->flags.bConnected)
 		{
-			SV_Client = NULL;
+			SV_Client = nullptr;
 		}
 
 		clients_Unlock( );
@@ -869,7 +872,7 @@ bool CServer::OnCL_QueryHost( )
 
 CSE_Abstract* CServer::GetEntity(u32 Num)
 {
-	xrS_entities::iterator	I = entities.begin( ), E = entities.end( );
+	xrS_entities::iterator I = entities.begin( ), E = entities.end( );
 	for (u32 C = 0; I != E; ++I, ++C)
 	{
 		if (C == Num)
@@ -881,7 +884,7 @@ CSE_Abstract* CServer::GetEntity(u32 Num)
 	return nullptr;
 }
 
-void		CServer::OnChatMessage(CNetPacket* P, xrClientData* CL)
+void CServer::OnChatMessage(CNetPacket* P, xrClientData* CL)
 {
 	S16 team = P->r_s16( );
 	if (!CL->net_Ready)

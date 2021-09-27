@@ -1,7 +1,7 @@
 #pragma once
 
 #pragma pack(push,4)
-//////////////////////////////////////////////////////////////////////////
+
 #pragma warning(disable : 4200)
 struct		CORE_API	smem_value
 {

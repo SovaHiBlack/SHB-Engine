@@ -43,25 +43,35 @@ void CServer::SLS_Default( )
 #ifdef USE_DESIGNER_KEY
 			CSE_Abstract* entity =
 #endif
+
 				Process_spawn(P, clientID);
+
 #ifdef USE_DESIGNER_KEY
 			if (_designer)
 			{
 				CSE_ALifeCreatureActor* actor = smart_cast<CSE_ALifeCreatureActor*>(entity);
 				if (actor)
+				{
 					_actor = actor;
+				}
 			}
 #endif
+
 		}
+
 		FS.r_close(SP);
 	}
 
 #ifdef USE_DESIGNER_KEY
 	if (!_designer)
+	{
 		return;
+	}
 
 	if (_actor)
+	{
 		return;
+	}
 
 	_actor = smart_cast<CSE_ALifeCreatureActor*>(entity_Create("actor"));
 	_actor->o_Position = Fvector3( ).set(0.f, 0.f, 0.f);
@@ -78,4 +88,5 @@ void CServer::SLS_Default( )
 	clientID.set(0);
 	Process_spawn(packet, clientID);
 #endif
+
 }

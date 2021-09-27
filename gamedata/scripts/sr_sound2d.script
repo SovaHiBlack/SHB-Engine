@@ -212,10 +212,4 @@ function set_scheme (obj, ini, scheme, section, gulag_name)
 		  abort ("SR_SOUND2D : invalid sound theme")  
 	   end
 	end   
-	
 end
-----------------------
-----------------------
-----------------------
-----------------------
-

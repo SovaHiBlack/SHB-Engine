@@ -306,7 +306,9 @@ void CServer::Process_event(CNetPacket& P, ClientID sender)
 		}
 		break;
 		case GE_FREEZE_OBJECT:
-			break;
+		{
+		}
+		break;
 		default:
 		{
 			R_ASSERT2(0, "Game Event not implemented!!!");

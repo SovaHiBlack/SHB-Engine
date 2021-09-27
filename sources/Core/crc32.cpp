@@ -14,9 +14,13 @@ inline U32		Reflect(U32 ref, char ch)		// Reflects CRC bits in the lookup table
 	for (int i = 1; i < (ch + 1); i++)
 	{
 		if (ref & 1)
+		{
 			value |= 1 << (ch - i);
+		}
+
 		ref >>= 1;
 	}
+
 	return value;
 }
 
@@ -33,7 +37,10 @@ void			crc32_init( )
 	{
 		crc32_table[i] = Reflect(i, 8) << 24;
 		for (int j = 0; j < 8; j++)
+		{
 			crc32_table[i] = (crc32_table[i] << 1) ^ (crc32_table[i] & (1 << 31) ? ulPolynomial : 0);
+		}
+
 		crc32_table[i] = Reflect(crc32_table[i], 32);
 	}
 }
@@ -62,9 +69,10 @@ U32				crc32(const void* P, U32 len)
 	// Perform the algorithm on each character 
 	// in the string, using the lookup table values. 
 	while (len--)
+	{
 		ulCRC = (ulCRC >> 8) ^ crc32_table[(ulCRC & 0xFF) ^ *buffer++];
+	}
 
 	// Exclusive OR the result with the beginning value. 
 	return ulCRC ^ 0xffffffff;
 }
-

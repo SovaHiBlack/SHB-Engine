@@ -30,12 +30,12 @@ add_to_type_list(SZoneMapEntityData)
 
 //#include "game_cl_base_weapon_usage_statistic.h"
 
-struct WeaponUsageStatistic;
+struct SWeaponUsageStatistic;
 
 class game_cl_GameState : public game_GameState, public ISheduled
 {
 	using inherited											= game_GameState;
-	CSharedString												m_game_type_name;
+	CSharedString											m_game_type_name;
 
 protected:
 	CUIGameCustom*											m_game_ui_custom;
@@ -51,7 +51,7 @@ public:
 	ClientID												local_svdpnid;
 	game_PlayerState*										local_player;
 
-	WeaponUsageStatistic*									m_WeaponUsageStatistic;
+	SWeaponUsageStatistic*									m_WeaponUsageStatistic;
 	virtual void				reset_ui					( );
 	virtual void				CommonMessageOut			(const char* msg);
 
@@ -67,7 +67,7 @@ protected:
 	//for scripting enhancement
 	virtual void				TranslateGameMessage		(u32 msg, CNetPacket& P);
 
-	virtual CSharedString			shedule_Name				( ) const
+	virtual CSharedString			shedule_Name			( ) const
 	{
 		return CSharedString("game_cl_GameState");
 	}

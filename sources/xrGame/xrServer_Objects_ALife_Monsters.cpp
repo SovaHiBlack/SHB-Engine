@@ -101,20 +101,19 @@ void setup_location_types(GameGraph::TERRAIN_VECTOR& m_vertex_types, CIniFile* i
 {
 	m_vertex_types.clear( );
 	if (ini->section_exist(string) && ini->line_count(string))
+	{
 		setup_location_types_section(m_vertex_types, ini, string);
+	}
 	else
+	{
 		setup_location_types_line(m_vertex_types, string);
+	}
 }
-
-//////////////////////////////////////////////////////////////////////////
 
 //возможное отклонение от значения репутации
 //заданого в профиле и для конкретного персонажа
 #define REPUTATION_DELTA	10
 #define RANK_DELTA			10
-
-
-//////////////////////////////////////////////////////////////////////////
 
 using namespace ALife;
 
@@ -123,8 +122,6 @@ using namespace ALife;
 ////////////////////////////////////////////////////////////////////////////
 CSE_ALifeTraderAbstract::CSE_ALifeTraderAbstract(const char* caSection)
 {
-//	m_fCumulativeItemMass		= 0.f;
-//	m_iCumulativeItemVolume		= 0;
 	m_dwMoney = 0;
 	if (pSettings->line_exist(caSection, "money"))
 	{
