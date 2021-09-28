@@ -31,7 +31,7 @@ game_cl_GameState::game_cl_GameState( )
 
 game_cl_GameState::~game_cl_GameState( )
 {
-	PLAYERS_MAP_IT I = players.begin( );
+	PlayersMap_it I = players.begin( );
 	for (; I != players.end( ); ++I)
 	{
 		xr_delete(I->second);
@@ -91,12 +91,12 @@ void game_cl_GameState::net_import_state(CNetPacket& P)
 	U16 p_count;
 	P.r_u16(p_count);
 
-	PLAYERS_MAP players_new;
+	PlayersMap players_new;
 
 /*
 	players.clear	();
 */
-	PLAYERS_MAP_IT I;
+	PlayersMap_it I;
 	for (U16 p_it = 0; p_it < p_count; ++p_it)
 	{
 		ClientID			ID;
@@ -146,7 +146,7 @@ void game_cl_GameState::net_import_update(CNetPacket& P)
 	P.r_clientID(ID);
 
 	// Update
-	PLAYERS_MAP_IT I = players.find(ID);
+	PlayersMap_it I = players.find(ID);
 	if (players.end( ) != I)
 	{
 		game_PlayerState* IP = I->second;
@@ -226,8 +226,8 @@ void game_cl_GameState::OnGameMessage(CNetPacket& P)
 
 game_PlayerState* game_cl_GameState::GetPlayerByGameID(u32 GameID)
 {
-	PLAYERS_MAP_IT I = players.begin( );
-	PLAYERS_MAP_IT E = players.end( );
+	PlayersMap_it I = players.begin( );
+	PlayersMap_it E = players.end( );
 
 	for (; I != E; ++I)
 	{
@@ -243,7 +243,7 @@ game_PlayerState* game_cl_GameState::GetPlayerByGameID(u32 GameID)
 
 game_PlayerState* game_cl_GameState::GetPlayerByOrderID(u32 idx)
 {
-	PLAYERS_MAP_IT I = players.begin( );
+	PlayersMap_it I = players.begin( );
 	std::advance(I, idx);
 	game_PlayerState* ps = I->second;
 	return ps;
@@ -251,7 +251,7 @@ game_PlayerState* game_cl_GameState::GetPlayerByOrderID(u32 idx)
 
 ClientID game_cl_GameState::GetClientIDByOrderID(u32 idx)
 {
-	PLAYERS_MAP_IT I = players.begin( );
+	PlayersMap_it I = players.begin( );
 	std::advance(I, idx);
 	return I->first;
 }

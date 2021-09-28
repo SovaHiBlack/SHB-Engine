@@ -389,10 +389,10 @@ xr_token game_types[ ] = {
 	{ 0,				0				}
 };
 
-void CSE_Abstract::FillProps(const char* pref, PropItemVec& items)
+void CSE_Abstract::FillProps(const char* pref, PropItemsVec& items)
 { }
 
-void CSE_Abstract::FillProp(const char* pref, PropItemVec& items)
+void CSE_Abstract::FillProp(const char* pref, PropItemsVec& items)
 {
 	FillProps(pref, items);
 }

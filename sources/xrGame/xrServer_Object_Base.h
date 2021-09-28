@@ -104,7 +104,7 @@ public:
 	virtual							~CSE_Abstract( );
 	virtual void					OnEvent(CNetPacket& tNetPacket, U16 type, u32 time, ClientID sender)
 	{ }
-	virtual void					FillProps(const char* pref, PropItemVec& items);
+	virtual void					FillProps(const char* pref, PropItemsVec& items);
 	virtual BOOL					Net_Relevant( )
 	{
 		return TRUE;
@@ -112,7 +112,7 @@ public:
 //
 	virtual void __stdcall	Spawn_Write(CNetPacket& tNetPacket, BOOL bLocal);
 	virtual BOOL __stdcall	Spawn_Read(CNetPacket& tNetPacket);
-	virtual void __stdcall	FillProp(const char* pref, PropItemVec& items);
+	virtual void __stdcall	FillProp(const char* pref, PropItemsVec& items);
 	virtual const char* __stdcall	name( ) const;
 	virtual const char* __stdcall	name_replace( ) const;
 	virtual void __stdcall	set_name(const char* s)

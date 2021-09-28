@@ -78,7 +78,7 @@ void CSE_Visual::OnChangeAnim(PropValue* sender)
 	abstract->set_editor_flag(ISE_Abstract::flVisualAnimationChange);
 }
 
-void CSE_Visual::FillProps(const char* pref, PropItemVec& items)
+void CSE_Visual::FillProps(const char* pref, PropItemsVec& items)
 {
 	ISE_Abstract* abstract = smart_cast<ISE_Abstract*>(this); VERIFY(abstract);
 	ChooseValue* V = PHelper( ).CreateChoose(items, PrepareKey(pref, abstract->name( ), "Model\\Visual"), &visual_name, smVisual);
@@ -120,7 +120,7 @@ void CSE_Motion::OnChangeMotion(PropValue* sender)
 	abstract->set_editor_flag(ISE_Abstract::flMotionChange);
 }
 
-void CSE_Motion::FillProps(const char* pref, PropItemVec& items)
+void CSE_Motion::FillProps(const char* pref, PropItemsVec& items)
 {
 	ISE_Abstract* abstract = smart_cast<ISE_Abstract*>(this); VERIFY(abstract);
 	ChooseValue* V = PHelper( ).CreateChoose(items, PrepareKey(pref, abstract->name( ), "Motion"), &motion_name, smGameAnim);

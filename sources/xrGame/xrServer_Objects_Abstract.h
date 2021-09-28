@@ -46,7 +46,7 @@ public:
 	{
 		return *visual_name;
 	}
-	virtual void					FillProps(const char* pref, PropItemVec& items);
+	virtual void					FillProps(const char* pref, PropItemsVec& items);
 
 	virtual CSE_Visual* __stdcall	visual( ) = 0;
 };
@@ -70,7 +70,7 @@ public:
 		return *motion_name;
 	}
 
-	virtual void					FillProps(const char* pref, PropItemVec& items);
+	virtual void					FillProps(const char* pref, PropItemsVec& items);
 
 	virtual CSE_Motion* __stdcall	motion( ) = 0;
 };
@@ -98,10 +98,9 @@ public:
 		m_editor_flags.set(mask, TRUE);
 	}
 
-public:
 	virtual void		__stdcall	Spawn_Write(CNetPacket& tNetPacket, BOOL bLocal) = 0;
 	virtual BOOL		__stdcall	Spawn_Read(CNetPacket& tNetPacket) = 0;
-	virtual void		__stdcall	FillProp(const char* pref, PropItemVec& items) = 0;
+	virtual void		__stdcall	FillProp(const char* pref, PropItemsVec& items) = 0;
 	virtual const char* __stdcall	name( ) const = 0;
 	virtual void		__stdcall	set_name(const char*) = 0;
 	virtual const char* __stdcall	name_replace( ) const = 0;

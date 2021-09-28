@@ -10,7 +10,7 @@
 
 #include "script_export_space.h"
 
-#define SERVER_ENTITY_EDITOR_METHODS					virtual void FillProps(const char* pref, PropItemVec& values);
+#define SERVER_ENTITY_EDITOR_METHODS					virtual void FillProps(const char* pref, PropItemsVec& values);
 #define SERVER_ENTITY_SCRIPT_METHODS					DECLARE_SCRIPT_REGISTER_FUNCTION
 #define SERVER_ENTITY_DECLARE_BEGIN0(__A)				class __A	{ public: SERVER_ENTITY_SCRIPT_METHODS
 #define SERVER_ENTITY_DECLARE_BEGIN(__A,__B)			class __A : public __B	{ typedef __B inherited; public: SERVER_ENTITY_SCRIPT_METHODS

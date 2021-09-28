@@ -103,7 +103,7 @@ void CSE_Spectator::UPDATE_Read(CNetPacket& tNetPacket)
 void CSE_Spectator::UPDATE_Write(CNetPacket& tNetPacket)
 { }
 
-void CSE_Spectator::FillProps(const char* pref, PropItemVec& items)
+void CSE_Spectator::FillProps(const char* pref, PropItemsVec& items)
 {
 	inherited::FillProps(pref, items);
 }
@@ -135,7 +135,7 @@ void CSE_Temporary::UPDATE_Read(CNetPacket& tNetPacket)
 void CSE_Temporary::UPDATE_Write(CNetPacket& tNetPacket)
 { }
 
-void CSE_Temporary::FillProps(const char* pref, PropItemVec& values)
+void CSE_Temporary::FillProps(const char* pref, PropItemsVec& values)
 { }
 
 ////////////////////////////////////////////////////////////////////////////
@@ -204,7 +204,7 @@ void CSE_PHSkeleton::UPDATE_Write(CNetPacket& tNetPacket)
 void CSE_PHSkeleton::UPDATE_Read(CNetPacket& tNetPacket)
 { }
 
-void CSE_PHSkeleton::FillProps(const char* pref, PropItemVec& values)
+void CSE_PHSkeleton::FillProps(const char* pref, PropItemsVec& values)
 { }
 
 CSE_AbstractVisual::CSE_AbstractVisual(const char* section) :inherited1(section), inherited2(section)
@@ -225,7 +225,7 @@ void CSE_AbstractVisual::STATE_Write(CNetPacket& tNetPacket)
 	tNetPacket.w_stringZ(startup_animation);
 }
 
-void CSE_AbstractVisual::FillProps(const char* pref, PropItemVec& values)
+void CSE_AbstractVisual::FillProps(const char* pref, PropItemsVec& values)
 {
 	inherited1::FillProps(pref, values);
 	inherited2::FillProps(pref, values);

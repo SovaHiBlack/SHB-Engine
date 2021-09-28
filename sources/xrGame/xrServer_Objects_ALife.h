@@ -224,7 +224,7 @@ public:
 			return inherited1::base( );
 		}
 
-		virtual void		FillProps(const char* pref, PropItemVec& items)
+		virtual void		FillProps(const char* pref, PropItemsVec& items)
 		{
 			inherited1::FillProps(pref, items);
 			inherited2::FillProps(pref, items);

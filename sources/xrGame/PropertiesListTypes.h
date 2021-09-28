@@ -33,13 +33,12 @@ enum EPropType{
 	PROP_TEXTURE2
 };
 // refs
-struct 	xr_token;        
+struct xr_token;
 class PropValue;
 class PropItem;
 
-//DEFINE_VECTOR			(PropItem*,PropItemVec,PropItemIt);
-using PropItemVec = xr_vector<PropItem*>;
-using PropItemIt = PropItemVec::iterator;
+using PropItemsVec = xr_vector<PropItem*>;
+using PropItemIt = PropItemsVec::iterator;
 
 //------------------------------------------------------------------------------
 #include "..\..\Core\ChooseTypes.h"
