@@ -29,7 +29,7 @@ void restart_all				()
 }
 
 CALifeSimulator::CALifeSimulator		(CServer*server, CSharedString* command_line) :
-	CALifeUpdateManager			(server,alife_section),
+	CAlifeUpdateManager(server,alife_section),
 	CALifeInteractionManager	(server,alife_section),
 	CALifeSimulatorBase			(server,alife_section)
 {
@@ -73,7 +73,7 @@ CALifeSimulator::~CALifeSimulator		()
 void CALifeSimulator::destroy			()
 {
 //	validate					();
-	CALifeUpdateManager::destroy();
+	CAlifeUpdateManager::destroy();
 	VERIFY						(ai().get_alife());
 	ai().set_alife				(0);
 }
@@ -86,5 +86,5 @@ void CALifeSimulator::setup_simulator	(CSE_ALifeObject *object)
 
 void CALifeSimulator::reload			(const char* section)
 {
-	CALifeUpdateManager::reload	(section);
+	CAlifeUpdateManager::reload	(section);
 }

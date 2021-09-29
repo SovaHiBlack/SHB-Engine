@@ -10,7 +10,7 @@
 #include "ai_debug.h"
 #include "ef_storage.h"
 
-CPatternFunction::CPatternFunction(const char* caFileName, CEF_Storage* storage) : CBaseFunction(storage)
+CPatternFunction::CPatternFunction(const char* caFileName, CEvaluationFunctionStorage* storage) : CBaseEvaluationFunction(storage)
 {
 	m_dwPatternCount									= 0;
 	m_dwVariableCount									= 0;

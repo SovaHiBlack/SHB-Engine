@@ -1,10 +1,5 @@
-////////////////////////////////////////////////////////////////////////////
 //	Module 		: agent_corpse_manager.h
-//	Created 	: 24.05.2004
-//  Modified 	: 14.01.2005
-//	Author		: Dmitriy Iassenev
 //	Description : Agent corpse manager
-////////////////////////////////////////////////////////////////////////////
 
 #pragma once
 
@@ -13,26 +8,27 @@
 class CAgentManager;
 class CMemberOrder;
 
-class CAgentCorpseManager {
+class CAgentCorpseManager
+{
 public:
-	typedef xr_vector<CMemberCorpse> MEMBER_CORPSES;
+	using MemberCorpsesVec = xr_vector<CMemberCorpse>;
 
 private:
-	MEMBER_CORPSES			m_corpses;
-	CAgentManager			*m_object;
+	MemberCorpsesVec			m_corpses;
+	CAgentManager* m_object;
 
 protected:
-	inline		CAgentManager	&object					() const;
-			bool			process_corpse			(CMemberOrder &member);
+	inline		CAgentManager& object( ) const;
+	bool			process_corpse(CMemberOrder& member);
 
 public:
-	inline						CAgentCorpseManager		(CAgentManager *object);
-	inline		void			register_corpse			(CStalker*corpse);
-	inline		MEMBER_CORPSES	&corpses				();
-	inline		void			clear					();
-			void			react_on_member_death	();
-			void			update					();
-			void			remove_links			(CObject *object);
+	inline						CAgentCorpseManager(CAgentManager* object);
+	inline		void			register_corpse(CStalker* corpse);
+	inline		MemberCorpsesVec& corpses( );
+	inline		void			clear( );
+	void			react_on_member_death( );
+	void			update( );
+	void			remove_links(CObject* object);
 };
 
 #include "agent_corpse_manager_inline.h"

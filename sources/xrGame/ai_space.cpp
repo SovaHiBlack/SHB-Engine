@@ -33,7 +33,7 @@ CAI_Space::CAI_Space				()
 void CAI_Space::init				()
 {
 	VERIFY					(!m_ef_storage);
-	m_ef_storage			= xr_new<CEF_Storage>();
+	m_ef_storage			= xr_new<CEvaluationFunctionStorage>();
 
 	VERIFY					(!m_game_graph);
 	m_game_graph			= xr_new<CGameGraph>();

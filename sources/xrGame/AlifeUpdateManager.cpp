@@ -1,9 +1,9 @@
-//	Module 		: alife_update_manager.h
+//	Module 		: AlifeUpdateManager.cpp
 //	Description : ALife Simulator update manager
 
 #include "stdafx.h"
 
-#include "alife_update_manager.h"
+#include "AlifeUpdateManager.h"
 #include "alife_simulator_header.h"
 #include "alife_time_manager.h"
 #include "alife_graph_registry.h"
@@ -27,15 +27,15 @@ extern string_path g_last_saved_game;
 class CSwitchPredicate
 {
 private:
-	CALifeSwitchManager* m_switch_manager;
+	CAlifeSwitchManager* m_switch_manager;
 
 public:
-	inline			CSwitchPredicate(CALifeSwitchManager* switch_manager)
+	inline			CSwitchPredicate(CAlifeSwitchManager* switch_manager)
 	{
 		m_switch_manager = switch_manager;
 	}
 
-	inline bool	operator()		(CALifeLevelRegistry::_iterator& i, U64 cycle_count, bool) const
+	inline bool	operator()		(CALifeLevelRegistry::_iterator& i, unsigned __int64 cycle_count, bool) const
 	{
 		if ((*i).second->m_switch_counter == cycle_count)
 		{
@@ -46,14 +46,14 @@ public:
 		return true;
 	}
 
-	inline void	operator()		(CALifeLevelRegistry::_iterator& i, U64 cycle_count) const
+	inline void	operator()		(CALifeLevelRegistry::_iterator& i, unsigned __int64 cycle_count) const
 	{
 		m_switch_manager->switch_object((*i).second);
 	}
 };
 
-CALifeUpdateManager::CALifeUpdateManager(CServer* server, const char* section) :
-	CALifeSwitchManager(server, section),
+CAlifeUpdateManager::CAlifeUpdateManager(CServer* server, const char* section) :
+	CAlifeSwitchManager(server, section),
 	CALifeSurgeManager(server, section),
 	CALifeStorageManager(server, section),
 	CALifeSimulatorBase(server, section)
@@ -69,23 +69,23 @@ CALifeUpdateManager::CALifeUpdateManager(CServer* server, const char* section) :
 	m_first_time = true;
 }
 
-CALifeUpdateManager::~CALifeUpdateManager( )
+CAlifeUpdateManager::~CAlifeUpdateManager( )
 {
 	shedule_unregister( );
 	Device.remove_from_seq_parallel(
 		fastdelegate::FastDelegate0<>(
 		this,
-		&CALifeUpdateManager::update
+		&CAlifeUpdateManager::update
 	)
 	);
 }
 
-float CALifeUpdateManager::shedule_Scale( )
+float CAlifeUpdateManager::shedule_Scale( )
 {
 	return 0.5f; // (schedule_min + schedule_max)*0.5f
 }
 
-void CALifeUpdateManager::update_switch( )
+void CAlifeUpdateManager::update_switch( )
 {
 	init_ef_storage( );
 
@@ -94,7 +94,7 @@ void CALifeUpdateManager::update_switch( )
 	STOP_PROFILE
 }
 
-void CALifeUpdateManager::update_scheduled(bool init_ef)
+void CAlifeUpdateManager::update_scheduled(bool init_ef)
 {
 	if (init_ef)
 	{
@@ -106,13 +106,13 @@ void CALifeUpdateManager::update_scheduled(bool init_ef)
 	STOP_PROFILE
 }
 
-void CALifeUpdateManager::update( )
+void CAlifeUpdateManager::update( )
 {
 	update_switch( );
 	update_scheduled(false);
 }
 
-void CALifeUpdateManager::shedule_Update(u32 dt)
+void CAlifeUpdateManager::shedule_Update(unsigned int dt)
 {
 	ISheduled::shedule_Update(dt);
 
@@ -126,7 +126,7 @@ void CALifeUpdateManager::shedule_Update(u32 dt)
 		Device.seqParallel.push_back(
 			fastdelegate::FastDelegate0<>(
 			this,
-			&CALifeUpdateManager::update
+			&CAlifeUpdateManager::update
 		)
 		);
 		return;
@@ -139,22 +139,22 @@ void CALifeUpdateManager::shedule_Update(u32 dt)
 	STOP_PROFILE
 }
 
-void CALifeUpdateManager::set_process_time(int microseconds)
+void CAlifeUpdateManager::set_process_time(int microseconds)
 {
 	graph( ).set_process_time(float(microseconds) - float(microseconds) * update_monster_factor( ) / 1000000.f);
 }
 
-void CALifeUpdateManager::objects_per_update(const u32& objects_per_update)
+void CAlifeUpdateManager::objects_per_update(const unsigned int& objects_per_update)
 {
 	scheduled( ).objects_per_update(objects_per_update);
 }
 
-void CALifeUpdateManager::init_ef_storage( ) const
+void CAlifeUpdateManager::init_ef_storage( ) const
 {
 	ai( ).ef_storage( ).alife_evaluation(true);
 }
 
-bool CALifeUpdateManager::change_level(CNetPacket& net_packet)
+bool CAlifeUpdateManager::change_level(CNetPacket& net_packet)
 {
 	if (m_changing_level)
 	{
@@ -172,13 +172,13 @@ bool CALifeUpdateManager::change_level(CNetPacket& net_packet)
 	m_changing_level = true;
 
 	GameGraph::_GRAPH_ID			safe_graph_vertex_id = graph( ).actor( )->m_tGraphID;
-	u32								safe_level_vertex_id = graph( ).actor( )->m_tNodeID;
+	unsigned int								safe_level_vertex_id = graph( ).actor( )->m_tNodeID;
 	Fvector3						safe_position = graph( ).actor( )->o_Position;
 	Fvector3						safe_angles = graph( ).actor( )->o_Angle;
 	SRotation						safe_torso = graph( ).actor( )->o_torso;
 
 	GameGraph::_GRAPH_ID			holder_safe_graph_vertex_id = GameGraph::_GRAPH_ID(-1);
-	u32								holder_safe_level_vertex_id = u32(-1);
+	unsigned int								holder_safe_level_vertex_id = unsigned int(-1);
 	Fvector3						holder_safe_position = Fvector3( ).set(flt_max, flt_max, flt_max);
 	Fvector3						holder_safe_angles = Fvector3( ).set(flt_max, flt_max, flt_max);
 	CSE_ALifeObject* holder = nullptr;
@@ -192,7 +192,7 @@ bool CALifeUpdateManager::change_level(CNetPacket& net_packet)
 
 	graph( ).actor( )->o_torso.yaw = graph( ).actor( )->o_Angle.y;
 	graph( ).actor( )->o_torso.pitch = graph( ).actor( )->o_Angle.x;
-	graph( ).actor( )->o_torso.roll = 0.f;
+	graph( ).actor( )->o_torso.roll = 0.0f;
 
 	if (graph( ).actor( )->m_holderID != 0xffff)
 	{
@@ -236,7 +236,7 @@ bool CALifeUpdateManager::change_level(CNetPacket& net_packet)
 	return true;
 }
 
-void CALifeUpdateManager::new_game(const char* save_name)
+void CAlifeUpdateManager::new_game(const char* save_name)
 {
 	g_pGamePersistent->LoadTitle("st_creating_new_game");
 	Msg("* Creating new game...");
@@ -265,13 +265,13 @@ void CALifeUpdateManager::new_game(const char* save_name)
 	Msg("* New game is successfully created!");
 }
 
-void CALifeUpdateManager::load(const char* game_name, bool no_assert, bool new_only)
+void CAlifeUpdateManager::load(const char* game_name, bool no_assert, bool new_only)
 {
 	g_pGamePersistent->LoadTitle("st_loading_alife_simulator");
 
 #ifdef DEBUG
 	Memory.mem_compact( );
-	u32 memory_usage = Memory.mem_usage( );
+	unsigned int memory_usage = Memory.mem_usage( );
 #endif // def DEBUG
 
 	strcpy(g_last_saved_game, game_name);
@@ -289,14 +289,14 @@ void CALifeUpdateManager::load(const char* game_name, bool no_assert, bool new_o
 	g_pGamePersistent->LoadTitle("st_server_connecting");
 }
 
-void CALifeUpdateManager::reload(const char* section)
+void CAlifeUpdateManager::reload(const char* section)
 {
 	CALifeSimulatorBase::reload(section);
 	set_process_time((int) m_max_process_time);
 	objects_per_update(m_objects_per_update);
 }
 
-bool CALifeUpdateManager::load_game(const char* game_name, bool no_assert)
+bool CAlifeUpdateManager::load_game(const char* game_name, bool no_assert)
 {
 	{
 		string_path temp;
@@ -319,28 +319,28 @@ bool CALifeUpdateManager::load_game(const char* game_name, bool no_assert)
 	return true;
 }
 
-void CALifeUpdateManager::set_switch_online(ALife::_OBJECT_ID id, bool value)
+void CAlifeUpdateManager::set_switch_online(ALife::_OBJECT_ID id, bool value)
 {
 	CSE_ALifeDynamicObject* object = objects( ).object(id);
 	VERIFY(object);
 	object->can_switch_online(value);
 }
 
-void CALifeUpdateManager::set_switch_offline(ALife::_OBJECT_ID id, bool value)
+void CAlifeUpdateManager::set_switch_offline(ALife::_OBJECT_ID id, bool value)
 {
 	CSE_ALifeDynamicObject* object = objects( ).object(id);
 	VERIFY(object);
 	object->can_switch_offline(value);
 }
 
-void CALifeUpdateManager::set_interactive(ALife::_OBJECT_ID id, bool value)
+void CAlifeUpdateManager::set_interactive(ALife::_OBJECT_ID id, bool value)
 {
 	CSE_ALifeDynamicObject* object = objects( ).object(id);
 	VERIFY(object);
 	object->interactive(value);
 }
 
-void CALifeUpdateManager::jump_to_level(const char* level_name) const
+void CAlifeUpdateManager::jump_to_level(const char* level_name) const
 {
 	const CGameGraph::SLevel& level = ai( ).game_graph( ).header( ).level(level_name);
 	GameGraph::_GRAPH_ID dest = GameGraph::_GRAPH_ID(-1);
@@ -385,11 +385,11 @@ void CALifeUpdateManager::jump_to_level(const char* level_name) const
 
 	Fvector3 level_point = ai( ).game_graph( ).vertex(dest)->level_point( );
 	net_packet.w(&level_point, sizeof(level_point));
-	net_packet.w_vec3(Fvector3( ).set(0.f, 0.f, 0.f));
+	net_packet.w_vec3(Fvector3( ).set(0.0f, 0.0f, 0.0f));
 	Level( ).Send(net_packet, net_flags(TRUE));
 }
 
-void CALifeUpdateManager::teleport_object(ALife::_OBJECT_ID id, GameGraph::_GRAPH_ID game_vertex_id, u32 level_vertex_id, const Fvector3& position)
+void CAlifeUpdateManager::teleport_object(ALife::_OBJECT_ID id, GameGraph::_GRAPH_ID game_vertex_id, unsigned int level_vertex_id, const Fvector3& position)
 {
 	CSE_ALifeDynamicObject* object = objects( ).object(id, true);
 	if (!object)
@@ -428,7 +428,7 @@ void CALifeUpdateManager::teleport_object(ALife::_OBJECT_ID id, GameGraph::_GRAP
 	}
 }
 
-void CALifeUpdateManager::add_restriction(ALife::_OBJECT_ID id, ALife::_OBJECT_ID restriction_id, const Restriction::ERestrictorTypes& restriction_type)
+void CAlifeUpdateManager::add_restriction(ALife::_OBJECT_ID id, ALife::_OBJECT_ID restriction_id, const Restriction::ERestrictorTypes& restriction_type)
 {
 	CSE_ALifeDynamicObject* object = objects( ).object(id, true);
 	if (!object)
@@ -496,7 +496,7 @@ void CALifeUpdateManager::add_restriction(ALife::_OBJECT_ID id, ALife::_OBJECT_I
 	}
 }
 
-void CALifeUpdateManager::remove_restriction(ALife::_OBJECT_ID id, ALife::_OBJECT_ID restriction_id, const Restriction::ERestrictorTypes& restriction_type)
+void CAlifeUpdateManager::remove_restriction(ALife::_OBJECT_ID id, ALife::_OBJECT_ID restriction_id, const Restriction::ERestrictorTypes& restriction_type)
 {
 	CSE_ALifeDynamicObject* object = objects( ).object(id, true);
 	if (!object)
@@ -560,7 +560,7 @@ void CALifeUpdateManager::remove_restriction(ALife::_OBJECT_ID id, ALife::_OBJEC
 	}
 }
 
-void CALifeUpdateManager::remove_all_restrictions(ALife::_OBJECT_ID id, const Restriction::ERestrictorTypes& restriction_type)
+void CAlifeUpdateManager::remove_all_restrictions(ALife::_OBJECT_ID id, const Restriction::ERestrictorTypes& restriction_type)
 {
 	CSE_ALifeDynamicObject* object = objects( ).object(id, true);
 	if (!object)

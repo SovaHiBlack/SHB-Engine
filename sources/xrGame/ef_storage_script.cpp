@@ -8,21 +8,21 @@
 #include "script_game_object.h"
 #include "EntityAlive.h"
 #include "script_engine.h"
-#include "ef_base.h"
+#include "BaseEvaluationFunction.h"
 #include "xrServer_Objects_ALife.h"
 
 using namespace luabind;
 
-CEF_Storage* ef_storage( )
+CEvaluationFunctionStorage* ef_storage( )
 {
 	return &ai( ).ef_storage( );
 }
 
-float evaluate(CEF_Storage* ef_storage, const char* function, CScriptGameObject* _0, CScriptGameObject* _1, CScriptGameObject* _2, CScriptGameObject* _3)
+float evaluate(CEvaluationFunctionStorage* ef_storage, const char* function, CScriptGameObject* _0, CScriptGameObject* _1, CScriptGameObject* _2, CScriptGameObject* _3)
 {
 	ef_storage->alife_evaluation(false);
 
-	CBaseFunction* f = ef_storage->function(function);
+	CBaseEvaluationFunction* f = ef_storage->function(function);
 	if (!f)
 	{
 		ai( ).script_engine( ).script_log(eLuaMessageTypeError, "Cannot find evaluation function %s", function);
@@ -49,26 +49,26 @@ float evaluate(CEF_Storage* ef_storage, const char* function, CScriptGameObject*
 	return f->ffGetValue( );
 }
 
-float evaluate(CEF_Storage* ef_storage, const char* function, CScriptGameObject* _0, CScriptGameObject* _1, CScriptGameObject* _2)
+float evaluate(CEvaluationFunctionStorage* ef_storage, const char* function, CScriptGameObject* _0, CScriptGameObject* _1, CScriptGameObject* _2)
 {
 	return evaluate(ef_storage, function, _0, _1, _2, 0);
 }
 
-float evaluate(CEF_Storage* ef_storage, const char* function, CScriptGameObject* _0, CScriptGameObject* _1)
+float evaluate(CEvaluationFunctionStorage* ef_storage, const char* function, CScriptGameObject* _0, CScriptGameObject* _1)
 {
 	return evaluate(ef_storage, function, _0, _1, 0, 0);
 }
 
-float evaluate(CEF_Storage* ef_storage, const char* function, CScriptGameObject* _0)
+float evaluate(CEvaluationFunctionStorage* ef_storage, const char* function, CScriptGameObject* _0)
 {
 	return evaluate(ef_storage, function, _0, 0, 0, 0);
 }
 
-float evaluate(CEF_Storage* ef_storage, const char* function, CSE_ALifeObject* _0, CSE_ALifeObject* _1, CSE_ALifeObject* _2, CSE_ALifeObject* _3)
+float evaluate(CEvaluationFunctionStorage* ef_storage, const char* function, CSE_ALifeObject* _0, CSE_ALifeObject* _1, CSE_ALifeObject* _2, CSE_ALifeObject* _3)
 {
 	ef_storage->alife_evaluation(true);
 
-	CBaseFunction* f = ef_storage->function(function);
+	CBaseEvaluationFunction* f = ef_storage->function(function);
 	if (!f)
 	{
 		ai( ).script_engine( ).script_log(eLuaMessageTypeError, "Cannot find evaluation function %s", function);
@@ -95,36 +95,36 @@ float evaluate(CEF_Storage* ef_storage, const char* function, CSE_ALifeObject* _
 	return f->ffGetValue( );
 }
 
-float evaluate(CEF_Storage* ef_storage, const char* function, CSE_ALifeObject* _0, CSE_ALifeObject* _1, CSE_ALifeObject* _2)
+float evaluate(CEvaluationFunctionStorage* ef_storage, const char* function, CSE_ALifeObject* _0, CSE_ALifeObject* _1, CSE_ALifeObject* _2)
 {
 	return evaluate(ef_storage, function, _0, _1, _2, 0);
 }
 
-float evaluate(CEF_Storage* ef_storage, const char* function, CSE_ALifeObject* _0, CSE_ALifeObject* _1)
+float evaluate(CEvaluationFunctionStorage* ef_storage, const char* function, CSE_ALifeObject* _0, CSE_ALifeObject* _1)
 {
 	return evaluate(ef_storage, function, _0, _1, 0, 0);
 }
 
-float evaluate(CEF_Storage* ef_storage, const char* function, CSE_ALifeObject* _0)
+float evaluate(CEvaluationFunctionStorage* ef_storage, const char* function, CSE_ALifeObject* _0)
 {
 	return evaluate(ef_storage, function, _0, 0, 0, 0);
 }
 
 #pragma optimize("s", on)
-void CEF_Storage::script_register(lua_State* L)
+void CEvaluationFunctionStorage::script_register(lua_State* L)
 {
 	module(L)
 		[
 			def("ef_storage", &ef_storage),
 
-			class_<CEF_Storage>("cef_storage")
-			.def("evaluate", (float (*)(CEF_Storage*, const char*, CScriptGameObject*))(&evaluate))
-			.def("evaluate", (float (*)(CEF_Storage*, const char*, CScriptGameObject*, CScriptGameObject*))(&evaluate))
-			.def("evaluate", (float (*)(CEF_Storage*, const char*, CScriptGameObject*, CScriptGameObject*, CScriptGameObject*))(&evaluate))
-			.def("evaluate", (float (*)(CEF_Storage*, const char*, CScriptGameObject*, CScriptGameObject*, CScriptGameObject*, CScriptGameObject*))(&evaluate))
-			.def("evaluate", (float (*)(CEF_Storage*, const char*, CSE_ALifeObject*))(&evaluate))
-			.def("evaluate", (float (*)(CEF_Storage*, const char*, CSE_ALifeObject*, CSE_ALifeObject*))(&evaluate))
-			.def("evaluate", (float (*)(CEF_Storage*, const char*, CSE_ALifeObject*, CSE_ALifeObject*, CSE_ALifeObject*))(&evaluate))
-			.def("evaluate", (float (*)(CEF_Storage*, const char*, CSE_ALifeObject*, CSE_ALifeObject*, CSE_ALifeObject*, CSE_ALifeObject*))(&evaluate))
+			class_<CEvaluationFunctionStorage>("cef_storage")
+			.def("evaluate", (float (*)(CEvaluationFunctionStorage*, const char*, CScriptGameObject*))(&evaluate))
+			.def("evaluate", (float (*)(CEvaluationFunctionStorage*, const char*, CScriptGameObject*, CScriptGameObject*))(&evaluate))
+			.def("evaluate", (float (*)(CEvaluationFunctionStorage*, const char*, CScriptGameObject*, CScriptGameObject*, CScriptGameObject*))(&evaluate))
+			.def("evaluate", (float (*)(CEvaluationFunctionStorage*, const char*, CScriptGameObject*, CScriptGameObject*, CScriptGameObject*, CScriptGameObject*))(&evaluate))
+			.def("evaluate", (float (*)(CEvaluationFunctionStorage*, const char*, CSE_ALifeObject*))(&evaluate))
+			.def("evaluate", (float (*)(CEvaluationFunctionStorage*, const char*, CSE_ALifeObject*, CSE_ALifeObject*))(&evaluate))
+			.def("evaluate", (float (*)(CEvaluationFunctionStorage*, const char*, CSE_ALifeObject*, CSE_ALifeObject*, CSE_ALifeObject*))(&evaluate))
+			.def("evaluate", (float (*)(CEvaluationFunctionStorage*, const char*, CSE_ALifeObject*, CSE_ALifeObject*, CSE_ALifeObject*, CSE_ALifeObject*))(&evaluate))
 		];
 }

@@ -17,7 +17,7 @@
 #include "alife_human_brain.h"
 #include "alife_human_object_handler.h"
 
-inline CLASS_ID CBaseFunction::clsid_member_item( ) const
+inline CLASS_ID CBaseEvaluationFunction::clsid_member_item( ) const
 {
 	CLASS_ID result;
 	if (ef_storage( ).non_alife( ).member_item( ))
@@ -33,7 +33,7 @@ inline CLASS_ID CBaseFunction::clsid_member_item( ) const
 	return result;
 }
 
-inline CLASS_ID CBaseFunction::clsid_enemy_item( ) const
+inline CLASS_ID CBaseEvaluationFunction::clsid_enemy_item( ) const
 {
 	CLASS_ID result;
 	if (ef_storage( ).non_alife( ).enemy_item( ))
@@ -49,7 +49,7 @@ inline CLASS_ID CBaseFunction::clsid_enemy_item( ) const
 	return result;
 }
 
-inline CLASS_ID CBaseFunction::clsid_member( ) const
+inline CLASS_ID CBaseEvaluationFunction::clsid_member( ) const
 {
 	CLASS_ID result;
 	if (ef_storage( ).non_alife( ).member( ))
@@ -67,7 +67,7 @@ inline CLASS_ID CBaseFunction::clsid_member( ) const
 	return result;
 }
 
-inline CLASS_ID CBaseFunction::clsid_enemy( ) const
+inline CLASS_ID CBaseEvaluationFunction::clsid_enemy( ) const
 {
 	CLASS_ID result;
 	if (ef_storage( ).non_alife( ).enemy( ))
@@ -408,7 +408,7 @@ u32 CPersonalMaxHealth::dwfGetDiscreteValue(u32 dwDiscretizationValue)
 
 float CEquipmentType::ffGetValue( )
 {
-	u32 result;
+	unsigned int result;
 	if (ef_storage( ).non_alife( ).member_item( ))
 	{
 		result = ef_storage( ).non_alife( ).member_item( )->ef_equipment_type( );
@@ -461,7 +461,7 @@ float CEquipmentPreference::ffGetValue( )
 
 float CMainWeaponType::ffGetValue( )
 {
-	u32 result;
+	unsigned int result;
 	if (ef_storage( ).non_alife( ).member_item( ))
 	{
 		result = ef_storage( ).non_alife( ).member_item( )->ef_main_weapon_type( );
@@ -556,7 +556,7 @@ u32 CWeaponAmmoCount::dwfGetDiscreteValue(u32 dwDiscretizationValue)
 
 float CEnemyAnomalyType::ffGetValue( )
 {
-	u32 result;
+	unsigned int result;
 	if (ef_storage( ).non_alife( ).enemy( ))
 	{
 		result = ef_storage( ).non_alife( ).enemy( )->ef_anomaly_type( );
@@ -588,7 +588,7 @@ float CDetectorType::ffGetValue( )
 		}
 	}
 
-	u32 result;
+	unsigned int result;
 	if (ef_storage( ).non_alife( ).member( ))
 	{
 		if (ef_storage( ).non_alife( ).member( )->natural_detector( ))

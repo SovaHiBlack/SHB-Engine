@@ -3,14 +3,14 @@
 
 #pragma once
 
-#include "ef_base.h"
+#include "BaseEvaluationFunction.h"
 
-class CEF_Storage;
+class CEvaluationFunctionStorage;
 
-class CPatternFunction : public CBaseFunction
+class CPatternFunction : public CBaseEvaluationFunction
 {
 private:
-	using inherited						= CBaseFunction;
+	using inherited						= CBaseEvaluationFunction;
 
 	enum
 	{
@@ -55,7 +55,7 @@ public:
 	u32*								m_dwaVariableTypes;
 	u32*								m_dwaVariableValues;
 
-					CPatternFunction	(const char* caEFFileName, CEF_Storage* storage);
+					CPatternFunction	(const char* caEFFileName, CEvaluationFunctionStorage* storage);
 	virtual			~CPatternFunction	( );
 
 	virtual void	vfLoadEF			(const char* caEFFileName);

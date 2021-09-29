@@ -7,7 +7,7 @@ class CGameGraph;
 class CGameLevelCrossTable;
 class CLevelGraph;
 class CGraphEngine;
-class CEF_Storage;
+class CEvaluationFunctionStorage;
 class CALifeSimulator;
 class CCoverManager;
 class CScriptEngine;
@@ -26,7 +26,7 @@ private:
 	CGameLevelCrossTable				*m_cross_table;
 	CLevelGraph							*m_level_graph;
 	CGraphEngine						*m_graph_engine;
-	CEF_Storage							*m_ef_storage;
+	CEvaluationFunctionStorage*			m_ef_storage;
 	CALifeSimulator						*m_alife_simulator;
 	CCoverManager						*m_cover_manager;
 	CScriptEngine						*m_script_engine;
@@ -50,7 +50,7 @@ public:
 			inline		const CGameLevelCrossTable	&cross_table			() const;
 			inline		const CGameLevelCrossTable	*get_cross_table		() const;
 			inline		const CPatrolPathStorage	&patrol_paths			() const;
-			inline		CEF_Storage					&ef_storage				() const;
+			inline		CEvaluationFunctionStorage&	ef_storage				() const;
 			inline		CGraphEngine				&graph_engine			() const;
 			inline		const CALifeSimulator		&alife					() const;
 			inline		const CALifeSimulator		*get_alife				() const;

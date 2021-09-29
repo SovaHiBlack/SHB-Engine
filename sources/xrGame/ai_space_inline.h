@@ -41,7 +41,7 @@ inline	const CGameLevelCrossTable	*CAI_Space::get_cross_table			() const
 	return					(m_cross_table);
 }
 
-inline	CEF_Storage					&CAI_Space::ef_storage				() const
+inline	CEvaluationFunctionStorage&	CAI_Space::ef_storage				() const
 {
 	VERIFY					(m_ef_storage);
 	return					(*m_ef_storage);

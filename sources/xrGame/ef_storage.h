@@ -16,7 +16,7 @@ class CGameObject;
 class CEntityAlive;
 class CSE_ALifeSchedulable;
 class CSE_ALifeObject;
-class CBaseFunction;
+class CBaseEvaluationFunction;
 class CPatternFunction;
 
 class CDistanceFunction;
@@ -98,12 +98,12 @@ public:
 typedef CEF_Params<const CEntityAlive, const CGameObject>		CNonALifeParams;
 typedef CEF_Params<CSE_ALifeSchedulable, const CSE_ALifeObject>	CALifeParams;
 
-class CEF_Storage;
+class CEvaluationFunctionStorage;
 
 template <typename T>
-struct CEnemyFunction : public T
+struct SEnemyFunction : public T
 {
-	inline				CEnemyFunction(CEF_Storage* storage) : T(storage)
+	inline				SEnemyFunction(CEvaluationFunctionStorage* storage) : T(storage)
 	{ }
 
 	template <typename P>
@@ -128,19 +128,19 @@ struct CEnemyFunction : public T
 	}
 };
 
-class CEF_Storage
+class CEvaluationFunctionStorage
 {
 public:
-	typedef CEnemyFunction<CPersonalHealthFunction>			CEnemyHealthFunction;
-	typedef CEnemyFunction<CPersonalCreatureTypeFunction>	CEnemyCreatureTypeFunction;
-	typedef CEnemyFunction<CPersonalWeaponTypeFunction>		CEnemyWeaponTypeFunction;
-	typedef CEnemyFunction<CPersonalEyeRange>				CEnemyEyeRange;
-	typedef CEnemyFunction<CPersonalMaxHealth>				CEnemyMaxHealth;
+	using CEnemyHealthFunction = SEnemyFunction<CPersonalHealthFunction>;
+	using CEnemyCreatureTypeFunction = SEnemyFunction<CPersonalCreatureTypeFunction>;
+	using CEnemyWeaponTypeFunction = SEnemyFunction<CPersonalWeaponTypeFunction>;
+	using CEnemyEyeRange = SEnemyFunction<CPersonalEyeRange>;
+	using CEnemyMaxHealth = SEnemyFunction<CPersonalMaxHealth>;
 
 	CNonALifeParams							m_non_alife_params;
 	CALifeParams							m_alife_params;
 	// primary functions
-	CBaseFunction* m_fpaBaseFunctions[AI_MAX_EVALUATION_FUNCTION_COUNT];
+	CBaseEvaluationFunction* m_fpaBaseFunctions[AI_MAX_EVALUATION_FUNCTION_COUNT];
 
 	CDistanceFunction* m_pfDistance;
 	CGraphPointType0* m_pfGraphPointType0;
@@ -202,9 +202,9 @@ public:
 	CPatternFunction* m_pfBirthProbability;
 	CPatternFunction* m_pfBirthSpeed;
 
-	CEF_Storage( );
-	virtual									~CEF_Storage( );
-	CBaseFunction* function(const char* function) const;
+	CEvaluationFunctionStorage( );
+	virtual									~CEvaluationFunctionStorage( );
+	CBaseEvaluationFunction* function(const char* function) const;
 	inline void							alife_evaluation(bool value);
 	inline CNonALifeParams& non_alife( );
 	inline CALifeParams& alife( );
@@ -212,8 +212,8 @@ public:
 	static void script_register(lua_State*);
 };
 
-add_to_type_list(CEF_Storage)
+add_to_type_list(CEvaluationFunctionStorage)
 #undef script_type_list
-#define script_type_list save_type_list(CEF_Storage)
+#define script_type_list save_type_list(CEvaluationFunctionStorage)
 
 #include "ef_storage_inline.h"

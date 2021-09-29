@@ -22,12 +22,12 @@ inline	CAgentManager &CAgentCorpseManager::object	() const
 
 inline	void CAgentCorpseManager::register_corpse	(CStalker*corpse)
 {
-	MEMBER_CORPSES::iterator	I = std::find(m_corpses.begin(),m_corpses.end(),corpse);
+	MemberCorpsesVec::iterator	I = std::find(m_corpses.begin(),m_corpses.end(),corpse);
 	VERIFY2						(I == m_corpses.end(),"Cannot register corpse more than a time!");
 	m_corpses.push_back			(CMemberCorpse(corpse,0,Device.dwTimeGlobal));
 }
 
-inline	CAgentCorpseManager::MEMBER_CORPSES &CAgentCorpseManager::corpses	()
+inline	CAgentCorpseManager::MemberCorpsesVec& CAgentCorpseManager::corpses	()
 {
 	return						(m_corpses);
 }

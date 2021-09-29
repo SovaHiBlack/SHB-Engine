@@ -564,12 +564,12 @@
     <ClInclude Include="alife_story_registry_inline.h" />
     <ClInclude Include="alife_surge_manager.h" />
     <ClInclude Include="alife_surge_manager_inline.h" />
-    <ClInclude Include="alife_switch_manager.h" />
-    <ClInclude Include="alife_switch_manager_inline.h" />
+    <ClInclude Include="AlifeSwitchManager.h" />
+    <ClInclude Include="AlifeSwitchManager_inline.h" />
     <ClInclude Include="alife_time_manager.h" />
     <ClInclude Include="alife_time_manager_inline.h" />
-    <ClInclude Include="alife_update_manager.h" />
-    <ClInclude Include="alife_update_manager_inline.h" />
+    <ClInclude Include="AlifeUpdateManager.h" />
+    <ClInclude Include="AlifeUpdateManager_inline.h" />
     <ClInclude Include="AmebaZone.h" />
     <ClInclude Include="animation_movement_controller.h" />
     <ClInclude Include="Antirad.h" />
@@ -688,7 +688,7 @@
     <ClInclude Include="EffectorShot.h" />
     <ClInclude Include="EffectorShotX.h" />
     <ClInclude Include="EffectorZoomInertion.h" />
-    <ClInclude Include="ef_base.h" />
+    <ClInclude Include="BaseEvaluationFunction.h" />
     <ClInclude Include="ef_pattern.h" />
     <ClInclude Include="ef_primary.h" />
     <ClInclude Include="ef_storage.h" />
@@ -1674,11 +1674,11 @@
     <ClCompile Include="alife_storage_manager.cpp" />
     <ClCompile Include="alife_story_registry.cpp" />
     <ClCompile Include="alife_surge_manager.cpp" />
-    <ClCompile Include="alife_switch_manager.cpp" />
+    <ClCompile Include="AlifeSwitchManager.cpp" />
     <ClCompile Include="alife_time_manager.cpp" />
     <ClCompile Include="alife_trader.cpp" />
     <ClCompile Include="alife_trader_abstract.cpp" />
-    <ClCompile Include="alife_update_manager.cpp">
+    <ClCompile Include="AlifeUpdateManager.cpp">
       <DisableSpecificWarnings Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">4121;%(DisableSpecificWarnings)</DisableSpecificWarnings>
     </ClCompile>
     <ClCompile Include="AmebaZone.cpp" />

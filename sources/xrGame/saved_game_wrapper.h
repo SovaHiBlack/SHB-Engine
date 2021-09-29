@@ -31,7 +31,7 @@ public:
 	inline	const _TIME_ID	&game_time			() const;
 	inline	const _LEVEL_ID	&level_id			() const;
 	inline	const float		&actor_health		() const;
-public:
+
 	static void script_register(lua_State*);
 };
 

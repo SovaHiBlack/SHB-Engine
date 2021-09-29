@@ -1,4 +1,4 @@
-//	Module		: ef_base.h
+//	Module		: BaseEvaluationFunction.h
 //	Description	: Base evaluation function class
 
 #pragma once
@@ -11,35 +11,35 @@
 
 class CEntityAlive;
 class CSE_ALifeObject;
-class CEF_Storage;
+class CEvaluationFunctionStorage;
 
-class CBaseFunction
+class CBaseEvaluationFunction
 {
 protected:
 	float										m_fMinResultValue;
 	float										m_fMaxResultValue;
 	char										m_caName[260];
-	CEF_Storage*								m_storage;
+	CEvaluationFunctionStorage* m_storage;
 
 public:
-						CBaseFunction			(CEF_Storage* storage)
+	CBaseEvaluationFunction(CEvaluationFunctionStorage* storage)
 	{
 		m_storage = storage;
 		VERIFY(m_storage);
 		m_caName[0] = 0;
-	};
-	virtual				~CBaseFunction			( )
-	{ };
+	}
+	virtual				~CBaseEvaluationFunction( )
+	{ }
 
-	inline CEF_Storage&		ef_storage				( ) const
+	inline CEvaluationFunctionStorage& ef_storage( ) const
 	{
 		VERIFY(m_storage);
 		return *m_storage;
 	}
 
-	virtual float		ffGetValue				( ) = 0;
+	virtual float		ffGetValue( ) = 0;
 
-	virtual u32			dwfGetDiscreteValue		(u32 dwDiscretizationValue = 2)
+	virtual unsigned int			dwfGetDiscreteValue(unsigned int dwDiscretizationValue = 2)
 	{
 		float fTemp = ffGetValue( );
 		if (fTemp <= m_fMinResultValue)
@@ -56,22 +56,22 @@ public:
 		}
 	}
 
-	inline float			ffGetMaxResultValue		( )
+	inline float			ffGetMaxResultValue( )
 	{
 		return m_fMaxResultValue;
 	}
-	inline float			ffGetMinResultValue		( )
+	inline float			ffGetMinResultValue( )
 	{
 		return m_fMinResultValue;
 	}
 
-	inline const char*		Name					( )
+	inline const char* Name( )
 	{
 		return m_caName;
 	}
 
-	inline CLASS_ID			clsid_member			( ) const;
-	inline CLASS_ID			clsid_enemy				( ) const;
-	inline CLASS_ID			clsid_member_item		( ) const;
-	inline CLASS_ID			clsid_enemy_item		( ) const;
+	inline CLASS_ID			clsid_member( ) const;
+	inline CLASS_ID			clsid_enemy( ) const;
+	inline CLASS_ID			clsid_member_item( ) const;
+	inline CLASS_ID			clsid_enemy_item( ) const;
 };

@@ -2478,7 +2478,7 @@
     <ClInclude Include="ai_debug.h">
       <Filter>AI\ADebug</Filter>
     </ClInclude>
-    <ClInclude Include="ef_base.h">
+    <ClInclude Include="BaseEvaluationFunction.h">
       <Filter>AI\AEval\functions\base</Filter>
     </ClInclude>
     <ClInclude Include="ef_primary.h">
@@ -2748,10 +2748,10 @@
     <ClInclude Include="alife_time_manager_inline.h">
       <Filter>AI\ALife\simulator_base\time_manager</Filter>
     </ClInclude>
-    <ClInclude Include="alife_update_manager.h">
+    <ClInclude Include="AlifeUpdateManager.h">
       <Filter>AI\ALife\update_manager</Filter>
     </ClInclude>
-    <ClInclude Include="alife_update_manager_inline.h">
+    <ClInclude Include="AlifeUpdateManager_inline.h">
       <Filter>AI\ALife\update_manager</Filter>
     </ClInclude>
     <ClInclude Include="alife_storage_manager.h">
@@ -2766,10 +2766,10 @@
     <ClInclude Include="alife_surge_manager_inline.h">
       <Filter>AI\ALife\update_manager\surge_manager</Filter>
     </ClInclude>
-    <ClInclude Include="alife_switch_manager.h">
+    <ClInclude Include="AlifeSwitchManager.h">
       <Filter>AI\ALife\update_manager\switch_manager</Filter>
     </ClInclude>
-    <ClInclude Include="alife_switch_manager_inline.h">
+    <ClInclude Include="AlifeSwitchManager_inline.h">
       <Filter>AI\ALife\update_manager\switch_manager</Filter>
     </ClInclude>
     <ClInclude Include="saved_game_wrapper.h">
@@ -6089,9 +6089,6 @@
     <ClCompile Include="ef_storage.cpp">
       <Filter>AI\AEval\storage</Filter>
     </ClCompile>
-    <ClCompile Include="ef_storage_script.cpp">
-      <Filter>AI\AEval\storage</Filter>
-    </ClCompile>
     <ClCompile Include="agent_corpse_manager.cpp">
       <Filter>AI\AGroup\AgentManager\agent_corpse_manager</Filter>
     </ClCompile>
@@ -6272,7 +6269,7 @@
     <ClCompile Include="alife_time_manager.cpp">
       <Filter>AI\ALife\simulator_base\time_manager</Filter>
     </ClCompile>
-    <ClCompile Include="alife_update_manager.cpp">
+    <ClCompile Include="AlifeUpdateManager.cpp">
       <Filter>AI\ALife\update_manager</Filter>
     </ClCompile>
     <ClCompile Include="alife_storage_manager.cpp">
@@ -6281,7 +6278,7 @@
     <ClCompile Include="alife_surge_manager.cpp">
       <Filter>AI\ALife\update_manager\surge_manager</Filter>
     </ClCompile>
-    <ClCompile Include="alife_switch_manager.cpp">
+    <ClCompile Include="AlifeSwitchManager.cpp">
       <Filter>AI\ALife\update_manager\switch_manager</Filter>
     </ClCompile>
     <ClCompile Include="saved_game_wrapper.cpp">
@@ -8557,6 +8554,9 @@
     </ClCompile>
     <ClCompile Include="InventoryItemObject.cpp">
       <Filter>Core\Client\Objects\inventory\InventoryItemObject</Filter>
+    </ClCompile>
+    <ClCompile Include="ef_storage_script.cpp">
+      <Filter>AI\AEval\storage</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

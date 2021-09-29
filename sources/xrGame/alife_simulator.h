@@ -4,14 +4,14 @@
 #pragma once
 
 #include "alife_interaction_manager.h"
-#include "alife_update_manager.h"
+#include "AlifeUpdateManager.h"
 #include "script_export_space.h"
 
 #pragma warning(push)
 #pragma warning(disable:4005)
 
 class CALifeSimulator : 
-	public CALifeUpdateManager,
+	public CAlifeUpdateManager,
 	public CALifeInteractionManager
 {
 protected:

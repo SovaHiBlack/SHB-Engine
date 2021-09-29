@@ -3,27 +3,27 @@
 
 #pragma once
 
-#include "ef_base.h"
+#include "BaseEvaluationFunction.h"
 
-class CDistanceFunction : public CBaseFunction
+class CDistanceFunction : public CBaseEvaluationFunction
 {
 public:
-	typedef CBaseFunction inherited;
+	using inherited = CBaseEvaluationFunction;
 
-	CDistanceFunction(CEF_Storage* storage) : CBaseFunction(storage)
+	CDistanceFunction(CEvaluationFunctionStorage* storage) : CBaseEvaluationFunction(storage)
 	{
 		m_fMinResultValue = 3.0f;
 		m_fMaxResultValue = 20.0f;
 		strcat(m_caName, "Distance");
 		OUT_MESSAGE("* Evaluation function \"%s\" is successfully initialized", m_caName);
-	};
+	}
 
 	virtual ~CDistanceFunction( )
 	{ }
 
 	virtual float ffGetValue( );
 
-	virtual u32	dwfGetDiscreteValue(u32 dwDiscretizationValue)
+	virtual unsigned int	dwfGetDiscreteValue(unsigned int dwDiscretizationValue)
 	{
 		float fTemp = ffGetValue( );
 		if (fTemp <= m_fMinResultValue)
@@ -31,44 +31,44 @@ public:
 			return 0;
 		}
 		else if (fTemp >= m_fMaxResultValue)
-			{
-				return(dwDiscretizationValue - 1);
-			}
-			else
-			{
-				return 1;
-			}
+		{
+			return(dwDiscretizationValue - 1);
+		}
+		else
+		{
+			return 1;
+		}
 	}
 };
 
-class CPersonalHealthFunction : public CBaseFunction
+class CPersonalHealthFunction : public CBaseEvaluationFunction
 {
 public:
-	typedef CBaseFunction inherited;
+	using inherited = CBaseEvaluationFunction;
 
-	CPersonalHealthFunction(CEF_Storage* storage) : CBaseFunction(storage)
+	CPersonalHealthFunction(CEvaluationFunctionStorage* storage) : CBaseEvaluationFunction(storage)
 	{
 		m_fMinResultValue = 0.0;
 		m_fMaxResultValue = 100.0;
 		strcat(m_caName, "PersonalHealth");
 		OUT_MESSAGE("* Evaluation function \"%s\" is successfully initialized", m_caName);
-	};
+	}
 
 	virtual float ffGetValue( );
 };
 
-class CPersonalMoraleFunction : public CBaseFunction
+class CPersonalMoraleFunction : public CBaseEvaluationFunction
 {
 public:
-	typedef CBaseFunction inherited;
+	using inherited = CBaseEvaluationFunction;
 
-	CPersonalMoraleFunction(CEF_Storage* storage) : CBaseFunction(storage)
+	CPersonalMoraleFunction(CEvaluationFunctionStorage* storage) : CBaseEvaluationFunction(storage)
 	{
 		m_fMinResultValue = 0.0;
 		m_fMaxResultValue = 100.0;
 		strcat(m_caName, "PersonalMorale");
 		OUT_MESSAGE("* Evaluation function \"%s\" is successfully initialized", m_caName);
-	};
+	}
 
 	virtual ~CPersonalMoraleFunction( )
 	{ }
@@ -76,18 +76,18 @@ public:
 	virtual float ffGetValue( );
 };
 
-class CPersonalCreatureTypeFunction : public CBaseFunction
+class CPersonalCreatureTypeFunction : public CBaseEvaluationFunction
 {
 public:
-	typedef CBaseFunction inherited;
+	using inherited = CBaseEvaluationFunction;
 
-	CPersonalCreatureTypeFunction(CEF_Storage* storage) : CBaseFunction(storage)
+	CPersonalCreatureTypeFunction(CEvaluationFunctionStorage* storage) : CBaseEvaluationFunction(storage)
 	{
 		m_fMinResultValue = 1.0;
 		m_fMaxResultValue = 21.0;
 		strcat(m_caName, "PersonalCreatureType");
 		OUT_MESSAGE("* Evaluation function \"%s\" is successfully initialized", m_caName);
-	};
+	}
 
 	virtual ~CPersonalCreatureTypeFunction( )
 	{ }
@@ -95,39 +95,39 @@ public:
 	virtual float ffGetValue( );
 };
 
-class CPersonalWeaponTypeFunction : public CBaseFunction
+class CPersonalWeaponTypeFunction : public CBaseEvaluationFunction
 {
 public:
-	typedef CBaseFunction inherited;
+	using inherited = CBaseEvaluationFunction;
 
-	CPersonalWeaponTypeFunction(CEF_Storage* storage) : CBaseFunction(storage)
+	CPersonalWeaponTypeFunction(CEvaluationFunctionStorage* storage) : CBaseEvaluationFunction(storage)
 	{
 		m_fMinResultValue = 1.0;
 		m_fMaxResultValue = 12.0;
 		strcat(m_caName, "PersonalWeaponType");
 		OUT_MESSAGE("* Evaluation function \"%s\" is successfully initialized", m_caName);
-	};
+	}
 
 	virtual ~CPersonalWeaponTypeFunction( )
 	{ }
 
-	u32	  dwfGetWeaponType( );
+	unsigned int dwfGetWeaponType( );
 	float ffGetTheBestWeapon( );
 	virtual float ffGetValue( );
 };
 
-class CPersonalAccuracyFunction : public CBaseFunction
+class CPersonalAccuracyFunction : public CBaseEvaluationFunction
 {
 public:
-	typedef CBaseFunction inherited;
+	using inherited = CBaseEvaluationFunction;
 
-	CPersonalAccuracyFunction(CEF_Storage* storage) : CBaseFunction(storage)
+	CPersonalAccuracyFunction(CEvaluationFunctionStorage* storage) : CBaseEvaluationFunction(storage)
 	{
 		m_fMinResultValue = 0.0;
 		m_fMaxResultValue = 100.0;
 		strcat(m_caName, "PersonalAccuracy");
 		OUT_MESSAGE("* Evaluation function \"%s\" is successfully initialized", m_caName);
-	};
+	}
 
 	virtual ~CPersonalAccuracyFunction( )
 	{ }
@@ -135,18 +135,18 @@ public:
 	virtual float ffGetValue( );
 };
 
-class CPersonalIntelligenceFunction : public CBaseFunction
+class CPersonalIntelligenceFunction : public CBaseEvaluationFunction
 {
 public:
-	typedef CBaseFunction inherited;
+	using inherited = CBaseEvaluationFunction;
 
-	CPersonalIntelligenceFunction(CEF_Storage* storage) : CBaseFunction(storage)
+	CPersonalIntelligenceFunction(CEvaluationFunctionStorage* storage) : CBaseEvaluationFunction(storage)
 	{
 		m_fMinResultValue = 0.0;
 		m_fMaxResultValue = 100.0;
 		strcat(m_caName, "PersonalIntelligence");
 		OUT_MESSAGE("* Evaluation function \"%s\" is successfully initialized", m_caName);
-	};
+	}
 
 	virtual ~CPersonalIntelligenceFunction( )
 	{ }
@@ -154,18 +154,18 @@ public:
 	virtual float ffGetValue( );
 };
 
-class CPersonalRelationFunction : public CBaseFunction
+class CPersonalRelationFunction : public CBaseEvaluationFunction
 {
 public:
-	typedef CBaseFunction inherited;
+	using inherited = CBaseEvaluationFunction;
 
-	CPersonalRelationFunction(CEF_Storage* storage) : CBaseFunction(storage)
+	CPersonalRelationFunction(CEvaluationFunctionStorage* storage) : CBaseEvaluationFunction(storage)
 	{
 		m_fMinResultValue = 0.0;
 		m_fMaxResultValue = 100.0;
 		strcat(m_caName, "PersonalRelation");
 		OUT_MESSAGE("* Evaluation function \"%s\" is successfully initialized", m_caName);
-	};
+	}
 
 	virtual ~CPersonalRelationFunction( )
 	{ }
@@ -173,18 +173,18 @@ public:
 	virtual float ffGetValue( );
 };
 
-class CPersonalGreedFunction : public CBaseFunction
+class CPersonalGreedFunction : public CBaseEvaluationFunction
 {
 public:
-	typedef CBaseFunction inherited;
+	using inherited = CBaseEvaluationFunction;
 
-	CPersonalGreedFunction(CEF_Storage* storage) : CBaseFunction(storage)
+	CPersonalGreedFunction(CEvaluationFunctionStorage* storage) : CBaseEvaluationFunction(storage)
 	{
 		m_fMinResultValue = 0.0;
 		m_fMaxResultValue = 100.0;
 		strcat(m_caName, "PersonalGreed");
 		OUT_MESSAGE("* Evaluation function \"%s\" is successfully initialized", m_caName);
-	};
+	}
 
 	virtual ~CPersonalGreedFunction( )
 	{ }
@@ -192,18 +192,18 @@ public:
 	virtual float ffGetValue( );
 };
 
-class CPersonalAggressivenessFunction : public CBaseFunction
+class CPersonalAggressivenessFunction : public CBaseEvaluationFunction
 {
 public:
-	typedef CBaseFunction inherited;
+	using inherited = CBaseEvaluationFunction;
 
-	CPersonalAggressivenessFunction(CEF_Storage* storage) : CBaseFunction(storage)
+	CPersonalAggressivenessFunction(CEvaluationFunctionStorage* storage) : CBaseEvaluationFunction(storage)
 	{
 		m_fMinResultValue = 0.0;
 		m_fMaxResultValue = 100.0;
 		strcat(m_caName, "PersonalAggressiveness");
 		OUT_MESSAGE("* Evaluation function \"%s\" is successfully initialized", m_caName);
-	};
+	}
 
 	virtual ~CPersonalAggressivenessFunction( )
 	{ }
@@ -211,18 +211,18 @@ public:
 	virtual float ffGetValue( );
 };
 
-class CEnemyMoraleFunction : public CBaseFunction
+class CEnemyMoraleFunction : public CBaseEvaluationFunction
 {
 public:
-	typedef CBaseFunction inherited;
+	using inherited = CBaseEvaluationFunction;
 
-	CEnemyMoraleFunction(CEF_Storage* storage) : CBaseFunction(storage)
+	CEnemyMoraleFunction(CEvaluationFunctionStorage* storage) : CBaseEvaluationFunction(storage)
 	{
 		m_fMinResultValue = 0.0;
 		m_fMaxResultValue = 100.0;
 		strcat(m_caName, "EnemyMorale");
 		OUT_MESSAGE("* Evaluation function \"%s\" is successfully initialized", m_caName);
-	};
+	}
 
 	virtual ~CEnemyMoraleFunction( )
 	{ }
@@ -230,18 +230,18 @@ public:
 	virtual float ffGetValue( );
 };
 
-class CEnemyEquipmentCostFunction : public CBaseFunction
+class CEnemyEquipmentCostFunction : public CBaseEvaluationFunction
 {
 public:
-	typedef CBaseFunction inherited;
+	using inherited = CBaseEvaluationFunction;
 
-	CEnemyEquipmentCostFunction(CEF_Storage* storage) : CBaseFunction(storage)
+	CEnemyEquipmentCostFunction(CEvaluationFunctionStorage* storage) : CBaseEvaluationFunction(storage)
 	{
 		m_fMinResultValue = 0.0;
 		m_fMaxResultValue = 12.0;
 		strcat(m_caName, "EnemyEquipmentCost");
 		OUT_MESSAGE("* Evaluation function \"%s\" is successfully initialized", m_caName);
-	};
+	}
 
 	virtual ~CEnemyEquipmentCostFunction( )
 	{ }
@@ -249,18 +249,18 @@ public:
 	virtual float ffGetValue( );
 };
 
-class CEnemyRukzakWeightFunction : public CBaseFunction
+class CEnemyRukzakWeightFunction : public CBaseEvaluationFunction
 {
 public:
-	typedef CBaseFunction inherited;
+	using inherited = CBaseEvaluationFunction;
 
-	CEnemyRukzakWeightFunction(CEF_Storage* storage) : CBaseFunction(storage)
+	CEnemyRukzakWeightFunction(CEvaluationFunctionStorage* storage) : CBaseEvaluationFunction(storage)
 	{
 		m_fMinResultValue = 1.0;
 		m_fMaxResultValue = 12.0;
 		strcat(m_caName, "EnemyRukzakWeight");
 		OUT_MESSAGE("* Evaluation function \"%s\" is successfully initialized", m_caName);
-	};
+	}
 
 	virtual ~CEnemyRukzakWeightFunction( )
 	{ }
@@ -268,18 +268,18 @@ public:
 	virtual float ffGetValue( );
 };
 
-class CEnemyAnomalityFunction : public CBaseFunction
+class CEnemyAnomalityFunction : public CBaseEvaluationFunction
 {
 public:
-	typedef CBaseFunction inherited;
+	using inherited = CBaseEvaluationFunction;
 
-	CEnemyAnomalityFunction(CEF_Storage* storage) : CBaseFunction(storage)
+	CEnemyAnomalityFunction(CEvaluationFunctionStorage* storage) : CBaseEvaluationFunction(storage)
 	{
 		m_fMinResultValue = 1.0;
 		m_fMaxResultValue = 12.0;
 		strcat(m_caName, "EnemyAnomality");
 		OUT_MESSAGE("* Evaluation function \"%s\" is successfully initialized", m_caName);
-	};
+	}
 
 	virtual ~CEnemyAnomalityFunction( )
 	{ }
@@ -287,18 +287,18 @@ public:
 	virtual float ffGetValue( );
 };
 
-class CGraphPointType0 : public CBaseFunction
+class CGraphPointType0 : public CBaseEvaluationFunction
 {
 public:
-	typedef CBaseFunction inherited;
+	using inherited = CBaseEvaluationFunction;
 
-	CGraphPointType0(CEF_Storage* storage) : CBaseFunction(storage)
+	CGraphPointType0(CEvaluationFunctionStorage* storage) : CBaseEvaluationFunction(storage)
 	{
 		m_fMinResultValue = 0.0;
 		m_fMaxResultValue = 100.0;
 		strcat(m_caName, "GraphPointType0");
 		OUT_MESSAGE("* Evaluation function \"%s\" is successfully initialized", m_caName);
-	};
+	}
 
 	virtual ~CGraphPointType0( )
 	{ }
@@ -306,18 +306,18 @@ public:
 	virtual float ffGetValue( );
 };
 
-class CPersonalEyeRange : public CBaseFunction
+class CPersonalEyeRange : public CBaseEvaluationFunction
 {
 public:
-	typedef CBaseFunction inherited;
+	using inherited = CBaseEvaluationFunction;
 
-	CPersonalEyeRange(CEF_Storage* storage) : CBaseFunction(storage)
+	CPersonalEyeRange(CEvaluationFunctionStorage* storage) : CBaseEvaluationFunction(storage)
 	{
 		m_fMinResultValue = 0.0;
 		m_fMaxResultValue = 100.0;
 		strcat(m_caName, "PersonalEyeRange");
 		OUT_MESSAGE("* Evaluation function \"%s\" is successfully initialized", m_caName);
-	};
+	}
 
 	virtual ~CPersonalEyeRange( )
 	{ }
@@ -325,38 +325,38 @@ public:
 	virtual float ffGetValue( );
 };
 
-class CPersonalMaxHealth : public CBaseFunction
+class CPersonalMaxHealth : public CBaseEvaluationFunction
 {
 public:
-	typedef CBaseFunction inherited;
+	using inherited = CBaseEvaluationFunction;
 
-	CPersonalMaxHealth(CEF_Storage* storage) : CBaseFunction(storage)
+	CPersonalMaxHealth(CEvaluationFunctionStorage* storage) : CBaseEvaluationFunction(storage)
 	{
 		m_fMinResultValue = 0.0;
 		m_fMaxResultValue = 1000.0;
 		strcat(m_caName, "PersonalMaxHealth");
 		OUT_MESSAGE("* Evaluation function \"%s\" is successfully initialized", m_caName);
-	};
+	}
 
 	virtual ~CPersonalMaxHealth( )
 	{ }
 
 	virtual float	ffGetValue( );
-	virtual u32		dwfGetDiscreteValue(u32 dwDiscretizationValue = 1);
+	virtual unsigned int		dwfGetDiscreteValue(u32 dwDiscretizationValue = 1);
 };
 
-class CEquipmentType : public CBaseFunction
+class CEquipmentType : public CBaseEvaluationFunction
 {
 public:
-	typedef CBaseFunction inherited;
+	using inherited = CBaseEvaluationFunction;
 
-	CEquipmentType(CEF_Storage* storage) : CBaseFunction(storage)
+	CEquipmentType(CEvaluationFunctionStorage* storage) : CBaseEvaluationFunction(storage)
 	{
 		m_fMinResultValue = 1.0;
 		m_fMaxResultValue = 5.0;
 		strcat(m_caName, "EquipmentType");
 		OUT_MESSAGE("* Evaluation function \"%s\" is successfully initialized", m_caName);
-	};
+	}
 
 	virtual ~CEquipmentType( )
 	{ }
@@ -364,18 +364,18 @@ public:
 	virtual float	ffGetValue( );
 };
 
-class CItemDeterioration : public CBaseFunction
+class CItemDeterioration : public CBaseEvaluationFunction
 {
 public:
-	typedef CBaseFunction inherited;
+	using inherited = CBaseEvaluationFunction;
 
-	CItemDeterioration(CEF_Storage* storage) : CBaseFunction(storage)
+	CItemDeterioration(CEvaluationFunctionStorage* storage) : CBaseEvaluationFunction(storage)
 	{
 		m_fMinResultValue = 0.0;
 		m_fMaxResultValue = 100.0;
 		strcat(m_caName, "ItemDeterioration");
 		OUT_MESSAGE("* Evaluation function \"%s\" is successfully initialized", m_caName);
-	};
+	}
 
 	virtual ~CItemDeterioration( )
 	{ }
@@ -383,18 +383,18 @@ public:
 	virtual float	ffGetValue( );
 };
 
-class CEquipmentPreference : public CBaseFunction
+class CEquipmentPreference : public CBaseEvaluationFunction
 {
 public:
-	typedef CBaseFunction inherited;
+	using inherited = CBaseEvaluationFunction;
 
-	CEquipmentPreference(CEF_Storage* storage) : CBaseFunction(storage)
+	CEquipmentPreference(CEvaluationFunctionStorage* storage) : CBaseEvaluationFunction(storage)
 	{
 		m_fMinResultValue = 1.0;
 		m_fMaxResultValue = 3.0;
 		strcat(m_caName, "EquipmentPreference");
 		OUT_MESSAGE("* Evaluation function \"%s\" is successfully initialized", m_caName);
-	};
+	}
 
 	virtual ~CEquipmentPreference( )
 	{ }
@@ -402,18 +402,18 @@ public:
 	virtual float	ffGetValue( );
 };
 
-class CMainWeaponType : public CBaseFunction
+class CMainWeaponType : public CBaseEvaluationFunction
 {
 public:
-	typedef CBaseFunction inherited;
+	using inherited = CBaseEvaluationFunction;
 
-	CMainWeaponType(CEF_Storage* storage) : CBaseFunction(storage)
+	CMainWeaponType(CEvaluationFunctionStorage* storage) : CBaseEvaluationFunction(storage)
 	{
 		m_fMinResultValue = 1.0;
 		m_fMaxResultValue = 4.0;
 		strcat(m_caName, "MainWeaponType");
 		OUT_MESSAGE("* Evaluation function \"%s\" is successfully initialized", m_caName);
-	};
+	}
 
 	virtual ~CMainWeaponType( )
 	{ }
@@ -421,18 +421,18 @@ public:
 	virtual float	ffGetValue( );
 };
 
-class CMainWeaponPreference : public CBaseFunction
+class CMainWeaponPreference : public CBaseEvaluationFunction
 {
 public:
-	typedef CBaseFunction inherited;
+	using inherited = CBaseEvaluationFunction;
 
-	CMainWeaponPreference(CEF_Storage* storage) : CBaseFunction(storage)
+	CMainWeaponPreference(CEvaluationFunctionStorage* storage) : CBaseEvaluationFunction(storage)
 	{
 		m_fMinResultValue = 1.0;
 		m_fMaxResultValue = 3.0;
 		strcat(m_caName, "MainWeaponPreference");
 		OUT_MESSAGE("* Evaluation function \"%s\" is successfully initialized", m_caName);
-	};
+	}
 
 	virtual ~CMainWeaponPreference( )
 	{ }
@@ -440,18 +440,18 @@ public:
 	virtual float	ffGetValue( );
 };
 
-class CItemValue : public CBaseFunction
+class CItemValue : public CBaseEvaluationFunction
 {
 public:
-	typedef CBaseFunction inherited;
+	using inherited = CBaseEvaluationFunction;
 
-	CItemValue(CEF_Storage* storage) : CBaseFunction(storage)
+	CItemValue(CEvaluationFunctionStorage* storage) : CBaseEvaluationFunction(storage)
 	{
 		m_fMinResultValue = 100.0;
 		m_fMaxResultValue = 2000.0;
 		strcat(m_caName, "ItemValue");
 		OUT_MESSAGE("* Evaluation function \"%s\" is successfully initialized", m_caName);
-	};
+	}
 
 	virtual ~CItemValue( )
 	{ }
@@ -459,38 +459,38 @@ public:
 	virtual float	ffGetValue( );
 };
 
-class CWeaponAmmoCount : public CBaseFunction
+class CWeaponAmmoCount : public CBaseEvaluationFunction
 {
 public:
-	typedef CBaseFunction inherited;
+	using inherited = CBaseEvaluationFunction;
 
-	CWeaponAmmoCount(CEF_Storage* storage) : CBaseFunction(storage)
+	CWeaponAmmoCount(CEvaluationFunctionStorage* storage) : CBaseEvaluationFunction(storage)
 	{
 		m_fMinResultValue = 0.0;
 		m_fMaxResultValue = 10.0;
 		strcat(m_caName, "WeaponAmmoCount");
 		OUT_MESSAGE("* Evaluation function \"%s\" is successfully initialized", m_caName);
-	};
+	}
 
 	virtual ~CWeaponAmmoCount( )
 	{ }
 
 	virtual float	ffGetValue( );
-	virtual u32		dwfGetDiscreteValue(u32 dwDiscretizationValue = 1);
+	virtual unsigned int		dwfGetDiscreteValue(unsigned int dwDiscretizationValue = 1);
 };
 
-class CEnemyAnomalyType : public CBaseFunction
+class CEnemyAnomalyType : public CBaseEvaluationFunction
 {
 public:
-	typedef CBaseFunction inherited;
+	using inherited = CBaseEvaluationFunction;
 
-	CEnemyAnomalyType(CEF_Storage* storage) : CBaseFunction(storage)
+	CEnemyAnomalyType(CEvaluationFunctionStorage* storage) : CBaseEvaluationFunction(storage)
 	{
 		m_fMinResultValue = 0.0;
 		m_fMaxResultValue = 7.0;
 		strcat(m_caName, "EnemyAnomalyType");
 		OUT_MESSAGE("* Evaluation function \"%s\" is successfully initialized", m_caName);
-	};
+	}
 
 	virtual ~CEnemyAnomalyType( )
 	{ }
@@ -498,18 +498,18 @@ public:
 	virtual float	ffGetValue( );
 };
 
-class CDetectorType : public CBaseFunction
+class CDetectorType : public CBaseEvaluationFunction
 {
 public:
-	typedef CBaseFunction inherited;
+	using inherited = CBaseEvaluationFunction;
 
-	CDetectorType(CEF_Storage* storage) : CBaseFunction(storage)
+	CDetectorType(CEvaluationFunctionStorage* storage) : CBaseEvaluationFunction(storage)
 	{
 		m_fMinResultValue = 0.0;
 		m_fMaxResultValue = 2.0;
 		strcat(m_caName, "DetectorType");
 		OUT_MESSAGE("* Evaluation function \"%s\" is successfully initialized", m_caName);
-	};
+	}
 
 	virtual ~CDetectorType( )
 	{ }
@@ -517,18 +517,18 @@ public:
 	virtual float	ffGetValue( );
 };
 
-class CEnemyDistanceToGraphPoint : public CBaseFunction
+class CEnemyDistanceToGraphPoint : public CBaseEvaluationFunction
 {
 public:
-	typedef CBaseFunction inherited;
+	using inherited = CBaseEvaluationFunction;
 
-	CEnemyDistanceToGraphPoint(CEF_Storage* storage) : CBaseFunction(storage)
+	CEnemyDistanceToGraphPoint(CEvaluationFunctionStorage* storage) : CBaseEvaluationFunction(storage)
 	{
 		m_fMinResultValue = 0.0;
 		m_fMaxResultValue = 4.0;
 		strcat(m_caName, "EnemyDistanceToGraphPoint");
 		OUT_MESSAGE("* Evaluation function \"%s\" is successfully initialized", m_caName);
-	};
+	}
 
 	virtual ~CEnemyDistanceToGraphPoint( )
 	{ }

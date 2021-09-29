@@ -743,9 +743,9 @@ void CStalker::notify_on_wounded_or_killed	(CObject *object)
 
 	stalker->on_enemy_wounded_or_killed	(this);
 
-	typedef CAgentCorpseManager::MEMBER_CORPSES	MEMBER_CORPSES;
+	typedef CAgentCorpseManager::MemberCorpsesVec	MemberCorpsesVec;
 
-	const MEMBER_CORPSES				&corpses = agent_manager().corpse().corpses();
+	const MemberCorpsesVec&corpses = agent_manager().corpse().corpses();
 	if (std::find(corpses.begin(),corpses.end(),this) != corpses.end())
 		return;
 

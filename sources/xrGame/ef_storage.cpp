@@ -1,10 +1,5 @@
-////////////////////////////////////////////////////////////////////////////
 //	Module 		: ef_storage.cpp
-//	Created 	: 25.03.2002
-//  Modified 	: 11.10.2002
-//	Author		: Dmitriy Iassenev
 //	Description : Evaluation functions storage class
-////////////////////////////////////////////////////////////////////////////
 
 #include "stdafx.h"
 
@@ -12,7 +7,7 @@
 #include "ef_primary.h"
 #include "ef_pattern.h"
 
-CEF_Storage::CEF_Storage( )
+CEvaluationFunctionStorage::CEvaluationFunctionStorage( )
 {
 	ZeroMemory(m_fpaBaseFunctions, sizeof(m_fpaBaseFunctions));
 
@@ -76,7 +71,7 @@ CEF_Storage::CEF_Storage( )
 	m_pfBirthSpeed = xr_new<CPatternFunction>("alife\\BirthSpeed.efd", this);
 }
 
-CEF_Storage::~CEF_Storage( )
+CEvaluationFunctionStorage::~CEvaluationFunctionStorage( )
 {
 	for (int i = 0; i < AI_MAX_EVALUATION_FUNCTION_COUNT; ++i)
 	{
@@ -84,7 +79,7 @@ CEF_Storage::~CEF_Storage( )
 	}
 }
 
-CBaseFunction* CEF_Storage::function(const char* function) const
+CBaseEvaluationFunction* CEvaluationFunctionStorage::function(const char* function) const
 {
 	for (int i = 0; i < AI_MAX_EVALUATION_FUNCTION_COUNT; ++i)
 	{
@@ -99,5 +94,5 @@ CBaseFunction* CEF_Storage::function(const char* function) const
 		}
 	}
 
-	return 0;
+	return nullptr;
 }
