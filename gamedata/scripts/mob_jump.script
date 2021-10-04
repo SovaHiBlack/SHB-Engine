@@ -48,7 +48,6 @@ end
 ----------------------------------------------------------------------------------------------------
 
 function mob_jump:update(delta)
-	
 	if xr_logic.try_switch_to_another_section(self.object, self.st, db.actor) then
 		return
 	end

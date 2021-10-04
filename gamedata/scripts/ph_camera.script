@@ -44,6 +44,7 @@ function action_camera_activity:reset_scheme()
 		if self.path == nil then
 			self.path = patrol(self.st.path_look)
 		end
+
 		self.num_wp = self.path:count()
 		self.cur_wp = self.st.start_wp
 

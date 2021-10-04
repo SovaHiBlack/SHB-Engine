@@ -1,8 +1,6 @@
 ----------------------------------------------------------------------------------------------------
 -- Mob Fake Death
 ----------------------------------------------------------------------------------------------------
--- Разработчик: Jim
-----------------------------------------------------------------------------------------------------
 
 class "mob_fake_death"
 
@@ -11,7 +9,7 @@ class "mob_fake_death"
 ----------------------------------------------------------------------------------------------------
 function mob_fake_death:__init(obj, storage)
 	self.object = obj
-	self.st		= storage
+	self.st = storage
 end
 
 ----------------------------------------------------------------------------------------------------
@@ -28,7 +26,7 @@ function mob_fake_death:update(delta)
 	if xr_logic.try_switch_to_another_section(self.object, self.st, db.actor) then
 		return
 	end
-	
+
 	-- if it could not falldown try again
 	if (not self.st.result) then
 		self.st.result = self.object:fake_death_fall_down()
@@ -36,7 +34,7 @@ function mob_fake_death:update(delta)
 end
 
 function mob_fake_death:deactivate()
-		self.object:fake_death_stand_up()
+	self.object:fake_death_stand_up()
 end
 
 ----------------------------------------------------------------------------------------------------
@@ -55,6 +53,6 @@ end
 -- SET_SCHEME
 ----------------------------------------------------------------------------------------------------
 function set_scheme(npc, ini, scheme, section, gulag_name)
-	local storage		= xr_logic.assign_storage_and_bind(npc, ini, scheme, section)
-	storage.logic		= xr_logic.cfg_get_switch_conditions(ini, section, npc)
+	local storage = xr_logic.assign_storage_and_bind(npc, ini, scheme, section)
+	storage.logic = xr_logic.cfg_get_switch_conditions(ini, section, npc)
 end

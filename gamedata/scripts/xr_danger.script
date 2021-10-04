@@ -1,7 +1,5 @@
 ----------------------------------------------------------------------------------------------------------------------
 --'	Схема кемпер. Чудак с бальшой пушкой ходит и отстреливает живность.
---'	автор: Диденко Руслан (Stohe)
---'	TODO: 
 ----------------------------------------------------------------------------------------------------------------------
 
 local def_ignore_distance			= 150
@@ -15,7 +13,6 @@ local def_danger_inertion_time_corpse	= 10000
 local def_danger_inertion_time_hit		= 60000
 local def_danger_inertion_time_sound	= 15000
 local def_danger_inertion_time_ricochet	= 30000
-
 
 local always_ignore_danger_from = { m_car = "true" }
 
@@ -88,14 +85,14 @@ function evaluator_danger:evaluate()
 		then
 			printf("DANGER [%s] [FALSE] actor_danger", self.object:name())
 			return false
-		end	
+		end
 	end
 
 	-- Проверка, не находится ли данжер в списке запрещенных.
 	if bd_type == danger_object.grenade then
 		if self.a.ignore_types["grenade"] == true then
 			printf("DANGER [%s] [FALSE] ignore grenade", self.object:name())
-			return false		
+			return false
 		end
 	elseif bd_type == danger_object.entity_corpse then
 		if self.a.ignore_types["corpse"] == true then
@@ -114,7 +111,7 @@ function evaluator_danger:evaluate()
 		if self.a.ignore_types["sound"] == true then
 			printf("DANGER [%s] [FALSE] ignore sound", self.object:name())
 			return false
-		end	
+		end
 	end
 
 	-- отсеиваем по настройке combat_ignore/danger
@@ -129,7 +126,7 @@ function evaluator_danger:evaluate()
 			printf("DANGER [%s]->[%s] [FALSE] ignore_danger", self.object:name(), best_danger_name)
 			return false
 		end
-	end	    
+	end
 
 	-- инерция возврата. Только не для кемпера.
 	if self.danger_time then
@@ -141,10 +138,9 @@ function evaluator_danger:evaluate()
 		else
 			printf("DANGER [%s]: [%s] [FALSE] expiration time [%s]", self.object:name(), passed_time, bd_type)
 			return false
-		end		
+		end
 	end
 
-			
 	-- Отсеиваем по дистанции
 	if check_danger_distance(self.object, best_danger) == false then
 		printf("DANGER [%s]->[%s] [FALSE] danger_distance", self.object:name(), best_danger_name)
@@ -175,7 +171,6 @@ function evaluator_danger:evaluate()
 		return false
 	end
 
-
 	-- Денжер для снайпера
 	if active_scheme == "camper" then
 		if best_danger:type() == danger_object.grenade then
@@ -193,7 +188,6 @@ function evaluator_danger:evaluate()
 	printf("DANGER [%s]->[%s] [FALSE] default", self.object:name(), best_danger_name)
 	return false
 end
-
 
 ----------------------------------------------------------------------------------------------------------------------
 -- BINDER
@@ -217,7 +211,7 @@ function reset_danger(npc, scheme, st, section)
 	if scheme ~= nil and scheme ~= "nil" then
 		danger_section = utils.cfg_get_string(st.ini, section, "danger", npc, false, "")
 	end
-	
+
 	printf("DANGER SECTION [%s]", utils.to_str(danger_section))
 	st.danger.ignore_types = {}
 	if danger_section then
@@ -243,7 +237,7 @@ end
 function check_danger_inertion_time(npc, danger, passed_time)
 	local danger_settings = db.storage[npc:id()].danger
 	local bd_type = danger:type()
-	
+
 	if danger_settings ~= nil then
 		if bd_type == danger_object.grenade then
 			if danger_settings.danger_inertion_time_grenade <= passed_time then
@@ -257,17 +251,17 @@ function check_danger_inertion_time(npc, danger, passed_time)
 			bd_type == danger_object.attacked then
 			if danger_settings.danger_inertion_time_hit <= passed_time then
 				return false
-			end	
+			end
 		elseif bd_type == danger_object.enemy_sound or
 			bd_type == danger_object.attack_sound or
 			bd_type == danger_object.entity_death then
 			if danger_settings.danger_inertion_time_sound <= passed_time then
 				return false
-			end	
+			end
 		elseif bd_type == danger_object.bullet_ricochet then
 			if danger_settings.danger_inertion_time_ricochet <= passed_time then
 				return false
-			end	
+			end
 		end
 	else
 		if bd_type == danger_object.grenade then
@@ -282,17 +276,17 @@ function check_danger_inertion_time(npc, danger, passed_time)
 			bd_type == danger_object.attacked then
 			if def_danger_inertion_time_hit <= passed_time then
 				return false
-			end	
+			end
 		elseif bd_type == danger_object.enemy_sound or
 			bd_type == danger_object.attack_sound or
 			bd_type == danger_object.entity_death then
 			if def_danger_inertion_time_sound <= passed_time then
 				return false
-			end	
+			end
 		elseif bd_type == danger_object.bullet_ricochet then
 			if def_danger_inertion_time_ricochet <= passed_time then
 				return false
-			end	
+			end
 		end
 	end
 	return true
@@ -301,8 +295,8 @@ end
 function check_danger_distance(npc, danger)
 	local danger_settings = db.storage[npc:id()].danger
 	local bd_type = danger:type()
-	local danger_distance_sqr = danger:position():distance_to_sqr(npc:position())	
-	
+	local danger_distance_sqr = danger:position():distance_to_sqr(npc:position())
+
 	printf("DANGER_DIST [%s] [%s]", npc:name(), tostring(danger_distance_sqr))
 
 	if danger_settings ~= nil then
@@ -328,7 +322,7 @@ function check_danger_distance(npc, danger)
 			if danger_distance_sqr >= danger_settings.ignore_distance_sound then
 				return false
 			end
-		end		   	   
+		end
 	else
 		if danger_distance_sqr >= def_ignore_distance then
 			return false
@@ -352,7 +346,7 @@ function check_danger_distance(npc, danger)
 			if danger_distance_sqr >= def_ignore_distance_sound then
 				return false
 			end
-		end	
+		end
 	end
-	return true			
+	return true
 end

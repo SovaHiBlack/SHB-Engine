@@ -14,7 +14,7 @@ class "mob_eluder"
 ----------------------------------------------------------------------------------------------------
 function mob_eluder:__init(obj, storage)
 	self.object = obj
-	self.st		= storage
+	self.st = storage
 end
 
 ----------------------------------------------------------------------------------------------------
@@ -120,7 +120,7 @@ function mob_eluder:check_script_control()
 	if (not used_dist_check) and (not used_time_check) then return true end
 
 	if xr_logic.mob_captured(self.object) then
-		-- check for release conditions	
+		-- check for release conditions
 
 		-- if near actor
 		-- if far from actor and its time to release for a while
@@ -135,8 +135,8 @@ function mob_eluder:check_script_control()
 		-- check for capture conditions
 		-- if far from actor
 		
-		local dist_check_good	= not used_dist_check
-		local time_check_good	= not used_time_check
+		local dist_check_good = not used_dist_check
+		local time_check_good = not used_time_check
 		-- check for time 
 		if used_time_check and (self.time_state_changed + (self.st.time_release*1000) < cur_time) then 
 			time_check_good = true
@@ -159,10 +159,7 @@ function mob_eluder:check_script_control()
 	else
 		return true
 	end
-
 end
-
-
 
 ----------------------------------------------------------------------------------------------------
 -- ADD_TO_BINDER
@@ -184,9 +181,9 @@ function set_scheme(npc, ini, scheme, section, gulag_name)
 	local storage				= xr_logic.assign_storage_and_bind(npc, ini, scheme, section)
 
 	storage.logic				= xr_logic.cfg_get_switch_conditions(ini, section, npc)
-	
+
 	storage.path				= utils.cfg_get_string(ini, section, "path",		 npc, false, "")
-	
+
 	-- время, которое монстр находится под скриптом
 	storage.time_capture		= utils.cfg_get_number(ini, section, "time_capture", npc, false, 10)
 	-- время, которое монстр находится под унисхемой
@@ -195,6 +192,4 @@ function set_scheme(npc, ini, scheme, section, gulag_name)
 	storage.min_dist			= utils.cfg_get_number(ini, section, "min_dist",	 npc, false, 5)
 	-- расстояние до актера, больше которого, монстр может перейти под скрипт
 	storage.max_dist			= utils.cfg_get_number(ini, section, "max_dist",	 npc, false, 10)
-	
 end
-

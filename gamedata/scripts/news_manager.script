@@ -132,6 +132,7 @@ function send_tip(actor, news_id, timeout, sender, showtime, sender_id)
 						return false
 					end
 				end
+
 				--' в других случаях только на смерть
 				if npc:alive() == 1 then
 					printf("[PDA]Cannot send tips [%s], sender is dead", tostring(news_id))
@@ -144,6 +145,7 @@ function send_tip(actor, news_id, timeout, sender, showtime, sender_id)
 	if timeout == nil then
 		timeout = 0
 	end
+
 	if showtime == nil then
 		showtime = 5000
 	end
@@ -164,6 +166,7 @@ function send_tip(actor, news_id, timeout, sender, showtime, sender_id)
 	if sender == nil then
 		sender = "default"
 	end
+
 	local x = tips_icons[sender][1]
 	local y = tips_icons[sender][2]
 	
@@ -192,6 +195,7 @@ local action_descr_by_type = {
 	complete = "general_complete_task",
 	fail = "general_fail_task"
 }
+
 function send_task(actor, type, task, objective)
 	if db.actor == nil then return false end
 
@@ -222,6 +226,7 @@ function send_task(actor, type, task, objective)
 	hud:GetCustomStatic("main_task"):wnd():SetTextST(news_text)
 	hud:GetCustomStatic("main_task").m_endTime = time_global() / 1000 + 5
 end
+
 function send_encyclopedy(type, title)
 	if type == "Diary" then
 		pda_news:play(db.actor, 0, sound_object.s2d)

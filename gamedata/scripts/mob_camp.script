@@ -159,6 +159,7 @@ function mob_camp:select_state()
 		if not self.prev_enemy then
 			self.st.signals["enemy"] = true
 		end
+
 		self.prev_enemy = true
 	else
 		self.prev_enemy = false
@@ -263,6 +264,7 @@ function mob_camp:deactivate()
 	if self.home_path then
 		db.camp_storage[self.st.home_point][self.cur_point_index+1] = false
 	end
+
 	self.object:skip_transfer_enemy(false)
 end
 
@@ -270,6 +272,7 @@ function mob_camp:net_destroy()
 	if self.home_path then
 		db.camp_storage[self.st.home_point][self.cur_point_index+1] = false
 	end
+
 	self.object:skip_transfer_enemy(false)
 end
 

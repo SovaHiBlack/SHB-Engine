@@ -21,6 +21,7 @@ function mob_trade:storage_trade_section()
 		trade = {}
 		db.storage[self.object:id()].trade = trade
 	end
+
 	return trade
 end
 

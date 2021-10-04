@@ -4237,9 +4237,6 @@
     <None Include="scripts\xr_abuse.script">
       <Filter>scripts</Filter>
     </None>
-    <None Include="scripts\xr_actions_id.script">
-      <Filter>scripts</Filter>
-    </None>
     <None Include="scripts\xr_attendant.script">
       <Filter>scripts</Filter>
     </None>
@@ -4406,6 +4403,9 @@
       <Filter>scripts</Filter>
     </None>
     <None Include="scripts\xr_state.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\xr_actions_id.script">
       <Filter>scripts</Filter>
     </None>
   </ItemGroup>

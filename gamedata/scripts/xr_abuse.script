@@ -12,6 +12,7 @@ class "evaluator_abuse" (property_evaluator)
 function evaluator_abuse:__init(name, storage) super (nil, name)
 	self.a = storage
 end
+
 function evaluator_abuse:evaluate()
 	return self.a.abuse_manager:update()
 end
@@ -24,6 +25,7 @@ class "action_abuse_hit" (action_base)
 function action_abuse_hit:__init (npc_name,action_name, storage, char_ini) super (nil, action_name)
 	self.a = storage
 end
+
 function action_abuse_hit:initialize()
 	action_base.initialize(self)
 --	self.object:set_node_evaluator()
@@ -34,9 +36,11 @@ function action_abuse_hit:initialize()
 	state_mgr.set_state(self.object, "punch", nil, nil, {look_object = db.actor}, {animation = true})
 	xr_sound.set_sound_play(self.object, "use_abuse")
 end
+
 function action_abuse_hit:execute ()
 	action_base.execute(self)
 end
+
 function action_abuse_hit:finalize ()
 	action_base.finalize(self)
 end
@@ -122,8 +126,6 @@ function add_to_binder(object, char_ini, scheme, section, st)
 	st.abuse_manager = CAbuseManager(object, st)
 end
 
-
-
 ------------
 -- Вызывается только в начале на чтении логики, создает экшены, эвалуаторы и производит
 -- первичную настройку.
@@ -133,7 +135,6 @@ end
 -- Вызывается при переключении на новую секцию. Производит вычитывание настроек из текущей секции.
 function reset_abuse(npc, scheme, st, section)
 end
-
 
 function add_abuse(npc, value)
 	local t = db.storage[npc:id()].abuse

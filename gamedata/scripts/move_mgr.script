@@ -42,6 +42,7 @@ function choose_look_point(patrol_look, path_look_info, search_for)
 			else
 				point_look_weight = 100				--' по умолчанию у всех точек вес = 100
 			end
+
 			pts_found_total_weight = pts_found_total_weight + point_look_weight
 			r = math.random(1, pts_found_total_weight)
 			if r <= point_look_weight then
@@ -49,6 +50,7 @@ function choose_look_point(patrol_look, path_look_info, search_for)
 			end
 		end
 	end
+
 	return pt_chosen_idx, num_equal_pts
 end
 
@@ -58,6 +60,7 @@ function move_mgr:__init(npc)
 	if npc == nil then
 		abort("move_mgr:__init() - npc is nil, please update the script")
 	end
+
 	self.object = npc
 end
 
@@ -65,6 +68,7 @@ function move_mgr:initialize(npc)
 	if npc ~= nil then
 		abort("Wrong arguments passed to move_mgr:initialize(), please update the script")
 	end
+
 --	printf("move_mgr:initialize()")
 
 	self.object:set_callback(callback.patrol_path_in_point, self.waypoint_callback, self)
@@ -75,6 +79,7 @@ function move_mgr:validate_paths()
 	if self.no_validation then
 		return
 	end
+
 	local patrol_walk_count = self.patrol_walk:count()
 	if patrol_walk_count == 1 then
 		if self.path_walk_info[0].flags:get() == 0 then
@@ -154,7 +159,6 @@ function move_mgr:reset(path_walk, path_walk_info, path_look, path_look_info, te
 
 	--' Изменились пути
 	if self.path_walk ~= path_walk or self.path_look ~= path_look then
-
 		self.no_validation = no_validation
 
 		self.path_walk = path_walk
@@ -162,15 +166,18 @@ function move_mgr:reset(path_walk, path_walk_info, path_look, path_look_info, te
 		if not self.patrol_walk then
 			abort("object '%s': unable to find path_walk '%s' on the map", self.object:name(), path_walk)
 		end
+
 		if not path_walk_info then
 			abort("object '%s': path_walk ('%s') field was supplied, but path_walk_info field is nil", self.object:name(), path_walk)
 		end
+
 		self.path_walk_info = path_walk_info
 
 		if path_look then
 			if not path_look_info then
 				abort("object '%s': path_look ('%s') field was supplied, but path_look_info field is nil", self.object:name(), path_look)
 			end
+
 			self.patrol_look = patrol(path_look)
 			if not self.patrol_look then
 				abort("object '%s': unable to find path_look '%s' on the map", self.object:name(), path_look)
@@ -178,6 +185,7 @@ function move_mgr:reset(path_walk, path_walk_info, path_look, path_look_info, te
 		else
 			self.patrol_look = nil
 		end
+
 		self.path_look = path_look
 		self.path_look_info = path_look_info
 
@@ -271,6 +279,7 @@ function move_mgr:sync_ok()
 			end
 		end
 	end
+
 	return true
 end
 
@@ -302,8 +311,10 @@ function move_mgr:update()
 			else
 				self.cur_state_moving = self.default_state_moving3
 			end
+
 			self:update_movement_state()
 		end
+
 		return
 	end
 end
@@ -313,6 +324,7 @@ function move_mgr:finalize(npc)
 	if self.team then
 		sync[self.team][self.object:id()] = nil
 	end
+
 	--' чтобы избежать дальнейшего движения по пути при установке рестрикторов
 	self.object:set_path_type(game_object.level_path)
 end
@@ -336,10 +348,12 @@ function move_mgr:time_callback()
 	if sigtm then
 		self:scheme_set_signal(sigtm)
 	end
+
 	--' Если нет активной схемы - игнорировать.
 	if db.storage[self.object:id()].active_scheme == nil then
 		return
 	end
+
 	if self.last_index and self.patrol_walk:terminal(self.last_index) then
 		if utils.stalker_at_waypoint(self.object, self.patrol_walk, self.last_index) then
 			--' Если стоим на конечной точке пути и с нее никуда не сдвинулись,
@@ -347,12 +361,12 @@ function move_mgr:time_callback()
 			self:waypoint_callback(self.object, nil, self.last_index)
 			return
 		end
-		--' Стоим на конечной точке пути, но неточно. Чтобы вернуться на ближайшую
-		--' точку пути, сбрасываем схему. Обратите внимаине, что здесь нельзя
-		--' просто вызвать update_movement_state, потому что мы УЖЕ были в
-		--' конечной точке пути и дальше идти некуда, а reset_scheme сбросит
-		--' настройки movement manager-а и выберет ближайшую точку, куда и пойдет.
-		self:reset(self.path_walk, self.path_walk_info,
+			--' Стоим на конечной точке пути, но неточно. Чтобы вернуться на ближайшую
+			--' точку пути, сбрасываем схему. Обратите внимаине, что здесь нельзя
+			--' просто вызвать update_movement_state, потому что мы УЖЕ были в
+			--' конечной точке пути и дальше идти некуда, а reset_scheme сбросит
+			--' настройки movement manager-а и выберет ближайшую точку, куда и пойдет.
+			self:reset(self.path_walk, self.path_walk_info,
 			self.path_look, self.path_look_info,
 			self.team,
 			self.suggested_state,
@@ -391,7 +405,6 @@ function move_mgr:turn_end_callback()
 		if self.team then
 			sync[self.team][self.object:id()] = true
 		end
-
 	else
 		local sig = self.path_look_info[self.last_look_index]["sig"]
 		if sig then
@@ -410,6 +423,7 @@ function move_mgr:turn_end_callback()
 		if not self.move_cb_info then
 			abort("object '%s': path_look '%s': ret flag is set, but " .. "callback function wasn't registered in move_mgr:reset()", self.object:name(), self.path_look)
 		end
+
 		--' Отключаем таймер путем установки того же самого состояния, но без таймера,
 		--' затем вызываем callback.
 		--' Если callback вернул false, т.е. решил не вмешиваться в перемещение,
@@ -424,11 +438,11 @@ function move_mgr:turn_end_callback()
 			abort("object '%s': path_look '%s': ret flag is set, but " .. "callback function wasn't registered in move_mgr:reset()", self.object:name(), self.path_look)
 		end
 
-		if self.move_cb_info.func(self.move_cb_info.obj, this.arrival_after_rotation, self.retval_after_rotation, self.last_index)
-		then
+		if self.move_cb_info.func(self.move_cb_info.obj, this.arrival_after_rotation, self.retval_after_rotation, self.last_index) then
 			--' Callback решил перехватить управление перемещением, не восстанавливаем таймер
 			return
 		end
+
 		--' Callback не перехватил управление, нужно восстановить таймер:
 		local look_pos = self.patrol_look:point(self.last_look_index)
 		self:update_standing_state(look_pos, anim_synced_snd)
@@ -483,6 +497,7 @@ function move_mgr:waypoint_callback(obj, action_type, index)
 		if not self.move_cb_info then
 			abort("object '%s': path_walk '%s': ret flag is set, but " .. "callback function wasn't registered in move_mgr:reset()", self.object:name(), self.path_walk)
 		end
+
 		if self.move_cb_info.func(self.move_cb_info.obj, this.arrival_before_rotation, retv_num, index) then
 			return
 		end
@@ -527,6 +542,7 @@ function move_mgr:waypoint_callback(obj, action_type, index)
 				if tm ~= 0 and (tm < 1000 or tm > 30000) then
 					abort("object '%s': path_look '%s': flag 't': incorrect time specified (* or number in interval [1000, 30000] is expected)", self.object:name(), self.path_look)
 				end
+
 				self.pt_wait_time = tm
 			end
 		else

@@ -54,6 +54,7 @@ function mob_kicker:common()
 	if xr_logic.try_switch_to_another_section(self.object, self.st, db.actor) then
 		return false
 	end
+
 	return true
 end
 ------------------
@@ -124,12 +125,14 @@ function mob_kicker:move_to_start()
 		self:move_and_kick()
 		return
 	end
+
 	if self.set == false then
 		xr_logic.mob_capture(self.object, false)
 		xr_logic.mob_capture(self.object, true)
 		self.set = true
 		action(self.object, move(move.run_fwd, self.start_point, 0.5), cond(cond.move_end))
 	end
+
 	self.rnd = math.random(1, 100)
 end
 ------------------
@@ -146,6 +149,7 @@ function mob_kicker:select_point()
 		dir = vector_rotate_y(dir, math.random(30, 120))
 		dist = math.random(4, 8)
 	end
+
 	self.start_point_id = level.vertex_in_direction(self.corpse:level_vertex_id(), dir, dist)
 	return level.vertex_position(self.start_point_id)
 end
@@ -156,6 +160,7 @@ function mob_kicker:initialize()
 	if self.corpse == nil then
 		return
 	end
+
 	printf("Found corpse : %s", self.corpse:name())
 	self.corpse_pos = self.corpse:position()
 	self.pshell = self.corpse:get_physics_shell()
