@@ -17,7 +17,8 @@ class CSE_ALifeTraderAbstract;
 
 #define FAST_OWNERSHIP
 
-class CALifeCommunicationManager : public virtual CALifeSimulatorBase {
+class CALifeCommunicationManager : public virtual CAlifeSimulatorBase
+{
 
 public:
 						CALifeCommunicationManager		(CServer*server, const char* section);

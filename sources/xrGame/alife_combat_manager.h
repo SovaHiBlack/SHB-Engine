@@ -5,7 +5,7 @@
 
 #include "alife_simulator_base.h"
 
-class CALifeCombatManager : public virtual CALifeSimulatorBase, CRandom
+class CALifeCombatManager : public virtual CAlifeSimulatorBase, CRandom
 {
 public:
 			CALifeCombatManager(CServer* server, const char* section);

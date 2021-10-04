@@ -10,8 +10,8 @@
 
 #ifndef PURE_DYNAMIC_CAST
 #	include "../ENGINE\fbasicvisual.h"
-#	include "alife_space.h"
-#	include "hit.h"
+//#	include "ALife_space.h"
+#	include "Hit.h"
 #	include "Actor.h"
 #	include "custommonster.h"
 #	include "ai/stalker/Stalker.h"

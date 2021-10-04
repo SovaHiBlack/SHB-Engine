@@ -12,7 +12,7 @@
 #include "xrServer_Objects_ALife_Monsters.h"
 #include "ui/UIXmlInit.h"//
 #include "ui/UIMap.h"//
-#include "alife_simulator.h"
+#include "ALifeSimulator.h"
 #include "GraphEngine.h"
 #include "Actor.h"
 #include "ai_object_location.h"

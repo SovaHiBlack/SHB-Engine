@@ -142,7 +142,7 @@ void CGamePersistent::OnAppStart( )
 	GMLib.Load( );
 	init_game_globals( );
 	__super::OnAppStart( );
-	m_pUI_core = xr_new<ui_core>( );
+	m_pUI_core = xr_new<CUICore>( );
 	m_pMainMenu = xr_new<CMainMenu>( );
 }
 

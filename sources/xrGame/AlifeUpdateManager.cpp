@@ -56,7 +56,7 @@ CAlifeUpdateManager::CAlifeUpdateManager(CServer* server, const char* section) :
 	CAlifeSwitchManager(server, section),
 	CALifeSurgeManager(server, section),
 	CALifeStorageManager(server, section),
-	CALifeSimulatorBase(server, section)
+	CAlifeSimulatorBase(server, section)
 {
 	shedule.t_min = pSettings->r_s32(section, "schedule_min");
 	shedule.t_max = pSettings->r_s32(section, "schedule_max");
@@ -291,7 +291,7 @@ void CAlifeUpdateManager::load(const char* game_name, bool no_assert, bool new_o
 
 void CAlifeUpdateManager::reload(const char* section)
 {
-	CALifeSimulatorBase::reload(section);
+	CAlifeSimulatorBase::reload(section);
 	set_process_time((int) m_max_process_time);
 	objects_per_update(m_objects_per_update);
 }

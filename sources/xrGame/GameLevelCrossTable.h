@@ -10,7 +10,7 @@
 
 #include "..\ENGINE\xrLevel.h"
 
-#include "alife_space.h"
+#include "ALife_space.h"
 #include "game_graph_space.h"
 
 #define CROSS_TABLE_NAME					"level.gct"

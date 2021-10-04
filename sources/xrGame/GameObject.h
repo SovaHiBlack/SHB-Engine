@@ -3,10 +3,10 @@
 #include <depr/dplay8.h>// раньше небыло
 #include "..\ENGINE\Object.h"
 #include "Server_space.h"
-#include "alife_space.h"
+//#include "ALife_space.h"
+#include "Hit.h"
 #include "UsableScriptObject.h"
 #include "script_binder.h"
-#include "Hit.h"
 
 class CPhysicsShell;
 class CSE_Abstract;

@@ -18,7 +18,7 @@
 #include "SpaceRestrictionBridge.h"
 #include "SpaceRestrictionBase.h"
 #include "Profiler.h"
-#include "alife_simulator.h"
+#include "ALifeSimulator.h"
 #include "alife_object_registry.h"
 #include "game_graph.h"
 #include "custommonster.h"

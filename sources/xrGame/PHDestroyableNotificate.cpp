@@ -1,8 +1,8 @@
 #include "stdafx.h"
 
 #include "PHDestroyableNotificate.h"
-#include "alife_space.h"
-//#include "hit.h"
+//#include "ALife_space.h"
+//#include "Hit.h"
 #include "PHDestroyable.h"
 #include "Level.h"
 //#include "xrServer_Object_Base.h"

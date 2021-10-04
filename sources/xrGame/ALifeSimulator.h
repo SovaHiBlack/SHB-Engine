@@ -1,4 +1,4 @@
-//	Module 		: alife_simulator.h
+//	Module 		: ALifeSimulator.h
 //	Description : ALife Simulator
 
 #pragma once
@@ -10,25 +10,22 @@
 #pragma warning(push)
 #pragma warning(disable:4005)
 
-class CALifeSimulator : 
-	public CAlifeUpdateManager,
-	public CALifeInteractionManager
+class CALifeSimulator : public CAlifeUpdateManager, public CALifeInteractionManager
 {
 protected:
-	virtual void	setup_simulator		(CSE_ALifeObject *object);
+	virtual void	setup_simulator		(CSE_ALifeObject* object);
 	virtual void	reload				(const char* section);
 
 public:
-					CALifeSimulator		(CServer*server, CSharedString* command_line);
-	virtual			~CALifeSimulator	();
-	virtual void	destroy				();
+					CALifeSimulator		(CServer* server, CSharedString* command_line);
+	virtual			~CALifeSimulator	( );
+	virtual void	destroy				( );
 
 #if 0//def DEBUG
-			void	validate			();
+	void			validate			( );
 #endif //DEBUG
 
-public:
-	static void script_register(lua_State*);
+	static void		script_register		(lua_State*);
 };
 
 add_to_type_list(CALifeSimulator)

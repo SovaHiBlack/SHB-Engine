@@ -9,7 +9,7 @@
 #include "stdafx.h"
 
 #include "xrServer_Objects_ALife.h"
-#include "alife_simulator.h"
+#include "ALifeSimulator.h"
 #include "alife_schedule_registry.h"
 #include "alife_graph_registry.h"
 #include "alife_object_registry.h"

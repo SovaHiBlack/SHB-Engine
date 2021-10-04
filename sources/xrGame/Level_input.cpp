@@ -5,7 +5,7 @@
 #include "..\ENGINE\Console.h"
 #include "EntityAlive.h"
 #include "game_sv_single.h"
-#include "alife_simulator.h"
+//#include "ALifeSimulator.h"
 #include "alife_simulator_header.h"
 #include "level_graph.h"
 //#include "..\ENGINE\DemoRecord.h"
@@ -23,7 +23,7 @@
 #include "ui/UIDialogWnd.h"//
 #include "clsid_game.h"
 #include "..\ENGINE\Input.h"
-#include "saved_game_wrapper.h"
+#include "SavedGameWrapper.h"
 
 #ifdef DEBUG
 #	include "ai/monsters/BaseMonster/BaseMonster.h"

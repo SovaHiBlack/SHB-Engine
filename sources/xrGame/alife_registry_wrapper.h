@@ -6,8 +6,7 @@
 #pragma once
 
 #include "ai_space.h"
-#include "alife_simulator.h"
-
+#include "ALifeSimulator.h"
 
 template <typename _registry_type>
 class CALifeRegistryWrapper

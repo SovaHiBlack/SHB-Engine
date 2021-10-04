@@ -5,10 +5,10 @@
 
 #include "alife_simulator_base.h"
 
-class CAlifeSwitchManager : public virtual CALifeSimulatorBase, CRandom
+class CAlifeSwitchManager : public virtual CAlifeSimulatorBase, CRandom
 {
 protected:
-	typedef CALifeSimulatorBase				inherited;
+	typedef CAlifeSimulatorBase				inherited;
 	typedef ALife::OBJECT_VECTOR			OBJECT_VECTOR;
 
 	float			m_switch_distance;

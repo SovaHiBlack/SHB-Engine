@@ -3,7 +3,7 @@
 
 #include "stdafx.h"
 
-#include "alife_simulator.h"
+#include "ALifeSimulator.h"
 #include "ai_space.h"
 #include "alife_object_registry.h"
 #include "alife_story_registry.h"
@@ -57,7 +57,6 @@ CSE_ALifeDynamicObject* alife_object(const CALifeSimulator* self, const char* na
 
 	return nullptr;
 }
-
 
 CSE_ALifeDynamicObject* alife_object(const CALifeSimulator* self, ALife::_OBJECT_ID id, bool no_assert)
 {

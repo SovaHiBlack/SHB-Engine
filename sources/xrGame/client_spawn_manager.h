@@ -8,7 +8,7 @@
 
 #pragma once
 
-#include "alife_space.h"
+#include "ALife_space.h"
 #include "script_export_space.h"
 #include "script_callback_ex.h"
 

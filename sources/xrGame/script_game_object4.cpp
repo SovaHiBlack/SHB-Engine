@@ -10,7 +10,7 @@
 #include "ai/trader/ai_trader.h"
 
 #include "ai_space.h"
-#include "alife_simulator.h"
+//#include "ALifeSimulator.h"
 
 #include "ai/stalker/Stalker.h"
 #include "stalker_movement_manager.h"

@@ -9,8 +9,8 @@
 #	include "PHDebug.h"
 #endif
 
-//#include "alife_space.h"
-#include "hit.h"
+//#include "ALife_space.h"
+#include "Hit.h"
 //#include "PHDestroyable.h"
 #include "Car.h"
 #include "..\ENGINE\skeletonanimated.h"

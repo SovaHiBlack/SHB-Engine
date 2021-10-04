@@ -10,9 +10,6 @@
 
 namespace LevelGraph {
 	class CHeader : private hdrNODES {
-	//private:
-	//	friend class CRenumbererConverter;
-
 	public:
 		__forceinline	u32				version					() const;
 		__forceinline	u32				vertex_count			() const;
@@ -25,9 +22,6 @@ namespace LevelGraph {
 	typedef NodePosition	CPosition;
 
 	class CVertex : private NodeCompressed {
-	//private:
-	//	friend class CRenumbererConverter;
-
 	public:
 		__forceinline	u32				link					(int i) const;
 		__forceinline	U8				light					() const;

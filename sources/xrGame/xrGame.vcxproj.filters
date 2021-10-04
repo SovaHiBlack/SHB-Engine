@@ -382,9 +382,6 @@
     <Filter Include="AI\ALife\update_manager\switch_manager">
       <UniqueIdentifier>{500356ab-8b54-484f-a10f-41ef856c9200}</UniqueIdentifier>
     </Filter>
-    <Filter Include="AI\ALife\saved_game_wrapper">
-      <UniqueIdentifier>{ddffb8f6-2272-4c64-a177-4f251b641f7f}</UniqueIdentifier>
-    </Filter>
     <Filter Include="AI\AMonsters">
       <UniqueIdentifier>{2213fb6b-c497-4319-b288-9eab5eb39a01}</UniqueIdentifier>
     </Filter>
@@ -2068,6 +2065,9 @@
     <Filter Include="Core\Client\Objects\items &amp; weapons\Weapons\Various weapons\WeaponBM16">
       <UniqueIdentifier>{524f4f0b-7105-42d2-9a20-ff9e038a6569}</UniqueIdentifier>
     </Filter>
+    <Filter Include="AI\ALife\SavedGameWrapper">
+      <UniqueIdentifier>{ddffb8f6-2272-4c64-a177-4f251b641f7f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="mt_config.h">
@@ -2577,10 +2577,10 @@
     <ClInclude Include="agent_manager_properties_inline.h">
       <Filter>AI\AGroup\AgentManager\agent_planner\properties</Filter>
     </ClInclude>
-    <ClInclude Include="alife_simulator.h">
+    <ClInclude Include="ALifeSimulator.h">
       <Filter>AI\ALife</Filter>
     </ClInclude>
-    <ClInclude Include="alife_space.h">
+    <ClInclude Include="ALife_space.h">
       <Filter>AI\ALife</Filter>
     </ClInclude>
     <ClInclude Include="alife_interaction_manager.h">
@@ -2772,11 +2772,11 @@
     <ClInclude Include="AlifeSwitchManager_inline.h">
       <Filter>AI\ALife\update_manager\switch_manager</Filter>
     </ClInclude>
-    <ClInclude Include="saved_game_wrapper.h">
-      <Filter>AI\ALife\saved_game_wrapper</Filter>
+    <ClInclude Include="SavedGameWrapper.h">
+      <Filter>AI\ALife\SavedGameWrapper</Filter>
     </ClInclude>
-    <ClInclude Include="saved_game_wrapper_inline.h">
-      <Filter>AI\ALife\saved_game_wrapper</Filter>
+    <ClInclude Include="SavedGameWrapper_inline.h">
+      <Filter>AI\ALife\SavedGameWrapper</Filter>
     </ClInclude>
     <ClInclude Include="CustomMonster.h">
       <Filter>AI\AMonsters\common\custom</Filter>
@@ -5526,7 +5526,7 @@
     <ClInclude Include="ui\UI.h">
       <Filter>UI</Filter>
     </ClInclude>
-    <ClInclude Include="ui\ui_base.h">
+    <ClInclude Include="ui\UICore.h">
       <Filter>UI</Filter>
     </ClInclude>
     <ClInclude Include="ui\UIDialogHolder.h">
@@ -6128,13 +6128,13 @@
     <ClCompile Include="agent_manager_properties.cpp">
       <Filter>AI\AGroup\AgentManager\agent_planner\properties</Filter>
     </ClCompile>
-    <ClCompile Include="alife_simulator.cpp">
+    <ClCompile Include="ALifeSimulator.cpp">
       <Filter>AI\ALife</Filter>
     </ClCompile>
-    <ClCompile Include="alife_simulator_script.cpp">
+    <ClCompile Include="ALifeSimulator_script.cpp">
       <Filter>AI\ALife</Filter>
     </ClCompile>
-    <ClCompile Include="alife_space.cpp">
+    <ClCompile Include="ALife_space.cpp">
       <Filter>AI\ALife</Filter>
     </ClCompile>
     <ClCompile Include="alife_interaction_manager.cpp">
@@ -6281,11 +6281,11 @@
     <ClCompile Include="AlifeSwitchManager.cpp">
       <Filter>AI\ALife\update_manager\switch_manager</Filter>
     </ClCompile>
-    <ClCompile Include="saved_game_wrapper.cpp">
-      <Filter>AI\ALife\saved_game_wrapper</Filter>
+    <ClCompile Include="SavedGameWrapper.cpp">
+      <Filter>AI\ALife\SavedGameWrapper</Filter>
     </ClCompile>
-    <ClCompile Include="saved_game_wrapper_script.cpp">
-      <Filter>AI\ALife\saved_game_wrapper</Filter>
+    <ClCompile Include="SavedGameWrapper_script.cpp">
+      <Filter>AI\ALife\SavedGameWrapper</Filter>
     </ClCompile>
     <ClCompile Include="CustomMonster.cpp">
       <Filter>AI\AMonsters\common\custom</Filter>
@@ -8192,7 +8192,7 @@
     <ClCompile Include="ui\UI.cpp">
       <Filter>UI</Filter>
     </ClCompile>
-    <ClCompile Include="ui\ui_base.cpp">
+    <ClCompile Include="ui\UICore.cpp">
       <Filter>UI</Filter>
     </ClCompile>
     <ClCompile Include="ui\UIDialogHolder.cpp">

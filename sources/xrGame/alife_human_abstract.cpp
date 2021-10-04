@@ -11,7 +11,7 @@
 #include "alife_human_brain.h"
 #include "alife_human_object_handler.h"
 #include "ai_space.h"
-#include "alife_simulator.h"
+#include "ALifeSimulator.h"
 #include "alife_group_registry.h"
 
 void CSE_ALifeHumanAbstract::update									()

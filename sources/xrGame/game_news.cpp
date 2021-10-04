@@ -6,7 +6,7 @@
 #include "object_broker.h"
 
 #include "ai_space.h"
-#include "alife_simulator.h"
+//#include "ALifeSimulator.h"
 #include "alife_object_registry.h"
 #include "game_graph.h"
 

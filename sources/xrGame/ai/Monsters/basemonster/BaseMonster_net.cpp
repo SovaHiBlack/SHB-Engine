@@ -6,7 +6,7 @@
 #include "../../../game_graph.h"
 #include "..\..\..\..\ENGINE\NetPacket.h"
 #include "../../../ai_space.h"
-#include "../../../hit.h"
+#include "..\..\..\Hit.h"
 #include "..\..\..\PHDestroyable.h"
 #include "../../../CharacterPhysicsSupport.h"
 

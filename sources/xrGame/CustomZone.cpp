@@ -2,7 +2,7 @@
 
 #include "..\ENGINE\Console.h"
 #include "CustomZone.h"
-#include "hit.h"
+#include "Hit.h"
 #include "PHDestroyable.h"
 #include "Actor.h"
 #include "HUDManager.h"//

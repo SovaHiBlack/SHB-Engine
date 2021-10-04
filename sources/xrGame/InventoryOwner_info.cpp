@@ -7,7 +7,7 @@
 #include "Messages.h"
 #include "ai_space.h"
 #include "ai_debug.h"
-#include "alife_simulator.h"
+//#include "ALifeSimulator.h"
 #include "alife_registry_container.h"
 #include "script_game_object.h"
 #include "Level.h"

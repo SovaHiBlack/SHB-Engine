@@ -10,8 +10,8 @@
 
 #include "ai/stalker/Stalker.h"
 #include "ai_space.h"
-#include "alife_simulator.h"
-#include "alife_space.h"
+#include "ALifeSimulator.h"
+#include "ALife_space.h"
 #include "Inventory.h"
 #include "clsid_game.h"
 #include "Pda.h"

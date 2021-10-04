@@ -1,6 +1,6 @@
 #pragma	once
 
-#include "alife_space.h"
+#include "ALife_space.h"
 #include "object_interfaces.h"
 
 struct ARTICLE_DATA : public IPureSerializeObject<IReader, IWriter>

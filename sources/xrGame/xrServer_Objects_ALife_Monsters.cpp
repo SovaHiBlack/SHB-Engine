@@ -15,12 +15,11 @@
 
 #include "ef_storage.h"
 #include "game_graph.h"
-#include "alife_simulator.h"
+#include "ALifeSimulator.h"
 #include "alife_registry_container.h"
 #include "ef_primary.h"
 #include "StringTable.h"
 #include "alife_online_offline_group_brain.h"
-#include "alife_simulator.h"
 #include "alife_object_registry.h"
 #include "date_time.h"
 

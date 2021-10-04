@@ -19,7 +19,7 @@
 #include "Server.h"
 #include "Level.h"
 //#include "..\ENGINE\Application.h"
-#include "saved_game_wrapper.h"
+#include "SavedGameWrapper.h"
 #include "StringTable.h"
 #include "..\ENGINE\IGamePersistent.h"//==>
 

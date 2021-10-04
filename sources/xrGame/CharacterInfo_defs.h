@@ -1,6 +1,6 @@
 #pragma once
 
-#include "alife_space.h"
+#include "ALife_space.h"
 
 // личное отношение (благосклонность) одного персонажа к другому - величина от -100< (крайне враждебное) до >100 (очень дрюжелюбное)
 using CharacterGoodwill			= int;

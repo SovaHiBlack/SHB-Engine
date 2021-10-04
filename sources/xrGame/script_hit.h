@@ -8,25 +8,26 @@
 
 #pragma once
 
-#include "alife_space.h"
+#include "ALife_space.h"
 #include "script_export_space.h"
 
 class CScriptGameObject;
 
-class CScriptHit {
+class CScriptHit
+{
 public:
-	float				m_fPower; 
+	float				m_fPower;
 	Fvector3				m_tDirection;
 	CSharedString				m_caBoneName;
-	CScriptGameObject		*m_tpDraftsman;
+	CScriptGameObject* m_tpDraftsman;
 	float				m_fImpulse;
 	int					m_tHitType;
 
 public:
-	inline					CScriptHit		();
-	inline					CScriptHit		(const CScriptHit *tpLuaHit);
-	virtual				~CScriptHit		();
-	inline		void		set_bone_name	(const char* bone_name);
+	inline					CScriptHit( );
+	inline					CScriptHit(const CScriptHit* tpLuaHit);
+	virtual				~CScriptHit( );
+	inline		void		set_bone_name(const char* bone_name);
 public:
 	static void script_register(lua_State*);
 };

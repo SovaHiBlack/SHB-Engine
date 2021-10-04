@@ -8,5 +8,5 @@
 CALifeInteractionManager::CALifeInteractionManager(CServer* server, const char* section) :
 	CALifeCombatManager(server, section),
 	CALifeCommunicationManager(server, section),
-	CALifeSimulatorBase(server, section)
+	CAlifeSimulatorBase(server, section)
 { }

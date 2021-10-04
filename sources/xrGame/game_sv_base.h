@@ -3,7 +3,7 @@
 #include <depr/dplay8.h>// раньше не было
 
 #include "game_base.h"
-#include "alife_space.h"
+//#include "ALife_space.h"
 #include "script_export_space.h"
 #include "..\ENGINE\ClientID.h"
 

@@ -2,7 +2,7 @@
 
 #include "PHCollisionDamageReceiver.h"
 #include "PhysicObject.h"
-#include "hit.h"
+#include "Hit.h"
 #include "PHDestroyable.h"
 #include "HitImmunity.h"
 #include "DamageManager.h"

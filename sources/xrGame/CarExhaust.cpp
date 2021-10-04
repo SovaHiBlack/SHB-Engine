@@ -5,8 +5,8 @@
 #	include "PHDebug.h"
 #endif
 
-#include "alife_space.h"
-#include "hit.h"
+//#include "ALife_space.h"
+#include "Hit.h"
 #include "PHDestroyable.h"
 #include "Car.h"
 #include "..\ENGINE\skeletoncustom.h"
@@ -17,7 +17,6 @@ extern CPHWorld* ph_world;
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 CCar::SExhaust::~SExhaust()
 {
-	
 	CParticlesObject::Destroy(p_pgobject);
 }
 

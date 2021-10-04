@@ -15,7 +15,7 @@
 #include "Weapon.h"
 #include "script_game_object.h"
 #include "Inventory.h"
-#include "alife_simulator.h"
+#include "ALifeSimulator.h"
 #include "alife_object_registry.h"
 #include "stalker_decision_space.h"
 #include "cover_manager.h"

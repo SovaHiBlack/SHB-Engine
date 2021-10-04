@@ -5,7 +5,7 @@
 #include "Level.h"
 #include "date_time.h"
 #include "ai_space.h"
-#include "alife_simulator.h"
+#include "ALifeSimulator.h"
 #include "alife_time_manager.h"
 
 const float SEC2MS = 1000.0f;

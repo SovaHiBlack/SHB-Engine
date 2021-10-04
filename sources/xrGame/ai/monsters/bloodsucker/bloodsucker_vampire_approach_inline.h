@@ -1,9 +1,6 @@
 #pragma once
 
-#define TEMPLATE_SPECIALIZATION template <\
-	typename _Object\
->
-
+#define TEMPLATE_SPECIALIZATION template <typename _Object>
 #define CStateBloodsuckerVampireApproachAbstract CStateBloodsuckerVampireApproach<_Object>
 
 TEMPLATE_SPECIALIZATION

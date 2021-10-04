@@ -31,6 +31,7 @@ protected:
 
 private:
 	inline		void						correct_position	(const CLevelGraph *level_graph, const CGameLevelCrossTable *cross, const CGameGraph *game_graph);
+
 #ifdef DEBUG
 			void						verify_vertex_id	(const CLevelGraph *level_graph, const CGameLevelCrossTable *cross, const CGameGraph *game_graph) const;
 #endif
@@ -47,12 +48,10 @@ public:
 	inline		const u32					&flags				() const;
 	inline		const CSharedString&	name				() const;
 
-public:
 			const u32					&level_vertex_id	() const;
 			const GameGraph::_GRAPH_ID	&game_vertex_id		() const;
 
 #ifdef DEBUG
-public:
 	inline		void						path				(const CPatrolPath *path);
 #endif
 

@@ -5,7 +5,7 @@
 
 #include "TeamBaseZone.h"
 #include "xrserver_objects_alife_monsters.h"
-#include "hit.h"
+#include "Hit.h"
 #include "Actor.h"
 #include "HUDManager.h"//
 #include "Level.h"

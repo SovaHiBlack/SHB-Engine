@@ -4,7 +4,7 @@
 #pragma once
 
 #include "xrServer_Objects.h"
-#include "alife_space.h"
+#include "ALife_space.h"
 #include "game_graph_space.h"
 
 #pragma warning(push)

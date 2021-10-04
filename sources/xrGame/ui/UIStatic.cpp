@@ -8,7 +8,7 @@
 #include "../..\ENGINE\LightAnimLibrary.h"
 #include "UILines.h"//
 #include "..\StringTable.h"
-#include "ui_base.h"//
+#include "UICore.h"//
 
 const char* clDefault = "default";
 
@@ -663,7 +663,7 @@ void CUIStatic::RescaleRelative2Rect(const Frect& r)
 	float h_rel = my_r.width( ) / r.width( );
 	float v_rel = my_r.height( ) / r.height( );
 
-	if (ui_core::is_16_9_mode( ))
+	if (CUICore::is_16_9_mode( ))
 	{
 		h_rel *= (3.0f / 4.0f);
 	}

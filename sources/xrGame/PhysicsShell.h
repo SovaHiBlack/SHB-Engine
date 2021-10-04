@@ -2,7 +2,7 @@
 
 #include "PHDefs.h"
 #include "PhysicsCommon.h"
-#include "alife_space.h"
+#include "ALife_space.h"
 #include "script_export_space.h"
 
 class CPhysicsJoint;

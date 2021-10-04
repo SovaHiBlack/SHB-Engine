@@ -62,7 +62,7 @@ public:
 	sPoly2D*			ClipPoly					(sPoly2D& S, sPoly2D& D) const;
 };
 
-class ui_core : public CDeviceResetNotifier
+class CUICore : public CDeviceResetNotifier
 {
 	C2DFrustum										m_2DFrustum;
 	C2DFrustum										m_2DFrustumPP;
@@ -87,8 +87,8 @@ class ui_core : public CDeviceResetNotifier
 public:
 	xr_stack<Frect>									m_Scissors;
 
-						ui_core						( );
-						~ui_core					( );
+	CUICore( );
+						~CUICore( );
 	CFontManager*		Font						( )
 	{
 		return m_pFontManager;
@@ -121,4 +121,4 @@ public:
 };
 
 extern CUICursor*		GetUICursor					( );
-extern ui_core*			UI							( );
+extern CUICore*			UI							( );

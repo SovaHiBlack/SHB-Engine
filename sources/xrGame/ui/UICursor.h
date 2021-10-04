@@ -1,6 +1,6 @@
 #pragma once
 
-#include "ui_base.h"//
+#include "UICore.h"//
 #include "UIStaticItem.h"//
 
 class CUIStatic;

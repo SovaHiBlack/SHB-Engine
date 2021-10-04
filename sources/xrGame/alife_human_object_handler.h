@@ -8,7 +8,7 @@
 
 #pragma once
 
-#include "alife_space.h"
+#include "ALife_space.h"
 
 class CSE_ALifeItemWeapon;
 class CSE_ALifeInventoryItem;

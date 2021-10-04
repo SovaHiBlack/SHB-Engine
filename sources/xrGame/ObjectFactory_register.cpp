@@ -47,7 +47,7 @@
 #	include "PHDebug.h"
 #endif // DEBUG
 
-#include "hit.h"
+#include "Hit.h"
 #include "PHDestroyable.h"
 #include "Car.h"
 

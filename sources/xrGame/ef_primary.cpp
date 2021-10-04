@@ -6,7 +6,7 @@
 #include "Weapon.h"
 #include "EntityAlive.h"
 #include "inventoryowner.h"
-#include "alife_simulator.h"
+#include "ALifeSimulator.h"
 #include "ef_storage.h"
 #include "ai_space.h"
 #include "game_graph.h"

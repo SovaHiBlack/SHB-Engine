@@ -3,7 +3,7 @@
 #include "HUDManager.h"//
 #include "Server.h"
 #include "game_sv_single.h"
-#include "alife_simulator.h"
+//#include "ALifeSimulator.h"
 #include "xrserver_objects.h"
 #include "Level.h"
 

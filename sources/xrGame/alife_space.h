@@ -1,4 +1,4 @@
-//	Module 		: alife_space.h
+//	Module 		: ALife_space.h
 //	Description : ALife space
 
 #pragma once
@@ -95,8 +95,8 @@ namespace ALife
 	//возможность подключения аддонов
 	enum EWeaponAddonStatus
 	{
-		eAddonDisabled = 0,	//нельзя присоеденить
-		eAddonPermanent = 1,	//постоянно подключено по умолчанию
+		eAddonDisabled = 0,			//нельзя присоеденить
+		eAddonPermanent = 1,		//постоянно подключено по умолчанию
 		eAddonAttachable = 2		//можно присоединять
 	};
 

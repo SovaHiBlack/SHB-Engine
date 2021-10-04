@@ -7,7 +7,7 @@
 #include "script_export_space.h"
 #include "..\ENGINE\StatGraph.h"//
 #include "Messages.h"
-#include "alife_space.h"
+#include "ALife_space.h"
 #include "..\Core\Debug.h"
 #include "Server.h"
 

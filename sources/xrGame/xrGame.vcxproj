@@ -544,7 +544,7 @@
     <ClInclude Include="alife_registry_wrappers.h" />
     <ClInclude Include="alife_schedule_registry.h" />
     <ClInclude Include="alife_schedule_registry_inline.h" />
-    <ClInclude Include="alife_simulator.h" />
+    <ClInclude Include="ALifeSimulator.h" />
     <ClInclude Include="alife_simulator_base.h" />
     <ClInclude Include="alife_simulator_base_inline.h" />
     <ClInclude Include="alife_simulator_header.h" />
@@ -553,7 +553,7 @@
     <ClInclude Include="alife_smart_terrain_registry_inline.h" />
     <ClInclude Include="alife_smart_terrain_task.h" />
     <ClInclude Include="alife_smart_terrain_task_inline.h" />
-    <ClInclude Include="alife_space.h" />
+    <ClInclude Include="ALife_space.h" />
     <ClInclude Include="alife_spawn_registry.h" />
     <ClInclude Include="alife_spawn_registry_header.h" />
     <ClInclude Include="alife_spawn_registry_header_inline.h" />
@@ -1029,8 +1029,8 @@
     <ClInclude Include="RustyHairArtefact.h" />
     <ClInclude Include="safe_map_iterator.h" />
     <ClInclude Include="safe_map_iterator_inline.h" />
-    <ClInclude Include="saved_game_wrapper.h" />
-    <ClInclude Include="saved_game_wrapper_inline.h" />
+    <ClInclude Include="SavedGameWrapper.h" />
+    <ClInclude Include="SavedGameWrapper_inline.h" />
     <ClInclude Include="ScientificOutfit.h" />
     <ClInclude Include="Scope.h" />
     <ClInclude Include="ScriptXMLInit.h" />
@@ -1398,7 +1398,7 @@
     <ClInclude Include="ui\UIXmlInit.h" />
     <ClInclude Include="ui\UIArtefactParams.h" />
     <ClInclude Include="ui\UIZoneMap.h" />
-    <ClInclude Include="ui\ui_base.h" />
+    <ClInclude Include="ui\UICore.h" />
     <ClInclude Include="ui\UIInteractiveBackground_Static.h" />
     <ClInclude Include="ui\xrUIXmlParser.h" />
     <ClInclude Include="UsableScriptObject.h" />
@@ -1658,16 +1658,16 @@
     <ClCompile Include="alife_online_offline_group_brain.cpp" />
     <ClCompile Include="alife_registry_container.cpp" />
     <ClCompile Include="alife_schedule_registry.cpp" />
-    <ClCompile Include="alife_simulator.cpp" />
+    <ClCompile Include="ALifeSimulator.cpp" />
     <ClCompile Include="alife_simulator_base.cpp" />
     <ClCompile Include="alife_simulator_base2.cpp" />
     <ClCompile Include="alife_simulator_header.cpp" />
-    <ClCompile Include="alife_simulator_script.cpp" />
+    <ClCompile Include="ALifeSimulator_script.cpp" />
     <ClCompile Include="alife_smart_terrain_registry.cpp" />
     <ClCompile Include="alife_smart_terrain_task.cpp" />
     <ClCompile Include="alife_smart_terrain_task_script.cpp" />
     <ClCompile Include="alife_smart_zone.cpp" />
-    <ClCompile Include="alife_space.cpp" />
+    <ClCompile Include="ALife_space.cpp" />
     <ClCompile Include="alife_spawn_registry.cpp" />
     <ClCompile Include="alife_spawn_registry_header.cpp" />
     <ClCompile Include="alife_spawn_registry_spawn.cpp" />
@@ -1999,8 +1999,8 @@
     <ClCompile Include="GrenadeRGD5.cpp" />
     <ClCompile Include="RocketLauncher.cpp" />
     <ClCompile Include="RustyHairArtefact.cpp" />
-    <ClCompile Include="saved_game_wrapper.cpp" />
-    <ClCompile Include="saved_game_wrapper_script.cpp" />
+    <ClCompile Include="SavedGameWrapper.cpp" />
+    <ClCompile Include="SavedGameWrapper_script.cpp" />
     <ClCompile Include="ScientificOutfit.cpp" />
     <ClCompile Include="Scope.cpp" />
     <ClCompile Include="ScriptXMLInit.cpp" />
@@ -2333,7 +2333,7 @@
     <ClCompile Include="ui\UIXmlInit.cpp" />
     <ClCompile Include="ui\UIArtefactParams.cpp" />
     <ClCompile Include="ui\UIZoneMap.cpp" />
-    <ClCompile Include="ui\ui_base.cpp" />
+    <ClCompile Include="ui\UICore.cpp" />
     <ClCompile Include="ui\ui_export_script.cpp" />
     <ClCompile Include="ui\UIInteractiveBackground_Static.cpp" />
     <ClCompile Include="ui\xrUIXmlParser.cpp" />

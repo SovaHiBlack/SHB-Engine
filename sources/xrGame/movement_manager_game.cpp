@@ -4,7 +4,7 @@
 #include "stdafx.h"
 
 #include "movement_manager.h"
-#include "alife_simulator.h"
+#include "ALifeSimulator.h"
 #include "alife_graph_registry.h"
 #include "alife_level_registry.h"
 #include "Profiler.h"

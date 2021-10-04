@@ -18,7 +18,7 @@
 //#include "..\Missile.h"
 //#include "..\Grenade.h"
 //#include "../xrServer_objects_ALife.h"
-//#include "../alife_simulator.h"
+//#include "..\ALifeSimulator.h"
 //#include "../alife_object_registry.h"
 //#include "../game_cl_base.h"
 //#include "..\Level.h"

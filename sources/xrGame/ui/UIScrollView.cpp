@@ -2,7 +2,7 @@
 
 #include "UIScrollView.h"//
 #include "UIScrollBar.h"//
-#include "ui_base.h"//
+#include "UICore.h"//
 #include "UICursor.h"//
 #include "..\..\ENGINE\Input.h"
 

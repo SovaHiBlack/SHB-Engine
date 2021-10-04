@@ -11,5 +11,5 @@
 #include "alife_communication_manager.h"
 
 CALifeCommunicationManager::CALifeCommunicationManager	(CServer*server, const char* section) :
-	CALifeSimulatorBase	(server,section)
+	CAlifeSimulatorBase(server,section)
 { }

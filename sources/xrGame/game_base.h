@@ -2,7 +2,7 @@
 
 #include "game_base_space.h"
 #include "script_export_space.h"
-#include "alife_space.h"
+#include "ALife_space.h"
 
 #pragma pack(push,1)
 struct	game_PlayerState;//fw

@@ -10,7 +10,7 @@
 
 #include "xrServer_Objects_ALife_Monsters.h"
 #include "ai_space.h"
-#include "alife_simulator.h"
+#include "ALifeSimulator.h"
 #include "alife_time_manager.h"
 #include "alife_spawn_registry.h"
 #include "alife_graph_registry.h"

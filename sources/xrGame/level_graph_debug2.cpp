@@ -21,7 +21,7 @@
 #include "cover_manager.h"
 #include "cover_evaluators.h"
 #include "TeamBaseZone.h"
-#include "alife_simulator.h"
+//#include "ALifeSimulator.h"
 #include "alife_graph_registry.h"
 #include "alife_object_registry.h"
 #include "game_cl_base.h"

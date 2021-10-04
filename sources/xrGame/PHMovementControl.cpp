@@ -1,7 +1,7 @@
 #include "stdafx.h"
 
 //#include "..\ENGINE\cl_intersect.h"
-//#include "alife_space.h"
+//#include "ALife_space.h"
 #include "PHMovementControl.h"
 //#include "PHDynamicData.h"
 //#include "Physics.h"

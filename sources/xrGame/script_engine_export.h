@@ -23,7 +23,7 @@
 #include "xrServer_Objects_ALife_All.h"
 
 #include "base_client_classes.h"
-#include "alife_simulator.h"
+#include "ALifeSimulator.h"
 #include "script_hit.h"
 #include "script_monster_hit_info.h"
 #include "script_sound_info.h"
@@ -108,7 +108,7 @@
 #	include "PHDebug.h"
 #endif
 
-#include "hit.h"
+#include "Hit.h"
 #include "PHDestroyable.h"
 #include "Car.h"
 #include "script_lanim.h"
@@ -146,7 +146,7 @@
 #include "WeaponVal.h"
 #include "WeaponVintorez.h"
 #include "WeaponWalther.h"
-#include "saved_game_wrapper.h"
+#include "SavedGameWrapper.h"
 #include "Mincer.h"
 #include "MosquitoBald.h"
 #include "HairsZone.h"

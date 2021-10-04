@@ -10,7 +10,7 @@
 #include "CharacterInfo.h"
 #include "RelationRegistry.h"
 #include "ai_space.h"
-#include "alife_simulator.h"
+//#include "ALifeSimulator.h"
 #include "alife_registry_container.h"
 #include "script_game_object.h"
 #include "game_cl_base.h"

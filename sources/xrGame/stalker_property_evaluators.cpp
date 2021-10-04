@@ -13,7 +13,7 @@
 #include "script_game_object.h"
 #include "ai/ai_monsters_misc.h"
 #include "Inventory.h"
-#include "alife_simulator.h"
+#include "ALifeSimulator.h"
 #include "alife_object_registry.h"
 #include "memory_manager.h"
 #include "visual_memory_manager.h"

@@ -13,7 +13,7 @@
 #include "cover_point.h"
 #include "script_engine.h"
 #include "patrol_path_storage.h"
-#include "alife_simulator.h"
+#include "ALifeSimulator.h"
 
 CAI_Space* g_ai_space = nullptr;
 

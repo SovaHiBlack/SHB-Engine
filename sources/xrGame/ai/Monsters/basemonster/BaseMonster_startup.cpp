@@ -2,7 +2,7 @@
 
 #include "BaseMonster.h"
 #include "../../../ai_space.h"
-#include "../../../hit.h"
+#include "..\..\..\Hit.h"
 #include "..\..\..\PHDestroyable.h"
 #include "../../../CharacterPhysicsSupport.h"
 #include "../../../PHMovementControl.h"
@@ -22,7 +22,7 @@
 #include "../../../ai_object_location.h"
 #include "..\..\..\Level.h"
 #include "../../../xrserver_objects_alife_monsters.h"
-#include "../../../alife_simulator.h"
+//#include "..\..\..\ALifeSimulator.h"
 #include "../../../alife_object_registry.h"
 #include "..\..\..\Server.h"
 #include "..\..\..\InventoryItem.h"

@@ -10,7 +10,7 @@
 //#include "..\Level.h"
 //#include "../object_broker.h"
 #include "..\Actor.h"
-#include "../saved_game_wrapper.h"
+#include "..\SavedGameWrapper.h"
 #include <dinput.h>
 
 extern string_path g_last_saved_game;

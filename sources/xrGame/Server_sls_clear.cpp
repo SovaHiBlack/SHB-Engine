@@ -1,7 +1,7 @@
 #include "stdafx.h"
 
 #include "game_sv_single.h"
-#include "alife_simulator.h"
+//#include "ALifeSimulator.h"
 #include "xrServer_Objects.h"
 #include "Server.h"
 #include "Messages.h"

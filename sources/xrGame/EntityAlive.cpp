@@ -14,7 +14,7 @@
 #include "MonsterCommunity.h"
 #include "EntityCondition.h"
 #include "script_game_object.h"
-#include "hit.h"
+#include "Hit.h"
 #include "PHDestroyable.h"
 #include "CharacterPhysicsSupport.h"
 #include "script_callback_ex.h"

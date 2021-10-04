@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../../../alife_simulator.h"
+#include "..\..\..\ALifeSimulator.h"
 #include "../../../alife_object_registry.h"
 #include "../../../xrServer_Objects_ALife_Monsters.h"
 #include "../../../alife_monster_brain.h"

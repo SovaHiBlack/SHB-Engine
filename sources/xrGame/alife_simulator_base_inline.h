@@ -8,193 +8,193 @@
 
 #pragma once
 
-inline	bool								CALifeSimulatorBase::initialized			() const
+inline bool CAlifeSimulatorBase::initialized( ) const
 {
-	return						(m_initialized);
+	return m_initialized;
 }
 
-inline	const CALifeSimulatorHeader			&CALifeSimulatorBase::header				() const
+inline const CALifeSimulatorHeader& CAlifeSimulatorBase::header( ) const
 {
-	VERIFY						(initialized());
-	VERIFY						(m_header);
-	return						(*m_header);
+	VERIFY(initialized( ));
+	VERIFY(m_header);
+	return *m_header;
 }
 
-inline	const CALifeTimeManager				&CALifeSimulatorBase::time					() const
+inline const CALifeTimeManager& CAlifeSimulatorBase::time( ) const
 {
-	VERIFY						(initialized());
-	VERIFY						(m_time_manager);
-	return						(*m_time_manager);
+	VERIFY(initialized( ));
+	VERIFY(m_time_manager);
+	return *m_time_manager;
 }
 
-inline	const CALifeSpawnRegistry			&CALifeSimulatorBase::spawns				() const
+inline const CALifeSpawnRegistry& CAlifeSimulatorBase::spawns( ) const
 {
-	VERIFY						(initialized());
-	VERIFY						(m_spawns);
-	return						(*m_spawns);
+	VERIFY(initialized( ));
+	VERIFY(m_spawns);
+	return *m_spawns;
 }
 
-inline	const CALifeObjectRegistry			&CALifeSimulatorBase::objects				() const
+inline const CALifeObjectRegistry& CAlifeSimulatorBase::objects( ) const
 {
-	VERIFY						(initialized());
-	VERIFY						(m_objects);
-	return						(*m_objects);
+	VERIFY(initialized( ));
+	VERIFY(m_objects);
+	return *m_objects;
 }
 
-inline	const CALifeGraphRegistry			&CALifeSimulatorBase::graph					() const
+inline const CALifeGraphRegistry& CAlifeSimulatorBase::graph( ) const
 {
-	VERIFY						(initialized());
-	VERIFY						(m_graph_objects);
-	return						(*m_graph_objects);
+	VERIFY(initialized( ));
+	VERIFY(m_graph_objects);
+	return *m_graph_objects;
 }
 
-inline	const CALifeScheduleRegistry		&CALifeSimulatorBase::scheduled				() const
+inline const CALifeScheduleRegistry& CAlifeSimulatorBase::scheduled( ) const
 {
-	VERIFY						(initialized());
-	VERIFY						(m_scheduled);
-	return						(*m_scheduled);
+	VERIFY(initialized( ));
+	VERIFY(m_scheduled);
+	return *m_scheduled;
 }
 
-inline	const CALifeStoryRegistry			&CALifeSimulatorBase::story_objects			() const
+inline const CALifeStoryRegistry& CAlifeSimulatorBase::story_objects( ) const
 {
-	VERIFY						(initialized());
-	VERIFY						(m_story_objects);
-	return						(*m_story_objects);
+	VERIFY(initialized( ));
+	VERIFY(m_story_objects);
+	return *m_story_objects;
 }
 
-inline	const CALifeSmartTerrainRegistry	&CALifeSimulatorBase::smart_terrains		() const
+inline const CALifeSmartTerrainRegistry& CAlifeSimulatorBase::smart_terrains( ) const
 {
-	VERIFY						(initialized());
-	VERIFY						(m_smart_terrains);
-	return						(*m_smart_terrains);
+	VERIFY(initialized( ));
+	VERIFY(m_smart_terrains);
+	return *m_smart_terrains;
 }
 
-inline	const CALifeGroupRegistry			&CALifeSimulatorBase::groups				() const
+inline const CALifeGroupRegistry& CAlifeSimulatorBase::groups( ) const
 {
-	VERIFY						(initialized());
-	VERIFY						(m_groups);
-	return						(*m_groups);
+	VERIFY(initialized( ));
+	VERIFY(m_groups);
+	return *m_groups;
 }
 
-inline	CALifeSimulatorHeader				&CALifeSimulatorBase::header				()
+inline CALifeSimulatorHeader& CAlifeSimulatorBase::header( )
 {
-	VERIFY						(initialized());
-	VERIFY						(m_header);
-	return						(*m_header);
+	VERIFY(initialized( ));
+	VERIFY(m_header);
+	return *m_header;
 }
 
-inline	CALifeTimeManager					&CALifeSimulatorBase::time					()
+inline CALifeTimeManager& CAlifeSimulatorBase::time( )
 {
-	VERIFY						(initialized());
-	VERIFY						(m_time_manager);
-	return						(*m_time_manager);
+	VERIFY(initialized( ));
+	VERIFY(m_time_manager);
+	return *m_time_manager;
 }
 
-inline	CALifeSpawnRegistry					&CALifeSimulatorBase::spawns				()
+inline CALifeSpawnRegistry& CAlifeSimulatorBase::spawns( )
 {
-	VERIFY						(initialized());
-	VERIFY						(m_spawns);
-	return						(*m_spawns);
+	VERIFY(initialized( ));
+	VERIFY(m_spawns);
+	return *m_spawns;
 }
 
-inline	CALifeObjectRegistry				&CALifeSimulatorBase::objects				()
+inline CALifeObjectRegistry& CAlifeSimulatorBase::objects( )
 {
-	VERIFY						(initialized());
-	VERIFY						(m_objects);
-	return						(*m_objects);
+	VERIFY(initialized( ));
+	VERIFY(m_objects);
+	return *m_objects;
 }
 
-inline	CALifeGraphRegistry					&CALifeSimulatorBase::graph					()
+inline CALifeGraphRegistry& CAlifeSimulatorBase::graph( )
 {
-	VERIFY						(initialized());
-	VERIFY						(m_graph_objects);
-	return						(*m_graph_objects);
+	VERIFY(initialized( ));
+	VERIFY(m_graph_objects);
+	return *m_graph_objects;
 }
 
-inline	CALifeScheduleRegistry				&CALifeSimulatorBase::scheduled				()
+inline CALifeScheduleRegistry& CAlifeSimulatorBase::scheduled( )
 {
-	VERIFY						(initialized());
-	VERIFY						(m_scheduled);
-	return						(*m_scheduled);
+	VERIFY(initialized( ));
+	VERIFY(m_scheduled);
+	return *m_scheduled;
 }
 
-inline	CALifeStoryRegistry					&CALifeSimulatorBase::story_objects			()
+inline CALifeStoryRegistry& CAlifeSimulatorBase::story_objects( )
 {
-	VERIFY						(initialized());
-	VERIFY						(m_story_objects);
-	return						(*m_story_objects);
+	VERIFY(initialized( ));
+	VERIFY(m_story_objects);
+	return *m_story_objects;
 }
 
-inline	CALifeSmartTerrainRegistry			&CALifeSimulatorBase::smart_terrains		()
+inline CALifeSmartTerrainRegistry& CAlifeSimulatorBase::smart_terrains( )
 {
-	VERIFY						(initialized());
-	VERIFY						(m_smart_terrains);
-	return						(*m_smart_terrains);
+	VERIFY(initialized( ));
+	VERIFY(m_smart_terrains);
+	return *m_smart_terrains;
 }
 
-inline	CALifeGroupRegistry					&CALifeSimulatorBase::groups				()
+inline CALifeGroupRegistry& CAlifeSimulatorBase::groups( )
 {
-	VERIFY						(initialized());
-	VERIFY						(m_groups);
-	return						(*m_groups);
+	VERIFY(initialized( ));
+	VERIFY(m_groups);
+	return *m_groups;
 }
 
-inline	CALifeRegistryContainer		&CALifeSimulatorBase::registry						() const
+inline CALifeRegistryContainer& CAlifeSimulatorBase::registry( ) const
 {
-	VERIFY						(initialized());
-	VERIFY						(m_registry_container);
-	return						(*m_registry_container);
+	VERIFY(initialized( ));
+	VERIFY(m_registry_container);
+	return *m_registry_container;
 }
 
-inline	CRandom32							&CALifeSimulatorBase::random				()
+inline CRandom32& CAlifeSimulatorBase::random( )
 {
-	return						(m_random);
+	return m_random;
 }
 
-inline	void								CALifeSimulatorBase::setup_command_line		(CSharedString* command_line)
+inline void CAlifeSimulatorBase::setup_command_line(CSharedString* command_line)
 {
-	m_server_command_line		= command_line;
+	m_server_command_line = command_line;
 }
 
-inline	CServer&CALifeSimulatorBase::server				() const
+inline CServer& CAlifeSimulatorBase::server( ) const
 {
-	VERIFY						(m_server);
-	return						(*m_server);
+	VERIFY(m_server);
+	return *m_server;
 }
 
-inline	CALifeTimeManager					&CALifeSimulatorBase::time_manager			()
+inline CALifeTimeManager& CAlifeSimulatorBase::time_manager( )
 {
-	VERIFY						(initialized());
-	VERIFY						(m_time_manager);
-	return						(*m_time_manager);
+	VERIFY(initialized( ));
+	VERIFY(m_time_manager);
+	return *m_time_manager;
 }
 
-inline	const CALifeTimeManager				&CALifeSimulatorBase::time_manager			() const
+inline const CALifeTimeManager& CAlifeSimulatorBase::time_manager( ) const
 {
-	VERIFY						(initialized());
-	VERIFY						(m_time_manager);
-	return						(*m_time_manager);
+	VERIFY(initialized( ));
+	VERIFY(m_time_manager);
+	return *m_time_manager;
 }
 
-inline	CSharedString* CALifeSimulatorBase::server_command_line	() const
+inline CSharedString* CAlifeSimulatorBase::server_command_line( ) const
 {
-	VERIFY						(m_server_command_line);
-	return						(m_server_command_line);
+	VERIFY(m_server_command_line);
+	return m_server_command_line;
 }
 
 template <typename T>
-inline	T									&CALifeSimulatorBase::registry				(T *t) const
+inline T& CAlifeSimulatorBase::registry(T* t) const
 {
-	return						(registry()(t));
+	return (registry( )(t));
 }
 
-inline	void								CALifeSimulatorBase::can_register_objects	(const bool &value)
+inline void CAlifeSimulatorBase::can_register_objects(const bool& value)
 {
-	VERIFY						(m_can_register_objects != value);
-	m_can_register_objects		= value;
+	VERIFY(m_can_register_objects != value);
+	m_can_register_objects = value;
 }
 
-inline	const bool							&CALifeSimulatorBase::can_register_objects	() const
+inline const bool& CAlifeSimulatorBase::can_register_objects( ) const
 {
-	return						(m_can_register_objects);
+	return m_can_register_objects;
 }

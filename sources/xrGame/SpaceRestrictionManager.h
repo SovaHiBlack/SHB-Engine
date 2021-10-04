@@ -4,7 +4,7 @@
 #pragma once
 
 #include "SpaceRestrictionHolder.h"
-#include "alife_space.h"
+#include "ALife_space.h"
 
 namespace Restriction
 {

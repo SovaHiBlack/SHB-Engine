@@ -13,7 +13,7 @@
 #include "script_game_object.h"
 #include "ai_space.h"
 #include "alife_object_registry.h"
-#include "alife_simulator.h"
+#include "ALifeSimulator.h"
 #include "alife_story_registry.h"
 #include "GameObject_space.h"
 #include "object_broker.h"

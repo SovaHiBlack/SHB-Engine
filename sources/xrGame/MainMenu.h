@@ -9,7 +9,7 @@ class CUIMessageBoxEx;
 #include "..\ENGINE\IGamePersistent.h"//==>
 #include "ui/UIDialogHolder.h"//
 #include "ui/UIWndCallback.h"//
-#include "ui/ui_base.h"//
+#include "ui/UICore.h"//
 
 class CMainMenu : public IMainMenu, public IInputReceiver, public pureRender, public CDialogHolder, public CUIWndCallback, public CDeviceResetNotifier
 {

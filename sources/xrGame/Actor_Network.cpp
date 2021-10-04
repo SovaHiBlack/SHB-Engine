@@ -16,7 +16,7 @@
 #include "alife_registry_wrappers.h"
 #include "..\ENGINE\skeletonanimated.h"
 #include "client_spawn_manager.h"
-#include "hit.h"
+#include "Hit.h"
 //#include "PHDestroyable.h"
 #include "CharacterPhysicsSupport.h"
 #include "Grenade.h"

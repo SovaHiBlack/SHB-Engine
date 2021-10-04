@@ -14,7 +14,7 @@
 #include "game_base_space.h"
 #include "HUDManager.h"//
 #include "xrserver_objects_alife_monsters.h"
-#include "alife_simulator.h"
+#include "ALifeSimulator.h"
 #include "alife_graph_registry.h"
 #include "alife_object_registry.h"
 #include "alife_human_brain.h"

@@ -5,7 +5,7 @@
 
 #include "UISubLine.h"//
 //#include "UILine_std.h"//
-#include "ui_base.h"//
+#include "UICore.h"//
 
 #ifdef ALL_LINES_LOG
 int ListSubLinesCount = 0;

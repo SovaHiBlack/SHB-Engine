@@ -43,7 +43,7 @@
 #include "ai/monsters/burer/burer.h"
 #include "GamePersistent.h"
 #include "Actor.h"
-#include "alife_simulator.h"
+//#include "ALifeSimulator.h"
 #include "alife_object_registry.h"
 #include "client_spawn_manager.h"
 

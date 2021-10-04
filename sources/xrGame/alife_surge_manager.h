@@ -13,9 +13,10 @@
 
 class CSE_ALifeTrader;
 
-class CALifeSurgeManager : public virtual CALifeSimulatorBase {
+class CALifeSurgeManager : public virtual CAlifeSimulatorBase
+{
 protected:
-	typedef CALifeSimulatorBase inherited;
+	typedef CAlifeSimulatorBase inherited;
 
 protected:
 	xr_vector<ALife::_SPAWN_ID>		m_temp_spawns;

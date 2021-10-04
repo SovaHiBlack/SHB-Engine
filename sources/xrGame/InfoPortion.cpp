@@ -5,7 +5,7 @@
 #include "EncyclopediaArticle.h"
 #include "GameTask.h"
 #include "ai_space.h"
-#include "alife_simulator.h"
+//#include "ALifeSimulator.h"
 #include "alife_story_registry.h"
 #include "xrServer_Objects_ALife.h"
 #include "script_engine.h"

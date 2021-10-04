@@ -2,7 +2,7 @@
 #pragma once
 
 #include "UIWindow.h"//
-#include "../alife_space.h"
+#include "..\ALife_space.h"
 #include "../CharacterInfo_defs.h"
 
 class CUIStatic;

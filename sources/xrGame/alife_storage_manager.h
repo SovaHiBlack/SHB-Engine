@@ -12,9 +12,10 @@
 
 class CNetPacket;
 
-class CALifeStorageManager : public virtual CALifeSimulatorBase {
+class CALifeStorageManager : public virtual CAlifeSimulatorBase
+{
 protected:
-	typedef CALifeSimulatorBase inherited;
+	typedef CAlifeSimulatorBase inherited;
 
 	string_path		m_save_name;
 	const char* m_section;

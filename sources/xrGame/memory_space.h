@@ -10,7 +10,7 @@
 
 #include "ai_sounds.h"
 #include "Server_space.h"
-#include "alife_space.h"
+#include "ALife_space.h"
 #include "script_export_space.h"
 
 //#define USE_GAME_TIME

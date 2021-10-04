@@ -1,14 +1,9 @@
-////////////////////////////////////////////////////////////////////////////
-//	Module 		: saved_game_wrapper.cpp
-//	Created 	: 21.02.2006
-//  Modified 	: 21.02.2006
-//	Author		: Dmitriy Iassenev
+//	Module 		: SavedGameWrapper.cpp
 //	Description : saved game wrapper class
-////////////////////////////////////////////////////////////////////////////
 
 #include "stdafx.h"
 
-#include "saved_game_wrapper.h"
+#include "SavedGameWrapper.h"
 #include "alife_time_manager.h"
 #include "alife_object_registry.h"
 #include "xrServer_Objects_ALife_Monsters.h"
@@ -20,16 +15,16 @@ extern const char* alife_section;
 
 const char* CSavedGameWrapper::saved_game_full_name(const char* saved_game_name, string_path& result)
 {
-	string_path					temp;
+	string_path temp;
 	strconcat(sizeof(temp), temp, saved_game_name, SAVE_EXTENSION);
 	FS.update_path(result, "$game_saves$", temp);
-	return						(result);
+	return result;
 }
 
 bool CSavedGameWrapper::saved_game_exist(const char* saved_game_name)
 {
-	string_path					file_name;
-	return						(!!FS.exist(saved_game_full_name(saved_game_name, file_name)));
+	string_path file_name;
+	return !!FS.exist(saved_game_full_name(saved_game_name, file_name));
 }
 
 bool CSavedGameWrapper::valid_saved_game(IReader& stream)
@@ -54,21 +49,21 @@ bool CSavedGameWrapper::valid_saved_game(IReader& stream)
 
 bool CSavedGameWrapper::valid_saved_game(const char* saved_game_name)
 {
-	string_path					file_name;
+	string_path file_name;
 	if (!FS.exist(saved_game_full_name(saved_game_name, file_name)))
 	{
 		return false;
 	}
 
 	IReader* stream = FS.r_open(file_name);
-	bool						result = valid_saved_game(*stream);
+	bool result = valid_saved_game(*stream);
 	FS.r_close(stream);
-	return						result;
+	return result;
 }
 
 CSavedGameWrapper::CSavedGameWrapper(const char* saved_game_name)
 {
-	string_path					file_name;
+	string_path file_name;
 	saved_game_full_name(saved_game_name, file_name);
 	R_ASSERT3(FS.exist(file_name), "There is no saved game ", file_name);
 
@@ -76,29 +71,29 @@ CSavedGameWrapper::CSavedGameWrapper(const char* saved_game_name)
 	if (!valid_saved_game(*stream))
 	{
 		FS.r_close(stream);
-		CALifeTimeManager		time_manager(alife_section);
+		CALifeTimeManager time_manager(alife_section);
 		m_game_time = time_manager.game_time( );
 		m_actor_health = 1.f;
 		m_level_id = ai( ).game_graph( ).header( ).levels( ).begin( )->first;
 		return;
 	}
 
-	u32							source_count = stream->r_u32( );
+	unsigned int source_count = stream->r_u32( );
 	void* source_data = xr_malloc(source_count);
-	rtc_decompress(source_data, source_count, stream->pointer( ), stream->length( ) - 3 * sizeof(u32));
+	rtc_decompress(source_data, source_count, stream->pointer( ), stream->length( ) - 3 * sizeof(unsigned int));
 	FS.r_close(stream);
 
-	IReader						reader(source_data, source_count);
+	IReader reader(source_data, source_count);
 
 	{
-		CALifeTimeManager		time_manager(alife_section);
+		CALifeTimeManager time_manager(alife_section);
 		time_manager.load(reader);
 		m_game_time = time_manager.game_time( );
 	}
 
 	{
 		R_ASSERT2(reader.find_chunk(OBJECT_CHUNK_DATA), "Can't find chunk OBJECT_CHUNK_DATA!");
-		u32						count = reader.r_u32( );
+		unsigned int count = reader.r_u32( );
 		VERIFY(count > 0);
 		CSE_ALifeDynamicObject* object = CALifeObjectRegistry::get_object(reader);
 		VERIFY(object->ID == 0);

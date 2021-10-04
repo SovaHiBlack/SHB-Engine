@@ -1,6 +1,6 @@
 #include "stdafx.h"
 
-#include "ui_base.h"//
+#include "UICore.h"//
 #include "..\GamePersistent.h"
 #include "UICursor.h"//
 #include "..\HUDManager.h"//
@@ -10,7 +10,7 @@ CUICursor* GetUICursor( )
 	return UI( )->GetUICursor( );
 }
 
-ui_core* UI( )
+CUICore* UI( )
 {
 	return GamePersistent( ).m_pUI_core;
 }
@@ -126,39 +126,39 @@ sPoly2D* C2DFrustum::ClipPoly(sPoly2D& S, sPoly2D& D) const
 	return dest;
 }
 
-void ui_core::OnDeviceReset( )
+void CUICore::OnDeviceReset( )
 {
 	m_scale_.set(float(Device.dwWidth) / UI_BASE_WIDTH, float(Device.dwHeight) / UI_BASE_HEIGHT);
 	m_2DFrustum.CreateFromRect(Frect( ).set(0.0f, 0.0f, float(Device.dwWidth), float(Device.dwHeight)));
 }
 
-void ui_core::ClientToScreenScaled(Fvector2& dest, float left, float top)
+void CUICore::ClientToScreenScaled(Fvector2& dest, float left, float top)
 {
 	dest.set(ClientToScreenScaledX(left), ClientToScreenScaledY(top));
 }
 
-void ui_core::ClientToScreenScaled(Fvector2& src_and_dest)
+void CUICore::ClientToScreenScaled(Fvector2& src_and_dest)
 {
 	src_and_dest.set(ClientToScreenScaledX(src_and_dest.x), ClientToScreenScaledY(src_and_dest.y));
 }
 
-void ui_core::ClientToScreenScaledWidth(float& src_and_dest)
+void CUICore::ClientToScreenScaledWidth(float& src_and_dest)
 {
 	src_and_dest /= m_current_scale->x;
 }
 
-void ui_core::ClientToScreenScaledHeight(float& src_and_dest)
+void CUICore::ClientToScreenScaledHeight(float& src_and_dest)
 {
 	src_and_dest /= m_current_scale->y;
 }
 
-Frect ui_core::ScreenRect( )
+Frect CUICore::ScreenRect( )
 {
 	static Frect R = { 0.0f, 0.0f, UI_BASE_WIDTH, UI_BASE_HEIGHT };
 	return R;
 }
 
-void ui_core::PushScissor(const Frect& r_tgt, bool overlapped)
+void CUICore::PushScissor(const Frect& r_tgt, bool overlapped)
 {
 	Frect r_top = ScreenRect( );
 	Frect result = r_tgt;
@@ -194,7 +194,7 @@ void ui_core::PushScissor(const Frect& r_tgt, bool overlapped)
 	RCache.set_Scissor(&r);
 }
 
-void ui_core::PopScissor( )
+void CUICore::PopScissor( )
 {
 	VERIFY(!m_Scissors.empty( ));
 	m_Scissors.pop( );
@@ -216,7 +216,7 @@ void ui_core::PopScissor( )
 	}
 }
 
-ui_core::ui_core( )
+CUICore::CUICore( )
 {
 	m_pUICursor = xr_new<CUICursor>( );
 	m_pFontManager = xr_new<CFontManager>( );
@@ -229,13 +229,13 @@ ui_core::ui_core( )
 	g_current_font_scale.set(1.0f, 1.0f);
 }
 
-ui_core::~ui_core( )
+CUICore::~CUICore( )
 {
 	xr_delete(m_pFontManager);
 	xr_delete(m_pUICursor);
 }
 
-void ui_core::pp_start( )
+void CUICore::pp_start( )
 {
 	m_bPostprocess = true;
 
@@ -246,24 +246,24 @@ void ui_core::pp_start( )
 	g_current_font_scale.set(float(::Render->getTarget( )->get_width( )) / float(Device.dwWidth), float(::Render->getTarget( )->get_height( )) / float(Device.dwHeight));
 }
 
-void ui_core::pp_stop( )
+void CUICore::pp_stop( )
 {
 	m_bPostprocess = false;
 	m_current_scale = &m_scale_;
 	g_current_font_scale.set(1.0f, 1.0f);
 }
 
-void ui_core::RenderFont( )
+void CUICore::RenderFont( )
 {
 	Font( )->Render( );
 }
 
-bool ui_core::is_16_9_mode( )
+bool CUICore::is_16_9_mode( )
 {
 	return (Device.dwWidth) / float(Device.dwHeight) > (UI_BASE_WIDTH / UI_BASE_HEIGHT + 0.01f);
 }
 
-CSharedString ui_core::get_xml_name(const char* fn)
+CSharedString CUICore::get_xml_name(const char* fn)
 {
 	string_path str;
 	if (!is_16_9_mode( ))

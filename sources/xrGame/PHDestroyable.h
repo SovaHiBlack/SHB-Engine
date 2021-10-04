@@ -1,6 +1,6 @@
 #pragma once
 
-#include "hit.h"
+#include "Hit.h"
 
 class CPHShellHolder;
 class CSE_Abstract;

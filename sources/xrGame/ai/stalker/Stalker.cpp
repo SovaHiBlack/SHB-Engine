@@ -10,7 +10,7 @@
 #include "Stalker.h"///
 #include "../ai_monsters_misc.h"
 #include "..\..\Weapon.h"
-#include "../../hit.h"
+#include "..\..\Hit.h"
 #include "..\..\PHDestroyable.h"
 #include "../../CharacterPhysicsSupport.h"
 #include "../../script_entity_action.h"
@@ -61,7 +61,7 @@
 #include "../../location_manager.h"
 
 #ifdef DEBUG
-#	include "../../alife_simulator.h"
+//#	include "..\..\ALifeSimulator.h"
 #	include "../../alife_object_registry.h"
 #	include "..\..\Level.h"
 #	include "..\..\MapLocation.h"

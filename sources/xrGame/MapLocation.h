@@ -1,7 +1,7 @@
 #pragma once
 
 #include "object_interfaces.h"
-#include "alife_space.h"
+#include "ALife_space.h"
 #include "game_graph_space.h"
 
 class CMapSpot;

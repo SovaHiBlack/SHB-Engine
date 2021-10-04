@@ -3,8 +3,8 @@
 #ifdef DEBUG
 #	include "ode_include.h"
 #	include "PHDebug.h"
-#	include "alife_space.h"
-#	include "hit.h"
+//#	include "ALife_space.h"
+#	include "Hit.h"
 #	include "PHDestroyable.h"
 #	include "Car.h"
 #	include "HUDManager.h"//

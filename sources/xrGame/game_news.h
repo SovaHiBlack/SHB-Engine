@@ -1,6 +1,6 @@
 #pragma once
 
-#include "alife_space.h"
+#include "ALife_space.h"
 #include "StringTable_defs.h"
 #include "object_interfaces.h"
 

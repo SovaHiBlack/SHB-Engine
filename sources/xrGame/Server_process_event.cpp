@@ -2,7 +2,7 @@
 
 #include "Server.h"
 #include "game_sv_single.h"
-#include "alife_simulator.h"
+//#include "ALifeSimulator.h"
 #include "xrserver_objects.h"
 #include "game_base.h"
 #include "game_cl_base.h"

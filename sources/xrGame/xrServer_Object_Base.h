@@ -6,7 +6,7 @@
 #include "xrServer_Objects_Abstract.h"
 #include "object_interfaces.h"
 #include "script_value_container.h"
-#include "alife_space.h"
+#include "ALife_space.h"
 #include "..\ENGINE\ClientID.h"
 
 class CNetPacket;

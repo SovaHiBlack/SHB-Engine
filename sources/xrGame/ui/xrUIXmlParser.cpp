@@ -1,7 +1,7 @@
 #include "stdafx.h"
 
 #include "xrUIXmlParser.h"//
-#include "ui_base.h"//
+#include "UICore.h"//
 
 CSharedString CUIXml::correct_file_name(const char* path, const char* fn)
 {

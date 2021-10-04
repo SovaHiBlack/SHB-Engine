@@ -8,7 +8,7 @@
 #include "alife_graph_registry.h"
 #include "alife_schedule_registry.h"
 
-CALifeCombatManager::CALifeCombatManager(CServer* server, const char* section) : CALifeSimulatorBase(server, section)
+CALifeCombatManager::CALifeCombatManager(CServer* server, const char* section) : CAlifeSimulatorBase(server, section)
 { }
 
 void CALifeCombatManager::kill_entity(CSE_ALifeMonsterAbstract* l_tpALifeMonsterAbstract, const GameGraph::_GRAPH_ID& l_tGraphID, CSE_ALifeSchedulable* schedulable)
