@@ -50,13 +50,13 @@ function arena_zone_binder:purge_items()
 			printf("release object %s, id %s", obj:name(), k)
 			alife:release(obj, true)
 		end
-	end	
+	end
 end
 
 --' Сохранение списка зарегистренных объектов
 function arena_zone_binder:save(packet)
 	object_binder.save(self, packet)
-	
+
 	local num = table.getn(self.saved_obj)
 	packet:w_u8(num)
 	for k,v in pairs(self.saved_obj) do
@@ -67,10 +67,10 @@ end
 function arena_zone_binder:load(packet)
 	object_binder.load(self, packet)
 
-	local num = packet:r_u8()	
+	local num = packet:r_u8()
 	for i=1,num do
 		self.saved_obj[packet:r_u16()] = true
-	end	
+	end
 end
 
 --' callback на вход в зону. Нужно регистрить все объекты, кроме игрока.
@@ -91,7 +91,6 @@ function arena_zone_binder:on_exit(zone, obj)
 	printf("[zone %s] on_enter obj=%s, clsid=%s", zone:name(), obj:name(), obj:clsid())
 	self.saved_obj[obj:id()] = nil
 end
-
 
 function purge_arena_items(name)
 	local arena_zone = arena_zones[name]

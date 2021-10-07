@@ -1,7 +1,5 @@
 ----------------------------------------------------------------------------------------------------------------------
 --	Схема раненного
---	автор: Диденко Руслан (Stohe)
---	TODO:
 ----------------------------------------------------------------------------------------------------------------------
 
 ---------------------------------------------------------------------------------------------------------------------
@@ -13,21 +11,19 @@ function evaluator_wound:__init(name, storage) super(nil, name)
 end
 function evaluator_wound:evaluate ()
 	if self.a.wounded_set ~= true then return false end
-	
---'	self.a.wound_manager:update()
+
+--	self.a.wound_manager:update()
 	if self.mgr == nil then
 		self.mgr = self.object:motivation_action_manager()
 	end
 	if self.object:critically_wounded() == true then
 		return false
 	end
-	if self.mgr:evaluator(stalker_ids.property_enemy):evaluate() and
-	   xr_logic.pstor_retrieve(self.object, "wounded_fight") == "true"
-	then
+	if self.mgr:evaluator(stalker_ids.property_enemy):evaluate() and xr_logic.pstor_retrieve(self.object, "wounded_fight") == "true" then
 		return false
 	end
 	return tostring(xr_logic.pstor_retrieve(self.object, "wounded_state")) ~= "nil"
-end    
+end
 
 class "evaluator_can_fight" (property_evaluator) 
 function evaluator_can_fight:__init(name, storage) super(nil, name)
@@ -39,7 +35,7 @@ function evaluator_can_fight:evaluate ()
 	end
 
 	return xr_logic.pstor_retrieve(self.object, "wounded_fight") ~= "false"
-end    
+end
 
 ----------------------------------------------------------------------------------------------------------------------
 --Actions
@@ -48,25 +44,24 @@ class "action_wounded" (action_base)
 function action_wounded:__init(name, storage) super(nil, name)
 	self.a = storage
 end
-function action_wounded:initialize ()
+function action_wounded:initialize()
 	action_base.initialize (self)
 	self.object:set_desired_position()
 	self.object:set_desired_direction()
 	self.sound = "nil"
-
 
 	if self.a.help_start_dialog then
 		self.object:set_start_dialog(self.a.help_start_dialog)
 	end
 	self.object:wounded(true)
 end
-function action_wounded:execute ()
-	action_base.execute (self)
+function action_wounded:execute()
+	action_base.execute(self)
 	wound_manager = self.a.wound_manager
-	
+
 	wound_manager_victim = xr_logic.pstor_retrieve(self.object, "wounded_victim")
 
-	local victim = nil	
+	local victim = nil
 	if wound_manager_victim == "actor" then
 		victim = db.actor
 	elseif tostring(wound_manager_victim) == "nil" then
@@ -78,14 +73,12 @@ function action_wounded:execute ()
 		end
 	end
 
-	
 	if self.object:relation(db.actor) == game_object.enemy then
 		self.object:disable_talk()
 	else
 		self.object:enable_talk()
 	end
-	
-	
+
 	wound_manager_state = xr_logic.pstor_retrieve(self.object, "wounded_state")
 	wound_manager_sound = xr_logic.pstor_retrieve(self.object, "wounded_sound")
 
@@ -98,22 +91,20 @@ function action_wounded:execute ()
 		h.draftsman = db.actor
 		h.impulse = 0
 		h.type = hit.wound
-		self.object:hit(h)		
+		self.object:hit(h)
 	else
 		-- является ли текущий звук синхронным для текущего стейта
 		for k,v in pairs(self.a.syndata) do
-			if v.state == wound_manager_state and
-			   v.sound == wound_manager_sound
-			then
+			if v.state == wound_manager_state and v.sound == wound_manager_sound then
 				synsound = wound_manager_sound
 			end
-		end	
+		end
 		--' жрание аптечек и прочей срани.
 		--' Использовать можно только если нам можно сейчас есть аптечку.
 		if self.a.use_medkit == true then
 			wound_manager:eat_medkit()
 		end
-		
+
 		local emerg = nil
 		if wound_manager_state == "psy_shoot" then
 			emerg = {animation_nout = true}
@@ -138,7 +129,7 @@ function action_wounded:execute ()
 			xr_sound.set_sound(self.object, nil)
 		end
 	end
-	
+
 	local tt = db.storage[self.object:id()]
 	if tt.active_scheme and not self.object:is_talking() then
 		if db.actor then
@@ -147,13 +138,13 @@ function action_wounded:execute ()
 			end
 		end
 	end
-end    
+end
 function action_wounded:finalize ()
 	action_base.finalize (self)
 	self.object:disable_talk()
 	xr_sound.set_sound(self.object, nil)
 	self.object:wounded(false)
-end    
+end
 
 ----------------------------------------------------------------------------------------------------------------------
 -- Class wound_manager
@@ -167,14 +158,12 @@ end
 function Cwound_manager:update()
 	hp	= 100*self.npc.health
 	psy	= 100*self.npc.psy_health
-	
+
 --	printf("PSY [%s] HP [%s]", psy, hp)
 
 	self.state, self.sound = self:process_psy_wound(psy)
-	
-	if self.state == "nil" and
-	   self.sound == "nil"
-	then
+
+	if self.state == "nil" and self.sound == "nil" then
 		-- проверяем на обычную раненость
 		self.fight	= self:process_fight(hp)
 		self.victim = self:process_victim(hp)
@@ -184,13 +173,13 @@ function Cwound_manager:update()
 		self.fight = "false"
 		self.cover = "false"
 		self.victim = "nil"
-	end	
+	end
 --	printf("f[%s]c[%s]v[%s]", utils.to_str(self.fight), utils.to_str(self.cover), utils.to_str(self.victim))
 --	printf("st[%s]so[%s]", utils.to_str(self.state), utils.to_str(self.sound))
-	
+
 	xr_logic.pstor_store(self.npc, "wounded_state", self.state)
 	xr_logic.pstor_store(self.npc, "wounded_sound", self.sound)
-	xr_logic.pstor_store(self.npc, "wounded_fight", self.fight)	
+	xr_logic.pstor_store(self.npc, "wounded_fight", self.fight)
 	xr_logic.pstor_store(self.npc, "wounded_victim", self.victim)
 end
 function Cwound_manager:unlock_medkit()
@@ -216,7 +205,7 @@ function Cwound_manager:process_fight(hp)
 		if self.a.hp_fight[key].state then
 			return tostring(xr_logic.pick_section_from_condlist(db.actor, self.npc, self.a.hp_fight[key].state))
 		end
-	end		
+	end
 	return "true"
 end
 function Cwound_manager:process_victim(hp)
@@ -226,7 +215,7 @@ function Cwound_manager:process_victim(hp)
 		if self.a.hp_victim[key].state then
 			return tostring(xr_logic.pick_section_from_condlist(db.actor, self.npc, self.a.hp_victim[key].state))
 		end
-	end		
+	end
 	return "nil"
 end
 function Cwound_manager:process_hp_wound(hp)
@@ -250,7 +239,7 @@ function Cwound_manager:process_hp_wound(hp)
 			end
 		end
 		return tostring(r1),tostring(r2)
-	end		
+	end
 	return "nil","nil"
 end
 function Cwound_manager:process_psy_wound(hp)
@@ -265,7 +254,7 @@ function Cwound_manager:process_psy_wound(hp)
 			r2 = xr_logic.pick_section_from_condlist(db.actor, self.npc, self.a.psy_state[key].sound)
 		end
 		return tostring(r1),tostring(r2)
-	end		
+	end
 	return "nil","nil"
 end
 function Cwound_manager:get_key_from_distance(t, hp)
@@ -275,7 +264,7 @@ function Cwound_manager:get_key_from_distance(t, hp)
 			key = k 
 		else
 			return key
-		end		
+		end
 	end
 	return key
 end
@@ -289,51 +278,47 @@ function Cwound_manager:hit_callback()
 	end
 
 	self:update()
-end    
+end
 
 ----------------------------------------------------------------------------------------------------------------------
 -- binder
 ----------------------------------------------------------------------------------------------------------------------
-function add_to_binder (object, ini, scheme, section, st)
+function add_to_binder(object, ini, scheme, section, st)
+	local operators = {}
+	local properties = {}
 
-	local operators     = {}
-	local properties    = {}
-	
-	properties["wounded"]		=   xr_evaluators_id.sidor_wounded_base
-	properties["can_fight"]     =   xr_evaluators_id.sidor_wounded_base + 1
+	properties["wounded"] = xr_evaluators_id.sidor_wounded_base
+	properties["can_fight"] = xr_evaluators_id.sidor_wounded_base + 1
 
-	operators["wounded"]        =   xr_actions_id.sidor_act_wounded_base + 0
-	
-	
-	local manager = object:motivation_action_manager ()
-	manager:add_evaluator (properties["wounded"],		this.evaluator_wound("wounded", st))
-	manager:add_evaluator (properties["can_fight"],     this.evaluator_can_fight("can_fight", st))
+	operators["wounded"] = xr_actions_id.sidor_act_wounded_base + 0
+
+	local manager = object:motivation_action_manager()
+	manager:add_evaluator(properties["wounded"], this.evaluator_wound("wounded", st))
+	manager:add_evaluator(properties["can_fight"], this.evaluator_can_fight("can_fight", st))
 
 	local action = this.action_wounded("wounded_action", st)
-	action:add_precondition (world_property(stalker_ids.property_alive,		true))
-	action:add_precondition (world_property(properties["wounded"],			true))
-	action:add_effect (world_property(properties["wounded"],        false))
-	action:add_effect (world_property(stalker_ids.property_enemy,	false))
-	action:add_effect (world_property(properties["can_fight"],		true))
-	manager:add_action      (operators["wounded"], action)
-   
-	action = manager:action (xr_actions_id.alife)
-	action:add_precondition (world_property(properties["wounded"],			false))
+	action:add_precondition(world_property(stalker_ids.property_alive, true))
+	action:add_precondition(world_property(properties["wounded"], true))
+	action:add_effect(world_property(properties["wounded"], false))
+	action:add_effect(world_property(stalker_ids.property_enemy, false))
+	action:add_effect(world_property(properties["can_fight"], true))
+	manager:add_action(operators["wounded"], action)
 
-	action = manager:action (stalker_ids.action_gather_items)
-	action:add_precondition (world_property(properties["wounded"],			false))
-	
-	action = manager:action (stalker_ids.action_combat_planner)
-	action:add_precondition (world_property(properties["can_fight"],       true))
+	action = manager:action(xr_actions_id.alife)
+	action:add_precondition(world_property(properties["wounded"], false))
 
-	action = manager:action (stalker_ids.action_danger_planner)
-	action:add_precondition (world_property(properties["can_fight"],       true))
-	
-	action = manager:action (stalker_ids.action_anomaly_planner)
-	action:add_precondition (world_property(properties["can_fight"],       true))
+	action = manager:action(stalker_ids.action_gather_items)
+	action:add_precondition(world_property(properties["wounded"], false))
 
+	action = manager:action(stalker_ids.action_combat_planner)
+	action:add_precondition(world_property(properties["can_fight"], true))
+
+	action = manager:action(stalker_ids.action_danger_planner)
+	action:add_precondition(world_property(properties["can_fight"], true))
+
+	action = manager:action(stalker_ids.action_anomaly_planner)
+	action:add_precondition(world_property(properties["can_fight"], true))
 end
-
 
 ------------
 -- Вызывается только в начале на чтении логики, создает экшены, эвалуаторы и производит
@@ -363,81 +348,76 @@ local wounded_by_state = {
 function init_wounded(npc, ini, section, st, scheme)
 	printf("WOUNDED SECTION [%s][%s]", tostring(section), tostring(scheme))
 
-	if tostring(section) == st.wounded_section and
-	   tostring(section) ~= "nil" 
-	then
+	if tostring(section) == st.wounded_section and tostring(section) ~= "nil" then
 		return
 	end
-	
+
 	st.wounded_section = utils.to_str(section)
-	
-	local def = {}	
+
+	local def = {}
 	local npc_community = npc:character_community()
 	if npc_community == "monolith" then
 		local state = wounded_by_state[math.mod(npc:id(), 3)]
-		def.hp_state			= "10|"..state.."@nil"
-		def.hp_state_see		= "10|"..state.."@nil"
-		def.psy_state			= ""
-		def.hp_victim			= "10|nil"
-		def.hp_cover			= "10|false"
-		def.hp_fight			= "10|false"
-		def.syndata				= ""
-		def.help_dialog			= nil
-		def.help_start_dialog	= nil
-		def.use_medkit			= false
-		
+		def.hp_state = "10|"..state.."@nil"
+		def.hp_state_see = "10|"..state.."@nil"
+		def.psy_state = ""
+		def.hp_victim = "10|nil"
+		def.hp_cover = "10|false"
+		def.hp_fight = "10|false"
+		def.syndata = ""
+		def.help_dialog = nil
+		def.help_start_dialog = nil
+		def.use_medkit = false
 	elseif npc_community == "zombied" then
-		def.hp_state			= "40|wounded_zombie@nil"
-		def.hp_state_see		= "40|wounded_zombie@nil"
-		def.psy_state			= ""
-		def.hp_victim			= "40|nil"
-		def.hp_cover			= "40|false"
-		def.hp_fight			= "40|false"
-		def.syndata				= ""
-		def.help_dialog			= nil
-		def.help_start_dialog	= nil
-		def.use_medkit			= false
-		
+		def.hp_state = "40|wounded_zombie@nil"
+		def.hp_state_see = "40|wounded_zombie@nil"
+		def.psy_state = ""
+		def.hp_victim = "40|nil"
+		def.hp_cover = "40|false"
+		def.hp_fight = "40|false"
+		def.syndata = ""
+		def.help_dialog = nil
+		def.help_start_dialog = nil
+		def.use_medkit = false
 	else
 		local state = wounded_by_state[math.mod(npc:id(), 3)]
-		def.hp_state			= "10|"..state.."@help_heavy"
-		def.hp_state_see		= "10|"..state.."@help_heavy"
-		def.psy_state			= "50|{=best_pistol}psy_armed,psy_pain@wounded_psy|20|{=best_pistol}psy_shoot,psy_pain@{=best_pistol}wounded_psy_shoot,wounded_psy"
-		def.hp_victim			= "10|nil"
-		def.hp_cover			= "10|false"
-		def.hp_fight			= "10|false"
-		def.syndata				= ""
-		def.help_dialog			= "dm_help_wounded_medkit_dialog"
-		def.help_start_dialog	= nil
-		def.use_medkit			= true
-	end		
-
+		def.hp_state = "10|"..state.."@help_heavy"
+		def.hp_state_see = "10|"..state.."@help_heavy"
+		def.psy_state = "50|{=best_pistol}psy_armed,psy_pain@wounded_psy|20|{=best_pistol}psy_shoot,psy_pain@{=best_pistol}wounded_psy_shoot,wounded_psy"
+		def.hp_victim = "10|nil"
+		def.hp_cover = "10|false"
+		def.hp_fight = "10|false"
+		def.syndata = ""
+		def.help_dialog = "dm_help_wounded_medkit_dialog"
+		def.help_start_dialog = nil
+		def.use_medkit = true
+	end
 
 	if tostring(section) == "nil" then
 		-- Загружаем дефолты!
-		st.hp_state		= xr_meet.parse_data(npc, def.hp_state)
-		st.hp_state_see	= xr_meet.parse_data(npc, def.hp_state_see)
-		st.psy_state	= xr_meet.parse_data(npc, def.psy_state)
-		st.hp_victim	= xr_meet.parse_data(npc, def.hp_victim)
-		st.hp_cover		= xr_meet.parse_data(npc, def.hp_cover)
-		st.hp_fight		= xr_meet.parse_data(npc, def.hp_fight)
-		st.syndata		= xr_meet.parse_syn_data(npc, def.syndata)
-		st.help_dialog	= def.help_dialog
+		st.hp_state = xr_meet.parse_data(npc, def.hp_state)
+		st.hp_state_see = xr_meet.parse_data(npc, def.hp_state_see)
+		st.psy_state = xr_meet.parse_data(npc, def.psy_state)
+		st.hp_victim = xr_meet.parse_data(npc, def.hp_victim)
+		st.hp_cover = xr_meet.parse_data(npc, def.hp_cover)
+		st.hp_fight = xr_meet.parse_data(npc, def.hp_fight)
+		st.syndata = xr_meet.parse_syn_data(npc, def.syndata)
+		st.help_dialog = def.help_dialog
 		st.help_start_dialog = nil
-		st.use_medkit   = def.use_medkit
+		st.use_medkit = def.use_medkit
 	else
-		st.hp_state		= xr_meet.parse_data(npc, utils.cfg_get_string(ini, section, "hp_state", npc, false, "", def.hp_state))
-		st.hp_state_see	= xr_meet.parse_data(npc, utils.cfg_get_string(ini, section, "hp_state_see", npc, false, "", def.hp_state_see))
-		st.psy_state	= xr_meet.parse_data(npc, utils.cfg_get_string(ini, section, "psy_state", npc, false, "", def.psy_state))
-		st.hp_victim	= xr_meet.parse_data(npc, utils.cfg_get_string(ini, section, "hp_victim", npc, false, "", def.hp_victim))
-		st.hp_cover		= xr_meet.parse_data(npc, utils.cfg_get_string(ini, section, "hp_cover", npc, false, "", def.hp_cover))
-		st.hp_fight		= xr_meet.parse_data(npc, utils.cfg_get_string(ini, section, "hp_fight", npc, false, "", def.hp_fight))
-		st.syndata		= xr_meet.parse_syn_data(npc, utils.cfg_get_string(ini, section, "syndata", npc, false, "", def.syndata))	
-		st.help_dialog	= utils.cfg_get_string(ini, section, "help_dialog", npc, false, "", def.help_dialog)
+		st.hp_state = xr_meet.parse_data(npc, utils.cfg_get_string(ini, section, "hp_state", npc, false, "", def.hp_state))
+		st.hp_state_see = xr_meet.parse_data(npc, utils.cfg_get_string(ini, section, "hp_state_see", npc, false, "", def.hp_state_see))
+		st.psy_state = xr_meet.parse_data(npc, utils.cfg_get_string(ini, section, "psy_state", npc, false, "", def.psy_state))
+		st.hp_victim = xr_meet.parse_data(npc, utils.cfg_get_string(ini, section, "hp_victim", npc, false, "", def.hp_victim))
+		st.hp_cover = xr_meet.parse_data(npc, utils.cfg_get_string(ini, section, "hp_cover", npc, false, "", def.hp_cover))
+		st.hp_fight = xr_meet.parse_data(npc, utils.cfg_get_string(ini, section, "hp_fight", npc, false, "", def.hp_fight))
+		st.syndata = xr_meet.parse_syn_data(npc, utils.cfg_get_string(ini, section, "syndata", npc, false, "", def.syndata))
+		st.help_dialog = utils.cfg_get_string(ini, section, "help_dialog", npc, false, "", def.help_dialog)
 		st.help_start_dialog = utils.cfg_get_string(ini, section, "help_start_dialog", npc, false, "", nil)
-		st.use_medkit   = utils.cfg_get_bool(ini, section, "use_medkit", npc, false, def.use_medkit)
+		st.use_medkit = utils.cfg_get_bool(ini, section, "use_medkit", npc, false, def.use_medkit)
 	end
-	
+
 	-- флажок, что функция хотя бы раз вызывалась
 	st.wounded_set = true
 end
@@ -448,15 +428,11 @@ function unlock_medkit(npc)
 	end
 end
 
-
-
 function is_wounded(npc)
-	if db.storage[npc:id()].wounded ~= nil then	
---'		if npc:object("medkit") ~= nil and
---'		   db.storage[npc:id()].wounded.wound_manager.can_use_medkit == true
---'		then
---'			return false
---'		end
+	if db.storage[npc:id()].wounded ~= nil then
+--		if npc:object("medkit") ~= nil and db.storage[npc:id()].wounded.wound_manager.can_use_medkit == true then
+--			return false
+--		end
 
 		return tostring(db.storage[npc:id()].wounded.wound_manager.state) ~= "nil"
 	end
@@ -468,7 +444,6 @@ function hit_callback(npc_id)
 		db.storage[npc_id].wounded.wound_manager:hit_callback()
 	end
 end
-
 
 function is_heavy_wounded_by_id(npc_id)
 	if db.storage[npc_id].wounded ~= nil then
@@ -482,7 +457,7 @@ function is_psy_wounded_by_id(npc_id)
 			   db.storage[npc_id].wounded.wound_manager.state == "psy_armed" or
 			   db.storage[npc_id].wounded.wound_manager.state == "psy_shoot" or
 			   db.storage[npc_id].wounded.wound_manager.state == "psycho_pain" or
-			   db.storage[npc_id].wounded.wound_manager.state == "psycho_shoot"		
+			   db.storage[npc_id].wounded.wound_manager.state == "psycho_shoot"
 	end
 	return false
 end

@@ -1,11 +1,9 @@
 ----------------------------------------------------------------------------------------------------------------------
 --	Схема изменений положения тела
---	автор: Диденко Руслан (Stohe)
---	TODO: 
 ----------------------------------------------------------------------------------------------------------------------
 
 stand = 0
-sit   = 2
+sit = 2
 sit_wait = 3
 sleep = 4
 
@@ -25,7 +23,7 @@ function body_state:__init(npc)
 		[xr_state.sit_wait]	= {	[xr_state.stand]	= {"stalker_3_up"},
 								[xr_state.sit]		= {"stalker_3v2"} },
 		[xr_state.sleep]	= {	[xr_state.stand]	= {"spit_3", "stalker_2_up"},
-								[xr_state.sit]		= {"spit_3"}}}								
+								[xr_state.sit]		= {"spit_3"}}}
 	self.ianim = {
 		[xr_state.sit] = "stalker_2_1",
 		[xr_state.sit_wait] = "item_0_idle_0",
@@ -36,12 +34,12 @@ function body_state:__init(npc)
 		current_state = nil,
 		begin = nil,
 		idle = nil
-	}					
+	}
 	self.animations = {
 		idle		= {	state_id = xr_state.stand,
 						prop	= { maxidle = 5,
 									sumidle = 3,
-									rnd = 80 },	
+									rnd = 80 },
 						into	= nil,
 						out		= nil,
 						idle	= { [0]	= "idle_0_idle_1",
@@ -65,7 +63,7 @@ function body_state:__init(npc)
 											"idle_2_idle_6",
 											"idle_2_idle_7",
 											"idle_2_idle_8",
-											"idle_2_idle_9" },	
+											"idle_2_idle_9" },
 									[3]	= { "idle_3_idle_0",
 											"idle_3_idle_2",
 											"idle_3_idle_3",
@@ -77,7 +75,7 @@ function body_state:__init(npc)
 		prisluh	= {		state_id = xr_state.stand,
 						prop	= { maxidle = 5,
 									sumidle = 3,
-									rnd = 80 },	
+									rnd = 80 },
 						into	= { [0]	= "prisluh_0_idle_0",
 									[1]	= "prisluh_1_idle_0",
 									[2]	= "prisluh_2_idle_0",
@@ -108,7 +106,7 @@ function body_state:__init(npc)
 											"prisluh_3_idle_4" },
 									[4]	= {	"prisluh_4_idle_2",
 											"prisluh_4_idle_3",
-											"prisluh_4_idle_4" }}},										
+											"prisluh_4_idle_4" }}},
 		poisk		= {	state_id = xr_state.stand,
 						prop	= { maxidle = 5,
 									sumidle = 3,
@@ -225,30 +223,24 @@ function body_state:__init(npc)
 									[1]	= {	"uhodi_1_1" },
 									[2]	= {	"uhodi_2_1" },
 									[3]	= {	"uhodi_3_1" },
-									[4]	= {	"uhodi_4_1" }}}									
+									[4]	= {	"uhodi_4_1" }}}
 	}
-	--print_table(self.animations)
+--	print_table(self.animations)
 end
 --' Проверяет закончили ли мы изменение положения тела
 function body_state:finish_state()
-	if self.target_state == xr_state.stand and 
-	   self.npc:animation_count() == 0
-	then
+	if self.target_state == xr_state.stand and self.npc:animation_count() == 0 then
 		self.current_state = self.target_state
 	end
 
-	if self.target_state ~= xr_state.stand and 
-	   self.npc:animation_count() <= 1
-	then
+	if self.target_state ~= xr_state.stand and self.npc:animation_count() <= 1 then
 		self.current_state = self.target_state
 	end
-	
+
 	return self.target_state == self.current_state
 end
 function body_state:set_state(id)
-	if id ~= self.current_state and
-	   id ~= self.target_state
-	then
+	if id ~= self.current_state and id ~= self.target_state then
 		self.npc:clear_animations()
 		self.target_state = id
 		self:transanim(self.npc, id)
@@ -272,27 +264,16 @@ function body_state:weapon_slot()
 		return 0
 	end
 	local id = get_clsid(weapon)
-	if id == nil then 
+	if id == nil then
 		return 0
 	end
-	if id == clsid.wpn_pm_s or
-		   id == clsid.wpn_walther_s or
-	   id == clsid.wpn_hpsa_s or
-	   id == clsid.wpn_fort_s or
-	   id == clsid.wpn_usp45_s then
+	if id == clsid.wpn_pm_s or id == clsid.wpn_walther_s or id == clsid.wpn_hpsa_s or id == clsid.wpn_fort_s or id == clsid.wpn_usp45_s then
 		return 1
 	end
-	if id == clsid.wpn_vintorez_s or
-	   id == clsid.wpn_val_s or
-	   id == clsid.wpn_groza_s or
-	   id == clsid.wpn_fn2000_s or   
-	   id == clsid.wpn_ak74_s or	
-	   id == clsid.wpn_lr300_s or
-	   id == clsid.wpn_svd_s or
-	   id == clsid.wpn_svu_s then
+	if id == clsid.wpn_vintorez_s or id == clsid.wpn_val_s or id == clsid.wpn_groza_s or id == clsid.wpn_fn2000_s or id == clsid.wpn_ak74_s or id == clsid.wpn_lr300_s or id == clsid.wpn_svd_s or id == clsid.wpn_svu_s then
 		return 2
 	end
-	if id == clsid.wpn_shotgun_S then
+	if id == clsid.wpn_shotgun_s then
 		return 3
 	end
 	if id == clsid.wpn_rpg7_s then
@@ -308,31 +289,31 @@ function body_state:anim_update(type)
 		else
 			printf("ANIMS: |nil| for %s", self.npc:name())
 		end
-		
+
 		--' Проверка на существование темы
 		if type ~= nil and self.animations[type] == nil then
 			printf("ERROR: Non existen ANIM STATEd called: %s", type)
 			return
 		end
-		
+
 		--' завершение старой
 		self.npc:clear_animations()
-		if self.states.current_state ~= nil then		
+		if self.states.current_state ~= nil then
 			if self.animations[self.states.current_state].out ~= nil then
 				self.npc:add_animation(self.animations[self.states.current_state].out[self:weapon_slot()], true, false)
 			end
 		end
-		
+
 		--' простановка новой
 		if type ~= nil then
 			--' Проверка соответствия состояния.
 			if self.current_state ~= self.animations[type].state_id then
 				self:set_state(self.animations[type].state_id)
 			end
-		
+
 			if self.animations[type].into ~= nil then
 				self.npc:add_animation(self.animations[type].into[self:weapon_slot()], true, false)
-			end	
+			end
 			if self.animations[type].idle ~= nil then
 				self.npc:add_animation(self.animations[type].idle[self:weapon_slot()], true, false)
 			end
@@ -346,18 +327,13 @@ function body_state:anim_update(type)
 	end
 
 	--' Определяем нужно ли добавлять анимацию или ждать
-	if (self.states.begin == nil or
-	   time_global() - self.states.begin > self.states.idle) and
-	   self.npc:animation_count() <= 1 and
-	   self.states.current_state ~= nil
-	then
+	if (self.states.begin == nil or time_global() - self.states.begin > self.states.idle) and self.npc:animation_count() <= 1 and self.states.current_state ~= nil then
 		--' Определение промежутков времени между анимациями
 		self.states.begin = time_global()
-		self.states.idle = (math.random(self.animations[self.states.current_state].prop.maxidle) + 
-										self.animations[self.states.current_state].prop.sumidle) * 1000
+		self.states.idle = (math.random(self.animations[self.states.current_state].prop.maxidle) + self.animations[self.states.current_state].prop.sumidle) * 1000
 		if math.random(100) < self.animations[self.states.current_state].prop.rnd then
 			local r
-			if table.getn(self.animations[self.states.current_state].rnd[self:weapon_slot()]) > 1 then			
+			if table.getn(self.animations[self.states.current_state].rnd[self:weapon_slot()]) > 1 then
 				if self.states.last_id == nil then
 					r = math.random(table.getn(self.animations[self.states.current_state].rnd[self:weapon_slot()]))
 				else
@@ -370,7 +346,7 @@ function body_state:anim_update(type)
 			else
 				r = 1
 			end
-			
+
 			self.npc:clear_animations()
 			if self.animations[self.states.current_state].rnd[self:weapon_slot()][r] ~= nil then
 				self.npc:add_animation (self.animations[self.states.current_state].rnd[self:weapon_slot()][r], true, false)
@@ -381,13 +357,13 @@ function body_state:anim_update(type)
 			end
 			if self.animations[type].idle ~= nil then
 				self.npc:add_animation (self.animations[self.states.current_state].idle[self:weapon_slot()], true, false)
-			end	
+			end
 		end
 	end
-	--printf("animcount %d", self.npc:animation_count())
-	
+--	printf("animcount %d", self.npc:animation_count())
+
 	return self:finish_state() and self.npc:animation_count() == 0
-end                            
+end
 
 ----------------------------------------------------------------------------------------------------------------------
 -- Functions

@@ -1,6 +1,6 @@
---[[---------------------------------------------------------------------------
-—хема озвучки
------------------------------------------------------------------------------]]
+-----------------------------------------------------------------------------
+-- —хема озвучки
+-----------------------------------------------------------------------------
 
 key_by_id = {}
 group_idle = {}
@@ -165,7 +165,7 @@ function update(npc)
 	if table.getn(db.sound[npc_id].snd) == 0 then
 		return
 	end
-	
+
 --	printf("EE: group = %s begin = %s idle = %s", tostring(key), tostring(group_table.begin), tostring(group_table.idle))
 	if group_table.begin == nil or time_global() - group_table.begin >= group_table.idle then
 		this.play_sound(npc, db.sound[npc_id].snd)
@@ -317,14 +317,14 @@ end
 function update_actor()
 	local theme = sound_theme.actor_theme[actor_sound.theme]
 	if theme == nil then return end
-	
+
 	if table.getn(theme.sounds) == 0 then
 		return
 	end
 
 	if actor_sound.begin == nil or time_global() - actor_sound.begin >= actor_sound.idle then
 		actor_sound.begin = time_global()
-		
+
 		--' “ут надо отыграть звук
 		local sound = theme.sounds[math.random(table.getn(theme.sounds))]
 		if sound ~= nil then

@@ -4,7 +4,7 @@ function action_process_use:__init(obj, storage)
 	self.st = storage
 end
 function action_process_use:use_callback(victim, who)
-	--printf("[%s] used by [%s]", victim:name(), who:name())
+--	printf("[%s] used by [%s]", victim:name(), who:name())
 	if db.storage[self.object:id()].active_scheme then
 		if db.actor then
 			if xr_logic.try_switch_to_another_section(victim, self.st, db.actor) then
@@ -14,10 +14,9 @@ function action_process_use:use_callback(victim, who)
 	end
 end
 
-
 function notify_on_use(victim, who)
 	printf("NOTIFY [%s] used by [%s]", victim:name(), who:name())
---'	if true then	
+--'	if true then
 --'		get_console():execute("dump_infos")
 --'	end
 
@@ -25,7 +24,7 @@ function notify_on_use(victim, who)
 	if not victim:alive() then
 		return
 	end
-	
+
 	-- Согласны ли мы говорить при этом юзании или нет.
 	if victim:is_talk_enabled() == true then
 --[[	
@@ -80,12 +79,12 @@ function notify_on_use(victim, who)
 			xr_sound.set_sound_play(victim, "use_no_default")
 			xr_abuse.add_abuse(victim, 1)
 		end
-	end		
+	end
 end
 ----------------------------------------------------------------------------------------------------------------------
 -- binder
 ----------------------------------------------------------------------------------------------------------------------
-function add_to_binder(npc, ini, scheme, section, storage) 	
+function add_to_binder(npc, ini, scheme, section, storage)
 	local action = this.action_process_use(npc, storage)
 	storage.action = action
 end
