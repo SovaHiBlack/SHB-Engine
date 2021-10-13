@@ -1,65 +1,32 @@
-* Detected CPU: GenuineIntel P3 family, F6/M10/S7, 1996.00 mhz, 30-clk 'rdtsc'
+* Detected CPU: GenuineIntel P3 family, F6/M10/S7, 1996.00 mhz, 38-clk 'rdtsc'
 * CPU Features: RDTSC, MMX, SSE, SSE2
 
 Initializing File System...
 using fs-ltx fsgame.ltx
 FS: 28022 files cached, 4283Kb memory used.
-Init FileSystem 3.609773 sec
+Init FileSystem 3.515529 sec
 'Core' build 124, Oct  3 2021
 
-CRT heap 0x00090000
-Process heap 0x00090000
+CRT heap 0x01540000
+Process heap 0x01540000
 Initializing Engine...
 Executing config-script "user.ltx"...
 [..\app_data\user.ltx] successfully loaded.
 Starting INPUT device...
-Loading DLL: xrRender_R1.dll
+Loading DLL: xrRender_R2.dll
 Loading DLL: xrGame.dll
-* [win32]: free[4035300 K], reserved[44196 K], committed[114744 K]
+* [win32]: free[4011520 K], reserved[53496 K], committed[129224 K]
 * [ D3D ]: textures[0 K]
-* [x-ray]: process heap[6646 K], game lua[0 K], engine lua[0 K], render[0 K]
+* [x-ray]: process heap[6780 K], game lua[0 K], engine lua[0 K], render[0 K]
 * [x-ray]: economy: strings[864 K], smem[0 K]
 * [x-ray]: file mapping: memory[0 K], count[0]
 * active file mappings (0):
 Executing config-script "c:\engine\shb-engine\debug-win32\..\gamedata\config\default_controls.ltx"...
-! cant convert dik_name for dik[16], prop=[
-! cant convert dik_name for dik[17], prop=[
-! cant convert dik_name for dik[18], prop=[
-! cant convert dik_name for dik[19], prop=[
-! cant convert dik_name for dik[20], prop=[
-! cant convert dik_name for dik[21], prop=[
-! cant convert dik_name for dik[22], prop=[
-! cant convert dik_name for dik[23], prop=[
-! cant convert dik_name for dik[24], prop=[
-! cant convert dik_name for dik[25], prop=[
-! cant convert dik_name for dik[26], prop=[
-! cant convert dik_name for dik[27], prop=[
-! cant convert dik_name for dik[30], prop=[
-! cant convert dik_name for dik[31], prop=[
-! cant convert dik_name for dik[32], prop=[
-! cant convert dik_name for dik[33], prop=[
-! cant convert dik_name for dik[34], prop=[
-! cant convert dik_name for dik[35], prop=[
-! cant convert dik_name for dik[36], prop=[
-! cant convert dik_name for dik[37], prop=[
-! cant convert dik_name for dik[38], prop=[
-! cant convert dik_name for dik[39], prop=[
-! cant convert dik_name for dik[40], prop=[
-! cant convert dik_name for dik[41], prop=[
-! cant convert dik_name for dik[44], prop=[
-! cant convert dik_name for dik[45], prop=[
-! cant convert dik_name for dik[46], prop=[
-! cant convert dik_name for dik[47], prop=[
-! cant convert dik_name for dik[48], prop=[
-! cant convert dik_name for dik[49], prop=[
-! cant convert dik_name for dik[50], prop=[
-! cant convert dik_name for dik[51], prop=[
-! cant convert dik_name for dik[52], prop=[
 ! cant convert dik_name for dik[144], prop=[
 [c:\engine\shb-engine\debug-win32\..\gamedata\config\default_controls.ltx] successfully loaded.
 Executing config-script "user.ltx"...
-Executing config-script "c:\engine\shb-engine\debug-win32\..\gamedata\config\rspec_default.ltx"...
-[c:\engine\shb-engine\debug-win32\..\gamedata\config\rspec_default.ltx] successfully loaded.
+Executing config-script "c:\engine\shb-engine\debug-win32\..\gamedata\config\rspec_extreme.ltx"...
+[c:\engine\shb-engine\debug-win32\..\gamedata\config\rspec_extreme.ltx] successfully loaded.
 Executing config-script "c:\engine\shb-engine\debug-win32\..\gamedata\config\default_controls.ltx"...
 [c:\engine\shb-engine\debug-win32\..\gamedata\config\default_controls.ltx] successfully loaded.
 [..\app_data\user.ltx] successfully loaded.
@@ -84,19 +51,42 @@ Available video modes[4]:
 [1366x768]
 * CREATE: DeviceREF: 1
 * Vertex Processor: PURE HARDWARE
-*     Texture memory: 4087 M
+*     Texture memory: 4090 M
 *          DDI-level: 9.0
 * GPU shading: vs(fffe0300/3.0/30), ps(ffff0300/3.0/30)
 * GPU vertex cache: recognized, 24
 * DVB created: 1536K
 * DIB created: 512K
+! Version conflict in shader 'def_shaders\def_aref'
+! Version conflict in shader 'def_shaders\def_aref_v'
+! Version conflict in shader 'def_shaders\def_trans'
+! Version conflict in shader 'def_shaders\def_trans_v'
+! Version conflict in shader 'def_shaders\def_trans_v_tuchi'
+! Version conflict in shader 'def_shaders\lod_old'
+! Renderer doesn't support blender 'effects\shadow_world'
+! Version conflict in shader 'effects\watertest-1'
 count of .thm files=1
-load time=186 ms
-* distortion: used, dev(30),need(14)
-* SSample: 1024x768
-* created RT($user$rendertarget), 1024x768
-* created RT($user$distort), 1024x768
-* SSample: enabled
+load time=198 ms
+* NULLRT supported
+* ...and used
+* HWDST/PCF supported and used
+* NV-DBT supported and used
+* created RT($user$position), 1024x768
+* created RT($user$normal), 1024x768
+* created RT($user$albedo), 1024x768
+* created RT($user$accum), 1024x768
+* created RT($user$generic0), 1024x768
+* created RT($user$generic1), 1024x768
+* created RT($user$smap_depth), 2048x2048
+* created RT($user$smap_surf), 2048x2048
+* created RT($user$bloom1), 256x256
+* created RT($user$bloom2), 256x256
+* created RT($user$lum_t64), 64x64
+* created RT($user$lum_t8), 8x8
+* created RT($user$luminance_0), 1x1
+* created RT($user$luminance_1), 1x1
+* created RT($user$luminance_2), 1x1
+* created RT($user$luminance_3), 1x1
 Script debugger succesfully restarted.
 Starting engine...
 pause [ON] timer=[OFF] sound=[ON] reason=mm_activate1
@@ -105,9 +95,2581 @@ pause [ON] timer=[ON] sound=[OFF] reason=mm_activate2
 pause [OFF] timer=[ON] sound=[OFF] reason=mm_deactivate1
 pause [OFF] timer=[OFF] sound=[ON] reason=mm_deactivate2
 snd_emitters_[false] 1
+*ref -CRenderDevice::ResetTotal: DeviceREF: 1719
+t_material_surf 1
+t_noise_surf[it] 1
+t_noise_surf[it] 1
+t_noise_surf[it] 1
+t_noise_surf[it] 1
+g_accum_spot_ib 1
+g_accum_spot_vb 1
+g_accum_omnip_ib 1
+g_accum_omnip_vb 1
+g_accum_point_ib 1
+g_accum_point_vb 1
+* DVB created: 1536K
+* DIB created: 512K
+* created RT($user$position), 1024x768
+* created RT($user$normal), 1024x768
+* created RT($user$albedo), 1024x768
+* created RT($user$accum), 1024x768
+* created RT($user$generic0), 1024x768
+* created RT($user$generic1), 1024x768
+* created RT($user$smap_depth), 2048x2048
+* created RT($user$smap_surf), 2048x2048
+* created RT($user$bloom1), 256x256
+* created RT($user$bloom2), 256x256
+* created RT($user$lum_t64), 64x64
+* created RT($user$lum_t8), 8x8
+* created RT($user$luminance_0), 1x1
+* created RT($user$luminance_1), 1x1
+* created RT($user$luminance_2), 1x1
+* created RT($user$luminance_3), 1x1
+* GPU shading: vs(fffe0300/3.0/30), ps(ffff0300/3.0/30)
+* GPU vertex cache: recognized, 24
+*** RESET [385 ms]
+*ref +CRenderDevice::ResetTotal: DeviceREF: 1719
+"c:\engine\shb-engine\sources\..\debug-win32\binaries\engine.exe" 
+* phase time: 7 ms
+* phase cmem: 61952 K
+Сервер: Старт...
+* sv_Connect: all/single/alife/new
+* Created server_game single
+* Initializing game script process
+* phase time: 563 ms
+* phase cmem: 63206 K
+Сервер: Загрузка симуляции жизни...
+* phase time: 17 ms
+* phase cmem: 63202 K
+Создание новой игры...
+* Creating new game...
+* Loading spawn registry...
+* 8641 spawn points are successfully loaded
+* Loading ai space is successfully completed (0.671s,  13.156 Mb)
+* Saving spawns...
+* Saving objects...
+* 14931 objects are successfully saved
+* Game all.sav is successfully saved to file '..\app_data\savedgames\all.sav' (3299380 bytes compressed to 838926)
+* New game is successfully created!
+* Loading alife simulator is successfully completed ( 28.611 Mb)
+* phase time: 50052 ms
+* phase cmem: 92499 K
+Сервер: Соединяемся...
+* phase time: 133 ms
+* phase cmem: 92585 K
+Клиент: Соединение с localhost...
+# Player not found. New player created.
+* client : connection accepted - <>
+* phase time: 24 ms
+* phase cmem: 92593 K
+Открытие потока...
+* phase time: 6 ms
+* phase cmem: 92593 K
+Загрузка формы объектов...
+* phase time: 18453 ms
+* phase cmem: 165282 K
+Загрузка шейдеров...
+* phase time: 1055 ms
+* phase cmem: 166801 K
+Загрузка геометрии...
+* [Loading VB] 65532 verts, 2047 Kb
+* [Loading VB] 65525 verts, 2047 Kb
+* [Loading VB] 65535 verts, 2047 Kb
+* [Loading VB] 65466 verts, 2045 Kb
+* [Loading VB] 17208 verts, 537 Kb
+* [Loading VB] 65533 verts, 2047 Kb
+* [Loading VB] 65534 verts, 2047 Kb
+* [Loading VB] 65534 verts, 2047 Kb
+* [Loading VB] 65531 verts, 2047 Kb
+* [Loading VB] 65535 verts, 2047 Kb
+* [Loading VB] 65535 verts, 2047 Kb
+* [Loading VB] 46595 verts, 1456 Kb
+* [Loading VB] 65534 verts, 2047 Kb
+* [Loading VB] 65533 verts, 2047 Kb
+* [Loading VB] 65535 verts, 2047 Kb
+* [Loading VB] 65532 verts, 2047 Kb
+* [Loading VB] 65533 verts, 2047 Kb
+* [Loading VB] 65533 verts, 2047 Kb
+* [Loading VB] 53181 verts, 1661 Kb
+* [Loading IB] 1048575 indices, 2047 Kb
+* [Loading IB] 1048572 indices, 2047 Kb
+* [Loading IB] 1048572 indices, 2047 Kb
+* [Loading IB] 1048572 indices, 2047 Kb
+* [Loading IB] 1048572 indices, 2047 Kb
+* [Loading IB] 1048572 indices, 2047 Kb
+* [Loading IB] 1048575 indices, 2047 Kb
+* [Loading IB] 1048572 indices, 2047 Kb
+* [Loading IB] 1048575 indices, 2047 Kb
+* [Loading IB] 228285 indices, 445 Kb
+* [Loading VB] 65533 verts, 767 Kb
+* [Loading VB] 65534 verts, 767 Kb
+* [Loading VB] 65534 verts, 767 Kb
+* [Loading VB] 65535 verts, 767 Kb
+* [Loading VB] 65535 verts, 767 Kb
+* [Loading VB] 65534 verts, 767 Kb
+* [Loading VB] 65535 verts, 767 Kb
+* [Loading VB] 14030 verts, 164 Kb
+* [Loading IB] 1048575 indices, 2047 Kb
+* [Loading IB] 1048575 indices, 2047 Kb
+* [Loading IB] 1048575 indices, 2047 Kb
+* [Loading IB] 718302 indices, 1402 Kb
+* phase time: 126 ms
+* phase cmem: 235629 K
+Загрузка базы пространств...
+* phase time: 26706 ms
+* phase cmem: 240130 K
+Загрузка детальных объектов...
+* [DETAILS] VertexConsts(256), Batch(61)
+* [DETAILS] 40687 v(20), 26352 p
+* [DETAILS] Batch(61), VB(794K), IB(154K)
+* phase time: 178 ms
+* phase cmem: 241140 K
+Загрузка секторов и порталов...
+* Loading HOM: c:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\level.hom
+* phase time: 189 ms
+* phase cmem: 241312 K
+Загрузка ИИ объектов...
+- Loading music tracks from 'l01_escape_musics'...
+* Initializing level script process
+* phase time: 20 ms
+* phase cmem: 241351 K
+Клиент: Создание...
+_our = 0
+_him = 0
+- Game configuring : Started 
+- Game configuring : Finished 
+ --incorrect global rect definition for map [l08u_brainlab]  kw=0.006669 kh=0.031627
+ --try x2=181.484863 or  y2=1612.421753
+ --error-incorrect map definition global rect of map [l01_escape] intersects with [l04_darkvalley]
+ --error-incorrect map definition global rect of map [l03_agroprom] intersects with [l03u_agr_underground]
+ --error-incorrect map definition global rect of map [l05_bar] intersects with [l06_rostok]
+ --error-incorrect map definition global rect of map [l07_military] intersects with [l10_radar]
+ --error-incorrect map definition global rect of map [l08_yantar] intersects with [l08u_brainlab]
+ --error-incorrect map definition global rect of map [l10_radar] intersects with [l10u_bunker]
+ --error-incorrect map definition global rect of map [l12_stancia] intersects with [l12_stancia_2]
+ --error-incorrect map definition global rect of map [l12_stancia] intersects with [l12u_sarcofag]
+ --error-incorrect map definition global rect of map [l12_stancia] intersects with [l12u_control_monolith]
+ --error-incorrect map definition global rect of map [l12_stancia_2] intersects with [l12u_sarcofag]
+ --error-incorrect map definition global rect of map [l12_stancia_2] intersects with [l12u_control_monolith]
+ --error-incorrect map definition global rect of map [l12u_sarcofag] intersects with [l12u_control_monolith]
+ --incorrect global rect definition for map [l08u_brainlab]  kw=0.006669 kh=0.031627
+ --try x2=181.484863 or  y2=1612.421753
+ --error-incorrect map definition global rect of map [l01_escape] intersects with [l04_darkvalley]
+ --error-incorrect map definition global rect of map [l03_agroprom] intersects with [l03u_agr_underground]
+ --error-incorrect map definition global rect of map [l05_bar] intersects with [l06_rostok]
+ --error-incorrect map definition global rect of map [l07_military] intersects with [l10_radar]
+ --error-incorrect map definition global rect of map [l08_yantar] intersects with [l08u_brainlab]
+ --error-incorrect map definition global rect of map [l10_radar] intersects with [l10u_bunker]
+ --error-incorrect map definition global rect of map [l12_stancia] intersects with [l12_stancia_2]
+ --error-incorrect map definition global rect of map [l12_stancia] intersects with [l12u_sarcofag]
+ --error-incorrect map definition global rect of map [l12_stancia] intersects with [l12u_control_monolith]
+ --error-incorrect map definition global rect of map [l12_stancia_2] intersects with [l12u_sarcofag]
+ --error-incorrect map definition global rect of map [l12_stancia_2] intersects with [l12u_control_monolith]
+ --error-incorrect map definition global rect of map [l12u_sarcofag] intersects with [l12u_control_monolith]
+* phase time: 2732 ms
+* phase cmem: 248865 K
+Загрузка текстур...
+* t-report - base: 973, 373687 K
+* t-report - lmap: 7, 7168 K
+* phase time: 1488 ms
+* phase cmem: 654559 K
+Клиент: Синхронизация...
+* phase time: 34 ms
+* phase cmem: 654559 K
+* [win32]: free[3115344 K], reserved[200824 K], committed[878072 K]
+* [ D3D ]: textures[380856 K]
+* [x-ray]: process heap[654559 K], game lua[23490 K], engine lua[206 K], render[0 K]
+* [x-ray]: economy: strings[2928 K], smem[0 K]
+* [x-ray]: file mapping: memory[31835 K], count[4]
+* active file mappings (4):
+* [0x0e540000][8128486][c:\engine\shb-engine\debug-win32\..\gamedata\game.graph]
+* [0x0f5d0000][3573054][c:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\level.gct]
+* [0x168b0000][12505535][c:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\level.ai]
+* [0x20820000][8392388][c:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\level.details]
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\actors\hero\stalker_novice.ogf
+skeleton: actors\hero\stalker_novice
+!!! 45 bones
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#0.ogf
+skeleton: meshes\brkbl#0
+!!! 9 bones
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#1.ogf
+skeleton: meshes\brkbl#1
+!!! 7 bones
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#2.ogf
+skeleton: meshes\brkbl#2
+!!! 7 bones
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#3.ogf
+skeleton: meshes\brkbl#3
+!!! 11 bones
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#4.ogf
+skeleton: meshes\brkbl#4
+!!! 10 bones
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#5.ogf
+skeleton: meshes\brkbl#5
+!!! 12 bones
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#6.ogf
+skeleton: meshes\brkbl#6
+!!! 10 bones
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#7.ogf
+skeleton: meshes\brkbl#7
+!!! 9 bones
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#8.ogf
+skeleton: meshes\brkbl#8
+!!! 10 bones
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#9.ogf
+skeleton: meshes\brkbl#9
+!!! 10 bones
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#10.ogf
+skeleton: meshes\brkbl#10
+!!! 10 bones
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#11.ogf
+skeleton: meshes\brkbl#11
+!!! 10 bones
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#12.ogf
+skeleton: meshes\brkbl#12
+!!! 10 bones
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#13.ogf
+skeleton: meshes\brkbl#13
+!!! 12 bones
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#14.ogf
+skeleton: meshes\brkbl#14
+!!! 2 bones
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#15.ogf
+skeleton: meshes\brkbl#15
+!!! 2 bones
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#16.ogf
+skeleton: meshes\brkbl#16
+!!! 7 bones
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#17.ogf
+skeleton: meshes\brkbl#17
+!!! 5 bones
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#18.ogf
+skeleton: meshes\brkbl#18
+!!! 4 bones
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#19.ogf
+skeleton: meshes\brkbl#19
+!!! 5 bones
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#20.ogf
+skeleton: meshes\brkbl#20
+!!! 6 bones
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#21.ogf
+skeleton: meshes\brkbl#21
+!!! 5 bones
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#22.ogf
+skeleton: meshes\brkbl#22
+!!! 6 bones
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#23.ogf
+skeleton: meshes\brkbl#23
+!!! 6 bones
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#24.ogf
+skeleton: meshes\brkbl#24
+!!! 6 bones
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#25.ogf
+skeleton: meshes\brkbl#25
+!!! 7 bones
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#26.ogf
+skeleton: meshes\brkbl#26
+!!! 5 bones
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#27.ogf
+skeleton: meshes\brkbl#27
+!!! 4 bones
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#28.ogf
+skeleton: meshes\brkbl#28
+!!! 6 bones
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#29.ogf
+skeleton: meshes\brkbl#29
+!!! 5 bones
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#30.ogf
+skeleton: meshes\brkbl#30
+!!! 4 bones
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#31.ogf
+skeleton: meshes\brkbl#31
+!!! 5 bones
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#32.ogf
+skeleton: meshes\brkbl#32
+!!! 4 bones
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#33.ogf
+skeleton: meshes\brkbl#33
+!!! 5 bones
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#34.ogf
+skeleton: meshes\brkbl#34
+!!! 5 bones
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#35.ogf
+skeleton: meshes\brkbl#35
+!!! 5 bones
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#36.ogf
+skeleton: meshes\brkbl#36
+!!! 5 bones
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#37.ogf
+skeleton: meshes\brkbl#37
+!!! 5 bones
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#38.ogf
+skeleton: meshes\brkbl#38
+!!! 5 bones
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#39.ogf
+skeleton: meshes\brkbl#39
+!!! 5 bones
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#40.ogf
+skeleton: meshes\brkbl#40
+!!! 6 bones
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#41.ogf
+skeleton: meshes\brkbl#41
+!!! 6 bones
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#42.ogf
+skeleton: meshes\brkbl#42
+!!! 5 bones
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#43.ogf
+skeleton: meshes\brkbl#43
+!!! 4 bones
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#44.ogf
+skeleton: meshes\brkbl#44
+!!! 6 bones
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#45.ogf
+skeleton: meshes\brkbl#45
+!!! 5 bones
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#46.ogf
+skeleton: meshes\brkbl#46
+!!! 5 bones
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#47.ogf
+skeleton: meshes\brkbl#47
+!!! 6 bones
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\levels\l01_escape\meshes\brkbl#48.ogf
+skeleton: meshes\brkbl#48
+!!! 7 bones
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\equipments\item_datchik1.ogf
+skeleton: equipments\item_datchik1
+!!! 1 bones
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\equipments\light_night.ogf
+skeleton: equipments\light_night
+!!! 4 bones
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\equipments\novice_suit.ogf
+skeleton: equipments\novice_suit
+!!! 1 bones
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\weapons\binoculars\wpn_binoculars.ogf
+skeleton: weapons\binoculars\wpn_binoculars
+!!! 3 bones
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\weapons\binoculars\wpn_binoculars_hud.ogf
+skeleton: weapons\binoculars\wpn_binoculars_hud
+!!! 1 bones
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\equipments\item_pda.ogf
+skeleton: equipments\item_pda
+!!! 1 bones
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\physics\decor\ventilator_01.ogf
+skeleton: physics\decor\ventilator_01
+!!! 4 bones
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\physics\decor\priemnik_gorizont.ogf
+skeleton: physics\decor\priemnik_gorizont
+!!! 2 bones
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\physics\box\box_1a.ogf
+skeleton: physics\box\box_1a
+!!! 4 bones
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\physics\balon\balon_01.ogf
+skeleton: physics\balon\balon_01
+!!! 3 bones
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\weapons\groza\wpn_groza.ogf
+skeleton: weapons\groza\wpn_groza
+!!! 7 bones
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\equipments\item_transiver.ogf
+skeleton: equipments\item_transiver
+!!! 4 bones
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\equipments\stalker_killer_suit.ogf
+skeleton: equipments\stalker_killer_suit
+!!! 2 bones
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\physics\decor\tv_1.ogf
+skeleton: physics\decor\tv_1
+!!! 4 bones
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\physics\decor\tiski.ogf
+skeleton: physics\decor\tiski
+!!! 5 bones
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\physics\door\door_trader.ogf
+skeleton: physics\door\door_trader
+!!! 3 bones
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\physics\door\door_traders_box.ogf
+skeleton: physics\door\door_traders_box
+!!! 3 bones
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\physics\light\lampa_01_on.ogf
+skeleton: physics\light\lampa_01_on
+!!! 7 bones
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\actors\trader\trader.ogf
+skeleton: actors\trader\trader
+!!! 55 bones
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\weapons\ammo\ammo_9x18_fmj.ogf
+skeleton: weapons\ammo\ammo_9x18_fmj
+!!! 1 bones
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\weapons\pm\wpn_pm.ogf
+skeleton: weapons\pm\wpn_pm
+!!! 3 bones
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\weapons\pm\wpn_pm_hud.ogf
+skeleton: weapons\pm\wpn_pm_hud
+!!! 51 bones
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\weapons\knife\wpn_knife.ogf
+skeleton: weapons\knife\wpn_knife
+!!! 2 bones
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\weapons\knife\wpn_knife_hud.ogf
+skeleton: weapons\knife\wpn_knife_hud
+!!! 42 bones
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\equipments\item_notebook.ogf
+skeleton: equipments\item_notebook
+!!! 3 bones
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\monsters\flesh\flesh.ogf
+skeleton: monsters\flesh\flesh
+!!! 26 bones
+correction attempts 1
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\actors\novice\green_stalker_3.ogf
+skeleton: actors\novice\green_stalker_3
+!!! 45 bones
+- There are no sounds with prefix fight\death\anomaly_
+- There are no sounds with prefix fight\friendly_grenade\friendly_grenade_
+- There are no sounds with prefix talk\stories\legend005_part_
+- There are no sounds with prefix reactions\story\disbelief_story_
+- There are no sounds with prefix talk\use\yes_sleep_
+- There are no sounds with prefix reactions\story\old_story_
+- There are no sounds with prefix weather\bad_weather\bad_weather_
+- There are no sounds with prefix reactions\story\action_wrong_
+- There are no sounds with prefix reactions\story\disbelief_teller_
+- There are no sounds with prefix reactions\see_something\see_
+- There are no sounds with prefix reactions\story\continue_
+- There are no sounds with prefix talk\stories\legend003_part_
+- There are no sounds with prefix help\wounded_psy\psy_
+- There are no sounds with prefix threat\stop\stop_
+- There are no sounds with prefix talk\trade\no\no_
+- There are no sounds with prefix reactions\story\wonder_
+- There are no sounds with prefix reactions\story\cool_teller_
+- There are no sounds with prefix reactions\story\advice_sceptic_
+- There are no sounds with prefix talk\stories\legend002_part_
+- There are no sounds with prefix talk\stories\story006_part_
+- There are no sounds with prefix reactions\story\yes_
+- There are no sounds with prefix talk\stories\story002_part_
+- There are no sounds with prefix help\wounded_not_see_helper\help_
+- There are no sounds with prefix help\wounded_see_helper\help_
+- There are no sounds with prefix help\wounded_psy\suicide_
+- There are no sounds with prefix reactions\story\disbelief_
+- There are no sounds with prefix reactions\nothing\nothing_
+- There are no sounds with prefix talk\stories\legend001_part_
+- There are no sounds with prefix talk\use\yes_default_
+- There are no sounds with prefix talk\stories\story005_part_
+- There are no sounds with prefix hail\deleted_
+- There are no sounds with prefix reactions\story\final_happy_
+- There are no sounds with prefix talk\stories\legend004_part_
+- There are no sounds with prefix reactions\story\cool_info_
+- There are no sounds with prefix talk\use\yes_fight_
+- There are no sounds with prefix reactions\story\final_tragic_
+- There are no sounds with prefix waiting\wait_
+- There are no sounds with prefix talk\stories\story003_part_
+- There are no sounds with prefix reactions\story\belief_story_
+- There are no sounds with prefix reactions\story\fear_
+- There are no sounds with prefix talk\stories\story001_part_
+- There are no sounds with prefix reactions\story\action_right_
+- There are no sounds with prefix scenario\bar\barman\bar_barman_psycho_
+- There are no sounds with prefix talk\rejection\rejection_2
+- There are no sounds with prefix help\not_wounded\help_
+- There are no sounds with prefix reactions\story\uncertain_
+- There are no sounds with prefix reactions\story\doubt_
+- There are no sounds with prefix reactions\story\advice_support_
+- There are no sounds with prefix talk\stories\story004_part_
+- There are no sounds with prefix talk\use\yes_kamp_
+- There are no sounds with prefix talk\trade\yes\yes_
+correction attempts 1
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\weapons\ammo\ammo_12x70_buck.ogf
+skeleton: weapons\ammo\ammo_12x70_buck
+!!! 1 bones
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\weapons\bm_16\wpn_bm-16.ogf
+skeleton: weapons\bm_16\wpn_bm-16
+!!! 2 bones
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\weapons\bm_16\wpn_bm-16_hud.ogf
+skeleton: weapons\bm_16\wpn_bm-16_hud
+!!! 50 bones
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\food\conserv1.ogf
+skeleton: food\conserv1
+!!! 1 bones
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\actors\novice\green_stalker_2.ogf
+skeleton: actors\novice\green_stalker_2
+!!! 45 bones
+- There are no sounds with prefix fight\death\anomaly_
+- There are no sounds with prefix fight\friendly_grenade\friendly_grenade_
+- There are no sounds with prefix talk\stories\legend005_part_
+- There are no sounds with prefix reactions\story\disbelief_story_
+- There are no sounds with prefix talk\use\yes_sleep_
+- There are no sounds with prefix reactions\story\old_story_
+- There are no sounds with prefix weather\bad_weather\bad_weather_
+- There are no sounds with prefix reactions\story\action_wrong_
+- There are no sounds with prefix reactions\story\disbelief_teller_
+- There are no sounds with prefix reactions\see_something\see_
+- There are no sounds with prefix reactions\story\continue_
+- There are no sounds with prefix talk\stories\legend003_part_
+- There are no sounds with prefix help\wounded_psy\psy_
+- There are no sounds with prefix threat\stop\stop_
+- There are no sounds with prefix talk\trade\no\no_
+- There are no sounds with prefix reactions\story\wonder_
+- There are no sounds with prefix reactions\story\cool_teller_
+- There are no sounds with prefix reactions\story\advice_sceptic_
+- There are no sounds with prefix talk\stories\legend002_part_
+- There are no sounds with prefix talk\stories\story006_part_
+- There are no sounds with prefix reactions\story\yes_
+- There are no sounds with prefix talk\stories\story002_part_
+- There are no sounds with prefix help\wounded_not_see_helper\help_
+- There are no sounds with prefix help\wounded_see_helper\help_
+- There are no sounds with prefix help\wounded_psy\suicide_
+- There are no sounds with prefix reactions\story\disbelief_
+- There are no sounds with prefix reactions\nothing\nothing_
+- There are no sounds with prefix talk\stories\legend001_part_
+- There are no sounds with prefix talk\use\yes_default_
+- There are no sounds with prefix talk\stories\story005_part_
+- There are no sounds with prefix hail\deleted_
+- There are no sounds with prefix reactions\story\final_happy_
+- There are no sounds with prefix talk\stories\legend004_part_
+- There are no sounds with prefix reactions\story\cool_info_
+- There are no sounds with prefix talk\use\yes_fight_
+- There are no sounds with prefix reactions\story\final_tragic_
+- There are no sounds with prefix waiting\wait_
+- There are no sounds with prefix talk\stories\story003_part_
+- There are no sounds with prefix reactions\story\belief_story_
+- There are no sounds with prefix reactions\story\fear_
+- There are no sounds with prefix talk\stories\story001_part_
+- There are no sounds with prefix reactions\story\action_right_
+- There are no sounds with prefix talk\rejection\rejection_2
+- There are no sounds with prefix help\not_wounded\help_
+- There are no sounds with prefix reactions\story\uncertain_
+- There are no sounds with prefix reactions\story\doubt_
+- There are no sounds with prefix reactions\story\advice_support_
+- There are no sounds with prefix talk\stories\story004_part_
+- There are no sounds with prefix talk\use\yes_kamp_
+- There are no sounds with prefix talk\trade\yes\yes_
+correction attempts 1
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\equipments\item_bandage.ogf
+skeleton: equipments\item_bandage
+!!! 1 bones
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\actors\novice\green_stalker_5.ogf
+skeleton: actors\novice\green_stalker_5
+!!! 45 bones
+- There are no sounds with prefix fight\death\anomaly_
+- There are no sounds with prefix fight\friendly_grenade\friendly_grenade_
+- There are no sounds with prefix talk\stories\legend005_part_
+- There are no sounds with prefix reactions\story\disbelief_story_
+- There are no sounds with prefix talk\use\yes_sleep_
+- There are no sounds with prefix reactions\story\old_story_
+- There are no sounds with prefix weather\bad_weather\bad_weather_
+- There are no sounds with prefix reactions\story\action_wrong_
+- There are no sounds with prefix reactions\story\disbelief_teller_
+- There are no sounds with prefix reactions\see_something\see_
+- There are no sounds with prefix reactions\story\continue_
+- There are no sounds with prefix talk\stories\legend003_part_
+- There are no sounds with prefix fight\attack\attack_5
+- There are no sounds with prefix help\wounded_psy\psy_
+- There are no sounds with prefix threat\stop\stop_
+- There are no sounds with prefix talk\trade\no\no_
+- There are no sounds with prefix reactions\story\wonder_
+- There are no sounds with prefix reactions\story\cool_teller_
+- There are no sounds with prefix reactions\story\advice_sceptic_
+- There are no sounds with prefix talk\stories\legend002_part_
+- There are no sounds with prefix talk\stories\story006_part_
+- There are no sounds with prefix reactions\story\yes_
+- There are no sounds with prefix talk\stories\story002_part_
+- There are no sounds with prefix help\wounded_not_see_helper\help_
+- There are no sounds with prefix help\wounded_see_helper\help_
+- There are no sounds with prefix help\wounded_psy\suicide_
+- There are no sounds with prefix reactions\story\disbelief_
+- There are no sounds with prefix reactions\nothing\nothing_
+- There are no sounds with prefix talk\stories\legend001_part_
+- There are no sounds with prefix talk\use\yes_default_
+- There are no sounds with prefix talk\stories\story005_part_
+- There are no sounds with prefix hail\deleted_
+- There are no sounds with prefix reactions\story\final_happy_
+- There are no sounds with prefix talk\stories\legend004_part_
+- There are no sounds with prefix reactions\story\cool_info_
+- There are no sounds with prefix talk\use\yes_fight_
+- There are no sounds with prefix reactions\story\final_tragic_
+- There are no sounds with prefix waiting\wait_
+- There are no sounds with prefix talk\stories\story003_part_
+- There are no sounds with prefix reactions\story\belief_story_
+- There are no sounds with prefix reactions\story\fear_
+- There are no sounds with prefix talk\stories\story001_part_
+- There are no sounds with prefix reactions\story\action_right_
+- There are no sounds with prefix talk\rejection\rejection_2
+- There are no sounds with prefix help\not_wounded\help_
+- There are no sounds with prefix reactions\story\uncertain_
+- There are no sounds with prefix reactions\story\doubt_
+- There are no sounds with prefix reactions\story\advice_support_
+- There are no sounds with prefix talk\stories\story004_part_
+- There are no sounds with prefix talk\use\yes_kamp_
+- There are no sounds with prefix talk\trade\yes\yes_
+correction attempts 1
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\weapons\bred\bred.ogf
+skeleton: weapons\bred\bred
+!!! 1 bones
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\actors\novice\green_stalker_4.ogf
+skeleton: actors\novice\green_stalker_4
+!!! 45 bones
+- There are no sounds with prefix fight\death\anomaly_
+- There are no sounds with prefix fight\friendly_grenade\friendly_grenade_
+- There are no sounds with prefix reactions\story\disbelief_story_
+- There are no sounds with prefix talk\use\yes_sleep_
+- There are no sounds with prefix reactions\story\old_story_
+- There are no sounds with prefix weather\bad_weather\bad_weather_
+- There are no sounds with prefix reactions\story\action_wrong_
+- There are no sounds with prefix reactions\story\disbelief_teller_
+- There are no sounds with prefix reactions\story\continue_
+- There are no sounds with prefix fight\attack\attack_5
+- There are no sounds with prefix reactions\story\wonder_
+- There are no sounds with prefix reactions\story\cool_teller_
+- There are no sounds with prefix reactions\story\advice_sceptic_
+- There are no sounds with prefix reactions\story\yes_
+- There are no sounds with prefix reactions\story\disbelief_
+- There are no sounds with prefix talk\use\yes_default_
+- There are no sounds with prefix hail\deleted_
+- There are no sounds with prefix reactions\story\final_happy_
+- There are no sounds with prefix reactions\story\cool_info_
+- There are no sounds with prefix talk\use\yes_fight_
+- There are no sounds with prefix reactions\story\final_tragic_
+- There are no sounds with prefix reactions\story\belief_story_
+- There are no sounds with prefix reactions\story\fear_
+- There are no sounds with prefix reactions\story\action_right_
+- There are no sounds with prefix reactions\story\uncertain_
+- There are no sounds with prefix reactions\story\doubt_
+- There are no sounds with prefix reactions\story\advice_support_
+- There are no sounds with prefix talk\use\yes_kamp_
+correction attempts 1
+correction attempts 1
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\weapons\kolbasa\kolbasa.ogf
+skeleton: weapons\kolbasa\kolbasa
+!!! 1 bones
+correction attempts 1
+correction attempts 1
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\actors\neytral\stalker_neytral_balon_1.ogf
+skeleton: actors\neytral\stalker_neytral_balon_1
+!!! 45 bones
+correction attempts 1
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\weapons\ammo\ammo_545x39_fmj.ogf
+skeleton: weapons\ammo\ammo_545x39_fmj
+!!! 1 bones
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\equipments\item_fmradio.ogf
+skeleton: equipments\item_fmradio
+!!! 1 bones
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\weapons\ak-74u\ak74u.ogf
+skeleton: weapons\ak-74u\ak74u
+!!! 4 bones
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\weapons\ak-74u\wpn_ak74u_hud.ogf
+skeleton: weapons\ak-74u\wpn_ak74u_hud
+!!! 47 bones
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\physics\decor\vedro_01.ogf
+skeleton: physics\decor\vedro_01
+!!! 4 bones
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\physics\small_trash\doski_br_02.ogf
+skeleton: physics\small_trash\doski_br_02
+!!! 6 bones
+! ERROR: Invalid breakable object: 'physics\small_trash\doski_br_02'
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\physics\vehicles\mi24\veh_mi24_u_01.ogf
+skeleton: physics\vehicles\mi24\veh_mi24_u_01
+!!! 29 bones
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\physics\large_trash\poddon.ogf
+skeleton: physics\large_trash\poddon
+!!! 1 bones
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\physics\dead_body\skelet_combine_pose_06.ogf
+skeleton: physics\dead_body\skelet_combine_pose_06
+!!! 15 bones
+! ERROR: Invalid breakable object: 'physics\dead_body\skelet_combine_pose_06'
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\physics\rope\rope_01.ogf
+skeleton: physics\rope\rope_01
+!!! 10 bones
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\physics\stul\stul_wood_01.ogf
+skeleton: physics\stul\stul_wood_01
+!!! 6 bones
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\physics\decor\teapot_1.ogf
+skeleton: physics\decor\teapot_1
+!!! 8 bones
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\actors\soldier\soldier_spetsnaz.ogf
+skeleton: actors\soldier\soldier_spetsnaz
+!!! 45 bones
+- There are no sounds with prefix fight\death\anomaly_
+- There are no sounds with prefix fight\friendly_grenade\friendly_grenade_
+- There are no sounds with prefix reactions\box\box_
+- There are no sounds with prefix weather\bad_weather\bad_weather_
+- There are no sounds with prefix fight\attack\attack_5
+- There are no sounds with prefix hail\deleted_
+- There are no sounds with prefix help\wounded_thanx\thanx_
+correction attempts 1
+correction attempts 1
+correction attempts 1
+correction attempts 1
+correction attempts 1
+correction attempts 1
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\actors\soldier\soldier_bandana_5.ogf
+skeleton: actors\soldier\soldier_bandana_5
+!!! 45 bones
+- There are no sounds with prefix fight\death\anomaly_
+- There are no sounds with prefix fight\friendly_grenade\friendly_grenade_
+- There are no sounds with prefix reactions\box\box_
+- There are no sounds with prefix weather\bad_weather\bad_weather_
+- There are no sounds with prefix fight\attack\attack_5
+- There are no sounds with prefix hail\deleted_
+- There are no sounds with prefix help\wounded_thanx\thanx_
+correction attempts 1
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\actors\soldier\soldier_obichniy.ogf
+skeleton: actors\soldier\soldier_obichniy
+!!! 45 bones
+correction attempts 1
+correction attempts 1
+correction attempts 1
+correction attempts 1
+correction attempts 1
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\actors\soldier\soldier_bandana.ogf
+skeleton: actors\soldier\soldier_bandana
+!!! 45 bones
+correction attempts 1
+correction attempts 1
+correction attempts 1
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\actors\soldier\soldier_beret_1.ogf
+skeleton: actors\soldier\soldier_beret_1
+!!! 45 bones
+correction attempts 1
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\physics\decor\rupor.ogf
+skeleton: physics\decor\rupor
+!!! 3 bones
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\actors\bandit\stalker_bandit_3.ogf
+skeleton: actors\bandit\stalker_bandit_3
+!!! 45 bones
+- There are no sounds with prefix fight\fire\fire_,fight\threat\threat_distant_
+- There are no sounds with prefix fight\threat\threat_distant_
+- There are no sounds with prefix fight\enemy_hit\enemy_hit_
+- There are no sounds with prefix fight\enemy_down\enemy_down_
+shell for esc_stalker_corpse[464] created in 4.596200 ms
+correction attempts 1
+shell for esc_tutorial_dead_novice[550] created in 1.703000 ms
+correction attempts 1
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\monsters\crow\crow.ogf
+skeleton: monsters\crow\crow
+!!! 16 bones
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\physics\decor\bottle_bar_stakan.ogf
+skeleton: physics\decor\bottle_bar_stakan
+!!! 1 bones
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\physics\decor\butilka_vodka_01.ogf
+skeleton: physics\decor\butilka_vodka_01
+!!! 1 bones
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\equipments\drink_nonstop.ogf
+skeleton: equipments\drink_nonstop
+!!! 1 bones
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\equipments\drink_nonstop_old.ogf
+skeleton: equipments\drink_nonstop_old
+!!! 1 bones
+shell for esc_stalker_corps1[700] created in 2.190200 ms
+correction attempts 1
+shell for esc_stalker_corps1_0000[702] created in 1.960200 ms
+correction attempts 1
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\actors\neytral\stalker_neytral_hood_2.ogf
+skeleton: actors\neytral\stalker_neytral_hood_2
+!!! 45 bones
+shell for esc_stalker_corps1_0001[704] created in 1.675600 ms
+correction attempts 1
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\actors\novice\green_stalker_1.ogf
+skeleton: actors\novice\green_stalker_1
+!!! 45 bones
+correction attempts 1
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\equipments\item_minipda.ogf
+skeleton: equipments\item_minipda
+!!! 1 bones
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\actors\bandit\stalker_bandit_5.ogf
+skeleton: actors\bandit\stalker_bandit_5
+!!! 45 bones
+- There are no sounds with prefix fight\fire\fire_,fight\threat\threat_distant_
+- There are no sounds with prefix fight\threat\threat_distant_
+- There are no sounds with prefix fight\enemy_hit\enemy_hit_
+- There are no sounds with prefix fight\enemy_down\enemy_down_
+shell for esc_trup_bratka[747] created in 1.696800 ms
+correction attempts 1
+shell for esc_stalker_0000[870] created in 1.935300 ms
+correction attempts 1
+shell for esc_trup_scene[874] created in 1.805700 ms
+correction attempts 1
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\physics\anomaly\artefact_blackdrip.ogf
+skeleton: physics\anomaly\artefact_blackdrip
+!!! 2 bones
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\weapons\artefact\wpn_artefact_hud.ogf
+skeleton: weapons\artefact\wpn_artefact_hud
+!!! 45 bones
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\physics\light\new_light\light_galogen_1_glass.ogf
+skeleton: physics\light\new_light\light_galogen_1_glass
+!!! 3 bones
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\physics\door\cabinet_village_140x210_ph_door_l.ogf
+skeleton: physics\door\cabinet_village_140x210_ph_door_l
+!!! 2 bones
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\physics\door\cabinet_village_140x210_ph_door_r.ogf
+skeleton: physics\door\cabinet_village_140x210_ph_door_r
+!!! 3 bones
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\physics\light\new_light\light_white_glass.ogf
+skeleton: physics\light\new_light\light_white_glass
+!!! 3 bones
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\physics\light\new_light\light_alarm_glass.ogf
+skeleton: physics\light\new_light\light_alarm_glass
+!!! 3 bones
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\physics\box\expl_dinamit.ogf
+skeleton: physics\box\expl_dinamit
+!!! 1 bones
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\physics\equipment_cache\equipment_instrument_case_01_case.ogf
+skeleton: physics\equipment_cache\equipment_instrument_case_01_case
+!!! 1 bones
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\physics\equipment_cache\equipment_box_01_case.ogf
+skeleton: physics\equipment_cache\equipment_box_01_case
+!!! 1 bones
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\physics\equipment_cache\equipment_rucksack_01_case.ogf
+skeleton: physics\equipment_cache\equipment_rucksack_01_case
+!!! 1 bones
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\physics\box\box_wood_01.ogf
+skeleton: physics\box\box_wood_01
+!!! 1 bones
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\physics\box\box_metall_01.ogf
+skeleton: physics\box\box_metall_01
+!!! 1 bones
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\weapons\vodka\vodka.ogf
+skeleton: weapons\vodka\vodka
+!!! 1 bones
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\physics\box\box_wood_tara.ogf
+skeleton: physics\box\box_wood_tara
+!!! 5 bones
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\physics\decor\tv_1_br.ogf
+skeleton: physics\decor\tv_1_br
+!!! 2 bones
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\physics\decor\ognetushitel.ogf
+skeleton: physics\decor\ognetushitel
+!!! 7 bones
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\physics\balon\bochka_close_3.ogf
+skeleton: physics\balon\bochka_close_3
+!!! 3 bones
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\physics\balon\bochka_close_1.ogf
+skeleton: physics\balon\bochka_close_1
+!!! 3 bones
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\physics\balon\balon_02.ogf
+skeleton: physics\balon\balon_02
+!!! 3 bones
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\physics\decor\kitchen_lojka.ogf
+skeleton: physics\decor\kitchen_lojka
+!!! 2 bones
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\physics\decor\kitchen_krujka.ogf
+skeleton: physics\decor\kitchen_krujka
+!!! 2 bones
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\physics\small_trash\wood_board_br_01.ogf
+skeleton: physics\small_trash\wood_board_br_01
+!!! 1 bones
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\physics\small_trash\wood_board_br_01a.ogf
+skeleton: physics\small_trash\wood_board_br_01a
+!!! 1 bones
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\physics\small_trash\wood_board_br_01b.ogf
+skeleton: physics\small_trash\wood_board_br_01b
+!!! 1 bones
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\physics\decor\fire_vedro.ogf
+skeleton: physics\decor\fire_vedro
+!!! 8 bones
+Game Task [storyline_eliminate_gunslinger] has no priority
+* xrSheduler: too much time consumed by object [alife_simulator] (416ms)
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\weapons\bolt\wpn_bolt.ogf
+skeleton: weapons\bolt\wpn_bolt
+!!! 2 bones
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\weapons\bolt\wpn_bolt_hud.ogf
+skeleton: weapons\bolt\wpn_bolt_hud
+!!! 42 bones
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\weapons\rpg_7\wpn_rpg_7_grenade.ogf
+skeleton: weapons\rpg_7\wpn_rpg_7_grenade
+!!! 1 bones
+cl setDestroy [705][410]
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\weapons\grenade\wpn_rgd_5.ogf
+skeleton: weapons\grenade\wpn_rgd_5
+!!! 3 bones
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\weapons\grenade\wpn_rgd_5_hud.ogf
+skeleton: weapons\grenade\wpn_rgd_5_hud
+!!! 51 bones
+* xrSheduler: too much time consumed by object [device_pda0068] (27ms)
+cl setDestroy [703][411]
+cl setDestroy [701][412]
+* xrSheduler: too much time consumed by object [esc_lager7] (44ms)
+* MEMORY USAGE: 789984 K
+~ Invalid syntax in call to 'r__tf_aniso'
+~ Valid arguments: integer value in range [1,16]
+cl setDestroy [551][435]
+* xrSheduler: too much time consumed by object [esc_specnaz2] (64ms)
+cl setDestroy [875][443]
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\equipments\item_aptechka.ogf
+skeleton: equipments\item_aptechka
+!!! 1 bones
+cl setDestroy [871][443]
+cl setDestroy [872][443]
+* xrSheduler: too much time consumed by object [escape_trader] (67ms)
+cl setDestroy [90][445]
+cl setDestroy [91][445]
+cl setDestroy [93][445]
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\equipments\item_antirad.ogf
+skeleton: equipments\item_antirad
+!!! 1 bones
+* WARNING: c_EVENT[18] to [91]: unknown dest
+cl setDestroy [465][448]
+cl setDestroy [466][448]
+cl setDestroy [467][448]
+* xrSheduler: too much time consumed by object [esc_matugalnik] (17ms)
+* xrSheduler: too much time consumed by object [esc_blokpost] (145ms)
+cl setDestroy [748][452]
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\monsters\dog\dog.ogf
+skeleton: monsters\dog\dog
+!!! 33 bones
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\monsters\dog\dog_white.ogf
+skeleton: monsters\dog\dog_white
+!!! 33 bones
+correction attempts 1
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\equipments\item_dog_tail.ogf
+skeleton: equipments\item_dog_tail
+!!! 1 bones
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\monsters\dog\dog_bulterier.ogf
+skeleton: monsters\dog\dog_bulterier
+!!! 33 bones
+correction attempts 1
+correction attempts 1
+correction attempts 1
+* xrSheduler: too much time consumed by object [escape_trader] (16ms)
+* xrSheduler: too much time consumed by object [esc_shustryi] (34ms)
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\physics\decor\prt\bottle_bar_1_prt0.ogf
+skeleton: physics\decor\prt\bottle_bar_1_prt0
+!!! 1 bones
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\physics\decor\prt\bottle_bar_1_prt1.ogf
+skeleton: physics\decor\prt\bottle_bar_1_prt1
+!!! 1 bones
+* xrSheduler: too much time consumed by object [esc_lager4] (44ms)
+- Play music track: music\amb01
+* xrSheduler: too much time consumed by object [esc_blokpost] (158ms)
+* xrSheduler: too much time consumed by object [esc_specnaz4] (47ms)
+* xrSheduler: too much time consumed by object [esc_dog_swarm_0002] (33ms)
+* xrSheduler: too much time consumed by object [esc_blokpost_soldier6] (20ms)
+shell for esc_stalker[735] created in 2.003900 ms
+correction attempts 1
+* xrSheduler: too much time consumed by object [esc_dog_swarm_0004] (17ms)
+cl setDestroy [736][911]
+correction attempts 1
+* xrSheduler: too much time consumed by object [trader_physic_object0007] (56ms)
+cl setDestroy [695][986]
+cl setDestroy [692][1007]
+~ g_god 1
+* xrSheduler: too much time consumed by object [vision_client[single_player]] (17ms)
+[LSS][1157] Going offline [248656][esc_dog_swarm_0001][474] ([-246.328262][-24.791672][-134.259506] : [78.728333][-0.458229][528.954590]), on '*SERVER*'
+[LSS][1157] Going offline [248656][mutant_dog_tail0475][475] with parent [474][esc_dog_swarm_0001] on '*SERVER*'
+[LSS][1157] Going offline [248656][esc_dog_swarm_0002][476] ([-246.328262][-24.791672][-134.259506] : [81.506027][1.916877][554.209595]), on '*SERVER*'
+[LSS][1157] Going offline [248656][esc_dog_swarm_0004][477] ([-246.328262][-24.791672][-134.259506] : [88.332581][1.343724][537.863159]), on '*SERVER*'
+[LSS][1157] Going offline [248656][esc_dog_swarm_0007][478] ([-246.328262][-24.791672][-134.259506] : [104.272110][4.446312][571.154358]), on '*SERVER*'
+cl setDestroy [475][1158]
+cl setDestroy [474][1158]
+cl setDestroy [476][1158]
+cl setDestroy [477][1158]
+cl setDestroy [478][1158]
+dumping client spawn manager stuff for object with id 478
+dumping client spawn manager stuff for object with id 477
+dumping client spawn manager stuff for object with id 476
+dumping client spawn manager stuff for object with id 474
+part_3_jump
+part_4_crouch
+part_10_sprint
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\monsters\mutant_boar\mutant_boar.ogf
+skeleton: monsters\mutant_boar\mutant_boar
+!!! 48 bones
+correction attempts 1
+* xrSheduler: too much time consumed by object [esc_blokpost_soldier8] (72ms)
+* xrSheduler: too much time consumed by object [esc_zone_witches_galantine_0004] (20ms)
+part_2_binocular
+correction attempts 1
+* xrSheduler: too much time consumed by object [esc_blokpost_soldier9] (22ms)
+correction attempts 1
+correction attempts 1
+correction attempts 1
+correction attempts 1
+* xrSheduler: too much time consumed by object [esc_dog_swarm_0002] (43ms)
+part_12_relations
+* xrSheduler: too much time consumed by object [esc_dog_swarm_0002] (41ms)
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\actors\novice\green_stalker_8.ogf
+skeleton: actors\novice\green_stalker_8
+!!! 45 bones
+correction attempts 1
+correction attempts 1
+correction attempts 1
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\weapons\pb\wpn_pb.ogf
+skeleton: weapons\pb\wpn_pb
+!!! 3 bones
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\weapons\pb\wpn_pb_hud.ogf
+skeleton: weapons\pb\wpn_pb_hud
+!!! 46 bones
+* xrSheduler: too much time consumed by object [esc_blokpost_soldier8] (20ms)
+* xrSheduler: too much time consumed by object [esc_dog_swarm_0007] (52ms)
+* xrSheduler: too much time consumed by object [esc_dog_swarm_0002] (51ms)
+* xrSheduler: too much time consumed by object [esc_specnaz4] (17ms)
+* xrSheduler: too much time consumed by object [esc_dogs_swarm] (19ms)
+[LSS][1715] Going offline [342849][esc_dog_swarm_0001][474] ([-198.130936][-20.398958][-145.111847] : [135.745926][2.512562][427.743500]), on '*SERVER*'
+[LSS][1715] Going offline [342849][mutant_dog_tail0475][475] with parent [474][esc_dog_swarm_0001] on '*SERVER*'
+[LSS][1715] Going offline [342849][esc_dog_swarm_0004][477] ([-198.130936][-20.398958][-145.111847] : [141.406830][2.743231][433.670746]), on '*SERVER*'
+[LSS][1715] Going offline [342849][esc_dog_swarm_0007][478] ([-198.130936][-20.398958][-145.111847] : [104.814522][2.032966][439.614319]), on '*SERVER*'
+cl setDestroy [475][1716]
+cl setDestroy [474][1716]
+cl setDestroy [477][1716]
+cl setDestroy [478][1716]
+dumping client spawn manager stuff for object with id 478
+dumping client spawn manager stuff for object with id 477
+dumping client spawn manager stuff for object with id 474
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\physics\equipment_cache\equipment_rucksack_02_case.ogf
+skeleton: physics\equipment_cache\equipment_rucksack_02_case
+!!! 1 bones
+* xrSheduler: too much time consumed by object [esc_vagon_wounded] (20ms)
+correction attempts 1
+correction attempts 1
+correction attempts 1
+correction attempts 1
+correction attempts 1
+* xrSheduler: too much time consumed by object [vision_client[single_player]] (16ms)
+* xrSheduler: too much time consumed by object [esc_surprise_box_015] (80ms)
+correction attempts 1
+correction attempts 1
+[LSS][2017] Going offline [395903][esc_af_medusa][881] ([-106.474976][-5.742069][-123.505539] : [-244.816528][-13.158466][-33.645222]), on '*SERVER*'
+cl setDestroy [881][2018]
+* xrSheduler: too much time consumed by object [esc_boar_weak_0003] (63ms)
+* xrSheduler: too much time consumed by object [esc_dog_weak_0013] (48ms)
+* xrSheduler: too much time consumed by object [escape_trader] (18ms)
+[LSS][2124] Going offline [414847][level_prefix_inventory_box_0003][961] ([-90.298782][-4.273420][-89.669586] : [-247.503922][-24.794498][-135.684509]), on '*SERVER*'
+cl setDestroy [961][2125]
+* xrSheduler: too much time consumed by object [particle_instance] (16ms)
+* xrSheduler: too much time consumed by object [esc_novice_attacker1] (20ms)
+[LSS][2136] Going offline [416983][esc_boar_weak_0002][746] ([-88.946861][-4.249973][-85.608536] : [-95.603561][-24.447401][-250.086746]), on '*SERVER*'
+cl setDestroy [746][2137]
+dumping client spawn manager stuff for object with id 746
+[LSS][2142] Going offline [418046][esc_vodka_0002][992] ([-88.358368][-4.448017][-83.560959] : [-236.304672][-19.186300][-156.016037]), on '*SERVER*'
+cl setDestroy [992][2143]
+* xrSheduler: too much time consumed by object [esc_boar_weak_0003] (43ms)
+sv ownership id_parent [0][actor:single_player] id_entity [869][medkit:esc_medkit] [2169]
+* xrSheduler: too much time consumed by object [esc_boar_weak_0003] (44ms)
+* xrSheduler: too much time consumed by object [esc_boar_weak_0003] (43ms)
+* xrSheduler: too much time consumed by object [esc_boar_weak] (55ms)
+* xrSheduler: too much time consumed by object [esc_novice_attacker1] (19ms)
+* xrSheduler: too much time consumed by object [esc_wolf] (19ms)
+sv ownership id_parent [149][stalker:esc_vagon_wounded] id_entity [869][medkit:esc_medkit] [2228]
+correction attempts 1
+* xrSheduler: too much time consumed by object [esc_vagon_wounded] (18ms)
+cl setDestroy [869][2229]
+correction attempts 1
+* xrSheduler: too much time consumed by object [esc_lager4] (19ms)
+* xrSheduler: too much time consumed by object [esc_dogs_swarm] (23ms)
+* xrSheduler: too much time consumed by object [esc_lager4] (18ms)
+[LSS][2309] Going offline [442021][esc_boar_weak_0001][745] ([-88.590599][-4.785057][-73.294502] : [-106.556480][-20.256487][-237.822327]), on '*SERVER*'
+cl setDestroy [745][2310]
+dumping client spawn manager stuff for object with id 745
+[LSS][2378] Going offline [452863][level_prefix_inventory_box_0016][950] ([-86.092087][-4.854040][-71.584602] : [-222.235443][-17.233898][-164.538834]), on '*SERVER*'
+cl setDestroy [950][2379]
+* xrSheduler: too much time consumed by object [esc_novice_attacker1] (16ms)
+[LSS][2395] Going offline [455847][esc_lager1][102] ([-82.427444][-5.516973][-66.929802] : [-226.096634][-20.234085][-148.321457]), on '*SERVER*'
+[LSS][2395] Going offline [455847][device_pda0103][103] with parent [102][esc_lager1] on '*SERVER*'
+[LSS][2395] Going offline [455847][ammo_12x70_buck0104][104] with parent [102][esc_lager1] on '*SERVER*'
+[LSS][2395] Going offline [455847][wpn_bm160105][105] with parent [102][esc_lager1] on '*SERVER*'
+[LSS][2395] Going offline [455847][conserva0106][106] with parent [102][esc_lager1] on '*SERVER*'
+cl setDestroy [14932][2396]
+cl setDestroy [106][2396]
+cl setDestroy [105][2396]
+cl setDestroy [104][2396]
+cl setDestroy [103][2396]
+cl setDestroy [102][2396]
+dumping client spawn manager stuff for object with id 102
+* WARNING: c_EVENT[18] to [105]: unknown dest
+* xrSheduler: too much time consumed by object [esc_dog_weak_0013] (53ms)
+* xrSheduler: too much time consumed by object [esc_lager3] (17ms)
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\physics\box\prt\box_metall_01_prt1.ogf
+skeleton: physics\box\prt\box_metall_01_prt1
+!!! 1 bones
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\physics\box\prt\box_metall_01_prt2.ogf
+skeleton: physics\box\prt\box_metall_01_prt2
+!!! 1 bones
+* xrSheduler: too much time consumed by object [esc_boar_weak_0003] (94ms)
+sv ownership id_parent [0][actor:single_player] id_entity [21035][bandage:bandage21035] [2488]
+sv ownership id_parent [0][actor:single_player] id_entity [21031][wpn_pb:wpn_pb21031] [2490]
+sv ownership id_parent [0][actor:single_player] id_entity [21037][bandage:bandage21037] [2495]
+sv ownership id_parent [0][actor:single_player] id_entity [21032][ammo_9x18_fmj:ammo_9x18_fmj21032] [2496]
+sv ownership id_parent [0][actor:single_player] id_entity [21033][ammo_9x18_fmj:ammo_9x18_fmj21033] [2497]
+sv ownership id_parent [0][actor:single_player] id_entity [21034][medkit:medkit21034] [2501]
+sv ownership id_parent [0][actor:single_player] id_entity [21036][bandage:bandage21036] [2503]
+* xrSheduler: too much time consumed by object [esc_wolf] (20ms)
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\physics\box\prt\box_wood_01_prt1.ogf
+skeleton: physics\box\prt\box_wood_01_prt1
+!!! 1 bones
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\physics\box\prt\box_wood_01_prt2.ogf
+skeleton: physics\box\prt\box_wood_01_prt2
+!!! 1 bones
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\physics\box\prt\box_wood_01_prt3.ogf
+skeleton: physics\box\prt\box_wood_01_prt3
+!!! 1 bones
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\physics\box\prt\box_wood_01_prt4.ogf
+skeleton: physics\box\prt\box_wood_01_prt4
+!!! 1 bones
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\physics\box\prt\box_wood_01_prt5.ogf
+skeleton: physics\box\prt\box_wood_01_prt5
+!!! 1 bones
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\physics\box\prt\box_wood_01_prt6.ogf
+skeleton: physics\box\prt\box_wood_01_prt6
+!!! 1 bones
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\physics\box\prt\box_wood_01_prt7.ogf
+skeleton: physics\box\prt\box_wood_01_prt7
+!!! 1 bones
+* xrSheduler: too much time consumed by object [esc_boar_weak_0003] (77ms)
+* xrSheduler: too much time consumed by object [esc_vagon_wounded] (16ms)
+cl setDestroy [21250][2647]
+cl setDestroy [21248][2647]
+cl setDestroy [21253][2647]
+cl setDestroy [21249][2647]
+cl setDestroy [21254][2648]
+cl setDestroy [21251][2648]
+cl setDestroy [21252][2648]
+* xrSheduler: too much time consumed by object [esc_novice_attacker3] (91ms)
+cl setDestroy [21256][2705]
+cl setDestroy [21257][2705]
+cl setDestroy [21255][2705]
+cl setDestroy [21258][2705]
+cl setDestroy [21260][2705]
+cl setDestroy [21259][2705]
+cl setDestroy [21261][2705]
+cl setDestroy [21507][2780]
+cl setDestroy [21510][2780]
+cl setDestroy [21504][2780]
+cl setDestroy [21506][2780]
+cl setDestroy [21505][2780]
+cl setDestroy [21508][2780]
+cl setDestroy [21509][2780]
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\equipments\bandit_suit.ogf
+skeleton: equipments\bandit_suit
+!!! 1 bones
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\physics\balon\kanistra.ogf
+skeleton: physics\balon\kanistra
+!!! 1 bones
+[LSS][2793] Going offline [526119][esc_dog_swarm_0001][474] ([-73.470490][-7.274501][-63.263721] : [74.244980][6.439245][594.344421]), on '*SERVER*'
+[LSS][2793] Going offline [526119][mutant_dog_tail0475][475] with parent [474][esc_dog_swarm_0001] on '*SERVER*'
+[LSS][2793] Going offline [526119][esc_dog_swarm_0002][476] ([-73.470490][-7.274501][-63.263721] : [90.178551][1.338025][535.673096]), on '*SERVER*'
+[LSS][2793] Going offline [526119][esc_dog_swarm_0004][477] ([-73.470490][-7.274501][-63.263721] : [73.559570][5.632404][588.751587]), on '*SERVER*'
+[LSS][2793] Going offline [526119][esc_dog_swarm_0007][478] ([-73.470490][-7.274501][-63.263721] : [90.126518][0.812526][526.680786]), on '*SERVER*'
+cl setDestroy [475][2794]
+cl setDestroy [474][2794]
+cl setDestroy [476][2794]
+cl setDestroy [477][2794]
+cl setDestroy [478][2794]
+dumping client spawn manager stuff for object with id 478
+dumping client spawn manager stuff for object with id 477
+dumping client spawn manager stuff for object with id 476
+dumping client spawn manager stuff for object with id 474
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\physics\equipment_cache\equipment_box_02_case.ogf
+skeleton: physics\equipment_cache\equipment_box_02_case
+!!! 1 bones
+cl setDestroy [21039][2808]
+cl setDestroy [21038][2808]
+[LSS][2814] Going offline [530257][level_prefix_inventory_box][957] ([-71.331436][-9.188546][-56.402565] : [-212.106659][-20.009113][-141.916840]), on '*SERVER*'
+cl setDestroy [957][2815]
+correction attempts 1
+correction attempts 1
+correction attempts 1
+correction attempts 1
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\monsters\dog\dog_red.ogf
+skeleton: monsters\dog\dog_red
+!!! 33 bones
+correction attempts 1
+[LSS][2822] Going offline [531692][level_prefix_inventory_box_0015][949] ([-69.983833][-9.551818][-53.914818] : [-216.023285][-15.905180][-130.656097]), on '*SERVER*'
+* xrSheduler: too much time consumed by object [esc_lager2] (73ms)
+cl setDestroy [949][2823]
+[LSS][2828] Going offline [532762][esc_lager5][123] ([-69.093636][-9.623611][-51.970505] : [-207.360626][-20.055246][-142.015640]), on '*SERVER*'
+[LSS][2828] Going offline [532762][device_pda0124][124] with parent [123][esc_lager5] on '*SERVER*'
+[LSS][2828] Going offline [532762][ammo_12x70_buck0125][125] with parent [123][esc_lager5] on '*SERVER*'
+[LSS][2828] Going offline [532762][wpn_bm160126][126] with parent [123][esc_lager5] on '*SERVER*'
+[LSS][2828] Going offline [532762][kolbasa0127][127] with parent [123][esc_lager5] on '*SERVER*'
+cl setDestroy [14936][2829]
+cl setDestroy [127][2829]
+cl setDestroy [126][2829]
+cl setDestroy [125][2829]
+cl setDestroy [124][2829]
+cl setDestroy [123][2829]
+dumping client spawn manager stuff for object with id 123
+* WARNING: c_EVENT[18] to [126]: unknown dest
+[LSS][2833] Going offline [533689][esc_lager7][133] ([-68.405220][-9.725851][-50.326744] : [-207.874466][-19.913515][-138.579056]), on '*SERVER*'
+[LSS][2833] Going offline [533689][device_pda0134][134] with parent [133][esc_lager7] on '*SERVER*'
+[LSS][2833] Going offline [533689][ammo_9x18_fmj0135][135] with parent [133][esc_lager7] on '*SERVER*'
+[LSS][2833] Going offline [533689][wpn_pm0136][136] with parent [133][esc_lager7] on '*SERVER*'
+cl setDestroy [14938][2834]
+cl setDestroy [136][2834]
+cl setDestroy [135][2834]
+cl setDestroy [134][2834]
+cl setDestroy [133][2834]
+dumping client spawn manager stuff for object with id 133
+[LSS][2836] Going offline [534353][esc_lager4][119] ([-67.993332][-9.779667][-49.339615] : [-208.817856][-19.789169][-135.344589]), on '*SERVER*'
+[LSS][2836] Going offline [534353][device_pda0120][120] with parent [119][esc_lager4] on '*SERVER*'
+[LSS][2836] Going offline [534353][ammo_12x70_buck0121][121] with parent [119][esc_lager4] on '*SERVER*'
+[LSS][2836] Going offline [534353][wpn_bm160122][122] with parent [119][esc_lager4] on '*SERVER*'
+[LSS][2836] Going offline [534353][esc_lager6][128] ([-67.993332][-9.779667][-49.339615] : [-205.552155][-19.991470][-139.991806]), on '*SERVER*'
+[LSS][2836] Going offline [534353][device_pda0129][129] with parent [128][esc_lager6] on '*SERVER*'
+[LSS][2836] Going offline [534353][ammo_9x18_fmj0130][130] with parent [128][esc_lager6] on '*SERVER*'
+[LSS][2836] Going offline [534353][device_torch0131][131] with parent [128][esc_lager6] on '*SERVER*'
+[LSS][2836] Going offline [534353][wpn_pm0132][132] with parent [128][esc_lager6] on '*SERVER*'
+[LSS][2836] Going offline [534353][esc_energy_drink_0010][668] ([-67.993332][-9.779667][-49.339615] : [-205.755066][-19.996273][-141.113876]), on '*SERVER*'
+cl setDestroy [14935][2837]
+cl setDestroy [122][2837]
+cl setDestroy [121][2837]
+cl setDestroy [120][2837]
+cl setDestroy [119][2837]
+cl setDestroy [14937][2837]
+cl setDestroy [132][2837]
+cl setDestroy [131][2837]
+cl setDestroy [130][2837]
+cl setDestroy [129][2837]
+cl setDestroy [128][2837]
+cl setDestroy [668][2837]
+dumping client spawn manager stuff for object with id 128
+dumping client spawn manager stuff for object with id 119
+* WARNING: c_EVENT[18] to [122]: unknown dest
+[LSS][2839] Going offline [535115][esc_bread_0001][710] ([-67.573013][-9.802160][-48.355724] : [-212.834213][-22.538206][-126.215874]), on '*SERVER*'
+[LSS][2839] Going offline [535115][esc_energy_drink_0009][711] ([-67.573013][-9.802160][-48.355724] : [-212.914291][-22.538206][-126.478127]), on '*SERVER*'
+cl setDestroy [710][2840]
+cl setDestroy [711][2840]
+[LSS][2842] Going offline [535632][esc_lager3][113] ([-67.157097][-9.792726][-47.369282] : [-201.862854][-20.123293][-143.572449]), on '*SERVER*'
+[LSS][2842] Going offline [535632][device_pda0114][114] with parent [113][esc_lager3] on '*SERVER*'
+[LSS][2842] Going offline [535632][ammo_9x18_fmj0115][115] with parent [113][esc_lager3] on '*SERVER*'
+[LSS][2842] Going offline [535632][device_torch0116][116] with parent [113][esc_lager3] on '*SERVER*'
+[LSS][2842] Going offline [535632][wpn_pm0117][117] with parent [113][esc_lager3] on '*SERVER*'
+[LSS][2842] Going offline [535632][bread0118][118] with parent [113][esc_lager3] on '*SERVER*'
+* xrSheduler: too much time consumed by object [esc_shustryi] (19ms)
+cl setDestroy [14934][2843]
+cl setDestroy [118][2843]
+cl setDestroy [117][2843]
+cl setDestroy [116][2843]
+cl setDestroy [115][2843]
+cl setDestroy [114][2843]
+cl setDestroy [113][2843]
+dumping client spawn manager stuff for object with id 113
+* WARNING: c_EVENT[18] to [117]: unknown dest
+correction attempts 1
+correction attempts 1
+correction attempts 1
+correction attempts 1
+shell for esc_dog_weak_0013[878] created in 2.111600 ms
+correction attempts 1
+* xrSheduler: too much time consumed by object [esc_blokpost_soldier9] (17ms)
+* xrSheduler: too much time consumed by object [esc_novice_attacker1] (17ms)
+* xrSheduler: too much time consumed by object [esc_specnaz6] (74ms)
+[LSS][3074] Going offline [571117][esc_vagon_wounded][149] ([-67.253830][-9.808998][-48.784309] : [-203.078415][-20.383411][-144.609360]), on '*SERVER*'
+[LSS][3074] Going offline [571117][device_pda0150][150] with parent [149][esc_vagon_wounded] on '*SERVER*'
+[LSS][3074] Going offline [571117][ammo_9x18_fmj0151][151] with parent [149][esc_vagon_wounded] on '*SERVER*'
+[LSS][3074] Going offline [571117][wpn_pm0152][152] with parent [149][esc_vagon_wounded] on '*SERVER*'
+cl setDestroy [21019][3075]
+cl setDestroy [152][3075]
+cl setDestroy [151][3075]
+cl setDestroy [150][3075]
+cl setDestroy [149][3075]
+dumping client spawn manager stuff for object with id 149
+* WARNING: c_EVENT[18] to [152]: unknown dest
+[LSS][3165] Going offline [582332][esc_wolf][137] ([-65.275574][-9.964980][-41.727211] : [-199.845947][-19.874994][-137.163666]), on '*SERVER*'
+[LSS][3165] Going offline [582332][device_pda0138][138] with parent [137][esc_wolf] on '*SERVER*'
+[LSS][3165] Going offline [582332][ammo_5.45x39_fmj0139][139] with parent [137][esc_wolf] on '*SERVER*'
+[LSS][3165] Going offline [582332][ammo_9x18_fmj0140][140] with parent [137][esc_wolf] on '*SERVER*'
+[LSS][3165] Going offline [582332][device_torch0141][141] with parent [137][esc_wolf] on '*SERVER*'
+[LSS][3165] Going offline [582332][hand_radio0142][142] with parent [137][esc_wolf] on '*SERVER*'
+[LSS][3165] Going offline [582332][wpn_ak74u0143][143] with parent [137][esc_wolf] on '*SERVER*'
+[LSS][3165] Going offline [582332][wpn_pm0144][144] with parent [137][esc_wolf] on '*SERVER*'
+cl setDestroy [14939][3166]
+cl setDestroy [144][3166]
+cl setDestroy [143][3166]
+cl setDestroy [142][3166]
+cl setDestroy [141][3166]
+cl setDestroy [140][3166]
+cl setDestroy [139][3166]
+cl setDestroy [138][3166]
+cl setDestroy [137][3166]
+dumping client spawn manager stuff for object with id 137
+* WARNING: c_EVENT[18] to [143]: unknown dest
+* xrSheduler: too much time consumed by object [particle_instance] (20ms)
+sv ownership id_parent [0][actor:single_player] id_entity [14975][medkit:medkit14975] [3217]
+correction attempts 1
+* xrSheduler: too much time consumed by object [esc_surprise_box_010] (72ms)
+* xrSheduler: too much time consumed by object [esc_novice_attacker2] (16ms)
+* xrSheduler: too much time consumed by object [esc_dog_weak_0016] (50ms)
+[LSS][3480] Going offline [620008][esc_dog_swarm_0001][474] ([-54.516438][-10.042540][-62.251141] : [143.093796][2.680465][430.149475]), on '*SERVER*'
+[LSS][3480] Going offline [620008][mutant_dog_tail0475][475] with parent [474][esc_dog_swarm_0001] on '*SERVER*'
+[LSS][3480] Going offline [620008][esc_dog_swarm_0002][476] ([-54.516438][-10.042540][-62.251141] : [109.158936][2.372167][431.626404]), on '*SERVER*'
+[LSS][3480] Going offline [620008][esc_dog_swarm_0004][477] ([-54.516438][-10.042540][-62.251141] : [127.385620][2.933052][412.064728]), on '*SERVER*'
+[LSS][3480] Going offline [620008][esc_dog_swarm_0007][478] ([-54.516438][-10.042540][-62.251141] : [138.066879][2.828122][405.850067]), on '*SERVER*'
+cl setDestroy [475][3481]
+cl setDestroy [474][3481]
+cl setDestroy [476][3481]
+cl setDestroy [477][3481]
+cl setDestroy [478][3481]
+dumping client spawn manager stuff for object with id 478
+dumping client spawn manager stuff for object with id 477
+dumping client spawn manager stuff for object with id 476
+dumping client spawn manager stuff for object with id 474
+* xrSheduler: too much time consumed by object [esc_dog_weak_0012] (46ms)
+* xrSheduler: too much time consumed by object [esc_boar_weak] (97ms)
+sv ownership id_parent [0][actor:single_player] id_entity [30493][ammo_9x18_fmj:ammo_9x18_fmj30493] [3553]
+* xrSheduler: too much time consumed by object [esc_dog_normal_0001] (20ms)
+* xrSheduler: too much time consumed by object [particle_instance] (16ms)
+sv ownership id_parent [0][actor:single_player] id_entity [661][energy_drink:esc_energy_drink] [3615]
+[LSS][3647] Going offline [649683][level_prefix_inventory_box_0017][951] ([-42.232880][-10.045377][-68.006668] : [-192.560211][-16.794201][-135.753693]), on '*SERVER*'
+cl setDestroy [951][3648]
+[LSS][3652] Going offline [650819][esc_conserva_0003][994] ([-40.471062][-10.060598][-68.287811] : [-193.370789][-19.444372][-130.009140]), on '*SERVER*'
+cl setDestroy [994][3653]
+- There are no sounds with prefix reactions\story\disbelief_story_
+- There are no sounds with prefix reactions\story\old_story_
+- There are no sounds with prefix reactions\box\box_
+- There are no sounds with prefix weather\bad_weather\bad_weather_
+- There are no sounds with prefix reactions\story\action_wrong_
+- There are no sounds with prefix reactions\story\disbelief_teller_
+- There are no sounds with prefix reactions\story\continue_
+- There are no sounds with prefix reactions\story\wonder_
+- There are no sounds with prefix reactions\story\cool_teller_
+- There are no sounds with prefix reactions\story\advice_sceptic_
+- There are no sounds with prefix reactions\story\yes_
+- There are no sounds with prefix reactions\story\disbelief_
+- There are no sounds with prefix hail\deleted_
+- There are no sounds with prefix reactions\story\final_happy_
+- There are no sounds with prefix help\wounded_thanx\thanx_
+- There are no sounds with prefix reactions\story\cool_info_
+- There are no sounds with prefix reactions\story\final_tragic_
+- There are no sounds with prefix reactions\story\belief_story_
+- There are no sounds with prefix reactions\story\fear_
+- There are no sounds with prefix reactions\story\action_right_
+- There are no sounds with prefix reactions\story\uncertain_
+- There are no sounds with prefix reactions\story\doubt_
+- There are no sounds with prefix reactions\story\advice_support_
+correction attempts 1
+- There are no sounds with prefix reactions\story\disbelief_story_
+- There are no sounds with prefix reactions\story\old_story_
+- There are no sounds with prefix reactions\box\box_
+- There are no sounds with prefix weather\bad_weather\bad_weather_
+- There are no sounds with prefix reactions\story\action_wrong_
+- There are no sounds with prefix reactions\story\disbelief_teller_
+- There are no sounds with prefix reactions\story\continue_
+- There are no sounds with prefix reactions\story\wonder_
+- There are no sounds with prefix reactions\story\cool_teller_
+- There are no sounds with prefix reactions\story\advice_sceptic_
+- There are no sounds with prefix reactions\story\yes_
+- There are no sounds with prefix reactions\story\disbelief_
+- There are no sounds with prefix hail\deleted_
+- There are no sounds with prefix reactions\story\final_happy_
+- There are no sounds with prefix reactions\story\cool_info_
+- There are no sounds with prefix reactions\story\final_tragic_
+- There are no sounds with prefix reactions\story\belief_story_
+- There are no sounds with prefix reactions\story\fear_
+- There are no sounds with prefix reactions\story\action_right_
+- There are no sounds with prefix reactions\story\uncertain_
+- There are no sounds with prefix reactions\story\doubt_
+- There are no sounds with prefix reactions\story\advice_support_
+correction attempts 1
+- Uncached model loading: c:\engine\shb-engine\debug-win32\..\gamedata\meshes\weapons\ammo\ammo_9x18_pmm.ogf
+skeleton: weapons\ammo\ammo_9x18_pmm
+!!! 1 bones
+correction attempts 1
+correction attempts 1
+[LSS][3705] Going offline [662638][esc_lager2][107] ([-21.841238][-9.229473][-68.663040] : [-166.828506][-19.940470][-147.682556]), on '*SERVER*'
+[LSS][3705] Going offline [662638][device_pda0108][108] with parent [107][esc_lager2] on '*SERVER*'
+[LSS][3705] Going offline [662638][ammo_9x18_fmj0109][109] with parent [107][esc_lager2] on '*SERVER*'
+[LSS][3705] Going offline [662638][device_torch0110][110] with parent [107][esc_lager2] on '*SERVER*'
+[LSS][3705] Going offline [662638][wpn_pm0111][111] with parent [107][esc_lager2] on '*SERVER*'
+[LSS][3705] Going offline [662638][bandage0112][112] with parent [107][esc_lager2] on '*SERVER*'
+* xrSheduler: too much time consumed by object [esc_specnaz5] (16ms)
+* xrSheduler: too much time consumed by object [esc_specnaz6] (17ms)
+cl setDestroy [14933][3706]
+cl setDestroy [112][3706]
+cl setDestroy [111][3706]
+cl setDestroy [110][3706]
+cl setDestroy [109][3706]
+cl setDestroy [108][3706]
+cl setDestroy [107][3706]
+dumping client spawn manager stuff for object with id 107
+* WARNING: c_EVENT[18] to [111]: unknown dest
+* xrSheduler: too much time consumed by object [esc_novice_attacker1] (21ms)
+[LSS][3722] Going offline [665223][esc_ammo_12x70_buck_0004][995] ([-15.817070][-8.612834][-68.305923] : [-167.698303][-20.012699][-132.711548]), on '*SERVER*'
+cl setDestroy [995][3723]
+correction attempts 1
+correction attempts 1
+correction attempts 1
+correction attempts 1
+correction attempts 1
+* xrSheduler: too much time consumed by object [esc_blokpost_soldier9] (20ms)
+correction attempts 1
+[LSS][3782] Going offline [675085][esc_dog_weak_0005][1068] ([4.873923][-3.638397][-66.143356] : [-88.953545][0.601723][73.628174]), on '*SERVER*'
+correction attempts 1
+cl setDestroy [1068][3783]
+dumping client spawn manager stuff for object with id 1068
+[LSS][3793] Going offline [676853][esc_dog_strong][838] ([7.401480][-3.168737][-65.818932] : [-96.976768][2.420111][63.909523]), on '*SERVER*'
+[LSS][3793] Going offline [676853][mutant_dog_tail0839][839] with parent [838][esc_dog_strong] on '*SERVER*'
+cl setDestroy [839][3794]
+cl setDestroy [838][3794]
+dumping client spawn manager stuff for object with id 838
+[LSS][3805] Going offline [678775][esc_dog_weak_0016][1070] ([7.399553][-3.167462][-65.817505] : [-51.176315][-2.621476][89.216064]), on '*SERVER*'
+cl setDestroy [1070][3806]
+dumping client spawn manager stuff for object with id 1070
+[LSS][3817] Going offline [680658][esc_dog_normal_0001][1071] ([7.399470][-3.167337][-65.817497] : [-94.931808][2.040440][66.874420]), on '*SERVER*'
+cl setDestroy [1071][3818]
+dumping client spawn manager stuff for object with id 1071
+cl setDestroy [30495][3884]
+cl setDestroy [30494][3884]
+[LSS][3984] Going offline [705284][level_prefix_inventory_box_0014][948] ([12.108897][-2.206596][-66.318741] : [-137.684906][-5.016699][2.819526]), on '*SERVER*'
+cl setDestroy [948][3985]
+* xrSheduler: too much time consumed by object [esc_dogs_swarm] (19ms)
+* xrSheduler: too much time consumed by object [esc_blokpost_soldier9] (19ms)
+* xrSheduler: too much time consumed by object [particle_instance] (16ms)
+[LSS][4058] Going offline [717155][level_prefix_inventory_box_0019][953] ([36.468929][-3.972605][-57.960602] : [-47.030075][-18.666636][-200.297409]), on '*SERVER*'
+cl setDestroy [953][4059]
+[LSS][4082] Going offline [720998][esc_dog_weak_0008][1069] ([43.163052][-7.500981][-53.968739] : [-75.371094][-2.983793][62.159290]), on '*SERVER*'
+cl setDestroy [1069][4083]
+dumping client spawn manager stuff for object with id 1069
+* xrSheduler: too much time consumed by object [esc_boar_weak_0003] (53ms)
+* xrSheduler: too much time consumed by object [esc_factory_bandit_7] (17ms)
+pause [ON] timer=[OFF] sound=[ON] reason=mm_activate1
+snd_emitters_[true] 2
+pause [ON] timer=[ON] sound=[OFF] reason=mm_activate2
+pause [OFF] timer=[ON] sound=[OFF] reason=mm_deactivate1
+pause [OFF] timer=[OFF] sound=[ON] reason=mm_deactivate2
+snd_emitters_[false] 1
+pause [ON] timer=[OFF] sound=[ON] reason=mm_activate1
+snd_emitters_[true] 2
+pause [ON] timer=[ON] sound=[OFF] reason=mm_activate2
+pause [OFF] timer=[ON] sound=[OFF] reason=mm_deactivate1
+pause [OFF] timer=[OFF] sound=[ON] reason=mm_deactivate2
+snd_emitters_[false] 1
+* xrSheduler: too much time consumed by object [esc_blokpost_soldier3] (80ms)
+Actor net_Save
+inherited::net_Save() : 6147
+m_pPhysics_support->in_NetSave() : 47
+* Saving spawns...
+* Saving objects...
+* 15279 objects are successfully saved
+* Game SovaHiBlack_quicksave.sav is successfully saved to file '..\app_data\savedgames\sovahiblack_quicksave.sav' (3465910 bytes compressed to 884505)
+Game save overhead  : 1376.420776 milliseconds
+Screenshot overhead : 0.003400 milliseconds
+~ Can't capture screen while in windowed mode...
+[LSS][4607] Going offline [746146][esc_boar_weak_0003][1174] ([50.763851][-9.875409][-49.676575] : [-98.743614][-7.032305][20.354069]), on '*SERVER*'
+CSE_ALifeDynamicObject::switch_offline: client_data is cleared for [1174][esc_boar_weak_0003]
+cl setDestroy [1174][4608]
+dumping client spawn manager stuff for object with id 1174
+* xrSheduler: too much time consumed by object [esc_surprise_box_027_0000] (16ms)
+- Play music track: music\amb01
+pause [ON] timer=[OFF] sound=[ON] reason=mm_activate1
+snd_emitters_[true] 2
+pause [ON] timer=[ON] sound=[OFF] reason=mm_activate2
+Actor net_Save
+inherited::net_Save() : 6147
+m_pPhysics_support->in_NetSave() : 47
+* Saving spawns...
+* Saving objects...
+* 15279 objects are successfully saved
+* Game 1.sav is successfully saved to file '..\app_data\savedgames\1.sav' (3466338 bytes compressed to 884776)
+Game save overhead  : 1374.319336 milliseconds
+Screenshot overhead : 0.028800 milliseconds
+~ Can't capture screen while in windowed mode...
+*ref -CRenderDevice::ResetTotal: DeviceREF: 3566
+t_material_surf 1
+t_envmap_0 - #small 2
+t_envmap_1 - #small 2
+t_noise_surf[it] 1
+t_noise_surf[it] 1
+t_noise_surf[it] 1
+t_noise_surf[it] 1
+g_accum_spot_ib 1
+g_accum_spot_vb 1
+g_accum_omnip_ib 1
+g_accum_omnip_vb 1
+g_accum_point_ib 1
+g_accum_point_vb 1
+* DVB created: 1536K
+* DIB created: 512K
+* created RT($user$position), 1024x768
+* created RT($user$normal), 1024x768
+* created RT($user$albedo), 1024x768
+* created RT($user$accum), 1024x768
+* created RT($user$generic0), 1024x768
+* created RT($user$generic1), 1024x768
+* created RT($user$smap_depth), 2048x2048
+* created RT($user$smap_surf), 2048x2048
+* created RT($user$bloom1), 256x256
+* created RT($user$bloom2), 256x256
+* created RT($user$lum_t64), 64x64
+* created RT($user$lum_t8), 8x8
+* created RT($user$luminance_0), 1x1
+* created RT($user$luminance_1), 1x1
+* created RT($user$luminance_2), 1x1
+* created RT($user$luminance_3), 1x1
+* GPU shading: vs(fffe0300/3.0/30), ps(ffff0300/3.0/30)
+* GPU vertex cache: recognized, 24
+*** RESET [0 ms]
+*ref +CRenderDevice::ResetTotal: DeviceREF: 3566
+* MEMORY USAGE: 837538 K
+~ Invalid syntax in call to 'r__tf_aniso'
+~ Valid arguments: integer value in range [1,16]
+pause [OFF] timer=[ON] sound=[OFF] reason=mm_deactivate1
+pause [OFF] timer=[OFF] sound=[ON] reason=mm_deactivate2
+snd_emitters_[false] 1
+*ref -CRenderDevice::ResetTotal: DeviceREF: 3566
+t_material_surf 1
+t_noise_surf[it] 1
+t_noise_surf[it] 1
+t_noise_surf[it] 1
+t_noise_surf[it] 1
+g_accum_spot_ib 1
+g_accum_spot_vb 1
+g_accum_omnip_ib 1
+g_accum_omnip_vb 1
+g_accum_point_ib 1
+g_accum_point_vb 1
+* DVB created: 1536K
+* DIB created: 512K
+* created RT($user$position), 1024x768
+* created RT($user$normal), 1024x768
+* created RT($user$albedo), 1024x768
+* created RT($user$accum), 1024x768
+* created RT($user$generic0), 1024x768
+* created RT($user$generic1), 1024x768
+* created RT($user$smap_depth), 2048x2048
+* created RT($user$smap_surf), 2048x2048
+* created RT($user$bloom1), 256x256
+* created RT($user$bloom2), 256x256
+* created RT($user$lum_t64), 64x64
+* created RT($user$lum_t8), 8x8
+* created RT($user$luminance_0), 1x1
+* created RT($user$luminance_1), 1x1
+* created RT($user$luminance_2), 1x1
+* created RT($user$luminance_3), 1x1
+* GPU shading: vs(fffe0300/3.0/30), ps(ffff0300/3.0/30)
+* GPU vertex cache: recognized, 24
+*** RESET [559 ms]
+*ref +CRenderDevice::ResetTotal: DeviceREF: 3566
+* xrSheduler: too much time consumed by object [esc_lager] (18ms)
+* MEMORY USAGE: 832759 K
+~ Invalid syntax in call to 'r__tf_aniso'
+~ Valid arguments: integer value in range [1,16]
+* xrSheduler: too much time consumed by object [esc_blokpost_soldier9] (17ms)
+[LSS][5392] Going offline [808620][esc_dog_swarm_0001][474] ([50.763855][-9.875409][-49.676575] : [81.691788][2.314863][554.494141]), on '*SERVER*'
+[LSS][5392] Going offline [808620][mutant_dog_tail0475][475] with parent [474][esc_dog_swarm_0001] on '*SERVER*'
+CSE_ALifeTraderAbstract::add_offline: client_data is cleared for [475][mutant_dog_tail0475]
+CSE_ALifeDynamicObject::switch_offline: client_data is cleared for [474][esc_dog_swarm_0001]
+[LSS][5392] Going offline [808620][esc_dog_swarm_0002][476] ([50.763855][-9.875409][-49.676575] : [83.002892][6.830468][595.139832]), on '*SERVER*'
+CSE_ALifeDynamicObject::switch_offline: client_data is cleared for [476][esc_dog_swarm_0002]
+[LSS][5392] Going offline [808620][esc_dog_swarm_0004][477] ([50.763855][-9.875409][-49.676575] : [91.456100][3.016867][559.057495]), on '*SERVER*'
+CSE_ALifeDynamicObject::switch_offline: client_data is cleared for [477][esc_dog_swarm_0004]
+[LSS][5392] Going offline [808620][esc_dog_swarm_0007][478] ([50.763855][-9.875409][-49.676575] : [97.267647][4.813162][577.163879]), on '*SERVER*'
+CSE_ALifeDynamicObject::switch_offline: client_data is cleared for [478][esc_dog_swarm_0007]
+cl setDestroy [475][5393]
+cl setDestroy [474][5393]
+cl setDestroy [476][5393]
+cl setDestroy [477][5393]
+cl setDestroy [478][5393]
+dumping client spawn manager stuff for object with id 478
+dumping client spawn manager stuff for object with id 477
+dumping client spawn manager stuff for object with id 476
+dumping client spawn manager stuff for object with id 474
+* xrSheduler: too much time consumed by object [esc_factory_bandit4] (74ms)
+pause [ON] timer=[OFF] sound=[ON] reason=mm_activate1
+snd_emitters_[true] 2
+pause [ON] timer=[ON] sound=[OFF] reason=mm_activate2
+- Disconnect
+cl setDestroy [661][5540]
+cl setDestroy [30493][5540]
+cl setDestroy [30491][5540]
+cl setDestroy [14975][5540]
+cl setDestroy [21036][5540]
+cl setDestroy [21034][5540]
+cl setDestroy [21033][5540]
+cl setDestroy [21032][5540]
+cl setDestroy [21037][5540]
+cl setDestroy [21031][5540]
+cl setDestroy [21035][5540]
+cl setDestroy [21027][5540]
+cl setDestroy [21026][5540]
+cl setDestroy [21025][5540]
+cl setDestroy [21024][5540]
+cl setDestroy [14931][5540]
+cl setDestroy [68][5540]
+cl setDestroy [67][5540]
+cl setDestroy [66][5540]
+cl setDestroy [65][5540]
+cl setDestroy [64][5540]
+cl setDestroy [0][5540]
+cl setDestroy [1][5540]
+cl setDestroy [2][5540]
+cl setDestroy [3][5540]
+cl setDestroy [4][5540]
+cl setDestroy [5][5540]
+cl setDestroy [6][5540]
+cl setDestroy [7][5540]
+cl setDestroy [8][5540]
+cl setDestroy [9][5540]
+cl setDestroy [10][5540]
+cl setDestroy [11][5540]
+cl setDestroy [12][5540]
+cl setDestroy [13][5540]
+cl setDestroy [14][5540]
+cl setDestroy [15][5540]
+cl setDestroy [16][5540]
+cl setDestroy [17][5540]
+cl setDestroy [18][5540]
+cl setDestroy [19][5540]
+cl setDestroy [20][5540]
+cl setDestroy [21][5540]
+cl setDestroy [22][5540]
+cl setDestroy [23][5540]
+cl setDestroy [24][5540]
+cl setDestroy [25][5540]
+cl setDestroy [26][5540]
+cl setDestroy [27][5540]
+cl setDestroy [28][5540]
+cl setDestroy [29][5540]
+cl setDestroy [30][5540]
+cl setDestroy [31][5540]
+cl setDestroy [32][5540]
+cl setDestroy [33][5540]
+cl setDestroy [34][5540]
+cl setDestroy [35][5540]
+cl setDestroy [36][5540]
+cl setDestroy [37][5540]
+cl setDestroy [38][5540]
+cl setDestroy [39][5540]
+cl setDestroy [40][5540]
+cl setDestroy [41][5540]
+cl setDestroy [42][5540]
+cl setDestroy [43][5540]
+cl setDestroy [44][5540]
+cl setDestroy [45][5540]
+cl setDestroy [46][5540]
+cl setDestroy [47][5540]
+cl setDestroy [48][5540]
+cl setDestroy [49][5540]
+cl setDestroy [50][5540]
+cl setDestroy [51][5540]
+cl setDestroy [52][5540]
+cl setDestroy [53][5540]
+cl setDestroy [54][5540]
+cl setDestroy [55][5540]
+cl setDestroy [56][5540]
+cl setDestroy [57][5540]
+cl setDestroy [58][5540]
+cl setDestroy [59][5540]
+cl setDestroy [60][5540]
+cl setDestroy [61][5540]
+cl setDestroy [62][5540]
+cl setDestroy [63][5540]
+cl setDestroy [69][5540]
+cl setDestroy [70][5540]
+cl setDestroy [71][5540]
+cl setDestroy [72][5540]
+cl setDestroy [73][5540]
+cl setDestroy [74][5540]
+cl setDestroy [75][5540]
+cl setDestroy [76][5540]
+cl setDestroy [77][5540]
+cl setDestroy [78][5540]
+cl setDestroy [79][5540]
+cl setDestroy [80][5540]
+cl setDestroy [81][5540]
+cl setDestroy [82][5540]
+cl setDestroy [83][5540]
+cl setDestroy [84][5540]
+cl setDestroy [85][5540]
+cl setDestroy [86][5540]
+cl setDestroy [87][5540]
+cl setDestroy [88][5540]
+cl setDestroy [14997][5540]
+cl setDestroy [14996][5540]
+cl setDestroy [14995][5540]
+cl setDestroy [14994][5540]
+cl setDestroy [14993][5540]
+cl setDestroy [14992][5540]
+cl setDestroy [14991][5540]
+cl setDestroy [14990][5540]
+cl setDestroy [14989][5540]
+cl setDestroy [14988][5540]
+cl setDestroy [14987][5540]
+cl setDestroy [14986][5540]
+cl setDestroy [14985][5540]
+cl setDestroy [14984][5540]
+cl setDestroy [14983][5540]
+cl setDestroy [14982][5540]
+cl setDestroy [14981][5540]
+cl setDestroy [14980][5540]
+cl setDestroy [14979][5540]
+cl setDestroy [14978][5540]
+cl setDestroy [92][5540]
+cl setDestroy [89][5540]
+cl setDestroy [94][5540]
+cl setDestroy [95][5540]
+cl setDestroy [96][5540]
+cl setDestroy [97][5540]
+cl setDestroy [98][5540]
+cl setDestroy [99][5540]
+cl setDestroy [100][5540]
+cl setDestroy [101][5540]
+cl setDestroy [145][5540]
+cl setDestroy [146][5540]
+cl setDestroy [147][5540]
+cl setDestroy [148][5540]
+cl setDestroy [153][5540]
+cl setDestroy [14943][5540]
+cl setDestroy [14942][5540]
+cl setDestroy [14941][5540]
+cl setDestroy [14940][5540]
+cl setDestroy [154][5540]
+cl setDestroy [155][5540]
+cl setDestroy [21028][5540]
+cl setDestroy [174][5540]
+cl setDestroy [173][5540]
+cl setDestroy [172][5540]
+cl setDestroy [171][5540]
+cl setDestroy [170][5540]
+cl setDestroy [169][5540]
+cl setDestroy [21029][5540]
+cl setDestroy [179][5540]
+cl setDestroy [178][5540]
+cl setDestroy [177][5540]
+cl setDestroy [176][5540]
+cl setDestroy [175][5540]
+cl setDestroy [21030][5540]
+cl setDestroy [184][5540]
+cl setDestroy [183][5540]
+cl setDestroy [182][5540]
+cl setDestroy [181][5540]
+cl setDestroy [180][5540]
+cl setDestroy [185][5540]
+cl setDestroy [30726][5540]
+cl setDestroy [189][5540]
+cl setDestroy [188][5540]
+cl setDestroy [187][5540]
+cl setDestroy [186][5540]
+cl setDestroy [30725][5540]
+cl setDestroy [193][5540]
+cl setDestroy [192][5540]
+cl setDestroy [191][5540]
+cl setDestroy [190][5540]
+cl setDestroy [30724][5540]
+cl setDestroy [198][5540]
+cl setDestroy [197][5540]
+cl setDestroy [196][5540]
+cl setDestroy [195][5540]
+cl setDestroy [194][5540]
+cl setDestroy [30721][5540]
+cl setDestroy [203][5540]
+cl setDestroy [202][5540]
+cl setDestroy [201][5540]
+cl setDestroy [200][5540]
+cl setDestroy [199][5540]
+cl setDestroy [30720][5540]
+cl setDestroy [207][5540]
+cl setDestroy [206][5540]
+cl setDestroy [205][5540]
+cl setDestroy [204][5540]
+cl setDestroy [30722][5540]
+cl setDestroy [213][5540]
+cl setDestroy [212][5540]
+cl setDestroy [211][5540]
+cl setDestroy [210][5540]
+cl setDestroy [209][5540]
+cl setDestroy [208][5540]
+cl setDestroy [214][5540]
+cl setDestroy [30723][5540]
+cl setDestroy [218][5540]
+cl setDestroy [217][5540]
+cl setDestroy [216][5540]
+cl setDestroy [215][5540]
+cl setDestroy [219][5540]
+cl setDestroy [220][5540]
+cl setDestroy [221][5540]
+cl setDestroy [222][5540]
+cl setDestroy [237][5540]
+cl setDestroy [245][5540]
+cl setDestroy [250][5540]
+cl setDestroy [251][5540]
+cl setDestroy [252][5540]
+cl setDestroy [253][5540]
+cl setDestroy [254][5540]
+cl setDestroy [255][5540]
+cl setDestroy [256][5540]
+cl setDestroy [257][5540]
+cl setDestroy [258][5540]
+cl setDestroy [259][5540]
+cl setDestroy [260][5540]
+cl setDestroy [261][5540]
+cl setDestroy [262][5540]
+cl setDestroy [263][5540]
+cl setDestroy [264][5540]
+cl setDestroy [265][5540]
+cl setDestroy [266][5540]
+cl setDestroy [267][5540]
+cl setDestroy [268][5540]
+cl setDestroy [269][5540]
+cl setDestroy [270][5540]
+cl setDestroy [304][5540]
+cl setDestroy [14944][5540]
+cl setDestroy [311][5540]
+cl setDestroy [310][5540]
+cl setDestroy [309][5540]
+cl setDestroy [308][5540]
+cl setDestroy [307][5540]
+cl setDestroy [306][5540]
+cl setDestroy [305][5540]
+cl setDestroy [14945][5540]
+cl setDestroy [318][5540]
+cl setDestroy [317][5540]
+cl setDestroy [316][5540]
+cl setDestroy [315][5540]
+cl setDestroy [314][5540]
+cl setDestroy [313][5540]
+cl setDestroy [312][5540]
+cl setDestroy [14946][5540]
+cl setDestroy [325][5540]
+cl setDestroy [324][5540]
+cl setDestroy [323][5540]
+cl setDestroy [322][5540]
+cl setDestroy [321][5540]
+cl setDestroy [320][5540]
+cl setDestroy [319][5540]
+cl setDestroy [14947][5540]
+cl setDestroy [332][5540]
+cl setDestroy [331][5540]
+cl setDestroy [330][5540]
+cl setDestroy [329][5540]
+cl setDestroy [328][5540]
+cl setDestroy [327][5540]
+cl setDestroy [326][5540]
+cl setDestroy [14948][5540]
+cl setDestroy [339][5540]
+cl setDestroy [338][5540]
+cl setDestroy [337][5540]
+cl setDestroy [336][5540]
+cl setDestroy [335][5540]
+cl setDestroy [334][5540]
+cl setDestroy [333][5540]
+cl setDestroy [14949][5540]
+cl setDestroy [346][5540]
+cl setDestroy [345][5540]
+cl setDestroy [344][5540]
+cl setDestroy [343][5540]
+cl setDestroy [342][5540]
+cl setDestroy [341][5540]
+cl setDestroy [340][5540]
+cl setDestroy [14950][5540]
+cl setDestroy [353][5540]
+cl setDestroy [352][5540]
+cl setDestroy [351][5540]
+cl setDestroy [350][5540]
+cl setDestroy [349][5540]
+cl setDestroy [348][5540]
+cl setDestroy [347][5540]
+cl setDestroy [14951][5540]
+cl setDestroy [359][5540]
+cl setDestroy [358][5540]
+cl setDestroy [357][5540]
+cl setDestroy [356][5540]
+cl setDestroy [355][5540]
+cl setDestroy [354][5540]
+cl setDestroy [14952][5540]
+cl setDestroy [365][5540]
+cl setDestroy [364][5540]
+cl setDestroy [363][5540]
+cl setDestroy [362][5540]
+cl setDestroy [361][5540]
+cl setDestroy [360][5540]
+cl setDestroy [14953][5540]
+cl setDestroy [371][5540]
+cl setDestroy [370][5540]
+cl setDestroy [369][5540]
+cl setDestroy [368][5540]
+cl setDestroy [367][5540]
+cl setDestroy [366][5540]
+cl setDestroy [14954][5540]
+cl setDestroy [378][5540]
+cl setDestroy [377][5540]
+cl setDestroy [376][5540]
+cl setDestroy [375][5540]
+cl setDestroy [374][5540]
+cl setDestroy [373][5540]
+cl setDestroy [372][5540]
+cl setDestroy [14955][5540]
+cl setDestroy [384][5540]
+cl setDestroy [383][5540]
+cl setDestroy [382][5540]
+cl setDestroy [381][5540]
+cl setDestroy [380][5540]
+cl setDestroy [379][5540]
+cl setDestroy [14956][5540]
+cl setDestroy [390][5540]
+cl setDestroy [389][5540]
+cl setDestroy [388][5540]
+cl setDestroy [387][5540]
+cl setDestroy [386][5540]
+cl setDestroy [385][5540]
+cl setDestroy [14957][5540]
+cl setDestroy [397][5540]
+cl setDestroy [396][5540]
+cl setDestroy [395][5540]
+cl setDestroy [394][5540]
+cl setDestroy [393][5540]
+cl setDestroy [392][5540]
+cl setDestroy [391][5540]
+cl setDestroy [14958][5540]
+cl setDestroy [404][5540]
+cl setDestroy [403][5540]
+cl setDestroy [402][5540]
+cl setDestroy [401][5540]
+cl setDestroy [400][5540]
+cl setDestroy [399][5540]
+cl setDestroy [398][5540]
+cl setDestroy [14959][5540]
+cl setDestroy [410][5540]
+cl setDestroy [409][5540]
+cl setDestroy [408][5540]
+cl setDestroy [407][5540]
+cl setDestroy [406][5540]
+cl setDestroy [405][5540]
+cl setDestroy [411][5540]
+cl setDestroy [412][5540]
+cl setDestroy [419][5540]
+cl setDestroy [420][5540]
+cl setDestroy [14998][5540]
+cl setDestroy [14960][5540]
+cl setDestroy [468][5540]
+cl setDestroy [464][5540]
+cl setDestroy [469][5540]
+cl setDestroy [470][5540]
+cl setDestroy [473][5540]
+cl setDestroy [479][5540]
+cl setDestroy [480][5540]
+cl setDestroy [481][5540]
+cl setDestroy [482][5540]
+cl setDestroy [483][5540]
+cl setDestroy [484][5540]
+cl setDestroy [485][5540]
+cl setDestroy [486][5540]
+cl setDestroy [487][5540]
+cl setDestroy [488][5540]
+cl setDestroy [489][5540]
+cl setDestroy [490][5540]
+cl setDestroy [491][5540]
+cl setDestroy [492][5540]
+cl setDestroy [493][5540]
+cl setDestroy [494][5540]
+cl setDestroy [495][5540]
+cl setDestroy [496][5540]
+cl setDestroy [497][5540]
+cl setDestroy [498][5540]
+cl setDestroy [499][5540]
+cl setDestroy [500][5540]
+cl setDestroy [501][5540]
+cl setDestroy [502][5540]
+cl setDestroy [503][5540]
+cl setDestroy [504][5540]
+cl setDestroy [505][5540]
+cl setDestroy [506][5540]
+cl setDestroy [507][5540]
+cl setDestroy [508][5540]
+cl setDestroy [509][5540]
+cl setDestroy [510][5540]
+cl setDestroy [511][5540]
+cl setDestroy [512][5540]
+cl setDestroy [513][5540]
+cl setDestroy [514][5540]
+cl setDestroy [515][5540]
+cl setDestroy [516][5540]
+cl setDestroy [517][5540]
+cl setDestroy [518][5540]
+cl setDestroy [519][5540]
+cl setDestroy [523][5540]
+cl setDestroy [524][5540]
+cl setDestroy [525][5540]
+cl setDestroy [526][5540]
+cl setDestroy [527][5540]
+cl setDestroy [528][5540]
+cl setDestroy [529][5540]
+cl setDestroy [530][5540]
+cl setDestroy [531][5540]
+cl setDestroy [532][5540]
+cl setDestroy [533][5540]
+cl setDestroy [534][5540]
+cl setDestroy [535][5540]
+cl setDestroy [536][5540]
+cl setDestroy [537][5540]
+cl setDestroy [538][5540]
+cl setDestroy [539][5540]
+cl setDestroy [540][5540]
+cl setDestroy [541][5540]
+cl setDestroy [542][5540]
+cl setDestroy [543][5540]
+cl setDestroy [544][5540]
+cl setDestroy [545][5540]
+cl setDestroy [546][5540]
+cl setDestroy [548][5540]
+cl setDestroy [549][5540]
+cl setDestroy [14961][5540]
+cl setDestroy [550][5540]
+cl setDestroy [552][5540]
+cl setDestroy [553][5540]
+cl setDestroy [554][5540]
+cl setDestroy [555][5540]
+cl setDestroy [556][5540]
+cl setDestroy [557][5540]
+cl setDestroy [558][5540]
+cl setDestroy [559][5540]
+cl setDestroy [560][5540]
+cl setDestroy [568][5540]
+cl setDestroy [569][5540]
+cl setDestroy [570][5540]
+cl setDestroy [571][5540]
+cl setDestroy [572][5540]
+cl setDestroy [573][5540]
+cl setDestroy [574][5540]
+cl setDestroy [575][5540]
+cl setDestroy [576][5540]
+cl setDestroy [577][5540]
+cl setDestroy [578][5540]
+cl setDestroy [579][5540]
+cl setDestroy [580][5540]
+cl setDestroy [581][5540]
+cl setDestroy [582][5540]
+cl setDestroy [583][5540]
+cl setDestroy [584][5540]
+cl setDestroy [585][5540]
+cl setDestroy [586][5540]
+cl setDestroy [587][5540]
+cl setDestroy [588][5540]
+cl setDestroy [589][5540]
+cl setDestroy [590][5540]
+cl setDestroy [591][5540]
+cl setDestroy [592][5540]
+cl setDestroy [593][5540]
+cl setDestroy [594][5540]
+cl setDestroy [595][5540]
+cl setDestroy [596][5540]
+cl setDestroy [597][5540]
+cl setDestroy [598][5540]
+cl setDestroy [599][5540]
+cl setDestroy [600][5540]
+cl setDestroy [601][5540]
+cl setDestroy [602][5540]
+cl setDestroy [603][5540]
+cl setDestroy [604][5540]
+cl setDestroy [605][5540]
+cl setDestroy [606][5540]
+cl setDestroy [607][5540]
+cl setDestroy [608][5540]
+cl setDestroy [609][5540]
+cl setDestroy [610][5540]
+cl setDestroy [611][5540]
+cl setDestroy [612][5540]
+cl setDestroy [613][5540]
+cl setDestroy [614][5540]
+cl setDestroy [615][5540]
+cl setDestroy [616][5540]
+cl setDestroy [617][5540]
+cl setDestroy [618][5540]
+cl setDestroy [619][5540]
+cl setDestroy [620][5540]
+cl setDestroy [621][5540]
+cl setDestroy [622][5540]
+cl setDestroy [623][5540]
+cl setDestroy [624][5540]
+cl setDestroy [625][5540]
+cl setDestroy [626][5540]
+cl setDestroy [627][5540]
+cl setDestroy [628][5540]
+cl setDestroy [629][5540]
+cl setDestroy [630][5540]
+cl setDestroy [631][5540]
+cl setDestroy [632][5540]
+cl setDestroy [633][5540]
+cl setDestroy [634][5540]
+cl setDestroy [635][5540]
+cl setDestroy [636][5540]
+cl setDestroy [648][5540]
+cl setDestroy [649][5540]
+cl setDestroy [650][5540]
+cl setDestroy [651][5540]
+cl setDestroy [652][5540]
+cl setDestroy [653][5540]
+cl setDestroy [654][5540]
+cl setDestroy [655][5540]
+cl setDestroy [656][5540]
+cl setDestroy [657][5540]
+cl setDestroy [658][5540]
+cl setDestroy [659][5540]
+cl setDestroy [660][5540]
+cl setDestroy [669][5540]
+cl setDestroy [670][5540]
+cl setDestroy [671][5540]
+cl setDestroy [672][5540]
+cl setDestroy [673][5540]
+cl setDestroy [674][5540]
+cl setDestroy [675][5540]
+cl setDestroy [676][5540]
+cl setDestroy [677][5540]
+cl setDestroy [678][5540]
+cl setDestroy [693][5540]
+cl setDestroy [694][5540]
+cl setDestroy [696][5540]
+cl setDestroy [697][5540]
+cl setDestroy [698][5540]
+cl setDestroy [699][5540]
+cl setDestroy [14974][5540]
+cl setDestroy [14973][5540]
+cl setDestroy [14962][5540]
+cl setDestroy [700][5540]
+cl setDestroy [14972][5540]
+cl setDestroy [14971][5540]
+cl setDestroy [14963][5540]
+cl setDestroy [702][5540]
+cl setDestroy [14970][5540]
+cl setDestroy [14969][5540]
+cl setDestroy [14964][5540]
+cl setDestroy [704][5540]
+cl setDestroy [707][5540]
+cl setDestroy [708][5540]
+cl setDestroy [709][5540]
+cl setDestroy [712][5540]
+cl setDestroy [713][5540]
+cl setDestroy [714][5540]
+cl setDestroy [715][5540]
+cl setDestroy [716][5540]
+cl setDestroy [717][5540]
+cl setDestroy [721][5540]
+cl setDestroy [726][5540]
+cl setDestroy [727][5540]
+cl setDestroy [728][5540]
+cl setDestroy [729][5540]
+cl setDestroy [14965][5540]
+cl setDestroy [734][5540]
+cl setDestroy [733][5540]
+cl setDestroy [732][5540]
+cl setDestroy [731][5540]
+cl setDestroy [730][5540]
+cl setDestroy [21018][5540]
+cl setDestroy [735][5540]
+cl setDestroy [737][5540]
+cl setDestroy [743][5540]
+cl setDestroy [744][5540]
+cl setDestroy [14966][5540]
+cl setDestroy [747][5540]
+cl setDestroy [749][5540]
+cl setDestroy [750][5540]
+cl setDestroy [751][5540]
+cl setDestroy [752][5540]
+cl setDestroy [760][5540]
+cl setDestroy [761][5540]
+cl setDestroy [762][5540]
+cl setDestroy [763][5540]
+cl setDestroy [764][5540]
+cl setDestroy [765][5540]
+cl setDestroy [766][5540]
+cl setDestroy [767][5540]
+cl setDestroy [768][5540]
+cl setDestroy [769][5540]
+cl setDestroy [770][5540]
+cl setDestroy [771][5540]
+cl setDestroy [772][5540]
+cl setDestroy [773][5540]
+cl setDestroy [774][5540]
+cl setDestroy [775][5540]
+cl setDestroy [776][5540]
+cl setDestroy [777][5540]
+cl setDestroy [778][5540]
+cl setDestroy [780][5540]
+cl setDestroy [781][5540]
+cl setDestroy [782][5540]
+cl setDestroy [783][5540]
+cl setDestroy [784][5540]
+cl setDestroy [785][5540]
+cl setDestroy [786][5540]
+cl setDestroy [787][5540]
+cl setDestroy [788][5540]
+cl setDestroy [789][5540]
+cl setDestroy [790][5540]
+cl setDestroy [791][5540]
+cl setDestroy [792][5540]
+cl setDestroy [793][5540]
+cl setDestroy [794][5540]
+cl setDestroy [795][5540]
+cl setDestroy [796][5540]
+cl setDestroy [797][5540]
+cl setDestroy [798][5540]
+cl setDestroy [799][5540]
+cl setDestroy [800][5540]
+cl setDestroy [801][5540]
+cl setDestroy [802][5540]
+cl setDestroy [803][5540]
+cl setDestroy [804][5540]
+cl setDestroy [805][5540]
+cl setDestroy [806][5540]
+cl setDestroy [807][5540]
+cl setDestroy [808][5540]
+cl setDestroy [809][5540]
+cl setDestroy [810][5540]
+cl setDestroy [811][5540]
+cl setDestroy [812][5540]
+cl setDestroy [813][5540]
+cl setDestroy [814][5540]
+cl setDestroy [815][5540]
+cl setDestroy [816][5540]
+cl setDestroy [817][5540]
+cl setDestroy [818][5540]
+cl setDestroy [819][5540]
+cl setDestroy [820][5540]
+cl setDestroy [821][5540]
+cl setDestroy [822][5540]
+cl setDestroy [823][5540]
+cl setDestroy [824][5540]
+cl setDestroy [825][5540]
+cl setDestroy [826][5540]
+cl setDestroy [827][5540]
+cl setDestroy [828][5540]
+cl setDestroy [829][5540]
+cl setDestroy [830][5540]
+cl setDestroy [831][5540]
+cl setDestroy [832][5540]
+cl setDestroy [833][5540]
+cl setDestroy [834][5540]
+cl setDestroy [835][5540]
+cl setDestroy [836][5540]
+cl setDestroy [837][5540]
+cl setDestroy [845][5540]
+cl setDestroy [846][5540]
+cl setDestroy [847][5540]
+cl setDestroy [848][5540]
+cl setDestroy [849][5540]
+cl setDestroy [850][5540]
+cl setDestroy [851][5540]
+cl setDestroy [852][5540]
+cl setDestroy [853][5540]
+cl setDestroy [854][5540]
+cl setDestroy [855][5540]
+cl setDestroy [856][5540]
+cl setDestroy [857][5540]
+cl setDestroy [858][5540]
+cl setDestroy [859][5540]
+cl setDestroy [860][5540]
+cl setDestroy [861][5540]
+cl setDestroy [862][5540]
+cl setDestroy [14977][5540]
+cl setDestroy [14976][5540]
+cl setDestroy [14967][5540]
+cl setDestroy [873][5540]
+cl setDestroy [870][5540]
+cl setDestroy [14968][5540]
+cl setDestroy [874][5540]
+cl setDestroy [876][5540]
+cl setDestroy [877][5540]
+cl setDestroy [878][5540]
+cl setDestroy [879][5540]
+cl setDestroy [880][5540]
+cl setDestroy [882][5540]
+cl setDestroy [883][5540]
+cl setDestroy [884][5540]
+cl setDestroy [885][5540]
+cl setDestroy [886][5540]
+cl setDestroy [887][5540]
+cl setDestroy [888][5540]
+cl setDestroy [889][5540]
+cl setDestroy [890][5540]
+cl setDestroy [891][5540]
+cl setDestroy [892][5540]
+cl setDestroy [893][5540]
+cl setDestroy [894][5540]
+cl setDestroy [895][5540]
+cl setDestroy [896][5540]
+cl setDestroy [897][5540]
+cl setDestroy [898][5540]
+cl setDestroy [899][5540]
+cl setDestroy [900][5540]
+cl setDestroy [901][5540]
+cl setDestroy [902][5540]
+cl setDestroy [903][5540]
+cl setDestroy [904][5540]
+cl setDestroy [905][5540]
+cl setDestroy [906][5540]
+cl setDestroy [907][5540]
+cl setDestroy [908][5540]
+cl setDestroy [909][5540]
+cl setDestroy [910][5540]
+cl setDestroy [911][5540]
+cl setDestroy [912][5540]
+cl setDestroy [913][5540]
+cl setDestroy [914][5540]
+cl setDestroy [915][5540]
+cl setDestroy [916][5540]
+cl setDestroy [917][5540]
+cl setDestroy [918][5540]
+cl setDestroy [919][5540]
+cl setDestroy [920][5540]
+cl setDestroy [921][5540]
+cl setDestroy [922][5540]
+cl setDestroy [923][5540]
+cl setDestroy [924][5540]
+cl setDestroy [925][5540]
+cl setDestroy [926][5540]
+cl setDestroy [927][5540]
+cl setDestroy [931][5540]
+cl setDestroy [932][5540]
+cl setDestroy [933][5540]
+cl setDestroy [934][5540]
+cl setDestroy [935][5540]
+cl setDestroy [936][5540]
+cl setDestroy [937][5540]
+cl setDestroy [942][5540]
+cl setDestroy [947][5540]
+cl setDestroy [954][5540]
+cl setDestroy [958][5540]
+cl setDestroy [963][5540]
+cl setDestroy [964][5540]
+cl setDestroy [965][5540]
+cl setDestroy [966][5540]
+cl setDestroy [967][5540]
+cl setDestroy [968][5540]
+cl setDestroy [969][5540]
+cl setDestroy [970][5540]
+cl setDestroy [971][5540]
+cl setDestroy [972][5540]
+cl setDestroy [973][5540]
+cl setDestroy [974][5540]
+cl setDestroy [975][5540]
+cl setDestroy [976][5540]
+cl setDestroy [977][5540]
+cl setDestroy [978][5540]
+cl setDestroy [979][5540]
+cl setDestroy [980][5540]
+cl setDestroy [981][5540]
+cl setDestroy [982][5540]
+cl setDestroy [983][5540]
+cl setDestroy [984][5540]
+cl setDestroy [985][5540]
+cl setDestroy [986][5540]
+cl setDestroy [987][5540]
+cl setDestroy [988][5540]
+cl setDestroy [989][5540]
+cl setDestroy [990][5540]
+cl setDestroy [991][5540]
+cl setDestroy [993][5540]
+cl setDestroy [996][5540]
+cl setDestroy [997][5540]
+cl setDestroy [998][5540]
+cl setDestroy [999][5540]
+cl setDestroy [1000][5540]
+cl setDestroy [1001][5540]
+cl setDestroy [1002][5540]
+cl setDestroy [1003][5540]
+cl setDestroy [1004][5540]
+cl setDestroy [1005][5540]
+cl setDestroy [1006][5540]
+cl setDestroy [1007][5540]
+cl setDestroy [1008][5540]
+cl setDestroy [1009][5540]
+cl setDestroy [1010][5540]
+cl setDestroy [1011][5540]
+cl setDestroy [1012][5540]
+cl setDestroy [1013][5540]
+cl setDestroy [1014][5540]
+cl setDestroy [1015][5540]
+cl setDestroy [1016][5540]
+cl setDestroy [1017][5540]
+cl setDestroy [1018][5540]
+cl setDestroy [1019][5540]
+cl setDestroy [1020][5540]
+cl setDestroy [1021][5540]
+cl setDestroy [1022][5540]
+cl setDestroy [1023][5540]
+cl setDestroy [1024][5540]
+cl setDestroy [1025][5540]
+cl setDestroy [1026][5540]
+cl setDestroy [1027][5540]
+cl setDestroy [1028][5540]
+cl setDestroy [1029][5540]
+cl setDestroy [1030][5540]
+cl setDestroy [1031][5540]
+cl setDestroy [1032][5540]
+cl setDestroy [1033][5540]
+cl setDestroy [1034][5540]
+cl setDestroy [1035][5540]
+cl setDestroy [1036][5540]
+cl setDestroy [1037][5540]
+cl setDestroy [1038][5540]
+cl setDestroy [1039][5540]
+cl setDestroy [1040][5540]
+cl setDestroy [1041][5540]
+cl setDestroy [1042][5540]
+cl setDestroy [1043][5540]
+cl setDestroy [1044][5540]
+cl setDestroy [1045][5540]
+cl setDestroy [1046][5540]
+cl setDestroy [1047][5540]
+cl setDestroy [1048][5540]
+cl setDestroy [1049][5540]
+cl setDestroy [1050][5540]
+cl setDestroy [1051][5540]
+cl setDestroy [1052][5540]
+cl setDestroy [1053][5540]
+cl setDestroy [1054][5540]
+cl setDestroy [1055][5540]
+cl setDestroy [1056][5540]
+cl setDestroy [1057][5540]
+cl setDestroy [1058][5540]
+cl setDestroy [1059][5540]
+cl setDestroy [1060][5540]
+cl setDestroy [1061][5540]
+cl setDestroy [1062][5540]
+cl setDestroy [1063][5540]
+cl setDestroy [1064][5540]
+cl setDestroy [1065][5540]
+cl setDestroy [1066][5540]
+cl setDestroy [1067][5540]
+cl setDestroy [1073][5540]
+cl setDestroy [1074][5540]
+cl setDestroy [1075][5540]
+cl setDestroy [1076][5540]
+cl setDestroy [1077][5540]
+cl setDestroy [1078][5540]
+cl setDestroy [1079][5540]
+cl setDestroy [1080][5540]
+cl setDestroy [1081][5540]
+cl setDestroy [1082][5540]
+cl setDestroy [1083][5540]
+cl setDestroy [1084][5540]
+cl setDestroy [1085][5540]
+cl setDestroy [1086][5540]
+cl setDestroy [1087][5540]
+cl setDestroy [1088][5540]
+cl setDestroy [1089][5540]
+cl setDestroy [1090][5540]
+cl setDestroy [1091][5540]
+cl setDestroy [1092][5540]
+cl setDestroy [1093][5540]
+cl setDestroy [1094][5540]
+cl setDestroy [1095][5540]
+cl setDestroy [1096][5540]
+cl setDestroy [1097][5540]
+cl setDestroy [1098][5540]
+cl setDestroy [1099][5540]
+cl setDestroy [1100][5540]
+cl setDestroy [1101][5540]
+cl setDestroy [1102][5540]
+cl setDestroy [1103][5540]
+cl setDestroy [1104][5540]
+cl setDestroy [1105][5540]
+cl setDestroy [1106][5540]
+cl setDestroy [1107][5540]
+cl setDestroy [1108][5540]
+cl setDestroy [1109][5540]
+cl setDestroy [1110][5540]
+cl setDestroy [1111][5540]
+cl setDestroy [1112][5540]
+cl setDestroy [1113][5540]
+cl setDestroy [1114][5540]
+cl setDestroy [1115][5540]
+cl setDestroy [1116][5540]
+cl setDestroy [1117][5540]
+cl setDestroy [1118][5540]
+cl setDestroy [1119][5540]
+cl setDestroy [1120][5540]
+cl setDestroy [1121][5540]
+cl setDestroy [1122][5540]
+cl setDestroy [1123][5540]
+cl setDestroy [1124][5540]
+cl setDestroy [1125][5540]
+cl setDestroy [1129][5540]
+cl setDestroy [1130][5540]
+cl setDestroy [1131][5540]
+cl setDestroy [1132][5540]
+cl setDestroy [1143][5540]
+cl setDestroy [1144][5540]
+cl setDestroy [1145][5540]
+cl setDestroy [1146][5540]
+cl setDestroy [1147][5540]
+cl setDestroy [1148][5540]
+cl setDestroy [1149][5540]
+cl setDestroy [1150][5540]
+cl setDestroy [1151][5540]
+cl setDestroy [1173][5540]
+cl setDestroy [15109][5540]
+cl setDestroy [15110][5540]
+cl setDestroy [15111][5540]
+cl setDestroy [15112][5540]
+dumping client spawn manager stuff for object with id 1173
+dumping client spawn manager stuff for object with id 878
+dumping client spawn manager stuff for object with id 877
+dumping client spawn manager stuff for object with id 874
+dumping client spawn manager stuff for object with id 870
+dumping client spawn manager stuff for object with id 747
+dumping client spawn manager stuff for object with id 735
+dumping client spawn manager stuff for object with id 730
+dumping client spawn manager stuff for object with id 704
+dumping client spawn manager stuff for object with id 702
+dumping client spawn manager stuff for object with id 700
+dumping client spawn manager stuff for object with id 550
+dumping client spawn manager stuff for object with id 464
+dumping client spawn manager stuff for object with id 405
+dumping client spawn manager stuff for object with id 398
+dumping client spawn manager stuff for object with id 391
+dumping client spawn manager stuff for object with id 385
+dumping client spawn manager stuff for object with id 379
+dumping client spawn manager stuff for object with id 372
+dumping client spawn manager stuff for object with id 366
+dumping client spawn manager stuff for object with id 360
+dumping client spawn manager stuff for object with id 354
+dumping client spawn manager stuff for object with id 347
+dumping client spawn manager stuff for object with id 340
+dumping client spawn manager stuff for object with id 333
+dumping client spawn manager stuff for object with id 326
+dumping client spawn manager stuff for object with id 319
+dumping client spawn manager stuff for object with id 312
+dumping client spawn manager stuff for object with id 305
+dumping client spawn manager stuff for object with id 215
+dumping client spawn manager stuff for object with id 208
+dumping client spawn manager stuff for object with id 204
+dumping client spawn manager stuff for object with id 199
+dumping client spawn manager stuff for object with id 194
+dumping client spawn manager stuff for object with id 190
+dumping client spawn manager stuff for object with id 186
+dumping client spawn manager stuff for object with id 180
+dumping client spawn manager stuff for object with id 175
+dumping client spawn manager stuff for object with id 169
+dumping client spawn manager stuff for object with id 99
+* WARNING: c_EVENT[18] to [21031]: unknown dest
+* WARNING: c_EVENT[18] to [173]: unknown dest
+* WARNING: c_EVENT[18] to [178]: unknown dest
+* WARNING: c_EVENT[18] to [193]: unknown dest
+* WARNING: c_EVENT[18] to [197]: unknown dest
+* WARNING: c_EVENT[18] to [202]: unknown dest
+* WARNING: c_EVENT[18] to [207]: unknown dest
+* WARNING: c_EVENT[18] to [310]: unknown dest
+* WARNING: c_EVENT[18] to [317]: unknown dest
+* WARNING: c_EVENT[18] to [324]: unknown dest
+* WARNING: c_EVENT[18] to [331]: unknown dest
+* WARNING: c_EVENT[18] to [338]: unknown dest
+* WARNING: c_EVENT[18] to [345]: unknown dest
+* WARNING: c_EVENT[18] to [352]: unknown dest
+* WARNING: c_EVENT[18] to [358]: unknown dest
+* WARNING: c_EVENT[18] to [364]: unknown dest
+* WARNING: c_EVENT[18] to [370]: unknown dest
+* WARNING: c_EVENT[18] to [377]: unknown dest
+* WARNING: c_EVENT[18] to [383]: unknown dest
+* WARNING: c_EVENT[18] to [389]: unknown dest
+* WARNING: c_EVENT[18] to [396]: unknown dest
+* WARNING: c_EVENT[18] to [403]: unknown dest
+* WARNING: c_EVENT[18] to [409]: unknown dest
+- Destroying level
+pause [OFF] timer=[ON] sound=[OFF] reason=mm_deactivate1
+pause [OFF] timer=[OFF] sound=[ON] reason=mm_deactivate2
+snd_emitters_[false] 1
+DestroySingleton::RefCounter: 0
+DestroySingleton::RefCounter: 0
+DestroySingleton::RefCounter: 0
+DestroySingleton::RefCounter: 0
+DestroySingleton::RefCounter: 0
 Input:  1
 Config-file [..\app_data\user.ltx] saved successfully
 Destroying Direct3D...
+t_material_surf 1
+t_envmap_0 - #small 1
+t_envmap_1 - #small 1
+t_noise_surf[it] 1
+t_noise_surf[it] 1
+t_noise_surf[it] 1
+t_noise_surf[it] 1
+g_accum_spot_ib 1
+g_accum_spot_vb 1
+g_accum_omnip_ib 1
+g_accum_omnip_vb 1
+g_accum_point_ib 1
+g_accum_point_vb 1
 * RM_Dump: textures  : 0
 * RM_Dump: rtargets  : 0
 * RM_Dump: rtargetsc : 0
