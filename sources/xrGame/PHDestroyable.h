@@ -39,7 +39,7 @@ public:
 		return m_fatal_hit;
 	}
 	void						Load(const char* section);
-	void						Load(CIniFile* ini, const char* section);
+	void						Load(CConfigurationFile* ini, const char* section);
 	virtual void						NotificateDestroy(CPHDestroyableNotificate* dn);
 	void						PhysicallyRemoveSelf( );
 	inline bool						Destroyable( )

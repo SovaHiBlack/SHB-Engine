@@ -23,10 +23,10 @@ void IGameObjectPool::prefetch( )
 	char section[256];
 	// prefetch objects
 	strconcat(sizeof(section), section, "prefetch_objects_", g_pGamePersistent->m_game_params.m_game_type);
-	CIniFile::Sect& sect = pSettings->r_section(section);
-	for (CIniFile::SectCIt I = sect.Data.begin( ); I != sect.Data.end( ); I++)
+	CConfigurationFile::Sect& sect = pSettings->r_section(section);
+	for (CConfigurationFile::SectCIt I = sect.Data.begin( ); I != sect.Data.end( ); I++)
 	{
-		const CIniFile::Item& item = *I;
+		const CConfigurationFile::SItem& item = *I;
 		CLASS_ID CLS = pSettings->r_clsid(item.first.c_str( ), "class");
 		p_count++;
 		CObject* pObject = (CObject*) NEW_INSTANCE(CLS);

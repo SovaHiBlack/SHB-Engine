@@ -95,7 +95,7 @@ bool CUIZoneMap::ZoomOut( )
 
 void CUIZoneMap::SetupCurrentMap( )
 {
-	CIniFile* pLtx = pGameIni;
+	CConfigurationFile* pLtx = pGameIni;
 
 	if (!pLtx->section_exist(Level( ).name( )))
 	{

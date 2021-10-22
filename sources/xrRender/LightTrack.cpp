@@ -39,12 +39,12 @@ CROS_impl::CROS_impl	()
 void	CROS_impl::add		(light* source)
 {
 	// Search
-	for (xr_vector<Item>::iterator I=track.begin(); I!=track.end(); I++)	
+	for (xr_vector<SItem>::iterator I=track.begin(); I!=track.end(); I++)
 		if (source == I->source)	{ I->frame_touched = Device.dwFrame; return; }
 
 	// Register _new_
-	track.push_back		(Item());
-	Item&	L			= track.back();
+	track.push_back		(SItem());
+	SItem&	L			= track.back();
 	L.frame_touched		= Device.dwFrame;
 	L.source			= source;
 	L.cache.verts[0].set(0,0,0);
@@ -176,7 +176,7 @@ void	CROS_impl::update	(IRenderable* O)
 		for (int id=0; id<int(track.size()); id++)
 		{
 			// remove untouched lights
-			xr_vector<CROS_impl::Item>::iterator I	= track.begin()+id;
+			xr_vector<CROS_impl::SItem>::iterator I	= track.begin()+id;
 			if (I->frame_touched!=Device.dwFrame)	{ track.erase(I) ; id--	; continue ; }
 
 			// Trace visibility

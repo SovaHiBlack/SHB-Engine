@@ -31,7 +31,7 @@ void CSE_ALifeObject::spawn_supplies(const char* ini_string)
 
 #pragma warning(push)
 #pragma warning(disable:4238)
-	CIniFile ini(&IReader((void*) (ini_string), xr_strlen(ini_string)), FS.get_path("$game_config$")->m_Path);
+	CConfigurationFile ini(&IReader((void*) (ini_string), xr_strlen(ini_string)), FS.get_path("$game_config$")->m_Path);
 #pragma warning(pop)
 
 	if (ini.section_exist("spawn"))

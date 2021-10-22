@@ -23,7 +23,7 @@ public:
 	virtual					~CUICustomMap						( );
 	virtual void			SetActivePoint						(const Fvector3& vNewPoint);
 
-	virtual void			Init								(CSharedString name, CIniFile& gameLtx, const char* sh_name);
+	virtual void			Init								(CSharedString name, CConfigurationFile& gameLtx, const char* sh_name);
 	virtual Fvector2		ConvertRealToLocal					(const Fvector2& src);// meters->pixels (relatively own left-top pos)
 	Fvector2				ConvertLocalToReal					(const Fvector2& src);
 	Fvector2				ConvertRealToLocalNoTransform		(const Fvector2& src);// meters->pixels (relatively own left-top pos)
@@ -106,7 +106,7 @@ public:
 		m_max_zoom = zoom;
 	}
 
-	virtual void			Init								(CSharedString name, CIniFile& gameLtx, const char* sh_name);
+	virtual void			Init								(CSharedString name, CConfigurationFile& gameLtx, const char* sh_name);
 	virtual bool			OnMouse								(float x, float y, EUIMessages mouse_action);
 
 	CUIMapWnd*				MapWnd								( )
@@ -137,7 +137,7 @@ private:
 public:
 							CUILevelMap							(CUIMapWnd*);
 	virtual					~CUILevelMap						( );
-	virtual void			Init								(CSharedString name, CIniFile& gameLtx, const char* sh_name);
+	virtual void			Init								(CSharedString name, CConfigurationFile& gameLtx, const char* sh_name);
 	const Frect&			GlobalRect							( ) const
 	{
 		return m_GlobalRect;
@@ -166,7 +166,7 @@ class CUIMiniMap : public CUICustomMap
 public:
 							CUIMiniMap							( );
 	virtual					~CUIMiniMap							( );
-	virtual void			Init								(CSharedString name, CIniFile& gameLtx, const char* sh_name);
+	virtual void			Init								(CSharedString name, CConfigurationFile& gameLtx, const char* sh_name);
 
 protected:
 	virtual void			UpdateSpots							( );

@@ -4,7 +4,7 @@
 
 // refs
 class ENGINE_API	CObject;
-class ENGINE_API	CIniFile;
+class ENGINE_API	CConfigurationFile;
 
 // t-defs
 const u32	clGET_TRIS = (1 << 0);

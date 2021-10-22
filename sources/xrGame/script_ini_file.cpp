@@ -140,16 +140,7 @@ bool r_line(CScriptIniFile* self, const char* S, int L, xr_string& N, xr_string&
 #pragma warning(disable:4238)
 CScriptIniFile* create_ini_file(const char* ini_string)
 {
-	return			(
-		(CScriptIniFile*)
-		xr_new<CIniFile>(
-			&IReader(
-				(void*) ini_string,
-				xr_strlen(ini_string)
-			),
-			FS.get_path("$game_config$")->m_Path
-			)
-		);
+	return ((CScriptIniFile*)xr_new<CConfigurationFile>(&IReader((void*) ini_string, xr_strlen(ini_string)), FS.get_path("$game_config$")->m_Path));
 }
 #pragma warning(pop)
 

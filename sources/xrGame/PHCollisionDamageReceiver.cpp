@@ -21,13 +21,13 @@ void CPHCollisionDamageReceiver::Init( )
 {
 	CPHShellHolder* sh = PPhysicsShellHolder( );
 	CKinematics* K = smart_cast<CKinematics*>(sh->Visual( ));
-	CIniFile* ini = K->LL_UserData( );
+	CConfigurationFile* ini = K->LL_UserData( );
 	if (ini->section_exist("collision_damage"))
 	{
-		CIniFile::Sect& data = ini->r_section("collision_damage");
-		for (CIniFile::SectCIt I = data.Data.begin( ); I != data.Data.end( ); I++)
+		CConfigurationFile::Sect& data = ini->r_section("collision_damage");
+		for (CConfigurationFile::SectCIt I = data.Data.begin( ); I != data.Data.end( ); I++)
 		{
-			const CIniFile::Item& item = *I;
+			const CConfigurationFile::SItem& item = *I;
 			U16 index = K->LL_BoneID(*item.first);
 			R_ASSERT3(index != BI_NONE, "Wrong bone name", *item.first);
 			BoneInsert(index, float(atof(*item.second)));

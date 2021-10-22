@@ -531,7 +531,7 @@ float CInventoryOwner::deficit_factor(const CSharedString& section) const
 	return m_purchase_list->deficit(section);
 }
 
-void CInventoryOwner::buy_supplies(CIniFile& ini_file, const char* section)
+void CInventoryOwner::buy_supplies(CConfigurationFile& ini_file, const char* section)
 {
 	if (!m_purchase_list)
 	{

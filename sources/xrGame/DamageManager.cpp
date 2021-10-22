@@ -16,7 +16,7 @@ DLL_Pure* C_DamageManager::_construct( )
 	return									m_object;
 }
 
-void C_DamageManager::reload(const char* section, CIniFile* ini)
+void C_DamageManager::reload(const char* section, CConfigurationFile* ini)
 {
 	m_default_hit_factor = 1.0f;
 	m_default_wound_factor = 1.0f;
@@ -45,7 +45,7 @@ void C_DamageManager::reload(const char* section, CIniFile* ini)
 	}
 }
 
-void C_DamageManager::reload(const char* section, const char* line, CIniFile* ini)
+void C_DamageManager::reload(const char* section, const char* line, CConfigurationFile* ini)
 {
 	if (ini && ini->section_exist(section) && ini->line_exist(section, line))
 	{
@@ -87,12 +87,12 @@ void C_DamageManager::HitScale(const int element, float& hit_scale, float& wound
 	wound_scale = scale;
 }
 
-void C_DamageManager::load_section(const char* section, CIniFile* ini)
+void C_DamageManager::load_section(const char* section, CConfigurationFile* ini)
 {
 	char buffer[32];
 	CKinematics* kinematics = smart_cast<CKinematics*>(m_object->Visual( ));
-	CIniFile::Sect& damages = ini->r_section(section);
-	for (CIniFile::SectCIt i = damages.Data.begin( ); damages.Data.end( ) != i; ++i)
+	CConfigurationFile::Sect& damages = ini->r_section(section);
+	for (CConfigurationFile::SectCIt i = damages.Data.begin( ); damages.Data.end( ) != i; ++i)
 	{
 		if (xr_strcmp(*(*i).first, "default"))
 		{
@@ -123,7 +123,7 @@ void C_DamageManager::load_section(const char* section, CIniFile* ini)
 	}
 }
 
-void C_DamageManager::init_bones(const char* section, CIniFile* ini)
+void C_DamageManager::init_bones(const char* section, CConfigurationFile* ini)
 {
 	CKinematics* kinematics = smart_cast<CKinematics*>(m_object->Visual( ));
 	VERIFY(kinematics);

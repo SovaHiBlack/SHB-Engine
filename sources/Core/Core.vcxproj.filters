@@ -208,7 +208,7 @@
     <ClCompile Include="Debug.cpp">
       <Filter>Debug core</Filter>
     </ClCompile>
-    <ClCompile Include="IniFile.cpp">
+    <ClCompile Include="ConfigurationFile.cpp">
       <Filter>FS</Filter>
     </ClCompile>
     <ClCompile Include="Log.cpp">
@@ -445,7 +445,7 @@
     <ClInclude Include="Debug_macros.h">
       <Filter>Debug core</Filter>
     </ClInclude>
-    <ClInclude Include="IniFile.h">
+    <ClInclude Include="ConfigurationFile.h">
       <Filter>FS</Filter>
     </ClInclude>
     <ClInclude Include="Log.h">

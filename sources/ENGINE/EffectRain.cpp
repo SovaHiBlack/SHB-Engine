@@ -57,7 +57,7 @@ CEffectRain::~CEffectRain( )
 }
 
 // Born
-void CEffectRain::Born(Item& dest, float radius)
+void CEffectRain::Born(SItem& dest, float radius)
 {
 	Fvector3 axis;
 	axis.set(0, -1, 0);
@@ -96,7 +96,7 @@ BOOL CEffectRain::RayPick(const Fvector3& s, const Fvector3& d, float& range, co
 	return bRes;
 }
 
-void CEffectRain::RenewItem(Item& dest, float height, BOOL bHit)
+void CEffectRain::RenewItem(SItem& dest, float height, BOOL bHit)
 {
 	dest.uv_set = Random.randI(2);
 	if (bHit)
@@ -191,7 +191,7 @@ void CEffectRain::Render( )
 	{
 		while (items.size( ) < desired_items)
 		{
-			Item one;
+			SItem one;
 			Born(one, source_radius);
 			items.push_back(one);
 		}
@@ -212,7 +212,7 @@ void CEffectRain::Render( )
 	for (unsigned int I = 0; I < items.size( ); I++)
 	{
 		// physics and time control
-		Item& one = items[I];
+		SItem& one = items[I];
 
 		if (one.dwTime_Hit < Device.dwTimeGlobal)
 		{

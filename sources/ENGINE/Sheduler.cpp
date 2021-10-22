@@ -95,7 +95,7 @@ void CSheduler::internal_Register(ISheduled* O, BOOL RT)
 	if (RT)
 	{
 		// Fill item structure
-		Item						TNext;
+		SItem						TNext;
 		TNext.dwTimeForExecute = Device.dwTimeGlobal;
 		TNext.dwTimeOfLastExecute = Device.dwTimeGlobal;
 		TNext.Object = O;
@@ -107,7 +107,7 @@ void CSheduler::internal_Register(ISheduled* O, BOOL RT)
 	else
 	{
 	 // Fill item structure
-		Item						TNext;
+		SItem						TNext;
 		TNext.dwTimeForExecute = Device.dwTimeGlobal;
 		TNext.dwTimeOfLastExecute = Device.dwTimeGlobal;
 		TNext.Object = O;
@@ -164,7 +164,7 @@ bool CSheduler::internal_Unregister(ISheduled* O, BOOL RT, bool warn_on_not_foun
 bool CSheduler::Registered(ISheduled* object) const
 {
 	u32 count = 0;
-	using ItemsVec = xr_vector<Item>;
+	using ItemsVec = xr_vector<SItem>;
 
 	{
 		ItemsVec::const_iterator I = ItemsRT.begin( );
@@ -284,7 +284,7 @@ void CSheduler::EnsureOrder(ISheduled* Before, ISheduled* After)
 	{
 		if (ItemsRT[i].Object == After)
 		{
-			Item A = ItemsRT[i];
+			SItem A = ItemsRT[i];
 			ItemsRT.erase(ItemsRT.begin( ) + i);
 			ItemsRT.push_back(A);
 			return;
@@ -292,7 +292,7 @@ void CSheduler::EnsureOrder(ISheduled* Before, ISheduled* After)
 	}
 }
 
-void CSheduler::Push(Item& I)
+void CSheduler::Push(SItem& I)
 {
 	Items.push_back(I);
 	std::push_heap(Items.begin( ), Items.end( ));
@@ -314,7 +314,7 @@ void CSheduler::ProcessStep( )
 		u32 delta_ms = dwTime - Top( ).dwTimeForExecute;
 
 		// Update
-		Item	T = Top( );
+		SItem	T = Top( );
 
 #ifdef DEBUG_SCHEDULER
 		Msg("SCHEDULER: process step [%s][%x][false]", *T.scheduled_name, T.Object);
@@ -397,7 +397,7 @@ void CSheduler::ProcessStep( )
 #endif // def DEBUG
 
 			// Fill item structure
-			Item TNext;
+			SItem TNext;
 			TNext.dwTimeForExecute = dwTime + dwUpdate;
 			TNext.dwTimeOfLastExecute = dwTime;
 			TNext.Object = T.Object;
@@ -474,7 +474,7 @@ void CSheduler::Update( )
 	u32 dwTime = Device.dwTimeGlobal;
 	for (u32 it = 0; it < ItemsRT.size( ); it++)
 	{
-		Item& T = ItemsRT[it];
+		SItem& T = ItemsRT[it];
 		R_ASSERT(T.Object);
 
 #ifdef DEBUG_SCHEDULER

@@ -23,15 +23,15 @@
 #include "alife_object_registry.h"
 #include "date_time.h"
 
-void setup_location_types_section(GameGraph::TERRAIN_VECTOR& m_vertex_types, CIniFile* ini, const char* section)
+void setup_location_types_section(GameGraph::TERRAIN_VECTOR& m_vertex_types, CConfigurationFile* ini, const char* section)
 {
 	VERIFY3(ini->section_exist(section), "cannot open section", section);
 	GameGraph::STerrainPlace		terrain_mask;
 	terrain_mask.tMask.resize(GameGraph::LOCATION_TYPE_COUNT);
 
-	CIniFile::Sect& sect = ini->r_section(section);
-	CIniFile::SectCIt				I = sect.Data.begin( );
-	CIniFile::SectCIt				E = sect.Data.end( );
+	CConfigurationFile::Sect& sect = ini->r_section(section);
+	CConfigurationFile::SectCIt				I = sect.Data.begin( );
+	CConfigurationFile::SectCIt				E = sect.Data.end( );
 	for (; I != E; ++I)
 	{
 		const char* S = *(*I).first;
@@ -96,7 +96,7 @@ void setup_location_types_line(GameGraph::TERRAIN_VECTOR& m_vertex_types, const 
 	}
 }
 
-void setup_location_types(GameGraph::TERRAIN_VECTOR& m_vertex_types, CIniFile* ini, const char* string)
+void setup_location_types(GameGraph::TERRAIN_VECTOR& m_vertex_types, CConfigurationFile* ini, const char* string)
 {
 	m_vertex_types.clear( );
 	if (ini->section_exist(string) && ini->line_count(string))

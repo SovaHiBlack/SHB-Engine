@@ -156,7 +156,7 @@ public:
 		return CUsableScriptObject::use(who_use);
 	}
 
-	CIniFile* m_ini_file;
+	CConfigurationFile* m_ini_file;
 
 	// Utilities
 	static void								u_EventGen								(CNetPacket& P, u32 type, u32 dest);
@@ -330,7 +330,7 @@ public:
 		return m_script_clsid;
 	}
 
-	inline CIniFile*						spawn_ini								( )
+	inline CConfigurationFile*						spawn_ini								( )
 	{
 		return m_ini_file;
 	}

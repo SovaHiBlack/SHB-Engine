@@ -101,14 +101,14 @@ void CParticlesPlayer::LoadParticles(CKinematics* K)
 
 	//считать список косточек и соответствующих
 	//офсетов  куда можно вешать партиклы
-	CIniFile* ini = K->LL_UserData( );
+	CConfigurationFile* ini = K->LL_UserData( );
 	if (ini && ini->section_exist("particle_bones"))
 	{
 		bone_mask = 0;
-		CIniFile::Sect& data = ini->r_section("particle_bones");
-		for (CIniFile::SectCIt I = data.Data.begin( ); I != data.Data.end( ); I++)
+		CConfigurationFile::Sect& data = ini->r_section("particle_bones");
+		for (CConfigurationFile::SectCIt I = data.Data.begin( ); I != data.Data.end( ); I++)
 		{
-			const CIniFile::Item& item = *I;
+			const CConfigurationFile::SItem& item = *I;
 			U16 index = K->LL_BoneID(*item.first);
 			R_ASSERT3(index != BI_NONE, "Particles bone not found", *item.first);
 			Fvector3 offs;

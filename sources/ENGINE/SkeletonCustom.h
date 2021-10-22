@@ -10,7 +10,7 @@ extern xrCriticalSection	UCalc_Mutex;
 
 // refs
 class ENGINE_API CKinematics;
-class ENGINE_API CIniFile;
+class ENGINE_API CConfigurationFile;
 class ENGINE_API CBoneData;
 class ENGINE_API CBoneInstance;
 struct SEnumVerticesCallback;
@@ -259,7 +259,7 @@ protected:
 	xr_vector<IRender_Visual*>	children_invisible;
 
 	// Globals
-	CIniFile* pUserData;
+	CConfigurationFile* pUserData;
 	CBoneInstance* bone_instances;	// bone instances
 	vecBones* bones;			// all bones	(shared)
 	U16							iRoot;			// Root bone index
@@ -311,7 +311,7 @@ public:
 	U16							LL_BoneID(const CSharedString& B);
 	const char* LL_BoneName_dbg(U16 ID);
 
-	CIniFile* LL_UserData( )
+	CConfigurationFile* LL_UserData( )
 	{
 		return pUserData;
 	}

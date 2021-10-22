@@ -749,7 +749,7 @@ bool CServer::CheckAdminRights(const CSharedString& user, const CSharedString& p
 	FS.update_path(fn, "$app_data_root$", "radmins.ltx");
 	if (FS.exist(fn))
 	{
-		CIniFile ini(fn);
+		CConfigurationFile ini(fn);
 		if (ini.line_exist("radmins", user.c_str( )))
 		{
 			if (ini.r_string("radmins", user.c_str( )) == pass)

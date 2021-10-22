@@ -71,7 +71,7 @@ BOOL CProjector::net_Spawn(CSE_Abstract* DC)
 	R_ASSERT(Visual( ) && smart_cast<CKinematics*>(Visual( )));
 
 	CKinematics* K = smart_cast<CKinematics*>(Visual( ));
-	CIniFile* pUserData = K->LL_UserData( );
+	CConfigurationFile* pUserData = K->LL_UserData( );
 	R_ASSERT3(pUserData, "Empty Projector user data!", slight->get_visual( ));
 	lanim = LALib.FindItem(pUserData->r_string("projector_definition", "color_animator"));
 	guid_bone = K->LL_BoneID(pUserData->r_string("projector_definition", "guide_bone"));

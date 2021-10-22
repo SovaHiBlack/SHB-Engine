@@ -34,15 +34,15 @@ void CTextureDescrMngr::LoadLTX()
 
 	if (FS.exist(fname))
 	{
-		CIniFile			ini(fname);
+		CConfigurationFile			ini(fname);
 		if (ini.section_exist("association"))
 		{
-			CIniFile::Sect& data	= ini.r_section("association");
-			CIniFile::SectCIt I		= data.Data.begin();
-			CIniFile::SectCIt E		= data.Data.end();
+			CConfigurationFile::Sect& data	= ini.r_section("association");
+			CConfigurationFile::SectCIt I		= data.Data.begin();
+			CConfigurationFile::SectCIt E		= data.Data.end();
 			for ( ; I!=E; ++I)	
 			{
-				const CIniFile::Item& item	= *I;
+				const CConfigurationFile::SItem& item	= *I;
 
 				texture_desc& desc		= m_texture_details[item.first];
 				desc.m_assoc			= xr_new<texture_assoc>();
@@ -68,10 +68,10 @@ void CTextureDescrMngr::LoadLTX()
 
 		if (ini.section_exist("specification"))
 		{
-			CIniFile::Sect& 	sect = ini.r_section("specification");
-			for (CIniFile::SectCIt I2=sect.Data.begin(); I2!=sect.Data.end(); ++I2)
+			CConfigurationFile::Sect& 	sect = ini.r_section("specification");
+			for (CConfigurationFile::SectCIt I2=sect.Data.begin(); I2!=sect.Data.end(); ++I2)
 			{
-				const CIniFile::Item& item	= *I2;
+				const CConfigurationFile::SItem& item	= *I2;
 
 				texture_desc& desc		= m_texture_details[item.first];
 				desc.m_spec				= xr_new<texture_spec>();
@@ -261,18 +261,18 @@ BOOL CTextureDescrMngr::GetDetailTexture(const CSharedString& tex_name, const ch
 	if (FS.exist(Iname))
 	{
 		xr_delete		(m_description);
-		m_description	= xr_new<CIniFile>	(Iname);
-		CIniFile&	ini	= *m_description;
+		m_description	= xr_new<CConfigurationFile>	(Iname);
+		CConfigurationFile&	ini	= *m_description;
 		if (ini.section_exist("association"))
 		{
-			CIniFile::Sect& 	data = ini.r_section("association");
-			for (CIniFile::SectIt I=data.begin(); I!=data.end(); I++)	
+			CConfigurationFile::Sect& 	data = ini.r_section("association");
+			for (CConfigurationFile::SectIt I=data.begin(); I!=data.end(); I++)	
 			{
 				texture_detail			D;
 				string256				T;
 				float					s;
 
-				CIniFile::Item& item	= *I;
+				CConfigurationFile::SItem& item	= *I;
 				sscanf					(*item.second,"%[^,],%f",T,&s);
 
 				//

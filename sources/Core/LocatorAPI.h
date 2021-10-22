@@ -1,6 +1,5 @@
 // LocatorAPI.h: interface for the CLocatorAPI class.
-//
-//////////////////////////////////////////////////////////////////////
+
 #pragma once
 
 #pragma warning(push)
@@ -118,6 +117,7 @@ private:
 	template <typename T>
 	inline		T* r_open_impl(const char* path, const char* _fname);
 	void				ProcessExternalArch( );
+
 public:
 	CLocatorAPI( );
 	~CLocatorAPI( );

@@ -34,7 +34,7 @@ void read_bones(CKinematics *K, const char* S , xr_vector<U16>& bones)
 void CCarDamageParticles::Init(CCar *car)
 {
 	CKinematics *K=smart_cast<CKinematics*>(car->Visual());
-	CIniFile*ini=K->LL_UserData();
+	CConfigurationFile*ini=K->LL_UserData();
 	if(ini->section_exist("damage_particles"))
 	{
 		m_car_damage_particles1=ini->r_string("damage_particles","car_damage_particles1");

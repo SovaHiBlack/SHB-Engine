@@ -19,7 +19,7 @@ private:
 	void			process(const CGameObject& owner, const CSharedString& name, const u32& count, const float& probability);
 
 public:
-	void			process(CIniFile& ini_file, const char* section, CInventoryOwner& owner);
+	void			process(CConfigurationFile& ini_file, const char* section, CInventoryOwner& owner);
 
 	inline void			deficit(const CSharedString& section, const float& deficit);
 	inline float			deficit(const CSharedString& section) const;

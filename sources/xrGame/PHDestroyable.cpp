@@ -155,7 +155,7 @@ void CPHDestroyable::Destroy(U16 source_id, const char* section)
 	return;
 }
 
-void CPHDestroyable::Load(CIniFile* ini, const char* section)
+void CPHDestroyable::Load(CConfigurationFile* ini, const char* section)
 {
 	m_flags.set(fl_destroyable, FALSE);
 	if (ini->line_exist(section, "destroyed_vis_name"))
@@ -165,13 +165,13 @@ void CPHDestroyable::Load(CIniFile* ini, const char* section)
 	}
 	else
 	{
-		CIniFile::Sect& data = ini->r_section(section);
+		CConfigurationFile::Sect& data = ini->r_section(section);
 		if (data.Data.size( ) > 0)
 		{
 			m_flags.set(fl_destroyable, TRUE);
 		}
 
-		for (CIniFile::SectCIt I = data.Data.begin( ); I != data.Data.end( ); I++)
+		for (CConfigurationFile::SectCIt I = data.Data.begin( ); I != data.Data.end( ); I++)
 		{
 			if (I->first.size( ))
 			{
@@ -224,8 +224,8 @@ void CPHDestroyable::NotificatePart(CPHDestroyableNotificate* dn)
 	CKinematics* own_K = PKinematics(PPhysicsShellHolder( )->Visual( ));
 	CKinematics* new_K = PKinematics(dn->PPhysicsShellHolder( )->Visual( ));
 	VERIFY(own_K && new_K && own_shell && new_shell);
-	CIniFile* own_ini = own_K->LL_UserData( );
-	CIniFile* new_ini = new_K->LL_UserData( );
+	CConfigurationFile* own_ini = own_K->LL_UserData( );
+	CConfigurationFile* new_ini = new_K->LL_UserData( );
 	//////////////////////////////////////////////////////////////////////////////////	
 	Fmatrix			own_transform;
 	own_shell->GetGlobalTransformDynamic(&own_transform);

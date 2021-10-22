@@ -87,7 +87,7 @@ BOOL CWeaponStatMgun::net_Spawn(CSE_Abstract* DC)
 	}
 
 	CKinematics* K = smart_cast<CKinematics*>(Visual( ));
-	CIniFile* pUserData = K->LL_UserData( );
+	CConfigurationFile* pUserData = K->LL_UserData( );
 
 	R_ASSERT2(pUserData, "Empty WeaponStatMgun user data!");
 

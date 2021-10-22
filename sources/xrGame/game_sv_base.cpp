@@ -419,7 +419,7 @@ void game_sv_GameState::Create(CSharedString& options)
 	ai( ).script_engine( ).remove_script_process(ScriptEngine::eScriptProcessorGame);
 	string_path					S;
 	FS.update_path(S, "$game_config$", "script.ltx");
-	CIniFile* l_tpIniFile = xr_new<CIniFile>(S);
+	CConfigurationFile* l_tpIniFile = xr_new<CConfigurationFile>(S);
 	R_ASSERT(l_tpIniFile);
 
 	if (l_tpIniFile->section_exist(type_name( )))

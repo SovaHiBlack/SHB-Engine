@@ -228,8 +228,8 @@ void CDetailManager::UpdateVisibleM()
 						SlotItem			**siIT=&(*sp.items.begin()), **siEND=&(*sp.items.end());
 						for (; siIT!=siEND; siIT++){
 							SlotItem& Item			= *(*siIT);
-							float   scale			= Item.scale_calculated	= Item.scale*alpha_i;
-							float	ssa				= scale*scale*Rq_drcp;
+							float scale			= Item.scale_calculated	= Item.scale*alpha_i;
+							float ssa				= scale*scale*Rq_drcp;
 							if (ssa < r_ssaDISCARD) continue;
 							u32		vis_id			= 0;
 							if (ssa > r_ssaCHEAP)	vis_id = Item.vis_ID;

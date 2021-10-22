@@ -2,24 +2,24 @@
 
 #include "fs_internal.h"
 
-CORE_API CIniFile* pSettings = nullptr;
+CORE_API CConfigurationFile* pSettings = nullptr;
 
-CIniFile* CIniFile::Create(const char* szFileName, BOOL ReadOnly)
+CConfigurationFile* CConfigurationFile::Create(const char* szFileName, BOOL ReadOnly)
 {
-	return xr_new<CIniFile>(szFileName, ReadOnly);
+	return xr_new<CConfigurationFile>(szFileName, ReadOnly);
 }
 
-void CIniFile::Destroy(CIniFile* ini)
+void CConfigurationFile::Destroy(CConfigurationFile* ini)
 {
 	xr_delete(ini);
 }
 
-bool sect_pred(const CIniFile::Sect* x, const char* val)
+bool sect_pred(const CConfigurationFile::Sect* x, const char* val)
 {
 	return xr_strcmp(*x->Name, val) < 0;
 }
 
-bool item_pred(const CIniFile::Item& x, const char* val)
+bool item_pred(const CConfigurationFile::SItem& x, const char* val)
 {
 	if ((!x.first) || (!val))
 	{
@@ -102,7 +102,7 @@ CORE_API void _decorate(char* dest, const char* src)
 }
 //------------------------------------------------------------------------------
 
-BOOL CIniFile::Sect::line_exist(const char* L, const char** val)
+BOOL CConfigurationFile::Sect::line_exist(const char* L, const char** val)
 {
 	SectCIt A = std::lower_bound(Data.begin( ), Data.end( ), L, item_pred);
 	if (A != Data.end( ) && xr_strcmp(*A->first, L) == 0)
@@ -119,7 +119,7 @@ BOOL CIniFile::Sect::line_exist(const char* L, const char** val)
 }
 //------------------------------------------------------------------------------
 
-CIniFile::CIniFile(IReader* F, const char* path)
+CConfigurationFile::CConfigurationFile(IReader* F, const char* path)
 {
 	fName = 0;
 	bReadOnly = TRUE;
@@ -127,7 +127,7 @@ CIniFile::CIniFile(IReader* F, const char* path)
 	Load(F, path);
 }
 
-CIniFile::CIniFile(const char* szFileName, BOOL ReadOnly, BOOL bLoad, BOOL SaveAtEnd)
+CConfigurationFile::CConfigurationFile(const char* szFileName, BOOL ReadOnly, BOOL bLoad, BOOL SaveAtEnd)
 {
 	fName = szFileName ? xr_strdup(szFileName) : 0;
 	bReadOnly = ReadOnly;
@@ -147,7 +147,7 @@ CIniFile::CIniFile(const char* szFileName, BOOL ReadOnly, BOOL bLoad, BOOL SaveA
 	}
 }
 
-CIniFile::~CIniFile( )
+CConfigurationFile::~CConfigurationFile( )
 {
 	if (!bReadOnly && bSaveAtEnd)
 	{
@@ -167,9 +167,9 @@ CIniFile::~CIniFile( )
 	}
 }
 
-static void insert_item(CIniFile::Sect* tgt, const CIniFile::Item& I)
+static void insert_item(CConfigurationFile::Sect* tgt, const CConfigurationFile::SItem& I)
 {
-	CIniFile::SectIt_ sect_it = std::lower_bound(tgt->Data.begin( ), tgt->Data.end( ), *I.first, item_pred);
+	CConfigurationFile::SectIt_ sect_it = std::lower_bound(tgt->Data.begin( ), tgt->Data.end( ), *I.first, item_pred);
 	if (sect_it != tgt->Data.end( ) && sect_it->first.equal(I.first))
 	{
 		sect_it->second = I.second;
@@ -185,7 +185,7 @@ static void insert_item(CIniFile::Sect* tgt, const CIniFile::Item& I)
 	}
 }
 
-void CIniFile::Load(IReader* F, const char* path)
+void CConfigurationFile::Load(IReader* F, const char* path)
 {
 	R_ASSERT(F);
 	Sect* Current = nullptr;
@@ -293,7 +293,7 @@ void CIniFile::Load(IReader* F, const char* path)
 					str2[0] = 0;
 				}
 
-				Item I;
+				SItem I;
 				I.first = (name[0] ? name : NULL);
 				I.second = (str2[0] ? str2 : NULL);
 
@@ -337,7 +337,7 @@ void CIniFile::Load(IReader* F, const char* path)
 	}
 }
 
-bool CIniFile::save_as(const char* new_fname)
+bool CConfigurationFile::save_as(const char* new_fname)
 {
 	// save if needed
 	if (new_fname && new_fname[0])
@@ -358,7 +358,7 @@ bool CIniFile::save_as(const char* new_fname)
 			F->w_string(temp);
 			for (SectCIt s_it = (*r_it)->Data.begin( ); s_it != (*r_it)->Data.end( ); ++s_it)
 			{
-				const Item& I = *s_it;
+				const SItem& I = *s_it;
 				if (*I.first)
 				{
 					if (*I.second)
@@ -429,13 +429,13 @@ bool CIniFile::save_as(const char* new_fname)
 	return false;
 }
 
-BOOL CIniFile::section_exist(const char* S)
+BOOL CConfigurationFile::section_exist(const char* S)
 {
 	RootIt I = std::lower_bound(DATA.begin( ), DATA.end( ), S, sect_pred);
 	return (I != DATA.end( ) && xr_strcmp(*(*I)->Name, S) == 0);
 }
 
-BOOL CIniFile::line_exist(const char* S, const char* L)
+BOOL CConfigurationFile::line_exist(const char* S, const char* L)
 {
 	if (!section_exist(S))
 	{
@@ -447,7 +447,7 @@ BOOL CIniFile::line_exist(const char* S, const char* L)
 	return (A != I.Data.end( ) && xr_strcmp(*A->first, L) == 0);
 }
 
-U32 CIniFile::line_count(const char* Sname)
+U32 CConfigurationFile::line_count(const char* Sname)
 {
 	Sect& S = r_section(Sname);
 	SectCIt I = S.Data.begin( );
@@ -464,19 +464,19 @@ U32 CIniFile::line_count(const char* Sname)
 }
 
 //--------------------------------------------------------------------------------------
-CIniFile::Sect& CIniFile::r_section(const CSharedString& S)
+CConfigurationFile::Sect& CConfigurationFile::r_section(const CSharedString& S)
 {
 	return r_section(*S);
 }
-BOOL CIniFile::line_exist(const CSharedString& S, const CSharedString& L)
+BOOL CConfigurationFile::line_exist(const CSharedString& S, const CSharedString& L)
 {
 	return line_exist(*S, *L);
 }
-U32 CIniFile::line_count(const CSharedString& S)
+U32 CConfigurationFile::line_count(const CSharedString& S)
 {
 	return line_count(*S);
 }
-BOOL CIniFile::section_exist(const CSharedString& S)
+BOOL CConfigurationFile::section_exist(const CSharedString& S)
 {
 	return section_exist(*S);
 }
@@ -484,7 +484,7 @@ BOOL CIniFile::section_exist(const CSharedString& S)
 //--------------------------------------------------------------------------------------
 // Read functions
 //--------------------------------------------------------------------------------------
-CIniFile::Sect& CIniFile::r_section(const char* S)
+CConfigurationFile::Sect& CConfigurationFile::r_section(const char* S)
 {
 	string256 section;
 	strcpy_s(section, sizeof(section), S);
@@ -498,7 +498,7 @@ CIniFile::Sect& CIniFile::r_section(const char* S)
 	return **I;
 }
 
-const char* CIniFile::r_string(const char* S, const char* L)
+const char* CConfigurationFile::r_string(const char* S, const char* L)
 {
 	Sect& I = r_section(S);
 	SectCIt A = std::lower_bound(I.Data.begin( ), I.Data.end( ), L, item_pred);
@@ -514,7 +514,7 @@ const char* CIniFile::r_string(const char* S, const char* L)
 	return 0;
 }
 
-CSharedString CIniFile::r_string_wb(const char* S, const char* L)
+CSharedString CConfigurationFile::r_string_wb(const char* S, const char* L)
 {
 	const char* _base = r_string(S, L);
 
@@ -546,49 +546,49 @@ CSharedString CIniFile::r_string_wb(const char* S, const char* L)
 	return CSharedString(_original);
 }
 
-U8 CIniFile::r_u8(const char* S, const char* L)
+U8 CConfigurationFile::r_u8(const char* S, const char* L)
 {
 	const char* C = r_string(S, L);
 	return U8(atoi(C));
 }
-U16 CIniFile::r_u16(const char* S, const char* L)
+U16 CConfigurationFile::r_u16(const char* S, const char* L)
 {
 	const char* C = r_string(S, L);
 	return U16(atoi(C));
 }
-U32 CIniFile::r_u32(const char* S, const char* L)
+U32 CConfigurationFile::r_u32(const char* S, const char* L)
 {
 	const char* C = r_string(S, L);
 	return U32(atoi(C));
 }
-S8 CIniFile::r_s8(const char* S, const char* L)
+S8 CConfigurationFile::r_s8(const char* S, const char* L)
 {
 	const char* C = r_string(S, L);
 	return S8(atoi(C));
 }
-S16 CIniFile::r_s16(const char* S, const char* L)
+S16 CConfigurationFile::r_s16(const char* S, const char* L)
 {
 	const char* C = r_string(S, L);
 	return S16(atoi(C));
 }
-int CIniFile::r_s32(const char* S, const char* L)
+int CConfigurationFile::r_s32(const char* S, const char* L)
 {
 	const char* C = r_string(S, L);
 	return int(atoi(C));
 }
-F32 CIniFile::r_float(const char* S, const char* L)
+F32 CConfigurationFile::r_float(const char* S, const char* L)
 {
 	const char* C = r_string(S, L);
 	return F32(atof(C));
 }
-Fcolor CIniFile::r_fcolor(const char* S, const char* L)
+Fcolor CConfigurationFile::r_fcolor(const char* S, const char* L)
 {
 	const char* C = r_string(S, L);
 	Fcolor V = { 0, 0, 0, 0 };
 	sscanf(C, "%f,%f,%f,%f", &V.r, &V.g, &V.b, &V.a);
 	return V;
 }
-U32 CIniFile::r_color(const char* S, const char* L)
+U32 CConfigurationFile::r_color(const char* S, const char* L)
 {
 	const char* C = r_string(S, L);
 	U32 r = 0;
@@ -599,49 +599,49 @@ U32 CIniFile::r_color(const char* S, const char* L)
 	return color_rgba(r, g, b, a);
 }
 
-Ivector2 CIniFile::r_ivector2(const char* S, const char* L)
+Ivector2 CConfigurationFile::r_ivector2(const char* S, const char* L)
 {
 	const char* C = r_string(S, L);
 	Ivector2 V = { 0, 0 };
 	sscanf(C, "%d,%d", &V.x, &V.y);
 	return V;
 }
-Ivector3 CIniFile::r_ivector3(const char* S, const char* L)
+Ivector3 CConfigurationFile::r_ivector3(const char* S, const char* L)
 {
 	const char* C = r_string(S, L);
 	Ivector3 V = { 0, 0, 0 };
 	sscanf(C, "%d,%d,%d", &V.x, &V.y, &V.z);
 	return V;
 }
-Ivector4 CIniFile::r_ivector4(const char* S, const char* L)
+Ivector4 CConfigurationFile::r_ivector4(const char* S, const char* L)
 {
 	const char* C = r_string(S, L);
 	Ivector4 V = { 0, 0, 0, 0 };
 	sscanf(C, "%d,%d,%d,%d", &V.x, &V.y, &V.z, &V.w);
 	return V;
 }
-Fvector2 CIniFile::r_fvector2(const char* S, const char* L)
+Fvector2 CConfigurationFile::r_fvector2(const char* S, const char* L)
 {
 	const char* C = r_string(S, L);
 	Fvector2 V = { 0.0f, 0.0f };
 	sscanf(C, "%f,%f", &V.x, &V.y);
 	return V;
 }
-Fvector3 CIniFile::r_fvector3(const char* S, const char* L)
+Fvector3 CConfigurationFile::r_fvector3(const char* S, const char* L)
 {
 	const char* C = r_string(S, L);
 	Fvector3 V = { 0.0f, 0.0f, 0.0f };
 	sscanf(C, "%f,%f,%f", &V.x, &V.y, &V.z);
 	return V;
 }
-Fvector4 CIniFile::r_fvector4(const char* S, const char* L)
+Fvector4 CConfigurationFile::r_fvector4(const char* S, const char* L)
 {
 	const char* C = r_string(S, L);
 	Fvector4 V = { 0.0f, 0.0f, 0.0f, 0.0f };
 	sscanf(C, "%f,%f,%f,%f", &V.x, &V.y, &V.z, &V.w);
 	return V;
 }
-BOOL CIniFile::r_bool(const char* S, const char* L)
+BOOL CConfigurationFile::r_bool(const char* S, const char* L)
 {
 	const char* C = r_string(S, L);
 	char B[8];
@@ -649,13 +649,13 @@ BOOL CIniFile::r_bool(const char* S, const char* L)
 	strlwr(B);
 	return IsBOOL(B);
 }
-CLASS_ID CIniFile::r_clsid(const char* S, const char* L)
+CLASS_ID CConfigurationFile::r_clsid(const char* S, const char* L)
 {
 	const char* C = r_string(S, L);
 	return TEXT2CLSID(C);
 }
 
-int CIniFile::r_token(const char* S, const char* L, const xr_token* token_list)
+int CConfigurationFile::r_token(const char* S, const char* L, const xr_token* token_list)
 {
 	const char* C = r_string(S, L);
 	for (int i = 0; token_list[i].name; i++)
@@ -669,7 +669,7 @@ int CIniFile::r_token(const char* S, const char* L, const xr_token* token_list)
 	return 0;
 }
 
-BOOL CIniFile::r_line(const char* S, int L, const char** N, const char** V)
+BOOL CConfigurationFile::r_line(const char* S, int L, const char** N, const char** V)
 {
 	Sect& SS = r_section(S);
 	if (L >= (int) SS.Data.size( ) || L < 0)
@@ -689,7 +689,7 @@ BOOL CIniFile::r_line(const char* S, int L, const char** N, const char** V)
 
 	return FALSE;
 }
-BOOL CIniFile::r_line(const CSharedString& S, int L, const char** N, const char** V)
+BOOL CConfigurationFile::r_line(const CSharedString& S, int L, const char** N, const char** V)
 {
 	return r_line(*S, L, N, V);
 }
@@ -697,7 +697,7 @@ BOOL CIniFile::r_line(const CSharedString& S, int L, const char** N, const char*
 //--------------------------------------------------------------------------------------------------------
 // Write functions
 //--------------------------------------------------------------------------------------
-void CIniFile::w_string(const char* S, const char* L, const char* V, const char* comment)
+void CConfigurationFile::w_string(const char* S, const char* L, const char* V, const char* comment)
 {
 	R_ASSERT(!bReadOnly);
 
@@ -721,7 +721,7 @@ void CIniFile::w_string(const char* S, const char* L, const char* V, const char*
 	_parse(value, V);
 
 	// duplicate & insert
-	Item I;
+	SItem I;
 	Sect& data = r_section(sect);
 	I.first = (line[0] ? line : 0);
 	I.second = (value[0] ? value : 0);
@@ -749,104 +749,104 @@ void CIniFile::w_string(const char* S, const char* L, const char* V, const char*
 		data.Data.insert(it, I);
 	}
 }
-void CIniFile::w_u8(const char* S, const char* L, U8 V, const char* comment)
+void CConfigurationFile::w_u8(const char* S, const char* L, U8 V, const char* comment)
 {
 	string128 temp;
 	sprintf_s(temp, sizeof(temp), "%d", V);
 	w_string(S, L, temp, comment);
 }
-void CIniFile::w_u16(const char* S, const char* L, U16 V, const char* comment)
+void CConfigurationFile::w_u16(const char* S, const char* L, U16 V, const char* comment)
 {
 	string128 temp;
 	sprintf_s(temp, sizeof(temp), "%d", V);
 	w_string(S, L, temp, comment);
 }
-void CIniFile::w_u32(const char* S, const char* L, U32 V, const char* comment)
+void CConfigurationFile::w_u32(const char* S, const char* L, U32 V, const char* comment)
 {
 	string128 temp;
 	sprintf_s(temp, sizeof(temp), "%d", V);
 	w_string(S, L, temp, comment);
 }
-void CIniFile::w_s8(const char* S, const char* L, S8 V, const char* comment)
+void CConfigurationFile::w_s8(const char* S, const char* L, S8 V, const char* comment)
 {
 	string128 temp;
 	sprintf_s(temp, sizeof(temp), "%d", V);
 	w_string(S, L, temp, comment);
 }
-void CIniFile::w_s16(const char* S, const char* L, S16 V, const char* comment)
+void CConfigurationFile::w_s16(const char* S, const char* L, S16 V, const char* comment)
 {
 	string128 temp;
 	sprintf_s(temp, sizeof(temp), "%d", V);
 	w_string(S, L, temp, comment);
 }
-void CIniFile::w_s32(const char* S, const char* L, int V, const char* comment)
+void CConfigurationFile::w_s32(const char* S, const char* L, int V, const char* comment)
 {
 	string128 temp;
 	sprintf_s(temp, sizeof(temp), "%d", V);
 	w_string(S, L, temp, comment);
 }
-void CIniFile::w_float(const char* S, const char* L, F32 V, const char* comment)
+void CConfigurationFile::w_float(const char* S, const char* L, F32 V, const char* comment)
 {
 	string128 temp;
 	sprintf_s(temp, sizeof(temp), "%f", V);
 	w_string(S, L, temp, comment);
 }
-void CIniFile::w_fcolor(const char* S, const char* L, const Fcolor& V, const char* comment)
+void CConfigurationFile::w_fcolor(const char* S, const char* L, const Fcolor& V, const char* comment)
 {
 	string128 temp;
 	sprintf_s(temp, sizeof(temp), "%f,%f,%f,%f", V.r, V.g, V.b, V.a);
 	w_string(S, L, temp, comment);
 }
 
-void CIniFile::w_color(const char* S, const char* L, U32 V, const char* comment)
+void CConfigurationFile::w_color(const char* S, const char* L, U32 V, const char* comment)
 {
 	string128 temp;
 	sprintf_s(temp, sizeof(temp), "%d,%d,%d,%d", color_get_R(V), color_get_G(V), color_get_B(V), color_get_A(V));
 	w_string(S, L, temp, comment);
 }
 
-void CIniFile::w_ivector2(const char* S, const char* L, const Ivector2& V, const char* comment)
+void CConfigurationFile::w_ivector2(const char* S, const char* L, const Ivector2& V, const char* comment)
 {
 	string128 temp;
 	sprintf_s(temp, sizeof(temp), "%d,%d", V.x, V.y);
 	w_string(S, L, temp, comment);
 }
 
-void CIniFile::w_ivector3(const char* S, const char* L, const Ivector3& V, const char* comment)
+void CConfigurationFile::w_ivector3(const char* S, const char* L, const Ivector3& V, const char* comment)
 {
 	string128 temp;
 	sprintf_s(temp, sizeof(temp), "%d,%d,%d", V.x, V.y, V.z);
 	w_string(S, L, temp, comment);
 }
 
-void CIniFile::w_ivector4(const char* S, const char* L, const Ivector4& V, const char* comment)
+void CConfigurationFile::w_ivector4(const char* S, const char* L, const Ivector4& V, const char* comment)
 {
 	string128 temp;
 	sprintf_s(temp, sizeof(temp), "%d,%d,%d,%d", V.x, V.y, V.z, V.w);
 	w_string(S, L, temp, comment);
 }
-void CIniFile::w_fvector2(const char* S, const char* L, const Fvector2& V, const char* comment)
+void CConfigurationFile::w_fvector2(const char* S, const char* L, const Fvector2& V, const char* comment)
 {
 	string128 temp;
 	sprintf_s(temp, sizeof(temp), "%f,%f", V.x, V.y);
 	w_string(S, L, temp, comment);
 }
 
-void CIniFile::w_fvector3(const char* S, const char* L, const Fvector3& V, const char* comment)
+void CConfigurationFile::w_fvector3(const char* S, const char* L, const Fvector3& V, const char* comment)
 {
 	string128 temp;
 	sprintf_s(temp, sizeof(temp), "%f,%f,%f", V.x, V.y, V.z);
 	w_string(S, L, temp, comment);
 }
 
-void CIniFile::w_fvector4(const char* S, const char* L, const Fvector4& V, const char* comment)
+void CConfigurationFile::w_fvector4(const char* S, const char* L, const Fvector4& V, const char* comment)
 {
 	string128 temp;
 	sprintf_s(temp, sizeof(temp), "%f,%f,%f,%f", V.x, V.y, V.z, V.w);
 	w_string(S, L, temp, comment);
 }
 
-void CIniFile::w_bool(const char* S, const char* L, bool V, const char* comment)
+void CConfigurationFile::w_bool(const char* S, const char* L, bool V, const char* comment)
 {
 	w_string(S, L, V ? "true" : "false", comment);
 }

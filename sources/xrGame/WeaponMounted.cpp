@@ -83,7 +83,7 @@ BOOL CWeaponMounted::net_Spawn(CSE_Abstract* DC)
 	R_ASSERT(Visual( ) && smart_cast<CKinematics*>(Visual( )));
 
 	CKinematics* K = smart_cast<CKinematics*>(Visual( ));
-	CIniFile* pUserData = K->LL_UserData( );
+	CConfigurationFile* pUserData = K->LL_UserData( );
 
 	R_ASSERT3(pUserData, "Empty MountedWeapon user data!", mw->get_visual( ));
 

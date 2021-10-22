@@ -8,7 +8,7 @@ class ENGINE_API IRenderDetailModel;
 class ENGINE_API CEffectRain
 {
 private:
-	struct Item
+	struct SItem
 	{
 		Fvector3						P;
 		Fvector3						Phit;
@@ -47,7 +47,7 @@ private:
 	ref_geom							hGeom_Drops;
 
 	// Data and logic
-	xr_vector<Item>						items;
+	xr_vector<SItem>						items;
 	States								state;
 
 	// Particles
@@ -69,10 +69,10 @@ private:
 	void			p_free				(Particle* P);
 
 	// Some methods
-	void			Born				(Item& dest, float radius);
+	void			Born				(SItem& dest, float radius);
 	void			Hit					(Fvector3& pos);
 	BOOL			RayPick				(const Fvector3& s, const Fvector3& d, float& range, collide::rq_target tgt);
-	void			RenewItem			(Item& dest, float height, BOOL bHit);
+	void			RenewItem			(SItem& dest, float height, BOOL bHit);
 
 public:
 					CEffectRain			( );

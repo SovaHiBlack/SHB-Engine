@@ -119,18 +119,18 @@ void	CResourceManager::OnDeviceCreate	(IReader* F)
 	if (FS.exist(Iname))
 	{
 		xr_delete		(m_description);
-		m_description	= xr_new<CIniFile>	(Iname);
-		CIniFile&	ini	= *m_description;
+		m_description	= xr_new<CConfigurationFile>	(Iname);
+		CConfigurationFile&	ini	= *m_description;
 		if (ini.section_exist("association"))
 		{
-			CIniFile::Sect& 	data = ini.r_section("association");
-			for (CIniFile::SectIt I=data.begin(); I!=data.end(); I++)	
+			CConfigurationFile::Sect& 	data = ini.r_section("association");
+			for (CConfigurationFile::SectIt I=data.begin(); I!=data.end(); I++)	
 			{
 				texture_detail			D;
 				string256				T;
 				float					s;
 
-				CIniFile::Item& item	= *I;
+				CConfigurationFile::SItem& item	= *I;
 				sscanf					(*item.second,"%[^,],%f",T,&s);
 
 				//

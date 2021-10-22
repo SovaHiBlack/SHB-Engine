@@ -11,7 +11,7 @@ public:
 	CHitImmunity( );
 	virtual ~CHitImmunity( );
 
-	virtual void LoadImmunities(const char* section, CIniFile* ini);
+	virtual void LoadImmunities(const char* section, CConfigurationFile* ini);
 
 	virtual float AffectHit(float power, ALife::EHitType hit_type);
 

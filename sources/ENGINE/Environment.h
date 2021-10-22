@@ -2,7 +2,7 @@
 
 // refs
 class ENGINE_API IRender_Visual;
-class ENGINE_API CIniFile;
+class ENGINE_API CConfigurationFile;
 class ENGINE_API CEnvironment;
 
 // refs - effects

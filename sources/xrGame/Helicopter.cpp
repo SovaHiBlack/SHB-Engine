@@ -166,7 +166,7 @@ BOOL CHelicopter::net_Spawn(CSE_Abstract*	DC)
 
 	R_ASSERT						(Visual()&&smart_cast<CKinematics*>(Visual()));
 	CKinematics* K					= smart_cast<CKinematics*>(Visual());
-	CIniFile* pUserData				= K->LL_UserData();
+	CConfigurationFile* pUserData				= K->LL_UserData();
 
 	m_rotate_x_bone			= K->LL_BoneID	(pUserData->r_string("helicopter_definition","wpn_rotate_x_bone"));
 	m_rotate_y_bone			= K->LL_BoneID	(pUserData->r_string("helicopter_definition","wpn_rotate_y_bone"));

@@ -157,7 +157,7 @@ void CUIMapWnd::Init(const char* xml_name, const char* start_from)
 	m_hint->SetAutoDelete(false);
 
 	// Load maps
-	CIniFile& gameLtx = *pGameIni;
+	CConfigurationFile& gameLtx = *pGameIni;
 
 	m_GlobalMap = xr_new<CUIGlobalMap>(this);
 	m_GlobalMap->SetAutoDelete(true);
@@ -174,8 +174,8 @@ void CUIMapWnd::Init(const char* xml_name, const char* start_from)
 
 	if (gameLtx.section_exist(sect_name.c_str( )))
 	{
-		CIniFile::Sect& S = gameLtx.r_section(sect_name.c_str( ));
-		CIniFile::SectCIt	it = S.Data.begin( ), end = S.Data.end( );
+		CConfigurationFile::Sect& S = gameLtx.r_section(sect_name.c_str( ));
+		CConfigurationFile::SectCIt	it = S.Data.begin( ), end = S.Data.end( );
 		for (; it != end; it++)
 		{
 			CSharedString map_name = it->first;

@@ -234,11 +234,11 @@ Fvector3 C_StepManager::get_foot_position(E_LegType leg_type)
 	return global_transform.c;
 }
 
-void C_StepManager::load_foot_bones(CIniFile::Sect& data)
+void C_StepManager::load_foot_bones(CConfigurationFile::Sect& data)
 {
-	for (CIniFile::SectCIt I = data.Data.begin( ); I != data.Data.end( ); ++I)
+	for (CConfigurationFile::SectCIt I = data.Data.begin( ); I != data.Data.end( ); ++I)
 	{
-		const CIniFile::Item& item = *I;
+		const CConfigurationFile::SItem& item = *I;
 
 		U16 index = smart_cast<CKinematics*>(m_object->Visual( ))->LL_BoneID(*item.second);
 		VERIFY3(index != BI_NONE, "foot bone not found", *item.second);
@@ -264,7 +264,7 @@ void C_StepManager::load_foot_bones(CIniFile::Sect& data)
 
 void C_StepManager::reload_foot_bones( )
 {
-	CIniFile* ini = smart_cast<CKinematics*>(m_object->Visual( ))->LL_UserData( );
+	CConfigurationFile* ini = smart_cast<CKinematics*>(m_object->Visual( ))->LL_UserData( );
 	if (ini && ini->section_exist("foot_bones"))
 	{
 		load_foot_bones(ini->r_section("foot_bones"));

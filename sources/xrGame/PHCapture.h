@@ -56,7 +56,7 @@ private:
 	void CapturedUpdate( );
 	void ReleasedUpdate( );
 	void ReleaseInCallBack( );
-	void Init(CIniFile* ini);
+	void Init(CConfigurationFile* ini);
 
 	void Deactivate( );
 	void CreateBody( );

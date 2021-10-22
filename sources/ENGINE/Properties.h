@@ -51,7 +51,8 @@ struct	xrP_BOOL
 
 struct	xrP_TOKEN
 {
-	struct Item {
+	struct SItem
+	{
 		u32			ID;
 		string64	str;
 	};
@@ -126,7 +127,7 @@ inline void		xrPREAD_MARKER	(IReader& fs)
 	R_ASSERT(ID==xrPREAD(fs)); fs.r(&data,sizeof(data)); \
 	switch (ID) \
 	{ \
-	case xrPID_TOKEN:	fs.advance(((xrP_TOKEN*)&data)->Count * sizeof(xrP_TOKEN::Item));	break; \
+	case xrPID_TOKEN:	fs.advance(((xrP_TOKEN*)&data)->Count * sizeof(xrP_TOKEN::SItem));	break; \
 	case xrPID_CLSID:	fs.advance(((xrP_CLSID*)&data)->Count * sizeof(CLASS_ID));			break; \
 	}; \
 }
@@ -143,7 +144,7 @@ inline void		xrPREAD_MARKER	(IReader& fs)
 //	R_ASSERT(ID==xrPREAD(FS)); FS.Read(&data,sizeof(data));
 //	switch (ID)
 //	{
-//	case xrPID_TOKEN:	FS.Advance(((xrP_TOKEN*)&data)->Count * sizeof(xrP_TOKEN::Item));	break;
+//	case xrPID_TOKEN:	FS.Advance(((xrP_TOKEN*)&data)->Count * sizeof(xrP_TOKEN::SItem));	break;
 //	case xrPID_CLSID:	FS.Advance(((xrP_CLSID*)&data)->Count * sizeof(CLASS_ID));			break;
 //	};
 //}

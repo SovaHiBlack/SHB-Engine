@@ -27,7 +27,7 @@
 #include "xrXRC.h"
 #include "../xrSound/Sound.h"
 
-extern ENGINE_API CIniFile* pGameIni;
+extern ENGINE_API CConfigurationFile* pGameIni;
 
 #pragma comment(lib, "Core.lib")
 #pragma comment(lib, "xrCDB.lib")

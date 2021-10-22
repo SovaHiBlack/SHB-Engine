@@ -1,6 +1,4 @@
 // LocatorAPI.cpp: implementation of the CLocatorAPI class.
-//
-//////////////////////////////////////////////////////////////////////
 
 #include "stdafx.h"
 
@@ -332,7 +330,6 @@ IReader* open_chunk(void* ptr, U32 ID)
 	return nullptr;
 }
 
-
 void CLocatorAPI::ProcessArchive(const char* _path, const char* base_path)
 {
 	// find existing archive
@@ -424,10 +421,13 @@ void CLocatorAPI::ProcessArchive(const char* _path, const char* base_path)
 
 		Register(full, (U32) vfs, crc, ptr, size_real, size_compr, 0);
 	}
+
 	hdr->close( );
 
 	if (g_temporary_stuff_subst)
+	{
 		g_temporary_stuff = g_temporary_stuff_subst;
+	}
 }
 
 void CLocatorAPI::ProcessOne(const char* path, const _finddata_t& F)
@@ -439,21 +439,42 @@ void CLocatorAPI::ProcessOne(const char* path, const _finddata_t& F)
 	strcat_s(N, F.name);
 	xr_strlwr(N);
 
-	if (F.attrib & _A_HIDDEN)			return;
+	if (F.attrib & _A_HIDDEN)
+	{
+		return;
+	}
 
 	if (F.attrib & _A_SUBDIR)
 	{
-		if (bNoRecurse)				return;
-		if (0 == xr_strcmp(F.name, "."))	return;
-		if (0 == xr_strcmp(F.name, "..")) return;
+		if (bNoRecurse)
+		{
+			return;
+		}
+
+		if (0 == xr_strcmp(F.name, "."))
+		{
+			return;
+		}
+
+		if (0 == xr_strcmp(F.name, ".."))
+		{
+			return;
+		}
+
 		strcat(N, "\\");
 		Register(N, 0xffffffff, 0, 0, F.size, F.size, (U32) F.time_write);
 		Recurse(N);
 	}
 	else
 	{
-		if (strext(N) && 0 == strncmp(strext(N), ".db", 3))		ProcessArchive(N);
-		else												Register(N, 0xffffffff, 0, 0, F.size, F.size, (U32) F.time_write);
+		if (strext(N) && 0 == strncmp(strext(N), ".db", 3))
+		{
+			ProcessArchive(N);
+		}
+		else
+		{
+			Register(N, 0xffffffff, 0, 0, F.size, F.size, (U32) F.time_write);
+		}
 	}
 }
 
@@ -461,7 +482,6 @@ inline bool pred_str_ff(const _finddata_t& x, const _finddata_t& y)
 {
 	return xr_strcmp(x.name, y.name) < 0;
 }
-
 
 bool ignore_name(const char* _name)
 {
@@ -475,8 +495,7 @@ bool ignore_name(const char* _name)
 
 bool ignore_path(const char* _path)
 {
-	HANDLE h = CreateFile(_path, 0, 0, NULL, OPEN_EXISTING,
-		FILE_ATTRIBUTE_READONLY | FILE_FLAG_NO_BUFFERING, NULL);
+	HANDLE h = CreateFile(_path, 0, 0, NULL, OPEN_EXISTING, FILE_ATTRIBUTE_READONLY | FILE_FLAG_NO_BUFFERING, NULL);
 
 	if (h != INVALID_HANDLE_VALUE)
 	{
@@ -498,12 +517,12 @@ bool CLocatorAPI::Recurse(const char* path)
 	strcpy_s(N, sizeof(N), path);
 	strcat(N, "*.*");
 
-//	rec_files.reserve(256);
+	// rec_files.reserve(256);
 	using FFVec = xr_vector<_finddata_t>;
 	FFVec rec_files;
 	rec_files.reserve(1224);
 
-	// find all files    
+	// find all files
 	if (-1 == (hFile = _findfirst(N, &sFile)))
 	{
 		// Log		("! Wrong path: ",path);
@@ -518,28 +537,35 @@ bool CLocatorAPI::Recurse(const char* path)
 
 		// загоняем в вектор для того *.db* приходили в сортированном порядке
 		if (!ignore_name(sFile.name) && !ignore_path(full_path))
+		{
 			rec_files.push_back(sFile);
+		}
 
 		while (_findnext(hFile, &sFile) == 0)
 		{
 			strcpy_s(full_path, sizeof(full_path), path);
 			strcat(full_path, sFile.name);
 			if (!ignore_name(sFile.name) && !ignore_path(full_path))
+			{
 				rec_files.push_back(sFile);
+			}
 		}
 	}
 	else
 	{
 		// загоняем в вектор для того *.db* приходили в сортированном порядке
 		if (!ignore_name(sFile.name))
+		{
 			rec_files.push_back(sFile);
+		}
 
 		while (_findnext(hFile, &sFile) == 0)
 		{
 			if (!ignore_name(sFile.name))
+			{
 				rec_files.push_back(sFile);
+			}
 		}
-
 	}
 
 	_findclose(hFile);
@@ -559,11 +585,15 @@ bool CLocatorAPI::Recurse(const char* path)
 
 	std::sort(rec_files.begin( ), rec_files.end( ), pred_str_ff);
 	for (const auto& el : rec_files)
+	{
 		ProcessOne(path, el);
+	}
 
 	// insert self
-	if (path && path[0])\
+	if (path && path[0])
+	{
 		Register(path, 0xffffffff, 0, 0, 0, 0, 0);
+	}
 
 	return true;
 }
@@ -695,11 +725,11 @@ void CLocatorAPI::_initialize(U32 flags, const char* target_folder, const char* 
 			U32 fl = 0;
 			_GetItem(temp, 0, b_v, _delimiter);
 
-			if (CIniFile::IsBOOL(b_v))
+			if (CConfigurationFile::IsBOOL(b_v))
 				fl |= FS_Path::flRecurse;
 
 			_GetItem(temp, 1, b_v, _delimiter);
-			if (CIniFile::IsBOOL(b_v))
+			if (CConfigurationFile::IsBOOL(b_v))
 				fl |= FS_Path::flNotif;
 
 			_GetItem(temp, 2, root, _delimiter);

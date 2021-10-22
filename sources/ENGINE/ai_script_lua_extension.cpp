@@ -102,7 +102,7 @@ void Script::vfLoadStandardScripts(CLuaVirtualMachine *tpLuaVM)
 {
 	string256		S,S1;
 	FS.update_path	(S,"$game_data$","script.ltx");
-	CIniFile* l_tpIniFile = xr_new<CIniFile>(S);
+	CConfigurationFile* l_tpIniFile = xr_new<CConfigurationFile>(S);
 	R_ASSERT		(l_tpIniFile);
 	const char* caScriptString = l_tpIniFile->r_string("common","script");
 

@@ -45,7 +45,7 @@ protected:
 
 private:
 	void				reload_foot_bones( );
-	void				load_foot_bones(CIniFile::Sect& data);
+	void				load_foot_bones(CConfigurationFile::Sect& data);
 
 	float				get_blend_time( );
 };

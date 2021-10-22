@@ -11,10 +11,10 @@
 #include "script_token_list.h"
 #include "script_export_space.h"
 
-class CScriptIniFile : public CIniFile
+class CScriptIniFile : public CConfigurationFile
 {
 protected:
-	typedef CIniFile inherited;
+	typedef CConfigurationFile inherited;
 
 public:
 						CScriptIniFile		(IReader *F, const char* path=0);

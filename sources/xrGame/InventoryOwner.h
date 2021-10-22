@@ -268,7 +268,7 @@ public:
 	inline CTradeParameters& trade_parameters( ) const;
 	virtual const char* trade_section( ) const;
 	float				deficit_factor(const CSharedString& section) const;
-	void				buy_supplies(CIniFile& ini_file, const char* section);
+	void				buy_supplies(CConfigurationFile& ini_file, const char* section);
 	void				sell_useless_items( );
 	virtual void				on_before_sell(CInventoryItem* item)
 	{ }

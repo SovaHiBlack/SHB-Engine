@@ -621,14 +621,15 @@ typedef RTokenValue<u32>RToken32Value;
 
 class TokenValueSH: public CustomValue<u32>{
 public:
-	struct Item {
+	struct SItem
+	{
 		u32				ID;
 		string64		str;
 	};
 	u32					cnt;
-	const Item*			items;
+	const SItem*			items;
 public:
-						TokenValueSH	(u32* val, const Item* _items, u32 _cnt):CustomValue<u32>(val),cnt(_cnt),items(_items){};
+						TokenValueSH	(u32* val, const SItem* _items, u32 _cnt):CustomValue<u32>(val),cnt(_cnt),items(_items){};
 	virtual xr_string	GetDrawText		(TOnDrawTextEvent OnDrawText)
 	{
 		u32 draw_val 	= GetValue();

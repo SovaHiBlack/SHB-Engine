@@ -221,7 +221,7 @@ BOOL CGameObject::net_Spawn(CSE_Abstract* DC)
 	{
 #pragma warning(push)
 #pragma warning(disable:4238)
-		m_ini_file = xr_new<CIniFile>(&IReader((void*) (*(O->m_ini_string)), O->m_ini_string.size( )), FS.get_path("$game_config$")->m_Path);
+		m_ini_file = xr_new<CConfigurationFile>(&IReader((void*) (*(O->m_ini_string)), O->m_ini_string.size( )), FS.get_path("$game_config$")->m_Path);
 #pragma warning(pop)
 	}
 

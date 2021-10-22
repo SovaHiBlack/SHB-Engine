@@ -1,13 +1,13 @@
 #pragma once
 
 // refs
-class CIniFile;
+class CConfigurationFile;
 struct xr_token;
 
-class CORE_API CIniFile
+class CORE_API CConfigurationFile
 {
 public:
-	struct CORE_API	Item
+	struct CORE_API SItem
 	{
 		CSharedString	first;
 		CSharedString	second;
@@ -16,7 +16,7 @@ public:
 		CSharedString	comment;
 #endif // def DEBUG
 
-		Item( ) : first(0), second(0)
+		SItem( ) : first(0), second(0)
 
 #ifdef DEBUG
 			, comment(0)
@@ -25,7 +25,7 @@ public:
 		{ }
 	};
 
-	using Items = xr_vector<Item>;
+	using Items = xr_vector<SItem>;
 	using SectIt_ = Items::iterator;
 	using SectCIt = Items::const_iterator;
 
@@ -41,8 +41,8 @@ public:
 	using RootIt = Root::iterator;
 
 	// factorisation
-	static CIniFile* Create(const char* szFileName, BOOL ReadOnly = TRUE);
-	static void			Destroy(CIniFile*);
+	static CConfigurationFile* Create(const char* szFileName, BOOL ReadOnly = TRUE);
+	static void			Destroy(CConfigurationFile*);
 	static inline BOOL		IsBOOL(const char* B)
 	{
 		return (xr_strcmp(B, "on") == 0 || xr_strcmp(B, "yes") == 0 || xr_strcmp(B, "true") == 0 || xr_strcmp(B, "1") == 0);
@@ -57,9 +57,9 @@ private:
 public:
 	BOOL		bSaveAtEnd;
 
-	CIniFile(IReader* F, const char* path = 0);
-	CIniFile(const char* szFileName, BOOL ReadOnly = TRUE, BOOL bLoadAtStart = TRUE, BOOL SaveAtEnd = TRUE);
-	virtual 	~CIniFile( );
+	CConfigurationFile(IReader* F, const char* path = 0);
+	CConfigurationFile(const char* szFileName, BOOL ReadOnly = TRUE, BOOL bLoadAtStart = TRUE, BOOL SaveAtEnd = TRUE);
+	virtual 	~CConfigurationFile( );
 	bool		save_as(const char* new_fname = 0);
 
 	const char* fname( )
@@ -199,4 +199,4 @@ public:
 };
 
 // Main configuration file
-extern CORE_API CIniFile* pSettings;
+extern CORE_API CConfigurationFile* pSettings;

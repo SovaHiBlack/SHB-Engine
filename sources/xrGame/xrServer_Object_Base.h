@@ -84,7 +84,7 @@ public:
 	CLASS_ID						m_tClassID;
 	int								m_script_clsid;
 	CSharedString						m_ini_string;
-	CIniFile* m_ini_file;
+	CConfigurationFile* m_ini_file;
 
 	// for ALife control
 	bool							m_bALifeControl;
@@ -153,7 +153,7 @@ public:
 		VERIFY(m_script_clsid >= 0);
 		return (m_script_clsid);
 	}
-	CIniFile& spawn_ini( );
+	CConfigurationFile& spawn_ini( );
 
 // for smart cast
 	virtual CSE_ALifeGroupAbstract* cast_group_abstract( )

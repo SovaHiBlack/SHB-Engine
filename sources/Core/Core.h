@@ -183,7 +183,7 @@ using RStringVec = xr_vector<CSharedString>;
 #include "FS.h"
 #include "Log.h"
 #include "xr_trims.h"
-#include "IniFile.h"
+#include "ConfigurationFile.h"
 #include "LocatorAPI.h"
 #include "FTimer.h"
 #include "fastdelegate.h"

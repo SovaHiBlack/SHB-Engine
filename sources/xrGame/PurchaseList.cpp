@@ -11,16 +11,16 @@
 
 static float min_deficit_factor = 0.3f;
 
-void CPurchaseList::process(CIniFile& ini_file, const char* section, CInventoryOwner& owner)
+void CPurchaseList::process(CConfigurationFile& ini_file, const char* section, CInventoryOwner& owner)
 {
 	owner.sell_useless_items( );
 
 	m_deficits.clear( );
 
 	const CGameObject& game_object = smart_cast<const CGameObject&>(owner);
-	CIniFile::Sect& S = ini_file.r_section(section);
-	CIniFile::SectCIt I = S.Data.begin( );
-	CIniFile::SectCIt E = S.Data.end( );
+	CConfigurationFile::Sect& S = ini_file.r_section(section);
+	CConfigurationFile::SectCIt I = S.Data.begin( );
+	CConfigurationFile::SectCIt E = S.Data.end( );
 	for (; I != E; ++I)
 	{
 		VERIFY3((*I).second.size( ), "PurchaseList : cannot handle lines in section without values", section);

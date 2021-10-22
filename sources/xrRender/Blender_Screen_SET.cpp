@@ -36,7 +36,7 @@ void	CBlender_Screen_SET::Save	( IWriter& fs	)
 	IBlender::Save	(fs);
 
 	// Blend mode
-	xrP_TOKEN::Item	I;
+	xrP_TOKEN::SItem	I;
 	xrPWRITE_PROP	(fs,"Blending",	xrPID_TOKEN,     oBlend);
 	I.ID = 0; strcpy(I.str,"SET");			fs.w		(&I,sizeof(I));
 	I.ID = 1; strcpy(I.str,"BLEND");		fs.w		(&I,sizeof(I));

@@ -346,7 +346,7 @@ BOOL CStalker::net_Spawn			(CSE_Abstract* DC)
 
 	//загрузить иммунитеты из модельки сталкера
 	CKinematics* pKinematics = smart_cast<CKinematics*>(Visual()); VERIFY(pKinematics);
-	CIniFile* ini = pKinematics->LL_UserData();
+	CConfigurationFile* ini = pKinematics->LL_UserData();
 	if(ini)
 	{
 		if(ini->section_exist("immunities"))
@@ -985,27 +985,24 @@ void CStalker::load_critical_wound_bones()
 	fill_bones_body_parts			("leg_right",	critical_wound_type_leg_right);
 }
 
-void CStalker::fill_bones_body_parts	(const char* bone_id, const ECriticalWoundType &wound_type)
+void CStalker::fill_bones_body_parts(const char* bone_id, const ECriticalWoundType& wound_type)
 {
-	const char* body_parts_section_id = pSettings->r_string(cNameSect(),"body_parts_section_id");
-	VERIFY					(body_parts_section_id);
+	const char* body_parts_section_id	= pSettings->r_string(cNameSect( ), "body_parts_section_id");
+	VERIFY								(body_parts_section_id);
 
-	const char* body_part_section_id = pSettings->r_string(body_parts_section_id,bone_id);
-	VERIFY					(body_part_section_id);
+	const char* body_part_section_id	= pSettings->r_string(body_parts_section_id, bone_id);
+	VERIFY								(body_part_section_id);
 
-	CKinematics				*kinematics	= smart_cast<CKinematics*>(Visual());
-	VERIFY					(kinematics);
+	CKinematics* kinematics				= smart_cast<CKinematics*>(Visual( ));
+	VERIFY(kinematics);
 
-	CIniFile::Sect			&body_part_section = pSettings->r_section(body_part_section_id);
-	CIniFile::SectCIt		I = body_part_section.Data.begin();
-	CIniFile::SectCIt		E = body_part_section.Data.end();
-	for ( ; I != E; ++I)
-		m_bones_body_parts.insert	(
-			std::make_pair(
-				kinematics->LL_BoneID((*I).first),
-				u32(wound_type)
-			)
-		);
+	CConfigurationFile::Sect& body_part_section	= pSettings->r_section(body_part_section_id);
+	CConfigurationFile::SectCIt I					= body_part_section.Data.begin( );
+	CConfigurationFile::SectCIt E					= body_part_section.Data.end( );
+	for (; I != E; ++I)
+	{
+		m_bones_body_parts.insert		(std::make_pair(kinematics->LL_BoneID((*I).first), unsigned int(wound_type)));
+	}
 }
 
 void CStalker::on_before_change_team			()

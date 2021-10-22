@@ -5,7 +5,7 @@
 class ENGINE_API CSheduler
 {
 private:
-	struct Item
+	struct SItem
 	{
 		u32										dwTimeForExecute;
 		u32										dwTimeOfLastExecute;
@@ -13,7 +13,7 @@ private:
 		ISheduled*								Object;
 		u32										dwPadding;				// for align-issues
 
-		inline bool		operator <				(Item& I)
+		inline bool		operator <				(SItem& I)
 		{
 			return dwTimeForExecute > I.dwTimeForExecute;
 		}
@@ -26,15 +26,15 @@ private:
 		ISheduled*								Object;
 	};
 
-	xr_vector<Item>								ItemsRT;
-	xr_vector<Item>								Items;
-	xr_vector<Item>								ItemsProcessed;
+	xr_vector<SItem>								ItemsRT;
+	xr_vector<SItem>								Items;
+	xr_vector<SItem>								ItemsProcessed;
 	xr_vector<ItemReg>							Registration;
 	bool										m_processing_now;
 
-	inline void			Push					(Item& I);
+	inline void			Push					(SItem& I);
 	inline void			Pop						( );
-	inline Item&		Top						( )
+	inline SItem&		Top						( )
 	{
 		return Items.front( );
 	}

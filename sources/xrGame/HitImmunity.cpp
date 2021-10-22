@@ -16,7 +16,7 @@ CHitImmunity::CHitImmunity( )
 CHitImmunity::~CHitImmunity( )
 { }
 
-void CHitImmunity::LoadImmunities(const char* imm_sect, CIniFile* ini)
+void CHitImmunity::LoadImmunities(const char* imm_sect, CConfigurationFile* ini)
 {
 	R_ASSERT2(ini->section_exist(imm_sect), imm_sect);
 

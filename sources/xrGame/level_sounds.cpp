@@ -128,15 +128,15 @@ void CLevelSoundManager::Load()
 	// music
 	m_CurrentTrack		= -1;
 
-	CIniFile& gameLtx	= *pGameIni;
+	CConfigurationFile& gameLtx	= *pGameIni;
 
 	if (gameLtx.section_exist(Level().name())){
 		if (gameLtx.line_exist(Level().name(),"music_tracks")){
 			const char* music_sect		= gameLtx.r_string(Level().name(),"music_tracks");
 			if (music_sect && music_sect[0]){
 				Msg("- Loading music tracks from '%s'...",music_sect);
-				CIniFile::Sect&	S	= gameLtx.r_section	(music_sect);
-				CIniFile::SectCIt it	= S.Data.begin(), end = S.Data.end();
+				CConfigurationFile::Sect&	S	= gameLtx.r_section	(music_sect);
+				CConfigurationFile::SectCIt it	= S.Data.begin(), end = S.Data.end();
 				m_MusicTracks.reserve	(S.Data.size());
 				for (;it!=end; it++){
 					m_MusicTracks.push_back	(SMusicTrack());

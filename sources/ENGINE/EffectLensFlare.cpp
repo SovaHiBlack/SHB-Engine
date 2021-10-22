@@ -56,7 +56,7 @@ ref_shader CLensFlareDescriptor::CreateShader(const char* tex_name, const char* 
 	return		R;
 }
 
-void CLensFlareDescriptor::load(CIniFile* pIni, const char* sect)
+void CLensFlareDescriptor::load(CConfigurationFile* pIni, const char* sect)
 {
 	section = sect;
 	m_Flags.set(flSource, pIni->r_bool(sect, "source"));
@@ -89,7 +89,7 @@ void CLensFlareDescriptor::load(CIniFile* pIni, const char* sect)
 		}
 	}
 
-	m_Flags.set(flGradient, CIniFile::IsBOOL(pIni->r_string(sect, "gradient")));
+	m_Flags.set(flGradient, CConfigurationFile::IsBOOL(pIni->r_string(sect, "gradient")));
 	if (m_Flags.is(flGradient))
 	{
 		const char* S = pIni->r_string(sect, "gradient_shader");
@@ -531,7 +531,7 @@ void CEffectLensFlare::Render(BOOL bSun, BOOL bFlares, BOOL bGradient)
 	}
 }
 
-int CEffectLensFlare::AppendDef(CIniFile* pIni, const char* sect)
+int CEffectLensFlare::AppendDef(CConfigurationFile* pIni, const char* sect)
 {
 	if (!sect || (0 == sect[0]))
 	{

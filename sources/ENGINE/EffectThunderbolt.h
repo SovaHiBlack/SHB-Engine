@@ -29,7 +29,7 @@ struct SThunderboltDesc
 	CLAItem*					color_anim;
 
 public:
-	SThunderboltDesc(CIniFile* pIni, const char* sect);
+	SThunderboltDesc(CConfigurationFile* pIni, const char* sect);
 	~SThunderboltDesc( );
 };
 
@@ -41,7 +41,7 @@ struct SThunderboltCollection
 	CSharedString					section;
 
 public:
-	SThunderboltCollection(CIniFile* pIni, const char* sect);
+	SThunderboltCollection(CConfigurationFile* pIni, const char* sect);
 	~SThunderboltCollection( );
 	SThunderboltDesc* GetRandomDesc( )
 	{
@@ -104,5 +104,5 @@ public:
 	void						OnFrame(int id, float period, float duration);
 	void						Render( );
 
-	int							AppendDef(CIniFile* pIni, const char* sect);
+	int							AppendDef(CConfigurationFile* pIni, const char* sect);
 };

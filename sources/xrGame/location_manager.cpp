@@ -11,7 +11,7 @@
 #include "location_manager.h"
 #include "GameObject.h"
 
-extern void	setup_location_types	(GameGraph::TERRAIN_VECTOR &m_vertex_types, CIniFile*ini, const char* string);
+extern void	setup_location_types	(GameGraph::TERRAIN_VECTOR &m_vertex_types, CConfigurationFile* ini, const char* string);
 
 CLocationManager::~CLocationManager	()
 { }

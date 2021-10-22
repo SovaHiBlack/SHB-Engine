@@ -80,7 +80,7 @@ public:
 
 	bool						bReady;
 
-	CIniFile* pLevel;
+	CConfigurationFile* pLevel;
 	CCustomHUD* pHUD;
 
 	struct	_esound_delegate

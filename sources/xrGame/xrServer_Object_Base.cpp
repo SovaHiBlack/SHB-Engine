@@ -151,20 +151,16 @@ CSE_Motion* CSE_Abstract::motion( )
 	return						(0);
 }
 
-CIniFile& CSE_Abstract::spawn_ini( )
+CConfigurationFile& CSE_Abstract::spawn_ini( )
 {
 	if (!m_ini_file)
 #pragma warning(push)
 #pragma warning(disable:4238)
-		m_ini_file = xr_new<CIniFile>(
-		&IReader(
-		(void*) (*(m_ini_string)),
-		m_ini_string.size( )
-		),
-		FS.get_path("$game_config$")->m_Path
-		);
+	{
+		m_ini_file = xr_new<CConfigurationFile>(&IReader((void*) (*(m_ini_string)), m_ini_string.size( )), FS.get_path("$game_config$")->m_Path);
+	}
 #pragma warning(pop)
-	return						(*m_ini_file);
+	return *m_ini_file;
 }
 
 void CSE_Abstract::Spawn_Write(CNetPacket& tNetPacket, BOOL bLocal)

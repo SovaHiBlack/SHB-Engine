@@ -115,7 +115,7 @@ public:
 	virtual CTextValue* 		__stdcall	CreateCText			(PropItemsVec& items, CSharedString key, char* val, u32 sz)=0;
 	virtual CListValue* 	 	__stdcall	CreateCList		    (PropItemsVec& items, CSharedString key, char* val, u32 sz, xr_string* lst, u32 cnt)=0;
 	virtual CTextValue* 		__stdcall	CreateCName		    (PropItemsVec& items, CSharedString key, char* val, u32 sz, ListItem* owner)=0;
-	virtual TokenValueSH*   	__stdcall	CreateTokenSH	    (PropItemsVec& items, CSharedString key, u32* val, const TokenValueSH::Item* lst, u32 cnt)=0;
+	virtual TokenValueSH*   	__stdcall	CreateTokenSH	    (PropItemsVec& items, CSharedString key, u32* val, const TokenValueSH::SItem* lst, u32 cnt)=0;
 	virtual CTextValue* 		__stdcall	CreateTexture		(PropItemsVec& items, CSharedString key, char* val, u32 sz)=0;
 };
 //---------------------------------------------------------------------------

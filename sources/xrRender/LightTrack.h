@@ -11,7 +11,8 @@ const	int					lt_hemisamples	= 26	;
 class	CROS_impl			: public IRender_ObjectSpecific
 {
 public:
-	struct	Item			{
+	struct	SItem
+	{
 		u32					frame_touched		;	// to track creation & removal
 		light*				source				;	// 
 		collide::ray_cache	cache				;	//
@@ -30,7 +31,7 @@ public:
 	u32						dwFrameSmooth		;
 
 	// 
-	xr_vector<Item>			track				;	// everything what touches
+	xr_vector<SItem>			track				;	// everything what touches
 	xr_vector<Light>		lights				;	// 
 
 	bool					result				[lt_hemisamples];

@@ -341,5 +341,5 @@ CPhysicsShell*				P_build_Shell				(CGameObject* obj,bool not_active_state,U16Ve
 CPhysicsShell*				P_build_Shell				(CGameObject* obj,bool not_active_state,BONE_P_MAP* bone_map, const char* fixed_bones)	;
 CPhysicsShell*				P_build_Shell				(CGameObject* obj,bool not_active_state,BONE_P_MAP* bone_map=NULL)					;
 CPhysicsShell*				P_build_SimpleShell			(CGameObject* obj,float mass,bool not_active_state)									;
-		void				ApplySpawnIniToPhysicShell	(CIniFile* ini,CPhysicsShell* physics_shell,bool fixed)								;
+		void				ApplySpawnIniToPhysicShell	(CConfigurationFile* ini,CPhysicsShell* physics_shell,bool fixed)								;
 		void				fix_bones					(const char* fixed_bones,CPhysicsShell* shell )											;

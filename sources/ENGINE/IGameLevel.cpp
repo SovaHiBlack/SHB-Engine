@@ -69,7 +69,7 @@ BOOL IGameLevel::Load			(u32 dwNum)
 		Debug.fatal(DEBUG_INFO, "Can't find level configuration file '%s'.", temp);
 	}
 
-	pLevel						= xr_new<CIniFile>	( temp );
+	pLevel						= xr_new<CConfigurationFile>	( temp );
 	
 	// Open
 	g_pGamePersistent->LoadTitle	("st_opening_stream");

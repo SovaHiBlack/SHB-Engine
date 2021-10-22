@@ -53,8 +53,8 @@ void SBoneProtections::reload(const CSharedString& bone_sect, CKinematics* kinem
 	m_default.armour = 0.0f;
 	m_default.BonePassBullet = FALSE;
 
-	CIniFile::Sect& protections = pSettings->r_section(bone_sect);
-	for (CIniFile::SectCIt i = protections.Data.begin( ); protections.Data.end( ) != i; ++i)
+	CConfigurationFile::Sect& protections = pSettings->r_section(bone_sect);
+	for (CConfigurationFile::SectCIt i = protections.Data.begin( ); protections.Data.end( ) != i; ++i)
 	{
 		string256 buffer;
 		float Koeff = (float) atof(_GetItem(*(*i).second, 0, buffer));

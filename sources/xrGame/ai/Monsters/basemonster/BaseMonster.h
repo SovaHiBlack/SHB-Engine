@@ -329,7 +329,7 @@ public:
 	ref_smem<SMonsterSettings>															m_base_settings;
 	ref_smem<SMonsterSettings>															m_current_settings;
 
-	void								settings_read									(CIniFile* ini, const char* section, SMonsterSettings& data);
+	void								settings_read									(CConfigurationFile* ini, const char* section, SMonsterSettings& data);
 	void								settings_load									(const char* section);
 	void								settings_overrides								( );
 

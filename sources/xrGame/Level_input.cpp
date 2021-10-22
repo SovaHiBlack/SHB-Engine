@@ -356,7 +356,7 @@ void CLevel::IR_OnKeyboardPress(int dik)
 				}
 
 				return;
-			}			
+			}
 		}
 		break;
 		case DIK_DIVIDE:

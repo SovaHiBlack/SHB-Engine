@@ -64,7 +64,7 @@ CPHCapture::CPHCapture(CPHCharacter* a_character, CPHShellHolder* a_taget_object
 		return;
 	}
 
-	CIniFile* ini = p_kinematics->LL_UserData( );
+	CConfigurationFile* ini = p_kinematics->LL_UserData( );
 
 	if (!ini)
 	{
@@ -100,22 +100,22 @@ CPHCapture::CPHCapture(CPHCharacter* a_character, CPHShellHolder* a_taget_object
 	b_disabled = false;
 	e_state = cstPulling;
 	b_character_feedback = false;
-	m_taget_object = NULL;
-	m_character = NULL;
+	m_taget_object = nullptr;
+	m_character = nullptr;
 	if (!a_taget_object ||
 		!a_taget_object->m_pPhysicsShell ||
 		!a_taget_object->m_pPhysicsShell->isActive( ) ||
 		smart_cast<CInventoryItem*>(a_taget_object)
 		)
 	{
-		m_taget_object = NULL;
+		m_taget_object = nullptr;
 		b_failed = true;
 		return;
 	}
 
 	if (!a_character || !a_character->b_exist)
 	{
-		m_taget_object = NULL;
+		m_taget_object = nullptr;
 		b_failed = true;
 		return;
 	}
@@ -126,7 +126,7 @@ CPHCapture::CPHCapture(CPHCharacter* a_character, CPHShellHolder* a_taget_object
 
 	if (!capturer_object)
 	{
-		m_taget_object = NULL;
+		m_taget_object = nullptr;
 		b_failed = true;
 		return;
 	}
@@ -135,23 +135,23 @@ CPHCapture::CPHCapture(CPHCharacter* a_character, CPHShellHolder* a_taget_object
 
 	if (!p_kinematics)
 	{
-		m_taget_object = NULL;
+		m_taget_object = nullptr;
 		b_failed = true;
 		return;
 	}
 
-	CIniFile* ini = p_kinematics->LL_UserData( );
+	CConfigurationFile* ini = p_kinematics->LL_UserData( );
 
 	if (!ini)
 	{
-		m_taget_object = NULL;
+		m_taget_object = nullptr;
 		b_failed = true;
 		return;
 	}
 
 	if (a_taget_element == BI_NONE)
 	{
-		m_taget_object = NULL;
+		m_taget_object = nullptr;
 		b_failed = true;
 		return;
 	}
@@ -178,7 +178,7 @@ CPHCapture::CPHCapture(CPHCharacter* a_character, CPHShellHolder* a_taget_object
 	CKinematics* K = smart_cast<CKinematics*>(V);
 	if (!K)
 	{
-		m_taget_object = NULL;
+		m_taget_object = nullptr;
 		b_failed = true;
 		return;
 	}
@@ -186,7 +186,7 @@ CPHCapture::CPHCapture(CPHCharacter* a_character, CPHShellHolder* a_taget_object
 	CBoneInstance& tag_bone = K->LL_GetBoneInstance(a_taget_element);
 	if (!tag_bone.Callback_Param)
 	{
-		m_taget_object = NULL;
+		m_taget_object = nullptr;
 		b_failed = true;
 		return;
 	}
@@ -194,7 +194,7 @@ CPHCapture::CPHCapture(CPHCharacter* a_character, CPHShellHolder* a_taget_object
 	m_taget_element = (CPhysicsElement*) tag_bone.Callback_Param;
 	if (!m_taget_element)
 	{
-		m_taget_object = NULL;
+		m_taget_object = nullptr;
 		b_failed = true;
 		return;
 	}
@@ -202,7 +202,7 @@ CPHCapture::CPHCapture(CPHCharacter* a_character, CPHShellHolder* a_taget_object
 	Init(ini);
 }
 
-void CPHCapture::Init(CIniFile* ini)
+void CPHCapture::Init(CConfigurationFile* ini)
 {
 	Fvector3 dir;
 	Fvector3 capture_bone_position;

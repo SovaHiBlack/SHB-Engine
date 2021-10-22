@@ -48,8 +48,8 @@ public:
 	inline const CTradeFactors& factors(_action_type type, const CSharedString& section) const;
 
 	template <typename _action_type>
-	inline void							process(_action_type type, CIniFile& ini_file, const CSharedString& section);
-	void							process(action_show, CIniFile& ini_file, const CSharedString& section);
+	inline void							process(_action_type type, CConfigurationFile& ini_file, const CSharedString& section);
+	void							process(action_show, CConfigurationFile& ini_file, const CSharedString& section);
 
 	template <typename _action_type>
 	inline void							default_factors(_action_type type, const CTradeFactors& trade_factors);
