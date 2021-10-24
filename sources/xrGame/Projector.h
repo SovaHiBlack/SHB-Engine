@@ -1,6 +1,6 @@
 #pragma once
 
-#include "script_object.h"
+#include "ScriptObject.h"
 
 class CLAItem;
 

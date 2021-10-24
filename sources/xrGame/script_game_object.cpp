@@ -12,7 +12,7 @@
 #include "script_entity_action.h"
 #include "ai_space.h"
 #include "script_engine.h"
-#include "script_entity.h"
+#include "ScriptEntity.h"
 #include "PHShellHolder.h"
 #include "Helicopter.h"
 #include "HolderCustom.h"

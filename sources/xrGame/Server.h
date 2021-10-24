@@ -67,7 +67,7 @@ private:
 
 	struct DelayedPacket
 	{
-		ClientID		SenderID;
+		CClientID		SenderID;
 		CNetPacket		Packet;
 		bool operator == (const DelayedPacket& other)
 		{
@@ -78,8 +78,8 @@ private:
 	xrCriticalSection			DelayedPackestCS;
 	xr_deque<DelayedPacket>		m_aDelayedPackets;
 	void						ProceedDelayedPackets( );
-	void						AddDelayedPacket(CNetPacket& Packet, ClientID Sender);
-	u32							OnDelayedMessage(CNetPacket& P, ClientID sender);			// Non-Zero means broadcasting with "flags" as returned
+	void						AddDelayedPacket(CNetPacket& Packet, CClientID Sender);
+	u32							OnDelayedMessage(CNetPacket& P, CClientID sender);			// Non-Zero means broadcasting with "flags" as returned
 
 	void						SendUpdatesToAll( );
 
@@ -128,13 +128,13 @@ public:
 	void					Perform_reject(CSE_Abstract* what, CSE_Abstract* from, int delta);
 	void					Perform_destroy(CSE_Abstract* tpSE_Abstract, u32 mode);
 
-	CSE_Abstract*			Process_spawn(CNetPacket& P, ClientID sender, BOOL bSpawnWithClientsMainEntityAsParent = FALSE, CSE_Abstract* tpExistedEntity = 0);
-	void					Process_update(CNetPacket& P, ClientID sender);
-	void					Process_save(CNetPacket& P, ClientID sender);
-	void					Process_event(CNetPacket& P, ClientID sender);
-	void					Process_event_ownership(CNetPacket& P, ClientID sender, u32 time, U16 ID, BOOL bForced = FALSE);
-	bool					Process_event_reject(CNetPacket& P, const ClientID sender, const u32 time, const U16 id_parent, const U16 id_entity, bool send_message = true);
-	void					Process_event_destroy(CNetPacket& P, ClientID sender, u32 time, U16 ID, CNetPacket* pEPack);
+	CSE_Abstract*			Process_spawn(CNetPacket& P, CClientID sender, BOOL bSpawnWithClientsMainEntityAsParent = FALSE, CSE_Abstract* tpExistedEntity = 0);
+	void					Process_update(CNetPacket& P, CClientID sender);
+	void					Process_save(CNetPacket& P, CClientID sender);
+	void					Process_event(CNetPacket& P, CClientID sender);
+	void					Process_event_ownership(CNetPacket& P, CClientID sender, u32 time, U16 ID, BOOL bForced = FALSE);
+	bool					Process_event_reject(CNetPacket& P, const CClientID sender, const u32 time, const U16 id_parent, const U16 id_entity, bool send_message = true);
+	void					Process_event_destroy(CNetPacket& P, CClientID sender, u32 time, U16 ID, CNetPacket* pEPack);
 
 	xrClientData*			SelectBestClientToMigrateTo(CSE_Abstract* E, BOOL bForceAnother = FALSE);
 	void					SendConnectResult(IClient* CL, U8 res, U8 res1, char* ResultStr);
@@ -169,15 +169,15 @@ public:
 	virtual					~CServer( );
 
 	// extended functionality
-	virtual u32				OnMessage(CNetPacket& P, ClientID sender);		// Non-Zero means broadcasting with "flags" as returned
+	virtual u32				OnMessage(CNetPacket& P, CClientID sender);		// Non-Zero means broadcasting with "flags" as returned
 	virtual void			OnCL_Connected(IClient* CL);
 	virtual void			OnCL_Disconnected(IClient* CL);
 	virtual bool			OnCL_QueryHost( );
-	virtual void			SendTo_LL(ClientID ID, void* data, u32 size, u32 dwFlags = DPNSEND_GUARANTEED, u32 dwTimeout = 0);
+	virtual void			SendTo_LL(CClientID ID, void* data, u32 size, u32 dwFlags = DPNSEND_GUARANTEED, u32 dwTimeout = 0);
 
 	virtual IClient*		client_Create( );								// create client info
 	virtual void			client_Replicate( );							// replicate current state to client
-	virtual IClient*		client_Find_Get(ClientID ID);					// Find earlier disconnected client
+	virtual IClient*		client_Find_Get(CClientID ID);					// Find earlier disconnected client
 	virtual void			client_Destroy(IClient* C);						// destroy client info
 
 	// utilities
@@ -198,7 +198,7 @@ public:
 		csPlayers.Leave( );
 	}
 
-	xrClientData*			ID_to_client(ClientID ID, bool ScanAll = false)
+	xrClientData*			ID_to_client(CClientID ID, bool ScanAll = false)
 	{
 		return (xrClientData*) (IPureServer::ID_to_client(ID, ScanAll));
 	}

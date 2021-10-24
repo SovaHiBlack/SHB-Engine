@@ -14,8 +14,8 @@
 #include "xrServer_Objects_ALife_Monsters.h"
 #include "clsid_game.h"
 #include "ef_primary.h"
-#include "alife_human_brain.h"
-#include "alife_human_object_handler.h"
+#include "ALifeHumanBrain.h"
+#include "ALifeHumanObjectHandler.h"
 
 inline CLASS_ID CBaseEvaluationFunction::clsid_member_item( ) const
 {

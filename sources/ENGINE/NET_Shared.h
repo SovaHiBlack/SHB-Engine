@@ -4,4 +4,4 @@
 #include "NetPacket.h"
 #include "NET_Messages.h"
 
-ENGINE_API extern ClientID BroadcastCID;
+ENGINE_API extern CClientID BroadcastCID;

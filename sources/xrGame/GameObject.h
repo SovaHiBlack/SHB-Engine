@@ -6,7 +6,7 @@
 //#include "ALife_space.h"
 #include "Hit.h"
 #include "UsableScriptObject.h"
-#include "script_binder.h"
+#include "ScriptBinder.h"
 
 class CPhysicsShell;
 class CSE_Abstract;

@@ -4,7 +4,7 @@
 #include "stdafx.h"
 
 #include "AlifeUpdateManager.h"
-#include "alife_simulator_header.h"
+#include "ALifeSimulatorHeader.h"
 #include "alife_time_manager.h"
 #include "alife_graph_registry.h"
 #include "alife_schedule_registry.h"

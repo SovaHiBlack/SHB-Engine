@@ -35,7 +35,7 @@ protected:
 	GameEventQueue*					m_event_queue;
 
 	//Events
-	virtual		void				OnEvent					(CNetPacket &tNetPacket, U16 type, u32 time, ClientID sender );
+	virtual		void				OnEvent					(CNetPacket &tNetPacket, U16 type, u32 time, CClientID sender );
 
 	virtual		void				ReadOptions				(CSharedString& options);
 	virtual		void				ConsoleCommands_Create	();
@@ -72,13 +72,13 @@ public:
 	virtual		void				SaveMapList				();
 	//virtual		bool				HasMapRotation			() {return m_bMapRotation; };
 	
-	virtual		void				OnPlayerConnect			(ClientID id_who);
-	virtual		void				OnPlayerDisconnect		(ClientID id_who, char* Name, U16 GameID);
-	//virtual		void				OnPlayerReady			(ClientID id_who)							   {};
-	//virtual		void				OnPlayerEnteredGame		(ClientID id_who)	{};
-	virtual		void				OnPlayerConnectFinished	(ClientID id_who)	{};
-	virtual		void				OnPlayerFire			(ClientID id_who, CNetPacket &P) {};
-	virtual		void				OnPlayer_Sell_Item		(ClientID id_who, CNetPacket &P) {};
+	virtual		void				OnPlayerConnect			(CClientID id_who);
+	virtual		void				OnPlayerDisconnect		(CClientID id_who, char* Name, U16 GameID);
+	//virtual		void				OnPlayerReady			(CClientID id_who)							   {};
+	//virtual		void				OnPlayerEnteredGame		(CClientID id_who)	{};
+	virtual		void				OnPlayerConnectFinished	(CClientID id_who)	{};
+	virtual		void				OnPlayerFire			(CClientID id_who, CNetPacket &P) {};
+	virtual		void				OnPlayer_Sell_Item		(CClientID id_who, CNetPacket &P) {};
 				//void				GenerateGameMessage		(CNetPacket &P);
 
 	//virtual		void				OnRoundStart			();									// старт раунда
@@ -96,13 +96,13 @@ public:
 	//virtual		game_PlayerState*	get_eid					(U16 id);
 	virtual		void*				get_client				(U16 id); //if exist
 	virtual		game_PlayerState*	get_it					(u32 it);
-	virtual		game_PlayerState*	get_id					(ClientID id);
+	virtual		game_PlayerState*	get_id					(CClientID id);
 	
 	//virtual		const char* get_name_it				(u32 it);
-	//virtual		const char* get_name_id				(ClientID id);
-	//const char* get_player_name_id		(ClientID id);
-	//virtual		U16					get_id_2_eid			(ClientID id);
-	virtual		ClientID			get_it_2_id				(u32 it);
+	//virtual		const char* get_name_id				(CClientID id);
+	//const char* get_player_name_id		(CClientID id);
+	//virtual		U16					get_id_2_eid			(CClientID id);
+	virtual		CClientID			get_it_2_id				(u32 it);
 	virtual		u32					get_players_count		();
 				CSE_Abstract*		get_entity_from_eid		(U16 id);
 				//RPoint				getRP					(U16 team_idx, u32 rp_idx);
@@ -119,14 +119,14 @@ public:
 	
 	virtual		void				OnSwitchPhase			(u32 old_phase, u32 new_phase);	
 				//CSE_Abstract*		spawn_begin				(const char* N);
-				//CSE_Abstract*		spawn_end				(CSE_Abstract* E, ClientID id);
+				//CSE_Abstract*		spawn_end				(CSE_Abstract* E, CClientID id);
 
 	// Utilities
 	//float							get_option_f			(const char* lst, const char* name, float def = 0.0f);
 	int								get_option_i			(const char* lst, const char* name, int def = 0);
 	//string64&						get_option_s			(const char* lst, const char* name, const char* def = 0);
 	//virtual		u32					get_alive_count			(u32 team);
-	//virtual		xr_vector<U16>*		get_children			(ClientID id_who);
+	//virtual		xr_vector<U16>*		get_children			(CClientID id_who);
 	void							u_EventGen				(CNetPacket& P, U16 type, U16 dest	);
 	void							u_EventSend				(CNetPacket& P, u32 dwFlags = DPNSEND_GUARANTEED);
 
@@ -144,17 +144,17 @@ public:
 	// Main
 	virtual		void				Create					(CSharedString& options);
 	virtual		void				Update					();
-	virtual		void				net_Export_State		(CNetPacket& P, ClientID id_to);				// full state
-	virtual		void				net_Export_Update		(CNetPacket& P, ClientID id_to, ClientID id);		// just incremental update for specific client
+	virtual		void				net_Export_State		(CNetPacket& P, CClientID id_to);				// full state
+	virtual		void				net_Export_Update		(CNetPacket& P, CClientID id_to, CClientID id);		// just incremental update for specific client
 	virtual		void				net_Export_GameTime		(CNetPacket& P);						// update GameTime only for remote clients
 
-	virtual		bool				change_level			(CNetPacket &net_packet, ClientID sender);
-	virtual		void				save_game				(CNetPacket &net_packet, ClientID sender);
-	virtual		bool				load_game				(CNetPacket &net_packet, ClientID sender);
-	//virtual		void				reload_game				(CNetPacket &net_packet, ClientID sender);
-	virtual		void				switch_distance			(CNetPacket &net_packet, ClientID sender);
+	virtual		bool				change_level			(CNetPacket &net_packet, CClientID sender);
+	virtual		void				save_game				(CNetPacket &net_packet, CClientID sender);
+	virtual		bool				load_game				(CNetPacket &net_packet, CClientID sender);
+	//virtual		void				reload_game				(CNetPacket &net_packet, CClientID sender);
+	virtual		void				switch_distance			(CNetPacket &net_packet, CClientID sender);
 
-				void				AddDelayedEvent			(CNetPacket &tNetPacket, U16 type, u32 time, ClientID sender );
+				void				AddDelayedEvent			(CNetPacket &tNetPacket, U16 type, u32 time, CClientID sender );
 				void				ProcessDelayedEvent		();
 	//virtual		BOOL				isFriendlyFireEnabled	()	{return FALSE;};
 	//virtual		BOOL				CanHaveFriendlyFire		()	= 0;

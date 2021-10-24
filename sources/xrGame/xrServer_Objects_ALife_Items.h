@@ -93,7 +93,7 @@ public:
 		return this;
 	}
 	virtual BOOL					Net_Relevant( );
-	virtual void					OnEvent(CNetPacket& tNetPacket, U16 type, u32 time, ClientID sender);
+	virtual void					OnEvent(CNetPacket& tNetPacket, U16 type, u32 time, CClientID sender);
 	SERVER_ENTITY_DECLARE_END
 		add_to_type_list(CSE_ALifeItem)
 #define script_type_list save_type_list(CSE_ALifeItem)
@@ -172,7 +172,7 @@ public:
 
 	CSE_ALifeItemWeapon(const char* caSection);
 	virtual							~CSE_ALifeItemWeapon( );
-	virtual void					OnEvent(CNetPacket& P, U16 type, u32 time, ClientID sender);
+	virtual void					OnEvent(CNetPacket& P, U16 type, u32 time, CClientID sender);
 	virtual u32						ef_main_weapon_type( ) const;
 	virtual u32						ef_weapon_type( ) const;
 	U8								get_slot( );

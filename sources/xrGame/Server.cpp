@@ -87,7 +87,7 @@ IClient* CServer::client_Create( )
 void CServer::client_Replicate( )
 { }
 
-IClient* CServer::client_Find_Get(ClientID ID)
+IClient* CServer::client_Find_Get(CClientID ID)
 {
 	ip_address				cAddress;
 
@@ -213,7 +213,7 @@ void CServer::Update( )
 		U16					ID;
 		Packet.r_begin(ID);
 		R_ASSERT(M_SPAWN == ID);
-		ClientID clientID;
+		CClientID clientID;
 		clientID.set(0xffff);
 		Process_spawn(Packet, clientID);
 	}
@@ -415,7 +415,7 @@ void console_log_cb(const char* text)
 	_tmp_log.push_back(text);
 }
 
-u32 CServer::OnDelayedMessage(CNetPacket& P, ClientID sender)			// Non-Zero means broadcasting with "flags" as returned
+u32 CServer::OnDelayedMessage(CNetPacket& P, CClientID sender)			// Non-Zero means broadcasting with "flags" as returned
 {
 	if (g_pGameLevel && Level( ).IsDemoSave( ))
 	{
@@ -475,7 +475,7 @@ u32 CServer::OnDelayedMessage(CNetPacket& P, ClientID sender)			// Non-Zero mean
 }
 
 extern float	g_fCatchObjectTime;
-u32 CServer::OnMessage(CNetPacket& P, ClientID sender)			// Non-Zero means broadcasting with "flags" as returned
+u32 CServer::OnMessage(CNetPacket& P, CClientID sender)			// Non-Zero means broadcasting with "flags" as returned
 {
 	if (g_pGameLevel && Level( ).IsDemoSave( ))
 	{
@@ -657,7 +657,8 @@ u32 CServer::OnMessage(CNetPacket& P, ClientID sender)			// Non-Zero means broad
 		break;
 		case M_CHANGE_LEVEL_GAME:
 		{
-			ClientID CID; CID.set(0xffffffff);
+			CClientID CID;
+			CID.set(0xffffffff);
 			SendBroadcast(CID, P, net_flags(TRUE, TRUE));
 		}
 		break;
@@ -775,7 +776,7 @@ bool CServer::CheckAdminRights(const CSharedString& user, const CSharedString& p
 	return res;
 }
 
-void CServer::SendTo_LL(ClientID ID, void* data, u32 size, u32 dwFlags, u32 dwTimeout)
+void CServer::SendTo_LL(CClientID ID, void* data, u32 size, u32 dwFlags, u32 dwTimeout)
 {
 	if (SV_Client && SV_Client->ID == ID)
 	{
@@ -1007,7 +1008,7 @@ void CServer::ProceedDelayedPackets( )
 	DelayedPackestCS.Leave( );
 };
 
-void CServer::AddDelayedPacket(CNetPacket& Packet, ClientID Sender)
+void CServer::AddDelayedPacket(CNetPacket& Packet, CClientID Sender)
 {
 	DelayedPackestCS.Enter( );
 

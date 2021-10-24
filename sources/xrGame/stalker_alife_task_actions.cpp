@@ -30,7 +30,7 @@
 #include "ai/stalker/ai_stalker_space.h"
 #include "ai_space.h"
 #include "xrServer_Objects_ALife_Monsters.h"
-#include "alife_human_brain.h"
+#include "ALifeHumanBrain.h"
 #include "alife_smart_terrain_task.h"
 
 using namespace StalkerSpace;

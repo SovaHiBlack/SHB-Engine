@@ -169,7 +169,7 @@ public:
 		w_vec3(M.k);
 		w_vec3(M.c);
 	}
-	inline void		w_clientID		(ClientID& C)
+	inline void		w_clientID		(CClientID& C)
 	{
 		w_u32(C.value( ));
 	}
@@ -448,7 +448,7 @@ public:
 		r_vec3(M.c);
 		M._44_ = 1;
 	}
-	inline void		r_clientID		(ClientID& C)
+	inline void		r_clientID		(CClientID& C)
 	{
 		u32 tmp;
 		r_u32(tmp);

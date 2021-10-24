@@ -194,7 +194,7 @@ CSE_Abstract* CALifeSimulator__spawn_item2(CALifeSimulator* self, const char* se
 	self->server( ).FreeID(item->ID, 0);
 	F_entity_Destroy(item);
 
-	ClientID clientID;
+	CClientID clientID;
 	clientID.set(0xffff);
 
 	U16									dummy;
@@ -245,7 +245,7 @@ CSE_Abstract* CALifeSimulator__spawn_ammo(CALifeSimulator* self, const char* sec
 	self->server( ).FreeID(item->ID, 0);
 	F_entity_Destroy(item);
 
-	ClientID clientID;
+	CClientID clientID;
 	clientID.set(0xffff);
 
 	U16									dummy;

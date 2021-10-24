@@ -30,9 +30,9 @@ bool r_bool(CNetPacket *self)
 	return			(!!self->r_u8());
 }
 
-ClientID r_clientID(CNetPacket *self)
+CClientID r_clientID(CNetPacket *self)
 {
-	ClientID		clientID;
+	CClientID		clientID;
 	self->r_clientID(clientID);
 	return clientID;
 }
@@ -46,11 +46,11 @@ void CScriptNetPacket::script_register(lua_State *L)
 	[
 		def("script_server_object_version", &script_server_object_version),
 		
-		class_<ClientID>("ClientID")
+		class_<CClientID>("ClientID")
 			.def(					constructor<>()				)
-			.def("value",			&ClientID::value			)
-			.def("set",				&ClientID::set				)
-			.def(self == other<ClientID>()),
+			.def("value",			&CClientID::value			)
+			.def("set",				&CClientID::set				)
+			.def(self == other<CClientID>()),
 
 		class_<CNetPacket>("net_packet")
 			.def(					constructor<>()				)

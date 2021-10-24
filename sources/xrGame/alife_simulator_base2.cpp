@@ -7,6 +7,7 @@
 ////////////////////////////////////////////////////////////////////////////
 
 #include "stdafx.h"
+
 #include "alife_simulator_base.h"
 #include "RelationRegistry.h"
 #include "alife_registry_wrappers.h"

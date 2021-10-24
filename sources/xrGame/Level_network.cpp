@@ -252,7 +252,7 @@ void CLevel::Send(CNetPacket& P, u32 dwFlags, u32 dwTimeout)
 		return;
 	}
 	// optimize the case when server located in our memory
-	ClientID _clid;
+	CClientID _clid;
 	_clid.set(1);
 	Server->OnMessage(P, _clid);
 }

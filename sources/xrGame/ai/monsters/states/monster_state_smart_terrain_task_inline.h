@@ -3,7 +3,7 @@
 #include "..\..\..\ALifeSimulator.h"
 #include "../../../alife_object_registry.h"
 #include "../../../xrServer_Objects_ALife_Monsters.h"
-#include "../../../alife_monster_brain.h"
+#include "..\..\..\ALifeMonsterBrain.h"
 
 #include "state_move_to_point.h"
 #include "state_custom_action.h"

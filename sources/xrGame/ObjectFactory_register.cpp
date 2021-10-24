@@ -135,7 +135,7 @@
 
 #include "HangingLamp.h"
 #include "PhysicObject.h"
-#include "script_object.h"
+#include "ScriptObject.h"
 #include "BreakableObject.h"
 #include "PHSkeletonObject.h"
 #include "DestroyablePhysicsObject.h"

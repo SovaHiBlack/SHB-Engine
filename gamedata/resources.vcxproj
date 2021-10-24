@@ -734,7 +734,6 @@
     <None Include="scripts\hide\level_news.script" />
     <None Include="scripts\hide\level_psy_antenna.script" />
     <None Include="scripts\hide\level_tips.script" />
-    <None Include="scripts\hide\lua_help.script" />
     <None Include="scripts\hide\memusage.script" />
     <None Include="scripts\hide\military_radio.script" />
     <None Include="scripts\hide\mil_test.script" />
@@ -891,6 +890,7 @@
     <None Include="scripts\hide\_test_aura_2.script" />
     <None Include="scripts\level_tasks.script" />
     <None Include="scripts\level_weathers.script" />
+    <None Include="scripts\lua_help.script" />
     <None Include="scripts\mob_alife_mgr.script" />
     <None Include="scripts\mob_camp.script" />
     <None Include="scripts\mob_combat.script" />

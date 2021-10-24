@@ -250,77 +250,8 @@
     <Filter Include="AI\ALife">
       <UniqueIdentifier>{9a7df263-1813-4cc7-9853-073e2cf53d8c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="AI\ALife\interaction_manager">
-      <UniqueIdentifier>{39f6c5bf-8dcb-49cb-80d7-3bf6f3101874}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\ALife\interaction_manager\communication_manager">
-      <UniqueIdentifier>{f4eb1644-26e0-4f4d-9bb2-6c1c3a11f3c2}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\ALife\interaction_manager\combat_manager">
-      <UniqueIdentifier>{66548dba-b35f-450e-b520-f57979ed33ff}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\ALife\interaction_manager\server_entities">
-      <UniqueIdentifier>{d2f0a722-f6d4-4243-8dd3-88288cc5122e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\ALife\interaction_manager\server_entities\anomalous_zone">
-      <UniqueIdentifier>{07c154f4-c5e6-455f-9e49-c1bc91d0f04f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\ALife\interaction_manager\server_entities\creature_abstract">
-      <UniqueIdentifier>{836aad21-d441-4ebd-99f2-90440e102652}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\ALife\interaction_manager\server_entities\dynamic_object">
-      <UniqueIdentifier>{6d6a11b7-fc4e-435c-b1c6-214e46f23a62}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\ALife\interaction_manager\server_entities\human">
-      <UniqueIdentifier>{2ffdbd18-b7dd-48ca-a8c1-6ccd6142cb90}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\ALife\interaction_manager\server_entities\human\brain">
-      <UniqueIdentifier>{58a74dc5-884e-4939-83e5-2424f767a75a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\ALife\interaction_manager\server_entities\human\object_handler">
-      <UniqueIdentifier>{f7c51f2e-b44a-4ea3-bcde-ee49a63da3a1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\ALife\interaction_manager\server_entities\group_abstract">
-      <UniqueIdentifier>{31ae2e45-75c2-4963-a4d4-202dd14bcce3}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\ALife\interaction_manager\server_entities\monster_abstract">
-      <UniqueIdentifier>{e1d45256-6c6b-4535-a843-7ae513862b27}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\ALife\interaction_manager\server_entities\monster_abstract\brain">
-      <UniqueIdentifier>{19197d8e-7e30-4728-83f1-78677d7ea1aa}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\ALife\interaction_manager\server_entities\monster_abstract\movement_manager">
-      <UniqueIdentifier>{195fa3eb-24c7-4621-a446-57b786dbc925}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\ALife\interaction_manager\server_entities\monster_abstract\movement_manager\detail_path_manager">
-      <UniqueIdentifier>{f60a7acc-d584-4a87-aea2-d9f5f2b39d4c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\ALife\interaction_manager\server_entities\monster_abstract\movement_manager\patrol_path_manager">
-      <UniqueIdentifier>{6a649bfe-d28a-4733-99f4-5f2bf841bbe5}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\ALife\interaction_manager\server_entities\object">
-      <UniqueIdentifier>{92cc9a44-a936-4040-a527-34be06164aff}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\ALife\interaction_manager\server_entities\online_offline_group">
-      <UniqueIdentifier>{99f66834-68eb-4565-9f2f-cbbae86240e4}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\ALife\interaction_manager\server_entities\online_offline_group\brain">
-      <UniqueIdentifier>{131bef78-4173-4bf0-9c25-8c9dbbe7a6ea}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\ALife\interaction_manager\server_entities\smart_zone">
-      <UniqueIdentifier>{fe515dcc-a1f3-4d7c-8159-5d051bd982b3}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\ALife\interaction_manager\server_entities\trader">
-      <UniqueIdentifier>{db2c8050-d2d5-48e6-a4e5-b7e3cc7a5124}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\ALife\interaction_manager\server_entities\trader_abstract">
-      <UniqueIdentifier>{c9702046-7498-44fa-a6e8-a084edd72852}</UniqueIdentifier>
-    </Filter>
     <Filter Include="AI\ALife\simulator_base">
       <UniqueIdentifier>{cae00d3a-c9e8-4c69-aeec-2a96c1ae3015}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\ALife\simulator_base\header">
-      <UniqueIdentifier>{f69a6381-0594-42c8-996a-a82762ac8ef9}</UniqueIdentifier>
     </Filter>
     <Filter Include="AI\ALife\simulator_base\registries">
       <UniqueIdentifier>{50190ba1-b5e1-4e5a-8018-b927899cfe2d}</UniqueIdentifier>
@@ -393,18 +324,6 @@
     </Filter>
     <Filter Include="AI\AMonsters\common\miscellaneous">
       <UniqueIdentifier>{7827fbfa-54d5-49a2-843f-820bc41297c6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\common\script">
-      <UniqueIdentifier>{86559435-2e42-4e13-9274-02c8225658fd}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\common\script\script_binder">
-      <UniqueIdentifier>{01f23689-75a6-40fb-94e2-778d881b425f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\common\script\script_entity">
-      <UniqueIdentifier>{5a007d57-a958-492f-bd30-a7e4cf377b16}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\common\script\script_object">
-      <UniqueIdentifier>{f89110a6-0225-49c8-a98b-cb9dc2d736ab}</UniqueIdentifier>
     </Filter>
     <Filter Include="AI\AMonsters\common\monster states">
       <UniqueIdentifier>{b2e31a19-9871-4a2e-ab50-c15a10b37cff}</UniqueIdentifier>
@@ -2068,6 +1987,87 @@
     <Filter Include="AI\ALife\SavedGameWrapper">
       <UniqueIdentifier>{ddffb8f6-2272-4c64-a177-4f251b641f7f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="AI\ALife\InteractionManager">
+      <UniqueIdentifier>{39f6c5bf-8dcb-49cb-80d7-3bf6f3101874}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\ALife\InteractionManager\CommunicationManager">
+      <UniqueIdentifier>{f4eb1644-26e0-4f4d-9bb2-6c1c3a11f3c2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\ALife\InteractionManager\CombatManager">
+      <UniqueIdentifier>{66548dba-b35f-450e-b520-f57979ed33ff}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\ALife\InteractionManager\ServerEntity">
+      <UniqueIdentifier>{d2f0a722-f6d4-4243-8dd3-88288cc5122e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\ALife\InteractionManager\ServerEntity\DynamicObject">
+      <UniqueIdentifier>{6d6a11b7-fc4e-435c-b1c6-214e46f23a62}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\ALife\InteractionManager\ServerEntity\Human">
+      <UniqueIdentifier>{2ffdbd18-b7dd-48ca-a8c1-6ccd6142cb90}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\ALife\InteractionManager\ServerEntity\Human\Brain">
+      <UniqueIdentifier>{58a74dc5-884e-4939-83e5-2424f767a75a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\ALife\InteractionManager\ServerEntity\Human\ObjectHandler">
+      <UniqueIdentifier>{f7c51f2e-b44a-4ea3-bcde-ee49a63da3a1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\ALife\InteractionManager\ServerEntity\GroupAbstract">
+      <UniqueIdentifier>{31ae2e45-75c2-4963-a4d4-202dd14bcce3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\ALife\InteractionManager\ServerEntity\MonsterAbstract">
+      <UniqueIdentifier>{e1d45256-6c6b-4535-a843-7ae513862b27}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\ALife\InteractionManager\ServerEntity\MonsterAbstract\Brain">
+      <UniqueIdentifier>{19197d8e-7e30-4728-83f1-78677d7ea1aa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\ALife\InteractionManager\ServerEntity\MonsterAbstract\MovementManager">
+      <UniqueIdentifier>{195fa3eb-24c7-4621-a446-57b786dbc925}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\ALife\InteractionManager\ServerEntity\MonsterAbstract\DetailPathManager">
+      <UniqueIdentifier>{f60a7acc-d584-4a87-aea2-d9f5f2b39d4c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\ALife\InteractionManager\ServerEntity\MonsterAbstract\PatrolPathManager">
+      <UniqueIdentifier>{6a649bfe-d28a-4733-99f4-5f2bf841bbe5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\ALife\InteractionManager\ServerEntity\Object">
+      <UniqueIdentifier>{92cc9a44-a936-4040-a527-34be06164aff}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\ALife\InteractionManager\ServerEntity\OnlineOfflineGroup">
+      <UniqueIdentifier>{99f66834-68eb-4565-9f2f-cbbae86240e4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\ALife\InteractionManager\ServerEntity\OnlineOfflineGroup\Brain">
+      <UniqueIdentifier>{131bef78-4173-4bf0-9c25-8c9dbbe7a6ea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\ALife\InteractionManager\ServerEntity\SmartZone">
+      <UniqueIdentifier>{fe515dcc-a1f3-4d7c-8159-5d051bd982b3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\ALife\InteractionManager\ServerEntity\Trader">
+      <UniqueIdentifier>{db2c8050-d2d5-48e6-a4e5-b7e3cc7a5124}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\ALife\InteractionManager\ServerEntity\TraderAbstract">
+      <UniqueIdentifier>{c9702046-7498-44fa-a6e8-a084edd72852}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\ALife\InteractionManager\ServerEntity\ALifeAnomalousZone">
+      <UniqueIdentifier>{07c154f4-c5e6-455f-9e49-c1bc91d0f04f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\ALife\InteractionManager\ServerEntity\CreatureAbstract">
+      <UniqueIdentifier>{836aad21-d441-4ebd-99f2-90440e102652}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\ALife\simulator_base\Header">
+      <UniqueIdentifier>{f69a6381-0594-42c8-996a-a82762ac8ef9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\AMonsters\common\Script">
+      <UniqueIdentifier>{86559435-2e42-4e13-9274-02c8225658fd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\AMonsters\common\Script\ScriptBinder">
+      <UniqueIdentifier>{01f23689-75a6-40fb-94e2-778d881b425f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\AMonsters\common\Script\ScriptEntity">
+      <UniqueIdentifier>{5a007d57-a958-492f-bd30-a7e4cf377b16}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\AMonsters\common\Script\ScriptObject">
+      <UniqueIdentifier>{f89110a6-0225-49c8-a98b-cb9dc2d736ab}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="mt_config.h">
@@ -2583,56 +2583,53 @@
     <ClInclude Include="ALife_space.h">
       <Filter>AI\ALife</Filter>
     </ClInclude>
-    <ClInclude Include="alife_interaction_manager.h">
-      <Filter>AI\ALife\interaction_manager</Filter>
+    <ClInclude Include="ALifeInteractionManager.h">
+      <Filter>AI\ALife\InteractionManager</Filter>
     </ClInclude>
-    <ClInclude Include="alife_communication_manager.h">
-      <Filter>AI\ALife\interaction_manager\communication_manager</Filter>
+    <ClInclude Include="ALifeCombatManager.h">
+      <Filter>AI\ALife\InteractionManager\CombatManager</Filter>
     </ClInclude>
-    <ClInclude Include="alife_combat_manager.h">
-      <Filter>AI\ALife\interaction_manager\combat_manager</Filter>
+    <ClInclude Include="ALifeHumanBrain.h">
+      <Filter>AI\ALife\InteractionManager\ServerEntity\Human\Brain</Filter>
     </ClInclude>
-    <ClInclude Include="alife_human_brain.h">
-      <Filter>AI\ALife\interaction_manager\server_entities\human\brain</Filter>
+    <ClInclude Include="ALifeHumanBrain_inline.h">
+      <Filter>AI\ALife\InteractionManager\ServerEntity\Human\Brain</Filter>
     </ClInclude>
-    <ClInclude Include="alife_human_brain_inline.h">
-      <Filter>AI\ALife\interaction_manager\server_entities\human\brain</Filter>
+    <ClInclude Include="ALifeHumanObjectHandler.h">
+      <Filter>AI\ALife\InteractionManager\ServerEntity\Human\ObjectHandler</Filter>
     </ClInclude>
-    <ClInclude Include="alife_human_object_handler.h">
-      <Filter>AI\ALife\interaction_manager\server_entities\human\object_handler</Filter>
+    <ClInclude Include="ALifeHumanObjectHandler_inline.h">
+      <Filter>AI\ALife\InteractionManager\ServerEntity\Human\ObjectHandler</Filter>
     </ClInclude>
-    <ClInclude Include="alife_human_object_handler_inline.h">
-      <Filter>AI\ALife\interaction_manager\server_entities\human\object_handler</Filter>
+    <ClInclude Include="ALifeMonsterBrain.h">
+      <Filter>AI\ALife\InteractionManager\ServerEntity\MonsterAbstract\Brain</Filter>
     </ClInclude>
-    <ClInclude Include="alife_monster_brain.h">
-      <Filter>AI\ALife\interaction_manager\server_entities\monster_abstract\brain</Filter>
+    <ClInclude Include="ALifeMonsterBrain_inline.h">
+      <Filter>AI\ALife\InteractionManager\ServerEntity\MonsterAbstract\Brain</Filter>
     </ClInclude>
-    <ClInclude Include="alife_monster_brain_inline.h">
-      <Filter>AI\ALife\interaction_manager\server_entities\monster_abstract\brain</Filter>
+    <ClInclude Include="ALifeMonsterMovementManager.h">
+      <Filter>AI\ALife\InteractionManager\ServerEntity\MonsterAbstract\MovementManager</Filter>
     </ClInclude>
-    <ClInclude Include="alife_monster_movement_manager.h">
-      <Filter>AI\ALife\interaction_manager\server_entities\monster_abstract\movement_manager</Filter>
+    <ClInclude Include="ALifeMonsterMovementManager_inline.h">
+      <Filter>AI\ALife\InteractionManager\ServerEntity\MonsterAbstract\MovementManager</Filter>
     </ClInclude>
-    <ClInclude Include="alife_monster_movement_manager_inline.h">
-      <Filter>AI\ALife\interaction_manager\server_entities\monster_abstract\movement_manager</Filter>
+    <ClInclude Include="ALifeMonsterDetailPathManager.h">
+      <Filter>AI\ALife\InteractionManager\ServerEntity\MonsterAbstract\DetailPathManager</Filter>
     </ClInclude>
-    <ClInclude Include="alife_monster_detail_path_manager.h">
-      <Filter>AI\ALife\interaction_manager\server_entities\monster_abstract\movement_manager\detail_path_manager</Filter>
+    <ClInclude Include="ALifeMonsterDetailPathManager_inline.h">
+      <Filter>AI\ALife\InteractionManager\ServerEntity\MonsterAbstract\DetailPathManager</Filter>
     </ClInclude>
-    <ClInclude Include="alife_monster_detail_path_manager_inline.h">
-      <Filter>AI\ALife\interaction_manager\server_entities\monster_abstract\movement_manager\detail_path_manager</Filter>
+    <ClInclude Include="ALifeMonsterPatrolPathManager.h">
+      <Filter>AI\ALife\InteractionManager\ServerEntity\MonsterAbstract\PatrolPathManager</Filter>
     </ClInclude>
-    <ClInclude Include="alife_monster_patrol_path_manager.h">
-      <Filter>AI\ALife\interaction_manager\server_entities\monster_abstract\movement_manager\patrol_path_manager</Filter>
+    <ClInclude Include="ALifeMonsterPatrolPathManager_inline.h">
+      <Filter>AI\ALife\InteractionManager\ServerEntity\MonsterAbstract\PatrolPathManager</Filter>
     </ClInclude>
-    <ClInclude Include="alife_monster_patrol_path_manager_inline.h">
-      <Filter>AI\ALife\interaction_manager\server_entities\monster_abstract\movement_manager\patrol_path_manager</Filter>
+    <ClInclude Include="ALifeOnlineOfflineGroupBrain.h">
+      <Filter>AI\ALife\InteractionManager\ServerEntity\OnlineOfflineGroup\Brain</Filter>
     </ClInclude>
-    <ClInclude Include="alife_online_offline_group_brain.h">
-      <Filter>AI\ALife\interaction_manager\server_entities\online_offline_group\brain</Filter>
-    </ClInclude>
-    <ClInclude Include="alife_online_offline_group_brain_inline.h">
-      <Filter>AI\ALife\interaction_manager\server_entities\online_offline_group\brain</Filter>
+    <ClInclude Include="ALifeOnlineOfflineGroupBrain_inline.h">
+      <Filter>AI\ALife\InteractionManager\ServerEntity\OnlineOfflineGroup\Brain</Filter>
     </ClInclude>
     <ClInclude Include="alife_simulator_base.h">
       <Filter>AI\ALife\simulator_base</Filter>
@@ -2640,11 +2637,11 @@
     <ClInclude Include="alife_simulator_base_inline.h">
       <Filter>AI\ALife\simulator_base</Filter>
     </ClInclude>
-    <ClInclude Include="alife_simulator_header.h">
-      <Filter>AI\ALife\simulator_base\header</Filter>
+    <ClInclude Include="ALifeSimulatorHeader.h">
+      <Filter>AI\ALife\simulator_base\Header</Filter>
     </ClInclude>
-    <ClInclude Include="alife_simulator_header_inline.h">
-      <Filter>AI\ALife\simulator_base\header</Filter>
+    <ClInclude Include="ALifeSimulatorHeader_inline.h">
+      <Filter>AI\ALife\simulator_base\Header</Filter>
     </ClInclude>
     <ClInclude Include="alife_abstract_registry.h">
       <Filter>AI\ALife\simulator_base\registries\abstract_registry</Filter>
@@ -2793,23 +2790,23 @@
     <ClInclude Include="AI\ai_monsters_misc.h">
       <Filter>AI\AMonsters\common\miscellaneous</Filter>
     </ClInclude>
-    <ClInclude Include="script_binder.h">
-      <Filter>AI\AMonsters\common\script\script_binder</Filter>
+    <ClInclude Include="ScriptBinder.h">
+      <Filter>AI\AMonsters\common\Script\ScriptBinder</Filter>
     </ClInclude>
-    <ClInclude Include="script_binder_inline.h">
-      <Filter>AI\AMonsters\common\script\script_binder</Filter>
+    <ClInclude Include="ScriptBinder_inline.h">
+      <Filter>AI\AMonsters\common\Script\ScriptBinder</Filter>
     </ClInclude>
-    <ClInclude Include="script_entity.h">
-      <Filter>AI\AMonsters\common\script\script_entity</Filter>
+    <ClInclude Include="ScriptEntity.h">
+      <Filter>AI\AMonsters\common\Script\ScriptEntity</Filter>
     </ClInclude>
-    <ClInclude Include="script_entity_inline.h">
-      <Filter>AI\AMonsters\common\script\script_entity</Filter>
+    <ClInclude Include="ScriptEntity_inline.h">
+      <Filter>AI\AMonsters\common\Script\ScriptEntity</Filter>
     </ClInclude>
-    <ClInclude Include="script_entity_space.h">
-      <Filter>AI\AMonsters\common\script\script_entity</Filter>
+    <ClInclude Include="ScriptEntity_space.h">
+      <Filter>AI\AMonsters\common\Script\ScriptEntity</Filter>
     </ClInclude>
-    <ClInclude Include="script_object.h">
-      <Filter>AI\AMonsters\common\script\script_object</Filter>
+    <ClInclude Include="ScriptObject.h">
+      <Filter>AI\AMonsters\common\Script\ScriptObject</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\States\monster_state_rest.h">
       <Filter>AI\AMonsters\common\monster states\Rest</Filter>
@@ -5922,6 +5919,9 @@
     <ClInclude Include="InventoryItemObject.h">
       <Filter>Core\Client\Objects\inventory\InventoryItemObject</Filter>
     </ClInclude>
+    <ClInclude Include="ALifeCommunicationManager.h">
+      <Filter>AI\ALife\InteractionManager\CommunicationManager</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ActionBase_script.cpp">
@@ -6137,86 +6137,86 @@
     <ClCompile Include="ALife_space.cpp">
       <Filter>AI\ALife</Filter>
     </ClCompile>
-    <ClCompile Include="alife_interaction_manager.cpp">
-      <Filter>AI\ALife\interaction_manager</Filter>
+    <ClCompile Include="ALifeInteractionManager.cpp">
+      <Filter>AI\ALife\InteractionManager</Filter>
     </ClCompile>
-    <ClCompile Include="alife_communication_manager.cpp">
-      <Filter>AI\ALife\interaction_manager\communication_manager</Filter>
+    <ClCompile Include="ALifeCommunicationManager.cpp">
+      <Filter>AI\ALife\InteractionManager\CommunicationManager</Filter>
     </ClCompile>
-    <ClCompile Include="alife_combat_manager.cpp">
-      <Filter>AI\ALife\interaction_manager\combat_manager</Filter>
+    <ClCompile Include="ALifeCombatManager.cpp">
+      <Filter>AI\ALife\InteractionManager\CombatManager</Filter>
     </ClCompile>
-    <ClCompile Include="alife_anomalous_zone.cpp">
-      <Filter>AI\ALife\interaction_manager\server_entities\anomalous_zone</Filter>
+    <ClCompile Include="ALifeAnomalousZone.cpp">
+      <Filter>AI\ALife\InteractionManager\ServerEntity\ALifeAnomalousZone</Filter>
     </ClCompile>
-    <ClCompile Include="alife_creature_abstract.cpp">
-      <Filter>AI\ALife\interaction_manager\server_entities\creature_abstract</Filter>
+    <ClCompile Include="ALifeCreatureAbstract.cpp">
+      <Filter>AI\ALife\InteractionManager\ServerEntity\CreatureAbstract</Filter>
     </ClCompile>
-    <ClCompile Include="alife_dynamic_object.cpp">
-      <Filter>AI\ALife\interaction_manager\server_entities\dynamic_object</Filter>
+    <ClCompile Include="ALifeDynamicObject.cpp">
+      <Filter>AI\ALife\InteractionManager\ServerEntity\DynamicObject</Filter>
     </ClCompile>
-    <ClCompile Include="alife_human_abstract.cpp">
-      <Filter>AI\ALife\interaction_manager\server_entities\human</Filter>
+    <ClCompile Include="ALifeHumanAbstract.cpp">
+      <Filter>AI\ALife\InteractionManager\ServerEntity\Human</Filter>
     </ClCompile>
-    <ClCompile Include="alife_human_brain.cpp">
-      <Filter>AI\ALife\interaction_manager\server_entities\human\brain</Filter>
+    <ClCompile Include="ALifeHumanBrain.cpp">
+      <Filter>AI\ALife\InteractionManager\ServerEntity\Human\Brain</Filter>
     </ClCompile>
-    <ClCompile Include="alife_human_brain_script.cpp">
-      <Filter>AI\ALife\interaction_manager\server_entities\human\brain</Filter>
+    <ClCompile Include="ALifeHumanBrain_script.cpp">
+      <Filter>AI\ALife\InteractionManager\ServerEntity\Human\Brain</Filter>
     </ClCompile>
-    <ClCompile Include="alife_human_object_handler.cpp">
-      <Filter>AI\ALife\interaction_manager\server_entities\human\object_handler</Filter>
+    <ClCompile Include="ALifeHumanObjectHandler.cpp">
+      <Filter>AI\ALife\InteractionManager\ServerEntity\Human\ObjectHandler</Filter>
     </ClCompile>
-    <ClCompile Include="alife_group_abstract.cpp">
-      <Filter>AI\ALife\interaction_manager\server_entities\group_abstract</Filter>
+    <ClCompile Include="ALifeGroupAbstract.cpp">
+      <Filter>AI\ALife\InteractionManager\ServerEntity\GroupAbstract</Filter>
     </ClCompile>
-    <ClCompile Include="alife_monster_abstract.cpp">
-      <Filter>AI\ALife\interaction_manager\server_entities\monster_abstract</Filter>
+    <ClCompile Include="ALifeMonsterAbstract.cpp">
+      <Filter>AI\ALife\InteractionManager\ServerEntity\MonsterAbstract</Filter>
     </ClCompile>
-    <ClCompile Include="alife_monster_base.cpp">
-      <Filter>AI\ALife\interaction_manager\server_entities\monster_abstract</Filter>
+    <ClCompile Include="ALifeMonsterBase.cpp">
+      <Filter>AI\ALife\InteractionManager\ServerEntity\MonsterAbstract</Filter>
     </ClCompile>
-    <ClCompile Include="alife_monster_brain.cpp">
-      <Filter>AI\ALife\interaction_manager\server_entities\monster_abstract\brain</Filter>
+    <ClCompile Include="ALifeMonsterBrain.cpp">
+      <Filter>AI\ALife\InteractionManager\ServerEntity\MonsterAbstract\Brain</Filter>
     </ClCompile>
-    <ClCompile Include="alife_monster_brain_script.cpp">
-      <Filter>AI\ALife\interaction_manager\server_entities\monster_abstract\brain</Filter>
+    <ClCompile Include="ALifeMonsterBrain_script.cpp">
+      <Filter>AI\ALife\InteractionManager\ServerEntity\MonsterAbstract\Brain</Filter>
     </ClCompile>
-    <ClCompile Include="alife_monster_movement_manager.cpp">
-      <Filter>AI\ALife\interaction_manager\server_entities\monster_abstract\movement_manager</Filter>
+    <ClCompile Include="ALifeMonsterMovementManager.cpp">
+      <Filter>AI\ALife\InteractionManager\ServerEntity\MonsterAbstract\MovementManager</Filter>
     </ClCompile>
-    <ClCompile Include="alife_monster_movement_manager_script.cpp">
-      <Filter>AI\ALife\interaction_manager\server_entities\monster_abstract\movement_manager</Filter>
+    <ClCompile Include="ALifeMonsterMovementManager_script.cpp">
+      <Filter>AI\ALife\InteractionManager\ServerEntity\MonsterAbstract\MovementManager</Filter>
     </ClCompile>
-    <ClCompile Include="alife_monster_detail_path_manager.cpp">
-      <Filter>AI\ALife\interaction_manager\server_entities\monster_abstract\movement_manager\detail_path_manager</Filter>
+    <ClCompile Include="ALifeMonsterDetailPathManager.cpp">
+      <Filter>AI\ALife\InteractionManager\ServerEntity\MonsterAbstract\DetailPathManager</Filter>
     </ClCompile>
-    <ClCompile Include="alife_monster_detail_path_manager_script.cpp">
-      <Filter>AI\ALife\interaction_manager\server_entities\monster_abstract\movement_manager\detail_path_manager</Filter>
+    <ClCompile Include="ALifeMonsterDetailPathManager_script.cpp">
+      <Filter>AI\ALife\InteractionManager\ServerEntity\MonsterAbstract\DetailPathManager</Filter>
     </ClCompile>
-    <ClCompile Include="alife_monster_patrol_path_manager.cpp">
-      <Filter>AI\ALife\interaction_manager\server_entities\monster_abstract\movement_manager\patrol_path_manager</Filter>
+    <ClCompile Include="ALifeMonsterPatrolPathManager.cpp">
+      <Filter>AI\ALife\InteractionManager\ServerEntity\MonsterAbstract\PatrolPathManager</Filter>
     </ClCompile>
-    <ClCompile Include="alife_monster_patrol_path_manager_script.cpp">
-      <Filter>AI\ALife\interaction_manager\server_entities\monster_abstract\movement_manager\patrol_path_manager</Filter>
+    <ClCompile Include="ALifeMonsterPatrolPathManager_script.cpp">
+      <Filter>AI\ALife\InteractionManager\ServerEntity\MonsterAbstract\PatrolPathManager</Filter>
     </ClCompile>
-    <ClCompile Include="alife_object.cpp">
-      <Filter>AI\ALife\interaction_manager\server_entities\object</Filter>
+    <ClCompile Include="ALifeObject.cpp">
+      <Filter>AI\ALife\InteractionManager\ServerEntity\Object</Filter>
     </ClCompile>
-    <ClCompile Include="alife_online_offline_group.cpp">
-      <Filter>AI\ALife\interaction_manager\server_entities\online_offline_group</Filter>
+    <ClCompile Include="SE_ALifeOnlineOfflineGroup.cpp">
+      <Filter>AI\ALife\InteractionManager\ServerEntity\OnlineOfflineGroup</Filter>
     </ClCompile>
-    <ClCompile Include="alife_online_offline_group_brain.cpp">
-      <Filter>AI\ALife\interaction_manager\server_entities\online_offline_group\brain</Filter>
+    <ClCompile Include="ALifeOnlineOfflineGroupBrain.cpp">
+      <Filter>AI\ALife\InteractionManager\ServerEntity\OnlineOfflineGroup\Brain</Filter>
     </ClCompile>
-    <ClCompile Include="alife_smart_zone.cpp">
-      <Filter>AI\ALife\interaction_manager\server_entities\smart_zone</Filter>
+    <ClCompile Include="SE_ALifeSmartZone.cpp">
+      <Filter>AI\ALife\InteractionManager\ServerEntity\SmartZone</Filter>
     </ClCompile>
-    <ClCompile Include="alife_trader.cpp">
-      <Filter>AI\ALife\interaction_manager\server_entities\trader</Filter>
+    <ClCompile Include="SE_ALifeTrader.cpp">
+      <Filter>AI\ALife\InteractionManager\ServerEntity\Trader</Filter>
     </ClCompile>
-    <ClCompile Include="alife_trader_abstract.cpp">
-      <Filter>AI\ALife\interaction_manager\server_entities\trader_abstract</Filter>
+    <ClCompile Include="SE_ALifeTraderAbstract.cpp">
+      <Filter>AI\ALife\InteractionManager\ServerEntity\TraderAbstract</Filter>
     </ClCompile>
     <ClCompile Include="alife_simulator_base.cpp">
       <Filter>AI\ALife\simulator_base</Filter>
@@ -6224,8 +6224,8 @@
     <ClCompile Include="alife_simulator_base2.cpp">
       <Filter>AI\ALife\simulator_base</Filter>
     </ClCompile>
-    <ClCompile Include="alife_simulator_header.cpp">
-      <Filter>AI\ALife\simulator_base\header</Filter>
+    <ClCompile Include="ALifeSimulatorHeader.cpp">
+      <Filter>AI\ALife\simulator_base\Header</Filter>
     </ClCompile>
     <ClCompile Include="alife_graph_registry.cpp">
       <Filter>AI\ALife\simulator_base\registries\graph_registry</Filter>
@@ -6296,14 +6296,14 @@
     <ClCompile Include="AI\ai_monsters_misc.cpp">
       <Filter>AI\AMonsters\common\miscellaneous</Filter>
     </ClCompile>
-    <ClCompile Include="script_binder.cpp">
-      <Filter>AI\AMonsters\common\script\script_binder</Filter>
+    <ClCompile Include="ScriptBinder.cpp">
+      <Filter>AI\AMonsters\common\Script\ScriptBinder</Filter>
     </ClCompile>
-    <ClCompile Include="script_entity.cpp">
-      <Filter>AI\AMonsters\common\script\script_entity</Filter>
+    <ClCompile Include="ScriptEntity.cpp">
+      <Filter>AI\AMonsters\common\Script\ScriptEntity</Filter>
     </ClCompile>
-    <ClCompile Include="script_object.cpp">
-      <Filter>AI\AMonsters\common\script\script_object</Filter>
+    <ClCompile Include="ScriptObject.cpp">
+      <Filter>AI\AMonsters\common\Script\ScriptObject</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\ai_monster_utils.cpp">
       <Filter>AI\AMonsters\common\components</Filter>

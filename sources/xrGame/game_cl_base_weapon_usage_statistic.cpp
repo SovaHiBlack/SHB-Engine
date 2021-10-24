@@ -536,7 +536,8 @@ void SWeaponUsageStatistic::Send_Check_Respond( )
 		}
 
 		//-----------------------------------------------------
-		ClientID ClID; ClID.set(BChA_Request.SenderID);
+		CClientID ClID;
+		ClID.set(BChA_Request.SenderID);
 		if (Level( ).Server)
 		{
 			Level( ).Server->SendTo(ClID, P);

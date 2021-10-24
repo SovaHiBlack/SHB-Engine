@@ -10,7 +10,7 @@ void ReplaceOwnershipHeader(CNetPacket& P)
 	CopyMemory(&P.B.data[6], &NewType, 2);
 };
 
-void CServer::Process_event_ownership(CNetPacket& P, ClientID sender, u32 time, U16 ID, BOOL bForced)
+void CServer::Process_event_ownership(CNetPacket& P, CClientID sender, u32 time, U16 ID, BOOL bForced)
 {
 	u32 MODE = net_flags(TRUE, TRUE, FALSE, TRUE);
 

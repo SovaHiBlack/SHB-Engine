@@ -18,7 +18,7 @@
 #include "restricted_object.h"
 #include "script_engine.h"
 #include "AttachableItem.h"
-#include "script_entity.h"
+#include "ScriptEntity.h"
 //#include "StringTable.h"
 #include "alife_registry_wrappers.h"
 #include "RelationRegistry.h"

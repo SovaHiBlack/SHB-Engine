@@ -4,7 +4,7 @@
 
 struct SClientConnectData
 {
-	ClientID			clientID;
+	CClientID			clientID;
 	string64			name;
 	string64			pass;
 	u32					process_id;
@@ -59,7 +59,7 @@ public:
 					IClient		(CTimer* timer);
 	virtual			~IClient	( );
 
-	ClientID					ID;
+	CClientID					ID;
 	string128					m_guid;
 	CSharedString					name;
 	CSharedString					pass;
@@ -75,7 +75,7 @@ public:
 };
 
 
-inline bool operator == (IClient const* pClient, ClientID const& ID)
+inline bool operator == (IClient const* pClient, CClientID const& ID)
 {
 	return pClient->ID == ID;
 }
@@ -103,7 +103,7 @@ protected:
 
 	CTimer*										device_timer;
 
-	IClient*				ID_to_client		(ClientID ID, bool ScanAll = false);
+	IClient*				ID_to_client		(CClientID ID, bool ScanAll = false);
 
 	virtual IClient*		new_client			(SClientConnectData* cl_data) = 0;
 
@@ -115,13 +115,13 @@ public:
 	virtual void			Disconnect			( );
 
 	// send
-	virtual void			SendTo_LL			(ClientID ID, void* data, u32 size, u32 dwFlags = DPNSEND_GUARANTEED, u32 dwTimeout = 0);
-	void					SendTo				(ClientID ID, CNetPacket& P, u32 dwFlags = DPNSEND_GUARANTEED, u32 dwTimeout = 0);
-	void					SendBroadcast_LL	(ClientID exclude, void* data, u32 size, u32 dwFlags = DPNSEND_GUARANTEED);
-	void					SendBroadcast		(ClientID exclude, CNetPacket& P, u32 dwFlags = DPNSEND_GUARANTEED);
+	virtual void			SendTo_LL			(CClientID ID, void* data, u32 size, u32 dwFlags = DPNSEND_GUARANTEED, u32 dwTimeout = 0);
+	void					SendTo				(CClientID ID, CNetPacket& P, u32 dwFlags = DPNSEND_GUARANTEED, u32 dwTimeout = 0);
+	void					SendBroadcast_LL	(CClientID exclude, void* data, u32 size, u32 dwFlags = DPNSEND_GUARANTEED);
+	void					SendBroadcast		(CClientID exclude, CNetPacket& P, u32 dwFlags = DPNSEND_GUARANTEED);
 
 	// extended functionality
-	virtual u32				OnMessage			(CNetPacket& P, ClientID sender);	// Non-Zero means broadcasting with "flags" as returned
+	virtual u32				OnMessage			(CNetPacket& P, CClientID sender);	// Non-Zero means broadcasting with "flags" as returned
 	virtual bool			OnCL_QueryHost		( )
 	{
 		return true;

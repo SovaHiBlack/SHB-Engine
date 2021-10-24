@@ -25,7 +25,7 @@ xr_string CServer::ent_name_safe(U16 eid)
 	return buff;
 }
 
-void CServer::Process_event_destroy(CNetPacket& P, ClientID sender, u32 time, U16 ID, CNetPacket* pEPack)
+void CServer::Process_event_destroy(CNetPacket& P, CClientID sender, u32 time, U16 ID, CNetPacket* pEPack)
 {
 	u32								MODE = net_flags(TRUE, TRUE);
 	// Parse message

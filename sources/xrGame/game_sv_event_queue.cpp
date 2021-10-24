@@ -51,7 +51,7 @@ GameEvent* GameEventQueue::Create( )
 	return ge;
 }
 
-GameEvent* GameEventQueue::Create(CNetPacket& P, U16 type, u32 time, ClientID clientID)
+GameEvent* GameEventQueue::Create(CNetPacket& P, U16 type, u32 time, CClientID clientID)
 {
 	GameEvent* ge = nullptr;
 	cs.Enter( );

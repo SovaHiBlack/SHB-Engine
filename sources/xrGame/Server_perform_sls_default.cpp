@@ -38,7 +38,8 @@ void CServer::SLS_Default( )
 			U16				ID;
 			P.r_begin(ID);
 			R_ASSERT(M_SPAWN == ID);
-			ClientID clientID; clientID.set(0);
+			CClientID clientID;
+			clientID.set(0);
 
 #ifdef USE_DESIGNER_KEY
 			CSE_Abstract* entity =
@@ -84,7 +85,7 @@ void CServer::SLS_Default( )
 	U16						id;
 	packet.r_begin(id);
 	R_ASSERT(id == M_SPAWN);
-	ClientID				clientID;
+	CClientID clientID;
 	clientID.set(0);
 	Process_spawn(packet, clientID);
 #endif

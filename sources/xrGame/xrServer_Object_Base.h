@@ -102,7 +102,7 @@ public:
 
 	CSE_Abstract(const char* caSection);
 	virtual							~CSE_Abstract( );
-	virtual void					OnEvent(CNetPacket& tNetPacket, U16 type, u32 time, ClientID sender)
+	virtual void					OnEvent(CNetPacket& tNetPacket, U16 type, u32 time, CClientID sender)
 	{ }
 	virtual void					FillProps(const char* pref, PropItemsVec& items);
 	virtual BOOL					Net_Relevant( )

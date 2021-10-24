@@ -14,7 +14,7 @@
 #include "ai_space.h"
 #include "script_engine.h"
 #include "ai_object_location.h"
-#include "script_entity_space.h"
+#include "ScriptEntity_space.h"
 #include "script_callback_ex.h"
 #include "GameObject_space.h"
 #include "level_graph.h"

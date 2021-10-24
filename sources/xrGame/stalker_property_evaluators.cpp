@@ -23,7 +23,7 @@
 #include "ai_space.h"
 #include "ai/stalker/Stalker.h"
 #include "xrServer_Objects_ALife_Monsters.h"
-#include "alife_human_brain.h"
+#include "ALifeHumanBrain.h"
 #include "Actor.h"
 #include "ActorMemory.h"
 #include "stalker_movement_manager.h"

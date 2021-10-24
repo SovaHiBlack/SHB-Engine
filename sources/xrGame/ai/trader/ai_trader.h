@@ -10,7 +10,7 @@
 
 #include "../../CustomMonster.h"
 #include "../../inventoryowner.h"
-#include "../../script_entity.h"
+#include "..\..\ScriptEntity.h"
 #include "../../sound_player.h"
 #include "..\..\AI_PhraseDialogManager.h"
 #include "../../script_export_space.h"

@@ -20,7 +20,7 @@ void CServer::Perform_game_export( )
 	csPlayers.Enter( );
 	for (u32 client = 0; client < net_Players.size( ); ++client)
 	{
-		ClientID ID = net_Players[client]->ID;
+		CClientID ID = net_Players[client]->ID;
 		xrClientData* CL = (xrClientData*) net_Players[client];
 		if (!CL->net_Accepted)
 		{

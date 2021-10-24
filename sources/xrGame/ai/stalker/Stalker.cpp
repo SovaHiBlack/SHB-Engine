@@ -52,7 +52,7 @@
 #include "../../effectorshot.h"
 #include "../../visual_memory_manager.h"
 #include "../../enemy_manager.h"
-#include "../../alife_human_brain.h"
+#include "..\..\ALifeHumanBrain.h"
 #include "..\..\Profiler.h"
 #include "../../BoneProtections.h"
 #include "../../StalkerAnimationNames.h"

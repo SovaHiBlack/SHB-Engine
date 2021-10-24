@@ -2,7 +2,7 @@
 
 #include "ActorStatisticMgr.h"
 #include "alife_registry_wrappers.h"
-#include "alife_simulator_header.h"
+#include "ALifeSimulatorHeader.h"
 
 void SStatDetailBData::save(IWriter& stream)
 {

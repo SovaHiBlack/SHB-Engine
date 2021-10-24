@@ -3,7 +3,7 @@
 #include "Entity.h"
 #include "PHDynamicData.h"
 #include "PhysicsShell.h"
-#include "script_entity.h"
+#include "ScriptEntity.h"
 #include "CarLights.h"
 #include "PHObject.h"
 #include "HolderCustom.h"

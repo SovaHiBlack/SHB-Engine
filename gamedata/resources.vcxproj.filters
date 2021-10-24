@@ -3397,9 +3397,6 @@
     <None Include="scripts\hide\level_tips.script">
       <Filter>scripts\hide</Filter>
     </None>
-    <None Include="scripts\hide\lua_help.script">
-      <Filter>scripts\hide</Filter>
-    </None>
     <None Include="scripts\hide\memusage.script">
       <Filter>scripts\hide</Filter>
     </None>
@@ -4406,6 +4403,9 @@
       <Filter>scripts</Filter>
     </None>
     <None Include="scripts\xr_actions_id.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\lua_help.script">
       <Filter>scripts</Filter>
     </None>
   </ItemGroup>

@@ -9,7 +9,7 @@
 #include "xrServer_Objects_ALife_Monsters.h"
 #include "ai_space.h"
 #include "game_graph.h"
-#include "alife_simulator_header.h"
+#include "ALifeSimulatorHeader.h"
 
 extern const char* alife_section;
 

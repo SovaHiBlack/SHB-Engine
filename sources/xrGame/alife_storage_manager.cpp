@@ -9,7 +9,7 @@
 #include "stdafx.h"
 
 #include "alife_storage_manager.h"
-#include "alife_simulator_header.h"
+#include "ALifeSimulatorHeader.h"
 #include "alife_time_manager.h"
 #include "alife_spawn_registry.h"
 #include "alife_object_registry.h"

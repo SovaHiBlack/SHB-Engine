@@ -11,7 +11,7 @@
 #include "xrServer_Objects_ALife_Items.h"
 #include "xrServer_Objects_ALife_Monsters.h"
 
-void CServer::Process_event(CNetPacket& P, ClientID sender)
+void CServer::Process_event(CNetPacket& P, CClientID sender)
 {
 
 #ifdef SLOW_VERIFY_ENTITIES
@@ -149,7 +149,7 @@ void CServer::Process_event(CNetPacket& P, ClientID sender)
 				P.w_u32(sender.value( ));
 			}
 
-			game->AddDelayedEvent(P, GAME_EVENT_ON_HIT, 0, ClientID( ));
+			game->AddDelayedEvent(P, GAME_EVENT_ON_HIT, 0, CClientID( ));
 		}
 		break;
 		case GE_ASSIGN_KILLER:

@@ -6,7 +6,7 @@
 #include "EntityAlive.h"
 #include "game_sv_single.h"
 //#include "ALifeSimulator.h"
-#include "alife_simulator_header.h"
+#include "ALifeSimulatorHeader.h"
 #include "level_graph.h"
 //#include "..\ENGINE\DemoRecord.h"
 #include "Level.h"

@@ -1,13 +1,13 @@
 #pragma once
 
-class ClientID
+class CClientID
 {
 	U32					id;
 
 public:
-			ClientID	( ) : id(0)
+	CClientID( ) : id(0)
 	{ }
-			ClientID	(U32 val) : id(val)
+	CClientID(U32 val) : id(val)
 	{ }
 
 	U32		value		( ) const
@@ -23,15 +23,15 @@ public:
 	{
 		return id == v;
 	}
-	bool	operator ==	(const ClientID& other) const
+	bool	operator ==	(const CClientID& other) const
 	{
 		return value( ) == other.value( );
 	}
-	bool	operator !=	(const ClientID& other) const
+	bool	operator !=	(const CClientID& other) const
 	{
 		return value( ) != other.value( );
 	}
-	bool	operator <	(const ClientID& other) const
+	bool	operator <	(const CClientID& other) const
 	{
 		return value( ) < other.value( );
 	}

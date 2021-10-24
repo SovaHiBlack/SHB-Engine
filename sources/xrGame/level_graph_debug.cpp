@@ -17,9 +17,9 @@
 #include "ALifeSimulator.h"
 #include "alife_graph_registry.h"
 #include "alife_object_registry.h"
-#include "alife_human_brain.h"
-#include "alife_monster_movement_manager.h"
-#include "alife_monster_detail_path_manager.h"
+#include "ALifeHumanBrain.h"
+#include "ALifeMonsterMovementManager.h"
+#include "ALifeMonsterDetailPathManager.h"
 
 #include "debug_renderer.h"
 

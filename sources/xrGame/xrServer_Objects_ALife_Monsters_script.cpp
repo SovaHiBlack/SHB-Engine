@@ -5,7 +5,7 @@
 
 #include "xrServer_Objects_ALife_Monsters.h"
 #include "xrServer_script_macroses.h"
-#include "alife_human_brain.h"
+#include "ALifeHumanBrain.h"
 
 using namespace luabind;
 

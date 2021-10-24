@@ -310,7 +310,7 @@ BOOL CSE_ALifeItem::Net_Relevant( )
 	return true;
 }
 
-void CSE_ALifeItem::OnEvent(CNetPacket& tNetPacket, U16 type, u32 time, ClientID sender)
+void CSE_ALifeItem::OnEvent(CNetPacket& tNetPacket, U16 type, u32 time, CClientID sender)
 {
 	inherited1::OnEvent(tNetPacket, type, time, sender);
 
@@ -483,7 +483,7 @@ void CSE_ALifeItemWeapon::STATE_Write(CNetPacket& tNetPacket)
 	tNetPacket.w_u8(ammo_type);
 }
 
-void CSE_ALifeItemWeapon::OnEvent(CNetPacket& tNetPacket, U16 type, u32 time, ClientID sender)
+void CSE_ALifeItemWeapon::OnEvent(CNetPacket& tNetPacket, U16 type, u32 time, CClientID sender)
 {
 	inherited::OnEvent(tNetPacket, type, time, sender);
 	switch (type)

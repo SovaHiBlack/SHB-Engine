@@ -3,7 +3,7 @@
 
 #pragma once
 
-#include "alife_interaction_manager.h"
+#include "ALifeInteractionManager.h"
 #include "AlifeUpdateManager.h"
 #include "script_export_space.h"
 

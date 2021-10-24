@@ -7,7 +7,7 @@
 #include "xrServer_Objects_ALife_Items.h"
 #include "xrServer_Objects_ALife_Monsters.h"
 #include "object_broker.h"
-#include "alife_human_brain.h"
+#include "ALifeHumanBrain.h"
 
 #include "ai_space.h"
 #include "CharacterInfo.h"
@@ -19,7 +19,7 @@
 #include "alife_registry_container.h"
 #include "ef_primary.h"
 #include "StringTable.h"
-#include "alife_online_offline_group_brain.h"
+#include "ALifeOnlineOfflineGroupBrain.h"
 #include "alife_object_registry.h"
 #include "date_time.h"
 

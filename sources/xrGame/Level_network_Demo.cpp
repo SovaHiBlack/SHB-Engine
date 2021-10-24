@@ -410,7 +410,7 @@ void						CLevel::Demo_Update( )
 						if (P->m_dwTimeReceive <= CurTime)
 						{
 							Msg("tsReceive [%d] - CurTime [%d]", P->m_dwTimeReceive, CurTime);
-							Server->OnMessage(P->Packet, ClientID( ));
+							Server->OnMessage(P->Packet, CClientID( ));
 						}
 						else
 						{
@@ -456,7 +456,7 @@ void						CLevel::Demo_Update( )
 				{
 					U16 m_type;
 					P->Packet.r_begin(m_type);
-					Server->OnMessage(P->Packet, ClientID( ));
+					Server->OnMessage(P->Packet, CClientID( ));
 				}
 				break;
 			}

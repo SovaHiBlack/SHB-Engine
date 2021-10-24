@@ -43,11 +43,11 @@ protected:
 	bool													m_bServerControlHits;
 
 public:
-	using PlayersMap = xr_map<ClientID, game_PlayerState*>;
+	using PlayersMap = xr_map<CClientID, game_PlayerState*>;
 	using PlayersMap_it = PlayersMap::iterator;
 
 	PlayersMap												players;
-	ClientID												local_svdpnid;
+	CClientID												local_svdpnid;
 	game_PlayerState* local_player;
 
 	SWeaponUsageStatistic* m_WeaponUsageStatistic;
@@ -116,7 +116,7 @@ public:
 
 	game_PlayerState* GetPlayerByGameID(u32 GameID);
 	game_PlayerState* GetPlayerByOrderID(u32 id);
-	ClientID					GetClientIDByOrderID(u32 id);
+	CClientID					GetClientIDByOrderID(u32 id);
 	u32							GetPlayersCount( ) const
 	{
 		return players.size( );
