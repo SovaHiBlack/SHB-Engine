@@ -23,11 +23,11 @@ public:
 	CTelekinesis*								telekinesis;
 	float										target_height;
 
-	u32											time_keep_started;
-	u32											time_keep_updated;
-	u32											time_raise_started;
-	u32											time_to_keep;
-	u32											time_fire_started;
+	unsigned int								time_keep_started;
+	unsigned int								time_keep_updated;
+	unsigned int								time_raise_started;
+	unsigned int								time_to_keep;
+	unsigned int								time_fire_started;
 
 	float										strength;
 
@@ -39,7 +39,7 @@ public:
 						CTelekineticObject		( );
 						~CTelekineticObject		( );
 
-	virtual bool		init					(CTelekinesis* tele, CPHShellHolder* obj, float s, float h, u32 ttk, bool rot = true);
+	virtual bool		init					(CTelekinesis* tele, CPHShellHolder* obj, float s, float h, unsigned int ttk, bool rot = true);
 	void				set_sound				(const ref_sound& snd_hold, const ref_sound& snd_throw);
 
 	virtual void		raise					(float step);

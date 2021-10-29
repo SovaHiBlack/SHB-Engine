@@ -11,7 +11,7 @@ CTelekinesis::CTelekinesis( )
 
 CTelekinesis::~CTelekinesis( )
 {
-	for (TELE_OBJECTS_IT it = objects.begin( ); it != objects.end( ); ++it)
+	for (TelekineticObjectsVec_it it = objects.begin( ); it != objects.end( ); ++it)
 	{
 		(*it)->release( );
 		xr_delete(*it);
@@ -50,7 +50,7 @@ void CTelekinesis::deactivate( )
 	active = false;
 
 	// отпустить все объекты
-	for (TELE_OBJECTS_IT it = objects.begin( ); it != objects.end( ); ++it)
+	for (TelekineticObjectsVec_it it = objects.begin( ); it != objects.end( ); ++it)
 	{
 		(*it)->release( );
 		xr_delete(*it);
@@ -65,7 +65,7 @@ void CTelekinesis::clear_deactivate( )
 	active = false;
 
 	// отпустить все объекты
-	for (u32 i = 0; i < objects.size( ); i++)
+	for (unsigned int i = 0; i < objects.size( ); i++)
 	{
 		objects[i]->switch_state(TS_None);
 		xr_delete(objects[i]);
@@ -91,7 +91,7 @@ struct SFindPred
 void CTelekinesis::deactivate(CPHShellHolder* obj)
 {
 	// найти объект
-	TELE_OBJECTS_IT it = std::find_if(objects.begin( ), objects.end( ), SFindPred(obj));
+	TelekineticObjectsVec_it it = std::find_if(objects.begin( ), objects.end( ), SFindPred(obj));
 	if (it == objects.end( ))
 	{
 		return;
@@ -107,7 +107,7 @@ void CTelekinesis::deactivate(CPHShellHolder* obj)
 void CTelekinesis::remove_object(CPHShellHolder* obj)
 {
 	// найти объект
-	TELE_OBJECTS_IT it = std::find_if(objects.begin( ), objects.end( ), SFindPred(obj));
+	TelekineticObjectsVec_it it = std::find_if(objects.begin( ), objects.end( ), SFindPred(obj));
 	if (it == objects.end( ))
 	{
 		return;
@@ -117,7 +117,7 @@ void CTelekinesis::remove_object(CPHShellHolder* obj)
 	remove_object(it);
 }
 
-void CTelekinesis::remove_object(TELE_OBJECTS_IT it)
+void CTelekinesis::remove_object(TelekineticObjectsVec_it it)
 {
 	// release memory
 	xr_delete(*it);
@@ -141,7 +141,7 @@ void CTelekinesis::fire_all(const Fvector3& target)
 		return;
 	}
 
-	for (u32 i = 0; i < objects.size( ); i++)
+	for (unsigned int i = 0; i < objects.size( ); i++)
 	{
 		objects[i]->fire(target, 1.0f);
 	}
@@ -153,7 +153,7 @@ void CTelekinesis::fire_all(const Fvector3& target)
 void CTelekinesis::fire(CPHShellHolder* obj, const Fvector3& target, float power)
 {
 	// найти объект
-	TELE_OBJECTS_IT it = std::find_if(objects.begin( ), objects.end( ), SFindPred(obj));
+	TelekineticObjectsVec_it it = std::find_if(objects.begin( ), objects.end( ), SFindPred(obj));
 	if (it == objects.end( ))
 	{
 		return;
@@ -165,7 +165,7 @@ void CTelekinesis::fire(CPHShellHolder* obj, const Fvector3& target, float power
 
 void CTelekinesis::fire_t(CPHShellHolder* obj, const Fvector3& target, float time)
 {
-	TELE_OBJECTS_IT it = std::find_if(objects.begin( ), objects.end( ), SFindPred(obj));
+	TelekineticObjectsVec_it it = std::find_if(objects.begin( ), objects.end( ), SFindPred(obj));
 	if (it == objects.end( ))
 	{
 		return;
@@ -178,7 +178,7 @@ void CTelekinesis::fire_t(CPHShellHolder* obj, const Fvector3& target, float tim
 bool CTelekinesis::is_active_object(CPHShellHolder* obj)
 {
 	// найти объект
-	TELE_OBJECTS_IT it = std::find_if(objects.begin( ), objects.end( ), SFindPred(obj));
+	TelekineticObjectsVec_it it = std::find_if(objects.begin( ), objects.end( ), SFindPred(obj));
 	if (it == objects.end( ))
 	{
 		return false;
@@ -195,7 +195,7 @@ void CTelekinesis::schedule_update( )
 	}
 
 	// обновить состояние объектов
-	for (u32 i = 0; i < objects.size( ); i++)
+	for (unsigned int i = 0; i < objects.size( ); i++)
 	{
 		CTelekineticObject* cur_obj = objects[i];
 		cur_obj->update_state( );
@@ -213,7 +213,7 @@ void CTelekinesis::PhDataUpdate(dReal step)
 		return;
 	}
 
-	for (u32 i = 0; i < objects.size( ); i++)
+	for (unsigned int i = 0; i < objects.size( ); i++)
 	{
 		switch (objects[i]->get_state( ))
 		{
@@ -257,7 +257,7 @@ void CTelekinesis::PhTune(dReal step)
 	}
 
 	clear_notrelevant( );
-	for (u32 i = 0; i < objects.size( ); i++)
+	for (unsigned int i = 0; i < objects.size( ); i++)
 	{
 		switch (objects[i]->get_state( ))
 		{
@@ -274,10 +274,10 @@ void CTelekinesis::PhTune(dReal step)
 	}
 }
 
-u32 CTelekinesis::get_objects_count( )
+unsigned int CTelekinesis::get_objects_count( )
 {
-	u32 count = 0;
-	for (u32 i = 0; i < objects.size( ); i++)
+	unsigned int count = 0;
+	for (unsigned int i = 0; i < objects.size( ); i++)
 	{
 		ETelekineticState state = objects[i]->get_state( );
 		if ((state == TS_Raise) || (state == TS_Keep))

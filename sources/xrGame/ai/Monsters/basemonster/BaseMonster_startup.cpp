@@ -15,8 +15,8 @@
 #include "../../../sound_player.h"
 
 #include "../state_manager.h"
-#include "../controlled_entity.h"
-#include "../anomaly_detector.h"
+#include "..\ControlledEntity.h"
+#include "..\AnomalyDetector.h"
 #include "../monster_cover_manager.h"
 #include "../monster_home.h"
 #include "../../../ai_object_location.h"

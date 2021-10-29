@@ -10,7 +10,7 @@ inline	void CControlPathBuilderBase::set_cover_params(float min, float max, floa
 
 inline void CControlPathBuilderBase::set_use_covers(bool val)
 {
-	m_cover_info.use_covers	= val;	
+	m_cover_info.use_covers	= val;
 }
 
 inline void CControlPathBuilderBase::set_rebuild_time(u32 time)

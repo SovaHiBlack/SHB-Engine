@@ -14,10 +14,10 @@
 
 CTelekineticObject::CTelekineticObject( )
 {
-	state			= TS_None;
-	object			= nullptr;
-	telekinesis		= nullptr;
-	m_rotate		= false;
+	state						= TS_None;
+	object						= nullptr;
+	telekinesis					= nullptr;
+	m_rotate					= false;
 }
 
 CTelekineticObject::~CTelekineticObject( )
@@ -31,18 +31,17 @@ bool CTelekineticObject::init(CTelekinesis* tele, CPHShellHolder* obj, float s, 
 	}
 
 	switch_state(TS_Raise);
-	object = obj;
+	object						= obj;
 
-	target_height = obj->Position( ).y + h;
+	target_height				= obj->Position( ).y + h;
 
-	time_keep_started = 0;
-	time_keep_updated = 0;
-	time_to_keep = ttk;
+	time_keep_started			= 0;
+	time_keep_updated			= 0;
+	time_to_keep				= ttk;
 
-	strength = s;
+	strength					= s;
 
 	time_fire_started = 0;
-	//time_raise_started	= Device.dwTimeGlobal;
 
 	m_rotate = rot;
 
@@ -119,7 +118,7 @@ void CTelekineticObject::update_state( )
 
 void CTelekineticObject::switch_state(ETelekineticState new_state)
 {
-	u32 time = Device.dwTimeGlobal;
+	unsigned int time			= Device.dwTimeGlobal;
 
 	switch (new_state)
 	{

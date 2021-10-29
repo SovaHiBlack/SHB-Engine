@@ -10,7 +10,7 @@
 #include "../../level_path_manager.h"
 #include "../../ai_object_location.h"
 
-const float		pmt_find_point_dist				= 30.f;
+const float		pmt_find_point_dist				= 30.0f;
 const u32		pmt_find_random_pos_attempts	= 5;
 
 //////////////////////////////////////////////////////////////////////////
@@ -140,8 +140,6 @@ void CControlPathBuilderBase::find_target_point_failed()
 	find_node();
 }
 
-
-
 void CControlPathBuilderBase::find_node()
 {
 	// нода в прямой видимости?
@@ -181,4 +179,3 @@ void CControlPathBuilderBase::find_node()
 	m_target_found.node		= m_man->path_builder().find_nearest_vertex(m_object->ai_location().level_vertex_id(),m_target_found.position,30.f);
 	m_target_found.position = ai().level_graph().vertex_position(m_target_found.node);
 }
-

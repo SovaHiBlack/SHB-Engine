@@ -40,7 +40,6 @@ void CControlPathBuilderBase::update_target_point()
 		// выбрать ноду и позицию в соответствии с желаемыми нодой и позицией
 		find_target_point_set		();
 
-
 	//-----------------------------------------------------------------------
 	// postprocess target_point
 	if (m_target_found.node == saved_target.node) {
@@ -75,7 +74,6 @@ void CControlPathBuilderBase::set_path_builder_params()
 	ctrl_data->game_graph_target_vertex = m_game_graph_target_vertex;
 }
 
-
 void CControlPathBuilderBase::update_path_builder_state()
 {
 //	u32 state_prev = m_state;
@@ -108,5 +106,4 @@ void CControlPathBuilderBase::update_path_builder_state()
 
 		m_time_global_failed_started	= time();
 	}
-
 }

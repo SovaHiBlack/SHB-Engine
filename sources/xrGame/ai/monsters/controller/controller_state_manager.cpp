@@ -8,7 +8,7 @@
 #include "../control_movement_base.h"
 #include "../control_path_builder_base.h"
 
-#include "../controlled_entity.h"
+#include "..\ControlledEntity.h"
 
 #include "../states/monster_state_rest.h"
 #include "controller_state_attack.h"

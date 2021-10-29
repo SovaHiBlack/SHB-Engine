@@ -2,7 +2,7 @@
 
 #include "../BaseMonster/BaseMonster.h"
 #include "..\Telekinesis.h"
-#include "../energy_holder.h"
+#include "..\EnergyHolder.h"
 #include "../../../script_export_space.h"
 
 class CPHShellHolder;

@@ -50,7 +50,7 @@ void CControlMovementBase::load_velocity(const char* section, const char* line, 
 
 SVelocityParam &CControlMovementBase::get_velocity(u32 velocity_id)
 {
-	VELOCITY_MAP_IT it = m_velocities.find(velocity_id);
+	VelocityParamMap_it it = m_velocities.find(velocity_id);
 	VERIFY(it != m_velocities.end());
 
 	return it->second;
@@ -117,7 +117,4 @@ float CControlMovementBase::get_velocity_from_path()
 	}
 
 	return velocity;
-	//m_accel		= ((m_man->movement().velocity_current() > velocity) ? 
-	//	m_object->anim().accel_get(eAV_Braking) :
-	//m_object->anim().accel_get(eAV_Accel));
 }

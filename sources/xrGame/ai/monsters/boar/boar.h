@@ -1,7 +1,7 @@
 #pragma once
 
 #include "../BaseMonster/BaseMonster.h"
-#include "../controlled_entity.h"
+#include "..\ControlledEntity.h"
 #include "../../../script_export_space.h"
 
 class CBoar : public CBaseMonster, public CControlledEntity<CBoar>

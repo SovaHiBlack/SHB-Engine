@@ -454,9 +454,6 @@
     <Filter Include="AI\AMonsters\common\components\Morale">
       <UniqueIdentifier>{9564ab70-23d5-4530-a564-ad692fa591e4}</UniqueIdentifier>
     </Filter>
-    <Filter Include="AI\AMonsters\common\components\Actor Controller">
-      <UniqueIdentifier>{954c1e9c-7345-4c06-90e6-90d3cfb82e8d}</UniqueIdentifier>
-    </Filter>
     <Filter Include="AI\AMonsters\common\components\Control Manager">
       <UniqueIdentifier>{e6441fe6-4f0c-47c9-8309-c0bc518ae100}</UniqueIdentifier>
     </Filter>
@@ -2068,6 +2065,9 @@
     <Filter Include="AI\AMonsters\common\Script\ScriptObject">
       <UniqueIdentifier>{f89110a6-0225-49c8-a98b-cb9dc2d736ab}</UniqueIdentifier>
     </Filter>
+    <Filter Include="AI\AMonsters\common\components\Controlled Actor">
+      <UniqueIdentifier>{954c1e9c-7345-4c06-90e6-90d3cfb82e8d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="mt_config.h">
@@ -3183,25 +3183,25 @@
     <ClInclude Include="TeleWhirlwind.h">
       <Filter>AI\AMonsters\common\components\Abilities\Telekinesis</Filter>
     </ClInclude>
-    <ClInclude Include="ai\Monsters\invisibility.h">
+    <ClInclude Include="ai\Monsters\Invisibility.h">
       <Filter>AI\AMonsters\common\components\Abilities\Invisibility</Filter>
     </ClInclude>
-    <ClInclude Include="ai\Monsters\scanning_ability.h">
+    <ClInclude Include="ai\Monsters\ScanningAbility.h">
       <Filter>AI\AMonsters\common\components\Abilities\Scan</Filter>
     </ClInclude>
-    <ClInclude Include="ai\Monsters\scanning_ability_inline.h">
+    <ClInclude Include="ai\Monsters\ScanningAbility_inline.h">
       <Filter>AI\AMonsters\common\components\Abilities\Scan</Filter>
     </ClInclude>
-    <ClInclude Include="ai\Monsters\controlled_entity.h">
+    <ClInclude Include="ai\Monsters\ControlledEntity.h">
       <Filter>AI\AMonsters\common\components\Abilities\Controlled</Filter>
     </ClInclude>
-    <ClInclude Include="ai\Monsters\controlled_entity_inline.h">
+    <ClInclude Include="ai\Monsters\ControlledEntity_inline.h">
       <Filter>AI\AMonsters\common\components\Abilities\Controlled</Filter>
     </ClInclude>
-    <ClInclude Include="ai\Monsters\psy_aura.h">
+    <ClInclude Include="ai\Monsters\PsyAura.h">
       <Filter>AI\AMonsters\common\components\Abilities\Psy Aura</Filter>
     </ClInclude>
-    <ClInclude Include="ai\Monsters\energy_holder.h">
+    <ClInclude Include="ai\Monsters\EnergyHolder.h">
       <Filter>AI\AMonsters\common\components\Abilities\Energy Holder</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\monster_event_manager.h">
@@ -3213,8 +3213,8 @@
     <ClInclude Include="ai\Monsters\custom_events.h">
       <Filter>AI\AMonsters\common\components\Event Handler\Custom Events</Filter>
     </ClInclude>
-    <ClInclude Include="ai\Monsters\controlled_actor.h">
-      <Filter>AI\AMonsters\common\components\Actor Controller</Filter>
+    <ClInclude Include="ai\Monsters\ControlledActor.h">
+      <Filter>AI\AMonsters\common\components\Controlled Actor</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\control_com_defs.h">
       <Filter>AI\AMonsters\common\components\Control Manager</Filter>
@@ -3279,7 +3279,7 @@
     <ClInclude Include="ai\Monsters\control_critical_wound.h">
       <Filter>AI\AMonsters\common\components\Control Manager\Custom\CriticalWound</Filter>
     </ClInclude>
-    <ClInclude Include="ai\Monsters\anomaly_detector.h">
+    <ClInclude Include="ai\Monsters\AnomalyDetector.h">
       <Filter>AI\AMonsters\common\components\Anomaly Detector</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\monster_cover_manager.h">
@@ -6356,20 +6356,20 @@
     <ClCompile Include="TeleWhirlwind.cpp">
       <Filter>AI\AMonsters\common\components\Abilities\Telekinesis</Filter>
     </ClCompile>
-    <ClCompile Include="ai\Monsters\invisibility.cpp">
+    <ClCompile Include="ai\Monsters\Invisibility.cpp">
       <Filter>AI\AMonsters\common\components\Abilities\Invisibility</Filter>
     </ClCompile>
-    <ClCompile Include="ai\Monsters\psy_aura.cpp">
+    <ClCompile Include="ai\Monsters\PsyAura.cpp">
       <Filter>AI\AMonsters\common\components\Abilities\Psy Aura</Filter>
     </ClCompile>
-    <ClCompile Include="ai\Monsters\energy_holder.cpp">
+    <ClCompile Include="ai\Monsters\EnergyHolder.cpp">
       <Filter>AI\AMonsters\common\components\Abilities\Energy Holder</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\monster_event_manager.cpp">
       <Filter>AI\AMonsters\common\components\Event Handler</Filter>
     </ClCompile>
-    <ClCompile Include="ai\Monsters\controlled_actor.cpp">
-      <Filter>AI\AMonsters\common\components\Actor Controller</Filter>
+    <ClCompile Include="ai\Monsters\ControlledActor.cpp">
+      <Filter>AI\AMonsters\common\components\Controlled Actor</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\control_manager.cpp">
       <Filter>AI\AMonsters\common\components\Control Manager</Filter>
@@ -6443,7 +6443,7 @@
     <ClCompile Include="ai\Monsters\control_critical_wound.cpp">
       <Filter>AI\AMonsters\common\components\Control Manager\Custom\CriticalWound</Filter>
     </ClCompile>
-    <ClCompile Include="ai\Monsters\anomaly_detector.cpp">
+    <ClCompile Include="ai\Monsters\AnomalyDetector.cpp">
       <Filter>AI\AMonsters\common\components\Anomaly Detector</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\monster_cover_manager.cpp">

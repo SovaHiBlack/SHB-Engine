@@ -2,7 +2,7 @@
 
 #include "../BaseMonster/BaseMonster.h"
 #include "../ai_monster_bones.h"
-#include "../controlled_actor.h"
+#include "..\ControlledActor.h"
 #include "../anim_triple.h"
 #include "../../../script_export_space.h"
 #include "BloodsuckerAlien.h"

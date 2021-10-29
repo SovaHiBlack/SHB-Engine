@@ -57,7 +57,6 @@ void CControlPathBuilderBase::reset()
 	m_path_end						= false;
 }
 
-
 void CControlPathBuilderBase::on_event(ControlCom::EEventType type, ControlCom::IEventData *data)
 {
 	switch (type) {

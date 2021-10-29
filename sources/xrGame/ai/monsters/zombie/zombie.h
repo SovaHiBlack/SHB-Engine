@@ -1,7 +1,7 @@
 #pragma once
 
 #include "../BaseMonster/BaseMonster.h"
-#include "../controlled_entity.h"
+#include "..\ControlledEntity.h"
 #include "../ai_monster_bones.h"
 #include "../anim_triple.h"
 #include "../../../script_export_space.h"

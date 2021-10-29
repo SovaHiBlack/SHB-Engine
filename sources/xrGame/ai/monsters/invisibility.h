@@ -1,49 +1,61 @@
 #pragma once
 
-class CInvisibility {
+class CInvisibility
+{
+	unsigned int							m_time_start_blink;
+	unsigned int							m_time_last_blink;
+	bool									m_blink;
+	bool									m_cur_visibility;
 
-	u32				m_time_start_blink;
-	u32				m_time_last_blink;
-	bool			m_blink;
-	bool			m_cur_visibility;
-	
 	// external parameters
-	u32				timeBlink;
-	u32				timeBlinkInterval;
+	unsigned int							timeBlink;
+	unsigned int							timeBlinkInterval;
 
-	bool			m_manual;
-	
-	bool			m_active;	// 
-	float			m_energy;	// [0..1]
-	float			m_speed;	// energy change speed (external)
+	bool									m_manual;
+
+	bool									m_active;	// 
+	float									m_energy;	// [0..1]
+	float									m_speed;	// energy change speed (external)
 
 protected:
-	virtual	void	reload					(const char* section);
-	virtual	void	reinit					();
-	virtual void	frame_update			();
+	virtual void	reload					(const char* section);
+	virtual void	reinit					( );
+	virtual void	frame_update			( );
 
-	virtual	void	on_change_visibility	(bool b_visibility){}
-	virtual	void	on_activate				(){}
-	virtual	void	on_deactivate			(){}
+	virtual void	on_change_visibility	(bool b_visibility)
+	{ }
+	virtual void	on_activate				( )
+	{ }
+	virtual void	on_deactivate			( )
+	{ }
 
 public:
-			void	activate				();
-			void	deactivate				();
-			inline		float	energy					() {return m_energy;}
-			inline		bool	active					() {return m_active;}
-			inline		bool	full_energy				() {return !!fsimilar(m_energy,1.f);}
+	void			activate				( );
+	void			deactivate				( );
+	inline float	energy					( )
+	{
+		return m_energy;
+	}
+	inline bool		active					( )
+	{
+		return m_active;
+	}
+	inline bool		full_energy				( )
+	{
+		return !!fsimilar(m_energy, 1.0f);
+	}
 
 	// manual switching
-			void	set_manual_control		(bool b_man = true);
-			void	manual_activate			();
-			void	manual_deactivate		();
-			bool	is_manual_control		() {return m_manual;}
+	void			set_manual_control		(bool b_man = true);
+	void			manual_activate			( );
+	void			manual_deactivate		( );
+	bool			is_manual_control		( )
+	{
+		return m_manual;
+	}
 
 private:
-			void	start_blink				();
-			void	stop_blink				();
-			void	update_blink			();
+	void			start_blink				( );
+	void			stop_blink				( );
+	void			update_blink			( );
 };
-
-
-

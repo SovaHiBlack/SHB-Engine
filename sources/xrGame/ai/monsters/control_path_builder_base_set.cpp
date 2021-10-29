@@ -67,4 +67,3 @@ void CControlPathBuilderBase::set_retreat_from_point(const Fvector3& position)
 
 	set_level_path_type	();
 }
-

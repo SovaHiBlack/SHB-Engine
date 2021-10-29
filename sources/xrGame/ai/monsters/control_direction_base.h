@@ -21,7 +21,6 @@ public:
 		}
 	} m_heading, m_pitch;
 
-public:
 	virtual void	reinit					();
 	virtual void	update_frame			();
 

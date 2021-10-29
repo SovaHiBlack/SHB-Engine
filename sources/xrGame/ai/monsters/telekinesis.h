@@ -6,9 +6,9 @@
 class CTelekinesis : public CPHUpdateObject
 {
 protected:
-	using TELE_OBJECTS											= xr_vector<CTelekineticObject*>;
-	using TELE_OBJECTS_IT										= TELE_OBJECTS::iterator;
-	TELE_OBJECTS												objects;
+	using TelekineticObjectsVec									= xr_vector<CTelekineticObject*>;
+	using TelekineticObjectsVec_it								= TelekineticObjectsVec::iterator;
+	TelekineticObjectsVec										objects;
 	xr_vector<CObject*>											m_nearest;
 	bool														active;
 
@@ -18,7 +18,7 @@ public:
 
 	// allocates relevant TelekineticObject
 	// активировать объект
-	virtual CTelekineticObject*		activate					(CPHShellHolder* obj, float strength, float height, u32 max_time_keep, bool rot = true);
+	virtual CTelekineticObject*		activate					(CPHShellHolder* obj, float strength, float height, unsigned int max_time_keep, bool rot = true);
 
 	// деактивировать все объекты
 	void							deactivate					( );
@@ -30,7 +30,7 @@ public:
 	virtual void					clear_notrelevant			( );
 	// деактивировать объект
 	void							deactivate					(CPHShellHolder* obj);
-	void							remove_object				(TELE_OBJECTS_IT it);
+	void							remove_object				(TelekineticObjectsVec_it it);
 	void							remove_object				(CPHShellHolder* obj);
 	// бросить все объекты в позицию 'target'
 	void							fire_all					(const Fvector3& target);
@@ -51,17 +51,17 @@ public:
 	bool							is_active_object			(CPHShellHolder* obj);
 
 	// вернуть количество контролируемых объектов (в состоянии TS_Raise & TS_Keep)
-	u32								get_objects_count			( );
+	unsigned int					get_objects_count			( );
 
 	// вернуть количество контролируемых объектов (всех)
-	u32								get_objects_total_count		( )
+	unsigned int					get_objects_total_count		( )
 	{
 		return objects.size( );
 	}
 
 	// вернуть объект по индексу в массиве
 	// a	copy of the object!
-	CTelekineticObject				get_object_by_index			(u32 index)
+	CTelekineticObject				get_object_by_index			(unsigned int index)
 	{
 		VERIFY(objects.size( ) > index);
 		return *objects[index];

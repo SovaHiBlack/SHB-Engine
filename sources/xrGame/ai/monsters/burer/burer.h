@@ -3,7 +3,7 @@
 #include "../BaseMonster/BaseMonster.h"
 #include "..\Telekinesis.h"
 #include "../anim_triple.h"
-#include "../scanning_ability.h"
+#include "..\ScanningAbility.h"
 #include "../../../script_export_space.h"
 
 class CCharacterPhysicsSupport;

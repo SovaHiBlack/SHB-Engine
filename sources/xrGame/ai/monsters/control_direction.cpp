@@ -88,7 +88,6 @@ void CControlDirection::update_frame()
 		m_object->XFORM().setHPB	(-m_man->path_builder().m_body.current.yaw,-m_man->path_builder().m_body.current.pitch,0);
 	// restore object position
 	m_object->Position()		= P;
-
 	
 	// if there is an event
 	if (event_data.angle)		m_man->notify(ControlCom::eventRotationEnd, &event_data);
@@ -167,6 +166,7 @@ bool CControlDirection::is_from_right(const Fvector3& position)
 
 	return (from_right(yaw,m_heading.current_angle));
 }
+
 bool CControlDirection::is_from_right(float yaw)
 {
 	return (from_right(yaw,m_heading.current_angle));
@@ -176,6 +176,7 @@ bool CControlDirection::is_turning(float eps_angle)
 {
 	return (!fsimilar(m_heading.current_angle,m_data.heading.target_angle, eps_angle));
 }
+
 void CControlDirection::get_heading(float &current, float &target)
 {
 	current = m_heading.current_angle;

@@ -2,53 +2,60 @@
 #include "control_combase.h"
 #include "..\..\..\ENGINE\SkeletonAnimated.h"
 
-struct SControlJumpData : public ControlCom::IComData {
-	CObject					*target_object;
+struct SControlJumpData : public ControlCom::IComData
+{
+	CObject* target_object;
 	Fvector3					target_position;
 	float					force_factor;
 
-	enum EFlags {	
-		eEnablePredictPosition		= u32(1) << 0,
-		ePrepareSkip				= u32(1) << 1,	// do not use prepare state
-		ePrepareInMove				= u32(1) << 2,
-		eGlideOnPrepareFailed		= u32(1) << 3,  // if not set then cannot start jump
-		eGlidePlayAnimOnce			= u32(1) << 4,
-		eGroundSkip					= u32(1) << 5,
+	enum EFlags
+	{
+		eEnablePredictPosition = u32(1) << 0,
+		ePrepareSkip = u32(1) << 1,	// do not use prepare state
+		ePrepareInMove = u32(1) << 2,
+		eGlideOnPrepareFailed = u32(1) << 3,  // if not set then cannot start jump
+		eGlidePlayAnimOnce = u32(1) << 4,
+		eGroundSkip = u32(1) << 5,
 	};
-	
+
 	Flags32					flags;
 
-	struct	_prepare{
+	struct	_prepare
+	{
 		MotionID	motion;
 	} state_prepare;
 
-	struct	_prepare_in_move{
+	struct	_prepare_in_move
+	{
 		MotionID	motion;
 		u32			velocity_mask;
 	} state_prepare_in_move;
 
 
-	struct	_glide{
+	struct	_glide
+	{
 		MotionID	motion;
 	} state_glide;
 
-	struct	_ground{
+	struct	_ground
+	{
 		MotionID	motion;
 		u32			velocity_mask;
 	} state_ground;
 };
 
-class CControlJump : public CControl_ComCustom<SControlJumpData> {
+class CControlJump : public CControl_ComCustom<SControlJumpData>
+{
 	typedef CControl_ComCustom<SControlJumpData> inherited;
 
-	enum EStateAnimJump {
+	enum EStateAnimJump
+	{
 		eStatePrepare,
 		eStatePrepareInMove,
 		eStateGlide,
 		eStateGround,
 		eStateNone
 	};
-
 
 	// loadable parameters
 	u32				m_delay_after_jump;
@@ -68,7 +75,6 @@ class CControlJump : public CControl_ComCustom<SControlJumpData> {
 	float			m_blend_speed;			// current anim blend speed
 	Fvector3			m_target_position;		// save target position for internal needs
 
-
 	// state flags
 	bool			m_object_hitted;
 	bool			m_velocity_bounced;
@@ -78,46 +84,48 @@ class CControlJump : public CControl_ComCustom<SControlJumpData> {
 	EStateAnimJump	m_anim_state_current;
 
 public:
-	virtual void	load					(const char* section);
-	virtual void	reinit					();
-	virtual bool	check_start_conditions	();
-	virtual void	activate				();
-	virtual void	on_release				();
-	virtual void	on_event				(ControlCom::EEventType, ControlCom::IEventData*);
-
+	virtual void	load(const char* section);
+	virtual void	reinit( );
+	virtual bool	check_start_conditions( );
+	virtual void	activate( );
+	virtual void	on_release( );
+	virtual void	on_event(ControlCom::EEventType, ControlCom::IEventData*);
 
 	// process jump
-	virtual void	update_frame			();
+	virtual void	update_frame( );
 
 	// check for distance and angle difference
-	virtual	bool	can_jump				(CObject *target);
+	virtual	bool	can_jump(CObject* target);
 
 	// stop/break jump and all of jumping states
-	virtual void	stop					();
+	virtual void	stop( );
 
-SControlJumpData	&setup_data				() {return m_data;}
+	SControlJumpData& setup_data( )
+	{
+		return m_data;
+	}
 
-private:	
+private:
 			// service routines		
 			// build path after jump 
-			void	grounding			();
-			// get target position according to object center point
-			Fvector3 get_target			(CObject *obj);
-			// check for hit object
-			void	hit_test			();
+	void	grounding( );
+	// get target position according to object center point
+	Fvector3 get_target(CObject* obj);
+	// check for hit object
+	void	hit_test( );
 
-			// check current jump state		
-			bool	is_on_the_ground	();
+	// check current jump state		
+	bool	is_on_the_ground( );
 
-			// position prediction
-			Fvector3	predict_position	(CObject *obj, const Fvector3& pos);
+	// position prediction
+	Fvector3	predict_position(CObject* obj, const Fvector3& pos);
 
-			void	start_jump			(const Fvector3& point);
+	void	start_jump(const Fvector3& point);
 
-			// animation control method
-			void	select_next_anim_state	();
+	// animation control method
+	void	select_next_anim_state( );
 
-			inline		bool	is_flag					(SControlJumpData::EFlags flag);
+	inline		bool	is_flag(SControlJumpData::EFlags flag);
 };
 
 inline bool CControlJump::is_flag(SControlJumpData::EFlags flag)
