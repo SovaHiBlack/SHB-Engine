@@ -79,7 +79,7 @@ void CMonsterSquad::Idle_AssignAction(ENTITY_VEC &members)
 		command.entity		= leader;	
 		command.direction	= leader->Direction();
 		
-		U8 cur_type = 0;
+		unsigned char cur_type = 0;
 		while (!front.empty()) {
 			float	random_r;
 			Fvector3 random_dir;

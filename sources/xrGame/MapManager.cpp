@@ -66,7 +66,7 @@ void SLocationKey::load(IReader& stream)
 	stream.r_stringZ(spot_type);
 	stream.r_u8( );
 /*
-	U8	bUserDefined = stream.r_u8	();
+	unsigned char	bUserDefined = stream.r_u8	();
 	if(bUserDefined){
 		Level().Server->PerformIDgen(object_id);
 		location  = xr_new<CUserDefinedMapLocation>(*spot_type, object_id);

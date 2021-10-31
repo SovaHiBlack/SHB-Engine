@@ -4,7 +4,7 @@
 
 void DestroySounds(SoundVec& lst)
 {
-	for (SoundIt it = lst.begin( ); lst.end( ) != it; ++it)
+	for (SoundVec_it it = lst.begin( ); lst.end( ) != it; ++it)
 	{
 		it->destroy( );
 	}
@@ -12,7 +12,7 @@ void DestroySounds(SoundVec& lst)
 
 void DestroyMarks(ShaderVec& lst)
 {
-	for (ShaderIt it = lst.begin( ); lst.end( ) != it; ++it)
+	for (ShaderVec_it it = lst.begin( ); lst.end( ) != it; ++it)
 	{
 		it->destroy( );
 	}

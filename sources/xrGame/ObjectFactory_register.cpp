@@ -40,7 +40,7 @@
 #include "ai/monsters/cat/cat.h"
 #include "ai/monsters/tushkano/tushkano.h"
 #include "ai/phantom/phantom.h"
-#include "ai/trader/ai_trader.h"
+#include "ai/trader/Trader.h"
 #include "ai/crow/ai_crow.h"
 
 #ifdef DEBUG

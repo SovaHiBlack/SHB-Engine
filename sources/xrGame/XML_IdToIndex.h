@@ -60,7 +60,7 @@ public:
 		return m_pItemDataVector->size( ) - 1;
 	}
 
-//удаление статичекого массива
+	// удаление статичекого массива
 	static void					DeleteIdToIndexData( );
 };
 

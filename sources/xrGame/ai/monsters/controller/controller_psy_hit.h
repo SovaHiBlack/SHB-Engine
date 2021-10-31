@@ -6,7 +6,7 @@ class CControllerPsyHit : public CControl_ComCustom<> {
 	typedef CControl_ComCustom<> inherited;
 
 	MotionID			m_stage[4];
-	U8					m_current_index;
+	unsigned char					m_current_index;
 
 	enum ESoundState{
 		ePrepare,

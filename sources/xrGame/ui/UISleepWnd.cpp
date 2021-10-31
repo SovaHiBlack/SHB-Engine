@@ -47,7 +47,7 @@ void CUISleepWnd::Init( )
 
 void CUISleepWnd::SendMessage(CUIWindow* pWnd, S16 msg, void* pData)
 {
-	const S8 deltaMinutes = 30;
+	const signed char deltaMinutes = 30;
 
 	if (pWnd == UIRestBtn && msg == BUTTON_CLICKED)
 	{
@@ -84,12 +84,12 @@ void CUISleepWnd::SendMessage(CUIWindow* pWnd, S16 msg, void* pData)
 	inherited::SendMessage(pWnd, msg, pData);
 }
 
-void CUISleepWnd::ModifyRestTime(S8 dHours, S8 dMinutes)
+void CUISleepWnd::ModifyRestTime(signed char dHours, signed char dMinutes)
 {
 	// Проверка на валидный интервал
 	R_ASSERT(dMinutes < 61);
 
-	S8 oldMin = m_Minutes;
+	signed char oldMin = m_Minutes;
 
 	// Увеличиваем минуты
 	m_Minutes = m_Minutes + dMinutes;
@@ -125,7 +125,7 @@ void CUISleepWnd::ModifyRestTime(S8 dHours, S8 dMinutes)
 void CUISleepWnd::SetRestTime(U8 hours, U8 minutes)
 {
 	string32 buf;
-	static S8 _h = pSettings->r_s8("actor", "max_sleep_hours");
+	static signed char _h = pSettings->r_s8("actor", "max_sleep_hours");
 	m_Minutes = minutes;
 	m_Hours = hours;
 	if (m_Hours >= _h)
@@ -133,7 +133,7 @@ void CUISleepWnd::SetRestTime(U8 hours, U8 minutes)
 		m_Minutes = 0;
 	}
 
-	clamp(m_Hours, S8(0), _h);
+	clamp(m_Hours, signed char(0), _h);
 	sprintf_s(buf, "%02i:%02i", m_Hours, m_Minutes);
 	UIStaticRestAmount->SetText(buf);
 }

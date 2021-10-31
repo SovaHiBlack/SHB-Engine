@@ -1,10 +1,5 @@
-////////////////////////////////////////////////////////////////////////////
-//	Module 		: script_action_condition.h
-//	Created 	: 30.09.2003
-//  Modified 	: 29.06.2004
-//	Author		: Dmitriy Iassenev
+//	Module 		: ScriptActionCondition.h
 //	Description : Script action condition class
-////////////////////////////////////////////////////////////////////////////
 
 #pragma once
 
@@ -43,4 +38,4 @@ add_to_type_list(CScriptActionCondition)
 #undef script_type_list
 #define script_type_list save_type_list(CScriptActionCondition)
 
-#include "script_action_condition_inline.h"
+#include "ScriptActionCondition_inline.h"

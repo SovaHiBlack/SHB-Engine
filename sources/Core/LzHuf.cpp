@@ -26,7 +26,7 @@ char		wterr[ ] = "Can't write.";
 #define MAX_FREQ    0x4000					/* updates tree when the */
 
 
-U8				text_buf[N + F];
+unsigned char				text_buf[N + F];
 int					match_position, match_length, lson[N + 1], rson[N + 257], dad[N + 1];
 
 unsigned			code, len;
@@ -51,13 +51,13 @@ private:
 	unsigned	putbuf;
 	unsigned	putlen;
 
-	U8* in_start;
-	U8* in_end;
-	U8* in_iterator;
+	unsigned char* in_start;
+	unsigned char* in_end;
+	unsigned char* in_iterator;
 
-	U8* out_start;
-	U8* out_end;
-	U8* out_iterator;
+	unsigned char* out_start;
+	unsigned char* out_end;
+	unsigned char* out_iterator;
 
 public:
 	inline int		_getb( )
@@ -70,12 +70,12 @@ public:
 		if (out_iterator == out_end)
 		{
 			U32	out_size = U32(out_end - out_start);
-			out_start = (U8*) xr_realloc(out_start, out_size + 1024);
+			out_start = (unsigned char*) xr_realloc(out_start, out_size + 1024);
 			out_iterator = out_start + out_size;
 			out_end = out_iterator + 1024;
 		}
 
-		*out_iterator++ = U8(c & 0xFF);
+		*out_iterator++ = unsigned char(c & 0xFF);
 	}
 
 	LZfs( )
@@ -84,9 +84,9 @@ public:
 		out_start = out_end = out_iterator = 0;
 	}
 
-	inline void		Init_Input(U8* _start, U8* _end)
+	inline void		Init_Input(unsigned char* _start, unsigned char* _end)
 	{
-// input
+		// input
 		in_start = _start;
 		in_end = _end;
 		in_iterator = in_start;
@@ -96,8 +96,8 @@ public:
 	}
 	inline void		Init_Output(int _rsize)
 	{
-// output
-		out_start = (U8*) xr_malloc(_rsize);
+		// output
+		out_start = (unsigned char*) xr_malloc(_rsize);
 		out_end = out_start + _rsize;
 		out_iterator = out_start;
 	}
@@ -109,7 +109,7 @@ public:
 	{
 		return U32(out_iterator - out_start);
 	}
-	inline U8* OutPointer( )
+	inline unsigned char* OutPointer( )
 	{
 		return out_start;
 	}
@@ -194,7 +194,7 @@ inline void InitTree(void)  /* initialize trees */
 void InsertNode(int r)  /* insert to tree */
 {
 	int				i, p, cmp;
-	U8* key;
+	unsigned char* key;
 	unsigned		c;
 
 	cmp = 1;
@@ -304,7 +304,7 @@ void DeleteNode(int p)  /* remove from tree */
 
 /* table for encoding and decoding the upper 6 bits of position */
 /* for encoding */
-U8 p_len[64] = {
+unsigned char p_len[64] = {
 	0x03, 0x04, 0x04, 0x04, 0x05, 0x05, 0x05, 0x05,
 	0x05, 0x05, 0x05, 0x05, 0x06, 0x06, 0x06, 0x06,
 	0x06, 0x06, 0x06, 0x06, 0x06, 0x06, 0x06, 0x06,
@@ -315,7 +315,7 @@ U8 p_len[64] = {
 	0x08, 0x08, 0x08, 0x08, 0x08, 0x08, 0x08, 0x08
 };
 
-U8 p_code[64] = {
+unsigned char p_code[64] = {
 	0x00, 0x20, 0x30, 0x40, 0x50, 0x58, 0x60, 0x68,
 	0x70, 0x78, 0x80, 0x88, 0x90, 0x94, 0x98, 0x9C,
 	0xA0, 0xA4, 0xA8, 0xAC, 0xB0, 0xB4, 0xB8, 0xBC,
@@ -327,7 +327,7 @@ U8 p_code[64] = {
 };
 
 /* for decoding */
-U8 d_code[256] = {
+unsigned char d_code[256] = {
 	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
 	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
 	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
@@ -362,7 +362,7 @@ U8 d_code[256] = {
 	0x38, 0x39, 0x3A, 0x3B, 0x3C, 0x3D, 0x3E, 0x3F,
 };
 
-U8 d_len[256] = {
+unsigned char d_len[256] = {
 	0x03, 0x03, 0x03, 0x03, 0x03, 0x03, 0x03, 0x03,
 	0x03, 0x03, 0x03, 0x03, 0x03, 0x03, 0x03, 0x03,
 	0x03, 0x03, 0x03, 0x03, 0x03, 0x03, 0x03, 0x03,
@@ -605,7 +605,7 @@ void Encode(void)  /* compression */
 	for (i = s; i < r; i++)
 		text_buf[i] = 0x20;
 	for (len = 0; len < F && (c = fs._getb( )) != EOF; len++)
-		text_buf[r + len] = (U8) c;
+		text_buf[r + len] = (unsigned char) c;
 	textsize = len;
 	for (i = 1; i <= F; i++)
 		InsertNode(r - i);
@@ -630,9 +630,9 @@ void Encode(void)  /* compression */
 			(c = fs._getb( )) != EOF; i++)
 		{
 			DeleteNode(s);
-			text_buf[s] = (U8) c;
+			text_buf[s] = (unsigned char) c;
 			if (s < F - 1)
-				text_buf[s + N] = (U8) c;
+				text_buf[s + N] = (unsigned char) c;
 			s = (s + 1) & (N - 1);
 			r = (r + 1) & (N - 1);
 			InsertNode(r);
@@ -674,7 +674,7 @@ void Decode(void)  /* recover */
 		if (c < 256)
 		{
 			fs._putb(c);
-			text_buf[r++] = (U8) c;
+			text_buf[r++] = (unsigned char) c;
 			r &= (N - 1);
 			count++;
 		}
@@ -686,7 +686,7 @@ void Decode(void)  /* recover */
 			{
 				c = text_buf[(i + k) & (N - 1)];
 				fs._putb(c);
-				text_buf[r++] = (U8) c;
+				text_buf[r++] = (unsigned char) c;
 				r &= (N - 1);
 				count++;
 			}
@@ -697,7 +697,7 @@ void Decode(void)  /* recover */
 
 unsigned _writeLZ(int hf, void* d, unsigned size)
 {
-	U8* start = (U8*) d;
+	unsigned char* start = (unsigned char*) d;
 	fs.Init_Input(start, start + size);
 
 	// Actual compression
@@ -709,18 +709,18 @@ unsigned _writeLZ(int hf, void* d, unsigned size)
 	return size_out;
 }
 
-void _compressLZ(U8** dest, unsigned* dest_sz, void* src, unsigned src_sz)
+void _compressLZ(unsigned char** dest, unsigned* dest_sz, void* src, unsigned src_sz)
 {
-	U8* start = (U8*) src;
+	unsigned char* start = (unsigned char*) src;
 	fs.Init_Input(start, start + src_sz);
 	Encode( );
 	*dest = fs.OutPointer( );
 	*dest_sz = fs.OutSize( );
 }
 
-void _decompressLZ(U8** dest, unsigned* dest_sz, void* src, unsigned src_sz)
+void _decompressLZ(unsigned char** dest, unsigned* dest_sz, void* src, unsigned src_sz)
 {
-	U8* start = (U8*) src;
+	unsigned char* start = (unsigned char*) src;
 	fs.Init_Input(start, start + src_sz);
 	Decode( );
 	*dest = fs.OutPointer( );
@@ -730,7 +730,7 @@ void _decompressLZ(U8** dest, unsigned* dest_sz, void* src, unsigned src_sz)
 unsigned _readLZ(int hf, void*& d, unsigned size)
 {
 	// Read file in memory
-	U8* data = (U8*) xr_malloc(size);
+	unsigned char* data = (unsigned char*) xr_malloc(size);
 	_read(hf, data, size);
 
 	fs.Init_Input(data, data + size);

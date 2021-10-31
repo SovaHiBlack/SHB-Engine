@@ -12,7 +12,7 @@ SMonsterCommunityData::SMonsterCommunityData(MonsterCommunityIndex idx, MonsterC
 {
 	index = idx;
 	id = idn;
-	team = (U8) atoi(team_str);
+	team = (unsigned char) atoi(team_str);
 }
 
 CMonsterCommunity::MonsterRelationTable CMonsterCommunity::m_relation_table;
@@ -45,7 +45,7 @@ MonsterCommunityIndex CMonsterCommunity::index( ) const
 	return m_current_index;
 }
 
-U8 CMonsterCommunity::team( ) const
+unsigned char CMonsterCommunity::team( ) const
 {
 	return (*m_pItemDataVector)[m_current_index].team;
 }

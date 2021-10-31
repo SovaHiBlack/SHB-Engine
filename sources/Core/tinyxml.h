@@ -264,7 +264,7 @@ protected:
 	static const char* SkipWhiteSpace(const char*, TiXmlEncoding encoding);
 	inline static bool IsWhiteSpace(char c)
 	{
-		return (isspace((U8) c) || c == '\n' || c == '\r');
+		return (isspace((unsigned char) c) || c == '\n' || c == '\r');
 	}
 	inline static bool IsWhiteSpace(int c)
 	{
@@ -302,7 +302,7 @@ protected:
 		assert(p);
 		if (encoding == TIXML_ENCODING_UTF8)
 		{
-			*length = utf8ByteTable[*((const U8*) p)];
+			*length = utf8ByteTable[*((const unsigned char*) p)];
 			assert(*length >= 0 && *length < 5);
 		}
 		else
@@ -356,8 +356,8 @@ protected:
 
 	// None of these methods are reliable for any language except English.
 	// Good for approximation, not great for accuracy.
-	static int IsAlpha(U8 anyByte, TiXmlEncoding encoding);
-	static int IsAlphaNum(U8 anyByte, TiXmlEncoding encoding);
+	static int IsAlpha(unsigned char anyByte, TiXmlEncoding encoding);
+	static int IsAlphaNum(unsigned char anyByte, TiXmlEncoding encoding);
 	inline static int ToLower(int v, TiXmlEncoding encoding)
 	{
 		if (encoding == TIXML_ENCODING_UTF8)

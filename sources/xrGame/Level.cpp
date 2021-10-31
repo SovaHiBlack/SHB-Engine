@@ -9,7 +9,7 @@
 #include "ParticlesObject.h"
 #include "Level.h"
 #include "Server.h"
-#include "net_queue.h"
+#include "NetQueueEvent.h"
 #include "game_cl_base.h"
 #include "EntityAlive.h"
 #include "HUDManager.h"//
@@ -70,7 +70,7 @@ CLevel::CLevel( ) :IPureClient(Device.GetTimerGlobal( ))
 
 	game = nullptr;
 //	game = xr_new<game_cl_GameState>();
-	game_events = xr_new<NET_Queue_Event>( );
+	game_events = xr_new<CNetQueueEvent>( );
 
 	game_configured = false;
 	m_bGameConfigStarted = false;
@@ -121,10 +121,6 @@ CLevel::CLevel( ) :IPureClient(Device.GetTimerGlobal( ))
 	pCurrentControlEntity = nullptr;
 
 	//---------------------------------------------------------
-//	m_dwCL_PingLastSendTime = 0;
-//	m_dwCL_PingDeltaSend = 1000;
-
-	//---------------------------------------------------------	
 	m_sDemoName[0] = 0;
 	m_bDemoSaveMode = FALSE;
 	m_dwStoredDemoDataSize = 0;
@@ -186,7 +182,7 @@ CLevel::~CLevel( )
 	}
 
 	// destroy PSs
-	for (POIt p_it = m_StaticParticles.begin( ); m_StaticParticles.end( ) != p_it; ++p_it)
+	for (ParticlesObjectVec_it p_it = m_StaticParticles.begin( ); m_StaticParticles.end( ) != p_it; ++p_it)
 	{
 		CParticlesObject::Destroy(*p_it);
 	}
@@ -278,38 +274,13 @@ void CLevel::PrefetchSound(const char* name)
 
 	CSharedString snd_name = tmp;
 	// find in registry
-	SoundRegistryMapIt it = sound_registry.find(snd_name);
+	SoundRegistryMap_it it = sound_registry.find(snd_name);
 	// if find failed - preload sound
 	if (it == sound_registry.end( ))
 	{
 		sound_registry[snd_name].create(snd_name.c_str( ), st_Effect, sg_SourceType);
 	}
 }
-
-// Game interface ////////////////////////////////////////////////////
-//int	CLevel::get_RPID(const char* /**name/**/)
-//{
-	/*
-	// Gain access to string
-	const char* params = pLevel->r_string("respawn_point", name);
-	if (0 == params)
-	{
-		return -1;
-	}
-
-	// Read data
-	Fvector4 pos;
-	int team;
-	sscanf(params,"%f,%f,%f,%d,%f", &pos.x, &pos.y, &pos.z, &team, &pos.w);
-	pos.y += 0.1f;
-
-	// Search respawn point
-	svector<Fvector4,maxRP> &rp = Level().get_team(team).RespawnPoints;
-	for (int i = 0; i < (int)(rp.size()); ++i)
-		if (pos.similar(rp[i],EPS_L))	return i;
-	*/
-//	return -1;
-//}
 
 bool g_bDebugEvents = false;
 
@@ -678,7 +649,7 @@ void CLevel::AddObject_To_Objects4CrPr(CGameObject* pObj)
 		return;
 	}
 
-	for (OBJECTS_LIST_it OIt = pObjects4CrPr.begin( ); OIt != pObjects4CrPr.end( ); OIt++)
+	for (GameObjectVec_it OIt = pObjects4CrPr.begin( ); OIt != pObjects4CrPr.end( ); OIt++)
 	{
 		if (*OIt == pObj)
 		{
@@ -701,7 +672,7 @@ void CLevel::AddActor_To_Actors4CrPr(CGameObject* pActor)
 		return;
 	}
 
-	for (OBJECTS_LIST_it AIt = pActors4CrPr.begin( ); AIt != pActors4CrPr.end( ); AIt++)
+	for (GameObjectVec_it AIt = pActors4CrPr.begin( ); AIt != pActors4CrPr.end( ); AIt++)
 	{
 		if (*AIt == pActor)
 		{
@@ -719,13 +690,13 @@ void CLevel::RemoveObject_From_4CrPr(CGameObject* pObj)
 		return;
 	}
 
-	OBJECTS_LIST_it OIt = std::find(pObjects4CrPr.begin( ), pObjects4CrPr.end( ), pObj);
+	GameObjectVec_it OIt = std::find(pObjects4CrPr.begin( ), pObjects4CrPr.end( ), pObj);
 	if (OIt != pObjects4CrPr.end( ))
 	{
 		pObjects4CrPr.erase(OIt);
 	}
 
-	OBJECTS_LIST_it AIt = std::find(pActors4CrPr.begin( ), pActors4CrPr.end( ), pObj);
+	GameObjectVec_it AIt = std::find(pActors4CrPr.begin( ), pActors4CrPr.end( ), pObj);
 	if (AIt != pActors4CrPr.end( ))
 	{
 		pActors4CrPr.erase(AIt);
@@ -747,7 +718,7 @@ void CLevel::make_NetCorrectionPrediction( )
 	ph_world->Freeze( );
 
 	//setting UpdateData and determining number of PH steps from last received update
-	for (OBJECTS_LIST_it OIt = pObjects4CrPr.begin( ); OIt != pObjects4CrPr.end( ); OIt++)
+	for (GameObjectVec_it OIt = pObjects4CrPr.begin( ); OIt != pObjects4CrPr.end( ); OIt++)
 	{
 		CGameObject* pObj = *OIt;
 		if (!pObj)
@@ -765,7 +736,7 @@ void CLevel::make_NetCorrectionPrediction( )
 	{
 		ph_world->Step( );
 
-		for (OBJECTS_LIST_it AIt = pActors4CrPr.begin( ); AIt != pActors4CrPr.end( ); AIt++)
+		for (GameObjectVec_it AIt = pActors4CrPr.begin( ); AIt != pActors4CrPr.end( ); AIt++)
 		{
 			CGameObject* pActor = *AIt;
 			if (!pActor || pActor->CrPr_IsActivated( ))
@@ -777,7 +748,7 @@ void CLevel::make_NetCorrectionPrediction( )
 		}
 	}
 //////////////////////////////////////////////////////////////////////////////////
-	for (OBJECTS_LIST_it OIt = pObjects4CrPr.begin( ); OIt != pObjects4CrPr.end( ); OIt++)
+	for (GameObjectVec_it OIt = pObjects4CrPr.begin( ); OIt != pObjects4CrPr.end( ); OIt++)
 	{
 		CGameObject* pObj = *OIt;
 		if (!pObj)
@@ -795,7 +766,7 @@ void CLevel::make_NetCorrectionPrediction( )
 			ph_world->Step( );
 #ifdef DEBUG
 /*
-			for	(OBJECTS_LIST_it OIt = pObjects4CrPr.begin(); OIt != pObjects4CrPr.end(); OIt++)
+			for	(GameObjectVec_it OIt = pObjects4CrPr.begin(); OIt != pObjects4CrPr.end(); OIt++)
 			{
 				CGameObject* pObj = *OIt;
 				if (!pObj) continue;
@@ -805,7 +776,7 @@ void CLevel::make_NetCorrectionPrediction( )
 #endif
 		}
 		//////////////////////////////////////////////////////////////////////////////////
-		for (OBJECTS_LIST_it OIt = pObjects4CrPr.begin( ); OIt != pObjects4CrPr.end( ); OIt++)
+		for (GameObjectVec_it OIt = pObjects4CrPr.begin( ); OIt != pObjects4CrPr.end( ); OIt++)
 		{
 			CGameObject* pObj = *OIt;
 			if (!pObj)
@@ -902,13 +873,13 @@ ALife::_TIME_ID CLevel::GetEnvironmentGameTime( )
 	return game->GetEnvironmentGameTime( );
 }
 
-U8 CLevel::GetDayTime( )
+unsigned char CLevel::GetDayTime( )
 {
 	u32 dummy32;
 	u32 hours;
 	GetGameDateTime(dummy32, dummy32, dummy32, hours, dummy32, dummy32, dummy32);
 	VERIFY(hours < 256);
-	return U8(hours);
+	return unsigned char(hours);
 }
 
 float CLevel::GetGameDayTimeSec( )

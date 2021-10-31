@@ -1111,9 +1111,9 @@ bool TiXmlDocument::SaveFile(FILE* fp) const
 {
 	if (useMicrosoftBOM)
 	{
-		const U8 TIXML_UTF_LEAD_0 = 0xefU;
-		const U8 TIXML_UTF_LEAD_1 = 0xbbU;
-		const U8 TIXML_UTF_LEAD_2 = 0xbfU;
+		const unsigned char TIXML_UTF_LEAD_0 = 0xefU;
+		const unsigned char TIXML_UTF_LEAD_1 = 0xbbU;
+		const unsigned char TIXML_UTF_LEAD_2 = 0xbfU;
 
 		fputc(TIXML_UTF_LEAD_0, fp);
 		fputc(TIXML_UTF_LEAD_1, fp);

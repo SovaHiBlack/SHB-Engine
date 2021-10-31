@@ -114,7 +114,7 @@ public:
 	void		remove_links			(CObject *O);
 	
 	// return count of monsters in radius for object
-	U8			get_count				(const CEntity *object, float radius);
+	unsigned char			get_count				(const CEntity *object, float radius);
 
 
 	///////////////////////////////////////////////////////////////////////////////////////

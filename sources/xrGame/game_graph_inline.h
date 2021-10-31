@@ -97,7 +97,7 @@ inline	const CGameGraph::CVertex *CGameGraph::vertex					(const u32 &vertex_id) 
 	return						(m_nodes + vertex_id);
 }
 
-inline	const U8& CGameGraph::CHeader::version( ) const
+inline const unsigned char& CGameGraph::CHeader::version( ) const
 {
 	return						(m_version);
 }
@@ -188,17 +188,17 @@ inline	u32 GameGraph::CVertex::level_vertex_id							() const
 	return						(tNodeID);
 }
 
-inline	const U8* GameGraph::CVertex::vertex_type( ) const
+inline const unsigned char* GameGraph::CVertex::vertex_type( ) const
 {
 	return						(tVertexTypes);
 }
 
-inline	const U8& GameGraph::CVertex::edge_count( ) const
+inline const unsigned char& GameGraph::CVertex::edge_count( ) const
 {
 	return						(tNeighbourCount);
 }
 
-inline	const U8& GameGraph::CVertex::death_point_count( ) const
+inline const unsigned char& GameGraph::CVertex::death_point_count( ) const
 {
 	return						(tDeathPointCount);
 }
@@ -226,7 +226,7 @@ inline	const float &GameGraph::CEdge::distance							() const
 inline	void CGameGraph::begin_spawn									(const u32 &vertex_id, const_spawn_iterator &start, const_spawn_iterator &end) const
 {
 	const CVertex				*object = vertex(vertex_id);
-	start						= (const_spawn_iterator)((U8*)m_nodes + object->death_point_offset());
+	start						= (const_spawn_iterator)((unsigned char*)m_nodes + object->death_point_offset());
 	end							= start + object->death_point_count();
 }
 
@@ -292,8 +292,8 @@ inline	void GameGraph::CHeader::save									(IWriter *writer)
 	writer->w					(&m_death_point_count,	sizeof(m_death_point_count));
 	writer->w					(&m_guid,				sizeof(m_guid));
 	
-	VERIFY						(m_levels.size() < u32((1) << (8*sizeof(U8))));
-	writer->w_u8				((U8)m_levels.size());
+	VERIFY						(m_levels.size() < u32((1) << (8*sizeof(unsigned char))));
+	writer->w_u8				((unsigned char)m_levels.size());
 
 	LEVEL_MAP::iterator			I = m_levels.begin();
 	LEVEL_MAP::iterator			E = m_levels.end();

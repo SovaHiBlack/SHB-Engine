@@ -5,8 +5,8 @@
 
 #include "script_game_object.h"
 #include "script_game_object_impl.h"
-#include "ai/trader/ai_trader.h"
-#include "ai/trader/trader_animation.h"
+#include "ai/trader/Trader.h"
+#include "ai\trader\TraderAnimation.h"
 
 void CScriptGameObject::set_trader_global_anim(const char* anim)
 {

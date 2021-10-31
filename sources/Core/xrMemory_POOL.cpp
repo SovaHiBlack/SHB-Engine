@@ -7,12 +7,12 @@ void	MEMPOOL::block_create( )
 {
 	// Allocate
 	R_ASSERT(0 == list);
-	list = (U8*) xr_aligned_offset_malloc(s_sector, 16, s_offset);
+	list = (unsigned char*) xr_aligned_offset_malloc(s_sector, 16, s_offset);
 
 	// Partition
 	for (U32 it = 0; it < (s_count - 1); it++)
 	{
-		U8* E = list + it * s_element;
+		unsigned char* E = list + it * s_element;
 		*access(E) = E + s_element;
 	}
 	*access(list + (s_count - 1) * s_element) = NULL;

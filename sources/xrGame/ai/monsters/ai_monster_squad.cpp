@@ -175,9 +175,9 @@ void CMonsterSquad::unlock_cover(u32 node)
 		m_locked_covers.erase(it);
 }
 
-U8 CMonsterSquad::get_count(const CEntity *object, float radius)
+unsigned char CMonsterSquad::get_count(const CEntity *object, float radius)
 {
-	U8 count = 0;
+	unsigned char count = 0;
 
 	for (MEMBER_GOAL_MAP_IT it_goal = m_goals.begin(); it_goal != m_goals.end(); ++it_goal) {
 		SMemberGoal goal = it_goal->second;

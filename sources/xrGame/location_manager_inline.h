@@ -15,7 +15,7 @@ inline	CLocationManager::CLocationManager								(CGameObject *object)
 	m_vertex_types.clear			();
 }
 
-inline	const GameGraph::TERRAIN_VECTOR	&CLocationManager::vertex_types	() const
+inline	const GameGraph::TerrainPlaceVec& CLocationManager::vertex_types	() const
 {
 	return					(m_vertex_types);
 }

@@ -29,13 +29,13 @@
 #define GAMEMTL_FILENAME				"gamemtl.xr"
 
 using SoundVec = xr_vector<ref_sound>;
-using SoundIt = SoundVec::iterator;
+using SoundVec_it = SoundVec::iterator;
 
 using PSVec = xr_vector<CSharedString>;
 using PSIt = PSVec::iterator;
 
 using ShaderVec = xr_vector<ref_shader>;
-using ShaderIt = ShaderVec::iterator;
+using ShaderVec_it = ShaderVec::iterator;
 
 struct SGameMtl
 {

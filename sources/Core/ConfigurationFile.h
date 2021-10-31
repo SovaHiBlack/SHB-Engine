@@ -95,8 +95,8 @@ public:
 	{
 		return r_string_wb(*S, L);
 	}	// убирает кавычки
-	U8	 		r_u8(const char* S, const char* L);
-	U8	 		r_u8(const CSharedString& S, const char* L)
+	unsigned char	 		r_u8(const char* S, const char* L);
+	unsigned char	 		r_u8(const CSharedString& S, const char* L)
 	{
 		return r_u8(*S, L);
 	}
@@ -110,8 +110,8 @@ public:
 	{
 		return r_u32(*S, L);
 	}
-	S8	 		r_s8(const char* S, const char* L);
-	S8	 		r_s8(const CSharedString& S, const char* L)
+	signed char	r_s8(const char* S, const char* L);
+	signed char	r_s8(const CSharedString& S, const char* L)
 	{
 		return r_s8(*S, L);
 	}
@@ -180,10 +180,10 @@ public:
 	BOOL		r_line(const CSharedString& S, int L, const char** N, const char** V);
 
 	void		w_string(const char* S, const char* L, const char* V, const char* comment = 0);
-	void		w_u8(const char* S, const char* L, U8				V, const char* comment = 0);
+	void		w_u8(const char* S, const char* L, unsigned char				V, const char* comment = 0);
 	void		w_u16(const char* S, const char* L, U16				V, const char* comment = 0);
 	void		w_u32(const char* S, const char* L, U32				V, const char* comment = 0);
-	void		w_s8(const char* S, const char* L, S8				V, const char* comment = 0);
+	void		w_s8(const char* S, const char* L, signed char		V, const char* comment = 0);
 	void		w_s16(const char* S, const char* L, S16				V, const char* comment = 0);
 	void		w_s32(const char* S, const char* L, int				V, const char* comment = 0);
 	void		w_float(const char* S, const char* L, F32				V, const char* comment = 0);

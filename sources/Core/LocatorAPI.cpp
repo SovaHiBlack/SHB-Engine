@@ -300,7 +300,7 @@ IReader* open_chunk(void* ptr, U32 ID)
 		VERIFY(res && (read_byte == 4));
 		if ((dwType & (~CFS_CompressMark)) == ID)
 		{
-			U8* src_data = xr_alloc<U8>(dwSize);
+			unsigned char* src_data = xr_alloc<unsigned char>(dwSize);
 			res = ReadFile(ptr, src_data, dwSize, &read_byte, 0);
 			VERIFY(res && (read_byte == dwSize));
 			if (dwType & CFS_CompressMark)
@@ -393,7 +393,7 @@ void CLocatorAPI::ProcessArchive(const char* _path, const char* base_path)
 		U16				buffer_size = hdr->r_u16( );
 		VERIFY(buffer_size < sizeof(name) + 4 * sizeof(U32));
 		VERIFY(buffer_size < sizeof(buffer_start));
-		U8* buffer = (U8*) &*buffer_start;
+		unsigned char* buffer = (unsigned char*) &*buffer_start;
 		hdr->r(buffer, buffer_size);
 
 		U32 size_real = *(U32*) buffer;
@@ -1178,7 +1178,7 @@ void CLocatorAPI::file_from_archive(IReader*& R, const char* fname, const file& 
 	}
 
 	U32 sz = (end - start);
-	U8* ptr = (U8*) MapViewOfFile(A.hSrcMap, FILE_MAP_READ, 0, start, sz);
+	unsigned char* ptr = (unsigned char*) MapViewOfFile(A.hSrcMap, FILE_MAP_READ, 0, start, sz);
 	VERIFY3(ptr, "cannot create file mapping on file", fname);
 
 	string512					temp;
@@ -1195,10 +1195,11 @@ void CLocatorAPI::file_from_archive(IReader*& R, const char* fname, const file& 
 	}
 
 	// Compressed
-	U8* dest = xr_alloc<U8>(desc.size_real);
+	unsigned char* dest = xr_alloc<unsigned char>(desc.size_real);
 	rtc_decompress(dest, desc.size_real, ptr + ptr_offs, desc.size_compressed);
 	R = xr_new<CTempReader>(dest, desc.size_real, 0);
 	UnmapViewOfFile(ptr);
+
 #ifdef DEBUG
 	unregister_file_mapping(ptr, sz);
 #endif // def DEBUG
@@ -1228,7 +1229,7 @@ void CLocatorAPI::copy_file_to_build(IWriter* W, IReader* r)
 void CLocatorAPI::copy_file_to_build(IWriter* W, CStreamReader* r)
 {
 	U32 buffer_size = r->length( );
-	U8* buffer = xr_alloc<U8>(buffer_size);
+	unsigned char* buffer = xr_alloc<unsigned char>(buffer_size);
 	r->r(buffer, buffer_size);
 	W->w(buffer, buffer_size);
 	xr_free(buffer);

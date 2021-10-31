@@ -6,7 +6,7 @@
 #include "Messages.h"
 #include "game_cl_base.h"
 #include "PHCommander.h"
-#include "net_queue.h"
+#include "NetQueueEvent.h"
 #include "MainMenu.h"
 #include "SpaceRestrictionManager.h"
 #include "ai_space.h"
@@ -365,8 +365,8 @@ void			CLevel::OnConnectResult(CNetPacket* P)
 {
 	// multiple results can be sent during connection they should be "AND-ed"
 	m_bConnectResultReceived = true;
-	U8	result = P->r_u8( );
-	U8  res1 = P->r_u8( );
+	unsigned char	result = P->r_u8( );
+	unsigned char  res1 = P->r_u8( );
 	string128 ResultStr;
 	P->r_stringZ(ResultStr);
 	if (!result)
@@ -469,15 +469,6 @@ void			CLevel::ClearAllObjects( )
 
 	ProcessGameEvents( );
 }
-
-//void				CLevel::OnInvalidHost( )
-//{ }
-
-//void				CLevel::OnInvalidPassword( )
-//{ }
-
-//void				CLevel::OnSessionFull( )
-//{ }
 
 void				CLevel::OnConnectRejected( )
 {

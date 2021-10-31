@@ -24,8 +24,8 @@ namespace LevelGraph {
 	class CVertex : private NodeCompressed {
 	public:
 		__forceinline	u32				link					(int i) const;
-		__forceinline	U8				light					() const;
-		__forceinline	U16				cover					(U8 index) const;
+		__forceinline	unsigned char				light					() const;
+		__forceinline	U16				cover					(unsigned char index) const;
 		__forceinline	U16				plane					() const;
 		__forceinline	const CPosition &position				() const;
 		__forceinline	bool			operator<				(const LevelGraph::CVertex &vertex) const;

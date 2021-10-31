@@ -1,6 +1,6 @@
 #pragma once
 
-typedef U8					tv_uchar, * lp_tv_uchar ;
+typedef unsigned char					tv_uchar, * lp_tv_uchar ;
 typedef signed char   tv_schar, * lp_tv_schar ;
 typedef U16					tv_ushort, * lp_tv_ushort ;
 typedef signed short int tv_sshort, * lp_tv_sshort ;

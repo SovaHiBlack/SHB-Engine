@@ -135,7 +135,6 @@ public:
 
 #endif
 
-public:
 	static void script_register(lua_State*);
 };
 

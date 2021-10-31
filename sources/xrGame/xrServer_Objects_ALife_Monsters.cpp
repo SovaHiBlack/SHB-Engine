@@ -23,7 +23,7 @@
 #include "alife_object_registry.h"
 #include "date_time.h"
 
-void setup_location_types_section(GameGraph::TERRAIN_VECTOR& m_vertex_types, CConfigurationFile* ini, const char* section)
+void setup_location_types_section(GameGraph::TerrainPlaceVec& m_vertex_types, CConfigurationFile* ini, const char* section)
 {
 	VERIFY3(ini->section_exist(section), "cannot open section", section);
 	GameGraph::STerrainPlace		terrain_mask;
@@ -64,7 +64,7 @@ void setup_location_types_section(GameGraph::TERRAIN_VECTOR& m_vertex_types, CCo
 	m_vertex_types.push_back(terrain_mask);
 }
 
-void setup_location_types_line(GameGraph::TERRAIN_VECTOR& m_vertex_types, const char* string)
+void setup_location_types_line(GameGraph::TerrainPlaceVec& m_vertex_types, const char* string)
 {
 	string16						I;
 	GameGraph::STerrainPlace		terrain_mask;
@@ -96,7 +96,7 @@ void setup_location_types_line(GameGraph::TERRAIN_VECTOR& m_vertex_types, const 
 	}
 }
 
-void setup_location_types(GameGraph::TERRAIN_VECTOR& m_vertex_types, CConfigurationFile* ini, const char* string)
+void setup_location_types(GameGraph::TerrainPlaceVec& m_vertex_types, CConfigurationFile* ini, const char* string)
 {
 	m_vertex_types.clear( );
 	if (ini->section_exist(string) && ini->line_count(string))

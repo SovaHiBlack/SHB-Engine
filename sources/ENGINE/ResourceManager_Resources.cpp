@@ -40,7 +40,7 @@ public:
 
 		// duplicate and zero-terminate
 		u32				size	= R->length();
-		U8*				data	= xr_alloc<U8>	(size + 1);
+		unsigned char*				data	= xr_alloc<unsigned char>	(size + 1);
 		CopyMemory			(data,R->pointer(),size);
 		data[size]				= 0;
 		FS.r_close				(R);

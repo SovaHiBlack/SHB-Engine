@@ -36,9 +36,9 @@ void CBaseMonster::net_Export(CNetPacket& P)
 	P.w_float				(N.o_torso.yaw);
 	P.w_float				(N.o_torso.pitch);
 	P.w_float				(N.o_torso.roll);
-	P.w_u8					(U8(g_Team()));
-	P.w_u8					(U8(g_Squad()));
-	P.w_u8					(U8(g_Group()));
+	P.w_u8					(unsigned char(g_Team()));
+	P.w_u8					(unsigned char(g_Squad()));
+	P.w_u8					(unsigned char(g_Group()));
 
 	GameGraph::_GRAPH_ID		l_game_vertex_id = ai_location().game_vertex_id();
 	P.w						(&l_game_vertex_id,			sizeof(l_game_vertex_id));
@@ -63,7 +63,7 @@ void CBaseMonster::net_Import(CNetPacket& P)
 	R_ASSERT				(Remote());
 	net_update				N;
 
-	U8 flags;
+	unsigned char flags;
 
 	float health;
 	P.r_float			(health);

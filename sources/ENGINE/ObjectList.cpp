@@ -253,7 +253,7 @@ u32	CObjectList::net_Export			(CNetPacket* _Packet,	u32 start, u32 max_object_si
 			P->net_Export			(Packet);
 
 #ifdef DEBUG
-			u32 size				= u32		(Packet.w_tell()-position)-sizeof(U8);
+			u32 size				= u32		(Packet.w_tell()-position)-sizeof(unsigned char);
 			if				(size>=256)			{
 				Debug.fatal	(DEBUG_INFO,"Object [%s][%d] exceed network-data limit\n size=%d, Pend=%d, Pstart=%d",
 					*P->cName(), P->ID(), size, Packet.w_tell(), position);
@@ -261,7 +261,7 @@ u32	CObjectList::net_Export			(CNetPacket* _Packet,	u32 start, u32 max_object_si
 #endif
 			if (g_Dump_Export_Obj)
 			{
-				u32 size				= u32		(Packet.w_tell()-position)-sizeof(U8);
+				u32 size				= u32		(Packet.w_tell()-position)-sizeof(unsigned char);
 				Msg("* %s : %d", *(P->cNameSect()), size);
 			}
 			Packet.w_chunk_close8	(position);
@@ -285,7 +285,8 @@ void CObjectList::net_Import		(CNetPacket* Packet)
 	{
 		U16 ID;
 		Packet->r_u16	(ID);
-		U8  size;	Packet->r_u8	(size);
+		unsigned char size;
+		Packet->r_u8	(size);
 		CObject* P  = net_Find		(u32(ID));
 		if (P)		
 		{

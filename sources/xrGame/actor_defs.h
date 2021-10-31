@@ -80,7 +80,7 @@ namespace ACTOR_DEFS
 
 		u32					mstate_wishful;
 
-		U8					cam_mode;
+		unsigned char					cam_mode;
 		float				cam_yaw;
 		float				cam_pitch;
 		float				cam_roll;

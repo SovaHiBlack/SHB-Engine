@@ -120,7 +120,7 @@ MotionID CKinematicsAnimated::ID_Cycle	(const char* N)
 	R_ASSERT3(motion_ID.valid(),"! MODEL: can't find cycle: ", N);
 	return motion_ID;
 }
-void	CKinematicsAnimated::LL_FadeCycle(U16 part, float falloff, U8 mask_channel /*= (1<<0)*/)
+void	CKinematicsAnimated::LL_FadeCycle(U16 part, float falloff, unsigned char mask_channel /*= (1<<0)*/)
 {
 	BlendSVec&	Blend		= blend_cycles[part];
 	
@@ -134,7 +134,7 @@ void	CKinematicsAnimated::LL_FadeCycle(U16 part, float falloff, U8 mask_channel 
 		if (B.stop_at_end)  B.playing = FALSE;		// callback не должен приходить!
 	}
 }
-void	CKinematicsAnimated::LL_CloseCycle(U16 part, U8 mask_channel /*= (1<<0)*/)
+void	CKinematicsAnimated::LL_CloseCycle(U16 part, unsigned char mask_channel /*= (1<<0)*/)
 {
 	if (BI_NONE==part)		return;
 	if (part>=MAX_PARTS)	return;
@@ -157,7 +157,7 @@ void	CKinematicsAnimated::LL_CloseCycle(U16 part, U8 mask_channel /*= (1<<0)*/)
 	//blend_cycles[part].clear	(); // ?
 }
 
-void CKinematicsAnimated::IBlendSetup(CBlend& B, U16 part, U8 channel, MotionID motion_ID, BOOL  bMixing, float blendAccrue, float blendFalloff, float Speed, BOOL noloop, PlayCallback Callback, LPVOID CallbackParam)
+void CKinematicsAnimated::IBlendSetup(CBlend& B, U16 part, unsigned char channel, MotionID motion_ID, BOOL bMixing, float blendAccrue, float blendFalloff, float Speed, BOOL noloop, PlayCallback Callback, LPVOID CallbackParam)
 {
 	VERIFY(B.channel<MAX_CHANNELS);
 	// Setup blend params
@@ -207,7 +207,7 @@ void CKinematicsAnimated::IFXBlendSetup(CBlend &B, MotionID motion_ID, float ble
 	B.channel		= 0;
 	B.fall_at_end	= FALSE;	
 }
-CBlend*	CKinematicsAnimated::LL_PlayCycle(U16 part, MotionID motion_ID, BOOL  bMixing, float blendAccrue, float blendFalloff, float Speed, BOOL noloop, PlayCallback Callback, LPVOID CallbackParam, U8 channel/*=0*/ )
+CBlend*	CKinematicsAnimated::LL_PlayCycle(U16 part, MotionID motion_ID, BOOL  bMixing, float blendAccrue, float blendFalloff, float Speed, BOOL noloop, PlayCallback Callback, LPVOID CallbackParam, unsigned char channel/*=0*/ )
 {
 	// validate and unroll
 	if (!motion_ID.valid())	return 0;
@@ -239,7 +239,7 @@ CBlend*	CKinematicsAnimated::LL_PlayCycle(U16 part, MotionID motion_ID, BOOL  bM
 	blend_cycles[part].push_back(B);
 	return		B;
 }
-CBlend*	CKinematicsAnimated::LL_PlayCycle		(U16 part, MotionID motion_ID, BOOL bMixIn, PlayCallback Callback, LPVOID CallbackParam, U8 channel /*=0*/)
+CBlend*	CKinematicsAnimated::LL_PlayCycle		(U16 part, MotionID motion_ID, BOOL bMixIn, PlayCallback Callback, LPVOID CallbackParam, unsigned char channel /*=0*/)
 {
 	VERIFY					(motion_ID.valid()); 
 	CMotionDef* m_def		= m_Motions[motion_ID.slot].motions.motion_def(motion_ID.idx);
@@ -248,13 +248,13 @@ CBlend*	CKinematicsAnimated::LL_PlayCycle		(U16 part, MotionID motion_ID, BOOL b
 							 m_def->Accrue(),m_def->Falloff(),m_def->Speed(),m_def->StopAtEnd(), 
 							 Callback,CallbackParam,channel);
 }
-CBlend*	CKinematicsAnimated::PlayCycle		(const char* N, BOOL bMixIn, PlayCallback Callback, LPVOID CallbackParam, U8 channel  /*= 0*/)
+CBlend*	CKinematicsAnimated::PlayCycle		(const char* N, BOOL bMixIn, PlayCallback Callback, LPVOID CallbackParam, unsigned char channel  /*= 0*/)
 {
 	MotionID motion_ID		= ID_Cycle(N);
 	if (motion_ID.valid())	return PlayCycle(motion_ID,bMixIn,Callback,CallbackParam,channel);
 	else					{ Debug.fatal(DEBUG_INFO,"! MODEL: can't find cycle: %s", N); return 0; }
 }
-CBlend*	CKinematicsAnimated::PlayCycle		(MotionID motion_ID,  BOOL bMixIn, PlayCallback Callback, LPVOID CallbackParam, U8 channel /*= 0*/)
+CBlend*	CKinematicsAnimated::PlayCycle		(MotionID motion_ID,  BOOL bMixIn, PlayCallback Callback, LPVOID CallbackParam, unsigned char channel /*= 0*/)
 {	
 	VERIFY					(motion_ID.valid()); 
 	CMotionDef* m_def		= m_Motions[motion_ID.slot].motions.motion_def(motion_ID.idx);
@@ -294,7 +294,7 @@ CBlend*	CKinematicsAnimated::PlayFX			(const char* N, float power_scale)
 	MotionID motion_ID		= ID_FX(N);
 	return PlayFX 			(motion_ID,power_scale);
 }
-//U16 part,U8 channel, MotionID motion_ID, BOOL  bMixing, float blendAccrue, float blendFalloff, float Speed, BOOL noloop, PlayCallback Callback, LPVOID CallbackParam)
+//U16 part,unsigned char channel, MotionID motion_ID, BOOL bMixing, float blendAccrue, float blendFalloff, float Speed, BOOL noloop, PlayCallback Callback, LPVOID CallbackParam)
 
 CBlend*	CKinematicsAnimated::LL_PlayFX		(U16 bone, MotionID motion_ID, float blendAccrue, float blendFalloff, float Speed, float Power)
 {
@@ -523,7 +523,7 @@ void CKinematicsAnimated::Spawn	()
 }
 void CKinematicsAnimated::ChannelFactorsStartup()
 {
-	for (U8 i=0;MAX_CHANNELS>i;++i)
+	for (unsigned char i=0;MAX_CHANNELS>i;++i)
 		channel_factors[i] = 1.f;
 }
 void	CKinematicsAnimated::LL_SetChannelFactor (U16	channel,float factor)
@@ -1008,7 +1008,7 @@ inline void MixChannels(CKey &Result,const CKey	*R,const float* BA,int b_count)
 
 
 // calculate single bone with key blending and callbck calling
-void CKinematicsAnimated::CLBone(const CBoneData* bd,CBoneInstance& BONE_INST,const Fmatrix *parent,const CBlendInstance::BlendSVec &Blend, U8 channel_mask /*= (1<<0)*/)
+void CKinematicsAnimated::CLBone(const CBoneData* bd,CBoneInstance& BONE_INST,const Fmatrix *parent,const CBlendInstance::BlendSVec &Blend, unsigned char channel_mask /*= (1<<0)*/)
 {
 	U16 SelfID		= bd->GetSelfID();
 	if (LL_GetBoneVisible(SelfID)){
@@ -1031,7 +1031,7 @@ void CKinematicsAnimated::CLBone(const CBoneData* bd,CBoneInstance& BONE_INST,co
 				CKey*			D		 =	&R[B->channel][b_count];
 				if(!(channel_mask&(1<<B->channel)))
 					continue;
-				U8	channel					=  B->channel;
+				unsigned char	channel					=  B->channel;
 				BA[channel][b_count]		=  B->blendAmount;
 				//BCA[channel]				+= B->blendAmount;
 				CMotion			&M			=*LL_GetMotion(B->motionID,SelfID);
@@ -1151,7 +1151,7 @@ void CKinematicsAnimated::CLBone(const CBoneData* bd,CBoneInstance& BONE_INST,co
 	}
 }
 
-void	CKinematicsAnimated::Bone_GetAnimPos(Fmatrix& pos, U16 id, U8 mask_channel, bool ignore_callbacks)
+void	CKinematicsAnimated::Bone_GetAnimPos(Fmatrix& pos, U16 id, unsigned char mask_channel, bool ignore_callbacks)
 {
 	CBoneInstance bi = LL_GetBoneInstance(id);
 	BoneChain_Calculate(&LL_GetData(id),bi,mask_channel,ignore_callbacks);
@@ -1163,13 +1163,13 @@ void CKinematicsAnimated::Bone_Calculate(CBoneData* bd, Fmatrix *parent)
 	U16 SelfID					= bd->GetSelfID();
 	CBlendInstance& BLEND_INST	= LL_GetBlendInstance(SelfID);
 	CBoneInstance& BONE_INST	= LL_GetBoneInstance(SelfID);
-	CLBone(bd,BONE_INST,parent,BLEND_INST.blend_vector(), U8(-1));
+	CLBone(bd,BONE_INST,parent,BLEND_INST.blend_vector(), unsigned char(-1));
 	// Calculate children
 	for (xr_vector<CBoneData*>::iterator C=bd->children.begin(); C!=bd->children.end(); C++)
 		Bone_Calculate(*C,&BONE_INST.mTransform);
 }
 
-void	CKinematicsAnimated::BoneChain_Calculate		(const CBoneData* bd, CBoneInstance &bi, U8 mask_channel, bool ignore_callbacks)
+void	CKinematicsAnimated::BoneChain_Calculate		(const CBoneData* bd, CBoneInstance &bi, unsigned char mask_channel, bool ignore_callbacks)
 {
 	U16 SelfID					= bd->GetSelfID();
 	CBlendInstance& BLEND_INST	= LL_GetBlendInstance(SelfID);

@@ -70,7 +70,7 @@ inline U32		btwPow2_Ceil(U32 v)
 
 // Couple more tricks 
 // Counting number of nonzero bits for 8bit number: 
-inline U8		btwCount1(U8 v)
+inline unsigned char		btwCount1(unsigned char v)
 {
 	v = (v & 0x55) + ((v >> 1) & 0x55);
 	v = (v & 0x33) + ((v >> 2) & 0x33);
@@ -135,7 +135,7 @@ __forceinline int iCeil(F32 x)
 // Validity checks
 inline bool fis_gremlin(const F32& f)
 {
-	U8		value = U8(((*(int*) &f & 0x7f800000) >> 23) - 0x20);
+	unsigned char value = unsigned char(((*(int*) &f & 0x7f800000) >> 23) - 0x20);
 	return	value > 0xc0;
 }
 inline bool fis_denormal(const F32& f)

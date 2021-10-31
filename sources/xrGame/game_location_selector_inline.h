@@ -77,9 +77,9 @@ inline	void CGameLocationSelector::select_random_location(const _vertex_id_type 
 
 	u32							branch_factor = 0;
 
-	const GameGraph::TERRAIN_VECTOR				&vertex_types = m_location_manager->vertex_types();
-	GameGraph::TERRAIN_VECTOR::const_iterator	B = vertex_types.begin(), I;
-	GameGraph::TERRAIN_VECTOR::const_iterator	E = vertex_types.end();
+	const GameGraph::TerrainPlaceVec& vertex_types = m_location_manager->vertex_types();
+	GameGraph::TerrainPlaceVec::const_iterator	B = vertex_types.begin(), I;
+	GameGraph::TerrainPlaceVec::const_iterator	E = vertex_types.end();
 
 	_Graph::const_iterator		i,e;
 	m_graph->begin				(start_vertex_id,i,e);
@@ -96,7 +96,7 @@ inline	void CGameLocationSelector::select_random_location(const _vertex_id_type 
 		if (!accessible((*i).vertex_id()))
 			continue;
 
-		const U8* curr_types = m_graph->vertex((*i).vertex_id( ))->vertex_type( );
+		const unsigned char* curr_types = m_graph->vertex((*i).vertex_id( ))->vertex_type( );
 
 		// * подходит по маске
 		for (I = B; I != E; ++I)
@@ -128,7 +128,7 @@ inline	void CGameLocationSelector::select_random_location(const _vertex_id_type 
 			if (!accessible((*i).vertex_id()))
 				continue;
 
-			const U8* curr_types = m_graph->vertex((*i).vertex_id( ))->vertex_type( );
+			const unsigned char* curr_types = m_graph->vertex((*i).vertex_id( ))->vertex_type( );
 
 			// * подходит по маске
 			for (I = B; I != E; ++I)

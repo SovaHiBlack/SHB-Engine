@@ -148,7 +148,7 @@ void						CLevel::Demo_PrepareToStore( )
 	FS.update_path(m_sDemoName, "$logs$", m_sDemoName);
 	//---------------------------------------------------------------
 	m_dwStoredDemoDataSize = 0;
-	m_pStoredDemoData = xr_alloc<U8>(DEMO_DATA_SIZE / sizeof(U8));
+	m_pStoredDemoData = xr_alloc<unsigned char>(DEMO_DATA_SIZE / sizeof(unsigned char));
 	//---------------------------------------------------------------
 	m_dwCurDemoFrame = 0;
 //	ZeroMemory(&m_sDemoHeader, sizeof(m_sDemoHeader));
@@ -204,10 +204,10 @@ void						CLevel::Demo_Load(const char* DemoName)
 	}
 
 	u32	FileSize = GetFileSize(hDemoFile, NULL);
-	U8* pDemoData = xr_alloc<U8>(FileSize / sizeof(U8));
+	unsigned char* pDemoData = xr_alloc<unsigned char>(FileSize / sizeof(unsigned char));
 	ReadFile(hDemoFile, pDemoData, FileSize, (LPDWORD) &FileSize, NULL);
 	CloseHandle(hDemoFile);
-	U8* pTDemoData = pDemoData;
+	unsigned char* pTDemoData = pDemoData;
 	//-----------------------------------------------------
 
 //	FILE* fTDemo = fopen(DemoFileName, "rb");

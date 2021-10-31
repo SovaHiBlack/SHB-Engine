@@ -1,16 +1,18 @@
-// StringTable.h: таблица строк используемых в игре
+//	Module		: StringTable.h
+//	Description	: Таблица строк используемых в игре
+
 #pragma once
 
 #include "StringTable_defs.h"
 
-using STRING_TABLE_MAP									= xr_map<STRING_ID, STRING_VALUE>;
-using STRING_TABLE_MAP_IT								= STRING_TABLE_MAP::iterator;
+using StringTableMap									= xr_map<StringTableID, StringTableValue>;
+using StringTableMap_it									= StringTableMap::iterator;
 
-struct STRING_TABLE_DATA
+struct SStringTableData
 {
-	CSharedString											m_sLanguage;
-	STRING_TABLE_MAP									m_StringTable;
-	STRING_TABLE_MAP									m_string_key_binding;
+	CSharedString										m_sLanguage;
+	StringTableMap										m_StringTable;
+	StringTableMap										m_string_key_binding;
 };
 
 class CStringTable
@@ -19,7 +21,7 @@ public:
 								CStringTable			( );
 
 	static void					Destroy					( );
-	STRING_VALUE				translate				(const STRING_ID& str_id) const;
+	StringTableValue			translate				(const StringTableID& str_id) const;
 
 	static BOOL											m_bWriteErrorsToLog;
 	static void					ReparseKeyBindings		( );
@@ -27,6 +29,6 @@ public:
 private:
 	void						Init					( );
 	void						Load					(const char* xml_file);
-	static STRING_VALUE			ParseLine				(const char* str, const char* key, bool bFirst);
-	static STRING_TABLE_DATA*							pData;
+	static StringTableValue		ParseLine				(const char* str, const char* key, bool bFirst);
+	static SStringTableData*							pData;
 };

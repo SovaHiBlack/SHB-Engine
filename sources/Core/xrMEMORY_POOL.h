@@ -11,7 +11,7 @@ private:
 	U32					s_count;		// element count = [s_sector/s_element]
 	U32					s_offset;		// header size
 	U32					block_count;	// block count
-	U8* list;
+	unsigned char* list;
 
 private:
 	__forceinline void** access(void* P)
@@ -41,7 +41,7 @@ public:
 		}
 
 		void* E = list;
-		list = (U8*) *access(list);
+		list = (unsigned char*) *access(list);
 		cs.Leave( );
 		return			E;
 	}
@@ -49,7 +49,7 @@ public:
 	{
 		cs.Enter( );
 		*access(P) = list;
-		list = (U8*) P;
+		list = (unsigned char*) P;
 		cs.Leave( );
 	}
 };

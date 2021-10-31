@@ -68,7 +68,4 @@ public:
 	}
 };
 
-
-
 #include "state_inline.h"
-

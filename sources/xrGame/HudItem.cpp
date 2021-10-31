@@ -139,7 +139,7 @@ void CHudItem::SwitchState(u32 S)
 		// !!! Just single entry for given state !!!
 		CNetPacket		P;
 		object( ).u_EventGen(P, GE_WPN_STATE_CHANGE, object( ).ID( ));
-		P.w_u8(U8(S));
+		P.w_u8(unsigned char(S));
 		object( ).u_EventSend(P);
 	}
 }
@@ -150,7 +150,7 @@ void CHudItem::OnEvent(CNetPacket& P, U16 type)
 	{
 		case GE_WPN_STATE_CHANGE:
 		{
-			U8 S;
+			unsigned char S;
 			P.r_u8(S);
 			OnStateSwitch(u32(S));
 		}

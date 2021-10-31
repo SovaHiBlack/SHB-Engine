@@ -205,7 +205,7 @@ void CHUDTarget::Render( )
 					if (fuzzyShowInfo > 0.5f)
 					{
 						CStringTable strtbl;
-						F->SetColor(subst_alpha(C, U8(iFloor(255.0f * (fuzzyShowInfo - 0.5f) * 2.0f))));
+						F->SetColor(subst_alpha(C, unsigned char(iFloor(255.0f * (fuzzyShowInfo - 0.5f) * 2.0f))));
 						F->OutNext("%s", *strtbl.translate(others_inv_owner->Name( )));
 						F->OutNext("%s", *strtbl.translate(others_inv_owner->CharacterInfo( ).Community( ).id( )));
 					}
@@ -217,7 +217,7 @@ void CHUDTarget::Render( )
 			{
 				if (fuzzyShowInfo > 0.5f)
 				{
-					F->SetColor(subst_alpha(C, U8(iFloor(255.f * (fuzzyShowInfo - 0.5f) * 2.f))));
+					F->SetColor(subst_alpha(C, unsigned char(iFloor(255.0f * (fuzzyShowInfo - 0.5f) * 2.0f))));
 					F->OutNext("%s", l_pI->Name/*Complex*/( ));
 				}
 

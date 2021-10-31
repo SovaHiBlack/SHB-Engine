@@ -5,7 +5,7 @@
 #include "Level.h"
 #include "Messages.h"
 #include "game_cl_base.h"
-#include "net_queue.h"
+#include "NetQueueEvent.h"
 #include "Physics.h"
 #include "Server.h"
 #include "Actor.h"
@@ -145,8 +145,8 @@ void CLevel::ClientReceive( )
 			break;
 			case M_MOVE_PLAYERS:
 			{
-				U8 Count = P->r_u8( );
-				for (U8 i = 0; i < Count; i++)
+				unsigned char Count = P->r_u8( );
+				for (unsigned char i = 0; i < Count; i++)
 				{
 					U16 ID = P->r_u16( );
 					Fvector3 NewPos;

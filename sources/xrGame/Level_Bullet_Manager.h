@@ -46,7 +46,7 @@ struct SBullet
 	float			pierce				;
 	float			wallmark_size		;
 	//-------------------------------------------------------------------
-	U8				m_u8ColorID			;
+	unsigned char				m_u8ColorID			;
 	
 	//тип наносимого хита
 	ALife::EHitType hit_type			;
@@ -96,10 +96,10 @@ private:
 	friend	CLevel;
 
 	enum EventType {
-		EVENT_HIT	= U8(0),
+		EVENT_HIT	= unsigned char(0),
 		EVENT_REMOVE,
 
-		EVENT_DUMMY = U8(-1)
+		EVENT_DUMMY = unsigned char(-1)
 	};
 	struct	_event			{
 		EventType			Type;

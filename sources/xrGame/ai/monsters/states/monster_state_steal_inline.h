@@ -2,10 +2,7 @@
 
 #include "../../../clsid_game.h"
 
-#define TEMPLATE_SPECIALIZATION template <\
-	typename _Object\
->
-
+#define TEMPLATE_SPECIALIZATION template <typename _Object>
 #define CStateMonsterStealAbstract CStateMonsterSteal<_Object>
 
 #define STEAL_MIN_DISTANCE		4.0f
@@ -37,38 +34,56 @@ void CStateMonsterStealAbstract::execute()
 TEMPLATE_SPECIALIZATION
 bool CStateMonsterStealAbstract::check_completion()
 {
-	return (!check_conditions());
+	return !check_conditions();
 }
 
 TEMPLATE_SPECIALIZATION
 bool CStateMonsterStealAbstract::check_start_conditions()
 {
-	return (check_conditions());
+	return check_conditions();
 }
 
 TEMPLATE_SPECIALIZATION
 bool CStateMonsterStealAbstract::check_conditions()
 {
 	// if i see enemy
-	if (!object->EnemyMan.see_enemy_now())						return false;
+	if (!object->EnemyMan.see_enemy_now( ))
+	{
+		return false;
+	}
 	
 	// This is the only enemy
-	if (object->EnemyMan.get_enemies_count() > 1)				return false;
+	if (object->EnemyMan.get_enemies_count( ) > 1)
+	{
+		return false;
+	}
 	
 	// There is extended info about enemy?
 	if (!object->EnemyMan.get_flags().is(FLAG_ENEMY_STATS_NOT_READY)) {
 		// Enemy is not moving fast
-		if (object->EnemyMan.get_flags().is(FLAG_ENEMY_GO_FARTHER_FAST))		return false;
+		if (object->EnemyMan.get_flags( ).is(FLAG_ENEMY_GO_FARTHER_FAST))
+		{
+			return false;
+		}
 
 		// Enemy doesn't know about me
-		if (!object->EnemyMan.get_flags().is(FLAG_ENEMY_DOESNT_KNOW_ABOUT_ME))	return false;
+		if (!object->EnemyMan.get_flags( ).is(FLAG_ENEMY_DOESNT_KNOW_ABOUT_ME))
+		{
+			return false;
+		}
 	}
 
 	// Don't hear dangerous sounds
-	if (object->hear_dangerous_sound)							return false;
+	if (object->hear_dangerous_sound)
+	{
+		return false;
+	}
 	
 	// Don't get hitted
-	if (object->HitMemory.is_hit())								return false;
+	if (object->HitMemory.is_hit( ))
+	{
+		return false;
+	}
 
 	// Path with minimal deviation
 	//if (object->control().path_builder().detail().time_path_built() >= time_state_started) {
@@ -77,8 +92,14 @@ bool CStateMonsterStealAbstract::check_conditions()
 	
 	// check distance to enemy
 	float dist = object->MeleeChecker.distance_to_enemy(object->EnemyMan.get_enemy());
-	if (dist < STEAL_MIN_DISTANCE)								return false;
-	else if (dist > STEAL_MAX_DISTANCE)							return false;
+	if (dist < STEAL_MIN_DISTANCE)
+	{
+		return false;
+	}
+	else if (dist > STEAL_MAX_DISTANCE)
+	{
+		return false;
+	}
 
 	return true;
 }

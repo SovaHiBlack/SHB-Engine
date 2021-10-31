@@ -2,17 +2,17 @@
 
 #include "Messages.h"
 
-extern bool		g_bCheckTime;
+extern bool g_bCheckTime;
 static int g_dwEventDelay = 0;
 
-class NET_Event
+class CNetEvent
 {
 public:
 	U16					ID;
 	u32					timestamp;
 	U16					type;
 	U16					destination;
-	xr_vector<U8>		data;
+	xr_vector<unsigned char>		data;
 
 	void				import(CNetPacket& P)
 	{
@@ -68,19 +68,19 @@ public:
 	}
 };
 
-inline bool operator < (const NET_Event& A, const NET_Event& B)
+inline bool operator < (const CNetEvent& A, const CNetEvent& B)
 {
 	return A.timestamp < B.timestamp;
 }
 
-class	NET_Queue_Event
+class CNetQueueEvent
 {
 public:
-	xr_deque<NET_Event>	queue;
+	xr_deque<CNetEvent>	queue;
 
 	inline void				insert(CNetPacket& P)
 	{
-		NET_Event		E;
+		CNetEvent		E;
 		E.import(P);
 //		queue.insert	(E);
 		queue.push_back(E);
@@ -123,7 +123,7 @@ public:
 	}
 	inline void				get(U16& ID, U16& dest, U16& type, CNetPacket& P)
 	{
-		const NET_Event& E = *queue.begin( );
+		const CNetEvent& E = *queue.begin( );
 		ID = E.ID;
 		dest = E.destination;
 		type = E.type;

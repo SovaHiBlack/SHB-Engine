@@ -31,7 +31,7 @@ struct SMonsterSettings {
 	float					m_fEatSlice;
 	float					m_fEatSliceWeight;
 
-	U8						m_legs_number;
+	unsigned char						m_legs_number;
 	SAttackEffector			m_attack_effector;
 
 	float					m_max_hear_dist;

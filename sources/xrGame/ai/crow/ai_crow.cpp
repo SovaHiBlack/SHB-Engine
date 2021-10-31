@@ -338,7 +338,7 @@ void CCrow::net_Export	(CNetPacket& P)					// export to server
 	// export 
 	R_ASSERT			(Local());
 
-	U8					flags = 0;
+	unsigned char					flags = 0;
 	P.w_float			(GetfHealth());
 
 	P.w_float			(0);
@@ -354,9 +354,9 @@ void CCrow::net_Export	(CNetPacket& P)					// export to server
 	P.w_float			(yaw);
 	P.w_float			(pitch);
 	P.w_float			(0);
-	P.w_u8				(U8(g_Team()));
-	P.w_u8				(U8(g_Squad()));
-	P.w_u8				(U8(g_Group()));
+	P.w_u8				(unsigned char(g_Team()));
+	P.w_u8				(unsigned char(g_Squad()));
+	P.w_u8				(unsigned char(g_Group()));
 }
 //---------------------------------------------------------------------
 void CCrow::net_Import	(CNetPacket& P)
@@ -364,7 +364,7 @@ void CCrow::net_Import	(CNetPacket& P)
 	// import
 	R_ASSERT			(Remote());
 
-	U8					flags;
+	unsigned char					flags;
 	
 	float health;
 	P.r_float			(health);

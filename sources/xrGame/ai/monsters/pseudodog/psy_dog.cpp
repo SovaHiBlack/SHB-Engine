@@ -146,9 +146,9 @@ IStateManagerBase *CPsyDog::create_state_manager()
 	return xr_new<CStateManagerPsyDog>(this);
 }
 
-U8 CPsyDog::get_phantoms_count()
+unsigned char CPsyDog::get_phantoms_count()
 {
-	return U8(m_storage.size());
+	return unsigned char(m_storage.size());
 }
 
 //////////////////////////////////////////////////////////////////////////

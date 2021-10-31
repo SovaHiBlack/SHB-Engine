@@ -54,7 +54,7 @@ public:
 		if ((0 != hf) && (0 != count))
 		{
 			const U32 mb_sz = 0x1000000;
-			U8* ptr = (U8*) _ptr;
+			unsigned char* ptr = (unsigned char*) _ptr;
 			for (int req_size = count; req_size > mb_sz; req_size -= mb_sz, ptr += mb_sz)
 			{
 				size_t W = fwrite(ptr, mb_sz, 1, hf);

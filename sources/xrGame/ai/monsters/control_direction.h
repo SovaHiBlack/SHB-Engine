@@ -21,7 +21,7 @@ struct SRotationEventData : public ControlCom::IEventData
 		ePitch = u32(1) << 1,
 	};
 
-	U8 angle;
+	unsigned char angle;
 };
 
 class CControlDirection : public CControl_ComPure<SControlDirectionData>

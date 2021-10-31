@@ -68,7 +68,7 @@ void CMovementManager::process_game_path( )
 				Msg("! TARGET LEVEL : %s", *ai( ).game_graph( ).header( ).level(vertex->level_id( )).name( ));
 				temp = vertex->level_point( );
 				Msg("! TARGET  game point position : [%f][%f][%f]", VPUSH(temp));
-				const U8* target_vertex_type = ai( ).game_graph( ).vertex(game_dest_vertex_id( ))->vertex_type( );
+				const unsigned char* target_vertex_type = ai( ).game_graph( ).vertex(game_dest_vertex_id( ))->vertex_type( );
 				Msg("! Target point mask [%d][%d][%d][%d]",
 					target_vertex_type[0],
 					target_vertex_type[1],
@@ -77,7 +77,7 @@ void CMovementManager::process_game_path( )
 				);
 
 				Msg("! Object masks (%d) :", m_location_manager->vertex_types( ).size( ));
-				typedef GameGraph::TERRAIN_VECTOR::const_iterator	const_iterator;
+				typedef GameGraph::TerrainPlaceVec::const_iterator	const_iterator;
 				const_iterator I = m_location_manager->vertex_types( ).begin( );
 				const_iterator E = m_location_manager->vertex_types( ).end( );
 				for (; I != E; ++I)

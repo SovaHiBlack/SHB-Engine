@@ -261,9 +261,9 @@ void game_sv_GameState::net_Export_State(CNetPacket& P, CClientID to)
 	P.w_u16(m_phase);
 	P.w_s32(m_round);
 	P.w_u32(m_start_time);
-	P.w_u8(U8(g_sv_base_iVotingEnabled & 0xff));
-	P.w_u8(U8(net_sv_control_hit));
-	P.w_u8(U8(g_bCollectStatisticData));
+	P.w_u8(unsigned char(g_sv_base_iVotingEnabled & 0xff));
+	P.w_u8(unsigned char(net_sv_control_hit));
+	P.w_u8(unsigned char(g_bCollectStatisticData));
 
 	// Players
 	u32 p_count = 0;
@@ -373,9 +373,9 @@ void game_sv_GameState::Create(CSharedString& options)
 			for (int id = 0; O->find_chunk(id); ++id)
 			{
 				RPoint					R;
-				U8						team;
-				U8						type;
-				U8						GameType;
+				unsigned char						team;
+				unsigned char						type;
+				unsigned char						GameType;
 
 				O->r_fvector3(R.P);
 				O->r_fvector3(R.A);
@@ -494,7 +494,7 @@ void	game_sv_GameState::ConsoleCommands_Clear( )
 //{
 //	VERIFY				(E);
 //
-//	U8					l_uc_team = U8(-1);
+//	unsigned char					l_uc_team = unsigned char(-1);
 //	CSE_Spectator		*tpSpectator = smart_cast<CSE_Spectator*>(E);
 //	if (tpSpectator)
 //		l_uc_team = tpSpectator->g_team();
@@ -554,7 +554,7 @@ void	game_sv_GameState::ConsoleCommands_Clear( )
 //{
 //	CSE_Abstract*	A	=   F_entity_Create(N);	R_ASSERT(A);	// create SE
 //	A->s_name			=   N;							// ltx-def
-//	A->s_gameid			= U8(m_type);							// game-type
+//	A->s_gameid			= unsigned char(m_type);							// game-type
 //	A->s_RP				=	0xFE;								// use supplied
 //	A->ID				=	0xffff;								// server must generate ID
 //	A->ID_Parent		=	0xffff;								// no-parent

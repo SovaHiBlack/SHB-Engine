@@ -103,11 +103,11 @@ struct SPlayerStatistic
 	u32				m_dwTotalAliveTime[3];
 	int				m_dwTotalMoneyRound[3];
 	u32				m_dwNumRespawned[3];
-	U8				m_dwArtefacts[3];
+	unsigned char				m_dwArtefacts[3];
 
 	u32				m_dwSpecialKills[3];//headshot, backstab, knifekill
 
-	U8				m_dwCurrentTeam;
+	unsigned char				m_dwCurrentTeam;
 
 	WeaponsStatisticVec	aWeaponStats;
 	//-----------------------------------------------
@@ -150,8 +150,8 @@ struct SBulletCheckArray
 	u32	SenderID;
 
 	BulletsCheckRequestVec	Requests;
-	U8		NumTrue;
-	U8		NumFalse;
+	unsigned char		NumTrue;
+	unsigned char		NumFalse;
 
 	bool			operator	==		(u32 ID)
 	{

@@ -43,12 +43,12 @@ CALifeHumanBrain::CALifeHumanBrain(object_type* object) : inherited(object)
 
 	for (int i = 0, n = m_cpEquipmentPreferences.size( ); i < n; ++i)
 	{
-		m_cpEquipmentPreferences[i] = U8(::Random.randI(3));
+		m_cpEquipmentPreferences[i] = unsigned char(::Random.randI(3));
 	}
 
 	for (int i = 0, n = m_cpMainWeaponPreferences.size( ); i < n; ++i)
 	{
-		m_cpMainWeaponPreferences[i] = U8(::Random.randI(3));
+		m_cpMainWeaponPreferences[i] = unsigned char(::Random.randI(3));
 	}
 }
 

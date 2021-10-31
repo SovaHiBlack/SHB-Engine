@@ -27,10 +27,10 @@ public:
 	CMonsterSquadManager	();
 	~CMonsterSquadManager	();
 
-	void			register_member			(U8 team_id, U8 squad_id, U8 group_id, CEntity *e);
-	void			remove_member			(U8 team_id, U8 squad_id, U8 group_id, CEntity *e);
+	void			register_member			(unsigned char team_id, unsigned char squad_id, unsigned char group_id, CEntity *e);
+	void			remove_member			(unsigned char team_id, unsigned char squad_id, unsigned char group_id, CEntity *e);
 
-	CMonsterSquad	*get_squad				(U8 team_id, U8 squad_id, U8 group_id);
+	CMonsterSquad	*get_squad				(unsigned char team_id, unsigned char squad_id, unsigned char group_id);
 	CMonsterSquad	*get_squad				(const CEntity *entity);
 
 	void			update					(CEntity *entity);

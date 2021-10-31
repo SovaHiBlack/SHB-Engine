@@ -18,8 +18,8 @@ class CPsyDog : public CPseudoDog
 	CActor			*m_enemy;
 
 	// externals
-	U8				m_phantoms_max;
-	U8				m_phantoms_min;
+	unsigned char				m_phantoms_max;
+	unsigned char				m_phantoms_min;
 	u32				m_time_phantom_appear;
 	
 	//internals
@@ -40,7 +40,7 @@ public:
 //				void	on_phantom_appear	();
 		virtual IStateManagerBase *create_state_manager	();
 
-		U8		get_phantoms_count	();
+		unsigned char		get_phantoms_count	();
 				bool	must_hide			() {return (get_phantoms_count() < m_phantoms_min);}
 private:
 				bool	spawn_phantom		();
@@ -49,7 +49,6 @@ private:
 
 				void	delete_all_phantoms	();
 
-private:
 	xr_vector<CPsyDogPhantom*> m_storage;
 
 public:

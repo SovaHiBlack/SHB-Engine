@@ -642,7 +642,7 @@ void CCar::SDoor::SaveNetState(CNetPacket& P)
 {
 	CSE_ALifeCar::SDoorState ds;
 	ds.health=Health();
-	ds.open_state= U8(state);
+	ds.open_state= unsigned char(state);
 	ds.write(P);
 }
 

@@ -496,7 +496,7 @@ inline xr_string draw_sprintf(xr_string& s, const Fvector3& V, int dec)
 typedef NumericValue<U8>	U8Value;
 typedef NumericValue<U16>	U16Value;
 typedef NumericValue<u32>	U32Value;
-typedef NumericValue<S8>	S8Value;
+typedef NumericValue<signed char>	S8Value;
 typedef NumericValue<S16>	S16Value;
 typedef NumericValue<int>	S32Value;
 typedef NumericValue<float>	FloatValue;

@@ -23,7 +23,7 @@ CMonsterSquadManager::~CMonsterSquadManager()
 	}
 }
 
-void CMonsterSquadManager::register_member(U8 team_id, U8 squad_id, U8 group_id, CEntity *e)
+void CMonsterSquadManager::register_member(unsigned char team_id, unsigned char squad_id, unsigned char group_id, CEntity *e)
 {
 	CMonsterSquad *pSquad;
 
@@ -75,12 +75,12 @@ void CMonsterSquadManager::register_member(U8 team_id, U8 squad_id, U8 group_id,
 	pSquad->RegisterMember(e);
 }
 
-void CMonsterSquadManager::remove_member(U8 team_id, U8 squad_id, U8 group_id, CEntity *e)
+void CMonsterSquadManager::remove_member(unsigned char team_id, unsigned char squad_id, unsigned char group_id, CEntity *e)
 {
 	get_squad(team_id, squad_id, group_id)->RemoveMember(e);
 }
 
-CMonsterSquad *CMonsterSquadManager::get_squad(U8 team_id, U8 squad_id, U8 group_id)
+CMonsterSquad *CMonsterSquadManager::get_squad(unsigned char team_id, unsigned char squad_id, unsigned char group_id)
 {
 	VERIFY((team_id < team.size()) && (squad_id < team[team_id].size()) && (group_id < team[team_id][squad_id].size()));
 	return team[team_id][squad_id][group_id];
@@ -88,7 +88,7 @@ CMonsterSquad *CMonsterSquadManager::get_squad(U8 team_id, U8 squad_id, U8 group
 
 CMonsterSquad *CMonsterSquadManager::get_squad(const CEntity *entity)
 {
-	return get_squad((U8)entity->g_Team(),(U8)entity->g_Squad(),(U8)entity->g_Group());
+	return get_squad((unsigned char)entity->g_Team(),(unsigned char)entity->g_Squad(),(unsigned char)entity->g_Group());
 }
 
 void CMonsterSquadManager::update(CEntity *entity)

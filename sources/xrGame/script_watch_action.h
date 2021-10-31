@@ -8,7 +8,7 @@
 
 #pragma once
 
-#include "script_abstract_action.h"
+#include "ScriptAbstractAction.h"
 #include "script_export_space.h"
 
 namespace SightManager {

@@ -3,7 +3,7 @@
 #include "Trade.h"
 #include "Actor.h"
 #include "ai/stalker/Stalker.h"
-#include "ai/trader/ai_trader.h"
+#include "ai/trader/Trader.h"
 #include "Artefact.h"
 #include "Inventory.h"
 #include "Messages.h"

@@ -640,9 +640,6 @@
     <Filter Include="AI\AMonsters\humans">
       <UniqueIdentifier>{075dd244-a74c-4fa9-9b27-cfb1340701ea}</UniqueIdentifier>
     </Filter>
-    <Filter Include="AI\AMonsters\humans\trader">
-      <UniqueIdentifier>{2f662c26-f5ee-4a6a-8032-976368937848}</UniqueIdentifier>
-    </Filter>
     <Filter Include="AI\AMonsters\humans\stalker">
       <UniqueIdentifier>{00f0639f-5b49-439c-93f1-c5d6d97e4c52}</UniqueIdentifier>
     </Filter>
@@ -907,9 +904,6 @@
     <Filter Include="AI\AScript\ScriptClasses\ScriptActions">
       <UniqueIdentifier>{5534c516-7783-43cf-a20d-eef64f367b59}</UniqueIdentifier>
     </Filter>
-    <Filter Include="AI\AScript\ScriptClasses\ScriptActions\script_abstract_action">
-      <UniqueIdentifier>{78264af7-2a3c-4296-8c91-45a92e382c07}</UniqueIdentifier>
-    </Filter>
     <Filter Include="AI\AScript\ScriptClasses\ScriptActions\script_movement_action">
       <UniqueIdentifier>{9d5ad085-1eb9-4729-b94b-bf1eda64a54d}</UniqueIdentifier>
     </Filter>
@@ -918,9 +912,6 @@
     </Filter>
     <Filter Include="AI\AScript\ScriptClasses\ScriptActions\script_watch_action">
       <UniqueIdentifier>{5c61c3e9-d086-4ed6-a30d-d6fa0cc1704a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AScript\ScriptClasses\ScriptActions\acript_animation_action">
-      <UniqueIdentifier>{d6e1de6d-6caa-4ae9-a983-70cd2521176b}</UniqueIdentifier>
     </Filter>
     <Filter Include="AI\AScript\ScriptClasses\ScriptActions\script_sound_action">
       <UniqueIdentifier>{526e6fdf-fe96-4d5b-baa2-cf915aabc5fd}</UniqueIdentifier>
@@ -933,9 +924,6 @@
     </Filter>
     <Filter Include="AI\AScript\ScriptClasses\ScriptActions\script_object_action">
       <UniqueIdentifier>{c94a96fc-169e-4398-99bc-8332893e8573}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AScript\ScriptClasses\ScriptActions\script_action_condition">
-      <UniqueIdentifier>{45133a84-42be-4b21-94c1-f56337ab859b}</UniqueIdentifier>
     </Filter>
     <Filter Include="AI\AScript\ScriptClasses\ScriptActions\script_monster_action">
       <UniqueIdentifier>{41d8f31f-0aca-4b5f-8a7e-eb23030dff0f}</UniqueIdentifier>
@@ -2067,6 +2055,18 @@
     </Filter>
     <Filter Include="AI\AMonsters\common\components\Controlled Actor">
       <UniqueIdentifier>{954c1e9c-7345-4c06-90e6-90d3cfb82e8d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\AMonsters\humans\Trader">
+      <UniqueIdentifier>{2f662c26-f5ee-4a6a-8032-976368937848}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\AScript\ScriptClasses\ScriptActions\ScriptAnimationAction">
+      <UniqueIdentifier>{d6e1de6d-6caa-4ae9-a983-70cd2521176b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\AScript\ScriptClasses\ScriptActions\ScriptAbstractAction">
+      <UniqueIdentifier>{78264af7-2a3c-4296-8c91-45a92e382c07}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\AScript\ScriptClasses\ScriptActions\ScriptActionCondition">
+      <UniqueIdentifier>{45133a84-42be-4b21-94c1-f56337ab859b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -3621,11 +3621,11 @@
     <ClInclude Include="ai\Monsters\Dog\dog_state_manager.h">
       <Filter>AI\AMonsters\monsters\Dog</Filter>
     </ClInclude>
-    <ClInclude Include="Ai\Trader\ai_trader.h">
-      <Filter>AI\AMonsters\humans\trader</Filter>
+    <ClInclude Include="Ai\Trader\Trader.h">
+      <Filter>AI\AMonsters\humans\Trader</Filter>
     </ClInclude>
-    <ClInclude Include="ai\trader\trader_animation.h">
-      <Filter>AI\AMonsters\humans\trader</Filter>
+    <ClInclude Include="ai\trader\TraderAnimation.h">
+      <Filter>AI\AMonsters\humans\Trader</Filter>
     </ClInclude>
     <ClInclude Include="ai\stalker\ai_stalker_impl.h">
       <Filter>AI\AMonsters\humans\stalker</Filter>
@@ -4032,11 +4032,11 @@
     <ClInclude Include="script_bind_macroses.h">
       <Filter>AI\AScript\ScriptClasses</Filter>
     </ClInclude>
-    <ClInclude Include="script_abstract_action.h">
-      <Filter>AI\AScript\ScriptClasses\ScriptActions\script_abstract_action</Filter>
+    <ClInclude Include="ScriptAbstractAction.h">
+      <Filter>AI\AScript\ScriptClasses\ScriptActions\ScriptAbstractAction</Filter>
     </ClInclude>
-    <ClInclude Include="script_abstract_action_inline.h">
-      <Filter>AI\AScript\ScriptClasses\ScriptActions\script_abstract_action</Filter>
+    <ClInclude Include="ScriptAbstractAction_inline.h">
+      <Filter>AI\AScript\ScriptClasses\ScriptActions\ScriptAbstractAction</Filter>
     </ClInclude>
     <ClInclude Include="script_movement_action.h">
       <Filter>AI\AScript\ScriptClasses\ScriptActions\script_movement_action</Filter>
@@ -4053,11 +4053,11 @@
     <ClInclude Include="script_watch_action_inline.h">
       <Filter>AI\AScript\ScriptClasses\ScriptActions\script_watch_action</Filter>
     </ClInclude>
-    <ClInclude Include="script_animation_action.h">
-      <Filter>AI\AScript\ScriptClasses\ScriptActions\acript_animation_action</Filter>
+    <ClInclude Include="ScriptAnimationAction.h">
+      <Filter>AI\AScript\ScriptClasses\ScriptActions\ScriptAnimationAction</Filter>
     </ClInclude>
-    <ClInclude Include="script_animation_action_inline.h">
-      <Filter>AI\AScript\ScriptClasses\ScriptActions\acript_animation_action</Filter>
+    <ClInclude Include="ScriptAnimationAction_inline.h">
+      <Filter>AI\AScript\ScriptClasses\ScriptActions\ScriptAnimationAction</Filter>
     </ClInclude>
     <ClInclude Include="script_sound_action.h">
       <Filter>AI\AScript\ScriptClasses\ScriptActions\script_sound_action</Filter>
@@ -4083,11 +4083,11 @@
     <ClInclude Include="script_object_action_inline.h">
       <Filter>AI\AScript\ScriptClasses\ScriptActions\script_object_action</Filter>
     </ClInclude>
-    <ClInclude Include="script_action_condition.h">
-      <Filter>AI\AScript\ScriptClasses\ScriptActions\script_action_condition</Filter>
+    <ClInclude Include="ScriptActionCondition.h">
+      <Filter>AI\AScript\ScriptClasses\ScriptActions\ScriptActionCondition</Filter>
     </ClInclude>
-    <ClInclude Include="script_action_condition_inline.h">
-      <Filter>AI\AScript\ScriptClasses\ScriptActions\script_action_condition</Filter>
+    <ClInclude Include="ScriptActionCondition_inline.h">
+      <Filter>AI\AScript\ScriptClasses\ScriptActions\ScriptActionCondition</Filter>
     </ClInclude>
     <ClInclude Include="script_monster_action.h">
       <Filter>AI\AScript\ScriptClasses\ScriptActions\script_monster_action</Filter>
@@ -4788,7 +4788,7 @@
     <ClInclude Include="date_time.h">
       <Filter>Core\Common\DateTime</Filter>
     </ClInclude>
-    <ClInclude Include="NET_Queue.h">
+    <ClInclude Include="NetQueueEvent.h">
       <Filter>Core\Common\NET Shared</Filter>
     </ClInclude>
     <ClInclude Include="object_broker.h">
@@ -6587,11 +6587,11 @@
     <ClCompile Include="ai\Monsters\Dog\dog_state_manager.cpp">
       <Filter>AI\AMonsters\monsters\Dog</Filter>
     </ClCompile>
-    <ClCompile Include="Ai\Trader\ai_trader.cpp">
-      <Filter>AI\AMonsters\humans\trader</Filter>
+    <ClCompile Include="Ai\Trader\Trader.cpp">
+      <Filter>AI\AMonsters\humans\Trader</Filter>
     </ClCompile>
-    <ClCompile Include="ai\trader\trader_animation.cpp">
-      <Filter>AI\AMonsters\humans\trader</Filter>
+    <ClCompile Include="ai\trader\TraderAnimation.cpp">
+      <Filter>AI\AMonsters\humans\Trader</Filter>
     </ClCompile>
     <ClCompile Include="stalker_animation_callbacks.cpp">
       <Filter>AI\AMonsters\humans\stalker\AnimationManager</Filter>
@@ -6776,8 +6776,8 @@
     <ClCompile Include="patrol_point.cpp">
       <Filter>AI\ANavigation\PatrolPaths\PatrolPoint</Filter>
     </ClCompile>
-    <ClCompile Include="script_abstract_action.cpp">
-      <Filter>AI\AScript\ScriptClasses\ScriptActions\script_abstract_action</Filter>
+    <ClCompile Include="ScriptAbstractAction.cpp">
+      <Filter>AI\AScript\ScriptClasses\ScriptActions\ScriptAbstractAction</Filter>
     </ClCompile>
     <ClCompile Include="script_movement_action.cpp">
       <Filter>AI\AScript\ScriptClasses\ScriptActions\script_movement_action</Filter>
@@ -6797,11 +6797,8 @@
     <ClCompile Include="script_watch_action_script.cpp">
       <Filter>AI\AScript\ScriptClasses\ScriptActions\script_watch_action</Filter>
     </ClCompile>
-    <ClCompile Include="script_animation_action.cpp">
-      <Filter>AI\AScript\ScriptClasses\ScriptActions\acript_animation_action</Filter>
-    </ClCompile>
-    <ClCompile Include="script_animation_action_script.cpp">
-      <Filter>AI\AScript\ScriptClasses\ScriptActions\acript_animation_action</Filter>
+    <ClCompile Include="ScriptAnimationAction.cpp">
+      <Filter>AI\AScript\ScriptClasses\ScriptActions\ScriptAnimationAction</Filter>
     </ClCompile>
     <ClCompile Include="script_sound_action.cpp">
       <Filter>AI\AScript\ScriptClasses\ScriptActions\script_sound_action</Filter>
@@ -6827,11 +6824,8 @@
     <ClCompile Include="script_object_action_script.cpp">
       <Filter>AI\AScript\ScriptClasses\ScriptActions\script_object_action</Filter>
     </ClCompile>
-    <ClCompile Include="script_action_condition.cpp">
-      <Filter>AI\AScript\ScriptClasses\ScriptActions\script_action_condition</Filter>
-    </ClCompile>
-    <ClCompile Include="script_action_condition_script.cpp">
-      <Filter>AI\AScript\ScriptClasses\ScriptActions\script_action_condition</Filter>
+    <ClCompile Include="ScriptActionCondition.cpp">
+      <Filter>AI\AScript\ScriptClasses\ScriptActions\ScriptActionCondition</Filter>
     </ClCompile>
     <ClCompile Include="script_monster_action.cpp">
       <Filter>AI\AScript\ScriptClasses\ScriptActions\script_monster_action</Filter>

@@ -127,7 +127,7 @@ void CActor::ConvState(u32 mstate_rl, string128* buf)
 void CActor::net_Export(CNetPacket& P)					// export to server
 {
 	//CSE_ALifeCreatureAbstract
-	U8 flags = 0;
+	unsigned char flags = 0;
 	P.w_float(GetfHealth( ));
 	P.w_u32(Level( ).timeServer( ));
 	P.w_u8(flags);
@@ -138,9 +138,9 @@ void CActor::net_Export(CNetPacket& P)					// export to server
 	P.w_float(angle_normalize(unaffected_r_torso.yaw));
 	P.w_float(angle_normalize(unaffected_r_torso.pitch));
 	P.w_float(angle_normalize(unaffected_r_torso.roll));
-	P.w_u8(U8(g_Team( )));
-	P.w_u8(U8(g_Squad( )));
-	P.w_u8(U8(g_Group( )));
+	P.w_u8(unsigned char(g_Team( )));
+	P.w_u8(unsigned char(g_Squad( )));
+	P.w_u8(unsigned char(g_Group( )));
 
 	//CSE_ALifeCreatureActor
 	U16 ms = (U16) (mstate_real & 0x0000ffff);
@@ -150,7 +150,7 @@ void CActor::net_Export(CNetPacket& P)					// export to server
 	P.w_sdir(v);
 	P.w_float(g_Radiation( ));
 
-	P.w_u8(U8(inventory( ).GetActiveSlot( )));
+	P.w_u8(unsigned char(inventory( ).GetActiveSlot( )));
 	/////////////////////////////////////////////////
 	U16 NumItems = 0;
 
@@ -335,7 +335,7 @@ void CActor::net_Import_Base(CNetPacket& P)
 {
 	net_update N;
 
-	U8 flags;
+	unsigned char flags;
 	U16 tmp;
 
 	//CSE_ALifeCreatureAbstract
@@ -389,7 +389,7 @@ void CActor::net_Import_Base(CNetPacket& P)
 	}
 	//------------------------------------------------
 
-	U8 ActiveSlot;
+	unsigned char ActiveSlot;
 	P.r_u8(ActiveSlot);
 
 	//----------- for E3 -----------------------------
@@ -490,7 +490,7 @@ void CActor::net_Import_Physic(CNetPacket& P)
 	{
 		net_update_A N_A;
 
-		P.r_u8(*((U8*) &(N_A.State.enabled)));
+		P.r_u8(*((unsigned char*) &(N_A.State.enabled)));
 
 		P.r_vec3(N_A.State.angular_vel);
 		P.r_vec3(N_A.State.linear_vel);
@@ -1364,7 +1364,7 @@ void CActor::save(CNetPacket& output_packet)
 {
 	inherited::save(output_packet);
 	CInventoryOwner::save(output_packet);
-	output_packet.w_u8(U8(m_bOutBorder));
+	output_packet.w_u8(unsigned char(m_bOutBorder));
 }
 
 void CActor::load(IReader& input_packet)

@@ -33,12 +33,12 @@ u32 get_rank(const CSharedString&)
 static const int MAX_AMMO_ATTACH_COUNT = 10;
 static const int enough_ammo_box_count = 1;
 
-inline	bool CStalker::CTradeItem::operator<		(const CTradeItem &trade_item) const
+inline	bool CStalker::STradeItem::operator<		(const STradeItem& trade_item) const
 {
 	return			(m_item->object().ID() < trade_item.m_item->object().ID());
 }
 
-inline	bool CStalker::CTradeItem::operator==	(U16 id) const
+inline	bool CStalker::STradeItem::operator==	(U16 id) const
 {
 	return			(m_item->object().ID() == id);
 }
@@ -72,7 +72,7 @@ u32 CStalker::fill_items						(CInventory &inventory, CGameObject *old_owner, AL
 		if (!tradable_item(*I,old_owner->ID()))
 			continue;
 		
-		m_temp_items.push_back	(CTradeItem(*I,old_owner->ID(),new_owner_id));
+		m_temp_items.push_back	(STradeItem(*I,old_owner->ID(),new_owner_id));
 		result					+= (*I)->Cost();
 	}
 
@@ -93,7 +93,7 @@ void CStalker::transfer_item					(CInventoryItem *item, CGameObject *old_owner, 
 	O->u_EventSend		(P);
 }
 
-inline	void CStalker::buy_item_virtual			(CTradeItem &item)
+inline	void CStalker::buy_item_virtual			(STradeItem& item)
 {
 	item.m_new_owner_id			= ID();
 	m_total_money				-= item.m_item->Cost();
@@ -113,8 +113,8 @@ void CStalker::attach_available_ammo			(CWeapon *weapon)
 		return;
 
 	u32							count = 0;
-	xr_vector<CTradeItem>::iterator	I = m_temp_items.begin();
-	xr_vector<CTradeItem>::iterator	E = m_temp_items.end();
+	xr_vector<STradeItem>::iterator	I = m_temp_items.begin();
+	xr_vector<STradeItem>::iterator	E = m_temp_items.end();
 	for ( ; I != E; ++I) {
 		if (m_total_money < (*I).m_item->Cost())
 			continue;
@@ -139,12 +139,12 @@ void CStalker::attach_available_ammo			(CWeapon *weapon)
 
 void CStalker::choose_weapon					(ALife::EWeaponPriorityType weapon_priority_type)
 {
-	CTradeItem						*best_weapon	= 0;
+	STradeItem*best_weapon	= 0;
 	float							best_value		= -1.f;
 	ai().ef_storage().non_alife().member()	= this;
 
-	xr_vector<CTradeItem>::iterator	I = m_temp_items.begin();
-	xr_vector<CTradeItem>::iterator	E = m_temp_items.end();
+	xr_vector<STradeItem>::iterator	I = m_temp_items.begin();
+	xr_vector<STradeItem>::iterator	E = m_temp_items.end();
 	for ( ; I != E; ++I) {
 		if (m_total_money < (*I).m_item->Cost())
 			continue;
@@ -199,11 +199,11 @@ void CStalker::choose_medikit				()
 
 void CStalker::choose_detector				()
 {
-	CTradeItem					*best_detector	= 0;
+	STradeItem* best_detector	= nullptr;
 	float						best_value		= -1.f;
 	ai().ef_storage().non_alife().member()	= this;
-	xr_vector<CTradeItem>::iterator	I = m_temp_items.begin();
-	xr_vector<CTradeItem>::iterator	E = m_temp_items.end();
+	xr_vector<STradeItem>::iterator	I = m_temp_items.begin();
+	xr_vector<STradeItem>::iterator	E = m_temp_items.end();
 	for ( ; I != E; ++I) {
 		if (m_total_money < (*I).m_item->Cost())
 			continue;
@@ -265,14 +265,14 @@ void CStalker::update_sell_info					()
 	TIItemContainer::iterator	E = inventory().m_all.end();
 	for ( ; I != E; ++I) {
 		if (!tradable_item(*I,ID()))
-			m_temp_items.push_back	(CTradeItem(*I,ID(),ID()));
+			m_temp_items.push_back	(STradeItem(*I,ID(),ID()));
 	}
 }
 
 bool CStalker::can_sell							(CInventoryItem const * item)
 {
 	update_sell_info		();
-	xr_vector<CTradeItem>::const_iterator	I = std::find(m_temp_items.begin(),m_temp_items.end(),item->object().ID());
+	xr_vector<STradeItem>::const_iterator	I = std::find(m_temp_items.begin(),m_temp_items.end(),item->object().ID());
 	VERIFY					(I != m_temp_items.end());
 	return					((*I).m_new_owner_id != ID());
 }

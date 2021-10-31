@@ -552,10 +552,10 @@ void SWeaponUsageStatistic::On_Check_Respond(CNetPacket* P)
 		return;
 	}
 
-	U8 NumFalse = P->r_u8( );
-	U8 NumTrue = P->r_u8( );
+	unsigned char NumFalse = P->r_u8( );
+	unsigned char NumTrue = P->r_u8( );
 
-	U8 i;
+	unsigned char i;
 	BulletsDataVec_it BulletIt;
 	for (i = 0; i < NumFalse; i++)
 	{

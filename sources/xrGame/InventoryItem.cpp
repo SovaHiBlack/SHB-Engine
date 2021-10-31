@@ -297,7 +297,7 @@ bool CInventoryItem::Detach(const char* item_section_name, bool b_spawn_item)
 		// Fill
 		D->s_name			=	item_section_name;
 		D->set_name_replace	("");
-		D->s_gameid			= U8(GameID());
+		D->s_gameid			= unsigned char(GameID());
 		D->s_RP				=	0xff;
 		D->ID				=	0xffff;
 		D->ID_Parent		= U16(object().H_Parent()->ID());
@@ -350,7 +350,7 @@ void CInventoryItem::net_Destroy		()
 
 void CInventoryItem::save(CNetPacket &packet)
 {
-	packet.w_u8				((U8)m_eItemPlace);
+	packet.w_u8				((unsigned char)m_eItemPlace);
 	packet.w_float			(m_fCondition);
 
 	if (object().H_Parent()) {
@@ -358,7 +358,7 @@ void CInventoryItem::save(CNetPacket &packet)
 		return;
 	}
 
-	U8 _num_items			= (U8)object().PHGetSyncItemsNumber();
+	unsigned char _num_items			= (unsigned char)object().PHGetSyncItemsNumber();
 	packet.w_u8				(_num_items);
 	object().PHSaveState	(packet);
 }
@@ -367,7 +367,7 @@ typedef CSE_ALifeInventoryItem::mask_num_items	mask_num_items;
 
 void CInventoryItem::net_Import			(CNetPacket& P) 
 {	
-	U8							NumItems = 0;
+	unsigned char							NumItems = 0;
 	NumItems					= P.r_u8();
 	if (!NumItems)
 		return;
@@ -438,7 +438,7 @@ void CInventoryItem::load(IReader &packet)
 	m_eItemPlace			= (EItemPlace)packet.r_u8();
 	m_fCondition			= packet.r_float();
 
-	U8						tmp = packet.r_u8();
+	unsigned char						tmp = packet.r_u8();
 	if (!tmp)
 		return;
 	

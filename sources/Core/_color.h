@@ -99,23 +99,23 @@ public:
 	}
 	inline U32				get_windows( ) const
 	{
-		U8 _a;
-		U8 _r;
-		U8 _g;
-		U8 _b;
-		_a = (U8) (a * 255.0f);
-		_r = (U8) (r * 255.0f);
-		_g = (U8) (g * 255.0f);
-		_b = (U8) (b * 255.0f);
+		unsigned char _a;
+		unsigned char _r;
+		unsigned char _g;
+		unsigned char _b;
+		_a = (unsigned char) (a * 255.0f);
+		_r = (unsigned char) (r * 255.0f);
+		_g = (unsigned char) (g * 255.0f);
+		_b = (unsigned char) (b * 255.0f);
 		return ((U32) (_a << 24) | (_b << 16) | (_g << 8) | (_r));
 	}
 	inline SelfRef			set_windows(U32 dw)
 	{
 		const TYPE f = 1.0f / 255.0f;
-		a = f * (TYPE) (U8) (dw >> 24);
-		b = f * (TYPE) (U8) (dw >> 16);
-		g = f * (TYPE) (U8) (dw >> 8);
-		r = f * (TYPE) (U8) (dw >> 0);
+		a = f * (TYPE) (unsigned char) (dw >> 24);
+		b = f * (TYPE) (unsigned char) (dw >> 16);
+		g = f * (TYPE) (unsigned char) (dw >> 8);
+		r = f * (TYPE) (unsigned char) (dw >> 0);
 		return *this;
 	}
 	inline SelfRef			adjust_contrast(TYPE f)				// >1 - contrast will be increased

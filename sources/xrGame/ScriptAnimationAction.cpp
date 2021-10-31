@@ -1,0 +1,51 @@
+//	Module 		: ScriptAnimationAction.cpp
+//	Description : Script animation action class
+
+
+#include "stdafx.h"
+
+#include "ScriptAnimationAction.h"
+
+CScriptAnimationAction::~CScriptAnimationAction( )
+{ }
+
+using namespace luabind;
+
+#pragma optimize("s", on)
+void CScriptAnimationAction::script_register(lua_State* L)
+{
+	module(L)
+		[
+			class_<CScriptAnimationAction>("anim")
+			.enum_("type")
+		[
+			value("free", int(MonsterSpace::eMentalStateFree)),
+			value("danger", int(MonsterSpace::eMentalStateDanger)),
+			value("panic", int(MonsterSpace::eMentalStatePanic))
+		]
+	.enum_("monster")
+		[
+			value("stand_idle", int(MonsterSpace::eAA_StandIdle)),
+			value("sit_idle", int(MonsterSpace::eAA_SitIdle)),
+			value("lie_idle", int(MonsterSpace::eAA_LieIdle)),
+			value("eat", int(MonsterSpace::eAA_Eat)),
+			value("sleep", int(MonsterSpace::eAA_Sleep)),
+			value("rest", int(MonsterSpace::eAA_Rest)),
+			value("attack", int(MonsterSpace::eAA_Attack)),
+			value("look_around", int(MonsterSpace::eAA_LookAround)),
+			value("turn", int(MonsterSpace::eAA_Turn))
+		]
+
+	.def(constructor<>( ))
+		.def(constructor<const char*>( ))
+		.def(constructor<const char*, bool>( ))
+		.def(constructor<MonsterSpace::EMentalState>( ))
+
+		// Monster specific
+		.def(constructor<MonsterSpace::EScriptMonsterAnimAction, int>( ))
+
+		.def("anim", &CScriptAnimationAction::SetAnimation)
+		.def("type", &CScriptAnimationAction::SetMentalState)
+		.def("completed", (bool (CScriptAnimationAction::*)())(&CScriptAnimationAction::completed))
+		];
+}

@@ -3,7 +3,7 @@
 #include "xrServer_Objects_ALife_All.h"
 #include "Level.h"
 #include "game_cl_base.h"
-#include "net_queue.h"
+#include "NetQueueEvent.h"
 #include "ai_space.h"
 #include "GameLevelCrossTable.h"
 #include "level_graph.h"
@@ -47,7 +47,7 @@ void CLevel::cl_Process_Spawn(CNetPacket& P)
 	F_entity_Destroy(E);
 }
 
-void CLevel::g_cl_Spawn(const char* name, U8 rp, U16 flags, Fvector3 pos)
+void CLevel::g_cl_Spawn(const char* name, unsigned char rp, U16 flags, Fvector3 pos)
 {
 	// Create
 	CSE_Abstract* E = F_entity_Create(name);
@@ -56,7 +56,7 @@ void CLevel::g_cl_Spawn(const char* name, U8 rp, U16 flags, Fvector3 pos)
 	// Fill
 	E->s_name = name;
 	E->set_name_replace("");
-	E->s_gameid = U8(GameID( ));
+	E->s_gameid = unsigned char(GameID( ));
 	E->s_RP = rp;
 	E->ID = 0xffff;
 	E->ID_Parent = 0xffff;
@@ -159,7 +159,7 @@ CSE_Abstract* CLevel::spawn_item(const char* section, const Fvector3& position, 
 	// Fill
 	abstract->s_name = section;
 	abstract->set_name_replace(section);
-	abstract->s_gameid = U8(GameID( ));
+	abstract->s_gameid = unsigned char(GameID( ));
 	abstract->o_Position = position;
 	abstract->s_RP = 0xff;
 	abstract->ID = 0xffff;

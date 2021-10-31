@@ -1,3 +1,6 @@
+//	Module		: StringTable.cpp
+//	Description	: Таблица строк используемых в игре
+
 #include "stdafx.h"
 
 #include "StringTable.h"
@@ -5,7 +8,7 @@
 #include "ui/xrUIXmlParser.h"//
 #include "xr_level_controller.h"
 
-STRING_TABLE_DATA* CStringTable::pData = nullptr;
+SStringTableData* CStringTable::pData = nullptr;
 BOOL CStringTable::m_bWriteErrorsToLog = FALSE;
 
 CStringTable::CStringTable( )
@@ -25,15 +28,15 @@ void CStringTable::Init( )
 		return;
 	}
 
-	pData = xr_new<STRING_TABLE_DATA>( );
+	pData = xr_new<SStringTableData>( );
 
-	//имя языка, если не задано (NULL), то первый <text> в <string> в XML
+	// имя языка, если не задано (NULL), то первый <text> в <string> в XML
 	pData->m_sLanguage = pSettings->r_string("string_table", "language");
 
 	const char* S = pSettings->r_string("string_table", "files");
 	if (S && S[0])
 	{
-		string128 xml_file;
+		char xml_file[128];
 		int count = _GetItemCount(S);
 		for (int it = 0; it < count; ++it)
 		{
@@ -57,7 +60,7 @@ void CStringTable::Load(const char* xml_file)
 		Debug.fatal(DEBUG_INFO, "string table xml file not found %s, for language %s", xml_file_full, *(pData->m_sLanguage));
 	}
 
-	//общий список всех записей таблицы в файле
+	// общий список всех записей таблицы в файле
 	int string_num = uiXml.GetNodesNum(uiXml.GetRoot( ), "string");
 
 	for (int i = 0; i < string_num; ++i)
@@ -75,7 +78,7 @@ void CStringTable::Load(const char* xml_file)
 
 		VERIFY3(string_text, "string table entry does not has a text", string_name);
 
-		STRING_VALUE str_val = ParseLine(string_text, string_name, true);
+		StringTableValue str_val = ParseLine(string_text, string_name, true);
 
 		pData->m_StringTable[string_name] = str_val;
 	}
@@ -88,16 +91,15 @@ void CStringTable::ReparseKeyBindings( )
 		return;
 	}
 
-	STRING_TABLE_MAP_IT it = pData->m_string_key_binding.begin( );
-	STRING_TABLE_MAP_IT it_e = pData->m_string_key_binding.end( );
-
+	StringTableMap_it it = pData->m_string_key_binding.begin( );
+	StringTableMap_it it_e = pData->m_string_key_binding.end( );
 	for (; it != it_e; ++it)
 	{
 		pData->m_StringTable[it->first] = ParseLine(*it->second, *it->first, false);
 	}
 }
 
-STRING_VALUE CStringTable::ParseLine(const char* str, const char* skey, bool bFirst)
+StringTableValue CStringTable::ParseLine(const char* str, const char* skey, bool bFirst)
 {
 	xr_string res;
 	int k = 0;
@@ -107,8 +109,8 @@ STRING_VALUE CStringTable::ParseLine(const char* str, const char* skey, bool bFi
 //.	int LEN = (int)xr_strlen(ACTION_STR);
 #define LEN 9
 
-	string256 buff;
-	string256 srcbuff;
+	char buff[256];
+	char srcbuff[256];
 	bool b_hit = false;
 
 	while ((b = strstr(str + k, ACTION_STR)) != 0)
@@ -142,14 +144,14 @@ STRING_VALUE CStringTable::ParseLine(const char* str, const char* skey, bool bFi
 		pData->m_string_key_binding[skey] = str;
 	}
 
-	return STRING_VALUE(res.c_str( ));
+	return StringTableValue(res.c_str( ));
 }
 
-STRING_VALUE CStringTable::translate(const STRING_ID& str_id) const
+StringTableValue CStringTable::translate(const StringTableID& str_id) const
 {
 	VERIFY(pData);
 
-	STRING_VALUE res = pData->m_StringTable[str_id];
+	StringTableValue res = pData->m_StringTable[str_id];
 
 	if (!res)
 	{

@@ -14,7 +14,7 @@ class CGameObject;
 
 class CLocationManager {
 private:
-	GameGraph::TERRAIN_VECTOR	m_vertex_types;
+	GameGraph::TerrainPlaceVec	m_vertex_types;
 	CGameObject					*m_object;
 
 public:
@@ -22,7 +22,7 @@ public:
 	virtual			~CLocationManager			();
 	virtual void	Load						(const char* section);
 	virtual void	reload						(const char* section);
-	inline		const GameGraph::TERRAIN_VECTOR &vertex_types	() const;
+	inline		const GameGraph::TerrainPlaceVec& vertex_types	() const;
 };
 
 #include "location_manager_inline.h"

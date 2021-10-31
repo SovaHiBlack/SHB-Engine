@@ -93,7 +93,7 @@ CSE_Abstract* CAlifeSimulatorBase::spawn_item(const char* section, const Fvector
 	R_ASSERT3(abstract, "Cannot find item with section", section);
 
 	abstract->s_name = section;
-	abstract->s_gameid = U8(GAME_SINGLE); // GameID()
+	abstract->s_gameid = unsigned char(GAME_SINGLE); // GameID()
 	abstract->s_RP = 0xff;
 	abstract->ID = server( ).PerformIDgen(0xffff);
 	abstract->ID_Parent = parent_id;

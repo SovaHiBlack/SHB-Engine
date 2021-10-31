@@ -41,7 +41,7 @@ CORE_API void _parse(char* dest, const char* src)
 		bool bInsideSTR = false;
 		while (*src)
 		{
-			if (isspace((U8) *src))
+			if (isspace((unsigned char) *src))
 			{
 				if (bInsideSTR)
 				{
@@ -546,10 +546,10 @@ CSharedString CConfigurationFile::r_string_wb(const char* S, const char* L)
 	return CSharedString(_original);
 }
 
-U8 CConfigurationFile::r_u8(const char* S, const char* L)
+unsigned char CConfigurationFile::r_u8(const char* S, const char* L)
 {
 	const char* C = r_string(S, L);
-	return U8(atoi(C));
+	return unsigned char(atoi(C));
 }
 U16 CConfigurationFile::r_u16(const char* S, const char* L)
 {
@@ -561,10 +561,10 @@ U32 CConfigurationFile::r_u32(const char* S, const char* L)
 	const char* C = r_string(S, L);
 	return U32(atoi(C));
 }
-S8 CConfigurationFile::r_s8(const char* S, const char* L)
+signed char CConfigurationFile::r_s8(const char* S, const char* L)
 {
 	const char* C = r_string(S, L);
-	return S8(atoi(C));
+	return signed char(atoi(C));
 }
 S16 CConfigurationFile::r_s16(const char* S, const char* L)
 {
@@ -749,7 +749,7 @@ void CConfigurationFile::w_string(const char* S, const char* L, const char* V, c
 		data.Data.insert(it, I);
 	}
 }
-void CConfigurationFile::w_u8(const char* S, const char* L, U8 V, const char* comment)
+void CConfigurationFile::w_u8(const char* S, const char* L, unsigned char V, const char* comment)
 {
 	string128 temp;
 	sprintf_s(temp, sizeof(temp), "%d", V);
@@ -767,7 +767,7 @@ void CConfigurationFile::w_u32(const char* S, const char* L, U32 V, const char* 
 	sprintf_s(temp, sizeof(temp), "%d", V);
 	w_string(S, L, temp, comment);
 }
-void CConfigurationFile::w_s8(const char* S, const char* L, S8 V, const char* comment)
+void CConfigurationFile::w_s8(const char* S, const char* L, signed char V, const char* comment)
 {
 	string128 temp;
 	sprintf_s(temp, sizeof(temp), "%d", V);

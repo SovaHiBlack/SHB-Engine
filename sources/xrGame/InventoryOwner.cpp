@@ -176,11 +176,11 @@ void CInventoryOwner::save(CNetPacket& output_packet)
 {
 	if (inventory( ).GetActiveSlot( ) == NO_ACTIVE_SLOT)
 	{
-		output_packet.w_u8((U8) (-1));
+		output_packet.w_u8((unsigned char) (-1));
 	}
 	else
 	{
-		output_packet.w_u8((U8) inventory( ).GetActiveSlot( ));
+		output_packet.w_u8((unsigned char) inventory( ).GetActiveSlot( ));
 	}
 
 	CharacterInfo( ).save(output_packet);
@@ -190,8 +190,8 @@ void CInventoryOwner::save(CNetPacket& output_packet)
 
 void CInventoryOwner::load(IReader& input_packet)
 {
-	U8 active_slot = input_packet.r_u8( );
-	if (active_slot == U8(-1))
+	unsigned char active_slot = input_packet.r_u8( );
+	if (active_slot == unsigned char(-1))
 	{
 		inventory( ).SetActiveSlot(NO_ACTIVE_SLOT);
 	}

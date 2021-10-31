@@ -94,11 +94,11 @@ public:
 	{
 		w(&a, 2);
 	}
-	inline void		w_u8			(U8 a)
+	inline void		w_u8			(unsigned char a)
 	{
 		w(&a, 1);
 	}
-	inline void		w_s8			(S8 a)
+	inline void		w_s8			(signed char a)
 	{
 		w(&a, 1);
 	}
@@ -113,7 +113,7 @@ public:
 	{
 		VERIFY(a >= min && a <= max);
 		float q = (a - min) / (max - min);
-		w_u8(U8(iFloor(q * 255.0f + 0.5f)));
+		w_u8(unsigned char(iFloor(q * 255.0f + 0.5f)));
 	}
 	inline void		w_angle16		(float a)
 	{
@@ -181,9 +181,9 @@ public:
 	}
 	inline void		w_chunk_close8	(u32 position)
 	{
-		u32 size = u32(w_tell( ) - position) - sizeof(U8);
+		u32 size = u32(w_tell( ) - position) - sizeof(unsigned char);
 		VERIFY(size < 256);
-		U8 _size = (U8) size;
+		unsigned char _size = (unsigned char) size;
 		w_seek(position, &_size, sizeof(_size));
 	}
 
@@ -286,11 +286,11 @@ public:
 	{
 		r(&A, 2);
 	}
-	inline void		r_u8			(U8& A)
+	inline void		r_u8			(unsigned char& A)
 	{
 		r(&A, 1);
 	}
-	inline void		r_s8			(S8& A)
+	inline void		r_s8			(signed char& A)
 	{
 		r(&A, 1);
 	}
@@ -368,15 +368,15 @@ public:
 		r(&A, 2);
 		return A;
 	} 
-	inline U8		r_u8			( )
+	inline unsigned char		r_u8			( )
 	{
-		U8 A;
+		unsigned char A;
 		r(&A, 1);
 		return A;
 	}
-	inline S8		r_s8			( )
+	inline signed char		r_s8			( )
 	{
-		S8 A;
+		signed char A;
 		r(&A, 1);
 		return A;
 	}
@@ -390,7 +390,7 @@ public:
 	}
 	inline void		r_float_q8		(float& A, float min, float max)
 	{
-		U8 val;
+		unsigned char val;
 		r_u8(val);
 		A = (float(val) / 255.0001f) * (max - min) + min;	// floating-point-error possible
 		VERIFY((A >= min) && (A <= max));

@@ -21,7 +21,7 @@ struct SGameVertex : public SBaseParameters<
 	_index_type,
 	_iteration_type
 > {
-	typedef GameGraph::TERRAIN_VECTOR	VERTEX_TYPES;
+	typedef GameGraph::TerrainPlaceVec	VERTEX_TYPES;
 
 	const VERTEX_TYPES	*m_vertex_types;
 	_index_type		m_vertex_id;

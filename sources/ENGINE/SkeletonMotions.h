@@ -7,19 +7,20 @@ class CKinematicsAnimated;
 class CBlend;
 
 // callback
-typedef void	( * PlayCallback)		(CBlend*		P);
+typedef void	(*PlayCallback)		(CBlend* P);
 
-const	u32		MAX_PARTS			=	4;
-const	u32		MAX_CHANNELS		=	4;
-const	float		SAMPLE_FPS			=	30.0f;
-const	float		SAMPLE_SPF			=	(1.0f/SAMPLE_FPS);
-const	float		KEY_Quant			=	32767.0f;
-const	float		KEY_QuantI			=	1.0f/KEY_Quant;
+const	u32		MAX_PARTS = 4;
+const	u32		MAX_CHANNELS = 4;
+const	float		SAMPLE_FPS = 30.0f;
+const	float		SAMPLE_SPF = (1.0f / SAMPLE_FPS);
+const	float		KEY_Quant = 32767.0f;
+const	float		KEY_QuantI = 1.0f / KEY_Quant;
 
 //*** Key frame definition ************************************************************************
-enum{
-	flTKeyPresent 	= (1<<0),
-	flRKeyAbsent 	= (1<<1),
+enum
+{
+	flTKeyPresent = (1 << 0),
+	flRKeyAbsent = (1 << 1),
 };
 #pragma pack(push,2)
 struct ENGINE_API CKey
@@ -36,38 +37,58 @@ struct ENGINE_API CKeyQR
 };
 struct ENGINE_API CKeyQT
 {
-	S8			x;
-	S8			y;
-	S8			z;
+	signed char			x;
+	signed char			y;
+	signed char			z;
 };
 #pragma pack(pop)
 
 //*** Motion Data *********************************************************************************
 class ENGINE_API		CMotion
 {
-	struct{
-		u32				_flags	: 8;
-		u32				_count 	: 24;
+	struct
+	{
+		u32				_flags : 8;
+		u32				_count : 24;
 	};
 public:
 	ref_smem<CKeyQR>	_keysR;
 	ref_smem<CKeyQT>	_keysT;
 	Fvector3				_initT;
 	Fvector3				_sizeT;
-public:    
-	void				set_flags			(U8 val)			{_flags=val;}
-	void				set_flag			(U8 mask, U8 val)	{if (val)_flags|=mask; else _flags&=~mask;}
-	BOOL				test_flag			(U8 mask) const		{return BOOL(_flags&mask);}
 
-	void				set_count			(u32 cnt){VERIFY(cnt); _count=cnt;}
-	u32					get_count			() const {return (u32(_count)&0x00FFFFFF);}
+	void				set_flags(unsigned char val)
+	{
+		_flags = val;
+	}
+	void				set_flag(unsigned char mask, unsigned char val)
+	{
+		if (val)_flags |= mask; else _flags &= ~mask;
+	}
+	BOOL				test_flag(unsigned char mask) const
+	{
+		return BOOL(_flags & mask);
+	}
 
-	float				GetLength			(){ return float(_count)*SAMPLE_SPF; }
+	void				set_count(u32 cnt)
+	{
+		VERIFY(cnt); _count = cnt;
+	}
+	u32					get_count( ) const
+	{
+		return (u32(_count) & 0x00FFFFFF);
+	}
 
-	u32					mem_usage			(){ 
-		u32 sz			= sizeof(*this);
-		if (_keysR.size()) sz += _keysR.size()*sizeof(CKeyQR)/_keysR.ref_count();
-		if (_keysT.size()) sz += _keysT.size()*sizeof(CKeyQT)/_keysT.ref_count();
+	float				GetLength( )
+	{
+		return float(_count) * SAMPLE_SPF;
+	}
+
+	u32					mem_usage( )
+	{
+		u32 sz = sizeof(*this);
+		if (_keysR.size( )) sz += _keysR.size( ) * sizeof(CKeyQR) / _keysR.ref_count( );
+		if (_keysT.size( )) sz += _keysT.size( ) * sizeof(CKeyQT) / _keysT.ref_count( );
 		return			sz;
 	}
 };
@@ -82,15 +103,15 @@ private:
 	typedef STORAGE::iterator										ITERATOR;
 	typedef STORAGE::const_iterator									C_ITERATOR;
 
-	STORAGE			intervals;	
+	STORAGE			intervals;
 public:
 	CSharedString		name;
-	void			Load			(IReader*);
+	void			Load(IReader*);
 
-	bool			pick_mark		(const float& t) const;
+	bool			pick_mark(const float& t) const;
 };
 
-const float	fQuantizerRangeExt	= 1.5f;
+const float	fQuantizerRangeExt = 1.5f;
 class ENGINE_API		CMotionDef
 {
 public:
@@ -103,22 +124,47 @@ public:
 	U16						flags;
 	xr_vector<motion_marks>	marks;
 
-	inline float				Dequantize			(U16 V)		{	return  float(V)/655.35f; }
-	inline U16					Quantize			(float V)	{ int		t = iFloor(V*655.35f); clamp(t,0,65535); return U16(t); }
+	inline float				Dequantize(U16 V)
+	{
+		return  float(V) / 655.35f;
+	}
+	inline U16					Quantize(float V)
+	{
+		int		t = iFloor(V * 655.35f); clamp(t, 0, 65535); return U16(t);
+	}
 
-	void					Load				(IReader* MP, u32 fl, U16 vers);
-	u32						mem_usage			(){ return sizeof(*this);}
+	void					Load(IReader* MP, u32 fl, U16 vers);
+	u32						mem_usage( )
+	{
+		return sizeof(*this);
+	}
 
-	__forceinline float				Accrue				(){return fQuantizerRangeExt*Dequantize(accrue);}
-	__forceinline float				Falloff				(){return fQuantizerRangeExt*Dequantize(falloff);}
-	__forceinline float				Speed				(){return Dequantize(speed);}
-	__forceinline float				Power				(){return Dequantize(power);}
-	bool					StopAtEnd			();
+	__forceinline float				Accrue( )
+	{
+		return fQuantizerRangeExt * Dequantize(accrue);
+	}
+	__forceinline float				Falloff( )
+	{
+		return fQuantizerRangeExt * Dequantize(falloff);
+	}
+	__forceinline float				Speed( )
+	{
+		return Dequantize(speed);
+	}
+	__forceinline float				Power( )
+	{
+		return Dequantize(power);
+	}
+	bool					StopAtEnd( );
 };
-struct accel_str_pred : public std::binary_function<CSharedString, CSharedString, bool>	{
-	inline bool operator()(const CSharedString& x, const CSharedString& y) const	{	return xr_strcmp(x,y)<0;	}
+struct accel_str_pred : public std::binary_function<CSharedString, CSharedString, bool>
+{
+	inline bool operator()(const CSharedString& x, const CSharedString& y) const
+	{
+		return xr_strcmp(x, y) < 0;
+	}
 };
-typedef xr_map<CSharedString, U16,accel_str_pred> 	accel_map;
+typedef xr_map<CSharedString, U16, accel_str_pred> 	accel_map;
 //DEFINE_VECTOR			(CMotionDef,MotionDefVec,MotionDefVecIt);
 using MotionDefVec = xr_vector<CMotionDef>;
 using MotionDefVecIt = MotionDefVec::iterator;
@@ -138,17 +184,30 @@ class ENGINE_API		CPartDef
 public:
 	CSharedString			Name;
 	xr_vector<u32>		bones;
-	CPartDef()			: Name(0) {};
+	CPartDef( ) : Name(0)
+	{ };
 
-	u32					mem_usage			(){ return sizeof(*this)+bones.size()*sizeof(u32)+sizeof(Name);}
+	u32					mem_usage( )
+	{
+		return sizeof(*this) + bones.size( ) * sizeof(u32) + sizeof(Name);
+	}
 };
 class ENGINE_API		CPartition
 {
 	CPartDef			P[MAX_PARTS];
 public:
-	inline CPartDef&		operator[] 			(U16 id){ return P[id]; }
-	inline CPartDef&		part				(U16 id){ return P[id]; }
-	u32					mem_usage			()		{ return P[0].mem_usage()*MAX_PARTS;}
+	inline CPartDef& operator[] 			(U16 id)
+	{
+		return P[id];
+	}
+	inline CPartDef& part(U16 id)
+	{
+		return P[id];
+	}
+	u32					mem_usage( )
+	{
+		return P[0].mem_usage( ) * MAX_PARTS;
+	}
 };
 
 // shared motions
@@ -164,16 +223,17 @@ struct ENGINE_API		motions_value
 
 	CSharedString			m_id;
 
-	BOOL				load				(const char* N, IReader *data, vecBones* bones);
-	MotionVec*			bone_motions		(CSharedString bone_name);
+	BOOL				load(const char* N, IReader* data, vecBones* bones);
+	MotionVec* bone_motions(CSharedString bone_name);
 
-	u32					mem_usage			(){ 
-		u32 sz			=	sizeof(*this)+m_motion_map.size()*6+m_partition.mem_usage();
-		for (MotionDefVecIt it=m_mdefs.begin(); it!=m_mdefs.end(); it++)
-			sz			+=	it->mem_usage();
-		for (BoneMotionMapIt bm_it=m_motions.begin(); bm_it!=m_motions.end(); bm_it++)
-			for (MotionVecIt m_it=bm_it->second.begin(); m_it!=bm_it->second.end(); m_it++)
-				sz		+=	m_it->mem_usage();
+	u32					mem_usage( )
+	{
+		u32 sz = sizeof(*this) + m_motion_map.size( ) * 6 + m_partition.mem_usage( );
+		for (MotionDefVecIt it = m_mdefs.begin( ); it != m_mdefs.end( ); it++)
+			sz += it->mem_usage( );
+		for (BoneMotionMapIt bm_it = m_motions.begin( ); bm_it != m_motions.end( ); bm_it++)
+			for (MotionVecIt m_it = bm_it->second.begin( ); m_it != bm_it->second.end( ); m_it++)
+				sz += m_it->mem_usage( );
 		return sz;
 	}
 };
@@ -185,45 +245,93 @@ class ENGINE_API		motions_container
 	using SharedMotionsMapIt = SharedMotionsMap::iterator;
 	SharedMotionsMap	container;
 public:
-						motions_container	();
-						~motions_container	();
-	bool				has					(CSharedString key);
-	motions_value*		dock				(CSharedString key, IReader *data, vecBones* bones);
-	void				dump				();
-	void				clean				(bool force_destroy);
+	motions_container( );
+	~motions_container( );
+	bool				has(CSharedString key);
+	motions_value* dock(CSharedString key, IReader* data, vecBones* bones);
+	void				dump( );
+	void				clean(bool force_destroy);
 };
 
-ENGINE_API extern		motions_container*	g_pMotionsContainer;
+ENGINE_API extern		motions_container* g_pMotionsContainer;
 
 class ENGINE_API		shared_motions
 {
 private:
-	motions_value*		p_;
+	motions_value* p_;
 protected:
 	// ref-counting
-	void				destroy			()							{	if (0==p_) return;	p_->m_dwReference--; 	if (0==p_->m_dwReference)	p_=0;	}
+	void				destroy( )
+	{
+		if (0 == p_) return;	p_->m_dwReference--; 	if (0 == p_->m_dwReference)	p_ = 0;
+	}
 public:
-	void				create			(CSharedString key, IReader *data, vecBones* bones){	motions_value* v = g_pMotionsContainer->dock(key,data,bones); if (0!=v) v->m_dwReference++; destroy(); p_ = v;	}
-	void				create			(shared_motions const &rhs)	{	motions_value* v = rhs.p_; if (0!=v) v->m_dwReference++; destroy(); p_ = v;	}
+	void				create(CSharedString key, IReader* data, vecBones* bones)
+	{
+		motions_value* v = g_pMotionsContainer->dock(key, data, bones); if (0 != v) v->m_dwReference++; destroy( ); p_ = v;
+	}
+	void				create(shared_motions const& rhs)
+	{
+		motions_value* v = rhs.p_; if (0 != v) v->m_dwReference++; destroy( ); p_ = v;
+	}
 public:
 	// construction
-						shared_motions	()							{	p_ = 0;											}
-						shared_motions	(shared_motions const &rhs)	{	p_ = 0;	create(rhs);							}
-						~shared_motions	()							{	destroy();										}
+	shared_motions( )
+	{
+		p_ = 0;
+	}
+	shared_motions(shared_motions const& rhs)
+	{
+		p_ = 0;	create(rhs);
+	}
+	~shared_motions( )
+	{
+		destroy( );
+	}
 
-	// assignment & accessors
-	shared_motions&		operator=		(shared_motions const &rhs)	{	create(rhs);return *this;	}
-	bool				operator==		(shared_motions const &rhs)	const {return (p_ == rhs.p_);}
+// assignment & accessors
+	shared_motions& operator=		(shared_motions const& rhs)
+	{
+		create(rhs); return *this;
+	}
+	bool				operator==		(shared_motions const& rhs)	const
+	{
+		return (p_ == rhs.p_);
+	}
 
-	// misc func
-	MotionVec*			bone_motions	(CSharedString bone_name)		{	VERIFY(p_); return p_->bone_motions(bone_name);	}
-	accel_map*			motion_map		()							{	VERIFY(p_); return &p_->m_motion_map;			}
-	accel_map*			cycle			()							{	VERIFY(p_); return &p_->m_cycle;				}
-	accel_map*			fx				()							{	VERIFY(p_); return &p_->m_fx;					}
-	CPartition*			partition		()							{	VERIFY(p_); return &p_->m_partition;			}
-	MotionDefVec*		motion_defs		()							{	VERIFY(p_); return &p_->m_mdefs;				}
-	CMotionDef*			motion_def		(U16 idx)					{	VERIFY(p_); return &p_->m_mdefs[idx];			}
+// misc func
+	MotionVec* bone_motions(CSharedString bone_name)
+	{
+		VERIFY(p_); return p_->bone_motions(bone_name);
+	}
+	accel_map* motion_map( )
+	{
+		VERIFY(p_); return &p_->m_motion_map;
+	}
+	accel_map* cycle( )
+	{
+		VERIFY(p_); return &p_->m_cycle;
+	}
+	accel_map* fx( )
+	{
+		VERIFY(p_); return &p_->m_fx;
+	}
+	CPartition* partition( )
+	{
+		VERIFY(p_); return &p_->m_partition;
+	}
+	MotionDefVec* motion_defs( )
+	{
+		VERIFY(p_); return &p_->m_mdefs;
+	}
+	CMotionDef* motion_def(U16 idx)
+	{
+		VERIFY(p_); return &p_->m_mdefs[idx];
+	}
 
-	const CSharedString&	id				() const					{	VERIFY(p_); return p_->m_id;					}
+	const CSharedString& id( ) const
+	{
+		VERIFY(p_); return p_->m_id;
+	}
 
 };

@@ -51,9 +51,9 @@ public:
 	{
 		w(&d, sizeof(U16));
 	}
-	inline void			w_u8(U8 d)
+	inline void			w_u8(unsigned char d)
 	{
-		w(&d, sizeof(U8));
+		w(&d, sizeof(unsigned char));
 	}
 	inline void			w_s64(S64 d)
 	{
@@ -67,9 +67,9 @@ public:
 	{
 		w(&d, sizeof(S16));
 	}
-	inline void			w_s8(S8 d)
+	inline void			w_s8(signed char d)
 	{
-		w(&d, sizeof(S8));
+		w(&d, sizeof(signed char));
 	}
 	inline void			w_float(F32 d)
 	{
@@ -140,7 +140,7 @@ public:
 	{
 		VERIFY(a >= min && a <= max);
 		F32 q = (a - min) / (max - min);
-		w_u8(U8(iFloor(q * 255.0f + 0.5f)));
+		w_u8(unsigned char(iFloor(q * 255.0f + 0.5f)));
 	}
 	inline void 		w_angle16(F32 a)
 	{
@@ -172,7 +172,7 @@ public:
 
 class CORE_API CMemoryWriter : public IWriter
 {
-	U8* data;
+	unsigned char* data;
 	unsigned int				position;
 	unsigned int				mem_size;
 	unsigned int				file_size;
@@ -200,7 +200,7 @@ public:
 	}
 
 // specific
-	inline U8* pointer( )
+	inline unsigned char* pointer( )
 	{
 		return data;
 	}
@@ -285,9 +285,9 @@ public:
 		r(&tmp, sizeof(tmp));
 		return tmp;
 	}
-	inline U8			r_u8( )
+	inline unsigned char			r_u8( )
 	{
-		U8 tmp;	
+		unsigned char tmp;
 		r(&tmp, sizeof(tmp));
 		return tmp;
 	}
@@ -309,10 +309,10 @@ public:
 		r(&tmp, sizeof(tmp));
 		return tmp;
 	}
-	inline S8			r_s8( )
+	inline signed char			r_s8( )
 	{
-		S8 tmp;	
-		r(&tmp, sizeof(tmp)); 
+		signed char tmp;
+		r(&tmp, sizeof(tmp));
 		return tmp;
 	}
 	inline F32		r_float( )
@@ -359,7 +359,7 @@ public:
 	}
 	inline F32		r_float_q8(F32 min, F32 max)
 	{
-		U8 val = r_u8( );
+		unsigned char val = r_u8( );
 		F32 A = (F32(val) / 255.0001f) * (max - min) + min;	// floating-point-error possible
 		VERIFY((A >= min) && (A <= max));
 		return	A;

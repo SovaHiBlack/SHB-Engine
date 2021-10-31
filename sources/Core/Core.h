@@ -157,15 +157,15 @@ struct CORE_API xr_shortcut
 	{
 		struct
 		{
-			U8	 	key;
+			unsigned char	 	key;
 			Flags8	ext;
 		};
 
 		U16		hotkey;
 	};
-	xr_shortcut(U8 k, BOOL a, BOOL c, BOOL s) :key(k)
+	xr_shortcut(unsigned char k, BOOL a, BOOL c, BOOL s) :key(k)
 	{
-		ext.assign(U8((a ? flAlt : 0) | (c ? flCtrl : 0) | (s ? flShift : 0)));
+		ext.assign(unsigned char((a ? flAlt : 0) | (c ? flCtrl : 0) | (s ? flShift : 0)));
 	}
 	xr_shortcut( )
 	{

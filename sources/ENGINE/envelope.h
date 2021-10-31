@@ -40,7 +40,7 @@ struct st_Key
 	};
 	F32		value;
 	F32		time;
-	U8			shape;
+	unsigned char			shape;
 	F32		tension;
 	F32		continuity;
 	F32		bias;
@@ -119,7 +119,7 @@ struct st_Key
 	{
 		value = F.r_float( );
 		time = F.r_float( );
-		shape = U8((U8) F.r_u32( ) & 0xff);
+		shape = unsigned char((unsigned char) F.r_u32( ) & 0xff);
 		tension = F.r_float( );
 		continuity = F.r_float( );
 		bias = F.r_float( );

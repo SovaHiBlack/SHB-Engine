@@ -82,7 +82,7 @@ struct	hdrNODES
 #pragma pack(1)
 class NodePosition
 {
-	U8	data[5];
+	unsigned char	data[5];
 
 	__forceinline	void xz(u32 value)
 	{
@@ -117,10 +117,10 @@ public:
 struct NodeCompressed
 {
 public:
-	U8				data[12];
+	unsigned char				data[12];
 
 private:
-	__forceinline	void link(U8 link_index, u32 value)
+	__forceinline	void link(unsigned char link_index, u32 value)
 	{
 		value &= 0x007fffff;
 		switch (link_index)
@@ -155,7 +155,7 @@ private:
 		}
 	}
 
-	__forceinline	void light(U8 value)
+	__forceinline	void light(unsigned char value)
 	{
 		data[11] &= 0x0f;
 		data[11] |= value << 4;
@@ -170,7 +170,7 @@ public:
 	NodePosition	p;
 	// 4 + 4 + 4 + 4 + 16 + 40 + 96 = 168 bits = 21 byte
 
-	__forceinline	u32	link(U8 index) const
+	__forceinline	u32	link(unsigned char index) const
 	{
 		switch (index)
 		{
@@ -185,12 +185,12 @@ public:
 #endif
 	}
 
-	__forceinline	U8	light( ) const
+	__forceinline unsigned char	light( ) const
 	{
 		return			(data[11] >> 4);
 	}
 
-	__forceinline	U16	cover(U8 index) const
+	__forceinline	U16	cover(unsigned char index) const
 	{
 		switch (index)
 		{
@@ -201,7 +201,7 @@ public:
 			default: NODEFAULT;
 		}
 #ifdef DEBUG
-		return				(U8(-1));
+		return				(unsigned char(-1));
 #endif
 	}
 

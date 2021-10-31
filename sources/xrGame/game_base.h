@@ -35,7 +35,7 @@ add_to_type_list(RPoint)
 struct	game_PlayerState
 {
 	string64	name;
-	U8			team;
+	unsigned char			team;
 	
 	S16			m_iRivalKills;
 	S16			m_iSelfKills;
@@ -48,8 +48,8 @@ struct	game_PlayerState
 	float		experience_Real;
 	float		experience_New;
 	float		experience_D;
-	U8			rank;
-	U8			af_count;
+	unsigned char			rank;
+	unsigned char			af_count;
 	U16			flags__;
 
 	U16			ping;
@@ -58,11 +58,11 @@ struct	game_PlayerState
 
 	U16			lasthitter;
 	U16			lasthitweapon;
-	S8			skin;
+	signed char			skin;
 	u32			RespawnTime;
 	u32			DeathTime;
 	S16			money_delta;
-	U8			m_bCurrentVoteAgreed;
+	unsigned char			m_bCurrentVoteAgreed;
 //	DEF_DEQUE	(OLD_GAME_ID, U16);
 	using OLD_GAME_ID = xr_deque<U16>;
 	using OLD_GAME_ID_it = OLD_GAME_ID::iterator;

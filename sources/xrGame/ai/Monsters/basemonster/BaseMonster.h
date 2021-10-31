@@ -552,8 +552,8 @@ public:
 		{ }
 	};
 
-	U8																					m_show_debug_info;	// 0 - none, 1 - first column, 2 - second column
-	void								set_show_debug_info								(U8 show = 1)
+	unsigned char																					m_show_debug_info;	// 0 - none, 1 - first column, 2 - second column
+	void								set_show_debug_info								(unsigned char show = 1)
 	{
 		m_show_debug_info = show;
 	}

@@ -10,10 +10,10 @@ void ip_address::set(const char* src_string)
 	int cnt = sscanf(src_string, "%d.%d.%d.%d", &buff[0], &buff[1], &buff[2], &buff[3]);
 	if (cnt == 4)
 	{
-		m_data.a1 = U8(buff[0] & 0xff);
-		m_data.a2 = U8(buff[1] & 0xff);
-		m_data.a3 = U8(buff[2] & 0xff);
-		m_data.a4 = U8(buff[3] & 0xff);
+		m_data.a1 = unsigned char(buff[0] & 0xff);
+		m_data.a2 = unsigned char(buff[1] & 0xff);
+		m_data.a3 = unsigned char(buff[2] & 0xff);
+		m_data.a4 = unsigned char(buff[3] & 0xff);
 	}
 	else
 	{

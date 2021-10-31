@@ -21,7 +21,7 @@ U16 mbhMulti2WideDumb(wide_char* WideStr, wide_char* WidePos, const U16 WideStrS
 {
 	U16 spos = 0;
 	U16 dpos = 0;
-	U8 b1;
+	unsigned char b1;
 	wide_char wc = 0;
 
 	VERIFY(MultiStr);
@@ -79,9 +79,9 @@ U16 mbhMulti2Wide(wide_char* WideStr, wide_char* WidePos, const U16 WideStrSize,
 {
 	U16 spos = 0;
 	U16 dpos = 0;
-	U8 b1;
-	U8 b2;
-	U8 b3;
+	unsigned char b1;
+	unsigned char b2;
+	unsigned char b3;
 	wide_char wc = 0;
 
 	VERIFY(MultiStr);

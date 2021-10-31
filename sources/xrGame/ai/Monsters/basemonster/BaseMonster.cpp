@@ -153,7 +153,7 @@ void CBaseMonster::Die(CObject* who)
 		sound( ).play(MonsterSound::eMonsterSoundDie);
 	}
 
-	monster_squad( ).remove_member((U8) g_Team( ), (U8) g_Squad( ), (U8) g_Group( ), this);
+	monster_squad( ).remove_member((unsigned char) g_Team( ), (unsigned char) g_Squad( ), (unsigned char) g_Group( ), this);
 
 	if (m_controlled)
 	{
@@ -243,9 +243,9 @@ void CBaseMonster::ChangeTeam(int team, int squad, int group)
 #endif // def DEBUG
 
 	// remove from current team
-	monster_squad( ).remove_member((U8) g_Team( ), (U8) g_Squad( ), (U8) g_Group( ), this);
+	monster_squad( ).remove_member((unsigned char) g_Team( ), (unsigned char) g_Squad( ), (unsigned char) g_Group( ), this);
 	inherited::ChangeTeam(team, squad, group);
-	monster_squad( ).register_member((U8) g_Team( ), (U8) g_Squad( ), (U8) g_Group( ), this);
+	monster_squad( ).register_member((unsigned char) g_Team( ), (unsigned char) g_Squad( ), (unsigned char) g_Group( ), this);
 }
 
 void CBaseMonster::SetTurnAnimation(bool turn_left)
@@ -269,7 +269,7 @@ void CBaseMonster::set_state_sound(u32 type, bool once)
 		else
 		{
 			// get count of monsters in squad
-			U8 objects_count = monster_squad( ).get_squad(this)->get_count(this, 20.0f);
+			unsigned char objects_count = monster_squad( ).get_squad(this)->get_count(this, 20.0f);
 
 			// include myself
 			objects_count++;

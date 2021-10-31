@@ -26,12 +26,12 @@ extern "C"
 #ifdef DEBUG
 		if (!object)
 		{
-			return (0);
+			return nullptr;
 		}
 #endif // def DEBUG
 
 		object->CLS_ID = clsid;
-		return (object);
+		return object;
 	}
 
 	DLL_API void __cdecl xrFactory_Destroy(DLL_Pure* O)
@@ -57,13 +57,12 @@ BOOL APIENTRY DllMain(HANDLE hModule, u32 ul_reason_for_call, LPVOID lpReserved)
 			g_profiler = xr_new<CProfiler>( );
 #endif // def DEBUG
 
-			break;
 		}
-
+		break;
 		case DLL_PROCESS_DETACH:
 		{
-			break;
 		}
+		break;
 	}
 
 	return TRUE;

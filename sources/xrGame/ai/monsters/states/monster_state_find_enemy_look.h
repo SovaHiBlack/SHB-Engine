@@ -8,7 +8,7 @@ class CStateMonsterFindEnemyLook : public CState<_Object> {
 	typedef CState<_Object>*	state_ptr;
 
 	bool		look_right_side;
-	U8			current_stage;
+	unsigned char			current_stage;
 	Fvector3		target_point;
 
 	Fvector3		current_dir;

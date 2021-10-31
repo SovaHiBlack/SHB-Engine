@@ -11,19 +11,20 @@
 #include "associative_vector.h"
 #include "..\ENGINE\xrLevel.h"
 
-namespace GameGraph {
+namespace GameGraph
+{
 	typedef U16	_GRAPH_ID;
-	typedef U8	_LEVEL_ID;
-	typedef U8	_LOCATION_ID;
+	typedef unsigned char	_LEVEL_ID;
+	typedef unsigned char	_LOCATION_ID;
 
-	enum {
+	enum
+	{
 		LOCATION_TYPE_COUNT = 4,
-		LOCATION_COUNT		= (u32(1) << (8*sizeof(_LOCATION_ID))),
+		LOCATION_COUNT = (u32(1) << (8 * sizeof(_LOCATION_ID))),
 	};
 
-	class
-
-		SLevel {
+	class SLevel
+	{
 		CSharedString				m_name;
 		Fvector3					m_offset;
 		_LEVEL_ID				m_id;
@@ -31,80 +32,79 @@ namespace GameGraph {
 		xrGUID					m_guid;
 
 	public:
-		inline const CSharedString& name		() const
+		inline const CSharedString& name( ) const
 		{
-			return				(m_name);
+			return m_name;
 		}
 
-		inline const Fvector3& offset		() const
+		inline const Fvector3& offset( ) const
 		{
-			return				(m_offset);
+			return m_offset;
 		}
 
-		inline const _LEVEL_ID &id			() const
+		inline const _LEVEL_ID& id( ) const
 		{
-			return				(m_id);
+			return m_id;
 		}
 
-		inline const CSharedString& section	() const
+		inline const CSharedString& section( ) const
 		{
-			return				(m_section);
+			return m_section;
 		}
 
-		inline const xrGUID &guid			() const
+		inline const xrGUID& guid( ) const
 		{
-			return				(m_guid);
+			return m_guid;
 		}
 
-		inline void load					(IReader *reader);
-		inline void save					(IWriter *writer);
+		inline void load(IReader* reader);
+		inline void save(IWriter* writer);
 
 		friend class CGameGraph;
 	};
 
-	typedef associative_vector<_LEVEL_ID,SLevel>		LEVEL_MAP;
+	typedef associative_vector<_LEVEL_ID, SLevel>		LEVEL_MAP;
 
 #pragma pack(push,1)
 
-	class
-
-		CEdge {
+	class CEdge
+	{
 		_GRAPH_ID					m_vertex_id;
 		float						m_path_distance;
+
 	public:
-		inline	const _GRAPH_ID			&vertex_id			() const;
-		inline	const float				&distance			() const;
+		inline const _GRAPH_ID& vertex_id( ) const;
+		inline const float& distance( ) const;
 	};
 
-	class
-
-		CVertex {
+	class CVertex
+	{
 		Fvector3						tLocalPoint;
 		Fvector3						tGlobalPoint;
-		u32							tLevelID:8;
-		u32							tNodeID:24;
-		U8							tVertexTypes[LOCATION_TYPE_COUNT];
+		u32							tLevelID : 8;
+		u32							tNodeID : 24;
+		unsigned char							tVertexTypes[LOCATION_TYPE_COUNT];
 		u32							dwEdgeOffset;
 		u32							dwPointOffset;
-		U8							tNeighbourCount;
-		U8							tDeathPointCount;
+		unsigned char							tNeighbourCount;
+		unsigned char							tDeathPointCount;
+
 	public:
-		inline	const Fvector3&				level_point		() const;
-		inline	const Fvector3&			game_point			() const;
-		inline	_LEVEL_ID				level_id			() const;
-		inline	u32						level_vertex_id		() const;
-		inline	const U8* vertex_type( ) const;
-		inline	const U8& edge_count( ) const;
-		inline	const u32				&edge_offset		() const;
-		inline	const U8& death_point_count( ) const;
-		inline	const u32				&death_point_offset	() const;
+		inline const Fvector3& level_point( ) const;
+		inline const Fvector3& game_point( ) const;
+		inline _LEVEL_ID				level_id( ) const;
+		inline u32						level_vertex_id( ) const;
+		inline const unsigned char* vertex_type( ) const;
+		inline const unsigned char& edge_count( ) const;
+		inline const u32& edge_offset( ) const;
+		inline const unsigned char& death_point_count( ) const;
+		inline const u32& death_point_offset( ) const;
 		friend class CGameGraph;
 	};
 
-	class
-
-		CHeader {
-		U8							m_version;
+	class CHeader
+	{
+		unsigned char							m_version;
 		_GRAPH_ID					m_vertex_count;
 		u32							m_edge_count;
 		u32							m_death_point_count;
@@ -112,50 +112,49 @@ namespace GameGraph {
 		LEVEL_MAP					m_levels;
 
 	public:
-		inline	const U8& version( ) const;
-		inline	_LEVEL_ID				level_count			() const;
-		inline	const _GRAPH_ID			&vertex_count		() const;
-		inline	const u32				&edge_count			() const;
-		inline	const u32				&death_point_count	() const;
-		inline	const xrGUID			&guid				() const;
-		inline	const LEVEL_MAP			&levels				() const;
-		inline	const SLevel			&level				(const _LEVEL_ID &id) const;
-		inline	const SLevel			&level				(const char* level_name) const;
-		inline	const SLevel			*level				(const char* level_name, bool) const;
-		inline	void					load				(IReader *reader);
-		inline	void					save				(IWriter *reader);
+		inline const unsigned char& version( ) const;
+		inline _LEVEL_ID				level_count( ) const;
+		inline const _GRAPH_ID& vertex_count( ) const;
+		inline const u32& edge_count( ) const;
+		inline const u32& death_point_count( ) const;
+		inline const xrGUID& guid( ) const;
+		inline const LEVEL_MAP& levels( ) const;
+		inline const SLevel& level(const _LEVEL_ID& id) const;
+		inline const SLevel& level(const char* level_name) const;
+		inline const SLevel* level(const char* level_name, bool) const;
+		inline void					load(IReader* reader);
+		inline void					save(IWriter* reader);
 		friend class CGameGraph;
 	};
 #pragma pack(pop)
 
-	class
-
-		CLevelPoint  {
+	class CLevelPoint
+	{
 		Fvector3		tPoint;
 		u32			tNodeID;
-		float		fDistance;	
+		float		fDistance;
+
 	public:
-		inline const Fvector3&	level_point		() const
+		inline const Fvector3& level_point( ) const
 		{
-			return				(tPoint);
+			return tPoint;
 		}
 
-		inline u32						level_vertex_id		() const
+		inline u32						level_vertex_id( ) const
 		{
-			return				(tNodeID);
+			return tNodeID;
 		}
 
-		inline float					distance			() const
+		inline float					distance( ) const
 		{
-			return				(fDistance);
+			return fDistance;
 		}
 	};
 
-	struct STerrainPlace{
-		svector<_LOCATION_ID,LOCATION_TYPE_COUNT>	tMask;
+	struct STerrainPlace
+	{
+		svector<_LOCATION_ID, LOCATION_TYPE_COUNT>	tMask;
 	};
 
-//	DEFINE_VECTOR	(STerrainPlace,				TERRAIN_VECTOR,					TERRAIN_IT);
-	using TERRAIN_VECTOR = xr_vector<STerrainPlace>;
-	using TERRAIN_IT = TERRAIN_VECTOR::iterator;
+	using TerrainPlaceVec = xr_vector<STerrainPlace>;
 };

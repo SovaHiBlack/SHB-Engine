@@ -143,21 +143,21 @@ inline BOOL		_valid(const F64 x)
 }
 
 // int8
-inline S8		_abs(S8  x)
+inline signed char		_abs(signed char x)
 {
-	return (x >= 0) ? x : S8(-x);
+	return ((x >= 0) ? x : signed char(-x));
 }
-inline S8 		_min(S8  x, S8  y)
+inline signed char		_min(signed char x, signed char y)
 {
-	return y + ((x - y) & ((x - y) >> (sizeof(S8) * 8 - 1)));
-};
-inline S8 		_max(S8  x, S8  y)
+	return (y + ((x - y) & ((x - y) >> (sizeof(signed char) * 8 - 1))));
+}
+inline signed char		_max(signed char x, signed char y)
 {
-	return x - ((x - y) & ((x - y) >> (sizeof(S8) * 8 - 1)));
-};
+	return (x - ((x - y) & ((x - y) >> (sizeof(signed char) * 8 - 1))));
+}
 
 // unsigned int8
-inline U8		_abs(U8 x)
+inline unsigned char		_abs(unsigned char x)
 {
 	return x;
 }

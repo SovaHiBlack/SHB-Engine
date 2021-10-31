@@ -8,9 +8,9 @@
 MEMPOOL		mem_pools[mem_pools_count];
 
 // MSVC
-__forceinline	U8* acc_header(void* P)
+__forceinline	unsigned char* acc_header(void* P)
 {
-	U8* _P = (U8*) P;
+	unsigned char* _P = (unsigned char*) P;
 	return	_P - 1;
 }
 __forceinline	U32		get_header(void* P)
@@ -56,7 +56,7 @@ void* xrMemory::mem_alloc(size_t size)
 		// generic
 		// Reserve 1 byte for xrMemory header
 		void* _real = xr_aligned_offset_malloc(1 + size + _footer, 16, 0x1);
-		_ptr = (void*) (((U8*) _real) + 1);
+		_ptr = (void*) (((unsigned char*) _real) + 1);
 		*acc_header(_ptr) = mem_generic;
 	}
 	else
@@ -70,7 +70,7 @@ void* xrMemory::mem_alloc(size_t size)
 			// generic
 			// Reserve 1 byte for xrMemory header
 			void* _real = xr_aligned_offset_malloc(1 + size + _footer, 16, 0x1);
-			_ptr = (void*) (((U8*) _real) + 1);
+			_ptr = (void*) (((unsigned char*) _real) + 1);
 			*acc_header(_ptr) = mem_generic;
 		}
 		else
@@ -79,8 +79,8 @@ void* xrMemory::mem_alloc(size_t size)
 			// Reserve 1 byte for xrMemory header
 			// Already reserved when getting pool id
 			void* _real = mem_pools[pool].create( );
-			_ptr = (void*) (((U8*) _real) + 1);
-			*acc_header(_ptr) = (U8) pool;
+			_ptr = (void*) (((unsigned char*) _real) + 1);
+			*acc_header(_ptr) = (unsigned char) pool;
 		}
 	}
 
@@ -105,7 +105,7 @@ void	xrMemory::mem_free(void* P)
 	}
 
 	U32 pool = get_header(P);
-	void* _real = (void*) (((U8*) P) - 1);
+	void* _real = (void*) (((unsigned char*) P) - 1);
 	if (mem_generic == pool)
 	{
 		// generic
@@ -160,14 +160,14 @@ void* xrMemory::mem_realloc(void* P, size_t size)
 		p_mode = 1;
 	}
 
-	void* _real = (void*) (((U8*) P) - 1);
+	void* _real = (void*) (((unsigned char*) P) - 1);
 	void* _ptr = nullptr;
 	if (0 == p_mode)
 	{
 		U32 _footer = debug_mode ? 4 : 0;
 		// Reserve 1 byte for xrMemory header
 		void* _real2 = xr_aligned_offset_realloc(_real, 1 + size + _footer, 16, 0x1);
-		_ptr = (void*) (((U8*) _real2) + 1);
+		_ptr = (void*) (((unsigned char*) _real2) + 1);
 		*acc_header(_ptr) = mem_generic;
 	}
 	else if (1 == p_mode)

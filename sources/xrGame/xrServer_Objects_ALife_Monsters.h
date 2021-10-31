@@ -258,7 +258,7 @@ U8								s_team;
 	float								m_fCurSpeed;
 	float								m_fDistanceFromPoint;
 	float								m_fDistanceToPoint;
-	GameGraph::TERRAIN_VECTOR			m_tpaTerrain;
+	GameGraph::TerrainPlaceVec			m_tpaTerrain;
 	float								m_fMaxHealthValue;
 	float								m_fRetreatThreshold;
 	float								m_fEyeRange;

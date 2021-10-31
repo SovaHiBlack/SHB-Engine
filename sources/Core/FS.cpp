@@ -349,7 +349,7 @@ IReader* IReader::open_chunk_iterator(U32& ID, IReader* _prev)
 	if (ID & CFS_CompressMark)
 	{
 		// compressed
-		U8* dest;
+		unsigned char* dest;
 		unsigned int dest_sz;
 		_decompressLZ(&dest, &dest_sz, pointer( ), _size);
 		return xr_new<CTempReader>(dest, dest_sz, tell( ) + _size);

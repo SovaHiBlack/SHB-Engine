@@ -185,9 +185,9 @@ void CLevelGraph::draw_restrictions	()
 			continue;
 		if (!(*I).second->initialized()) continue;
 
-		U8 b = U8(R.randI(255));
-		U8 g = U8(R.randI(255));
-		U8 r = U8(R.randI(255));
+		unsigned char b = unsigned char(R.randI(255));
+		unsigned char g = unsigned char(R.randI(255));
+		unsigned char r = unsigned char(R.randI(255));
 
 		xr_vector<u32>::const_iterator	i = (*I).second->border().begin();
 		xr_vector<u32>::const_iterator	e = (*I).second->border().end();

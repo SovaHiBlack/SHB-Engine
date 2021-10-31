@@ -206,7 +206,7 @@ void CBloodsucker::LoadVampirePPEffector(const char* section)
 	sscanf(pSettings->r_string(section,"color_add"),	"%f,%f,%f", &pp_vampire_effector.color_add.r,  &pp_vampire_effector.color_add.g,  &pp_vampire_effector.color_add.b);
 }
 
-void  CBloodsucker::BoneCallback(CBoneInstance *B)
+void CBloodsucker::BoneCallback(CBoneInstance *B)
 {
 	CBloodsucker*	this_class = static_cast<CBloodsucker*> (B->Callback_Param);
 

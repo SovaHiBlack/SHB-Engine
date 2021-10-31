@@ -15,7 +15,7 @@ class CHUDManager;
 class CParticlesObject;
 class CServer;
 class game_cl_GameState;
-class NET_Queue_Event;
+class CNetQueueEvent;
 class CSE_Abstract;
 class CSpaceRestrictionManager;
 class CSeniorityHierarchyHolder;
@@ -31,8 +31,6 @@ class CDebugRenderer;
 #endif
 
 extern float g_fov;
-
-const int maxRP = 64;
 
 class CBulletManager;
 class CMapManager;
@@ -121,9 +119,6 @@ public:
 	}
 
 	virtual void				OnMessage(void* data, u32 size);
-	//virtual void				OnInvalidHost( );
-	//virtual void				OnInvalidPassword( );
-	//virtual void				OnSessionFull( );
 	virtual void				OnConnectRejected( );
 
 private:
@@ -131,11 +126,11 @@ private:
 	u32							m_dwNumSteps;
 	bool						m_bIn_CrPr;
 
-	using OBJECTS_LIST = xr_vector<CGameObject*>;
-	using OBJECTS_LIST_it = OBJECTS_LIST::iterator;
+	using GameObjectVec = xr_vector<CGameObject*>;
+	using GameObjectVec_it = GameObjectVec::iterator;
 
-	OBJECTS_LIST				pObjects4CrPr;
-	OBJECTS_LIST				pActors4CrPr;
+	GameObjectVec				pObjects4CrPr;
+	GameObjectVec				pActors4CrPr;
 
 	CObject* pCurrentControlEntity;
 	CServer::EConnect			m_connect_server_err;
@@ -164,7 +159,6 @@ private:
 
 	BOOL						Connect2Server(const char* options);
 
-private:
 	bool						m_bConnectResultReceived;
 	bool						m_bConnectResult;
 	xr_string					m_sConnectResult;
@@ -173,16 +167,16 @@ public:
 	void						OnBuildVersionChallenge( );
 	void						OnConnectResult(CNetPacket* P);
 
-	//////////////////////////////////////////////	
+	//////////////////////////////////////////////
 	// static particles
-	using POVec = xr_vector<CParticlesObject*>;
-	using POIt = POVec::iterator;
-	POVec						m_StaticParticles;
+	using ParticlesObjectVec = xr_vector<CParticlesObject*>;
+	using ParticlesObjectVec_it = ParticlesObjectVec::iterator;
+	ParticlesObjectVec						m_StaticParticles;
 
 	game_cl_GameState* game;
 	bool						m_bGameConfigStarted;
 	bool						game_configured;
-	NET_Queue_Event* game_events;
+	CNetQueueEvent* game_events;
 	xr_deque<CSE_Abstract*>		game_spawn_queue;
 	CServer* Server;
 	GlobalFeelTouch				m_feel_deny;
@@ -190,7 +184,7 @@ public:
 private:
 	// preload sounds registry
 	using SoundRegistryMap = xr_map<CSharedString, ref_sound>;
-	using SoundRegistryMapIt = SoundRegistryMap::iterator;
+	using SoundRegistryMap_it = SoundRegistryMap::iterator;
 	SoundRegistryMap			sound_registry;
 
 public:
@@ -259,8 +253,6 @@ public:
 	virtual void				IR_OnMouseWheel(int direction);
 	virtual void				IR_OnActivate( );
 
-	//int					get_RPID(const char* name);
-
 	// Game
 	void						InitializeClientGame(CNetPacket& P);
 	void						ClientReceive( );
@@ -269,7 +261,7 @@ public:
 	u32					Objects_net_Save(CNetPacket* _Packet, u32 start, u32 count);
 	virtual void				Send(CNetPacket& P, u32 dwFlags = DPNSEND_GUARANTEED, u32 dwTimeout = 0);
 
-	void						g_cl_Spawn(const char* name, U8 rp, U16 flags, Fvector3 pos);	// only ask server
+	void						g_cl_Spawn(const char* name, unsigned char rp, U16 flags, Fvector3 pos);	// only ask server
 	void						g_sv_Spawn(CSE_Abstract* E);					// server reply/command spawning
 
 	// Save/Load/State
@@ -310,10 +302,9 @@ public:
 	void				SetGameTimeFactor(const float fTimeFactor);
 	void				SetGameTimeFactor(ALife::_TIME_ID GameTime, const float fTimeFactor);
 	void				SetEnvironmentGameTimeFactor(ALife::_TIME_ID GameTime, const float fTimeFactor);
-//	void				SetGameTime(ALife::_TIME_ID GameTime);
 
 	// gets current daytime [0..23]
-	U8					GetDayTime( );
+	unsigned char					GetDayTime( );
 	u32					GetGameDayTimeMS( );
 	float				GetGameDayTimeSec( );
 	float				GetEnvironmentGameDayTimeSec( );
@@ -341,11 +332,6 @@ public:
 	bool			IsClient( );
 	CSE_Abstract* spawn_item(const char* section, const Fvector3& position, u32 level_vertex_id, U16 parent_id, bool return_item = false);
 
-protected:
-//	u32		m_dwCL_PingDeltaSend;
-//	u32		m_dwCL_PingLastSendTime;
-
-public:
 	void			remove_objects( );
 	virtual void			OnSessionTerminate(const char* reason);
 
