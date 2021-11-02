@@ -5,18 +5,18 @@
 
 #include "ScriptActionCondition.h"
 
-CScriptActionCondition::~CScriptActionCondition	()
+CScriptActionCondition::~CScriptActionCondition( )
 { }
 
 using namespace luabind;
 
-#pragma optimize("s",on)
+#pragma optimize("s", on)
 void CScriptActionCondition::script_register(lua_State* L)
 {
 	module(L)
-		[
-			class_<CScriptActionCondition>("cond")
-			.enum_("cond")
+	[
+		class_<CScriptActionCondition>("cond")
+		.enum_("cond")
 		[
 			value("move_end", int(CScriptActionCondition::MOVEMENT_FLAG)),
 			value("look_end", int(CScriptActionCondition::WATCH_FLAG)),
@@ -26,8 +26,8 @@ void CScriptActionCondition::script_register(lua_State* L)
 			value("time_end", int(CScriptActionCondition::TIME_FLAG)),
 			value("act_end", int(CScriptActionCondition::ACT_FLAG))
 		]
-	.def(constructor<>( ))
-		.def(constructor<u32>( ))
-		.def(constructor<u32, F64>( ))
-		];
+		.def(constructor<>( ))
+		.def(constructor<unsigned int>( ))
+		.def(constructor<unsigned int, double>( ))
+	];
 }

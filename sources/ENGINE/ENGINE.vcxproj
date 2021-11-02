@@ -90,7 +90,7 @@
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <CompileAs>Default</CompileAs>
-      <AdditionalIncludeDirectories>..\third-party\dxsdk\include;..\libogg\include;..\libtheora\include;..\third-party;.\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\third-party\dxsdk\include;..\libogg\include;..\libtheora\include;..\third-party;.\;..\lua\luabind</AdditionalIncludeDirectories>
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -150,7 +150,7 @@
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <CompileAs>Default</CompileAs>
-      <AdditionalIncludeDirectories>..\third-party\dxsdk\include;..\libogg\include;..\libtheora\include;..\third-party;.\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\third-party\dxsdk\include;..\libogg\include;..\libtheora\include;..\third-party;.\;..\lua\luabind</AdditionalIncludeDirectories>
       <ExceptionHandling>false</ExceptionHandling>
     </ClCompile>
     <ResourceCompile>

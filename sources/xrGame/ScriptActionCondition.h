@@ -6,32 +6,31 @@
 #include "script_export_space.h"
 #include "ALife_space.h"
 
-class CScriptActionCondition {
+class CScriptActionCondition
+{
 public:
-	enum EActionFlags {
-		MOVEMENT_FLAG	= u32(1 << 0),
-		WATCH_FLAG		= u32(1 << 1),
-		ANIMATION_FLAG	= u32(1 << 2),
-		SOUND_FLAG		= u32(1 << 3),
-		PARTICLE_FLAG	= u32(1 << 4),
-		OBJECT_FLAG		= u32(1 << 5),
-		TIME_FLAG		= u32(1 << 6),
-		ACT_FLAG		= u32(1 << 7)
+	enum EActionFlags
+	{
+		MOVEMENT_FLAG								= unsigned int(1 << 0),
+		WATCH_FLAG									= unsigned int(1 << 1),
+		ANIMATION_FLAG								= unsigned int(1 << 2),
+		SOUND_FLAG									= unsigned int(1 << 3),
+		PARTICLE_FLAG								= unsigned int(1 << 4),
+		OBJECT_FLAG									= unsigned int(1 << 5),
+		TIME_FLAG									= unsigned int(1 << 6),
+		ACT_FLAG									= unsigned int(1 << 7)
 	};
 
-public:
-	u32					m_dwFlags;
-	ALife::_TIME_ID		m_tLifeTime;
-	ALife::_TIME_ID		m_tStartTime;
+	unsigned int									m_dwFlags;
+	ALife::_TIME_ID									m_tLifeTime;
+	ALife::_TIME_ID									m_tStartTime;
 
-public:
-	inline					CScriptActionCondition	();
-	inline					CScriptActionCondition	(u32 dwFlags, F64 dTime = -1);
-	virtual				~CScriptActionCondition	();
-	inline		void		initialize				();
+	inline				CScriptActionCondition		( );
+	inline				CScriptActionCondition		(unsigned int dwFlags, double dTime = -1);
+	virtual				~CScriptActionCondition		( );
+	inline void			initialize					( );
 
-public:
-	static void script_register(lua_State*);
+	static void			script_register				(lua_State* L);
 };
 
 add_to_type_list(CScriptActionCondition)

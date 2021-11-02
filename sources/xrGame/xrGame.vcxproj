@@ -1068,8 +1068,8 @@
     <ClInclude Include="script_engine_inline.h" />
     <ClInclude Include="script_engine_space.h" />
     <ClInclude Include="ScriptEntity.h" />
-    <ClInclude Include="script_entity_action.h" />
-    <ClInclude Include="script_entity_action_inline.h" />
+    <ClInclude Include="ScriptEntityAction.h" />
+    <ClInclude Include="ScriptEntityAction_inline.h" />
     <ClInclude Include="ScriptEntity_inline.h" />
     <ClInclude Include="ScriptEntity_space.h" />
     <ClInclude Include="script_export_macroses.h" />
@@ -1085,8 +1085,8 @@
     <ClInclude Include="script_ini_file.h" />
     <ClInclude Include="script_lanim.h" />
     <ClInclude Include="script_lua_helper.h" />
-    <ClInclude Include="script_monster_action.h" />
-    <ClInclude Include="script_monster_action_inline.h" />
+    <ClInclude Include="ScriptMonsterAction.h" />
+    <ClInclude Include="ScriptMonsterAction_inline.h" />
     <ClInclude Include="script_monster_hit_info.h" />
     <ClInclude Include="script_movement_action.h" />
     <ClInclude Include="script_movement_action_inline.h" />
@@ -2031,8 +2031,7 @@
     </ClCompile>
     <ClCompile Include="script_engine_script.cpp" />
     <ClCompile Include="ScriptEntity.cpp" />
-    <ClCompile Include="script_entity_action.cpp" />
-    <ClCompile Include="script_entity_action_script.cpp" />
+    <ClCompile Include="ScriptEntityAction.cpp" />
     <ClCompile Include="script_fcolor_script.cpp" />
     <ClCompile Include="script_flags_script.cpp" />
     <ClCompile Include="script_fmatrix_script.cpp" />
@@ -2053,8 +2052,7 @@
     <ClCompile Include="script_ini_file.cpp" />
     <ClCompile Include="script_lanim.cpp" />
     <ClCompile Include="script_lua_helper.cpp" />
-    <ClCompile Include="script_monster_action.cpp" />
-    <ClCompile Include="script_monster_action_script.cpp" />
+    <ClCompile Include="ScriptMonsterAction.cpp" />
     <ClCompile Include="script_monster_hit_info_script.cpp" />
     <ClCompile Include="script_movement_action.cpp" />
     <ClCompile Include="script_movement_action_script.cpp" />

@@ -36,7 +36,7 @@ public:
 	inline void		SetMentalState				(MonsterSpace::EMentalState tMentalState);
 	inline void		initialize					( );
 
-	static void		script_register				(lua_State*);
+	static void		script_register				(lua_State* L);
 };
 
 add_to_type_list(CScriptAnimationAction)

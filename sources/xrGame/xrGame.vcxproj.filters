@@ -925,12 +925,6 @@
     <Filter Include="AI\AScript\ScriptClasses\ScriptActions\script_object_action">
       <UniqueIdentifier>{c94a96fc-169e-4398-99bc-8332893e8573}</UniqueIdentifier>
     </Filter>
-    <Filter Include="AI\AScript\ScriptClasses\ScriptActions\script_monster_action">
-      <UniqueIdentifier>{41d8f31f-0aca-4b5f-8a7e-eb23030dff0f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AScript\ScriptClasses\ScriptActions\script_entity_action">
-      <UniqueIdentifier>{6fbf6eaf-0ec0-434b-8a81-99a47ef7454d}</UniqueIdentifier>
-    </Filter>
     <Filter Include="AI\AScript\ScriptClasses\ScriptBinderObject">
       <UniqueIdentifier>{f1553b59-7d9e-41ff-8a18-0d83774494ec}</UniqueIdentifier>
     </Filter>
@@ -2067,6 +2061,12 @@
     </Filter>
     <Filter Include="AI\AScript\ScriptClasses\ScriptActions\ScriptActionCondition">
       <UniqueIdentifier>{45133a84-42be-4b21-94c1-f56337ab859b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\AScript\ScriptClasses\ScriptActions\ScriptEntityAction">
+      <UniqueIdentifier>{6fbf6eaf-0ec0-434b-8a81-99a47ef7454d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\AScript\ScriptClasses\ScriptActions\ScriptMonsterAction">
+      <UniqueIdentifier>{41d8f31f-0aca-4b5f-8a7e-eb23030dff0f}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -4089,17 +4089,17 @@
     <ClInclude Include="ScriptActionCondition_inline.h">
       <Filter>AI\AScript\ScriptClasses\ScriptActions\ScriptActionCondition</Filter>
     </ClInclude>
-    <ClInclude Include="script_monster_action.h">
-      <Filter>AI\AScript\ScriptClasses\ScriptActions\script_monster_action</Filter>
+    <ClInclude Include="ScriptMonsterAction.h">
+      <Filter>AI\AScript\ScriptClasses\ScriptActions\ScriptMonsterAction</Filter>
     </ClInclude>
-    <ClInclude Include="script_monster_action_inline.h">
-      <Filter>AI\AScript\ScriptClasses\ScriptActions\script_monster_action</Filter>
+    <ClInclude Include="ScriptMonsterAction_inline.h">
+      <Filter>AI\AScript\ScriptClasses\ScriptActions\ScriptMonsterAction</Filter>
     </ClInclude>
-    <ClInclude Include="script_entity_action.h">
-      <Filter>AI\AScript\ScriptClasses\ScriptActions\script_entity_action</Filter>
+    <ClInclude Include="ScriptEntityAction.h">
+      <Filter>AI\AScript\ScriptClasses\ScriptActions\ScriptEntityAction</Filter>
     </ClInclude>
-    <ClInclude Include="script_entity_action_inline.h">
-      <Filter>AI\AScript\ScriptClasses\ScriptActions\script_entity_action</Filter>
+    <ClInclude Include="ScriptEntityAction_inline.h">
+      <Filter>AI\AScript\ScriptClasses\ScriptActions\ScriptEntityAction</Filter>
     </ClInclude>
     <ClInclude Include="script_binder_object.h">
       <Filter>AI\AScript\ScriptClasses\ScriptBinderObject</Filter>
@@ -6827,17 +6827,11 @@
     <ClCompile Include="ScriptActionCondition.cpp">
       <Filter>AI\AScript\ScriptClasses\ScriptActions\ScriptActionCondition</Filter>
     </ClCompile>
-    <ClCompile Include="script_monster_action.cpp">
-      <Filter>AI\AScript\ScriptClasses\ScriptActions\script_monster_action</Filter>
+    <ClCompile Include="ScriptMonsterAction.cpp">
+      <Filter>AI\AScript\ScriptClasses\ScriptActions\ScriptMonsterAction</Filter>
     </ClCompile>
-    <ClCompile Include="script_monster_action_script.cpp">
-      <Filter>AI\AScript\ScriptClasses\ScriptActions\script_monster_action</Filter>
-    </ClCompile>
-    <ClCompile Include="script_entity_action.cpp">
-      <Filter>AI\AScript\ScriptClasses\ScriptActions\script_entity_action</Filter>
-    </ClCompile>
-    <ClCompile Include="script_entity_action_script.cpp">
-      <Filter>AI\AScript\ScriptClasses\ScriptActions\script_entity_action</Filter>
+    <ClCompile Include="ScriptEntityAction.cpp">
+      <Filter>AI\AScript\ScriptClasses\ScriptActions\ScriptEntityAction</Filter>
     </ClCompile>
     <ClCompile Include="script_binder_object.cpp">
       <Filter>AI\AScript\ScriptClasses\ScriptBinderObject</Filter>

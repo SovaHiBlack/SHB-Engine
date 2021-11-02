@@ -2,7 +2,7 @@
 
 #include "Projector.h"
 #include "..\ENGINE\LightAnimLibrary.h"
-#include "script_entity_action.h"
+#include "ScriptEntityAction.h"
 #include "xrServer_Objects_ALife.h"
 #include "..\ENGINE\skeletoncustom.h"
 #include "GameObject_space.h"

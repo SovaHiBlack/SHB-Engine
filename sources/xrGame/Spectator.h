@@ -1,3 +1,6 @@
+//	Module 		: Spectator.h
+//	Description : interface for the CSpectator class.
+
 #pragma once
 
 #include "..\ENGINE\feel_touch.h"
@@ -30,7 +33,7 @@ private:
 	int												look_idx;
 
 	void					cam_Set					(EActorCameras style);
-	void					cam_Update				(CActor* A = 0);
+	void					cam_Update				(CActor* A = nullptr);
 
 	CActor*											m_pActorToLookAt;
 
@@ -41,10 +44,10 @@ public:
 	virtual					~CSpectator				( );
 
 	virtual void			IR_OnMouseMove			(int dx, int dy);
-	virtual void			IR_OnKeyboardPress		(int dik);
-	virtual void			IR_OnKeyboardRelease	(int dik);
-	virtual void			IR_OnKeyboardHold		(int dik);
-	virtual void			shedule_Update			(u32 T);
+	virtual void			IR_OnKeyboardPress		(int cmd);
+	virtual void			IR_OnKeyboardRelease	(int cmd);
+	virtual void			IR_OnKeyboardHold		(int cmd);
+	virtual void			shedule_Update			(unsigned int T);
 	virtual void			UpdateCL				( );
 	virtual BOOL			net_Spawn				(CSE_Abstract* DC);
 	virtual void			net_Destroy				( );

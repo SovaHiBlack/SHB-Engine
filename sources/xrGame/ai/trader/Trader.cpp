@@ -5,7 +5,7 @@
 
 #include "Trader.h"
 #include "..\..\Trade.h"
-#include "../../script_entity_action.h"
+#include "..\..\ScriptEntityAction.h"
 #include "../../script_game_object.h"
 #include "..\..\Inventory.h"
 #include "../../xrserver_objects_alife_monsters.h"

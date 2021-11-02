@@ -9,7 +9,7 @@
 
 #include "script_game_object.h"
 #include "script_game_object_impl.h"
-#include "script_entity_action.h"
+#include "ScriptEntityAction.h"
 #include "ai_space.h"
 #include "script_engine.h"
 #include "ScriptEntity.h"

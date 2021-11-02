@@ -9,7 +9,7 @@
 
 #include "Stalker.h"
 #include "ai_stalker_impl.h"
-#include "../../script_entity_action.h"
+#include "..\..\ScriptEntityAction.h"
 #include "..\..\Inventory.h"
 #include "../../ef_storage.h"
 #include "../../stalker_decision_space.h"

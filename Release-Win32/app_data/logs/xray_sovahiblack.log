@@ -1,0 +1,503 @@
+* Detected CPU: GenuineIntel P3 family, F6/M10/S7, 1996.00 mhz, 29-clk 'rdtsc'
+* CPU Features: RDTSC, MMX, SSE, SSE2
+
+Initializing File System...
+using fs-ltx fsgame.ltx
+FS: 27576 files cached, 4316Kb memory used.
+Init FileSystem 15.152907 sec
+'Core' build 153, Nov  1 2021
+
+Initializing Engine...
+Executing config-script "user.ltx"...
+! Cannot open script file [user.ltx]
+Starting INPUT device...
+Loading DLL: xrRender_R1.dll
+Loading DLL: xrGame.dll
+* [win32]: free[4064772 K], reserved[43092 K], committed[86376 K]
+* [ D3D ]: textures[0 K]
+* [x-ray]: process heap[6361 K], game lua[0 K], engine lua[0 K], render[0 K]
+* [x-ray]: economy: strings[864 K], smem[0 K]
+Executing config-script "c:\engine\shb-engine\release-win32\..\gamedata\config\default_controls.ltx"...
+! cant convert dik_name for dik[144], prop=[
+[c:\engine\shb-engine\release-win32\..\gamedata\config\default_controls.ltx] successfully loaded.
+Executing config-script "user.ltx"...
+! Cannot open script file [user.ltx]
+SOUND: OpenAL: enumerate devices...
+SOUND: OpenAL: EnumerationExtension Present
+devices Generic Software
+SOUND: OpenAL: system  default SndDevice name is Generic Software
+SOUND: OpenAL: All available devices:
+1. Generic Software, Spec Version 1.1 (default)
+SOUND: OpenAL: SelectBestDevice is Generic Software 1.1
+SOUND: OpenAL: Required device: Generic Software. Created device: Generic Software.
+* sound: EAX 2.0 extension: absent
+* sound: EAX 2.0 deferred: absent
+* sound : cache: 32773 kb, 3805 lines, 8820 bpl
+Starting RENDER device...
+* GPU [vendor:10DE]-[device:1050]: NVIDIA GeForce GT 520M
+* GPU driver: 21.21.13.7654
+* CREATE: DeviceREF: 1
+* Vertex Processor: PURE HARDWARE
+*     Texture memory: 4087 M
+*          DDI-level: 9.0
+* GPU shading: vs(fffe0300/3.0/30), ps(ffff0300/3.0/30)
+* GPU vertex cache: unrecognized, 16
+* DVB created: 1536K
+* DIB created: 512K
+count of .thm files=1
+load time=47 ms
+* distortion: used, dev(30),need(14)
+* SSample: 1024x768
+* SSample: enabled
+Starting engine...
+* DVB created: 1536K
+* DIB created: 512K
+* SSample: 1024x768
+* SSample: enabled
+* GPU shading: vs(fffe0300/3.0/30), ps(ffff0300/3.0/30)
+* GPU vertex cache: recognized, 24
+*** RESET [84 ms]
+"c:\engine\shb-engine\release-win32\binaries\engine.exe" 
+* phase time: 4 ms
+* phase cmem: 60332 K
+Сервер: Старт...
+* phase time: 64 ms
+* phase cmem: 61590 K
+Сервер: Загрузка симуляции жизни...
+* phase time: 3 ms
+* phase cmem: 61590 K
+Создание новой игры...
+* Creating new game...
+* Loading spawn registry...
+* 8641 spawn points are successfully loaded
+* Saving spawns...
+* Saving objects...
+* 14924 objects are successfully saved
+* Game all.sav is successfully saved to file '..\app_data\savedgames\all.sav'
+* New game is successfully created!
+* phase time: 4541 ms
+* phase cmem: 90869 K
+Сервер: Соединяемся...
+* phase time: 22 ms
+* phase cmem: 90962 K
+Клиент: Соединение с localhost...
+# Player not found. New player created.
+* client : connection accepted - <>
+* phase time: 5 ms
+* phase cmem: 90970 K
+Открытие потока...
+* phase time: 4 ms
+* phase cmem: 90970 K
+Загрузка формы объектов...
+* phase time: 4141 ms
+* phase cmem: 163639 K
+Загрузка шейдеров...
+* phase time: 316 ms
+* phase cmem: 165129 K
+Загрузка геометрии...
+* [Loading VB] 65532 verts, 2047 Kb
+* [Loading VB] 65525 verts, 2047 Kb
+* [Loading VB] 65535 verts, 2047 Kb
+* [Loading VB] 65466 verts, 2045 Kb
+* [Loading VB] 17208 verts, 537 Kb
+* [Loading VB] 65533 verts, 2047 Kb
+* [Loading VB] 65534 verts, 2047 Kb
+* [Loading VB] 65534 verts, 2047 Kb
+* [Loading VB] 65531 verts, 2047 Kb
+* [Loading VB] 65535 verts, 2047 Kb
+* [Loading VB] 65535 verts, 2047 Kb
+* [Loading VB] 46595 verts, 1456 Kb
+* [Loading VB] 65534 verts, 2047 Kb
+* [Loading VB] 65533 verts, 2047 Kb
+* [Loading VB] 65535 verts, 2047 Kb
+* [Loading VB] 65532 verts, 2047 Kb
+* [Loading VB] 65533 verts, 2047 Kb
+* [Loading VB] 65533 verts, 2047 Kb
+* [Loading VB] 53181 verts, 1661 Kb
+* [Loading IB] 1048575 indices, 2047 Kb
+* [Loading IB] 1048572 indices, 2047 Kb
+* [Loading IB] 1048572 indices, 2047 Kb
+* [Loading IB] 1048572 indices, 2047 Kb
+* [Loading IB] 1048572 indices, 2047 Kb
+* [Loading IB] 1048572 indices, 2047 Kb
+* [Loading IB] 1048575 indices, 2047 Kb
+* [Loading IB] 1048572 indices, 2047 Kb
+* [Loading IB] 1048575 indices, 2047 Kb
+* [Loading IB] 228285 indices, 445 Kb
+* phase time: 387 ms
+* phase cmem: 220883 K
+Загрузка базы пространств...
+* phase time: 1465 ms
+* phase cmem: 224771 K
+Загрузка детальных объектов...
+* [DETAILS] VertexConsts(256), Batch(61)
+* [DETAILS] 40687 v(20), 26352 p
+* [DETAILS] Batch(61), VB(794K), IB(154K)
+* phase time: 50 ms
+* phase cmem: 225758 K
+Загрузка секторов и порталов...
+* Loading HOM: c:\engine\shb-engine\release-win32\..\gamedata\levels\l01_escape\level.hom
+* phase time: 11 ms
+* phase cmem: 225963 K
+Загрузка ИИ объектов...
+- Loading music tracks from 'l01_escape_musics'...
+* phase time: 23 ms
+* phase cmem: 226003 K
+Клиент: Создание...
+- Game configuring : Started 
+- Game configuring : Finished 
+* phase time: 213 ms
+* phase cmem: 233283 K
+Загрузка текстур...
+* t-report - base: 630, 168010 K
+* t-report - lmap: 10, 10241 K
+***FATAL***: Too many lmap-textures (limit: 8 textures or 32M).
+        Reduce pixel density (worse) or use more vertex lighting (better).
+* phase time: 2028 ms
+* phase cmem: 426092 K
+Клиент: Синхронизация...
+* phase time: 24 ms
+* phase cmem: 426092 K
+* [win32]: free[3359676 K], reserved[200112 K], committed[634452 K]
+* [ D3D ]: textures[178252 K]
+* [x-ray]: process heap[426092 K], game lua[23297 K], engine lua[245 K], render[0 K]
+* [x-ray]: economy: strings[2807 K], smem[0 K]
+skeleton: actors\hero\stalker_novice
+!!! 45 bones
+skeleton: meshes\brkbl#0
+!!! 9 bones
+skeleton: meshes\brkbl#1
+!!! 7 bones
+skeleton: meshes\brkbl#2
+!!! 7 bones
+skeleton: meshes\brkbl#3
+!!! 11 bones
+skeleton: meshes\brkbl#4
+!!! 10 bones
+skeleton: meshes\brkbl#5
+!!! 12 bones
+skeleton: meshes\brkbl#6
+!!! 10 bones
+skeleton: meshes\brkbl#7
+!!! 9 bones
+skeleton: meshes\brkbl#8
+!!! 10 bones
+skeleton: meshes\brkbl#9
+!!! 10 bones
+skeleton: meshes\brkbl#10
+!!! 10 bones
+skeleton: meshes\brkbl#11
+!!! 10 bones
+skeleton: meshes\brkbl#12
+!!! 10 bones
+skeleton: meshes\brkbl#13
+!!! 12 bones
+skeleton: meshes\brkbl#14
+!!! 2 bones
+skeleton: meshes\brkbl#15
+!!! 2 bones
+skeleton: meshes\brkbl#16
+!!! 7 bones
+skeleton: meshes\brkbl#17
+!!! 5 bones
+skeleton: meshes\brkbl#18
+!!! 4 bones
+skeleton: meshes\brkbl#19
+!!! 5 bones
+skeleton: meshes\brkbl#20
+!!! 6 bones
+skeleton: meshes\brkbl#21
+!!! 5 bones
+skeleton: meshes\brkbl#22
+!!! 6 bones
+skeleton: meshes\brkbl#23
+!!! 6 bones
+skeleton: meshes\brkbl#24
+!!! 6 bones
+skeleton: meshes\brkbl#25
+!!! 7 bones
+skeleton: meshes\brkbl#26
+!!! 5 bones
+skeleton: meshes\brkbl#27
+!!! 4 bones
+skeleton: meshes\brkbl#28
+!!! 6 bones
+skeleton: meshes\brkbl#29
+!!! 5 bones
+skeleton: meshes\brkbl#30
+!!! 4 bones
+skeleton: meshes\brkbl#31
+!!! 5 bones
+skeleton: meshes\brkbl#32
+!!! 4 bones
+skeleton: meshes\brkbl#33
+!!! 5 bones
+skeleton: meshes\brkbl#34
+!!! 5 bones
+skeleton: meshes\brkbl#35
+!!! 5 bones
+skeleton: meshes\brkbl#36
+!!! 5 bones
+skeleton: meshes\brkbl#37
+!!! 5 bones
+skeleton: meshes\brkbl#38
+!!! 5 bones
+skeleton: meshes\brkbl#39
+!!! 5 bones
+skeleton: meshes\brkbl#40
+!!! 6 bones
+skeleton: meshes\brkbl#41
+!!! 6 bones
+skeleton: meshes\brkbl#42
+!!! 5 bones
+skeleton: meshes\brkbl#43
+!!! 4 bones
+skeleton: meshes\brkbl#44
+!!! 6 bones
+skeleton: meshes\brkbl#45
+!!! 5 bones
+skeleton: meshes\brkbl#46
+!!! 5 bones
+skeleton: meshes\brkbl#47
+!!! 6 bones
+skeleton: meshes\brkbl#48
+!!! 7 bones
+skeleton: equipments\item_datchik1
+!!! 1 bones
+skeleton: equipments\light_night
+!!! 4 bones
+skeleton: equipments\novice_suit
+!!! 1 bones
+skeleton: weapons\binoculars\wpn_binoculars
+!!! 3 bones
+skeleton: weapons\binoculars\wpn_binoculars_hud
+!!! 1 bones
+skeleton: equipments\item_pda
+!!! 1 bones
+skeleton: physics\decor\ventilator_01
+!!! 4 bones
+skeleton: physics\decor\priemnik_gorizont
+!!! 2 bones
+skeleton: physics\box\box_1a
+!!! 4 bones
+skeleton: physics\balon\balon_01
+!!! 3 bones
+skeleton: weapons\groza\wpn_groza
+!!! 7 bones
+skeleton: equipments\item_transiver
+!!! 4 bones
+skeleton: equipments\stalker_killer_suit
+!!! 2 bones
+skeleton: physics\decor\tv_1
+!!! 4 bones
+skeleton: physics\decor\tiski
+!!! 5 bones
+skeleton: physics\door\door_trader
+!!! 3 bones
+skeleton: physics\door\door_traders_box
+!!! 3 bones
+skeleton: physics\light\lampa_01_on
+!!! 7 bones
+skeleton: actors\trader\trader
+!!! 55 bones
+skeleton: weapons\ammo\ammo_9x18_fmj
+!!! 1 bones
+skeleton: weapons\pm\wpn_pm
+!!! 3 bones
+skeleton: weapons\pm\wpn_pm_hud
+!!! 51 bones
+skeleton: weapons\knife\wpn_knife
+!!! 2 bones
+skeleton: weapons\knife\wpn_knife_hud
+!!! 42 bones
+skeleton: equipments\item_notebook
+!!! 3 bones
+skeleton: monsters\flesh\flesh
+!!! 26 bones
+skeleton: actors\novice\green_stalker_5
+!!! 45 bones
+skeleton: food\conserv1
+!!! 1 bones
+skeleton: actors\novice\green_stalker_3
+!!! 45 bones
+skeleton: equipments\item_bandage
+!!! 1 bones
+skeleton: weapons\bred\bred
+!!! 1 bones
+skeleton: weapons\ammo\ammo_12x70_buck
+!!! 1 bones
+skeleton: weapons\bm_16\wpn_bm-16
+!!! 2 bones
+skeleton: weapons\bm_16\wpn_bm-16_hud
+!!! 50 bones
+skeleton: weapons\kolbasa\kolbasa
+!!! 1 bones
+skeleton: actors\novice\green_stalker_2
+!!! 45 bones
+skeleton: actors\neytral\stalker_neytral_balon_1
+!!! 45 bones
+skeleton: weapons\ammo\ammo_545x39_fmj
+!!! 1 bones
+skeleton: equipments\item_fmradio
+!!! 1 bones
+skeleton: weapons\ak-74u\ak74u
+!!! 4 bones
+skeleton: weapons\ak-74u\wpn_ak74u_hud
+!!! 47 bones
+skeleton: physics\decor\vedro_01
+!!! 4 bones
+skeleton: physics\small_trash\doski_br_02
+!!! 6 bones
+skeleton: physics\vehicles\mi24\veh_mi24_u_01
+!!! 29 bones
+skeleton: physics\large_trash\poddon
+!!! 1 bones
+skeleton: physics\dead_body\skelet_combine_pose_06
+!!! 15 bones
+skeleton: physics\rope\rope_01
+!!! 10 bones
+skeleton: physics\stul\stul_wood_01
+!!! 6 bones
+skeleton: physics\decor\teapot_1
+!!! 8 bones
+skeleton: actors\soldier\soldier_spetsnaz
+!!! 45 bones
+skeleton: actors\soldier\soldier_bandana_5
+!!! 45 bones
+skeleton: actors\soldier\soldier_bandana
+!!! 45 bones
+skeleton: actors\soldier\soldier_obichniy
+!!! 45 bones
+skeleton: actors\soldier\soldier_beret_1
+!!! 45 bones
+skeleton: physics\decor\rupor
+!!! 3 bones
+skeleton: actors\bandit\stalker_bandit_4
+!!! 45 bones
+skeleton: monsters\crow\crow
+!!! 16 bones
+skeleton: physics\decor\bottle_bar_stakan
+!!! 1 bones
+skeleton: physics\decor\butilka_vodka_01
+!!! 1 bones
+skeleton: equipments\drink_nonstop
+!!! 1 bones
+skeleton: equipments\drink_nonstop_old
+!!! 1 bones
+skeleton: actors\neytral\stalker_neytral_balon_8
+!!! 45 bones
+skeleton: actors\novice\green_stalker_1
+!!! 45 bones
+skeleton: equipments\item_minipda
+!!! 1 bones
+skeleton: actors\bandit\stalker_bandit_3
+!!! 45 bones
+skeleton: physics\anomaly\artefact_blackdrip
+!!! 2 bones
+skeleton: weapons\artefact\wpn_artefact_hud
+!!! 45 bones
+skeleton: physics\door\cabinet_village_140x210_ph_door_l
+!!! 2 bones
+skeleton: physics\door\cabinet_village_140x210_ph_door_r
+!!! 3 bones
+skeleton: physics\box\expl_dinamit
+!!! 1 bones
+skeleton: physics\equipment_cache\equipment_instrument_case_01_case
+!!! 1 bones
+skeleton: physics\equipment_cache\equipment_box_01_case
+!!! 1 bones
+skeleton: physics\equipment_cache\equipment_rucksack_01_case
+!!! 1 bones
+skeleton: physics\box\box_wood_01
+!!! 1 bones
+skeleton: physics\box\box_metall_01
+!!! 1 bones
+skeleton: weapons\vodka\vodka
+!!! 1 bones
+skeleton: physics\box\box_wood_tara
+!!! 5 bones
+skeleton: physics\decor\tv_1_br
+!!! 2 bones
+skeleton: physics\decor\ognetushitel
+!!! 7 bones
+skeleton: physics\balon\bochka_close_3
+!!! 3 bones
+skeleton: physics\balon\bochka_close_1
+!!! 3 bones
+skeleton: physics\balon\balon_02
+!!! 3 bones
+skeleton: physics\decor\kitchen_lojka
+!!! 2 bones
+skeleton: physics\decor\kitchen_krujka
+!!! 2 bones
+skeleton: physics\small_trash\wood_board_br_01
+!!! 1 bones
+skeleton: physics\small_trash\wood_board_br_01a
+!!! 1 bones
+skeleton: physics\small_trash\wood_board_br_01b
+!!! 1 bones
+skeleton: physics\decor\fire_vedro
+!!! 8 bones
+skeleton: weapons\bolt\wpn_bolt
+!!! 2 bones
+skeleton: weapons\bolt\wpn_bolt_hud
+!!! 42 bones
+skeleton: weapons\rpg_7\wpn_rpg_7_grenade
+!!! 1 bones
+skeleton: equipments\item_aptechka
+!!! 1 bones
+skeleton: weapons\groza\wpn_groza_hud
+!!! 51 bones
+* MEMORY USAGE: 544677 K
+~ Invalid syntax in call to 'r__tf_aniso'
+~ Valid arguments: integer value in range [1,16]
+skeleton: monsters\dog\dog
+!!! 33 bones
+skeleton: monsters\dog\dog_white
+!!! 33 bones
+skeleton: monsters\dog\dog_bulterier
+!!! 33 bones
+skeleton: equipments\item_dog_tail
+!!! 1 bones
+part_3_jump
+part_4_crouch
+skeleton: monsters\mutant_boar\mutant_boar
+!!! 48 bones
+part_10_sprint
+skeleton: actors\novice\green_stalker_8
+!!! 45 bones
+skeleton: actors\novice\green_stalker_4
+!!! 45 bones
+skeleton: weapons\pb\wpn_pb
+!!! 3 bones
+skeleton: weapons\pb\wpn_pb_hud
+!!! 46 bones
+part_2_binocular
+~ g_god 1
+part_12_relations
+- Disconnect
+- Destroying level
+DestroySingleton::RefCounter: 0
+DestroySingleton::RefCounter: 0
+DestroySingleton::RefCounter: 0
+DestroySingleton::RefCounter: 0
+DestroySingleton::RefCounter: 0
+Input:  1
+Config-file [..\app_data\user.ltx] saved successfully
+Destroying Direct3D...
+* RM_Dump: textures  : 0
+* RM_Dump: rtargets  : 0
+* RM_Dump: rtargetsc : 0
+* RM_Dump: vs        : 0
+* RM_Dump: ps        : 0
+* RM_Dump: dcl       : 0
+* RM_Dump: states    : 0
+* RM_Dump: tex_list  : 0
+* RM_Dump: matrices  : 0
+* RM_Dump: lst_constants: 0
+* RM_Dump: v_passes  : 0
+* RM_Dump: v_elements: 0
+* RM_Dump: v_shaders : 0
+refCount:pBaseZB 1
+refCount:pBaseRT 1
+DeviceREF: 1

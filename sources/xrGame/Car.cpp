@@ -15,7 +15,7 @@
 #include "camerafirsteye.h"
 #include "Actor.h"
 #include "ActorEffector.h"
-#include "script_entity_action.h"
+#include "ScriptEntityAction.h"
 #include "Inventory.h"
 #include "xrserver_objects_alife_items.h"
 #include "..\ENGINE\skeletonanimated.h"

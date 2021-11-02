@@ -13,7 +13,7 @@
 #include "..\..\Hit.h"
 #include "..\..\PHDestroyable.h"
 #include "../../CharacterPhysicsSupport.h"
-#include "../../script_entity_action.h"
+#include "..\..\ScriptEntityAction.h"
 #include "../../GameLevelCrossTable.h"
 #include "../../game_graph.h"
 #include "..\..\Inventory.h"

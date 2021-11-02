@@ -12,7 +12,7 @@
 #include "Actor.h"
 #include "CameraLook.h"
 #include "camerafirsteye.h"
-#include "script_entity_action.h"
+#include "ScriptEntityAction.h"
 #include "xr_level_controller.h"
 #include "..\ENGINE\skeletoncustom.h"
 #include "Level.h"

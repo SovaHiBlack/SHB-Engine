@@ -41,7 +41,8 @@ static const float r_head_factor = 0.2f;
 
 void CActor::Spin0Callback(CBoneInstance* B)
 {
-	CActor* A = static_cast<CActor*>(B->Callback_Param);	VERIFY(A);
+	CActor* A = static_cast<CActor*>(B->Callback_Param);
+	VERIFY(A);
 
 	Fmatrix				spin;
 	float				bone_yaw = angle_normalize_signed(A->r_torso.yaw - A->r_model_yaw - A->r_model_yaw_delta) * y_spin0_factor;

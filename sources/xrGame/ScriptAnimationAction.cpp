@@ -15,15 +15,15 @@ using namespace luabind;
 void CScriptAnimationAction::script_register(lua_State* L)
 {
 	module(L)
-		[
-			class_<CScriptAnimationAction>("anim")
-			.enum_("type")
+	[
+		class_<CScriptAnimationAction>("anim")
+		.enum_("type")
 		[
 			value("free", int(MonsterSpace::eMentalStateFree)),
 			value("danger", int(MonsterSpace::eMentalStateDanger)),
 			value("panic", int(MonsterSpace::eMentalStatePanic))
 		]
-	.enum_("monster")
+		.enum_("monster")
 		[
 			value("stand_idle", int(MonsterSpace::eAA_StandIdle)),
 			value("sit_idle", int(MonsterSpace::eAA_SitIdle)),
@@ -36,7 +36,7 @@ void CScriptAnimationAction::script_register(lua_State* L)
 			value("turn", int(MonsterSpace::eAA_Turn))
 		]
 
-	.def(constructor<>( ))
+		.def(constructor<>( ))
 		.def(constructor<const char*>( ))
 		.def(constructor<const char*, bool>( ))
 		.def(constructor<MonsterSpace::EMentalState>( ))
@@ -47,5 +47,5 @@ void CScriptAnimationAction::script_register(lua_State* L)
 		.def("anim", &CScriptAnimationAction::SetAnimation)
 		.def("type", &CScriptAnimationAction::SetMentalState)
 		.def("completed", (bool (CScriptAnimationAction::*)())(&CScriptAnimationAction::completed))
-		];
+	];
 }

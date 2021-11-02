@@ -1,7 +1,7 @@
 #include "stdafx.h"
 
 #include "BaseMonster.h"
-#include "../../../script_entity_action.h"
+#include "..\..\..\ScriptEntityAction.h"
 #include "../../../PHMovementControl.h"
 #include "../../../sight_manager.h"
 #include "../../../detail_path_manager.h"

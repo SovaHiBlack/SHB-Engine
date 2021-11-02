@@ -1,4 +1,5 @@
-// Spectator.cpp: implementation of the CSpectator class.
+//	Module 		: Spectator.cpp
+//	Description : implementation of the CSpectator class.
 
 #include "stdafx.h"
 
@@ -68,13 +69,13 @@ void CSpectator::UpdateCL( )
 			if (P && (P->team >= 0) && (P->team < (int) Level( ).seniority_holder( ).teams( ).size( )))
 			{
 				const CTeamHierarchyHolder& T = Level( ).seniority_holder( ).team(P->team);
-				for (u32 i = 0; i < T.squads( ).size( ); ++i)
+				for (unsigned int i = 0; i < T.squads( ).size( ); ++i)
 				{
 					const CSquadHierarchyHolder& S = T.squad(i);
-					for (u32 j = 0; j < S.groups( ).size( ); ++j)
+					for (unsigned int j = 0; j < S.groups( ).size( ); ++j)
 					{
 						const CGroupHierarchyHolder& G = S.group(j);
-						for (u32 k = 0; k < G.members( ).size( ); ++k)
+						for (unsigned int k = 0; k < G.members( ).size( ); ++k)
 						{
 							CActor* A = smart_cast<CActor*>(G.members( )[k]);
 							if (A/*&&A->g_Alive()*/)
@@ -104,7 +105,7 @@ void CSpectator::UpdateCL( )
 	}
 }
 
-void CSpectator::shedule_Update(u32 DT)
+void CSpectator::shedule_Update(unsigned int DT)
 {
 	inherited::shedule_Update(DT);
 //	if (!getEnabled())	return;
@@ -117,14 +118,14 @@ void CSpectator::shedule_Update(u32 DT)
 #define START_ACCEL		16.0f
 static float Accel_mul = START_ACCEL;
 
-void CSpectator::IR_OnKeyboardPress(int dik)
+void CSpectator::IR_OnKeyboardPress(int cmd)
 {
 	if (Remote( ))
 	{
 		return;
 	}
 
-	switch (dik)
+	switch (cmd)
 	{
 		case kACCEL:
 		{
@@ -176,9 +177,9 @@ void CSpectator::IR_OnKeyboardPress(int dik)
 	}
 }
 
-void CSpectator::IR_OnKeyboardRelease(int dik)
+void CSpectator::IR_OnKeyboardRelease(int cmd)
 {
-	switch (dik)
+	switch (cmd)
 	{
 		case kACCEL:
 		{
@@ -188,7 +189,7 @@ void CSpectator::IR_OnKeyboardRelease(int dik)
 	}
 }
 
-void CSpectator::IR_OnKeyboardHold(int dik)
+void CSpectator::IR_OnKeyboardHold(int cmd)
 {
 	if (Remote( ))
 	{
@@ -198,15 +199,15 @@ void CSpectator::IR_OnKeyboardHold(int dik)
 	if ((cam_active == eacFreeFly) || (cam_active == eacFreeLook))
 	{
 		CCameraBase* C = cameras[cam_active];
-		Fvector3 vmove = { 0,0,0 };
-		switch (dik)
+		Fvector3 vmove = { 0.0f, 0.0f, 0.0f };
+		switch (cmd)
 		{
 			case kUP:
 			case kDOWN:
 			case kCAM_ZOOM_IN:
 			case kCAM_ZOOM_OUT:
 			{
-				cameras[cam_active]->Move(dik);
+				cameras[cam_active]->Move(cmd);
 			}
 			break;
 			case kLEFT:
@@ -214,7 +215,7 @@ void CSpectator::IR_OnKeyboardHold(int dik)
 			{
 				if (eacFreeLook != cam_active)
 				{
-					cameras[cam_active]->Move(dik);
+					cameras[cam_active]->Move(cmd);
 				}
 			}
 			break;
@@ -343,22 +344,25 @@ void CSpectator::cam_Update(CActor* A)
 			case eacFirstEye:
 			{
 				Fvector3 P;
-				Fvector3	D;
-				Fvector3	N;
+				Fvector3 D;
+				Fvector3 N;
 				pACam->Get(P, D, N);
 				cam->Set(P, D, N);
 			}
 			break;
 			case eacLookAt:
 			{
-				float y, p, r;
+				float y;
+				float p;
+				float r;
 				M.getHPB(y, p, r);
 				cam->Set(pACam->yaw, pACam->pitch, -r);
 			}
 			case eacFreeLook:
 			{
 				cam->SetParent(A);
-				Fmatrix tmp; tmp.identity( );
+				Fmatrix tmp;
+				tmp.identity( );
 
 				Fvector3 point;
 				Fvector3 point1;
@@ -368,14 +372,19 @@ void CSpectator::cam_Update(CActor* A)
 				M.transform_tiny(point);
 				tmp.translate_over(point);
 				tmp.transform_tiny(point1);
-				if (!A->g_Alive( )) point.set(point1);
+				if (!A->g_Alive( ))
+				{
+					point.set(point1);
+				}
+
 				cam->Update(point, dangle);
-			}break;
+			}
+			break;
 		}
 		//-----------------------------------
 		Fvector3 P;
-		Fvector3	D;
-		Fvector3	N;
+		Fvector3 D;
+		Fvector3 N;
 		cam->Get(P, D, N);
 		cameras[eacFreeFly]->Set(P, D, N);
 		cameras[eacFreeFly]->Set(cam->yaw, cam->pitch, 0);
@@ -389,11 +398,11 @@ void CSpectator::cam_Update(CActor* A)
 		CCameraBase* cam = cameras[eacFreeFly];
 		Fvector3 point;
 		Fvector3 dangle;
-		point.set(0.f, 1.6f, 0.f);
+		point.set(0.0f, 1.6f, 0.0f);
 		XFORM( ).transform_tiny(point);
 
 		// apply shift
-		dangle.set(0, 0, 0);
+		dangle.set(0.0f, 0.0f, 0.0f);
 
 		cam->Update(point, dangle);
 //		cam->vPosition.set(point0);
@@ -402,37 +411,50 @@ void CSpectator::cam_Update(CActor* A)
 	}
 }
 
-BOOL			CSpectator::net_Spawn(CSE_Abstract* DC)
+BOOL CSpectator::net_Spawn(CSE_Abstract* DC)
 {
 	BOOL res = inherited::net_Spawn(DC);
-	if (!res) return FALSE;
+	if (!res)
+	{
+		return FALSE;
+	}
 
 	CSE_Abstract* E = (CSE_Abstract*) (DC);
-	if (!E) return FALSE;
+	if (!E)
+	{
+		return FALSE;
+	}
 
 	cam_active = eacFreeFly;
 	look_idx = 0;
 
-	cameras[cam_active]->Set(-E->o_Angle.y, -E->o_Angle.x, 0);		// set's camera orientation
+	cameras[cam_active]->Set(-E->o_Angle.y, -E->o_Angle.x, 0.0f);		// set's camera orientation
 	cameras[cam_active]->vPosition.set(E->o_Position);
 
 	if (OnServer( ))
 	{
 		E->s_flags.set(M_SPAWN_OBJECT_LOCAL, TRUE);
-	};
+	}
+
 	return TRUE;
-};
+}
 
-
-void			CSpectator::net_Destroy( )
+void CSpectator::net_Destroy( )
 {
 	inherited::net_Destroy( );
 	Level( ).MapManager( ).RemoveMapLocationByObjectID(ID( ));
 }
 
-void			CSpectator::net_Relcase(CObject* O)
+void CSpectator::net_Relcase(CObject* O)
 {
-	if (O != m_pActorToLookAt) return;
-	m_pActorToLookAt = NULL;
-	if (!m_pActorToLookAt) cam_Set(eacFreeFly);
-};
+	if (O != m_pActorToLookAt)
+	{
+		return;
+	}
+
+	m_pActorToLookAt = nullptr;
+	if (!m_pActorToLookAt)
+	{
+		cam_Set(eacFreeFly);
+	}
+}

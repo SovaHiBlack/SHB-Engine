@@ -7,7 +7,7 @@
 #include "CustomMonster.h"
 #include "..\ENGINE\feel_vision.h"
 #include "..\ENGINE\skeletonanimated.h"
-#include "script_entity_action.h"
+#include "ScriptEntityAction.h"
 #include "Weapon.h"
 #include "ParticlesObject.h"
 #include "script_game_object.h"
