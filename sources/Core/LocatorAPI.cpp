@@ -16,14 +16,7 @@ const U32 BIG_FILE_READER_WINDOW_SIZE = 1024 * 1024;
 
 typedef void DUMMY_STUFF(const void*, const U32&, void*);
 CORE_API DUMMY_STUFF* g_temporary_stuff = nullptr;
-/*
-#ifdef PROTECTED_BUILD
-#	pragma warning(push)
-#	pragma warning(disable:4995)
-#	include <malloc.h>
-#	pragma warning(pop)
-#endif // PROTECTED_BUILD
-*/
+
 CLocatorAPI* xr_FS = nullptr;
 
 #define FSLTX	"fsgame.ltx"
@@ -53,6 +46,7 @@ struct eq_pointer<IReader>
 		return (_val == itm._reader);
 	}
 };
+
 template <>
 struct eq_pointer<CStreamReader>
 {
@@ -64,6 +58,7 @@ struct eq_pointer<CStreamReader>
 		return (_val == itm._stream_reader);
 	}
 };
+
 struct eq_fname_free
 {
 	CSharedString _val;
@@ -76,6 +71,7 @@ struct eq_fname_free
 		return (_val == itm._fn && itm._reader == nullptr);
 	}
 };
+
 struct eq_fname_check
 {
 	CSharedString _val;
@@ -230,7 +226,7 @@ void CLocatorAPI::Register(const char* name, U32 vfs, U32 crc, U32 ptr, U32 size
 	desc.size_compressed = size_compressed;
 	desc.modif = modif & (~U32(0x3));
 //	Msg("registering file %s - %d", name, size_real);
-//	if file already exist - update info
+	// if file already exist - update info
 	files_it I = files.find(desc);
 	if (I != files.end( ))
 	{
@@ -388,7 +384,8 @@ void CLocatorAPI::ProcessArchive(const char* _path, const char* base_path)
 	RStringVec	fv;
 	while (!hdr->eof( ))
 	{
-		string_path		name, full;
+		string_path		name;
+		string_path full;
 		string1024		buffer_start;
 		U16				buffer_size = hdr->r_u16( );
 		VERIFY(buffer_size < sizeof(name) + 4 * sizeof(U32));
@@ -518,7 +515,7 @@ bool CLocatorAPI::Recurse(const char* path)
 	// find all files
 	if (-1 == (hFile = _findfirst(N, &sFile)))
 	{
-		// Log		("! Wrong path: ",path);
+//		Log("! Wrong path: ", path);
 		return		false;
 	}
 
@@ -581,7 +578,11 @@ bool CLocatorAPI::Recurse(const char* path)
 void CLocatorAPI::_initialize(U32 flags, const char* target_folder, const char* fs_name)
 {
 	char _delimiter = '|'; //','
-	if (m_Flags.is(flReady))return;
+	if (m_Flags.is(flReady))
+	{
+		return;
+	}
+
 	CTimer t;
 	t.Start( );
 	Log("Initializing File System...");
@@ -682,7 +683,11 @@ void CLocatorAPI::_initialize(U32 flags, const char* target_folder, const char* 
 */
 		CHECK_OR_EXIT(pFSltx, make_string("Cannot open file \"%s\".\nCheck your working folder.", fs_ltx));
 		// append all pathes
-		string_path		id, root, add, def, capt;
+		string_path		id;
+		string_path root;
+		string_path add;
+		string_path def;
+		string_path capt;
 		const char* lp_add;
 		const char* lp_def;
 		const char* lp_capt;
@@ -739,9 +744,10 @@ void CLocatorAPI::_initialize(U32 flags, const char* target_folder, const char* 
 			bNoRecurse = !(fl & FS_Path::flRecurse);
 			Recurse(P->m_Path);
 			I = pathes.insert(mk_pair(xr_strdup(id), P));
+
 #ifndef DEBUG
 			m_Flags.set(flCacheFiles, FALSE);
-#endif // DEBUG
+#endif // ndef DEBUG
 
 			CHECK_OR_EXIT(I.second, "The file 'fsgame.ltx' is corrupted (it contains duplicated lines).\nPlease reinstall the game or fix the problem manually.");
 		}
@@ -793,6 +799,7 @@ void CLocatorAPI::_destroy( )
 		char* str = (char*) (I->name);
 		xr_free(str);
 	}
+
 	files.clear( );
 	for (PathPairIt p_it = pathes.begin( ); p_it != pathes.end( ); p_it++)
 	{
@@ -800,12 +807,14 @@ void CLocatorAPI::_destroy( )
 		xr_free(str);
 		xr_delete(p_it->second);
 	}
+
 	pathes.clear( );
 	for (archives_it a_it = archives.begin( ); a_it != archives.end( ); a_it++)
 	{
 		CloseHandle(a_it->hSrcMap);
 		CloseHandle(a_it->hSrcFile);
 	}
+
 	archives.clear( );
 }
 
@@ -1015,7 +1024,6 @@ int CLocatorAPI::file_list(FS_FileSet& dest, const char* path, U32 flags, const 
 
 			xr_string fn = entry_begin;
 			// insert file entry
-//			if (flags & FS_ClampExt)fn = EFS.ChangeFileExt(fn, "");
 			U32 fl = (entry.vfs != 0xffffffff ? FS_File::flVFS : 0);
 			dest.insert(FS_File(fn, entry.size_real, entry.modif, fl));
 		}
@@ -1183,6 +1191,7 @@ void CLocatorAPI::file_from_archive(IReader*& R, const char* fname, const file& 
 
 	string512					temp;
 	sprintf_s(temp, sizeof(temp), "%s:%s", *A.path, fname);
+
 #ifdef DEBUG
 	register_file_mapping(ptr, sz, temp);
 #endif // def DEBUG
@@ -1244,7 +1253,9 @@ void CLocatorAPI::copy_file_to_build(T*& r, const char* source_name)
 	FS_Path* P;
 	if (!(source_name == strstr(source_name, (P = get_path("$server_root$"))->m_Path) ||
 		source_name == strstr(source_name, (P = get_path("$server_data_root$"))->m_Path)))
+	{
 		return;
+	}
 
 	update_path(cpy_name, "$build_copy$", source_name + xr_strlen(P->m_Path));
 	IWriter* W = w_open(cpy_name);
@@ -1258,11 +1269,15 @@ void CLocatorAPI::copy_file_to_build(T*& r, const char* source_name)
 	w_close(W);
 	set_file_age(cpy_name, get_file_age(source_name));
 	if (!m_Flags.is(flEBuildCopy))
+	{
 		return;
+	}
 
 	const char* ext = strext(cpy_name);
 	if (!ext)
+	{
 		return;
+	}
 
 	IReader* R = 0;
 	if (0 == xr_strcmp(ext, ".dds"))
@@ -1302,7 +1317,10 @@ void CLocatorAPI::copy_file_to_build(T*& r, const char* source_name)
 		*strext(e_cpy_name) = 0;
 		strcat(e_cpy_name, ".thm");
 		R = r_open(e_cpy_name);
-		if (R)		r_close(R);
+		if (R)
+		{
+			r_close(R);
+		}
 	}
 }
 
@@ -1315,7 +1333,9 @@ bool CLocatorAPI::check_for_file(const char* path, const char* _fname, string_pa
 	strcpy_s(fname, _fname);
 	xr_strlwr(fname);
 	if (path && path[0])
+	{
 		update_path(fname, path, fname);
+	}
 
 	// Search entry
 	file					desc_f;
@@ -1323,11 +1343,13 @@ bool CLocatorAPI::check_for_file(const char* path, const char* _fname, string_pa
 
 	files_it				I = files.find(desc_f);
 	if (I == files.end( ))
-		return				(false);
+	{
+		return false;
+	}
 
 	++dwOpenCounter;
 	desc = &*I;
-	return					(true);
+	return true;
 }
 
 template <typename T>
@@ -1339,21 +1361,31 @@ T* CLocatorAPI::r_open_impl(const char* path, const char* _fname)
 	const char* source_name = &fname[0];
 
 	if (!check_for_file(path, _fname, fname, desc))
+	{
 		return				(0);
+	}
 
 	// OK, analyse
 	if (0xffffffff == desc->vfs)
+	{
 		file_from_cache(R, fname, *desc, source_name);
+	}
 	else
+	{
 		file_from_archive(R, fname, *desc);
+	}
 
 #ifdef DEBUG
 	if (R && m_Flags.is(flBuildCopy | flReady))
+	{
 		copy_file_to_build(R, source_name);
-#endif // DEBUG
+	}
+#endif // def DEBUG
 
 	if (m_Flags.test(flDumpFileActivity))
+	{
 		_register_open_file(R, fname);
+	}
 
 	return					(R);
 }
@@ -1368,18 +1400,22 @@ IReader* CLocatorAPI::r_open(const char* path, const char* _fname)
 	return					(r_open_impl<IReader>(path, _fname));
 }
 
-void	CLocatorAPI::r_close(IReader*& fs)
+void CLocatorAPI::r_close(IReader*& fs)
 {
 	if (m_Flags.test(flDumpFileActivity))
+	{
 		_unregister_open_file(fs);
+	}
 
 	xr_delete(fs);
 }
 
-void	CLocatorAPI::r_close(CStreamReader*& fs)
+void CLocatorAPI::r_close(CStreamReader*& fs)
 {
 	if (m_Flags.test(flDumpFileActivity))
+	{
 		_unregister_open_file(fs);
+	}
 
 	fs->close( );
 }
@@ -1413,7 +1449,7 @@ IWriter* CLocatorAPI::w_open_ex(const char* path, const char* _fname)
 	return W;
 }
 
-void	CLocatorAPI::w_close(IWriter*& S)
+void CLocatorAPI::w_close(IWriter*& S)
 {
 	if (S)
 	{
@@ -1451,8 +1487,14 @@ CLocatorAPI::files_it CLocatorAPI::file_find_it(const char* fname)
 BOOL CLocatorAPI::dir_delete(const char* path, const char* nm, BOOL remove_files)
 {
 	string_path	fpath;
-	if (path && path[0]) 	update_path(fpath, path, nm);
-	else				strcpy_s(fpath, sizeof(fpath), nm);
+	if (path && path[0])
+	{
+		update_path(fpath, path, nm);
+	}
+	else
+	{
+		strcpy_s(fpath, sizeof(fpath), nm);
+	}
 
 	files_set 	folders;
 	files_it I;
@@ -1466,12 +1508,20 @@ BOOL CLocatorAPI::dir_delete(const char* path, const char* nm, BOOL remove_files
 			files_it cur_item = I;
 			const file& entry = *cur_item;
 			I = cur_item; I++;
-			if (0 != strncmp(entry.name, fpath, base_len))	break;	// end of list
+			if (0 != strncmp(entry.name, fpath, base_len))
+			{	// end of list
+				break;
+			}
+
 			const char* end_symbol = entry.name + xr_strlen(entry.name) - 1;
 			if ((*end_symbol) != '\\')
 			{
 //				const char* entry_begin = entry.name + base_len;
-				if (!remove_files) return FALSE;
+				if (!remove_files)
+				{
+					return FALSE;
+				}
+
 				unlink(entry.name);
 				files.erase(cur_item);
 			}
@@ -1481,6 +1531,7 @@ BOOL CLocatorAPI::dir_delete(const char* path, const char* nm, BOOL remove_files
 			}
 		}
 	}
+
 	// remove folders
 	files_set::reverse_iterator r_it = folders.rbegin( );
 	for (; r_it != folders.rend( ); r_it++)
@@ -1492,6 +1543,7 @@ BOOL CLocatorAPI::dir_delete(const char* path, const char* nm, BOOL remove_files
 			files.erase(*r_it);
 		}
 	}
+
 	return TRUE;
 }
 
@@ -1531,6 +1583,7 @@ void CLocatorAPI::file_copy(const char* src, const char* dest)
 				D->w(S->pointer( ), S->length( ));
 				w_close(D);
 			}
+
 			r_close(S);
 		}
 	}
@@ -1544,7 +1597,11 @@ void CLocatorAPI::file_rename(const char* src, const char* dest, bool bOwerwrite
 		files_it D = file_find_it(dest);
 		if (D != files.end( ))
 		{
-			if (!bOwerwrite) return;
+			if (!bOwerwrite)
+			{
+				return;
+			}
+
 			unlink(D->name);
 			char* str = (char*) (D->name);
 			xr_free(str);
@@ -1600,11 +1657,6 @@ const char* CLocatorAPI::update_path(string_path& dest, const char* initial, con
 {
 	return get_path(initial)->_update(dest, src);
 }
-/*
-void CLocatorAPI::update_path(xr_string& dest, const char* initial, const char* src)
-{
-	return get_path(initial)->_update(dest,src);
-}*/
 
 U32 CLocatorAPI::get_file_age(const char* nm)
 {
@@ -1646,7 +1698,10 @@ void CLocatorAPI::rescan_path(const char* full_path, BOOL bRecurse)
 	file desc;
 	desc.name = full_path;
 	files_it	I = files.lower_bound(desc);
-	if (I == files.end( ))	return;
+	if (I == files.end( ))
+	{
+		return;
+	}
 
 	size_t base_len = xr_strlen(full_path);
 	for (; I != files.end( ); )
@@ -1654,7 +1709,11 @@ void CLocatorAPI::rescan_path(const char* full_path, BOOL bRecurse)
 		files_it cur_item = I;
 		const file& entry = *cur_item;
 		I = cur_item; I++;
-		if (0 != strncmp(entry.name, full_path, base_len))	break;	// end of list
+		if (0 != strncmp(entry.name, full_path, base_len))
+		{	// end of list
+			break;
+		}
+
 		if (entry.vfs != 0xFFFFFFFF)
 		{
 			continue;
@@ -1728,17 +1787,20 @@ BOOL CLocatorAPI::can_write_to_folder(const char* path)
 		const char* fn = "$!#%TEMP%#!$.$$$";
 		strconcat(sizeof(temp), temp, path, path[xr_strlen(path) - 1] != '\\' ? "\\" : "", fn);
 		FILE* hf = fopen(temp, "wb");
-		if (hf == 0)		return FALSE;
+		if (hf == 0)
+		{
+			return FALSE;
+		}
 		else
 		{
 			fclose(hf);
 			unlink(temp);
-			return 		TRUE;
+			return TRUE;
 		}
 	}
 	else
 	{
-		return 			FALSE;
+		return FALSE;
 	}
 }
 
@@ -1755,11 +1817,11 @@ BOOL CLocatorAPI::can_modify_file(const char* fname)
 	if (hf)
 	{
 		fclose(hf);
-		return 			TRUE;
+		return TRUE;
 	}
 	else
 	{
-		return 			FALSE;
+		return FALSE;
 	}
 }
 

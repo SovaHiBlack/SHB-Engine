@@ -527,14 +527,3 @@ public:
 	// iterators
 	IReader* open_chunk_iterator(unsigned int& ID, IReader* previous = nullptr);	// NULL=first
 };
-
-class CORE_API CVirtualFileRW : public IReader
-{
-private:
-	void* hSrcFile;
-	void* hSrcMap;
-
-public:
-	CVirtualFileRW(const char* cFileName);
-	virtual ~CVirtualFileRW( );
-};

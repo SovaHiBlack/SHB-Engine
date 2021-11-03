@@ -10,7 +10,6 @@ void 	CORE_API		Log(const char* msg, int  			dop);
 void 	CORE_API		Log(const char* msg, F32			dop);
 void 	CORE_API		Log(const char* msg, const Fvector3& dop);
 void 	CORE_API		Log(const char* msg, const Fmatrix& dop);
-void 	CORE_API		LogWinErr(const char* msg, long 			err_code);
 
 typedef void	(*LogCallback)	(const char* string);
 void	CORE_API				SetLogCB(LogCallback cb);

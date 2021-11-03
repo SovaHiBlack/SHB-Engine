@@ -19,12 +19,12 @@ public:
 	struct	file
 	{
 		const char* name;			// low-case name
-		U32						vfs;			// 0xffffffff - standart file
-		U32						crc;			// contents CRC
-		U32						ptr;			// pointer inside vfs
-		U32						size_real;		// 
-		U32						size_compressed;// if (size_real==size_compressed) - uncompressed
-		U32						modif;			// for editor
+		unsigned int						vfs;			// 0xffffffff - standart file
+		unsigned int						crc;			// contents CRC
+		unsigned int						ptr;			// pointer inside vfs
+		unsigned int						size_real;		// 
+		unsigned int						size_compressed;// if (size_real==size_compressed) - uncompressed
+		unsigned int						modif;			// for editor
 	};
 
 private:
@@ -40,7 +40,7 @@ private:
 		CSharedString				path;
 		void* hSrcFile;
 		void* hSrcMap;
-		U32						size;
+		unsigned int						size;
 	};
 //	DEFINE_MAP_PRED				(const char*,FS_Path*,PathMap,PathPairIt,pred_str);
 	using PathMap = xr_map<const char*, FS_Path*, pred_str>;
@@ -70,11 +70,10 @@ private:
 	xrCriticalSection			m_auth_lock;
 	U64							m_auth_code;
 
-	void						Register(const char* name, U32 vfs, U32 crc, U32 ptr, U32 size_real, U32 size_compressed, U32 modif);
+	void						Register(const char* name, unsigned int vfs, unsigned int crc, unsigned int ptr, unsigned int size_real, unsigned int size_compressed, unsigned int modif);
 	void						ProcessArchive(const char* path, const char* base_path = 0);
 	void						ProcessOne(const char* path, const _finddata_t& F);
 	bool						Recurse(const char* path);
-//	bool						CheckExistance	(const char* path);
 
 	files_it					file_find_it(const char* n);
 
@@ -93,8 +92,8 @@ public:
 		flDumpFileActivity = (1 << 9)
 	};
 	Flags32						m_Flags;
-	U32							dwAllocGranularity;
-	U32							dwOpenCounter;
+	unsigned int							dwAllocGranularity;
+	unsigned int							dwOpenCounter;
 
 private:
 	void				check_cached_files(char* fname, const file& desc, const char*& source_name);
@@ -121,7 +120,7 @@ private:
 public:
 	CLocatorAPI( );
 	~CLocatorAPI( );
-	void						_initialize(U32 flags, const char* target_folder = 0, const char* fs_name = 0);
+	void						_initialize(unsigned int flags, const char* target_folder = 0, const char* fs_name = 0);
 	void						_destroy( );
 
 	CStreamReader* rs_open(const char* initial, const char* N);
@@ -169,11 +168,11 @@ public:
 	void 						file_rename(const char* src, const char* dest, bool bOwerwrite = true);
 	int							file_length(const char* src);
 
-	U32  						get_file_age(const char* nm);
-	void 						set_file_age(const char* nm, U32 age);
+	unsigned int  						get_file_age(const char* nm);
+	void 						set_file_age(const char* nm, unsigned int age);
 
-	xr_vector<char*>* file_list_open(const char* initial, const char* folder, U32 flags = FS_ListFiles);
-	xr_vector<char*>* file_list_open(const char* path, U32 flags = FS_ListFiles);
+	xr_vector<char*>* file_list_open(const char* initial, const char* folder, unsigned int flags = FS_ListFiles);
+	xr_vector<char*>* file_list_open(const char* path, unsigned int flags = FS_ListFiles);
 	void						file_list_close(xr_vector<char*>*& lst);
 
 	bool						path_exist(const char* path);
@@ -181,13 +180,12 @@ public:
 	FS_Path* append_path(const char* path_alias, const char* root, const char* add, BOOL recursive);
 	const char* update_path(string_path& dest, const char* initial, const char* src);
 
-	int							file_list(FS_FileSet& dest, const char* path, U32 flags = FS_ListFiles, const char* mask = 0);
-//.    void						update_path			(xr_string& dest, const char* initial, const char* src);
+	int							file_list(FS_FileSet& dest, const char* path, unsigned int flags = FS_ListFiles, const char* mask = 0);
 
 	// 
 	void						register_archieve(const char* path);
 	void						auth_generate(xr_vector<xr_string>& ignore, xr_vector<xr_string>& important);
-	U64							auth_get( );
+	unsigned __int64							auth_get( );
 	void						auth_runtime(void*);
 
 	// editor functions

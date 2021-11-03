@@ -153,11 +153,6 @@ void Log(const char* msg, const Fmatrix& dop)
 	Log(buf);
 }
 
-void LogWinErr(const char* msg, long err_code)
-{
-	Msg("%s: %s", msg, Debug.error2string(err_code));
-}
-
 void SetLogCB(LogCallback cb)
 {
 	LogCB = cb;

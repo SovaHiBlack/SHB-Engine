@@ -6,9 +6,7 @@
 #include <sys\stat.h>
 #include <share.h>
 
-void* FileDownload(const char* fn, U32* pdwSize = nullptr);
-void			FileCompress(const char* fn, const char* sign, void* data, U32 size);
-void* FileDecompress(const char* fn, const char* sign, U32* size = nullptr);
+void* FileDownload(const char* fn, unsigned int* pdwSize = nullptr);
 
 class CFileWriter : public IWriter
 {
@@ -30,7 +28,9 @@ public:
 		{
 			hf = fopen(*fName, "wb");
 			if (hf == 0)
+			{
 				Msg("!Can't write file: '%s'. Error: '%s'.", *fName, _sys_errlist[errno]);
+			}
 		}
 	}
 
@@ -60,6 +60,7 @@ public:
 				size_t W = fwrite(ptr, mb_sz, 1, hf);
 				R_ASSERT3(W == 1, "Can't write mem block to file. Disk maybe full.", _sys_errlist[errno]);
 			}
+
 			if (req_size)
 			{
 				size_t W = fwrite(ptr, req_size, 1, hf);
@@ -69,7 +70,10 @@ public:
 	}
 	virtual void	seek(U32 pos)
 	{
-		if (0 != hf) fseek(hf, pos, SEEK_SET);
+		if (0 != hf)
+		{
+			fseek(hf, pos, SEEK_SET);
+		}
 	}
 	virtual U32		tell( )
 	{
@@ -89,6 +93,7 @@ public:
 	{ }
 	virtual		~CTempReader( );
 };
+
 class CPackReader : public IReader
 {
 	void* base_address;
@@ -100,17 +105,12 @@ public:
 	}
 	virtual		~CPackReader( );
 };
+
 class CFileReader : public IReader
 {
 public:
 	CFileReader(const char* name);
 	virtual		~CFileReader( );
-};
-class CCompressedReader : public IReader
-{
-public:
-	CCompressedReader(const char* name, const char* sign);
-	virtual		~CCompressedReader( );
 };
 
 class CVirtualFileReader : public IReader
