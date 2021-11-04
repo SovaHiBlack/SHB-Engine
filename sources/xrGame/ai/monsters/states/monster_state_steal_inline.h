@@ -103,3 +103,6 @@ bool CStateMonsterStealAbstract::check_conditions()
 
 	return true;
 }
+
+#undef TEMPLATE_SPECIALIZATION
+#undef CStateMonsterStealAbstract

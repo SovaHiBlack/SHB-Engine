@@ -70,8 +70,8 @@ extern void CheckPrivilegySlowdown();
 
 void xrRender_apply_tf( )
 {
-	Console->Execute("r__tf_aniso");
-	Console->Execute("r2_tf_mipbias");
+	Console->Execute("r__tf_aniso 8");
+	Console->Execute("r2_tf_mipbias -0.5");
 }
 
 void CRenderDevice::End		(void)

@@ -240,7 +240,7 @@ CSkeletonX* CKinematics::LL_GetChild(u32 idx)
 
 void CKinematics::Load(const char* N, IReader* data, u32 dwFlags)
 {
-	Msg("skeleton: %s", N);
+//	Msg("skeleton: %s", N);
 	inherited::Load(N, data, dwFlags);
 
 	pUserData = nullptr;
@@ -297,7 +297,7 @@ void CKinematics::Load(const char* N, IReader* data, u32 dwFlags)
 
 	visimask.zero( );
 	int dwCount = data->r_u32( );
-	Msg("!!! %d bones", dwCount);
+//	Msg("!!! %d bones", dwCount);
 
 	VERIFY3(dwCount < 64, "More than 64 bones is a crazy thing!", N);
 	for (; dwCount; dwCount--)

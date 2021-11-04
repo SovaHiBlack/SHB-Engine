@@ -10,7 +10,7 @@
 
 extern bool shared_str_initialized;
 
-#define DEBUG_INVOKE	__asm int 3
+#define DEBUG_INVOKE __asm int 3
 
 #pragma comment(lib, "dxerr.lib")
 
@@ -18,7 +18,7 @@ extern bool shared_str_initialized;
 #include <new.h>							// for _set_new_mode
 #include <signal.h>							// for signals
 
-CORE_API CDebug		Debug;
+CORE_API CDebug Debug;
 
 static bool error_after_dialog = false;
 extern void copy_to_clipboard(const char* string);
@@ -73,8 +73,8 @@ void update_clipboard(const char* string)
 	}
 
 	char* memory = (char*) GlobalLock(handle);
-	U32 memory_length = xr_strlen(memory);
-	U32 string_length = xr_strlen(string);
+	unsigned int memory_length = xr_strlen(memory);
+	unsigned int string_length = xr_strlen(string);
 	char* buffer = (char*) _alloca((memory_length + string_length + 1) * sizeof(char));
 	strcpy(buffer, memory);
 	GlobalUnlock(handle);
@@ -88,7 +88,7 @@ void update_clipboard(const char* string)
 
 extern void BuildStackTrace( );
 extern char g_stackTrace[100][4096];
-extern int	g_stackTraceCount;
+extern int g_stackTraceCount;
 
 void LogStackTrace(const char* header)
 {
@@ -201,7 +201,7 @@ void CDebug::backend(const char* expression, const char* description, const char
 
 	error_after_dialog = true;
 
-	string4096 assertion_info;
+	char assertion_info[4096];
 	gather_info(expression, description, argument0, argument1, file, line, function, assertion_info);
 
 	if (handler)
@@ -227,7 +227,7 @@ void CDebug::backend(const char* expression, const char* description, const char
 const char* CDebug::error2string(long code)
 {
 	const char* result = 0;
-	static string1024 desc_storage;
+	static char desc_storage[1024];
 
 	result = DXGetErrorDescription(code);
 
@@ -277,7 +277,7 @@ void CDebug::fail(const char* e1, const char* e2, const char* e3, const char* e4
 
 void __cdecl CDebug::fatal(const char* file, int line, const char* function, const char* F, ...)
 {
-	string1024 buffer;
+	char buffer[1024];
 
 	va_list p;
 	va_start(p, F);
@@ -292,9 +292,9 @@ void __cdecl CDebug::fatal(const char* file, int line, const char* function, con
 int out_of_memory_handler(size_t size)
 {
 	Memory.mem_compact( );
-	U32 process_heap = mem_usage_impl(nullptr, nullptr);
-	U32 eco_strings = g_pStringContainer->stat_economy( );
-	U32 eco_smem = g_pSharedMemoryContainer->stat_economy( );
+	unsigned int process_heap = mem_usage_impl(nullptr, nullptr);
+	unsigned int eco_strings = g_pStringContainer->stat_economy( );
+	unsigned int eco_smem = g_pSharedMemoryContainer->stat_economy( );
 	Msg("* [x-ray]: process heap[%d K]", process_heap / 1024);
 	Msg("* [x-ray]: economy: strings[%d K], smem[%d K]", eco_strings / 1024, eco_smem);
 	Debug.fatal(DEBUG_INFO, "Out of memory. Memory request: %d K", size / 1024);

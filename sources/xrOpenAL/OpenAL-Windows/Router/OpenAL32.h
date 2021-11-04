@@ -268,7 +268,7 @@ typedef struct ALCAPI_FXN_TABLE_STRUCT
 
 } ALCAPI_FXN_TABLE;
 
-#include "windows.h"
+#include <windows.h>
 #include "alList.h"
 
 

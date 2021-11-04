@@ -67,3 +67,5 @@ bool CStateMonsterFindEnemyRunAbstract::check_completion()
 	return false;
 }
 
+#undef TEMPLATE_SPECIALIZATION
+#undef CStateMonsterFindEnemyRunAbstract
