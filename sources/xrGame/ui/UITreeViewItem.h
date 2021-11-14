@@ -90,7 +90,7 @@ public:
 	// ATTENTION! Для корректного функционирования значков [+-] вызов SetText
 	// Должен предшествовать SetRoot
 	virtual void SetText(const char* str);
-	virtual void SendMessage(CUIWindow* pWnd, S16 msg, void* pData);
+	virtual void SendMessage(CUIWindow* pWnd, signed short msg, void* pData);
 
 	// Ctor and Dtor
 	CUITreeViewItem( );

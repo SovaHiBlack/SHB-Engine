@@ -24,7 +24,7 @@ CUIScrollView::~CUIScrollView( )
 	Clear( );
 }
 
-void CUIScrollView::SendMessage(CUIWindow* pWnd, S16 msg, void* pData)
+void CUIScrollView::SendMessage(CUIWindow* pWnd, signed short msg, void* pData)
 {
 	CUIWndCallback::OnEvent(pWnd, msg, pData);
 	if (CHILD_CHANGED_SIZE == msg && m_pad->IsChild(pWnd))

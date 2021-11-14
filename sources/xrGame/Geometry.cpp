@@ -79,7 +79,7 @@ void TransformedGeometryExtensionLocalParams(dGeomID geom_transform,const dReal*
 CCodeGeom::CCodeGeom()
 {
 	m_geom_transform=NULL;
-	m_bone_id= U16(-1);
+	m_bone_id= unsigned short(-1);
 }
 
 CCodeGeom::~CCodeGeom()
@@ -191,7 +191,7 @@ void CCodeGeom::clear_cashed_tries()
 		dGeomUserDataClearCashedTries(m_geom_transform);
 	}
 }
-void CCodeGeom::set_material(U16 ul_material)
+void CCodeGeom::set_material(unsigned short ul_material)
 {
 	if(!m_geom_transform) return;
 	if(geom())

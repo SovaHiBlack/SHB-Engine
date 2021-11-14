@@ -134,7 +134,7 @@ void IPureClient::OnMessage(void* data, u32 size)
 	P->construct(data, size);
 	P->timeReceive = timeServer_Async( );
 
-	U16 tmp_type;
+	unsigned short tmp_type;
 	P->r_begin(tmp_type);
 	net_Queue.CreateCommit(P);
 }

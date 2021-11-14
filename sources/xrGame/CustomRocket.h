@@ -91,7 +91,7 @@ public:
 
 	virtual void		SetLaunchParams(const Fmatrix& xform, const Fvector3& vel, const Fvector3& angular_vel);
 
-	virtual void		OnEvent(CNetPacket& P, U16 type);
+	virtual void		OnEvent(CNetPacket& P, unsigned short type);
 	bool										m_bLaunched;
 
 protected:

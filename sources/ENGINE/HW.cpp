@@ -183,10 +183,10 @@ void		CHW::CreateDevice		(HWND m_hWnd)
 	R_CHK	(pD3D->GetAdapterIdentifier(DevAdapter,0,&adapterID));
 	Msg		("* GPU [vendor:%X]-[device:%X]: %s",adapterID.VendorId,adapterID.DeviceId,adapterID.Description);
 
-	U16	drv_Product		= HIWORD(adapterID.DriverVersion.HighPart);
-	U16	drv_Version		= LOWORD(adapterID.DriverVersion.HighPart);
-	U16	drv_SubVersion	= HIWORD(adapterID.DriverVersion.LowPart);
-	U16	drv_Build		= LOWORD(adapterID.DriverVersion.LowPart);
+	unsigned short	drv_Product		= HIWORD(adapterID.DriverVersion.HighPart);
+	unsigned short	drv_Version		= LOWORD(adapterID.DriverVersion.HighPart);
+	unsigned short	drv_SubVersion	= HIWORD(adapterID.DriverVersion.LowPart);
+	unsigned short	drv_Build		= LOWORD(adapterID.DriverVersion.LowPart);
 	Msg		("* GPU driver: %d.%d.%d.%d",u32(drv_Product),u32(drv_Version),u32(drv_SubVersion), u32(drv_Build));
 
 	Caps.id_vendor	= adapterID.VendorId;

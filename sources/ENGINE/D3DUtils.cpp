@@ -79,7 +79,7 @@ u32 m_SelectionRect=D3DCOLOR_RGBA(127,255,127,64);
 
 u32 m_ColorSafeRect = 0xffB040B0;
 
-void SPrimitiveBuffer::CreateFromData(D3DPRIMITIVETYPE _pt, u32 _p_cnt, u32 FVF, void* vertices, u32 _v_cnt, U16* indices, u32 _i_cnt)
+void SPrimitiveBuffer::CreateFromData(D3DPRIMITIVETYPE _pt, u32 _p_cnt, u32 FVF, void* vertices, u32 _v_cnt, unsigned short* indices, u32 _i_cnt)
 {
 	IDirect3DVertexBuffer9*	pVB=0;
 	IDirect3DIndexBuffer9*	pIB=0;
@@ -97,9 +97,9 @@ void SPrimitiveBuffer::CreateFromData(D3DPRIMITIVETYPE _pt, u32 _p_cnt, u32 FVF,
 	Memory.mem_copy		(bytes,&*verts.begin(),v_cnt*stride);
 	R_CHK				(pVB->Unlock());
 	if (i_cnt){ 
-		R_CHK(HW.pDevice->CreateIndexBuffer(i_cnt*sizeof(U16),D3DUSAGE_WRITEONLY,D3DFMT_INDEX16,D3DPOOL_MANAGED,&pIB,NULL));
+		R_CHK(HW.pDevice->CreateIndexBuffer(i_cnt*sizeof(unsigned short),D3DUSAGE_WRITEONLY,D3DFMT_INDEX16,D3DPOOL_MANAGED,&pIB,NULL));
 		R_CHK			(pIB->Lock(0,0,(void**)&bytes,0));
-		Memory.mem_copy	(bytes,indices,i_cnt*sizeof(U16));
+		Memory.mem_copy	(bytes,indices,i_cnt*sizeof(unsigned short));
 		R_CHK			(pIB->Unlock());
 		OnRender.bind	(this,&SPrimitiveBuffer::RenderDIP);
 	}else{

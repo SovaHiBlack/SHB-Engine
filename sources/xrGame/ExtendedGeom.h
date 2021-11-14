@@ -102,14 +102,14 @@ struct dxGeomUserData
 	CDB::TRI					*neg_tri,*b_neg_tri								;
 	CPHObject					*ph_object										;
 	CPHShellHolder*ph_ref_object									;
-	U16							material										;
-	U16							tri_material									;
+	unsigned short							material										;
+	unsigned short							tri_material									;
 	ContactCallbackFun			*callback										;
 	void						*callback_data									;
 //	ObjectContactCallbackFun	*object_callback								;
 	CObjectContactCallback		*object_callbacks								;
-	U16							element_position								;
-	U16							bone_id											;
+	unsigned short							element_position								;
+	unsigned short							bone_id											;
 	xr_vector<int>				cashed_tries									;
 	Fvector3						last_aabb_size									;
 	Fvector3						last_aabb_pos									;
@@ -169,8 +169,8 @@ inline void dGeomCreateUserData(dxGeom* geom)
 	(dGeomGetUserData(geom))->callback=NULL;
 	(dGeomGetUserData(geom))->object_callbacks=NULL;
 	(dGeomGetUserData(geom))->ph_ref_object=NULL;
-	(dGeomGetUserData(geom))->element_position= U16(-1);
-	(dGeomGetUserData(geom))->bone_id= U16(-1);
+	(dGeomGetUserData(geom))->element_position= unsigned short(-1);
+	(dGeomGetUserData(geom))->bone_id= unsigned short(-1);
 	(dGeomGetUserData(geom))->callback_data=NULL;
 	//((dxGeomUserData*)dGeomGetData(geom))->ContactsParameters::mu=1.f;
 	//((dxGeomUserData*)dGeomGetData(geom))->ContactsParameters::damping=1.f;
@@ -243,11 +243,11 @@ inline bool dGeomUserDataHasCallback(dxGeom* geom,ObjectContactCallbackFun	*obj_
 				return (dGeomGetUserData(geom))->object_callbacks->HasCallback(obj_callback);
 	else return false;
 }
-inline void dGeomUserDataSetElementPosition(dxGeom* geom, U16 e_pos)
+inline void dGeomUserDataSetElementPosition(dxGeom* geom, unsigned short e_pos)
 {
 	(dGeomGetUserData(geom))->element_position=e_pos;
 }
-inline void dGeomUserDataSetBoneId(dxGeom* geom, U16 bone_id)
+inline void dGeomUserDataSetBoneId(dxGeom* geom, unsigned short bone_id)
 {
 	(dGeomGetUserData(geom))->bone_id=bone_id;
 }

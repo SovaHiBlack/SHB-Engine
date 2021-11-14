@@ -46,11 +46,11 @@ void CCF_Skeleton::SElement::center(Fvector3& center) const
 	}
 }
 
-bool	pred_find_elem(const CCF_Skeleton::SElement& E, U16 elem){
+bool	pred_find_elem(const CCF_Skeleton::SElement& E, unsigned short elem){
 	return E.elem_id<elem;
 }
 
-bool CCF_Skeleton::_ElementCenter(U16 elem_id, Fvector3& e_center)
+bool CCF_Skeleton::_ElementCenter(unsigned short elem_id, Fvector3& e_center)
 {
 	ElementVecIt it = std::lower_bound(elements.begin(),elements.end(),elem_id,pred_find_elem);
 	if (it->elem_id==elem_id)
@@ -118,7 +118,7 @@ void CCF_Skeleton::BuildState()
 		elements.clear_not_free();
 		bv_box.set		(K->vis.box);
 		bv_box.getsphere(bv_sphere.P,bv_sphere.R);
-		for (U16 i=0; i<K->LL_BoneCount(); i++){
+		for (unsigned short i=0; i<K->LL_BoneCount(); i++){
 			if (!K->LL_GetBoneVisible(i))					continue;
 			SBoneShape&	shape	= K->LL_GetData(i).shape;
 			if (SBoneShape::stNone==shape.type)				continue;
@@ -147,7 +147,7 @@ void CCF_Skeleton::BuildState()
 					Msg						("! ERROR: bone_id=[%d], world_pos[%f,%f,%f]",I->elem_id,VPUSH(TW.c));
 					Msg						("visual name %s",owner->cNameVisual());
 					Msg						("object name %s",owner->cName());
-					I->elem_id				= U16(-1);				//. hack - disable invalid bone
+					I->elem_id				= unsigned short(-1);				//. hack - disable invalid bone
 				}
 								   }break;
 			case SBoneShape::stSphere:{

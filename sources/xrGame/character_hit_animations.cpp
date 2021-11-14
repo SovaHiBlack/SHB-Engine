@@ -22,7 +22,7 @@ void character_hit_animation_controller::SetupHitMotions(CKinematicsAnimated& ca
 	hit_downr = ca.LL_MotionID("hit_downr");
 
 	base_bone = ca.LL_BoneID("bip01_spine1");
-	for (U16 i = 0; num_anims > i; ++i)
+	for (unsigned short i = 0; num_anims > i; ++i)
 	{
 		block_times[i] = 0;
 	}
@@ -64,7 +64,7 @@ inline void	play_cycle(CKinematicsAnimated* CA, const MotionID& m, unsigned char
 	}
 }
 
-void character_hit_animation_controller::PlayHitMotion(const Fvector3& dir, const Fvector3& bone_pos, U16 bi, CEntityAlive& ea)const
+void character_hit_animation_controller::PlayHitMotion(const Fvector3& dir, const Fvector3& bone_pos, unsigned short bi, CEntityAlive& ea)const
 {
 	CKinematicsAnimated* CA = smart_cast<CKinematicsAnimated*>(ea.Visual( ));
 
@@ -148,9 +148,9 @@ void character_hit_animation_controller::PlayHitMotion(const Fvector3& dir, cons
 	CA->LL_SetChannelFactor(1, 3.0f);
 }
 
-bool character_hit_animation_controller::IsEffected(U16 bi, CKinematics& ca) const
+bool character_hit_animation_controller::IsEffected(unsigned short bi, CKinematics& ca) const
 {
-	U16 root = ca.LL_GetBoneRoot( );
+	unsigned short root = ca.LL_GetBoneRoot( );
 	for (; bi != root;)
 	{
 		CBoneData& bd = ca.LL_GetData(bi);

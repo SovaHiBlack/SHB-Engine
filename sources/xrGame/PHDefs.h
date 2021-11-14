@@ -8,15 +8,15 @@ class CPhysicsShell;
 
 #include "ode_include.h"
 
-inline void sub_diapasones(U16& from1, U16& to1, const U16& from0, const U16& to0)
+inline void sub_diapasones(unsigned short& from1, unsigned short& to1, const unsigned short& from0, const unsigned short& to0)
 {
-	if (from0 == to0 || from1 == to1 || to1 <= from0 || to1 == U16(-1))
+	if (from0 == to0 || from1 == to1 || to1 <= from0 || to1 == unsigned short(-1))
 	{
 		return;
 	}
 
 	R_ASSERT(from0 >= from1 && to0 <= to1);
-	U16 dip = to0 - from0;
+	unsigned short dip = to0 - from0;
 	to1 = to1 - dip;
 }
 
@@ -42,13 +42,13 @@ public:
 	}
 
 protected:
-	U16				m_start_el_num;
-	U16				m_end_el_num;
-	U16				m_start_jt_num;
-	U16				m_end_jt_num;
-	U16				m_start_geom_num;
-	U16				m_end_geom_num;
-	U16				m_bone_id;
+	unsigned short				m_start_el_num;
+	unsigned short				m_end_el_num;
+	unsigned short				m_start_jt_num;
+	unsigned short				m_end_jt_num;
+	unsigned short				m_start_geom_num;
+	unsigned short				m_end_geom_num;
+	unsigned short				m_bone_id;
 };
 
 class CPHFracture : public CShellSplitInfo
@@ -92,7 +92,7 @@ public:
 };
 
 
-using shell_root = std::pair<CPhysicsShell*, U16>;
+using shell_root = std::pair<CPhysicsShell*, unsigned short>;
 using element_fracture = std::pair<CPHElement*, CShellSplitInfo>;
 
 //DEFINE_VECTOR(CPHElement*, ELEMENT_STORAGE, ELEMENT_I)

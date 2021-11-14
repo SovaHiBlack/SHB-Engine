@@ -34,8 +34,8 @@ struct physicsBone
 	}
 };
 
-//DEFINE_MAP	(U16,	physicsBone,	BONE_P_MAP,	BONE_P_PAIR_IT);
-using BONE_P_MAP = xr_map<U16, physicsBone>;
+//DEFINE_MAP	(unsigned short,	physicsBone,	BONE_P_MAP,	BONE_P_PAIR_IT);
+using BONE_P_MAP = xr_map<unsigned short, physicsBone>;
 using BONE_P_PAIR_IT = BONE_P_MAP::iterator;
 typedef const  BONE_P_MAP :: iterator			BONE_P_PAIR_CIT;
 
@@ -94,7 +94,7 @@ public:
 	virtual		void			set_ApplyByGravity						(bool flag)																												= 0;
 	virtual		bool			get_ApplyByGravity						()																														= 0;
 
-	virtual		void			SetMaterial								(U16 m)																													= 0;
+	virtual		void			SetMaterial								(unsigned short m)																													= 0;
 	virtual		void			SetMaterial								(const char* m)																												= 0;
 	virtual		void			set_DisableParams						(const SAllDDOParams& params)																							= 0;
 	virtual		void			SetTransform							(const Fmatrix& m0)																										= 0;
@@ -106,7 +106,7 @@ public:
 class CPhysicsElement		: public CPhysicsBase
 {
 public:
-				U16								m_SelfID																						;
+	unsigned short								m_SelfID																						;
 	virtual		CPhysicsShell					*PhysicsShell							()																													= 0;		
 	virtual		void							set_ContactCallback						(ContactCallbackFun	*callback)																						= 0;
 	virtual		CPHShellHolder*PhysicsRefObject						()																													= 0;
@@ -126,13 +126,13 @@ public:
 	virtual		void							setMassMC								(float M,const Fvector3& mass_center)																				= 0;
 	virtual		void							applyImpulseVsMC						(const Fvector3& pos,const Fvector3& dir, float val)																	= 0;
 	virtual		void							applyImpulseVsGF						(const Fvector3& pos,const Fvector3& dir, float val)																	= 0;
-	virtual		void							applyImpulseTrace						(const Fvector3& pos, const Fvector3& dir, float val,const U16 id)													= 0;
+	virtual		void							applyImpulseTrace						(const Fvector3& pos, const Fvector3& dir, float val,const unsigned short id)													= 0;
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	virtual		void							setDensityMC							(float M,const Fvector3& mass_center)																				= 0;
-	virtual		U16								setGeomFracturable						(CPHFracture &fracture)																								= 0;
-	virtual		CPHFracture						&Fracture								(U16 num)																											= 0;
+	virtual		unsigned short								setGeomFracturable						(CPHFracture &fracture)																								= 0;
+	virtual		CPHFracture						&Fracture								(unsigned short num)																											= 0;
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	virtual		U16								numberOfGeoms							()																													= 0;
+	virtual		unsigned short								numberOfGeoms							()																													= 0;
 	virtual				dBodyID					get_body								()																													= 0;
 	virtual		const	Fvector3&				mass_Center							()																													= 0;
 	virtual		const	Fvector3&				local_mass_Center						()																													= 0;
@@ -177,11 +177,11 @@ public:
 				enumType				eType																										;          //type of the joint
 public:
 	virtual		~CPhysicsJoint										()																				{};
-	virtual		U16					 	BoneID						()																				=0;
-	virtual		void					SetBoneID					(U16 bone_id)																	=0;
+	virtual		unsigned short					 	BoneID						()																				=0;
+	virtual		void					SetBoneID					(unsigned short bone_id)																	=0;
 	virtual		CPhysicsElement*		PFirst_element				()																				=0;
 	virtual		CPhysicsElement*		PSecond_element				()																				=0;
-	virtual		U16						GetAxesNumber				()																				=0;
+	virtual		unsigned short						GetAxesNumber				()																				=0;
 	virtual		void 					Activate					()																				=0;
 	virtual		void 					Create						()																				=0;
 	virtual		void 					RunSimulation				()																				=0;
@@ -265,8 +265,8 @@ inline					CKinematics					*PKinematics								()																{return m_pKine
 	virtual			void						UnblockBreaking								()																							= 0;
 	virtual			bool						IsBreakingBlocked							()																							= 0;
 	virtual			void						applyImpulseTrace							(const Fvector3& pos, const Fvector3& dir, float val)											= 0;
-	virtual			void						applyImpulseTrace							(const Fvector3& pos, const Fvector3& dir, float val,const U16 id)							= 0;
-	virtual			void						applyHit									(const Fvector3& pos, const Fvector3& dir, float val,const U16 id,ALife::EHitType hit_type)	= 0;
+	virtual			void						applyImpulseTrace							(const Fvector3& pos, const Fvector3& dir, float val,const unsigned short id)							= 0;
+	virtual			void						applyHit									(const Fvector3& pos, const Fvector3& dir, float val,const unsigned short id,ALife::EHitType hit_type)	= 0;
 	virtual			BoneCallbackFun*			GetBonesCallback							()																							= 0;
 	virtual			BoneCallbackFun*			GetStaticObjectBonesCallback				()																							= 0;
 	virtual			void						Update										()																							= 0;
@@ -276,18 +276,18 @@ inline					CKinematics					*PKinematics								()																{return m_pKine
 	virtual			void						setEquelInertiaForEls						(const dMass& M)																			= 0;
 	virtual			void						addEquelInertiaToEls						(const dMass& M)																			= 0;
 	virtual			ELEMENT_STORAGE				&Elements									()																							= 0;
-	virtual			CPhysicsElement				*get_Element								(U16 bone_id)																				= 0;
+	virtual			CPhysicsElement				*get_Element								(unsigned short bone_id)																				= 0;
 	virtual			CPhysicsElement				*get_Element								(const CSharedString& bone_name)																= 0;
 	virtual			CPhysicsElement				*get_Element								(const char* bone_name)																			= 0;
-	virtual			CPhysicsElement				*get_ElementByStoreOrder					(U16 num)																					= 0;
-	virtual			U16							get_ElementsNumber							()																							= 0;
-	virtual			CPHSynchronize				*get_ElementSync							(U16 element)																				= 0;
-	virtual			CPhysicsJoint				*get_Joint									(U16 bone_id)																				= 0;
+	virtual			CPhysicsElement				*get_ElementByStoreOrder					(unsigned short num)																					= 0;
+	virtual			unsigned short							get_ElementsNumber							()																							= 0;
+	virtual			CPHSynchronize				*get_ElementSync							(unsigned short element)																				= 0;
+	virtual			CPhysicsJoint				*get_Joint									(unsigned short bone_id)																				= 0;
 	virtual			CPhysicsJoint				*get_Joint									(const CSharedString& bone_name)																= 0;
 	virtual			CPhysicsJoint				*get_Joint									(const char* bone_name)																			= 0;
-	virtual			CPhysicsJoint				*get_JointByStoreOrder						(U16 num)																					= 0;
-	virtual			U16							get_JointsNumber							()																							= 0;
-	virtual			CCodeGeom*					get_GeomByID								(U16 bone_id)																				= 0;
+	virtual			CPhysicsJoint				*get_JointByStoreOrder						(unsigned short num)																					= 0;
+	virtual			unsigned short							get_JointsNumber							()																							= 0;
+	virtual			CCodeGeom*					get_GeomByID								(unsigned short bone_id)																				= 0;
 	virtual			void						Freeze										()																							= 0;
 	virtual			void						UnFreeze									()																							= 0;
 	virtual			void						NetInterpolationModeON						()																							= 0;

@@ -12,7 +12,7 @@ LRESULT CALLBACK WndProc( HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam )
 		{
 			Device.OnWM_Activate			(wParam, lParam);
 /*
-			U16 fActive						= LOWORD(wParam);
+			unsigned short fActive						= LOWORD(wParam);
 			BOOL fMinimized					= (BOOL) HIWORD(wParam);
 			BOOL bActive					= ((fActive!=WA_INACTIVE) && (!fMinimized))?TRUE:FALSE;
 

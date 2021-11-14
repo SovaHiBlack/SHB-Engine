@@ -216,7 +216,7 @@ public:
 	virtual void						HitSignal(float P, Fvector3& vLocalDir, CObject* who, signed short element);
 	virtual void						Die(CObject* who);
 
-	virtual void						OnEvent(CNetPacket& P, U16 type);
+	virtual void						OnEvent(CNetPacket& P, unsigned short type);
 	virtual void						feel_touch_new(CObject* O);
 
 	virtual void						renderable_Render( );
@@ -251,11 +251,11 @@ public:
 	virtual	bool						bfAssignAnimation(CScriptEntityAction* tpEntityAction);
 
 	// physics
-	virtual U16							PHGetSyncItemsNumber( )
+	virtual unsigned short							PHGetSyncItemsNumber( )
 	{
 		return inherited::PHGetSyncItemsNumber( );
 	}
-	virtual CPHSynchronize* PHGetSyncItem(U16 item)
+	virtual CPHSynchronize* PHGetSyncItem(unsigned short item)
 	{
 		return inherited::PHGetSyncItem(item);
 	}
@@ -345,7 +345,7 @@ private:
 		}
 
 		inline bool			operator <	(const STradeItem& trade_item) const;
-		inline bool			operator ==	(U16 id) const;
+		inline bool			operator ==	(unsigned short id) const;
 	};
 
 	CGameObject* m_trader_game_object;
@@ -369,7 +369,7 @@ protected:
 	void						transfer_item(CInventoryItem* item, CGameObject* old_owner, CGameObject* new_owner);
 
 	void						update_sell_info( );
-	bool						tradable_item(CInventoryItem* inventory_item, const U16& current_owner_id);
+	bool						tradable_item(CInventoryItem* inventory_item, const unsigned short& current_owner_id);
 	bool						can_sell(CInventoryItem const* item);
 	bool						can_take(CInventoryItem const* item);
 

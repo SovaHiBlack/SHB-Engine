@@ -387,7 +387,7 @@ void CLocatorAPI::ProcessArchive(const char* _path, const char* base_path)
 		string_path		name;
 		string_path full;
 		string1024		buffer_start;
-		U16				buffer_size = hdr->r_u16( );
+		unsigned short				buffer_size = hdr->r_u16( );
 		VERIFY(buffer_size < sizeof(name) + 4 * sizeof(U32));
 		VERIFY(buffer_size < sizeof(buffer_start));
 		unsigned char* buffer = (unsigned char*) &*buffer_start;

@@ -29,14 +29,14 @@ void CALifeObjectRegistry::save				(IWriter &memory_stream, CSE_ALifeDynamicObje
 	CNetPacket					tNetPacket;
 	// Spawn
 	object->Spawn_Write			(tNetPacket,TRUE);
-	memory_stream.w_u16			(U16(tNetPacket.B.count));
+	memory_stream.w_u16			(unsigned short(tNetPacket.B.count));
 	memory_stream.w				(tNetPacket.B.data,tNetPacket.B.count);
 
 	// Update
 	tNetPacket.w_begin			(M_UPDATE);
 	object->UPDATE_Write		(tNetPacket);
 
-	memory_stream.w_u16			(U16(tNetPacket.B.count));
+	memory_stream.w_u16			(unsigned short(tNetPacket.B.count));
 	memory_stream.w				(tNetPacket.B.data,tNetPacket.B.count);
 
 	ALife::OBJECT_VECTOR::const_iterator	I = object->children.begin();
@@ -87,7 +87,7 @@ void CALifeObjectRegistry::save				(IWriter &memory_stream)
 CSE_ALifeDynamicObject *CALifeObjectRegistry::get_object		(IReader &file_stream)
 {
 	CNetPacket				tNetPacket;
-	U16						u_id;
+	unsigned short						u_id;
 	// Spawn
 	tNetPacket.B.count		= file_stream.r_u16();
 	file_stream.r			(tNetPacket.B.data,tNetPacket.B.count);

@@ -83,11 +83,11 @@ public:
 	{
 		return !Props.net_Local;
 	}
-	__forceinline U16					ID							( ) const
+	__forceinline unsigned short					ID							( ) const
 	{
 		return Props.net_ID;
 	}
-	__forceinline void					setID						(U16 _ID)
+	__forceinline void					setID						(unsigned short _ID)
 	{
 		Props.net_ID = _ID;
 	}

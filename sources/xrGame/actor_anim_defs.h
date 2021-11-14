@@ -85,13 +85,13 @@ struct SActorMotions
 //vehicle anims
 struct SVehicleAnimCollection
 {
-	static const U16 MAX_IDLES = 3;
-	U16				idles_num;
+	static const unsigned short MAX_IDLES = 3;
+	unsigned short				idles_num;
 	MotionID		idles[MAX_IDLES];
 	MotionID		steer_left;
 	MotionID		steer_right;
 	SVehicleAnimCollection( );
-	void			Create(CKinematicsAnimated* K, U16 num);
+	void			Create(CKinematicsAnimated* K, unsigned short num);
 };
 
 struct SActorVehicleAnims

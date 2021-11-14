@@ -1,6 +1,6 @@
 #pragma once
 
-BOOL ValidateIndices		(u32 vCount, u32 iCount, U16* pIndices);
+BOOL ValidateIndices		(u32 vCount, u32 iCount, unsigned short* pIndices);
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
 // MESH as it is represented in file
@@ -52,7 +52,7 @@ enum OGF_SkeletonVertType	{
 	OGF_VERTEXFORMAT_FVF_NL	= 3*0x12071980
 };
 
-const U16	xrOGF_SMParamsVersion	= 4;
+const unsigned short	xrOGF_SMParamsVersion	= 4;
 
 // OGF_DESC
 struct ogf_desc	{
@@ -85,7 +85,7 @@ const unsigned char	xrOGF_FormatVersion		= 4;
 struct ogf_header {
 	unsigned char			format_version;			// = xrOGF_FormatVersion
 	unsigned char			type;					// MT
-	U16			shader_id;				// should not be ZERO
+	unsigned short			shader_id;				// should not be ZERO
 	ogf_bbox	bb;
 	ogf_bsphere	bs;
 };
@@ -93,8 +93,8 @@ struct ogf_header {
 // Sliding Window Record
 struct ENGINE_API	FSlideWindow		{
 	u32				offset;
-	U16				num_tris;
-	U16				num_verts;
+	unsigned short				num_tris;
+	unsigned short				num_verts;
 };
 
 struct ENGINE_API	SSlideWindowItem	{
@@ -126,7 +126,7 @@ struct ENGINE_API	SSlideWindowItem	{
 
 // OGF_INDICES
 //	u32		Count
-//  ..indices itself (U16[Count]);
+//  ..indices itself (unsigned short[Count]);
 
 // OGF_VCONTAINER
 // u32		CID;		// Container ID

@@ -541,7 +541,7 @@ void CPHJoint::SetLimits(const float low, const float high, const int axis_num)
 CPHJoint::CPHJoint(CPhysicsJoint::enumType type, CPhysicsElement* first, CPhysicsElement* second)
 {
 	pShell = nullptr;
-	m_bone_id = U16(-1);
+	m_bone_id = unsigned short(-1);
 	m_back_ref = nullptr;
 	m_destroy_info = nullptr;
 	pFirstGeom = nullptr;
@@ -1166,9 +1166,9 @@ void CPHJoint::GetAxisSDfactors(float& spring_factor, float& damping_factor, int
 	damping_factor = DAMPING(axes[axis_num].cfm, axes[axis_num].erp) / world_damping;
 }
 
-U16 CPHJoint::GetAxesNumber( )
+unsigned short CPHJoint::GetAxesNumber( )
 {
-	return U16(axes.size( ));
+	return unsigned short(axes.size( ));
 }
 
 void CPHJoint::CalcAxis(int ax_num, Fvector3& axis, float& lo, float& hi, const Fmatrix& first_matrix, const Fmatrix& second_matrix, const Fmatrix& rotate)

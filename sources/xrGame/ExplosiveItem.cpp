@@ -35,7 +35,7 @@ void CExplosiveItem::Hit(SHit* pHDS)
 	}
 
 	inherited::Hit(pHDS);
-	if (!CDelayedActionFuse::isActive( ) && CDelayedActionFuse::CheckCondition(GetCondition( )) && CExplosive::Initiator( ) == U16(-1))
+	if (!CDelayedActionFuse::isActive( ) && CDelayedActionFuse::CheckCondition(GetCondition( )) && CExplosive::Initiator( ) == unsigned short(-1))
 	{
 		//запомнить того, кто взорвал вещь
 		SetInitiator(pHDS->who->ID( ));
@@ -47,7 +47,7 @@ void CExplosiveItem::StartTimerEffects( )
 	CParticlesPlayer::StartParticles(pSettings->r_string(*cNameSect( ), "set_timer_particles"), Fvector3( ).set(0, 1, 0), ID( ));
 }
 
-void CExplosiveItem::OnEvent(CNetPacket& P, U16 type)
+void CExplosiveItem::OnEvent(CNetPacket& P, unsigned short type)
 {
 	CExplosive::OnEvent(P, type);
 	inherited::OnEvent(P, type);

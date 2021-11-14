@@ -163,7 +163,7 @@ void CUITalkWnd::UpdateQuestions( )
 	m_bNeedToUpdateQuestions = false;
 }
 
-void CUITalkWnd::SendMessage(CUIWindow* pWnd, S16 msg, void* pData)
+void CUITalkWnd::SendMessage(CUIWindow* pWnd, signed short msg, void* pData)
 {
 	if (pWnd == UITalkDialogWnd && msg == TALK_DIALOG_TRADE_BUTTON_CLICKED)
 	{

@@ -187,15 +187,15 @@ public:
 	}
 	virtual	void				Hit(SHit* pHDS);
 
-	virtual void				OnEvent(CNetPacket& P, U16 type);
+	virtual void				OnEvent(CNetPacket& P, unsigned short type);
 	virtual void				net_Destroy( );
 	virtual BOOL				UsedAI_Locations( );
 	///////////////////////////////////////////////////////////////////////
-	virtual U16					PHGetSyncItemsNumber( )
+	virtual unsigned short					PHGetSyncItemsNumber( )
 	{
 		return inherited::PHGetSyncItemsNumber( );
 	}
-	virtual CPHSynchronize* PHGetSyncItem(U16 item)
+	virtual CPHSynchronize* PHGetSyncItem(unsigned short item)
 	{
 		return inherited::PHGetSyncItem(item);
 	}
@@ -320,7 +320,7 @@ public:
 	typedef u32											CriticalWoundType;
 
 private:
-	typedef associative_vector<U16, CriticalWoundType>	BODY_PART;
+	typedef associative_vector<unsigned short, CriticalWoundType>	BODY_PART;
 
 protected:
 	u32								m_last_hit_time;
@@ -340,7 +340,7 @@ protected:
 	virtual void					critical_wounded_state_start( )
 	{ }
 
-	bool					update_critical_wounded(const U16& bone_id, const float& power);
+	bool					update_critical_wounded(const unsigned short& bone_id, const float& power);
 
 public:
 	inline		void					critical_wounded_state_stop( );

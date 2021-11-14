@@ -19,8 +19,8 @@ class CHangingLamp : public CPHShellHolder, public CPHSkeleton
 	typedef	CPHShellHolder		inherited;
 
 private:
-	U16				light_bone;
-	U16				ambient_bone;
+	unsigned short				light_bone;
+	unsigned short				ambient_bone;
 
 	ref_light		light_render;
 	ref_light		light_ambient;

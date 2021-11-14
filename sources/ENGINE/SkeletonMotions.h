@@ -115,25 +115,27 @@ const float	fQuantizerRangeExt = 1.5f;
 class ENGINE_API		CMotionDef
 {
 public:
-	U16						bone_or_part;
-	U16						motion;
-	U16						speed;				// quantized: 0..10
-	U16						power;				// quantized: 0..10
-	U16						accrue;				// quantized: 0..10
-	U16						falloff;			// quantized: 0..10
-	U16						flags;
+	unsigned short						bone_or_part;
+	unsigned short						motion;
+	unsigned short						speed;				// quantized: 0..10
+	unsigned short						power;				// quantized: 0..10
+	unsigned short						accrue;				// quantized: 0..10
+	unsigned short						falloff;			// quantized: 0..10
+	unsigned short						flags;
 	xr_vector<motion_marks>	marks;
 
-	inline float				Dequantize(U16 V)
+	inline float				Dequantize(unsigned short V)
 	{
 		return  float(V) / 655.35f;
 	}
-	inline U16					Quantize(float V)
+	inline unsigned short					Quantize(float V)
 	{
-		int		t = iFloor(V * 655.35f); clamp(t, 0, 65535); return U16(t);
+		int		t = iFloor(V * 655.35f);
+		clamp(t, 0, 65535);
+		return unsigned short(t);
 	}
 
-	void					Load(IReader* MP, u32 fl, U16 vers);
+	void					Load(IReader* MP, u32 fl, unsigned short vers);
 	u32						mem_usage( )
 	{
 		return sizeof(*this);
@@ -164,7 +166,7 @@ struct accel_str_pred : public std::binary_function<CSharedString, CSharedString
 		return xr_strcmp(x, y) < 0;
 	}
 };
-typedef xr_map<CSharedString, U16, accel_str_pred> 	accel_map;
+typedef xr_map<CSharedString, unsigned short, accel_str_pred> 	accel_map;
 //DEFINE_VECTOR			(CMotionDef,MotionDefVec,MotionDefVecIt);
 using MotionDefVec = xr_vector<CMotionDef>;
 using MotionDefVecIt = MotionDefVec::iterator;
@@ -195,12 +197,13 @@ public:
 class ENGINE_API		CPartition
 {
 	CPartDef			P[MAX_PARTS];
+
 public:
-	inline CPartDef& operator[] 			(U16 id)
+	inline CPartDef& operator[] 			(unsigned short id)
 	{
 		return P[id];
 	}
-	inline CPartDef& part(U16 id)
+	inline CPartDef& part(unsigned short id)
 	{
 		return P[id];
 	}
@@ -324,7 +327,7 @@ public:
 	{
 		VERIFY(p_); return &p_->m_mdefs;
 	}
-	CMotionDef* motion_def(U16 idx)
+	CMotionDef* motion_def(unsigned short idx)
 	{
 		VERIFY(p_); return &p_->m_mdefs[idx];
 	}

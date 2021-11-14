@@ -15,10 +15,10 @@ private:
 
 private:
 	xr_vector<FVF::L>	m_line_vertices;
-	xr_vector<U16>		m_line_indices;
+	xr_vector<unsigned short>		m_line_indices;
 
 private:
-			void	add_lines		(const Fvector3* vertices, const U16* pairs, const int &pair_count, const u32 &color);
+			void	add_lines		(const Fvector3* vertices, const unsigned short* pairs, const int &pair_count, const u32 &color);
 
 public:
 					CDebugRenderer	();

@@ -28,7 +28,7 @@ public:
 	CElevatorState* ElevatorState( );
 	void 							in_shedule_Update(u32 DT);
 	void							PHCaptureObject(CPHShellHolder* object);
-	void							PHCaptureObject(CPHShellHolder* object, U16 element);
+	void							PHCaptureObject(CPHShellHolder* object, unsigned short element);
 	CPHCapture* PHCapture( )
 	{
 		return m_capture;
@@ -40,7 +40,7 @@ public:
 	void							PHReleaseObject( );
 	Fvector3							PHCaptureGetNearestElemPos(const CPHShellHolder* object);
 	Fmatrix							PHCaptureGetNearestElemTransform(CPHShellHolder* object);
-	void							SetMaterial(U16 material);
+	void							SetMaterial(unsigned short material);
 	void							SetAirControlParam(float param)
 	{
 		fAirControlParam = param;
@@ -153,7 +153,7 @@ private:
 	int																		m_start_index;
 
 	float																	m_path_distance;
-	U16																		m_material;
+	unsigned short																		m_material;
 
 	float																	fLastMotionMag;
 
@@ -186,7 +186,7 @@ public:
 	};
 #endif // def DEBUG
 
-	void							SetPLastMaterialIDX(U16* p)
+	void							SetPLastMaterialIDX(unsigned short* p)
 	{
 		m_character->SetPLastMaterialIDX(p);
 	}
@@ -477,7 +477,7 @@ public:
 			return nullptr;
 		}
 	}
-	U16								ContactBone( )
+	unsigned short								ContactBone( )
 	{
 		return m_character->ContactBone( );
 	}

@@ -95,9 +95,9 @@ public:
 	virtual	ObjectContactCallbackFun	*get_ObjectContactCallback				();
 	virtual void						set_PhysicsRefObject					(CPHShellHolder* ref_object);												//aux
 	virtual CPHShellHolder*		PhysicsRefObject						(){return m_phys_ref_object;}													//aux
-	virtual void						SetMaterial								(U16 m);																		//aux
+	virtual void						SetMaterial								(unsigned short m);																		//aux
 	virtual void						SetMaterial								(const char* m){CPHGeometryOwner::SetMaterial(m);}									//aux
-	virtual U16							numberOfGeoms							();																				//aux
+	virtual unsigned short							numberOfGeoms							();																				//aux
 	virtual const Fvector3&				local_mass_Center						()		{return CPHGeometryOwner::local_mass_Center();}							//aux
 	virtual float						getVolume								()		{return CPHGeometryOwner::get_volume();}								//aux
 	virtual void						get_Extensions							(const Fvector3& axis,float center_prg,float& lo_ext, float& hi_ext);			//aux
@@ -109,7 +109,7 @@ private:
 	void								calculate_it_data						(const Fvector3& mc,float mass);													//aux
 	void								calculate_it_data_use_density			(const Fvector3& mc,float density);												//aux
 	void								calc_it_fract_data_use_density  		(const Fvector3& mc,float density);//sets element mass and fractures parts mass	//aux
-	dMass								recursive_mass_summ						(U16 start_geom,FRACTURE_I cur_fracture);										//aux
+	dMass								recursive_mass_summ						(unsigned short start_geom,FRACTURE_I cur_fracture);										//aux
 public:																																				//
 	virtual const Fvector3&				mass_Center								()						;														//aux
 	virtual void						setDensity								(float M);																		//aux
@@ -168,7 +168,7 @@ public:																																				//
 		angular=k_w;																																//
 	}	
 	virtual void						applyImpact						(const SPHImpact& impact);																																	//
-	virtual void						applyImpulseTrace				(const Fvector3& pos, const Fvector3& dir, float val,const U16 id)	;					//called anywhere ph state influent
+	virtual void						applyImpulseTrace				(const Fvector3& pos, const Fvector3& dir, float val,const unsigned short id)	;					//called anywhere ph state influent
 	virtual	void						set_DisableParams				(const SAllDDOParams& params)										;					//
 	virtual void						set_DynamicLimits				(float l_limit=default_l_limit,float w_limit=default_w_limit);							//aux (may not be)
 	virtual void						set_DynamicScales				(float l_scale=default_l_scale,float w_scale=default_w_scale);							//aux (may not be)
@@ -227,10 +227,10 @@ inline			void						MulB43InverceLocalForm			(Fmatrix&)	;
 	inline const CPHFracturesHolder*		constFracturesHolder				()const{return m_fratures_holder;}										//aux
 	void								DeleteFracturesHolder					();																		//
 	virtual bool						isBreakable								();																		//aux
-	virtual U16							setGeomFracturable						(CPHFracture& fracture);												//aux
-	virtual CPHFracture&				Fracture								(U16 num);																//aux
+	virtual unsigned short							setGeomFracturable						(CPHFracture& fracture);												//aux
+	virtual CPHFracture&				Fracture								(unsigned short num);																//aux
 			void						SplitProcess							(ELEMENT_PAIR_VECTOR &new_elements);									//aux
-			void						PassEndGeoms							(U16 from, U16 to,CPHElement* dest);										//aux
+			void						PassEndGeoms							(unsigned short from, unsigned short to,CPHElement* dest);										//aux
 ////////////////////////////////////////////////////Build/Activate////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	virtual void						Activate				(const Fmatrix& m0, float dt01, const Fmatrix& m2,bool disable=false);					//some isues not to be aux

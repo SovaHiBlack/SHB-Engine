@@ -33,8 +33,8 @@ public:
 	Fmatrix					m_object_in_root;
 	CPHShell( );
 	virtual							~CPHShell( );
-	virtual			void				applyImpulseTrace(const Fvector3& pos, const Fvector3& dir, float val, const U16 id);
-	virtual			void				applyHit(const Fvector3& pos, const Fvector3& dir, float val, const U16 id, ALife::EHitType hit_type);
+	virtual			void				applyImpulseTrace(const Fvector3& pos, const Fvector3& dir, float val, const unsigned short id);
+	virtual			void				applyHit(const Fvector3& pos, const Fvector3& dir, float val, const unsigned short id, ALife::EHitType hit_type);
 
 	static			void 				BonesCallback(CBoneInstance* B);
 	static			void 				StataticRootBonesCallBack(CBoneInstance* B);
@@ -166,36 +166,36 @@ public:
 	virtual		void				SetGlTransformDynamic(const Fmatrix& form);
 	virtual		void				set_ApplyByGravity(bool flag);
 	virtual		bool				get_ApplyByGravity( );
-	virtual		void				SetMaterial(U16 m);
+	virtual		void				SetMaterial(unsigned short m);
 	virtual		void				SetMaterial(const char* m);
 	virtual		ELEMENT_STORAGE& Elements( )
 	{
 		return elements;
 	}
-	virtual		CPhysicsElement* get_Element(U16 bone_id);
+	virtual		CPhysicsElement* get_Element(unsigned short bone_id);
 	virtual		CPhysicsElement* get_Element(const CSharedString& bone_name);
 	virtual		CPhysicsElement* get_Element(const char* bone_name);
-	virtual		CPhysicsElement* get_ElementByStoreOrder(U16 num);
-	virtual		U16					get_ElementsNumber( )
+	virtual		CPhysicsElement* get_ElementByStoreOrder(unsigned short num);
+	virtual		unsigned short					get_ElementsNumber( )
 	{
-		return (U16) elements.size( );
+		return (unsigned short) elements.size( );
 	}
-	virtual		CPHSynchronize* get_ElementSync(U16 element);
-	virtual		U16					get_elements_number( )
+	virtual		CPHSynchronize* get_ElementSync(unsigned short element);
+	virtual		unsigned short					get_elements_number( )
 	{
 		return get_ElementsNumber( );
 	}
-	virtual		CPHSynchronize* get_element_sync(U16 element)
+	virtual		CPHSynchronize* get_element_sync(unsigned short element)
 	{
 		return get_ElementSync(element);
 	}
 	virtual		CPhysicsElement* NearestToPoint(const Fvector3& point);
-	virtual		CPhysicsJoint* get_Joint(U16 bone_id);
+	virtual		CPhysicsJoint* get_Joint(unsigned short bone_id);
 	virtual		CPhysicsJoint* get_Joint(const CSharedString& bone_name);
 	virtual		CPhysicsJoint* get_Joint(const char* bone_name);
-	virtual		CPhysicsJoint* get_JointByStoreOrder(U16 num);
-	virtual		U16					get_JointsNumber( );
-	virtual		CCodeGeom* get_GeomByID(U16 bone_id);
+	virtual		CPhysicsJoint* get_JointByStoreOrder(unsigned short num);
+	virtual		unsigned short					get_JointsNumber( );
+	virtual		CCodeGeom* get_GeomByID(unsigned short bone_id);
 
 	virtual		void				Enable( );
 	virtual		void				Disable( );
@@ -229,7 +229,7 @@ public:
 	virtual		void				CollideAll( );
 	virtual		void				PhDataUpdate(dReal step);
 	virtual		void				PhTune(dReal step);
-	virtual		void				InitContact(dContact* c, bool& do_collide, U16 /*material_idx_1*/, U16 /*material_idx_2*/)
+	virtual		void				InitContact(dContact* c, bool& do_collide, unsigned short /*material_idx_1*/, unsigned short /*material_idx_2*/)
 	{ }
 	virtual		void				FreezeContent( );
 	virtual		void				UnFreezeContent( );
@@ -252,7 +252,7 @@ public:
 	virtual		void				build_FromKinematics(CKinematics* K, BONE_P_MAP* p_geting_map = NULL);
 	virtual		void				preBuild_FromKinematics(CKinematics* K, BONE_P_MAP* p_geting_map);
 	virtual		void				ZeroCallbacks( );
-	virtual		void				ResetCallbacks(U16 id, Flags64& mask);
+	virtual		void				ResetCallbacks(unsigned short id, Flags64& mask);
 	void							PlaceBindToElForms( );
 	virtual		void				SetCallbacks(BoneCallbackFun* callback);
 	virtual		void				EnabledCallbacks(BOOL val);
@@ -273,18 +273,19 @@ public:
 		return m_space;
 	}
 	virtual		void				SetTransform(const Fmatrix& m0);
-	virtual		void				AddTracedGeom(U16 element = 0, U16 geom = 0);
+	virtual		void				AddTracedGeom(unsigned short element = 0, unsigned short geom = 0);
 	virtual		void				SetAllGeomTraced( );
 	virtual		void				SetPrefereExactIntegration( );
 	virtual		void				CutVelocity(float l_limit, float a_limit);
 	///////////	//////////////////////////////////////////////////////////////////////////////////////////
 	void				CreateSpace( );
-	void				PassEndElements(U16 from, U16 to, CPHShell* dest);
-	void				PassEndJoints(U16 from, U16 to, CPHShell* dest);
-	void				DeleteElement(U16 element);
-	void				DeleteJoint(U16 joint);
-	U16					BoneIdToRootGeom(U16 id);
+	void				PassEndElements(unsigned short from, unsigned short to, CPHShell* dest);
+	void				PassEndJoints(unsigned short from, unsigned short to, CPHShell* dest);
+	void				DeleteElement(unsigned short element);
+	void				DeleteJoint(unsigned short joint);
+	unsigned short					BoneIdToRootGeom(unsigned short id);
 	/////////////////////////////////////////////////////////////////////////////////////////////////////
+
 protected:
 	virtual		void				get_spatial_params( );
 	virtual		dGeomID				dSpacedGeom( )
@@ -298,20 +299,20 @@ protected:
 private:
 	//breakable
 	void				setEndElementSplitter( );
-	void				setElementSplitter(U16 element_number, U16 splitter_position);
+	void				setElementSplitter(unsigned short element_number, unsigned short splitter_position);
 	void				setEndJointSplitter( );
-	void				AddSplitter(CPHShellSplitter::EType type, U16 element, U16 joint);
-	void				AddSplitter(CPHShellSplitter::EType type, U16 element, U16 joint, U16 position);
+	void				AddSplitter(CPHShellSplitter::EType type, unsigned short element, unsigned short joint);
+	void				AddSplitter(CPHShellSplitter::EType type, unsigned short element, unsigned short joint, unsigned short position);
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	void				AddElementRecursive(CPhysicsElement* root_e, U16 id, Fmatrix global_parent, U16 element_number, bool* vis_check);
-	void				PlaceBindToElFormsRecursive(Fmatrix parent, U16 id, U16 element, Flags64& mask);
-	void				BonesBindCalculate(U16 id_from = 0);
-	void				BonesBindCalculateRecursive(Fmatrix parent, U16 id);
-	void				ZeroCallbacksRecursive(U16 id);
-	void				SetCallbacksRecursive(U16 id, U16 element);
-	void				ResetCallbacksRecursive(U16 id, U16 element, Flags64& mask);
+	void				AddElementRecursive(CPhysicsElement* root_e, unsigned short id, Fmatrix global_parent, unsigned short element_number, bool* vis_check);
+	void				PlaceBindToElFormsRecursive(Fmatrix parent, unsigned short id, unsigned short element, Flags64& mask);
+	void				BonesBindCalculate(unsigned short id_from = 0);
+	void				BonesBindCalculateRecursive(Fmatrix parent, unsigned short id);
+	void				ZeroCallbacksRecursive(unsigned short id);
+	void				SetCallbacksRecursive(unsigned short id, unsigned short element);
+	void				ResetCallbacksRecursive(unsigned short id, unsigned short element, Flags64& mask);
 	void				SetJointRootGeom(CPhysicsElement* root_e, CPhysicsJoint* J);
 	void				ReanableObject( );
-	void				ExplosionHit(const Fvector3& pos, const Fvector3& dir, float val, const U16 id);
+	void				ExplosionHit(const Fvector3& pos, const Fvector3& dir, float val, const unsigned short id);
 	void				ClearBreakInfo( );
 };

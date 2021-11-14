@@ -58,7 +58,7 @@ public:
 	virtual void				OnH_B_Chield				( );
 	virtual void				OnH_A_Chield				( );
 	virtual void				UpdateCL					( );
-	virtual void				OnEvent						(CNetPacket& P, U16 type);
+	virtual void				OnEvent						(CNetPacket& P, unsigned short type);
 	virtual BOOL				net_Spawn					(CSE_Abstract* DC);
 	virtual void				net_Destroy					( );
 	virtual void				net_Import					(CNetPacket& P);					// import from server

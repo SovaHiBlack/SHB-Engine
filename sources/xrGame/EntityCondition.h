@@ -119,12 +119,12 @@ public:
 	{
 		return m_pWho;
 	}
-	U16						GetWhoHitLastTimeID( )
+	unsigned short						GetWhoHitLastTimeID( )
 	{
 		return m_iWhoID;
 	}
 
-	CWound* AddWound(float hit_power, ALife::EHitType hit_type, U16 element);
+	CWound* AddWound(float hit_power, ALife::EHitType hit_type, unsigned short element);
 
 	inline void 				SetCanBeHarmedState(bool CanBeHarmed)
 	{
@@ -205,7 +205,7 @@ protected:
 
 	//кто нанес последний хит
 	CObject* m_pWho;
-	U16					m_iWhoID;
+	unsigned short					m_iWhoID;
 
 	//для передачи параметров из DamageManager
 	float				m_fHitBoneScale;

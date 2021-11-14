@@ -574,12 +574,12 @@ bool CBaseMonster::check_start_conditions(ControlCom::EControlType type)
 	return true;
 }
 
-void CBaseMonster::OnEvent(CNetPacket& P, U16 type)
+void CBaseMonster::OnEvent(CNetPacket& P, unsigned short type)
 {
 	inherited::OnEvent(P, type);
 	CInventoryOwner::OnEvent(P, type);
 
-	U16			id;
+	unsigned short			id;
 	switch (type)
 	{
 		case GE_OWNERSHIP_TAKE:

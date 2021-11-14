@@ -2,11 +2,9 @@
 
 #define MAX_MB_CHARS 4096
 
-using wide_char = U16;
+unsigned short mbhMulti2Wide(unsigned short* WideStr, unsigned short* WidePos, const unsigned short WideStrSize, const char* MultiStr);
 
-U16 mbhMulti2Wide(wide_char* WideStr, wide_char* WidePos, const U16 WideStrSize, const char* MultiStr);
-
-inline BOOL IsNeedSpaceCharacter(wide_char wc)
+inline BOOL IsNeedSpaceCharacter(unsigned short wc)
 {
 	return ((wc == 0x0020) ||
 			(wc == 0xFF01) ||
@@ -22,7 +20,7 @@ inline BOOL IsNeedSpaceCharacter(wide_char wc)
 			);
 }
 
-inline BOOL IsBadStartCharacter(wide_char wc)
+inline BOOL IsBadStartCharacter(unsigned short wc)
 {
 	return (IsNeedSpaceCharacter(wc) ||
 			(wc == 0x0021) ||
@@ -37,7 +35,7 @@ inline BOOL IsBadStartCharacter(wide_char wc)
 			);
 }
 
-inline BOOL IsBadEndCharacter(wide_char wc)
+inline BOOL IsBadEndCharacter(unsigned short wc)
 {
 	return ((wc == 0x0028) ||
 			(wc == 0xFF08) ||
@@ -45,7 +43,7 @@ inline BOOL IsBadEndCharacter(wide_char wc)
 			);
 }
 
-inline BOOL IsAlphaCharacter(wide_char wc)
+inline BOOL IsAlphaCharacter(unsigned short wc)
 {
 	return (((wc >= 0x0030) && (wc <= 0x0039)) ||
 			((wc >= 0x0041) && (wc <= 0x005A)) ||

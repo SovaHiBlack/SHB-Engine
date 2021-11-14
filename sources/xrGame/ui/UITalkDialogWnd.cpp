@@ -127,9 +127,9 @@ void CUITalkDialogWnd::OnTradeClicked(CUIWindow* w, void*)
 	GetTop( )->SendMessage(this, TALK_DIALOG_TRADE_BUTTON_CLICKED);
 }
 
-//пересылаем сообщение родительскому окну для обработки
-//и фильтруем если оно пришло от нашего дочернего окна
-void CUITalkDialogWnd::SendMessage(CUIWindow* pWnd, S16 msg, void* pData)
+// пересылаем сообщение родительскому окну для обработки
+// и фильтруем если оно пришло от нашего дочернего окна
+void CUITalkDialogWnd::SendMessage(CUIWindow* pWnd, signed short msg, void* pData)
 {
 	CUIWndCallback::OnEvent(pWnd, msg, pData);
 }
@@ -199,7 +199,7 @@ void CUITalkDialogWnd::SetOsoznanieMode(bool b)
 	UIToTradeButton.Show(!b);
 }
 
-void CUIQuestionItem::SendMessage(CUIWindow* pWnd, S16 msg, void* pData)
+void CUIQuestionItem::SendMessage(CUIWindow* pWnd, signed short msg, void* pData)
 {
 	CUIWndCallback::OnEvent(pWnd, msg, pData);
 }

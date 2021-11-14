@@ -98,8 +98,8 @@ void CUITabControl::RemoveAll( )
 	m_TabsArr.clear( );
 }
 
-// переключение закладок.
-void CUITabControl::SendMessage(CUIWindow* pWnd, S16 msg, void* pData)
+// переключение закладок
+void CUITabControl::SendMessage(CUIWindow* pWnd, signed short msg, void* pData)
 {
 	if (TAB_CHANGED == msg)
 	{

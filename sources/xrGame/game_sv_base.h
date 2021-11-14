@@ -35,7 +35,7 @@ protected:
 	GameEventQueue*					m_event_queue;
 
 	//Events
-	virtual		void				OnEvent					(CNetPacket &tNetPacket, U16 type, u32 time, CClientID sender );
+	virtual		void				OnEvent					(CNetPacket &tNetPacket, unsigned short type, u32 time, CClientID sender );
 
 	virtual		void				ReadOptions				(CSharedString& options);
 	virtual		void				ConsoleCommands_Create	();
@@ -73,7 +73,7 @@ public:
 	//virtual		bool				HasMapRotation			() {return m_bMapRotation; };
 	
 	virtual		void				OnPlayerConnect			(CClientID id_who);
-	virtual		void				OnPlayerDisconnect		(CClientID id_who, char* Name, U16 GameID);
+	virtual		void				OnPlayerDisconnect		(CClientID id_who, char* Name, U16unsigned short GameID);
 	//virtual		void				OnPlayerReady			(CClientID id_who)							   {};
 	//virtual		void				OnPlayerEnteredGame		(CClientID id_who)	{};
 	virtual		void				OnPlayerConnectFinished	(CClientID id_who)	{};
@@ -93,20 +93,20 @@ public:
 									game_sv_GameState		();
 	virtual							~game_sv_GameState		();
 	// Main accessors
-	//virtual		game_PlayerState*	get_eid					(U16 id);
-	virtual		void*				get_client				(U16 id); //if exist
+	//virtual		game_PlayerState*	get_eid					(unsigned short id);
+	virtual		void*				get_client				(unsigned short id); //if exist
 	virtual		game_PlayerState*	get_it					(u32 it);
 	virtual		game_PlayerState*	get_id					(CClientID id);
 	
 	//virtual		const char* get_name_it				(u32 it);
 	//virtual		const char* get_name_id				(CClientID id);
 	//const char* get_player_name_id		(CClientID id);
-	//virtual		U16					get_id_2_eid			(CClientID id);
+	//virtual		unsigned short					get_id_2_eid			(CClientID id);
 	virtual		CClientID			get_it_2_id				(u32 it);
 	virtual		u32					get_players_count		();
-				CSE_Abstract*		get_entity_from_eid		(U16 id);
-				//RPoint				getRP					(U16 team_idx, u32 rp_idx);
-				//u32					getRPcount				(U16 team_idx);
+				CSE_Abstract*		get_entity_from_eid		(unsigned short id);
+				//RPoint				getRP					(unsigned short team_idx, u32 rp_idx);
+				//u32					getRPcount				(unsigned short team_idx);
 	// Signals
 	virtual		void				signal_Syncronize		();
 	//virtual		void				assign_RP				(CSE_Abstract* E, game_PlayerState* ps_who);
@@ -126,20 +126,20 @@ public:
 	int								get_option_i			(const char* lst, const char* name, int def = 0);
 	//string64&						get_option_s			(const char* lst, const char* name, const char* def = 0);
 	//virtual		u32					get_alive_count			(u32 team);
-	//virtual		xr_vector<U16>*		get_children			(CClientID id_who);
-	void							u_EventGen				(CNetPacket& P, U16 type, U16 dest	);
+	//virtual		xr_vector<unsigned short>*		get_children			(CClientID id_who);
+	void							u_EventGen				(CNetPacket& P, unsigned short type, unsigned short dest	);
 	void							u_EventSend				(CNetPacket& P, u32 dwFlags = DPNSEND_GUARANTEED);
 
 	// Events
 	virtual		BOOL				OnPreCreate				(CSE_Abstract* E)				{return TRUE;};
-	virtual		void				OnCreate				(U16 id_who)					{};
-	virtual		void				OnPostCreate			(U16 id_who)					{};
-	virtual		BOOL				OnTouch					(U16 eid_who, U16 eid_target, BOOL bForced = FALSE)	= 0;			// TRUE=allow ownership, FALSE=denied
-	virtual		void				OnDetach				(U16 eid_who, U16 eid_target)	= 0;
-	virtual		void				OnDestroyObject			(U16 eid_who)							{};
+	virtual		void				OnCreate				(unsigned short id_who)					{};
+	virtual		void				OnPostCreate			(unsigned short id_who)					{};
+	virtual		BOOL				OnTouch					(unsigned short eid_who, unsigned short eid_target, BOOL bForced = FALSE)	= 0;			// TRUE=allow ownership, FALSE=denied
+	virtual		void				OnDetach				(unsigned short eid_who, unsigned short eid_target)	= 0;
+	virtual		void				OnDestroyObject			(unsigned short eid_who)							{};
 
-	virtual		void				OnHit					(U16 id_hitter, U16 id_hitted, CNetPacket& P);	//кто-то получил Hit
-	virtual		void				OnPlayerHitPlayer		(U16 id_hitter, U16 id_hitted, CNetPacket& P){}; //игрок получил Hit
+	virtual		void				OnHit					(unsigned short id_hitter, unsigned short id_hitted, CNetPacket& P);	//кто-то получил Hit
+	virtual		void				OnPlayerHitPlayer		(unsigned short id_hitter, unsigned short id_hitted, CNetPacket& P){}; //игрок получил Hit
 
 	// Main
 	virtual		void				Create					(CSharedString& options);
@@ -154,14 +154,14 @@ public:
 	//virtual		void				reload_game				(CNetPacket &net_packet, CClientID sender);
 	virtual		void				switch_distance			(CNetPacket &net_packet, CClientID sender);
 
-				void				AddDelayedEvent			(CNetPacket &tNetPacket, U16 type, u32 time, CClientID sender );
+				void				AddDelayedEvent			(CNetPacket &tNetPacket, unsigned short type, u32 time, CClientID sender );
 				void				ProcessDelayedEvent		();
 	//virtual		BOOL				isFriendlyFireEnabled	()	{return FALSE;};
 	//virtual		BOOL				CanHaveFriendlyFire		()	= 0;
-	virtual		void				teleport_object			(CNetPacket &packet, U16 id);
-	virtual		void				add_restriction			(CNetPacket &packet, U16 id);
-	virtual		void				remove_restriction		(CNetPacket &packet, U16 id);
-	virtual		void				remove_all_restrictions	(CNetPacket &packet, U16 id);
+	virtual		void				teleport_object			(CNetPacket &packet, unsigned short id);
+	virtual		void				add_restriction			(CNetPacket &packet, unsigned short id);
+	virtual		void				remove_restriction		(CNetPacket &packet, unsigned short id);
+	virtual		void				remove_all_restrictions	(CNetPacket &packet, unsigned short id);
 	virtual		bool				custom_sls_default		() {return false;};
 	virtual		void				sls_default				() {};
 	virtual		CSharedString			level_name				(const CSharedString& server_options) const;

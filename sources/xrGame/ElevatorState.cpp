@@ -57,7 +57,7 @@ void CElevatorState::PhTune(float step)
 void CElevatorState::PhDataUpdate(float step)
 { }
 
-void CElevatorState::InitContact(dContact* c, bool& do_collide, U16, U16)
+void CElevatorState::InitContact(dContact* c, bool& do_collide, unsigned short, unsigned short)
 { }
 
 void CElevatorState::SetElevator(CClimableObject* climable)

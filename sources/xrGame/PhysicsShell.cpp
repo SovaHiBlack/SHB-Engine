@@ -73,7 +73,7 @@ void	fix_bones(const char* fixed_bones,CPhysicsShell* shell )
 		{
 			string64					fixed_bone							;
 			_GetItem					(fixed_bones,i,fixed_bone)			;
-			U16 fixed_bone_id=pKinematics->LL_BoneID(fixed_bone)			;
+			unsigned short fixed_bone_id=pKinematics->LL_BoneID(fixed_bone)			;
 			R_ASSERT2(BI_NONE!=fixed_bone_id,"wrong fixed bone")			;
 			CPhysicsElement* E = shell->get_Element(fixed_bone_id)			;
 			if (E)
@@ -94,7 +94,7 @@ CPhysicsShell*				P_build_Shell			(CGameObject* obj,bool not_active_state,BONE_P
 		{
 			string64					fixed_bone							;
 			_GetItem					(fixed_bones,i,fixed_bone)			;
-			U16 fixed_bone_id=pKinematics->LL_BoneID(fixed_bone)			;
+			unsigned short fixed_bone_id=pKinematics->LL_BoneID(fixed_bone)			;
 			R_ASSERT2(BI_NONE!=fixed_bone_id,"wrong fixed bone")			;
 			p_bone_map->insert(mk_pair(fixed_bone_id,physicsBone()))			;
 		}

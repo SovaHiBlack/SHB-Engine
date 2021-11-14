@@ -70,7 +70,7 @@ void CInventoryItemObject::UpdateCL( )
 	CInventoryItem::UpdateCL( );
 }
 
-void CInventoryItemObject::OnEvent(CNetPacket& P, U16 type)
+void CInventoryItemObject::OnEvent(CNetPacket& P, unsigned short type)
 {
 	CPHItem::OnEvent(P, type);
 	CInventoryItem::OnEvent(P, type);

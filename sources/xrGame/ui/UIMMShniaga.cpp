@@ -228,7 +228,7 @@ bool CUIMMShniaga::IsButton(CUIWindow* st)
 	return false;
 }
 
-void CUIMMShniaga::SendMessage(CUIWindow* pWnd, S16 msg, void* pData)
+void CUIMMShniaga::SendMessage(CUIWindow* pWnd, signed short msg, void* pData)
 {
 	CUIWindow::SendMessage(pWnd, msg, pData);
 	if (IsButton(pWnd))

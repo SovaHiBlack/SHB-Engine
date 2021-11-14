@@ -16,7 +16,7 @@
 
 extern CPHWorld* ph_world;
 
-void read_bones(CKinematics *K, const char* S , xr_vector<U16>& bones)
+void read_bones(CKinematics *K, const char* S , xr_vector<unsigned short>& bones)
 {
 	string64					S1;
 	int count =					_GetItemCount(S);
@@ -24,9 +24,9 @@ void read_bones(CKinematics *K, const char* S , xr_vector<U16>& bones)
 	{
 		_GetItem					(S,i,S1);
 
-		U16 bone_id	=				K->LL_BoneID(S1);
+		unsigned short bone_id	=				K->LL_BoneID(S1);
 		R_ASSERT3(bone_id!=BI_NONE,"wrong bone",S1);
-		xr_vector<U16>::iterator iter=std::find(bones.begin(),bones.end(),bone_id);
+		xr_vector<unsigned short>::iterator iter=std::find(bones.begin(),bones.end(),bone_id);
 		R_ASSERT3(iter==bones.end(),"double bone",S1);
 		bones.push_back					(bone_id);
 	}
@@ -66,13 +66,13 @@ void CCarDamageParticles::Play2(CCar* car)
 	}
 }
 
-void CCarDamageParticles::PlayWheel1(CCar*car, U16 bone_id)
+void CCarDamageParticles::PlayWheel1(CCar*car, unsigned short bone_id)
 {
 	VERIFY(!ph_world->Processing());
 	if(*m_wheels_damage_particles1)car->StartParticles(m_wheels_damage_particles1,bone_id, Fvector3().set(0,1,0),car->ID());
 }
 
-void CCarDamageParticles::PlayWheel2(CCar*car, U16 bone_id)
+void CCarDamageParticles::PlayWheel2(CCar*car, unsigned short bone_id)
 {
 	VERIFY(!ph_world->Processing());
 	if(*m_wheels_damage_particles2)car->StartParticles(m_wheels_damage_particles2,bone_id, Fvector3().set(0,1,0),car->ID());

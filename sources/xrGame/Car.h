@@ -64,7 +64,7 @@ private:
 #endif
 ////////////////////////////////////////////////////////////////////	
 	Flags16						async_calls						;
-static	const U16				cAsCallsnum						=3;
+static const unsigned short				cAsCallsnum						=3;
 	enum EAsyncCalls
 	{
 		ascSndTransmission			=			1<<0,
@@ -83,7 +83,7 @@ static	const U16				cAsCallsnum						=3;
 	virtual void						PhDataUpdate				(dReal step)			;
 	virtual void						PhTune						(dReal step)			;
 /////////////////////////////////////////////////////////////////////////
-	virtual void						ApplyDamage					(U16 level)				;
+	virtual void						ApplyDamage					(unsigned short level)				;
 	virtual	float						Health						()						{return GetfHealth();}
 	virtual void						ChangeCondition				(float fDeltaCondition)	;
 	virtual void						StartTimerEffects			()						{};
@@ -135,7 +135,7 @@ public:
 	float m_fuel;
 	float m_fuel_tank;
 	float m_fuel_consumption;
-	U16 m_driver_anim_type;
+	unsigned short m_driver_anim_type;
 
 	float   m_break_start;
 	float	m_break_time;
@@ -147,7 +147,7 @@ public:
 	public CDamagableHealthItem
 	{
 		typedef		CDamagableHealthItem inherited;
-		U16									bone_id				;
+		unsigned short									bone_id				;
 		bool								inited				;
 		float								radius				;
 		CPhysicsJoint						*joint				;
@@ -177,7 +177,7 @@ public:
 				void			SetSteerHiLimit							(float hi)																						;
 				void			SetSteerLimits							(float hi,float lo)																				;
 
-virtual void ApplyDamage			(U16 level);
+virtual void ApplyDamage			(unsigned short level);
 		SWheel(CCar* acar)
 		{
 			bone_id=BI_NONE;
@@ -232,7 +232,7 @@ virtual void ApplyDamage			(U16 level);
 
 	struct SExhaust
 	{
-		U16					bone_id;
+		unsigned short					bone_id;
 		Fmatrix				transform;
 		//Fvector3				velocity;
 		CParticlesObject*	p_pgobject;
@@ -258,7 +258,7 @@ virtual void ApplyDamage			(U16 level);
 	public CDamagableHealthItem
 	{
 		typedef CDamagableHealthItem inherited;
-		U16 bone_id;
+		unsigned short bone_id;
 		CCar* pcar;
 		bool  update;
 		CPhysicsJoint*  joint;
@@ -288,7 +288,7 @@ virtual void ApplyDamage			(U16 level);
 		void Open();
 		void Close();
 		void Break();
-virtual void ApplyDamage(U16 level);
+virtual void ApplyDamage(unsigned short level);
 		void Update();
 		float GetAngle();
 		bool CanEnter(const Fvector3& pos,const Fvector3& dir,const Fvector3& foot_pos);
@@ -376,7 +376,7 @@ private:
 	CCarWeapon*				m_car_weapon;
 	float					m_steer_angle;
 	bool					m_repairing;
-	U16						m_bone_steer;
+	unsigned short						m_bone_steer;
 	CCameraBase*			camera[3];
 	CCameraBase*			active_camera;
 
@@ -386,13 +386,13 @@ private:
 	friend struct SWheel;
 	friend struct SDoor;
 
-	xr_map   <U16,SWheel>	m_wheels_map;
+	xr_map   <unsigned short,SWheel>	m_wheels_map;
 	xr_vector <SWheelDrive> m_driving_wheels;
 	xr_vector <SWheelSteer> m_steering_wheels;
 	xr_vector <SWheelBreak> m_breaking_wheels;
 	xr_vector <SExhaust>	m_exhausts;
 	CSharedString				m_exhaust_particles;
-	xr_map	  <U16,SDoor>	m_doors;
+	xr_map	  <unsigned short,SDoor>	m_doors;
 	xr_vector <SDoor*>		m_doors_update;
 	xr_vector <Fvector3>		m_gear_ratious;
 	xr_vector <Fmatrix>		m_sits_transforms;// m_sits_transforms[0] - driver_place
@@ -521,16 +521,16 @@ public:
 	void					cam_Update					(float dt, float fov);
 	void					detach_Actor				();
 	bool					attach_Actor				(CGameObject* actor);
-	bool					is_Door						(U16 id,xr_map<U16,SDoor>::iterator& i);
-	bool					is_Door						(U16 id);
-	bool					DoorOpen					(U16 id);
-	bool					DoorClose					(U16 id);
-	bool					DoorUse						(U16 id);
-	bool					DoorSwitch					(U16 id);
+	bool					is_Door						(unsigned short id,xr_map<unsigned short,SDoor>::iterator& i);
+	bool					is_Door						(unsigned short id);
+	bool					DoorOpen					(unsigned short id);
+	bool					DoorClose					(unsigned short id);
+	bool					DoorUse						(unsigned short id);
+	bool					DoorSwitch					(unsigned short id);
 	bool					Enter						(const Fvector3& pos,const Fvector3& dir,const Fvector3& foot_pos);
 	bool					Exit						(const Fvector3& pos,const Fvector3& dir);
 	bool					Use							(const Fvector3& pos,const Fvector3& dir,const Fvector3& foot_pos);
-	U16						DriverAnimationType 		();
+	unsigned short						DriverAnimationType 		();
 	// Core events
 	virtual DLL_Pure		*_construct					();
 	virtual void			Load						(const char* section );
@@ -556,7 +556,7 @@ public:
 	virtual void			OnKeyboardRelease			(int dik);
 	virtual void			OnKeyboardHold				(int dik);
 	virtual void			vfProcessInputKey			(int iCommand, bool bPressed);
-	virtual void			OnEvent						( CNetPacket& P, U16 type);
+	virtual void			OnEvent						( CNetPacket& P, unsigned short type);
 	virtual void			OnAfterExplosion			();
 	virtual void			OnBeforeExplosion			();
 	virtual void			GetRayExplosionSourcePos	(Fvector3& pos);
@@ -578,7 +578,7 @@ public:
 	virtual void			HitSignal					(float /**HitAmount/**/, Fvector3& /**local_dir/**/, CObject* /**who/**/, signed short /**element/**/)	{};
 	virtual void			HitImpulse					(float /**amount/**/, Fvector3& /**vWorldDir/**/, Fvector3& /**vLocalDir/**/)			{};
 	virtual void			g_fireParams				(const CHudItem* /**pHudItem/**/, Fvector3& /**P/**/, Fvector3& /**D/**/)											{};
-	virtual U16				Initiator					();
+	virtual unsigned short				Initiator					();
 	// HUD
 	virtual void			OnHUDDraw					(CCustomHUD* hud);
 	
@@ -607,7 +607,7 @@ public:
 private:
 	template <class T> inline void fill_wheel_vector(const char* S,xr_vector<T>& type_wheels);
 	inline void fill_exhaust_vector(const char* S,xr_vector<SExhaust>& exhausts);
-	inline void fill_doors_map(const char* S,xr_map<U16,SDoor>& doors);
+	inline void fill_doors_map(const char* S,xr_map<unsigned short,SDoor>& doors);
 
 	//Inventory for the car
 	CInventory	*inventory;

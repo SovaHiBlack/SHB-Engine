@@ -488,7 +488,7 @@ bool CUIMapWnd::OnMouse(float x, float y, EUIMessages mouse_action)
 	return false;
 }
 
-void CUIMapWnd::SendMessage(CUIWindow* pWnd, S16 msg, void* pData)
+void CUIMapWnd::SendMessage(CUIWindow* pWnd, signed short msg, void* pData)
 {
 	CUIWndCallback::OnEvent(pWnd, msg, pData);
 }

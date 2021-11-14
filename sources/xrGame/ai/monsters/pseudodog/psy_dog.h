@@ -79,7 +79,7 @@ class CPsyDogPhantom : public CPseudoDog
 	const char* m_particles_appear;
 	const char* m_particles_disappear;
 
-	U16				m_parent_id;
+	unsigned short				m_parent_id;
 		
 	u32				m_time_spawned;
 

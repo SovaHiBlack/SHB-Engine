@@ -54,7 +54,7 @@ public:
 
 	virtual void Contact(const Fvector3& pos, const Fvector3& normal);
 
-	virtual void OnEvent(CNetPacket& P, U16 type);
+	virtual void OnEvent(CNetPacket& P, unsigned short type);
 
 	virtual void Hit(SHit* pHDS)
 	{

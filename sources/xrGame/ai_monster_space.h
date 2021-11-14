@@ -63,7 +63,7 @@ namespace MonsterSpace {
 		eObjectActionTake,
 		eObjectActionMisfire1,
 		eObjectActionEmpty1,
-		eObjectActionNoItems		= eObjectActionIdle | U16(-1),
+		eObjectActionNoItems		= eObjectActionIdle | unsigned short(-1),
 		// 
 		eObjectActionDummy			= u32(-1),
 	};

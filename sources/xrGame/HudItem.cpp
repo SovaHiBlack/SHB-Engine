@@ -144,7 +144,7 @@ void CHudItem::SwitchState(u32 S)
 	}
 }
 
-void CHudItem::OnEvent(CNetPacket& P, U16 type)
+void CHudItem::OnEvent(CNetPacket& P, unsigned short type)
 {
 	switch (type)
 	{

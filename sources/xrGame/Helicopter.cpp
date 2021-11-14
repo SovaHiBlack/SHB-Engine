@@ -566,7 +566,7 @@ void CHelicopter::UpdateHeliParticles( )
 	if (m_light_render->get_active( ))
 	{
 		Fmatrix xf;
-		Fmatrix& M = K->LL_GetTransform(U16(m_light_bone));
+		Fmatrix& M = K->LL_GetTransform(unsigned short(m_light_bone));
 		xf.mul(XFORM( ), M);
 		VERIFY(!fis_zero(DET(xf)));
 
@@ -781,7 +781,7 @@ void CHelicopter::DieHelicopter( )
 		string256						I;
 		const char* bone;
 
-		U16 bone_id;
+		unsigned short bone_id;
 		for (u32 i = 0, n = _GetItemCount(*m_death_bones_to_hide); i < n; ++i)
 		{
 			bone = _GetItem(*m_death_bones_to_hide, i, I);

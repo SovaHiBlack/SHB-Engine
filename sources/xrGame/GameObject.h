@@ -189,7 +189,7 @@ public:
 	virtual bool							shedule_Needed							( );
 
 	virtual void							renderable_Render						( );
-	virtual void							OnEvent									(CNetPacket& P, U16 type);
+	virtual void							OnEvent									(CNetPacket& P, unsigned short type);
 	virtual void							Hit										(SHit* pHDS)
 	{ }
 	virtual void							SetHitInfo								(CObject* who, CObject* weapon, signed short element, Fvector3 Pos, Fvector3 Dir)

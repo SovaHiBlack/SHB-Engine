@@ -23,7 +23,7 @@ public:
 	virtual void 			OnH_A_Independent( );
 	virtual void 			OnH_A_Chield( );
 
-	virtual void 			OnEvent(CNetPacket& P, U16 type);
+	virtual void 			OnEvent(CNetPacket& P, unsigned short type);
 
 	virtual void 			OnAnimationEnd(u32 state);
 	virtual void 			UpdateCL( );

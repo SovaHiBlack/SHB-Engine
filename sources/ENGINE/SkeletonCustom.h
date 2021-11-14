@@ -67,8 +67,8 @@ public:
 class ENGINE_API		CBoneData
 {
 protected:
-	U16					SelfID;
-	U16					ParentID;
+	unsigned short					SelfID;
+	unsigned short					ParentID;
 
 public:
 	CSharedString			name;
@@ -80,13 +80,13 @@ public:
 	Fmatrix				m2b_transform;	// model to bone conversion transform
 	SBoneShape			shape;
 	CSharedString			game_mtl_name;
-	U16					game_mtl_idx;
+	unsigned short					game_mtl_idx;
 	SJointIKData		IK_data;
 	float				mass;
 	Fvector3				center_of_mass;
 
-//	DEFINE_VECTOR(U16, FacesVec, FacesVecIt);
-	using FacesVec = xr_vector<U16>;
+//	DEFINE_VECTOR(unsigned short, FacesVec, FacesVecIt);
+	using FacesVec = xr_vector<unsigned short>;
 	using FacesVecIt = FacesVec::iterator;
 //	DEFINE_VECTOR(FacesVec, ChildFacesVec, ChildFacesVecIt);
 	using ChildFacesVec = xr_vector<FacesVec>;
@@ -94,7 +94,7 @@ public:
 	ChildFacesVec		child_faces;	// shared
 
 public:
-	CBoneData(U16 ID) :SelfID(ID)
+	CBoneData(unsigned short ID) :SelfID(ID)
 	{
 		VERIFY(SelfID != BI_NONE);
 	}
@@ -105,22 +105,22 @@ public:
 	void						DebugQuery(BoneDebug& L);
 #endif
 
-	inline void				SetParentID(U16 id)
+	inline void				SetParentID(unsigned short id)
 	{
 		ParentID = id;
 	}
 
-	inline U16				GetSelfID( ) const
+	inline unsigned short				GetSelfID( ) const
 	{
 		return SelfID;
 	}
-	inline U16				GetParentID( ) const
+	inline unsigned short				GetParentID( ) const
 	{
 		return ParentID;
 	}
 
 	// assign face
-	void				AppendFace(U16 child_idx, U16 idx)
+	void				AppendFace(unsigned short child_idx, unsigned short idx)
 	{
 		child_faces[child_idx].push_back(idx);
 	}
@@ -155,7 +155,7 @@ public:
 	{
 		Fvector3		vert[3];
 		Fvector2		uv[3];
-		U16				bone_id[3][2];
+		unsigned short				bone_id[3][2];
 		float			weight[3];
 	};
 //	DEFINE_VECTOR(WMFace, WMFacesVec, WMFacesVecIt);
@@ -248,7 +248,7 @@ public:
 	virtual void				OnCalculateBones( )
 	{ }
 
-	typedef xr_vector<std::pair<CSharedString, U16>> accel;
+	typedef xr_vector<std::pair<CSharedString, unsigned short>> accel;
 
 	IRender_Visual* m_lod;
 
@@ -262,7 +262,7 @@ protected:
 	CConfigurationFile* pUserData;
 	CBoneInstance* bone_instances;	// bone instances
 	vecBones* bones;			// all bones	(shared)
-	U16							iRoot;			// Root bone index
+	unsigned short							iRoot;			// Root bone index
 
 	// Fast search
 	accel* bone_map_N;		// bones  associations	(shared)	- sorted by name
@@ -277,7 +277,7 @@ protected:
 	CSkeletonX* LL_GetChild(u32 idx);
 
 	// internal functions
-	virtual CBoneData* CreateBoneData(U16 ID)
+	virtual CBoneData* CreateBoneData(unsigned short ID)
 	{
 		return xr_new<CBoneData>(ID);
 	}
@@ -300,16 +300,16 @@ public:
 	void						RenderWallmark(intrusive_ptr<CSkeletonWallmark> wm, FVF::LIT*& verts);
 	void						ClearWallmarks( );
 
-	bool			PickBone(const Fmatrix& parent_xform, Fvector3& normal, float& dist, const Fvector3& start, const Fvector3& dir, U16 bone_id);
-	virtual		void			EnumBoneVertices(SEnumVerticesCallback& C, U16 bone_id);
+	bool			PickBone(const Fmatrix& parent_xform, Fvector3& normal, float& dist, const Fvector3& start, const Fvector3& dir, unsigned short bone_id);
+	virtual		void			EnumBoneVertices(SEnumVerticesCallback& C, unsigned short bone_id);
 
 	CKinematics( );
 	virtual						~CKinematics( );
 
 	// Low level interface
-	U16							LL_BoneID(const char* B);
-	U16							LL_BoneID(const CSharedString& B);
-	const char* LL_BoneName_dbg(U16 ID);
+	unsigned short							LL_BoneID(const char* B);
+	unsigned short							LL_BoneID(const CSharedString& B);
+	const char* LL_BoneName_dbg(unsigned short ID);
 
 	CConfigurationFile* LL_UserData( )
 	{
@@ -319,53 +319,53 @@ public:
 	{
 		return bone_map_N;
 	}
-	__forceinline CBoneInstance& LL_GetBoneInstance(U16 bone_id)
+	__forceinline CBoneInstance& LL_GetBoneInstance(unsigned short bone_id)
 	{
 		VERIFY(bone_id < LL_BoneCount( )); VERIFY(bone_instances); return bone_instances[bone_id];
 	}
-	CBoneData& LL_GetData(U16 bone_id)
+	CBoneData& LL_GetData(unsigned short bone_id)
 	{
 		VERIFY(bone_id < LL_BoneCount( )); VERIFY(bones);			return *((*bones)[bone_id]);
 	}
-	U16							LL_BoneCount( )
+	unsigned short							LL_BoneCount( )
 	{
-		return U16(bones->size( ));
+		return unsigned short(bones->size( ));
 	}
-	U16							LL_VisibleBoneCount( )
+	unsigned short							LL_VisibleBoneCount( )
 	{
 		U64 F = visimask.flags & ((U64(1) << U64(LL_BoneCount( ))) - 1);
-		return (U16) btwCount1(F);
+		return (unsigned short) btwCount1(F);
 	}
-	__forceinline Fmatrix& LL_GetTransform(U16 bone_id)
+	__forceinline Fmatrix& LL_GetTransform(unsigned short bone_id)
 	{
 		return LL_GetBoneInstance(bone_id).mTransform;
 	}
-	__forceinline Fmatrix& LL_GetTransform_R(U16 bone_id)
+	__forceinline Fmatrix& LL_GetTransform_R(unsigned short bone_id)
 	{
 		return LL_GetBoneInstance(bone_id).mRenderTransform;
 	}	// rendering only
-	Fobb& LL_GetBox(U16 bone_id)
+	Fobb& LL_GetBox(unsigned short bone_id)
 	{
 		VERIFY(bone_id < LL_BoneCount( ));	return (*bones)[bone_id]->obb;
 	}
 	void						LL_GetBindTransform(xr_vector<Fmatrix>& matrices);
-	int							LL_GetBoneGroups(xr_vector<xr_vector<U16>>& groups);
+	int							LL_GetBoneGroups(xr_vector<xr_vector<unsigned short>>& groups);
 
-	U16							LL_GetBoneRoot( )
+	unsigned short							LL_GetBoneRoot( )
 	{
 		return iRoot;
 	}
-	void						LL_SetBoneRoot(U16 bone_id)
+	void						LL_SetBoneRoot(unsigned short bone_id)
 	{
 		VERIFY(bone_id < LL_BoneCount( ));	iRoot = bone_id;
 	}
 
-	BOOL						LL_GetBoneVisible(U16 bone_id)
+	BOOL						LL_GetBoneVisible(unsigned short bone_id)
 	{
 		VERIFY(bone_id < LL_BoneCount( ));
 		return visimask.is(U64(1) << bone_id);
 	}
-	void						LL_SetBoneVisible(U16 bone_id, BOOL val, BOOL bRecursive);
+	void						LL_SetBoneVisible(unsigned short bone_id, BOOL val, BOOL bRecursive);
 	U64							LL_GetBonesVisible( )
 	{
 		return visimask.get( );

@@ -10,9 +10,9 @@ virtual		void			EnableObject		(CPHObject* obj){CPHUpdateObject::Activate();}
 virtual		dGeomID			dSpacedGeom			(){return dSpacedGeometry();}
 virtual		void			PhDataUpdate		(dReal step);
 virtual		void			PhTune				(dReal step){}
-virtual		void			InitContact			(dContact* c,bool& do_collide, U16 /*material_idx_1*/, U16 /*material_idx_2*/){}
-virtual		U16				get_elements_number				()								{return 0;};
-virtual		CPHSynchronize	*get_element_sync				(U16 element)					{return nullptr;};
+virtual		void			InitContact			(dContact* c,bool& do_collide, unsigned short /*material_idx_1*/, unsigned short /*material_idx_2*/){}
+virtual		unsigned short				get_elements_number				()								{return 0;};
+virtual		CPHSynchronize	*get_element_sync				(unsigned short element)					{return nullptr;};
 
 public:
 			void			Activate			(const Fmatrix& form);

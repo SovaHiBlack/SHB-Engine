@@ -20,7 +20,7 @@ protected:
 		Fvector3					m_mass_center;				//e ??				//bl
 		CPHShellHolder*	m_phys_ref_object;			//->to shell ??		//bl
 		float					m_volume;					//e ??				//bl
-		U16						ul_material;				//e ??				//bl
+		unsigned short						ul_material;				//e ??				//bl
 		ContactCallbackFun*			contact_callback;		//->to shell ??		//bt
 		ObjectContactCallbackFun*	object_contact_callback;//->to shell ??		//st
 public:
@@ -43,11 +43,11 @@ public:
 		CPHShellHolder*		PhysicsRefObject						(){return m_phys_ref_object;}													//aux
 		void						SetPhObjectInGeomData					(CPHObject* O);		
 
-		void						SetMaterial								(U16 m)		  ;
+		void						SetMaterial								(unsigned short m)		  ;
 		void						SetMaterial								(const char* m){SetMaterial(GMLib.GetMaterialIdx(m));}								//aux
-	inline	CCodeGeom*					Geom									(U16 num)		{R_ASSERT2 (num<m_geoms.size(),"out of range"); return m_geoms[num]; }
-	CCodeGeom*					GeomByBoneID							(U16 bone_id);
-	U16							numberOfGeoms							();																				//aux
+	inline	CCodeGeom*					Geom									(unsigned short num)		{R_ASSERT2 (num<m_geoms.size(),"out of range"); return m_geoms[num]; }
+	CCodeGeom*					GeomByBoneID							(unsigned short bone_id);
+	unsigned short							numberOfGeoms							();																				//aux
 		dGeomID						dSpacedGeometry							();																				//aux
 		Fvector3						get_mc_data								();																				//aux
 		Fvector3						get_mc_geoms							();																				//aux
@@ -68,7 +68,7 @@ protected:
 		void						CreateSimulBase							();
 		void						destroy									();
 		void						build_Geom								(CCodeGeom&	V);																	//aux
-		void						build_Geom								(U16 i);
+		void						build_Geom								(unsigned short i);
 		void						set_body								(dBodyID body);
 
 									CPHGeometryOwner						();

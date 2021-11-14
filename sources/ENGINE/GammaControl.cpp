@@ -2,11 +2,11 @@
 
 #include "GammaControl.h"
 
-inline U16 clr2gamma(float c)
+inline unsigned short clr2gamma(float c)
 {
 	int C							= iFloor(c);
 	clamp							(C, 0, 65535);
-	return U16(C);
+	return unsigned short(C);
 }
 
 void CGammaControl::Update( )

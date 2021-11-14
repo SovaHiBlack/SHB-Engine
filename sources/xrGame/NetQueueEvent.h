@@ -8,10 +8,10 @@ static int g_dwEventDelay = 0;
 class CNetEvent
 {
 public:
-	U16					ID;
+	unsigned short					ID;
 	u32					timestamp;
-	U16					type;
-	U16					destination;
+	unsigned short					type;
+	unsigned short					destination;
 	xr_vector<unsigned char>		data;
 
 	void				import(CNetPacket& P)
@@ -50,7 +50,7 @@ public:
 	}
 	void				export		(CNetPacket& P)
 	{
-		U16	ID = M_EVENT;
+		unsigned short	ID = M_EVENT;
 		P.w_begin(ID);
 		P.w_u32(timestamp);
 		P.w_u16(type);
@@ -121,7 +121,7 @@ public:
 		/**/
 		return			TRUE;
 	}
-	inline void				get(U16& ID, U16& dest, U16& type, CNetPacket& P)
+	inline void				get(unsigned short& ID, unsigned short& dest, unsigned short& type, CNetPacket& P)
 	{
 		const CNetEvent& E = *queue.begin( );
 		ID = E.ID;

@@ -20,7 +20,7 @@ CPHCharacter::CPHCharacter( ) : CPHDisablingTranslational( )
 	m_new_restriction_type = m_restriction_type = rtNone;
 	b_actor_movable = true;
 	p_lastMaterialIDX = &lastMaterialIDX;
-	lastMaterialIDX = U16(-1);
+	lastMaterialIDX = unsigned short(-1);
 	m_creation_step = U64(-1);
 	b_in_touch_resrtrictor = false;
 	m_current_object_radius = -1.0f;

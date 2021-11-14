@@ -35,8 +35,8 @@ protected:
 	CMapSpot*											m_level_map_spot_border;
 	CMapSpot*											m_mini_map_spot_border;
 
-	U16													m_objectID;
-	U16													m_refCount;
+	unsigned short													m_objectID;
+	unsigned short													m_refCount;
 	int													m_ttl;
 	u32													m_actual_time;
 	Fvector3												m_position_global; //last global position, actual time only current frame 
@@ -64,7 +64,7 @@ protected:
 	CMapSpot*				GetSpotBorder				(CMapSpot* sp);
 
 public:
-							CMapLocation				(const char* type, U16 object_id);
+							CMapLocation				(const char* type, unsigned short object_id);
 	virtual					~CMapLocation				( );
 	virtual void			destroy						( );
 	const char*				GetHint						( );
@@ -104,21 +104,21 @@ public:
 	virtual Fvector2		Position					( );
 	virtual Fvector2		Direction					( );
 	virtual CSharedString		LevelName					( );
-	U16						RefCount					( )
+	unsigned short						RefCount					( )
 	{
 		return m_refCount;
 	}
-	void					SetRefCount					(U16 c)
+	void					SetRefCount					(unsigned short c)
 	{
 		m_refCount = c;
 	}
-	U16						AddRef						( );// {++m_refCount; return m_refCount;}
-	U16						Release						( )
+	unsigned short						AddRef						( );// {++m_refCount; return m_refCount;}
+	unsigned short						Release						( )
 	{
 		--m_refCount;
 		return m_refCount;
 	}
-	U16						ObjectID					( )
+	unsigned short						ObjectID					( )
 	{
 		return m_objectID;
 	}
@@ -158,8 +158,8 @@ class CRelationMapLocation : public CMapLocation
 {
 	using inherited										= CMapLocation;
 	CSharedString											m_curr_spot_name;
-	U16													m_pInvOwnerEntityID;
-	U16													m_pInvOwnerActorID;
+	unsigned short													m_pInvOwnerEntityID;
+	unsigned short													m_pInvOwnerActorID;
 	ALife::ERelationType								m_last_relation;
 	bool												m_b_was_visible_last_frame;
 
@@ -167,7 +167,7 @@ protected:
 	bool					IsVisible					( );
 
 public:
-							CRelationMapLocation		(const CSharedString& type, U16 object_id, U16 pInvOwnerActorID, U16 pInvOwnerEntityID);
+							CRelationMapLocation		(const CSharedString& type, unsigned short object_id, unsigned short pInvOwnerActorID, unsigned short pInvOwnerEntityID);
 	virtual					~CRelationMapLocation		( );
 	virtual bool			Update						( ); //returns actual
 
@@ -188,7 +188,7 @@ class CUserDefinedMapLocation : public CMapLocation
 
 public:
 	GameGraph::_GRAPH_ID								m_graph_id;
-							CUserDefinedMapLocation		(const char* type, U16 object_id);
+							CUserDefinedMapLocation		(const char* type, unsigned short object_id);
 	virtual					~CUserDefinedMapLocation	( );
 	virtual bool			Update						( ); //returns actual
 	virtual Fvector2		Position					( );

@@ -157,9 +157,9 @@ void CPhysicObject::AddElement(CPhysicsElement* root_e, int id)
 	CKinematics* K = smart_cast<CKinematics*>(Visual( ));
 
 	CPhysicsElement* E = P_create_Element( );
-	CBoneInstance& B = K->LL_GetBoneInstance(U16(id));
-	E->mXFORM.set(K->LL_GetTransform(U16(id)));
-	Fobb bb = K->LL_GetBox(U16(id));
+	CBoneInstance& B = K->LL_GetBoneInstance(unsigned short(id));
+	E->mXFORM.set(K->LL_GetTransform(unsigned short(id)));
+	Fobb bb = K->LL_GetBox(unsigned short(id));
 
 	if (bb.m_halfsize.magnitude( ) < 0.05f)
 	{
@@ -183,7 +183,7 @@ void CPhysicObject::AddElement(CPhysicsElement* root_e, int id)
 		m_pPhysicsShell->add_Joint(J);
 	}
 
-	CBoneData& BD = K->LL_GetData(U16(id));
+	CBoneData& BD = K->LL_GetData(unsigned short(id));
 	for (vecBonesIt it = BD.children.begin( ); BD.children.end( ) != it; ++it)
 	{
 		AddElement(E, (*it)->GetSelfID( ));

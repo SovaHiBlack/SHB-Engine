@@ -73,7 +73,7 @@ void game_cl_GameState::net_import_state(CNetPacket& P)
 	P.r_clientID(local_svdpnid);
 	P.r_s32(m_type);
 
-	U16 ph;
+	unsigned short ph;
 	P.r_u16(ph);
 
 	if (Phase( ) != ph)
@@ -83,12 +83,12 @@ void game_cl_GameState::net_import_state(CNetPacket& P)
 
 	P.r_s32(m_round);
 	P.r_u32(m_start_time);
-	m_u16VotingEnabled = U16(P.r_u8( ));
+	m_u16VotingEnabled = unsigned short(P.r_u8( ));
 	m_bServerControlHits = !!P.r_u8( );
 	m_WeaponUsageStatistic->SetCollectData(!!P.r_u8( ));
 
 	// Players
-	U16 p_count;
+	unsigned short p_count;
 	P.r_u16(p_count);
 
 	PlayersMap players_new;
@@ -97,7 +97,7 @@ void game_cl_GameState::net_import_state(CNetPacket& P)
 	players.clear	();
 */
 	PlayersMap_it I;
-	for (U16 p_it = 0; p_it < p_count; ++p_it)
+	for (unsigned short p_it = 0; p_it < p_count; ++p_it)
 	{
 		CClientID ID;
 		P.r_clientID(ID);
@@ -293,7 +293,7 @@ void game_cl_GameState::sv_GameEventGen(CNetPacket& P)
 {
 	P.w_begin(M_EVENT);
 	P.w_u32(Level( ).timeServer( ));
-	P.w_u16(U16(GE_GAME_EVENT & 0xffff));
+	P.w_u16(unsigned short(GE_GAME_EVENT & 0xffff));
 	P.w_u16(0);//dest==0
 }
 
@@ -336,7 +336,7 @@ bool game_cl_GameState::IR_OnMouseWheel(int direction)
 	return false;
 }
 
-void game_cl_GameState::u_EventGen(CNetPacket& P, U16 type, U16 dest)
+void game_cl_GameState::u_EventGen(CNetPacket& P, unsigned short type, unsigned short dest)
 {
 	P.w_begin(M_EVENT);
 	P.w_u32(Level( ).timeServer( ));
@@ -377,7 +377,7 @@ void game_cl_GameState::OnSwitchPhase(u32 old_phase, u32 new_phase)
 	}
 }
 
-void game_cl_GameState::SendPickUpEvent(U16 ID_who, U16 ID_what)
+void game_cl_GameState::SendPickUpEvent(unsigned short ID_who, unsigned short ID_what)
 {
 	CNetPacket P;
 	u_EventGen(P, GE_OWNERSHIP_TAKE, ID_who);

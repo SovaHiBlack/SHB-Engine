@@ -56,7 +56,7 @@ public:
 	bool						b_frame_mark												;
 	dReal						m_frame_time												;
 	float						m_update_time												;
-	U16							disable_count												;
+	unsigned short							disable_count												;
 	float						m_gravity													;
 								CPHWorld						()							;
 	virtual						~CPHWorld						(){}						;
@@ -90,8 +90,8 @@ inline	float						FrameTime						(bool frame_mark){return b_frame_mark==frame_ma
 	bool 						IsFreezed						()							;
 inline	bool						Processing						()							{return b_processing;}
 	u32							CalcNumSteps					(u32 dTime)					;
-	U16							ObjectsNumber					()							;
-	U16							UpdateObjectsNumber				()							;
+	unsigned short							ObjectsNumber					()							;
+	unsigned short							UpdateObjectsNumber				()							;
 	void						NetRelcase						(CPhysicsShell* s)			;
 	void						AddCall							(CPHCondition*c,CPHAction*a);
 #ifdef DEBUG

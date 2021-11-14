@@ -15,17 +15,17 @@ public:
 	inline				CALifeRegistryWrapper	() {holder_id = 0xffff;}
 	virtual			~CALifeRegistryWrapper	() {delete_data(local_registry);}
 
-	inline	void		init					(U16 id) {holder_id = id;}
+	inline void		init					(unsigned short id) {holder_id = id;}
 	
 	typename _registry_type::_data&			objects					();
 	const typename _registry_type::_data*	objects_ptr				();
 
-	typename _registry_type::_data&			objects					(U16 id);
-	const typename _registry_type::_data*	objects_ptr				(U16 id);
+	typename _registry_type::_data&			objects					(unsigned short id);
+	const typename _registry_type::_data*	objects_ptr				(unsigned short id);
 
 private:
 	//id - владельца реестра
-	U16	holder_id;
+	unsigned short	holder_id;
 
 	//реестр на случай, если нет ALife (для отладки)
 //	typename _registry_type::_data	local_registry;
@@ -33,7 +33,7 @@ private:
 };
 
 template <typename _registry_type>
-const typename _registry_type::_data* CALifeRegistryWrapper<_registry_type>::objects_ptr	(U16 id)
+const typename _registry_type::_data* CALifeRegistryWrapper<_registry_type>::objects_ptr	(unsigned short id)
 {
 //	if(NULL == ai().get_alife()) return &local_registry;
 	if(NULL == ai().get_alife()) 
@@ -55,7 +55,7 @@ const typename _registry_type::_data* CALifeRegistryWrapper<_registry_type>::obj
 }
 
 template <typename _registry_type>
-typename _registry_type::_data& CALifeRegistryWrapper<_registry_type>::objects	(U16 id)
+typename _registry_type::_data& CALifeRegistryWrapper<_registry_type>::objects	(unsigned short id)
 {
 //	if(NULL == ai().get_alife()) return local_registry;
 	if(NULL == ai().get_alife()) 

@@ -55,7 +55,7 @@ namespace PAPI{
 		pVector		rot;	// 12	60
 		u32			color;	// 4
 		float		age;	// 4
-		U16			frame;	// 2
+		unsigned short			frame;	// 2
 		Flags16		flags;	// 2
 	};						//		72
 

@@ -57,7 +57,7 @@ public:
 	CSharedString				article_id;
 	CSharedString				map_hint;
 	CSharedString				map_location;
-	U16						object_id;
+	unsigned short						object_id;
 	CSharedString				article_key;
 	CMapLocation* LinkedMapLocation( );
 	ETaskState				TaskState( )
@@ -90,7 +90,7 @@ public:
 	}
 	void					SetMapHint_script(const char* _str);
 	void					SetMapLocation_script(const char* _str);
-	void					SetObjectID_script(U16 id);
+	void					SetObjectID_script(unsigned short id);
 	void					SetArticleKey_script(const char* _str);
 
 	void					SetIconName_script(const char* _str);

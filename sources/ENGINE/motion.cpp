@@ -108,7 +108,7 @@ void COMotion::Save(IWriter& F)
 bool COMotion::Load(IReader& F)
 {
 	CCustomMotion::Load(F);
-	U16 vers	= F.r_u16();
+	unsigned short vers	= F.r_u16();
 	if (vers==0x0003){
 		Clear	();
 		for (int ch=0; ch<ctMaxChannel; ch++){
@@ -193,7 +193,7 @@ void CClip::Save(IWriter& F)
 bool CClip::Load(IReader& F)
 {
 	R_ASSERT		(F.find_chunk(EOBJ_CLIP_VERSION_CHUNK));
-	U16 ver			= F.r_u16();
+	unsigned short ver			= F.r_u16();
 	if (ver!=EOBJ_CLIP_VERSION) return false;
 	R_ASSERT(F.find_chunk(EOBJ_CLIP_DATA_CHUNK));
 	F.r_stringZ		(name);

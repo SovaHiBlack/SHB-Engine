@@ -118,11 +118,11 @@ class ENGINE_API CClip{
 public:
 	struct AnimItem{
 		CSharedString	name;
-		U16			slot;
-					AnimItem	():slot(U16(-1)){}
-		void		set			(CSharedString nm, U16 s){name=nm;slot=s;}
-		void		clear		(){set("", U16(-1));}
-		bool		valid		(){return !!(name.size()&&(slot!= U16(-1)));}
+		unsigned short			slot;
+					AnimItem	():slot(unsigned short(-1)){}
+		void		set			(CSharedString nm, unsigned short s){name=nm;slot=s;}
+		void		clear		(){set("", unsigned short(-1));}
+		bool		valid		(){return !!(name.size()&&(slot!= unsigned short(-1)));}
 		bool		equal		(const AnimItem& d) const {return name.equal(d.name)&&(slot==d.slot);}
 	};
 	CSharedString		name;

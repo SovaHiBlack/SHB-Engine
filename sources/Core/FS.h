@@ -47,9 +47,9 @@ public:
 	{
 		w(&d, sizeof(unsigned int));
 	}
-	inline void			w_u16(U16 d)
+	inline void			w_u16(unsigned short d)
 	{
-		w(&d, sizeof(U16));
+		w(&d, sizeof(unsigned short));
 	}
 	inline void			w_u8(unsigned char d)
 	{
@@ -134,7 +134,7 @@ public:
 	{
 		VERIFY(a >= min && a <= max);
 		F32 q = (a - min) / (max - min);
-		w_u16(U16(iFloor(q * 65535.0f + 0.5f)));
+		w_u16(unsigned short(iFloor(q * 65535.0f + 0.5f)));
 	}
 	inline void 		w_float_q8(F32 a, F32 min, F32 max)
 	{
@@ -279,9 +279,9 @@ public:
 		r(&tmp, sizeof(tmp));
 		return tmp;
 	}
-	inline U16			r_u16( )
+	inline unsigned short			r_u16( )
 	{
-		U16 tmp;
+		unsigned short tmp;
 		r(&tmp, sizeof(tmp));
 		return tmp;
 	}
@@ -352,7 +352,7 @@ public:
 
 	inline F32		r_float_q16(F32 min, F32 max)
 	{
-		U16 val = r_u16( );
+		unsigned short val = r_u16( );
 		F32 A = (F32(val) * (max - min)) / 65535.0f + min;		// floating-point-error possible
 		VERIFY((A >= min - EPS_S) && (A <= max + EPS_S));
 		return A;
@@ -374,11 +374,12 @@ public:
 	}
 	inline void			r_dir(Fvector3& A)
 	{
-		U16 t = r_u16( ); pvDecompress(A, t);
+		unsigned short t = r_u16( );
+		pvDecompress(A, t);
 	}
 	inline void			r_sdir(Fvector3& A)
 	{
-		U16 t = r_u16( );
+		unsigned short t = r_u16( );
 		F32 s = r_float( );
 		pvDecompress(A, t);
 		A.mul(s);

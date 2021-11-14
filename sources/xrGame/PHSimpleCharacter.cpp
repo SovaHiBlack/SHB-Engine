@@ -250,7 +250,7 @@ void CPHSimpleCharacter::Create(dVector3 sizes)
 	}
 
 	b_air_contact_state = false;
-	lastMaterialIDX = U16(-1);
+	lastMaterialIDX = unsigned short(-1);
 	m_creation_step = ph_world->m_steps_num;
 	////////////////////////////////////////////////////////
 
@@ -1439,25 +1439,25 @@ ObjectContactCallbackFun* CPHSimpleCharacter::ObjectContactCallBack( )
 	return m_object_contact_callback;
 }
 
-U16 CPHSimpleCharacter::RetriveContactBone( )
+unsigned short CPHSimpleCharacter::RetriveContactBone( )
 {
 	Fvector3 dir;
 	m_collision_damage_info.HitDir(dir);
 	collide::ray_defs	Q(m_collision_damage_info.HitPos( ), dir, m_radius, CDB::OPT_ONLYNEAREST | CDB::OPT_CULL, collide::rqtBoth);  // CDB::OPT_ONLYFIRST CDB::OPT_ONLYNEAREST
 	RQR.r_clear( );
-	U16 contact_bone = 0;
+	unsigned short contact_bone = 0;
 	CObject* object = smart_cast<CObject*>(m_phys_ref_object);
 	VERIFY(object);
 	VERIFY(!fis_zero(Q.dir.square_magnitude( )));
 	if (g_pGameLevel->ObjectSpace.RayQuery(RQR, object->collidable.model, Q))
 	{
 		collide::rq_result* R = RQR.r_begin( );
-		contact_bone = (U16) R->element;
+		contact_bone = (unsigned short) R->element;
 	}
 	else
 	{
 		CKinematics* K = smart_cast<CKinematics*>(object->Visual( ));
-		U16 count = K->LL_BoneCount( );
+		unsigned short count = K->LL_BoneCount( );
 		CBoneInstance* bone_instances = &K->LL_GetBoneInstance(0);
 		Fvector3 pos_in_object;
 		pos_in_object.sub(m_collision_damage_info.HitPos( ), object->Position( ));//vector from object center to contact position currently in global frame
@@ -1466,7 +1466,7 @@ U16 CPHSimpleCharacter::RetriveContactBone( )
 		object_form.transpose( );
 		object_form.transform_dir(pos_in_object); //project pos_in_object on object axes now it is position of contact in object frame
 		float sq_dist = dInfinity;
-		for (U16 i = 0; i < count; ++i)
+		for (unsigned short i = 0; i < count; ++i)
 		{
 			Fvector3 c_to_bone;
 			c_to_bone.sub(bone_instances[i].mTransform.c, pos_in_object);
@@ -1484,7 +1484,7 @@ U16 CPHSimpleCharacter::RetriveContactBone( )
 	return contact_bone;
 }
 
-void CPHSimpleCharacter::InitContact(dContact* c, bool& do_collide, U16 material_idx_1, U16 material_idx_2)
+void CPHSimpleCharacter::InitContact(dContact* c, bool& do_collide, unsigned short material_idx_1, unsigned short material_idx_2)
 {
 	const dReal* normal = c->geom.normal;
 	const dReal* pos = c->geom.pos;
@@ -1492,7 +1492,7 @@ void CPHSimpleCharacter::InitContact(dContact* c, bool& do_collide, U16 material
 	const dGeomID g2 = c->geom.g2;
 	bool bo1 = (g1 == m_wheel) || g1 == m_cap_transform || g1 == m_shell_transform || g1 == m_hat_transform;
 
-	U16 contact_material = bo1 ? material_idx_2 : material_idx_1;
+	unsigned short contact_material = bo1 ? material_idx_2 : material_idx_1;
 	SGameMtl* tri_material = GMLib.GetMaterialByIdx(contact_material);
 
 	bool bClimable = !!tri_material->Flags.test(SGameMtl::flClimable);
@@ -1505,7 +1505,7 @@ void CPHSimpleCharacter::InitContact(dContact* c, bool& do_collide, U16 material
 		is_contact = true;
 	}
 
-	U16 foot_material_idx = ((dxGeomUserData*) dGeomGetData(m_wheel))->tri_material;
+	unsigned short foot_material_idx = ((dxGeomUserData*) dGeomGetData(m_wheel))->tri_material;
 	if (tri_material->Flags.test(SGameMtl::flPassable) && !do_collide)
 	{
 		UpdateStaticDamage(c, tri_material, bo1);
@@ -1538,7 +1538,7 @@ void CPHSimpleCharacter::InitContact(dContact* c, bool& do_collide, U16 material
 	{
 		spring_rate *= 10.0f;
 		dBodyID b;
-		U16 obj_material_idx = U16(-1);
+		unsigned short obj_material_idx = unsigned short(-1);
 		if (bo1)
 		{
 			b = dGeomGetBody(c->geom.g2);
@@ -1697,12 +1697,12 @@ void CPHSimpleCharacter::GroundNormal(Fvector3& norm)
 	}
 }
 
-U16 CPHSimpleCharacter::ContactBone( )
+unsigned short CPHSimpleCharacter::ContactBone( )
 {
 	return RetriveContactBone( );
 }
 
-void CPHSimpleCharacter::SetMaterial(U16 material)
+void CPHSimpleCharacter::SetMaterial(unsigned short material)
 {
 	if (!b_exist)
 	{
@@ -1771,9 +1771,9 @@ void CPHSimpleCharacter::AddControlVel(const Fvector3& vel)
 	m_max_velocity += vel.magnitude( );
 }
 
-U16 CPHSimpleCharacter::DamageInitiatorID( )const
+unsigned short CPHSimpleCharacter::DamageInitiatorID( )const
 {
-	U16 ret = U16(-1);//m_collision_damage_info.DamageInitiatorID();
+	unsigned short ret = unsigned short(-1);//m_collision_damage_info.DamageInitiatorID();
 
 	CPHShellHolder* object = static_cast<CPHShellHolder*>(Level( ).Objects.net_Find(m_collision_damage_info.m_obj_id));
 	if (object && !object->getDestroy( ))
@@ -1785,7 +1785,7 @@ U16 CPHSimpleCharacter::DamageInitiatorID( )const
 		}
 	}
 
-	if (ret == U16(-1))
+	if (ret == unsigned short(-1))
 	{
 		ret = m_phys_ref_object->ID( );
 	}
@@ -1801,8 +1801,8 @@ CObject* CPHSimpleCharacter::DamageInitiator( ) const
 		return (CObject*) (m_phys_ref_object);
 	}
 
-	U16 initiator_id = DamageInitiatorID( );
-	VERIFY(initiator_id != U16(-1));
+	unsigned short initiator_id = DamageInitiatorID( );
+	VERIFY(initiator_id != unsigned short(-1));
 	if (initiator_id == m_phys_ref_object->ID( ))
 	{
 		return static_cast<CObject*> (m_phys_ref_object);
@@ -1838,7 +1838,7 @@ void CPHSimpleCharacter::SCollisionDamageInfo::HitDir(Fvector3& dir) const
 
 void CPHSimpleCharacter::SCollisionDamageInfo::Reinit( )
 {
-	m_obj_id = U16(-1);
+	m_obj_id = unsigned short(-1);
 	m_hit_callback = nullptr;
 	m_contact_velocity = 0;
 }
@@ -1950,8 +1950,8 @@ bool CPHSimpleCharacter::UpdateRestrictionType(CPHCharacter* ach)
 		return true;
 	}
 
-	U16 num_steps = 2 * (U16) iCeil(restrictor_depth / resolve_depth);
-	for (U16 i = 0; num_steps > i; ++i)
+	unsigned short num_steps = 2 * (unsigned short) iCeil(restrictor_depth / resolve_depth);
+	for (unsigned short i = 0; num_steps > i; ++i)
 	{
 		restrictor_depth = 0.f;
 		ach->Enable( );

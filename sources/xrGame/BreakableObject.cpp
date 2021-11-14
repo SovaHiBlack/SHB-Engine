@@ -175,7 +175,7 @@ void CBreakableObject::net_Destroy( )
 
 void CBreakableObject::Split( )
 {
-	//for (U16 k=0; k<K->LL_BoneCount(); k++){
+	//for (unsigned short k=0; k<K->LL_BoneCount(); k++){
 
 		//		Fmatrix& M = K->LL_GetTransform(k);
 		//		Fmatrix R; R.setHPB(-0.1,-0.1,-0.1);
@@ -195,8 +195,8 @@ void CBreakableObject::Break( )
 	DestroyUnbroken( );
 	CreateBroken( );
 	ActivateBroken( );
-	U16 el_num = m_pPhysicsShell->get_ElementsNumber( );
-	for (U16 i = 0; i < el_num; i++)
+	unsigned short el_num = m_pPhysicsShell->get_ElementsNumber( );
+	for (unsigned short i = 0; i < el_num; i++)
 	{
 		Fvector3 pos;
 		Fvector3 dir;
@@ -332,8 +332,8 @@ void CBreakableObject::ApplyExplosion(const Fvector3& dir, float impulse)
 
 	Fvector3 pos;
 	pos.set(0.0f, 0.0f, 0.0f);
-	U16 el_num = m_pPhysicsShell->get_ElementsNumber( );
-	for (U16 i = 0; i < el_num; i++)
+	unsigned short el_num = m_pPhysicsShell->get_ElementsNumber( );
+	for (unsigned short i = 0; i < el_num; i++)
 	{
 		Fvector3 max_area_dir;
 		CPhysicsElement* element = m_pPhysicsShell->get_ElementByStoreOrder(i);

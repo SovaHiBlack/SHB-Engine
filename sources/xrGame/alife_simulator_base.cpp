@@ -87,7 +87,7 @@ void CAlifeSimulatorBase::reload(const char* section)
 	m_initialized = true;
 }
 
-CSE_Abstract* CAlifeSimulatorBase::spawn_item(const char* section, const Fvector3& position, u32 level_vertex_id, GameGraph::_GRAPH_ID game_vertex_id, U16 parent_id, bool registration)
+CSE_Abstract* CAlifeSimulatorBase::spawn_item(const char* section, const Fvector3& position, u32 level_vertex_id, GameGraph::_GRAPH_ID game_vertex_id, unsigned short parent_id, bool registration)
 {
 	CSE_Abstract* abstract = F_entity_Create(section);
 	R_ASSERT3(abstract, "Cannot find item with section", section);
@@ -134,7 +134,7 @@ CSE_Abstract* CAlifeSimulatorBase::spawn_item(const char* section, const Fvector
 
 	dynamic_object->m_tNodeID = level_vertex_id;
 	dynamic_object->m_tGraphID = game_vertex_id;
-	dynamic_object->m_tSpawnID = U16(-1);
+	dynamic_object->m_tSpawnID = unsigned short(-1);
 
 	if (registration)
 	{
@@ -161,7 +161,7 @@ CSE_Abstract* CAlifeSimulatorBase::create(CSE_ALifeGroupAbstract* tpALifeGroupAb
 	k->Spawn_Read(tNetPacket);
 	tNetPacket.w_begin(M_UPDATE);
 	j->UPDATE_Write(tNetPacket);
-	U16							id;
+	unsigned short							id;
 	tNetPacket.r_begin(id);
 	k->UPDATE_Read(tNetPacket);
 	k->s_name = S;
@@ -209,7 +209,7 @@ void CAlifeSimulatorBase::create(CSE_ALifeDynamicObject*& i, CSE_ALifeDynamicObj
 	i->Spawn_Read(tNetPacket);
 	tNetPacket.w_begin(M_UPDATE);
 	j->UPDATE_Write(tNetPacket);
-	U16							id;
+	unsigned short							id;
 	tNetPacket.r_begin(id);
 	i->UPDATE_Read(tNetPacket);
 
@@ -276,7 +276,7 @@ void CAlifeSimulatorBase::create(CSE_ALifeObject* object)
 
 	if (0xffff != dynamic_object->ID_Parent)
 	{
-		U16							id = dynamic_object->ID_Parent;
+		unsigned short							id = dynamic_object->ID_Parent;
 		CSE_ALifeDynamicObject* parent = objects( ).object(id);
 		VERIFY(parent);
 		dynamic_object->m_tGraphID = parent->m_tGraphID;

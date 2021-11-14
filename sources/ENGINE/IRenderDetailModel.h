@@ -27,11 +27,11 @@ public:
 	ref_shader									shader;
 	fvfVertexIn*								vertices;
 	u32											number_vertices;
-	U16*										indices;
+	unsigned short*										indices;
 	u32											number_indices;
 
-	virtual void		transfer				(Fmatrix& mXform, fvfVertexOut* vDest, u32 C, U16* iDest, u32 iOffset) = 0;
-	virtual void		transfer				(Fmatrix& mXform, fvfVertexOut* vDest, u32 C, U16* iDest, u32 iOffset, float du, float dv) = 0;
+	virtual void		transfer				(Fmatrix& mXform, fvfVertexOut* vDest, u32 C, unsigned short* iDest, u32 iOffset) = 0;
+	virtual void		transfer				(Fmatrix& mXform, fvfVertexOut* vDest, u32 C, unsigned short* iDest, u32 iOffset, float du, float dv) = 0;
 	virtual				~IRenderDetailModel		( )
 	{ }
 };

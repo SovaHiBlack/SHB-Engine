@@ -103,8 +103,11 @@ void CControlAnimation::play_part(SAnimationPart& part, PlayCallback callback)
 {
 	VERIFY(part.motion.valid( ));
 
-	U16 bone_or_part = m_skeleton_animated->LL_GetMotionDef(part.motion)->bone_or_part;
-	if (bone_or_part == U16(-1)) bone_or_part = m_skeleton_animated->LL_PartID("default");
+	unsigned short bone_or_part = m_skeleton_animated->LL_GetMotionDef(part.motion)->bone_or_part;
+	if (bone_or_part == unsigned short(-1))
+	{
+		bone_or_part = m_skeleton_animated->LL_PartID("default");
+	}
 
 	// initialize synchronization of prev and current animation
 	float pos = -1.f;
@@ -222,8 +225,11 @@ void CControlAnimation::restart(SAnimationPart& part, PlayCallback callback)
 	VERIFY(part.motion.valid( ));
 	VERIFY(part.blend);
 
-	U16 bone_or_part = m_skeleton_animated->LL_GetMotionDef(part.motion)->bone_or_part;
-	if (bone_or_part == U16(-1)) bone_or_part = m_skeleton_animated->LL_PartID("default");
+	unsigned short bone_or_part = m_skeleton_animated->LL_GetMotionDef(part.motion)->bone_or_part;
+	if (bone_or_part == unsigned short(-1))
+	{
+		bone_or_part = m_skeleton_animated->LL_PartID("default");
+	}
 
 	//save 
 	float time_saved = part.blend->timeCurrent;

@@ -5,11 +5,11 @@
 CDamagableItem::CDamagableItem( )
 {
 	m_max_health		= 0.0f;
-	m_levels_num		= U16(-1);
-	m_level_applied		= U16(-1);
+	m_levels_num		= unsigned short(-1);
+	m_level_applied		= unsigned short(-1);
 }
 
-void CDamagableItem::Init(float max_health, U16 level_num)
+void CDamagableItem::Init(float max_health, unsigned short level_num)
 {
 	m_max_health		= max_health;
 	m_level_applied		= 0;
@@ -18,8 +18,8 @@ void CDamagableItem::Init(float max_health, U16 level_num)
 
 void CDamagableItem::HitEffect( )
 {
-	U16 new_lewel		= DamageLevel( );
-	for (U16 i = m_level_applied + 1; i <= new_lewel; i++)
+	unsigned short new_lewel		= DamageLevel( );
+	for (unsigned short i = m_level_applied + 1; i <= new_lewel; i++)
 	{
 		ApplyDamage		(i);
 	}
@@ -27,19 +27,19 @@ void CDamagableItem::HitEffect( )
 
 void CDamagableItem::RestoreEffect( )
 {
-	U16 dl				= DamageLevel( );
-	for (U16 i = 1; i <= dl; i++)
+	unsigned short dl				= DamageLevel( );
+	for (unsigned short i = 1; i <= dl; i++)
 	{
 		ApplyDamage		(i);
 	}
 }
 
-float CDamagableItem::DamageLevelToHealth(U16 dl)
+float CDamagableItem::DamageLevelToHealth(unsigned short dl)
 {
 	return m_max_health * (float(m_levels_num - dl) / m_levels_num);
 }
 
-U16 CDamagableItem::DamageLevel( )
+unsigned short CDamagableItem::DamageLevel( )
 {
 	float health		= Health( );
 	if (health < 0.0f)
@@ -47,7 +47,7 @@ U16 CDamagableItem::DamageLevel( )
 		health			= 0.0f;
 	}
 
-	U16 dl				= U16((1.0f - Health( ) / m_max_health) * m_levels_num);
+	unsigned short dl				= unsigned short((1.0f - Health( ) / m_max_health) * m_levels_num);
 
 	if (dl < m_levels_num)
 	{
@@ -59,12 +59,12 @@ U16 CDamagableItem::DamageLevel( )
 	}
 }
 
-void CDamagableItem::ApplyDamage(U16 level)
+void CDamagableItem::ApplyDamage(unsigned short level)
 {
 	m_level_applied		= level;
 }
 
-void CDamagableHealthItem::Init(float max_health, U16 level_num)
+void CDamagableHealthItem::Init(float max_health, unsigned short level_num)
 {
 	inherited::Init		(max_health, level_num);
 	m_health			= max_health;

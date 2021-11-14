@@ -16,7 +16,7 @@ class CPHDestroyable : public  CPHDestroyableNotificator
 {
 	xr_vector<CSharedString>						m_destroyed_obj_visual_names;
 	xr_vector<CPHDestroyableNotificate*>		m_notificate_objects;
-	U16											m_depended_objects;
+	unsigned short											m_depended_objects;
 	Flags8										m_flags;
 	SHit										m_fatal_hit;
 
@@ -33,7 +33,7 @@ public:
 	void						Init( );
 	void						RespawnInit( );
 	void						SetFatalHit(const SHit& hit);
-	void						Destroy(U16 source_id = U16(-1), const char* section = "ph_skeleton_object");
+	void						Destroy(unsigned short source_id = unsigned short(-1), const char* section = "ph_skeleton_object");
 	SHit& FatalHit( )
 	{
 		return m_fatal_hit;
@@ -59,7 +59,7 @@ public:
 		return true;
 	}
 	virtual void						SheduleUpdate(u32 dt);
-	virtual void						GenSpawnReplace(U16 source_id, const char* section, CSharedString visual_name);
+	virtual void						GenSpawnReplace(unsigned short source_id, const char* section, CSharedString visual_name);
 	virtual void						InitServerObject(CSE_Abstract* D);
 
 private:

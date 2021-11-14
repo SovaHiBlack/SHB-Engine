@@ -276,7 +276,7 @@ void CUIMainIngameWnd::Draw( )
 		return;
 	}
 
-	UIMotionIcon.SetNoise((S16) (0xffff & iFloor(m_pActor->m_snd_noise * 100.0f)));
+	UIMotionIcon.SetNoise((signed short) (0xffff & iFloor(m_pActor->m_snd_noise * 100.0f)));
 	CUIWindow::Draw( );
 	UIZoneMap->Render( );
 

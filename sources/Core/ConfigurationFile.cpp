@@ -551,10 +551,10 @@ unsigned char CConfigurationFile::r_u8(const char* S, const char* L)
 	const char* C = r_string(S, L);
 	return unsigned char(atoi(C));
 }
-U16 CConfigurationFile::r_u16(const char* S, const char* L)
+unsigned short CConfigurationFile::r_u16(const char* S, const char* L)
 {
 	const char* C = r_string(S, L);
-	return U16(atoi(C));
+	return unsigned short(atoi(C));
 }
 U32 CConfigurationFile::r_u32(const char* S, const char* L)
 {
@@ -755,7 +755,7 @@ void CConfigurationFile::w_u8(const char* S, const char* L, unsigned char V, con
 	sprintf_s(temp, sizeof(temp), "%d", V);
 	w_string(S, L, temp, comment);
 }
-void CConfigurationFile::w_u16(const char* S, const char* L, U16 V, const char* comment)
+void CConfigurationFile::w_u16(const char* S, const char* L, unsigned short V, const char* comment)
 {
 	string128 temp;
 	sprintf_s(temp, sizeof(temp), "%d", V);

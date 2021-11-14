@@ -14,13 +14,13 @@ void CPHDestroyableNotificate::spawn_notificate(CSE_Abstract* so)
 {
 	CPHDestroyableNotificator* D = nullptr;
 	CSE_PHSkeleton* po = smart_cast<CSE_PHSkeleton*>(so);
-	U16 id = U16(-1);
+	unsigned short id = unsigned short(-1);
 	if (po)
 	{
 		id = po->get_source_id( );
 	}
 
-	if (id != U16(-1))
+	if (id != unsigned short(-1))
 	{
 		D = smart_cast<CPHDestroyableNotificator*>(Level( ).Objects.net_Find(id));
 	}

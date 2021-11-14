@@ -231,7 +231,7 @@ void CGameFont::OnRender( )
 		for (; i < last; i++)
 		{
 			String& PS			= strings[i];
-			wide_char wsStr		[MAX_MB_CHARS];
+			unsigned short wsStr		[MAX_MB_CHARS];
 
 			int len				= IsMultibyte( ) ? mbhMulti2Wide(wsStr, nullptr, MAX_MB_CHARS, PS.string) : xr_strlen(PS.string);
 
@@ -279,7 +279,7 @@ void CGameFont::OnRender( )
 				for (int j = 0; j < len; j++)
 				{
 					Fvector3	l;
-					l			= IsMultibyte( ) ? GetCharTC(wsStr[1 + j]) : GetCharTC((U16) (unsigned char) PS.string[j]);
+					l			= IsMultibyte( ) ? GetCharTC(wsStr[1 + j]) : GetCharTC((unsigned short) (unsigned char) PS.string[j]);
 
 					float scw	= l.z * g_current_font_scale.x;
 					float fTCWidth = l.z / vTS.x;
@@ -325,18 +325,18 @@ void CGameFont::OnRender( )
 	strings.clear_not_free		( );
 }
 
-U16 CGameFont::GetCutLengthPos(float fTargetWidth, const char* pszText)
+unsigned short CGameFont::GetCutLengthPos(float fTargetWidth, const char* pszText)
 {
 	VERIFY						(pszText);
 
-	wide_char wsStr				[MAX_MB_CHARS];
-	wide_char wsPos				[MAX_MB_CHARS];
+	unsigned short wsStr				[MAX_MB_CHARS];
+	unsigned short wsPos				[MAX_MB_CHARS];
 	float fCurWidth				= 0.0f;
 	float fDelta				= 0.0f;
 
-	U16 len						= mbhMulti2Wide(wsStr, wsPos, MAX_MB_CHARS, pszText);
+	unsigned short len						= mbhMulti2Wide(wsStr, wsPos, MAX_MB_CHARS, pszText);
 
-	for (U16 i = 1; i <= len; i++)
+	for (unsigned short i = 1; i <= len; i++)
 	{
 		fDelta					= GetCharTC(wsStr[i]).z - 2;
 
@@ -358,19 +358,19 @@ U16 CGameFont::GetCutLengthPos(float fTargetWidth, const char* pszText)
 	return						wsPos[i - 1];
 }
 
-U16 CGameFont::SplitByWidth(U16* puBuffer, U16 uBufferSize, float fTargetWidth, const char* pszText)
+unsigned short CGameFont::SplitByWidth(unsigned short* puBuffer, unsigned short uBufferSize, float fTargetWidth, const char* pszText)
 {
 	VERIFY						(puBuffer && uBufferSize && pszText);
 
-	wide_char wsStr				[MAX_MB_CHARS];
-	wide_char wsPos				[MAX_MB_CHARS];
+	unsigned short wsStr				[MAX_MB_CHARS];
+	unsigned short wsPos				[MAX_MB_CHARS];
 	float fCurWidth				= 0.0f;
 	float fDelta				= 0.0f;
-	U16 nLines					= 0;
+	unsigned short nLines					= 0;
 
-	U16 len						= mbhMulti2Wide(wsStr, wsPos, MAX_MB_CHARS, pszText);
+	unsigned short len						= mbhMulti2Wide(wsStr, wsPos, MAX_MB_CHARS, pszText);
 
-	for (U16 i = 1; i <= len; i++)
+	for (unsigned short i = 1; i <= len; i++)
 	{
 		fDelta					= GetCharTC(wsStr[i]).z - 2;
 
@@ -467,7 +467,7 @@ void CGameFont::OutSkip(float val)
 float CGameFont::SizeOf_(const char cChar)
 {
 	VERIFY						(!IsMultibyte( ));
-	return						(GetCharTC((U16) (unsigned char) cChar).z * vInterval.x);
+	return						(GetCharTC((unsigned short) (unsigned char) cChar).z * vInterval.x);
 }
 
 float CGameFont::SizeOf_(const char* s)
@@ -479,7 +479,7 @@ float CGameFont::SizeOf_(const char* s)
 
 	if (IsMultibyte( ))
 	{
-		wide_char wsStr			[MAX_MB_CHARS];
+		unsigned short wsStr			[MAX_MB_CHARS];
 		mbhMulti2Wide			(wsStr, nullptr, MAX_MB_CHARS, s);
 		return					SizeOf_(wsStr);
 	}
@@ -490,14 +490,14 @@ float CGameFont::SizeOf_(const char* s)
 	{
 		for (int j = 0; j < len; j++)
 		{
-			X					+= GetCharTC((U16) (unsigned char) s[j]).z;
+			X					+= GetCharTC((unsigned short) (unsigned char) s[j]).z;
 		}
 	}
 
 	return						(X * vInterval.x);
 }
 
-float CGameFont::SizeOf_(const wide_char* wsStr)
+float CGameFont::SizeOf_(const unsigned short* wsStr)
 {
 	if (!(wsStr && wsStr[0]))
 	{

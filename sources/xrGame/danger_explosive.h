@@ -25,7 +25,7 @@ public:
 public:
 	inline					CDangerExplosive	(const CExplosive *grenade, const CGameObject *game_object, CStalker *reactor, u32 time);
 	inline	bool			operator==			(const CExplosive *grenade) const;
-		bool			operator==			(const U16& id) const;
+		bool			operator==			(const unsigned short& id) const;
 };
 
 #include "danger_explosive_inline.h"

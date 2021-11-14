@@ -567,10 +567,10 @@ void CActor::ActorUse( )
 
 		collide::rq_result& RQ = HUD( ).GetCurrentRayQuery( );
 		CPHShellHolder* object = smart_cast<CPHShellHolder*>(RQ.O);
-		U16 element = BI_NONE;
+		unsigned short element = BI_NONE;
 		if (object)
 		{
-			element = (U16) RQ.element;
+			element = (unsigned short) RQ.element;
 		}
 
 		if (object && Level( ).IR_GetKeyState(DIK_LSHIFT))

@@ -37,7 +37,7 @@ const Fvector3 hemi_1[HEMI1_VERTS] = {
 	{ 0.587788,	 0.000000,	-0.809013},
 	{ 0.951057,	 0.000000,	-0.309017},
 };
-const U16 hemi_1v[HEMI1_FACES * 3] = {
+const unsigned short hemi_1v[HEMI1_FACES * 3] = {
 	0,		1,		2,
 	1,		3,		2,
 	3,		4,		2,
@@ -174,7 +174,7 @@ const Fvector3 hemi_2[HEMI2_VERTS] =
 	{ 0.309017,	 0.000000,	-0.951057},
 	{ 0.809021,	 0.000000,	-0.587788},
 };
-const U16 hemi_2v[HEMI2_FACES * 3] = {
+const unsigned short hemi_2v[HEMI2_FACES * 3] = {
 	0,		1,		2,
 	3,		4,		0,
 	4,		1,		0,
@@ -582,7 +582,7 @@ int xrHemisphereVertices(int quality, const Fvector3*& verts)
 	return h_count;
 }
 
-int xrHemisphereIndices(int quality, const U16*& indices)
+int xrHemisphereIndices(int quality, const unsigned short*& indices)
 {
 	// SELECT table
 	int h_count = 0;

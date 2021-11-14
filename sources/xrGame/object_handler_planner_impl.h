@@ -29,12 +29,12 @@ inline	u32	CObjectHandlerPlanner::action_object_id		(_condition_type action_id) 
 	return				(action_id >> 16);
 }
 
-inline	void CObjectHandlerPlanner::add_condition			(CActionBase<CStalker> *action, U16 id, ObjectHandlerSpace::EWorldProperties property, _value_type value)
+inline	void CObjectHandlerPlanner::add_condition			(CActionBase<CStalker> *action, unsigned short id, ObjectHandlerSpace::EWorldProperties property, _value_type value)
 {
 	action->add_condition(CWorldProperty(uid(id,property),value));
 }
 
-inline	void CObjectHandlerPlanner::add_effect				(CActionBase<CStalker> *action, U16 id, ObjectHandlerSpace::EWorldProperties property, _value_type value)
+inline	void CObjectHandlerPlanner::add_effect				(CActionBase<CStalker> *action, unsigned short id, ObjectHandlerSpace::EWorldProperties property, _value_type value)
 {
 	action->add_effect	(CWorldProperty(uid(id,property),value));
 }

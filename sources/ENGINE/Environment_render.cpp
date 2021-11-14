@@ -25,7 +25,7 @@ static	Fvector3	hbox_verts[24]	=
 	{-1.f,	 0.f,	 1.f}, {-1.f,	-1.f,	 1.f}	// half
 };
 
-static	U16			hbox_faces[20*3]	=
+static unsigned short			hbox_faces[20*3]	=
 {
 	0,	 2,	 3,
 	3,	 1,	 0,
@@ -118,7 +118,7 @@ void CEnvironment::RenderSky		()
 	U32		C					= color_rgba(iFloor(CurrentEnv.sky_color.x*255.f), iFloor(CurrentEnv.sky_color.y*255.f), iFloor(CurrentEnv.sky_color.z*255.f), iFloor(CurrentEnv.weight*255.f));
 
 	// Fill index buffer
-	U16*	pib					= RCache.Index.Lock	(20*3,i_offset);
+	unsigned short*	pib					= RCache.Index.Lock	(20*3,i_offset);
 	CopyMemory					(pib,hbox_faces,20*3*2);
 	RCache.Index.Unlock			(20*3);
 
@@ -176,8 +176,8 @@ void CEnvironment::RenderClouds			()
 	U32		C1					= color_rgba(iFloor(CurrentEnv.clouds_color.x*255.f),iFloor(CurrentEnv.clouds_color.y*255.f),iFloor(CurrentEnv.clouds_color.z*255.f),iFloor(CurrentEnv.clouds_color.w*255.f));
 
 	// Fill index buffer
-	U16*	pib					= RCache.Index.Lock	(CloudsIndices.size(),i_offset);
-	CopyMemory					(pib,&CloudsIndices.front(),CloudsIndices.size()*sizeof(U16));
+	unsigned short*	pib					= RCache.Index.Lock	(CloudsIndices.size(),i_offset);
+	CopyMemory					(pib,&CloudsIndices.front(),CloudsIndices.size()*sizeof(unsigned short));
 	RCache.Index.Unlock			(CloudsIndices.size());
 
 	// Fill vertex buffer

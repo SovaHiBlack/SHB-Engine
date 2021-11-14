@@ -20,7 +20,7 @@ using namespace ObjectHandlerSpace;
 
 void CObjectHandlerPlanner::add_evaluators		(CWeapon *weapon)
 {
-	U16					id = weapon->ID();
+	unsigned short					id = weapon->ID();
 	// dynamic state properties
 //.	add_evaluator		(uid(id,eWorldPropertyHidden)		,xr_new<CObjectPropertyEvaluatorState>(weapon,m_object,CWeapon::eHidden));
 	add_evaluator		(uid(id,eWorldPropertyHidden)		,xr_new<CObjectPropertyEvaluatorWeaponHidden>(weapon,m_object));
@@ -63,7 +63,7 @@ void CObjectHandlerPlanner::add_evaluators		(CWeapon *weapon)
 
 void CObjectHandlerPlanner::add_operators		(CWeapon *weapon)
 {
-	U16					id = weapon->ID(), ff = 0xffff;
+	unsigned short					id = weapon->ID(), ff = 0xffff;
 	CActionBase<CStalker>	*action;
 	
 	// show

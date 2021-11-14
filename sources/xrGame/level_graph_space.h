@@ -25,8 +25,8 @@ namespace LevelGraph {
 	public:
 		__forceinline	u32				link					(int i) const;
 		__forceinline	unsigned char				light					() const;
-		__forceinline	U16				cover					(unsigned char index) const;
-		__forceinline	U16				plane					() const;
+		__forceinline	unsigned short				cover					(unsigned char index) const;
+		__forceinline	unsigned short				plane					() const;
 		__forceinline	const CPosition &position				() const;
 		__forceinline	bool			operator<				(const LevelGraph::CVertex &vertex) const;
 		__forceinline	bool			operator>				(const LevelGraph::CVertex &vertex) const;

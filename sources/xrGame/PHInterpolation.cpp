@@ -74,24 +74,24 @@ void CPHInterpolation::ResetRotations()
 	qRotations.fill_in(fQ);
 }
 
-void CPHInterpolation::GetRotation(Fquaternion& q, U16 num)
+void CPHInterpolation::GetRotation(Fquaternion& q, unsigned short num)
 {
 	if(!m_body)	return;
 	q.set(qRotations[num]);
 }
 
-void CPHInterpolation::GetPosition(Fvector3& p, U16 num)
+void CPHInterpolation::GetPosition(Fvector3& p, unsigned short num)
 {
 	if(!m_body)	return;
 	p.set(qPositions[num]);
 }
-void CPHInterpolation::SetPosition(const Fvector3& p, U16 num)
+void CPHInterpolation::SetPosition(const Fvector3& p, unsigned short num)
 {
 	if(!m_body)	return;
 	qPositions[num].set(p);
 }
 
-void CPHInterpolation::SetRotation(const Fquaternion& q, U16 num)
+void CPHInterpolation::SetRotation(const Fquaternion& q, unsigned short num)
 {
 	if(!m_body)	return;
 	qRotations[num]=q;

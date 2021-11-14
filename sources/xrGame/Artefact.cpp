@@ -130,7 +130,7 @@ BOOL CArtefact::net_Spawn(CSE_Abstract* DC)
 
 	StartLights( );
 	/////////////////////////////////////////
-	m_CarringBoneID = U16(-1);
+	m_CarringBoneID = unsigned short(-1);
 	/////////////////////////////////////////
 	CKinematicsAnimated* K = smart_cast<CKinematicsAnimated*>(Visual( ));
 	if (K)
@@ -370,8 +370,8 @@ void CArtefact::UpdateXForm( )
 		boneL = boneR2;
 
 		V->CalculateBones( );
-		Fmatrix& mL = V->LL_GetTransform(U16(boneL));
-		Fmatrix& mR = V->LL_GetTransform(U16(boneR));
+		Fmatrix& mL = V->LL_GetTransform(unsigned short(boneL));
+		Fmatrix& mR = V->LL_GetTransform(unsigned short(boneR));
 
 		// Calculate
 		Fmatrix mRes;
@@ -490,7 +490,7 @@ void CArtefact::OnAnimationEnd(u32 state)
 	}
 }
 
-U16 CArtefact::bone_count_to_synchronize( ) const
+unsigned short CArtefact::bone_count_to_synchronize( ) const
 {
 	return CInventoryItem::object( ).PHGetSyncItemsNumber( );
 }

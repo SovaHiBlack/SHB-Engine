@@ -171,7 +171,7 @@ BOOL CBulletManager::firetrace_callback(collide::rq_result& result, LPVOID param
 	Fvector3 end_point;
 	end_point.mad(bullet->pos, bullet->dir, result.range);
 
-	U16 hit_material_idx = GAMEMTL_NONE_IDX;
+	unsigned short hit_material_idx = GAMEMTL_NONE_IDX;
 
 	//динамический объект
 	if (result.O)
@@ -183,7 +183,7 @@ BOOL CBulletManager::firetrace_callback(collide::rq_result& result, LPVOID param
 		VERIFY(!(result.O->ID( ) == bullet->parent_id && bullet->fly_dist < PARENT_IGNORE_DIST));
 		if (0 != (V = smart_cast<CKinematics*>(result.O->Visual( ))))
 		{
-			CBoneData& B = V->LL_GetData((U16) result.element);
+			CBoneData& B = V->LL_GetData((unsigned short) result.element);
 			hit_material_idx = B.game_mtl_idx;
 			Level( ).BulletManager( ).RegisterEvent(EVENT_HIT, TRUE, bullet, end_point, result, hit_material_idx);
 		}
@@ -213,7 +213,7 @@ BOOL CBulletManager::firetrace_callback(collide::rq_result& result, LPVOID param
 		return TRUE;
 }
 
-void CBulletManager::FireShotmark(SBullet* bullet, const Fvector3& vDir, const Fvector3& vEnd, collide::rq_result& R, U16 target_material, const Fvector3& vNormal, bool ShowMark)
+void CBulletManager::FireShotmark(SBullet* bullet, const Fvector3& vDir, const Fvector3& vEnd, collide::rq_result& R, unsigned short target_material, const Fvector3& vNormal, bool ShowMark)
 {
 	SGameMtlPair* mtl_pair = GMLib.GetMaterialPair(bullet->bullet_material_idx, target_material);
 	Fvector3 particle_dir;
@@ -341,8 +341,8 @@ void CBulletManager::DynamicObjectHit(CBulletManager::_event& E)
 
 	if (V)
 	{
-		VERIFY3(V->LL_GetBoneVisible(U16(E.R.element)), *E.R.O->cNameVisual( ), V->LL_BoneName_dbg(U16(E.R.element)));
-		Fmatrix& m_bone = (V->LL_GetBoneInstance(U16(E.R.element))).mTransform;
+		VERIFY3(V->LL_GetBoneVisible(unsigned short(E.R.element)), *E.R.O->cNameVisual( ), V->LL_BoneName_dbg(unsigned short(E.R.element)));
+		Fmatrix& m_bone = (V->LL_GetBoneInstance(unsigned short(E.R.element))).mTransform;
 		Fmatrix  m_inv_bone;
 		m_inv_bone.invert(m_bone);
 		m_inv_bone.transform_tiny(position_in_bone_space, p_in_object_space);
@@ -361,14 +361,14 @@ void CBulletManager::DynamicObjectHit(CBulletManager::_event& E)
 		SHit	Hit = SHit(power,
 						   original_dir,
 						   NULL,
-			U16(E.R.element),
+			unsigned short(E.R.element),
 						   position_in_bone_space,
 						   impulse,
 						   E.bullet.hit_type,
 						   E.bullet.ap,
 						   E.bullet.flags.aim_bullet);
 
-		Hit.GenHeader(U16((AddStatistic) ? GE_HIT_STATISTIC : GE_HIT) & 0xffff, E.R.O->ID( ));
+		Hit.GenHeader(unsigned short((AddStatistic) ? GE_HIT_STATISTIC : GE_HIT) & 0xffff, E.R.O->ID( ));
 		Hit.whoID = E.bullet.parent_id;
 		Hit.weaponID = E.bullet.weapon_id;
 		Hit.BulletID = E.bullet.m_dwID;
@@ -388,7 +388,7 @@ FvectorVec g_hit[3];
 extern void random_dir(Fvector3& tgt_dir, const Fvector3& src_dir, float dispersion);
 
 std::pair<float, float>  CBulletManager::ObjectHit(SBullet* bullet, const Fvector3& end_point,
-												   collide::rq_result& R, U16 target_material,
+												   collide::rq_result& R, unsigned short target_material,
 												   Fvector3& hit_normal)
 {
 	//----------- normal - start
@@ -400,7 +400,7 @@ std::pair<float, float>  CBulletManager::ObjectHit(SBullet* bullet, const Fvecto
 		{
 			Fvector3			e_center;
 			hit_normal.set(0, 0, 0);
-			if (skeleton->_ElementCenter((U16) R.element, e_center))
+			if (skeleton->_ElementCenter((unsigned short) R.element, e_center))
 				hit_normal.sub(end_point, e_center);
 			float len = hit_normal.square_magnitude( );
 			if (!fis_zero(len))	hit_normal.div(_sqrt(len));

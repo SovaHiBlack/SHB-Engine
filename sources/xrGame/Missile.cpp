@@ -416,8 +416,8 @@ void CMissile::UpdateXForm( )
 		boneL = boneR2;
 
 		V->CalculateBones( );
-		Fmatrix& mL = V->LL_GetTransform(U16(boneL));
-		Fmatrix& mR = V->LL_GetTransform(U16(boneR));
+		Fmatrix& mL = V->LL_GetTransform(unsigned short(boneL));
+		Fmatrix& mR = V->LL_GetTransform(unsigned short(boneR));
 
 		// Calculate
 		Fmatrix				mRes;
@@ -508,15 +508,15 @@ void CMissile::Throw( )
 	{
 		CNetPacket P;
 		u_EventGen(P, GE_OWNERSHIP_REJECT, ID( ));
-		P.w_u16(U16(m_fake_missile->ID( )));
+		P.w_u16(unsigned short(m_fake_missile->ID( )));
 		u_EventSend(P);
 	}
 }
 
-void CMissile::OnEvent(CNetPacket& P, U16 type)
+void CMissile::OnEvent(CNetPacket& P, unsigned short type)
 {
 	inherited::OnEvent(P, type);
-	U16						id;
+	unsigned short						id;
 	switch (type)
 	{
 		case GE_OWNERSHIP_TAKE:
@@ -788,7 +788,7 @@ void CMissile::GetBriefInfo(xr_string& str_name, xr_string& icon_sect_name, xr_s
 	icon_sect_name = "";
 }
 
-U16 CMissile::bone_count_to_synchronize( ) const
+unsigned short CMissile::bone_count_to_synchronize( ) const
 {
 	return CInventoryItem::object( ).PHGetSyncItemsNumber( );
 }

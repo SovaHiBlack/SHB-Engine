@@ -70,7 +70,7 @@ private:
 	void		NewState( );
 
 	void		PhDataUpdate(float step);
-	void		InitContact(dContact* c, bool& do_collide, U16 /*material_idx_1*/, U16 /*material_2*/);
+	void		InitContact(dContact* c, bool& do_collide, unsigned short /*material_idx_1*/, unsigned short /*material_2*/);
 	void		SwitchState(Estate new_state);
 	bool		StateSwitchInertion(Estate new_state);
 	void		UpdateStNone( );

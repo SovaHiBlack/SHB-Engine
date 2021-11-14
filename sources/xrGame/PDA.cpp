@@ -18,7 +18,7 @@ CPda::CPda( )
 	m_slot = PDA_SLOT;
 	m_flags.set(Fruck, TRUE);
 
-	m_idOriginalOwner = U16(-1);
+	m_idOriginalOwner = unsigned short(-1);
 	m_SpecificChracterOwner = NULL;
 
 	TurnOff( );

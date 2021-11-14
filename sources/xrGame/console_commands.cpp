@@ -1476,7 +1476,7 @@ public:
 		}
 
 		Msg("bones for model \"%s\"", arguments);
-		for (U16 i = 0, n = kinematics->LL_BoneCount( ); i < n; ++i)
+		for (unsigned short i = 0, n = kinematics->LL_BoneCount( ); i < n; ++i)
 		{
 			Msg("%s", *kinematics->LL_GetData(i).name);
 		}

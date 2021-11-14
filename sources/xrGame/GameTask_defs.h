@@ -15,7 +15,7 @@ using TASK_ID_VECTOR = xr_vector<TASK_ID>;
 using TASK_ID_IT = TASK_ID_VECTOR::iterator;
 
 extern CSharedString		g_active_task_id;
-extern U16				g_active_task_objective_id;
+extern unsigned short				g_active_task_objective_id;
 
 #include "alife_abstract_registry.h"
 
@@ -39,17 +39,17 @@ struct SGameTaskKey : public IPureSerializeObject<IReader, IWriter>, public IPur
 using GameTasks = xr_vector<SGameTaskKey>;
 using GameTasks_it = GameTasks::iterator;
 
-struct CGameTaskRegistry : public CALifeAbstractRegistry<U16, GameTasks>
+struct CGameTaskRegistry : public CALifeAbstractRegistry<unsigned short, GameTasks>
 {
 	virtual void save(IWriter& stream)
 	{
-		CALifeAbstractRegistry<U16, GameTasks>::save(stream);
+		CALifeAbstractRegistry<unsigned short, GameTasks>::save(stream);
 		save_data(g_active_task_id, stream);
 		save_data(g_active_task_objective_id, stream);
 	}
 	virtual void load(IReader& stream)
 	{
-		CALifeAbstractRegistry<U16, GameTasks>::load(stream);
+		CALifeAbstractRegistry<unsigned short, GameTasks>::load(stream);
 		load_data(g_active_task_id, stream);
 		load_data(g_active_task_objective_id, stream);
 	}

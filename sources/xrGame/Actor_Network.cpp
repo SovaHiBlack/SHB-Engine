@@ -143,8 +143,8 @@ void CActor::net_Export(CNetPacket& P)					// export to server
 	P.w_u8(unsigned char(g_Group( )));
 
 	//CSE_ALifeCreatureActor
-	U16 ms = (U16) (mstate_real & 0x0000ffff);
-	P.w_u16(U16(ms));
+	unsigned short ms = (unsigned short) (mstate_real & 0x0000ffff);
+	P.w_u16(unsigned short(ms));
 	P.w_sdir(NET_SavedAccel);
 	Fvector3 v = character_physics_support( )->movement( )->GetVelocity( );
 	P.w_sdir(v);
@@ -152,7 +152,7 @@ void CActor::net_Export(CNetPacket& P)					// export to server
 
 	P.w_u8(unsigned char(inventory( ).GetActiveSlot( )));
 	/////////////////////////////////////////////////
-	U16 NumItems = 0;
+	unsigned short NumItems = 0;
 
 	P.w_u16(NumItems);
 	if (!NumItems)
@@ -281,8 +281,8 @@ void CActor::net_ExportDeadBody(CNetPacket& P)
 	min.set(F_MAX, F_MAX, F_MAX);
 	max.set(-F_MAX, -F_MAX, -F_MAX);
 	/////////////////////////////////////
-	U16 bones_number = PHGetSyncItemsNumber( );
-	for (U16 i = 0; i < bones_number; i++)
+	unsigned short bones_number = PHGetSyncItemsNumber( );
+	for (unsigned short i = 0; i < bones_number; i++)
 	{
 		SPHNetState state;
 		PHGetSyncItem(i)->get_State(state);
@@ -300,7 +300,7 @@ void CActor::net_ExportDeadBody(CNetPacket& P)
 	P.w_vec3(min);
 	P.w_vec3(max);
 
-	for (U16 i = 0; i < bones_number; i++)
+	for (unsigned short i = 0; i < bones_number; i++)
 	{
 		SPHNetState state;
 		PHGetSyncItem(i)->get_State(state);
@@ -336,7 +336,7 @@ void CActor::net_Import_Base(CNetPacket& P)
 	SNetUpdate N;
 
 	unsigned char flags;
-	U16 tmp;
+	unsigned short tmp;
 
 	//CSE_ALifeCreatureAbstract
 	float health;
@@ -466,7 +466,7 @@ void CActor::net_Import_Physic(CNetPacket& P)
 		P.r_vec3(min);
 		P.r_vec3(max);
 
-		for (U16 i = 0; i < m_u16NumBones; i++)
+		for (unsigned short i = 0; i < m_u16NumBones; i++)
 		{
 			SPHNetState state, stateL;
 			PHGetSyncItem(i)->get_State(state);
@@ -616,7 +616,7 @@ BOOL CActor::net_Spawn(CSE_Abstract* DC)
 
 	m_pPhysics_support->in_NetSpawn(e);
 	character_physics_support( )->movement( )->ActivateBox(0);
-	if (E->m_holderID != U16(-1))
+	if (E->m_holderID != unsigned short(-1))
 	{
 		character_physics_support( )->movement( )->DestroyCharacter( );
 	}
@@ -710,8 +710,8 @@ BOOL CActor::net_Spawn(CSE_Abstract* DC)
 
 	//F
 	//-------------------------------------------------------------
-	m_iLastHitterID = U16(-1);
-	m_iLastHittingWeaponID = U16(-1);
+	m_iLastHitterID = unsigned short(-1);
+	m_iLastHittingWeaponID = unsigned short(-1);
 	m_s16LastHittedElement = -1;
 	m_bWasHitted = false;
 	m_dwILastUpdateTime = 0;
@@ -774,7 +774,7 @@ void CActor::net_Destroy( )
 
 	processing_deactivate( );
 	m_holder = nullptr;
-	m_holderID = U16(-1);
+	m_holderID = unsigned short(-1);
 
 	m_ArtefactsOnBelt.clear( );
 	if (Level( ).CurrentViewEntity( ) == this)
@@ -835,28 +835,28 @@ void CActor::SetCallbacks( )
 {
 	CKinematics* V = smart_cast<CKinematics*>(Visual( ));
 	VERIFY(V);
-	U16 spine0_bone = V->LL_BoneID("bip01_spine");
-	U16 spine1_bone = V->LL_BoneID("bip01_spine1");
-	U16 shoulder_bone = V->LL_BoneID("bip01_spine2");
-	U16 head_bone = V->LL_BoneID("bip01_head");
-	V->LL_GetBoneInstance(U16(spine0_bone)).set_callback(bctCustom, Spin0Callback, this);
-	V->LL_GetBoneInstance(U16(spine1_bone)).set_callback(bctCustom, Spin1Callback, this);
-	V->LL_GetBoneInstance(U16(shoulder_bone)).set_callback(bctCustom, ShoulderCallback, this);
-	V->LL_GetBoneInstance(U16(head_bone)).set_callback(bctCustom, HeadCallback, this);
+	unsigned short spine0_bone = V->LL_BoneID("bip01_spine");
+	unsigned short spine1_bone = V->LL_BoneID("bip01_spine1");
+	unsigned short shoulder_bone = V->LL_BoneID("bip01_spine2");
+	unsigned short head_bone = V->LL_BoneID("bip01_head");
+	V->LL_GetBoneInstance(unsigned short(spine0_bone)).set_callback(bctCustom, Spin0Callback, this);
+	V->LL_GetBoneInstance(unsigned short(spine1_bone)).set_callback(bctCustom, Spin1Callback, this);
+	V->LL_GetBoneInstance(unsigned short(shoulder_bone)).set_callback(bctCustom, ShoulderCallback, this);
+	V->LL_GetBoneInstance(unsigned short(head_bone)).set_callback(bctCustom, HeadCallback, this);
 }
 
 void CActor::ResetCallbacks( )
 {
 	CKinematics* V = smart_cast<CKinematics*>(Visual( ));
 	VERIFY(V);
-	U16 spine0_bone = V->LL_BoneID("bip01_spine");
-	U16 spine1_bone = V->LL_BoneID("bip01_spine1");
-	U16 shoulder_bone = V->LL_BoneID("bip01_spine2");
-	U16 head_bone = V->LL_BoneID("bip01_head");
-	V->LL_GetBoneInstance(U16(spine0_bone)).reset_callback( );
-	V->LL_GetBoneInstance(U16(spine1_bone)).reset_callback( );
-	V->LL_GetBoneInstance(U16(shoulder_bone)).reset_callback( );
-	V->LL_GetBoneInstance(U16(head_bone)).reset_callback( );
+	unsigned short spine0_bone = V->LL_BoneID("bip01_spine");
+	unsigned short spine1_bone = V->LL_BoneID("bip01_spine1");
+	unsigned short shoulder_bone = V->LL_BoneID("bip01_spine2");
+	unsigned short head_bone = V->LL_BoneID("bip01_head");
+	V->LL_GetBoneInstance(unsigned short(spine0_bone)).reset_callback( );
+	V->LL_GetBoneInstance(unsigned short(spine1_bone)).reset_callback( );
+	V->LL_GetBoneInstance(unsigned short(shoulder_bone)).reset_callback( );
+	V->LL_GetBoneInstance(unsigned short(head_bone)).reset_callback( );
 }
 
 void CActor::OnChangeVisual( )
@@ -1030,7 +1030,7 @@ void CActor::PH_B_CrPr( )	// actions & operations before physic correction-predi
 
 		PHUnFreeze( );
 
-		for (U16 i = 0; i < m_u16NumBones; i++)
+		for (unsigned short i = 0; i < m_u16NumBones; i++)
 		{
 			SPHNetState state, stateL;
 			PHGetSyncItem(i)->get_State(state);
@@ -1466,8 +1466,8 @@ void CActor::OnRender_Network( )
 			if (this != Level( ).CurrentViewEntity( ) || cam_active != eacFirstEye)
 			{
 				/*
-				U16 BoneCount = V->LL_BoneCount();
-				for (U16 i=0; i<BoneCount; i++)
+				unsigned short BoneCount = V->LL_BoneCount();
+				for (unsigned short i=0; i<BoneCount; i++)
 				{
 					Fobb BoneOBB = V->LL_GetBox(i);
 					Fmatrix BoneMatrix; BoneOBB.xform_get(BoneMatrix);
@@ -1642,8 +1642,8 @@ void CActor::OnRender_Network( )
 		CKinematics* V = smart_cast<CKinematics*>(Visual( ));
 		if (dbg_net_Draw_Flags.test(1 << 0) && V)
 		{
-			U16 BoneCount = V->LL_BoneCount( );
-			for (U16 i = 0; i < BoneCount; i++)
+			unsigned short BoneCount = V->LL_BoneCount( );
+			for (unsigned short i = 0; i < BoneCount; i++)
 			{
 				Fobb BoneOBB = V->LL_GetBox(i);
 				Fmatrix BoneMatrix; BoneOBB.xform_get(BoneMatrix);
@@ -1674,12 +1674,12 @@ void CActor::OnRender_Network( )
 				M.translate_add(state.position);
 				Level( ).debug_renderer( ).draw_obb(M, half_dim, Color);
 
-				if (!PHGetSyncItem(U16(i)))
+				if (!PHGetSyncItem(unsigned short(i)))
 				{
 					continue;
 				}
 
-				PHGetSyncItem(U16(i))->get_State(state);
+				PHGetSyncItem(unsigned short(i))->get_State(state);
 
 				Color = color_rgba(0, 255, 0, 255);
 				M = Fidentity;
@@ -1692,8 +1692,8 @@ void CActor::OnRender_Network( )
 		{
 			if (!g_Alive( ) && PHGetSyncItemsNumber( ) > 2)
 			{
-				U16 NumBones = PHGetSyncItemsNumber( );
-				for (U16 i = 0; i < NumBones; i++)
+				unsigned short NumBones = PHGetSyncItemsNumber( );
+				for (unsigned short i = 0; i < NumBones; i++)
 				{
 					SPHNetState state;// = m_States[i];
 					PHGetSyncItem(i)->get_State(state);
@@ -1718,7 +1718,7 @@ void CActor::OnRender_Network( )
 				min.set(F_MAX, F_MAX, F_MAX);
 				max.set(-F_MAX, -F_MAX, -F_MAX);
 				/////////////////////////////////////
-				for (U16 i = 0; i < NumBones; i++)
+				for (unsigned short i = 0; i < NumBones; i++)
 				{
 					SPHNetState state;
 					PHGetSyncItem(i)->get_State(state);
@@ -1733,7 +1733,7 @@ void CActor::OnRender_Network( )
 				}
 
 				CNetPacket PX;
-				for (U16 i = 0; i < NumBones; i++)
+				for (unsigned short i = 0; i < NumBones; i++)
 				{
 					SPHNetState state;
 					PHGetSyncItem(i)->get_State(state);
@@ -1814,8 +1814,8 @@ void CActor::Check_for_AutoPickUp( )
 
 void CActor::SetHitInfo(CObject* who, CObject* weapon, signed short element, Fvector3 Pos, Fvector3 Dir)
 {
-	m_iLastHitterID = (who != NULL) ? who->ID( ) : U16(-1);
-	m_iLastHittingWeaponID = (weapon != NULL) ? weapon->ID( ) : U16(-1);
+	m_iLastHitterID = (who != NULL) ? who->ID( ) : unsigned short(-1);
+	m_iLastHittingWeaponID = (weapon != NULL) ? weapon->ID( ) : unsigned short(-1);
 	m_s16LastHittedElement = element;
 	m_fLastHealth = GetfHealth( );
 	m_bWasHitted = true;
@@ -1848,7 +1848,7 @@ void CActor::OnPlayHeadShotParticle(CNetPacket P)
 	GamePersistent( ).ps_needtoplay.push_back(ps);
 }
 
-bool CActor::Check_for_BackStab_Bone(U16 element)
+bool CActor::Check_for_BackStab_Bone(unsigned short element)
 {
 	if (element == m_head)
 	{

@@ -16,13 +16,13 @@
 #include "script_callback_ex.h"
 #include "GameObject_space.h"
 
-void CInventoryOwner::OnEvent(CNetPacket& P, U16 type)
+void CInventoryOwner::OnEvent(CNetPacket& P, unsigned short type)
 {
 	switch (type)
 	{
 		case GE_INFO_TRANSFER:
 		{
-			U16 id;
+			unsigned short id;
 			CSharedString info_id;
 			unsigned char add_info;
 

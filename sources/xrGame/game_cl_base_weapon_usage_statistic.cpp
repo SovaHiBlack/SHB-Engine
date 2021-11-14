@@ -343,7 +343,7 @@ void SWeaponUsageStatistic::OnBullet_Fire(SBullet* pBullet, const CCartridge& ca
 //	Msg("! OnBullet Fire ID[%d]", pBullet->m_dwID);
 }
 
-void SWeaponUsageStatistic::OnBullet_Hit(SBullet* pBullet, U16 TargetID, signed short element, Fvector3 HitLocation)
+void SWeaponUsageStatistic::OnBullet_Hit(SBullet* pBullet, unsigned short TargetID, signed short element, Fvector3 HitLocation)
 {
 	if (!pBullet || !pBullet->flags.allow_sendhit)
 	{
@@ -716,7 +716,7 @@ void SWeaponUsageStatistic::OnExplosionKill(game_PlayerState* ps, const SHit& hi
 		return;
 	}
 
-	U16 killer_id = hit.whoID;
+	unsigned short killer_id = hit.whoID;
 	game_PlayerState* killerPS = Game( ).GetPlayerByGameID(killer_id);
 	SPlayerStatistic& PlayerStatKiller = *(FindPlayer(killerPS->getName( )));
 

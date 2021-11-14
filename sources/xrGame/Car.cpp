@@ -304,11 +304,11 @@ void CCar::SaveNetState(CNetPacket& P)
 	P.w_vec3(Angle);
 
 	{
-		xr_map<U16, SDoor>::iterator i;
-		xr_map<U16, SDoor>::iterator e;
+		xr_map<unsigned short, SDoor>::iterator i;
+		xr_map<unsigned short, SDoor>::iterator e;
 		i = m_doors.begin( );
 		e = m_doors.end( );
-		P.w_u16(U16(m_doors.size( )));
+		P.w_u16(unsigned short(m_doors.size( )));
 		for (; i != e; ++i)
 		{
 			i->second.SaveNetState(P);
@@ -316,11 +316,11 @@ void CCar::SaveNetState(CNetPacket& P)
 	}
 
 	{
-		xr_map<U16, SWheel>::iterator i;
-		xr_map<U16, SWheel>::iterator e;
+		xr_map<unsigned short, SWheel>::iterator i;
+		xr_map<unsigned short, SWheel>::iterator e;
 		i = m_wheels_map.begin( );
 		e = m_wheels_map.end( );
-		P.w_u16(U16(m_wheels_map.size( )));
+		P.w_u16(unsigned short(m_wheels_map.size( )));
 		for (; i != e; ++i)
 		{
 			i->second.SaveNetState(P);
@@ -342,8 +342,8 @@ void CCar::RestoreNetState(CSE_PHSkeleton* po)
 	CSE_ALifeCar* co = smart_cast<CSE_ALifeCar*>(po);
 
 	{
-		xr_map<U16, SDoor>::iterator i;
-		xr_map<U16, SDoor>::iterator e;
+		xr_map<unsigned short, SDoor>::iterator i;
+		xr_map<unsigned short, SDoor>::iterator e;
 		xr_vector<CSE_ALifeCar::SDoorState>::iterator ii = co->door_states.begin( );
 		i = m_doors.begin( );
 		e = m_doors.end( );
@@ -354,8 +354,8 @@ void CCar::RestoreNetState(CSE_PHSkeleton* po)
 	}
 
 	{
-		xr_map<U16, SWheel>::iterator i;
-		xr_map<U16, SWheel>::iterator e;
+		xr_map<unsigned short, SWheel>::iterator i;
+		xr_map<unsigned short, SWheel>::iterator e;
 		xr_vector<CSE_ALifeCar::SWheelState>::iterator ii = co->wheel_states.begin( );
 		i = m_wheels_map.begin( );
 		e = m_wheels_map.end( );
@@ -423,8 +423,8 @@ void CCar::SetDefaultNetState(CSE_PHSkeleton* po)
 		return;
 	}
 
-	xr_map<U16, SDoor>::iterator i;
-	xr_map<U16, SDoor>::iterator e;
+	xr_map<unsigned short, SDoor>::iterator i;
+	xr_map<unsigned short, SDoor>::iterator e;
 	i = m_doors.begin( );
 	e = m_doors.end( );
 	for (; i != e; ++i)
@@ -574,7 +574,7 @@ void CCar::net_Import(CNetPacket& P)
 	inherited::net_Import(P);
 //	u32 TimeStamp = 0;
 //	P.w_u32(TimeStamp);
-//	U16 NumItems = 0;
+//	unsigned short NumItems = 0;
 //	P.w_u32(NumItems);
 }
 
@@ -667,7 +667,7 @@ void CCar::PHHit(float P, Fvector3& dir, CObject* who, signed short element, Fve
 	}
 }
 
-void CCar::ApplyDamage(U16 level)
+void CCar::ApplyDamage(unsigned short level)
 {
 	CDamagableItem::ApplyDamage(level);
 	switch (level)
@@ -742,7 +742,7 @@ bool CCar::attach_Actor(CGameObject* actor)
 		id = K->LL_GetBoneRoot( );
 	}
 
-	CBoneInstance& instance = K->LL_GetBoneInstance(U16(id));
+	CBoneInstance& instance = K->LL_GetBoneInstance(unsigned short(id));
 	m_sits_transforms.push_back(instance.mTransform);
 	OnCameraChange(ectFirst);
 	PPhysicsShell( )->Enable( );
@@ -763,7 +763,7 @@ bool CCar::attach_Actor(CGameObject* actor)
 	return true;
 }
 
-bool CCar::is_Door(U16 id, xr_map<U16, SDoor>::iterator& i)
+bool CCar::is_Door(unsigned short id, xr_map<unsigned short, SDoor>::iterator& i)
 {
 	i = m_doors.find(id);
 	if (i == m_doors.end( ))
@@ -783,9 +783,9 @@ bool CCar::is_Door(U16 id, xr_map<U16, SDoor>::iterator& i)
 	}
 }
 
-bool CCar::is_Door(U16 id)
+bool CCar::is_Door(unsigned short id)
 {
-	xr_map<U16, SDoor>::iterator i;
+	xr_map<unsigned short, SDoor>::iterator i;
 	i = m_doors.find(id);
 	if (i == m_doors.end( ))
 	{
@@ -797,8 +797,8 @@ bool CCar::is_Door(U16 id)
 
 bool CCar::Enter(const Fvector3& pos, const Fvector3& dir, const Fvector3& foot_pos)
 {
-	xr_map<U16, SDoor>::iterator i;
-	xr_map<U16, SDoor>::iterator e;
+	xr_map<unsigned short, SDoor>::iterator i;
+	xr_map<unsigned short, SDoor>::iterator e;
 	i = m_doors.begin( );
 	e = m_doors.end( );
 	Fvector3 enter_pos;
@@ -817,8 +817,8 @@ bool CCar::Enter(const Fvector3& pos, const Fvector3& dir, const Fvector3& foot_
 
 bool CCar::Exit(const Fvector3& pos, const Fvector3& dir)
 {
-	xr_map<U16, SDoor>::iterator i;
-	xr_map<U16, SDoor>::iterator e;
+	xr_map<unsigned short, SDoor>::iterator i;
+	xr_map<unsigned short, SDoor>::iterator e;
 	i = m_doors.begin( );
 	e = m_doors.end( );
 	for (; i != e; ++i)
@@ -1008,8 +1008,8 @@ void CCar::Init( )
 	CDelayedActionFuse::Initialize(l_time_to_explosion, CDamagableItem::DamageLevelToHealth(2));
 
 	{
-		xr_map<U16, SWheel>::iterator i;
-		xr_map<U16, SWheel>::iterator e;
+		xr_map<unsigned short, SWheel>::iterator i;
+		xr_map<unsigned short, SWheel>::iterator e;
 		i = m_wheels_map.begin( );
 		e = m_wheels_map.end( );
 		for (; i != e; ++i)
@@ -1064,8 +1064,8 @@ void CCar::Init( )
 	}
 
 	{
-		xr_map<U16, SDoor>::iterator i;
-		xr_map<U16, SDoor>::iterator e;
+		xr_map<unsigned short, SDoor>::iterator i;
+		xr_map<unsigned short, SDoor>::iterator e;
 		i = m_doors.begin( );
 		e = m_doors.end( );
 		for (; i != e; ++i)
@@ -1081,9 +1081,9 @@ void CCar::Init( )
 		for (CConfigurationFile::SectCIt I = data.Data.begin( ); I != data.Data.end( ); I++)
 		{
 			const CConfigurationFile::SItem& item = *I;
-			U16 index = pKinematics->LL_BoneID(*item.first);
+			unsigned short index = pKinematics->LL_BoneID(*item.first);
 			R_ASSERT3(index != BI_NONE, "Wrong bone name", *item.first);
-			xr_map <U16, SWheel>::iterator i = m_wheels_map.find(index);
+			xr_map <unsigned short, SWheel>::iterator i = m_wheels_map.find(index);
 
 			if (i != m_wheels_map.end( ))
 			{
@@ -1091,7 +1091,7 @@ void CCar::Init( )
 			}
 			else
 			{
-				xr_map <U16, SDoor>::iterator i = m_doors.find(index);
+				xr_map <unsigned short, SDoor>::iterator i = m_doors.find(index);
 				R_ASSERT3(i != m_doors.end( ), "only wheel and doors bones allowed for damage defs", *item.first);
 				i->second.CDamagableHealthItem::Init(float(atof(*item.second)), 1);
 			}
@@ -1627,7 +1627,7 @@ void CCar::TransmissionDown( )
 
 void CCar::PhTune(dReal step)
 {
-	for (U16 i = PPhysicsShell( )->get_ElementsNumber( ); i != 0; i--)
+	for (unsigned short i = PPhysicsShell( )->get_ElementsNumber( ); i != 0; i--)
 	{
 		CPhysicsElement* e = PPhysicsShell( )->get_ElementByStoreOrder(i - 1);
 		if (e->isActive( ) && e->isEnabled( ))
@@ -1749,7 +1749,7 @@ void CCar::ClearExhausts( )
 
 bool CCar::Use(const Fvector3& pos, const Fvector3& dir, const Fvector3& foot_pos)
 {
-	xr_map<U16, SDoor>::iterator i;
+	xr_map<unsigned short, SDoor>::iterator i;
 
 	if (!Owner( ))
 	{
@@ -1769,7 +1769,7 @@ bool CCar::Use(const Fvector3& pos, const Fvector3& dir, const Fvector3& foot_po
 		for (int k = 0; k < y; ++k)
 		{
 			collide::rq_result* I = R.r_begin( ) + k;
-			if (is_Door((U16) I->element, i))
+			if (is_Door((unsigned short) I->element, i))
 			{
 				bool front = i->second.IsFront(pos, dir);
 				if ((Owner( ) && !front) || (!Owner( ) && front))
@@ -1795,9 +1795,9 @@ bool CCar::Use(const Fvector3& pos, const Fvector3& dir, const Fvector3& foot_po
 	return false;
 }
 
-bool CCar::DoorUse(U16 id)
+bool CCar::DoorUse(unsigned short id)
 {
-	xr_map<U16, SDoor>::iterator i;
+	xr_map<unsigned short, SDoor>::iterator i;
 	if (is_Door(id, i))
 	{
 		i->second.Use( );
@@ -1809,9 +1809,9 @@ bool CCar::DoorUse(U16 id)
 	}
 }
 
-bool CCar::DoorSwitch(U16 id)
+bool CCar::DoorSwitch(unsigned short id)
 {
-	xr_map<U16, SDoor>::iterator i;
+	xr_map<unsigned short, SDoor>::iterator i;
 	if (is_Door(id, i))
 	{
 		i->second.Switch( );
@@ -1823,9 +1823,9 @@ bool CCar::DoorSwitch(U16 id)
 	}
 }
 
-bool CCar::DoorClose(U16 id)
+bool CCar::DoorClose(unsigned short id)
 {
-	xr_map<U16, SDoor>::iterator i;
+	xr_map<unsigned short, SDoor>::iterator i;
 	if (is_Door(id, i))
 	{
 		i->second.Close( );
@@ -1837,9 +1837,9 @@ bool CCar::DoorClose(U16 id)
 	}
 }
 
-bool CCar::DoorOpen(U16 id)
+bool CCar::DoorOpen(unsigned short id)
 {
-	xr_map<U16, SDoor>::iterator i;
+	xr_map<unsigned short, SDoor>::iterator i;
 	if (is_Door(id, i))
 	{
 		i->second.Open( );
@@ -2013,13 +2013,13 @@ void CCar::ResetKeys( )
 
 #undef _USE_MATH_DEFINES
 
-void CCar::OnEvent(CNetPacket& P, U16 type)
+void CCar::OnEvent(CNetPacket& P, unsigned short type)
 {
 	inherited::OnEvent(P, type);
 	CExplosive::OnEvent(P, type);
 
 	//обработка сообщений, нужных для работы с багажником машины
-	U16 id;
+	unsigned short id;
 	switch (type)
 	{
 		case GE_OWNERSHIP_TAKE:
@@ -2040,7 +2040,7 @@ void CCar::OnEvent(CNetPacket& P, U16 type)
 
 				CNetPacket P;
 				u_EventGen(P, GE_OWNERSHIP_REJECT, ID( ));
-				P.w_u16(U16(O->ID( )));
+				P.w_u16(unsigned short(O->ID( )));
 				u_EventSend(P);
 			}
 		}
@@ -2119,7 +2119,7 @@ BOOL CCar::UsedAI_Locations( )
 	return (FALSE);
 }
 
-U16 CCar::DriverAnimationType( )
+unsigned short CCar::DriverAnimationType( )
 {
 	return m_driver_anim_type;
 }
@@ -2230,7 +2230,7 @@ template <class T> inline void CCar::fill_wheel_vector(const char* S, xr_vector<
 	{
 		_GetItem(S, i, S1);
 
-		U16 bone_id = pKinematics->LL_BoneID(S1);
+		unsigned short bone_id = pKinematics->LL_BoneID(S1);
 
 		type_wheels.push_back(T( ));
 		T& twheel = type_wheels.back( );
@@ -2263,7 +2263,7 @@ inline void CCar::fill_exhaust_vector(const char* S, xr_vector<SExhaust>& exhaus
 	{
 		_GetItem(S, i, S1);
 
-		U16 bone_id = pKinematics->LL_BoneID(S1);
+		unsigned short bone_id = pKinematics->LL_BoneID(S1);
 
 		exhausts.push_back(SExhaust(this));
 		SExhaust& exhaust = exhausts.back( );
@@ -2277,7 +2277,7 @@ inline void CCar::fill_exhaust_vector(const char* S, xr_vector<SExhaust>& exhaus
 	}
 }
 
-inline void CCar::fill_doors_map(const char* S, xr_map<U16, SDoor>& doors)
+inline void CCar::fill_doors_map(const char* S, xr_map<unsigned short, SDoor>& doors)
 {
 	CKinematics* pKinematics = smart_cast<CKinematics*>(Visual( ));
 	string64 S1;
@@ -2286,7 +2286,7 @@ inline void CCar::fill_doors_map(const char* S, xr_map<U16, SDoor>& doors)
 	{
 		_GetItem(S, i, S1);
 
-		U16 bone_id = pKinematics->LL_BoneID(S1);
+		unsigned short bone_id = pKinematics->LL_BoneID(S1);
 		SDoor door(this);
 		door.bone_id = bone_id;
 		doors.insert(mk_pair(bone_id, door));
@@ -2305,13 +2305,13 @@ DLL_Pure* CCar::_construct( )
 	return (this);
 }
 
-U16 CCar::Initiator( )
+unsigned short CCar::Initiator( )
 {
 	if (g_Alive( ) && Owner( ))
 	{
 		return Owner( )->ID( );
 	}
-	//else if(CExplosive::Initiator()!=U16(-1))return CExplosive::Initiator();
+	//else if(CExplosive::Initiator()!=unsigned short(-1))return CExplosive::Initiator();
 	else
 	{
 		return ID( );
@@ -2355,10 +2355,10 @@ void CCar::net_Relcase(CObject* O)
 
 void CCar::ASCUpdate( )
 {
-	for (U16 i = 0; i < cAsCallsnum; ++i)
+	for (unsigned short i = 0; i < cAsCallsnum; ++i)
 	{
 		EAsyncCalls c = EAsyncCalls(1 << i);
-		if (async_calls.test(U16(c)))
+		if (async_calls.test(unsigned short(c)))
 		{
 			ASCUpdate(c);
 		}
@@ -2367,7 +2367,7 @@ void CCar::ASCUpdate( )
 
 void CCar::ASCUpdate(EAsyncCalls c)
 {
-	async_calls.set(U16(c), FALSE);
+	async_calls.set(unsigned short(c), FALSE);
 	switch (c)
 	{
 		case ascSndTransmission:
@@ -2394,7 +2394,7 @@ void CCar::ASCUpdate(EAsyncCalls c)
 
 void CCar::AscCall(EAsyncCalls c)
 {
-	async_calls.set(U16(c), TRUE);
+	async_calls.set(unsigned short(c), TRUE);
 }
 
 bool CCar::CanRemoveObject( )

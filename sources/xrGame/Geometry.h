@@ -75,7 +75,7 @@ public:
 	{
 		return is_transform(m_geom_transform);
 	}
-	inline U16& element_position( )
+	inline unsigned short& element_position( )
 	{
 		return dGeomGetUserData(geometry( ))->element_position;
 	}
@@ -85,17 +85,17 @@ public:
 		//set
 		//element part
 	void		set_body(dBodyID body);
-	void		set_bone_id(U16 id)
+	void		set_bone_id(unsigned short id)
 	{
 		m_bone_id = id;
 	}
-	U16			bone_id( )
+	unsigned short			bone_id( )
 	{
 		return m_bone_id;
 	}
 	void		add_to_space(dSpaceID space);
 	void		remove_from_space(dSpaceID space);
-	void		set_material(U16 ul_material);
+	void		set_material(unsigned short ul_material);
 	void		set_contact_cb(ContactCallbackFun* ccb);
 	void		set_obj_contact_cb(ObjectContactCallbackFun* occb);
 	void		add_obj_contact_cb(ObjectContactCallbackFun* occb);
@@ -115,7 +115,7 @@ public:
 
 protected:
 	dGeomID m_geom_transform;
-	U16		m_bone_id;
+	unsigned short		m_bone_id;
 
 	void		init( );
 	void		get_final_tx_bt(const dReal*& p, const dReal*& R, dReal* bufV, dReal* bufM);

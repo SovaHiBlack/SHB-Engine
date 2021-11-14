@@ -38,8 +38,8 @@ export_class& script_register_ui_window1(export_class& instance)
 	instance
 		.def(constructor<>( ))
 
-		.def("AddCallback", (void(BaseType::*)(const char*, S16, const luabind::functor<void>&)) & BaseType::AddCallback)
-		.def("AddCallback", (void(BaseType::*)(const char*, S16, const luabind::functor<void>&, const luabind::object&)) & BaseType::AddCallback)
+		.def("AddCallback", (void(BaseType::*)(const char*, signed short, const luabind::functor<void>&)) & BaseType::AddCallback)
+		.def("AddCallback", (void(BaseType::*)(const char*, signed short, const luabind::functor<void>&, const luabind::object&)) & BaseType::AddCallback)
 
 		.def("Register", (void (BaseType::*)(CUIWindow*)) & BaseType::Register)
 		.def("Register", (void (BaseType::*)(CUIWindow*, const char*)) & BaseType::Register)

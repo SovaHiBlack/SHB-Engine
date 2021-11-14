@@ -60,7 +60,7 @@ public:
 	};
 
 protected:
-	inline const Fvector3&		GetCharTC			(U16 c)
+	inline const Fvector3&		GetCharTC			(unsigned short c)
 	{
 		return TCMap[c];
 	}
@@ -98,7 +98,7 @@ public:
 	}
 
 	float						SizeOf_				(const char* s);
-	float						SizeOf_				(const wide_char* wsStr);
+	float						SizeOf_				(const unsigned short* wsStr);
 	float						SizeOf_				(const char cChar);
 
 	float						CurrentHeight_		( );
@@ -113,8 +113,8 @@ public:
 	{
 		return (uFlags & fsMultibyte);
 	}
-	U16							SplitByWidth		(U16* puBuffer, U16 uBufferSize, float fTargetWidth, const char* pszText);
-	U16							GetCutLengthPos		(float fTargetWidth, const char* pszText);
+	unsigned short							SplitByWidth		(unsigned short* puBuffer, unsigned short uBufferSize, float fTargetWidth, const char* pszText);
+	unsigned short							GetCutLengthPos		(float fTargetWidth, const char* pszText);
 
 	void						OutI				(float _x, float _y, const char* fmt, ...);
 	void						Out					(float _x, float _y, const char* fmt, ...);

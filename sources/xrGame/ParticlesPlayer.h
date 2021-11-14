@@ -21,7 +21,7 @@ public:
 		//Fvector3				dir;
 		//Fmatrix				x_form;
 		Fvector3				angles;
-		U16					sender_id;	//id - объекта, который запустил партиклы
+		unsigned short					sender_id;	//id - объекта, который запустил партиклы
 		u32					life_time;	//время жизни партикла (-1) - бесконечно
 
 		//int					cur_time;	//текущее время существования партикла
@@ -34,17 +34,17 @@ public:
 	//структура для косточки со списком запущенных партиклов
 	struct SBoneInfo
 	{
-		U16					index;
+		unsigned short					index;
 		Fvector3				offset;
 		ParticlesInfoList	particles;
 		SParticlesInfo* FindParticles(const CSharedString& ps_name);
 
 	public:
-		SBoneInfo(U16 idx, const Fvector3& offs) :index(idx), offset(offs)
+		SBoneInfo(unsigned short idx, const Fvector3& offs) :index(idx), offset(offs)
 		{ }
 		SParticlesInfo* AppendParticles(CObject* object, const CSharedString& ps_name);
 		void				StopParticles(const CSharedString& ps_name, bool bDestroy);
-		void				StopParticles(U16 sender_id, bool bDestroy);
+		void				StopParticles(unsigned short sender_id, bool bDestroy);
 	};
 
 	using BoneInfoVec = xr_vector<SBoneInfo>;
@@ -60,7 +60,7 @@ protected:
 	bool					m_bActiveBones;	//есть ли косточки на которых играются партиклы
 
 public:
-	inline SBoneInfo* get_bone_info(U16 bone_index)
+	inline SBoneInfo* get_bone_info(unsigned short bone_index)
 	{
 		if (BI_NONE == bone_index)
 		{
@@ -77,7 +77,7 @@ public:
 
 		return nullptr;
 	}
-	SBoneInfo* get_nearest_bone_info(CKinematics* K, U16 bone_index);
+	SBoneInfo* get_nearest_bone_info(CKinematics* K, unsigned short bone_index);
 	Fvector3					parent_vel;
 
 	CParticlesPlayer( );
@@ -89,26 +89,26 @@ public:
 
 	void					UpdateParticles( );
 
-	void					StartParticles(const CSharedString& ps_name, U16 bone_num, const Fvector3& dir, U16 sender_id, int life_time = -1, bool auto_stop = true);
-	void					StartParticles(const CSharedString& ps_name, const Fvector3& dir, U16 sender_id, int life_time = -1, bool auto_stop = true);
+	void					StartParticles(const CSharedString& ps_name, unsigned short bone_num, const Fvector3& dir, unsigned short sender_id, int life_time = -1, bool auto_stop = true);
+	void					StartParticles(const CSharedString& ps_name, const Fvector3& dir, unsigned short sender_id, int life_time = -1, bool auto_stop = true);
 
-	void					StartParticles(const CSharedString& ps_name, U16 bone_num, const Fmatrix& dir, U16 sender_id, int life_time = -1, bool auto_stop = true);
-	void					StartParticles(const CSharedString& ps_name, const Fmatrix& dir, U16 sender_id, int life_time = -1, bool auto_stop = true);
+	void					StartParticles(const CSharedString& ps_name, unsigned short bone_num, const Fmatrix& dir, unsigned short sender_id, int life_time = -1, bool auto_stop = true);
+	void					StartParticles(const CSharedString& ps_name, const Fmatrix& dir, unsigned short sender_id, int life_time = -1, bool auto_stop = true);
 
 
-	void					StopParticles(U16 sender_ID, U16 bone_id, bool bDestroy);
-	void					StopParticles(const CSharedString& particles_name, U16 bone_id, bool bDestroy);
-	void					AutoStopParticles(const CSharedString& ps_name, U16 bone_id, u32 life_time);
+	void					StopParticles(unsigned short sender_ID, unsigned short bone_id, bool bDestroy);
+	void					StopParticles(const CSharedString& particles_name, unsigned short bone_id, bool bDestroy);
+	void					AutoStopParticles(const CSharedString& ps_name, unsigned short bone_id, u32 life_time);
 
-	static void				MakeXFORM(CObject* pObject, U16 bone_id, const Fvector3& dir, const Fvector3& offset, Fmatrix& result);
-	static void				GetBonePos(CObject* pObject, U16 bone_id, const Fvector3& offset, Fvector3& result);
-	U16						GetNearestBone(CKinematics* K, U16 bone_id);
-	inline U16					GetRandomBone( )
+	static void				MakeXFORM(CObject* pObject, unsigned short bone_id, const Fvector3& dir, const Fvector3& offset, Fmatrix& result);
+	static void				GetBonePos(CObject* pObject, unsigned short bone_id, const Fvector3& offset, Fvector3& result);
+	unsigned short						GetNearestBone(CKinematics* K, unsigned short bone_id);
+	inline unsigned short					GetRandomBone( )
 	{
-		U16 l_PBCount = U16(m_Bones.size( ));
+		unsigned short l_PBCount = unsigned short(m_Bones.size( ));
 		if (l_PBCount)
 		{
-			return m_Bones[(U16) Random.randI(l_PBCount)].index;
+			return m_Bones[(unsigned short) Random.randI(l_PBCount)].index;
 		}
 		else
 		{

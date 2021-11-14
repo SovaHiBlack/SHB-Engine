@@ -29,8 +29,8 @@
 #include "Profiler.h"
 
 #define EFFECTOR_RADIUS 30.0f
-const U16	TEST_RAYS_PER_OBJECT = 5;
-const U16	BLASTED_OBJ_PROCESSED_PER_FRAME = 3;
+const unsigned short	TEST_RAYS_PER_OBJECT = 5;
+const unsigned short	BLASTED_OBJ_PROCESSED_PER_FRAME = 3;
 const float	exp_dist_extinction_factor = 3.0f;//(>1.f, 1.f -means no dist change of exp effect)	on the dist of m_fBlastRadius exp. wave effect in exp_dist_extinction_factor times less than maximum
 
 CExplosive::CExplosive( )
@@ -167,13 +167,13 @@ struct SExpQParams
 __forceinline static BOOL grenade_hit_callback(collide::rq_result& result, LPVOID params)
 {
 	SExpQParams& ep = *(SExpQParams*) params;
-	U16 mtl_idx = GAMEMTL_NONE_IDX;
+	unsigned short mtl_idx = GAMEMTL_NONE_IDX;
 	if (result.O)
 	{
 		CKinematics* V = 0;
 		if (0 != (V = smart_cast<CKinematics*>(result.O->Visual( ))))
 		{
-			CBoneData& B = V->LL_GetData((U16) result.element);
+			CBoneData& B = V->LL_GetData((unsigned short) result.element);
 			mtl_idx = B.game_mtl_idx;
 		}
 	}
@@ -241,7 +241,7 @@ float CExplosive::ExplosionEffect(collide::rq_results& storage, CExplosive* exp_
 	}
 #endif // def DEBUG
 
-	for (U16 i = 0; i < TEST_RAYS_PER_OBJECT; ++i)
+	for (unsigned short i = 0; i < TEST_RAYS_PER_OBJECT; ++i)
 	{
 		Fvector3 l_source_p;
 		Fvector3 l_end_p;
@@ -587,7 +587,7 @@ void CExplosive::HideExplosive( )
 	m_bAlreadyHidden = true;
 }
 
-void CExplosive::OnEvent(CNetPacket& P, U16 type)
+void CExplosive::OnEvent(CNetPacket& P, unsigned short type)
 {
 	switch (type)
 	{
@@ -595,7 +595,7 @@ void CExplosive::OnEvent(CNetPacket& P, U16 type)
 		{
 			Fvector3 pos;
 			Fvector3 normal;
-			U16 parent_id;
+			unsigned short parent_id;
 			P.r_u16(parent_id);
 			P.r_vec3(pos);
 			P.r_vec3(normal);
@@ -770,7 +770,7 @@ void CExplosive::ExplodeWaveProcess( )
 	BLASTED_OBJECTS_I I = std::remove_if(m_blasted_objects.begin( ), m_blasted_objects.end( ), SRemovePred( ));
 	m_blasted_objects.erase(I, m_blasted_objects.end( ));
 	rq_storage.r_clear( );
-	U16 i = BLASTED_OBJ_PROCESSED_PER_FRAME;
+	unsigned short i = BLASTED_OBJ_PROCESSED_PER_FRAME;
 	while (m_blasted_objects.size( ) && 0 != i)
 	{
 		ExplodeWaveProcessObject(rq_storage, m_blasted_objects.back( ));
@@ -815,7 +815,7 @@ void CExplosive::net_Relcase(CObject* O)
 {
 	if (O->ID( ) == m_iCurrentParentID)
 	{
-		m_iCurrentParentID = U16(-1);
+		m_iCurrentParentID = unsigned short(-1);
 	}
 
 	BLASTED_OBJECTS_I I = std::find(m_blasted_objects.begin( ), m_blasted_objects.end( ), smart_cast<CPHShellHolder*>(O));
@@ -825,10 +825,10 @@ void CExplosive::net_Relcase(CObject* O)
 	}
 }
 
-U16 CExplosive::Initiator( )
+unsigned short CExplosive::Initiator( )
 {
-	U16 initiator = CurrentParentID( );
-	if (initiator == U16(-1))
+	unsigned short initiator = CurrentParentID( );
+	if (initiator == unsigned short(-1))
 	{
 		initiator = cast_game_object( )->ID( );
 	}

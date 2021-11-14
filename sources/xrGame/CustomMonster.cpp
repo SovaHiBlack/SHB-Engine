@@ -484,7 +484,7 @@ void CCustomMonster::eye_pp_s0( )
 	// Eye matrix
 	CKinematics* V = smart_cast<CKinematics*>(Visual( ));
 	V->CalculateBones( );
-	Fmatrix& mEye = V->LL_GetTransform(U16(eye_bone));
+	Fmatrix& mEye = V->LL_GetTransform(unsigned short(eye_bone));
 	Fmatrix		X;
 	X.mul_43(XFORM( ), mEye);
 	VERIFY(_valid(mEye));
@@ -678,7 +678,7 @@ void			CCustomMonster::Hit(SHit* pHDS)
 		inherited::Hit(pHDS);
 }
 
-void CCustomMonster::OnEvent(CNetPacket& P, U16 type)
+void CCustomMonster::OnEvent(CNetPacket& P, unsigned short type)
 {
 	inherited::OnEvent(P, type);
 }
@@ -949,7 +949,7 @@ void CCustomMonster::load(IReader& packet)
 }
 
 
-bool CCustomMonster::update_critical_wounded(const U16& bone_id, const float& power)
+bool CCustomMonster::update_critical_wounded(const unsigned short& bone_id, const float& power)
 {
 	// object should not be critical wounded
 	VERIFY(m_critical_wound_type == u32(-1));

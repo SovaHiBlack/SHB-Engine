@@ -115,15 +115,15 @@ BOOL CLevel::Load_GameSpecific_After( )
 struct translation_pair
 {
 	u32 m_id;
-	U16 m_index;
+	unsigned short m_index;
 
-	inline			translation_pair(u32 id, U16 index)
+	inline			translation_pair(u32 id, unsigned short index)
 	{
 		m_id = id;
 		m_index = index;
 	}
 
-	inline bool	operator==	(const U16& id) const
+	inline bool	operator==	(const unsigned short& id) const
 	{
 		return	(m_id == id);
 	}
@@ -133,7 +133,7 @@ struct translation_pair
 		return	(m_id < pair.m_id);
 	}
 
-	inline bool	operator<	(const U16& id) const
+	inline bool	operator<	(const unsigned short& id) const
 	{
 		return	(m_id < id);
 	}
@@ -144,11 +144,11 @@ void CLevel::Load_GameSpecific_CFORM(CDB::TRI* tris, u32 count)
 	using ID_INDEX_PAIRS = xr_vector<translation_pair>;
 	ID_INDEX_PAIRS translator;
 	translator.reserve(GMLib.CountMaterial( ));
-	U16 default_id = (U16) GMLib.GetMaterialIdx("default");
+	unsigned short default_id = (unsigned short) GMLib.GetMaterialIdx("default");
 	translator.push_back(translation_pair(u32(-1), default_id));
 
-	U16 index = 0;
-	U16 static_mtl_count = 1;
+	unsigned short index = 0;
+	unsigned short static_mtl_count = 1;
 	int max_ID = 0;
 	int max_static_ID = 0;
 	for (GameMtlIt I = GMLib.FirstMaterial( ); GMLib.LastMaterial( ) != I; ++I, ++index)
@@ -178,7 +178,7 @@ void CLevel::Load_GameSpecific_CFORM(CDB::TRI* tris, u32 count)
 		CDB::TRI* E = tris + count;
 		for (; I != E; ++I)
 		{
-			ID_INDEX_PAIRS::iterator	i = std::find(translator.begin( ), translator.end( ), (U16) (*I).material);
+			ID_INDEX_PAIRS::iterator	i = std::find(translator.begin( ), translator.end( ), (unsigned short) (*I).material);
 			if (i != translator.end( ))
 			{
 				(*I).material = (*i).m_index;
@@ -200,7 +200,7 @@ void CLevel::Load_GameSpecific_CFORM(CDB::TRI* tris, u32 count)
 		CDB::TRI* E = tris + count;
 		for (; I != E; ++I)
 		{
-			ID_INDEX_PAIRS::iterator	i = std::lower_bound(translator.begin( ), translator.end( ), (U16) (*I).material);
+			ID_INDEX_PAIRS::iterator	i = std::lower_bound(translator.begin( ), translator.end( ), (unsigned short) (*I).material);
 			if ((i != translator.end( )) && ((*i).m_id == (*I).material))
 			{
 				(*I).material = (*i).m_index;

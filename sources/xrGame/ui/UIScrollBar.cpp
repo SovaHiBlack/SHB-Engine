@@ -288,7 +288,7 @@ int CUIScrollBar::PosViewFromScroll(int view_size, int view_offs)
 	return scroll_size ? (m_iScrollPos * work_size + scroll_size * view_offs - m_iMinPos * work_size) / scroll_size : 0;
 }
 
-void CUIScrollBar::SendMessage(CUIWindow* pWnd, S16 msg, void* pData)
+void CUIScrollBar::SendMessage(CUIWindow* pWnd, signed short msg, void* pData)
 {
 	if (pWnd == m_DecButton)
 	{

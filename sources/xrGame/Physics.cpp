@@ -32,7 +32,7 @@ const dReal			default_k_l = 0.0002f;//square resistance !!
 const dReal			default_k_w = 0.05f;
 
 const dReal			mass_limit = 10000.f;//some conventional value used as evaluative param (there is no code restriction on mass)
-extern const U16	max_joint_allowed_for_exeact_integration = 30;
+extern const unsigned short	max_joint_allowed_for_exeact_integration = 30;
 
 //base	params
 const dReal base_fixed_step = 0.02f;
@@ -125,8 +125,8 @@ inline static int CollideIntoGroup(dGeomID o1, dGeomID o2, dJointGroupID jointGr
 		bool do_collide = true;
 		dxGeomUserData* usr_data_1 = nullptr;
 		dxGeomUserData* usr_data_2 = nullptr;
-		U16				material_idx_1 = 0;
-		U16				material_idx_2 = 0;
+		unsigned short				material_idx_1 = 0;
+		unsigned short				material_idx_2 = 0;
 
 		surface.mu = 1.0f;// 5000.f;
 		surface.soft_erp = 1.0f;//ERP(world_spring,world_damping);
@@ -155,12 +155,12 @@ inline static int CollideIntoGroup(dGeomID o1, dGeomID o2, dJointGroupID jointGr
 
 		if (is_tri_1)
 		{
-			material_idx_1 = (U16) surface.mode;
+			material_idx_1 = (unsigned short) surface.mode;
 		}
 
 		if (is_tri_2)
 		{
-			material_idx_2 = (U16) surface.mode;
+			material_idx_2 = (unsigned short) surface.mode;
 		}
 
 		SGameMtl* material_1 = GMLib.GetMaterialByIdx(material_idx_1);

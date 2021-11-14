@@ -7,9 +7,9 @@
 
 motions_container* g_pMotionsContainer	= nullptr;
 
-U16 find_bone_id(vecBones* bones, CSharedString nm)
+unsigned short find_bone_id(vecBones* bones, CSharedString nm)
 {
-	for (U16 i = 0; i < (U16) bones->size( ); i++)
+	for (unsigned short i = 0; i < (unsigned short) bones->size( ); i++)
 	{
 		if (bones->at(i)->name == nm)
 		{
@@ -32,16 +32,16 @@ BOOL motions_value::load		(const char* N, IReader *data, vecBones* bones)
 
 	if (MP)
 	{
-		U16 vers 				= MP->r_u16();
-		U16 part_bone_cnt		= 0;
+		unsigned short vers 				= MP->r_u16();
+		unsigned short part_bone_cnt		= 0;
 		string128 				buf;
 		R_ASSERT3				(vers<=xrOGF_SMParamsVersion,"Invalid OGF/OMF version:",N);
 		
 		// partitions
-		U16						part_count;
+		unsigned short						part_count;
 		part_count 				= MP->r_u16();
 
-		for (U16 part_i=0; part_i<part_count; part_i++)
+		for (unsigned short part_i=0; part_i<part_count; part_i++)
 		{
 			CPartDef& PART		= m_partition[part_i];
 			MP->r_stringZ		(buf,sizeof(buf));
@@ -51,29 +51,29 @@ BOOL motions_value::load		(const char* N, IReader *data, vecBones* bones)
 			for (xr_vector<u32>::iterator b_it=PART.bones.begin(); b_it<PART.bones.end(); b_it++)
 			{
 				MP->r_stringZ	(buf,sizeof(buf));
-				U16 m_idx 		= U16(MP->r_u32());
+				unsigned short m_idx 		= unsigned short(MP->r_u32());
 				*b_it			= find_bone_id	(bones,buf); 
 
 				VERIFY3			(*b_it!=BI_NONE,"Can't find bone:",buf);
 
 				if (bRes)
 				{
-					rm_bones[m_idx] = U16(*b_it);
+					rm_bones[m_idx] = unsigned short(*b_it);
 				}
 			}
 
-			part_bone_cnt		= U16(part_bone_cnt + (U16)PART.bones.size());
+			part_bone_cnt		= unsigned short(part_bone_cnt + (unsigned short)PART.bones.size());
 		}
 
-		VERIFY3(part_bone_cnt==(U16)bones->size(),"Different bone count '%s'",N);
+		VERIFY3(part_bone_cnt==(unsigned short)bones->size(),"Different bone count '%s'",N);
 
 		if (bRes)
 		{
 			// motion defs (cycle&fx)
-			U16 mot_count			= MP->r_u16();
+			unsigned short mot_count			= MP->r_u16();
 			m_mdefs.resize			(mot_count);
 
-			for (U16 mot_i=0; mot_i<mot_count; mot_i++)
+			for (unsigned short mot_i=0; mot_i<mot_count; mot_i++)
 			{
 				MP->r_stringZ		(buf,sizeof(buf));
 				CSharedString nm		= _strlwr		(buf);
@@ -123,7 +123,7 @@ BOOL motions_value::load		(const char* N, IReader *data, vecBones* bones)
 		m_motions[bones->at(i)->name].resize(dwCNT);
 
 	// load motions
-	for (U16 m_idx=0; m_idx<(U16)dwCNT; m_idx++){
+	for (unsigned short m_idx=0; m_idx<(unsigned short)dwCNT; m_idx++){
 		string128			mname;
 		R_ASSERT			(MS->find_chunk(m_idx+1));             
 		MS->r_stringZ		(mname,sizeof(mname));
@@ -136,7 +136,7 @@ BOOL motions_value::load		(const char* N, IReader *data, vecBones* bones)
 #endif
 		u32 dwLen			= MS->r_u32();
 		for (u32 i=0; i<bones->size(); i++){
-			U16 bone_id		= rm_bones[i];
+			unsigned short bone_id		= rm_bones[i];
 			VERIFY2			(bone_id!=BI_NONE,"Invalid remap index.");
 			CMotion&		M	= m_motions[bones->at(bone_id)->name][m_idx];
 			M.set_count			(dwLen);
@@ -251,7 +251,7 @@ void motions_container::dump()
 
 //////////////////////////////////////////////////////////////////////////
 // High level control
-void CMotionDef::Load(IReader* MP, u32 fl, U16 version)
+void CMotionDef::Load(IReader* MP, u32 fl, unsigned short version)
 {
 	// params
 	bone_or_part= MP->r_u16(); // bCycle?part_id:bone_id;
@@ -260,10 +260,10 @@ void CMotionDef::Load(IReader* MP, u32 fl, U16 version)
 	power		= Quantize(MP->r_float());
 	accrue		= Quantize(MP->r_float());
 	falloff		= Quantize(MP->r_float());
-	flags		= (U16)fl;
+	flags		= (unsigned short)fl;
 	if (!(flags & esmFX) && (falloff >= accrue))
 	{
-		falloff = U16(accrue - 1);
+		falloff = unsigned short(accrue - 1);
 	}
 
 	if(version>=4)

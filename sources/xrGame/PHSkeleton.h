@@ -30,7 +30,7 @@ private:
 	void	SpawnCopy( );
 	//Autoremove
 	bool	ReadyForRemove( );
-	void	RecursiveBonesCheck(U16 id);
+	void	RecursiveBonesCheck(unsigned short id);
 
 protected:
 	void			LoadNetState(CNetPacket& P);

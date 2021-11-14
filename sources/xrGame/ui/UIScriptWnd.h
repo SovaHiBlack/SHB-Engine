@@ -14,7 +14,7 @@ class CUIDialogWndEx : public CUIDialogWnd, public DLL_Pure
 
 private:
 	CALLBACKS								m_callbacks;
-	virtual void		SendMessage			(CUIWindow* pWnd, S16 msg, void* pData = nullptr);
+	virtual void		SendMessage			(CUIWindow* pWnd, signed short msg, void* pData = nullptr);
 	SCallbackInfo*		NewCallback			( );
 
 protected:
@@ -25,8 +25,8 @@ public:
 	void				Register			(CUIWindow* pChild, const char* name);
 						CUIDialogWndEx		( );
 	virtual				~CUIDialogWndEx		( );
-	void				AddCallback			(const char* control_id, S16 event, const luabind::functor<void>& lua_function);
-	void				AddCallback			(const char* control_id, S16 event, const luabind::functor<void>& functor, const luabind::object& object);
+	void				AddCallback			(const char* control_id, signed short event, const luabind::functor<void>& lua_function);
+	void				AddCallback			(const char* control_id, signed short event, const luabind::functor<void>& functor, const luabind::object& object);
 	virtual void		Update				( );
 	virtual bool		OnKeyboard			(int dik, EUIMessages keyboard_action);
 	virtual bool		Dispatch			(int cmd, int param)

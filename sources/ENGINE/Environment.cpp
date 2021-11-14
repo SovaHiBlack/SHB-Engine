@@ -41,9 +41,9 @@ CEnvironment::CEnvironment( )
 	const Fvector3* verts;
 	CloudsVerts.resize(xrHemisphereVertices(2, verts));
 	CopyMemory(&CloudsVerts.front( ), verts, CloudsVerts.size( ) * sizeof(Fvector3));
-	const U16* indices;
+	const unsigned short* indices;
 	CloudsIndices.resize(xrHemisphereIndices(2, indices));
-	CopyMemory(&CloudsIndices.front( ), indices, CloudsIndices.size( ) * sizeof(U16));
+	CopyMemory(&CloudsIndices.front( ), indices, CloudsIndices.size( ) * sizeof(unsigned short));
 
 	// perlin noise
 	PerlinNoise1D = xr_new<CPerlinNoise1D>(Random.randI(0, 0xFFFF));

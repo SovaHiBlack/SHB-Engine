@@ -45,7 +45,7 @@ public:
 	virtual void		Load(const char* section);
 	virtual void		reinit( );
 	virtual void		reload(const char* section);
-	virtual void		OnEvent(CNetPacket& P, U16 type);
+	virtual void		OnEvent(CNetPacket& P, unsigned short type);
 
 	// serialization
 	virtual void	save(CNetPacket& output_packet);
@@ -196,7 +196,7 @@ public:
 	virtual void			ChangeReputation(CharacterReputationValue);
 
 	// для работы с relation system
-	U16								object_id( ) const;
+	unsigned short								object_id( ) const;
 	CharacterCommunityIndex		Community( ) const
 	{
 		return CharacterInfo( ).Community( ).index( );

@@ -40,7 +40,7 @@ void CIKLimb::Invalidate()
 {
 //	m_prev_frame			=u32(-1)											;
 //	m_prev_state_anim		=false												;
-	m_id					= U16(-1)											;
+	m_id					= unsigned short(-1)											;
 	m_toe_position			.set(0,0,0)											;
 	m_bones[0]				=BI_NONE											;	
 	m_bones[1]				=BI_NONE											;	
@@ -232,7 +232,7 @@ inline void free_limits( float &min, float &max)
 	min = 0  ;max = 2 * M_PI  ;
 }
 
-void CIKLimb::Create(U16 id, CKinematics* K, const U16 bones[4], const Fvector3& toe_pos, bool collide_ )
+void CIKLimb::Create(unsigned short id, CKinematics* K, const unsigned short bones[4], const Fvector3& toe_pos, bool collide_ )
 {
 	m_id	 = id;
 	m_collide= collide_;
@@ -619,7 +619,7 @@ void	CIKLimb::SetAnimGoal			(SCalculateData& cd)
 	cd.apply = true;
 }
 
-void	CIKLimb::Update( CGameObject *O, const	CBlend *b, U16 interval )
+void	CIKLimb::Update( CGameObject *O, const	CBlend *b, unsigned short interval )
 {
 	if(!m_collide)
 				return;
@@ -667,7 +667,7 @@ void CIKLimb::Collide( SIKCollideData &cld, CGameObject *O, const Fmatrix &foot,
 				if( K )
 				{
 					float dist = l_pick_dist;
-					if( K->PickBone(R.O->XFORM(), cld.m_plane.n, dist,  pos, pick_v,(U16) R.element))
+					if( K->PickBone(R.O->XFORM(), cld.m_plane.n, dist,  pos, pick_v,(unsigned short) R.element))
 					{
 						cld.collided = true;
 						Fvector3 point;
@@ -790,7 +790,7 @@ void	DBG_DrawRotationLimitsX(const Fmatrix &start,float ang, float l, float h )
 #endif // DEBUG
 }
 
-void	DBG_DrawRotation3(const Fmatrix &start, const float angs[7], const AngleInt limits[7], U16 y, U16 z, U16 x)
+void	DBG_DrawRotation3(const Fmatrix &start, const float angs[7], const AngleInt limits[7], unsigned short y, unsigned short z, unsigned short x)
 {
 	Fmatrix DBGG = start;
 	DBG_DrawRotationLimitsY( DBGG, -angs[y], -limits[y].Low(), -limits[y].High() );
@@ -807,7 +807,7 @@ inline void ang_evaluate(Fmatrix& M, const float ang[3] )
 	M.mul_43(Fmatrix().mul_43( ry, rz ), rx);
 }
 
-inline void CIKLimb:: get_start( Fmatrix &start, SCalculateData &D, U16 bone )
+inline void CIKLimb:: get_start( Fmatrix &start, SCalculateData &D, unsigned short bone )
 {
 	CKinematics		*K	=D.m_K;
 	VERIFY( K );

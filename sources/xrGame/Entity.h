@@ -129,10 +129,10 @@ public:
 
 	virtual void			Die(CObject* who);
 //			void			KillEntity			(CObject* who);
-	void			KillEntity(U16 whoID);
+	void			KillEntity(unsigned short whoID);
 
 	// Events
-	virtual void			OnEvent(CNetPacket& P, U16 type);
+	virtual void			OnEvent(CNetPacket& P, unsigned short type);
 
 	virtual BOOL			IsVisibleForHUD( )
 	{
@@ -152,7 +152,7 @@ private:
 	ALife::_OBJECT_ID		m_killer_id;
 
 public:
-	inline		U16				killer_id( ) const
+	inline		unsigned short				killer_id( ) const
 	{
 		return m_killer_id;
 	}

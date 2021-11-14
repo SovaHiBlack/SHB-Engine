@@ -71,7 +71,7 @@ namespace PAPI{
 
 		inline BOOL		Add				(const pVector &pos, const pVector &posB,
 									const pVector &size, const pVector &rot, const pVector &vel, u32 color,
-									const float age = 0.0f, U16 frame=0, U16 flags=0)
+									const float age = 0.0f, unsigned short frame=0, unsigned short flags=0)
 		{
 			if(p_count >= max_particles)	return FALSE;
 			else{

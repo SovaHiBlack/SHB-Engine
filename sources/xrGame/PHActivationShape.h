@@ -28,9 +28,9 @@ public:
 
 							CPHActivationShape		( );
 							~CPHActivationShape		( );
-	void					Create					(const Fvector3 start_pos, const Fvector3 start_size, CPHShellHolder* ref_obj, EType type = etBox, U16 flags = 0);
+	void					Create					(const Fvector3 start_pos, const Fvector3 start_size, CPHShellHolder* ref_obj, EType type = etBox, unsigned short flags = 0);
 	void					Destroy					( );
-	bool					Activate				(const Fvector3 need_size, U16 steps, float max_displacement, float max_rotation, bool un_freeze_later = false);
+	bool					Activate				(const Fvector3 need_size, unsigned short steps, float max_displacement, float max_rotation, bool un_freeze_later = false);
 	const Fvector3&			Position				( );
 	void					Size					(Fvector3& size);
 	dBodyID					ODEBody					( )
@@ -43,14 +43,14 @@ private:
 	virtual void			PhDataUpdate			(dReal step);
 	virtual void			PhTune					(dReal step);
 	virtual void			CutVelocity				(float l_limit, float a_limit);
-	virtual void			InitContact				(dContact* c, bool& do_collide, U16, U16);
+	virtual void			InitContact				(dContact* c, bool& do_collide, unsigned short, unsigned short);
 	virtual dGeomID			dSpacedGeom				( );
 	virtual void			get_spatial_params		( );
-	virtual U16				get_elements_number		( )
+	virtual unsigned short				get_elements_number		( )
 	{
 		return 0;
 	}
-	virtual CPHSynchronize* get_element_sync		(U16 element)
+	virtual CPHSynchronize* get_element_sync		(unsigned short element)
 	{
 		return NULL;
 	}

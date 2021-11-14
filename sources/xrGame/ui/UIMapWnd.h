@@ -91,7 +91,7 @@ public:
 	virtual bool				OnKeyboard					(int dik, EUIMessages keyboard_action);
 	virtual bool				OnKeyboardHold				(int dik);
 
-	virtual void				SendMessage					(CUIWindow* pWnd, S16 msg, void* pData = nullptr);
+	virtual void				SendMessage					(CUIWindow* pWnd, signed short msg, void* pData = nullptr);
 
 	void						SetTargetMap				(CUICustomMap* m, bool bZoomIn = false);
 	void						SetTargetMap				(CUICustomMap* m, const Fvector2& pos, bool bZoomIn = false);

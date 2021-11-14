@@ -4,4 +4,4 @@ typedef void __stdcall		xrHemisphereIterator(float x, float y, float z, float en
 
 void	xrHemisphereBuild		(int quality, float energy, xrHemisphereIterator* it, LPVOID param);
 int		xrHemisphereVertices	(int quality, const Fvector3*& verts);
-int		xrHemisphereIndices		(int quality, const U16*& indices);
+int		xrHemisphereIndices		(int quality, const unsigned short*& indices);

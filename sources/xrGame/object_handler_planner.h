@@ -64,8 +64,8 @@ public:
 	inline		u32				current_action_state_id	() const;
 	inline		u32				action_object_id		(_condition_type action_id) const;
 	inline		u32				action_state_id			(_condition_type action_id) const;
-	inline		void			add_condition			(CSActionBase *action, U16 id, EWorldProperties property, _value_type value);
-	inline		void			add_effect				(CSActionBase *action, U16 id, EWorldProperties property, _value_type value);
+	inline		void			add_condition			(CSActionBase *action, unsigned short id, EWorldProperties property, _value_type value);
+	inline		void			add_effect				(CSActionBase *action, unsigned short id, EWorldProperties property, _value_type value);
 	inline		CStalker		&object					() const;
 
 public:

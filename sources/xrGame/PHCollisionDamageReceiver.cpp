@@ -11,7 +11,7 @@
 #include "Messages.h"
 #include "CharacterPhysicsSupport.h"
 
-void CPHCollisionDamageReceiver::BoneInsert(U16 id, float k)
+void CPHCollisionDamageReceiver::BoneInsert(unsigned short id, float k)
 {
 	R_ASSERT2(FindBone(id) == m_controled_bones.end( ), "duplicate bone!");
 	m_controled_bones.push_back(SControledBone(id, k));
@@ -28,7 +28,7 @@ void CPHCollisionDamageReceiver::Init( )
 		for (CConfigurationFile::SectCIt I = data.Data.begin( ); I != data.Data.end( ); I++)
 		{
 			const CConfigurationFile::SItem& item = *I;
-			U16 index = K->LL_BoneID(*item.first);
+			unsigned short index = K->LL_BoneID(*item.first);
 			R_ASSERT3(index != BI_NONE, "Wrong bone name", *item.first);
 			BoneInsert(index, float(atof(*item.second)));
 			CCodeGeom* og = sh->PPhysicsShell( )->get_GeomByID(index);
@@ -63,7 +63,7 @@ void CPHCollisionDamageReceiver::CollisionCallback(bool& do_colide, bool bo1, dC
 		o_damager = ud_damager->ph_ref_object;
 	}
 
-	U16 source_id = o_damager ? o_damager->ID( ) : U16(-1);
+	unsigned short source_id = o_damager ? o_damager->ID( ) : unsigned short(-1);
 	CPHCollisionDamageReceiver* dr = o_self->PHCollisionDamageReceiver( );
 	VERIFY2(dr, "wrong callback");
 
@@ -92,7 +92,7 @@ void CPHCollisionDamageReceiver::CollisionCallback(bool& do_colide, bool bo1, dC
 }
 
 const static float hit_threthhold = 5.f;
-void CPHCollisionDamageReceiver::Hit(U16 source_id, U16 bone_id, float power, const Fvector3& dir, Fvector3& pos)
+void CPHCollisionDamageReceiver::Hit(unsigned short source_id, unsigned short bone_id, float power, const Fvector3& dir, Fvector3& pos)
 {
 	DAMAGE_BONES_I i = FindBone(bone_id);
 	if (i == m_controled_bones.end( ))
@@ -127,7 +127,7 @@ void CPHCollisionDamageReceiver::Hit(U16 source_id, U16 bone_id, float power, co
 void CPHCollisionDamageReceiver::Clear( )
 {
 	//CPHShellHolder *sh	=PPhysicsShellHolder	();
-	//xr_map<U16,float>::iterator i=m_controled_bones.begin(),e=m_controled_bones.end();
+	//xr_map<unsigned short,float>::iterator i=m_controled_bones.begin(),e=m_controled_bones.end();
 	//for(;e!=i;++i)
 	//{
 	//	CCodeGeom* og= sh->PPhysicsShell()->get_GeomByID(i->first);

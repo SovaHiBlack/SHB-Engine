@@ -9,7 +9,7 @@ struct SCarLight
 {
 	ref_light				light_render;
 	ref_glow				glow_render;
-	U16						bone_id;
+	unsigned short						bone_id;
 	CCarLights*				m_holder;
 			SCarLight		();
 			~SCarLight		();
@@ -36,8 +36,8 @@ public:
 	void	SwitchHeadLights	()								;
 	void	TurnOnHeadLights	()								;
 	void	TurnOffHeadLights	()								;
-	bool	IsLight				(U16 bone_id)					;
-	bool	findLight			(U16 bone_id,SCarLight* &light);
+	bool	IsLight				(unsigned short bone_id)					;
+	bool	findLight			(unsigned short bone_id,SCarLight* &light);
 			CCarLights			()								;
 			~CCarLights			()								;
 protected:

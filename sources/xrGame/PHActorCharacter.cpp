@@ -151,7 +151,7 @@ void SPHCharacterRestrictor::SetPhysicsRefObject(CPHShellHolder* ref_object)
 	if (m_character)
 		dGeomUserDataSetPhysicsRefObject(m_restrictor, ref_object);
 }
-void CPHActorCharacter::SetMaterial(U16 material)
+void CPHActorCharacter::SetMaterial(unsigned short material)
 {
 	inherited::SetMaterial(material);
 	if (!b_exist) return;
@@ -161,7 +161,7 @@ void CPHActorCharacter::SetMaterial(U16 material)
 		(*i)->SetMaterial(material);
 	}
 }
-void SPHCharacterRestrictor::SetMaterial(U16 material)
+void SPHCharacterRestrictor::SetMaterial(unsigned short material)
 {
 	dGeomGetUserData(m_restrictor)->material = material;
 }
@@ -248,7 +248,7 @@ struct SFindPredicate
 	}
 };
 
-void CPHActorCharacter::InitContact(dContact* c, bool& do_collide, U16 material_idx_1, U16 material_idx_2)
+void CPHActorCharacter::InitContact(dContact* c, bool& do_collide, unsigned short material_idx_1, unsigned short material_idx_2)
 {
 	bool b1;
 	SFindPredicate fp(c, &b1);

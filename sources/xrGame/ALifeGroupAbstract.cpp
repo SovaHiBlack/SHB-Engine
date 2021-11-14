@@ -68,7 +68,7 @@ void CSE_ALifeGroupAbstract::switch_offline( )
 			tpGroup->m_tGraphID = ai( ).cross_table( ).vertex(dwNodeID).game_vertex_id( );
 			tpGroup->m_fDistanceToPoint = ai( ).cross_table( ).vertex(dwNodeID).distance( );
 			tpGroup->m_tNextGraphID = tpGroup->m_tGraphID;
-			U16 wNeighbourCount = ai( ).game_graph( ).vertex(tpGroup->m_tGraphID)->edge_count( );
+			unsigned short wNeighbourCount = ai( ).game_graph( ).vertex(tpGroup->m_tGraphID)->edge_count( );
 			CGameGraph::const_iterator	i, e;
 			ai( ).game_graph( ).begin(tpGroup->m_tGraphID, i, e);
 			tpGroup->m_tPrevGraphID = (*(i + object->randI(0, wNeighbourCount))).vertex_id( );

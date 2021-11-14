@@ -209,7 +209,7 @@ void CPHShellHolder::deactivate_physics_shell( )
 	xr_delete(m_pPhysicsShell);
 }
 
-void CPHShellHolder::PHSetMaterial(U16 m)
+void CPHShellHolder::PHSetMaterial(unsigned short m)
 {
 	if (m_pPhysicsShell)
 	{
@@ -251,7 +251,7 @@ float CPHShellHolder::GetMass( )
 	return m_pPhysicsShell ? m_pPhysicsShell->getMass( ) : 0;
 }
 
-U16 CPHShellHolder::PHGetSyncItemsNumber( )
+unsigned short CPHShellHolder::PHGetSyncItemsNumber( )
 {
 	if (m_pPhysicsShell)
 	{
@@ -263,7 +263,7 @@ U16 CPHShellHolder::PHGetSyncItemsNumber( )
 	}
 }
 
-CPHSynchronize* CPHShellHolder::PHGetSyncItem(U16 item)
+CPHSynchronize* CPHShellHolder::PHGetSyncItem(unsigned short item)
 {
 	if (m_pPhysicsShell)
 	{
@@ -362,8 +362,8 @@ void CPHShellHolder::PHSaveState(CNetPacket& P)
 	max.set(-flt_max, -flt_max, -flt_max);
 	/////////////////////////////////////
 
-	U16 bones_number = PHGetSyncItemsNumber( );
-	for (U16 i = 0; i < bones_number; i++)
+	unsigned short bones_number = PHGetSyncItemsNumber( );
+	for (unsigned short i = 0; i < bones_number; i++)
 	{
 		SPHNetState state;
 		PHGetSyncItem(i)->get_State(state);
@@ -408,7 +408,7 @@ void CPHShellHolder::PHSaveState(CNetPacket& P)
 
 	P.w_u16(bones_number);
 
-	for (U16 i = 0; i < bones_number; i++)
+	for (unsigned short i = 0; i < bones_number; i++)
 	{
 		SPHNetState state;
 		PHGetSyncItem(i)->get_State(state);
@@ -432,8 +432,8 @@ void CPHShellHolder::PHLoadState(IReader& P)
 
 	VERIFY(!min.similar(max));
 
-	U16 bones_number = P.r_u16( );
-	for (U16 i = 0; i < bones_number; i++)
+	unsigned short bones_number = P.r_u16( );
+	for (unsigned short i = 0; i < bones_number; i++)
 	{
 		SPHNetState state;
 		state.net_Load(P, min, max);

@@ -25,31 +25,31 @@ template <typename _index_type, typename _data_type>
 class CALifeAbstractRegistry;
 
 //для всех персонажей, те порции информации, которые они помнят
-typedef CALifeAbstractRegistry<U16, KNOWN_INFO_VECTOR> CInfoPortionRegistry;
+typedef CALifeAbstractRegistry<unsigned short, KNOWN_INFO_VECTOR> CInfoPortionRegistry;
 add_to_registry_type_list(CInfoPortionRegistry)
 #define info_portions define_constant(CInfoPortionRegistry)
 #define registry_type_list save_registry_type_list(CInfoPortionRegistry)
 
 //для всех персонажей, отношения с другими персонажами
-typedef CALifeAbstractRegistry<U16, SRelationData> CRelationRegistry;
+typedef CALifeAbstractRegistry<unsigned short, SRelationData> CRelationRegistry;
 add_to_registry_type_list(CRelationRegistry)
 #define character_relations define_constant(CRelationRegistry)
 #define registry_type_list save_registry_type_list(CRelationRegistry)
 
 //для актеров, список персонажей с которыми были разговоры
-typedef CALifeAbstractRegistry<U16, TALK_CONTACT_VECTOR> CKnownContactsRegistry;
+typedef CALifeAbstractRegistry<unsigned short, TALK_CONTACT_VECTOR> CKnownContactsRegistry;
 add_to_registry_type_list(CKnownContactsRegistry)
 #define known_contacts define_constant(CKnownContactsRegistry)
 #define registry_type_list save_registry_type_list(CKnownContactsRegistry)
 
 // список статей энциклопедии, которые знает актер
-typedef CALifeAbstractRegistry<U16, ARTICLE_VECTOR> CEncyclopediaRegistry;
+typedef CALifeAbstractRegistry<unsigned short, ARTICLE_VECTOR> CEncyclopediaRegistry;
 add_to_registry_type_list(CEncyclopediaRegistry)
 #define encyclopedia_articles define_constant(CEncyclopediaRegistry) 
 #define registry_type_list save_registry_type_list(CEncyclopediaRegistry)
 
 // список новостей полученных актером, состоит из новостей симуляции и сюжетных (скриптованых) новостей
-typedef CALifeAbstractRegistry<U16, GameNewsVec> CGameNewsRegistry;
+typedef CALifeAbstractRegistry<unsigned short, GameNewsVec> CGameNewsRegistry;
 add_to_registry_type_list(CGameNewsRegistry)
 #define game_news define_constant(CGameNewsRegistry)
 #define registry_type_list save_registry_type_list(CGameNewsRegistry)

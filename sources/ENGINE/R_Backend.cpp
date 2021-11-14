@@ -7,7 +7,7 @@ void CBackend::CreateQuadIB		()
 {
 	const u32 dwTriCount	= 4*1024;
 	const u32 dwIdxCount	= dwTriCount*2*3;
-	U16*Indices		= 0;
+	unsigned short* Indices		= 0;
 	u32		dwUsage			= D3DUSAGE_WRITEONLY;
 	if (HW.Caps.geometry.bSoftware)	dwUsage|=D3DUSAGE_SOFTWAREPROCESSING;
 	R_CHK(HW.pDevice->CreateIndexBuffer(dwIdxCount*2,dwUsage,D3DFMT_INDEX16,D3DPOOL_MANAGED,&QuadIB,NULL));
@@ -17,13 +17,13 @@ void CBackend::CreateQuadIB		()
 		int		ICnt= 0;
 		for (int i=0; i<dwTriCount; i++)
 		{
-			Indices[ICnt++]= U16(Cnt+0);
-			Indices[ICnt++]= U16(Cnt+1);
-			Indices[ICnt++]= U16(Cnt+2);
+			Indices[ICnt++]= unsigned short(Cnt+0);
+			Indices[ICnt++]= unsigned short(Cnt+1);
+			Indices[ICnt++]= unsigned short(Cnt+2);
 
-			Indices[ICnt++]= U16(Cnt+3);
-			Indices[ICnt++]= U16(Cnt+2);
-			Indices[ICnt++]= U16(Cnt+1);
+			Indices[ICnt++]= unsigned short(Cnt+3);
+			Indices[ICnt++]= unsigned short(Cnt+2);
+			Indices[ICnt++]= unsigned short(Cnt+1);
 
 			Cnt+=4;
 		}

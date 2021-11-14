@@ -13,7 +13,7 @@ struct SAllDDOParams
 	void				Load	(CConfigurationFile* ini);
 	SOneDDOParams				translational;
 	SOneDDOParams				rotational;
-	U16							L2frames;
+	unsigned short							L2frames;
 };
 
 struct SAllDDWParams

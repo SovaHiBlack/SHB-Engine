@@ -187,7 +187,7 @@ void CUITradeWnd::InitTrade(CInventoryOwner* pOur, CInventoryOwner* pOthers)
 	UpdateLists(eBoth);
 }
 
-void CUITradeWnd::SendMessage(CUIWindow* pWnd, S16 msg, void* pData)
+void CUITradeWnd::SendMessage(CUIWindow* pWnd, signed short msg, void* pData)
 {
 	if (pWnd == &m_uidata->UIToTalkButton && msg == BUTTON_CLICKED)
 	{

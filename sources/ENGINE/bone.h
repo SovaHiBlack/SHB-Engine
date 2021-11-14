@@ -4,7 +4,7 @@
 // refs
 class CBone;
 
-const	U16		BI_NONE				= U16(-1);
+const unsigned short		BI_NONE				= unsigned short(-1);
 
 #define OGF_IKDATA_VERSION		0x0001
 
@@ -42,7 +42,7 @@ struct SBoneShape
 		stBox,
 		stSphere,
 		stCylinder,
-		stForceU32 = U16(-1)
+		stForceU32 = unsigned short(-1)
 	};
 
 	enum EShapeFlags{
@@ -51,7 +51,7 @@ struct SBoneShape
 		sfNoPhysics			= (1<<2),	
 	};
 
-	U16				type;		// 2
+	unsigned short				type;		// 2
 	Flags16			flags;		// 2
 	Fobb			box;      	// 15*4
 	Fsphere			sphere;		// 4*4
@@ -126,7 +126,7 @@ struct SJointIKData
 
 		F.w_float		(friction);
 	}
-	bool				Import(IReader& F, U16 vers)
+	bool				Import(IReader& F, unsigned short vers)
 	{
 		type			= (EJointType)F.r_u32();
 		F.r				(limits,sizeof(SJointLimit)*3);

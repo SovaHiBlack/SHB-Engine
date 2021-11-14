@@ -39,7 +39,7 @@ class game_cl_GameState : public game_GameState, public ISheduled
 
 protected:
 	CUIGameCustom* m_game_ui_custom;
-	U16														m_u16VotingEnabled;
+	unsigned short														m_u16VotingEnabled;
 	bool													m_bServerControlHits;
 
 public:
@@ -131,14 +131,14 @@ public:
 	void						StartStopMenu(CUIDialogWnd* pDialog, bool bDoHideIndicators);
 	virtual void				shedule_Update(u32 dt);
 
-	void						u_EventGen(CNetPacket& P, U16 type, U16 dest);
+	void						u_EventGen(CNetPacket& P, unsigned short type, unsigned short dest);
 	void						u_EventSend(CNetPacket& P);
 
 	virtual void				OnChatMessage(CNetPacket* P)
 	{ }
 	virtual void				OnWarnMessage(CNetPacket* P)
 	{ }
-	virtual void				OnRadminMessage(U16 type, CNetPacket* P)
+	virtual void				OnRadminMessage(unsigned short type, CNetPacket* P)
 	{ }
 
 	virtual void				OnRender( )
@@ -165,5 +165,5 @@ public:
 	virtual void				OnDestroy(CObject* pObj)
 	{ }
 
-	virtual void				SendPickUpEvent(U16 ID_who, U16 ID_what);
+	virtual void				SendPickUpEvent(unsigned short ID_who, unsigned short ID_what);
 };

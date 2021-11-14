@@ -49,7 +49,7 @@ void CGrenade::Load(const char* section)
 
 void CGrenade::Hit(SHit* pHDS)
 {
-	if (ALife::eHitTypeExplosion == pHDS->hit_type && m_grenade_detonation_threshold_hit < pHDS->damage( ) && CExplosive::Initiator( ) == U16(-1))
+	if (ALife::eHitTypeExplosion == pHDS->hit_type && m_grenade_detonation_threshold_hit < pHDS->damage( ) && CExplosive::Initiator( ) == unsigned short(-1))
 	{
 		CExplosive::SetCurrentParentID(pHDS->who->ID( ));
 		Destroy( );
@@ -178,7 +178,7 @@ bool CGrenade::Useful( ) const
 	return res;
 }
 
-void CGrenade::OnEvent(CNetPacket& P, U16 type)
+void CGrenade::OnEvent(CNetPacket& P, unsigned short type)
 {
 	inherited::OnEvent(P, type);
 	CExplosive::OnEvent(P, type);

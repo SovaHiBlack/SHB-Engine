@@ -50,21 +50,21 @@ struct	game_PlayerState
 	float		experience_D;
 	unsigned char			rank;
 	unsigned char			af_count;
-	U16			flags__;
+	unsigned short			flags__;
 
-	U16			ping;
+	unsigned short			ping;
 
-	U16			GameID;
+	unsigned short			GameID;
 
-	U16			lasthitter;
-	U16			lasthitweapon;
+	unsigned short			lasthitter;
+	unsigned short			lasthitweapon;
 	signed char			skin;
 	u32			RespawnTime;
 	u32			DeathTime;
 	signed short			money_delta;
 	unsigned char			m_bCurrentVoteAgreed;
-//	DEF_DEQUE	(OLD_GAME_ID, U16);
-	using OLD_GAME_ID = xr_deque<U16>;
+//	DEF_DEQUE	(OLD_GAME_ID, unsigned short);
+	using OLD_GAME_ID = xr_deque<unsigned short>;
 	using OLD_GAME_ID_it = OLD_GAME_ID::iterator;
 	OLD_GAME_ID	mOldIDs;
 	int			money_added;
@@ -75,13 +75,13 @@ public:
 					game_PlayerState		();
 					~game_PlayerState		();
 	virtual void	clear					();
-			bool	testFlag				(U16 f) const;
-			void	setFlag					(U16 f);
-			void	resetFlag				(U16 f);
+			bool	testFlag				(unsigned short f) const;
+			void	setFlag					(unsigned short f);
+			void	resetFlag				(unsigned short f);
 			const char* getName					(){return name;}
 			void	setName					(const char* s){strcpy(name,s);}
-			void	SetGameID				(U16 NewID);
-			bool	HasOldID				(U16 ID);
+			void	SetGameID				(unsigned short NewID);
+			bool	HasOldID				(unsigned short ID);
 			bool	IsSkip					() const {return testFlag(GAME_PLAYER_FLAG_SKIP);}
 			
 			signed short		frags					() const {return m_iRivalKills - m_iSelfKills - m_iTeamKills;}
@@ -90,8 +90,8 @@ public:
 	virtual void	net_Import				(CNetPacket& P);
 	//---------------------------------------
 	
-//	DEF_VECTOR(PLAYER_ITEMS_LIST, U16);
-	using PLAYER_ITEMS_LIST = xr_vector<U16>;
+//	DEF_VECTOR(PLAYER_ITEMS_LIST, unsigned short);
+	using PLAYER_ITEMS_LIST = xr_vector<unsigned short>;
 	using PLAYER_ITEMS_LIST_it = PLAYER_ITEMS_LIST::iterator;
 
 	PLAYER_ITEMS_LIST	pItemList;
@@ -115,7 +115,7 @@ add_to_type_list(game_PlayerState)
 struct game_TeamState
 {
 	int			score;
-	U16			num_targets;
+	unsigned short			num_targets;
 
 	game_TeamState();
 };
@@ -125,7 +125,7 @@ class	game_GameState : public DLL_Pure
 {
 protected:
 	int								m_type;
-	U16								m_phase;
+	unsigned short								m_phase;
 	int								m_round;
 	u32								m_start_time;
 
@@ -140,7 +140,7 @@ public:
 									game_GameState			();
 	virtual							~game_GameState			()								{}
 				u32					Type					() const						{return m_type;};
-				U16					Phase					() const						{return m_phase;};
+				unsigned short					Phase					() const						{return m_phase;};
 				int					Round					() const						{return m_round;};
 				u32					StartTime				() const						{return m_start_time;};
 	virtual		void				Create					(CSharedString& options)				{};

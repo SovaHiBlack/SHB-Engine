@@ -178,7 +178,7 @@ inline BOOL material_callback(collide::rq_result& result, LPVOID params)
 		CKinematics* K = PKinematics(result.O->renderable.visual);
 		if (K && (result.element > 0))
 		{
-			vis = g_pGamePersistent->MtlTransparent(K->LL_GetData(U16(result.element)).game_mtl_idx);
+			vis = g_pGamePersistent->MtlTransparent(K->LL_GetData(unsigned short(result.element)).game_mtl_idx);
 		}
 	}
 	else

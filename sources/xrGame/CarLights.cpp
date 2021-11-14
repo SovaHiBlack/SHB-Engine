@@ -181,12 +181,12 @@ void CCarLights::TurnOffHeadLights()
 	for(;i!=e;++i) (*i)->TurnOff();
 }
 
-bool CCarLights::IsLight(U16 bone_id)
+bool CCarLights::IsLight(unsigned short bone_id)
 {
 	SCarLight* light=NULL;
 	return findLight(bone_id,light);
 }
-bool CCarLights::findLight(U16 bone_id,SCarLight* &light)
+bool CCarLights::findLight(unsigned short bone_id,SCarLight* &light)
 {
 	LIGHTS_I i,e=m_lights.end();
 	SCarLight find_light;

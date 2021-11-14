@@ -110,7 +110,7 @@ void CActor::SetWeaponHideState(u32 State, bool bSet)
 	}
 }
 
-static U16 BestWeaponSlots[ ] =
+static unsigned short BestWeaponSlots[ ] =
 {
 	RIFLE_SLOT		,		// 2
 	PISTOL_SLOT		,		// 1

@@ -23,22 +23,22 @@ void CIKLimbsController::Create( CGameObject* O )
 	m_object = O;
 	VERIFY( K );
 	{
-		U16 bones[4]={K->LL_BoneID("bip01_l_upperarm"),K->LL_BoneID("bip01_l_forearm"),K->LL_BoneID("bip01_l_hand"),K->LL_BoneID("bip01_l_finger0")};
+		unsigned short bones[4]={K->LL_BoneID("bip01_l_upperarm"),K->LL_BoneID("bip01_l_forearm"),K->LL_BoneID("bip01_l_hand"),K->LL_BoneID("bip01_l_finger0")};
 		LimbSetup(bones);
 	}
 
 	{
-		U16 bones[4]={K->LL_BoneID("bip01_r_upperarm"),K->LL_BoneID("bip01_r_forearm"),K->LL_BoneID("bip01_r_hand"),K->LL_BoneID("bip01_r_finger0")};
+		unsigned short bones[4]={K->LL_BoneID("bip01_r_upperarm"),K->LL_BoneID("bip01_r_forearm"),K->LL_BoneID("bip01_r_hand"),K->LL_BoneID("bip01_r_finger0")};
 		LimbSetup(bones);
 	}
 
 	{
-		U16 bones[4]={K->LL_BoneID("bip01_l_thigh"),K->LL_BoneID("bip01_l_calf"),K->LL_BoneID("bip01_l_foot"),K->LL_BoneID("bip01_l_toe0")};
+		unsigned short bones[4]={K->LL_BoneID("bip01_l_thigh"),K->LL_BoneID("bip01_l_calf"),K->LL_BoneID("bip01_l_foot"),K->LL_BoneID("bip01_l_toe0")};
 		LimbSetup(bones);
 	}
 
 	{
-		U16 bones[4]={K->LL_BoneID("bip01_r_thigh"),K->LL_BoneID("bip01_r_calf"),K->LL_BoneID("bip01_r_foot"),K->LL_BoneID("bip01_r_toe0")};
+		unsigned short bones[4]={K->LL_BoneID("bip01_r_thigh"),K->LL_BoneID("bip01_r_calf"),K->LL_BoneID("bip01_r_foot"),K->LL_BoneID("bip01_r_toe0")};
 		LimbSetup(bones);
 	}
 	O->add_visual_callback(IKVisualCallback);
@@ -64,7 +64,7 @@ public SEnumVerticesCallback
 	}
 };
 
-void get_toe(CKinematics *skeleton, Fvector3& toe, const U16 bones[4])
+void get_toe(CKinematics *skeleton, Fvector3& toe, const unsigned short bones[4])
 {
 	VERIFY( skeleton );
 	xr_vector<Fmatrix> binds;
@@ -88,14 +88,14 @@ void get_toe(CKinematics *skeleton, Fvector3& toe, const U16 bones[4])
 	toe.x = _max( pos.x, toe.x );
 }
 
-void	CIKLimbsController::LimbSetup(  const U16 bones[4] )
+void	CIKLimbsController::LimbSetup(  const unsigned short bones[4] )
 {
 	_bone_chains.push_back( CIKLimb( ) );
 	CKinematicsAnimated *skeleton_animated = m_object->Visual( )->dcast_PKinematicsAnimated( );
 	VERIFY( skeleton_animated );
 	Fvector3 toe;
 	get_toe( skeleton_animated, toe, bones );
-	_bone_chains.back( ).Create( (U16) _bone_chains.size( )-1, skeleton_animated, bones, toe, true );//Fvector3( ).set( 0.13143f, 0, 0.20f )
+	_bone_chains.back( ).Create( (unsigned short) _bone_chains.size( )-1, skeleton_animated, bones, toe, true );//Fvector3( ).set( 0.13143f, 0, 0.20f )
 }
 
 void	CIKLimbsController::LimbCalculate( SCalculateData &cd )
@@ -104,7 +104,7 @@ void	CIKLimbsController::LimbCalculate( SCalculateData &cd )
 	cd.m_limb.Calculate(cd);
 }
 
-void	CIKLimbsController::LimbUpdate( CIKLimb &L, U16 i )
+void	CIKLimbsController::LimbUpdate( CIKLimb &L, unsigned short i )
 {
 	CKinematicsAnimated *skeleton_animated = m_object->Visual( )->dcast_PKinematicsAnimated( );
 	VERIFY( skeleton_animated );

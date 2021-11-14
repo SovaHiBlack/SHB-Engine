@@ -13,7 +13,7 @@
 
 namespace GameGraph
 {
-	typedef U16	_GRAPH_ID;
+	typedef unsigned short	_GRAPH_ID;
 	typedef unsigned char	_LEVEL_ID;
 	typedef unsigned char	_LOCATION_ID;
 

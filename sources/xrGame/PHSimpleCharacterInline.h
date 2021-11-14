@@ -24,11 +24,11 @@ void CPHSimpleCharacter::UpdateStaticDamage(dContact* c, SGameMtl* tri_material,
 		m_collision_damage_info.m_dmc_signum = bo1 ? 1.0f : -1.0f;
 		m_collision_damage_info.m_dmc_type = SCollisionDamageInfo::ctStatic;
 		m_collision_damage_info.m_damege_contact = *c;
-		m_collision_damage_info.m_obj_id = U16(-1);
+		m_collision_damage_info.m_obj_id = unsigned short(-1);
 	}
 }
 
-void CPHSimpleCharacter::UpdateDynamicDamage(dContact* c, U16 obj_material_idx, dBodyID b, bool bo1)
+void CPHSimpleCharacter::UpdateDynamicDamage(dContact* c, unsigned short obj_material_idx, dBodyID b, bool bo1)
 {
 	const dReal* vel = dBodyGetLinearVel(m_body);
 	dReal c_vel;
@@ -131,9 +131,9 @@ void CPHSimpleCharacter::UpdateDynamicDamage(dContact* c, U16 obj_material_idx, 
 	}
 }
 
-inline		void	CPHSimpleCharacter::foot_material_update(U16	contact_material_idx, U16	foot_material_idx)
+inline		void	CPHSimpleCharacter::foot_material_update(unsigned short	contact_material_idx, unsigned short	foot_material_idx)
 {
-	if (*p_lastMaterialIDX != U16(-1) && GMLib.GetMaterialByIdx(*p_lastMaterialIDX)->Flags.test(SGameMtl::flPassable) && !b_foot_mtl_check)
+	if (*p_lastMaterialIDX != unsigned short(-1) && GMLib.GetMaterialByIdx(*p_lastMaterialIDX)->Flags.test(SGameMtl::flPassable) && !b_foot_mtl_check)
 	{
 		return;
 	}

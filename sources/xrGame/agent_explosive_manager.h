@@ -17,7 +17,7 @@ class CMemberOrder;
 class CAgentExplosiveManager {
 public:
 	typedef xr_vector<CDangerExplosive>				EXPLOSIVES;
-	typedef xr_vector<U16>							TO_BE_DESTROYED;
+	typedef xr_vector<unsigned short>							TO_BE_DESTROYED;
 
 private:
 	CAgentManager			*m_object;

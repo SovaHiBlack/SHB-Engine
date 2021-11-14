@@ -47,7 +47,7 @@ void CLevel::cl_Process_Spawn(CNetPacket& P)
 	F_entity_Destroy(E);
 }
 
-void CLevel::g_cl_Spawn(const char* name, unsigned char rp, U16 flags, Fvector3 pos)
+void CLevel::g_cl_Spawn(const char* name, unsigned char rp, unsigned short flags, Fvector3 pos)
 {
 	// Create
 	CSE_Abstract* E = F_entity_Create(name);
@@ -126,7 +126,7 @@ void CLevel::g_sv_Spawn(CSE_Abstract* E)
 			CNetPacket	GEN;
 			GEN.write_start( );
 			GEN.read_start( );
-			GEN.w_u16(U16(O->ID( )));
+			GEN.w_u16(unsigned short(O->ID( )));
 			cl_Process_Event(E->ID_Parent, GE_OWNERSHIP_TAKE, GEN);
 		}
 	}
@@ -135,7 +135,7 @@ void CLevel::g_sv_Spawn(CSE_Abstract* E)
 	//---------------------------------------------------------
 }
 
-CSE_Abstract* CLevel::spawn_item(const char* section, const Fvector3& position, u32 level_vertex_id, U16 parent_id, bool return_item)
+CSE_Abstract* CLevel::spawn_item(const char* section, const Fvector3& position, u32 level_vertex_id, unsigned short parent_id, bool return_item)
 {
 	CSE_Abstract* abstract = F_entity_Create(section);
 	R_ASSERT3(abstract, "Cannot find item with section", section);

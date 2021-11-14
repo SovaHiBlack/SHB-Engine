@@ -27,4 +27,4 @@ struct SStatSectionData : public IPureSerializeObject<IReader, IWriter>
 };
 
 using vStatSectionData					= xr_vector<SStatSectionData>;
-using CActorStatisticRegistry			= CALifeAbstractRegistry<U16, vStatSectionData>;
+using CActorStatisticRegistry			= CALifeAbstractRegistry<unsigned short, vStatSectionData>;

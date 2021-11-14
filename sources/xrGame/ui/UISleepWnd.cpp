@@ -45,7 +45,7 @@ void CUISleepWnd::Init( )
 	ResetTime( );
 }
 
-void CUISleepWnd::SendMessage(CUIWindow* pWnd, S16 msg, void* pData)
+void CUISleepWnd::SendMessage(CUIWindow* pWnd, signed short msg, void* pData)
 {
 	const signed char deltaMinutes = 30;
 

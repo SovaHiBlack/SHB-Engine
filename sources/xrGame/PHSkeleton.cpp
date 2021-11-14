@@ -22,8 +22,8 @@ u32 CPHSkeleton::existence_time = 5000;
 
 bool inline CheckObjectSize(CKinematics* K)
 {
-	U16 bcount = K->LL_BoneCount( );
-	for (U16 i = 0; i < bcount; ++i)
+	unsigned short bcount = K->LL_BoneCount( );
+	for (unsigned short i = 0; i < bcount; ++i)
 	{
 		if (K->LL_GetBoneVisible(i))
 		{
@@ -196,8 +196,8 @@ void CPHSkeleton::SaveNetState(CNetPacket& P)
 	max.set(-F_MAX, -F_MAX, -F_MAX);
 	/////////////////////////////////////
 
-	U16 bones_number = obj->PHGetSyncItemsNumber( );
-	for (U16 i = 0; i < bones_number; i++)
+	unsigned short bones_number = obj->PHGetSyncItemsNumber( );
+	for (unsigned short i = 0; i < bones_number; i++)
 	{
 		SPHNetState state;
 		obj->PHGetSyncItem(i)->get_State(state);
@@ -241,7 +241,7 @@ void CPHSkeleton::SaveNetState(CNetPacket& P)
 
 	P.w_u16(bones_number);
 
-	for (U16 i = 0; i < bones_number; i++)
+	for (unsigned short i = 0; i < bones_number; i++)
 	{
 		SPHNetState state;
 		obj->PHGetSyncItem(i)->get_State(state);
@@ -260,8 +260,8 @@ void CPHSkeleton::LoadNetState(CNetPacket& P)
 		K->LL_SetBoneRoot(P.r_u16( ));
 	}
 
-	U16 bones_number = P.r_u16( );
-	for (U16 i = 0; i < bones_number; i++)
+	unsigned short bones_number = P.r_u16( );
+	for (unsigned short i = 0; i < bones_number; i++)
 	{
 		SPHNetState state;
 		state.net_Load(P);
@@ -284,7 +284,7 @@ void CPHSkeleton::RestoreNetState(CSE_PHSkeleton* po)
 		obj->PPhysicsShell( )->Disable( );
 	}
 
-	for (U16 bone = 0; e != i; i++, bone++)
+	for (unsigned short bone = 0; e != i; i++, bone++)
 	{
 		R_ASSERT(bone < obj->PHGetSyncItemsNumber( ));
 		obj->PHGetSyncItem(bone)->set_State(*i);
@@ -331,9 +331,9 @@ void CPHSkeleton::SpawnCopy( )
 PHSHELL_PAIR_VECTOR new_shells;
 void CPHSkeleton::PHSplit( )
 {
-	U16 spawned = U16(m_unsplited_shels.size( ));
+	unsigned short spawned = unsigned short(m_unsplited_shels.size( ));
 	PPhysicsShellHolder( )->PPhysicsShell( )->SplitProcess(m_unsplited_shels);
-	U16 i = U16(m_unsplited_shels.size( )) - spawned;
+	unsigned short i = unsigned short(m_unsplited_shels.size( )) - spawned;
 	//	Msg("%o,spawned,%d",this,i);
 	for (; i; --i)
 	{
@@ -359,7 +359,7 @@ void CPHSkeleton::UnsplitSingle(CPHSkeleton* SO)
 	CKinematics* pKinematics = smart_cast<CKinematics*>(obj->Visual( ));
 
 	Flags64 mask0, mask1;
-	U16 split_bone = m_unsplited_shels.front( ).second;
+	unsigned short split_bone = m_unsplited_shels.front( ).second;
 	mask1.assign(pKinematics->LL_GetBonesVisible( ));//source bones mask
 	pKinematics->LL_SetBoneVisible(split_bone, FALSE, TRUE);
 
@@ -419,7 +419,7 @@ void CPHSkeleton::SetAutoRemove(u32 time/*=CSE_PHSkeleton::existence_time*/)
 }
 
 static bool removable;//for RecursiveBonesCheck
-void CPHSkeleton::RecursiveBonesCheck(U16 id)
+void CPHSkeleton::RecursiveBonesCheck(unsigned short id)
 {
 	if (!removable)
 	{
@@ -428,7 +428,7 @@ void CPHSkeleton::RecursiveBonesCheck(U16 id)
 
 	CPHShellHolder* obj = PPhysicsShellHolder( );
 	CKinematics* K = smart_cast<CKinematics*>(obj->Visual( ));
-	CBoneData& BD = K->LL_GetData(U16(id));
+	CBoneData& BD = K->LL_GetData(unsigned short(id));
 	//////////////////////////////////////////
 	Flags64 mask;
 	mask.assign(K->LL_GetBonesVisible( ));
@@ -468,14 +468,14 @@ void CPHSkeleton::InitServerObject(CSE_Abstract* D)
 	l_tpALifeDynamicObject->m_tNodeID = obj->ai_location( ).level_vertex_id( );
 	l_tpALifePhysicObject->set_visual(*obj->cNameVisual( ));
 
-	l_tpALifePhysicObject->source_id = U16(obj->ID( ));
+	l_tpALifePhysicObject->source_id = unsigned short(obj->ID( ));
 	l_tpALifePhysicObject->startup_animation = m_startup_anim;
 	D->s_name = "ph_skeleton_object";//*cNameSect()
 	D->set_name_replace("");
 	D->s_gameid = unsigned char(GameID( ));
 	D->s_RP = 0xff;
 	D->ID = 0xffff;
-	D->ID_Parent = 0xffff;//U16(ID());//
+	D->ID_Parent = 0xffff;//unsigned short(ID());//
 	D->ID_Phantom = 0xffff;
 	D->o_Position = obj->Position( );
 	if (ai( ).get_alife( ))

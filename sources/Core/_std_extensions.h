@@ -177,7 +177,7 @@ inline signed short		_max(signed short x, signed short y)
 }
 
 // unsigned int16
-inline U16		_abs(U16 x)
+inline unsigned short		_abs(unsigned short x)
 {
 	return x;
 }

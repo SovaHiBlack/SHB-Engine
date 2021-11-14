@@ -479,11 +479,11 @@ void CPHWorld::AddCall(CPHCondition*c,CPHAction*a)
 {
 	m_commander->add_call(c,a);
 }
-U16 CPHWorld::ObjectsNumber()
+unsigned short CPHWorld::ObjectsNumber()
 {
 	return m_objects.count();
 }
-U16 CPHWorld::UpdateObjectsNumber()
+unsigned short CPHWorld::UpdateObjectsNumber()
 {
 	return m_update_objects.count();
 }
@@ -494,8 +494,8 @@ void CPHWorld::GetState(V_PH_WORLD_STATE& state)
 	for(i_object=m_objects.begin();m_objects.end() != i_object;)
 	{
 		CPHObject* obj=(*i_object);
-		const U16 els=obj->get_elements_number();
-		for(U16 i=0;els>i;++i)
+		const unsigned short els=obj->get_elements_number();
+		for(unsigned short i=0;els>i;++i)
 		{
 			std::pair<CPHSynchronize*,SPHNetState> s;
 			s.first=obj->get_element_sync(i);

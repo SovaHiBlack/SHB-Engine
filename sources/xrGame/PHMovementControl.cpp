@@ -160,7 +160,7 @@ void CPHMovementControl::Calculate(Fvector3& vAccel, const Fvector3& camDir, flo
 		}
 	}
 
-	if (m_character->LastMaterialIDX( ) != U16(-1))
+	if (m_character->LastMaterialIDX( ) != unsigned short(-1))
 	{
 		const SGameMtl* last_material = GMLib.GetMaterialByIdx(m_character->LastMaterialIDX( ));
 		if (last_material->Flags.test(SGameMtl::flInjurious))
@@ -969,7 +969,7 @@ void CPHMovementControl::PHCaptureObject(CPHShellHolder* object)
 	m_capture = xr_new<CPHCapture>(m_character, object);
 }
 
-void CPHMovementControl::PHCaptureObject(CPHShellHolder* object, U16 element)
+void CPHMovementControl::PHCaptureObject(CPHShellHolder* object, unsigned short element)
 {
 	if (m_capture)
 	{
@@ -1090,7 +1090,7 @@ void CPHMovementControl::GetJumpParam(Fvector3& velocity, JumpType& type, const 
 	}
 }
 
-void CPHMovementControl::SetMaterial(U16 material)
+void CPHMovementControl::SetMaterial(unsigned short material)
 {
 	m_material = material;
 	if (m_character)
@@ -1238,7 +1238,7 @@ struct STraceBorderQParams
 BOOL CPHMovementControl::BorderTraceCallback(collide::rq_result& result, LPVOID params)
 {
 	STraceBorderQParams& p = *(STraceBorderQParams*) params;
-	U16 mtl_idx = GAMEMTL_NONE_IDX;
+	unsigned short mtl_idx = GAMEMTL_NONE_IDX;
 	CDB::TRI* T = NULL;
 	if (result.O)
 	{

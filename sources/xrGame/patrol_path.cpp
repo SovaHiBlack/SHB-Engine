@@ -35,8 +35,8 @@ CPatrolPath& CPatrolPath::load_raw(const CLevelGraph* level_graph, const CGameLe
 	u32				edge_count = stream.r_u16( );
 	for (u32 i = 0; i < edge_count; ++i)
 	{
-		U16			vertex0 = stream.r_u16( );
-		U16			vertex1 = stream.r_u16( );
+		unsigned short			vertex0 = stream.r_u16( );
+		unsigned short			vertex1 = stream.r_u16( );
 		float		probability = stream.r_float( );
 		add_edge(vertex0, vertex1, probability);
 	}

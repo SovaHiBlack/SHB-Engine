@@ -65,8 +65,8 @@ public:
 	virtual		float	distance_to_center				(CObject* O	);			
 	virtual		void	Postprocess						(float val)					{}
 	virtual		void	net_Relcase						(CObject* O	);
-	virtual		void	OnEvent							(CNetPacket& P, U16 type);
-				void	OnOwnershipTake					(U16 id);
+	virtual		void	OnEvent							(CNetPacket& P, unsigned short type);
+				void	OnOwnershipTake					(unsigned short id);
 
 				float	GetMaxPower						()							{return m_fMaxPower;}
 				void	SetMaxPower						(float p)					{m_fMaxPower = p;}
@@ -267,8 +267,8 @@ protected:
 	using OBJECT_INFO_VEC_IT = OBJECT_INFO_VEC::iterator;
 	OBJECT_INFO_VEC			m_ObjectInfoMap;
 
-	void					CreateHit					(U16 id_to,
-														U16 id_from,
+	void					CreateHit					(unsigned short id_to,
+		unsigned short id_from,
 															const Fvector3& hit_dir,
 															float hit_power, 
 		signed short bone_id,

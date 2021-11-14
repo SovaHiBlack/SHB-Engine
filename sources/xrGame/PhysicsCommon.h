@@ -21,7 +21,7 @@ extern dReal		world_spring;
 extern dReal		world_damping;
 
 extern const dReal	mass_limit;
-extern const U16	max_joint_allowed_for_exeact_integration;
+extern const unsigned short	max_joint_allowed_for_exeact_integration;
 extern const dReal	default_world_gravity;
 extern float		phTimefactor;
 extern int			phIterations;

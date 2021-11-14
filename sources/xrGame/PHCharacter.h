@@ -42,11 +42,9 @@ protected:
 	dReal					m_mass;
 	bool					was_enabled_before_freeze;
 
-	/////////////////////////////////////////////////////////////////////////////
-	/////////////////////////////////////////////////////////////////////////////
-	///////////////////////////////////////////////////////////////////
-	U16* p_lastMaterialIDX;
-	U16 lastMaterialIDX;
+	///////////////////////////////////////////////////////////////////////////
+	unsigned short* p_lastMaterialIDX;
+	unsigned short lastMaterialIDX;
 	///////////////////////////////////////////////////////////////////////////
 	dVector3 m_safe_velocity;
 	dVector3 m_safe_position;
@@ -140,18 +138,18 @@ public:
 	}
 	virtual		const ICollisionDamageInfo* CollisionDamageInfo( )const = 0;
 	virtual		void		Reinit( ) = 0;
-	void					SetPLastMaterialIDX(U16* p)
+	void					SetPLastMaterialIDX(unsigned short* p)
 	{
 		p_lastMaterialIDX = p;
 	}
-	const U16& LastMaterialIDX( ) const
+	const unsigned short& LastMaterialIDX( ) const
 	{
 		return *p_lastMaterialIDX;
 	}
 	virtual bool			TouchRestrictor(ERestrictionType rttype) = 0;
 	virtual void			SetElevator(CClimableObject* climable)
 	{ }
-	virtual void			SetMaterial(U16 material) = 0;
+	virtual void			SetMaterial(unsigned short material) = 0;
 	virtual void			SetMaximumVelocity(dReal /**vel/**/)
 	{ }																			//!!
 	virtual		dReal		GetMaximumVelocity( )
@@ -162,7 +160,7 @@ public:
 	{ }																			//!!
 	virtual void			IPosition(Fvector3& /**pos/**/)
 	{ }
-	virtual U16				ContactBone( )
+	virtual unsigned short				ContactBone( )
 	{
 		return 0;
 	}
@@ -249,11 +247,11 @@ public:
 	virtual const Fvector3& ControlAccel( )const = 0;
 	virtual float& FrictionFactor( ) = 0;
 	virtual void		CutVelocity(float l_limit, float a_limit);
-	virtual U16				get_elements_number( )
+	virtual unsigned short				get_elements_number( )
 	{
 		return 1;
 	}
-	virtual CPHSynchronize* get_element_sync(U16 element)
+	virtual CPHSynchronize* get_element_sync(unsigned short element)
 	{
 		VERIFY(element == 0);
 		return static_cast<CPHSynchronize*>(this);

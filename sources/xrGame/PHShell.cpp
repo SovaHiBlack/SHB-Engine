@@ -354,7 +354,7 @@ void CPHShell::applyImpulseTrace(const Fvector3& pos, const Fvector3& dir, float
 	EnableObject(0);
 }
 
-void CPHShell::applyImpulseTrace(const Fvector3& pos, const Fvector3& dir, float val, const U16 id)
+void CPHShell::applyImpulseTrace(const Fvector3& pos, const Fvector3& dir, float val, const unsigned short id)
 {
 	if (!isActive( ))
 	{
@@ -383,18 +383,18 @@ CPhysicsElement* CPHShell::get_Element(const char* bone_name)
 	return get_Element((const CSharedString&) (bone_name));
 }
 
-CPhysicsElement* CPHShell::get_ElementByStoreOrder(U16 num)
+CPhysicsElement* CPHShell::get_ElementByStoreOrder(unsigned short num)
 {
 	R_ASSERT2(num < elements.size( ), "argument is out of range");
 	return cast_PhysicsElement(elements[num]);
 }
 
-CPHSynchronize* CPHShell::get_ElementSync(U16 element)
+CPHSynchronize* CPHShell::get_ElementSync(unsigned short element)
 {
 	return smart_cast<CPHSynchronize*>(elements[element]);
 }
 
-CPhysicsElement* CPHShell::get_Element(U16 bone_id)
+CPhysicsElement* CPHShell::get_Element(unsigned short bone_id)
 {
 	if (m_pKinematics && isActive( ))
 	{
@@ -417,7 +417,7 @@ CPhysicsElement* CPHShell::get_Element(U16 bone_id)
 	return nullptr;
 }
 
-CPhysicsJoint* CPHShell::get_Joint(U16 bone_id)
+CPhysicsJoint* CPHShell::get_Joint(unsigned short bone_id)
 {
 	JOINT_I i = joints.begin( ), e = joints.end( );
 	for (; e != i; i++)
@@ -442,14 +442,14 @@ CPhysicsJoint* CPHShell::get_Joint(const char* bone_name)
 	return get_Joint((const CSharedString&) bone_name);
 }
 
-CPhysicsJoint* CPHShell::get_JointByStoreOrder(U16 num)
+CPhysicsJoint* CPHShell::get_JointByStoreOrder(unsigned short num)
 {
 	return (CPhysicsJoint*) joints[num];
 }
 
-U16 CPHShell::get_JointsNumber( )
+unsigned short CPHShell::get_JointsNumber( )
 {
-	return U16(joints.size( ));
+	return unsigned short(joints.size( ));
 }
 
 void CPHShell::BonesCallback(CBoneInstance* B)
@@ -580,7 +580,7 @@ void CPHShell::SetMaterial(const char* m)
 	}
 }
 
-void CPHShell::SetMaterial(U16 m)
+void CPHShell::SetMaterial(unsigned short m)
 {
 	ELEMENT_I i;
 	for (i = elements.begin( ); elements.end( ) != i; ++i)
@@ -751,9 +751,9 @@ __forceinline bool no_physics_shape(const SBoneShape& shape)
 	return shape.type == SBoneShape::stNone || shape.flags.test(SBoneShape::sfNoPhysics);
 }
 
-void CPHShell::AddElementRecursive(CPhysicsElement* root_e, U16 id, Fmatrix global_parent, U16 element_number, bool* vis_check)
+void CPHShell::AddElementRecursive(CPhysicsElement* root_e, unsigned short id, Fmatrix global_parent, unsigned short element_number, bool* vis_check)
 {
-	CBoneData& bone_data = m_pKinematics->LL_GetData(U16(id));
+	CBoneData& bone_data = m_pKinematics->LL_GetData(unsigned short(id));
 	SJointIKData& joint_data = bone_data.IK_data;
 	Fmatrix fm_position;
 	fm_position.set(bone_data.bind_transform);
@@ -789,8 +789,8 @@ void CPHShell::AddElementRecursive(CPhysicsElement* root_e, U16 id, Fmatrix glob
 	}
 
 	bool element_added = false;//set true when if elemen created and added by this call
-	U16 splitter_position = 0;
-	U16 fracture_num = U16(-1);
+	unsigned short splitter_position = 0;
+	unsigned short fracture_num = unsigned short(-1);
 
 	if (!no_physics_shape(bone_data.shape) || !root_e)
 	{
@@ -808,12 +808,12 @@ void CPHShell::AddElementRecursive(CPhysicsElement* root_e, U16 id, Fmatrix glob
 				fracture.m_bone_id = id;
 				R_ASSERT2(id < 64, "ower 64 bones in breacable are not supported");
 				fracture.m_start_geom_num = E->numberOfGeoms( );
-				fracture.m_end_geom_num = U16(-1);
-				fracture.m_start_el_num = U16(elements.size( ));
-				fracture.m_start_jt_num = U16(joints.size( ));
+				fracture.m_end_geom_num = unsigned short(-1);
+				fracture.m_start_el_num = unsigned short(elements.size( ));
+				fracture.m_start_jt_num = unsigned short(joints.size( ));
 				fracture.MassSetFirst(*(E->getMassTensor( )));
 				fracture.m_pos_in_element.set(vs_root_position.c);
-				VERIFY(U16(-1) != fracture.m_start_geom_num);
+				VERIFY(unsigned short(-1) != fracture.m_start_geom_num);
 				fracture.m_break_force = joint_data.break_force;
 				fracture.m_break_torque = joint_data.break_torque;
 				root_e->add_Shape(bone_data.shape, vs_root_position);
@@ -839,7 +839,7 @@ void CPHShell::AddElementRecursive(CPhysicsElement* root_e, U16 id, Fmatrix glob
 				E->add_Shape(bone_data.shape);
 				E->setMassMC(bone_data.mass, bone_data.center_of_mass);
 			}
-			element_number = U16(elements.size( ));
+			element_number = unsigned short(elements.size( ));
 			add_Element(E);
 			element_added = true;
 
@@ -1059,7 +1059,7 @@ void CPHShell::AddElementRecursive(CPhysicsElement* root_e, U16 id, Fmatrix glob
 
 			if (m_spliter_holder)
 			{
-				splitter_position = U16(m_spliter_holder->m_splitters.size( ));
+				splitter_position = unsigned short(m_spliter_holder->m_splitters.size( ));
 			}
 		}
 	}
@@ -1076,7 +1076,7 @@ void CPHShell::AddElementRecursive(CPhysicsElement* root_e, U16 id, Fmatrix glob
 	}
 #ifdef DEBUG
 	if (E->last_geom( ))
-		VERIFY(E->last_geom( )->bone_id( ) != U16(-1));
+		VERIFY(E->last_geom( )->bone_id( ) != unsigned short(-1));
 #endif
 	if (m_spliter_holder && E->has_geoms( ))
 	{
@@ -1104,15 +1104,15 @@ void CPHShell::AddElementRecursive(CPhysicsElement* root_e, U16 id, Fmatrix glob
 			CPHFracture& fracture = E->Fracture(fracture_num);
 			fracture.m_bone_id = id;
 			fracture.m_end_geom_num = E->numberOfGeoms( );
-			fracture.m_end_el_num = U16(elements.size( ));//just after this el = current+1
-			fracture.m_end_jt_num = U16(joints.size( ));	 //current+1
+			fracture.m_end_el_num = unsigned short(elements.size( ));//just after this el = current+1
+			fracture.m_end_jt_num = unsigned short(joints.size( ));	 //current+1
 		}
 		else
 		{
 			if (J)
 			{
-				J->JointDestroyInfo( )->m_end_element = U16(elements.size( ));
-				J->JointDestroyInfo( )->m_end_joint = U16(joints.size( ));
+				J->JointDestroyInfo( )->m_end_element = unsigned short(elements.size( ));
+				J->JointDestroyInfo( )->m_end_joint = unsigned short(joints.size( ));
 			}
 		}
 	}
@@ -1126,7 +1126,7 @@ void CPHShell::AddElementRecursive(CPhysicsElement* root_e, U16 id, Fmatrix glob
 
 		Msg("all bones transform:--------");
 
-		for (U16 ii = 0; ii < K->LL_BoneCount( ); ++ii)
+		for (unsigned short ii = 0; ii < K->LL_BoneCount( ); ++ii)
 		{
 			Fmatrix tr;
 
@@ -1134,6 +1134,7 @@ void CPHShell::AddElementRecursive(CPhysicsElement* root_e, U16 id, Fmatrix glob
 			Log("bone ", K->LL_BoneName_dbg(ii));
 			Log("bone_matrix", tr);
 		}
+
 		Log("end-------");
 	}
 
@@ -1142,21 +1143,21 @@ void CPHShell::AddElementRecursive(CPhysicsElement* root_e, U16 id, Fmatrix glob
 
 	}
 
-void CPHShell::ResetCallbacks(U16 id, Flags64& mask)
+void CPHShell::ResetCallbacks(unsigned short id, Flags64& mask)
 {
-	ResetCallbacksRecursive(id, U16(-1), mask);
+	ResetCallbacksRecursive(id, unsigned short(-1), mask);
 }
 
-void CPHShell::ResetCallbacksRecursive(U16 id, U16 element, Flags64& mask)
+void CPHShell::ResetCallbacksRecursive(unsigned short id, unsigned short element, Flags64& mask)
 {
 	//if(elements.size()==element)	return;
-	CBoneInstance& B = m_pKinematics->LL_GetBoneInstance(U16(id));
-	CBoneData& bone_data = m_pKinematics->LL_GetData(U16(id));
+	CBoneInstance& B = m_pKinematics->LL_GetBoneInstance(unsigned short(id));
+	CBoneData& bone_data = m_pKinematics->LL_GetData(unsigned short(id));
 	SJointIKData& joint_data = bone_data.IK_data;
 
 	if (mask.is(1ui64 << (U64) id))
 	{
-		if (no_physics_shape(bone_data.shape) || joint_data.type == jtRigid && element != U16(-1))
+		if (no_physics_shape(bone_data.shape) || joint_data.type == jtRigid && element != unsigned short(-1))
 		{
 			B.set_callback(bctPhysics, 0, cast_PhysicsElement(elements[element]));
 		}
@@ -1196,26 +1197,26 @@ void CPHShell::EnabledCallbacks(BOOL val)
 	}
 }
 
-static U16 element_position_in_set_calbacks = U16(-1);
+static unsigned short element_position_in_set_calbacks = unsigned short(-1);
 static BoneCallbackFun* bones_callback;//temp ror SetCallbacksRecursive
 void CPHShell::SetCallbacks(BoneCallbackFun* callback)
 {
-	element_position_in_set_calbacks = U16(-1);
+	element_position_in_set_calbacks = unsigned short(-1);
 	bones_callback = callback;
 	SetCallbacksRecursive(m_pKinematics->LL_GetBoneRoot( ), element_position_in_set_calbacks);
 }
 
-void CPHShell::SetCallbacksRecursive(U16 id, U16 element)
+void CPHShell::SetCallbacksRecursive(unsigned short id, unsigned short element)
 {
 	//if(elements.size()==element)	return;
-	CBoneInstance& B = m_pKinematics->LL_GetBoneInstance(U16(id));
-	CBoneData& bone_data = m_pKinematics->LL_GetData(U16(id));
+	CBoneInstance& B = m_pKinematics->LL_GetBoneInstance(unsigned short(id));
+	CBoneData& bone_data = m_pKinematics->LL_GetData(unsigned short(id));
 	SJointIKData& joint_data = bone_data.IK_data;
 	Flags64 mask;
 	mask.assign(m_pKinematics->LL_GetBonesVisible( ));
 	if (mask.is(1ui64 << (U64) id))
 	{
-		if ((no_physics_shape(bone_data.shape) || joint_data.type == jtRigid) && element != U16(-1))
+		if ((no_physics_shape(bone_data.shape) || joint_data.type == jtRigid) && element != unsigned short(-1))
 		{
 			B.set_callback(bctPhysics, 0, cast_PhysicsElement(elements[element]));
 		}
@@ -1244,10 +1245,10 @@ void CPHShell::ZeroCallbacks( )
 	}
 }
 
-void CPHShell::ZeroCallbacksRecursive(U16 id)
+void CPHShell::ZeroCallbacksRecursive(unsigned short id)
 {
-	CBoneInstance& B = m_pKinematics->LL_GetBoneInstance(U16(id));
-	CBoneData& bone_data = m_pKinematics->LL_GetData(U16(id));
+	CBoneInstance& B = m_pKinematics->LL_GetBoneInstance(unsigned short(id));
+	CBoneData& bone_data = m_pKinematics->LL_GetData(unsigned short(id));
 	B.reset_callback( );
 	B.Callback_overwrite = FALSE;
 	for (vecBonesIt it = bone_data.children.begin( ); bone_data.children.end( ) != it; ++it)
@@ -1397,7 +1398,7 @@ void CPHShell::CreateSpace( )
 	}
 }
 
-void CPHShell::PassEndElements(U16 from, U16 to, CPHShell* dest)
+void CPHShell::PassEndElements(unsigned short from, unsigned short to, CPHShell* dest)
 {
 	ELEMENT_I i_from = elements.begin( ) + from, e = elements.begin( ) + to;
 	if (from != to)
@@ -1429,7 +1430,7 @@ void CPHShell::PassEndElements(U16 from, U16 to, CPHShell* dest)
 	elements.erase(i_from, e);
 }
 
-void CPHShell::PassEndJoints(U16 from, U16 to, CPHShell* dest)
+void CPHShell::PassEndJoints(unsigned short from, unsigned short to, CPHShell* dest)
 {
 	JOINT_I i_from = joints.begin( ) + from, e = joints.begin( ) + to;
 	JOINT_I i = i_from;
@@ -1442,14 +1443,14 @@ void CPHShell::PassEndJoints(U16 from, U16 to, CPHShell* dest)
 	joints.erase(i_from, e);
 }
 
-void CPHShell::DeleteElement(U16 element)
+void CPHShell::DeleteElement(unsigned short element)
 {
 	elements[element]->Deactivate( );
 	xr_delete(elements[element]);
 	elements.erase(elements.begin( ) + element);
 }
 
-void CPHShell::DeleteJoint(U16 joint)
+void CPHShell::DeleteJoint(unsigned short joint)
 {
 	joints[joint]->Deactivate( );
 	xr_delete(joints[joint]);
@@ -1460,16 +1461,16 @@ void CPHShell::setEndElementSplitter( )
 {
 	if (!elements.back( )->FracturesHolder( ))//adding fracture for element supposed before adding splitter. Need only one splitter for an element
 	{
-		AddSplitter(CPHShellSplitter::splElement, U16(elements.size( ) - 1), U16(joints.size( ) - 1));
+		AddSplitter(CPHShellSplitter::splElement, unsigned short(elements.size( ) - 1), unsigned short(joints.size( ) - 1));
 	}
 }
 
-void CPHShell::setElementSplitter(U16 element_number, U16 splitter_position)
+void CPHShell::setElementSplitter(unsigned short element_number, unsigned short splitter_position)
 {
 	AddSplitter(CPHShellSplitter::splElement, element_number, element_number - 1, splitter_position);
 }
 
-void CPHShell::AddSplitter(CPHShellSplitter::EType type, U16 element, U16 joint)
+void CPHShell::AddSplitter(CPHShellSplitter::EType type, unsigned short element, unsigned short joint)
 {
 	if (!m_spliter_holder)
 	{
@@ -1479,7 +1480,7 @@ void CPHShell::AddSplitter(CPHShellSplitter::EType type, U16 element, U16 joint)
 	m_spliter_holder->AddSplitter(type, element, joint);
 }
 
-void CPHShell::AddSplitter(CPHShellSplitter::EType type, U16 element, U16 joint, U16 position)
+void CPHShell::AddSplitter(CPHShellSplitter::EType type, unsigned short element, unsigned short joint, unsigned short position)
 {
 	if (!m_spliter_holder)
 	{
@@ -1493,7 +1494,7 @@ void CPHShell::setEndJointSplitter( )
 {
 	if (!joints.back( )->JointDestroyInfo( ))//setting joint breacable supposed before adding splitter. Need only one splitter for a joint
 	{
-		AddSplitter(CPHShellSplitter::splJoint, U16(elements.size( ) - 1), U16(joints.size( ) - 1));
+		AddSplitter(CPHShellSplitter::splJoint, unsigned short(elements.size( ) - 1), unsigned short(joints.size( ) - 1));
 	}
 }
 
@@ -1521,11 +1522,11 @@ void CPHShell::SplitProcess(PHSHELL_PAIR_VECTOR& out_shels)
 	}
 }
 
-U16 CPHShell::BoneIdToRootGeom(U16 id)
+unsigned short CPHShell::BoneIdToRootGeom(unsigned short id)
 {
 	if (!m_spliter_holder)
 	{
-		return U16(-1);
+		return unsigned short(-1);
 	}
 
 	return m_spliter_holder->FindRootGeom(id);
@@ -1622,14 +1623,14 @@ void CPHShell::setForce(const Fvector3& force)
 	}
 }
 
-void CPHShell::PlaceBindToElFormsRecursive(Fmatrix parent, U16 id, U16 element, Flags64& mask)
+void CPHShell::PlaceBindToElFormsRecursive(Fmatrix parent, unsigned short id, unsigned short element, Flags64& mask)
 {
-	CBoneData& bone_data = m_pKinematics->LL_GetData(U16(id));
+	CBoneData& bone_data = m_pKinematics->LL_GetData(unsigned short(id));
 	SJointIKData& joint_data = bone_data.IK_data;
 
 	if (mask.is(1ui64 << (U64) id))
 	{
-		if (no_physics_shape(bone_data.shape) || joint_data.type == jtRigid && element != U16(-1))
+		if (no_physics_shape(bone_data.shape) || joint_data.type == jtRigid && element != unsigned short(-1))
 		{
 
 		}
@@ -1648,15 +1649,15 @@ void CPHShell::PlaceBindToElFormsRecursive(Fmatrix parent, U16 id, U16 element, 
 	}
 }
 
-void CPHShell::BonesBindCalculate(U16 id_from)
+void CPHShell::BonesBindCalculate(unsigned short id_from)
 {
 	BonesBindCalculateRecursive(Fidentity, 0);
 }
 
-void CPHShell::BonesBindCalculateRecursive(Fmatrix parent, U16 id)
+void CPHShell::BonesBindCalculateRecursive(Fmatrix parent, unsigned short id)
 {
 	CBoneInstance& bone_instance = m_pKinematics->LL_GetBoneInstance(id);
-	CBoneData& bone_data = m_pKinematics->LL_GetData(U16(id));
+	CBoneData& bone_data = m_pKinematics->LL_GetData(unsigned short(id));
 
 	bone_instance.mTransform.mul(parent, bone_data.bind_transform);
 
@@ -1666,7 +1667,7 @@ void CPHShell::BonesBindCalculateRecursive(Fmatrix parent, U16 id)
 	}
 }
 
-void CPHShell::AddTracedGeom(U16 element/*=0*/, U16 geom/*=0*/)
+void CPHShell::AddTracedGeom(unsigned short element/*=0*/, unsigned short geom/*=0*/)
 {
 	CCodeGeom* g = elements[element]->Geom(geom);
 	g->set_ph_object(this);
@@ -1681,8 +1682,8 @@ void CPHShell::SetAllGeomTraced( )
 	e = elements.end( );
 	for (; i != e; ++i)
 	{
-		U16 gn = (*i)->numberOfGeoms( );
-		for (U16 j = 0; j < gn; ++j)
+		unsigned short gn = (*i)->numberOfGeoms( );
+		for (unsigned short j = 0; j < gn; ++j)
 		{
 			CCodeGeom* g = (*i)->Geom(j);
 			g->set_ph_object(this);
@@ -1716,7 +1717,7 @@ void CPHShell::add_Joint(CPhysicsJoint* J)
 	joints.back( )->SetShell(this);
 }
 
-CCodeGeom* CPHShell::get_GeomByID(U16 bone_id)
+CCodeGeom* CPHShell::get_GeomByID(unsigned short bone_id)
 {
 	ELEMENT_I i;
 	ELEMENT_I e;

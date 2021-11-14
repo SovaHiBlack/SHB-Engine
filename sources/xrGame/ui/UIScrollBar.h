@@ -69,7 +69,7 @@ public:
 	virtual void	Enable					(bool b);
 	virtual void	Init					(float x, float y, float length, bool bIsHorizontal, const char* profile = "default");
 
-	virtual void	SendMessage				(CUIWindow* pWnd, S16 msg, void* pData);
+	virtual void	SendMessage				(CUIWindow* pWnd, signed short msg, void* pData);
 	virtual bool	OnMouse					(float x, float y, EUIMessages mouse_action);
 	virtual bool	OnKeyboardHold			(int dik);
 

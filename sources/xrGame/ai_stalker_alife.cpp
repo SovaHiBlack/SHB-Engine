@@ -33,17 +33,17 @@ u32 get_rank(const CSharedString&)
 static const int MAX_AMMO_ATTACH_COUNT = 10;
 static const int enough_ammo_box_count = 1;
 
-inline	bool CStalker::STradeItem::operator<		(const STradeItem& trade_item) const
+inline bool CStalker::STradeItem::operator<		(const STradeItem& trade_item) const
 {
 	return			(m_item->object().ID() < trade_item.m_item->object().ID());
 }
 
-inline	bool CStalker::STradeItem::operator==	(U16 id) const
+inline bool CStalker::STradeItem::operator==	(unsigned short id) const
 {
 	return			(m_item->object().ID() == id);
 }
 
-bool CStalker::tradable_item(CInventoryItem* inventory_item, const U16& current_owner_id)
+bool CStalker::tradable_item(CInventoryItem* inventory_item, const unsigned short& current_owner_id)
 {
 	if (!inventory_item->useful_for_NPC())
 		return			(false);
@@ -84,12 +84,12 @@ void CStalker::transfer_item					(CInventoryItem *item, CGameObject *old_owner, 
 	CNetPacket			P;
 	CGameObject			*O = old_owner;
 	O->u_EventGen		(P,GE_TRADE_SELL,O->ID());
-	P.w_u16				(U16(item->object().ID()));
+	P.w_u16				(unsigned short(item->object().ID()));
 	O->u_EventSend		(P);
 
 	O					= new_owner;
 	O->u_EventGen		(P,GE_TRADE_BUY,O->ID());
-	P.w_u16				(U16(item->object().ID()));
+	P.w_u16				(unsigned short(item->object().ID()));
 	O->u_EventSend		(P);
 }
 

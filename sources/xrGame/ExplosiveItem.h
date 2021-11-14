@@ -46,7 +46,7 @@ public:
 	}
 	virtual void				GetRayExplosionSourcePos(Fvector3& pos);
 	virtual void				ActivateExplosionBox(const Fvector3& size, Fvector3& in_out_pos);
-	virtual void				OnEvent(CNetPacket& P, U16 type);
+	virtual void				OnEvent(CNetPacket& P, unsigned short type);
 	virtual void				Hit(SHit* pHDS);
 	virtual void				shedule_Update(u32 dt);
 	virtual bool				shedule_Needed( );

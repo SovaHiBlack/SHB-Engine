@@ -60,7 +60,7 @@ void CEatableItemObject::UpdateCL( )
 	CEatableItem::UpdateCL( );
 }
 
-void CEatableItemObject::OnEvent(CNetPacket& P, U16 type)
+void CEatableItemObject::OnEvent(CNetPacket& P, unsigned short type)
 {
 	CPHItem::OnEvent(P, type);
 	CEatableItem::OnEvent(P, type);

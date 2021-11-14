@@ -134,7 +134,7 @@ void CUIPdaWnd::Init( )
 	RearrangeTabButtons(UITabControl, m_sign_places_main);
 }
 
-void CUIPdaWnd::SendMessage(CUIWindow* pWnd, S16 msg, void* pData)
+void CUIPdaWnd::SendMessage(CUIWindow* pWnd, signed short msg, void* pData)
 {
 	if (pWnd == UITabControl)
 	{

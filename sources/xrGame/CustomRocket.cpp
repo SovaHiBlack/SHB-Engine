@@ -184,7 +184,7 @@ void CCustomRocket::ObjectContactCallback(bool& do_colide, bool bo1, dContact& c
 		vUp.invert(*(Fvector3*) &c.geom.normal);
 
 		//if(dGeomGetClass(c.geom.g1)==dTriListClass)
-		//	material=GMLib.GetMaterialByIdx((U16)c.surface.mode);
+		//	material=GMLib.GetMaterialByIdx((unsigned short)c.surface.mode);
 		//else
 		//	material=GMLib.GetMaterialByIdx(l_pUD2->material);
 		material = material_1;
@@ -194,7 +194,7 @@ void CCustomRocket::ObjectContactCallback(bool& do_colide, bool bo1, dContact& c
 		vUp.set(*(Fvector3*) &c.geom.normal);
 
 		//if(dGeomGetClass(c.geom.g2)==dTriListClass)
-		//	material=GMLib.GetMaterialByIdx((U16)c.surface.mode);
+		//	material=GMLib.GetMaterialByIdx((unsigned short)c.surface.mode);
 		//else
 		//	material=GMLib.GetMaterialByIdx(l_pUD1->material);
 		material = material_2;
@@ -670,7 +670,7 @@ void CCustomRocket::StopFlying( )
 	StopLights( );
 }
 
-void CCustomRocket::OnEvent(CNetPacket& P, U16 type)
+void CCustomRocket::OnEvent(CNetPacket& P, unsigned short type)
 {
 	switch (type)
 	{

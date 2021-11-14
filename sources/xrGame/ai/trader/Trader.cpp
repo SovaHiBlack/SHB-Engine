@@ -167,12 +167,12 @@ void CTrader::net_Import(CNetPacket& P)
 	setEnabled(TRUE);
 }
 
-void CTrader::OnEvent(CNetPacket& P, U16 type)
+void CTrader::OnEvent(CNetPacket& P, unsigned short type)
 {
 	inherited::OnEvent(P, type);
 	CInventoryOwner::OnEvent(P, type);
 
-	U16 id;
+	unsigned short id;
 	CObject* Obj;
 
 	switch (type)
@@ -191,7 +191,7 @@ void CTrader::OnEvent(CNetPacket& P, U16 type)
 			{
 				CNetPacket P;
 				u_EventGen(P, GE_OWNERSHIP_REJECT, ID( ));
-				P.w_u16(U16(Obj->ID( )));
+				P.w_u16(unsigned short(Obj->ID( )));
 				u_EventSend(P);
 			}
 		}
@@ -236,7 +236,7 @@ void CTrader::feel_touch_new(CObject* O)
 		Msg("Taking item %s!", *I->object( ).cName( ));
 		CNetPacket P;
 		u_EventGen(P, GE_OWNERSHIP_TAKE, ID( ));
-		P.w_u16(U16(I->object( ).ID( )));
+		P.w_u16(unsigned short(I->object( ).ID( )));
 		u_EventSend(P);
 	}
 }
@@ -252,7 +252,7 @@ void CTrader::DropItemSendMessage(CObject* O)
 	// We doesn't have similar weapon - pick up it
 	CNetPacket P;
 	u_EventGen(P, GE_OWNERSHIP_REJECT, ID( ));
-	P.w_u16(U16(O->ID( )));
+	P.w_u16(unsigned short(O->ID( )));
 	u_EventSend(P);
 }
 

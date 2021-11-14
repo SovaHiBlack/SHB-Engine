@@ -30,8 +30,8 @@ void CLevel::ClientReceive( )
 		m_dwRPC++;
 		m_dwRPS += P->B.count;
 		//-----------------------------------------------------
-		U16 m_type;
-		U16 ID;
+		unsigned short m_type;
+		unsigned short ID;
 		P->r_begin(m_type);
 		switch (m_type)
 		{
@@ -148,7 +148,7 @@ void CLevel::ClientReceive( )
 				unsigned char Count = P->r_u8( );
 				for (unsigned char i = 0; i < Count; i++)
 				{
-					U16 ID = P->r_u16( );
+					unsigned short ID = P->r_u16( );
 					Fvector3 NewPos;
 					Fvector3 NewDir;
 					P->r_vec3(NewPos);

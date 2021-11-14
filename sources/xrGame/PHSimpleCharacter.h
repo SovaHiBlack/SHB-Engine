@@ -37,7 +37,7 @@ protected:
 		void					Reinit( );
 		dContact				m_damege_contact;
 		SCollisionHitCallback* m_hit_callback;
-		U16						m_obj_id;
+		unsigned short						m_obj_id;
 		float					m_dmc_signum;
 		enum
 		{
@@ -132,7 +132,7 @@ public:
 /////////////////CPHObject//////////////////////////////////////////////
 	virtual		void		PhDataUpdate(dReal step);
 	virtual		void		PhTune(dReal step);
-	virtual		void		InitContact(dContact* c, bool& do_collide, U16 /*material_idx_1*/, U16 /*material_idx_2*/);
+	virtual		void		InitContact(dContact* c, bool& do_collide, unsigned short /*material_idx_1*/, unsigned short /*material_idx_2*/);
 	virtual		dSpaceID	dSpace( )
 	{
 		return m_space;
@@ -175,7 +175,7 @@ private:
 	{
 		return m_collision_damage_info.HitPos( );
 	}
-	virtual		U16				 	DamageInitiatorID( ) const;
+	virtual		unsigned short				 	DamageInitiatorID( ) const;
 	virtual		CObject* DamageInitiator( ) const;
 	virtual		ALife::EHitType	 	HitType( ) const;
 	virtual SCollisionHitCallback* HitCallback( ) const;
@@ -215,7 +215,7 @@ public:
 	{
 		return m_cam_dir;
 	}
-	virtual		void		SetMaterial(U16 material);
+	virtual		void		SetMaterial(unsigned short material);
 	virtual		void		SetPosition(Fvector3 pos);
 	virtual		void		GetVelocity(Fvector3& vvel);
 	virtual		void		GetSmothedVelocity(Fvector3& vvel);
@@ -238,7 +238,7 @@ public:
 	virtual		float		FootRadius( );
 	virtual		void		DeathPosition(Fvector3& deathPos);
 	virtual		void		IPosition(Fvector3& pos);
-	virtual		U16			ContactBone( );
+	virtual		unsigned short			ContactBone( );
 	virtual		void		ApplyImpulse(const Fvector3& dir, const dReal P);
 	virtual		void		ApplyForce(const Fvector3& force);
 	virtual		void		ApplyForce(const Fvector3& dir, float force);
@@ -290,12 +290,12 @@ private:
 	void		CheckCaptureJoint( );
 	void		ApplyAcceleration( );
 
-	U16			RetriveContactBone( );
+	unsigned short			RetriveContactBone( );
 	void		SafeAndLimitVelocity( );
 	void		UpdateStaticDamage(dContact* c, SGameMtl* tri_material, bool bo1);
-	void		UpdateDynamicDamage(dContact* c, U16 obj_material_idx, dBodyID b, bool bo1);
+	void		UpdateDynamicDamage(dContact* c, unsigned short obj_material_idx, dBodyID b, bool bo1);
 	inline	void 		FootProcess(dContact* c, bool& do_collide, bool bo);
-	inline	void		foot_material_update(U16	tri_material, U16	foot_material_idx);
+	inline	void		foot_material_update(unsigned short	tri_material, unsigned short	foot_material_idx);
 	static void	TestPathCallback(bool& do_colide, bool bo1, dContact& c, SGameMtl* /*material_1*/, SGameMtl* /*material_2*/);
 
 public:

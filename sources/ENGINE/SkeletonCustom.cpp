@@ -68,7 +68,7 @@ bool pred_N(const std::pair<CSharedString, u32>& N, const char* B)
 	return xr_strcmp(*N.first, B) < 0;
 }
 
-U16 CKinematics::LL_BoneID(const char* B)
+unsigned short CKinematics::LL_BoneID(const char* B)
 {
 	accel::iterator I = std::lower_bound(bone_map_N->begin( ), bone_map_N->end( ), B, pred_N);
 	if (I == bone_map_N->end( ))
@@ -81,7 +81,7 @@ U16 CKinematics::LL_BoneID(const char* B)
 		return BI_NONE;
 	}
 
-	return U16(I->second);
+	return unsigned short(I->second);
 }
 
 bool pred_P(const std::pair<CSharedString, u32>& N, const CSharedString& B)
@@ -89,7 +89,7 @@ bool pred_P(const std::pair<CSharedString, u32>& N, const CSharedString& B)
 	return N.first._get( ) < B._get( );
 }
 
-U16 CKinematics::LL_BoneID(const CSharedString& B)
+unsigned short CKinematics::LL_BoneID(const CSharedString& B)
 {
 	accel::iterator I = std::lower_bound(bone_map_P->begin( ), bone_map_P->end( ), B, pred_P);
 	if (I == bone_map_P->end( ))
@@ -102,11 +102,11 @@ U16 CKinematics::LL_BoneID(const CSharedString& B)
 		return BI_NONE;
 	}
 
-	return U16(I->second);
+	return unsigned short(I->second);
 }
 
 //
-const char* CKinematics::LL_BoneName_dbg(U16 ID)
+const char* CKinematics::LL_BoneName_dbg(unsigned short ID)
 {
 	CKinematics::accel::iterator _I, _E = bone_map_N->end( );
 	for (_I = bone_map_N->begin( ); _I != _E; ++_I)
@@ -305,7 +305,7 @@ void CKinematics::Load(const char* N, IReader* data, u32 dwFlags)
 		string256 buf;
 
 		// Bone
-		U16 ID = U16(bones->size( ));
+		unsigned short ID = unsigned short(bones->size( ));
 		data->r_stringZ(buf, sizeof(buf));	strlwr(buf);
 		CBoneData* pBone = CreateBoneData(ID);
 		pBone->name = CSharedString(buf);
@@ -335,13 +335,13 @@ void CKinematics::Load(const char* N, IReader* data, u32 dwFlags)
 		{
 			// no parent - this is root bone
 			R_ASSERT(BI_NONE == iRoot);
-			iRoot = U16(i);
+			iRoot = unsigned short(i);
 			B->SetParentID(BI_NONE);
 			continue;
 		}
 		else
 		{
-			U16 ID = LL_BoneID(P);
+			unsigned short ID = LL_BoneID(P);
 			R_ASSERT(ID != BI_NONE);
 			(*bones)[ID]->children.push_back(B);
 			B->SetParentID(ID);
@@ -360,7 +360,7 @@ void CKinematics::Load(const char* N, IReader* data, u32 dwFlags)
 		for (u32 i = 0; i < bones->size( ); i++)
 		{
 			CBoneData* B = (*bones)[i];
-			U16 vers = (U16) IKD->r_u32( );
+			unsigned short vers = (unsigned short) IKD->r_u32( );
 			IKD->r_stringZ(B->game_mtl_name);
 			IKD->r(&B->shape, sizeof(SBoneShape));
 			B->IK_data.Import(*IKD, vers);
@@ -381,7 +381,7 @@ void CKinematics::Load(const char* N, IReader* data, u32 dwFlags)
 
 	// after load process
 	{
-		for (U16 child_idx = 0; child_idx < (U16) children.size( ); child_idx++)
+		for (unsigned short child_idx = 0; child_idx < (unsigned short) children.size( ); child_idx++)
 		{
 			LL_GetChild(child_idx)->AfterLoad(this, child_idx);
 		}
@@ -412,7 +412,7 @@ void CKinematics::Load(const char* N, IReader* data, u32 dwFlags)
 	LL_Validate( );
 }
 
-inline void iBuildGroups(CBoneData* B, U16Vec& tgt, U16 id, U16& last_id)
+inline void iBuildGroups(CBoneData* B, U16Vec& tgt, unsigned short id, unsigned short& last_id)
 {
 	if (B->IK_data.ik_flags.is(SJointIKData::flBreakable))
 	{
@@ -430,7 +430,7 @@ void CKinematics::LL_Validate( )
 {
 	// check breakable
 	bool bCheckBreakable			= false;
-	for (U16 k = 0; k < LL_BoneCount( ); k++)
+	for (unsigned short k = 0; k < LL_BoneCount( ); k++)
 	{
 		if (LL_GetData(k).IK_data.ik_flags.is(SJointIKData::flBreakable) && (LL_GetData(k).IK_data.type != jtNone))
 		{
@@ -443,18 +443,18 @@ void CKinematics::LL_Validate( )
 	{
 		bool bValidBreakable		= true;
 
-		xr_vector<xr_vector<U16>>	groups;
+		xr_vector<xr_vector<unsigned short>>	groups;
 		LL_GetBoneGroups			(groups);
 
-		xr_vector<U16> b_parts		(LL_BoneCount( ), BI_NONE);
+		xr_vector<unsigned short> b_parts		(LL_BoneCount( ), BI_NONE);
 		CBoneData* root				= &LL_GetData(LL_GetBoneRoot( ));
-		U16 last_id					= 0;
+		unsigned short last_id					= 0;
 		iBuildGroups				(root, b_parts, 0, last_id);
 
-		for (U16 g = 0; g < (U16) groups.size( ); ++g)
+		for (unsigned short g = 0; g < (unsigned short) groups.size( ); ++g)
 		{
-			xr_vector<U16>& group	= groups[g];
-			U16 bp_id				= b_parts[group[0]];
+			xr_vector<unsigned short>& group	= groups[g];
+			unsigned short bp_id				= b_parts[group[0]];
 			for (u32 b = 1; b < groups[g].size( ); b++)
 			{
 				if (bp_id != b_parts[groups[g][b]])
@@ -467,7 +467,7 @@ void CKinematics::LL_Validate( )
 
 		if (bValidBreakable) /*(!bValidBreakable == false)*/
 		{
-			for (U16 k = 0; k < LL_BoneCount( ); k++)
+			for (unsigned short k = 0; k < LL_BoneCount( ); k++)
 			{
 				CBoneData& BD = LL_GetData(k);
 				if (BD.IK_data.ik_flags.is(SJointIKData::flBreakable))
@@ -575,7 +575,7 @@ void CKinematics::Release( )
 	inherited::Release( );
 }
 
-void CKinematics::LL_SetBoneVisible(U16 bone_id, BOOL val, BOOL bRecursive)
+void CKinematics::LL_SetBoneVisible(unsigned short bone_id, BOOL val, BOOL bRecursive)
 {
 	VERIFY(bone_id < LL_BoneCount( ));
 	U64 mask = U64(1) << bone_id;
@@ -654,7 +654,7 @@ void CKinematics::Visibility_Update( )
 	}
 }
 
-inline static void RecursiveBindTransform(CKinematics* K, xr_vector<Fmatrix>& matrices, U16 bone_id, const Fmatrix& parent)
+inline static void RecursiveBindTransform(CKinematics* K, xr_vector<Fmatrix>& matrices, unsigned short bone_id, const Fmatrix& parent)
 {
 	CBoneData& BD = K->LL_GetData(bone_id);
 	Fmatrix& BM = matrices[bone_id];
@@ -694,7 +694,7 @@ void BuildMatrix(Fmatrix& mView, float invsz, const Fvector3 norm, const Fvector
 	mView.mulA_43(mScale);
 }
 
-void CKinematics::EnumBoneVertices(SEnumVerticesCallback& C, U16 bone_id)
+void CKinematics::EnumBoneVertices(SEnumVerticesCallback& C, unsigned short bone_id)
 {
 	for (u32 i = 0; i < children.size( ); i++)
 	{
@@ -706,7 +706,7 @@ void CKinematics::EnumBoneVertices(SEnumVerticesCallback& C, U16 bone_id)
 //using OBBVec = xr_vector<Fobb>;
 //using OBBVecIt = OBBVec::iterator;
 
-bool CKinematics::PickBone(const Fmatrix& parent_xform, Fvector3& normal, float& dist, const Fvector3& start, const Fvector3& dir, U16 bone_id)
+bool CKinematics::PickBone(const Fmatrix& parent_xform, Fvector3& normal, float& dist, const Fvector3& start, const Fvector3& dir, unsigned short bone_id)
 {
 	Fvector3 S;
 	Fvector3 D;
@@ -745,7 +745,7 @@ void CKinematics::AddWallmark(const Fmatrix* parent_xform, const Fvector3& start
 	OBBVec cache_obb;
 	cache_obb.resize(LL_BoneCount( ));
 
-	for (U16 k = 0; k < LL_BoneCount( ); k++)
+	for (unsigned short k = 0; k < LL_BoneCount( ); k++)
 	{
 		CBoneData& BD = LL_GetData(k);
 		if (LL_GetBoneVisible(k) && !BD.shape.flags.is(SBoneShape::sfNoPickable))
@@ -937,10 +937,10 @@ void CKinematics::ClearWallmarks( )
 	wallmarks.clear( );
 }
 
-int CKinematics::LL_GetBoneGroups(xr_vector<xr_vector<U16> >& groups)
+int CKinematics::LL_GetBoneGroups(xr_vector<xr_vector<unsigned short> >& groups)
 {
 	groups.resize(children.size( ));
-	for (U16 bone_idx = 0; bone_idx < (U16) bones->size( ); bone_idx++)
+	for (unsigned short bone_idx = 0; bone_idx < (unsigned short) bones->size( ); bone_idx++)
 	{
 		CBoneData* B = (*bones)[bone_idx];
 		for (u32 child_idx = 0; child_idx < children.size( ); child_idx++)

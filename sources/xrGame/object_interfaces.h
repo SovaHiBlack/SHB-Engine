@@ -35,7 +35,7 @@ class IPureServerObject : public IPureSerializeObject<IReader, IWriter>
 {
 public:
 	virtual void					STATE_Write(CNetPacket& tNetPacket) = 0;
-	virtual void					STATE_Read(CNetPacket& tNetPacket, U16 size) = 0;
+	virtual void					STATE_Read(CNetPacket& tNetPacket, unsigned short size) = 0;
 	virtual void					UPDATE_Write(CNetPacket& tNetPacket) = 0;
 	virtual void					UPDATE_Read(CNetPacket& tNetPacket) = 0;
 };

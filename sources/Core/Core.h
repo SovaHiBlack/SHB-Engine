@@ -161,7 +161,7 @@ struct CORE_API xr_shortcut
 			Flags8	ext;
 		};
 
-		U16		hotkey;
+		unsigned short		hotkey;
 	};
 	xr_shortcut(unsigned char k, BOOL a, BOOL c, BOOL s) :key(k)
 	{

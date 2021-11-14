@@ -49,7 +49,11 @@ void CKinematics::CalculateBones			(BOOL bForceExact)
 		Box.invalidate();
 		for (u32 b=0; b<bones->size(); b++)
 		{
-			if			(!LL_GetBoneVisible(U16(b)))		continue;
+			if (!LL_GetBoneVisible(unsigned short(b)))
+			{
+				continue;
+			}
+
 			Fobb&		obb		= (*bones)[b]->obb;
 			Fmatrix&	Mbone	= bone_instances[b].mTransform;
 			Fmatrix		Mbox;	obb.xform_get(Mbox);
@@ -79,7 +83,7 @@ void CKinematics::CalculateBones			(BOOL bForceExact)
 		VERIFY3	(_valid(vis.box.min)&&_valid(vis.box.max),	"Invalid bones-xform in model", dbg_name.c_str());
 		if(vis.sphere.R>1000.f)
 		{
-			for(U16 ii=0; ii<LL_BoneCount();++ii){
+			for(unsigned short ii=0; ii<LL_BoneCount();++ii){
 				Fmatrix tr;
 
 				tr = LL_GetTransform(ii);
@@ -105,13 +109,14 @@ void check_kinematics(CKinematics* _k, const char* s)
 	{	
 		Msg("all bones transform:--------[%s]",s);
 		
-		for(U16 ii=0; ii<K->LL_BoneCount();++ii){
+		for(unsigned short ii=0; ii<K->LL_BoneCount();++ii){
 			Fmatrix tr;
 
 			tr = K->LL_GetTransform(ii);
 			Log("bone ",K->LL_BoneName_dbg(ii));
 			Log("bone_matrix",tr);
 		}
+
 		Log("end-------");
 		VERIFY3(0,"check_kinematics failed for ", s);
 	}
@@ -120,7 +125,7 @@ void check_kinematics(CKinematics* _k, const char* s)
 
 void CKinematics::Bone_Calculate	(CBoneData* bd, Fmatrix *parent)
 {
-	U16 SelfID						= bd->GetSelfID();
+	unsigned short SelfID						= bd->GetSelfID();
 	if (LL_GetBoneVisible(SelfID)){
 		CBoneInstance& INST			= LL_GetBoneInstance(SelfID);
 		if (INST.Callback_overwrite){

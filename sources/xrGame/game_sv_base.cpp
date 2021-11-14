@@ -106,7 +106,7 @@ u32					game_sv_GameState::get_players_count( )
 	return				m_server->client_Count( );
 }
 
-//U16					game_sv_GameState::get_id_2_eid				(CClientID id)
+//unsigned short					game_sv_GameState::get_id_2_eid				(CClientID id)
 //{
 //	xrClientData*	C	= (xrClientData*)m_server->ID_to_client	(id);
 //	if (0==C)			return 0xffff;
@@ -115,7 +115,7 @@ u32					game_sv_GameState::get_players_count( )
 //	return E->ID;
 //}
 
-//game_PlayerState*	game_sv_GameState::get_eid (U16 id) //if exist
+//game_PlayerState*	game_sv_GameState::get_eid (unsigned short id) //if exist
 //{
 //	CSE_Abstract* entity = get_entity_from_eid(id);
 //
@@ -142,7 +142,7 @@ u32					game_sv_GameState::get_players_count( )
 //	return NULL;
 //}
 
-void* game_sv_GameState::get_client(U16 id) //if exist
+void* game_sv_GameState::get_client(unsigned short id) //if exist
 {
 	CSE_Abstract* entity = get_entity_from_eid(id);
 	if (entity && entity->owner && entity->owner->ps && entity->owner->ps->GameID == id)
@@ -168,7 +168,7 @@ void* game_sv_GameState::get_client(U16 id) //if exist
 	return nullptr;
 }
 
-CSE_Abstract* game_sv_GameState::get_entity_from_eid(U16 id)
+CSE_Abstract* game_sv_GameState::get_entity_from_eid(unsigned short id)
 {
 	return				m_server->ID_to_entity(id);
 }
@@ -187,7 +187,7 @@ CSE_Abstract* game_sv_GameState::get_entity_from_eid(U16 id)
 //	return alive;
 //}
 
-//xr_vector<U16>*		game_sv_GameState::get_children				(CClientID id)
+//xr_vector<unsigned short>*		game_sv_GameState::get_children				(CClientID id)
 //{
 //	xrClientData*	C	= (xrClientData*)m_server->ID_to_client	(id);
 //	if (0==C)			return 0;
@@ -274,7 +274,7 @@ void game_sv_GameState::net_Export_State(CNetPacket& P, CClientID to)
 		p_count++;
 	}
 
-	P.w_u16(U16(p_count));
+	P.w_u16(unsigned short(p_count));
 	game_PlayerState* Base = get_id(to);
 	for (u32 p_it = 0; p_it < get_players_count( ); ++p_it)
 	{
@@ -304,7 +304,7 @@ void game_sv_GameState::net_Export_State(CNetPacket& P, CClientID to)
 		}
 
 		A->setName(p_name);
-		U16 tmp_flags = A->flags__;
+		unsigned short tmp_flags = A->flags__;
 
 		if (Base == A)
 		{
@@ -326,7 +326,7 @@ void game_sv_GameState::net_Export_Update(CNetPacket& P, CClientID id_to, CClien
 	game_PlayerState* A = get_id(id);
 	if (A)
 	{
-		U16 bk_flags = A->flags__;
+		unsigned short bk_flags = A->flags__;
 		if (id == id_to)
 		{
 			A->setFlag(GAME_PLAYER_FLAG_LOCAL);
@@ -353,7 +353,7 @@ void game_sv_GameState::OnPlayerConnect(CClientID /**id_who/**/)
 	signal_Syncronize( );
 }
 
-void game_sv_GameState::OnPlayerDisconnect(CClientID /**id_who/**/, char*, U16)
+void game_sv_GameState::OnPlayerDisconnect(CClientID /**id_who/**/, char*, unsigned short)
 {
 	signal_Syncronize( );
 }
@@ -382,7 +382,7 @@ void game_sv_GameState::Create(CSharedString& options)
 				team = O->r_u8( );	VERIFY(team >= 0 && team < 4);
 				type = O->r_u8( );
 				GameType = O->r_u8( );
-				//U16 res = 
+				//unsigned short res = 
 				O->r_u8( );
 
 				switch (type)
@@ -566,7 +566,7 @@ void	game_sv_GameState::ConsoleCommands_Clear( )
 //CSE_Abstract*		game_sv_GameState::spawn_end				(CSE_Abstract* E, CClientID id)
 //{
 //	CNetPacket						P;
-//	U16								skip_header;
+//	unsigned short								skip_header;
 //	E->Spawn_Write					(P,TRUE);
 //	P.r_begin						(skip_header);
 //	CSE_Abstract* N = m_server->Process_spawn	(P,id);
@@ -580,7 +580,7 @@ void	game_sv_GameState::ConsoleCommands_Clear( )
 //	P.w_begin(M_GAMEMESSAGE);
 //};
 
-void game_sv_GameState::u_EventGen(CNetPacket& P, U16 type, U16 dest)
+void game_sv_GameState::u_EventGen(CNetPacket& P, unsigned short type, unsigned short dest)
 {
 	P.w_begin(M_EVENT);
 	P.w_u32(Level( ).timeServer( ));//Device.TimerAsync());
@@ -598,7 +598,7 @@ void game_sv_GameState::Update( )
 	for (u32 it = 0; it < m_server->client_Count( ); ++it)
 	{
 		xrClientData* C = (xrClientData*) m_server->client_Get(it);
-		C->ps->ping = U16(0);
+		C->ps->ping = unsigned short(0);
 	}
 
 	if (Level( ).game)
@@ -660,7 +660,7 @@ bool game_sv_GameState::load_game(CNetPacket& net_packet, CClientID sender)
 void game_sv_GameState::switch_distance(CNetPacket& net_packet, CClientID sender)
 { }
 
-void game_sv_GameState::OnHit(U16 id_hitter, U16 id_hitted, CNetPacket& P)
+void game_sv_GameState::OnHit(unsigned short id_hitter, unsigned short id_hitted, CNetPacket& P)
 {
 	CSE_Abstract* e_hitter = get_entity_from_eid(id_hitter);
 	CSE_Abstract* e_hitted = get_entity_from_eid(id_hitted);
@@ -679,7 +679,7 @@ void game_sv_GameState::OnHit(U16 id_hitter, U16 id_hitted, CNetPacket& P)
 	}
 }
 
-void game_sv_GameState::OnEvent(CNetPacket& tNetPacket, U16 type, u32 time, CClientID sender)
+void game_sv_GameState::OnEvent(CNetPacket& tNetPacket, unsigned short type, u32 time, CClientID sender)
 {
 	switch (type)
 	{
@@ -696,7 +696,7 @@ void game_sv_GameState::OnEvent(CNetPacket& tNetPacket, U16 type, u32 time, CCli
 			tNetPacket.r_clientID(ID);
 			string1024 PlayerName;
 			tNetPacket.r_stringZ(PlayerName);
-			U16		GameID = tNetPacket.r_u16( );
+			unsigned short		GameID = tNetPacket.r_u16( );
 			OnPlayerDisconnect(ID, PlayerName, GameID);
 		}
 		break;
@@ -706,8 +706,8 @@ void game_sv_GameState::OnEvent(CNetPacket& tNetPacket, U16 type, u32 time, CCli
 		//break;
 		case GAME_EVENT_ON_HIT:
 		{
-			U16		id_dest = tNetPacket.r_u16( );
-			U16     id_src = tNetPacket.r_u16( );
+			unsigned short		id_dest = tNetPacket.r_u16( );
+			unsigned short     id_src = tNetPacket.r_u16( );
 			CSE_Abstract* e_src = get_entity_from_eid(id_src);
 
 			if (!e_src)  // added by andy because of Phantom does not have server entity
@@ -826,7 +826,7 @@ void game_sv_GameState::OnSwitchPhase(u32 old_phase, u32 new_phase)
 	signal_Syncronize( );
 }
 
-void game_sv_GameState::AddDelayedEvent(CNetPacket& tNetPacket, U16 type, u32 time, CClientID sender)
+void game_sv_GameState::AddDelayedEvent(CNetPacket& tNetPacket, unsigned short type, u32 time, CClientID sender)
 {
 //	OnEvent(tNetPacket,type,time,sender);
 	m_event_queue->Create(tNetPacket, type, time, sender);
@@ -842,7 +842,7 @@ void game_sv_GameState::ProcessDelayedEvent( )
 	}
 }
 
-//u32 game_sv_GameState::getRPcount (U16 team_idx)
+//u32 game_sv_GameState::getRPcount (unsigned short team_idx)
 //{
 //	if ( !(team_idx<TEAM_COUNT) )
 //		return 0;
@@ -850,7 +850,7 @@ void game_sv_GameState::ProcessDelayedEvent( )
 //		return rpoints[team_idx].size();
 //}
 
-//RPoint game_sv_GameState::getRP (U16 team_idx, u32 rp_idx)
+//RPoint game_sv_GameState::getRP (unsigned short team_idx, u32 rp_idx)
 //{
 //	if( (team_idx<TEAM_COUNT) && (rp_idx<rpoints[team_idx].size()) )
 //	return rpoints[team_idx][rp_idx];
@@ -858,16 +858,16 @@ void game_sv_GameState::ProcessDelayedEvent( )
 //		return RPoint();
 //};
 
-void game_sv_GameState::teleport_object(CNetPacket& packet, U16 id)
+void game_sv_GameState::teleport_object(CNetPacket& packet, unsigned short id)
 { }
 
-void game_sv_GameState::add_restriction(CNetPacket& packet, U16 id)
+void game_sv_GameState::add_restriction(CNetPacket& packet, unsigned short id)
 { }
 
-void game_sv_GameState::remove_restriction(CNetPacket& packet, U16 id)
+void game_sv_GameState::remove_restriction(CNetPacket& packet, unsigned short id)
 { }
 
-void game_sv_GameState::remove_all_restrictions(CNetPacket& packet, U16 id)
+void game_sv_GameState::remove_all_restrictions(CNetPacket& packet, unsigned short id)
 { }
 
 //void game_sv_GameState::MapRotation_AddMap		(const char* MapName)

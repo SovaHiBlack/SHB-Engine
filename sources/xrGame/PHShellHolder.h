@@ -124,15 +124,15 @@ public:
 	virtual void			PHGetLinearVell(Fvector3& velocity);
 	virtual void			PHSetLinearVell(Fvector3& velocity);
 	virtual void			PHSetMaterial(const char* m);
-	virtual void			PHSetMaterial(U16 m);
+	virtual void			PHSetMaterial(unsigned short m);
 	void					PHSaveState(CNetPacket& P);
 	void					PHLoadState(IReader& P);
 	virtual float			GetMass( );
 	virtual	void			PHHit(float P, Fvector3& dir, CObject* who, signed short element, Fvector3 p_in_object_space, float impulse, ALife::EHitType hit_type = ALife::eHitTypeWound);
 	virtual	void			Hit(SHit* pHDS);
 ///////////////////////////////////////////////////////////////////////
-	virtual U16				PHGetSyncItemsNumber( );
-	virtual CPHSynchronize* PHGetSyncItem(U16 item);
+	virtual unsigned short				PHGetSyncItemsNumber( );
+	virtual CPHSynchronize* PHGetSyncItem(unsigned short item);
 	virtual void			PHUnFreeze( );
 	virtual void			PHFreeze( );
 	virtual float			EffectiveGravity( );

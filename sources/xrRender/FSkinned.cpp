@@ -19,24 +19,24 @@
 static	CSharedString	sbones_array;
 
 #pragma pack(push,1)
-float u_P(S16 v)
+float u_P(signed short v)
 {
 	return	float(v) / (32767.f / 12.f);
 }
-S16	q_P(float v)
+signed short	q_P(float v)
 {
 	int		_v = clampr(iFloor(v * (32767.f / 12.f)), -32768, 32767);
-	return	S16(_v);
+	return	signed short(_v);
 }
 unsigned char	q_N(float v)
 {
 	int		_v = clampr(iFloor((v + 1.f) * 127.5f), 0, 255);
 	return	unsigned char(_v);
 }
-S16	q_tc(float v)
+signed short	q_tc(float v)
 {
 	int		_v = clampr(iFloor(v * (32767.f / 16.f)), -32768, 32767);
-	return	S16(_v);
+	return	signed short(_v);
 }
 #ifdef _DEBUG
 float errN(Fvector3 v, unsigned char* qv)
@@ -64,11 +64,11 @@ static	D3DVERTEXELEMENT9 dwDecl_01W[ ] =	// 24bytes
 };
 struct	vertHW_1W
 {
-	S16			_P[4];
+	signed short			_P[4];
 	u32			_N_I;
 	u32			_T;
 	u32			_B;
-	S16			_tc[2];
+	signed short			_tc[2];
 	void set(Fvector3& P, Fvector3 N, Fvector3 T, Fvector3 B, Fvector2& tc, int index)
 	{
 		N.normalize_safe( );
@@ -107,11 +107,11 @@ static	D3DVERTEXELEMENT9 dwDecl_2W[ ] =	// 28bytes
 };
 struct	vertHW_2W
 {
-	S16			_P[4];
+	signed short			_P[4];
 	u32			_N_w;
 	u32			_T;
 	u32			_B;
-	S16			_tc_i[4];
+	signed short			_tc_i[4];
 	void set(Fvector3& P, Fvector3 N, Fvector3 T, Fvector3 B, Fvector2& tc, int index0, int index1, float w)
 	{
 		N.normalize_safe( );
@@ -126,8 +126,8 @@ struct	vertHW_2W
 		_B = color_rgba(q_N(B.x), q_N(B.y), q_N(B.z), 0);
 		_tc_i[0] = q_tc(tc.x);
 		_tc_i[1] = q_tc(tc.y);
-		_tc_i[2] = S16(index0);
-		_tc_i[3] = S16(index1);
+		_tc_i[2] = signed short(index0);
+		_tc_i[3] = signed short(index1);
 	}
 	float get_weight( )
 	{

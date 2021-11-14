@@ -847,7 +847,7 @@ PIItem CInventory::Get(CLASS_ID cls_id, bool bSearchRuck) const
 	return nullptr;
 }
 
-PIItem CInventory::Get(const U16 id, bool bSearchRuck) const
+PIItem CInventory::Get(const unsigned short id, bool bSearchRuck) const
 {
 	const TIItemContainer& list = bSearchRuck ? m_ruck : m_belt;
 

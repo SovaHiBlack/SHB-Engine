@@ -30,7 +30,7 @@ namespace CDB
 		faces.push_back(T);
 	}
 
-	void	Collector::add_face		(	const Fvector3& v0, const Fvector3& v1, const Fvector3& v2, U16 material, U16 sector )
+	void	Collector::add_face		(	const Fvector3& v0, const Fvector3& v1, const Fvector3& v2, unsigned short material, unsigned short sector )
 	{
 		TRI			T;
 		T.verts	[0]		= verts.size();
@@ -47,7 +47,7 @@ namespace CDB
 
 	void	Collector::add_face_packed	(
 		const Fvector3& v0, const Fvector3& v1, const Fvector3& v2,	// vertices
-		U16		material, U16 sector,								// misc
+		unsigned short		material, unsigned short sector,								// misc
 		float	eps
 		)
 	{
@@ -82,8 +82,8 @@ namespace CDB
 	struct edge {
 		u32		face_id		: 30;
 		u32		edge_id		: 2;
-		U16		vertex_id0;
-		U16		vertex_id1;
+		unsigned short		vertex_id0;
+		unsigned short		vertex_id1;
 	};
 #pragma pack(pop)
 
@@ -122,24 +122,24 @@ namespace CDB
 
 			(*i).face_id				= face_id;
 			(*i).edge_id				= 0;
-			(*i).vertex_id0				= (U16)(*I).verts[0];
-			(*i).vertex_id1				= (U16)(*I).verts[1];
+			(*i).vertex_id0				= (unsigned short)(*I).verts[0];
+			(*i).vertex_id1				= (unsigned short)(*I).verts[1];
 			if ((*i).vertex_id0 > (*i).vertex_id1)
 				std::swap				((*i).vertex_id0,(*i).vertex_id1);
 			++i;
 			
 			(*i).face_id				= face_id;
 			(*i).edge_id				= 1;
-			(*i).vertex_id0				= (U16)(*I).verts[1];
-			(*i).vertex_id1				= (U16)(*I).verts[2];
+			(*i).vertex_id0				= (unsigned short)(*I).verts[1];
+			(*i).vertex_id1				= (unsigned short)(*I).verts[2];
 			if ((*i).vertex_id0 > (*i).vertex_id1)
 				std::swap				((*i).vertex_id0,(*i).vertex_id1);
 			++i;
 			
 			(*i).face_id				= face_id;
 			(*i).edge_id				= 2;
-			(*i).vertex_id0				= (U16)(*I).verts[2];
-			(*i).vertex_id1				= (U16)(*I).verts[0];
+			(*i).vertex_id0				= (unsigned short)(*I).verts[2];
+			(*i).vertex_id1				= (unsigned short)(*I).verts[0];
 			if ((*i).vertex_id0 > (*i).vertex_id1)
 				std::swap				((*i).vertex_id0,(*i).vertex_id1);
 			++i;
@@ -297,7 +297,7 @@ namespace CDB
 
 	void	CollectorPacked::add_face(
 		const Fvector3& v0, const Fvector3& v1, const Fvector3& v2,	// vertices
-		U16 material, U16 sector									// misc
+		unsigned short material, unsigned short sector									// misc
 		)
 	{
 		TRI T;

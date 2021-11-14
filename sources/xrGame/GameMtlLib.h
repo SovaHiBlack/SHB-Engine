@@ -25,7 +25,7 @@
 #define GAMEMTL_SUBITEM_COUNT			4
 
 #define GAMEMTL_NONE_ID					u32(-1)
-#define GAMEMTL_NONE_IDX				U16(-1)
+#define GAMEMTL_NONE_IDX				unsigned short(-1)
 #define GAMEMTL_FILENAME				"gamemtl.xr"
 
 using SoundVec = xr_vector<ref_sound>;
@@ -283,19 +283,19 @@ public:
 		return (it == materials.end( )) ? GAMEMTL_NONE_ID : (*it)->ID;
 	}
 
-	inline U16				GetMaterialIdx(int ID)
+	inline unsigned short				GetMaterialIdx(int ID)
 	{
 		GameMtlIt it = GetMaterialItByID(ID);
 		VERIFY(materials.end( ) != it);
-		return (U16) (it - materials.begin( ));
+		return (unsigned short) (it - materials.begin( ));
 	}
-	inline U16				GetMaterialIdx(const char* name)
+	inline unsigned short				GetMaterialIdx(const char* name)
 	{
 		GameMtlIt it = GetMaterialIt(name);
 		VERIFY(materials.end( ) != it);
-		return (U16) (it - materials.begin( ));
+		return (unsigned short) (it - materials.begin( ));
 	}
-	inline SGameMtl* GetMaterialByIdx(U16 idx)
+	inline SGameMtl* GetMaterialByIdx(unsigned short idx)
 	{
 		VERIFY(idx < materials.size( ));
 		return materials[idx];
@@ -319,7 +319,7 @@ public:
 	}
 
 	// material pair routine
-	inline SGameMtlPair* GetMaterialPair(U16 idx0, U16 idx1)
+	inline SGameMtlPair* GetMaterialPair(unsigned short idx0, unsigned short idx1)
 	{
 		R_ASSERT((idx0 < material_count) && (idx1 < material_count));
 		return material_pairs_rt[idx1 * material_count + idx0];

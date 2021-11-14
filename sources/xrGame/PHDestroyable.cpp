@@ -48,9 +48,8 @@ CPHDestroyable::CPHDestroyable( )
 	m_depended_objects = 0;
 }
 /////////spawn object representing destroyed item//////////////////////////////////////////////////////////////////////////////////
-void CPHDestroyable::GenSpawnReplace(U16 ref_id, const char* section, CSharedString visual_name)
+void CPHDestroyable::GenSpawnReplace(unsigned short ref_id, const char* section, CSharedString visual_name)
 {
-
 	CSE_Abstract* D = F_entity_Create(section);//*cNameSect()
 	VERIFY(D);
 	CSE_Visual* V = smart_cast<CSE_Visual*>(D);
@@ -62,7 +61,7 @@ void CPHDestroyable::GenSpawnReplace(U16 ref_id, const char* section, CSharedStr
 
 	// Send
 	D->s_name = section;//*cNameSect()
-	D->ID_Parent = U16(-1);
+	D->ID_Parent = unsigned short(-1);
 	InitServerObject(D);
 	if (OnServer( ))
 	{
@@ -132,7 +131,7 @@ void CPHDestroyable::PhysicallyRemovePart(CPHDestroyableNotificate* dn)
 	s->DisableCollision( );
 }
 
-void CPHDestroyable::Destroy(U16 source_id, const char* section)
+void CPHDestroyable::Destroy(unsigned short source_id, const char* section)
 {
 	if (!CanDestroy( ))return;
 	m_notificate_objects.clear( );
@@ -236,7 +235,7 @@ void CPHDestroyable::NotificatePart(CPHDestroyableNotificate* dn)
 	float						random_min = 1.f;
 	float						random_hit_imp = 1.f;
 	////////////////////////////////////////////////////////////////////////////////////
-	U16							ref_bone = own_K->LL_GetBoneRoot( );
+	unsigned short							ref_bone = own_K->LL_GetBoneRoot( );
 
 	float						imp_transition_factor = 1.f;
 	float						lv_transition_factor = 1.f;
@@ -281,9 +280,9 @@ void CPHDestroyable::NotificatePart(CPHDestroyableNotificate* dn)
 
 	dBodyID own_body = own_shell->get_Element(ref_bone)->get_body( );
 
-	U16 new_el_number = new_shell->get_ElementsNumber( );
+	unsigned short new_el_number = new_shell->get_ElementsNumber( );
 
-	for (U16 i = 0; i < new_el_number; ++i)
+	for (unsigned short i = 0; i < new_el_number; ++i)
 	{
 		CPhysicsElement* e = new_shell->get_ElementByStoreOrder(i);
 		float random_hit = random_min * e->getMass( );

@@ -18,8 +18,8 @@ public:
 private:
 			void	Calculate					( );
 			void	LimbCalculate				(  SCalculateData &cd );
-			void	LimbUpdate					( CIKLimb &L, U16 i );
-			void	LimbSetup					( const U16 bones[4] );
+			void	LimbUpdate					( CIKLimb &L, unsigned short i );
+			void	LimbSetup					( const unsigned short bones[4] );
 			//void	UpdateTracks				();
 private:
 	static	void __stdcall 	IKVisualCallback	( CKinematics* K );

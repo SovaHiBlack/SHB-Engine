@@ -18,7 +18,7 @@ public:
 	virtual void	Init				();
 	virtual void	SetText				(const char* str);
 
-	virtual void	SendMessage			(CUIWindow *pWnd, S16 msg, void *pData);
+	virtual void	SendMessage			(CUIWindow *pWnd, signed short msg, void *pData);
 
 	// Изменяем текущее установленное время отдыха на дельта-значения
 	void			ModifyRestTime		(signed char dHours, signed char dMinutes);

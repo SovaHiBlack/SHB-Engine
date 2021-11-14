@@ -97,7 +97,7 @@ public:
 	{
 		return 30.0f;
 	}
-	virtual void					OnEvent						(CNetPacket& P, U16 type);
+	virtual void					OnEvent						(CNetPacket& P, unsigned short type);
 	virtual void					feel_touch_new				(CObject* O);
 	virtual void					DropItemSendMessage			(CObject* O);
 	virtual void					shedule_Update				(u32 dt);
@@ -105,11 +105,11 @@ public:
 	virtual BOOL					UsedAI_Locations			( );
 
 	///////////////////////////////////////////////////////////////////////
-	virtual U16						PHGetSyncItemsNumber		( )
+	virtual unsigned short						PHGetSyncItemsNumber		( )
 	{
 		return inherited::PHGetSyncItemsNumber( );
 	}
-	virtual CPHSynchronize*			PHGetSyncItem				(U16 item)
+	virtual CPHSynchronize*			PHGetSyncItem				(unsigned short item)
 	{
 		return inherited::PHGetSyncItem(item);
 	}

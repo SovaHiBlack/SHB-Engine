@@ -278,7 +278,7 @@ void CEntity::net_Destroy( )
 	set_ready_to_save( );
 }
 
-void CEntity::KillEntity(U16 whoID)
+void CEntity::KillEntity(unsigned short whoID)
 {
 	if (whoID != ID( ))
 	{
@@ -315,7 +315,7 @@ void CEntity::KillEntity(U16 whoID)
 	{
 		CNetPacket P;
 		u_EventGen(P, GE_DIE, ID( ));
-		P.w_u16(U16(whoID));
+		P.w_u16(unsigned short(whoID));
 		P.w_u32(0);
 		if (OnServer( ))
 		{
@@ -376,14 +376,14 @@ const u32 FORGET_KILLER_TIME = 180000;
 void CEntity::shedule_Update(u32 dt)
 {
 	inherited::shedule_Update(dt);
-	if (!getDestroy( ) && !g_Alive( ) && (m_killer_id != U16(-1)))
+	if (!getDestroy( ) && !g_Alive( ) && (m_killer_id != unsigned short(-1)))
 	{
 		if (Device.dwTimeGlobal > m_level_death_time + FORGET_KILLER_TIME)
 		{
-			m_killer_id = U16(-1);
+			m_killer_id = unsigned short(-1);
 			CNetPacket			P;
 			u_EventGen(P, GE_ASSIGN_KILLER, ID( ));
-			P.w_u16(U16(-1));
+			P.w_u16(unsigned short(-1));
 			u_EventSend(P);
 		}
 	}

@@ -283,7 +283,7 @@ void CActor::StartTalk(CInventoryOwner* talk_partner)
 }
 
 /*
-void CActor::UpdateContact		(U16 contact_id)
+void CActor::UpdateContact		(unsigned short contact_id)
 {
 	if(ID() == contact_id) return;
 

@@ -14,7 +14,7 @@ public:
 	string128					cName;
 	string32					cComputer;
 	U32							cTime;
-	U16							version;
+	unsigned short							version;
 	
 	CBlender_DESC()	
 	{
@@ -54,7 +54,7 @@ public:
 	virtual			BOOL		canBeLMAPped	()	= 0;
 	
 	virtual			void		Save			(IWriter& fs);
-	virtual			void		Load			(IReader& fs, U16 version);
+	virtual			void		Load			(IReader& fs, unsigned short version);
 	
 	virtual			void		Compile			(CBlender_Compile& C);
 

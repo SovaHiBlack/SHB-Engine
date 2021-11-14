@@ -33,7 +33,7 @@ Fvector3 du_cylinder_vertices[DU_CYLINDER_NUMVERTEX]={
     {0.0000f,	-0.0000f,	-0.5000f},	 // 25
 };
 
-U16 du_cylinder_faces[DU_CYLINDER_NUMFACES*3]={
+unsigned short du_cylinder_faces[DU_CYLINDER_NUMFACES*3]={
      0,    2,     1,   
      3,    2,     0,   
      3,    4,     2,   
@@ -84,7 +84,7 @@ U16 du_cylinder_faces[DU_CYLINDER_NUMFACES*3]={
      6,   25,     4,   
 };
 
-U16 du_cylinder_lines[DU_CYLINDER_NUMLINES*2]={
+unsigned short du_cylinder_lines[DU_CYLINDER_NUMLINES*2]={
 // tile
 	 0,	   1,
 //	 2,	   3,

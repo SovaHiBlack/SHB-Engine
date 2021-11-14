@@ -41,23 +41,23 @@ public:
 
 	static float				ExplosionEffect				(collide::rq_results& storage, CExplosive* exp_obj, CPHShellHolder* blasted_obj, const Fvector3& expl_centre, const float expl_radius);
 
-	virtual void				OnEvent						(CNetPacket& P, U16 type);
+	virtual void				OnEvent						(CNetPacket& P, unsigned short type);
 	virtual void				OnAfterExplosion			( );
 	virtual void				OnBeforeExplosion			( );
-	virtual void				SetCurrentParentID			(U16 parent_id)
+	virtual void				SetCurrentParentID			(unsigned short parent_id)
 	{
 		m_iCurrentParentID = parent_id;
 	}
-	inline U16					CurrentParentID				( ) const
+	inline unsigned short					CurrentParentID				( ) const
 	{
 		return m_iCurrentParentID;
 	}
 
-	virtual void				SetInitiator				(U16 id)
+	virtual void				SetInitiator				(unsigned short id)
 	{
 		SetCurrentParentID(id);
 	}
-	virtual U16					Initiator					( );
+	virtual unsigned short					Initiator					( );
 
 	virtual void				UpdateExplosionPos			( )
 	{ }
@@ -104,7 +104,7 @@ private:
 protected:
 	CWalmarkManager											m_wallmark_manager;
 	//ID персонажа который иницировал действие
-	U16														m_iCurrentParentID;
+	unsigned short														m_iCurrentParentID;
 
 	Fvector3												m_vExplodePos;
 	Fvector3												m_vExplodeSize;

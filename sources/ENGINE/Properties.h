@@ -86,11 +86,11 @@ class ENGINE_API	CPropertyBase
 protected:
 
 public:
-	virtual 	const char* getName			()								= 0;
-	virtual		const char* getComment		()								= 0;
+	virtual const char* getName			()								= 0;
+	virtual const char* getComment		()								= 0;
 
-	virtual		void		Save			(IWriter&	fs)					= 0;
-	virtual		void		Load			(IReader&	fs, U16 version)	= 0;
+	virtual void		Save			(IWriter&	fs)					= 0;
+	virtual void		Load			(IReader&	fs, unsigned short version)	= 0;
 };
 
 // Writers

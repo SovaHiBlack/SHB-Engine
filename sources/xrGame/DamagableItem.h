@@ -3,21 +3,21 @@
 class CDamagableItem
 {
 protected:
-	U16							m_levels_num;
+	unsigned short							m_levels_num;
 	float						m_max_health;
-	U16							m_level_applied;
+	unsigned short							m_level_applied;
 
 public:
 								CDamagableItem		( );
-	virtual void				Init				(float max_health, U16 level_num);
+	virtual void				Init				(float max_health, unsigned short level_num);
 	void						HitEffect			( );
 	void						RestoreEffect		( );
-	float						DamageLevelToHealth	(U16 dl);
+	float						DamageLevelToHealth	(unsigned short dl);
 
 protected:
-	U16 						DamageLevel			( );
+	unsigned short 						DamageLevel			( );
 	virtual float				Health				( ) = 0;
-	virtual void				ApplyDamage			(U16 level);
+	virtual void				ApplyDamage			(unsigned short level);
 };
 
 class CDamagableHealthItem : public CDamagableItem
@@ -26,7 +26,7 @@ class CDamagableHealthItem : public CDamagableItem
 	float						m_health;
 
 public:
-	virtual void				Init				(float max_health, U16 level_num);
+	virtual void				Init				(float max_health, unsigned short level_num);
 	void						Hit					(float P);
 	void						SetHealth			(float health)
 	{

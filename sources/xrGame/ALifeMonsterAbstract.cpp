@@ -105,7 +105,7 @@ void CSE_ALifeMonsterAbstract::vfCheckForPopulationChanges( )
 					*I = l_tpAbstract->ID;
 				}
 
-				l_tpALifeGroupAbstract->m_wCount = l_tpALifeGroupAbstract->m_wCount + U16(l_dwBornCount);
+				l_tpALifeGroupAbstract->m_wCount = l_tpALifeGroupAbstract->m_wCount + unsigned short(l_dwBornCount);
 			}
 		}
 	}

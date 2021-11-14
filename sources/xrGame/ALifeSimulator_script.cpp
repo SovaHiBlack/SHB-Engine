@@ -197,7 +197,7 @@ CSE_Abstract* CALifeSimulator__spawn_item2(CALifeSimulator* self, const char* se
 	CClientID clientID;
 	clientID.set(0xffff);
 
-	U16									dummy;
+	unsigned short									dummy;
 	packet.r_begin(dummy);
 	VERIFY(dummy == M_SPAWN);
 	return self->server( ).Process_spawn(packet, clientID);
@@ -225,7 +225,7 @@ CSE_Abstract* CALifeSimulator__spawn_ammo(CALifeSimulator* self, const char* sec
 		CSE_ALifeItemAmmo* ammo = smart_cast<CSE_ALifeItemAmmo*>(item);
 		THROW(ammo);
 		THROW(ammo->m_boxSize >= ammo_to_spawn);
-		ammo->a_elapsed = (U16) ammo_to_spawn;
+		ammo->a_elapsed = (unsigned short) ammo_to_spawn;
 
 		return item;
 	}
@@ -239,7 +239,7 @@ CSE_Abstract* CALifeSimulator__spawn_ammo(CALifeSimulator* self, const char* sec
 	CSE_ALifeItemAmmo* ammo = smart_cast<CSE_ALifeItemAmmo*>(item);
 	THROW(ammo);
 	THROW(ammo->m_boxSize >= ammo_to_spawn);
-	ammo->a_elapsed = (U16) ammo_to_spawn;
+	ammo->a_elapsed = (unsigned short) ammo_to_spawn;
 
 	item->Spawn_Write(packet, FALSE);
 	self->server( ).FreeID(item->ID, 0);
@@ -248,7 +248,7 @@ CSE_Abstract* CALifeSimulator__spawn_ammo(CALifeSimulator* self, const char* sec
 	CClientID clientID;
 	clientID.set(0xffff);
 
-	U16									dummy;
+	unsigned short									dummy;
 	packet.r_begin(dummy);
 	VERIFY(dummy == M_SPAWN);
 	return self->server( ).Process_spawn(packet, clientID);

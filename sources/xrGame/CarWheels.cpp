@@ -41,7 +41,7 @@ void  CCar::SWheel::WheellCollisionCallback(bool& do_colide,bool bo1,dContact& c
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 bool CCar::WheelHit(float P, signed short element,ALife::EHitType hit_type)
 {
-	xr_map <U16,SWheel>::iterator i=m_wheels_map.find(element);
+	xr_map <unsigned short,SWheel>::iterator i=m_wheels_map.find(element);
 	if(i!=m_wheels_map.end())
 	{
 		i->second.Hit(P);
@@ -142,7 +142,7 @@ void CCar::SWheel::SetSteerLimits(float hi,float lo)
 	SetSteerLoLimit(lo);
 }
 
-void CCar::SWheel::ApplyDamage(U16 level)
+void CCar::SWheel::ApplyDamage(unsigned short level)
 {
 	inherited::ApplyDamage(level);
 	if(!joint) return;
@@ -192,7 +192,7 @@ void CCar::SWheelDrive::Init()
 {
 	pwheel->Init();
 	gear_factor=pwheel->radius/pwheel->car->m_ref_radius;
-	CBoneData& bone_data= smart_cast<CKinematics*>(pwheel->car->Visual())->LL_GetData(U16(pwheel->bone_id));
+	CBoneData& bone_data= smart_cast<CKinematics*>(pwheel->car->Visual())->LL_GetData(unsigned short(pwheel->bone_id));
 	switch(bone_data.IK_data.type)
 	{
 	case jtWheel:
@@ -231,7 +231,7 @@ void CCar::SWheelSteer::Init()
 	CKinematics* pKinematics=smart_cast<CKinematics*>(pwheel->car->Visual());
 	pwheel->Init();
 	(bone_map.find(pwheel->bone_id))->second.joint->GetLimits(lo_limit,hi_limit,0);
-	CBoneData& bone_data= pKinematics->LL_GetData(U16(pwheel->bone_id));
+	CBoneData& bone_data= pKinematics->LL_GetData(unsigned short(pwheel->bone_id));
 	switch(bone_data.IK_data.type)
 	{
 	case jtWheel:	

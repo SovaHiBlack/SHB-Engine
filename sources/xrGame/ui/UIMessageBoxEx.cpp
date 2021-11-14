@@ -33,7 +33,7 @@ const char* CUIMessageBoxEx::GetText( )
 	return m_pMessageBox->GetText( );
 }
 
-void CUIMessageBoxEx::SendMessage(CUIWindow* pWnd, S16 msg, void* pData)
+void CUIMessageBoxEx::SendMessage(CUIWindow* pWnd, signed short msg, void* pData)
 {
 	CUIWndCallback::OnEvent(pWnd, msg, pData);
 	if (pWnd == m_pMessageBox)

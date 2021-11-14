@@ -6,20 +6,20 @@
 class CBolt : public CMissile, public I_DamageSource
 {
 	using inherited = CMissile;
-	U16													m_thrower_id;
+	unsigned short													m_thrower_id;
 
 public:
 								CBolt					( );
 	virtual						~CBolt					( );
 
 	virtual void				OnH_A_Chield			( );
-	virtual void				OnEvent					(CNetPacket& P, U16 type);
+	virtual void				OnEvent					(CNetPacket& P, unsigned short type);
 
 	virtual bool				Activate				( );
 	virtual void				Deactivate				( );
 
-	virtual void				SetInitiator			(U16 id);
-	virtual U16					Initiator				( );
+	virtual void				SetInitiator			(unsigned short id);
+	virtual unsigned short					Initiator				( );
 
 	virtual void				Throw					( );
 	virtual bool				Action					(int cmd, u32 flags);

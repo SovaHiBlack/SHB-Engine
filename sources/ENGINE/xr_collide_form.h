@@ -141,17 +141,17 @@ public:
 				Fcylinder c_cylinder;
 			};
 		};
-		U16				type;
-		U16				elem_id;
+		unsigned short				type;
+		unsigned short				elem_id;
 
 	public:
-		SElement( ) :elem_id(U16(-1)), type(0)
+		SElement( ) :elem_id(unsigned short(-1)), type(0)
 		{ }
-		SElement(U16 id, U16 t) :elem_id(id), type(t)
+		SElement(unsigned short id, unsigned short t) :elem_id(id), type(t)
 		{ }
 		BOOL			valid( ) const
 		{
-			return (elem_id != (U16(-1))) && (type != 0);
+			return (elem_id != (unsigned short(-1))) && (type != 0);
 		}
 		void			center(Fvector3& center) const;
 	};
@@ -173,7 +173,7 @@ public:
 	CCF_Skeleton(CObject* _owner);
 
 	virtual BOOL		_RayQuery(const collide::ray_defs& Q, collide::rq_results& R);
-	bool				_ElementCenter(U16 elem_id, Fvector3& e_center);
+	bool				_ElementCenter(unsigned short elem_id, Fvector3& e_center);
 	const ElementVec& _GetElements( )
 	{
 		return elements;

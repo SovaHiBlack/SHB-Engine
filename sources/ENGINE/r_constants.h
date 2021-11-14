@@ -31,10 +31,10 @@ enum
 
 struct	R_constant_load
 {
-	U16						index;		// linear index (pixel)
-	U16						cls;		// element class
+	unsigned short						index;		// linear index (pixel)
+	unsigned short						cls;		// element class
 
-	R_constant_load() : index(U16(-1)), cls(U16(-1)) {};
+	R_constant_load() : index(unsigned short(-1)), cls(unsigned short(-1)) {};
 
 	inline BOOL					equal		(R_constant_load& C)
 	{
@@ -45,15 +45,15 @@ struct	R_constant_load
 struct	R_constant			:public xr_resource
 {
 	CSharedString				name;		// HLSL-name
-	U16						type;		// float=0/integer=1/boolean=2
-	U16						destination;// pixel/vertex/(or both)/sampler
+	unsigned short						type;		// float=0/integer=1/boolean=2
+	unsigned short						destination;// pixel/vertex/(or both)/sampler
 
 	R_constant_load			ps;
 	R_constant_load			vs;
 	R_constant_load			samp;
 	R_constant_setup*		handler;
 
-	R_constant() : type(U16(-1)), destination(0), handler(NULL) { };
+	R_constant() : type(unsigned short(-1)), destination(0), handler(NULL) { };
 
 	inline BOOL					equal		(R_constant& C)
 	{
@@ -83,7 +83,7 @@ public:
 	~R_constant_table					();
 
 	void					clear		();
-	BOOL					parse		(void* desc, U16 destination);
+	BOOL					parse		(void* desc, unsigned short destination);
 	void					merge		(R_constant_table* C);
 	ref_constant			get			(const char* name);		// slow search
 	ref_constant			get			(CSharedString&	name);		// fast search

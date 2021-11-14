@@ -40,7 +40,7 @@ void CUIPropertiesBox::Init(float x, float y, float width, float height)
 	m_UIListWnd.Init(OFFSET_X, OFFSET_Y, width - OFFSET_X * 2, height - OFFSET_Y * 2);
 }
 
-void CUIPropertiesBox::SendMessage(CUIWindow* pWnd, S16 msg, void* pData)
+void CUIPropertiesBox::SendMessage(CUIWindow* pWnd, signed short msg, void* pData)
 {
 	if (pWnd == &m_UIListWnd)
 	{
