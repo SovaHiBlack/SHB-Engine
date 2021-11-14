@@ -210,9 +210,9 @@ public:
 
 struct SNodePositionOld
 {
-	S16				x;
+	signed short				x;
 	U16				y;
-	S16				z;
+	signed short				z;
 };
 #pragma pack	(pop)
 

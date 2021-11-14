@@ -40,11 +40,11 @@ static enum EEnableState
 	stNotDefitnite
 };
 
-static U8 st_enable_state = (U8) stNotDefitnite;
+static unsigned char st_enable_state = (unsigned char) stNotDefitnite;
 BOOL CPHShellHolder::net_Spawn(CSE_Abstract* DC)
 {
 	CParticlesPlayer::net_SpawnParticles( );
-	st_enable_state = (U8) stNotDefitnite;
+	st_enable_state = (unsigned char) stNotDefitnite;
 	b_sheduled = true;
 	BOOL ret = inherited::net_Spawn(DC);//load
 	//create_physic_shell			();
@@ -70,13 +70,13 @@ BOOL CPHShellHolder::net_Spawn(CSE_Abstract* DC)
 		}
 
 		ApplySpawnIniToPhysicShell(pSettings, PPhysicsShell( ), false);
-		st_enable_state = (U8) stNotDefitnite;
+		st_enable_state = (unsigned char) stNotDefitnite;
 	}
 
 	return ret;
 }
 
-void CPHShellHolder::PHHit(float P, Fvector3& dir, CObject* who, S16 element, Fvector3 p_in_object_space, float impulse, ALife::EHitType hit_type /* ALife::eHitTypeWound*/)
+void CPHShellHolder::PHHit(float P, Fvector3& dir, CObject* who, signed short element, Fvector3 p_in_object_space, float impulse, ALife::EHitType hit_type /* ALife::eHitTypeWound*/)
 {
 	if (impulse > 0)
 	{
@@ -321,10 +321,10 @@ float CPHShellHolder::EffectiveGravity( )
 void CPHShellHolder::save(CNetPacket& output_packet)
 {
 	inherited::save(output_packet);
-	U8 enable_state = (U8) stNotDefitnite;
+	unsigned char enable_state = (unsigned char) stNotDefitnite;
 	if (PPhysicsShell( ) && PPhysicsShell( )->isActive( ))
 	{
-		enable_state = U8(PPhysicsShell( )->isEnabled( ) ? stEnable : stDisable);
+		enable_state = unsigned char(PPhysicsShell( )->isEnabled( ) ? stEnable : stDisable);
 	}
 
 	output_packet.w_u8(enable_state);

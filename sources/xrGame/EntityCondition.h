@@ -146,7 +146,7 @@ protected:
 	void					UpdateEntityMorale( );
 
 	//изменение силы хита в зависимости от надетого костюма (только для InventoryOwner)
-	float					HitOutfitEffect(float hit_power, ALife::EHitType hit_type, S16 element, float AP);
+	float					HitOutfitEffect(float hit_power, ALife::EHitType hit_type, signed short element, float AP);
 	//изменение потери сил в зависимости от надетого костюма
 	float					HitPowerEffect(float power_loss);
 

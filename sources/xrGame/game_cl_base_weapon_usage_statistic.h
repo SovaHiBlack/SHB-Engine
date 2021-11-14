@@ -34,7 +34,7 @@ struct SHitData
 	Fvector3 Pos0;
 	Fvector3 Pos1;
 
-	S16		BoneID;
+	signed short		BoneID;
 	CSharedString	BoneName;
 	U16		TargetID;
 	CSharedString	TargetName;
@@ -133,13 +133,13 @@ using PlayersStatisticVec_it = PlayersStatisticVec::iterator;
 
 struct SBulletCheckRequest
 {
-	u32	BulletID;
-	S16 BoneID;
+	u32 BulletID;
+	signed short BoneID;
 	bool Result;
 	bool Processed;
 	SBulletCheckRequest( ) : BulletID(0), Result(false)
 	{ }
-	SBulletCheckRequest(u32 ID, S16 BID) : BulletID(ID), BoneID(BID), Result(false), Processed(false)
+	SBulletCheckRequest(u32 ID, signed short BID) : BulletID(ID), BoneID(BID), Result(false), Processed(false)
 	{ }
 };
 
@@ -210,7 +210,7 @@ struct SWeaponUsageStatistic
 	//-----------------------------------------------
 	void				OnWeaponBought(game_PlayerState* ps, const char* WeaponName);
 	void				OnBullet_Fire(SBullet* pBullet, const CCartridge& cartridge);
-	void				OnBullet_Hit(SBullet* pBullet, U16 TargetID, S16 element, Fvector3 HitLocation);
+	void				OnBullet_Hit(SBullet* pBullet, U16 TargetID, signed short element, Fvector3 HitLocation);
 	void				OnBullet_Remove(SBullet* pBullet);
 	//-----------------------------------------------
 
@@ -240,6 +240,6 @@ struct SWeaponUsageStatistic
 
 struct SBulletCheckRespondTrue
 {
-	u32	BulletID;
-	S16 BoneID;
+	u32 BulletID;
+	signed short BoneID;
 };

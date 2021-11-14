@@ -333,7 +333,7 @@ void CActor::net_Import(CNetPacket& P)					// import from server
 
 void CActor::net_Import_Base(CNetPacket& P)
 {
-	net_update N;
+	SNetUpdate N;
 
 	unsigned char flags;
 	U16 tmp;
@@ -927,7 +927,7 @@ void CActor::ChangeVisual(CSharedString NewVisual)
 	Visual( )->dcast_PKinematics( )->CalculateBones( );
 }
 
-void ACTOR_DEFS::net_update::lerp(ACTOR_DEFS::net_update& A, ACTOR_DEFS::net_update& B, float f)
+void ACTOR_DEFS::SNetUpdate::lerp(ACTOR_DEFS::SNetUpdate& A, ACTOR_DEFS::SNetUpdate& B, float f)
 {
 //	float invf		= 1.f-f;
 //	// 
@@ -1000,7 +1000,7 @@ void CActor::PH_B_CrPr( )	// actions & operations before physic correction-predi
 		else
 		{
 			net_update_A N_A = NET_A.back( );
-			net_update N = NET.back( );
+			SNetUpdate N = NET.back( );
 
 			NET_Last = N;
 			///////////////////////////////////////////////
@@ -1812,7 +1812,7 @@ void CActor::Check_for_AutoPickUp( )
 	return;
 }
 
-void CActor::SetHitInfo(CObject* who, CObject* weapon, S16 element, Fvector3 Pos, Fvector3 Dir)
+void CActor::SetHitInfo(CObject* who, CObject* weapon, signed short element, Fvector3 Pos, Fvector3 Dir)
 {
 	m_iLastHitterID = (who != NULL) ? who->ID( ) : U16(-1);
 	m_iLastHittingWeaponID = (weapon != NULL) ? weapon->ID( ) : U16(-1);
@@ -1827,7 +1827,7 @@ void CActor::OnPlayHeadShotParticle(CNetPacket P)
 {
 	Fvector3 HitDir;
 	Fvector3 HitPos;
-	S16	element = P.r_s16( );
+	signed short element = P.r_s16( );
 	P.r_dir(HitDir);
 	HitDir.invert( );
 	P.r_vec3(HitPos);

@@ -281,7 +281,7 @@ void CUIComboBox::SetState(UIState state)
 	m_frameLine.SetState(state);
 }
 
-void CUIComboBox::SendMessage(CUIWindow* pWnd, S16 msg, void* pData)
+void CUIComboBox::SendMessage(CUIWindow* pWnd, signed short msg, void* pData)
 {
 	CUIWindow::SendMessage(pWnd, msg, pData);
 

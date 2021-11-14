@@ -129,7 +129,7 @@ void DBG_DrawLine ( const Fvector3& p0, const Fvector3& p1, u32 c )
 {
 	DBG_DrawPHAbstruct( xr_new<SPHDBGDrawLine>( p0, p1, c ) );
 }
-void DBG_DrawMatrix( const Fmatrix &m, float size, U8 a/* = 255*/ )
+void DBG_DrawMatrix( const Fmatrix &m, float size, unsigned char a/* = 255*/ )
 {
 	Fvector3 to;
 	to.add( m.c, Fvector3( ).mul( m.i, size ) );

@@ -41,7 +41,7 @@ public:
 	void				SetItem				(int i);
 
 	virtual void		Init				(float x, float y, float width, float height);
-	virtual void		SendMessage			(CUIWindow* pWnd, S16 msg, void* pData = nullptr);
+	virtual void		SendMessage			(CUIWindow* pWnd, signed short msg, void* pData = nullptr);
 	virtual void		OnFocusLost			( );
 	virtual void		OnFocusReceive		( );
 	int					CurrentID			( )

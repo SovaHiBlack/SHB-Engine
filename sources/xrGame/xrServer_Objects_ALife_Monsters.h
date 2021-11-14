@@ -192,16 +192,16 @@ public:
 //---------------------------------------------------------------------------------------------------------
 
 SERVER_ENTITY_DECLARE_BEGIN(CSE_ALifeCreatureAbstract, CSE_ALifeDynamicObjectVisual)
-U8								s_team;
-	U8								s_squad;
-	U8								s_group;
+unsigned char								s_team;
+	unsigned char								s_squad;
+	unsigned char								s_group;
 	float							fHealth;
 	float							m_fMorale;
 	float							m_fAccuracy;
 	float							m_fIntelligence;
 
 	u32								timestamp;				// server(game) timestamp
-	U8								flags;
+	unsigned char								flags;
 	float							o_model;				// model yaw
 	SRotation						o_torso;				// torso in world coords
 	bool							m_bDeathIsProcessed;
@@ -218,14 +218,14 @@ U8								s_team;
 
 	CSE_ALifeCreatureAbstract(const char* caSection);
 	virtual							~CSE_ALifeCreatureAbstract( );
-	virtual U8						g_team( );
-	virtual U8						g_squad( );
-	virtual U8						g_group( );
-	inline		float					g_Health( ) const
+	virtual unsigned char						g_team( );
+	virtual unsigned char						g_squad( );
+	virtual unsigned char						g_group( );
+	inline float					g_Health( ) const
 	{
 		return fHealth;
 	}
-	inline		bool					g_Alive( ) const
+	inline bool					g_Alive( ) const
 	{
 		return (g_Health( ) > 0.f);
 	}
@@ -347,7 +347,7 @@ public:
 	Fvector3							velocity;
 	//	float							fArmor;
 	float							fRadiation;
-	U8								weapon;
+	unsigned char								weapon;
 	///////////////////////////////////////////
 	U16								m_u16NumItems;
 	U16								m_holderID;
@@ -355,8 +355,8 @@ public:
 	SPHNetState						m_AliveState;
 //	PH_STATES						m_DeadStates;
 
-	// статический массив - 6 float(вектора пределов квантизации) + m_u16NumItems*(7 U8) (позиция и поворот кости)
-	U8								m_BoneDataSize;
+	// статический массив - 6 float(вектора пределов квантизации) + m_u16NumItems*(7 unsigned char) (позиция и поворот кости)
+	unsigned char								m_BoneDataSize;
 	char							m_DeadBodyData[1024];
 	///////////////////////////////////////////
 	CSE_ALifeCreatureActor(const char* caSection);

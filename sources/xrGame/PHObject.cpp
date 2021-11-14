@@ -54,7 +54,7 @@ void CPHObject::put_in_recently_deactivated( )
 {
 	VERIFY(!m_flags.test(st_activated) && !m_flags.test(st_freezed));
 	if (m_flags.test(st_recently_deactivated))return;
-	m_check_count = U8(ph_tri_clear_disable_count);
+	m_check_count = unsigned char(ph_tri_clear_disable_count);
 	m_flags.set(st_recently_deactivated, TRUE);
 	ph_world->AddRecentlyDisabled(this);
 }

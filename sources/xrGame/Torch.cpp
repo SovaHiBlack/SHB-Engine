@@ -475,7 +475,7 @@ void CTorch::net_Export(CNetPacket& P)
 	inherited::net_Export(P);
 //	P.w_u8						(m_switched_on ? 1 : 0);
 
-	U8 F = 0;
+	unsigned char F = 0;
 	F |= (m_switched_on ? eTorchActive : 0);
 	F |= (m_bNightVisionOn ? eNightVisionActive : 0);
 	const CActor* pA = smart_cast<const CActor*>(H_Parent( ));
@@ -495,7 +495,7 @@ void CTorch::net_Import(CNetPacket& P)
 {
 	inherited::net_Import(P);
 
-	U8 F = P.r_u8( );
+	unsigned char F = P.r_u8( );
 	bool new_m_switched_on = !!(F & eTorchActive);
 	bool new_m_bNightVisionOn = !!(F & eNightVisionActive);
 

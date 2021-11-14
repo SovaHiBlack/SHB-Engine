@@ -111,7 +111,7 @@ protected:
 	static float				m_fStartBurnWoundSize;
 	static float				m_fStopBurnWoundSize;
 
-	virtual void				BloodyWallmarks(float P, const Fvector3& dir, S16 element, const Fvector3& position_in_object_space);
+	virtual void				BloodyWallmarks(float P, const Fvector3& dir, signed short element, const Fvector3& position_in_object_space);
 	static void				LoadBloodyWallmarks(const char* section);
 
 public:

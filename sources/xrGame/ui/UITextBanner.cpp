@@ -121,11 +121,11 @@ void CUITextBanner::EffectFade( )
 
 	if (fade.iEffectStage)
 	{
-		m_Cl = subst_alpha(GetTextColor( ), U8(iFloor(255.0f * (fade.fTimePassed / fade.fPeriod))));
+		m_Cl = subst_alpha(GetTextColor( ), unsigned char(iFloor(255.0f * (fade.fTimePassed / fade.fPeriod))));
 	}
 	else
 	{
-		m_Cl = subst_alpha(GetTextColor( ), U8(iFloor(255.0f * (1 - (fade.fTimePassed / fade.fPeriod)))));
+		m_Cl = subst_alpha(GetTextColor( ), unsigned char(iFloor(255.0f * (1 - (fade.fTimePassed / fade.fPeriod)))));
 	}
 }
 

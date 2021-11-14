@@ -4,7 +4,7 @@
 		<front x="0" y="0" width="91" height="92">
 			<texture>ui_hud_grenadetarget_e</texture>
 		</front>
-		
+
 		<back_ x="0" y="0" width="91" height="92">
 			<texture>ui_hud_grenadetarget_d</texture>
 		</back_>

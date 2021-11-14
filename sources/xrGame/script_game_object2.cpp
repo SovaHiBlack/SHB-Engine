@@ -155,7 +155,7 @@ void CScriptGameObject::Hit(CScriptHit *tpLuaHit)
 	if (xr_strlen	(tLuaHit.m_caBoneName))
 		HS.boneID = 		(V->LL_BoneID(tLuaHit.m_caBoneName));
 	else
-		HS.boneID = 		(S16(0));
+		HS.boneID = 		(signed short(0));
 	HS.p_in_bone_space = Fvector3().set(0,0,0);
 	HS.impulse = tLuaHit.m_fImpulse;
 	HS.hit_type = (ALife::EHitType)(tLuaHit.m_tHitType);

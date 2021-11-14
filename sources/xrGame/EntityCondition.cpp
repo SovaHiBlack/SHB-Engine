@@ -279,7 +279,7 @@ void CEntityCondition::UpdateCondition( )
 	clamp(m_fPsyHealth, 0.0f, m_fPsyHealthMax);
 }
 
-float CEntityCondition::HitOutfitEffect(float hit_power, ALife::EHitType hit_type, S16 element, float AP)
+float CEntityCondition::HitOutfitEffect(float hit_power, ALife::EHitType hit_type, signed short element, float AP)
 {
 	CInventoryOwner* pInvOwner = smart_cast<CInventoryOwner*>(m_object);
 	if (!pInvOwner)

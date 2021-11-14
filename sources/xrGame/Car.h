@@ -509,9 +509,9 @@ inline	size_t				CurrentTransmission					(){return m_current_transmission_num;}
 	static void				cb_Steer					(CBoneInstance* B);
 	virtual	void			Hit							(SHit* pHDS);
 	virtual void			Die							(CObject* who);
-	virtual void PHHit									(float P, Fvector3& dir, CObject *who, S16 element, Fvector3 p_in_object_space, float impulse, ALife::EHitType hit_type/* =ALife::eHitTypeWound */);
-			bool WheelHit								(float P, S16 element,ALife::EHitType hit_type);
-			bool DoorHit								(float P, S16 element,ALife::EHitType hit_type);
+	virtual void PHHit									(float P, Fvector3& dir, CObject *who, signed short element, Fvector3 p_in_object_space, float impulse, ALife::EHitType hit_type/* =ALife::eHitTypeWound */);
+			bool WheelHit								(float P, signed short element,ALife::EHitType hit_type);
+			bool DoorHit								(float P, signed short element,ALife::EHitType hit_type);
 public:
 	virtual bool			allowWeapon					() const		{return true;};
 	virtual bool			HUDView						() const;
@@ -575,7 +575,7 @@ public:
 	virtual float			SetfHealth					(float value)	{return CEntity::SetfHealth(value);};
 
 	// Hits
-	virtual void			HitSignal					(float /**HitAmount/**/, Fvector3& /**local_dir/**/, CObject* /**who/**/, S16 /**element/**/)	{};
+	virtual void			HitSignal					(float /**HitAmount/**/, Fvector3& /**local_dir/**/, CObject* /**who/**/, signed short /**element/**/)	{};
 	virtual void			HitImpulse					(float /**amount/**/, Fvector3& /**vWorldDir/**/, Fvector3& /**vLocalDir/**/)			{};
 	virtual void			g_fireParams				(const CHudItem* /**pHudItem/**/, Fvector3& /**P/**/, Fvector3& /**D/**/)											{};
 	virtual U16				Initiator					();

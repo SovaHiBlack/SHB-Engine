@@ -388,7 +388,7 @@ void CSoundMemoryManager::save	(CNetPacket &packet) const
 	if (!m_object->g_Alive())
 		return;
 
-	packet.w_u8					((U8)objects().size());
+	packet.w_u8					((unsigned char)objects().size());
 
 	SOUNDS::const_iterator		I = objects().begin();
 	SOUNDS::const_iterator		E = objects().end();

@@ -10,7 +10,7 @@ struct SBoneProtections
 	};
 
 	float				m_fHitFrac;
-	using storage_type = xr_map<S16, BoneProtection>;
+	using storage_type = xr_map<signed short, BoneProtection>;
 	using storage_it = storage_type::iterator;
 
 	SBoneProtections( )
@@ -22,7 +22,7 @@ struct SBoneProtections
 	BoneProtection		m_default;
 	storage_type		m_bones_koeff;
 	void				reload(const CSharedString& outfit_section, CKinematics* kinematics);
-	float				getBoneProtection(S16 bone_id);
-	float				getBoneArmour(S16 bone_id);
-	BOOL				getBonePassBullet(S16 bone_id);
+	float				getBoneProtection(signed short bone_id);
+	float				getBoneArmour(signed short bone_id);
+	BOOL				getBonePassBullet(signed short bone_id);
 };

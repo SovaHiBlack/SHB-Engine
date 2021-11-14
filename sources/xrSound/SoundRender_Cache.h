@@ -30,9 +30,9 @@ struct	cache_cat						// cache allocation table
 };
 #define CAT_FREE			0xffff
 //////////////////////////////////////////////////////////////////////////
-class	CSoundRender_Cache
+class CSoundRender_Cache
 {
-	U8*						data;		// just memory
+	unsigned char*						data;		// just memory
 	cache_line*				c_storage;	// just memory
 	cache_line*				c_begin;	// >>> 
 	cache_line*				c_end;		// <<<

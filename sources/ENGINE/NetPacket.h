@@ -90,7 +90,7 @@ public:
 	{
 		w(&a, 2);
 	}
-	inline void		w_s16			(S16 a)
+	inline void		w_s16			(signed short a)
 	{
 		w(&a, 2);
 	}
@@ -282,7 +282,7 @@ public:
 	{
 		r(&A, 2);
 	}
-	inline void		r_s16			(S16& A)
+	inline void		r_s16			(signed short& A)
 	{
 		r(&A, 2);
 	}
@@ -362,9 +362,9 @@ public:
 		r(&A, 2);
 		return A;
 	}
-	inline S16		r_s16			( )
+	inline signed short		r_s16			( )
 	{
-		S16 A;
+		signed short A;
 		r(&A, 2);
 		return A;
 	} 

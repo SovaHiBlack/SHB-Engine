@@ -122,7 +122,7 @@ void CUISleepWnd::ModifyRestTime(signed char dHours, signed char dMinutes)
 	SetRestTime(m_Hours, m_Minutes);
 }
 
-void CUISleepWnd::SetRestTime(U8 hours, U8 minutes)
+void CUISleepWnd::SetRestTime(unsigned char hours, unsigned char minutes)
 {
 	string32 buf;
 	static signed char _h = pSettings->r_s8("actor", "max_sleep_hours");

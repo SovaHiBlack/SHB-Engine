@@ -636,7 +636,7 @@ void CCar::ChangeCondition(float fDeltaCondition)
 	}
 }
 
-void CCar::PHHit(float P, Fvector3& dir, CObject* who, S16 element, Fvector3 p_in_object_space, float impulse, ALife::EHitType hit_type)
+void CCar::PHHit(float P, Fvector3& dir, CObject* who, signed short element, Fvector3 p_in_object_space, float impulse, ALife::EHitType hit_type)
 {
 	if (!m_pPhysicsShell)
 	{

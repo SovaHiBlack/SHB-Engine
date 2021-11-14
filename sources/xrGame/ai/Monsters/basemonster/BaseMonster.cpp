@@ -184,7 +184,7 @@ void CBaseMonster::Hit(SHit* pHDS)
 	inherited::Hit(pHDS);
 }
 
-void CBaseMonster::PHHit(float P, Fvector3& dir, CObject* who, S16 element, Fvector3 p_in_object_space, float impulse, ALife::EHitType hit_type /*=ALife::eHitTypeWound*/)
+void CBaseMonster::PHHit(float P, Fvector3& dir, CObject* who, signed short element, Fvector3 p_in_object_space, float impulse, ALife::EHitType hit_type /*=ALife::eHitTypeWound*/)
 {
 	m_pPhysics_support->in_Hit(P, dir, who, element, p_in_object_space, impulse, hit_type);
 }

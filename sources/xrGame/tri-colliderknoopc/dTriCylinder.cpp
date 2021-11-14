@@ -779,7 +779,7 @@ else {//7-12
 	int iv0=(code-7)%3;
 	int iv1=(iv0+1)%3;
 	int flag=fl_engaged_s0<<(iv0);
-	if(gl_state.test(U8(flag&0xff)))
+	if(gl_state.test(unsigned char(flag&0xff)))
 						RETURN0;
 	SideToGlClTriState(T->T->verts[iv0],T->T->verts[iv1],T_array);
 	contact->depth = outDepth;

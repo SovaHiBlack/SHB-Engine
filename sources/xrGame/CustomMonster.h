@@ -81,9 +81,9 @@ public:
 	u32					m_current_update;
 //	Fmatrix				m_tServerTransform;
 
-	u32					m_dwCurrentTime;		// time updated in UpdateCL 
+	u32					m_dwCurrentTime;		// time updated in UpdateCL
 
-	struct net_update
+	struct SNetUpdate
 	{
 		u32				dwTimeStamp;			// server(game) timestamp
 		float			o_model;				// model yaw
@@ -93,7 +93,7 @@ public:
 
 		// non-exported (temporal)
 
-		net_update( )
+		SNetUpdate( )
 		{
 			dwTimeStamp = 0;
 			o_model = 0;
@@ -102,10 +102,10 @@ public:
 			p_pos.set(0, 0, 0);
 			fHealth = 0.f;
 		}
-		void	lerp(net_update& A, net_update& B, float f);
+		void	lerp(SNetUpdate& A, SNetUpdate& B, float f);
 	};
-	xr_deque<net_update>	NET;
-	net_update				NET_Last;
+	xr_deque<SNetUpdate>	NET;
+	SNetUpdate				NET_Last;
 	BOOL					NET_WasInterpolating;	// previous update was by interpolation or by extrapolation
 	u32						NET_Time;				// server time of last update
 //------------------------------

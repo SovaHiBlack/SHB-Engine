@@ -37,12 +37,12 @@ struct	game_PlayerState
 	string64	name;
 	unsigned char			team;
 	
-	S16			m_iRivalKills;
-	S16			m_iSelfKills;
-	S16			m_iTeamKills;
-	S16			m_iKillsInRowCurr;
-	S16			m_iKillsInRowMax;
-	S16			m_iDeaths;
+	signed short			m_iRivalKills;
+	signed short			m_iSelfKills;
+	signed short			m_iTeamKills;
+	signed short			m_iKillsInRowCurr;
+	signed short			m_iKillsInRowMax;
+	signed short			m_iDeaths;
 	int			money_for_round;
 
 	float		experience_Real;
@@ -61,7 +61,7 @@ struct	game_PlayerState
 	signed char			skin;
 	u32			RespawnTime;
 	u32			DeathTime;
-	S16			money_delta;
+	signed short			money_delta;
 	unsigned char			m_bCurrentVoteAgreed;
 //	DEF_DEQUE	(OLD_GAME_ID, U16);
 	using OLD_GAME_ID = xr_deque<U16>;
@@ -84,7 +84,7 @@ public:
 			bool	HasOldID				(U16 ID);
 			bool	IsSkip					() const {return testFlag(GAME_PLAYER_FLAG_SKIP);}
 			
-			S16		frags					() const {return m_iRivalKills - m_iSelfKills - m_iTeamKills;}
+			signed short		frags					() const {return m_iRivalKills - m_iSelfKills - m_iTeamKills;}
 
 	virtual void	net_Export				(CNetPacket& P, BOOL Full = FALSE);
 	virtual void	net_Import				(CNetPacket& P);
@@ -96,12 +96,12 @@ public:
 
 	PLAYER_ITEMS_LIST	pItemList;
 
-//	DEF_VECTOR(SPAWN_POINTS_LIST, S16);
-	using SPAWN_POINTS_LIST = xr_vector<S16>;
+//	DEF_VECTOR(SPAWN_POINTS_LIST, signed short);
+	using SPAWN_POINTS_LIST = xr_vector<signed short>;
 	using SPAWN_POINTS_LIST_it = SPAWN_POINTS_LIST::iterator;
 
 	SPAWN_POINTS_LIST	pSpawnPointsList;
-	S16					m_s16LastSRoint;
+	signed short					m_s16LastSRoint;
 
 	int					LastBuyAcount;
 	bool				m_bClearRun;

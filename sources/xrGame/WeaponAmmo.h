@@ -6,7 +6,7 @@ class CCartridge
 {
 public:
 	CCartridge( );
-	void						Load(const char* section, U8 LocalAmmoType);
+	void						Load(const char* section, unsigned char LocalAmmoType);
 
 	CSharedString										m_ammoSect;
 	enum
@@ -28,8 +28,8 @@ public:
 	float											m_impair;
 	float											fWallmarkSize;
 
-	U8												m_u8ColorID;
-	U8												m_LocalAmmoType;
+	unsigned char												m_u8ColorID;
+	unsigned char												m_LocalAmmoType;
 
 	U16												bullet_material_idx;
 	Flags8											m_flags;
@@ -74,7 +74,7 @@ public:
 	int												m_buckShot;
 	float											m_impair;
 	float											fWallmarkSize;
-	U8												m_u8ColorID;
+	unsigned char												m_u8ColorID;
 
 	U16												m_boxSize;
 	U16												m_boxCurr;

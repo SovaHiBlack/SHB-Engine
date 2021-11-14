@@ -61,9 +61,11 @@ bool CCar::bfAssignObject(CScriptEntityAction *tpEntityAction)
 {
 	CScriptObjectAction	&l_tObjectAction = tpEntityAction->m_tObjectAction;
 	if (l_tObjectAction.m_bCompleted || !xr_strlen(l_tObjectAction.m_caBoneName))
+	{
 		return((l_tObjectAction.m_bCompleted = true) == false);
+	}
 
-	S16	l_sBoneID = smart_cast<CKinematics*>(Visual())->LL_BoneID(l_tObjectAction.m_caBoneName);
+	signed short l_sBoneID = smart_cast<CKinematics*>(Visual())->LL_BoneID(l_tObjectAction.m_caBoneName);
 	if (is_Door(l_sBoneID)) {
 		switch(l_tObjectAction.m_tGoalType) {
 			case MonsterSpace::eObjectActionActivate : {

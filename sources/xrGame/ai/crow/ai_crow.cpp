@@ -393,7 +393,7 @@ void CCrow::net_Import	(CNetPacket& P)
 	XFORM().setHPB		(yaw,pitch,bank);
 }
 //---------------------------------------------------------------------
-void CCrow::HitSignal	(float /**HitAmount/**/, Fvector3& /**local_dir/**/, CObject* who, S16 /**element/**/)
+void CCrow::HitSignal	(float /**HitAmount/**/, Fvector3& /**local_dir/**/, CObject* who, signed short /**element/**/)
 {
 	//bool				first_time = !!g_Alive(); 
 //	bool				first_time = !PPhysicsShell(); 

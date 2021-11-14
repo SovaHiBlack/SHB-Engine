@@ -121,7 +121,7 @@ void CUITabControl::SendMessage(CUIWindow* pWnd, S16 msg, void* pData)
 	}
 	else if (STATIC_FOCUS_RECEIVED == msg || STATIC_FOCUS_LOST == msg)
 	{
-		for (U8 i = 0; i < m_TabsArr.size( ); ++i)
+		for (unsigned char i = 0; i < m_TabsArr.size( ); ++i)
 		{
 			if (pWnd == m_TabsArr[i])
 			{

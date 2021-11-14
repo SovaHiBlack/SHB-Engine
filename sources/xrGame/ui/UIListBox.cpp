@@ -78,7 +78,7 @@ CUIListBoxItem* CUIListBox::AddItem(const char* text)
 	return pItem;
 }
 
-void CUIListBox::SendMessage(CUIWindow* pWnd, S16 msg, void* pData)
+void CUIListBox::SendMessage(CUIWindow* pWnd, signed short msg, void* pData)
 {
 	if (m_pad->IsChild(pWnd))
 	{

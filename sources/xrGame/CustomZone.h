@@ -271,7 +271,7 @@ protected:
 														U16 id_from,
 															const Fvector3& hit_dir,
 															float hit_power, 
-														 S16 bone_id,
+		signed short bone_id,
 															const Fvector3& pos_in_bone,
 															float hit_impulse, 
 															ALife::EHitType hit_type);

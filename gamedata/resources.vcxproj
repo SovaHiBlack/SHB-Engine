@@ -195,7 +195,6 @@
     <None Include="config\defines.ltx" />
     <None Include="config\evaluation.ltx" />
     <None Include="config\external.ltx" />
-    <None Include="config\extracontent.ltx" />
     <None Include="config\fonts.ltx" />
     <None Include="config\game.ltx" />
     <None Include="config\game_graphs.ltx" />

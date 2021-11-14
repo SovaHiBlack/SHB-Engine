@@ -115,7 +115,7 @@ void CPHCollisionDamageReceiver::Hit(U16 source_id, U16 bone_id, float power, co
 	HS.weaponID = source_id;
 	HS.dir = dir;
 	HS.power = power;
-	HS.boneID = S16(bone_id);
+	HS.boneID = signed short(bone_id);
 	HS.p_in_bone_space = pos;
 	HS.impulse = 0.0f;
 	HS.hit_type = (ALife::eHitTypeStrike);

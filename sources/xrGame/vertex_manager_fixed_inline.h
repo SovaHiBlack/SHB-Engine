@@ -12,7 +12,7 @@
 	template <\
 		typename _path_id_type,\
 		typename _index_type,\
-		U8 mask\
+		unsigned char mask\
 	>\
 	template <\
 		template <typename _T> class _vertex,\

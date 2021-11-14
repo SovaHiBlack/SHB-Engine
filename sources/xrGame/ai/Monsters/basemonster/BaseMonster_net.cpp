@@ -27,7 +27,7 @@ void CBaseMonster::net_Export(CNetPacket& P)
 
 	// export last known packet
 	R_ASSERT				(!NET.empty());
-	net_update& N			= NET.back();
+	SNetUpdate& N			= NET.back();
 	P.w_float				(GetfHealth());
 	P.w_u32					(N.dwTimeStamp);
 	P.w_u8					(0);
@@ -61,7 +61,7 @@ void CBaseMonster::net_Export(CNetPacket& P)
 void CBaseMonster::net_Import(CNetPacket& P)
 {
 	R_ASSERT				(Remote());
-	net_update				N;
+	SNetUpdate				N;
 
 	unsigned char flags;
 

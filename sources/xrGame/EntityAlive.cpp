@@ -394,7 +394,7 @@ void CEntityAlive::PHFreeze( )
 //////////////////////////////////////////////////////////////////////
 
 //добавление кровавых отметок на стенах, после получения хита
-void CEntityAlive::BloodyWallmarks(float P, const Fvector3& dir, S16 element, const Fvector3& position_in_object_space)
+void CEntityAlive::BloodyWallmarks(float P, const Fvector3& dir, signed short element, const Fvector3& position_in_object_space)
 {
 	if (BI_NONE == (U16) element)
 	{

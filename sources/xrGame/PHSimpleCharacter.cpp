@@ -121,7 +121,7 @@ bool test_sides(const Fvector3& center, const Fvector3& side_dir, const Fvector3
 	crses[2].x = -(v0.z - v2.z);
 	crses[2].y = 0.f;
 	crses[2].z = v0.x - v2.x;
-	for (U8 i = 0; 3 > i; ++i)
+	for (unsigned char i = 0; 3 > i; ++i)
 	{
 		const Fvector3& crs = crses[i];
 		u32 sv = tri.T->verts[i % 3];

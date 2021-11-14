@@ -69,7 +69,7 @@ void CWeapon::FireTrace(const Fvector3& P, const Fvector3& D)
 	VERIFY(U16(-1) != l_cartridge.bullet_material_idx);
 	//-------------------------------------------------------------	
 	l_cartridge.m_flags.set(CCartridge::cfTracer, (m_bHasTracers & !!l_cartridge.m_flags.test(CCartridge::cfTracer)));
-	if (m_u8TracerColorID != U8(-1))
+	if (m_u8TracerColorID != unsigned char(-1))
 		l_cartridge.m_u8ColorID = m_u8TracerColorID;
 	//-------------------------------------------------------------
 	// повысить изношенность оружия с учетом влияния конкретного патрона

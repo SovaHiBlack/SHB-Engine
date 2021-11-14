@@ -172,7 +172,7 @@ void CSE_ALifeObject::STATE_Read(CNetPacket& tNetPacket, U16 size)
 		{
 			tNetPacket.r_u8( );
 			/**
-			U8					l_ucTemp;
+			unsigned char					l_ucTemp;
 			tNetPacket.r_u8		(l_ucTemp);
 			m_spawn_probability	= (float)l_ucTemp;
 			/**/

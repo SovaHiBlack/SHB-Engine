@@ -163,18 +163,18 @@ inline unsigned char		_abs(unsigned char x)
 }
 
 // int16
-inline S16		_abs(S16 x)
+inline signed short		_abs(signed short x)
 {
-	return (x >= 0) ? x : S16(-x);
+	return (x >= 0) ? x : signed short(-x);
 }
-inline S16		_min(S16 x, S16 y)
+inline signed short		_min(signed short x, signed short y)
 {
-	return y + ((x - y) & ((x - y) >> (sizeof(S16) * 8 - 1)));
-};
-inline S16		_max(S16 x, S16 y)
+	return y + ((x - y) & ((x - y) >> (sizeof(signed short) * 8 - 1)));
+}
+inline signed short		_max(signed short x, signed short y)
 {
-	return x - ((x - y) & ((x - y) >> (sizeof(S16) * 8 - 1)));
-};
+	return x - ((x - y) & ((x - y) >> (sizeof(signed short) * 8 - 1)));
+}
 
 // unsigned int16
 inline U16		_abs(U16 x)

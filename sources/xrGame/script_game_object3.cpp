@@ -98,7 +98,7 @@ const xr_vector<MemorySpace::CHitObject>		&CScriptGameObject::memory_hit_objects
 	return			(monster->memory().hit().objects());
 }
 
-void CScriptGameObject::ChangeTeam(U8 team, U8 squad, U8 group)
+void CScriptGameObject::ChangeTeam(unsigned char team, unsigned char squad, unsigned char group)
 {
 	CCustomMonster				*custom_monster = smart_cast<CCustomMonster*>(&object());
 	if (!custom_monster)

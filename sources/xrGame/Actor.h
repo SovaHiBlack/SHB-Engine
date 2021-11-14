@@ -213,10 +213,10 @@ public:
 
 	virtual void						Die(CObject* who);
 	virtual void						Hit(SHit* pHDS);
-	virtual void						PHHit(float P, Fvector3& dir, CObject* who, S16 element, Fvector3 p_in_object_space, float impulse, ALife::EHitType hit_type /* = ALife::eHitTypeWound */);
-	virtual void						HitSignal(float P, Fvector3& vLocalDir, CObject* who, S16 element);
+	virtual void						PHHit(float P, Fvector3& dir, CObject* who, signed short element, Fvector3 p_in_object_space, float impulse, ALife::EHitType hit_type /* = ALife::eHitTypeWound */);
+	virtual void						HitSignal(float P, Fvector3& vLocalDir, CObject* who, signed short element);
 	void						HitSector(CObject* who, CObject* weapon);
-	void						HitMark(float P, Fvector3 dir, CObject* who, S16 element, Fvector3 position_in_bone_space, float impulse, ALife::EHitType hit_type);
+	void						HitMark(float P, Fvector3 dir, CObject* who, signed short element, Fvector3 position_in_bone_space, float impulse, ALife::EHitType hit_type);
 
 	virtual float						GetMass( );
 	virtual float						Radius( ) const;
@@ -604,9 +604,9 @@ public:
 	virtual BOOL						net_SaveRelevant( );
 
 protected:
-	xr_deque<net_update>	NET;
+	xr_deque<SNetUpdate>	NET;
 	Fvector3				NET_SavedAccel;
-	net_update				NET_Last;
+	SNetUpdate				NET_Last;
 	BOOL					NET_WasInterpolating;	// previous update was by interpolation or by extrapolation
 	u32						NET_Time;				// server time of last update
 
@@ -774,7 +774,7 @@ public:
 protected:
 	U16							m_iLastHitterID;
 	U16							m_iLastHittingWeaponID;
-	S16							m_s16LastHittedElement;
+	signed short							m_s16LastHittedElement;
 	Fvector3						m_vLastHitDir;
 	Fvector3						m_vLastHitPos;
 	float						m_fLastHealth;
@@ -784,7 +784,7 @@ protected:
 	virtual bool			Check_for_BackStab_Bone(U16 element);
 
 public:
-	virtual void				SetHitInfo(CObject* who, CObject* weapon, S16 element, Fvector3 Pos, Fvector3 Dir);
+	virtual void				SetHitInfo(CObject* who, CObject* weapon, signed short element, Fvector3 Pos, Fvector3 Dir);
 
 	virtual bool				InventoryAllowSprint( );
 	virtual void				OnNextWeaponSlot( );

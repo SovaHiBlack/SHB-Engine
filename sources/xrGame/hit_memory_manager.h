@@ -58,7 +58,7 @@ public:
 
 public:
 			void				add					(const CEntityAlive	*who);
-			void				add					(float amount, const Fvector3& local_direction, const CObject *who, S16 element);
+			void				add					(float amount, const Fvector3& local_direction, const CObject *who, signed short element);
 			void				add					(const CHitObject &hit_object);
 
 public:

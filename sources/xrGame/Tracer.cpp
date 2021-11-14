@@ -17,7 +17,7 @@ CTracer::CTracer( )
 	sh_Tracer.create("effects\\bullet_tracer", "fx\\fx_tracer");
 	sh_Geom.create(FVF::F_LIT, RCache.Vertex.Buffer( ), RCache.QuadIB);
 	m_aColors.clear( );
-	for (U8 i = 0; i < 255; i++)
+	for (unsigned char i = 0; i < 255; i++)
 	{
 		CSharedString LineName;
 		LineName.sprintf("color_%d", i);
@@ -82,13 +82,17 @@ inline void FillSprite_Line(FVF::LIT*& pv, const Fvector3& pos, const Fvector3& 
 	b.add(Vt, Vr);
 	c.invert(a);
 	d.invert(b);
-	pv->set(d.x + pos.x, d.y + pos.y, d.z + pos.z, color, 0.f, 1.f);        pv++;
-	pv->set(a.x + pos.x, a.y + pos.y, a.z + pos.z, color, 0.f, 0.5f);        pv++;
-	pv->set(c.x + pos.x, c.y + pos.y, c.z + pos.z, color, 1.f, 1.f);        pv++;
-	pv->set(b.x + pos.x, b.y + pos.y, b.z + pos.z, color, 1.f, 0.5f);        pv++;
+	pv->set(d.x + pos.x, d.y + pos.y, d.z + pos.z, color, 0.0f, 1.0f);
+	pv++;
+	pv->set(a.x + pos.x, a.y + pos.y, a.z + pos.z, color, 0.0f, 0.5f);
+	pv++;
+	pv->set(c.x + pos.x, c.y + pos.y, c.z + pos.z, color, 1.0f, 1.0f);
+	pv++;
+	pv->set(b.x + pos.x, b.y + pos.y, b.z + pos.z, color, 1.0f, 0.5f);
+	pv++;
 }
 
-void  CTracer::Render(FVF::LIT*& verts, const Fvector3& pos, const Fvector3& center, const Fvector3& dir, float length, float width, U8 colorID)
+void  CTracer::Render(FVF::LIT*& verts, const Fvector3& pos, const Fvector3& center, const Fvector3& dir, float length, float width, unsigned char colorID)
 {
 	if (::Render->ViewBase.testSphere_dirty(( Fvector3&) center, length * .5f))
 	{

@@ -1,26 +1,25 @@
-////////////////////////////////////////////////////////////////////////////
 //	Module 		: Profiler_inline.h
-//	Created 	: 23.07.2004
-//  Modified 	: 23.07.2004
-//	Author		: Dmitriy Iassenev
 //	Description : Profiler inline functions
-////////////////////////////////////////////////////////////////////////////
 
 #pragma once
 
-inline	CProfilePortion::CProfilePortion	(const char* timer_id)
+inline SProfilePortion::SProfilePortion(const char* timer_id)
 {
 	if (!psAI_Flags.test(aiStats))
+	{
 		return;
+	}
 
 	if (!psDeviceFlags.test(rsStatistic))
+	{
 		return;
+	}
 
 	m_timer_id							= timer_id;
 	m_time								= CPU::QPC();
 }
 
-inline	CProfilePortion::~CProfilePortion	()
+inline	SProfilePortion::~SProfilePortion()
 {
 	if (!psAI_Flags.test(aiStats))
 		return;
@@ -38,7 +37,7 @@ inline	CProfiler&	profiler				()
 	return			(*g_profiler);
 }
 
-inline	CProfileStats::CProfileStats		()
+inline	SProfileStats::SProfileStats()
 {
 	m_update_time	= 0;
 	m_name			= CSharedString("");

@@ -173,7 +173,7 @@ public:
 
 protected:
 	bool					m_bTriStateReload;
-	U8						m_sub_state;
+	unsigned char						m_sub_state;
 	// Weapon fires now
 	bool					bWorking2;
 	// a misfire happens, you'll need to rearm weapon
@@ -245,18 +245,18 @@ public:
 		return m_sSilencerName;
 	}
 
-	U8 GetAddonsState( ) const
+	unsigned char GetAddonsState( ) const
 	{
 		return m_flagsAddOnState;
 	}
-	void	SetAddonsState(U8 st)
+	void	SetAddonsState(unsigned char st)
 	{
 		m_flagsAddOnState = st;
 	}//dont use!!! for buy menu only!!!
 
 protected:
 	// состояние подключенных аддонов
-	U8 m_flagsAddOnState;
+	unsigned char m_flagsAddOnState;
 
 	// возможность подключения различных аддонов
 	ALife::EWeaponAddonStatus	m_eScopeStatus;
@@ -596,7 +596,7 @@ public:
 	u32						m_ammoType;
 	CSharedString				m_ammoName;
 	BOOL					m_bHasTracers;
-	U8						m_u8TracerColorID;
+	unsigned char						m_u8TracerColorID;
 	u32						m_set_next_ammoType_on_reload;
 	// Multitype ammo support
 	xr_vector<CCartridge>	m_magazine;

@@ -14,7 +14,7 @@ struct CShapeData
 	};
 	struct shape_def
 	{
-		U8			type;
+		unsigned char			type;
 		shape_data	data;
 	};
 

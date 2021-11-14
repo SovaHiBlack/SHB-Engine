@@ -33,7 +33,7 @@ public:
 
 	virtual void		Init					( );
 	virtual void		Show					(bool status);
-	virtual void		SendMessage				(CUIWindow* pWnd, S16 msg, void* pData = nullptr);
+	virtual void		SendMessage				(CUIWindow* pWnd, signed short msg, void* pData = nullptr);
 	virtual void		Draw					( );
 
 	void				AddArticle				(CSharedString, bool bReaded);

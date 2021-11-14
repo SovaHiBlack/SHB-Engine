@@ -123,7 +123,7 @@ BOOL CWeaponMagazinedWGrenade::net_Spawn(CSE_Abstract* DC)
 	UpdateGrenadeVisibility(!!iAmmoElapsed);
 	m_bPending = false;
 
-	m_DefaultCartridge2.Load(*m_ammoTypes2[m_ammoType2], U8(m_ammoType2));
+	m_DefaultCartridge2.Load(*m_ammoTypes2[m_ammoType2], unsigned char(m_ammoType2));
 
 	xr_vector<CCartridge>* pM = nullptr;
 	bool b_if_grenade_mode = (m_bGrenadeMode && iAmmoElapsed && !getRocketCount( ));
@@ -418,7 +418,7 @@ void CWeaponMagazinedWGrenade::SwitchState(u32 S)
 //.				DBG_DrawLine(p1, Fvector3( ).add(p1, d), D3DCOLOR_XRGB(255, 0, 0));
 #endif // def DEBUG
 
-				U8 canfire0 = TransferenceAndThrowVelToThrowDir(Transference, CRocketLauncher::m_fLaunchSpeed, EffectiveGravity( ), res);
+				unsigned char canfire0 = TransferenceAndThrowVelToThrowDir(Transference, CRocketLauncher::m_fLaunchSpeed, EffectiveGravity( ), res);
 
 #ifdef DEBUG
 //.				if(canfire0>0)DBG_DrawLine(p1,Fvector3().add(p1,res[0]),D3DCOLOR_XRGB(0,255,0));
@@ -837,7 +837,7 @@ void CWeaponMagazinedWGrenade::load(IReader& input_packet)
 	load_data(sz, input_packet);
 
 	CCartridge l_cartridge;
-	l_cartridge.Load(*m_ammoTypes2[m_ammoType2], U8(m_ammoType2));
+	l_cartridge.Load(*m_ammoTypes2[m_ammoType2], unsigned char(m_ammoType2));
 
 	while (sz > m_magazine2.size( ))
 	{

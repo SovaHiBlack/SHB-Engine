@@ -73,7 +73,7 @@ void CSoundRender_Core::_initialize	(U64 window)
 	bReady						= true;
 }
 
-extern xr_vector<U8> g_target_temp_data;
+extern xr_vector<unsigned char> g_target_temp_data;
 void CSoundRender_Core::_clear	()
 {
 	bReady						= false;
@@ -209,7 +209,7 @@ void CSoundRender_Core::set_geometry_env(IReader* I)
 	// Load geometry
 	IReader*			geom_ch	= I->open_chunk(1);
 	
-	U8*	_data			= (U8*)xr_malloc(geom_ch->length());
+	unsigned char*	_data			= (unsigned char*)xr_malloc(geom_ch->length());
 	
 	Memory.mem_copy		(_data, geom_ch->pointer(), geom_ch->length() );
 

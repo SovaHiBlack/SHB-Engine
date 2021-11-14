@@ -187,7 +187,7 @@ BOOL CHelicopter::net_Spawn(CSE_Abstract*	DC)
 		int lc = pUserData->line_count(s);
 		const char* name;
 		const char* value;
-		S16 boneID;
+		signed short boneID;
 		for (int i=0 ;i<lc; ++i){
 			pUserData->r_line( s, i, &name, &value);
 			boneID	=K->LL_BoneID(name);
@@ -749,7 +749,7 @@ void	CHelicopter::Hit(SHit* pHDS)
 	CPHDestroyable::SetFatalHit(*pHDS);
 }
 
-void CHelicopter::PHHit(float P, Fvector3& dir, CObject* who, S16 element, Fvector3 p_in_object_space, float impulse, ALife::EHitType hit_type)
+void CHelicopter::PHHit(float P, Fvector3& dir, CObject* who, signed short element, Fvector3 p_in_object_space, float impulse, ALife::EHitType hit_type)
 {
 	if (!g_Alive( ))inherited::PHHit(P, dir, who, element, p_in_object_space, impulse, hit_type);
 }
@@ -848,7 +848,7 @@ void SHeliEnemy::Update( )
 
 void SHeliEnemy::save(CNetPacket& output_packet)
 {
-	output_packet.w_s16((S16) type);
+	output_packet.w_s16((signed short) type);
 	output_packet.w_vec3(destEnemyPos);
 	output_packet.w_u32(destEnemyID);
 
@@ -916,7 +916,7 @@ void SHeliBodyState::LookAtPoint(Fvector3 point, bool do_it)
 
 void SHeliBodyState::save(CNetPacket& output_packet)
 {
-	output_packet.w_s16((S16) type);
+	output_packet.w_s16((signed short) type);
 	output_packet.w_u8(b_looking_at_point ? 1 : 0);
 	output_packet.w_float(currBodyHPB.x);
 	output_packet.w_float(currBodyHPB.y);

@@ -23,7 +23,7 @@ public:
 	virtual void			SetTextColorD(u32 color);
 
 	virtual void	Init(float x, float y, float width, float height);
-	virtual void	SendMessage(CUIWindow* pWnd, S16 msg, void* pData = nullptr);
+	virtual void	SendMessage(CUIWindow* pWnd, signed short msg, void* pData = nullptr);
 
 	virtual bool	OnMouse(float x, float y, EUIMessages mouse_action);
 	virtual bool	OnKeyboard(int dik, EUIMessages keyboard_action);

@@ -402,7 +402,7 @@ void CActor::Load(const char* section)
 	m_sHeadShotParticle = READ_IF_EXISTS(pSettings, r_string, section, "HeadShotParticle", 0);
 }
 
-void CActor::PHHit(float P, Fvector3& dir, CObject* who, S16 element, Fvector3 p_in_object_space, float impulse, ALife::EHitType hit_type /* = ALife::eHitTypeWound */)
+void CActor::PHHit(float P, Fvector3& dir, CObject* who, signed short element, Fvector3 p_in_object_space, float impulse, ALife::EHitType hit_type /* = ALife::eHitTypeWound */)
 {
 	m_pPhysics_support->in_Hit(P, dir, who, element, p_in_object_space, impulse, hit_type, !g_Alive( ));
 }
@@ -521,7 +521,7 @@ void CActor::Hit(SHit* pHDS)
 void CActor::HitMark(float P,
 	Fvector3 dir,
 	CObject* who,
-	S16 element,
+	signed short element,
 	Fvector3 position_in_bone_space,
 	float impulse,
 	ALife::EHitType hit_type)
@@ -589,7 +589,7 @@ void CActor::HitMark(float P,
 	}
 }
 
-void CActor::HitSignal(float perc, Fvector3& vLocalDir, CObject* who, S16 element)
+void CActor::HitSignal(float perc, Fvector3& vLocalDir, CObject* who, signed short element)
 {
 	if (g_Alive( ))
 	{

@@ -192,7 +192,7 @@ public:
 	virtual void							OnEvent									(CNetPacket& P, U16 type);
 	virtual void							Hit										(SHit* pHDS)
 	{ }
-	virtual void							SetHitInfo								(CObject* who, CObject* weapon, S16 element, Fvector3 Pos, Fvector3 Dir)
+	virtual void							SetHitInfo								(CObject* who, CObject* weapon, signed short element, Fvector3 Pos, Fvector3 Dir)
 	{ }
 	virtual BOOL							BonePassBullet							(int boneID)
 	{

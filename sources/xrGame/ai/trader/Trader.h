@@ -77,7 +77,7 @@ public:
 
 	virtual void					Die							(CObject* who);
 	virtual void					Think						( );
-	virtual void					HitSignal					(float /**P/**/, Fvector3&/**local_dir/**/, CObject* /**who/**/, S16 /**element/**/)
+	virtual void					HitSignal					(float /**P/**/, Fvector3&/**local_dir/**/, CObject* /**who/**/, signed short /**element/**/)
 	{ }
 	virtual void					HitImpulse					(float /**P/**/, Fvector3&/**vWorldDir/**/, Fvector3& /**vLocalDir/**/)
 	{ }

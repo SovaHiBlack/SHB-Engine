@@ -19,7 +19,7 @@ class CPHShell : public CPhysicsShell, public CPHObject
 		flRemoveCharacterCollisionAfterDisable = 1 << 2
 	};
 
-	S16						m_active_count;
+	signed short						m_active_count;
 	Flags8					m_flags;
 	ELEMENT_STORAGE			elements;
 	JOINT_STORAGE			joints;

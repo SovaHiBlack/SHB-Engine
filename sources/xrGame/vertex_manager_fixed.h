@@ -11,7 +11,7 @@
 template <
 	typename _path_id_type,
 	typename _index_type,
-	U8 mask
+	unsigned char mask
 >
 struct CVertexManagerFixed {
 

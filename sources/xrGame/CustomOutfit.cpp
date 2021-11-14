@@ -101,14 +101,14 @@ float CCustomOutfit::GetDefHitTypeProtection(ALife::EHitType hit_type)
 	return 1.0f - m_HitTypeProtection[hit_type] * GetCondition( );
 }
 
-float CCustomOutfit::GetHitTypeProtection(ALife::EHitType hit_type, S16 element)
+float CCustomOutfit::GetHitTypeProtection(ALife::EHitType hit_type, signed short element)
 {
 	float fBase = m_HitTypeProtection[hit_type] * GetCondition( );
 	float bone = m_boneProtection->getBoneProtection(element);
 	return 1.0f - fBase * bone;
 }
 
-float CCustomOutfit::HitThruArmour(float hit_power, S16 element, float AP)
+float CCustomOutfit::HitThruArmour(float hit_power, signed short element, float AP)
 {
 	float BoneArmour = m_boneProtection->getBoneArmour(element) * GetCondition( ) * (1 - AP);
 	float NewHitPower = hit_power - BoneArmour;
@@ -122,7 +122,7 @@ float CCustomOutfit::HitThruArmour(float hit_power, S16 element, float AP)
 
 BOOL CCustomOutfit::BonePassBullet(int boneID)
 {
-	return m_boneProtection->getBonePassBullet(S16(boneID));
+	return m_boneProtection->getBonePassBullet(signed short(boneID));
 }
 
 void CCustomOutfit::OnMoveToSlot( )

@@ -134,7 +134,7 @@ void	SPHNetState::net_Export(CNetPacket& P)
 	P.w_vec3(position);
 	P.w_vec4(*((Fvector4*) &quaternion));
 	//P.w_vec4(*((Fvector4*)&previous_quaternion));
-	P.w_u8((U8) enabled);
+	P.w_u8((unsigned char) enabled);
 
 }
 template<typename src>
@@ -185,7 +185,7 @@ void SPHNetState::net_Save(CNetPacket& P, const Fvector3& min, const Fvector3& m
 	w_qt_q8(P, quaternion);
 	//P.w_vec4(*((Fvector4*)&quaternion));
 	//P.w_vec4(*((Fvector4*)&previous_quaternion));
-	P.w_u8((U8) enabled);
+	P.w_u8((unsigned char) enabled);
 }
 template<typename src>
 void SPHNetState::read(src& P, const Fvector3& min, const Fvector3& max)

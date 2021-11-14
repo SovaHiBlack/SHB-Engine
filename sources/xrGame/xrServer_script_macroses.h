@@ -52,9 +52,9 @@ class CALifeSmartTerrainTask;
 
 #define INHERIT_CREATURE \
 	INHERIT_DYNAMIC_ALIFE\
-	DEFINE_LUA_WRAPPER_METHOD_0			(g_team,	U8)\
-	DEFINE_LUA_WRAPPER_METHOD_0			(g_squad,	U8)\
-	DEFINE_LUA_WRAPPER_METHOD_0			(g_group,	U8)\
+	DEFINE_LUA_WRAPPER_METHOD_0			(g_team,	unsigned char)\
+	DEFINE_LUA_WRAPPER_METHOD_0			(g_squad,	unsigned char)\
+	DEFINE_LUA_WRAPPER_METHOD_0			(g_group,	unsigned char)\
 	DEFINE_LUA_WRAPPER_METHOD_V1		(on_death,	CSE_Abstract*)
 
 #define INHERIT_MONSTER \

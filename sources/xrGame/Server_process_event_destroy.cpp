@@ -86,13 +86,13 @@ void CServer::Process_event_destroy(CNetPacket& P, CClientID sender, u32 time, U
 				pEventPack = &P2;
 			}
 
-			pEventPack->w_u8(U8(tmpP.B.count));
+			pEventPack->w_u8(unsigned char(tmpP.B.count));
 			pEventPack->w(&tmpP.B.data, tmpP.B.count);
 		}
 
 		game->u_EventGen(tmpP, GE_DESTROY, id_dest);
 
-		pEventPack->w_u8(U8(tmpP.B.count));
+		pEventPack->w_u8(unsigned char(tmpP.B.count));
 		pEventPack->w(&tmpP.B.data, tmpP.B.count);
 	}
 

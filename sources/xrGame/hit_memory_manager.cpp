@@ -91,7 +91,7 @@ void CHitMemoryManager::reload				(const char* section)
 	m_max_hit_count			= READ_IF_EXISTS(pSettings,r_s32,section,"DynamicHitCount",1);
 }
 
-void CHitMemoryManager::add					(float amount, const Fvector3& vLocalDir, const CObject *who, S16 element)
+void CHitMemoryManager::add					(float amount, const Fvector3& vLocalDir, const CObject *who, signed short element)
 {
 
 #ifndef MASTER_GOLD

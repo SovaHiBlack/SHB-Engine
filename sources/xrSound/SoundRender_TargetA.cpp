@@ -4,7 +4,7 @@
 #include "SoundRender_Emitter.h"
 #include "SoundRender_Source.h"
 
-xr_vector<U8> g_target_temp_data;
+xr_vector<unsigned char> g_target_temp_data;
 
 CSoundRender_TargetA::CSoundRender_TargetA():CSoundRender_Target()
 {

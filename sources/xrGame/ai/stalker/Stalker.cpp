@@ -453,7 +453,7 @@ void CStalker::net_Export		(CNetPacket& P)
 
 	// export last known packet
 	R_ASSERT						(!NET.empty());
-	net_update& N					= NET.back();
+	SNetUpdate& N					= NET.back();
 
 	P.w_float						(GetfHealth());
 
@@ -489,7 +489,7 @@ void CStalker::net_Export		(CNetPacket& P)
 void CStalker::net_Import		(CNetPacket& P)
 {
 	R_ASSERT						(Remote());
-	net_update						N;
+	SNetUpdate						N;
 
 	unsigned char flags;
 
@@ -657,7 +657,7 @@ void CStalker::UpdateCL()
 	STOP_PROFILE
 }
 
-void CStalker ::PHHit				(float P, Fvector3& dir, CObject *who, S16 element, Fvector3 p_in_object_space, float impulse, ALife::EHitType hit_type /*ALife::eHitTypeWound*/)
+void CStalker ::PHHit				(float P, Fvector3& dir, CObject *who, signed short element, Fvector3 p_in_object_space, float impulse, ALife::EHitType hit_type /*ALife::eHitTypeWound*/)
 {
 	m_pPhysics_support->in_Hit(P,dir,who,element,p_in_object_space,impulse,hit_type,!g_Alive());
 }
@@ -758,7 +758,7 @@ void CStalker::shedule_Update		( u32 DT )
 			STOP_PROFILE
 
 			START_PROFILE("stalker/schedule_update/net_update")
-			net_update				uNext;
+				SNetUpdate				uNext;
 			uNext.dwTimeStamp		= Level().timeServer();
 			uNext.o_model			= movement().m_body.current.yaw;
 			uNext.o_torso			= movement().m_head.current;
@@ -770,7 +770,7 @@ void CStalker::shedule_Update		( u32 DT )
 		else 
 		{
 			START_PROFILE("stalker/schedule_update/net_update")
-			net_update			uNext;
+				SNetUpdate			uNext;
 			uNext.dwTimeStamp	= Level().timeServer();
 			uNext.o_model		= movement().m_body.current.yaw;
 			uNext.o_torso		= movement().m_head.current;

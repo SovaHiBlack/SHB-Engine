@@ -7,7 +7,7 @@ class CBlend;
 
 class C_StepManager
 {
-	U8										m_legs_count;
+	unsigned char										m_legs_count;
 
 	StepsMap								m_steps_map;
 	S_StepInfo								m_step_info;

@@ -56,7 +56,7 @@ void CUICustomSpin::Init(float x, float y, float width, float height)
 	m_pLines->Init(0, 0, width - BTN_SIZE - 10, SPIN_HEIGHT);
 }
 
-void CUICustomSpin::SendMessage(CUIWindow* pWnd, S16 msg, void* pData)
+void CUICustomSpin::SendMessage(CUIWindow* pWnd, signed short msg, void* pData)
 {
 	if (BUTTON_CLICKED == msg)
 	{

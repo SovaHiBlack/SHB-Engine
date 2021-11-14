@@ -21,7 +21,7 @@ void CServer::Process_update(CNetPacket& P, CClientID sender)
 	{
 		// find entity
 		U16				ID;
-		U8				size;
+		unsigned char				size;
 
 		P.r_u16			(ID);
 		P.r_u8			(size);

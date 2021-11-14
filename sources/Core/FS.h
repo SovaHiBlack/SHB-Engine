@@ -63,9 +63,9 @@ public:
 	{
 		w(&d, sizeof(int));
 	}
-	inline void			w_s16(S16 d)
+	inline void			w_s16(signed short d)
 	{
-		w(&d, sizeof(S16));
+		w(&d, sizeof(signed short));
 	}
 	inline void			w_s8(signed char d)
 	{
@@ -303,9 +303,9 @@ public:
 		r(&tmp, sizeof(tmp));
 		return tmp;
 	}
-	inline S16			r_s16( )
+	inline signed short			r_s16( )
 	{
-		S16 tmp;
+		signed short tmp;
 		r(&tmp, sizeof(tmp));
 		return tmp;
 	}

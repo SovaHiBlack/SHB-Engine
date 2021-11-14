@@ -18,7 +18,7 @@ public:
 
 	// CUIWindow
 	virtual void	Init(float x, float y, float width, float height);
-	virtual void	SendMessage(CUIWindow* pWnd, S16 msg, void* pData = nullptr);
+	virtual void	SendMessage(CUIWindow* pWnd, signed short msg, void* pData = nullptr);
 	virtual void	Draw( );
 	virtual void	Update( );
 	virtual void	Enable(bool status);

@@ -30,10 +30,10 @@ struct ENGINE_API CKey
 };
 struct ENGINE_API CKeyQR
 {
-	S16			x;		// rotation
-	S16			y;
-	S16			z;
-	S16			w;
+	signed short			x;		// rotation
+	signed short			y;
+	signed short			z;
+	signed short			w;
 };
 struct ENGINE_API CKeyQT
 {

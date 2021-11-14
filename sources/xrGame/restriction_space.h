@@ -21,12 +21,12 @@ namespace Restriction
 
 	enum ERestrictorTypes
 	{
-		eDefaultRestrictorTypeNone = U8(0),
-		eDefaultRestrictorTypeOut = U8(1),
-		eDefaultRestrictorTypeIn = U8(2),
-		eRestrictorTypeNone = U8(3),
-		eRestrictorTypeIn = U8(4),
-		eRestrictorTypeOut = U8(5)
+		eDefaultRestrictorTypeNone = unsigned char(0),
+		eDefaultRestrictorTypeOut = unsigned char(1),
+		eDefaultRestrictorTypeIn = unsigned char(2),
+		eRestrictorTypeNone = unsigned char(3),
+		eRestrictorTypeIn = unsigned char(4),
+		eRestrictorTypeOut = unsigned char(5)
 	};
 };
 

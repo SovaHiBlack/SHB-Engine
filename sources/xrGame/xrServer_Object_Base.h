@@ -73,8 +73,8 @@ public:
 
 	// spawn data
 	CSharedString						s_name;
-	U8								s_gameid;
-	U8								s_RP;
+	unsigned char								s_gameid;
+	unsigned char								s_RP;
 	Flags16							s_flags;		// state flags
 	xr_vector<U16>					children;
 
@@ -95,7 +95,7 @@ public:
 	Flags32							m_spawn_flags;
 
 	//client object custom data serialization
-	xr_vector<U8>					client_data;
+	xr_vector<unsigned char>					client_data;
 	virtual void					load(CNetPacket& tNetPacket);
 
 	//////////////////////////////////////////////////////////////////////////

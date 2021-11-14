@@ -1,17 +1,18 @@
 #pragma once
 
-struct	r_aabb_ssa	{
-	U8	ssa	[6]		;
+struct	r_aabb_ssa
+{
+	unsigned char	ssa[6];
 };
 
 class	r_pixel_calculator
 {
 	ref_rt						rt;
-	IDirect3DSurface9*			zb;
+	IDirect3DSurface9* zb;
 public:
-	void			begin		();
-	r_aabb_ssa		calculate	(IRender_Visual* V);
-	void			end			();
+	void			begin( );
+	r_aabb_ssa		calculate(IRender_Visual* V);
+	void			end( );
 
-	void			run			();
+	void			run( );
 };

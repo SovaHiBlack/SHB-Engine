@@ -1902,9 +1902,6 @@
     <None Include="config\external.ltx">
       <Filter>config</Filter>
     </None>
-    <None Include="config\extracontent.ltx">
-      <Filter>config</Filter>
-    </None>
     <None Include="config\fonts.ltx">
       <Filter>config</Filter>
     </None>

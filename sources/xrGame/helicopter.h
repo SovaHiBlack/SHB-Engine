@@ -241,8 +241,8 @@ protected:
 //general
 	EHeliState						m_curState;
 
-	xr_map<S16,float>				m_hitBones;
-	typedef xr_map<S16,float>::iterator bonesIt;
+	xr_map<signed short,float>				m_hitBones;
+	typedef xr_map<signed short,float>::iterator bonesIt;
 	float							m_stepRemains;
 
 	void	UpdateState					();
@@ -288,9 +288,9 @@ public:
 			void					MoveStep			();
 
 	virtual	void					Hit					(SHit* pHDS);
-	virtual void					PHHit				(float P, Fvector3& dir, CObject *who, S16 element, Fvector3 p_in_object_space, float impulse, ALife::EHitType hit_type);
+	virtual void					PHHit				(float P, Fvector3& dir, CObject *who, signed short element, Fvector3 p_in_object_space, float impulse, ALife::EHitType hit_type);
 	//CEntity
-	virtual void					HitSignal			(float P, Fvector3& local_dir,	CObject* who, S16 element){;}
+	virtual void					HitSignal			(float P, Fvector3& local_dir,	CObject* who, signed short element){;}
 	virtual void					HitImpulse			(float P, Fvector3& vWorldDir, Fvector3& vLocalDir){;}
 	
 	virtual const Fmatrix&			get_ParticlesXFORM			();

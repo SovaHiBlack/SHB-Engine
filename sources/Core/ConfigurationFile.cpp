@@ -566,10 +566,10 @@ signed char CConfigurationFile::r_s8(const char* S, const char* L)
 	const char* C = r_string(S, L);
 	return signed char(atoi(C));
 }
-S16 CConfigurationFile::r_s16(const char* S, const char* L)
+signed short CConfigurationFile::r_s16(const char* S, const char* L)
 {
 	const char* C = r_string(S, L);
-	return S16(atoi(C));
+	return signed short(atoi(C));
 }
 int CConfigurationFile::r_s32(const char* S, const char* L)
 {
@@ -773,7 +773,7 @@ void CConfigurationFile::w_s8(const char* S, const char* L, signed char V, const
 	sprintf_s(temp, sizeof(temp), "%d", V);
 	w_string(S, L, temp, comment);
 }
-void CConfigurationFile::w_s16(const char* S, const char* L, S16 V, const char* comment)
+void CConfigurationFile::w_s16(const char* S, const char* L, signed short V, const char* comment)
 {
 	string128 temp;
 	sprintf_s(temp, sizeof(temp), "%d", V);

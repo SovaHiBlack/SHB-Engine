@@ -167,7 +167,7 @@ BOOL CBlackGraviArtefact::feel_touch_contact(CObject* O)
 
 void CBlackGraviArtefact::GraviStrike( )
 {
-	xr_list<S16>		elements_list;
+	xr_list<signed short>		elements_list;
 	xr_list<Fvector3>	bone_position_list;
 
 	Fvector3 object_pos;
@@ -220,7 +220,7 @@ void CBlackGraviArtefact::GraviStrike( )
 		{
 			while (!elements_list.empty( ))
 			{
-				S16 element = elements_list.front( );
+				signed short element = elements_list.front( );
 				Fvector3 bone_pos = bone_position_list.front( );
 
 				CNetPacket P;

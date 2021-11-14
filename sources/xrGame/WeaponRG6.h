@@ -17,7 +17,7 @@ public:
 
 protected:
 	virtual void	FireStart( );
-	virtual U8		AddCartridge(U8 cnt);
+	virtual unsigned char		AddCartridge(unsigned char cnt);
 
 public:
 	static void script_register(lua_State*);

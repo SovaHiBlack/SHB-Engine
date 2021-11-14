@@ -39,7 +39,7 @@ class CPHObject : public ISpatial
 
 	CPHIsland			m_island;
 	CLBits				m_collide_bits;
-	U8					m_check_count;
+	unsigned char					m_check_count;
 	_flags<CLClassBits>	m_collide_class_bits;
 
 public:

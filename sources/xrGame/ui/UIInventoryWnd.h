@@ -38,7 +38,7 @@ public:
 		return false;
 	}
 
-	virtual void				SendMessage						(CUIWindow* pWnd, S16 msg, void* pData);
+	virtual void				SendMessage						(CUIWindow* pWnd, signed short msg, void* pData);
 	virtual bool				OnMouse							(float x, float y, EUIMessages mouse_action);
 	virtual bool				OnKeyboard						(int dik, EUIMessages keyboard_action);
 

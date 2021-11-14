@@ -1,6 +1,5 @@
 // CustomMonster.cpp: implementation of the CCustomMonster class.
-//
-//////////////////////////////////////////////////////////////////////
+
 #include "stdafx.h"
 
 #include "ai_debug.h"
@@ -65,15 +64,6 @@ void CCustomMonster::SAnimState::Create(CKinematicsAnimated* K, const char* base
 	ls = K->ID_Cycle_Safe(strconcat(sizeof(buf), buf, base, "_ls"));
 	rs = K->ID_Cycle_Safe(strconcat(sizeof(buf), buf, base, "_rs"));
 }
-
-//void __stdcall CCustomMonster::TorsoSpinCallback(CBoneInstance* B)
-//{
-//	CCustomMonster*		M = static_cast<CCustomMonster*> (B->Callback_Param);
-//
-//	Fmatrix					spin;
-//	spin.setXYZ				(0, M->NET_Last.o_torso.pitch, 0);
-//	B->mTransform.mulB_43	(spin);
-//}
 
 //////////////////////////////////////////////////////////////////////
 // Construction/Destruction
@@ -148,7 +138,9 @@ void CCustomMonster::reinit( )
 	m_critical_wound_decrease_quant = pSettings->r_float(cNameSect( ), "critical_wound_decrease_quant");
 
 	if (m_critical_wound_threshold >= 0)
+	{
 		load_critical_wound_bones( );
+	}
 	//////////////////////////////////////////////////////////////////////////
 	m_update_rotation_on_frame = true;
 	m_movement_enabled_before_animation_controller = true;
@@ -172,7 +164,7 @@ void CCustomMonster::mk_orientation(Fvector3& dir, Fmatrix& mR)
 {
 	// orient only in XZ plane
 	dir.y = 0;
-	float		len = dir.magnitude( );
+	float len = dir.magnitude( );
 	if (len > EPS_S)
 	{
 		// normalize
@@ -190,7 +182,7 @@ void CCustomMonster::net_Export(CNetPacket& P)					// export to server
 
 	// export last known packet
 	R_ASSERT(!NET.empty( ));
-	net_update& N = NET.back( );
+	SNetUpdate& N = NET.back( );
 	P.w_float(GetfHealth( ));
 	P.w_u32(N.dwTimeStamp);
 	P.w_u8(0);
@@ -207,7 +199,7 @@ void CCustomMonster::net_Export(CNetPacket& P)					// export to server
 void CCustomMonster::net_Import(CNetPacket& P)
 {
 	R_ASSERT(Remote( ));
-	net_update				N;
+	SNetUpdate				N;
 
 	unsigned char flags;
 
@@ -313,7 +305,7 @@ void CCustomMonster::shedule_Update(u32 DT)
 			/// #pragma todo("Oles to all AI guys: perf/logical problem: Only few objects needs 'feel_touch' why to call update for everybody?")
 			///			feel_touch_update		(C,R);
 
-			net_update				uNext;
+			SNetUpdate				uNext;
 			uNext.dwTimeStamp = Level( ).timeServer( );
 			uNext.o_model = movement( ).m_body.current.yaw;
 			uNext.o_torso = movement( ).m_body.current;
@@ -323,7 +315,7 @@ void CCustomMonster::shedule_Update(u32 DT)
 		}
 		else
 		{
-			net_update			uNext;
+			SNetUpdate			uNext;
 			uNext.dwTimeStamp = Level( ).timeServer( );
 			uNext.o_model = movement( ).m_body.current.yaw;
 			uNext.o_torso = movement( ).m_body.current;
@@ -334,7 +326,7 @@ void CCustomMonster::shedule_Update(u32 DT)
 	}
 }
 
-void CCustomMonster::net_update::lerp(CCustomMonster::net_update& A, CCustomMonster::net_update& B, float f)
+void CCustomMonster::SNetUpdate::lerp(CCustomMonster::SNetUpdate& A, CCustomMonster::SNetUpdate& B, float f)
 {
 	// 
 	o_model = angle_lerp(A.o_model, B.o_model, f);
@@ -390,7 +382,7 @@ void CCustomMonster::UpdateCL( )
 
 	// distinguish interpolation/extrapolation
 	u32	dwTime = Level( ).timeServer( ) - NET_Latency;
-	net_update& N = NET.back( );
+	SNetUpdate& N = NET.back( );
 	if ((dwTime > N.dwTimeStamp) || (NET.size( ) < 2))
 	{
 // BAD.	extrapolation
@@ -409,8 +401,8 @@ void CCustomMonster::UpdateCL( )
 		if (select >= 0)
 		{
 			// Interpolate state
-			net_update& A = NET[select + 0];
-			net_update& B = NET[select + 1];
+			SNetUpdate& A = NET[select + 0];
+			SNetUpdate& B = NET[select + 1];
 			u32	d1 = dwTime - A.dwTimeStamp;
 			u32	d2 = B.dwTimeStamp - A.dwTimeStamp;
 //			VERIFY					(d2);
@@ -650,7 +642,7 @@ BOOL CCustomMonster::net_Spawn(CSE_Abstract* DC)
 	// weapons
 	if (Local( ))
 	{
-		net_update				N;
+		SNetUpdate				N;
 		N.dwTimeStamp = Level( ).timeServer( ) - NET_Latency;
 		N.o_model = -E->o_torso.yaw;
 		N.o_torso.yaw = -E->o_torso.yaw;

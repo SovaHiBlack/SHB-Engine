@@ -67,7 +67,7 @@ public:
 							CUIDiaryWnd					( );
 	virtual					~CUIDiaryWnd				( );
 
-	virtual void			SendMessage					(CUIWindow* pWnd, S16 msg, void* pData);
+	virtual void			SendMessage					(CUIWindow* pWnd, signed short msg, void* pData);
 	virtual void			Draw						( );
 	virtual void			Reset						( );
 

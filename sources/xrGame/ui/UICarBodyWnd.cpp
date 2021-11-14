@@ -276,7 +276,7 @@ void CUICarBodyWnd::UpdateLists( )
 	m_b_need_update = false;
 }
 
-void CUICarBodyWnd::SendMessage(CUIWindow* pWnd, S16 msg, void* pData)
+void CUICarBodyWnd::SendMessage(CUIWindow* pWnd, signed short msg, void* pData)
 {
 	if (BUTTON_CLICKED == msg && m_pUITakeAll == pWnd)
 	{

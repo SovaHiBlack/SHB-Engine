@@ -461,7 +461,7 @@ void CCharacterPhysicsSupport::KillHit(CObject* who, ALife::EHitType hit_type, f
 	}
 }
 
-void CCharacterPhysicsSupport::in_Hit(float P, Fvector3& dir, CObject* who, S16 element, Fvector3 p_in_object_space, float impulse, ALife::EHitType hit_type, bool is_killing)
+void CCharacterPhysicsSupport::in_Hit(float P, Fvector3& dir, CObject* who, signed short element, Fvector3 p_in_object_space, float impulse, ALife::EHitType hit_type, bool is_killing)
 {
 	if (m_EntityAlife.use_simplified_visual( ))
 	{

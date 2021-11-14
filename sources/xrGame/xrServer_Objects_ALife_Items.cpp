@@ -92,7 +92,7 @@ void CSE_ALifeInventoryItem::STATE_Read(CNetPacket& tNetPacket, U16 size)
 	State.position = base( )->o_Position;
 }
 
-static inline bool check(const U8& mask, const U8& test)
+static inline bool check(const unsigned char& mask, const unsigned char& test)
 {
 	return !!(mask & test);
 }
@@ -110,7 +110,7 @@ void CSE_ALifeInventoryItem::UPDATE_Write(CNetPacket& tNetPacket)
 	num_items.num_items = m_u8NumItems;
 
 	R_ASSERT2(
-		num_items.num_items < (U8(1) << 5),
+		num_items.num_items < (unsigned char(1) << 5),
 		make_string("%d", num_items.num_items)
 	);
 
@@ -166,7 +166,7 @@ void CSE_ALifeInventoryItem::UPDATE_Read(CNetPacket& tNetPacket)
 	m_u8NumItems = num_items.num_items;
 
 	R_ASSERT2(
-		m_u8NumItems < (U8(1) << 5),
+		m_u8NumItems < (unsigned char(1) << 5),
 		make_string("%d", m_u8NumItems)
 	);
 
@@ -491,20 +491,20 @@ void CSE_ALifeItemWeapon::OnEvent(CNetPacket& tNetPacket, U16 type, u32 time, CC
 		case GE_WPN_STATE_CHANGE:
 		{
 			tNetPacket.r_u8(wpn_state);
-//				U8 sub_state = 
+//				unsigned char sub_state = 
 			tNetPacket.r_u8( );
-//				U8 NewAmmoType = 
+//				unsigned char NewAmmoType = 
 			tNetPacket.r_u8( );
-//				U8 AmmoElapsed = 
+//				unsigned char AmmoElapsed = 
 			tNetPacket.r_u8( );
 		}
 		break;
 	}
 }
 
-U8 CSE_ALifeItemWeapon::get_slot( )
+unsigned char CSE_ALifeItemWeapon::get_slot( )
 {
-	return ((U8) pSettings->r_u8(s_name, "slot"));
+	return ((unsigned char) pSettings->r_u8(s_name, "slot"));
 }
 
 U16 CSE_ALifeItemWeapon::get_ammo_total( )
@@ -571,8 +571,8 @@ void CSE_ALifeItemWeaponShotGun::UPDATE_Read(CNetPacket& P)
 	inherited::UPDATE_Read(P);
 
 	m_AmmoIDs.clear( );
-	U8 AmmoCount = P.r_u8( );
-	for (U8 i = 0; i < AmmoCount; i++)
+	unsigned char AmmoCount = P.r_u8( );
+	for (unsigned char i = 0; i < AmmoCount; i++)
 	{
 		m_AmmoIDs.push_back(P.r_u8( ));
 	}
@@ -582,10 +582,10 @@ void CSE_ALifeItemWeaponShotGun::UPDATE_Write(CNetPacket& P)
 {
 	inherited::UPDATE_Write(P);
 
-	P.w_u8(U8(m_AmmoIDs.size( )));
+	P.w_u8(unsigned char(m_AmmoIDs.size( )));
 	for (u32 i = 0; i < m_AmmoIDs.size( ); i++)
 	{
-		P.w_u8(U8(m_AmmoIDs[i]));
+		P.w_u8(unsigned char(m_AmmoIDs[i]));
 	}
 }
 

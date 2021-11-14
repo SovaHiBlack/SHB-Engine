@@ -15,7 +15,7 @@ struct S_StepParam
 		float	power;
 	} step[MAX_LEGS_COUNT];
 
-	U8			cycles;
+	unsigned char			cycles;
 };
 
 using StepsMap = associative_vector<MotionID, S_StepParam>;
@@ -26,13 +26,13 @@ struct S_StepInfo
 	struct
 	{
 		bool			handled;		// обработан
-		U8				cycle;			// цикл в котором отработан
+		unsigned char				cycle;			// цикл в котором отработан
 	} activity[MAX_LEGS_COUNT];
 
 	S_StepParam		params;
 	bool			disable;
 
-	U8				cur_cycle;
+	unsigned char				cur_cycle;
 
 	S_StepInfo( )
 	{

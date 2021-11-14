@@ -15,7 +15,7 @@
 #include "GameObject_space.h"
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-bool CCar::DoorHit(float P, S16 element,ALife::EHitType hit_type)
+bool CCar::DoorHit(float P, signed short element,ALife::EHitType hit_type)
 {
 	if(hit_type==ALife::eHitTypeStrike && P > 20.0f)
 	{

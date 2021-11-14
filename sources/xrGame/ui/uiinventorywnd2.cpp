@@ -35,7 +35,7 @@ void CUIInventoryWnd::SetCurrentItem(CUICellItem* itm)
 	UIItemInfo.InitItem(CurrentIItem( ));
 }
 
-void CUIInventoryWnd::SendMessage(CUIWindow* pWnd, S16 msg, void* pData)
+void CUIInventoryWnd::SendMessage(CUIWindow* pWnd, signed short msg, void* pData)
 {
 	if (pWnd == &UIPropertiesBox && msg == PROPERTY_CLICKED)
 	{

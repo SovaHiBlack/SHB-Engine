@@ -26,7 +26,7 @@ public:
 	void			ResetTime			()								{ SetRestTime(0, 0); }
 protected:
 	// Устанавливаем на отображение время для сна
-	void			SetRestTime			(U8 hours, U8 minutes);
+	void			SetRestTime			(unsigned char hours, unsigned char minutes);
 	// Текущее запоменное время отдыха
 	signed char				m_Hours;
 	signed char				m_Minutes;
