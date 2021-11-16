@@ -66,7 +66,7 @@ void CWeapon::FireTrace(const Fvector3& P, const Fvector3& D)
 
 	CCartridge& l_cartridge = m_magazine.back( );
 //	Msg("ammo - %s", l_cartridge.m_ammoSect.c_str());
-	VERIFY(U16(-1) != l_cartridge.bullet_material_idx);
+	VERIFY(unsigned short(-1) != l_cartridge.bullet_material_idx);
 	//-------------------------------------------------------------	
 	l_cartridge.m_flags.set(CCartridge::cfTracer, (m_bHasTracers & !!l_cartridge.m_flags.test(CCartridge::cfTracer)));
 	if (m_u8TracerColorID != unsigned char(-1))

@@ -92,7 +92,7 @@ const CSharedString& SRelationRegistry::GetSpotName(ALife::ERelationType& type)
 	return m_spot_names->GetSpotName(type);
 }
 
-void SRelationRegistry::ClearRelations(U16 person_id)
+void SRelationRegistry::ClearRelations(unsigned short person_id)
 {
 	const SRelationData* relation_data = relation_registry( ).registry( ).objects_ptr(person_id);
 	if (relation_data)
@@ -101,7 +101,7 @@ void SRelationRegistry::ClearRelations(U16 person_id)
 	}
 }
 
-CharacterGoodwill SRelationRegistry::GetGoodwill(U16 from, U16 to) const
+CharacterGoodwill SRelationRegistry::GetGoodwill(unsigned short from, unsigned short to) const
 {
 	const SRelationData* relation_data = relation_registry( ).registry( ).objects_ptr(from);
 
@@ -119,7 +119,7 @@ CharacterGoodwill SRelationRegistry::GetGoodwill(U16 from, U16 to) const
 	return NEUTRAL_GOODWILL;
 }
 
-void SRelationRegistry::SetGoodwill(U16 from, U16 to, CharacterGoodwill goodwill)
+void SRelationRegistry::SetGoodwill(unsigned short from, unsigned short to, CharacterGoodwill goodwill)
 {
 	SRelationData& relation_data = relation_registry( ).registry( ).objects(from);
 
@@ -129,13 +129,13 @@ void SRelationRegistry::SetGoodwill(U16 from, U16 to, CharacterGoodwill goodwill
 	relation_data.personal[to].SetGoodwill(goodwill);
 }
 
-void SRelationRegistry::ChangeGoodwill(U16 from, U16 to, CharacterGoodwill delta_goodwill)
+void SRelationRegistry::ChangeGoodwill(unsigned short from, unsigned short to, CharacterGoodwill delta_goodwill)
 {
 	CharacterGoodwill new_goodwill = GetGoodwill(from, to) + delta_goodwill;
 	SetGoodwill(from, to, new_goodwill);
 }
 
-CharacterGoodwill SRelationRegistry::GetCommunityGoodwill(CharacterCommunityIndex from_community, U16 to_character) const
+CharacterGoodwill SRelationRegistry::GetCommunityGoodwill(CharacterCommunityIndex from_community, unsigned short to_character) const
 {
 	const SRelationData* relation_data = relation_registry( ).registry( ).objects_ptr(to_character);
 
@@ -153,7 +153,7 @@ CharacterGoodwill SRelationRegistry::GetCommunityGoodwill(CharacterCommunityInde
 	return NEUTRAL_GOODWILL;
 }
 
-void SRelationRegistry::SetCommunityGoodwill(CharacterCommunityIndex from_community, U16 to_character, CharacterGoodwill goodwill)
+void SRelationRegistry::SetCommunityGoodwill(CharacterCommunityIndex from_community, unsigned short to_character, CharacterGoodwill goodwill)
 {
 	static Ivector2 gw_limits = pSettings->r_ivector2(ACTIONS_POINTS_SECT, "community_goodwill_limits");
 	clamp(goodwill, gw_limits.x, gw_limits.y);
@@ -162,7 +162,7 @@ void SRelationRegistry::SetCommunityGoodwill(CharacterCommunityIndex from_commun
 	relation_data.communities[from_community].SetGoodwill(goodwill);
 }
 
-void SRelationRegistry::ChangeCommunityGoodwill(CharacterCommunityIndex from_community, U16 to_character, CharacterGoodwill delta_goodwill)
+void SRelationRegistry::ChangeCommunityGoodwill(CharacterCommunityIndex from_community, unsigned short to_character, CharacterGoodwill delta_goodwill)
 {
 	CharacterGoodwill gw = GetCommunityGoodwill(from_community, to_character) + delta_goodwill;
 	SetCommunityGoodwill(from_community, to_character, gw);

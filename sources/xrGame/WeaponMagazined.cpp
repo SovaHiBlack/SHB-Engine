@@ -293,12 +293,12 @@ void CWeaponMagazined::OnMagazineEmpty( )
 
 void CWeaponMagazined::UnloadMagazine(bool spawn_ammo)
 {
-	xr_map<const char*, U16> l_ammo;
+	xr_map<const char*, unsigned short> l_ammo;
 
 	while (!m_magazine.empty( ))
 	{
 		CCartridge& l_cartridge = m_magazine.back( );
-		xr_map<const char*, U16>::iterator l_it;
+		xr_map<const char*, unsigned short>::iterator l_it;
 		for (l_it = l_ammo.begin( ); l_ammo.end( ) != l_it; ++l_it)
 		{
 			if (!xr_strcmp(*l_cartridge.m_ammoSect, l_it->first))
@@ -324,13 +324,13 @@ void CWeaponMagazined::UnloadMagazine(bool spawn_ammo)
 		return;
 	}
 
-	xr_map<const char*, U16>::iterator l_it;
+	xr_map<const char*, unsigned short>::iterator l_it;
 	for (l_it = l_ammo.begin( ); l_ammo.end( ) != l_it; ++l_it)
 	{
 		CWeaponAmmo* l_pA = smart_cast<CWeaponAmmo*>(m_pCurrentInventory->GetAny(l_it->first));
 		if (l_pA)
 		{
-			U16 l_free = l_pA->m_boxSize - l_pA->m_boxCurr;
+			unsigned short l_free = l_pA->m_boxSize - l_pA->m_boxCurr;
 			l_pA->m_boxCurr = l_pA->m_boxCurr + (l_free < l_it->second ? l_free : l_it->second);
 			l_it->second = l_it->second - (l_free < l_it->second ? l_free : l_it->second);
 		}

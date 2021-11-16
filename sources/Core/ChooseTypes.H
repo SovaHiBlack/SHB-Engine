@@ -58,11 +58,11 @@ struct SChooseEvents{
 	TOnChooseClose	    on_close;
 	Flags32				flags;
 						SChooseEvents	(){caption="Select Item";flags.zero();}
-						SChooseEvents	(LPCSTR capt, TOnChooseFillItems f, TOnChooseSelectItem s, TOnDrawThumbnail t, TOnChooseClose c, U32 fl)
+						SChooseEvents	(LPCSTR capt, TOnChooseFillItems f, TOnChooseSelectItem s, TOnDrawThumbnail t, TOnChooseClose c, unsigned int fl)
 	{
 		Set				(capt,f,s,t,c,fl);
 	}
-	void				Set				(LPCSTR capt, TOnChooseFillItems f, TOnChooseSelectItem s, TOnDrawThumbnail t, TOnChooseClose c, U32 fl)
+	void				Set				(LPCSTR capt, TOnChooseFillItems f, TOnChooseSelectItem s, TOnDrawThumbnail t, TOnChooseClose c, unsigned int fl)
 	{
 		caption			= capt;
 		on_fill			= f;

@@ -35,17 +35,17 @@ public:
 
 	//личное отношение (благосклонность) одного персонажа к другому - 
 	//величина от -100< (крайне враждебное) до >100 (очень дрюжелюбное)
-	CharacterGoodwill	 GetGoodwill(U16 from, U16 to) const;
-	void				 SetGoodwill(U16 from, U16 to, CharacterGoodwill goodwill);
-	void				 ChangeGoodwill(U16 from, U16 to, CharacterGoodwill delta_goodwill);
+	CharacterGoodwill	 GetGoodwill(unsigned short from, unsigned short to) const;
+	void				 SetGoodwill(unsigned short from, unsigned short to, CharacterGoodwill goodwill);
+	void				 ChangeGoodwill(unsigned short from, unsigned short to, CharacterGoodwill delta_goodwill);
 
 	//отношения группировки к персонажу (именно так, а не наоборот)
 	//т.е. персонаж сам помнит, как к нему какая группировка отностися
-	CharacterGoodwill	 GetCommunityGoodwill(CharacterCommunityIndex from_community, U16 to_character) const;
-	void				 SetCommunityGoodwill(CharacterCommunityIndex from_community, U16 to_character, CharacterGoodwill goodwill);
-	void				 ChangeCommunityGoodwill(CharacterCommunityIndex from_community, U16 to_character, CharacterGoodwill delta_goodwill);
+	CharacterGoodwill	 GetCommunityGoodwill(CharacterCommunityIndex from_community, unsigned short to_character) const;
+	void				 SetCommunityGoodwill(CharacterCommunityIndex from_community, unsigned short to_character, CharacterGoodwill goodwill);
+	void				 ChangeCommunityGoodwill(CharacterCommunityIndex from_community, unsigned short to_character, CharacterGoodwill delta_goodwill);
 
-	void				 ClearRelations(U16 person_id);
+	void				 ClearRelations(unsigned short person_id);
 
 private:
 	CharacterGoodwill	 GetCommunityRelation(CharacterCommunityIndex, CharacterCommunityIndex) const;
@@ -70,8 +70,8 @@ public:
 	struct SFightData
 	{
 		SFightData( );
-		U16					attacker;
-		U16					defender;
+		unsigned short					attacker;
+		unsigned short					defender;
 		float				total_hit;
 		u32					time;
 		u32					time_old;
@@ -92,7 +92,7 @@ public:
 	};
 
 	// зарегистрировать драку (реакция на Hit в EntityAlive)
-	void FightRegister(U16 attacker, U16 defender, ALife::ERelationType defender_to_attacker, float hit_amount);
+	void FightRegister(unsigned short attacker, unsigned short defender, ALife::ERelationType defender_to_attacker, float hit_amount);
 	void UpdateFightRegister( );
 
 private:
@@ -102,7 +102,7 @@ private:
 	static FightDataVec* m_fight_registry;
 	static FightDataVec& fight_registry( );
 
-	SFightData* FindFight(U16 object_id, bool by_attacker/* = true*/);
+	SFightData* FindFight(unsigned short object_id, bool by_attacker/* = true*/);
 	static SRelationMapSpots* m_spot_names;
 
 public:

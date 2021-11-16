@@ -78,7 +78,7 @@ void CStalkerAnimationManager::reload				(CStalker *_object)
 
 #ifdef USE_HEAD_BONE_PART_FAKE
 	VERIFY						(!m_data_storage->m_head_animations.A.empty());
-	U16							bone_part = m_skeleton_animated->LL_GetMotionDef(m_data_storage->m_head_animations.A.front())->bone_or_part;
+	unsigned short							bone_part = m_skeleton_animated->LL_GetMotionDef(m_data_storage->m_head_animations.A.front())->bone_or_part;
 	VERIFY						(bone_part != BI_NONE);
 	m_script_bone_part_mask		= CStalkerAnimationPair::all_bone_parts ^ (1 << bone_part);
 #endif

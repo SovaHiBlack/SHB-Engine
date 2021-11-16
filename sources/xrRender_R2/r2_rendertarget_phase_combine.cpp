@@ -10,11 +10,11 @@ void	CRenderTarget::phase_combine	()
 {
 	bool	_menu_pp	= g_pGamePersistent?g_pGamePersistent->OnRenderPPUI_query():false;
 
-	u32			Offset					= 0;
+	unsigned int			Offset					= 0;
 	Fvector2	p0,p1;
 
 	//*** exposure-pipeline
-	u32			gpu_id	= Device.dwFrame%2;
+	unsigned int			gpu_id	= Device.dwFrame%2;
 	{
 		t_LUM_src->surface_set		(rt_LUM_pool[gpu_id*2+0]->pSurface);
 		t_LUM_dest->surface_set		(rt_LUM_pool[gpu_id*2+1]->pSurface);
@@ -240,7 +240,7 @@ void	CRenderTarget::phase_combine	()
 		dbg_planes = saved_dbg_planes;
 	}
 
-	if (1) for (u32 it=0; it<dbg_planes.size(); it++)
+	if (1) for (unsigned int it=0; it<dbg_planes.size(); it++)
 	{
 		Fplane&		P	=	dbg_planes[it];
 		Fvector3		zero	;
@@ -276,7 +276,7 @@ void	CRenderTarget::phase_combine	()
 		dbg_lines = saved_dbg_lines;
 	}
 
-	if (1) for (u32 it=0; it<dbg_lines.size(); it++)
+	if (1) for (unsigned int it=0; it<dbg_lines.size(); it++)
 	{
 		RCache.dbg_DrawLINE		(Fidentity,dbg_lines[it].P0,dbg_lines[it].P1,dbg_lines[it].color);
 	}
@@ -285,17 +285,17 @@ void	CRenderTarget::phase_combine	()
 	// ********************* Debug
 	/*
 	if (0)		{
-		u32		C					= color_rgba	(255,255,255,255);
+		unsigned int		C					= color_rgba	(255,255,255,255);
 		float	_w					= float(Device.dwWidth)/3;
 		float	_h					= float(Device.dwHeight)/3;
 
 		// draw light-spheres
 #ifdef DEBUG
-		if (0) for (u32 it=0; it<dbg_spheres.size(); it++)
+		if (0) for (unsigned int it=0; it<dbg_spheres.size(); it++)
 		{
 			Fsphere				S	= dbg_spheres[it].first;
 			Fmatrix				M;	
-			u32				ccc		= dbg_spheres[it].second.get();
+			unsigned int				ccc		= dbg_spheres[it].second.get();
 			M.scale					(S.R,S.R,S.R);
 			M.translate_over		(S.P);
 			RCache.dbg_DrawEllipse	(M,ccc);
@@ -305,7 +305,7 @@ void	CRenderTarget::phase_combine	()
 		// Draw quater-screen quad textured with our direct-shadow-map-image
 		if (1) 
 		{
-			u32							IX=0,IY=1;
+			unsigned int							IX=0,IY=1;
 			p0.set						(.5f/_w, .5f/_h);
 			p1.set						((_w+.5f)/_w, (_h+.5f)/_h );
 
@@ -326,7 +326,7 @@ void	CRenderTarget::phase_combine	()
 		// Draw quater-screen quad textured with our accumulator
 		if (0)
 		{
-			u32							IX=1,IY=1;
+			unsigned int							IX=1,IY=1;
 			p0.set						(.5f/_w, .5f/_h);
 			p1.set						((_w+.5f)/_w, (_h+.5f)/_h );
 

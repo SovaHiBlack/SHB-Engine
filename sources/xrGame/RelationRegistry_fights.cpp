@@ -14,7 +14,7 @@ SRelationRegistry::SFightData::SFightData( )
 	defender_to_attacker = ALife::eRelationTypeDummy;
 }
 
-void SRelationRegistry::FightRegister(U16 attacker, U16 defender, ALife::ERelationType defender_to_attacker, float hit_amount)
+void SRelationRegistry::FightRegister(unsigned short attacker, unsigned short defender, ALife::ERelationType defender_to_attacker, float hit_amount)
 {
 	UpdateFightRegister( );
 
@@ -43,13 +43,13 @@ void SRelationRegistry::FightRegister(U16 attacker, U16 defender, ALife::ERelati
 	}
 }
 
-SRelationRegistry::SFightData* SRelationRegistry::FindFight(U16 object_id, bool by_attacker)
+SRelationRegistry::SFightData* SRelationRegistry::FindFight(unsigned short object_id, bool by_attacker)
 {
 	FightDataVec& fights = fight_registry( );
 	for (FightDataVec_it it = fights.begin( ); it != fights.end( ); it++)
 	{
 		SFightData& fight_data = *it;
-		U16 id_to_find = by_attacker ? fight_data.attacker : fight_data.defender;
+		unsigned short id_to_find = by_attacker ? fight_data.attacker : fight_data.defender;
 		if (object_id == id_to_find)
 		{
 			return &fight_data;

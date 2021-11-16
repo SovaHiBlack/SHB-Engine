@@ -7,7 +7,7 @@ public:
 	void			Optimize	();
 	virtual void	Unload		();
 
-	virtual void	transfer	(Fmatrix& mXform, fvfVertexOut* vDest, u32 C, U16* iDest, u32 iOffset);
-	virtual void	transfer	(Fmatrix& mXform, fvfVertexOut* vDest, u32 C, U16* iDest, u32 iOffset, float du, float dv);
+	virtual void	transfer	(Fmatrix& mXform, fvfVertexOut* vDest, u32 C, unsigned short* iDest, u32 iOffset);
+	virtual void	transfer	(Fmatrix& mXform, fvfVertexOut* vDest, u32 C, unsigned short* iDest, u32 iOffset, float du, float dv);
 	virtual			~CDetail	();
 };

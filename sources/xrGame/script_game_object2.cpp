@@ -58,7 +58,7 @@ void CScriptGameObject::explode	(u32 level_time)
 	}
 }
 
-bool CScriptGameObject::active_zone_contact		(U16 id)
+bool CScriptGameObject::active_zone_contact		(unsigned short id)
 {
 	CScriptZone		*script_zone = smart_cast<CScriptZone*>(&object());
 	if (!script_zone) {
@@ -146,7 +146,7 @@ void CScriptGameObject::Hit(CScriptHit *tpLuaHit)
 	SHit			HS;
 	HS.GenHeader(GE_HIT,object().ID());
 	THROW2			(tLuaHit.m_tpDraftsman,"Where is hit initiator??!");
-	HS.whoID  = U16(tLuaHit.m_tpDraftsman->ID());
+	HS.whoID  = unsigned short(tLuaHit.m_tpDraftsman->ID());
 	HS.weaponID = 0;
 	HS.dir = tLuaHit.m_tDirection;
 	HS.power = tLuaHit.m_fPower;

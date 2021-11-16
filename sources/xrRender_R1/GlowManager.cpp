@@ -97,7 +97,7 @@ void CGlowManager::Load		(IReader* fs)
 	// glows itself
 	u32 size	= fs->length();
 	R_ASSERT	(size);
-	u32 one		= 4*sizeof(float)+1*sizeof(U16);
+	u32 one		= 4*sizeof(float)+1*sizeof(unsigned short);
 	R_ASSERT	(size%one == 0);
 	u32 count	= size/one;
 	Glows.reserve(count);
@@ -110,7 +110,7 @@ void CGlowManager::Load		(IReader* fs)
 		G->spatial.sphere.set(G->position, G->radius);
 		G->direction.set	( 0,0,0 );
 
-		U16 S				= fs->r_u16();
+		unsigned short S				= fs->r_u16();
 		G->shader			= ::RImplementation.getShader(S);
 
 		G->fade				= 255.f;

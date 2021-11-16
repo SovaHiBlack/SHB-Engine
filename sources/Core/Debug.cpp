@@ -311,7 +311,7 @@ extern "C" BOOL __stdcall SetCrashHandlerFilter(PFNCHFILTFN pFn);
 
 static UnhandledExceptionFilterType* previous_filter = 0;
 
-void format_message(char* buffer, const U32& buffer_size)
+void format_message(char* buffer, const unsigned int& buffer_size)
 {
 	void* message;
 	DWORD error_code = GetLastError( );
@@ -447,7 +447,7 @@ static void invalid_parameter_handler(
 	const wchar_t* expression,
 	const wchar_t* function,
 	const wchar_t* file,
-	U32 line,
+	unsigned int line,
 	uintptr_t reserved
 )
 {

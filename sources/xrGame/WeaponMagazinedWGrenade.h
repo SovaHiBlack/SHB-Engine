@@ -38,7 +38,7 @@ public:
 	virtual void		state_Fire					(float dt);
 	virtual void		OnShot						( );
 	virtual void		SwitchState					(u32 S);
-	virtual void		OnEvent						(CNetPacket& P, U16 type);
+	virtual void		OnEvent						(CNetPacket& P, unsigned short type);
 	virtual void		ReloadMagazine				( );
 
 	virtual bool		Action						(int cmd, u32 flags);

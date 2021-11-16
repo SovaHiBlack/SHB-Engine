@@ -64,7 +64,7 @@ void	CalcGauss_wave(
 
 void CRenderTarget::phase_bloom	()
 {
-	u32		Offset;
+	unsigned int		Offset;
 
 	// Targets
 	u_setrt									( rt_Bloom_1,NULL,NULL,NULL );		// No need for ZBuffer at all

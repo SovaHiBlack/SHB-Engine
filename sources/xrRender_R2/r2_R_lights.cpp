@@ -2,8 +2,8 @@
 
 inline		bool	pred_area		(light* _1, light* _2)
 {
-	u32		a0		= _1->X.S.size;
-	u32		a1		= _2->X.S.size;
+	unsigned int		a0		= _1->X.S.size;
+	unsigned int		a1		= _2->X.S.size;
 	return	a0>a1;	// reverse -> descending
 }
 
@@ -12,10 +12,10 @@ void	CRender::render_lights	(light_Package& LP)
 	//////////////////////////////////////////////////////////////////////////
 	// Refactor order based on ability to pack shadow-maps
 	// 1. calculate area + sort in descending order
-	// const	U16		smap_unassigned		= U16(-1);
+	// const	unsigned short		smap_unassigned		= unsigned short(-1);
 	{
 		xr_vector<light*>&	source			= LP.v_shadowed;
-		for (u32 it=0; it<source.size(); it++)
+		for (unsigned int it=0; it<source.size(); it++)
 		{
 			light*	L		= source[it];
 			L->vis_update	();
@@ -33,13 +33,13 @@ void	CRender::render_lights	(light_Package& LP)
 		xr_vector<light*>&		source		= LP.v_shadowed;
 		xr_vector<light*>		refactored	;
 		refactored.reserve		(source.size());
-		u32						total		= source.size();
+		unsigned int						total		= source.size();
 
-		for		(U16 smap_ID=0; refactored.size()!=total; smap_ID++)
+		for		(unsigned short smap_ID=0; refactored.size()!=total; smap_ID++)
 		{
 			LP_smap_pool.initialize	(RImplementation.o.smapsize);
 			std::sort				(source.begin(),source.end(),pred_area);
-			for	(u32 test=0; test<source.size(); test++)
+			for	(unsigned int test=0; test<source.size(); test++)
 			{
 				light*	L	= source[test];
 				SMAP_Rect	R;
@@ -84,7 +84,7 @@ void	CRender::render_lights	(light_Package& LP)
 		Target->phase_smap_spot_clear	();
 		xr_vector<light*>&	source		= LP.v_shadowed;
 		light*		L		= source.back	()	;
-		U16			sid		= L->vis.smap_ID	;
+		unsigned short			sid		= L->vis.smap_ID	;
 		while (true)	
 		{
 			if	(source.empty())		break;
@@ -150,7 +150,7 @@ void	CRender::render_lights	(light_Package& LP)
 
 		//		if (was_spot_shadowed)		->	accum spot shadowed
 		if		(!L_spot_s.empty())		{ 
-			for (u32 it=0; it<L_spot_s.size(); it++)	{
+			for (unsigned int it=0; it<L_spot_s.size(); it++)	{
 				Target->accum_spot			(L_spot_s[it]);
 				render_indirect				(L_spot_s[it]);
 			}
@@ -161,7 +161,7 @@ void	CRender::render_lights	(light_Package& LP)
 	// Point lighting (unshadowed, if left)
 	if (!LP.v_point.empty())		{
 		xr_vector<light*>&	Lvec		= LP.v_point;
-		for	(u32 pid=0; pid<Lvec.size(); pid++)	{
+		for	(unsigned int pid=0; pid<Lvec.size(); pid++)	{
 			Lvec[pid]->vis_update		();
 			if (Lvec[pid]->vis.visible)	{
 				render_indirect			(Lvec[pid]);
@@ -174,7 +174,7 @@ void	CRender::render_lights	(light_Package& LP)
 	// Spot lighting (unshadowed, if left)
 	if (!LP.v_spot.empty())		{
 		xr_vector<light*>&	Lvec		= LP.v_spot;
-		for	(u32 pid=0; pid<Lvec.size(); pid++)	{
+		for	(unsigned int pid=0; pid<Lvec.size(); pid++)	{
 			Lvec[pid]->vis_update		();
 			if (Lvec[pid]->vis.visible)	{
 				LR.compute_xf_spot		(Lvec[pid]);
@@ -198,7 +198,7 @@ void	CRender::render_indirect			(light* L)
 	xr_vector<light_indirect>&	Lvec		= L->indirect;
 	if (Lvec.empty())						return;
 	float	LE								= L->color.intensity	();
-	for (u32 it=0; it<Lvec.size(); it++)	{
+	for (unsigned int it=0; it<Lvec.size(); it++)	{
 		light_indirect&	LI				= Lvec[it];
 
 		// energy and color

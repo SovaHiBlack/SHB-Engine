@@ -14,7 +14,7 @@ void	CRenderTarget::phase_accumulator()
 		// clear
 		u_setrt								(rt_Accumulator,		NULL,NULL,HW.pBaseZB);
 		dwLightMarkerID						= 5;					// start from 5, increment in 2 units
-		u32		clr4clear					= color_rgba(0,0,0,0);	// 0x00
+		unsigned int		clr4clear					= color_rgba(0,0,0,0);	// 0x00
 		CHK_DX	(HW.pDevice->Clear			( 0L, NULL, D3DCLEAR_TARGET, clr4clear, 1.0f, 0L));
 
 		// Render emissive geometry, stencil - write 0x0 at pixel pos

@@ -15,8 +15,8 @@ Flags32	psSoundFlags			= {ss_Hardware | ss_EAX};
 float	psSoundOcclusionScale	= 0.5f;
 float	psSoundCull				= 0.01f;
 float	psSoundRolloff			= 0.75f;
-u32		psSoundFreq				= sf_44K;
-u32		psSoundModel			= 0;
+unsigned int		psSoundFreq				= sf_44K;
+unsigned int		psSoundModel			= 0;
 float	psSoundVEffects			= 1.0f;
 float	psSoundVFactor			= 1.0f;
 
@@ -81,12 +81,12 @@ void CSoundRender_Core::_clear	()
 	env_unload					();
 
 	// remove sources
-	for (u32 sit=0; sit<s_sources.size(); sit++)
+	for (unsigned int sit=0; sit<s_sources.size(); sit++)
 		xr_delete				(s_sources[sit]);
 	s_sources.clear				();
 	
 	// remove emmiters
-	for (u32 eit=0; eit<s_emitters.size(); eit++)
+	for (unsigned int eit=0; eit<s_emitters.size(); eit++)
 		xr_delete				(s_emitters[eit]);
 	s_emitters.clear			();
 
@@ -95,7 +95,7 @@ void CSoundRender_Core::_clear	()
 
 void CSoundRender_Core::stop_emitters()
 {
-	for (u32 eit=0; eit<s_emitters.size(); eit++)
+	for (unsigned int eit=0; eit<s_emitters.size(); eit++)
 		s_emitters[eit]->stop	(FALSE);
 }
 
@@ -104,7 +104,7 @@ int CSoundRender_Core::pause_emitters(bool val)
 	m_iPauseCounter				+= val?+1:-1;
 	VERIFY						(m_iPauseCounter>=0);
 
-	for (u32 it=0; it<s_emitters.size(); it++)
+	for (unsigned int it=0; it<s_emitters.size(); it++)
 		((CSoundRender_Emitter*)s_emitters[it])->pause	(val,val?m_iPauseCounter:m_iPauseCounter+1);
 
 	return m_iPauseCounter;
@@ -160,7 +160,7 @@ void CSoundRender_Core::set_geometry_som(IReader* I)
 
 	// check version
 	R_ASSERT		(I->find_chunk(0));
-	u32 version		= I->r_u32(); 
+	unsigned int version		= I->r_u32();
 	VERIFY2			(version==0,"Invalid SOM version");
 	// load geometry	
 	IReader* geom	= I->open_chunk(1); 
@@ -170,7 +170,7 @@ void CSoundRender_Core::set_geometry_som(IReader* I)
 		Fvector3	v1;
 		Fvector3	v2;
 		Fvector3	v3;
-		u32			b2sided;
+		unsigned int			b2sided;
 		float		occ;
 	};
 	// Create AABB-tree
@@ -178,9 +178,9 @@ void CSoundRender_Core::set_geometry_som(IReader* I)
 	while (!geom->eof()){
 		SOM_poly				P;
 		geom->r					(&P,sizeof(P));
-		CL.add_face_packed_D	(P.v1,P.v2,P.v3,*(u32*)&P.occ,0.01f);
+		CL.add_face_packed_D	(P.v1,P.v2,P.v3,*(unsigned int*)&P.occ,0.01f);
 		if (P.b2sided)
-			CL.add_face_packed_D(P.v3,P.v2,P.v1,*(u32*)&P.occ,0.01f);
+			CL.add_face_packed_D(P.v3,P.v2,P.v1,*(unsigned int*)&P.occ,0.01f);
 	}
 	geom_SOM			= xr_new<CDB::MODEL> ();
 	geom_SOM->build		(CL.getV(),int(CL.getVS()),CL.getT(),int(CL.getTS()));
@@ -194,7 +194,7 @@ void CSoundRender_Core::set_geometry_env(IReader* I)
 	if (0==s_environment)	return;
 
 	// Assosiate names
-	xr_vector<U16>			ids;
+	xr_vector<unsigned short>			ids;
 	IReader*				names	= I->open_chunk(0);
 	while (!names->eof())
 	{
@@ -202,7 +202,7 @@ void CSoundRender_Core::set_geometry_env(IReader* I)
 		names->r_stringZ	(n,sizeof(n));
 		int id				= s_environment->GetID(n);
 		R_ASSERT			(id>=0);
-		ids.push_back		(U16(id));
+		ids.push_back		(unsigned short(id));
 	}
 	names->close		();
 
@@ -219,14 +219,14 @@ void CSoundRender_Core::set_geometry_env(IReader* I)
 	geom->r				(&H,sizeof(hdrCFORM));
 	Fvector3*	verts	= (Fvector3*)geom->pointer();
 	CDB::TRI*	tris	= (CDB::TRI*)(verts+H.vertcount);
-	for (u32 it=0; it<H.facecount; it++)
+	for (unsigned int it=0; it<H.facecount; it++)
 	{
 		CDB::TRI*	T	= tris+it;
-		U16		id_front= (U16)((T->dummy&0x0000ffff)>>0);		//	front face
-		U16		id_back	= (U16)((T->dummy&0xffff0000)>>16);		//	back face
-		R_ASSERT		(id_front<(U16)ids.size());
-		R_ASSERT		(id_back<(U16)ids.size());
-		T->dummy		= u32(ids[id_back]<<16) | u32(ids[id_front]);
+		unsigned short		id_front= (unsigned short)((T->dummy&0x0000ffff)>>0);		//	front face
+		unsigned short		id_back	= (unsigned short)((T->dummy&0xffff0000)>>16);		//	back face
+		R_ASSERT		(id_front<(unsigned short)ids.size());
+		R_ASSERT		(id_back<(unsigned short)ids.size());
+		T->dummy		= unsigned int(ids[id_back]<<16) | unsigned int(ids[id_front]);
 	}
 
 	geom_ENV			= xr_new<CDB::MODEL> ();
@@ -271,7 +271,7 @@ void	CSoundRender_Core::clone				( ref_sound& S, const ref_sound& from, esound_t
 	S._p->s_type		= sound_type;
 }
 
-void	CSoundRender_Core::play					( ref_sound& S, CObject* O, u32 flags, float delay)
+void	CSoundRender_Core::play					( ref_sound& S, CObject* O, unsigned int flags, float delay)
 {
 	if (!bPresent || 0==S._handle())return;
 	verify_refsound		(S);
@@ -281,7 +281,7 @@ void	CSoundRender_Core::play					( ref_sound& S, CObject* O, u32 flags, float de
 	if (flags&sm_2D)	S._feedback()->switch_to_2D();
 }
 
-void	CSoundRender_Core::play_no_feedback		( ref_sound& S, CObject* O, u32 flags, float delay, Fvector3* pos, float* vol, float* freq, Fvector2* range)
+void	CSoundRender_Core::play_no_feedback		( ref_sound& S, CObject* O, unsigned int flags, float delay, Fvector3* pos, float* vol, float* freq, Fvector2* range)
 {
 	if (!bPresent || 0==S._handle())return;
 	verify_refsound		(S);
@@ -299,7 +299,7 @@ void	CSoundRender_Core::play_no_feedback		( ref_sound& S, CObject* O, u32 flags,
 	S._p				= orig;
 }
 
-void	CSoundRender_Core::play_at_pos			( ref_sound& S, CObject* O, const Fvector3& pos, u32 flags, float delay)
+void	CSoundRender_Core::play_at_pos			( ref_sound& S, CObject* O, const Fvector3& pos, unsigned int flags, float delay)
 {
 	if (!bPresent || 0==S._handle())return;
 	verify_refsound		(S);
@@ -364,10 +364,10 @@ CSoundRender_Environment*	CSoundRender_Core::get_environment			( const Fvector3&
 				tri_norm.mknormal		(V[T->verts[0]],V[T->verts[1]],V[T->verts[2]]);
 				float	dot				= dir.dotproduct(tri_norm);
 				if (dot<0){
-					U16		id_front	= (U16)((T->dummy&0x0000ffff)>>0);		//	front face
+					unsigned short		id_front	= (unsigned short)((T->dummy&0x0000ffff)>>0);		//	front face
 					return	s_environment->Get(id_front);
 				}else{
-					U16		id_back		= (U16)((T->dummy&0xffff0000)>>16);	//	back face
+					unsigned short		id_back		= (unsigned short)((T->dummy&0xffff0000)>>16);	//	back face
 					return	s_environment->Get(id_back);
 				}
 			}else{
@@ -386,7 +386,7 @@ void						CSoundRender_Core::env_apply		()
 /*
 	// Force all sounds to change their environment
 	// (set their positions to signal changes in environment)
-	for (u32 it=0; it<s_emitters.size(); it++)
+	for (unsigned int it=0; it<s_emitters.size(); it++)
 	{
 		CSoundRender_Emitter*	pEmitter	= s_emitters[it];
 		const CSound_params*	pParams		= pEmitter->get_params	();
@@ -419,7 +419,7 @@ void	CSoundRender_Core::i_eax_listener_set	(CSound_environment* _E)
 	ep.flAirAbsorptionHF		= E->AirAbsorptionHF			;	// change in level per meter at 5 kHz
 	ep.dwFlags					= EAXLISTENER_DEFAULTFLAGS		;	// modifies the behavior of properties
 
-	u32 deferred				= bDeferredEAX?DSPROPERTY_EAXLISTENER_DEFERRED:0;
+	unsigned int deferred				= bDeferredEAX?DSPROPERTY_EAXLISTENER_DEFERRED:0;
 	
 	i_eax_set(&DSPROPSETID_EAX_ListenerProperties, deferred | DSPROPERTY_EAXLISTENER_ROOM, 					&ep.lRoom,					sizeof(LONG));
 	i_eax_set(&DSPROPSETID_EAX_ListenerProperties, deferred | DSPROPERTY_EAXLISTENER_ROOMHF, 				&ep.lRoomHF,				sizeof(LONG));
@@ -465,7 +465,7 @@ void CSoundRender_Core::i_eax_commit_setting()
 void CSoundRender_Core::object_relcase( CObject* obj )
 {
 	if (obj){
-		for (u32 eit=0; eit<s_emitters.size(); eit++){
+		for (unsigned int eit=0; eit<s_emitters.size(); eit++){
 			if (s_emitters[eit])
 				if (s_emitters[eit]->owner_data)
 					if (obj==s_emitters[eit]->owner_data->g_object)

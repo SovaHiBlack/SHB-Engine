@@ -114,8 +114,8 @@ public:
 	{
 		return m_GameMaps;
 	};
-	CUICustomMap*				GetMapByIdx					(U16 idx);
-	U16							GetIdxByName				(const CSharedString& map_name);
+	CUICustomMap*				GetMapByIdx					(unsigned short idx);
+	unsigned short							GetIdxByName				(const CSharedString& map_name);
 	void						UpdateScroll				( );
 	CSharedString					cName						( ) const
 	{

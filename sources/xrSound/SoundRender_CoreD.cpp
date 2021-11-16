@@ -18,7 +18,7 @@ CSoundRender_CoreD::~CSoundRender_CoreD()
 {
 }
 
-BOOL CSoundRender_CoreD::EAXQuerySupport(const GUID* guid, u32 prop)
+BOOL CSoundRender_CoreD::EAXQuerySupport(const GUID* guid, unsigned int prop)
 {
 	ULONG ulSupport = 0;
 	HRESULT hr = pExtensions->QuerySupport(*guid, prop, &ulSupport);
@@ -33,7 +33,7 @@ BOOL CSoundRender_CoreD::EAXQuerySupport(const GUID* guid, u32 prop)
 BOOL CSoundRender_CoreD::EAXTestSupport	(BOOL bDeferred)
 {
 	BOOL support 	= TRUE;
-	u32 ext			= bDeferred?DSPROPERTY_EAXLISTENER_DEFERRED:0;
+	unsigned int ext			= bDeferred?DSPROPERTY_EAXLISTENER_DEFERRED:0;
 	if (!EAXQuerySupport(&DSPROPSETID_EAX_ListenerProperties, ext | DSPROPERTY_EAXLISTENER_NONE)) 					support = FALSE;
 	if (!EAXQuerySupport(&DSPROPSETID_EAX_ListenerProperties, ext | DSPROPERTY_EAXLISTENER_ALLPARAMETERS)) 			support = FALSE;
 	if (!EAXQuerySupport(&DSPROPSETID_EAX_ListenerProperties, ext | DSPROPERTY_EAXLISTENER_ROOM)) 					support = FALSE;
@@ -151,8 +151,8 @@ void CSoundRender_CoreD::_initialize	(U64 window)
 	inherited::_initialize		(window);
 
 	// Pre-create targets
-	CSoundRender_Target*	T	= 0;
-	for (u32 tit=0; tit<u32(psSoundTargets); tit++)
+	CSoundRender_Target*	T	= nullptr;
+	for (unsigned int tit=0; tit<unsigned int(psSoundTargets); tit++)
 	{
 		T						= xr_new<CSoundRender_TargetD>();
 		T->_initialize			();	
@@ -176,7 +176,7 @@ void CSoundRender_CoreD::_clear	()
 
 	// remove targets
 	CSoundRender_Target*	T	= 0;
-	for (u32 tit=0; tit<s_targets.size(); tit++)
+	for (unsigned int tit=0; tit<s_targets.size(); tit++)
 	{
 		T						= s_targets[tit];
 		T->_destroy				();
@@ -189,12 +189,12 @@ void CSoundRender_CoreD::_clear	()
 	_RELEASE					( pDevice		);
 }
 
-void	CSoundRender_CoreD::i_eax_set			(const GUID* guid, u32 prop, void* val, u32 sz)
+void	CSoundRender_CoreD::i_eax_set			(const GUID* guid, unsigned int prop, void* val, unsigned int sz)
 {
 	VERIFY	(pExtensions);
 	R_CHK	(pExtensions->Set		(*guid, prop, NULL, 0, val, sz));
 }
-void	CSoundRender_CoreD::i_eax_get			(const GUID* guid, u32 prop, void* val, u32 sz)
+void	CSoundRender_CoreD::i_eax_get			(const GUID* guid, unsigned int prop, void* val, unsigned int sz)
 {
 	unsigned long total_bytes;
 	VERIFY	(pExtensions);

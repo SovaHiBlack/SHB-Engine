@@ -126,8 +126,8 @@ void CWeapon::UpdateXForm( )
 		}
 
 		V->CalculateBones( );
-		Fmatrix& mL = V->LL_GetTransform(U16(boneL));
-		Fmatrix& mR = V->LL_GetTransform(U16(boneR));
+		Fmatrix& mL = V->LL_GetTransform(unsigned short(boneL));
+		Fmatrix& mR = V->LL_GetTransform(unsigned short(boneR));
 		// Calculate
 		Fmatrix				mRes;
 		Fvector3			R;
@@ -172,7 +172,7 @@ void CWeapon::UpdateFireDependencies_internal( )
 			V->CalculateBones( );
 
 			// fire point&direction
-			Fmatrix& fire_mat = V->LL_GetTransform(U16(m_pHUD->FireBone( )));
+			Fmatrix& fire_mat = V->LL_GetTransform(unsigned short(m_pHUD->FireBone( )));
 			Fmatrix& parent = m_pHUD->Transform( );
 
 			const Fvector3& fp = m_pHUD->FirePoint( );
@@ -556,7 +556,7 @@ void CWeapon::net_Export(CNetPacket& P)
 
 	unsigned char need_upd = IsUpdating( ) ? 1 : 0;
 	P.w_u8(need_upd);
-	P.w_u16(U16(iAmmoElapsed));
+	P.w_u16(unsigned short(iAmmoElapsed));
 	P.w_u8(m_flagsAddOnState);
 	P.w_u8((unsigned char) m_ammoType);
 	P.w_u8((unsigned char) GetState( ));
@@ -572,7 +572,7 @@ void CWeapon::net_Import(CNetPacket& P)
 	unsigned char flags = 0;
 	P.r_u8(flags);
 
-	U16 ammo_elapsed = 0;
+	unsigned short ammo_elapsed = 0;
 	P.r_u16(ammo_elapsed);
 
 	unsigned char NewAddonState;
@@ -656,7 +656,7 @@ void CWeapon::load(IReader& input_packet)
 	}
 }
 
-void CWeapon::OnEvent(CNetPacket& P, U16 type)
+void CWeapon::OnEvent(CNetPacket& P, unsigned short type)
 {
 	switch (type)
 	{
@@ -983,7 +983,7 @@ void CWeapon::SpawnAmmo(u32 boxCurr, const char* ammoSect, u32 ParentID)
 	{
 		CSE_ALifeItemAmmo* l_pA = smart_cast<CSE_ALifeItemAmmo*>(D);
 		R_ASSERT(l_pA);
-		l_pA->m_boxSize = (U16) pSettings->r_s32(ammoSect, "box_size");
+		l_pA->m_boxSize = (unsigned short) pSettings->r_s32(ammoSect, "box_size");
 		D->s_name = ammoSect;
 		D->set_name_replace("");
 		D->s_gameid = unsigned char(GameID( ));
@@ -991,11 +991,11 @@ void CWeapon::SpawnAmmo(u32 boxCurr, const char* ammoSect, u32 ParentID)
 		D->ID = 0xffff;
 		if (ParentID == 0xffffffff)
 		{
-			D->ID_Parent = (U16) H_Parent( )->ID( );
+			D->ID_Parent = (unsigned short) H_Parent( )->ID( );
 		}
 		else
 		{
-			D->ID_Parent = (U16) ParentID;
+			D->ID_Parent = (unsigned short) ParentID;
 		}
 
 		D->ID_Phantom = 0xffff;
@@ -1010,7 +1010,7 @@ void CWeapon::SpawnAmmo(u32 boxCurr, const char* ammoSect, u32 ParentID)
 
 		while (boxCurr)
 		{
-			l_pA->a_elapsed = (U16) (boxCurr > l_pA->m_boxSize ? l_pA->m_boxSize : boxCurr);
+			l_pA->a_elapsed = (unsigned short) (boxCurr > l_pA->m_boxSize ? l_pA->m_boxSize : boxCurr);
 			CNetPacket P;
 			D->Spawn_Write(P, TRUE);
 			Level( ).Send(P, net_flags(TRUE));
@@ -1196,7 +1196,7 @@ void CWeapon::UpdateHUDAddonsVisibility( )
 		return;
 	}
 
-	U16 bone_id;
+	unsigned short bone_id;
 	bone_id = pHudVisual->LL_BoneID(wpn_scope);
 	if (ScopeAttachable( ))
 	{
@@ -1294,7 +1294,7 @@ void CWeapon::UpdateAddonsVisibility( )
 {
 	CKinematics* pWeaponVisual = smart_cast<CKinematics*>(Visual( )); R_ASSERT(pWeaponVisual);
 
-	U16 bone_id;
+	unsigned short bone_id;
 	UpdateHUDAddonsVisibility( );
 
 	bone_id = pWeaponVisual->LL_BoneID(wpn_scope);

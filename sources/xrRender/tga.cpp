@@ -27,8 +27,8 @@ void TGAdesc::maketga( IWriter& fs ){
 	tgaHeader hdr;
 	ZeroMemory( &hdr, sizeof(hdr) );
 	hdr.tgaImgType			= 2;
-	hdr.tgaImgSpec.tgaXSize = U16(width);
-	hdr.tgaImgSpec.tgaYSize = U16(height);
+	hdr.tgaImgSpec.tgaXSize = unsigned short(width);
+	hdr.tgaImgSpec.tgaYSize = unsigned short(height);
 
 	if( format == IMG_24B ){
 		hdr.tgaImgSpec.tgaDepth = 24;
@@ -81,8 +81,8 @@ void TGAdesc::maketga( int hf ){
 	tgaHeader hdr;
 	ZeroMemory( &hdr, sizeof(hdr) );
 	hdr.tgaImgType			= 2;
-	hdr.tgaImgSpec.tgaXSize = U16(width);
-	hdr.tgaImgSpec.tgaYSize = U16(height);
+	hdr.tgaImgSpec.tgaXSize = unsigned short(width);
+	hdr.tgaImgSpec.tgaYSize = unsigned short(height);
 
 	if( format == IMG_24B ){
 		hdr.tgaImgSpec.tgaDepth = 24;

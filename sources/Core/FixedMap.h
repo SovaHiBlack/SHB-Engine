@@ -19,17 +19,17 @@ public:
 
 private:
 	TNode* nodes;
-	U32			pool;
-	U32			limit;
+	unsigned int			pool;
+	unsigned int			limit;
 
-	inline U32	Size(U32 Count)
+	inline unsigned int	Size(unsigned int Count)
 	{
 		return Count * sizeof(TNode);
 	}
 
 	void		Realloc( )
 	{
-		U32	newLimit = limit + SG_REALLOC_ADVANCE;
+		unsigned int	newLimit = limit + SG_REALLOC_ADVANCE;
 		VERIFY(newLimit % SG_REALLOC_ADVANCE == 0);
 		TNode* newNodes = (TNode*) allocator::alloc(sizeof(TNode) * newLimit);
 		VERIFY(newNodes);
@@ -37,7 +37,7 @@ private:
 		ZeroMemory(newNodes, Size(newLimit));
 		if (limit) CopyMemory(newNodes, nodes, Size(limit));
 
-		for (U32 I = 0; I < pool; I++)
+		for (unsigned int I = 0; I < pool; I++)
 		{
 			VERIFY(nodes);
 			TNode* Nold = nodes + I;
@@ -233,7 +233,7 @@ once_more:
 	{
 		if (nodes) allocator::dealloc(nodes); nodes = 0; pool = 0; limit = 0;
 	}
-	inline U32		allocated( )
+	inline unsigned int		allocated( )
 	{
 		return this->limit;
 	}
@@ -253,7 +253,7 @@ once_more:
 	{
 		return nodes + limit;
 	}	// for setup only
-	inline U32		size( )
+	inline unsigned int		size( )
 	{
 		return pool;
 	}

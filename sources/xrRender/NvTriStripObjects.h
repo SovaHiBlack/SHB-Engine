@@ -99,7 +99,7 @@ typedef xr_list  <NvFaceInfo*>     NvFaceInfoList;
 typedef xr_list  <NvFaceInfoVec*>  NvStripList;
 typedef xr_vector<NvEdgeInfo*>     NvEdgeInfoVec;
 
-typedef xr_vector<U16>			WordVec;
+typedef xr_vector<unsigned short>			WordVec;
 typedef xr_vector<int>			IntVec;
 typedef xr_vector<MyVertex>		MyVertexVec;
 typedef xr_vector<MyFace>		MyFaceVec;

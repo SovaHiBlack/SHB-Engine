@@ -18,7 +18,7 @@ CSoundRender_CoreA::~CSoundRender_CoreA	()
 {
 }
 
-BOOL CSoundRender_CoreA::EAXQuerySupport(BOOL bDeferred, const GUID* guid, u32 prop, void* val, u32 sz)
+BOOL CSoundRender_CoreA::EAXQuerySupport(BOOL bDeferred, const GUID* guid, unsigned int prop, void* val, unsigned int sz)
 {
 	if (AL_NO_ERROR!=eaxGet(guid, prop, 0, val, sz)) return FALSE;
 	if (AL_NO_ERROR!=eaxSet(guid, (bDeferred?DSPROPERTY_EAXLISTENER_DEFERRED:0) | prop, 0, val, sz)) return FALSE;
@@ -127,7 +127,7 @@ void CSoundRender_CoreA::_initialize	(U64 window)
 
 	// Pre-create targets
 	CSoundRender_Target*	T	= 0;
-	for (u32 tit=0; tit<u32(psSoundTargets); tit++)
+	for (unsigned int tit=0; tit<unsigned int(psSoundTargets); tit++)
 	{
 		T						=	xr_new<CSoundRender_TargetA>();
 		if (T->_initialize()){	
@@ -153,7 +153,7 @@ void CSoundRender_CoreA::_clear	()
 	inherited::_clear			();
 	// remove targets
 	CSoundRender_Target*	T	= 0;
-	for (u32 tit=0; tit<s_targets.size(); tit++)
+	for (unsigned int tit=0; tit<s_targets.size(); tit++)
 	{
 		T						= s_targets[tit];
 		T->_destroy				();
@@ -167,11 +167,11 @@ void CSoundRender_CoreA::_clear	()
 	xr_delete					(pDeviceList);
 }
 
-void	CSoundRender_CoreA::i_eax_set			(const GUID* guid, u32 prop, void* val, u32 sz)
+void	CSoundRender_CoreA::i_eax_set			(const GUID* guid, unsigned int prop, void* val, unsigned int sz)
 {
 	eaxSet	     			 	(guid, prop, 0, val, sz);
 }
-void	CSoundRender_CoreA::i_eax_get			(const GUID* guid, u32 prop, void* val, u32 sz)
+void	CSoundRender_CoreA::i_eax_get			(const GUID* guid, unsigned int prop, void* val, unsigned int sz)
 {
 	eaxGet	    		  	    (guid, prop, 0, val, sz);
 }

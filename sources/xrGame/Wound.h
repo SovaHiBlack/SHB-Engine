@@ -10,7 +10,7 @@ class CNetPacket;
 class CWound
 {
 public:
-	CWound(U16 bone_num);
+	CWound(unsigned short bone_num);
 	virtual ~CWound( );
 
 	//serialization
@@ -25,20 +25,20 @@ public:
 
 	//заживление раны
 	void	Incarnation(float percent, float min_wound_size);
-	U16		GetBoneNum( )
+	unsigned short		GetBoneNum( )
 	{
 		return m_iBoneNum;
 	}
-	void 	SetBoneNum(U16 bone_num)
+	void 	SetBoneNum(unsigned short bone_num)
 	{
 		m_iBoneNum = bone_num;
 	}
 
-	U16		GetParticleBoneNum( )
+	unsigned short		GetParticleBoneNum( )
 	{
 		return m_iParticleBoneNum;
 	}
-	void	SetParticleBoneNum(U16 bone_num)
+	void	SetParticleBoneNum(unsigned short bone_num)
 	{
 		m_iParticleBoneNum = bone_num;
 	}
@@ -66,10 +66,10 @@ public:
 
 protected:
 	//косточка на которой появилась рана
-	U16 m_iBoneNum;
+	unsigned short m_iBoneNum;
 
 	//косточка, если на ране отыгрывается партикл
-	U16 m_iParticleBoneNum;
+	unsigned short m_iParticleBoneNum;
 	//имя этого партикла
 	CSharedString m_sParticleName;
 

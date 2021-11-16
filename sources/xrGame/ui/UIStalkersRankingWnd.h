@@ -38,7 +38,7 @@ public:
 	{
 		return *UIList;
 	}
-	void					ShowHumanInfo						(U16 id);
+	void					ShowHumanInfo						(unsigned short id);
 	virtual void			Reset								( );
 };
 
@@ -48,7 +48,7 @@ class CUIStalkerRankingInfoItem : public CUIWindow, public CUISelectable
 	u32															m_stored_alpha;
 
 public:
-	U16															m_humanID;
+	unsigned short															m_humanID;
 	CUIStatic*													m_text1;
 	CUIStatic*													m_text2;
 	CUIStatic*													m_text3;

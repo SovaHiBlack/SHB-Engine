@@ -13,7 +13,7 @@ public:
 	virtual			~CWeaponRG6( );
 	virtual BOOL	net_Spawn(CSE_Abstract* DC);
 	virtual void	Load(const char* section);
-	virtual void	OnEvent(CNetPacket& P, U16 type);
+	virtual void	OnEvent(CNetPacket& P, unsigned short type);
 
 protected:
 	virtual void	FireStart( );

@@ -13,7 +13,7 @@ public:
 
 private:
 	value_type	array[dim];
-	U32			count;
+	unsigned int			count;
 
 public:
 	svector( ) : count(0)
@@ -39,7 +39,7 @@ public:
 	{
 		return array + count;
 	}
-	inline U32		size( )		const
+	inline unsigned int		size( )		const
 	{
 		return count;
 	}
@@ -63,11 +63,11 @@ public:
 		VERIFY(count); count--;
 	}
 
-	inline reference		operator[] (U32 id)
+	inline reference		operator[] (unsigned int id)
 	{
 		VERIFY(id < count); return array[id];
 	}
-	inline const_reference	operator[] (U32 id)	const
+	inline const_reference	operator[] (unsigned int id)	const
 	{
 		VERIFY(id < count); return array[id];
 	}
@@ -105,19 +105,19 @@ public:
 		return 0 == count;
 	}
 
-	inline void		erase(U32 id)
+	inline void		erase(unsigned int id)
 	{
 		VERIFY(id < count);
 		count--;
-		for (U32 i = id; i < count; i++)
+		for (unsigned int i = id; i < count; i++)
 			array[i] = array[i + 1];
 	}
 	inline void		erase(iterator it)
 	{
-		erase(U32(it - begin( )));
+		erase(unsigned int(it - begin( )));
 	}
 
-	inline void		insert(U32 id, reference V)
+	inline void		insert(unsigned int id, reference V)
 	{
 		VERIFY(id < count);
 		for (int i = count; i > int(id); i--)	array[i] = array[i - 1];
@@ -135,7 +135,7 @@ public:
 			return FALSE;
 		}
 
-		for (U32 cmp = 0; cmp < size( ); cmp++)
+		for (unsigned int cmp = 0; cmp < size( ); cmp++)
 		{
 			if ((*this)[cmp] != base[cmp])
 			{

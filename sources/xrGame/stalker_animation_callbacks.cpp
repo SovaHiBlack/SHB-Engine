@@ -88,11 +88,11 @@ void CStalkerAnimationManager::assign_bone_callbacks	()
 	const char* section = *object().cNameSect();
 	
 	int								head_bone = kinematics->LL_BoneID(pSettings->r_string(section,"bone_head"));
-	kinematics->LL_GetBoneInstance	(U16(head_bone)).set_callback(bctCustom,&head::callback,&object());
+	kinematics->LL_GetBoneInstance	(unsigned short(head_bone)).set_callback(bctCustom,&head::callback,&object());
 
 	int								shoulder_bone = kinematics->LL_BoneID(pSettings->r_string(section,"bone_shoulder"));
-	kinematics->LL_GetBoneInstance	(U16(shoulder_bone)).set_callback(bctCustom,&shoulder::callback,&object());
+	kinematics->LL_GetBoneInstance	(unsigned short(shoulder_bone)).set_callback(bctCustom,&shoulder::callback,&object());
 
 	int								spin_bone = kinematics->LL_BoneID(pSettings->r_string(section,"bone_spin"));
-	kinematics->LL_GetBoneInstance	(U16(spin_bone)).set_callback(bctCustom,&spine::callback,&object());
+	kinematics->LL_GetBoneInstance	(unsigned short(spin_bone)).set_callback(bctCustom,&spine::callback,&object());
 }

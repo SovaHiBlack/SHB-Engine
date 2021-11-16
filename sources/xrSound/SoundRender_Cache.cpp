@@ -43,12 +43,12 @@ void	CSoundRender_Cache::move2top	(cache_line* line)
 	VERIFY						(c_end->next	== NULL);
 }
 
-BOOL	CSoundRender_Cache::request		(cache_cat& cat, u32 id)
+BOOL	CSoundRender_Cache::request		(cache_cat& cat, unsigned int id)
 {
 	// 1. check if cached version available
 	id				%= cat.size;
 //.	R_ASSERT		(id<cat.size);
-	U16&	cptr	= cat.table[id];
+	unsigned short&	cptr	= cat.table[id];
 	if (CAT_FREE != cptr)	{
 		// cache line exists - change it's priority and return
 		_stat_hit		++;
@@ -73,7 +73,7 @@ BOOL	CSoundRender_Cache::request		(cache_cat& cat, u32 id)
 	return			TRUE;
 }
 
-void	CSoundRender_Cache::initialize	(u32 _total_kb_approx, u32 bytes_per_line)
+void	CSoundRender_Cache::initialize	(unsigned int _total_kb_approx, unsigned int bytes_per_line)
 {
 	// use twice the requisted memory (to avoid bad configs)
 	_total_kb_approx	*=	2;
@@ -96,7 +96,7 @@ void	CSoundRender_Cache::initialize	(u32 _total_kb_approx, u32 bytes_per_line)
 void	CSoundRender_Cache::disconnect	()
 {
 	// disconnect from CATs
-	for (u32 it=0; it<_count; it++)
+	for (unsigned int it=0; it<_count; it++)
 	{
 		cache_line*		L	= c_storage+it;
 		if (L->loopback)	{
@@ -109,14 +109,14 @@ void	CSoundRender_Cache::disconnect	()
 void	CSoundRender_Cache::format		()
 {
 	// format structs
-	for (u32 it=0; it<_count; it++)
+	for (unsigned int it=0; it<_count; it++)
 	{
 		cache_line*		L	= c_storage+it;
 		L->prev				= (0==it)				? NULL : c_storage+it-1;
 		L->next				= ((_count-1) == it)	? NULL : c_storage+it+1;
 		L->data				= data + it*_line;
 		L->loopback			= NULL;
-		L->id				= U16(it);
+		L->id				= unsigned short(it);
 	}
 
 	// start-end
@@ -142,12 +142,12 @@ void	CSoundRender_Cache::destroy		()
 	_count		= 0;
 }
 
-void	CSoundRender_Cache::cat_create	(cache_cat& cat, u32 bytes)
+void	CSoundRender_Cache::cat_create	(cache_cat& cat, unsigned int bytes)
 {
 	cat.size			=	bytes / _line;
 	if	(bytes%_line)	cat.size += 1;
-	u32 allocsize		=	(cat.size&1)?cat.size+1:cat.size;
-	cat.table			=	xr_alloc<U16>(allocsize);
+	unsigned int allocsize		=	(cat.size&1)?cat.size+1:cat.size;
+	cat.table			=	xr_alloc<unsigned short>(allocsize);
 	Memory.mem_fill32	(cat.table,0xffffffff,allocsize/2);
 }
 

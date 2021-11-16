@@ -376,7 +376,7 @@ struct	DumbClipper
 		result.invalidate		();
 		for (int it=0; it<int(src.size()); it++)		{
 			Fbox3&			bb		= src	[it];
-			u32				mask	= frustum.getMask	();
+			unsigned int				mask	= frustum.getMask	();
 			EFC_Visible		res		= frustum.testAABB	(&bb.min.x,mask);
 			switch	(res)	
 			{
@@ -428,7 +428,7 @@ D3DXVECTOR2 BuildTSMProjectionMatrix_caster_depth_bounds(D3DXMATRIX& lightSpaceB
 	D3DXMATRIX	minmax_xf;
 	D3DXMatrixMultiply	(&minmax_xf,(D3DXMATRIX*)&Device.mView,&lightSpaceBasis);
 	Fmatrix&	minmax_xform = *((Fmatrix*)&minmax_xf);
-	for		(u32 c=0; c<s_casters.size(); c++)
+	for		(unsigned int c=0; c<s_casters.size(); c++)
 	{
 		Fvector3	pt;
 		for			(int e=0; e<8; e++)	{
@@ -485,7 +485,7 @@ void CRender::render_sun				()
 		//. hack: need to know real outdoor sector
 		CSector*	largest_sector		= 0;
 		float		largest_sector_vol	= 0;
-		for		(u32 s=0; s<Sectors.size(); s++)
+		for		(unsigned int s=0; s<Sectors.size(); s++)
 		{
 			CSector*			S		= (CSector*)Sectors[s]	;
 			IRender_Visual*		V		= S->root()				;
@@ -502,7 +502,7 @@ void CRender::render_sun				()
 
 		// Create frustum for query
 		cull_frustum._clear			();
-		for (u32 p=0; p<cull_planes.size(); p++)
+		for (unsigned int p=0; p<cull_planes.size(); p++)
 			cull_frustum._add		(cull_planes[p]);
 
 		// Create approximate ortho-xform
@@ -552,7 +552,7 @@ void CRender::render_sun				()
 	// IGNORE PORTALS
 	if	(ps_r2_ls_flags.test(R2FLAG_SUN_IGNORE_PORTALS))
 	{
-		for		(u32 s=0; s<Sectors.size(); s++)
+		for		(unsigned int s=0; s<Sectors.size(); s++)
 		{
 			CSector*			S		= (CSector*)Sectors[s]	;
 			IRender_Visual*		root	= S->root()				;
@@ -791,7 +791,7 @@ void CRender::render_sun				()
 
 		// casters
 		b_casters.invalidate	();
-		for		(u32 c=0; c<s_casters.size(); c++)		{
+		for		(unsigned int c=0; c<s_casters.size(); c++)		{
 			for		(int e=0; e<8; e++)
 			{
 				s_casters[c].getpoint	(e,pt);
@@ -937,7 +937,7 @@ void CRender::render_sun_near	()
 		}
 		hull.compute_caster_model	(cull_planes,fuckingsun->direction);
 #ifdef	_DEBUG
-		for (u32 it=0; it<cull_planes.size(); it++)
+		for (unsigned int it=0; it<cull_planes.size(); it++)
 			RImplementation.Target->dbg_addplane(cull_planes[it],0xffffffff);
 #endif
 
@@ -945,7 +945,7 @@ void CRender::render_sun_near	()
 		//. hack: need to know real outdoor sector
 		CSector*	largest_sector		= 0;
 		float		largest_sector_vol	= 0;
-		for		(u32 s=0; s<Sectors.size(); s++)
+		for		(unsigned int s=0; s<Sectors.size(); s++)
 		{
 			CSector*			S		= (CSector*)Sectors[s]	;
 			IRender_Visual*		V		= S->root()				;
@@ -962,7 +962,7 @@ void CRender::render_sun_near	()
 
 		// Create frustum for query
 		cull_frustum._clear			();
-		for (u32 p=0; p<cull_planes.size(); p++)
+		for (unsigned int p=0; p<cull_planes.size(); p++)
 			cull_frustum._add		(cull_planes[p]);
 
 		// Create approximate ortho-xform

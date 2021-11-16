@@ -51,9 +51,9 @@ public:
 			return CPU::QPC( ) - qwStartTime - CPU::qpc_overhead - qwPauseAccum;
 		}
 	}
-	inline U32		GetElapsed_ms( ) const
+	inline unsigned int		GetElapsed_ms( ) const
 	{
-		return U32(GetElapsed_ticks( ) * U64(1000) / CPU::qpc_freq);
+		return unsigned int(GetElapsed_ticks( ) * U64(1000) / CPU::qpc_freq);
 	}
 	inline F32	GetElapsed_sec( ) const
 	{
@@ -127,9 +127,9 @@ public:
 		return result;
 	}
 
-	U32				GetElapsed_ms( ) const
+	unsigned int				GetElapsed_ms( ) const
 	{
-		return			(U32(GetElapsed_ticks( ) * U64(1000) / CPU::qpc_freq));
+		return			(unsigned int(GetElapsed_ticks( ) * U64(1000) / CPU::qpc_freq));
 	}
 
 	F32			GetElapsed_sec( ) const
@@ -202,7 +202,7 @@ public:
 	CTimer										T;
 	U64											accum;
 	F32										result;
-	U32											count;
+	unsigned int											count;
 
 	CStatTimer( );
 	void					FrameStart( );
@@ -233,9 +233,9 @@ public:
 		return accum;
 	}
 
-	inline U32				GetElapsed_ms( ) const
+	inline unsigned int				GetElapsed_ms( ) const
 	{
-		return U32(GetElapsed_ticks( ) * U64(1000) / CPU::qpc_freq);
+		return unsigned int(GetElapsed_ticks( ) * U64(1000) / CPU::qpc_freq);
 	}
 	inline F32			GetElapsed_sec( ) const
 	{

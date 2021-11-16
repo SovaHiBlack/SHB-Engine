@@ -44,7 +44,7 @@ void	CBlender_Particle::Save	( IWriter& fs	)
 	xrPWRITE_PROP		(fs,"Alpha ref",	xrPID_INTEGER,	oAREF);
 }
 
-void	CBlender_Particle::Load	( IReader& fs, U16 version)
+void	CBlender_Particle::Load	( IReader& fs, unsigned short version)
 {
 	IBlender::Load		(fs,version);
 

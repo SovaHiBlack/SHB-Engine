@@ -21,7 +21,7 @@ void	CBlender_ShWorld::Save	( IWriter& fs	)
 	IBlender::Save	(fs);
 }
 
-void	CBlender_ShWorld::Load	( IReader& fs, U16 version	)
+void	CBlender_ShWorld::Load	( IReader& fs, unsigned short version	)
 {
 	IBlender::Load	(fs,version);
 }

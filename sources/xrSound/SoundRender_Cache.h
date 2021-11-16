@@ -19,14 +19,14 @@ struct	cache_line						// internal, LRU queue
 	cache_line*				prev;
 	cache_line*				next;
 	void*					data;		// pre-formatted
-	U16*					loopback;	// dual-connectivity
-	U16						id;			// need this for dual-connectivity
+	unsigned short*					loopback;	// dual-connectivity
+	unsigned short						id;			// need this for dual-connectivity
 };
 //////////////////////////////////////////////////////////////////////////
 struct	cache_cat						// cache allocation table
 {
-	U16*					table;		// page-table
-	u32						size;		// in pages
+	unsigned short*					table;		// page-table
+	unsigned int						size;		// in pages
 };
 #define CAT_FREE			0xffff
 //////////////////////////////////////////////////////////////////////////
@@ -36,13 +36,13 @@ class CSoundRender_Cache
 	cache_line*				c_storage;	// just memory
 	cache_line*				c_begin;	// >>> 
 	cache_line*				c_end;		// <<<
-	u32						_total;		// bytes total (heap)
-	u32						_line;		// line size (bytes)
-	u32						_count;		// number of lines
+	unsigned int						_total;		// bytes total (heap)
+	unsigned int						_line;		// line size (bytes)
+	unsigned int						_count;		// number of lines
 
 public:
-	u32						_stat_hit;
-	u32						_stat_miss;
+	unsigned int						_stat_hit;
+	unsigned int						_stat_miss;
 
 private:
 	void					move2top	(cache_line* line);					// move one line to TOP-priority
@@ -50,16 +50,16 @@ private:
 	void					format		();									// format structure (like filesystem)
 
 public:
-	BOOL					request		(cache_cat& cat, u32 id);			// TRUE=need to fill, FALSE=cached info avail
+	BOOL					request		(cache_cat& cat, unsigned int id);			// TRUE=need to fill, FALSE=cached info avail
 	void					purge		();									// discard all contents of cache
 
-	void*					get_dataptr	(cache_cat& cat, u32 id)			{ id%=cat.size; return c_storage[cat.table[id]].data;			} //.
-	u32						get_linesize()									{ return _line;													}
+	void*					get_dataptr	(cache_cat& cat, unsigned int id)			{ id%=cat.size; return c_storage[cat.table[id]].data;			} //.
+	unsigned int						get_linesize()									{ return _line;													}
 
-	void					cat_create	(cache_cat& cat, u32 bytes);
+	void					cat_create	(cache_cat& cat, unsigned int bytes);
 	void					cat_destroy	(cache_cat& cat);
 
-	void					initialize	(u32 _total_kb_approx, u32 bytes_per_line);
+	void					initialize	(unsigned int _total_kb_approx, unsigned int bytes_per_line);
 	void					destroy		();
 
 	void					stats_clear	()

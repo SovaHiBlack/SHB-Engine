@@ -24,7 +24,7 @@ public:
 	}
 
 	virtual void			Save			(IWriter& fs);
-	virtual void			Load			(IReader& fs, U16 version);
+	virtual void			Load			(IReader& fs, unsigned short version);
 
 	virtual void			Compile			(CBlender_Compile& C);
 

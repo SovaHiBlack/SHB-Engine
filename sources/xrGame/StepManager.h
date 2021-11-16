@@ -14,7 +14,7 @@ class C_StepManager
 
 	CEntityAlive* m_object;
 
-	U16										m_foot_bones[MAX_LEGS_COUNT];
+	unsigned short										m_foot_bones[MAX_LEGS_COUNT];
 	CBlend* m_blend;
 
 	u32										m_time_anim_started;

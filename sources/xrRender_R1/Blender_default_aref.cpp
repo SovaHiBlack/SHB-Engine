@@ -32,7 +32,7 @@ void	CBlender_default_aref::Save(IWriter& fs)
 	xrPWRITE_PROP	(fs,"Alpha-blend",	xrPID_BOOL,		oBlend);
 }
 
-void	CBlender_default_aref::Load(	IReader& fs , U16 version)
+void	CBlender_default_aref::Load(	IReader& fs , unsigned short version)
 {
 	IBlender::Load	(fs,version);
 

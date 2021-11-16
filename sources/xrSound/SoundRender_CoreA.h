@@ -31,12 +31,12 @@ class CSoundRender_CoreA: public CSoundRender_Core
 	};
 	SListener				Listener;
 
-	BOOL 					EAXQuerySupport			(BOOL bDeferred, const GUID* guid, u32 prop, void* val, u32 sz);
+	BOOL 					EAXQuerySupport			(BOOL bDeferred, const GUID* guid, unsigned int prop, void* val, unsigned int sz);
 	BOOL 					EAXTestSupport			(BOOL bDeferred);
 
 protected:
-	virtual void			i_eax_set				(const GUID* guid, u32 prop, void* val, u32 sz);
-	virtual void			i_eax_get				(const GUID* guid, u32 prop, void* val, u32 sz);
+	virtual void			i_eax_set				(const GUID* guid, unsigned int prop, void* val, unsigned int sz);
+	virtual void			i_eax_get				(const GUID* guid, unsigned int prop, void* val, unsigned int sz);
 	virtual void			update_listener			( const Fvector3& P, const Fvector3& D, const Fvector3& N, float dt );
 
 public:

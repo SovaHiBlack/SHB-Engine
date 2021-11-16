@@ -16,7 +16,7 @@
 
 struct intrusive_base
 {
-	U32		m_ref_count;
+	unsigned int		m_ref_count;
 
 	inline			intrusive_base( ) : m_ref_count(0)
 	{ }
@@ -77,7 +77,7 @@ public:
 	{
 		return(!m_object ? 0 : &intrusive_ptr::get);
 	}
-	inline		U32					size( );
+	inline		unsigned int					size( );
 	inline		void				swap(self_type& rhs);
 	inline		bool				equal(const self_type& rhs)	const;
 	inline		void				set(object_type* rhs);

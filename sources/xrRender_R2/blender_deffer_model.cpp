@@ -19,7 +19,7 @@ void	CBlender_deffer_model::Save	(	IWriter& fs )
 	xrPWRITE_PROP		(fs,"Use alpha-channel",	xrPID_BOOL,		oBlend);
 	xrPWRITE_PROP		(fs,"Alpha ref",			xrPID_INTEGER,	oAREF);
 }
-void	CBlender_deffer_model::Load	(	IReader& fs, U16 version )
+void	CBlender_deffer_model::Load	(	IReader& fs, unsigned short version )
 {
 	IBlender::Load		(fs,version);
 

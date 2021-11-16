@@ -124,8 +124,8 @@ public:
 	virtual void		HideShownDialogs		( )
 	{ }
 
-	void				AddCustomMessage		(const char* id, float x, float y, float font_size, CGameFont* pFont, U16 alignment, u32 color);
-	void				AddCustomMessage		(const char* id, float x, float y, float font_size, CGameFont* pFont, U16 alignment, u32 color, float flicker);
+	void				AddCustomMessage		(const char* id, float x, float y, float font_size, CGameFont* pFont, unsigned short alignment, u32 color);
+	void				AddCustomMessage		(const char* id, float x, float y, float font_size, CGameFont* pFont, unsigned short alignment, u32 color, float flicker);
 	void				CustomMessageOut		(const char* id, const char* msg, u32 color);
 	void				RemoveCustomMessage		(const char* id);
 

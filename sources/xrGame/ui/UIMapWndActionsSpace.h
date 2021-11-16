@@ -9,7 +9,7 @@ namespace UIMapWndActionsSpace
 		ePropMapResized,
 		ePropMapIdle,
 		ePropMapCentered,
-		ePropDummy					= U16(-1)
+		ePropDummy					= unsigned short(-1)
 	};
 
 	enum EWorldOperators
@@ -18,6 +18,6 @@ namespace UIMapWndActionsSpace
 		eOperatorMapMinimize,
 		eOperatorMapIdle,
 		eOperatorMapCenter,
-		eWorldOperatorDummy			= U16(-1)
+		eWorldOperatorDummy			= unsigned short(-1)
 	};
 };

@@ -3,8 +3,8 @@
 #include "SoundRender_Emitter.h"
 #include "SoundRender_Core.h"
 
-extern	u32				psSoundModel;
-extern	u32				psSoundFreq;
+extern	unsigned int				psSoundModel;
+extern	unsigned int				psSoundFreq;
 extern	float			psSoundVEffects;
 
 //////////////////////////////////////////////////////////////////////
@@ -12,7 +12,7 @@ CSoundRender_Emitter::CSoundRender_Emitter( )
 {
 
 #ifdef DEBUG
-	static	u32			incrementalID = 0;
+	static	unsigned int			incrementalID = 0;
 	dbg_ID				= ++incrementalID;
 #endif // def DEBUG
 
@@ -51,7 +51,7 @@ void CSoundRender_Emitter::Event_ReleaseOwner()
 {
 	if	(!(owner_data))			return;
 
-	for (u32 it=0; it<SoundRender->s_events.size(); it++){
+	for (unsigned int it=0; it<SoundRender->s_events.size(); it++){
 		if (owner_data == SoundRender->s_events[it].first){
 			SoundRender->s_events.erase(SoundRender->s_events.begin()+it);
 			it	--;
@@ -88,7 +88,7 @@ void CSoundRender_Emitter::switch_to_3D()
 	b2D 						= FALSE;
 }
 
-u32	CSoundRender_Emitter::play_time	( )
+unsigned int	CSoundRender_Emitter::play_time	( )
 {
 	return (state==stPlaying		|| 
 			state==stPlayingLooped	|| 

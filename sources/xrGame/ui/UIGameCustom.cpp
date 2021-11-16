@@ -112,12 +112,12 @@ CUIDialogWnd* CUIGameCustom::MainInputReceiver( )
 	return HUD( ).GetUI( )->MainInputReceiver( );
 }
 
-void CUIGameCustom::AddCustomMessage(const char* id, float x, float y, float font_size, CGameFont* pFont, U16 alignment, u32 color)
+void CUIGameCustom::AddCustomMessage(const char* id, float x, float y, float font_size, CGameFont* pFont, unsigned short alignment, u32 color)
 {
 	GameCaptions( )->addCustomMessage(id, x, y, font_size, pFont, (CGameFont::EAligment) alignment, color, "");
 }
 
-void CUIGameCustom::AddCustomMessage(const char* id, float x, float y, float font_size, CGameFont* pFont, U16 alignment, u32 color, float flicker)
+void CUIGameCustom::AddCustomMessage(const char* id, float x, float y, float font_size, CGameFont* pFont, unsigned short alignment, u32 color, float flicker)
 {
 	AddCustomMessage(id, x, y, font_size, pFont, alignment, color);
 	GameCaptions( )->customizeMessage(id, CUITextBanner::tbsFlicker)->fPeriod = flicker;
@@ -259,8 +259,8 @@ void CUIGameCustom::script_register(lua_State* L)
 			class_< CUIGameCustom >("CUIGameCustom")
 			.def("AddDialogToRender", &CUIGameCustom::AddDialogToRender)
 			.def("RemoveDialogToRender", &CUIGameCustom::RemoveDialogToRender)
-			.def("AddCustomMessage", (void(CUIGameCustom::*)(const char*, float, float, float, CGameFont*, U16, u32)) & CUIGameCustom::AddCustomMessage)
-			.def("AddCustomMessage", (void(CUIGameCustom::*)(const char*, float, float, float, CGameFont*, U16, u32, float)) & CUIGameCustom::AddCustomMessage)
+			.def("AddCustomMessage", (void(CUIGameCustom::*)(const char*, float, float, float, CGameFont*, unsigned short, u32)) & CUIGameCustom::AddCustomMessage)
+			.def("AddCustomMessage", (void(CUIGameCustom::*)(const char*, float, float, float, CGameFont*, unsigned short, u32, float)) & CUIGameCustom::AddCustomMessage)
 			.def("CustomMessageOut", &CUIGameCustom::CustomMessageOut)
 			.def("RemoveCustomMessage", &CUIGameCustom::RemoveCustomMessage)
 			.def("AddCustomStatic", &CUIGameCustom::AddCustomStatic)

@@ -1,15 +1,13 @@
-#ifndef BLENDER_SHADOW_WORLD_H
-#define BLENDER_SHADOW_WORLD_H
 #pragma once
 
-class CBlender_ShWorld : public IBlender  
+class CBlender_ShWorld : public IBlender
 {
 public:
 	virtual		const char* getComment()	{ return "INTERNAL: shadow projecting";	}
 	virtual		BOOL		canBeLMAPped()	{ return FALSE; }
 
 	virtual		void		Save			(IWriter&  fs);
-	virtual		void		Load			(IReader&	fs, U16 version);
+	virtual		void		Load			(IReader&	fs, unsigned short version);
 
 	virtual		void		Compile			(CBlender_Compile& C);
 
@@ -17,4 +15,4 @@ public:
 	virtual ~CBlender_ShWorld();
 };
 
-#endif //BLENDER_SHADOW_WORLD_H
+//BLENDER_SHADOW_WORLD_H

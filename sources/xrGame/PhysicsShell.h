@@ -305,12 +305,12 @@ inline					CKinematics					*PKinematics								()																{return m_pKine
 	virtual			void						preBuild_FromKinematics						(CKinematics* K,BONE_P_MAP* p_geting_map=NULL)												= 0;
 	virtual			void						Build										(bool disable=false)																		= 0;
 	virtual			void						SetMaxAABBRadius							(float size)																				 {};
-	virtual			void						AddTracedGeom								(U16 element=0, U16 geom=0)																	= 0;
+	virtual			void						AddTracedGeom								(unsigned short element=0, unsigned short geom=0)																	= 0;
 	virtual			void						SetAllGeomTraced							()																							= 0;
 	virtual			void						RunSimulation								(bool place_current_forms=true)																= 0;
 	virtual			void						UpdateRoot									()																							= 0;
 	virtual			void            		    ZeroCallbacks								()																							= 0;
-	virtual			void						ResetCallbacks								(U16 id,Flags64 &mask)																		= 0;
+	virtual			void						ResetCallbacks								(unsigned short id,Flags64 &mask)																		= 0;
 	virtual			void						SetCallbacks								(BoneCallbackFun* callback)																	= 0;
 	virtual			void						EnabledCallbacks							(BOOL val)																					= 0;
 	virtual			void						ToAnimBonesPositions						()																							= 0;

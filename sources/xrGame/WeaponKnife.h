@@ -35,7 +35,7 @@ protected:
 	virtual void		KnifeStrike(const Fvector3& pos, const Fvector3& dir);
 
 	float				fWallmarkSize;
-	U16					knife_material_idx;
+	unsigned short					knife_material_idx;
 
 	ALife::EHitType		m_eHitType;
 

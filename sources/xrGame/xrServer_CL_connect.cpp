@@ -6,11 +6,11 @@
 #include "xrserver_objects.h"
 #include "Level.h"
 
-xr_vector<U16> g_perform_spawn_ids;
+xr_vector<unsigned short> g_perform_spawn_ids;
 
 void CServer::Perform_connect_spawn(CSE_Abstract* E, xrClientData* CL, CNetPacket& P)
 {
-	xr_vector<U16>::iterator it = std::find(g_perform_spawn_ids.begin( ), g_perform_spawn_ids.end( ), E->ID);
+	xr_vector<unsigned short>::iterator it = std::find(g_perform_spawn_ids.begin( ), g_perform_spawn_ids.end( ), E->ID);
 	if (it != g_perform_spawn_ids.end( ))
 	{
 		return;
@@ -164,7 +164,7 @@ bool CServer::NeedToCheckClient_BuildVersion(IClient* CL)
 
 void CServer::OnBuildVersionRespond(IClient* CL, CNetPacket& P)
 {
-	U16 Type;
+	unsigned short Type;
 	P.r_begin(Type);
 	U64 _our = FS.auth_get( );
 	U64 _him = P.r_u64( );

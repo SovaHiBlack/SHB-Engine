@@ -78,7 +78,7 @@ void SetMinStripSize(const unsigned int _minStripSize)
 //
 // Be sure to call xr_free on the returned primGroups to avoid leaking mem
 //
-void GenerateStrips(const U16* in_indices, const int in_numIndices, xr_vector<PrimitiveGroup> &primGroups)
+void GenerateStrips(const unsigned short* in_indices, const int in_numIndices, xr_vector<PrimitiveGroup> &primGroups)
 {
 	//put data in format that the stripifier likes
 	WordVec				tempIndices;
@@ -115,7 +115,7 @@ void GenerateStrips(const U16* in_indices, const int in_numIndices, xr_vector<Pr
 
 		primGroups[0].type       = PT_LIST;
 		primGroups[0].numIndices = numIndices;
-		primGroups[0].indices    = xr_alloc<U16> (numIndices);
+		primGroups[0].indices    = xr_alloc<unsigned short> (numIndices);
 
 		//do strips
 		unsigned int indexCtr = 0;
@@ -123,18 +123,18 @@ void GenerateStrips(const U16* in_indices, const int in_numIndices, xr_vector<Pr
 		{
 			for(int j = 0; j < tempStrips[i]->m_faces.size(); j++)
 			{
-				primGroups[0].indices[indexCtr++] = U16(tempStrips[i]->m_faces[j]->m_v0);
-				primGroups[0].indices[indexCtr++] = U16(tempStrips[i]->m_faces[j]->m_v1);
-				primGroups[0].indices[indexCtr++] = U16(tempStrips[i]->m_faces[j]->m_v2);
+				primGroups[0].indices[indexCtr++] = unsigned short(tempStrips[i]->m_faces[j]->m_v0);
+				primGroups[0].indices[indexCtr++] = unsigned short(tempStrips[i]->m_faces[j]->m_v1);
+				primGroups[0].indices[indexCtr++] = unsigned short(tempStrips[i]->m_faces[j]->m_v2);
 			}
 		}
 
 		//do lists
 		for(u32 i = 0; i < tempFaces.size(); i++)
 		{
-			primGroups[0].indices[indexCtr++] = U16(tempFaces[i]->m_v0);
-			primGroups[0].indices[indexCtr++] = U16(tempFaces[i]->m_v1);
-			primGroups[0].indices[indexCtr++] = U16(tempFaces[i]->m_v2);
+			primGroups[0].indices[indexCtr++] = unsigned short(tempFaces[i]->m_v0);
+			primGroups[0].indices[indexCtr++] = unsigned short(tempFaces[i]->m_v1);
+			primGroups[0].indices[indexCtr++] = unsigned short(tempFaces[i]->m_v2);
 		}
 	}
 	else
@@ -145,7 +145,7 @@ void GenerateStrips(const U16* in_indices, const int in_numIndices, xr_vector<Pr
 		assert( (bStitchStrips && (numSeparateStrips == 1)) || !bStitchStrips);
 		
 		//convert to output format
-		int numGroups = U16(numSeparateStrips); //for the strips
+		int numGroups = unsigned short(numSeparateStrips); //for the strips
 		if(tempFaces.size() != 0)
 			numGroups++;  //we've got a list as well, increment
 		primGroups.resize	(numGroups);
@@ -172,12 +172,12 @@ void GenerateStrips(const U16* in_indices, const int in_numIndices, xr_vector<Pr
 				stripLength = stripIndices.size();
 			
 			primGroups[stripCtr].type       = PT_STRIP;
-			primGroups[stripCtr].indices    = xr_alloc<U16>	(stripLength);
+			primGroups[stripCtr].indices    = xr_alloc<unsigned short>	(stripLength);
 			primGroups[stripCtr].numIndices = stripLength;
 			
 			int indexCtr = 0;
 			for(int i = startingLoc; i < stripLength + startingLoc; i++)
-				primGroups[stripCtr].indices[indexCtr++] = U16(stripIndices[i]);
+				primGroups[stripCtr].indices[indexCtr++] = unsigned short(stripIndices[i]);
 			
 			startingLoc += stripLength + 1; //we add 1 to account for the -1 separating strips
 		}
@@ -187,14 +187,14 @@ void GenerateStrips(const U16* in_indices, const int in_numIndices, xr_vector<Pr
 		{
 			int faceGroupLoc					= numGroups - 1;    //the face group is the last one
 			primGroups[faceGroupLoc].type       = PT_LIST;
-			primGroups[faceGroupLoc].indices    = xr_alloc<U16>	(tempFaces.size() * 3);
+			primGroups[faceGroupLoc].indices    = xr_alloc<unsigned short>	(tempFaces.size() * 3);
 			primGroups[faceGroupLoc].numIndices = tempFaces.size() * 3;
 			int indexCtr = 0;
 			for(int i = 0; i < tempFaces.size(); i++)
 			{
-				primGroups[faceGroupLoc].indices[indexCtr++] = U16(tempFaces[i]->m_v0);
-				primGroups[faceGroupLoc].indices[indexCtr++] = U16(tempFaces[i]->m_v1);
-				primGroups[faceGroupLoc].indices[indexCtr++] = U16(tempFaces[i]->m_v2);
+				primGroups[faceGroupLoc].indices[indexCtr++] = unsigned short(tempFaces[i]->m_v0);
+				primGroups[faceGroupLoc].indices[indexCtr++] = unsigned short(tempFaces[i]->m_v1);
+				primGroups[faceGroupLoc].indices[indexCtr++] = unsigned short(tempFaces[i]->m_v2);
 			}
 		}
 	}
@@ -233,7 +233,7 @@ void GenerateStrips(const U16* in_indices, const int in_numIndices, xr_vector<Pr
 // Note that, according to the remapping handed back to you, you must reorder your 
 //  vertex buffer.
 //
-void RemapIndices(const xr_vector<PrimitiveGroup> &in_primGroups, const U16 numVerts, xr_vector<PrimitiveGroup> &remappedGroups)
+void RemapIndices(const xr_vector<PrimitiveGroup> &in_primGroups, const unsigned short numVerts, xr_vector<PrimitiveGroup> &remappedGroups)
 {
 	int numGroups			= in_primGroups.size();
 	remappedGroups.resize	(numGroups);
@@ -252,7 +252,7 @@ void RemapIndices(const xr_vector<PrimitiveGroup> &in_primGroups, const U16 numV
 		//init remapped group
 		remappedGroups[i].type       = in_primGroups[i].type;
 		remappedGroups[i].numIndices = numIndices;
-		remappedGroups[i].indices    = xr_alloc<U16>	(numIndices);
+		remappedGroups[i].indices    = xr_alloc<unsigned short>	(numIndices);
 
 		for(int j = 0; j < numIndices; j++)
 		{
@@ -260,7 +260,7 @@ void RemapIndices(const xr_vector<PrimitiveGroup> &in_primGroups, const U16 numV
 			if(cachedIndex == -1) //we haven't seen this index before
 			{
 				//point to "last" vertex in VB
-				remappedGroups[i].indices[j] = U16(indexCtr);
+				remappedGroups[i].indices[j] = unsigned short(indexCtr);
 
 				//add to index cache, increment
 				indexCache[in_primGroups[i].indices[j]] = indexCtr++;
@@ -268,7 +268,7 @@ void RemapIndices(const xr_vector<PrimitiveGroup> &in_primGroups, const U16 numV
 			else
 			{
 				//we've seen this index before
-				remappedGroups[i].indices[j] = U16(cachedIndex);
+				remappedGroups[i].indices[j] = unsigned short(cachedIndex);
 			}
 		}
 	}

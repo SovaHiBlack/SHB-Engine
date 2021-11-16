@@ -7,9 +7,9 @@ BOOL	xrRender_test_hw		()
 	_HW.CreateD3D				()		;
 	_HW.pD3D->GetDeviceCaps		(D3DADAPTER_DEFAULT,D3DDEVTYPE_HAL,&caps);
 	_HW.DestroyD3D				()		;
-	U16		ps_ver_major		= U16( u32(u32(caps.PixelShaderVersion)&u32(0xf << 8ul))>>8 );
-	U16		ps_instructions		= U16(caps.PS20Caps.NumInstructionSlots);
-	U16		mrt_count			= U16(caps.NumSimultaneousRTs);
+	unsigned short		ps_ver_major		= unsigned short( u32(u32(caps.PixelShaderVersion)&u32(0xf << 8ul))>>8 );
+	unsigned short		ps_instructions		= unsigned short(caps.PS20Caps.NumInstructionSlots);
+	unsigned short		mrt_count			= unsigned short(caps.NumSimultaneousRTs);
 	if		(ps_ver_major<2)		return	FALSE;
 	if		(ps_instructions<256)	return	FALSE;
 	if		(mrt_count<3)			return	FALSE;

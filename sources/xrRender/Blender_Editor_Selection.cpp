@@ -23,7 +23,7 @@ void	CBlender_Editor_Selection::Save	( IWriter& fs	)
 	xrPWRITE_PROP	(fs,"TFactor",	xrPID_CONSTANT, oT_Factor);
 }
 
-void	CBlender_Editor_Selection::Load	( IReader& fs, U16 version	)
+void	CBlender_Editor_Selection::Load	( IReader& fs, unsigned short version	)
 {
 	IBlender::Load	(fs,version);
 	xrPREAD_PROP	(fs,xrPID_CONSTANT,	oT_Factor);

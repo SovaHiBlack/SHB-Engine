@@ -240,7 +240,7 @@ void C_StepManager::load_foot_bones(CConfigurationFile::Sect& data)
 	{
 		const CConfigurationFile::SItem& item = *I;
 
-		U16 index = smart_cast<CKinematics*>(m_object->Visual( ))->LL_BoneID(*item.second);
+		unsigned short index = smart_cast<CKinematics*>(m_object->Visual( ))->LL_BoneID(*item.second);
 		VERIFY3(index != BI_NONE, "foot bone not found", *item.second);
 
 		if (xr_strcmp(*item.first, "front_left") == 0)

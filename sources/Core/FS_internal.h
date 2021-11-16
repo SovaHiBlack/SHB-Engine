@@ -41,7 +41,7 @@ public:
 			fclose(hf);
 			// release RO attrib
 			DWORD dwAttr = GetFileAttributes(*fName);
-			if ((dwAttr != U32(-1)) && (dwAttr & FILE_ATTRIBUTE_READONLY))
+			if ((dwAttr != unsigned int(-1)) && (dwAttr & FILE_ATTRIBUTE_READONLY))
 			{
 				dwAttr &= ~FILE_ATTRIBUTE_READONLY;
 				SetFileAttributes(*fName, dwAttr);
@@ -49,11 +49,11 @@ public:
 		}
 	}
 	// kernel
-	virtual void	w(const void* _ptr, U32 count)
+	virtual void	w(const void* _ptr, unsigned int count)
 	{
 		if ((0 != hf) && (0 != count))
 		{
-			const U32 mb_sz = 0x1000000;
+			const unsigned int mb_sz = 0x1000000;
 			unsigned char* ptr = (unsigned char*) _ptr;
 			for (int req_size = count; req_size > mb_sz; req_size -= mb_sz, ptr += mb_sz)
 			{
@@ -68,14 +68,14 @@ public:
 			}
 		}
 	}
-	virtual void	seek(U32 pos)
+	virtual void	seek(unsigned int pos)
 	{
 		if (0 != hf)
 		{
 			fseek(hf, pos, SEEK_SET);
 		}
 	}
-	virtual U32		tell( )
+	virtual unsigned int		tell( )
 	{
 		return (0 != hf) ? ftell(hf) : 0;
 	}

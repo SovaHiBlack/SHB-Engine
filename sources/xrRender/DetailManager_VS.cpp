@@ -86,17 +86,17 @@ void CDetailManager::hw_Load	()
 
 	// Fill IB
 	{
-		U16*			pI;
+		unsigned short*			pI;
 		R_CHK			(hw_IB->Lock(0,0,(void**)(&pI),0));
 		for (o=0; o<objects.size(); o++)
 		{
 			CDetail& D		=	*objects[o];
-			U16		offset	=	0;
+			unsigned short		offset	=	0;
 			for (u32 batch=0; batch<hw_BatchSize; batch++)
 			{
 				for (u32 i=0; i<u32(D.number_indices); i++)
-					*pI++	= U16(U16(D.indices[i]) + U16(offset));
-				offset		= U16(offset+ U16(D.number_vertices));
+					*pI++	= unsigned short(unsigned short(D.indices[i]) + unsigned short(offset));
+				offset		= unsigned short(offset+ unsigned short(D.number_vertices));
 			}
 		}
 		R_CHK			(hw_IB->Unlock());

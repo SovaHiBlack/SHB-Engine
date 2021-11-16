@@ -225,7 +225,7 @@ void CLightProjector::calculate	()
 			Log("all bones transform:--------");
 			CKinematics* K = dynamic_cast<CKinematics*>(OO->Visual());
 			
-			for(U16 ii=0; ii<K->LL_BoneCount();++ii){
+			for(unsigned short ii=0; ii<K->LL_BoneCount();++ii){
 				Fmatrix tr;
 
 				tr = K->LL_GetTransform(ii);

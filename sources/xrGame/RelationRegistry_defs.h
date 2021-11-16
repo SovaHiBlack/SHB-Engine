@@ -23,7 +23,7 @@ private:
 	CharacterGoodwill m_iGoodwill;
 };
 
-using PersonalRelationMap = xr_map<U16, SRelation>;
+using PersonalRelationMap = xr_map<unsigned short, SRelation>;
 using CommunityRelationMap = xr_map<CharacterCommunityIndex, SRelation>;
 
 //структура, существует для каждого персонажа в игре

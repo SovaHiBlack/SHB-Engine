@@ -28,7 +28,7 @@ u32 cut_string_by_length(CGameFont* pFont, const char* src, char* dst, u32 dst_s
 {
 	if (pFont->IsMultibyte( ))
 	{
-		U16 nPos = pFont->GetCutLengthPos(length, src);
+		unsigned short nPos = pFont->GetCutLengthPos(length, src);
 		VERIFY(nPos < dst_size);
 		strncpy(dst, src, nPos);
 		dst[nPos] = '\0';

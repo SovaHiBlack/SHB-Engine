@@ -12,9 +12,9 @@
 //#include "StreamReader.h"
 #include "FileStreamReader.h"
 
-const U32 BIG_FILE_READER_WINDOW_SIZE = 1024 * 1024;
+const unsigned int BIG_FILE_READER_WINDOW_SIZE = 1024 * 1024;
 
-typedef void DUMMY_STUFF(const void*, const U32&, void*);
+typedef void DUMMY_STUFF(const void*, const unsigned int&, void*);
 CORE_API DUMMY_STUFF* g_temporary_stuff = nullptr;
 
 CLocatorAPI* xr_FS = nullptr;
@@ -29,7 +29,7 @@ struct _open_file
 		CStreamReader* _stream_reader;
 	};
 	CSharedString			_fn;
-	U32					_used;
+	unsigned int					_used;
 };
 
 template <typename T>
@@ -209,7 +209,7 @@ CLocatorAPI::~CLocatorAPI( )
 	_dump_open_files(1);
 }
 
-void CLocatorAPI::Register(const char* name, U32 vfs, U32 crc, U32 ptr, U32 size_real, U32 size_compressed, U32 modif)
+void CLocatorAPI::Register(const char* name, unsigned int vfs, unsigned int crc, unsigned int ptr, unsigned int size_real, unsigned int size_compressed, unsigned int modif)
 {
 	string256 temp_file_name;
 	strcpy_s(temp_file_name, sizeof(temp_file_name), name);
@@ -224,7 +224,7 @@ void CLocatorAPI::Register(const char* name, U32 vfs, U32 crc, U32 ptr, U32 size
 	desc.ptr = ptr;
 	desc.size_real = size_real;
 	desc.size_compressed = size_compressed;
-	desc.modif = modif & (~U32(0x3));
+	desc.modif = modif & (~unsigned int(0x3));
 //	Msg("registering file %s - %d", name, size_real);
 	// if file already exist - update info
 	files_it I = files.find(desc);
@@ -266,7 +266,7 @@ void CLocatorAPI::Register(const char* name, U32 vfs, U32 crc, U32 ptr, U32 size
 			desc.ptr = 0;
 			desc.size_real = 0;
 			desc.size_compressed = 0;
-			desc.modif = U32(-1);
+			desc.modif = unsigned int(-1);
 			std::pair<files_it, bool> I = files.insert(desc);
 
 			R_ASSERT(I.second);
@@ -280,13 +280,13 @@ void CLocatorAPI::Register(const char* name, U32 vfs, U32 crc, U32 ptr, U32 size
 	}
 }
 
-IReader* open_chunk(void* ptr, U32 ID)
+IReader* open_chunk(void* ptr, unsigned int ID)
 {
 	BOOL res;
-	U32 dwType;
-	U32 dwSize;
+	unsigned int dwType;
+	unsigned int dwSize;
 	DWORD read_byte;
-	U32 pt = SetFilePointer(ptr, 0, 0, FILE_BEGIN);
+	unsigned int pt = SetFilePointer(ptr, 0, 0, FILE_BEGIN);
 	VERIFY(pt != INVALID_SET_FILE_POINTER);
 	while (true)
 	{
@@ -388,31 +388,31 @@ void CLocatorAPI::ProcessArchive(const char* _path, const char* base_path)
 		string_path full;
 		string1024		buffer_start;
 		unsigned short				buffer_size = hdr->r_u16( );
-		VERIFY(buffer_size < sizeof(name) + 4 * sizeof(U32));
+		VERIFY(buffer_size < sizeof(name) + 4 * sizeof(unsigned int));
 		VERIFY(buffer_size < sizeof(buffer_start));
 		unsigned char* buffer = (unsigned char*) &*buffer_start;
 		hdr->r(buffer, buffer_size);
 
-		U32 size_real = *(U32*) buffer;
+		unsigned int size_real = *(unsigned int*) buffer;
 		buffer += sizeof(size_real);
 
-		U32 size_compr = *(U32*) buffer;
+		unsigned int size_compr = *(unsigned int*) buffer;
 		buffer += sizeof(size_compr);
 
-		U32 crc = *(U32*) buffer;
+		unsigned int crc = *(unsigned int*) buffer;
 		buffer += sizeof(crc);
 
-		U32				name_length = buffer_size - 4 * sizeof(U32);
+		unsigned int				name_length = buffer_size - 4 * sizeof(unsigned int);
 		Memory.mem_copy(name, buffer, name_length);
 		name[name_length] = 0;
-		buffer += buffer_size - 4 * sizeof(U32);
+		buffer += buffer_size - 4 * sizeof(unsigned int);
 
-		U32 ptr = *(U32*) buffer;
+		unsigned int ptr = *(unsigned int*) buffer;
 		buffer += sizeof(ptr);
 		strconcat(sizeof(full), full, base, name);
 		size_t vfs = archives.size( ) - 1;
 
-		Register(full, (U32) vfs, crc, ptr, size_real, size_compr, 0);
+		Register(full, (unsigned int) vfs, crc, ptr, size_real, size_compr, 0);
 	}
 
 	hdr->close( );

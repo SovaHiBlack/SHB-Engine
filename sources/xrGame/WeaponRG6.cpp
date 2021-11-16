@@ -144,7 +144,7 @@ void CWeaponRG6::FireStart( )
 		{
 			CNetPacket P;
 			u_EventGen(P, GE_LAUNCH_ROCKET, ID( ));
-			P.w_u16(U16(getCurrentRocket( )->ID( )));
+			P.w_u16(unsigned short(getCurrentRocket( )->ID( )));
 			u_EventSend(P);
 		}
 
@@ -166,11 +166,11 @@ unsigned char CWeaponRG6::AddCartridge(unsigned char cnt)
 	return k;
 }
 
-void CWeaponRG6::OnEvent(CNetPacket& P, U16 type)
+void CWeaponRG6::OnEvent(CNetPacket& P, unsigned short type)
 {
 	inheritedSG::OnEvent(P, type);
 
-	U16 id;
+	unsigned short id;
 	switch (type)
 	{
 		case GE_OWNERSHIP_TAKE:

@@ -93,7 +93,7 @@ public:
 		return this;
 	}
 	virtual BOOL					Net_Relevant( );
-	virtual void					OnEvent(CNetPacket& tNetPacket, U16 type, u32 time, CClientID sender);
+	virtual void					OnEvent(CNetPacket& tNetPacket, unsigned short type, u32 time, CClientID sender);
 	SERVER_ENTITY_DECLARE_END
 		add_to_type_list(CSE_ALifeItem)
 #define script_type_list save_type_list(CSE_ALifeItem)
@@ -118,8 +118,8 @@ public:
 #define script_type_list save_type_list(CSE_ALifeItemTorch)
 
 		SERVER_ENTITY_DECLARE_BEGIN(CSE_ALifeItemAmmo, CSE_ALifeItem)
-		U16								a_elapsed;
-	U16								m_boxSize;
+		unsigned short								a_elapsed;
+	unsigned short								m_boxSize;
 
 	CSE_ALifeItemAmmo(const char* caSection);
 	virtual							~CSE_ALifeItemAmmo( );
@@ -159,8 +159,8 @@ public:
 	unsigned char								wpn_flags;
 	unsigned char								wpn_state;
 	unsigned char								ammo_type;
-	U16								a_current;
-	U16								a_elapsed;
+	unsigned short								a_current;
+	unsigned short								a_elapsed;
 	float							m_fHitPower;
 	ALife::EHitType					m_tHitType;
 	const char* m_caAmmoSections;
@@ -172,13 +172,13 @@ public:
 
 	CSE_ALifeItemWeapon(const char* caSection);
 	virtual							~CSE_ALifeItemWeapon( );
-	virtual void					OnEvent(CNetPacket& P, U16 type, u32 time, CClientID sender);
+	virtual void					OnEvent(CNetPacket& P, unsigned short type, u32 time, CClientID sender);
 	virtual u32						ef_main_weapon_type( ) const;
 	virtual u32						ef_weapon_type( ) const;
 	unsigned char								get_slot( );
-	U16								get_ammo_total( );
-	U16								get_ammo_elapsed( );
-	U16								get_ammo_magsize( );
+	unsigned short								get_ammo_total( );
+	unsigned short								get_ammo_elapsed( );
+	unsigned short								get_ammo_magsize( );
 
 	virtual BOOL					Net_Relevant( );
 
@@ -253,7 +253,7 @@ public:
 #define script_type_list save_type_list(CSE_ALifeItemArtefact)
 
 		SERVER_ENTITY_DECLARE_BEGIN(CSE_ALifeItemPDA, CSE_ALifeItem)
-		U16								m_original_owner;
+		unsigned short								m_original_owner;
 	CSharedString						m_specific_character;
 	CSharedString						m_info_portion;
 

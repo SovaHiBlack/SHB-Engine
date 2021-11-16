@@ -18,7 +18,7 @@ void CServer::SLS_Save	(IWriter& fs)
 
 		// Spawn
 		E->Spawn_Write		(P,TRUE);
-		fs.w_u16			(U16(P.B.count));
+		fs.w_u16			(unsigned short(P.B.count));
 		fs.w				(P.B.data,P.B.count);
 
 		// Update
@@ -28,7 +28,7 @@ void CServer::SLS_Save	(IWriter& fs)
 		E->UPDATE_Write		(P);
 		P.w_chunk_close8	(position);
 
-		fs.w_u16			(U16(P.B.count));
+		fs.w_u16			(unsigned short(P.B.count));
 		fs.w				(P.B.data,P.B.count);
 
 		fs.close_chunk		();

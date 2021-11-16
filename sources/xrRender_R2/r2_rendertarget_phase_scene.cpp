@@ -12,7 +12,7 @@ void	CRenderTarget::phase_scene_prepare	()
 void	CRenderTarget::phase_scene_begin	()
 {
 	// Enable ANISO
-	for (u32 i=0; i<HW.Caps.raster.dwStages; i++)
+	for (unsigned int i=0; i<HW.Caps.raster.dwStages; i++)
 		CHK_DX(HW.pDevice->SetSamplerState( i, D3DSAMP_MAXANISOTROPY, ps_r__tf_Anisotropic	));
 
 	// Targets, use accumulator for temporary storage
@@ -31,7 +31,7 @@ void	CRenderTarget::phase_scene_begin	()
 void	CRenderTarget::disable_aniso		()
 {
 	// Disable ANISO
-	for (u32 i=0; i<HW.Caps.raster.dwStages; i++)
+	for (unsigned int i=0; i<HW.Caps.raster.dwStages; i++)
 		CHK_DX(HW.pDevice->SetSamplerState( i, D3DSAMP_MAXANISOTROPY, 1	));
 }
 
@@ -51,8 +51,8 @@ void	CRenderTarget::phase_scene_end		()
 	RCache.set_ColorWriteEnable			();
 
 	// common calc for quad-rendering
-	u32		Offset;
-	u32		C					= color_rgba	(255,255,255,255);
+	unsigned int		Offset;
+	unsigned int		C					= color_rgba	(255,255,255,255);
 	float	_w					= float			(Device.dwWidth);
 	float	_h					= float			(Device.dwHeight);
 	Fvector2					p0,p1;

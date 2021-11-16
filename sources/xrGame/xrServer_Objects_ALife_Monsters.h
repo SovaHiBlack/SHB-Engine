@@ -40,7 +40,7 @@ CharacterRankValue			m_rank;
 xr_string						m_character_name;
 
 //для работы с relation system
-U16								object_id( ) const;
+unsigned short								object_id( ) const;
 CharacterCommunityIndex		Community( ) const;
 const char* CommunityName( ) const;
 CharacterRankValue			Rank( );
@@ -140,7 +140,7 @@ public:
 		CSE_ALifeItemWeapon* m_tpCurrentBestWeapon;
 	float							m_offline_interactive_radius;
 	u32								m_artefact_position_offset;
-	U16								m_artefact_spawn_count;
+	unsigned short								m_artefact_spawn_count;
 
 	CSE_ALifeAnomalousZone(const char* caSection);
 	virtual							~CSE_ALifeAnomalousZone( );
@@ -342,15 +342,15 @@ public:
 
 		SERVER_ENTITY_DECLARE_BEGIN3(CSE_ALifeCreatureActor, CSE_ALifeCreatureAbstract, CSE_ALifeTraderAbstract, CSE_PHSkeleton)
 
-		U16								mstate;
+		unsigned short								mstate;
 	Fvector3							accel;
 	Fvector3							velocity;
 	//	float							fArmor;
 	float							fRadiation;
 	unsigned char								weapon;
 	///////////////////////////////////////////
-	U16								m_u16NumItems;
-	U16								m_holderID;
+	unsigned short								m_u16NumItems;
+	unsigned short								m_holderID;
 //	DEF_DEQUE		(PH_STATES, SPHNetState); 
 	SPHNetState						m_AliveState;
 //	PH_STATES						m_DeadStates;
@@ -424,7 +424,7 @@ public:
 	float							fMaxHomeRadius;
 	// attack
 	float							fHitPower;
-	U16								u16HitInterval;
+	unsigned short								u16HitInterval;
 	float							fAttackDistance;
 	float							fAttackAngle;
 
@@ -435,7 +435,7 @@ public:
 #define script_type_list save_type_list(CSE_ALifeMonsterZombie)
 
 		SERVER_ENTITY_DECLARE_BEGIN2(CSE_ALifeMonsterBase, CSE_ALifeMonsterAbstract, CSE_PHSkeleton)
-		U16								m_spec_object_id;
+		unsigned short								m_spec_object_id;
 
 	CSE_ALifeMonsterBase(const char* caSection);				// constructor for variable initialization
 	virtual							~CSE_ALifeMonsterBase( );

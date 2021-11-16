@@ -447,11 +447,11 @@ BOOL CConfigurationFile::line_exist(const char* S, const char* L)
 	return (A != I.Data.end( ) && xr_strcmp(*A->first, L) == 0);
 }
 
-U32 CConfigurationFile::line_count(const char* Sname)
+unsigned int CConfigurationFile::line_count(const char* Sname)
 {
 	Sect& S = r_section(Sname);
 	SectCIt I = S.Data.begin( );
-	U32 C = 0;
+	unsigned int C = 0;
 	for (; I != S.Data.end( ); I++)
 	{
 		if (*I->first)
@@ -472,7 +472,7 @@ BOOL CConfigurationFile::line_exist(const CSharedString& S, const CSharedString&
 {
 	return line_exist(*S, *L);
 }
-U32 CConfigurationFile::line_count(const CSharedString& S)
+unsigned int CConfigurationFile::line_count(const CSharedString& S)
 {
 	return line_count(*S);
 }
@@ -525,7 +525,7 @@ CSharedString CConfigurationFile::r_string_wb(const char* S, const char* L)
 
 	string512 _original;
 	strcpy_s(_original, _base);
-	U32 _len = xr_strlen(_original);
+	unsigned int _len = xr_strlen(_original);
 	if (0 == _len)
 	{
 		return	CSharedString("");
@@ -556,10 +556,10 @@ unsigned short CConfigurationFile::r_u16(const char* S, const char* L)
 	const char* C = r_string(S, L);
 	return unsigned short(atoi(C));
 }
-U32 CConfigurationFile::r_u32(const char* S, const char* L)
+unsigned int CConfigurationFile::r_u32(const char* S, const char* L)
 {
 	const char* C = r_string(S, L);
-	return U32(atoi(C));
+	return unsigned int(atoi(C));
 }
 signed char CConfigurationFile::r_s8(const char* S, const char* L)
 {
@@ -588,13 +588,13 @@ Fcolor CConfigurationFile::r_fcolor(const char* S, const char* L)
 	sscanf(C, "%f,%f,%f,%f", &V.r, &V.g, &V.b, &V.a);
 	return V;
 }
-U32 CConfigurationFile::r_color(const char* S, const char* L)
+unsigned int CConfigurationFile::r_color(const char* S, const char* L)
 {
 	const char* C = r_string(S, L);
-	U32 r = 0;
-	U32 g = 0;
-	U32 b = 0;
-	U32 a = 255;
+	unsigned int r = 0;
+	unsigned int g = 0;
+	unsigned int b = 0;
+	unsigned int a = 255;
 	sscanf(C, "%d,%d,%d,%d", &r, &g, &b, &a);
 	return color_rgba(r, g, b, a);
 }
@@ -761,7 +761,7 @@ void CConfigurationFile::w_u16(const char* S, const char* L, unsigned short V, c
 	sprintf_s(temp, sizeof(temp), "%d", V);
 	w_string(S, L, temp, comment);
 }
-void CConfigurationFile::w_u32(const char* S, const char* L, U32 V, const char* comment)
+void CConfigurationFile::w_u32(const char* S, const char* L, unsigned int V, const char* comment)
 {
 	string128 temp;
 	sprintf_s(temp, sizeof(temp), "%d", V);
@@ -798,7 +798,7 @@ void CConfigurationFile::w_fcolor(const char* S, const char* L, const Fcolor& V,
 	w_string(S, L, temp, comment);
 }
 
-void CConfigurationFile::w_color(const char* S, const char* L, U32 V, const char* comment)
+void CConfigurationFile::w_color(const char* S, const char* L, unsigned int V, const char* comment)
 {
 	string128 temp;
 	sprintf_s(temp, sizeof(temp), "%d,%d,%d,%d", color_get_R(V), color_get_G(V), color_get_B(V), color_get_A(V));

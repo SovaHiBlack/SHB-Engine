@@ -6,15 +6,16 @@
 void ReplaceOwnershipHeader(CNetPacket& P)
 {
 	//способ очень грубый, но на данный момент иного выбора нет. Заранее приношу извинения
-	U16 NewType = GE_OWNERSHIP_TAKE;
+	unsigned short NewType = GE_OWNERSHIP_TAKE;
 	CopyMemory(&P.B.data[6], &NewType, 2);
 };
 
-void CServer::Process_event_ownership(CNetPacket& P, CClientID sender, u32 time, U16 ID, BOOL bForced)
+void CServer::Process_event_ownership(CNetPacket& P, CClientID sender, u32 time, unsigned short ID, BOOL bForced)
 {
 	u32 MODE = net_flags(TRUE, TRUE, FALSE, TRUE);
 
-	U16					id_parent = ID, id_entity;
+	unsigned short					id_parent = ID;
+	unsigned short id_entity;
 	P.r_u16(id_entity);
 	CSE_Abstract* e_parent = game->get_entity_from_eid(id_parent);
 	CSE_Abstract* e_entity = game->get_entity_from_eid(id_entity);

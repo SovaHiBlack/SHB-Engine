@@ -288,8 +288,8 @@ void CUIMapWnd::RemoveMapToRender(CUICustomMap* m)
 
 void CUIMapWnd::SetTargetMap(const CSharedString& name, const Fvector2& pos, bool bZoomIn)
 {
-	U16 idx = GetIdxByName(name);
-	if (idx != U16(-1))
+	unsigned short idx = GetIdxByName(name);
+	if (idx != unsigned short(-1))
 	{
 		CUICustomMap* lm = GetMapByIdx(idx);
 		SetTargetMap(lm, pos, bZoomIn);
@@ -298,8 +298,8 @@ void CUIMapWnd::SetTargetMap(const CSharedString& name, const Fvector2& pos, boo
 
 void CUIMapWnd::SetTargetMap(const CSharedString& name, bool bZoomIn)
 {
-	U16 idx = GetIdxByName(name);
-	if (idx != U16(-1))
+	unsigned short idx = GetIdxByName(name);
+	if (idx != unsigned short(-1))
 	{
 		CUICustomMap* lm = GetMapByIdx(idx);
 		SetTargetMap(lm, bZoomIn);
@@ -493,24 +493,24 @@ void CUIMapWnd::SendMessage(CUIWindow* pWnd, signed short msg, void* pData)
 	CUIWndCallback::OnEvent(pWnd, msg, pData);
 }
 
-CUICustomMap* CUIMapWnd::GetMapByIdx(U16 idx)
+CUICustomMap* CUIMapWnd::GetMapByIdx(unsigned short idx)
 {
-	VERIFY(idx != U16(-1));
+	VERIFY(idx != unsigned short(-1));
 	GameMapsPairIt it = m_GameMaps.begin( );
 	std::advance(it, idx);
 	return it->second;
 }
 
-U16 CUIMapWnd::GetIdxByName(const CSharedString& map_name)
+unsigned short CUIMapWnd::GetIdxByName(const CSharedString& map_name)
 {
 	GameMapsPairIt it = m_GameMaps.find(map_name);
 	if (it == m_GameMaps.end( ))
 	{
 		Msg("~ Level Map '%s' not registered", map_name.c_str( ));
-		return U16(-1);
+		return unsigned short(-1);
 	}
 
-	return (U16) std::distance(m_GameMaps.begin( ), it);
+	return (unsigned short) std::distance(m_GameMaps.begin( ), it);
 }
 
 void CUIMapWnd::UpdateScroll( )
@@ -645,8 +645,8 @@ void CUIMapWnd::OnToolActorClicked(CUIWindow*, void*)
 	v2.set(v.x, v.z);
 
 	CUICustomMap* lm = nullptr;
-	U16 idx = GetIdxByName(Level( ).name( ));
-	if (idx != U16(-1))
+	unsigned short idx = GetIdxByName(Level( ).name( ));
+	if (idx != unsigned short(-1))
 	{
 		lm = GetMapByIdx(idx);
 	}

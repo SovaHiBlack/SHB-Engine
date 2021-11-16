@@ -15,13 +15,13 @@
 #include "..\Actor.h"
 #include "..\GameTaskManager.h"
 
-CUITaskItem::CUITaskItem(CUIEventsWnd* w) : m_GameTask(NULL), m_TaskObjectiveIdx(U16(-1)), m_EventsWnd(w)
+CUITaskItem::CUITaskItem(CUIEventsWnd* w) : m_GameTask(NULL), m_TaskObjectiveIdx(unsigned short(-1)), m_EventsWnd(w)
 { }
 
 CUITaskItem::~CUITaskItem( )
 { }
 
-void CUITaskItem::SetGameTask(CGameTask* gt, U16 obj_idx)
+void CUITaskItem::SetGameTask(CGameTask* gt, unsigned short obj_idx)
 {
 	m_GameTask = gt;
 	m_TaskObjectiveIdx = obj_idx;
@@ -97,7 +97,7 @@ void CUITaskRootItem::Init( )
 	xml_init.Init3tButton(uiXml, "task_root_item:switch_description_btn", 0, m_switchDescriptionBtn);
 }
 
-void CUITaskRootItem::SetGameTask(CGameTask* gt, U16 obj_idx)
+void CUITaskRootItem::SetGameTask(CGameTask* gt, unsigned short obj_idx)
 {
 	inherited::SetGameTask(gt, obj_idx);
 
@@ -243,7 +243,7 @@ void CUITaskSubItem::Init( )
 	m_accomplished_color = xml_init.GetColor(uiXml, "task_sub_item:description:text_colors:accomplished", 0, 0x00);
 }
 
-void CUITaskSubItem::SetGameTask(CGameTask* gt, U16 obj_idx)
+void CUITaskSubItem::SetGameTask(CGameTask* gt, unsigned short obj_idx)
 {
 	inherited::SetGameTask(gt, obj_idx);
 

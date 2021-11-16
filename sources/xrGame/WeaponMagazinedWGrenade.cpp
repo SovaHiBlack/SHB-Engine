@@ -452,10 +452,10 @@ void CWeaponMagazinedWGrenade::SwitchState(u32 S)
 	}
 }
 
-void CWeaponMagazinedWGrenade::OnEvent(CNetPacket& P, U16 type)
+void CWeaponMagazinedWGrenade::OnEvent(CNetPacket& P, unsigned short type)
 {
 	inherited::OnEvent(P, type);
-	U16 id;
+	unsigned short id;
 	switch (type)
 	{
 		case GE_OWNERSHIP_TAKE:

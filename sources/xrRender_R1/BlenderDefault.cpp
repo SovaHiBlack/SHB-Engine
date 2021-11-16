@@ -23,7 +23,7 @@ void	CBlender_default::Save(	IWriter& fs )
 {
 	IBlender::Save	(fs);
 }
-void	CBlender_default::Load(	IReader& fs, U16 version )
+void	CBlender_default::Load(	IReader& fs, unsigned short version )
 {
 	IBlender::Load	(fs,version);
 }

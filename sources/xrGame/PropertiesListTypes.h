@@ -494,7 +494,7 @@ inline xr_string draw_sprintf(xr_string& s, const Fvector3& V, int dec)
 }
 //------------------------------------------------------------------------------
 typedef NumericValue<unsigned char>	U8Value;
-typedef NumericValue<U16>	U16Value;
+typedef NumericValue<unsigned short>	U16Value;
 typedef NumericValue<u32>	U32Value;
 typedef NumericValue<signed char>	S8Value;
 typedef NumericValue<signed short>	S16Value;
@@ -590,7 +590,7 @@ public:
 };
 //------------------------------------------------------------------------------
 typedef TokenValue<unsigned char>	Token8Value;
-typedef TokenValue<U16>	Token16Value;
+typedef TokenValue<unsigned short>	Token16Value;
 typedef TokenValue<u32>	Token32Value;
 //------------------------------------------------------------------------------
 
@@ -615,7 +615,7 @@ public:
 };
 //------------------------------------------------------------------------------
 typedef RTokenValue<unsigned char>	RToken8Value;
-typedef RTokenValue<U16>RToken16Value;
+typedef RTokenValue<unsigned short>RToken16Value;
 typedef RTokenValue<u32>RToken32Value;
 //------------------------------------------------------------------------------
 

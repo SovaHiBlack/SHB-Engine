@@ -18,11 +18,11 @@ CSoundRender_Emitter*	CSoundRender_Core::i_play(ref_sound* S, BOOL _loop, float 
 
 void CSoundRender_Core::update	( const Fvector3& P, const Fvector3& D, const Fvector3& N )
 {
-	u32 it;
+	unsigned int it;
 
 	if (0==bReady)				return;
 	bLocked						= TRUE;
-	u32 new_tm					= Timer.GetElapsed_ms();
+	unsigned int new_tm					= Timer.GetElapsed_ms();
 	Timer_Delta					= new_tm-Timer_Value;
 	float dt					= float(Timer_Delta)/1000.f;
 	Timer_Value					= new_tm;
@@ -69,7 +69,7 @@ void CSoundRender_Core::update	( const Fvector3& P, const Fvector3& D, const Fve
 	//Msg	("! update: targets");
 	s_targets_defer.clear	();
 	s_targets_pu			++;
-	// u32 PU				= s_targets_pu%s_targets.size();
+	// unsigned int PU				= s_targets_pu%s_targets.size();
 	for (it=0; it<s_targets.size(); it++)
 	{
 		CSoundRender_Target*	T	= s_targets	[it];
@@ -124,11 +124,11 @@ void CSoundRender_Core::update	( const Fvector3& P, const Fvector3& D, const Fve
 	bLocked							= FALSE;
 }
 
-static	u32	g_saved_event_count		= 0;
+static	unsigned int	g_saved_event_count		= 0;
 void	CSoundRender_Core::update_events		()
 {
 	g_saved_event_count				= s_events.size();
-	for (u32 it=0; it<s_events.size(); it++)
+	for (unsigned int it=0; it<s_events.size(); it++)
 	{
 		event&	E	= s_events[it];
 		Handler		(E.first,E.second);
@@ -140,7 +140,7 @@ void	CSoundRender_Core::statistic			(CSound_stats*  dest, CSound_stats_ext*  ext
 {
 	if (dest){
 		dest->_rendered		= 0;
-		for (u32 it=0; it<s_targets.size(); it++)	{
+		for (unsigned int it=0; it<s_targets.size(); it++)	{
 			CSoundRender_Target*	T	= s_targets	[it];
 			if (T->get_emitter() && T->get_Rendering())	dest->_rendered++;
 		}
@@ -151,7 +151,7 @@ void	CSoundRender_Core::statistic			(CSound_stats*  dest, CSound_stats_ext*  ext
 		cache.stats_clear	();
 	}
 	if (ext){
-		for (u32 it=0; it<s_emitters.size(); it++){
+		for (unsigned int it=0; it<s_emitters.size(); it++){
 			CSoundRender_Emitter*	_E = s_emitters[it];	
 			CSound_stats_ext::SItem _I;
 			_I._3D					= !_E->b2D;
@@ -190,11 +190,11 @@ float CSoundRender_Core::get_occlusion_to( const Fvector3& hear_pt, const Fvecto
 
 		geom_DB.ray_options		(CDB::OPT_CULL);
 		geom_DB.ray_query		(geom_SOM,hear_pt,dir,range);
-		u32 r_cnt				= geom_DB.r_count();
+		unsigned int r_cnt				= geom_DB.r_count();
 		CDB::RESULT*	_B 		= geom_DB.r_begin();
 		  
 		if (0!=r_cnt){
-			for (u32 k=0; k<r_cnt; k++){
+			for (unsigned int k=0; k<r_cnt; k++){
 				CDB::RESULT* R	 = _B+k;
 				occ_value		*= *(float*)&R->dummy;
 			}
@@ -245,11 +245,11 @@ float CSoundRender_Core::get_occlusion(Fvector3& P, float R, Fvector3* occ)
 	if (0!=geom_SOM){
 		geom_DB.ray_options		(CDB::OPT_CULL);
 		geom_DB.ray_query		(geom_SOM,base,dir,range);
-		u32 r_cnt				= geom_DB.r_count();
+		unsigned int r_cnt				= geom_DB.r_count();
 		CDB::RESULT*	_B 		= geom_DB.r_begin();
 
 		if (0!=r_cnt){
-			for (u32 k=0; k<r_cnt; k++){
+			for (unsigned int k=0; k<r_cnt; k++){
 				CDB::RESULT* R	 = _B+k;
 				occ_value		*= *(float*)&R->dummy;
 			}

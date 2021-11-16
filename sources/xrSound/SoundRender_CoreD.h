@@ -14,7 +14,7 @@ class CSoundRender_CoreD: public CSoundRender_Core
 	typedef CSoundRender_Core inherited;
 	struct SListener 
 	{
-		u32				dwSize;
+		unsigned int				dwSize;
 		Fvector3			vPosition;
 		Fvector3			vVelocity;
 		Fvector3			vOrientFront;
@@ -23,7 +23,7 @@ class CSoundRender_CoreD: public CSoundRender_Core
 		float			fRolloffFactor;
 		float			fDopplerFactor;
 	};
-	BOOL 				EAXQuerySupport			(const GUID* guid, u32 prop);
+	BOOL 				EAXQuerySupport			(const GUID* guid, unsigned int prop);
 	BOOL 				EAXTestSupport			(BOOL bDeferred);
 
 public:
@@ -37,8 +37,8 @@ public:
 
 private:
 	virtual void			update_listener			(const Fvector3& P, const Fvector3& D, const Fvector3& N, float dt);
-	virtual void			i_eax_set				(const GUID* guid, u32 prop, void* val, u32 sz);
-	virtual void			i_eax_get				(const GUID* guid, u32 prop, void* val, u32 sz);
+	virtual void			i_eax_set				(const GUID* guid, unsigned int prop, void* val, unsigned int sz);
+	virtual void			i_eax_get				(const GUID* guid, unsigned int prop, void* val, unsigned int sz);
 
 public:
 							CSoundRender_CoreD		();

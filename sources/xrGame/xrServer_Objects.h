@@ -146,7 +146,7 @@
 // 117 - CSE_ALifeLevelChanger			appended with property m_bSilentMode
 // 118 - CALifeHumanBrain				removed property m_tpKnownCustomers, sad but true
 //------------------------------------------------------------------------------
-#define SPAWN_VERSION	U16(118)
+#define SPAWN_VERSION	unsigned short(118)
 
 SERVER_ENTITY_DECLARE_BEGIN2(CSE_Shape, ISE_Shape, CShapeData)
 public:
@@ -189,17 +189,17 @@ enum
 };
 Flags8							_flags;
 SPHBonesData					saved_bones;
-U16								source_id;//for break only
+unsigned short								source_id;//for break only
 virtual void					load(CNetPacket& tNetPacket);
 virtual bool					need_save( ) const
 {
 	return(!_flags.test(flNotSave));
 }
-virtual void					set_sorce_id(U16 si)
+virtual void					set_sorce_id(unsigned short si)
 {
 	source_id = si;
 }
-virtual U16						get_source_id( )
+virtual unsigned short						get_source_id( )
 {
 	return source_id;
 }

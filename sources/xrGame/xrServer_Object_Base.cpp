@@ -31,10 +31,10 @@ IPropHelper& PHelper( )
 const char* script_section = "script";
 const char* current_version = "current_server_entity_version";
 
-inline U16	script_server_object_version( )
+inline unsigned short	script_server_object_version( )
 {
 	static bool initialized = false;
-	static U16 script_version = 0;
+	static unsigned short script_version = 0;
 	if (!initialized)
 	{
 		initialized = true;
@@ -181,11 +181,11 @@ void CSE_Abstract::Spawn_Write(CNetPacket& tNetPacket, BOOL bLocal)
 	s_flags.set(M_SPAWN_VERSION, TRUE);
 	if (bLocal)
 	{
-		tNetPacket.w_u16(U16(s_flags.flags | M_SPAWN_OBJECT_LOCAL));
+		tNetPacket.w_u16(unsigned short(s_flags.flags | M_SPAWN_OBJECT_LOCAL));
 	}
 	else
 	{
-		tNetPacket.w_u16(U16(s_flags.flags & ~(M_SPAWN_OBJECT_LOCAL | M_SPAWN_OBJECT_ASPLAYER)));
+		tNetPacket.w_u16(unsigned short(s_flags.flags & ~(M_SPAWN_OBJECT_LOCAL | M_SPAWN_OBJECT_ASPLAYER)));
 	}
 
 	tNetPacket.w_u16(SPAWN_VERSION);
@@ -193,7 +193,7 @@ void CSE_Abstract::Spawn_Write(CNetPacket& tNetPacket, BOOL bLocal)
 	tNetPacket.w_u16(script_server_object_version( ));
 
 	//client object custom data serialization SAVE
-	U16 client_data_size = (U16) client_data.size( ); //не может быть больше 256 байт
+	unsigned short client_data_size = (unsigned short) client_data.size( ); //не может быть больше 256 байт
 	tNetPacket.w_u16(client_data_size);
 //	Msg							("SERVER:saving:save:%d bytes:%d:%s",client_data_size,ID,s_name_replace ? s_name_replace : "");
 	if (client_data_size > 0)
@@ -213,16 +213,16 @@ void CSE_Abstract::Spawn_Write(CNetPacket& tNetPacket, BOOL bLocal)
 	u32	position = tNetPacket.w_tell( );
 	tNetPacket.w_u16(0);
 	STATE_Write(tNetPacket);
-	U16 size = U16(tNetPacket.w_tell( ) - position);
+	unsigned short size = unsigned short(tNetPacket.w_tell( ) - position);
 
 	R_ASSERT3((m_tClassID == CLSID_SPECTATOR) || (size > sizeof(size)), "object isn't successfully saved, get your backup :(", name_replace( ));
 
-	tNetPacket.w_seek(position, &size, sizeof(U16));
+	tNetPacket.w_seek(position, &size, sizeof(unsigned short));
 }
 
 BOOL CSE_Abstract::Spawn_Read(CNetPacket& tNetPacket)
 {
-	U16							dummy16;
+	unsigned short							dummy16;
 	// generic
 	tNetPacket.r_begin(dummy16);
 	R_ASSERT(M_SPAWN == dummy16);
@@ -250,7 +250,7 @@ BOOL CSE_Abstract::Spawn_Read(CNetPacket& tNetPacket)
 
 	if (0 == m_wVersion)
 	{
-		tNetPacket.r_pos -= sizeof(U16);
+		tNetPacket.r_pos -= sizeof(unsigned short);
 		m_wVersion = 0;
 		return					FALSE;
 	}
@@ -265,7 +265,7 @@ BOOL CSE_Abstract::Spawn_Read(CNetPacket& tNetPacket)
 	//client object custom data serialization LOAD
 	if (m_wVersion > 70)
 	{
-		U16 client_data_size = (m_wVersion > 93) ? tNetPacket.r_u16( ) : tNetPacket.r_u8( ); //не может быть больше 256 байт
+		unsigned short client_data_size = (m_wVersion > 93) ? tNetPacket.r_u16( ) : tNetPacket.r_u8( ); //не может быть больше 256 байт
 		if (client_data_size > 0)
 		{
 //			Msg					("SERVER:loading:load:%d bytes:%d:%s",client_data_size,ID,s_name_replace ? s_name_replace : "");
@@ -310,7 +310,7 @@ BOOL CSE_Abstract::Spawn_Read(CNetPacket& tNetPacket)
 		}
 	}
 
-	U16							size;
+	unsigned short							size;
 	tNetPacket.r_u16(size);	// size
 	R_ASSERT3((m_tClassID == CLSID_SPECTATOR) || (size > sizeof(size)), "cannot read object, which is not successfully saved :(", name_replace( ));
 	STATE_Read(tNetPacket, size);
@@ -320,7 +320,7 @@ BOOL CSE_Abstract::Spawn_Read(CNetPacket& tNetPacket)
 void CSE_Abstract::load(CNetPacket& tNetPacket)
 {
 	CPureServerObject::load(tNetPacket);
-	U16 client_data_size = (m_wVersion > 93) ? tNetPacket.r_u16( ) : tNetPacket.r_u8( ); //не может быть больше 256 байт
+	unsigned short client_data_size = (m_wVersion > 93) ? tNetPacket.r_u16( ) : tNetPacket.r_u8( ); //не может быть больше 256 байт
 	if (client_data_size > 0)
 	{
 #ifdef DEBUG

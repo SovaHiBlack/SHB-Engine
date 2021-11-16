@@ -51,7 +51,7 @@ void CPEDef::ExecuteAnimate(Particle *particles, u32 p_cnt, float dt)
 		float f						= (float(m.frame)/255.f+((m.flags.is(Particle::ANIMATE_CCW))?-1.f:1.f)*speedFac);
 		if (f>m_Frame.m_iFrameCount)f-=m_Frame.m_iFrameCount;
 		if (f<0.f)					f+=m_Frame.m_iFrameCount;
-		m.frame						= (U16)iFloor(f*255.f);
+		m.frame						= (unsigned short)iFloor(f*255.f);
 	}
 }
 
@@ -116,7 +116,7 @@ void CPEDef::ExecuteCollision(PAPI::Particle* particles, u32 p_cnt, float dt, CP
 BOOL CPEDef::Load(IReader& F)
 {
 	R_ASSERT		(F.find_chunk(PED_CHUNK_VERSION));
-	U16 version		= F.r_u16();
+	unsigned short version		= F.r_u16();
 
 	if (version!=PED_VERSION)
 		return FALSE;

@@ -9,7 +9,7 @@
 #include "ai_space.h"
 #include "alife_object_registry.h"
 
-xr_string CServer::ent_name_safe(U16 eid)
+xr_string CServer::ent_name_safe(unsigned short eid)
 {
 	string1024						buff;
 	CSE_Abstract* e_dest = game->get_entity_from_eid(eid);
@@ -25,11 +25,11 @@ xr_string CServer::ent_name_safe(U16 eid)
 	return buff;
 }
 
-void CServer::Process_event_destroy(CNetPacket& P, CClientID sender, u32 time, U16 ID, CNetPacket* pEPack)
+void CServer::Process_event_destroy(CNetPacket& P, CClientID sender, u32 time, unsigned short ID, CNetPacket* pEPack)
 {
 	u32								MODE = net_flags(TRUE, TRUE);
 	// Parse message
-	U16								id_dest = ID;
+	unsigned short								id_dest = ID;
 
 #ifdef SERVER_DESTROY_OBJECT_LOG
 	Msg("*debug -- sv destroy object %s [%d]", ent_name_safe(id_dest).c_str( ), Device.dwFrame);
@@ -48,7 +48,7 @@ void CServer::Process_event_destroy(CNetPacket& P, CClientID sender, u32 time, U
 	xrClientData* c_from = ID_to_client(sender);	// клиент, кто прислал
 	R_ASSERT(c_from);
 	R_ASSERT(c_dest == c_from || GetServerClient( ) == c_from);
-	U16								parent_id = e_dest->ID_Parent;
+	unsigned short								parent_id = e_dest->ID_Parent;
 
 	//---------------------------------------------
 	CNetPacket	P2, * pEventPack = pEPack;

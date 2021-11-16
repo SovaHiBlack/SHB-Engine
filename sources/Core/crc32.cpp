@@ -1,13 +1,13 @@
 #include "stdafx.h"
 
 static BOOL crc32_ready = FALSE;
-static U32	crc32_table[256];					// Lookup table array 
+static unsigned int	crc32_table[256];					// Lookup table array 
 
-inline U32		Reflect(U32 ref, char ch)		// Reflects CRC bits in the lookup table 
+inline unsigned int		Reflect(unsigned int ref, char ch)		// Reflects CRC bits in the lookup table 
 {
 	// Used only by Init_CRC32_Table(). 
 
-	U32 value(0);
+	unsigned int value(0);
 
 	// Swap bit 0 for bit 7 
 	// bit 1 for bit 6, etc. 
@@ -30,7 +30,7 @@ void			crc32_init( )
 
 	// This is the official polynomial used by CRC-32 
 	// in PKZip, WinZip and Ethernet. 
-	U32 ulPolynomial = 0x04c11db7;
+	unsigned int ulPolynomial = 0x04c11db7;
 
 	// 256 values representing ASCII character codes. 
 	for (int i = 0; i <= 0xFF; i++)
@@ -45,7 +45,7 @@ void			crc32_init( )
 	}
 }
 
-U32				crc32(const void* P, U32 len)
+unsigned int				crc32(const void* P, unsigned int len)
 {
 	if (!crc32_ready)
 	{
@@ -63,7 +63,7 @@ U32				crc32(const void* P, U32 len)
 	// where zero bits are required. 
 
 	// Start out with all bits set high. 
-	U32		ulCRC = 0xffffffff;
+	unsigned int		ulCRC = 0xffffffff;
 	unsigned char* buffer = (unsigned char*) P;
 
 	// Perform the algorithm on each character 

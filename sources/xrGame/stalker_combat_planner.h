@@ -22,7 +22,7 @@ private:
 	typedef CActionPlannerActionScript<CStalker> inherited;
 
 	u32					m_last_level_time;
-	U16					m_last_enemy_id;
+	unsigned short					m_last_enemy_id;
 	bool				m_last_wounded;
 
 protected:

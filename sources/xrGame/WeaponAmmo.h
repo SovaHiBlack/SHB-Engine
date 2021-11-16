@@ -31,7 +31,7 @@ public:
 	unsigned char												m_u8ColorID;
 	unsigned char												m_LocalAmmoType;
 
-	U16												bullet_material_idx;
+	unsigned short												bullet_material_idx;
 	Flags8											m_flags;
 
 	CSharedString										m_InvShortName;
@@ -76,8 +76,8 @@ public:
 	float											fWallmarkSize;
 	unsigned char												m_u8ColorID;
 
-	U16												m_boxSize;
-	U16												m_boxCurr;
+	unsigned short												m_boxSize;
+	unsigned short												m_boxCurr;
 	bool											m_tracer;
 
 	virtual CInventoryItem* can_make_killing(const CInventory* inventory) const;

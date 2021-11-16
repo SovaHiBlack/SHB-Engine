@@ -145,7 +145,7 @@ public:
 		SERVER_ENTITY_DECLARE_BEGIN0(CSE_ALifeGroupAbstract)
 		ALife::OBJECT_VECTOR			m_tpMembers;
 	bool							m_bCreateSpawnPositions;
-	U16								m_wCount;
+	unsigned short								m_wCount;
 	ALife::_TIME_ID					m_tNextBirthTime;
 
 	CSE_ALifeGroupAbstract(const char* caSection);
@@ -183,7 +183,7 @@ public:
 		virtual							~CSE_ALifeGroupTemplate( )
 		{ }
 
-		virtual void STATE_Read(CNetPacket& tNetPacket, U16 size)
+		virtual void STATE_Read(CNetPacket& tNetPacket, unsigned short size)
 		{
 			inherited1::STATE_Read(tNetPacket, size);
 			inherited2::STATE_Read(tNetPacket, size);

@@ -20,7 +20,7 @@
 
 struct SStatData
 {
-	U16 id;
+	unsigned short id;
 	CSE_ALifeTraderAbstract* trader;
 	bool operator == (const SStatData& d1)
 	{
@@ -98,7 +98,7 @@ bool GreaterRankPred(const SStatData& h1, const SStatData& h2)
 	return (h1.trader->m_rank > h2.trader->m_rank);
 }
 
-extern CSE_ALifeTraderAbstract* ch_info_get_from_id(U16 id);
+extern CSE_ALifeTraderAbstract* ch_info_get_from_id(unsigned short id);
 
 int get_actor_ranking( )
 {
@@ -157,7 +157,7 @@ void CUIStalkersRankingWnd::FillList( )
 	}
 }
 
-void CUIStalkersRankingWnd::ShowHumanInfo(U16 id)
+void CUIStalkersRankingWnd::ShowHumanInfo(unsigned short id)
 {
 	UICharacterInfo->InitCharacter(id);
 }
@@ -212,7 +212,7 @@ void CUIStalkersRankingWnd::Reset( )
 	inherited::Reset( );
 }
 
-void add_human_to_top_list(U16 id)
+void add_human_to_top_list(unsigned short id)
 {
 	CSE_ALifeTraderAbstract* t = ch_info_get_from_id(id);
 	SStatData d;
@@ -229,7 +229,7 @@ void add_human_to_top_list(U16 id)
 	g_all_statistic_humans.push_back(d);
 }
 
-void remove_human_from_top_list(U16 id)
+void remove_human_from_top_list(unsigned short id)
 {
 	CSE_ALifeTraderAbstract* t = ch_info_get_from_id(id);
 	SStatData d;
@@ -242,7 +242,7 @@ void remove_human_from_top_list(U16 id)
 	}
 }
 
-CUIStalkerRankingInfoItem::CUIStalkerRankingInfoItem(CUIStalkersRankingWnd* w) : m_StalkersRankingWnd(w), m_humanID(U16(-1))
+CUIStalkerRankingInfoItem::CUIStalkerRankingInfoItem(CUIStalkersRankingWnd* w) : m_StalkersRankingWnd(w), m_humanID(unsigned short(-1))
 { }
 
 void CUIStalkerRankingInfoItem::Init(CUIXml* xml, const char* path, int idx)

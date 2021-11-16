@@ -19,7 +19,7 @@ class CALifeSmartTerrainTask;
 #define INHERIT_ABSTRACT \
 	INHERIT_PURE\
 	DEFINE_LUA_WRAPPER_METHOD_R2P1_V1	(STATE_Write,	CNetPacket)\
-	DEFINE_LUA_WRAPPER_METHOD_R2P1_V2	(STATE_Read,	CNetPacket,	U16)\
+	DEFINE_LUA_WRAPPER_METHOD_R2P1_V2	(STATE_Read,	CNetPacket,	unsigned short)\
 	DEFINE_LUA_WRAPPER_METHOD_R2P2_V2	(FillProps,		const char*,	PropItemsVec)\
 	DEFINE_LUA_WRAPPER_METHOD_0			(init,			CSE_Abstract*)
 

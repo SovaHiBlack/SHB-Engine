@@ -223,7 +223,7 @@ void CUILines::ParseText( )
 	if (m_pFont->IsMultibyte( ))
 	{
 #define UBUFFER_SIZE 100
-		U16	aMarkers[UBUFFER_SIZE];
+		unsigned short	aMarkers[UBUFFER_SIZE];
 		CUILine tmp_line;
 		char szTempLine[MAX_MB_CHARS];
 		float fTargetWidth = 1.0f;
@@ -251,10 +251,10 @@ void CUILines::ParseText( )
 			{
 				const char* pszText = line->m_subLines[i].m_text.c_str( );
 				const u32 tcolor = line->m_subLines[i].m_color;
-				U16 uFrom = 0, uPartLen = 0;
+				unsigned short uFrom = 0, uPartLen = 0;
 				VERIFY(pszText);
-				U16 nMarkers = m_pFont->SplitByWidth(aMarkers, UBUFFER_SIZE, fTargetWidth, pszText);
-				for (U16 j = 0; j < nMarkers; j++)
+				unsigned short nMarkers = m_pFont->SplitByWidth(aMarkers, UBUFFER_SIZE, fTargetWidth, pszText);
+				for (unsigned short j = 0; j < nMarkers; j++)
 				{
 					uPartLen = aMarkers[j] - uFrom;
 					VERIFY((uPartLen > 0) && (uPartLen < MAX_MB_CHARS));

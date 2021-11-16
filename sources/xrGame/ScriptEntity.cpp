@@ -728,7 +728,7 @@ bool CScriptEntity::bfScriptAnimation( )
 		const char* animation_id = *GetCurrentAction( )->m_tAnimationAction.m_caAnimationToPlay;
 		MotionID animation = skeleton_animated->ID_Cycle(animation_id);
 		CBlend* result = nullptr;
-		for (U16 i = 0; i < MAX_PARTS; ++i)
+		for (unsigned short i = 0; i < MAX_PARTS; ++i)
 		{
 			CBlend* blend = 0;
 			if (result)

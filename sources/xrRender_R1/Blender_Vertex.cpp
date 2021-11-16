@@ -25,7 +25,7 @@ void	CBlender_Vertex::Save	( IWriter& fs	)
 	IBlender::Save	(fs);
 }
 
-void	CBlender_Vertex::Load	( IReader& fs, U16 version	)
+void	CBlender_Vertex::Load	( IReader& fs, unsigned short version	)
 {
 	IBlender::Load	(fs,version);
 }

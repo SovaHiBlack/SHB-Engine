@@ -35,7 +35,7 @@ void CServer::SLS_Default( )
 			P.B.count = S->length( );
 			S->r(P.B.data, P.B.count);
 
-			U16				ID;
+			unsigned short				ID;
 			P.r_begin(ID);
 			R_ASSERT(M_SPAWN == ID);
 			CClientID clientID;
@@ -82,7 +82,7 @@ void CServer::SLS_Default( )
 	packet.w_begin(M_SPAWN);
 	_actor->Spawn_Write(packet, TRUE);
 
-	U16						id;
+	unsigned short						id;
 	packet.r_begin(id);
 	R_ASSERT(id == M_SPAWN);
 	CClientID clientID;

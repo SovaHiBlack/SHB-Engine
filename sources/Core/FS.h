@@ -273,9 +273,9 @@ public:
 		r(&tmp, sizeof(tmp));
 		return tmp;
 	}
-	inline U32			r_u32( )
+	inline unsigned int			r_u32( )
 	{
-		U32 tmp;
+		unsigned int tmp;
 		r(&tmp, sizeof(tmp));
 		return tmp;
 	}

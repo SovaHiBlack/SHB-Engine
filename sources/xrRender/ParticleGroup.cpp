@@ -32,7 +32,7 @@ void CPGDef::SetName(const char* name)
 BOOL CPGDef::Load(IReader& F)
 {
 	R_ASSERT		(F.find_chunk(PGD_CHUNK_VERSION));
-	U16 version		= F.r_u16();
+	unsigned short version		= F.r_u16();
 
 	if (version!=PGD_VERSION){
 		Log			("!Unsupported PG version. Load failed.");

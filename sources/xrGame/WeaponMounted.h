@@ -16,11 +16,11 @@ private:
 	using inherited = CPHShellHolder;
 
 	CCameraBase* camera;
-	U16						fire_bone;
-	U16						actor_bone;
-	U16						rotate_x_bone;
-	U16						rotate_y_bone;
-	U16						camera_bone;
+	unsigned short						fire_bone;
+	unsigned short						actor_bone;
+	unsigned short						rotate_x_bone;
+	unsigned short						rotate_y_bone;
+	unsigned short						camera_bone;
 
 	Fvector3				fire_pos;
 	Fvector3				fire_dir;

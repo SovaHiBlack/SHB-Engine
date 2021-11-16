@@ -24,7 +24,7 @@ CCartridge::CCartridge( )
 	m_buckShot = 1;
 	m_impair = 1.f;
 
-	bullet_material_idx = U16(-1);
+	bullet_material_idx = unsigned short(-1);
 }
 
 void CCartridge::Load(const char* section, unsigned char LocalAmmoType)
@@ -65,7 +65,7 @@ void CCartridge::Load(const char* section, unsigned char LocalAmmoType)
 	}
 
 	bullet_material_idx = GMLib.GetMaterialIdx(BULLET_MATERIAL_NAME);
-	VERIFY(U16(-1) != bullet_material_idx);
+	VERIFY(unsigned short(-1) != bullet_material_idx);
 	VERIFY(fWallmarkSize > 0);
 
 	m_InvShortName = CStringTable( ).translate(pSettings->r_string(section, "inv_name_short"));
@@ -107,7 +107,7 @@ void CWeaponAmmo::Load(const char* section)
 	fWallmarkSize = pSettings->r_float(section, "wm_size");
 	R_ASSERT(fWallmarkSize > 0);
 
-	m_boxSize = (U16) pSettings->r_s32(section, "box_size");
+	m_boxSize = (unsigned short) pSettings->r_s32(section, "box_size");
 	m_boxCurr = m_boxSize;
 }
 

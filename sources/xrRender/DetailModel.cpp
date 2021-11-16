@@ -13,7 +13,7 @@ void CDetail::Unload	()
 	shader.destroy		();
 }
 
-void CDetail::transfer	(Fmatrix& mXform, fvfVertexOut* vDest, u32 C, U16* iDest, u32 iOffset)
+void CDetail::transfer	(Fmatrix& mXform, fvfVertexOut* vDest, u32 C, unsigned short* iDest, u32 iOffset)
 {
 	// Transfer vertices
 	{
@@ -38,11 +38,11 @@ void CDetail::transfer	(Fmatrix& mXform, fvfVertexOut* vDest, u32 C, U16* iDest,
 		LPDWORD	dit		= LPDWORD(iDest);
 		for		(; sit!=send; dit++,sit++)	*dit=*sit+item;
 		if		(number_indices&1)	
-			iDest[number_indices-1]= U16(indices[number_indices-1]+ U16(iOffset));
+			iDest[number_indices-1]= unsigned short(indices[number_indices-1]+ unsigned short(iOffset));
 	}
 }
 
-void CDetail::transfer	(Fmatrix& mXform, fvfVertexOut* vDest, u32 C, U16* iDest, u32 iOffset, float du, float dv)
+void CDetail::transfer	(Fmatrix& mXform, fvfVertexOut* vDest, u32 C, unsigned short* iDest, u32 iOffset, float du, float dv)
 {
 	// Transfer vertices
 	{
@@ -67,7 +67,7 @@ void CDetail::transfer	(Fmatrix& mXform, fvfVertexOut* vDest, u32 C, U16* iDest,
 		LPDWORD	dit		= LPDWORD(iDest);
 		for		(; sit!=send; dit++,sit++)	*dit=*sit+item;
 		if		(number_indices&1)	
-			iDest[number_indices-1]= U16(indices[number_indices-1]+ U16(iOffset));
+			iDest[number_indices-1]= unsigned short(indices[number_indices-1]+ unsigned short(iOffset));
 	}
 }
 
@@ -93,14 +93,14 @@ void CDetail::Load		(IReader* S)
 	S->r			(vertices,size_vertices);
 	
 	// Indices
-	u32				size_indices		= number_indices*sizeof(U16);
-	indices			= xr_alloc<U16>						(number_indices);
+	u32				size_indices		= number_indices*sizeof(unsigned short);
+	indices			= xr_alloc<unsigned short>						(number_indices);
 	S->r			(indices,size_indices);
 	
 	// Validate indices
 #ifdef DEBUG
 	for (u32 idx = 0; idx<number_indices; idx++)
-		R_ASSERT	(indices[idx]<(U16)number_vertices);
+		R_ASSERT	(indices[idx]<(unsigned short)number_vertices);
 #endif
 
 	// Calc BB & SphereRadius
@@ -116,7 +116,7 @@ void CDetail::Load		(IReader* S)
 
 void CDetail::Optimize	()
 {
-	xr_vector<U16>		vec_indices,	vec_permute;
+	xr_vector<unsigned short>		vec_indices,	vec_permute;
 	const int			cache			= HW.Caps.geometry.dwVertexCache;
 
 	// Stripify
@@ -130,7 +130,7 @@ void CDetail::Optimize	()
 		// Msg					("* DM: %d verts, %d indices, VT: %d/%d",number_vertices,number_indices,vt_old,vt_new);
 
 		// Copy faces
-		CopyMemory			(indices,&*vec_indices.begin(),vec_indices.size()*sizeof(U16));
+		CopyMemory			(indices,&*vec_indices.begin(),vec_indices.size()*sizeof(unsigned short));
 
 		// Permute vertices
 		xr_vector<fvfVertexIn>	verts;

@@ -442,8 +442,8 @@ void CShootingObject::FireBullet(const Fvector3& pos,
 	const Fvector3& shot_dir,
 	float fire_disp,
 	const CCartridge& cartridge,
-	U16 parent_id,
-	U16 weapon_id,
+	unsigned short parent_id,
+	unsigned short weapon_id,
 	bool send_hit)
 {
 	Fvector3 dir;

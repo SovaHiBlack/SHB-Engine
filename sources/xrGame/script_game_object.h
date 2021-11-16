@@ -454,7 +454,7 @@ public:
 	const CCoverPoint* best_cover(const Fvector3& position, const Fvector3& enemy_position, float radius, float min_enemy_distance, float max_enemy_distance);
 	const CCoverPoint* safe_cover(const Fvector3& position, float radius, float min_distance);
 	CScriptIniFile* spawn_ini( ) const;
-	bool				active_zone_contact(U16 id);
+	bool				active_zone_contact(unsigned short id);
 
 	void				add_restrictions(const char* out, const char* in);
 	void				remove_restrictions(const char* out, const char* in);

@@ -27,7 +27,7 @@ protected:
 	Fvector3		m_vCurrentShootDir;
 	Fvector3		m_vCurrentShootPos;
 	//ID персонажа который иницировал действие
-	U16			m_iCurrentParentID;
+	unsigned short			m_iCurrentParentID;
 
 //////////////////////////////////////////////////////////////////////////
 // Fire Params
@@ -39,8 +39,8 @@ protected:
 		const Fvector3& dir,
 		float fire_disp,
 		const CCartridge& cartridge,
-		U16 parent_id,
-		U16 weapon_id,
+		unsigned short parent_id,
+		unsigned short weapon_id,
 		bool send_hit);
 
 	virtual void			FireStart( );

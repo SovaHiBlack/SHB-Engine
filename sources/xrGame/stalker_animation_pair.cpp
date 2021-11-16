@@ -47,7 +47,7 @@ void CStalkerAnimationPair::play_global_animation	(CKinematicsAnimated *skeleton
 #endif
 {
 	m_blend				= 0;
-	for (U16 i=0; i<MAX_PARTS; ++i) {
+	for (unsigned short i=0; i<MAX_PARTS; ++i) {
 #ifdef USE_HEAD_BONE_PART_FAKE
 		if (!(bone_part & (1 << i)))
 			continue;

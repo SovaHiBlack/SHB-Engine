@@ -17,12 +17,12 @@ class CProjector : public CScriptObject
 	ref_light		light_render;
 	ref_glow		glow_render;
 
-	U16				guid_bone;
+	unsigned short				guid_bone;
 
 	struct SBoneRot
 	{
 		float	velocity;
-		U16		id;
+		unsigned short		id;
 	} bone_x, bone_y;
 
 	struct

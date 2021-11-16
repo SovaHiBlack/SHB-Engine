@@ -21,13 +21,13 @@ protected:
 	void				UpdateRelation		( );
 	bool				hasOwner			( )
 	{
-		return (m_ownerID != U16(-1));
+		return (m_ownerID != unsigned short(-1));
 	}
 
 	//Biography
 	CUIScrollView*							pUIBio;
 	bool									m_bForceUpdate;
-	U16										m_ownerID;
+	unsigned short										m_ownerID;
 
 	enum
 	{
@@ -53,12 +53,12 @@ public:
 
 	void				Init				(float x, float y, float width, float height, CUIXml* xml_doc);
 	void				Init				(float x, float y, float width, float height, const char* xml_name);
-	void				InitCharacter		(U16 id);
+	void				InitCharacter		(unsigned short id);
 	void				ClearInfo			( );
 
 	virtual void		Update				( );
 
-	U16					OwnerID				( ) const
+	unsigned short					OwnerID				( ) const
 	{
 		return m_ownerID;
 	}

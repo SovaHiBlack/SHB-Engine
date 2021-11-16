@@ -2,11 +2,9 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-#if !defined(AFX_BLENDERDEFAULT_H__C12F64EE_43E7_4483_9AC3_29272E0401E7__INCLUDED_1)
-#define AFX_BLENDERDEFAULT_H__C12F64EE_43E7_4483_9AC3_29272E0401E7__INCLUDED_1
 #pragma once
 
-class CBlender_LaEmB : public IBlender  
+class CBlender_LaEmB : public IBlender
 {
 public:
 	string64	oT2_Name;		// name of secondary texture
@@ -26,12 +24,10 @@ public:
 	virtual		BOOL		canBeLMAPped()	{ return TRUE; }
 
 	virtual		void		Save			(IWriter&  fs);
-	virtual		void		Load			(IReader&	fs, U16 version);
+	virtual		void		Load			(IReader&	fs, unsigned short version);
 
 	virtual		void		Compile			(CBlender_Compile& C);
 
 	CBlender_LaEmB();
 	virtual ~CBlender_LaEmB();
 };
-
-#endif // !defined(AFX_BLENDERDEFAULT_H__C12F64EE_43E7_4483_9AC3_29272E0401E7__INCLUDED_1)

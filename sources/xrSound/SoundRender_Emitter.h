@@ -24,11 +24,11 @@ public:
 		stSimulating,
 		stSimulatingLooped,
 
-		stFORCEDWORD	= u32(-1)
+		stFORCEDWORD	= unsigned int(-1)
 	};
 
 #ifdef DEBUG
-	u32							dbg_ID;
+	unsigned int							dbg_ID;
 #endif // def DEBUG
 
 	CSoundRender_Target*		target;
@@ -42,7 +42,7 @@ public:
 	Fvector3					occluder	[3];
 
 	State						state;
-	u32							position;
+	unsigned int							position;
 	CSound_params				p_source;
 	CSoundRender_Environment	e_current;
 	CSoundRender_Environment	e_target;
@@ -52,11 +52,11 @@ public:
 	BOOL						b2D;
 	BOOL						bStopping;
 	BOOL						bRewind;
-	u32							dwTimeStarted;			// time of "Start"
-	u32							dwTimeToStop;			// time to "Stop"
-	u32							dwTimeToPropagade;
+	unsigned int							dwTimeStarted;			// time of "Start"
+	unsigned int							dwTimeToStop;			// time to "Stop"
+	unsigned int							dwTimeToPropagade;
 
-	u32							marker;
+	unsigned int							marker;
 	void						i_stop					();
 
 	void						Event_Propagade			();
@@ -73,8 +73,8 @@ public:
 	virtual void				set_priority			(float p)				{ priority_scale = p;									}
 	virtual	const CSound_params* get_params				( )						{ return &p_source;										}
 
-	void						fill_block				(void*	ptr, u32 size);
-	void						fill_data				(unsigned char*	ptr, u32 offset, u32 size);
+	void						fill_block				(void*	ptr, unsigned int size);
+	void						fill_data				(unsigned char*	ptr, unsigned int offset, unsigned int size);
 
 	float						priority				();
 	void						start					(ref_sound* _owner, BOOL _loop, float delay);
@@ -86,7 +86,7 @@ public:
 	virtual void				stop					(BOOL bDeffered);
 	void						pause					(BOOL bVal, int id);
 
-	virtual u32					play_time				( );
+	virtual unsigned int					play_time				( );
 
 	CSoundRender_Emitter		();
 	~CSoundRender_Emitter		();

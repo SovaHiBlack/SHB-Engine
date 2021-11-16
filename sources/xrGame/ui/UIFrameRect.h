@@ -39,7 +39,7 @@ public:
 	void		SetTextureColor(u32 cl);
 	void		SetVisiblePart(EFramePart p, BOOL b)
 	{
-		m_itm_mask.set(U16(1 << p), b);
+		m_itm_mask.set(unsigned short(1 << p), b);
 	}
 
 protected:

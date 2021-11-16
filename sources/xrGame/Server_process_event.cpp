@@ -19,8 +19,8 @@ void CServer::Process_event(CNetPacket& P, CClientID sender)
 #endif
 
 	u32			timestamp;
-	U16			type;
-	U16			destination;
+	unsigned short			type;
+	unsigned short			destination;
 	u32			MODE = net_flags(TRUE, TRUE);
 
 	// correct timestamp with server-unique-time (note: direct message correction)
@@ -41,7 +41,7 @@ void CServer::Process_event(CNetPacket& P, CClientID sender)
 	{
 		case GE_GAME_EVENT:
 		{
-			U16		game_event_type;
+			unsigned short		game_event_type;
 			P.r_u16(game_event_type);
 			game->AddDelayedEvent(P, game_event_type, timestamp, sender);
 		}
@@ -113,7 +113,7 @@ void CServer::Process_event(CNetPacket& P, CClientID sender)
 		break;
 		case GE_TRANSFER_AMMO:
 		{
-			U16					id_entity;
+			unsigned short					id_entity;
 			P.r_u16(id_entity);
 			CSE_Abstract* e_parent = receiver;	// кто забирает (для своих нужд)
 			CSE_Abstract* e_entity = game->get_entity_from_eid(id_entity);	// кто отдает
@@ -154,7 +154,7 @@ void CServer::Process_event(CNetPacket& P, CClientID sender)
 		break;
 		case GE_ASSIGN_KILLER:
 		{
-			U16							id_src;
+			unsigned short							id_src;
 			P.r_u16(id_src);
 
 			CSE_Abstract* e_dest = receiver;	// кто умер
@@ -170,7 +170,7 @@ void CServer::Process_event(CNetPacket& P, CClientID sender)
 				creature->m_killer_id = id_src;
 			}
 
-	//		Msg							("[%d][%s] killed [%d][%s]",id_src,id_src==U16(-1) ? "UNKNOWN" : game->get_entity_from_eid(id_src)->name_replace(),id_dest,e_dest->name_replace());
+	//		Msg							("[%d][%s] killed [%d][%s]",id_src,id_src==unsigned short(-1) ? "UNKNOWN" : game->get_entity_from_eid(id_src)->name_replace(),id_dest,e_dest->name_replace());
 		}
 		break;
 		case GE_CHANGE_VISUAL:
@@ -185,7 +185,7 @@ void CServer::Process_event(CNetPacket& P, CClientID sender)
 		case GE_DIE:
 		{
 			// Parse message
-			U16 id_src;
+			unsigned short id_src;
 			P.r_u16(id_src);
 
 			VERIFY(game && ID_to_client(sender));

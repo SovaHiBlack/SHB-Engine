@@ -17,7 +17,7 @@ protected:
 	CLAItem*									lanim;
 	float										time2hide;
 
-	U16											guid_bone;
+	unsigned short											guid_bone;
 	CSharedString									light_trace_bone;
 
 	float										m_delta_h;

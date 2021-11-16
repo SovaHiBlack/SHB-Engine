@@ -20,7 +20,7 @@ void CServer::Process_update(CNetPacket& P, CClientID sender)
 	while (!P.r_eof())
 	{
 		// find entity
-		U16				ID;
+		unsigned short				ID;
 		unsigned char				size;
 
 		P.r_u16			(ID);
@@ -68,8 +68,8 @@ void CServer::Process_save(CNetPacket& P, CClientID sender)
 	// while has information
 	while (!P.r_eof())
 	{	// find entity
-		U16				ID;
-		U16				size;
+		unsigned short				ID;
+		unsigned short				size;
 
 		P.r_u16			(ID);
 		P.r_u16			(size);

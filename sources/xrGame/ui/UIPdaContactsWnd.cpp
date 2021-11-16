@@ -164,7 +164,7 @@ void CUIPdaContactsWnd::Reset( )
 CUIPdaContactItem::~CUIPdaContactItem( )
 { }
 
-extern CSE_ALifeTraderAbstract* ch_info_get_from_id(U16 id);
+extern CSE_ALifeTraderAbstract* ch_info_get_from_id(unsigned short id);
 
 void CUIPdaContactItem::SetSelected(bool b)
 {

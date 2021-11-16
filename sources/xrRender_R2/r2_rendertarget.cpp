@@ -369,7 +369,7 @@ CRenderTarget::CRenderTarget		()
 				{
 					for (u32 x=0; x<TEX_material_LdotN; x++)
 					{
-						U16*	p	=	(U16*)		(LPBYTE (R.pBits) + slice*R.SlicePitch + y*R.RowPitch + x*2);
+						unsigned short*	p	=	(unsigned short*)		(LPBYTE (R.pBits) + slice*R.SlicePitch + y*R.RowPitch + x*2);
 						float	ld	=	float(x)	/ float	(TEX_material_LdotN-1);
 						float	ls	=	float(y)	/ float	(TEX_material_LdotH-1) + EPS_S;
 						ls			*=	powf(ld,1/32.f);
@@ -403,7 +403,7 @@ CRenderTarget::CRenderTarget		()
 						int		_d	=	clampr	(iFloor	(fd*255.5f),	0,255);
 						int		_s	=	clampr	(iFloor	(fs*255.5f),	0,255);
 						if ((y==(TEX_material_LdotH-1)) && (x==(TEX_material_LdotN-1)))	{ _d = 255; _s=255;	}
-						*p			= U16(_s*256 + _d);
+						*p			= unsigned short(_s*256 + _d);
 					}
 				}
 			}

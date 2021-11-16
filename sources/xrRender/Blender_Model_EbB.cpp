@@ -34,7 +34,7 @@ void	CBlender_Model_EbB::Save(	IWriter& fs )
 	xrPWRITE_PROP	(fs,"Alpha-Blend",		xrPID_BOOL,		oBlend);
 }
 
-void	CBlender_Model_EbB::Load(	IReader& fs, U16 version )
+void	CBlender_Model_EbB::Load(	IReader& fs, unsigned short version )
 {
 	IBlender::Load	(fs,version);
 	xrPREAD_MARKER	(fs);

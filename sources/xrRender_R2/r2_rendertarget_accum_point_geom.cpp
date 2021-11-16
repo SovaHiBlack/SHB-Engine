@@ -96,7 +96,7 @@ Fvector3 du_sphere_vertices[DU_SPHERE_NUMVERTEX]=
 		0.5927f,	-0.8054f,	0.0000
 };
 
-U16 du_sphere_faces[DU_SPHERE_NUMFACES*3]={
+unsigned short du_sphere_faces[DU_SPHERE_NUMFACES*3]={
 	14,	12,    0,
 		72,   13,   12,
 		14,   72,   12,

@@ -5,7 +5,7 @@
 #include "SoundRender_Emitter.h"
 #include "SoundRender_Target.h"
 
-void	CSoundRender_Emitter::fill_data		(unsigned char* _dest, u32 offset, u32 size)
+void	CSoundRender_Emitter::fill_data		(unsigned char* _dest, unsigned int offset, unsigned int size)
 {
 /*
 	Msg				("stream: %10s - %d",*source->fname,size);
@@ -19,7 +19,7 @@ void	CSoundRender_Emitter::fill_data		(unsigned char* _dest, u32 offset, u32 siz
 	ov_pcm_seek		(source->ovf,(psSoundFreq==sf_22K)?offset:offset/2);
 //	ov_pcm_seek		(source->ovf,0);
 	char* dest		= (char*)_dest;
-	u32	left		= size;
+	unsigned int	left		= size;
 	while (left)
 	{                     
 		int ret		= ov_read(source->ovf,dest,left,0,2,1,&dummy);
@@ -41,12 +41,12 @@ void	CSoundRender_Emitter::fill_data		(unsigned char* _dest, u32 offset, u32 siz
 //	Msg			("Final: %d - %d",size,size-left);
 /*/
 //*
-	u32		line_size						= SoundRender->cache.get_linesize();
-	u32		line							= offset / line_size;
+	unsigned int		line_size						= SoundRender->cache.get_linesize();
+	unsigned int		line							= offset / line_size;
 
 	// prepare for first line (it can be unaligned)
-	U32		line_offs						= offset - line*line_size;
-	U32		line_amount						= line_size - line_offs;
+	unsigned int		line_offs						= offset - line*line_size;
+	unsigned int		line_amount						= line_size - line_offs;
 	while	(size)
 	{
 		// cache access

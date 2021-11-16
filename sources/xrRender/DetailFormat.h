@@ -54,7 +54,7 @@
 	u32				index_count;
 
 	fvfVertexIn*	vertices;
-	U16*			indices;
+	unsigned short*			indices;
 */
 
 #define DO_NO_WAVING	0x0001
@@ -69,10 +69,10 @@ struct DetailHeader
 
 struct DetailPalette
 {
-	U16		a0 : 4;
-	U16		a1 : 4;
-	U16		a2 : 4;
-	U16		a3 : 4;
+	unsigned short		a0 : 4;
+	unsigned short		a1 : 4;
+	unsigned short		a2 : 4;
+	unsigned short		a3 : 4;
 };
 
 struct DetailSlot					// was(4+4+3*4+2 = 22b), now(8+2*4=16b)

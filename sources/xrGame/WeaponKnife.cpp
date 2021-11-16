@@ -20,7 +20,7 @@ CWeaponKnife::CWeaponKnife( ) : CWeapon("KNIFE")
 	m_attackStart = false;
 	SetState(eHidden);
 	SetNextState(eHidden);
-	knife_material_idx = (U16) -1;
+	knife_material_idx = (unsigned short) -1;
 }
 
 CWeaponKnife::~CWeaponKnife( )

@@ -21,7 +21,7 @@
 public:\
 	virtual void 			UPDATE_Read		(CNetPacket& P); \
 	virtual void 			UPDATE_Write	(CNetPacket& P); \
-	virtual void 			STATE_Read		(CNetPacket& P, U16 size); \
+	virtual void 			STATE_Read		(CNetPacket& P, unsigned short size); \
 	virtual void 			STATE_Write		(CNetPacket& P); \
 	SERVER_ENTITY_EDITOR_METHODS \
 };

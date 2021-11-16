@@ -52,8 +52,8 @@ void CSoundRender_Emitter::rewind()
 {
 	bStopping					=	FALSE;
 
-	u32 dwTime					=	SoundRender->Timer.GetElapsed_ms();
-	u32 dwDiff					=	dwTime-dwTimeStarted;
+	unsigned int dwTime					=	SoundRender->Timer.GetElapsed_ms();
+	unsigned int dwDiff					=	dwTime-dwTimeStarted;
 	dwTimeStarted				+=	dwDiff;
 	dwTimeToStop				+=	dwDiff;
 	dwTimeToPropagade			=	dwTime;

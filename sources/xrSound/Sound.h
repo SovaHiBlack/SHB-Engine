@@ -18,8 +18,8 @@ class	XRSOUND_API					CSound_stream_interface;
 class	XRSOUND_API					CSound_environment;
 
 //
-XRSOUND_API extern u32				psSoundFreq				;
-XRSOUND_API extern u32				psSoundModel			;
+XRSOUND_API extern unsigned int				psSoundFreq				;
+XRSOUND_API extern unsigned int				psSoundModel			;
 XRSOUND_API extern float			psSoundVEffects			;
 XRSOUND_API extern float			psSoundVFactor			;
 XRSOUND_API extern float			psSoundVMusic			;
@@ -33,34 +33,34 @@ XRSOUND_API extern int				psSoundCacheSizeMB		;
 enum {
 	ss_Hardware			= (1ul<<1ul),	//!< Use hardware mixing only
 	ss_EAX				= (1ul<<2ul),	//!< Use eax
-	ss_forcedword		= u32(-1)
+	ss_forcedword		= unsigned int(-1)
 };
 enum {
 	sf_22K,
 	sf_44K,
-	sf_forcedword = u32(-1)
+	sf_forcedword = unsigned int(-1)
 };
 enum {
 	sq_DEFAULT,
 	sq_NOVIRT,
 	sq_LIGHT,
 	sq_HIGH,
-	sq_forcedword = u32(-1)
+	sq_forcedword = unsigned int(-1)
 };
 enum {
 	sg_Undefined		= 0,
-	sg_SourceType		= u32(-1),
-	sg_forcedword		= u32(-1),
+	sg_SourceType		= unsigned int(-1),
+	sg_forcedword		= unsigned int(-1),
 };
 enum {
 	sm_Looped			= (1ul<<0ul),	//!< Looped
 	sm_2D				= (1ul<<1ul),	//!< 2D mode
-	sm_forcedword		= u32(-1),
+	sm_forcedword		= unsigned int(-1),
 };
 enum esound_type{
 	st_Effect			= 0,
 	st_Music			= 1,
-	st_forcedword		= u32(-1),
+	st_forcedword		= unsigned int(-1),
 };
 
 class CSound_UserDataVisitor;
@@ -143,9 +143,9 @@ public:
 	/*!
 		\sa stop()
 	*/
-	inline void					play					( CObject* O /*!< Object */,											u32 flags=0 /*!< Looping */, float delay=0.f /*!< Delay */);
-	inline void					play_at_pos				( CObject* O /*!< Object */,	const Fvector3& pos /*!< 3D position */,	u32 flags=0 /*!< Looping */, float delay=0.f /*!< Delay */);
-	inline void					play_no_feedback		( CObject* O /*!< Object */,											u32 flags=0 /*!< Looping */, float delay=0.f /*!< Delay */, Fvector3* pos=0, float* vol=0, float* freq=0, Fvector2* range=0);
+	inline void					play					( CObject* O /*!< Object */, unsigned int flags=0 /*!< Looping */, float delay=0.f /*!< Delay */);
+	inline void					play_at_pos				( CObject* O /*!< Object */,	const Fvector3& pos /*!< 3D position */, unsigned int flags=0 /*!< Looping */, float delay=0.f /*!< Delay */);
+	inline void					play_no_feedback		( CObject* O /*!< Object */, unsigned int flags=0 /*!< Looping */, float delay=0.f /*!< Delay */, Fvector3* pos=0, float* vol=0, float* freq=0, Fvector2* range=0);
 	//@}
 
 	//! Stops playing this source
@@ -168,8 +168,8 @@ public:
 class XRSOUND_API	CSound_source
 {
 public:
-	virtual	u32				length_ms				( )		= 0;
-	virtual u32				game_type				( )		= 0;
+	virtual	unsigned int				length_ms				( )		= 0;
+	virtual unsigned int				game_type				( )		= 0;
 	virtual const char* file_name				( )		= 0;
 };
 
@@ -206,7 +206,7 @@ public:
 	virtual void					set_priority			(float vol)													= 0;
 	virtual void					stop					(BOOL bDeffered)											= 0;
 	virtual	const CSound_params*	get_params				( )															= 0;
-	virtual u32						play_time				( )															= 0;
+	virtual unsigned int						play_time				( )															= 0;
 };
 
 /// definition (Sound Stream Interface)
@@ -219,11 +219,11 @@ public:
 class XRSOUND_API			CSound_stats
 {
 public:
-	u32						_rendered;
-	u32						_simulated;
-	u32						_cache_hits;
-	u32						_cache_misses;
-	u32						_events;
+	unsigned int						_rendered;
+	unsigned int						_simulated;
+	unsigned int						_cache_hits;
+	unsigned int						_cache_misses;
+	unsigned int						_events;
 };
 
 class XRSOUND_API			CSound_stats_ext
@@ -237,8 +237,8 @@ public:
 		int					game_type;
 		CObject*			game_object;
 		struct  {
-			u32				_3D			:1;
-			u32				_rendered	:1;
+			unsigned int				_3D			:1;
+			unsigned int				_rendered	:1;
 		};
 	};
 //	DEFINE_VECTOR			(SItem,item_vec,item_vec_it);
@@ -282,9 +282,9 @@ public:
 	virtual void					stop_emitters			( )																						= 0;	
 	virtual int						pause_emitters			( bool val )																			= 0;
 
-	virtual void					play					( ref_sound& S, CObject* O,						u32 flags=0, float delay=0.0f)			= 0;
-	virtual void					play_at_pos				( ref_sound& S, CObject* O,	const Fvector3& pos,	u32 flags=0, float delay=0.0f)			= 0;
-	virtual void					play_no_feedback		( ref_sound& S, CObject* O,						u32 flags=0, float delay=0.0f, Fvector3* pos=0, float* vol=0, float* freq=0, Fvector2* range=0)= 0;
+	virtual void					play					( ref_sound& S, CObject* O, unsigned int flags=0, float delay=0.0f)			= 0;
+	virtual void					play_at_pos				( ref_sound& S, CObject* O,	const Fvector3& pos, unsigned int flags=0, float delay=0.0f)			= 0;
+	virtual void					play_no_feedback		( ref_sound& S, CObject* O, unsigned int flags=0, float delay=0.0f, Fvector3* pos=0, float* vol=0, float* freq=0, Fvector2* range=0)= 0;
 
 	virtual void					set_master_volume		( float f=1.f )																			= 0;
 	virtual void					set_geometry_env		( IReader* I )																			= 0;
@@ -311,9 +311,9 @@ inline ref_sound_data::~ref_sound_data				()																{	::Sound->_destroy_
 inline void	ref_sound::create						(const char* name,			esound_type sound_type, int	game_type)	{	VERIFY(!::Sound->i_locked()); 	::Sound->create		(*this,name,sound_type,game_type);					}
 inline void	ref_sound::clone						( const ref_sound& from,esound_type sound_type, int	game_type)	{	VERIFY(!::Sound->i_locked()); 	::Sound->clone		(*this,from,sound_type,game_type);					}
 inline void	ref_sound::destroy						( )														{	VERIFY(!::Sound->i_locked()); 	::Sound->destroy	(*this);													}
-inline void	ref_sound::play							( CObject* O,						u32 flags, float d)	{	VERIFY(!::Sound->i_locked()); 	::Sound->play		(*this,O,flags,d);											}
-inline void	ref_sound::play_at_pos					( CObject* O, const Fvector3& pos,	u32 flags, float d)	{	VERIFY(!::Sound->i_locked()); 	::Sound->play_at_pos(*this,O,pos,flags,d);										}
-inline void	ref_sound::play_no_feedback				( CObject* O, u32 flags, float d, Fvector3* pos, float* vol, float* freq, Fvector2* range){	VERIFY(!::Sound->i_locked()); ::Sound->play_no_feedback(*this,O,flags,d,pos,vol,freq,range);	}
+inline void	ref_sound::play							( CObject* O, unsigned int flags, float d)	{	VERIFY(!::Sound->i_locked()); 	::Sound->play		(*this,O,flags,d);											}
+inline void	ref_sound::play_at_pos					( CObject* O, const Fvector3& pos, unsigned int flags, float d)	{	VERIFY(!::Sound->i_locked()); 	::Sound->play_at_pos(*this,O,pos,flags,d);										}
+inline void	ref_sound::play_no_feedback				( CObject* O, unsigned int flags, float d, Fvector3* pos, float* vol, float* freq, Fvector2* range){	VERIFY(!::Sound->i_locked()); ::Sound->play_no_feedback(*this,O,flags,d,pos,vol,freq,range);	}
 inline void	ref_sound::set_position					( const Fvector3& pos)									{	VERIFY(!::Sound->i_locked()); 	VERIFY(_feedback());_feedback()->set_position(pos);								}
 inline void	ref_sound::set_frequency				( float freq)											{	VERIFY(!::Sound->i_locked()); 	if (_feedback())	_feedback()->set_frequency(freq);							}
 inline void	ref_sound::set_range					( float min, float max )								{	VERIFY(!::Sound->i_locked()); 	if (_feedback())	_feedback()->set_range(min,max);							}

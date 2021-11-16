@@ -29,8 +29,8 @@ public:
 
 	WAVEFORMATEX						wfm;
 	CTimer								Timer;
-	u32									Timer_Value;
-	u32									Timer_Delta;
+	unsigned int									Timer_Value;
+	unsigned int									Timer_Delta;
 	sound_event*						Handler;
 
 protected:
@@ -44,10 +44,10 @@ protected:
 	// Containers
 	xr_vector<CSoundRender_Source*>		s_sources;
 	xr_vector<CSoundRender_Emitter*>	s_emitters;
-	u32									s_emitters_u;			// emitter update marker
+	unsigned int									s_emitters_u;			// emitter update marker
 	xr_vector<CSoundRender_Target*>		s_targets;
 	xr_vector<CSoundRender_Target*>		s_targets_defer;
-	u32									s_targets_pu;			// parameters update
+	unsigned int									s_targets_pu;			// parameters update
 	CSoundEnvironmentLib*				s_environment;
 	CSoundRender_Environment			s_user_environment;
 
@@ -56,11 +56,11 @@ protected:
 public:
 	// Cache
 	CSoundRender_Cache					cache;
-	u32									cache_bytes_per_line;
+	unsigned int									cache_bytes_per_line;
 
 protected:
-	virtual void						i_eax_set				(const GUID* guid, u32 prop, void* val, u32 sz)=0;
-	virtual void						i_eax_get				(const GUID* guid, u32 prop, void* val, u32 sz)=0;
+	virtual void						i_eax_set				(const GUID* guid, unsigned int prop, void* val, unsigned int sz)=0;
+	virtual void						i_eax_get				(const GUID* guid, unsigned int prop, void* val, unsigned int sz)=0;
 
 public:
 										CSoundRender_Core		();
@@ -79,9 +79,9 @@ public:
 	virtual void						stop_emitters			( );
 	virtual int							pause_emitters			( bool val );
 
-	virtual void						play					( ref_sound& S, CObject* O,								u32 flags=0, float delay=0.0f);
-	virtual void						play_at_pos				( ref_sound& S, CObject* O,		const Fvector3& pos,		u32 flags=0, float delay=0.0f);
-	virtual void						play_no_feedback		( ref_sound& S, CObject* O,	u32 flags=0, float delay=0.0f, Fvector3* pos=0, float* vol=0, float* freq=0, Fvector2* range=0);
+	virtual void						play					( ref_sound& S, CObject* O, unsigned int flags=0, float delay=0.0f);
+	virtual void						play_at_pos				( ref_sound& S, CObject* O,		const Fvector3& pos, unsigned int flags=0, float delay=0.0f);
+	virtual void						play_no_feedback		( ref_sound& S, CObject* O, unsigned int flags=0, float delay=0.0f, Fvector3* pos=0, float* vol=0, float* freq=0, Fvector2* range=0);
 	virtual void						set_master_volume		( float			f )=0;
 	virtual void						set_geometry_env		( IReader*		I );
 	virtual void						set_geometry_som		( IReader*		I );

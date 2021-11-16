@@ -12,7 +12,7 @@
 #endif // DEBUG
 
 CORE_API		CCore	Core;
-CORE_API		U32		build_id;
+CORE_API		unsigned int		build_id;
 CORE_API		const char* build_date;
 
 namespace CPU
@@ -20,7 +20,7 @@ namespace CPU
 	extern	void			Detect( );
 };
 
-static U32	init_counter = 0;
+static unsigned int	init_counter = 0;
 
 extern char g_application_path[256];
 
@@ -81,7 +81,7 @@ void CCore::_initialize(const char* _ApplicationName, LogCallback cb, BOOL init_
 	}
 	if (init_fs)
 	{
-		U32 flags = 0;
+		unsigned int flags = 0;
 		if (0 != strstr(Params, "-build"))	 flags |= CLocatorAPI::flBuildCopy;
 		if (0 != strstr(Params, "-ebuild")) flags |= CLocatorAPI::flBuildCopy | CLocatorAPI::flEBuildCopy;
 

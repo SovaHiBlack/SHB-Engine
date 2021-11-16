@@ -66,7 +66,7 @@ void CUIAmmoCellItem::UpdateItemText( )
 		xr_vector<CUICellItem*>::iterator it = m_childs.begin( );
 		xr_vector<CUICellItem*>::iterator it_e = m_childs.end( );
 
-		U16 total = object( )->m_boxCurr;
+		unsigned short total = object( )->m_boxCurr;
 		for (; it != it_e; ++it)
 		{
 			total = total + ((CUIAmmoCellItem*) (*it))->object( )->m_boxCurr;

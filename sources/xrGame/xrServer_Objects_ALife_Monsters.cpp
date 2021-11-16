@@ -168,9 +168,9 @@ void CSE_ALifeTraderAbstract::STATE_Write(CNetPacket& tNetPacket)
 	save_data(m_character_name, tNetPacket);
 }
 
-void CSE_ALifeTraderAbstract::STATE_Read(CNetPacket& tNetPacket, U16 size)
+void CSE_ALifeTraderAbstract::STATE_Read(CNetPacket& tNetPacket, unsigned short size)
 {
-	U16 m_wVersion = base( )->m_wVersion;
+	unsigned short m_wVersion = base( )->m_wVersion;
 	if (m_wVersion > 19)
 	{
 		if (m_wVersion < 108)
@@ -180,7 +180,7 @@ void CSE_ALifeTraderAbstract::STATE_Read(CNetPacket& tNetPacket, U16 size)
 
 		if (m_wVersion < 36)
 		{
-			xr_vector<U16>		temp;
+			xr_vector<unsigned short>		temp;
 			load_data(temp, tNetPacket);
 		}
 
@@ -454,7 +454,7 @@ CSharedString CSE_ALifeTraderAbstract::character_profile( )
 }
 
 //для работы с relation system
-U16								CSE_ALifeTraderAbstract::object_id( ) const
+unsigned short								CSE_ALifeTraderAbstract::object_id( ) const
 {
 	return base( )->ID;
 }
@@ -538,7 +538,7 @@ void CSE_ALifeTrader::STATE_Write(CNetPacket& tNetPacket)
 	inherited2::STATE_Write(tNetPacket);
 }
 
-void CSE_ALifeTrader::STATE_Read(CNetPacket& tNetPacket, U16 size)
+void CSE_ALifeTrader::STATE_Read(CNetPacket& tNetPacket, unsigned short size)
 {
 	inherited1::STATE_Read(tNetPacket, size);
 	inherited2::STATE_Read(tNetPacket, size);
@@ -625,7 +625,7 @@ CSE_ALifeCustomZone::CSE_ALifeCustomZone(const char* caSection) : CSE_ALifeSpace
 CSE_ALifeCustomZone::~CSE_ALifeCustomZone( )
 { }
 
-void CSE_ALifeCustomZone::STATE_Read(CNetPacket& tNetPacket, U16 size)
+void CSE_ALifeCustomZone::STATE_Read(CNetPacket& tNetPacket, unsigned short size)
 {
 	inherited::STATE_Read(tNetPacket, size);
 
@@ -733,7 +733,7 @@ u32	CSE_ALifeAnomalousZone::ef_creature_type( ) const
 	return inherited::ef_weapon_type( );
 }
 
-void CSE_ALifeAnomalousZone::STATE_Read(CNetPacket& tNetPacket, U16 size)
+void CSE_ALifeAnomalousZone::STATE_Read(CNetPacket& tNetPacket, unsigned short size)
 {
 	inherited::STATE_Read(tNetPacket, size);
 
@@ -745,7 +745,7 @@ void CSE_ALifeAnomalousZone::STATE_Read(CNetPacket& tNetPacket, U16 size)
 			tNetPacket.r_float( );
 
 			CSharedString					temp;
-			for (U16 i = 0, n = tNetPacket.r_u16( ); i < n; ++i)
+			for (unsigned short i = 0, n = tNetPacket.r_u16( ); i < n; ++i)
 			{
 				tNetPacket.r_stringZ(temp);
 
@@ -831,7 +831,7 @@ CSE_Motion* CSE_ALifeTorridZone::motion( )
 	return this;
 }
 
-void CSE_ALifeTorridZone::STATE_Read(CNetPacket& tNetPacket, U16 size)
+void CSE_ALifeTorridZone::STATE_Read(CNetPacket& tNetPacket, unsigned short size)
 {
 	inherited1::STATE_Read(tNetPacket, size);
 	CSE_Motion::motion_read(tNetPacket);
@@ -882,7 +882,7 @@ CSE_Visual* CSE_ALifeZoneVisual::visual( )
 	return		static_cast<CSE_Visual*>(this);
 }
 
-void CSE_ALifeZoneVisual::STATE_Read(CNetPacket& tNetPacket, U16 size)
+void CSE_ALifeZoneVisual::STATE_Read(CNetPacket& tNetPacket, unsigned short size)
 {
 	inherited1::STATE_Read(tNetPacket, size);
 	visual_read(tNetPacket, m_wVersion);
@@ -985,7 +985,7 @@ void CSE_ALifeCreatureAbstract::STATE_Write(CNetPacket& tNetPacket)
 	tNetPacket.w(&m_game_death_time, sizeof(m_game_death_time));
 }
 
-void CSE_ALifeCreatureAbstract::STATE_Read(CNetPacket& tNetPacket, U16 size)
+void CSE_ALifeCreatureAbstract::STATE_Read(CNetPacket& tNetPacket, unsigned short size)
 {
 	inherited::STATE_Read(tNetPacket, size);
 	tNetPacket.r_u8(s_team);
@@ -1231,7 +1231,7 @@ void CSE_ALifeMonsterAbstract::STATE_Write(CNetPacket& tNetPacket)
 	tNetPacket.w(&m_task_reached, sizeof(m_task_reached));
 }
 
-void CSE_ALifeMonsterAbstract::STATE_Read(CNetPacket& tNetPacket, U16 size)
+void CSE_ALifeMonsterAbstract::STATE_Read(CNetPacket& tNetPacket, unsigned short size)
 {
 	inherited1::STATE_Read(tNetPacket, size);
 	if (m_wVersion > 72)
@@ -1309,7 +1309,7 @@ CSE_ALifeCreatureActor::CSE_ALifeCreatureActor(const char* caSection) : CSE_ALif
 	fRadiation = 0.f;
 	accel.set(0.f, 0.f, 0.f);
 	velocity.set(0.f, 0.f, 0.f);
-	m_holderID = U16(-1);
+	m_holderID = unsigned short(-1);
 }
 
 CSE_ALifeCreatureActor::~CSE_ALifeCreatureActor( )
@@ -1339,7 +1339,7 @@ const CSE_Abstract* CSE_ALifeCreatureActor::base( ) const
 	return						(inherited1::base( ));
 }
 
-void CSE_ALifeCreatureActor::STATE_Read(CNetPacket& tNetPacket, U16 size)
+void CSE_ALifeCreatureActor::STATE_Read(CNetPacket& tNetPacket, unsigned short size)
 {
 	if (m_wVersion < 21)
 	{
@@ -1492,7 +1492,7 @@ CSE_ALifeCreatureCrow::CSE_ALifeCreatureCrow(const char* caSection) : CSE_ALifeC
 CSE_ALifeCreatureCrow::~CSE_ALifeCreatureCrow( )
 { }
 
-void CSE_ALifeCreatureCrow::STATE_Read(CNetPacket& tNetPacket, U16 size)
+void CSE_ALifeCreatureCrow::STATE_Read(CNetPacket& tNetPacket, unsigned short size)
 {
 	if (m_wVersion > 20)
 	{
@@ -1541,7 +1541,7 @@ CSE_ALifeCreaturePhantom::CSE_ALifeCreaturePhantom(const char* caSection) : CSE_
 CSE_ALifeCreaturePhantom::~CSE_ALifeCreaturePhantom( )
 { }
 
-void CSE_ALifeCreaturePhantom::STATE_Read(CNetPacket& tNetPacket, U16 size)
+void CSE_ALifeCreaturePhantom::STATE_Read(CNetPacket& tNetPacket, unsigned short size)
 {
 	inherited::STATE_Read(tNetPacket, size);
 }
@@ -1597,7 +1597,7 @@ CSE_ALifeMonsterZombie::CSE_ALifeMonsterZombie(const char* caSection) : CSE_ALif
 CSE_ALifeMonsterZombie::~CSE_ALifeMonsterZombie( )
 { }
 
-void CSE_ALifeMonsterZombie::STATE_Read(CNetPacket& tNetPacket, U16 size)
+void CSE_ALifeMonsterZombie::STATE_Read(CNetPacket& tNetPacket, unsigned short size)
 {
 	// inherited properties
 	inherited::STATE_Read(tNetPacket, size);
@@ -1677,7 +1677,7 @@ CSE_ALifeMonsterBase::CSE_ALifeMonsterBase(const char* caSection) : CSE_ALifeMon
 CSE_ALifeMonsterBase::~CSE_ALifeMonsterBase( )
 { }
 
-void CSE_ALifeMonsterBase::STATE_Read(CNetPacket& tNetPacket, U16 size)
+void CSE_ALifeMonsterBase::STATE_Read(CNetPacket& tNetPacket, unsigned short size)
 {
 	inherited1::STATE_Read(tNetPacket, size);
 	if (m_wVersion >= 68)
@@ -1732,7 +1732,7 @@ CSE_ALifePsyDogPhantom::CSE_ALifePsyDogPhantom(const char* caSection) : CSE_ALif
 CSE_ALifePsyDogPhantom::~CSE_ALifePsyDogPhantom( )
 { }
 
-void CSE_ALifePsyDogPhantom::STATE_Read(CNetPacket& tNetPacket, U16 size)
+void CSE_ALifePsyDogPhantom::STATE_Read(CNetPacket& tNetPacket, unsigned short size)
 {
 	inherited::STATE_Read(tNetPacket, size);
 }
@@ -1799,7 +1799,7 @@ void CSE_ALifeHumanAbstract::STATE_Write(CNetPacket& tNetPacket)
 	brain( ).on_state_write(tNetPacket);
 }
 
-void CSE_ALifeHumanAbstract::STATE_Read(CNetPacket& tNetPacket, U16 size)
+void CSE_ALifeHumanAbstract::STATE_Read(CNetPacket& tNetPacket, unsigned short size)
 {
 	inherited1::STATE_Read(tNetPacket, size);
 	inherited2::STATE_Read(tNetPacket, size);
@@ -1854,7 +1854,7 @@ void CSE_ALifeHumanStalker::STATE_Write(CNetPacket& tNetPacket)
 	inherited2::STATE_Write(tNetPacket);
 }
 
-void CSE_ALifeHumanStalker::STATE_Read(CNetPacket& tNetPacket, U16 size)
+void CSE_ALifeHumanStalker::STATE_Read(CNetPacket& tNetPacket, unsigned short size)
 {
 	inherited1::STATE_Read(tNetPacket, size);
 
@@ -1945,7 +1945,7 @@ void CSE_ALifeOnlineOfflineGroup::STATE_Write(CNetPacket& tNetPacket)
 #endif
 }
 
-void CSE_ALifeOnlineOfflineGroup::STATE_Read(CNetPacket& tNetPacket, U16 size)
+void CSE_ALifeOnlineOfflineGroup::STATE_Read(CNetPacket& tNetPacket, unsigned short size)
 {
 	inherited1::STATE_Read(tNetPacket, size);
 

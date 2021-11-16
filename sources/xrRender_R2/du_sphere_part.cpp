@@ -89,7 +89,7 @@ Fvector3 du_sphere_part_vertices[DU_SPHERE_PART_NUMVERTEX]=
 	{-	.087039		,	.348155	,.348155},
 	{	.000000		,	.000000	,.000000}
 };                                      
-U16 du_sphere_part_faces[DU_SPHERE_PART_NUMFACES*3]=
+unsigned short du_sphere_part_faces[DU_SPHERE_PART_NUMFACES*3]=
 {   
      0, 41, 25,
     25, 44,  0,
@@ -253,7 +253,7 @@ U16 du_sphere_part_faces[DU_SPHERE_PART_NUMFACES*3]=
     24, 80, 81,
 };
 
-U16 du_sphere_part_lines[DU_SPHERE_PART_NUMLINES*2]=
+unsigned short du_sphere_part_lines[DU_SPHERE_PART_NUMLINES*2]=
 {
 0,41,
 0,44,

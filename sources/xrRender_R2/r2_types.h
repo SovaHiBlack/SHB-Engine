@@ -42,18 +42,18 @@
 
 const		float				SMAP_near_plane		= .1f	;
 
-const		u32					SMAP_adapt_min		= 32	;
-const		u32					SMAP_adapt_optimal	= 768	;
-const		u32					SMAP_adapt_max		= 1536	;
+const		unsigned int					SMAP_adapt_min		= 32	;
+const		unsigned int					SMAP_adapt_optimal	= 768	;
+const		unsigned int					SMAP_adapt_max		= 1536	;
 
-const		u32					TEX_material_LdotN	= 128	;	// diffuse,		X, almost linear = small res
-const		u32					TEX_material_LdotH	= 256	;	// specular,	Y
-const		u32					TEX_jitter			= 64	;
-const		u32					TEX_jitter_count	= 4		;
+const		unsigned int					TEX_material_LdotN	= 128	;	// diffuse,		X, almost linear = small res
+const		unsigned int					TEX_material_LdotH	= 256	;	// specular,	Y
+const		unsigned int					TEX_jitter			= 64	;
+const		unsigned int					TEX_jitter_count	= 4		;
 
-const		u32					BLOOM_size_X		= 256	;
-const		u32					BLOOM_size_Y		= 256	;
-const		u32					LUMINANCE_size		= 16	;
+const		unsigned int					BLOOM_size_X		= 256	;
+const		unsigned int					BLOOM_size_Y		= 256	;
+const		unsigned int					LUMINANCE_size		= 16	;
 
 // deffer
 #define		SE_R2_NORMAL_HQ		0	// high quality/detail
