@@ -39,9 +39,9 @@ public:
 	virtual void	w(const void* ptr, unsigned int count) = 0;
 
 	// generalized writing functions
-	inline void			w_u64(U64 d)
+	inline void			w_u64(unsigned __int64 d)
 	{
-		w(&d, sizeof(U64));
+		w(&d, sizeof(unsigned __int64));
 	}
 	inline void			w_u32(unsigned int d)
 	{
@@ -55,9 +55,9 @@ public:
 	{
 		w(&d, sizeof(unsigned char));
 	}
-	inline void			w_s64(S64 d)
+	inline void			w_s64(signed __int64 d)
 	{
-		w(&d, sizeof(S64));
+		w(&d, sizeof(signed __int64));
 	}
 	inline void			w_s32(int d)
 	{
@@ -71,9 +71,9 @@ public:
 	{
 		w(&d, sizeof(signed char));
 	}
-	inline void			w_float(F32 d)
+	inline void			w_float(float d)
 	{
-		w(&d, sizeof(F32));
+		w(&d, sizeof(float));
 	}
 	inline void			w_string(const char* p)
 	{
@@ -130,23 +130,23 @@ public:
 	}
 
 	// quant writing functions
-	inline void 		w_float_q16(F32 a, F32 min, F32 max)
+	inline void 		w_float_q16(float a, float min, float max)
 	{
 		VERIFY(a >= min && a <= max);
-		F32 q = (a - min) / (max - min);
+		float q = (a - min) / (max - min);
 		w_u16(unsigned short(iFloor(q * 65535.0f + 0.5f)));
 	}
-	inline void 		w_float_q8(F32 a, F32 min, F32 max)
+	inline void 		w_float_q8(float a, float min, float max)
 	{
 		VERIFY(a >= min && a <= max);
-		F32 q = (a - min) / (max - min);
+		float q = (a - min) / (max - min);
 		w_u8(unsigned char(iFloor(q * 255.0f + 0.5f)));
 	}
-	inline void 		w_angle16(F32 a)
+	inline void 		w_angle16(float a)
 	{
 		w_float_q16(angle_normalize(a), 0, PI_MUL_2);
 	}
-	inline void 		w_angle8(F32 a)
+	inline void 		w_angle8(float a)
 	{
 		w_float_q8(angle_normalize(a), 0, PI_MUL_2);
 	}
@@ -258,18 +258,18 @@ public:
 	inline Fvector3		r_vec3( )
 	{
 		Fvector3 tmp;
-		r(&tmp, 3 * sizeof(F32));
+		r(&tmp, 3 * sizeof(float));
 		return tmp;
 	}
 	inline Fvector4		r_vec4( )
 	{
 		Fvector4 tmp;
-		r(&tmp, 4 * sizeof(F32));
+		r(&tmp, 4 * sizeof(float));
 		return tmp;
 	}
-	inline U64			r_u64( )
+	inline unsigned __int64			r_u64( )
 	{
-		U64 tmp;
+		unsigned __int64 tmp;
 		r(&tmp, sizeof(tmp));
 		return tmp;
 	}
@@ -291,9 +291,9 @@ public:
 		r(&tmp, sizeof(tmp));
 		return tmp;
 	}
-	inline S64			r_s64( )
+	inline signed __int64			r_s64( )
 	{
-		S64 tmp;
+		signed __int64 tmp;
 		r(&tmp, sizeof(tmp));
 		return tmp;
 	}
@@ -315,9 +315,9 @@ public:
 		r(&tmp, sizeof(tmp));
 		return tmp;
 	}
-	inline F32		r_float( )
+	inline float		r_float( )
 	{
-		F32 tmp;
+		float tmp;
 		r(&tmp, sizeof(tmp));
 		return tmp;
 	}
@@ -350,25 +350,25 @@ public:
 		r(&v, sizeof(Fcolor));
 	}
 
-	inline F32		r_float_q16(F32 min, F32 max)
+	inline float		r_float_q16(float min, float max)
 	{
 		unsigned short val = r_u16( );
-		F32 A = (F32(val) * (max - min)) / 65535.0f + min;		// floating-point-error possible
+		float A = (float(val) * (max - min)) / 65535.0f + min;		// floating-point-error possible
 		VERIFY((A >= min - EPS_S) && (A <= max + EPS_S));
 		return A;
 	}
-	inline F32		r_float_q8(F32 min, F32 max)
+	inline float		r_float_q8(float min, float max)
 	{
 		unsigned char val = r_u8( );
-		F32 A = (F32(val) / 255.0001f) * (max - min) + min;	// floating-point-error possible
+		float A = (float(val) / 255.0001f) * (max - min) + min;	// floating-point-error possible
 		VERIFY((A >= min) && (A <= max));
 		return	A;
 	}
-	inline F32		r_angle16( )
+	inline float		r_angle16( )
 	{
 		return r_float_q16(0, PI_MUL_2);
 	}
-	inline F32		r_angle8( )
+	inline float		r_angle8( )
 	{
 		return r_float_q8(0, PI_MUL_2);
 	}
@@ -380,7 +380,7 @@ public:
 	inline void			r_sdir(Fvector3& A)
 	{
 		unsigned short t = r_u16( );
-		F32 s = r_float( );
+		float s = r_float( );
 		pvDecompress(A, t);
 		A.mul(s);
 	}

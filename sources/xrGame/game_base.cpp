@@ -6,9 +6,9 @@
 #include "Level.h"
 #include "Messages.h"
 
-U64		g_qwStartGameTime = 12 * 60 * 60 * 1000;
+unsigned __int64		g_qwStartGameTime = 12 * 60 * 60 * 1000;
 float	g_fTimeFactor = pSettings->r_float("alife", "time_factor");
-U64		g_qwEStartGameTime = 12 * 60 * 60 * 1000;
+unsigned __int64		g_qwEStartGameTime = 12 * 60 * 60 * 1000;
 
 xr_token game_types[ ];
 

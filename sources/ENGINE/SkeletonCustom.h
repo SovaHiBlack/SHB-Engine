@@ -333,7 +333,7 @@ public:
 	}
 	unsigned short							LL_VisibleBoneCount( )
 	{
-		U64 F = visimask.flags & ((U64(1) << U64(LL_BoneCount( ))) - 1);
+		unsigned __int64 F = visimask.flags & ((unsigned __int64(1) << unsigned __int64(LL_BoneCount( ))) - 1);
 		return (unsigned short) btwCount1(F);
 	}
 	__forceinline Fmatrix& LL_GetTransform(unsigned short bone_id)
@@ -363,14 +363,14 @@ public:
 	BOOL						LL_GetBoneVisible(unsigned short bone_id)
 	{
 		VERIFY(bone_id < LL_BoneCount( ));
-		return visimask.is(U64(1) << bone_id);
+		return visimask.is(unsigned __int64(1) << bone_id);
 	}
 	void						LL_SetBoneVisible(unsigned short bone_id, BOOL val, BOOL bRecursive);
-	U64							LL_GetBonesVisible( )
+	unsigned __int64							LL_GetBonesVisible( )
 	{
 		return visimask.get( );
 	}
-	void						LL_SetBonesVisible(U64 mask);
+	void						LL_SetBonesVisible(unsigned __int64 mask);
 
 	// Main functionality
 	virtual void				CalculateBones(BOOL bForceExact = FALSE);		// Recalculate skeleton

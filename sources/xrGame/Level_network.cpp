@@ -356,7 +356,7 @@ void			CLevel::OnBuildVersionChallenge( )
 {
 	CNetPacket P;
 	P.w_begin(M_CL_AUTH);
-	U64 auth = FS.auth_get( );
+	unsigned __int64 auth = FS.auth_get( );
 	P.w_u64(auth);
 	Send(P, net_flags(TRUE, TRUE, TRUE, TRUE));
 }

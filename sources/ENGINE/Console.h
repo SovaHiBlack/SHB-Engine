@@ -26,9 +26,9 @@ public:
 
 private:
 	U32							last_mm_timer;
-	F32						cur_time;
-	F32						rep_time;
-	F32						fAccel;
+	float						cur_time;
+	float						rep_time;
+	float						fAccel;
 
 	int							cmd_delta;
 	int							old_cmd_delta;
@@ -67,7 +67,7 @@ public:
 
 	// get
 	BOOL						GetBool					(const char* cmd, BOOL& val);
-	F32							GetFloat				(const char* cmd, F32& val, F32& min, F32& max);
+	float						GetFloat				(const char* cmd, float& val, float& min, float& max);
 	char*						GetString				(const char* cmd);
 	int							GetInteger				(const char* cmd, int& val, int& min, int& max);
 	char*						GetToken				(const char* cmd);

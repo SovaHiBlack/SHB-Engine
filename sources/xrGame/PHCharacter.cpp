@@ -21,7 +21,7 @@ CPHCharacter::CPHCharacter( ) : CPHDisablingTranslational( )
 	b_actor_movable = true;
 	p_lastMaterialIDX = &lastMaterialIDX;
 	lastMaterialIDX = unsigned short(-1);
-	m_creation_step = U64(-1);
+	m_creation_step = unsigned __int64(-1);
 	b_in_touch_resrtrictor = false;
 	m_current_object_radius = -1.0f;
 }

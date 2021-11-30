@@ -70,13 +70,13 @@ void	__stdcall	xrTransfer_x86	(LPVOID vDest, LPVOID vSrc, u32 vCount, u32 vStrid
 	/*
 	{
 		DWORD	count	= iCount/(4*3);
-		U64*	sit		= (U64*)(iSrc);
-		U64*	send	= sit+(count*3);
-		U64*	dit		= (U64*)(iDest);
-		U64*	dend	= dit+(count*3);
+		unsigned __int64*	sit		= (unsigned __int64*)(iSrc);
+		unsigned __int64*	send	= sit+(count*3);
+		unsigned __int64*	dit		= (unsigned __int64*)(iDest);
+		unsigned __int64*	dend	= dit+(count*3);
 
 		if (sit!=send)	{
-			U64		item	= (U64(iOffset)<<48) | (U64(iOffset)<<32) | (U64(iOffset)<<16) | U64(iOffset);
+			unsigned __int64		item	= (unsigned __int64(iOffset)<<48) | (unsigned __int64(iOffset)<<32) | (unsigned __int64(iOffset)<<16) | unsigned __int64(iOffset);
 			__asm	{
 				femms		
 				movq		mm0,	[item];

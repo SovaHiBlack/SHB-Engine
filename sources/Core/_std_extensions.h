@@ -76,26 +76,26 @@ template <class T>	inline T		_sqr(T a)
 }
 
 // float
-inline F32	_abs(F32 x)
+inline float	_abs(float x)
 {
 	return fabsf(x);
 }
-inline F32	_sqrt(F32 x)
+inline float	_sqrt(float x)
 {
 	return sqrtf(x);
 }
-inline F32	_sin(F32 x)
+inline float	_sin(float x)
 {
 	return sinf(x);
 }
-inline F32	_cos(F32 x)
+inline float	_cos(float x)
 {
 	return cosf(x);
 }
-inline BOOL		_valid(const F32 x)
+inline BOOL		_valid(const float x)
 {
 	// check for: Signaling NaN, Quiet NaN, Negative infinity ( –INF), Positive infinity (+INF), Negative denormalized, Positive denormalized
-	int			cls = _fpclass(F64(x));
+	int			cls = _fpclass(double(x));
 	if (cls & (_FPCLASS_SNAN + _FPCLASS_QNAN + _FPCLASS_NINF + _FPCLASS_PINF + _FPCLASS_ND + _FPCLASS_PD))
 		return	false;
 
@@ -110,23 +110,23 @@ inline BOOL		_valid(const F32 x)
 
 
 // double
-inline F64	_abs(F64 x)
+inline double	_abs(double x)
 {
 	return fabs(x);
 }
-inline F64	_sqrt(F64 x)
+inline double	_sqrt(double x)
 {
 	return sqrt(x);
 }
-inline F64	_sin(F64 x)
+inline double	_sin(double x)
 {
 	return sin(x);
 }
-inline F64	_cos(F64 x)
+inline double	_cos(double x)
 {
 	return cos(x);
 }
-inline BOOL		_valid(const F64 x)
+inline BOOL		_valid(const double x)
 {
 	// check for: Signaling NaN, Quiet NaN, Negative infinity ( –INF), Positive infinity (+INF), Negative denormalized, Positive denormalized
 	int			cls = _fpclass(x);
@@ -197,17 +197,17 @@ inline int		_max(int x, int y)
 };
 
 // int64
-inline S64		_abs(S64 x)
+inline signed __int64		_abs(signed __int64 x)
 {
-	return (x >= 0) ? x : S64(-x);
+	return (x >= 0) ? x : signed __int64(-x);
 }
-inline S64		_min(S64 x, S64 y)
+inline signed __int64		_min(signed __int64 x, signed __int64 y)
 {
-	return y + ((x - y) & ((x - y) >> (sizeof(S64) * 8 - 1)));
+	return y + ((x - y) & ((x - y) >> (sizeof(signed __int64) * 8 - 1)));
 };
-inline S64		_max(S64 x, S64 y)
+inline signed __int64		_max(signed __int64 x, signed __int64 y)
 {
-	return x - ((x - y) & ((x - y) >> (sizeof(S64) * 8 - 1)));
+	return x - ((x - y) & ((x - y) >> (sizeof(signed __int64) * 8 - 1)));
 };
 
 inline U32							xr_strlen(const char* S);

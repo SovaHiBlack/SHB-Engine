@@ -92,22 +92,22 @@ namespace FPU
 
 namespace CPU
 {
-	CORE_API U64				clk_per_second;
-	CORE_API U64				clk_per_milisec;
-	CORE_API U64				clk_per_microsec;
-	CORE_API U64				clk_overhead;
-	CORE_API F32				clk_to_seconds;
-	CORE_API F32				clk_to_milisec;
-	CORE_API F32				clk_to_microsec;
-	CORE_API U64				qpc_freq = 0;
-	CORE_API U64				qpc_overhead = 0;
+	CORE_API unsigned __int64				clk_per_second;
+	CORE_API unsigned __int64				clk_per_milisec;
+	CORE_API unsigned __int64				clk_per_microsec;
+	CORE_API unsigned __int64				clk_overhead;
+	CORE_API float				clk_to_seconds;
+	CORE_API float				clk_to_milisec;
+	CORE_API float				clk_to_microsec;
+	CORE_API unsigned __int64				qpc_freq = 0;
+	CORE_API unsigned __int64				qpc_overhead = 0;
 	CORE_API U32				qpc_counter = 0;
 
 	CORE_API _processor_info	ID;
 
-	CORE_API U64				QPC( )
+	CORE_API unsigned __int64				QPC( )
 	{
-		U64		_dest;
+		unsigned __int64		_dest;
 		QueryPerformanceCounter((PLARGE_INTEGER) &_dest);
 		qpc_counter++;
 		return	_dest;
@@ -123,8 +123,8 @@ namespace CPU
 		}
 
 		// Timers & frequency
-		U64			start;
-		U64			end;
+		unsigned __int64			start;
+		unsigned __int64			end;
 		U32			dwStart;
 		U32			dwTest;
 
@@ -144,12 +144,13 @@ namespace CPU
 
 		// Detect RDTSC Overhead
 		clk_overhead = 0;
-		U64 dummy = 0;
+		unsigned __int64 dummy = 0;
 		for (int i = 0; i < 256; i++)
 		{
 			start = GetCLK( );
 			clk_overhead += GetCLK( ) - start - dummy;
 		}
+
 		clk_overhead /= 256;
 
 		// Detect QPC Overhead
@@ -170,17 +171,17 @@ namespace CPU
 
 		_control87(_PC_64, MCW_PC);
 //		_control87	( _RC_CHOP, MCW_RC );
-		F64 a;
-		F64 b;
+		double a;
+		double b;
 		a = 1;
-		b = F64(clk_per_second);
-		clk_to_seconds = F32(F64(a / b));
+		b = double(clk_per_second);
+		clk_to_seconds = float(double(a / b));
 		a = 1000;
-		b = F64(clk_per_second);
-		clk_to_milisec = F32(F64(a / b));
+		b = double(clk_per_second);
+		clk_to_milisec = float(double(a / b));
 		a = 1000000;
-		b = F64(clk_per_second);
-		clk_to_microsec = F32(F64(a / b));
+		b = double(clk_per_second);
+		clk_to_microsec = float(double(a / b));
 	}
 };
 
@@ -190,7 +191,7 @@ void _initialize_cpu( )
 	Msg("* Detected CPU: %s %s, F%d/M%d/S%d, %.2f mhz, %d-clk 'rdtsc'",
 		CPU::ID.v_name, CPU::ID.model_name,
 		CPU::ID.family, CPU::ID.model, CPU::ID.stepping,
-		F32(CPU::clk_per_second / U64(1000000)),
+		float(CPU::clk_per_second / unsigned __int64(1000000)),
 		U32(CPU::clk_overhead)
 	);
 
@@ -307,11 +308,11 @@ void	thread_spawn(thread_t* entry, const char* name, unsigned	stack, void* argli
 	_beginthread(thread_entry, stack, startup);
 }
 
-void spline1(F32 t, Fvector3* p, Fvector3* ret)
+void spline1(float t, Fvector3* p, Fvector3* ret)
 {
-	F32     t2 = t * t;
-	F32     t3 = t2 * t;
-	F32     m[4];
+	float     t2 = t * t;
+	float     t3 = t2 * t;
+	float     m[4];
 
 	ret->x = 0.0f;
 	ret->y = 0.0f;
@@ -329,12 +330,12 @@ void spline1(F32 t, Fvector3* p, Fvector3* ret)
 	}
 }
 
-void spline2(F32 t, Fvector3* p, Fvector3* ret)
+void spline2(float t, Fvector3* p, Fvector3* ret)
 {
-	F32 s = 1.0f - t;
-	F32 t2 = t * t;
-	F32 t3 = t2 * t;
-	F32 m[4];
+	float s = 1.0f - t;
+	float t2 = t * t;
+	float t3 = t2 * t;
+	float m[4];
 
 	m[0] = s * s * s;
 	m[1] = 3.0f * t3 - 6.0f * t2 + 4.0f;
@@ -349,19 +350,19 @@ void spline2(F32 t, Fvector3* p, Fvector3* ret)
 #define beta1 1.0f
 #define beta2 0.8f
 
-void spline3(F32 t, Fvector3* p, Fvector3* ret)
+void spline3(float t, Fvector3* p, Fvector3* ret)
 {
-	F32 s = 1.0f - t;
-	F32 t2 = t * t;
-	F32 t3 = t2 * t;
-	F32 b12 = beta1 * beta2;
-	F32 b13 = b12 * beta1;
-	F32 delta = 2.0f - b13 + 4.0f * b12 + 4.0f * beta1 + beta2 + 2.0f;
-	F32 d = 1.0f / delta;
-	F32 b0 = 2.0f * b13 * d * s * s * s;
-	F32 b3 = 2.0f * t3 * d;
-	F32 b1 = d * (2 * b13 * t * (t2 - 3 * t + 3) + 2 * b12 * (t3 - 3 * t2 + 2) + 2 * beta1 * (t3 - 3 * t + 2) + beta2 * (2 * t3 - 3 * t2 + 1));
-	F32 b2 = d * (2 * b12 * t2 * (-t + 3) + 2 * beta1 * t * (-t2 + 3) + beta2 * t2 * (-2 * t + 3) + 2 * (-t3 + 1));
+	float s = 1.0f - t;
+	float t2 = t * t;
+	float t3 = t2 * t;
+	float b12 = beta1 * beta2;
+	float b13 = b12 * beta1;
+	float delta = 2.0f - b13 + 4.0f * b12 + 4.0f * beta1 + beta2 + 2.0f;
+	float d = 1.0f / delta;
+	float b0 = 2.0f * b13 * d * s * s * s;
+	float b3 = 2.0f * t3 * d;
+	float b1 = d * (2 * b13 * t * (t2 - 3 * t + 3) + 2 * b12 * (t3 - 3 * t2 + 2) + 2 * beta1 * (t3 - 3 * t + 2) + beta2 * (2 * t3 - 3 * t2 + 1));
+	float b2 = d * (2 * b12 * t2 * (-t + 3) + 2 * beta1 * t * (-t2 + 3) + beta2 * t2 * (-2 * t + 3) + 2 * (-t3 + 1));
 
 	ret->x = p[0].x * b0 + p[1].x * b1 + p[2].x * b2 + p[3].x * b3;
 	ret->y = p[0].y * b0 + p[1].y * b1 + p[2].y * b2 + p[3].y * b3;

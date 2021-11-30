@@ -44,7 +44,7 @@ public:
 							CSoundRender_CoreD		();
 	virtual					~CSoundRender_CoreD		();
 
-	virtual void			_initialize				(U64 window	);
+	virtual void			_initialize				(unsigned __int64 window	);
 	virtual void			_clear					( );
 
 	virtual void			set_master_volume		( float f		);

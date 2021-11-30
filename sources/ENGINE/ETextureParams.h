@@ -93,13 +93,13 @@ struct STextureParams{
 	int			        height;
 	// detail ext
 	CSharedString			detail_name;
-	F32		        detail_scale;
+	float		        detail_scale;
 	ETType		        type;
 	// material
 	ETMaterial			material;
-	F32				material_weight;
+	float				material_weight;
 	// bump	
-	F32 				bump_virtual_height;
+	float 				bump_virtual_height;
 	ETBumpMode			bump_mode;
 	CSharedString			bump_name;
 	CSharedString			ext_normal_map_name;

@@ -47,7 +47,7 @@ public:
 			Handlers.erase(I);
 		}
 	}
-	void			Signal			(U64 P1, U64 P2)
+	void			Signal			(unsigned __int64 P1, unsigned __int64 P2)
 	{
 		for (u32 I = 0; I < Handlers.size( ); I++)
 		{
@@ -140,14 +140,14 @@ void CEventAPI::Handler_Detach(EVENT& E, IEventReceiver* H)
 	CS.Leave( );
 }
 
-void CEventAPI::Signal(EVENT E, U64 P1, U64 P2)
+void CEventAPI::Signal(EVENT E, unsigned __int64 P1, unsigned __int64 P2)
 {
 	CS.Enter( );
 	E->Signal(P1, P2);
 	CS.Leave( );
 }
 
-void CEventAPI::Signal(const char* N, U64 P1, U64 P2)
+void CEventAPI::Signal(const char* N, unsigned __int64 P1, unsigned __int64 P2)
 {
 	CS.Enter( );
 	EVENT E = Create(N);
@@ -156,7 +156,7 @@ void CEventAPI::Signal(const char* N, U64 P1, U64 P2)
 	CS.Leave( );
 }
 
-void CEventAPI::Defer(EVENT E, U64 P1, U64 P2)
+void CEventAPI::Defer(EVENT E, unsigned __int64 P1, unsigned __int64 P2)
 {
 	CS.Enter( );
 	E->dwRefCount++;
@@ -167,7 +167,7 @@ void CEventAPI::Defer(EVENT E, U64 P1, U64 P2)
 	CS.Leave( );
 }
 
-void CEventAPI::Defer(const char* N, U64 P1, U64 P2)
+void CEventAPI::Defer(const char* N, unsigned __int64 P1, unsigned __int64 P2)
 {
 	CS.Enter( );
 	EVENT E = Create(N);

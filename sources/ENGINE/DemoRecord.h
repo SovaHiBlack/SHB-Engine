@@ -23,14 +23,14 @@ private:
 	bool									m_bMakeLevelMap;
 	bool									m_bOverlapped;
 
-	F32									m_fSpeed0;
-	F32									m_fSpeed1;
-	F32									m_fSpeed2;
-	F32									m_fSpeed3;
-	F32									m_fAngSpeed0;
-	F32									m_fAngSpeed1;
-	F32									m_fAngSpeed2;
-	F32									m_fAngSpeed3;
+	float									m_fSpeed0;
+	float									m_fSpeed1;
+	float									m_fSpeed2;
+	float									m_fSpeed3;
+	float									m_fAngSpeed0;
+	float									m_fAngSpeed1;
+	float									m_fAngSpeed2;
+	float									m_fAngSpeed3;
 
 	void			MakeCubeMapFace			(Fvector3& D, Fvector3& N);
 	void			MakeLevelMapProcess		( );
@@ -41,7 +41,7 @@ private:
 	void			MakeLevelMapScreenshot	( );
 
 public:
-					CDemoRecord				(const char* name, F32 life_time = 60 * 60 * 1000);
+					CDemoRecord				(const char* name, float life_time = 60 * 60 * 1000);
 	virtual			~CDemoRecord			( );
 
 	virtual void	IR_OnKeyboardPress		(int dik);
@@ -53,5 +53,5 @@ public:
 	{
 		return m_bOverlapped;
 	}
-	virtual BOOL	Process					(Fvector3& p, Fvector3& d, Fvector3& n, F32& fFov, F32& fFar, F32& fAspect);
+	virtual BOOL	Process					(Fvector3& p, Fvector3& d, Fvector3& n, float& fFov, float& fFar, float& fAspect);
 };

@@ -9,17 +9,17 @@ class CPhysicsShell;
 
 class CPHCallOnStepCondition : public CPHCondition
 {
-	U64 m_step;
+	unsigned __int64 m_step;
 
 public:
 	CPHCallOnStepCondition( );
 	virtual bool obsolete( ) const;
 	virtual bool is_true( );
-	inline void set_step(U64 step)
+	inline void set_step(unsigned __int64 step)
 	{
 		m_step = step;
 	}
-	void set_steps_interval(U64 steps);
+	void set_steps_interval(unsigned __int64 steps);
 	void set_time_interval(u32 time);
 	void set_time_interval(float time);
 	void set_global_time(float time);

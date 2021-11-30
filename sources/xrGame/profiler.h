@@ -57,7 +57,7 @@ protected:
 	xrCriticalSection	m_section;
 	u32					m_call_count;
 
-			void		setup_timer			(const char* timer_id, const U64& timer_time, const u32 &call_count);
+			void		setup_timer			(const char* timer_id, const unsigned __int64& timer_time, const u32 &call_count);
 	inline void		convert_string		(const char* str, CSharedString& out, u32 max_string_size);
 
 public:

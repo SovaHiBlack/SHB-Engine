@@ -104,6 +104,6 @@ CORE_API		BOOL			is_stack_ptr(void* _ptr)
 	int			local_value = 0;
 	void* ptr_refsound = _ptr;
 	void* ptr_local = &local_value;
-	ptrdiff_t	difference = (ptrdiff_t) _abs(S64(ptrdiff_t(ptr_local) - ptrdiff_t(ptr_refsound)));
+	ptrdiff_t	difference = (ptrdiff_t) _abs(signed __int64(ptrdiff_t(ptr_local) - ptrdiff_t(ptr_refsound)));
 	return		(difference < (512 * 1024));
 }

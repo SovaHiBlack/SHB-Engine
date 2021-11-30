@@ -172,7 +172,7 @@ public:
 	}
 };
 
-using Fobb = _obb<F32>;
+using Fobb = _obb<float>;
 
 template <class T>
 BOOL	_valid(const _obb<T>& m)

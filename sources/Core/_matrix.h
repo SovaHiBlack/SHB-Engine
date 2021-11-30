@@ -999,8 +999,8 @@ public:
 	}
 };
 
-using Fmatrix = _matrix<F32>;
-using Dmatrix = _matrix<F64>;
+using Fmatrix = _matrix<float>;
+using Dmatrix = _matrix<double>;
 
 template <class T>
 BOOL	_valid(const _matrix<T>& m)

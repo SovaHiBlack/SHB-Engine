@@ -23,9 +23,9 @@ extern CORE_API pauseMngr		g_pauseMngr;
 class CORE_API CTimerBase
 {
 protected:
-	U64			qwStartTime;
-	U64			qwPausedTime;
-	U64			qwPauseAccum;
+	unsigned __int64			qwStartTime;
+	unsigned __int64			qwPausedTime;
+	unsigned __int64			qwPauseAccum;
 	BOOL		bPause;
 
 public:
@@ -40,7 +40,7 @@ public:
 
 		qwStartTime = CPU::QPC( ) - qwPauseAccum;
 	}
-	__forceinline U64		GetElapsed_ticks( )const
+	__forceinline unsigned __int64		GetElapsed_ticks( )const
 	{
 		if (bPause)
 		{
@@ -53,12 +53,12 @@ public:
 	}
 	inline unsigned int		GetElapsed_ms( ) const
 	{
-		return unsigned int(GetElapsed_ticks( ) * U64(1000) / CPU::qpc_freq);
+		return unsigned int(GetElapsed_ticks( ) * unsigned __int64(1000) / CPU::qpc_freq);
 	}
-	inline F32	GetElapsed_sec( ) const
+	inline float	GetElapsed_sec( ) const
 	{
 		FPU::m64r( );
-		F32 _result = F32(F64(GetElapsed_ticks( )) / F64(CPU::qpc_freq));
+		float _result = float(double(GetElapsed_ticks( )) / double(CPU::qpc_freq));
 		FPU::m24r( );
 
 		return _result;
@@ -74,17 +74,17 @@ class CORE_API CTimer : public CTimerBase
 private:
 	using inherited = CTimerBase;
 
-	F32				m_time_factor;
-	U64					m_real_ticks;
-	U64					m_ticks;
+	float				m_time_factor;
+	unsigned __int64					m_real_ticks;
+	unsigned __int64					m_ticks;
 
-	inline U64				GetElapsed_ticks(const U64& current_ticks) const
+	inline unsigned __int64				GetElapsed_ticks(const unsigned __int64& current_ticks) const
 	{
-		U64				delta = current_ticks - m_real_ticks;
-		F64			delta_d = (F64) delta;
-		F64			time_factor_d = time_factor( );
-		F64			time = delta_d * time_factor_d + 0.5;
-		U64				result = (U64) time;
+		unsigned __int64				delta = current_ticks - m_real_ticks;
+		double			delta_d = (double) delta;
+		double			time_factor_d = time_factor( );
+		double			time = delta_d * time_factor_d + 0.5;
+		unsigned __int64				result = (unsigned __int64) time;
 		return			(m_ticks + result);
 	}
 
@@ -105,23 +105,23 @@ public:
 		m_ticks = 0;
 	}
 
-	inline const F32& time_factor( ) const
+	inline const float& time_factor( ) const
 	{
 		return m_time_factor;
 	}
 
-	inline void			time_factor(const F32& time_factor)
+	inline void			time_factor(const float& time_factor)
 	{
-		U64 current = inherited::GetElapsed_ticks( );
+		unsigned __int64 current = inherited::GetElapsed_ticks( );
 		m_ticks = GetElapsed_ticks(current);
 		m_real_ticks = current;
 		m_time_factor = time_factor;
 	}
 
-	inline U64				GetElapsed_ticks( ) const
+	inline unsigned __int64				GetElapsed_ticks( ) const
 	{
 		FPU::m64r( );
-		U64 result = GetElapsed_ticks(inherited::GetElapsed_ticks( ));
+		unsigned __int64 result = GetElapsed_ticks(inherited::GetElapsed_ticks( ));
 		FPU::m24r( );
 
 		return result;
@@ -129,13 +129,13 @@ public:
 
 	unsigned int				GetElapsed_ms( ) const
 	{
-		return			(unsigned int(GetElapsed_ticks( ) * U64(1000) / CPU::qpc_freq));
+		return			(unsigned int(GetElapsed_ticks( ) * unsigned __int64(1000) / CPU::qpc_freq));
 	}
 
-	F32			GetElapsed_sec( ) const
+	float			GetElapsed_sec( ) const
 	{
 		FPU::m64r( );
-		F32 result = F32(F64(GetElapsed_ticks( )) / F64(CPU::qpc_freq));
+		float result = float(double(GetElapsed_ticks( )) / double(CPU::qpc_freq));
 		FPU::m24r( );
 
 		return result;
@@ -149,7 +149,7 @@ public:
 
 class CORE_API CTimer_paused_ex : public CTimer
 {
-	U64											save_clock;
+	unsigned __int64											save_clock;
 
 public:
 	CTimer_paused_ex( )
@@ -167,7 +167,7 @@ public:
 			return;
 		}
 
-		U64 _current = CPU::QPC( ) - CPU::qpc_overhead;
+		unsigned __int64 _current = CPU::QPC( ) - CPU::qpc_overhead;
 		if (b)
 		{
 			save_clock = _current;
@@ -200,8 +200,8 @@ class CORE_API CStatTimer
 {
 public:
 	CTimer										T;
-	U64											accum;
-	F32										result;
+	unsigned __int64											accum;
+	float										result;
 	unsigned int											count;
 
 	CStatTimer( );
@@ -228,19 +228,19 @@ public:
 		accum += T.GetElapsed_ticks( );
 	}
 
-	__forceinline U64		GetElapsed_ticks( ) const
+	__forceinline unsigned __int64		GetElapsed_ticks( ) const
 	{
 		return accum;
 	}
 
 	inline unsigned int				GetElapsed_ms( ) const
 	{
-		return unsigned int(GetElapsed_ticks( ) * U64(1000) / CPU::qpc_freq);
+		return unsigned int(GetElapsed_ticks( ) * unsigned __int64(1000) / CPU::qpc_freq);
 	}
-	inline F32			GetElapsed_sec( ) const
+	inline float			GetElapsed_sec( ) const
 	{
 		FPU::m64r( );
-		F32 _result = F32(F64(GetElapsed_ticks( )) / F64(CPU::qpc_freq));
+		float _result = float(double(GetElapsed_ticks( )) / double(CPU::qpc_freq));
 		FPU::m24r( );
 
 		return _result;

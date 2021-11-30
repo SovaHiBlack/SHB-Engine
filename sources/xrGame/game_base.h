@@ -152,12 +152,12 @@ public:
 //moved from game_sv_base (time routines)
 private:
 	// scripts
-	U64								m_qwStartProcessorTime;
-	U64								m_qwStartGameTime;
+	unsigned __int64								m_qwStartProcessorTime;
+	unsigned __int64								m_qwStartGameTime;
 	float							m_fTimeFactor;
 	//-------------------------------------------------------
-	U64								m_qwEStartProcessorTime;
-	U64								m_qwEStartGameTime;
+	unsigned __int64								m_qwEStartProcessorTime;
+	unsigned __int64								m_qwEStartGameTime;
 	float							m_fETimeFactor;
 	//-------------------------------------------------------
 

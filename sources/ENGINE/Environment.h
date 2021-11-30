@@ -164,8 +164,8 @@ public:
 	void				load(const char* exec_tm, const char* sect, CEnvironment* parent);
 	void				copy(const CEnvDescriptor& src)
 	{
-		F32 tm0 = exec_time;
-		F32 tm1 = exec_time_loaded;
+		float tm0 = exec_time;
+		float tm1 = exec_time_loaded;
 		*this = src;
 		exec_time = tm0;
 		exec_time_loaded = tm1;
@@ -239,17 +239,17 @@ protected:
 	CBlender_skybox			m_b_skybox;
 	CPerlinNoise1D* PerlinNoise1D;
 
-	F32					fGameTime;
+	float					fGameTime;
 
 public:
-	F32					wind_strength_factor;
-	F32					wind_gust_factor;
+	float					wind_strength_factor;
+	float					wind_gust_factor;
 	// Environments
 	CEnvDescriptorMixer		CurrentEnv;
 	CEnvDescriptor* Current[2];
 
 	bool					bWFX;
-	F32					wfx_time;
+	float					wfx_time;
 	CEnvDescriptor* WFX_end_desc[2];
 
 	EnvVec* CurrentWeather;
@@ -271,11 +271,11 @@ public:
 	CEffectLensFlare* eff_LensFlare;
 	CEffectThunderbolt* eff_Thunderbolt;
 
-	F32					fTimeFactor;
+	float					fTimeFactor;
 	ref_texture				tonemap;
 	ref_texture				tsky0, tsky1;
 
-	void					SelectEnvs(F32 gt);
+	void					SelectEnvs(float gt);
 
 	CEnvAmbient* AppendEnvAmb(const CSharedString& sect);
 
@@ -307,11 +307,11 @@ public:
 	{
 		return CurrentWeatherName;
 	}
-	void					SetGameTime(F32 game_time, F32 time_factor);
+	void					SetGameTime(float game_time, float time_factor);
 
 	void					OnDeviceCreate( );
 	void					OnDeviceDestroy( );
 };
 
 ENGINE_API extern Flags32	psEnvFlags;
-ENGINE_API extern F32		psVisDistance;
+ENGINE_API extern float		psVisDistance;

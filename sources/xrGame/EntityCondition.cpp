@@ -194,7 +194,7 @@ void CEntityCondition::UpdateWounds( )
 
 void CEntityCondition::UpdateConditionTime( )
 {
-	U64 _cur_time = Level( ).GetGameTime( );
+	unsigned __int64 _cur_time = Level( ).GetGameTime( );
 
 	if (m_bTimeValid)
 	{

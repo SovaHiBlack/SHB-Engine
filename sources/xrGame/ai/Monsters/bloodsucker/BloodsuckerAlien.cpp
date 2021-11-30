@@ -10,7 +10,7 @@
 #include "../../../..\ENGINE\EffectorCam.h"
 #include "../../../..\ENGINE\EffectorPostProcess.h"
 
-#define EFFECTOR_ID_GEN(type) (type( u32(U64(this) & u32(-1)) ))
+#define EFFECTOR_ID_GEN(type) (type( u32(unsigned __int64(this) & u32(-1)) ))
 
 ////////////////////////////////////////////////////////////////////////////////////
 // CAlienEffectorPP

@@ -30,28 +30,28 @@ public:
 		z = _z;
 		return *this;
 	}
-	__forceinline SelfRef	set(const _vector3<F32>& v)
+	__forceinline SelfRef	set(const _vector3<float>& v)
 	{
 		x = TYPE(v.x);
 		y = TYPE(v.y);
 		z = TYPE(v.z);
 		return *this;
 	}
-	__forceinline SelfRef	set(const _vector3<F64>& v)
+	__forceinline SelfRef	set(const _vector3<double>& v)
 	{
 		x = TYPE(v.x);
 		y = TYPE(v.y);
 		z = TYPE(v.z);
 		return *this;
 	}
-	__forceinline SelfRef	set(F32* p)
+	__forceinline SelfRef	set(float* p)
 	{
 		x = p[0];
 		y = p[1];
 		z = p[2];
 		return *this;
 	}
-	__forceinline SelfRef	set(F64* p)
+	__forceinline SelfRef	set(double* p)
 	{
 		x = p[0];
 		y = p[1];
@@ -442,7 +442,7 @@ public:
 		y = r * sa;
 		return *this;
 	}
-	inline SelfRef			random_dir(SelfCRef ConeAxis, F32 ConeAngle, CRandom& R = ::Random)
+	inline SelfRef			random_dir(SelfCRef ConeAxis, float ConeAngle, CRandom& R = ::Random)
 	{
 		Self rnd;
 		rnd.random_dir(R);
@@ -551,12 +551,12 @@ public:
 	}
 	__forceinline void		getHP(TYPE& h, TYPE& p) const
 	{
-		F32 hyp;
+		float hyp;
 
 		if (fis_zero(x) && fis_zero(z))
 		{
 			h = 0.0f;
-			if (!fis_zero(F32(y)))
+			if (!fis_zero(float(y)))
 			{
 				p = (y > 0.0f) ? PI_DIV_2 : -PI_DIV_2;
 			}
@@ -581,7 +581,7 @@ public:
 			}
 
 			hyp = _sqrt(x * x + z * z);
-			if (fis_zero(F32(hyp)))
+			if (fis_zero(float(hyp)))
 			{
 				p = (y > 0.0f) ? PI_DIV_2 : -PI_DIV_2;
 			}
@@ -591,7 +591,7 @@ public:
 			}
 		}
 	}
-	__forceinline F32		getH( ) const
+	__forceinline float		getH( ) const
 	{
 		if (fis_zero(x) && fis_zero(z))
 		{
@@ -613,11 +613,11 @@ public:
 			}
 		}
 	}
-	__forceinline F32		getP( ) const
+	__forceinline float		getP( ) const
 	{
 		if (fis_zero(x) && fis_zero(z))
 		{
-			if (!fis_zero(F32(y)))
+			if (!fis_zero(float(y)))
 			{
 				return (y > 0.0f) ? PI_DIV_2 : -PI_DIV_2;
 			}
@@ -628,8 +628,8 @@ public:
 		}
 		else
 		{
-			F32 hyp = _sqrt(x * x + z * z);
-			if (fis_zero(F32(hyp)))
+			float hyp = _sqrt(x * x + z * z);
+			if (fis_zero(float(hyp)))
 			{
 				return (y > 0.0f) ? PI_DIV_2 : -PI_DIV_2;
 			}
@@ -704,7 +704,7 @@ public:
 };
 
 using Ivector3 = _vector3<int>;
-using Fvector3 = _vector3<F32>;
+using Fvector3 = _vector3<float>;
 
 template <class T>
 BOOL						_valid(const _vector3<T>& v)
@@ -715,30 +715,30 @@ BOOL						_valid(const _vector3<T>& v)
 //////////////////////////////////////////////////////////////////////////
 #pragma warning(push)
 #pragma warning(disable:4244)
-__forceinline F64	rsqrt(F64 v)
+__forceinline double	rsqrt(double v)
 {
 	return 1.0 / _sqrt(v);
 }
-inline BOOL	exact_normalize(F32* a)
+inline BOOL	exact_normalize(float* a)
 {
-	F64	sqr_magnitude = a[0] * a[0] + a[1] * a[1] + a[2] * a[2];
-	F64	epsilon = 1.192092896e-05F;
+	double	sqr_magnitude = a[0] * a[0] + a[1] * a[1] + a[2] * a[2];
+	double	epsilon = 1.192092896e-05F;
 	if (sqr_magnitude > epsilon)
 	{
-		F64	l = rsqrt(sqr_magnitude);
+		double	l = rsqrt(sqr_magnitude);
 		a[0] *= l;
 		a[1] *= l;
 		a[2] *= l;
 		return		TRUE;
 	}
 
-	F64 a0;
-	F64 a1;
-	F64 a2;
-	F64 aa0;
-	F64 aa1;
-	F64 aa2;
-	F64 l;
+	double a0;
+	double a1;
+	double a2;
+	double aa0;
+	double aa1;
+	double aa2;
+	double l;
 	a0 = a[0];
 	a1 = a[1];
 	a2 = a[2];
@@ -757,7 +757,7 @@ inline BOOL	exact_normalize(F32* a)
 			a2 /= aa1;
 			l = rsqrt(a0 * a0 + a2 * a2 + 1);
 			a[0] = a0 * l;
-			a[1] = (F64) _copysign(l, a1);
+			a[1] = (double) _copysign(l, a1);
 			a[2] = a2 * l;
 		}
 	}
@@ -771,7 +771,7 @@ aa2_largest:	// aa2 is largest
 			l = rsqrt(a0 * a0 + a1 * a1 + 1);
 			a[0] = a0 * l;
 			a[1] = a1 * l;
-			a[2] = (F64) _copysign(l, a2);
+			a[2] = (double) _copysign(l, a2);
 		}
 		else
 		{		// aa0 is largest
@@ -786,11 +786,12 @@ aa2_largest:	// aa2 is largest
 			a1 /= aa0;
 			a2 /= aa0;
 			l = rsqrt(a1 * a1 + a2 * a2 + 1);
-			a[0] = (F64) _copysign(l, a0);
+			a[0] = (double) _copysign(l, a0);
 			a[1] = a1 * l;
 			a[2] = a2 * l;
 		}
 	}
+
 	return	TRUE;
 }
 inline BOOL	exact_normalize(Fvector3& a)

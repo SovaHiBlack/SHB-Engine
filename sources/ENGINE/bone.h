@@ -4,7 +4,7 @@
 // refs
 class CBone;
 
-const unsigned short		BI_NONE				= unsigned short(-1);
+const unsigned short		BI_NONE = unsigned short(-1);
 
 #define OGF_IKDATA_VERSION		0x0001
 
@@ -23,14 +23,17 @@ enum EJointType
 struct SJointLimit
 {
 	Fvector2		limit;
-	F32 			spring_factor;
-	F32 			damping_factor;
-	SJointLimit		(){Reset();}
-	void 			Reset()
+	float 			spring_factor;
+	float 			damping_factor;
+	SJointLimit( )
 	{
-		limit.set		(0.f,0.f);
-		spring_factor 	= 1.f;
-		damping_factor  = 1.f;
+		Reset( );
+	}
+	void 			Reset( )
+	{
+		limit.set(0.0f, 0.0f);
+		spring_factor = 1.0f;
+		damping_factor = 1.0f;
 	}
 };
 
@@ -45,10 +48,11 @@ struct SBoneShape
 		stForceU32 = unsigned short(-1)
 	};
 
-	enum EShapeFlags{
-		sfNoPickable		= (1<<0), 	// use only in RayPick
-		sfRemoveAfterBreak  = (1<<1),	
-		sfNoPhysics			= (1<<2),	
+	enum EShapeFlags
+	{
+		sfNoPickable = (1 << 0), 	// use only in RayPick
+		sfRemoveAfterBreak = (1 << 1),
+		sfNoPhysics = (1 << 2),
 	};
 
 	unsigned short				type;		// 2
@@ -56,20 +60,25 @@ struct SBoneShape
 	Fobb			box;      	// 15*4
 	Fsphere			sphere;		// 4*4
 	Fcylinder		cylinder;	// 8*4
-	SBoneShape		(){Reset();}
-	void			Reset()
+	SBoneShape( )
 	{
-		flags.zero	();
-		type		= stNone;
-		box.invalidate();
-		sphere.P.set(0.f,0.f,0.f); sphere.R = 0.f;
-		cylinder.invalidate();
+		Reset( );
 	}
-	bool			Valid(){  
-		switch (type){
-		case stBox: 	return !fis_zero(box.m_halfsize.x)&&!fis_zero(box.m_halfsize.y)&&!fis_zero(box.m_halfsize.z);
-		case stSphere: 	return !fis_zero(sphere.R);
-		case stCylinder:return !fis_zero(cylinder.m_height)&&!fis_zero(cylinder.m_radius)&&!fis_zero(cylinder.m_direction.square_magnitude());
+	void			Reset( )
+	{
+		flags.zero( );
+		type = stNone;
+		box.invalidate( );
+		sphere.P.set(0.f, 0.f, 0.f); sphere.R = 0.f;
+		cylinder.invalidate( );
+	}
+	bool			Valid( )
+	{
+		switch (type)
+		{
+			case stBox: 	return !fis_zero(box.m_halfsize.x) && !fis_zero(box.m_halfsize.y) && !fis_zero(box.m_halfsize.z);
+			case stSphere: 	return !fis_zero(sphere.R);
+			case stCylinder:return !fis_zero(cylinder.m_height) && !fis_zero(cylinder.m_radius) && !fis_zero(cylinder.m_direction.square_magnitude( ));
 		};
 		return true;
 	}
@@ -79,64 +88,70 @@ struct SJointIKData
 {
 	// IK
 	EJointType		type;
-	SJointLimit		limits	[3];// by [axis XYZ on joint] and[Z-wheel,X-steer on wheel]
-	F32			spring_factor;
-	F32			damping_factor;
-	enum{
-		flBreakable	= (1<<0),
+	SJointLimit		limits[3];// by [axis XYZ on joint] and[Z-wheel,X-steer on wheel]
+	float			spring_factor;
+	float			damping_factor;
+	enum
+	{
+		flBreakable = (1 << 0),
 	};
 	Flags32			ik_flags;
-	F32			break_force;	// [0..+INF]
-	F32			break_torque;	// [0..+INF]
+	float			break_force;	// [0..+INF]
+	float			break_torque;	// [0..+INF]
 
-	F32			friction;
-				
-	SJointIKData	(){ Reset();}
-	void			Reset	()
+	float			friction;
+
+	SJointIKData( )
 	{
-		limits[0].Reset	();
-		limits[1].Reset	();
-		limits[2].Reset	();
-		type			= jtRigid;
-		spring_factor	= 1.f;
-		damping_factor	= 1.f;
-		ik_flags.zero	();
-		break_force		= 0.f;
-		break_torque	= 0.f;
+		Reset( );
+	}
+	void			Reset( )
+	{
+		limits[0].Reset( );
+		limits[1].Reset( );
+		limits[2].Reset( );
+		type = jtRigid;
+		spring_factor = 1.f;
+		damping_factor = 1.f;
+		ik_flags.zero( );
+		break_force = 0.f;
+		break_torque = 0.f;
 	}
 	void				clamp_by_limits(Fvector3& dest_xyz);
 	void				Export(IWriter& F)
 	{
-		F.w_u32			(type);
-		for (int k=0; k<3; k++){
-			// Kostya Slipchenko say:
-			// направление вращения в ОДЕ отличается от направления вращение в X-Ray 
-			// поэтому меняем знак у лимитов
-			F.w_float	(_min(-limits[k].limit.x,-limits[k].limit.y)); // min (swap special for ODE) 
-			F.w_float	(_max(-limits[k].limit.x,-limits[k].limit.y)); // max (swap special for ODE)
-			F.w_float	(limits[k].spring_factor);
-			F.w_float	(limits[k].damping_factor);
+		F.w_u32(type);
+		for (int k = 0; k < 3; k++)
+		{
+// Kostya Slipchenko say:
+// направление вращения в ОДЕ отличается от направления вращение в X-Ray 
+// поэтому меняем знак у лимитов
+			F.w_float(_min(-limits[k].limit.x, -limits[k].limit.y)); // min (swap special for ODE) 
+			F.w_float(_max(-limits[k].limit.x, -limits[k].limit.y)); // max (swap special for ODE)
+			F.w_float(limits[k].spring_factor);
+			F.w_float(limits[k].damping_factor);
 		}
-		F.w_float		(spring_factor);
-		F.w_float		(damping_factor);
+		F.w_float(spring_factor);
+		F.w_float(damping_factor);
 
-		F.w_u32			(ik_flags.get());
-		F.w_float		(break_force);
-		F.w_float		(break_torque);
+		F.w_u32(ik_flags.get( ));
+		F.w_float(break_force);
+		F.w_float(break_torque);
 
-		F.w_float		(friction);
+		F.w_float(friction);
 	}
 	bool				Import(IReader& F, unsigned short vers)
 	{
-		type			= (EJointType)F.r_u32();
-		F.r				(limits,sizeof(SJointLimit)*3);
-		spring_factor	= F.r_float();
-		damping_factor	= F.r_float();
-		ik_flags.flags	= F.r_u32();
-		break_force		= F.r_float();
-		break_torque	= F.r_float();
-		if (vers>0){
-			friction	= F.r_float();
+		type = (EJointType) F.r_u32( );
+		F.r(limits, sizeof(SJointLimit) * 3);
+		spring_factor = F.r_float( );
+		damping_factor = F.r_float( );
+		ik_flags.flags = F.r_u32( );
+		break_force = F.r_float( );
+		break_torque = F.r_float( );
+		if (vers > 0)
+		{
+			friction = F.r_float( );
 		}
 		return true;
 	}
@@ -145,9 +160,8 @@ struct SJointIKData
 
 // refs
 class CBone;
-//DEFINE_VECTOR		    (CBone*,BoneVec,BoneIt);
+
 using BoneVec = xr_vector<CBone*>;
-using BoneIt = BoneVec::iterator;
 
 class CBone
 {
@@ -156,11 +170,11 @@ class CBone
 	CSharedString			wmap;
 	Fvector3			rest_offset;
 	Fvector3			rest_rotate;    // XYZ format (Game format)
-	F32			    rest_length;
+	float			    rest_length;
 
 	Fvector3			mot_offset;
 	Fvector3			mot_rotate;		// XYZ format (Game format)
-	F32			    mot_length;
+	float			    mot_length;
 
 	Fmatrix			    mot_transform;
 
@@ -173,57 +187,123 @@ class CBone
 
 public:
 	int				    SelfID;
-	CBone*			    parent;
+	CBone* parent;
 	BoneVec				children;
 
 	// editor part
-	Flags8			    flags;    
-	enum{
-		flSelected	    = (1<<0),
+	Flags8			    flags;
+	enum
+	{
+		flSelected = (1 << 0),
 	};
 	SJointIKData	    IK_data;
 	CSharedString			   game_mtl;
 	SBoneShape		    shape;
 
-	F32			    mass;
+	float			    mass;
 	Fvector3			    center_of_mass;
 
-						CBone			();
-	virtual			    ~CBone			();
+	CBone( );
+	virtual			    ~CBone( );
 
-	void			    SetName			(const char* p){name		= p; xr_strlwr(name);		}
-	void			    SetParentName	(const char* p){parent_name	= p; xr_strlwr(parent_name);}
-	void			    SetWMap			(const char* p){wmap		= p;}
-	void			    SetRestParams	(F32 length, const Fvector3& offset, const Fvector3& rotate){rest_offset.set(offset);rest_rotate.set(rotate);rest_length=length;};
+	void			    SetName(const char* p)
+	{
+		name = p; xr_strlwr(name);
+	}
+	void			    SetParentName(const char* p)
+	{
+		parent_name = p; xr_strlwr(parent_name);
+	}
+	void			    SetWMap(const char* p)
+	{
+		wmap = p;
+	}
+	void			    SetRestParams(float length, const Fvector3& offset, const Fvector3& rotate)
+	{
+		rest_offset.set(offset);
+		rest_rotate.set(rotate);
+		rest_length = length;
+	}
 
-	CSharedString		    Name			(){return name;}
-	CSharedString		    ParentName		(){return parent_name;}
-	CSharedString		    WMap			(){return wmap;}
-	inline CBone*		    Parent			(){return parent;}
-	inline BOOL			    IsRoot			(){return (parent==0);}
+	CSharedString		    Name( )
+	{
+		return name;
+	}
+	CSharedString		    ParentName( )
+	{
+		return parent_name;
+	}
+	CSharedString		    WMap( )
+	{
+		return wmap;
+	}
+	inline CBone* Parent( )
+	{
+		return parent;
+	}
+	inline BOOL			    IsRoot( )
+	{
+		return (parent == 0);
+	}
 
-	// transformation
-	const Fvector3&      _Offset			(){return mot_offset;}
-	const Fvector3&      _Rotate			(){return mot_rotate;}
-	F32			    _Length			(){return mot_length;}
-	inline Fmatrix&		    _RTransform		(){return rest_transform;}
-	inline Fmatrix&		    _RITransform	(){return rest_i_transform;}
-	inline Fmatrix&		    _MTransform		(){return mot_transform;}
-	inline Fmatrix&		    _LTransform		(){return last_transform;}
-	inline Fmatrix&		    _RenderTransform(){return render_transform;}
-	inline Fvector3&			_RestOffset		(){return rest_offset;}
-	inline Fvector3&		    _RestRotate		(){return rest_rotate;}
-	
-	void			    _Update			(const Fvector3& T, const Fvector3& R){mot_offset.set(T); mot_rotate.set(R); mot_length=rest_length;}
-	void			    Reset			(){mot_offset.set(rest_offset); mot_rotate.set(rest_rotate); mot_length=rest_length;}
+// transformation
+	const Fvector3& _Offset( )
+	{
+		return mot_offset;
+	}
+	const Fvector3& _Rotate( )
+	{
+		return mot_rotate;
+	}
+	float			    _Length( )
+	{
+		return mot_length;
+	}
+	inline Fmatrix& _RTransform( )
+	{
+		return rest_transform;
+	}
+	inline Fmatrix& _RITransform( )
+	{
+		return rest_i_transform;
+	}
+	inline Fmatrix& _MTransform( )
+	{
+		return mot_transform;
+	}
+	inline Fmatrix& _LTransform( )
+	{
+		return last_transform;
+	}
+	inline Fmatrix& _RenderTransform( )
+	{
+		return render_transform;
+	}
+	inline Fvector3& _RestOffset( )
+	{
+		return rest_offset;
+	}
+	inline Fvector3& _RestRotate( )
+	{
+		return rest_rotate;
+	}
 
-	// IO
-	void			    Save			(IWriter& F);
-	void			    Load_0			(IReader& F);
-	void			    Load_1			(IReader& F);
+	void			    _Update(const Fvector3& T, const Fvector3& R)
+	{
+		mot_offset.set(T); mot_rotate.set(R); mot_length = rest_length;
+	}
+	void			    Reset( )
+	{
+		mot_offset.set(rest_offset); mot_rotate.set(rest_rotate); mot_length = rest_length;
+	}
 
-	void			    SaveData		(IWriter& F);
-	void			    LoadData		(IReader& F);
-	void			    ResetData		();
-	void			    CopyData		(CBone* bone);
+// IO
+	void			    Save(IWriter& F);
+	void			    Load_0(IReader& F);
+	void			    Load_1(IReader& F);
+
+	void			    SaveData(IWriter& F);
+	void			    LoadData(IReader& F);
+	void			    ResetData( );
+	void			    CopyData(CBone* bone);
 };

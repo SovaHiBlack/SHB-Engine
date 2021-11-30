@@ -14,19 +14,19 @@
 #define fdRLE10	0x03ede5bdb     // 1/ln10
 
 // integer math on floats
-inline BOOL negative(const F32& f)
+inline BOOL negative(const float& f)
 {
 	return (*((unsigned*) (&f)) & fdSGN);
 }
-inline BOOL positive(const F32& f)
+inline BOOL positive(const float& f)
 {
 	return (*((unsigned*) (&f)) & fdSGN) == 0;
 }
-inline void set_negative(F32& f)
+inline void set_negative(float& f)
 {
 	(*(unsigned*) (&f)) |= fdSGN;
 }
-inline void set_positive(F32& f)
+inline void set_positive(float& f)
 {
 	(*(unsigned*) (&f)) &= ~fdSGN;
 }
@@ -87,12 +87,12 @@ inline	U32	btwCount1(U32 v)
 	return (v + (v >> 9) + (v >> 18) + (v >> 27)) & 0x3f;
 }
 
-inline	U64	btwCount1(U64 v)
+inline	unsigned __int64	btwCount1(unsigned __int64 v)
 {
-	return btwCount1(U32(v & U32(-1))) + btwCount1(U32(v >> U64(32)));
+	return btwCount1(U32(v & U32(-1))) + btwCount1(U32(v >> unsigned __int64(32)));
 }
 
-__forceinline int iFloor(F32 x)
+__forceinline int iFloor(float x)
 {
 	int a = *(const int*) (&x);
 	int exponent = (127 + 31) - ((a >> 23) & 0xFF);
@@ -113,7 +113,7 @@ __forceinline int iFloor(F32 x)
 /* intCeil() is a non-interesting variant, since effectively
    ceil(x) == -floor(-x)
 */
-__forceinline int iCeil(F32 x)
+__forceinline int iCeil(float x)
 {
 	int a = (*(const int*) (&x));
 	int exponent = (127 + 31) - ((a >> 23) & 0xFF);
@@ -133,38 +133,38 @@ __forceinline int iCeil(F32 x)
 }
 
 // Validity checks
-inline bool fis_gremlin(const F32& f)
+inline bool fis_gremlin(const float& f)
 {
 	unsigned char value = unsigned char(((*(int*) &f & 0x7f800000) >> 23) - 0x20);
 	return	value > 0xc0;
 }
-inline bool fis_denormal(const F32& f)
+inline bool fis_denormal(const float& f)
 {
 	return !(*(int*) &f & 0x7f800000);
 }
 
 // Approximated calculations
-inline F32 apx_InvSqrt(const F32& n)
+inline float apx_InvSqrt(const float& n)
 {
 	long tmp = (long(0xBE800000) - *(long*) &n) >> 1;
-	F32 y = *(F32*) &tmp;
+	float y = *(float*) &tmp;
 	return y * (1.47f - 0.47f * n * y * y);
 }
-// Only for [0..1] (positive) range 
-inline F32 apx_asin(const F32 x)
+// Only for [0..1] (positive) range
+inline float apx_asin(const float x)
 {
-	const F32 c1 = 0.892399f;
-	const F32 c3 = 1.693204f;
-	const F32 c5 = -3.853735f;
-	const F32 c7 = 2.838933f;
+	const float c1 = 0.892399f;
+	const float c3 = 1.693204f;
+	const float c5 = -3.853735f;
+	const float c7 = 2.838933f;
 
-	const F32 x2 = x * x;
-	const F32 d = x * (c1 + x2 * (c3 + x2 * (c5 + x2 * c7)));
+	const float x2 = x * x;
+	const float d = x * (c1 + x2 * (c3 + x2 * (c5 + x2 * c7)));
 
 	return d;
 }
-// Only for [0..1] (positive) range 
-inline F32 apx_acos(const F32 x)
+// Only for [0..1] (positive) range
+inline float apx_acos(const float x)
 {
 	return PI_DIV_2 - apx_asin(x);
 }

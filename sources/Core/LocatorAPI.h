@@ -68,7 +68,7 @@ private:
 	BOOL						bNoRecurse;
 
 	xrCriticalSection			m_auth_lock;
-	U64							m_auth_code;
+	unsigned __int64							m_auth_code;
 
 	void						Register(const char* name, unsigned int vfs, unsigned int crc, unsigned int ptr, unsigned int size_real, unsigned int size_compressed, unsigned int modif);
 	void						ProcessArchive(const char* path, const char* base_path = 0);

@@ -8,7 +8,7 @@
 //	SEEK_SET	0	File beginning
 //	SEEK_CUR	1	Current file pointer position
 //	SEEK_END	2	End-of-file
-int ov_seek_func(void *datasource, S64 offset, int whence)
+int ov_seek_func(void *datasource, signed __int64 offset, int whence)
 {
 	switch (whence){
 	case SEEK_SET: ((IReader*)datasource)->seek((int)offset);	 break;
@@ -75,12 +75,12 @@ void CSoundRender_Source::LoadWave	(const char* pName)
 	wfxdest.nBlockAlign		= wfxdest.nChannels * wfxdest.wBitsPerSample / 8;
 	wfxdest.nAvgBytesPerSec = wfxdest.nSamplesPerSec * wfxdest.nBlockAlign;
 
-	S64 pcm_total			= ov_pcm_total(&ovf,-1);
+	signed __int64 pcm_total			= ov_pcm_total(&ovf,-1);
 	if (psSoundFreq==sf_22K) pcm_total/=2;
 	dwBytesTotal			= U32(pcm_total*wfxdest.nBlockAlign);
 	dwBytesPerMS			= wfxdest.nAvgBytesPerSec/1000;
 //	dwBytesPerSec			= wfxdest.nAvgBytesPerSec;
-	dwTimeTotal				= U32( sdef_source_footer + U64( (U64(dwBytesTotal)* U64(1000))/ U64(wfxdest.nAvgBytesPerSec) ) );
+	dwTimeTotal				= U32( sdef_source_footer + unsigned __int64( (unsigned __int64(dwBytesTotal)* unsigned __int64(1000))/ unsigned __int64(wfxdest.nAvgBytesPerSec) ) );
 
 	vorbis_comment*	ovm		= ov_comment(&ovf,-1);
 	if (ovm->comments){

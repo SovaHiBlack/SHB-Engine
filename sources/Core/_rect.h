@@ -145,7 +145,7 @@ public:
 	{
 		return x1 == r.x1 && y1 == r.y1 && x2 == r.x2 && y2 == r.y2;
 	}
-	inline BOOL			cmp(_rect<F32>& r)
+	inline BOOL			cmp(_rect<float>& r)
 	{
 		return fsimilar(x1, r.x1) && fsimilar(y1, r.y1) && fsimilar(x2, r.x2) && fsimilar(y2, r.y2);
 	}
@@ -211,7 +211,7 @@ public:
 };
 
 using Irect = _rect<int>;
-using Frect = _rect<F32>;
+using Frect = _rect<float>;
 
 template <class T>
 BOOL _valid(const _rect<T>& m)

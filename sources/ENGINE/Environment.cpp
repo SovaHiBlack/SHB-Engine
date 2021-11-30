@@ -71,7 +71,7 @@ void CEnvironment::Invalidate( )
 	}
 }
 
-F32 CEnvironment::TimeDiff(F32 prev, F32 cur)
+float CEnvironment::TimeDiff(float prev, float cur)
 {
 	if (prev > cur)
 	{
@@ -83,10 +83,10 @@ F32 CEnvironment::TimeDiff(F32 prev, F32 cur)
 	}
 }
 
-F32 CEnvironment::TimeWeight(F32 val, F32 min_t, F32 max_t)
+float CEnvironment::TimeWeight(float val, float min_t, float max_t)
 {
-	F32 weight = 0.0f;
-	F32 length = TimeDiff(min_t, max_t);
+	float weight = 0.0f;
+	float length = TimeDiff(min_t, max_t);
 	if (!fis_zero(length, EPS))
 	{
 		if (min_t > max_t)
@@ -110,7 +110,7 @@ F32 CEnvironment::TimeWeight(F32 val, F32 min_t, F32 max_t)
 	return weight;
 }
 
-void CEnvironment::SetGameTime(F32 game_time, F32 time_factor)
+void CEnvironment::SetGameTime(float game_time, float time_factor)
 {
 	if (bWFX)
 	{
@@ -121,7 +121,7 @@ void CEnvironment::SetGameTime(F32 game_time, F32 time_factor)
 	fTimeFactor = time_factor;
 }
 
-F32 CEnvironment::NormalizeTime(F32 tm)
+float CEnvironment::NormalizeTime(float tm)
 {
 	if (tm < 0.0f)
 	{
@@ -193,13 +193,13 @@ bool CEnvironment::SetWeatherFX(CSharedString name)
 		CurrentWeather = &it->second;
 		CurrentWeatherName = it->first;
 
-		F32 rewind_tm = WFX_TRANS_TIME * fTimeFactor;
-		F32 start_tm = fGameTime + rewind_tm;
-		F32 current_length;
-		F32 current_weight;
+		float rewind_tm = WFX_TRANS_TIME * fTimeFactor;
+		float start_tm = fGameTime + rewind_tm;
+		float current_length;
+		float current_weight;
 		if (Current[0]->exec_time > Current[1]->exec_time)
 		{
-			F32 x = fGameTime > Current[0]->exec_time ? fGameTime - Current[0]->exec_time : (DAY_LENGTH - Current[0]->exec_time) + fGameTime;
+			float x = fGameTime > Current[0]->exec_time ? fGameTime - Current[0]->exec_time : (DAY_LENGTH - Current[0]->exec_time) + fGameTime;
 			current_length = (DAY_LENGTH - Current[0]->exec_time) + Current[1]->exec_time;
 			current_weight = x / current_length;
 		}
@@ -266,12 +266,12 @@ void CEnvironment::StopWFX( )
 
 }
 
-inline bool lb_env_pred(const CEnvDescriptor* x, F32 val)
+inline bool lb_env_pred(const CEnvDescriptor* x, float val)
 {
 	return x->exec_time < val;
 }
 
-void CEnvironment::SelectEnv(EnvVec* envs, CEnvDescriptor*& e, F32 gt)
+void CEnvironment::SelectEnv(EnvVec* envs, CEnvDescriptor*& e, float gt)
 {
 	EnvIt env = std::lower_bound(envs->begin( ), envs->end( ), gt, lb_env_pred);
 	if (env == envs->end( ))
@@ -284,7 +284,7 @@ void CEnvironment::SelectEnv(EnvVec* envs, CEnvDescriptor*& e, F32 gt)
 	}
 }
 
-void CEnvironment::SelectEnvs(EnvVec* envs, CEnvDescriptor*& e0, CEnvDescriptor*& e1, F32 gt)
+void CEnvironment::SelectEnvs(EnvVec* envs, CEnvDescriptor*& e0, CEnvDescriptor*& e1, float gt)
 {
 	EnvIt env = std::lower_bound(envs->begin( ), envs->end( ), gt, lb_env_pred);
 	if (env == envs->end( ))
@@ -306,7 +306,7 @@ void CEnvironment::SelectEnvs(EnvVec* envs, CEnvDescriptor*& e0, CEnvDescriptor*
 	}
 }
 
-void CEnvironment::SelectEnvs(F32 gt)
+void CEnvironment::SelectEnvs(float gt)
 {
 	VERIFY(CurrentWeather);
 	if ((Current[0] == Current[1]) && (Current[0] == 0))
@@ -371,7 +371,7 @@ void CEnvironment::OnFrame( )
 	SelectEnvs(fGameTime);
 	VERIFY(Current[0] && Current[1]);
 
-	F32 current_weight = TimeWeight(fGameTime, Current[0]->exec_time, Current[1]->exec_time);
+	float current_weight = TimeWeight(fGameTime, Current[0]->exec_time, Current[1]->exec_time);
 
 	// modifiers
 	CEnvModifier EM;
@@ -382,7 +382,7 @@ void CEnvironment::OnFrame( )
 	EM.sky_color.set(0, 0, 0);
 	EM.hemi_color.set(0, 0, 0);
 	Fvector3 view = Device.vCameraPosition;
-	F32 mpower = 0.0f;
+	float mpower = 0.0f;
 	for (xr_vector<CEnvModifier>::iterator mit = Modifiers.begin( ); mit != Modifiers.end( ); mit++)
 	{
 		mpower += EM.sum(*mit, view);
@@ -450,20 +450,20 @@ void CEnvironment::OnFrame( )
 
 void CEnvironment::calculate_dynamic_sun_dir( )
 {
-	F32 g = (360.0f / 365.25f) * (180.0f + fGameTime / DAY_LENGTH);
+	float g = (360.0f / 365.25f) * (180.0f + fGameTime / DAY_LENGTH);
 
 	g = deg2rad(g);
 
 	// Declination
-	F32 D = 0.396372f - 22.91327f * _cos(g) + 4.02543f * _sin(g) - 0.387205f * _cos(2 * g) + 0.051967f * _sin(2 * g) - 0.154527f * _cos(3 * g) + 0.084798f * _sin(3 * g);
+	float D = 0.396372f - 22.91327f * _cos(g) + 4.02543f * _sin(g) - 0.387205f * _cos(2 * g) + 0.051967f * _sin(2 * g) - 0.154527f * _cos(3 * g) + 0.084798f * _sin(3 * g);
 
 	// Now calculate the time correction for solar angle:
-	F32 TC = 0.004297f + 0.107029f * _cos(g) - 1.837877f * _sin(g) - 0.837378f * _cos(2 * g) - 2.340475f * _sin(2 * g);
+	float TC = 0.004297f + 0.107029f * _cos(g) - 1.837877f * _sin(g) - 0.837378f * _cos(2 * g) - 2.340475f * _sin(2 * g);
 
 	// IN degrees
-	F32 Longitude = -30.4f;
+	float Longitude = -30.4f;
 
-	F32 SHA = (fGameTime / (DAY_LENGTH / 24) - 12) * 15 + Longitude + TC;
+	float SHA = (fGameTime / (DAY_LENGTH / 24) - 12) * 15 + Longitude + TC;
 
 	// Need this to correctly determine SHA sign
 	if (SHA > 180)
@@ -477,29 +477,29 @@ void CEnvironment::calculate_dynamic_sun_dir( )
 	}
 
 	// IN degrees
-	F32 const Latitude = 50.27f;
-	F32 const LatitudeR = deg2rad(Latitude);
+	float const Latitude = 50.27f;
+	float const LatitudeR = deg2rad(Latitude);
 
 	// Now we can calculate the Sun Zenith Angle (SZA):
-	F32 cosSZA = _sin(LatitudeR) * _sin(deg2rad(D)) + _cos(LatitudeR) * _cos(deg2rad(D)) * _cos(deg2rad(SHA));
+	float cosSZA = _sin(LatitudeR) * _sin(deg2rad(D)) + _cos(LatitudeR) * _cos(deg2rad(D)) * _cos(deg2rad(SHA));
 
 	clamp(cosSZA, -1.0f, 1.0f);
 
-	F32 SZA = acosf(cosSZA);
-	F32 SEA = PI / 2 - SZA;
+	float SZA = acosf(cosSZA);
+	float SEA = PI / 2 - SZA;
 
 	// To finish we will calculate the Azimuth Angle (AZ):
-	F32 cosAZ = 0.f;
-	F32 const sin_SZA = _sin(SZA);
-	F32 const cos_Latitude = _cos(LatitudeR);
-	F32 const sin_SZA_X_cos_Latitude = sin_SZA * cos_Latitude;
+	float cosAZ = 0.0f;
+	float const sin_SZA = _sin(SZA);
+	float const cos_Latitude = _cos(LatitudeR);
+	float const sin_SZA_X_cos_Latitude = sin_SZA * cos_Latitude;
 	if (!fis_zero(sin_SZA_X_cos_Latitude))
 	{
 		cosAZ = (_sin(deg2rad(D)) - _sin(LatitudeR) * _cos(SZA)) / sin_SZA_X_cos_Latitude;
 	}
 
 	clamp(cosAZ, -1.0f, 1.0f);
-	F32 AZ = acosf(cosAZ) - PI; // AVO: sun direction fix
+	float AZ = acosf(cosAZ) - PI; // AVO: sun direction fix
 
 	const Fvector2 minAngle = Fvector2( ).set(deg2rad(1.0f), deg2rad(3.0f));
 
@@ -508,7 +508,7 @@ void CEnvironment::calculate_dynamic_sun_dir( )
 		SEA = minAngle.x;
 	}
 
-	F32 fSunBlend = (SEA - minAngle.x) / (minAngle.y - minAngle.x);
+	float fSunBlend = (SEA - minAngle.x) / (minAngle.y - minAngle.x);
 	clamp(fSunBlend, 0.0f, 1.0f);
 
 	SEA = -SEA;

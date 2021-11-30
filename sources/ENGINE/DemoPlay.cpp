@@ -7,7 +7,7 @@
 #include "Render.h"
 #include "CameraManager.h"
 
-CDemoPlay::CDemoPlay(const char* name, F32 ms, U32 cycles, F32 life_time) : CEffectorCam(cetDemo, life_time)
+CDemoPlay::CDemoPlay(const char* name, float ms, U32 cycles, float life_time) : CEffectorCam(cetDemo, life_time)
 {
 	Msg("*** Playing demo: %s", name);
 	Console->Execute("hud_weapon 0");
@@ -105,16 +105,16 @@ void CDemoPlay::stat_Stop( )
 	}
 
 	stat_started = false;
-	F32 stat_total = stat_Timer_total.GetElapsed_sec( );
+	float stat_total = stat_Timer_total.GetElapsed_sec( );
 
-	F32 rfps_min;
-	F32 rfps_max;
-	F32 rfps_middlepoint;
-	F32 rfps_average;
+	float rfps_min;
+	float rfps_max;
+	float rfps_middlepoint;
+	float rfps_average;
 
 	// total
 	U32 dwFramesTotal = Device.dwFrame - stat_StartFrame;
-	rfps_average = F32(dwFramesTotal) / stat_total;
+	rfps_average = float(dwFramesTotal) / stat_total;
 
 	// min/max/average
 	rfps_min = flt_max;
@@ -122,7 +122,7 @@ void CDemoPlay::stat_Stop( )
 	rfps_middlepoint = 0;
 	for (U32 it = 1; it < stat_table.size( ); it++)
 	{
-		F32 fps = 1.0f / stat_table[it];
+		float fps = 1.0f / stat_table[it];
 		if (fps < rfps_min)
 		{
 			rfps_min = fps;
@@ -136,7 +136,7 @@ void CDemoPlay::stat_Stop( )
 		rfps_middlepoint += fps;
 	}
 
-	rfps_middlepoint /= F32(stat_table.size( ) - 1);
+	rfps_middlepoint /= float(stat_table.size( ) - 1);
 
 	Msg("* [DEMO] FPS: average[%f], min[%f], max[%f], middle[%f]", rfps_average, rfps_min, rfps_max, rfps_middlepoint);
 
@@ -155,7 +155,7 @@ void CDemoPlay::stat_Stop( )
 
 		FS.update_path(fname, "$app_data_root$", fname);
 		CConfigurationFile res(fname, FALSE, FALSE, TRUE);
-		res.w_float("general", "renderer", F32(::Render->get_generation( )) / 10.0f, "dx-level required");
+		res.w_float("general", "renderer", float(::Render->get_generation( )) / 10.0f, "dx-level required");
 		res.w_float("general", "min", rfps_min, "absolute minimum");
 		res.w_float("general", "max", rfps_max, "absolute maximum");
 		res.w_float("general", "average", rfps_average, "average for this run");
@@ -180,11 +180,11 @@ void CDemoPlay::stat_Stop( )
 }
 
 #define FIX(a) while (a>=m_count) a-=m_count
-void spline1(F32 t, Fvector3* p, Fvector3* ret)
+void spline1(float t, Fvector3* p, Fvector3* ret)
 {
-	F32 t2 = t * t;
-	F32 t3 = t2 * t;
-	F32 m[4];
+	float t2 = t * t;
+	float t3 = t2 * t;
+	float m[4];
 
 	ret->x = 0.0f;
 	ret->y = 0.0f;
@@ -202,7 +202,7 @@ void spline1(F32 t, Fvector3* p, Fvector3* ret)
 	}
 }
 
-BOOL CDemoPlay::Process(Fvector3& P, Fvector3& D, Fvector3& N, F32& fFov, F32& fFar, F32& fAspect)
+BOOL CDemoPlay::Process(Fvector3& P, Fvector3& D, Fvector3& N, float& fFov, float& fFar, float& fAspect)
 {
 	// skeep a few frames before counting
 	if (Device.dwPrecacheFrame)
@@ -246,9 +246,9 @@ BOOL CDemoPlay::Process(Fvector3& P, Fvector3& D, Fvector3& N, F32& fFov, F32& f
 
 		fStartTime += Device.fTimeDelta;
 
-		F32 ip;
-		F32 p = fStartTime / fSpeed;
-		F32 t = modff(p, &ip);
+		float ip;
+		float p = fStartTime / fSpeed;
+		float t = modff(p, &ip);
 		int frame = iFloor(ip);
 		VERIFY(t >= 0);
 

@@ -73,7 +73,7 @@ public:
 	//virtual		bool				HasMapRotation			() {return m_bMapRotation; };
 	
 	virtual		void				OnPlayerConnect			(CClientID id_who);
-	virtual		void				OnPlayerDisconnect		(CClientID id_who, char* Name, U16unsigned short GameID);
+	virtual		void				OnPlayerDisconnect		(CClientID id_who, char* Name, unsigned short GameID);
 	//virtual		void				OnPlayerReady			(CClientID id_who)							   {};
 	//virtual		void				OnPlayerEnteredGame		(CClientID id_who)	{};
 	virtual		void				OnPlayerConnectFinished	(CClientID id_who)	{};

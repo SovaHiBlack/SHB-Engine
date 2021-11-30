@@ -47,7 +47,7 @@ public:
 	void							LoadTitleInt				(const char* str);
 	void							LoadDraw					( );
 
-	virtual void					OnEvent						(EVENT E, U64 P1, U64 P2);
+	virtual void					OnEvent						(EVENT E, unsigned __int64 P1, unsigned __int64 P2);
 
 	// Other
 									CApplication				( );

@@ -78,7 +78,7 @@ void CParticlesPlayer::SBoneInfo::StopParticles(unsigned short sender_id, bool b
 
 CParticlesPlayer::CParticlesPlayer( )
 {
-	bone_mask = U64(1) << U64(0);
+	bone_mask = unsigned __int64(1) << unsigned __int64(0);
 
 	m_bActiveBones = false;
 
@@ -114,13 +114,13 @@ void CParticlesPlayer::LoadParticles(CKinematics* K)
 			Fvector3 offs;
 			sscanf(*item.second, "%f,%f,%f", &offs.x, &offs.y, &offs.z);
 			m_Bones.push_back(SBoneInfo(index, offs));
-			bone_mask |= U64(1) << U64(index);
+			bone_mask |= unsigned __int64(1) << unsigned __int64(index);
 		}
 	}
 
 	if (m_Bones.empty( ))
 	{
-		bone_mask = U64(1) << U64(0);
+		bone_mask = unsigned __int64(1) << unsigned __int64(0);
 		m_Bones.push_back(SBoneInfo(K->LL_GetBoneRoot( ), Fvector3( ).set(0, 0, 0)));
 	}
 }
@@ -149,7 +149,7 @@ void CParticlesPlayer::net_DestroyParticles( )
 CParticlesPlayer::SBoneInfo* CParticlesPlayer::get_nearest_bone_info(CKinematics* K, unsigned short bone_index)
 {
 	unsigned short play_bone = bone_index;
-	while ((BI_NONE != play_bone) && !(bone_mask & (U64(1) << U64(play_bone))))
+	while ((BI_NONE != play_bone) && !(bone_mask & (unsigned __int64(1) << unsigned __int64(play_bone))))
 	{
 		play_bone = K->LL_GetData(play_bone).GetParentID( );
 	}
@@ -381,7 +381,7 @@ unsigned short CParticlesPlayer::GetNearestBone(CKinematics* K, unsigned short b
 {
 	unsigned short play_bone = bone_id;
 
-	while ((BI_NONE != play_bone) && !(bone_mask & (U64(1) << U64(play_bone))))
+	while ((BI_NONE != play_bone) && !(bone_mask & (unsigned __int64(1) << unsigned __int64(play_bone))))
 	{
 		play_bone = K->LL_GetData(play_bone).GetParentID( );
 	}

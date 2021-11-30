@@ -81,7 +81,7 @@ const	U32 v_clouds_fvf	= D3DFVF_XYZ | D3DFVF_DIFFUSE | D3DFVF_SPECULAR;
 //-----------------------------------------------------------------------------
 // Environment render
 //-----------------------------------------------------------------------------
-extern F32 psHUD_FOV;
+extern float psHUD_FOV;
 bool bNeed_re_create_env = false;
 void CEnvironment::RenderSky		()
 {

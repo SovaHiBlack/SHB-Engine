@@ -451,7 +451,7 @@ void CActor::net_Import_Base_proceed( )
 		return;
 	}
 
-	net_update N = NET.back( );
+	SNetUpdate N = NET.back( );
 }
 
 void CActor::net_Import_Physic(CNetPacket& P)

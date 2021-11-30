@@ -28,7 +28,7 @@ class CPHWorld : public pureFrame
 , public pureRender
 #endif
 {
-	F64						m_start_time												;
+	double						m_start_time												;
 	u32							m_delay														;
 	u32							m_previous_delay											;
 	u32							m_reduce_delay												;
@@ -50,8 +50,8 @@ class CPHWorld : public pureFrame
 public:
 	xr_vector<ISpatial*>		r_spatial;
 
-	U64							m_steps_num													;
-	F64						m_frame_sum													;
+	unsigned __int64							m_steps_num													;
+	double						m_frame_sum													;
 	dReal						m_previous_frame_time										;
 	bool						b_frame_mark												;
 	dReal						m_frame_time												;

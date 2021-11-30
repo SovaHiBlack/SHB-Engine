@@ -226,7 +226,7 @@ void IWriter::w_chunk(unsigned int type, void* data, unsigned int size)
 void IWriter::w_sdir(const Fvector3& D)
 {
 	Fvector3 C;
-	F32 mag = D.magnitude( );
+	float mag = D.magnitude( );
 	if (mag > EPS_S)
 	{
 		C.div(D, mag);

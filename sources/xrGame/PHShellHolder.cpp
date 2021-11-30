@@ -351,7 +351,7 @@ void CPHShellHolder::PHSaveState(CNetPacket& P)
 	}
 	else
 	{
-		P.w_u64(U64(-1));
+		P.w_u64(unsigned __int64(-1));
 		P.w_u16(0);
 	}
 	/////////////////////////////

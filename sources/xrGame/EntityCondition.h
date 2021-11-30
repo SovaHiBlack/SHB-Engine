@@ -200,7 +200,7 @@ protected:
 	float				m_fHealthLost;
 
 	//для отслеживания времени
-	U64					m_iLastTimeCalled;
+	unsigned __int64					m_iLastTimeCalled;
 	float				m_fDeltaTime;
 
 	//кто нанес последний хит

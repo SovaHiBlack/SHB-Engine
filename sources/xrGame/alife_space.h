@@ -24,9 +24,9 @@ class CGameGraph;
 
 namespace ALife
 {
-	typedef U64	_CLASS_ID;									// Class ID
+	typedef unsigned __int64	_CLASS_ID;									// Class ID
 	typedef unsigned short	_OBJECT_ID;									// Object ID
-	typedef U64	_TIME_ID;									// Time  ID
+	typedef unsigned __int64	_TIME_ID;									// Time  ID
 	typedef u32	_EVENT_ID;									// Event ID
 	typedef u32	_TASK_ID;									// Event ID
 	typedef unsigned short	_SPAWN_ID;									// Spawn ID

@@ -43,8 +43,8 @@ private:
 	void				internal_Registration	( );
 
 public:
-	U64											cycles_start;
-	U64											cycles_limit;
+	unsigned __int64											cycles_start;
+	unsigned __int64											cycles_limit;
 
 	void				ProcessStep				( );
 	void				Update					( );

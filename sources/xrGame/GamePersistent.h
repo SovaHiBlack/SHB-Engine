@@ -53,7 +53,7 @@ public:
 	virtual void		OnGameStart			( );
 	virtual void		OnGameEnd			( );
 	virtual void		OnFrame				( );
-	virtual void		OnEvent				(EVENT E, U64 P1, U64 P2);
+	virtual void		OnEvent				(EVENT E, unsigned __int64 P1, unsigned __int64 P2);
 
 	virtual void		UpdateGameType		( );
 

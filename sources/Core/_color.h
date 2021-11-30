@@ -9,7 +9,7 @@ __forceinline U32			color_rgba(U32 r, U32 g, U32 b, U32 a)
 {
 	return color_argb(a, r, g, b);
 }
-__forceinline U32			color_argb_f(F32 a, F32 r, F32 g, F32 b)
+__forceinline U32			color_argb_f(float a, float r, float g, float b)
 {
 	int _r = clampr(iFloor(r * 255.0f), 0, 255);
 	int _g = clampr(iFloor(g * 255.0f), 0, 255);
@@ -17,7 +17,7 @@ __forceinline U32			color_argb_f(F32 a, F32 r, F32 g, F32 b)
 	int _a = clampr(iFloor(a * 255.0f), 0, 255);
 	return color_argb(_a, _r, _g, _b);
 }
-__forceinline U32			color_rgba_f(F32 r, F32 g, F32 b, F32 a)
+__forceinline U32			color_rgba_f(float r, float g, float b, float a)
 {
 	return color_argb_f(a, r, g, b);
 }
@@ -295,7 +295,7 @@ public:
 	}
 };
 
-using Fcolor = _color<F32>;
+using Fcolor = _color<float>;
 
 template <class T>
 BOOL						_valid(const _color<T>& c)

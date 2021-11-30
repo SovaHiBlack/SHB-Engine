@@ -25,7 +25,7 @@ private:
 			m_current					= 0;
 		}
 
-		inline	bool	operator()			(_iterator &i, U64 cycle_count, bool) const
+		inline	bool	operator()			(_iterator &i, unsigned __int64 cycle_count, bool) const
 		{
 			if ((*i).second->m_schedule_counter	== cycle_count)
 				return					(false);
@@ -39,7 +39,7 @@ private:
 			return						(true);
 		}
 
-		inline	void	operator()			(_iterator &i, U64 cycle_count) const
+		inline	void	operator()			(_iterator &i, unsigned __int64 cycle_count) const
 		{
 			START_PROFILE("ALife/scheduled/update")
 			(*i).second->update			();

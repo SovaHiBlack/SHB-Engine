@@ -493,7 +493,7 @@ public:
 	}
 };
 
-typedef _quaternion<F32>	Fquaternion;
+typedef _quaternion<float>	Fquaternion;
 
 template <class T>
 BOOL	_valid(const _quaternion<T>& s)

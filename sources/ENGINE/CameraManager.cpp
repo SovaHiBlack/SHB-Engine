@@ -17,8 +17,8 @@
 #include "GameFont.h"
 #include "Render.h"
 
-F32	psCamInert = 0.7f;
-F32	psCamSlideInert = 0.25f;
+float	psCamInert = 0.7f;
+float	psCamSlideInert = 0.25f;
 
 SPostProcessInfo		pp_identity;
 SPostProcessInfo		pp_zero;
@@ -58,7 +58,7 @@ void SPostProcessInfo::validate(const char* str)
 	VERIFY2(_valid(color_add.b), str);
 }
 
-SPostProcessInfo& SPostProcessInfo::lerp(const SPostProcessInfo& def, const SPostProcessInfo& to, F32 factor)
+SPostProcessInfo& SPostProcessInfo::lerp(const SPostProcessInfo& def, const SPostProcessInfo& to, float factor)
 {
 	VERIFY(_valid(factor));
 	SPostProcessInfo& pp = *this;
@@ -265,9 +265,9 @@ void CCameraManager::Update(const Fvector3& P, const Fvector3& D, const Fvector3
 	vRight.crossproduct(vNormal, vDirection);
 	vNormal.crossproduct(vDirection, vRight);
 
-	F32 aspect = Device.fHeight_2 / Device.fWidth_2;
-	F32 src = 10 * Device.fTimeDelta;	clamp(src, 0.f, 1.f);
-	F32 dst = 1 - src;
+	float aspect = Device.fHeight_2 / Device.fWidth_2;
+	float src = 10 * Device.fTimeDelta;	clamp(src, 0.0f, 1.0f);
+	float dst = 1 - src;
 	fFov = fFov * dst + fFOV_Dest * src;
 	fFar = fFar * dst + fFAR_Dest * src;
 	fAspect = fAspect * dst + (fASPECT_Dest * aspect) * src;
@@ -354,7 +354,7 @@ void CCameraManager::Update(const Fvector3& P, const Fvector3& D, const Fvector3
 	UpdateDeffered( );
 }
 
-void CCameraManager::ApplyDevice(F32 _viewport_near)
+void CCameraManager::ApplyDevice(float _viewport_near)
 {
 	// Device params
 	Device.mView.build_camera_dir(vPosition, vDirection, vNormal);

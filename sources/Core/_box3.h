@@ -316,7 +316,7 @@ public:
 		bc.add(min, bd);
 		return *this;
 	}
-	inline SelfRef			scale(F32 s)					// 0.1 means make 110%, -0.1 means make 90%
+	inline SelfRef			scale(float s)					// 0.1 means make 110%, -0.1 means make 90%
 	{
 		Fvector3 bd;
 		bd.sub(max, min).mul(s);
@@ -688,7 +688,7 @@ public:
 	}
 };
 
-using Fbox3 = _box3<F32>;
+using Fbox3 = _box3<float>;
 
 template <class T>
 BOOL _valid(const _box3<T>& c)

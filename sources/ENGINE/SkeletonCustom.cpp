@@ -319,7 +319,7 @@ void CKinematics::Load(const char* N, IReader* data, u32 dwFlags)
 		L_parents.push_back(buf);
 
 		data->r(&pBone->obb, sizeof(Fobb));
-		visimask.set(U64(1) << ID, TRUE);
+		visimask.set(unsigned __int64(1) << ID, TRUE);
 	}
 
 	std::sort(bone_map_N->begin( ), bone_map_N->end( ), pred_sort_N);
@@ -543,7 +543,7 @@ void CKinematics::Depart( )
 	{
 		for (u32 b = 0; b < bones->size( ); b++)
 		{
-			visimask.set((U64(1) << b), TRUE);
+			visimask.set((unsigned __int64(1) << b), TRUE);
 		}
 	}
 
@@ -578,7 +578,7 @@ void CKinematics::Release( )
 void CKinematics::LL_SetBoneVisible(unsigned short bone_id, BOOL val, BOOL bRecursive)
 {
 	VERIFY(bone_id < LL_BoneCount( ));
-	U64 mask = U64(1) << bone_id;
+	unsigned __int64 mask = unsigned __int64(1) << bone_id;
 	visimask.set(mask, val);
 	if (!visimask.is(mask))
 	{
@@ -601,12 +601,12 @@ void CKinematics::LL_SetBoneVisible(unsigned short bone_id, BOOL val, BOOL bRecu
 	Visibility_Invalidate( );
 }
 
-void CKinematics::LL_SetBonesVisible(U64 mask)
+void CKinematics::LL_SetBonesVisible(unsigned __int64 mask)
 {
 	visimask.assign(0);
 	for (u32 b = 0; b < bones->size( ); b++)
 	{
-		U64 bm = U64(1) << b;
+		unsigned __int64 bm = unsigned __int64(1) << b;
 		if (mask & bm)
 		{
 			visimask.set(bm, TRUE);

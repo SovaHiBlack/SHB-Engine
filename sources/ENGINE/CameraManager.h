@@ -6,12 +6,12 @@ struct ENGINE_API SPostProcessInfo
 {
 	struct SColor
 	{
-		F32									r;
-		F32									g;
-		F32									b;
+		float									r;
+		float									g;
+		float									b;
 							SColor				( )
 		{ }
-							SColor				(F32 _r, F32 _g, F32 _b) : r(_r), g(_g), b(_b)
+							SColor				(float _r, float _g, float _b) : r(_r), g(_g), b(_b)
 		{ }
 		inline				operator U32		( )
 		{
@@ -34,7 +34,7 @@ struct ENGINE_API SPostProcessInfo
 			b -= ppi.b;
 			return *this;
 		}
-		inline SColor&		set					(F32 _r, F32 _g, F32 _b)
+		inline SColor&		set					(float _r, float _g, float _b)
 		{
 			r = _r;
 			g = _g;
@@ -42,17 +42,17 @@ struct ENGINE_API SPostProcessInfo
 			return *this;
 		}
 	};
-	F32										blur;
-	F32										gray;
+	float										blur;
+	float										gray;
 	struct SDuality
 	{
-		F32									h;
-		F32									v;
+		float									h;
+		float									v;
 							SDuality			( )
 		{ }
-							SDuality			(F32 _h, F32 _v) : h(_h), v(_v)
+							SDuality			(float _h, float _v) : h(_h), v(_v)
 		{ }
-		inline SDuality&	set					(F32 _h, F32 _v)
+		inline SDuality&	set					(float _h, float _v)
 		{
 			h = _h;
 			v = _v;
@@ -61,14 +61,14 @@ struct ENGINE_API SPostProcessInfo
 	}											duality;
 	struct SNoise
 	{
-		F32									intensity;
-		F32									grain;
-		F32									fps;
+		float									intensity;
+		float									grain;
+		float									fps;
 							SNoise				( )
 		{ }
-							SNoise				(F32 _i, F32 _g, F32 _f) : intensity(_i), grain(_g), fps(_f)
+							SNoise				(float _i, float _g, float _f) : intensity(_i), grain(_g), fps(_f)
 		{ }
-		inline SNoise&		set					(F32 _i, F32 _g, F32 _f)
+		inline SNoise&		set					(float _i, float _g, float _f)
 		{
 			intensity = _i;
 			grain = _g;
@@ -116,7 +116,7 @@ struct ENGINE_API SPostProcessInfo
 		color_gray.set(0.333f, 0.333f, 0.333f);
 		color_add.set(0.0f, 0.0f, 0.0f);
 	}
-	SPostProcessInfo&		lerp				(const SPostProcessInfo& def, const SPostProcessInfo& to, F32 factor);
+	SPostProcessInfo&		lerp				(const SPostProcessInfo& def, const SPostProcessInfo& to, float factor);
 	void					validate			(const char* str);
 };
 

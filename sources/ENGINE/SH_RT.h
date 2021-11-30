@@ -11,7 +11,7 @@ public:
 	u32					dwHeight;
 	D3DFORMAT			fmt;
 
-	U64					_order;
+	unsigned __int64					_order;
 
 	CRT					();
 	~CRT				();
@@ -40,7 +40,7 @@ public:
 	u32						dwSize;
 	D3DFORMAT				fmt;
 
-	U64						_order;
+	unsigned __int64						_order;
 
 	CRTC					();
 	~CRTC					();

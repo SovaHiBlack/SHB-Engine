@@ -7,7 +7,7 @@ void 	CORE_API		Log(const char* msg);
 void 	CORE_API		Log(const char* msg, const char* dop);
 void 	CORE_API		Log(const char* msg, U32			dop);
 void 	CORE_API		Log(const char* msg, int  			dop);
-void 	CORE_API		Log(const char* msg, F32			dop);
+void 	CORE_API		Log(const char* msg, float			dop);
 void 	CORE_API		Log(const char* msg, const Fvector3& dop);
 void 	CORE_API		Log(const char* msg, const Fmatrix& dop);
 

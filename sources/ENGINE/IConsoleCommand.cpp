@@ -128,7 +128,7 @@ public:
 		char	Event[128], Param[128];
 		Event[0] = 0; Param[0] = 0;
 		sscanf(args, "%[^,],%s", Event, Param);
-		Engine.Event.Signal(Event, (U64) Param);
+		Engine.Event.Signal(Event, (unsigned __int64) Param);
 	}
 };
 //-----------------------------------------------------------------------
@@ -159,7 +159,7 @@ void 			crashthread(void*)
 {
 	Sleep(1000);
 	Msg("~ crash thread activated");
-	U64			clk = CPU::GetCLK( );
+	unsigned __int64			clk = CPU::GetCLK( );
 	CRandom		rndg;
 	rndg.seed(int(clk));
 	for (;;)
@@ -354,14 +354,17 @@ public:
 		parse(op_client, args, "client");	// 2. client
 
 		if (!op_client[0] && strstr(op_server, "single"))
+		{
 			strcpy_s(op_client, "localhost");
+		}
 
 		if (0 == xr_strlen(op_client))
 		{
 			Log("! Can't start game without client. Arguments: '%s'.", args);
 			return;
 		}
-		Engine.Event.Defer("KERNEL:start", U64(xr_strlen(op_server) ? xr_strdup(op_server) : 0), U64(xr_strdup(op_client)));
+
+		Engine.Event.Defer("KERNEL:start", unsigned __int64(xr_strlen(op_server) ? xr_strdup(op_server) : 0), unsigned __int64(xr_strdup(op_client)));
 	}
 };
 

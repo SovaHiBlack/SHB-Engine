@@ -40,7 +40,7 @@ void CZoneEffector::Activate( )
 	}
 
 	m_pp_effector = xr_new<CPostprocessAnimatorLerp>( );
-	m_pp_effector->SetType(EEffectorPostProcessType(u32(U64(this) & u32(-1))));
+	m_pp_effector->SetType(EEffectorPostProcessType(u32(unsigned __int64(this) & u32(-1))));
 	m_pp_effector->SetCyclic(true);
 	m_pp_effector->SetFactorFunc(GET_KOEFF_FUNC(this, &CZoneEffector::GetFactor));
 	m_pp_effector->Load(*m_pp_fname);
@@ -54,7 +54,7 @@ void CZoneEffector::Stop( )
 		return;
 	}
 
-	m_pActor->Cameras( ).RemovePPEffector(EEffectorPostProcessType(u32(U64(this) & u32(-1))));
+	m_pActor->Cameras( ).RemovePPEffector(EEffectorPostProcessType(u32(unsigned __int64(this) & u32(-1))));
 	m_pp_effector = nullptr;
 	m_pActor = nullptr;
 }

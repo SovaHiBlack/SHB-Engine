@@ -479,7 +479,7 @@ void CGamePersistent::OnFrame( )
 			// Start _new level + demo
 			Engine.Event.Defer("KERNEL:disconnect");
 			Engine.Event.Defer("KERNEL:start", size_t(xr_strdup(_Trim(o_server))), size_t(xr_strdup(_Trim(o_client))));
-			Engine.Event.Defer("GAME:demo", size_t(xr_strdup(_Trim(o_demo))), U64(o_time));
+			Engine.Event.Defer("GAME:demo", size_t(xr_strdup(_Trim(o_demo))), unsigned __int64(o_time));
 			uTime2Change = 0xffffffff;	// Block changer until Event received
 		}
 	}
@@ -493,7 +493,7 @@ void CGamePersistent::OnFrame( )
 
 }
 
-void CGamePersistent::OnEvent(EVENT E, U64 P1, U64 P2)
+void CGamePersistent::OnEvent(EVENT E, unsigned __int64 P1, unsigned __int64 P2)
 {
 	if (E == eQuickLoad)
 	{

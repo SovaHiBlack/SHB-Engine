@@ -66,11 +66,11 @@ public:
 	{
 		w(&a, 4 * sizeof(float));
 	}
-	inline void		w_u64			(U64 a)
+	inline void		w_u64			(unsigned __int64 a)
 	{
 		w(&a, 8);
 	}
-	inline void		w_s64			(S64 a)
+	inline void		w_s64			(signed __int64 a)
 	{
 		w(&a, 8);
 	}
@@ -257,11 +257,11 @@ public:
 	{
 		r(&A, 4);
 	}
-	inline void		r_u64			(U64& A)
+	inline void		r_u64			(unsigned __int64& A)
 	{
 		r(&A, 8);
 	}
-	inline void		r_s64			(S64& A)
+	inline void		r_s64			(signed __int64& A)
 	{
 		r(&A, 8);
 	}
@@ -326,15 +326,15 @@ public:
 		r(&A, 4);
 		return(A);
 	}
-	inline U64		r_u64			( )
+	inline unsigned __int64		r_u64			( )
 	{
-		U64 A;
+		unsigned __int64 A;
 		r(&A, 8);
 		return A;
 	}
-	inline S64		r_s64			( )
+	inline signed __int64		r_s64			( )
 	{
-		S64 A;
+		signed __int64 A;
 		r(&A, 8);
 		return A;
 	}

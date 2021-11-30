@@ -32,7 +32,7 @@ public:
 			Tvector j;
 			Tvector k;
 		};
-		F32 m[3][3];					// Array
+		float m[3][3];					// Array
 	};
 	// Class members
 	inline SelfRef set_rapid(const _matrix<TYPE>& a)
@@ -53,7 +53,7 @@ public:
 	}
 	inline SelfRef set(SelfCRef a)
 	{
-		CopyMemory(this, &a, 9 * sizeof(F32));
+		CopyMemory(this, &a, 9 * sizeof(float));
 		return *this;
 	}
 	inline SelfRef set(const _matrix<TYPE>& a)
@@ -124,7 +124,7 @@ public:
 	inline SelfRef transpose( )						// self transpose - slower
 	{
 		_matrix33 a;
-		CopyMemory(&a, this, 9 * sizeof(F32));					// save matrix
+		CopyMemory(&a, this, 9 * sizeof(float));					// save matrix
 		transpose(a);
 		return *this;
 	}
@@ -143,7 +143,7 @@ public:
 	}
 };
 
-using Fmatrix33 = _matrix33<F32>;
+using Fmatrix33 = _matrix33<float>;
 
 template <class T>
 BOOL _valid(const _matrix33<T>& m)

@@ -152,7 +152,7 @@ void destroyInput( )
 
 void InitSound( )
 {
-	CSound_manager_interface::_create(U64(Device.m_hWnd));
+	CSound_manager_interface::_create(unsigned __int64(Device.m_hWnd));
 }
 
 void destroySound( )
@@ -692,7 +692,7 @@ void _InitializeFont(CGameFont*& F, const char* section, U32 flags)
 
 	if (pSettings->line_exist(section, "size"))
 	{
-		F32 sz = pSettings->r_float(section, "size");
+		float sz = pSettings->r_float(section, "size");
 		if (flags & CGameFont::fsDeviceIndependent)
 		{
 			F->SetHeightI(sz);
@@ -765,7 +765,7 @@ CApplication::~CApplication( )
 
 extern CRenderDevice Device;
 
-void CApplication::OnEvent(EVENT E, U64 P1, U64 P2)
+void CApplication::OnEvent(EVENT E, unsigned __int64 P1, unsigned __int64 P2)
 {
 	if (E == eQuit)
 	{
@@ -1064,22 +1064,22 @@ void CApplication::load_draw_internal( )
 	U32 _h = Device.dwHeight;
 	FVF::TL* pv = nullptr;
 
-	//progress
-	F32 bw = 1024.0f;
-	F32 bh = 768.0f;
+	// progress
+	float bw = 1024.0f;
+	float bh = 768.0f;
 	Fvector2 k;
-	k.set(F32(_w) / bw, F32(_h) / bh);
+	k.set(float(_w) / bw, float(_h) / bh);
 
 	RCache.set_Shader(sh_progress);
 	CTexture* T = RCache.get_ActiveTexture(0);
 	Fvector2 tsz;
-	tsz.set((F32) T->get_Width( ), (F32) T->get_Height( ));
+	tsz.set((float) T->get_Width( ), (float) T->get_Height( ));
 	Frect back_text_coords;
 	Frect back_coords;
 	Fvector2 back_size;
 
-	//progress background
-	static F32 offs = -0.5f;
+	// progress background
+	static float offs = -0.5f;
 
 	back_size.set(1024, 768);
 	back_text_coords.lt.set(0, 0);
@@ -1126,8 +1126,8 @@ void CApplication::load_draw_internal( )
 	U32 v_cnt = 40;
 	pv = (FVF::TL*) RCache.Vertex.Lock(2 * (v_cnt + 1), ll_hGeom2.stride( ), Offset);
 	FVF::TL* _pv = pv;
-	F32 pos_delta = back_coords.width( ) / v_cnt;
-	F32 tc_delta = back_text_coords.width( ) / v_cnt;
+	float pos_delta = back_coords.width( ) / v_cnt;
+	float tc_delta = back_text_coords.width( ) / v_cnt;
 	U32 clr = C;
 
 	for (U32 idx = 0; idx < v_cnt + 1; ++idx)
@@ -1187,8 +1187,8 @@ U32 calc_progress_color(U32 idx, U32 total, int stage, int max_stage)
 		idx = total - idx;
 	}
 
-	F32 kk = (F32(stage + 1) / F32(max_stage)) * (total / 2.0f);
-	F32 f = 1 / (exp((F32(idx) - kk) * 0.5f) + 1.0f);
+	float kk = (float(stage + 1) / float(max_stage)) * (total / 2.0f);
+	float f = 1 / (exp((float(idx) - kk) * 0.5f) + 1.0f);
 
 	return color_argb_f(f, 1.0f, 1.0f, 1.0f);
 }

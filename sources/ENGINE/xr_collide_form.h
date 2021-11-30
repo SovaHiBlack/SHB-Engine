@@ -160,7 +160,7 @@ public:
 	using ElementVecIt = ElementVec::iterator;
 
 private:
-	U64					vis_mask;
+	unsigned __int64					vis_mask;
 	ElementVec			elements;
 
 	u32					dwFrame;		// The model itself

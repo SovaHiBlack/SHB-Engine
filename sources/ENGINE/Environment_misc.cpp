@@ -23,16 +23,16 @@ void CEnvModifier::load(IReader* fs)
 	fs->r_fvector3(hemi_color);
 }
 
-F32 CEnvModifier::sum(CEnvModifier& M, Fvector3& view)
+float CEnvModifier::sum(CEnvModifier& M, Fvector3& view)
 {
-	F32 _dist_sq = view.distance_to_sqr(M.position);
+	float _dist_sq = view.distance_to_sqr(M.position);
 	if (_dist_sq >= (M.radius * M.radius))
 	{
 		return 0.0f;
 	}
 
-	F32 _att = 1 - _sqrt(_dist_sq) / M.radius;	//[0..1];
-	F32 _power = M.power * _att;
+	float _att = 1 - _sqrt(_dist_sq) / M.radius;	//[0..1];
+	float _power = M.power * _att;
 	far_plane += M.far_plane * _power;
 	fog_color.mad(M.fog_color, _power);
 	fog_density += M.fog_density * _power;
@@ -73,6 +73,7 @@ void CEnvAmbient::load(const CSharedString& sect)
 			}
 		}
 	}
+
 	// effects
 	if (pSettings->line_exist(sect, "effects"))
 	{
@@ -261,10 +262,10 @@ void CEnvDescriptorMixer::clear( )
 }
 
 int get_ref_count(IUnknown* ii);
-void CEnvDescriptorMixer::lerp(CEnvironment*, CEnvDescriptor& A, CEnvDescriptor& B, F32 f, CEnvModifier& M, F32 m_power)
+void CEnvDescriptorMixer::lerp(CEnvironment*, CEnvDescriptor& A, CEnvDescriptor& B, float f, CEnvModifier& M, float m_power)
 {
-	F32	_power = 1.0f / (m_power + 1);	// the environment itself
-	F32	fi = 1 - f;
+	float	_power = 1.0f / (m_power + 1);	// the environment itself
+	float	fi = 1 - f;
 
 	sky_r_textures.clear( );
 	sky_r_textures.push_back(mk_pair(0, A.sky_texture));

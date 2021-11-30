@@ -67,7 +67,7 @@ public:
 	virtual								~CSoundRender_Core		();
 
 	// General
-	virtual void						_initialize				(U64 window )=0;
+	virtual void						_initialize				(unsigned __int64 window )=0;
 	virtual void						_clear					( )=0;
 	virtual void						_restart				( );
 

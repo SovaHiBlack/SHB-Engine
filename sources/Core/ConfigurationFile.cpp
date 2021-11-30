@@ -576,10 +576,10 @@ int CConfigurationFile::r_s32(const char* S, const char* L)
 	const char* C = r_string(S, L);
 	return int(atoi(C));
 }
-F32 CConfigurationFile::r_float(const char* S, const char* L)
+float CConfigurationFile::r_float(const char* S, const char* L)
 {
 	const char* C = r_string(S, L);
-	return F32(atof(C));
+	return float(atof(C));
 }
 Fcolor CConfigurationFile::r_fcolor(const char* S, const char* L)
 {
@@ -785,7 +785,7 @@ void CConfigurationFile::w_s32(const char* S, const char* L, int V, const char* 
 	sprintf_s(temp, sizeof(temp), "%d", V);
 	w_string(S, L, temp, comment);
 }
-void CConfigurationFile::w_float(const char* S, const char* L, F32 V, const char* comment)
+void CConfigurationFile::w_float(const char* S, const char* L, float V, const char* comment)
 {
 	string128 temp;
 	sprintf_s(temp, sizeof(temp), "%f", V);

@@ -43,29 +43,29 @@ public:
 		return offs + randIs(range);
 	}
 
-	inline F32					maxF( )
+	inline float					maxF( )
 	{
 		return 32767.0f;
 	}
 
-	inline F32					randF( )
+	inline float					randF( )
 	{
-		return F32(randI( )) / maxF( );
+		return float(randI( )) / maxF( );
 	}
-	inline F32					randF(F32 max)
+	inline float					randF(float max)
 	{
 		return randF( ) * max;
 	}
-	inline F32					randF(F32 min, F32 max)
+	inline float					randF(float min, float max)
 	{
 		return min + randF(max - min);
 	}
 
-	inline F32					randFs(F32 range)
+	inline float					randFs(float range)
 	{
 		return randF(-range, range);
 	}
-	inline F32					randFs(F32 range, F32 offs)
+	inline float					randFs(float range, float offs)
 	{
 		return offs + randFs(range);
 	}

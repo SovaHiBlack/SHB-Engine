@@ -43,7 +43,7 @@ BOOL CSoundRender_CoreA::EAXTestSupport	(BOOL bDeferred)
 	return TRUE;
 }
 
-void CSoundRender_CoreA::_initialize	(U64 window)
+void CSoundRender_CoreA::_initialize	(unsigned __int64 window)
 {
 	bPresent			        = FALSE;
 

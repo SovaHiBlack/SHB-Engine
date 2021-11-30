@@ -126,7 +126,7 @@ void Log(const char* msg, int dop)
 	Log(buf);
 }
 
-void Log(const char* msg, F32 dop)
+void Log(const char* msg, float dop)
 {
 	string1024 buf;
 
