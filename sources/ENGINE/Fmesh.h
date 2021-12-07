@@ -1,6 +1,6 @@
 #pragma once
 
-BOOL ValidateIndices		(u32 vCount, u32 iCount, unsigned short* pIndices);
+BOOL ValidateIndices		(unsigned int vCount, unsigned int iCount, unsigned short* pIndices);
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
 // MESH as it is represented in file
@@ -92,15 +92,15 @@ struct ogf_header {
 
 // Sliding Window Record
 struct ENGINE_API	FSlideWindow		{
-	u32				offset;
+	unsigned int				offset;
 	unsigned short				num_tris;
 	unsigned short				num_verts;
 };
 
 struct ENGINE_API	SSlideWindowItem	{
 	FSlideWindow*	sw;
-	u32				count;
-	u32				reserved[4];
+	unsigned int				count;
+	unsigned int				reserved[4];
 	SSlideWindowItem() : sw(0),count(0)	{};
 };
 
@@ -109,29 +109,29 @@ struct ENGINE_API	SSlideWindowItem	{
 //  Z-String - shader
 
 // OGF_TEXTURE_L
-//	u32 T_link
-//  u32 S_link
+//	unsigned int T_link
+//  unsigned int S_link
 
 // OGF_MATERIAL
 //  Fmaterial
 
 // OGF_CHIELDS_L
-//	u32	Count
-//	u32	idx[0...Count-1]
+//	unsigned int	Count
+//	unsigned int	idx[0...Count-1]
 
 // OGF_VERTICES
-//	u32		dwVertType;			// Type of vertices it contains
-//	u32		dwVertCount;		// Count of vertices
+//	unsigned int		dwVertType;			// Type of vertices it contains
+//	unsigned int		dwVertCount;		// Count of vertices
 //	..vertices itself
 
 // OGF_INDICES
-//	u32		Count
+//	unsigned int		Count
 //  ..indices itself (unsigned short[Count]);
 
 // OGF_VCONTAINER
-// u32		CID;		// Container ID
-// u32		Offset;		// Add for every IDX and use as the start vertex
-// u32		Count;		// Number of vertices
+// unsigned int		CID;		// Container ID
+// unsigned int		Offset;		// Add for every IDX and use as the start vertex
+// unsigned int		Count;		// Number of vertices
 
 // OGF_BONES
 // BYTE			Count;

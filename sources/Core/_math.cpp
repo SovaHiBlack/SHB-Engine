@@ -86,7 +86,7 @@ namespace FPU
 
 		m24r( );
 
-		::Random.seed(U32(CPU::GetCLK( ) % (1i64 << 32i64)));
+		::Random.seed(unsigned int(CPU::GetCLK( ) % (1i64 << 32i64)));
 	}
 };
 
@@ -101,7 +101,7 @@ namespace CPU
 	CORE_API float				clk_to_microsec;
 	CORE_API unsigned __int64				qpc_freq = 0;
 	CORE_API unsigned __int64				qpc_overhead = 0;
-	CORE_API U32				qpc_counter = 0;
+	CORE_API unsigned int				qpc_counter = 0;
 
 	CORE_API _processor_info	ID;
 
@@ -125,8 +125,8 @@ namespace CPU
 		// Timers & frequency
 		unsigned __int64			start;
 		unsigned __int64			end;
-		U32			dwStart;
-		U32			dwTest;
+		unsigned int			dwStart;
+		unsigned int			dwTest;
 
 		SetPriorityClass(GetCurrentProcess( ), REALTIME_PRIORITY_CLASS);
 
@@ -192,7 +192,7 @@ void _initialize_cpu( )
 		CPU::ID.v_name, CPU::ID.model_name,
 		CPU::ID.family, CPU::ID.model, CPU::ID.stepping,
 		float(CPU::clk_per_second / unsigned __int64(1000000)),
-		U32(CPU::clk_overhead)
+		unsigned int(CPU::clk_overhead)
 	);
 
 	if (strstr(Core.Params, "-x86"))

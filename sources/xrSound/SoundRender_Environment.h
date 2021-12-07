@@ -4,10 +4,10 @@
 class CSoundRender_Environment		: public CSound_environment
 {
 public:
-	U32				version;
+	unsigned int				version;
 	CSharedString			name;
 
-	U32				Environment;				// sorce environment
+	unsigned int				Environment;				// sorce environment
 	float           Room;                       // room effect level at low frequencies
 	float           RoomHF;                     // room effect high-frequency level re. low frequency level
 	float           RoomRolloffFactor;          // like DS3D flRolloffFactor but for room effect

@@ -92,7 +92,7 @@ public:
 		TRACE_ALL = (TRACE_LIGHTS | TRACE_SUN | TRACE_HEMI)
 	};
 
-	virtual void						force_mode(u32 mode) = 0;
+	virtual void						force_mode(unsigned int mode) = 0;
 	virtual float						get_luminocity( ) = 0;
 	virtual float						get_luminocity_hemi( ) = 0;
 
@@ -130,11 +130,11 @@ public:
 	virtual void					set_noise(float f) = 0;
 	virtual void					set_noise_scale(float f) = 0;
 	virtual void					set_noise_fps(float f) = 0;
-	virtual void					set_color_base(u32 f) = 0;
-	virtual void					set_color_gray(u32 f) = 0;
-	virtual void					set_color_add(u32 f) = 0;
-	virtual u32						get_width( ) = 0;
-	virtual u32						get_height( ) = 0;
+	virtual void					set_color_base(unsigned int f) = 0;
+	virtual void					set_color_gray(unsigned int f) = 0;
+	virtual void					set_color_add(unsigned int f) = 0;
+	virtual unsigned int						get_width( ) = 0;
+	virtual unsigned int						get_height( ) = 0;
 	virtual							~IRender_Target( )
 	{ }
 };
@@ -150,7 +150,7 @@ public:
 		GENERATION_DX81 = 81,
 		GENERATION_R2 = 90,
 		GENERATION_DX90 = 90,
-		GENERATION_forcedword = u32(-1)
+		GENERATION_forcedword = unsigned int(-1)
 	};
 
 	enum ScreenshotMode
@@ -181,7 +181,7 @@ public:
 	virtual void					level_Load(IReader*) = 0;
 	virtual void					level_Unload( ) = 0;
 
-	virtual IDirect3DBaseTexture9*	texture_load(const char* fname, u32& msize) = 0;
+	virtual IDirect3DBaseTexture9*	texture_load(const char* fname, unsigned int& msize) = 0;
 	void							shader_option_skinning(int mode)
 	{
 		m_skinning = mode;
@@ -269,7 +269,7 @@ public:
 	virtual void					rmNear( ) = 0;
 	virtual void					rmFar( ) = 0;
 	virtual void					rmNormal( ) = 0;
-	virtual u32						memory_usage( ) = 0;
+	virtual unsigned int						memory_usage( ) = 0;
 
 	// Constructor/destructor
 	virtual							~IRender_interface( );

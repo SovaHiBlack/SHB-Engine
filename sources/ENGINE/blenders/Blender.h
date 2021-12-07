@@ -13,22 +13,22 @@ public:
 	CLASS_ID					CLS;
 	string128					cName;
 	string32					cComputer;
-	U32							cTime;
+	unsigned int							cTime;
 	unsigned short							version;
-	
-	CBlender_DESC()	
+
+	CBlender_DESC( )
 	{
-		CLS			= CLASS_ID(0);
-		cName[0]	= 0;
-		cComputer[0]= 0;
-		cTime		= 0;
-		version		= 0;
+		CLS = CLASS_ID(0);
+		cName[0] = 0;
+		cComputer[0] = 0;
+		cTime = 0;
+		version = 0;
 	}
 
-	void						Setup	(const char* N);
+	void						Setup(const char* N);
 };
 
-class ENGINE_API IBlender	: public CPropertyBase
+class ENGINE_API IBlender : public CPropertyBase
 {
 	friend class				CBlender_Compile;
 
@@ -39,26 +39,38 @@ protected:
 	string64					oT_Name;
 	string64					oT_xform;
 
-	U32							BC				(BOOL v)		{ return v?0xff:0; }
+	unsigned int							BC(BOOL v)
+	{
+		return v ? 0xff : 0;
+	}
 //	BOOL						c_XForm			();
 public:
-	static			IBlender*	Create			(CLASS_ID cls);
-	static			void		Destroy			(IBlender*& B);
-	static			void		CreatePalette	(xr_vector<IBlender*> & palette);
-	
-	CBlender_DESC&				getDescription	()	{return description;}
-	virtual 		const char* getName			()	{return description.cName;}
-	virtual			const char* getComment		()	= 0;
+	static			IBlender* Create(CLASS_ID cls);
+	static			void		Destroy(IBlender*& B);
+	static			void		CreatePalette(xr_vector<IBlender*>& palette);
 
-	virtual			BOOL		canBeDetailed	()	{ return FALSE; }
-	virtual			BOOL		canBeLMAPped	()	= 0;
-	
-	virtual			void		Save			(IWriter& fs);
-	virtual			void		Load			(IReader& fs, unsigned short version);
-	
-	virtual			void		Compile			(CBlender_Compile& C);
+	CBlender_DESC& getDescription( )
+	{
+		return description;
+	}
+	virtual 		const char* getName( )
+	{
+		return description.cName;
+	}
+	virtual			const char* getComment( ) = 0;
 
-	IBlender();
-	virtual ~IBlender();
+	virtual			BOOL		canBeDetailed( )
+	{
+		return FALSE;
+	}
+	virtual			BOOL		canBeLMAPped( ) = 0;
+
+	virtual			void		Save(IWriter& fs);
+	virtual			void		Load(IReader& fs, unsigned short version);
+
+	virtual			void		Compile(CBlender_Compile& C);
+
+	IBlender( );
+	virtual ~IBlender( );
 };
 #pragma pack(pop)

@@ -69,7 +69,7 @@ public:
 	{
 		if (out_iterator == out_end)
 		{
-			U32	out_size = U32(out_end - out_start);
+			unsigned int out_size = unsigned int(out_end - out_start);
 			out_start = (unsigned char*) xr_realloc(out_start, out_size + 1024);
 			out_iterator = out_start + out_size;
 			out_end = out_iterator + 1024;
@@ -101,13 +101,13 @@ public:
 		out_end = out_start + _rsize;
 		out_iterator = out_start;
 	}
-	inline U32		InputSize( )
+	inline unsigned int		InputSize( )
 	{
-		return U32(in_end - in_start);
+		return unsigned int(in_end - in_start);
 	}
-	inline U32		OutSize( )
+	inline unsigned int		OutSize( )
 	{
-		return U32(out_iterator - out_start);
+		return unsigned int(out_iterator - out_start);
 	}
 	inline unsigned char* OutPointer( )
 	{
@@ -654,7 +654,7 @@ void Encode(void)  /* compression */
 void Decode(void)  /* recover */
 {
 	int  i, j, k, r, c;
-	U32 count;
+	unsigned int count;
 
 	textsize = (fs._getb( ));
 	textsize |= (fs._getb( ) << 8);

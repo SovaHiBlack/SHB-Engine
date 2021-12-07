@@ -6,7 +6,7 @@ ENGINE_API CClientID BroadcastCID(0xffffffff);
 
 void ip_address::set(const char* src_string)
 {
-	u32 buff[4];
+	unsigned int buff[4];
 	int cnt = sscanf(src_string, "%d.%d.%d.%d", &buff[0], &buff[1], &buff[2], &buff[3]);
 	if (cnt == 4)
 	{
@@ -50,7 +50,7 @@ IClient* IPureServer::ID_to_client(CClientID ID, bool ScanAll)
 
 	csPlayers.Enter( );
 
-	for (u32 client = 0; client < net_Players.size( ); ++client)
+	for (unsigned int client = 0; client < net_Players.size( ); ++client)
 	{
 		if (net_Players[client]->ID == ID)
 		{
@@ -61,7 +61,7 @@ IClient* IPureServer::ID_to_client(CClientID ID, bool ScanAll)
 
 	if (ScanAll)
 	{
-		for (u32 client = 0; client < net_Players_disconnected.size( ); ++client)
+		for (unsigned int client = 0; client < net_Players_disconnected.size( ); ++client)
 		{
 			if (net_Players_disconnected[client]->ID == ID)
 			{
@@ -96,21 +96,21 @@ IPureServer::EConnect IPureServer::Connect(const char* options)
 void IPureServer::Disconnect( )
 { }
 
-void IPureServer::SendTo_LL(CClientID ID, void* data, u32 size, u32 dwFlags, u32 dwTimeout)
+void IPureServer::SendTo_LL(CClientID ID, void* data, unsigned int size, unsigned int dwFlags, unsigned int dwTimeout)
 {
 	FATAL("");
 }
 
-void IPureServer::SendTo(CClientID ID, CNetPacket& P, u32 dwFlags, u32 dwTimeout)
+void IPureServer::SendTo(CClientID ID, CNetPacket& P, unsigned int dwFlags, unsigned int dwTimeout)
 {
 	SendTo_LL(ID, P.B.data, P.B.count, dwFlags, dwTimeout);
 }
 
-void IPureServer::SendBroadcast_LL(CClientID exclude, void* data, u32 size, u32 dwFlags)
+void IPureServer::SendBroadcast_LL(CClientID exclude, void* data, unsigned int size, unsigned int dwFlags)
 {
 	csPlayers.Enter( );
 
-	for (u32 i = 0; i < net_Players.size( ); i++)
+	for (unsigned int i = 0; i < net_Players.size( ); i++)
 	{
 		IClient* player = net_Players[i];
 
@@ -130,13 +130,13 @@ void IPureServer::SendBroadcast_LL(CClientID exclude, void* data, u32 size, u32 
 	csPlayers.Leave( );
 }
 
-void IPureServer::SendBroadcast(CClientID exclude, CNetPacket& P, u32 dwFlags)
+void IPureServer::SendBroadcast(CClientID exclude, CNetPacket& P, unsigned int dwFlags)
 {
 	// Perform broadcasting
 	SendBroadcast_LL(exclude, P.B.data, P.B.count, dwFlags);
 }
 
-u32 IPureServer::OnMessage(CNetPacket& P, CClientID sender)	// Non-Zero means broadcasting with "flags" as returned
+unsigned int IPureServer::OnMessage(CNetPacket& P, CClientID sender)	// Non-Zero means broadcasting with "flags" as returned
 {
 	return 0;
 }

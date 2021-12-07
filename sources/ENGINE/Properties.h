@@ -4,7 +4,7 @@
 // Parameter/Property specifications
 
 // *** FORMAT ***
-// u32	type
+// unsigned int	type
 // stringZ	name
 // []		data
 
@@ -22,7 +22,7 @@ enum	xrProperties
 	xrPID_OBJECT,		// really only name(stringZ) is written into stream
 	xrPID_STRING,		// really only name(stringZ) is written into stream
 	xrPID_MARKER_TEMPLATE,
-	xrPID_FORCEDWORD=u32(-1)
+	xrPID_FORCEDWORD= unsigned int(-1)
 };
 
 struct	xrP_Integer
@@ -53,12 +53,12 @@ struct	xrP_TOKEN
 {
 	struct SItem
 	{
-		u32			ID;
+		unsigned int			ID;
 		string64	str;
 	};
 
-	u32				IDselected;
-	u32				Count;
+	unsigned int				IDselected;
+	unsigned int				Count;
 
 	//--- elements:		(ID,string64)
 
@@ -68,7 +68,7 @@ struct	xrP_TOKEN
 struct	xrP_CLSID
 {
 	CLASS_ID			Selected;
-	u32				Count;
+	unsigned int				Count;
 	//--- elements:		(...)
 
 	xrP_CLSID()	: Selected(0), Count(0)			{}
@@ -76,8 +76,8 @@ struct	xrP_CLSID
 
 struct	xrP_Template
 {
-	u32				Type;
-	u32				Limit;
+	unsigned int				Type;
+	unsigned int				Limit;
 };
 
 // Base class
@@ -94,7 +94,7 @@ public:
 };
 
 // Writers
-inline void		xrPWRITE		(IWriter& fs, u32 ID, const char* name, LPCVOID data, u32 size )
+inline void		xrPWRITE		(IWriter& fs, unsigned int ID, const char* name, LPCVOID data, unsigned int size )
 {
 	fs.w_u32			(ID);
 	fs.w_stringZ		(name);
@@ -111,9 +111,9 @@ inline void		xrPWRITE_MARKER	(IWriter& fs, const char* name)
 }
 
 // Readers
-inline u32	xrPREAD			(IReader& fs)
+inline unsigned int	xrPREAD			(IReader& fs)
 {
-	u32 T		= fs.r_u32();
+	unsigned int T		= fs.r_u32();
 	fs.skip_stringZ	();
 	return		T;
 }
@@ -133,13 +133,13 @@ inline void		xrPREAD_MARKER	(IReader& fs)
 }
 
 //template <class T>
-//inline void		xrPWRITE_PROP	(IWriter& FS, const char* name, u32 ID, T& data)
+//inline void		xrPWRITE_PROP	(IWriter& FS, const char* name, unsigned int ID, T& data)
 //{
 //	xrPWRITE	(FS,ID,name,&data,sizeof(data));
 //}
 
 //template <class T>
-//inline void		xrPREAD_PROP	(IReader& FS, u32 ID, T& data)
+//inline void		xrPREAD_PROP	(IReader& FS, unsigned int ID, T& data)
 //{
 //	R_ASSERT(ID==xrPREAD(FS)); FS.Read(&data,sizeof(data));
 //	switch (ID)

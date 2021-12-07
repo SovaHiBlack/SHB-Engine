@@ -41,7 +41,7 @@ bool ov_error(int res)
 	return false;
 }
 
-void CSoundRender_Source::i_decompress_fr(OggVorbis_File* ovf, char* _dest, U32 left)
+void CSoundRender_Source::i_decompress_fr(OggVorbis_File* ovf, char* _dest, unsigned int left)
 {
 //*
 	float **pcm; 
@@ -72,7 +72,7 @@ void CSoundRender_Source::i_decompress_fr(OggVorbis_File* ovf, char* _dest, U32 
 		};
 	}
 }
-void CSoundRender_Source::i_decompress_hr(OggVorbis_File* ovf, char* _dest, U32 left)
+void CSoundRender_Source::i_decompress_hr(OggVorbis_File* ovf, char* _dest, unsigned int left)
 {
 //*
 	float **pcm; 

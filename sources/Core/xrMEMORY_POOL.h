@@ -6,11 +6,11 @@ class	MEMPOOL
 {
 private:
 	xrCriticalSection	cs;
-	U32					s_sector;		// large-memory sector size
-	U32					s_element;		// element size, for example 32
-	U32					s_count;		// element count = [s_sector/s_element]
-	U32					s_offset;		// header size
-	U32					block_count;	// block count
+	unsigned int					s_sector;		// large-memory sector size
+	unsigned int					s_element;		// element size, for example 32
+	unsigned int					s_count;		// element count = [s_sector/s_element]
+	unsigned int					s_offset;		// header size
+	unsigned int					block_count;	// block count
 	unsigned char* list;
 
 private:
@@ -21,13 +21,13 @@ private:
 	void				block_create( );
 
 public:
-	void				_initialize(U32 _element, U32 _sector, U32 _header);
+	void				_initialize(unsigned int _element, unsigned int _sector, unsigned int _header);
 
-	__forceinline U32				get_block_count( )
+	__forceinline unsigned int				get_block_count( )
 	{
 		return block_count;
 	}
-	__forceinline U32				get_element( )
+	__forceinline unsigned int				get_element( )
 	{
 		return s_element;
 	}

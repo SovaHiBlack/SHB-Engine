@@ -413,9 +413,9 @@ void CEnvironment::OnFrame( )
 		if (HW.Caps.raster_major >= 3 && HW.Caps.geometry.bVTF)
 		{
 			// tonemapping in VS
-			CurrentEnv.sky_r_textures.push_back(mk_pair(U32(D3DVERTEXTEXTURESAMPLER0), tonemap));	//. hack
-			CurrentEnv.sky_r_textures_env.push_back(mk_pair(U32(D3DVERTEXTEXTURESAMPLER0), tonemap));	//. hack
-			CurrentEnv.clouds_r_textures.push_back(mk_pair(U32(D3DVERTEXTEXTURESAMPLER0), tonemap));	//. hack
+			CurrentEnv.sky_r_textures.push_back(mk_pair(unsigned int(D3DVERTEXTEXTURESAMPLER0), tonemap));	//. hack
+			CurrentEnv.sky_r_textures_env.push_back(mk_pair(unsigned int(D3DVERTEXTEXTURESAMPLER0), tonemap));	//. hack
+			CurrentEnv.clouds_r_textures.push_back(mk_pair(unsigned int(D3DVERTEXTEXTURESAMPLER0), tonemap));	//. hack
 		}
 		else
 		{
@@ -444,8 +444,8 @@ void CEnvironment::OnFrame( )
 
 	// ******************** Environment params (setting)
 	CHK_DX(HW.pDevice->SetRenderState(D3DRS_FOGCOLOR, color_rgba_f(CurrentEnv.fog_color.x, CurrentEnv.fog_color.y, CurrentEnv.fog_color.z, 0)));
-	CHK_DX(HW.pDevice->SetRenderState(D3DRS_FOGSTART, *(U32*) (&CurrentEnv.fog_near)));
-	CHK_DX(HW.pDevice->SetRenderState(D3DRS_FOGEND, *(U32*) (&CurrentEnv.fog_far)));
+	CHK_DX(HW.pDevice->SetRenderState(D3DRS_FOGSTART, *(unsigned int*) (&CurrentEnv.fog_near)));
+	CHK_DX(HW.pDevice->SetRenderState(D3DRS_FOGEND, *(unsigned int*) (&CurrentEnv.fog_far)));
 }
 
 void CEnvironment::calculate_dynamic_sun_dir( )

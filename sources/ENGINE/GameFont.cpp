@@ -6,7 +6,7 @@
 extern ENGINE_API BOOL			g_bRendering;
 ENGINE_API Fvector2				g_current_font_scale = { 1.0f,1.0f };
 
-CGameFont::CGameFont(const char* section, u32 flags)
+CGameFont::CGameFont(const char* section, unsigned int flags)
 {
 	fCurrentHeight				= 0.0f;
 	fXStep						= 0.0f;
@@ -35,7 +35,7 @@ CGameFont::CGameFont(const char* section, u32 flags)
 	}
 }
 
-CGameFont::CGameFont(const char* shader, const char* texture, u32 flags)
+CGameFont::CGameFont(const char* shader, const char* texture, unsigned int flags)
 {
 	fCurrentHeight				= 0.0f;
 	fXStep						= 0.0f;
@@ -93,7 +93,7 @@ void CGameFont::Initialize(const char* cShader, const char* cTextureName)
 
 		fXStep					= ceil(fHeight / 2.0f);
 
-		for (u32 i = 0; i < nNumChars; i++)
+		for (unsigned int i = 0; i < nNumChars; i++)
 		{
 			sprintf_s			(buf, sizeof(buf), "%05d", i);
 			if (ini->line_exist("mb_symbol_coords", buf))
@@ -110,7 +110,7 @@ void CGameFont::Initialize(const char* cShader, const char* cTextureName)
 	else if (ini->section_exist("symbol_coords"))
 	{
 		fHeight					= ini->r_float("symbol_coords", "height");
-		for (u32 i = 0; i < nNumChars; i++)
+		for (unsigned int i = 0; i < nNumChars; i++)
 		{
 			sprintf_s			(buf, sizeof(buf), "%03d", i);
 			Fvector3 v			= ini->r_fvector3("symbol_coords", buf);
@@ -123,7 +123,7 @@ void CGameFont::Initialize(const char* cShader, const char* cTextureName)
 		{
 			fHeight				= ini->r_float("char widths", "height");
 			int cpl				= 16;
-			for (u32 i = 0; i < nNumChars; i++)
+			for (unsigned int i = 0; i < nNumChars; i++)
 			{
 				sprintf_s		(buf, sizeof(buf), "%d", i);
 				float w			= ini->r_float("char widths", buf);
@@ -136,7 +136,7 @@ void CGameFont::Initialize(const char* cShader, const char* cTextureName)
 			fHeight				= ini->r_float("font_size", "height");
 			float width			= ini->r_float("font_size", "width");
 			const int cpl		= ini->r_s32("font_size", "cpl");
-			for (u32 i = 0; i < nNumChars; i++)
+			for (unsigned int i = 0; i < nNumChars; i++)
 			{
 				TCMap[i].set	((i % cpl) * width, (i / cpl) * fHeight, width);
 			}
@@ -178,7 +178,7 @@ void CGameFont::OutSetI(float x, float y)
 	OutSet						(DI2PX(x), DI2PY(y));
 }
 
-u32 CGameFont::smart_strlen(const char* S)
+unsigned int CGameFont::smart_strlen(const char* S)
 {
 	return						(IsMultibyte( ) ? mbhMulti2Wide(nullptr, nullptr, 0, S) : xr_strlen(S));
 }
@@ -199,7 +199,7 @@ void CGameFont::OnRender( )
 		uFlags					|= fsValid;
 	}
 
-	for (u32 i = 0; i < strings.size( ); )
+	for (unsigned int i = 0; i < strings.size( ); )
 	{
 		// calculate first-fit
 		int count				= 1;
@@ -222,12 +222,12 @@ void CGameFont::OnRender( )
 		}
 
 		// lock AGP memory
-		u32						vOffset;
+		unsigned int						vOffset;
 		FVF::TL* v				= (FVF::TL*) RCache.Vertex.Lock(length * 4, pGeom.stride( ), vOffset);
 		FVF::TL* start			= v;
 
 		// fill vertices
-		u32 last				= i + count;
+		unsigned int last				= i + count;
 		for (; i < last; i++)
 		{
 			String& PS			= strings[i];
@@ -262,15 +262,15 @@ void CGameFont::OnRender( )
 					break;
 				}
 
-				u32				clr;
-				u32				clr2;
+				unsigned int				clr;
+				unsigned int				clr2;
 				clr2			= clr = PS.c;
 				if (uFlags & fsGradient)
 				{
-					u32 _R		= color_get_R(clr) / 2;
-					u32 _G		= color_get_G(clr) / 2;
-					u32 _B		= color_get_B(clr) / 2;
-					u32 _A		= color_get_A(clr);
+					unsigned int _R		= color_get_R(clr) / 2;
+					unsigned int _G		= color_get_G(clr) / 2;
+					unsigned int _B		= color_get_B(clr) / 2;
+					unsigned int _A		= color_get_A(clr);
 					clr2		= color_rgba(_R, _G, _B, _A);
 				}
 
@@ -313,7 +313,7 @@ void CGameFont::OnRender( )
 		}
 
 		// Unlock and draw
-		u32 vCount				= (u32) (v - start);
+		unsigned int vCount				= (unsigned int) (v - start);
 		RCache.Vertex.Unlock	(vCount, pGeom.stride( ));
 		if (vCount)
 		{
@@ -504,13 +504,13 @@ float CGameFont::SizeOf_(const unsigned short* wsStr)
 		return					0.0f;
 	}
 
-	U32 len			= wsStr[0];
+	unsigned int len			= wsStr[0];
 	float X						= 0.0f;
 	float fDelta				= 0.0f;
 
 	if (len)
 	{
-		for (U32 j = 1; j <= len; j++)
+		for (unsigned int j = 1; j <= len; j++)
 		{
 			fDelta				= GetCharTC(wsStr[j]).z - 2;
 			if (IsNeedSpaceCharacter(wsStr[j]))

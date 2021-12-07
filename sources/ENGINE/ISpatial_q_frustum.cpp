@@ -8,17 +8,17 @@ extern Fvector3	c_spatial_offset[8];
 class	walker
 {
 public:
-	u32				mask;
+	unsigned int				mask;
 	CFrustum*		F;
 	ISpatial_DB*	space;
 
-	walker					(ISpatial_DB*	_space, u32 _mask, const CFrustum* _F)
+	walker					(ISpatial_DB*	_space, unsigned int _mask, const CFrustum* _F)
 	{
 		mask	= _mask;
 		F		= (CFrustum*)_F;
 		space	= _space;
 	}
-	void		walk		(ISpatial_NODE* N, Fvector3& n_C, float n_R, u32 fmask)
+	void		walk		(ISpatial_NODE* N, Fvector3& n_C, float n_R, unsigned int fmask)
 	{
 		// box
 		float	n_vR	=		2*n_R;
@@ -36,7 +36,7 @@ public:
 
 			Fvector3&		sC		= S->spatial.sphere.P;
 			float			sR		= S->spatial.sphere.R;
-			u32				tmask	= fmask;
+			unsigned int				tmask	= fmask;
 			if (fcvNone==F->testSphere(sC,sR,tmask))	continue;
 
 			space->q_result->push_back	(S);
@@ -44,7 +44,7 @@ public:
 
 		// recurse
 		float	c_R		= n_R/2;
-		for (u32 octant=0; octant<8; octant++)
+		for (unsigned int octant=0; octant<8; octant++)
 		{
 			if (0==N->children[octant])	continue;
 			Fvector3		c_C;
@@ -54,7 +54,7 @@ public:
 	}
 };
 
-void	ISpatial_DB::q_frustum		(xr_vector<ISpatial*>& R, u32 _o, u32 _mask, const CFrustum& _frustum)	
+void	ISpatial_DB::q_frustum		(xr_vector<ISpatial*>& R, unsigned int _o, unsigned int _mask, const CFrustum& _frustum)
 {
 	cs.Enter			();
 	q_result			= &R;

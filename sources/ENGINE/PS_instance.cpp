@@ -36,7 +36,7 @@ CPS_Instance::~CPS_Instance					()
 	shedule_unregister						();
 }
 //----------------------------------------------------
-void CPS_Instance::shedule_Update	(u32 dt)
+void CPS_Instance::shedule_Update	(unsigned int dt)
 {
 	if (renderable.pROS)			::Render->ros_destroy	(renderable.pROS);	//. particles doesn't need ROS
 

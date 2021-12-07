@@ -14,7 +14,7 @@ enum EFC_Visible {
 	fcvNone = 0,
 	fcvPartial,
 	fcvFully,
-	fcv_forcedword = u32(-1)
+	fcv_forcedword = unsigned int(-1)
 };
 
 #define FRUSTUM_MAXPLANES	12
@@ -30,14 +30,14 @@ enum EFC_Visible {
 
 #define FRUSTUM_SAFE		(FRUSTUM_MAXPLANES*4)
 typedef svector<Fvector3,FRUSTUM_SAFE>		sPoly;
-ENGINE_API		extern	u32	frustum_aabb_remap[8][6];
+ENGINE_API		extern	unsigned int	frustum_aabb_remap[8][6];
 
 class ENGINE_API	CFrustum
 {
 public:
 	struct fplane	: public Fplane
 	{
-		u32			aabb_overlap_id;	// [0..7]
+		unsigned int			aabb_overlap_id;	// [0..7]
 		void		cache	();	
 	};
 	fplane			planes	[FRUSTUM_MAXPLANES];
@@ -47,7 +47,7 @@ public:
 	__forceinline EFC_Visible		AABB_OverlapPlane	(const fplane& P, const float* mM) const
 	{
 		// calc extreme pts (neg,pos) along normal axis (pos in dir of norm, etc.)
-		u32*	id		= frustum_aabb_remap[P.aabb_overlap_id];
+		unsigned int*	id		= frustum_aabb_remap[P.aabb_overlap_id];
 
 		Fvector3			Neg;
 		Neg.set			(mM[id[3]],mM[id[4]],mM[id[5]]);
@@ -69,18 +69,18 @@ public:
 	void			CreateOccluder		(Fvector3* p,	int count, Fvector3& vBase, CFrustum& clip);
 	BOOL			CreateFromClipPoly	(Fvector3* p,	int count, Fvector3& vBase, CFrustum& clip);	// returns 'false' if creation failed
 	void			CreateFromPoints	(Fvector3* p,	int count, Fvector3& vBase );
-	void			CreateFromMatrix	(Fmatrix &M,	u32 mask);
+	void			CreateFromMatrix	(Fmatrix &M, unsigned int mask);
 	void			CreateFromPortal	(sPoly* P, Fvector3& vPN, Fvector3& vBase, Fmatrix& mFullXFORM);
 	void			CreateFromPlanes	(Fplane* p,		int count);
 
 	sPoly*			ClipPoly			(sPoly& src, sPoly& dest) const;
 
-	u32				getMask				() const { return (1<<p_count)-1; }
+	unsigned int				getMask				() const { return (1<<p_count)-1; }
 
-	EFC_Visible		testSphere			(Fvector3& c, float r, u32& test_mask)					const;
+	EFC_Visible		testSphere			(Fvector3& c, float r, unsigned int& test_mask)					const;
 	BOOL			testSphere_dirty	(Fvector3& c, float r)									const;
-	EFC_Visible		testAABB			(const float* mM, u32& test_mask)						const;
-	EFC_Visible		testSAABB			(Fvector3& c, float r, const float* mM, u32& test_mask)	const;
+	EFC_Visible		testAABB			(const float* mM, unsigned int& test_mask)						const;
+	EFC_Visible		testSAABB			(Fvector3& c, float r, const float* mM, unsigned int& test_mask)	const;
 	BOOL			testPolyInside_dirty(Fvector3* p, int count)									const;
 
 	inline BOOL			testPolyInside		(sPoly& src)											const

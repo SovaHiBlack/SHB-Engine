@@ -215,7 +215,7 @@ public:
 		rpNone = 0,
 		rpOriginInside = 1,
 		rpOriginOutside = 2,
-		fcv_forcedword = U32(-1)
+		fcv_forcedword = unsigned int(-1)
 	};
 	inline ERP_Result	intersect(const _vector3<TYPE>& start, const _vector3<TYPE>& dir, TYPE& dist) const
 	{

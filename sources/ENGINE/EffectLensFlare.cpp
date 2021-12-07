@@ -77,9 +77,9 @@ void CLensFlareDescriptor::load(CConfigurationFile* pIni, const char* sect)
 		const char* R = pIni->r_string(sect, "flare_radius");
 		const char* O = pIni->r_string(sect, "flare_opacity");
 		const char* P = pIni->r_string(sect, "flare_position");
-		u32 tcnt = _GetItemCount(T);
+		unsigned int tcnt = _GetItemCount(T);
 		string256 name;
-		for (u32 i = 0; i < tcnt; i++)
+		for (unsigned int i = 0; i < tcnt; i++)
 		{
 			_GetItem(R, i, name); float r = (float) atof(name);
 			_GetItem(O, i, name); float o = (float) atof(name);
@@ -425,7 +425,7 @@ void CEffectLensFlare::Render(BOOL bSun, BOOL bFlares, BOOL bGradient)
 	dwLight.set(LightColor);
 	svector<ref_shader, MAX_Flares>		_2render;
 
-	u32									VS_Offset;
+	unsigned int									VS_Offset;
 	FVF::LIT* pv = (FVF::LIT*) RCache.Vertex.Lock(MAX_Flares * 4, hGeom.stride( ), VS_Offset);
 
 	float fDistance = FAR_DIST * 0.75f;
@@ -446,7 +446,7 @@ void CEffectLensFlare::Render(BOOL bSun, BOOL bFlares, BOOL bGradient)
 			}
 
 			color.a *= m_StateBlend;
-			u32 c = color.get( );
+			unsigned int c = color.get( );
 			pv->set(vecLight.x + vecSx.x - vecSy.x, vecLight.y + vecSx.y - vecSy.y, vecLight.z + vecSx.z - vecSy.z, c, 0, 0);
 			pv++;
 			pv->set(vecLight.x + vecSx.x + vecSy.x, vecLight.y + vecSx.y + vecSy.y, vecLight.z + vecSx.z + vecSy.z, c, 0, 1);
@@ -477,7 +477,7 @@ void CEffectLensFlare::Render(BOOL bSun, BOOL bFlares, BOOL bGradient)
 					float cl = F.fOpacity * fBlend * m_StateBlend;
 					color.set(dwLight);
 					color.mul_rgba(cl);
-					u32 c = color.get( );
+					unsigned int c = color.get( );
 					pv->set(vec.x + vecSx.x - vecSy.x, vec.y + vecSx.y - vecSy.y, vec.z + vecSx.z - vecSy.z, c, 0, 0);
 					pv++;
 					pv->set(vec.x + vecSx.x + vecSy.x, vec.y + vecSx.y + vecSy.y, vec.z + vecSx.z + vecSy.z, c, 0, 1);
@@ -502,7 +502,7 @@ void CEffectLensFlare::Render(BOOL bSun, BOOL bFlares, BOOL bGradient)
 				color.set(dwLight);
 				color.mul_rgba(fGradientValue * m_StateBlend);
 
-				u32 c = color.get( );
+				unsigned int c = color.get( );
 				pv->set(vecLight.x + vecSx.x - vecSy.x, vecLight.y + vecSx.y - vecSy.y, vecLight.z + vecSx.z - vecSy.z, c, 0, 0);
 				pv++;
 				pv->set(vecLight.x + vecSx.x + vecSy.x, vecLight.y + vecSx.y + vecSy.y, vecLight.z + vecSx.z + vecSy.z, c, 0, 1);
@@ -520,11 +520,11 @@ void CEffectLensFlare::Render(BOOL bSun, BOOL bFlares, BOOL bGradient)
 
 	RCache.set_xform_world(Fidentity);
 	RCache.set_Geometry(hGeom);
-	for (u32 i = 0; i < _2render.size( ); i++)
+	for (unsigned int i = 0; i < _2render.size( ); i++)
 	{
 		if (_2render[i])
 		{
-			u32 vBase = i * 4 + VS_Offset;
+			unsigned int vBase = i * 4 + VS_Offset;
 			RCache.set_Shader(_2render[i]);
 			RCache.Render(D3DPT_TRIANGLELIST, vBase, 0, 4, 0, 2);
 		}

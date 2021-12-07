@@ -121,7 +121,7 @@ struct dxGeomUserData
 //	dReal bonce;
 //	dReal bonce_vel;
 //	dReal mu;
-//	U32 maxc;
+//	unsigned int maxc;
 //	};
 };
 

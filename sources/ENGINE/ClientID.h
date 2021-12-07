@@ -2,24 +2,24 @@
 
 class CClientID
 {
-	U32					id;
+	unsigned int					id;
 
 public:
 	CClientID( ) : id(0)
 	{ }
-	CClientID(U32 val) : id(val)
+	CClientID(unsigned int val) : id(val)
 	{ }
 
-	U32		value		( ) const
+	unsigned int		value		( ) const
 	{
 		return id;
 	}
-	void	set			(U32 v)
+	void	set			(unsigned int v)
 	{
 		id = v;
 	}
 
-	bool	compare		(U32 v) const
+	bool	compare		(unsigned int v) const
 	{
 		return id == v;
 	}

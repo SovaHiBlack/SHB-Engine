@@ -26,7 +26,7 @@ BIND_DECLARE(wvp);
 // fog
 class cl_fog_plane : public R_constant_setup
 {
-	U32			marker;
+	unsigned int			marker;
 	Fvector4	result;
 	virtual void setup(R_constant* C)
 	{
@@ -57,7 +57,7 @@ static cl_fog_plane		binder_fog_plane;
 // fog-params
 class cl_fog_params : public R_constant_setup
 {
-	U32			marker;
+	unsigned int			marker;
 	Fvector4	result;
 	virtual void setup(R_constant* C)
 	{
@@ -78,7 +78,7 @@ static cl_fog_params	binder_fog_params;
 // fog-color
 class cl_fog_color : public R_constant_setup
 {
-	U32			marker;
+	unsigned int			marker;
 	Fvector4	result;
 	virtual void setup(R_constant* C)
 	{
@@ -139,7 +139,7 @@ static cl_eye_N		binder_eye_N;
 // D-Light0
 class cl_sun0_color : public R_constant_setup
 {
-	U32			marker;
+	unsigned int			marker;
 	Fvector4	result;
 	virtual void setup(R_constant* C)
 	{
@@ -155,7 +155,7 @@ static cl_sun0_color		binder_sun0_color;
 
 class cl_sun0_dir_w : public R_constant_setup
 {
-	U32			marker;
+	unsigned int			marker;
 	Fvector4	result;
 	virtual void setup(R_constant* C)
 	{
@@ -171,7 +171,7 @@ static cl_sun0_dir_w		binder_sun0_dir_w;
 
 class cl_sun0_dir_e : public R_constant_setup
 {
-	u32			marker;
+	unsigned int			marker;
 	Fvector4	result;
 	virtual void setup(R_constant* C)
 	{
@@ -191,7 +191,7 @@ static cl_sun0_dir_e		binder_sun0_dir_e;
 //
 class cl_amb_color : public R_constant_setup
 {
-	u32			marker;
+	unsigned int			marker;
 	Fvector4	result;
 	virtual void setup(R_constant* C)
 	{
@@ -207,7 +207,7 @@ static cl_amb_color		binder_amb_color;
 
 class cl_hemi_color : public R_constant_setup
 {
-	u32			marker;
+	unsigned int			marker;
 	Fvector4	result;
 	virtual void setup(R_constant* C)
 	{
@@ -260,7 +260,7 @@ void	CBlender_Compile::SetMapping( )
 	}
 
 	// other common
-	for (u32 it = 0; it < Device.Resources->v_constant_setup.size( ); it++)
+	for (unsigned int it = 0; it < Device.Resources->v_constant_setup.size( ); it++)
 	{
 		std::pair<CSharedString, R_constant_setup*>	cs = Device.Resources->v_constant_setup[it];
 		r_Constant(*cs.first, cs.second);

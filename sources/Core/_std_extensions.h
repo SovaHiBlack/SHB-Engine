@@ -210,12 +210,12 @@ inline signed __int64		_max(signed __int64 x, signed __int64 y)
 	return x - ((x - y) & ((x - y) >> (sizeof(signed __int64) * 8 - 1)));
 };
 
-inline U32							xr_strlen(const char* S);
+inline unsigned int							xr_strlen(const char* S);
 
 // string management
 inline const char* strconcat(int dest_sz, char* dest, const char* S1, const char* S2)
 {
-	U32 l1 = xr_strlen(S1);
+	unsigned int l1 = xr_strlen(S1);
 	strcpy_s(dest, dest_sz, S1);
 	strcat_s(dest, dest_sz - l1, S2);
 	return dest;
@@ -225,8 +225,8 @@ inline const char* strconcat(int dest_sz, char* dest, const char* S1, const char
 // dest = S1+S2+S3
 inline const char* strconcat(int dest_sz, char* dest, const char* S1, const char* S2, const char* S3)
 {
-	U32 l1 = xr_strlen(S1);
-	U32 l2 = xr_strlen(S2);
+	unsigned int l1 = xr_strlen(S1);
+	unsigned int l2 = xr_strlen(S2);
 	strcpy_s(dest, dest_sz, S1);
 	strcat_s(dest, dest_sz - l1, S2);
 	strcat_s(dest, dest_sz - l1 - l2, S3);
@@ -238,9 +238,9 @@ inline const char* strconcat(int dest_sz, char* dest, const char* S1, const char
 // dest = S1+S2+S3+S4
 inline const char* strconcat(int dest_sz, char* dest, const char* S1, const char* S2, const char* S3, const char* S4)
 {
-	U32 l1 = xr_strlen(S1);
-	U32 l2 = xr_strlen(S2);
-	U32 l3 = xr_strlen(S3);
+	unsigned int l1 = xr_strlen(S1);
+	unsigned int l2 = xr_strlen(S2);
+	unsigned int l3 = xr_strlen(S3);
 	strcpy_s(dest, dest_sz, S1);
 	strcat_s(dest, dest_sz - l1, S2);
 	strcat_s(dest, dest_sz - l1 - l2, S3);
@@ -253,10 +253,10 @@ inline const char* strconcat(int dest_sz, char* dest, const char* S1, const char
 // dest = S1+S2+S3+S4+S5
 inline const char* strconcat(int dest_sz, char* dest, const char* S1, const char* S2, const char* S3, const char* S4, const char* S5)
 {
-	U32 l1 = xr_strlen(S1);
-	U32 l2 = xr_strlen(S2);
-	U32 l3 = xr_strlen(S3);
-	U32 l4 = xr_strlen(S4);
+	unsigned int l1 = xr_strlen(S1);
+	unsigned int l2 = xr_strlen(S2);
+	unsigned int l3 = xr_strlen(S3);
+	unsigned int l4 = xr_strlen(S4);
 	strcpy_s(dest, dest_sz, S1);
 	strcat_s(dest, dest_sz - l1, S2);
 	strcat_s(dest, dest_sz - l1 - l2, S3);
@@ -270,11 +270,11 @@ inline const char* strconcat(int dest_sz, char* dest, const char* S1, const char
 // dest = S1+S2+S3+S4+S5+S6
 inline const char* strconcat(int dest_sz, char* dest, const char* S1, const char* S2, const char* S3, const char* S4, const char* S5, const char* S6)
 {
-	U32 l1 = xr_strlen(S1);
-	U32 l2 = xr_strlen(S2);
-	U32 l3 = xr_strlen(S3);
-	U32 l4 = xr_strlen(S4);
-	U32 l5 = xr_strlen(S5);
+	unsigned int l1 = xr_strlen(S1);
+	unsigned int l2 = xr_strlen(S2);
+	unsigned int l3 = xr_strlen(S3);
+	unsigned int l4 = xr_strlen(S4);
+	unsigned int l5 = xr_strlen(S5);
 	strcpy_s(dest, dest_sz, S1);
 	strcat_s(dest, dest_sz - l1, S2);
 	strcat_s(dest, dest_sz - l1 - l2, S3);
@@ -292,9 +292,9 @@ inline char* strext(const char* S)
 	return (char*) strrchr(S, '.');
 }
 
-inline U32							xr_strlen(const char* S)
+inline unsigned int							xr_strlen(const char* S)
 {
-	return (U32) strlen(S);
+	return (unsigned int) strlen(S);
 }
 
 inline char* xr_strlwr(char* S)
@@ -313,4 +313,4 @@ inline int							xr_strcmp(const char* S1, const char* S2)
 
 CORE_API	char* timestamp(string64& dest);
 
-extern CORE_API U32			crc32(const void* P, U32 len);
+extern CORE_API unsigned int			crc32(const void* P, unsigned int len);

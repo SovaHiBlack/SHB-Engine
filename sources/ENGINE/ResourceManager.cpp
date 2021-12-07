@@ -114,7 +114,7 @@ ShaderElement* CResourceManager::_CreateElement			(ShaderElement& S)
 	if (S.passes.empty())		return	0;
 
 	// Search equal in shaders array
-	for (u32 it=0; it<v_elements.size(); it++)
+	for (unsigned int it=0; it<v_elements.size(); it++)
 		if (S.equal(*(v_elements[it])))	return v_elements[it];
 
 	// Create _new_ entry
@@ -204,7 +204,7 @@ Shader*	CResourceManager::_cpp_Create	(IBlender* B, const char* s_shader, const 
 	}
 
 	// Search equal in shaders array
-	for (u32 it=0; it<v_shaders.size(); it++)
+	for (unsigned int it=0; it<v_shaders.size(); it++)
 		if (S.equal(v_shaders[it]))	return v_shaders[it];
 
 	// Create _new_ entry
@@ -254,7 +254,7 @@ void	CResourceManager::DeferredUnload	()
 }
 */
 
-void	CResourceManager::_GetMemoryUsage(u32& m_base, u32& c_base, u32& m_lmaps, u32& c_lmaps)
+void	CResourceManager::_GetMemoryUsage(unsigned int& m_base, unsigned int& c_base, unsigned int& m_lmaps, unsigned int& c_lmaps)
 {
 	m_base=c_base=m_lmaps=c_lmaps=0;
 
@@ -262,7 +262,7 @@ void	CResourceManager::_GetMemoryUsage(u32& m_base, u32& c_base, u32& m_lmaps, u
 	map_Texture::iterator E = m_textures.end	();
 	for (; I!=E; I++)
 	{
-		u32 m = I->second->flags.MemoryUsage;
+		unsigned int m = I->second->flags.MemoryUsage;
 		if (strstr(I->first,"lmap"))
 		{
 			c_lmaps	++;
@@ -275,7 +275,7 @@ void	CResourceManager::_GetMemoryUsage(u32& m_base, u32& c_base, u32& m_lmaps, u
 }
 void	CResourceManager::_DumpMemoryUsage		()
 {
-	xr_multimap<u32,std::pair<u32, CSharedString> >		mtex	;
+	xr_multimap<unsigned int,std::pair<unsigned int, CSharedString> >		mtex	;
 
 	// sort
 	{
@@ -283,7 +283,7 @@ void	CResourceManager::_DumpMemoryUsage		()
 		map_Texture::iterator E = m_textures.end	();
 		for (; I!=E; I++)
 		{
-			u32			m = I->second->flags.MemoryUsage;
+			unsigned int			m = I->second->flags.MemoryUsage;
 			CSharedString	n = I->second->cName;
 			mtex.insert (mk_pair(m,mk_pair(I->second->dwReference,n) ));
 		}
@@ -291,8 +291,8 @@ void	CResourceManager::_DumpMemoryUsage		()
 
 	// dump
 	{
-		xr_multimap<u32,std::pair<u32, CSharedString> >::iterator I = mtex.begin	();
-		xr_multimap<u32,std::pair<u32, CSharedString> >::iterator E = mtex.end		();
+		xr_multimap<unsigned int,std::pair<unsigned int, CSharedString> >::iterator I = mtex.begin	();
+		xr_multimap<unsigned int,std::pair<unsigned int, CSharedString> >::iterator E = mtex.end		();
 		for (; I!=E; I++)
 			Msg			("* %4.1f : [%4d] %s",float(I->first)/1024.f, I->second.first, I->second.second.c_str());
 	}

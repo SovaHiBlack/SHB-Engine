@@ -55,7 +55,7 @@ void	CSoundRender_Emitter::fill_data		(unsigned char* _dest, unsigned int offset
 		}
 												
 		// fill block
-		U32		blk_size	= _min(size,line_amount);
+		unsigned int blk_size = _min(size,line_amount);
 		unsigned char*		ptr			= (unsigned char*)SoundRender->cache.get_dataptr(source->CAT,line);
 		CopyMemory		(_dest,ptr+line_offs,blk_size);
 		
@@ -72,7 +72,7 @@ void	CSoundRender_Emitter::fill_data		(unsigned char* _dest, unsigned int offset
 	//	CopyMemory		(ptr,wave+offset,size);
 }
 
-void	CSoundRender_Emitter::fill_block	(void* ptr, U32 size)
+void	CSoundRender_Emitter::fill_block	(void* ptr, unsigned int size)
 {
 	//Msg			("stream: %10s - [%X]:%d, p=%d, t=%d",*source->fname,ptr,size,position,source->dwBytesTotal);
 	LPBYTE		dest = LPBYTE(ptr);
@@ -88,11 +88,11 @@ void	CSoundRender_Emitter::fill_block	(void* ptr, U32 size)
 				{
 					// ??? We requested the block after remainder - just zero
 					Memory.mem_fill	(dest,0,size);
-//					Msg				("        playing: zero");
+//					Msg("        playing: zero");
 				} else {
 					// Calculate remainder
-					U32	sz_data		= source->dwBytesTotal - position;
-					U32 sz_zero		= (position+size) - source->dwBytesTotal;
+					unsigned int sz_data		= source->dwBytesTotal - position;
+					unsigned int sz_zero		= (position+size) - source->dwBytesTotal;
 					VERIFY			(size == (sz_data+sz_zero));
 					fill_data		(dest,position,sz_data);
 					Memory.mem_fill	(dest+sz_data,0,sz_zero);
@@ -103,10 +103,10 @@ void	CSoundRender_Emitter::fill_block	(void* ptr, U32 size)
 			break;
 		case stPlayingLooped:
 			{
-			U32 hw_position		= 0;
+			unsigned int hw_position		= 0;
 				do{
-					U32	sz_data		= source->dwBytesTotal - position;
-					U32 sz_write	= _min(size-hw_position,sz_data);
+					unsigned int	sz_data		= source->dwBytesTotal - position;
+					unsigned int sz_write	= _min(size-hw_position,sz_data);
 					fill_data		(dest+hw_position,	position,	sz_write);
 					hw_position		+= sz_write;
 					position		+= sz_write;
@@ -114,8 +114,8 @@ void	CSoundRender_Emitter::fill_block	(void* ptr, U32 size)
 				}while(0!=(size-hw_position));
 /*				            	
 				// Fill in two parts - looping :)
-				U32		sz_first	= source->dwBytesTotal - position;
-				U32		sz_second	= 0;
+				unsigned int		sz_first	= source->dwBytesTotal - position;
+				unsigned int		sz_second	= 0;
 				if (0==sz_first)
 				{
 					fill_data			(dest,0,size);

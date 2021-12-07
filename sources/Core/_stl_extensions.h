@@ -46,7 +46,7 @@ public:
 	}
 	pointer					allocate(size_type n, const void* p = nullptr) const
 	{
-		return xr_alloc<T>((U32) n);
+		return xr_alloc<T>((unsigned int) n);
 	}
 	char* _charalloc(size_type n)
 	{
@@ -82,9 +82,9 @@ struct xr_allocator
 		typedef xalloc<T>	result;
 	};
 
-	static void* alloc(const U32& n)
+	static void* alloc(const unsigned int& n)
 	{
-		return xr_malloc((U32) n);
+		return xr_malloc((unsigned int) n);
 	}
 	template <typename T>
 	static	void	dealloc(T*& p)
@@ -134,9 +134,9 @@ public:
 	{ }
 	explicit xr_vector(size_t _count) : inherited(_count)
 	{ }
-	U32		size( ) const
+	unsigned int		size( ) const
 	{
-		return (U32) inherited::size( );
+		return (unsigned int) inherited::size( );
 	}
 
 	void	clear_and_free( )
@@ -149,9 +149,15 @@ public:
 	}
 	void	clear_and_reserve( )
 	{
-		if (capacity( ) <= (size( ) + size( ) / 4)) clear_not_free( ); else
+		if (capacity( ) <= (size( ) + size( ) / 4))
 		{
-			U32 old = size( ); clear_and_free( ); reserve(old);
+			clear_not_free( );
+		}
+		else
+		{
+			unsigned int old = size( );
+			clear_and_free( );
+			reserve(old);
 		}
 	}
 
@@ -189,9 +195,9 @@ private:
 	typedef std::vector<bool, xalloc<bool> > inherited;
 
 public:
-	U32		size( ) const
+	unsigned int		size( ) const
 	{
-		return (U32) inherited::size( );
+		return (unsigned int) inherited::size( );
 	}
 	void	clear( )
 	{
@@ -206,9 +212,9 @@ private:
 	typedef std::vector<bool, allocator> inherited;
 
 public:
-	U32		size( ) const
+	unsigned int		size( ) const
 	{
-		return (U32) inherited::size( );
+		return (unsigned int) inherited::size( );
 	}
 	void	clear( )
 	{
@@ -224,9 +230,9 @@ public:
 	typedef typename allocator								allocator_type;
 	typedef typename allocator_type::value_type				value_type;
 	typedef typename allocator_type::size_type				size_type;
-	U32		size( ) const
+	unsigned int		size( ) const
 	{
-		return (U32)__super::size( );
+		return (unsigned int)__super::size( );
 	}
 };
 
@@ -248,7 +254,7 @@ public:
 	{
 		return (c.empty( ));
 	}
-	U32					size( ) const
+	unsigned int					size( ) const
 	{
 		return c.size( );
 	}
@@ -297,44 +303,58 @@ protected:
 	_C c;
 };
 
-template	<typename T, typename allocator = xalloc<T> >									class	xr_list : public std::list<T, allocator>
+template <typename T, typename allocator = xalloc<T>>
+class xr_list : public std::list<T, allocator>
 {
-public: U32 size( ) const
-{
-	return (U32)__super::size( );
-}
-};
-template	<typename K, class P = std::less<K>, typename allocator = xalloc<K> >				class	xr_set : public std::set<K, P, allocator>
-{
-public: U32 size( ) const
-{
-	return (U32)__super::size( );
-}
-};
-template	<typename K, class P = std::less<K>, typename allocator = xalloc<K> >				class	xr_multiset : public std::multiset<K, P, allocator>
-{
-public: U32 size( ) const
-{
-	return (U32)__super::size( );
-}
-};
-template	<typename K, class V, class P = std::less<K>, typename allocator = xalloc<std::pair<K, V> > >	class	xr_map : public std::map<K, V, P, allocator>
-{
-public: U32 size( ) const
-{
-	return (U32)__super::size( );
-}
-};
-template	<typename K, class V, class P = std::less<K>, typename allocator = xalloc<std::pair<K, V> > >	class	xr_multimap : public std::multimap<K, V, P, allocator>
-{
-public: U32 size( ) const
-{
-	return (U32)__super::size( );
-}
+public:
+	unsigned int size( ) const
+	{
+		return (unsigned int)__super::size( );
+	}
 };
 
+template <typename K, class P = std::less<K>, typename allocator = xalloc<K>>
+class xr_set : public std::set<K, P, allocator>
+{
+public:
+	unsigned int size( ) const
+	{
+		return (unsigned int)__super::size( );
+	}
+};
 
-template	<class _Ty1, class _Ty2> inline	std::pair<_Ty1, _Ty2>		mk_pair(_Ty1 _Val1, _Ty2 _Val2)
+template <typename K, class P = std::less<K>, typename allocator = xalloc<K>>
+class xr_multiset : public std::multiset<K, P, allocator>
+{
+public:
+	unsigned int size( ) const
+	{
+		return (unsigned int)__super::size( );
+	}
+};
+
+template <typename K, class V, class P = std::less<K>, typename allocator = xalloc<std::pair<K, V>>>
+class xr_map : public std::map<K, V, P, allocator>
+{
+public:
+	unsigned int size( ) const
+	{
+		return (unsigned int)__super::size( );
+	}
+};
+
+template <typename K, class V, class P = std::less<K>, typename allocator = xalloc<std::pair<K, V>>>
+class xr_multimap : public std::multimap<K, V, P, allocator>
+{
+public:
+	unsigned int size( ) const
+	{
+		return (unsigned int)__super::size( );
+	}
+};
+
+template <class _Ty1, class _Ty2>
+inline std::pair<_Ty1, _Ty2> mk_pair(_Ty1 _Val1, _Ty2 _Val2)
 {
 	return (std::pair<_Ty1, _Ty2>(_Val1, _Val2));
 }
@@ -346,6 +366,7 @@ struct pred_str : public std::binary_function<char*, char*, bool>
 		return xr_strcmp(x, y) < 0;
 	}
 };
+
 struct pred_stri : public std::binary_function<char*, char*, bool>
 {
 	inline bool operator()(const char* x, const char* y) const
@@ -407,10 +428,10 @@ using SStringVecIt = SStringVec::iterator;
 using U16Vec = xr_vector<unsigned short>;
 using U16It = U16Vec::iterator;
 //DEFINE_VECTOR(unsigned short*,LPU16Vec,LPU16It);
-//DEFINE_VECTOR(U32,U32Vec,U32It);
-using U32Vec = xr_vector<U32>;
+//DEFINE_VECTOR(unsigned int,U32Vec,U32It);
+using U32Vec = xr_vector<unsigned int>;
 using U32It = U32Vec::iterator;
-//DEFINE_VECTOR(U32*,LPU32Vec,LPU32It);
+//DEFINE_VECTOR(unsigned int*,LPU32Vec,LPU32It);
 //DEFINE_VECTOR(float,FloatVec,FloatIt);
 //DEFINE_VECTOR(float*,LPFloatVec,LPFloatIt);
 //DEFINE_VECTOR(int,IntVec,IntIt);

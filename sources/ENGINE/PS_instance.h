@@ -37,6 +37,6 @@ public:
 
 	virtual	CSharedString		shedule_Name		() const		{ return CSharedString("particle_instance"); };
 
-	virtual void			shedule_Update		(u32 dt);
+	virtual void			shedule_Update		(unsigned int dt);
 	virtual	IRenderable*	dcast_Renderable	()				{ return this;	}
 };

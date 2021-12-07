@@ -65,7 +65,7 @@ class ENGINE_API				ISpatial
 public:
 	struct	_spatial
 	{
-		u32						type;
+		unsigned int						type;
 		Fsphere					sphere;
 		Fvector3					node_center;	// Cached node center for TBV optimization
 		float					node_radius;	// Cached node bounds for TBV optimization
@@ -136,15 +136,16 @@ public:
 	Fvector3							m_center;
 	float							m_bounds;
 	xr_vector<ISpatial*>*			q_result;
-	u32								stat_nodes;
-	u32								stat_objects;
+	unsigned int								stat_nodes;
+	unsigned int								stat_objects;
 	CStatTimer						stat_insert;
 	CStatTimer						stat_remove;
+
 private:
-	inline u32							_octant			(u32 x, u32 y, u32 z)			{	return z*4 + y*2 + x;	}
-	inline u32							_octant			(Fvector3& base, Fvector3& rel)
+	inline unsigned int							_octant			(unsigned int x, unsigned int y, unsigned int z)			{	return z*4 + y*2 + x;	}
+	inline unsigned int							_octant			(Fvector3& base, Fvector3& rel)
 	{
-		u32 o	= 0;
+		unsigned int o	= 0;
 		if (rel.x > base.x) o+=1;
 		if (rel.y > base.y) o+=2;
 		if (rel.z > base.z) o+=4;
@@ -156,6 +157,7 @@ private:
 
 	void							_insert			(ISpatial_NODE* N, Fvector3& n_center, float n_radius);
 	void							_remove			(ISpatial_NODE* N, ISpatial_NODE* N_sub);
+
 public:
 	ISpatial_DB();
 	~ISpatial_DB();
@@ -165,7 +167,7 @@ public:
 	//void							destroy			();
 	void							insert			(ISpatial* S);
 	void							remove			(ISpatial* S);
-	void							update			(u32 nodes=8);
+	void							update			(unsigned int nodes=8);
 	BOOL							verify			();
 
 public:
@@ -174,14 +176,14 @@ public:
 		O_ONLYFIRST		= (1<<0),
 		O_ONLYNEAREST	= (1<<1),
 		O_ORDERED		= (1<<2),
-		O_force_u32		= u32(-1)
+		O_force_u32		= unsigned int(-1)
 	};
 
 	// query
-	void							q_ray			(xr_vector<ISpatial*>& R, u32 _o, u32 _mask_and, const Fvector3& _start,  const Fvector3& _dir, float _range);
-	void							q_box			(xr_vector<ISpatial*>& R, u32 _o, u32 _mask_or,  const Fvector3& _center, const Fvector3& _size);
-	void							q_sphere		(xr_vector<ISpatial*>& R, u32 _o, u32 _mask_or,  const Fvector3& _center, const float _radius);
-	void							q_frustum		(xr_vector<ISpatial*>& R, u32 _o, u32 _mask_or,  const CFrustum& _frustum);
+	void							q_ray			(xr_vector<ISpatial*>& R, unsigned int _o, unsigned int _mask_and, const Fvector3& _start,  const Fvector3& _dir, float _range);
+	void							q_box			(xr_vector<ISpatial*>& R, unsigned int _o, unsigned int _mask_or,  const Fvector3& _center, const Fvector3& _size);
+	void							q_sphere		(xr_vector<ISpatial*>& R, unsigned int _o, unsigned int _mask_or,  const Fvector3& _center, const float _radius);
+	void							q_frustum		(xr_vector<ISpatial*>& R, unsigned int _o, unsigned int _mask_or,  const CFrustum& _frustum);
 };
 
 ENGINE_API extern ISpatial_DB*		g_SpatialSpace			;

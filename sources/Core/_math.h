@@ -23,7 +23,7 @@ namespace CPU
 
 	CORE_API extern unsigned __int64				qpc_freq;
 	CORE_API extern unsigned __int64				qpc_overhead;
-	CORE_API extern U32				qpc_counter;
+	CORE_API extern unsigned int				qpc_counter;
 
 	CORE_API extern	_processor_info	ID;
 	CORE_API extern	unsigned __int64				QPC( );

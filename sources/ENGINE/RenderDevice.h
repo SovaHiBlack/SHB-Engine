@@ -24,11 +24,11 @@ class ENGINE_API CRenderDevice
 {
 private:
     // Main objects used for creating and rendering the 3D scene
-    u32										m_dwWindowStyle;
+	unsigned int										m_dwWindowStyle;
     RECT									m_rcWindowBounds;
     RECT									m_rcWindowClient;
 
-	u32										Timer_MM_Delta;
+	unsigned int										Timer_MM_Delta;
 	CTimer_paused							Timer;
 	CTimer_paused							TimerGlobal;
 	CTimer									TimerMM;
@@ -36,20 +36,21 @@ private:
 	void									_Create		(const char* shName);
 	void									_Destroy	(BOOL	bKeepTextures);
 	void									_SetupStates();
+
 public:
     HWND									m_hWnd;
 //	LRESULT									MsgProc		(HWND,UINT,WPARAM,LPARAM);
 
-	u32										dwFrame;
-	u32										dwPrecacheFrame;
-	u32										dwPrecacheTotal;
+	unsigned int										dwFrame;
+	unsigned int										dwPrecacheFrame;
+	unsigned int										dwPrecacheTotal;
 
-	u32										dwWidth, dwHeight;
+	unsigned int										dwWidth, dwHeight;
 	float									fWidth_2, fHeight_2;
 	BOOL									b_is_Ready;
 	BOOL									b_is_Active;
 	void									OnWM_Activate(WPARAM wParam, LPARAM lParam);
-public:
+
 	ref_shader								m_WireShader;
 	ref_shader								m_SelectionShader;
 
@@ -85,9 +86,9 @@ public:
 	// Engine flow-control
 	float									fTimeDelta;
 	float									fTimeGlobal;
-	u32										dwTimeDelta;
-	u32										dwTimeGlobal;
-	u32										dwTimeContinual;
+	unsigned int										dwTimeDelta;
+	unsigned int										dwTimeGlobal;
+	unsigned int										dwTimeContinual;
 
 	// Cameras & projection
 	Fvector3									vCameraPosition;
@@ -114,7 +115,7 @@ public:
 	BOOL	Paused							();
 
 	// Scene control
-	void PreCache							(u32 frames);
+	void PreCache							(unsigned int frames);
 	BOOL Begin								();
 	void Clear								();
 	void End								();
@@ -126,8 +127,8 @@ public:
 	// Mode control
 	void DumpFlags							();
 	inline	 CTimer_paused* GetTimerGlobal		()	{ return &TimerGlobal;								}
-	u32	 TimerAsync							()	{ return TimerGlobal.GetElapsed_ms();				}
-	u32	 TimerAsync_MMT						()	{ return TimerMM.GetElapsed_ms() +	Timer_MM_Delta; }
+	unsigned int	 TimerAsync							()	{ return TimerGlobal.GetElapsed_ms();				}
+	unsigned int	 TimerAsync_MMT						()	{ return TimerMM.GetElapsed_ms() +	Timer_MM_Delta; }
 
 	// Creation & Destroying
 	void Create								(void);

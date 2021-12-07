@@ -317,9 +317,9 @@ public:
 		return false;
 	}
 
-	inline U32& IR(TYPE& x)
+	inline unsigned int& IR(TYPE& x)
 	{
-		return (U32&) x;
+		return (unsigned int&) x;
 	}
 	inline BOOL			Pick2(const Tvector& origin, const Tvector& dir, Tvector& coord)
 	{
@@ -374,7 +374,7 @@ public:
 		}
 
 		// Get largest of the maxT's for final choice of intersection
-		U32 WhichPlane = 0;
+		unsigned int WhichPlane = 0;
 		if (MaxT[1] > MaxT[0])
 		{
 			WhichPlane = 1;

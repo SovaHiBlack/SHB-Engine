@@ -13,7 +13,7 @@ struct ENGINE_API SPostProcessInfo
 		{ }
 							SColor				(float _r, float _g, float _b) : r(_r), g(_g), b(_b)
 		{ }
-		inline				operator U32		( )
+		inline				operator unsigned int( )
 		{
 			int _r = clampr(iFloor(r * 255.0f + 0.5f), 0, 255);
 			int _g = clampr(iFloor(g * 255.0f + 0.5f), 0, 255);
@@ -148,7 +148,7 @@ class ENGINE_API CCameraManager
 public:
 
 #ifdef DEBUG
-	U32											dbg_upd_frame;
+	unsigned int											dbg_upd_frame;
 #endif // def DEBUG
 
 	void					Dump				( );

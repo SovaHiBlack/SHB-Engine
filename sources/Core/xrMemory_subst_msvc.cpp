@@ -13,15 +13,21 @@ __forceinline	unsigned char* acc_header(void* P)
 	unsigned char* _P = (unsigned char*) P;
 	return	_P - 1;
 }
-__forceinline	U32		get_header(void* P)
+__forceinline	unsigned int		get_header(void* P)
 {
-	return	(U32) *acc_header(P);
+	return	(unsigned int) *acc_header(P);
 }
-__forceinline	U32		get_pool(size_t size)
+__forceinline	unsigned int		get_pool(size_t size)
 {
-	U32		pid = U32(size / mem_pools_ebase);
-	if (pid >= mem_pools_count)	return mem_generic;
-	else						return pid;
+	unsigned int		pid = unsigned int(size / mem_pools_ebase);
+	if (pid >= mem_pools_count)
+	{
+		return mem_generic;
+	}
+	else
+	{
+		return pid;
+	}
 }
 
 #ifdef PURE_ALLOC
@@ -47,7 +53,7 @@ void* xrMemory::mem_alloc(size_t size)
 	}
 #endif // PURE_ALLOC
 
-	U32		_footer = debug_mode ? 4 : 0;
+	unsigned int		_footer = debug_mode ? 4 : 0;
 	void* _ptr = nullptr;
 
 	//
@@ -63,8 +69,8 @@ void* xrMemory::mem_alloc(size_t size)
 	{
 		// accelerated
 		// Reserve 1 byte for xrMemory header
-		U32 pool = get_pool(1 + size + _footer);
-		//U32	pool				=	get_pool	(size+_footer);
+		unsigned int pool = get_pool(1 + size + _footer);
+		//unsigned int	pool				=	get_pool	(size+_footer);
 		if (mem_generic == pool)
 		{
 			// generic
@@ -104,7 +110,7 @@ void	xrMemory::mem_free(void* P)
 		dbg_unregister(P);
 	}
 
-	U32 pool = get_header(P);
+	unsigned int pool = get_header(P);
 	void* _real = (void*) (((unsigned char*) P) - 1);
 	if (mem_generic == pool)
 	{
@@ -138,11 +144,11 @@ void* xrMemory::mem_realloc(void* P, size_t size)
 		return mem_alloc(size);
 	}
 
-	U32 p_current = get_header(P);
+	unsigned int p_current = get_header(P);
 	// Reserve 1 byte for xrMemory header
-	U32 p_new = get_pool(1 + size + (debug_mode ? 4 : 0));
-//	U32 p_new = get_pool(size + (debug_mode ? 4 : 0));
-	U32 p_mode;
+	unsigned int p_new = get_pool(1 + size + (debug_mode ? 4 : 0));
+//	unsigned int p_new = get_pool(size + (debug_mode ? 4 : 0));
+	unsigned int p_mode;
 
 	if (mem_generic == p_current)
 	{
@@ -164,7 +170,7 @@ void* xrMemory::mem_realloc(void* P, size_t size)
 	void* _ptr = nullptr;
 	if (0 == p_mode)
 	{
-		U32 _footer = debug_mode ? 4 : 0;
+		unsigned int _footer = debug_mode ? 4 : 0;
 		// Reserve 1 byte for xrMemory header
 		void* _real2 = xr_aligned_offset_realloc(_real, 1 + size + _footer, 16, 0x1);
 		_ptr = (void*) (((unsigned char*) _real2) + 1);
@@ -174,8 +180,8 @@ void* xrMemory::mem_realloc(void* P, size_t size)
 	{
 		// pooled realloc
 		R_ASSERT2(p_current < mem_pools_count, "Memory corruption");
-		U32		s_current = mem_pools[p_current].get_element( );
-		U32		s_dest = (U32) size;
+		unsigned int		s_current = mem_pools[p_current].get_element( );
+		unsigned int		s_dest = (unsigned int) size;
 		void* p_old = P;
 
 		void* p_new = mem_alloc(size);
@@ -190,9 +196,10 @@ void* xrMemory::mem_realloc(void* P, size_t size)
 		// relocate into another mmgr(pooled) from real
 		void* p_old = P;
 		void* p_new = mem_alloc(size);
-		mem_copy(p_new, p_old, (U32) size);
+		mem_copy(p_new, p_old, (unsigned int) size);
 		mem_free(p_old);
 		_ptr = p_new;
 	}
+
 	return	_ptr;
 }

@@ -74,7 +74,7 @@ void	msWrite(char *name, char* dest, char *msg)
 	fResult = WriteFile(
 		hFile,
 		msg,
-		(u32) lstrlen(msg) + 1,
+		(unsigned int) lstrlen(msg) + 1,
 		&cbWritten,
 		(LPOVERLAPPED) NULL);
 	fResult = CloseHandle(hFile);

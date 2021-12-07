@@ -34,23 +34,29 @@ long ov_tell_func(void* datasource)
 	return ((IReader*) datasource)->tell( );
 }
 
-void CSoundRender_Source::decompress		(U32 line, OggVorbis_File* ovf)
+void CSoundRender_Source::decompress		(unsigned int line, OggVorbis_File* ovf)
 {
 	VERIFY	(ovf);
 	// decompression of one cache-line
-	U32		line_size		= SoundRender->cache.get_linesize();
+	unsigned int		line_size		= SoundRender->cache.get_linesize();
 	char*	dest			= (char*)	SoundRender->cache.get_dataptr	(CAT,line);
-	U32		buf_offs		= (psSoundFreq==sf_22K)?(line*line_size):(line*line_size)/2;
-	U32		left_file		= dwBytesTotal - buf_offs;
-	U32		left			= (U32)_min	(left_file,line_size);
+	unsigned int		buf_offs		= (psSoundFreq==sf_22K)?(line*line_size):(line*line_size)/2;
+	unsigned int		left_file		= dwBytesTotal - buf_offs;
+	unsigned int		left			= (unsigned int)_min	(left_file,line_size);
 	// seek
-	U32	cur_pos				= U32(ov_pcm_tell(ovf));
+	unsigned int	cur_pos				= unsigned int(ov_pcm_tell(ovf));
 	if (cur_pos!=buf_offs){
 		ov_pcm_seek			(ovf,buf_offs);
 	}
 	// decompress
-	if (psSoundFreq==sf_22K)i_decompress_hr(ovf,dest,left);
-	else					i_decompress_fr(ovf,dest,left);
+	if (psSoundFreq == sf_22K)
+	{
+		i_decompress_hr(ovf, dest, left);
+	}
+	else
+	{
+		i_decompress_fr(ovf, dest, left);
+	}
 }
 
 void CSoundRender_Source::LoadWave	(const char* pName)
@@ -76,16 +82,20 @@ void CSoundRender_Source::LoadWave	(const char* pName)
 	wfxdest.nAvgBytesPerSec = wfxdest.nSamplesPerSec * wfxdest.nBlockAlign;
 
 	signed __int64 pcm_total			= ov_pcm_total(&ovf,-1);
-	if (psSoundFreq==sf_22K) pcm_total/=2;
-	dwBytesTotal			= U32(pcm_total*wfxdest.nBlockAlign);
+	if (psSoundFreq == sf_22K)
+	{
+		pcm_total /= 2;
+	}
+
+	dwBytesTotal			= unsigned int(pcm_total*wfxdest.nBlockAlign);
 	dwBytesPerMS			= wfxdest.nAvgBytesPerSec/1000;
 //	dwBytesPerSec			= wfxdest.nAvgBytesPerSec;
-	dwTimeTotal				= U32( sdef_source_footer + unsigned __int64( (unsigned __int64(dwBytesTotal)* unsigned __int64(1000))/ unsigned __int64(wfxdest.nAvgBytesPerSec) ) );
+	dwTimeTotal				= unsigned int( sdef_source_footer + unsigned __int64( (unsigned __int64(dwBytesTotal)* unsigned __int64(1000))/ unsigned __int64(wfxdest.nAvgBytesPerSec) ) );
 
 	vorbis_comment*	ovm		= ov_comment(&ovf,-1);
 	if (ovm->comments){
 		IReader F			(ovm->user_comments[0],ovm->comment_lengths[0]);
-		U32 vers			= F.r_u32	();
+		unsigned int vers			= F.r_u32	();
 		if (vers==0x0001){
 			m_fMinDist		= F.r_float	();
 			m_fMaxDist		= F.r_float	();

@@ -5,10 +5,10 @@
 #pragma warning(disable : 4200)
 struct		CORE_API	smem_value
 {
-	U32					dwReference;
-	U32					dwCRC;
-	U32					dwLength;
-	U32					_align_16;
+	unsigned int					dwReference;
+	unsigned int					dwCRC;
+	unsigned int					dwLength;
+	unsigned int					_align_16;
 	unsigned char					value[ ];
 };
 // generic predicate for "less"
@@ -30,10 +30,18 @@ inline bool					smem_search(const smem_value* A, const smem_value* B)
 }
 
 // predicate for exact (byte level) comparition
-inline bool					smem_equal(const smem_value* A, U32 dwCRC, U32 dwLength, unsigned char* ptr)
+inline bool					smem_equal(const smem_value* A, unsigned int dwCRC, unsigned int dwLength, unsigned char* ptr)
 {
-	if (A->dwCRC != dwCRC)			return		false;
-	if (A->dwLength != dwLength)		return		false;
+	if (A->dwCRC != dwCRC)
+	{
+		return false;
+	}
+
+	if (A->dwLength != dwLength)
+	{
+		return false;
+	}
+
 	return	0 == memcmp(A->value, ptr, dwLength);
 }
 #pragma warning(default : 4200)
@@ -47,10 +55,10 @@ private:
 	cdb									container;
 
 public:
-	smem_value* dock(U32 dwCRC, U32 dwLength, void* ptr);
+	smem_value* dock(unsigned int dwCRC, unsigned int dwLength, void* ptr);
 	void				clean( );
 	void				dump( );
-	U32					stat_economy( );
+	unsigned int					stat_economy( );
 	~smem_container( );
 };
 CORE_API	extern		smem_container* g_pSharedMemoryContainer;
@@ -93,7 +101,7 @@ public:
 		_dec( );
 	}
 
-	void				create(U32 dwCRC, U32 dwLength, T* ptr)
+	void				create(unsigned int dwCRC, unsigned int dwLength, T* ptr)
 	{
 		smem_value* v = g_pSharedMemoryContainer->dock(dwCRC, dwLength * sizeof(T), ptr);
 		if (0 != v)		v->dwReference++; _dec( ); p_ = v;
@@ -121,21 +129,37 @@ public:
 		return ((T*) (p_->value))[id];
 	}
 	// misc func
-	U32					size( )
+	unsigned int					size( )
 	{
-		if (0 == p_) return 0; else return p_->dwLength / sizeof(T);
+		if (0 == p_)
+		{
+			return 0;
+		}
+		else
+		{
+			return p_->dwLength / sizeof(T);
+		}
 	}
 	void				swap(ref_smem<T>& rhs)
 	{
-		smem_value* tmp = p_; p_ = rhs.p_; rhs.p_ = tmp;
+		smem_value* tmp = p_;
+		p_ = rhs.p_;
+		rhs.p_ = tmp;
 	}
 	bool				equal(ref_smem<T>& rhs)
 	{
 		return p_ == rhs.p_;
 	}
-	U32					ref_count( )
+	unsigned int					ref_count( )
 	{
-		if (0 == p_) return 0; else return p_->dwReference;
+		if (0 == p_)
+		{
+			return 0;
+		}
+		else
+		{
+			return p_->dwReference;
+		}
 	}
 };
 

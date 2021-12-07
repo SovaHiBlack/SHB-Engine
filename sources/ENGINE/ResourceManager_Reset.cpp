@@ -9,7 +9,7 @@ void	CResourceManager::reset_begin			()
 	::Render->reset_begin		();
 
 	// destroy state-blocks
-	for (u32 _it=0; _it<v_states.size(); _it++)
+	for (unsigned int _it=0; _it<v_states.size(); _it++)
 		_RELEASE(v_states[_it]->state);
 
 	// destroy RTs
@@ -37,7 +37,7 @@ void	CResourceManager::reset_end				()
 
 	// remark geom's which point to dynamic VB/IB
 	{
-		for (u32 _it=0; _it<v_geoms.size(); _it++)
+		for (unsigned int _it=0; _it<v_geoms.size(); _it++)
 		{
 			SGeometry*	_G = v_geoms[_it];
 			if			(_G->vb == RCache.Vertex.old_pVB)	_G->vb = RCache.Vertex.Buffer	();
@@ -53,7 +53,7 @@ void	CResourceManager::reset_end				()
 		xr_vector<CRT*>		rt;
 		for (map_RTIt rt_it=m_rtargets.begin(); rt_it!=m_rtargets.end(); rt_it++)	rt.push_back(rt_it->second);
 		std::sort(rt.begin(),rt.end(),cmp_rt);
-		for (u32 _it=0; _it<rt.size(); _it++)	rt[_it]->reset_end	();
+		for (unsigned int _it=0; _it<rt.size(); _it++)	rt[_it]->reset_end	();
 	}
 	{
 		// RTc
@@ -61,12 +61,12 @@ void	CResourceManager::reset_end				()
 		xr_vector<CRTC*>	rt;
 		for (map_RTCIt rt_it=m_rtargets_c.begin(); rt_it!=m_rtargets_c.end(); rt_it++)	rt.push_back(rt_it->second);
 		std::sort(rt.begin(),rt.end(),cmp_rtc);
-		for (u32 _it=0; _it<rt.size(); _it++)	rt[_it]->reset_end	();
+		for (unsigned int _it=0; _it<rt.size(); _it++)	rt[_it]->reset_end	();
 	}
 
 	// create state-blocks
 	{
-		for (u32 _it=0; _it<v_states.size(); _it++)
+		for (unsigned int _it=0; _it<v_states.size(); _it++)
 			v_states[_it]->state = v_states[_it]->state_code.record();
 	}
 

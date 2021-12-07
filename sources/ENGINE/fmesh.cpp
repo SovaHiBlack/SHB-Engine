@@ -5,20 +5,20 @@
 #pragma warning(default:4995)
 #include "fmesh.h"
 
-BOOL ValidateIndices(u32 vCount, u32 iCount, unsigned short* pIndices)
+BOOL ValidateIndices(unsigned int vCount, unsigned int iCount, unsigned short* pIndices)
 {
 	if (vCount>65535)	return FALSE;
 	if (iCount%3)		return FALSE;
 
-	for (u32 I=0; I<iCount; I++)
+	for (unsigned int I=0; I<iCount; I++)
 	{
-		if (u32(pIndices[I])>=vCount)	return FALSE;
+		if (unsigned int(pIndices[I])>=vCount)	return FALSE;
 	}
 	return TRUE;
 }
 
 //-----------------------------------------------------------------------------------------------------------------
-static u32 dwPositionPart[8] =
+static unsigned int dwPositionPart[8] =
 {
 	0,	// no position
 	3,	// x,y,z
@@ -33,16 +33,16 @@ static u32 dwPositionPart[8] =
 #define FAKES 0xffffffff
 #define FAKEZ 0xfffffffe
 
-void ConvertVertices(u32 dwTypeDest, void *pDest, u32 dwTypeSrc, void *pSource, u32 dwCount)
+void ConvertVertices(unsigned int dwTypeDest, void *pDest, unsigned int dwTypeSrc, void *pSource, unsigned int dwCount)
 // assuming that pDest is large enought to maintain all the data
 {
-	u32	TransferMask	[64];
-	u32	tmPos			= 0;
-	u32	tmPosSrc		= 0;
-	u32	dwSizeSrc		= D3DXGetFVFVertexSize(dwTypeSrc)/4;
-	u32	dwSizeDest		= D3DXGetFVFVertexSize(dwTypeDest)/4;
-	u32*	dest		= (u32*)pDest;
-	u32*	src			= (u32*)pSource;
+	unsigned int	TransferMask	[64];
+	unsigned int	tmPos			= 0;
+	unsigned int	tmPosSrc		= 0;
+	unsigned int	dwSizeSrc		= D3DXGetFVFVertexSize(dwTypeSrc)/4;
+	unsigned int	dwSizeDest		= D3DXGetFVFVertexSize(dwTypeDest)/4;
+	unsigned int*	dest		= (unsigned int*)pDest;
+	unsigned int*	src			= (unsigned int*)pSource;
 
 	// avoid redundant processing
 	if (dwTypeDest==dwTypeSrc) {
@@ -51,11 +51,11 @@ void ConvertVertices(u32 dwTypeDest, void *pDest, u32 dwTypeSrc, void *pSource, 
 	}
 
 	// how many bytes to 'simple copy'
-	u32 dwPosDest	= (dwTypeDest&D3DFVF_POSITION_MASK)>>1;
-	u32 dwPosSrc	= (dwTypeSrc&D3DFVF_POSITION_MASK)>>1;
+	unsigned int dwPosDest	= (dwTypeDest&D3DFVF_POSITION_MASK)>>1;
+	unsigned int dwPosSrc	= (dwTypeSrc&D3DFVF_POSITION_MASK)>>1;
 	if (dwPosDest==dwPosSrc) {
-		u32 cnt = dwPositionPart[dwPosSrc];
-		for (u32 i=0; i<cnt; i++) TransferMask[tmPos++]=i;
+		unsigned int cnt = dwPositionPart[dwPosSrc];
+		for (unsigned int i=0; i<cnt; i++) TransferMask[tmPos++]=i;
 		tmPosSrc = tmPos;
 	} else {
 		FATAL		("Can't convert between different vertex positions");
@@ -122,10 +122,10 @@ void ConvertVertices(u32 dwTypeDest, void *pDest, u32 dwTypeSrc, void *pSource, 
 	}
 
 	// ---------------------- "Texture coords" property
-	u32 dwTDest = ((dwTypeDest&D3DFVF_TEXCOUNT_MASK)>>D3DFVF_TEXCOUNT_SHIFT);
-	u32 dwTSrc  = ((dwTypeSrc &D3DFVF_TEXCOUNT_MASK)>>D3DFVF_TEXCOUNT_SHIFT);
+	unsigned int dwTDest = ((dwTypeDest&D3DFVF_TEXCOUNT_MASK)>>D3DFVF_TEXCOUNT_SHIFT);
+	unsigned int dwTSrc  = ((dwTypeSrc &D3DFVF_TEXCOUNT_MASK)>>D3DFVF_TEXCOUNT_SHIFT);
 	if (dwTDest<=dwTSrc) {
-		for (u32 i=0; i<dwTDest; i++) {
+		for (unsigned int i=0; i<dwTDest; i++) {
 			TransferMask[tmPos++]=tmPosSrc++;
 			TransferMask[tmPos++]=tmPosSrc++;
 		}
@@ -134,8 +134,8 @@ void ConvertVertices(u32 dwTypeDest, void *pDest, u32 dwTypeSrc, void *pSource, 
 			FATAL	("Source vertex format doesn't has texture coords at all");
 		}
 		// Copy real TC
-		u32 dwStage0TC = tmPosSrc;
-		for (u32 i=0; i<dwTSrc; i++) {
+		unsigned int dwStage0TC = tmPosSrc;
+		for (unsigned int i=0; i<dwTSrc; i++) {
 			TransferMask[tmPos++]=tmPosSrc++;
 			TransferMask[tmPos++]=tmPosSrc++;
 		}
@@ -147,10 +147,10 @@ void ConvertVertices(u32 dwTypeDest, void *pDest, u32 dwTypeSrc, void *pSource, 
 	}
 
 	// ---------------------- REAL CONVERTION USING BUILDED MASK
-	for (u32 i=0; i<dwCount; i++) {
+	for (unsigned int i=0; i<dwCount; i++) {
 		// one vertex
-		for (u32 j=0; j<dwSizeDest; j++) {
-			u32 m = TransferMask[j];
+		for (unsigned int j=0; j<dwSizeDest; j++) {
+			unsigned int m = TransferMask[j];
 			if (m == FAKES) dest[j]=0xffffffff;
 			else if (m == FAKEZ) dest[j]=0;
 			else dest[j]=src[m];

@@ -457,16 +457,16 @@ public:
 		return false;
 	}
 
-	inline U32& IR(TYPE& x)
+	inline unsigned int& IR(TYPE& x)
 	{
-		return (U32&) x;
+		return (unsigned int&) x;
 	}
 	enum ERP_Result
 	{
 		rpNone = 0,
 		rpOriginInside = 1,
 		rpOriginOutside = 2,
-		fcv_forcedword = U32(-1)
+		fcv_forcedword = unsigned int(-1)
 	};
 	inline ERP_Result		Pick2(const Tvector& origin, const Tvector& dir, Tvector& coord)
 	{
@@ -540,7 +540,7 @@ public:
 		}
 
 		// Get largest of the maxT's for final choice of intersection
-		U32 WhichPlane = 0;
+		unsigned int WhichPlane = 0;
 		if (MaxT[1] > MaxT[0])
 		{
 			WhichPlane = 1;

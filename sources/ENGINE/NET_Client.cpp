@@ -15,7 +15,7 @@ INetQueue::~INetQueue( )
 {
 	cs.Enter( );
 
-	u32 it;
+	unsigned int it;
 	for (it = 0; it < unused.size( ); it++)
 	{
 		xr_delete(unused[it]);
@@ -29,7 +29,7 @@ INetQueue::~INetQueue( )
 	cs.Leave( );
 }
 
-static u32 LastTimeCreate = 0;
+static unsigned int LastTimeCreate = 0;
 
 void INetQueue::CreateCommit(CNetPacket* P)
 {
@@ -71,8 +71,8 @@ CNetPacket* INetQueue::Retreive( )
 	}
 	else
 	{
-		u32 tmp_time = GetTickCount( ) - 60000;
-		u32 size = unused.size( );
+		unsigned int tmp_time = GetTickCount( ) - 60000;
+		unsigned int size = unused.size( );
 		if ((LastTimeCreate < tmp_time) && (size > 32))
 		{
 			xr_delete(unused.back( ));
@@ -90,8 +90,8 @@ void INetQueue::Release( )
 
 	VERIFY(!ready.empty( ));
 
-	u32 tmp_time = GetTickCount( ) - 60000;
-	u32 size = unused.size( );
+	unsigned int tmp_time = GetTickCount( ) - 60000;
+	unsigned int size = unused.size( );
 	if ((LastTimeCreate < tmp_time) && (size > 32))
 	{
 		xr_delete(ready.front( ));
@@ -126,7 +126,7 @@ void IPureClient::Disconnect( )
 	net_Syncronised = FALSE;
 }
 
-void IPureClient::OnMessage(void* data, u32 size)
+void IPureClient::OnMessage(void* data, unsigned int size)
 {
 	// One of the messages - decompress it
 	CNetPacket* P = net_Queue.CreateGet( );
@@ -139,7 +139,7 @@ void IPureClient::OnMessage(void* data, u32 size)
 	net_Queue.CreateCommit(P);
 }
 
-void IPureClient::Send(CNetPacket& packet, u32 dwFlags, u32 dwTimeout)
+void IPureClient::Send(CNetPacket& packet, unsigned int dwFlags, unsigned int dwTimeout)
 {
 	FATAL("");
 }

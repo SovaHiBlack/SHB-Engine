@@ -23,7 +23,7 @@ public:
 		DIDEVCAPS					capabilities;
 		DIDEVICEINSTANCE			deviceInfo;
 		DIDEVICEOBJECTINSTANCE		objectInfo;
-		u32							mouse_dt;
+		unsigned int							mouse_dt;
 	};
 	struct sxr_key
 	{
@@ -37,16 +37,16 @@ private:
 	LPDIRECTINPUTDEVICE8		pMouse;			// The DIDevice7 interface
 	LPDIRECTINPUTDEVICE8		pKeyboard;		// The DIDevice7 interface
 	//----------------------
-	u32							timeStamp[COUNT_MOUSE_AXIS];
-	u32							timeSave[COUNT_MOUSE_AXIS];
+	unsigned int							timeStamp[COUNT_MOUSE_AXIS];
+	unsigned int							timeSave[COUNT_MOUSE_AXIS];
 	int 						offs[COUNT_MOUSE_AXIS];
 	BOOL						mouseState[COUNT_MOUSE_BUTTONS];
 	//----------------------
 	BOOL						KBState[COUNT_KB_BUTTONS];
 
 	HRESULT						CreateInputDevice(LPDIRECTINPUTDEVICE8* device, GUID guidDevice,
-												  const DIDATAFORMAT* pdidDataFormat, u32 dwFlags,
-												  u32 buf_size);
+												  const DIDATAFORMAT* pdidDataFormat, unsigned int dwFlags,
+		unsigned int buf_size);
 
 	xr_vector<IInputReceiver*>	cbStack;
 
@@ -56,7 +56,7 @@ private:
 public:
 	sxr_mouse					mouse_property;
 	sxr_key						key_property;
-	u32							dwCurTime;
+	unsigned int							dwCurTime;
 
 	void						SetAllAcquire(BOOL bAcquire = TRUE);
 	void						SetMouseAcquire(BOOL bAcquire);

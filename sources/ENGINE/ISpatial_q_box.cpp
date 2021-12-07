@@ -8,13 +8,13 @@ template <bool b_first>
 class	walker
 {
 public:
-	u32				mask;
+	unsigned int				mask;
 	Fvector3			center;
 	Fvector3			size;
 	Fbox3			box;
 	ISpatial_DB*	space;
-public:
-	walker					(ISpatial_DB*	_space, u32 _mask, const Fvector3& _center, const Fvector3& _size)
+
+	walker					(ISpatial_DB*	_space, unsigned int _mask, const Fvector3& _center, const Fvector3& _size)
 	{
 		mask	= _mask;
 		center	= _center;
@@ -50,7 +50,7 @@ public:
 
 		// recurse
 		float	c_R		= n_R/2;
-		for (u32 octant=0; octant<8; octant++)
+		for (unsigned int octant=0; octant<8; octant++)
 		{
 			if (0==N->children[octant])	continue;
 			Fvector3		c_C;
@@ -61,7 +61,7 @@ public:
 	}
 };
 
-void	ISpatial_DB::q_box			(xr_vector<ISpatial*>& R, u32 _o, u32 _mask, const Fvector3& _center, const Fvector3& _size)
+void	ISpatial_DB::q_box			(xr_vector<ISpatial*>& R, unsigned int _o, unsigned int _mask, const Fvector3& _center, const Fvector3& _size)
 {
 	cs.Enter			();
 	q_result			= &R;
@@ -71,7 +71,7 @@ void	ISpatial_DB::q_box			(xr_vector<ISpatial*>& R, u32 _o, u32 _mask, const Fve
 	cs.Leave			();
 }
 
-void	ISpatial_DB::q_sphere		(xr_vector<ISpatial*>& R, u32 _o, u32 _mask, const Fvector3& _center, const float _radius)
+void	ISpatial_DB::q_sphere		(xr_vector<ISpatial*>& R, unsigned int _o, unsigned int _mask, const Fvector3& _center, const float _radius)
 {
 	Fvector3			_size			= {_radius,_radius,_radius};
 	q_box							(R,_o,_mask,_center,_size);

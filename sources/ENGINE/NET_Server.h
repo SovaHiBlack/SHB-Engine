@@ -7,7 +7,7 @@ struct SClientConnectData
 	CClientID			clientID;
 	string64			name;
 	string64			pass;
-	u32					process_id;
+	unsigned int					process_id;
 
 	SClientConnectData	( )
 	{
@@ -29,7 +29,7 @@ struct ENGINE_API ip_address
 			unsigned char					a3;
 			unsigned char					a4;
 		};
-		u32						data;
+		unsigned int						data;
 	}							m_data;
 
 	void		set				(const char* src_string);
@@ -50,10 +50,10 @@ class ENGINE_API IClient
 public:
 	struct Flags
 	{
-		u32						bLocal : 1;
-		u32						bConnected : 1;
-		u32						bReconnect : 1;
-		u32						bVerified : 1;
+		unsigned int						bLocal : 1;
+		unsigned int						bConnected : 1;
+		unsigned int						bReconnect : 1;
+		unsigned int						bVerified : 1;
 	};
 
 					IClient		(CTimer* timer);
@@ -65,11 +65,11 @@ public:
 	CSharedString					pass;
 
 	Flags						flags;	// local/host/normal
-	u32							dwTime_LastUpdate;
+	unsigned int							dwTime_LastUpdate;
 
 	ip_address					m_cAddress;
 	DWORD						m_dwPort;
-	u32							process_id;
+	unsigned int							process_id;
 
 	IPureServer*				server;
 };
@@ -115,13 +115,13 @@ public:
 	virtual void			Disconnect			( );
 
 	// send
-	virtual void			SendTo_LL			(CClientID ID, void* data, u32 size, u32 dwFlags = DPNSEND_GUARANTEED, u32 dwTimeout = 0);
-	void					SendTo				(CClientID ID, CNetPacket& P, u32 dwFlags = DPNSEND_GUARANTEED, u32 dwTimeout = 0);
-	void					SendBroadcast_LL	(CClientID exclude, void* data, u32 size, u32 dwFlags = DPNSEND_GUARANTEED);
-	void					SendBroadcast		(CClientID exclude, CNetPacket& P, u32 dwFlags = DPNSEND_GUARANTEED);
+	virtual void			SendTo_LL			(CClientID ID, void* data, unsigned int size, unsigned int dwFlags = DPNSEND_GUARANTEED, unsigned int dwTimeout = 0);
+	void					SendTo				(CClientID ID, CNetPacket& P, unsigned int dwFlags = DPNSEND_GUARANTEED, unsigned int dwTimeout = 0);
+	void					SendBroadcast_LL	(CClientID exclude, void* data, unsigned int size, unsigned int dwFlags = DPNSEND_GUARANTEED);
+	void					SendBroadcast		(CClientID exclude, CNetPacket& P, unsigned int dwFlags = DPNSEND_GUARANTEED);
 
 	// extended functionality
-	virtual u32				OnMessage			(CNetPacket& P, CClientID sender);	// Non-Zero means broadcasting with "flags" as returned
+	virtual unsigned int				OnMessage			(CNetPacket& P, CClientID sender);	// Non-Zero means broadcasting with "flags" as returned
 	virtual bool			OnCL_QueryHost		( )
 	{
 		return true;
@@ -130,11 +130,11 @@ public:
 	virtual IClient*		client_Create		( ) = 0;							// create client info
 	virtual void			client_Replicate	( ) = 0;							// replicate current state to client
 	virtual void			client_Destroy		(IClient* C) = 0;					// destroy client info
-	inline u32				client_Count		( )
+	inline unsigned int				client_Count		( )
 	{
 		return net_Players.size( );
 	}
-	inline IClient*			client_Get			(u32 num)
+	inline IClient*			client_Get			(unsigned int num)
 	{
 		return net_Players[num];
 	}

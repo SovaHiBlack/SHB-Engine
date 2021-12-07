@@ -1,30 +1,31 @@
 #pragma once
 
-#define	CAP_VERSION(a,b)	(u32(a)*10 + u32(b))
+#define	CAP_VERSION(a,b)	(unsigned int(a)*10 + unsigned int(b))
 
 class ENGINE_API CHWCaps {
 public:
 	struct		caps_Geometry
 	{
-		u32	dwRegisters		: 16;
-		u32 dwInstructions	: 16;
-		u32	bSoftware		: 1;
-		u32	bPointSprites	: 1;
-		u32	bVTF			: 1;		// vertex-texture-fetch
-		u32	bNPatches		: 1;
-		u32 dwClipPlanes	: 4;
-		u32 dwVertexCache	: 8;
+		unsigned int	dwRegisters		: 16;
+		unsigned int dwInstructions	: 16;
+		unsigned int	bSoftware		: 1;
+		unsigned int	bPointSprites	: 1;
+		unsigned int	bVTF			: 1;		// vertex-texture-fetch
+		unsigned int	bNPatches		: 1;
+		unsigned int dwClipPlanes	: 4;
+		unsigned int dwVertexCache	: 8;
 	};
 	struct		caps_Raster
 	{
-		u32	dwRegisters		: 16;
-		u32 dwInstructions	: 16;
-		u32	dwStages		: 4;		// number of tex-stages
-		u32	dwMRT_count		: 4;
-		u32 b_MRT_mixdepth	: 1;
-		u32	bNonPow2		: 1;
-		u32	bCubemap		: 1;
+		unsigned int	dwRegisters		: 16;
+		unsigned int dwInstructions	: 16;
+		unsigned int	dwStages		: 4;		// number of tex-stages
+		unsigned int	dwMRT_count		: 4;
+		unsigned int b_MRT_mixdepth	: 1;
+		unsigned int	bNonPow2		: 1;
+		unsigned int	bCubemap		: 1;
 	};
+
 public:
 	// force flags
 	BOOL			bForceGPU_REF;
@@ -35,7 +36,7 @@ public:
 	// device format
 	D3DFORMAT		fTarget;
 	D3DFORMAT		fDepth;
-	u32				dwRefreshRate;
+	unsigned int				dwRefreshRate;
 
 	// caps itself
 	unsigned short				geometry_major	;
@@ -45,8 +46,8 @@ public:
 	unsigned short				raster_minor	;
 	caps_Raster		raster			;
 
-	u32				id_vendor		;
-	u32				id_device		;
+	unsigned int				id_vendor		;
+	unsigned int				id_device		;
 
 	BOOL			bStencil;			// stencil buffer present
 	BOOL			bScissor;			// scissor rect supported
@@ -54,7 +55,7 @@ public:
 
 	// some precalculated values
 	D3DSTENCILOP	soDec, soInc;		// best stencil OPs for shadows
-	u32				dwMaxStencilValue;  // maximum value the stencil buffer can hold
+	unsigned int				dwMaxStencilValue;  // maximum value the stencil buffer can hold
 
 	void			Update(void);
 };

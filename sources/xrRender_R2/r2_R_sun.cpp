@@ -50,18 +50,22 @@ struct BoundingBox
 
 	explicit BoundingBox( const D3DXVECTOR3* points, UINT n ): minPt(1e33f, 1e33f, 1e33f), maxPt(-1e33f, -1e33f, -1e33f)
 	{
-		for (U32 i=0; i<n; i++ )
-			Merge( &points[i] );
+		for (unsigned int i = 0; i < n; i++)
+		{
+			Merge(&points[i]);
+		}
 	}
 
 	explicit BoundingBox( const std::vector<D3DXVECTOR3>* points): minPt(1e33f, 1e33f, 1e33f), maxPt(-1e33f, -1e33f, -1e33f)
 	{
-		for (U32 i=0; i<points->size(); i++ )
-			Merge( &(*points)[i] );
+		for (unsigned int i = 0; i < points->size( ); i++)
+		{
+			Merge(&(*points)[i]);
+		}
 	}
 	explicit BoundingBox( const std::vector<BoundingBox>* boxes ): minPt(1e33f, 1e33f, 1e33f), maxPt(-1e33f, -1e33f, -1e33f) 
 	{
-		for (U32 i=0; i<boxes->size(); i++)
+		for (unsigned int i=0; i<boxes->size(); i++)
 		{
 			Merge( &(*boxes)[i].maxPt );
 			Merge( &(*boxes)[i].minPt );

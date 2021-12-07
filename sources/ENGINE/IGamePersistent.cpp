@@ -114,7 +114,7 @@ void IGamePersistent::OnGameStart( )
 
 	// prefetch game objects & models
 	float	p_time		=			1000.f*Device.GetTimerGlobal()->GetElapsed_sec();
-	u32	mem_0			=			Memory.mem_usage()	;
+	unsigned int	mem_0			=			Memory.mem_usage()	;
 
 	Log				("Loading objects...");
 	ObjectPool.prefetch					();
@@ -123,7 +123,7 @@ void IGamePersistent::OnGameStart( )
 	Device.Resources->DeferredUpload	();
 
 	p_time				=			1000.f*Device.GetTimerGlobal()->GetElapsed_sec() - p_time;
-	u32		p_mem		=			Memory.mem_usage() - mem_0	;
+	unsigned int		p_mem		=			Memory.mem_usage() - mem_0	;
 
 	Msg					("* [prefetch] time:    %d ms",	iFloor(p_time));
 	Msg					("* [prefetch] memory:  %dKb",	p_mem/1024);
@@ -158,7 +158,7 @@ void IGamePersistent::OnFrame( )
 	// Destroy inactive particle systems
 	while (ps_destroy.size( ))
 	{
-//		u32 cnt = ps_destroy.size();
+//		unsigned int cnt = ps_destroy.size();
 		CPS_Instance* psi = ps_destroy.back( );
 		VERIFY(psi);
 		if (psi->Locked( ))
@@ -195,7 +195,7 @@ void IGamePersistent::destroy_particles(const bool& all_particles)
 	}
 	else
 	{
-		u32 active_size = ps_active.size( );
+		unsigned int active_size = ps_active.size( );
 		CPS_Instance** I = (CPS_Instance**) _alloca(active_size * sizeof(CPS_Instance*));
 		std::copy(ps_active.begin( ), ps_active.end( ), I);
 

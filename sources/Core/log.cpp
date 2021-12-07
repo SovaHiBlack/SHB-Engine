@@ -20,7 +20,7 @@ void FlushLog(const char* file_name)
 	IWriter* f = FS.w_open(file_name);
 	if (f)
 	{
-		for (U32 it = 0; it < LogFile->size( ); it++)
+		for (unsigned int it = 0; it < LogFile->size( ); it++)
 		{
 			const char* s = *((*LogFile)[it]);
 			f->w_string(s ? s : "");
@@ -97,20 +97,29 @@ void __cdecl Msg(const char* format, ...)
 	va_start(mark, format);
 	int sz = _vsnprintf(buf, sizeof(buf) - 1, format, mark); buf[sizeof(buf) - 1] = 0;
 	va_end(mark);
-	if (sz)		Log(buf);
+	if (sz)
+	{
+		Log(buf);
+	}
 }
 
 void Log(const char* msg, const char* dop)
 {
 	string1024 buf;
 
-	if (dop)	sprintf_s(buf, sizeof(buf), "%s %s", msg, dop);
-	else		sprintf_s(buf, sizeof(buf), "%s", msg);
+	if (dop)
+	{
+		sprintf_s(buf, sizeof(buf), "%s %s", msg, dop);
+	}
+	else
+	{
+		sprintf_s(buf, sizeof(buf), "%s", msg);
+	}
 
 	Log(buf);
 }
 
-void Log(const char* msg, U32 dop)
+void Log(const char* msg, unsigned int dop)
 {
 	string1024 buf;
 

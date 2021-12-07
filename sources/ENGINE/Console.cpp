@@ -63,7 +63,7 @@ void CConsole::Destroy( )
 
 void CConsole::OnFrame( )
 {
-	U32 mm_timer = Device.dwTimeContinual;
+	unsigned int mm_timer = Device.dwTimeContinual;
 	float fDelta = (mm_timer - last_mm_timer) / 1000.0f;
 	if (fDelta > 0.06666f)
 	{
@@ -544,7 +544,7 @@ void CConsole::OnPressKey(int dik, bool bHold)
 				{
 					const char* clipdata = (const char*) GlobalLock(hmem);
 					strncpy(editor, clipdata, MAX_LEN - 1); editor[MAX_LEN - 1] = 0;
-					for (U32 i = 0; i < xr_strlen(editor); i++)
+					for (unsigned int i = 0; i < xr_strlen(editor); i++)
 					{
 						if (isprint(editor[i]))
 						{
@@ -565,7 +565,7 @@ void CConsole::OnPressKey(int dik, bool bHold)
 			break;
 	}
 
-	U32	clip = MAX_LEN - 8;
+	unsigned int	clip = MAX_LEN - 8;
 	if (xr_strlen(editor) >= clip)
 	{
 		editor[clip - 1] = 0;

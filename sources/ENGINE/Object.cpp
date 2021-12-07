@@ -149,8 +149,8 @@ CObject::CObject( ) : ISpatial(g_SpatialSpace)
 	NameVisual = NULL;
 
 #ifdef DEBUG
-	dbg_update_shedule = u32(-1) / 2;
-	dbg_update_cl = u32(-1) / 2;
+	dbg_update_shedule = unsigned int(-1) / 2;
+	dbg_update_cl = unsigned int(-1) / 2;
 #endif // def DEBUG
 }
 
@@ -348,7 +348,7 @@ void CObject::UpdateCL( )
 	}
 }
 
-void CObject::shedule_Update(u32 T)
+void CObject::shedule_Update(unsigned int T)
 {
 	// consistency check
 //	Msg("-SUB-:[%x][%s] CObject::shedule_Update", dynamic_cast<void*>(this), *cName( ));
@@ -379,7 +379,7 @@ void CObject::spatial_move( )
 	ISpatial::spatial_move( );
 }
 
-CObject::SavedPosition CObject::ps_Element(u32 ID) const
+CObject::SavedPosition CObject::ps_Element(unsigned int ID) const
 {
 	VERIFY(ID < ps_Size( ));
 	return PositionStack[ID];

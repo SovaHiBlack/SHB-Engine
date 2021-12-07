@@ -26,7 +26,7 @@ void xrMemory::_initialize(bool bDebug)
 	stat_calls = 0;
 	stat_counter = 0;
 
-	U32 features = CPU::ID.feature & CPU::ID.os_support;
+	unsigned int features = CPU::ID.feature & CPU::ID.os_support;
 	if (features & _CPU_FEATURE_MMX)
 	{
 		mem_copy = xrMemCopy_MMX;
@@ -43,9 +43,9 @@ void xrMemory::_initialize(bool bDebug)
 	if (!strstr(Core.Params, "-pure_alloc"))
 	{
 		// initialize POOLs
-		U32 element = mem_pools_ebase;
-		U32 sector = mem_pools_ebase * 1024;
-		for (U32 pid = 0; pid < mem_pools_count; pid++)
+		unsigned int element = mem_pools_ebase;
+		unsigned int sector = mem_pools_ebase * 1024;
+		for (unsigned int pid = 0; pid < mem_pools_count; pid++)
 		{
 			mem_pools[pid]._initialize(element, sector, 0x1);
 			element += mem_pools_ebase;
@@ -93,7 +93,7 @@ void xrMemory::mem_compact( )
 char* xr_strdup(const char* string)
 {
 	VERIFY(string);
-	U32 len = U32(xr_strlen(string)) + 1;
+	unsigned int len = unsigned int(xr_strlen(string)) + 1;
 	char* memory = (char*) Memory.mem_alloc(len);
 	CopyMemory(memory, string, len);
 	return	memory;

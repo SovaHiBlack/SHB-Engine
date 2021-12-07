@@ -63,11 +63,11 @@ void CEnvAmbient::load(const CSharedString& sect)
 		}
 
 		const char* snds = pSettings->r_string(sect, "sounds");
-		U32 cnt = _GetItemCount(snds);
+		unsigned int cnt = _GetItemCount(snds);
 		if (cnt)
 		{
 			sounds.resize(cnt);
-			for (U32 k = 0; k < cnt; ++k)
+			for (unsigned int k = 0; k < cnt; ++k)
 			{
 				sounds[k].create(_GetItem(snds, k, tmp), st_Effect, sg_SourceType);
 			}
@@ -80,11 +80,11 @@ void CEnvAmbient::load(const CSharedString& sect)
 		Fvector2 t = pSettings->r_fvector2(sect, "effect_period");
 		effect_period.set(iFloor(t.x * 1000.f), iFloor(t.y * 1000.0f));
 		const char* effs = pSettings->r_string(sect, "effects");
-		U32 cnt = _GetItemCount(effs);
+		unsigned int cnt = _GetItemCount(effs);
 		if (cnt)
 		{
 			effects.resize(cnt);
-			for (U32 k = 0; k < cnt; ++k)
+			for (unsigned int k = 0; k < cnt; ++k)
 			{
 				_GetItem(effs, k, tmp);
 				effects[k].life_time = iFloor(pSettings->r_float(tmp, "life_time") * 1000.0f);
@@ -244,7 +244,7 @@ void CEnvDescriptorMixer::destroy( )
 
 void CEnvDescriptorMixer::clear( )
 {
-	std::pair<U32, ref_texture>	zero = mk_pair(U32(0), ref_texture(0));
+	std::pair<unsigned int, ref_texture>	zero = mk_pair(unsigned int(0), ref_texture(0));
 	sky_r_textures.clear( );
 	sky_r_textures.push_back(zero);
 	sky_r_textures.push_back(zero);
@@ -338,7 +338,7 @@ void CEnvironment::mods_load( )
 	if (FS.exist(path, "$level$", "level.env_mod"))
 	{
 		IReader* fs = FS.r_open(path);
-		U32 id = 0;
+		unsigned int id = 0;
 		while (fs->find_chunk(id))
 		{
 			CEnvModifier E;

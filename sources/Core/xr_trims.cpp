@@ -27,15 +27,16 @@ char* _Trim(char* str)
 	return str;
 }
 
-const char* _SetPos(const char* src, U32 pos, char separator)
+const char* _SetPos(const char* src, unsigned int pos, char separator)
 {
 	const char* res = src;
-	U32		p = 0;
+	unsigned int p = 0;
 	while ((p < pos) && (0 != (res = strchr(res, separator))))
 	{
 		res++;
 		p++;
 	}
+
 	return		res;
 }
 
@@ -52,7 +53,7 @@ const char* _CopyVal(const char* src, char* dst, char separator)
 
 int	_GetItemCount(const char* src, char separator)
 {
-	U32		cnt = 0;
+	unsigned int		cnt = 0;
 	if (src && src[0])
 	{
 		const char* res = src;
@@ -94,7 +95,7 @@ char* _GetItems(const char* src, int idx_start, int idx_end, char* dst, char sep
 	return dst;
 }
 
-U32 _ParseItem(const char* src, xr_token* token_list)
+unsigned int _ParseItem(const char* src, xr_token* token_list)
 {
 	for (int i = 0; token_list[i].name; i++)
 	{
@@ -104,10 +105,10 @@ U32 _ParseItem(const char* src, xr_token* token_list)
 		}
 	}
 
-	return U32(-1);
+	return unsigned int(-1);
 }
 
-U32 _ParseItem(const char* src, int ind, xr_token* token_list)
+unsigned int _ParseItem(const char* src, int ind, xr_token* token_list)
 {
 	char dst[128];
 	_GetItem(src, ind, dst);

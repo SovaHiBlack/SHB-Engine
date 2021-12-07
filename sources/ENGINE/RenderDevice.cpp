@@ -113,7 +113,7 @@ void CRenderDevice::End		(void)
 	//R_ASSERT2		(SUCCEEDED(_hr),	"Presentation failed. Driver upgrade needed?");
 }
 
-volatile u32	mt_Thread_marker		= 0x12345678;
+volatile unsigned int	mt_Thread_marker		= 0x12345678;
 void 			mt_Thread	(void *ptr)	{
 	while (true) {
 		// waiting for Device permission to execute
@@ -127,7 +127,7 @@ void 			mt_Thread	(void *ptr)	{
 		// we has granted permission to execute
 		mt_Thread_marker			= Device.dwFrame;
  
-		for (u32 pit=0; pit<Device.seqParallel.size(); pit++)
+		for (unsigned int pit=0; pit<Device.seqParallel.size(); pit++)
 			Device.seqParallel[pit]	();
 		Device.seqParallel.clear_not_free	();
 		Device.seqFrameMT.Process	(rp_Frame);
@@ -141,7 +141,7 @@ void 			mt_Thread	(void *ptr)	{
 	}
 }
 
-void CRenderDevice::PreCache	(u32 amount)
+void CRenderDevice::PreCache	(unsigned int amount)
 {
 	if (HW.Caps.bForceGPU_REF)	amount=0;
 
@@ -173,10 +173,10 @@ void CRenderDevice::Run			()
 	dwTimeGlobal				= 0;
 	Timer_MM_Delta				= 0;
 	{
-		u32 time_mm			= timeGetTime	();
+		unsigned int time_mm			= timeGetTime	();
 		while (timeGetTime()==time_mm);			// wait for next tick
-		u32 time_system		= timeGetTime	();
-		u32 time_local		= TimerAsync	();
+		unsigned int time_system		= timeGetTime	();
+		unsigned int time_local		= TimerAsync	();
 		Timer_MM_Delta		= time_system-time_local;
 	}
 
@@ -264,7 +264,7 @@ void CRenderDevice::Run			()
 
 				// Ensure, that second thread gets chance to execute anyway
 				if (dwFrame!=mt_Thread_marker)			{
-					for (u32 pit=0; pit<Device.seqParallel.size(); pit++)
+					for (unsigned int pit=0; pit<Device.seqParallel.size(); pit++)
 						Device.seqParallel[pit]			();
 					Device.seqParallel.clear_not_free	();
 					seqFrameMT.Process					(rp_Frame);
@@ -307,8 +307,8 @@ void CRenderDevice::FrameMove()
 
 //		unsigned __int64	qTime		= TimerGlobal.GetElapsed_clk();
 		fTimeGlobal		= TimerGlobal.GetElapsed_sec(); //float(qTime)*CPU::cycles2seconds;
-		u32	_old_global	= dwTimeGlobal;
-		dwTimeGlobal	= TimerGlobal.GetElapsed_ms	();	//u32((qTime*unsigned __int64(1000))/CPU::cycles_per_second);
+		unsigned int	_old_global	= dwTimeGlobal;
+		dwTimeGlobal	= TimerGlobal.GetElapsed_ms	();	//unsigned int((qTime*unsigned __int64(1000))/CPU::cycles_per_second);
 		dwTimeDelta		= dwTimeGlobal-_old_global;
 	}
 

@@ -4,7 +4,7 @@ using namespace std;
 
 CORE_API	smem_container* g_pSharedMemoryContainer = nullptr;
 
-smem_value* smem_container::dock(U32 dwCRC, U32 dwLength, void* ptr)
+smem_value* smem_container::dock(unsigned int dwCRC, unsigned int dwLength, void* ptr)
 {
 	VERIFY(dwCRC && dwLength && ptr);
 
@@ -12,7 +12,7 @@ smem_value* smem_container::dock(U32 dwCRC, U32 dwLength, void* ptr)
 	smem_value* result = 0;
 
 	// search a place to insert
-	unsigned char storage[4 * sizeof(U32)];
+	unsigned char storage[4 * sizeof(unsigned int)];
 	smem_value* value = (smem_value*) storage;
 	value->dwReference = 0;
 	value->dwCRC = dwCRC;
@@ -51,7 +51,7 @@ smem_value* smem_container::dock(U32 dwCRC, U32 dwLength, void* ptr)
 	// if not found - create new entry
 	if (0 == result)
 	{
-		result = (smem_value*) Memory.mem_alloc(4 * sizeof(U32) + dwLength);
+		result = (smem_value*) Memory.mem_alloc(4 * sizeof(unsigned int) + dwLength);
 		result->dwReference = 0;
 		result->dwCRC = dwCRC;
 		result->dwLength = dwLength;
@@ -101,7 +101,7 @@ void				smem_container::dump( )
 	cs.Leave( );
 }
 
-U32					smem_container::stat_economy( )
+unsigned int					smem_container::stat_economy( )
 {
 	cs.Enter( );
 	cdb::iterator	it = container.begin( );
@@ -119,7 +119,7 @@ U32					smem_container::stat_economy( )
 
 	cs.Leave( );
 
-	return U32(signed __int64(counter) / signed __int64(1024));
+	return unsigned int(signed __int64(counter) / signed __int64(1024));
 }
 
 smem_container::~smem_container( )

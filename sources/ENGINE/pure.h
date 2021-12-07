@@ -25,7 +25,7 @@ DECLARE_MESSAGE(DeviceReset);
 struct _REG_INFO {
 	void*	Object;
 	int		Prio;
-	u32		Flags;
+	unsigned int		Flags;
 };
 
 ENGINE_API extern int	__cdecl	_REG_Compare(const void *, const void *);
@@ -37,19 +37,19 @@ public:
 	xr_vector<_REG_INFO>	R;
 	// constructor
 	struct {
-		u32		in_process	:1;
-		u32		changed		:1;
+		unsigned int		in_process	:1;
+		unsigned int		changed		:1;
 	};
 	CRegistrator()			{ in_process=false; changed=false;}
 
 	//
-	void Add	(T *obj, int priority=REG_PRIORITY_NORMAL, u32 flags=0)
+	void Add	(T *obj, int priority=REG_PRIORITY_NORMAL, unsigned int flags=0)
 	{
 
 #ifdef DEBUG
 		VERIFY	(priority!=REG_PRIORITY_INVALID);
 		VERIFY	(obj);
-		for		(u32 i=0; i<R.size(); i++) VERIFY( !((R[i].Prio!=REG_PRIORITY_INVALID)&&(R[i].Object==(void*)obj))   );
+		for		(unsigned int i=0; i<R.size(); i++) VERIFY( !((R[i].Prio!=REG_PRIORITY_INVALID)&&(R[i].Object==(void*)obj))   );
 #endif // DEBUG
 
 		_REG_INFO			I;
@@ -63,7 +63,7 @@ public:
 	};
 	void Remove	(T *obj)
 	{
-		for (u32 i=0; i<R.size(); i++) {
+		for (unsigned int i=0; i<R.size(); i++) {
 			if (R[i].Object==obj) R[i].Prio = REG_PRIORITY_INVALID;
 		}
 		if(in_process)		changed=true;
@@ -75,7 +75,7 @@ public:
     	if (R.empty()) return;
 		if (R[0].Prio==REG_PRIORITY_CAPTURE)	f(R[0].Object);
 		else {
-			for (u32 i=0; i<R.size(); i++)
+			for (unsigned int i=0; i<R.size(); i++)
 				if(R[i].Prio!=REG_PRIORITY_INVALID)
 					f(R[i].Object);
 

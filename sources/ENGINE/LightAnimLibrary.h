@@ -5,13 +5,12 @@ class ENGINE_API CLAItem
 public:
 	CSharedString		cName;
 	float			fFPS;
-//	DEFINE_MAP(int, u32, KeyMap, KeyPairIt);
-	using KeyMap = xr_map<int, u32>;
+//	DEFINE_MAP(int, unsigned int, KeyMap, KeyPairIt);
+	using KeyMap = xr_map<int, unsigned int>;
 	using KeyPairIt = KeyMap::iterator;
 	KeyMap			Keys;
 	int				iFrameCount;
 
-public:
 					CLAItem( );
 
 	void			InitDefault( );
@@ -21,16 +20,16 @@ public:
 	{
 		return float(iFrameCount) / fFPS;
 	}
-	u32				Length_ms( )
+	unsigned int				Length_ms( )
 	{
 		return iFloor(Length_sec( ) * 1000.0f);
 	}
-	u32				InterpolateRGB(int frame);
-	u32				InterpolateBGR(int frame);
-	u32				CalculateRGB(float T, int& frame);
-	u32				CalculateBGR(float T, int& frame);
+	unsigned int				InterpolateRGB(int frame);
+	unsigned int				InterpolateBGR(int frame);
+	unsigned int				CalculateRGB(float T, int& frame);
+	unsigned int				CalculateBGR(float T, int& frame);
 	void			Resize(int new_len);
-	void			InsertKey(int frame, u32 color);
+	void			InsertKey(int frame, unsigned int color);
 	void			DeleteKey(int frame);
 	void			MoveKey(int from, int to);
 	bool			IsKey(int frame)
@@ -47,7 +46,7 @@ public:
 	{
 		return Keys.rbegin( )->first;
 	}
-	u32*			GetKey(int frame)
+	unsigned int*			GetKey(int frame)
 	{
 		KeyPairIt it = Keys.find(frame);
 		return (it != Keys.end( )) ? &(it->second) : 0;

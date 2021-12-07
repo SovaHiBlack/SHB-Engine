@@ -39,7 +39,7 @@ inline int		btwLowestBitMask(int v)
 {
 	return (v & -v);
 }
-inline U32		btwLowestBitMask(U32 x)
+inline unsigned int		btwLowestBitMask(unsigned int x)
 {
 	return x & ~(x - 1);
 }
@@ -50,7 +50,7 @@ inline bool	btwIsPow2(int v)
 {
 	return (btwLowestBitMask(v) == v);
 }
-inline bool	btwIsPow2(U32 v)
+inline bool	btwIsPow2(unsigned int v)
 {
 	return (btwLowestBitMask(v) == v);
 }
@@ -61,10 +61,14 @@ inline int		btwPow2_Ceil(int v)
 	while (i < v) i <<= 1;
 	return i;
 }
-inline U32		btwPow2_Ceil(U32 v)
+inline unsigned int		btwPow2_Ceil(unsigned int v)
 {
-	U32 i = btwLowestBitMask(v);
-	while (i < v) i <<= 1;
+	unsigned int i = btwLowestBitMask(v);
+	while (i < v)
+	{
+		i <<= 1;
+	}
+
 	return i;
 }
 
@@ -78,10 +82,10 @@ inline unsigned char		btwCount1(unsigned char v)
 }
 
 //same for 32bit 
-inline	U32	btwCount1(U32 v)
+inline	unsigned int	btwCount1(unsigned int v)
 {
-	const U32 g31 = 0x49249249ul;	// = 0100_1001_0010_0100_1001_0010_0100_1001
-	const U32 g32 = 0x381c0e07ul;	// = 0011_1000_0001_1100_0000_1110_0000_0111
+	const unsigned int g31 = 0x49249249ul;	// = 0100_1001_0010_0100_1001_0010_0100_1001
+	const unsigned int g32 = 0x381c0e07ul;	// = 0011_1000_0001_1100_0000_1110_0000_0111
 	v = (v & g31) + ((v >> 1) & g31) + ((v >> 2) & g31);
 	v = ((v + (v >> 3)) & g32) + ((v >> 6) & g32);
 	return (v + (v >> 9) + (v >> 18) + (v >> 27)) & 0x3f;
@@ -89,14 +93,14 @@ inline	U32	btwCount1(U32 v)
 
 inline	unsigned __int64	btwCount1(unsigned __int64 v)
 {
-	return btwCount1(U32(v & U32(-1))) + btwCount1(U32(v >> unsigned __int64(32)));
+	return btwCount1(unsigned int(v & unsigned int(-1))) + btwCount1(unsigned int(v >> unsigned __int64(32)));
 }
 
 __forceinline int iFloor(float x)
 {
 	int a = *(const int*) (&x);
 	int exponent = (127 + 31) - ((a >> 23) & 0xFF);
-	int r = (((U32) (a) << 8) | (1U << 31)) >> exponent;
+	int r = (((unsigned int) (a) << 8) | (1U << 31)) >> exponent;
 	exponent += 31 - 127;
 	{
 		int imask = (!(((((1 << (exponent))) - 1) >> 8) & a));
@@ -115,9 +119,9 @@ __forceinline int iFloor(float x)
 */
 __forceinline int iCeil(float x)
 {
-	int a = (*(const int*) (&x));
+	int a = *(const int*) (&x);
 	int exponent = (127 + 31) - ((a >> 23) & 0xFF);
-	int r = (((U32) (a) << 8) | (1U << 31)) >> exponent;
+	int r = (((unsigned int) (a) << 8) | (1U << 31)) >> exponent;
 	exponent += 31 - 127;
 	{
 		int imask = (!(((((1 << (exponent))) - 1) >> 8) & a));

@@ -9,8 +9,8 @@ void CHWCaps::Update()
 	HW.pDevice->GetDeviceCaps	(&caps);
 
 	// ***************** GEOMETRY
-	geometry_major				= unsigned short( (u32(caps.VertexShaderVersion)&(0xf << 8ul))>>8 );
-	geometry_minor				= unsigned short( (u32(caps.VertexShaderVersion)&0xf) );
+	geometry_major				= unsigned short( (unsigned int(caps.VertexShaderVersion)&(0xf << 8ul))>>8 );
+	geometry_minor				= unsigned short( (unsigned int(caps.VertexShaderVersion)&0xf) );
 	geometry.bSoftware			= (caps.DevCaps & D3DDEVCAPS_HWTRANSFORMANDLIGHT)==0;
 	geometry.bPointSprites		= FALSE;
 	geometry.bNPatches			= (caps.DevCaps & D3DDEVCAPS_NPATCHES)!=0;
@@ -22,8 +22,8 @@ void CHWCaps::Update()
 	geometry.bVTF				= (geometry_major>=3) && HW.support(D3DFMT_R32F,D3DRTYPE_TEXTURE,D3DUSAGE_QUERY_VERTEXTEXTURE);
 
 	// ***************** PIXEL processing
-	raster_major				= unsigned short( u32(u32(caps.PixelShaderVersion)&u32(0xf << 8ul))>>8 );
-	raster_minor				= unsigned short( u32(u32(caps.PixelShaderVersion)&u32(0xf)) );
+	raster_major				= unsigned short(unsigned int(unsigned int(caps.PixelShaderVersion)& unsigned int(0xf << 8ul))>>8 );
+	raster_minor				= unsigned short(unsigned int(unsigned int(caps.PixelShaderVersion)& unsigned int(0xf)) );
 	raster.dwStages				= caps.MaxSimultaneousTextures;
 	raster.bNonPow2				= ((caps.TextureCaps & D3DPTEXTURECAPS_NONPOW2CONDITIONAL)!=0)  || ((caps.TextureCaps & D3DPTEXTURECAPS_POW2)==0);
 	raster.bCubemap				= (caps.TextureCaps & D3DPTEXTURECAPS_CUBEMAP)!=0;
@@ -53,7 +53,7 @@ void CHWCaps::Update()
 		if (1==vc.OptMethod	)	geometry.dwVertexCache	= vc.CacheSize;
 		else					geometry.dwVertexCache	= 16;
 	}
-	Msg					("* GPU vertex cache: %s, %d",(1==vc.OptMethod)?"recognized":"unrecognized",u32(geometry.dwVertexCache));
+	Msg					("* GPU vertex cache: %s, %d",(1==vc.OptMethod)?"recognized":"unrecognized", unsigned int(geometry.dwVertexCache));
 
 	// *******1********** Compatibility : vertex shader
 	if (0==raster_major)		geometry_major=0;		// Disable VS if no PS
@@ -82,7 +82,7 @@ void CHWCaps::Update()
 	else												bScissor	= FALSE;
 
 	// Stencil relative caps
-	u32 dwStencilCaps = caps.StencilCaps;
+	unsigned int dwStencilCaps = caps.StencilCaps;
 	if( (!(dwStencilCaps & D3DSTENCILCAPS_INCR) && !(dwStencilCaps & D3DSTENCILCAPS_INCRSAT))
 	   ||(!(dwStencilCaps & D3DSTENCILCAPS_DECR) && !(dwStencilCaps & D3DSTENCILCAPS_DECRSAT)))
 	{

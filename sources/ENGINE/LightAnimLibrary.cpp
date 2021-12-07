@@ -60,7 +60,7 @@ void CLAItem::Save(IWriter& F)
 	F.close_chunk( );
 }
 
-void CLAItem::InsertKey(int frame, u32 color)
+void CLAItem::InsertKey(int frame, unsigned int color)
 {
 	R_ASSERT(frame <= iFrameCount);
 	Keys[frame] = color;
@@ -106,7 +106,7 @@ void CLAItem::Resize(int new_len)
 	}
 }
 
-u32 CLAItem::InterpolateRGB(int frame)
+unsigned int CLAItem::InterpolateRGB(int frame)
 {
 	R_ASSERT(frame <= iFrameCount);
 
@@ -140,19 +140,19 @@ u32 CLAItem::InterpolateRGB(int frame)
 	return c.get( );
 }
 
-u32 CLAItem::InterpolateBGR(int frame)
+unsigned int CLAItem::InterpolateBGR(int frame)
 {
-	u32 c = InterpolateRGB(frame);
+	unsigned int c = InterpolateRGB(frame);
 	return color_rgba(color_get_B(c), color_get_G(c), color_get_R(c), color_get_A(c));
 }
 
-u32 CLAItem::CalculateRGB(float T, int& frame)
+unsigned int CLAItem::CalculateRGB(float T, int& frame)
 {
 	frame = iFloor(fmodf(T, float(iFrameCount) / fFPS) * fFPS);
 	return InterpolateRGB(frame);
 }
 
-u32 CLAItem::CalculateBGR(float T, int& frame)
+unsigned int CLAItem::CalculateBGR(float T, int& frame)
 {
 	frame = iFloor(fmodf(T, float(iFrameCount) / fFPS) * fFPS);
 	return InterpolateBGR(frame);

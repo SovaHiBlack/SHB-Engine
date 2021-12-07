@@ -8,7 +8,7 @@ struct STextureParams{
 		ttBumpMap,
 		ttNormalMap,
 		ttTerrain,
-		ttForceU32	= u32(-1)
+		ttForceU32	= unsigned int(-1)
 	};
 	enum ETFormat{
 		tfDXT1 = 0,
@@ -25,20 +25,20 @@ struct STextureParams{
 		tfA8,
 		tfL8,
 		tfA8L8,
-		tfForceU32	= u32(-1)
+		tfForceU32	= unsigned int(-1)
 	};
 	enum ETBumpMode{
 		tbmResereved	= 0,
 		tbmNone,
 		tbmUse,
-		tbmForceU32	= u32(-1)
+		tbmForceU32	= unsigned int(-1)
 	};
 	enum ETMaterial{
 		tmOrenNayar_Blin	= 0,
 		tmBlin_Phong, 
 		tmPhong_Metal,
 		tmMetal_OrenNayar,
-		tmForceU32			= u32(-1)
+		tmForceU32			= unsigned int(-1)
 	};
 	enum{
 		kMIPFilterAdvanced			= 5,
@@ -78,17 +78,17 @@ struct STextureParams{
 		flHasAlpha			= (1<<25),
 		flBumpDetail		= (1<<26),
 
-		flForceU32			= u32(-1)
+		flForceU32			= unsigned int(-1)
 	};
 
 	// texture part
 	ETFormat	        fmt;
 	Flags32		        flags;
-	u32			        border_color;
-	u32			        fade_color;
-	u32			        fade_amount;
+	unsigned int			        border_color;
+	unsigned int			        fade_color;
+	unsigned int			        fade_amount;
 	unsigned char					fade_delay;
-	u32			        mip_filter;
+	unsigned int			        mip_filter;
 	int			        width;
 	int			        height;
 	// detail ext

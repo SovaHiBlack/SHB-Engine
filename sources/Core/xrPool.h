@@ -33,12 +33,17 @@ public:
 	}
 	~poolSS( )
 	{
-		for (U32 b = 0; b < blocks.size( ); b++)
+		for (unsigned int b = 0; b < blocks.size( ); b++)
+		{
 			xr_free(blocks[b]);
+		}
 	}
 	T* create( )
 	{
-		if (0 == list)	block_create( );
+		if (0 == list)
+		{
+			block_create( );
+		}
 
 		T* E = list;
 		list = *access(list);
@@ -54,8 +59,11 @@ public:
 	void				clear( )
 	{
 		list = 0;
-		for (U32 b = 0; b < blocks.size( ); b++)
+		for (unsigned int b = 0; b < blocks.size( ); b++)
+		{
 			xr_free(blocks[b]);
+		}
+
 		blocks.clear( );
 	}
 };

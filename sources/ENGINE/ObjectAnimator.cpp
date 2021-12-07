@@ -53,8 +53,8 @@ void CObjectAnimator::LoadMotions(const char* fname)
 			else				FATAL("ERROR: Can't load motion. Incorrect file version.");
 		}else if (0==xr_strcmp(ext,".anms")){
 			IReader* F			= FS.r_open(full_path);
-			u32 dwMCnt			= F->r_u32(); VERIFY(dwMCnt);
-			for (u32 i=0; i<dwMCnt; i++){
+			unsigned int dwMCnt			= F->r_u32(); VERIFY(dwMCnt);
+			for (unsigned int i=0; i<dwMCnt; i++){
 				COMotion* M		= xr_new<COMotion> ();
 				bool bRes		= M->Load(*F);
 				if (!bRes)		FATAL("ERROR: Can't load motion. Incorrect file version.");

@@ -10,14 +10,18 @@ CEnvelope::~CEnvelope( )
 CEnvelope::CEnvelope(CEnvelope* source)
 {
 	*this = *source;
-	for (U32 i = 0; i < source->keys.size( ); i++)
+	for (unsigned int i = 0; i < source->keys.size( ); i++)
+	{
 		keys[i] = xr_new<st_Key>(*source->keys[i]);
+	}
 }
 
 void CEnvelope::Clear( )
 {
 	for (KeyIt k_it = keys.begin( ); k_it != keys.end( ); k_it++)
+	{
 		xr_delete(*k_it);
+	}
 }
 
 void CEnvelope::FindNearestKey(float t, KeyIt& min_k, KeyIt& max_k, float eps)
@@ -30,6 +34,7 @@ void CEnvelope::FindNearestKey(float t, KeyIt& min_k, KeyIt& max_k, float eps)
 			min_k = (k_it == keys.begin( )) ? k_it : k_it - 1;
 			return;
 		}
+
 		if ((*k_it)->time > t)
 		{
 			max_k = k_it;
@@ -37,6 +42,7 @@ void CEnvelope::FindNearestKey(float t, KeyIt& min_k, KeyIt& max_k, float eps)
 			return;
 		}
 	}
+
 	min_k = keys.empty( ) ? keys.end( ) : keys.end( ) - 1;
 	max_k = keys.end( );
 }
@@ -107,6 +113,7 @@ BOOL CEnvelope::ScaleKeys(float from_time, float to_time, float scale_factor, fl
 		KeyIt k0;
 		FindNearestKey(from_time, k0, min_k, eps);
 	}
+
 	KeyIt max_k = FindKey(to_time, eps);
 	if (max_k == keys.end( ))
 	{
@@ -176,7 +183,7 @@ float CEnvelope::GetLength(float* mn, float* mx)
 
 void CEnvelope::RotateKeys(float angle)
 {
-	for (U32 i = 0; i < keys.size( ); i++)
+	for (unsigned int i = 0; i < keys.size( ); i++)
 	{
 		keys[i]->value += angle;
 	}
@@ -205,7 +212,7 @@ void CEnvelope::Load_1(IReader& F)
 	F.r(behavior, sizeof(int) * 2);
 	int y = F.r_u32( );
 	keys.resize(y);
-	for (U32 i = 0; i < keys.size( ); i++)
+	for (unsigned int i = 0; i < keys.size( ); i++)
 	{
 		keys[i] = xr_new<st_Key>( );
 		keys[i]->Load_1(F);
@@ -218,7 +225,7 @@ void CEnvelope::Load_2(IReader& F)
 	behavior[0] = F.r_u8( );
 	behavior[1] = F.r_u8( );
 	keys.resize(F.r_u16( ));
-	for (U32 i = 0; i < keys.size( ); i++)
+	for (unsigned int i = 0; i < keys.size( ); i++)
 	{
 		keys[i] = xr_new<st_Key>( );
 		keys[i]->Load_2(F);
@@ -239,7 +246,7 @@ void CEnvelope::LoadA(IReader& F)
 		F.r_string(buf, sizeof(buf));
 		int nkeys = atoi(buf);
 		keys.resize(nkeys);
-		for (U32 i = 0; i < keys.size( ); i++)
+		for (unsigned int i = 0; i < keys.size( ); i++)
 		{
 			keys[i] = xr_new<st_Key>( );
 			st_Key& K = *keys[i];

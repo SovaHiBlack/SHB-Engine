@@ -18,14 +18,14 @@ struct	ENGINE_API				IRender_Mesh
 
 	// verts
 	IDirect3DVertexBuffer9* p_rm_Vertices;
-	u32							vBase;
-	u32							vCount;
+	unsigned int							vBase;
+	unsigned int							vCount;
 
 	// indices
 	IDirect3DIndexBuffer9* p_rm_Indices;
-	u32							iBase;
-	u32							iCount;
-	u32							dwPrimitives;
+	unsigned int							iBase;
+	unsigned int							iCount;
+	unsigned int							dwPrimitives;
 
 	IRender_Mesh( )
 	{
@@ -49,13 +49,13 @@ public:
 
 public:
 	// Common data for rendering
-	u32							Type;				// visual's type
+	unsigned int							Type;				// visual's type
 	vis_data					vis;				// visibility-data
 	ref_shader					shader;				// pipe state, shared
 
 	virtual void				Render(float LOD)
 	{ }		// LOD - Level Of Detail  [0..1], Ignored
-	virtual void				Load(const char* N, IReader* data, u32 dwFlags);
+	virtual void				Load(const char* N, IReader* data, unsigned int dwFlags);
 	virtual void				Release( );						// Shared memory release
 	virtual void				Copy(IRender_Visual* from);
 	virtual void				Spawn( )

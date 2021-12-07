@@ -16,7 +16,7 @@ void CRenderDevice::_SetupStates( )
 	vCameraRight.set(1, 0, 0);
 
 	HW.Caps.Update( );
-	for (U32 i = 0; i < HW.Caps.raster.dwStages; i++)
+	for (unsigned int i = 0; i < HW.Caps.raster.dwStages; i++)
 	{
 		float fBias = -0.5f;
 		CHK_DX(HW.pDevice->SetSamplerState(i, D3DSAMP_MAXANISOTROPY, 4));

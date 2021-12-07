@@ -1,15 +1,15 @@
 #pragma once
 
 // maps unsigned 8 bits/channel to D3DCOLOR
-__forceinline U32			color_argb(U32 a, U32 r, U32 g, U32 b)
+__forceinline unsigned int			color_argb(unsigned int a, unsigned int r, unsigned int g, unsigned int b)
 {
 	return ((a & 0xff) << 24) | ((r & 0xff) << 16) | ((g & 0xff) << 8) | (b & 0xff);
 }
-__forceinline U32			color_rgba(U32 r, U32 g, U32 b, U32 a)
+__forceinline unsigned int			color_rgba(unsigned int r, unsigned int g, unsigned int b, unsigned int a)
 {
 	return color_argb(a, r, g, b);
 }
-__forceinline U32			color_argb_f(float a, float r, float g, float b)
+__forceinline unsigned int			color_argb_f(float a, float r, float g, float b)
 {
 	int _r = clampr(iFloor(r * 255.0f), 0, 255);
 	int _g = clampr(iFloor(g * 255.0f), 0, 255);
@@ -17,39 +17,39 @@ __forceinline U32			color_argb_f(float a, float r, float g, float b)
 	int _a = clampr(iFloor(a * 255.0f), 0, 255);
 	return color_argb(_a, _r, _g, _b);
 }
-__forceinline U32			color_rgba_f(float r, float g, float b, float a)
+__forceinline unsigned int			color_rgba_f(float r, float g, float b, float a)
 {
 	return color_argb_f(a, r, g, b);
 }
-__forceinline U32			color_xrgb(U32 r, U32 g, U32 b)
+__forceinline unsigned int			color_xrgb(unsigned int r, unsigned int g, unsigned int b)
 {
 	return color_argb(0xff, r, g, b);
 }
-__forceinline U32			color_get_R(U32 rgba)
+__forceinline unsigned int			color_get_R(unsigned int rgba)
 {
 	return (((rgba) >> 16) & 0xff);
 }
-__forceinline U32			color_get_G(U32 rgba)
+__forceinline unsigned int			color_get_G(unsigned int rgba)
 {
 	return (((rgba) >> 8) & 0xff);
 }
-__forceinline U32			color_get_B(U32 rgba)
+__forceinline unsigned int			color_get_B(unsigned int rgba)
 {
 	return ((rgba) & 0xff);
 }
-__forceinline U32			color_get_A(U32 rgba)
+__forceinline unsigned int			color_get_A(unsigned int rgba)
 {
 	return ((rgba) >> 24);
 }
-__forceinline U32			subst_alpha(U32 rgba, U32 a)
+__forceinline unsigned int			subst_alpha(unsigned int rgba, unsigned int a)
 {
 	return rgba & ~color_rgba(0, 0, 0, 0xff) | color_rgba(0, 0, 0, a);
 }
-__forceinline U32			bgr2rgb(U32 bgr)
+__forceinline unsigned int			bgr2rgb(unsigned int bgr)
 {
 	return color_rgba(color_get_B(bgr), color_get_G(bgr), color_get_R(bgr), 0);
 }
-__forceinline U32			rgb2bgr(U32 rgb)
+__forceinline unsigned int			rgb2bgr(unsigned int rgb)
 {
 	return bgr2rgb(rgb);
 }
@@ -68,7 +68,7 @@ public:
 	TYPE										b;
 	TYPE										a;
 
-	__forceinline SelfRef	set(U32 dw)
+	__forceinline SelfRef	set(unsigned int dw)
 	{
 		const TYPE f = TYPE(1.0) / TYPE(255.0);
 		a = f * TYPE((dw >> 24) & 0xff);
@@ -93,11 +93,11 @@ public:
 		a = dw.a;
 		return *this;
 	}
-	__forceinline U32		get( ) const
+	__forceinline unsigned int		get( ) const
 	{
 		return color_rgba_f(r, g, b, a);
 	}
-	inline U32				get_windows( ) const
+	inline unsigned int				get_windows( ) const
 	{
 		unsigned char _a;
 		unsigned char _r;
@@ -107,9 +107,9 @@ public:
 		_r = (unsigned char) (r * 255.0f);
 		_g = (unsigned char) (g * 255.0f);
 		_b = (unsigned char) (b * 255.0f);
-		return ((U32) (_a << 24) | (_b << 16) | (_g << 8) | (_r));
+		return ((unsigned int) (_a << 24) | (_b << 16) | (_g << 8) | (_r));
 	}
-	inline SelfRef			set_windows(U32 dw)
+	inline SelfRef			set_windows(unsigned int dw)
 	{
 		const TYPE f = 1.0f / 255.0f;
 		a = f * (TYPE) (unsigned char) (dw >> 24);

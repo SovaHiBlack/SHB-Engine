@@ -17,7 +17,7 @@ enum EJointType
 	jtWheel,
 	jtNone,
 	jtSlider,
-	jtForceU32 = U32(-1)
+	jtForceU32 = unsigned int(-1)
 };
 
 struct SJointLimit

@@ -41,7 +41,7 @@ void CInfoDocument::net_Destroy( )
 	inherited::net_Destroy( );
 }
 
-void CInfoDocument::shedule_Update(U32 dt)
+void CInfoDocument::shedule_Update(unsigned int dt)
 {
 	inherited::shedule_Update(dt);
 }

@@ -24,7 +24,7 @@ dGeomID geom;
 dGeomID transform;
 //PHDynamicData* Childs;
 //xr_vector<PHDynamicData>  Childs;
-U32 numOfChilds;
+unsigned int numOfChilds;
 Fmatrix ZeroTransform;
 public:
 	inline void UpdateInterpolation(){
@@ -34,16 +34,16 @@ public:
 	void UpdateInterpolationRecursive()	;
 	void InterpolateTransform(Fmatrix& transform);
 	void InterpolateTransformVsParent(Fmatrix& transform);
-	PHDynamicData& operator [] (U32 i) {return Childs[i];};
+	PHDynamicData& operator [] (unsigned int i) {return Childs[i];};
 	void Destroy();
-	void Create(U32 numOfchilds,dBodyID Body);
+	void Create(unsigned int numOfchilds,dBodyID Body);
 	void CalculateData( );
-	PHDynamicData * GetChild(U32 ChildNum);
-	bool SetChild(U32 ChildNum, U32 numOfchilds,dBodyID body);
+	PHDynamicData * GetChild(unsigned int ChildNum);
+	bool SetChild(unsigned int ChildNum, unsigned int numOfchilds,dBodyID body);
 	void SetAsZero();
 	void SetAsZeroRecursive();
 	void SetZeroTransform(Fmatrix& aTransform);
-	PHDynamicData(U32 numOfchilds,dBodyID body);
+	PHDynamicData(unsigned int numOfchilds,dBodyID body);
 	PHDynamicData();
 	virtual ~PHDynamicData();
 	void GetWorldMX(Fmatrix& aTransform){

@@ -3,7 +3,7 @@
 
 #define DPNSEND_IMMEDIATELLY				0x0100
 
-inline u32 net_flags(BOOL bReliable = FALSE, BOOL bSequental = TRUE, BOOL bHighPriority = FALSE, BOOL bSendImmediatelly = FALSE)
+inline unsigned int net_flags(BOOL bReliable = FALSE, BOOL bSequental = TRUE, BOOL bHighPriority = FALSE, BOOL bSendImmediatelly = FALSE)
 {
 	return (bReliable ? DPNSEND_GUARANTEED : DPNSEND_NOCOMPLETE) |
 			(bSequental ? 0 : DPNSEND_NONSEQUENTIAL) |
@@ -13,8 +13,8 @@ inline u32 net_flags(BOOL bReliable = FALSE, BOOL bSequental = TRUE, BOOL bHighP
 
 struct MSYS_CONFIG
 {
-	u32			sign1;	// 0x12071980;
-	u32			sign2;	// 0x26111975;
+	unsigned int			sign1;	// 0x12071980;
+	unsigned int			sign2;	// 0x26111975;
 };
 
 #pragma pack(pop)

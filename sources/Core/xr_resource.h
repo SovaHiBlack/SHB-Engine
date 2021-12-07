@@ -9,7 +9,7 @@ public:
 		RF_REGISTERED = 1 << 0
 	};
 
-	U32				dwReference;
+	unsigned int				dwReference;
 	xr_resource( ) : dwReference(0)
 	{ }
 };
@@ -22,7 +22,7 @@ public:
 		RF_REGISTERED = 1 << 0
 	};
 
-	U32				dwFlags;
+	unsigned int				dwFlags;
 	xr_resource_flagged( ) : dwFlags(0)
 	{ }
 };

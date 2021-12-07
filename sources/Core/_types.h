@@ -4,10 +4,10 @@
 using S8 = signed char;				// s8.
 using U8 = unsigned char;			// u8.
 
-using S16 = signed short;			// s16
-using U16 = unsigned short;			// u16
+using S16 = signed short;			// s16.
+using U16 = unsigned short;			// u16.
 
-using S32 = signed int;				// s32
+using S32 = signed int;				// s32.
 using U32 = unsigned int;
 
 typedef unsigned int		u32;

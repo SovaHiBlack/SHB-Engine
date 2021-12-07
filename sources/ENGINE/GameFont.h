@@ -19,7 +19,7 @@ private:
 		float										x;
 		float										y;
 		float										height;
-		u32											c;
+		unsigned int											c;
 		EAligment									align;
 	};
 
@@ -28,7 +28,7 @@ protected:
 	Ivector2										vTS;
 
 	EAligment										eCurrentAlignment;
-	u32												dwCurrentColor;
+	unsigned int												dwCurrentColor;
 	float											fCurrentHeight;
 	float											fCurrentX;
 	float											fCurrentY;
@@ -44,9 +44,9 @@ protected:
 	ref_shader										pShader;
 	ref_geom										pGeom;
 
-	u32												nNumChars;
+	unsigned int												nNumChars;
 
-	u32												uFlags;
+	unsigned int												uFlags;
 
 public:
 	enum
@@ -56,7 +56,7 @@ public:
 		fsValid										= (1 << 2),
 		fsMultibyte									= (1 << 3),
 
-		fsForceDWORD								= u32(-1)
+		fsForceDWORD								= unsigned int(-1)
 	};
 
 protected:
@@ -66,13 +66,13 @@ protected:
 	}
 
 public:
-								CGameFont			(const char* section, u32 flags = 0);
-								CGameFont			(const char* shader, const char* texture, u32 flags = 0);
+								CGameFont			(const char* section, unsigned int flags = 0);
+								CGameFont			(const char* shader, const char* texture, unsigned int flags = 0);
 								~CGameFont			( );
 
 	void						Initialize			(const char* shader, const char* texture);
 
-	inline void					SetColor			(u32 C)
+	inline void					SetColor			(unsigned int C)
 	{
 		dwCurrentColor = C;
 	}
@@ -108,7 +108,7 @@ public:
 
 	void						MasterOut			(BOOL bCheckDevice, BOOL bUseCoords, BOOL bScaleCoords, BOOL bUseSkip, float _x, float _y, float _skip, const char* fmt, va_list p);
 
-	u32							smart_strlen		(const char* S);
+	unsigned int							smart_strlen		(const char* S);
 	BOOL						IsMultibyte			( )
 	{
 		return (uFlags & fsMultibyte);

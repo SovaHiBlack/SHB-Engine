@@ -216,7 +216,7 @@ void			ISpatial_DB::_insert	(ISpatial_NODE* N, Fvector3& n_C, float n_R)
 	{
 		// object can be pushed further down - select "octant", calc node position
 		Fvector3&	s_C					=	rt_insert_object->spatial.sphere.P;
-		u32			octant				=	_octant	(n_C,s_C);
+		unsigned int			octant				=	_octant	(n_C,s_C);
 		Fvector3		c_C;				c_C.mad	(n_C,c_spatial_offset[octant],c_R);
 		VERIFY			(octant == _octant(n_C,c_C));				// check table assosiations
 		ISpatial_NODE*	&chield			= N->children[octant];
@@ -286,7 +286,7 @@ void			ISpatial_DB::_remove	(ISpatial_NODE* N, ISpatial_NODE* N_sub)
 	if (0==N)							return;
 
 	//*** we are assured that node contains N_sub and this subnode is empty
-	u32 octant	= u32(-1);
+	unsigned int octant	= unsigned int(-1);
 	if (N_sub==N->children[0])			octant = 0;
 	else if (N_sub==N->children[1])		octant = 1;
 	else if (N_sub==N->children[2])		octant = 2;
@@ -324,7 +324,7 @@ void			ISpatial_DB::remove		(ISpatial* S)
 	cs.Leave			();
 }
 
-void			ISpatial_DB::update		(u32 nodes/* =8 */)
+void			ISpatial_DB::update		(unsigned int nodes/* =8 */)
 {
 
 #ifdef DEBUG

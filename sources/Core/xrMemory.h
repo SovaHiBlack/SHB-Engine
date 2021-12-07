@@ -13,27 +13,27 @@ public:
 		void* _p;
 		size_t 			_size;
 		const char* _name;
-		U32				_dummy;
+		unsigned int				_dummy;
 	};
 
 	xrMemory( );
 	void				_initialize(bool bDebug = false);
 	void				_destroy( );
 
-	U32					stat_calls;
+	unsigned int					stat_calls;
 	int					stat_counter;
 
 	void				dbg_register(void* _p, size_t _size, const char* _name);
 	void				dbg_unregister(void* _p);
 	void				dbg_check( );
 
-	U32					mem_usage(U32* pBlocksUsed = nullptr, U32* pBlocksFree = nullptr);
+	unsigned int					mem_usage(unsigned int* pBlocksUsed = nullptr, unsigned int* pBlocksFree = nullptr);
 	void				mem_compact( );
-	void				mem_counter_set(U32 _val)
+	void				mem_counter_set(unsigned int _val)
 	{
 		stat_counter = _val;
 	}
-	U32					mem_counter_get( )
+	unsigned int					mem_counter_get( )
 	{
 		return stat_counter;
 	}
@@ -61,7 +61,7 @@ extern CORE_API	xrMemory	Memory;
 
 // generic "C"-like allocations/deallocations
 template <class T>
-inline T* xr_alloc(U32 count)
+inline T* xr_alloc(unsigned int count)
 {
 	return  (T*) Memory.mem_alloc(count * sizeof(T));
 }
@@ -109,13 +109,13 @@ inline void		operator delete[ ] (void* p)
 }
 
 // POOL-ing
-const		U32			mem_pools_count = 54;
-const		U32			mem_pools_ebase = 16;
-const		U32			mem_generic = mem_pools_count + 1;
+const		unsigned int			mem_pools_count = 54;
+const		unsigned int			mem_pools_ebase = 16;
+const		unsigned int			mem_generic = mem_pools_count + 1;
 extern		MEMPOOL		mem_pools[mem_pools_count];
 extern		bool		mem_initialized;
 
 CORE_API void vminfo(size_t* _free, size_t* reserved, size_t* committed);
 CORE_API void log_vminfo( );
 
-CORE_API U32	mem_usage_impl(U32* pBlocksUsed, U32* pBlocksFree);
+CORE_API unsigned int	mem_usage_impl(unsigned int* pBlocksUsed, unsigned int* pBlocksFree);

@@ -106,5 +106,5 @@ public:
 
 typedef _flags<unsigned char>	Flags8;
 typedef _flags<unsigned short>	Flags16;
-typedef _flags<U32>	Flags32;
+typedef _flags<unsigned int>	Flags32;
 typedef _flags<unsigned __int64>	Flags64;

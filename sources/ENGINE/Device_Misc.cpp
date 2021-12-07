@@ -1,27 +1,30 @@
 #include "stdafx.h"
-#include "dxerr.h"
+
+#include <dxerr.h>
 
 // *****************************************************************************************
 // Error handling
 
 //----------------------------- FLAGS
-static struct _DF {
-	char *	name;
-	U32	mask;
-} DF[] = {
+static struct _DF
+{
+	char* name;
+	unsigned int	mask;
+} DF[ ] = {
 	{"rsFullscreen",	rsFullscreen	},
 	{"rsClearBB",		rsClearBB 		},
 	{"rsVSync",			rsVSync 		},
 	{"rsWireframe",		rsWireframe		},
-    {NULL,0}
+	{NULL,0}
 };
 
-void CRenderDevice::DumpFlags()
+void CRenderDevice::DumpFlags( )
 {
 	Log("- Dumping device flags");
-	_DF *p = DF;
-	while (p->name) {
-		Msg("* %20s %s",p->name,psDeviceFlags.test(p->mask)?"on":"off");
+	_DF* p = DF;
+	while (p->name)
+	{
+		Msg("* %20s %s", p->name, psDeviceFlags.test(p->mask) ? "on" : "off");
 		p++;
 	}
 }

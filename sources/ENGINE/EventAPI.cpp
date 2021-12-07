@@ -12,7 +12,7 @@ class ENGINE_API CEvent
 private:
 	char*							Name;
 	xr_vector<IEventReceiver*>		Handlers;
-	u32								dwRefCount;
+	unsigned int								dwRefCount;
 
 public:
 					CEvent			(const char* S);
@@ -22,7 +22,7 @@ public:
 	{
 		return Name;
 	}
-	u32				RefCount		( )
+	unsigned int				RefCount		( )
 	{
 		return dwRefCount;
 	}
@@ -49,7 +49,7 @@ public:
 	}
 	void			Signal			(unsigned __int64 P1, unsigned __int64 P2)
 	{
-		for (u32 I = 0; I < Handlers.size( ); I++)
+		for (unsigned int I = 0; I < Handlers.size( ); I++)
 		{
 			Handlers[I]->OnEvent(this, P1, P2);
 		}
@@ -76,7 +76,7 @@ inline bool ev_sort(CEvent* E1, CEvent* E2)
 void CEventAPI::Dump( )
 {
 	std::sort(Events.begin( ), Events.end( ), ev_sort);
-	for (u32 i = 0; i < Events.size( ); i++)
+	for (unsigned int i = 0; i < Events.size( ); i++)
 	{
 		Msg("* [%d] %s", Events[i]->RefCount( ), Events[i]->GetFull( ));
 	}
@@ -206,7 +206,7 @@ void CEventAPI::OnFrame( )
 		return;
 	}
 
-	for (u32 I = 0; I < Events_Deferred.size( ); I++)
+	for (unsigned int I = 0; I < Events_Deferred.size( ); I++)
 	{
 		Deferred& DEF = Events_Deferred[I];
 		Signal(DEF.E, DEF.P1, DEF.P2);
@@ -226,7 +226,7 @@ BOOL CEventAPI::Peek(const char* EName)
 		return FALSE;
 	}
 
-	for (u32 I = 0; I < Events_Deferred.size( ); I++)
+	for (unsigned int I = 0; I < Events_Deferred.size( ); I++)
 	{
 		Deferred& DEF = Events_Deferred[I];
 		if (stricmp(DEF.E->GetFull( ), EName) == 0)

@@ -9,7 +9,8 @@
 #pragma once
 
 template <>
-class CScriptCallbackEx<void> : public CScriptCallbackEx_<void> {
+class CScriptCallbackEx<void> : public CScriptCallbackEx_<void>
+{
 public:
 #	define	macros_return_operator
 #	undef	SCRIPT_CALLBACK_EX_GENERATORS

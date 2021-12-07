@@ -4,12 +4,12 @@
 
 #pragma pack(push, 1)
 
-const u32 NET_PacketSizeLimit		= 8192;
+const unsigned int NET_PacketSizeLimit		= 8192;
 
 struct NET_Buffer
 {
 	BYTE							data[NET_PacketSizeLimit];
-	u32								count;
+	unsigned int								count;
 };
 
 class CNetPacket
@@ -22,8 +22,8 @@ public:
 	}
 
 	NET_Buffer						B;
-	u32								r_pos;
-	u32								timeReceive;
+	unsigned int								r_pos;
+	unsigned int								timeReceive;
 
 	// writing - main
 	inline void		write_start		( )
@@ -35,7 +35,7 @@ public:
 		B.count = 0;
 		w_u16(type);
 	}
-	inline void		w				(const void* p, u32 count)
+	inline void		w				(const void* p, unsigned int count)
 	{
 		VERIFY(p && count);
 		VERIFY(B.count + count < NET_PacketSizeLimit);
@@ -43,12 +43,12 @@ public:
 		B.count += count;
 		VERIFY(B.count < NET_PacketSizeLimit);
 	}
-	inline void		w_seek			(u32 pos, const void* p, u32 count)	// random write (only inside allocated region)
+	inline void		w_seek			(unsigned int pos, const void* p, unsigned int count)	// random write (only inside allocated region)
 	{
 		VERIFY(p && count && (pos + count <= B.count));
 		CopyMemory(&B.data[pos], p, count);
 	}
-	inline u32		w_tell			( )
+	inline unsigned int		w_tell			( )
 	{
 		return B.count;
 	}
@@ -74,7 +74,7 @@ public:
 	{
 		w(&a, 8);
 	}
-	inline void		w_u32			(u32 a)
+	inline void		w_u32			(unsigned int a)
 	{
 		w(&a, 4);
 	}
@@ -82,7 +82,7 @@ public:
 	{
 		w(&a, 4);
 	}
-	inline void		w_u24			(u32 a)
+	inline void		w_u24			(unsigned int a)
 	{
 		w(&a, 3);
 	}
@@ -148,13 +148,13 @@ public:
 
 	inline void		w_stringZ		(const char* S)
 	{
-		w(S, (u32) xr_strlen(S) + 1);
+		w(S, (unsigned int) xr_strlen(S) + 1);
 	}
 	inline void		w_stringZ		(CSharedString& p)
 	{
 		if (*p)
 		{
-			w(*p, ( u32) xr_strlen(p) + 1);
+			w(*p, (unsigned int) xr_strlen(p) + 1);
 		}
 		else
 		{
@@ -174,27 +174,27 @@ public:
 		w_u32(C.value( ));
 	}
 
-	inline void		w_chunk_open8	(u32& position)
+	inline void		w_chunk_open8	(unsigned int& position)
 	{
 		position = w_tell( );
 		w_u8(0);
 	}
-	inline void		w_chunk_close8	(u32 position)
+	inline void		w_chunk_close8	(unsigned int position)
 	{
-		u32 size = u32(w_tell( ) - position) - sizeof(unsigned char);
+		unsigned int size = unsigned int(w_tell( ) - position) - sizeof(unsigned char);
 		VERIFY(size < 256);
 		unsigned char _size = (unsigned char) size;
 		w_seek(position, &_size, sizeof(_size));
 	}
 
-	inline void		w_chunk_open16	(u32& position)
+	inline void		w_chunk_open16	(unsigned int& position)
 	{
 		position = w_tell( );
 		w_u16(0);
 	}
-	inline void		w_chunk_close16	(u32 position)
+	inline void		w_chunk_close16	(unsigned int position)
 	{
-		u32 size = u32(w_tell( ) - position) - sizeof(unsigned short);
+		unsigned int size = unsigned int(w_tell( ) - position) - sizeof(unsigned short);
 		VERIFY(size < 65536);
 		unsigned short _size = (unsigned short) size;
 		w_seek(position, &_size, sizeof(_size));
@@ -206,24 +206,24 @@ public:
 		r_pos = 0;
 	}
 
-	inline u32		r_begin			(unsigned short& type)	// returns time of receiving
+	inline unsigned int		r_begin			(unsigned short& type)	// returns time of receiving
 	{
 		r_pos = 0;
 		r_u16(type);
 		return timeReceive;
 	}
 
-	inline void		r_seek			(u32 pos)
+	inline void		r_seek			(unsigned int pos)
 	{
 		VERIFY(pos < B.count);
 		r_pos = pos;
 	}
-	inline u32		r_tell			( )
+	inline unsigned int		r_tell			( )
 	{
 		return r_pos;
 	}
 
-	inline void		r				(void* p, u32 count)
+	inline void		r				(void* p, unsigned int count)
 	{
 		VERIFY(p && count);
 		CopyMemory(p, &B.data[r_pos], count);
@@ -234,11 +234,11 @@ public:
 	{
 		return r_pos >= B.count;
 	}
-	inline u32		r_elapsed		( )
+	inline unsigned int		r_elapsed		( )
 	{
 		return B.count - r_pos;
 	}
-	inline void		r_advance		(u32 size)
+	inline void		r_advance		(unsigned int size)
 	{
 		r_pos += size;
 		VERIFY(r_pos <= B.count);
@@ -265,7 +265,7 @@ public:
 	{
 		r(&A, 8);
 	}
-	inline void		r_u32			(u32& A)
+	inline void		r_u32			(unsigned int& A)
 	{
 		r(&A, 4);
 	}
@@ -273,7 +273,7 @@ public:
 	{
 		r(&A, 4);
 	}
-	inline void		r_u24			(u32& A)
+	inline void		r_u24			(unsigned int& A)
 	{
 		A = 0;		//???
 		r(&A, 3);
@@ -338,9 +338,9 @@ public:
 		r(&A, 8);
 		return A;
 	}
-	inline u32		r_u32			( )
+	inline unsigned int		r_u32			( )
 	{
-		u32 A;
+		unsigned int A;
 		r(&A, 4);
 		return A;
 	}
@@ -350,9 +350,9 @@ public:
 		r(&A, 4);
 		return A;
 	}
-	inline u32		r_u24			( )
+	inline unsigned int		r_u24			( )
 	{
-		u32 A = 0;		//???
+		unsigned int A = 0;		//???
 		r(&A, 3);
 		return A;
 	}
@@ -424,16 +424,16 @@ public:
 	{
 		const char* data = ( const char*) (&B.data[r_pos]);
 		size_t len = xr_strlen(data);
-		r(S, ( u32) len + 1);
+		r(S, (unsigned int) len + 1);
 	}
 	inline void		r_stringZ		(xr_string& dest)
 	{
-		dest = ( const char*) (&B.data[r_pos]);
-		r_advance(u32(dest.size( ) + 1));
+		dest = (const char*) (&B.data[r_pos]);
+		r_advance(unsigned int(dest.size( ) + 1));
 	}
 	void			r_stringZ		(CSharedString& dest)
 	{
-		dest = ( const char*) (&B.data[r_pos]);
+		dest = (const char*) (&B.data[r_pos]);
 		r_advance(dest.size( ) + 1);
 	}
 
@@ -450,7 +450,7 @@ public:
 	}
 	inline void		r_clientID		(CClientID& C)
 	{
-		u32 tmp;
+		unsigned int tmp;
 		r_u32(tmp);
 		C.set(tmp);
 	}

@@ -47,9 +47,9 @@ public:
 	void							net_Register					(CObject* O);
 	void							net_Unregister					(CObject* O);
 
-	u32								net_Export						(CNetPacket* P, u32 _start, u32 _count);	// return next start
+	unsigned int								net_Export						(CNetPacket* P, unsigned int _start, unsigned int _count);	// return next start
 	void							net_Import						(CNetPacket* P);
-	CObject*						net_Find						(u32 ID);
+	CObject*						net_Find						(unsigned int ID);
 
 	void							o_crow							(CObject* O)
 	{
@@ -59,11 +59,11 @@ public:
 	void							o_remove						(xr_vector<CObject*>& v, CObject* O);
 	void							o_activate						(CObject* O);
 	void							o_sleep							(CObject* O);
-	inline u32						o_count							( )
+	inline unsigned int						o_count							( )
 	{
 		return objects_active.size( ) + objects_sleeping.size( );
 	}
-	inline CObject*					o_get_by_iterator				(u32 _it)
+	inline CObject*					o_get_by_iterator				(unsigned int _it)
 	{
 		if (_it < objects_active.size( ))
 		{
@@ -84,7 +84,7 @@ public:
 
 private:
 	// data
-	xr_map<u32, CObject*>											map_NETID;
+	xr_map<unsigned int, CObject*>											map_NETID;
 	xr_vector<CObject*>												destroy_queue;
 	xr_vector<CObject*>												objects_active;
 	xr_vector<CObject*>												objects_sleeping;
@@ -94,5 +94,5 @@ private:
 	xr_vector<CObject*>*											crows;
 
 	CObject**														objects_dup;
-	u32																objects_dup_memsz;
+	unsigned int																objects_dup_memsz;
 };

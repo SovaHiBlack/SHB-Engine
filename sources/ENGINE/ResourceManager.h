@@ -104,7 +104,7 @@ public:
 	void							_ParseList				(sh_list& dest, const char* names);
 	IBlender*						_GetBlender				(const char* Name);
 	IBlender* 						_FindBlender			(const char* Name);
-	void							_GetMemoryUsage			(u32& m_base, u32& c_base, u32& m_lmaps, u32& c_lmaps);
+	void							_GetMemoryUsage			(unsigned int& m_base, unsigned int& c_base, unsigned int& m_lmaps, unsigned int& c_lmaps);
 	void							_DumpMemoryUsage		( );
 
 	map_Blender&					_GetBlenders			( )		{	return m_blenders;	}
@@ -131,10 +131,10 @@ public:
 	R_constant_table*				_CreateConstantTable	(R_constant_table& C);
 	void							_DeleteConstantTable	(const R_constant_table* C);
 
-	CRT*							_CreateRT				(const char* Name, u32 w, u32 h,	D3DFORMAT f);
+	CRT*							_CreateRT				(const char* Name, unsigned int w, unsigned int h,	D3DFORMAT f);
 	void							_DeleteRT				(const CRT*	RT	);
 
-	CRTC*							_CreateRTC				(const char* Name, u32 size,	D3DFORMAT f);
+	CRTC*							_CreateRTC				(const char* Name, unsigned int size,	D3DFORMAT f);
 	void							_DeleteRTC				(const CRTC*	RT	);
 
 	SPS*							_CreatePS				(const char* Name);
@@ -187,7 +187,7 @@ public:
 	void							RegisterConstantSetup		(const char* name,		R_constant_setup* s)	{	v_constant_setup.push_back(mk_pair(CSharedString(name),s));	}
 
 	SGeometry*						CreateGeom					(D3DVERTEXELEMENT9* decl, IDirect3DVertexBuffer9* vb, IDirect3DIndexBuffer9* ib);
-	SGeometry*						CreateGeom					(u32 FVF				, IDirect3DVertexBuffer9* vb, IDirect3DIndexBuffer9* ib);
+	SGeometry*						CreateGeom					(unsigned int FVF				, IDirect3DVertexBuffer9* vb, IDirect3DIndexBuffer9* ib);
 	void							DeleteGeom					(const SGeometry* VS		);
 	void							DeferredLoad				(BOOL E)					{ bDeferredLoad=E;	}
 	void							DeferredUpload				( );

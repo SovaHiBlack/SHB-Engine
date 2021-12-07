@@ -453,7 +453,7 @@ void CLocatorAPI::ProcessOne(const char* path, const _finddata_t& F)
 		}
 
 		strcat(N, "\\");
-		Register(N, 0xffffffff, 0, 0, F.size, F.size, (U32) F.time_write);
+		Register(N, 0xffffffff, 0, 0, F.size, F.size, (unsigned int) F.time_write);
 		Recurse(N);
 	}
 	else
@@ -464,7 +464,7 @@ void CLocatorAPI::ProcessOne(const char* path, const _finddata_t& F)
 		}
 		else
 		{
-			Register(N, 0xffffffff, 0, 0, F.size, F.size, (U32) F.time_write);
+			Register(N, 0xffffffff, 0, 0, F.size, F.size, (unsigned int) F.time_write);
 		}
 	}
 }
@@ -575,7 +575,7 @@ bool CLocatorAPI::Recurse(const char* path)
 	return true;
 }
 
-void CLocatorAPI::_initialize(U32 flags, const char* target_folder, const char* fs_name)
+void CLocatorAPI::_initialize(unsigned int flags, const char* target_folder, const char* fs_name)
 {
 	char _delimiter = '|'; //','
 	if (m_Flags.is(flReady))
@@ -586,7 +586,7 @@ void CLocatorAPI::_initialize(U32 flags, const char* target_folder, const char* 
 	CTimer t;
 	t.Start( );
 	Log("Initializing File System...");
-	U32	M1 = Memory.mem_usage( );
+	unsigned int M1 = Memory.mem_usage( );
 
 	m_Flags.set(flags, TRUE);
 
@@ -712,7 +712,7 @@ void CLocatorAPI::_initialize(U32 flags, const char* target_folder, const char* 
 			_GetItem(buf, 1, temp, '=');
 			int cnt = _GetItemCount(temp, _delimiter);
 			R_ASSERT2(cnt >= 3, temp);
-			U32 fl = 0;
+			unsigned int fl = 0;
 			_GetItem(temp, 0, b_v, _delimiter);
 
 			if (CConfigurationFile::IsBOOL(b_v))
@@ -758,7 +758,7 @@ void CLocatorAPI::_initialize(U32 flags, const char* target_folder, const char* 
 
 	ProcessExternalArch( );
 
-	U32	M2 = Memory.mem_usage( );
+	unsigned int M2 = Memory.mem_usage( );
 	Msg("FS: %d files cached, %dKb memory used.", files.size( ), (M2 - M1) / 1024);
 
 	m_Flags.set(flReady, TRUE);
@@ -845,7 +845,7 @@ const CLocatorAPI::file* CLocatorAPI::exist(string_path& fn, const char* path, c
 	return			exist(fn);
 }
 
-xr_vector<char*>* CLocatorAPI::file_list_open(const char* initial, const char* folder, U32 flags)
+xr_vector<char*>* CLocatorAPI::file_list_open(const char* initial, const char* folder, unsigned int flags)
 {
 	string_path		N;
 	R_ASSERT(initial && initial[0]);
@@ -853,7 +853,7 @@ xr_vector<char*>* CLocatorAPI::file_list_open(const char* initial, const char* f
 	return			file_list_open(N, flags);
 }
 
-xr_vector<char*>* CLocatorAPI::file_list_open(const char* _path, U32 flags)
+xr_vector<char*>* CLocatorAPI::file_list_open(const char* _path, unsigned int flags)
 {
 	R_ASSERT(_path);
 	VERIFY(flags);
@@ -950,7 +950,7 @@ void CLocatorAPI::file_list_close(xr_vector<char*>*& lst)
 	}
 }
 
-int CLocatorAPI::file_list(FS_FileSet& dest, const char* path, U32 flags, const char* mask)
+int CLocatorAPI::file_list(FS_FileSet& dest, const char* path, unsigned int flags, const char* mask)
 {
 	R_ASSERT(path);
 	VERIFY(flags);
@@ -1024,7 +1024,7 @@ int CLocatorAPI::file_list(FS_FileSet& dest, const char* path, U32 flags, const 
 
 			xr_string fn = entry_begin;
 			// insert file entry
-			U32 fl = (entry.vfs != 0xffffffff ? FS_File::flVFS : 0);
+			unsigned int fl = (entry.vfs != 0xffffffff ? FS_File::flVFS : 0);
 			dest.insert(FS_File(fn, entry.size_real, entry.modif, fl));
 		}
 		else
@@ -1042,7 +1042,7 @@ int CLocatorAPI::file_list(FS_FileSet& dest, const char* path, U32 flags, const 
 				continue;
 			}
 
-			U32 fl = FS_File::flSubDir | (entry.vfs ? FS_File::flVFS : 0);
+			unsigned int fl = FS_File::flSubDir | (entry.vfs ? FS_File::flVFS : 0);
 			dest.insert(FS_File(entry_begin, entry.size_real, entry.modif, fl));
 		}
 	}
@@ -1064,9 +1064,9 @@ void CLocatorAPI::check_cached_files(char* fname, const file& desc, const char*&
 	}
 
 	const char* path_base = get_path("$server_root$")->m_Path;
-	U32				len_base = xr_strlen(path_base);
+	unsigned int len_base = xr_strlen(path_base);
 	const char* path_file = fname;
-	U32				len_file = xr_strlen(path_file);
+	unsigned int len_file = xr_strlen(path_file);
 	if (len_file <= len_base)
 	{
 		return;
@@ -1172,8 +1172,8 @@ void CLocatorAPI::file_from_archive(IReader*& R, const char* fname, const file& 
 	// Archived one
 	archive& A = archives[desc.vfs];
 
-	U32 start = (desc.ptr / dwAllocGranularity) * dwAllocGranularity;
-	U32 end = (desc.ptr + desc.size_compressed) / dwAllocGranularity;
+	unsigned int start = (desc.ptr / dwAllocGranularity) * dwAllocGranularity;
+	unsigned int end = (desc.ptr + desc.size_compressed) / dwAllocGranularity;
 	if ((desc.ptr + desc.size_compressed) % dwAllocGranularity)
 	{
 		end += 1;
@@ -1185,7 +1185,7 @@ void CLocatorAPI::file_from_archive(IReader*& R, const char* fname, const file& 
 		end = A.size;
 	}
 
-	U32 sz = (end - start);
+	unsigned int sz = (end - start);
 	unsigned char* ptr = (unsigned char*) MapViewOfFile(A.hSrcMap, FILE_MAP_READ, 0, start, sz);
 	VERIFY3(ptr, "cannot create file mapping on file", fname);
 
@@ -1196,7 +1196,7 @@ void CLocatorAPI::file_from_archive(IReader*& R, const char* fname, const file& 
 	register_file_mapping(ptr, sz, temp);
 #endif // def DEBUG
 
-	U32 ptr_offs = desc.ptr - start;
+	unsigned int ptr_offs = desc.ptr - start;
 	if (desc.size_real == desc.size_compressed)
 	{
 		R = xr_new<CPackReader>(ptr, ptr + ptr_offs, desc.size_real);
@@ -1237,7 +1237,7 @@ void CLocatorAPI::copy_file_to_build(IWriter* W, IReader* r)
 
 void CLocatorAPI::copy_file_to_build(IWriter* W, CStreamReader* r)
 {
-	U32 buffer_size = r->length( );
+	unsigned int buffer_size = r->length( );
 	unsigned char* buffer = xr_alloc<unsigned char>(buffer_size);
 	r->r(buffer, buffer_size);
 	W->w(buffer, buffer_size);
@@ -1463,7 +1463,7 @@ void CLocatorAPI::w_close(IWriter*& S)
 		{
 			struct _stat st;
 			_stat(fname, &st);
-			Register(fname, 0xffffffff, 0, 0, st.st_size, st.st_size, (U32) st.st_mtime);
+			Register(fname, 0xffffffff, 0, 0, st.st_size, st.st_size, (unsigned int) st.st_mtime);
 		}
 	}
 }
@@ -1658,16 +1658,16 @@ const char* CLocatorAPI::update_path(string_path& dest, const char* initial, con
 	return get_path(initial)->_update(dest, src);
 }
 
-U32 CLocatorAPI::get_file_age(const char* nm)
+unsigned int CLocatorAPI::get_file_age(const char* nm)
 {
 	// проверить нужно ли пересканировать пути
 	check_pathes( );
 
 	files_it I = file_find_it(nm);
-	return (I != files.end( )) ? I->modif : U32(-1);
+	return (I != files.end( )) ? I->modif : unsigned int(-1);
 }
 
-void CLocatorAPI::set_file_age(const char* nm, U32 age)
+void CLocatorAPI::set_file_age(const char* nm, unsigned int age)
 {
 	// проверить нужно ли пересканировать пути
 	check_pathes( );

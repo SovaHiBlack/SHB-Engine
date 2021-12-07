@@ -37,14 +37,14 @@ CORE_API void log_vminfo( )
 	);
 }
 
-U32	mem_usage_impl(U32* pBlocksUsed, U32* pBlocksFree)
+unsigned int	mem_usage_impl(unsigned int* pBlocksUsed, unsigned int* pBlocksFree)
 {
 	_HEAPINFO		hinfo;
 	int				heapstatus;
 	hinfo._pentry = nullptr;
 	size_t	total = 0;
-	U32	blocks_free = 0;
-	U32	blocks_used = 0;
+	unsigned int	blocks_free = 0;
+	unsigned int	blocks_used = 0;
 	while ((heapstatus = _heapwalk(&hinfo)) == _HEAPOK)
 	{
 		if (hinfo._useflag == _USEDENTRY)
@@ -57,8 +57,16 @@ U32	mem_usage_impl(U32* pBlocksUsed, U32* pBlocksFree)
 			blocks_free += 1;
 		}
 	}
-	if (pBlocksFree)	*pBlocksFree = 1024 * (U32) blocks_free;
-	if (pBlocksUsed)	*pBlocksUsed = 1024 * (U32) blocks_used;
+
+	if (pBlocksFree)
+	{
+		*pBlocksFree = 1024 * (unsigned int) blocks_free;
+	}
+
+	if (pBlocksUsed)
+	{
+		*pBlocksUsed = 1024 * (unsigned int) blocks_used;
+	}
 
 	switch (heapstatus)
 	{
@@ -76,10 +84,11 @@ U32	mem_usage_impl(U32* pBlocksUsed, U32* pBlocksFree)
 			FATAL("bad node in heap");
 			break;
 	}
-	return (U32) total;
+
+	return (unsigned int) total;
 }
 
-U32		xrMemory::mem_usage(U32* pBlocksUsed, U32* pBlocksFree)
+unsigned int		xrMemory::mem_usage(unsigned int* pBlocksUsed, unsigned int* pBlocksFree)
 {
 	return mem_usage_impl(pBlocksUsed, pBlocksFree);
 }

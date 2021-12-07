@@ -21,7 +21,7 @@ private:
 	struct SItem_ServerInfo
 	{
 		string128	name;
-		u32			color;
+		unsigned int			color;
 	};
 	enum
 	{
@@ -30,7 +30,7 @@ private:
 	svector<SItem_ServerInfo, max_item>	data;
 
 public:
-	u32		Size( )
+	unsigned int		Size( )
 	{
 		return data.size( );
 	}
@@ -39,10 +39,10 @@ public:
 		data.clear( );
 	}
 
-	void	AddItem(const char* name_, const char* value_, u32 color_ = RGB(255, 255, 255));
-	void	AddItem(CSharedString& name_, const char* value_, u32 color_ = RGB(255, 255, 255));
+	void	AddItem(const char* name_, const char* value_, unsigned int color_ = RGB(255, 255, 255));
+	void	AddItem(CSharedString& name_, const char* value_, unsigned int color_ = RGB(255, 255, 255));
 
-	inline SItem_ServerInfo& operator[] (u32 id)
+	inline SItem_ServerInfo& operator[] (unsigned int id)
 	{
 		VERIFY(id < max_item); return data[id];
 	}
@@ -63,7 +63,7 @@ protected:
 
 	// Static sounds
 	xr_vector<ref_sound>		Sounds_Random;
-	u32							Sounds_Random_dwNextTime;
+	unsigned int							Sounds_Random_dwNextTime;
 	bool						Sounds_Random_Enabled;
 	CCameraManager* m_pCameras;
 
@@ -104,7 +104,7 @@ public:
 	virtual void				net_Stop( );
 	virtual void				net_Update( ) = 0;
 
-	virtual BOOL				Load(u32 dwNum);
+	virtual BOOL				Load(unsigned int dwNum);
 	virtual BOOL				Load_GameSpecific_Before( )
 	{
 		// before object loading
@@ -115,7 +115,7 @@ public:
 		// after object loading
 		return TRUE;
 	}
-	virtual void				Load_GameSpecific_CFORM(CDB::TRI* T, u32 count) = 0;
+	virtual void				Load_GameSpecific_CFORM(CDB::TRI* T, unsigned int count) = 0;
 
 	virtual void				OnFrame( );
 	virtual void				OnRender( );

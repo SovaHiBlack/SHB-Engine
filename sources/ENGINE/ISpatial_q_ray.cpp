@@ -28,7 +28,7 @@ struct ray_segment_t {
 	float		t_near,t_far;
 };
 
-__forceinline u32&	uf			(float &x)	{ return (u32&)x; }
+__forceinline unsigned int&	uf			(float &x)	{ return (unsigned int&)x; }
 __forceinline BOOL	isect_fpu	(const Fvector3& min, const Fvector3& max, const ray_t &ray, Fvector3& coord)
 {
 	Fvector3				MaxT;
@@ -71,7 +71,7 @@ __forceinline BOOL	isect_fpu	(const Fvector3& min, const Fvector3& max, const ra
 	}
 
 	// Get largest of the maxT's for final choice of intersection
-	u32 WhichPlane = 0;
+	unsigned int WhichPlane = 0;
 	if	(MaxT[1] > MaxT[0])				WhichPlane = 1;
 	if	(MaxT[2] > MaxT[WhichPlane])	WhichPlane = 2;
 
@@ -176,12 +176,12 @@ class	_MM_ALIGN16			walker
 {
 public:
 	ray_t			ray;
-	u32				mask;
+	unsigned int				mask;
 	float			range;
 	float			range2;
 	ISpatial_DB*	space;
-public:
-	walker					(ISpatial_DB*	_space, u32 _mask, const Fvector3& _start, const Fvector3&	_dir, float _range)
+
+	walker					(ISpatial_DB*	_space, unsigned int _mask, const Fvector3& _start, const Fvector3&	_dir, float _range)
 	{
 		mask			= _mask;
 		ray.pos.set		(_start);
@@ -257,7 +257,7 @@ public:
 
 		// recurse
 		float	c_R		= n_R/2;
-		for (u32 octant=0; octant<8; octant++)
+		for (unsigned int octant=0; octant<8; octant++)
 		{
 			if (0==N->children[octant])	continue;
 			Fvector3		c_C;
@@ -268,7 +268,7 @@ public:
 	}
 };
 
-void	ISpatial_DB::q_ray	(xr_vector<ISpatial*>& R, u32 _o, u32 _mask_and, const Fvector3& _start,  const Fvector3& _dir, float _range)
+void	ISpatial_DB::q_ray	(xr_vector<ISpatial*>& R, unsigned int _o, unsigned int _mask_and, const Fvector3& _start,  const Fvector3& _dir, float _range)
 {
 	cs.Enter						();
 	q_result						= &R;

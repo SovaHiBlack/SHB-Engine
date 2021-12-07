@@ -1286,7 +1286,7 @@ int dCollideCylPlane
 	contact->g1 = const_cast<dxGeom*> (o1);
 	contact->g2 = const_cast<dxGeom*> (o2);
 
-	U32 ret = 0;
+	unsigned int ret = 0;
 
 	dReal radius;
 	dReal hlz;
@@ -1385,7 +1385,7 @@ int dCollideCylPlane
 		}
 	}
 
-	for (U32 i = 0; i < ret; ++i)
+	for (unsigned int i = 0; i < ret; ++i)
 	{
 		CONTACT(contact, i * skip)->g1 = const_cast<dxGeom*> (o1);
 		CONTACT(contact, i * skip)->g2 = const_cast<dxGeom*> (o2);

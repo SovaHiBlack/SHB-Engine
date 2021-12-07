@@ -42,7 +42,7 @@ void FS_File::set(const xr_string& nm, long sz, time_t modif, unsigned attr)
 //////////////////////////////////////////////////////////////////////
 // FS_Path
 //////////////////////////////////////////////////////////////////////
-FS_Path::FS_Path(const char* _Root, const char* _Add, const char* _DefExt, const char* _FilterCaption, U32 flags)
+FS_Path::FS_Path(const char* _Root, const char* _Add, const char* _DefExt, const char* _FilterCaption, unsigned int flags)
 {
 //	VERIFY				(_Root&&_Root[0]);
 	string_path			temp;

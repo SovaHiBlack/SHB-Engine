@@ -64,17 +64,17 @@ public:
 	}
 
 	// send
-	virtual	void				Send				(CNetPacket& P, u32 dwFlags = DPNSEND_GUARANTEED, u32 dwTimeout = 0);
-	virtual void				OnMessage			(void* data, u32 size);
+	virtual	void				Send				(CNetPacket& P, unsigned int dwFlags = DPNSEND_GUARANTEED, unsigned int dwTimeout = 0);
+	virtual void				OnMessage			(void* data, unsigned int size);
 	virtual void				OnConnectRejected	( )
 	{ }
 
 	// time management
-	inline u32					timeServer			( )
+	inline unsigned int					timeServer			( )
 	{
 		return device_timer->GetElapsed_ms( );
 	}
-	inline u32					timeServer_Async	( )
+	inline unsigned int					timeServer_Async	( )
 	{
 		return device_timer->GetElapsed_ms( );
 	}

@@ -19,7 +19,7 @@ FHierrarhyVisual::~FHierrarhyVisual( )
 {
 	if (!bDontDelete)
 	{
-		for (u32 i = 0; i < children.size( ); i++)
+		for (unsigned int i = 0; i < children.size( ); i++)
 		{
 			::Render->model_Delete(children[i]);
 		}
@@ -32,24 +32,24 @@ void FHierrarhyVisual::Release( )
 {
 	if (!bDontDelete)
 	{
-		for (u32 i = 0; i < children.size( ); i++)
+		for (unsigned int i = 0; i < children.size( ); i++)
 		{
 			children[i]->Release( );
 		}
 	}
 }
 
-void FHierrarhyVisual::Load(const char* N, IReader* data, u32 dwFlags)
+void FHierrarhyVisual::Load(const char* N, IReader* data, unsigned int dwFlags)
 {
 	IRender_Visual::Load(N, data, dwFlags);
 	if (data->find_chunk(OGF_CHILDREN_L))
 	{
 		// From Link
-		u32 cnt = data->r_u32( );
+		unsigned int cnt = data->r_u32( );
 		children.resize(cnt);
-		for (u32 i = 0; i < cnt; i++)
+		for (unsigned int i = 0; i < cnt; i++)
 		{
-			u32 ID = data->r_u32( );
+			unsigned int ID = data->r_u32( );
 			children[i] = ::Render->getVisual(ID);
 		}
 
@@ -101,7 +101,7 @@ void FHierrarhyVisual::Copy(IRender_Visual* pSrc)
 
 	children.clear( );
 	children.reserve(pFrom->children.size( ));
-	for (u32 i = 0; i < pFrom->children.size( ); i++)
+	for (unsigned int i = 0; i < pFrom->children.size( ); i++)
 	{
 		IRender_Visual* p = ::Render->model_Duplicate(pFrom->children[i]);
 		children.push_back(p);

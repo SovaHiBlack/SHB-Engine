@@ -103,7 +103,7 @@ namespace Feel
 
 	// Determine visibility for dynamic part of scene
 		seen.clear_and_reserve( );
-		for (u32 o_it = 0; o_it < r_spatial.size( ); o_it++)
+		for (unsigned int o_it = 0; o_it < r_spatial.size( ); o_it++)
 		{
 			ISpatial* spatial = r_spatial[o_it];
 			CObject* object = spatial->dcast_CObject( );
@@ -132,7 +132,7 @@ namespace Feel
 					query.begin( ), query.end( ),
 					diff.begin( ));
 				diff.resize(E - diff.begin( ));
-				for (u32 i = 0; i < diff.size( ); i++)
+				for (unsigned int i = 0; i < diff.size( ); i++)
 					o_new(diff[i]);
 			}
 		}
@@ -146,7 +146,7 @@ namespace Feel
 				seen.begin( ), seen.end( ),
 				diff.begin( ));
 			diff.resize(E - diff.begin( ));
-			for (u32 i = 0; i < diff.size( ); i++)
+			for (unsigned int i = 0; i < diff.size( ); i++)
 				o_delete(diff[i]);
 		}
 

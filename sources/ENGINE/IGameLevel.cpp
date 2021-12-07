@@ -59,7 +59,7 @@ void IGameLevel::net_Stop			()
 //-------------------------------------------------------------------------------------------
 extern CStatTimer				tscreate;
 
-BOOL IGameLevel::Load			(u32 dwNum)
+BOOL IGameLevel::Load			(unsigned int dwNum)
 {
 	// Initialize level data
 	pApp->Level_Set				( dwNum );
@@ -129,7 +129,7 @@ void IGameLevel::OnRender		( )
 
 void	IGameLevel::OnFrame		( )
 {
-//	Log("- level:on-frame: ", u32(Device.dwFrame));
+//	Log("- level:on-frame: ", unsigned int(Device.dwFrame));
 //	if (_abs(Device.fTimeDelta) < EPS_S) return;
 
 	// Update all objects
@@ -155,13 +155,13 @@ void	IGameLevel::OnFrame		( )
 
 // ==================================================================================================
 
-void CServerInfo::AddItem(const char* name_, const char* value_, u32 color_ )
+void CServerInfo::AddItem(const char* name_, const char* value_, unsigned int color_ )
 {
 	CSharedString s_name( name_ );
 	AddItem( s_name, value_, color_ );
 }
 
-void CServerInfo::AddItem(CSharedString& name_, const char* value_, u32 color_ )
+void CServerInfo::AddItem(CSharedString& name_, const char* value_, unsigned int color_ )
 {
 	SItem_ServerInfo it;
 //	CSharedString s_name = CStringTable().translate( name_ );
@@ -180,7 +180,10 @@ void CServerInfo::AddItem(CSharedString& name_, const char* value_, u32 color_ )
 
 void IGameLevel::LL_CheckTextures( )
 {
-	u32	m_base, c_base, m_lmaps, c_lmaps;
+	unsigned int	m_base;
+	unsigned int c_base;
+	unsigned int m_lmaps;
+	unsigned int c_lmaps;
 	Device.Resources->_GetMemoryUsage(m_base, c_base, m_lmaps, c_lmaps);
 
 	Msg("* t-report - base: %d, %d K", c_base, m_base / 1024);

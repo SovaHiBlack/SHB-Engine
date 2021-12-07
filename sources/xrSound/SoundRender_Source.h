@@ -11,20 +11,20 @@ public:
 	CSharedString				pname;
 	CSharedString				fname;
 	cache_cat				CAT;
-	U32						dwTimeTotal;			// всего
-	U32						dwBytesTotal;
-	//	U32						dwBytesPerSec;
-	U32						dwBytesPerMS;
+	unsigned int						dwTimeTotal;			// всего
+	unsigned int						dwBytesTotal;
+	//	unsigned int						dwBytesPerSec;
+	unsigned int						dwBytesPerMS;
 
 	float					m_fBaseVolume;
 	float					m_fMinDist;
 	float					m_fMaxDist;
 	float					m_fMaxAIDist;
-	U32						m_uGameType;
+	unsigned int						m_uGameType;
 
 private:
-	void 					i_decompress_fr(OggVorbis_File* ovf, char* dest, U32 size);
-	void 					i_decompress_hr(OggVorbis_File* ovf, char* dest, U32 size);
+	void 					i_decompress_fr(OggVorbis_File* ovf, char* dest, unsigned int size);
+	void 					i_decompress_hr(OggVorbis_File* ovf, char* dest, unsigned int size);
 	void					LoadWave(const char* name);
 
 public:
@@ -33,13 +33,13 @@ public:
 
 	void					load(const char* name);
 	void					unload( );
-	void					decompress(U32 line, OggVorbis_File* ovf);
+	void					decompress(unsigned int line, OggVorbis_File* ovf);
 
-	virtual	U32				length_ms( )
+	virtual	unsigned int				length_ms( )
 	{
 		return dwTimeTotal;
 	}
-	virtual U32				game_type( )
+	virtual unsigned int				game_type( )
 	{
 		return m_uGameType;
 	}

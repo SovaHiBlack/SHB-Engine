@@ -100,7 +100,7 @@ CInput::~CInput(void)
 // Name: CreateInputDevice()
 // Desc: Create a DirectInput device.
 //-----------------------------------------------------------------------------
-HRESULT CInput::CreateInputDevice(LPDIRECTINPUTDEVICE8* device, GUID guidDevice, const DIDATAFORMAT* pdidDataFormat, u32 dwFlags, u32 buf_size)
+HRESULT CInput::CreateInputDevice(LPDIRECTINPUTDEVICE8* device, GUID guidDevice, const DIDATAFORMAT* pdidDataFormat, unsigned int dwFlags, unsigned int buf_size)
 {
 	// Obtain an interface to the input device
 //.	CHK_DX( pDI->CreateDeviceEx( guidDevice, IID_IDirectInputDevice8, (void**)device, NULL ) );
@@ -166,7 +166,7 @@ void CInput::KeyUpdate( )
 		if (hr != S_OK) return;
 	}
 
-	for (u32 i = 0; i < dwElements; i++)
+	for (unsigned int i = 0; i < dwElements; i++)
 	{
 		key = od[i].dwOfs;
 		KBState[key] = od[i].dwData & 0x80;
@@ -245,7 +245,7 @@ void CInput::MouseUpdate( )
 	mouse_prev[2] = mouseState[2];
 
 	offs[0] = offs[1] = offs[2] = 0;
-	for (u32 i = 0; i < dwElements; i++)
+	for (unsigned int i = 0; i < dwElements; i++)
 	{
 		switch (od[i].dwOfs)
 		{
@@ -391,7 +391,7 @@ void CInput::iRelease(IInputReceiver* p)
 	}
 	else
 	{// we are not topmost receiver, so remove the nearest one
-		u32 cnt = cbStack.size( );
+		unsigned int cnt = cbStack.size( );
 		for (; cnt > 0; --cnt)
 			if (cbStack[cnt - 1] == p)
 			{

@@ -67,7 +67,7 @@ class ENGINE_API CEnvAmbient
 public:
 	struct SEffect
 	{
-		U32									life_time;
+		unsigned int									life_time;
 		ref_sound							sound;
 		CSharedString						particles;
 		Fvector3							offset;
@@ -98,7 +98,7 @@ public:
 	{
 		return section;
 	}
-	inline U32					get_rnd_sound_time	( )
+	inline unsigned int					get_rnd_sound_time	( )
 	{
 		return Random.randI(sound_period.x, sound_period.y);
 	}
@@ -106,7 +106,7 @@ public:
 	{
 		return Random.randF(sound_dist.x, sound_dist.y);
 	}
-	inline U32					get_rnd_effect_time	( )
+	inline unsigned int					get_rnd_effect_time	( )
 	{
 		return Random.randI(effect_period.x, effect_period.y);
 	}

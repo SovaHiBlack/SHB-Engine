@@ -38,7 +38,7 @@ void ISheduled::shedule_unregister( )
 	Engine.Sheduler.Unregister(this);
 }
 
-void ISheduled::shedule_Update(u32 dt)
+void ISheduled::shedule_Update(unsigned int dt)
 {
 
 #ifdef DEBUG

@@ -70,10 +70,10 @@ class ENGINE_API CCC_Mask : public IConsoleCommand
 {
 protected:
 	Flags32*			value;
-	u32					mask;
+	unsigned int					mask;
 
 public:
-						CCC_Mask			(const char* N, Flags32* V, u32 M) : IConsoleCommand(N), value(V), mask(M)
+						CCC_Mask			(const char* N, Flags32* V, unsigned int M) : IConsoleCommand(N), value(V), mask(M)
 	{ }
 
 	const BOOL			GetValue			( ) const
@@ -117,11 +117,11 @@ public:
 class ENGINE_API CCC_Token : public IConsoleCommand
 {
 protected:
-	u32*				value;
+	unsigned int*				value;
 	xr_token*			tokens;
 
 public:
-						CCC_Token			(const char* N, u32* V, xr_token* T) : IConsoleCommand(N), value(V), tokens(T)
+						CCC_Token			(const char* N, unsigned int* V, xr_token* T) : IConsoleCommand(N), value(V), tokens(T)
 	{ }
 
 	virtual xr_token*	GetToken			( )

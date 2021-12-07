@@ -25,7 +25,7 @@ public:
 	};
 
 private:
-	U32							last_mm_timer;
+	unsigned int							last_mm_timer;
 	float						cur_time;
 	float						rep_time;
 	float						fAccel;

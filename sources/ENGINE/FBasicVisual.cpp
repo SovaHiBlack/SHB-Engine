@@ -31,7 +31,7 @@ void IRender_Visual::Release( )
 
 CStatTimer tscreate;
 
-void IRender_Visual::Load(const char* N, IReader* data, u32)
+void IRender_Visual::Load(const char* N, IReader* data, unsigned int)
 {
 
 #ifdef DEBUG

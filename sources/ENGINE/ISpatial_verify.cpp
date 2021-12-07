@@ -7,8 +7,8 @@ extern Fvector3 c_spatial_offset[8];
 class walker
 {
 public:
-	u32 o_count;
-	u32 n_count;
+	unsigned int o_count;
+	unsigned int n_count;
 
 	walker( )
 	{
@@ -23,7 +23,7 @@ public:
 
 		// recurse
 		float c_R = n_R / 2;
-		for (u32 octant = 0; octant < 8; octant++)
+		for (unsigned int octant = 0; octant < 8; octant++)
 		{
 			if (0 == N->children[octant])
 			{

@@ -2,7 +2,6 @@
 
 // refs
 class CConfigurationFile;
-class CFontBase;
 
 class CContextMenu
 {

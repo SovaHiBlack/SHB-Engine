@@ -23,7 +23,7 @@ public:
 			string256					m_game_type;
 			string256					m_alife;
 			string256					m_new_or_load;
-			u32							m_e_game_type;
+			unsigned int							m_e_game_type;
 		};
 		string256						m_params[4];
 										params				( )
@@ -94,12 +94,12 @@ public:
 
 	virtual void						RegisterModel		(IRender_Visual* V) = 0;
 
-	virtual float						MtlTransparent		(u32 mtl_idx) = 0;
+	virtual float						MtlTransparent		(unsigned int mtl_idx) = 0;
 
 	IGamePersistent( );
 	virtual								~IGamePersistent( );
 
-	u32									GameType			( )
+	unsigned int									GameType			( )
 	{
 		return m_game_params.m_e_game_type;
 	}

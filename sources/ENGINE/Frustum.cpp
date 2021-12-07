@@ -43,7 +43,7 @@ void			CFrustum::_add			(Fvector3& P1, Fvector3& P2, Fvector3& P3)
 #define			Mx			3
 #define			My			4
 #define			Mz			5
-u32				frustum_aabb_remap [8][6]	=
+unsigned int				frustum_aabb_remap [8][6]	=
 {
 	{ Mx,My,Mz,mx,my,mz}, 
 	{ Mx,My,mz,mx,my,Mz}, 
@@ -56,9 +56,9 @@ u32				frustum_aabb_remap [8][6]	=
 };
 
 //////////////////////////////////////////////////////////////////////
-EFC_Visible	CFrustum::testSphere			(Fvector3& c, float r, u32& test_mask) const
+EFC_Visible	CFrustum::testSphere			(Fvector3& c, float r, unsigned int& test_mask) const
 {
-	u32	bit = 1;
+	unsigned int	bit = 1;
 	for (int i=0; i<p_count; i++, bit<<=1)
 	{
 		if (test_mask&bit) {
@@ -91,10 +91,10 @@ BOOL	CFrustum::testSphere_dirty		(Fvector3& c, float r) const
 	return TRUE;
 }
 
-EFC_Visible	CFrustum::testAABB			(const float* mM, u32& test_mask) const
+EFC_Visible	CFrustum::testAABB			(const float* mM, unsigned int& test_mask) const
 {
 	// go for trivial rejection or acceptance using "faster overlap test"
-	u32		bit = 1;
+	unsigned int		bit = 1;
 
 	for (int i=0; i<p_count; i++, bit<<=1)
 	{
@@ -107,9 +107,9 @@ EFC_Visible	CFrustum::testAABB			(const float* mM, u32& test_mask) const
 	return test_mask ? fcvPartial:fcvFully;
 }
 
-EFC_Visible	CFrustum::testSAABB			(Fvector3& c, float r, const float* mM, u32& test_mask) const
+EFC_Visible	CFrustum::testSAABB			(Fvector3& c, float r, const float* mM, unsigned int& test_mask) const
 {
-	u32	bit = 1;
+	unsigned int	bit = 1;
 	for (int i=0; i<p_count; i++, bit<<=1)
 	{
 		if (test_mask&bit) {
@@ -222,7 +222,7 @@ void CFrustum::SimplifyPoly_AABB(sPoly* poly, Fplane& plane)
 	Fvector2	min,max;
 	min.set		(flt_max,flt_max);
 	max.set		(flt_min,flt_min);
-	for (u32 i=0; i<poly->size(); i++)
+	for (unsigned int i=0; i<poly->size(); i++)
 	{
 		Fvector2 tmp;
 		mView.transform_tiny32(tmp,(*poly)[i]);
@@ -295,7 +295,7 @@ sPoly*	CFrustum::ClipPoly(sPoly& S, sPoly& D) const
 
 		// classify all points relative to plane #i
 		float	cls	[FRUSTUM_SAFE];
-		for (u32 j=0; j<src->size(); j++) cls[j]=P.classify((*src)[j]);
+		for (unsigned int j=0; j<src->size(); j++) cls[j]=P.classify((*src)[j]);
 
 		// clip everything to this plane
 		cls[src->size()] = cls[0];
@@ -359,7 +359,7 @@ BOOL CFrustum::CreateFromClipPoly(Fvector3* p, int count, Fvector3& vBase, CFrus
 	return	true;
 }
 
-void CFrustum::CreateFromMatrix(Fmatrix &M, u32 mask)
+void CFrustum::CreateFromMatrix(Fmatrix &M, unsigned int mask)
 {
 	VERIFY			(_valid(M));
 	p_count			= 0;

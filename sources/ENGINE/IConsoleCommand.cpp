@@ -178,7 +178,7 @@ void 			crashthread(void*)
 					unsigned char	_b3;
 				};
 				uintptr_t	_ptri;
-				u32* _ptr;
+				unsigned int* _ptr;
 			}		rndptr;
 			rndptr._b0 = unsigned char(rndg.randI(0, 256));
 			rndptr._b1 = unsigned char(rndg.randI(0, 256));
@@ -398,7 +398,8 @@ public:
 };
 class CCC_VidMode : public CCC_Token
 {
-	u32		_dummy;
+	unsigned int		_dummy;
+
 public:
 	CCC_VidMode(const char* N) : CCC_Token(N, &_dummy, NULL)
 	{
@@ -406,7 +407,8 @@ public:
 	}
 	virtual void	Execute(const char* args)
 	{
-		u32 _w, _h;
+		unsigned int _w;
+		unsigned int _h;
 		int cnt = sscanf(args, "%dx%d", &_w, &_h);
 		if (cnt == 2)
 		{
@@ -523,7 +525,7 @@ public:
 
 ENGINE_API BOOL r2_sun_static = TRUE;
 
-u32				renderer_value = 0;
+unsigned int				renderer_value = 0;
 class CCC_r2 : public CCC_Token
 {
 	typedef CCC_Token inherited;

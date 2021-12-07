@@ -39,7 +39,7 @@ public:
 		}
 
 		// duplicate and zero-terminate
-		u32				size	= R->length();
+		unsigned int				size	= R->length();
 		unsigned char*				data	= xr_alloc<unsigned char>	(size + 1);
 		CopyMemory			(data,R->pointer(),size);
 		data[size]				= 0;
@@ -60,7 +60,7 @@ public:
 SState*		CResourceManager::_CreateState		(SimulatorStates& state_code)
 {
 	// Search equal state-code 
-	for (u32 it=0; it<v_states.size(); it++)
+	for (unsigned int it=0; it<v_states.size(); it++)
 	{
 		SState*				C		= v_states[it];;
 		SimulatorStates&	base	= C->state_code;
@@ -84,7 +84,7 @@ void		CResourceManager::_DeleteState		(const SState* state)
 //--------------------------------------------------------------------------------------------------------------
 SPass*		CResourceManager::_CreatePass			(ref_state& _state, ref_ps& _ps, ref_vs& _vs, ref_ctable& _ctable, ref_texture_list& _T, ref_matrix_list& _M, ref_constant_list& _C)
 {
-	for (u32 it=0; it<v_passes.size(); it++)
+	for (unsigned int it=0; it<v_passes.size(); it++)
 		if (v_passes[it]->equal(_state,_ps,_vs,_ctable,_T,_M,_C))
 			return v_passes[it];
 
@@ -112,8 +112,8 @@ void		CResourceManager::_DeletePass			(const SPass* P)
 static BOOL	dcl_equal			(D3DVERTEXELEMENT9* a, D3DVERTEXELEMENT9* b)
 {
 	// check sizes
-	u32 a_size	= D3DXGetDeclLength(a);
-	u32 b_size	= D3DXGetDeclLength(b);
+	unsigned int a_size	= D3DXGetDeclLength(a);
+	unsigned int b_size	= D3DXGetDeclLength(b);
 	if (a_size!=b_size)	return FALSE;
 	return 0==memcmp	(a,b,a_size*sizeof(D3DVERTEXELEMENT9));
 }
@@ -121,7 +121,7 @@ static BOOL	dcl_equal			(D3DVERTEXELEMENT9* a, D3DVERTEXELEMENT9* b)
 SDeclaration*	CResourceManager::_CreateDecl	(D3DVERTEXELEMENT9* dcl)
 {
 	// Search equal code
-	for (u32 it=0; it<v_declarations.size(); it++)
+	for (unsigned int it=0; it<v_declarations.size(); it++)
 	{
 		SDeclaration*		D		= v_declarations[it];;
 		if (dcl_equal(dcl,&*D->dcl_code.begin()))	return D;
@@ -129,7 +129,7 @@ SDeclaration*	CResourceManager::_CreateDecl	(D3DVERTEXELEMENT9* dcl)
 
 	// Create _new
 	SDeclaration* D			= xr_new<SDeclaration>();
-	u32 dcl_size			= D3DXGetDeclLength(dcl)+1;
+	unsigned int dcl_size			= D3DXGetDeclLength(dcl)+1;
 	CHK_DX					(HW.pDevice->CreateVertexDeclaration(dcl,&D->dcl));
 	D->dcl_code.assign		(dcl,dcl+dcl_size);
 	D->dwFlags				|= xr_resource_flagged::RF_REGISTERED;
@@ -265,7 +265,7 @@ SPS*	CResourceManager::_CreatePS			(const char* name)
 		// duplicate and zero-terminate
 		IReader*		R		= FS.r_open(cname);
 		R_ASSERT2				(R,cname);
-		u32				size	= R->length();
+		unsigned int				size	= R->length();
 		char*			data	= xr_alloc<char>(size + 1);
 		CopyMemory			(data,R->pointer(),size);
 		data[size]				= 0;
@@ -338,7 +338,7 @@ void	CResourceManager::_DeletePS			(const SPS* ps)
 R_constant_table*	CResourceManager::_CreateConstantTable	(R_constant_table& C)
 {
 	if (C.empty())		return NULL;
-	for (u32 it=0; it<v_constant_tables.size(); it++)
+	for (unsigned int it=0; it<v_constant_tables.size(); it++)
 		if (v_constant_tables[it]->equal(C))	return v_constant_tables[it];
 	v_constant_tables.push_back			(xr_new<R_constant_table>(C));
 	v_constant_tables.back()->dwFlags	|=	xr_resource_flagged::RF_REGISTERED;
@@ -352,7 +352,7 @@ void				CResourceManager::_DeleteConstantTable	(const R_constant_table* C)
 }
 
 //--------------------------------------------------------------------------------------------------------------
-CRT*	CResourceManager::_CreateRT		(const char* Name, u32 w, u32 h,	D3DFORMAT f)
+CRT*	CResourceManager::_CreateRT		(const char* Name, unsigned int w, unsigned int h,	D3DFORMAT f)
 {
 	R_ASSERT(Name && Name[0] && w && h);
 
@@ -413,13 +413,13 @@ void	CResourceManager::_DeleteRTC		(const CRTC* RT)
 void	CResourceManager::DBG_VerifyGeoms	()
 {
 	/*
-	for (u32 it=0; it<v_geoms.size(); it++)
+	for (unsigned int it=0; it<v_geoms.size(); it++)
 	{
 	SGeometry* G					= v_geoms[it];
 
 	D3DVERTEXELEMENT9		test	[MAX_FVF_DECL_SIZE];
-	u32						size	= 0;
-	G->dcl->GetDeclaration			(test,(U32*)&size);
+	unsigned int						size	= 0;
+	G->dcl->GetDeclaration			(test,(unsigned int*)&size);
 	u32 vb_stride					= D3DXGetDeclVertexSize	(test,0);
 	u32 vb_stride_cached			= G->vb_stride;
 	R_ASSERT						(vb_stride == vb_stride_cached);
@@ -432,10 +432,10 @@ SGeometry*	CResourceManager::CreateGeom	(D3DVERTEXELEMENT9* decl, IDirect3DVerte
 	R_ASSERT			(decl && vb);
 
 	SDeclaration* dcl	= _CreateDecl			(decl);
-	u32 vb_stride		= D3DXGetDeclVertexSize	(decl,0);
+	unsigned int vb_stride		= D3DXGetDeclVertexSize	(decl,0);
 
 	// ***** first pass - search already loaded shader
-	for (u32 it=0; it<v_geoms.size(); it++)
+	for (unsigned int it=0; it<v_geoms.size(); it++)
 	{
 		SGeometry& G	= *(v_geoms[it]);
 		if ((G.dcl==dcl) && (G.vb==vb) && (G.ib==ib) && (G.vb_stride==vb_stride))	return v_geoms[it];
@@ -614,10 +614,10 @@ void			CResourceManager::_DeleteTextureList(const STextureList* L)
 SMatrixList*	CResourceManager::_CreateMatrixList(SMatrixList& L)
 {
 	BOOL bEmpty = TRUE;
-	for (u32 i=0; i<L.size(); i++)	if (L[i]) { bEmpty=FALSE; break; }
+	for (unsigned int i=0; i<L.size(); i++)	if (L[i]) { bEmpty=FALSE; break; }
 	if (bEmpty)	return NULL;
 
-	for (u32 it=0; it<lst_matrices.size(); it++)
+	for (unsigned int it=0; it<lst_matrices.size(); it++)
 	{
 		SMatrixList*	base		= lst_matrices[it];
 		if (L.equal(*base))			return base;
@@ -637,10 +637,10 @@ void			CResourceManager::_DeleteMatrixList ( const SMatrixList* L )
 SConstantList*	CResourceManager::_CreateConstantList(SConstantList& L)
 {
 	BOOL bEmpty = TRUE;
-	for (u32 i=0; i<L.size(); i++)	if (L[i]) { bEmpty=FALSE; break; }
+	for (unsigned int i=0; i<L.size(); i++)	if (L[i]) { bEmpty=FALSE; break; }
 	if (bEmpty)	return NULL;
 
-	for (u32 it=0; it<lst_constants.size(); it++)
+	for (unsigned int it=0; it<lst_constants.size(); it++)
 	{
 		SConstantList*	base		= lst_constants[it];
 		if (L.equal(*base))			return base;

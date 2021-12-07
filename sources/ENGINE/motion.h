@@ -43,7 +43,7 @@ protected:
 	{
 		mtObject	= 0,
 		mtSkeleton,
-		ForceDWORD	= u32(-1)
+		ForceDWORD	= unsigned int(-1)
 	};
 	EMotionType		mtype;
 	int				iFrameStart, iFrameEnd;

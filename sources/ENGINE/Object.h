@@ -28,7 +28,7 @@ class ENGINE_API CObject :
 public:
 	struct SavedPosition
 	{
-		u32																dwTime;
+		unsigned int																dwTime;
 		Fvector3														vPosition;
 	};
 
@@ -36,27 +36,27 @@ public:
 	{
 		struct
 		{
-			u32																net_ID			: 16;
-			u32																bActiveCounter	: 8;
-			u32																bEnabled		: 1;
-			u32																bVisible		: 1;
-			u32																bDestroy		: 1;
-			u32																net_Local		: 1;
-			u32																net_Ready		: 1;
-			u32																net_SV_Update	: 1;
-			u32																crow			: 1;
-			u32																bPreDestroy		: 1;
+			unsigned int																net_ID			: 16;
+			unsigned int																bActiveCounter	: 8;
+			unsigned int																bEnabled		: 1;
+			unsigned int																bVisible		: 1;
+			unsigned int																bDestroy		: 1;
+			unsigned int																net_Local		: 1;
+			unsigned int																net_Ready		: 1;
+			unsigned int																net_SV_Update	: 1;
+			unsigned int																crow			: 1;
+			unsigned int																bPreDestroy		: 1;
 		};
 
-		u32																storage;
+		unsigned int																storage;
 	};
 
 #ifdef DEBUG
-	u32																dbg_update_cl;
+	unsigned int																dbg_update_cl;
 #endif // def DEBUG
 
-	u32																dwFrame_UpdateCL;
-	u32																dwFrame_AsCrow;
+	unsigned int																dwFrame_UpdateCL;
+	unsigned int																dwFrame_AsCrow;
 
 	// Crow-MODE
 	// if (object_is_visible)
@@ -282,7 +282,7 @@ public:
 
 	// Update
 	// Called by sheduler
-	virtual void						shedule_Update				(u32 dt);
+	virtual void						shedule_Update				(unsigned int dt);
 	virtual void						renderable_Render			( );
 
 	// Called each frame, so no need for dt
@@ -307,11 +307,11 @@ public:
 	{ }
 
 	// Position stack
-	inline u32							ps_Size						( ) const
+	inline unsigned int							ps_Size						( ) const
 	{
 		return PositionStack.size( );
 	}
-	virtual SavedPosition				ps_Element					(u32 ID) const;
+	virtual SavedPosition				ps_Element					(unsigned int ID) const;
 	virtual void						ForceTransform				(const Fmatrix& m)
 	{ }
 

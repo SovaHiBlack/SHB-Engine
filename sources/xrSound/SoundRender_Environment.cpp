@@ -150,19 +150,25 @@ void	CSoundEnvironmentLib::Load	(const char* name)
 	IReader* F			= FS.r_open(name);
 	IReader* C;
 	library.reserve		(256);
-	for (U32 chunk=0; 0!=(C=F->open_chunk(chunk)); chunk++)
+	for (unsigned int chunk=0; 0!=(C=F->open_chunk(chunk)); chunk++)
 	{
 		CSoundRender_Environment*	E	= xr_new<CSoundRender_Environment>	();
-		if (E->load(C))	library.push_back(E);
+		if (E->load(C))
+		{
+			library.push_back(E);
+		}
+
 		C->close		();
 	}
+
 	FS.r_close			(F);
 }
+
 bool	CSoundEnvironmentLib::Save	(const char* name)
 {
 	IWriter* F			= FS.w_open(name);
 	if (F){
-		for (U32 chunk=0; chunk<library.size(); chunk++)
+		for (unsigned int chunk=0; chunk<library.size(); chunk++)
 		{
 			F->open_chunk		(chunk);
 			library[chunk]->save(F);
@@ -175,8 +181,11 @@ bool	CSoundEnvironmentLib::Save	(const char* name)
 }
 void	CSoundEnvironmentLib::Unload	()
 {
-	for (U32 chunk=0; chunk<library.size(); chunk++)
+	for (unsigned int chunk = 0; chunk < library.size( ); chunk++)
+	{
 		xr_delete(library[chunk]);
+	}
+
 	library.clear		();
 }
 int		CSoundEnvironmentLib::GetID		(const char* name)

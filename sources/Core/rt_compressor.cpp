@@ -11,15 +11,15 @@ void	rtc_initialize( )
 	VERIFY(lzo_init( ) == LZO_E_OK);
 }
 
-U32		rtc_csize(U32 in)
+unsigned int		rtc_csize(unsigned int in)
 {
 	VERIFY(in);
 	return			in + in / 64 + 16 + 3;
 }
 
-U32		rtc_compress(void* dst, U32 dst_len, const void* src, U32 src_len)
+unsigned int		rtc_compress(void* dst, unsigned int dst_len, const void* src, unsigned int src_len)
 {
-	U32		out_size = dst_len;
+	unsigned int out_size = dst_len;
 	int r = lzo1x_1_compress(
 		(const lzo_byte*) src, (lzo_uint) src_len,
 		(lzo_byte*) dst, (lzo_uintp) &out_size,
@@ -28,9 +28,9 @@ U32		rtc_compress(void* dst, U32 dst_len, const void* src, U32 src_len)
 	return	out_size;
 }
 
-U32		rtc_decompress(void* dst, U32 dst_len, const void* src, U32 src_len)
+unsigned int		rtc_decompress(void* dst, unsigned int dst_len, const void* src, unsigned int src_len)
 {
-	U32		out_size = dst_len;
+	unsigned int out_size = dst_len;
 	int r = lzo1x_decompress(
 		(const lzo_byte*) src, (lzo_uint) src_len,
 		(lzo_byte*) dst, (lzo_uintp) &out_size,
