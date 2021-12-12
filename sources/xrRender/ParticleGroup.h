@@ -78,9 +78,9 @@ namespace PS
 			void			OnDeviceCreate	();
 			void			OnDeviceDestroy	();
 
-			void			StartRelatedChild	(CParticleEffect* emitter, const char* eff_name, PAPI::Particle& m);
+			void			StartRelatedChild	(CParticleEffect* emitter, const char* eff_name, PAPI::SParticle& m);
 			void			StopRelatedChild	(u32 idx);
-			void			StartFreeChild		(CParticleEffect* emitter, const char* eff_name, PAPI::Particle& m);
+			void			StartFreeChild		(CParticleEffect* emitter, const char* eff_name, PAPI::SParticle& m);
 
 			void 			UpdateParent	(const Fmatrix& m, const Fvector3& velocity, BOOL bXFORM);
 			void			OnFrame			(u32 u_dt, const CPGDef::SEffect& def, Fbox3& box, bool& bPlaying);

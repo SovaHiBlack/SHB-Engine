@@ -85,3 +85,5 @@ bool CStateMonsterAttackRunAbstract::check_start_conditions()
 	return false;
 }
 
+#undef TEMPLATE_SPECIALIZATION
+#undef CStateMonsterAttackRunAbstract

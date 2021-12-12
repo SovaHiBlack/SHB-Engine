@@ -18,7 +18,7 @@ CRT::~CRT			()
 	Device.Resources->_DeleteRT	(this);	
 }
 
-void CRT::create	(const char* Name, u32 w, u32 h,	D3DFORMAT f)
+void CRT::create	(const char* Name, unsigned int w, unsigned int h,	D3DFORMAT f)
 {
 	if (pSurface)	return;
 
@@ -46,7 +46,7 @@ void CRT::create	(const char* Name, u32 w, u32 h,	D3DFORMAT f)
 	if (h>caps.MaxTextureHeight)		return;
 
 	// Select usage
-	u32 usage	= 0;
+	unsigned int usage	= 0;
 	if (D3DFMT_D24X8==fmt)									usage = D3DUSAGE_DEPTHSTENCIL;
 	else if (D3DFMT_D24S8		==fmt)						usage = D3DUSAGE_DEPTHSTENCIL;
 	else if (D3DFMT_D15S1		==fmt)						usage = D3DUSAGE_DEPTHSTENCIL;
@@ -98,7 +98,7 @@ void CRT::reset_end		()
 {
 	create		(*cName,dwWidth,dwHeight,fmt);
 }
-void resptrcode_crt::create(const char* Name, u32 w, u32 h, D3DFORMAT f)
+void resptrcode_crt::create(const char* Name, unsigned int w, unsigned int h, D3DFORMAT f)
 {
 	_set			(Device.Resources->_CreateRT(Name,w,h,f));
 }
@@ -121,7 +121,7 @@ CRTC::~CRTC			()
 	Device.Resources->_DeleteRTC	(this);	
 }
 
-void CRTC::create	(const char* Name, u32 size,	D3DFORMAT f)
+void CRTC::create	(const char* Name, unsigned int size,	D3DFORMAT f)
 {
 	R_ASSERT	(HW.pDevice && Name && Name[0] && size && btwIsPow2(size));
 	_order		= CPU::GetCLK();	//Device.GetTimerGlobal()->GetElapsed_clk();
@@ -157,7 +157,7 @@ void CRTC::create	(const char* Name, u32 size,	D3DFORMAT f)
 
 	// OK
 	Msg			("* created RTc(%s), 6(%d)",Name,size);
-	for (u32 face=0; face<6; face++)
+	for (unsigned int face=0; face<6; face++)
 		R_CHK	(pSurface->GetCubeMapSurface	((D3DCUBEMAP_FACES)face, 0, pRT+face));
 	pTexture	= Device.Resources->_CreateTexture	(Name);
 	pTexture->surface_set						(pSurface);
@@ -167,7 +167,7 @@ void CRTC::destroy		()
 {
 	pTexture->surface_set	(0);
 	pTexture				= NULL;
-	for (u32 face=0; face<6; face++)
+	for (unsigned int face=0; face<6; face++)
 		_RELEASE	(pRT[face]	);
 	_RELEASE	(pSurface	);
 }
@@ -180,7 +180,7 @@ void CRTC::reset_end	()
 	create		(*cName,dwSize,fmt);
 }
 
-void resptrcode_crtc::create(const char* Name, u32 size, D3DFORMAT f)
+void resptrcode_crtc::create(const char* Name, unsigned int size, D3DFORMAT f)
 {
 	_set		(Device.Resources->_CreateRTC(Name,size,f));
 }

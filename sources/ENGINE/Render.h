@@ -159,7 +159,7 @@ public:
 		SM_FOR_CUBEMAP = 1,		// tga,		name used as postfix
 		SM_FOR_GAMESAVE = 2,		// dds/dxt1,name used as full-path
 		SM_FOR_LEVELMAP = 3,		// tga,		name used as postfix (level_name)
-		SM_forcedword = u32(-1)
+		SM_forcedword = unsigned int(-1)
 	};
 
 	// options

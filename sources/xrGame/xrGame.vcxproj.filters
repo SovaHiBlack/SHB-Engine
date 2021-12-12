@@ -1888,12 +1888,6 @@
     <Filter Include="AI\AGroup\AgentManager\agent_corpse_manager\MemberCorpse">
       <UniqueIdentifier>{c50157f3-d220-4705-baf5-dbc6132157dc}</UniqueIdentifier>
     </Filter>
-    <Filter Include="AI\AGroup\AgentManager\agent_enemy_manager">
-      <UniqueIdentifier>{e7ae8a84-89a2-496f-a82a-2498fc534087}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AGroup\AgentManager\agent_enemy_manager\member_enemy">
-      <UniqueIdentifier>{def0a6f7-f8aa-4bb1-bd9e-b46caa012334}</UniqueIdentifier>
-    </Filter>
     <Filter Include="AI\AGroup\AgentManager\agent_explosive_manager">
       <UniqueIdentifier>{0849630d-5727-4814-a833-0109009bbf03}</UniqueIdentifier>
     </Filter>
@@ -2067,6 +2061,12 @@
     </Filter>
     <Filter Include="AI\AScript\ScriptClasses\ScriptActions\ScriptMonsterAction">
       <UniqueIdentifier>{41d8f31f-0aca-4b5f-8a7e-eb23030dff0f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\AGroup\AgentManager\AgentEnemyManager">
+      <UniqueIdentifier>{e7ae8a84-89a2-496f-a82a-2498fc534087}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\AGroup\AgentManager\AgentEnemyManager\MemberEnemy">
+      <UniqueIdentifier>{def0a6f7-f8aa-4bb1-bd9e-b46caa012334}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -2499,17 +2499,17 @@
     <ClInclude Include="agent_corpse_manager_inline.h">
       <Filter>AI\AGroup\AgentManager\agent_corpse_manager</Filter>
     </ClInclude>
-    <ClInclude Include="agent_enemy_manager.h">
-      <Filter>AI\AGroup\AgentManager\agent_enemy_manager</Filter>
+    <ClInclude Include="AgentEnemyManager.h">
+      <Filter>AI\AGroup\AgentManager\AgentEnemyManager</Filter>
     </ClInclude>
-    <ClInclude Include="agent_enemy_manager_inline.h">
-      <Filter>AI\AGroup\AgentManager\agent_enemy_manager</Filter>
+    <ClInclude Include="AgentEnemyManager_inline.h">
+      <Filter>AI\AGroup\AgentManager\AgentEnemyManager</Filter>
     </ClInclude>
-    <ClInclude Include="member_enemy.h">
-      <Filter>AI\AGroup\AgentManager\agent_enemy_manager\member_enemy</Filter>
+    <ClInclude Include="MemberEnemy.h">
+      <Filter>AI\AGroup\AgentManager\AgentEnemyManager\MemberEnemy</Filter>
     </ClInclude>
-    <ClInclude Include="member_enemy_inline.h">
-      <Filter>AI\AGroup\AgentManager\agent_enemy_manager\member_enemy</Filter>
+    <ClInclude Include="MemberEnemy_inline.h">
+      <Filter>AI\AGroup\AgentManager\AgentEnemyManager\MemberEnemy</Filter>
     </ClInclude>
     <ClInclude Include="agent_explosive_manager.h">
       <Filter>AI\AGroup\AgentManager\agent_explosive_manager</Filter>
@@ -6092,8 +6092,8 @@
     <ClCompile Include="agent_corpse_manager.cpp">
       <Filter>AI\AGroup\AgentManager\agent_corpse_manager</Filter>
     </ClCompile>
-    <ClCompile Include="agent_enemy_manager.cpp">
-      <Filter>AI\AGroup\AgentManager\agent_enemy_manager</Filter>
+    <ClCompile Include="AgentEnemyManager.cpp">
+      <Filter>AI\AGroup\AgentManager\AgentEnemyManager</Filter>
     </ClCompile>
     <ClCompile Include="agent_explosive_manager.cpp">
       <Filter>AI\AGroup\AgentManager\agent_explosive_manager</Filter>

@@ -28,7 +28,7 @@
 #include "ActorMemory.h"
 #include "stalker_movement_manager.h"
 #include "AgentManager.h"
-#include "agent_enemy_manager.h"
+#include "AgentEnemyManager.h"
 
 using namespace StalkerDecisionSpace;
 

@@ -196,8 +196,8 @@
     <ClInclude Include="ActorStatisticMgr.h" />
     <ClInclude Include="agent_corpse_manager.h" />
     <ClInclude Include="agent_corpse_manager_inline.h" />
-    <ClInclude Include="agent_enemy_manager.h" />
-    <ClInclude Include="agent_enemy_manager_inline.h" />
+    <ClInclude Include="AgentEnemyManager.h" />
+    <ClInclude Include="AgentEnemyManager_inline.h" />
     <ClInclude Include="agent_explosive_manager.h" />
     <ClInclude Include="agent_explosive_manager_inline.h" />
     <ClInclude Include="agent_location_manager.h" />
@@ -837,8 +837,8 @@
     <ClInclude Include="Medkit.h" />
     <ClInclude Include="MemberCorpse.h" />
     <ClInclude Include="MemberCorpse_inline.h" />
-    <ClInclude Include="member_enemy.h" />
-    <ClInclude Include="member_enemy_inline.h" />
+    <ClInclude Include="MemberEnemy.h" />
+    <ClInclude Include="MemberEnemy_inline.h" />
     <ClInclude Include="member_order.h" />
     <ClInclude Include="member_order_inline.h" />
     <ClInclude Include="memory_manager.h" />
@@ -1491,7 +1491,7 @@
     <ClCompile Include="ActorStatisticMgr.cpp" />
     <ClCompile Include="Actor_Weapon.cpp" />
     <ClCompile Include="agent_corpse_manager.cpp" />
-    <ClCompile Include="agent_enemy_manager.cpp" />
+    <ClCompile Include="AgentEnemyManager.cpp" />
     <ClCompile Include="agent_explosive_manager.cpp" />
     <ClCompile Include="agent_location_manager.cpp" />
     <ClCompile Include="AgentManager.cpp" />

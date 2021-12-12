@@ -24,3 +24,5 @@ void CStateMonsterRestWalkGraphAbstract::execute()
 	object->set_state_sound				(MonsterSound::eMonsterSoundIdle);
 }
 
+#undef TEMPLATE_SPECIALIZATION
+#undef CStateMonsterRestWalkGraphAbstract

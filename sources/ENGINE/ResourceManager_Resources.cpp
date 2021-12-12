@@ -381,7 +381,7 @@ void	CResourceManager::_DeleteRT		(const CRT* RT)
 	Msg	("! ERROR: Failed to find render-target '%s'",*RT->cName);
 }
 //--------------------------------------------------------------------------------------------------------------
-CRTC*	CResourceManager::_CreateRTC		(const char* Name, u32 size,	D3DFORMAT f)
+CRTC*	CResourceManager::_CreateRTC		(const char* Name, unsigned int size,	D3DFORMAT f)
 {
 	R_ASSERT(Name && Name[0] && size);
 
@@ -420,8 +420,8 @@ void	CResourceManager::DBG_VerifyGeoms	()
 	D3DVERTEXELEMENT9		test	[MAX_FVF_DECL_SIZE];
 	unsigned int						size	= 0;
 	G->dcl->GetDeclaration			(test,(unsigned int*)&size);
-	u32 vb_stride					= D3DXGetDeclVertexSize	(test,0);
-	u32 vb_stride_cached			= G->vb_stride;
+	unsigned int vb_stride					= D3DXGetDeclVertexSize	(test,0);
+	unsigned int vb_stride_cached			= G->vb_stride;
 	R_ASSERT						(vb_stride == vb_stride_cached);
 	}
 	*/
@@ -450,7 +450,7 @@ SGeometry*	CResourceManager::CreateGeom	(D3DVERTEXELEMENT9* decl, IDirect3DVerte
 	v_geoms.push_back	(Geom);
 	return	Geom;
 }
-SGeometry*	CResourceManager::CreateGeom		(u32 FVF, IDirect3DVertexBuffer9* vb, IDirect3DIndexBuffer9* ib)
+SGeometry*	CResourceManager::CreateGeom		(unsigned int FVF, IDirect3DVertexBuffer9* vb, IDirect3DIndexBuffer9* ib)
 {
 	D3DVERTEXELEMENT9	dcl	[MAX_FVF_DECL_SIZE];
 	CHK_DX				(D3DXDeclaratorFromFVF(FVF,dcl));
@@ -588,13 +588,13 @@ void	CResourceManager::ED_UpdateConstant	(const char* Name, CConstant* data)
 }
 
 //--------------------------------------------------------------------------------------------------------------
-bool	cmp_tl	(const std::pair<u32,ref_texture>& _1, const std::pair<u32,ref_texture>& _2)	{
+bool	cmp_tl	(const std::pair<unsigned int,ref_texture>& _1, const std::pair<unsigned int,ref_texture>& _2)	{
 	return _1.first < _2.first;
 }
 STextureList*	CResourceManager::_CreateTextureList(STextureList& L)
 {
 	std::sort	(L.begin(),L.end(),cmp_tl);
-	for (u32 it=0; it<lst_textures.size(); it++)
+	for (unsigned int it=0; it<lst_textures.size(); it++)
 	{
 		STextureList*	base		= lst_textures[it];
 		if (L.equal(*base))			return base;

@@ -95,3 +95,5 @@ bool CStateMonsterMoveToPointExAbstract::check_completion()
 	return false;
 }
 
+#undef TEMPLATE_SPECIALIZATION
+#undef CStateMonsterMoveToPointExAbstract

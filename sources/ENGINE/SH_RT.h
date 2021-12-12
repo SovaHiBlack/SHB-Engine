@@ -7,8 +7,8 @@ public:
 	IDirect3DSurface9*	pRT;
 	ref_texture			pTexture;
 
-	u32					dwWidth;
-	u32					dwHeight;
+	unsigned int					dwWidth;
+	unsigned int					dwHeight;
 	D3DFORMAT			fmt;
 
 	unsigned __int64					_order;
@@ -16,7 +16,7 @@ public:
 	CRT					();
 	~CRT				();
 
-	void				create			(const char* Name, u32 w, u32 h, D3DFORMAT f);
+	void				create			(const char* Name, unsigned int w, unsigned int h, D3DFORMAT f);
 	void				destroy			();
 	void				reset_begin		();
 	void				reset_end		();
@@ -24,7 +24,7 @@ public:
 };
 struct ENGINE_API		resptrcode_crt	: public resptr_base<CRT>
 {
-	void				create			(const char* Name, u32 w, u32 h, D3DFORMAT f);
+	void				create			(const char* Name, unsigned int w, unsigned int h, D3DFORMAT f);
 	void				destroy			()	{ _set(NULL);		}
 };
 typedef	resptr_core<CRT,resptrcode_crt>		ref_rt;
@@ -37,7 +37,7 @@ public:
 	IDirect3DSurface9*		pRT[6];
 	ref_texture				pTexture;
 
-	u32						dwSize;
+	unsigned int						dwSize;
 	D3DFORMAT				fmt;
 
 	unsigned __int64						_order;
@@ -45,7 +45,7 @@ public:
 	CRTC					();
 	~CRTC					();
 
-	void				create			(const char* name, u32 size, D3DFORMAT f);
+	void				create			(const char* name, unsigned int size, D3DFORMAT f);
 	void				destroy			();
 	void				reset_begin		();
 	void				reset_end		();
@@ -53,7 +53,7 @@ public:
 };
 struct ENGINE_API		resptrcode_crtc	: public resptr_base<CRTC>
 {
-	void				create			(const char* Name, u32 size, D3DFORMAT f);
+	void				create			(const char* Name, unsigned int size, D3DFORMAT f);
 	void				destroy			()	{ _set(NULL);		}
 };
 typedef	resptr_core<CRTC,resptrcode_crtc>		ref_rtc;

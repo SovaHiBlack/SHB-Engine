@@ -31,3 +31,5 @@ bool CStateMonsterFindEnemyAngryAbstract::check_completion()
 	return true;
 }
 
+#undef TEMPLATE_SPECIALIZATION
+#undef CStateMonsterFindEnemyAngryAbstract

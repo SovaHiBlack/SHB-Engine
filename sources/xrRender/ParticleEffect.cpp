@@ -8,7 +8,7 @@ using namespace PS;
 const u32	PS::uDT_STEP 	= 33;
 const float	PS::fDT_STEP 	= float(uDT_STEP)/1000.f;
 
-void PS::OnEffectParticleBirth(void* owner, u32 , PAPI::Particle& m, u32 )
+void PS::OnEffectParticleBirth(void* owner, u32 , PAPI::SParticle& m, u32 )
 {
 	CParticleEffect* PE = static_cast<CParticleEffect*>(owner); VERIFY(PE);
     CPEDef* PED			= PE->GetDefinition(); 
@@ -16,10 +16,10 @@ void PS::OnEffectParticleBirth(void* owner, u32 , PAPI::Particle& m, u32 )
         if (PED->m_Flags.is(CPEDef::dfRandomFrame))
             m.frame	= (unsigned short)iFloor(Random.randI(PED->m_Frame.m_iFrameCount)*255.f);
         if (PED->m_Flags.is(CPEDef::dfAnimated)&&PED->m_Flags.is(CPEDef::dfRandomPlayback)&&Random.randI(2))
-            m.flags.set(Particle::ANIMATE_CCW,TRUE);
+            m.flags.set(SParticle::ANIMATE_CCW,TRUE);
     }
 }
-void PS::OnEffectParticleDead(void* , u32 , PAPI::Particle& , u32 )
+void PS::OnEffectParticleDead(void* , u32 , PAPI::SParticle& , u32 )
 {
 //	CPEDef* PE = static_cast<CPEDef*>(owner);
 }
@@ -105,7 +105,7 @@ void CParticleEffect::OnFrame(u32 frame_dt)
 			}
             ParticleManager()->Update(m_HandleEffect,m_HandleActionList,fDT_STEP);
 
-            PAPI::Particle* particles;
+            PAPI::SParticle* particles;
             u32 p_cnt;
             ParticleManager()->GetParticles(m_HandleEffect,particles,p_cnt);
             
@@ -119,7 +119,7 @@ void CParticleEffect::OnFrame(u32 frame_dt)
 				vis.box.invalidate	();
 				float p_size = 0.f;
 				for(u32 i = 0; i < p_cnt; i++){
-					Particle &m 	= particles[i]; 
+					SParticle&m 	= particles[i];
 					vis.box.modify(( Fvector3&)m.pos);
 					if (m.size.x>p_size) p_size = m.size.x;
 					if (m.size.y>p_size) p_size = m.size.y;
@@ -258,7 +258,7 @@ void CParticleEffect::Render(float )
 {
 	u32			dwOffset,dwCount;
 	// Get a pointer to the particles in gp memory
-    PAPI::Particle* particles;
+    PAPI::SParticle* particles;
     u32 			p_cnt;
     ParticleManager()->GetParticles(m_HandleEffect,particles,p_cnt);
     
@@ -268,7 +268,7 @@ void CParticleEffect::Render(float )
 			FVF::LIT* pv		= pv_start;
 
 			for(u32 i = 0; i < p_cnt; i++){
-				PAPI::Particle &m = particles[i];
+				PAPI::SParticle&m = particles[i];
 
 				Fvector2 lt,rb;
 				lt.set			(0.f,0.f);

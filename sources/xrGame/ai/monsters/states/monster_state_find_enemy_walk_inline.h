@@ -13,3 +13,5 @@ void CStateMonsterFindEnemyWalkAbstract::execute()
 	object->set_state_sound		(MonsterSound::eMonsterSoundAggressive);
 }
 
+#undef TEMPLATE_SPECIALIZATION
+#undef CStateMonsterFindEnemyWalkAbstract

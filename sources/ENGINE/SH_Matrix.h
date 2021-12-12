@@ -13,15 +13,15 @@ public:
 		tcmScale		= (1<<0),
 		tcmRotate		= (1<<1),
 		tcmScroll		= (1<<2),
-		tcmFORCE32		= u32(-1)
+		tcmFORCE32		= unsigned int(-1)
 	};
-public:
+
 	Fmatrix			xform;
 
-	u32				dwFrame;
-	u32				dwMode;
+	unsigned int				dwFrame;
+	unsigned int				dwMode;
     union{
-		u32		tcm;				// mask for tc-modifiers
+		unsigned int		tcm;				// mask for tc-modifiers
         Flags32	tcm_flags;
     };
 	WaveForm		scaleU, scaleV;

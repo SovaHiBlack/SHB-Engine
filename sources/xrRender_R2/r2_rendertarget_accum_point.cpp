@@ -61,9 +61,9 @@ void CRenderTarget::accum_point		(light* L)
 	// Draw volume with projective texgen
 	{
 		// Select shader
-		u32		_id					= 0;
+		unsigned int		_id					= 0;
 		if (L->flags.bShadow)		{
-			bool	bFullSize			= (L->X.S.size == u32(RImplementation.o.smapsize));
+			bool	bFullSize			= (L->X.S.size == unsigned int(RImplementation.o.smapsize));
 			if (L->X.S.transluent)	_id	= SE_L_TRANSLUENT;
 			else if		(bFullSize)	_id	= SE_L_FULLSIZE;
 			else					_id	= SE_L_NORMAL;

@@ -86,3 +86,6 @@ bool CStateMonsterRestFunAbstract::check_completion()
 	if (time_state_started + TIME_IN_STATE < Device.dwTimeGlobal) return true;
 	return false;
 }
+
+#undef TEMPLATE_SPECIALIZATION
+#undef CStateMonsterRestFunAbstract

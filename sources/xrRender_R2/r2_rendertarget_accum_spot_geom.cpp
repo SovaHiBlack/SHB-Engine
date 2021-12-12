@@ -60,12 +60,12 @@ unsigned short du_cone_faces[DU_CONE_NUMFACES*3]=
 
 void CRenderTarget::accum_spot_geom_create	()
 {
-	u32	dwUsage				= D3DUSAGE_WRITEONLY;
+	unsigned int	dwUsage				= D3DUSAGE_WRITEONLY;
 
 	// vertices
 	{
-		u32		vCount		= DU_CONE_NUMVERTEX;
-		u32		vSize		= 3*4;
+		unsigned int		vCount		= DU_CONE_NUMVERTEX;
+		unsigned int		vSize		= 3*4;
 		R_CHK	(HW.pDevice->CreateVertexBuffer(
 			vCount*vSize,
 			dwUsage,
@@ -81,7 +81,7 @@ void CRenderTarget::accum_spot_geom_create	()
 
 	// Indices
 	{
-		u32		iCount		= DU_CONE_NUMFACES*3;
+		unsigned int		iCount		= DU_CONE_NUMFACES*3;
 
 		BYTE*	pData		= 0;
 		R_CHK				(HW.pDevice->CreateIndexBuffer(iCount*2,dwUsage,D3DFMT_INDEX16,D3DPOOL_MANAGED,&g_accum_spot_ib,0));

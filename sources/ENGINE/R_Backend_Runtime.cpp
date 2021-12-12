@@ -9,7 +9,7 @@
 
 void CBackend::OnFrameEnd	()
 {
-	for (u32 stage=0; stage<HW.Caps.raster.dwStages; stage++)
+	for (unsigned int stage=0; stage<HW.Caps.raster.dwStages; stage++)
 		CHK_DX(HW.pDevice->SetTexture(0,0));
 	CHK_DX				(HW.pDevice->SetStreamSource	(0,0,0,0));
 	CHK_DX				(HW.pDevice->SetIndices			(0));
@@ -49,13 +49,13 @@ void CBackend::Invalidate	()
 	M							= NULL;
 	C							= NULL;
 
-	colorwrite_mask				= u32(-1);
+	colorwrite_mask				= unsigned int(-1);
 
-	for (u32 ps_it =0; ps_it<16;)	textures_ps	[ps_it++]	= 0;
-	for (u32 vs_it =0; vs_it< 5;)	textures_vs	[vs_it++]	= 0;
+	for (unsigned int ps_it =0; ps_it<16;)	textures_ps	[ps_it++]	= 0;
+	for (unsigned int vs_it =0; vs_it< 5;)	textures_vs	[vs_it++]	= 0;
 }
 
-void	CBackend::set_ClipPlanes	(u32 _enable, Fplane*	_planes /*=NULL */, u32 count/* =0*/)
+void	CBackend::set_ClipPlanes	(unsigned int _enable, Fplane*	_planes /*=NULL */, unsigned int count/* =0*/)
 {
 	if (0==HW.Caps.geometry.dwClipPlanes)	return;
 	if (!_enable)	{
@@ -70,7 +70,7 @@ void	CBackend::set_ClipPlanes	(u32 _enable, Fplane*	_planes /*=NULL */, u32 coun
 	D3DXMATRIX			worldToClipMatrixIT;
 	D3DXMatrixInverse	(&worldToClipMatrixIT,NULL,(D3DXMATRIX*)&Device.mFullTransform);
 	D3DXMatrixTranspose	(&worldToClipMatrixIT,&worldToClipMatrixIT);
-	for		(u32 it=0; it<count; it++)		{
+	for		(unsigned int it=0; it<count; it++)		{
 		Fplane&		P			= _planes	[it];
 		D3DXPLANE	planeWorld	(-P.n.x,-P.n.y,-P.n.z,-P.d), planeClip;
 		D3DXPlaneNormalize		(&planeWorld,	&planeWorld);
@@ -79,11 +79,11 @@ void	CBackend::set_ClipPlanes	(u32 _enable, Fplane*	_planes /*=NULL */, u32 coun
 	}
 
 	// Enable them
-	u32		e_mask	= (1<<count)-1;
+	unsigned int		e_mask	= (1<<count)-1;
 	CHK_DX	(HW.pDevice->SetRenderState(D3DRS_CLIPPLANEENABLE,e_mask));
 }
 
-void	CBackend::set_ClipPlanes	(u32 _enable, Fmatrix*	_xform  /*=NULL */, u32 fmask/* =0xff */)
+void	CBackend::set_ClipPlanes	(unsigned int _enable, Fmatrix*	_xform  /*=NULL */, unsigned int fmask/* =0xff */)
 {
 	if (0==HW.Caps.geometry.dwClipPlanes)	return;
 	if (!_enable)	{
@@ -100,14 +100,14 @@ void CBackend::set_Textures			(STextureList* _T)
 {
 	if (T == _T)	return;
 	T				= _T;
-	u32 _last_ps	= 0;
-	u32 _last_vs	= 0;
+	unsigned int _last_ps	= 0;
+	unsigned int _last_vs	= 0;
 	STextureList::iterator	_it		= _T->begin	();
 	STextureList::iterator	_end	= _T->end	();
 	for (; _it!=_end; _it++)
 	{
-		std::pair<u32,ref_texture>&		loader	=	*_it;
-		u32			load_id		= loader.first		;
+		std::pair<unsigned int,ref_texture>&		loader	=	*_it;
+		unsigned int			load_id		= loader.first		;
 		CTexture*	load_surf	= &*loader.second	;
 		if (load_id<256)		{
 			// ordinary pixel surface
@@ -127,7 +127,7 @@ void CBackend::set_Textures			(STextureList* _T)
 			}
 		} else {
 			// d-map or vertex	
-			u32		load_id_remapped	= load_id-256;
+			unsigned int		load_id_remapped	= load_id-256;
 			if (load_id_remapped>_last_vs)	_last_vs	=	load_id_remapped;
 			if (textures_vs[load_id_remapped]!=load_surf)	{
 				textures_vs[load_id_remapped]	= load_surf			;

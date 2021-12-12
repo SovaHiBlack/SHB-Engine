@@ -43,24 +43,24 @@ void CPEDef::SetName(const char* name)
 	m_Name				= name;
 }
 
-void CPEDef::ExecuteAnimate(Particle *particles, u32 p_cnt, float dt)
+void CPEDef::ExecuteAnimate(SParticle*particles, u32 p_cnt, float dt)
 {
 	float speedFac = m_Frame.m_fSpeed * dt;
 	for(u32 i = 0; i < p_cnt; i++){
-		Particle &m = particles[i];
-		float f						= (float(m.frame)/255.f+((m.flags.is(Particle::ANIMATE_CCW))?-1.f:1.f)*speedFac);
+		SParticle&m = particles[i];
+		float f						= (float(m.frame)/255.f+((m.flags.is(SParticle::ANIMATE_CCW))?-1.f:1.f)*speedFac);
 		if (f>m_Frame.m_iFrameCount)f-=m_Frame.m_iFrameCount;
 		if (f<0.f)					f+=m_Frame.m_iFrameCount;
 		m.frame						= (unsigned short)iFloor(f*255.f);
 	}
 }
 
-void CPEDef::ExecuteCollision(PAPI::Particle* particles, u32 p_cnt, float dt, CParticleEffect* owner, CollisionCallback cb)
+void CPEDef::ExecuteCollision(PAPI::SParticle* particles, u32 p_cnt, float dt, CParticleEffect* owner, CollisionCallback cb)
 {
-	pVector pt,n;
+	CParticleVector pt,n;
 	// Must traverse list in reverse order so Remove will work
 	for(int i = p_cnt-1; i >= 0; i--){
-		Particle &m = particles[i];
+		SParticle&m = particles[i];
 
 		bool pick_needed;
 		int pick_cnt=0;
@@ -89,8 +89,8 @@ void CPEDef::ExecuteCollision(PAPI::Particle* particles, u32 p_cnt, float dt, CP
 					}else{
 						// Compute tangential and normal components of velocity
 						float nmag = m.vel * n;
-						pVector vn(n * nmag); 	// Normal Vn = (V.N)N
-						pVector vt(m.vel - vn);	// Tangent Vt = V - Vn
+						CParticleVector vn(n * nmag); 	// Normal Vn = (V.N)N
+						CParticleVector vt(m.vel - vn);	// Tangent Vt = V - Vn
 
 						// Compute _new velocity heading out:
 						// Don't apply friction if tangential velocity < cutoff

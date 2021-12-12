@@ -9,13 +9,13 @@ class ENGINE_API CTexture			: public xr_resource_named				{
 public:
 	struct 
 	{
-		u32					bLoaded		: 1;
-		u32					bUser		: 1;
-		u32					seqCycles	: 1;
-		u32					MemoryUsage	: 28;
+		unsigned int					bLoaded		: 1;
+		unsigned int					bUser		: 1;
+		unsigned int					seqCycles	: 1;
+		unsigned int					MemoryUsage	: 28;
 
 	}									flags;
-	fastdelegate::FastDelegate1<u32>	bind;
+	fastdelegate::FastDelegate1<unsigned int>	bind;
 
 	IDirect3DBaseTexture9*				pSurface;
 	CAviPlayerCustom*					pAVI;
@@ -24,8 +24,8 @@ public:
 	CSharedString							m_bumpmap;
 
 	union{
-		u32								m_play_time;		// sync theora time
-		u32								seqMSPF;			// Sequence data milliseconds per frame
+		unsigned int								m_play_time;		// sync theora time
+		unsigned int								seqMSPF;			// Sequence data milliseconds per frame
 	};
 
 	// Sequence data
@@ -38,27 +38,27 @@ public:
 	inline void								desc_enshure	()		{ if (!desc_valid()) desc_update(); }
 	void								desc_update		();
 public:
-	void	__stdcall					apply_load		(u32	stage);
-	void	__stdcall					apply_theora	(u32	stage);
-	void	__stdcall					apply_avi		(u32	stage);
-	void	__stdcall					apply_seq		(u32	stage);
-	void	__stdcall					apply_normal	(u32	stage);
+	void	__stdcall					apply_load		(unsigned int	stage);
+	void	__stdcall					apply_theora	(unsigned int	stage);
+	void	__stdcall					apply_avi		(unsigned int	stage);
+	void	__stdcall					apply_seq		(unsigned int	stage);
+	void	__stdcall					apply_normal	(unsigned int	stage);
 
 	void								Preload			();
 	void								Load			();
 	void								PostLoad		();
 	void								Unload			(void);
-//	void								Apply			(u32 dwStage);
+//	void								Apply			(unsigned int dwStage);
 
 	void								surface_set		(IDirect3DBaseTexture9* surf);
 	IDirect3DBaseTexture9*				surface_get 	();
 
 	inline BOOL								isUser			()		{ return flags.bUser;					}
-	inline u32								get_Width		()		{ desc_enshure(); return desc.Width;	}
-	inline u32								get_Height		()		{ desc_enshure(); return desc.Height;	}
+	inline unsigned int								get_Width		()		{ desc_enshure(); return desc.Width;	}
+	inline unsigned int								get_Height		()		{ desc_enshure(); return desc.Height;	}
 
-	void								video_Sync		(u32 _time){m_play_time=_time;}
-	void								video_Play		(BOOL looped, u32 _time=0xFFFFFFFF);
+	void								video_Sync		(unsigned int _time){m_play_time=_time;}
+	void								video_Play		(BOOL looped, unsigned int _time=0xFFFFFFFF);
 	void								video_Pause		(BOOL state);
 	void								video_Stop		();
 	BOOL								video_IsPlaying	();

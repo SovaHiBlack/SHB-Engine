@@ -15,7 +15,7 @@ void CRenderTarget::enable_dbt_bounds		(light* L)
 	if (!RImplementation.o.nvdbt)					return;
 	if (!ps_r2_ls_flags.test(R2FLAG_USE_NVDBT))		return;
 
-	u32	mask		= 0xffffffff;
+	unsigned int	mask		= 0xffffffff;
 	EFC_Visible vis	= RImplementation.ViewBase.testSphere(L->spatial.sphere.P,L->spatial.sphere.R*1.01f,mask);
 	if (vis!=fcvFully)								return;
 
@@ -27,7 +27,7 @@ void CRenderTarget::enable_dbt_bounds		(light* L)
 
 	Fbox3	bbp;
 	bbp.invalidate();
-	for (u32 i=0; i<8; i++)		{
+	for (unsigned int i=0; i<8; i++)		{
 		Fvector3		pt;
 		BB.getpoint	(i,pt);
 		Device.mFullTransform.transform	(pt);
@@ -58,7 +58,7 @@ void	CRenderTarget::u_DBT_disable	()
 
 BOOL CRenderTarget::enable_scissor		(light* L)		// true if intersects near plane
 {
-	// Msg	("%d: %x type(%d), pos(%f,%f,%f)",Device.dwFrame,u32(L),u32(L->flags.type),VPUSH(L->position));
+	// Msg	("%d: %x type(%d), pos(%f,%f,%f)",Device.dwFrame,unsigned int(L),unsigned int(L->flags.type),VPUSH(L->position));
 
 	// Near plane intersection
 	BOOL	near_intersect				= FALSE;

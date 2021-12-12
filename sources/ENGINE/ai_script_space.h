@@ -36,8 +36,6 @@ extern "C"
 
 using CLuaVirtualMachine = lua_State;
 
-//typedef lua_State CLuaVirtualMachine;
-
 struct SMemberCallback
 {
 	luabind::functor<void>*		m_lua_function;

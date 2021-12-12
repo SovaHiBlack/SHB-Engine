@@ -20,14 +20,14 @@ class	ENGINE_API				IBlender;
 #pragma pack(push,4)
 
 //////////////////////////////////////////////////////////////////////////
-struct	ENGINE_API		STextureList	: public xr_resource_flagged, public xr_vector<std::pair<u32,ref_texture> >	{
-	typedef xr_vector<std::pair<u32,ref_texture> > inherited_vec;
+struct	ENGINE_API		STextureList	: public xr_resource_flagged, public xr_vector<std::pair<unsigned int,ref_texture> >	{
+	typedef xr_vector<std::pair<unsigned int,ref_texture> > inherited_vec;
 						~STextureList	();
 
 						inline BOOL		equal (const STextureList& base) const
 						{
 							if (size()!=base.size())			return FALSE;
-							for (u32 cmp=0; cmp<size(); cmp++)	{
+							for (unsigned int cmp=0; cmp<size(); cmp++)	{
 								if ((*this)[cmp].first	!=base[cmp].first)	return FALSE;
 								if ((*this)[cmp].second	!=base[cmp].second)	return FALSE;
 							}
@@ -53,15 +53,15 @@ struct	ENGINE_API		SGeometry		: public xr_resource_flagged									{
 	ref_declaration						dcl;
 	IDirect3DVertexBuffer9*				vb;
 	IDirect3DIndexBuffer9*				ib;
-	u32									vb_stride;
+	unsigned int									vb_stride;
 						~SGeometry		();
 };
 struct ENGINE_API		resptrcode_geom	: public resptr_base<SGeometry>
 {
 	void 				create			(D3DVERTEXELEMENT9* decl, IDirect3DVertexBuffer9* vb, IDirect3DIndexBuffer9* ib);
-	void				create			(u32 FVF				, IDirect3DVertexBuffer9* vb, IDirect3DIndexBuffer9* ib);
+	void				create			(unsigned int FVF				, IDirect3DVertexBuffer9* vb, IDirect3DIndexBuffer9* ib);
 	void				destroy			()			{ _set(NULL);		}
-	u32					stride			()	const	{ return _get()->vb_stride;	}
+	unsigned int					stride			()	const	{ return _get()->vb_stride;	}
 };
 typedef	resptr_core<SGeometry,resptrcode_geom>												ref_geom;
 
@@ -85,13 +85,13 @@ struct ENGINE_API		ShaderElement	: public xr_resource_flagged									{
 public:
 	struct Sflags
 	{
-		u32	iPriority	:	2;
-		u32	bStrictB2F	:	1;
-		u32	bEmissive	:	1;
-		u32	bDistort	:	1;
-		u32	bWmark		:	1;
+		unsigned int	iPriority	:	2;
+		unsigned int	bStrictB2F	:	1;
+		unsigned int	bEmissive	:	1;
+		unsigned int	bDistort	:	1;
+		unsigned int	bWmark		:	1;
 	};
-public:
+
 	Sflags								flags;
 	svector<ref_pass,SHADER_PASSES_MAX>	passes;
 

@@ -45,3 +45,5 @@ bool CStateMonsterAttackMeleeAbstract::check_completion()
 }
 
 
+#undef TEMPLATE_SPECIALIZATION
+#undef CStateMonsterAttackMeleeAbstract

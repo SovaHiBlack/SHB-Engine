@@ -79,7 +79,6 @@ void CStateMonsterFindEnemyLookAbstract::setup_substates()
 		data.action.sound_type	= MonsterSound::eMonsterSoundAggressive;
 		data.action.sound_delay = object->db().m_dwAttackSndDelay;
 
-
 		state->fill_data_with(&data, sizeof(SStateDataMoveToPoint));
 
 		return;
@@ -112,3 +111,5 @@ void CStateMonsterFindEnemyLookAbstract::setup_substates()
 	}
 }
 
+#undef TEMPLATE_SPECIALIZATION
+#undef CStateMonsterFindEnemyLookAbstract

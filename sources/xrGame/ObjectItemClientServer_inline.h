@@ -11,56 +11,54 @@
 #define CSObjectItemClientServer CObjectItemClientServer<_client_type,_server_type>
 
 TEMPLATE_SPECIALIZATION
-inline	CSObjectItemClientServer::CObjectItemClientServer	(const CLASS_ID &clsid, const char* script_clsid) :
-	inherited			(clsid,script_clsid)
+inline	CSObjectItemClientServer::CObjectItemClientServer(const CLASS_ID& clsid, const char* script_clsid) :
+	inherited(clsid, script_clsid)
+{ }
+
+TEMPLATE_SPECIALIZATION
+ObjectFactory::CLIENT_BASE_CLASS* CSObjectItemClientServer::client_object( ) const
 {
+	return				(xr_new<CLIENT_TYPE>( )->_construct( ));
 }
 
 TEMPLATE_SPECIALIZATION
-ObjectFactory::CLIENT_BASE_CLASS *CSObjectItemClientServer::client_object	() const
+ObjectFactory::SERVER_BASE_CLASS* CSObjectItemClientServer::server_object(const char* section) const
 {
-	return				(xr_new<CLIENT_TYPE>()->_construct());
-}
-
-TEMPLATE_SPECIALIZATION
-ObjectFactory::SERVER_BASE_CLASS *CSObjectItemClientServer::server_object	(const char* section) const
-{
-	ObjectFactory::SERVER_BASE_CLASS * o = xr_new<SERVER_TYPE>(section)->init();
-	R_ASSERT			(o);
+	ObjectFactory::SERVER_BASE_CLASS* o = xr_new<SERVER_TYPE>(section)->init( );
+	R_ASSERT(o);
 	return				(o);
 }
 
 #undef TEMPLATE_SPECIALIZATION
 #undef CSObjectItemClientServer
 
-#	define TEMPLATE_SPECIALIZATION template <typename _client_type_single, typename _client_type_mp, typename _server_type_single, typename _server_type_mp>
-#	define CSObjectItemClientServerSingleMp CObjectItemClientServerSingleMp<_client_type_single,_client_type_mp,_server_type_single,_server_type_mp>
+#define TEMPLATE_SPECIALIZATION template <typename _client_type_single, typename _client_type_mp, typename _server_type_single, typename _server_type_mp>
+#define CSObjectItemClientServerSingleMp CObjectItemClientServerSingleMp<_client_type_single,_client_type_mp,_server_type_single,_server_type_mp>
 
-	TEMPLATE_SPECIALIZATION
-	inline	CSObjectItemClientServerSingleMp::CObjectItemClientServerSingleMp				(const CLASS_ID &clsid, const char* script_clsid) :
-		inherited			(clsid,script_clsid)
-	{
-	}
+TEMPLATE_SPECIALIZATION
+inline	CSObjectItemClientServerSingleMp::CObjectItemClientServerSingleMp(const CLASS_ID& clsid, const char* script_clsid) :
+	inherited(clsid, script_clsid)
+{ }
 
-	TEMPLATE_SPECIALIZATION
-	ObjectFactory::CLIENT_BASE_CLASS *CSObjectItemClientServerSingleMp::client_object	() const
-	{
-		ObjectFactory::CLIENT_BASE_CLASS	*result = 
-						xr_new<_client_type_single>();
-		
-		return								(result->_construct());
-	}
+TEMPLATE_SPECIALIZATION
+ObjectFactory::CLIENT_BASE_CLASS* CSObjectItemClientServerSingleMp::client_object( ) const
+{
+	ObjectFactory::CLIENT_BASE_CLASS* result =
+		xr_new<_client_type_single>( );
 
-	TEMPLATE_SPECIALIZATION
-	ObjectFactory::SERVER_BASE_CLASS *CSObjectItemClientServerSingleMp::server_object	(const char* section) const
-	{
-		ObjectFactory::SERVER_BASE_CLASS	*result = 
-			xr_new<_server_type_single>(section);
+	return								(result->_construct( ));
+}
 
-		result								= result->init();
-		R_ASSERT							(result);
-		return								(result);
-	}
+TEMPLATE_SPECIALIZATION
+ObjectFactory::SERVER_BASE_CLASS* CSObjectItemClientServerSingleMp::server_object(const char* section) const
+{
+	ObjectFactory::SERVER_BASE_CLASS* result =
+		xr_new<_server_type_single>(section);
+
+	result = result->init( );
+	R_ASSERT(result);
+	return								(result);
+}
 
 #	undef TEMPLATE_SPECIALIZATION
 #	undef CSObjectItemClientServerSingleMp

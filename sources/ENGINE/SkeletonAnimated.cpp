@@ -124,7 +124,7 @@ void	CKinematicsAnimated::LL_FadeCycle(unsigned short part, float falloff, unsig
 {
 	BlendSVec&	Blend		= blend_cycles[part];
 	
-	for (u32 I=0; I<Blend.size(); I++)
+	for (unsigned int I=0; I<Blend.size(); I++)
 	{
 		CBlend& B			= *Blend[I];
 		if(!(mask_channel&(1<<B.channel)))
@@ -148,7 +148,7 @@ void	CKinematicsAnimated::LL_CloseCycle(unsigned short part, unsigned char mask_
 		B.blend = CBlend::eFREE_SLOT;
 		
 		CPartDef& P	= (*m_Partition)[B.bone_or_part];
-		for (u32 i=0; i<P.bones.size(); i++)
+		for (unsigned int i=0; i<P.bones.size(); i++)
 			Bone_Motion_Stop_IM	((*bones)[P.bones[i]],*I);
 
 		blend_cycles[part].erase(I);// ?
@@ -248,7 +248,7 @@ CBlend*	CKinematicsAnimated::LL_PlayCycle(unsigned short part, MotionID motion_I
 
 	_DBG_SINGLE_USE_MARKER;
 	IBlendSetup(*B, part,channel, motion_ID, bMixing, blendAccrue, blendFalloff, Speed, noloop, Callback, CallbackParam );
-	for (u32 i=0; i<P.bones.size(); i++)
+	for (unsigned int i=0; i<P.bones.size(); i++)
 		Bone_Motion_Start_IM	((*bones)[P.bones[i]],B);
 	blend_cycles[part].push_back(B);
 	return		B;
@@ -329,7 +329,7 @@ void	CKinematicsAnimated::DestroyCycle	(CBlend &B)
 {
 	B.blend 		= CBlend::eFREE_SLOT;
 	CPartDef& P		= m_Partition->part(B.bone_or_part);
-	for (u32 i=0; i<P.bones.size(); i++)
+	for (unsigned int i=0; i<P.bones.size(); i++)
 		Bone_Motion_Stop_IM((*bones)[P.bones[i]],&B);
 }
 
@@ -366,7 +366,7 @@ void CKinematicsAnimated::UpdateTracks	()
 {
 	_DBG_SINGLE_USE_MARKER;
 	if (Update_LastTime==Device.dwTimeGlobal) return;
-	u32 DT	= Device.dwTimeGlobal-Update_LastTime;
+	unsigned int DT	= Device.dwTimeGlobal-Update_LastTime;
 	if (DT>66) DT=66;
 	float dt = float(DT)/1000.f;
 	Update_LastTime 	= Device.dwTimeGlobal;
@@ -476,7 +476,7 @@ void CKinematicsAnimated::UpdateTracks	()
 void CKinematicsAnimated::Release()
 {
 	// xr_free bones
-//.	for (u32 i=0; i<bones->size(); i++)
+//.	for (unsigned int i=0; i<bones->size(); i++)
 //.	{
 //.		CBoneDataAnimated* B	= (CBoneDataAnimated*)(*bones)[i];
 //.		B->Motions.clear		();
@@ -499,9 +499,9 @@ CKinematicsAnimated::~CKinematicsAnimated	()
 void	CKinematicsAnimated::IBoneInstances_Create()
 {
 	inherited::IBoneInstances_Create();
-	u32				size	= bones->size();
+	unsigned int				size	= bones->size();
 	blend_instances			= xr_alloc<CBlendInstance>(size);
-	for (u32 i=0; i<size; i++)
+	for (unsigned int i=0; i<size; i++)
 		blend_instances[i].construct();
 }
 
@@ -532,7 +532,7 @@ void CKinematicsAnimated::Spawn	()
 
 	IBlend_Startup			();
 
-	for (u32 i=0; i<bones->size(); i++)
+	for (unsigned int i=0; i<bones->size(); i++)
 		blend_instances[i].construct();
 }
 void CKinematicsAnimated::ChannelFactorsStartup()
@@ -550,7 +550,7 @@ void CKinematicsAnimated::IBlend_Startup	()
 	CBlend B; ZeroMemory(&B,sizeof(B));
 	B.blend				= CBlend::eFREE_SLOT;
 	blend_pool.clear	();
-	for (u32 i=0; i<MAX_BLENDED_POOL; i++)
+	for (unsigned int i=0; i<MAX_BLENDED_POOL; i++)
 		blend_pool.push_back(B);
 
 	// cycles+fx clear
@@ -570,7 +570,7 @@ CBlend*	CKinematicsAnimated::IBlend_Create	()
 	FATAL("Too many blended motions requisted");
 	return 0;
 }
-void CKinematicsAnimated::Load(const char* N, IReader *data, u32 dwFlags)
+void CKinematicsAnimated::Load(const char* N, IReader *data, unsigned int dwFlags)
 {
 	inherited::Load	(N, data, dwFlags);
 
@@ -583,11 +583,11 @@ void CKinematicsAnimated::Load(const char* N, IReader *data, u32 dwFlags)
 	if (data->find_chunk(OGF_S_MOTION_REFS)){
 		string_path		items_nm;
 		data->r_stringZ	(items_nm,sizeof(items_nm));
-		u32 set_cnt		= _GetItemCount(items_nm);
+		unsigned int set_cnt		= _GetItemCount(items_nm);
 		R_ASSERT		(set_cnt<MAX_ANIM_SLOT);
 		m_Motions.reserve(set_cnt);
 		string_path		nm;
-		for (u32 k=0; k<set_cnt; k++){
+		for (unsigned int k=0; k<set_cnt; k++){
 			_GetItem	(items_nm,k,nm);
 			strcat		(nm,".omf");
 			string_path	fn;
@@ -621,7 +621,7 @@ void CKinematicsAnimated::Load(const char* N, IReader *data, u32 dwFlags)
 	for (MotionsSlotVecIt m_it=m_Motions.begin(); m_it!=m_Motions.end(); m_it++){
 		SMotionsSlot& MS	= *m_it;
 		MS.bone_motions.resize(bones->size());
-		for (u32 i=0; i<bones->size(); i++){
+		for (unsigned int i=0; i<bones->size(); i++){
 			CBoneData* BD		= (*bones)[i];
 			MS.bone_motions[i]	= MS.motions.bone_motions(BD->name);
 		}
@@ -706,9 +706,9 @@ inline void Dequantize(CKey& K,const CBlend& BD,const CMotion& M)
 	const CBlend*	B		=	&BD;
 	float			time	=	B->timeCurrent*float(SAMPLE_FPS);
 
-	u32				frame	=	iFloor(time);
+	unsigned int				frame	=	iFloor(time);
 	float			delta	=	time-float(frame);
-	u32				count	=	M.get_count();
+	unsigned int				count	=	M.get_count();
 	// rotation
 	if (M.test_flag(flRKeyAbsent)){
 		const CKeyQR *		K		=	&M._keysR[0];
@@ -758,7 +758,7 @@ inline void Dequantize(CKey& K,const CBlend& BD,const CMotion& M)
 		Log("speed", B->speed);
 		Log("playing", B->playing);
 		Log("stop_at_end", B->stop_at_end);
-		Log("motionID", (u32)B->motionID.idx);
+		Log("motionID", (unsigned int)B->motionID.idx);
 		Log("blend", B->blend);
 
 		Log("dwFrame", B->dwFrame);
@@ -1110,7 +1110,7 @@ void CKinematicsAnimated::CLBone(const CBoneData* bd,CBoneInstance& BONE_INST,co
 			Log("Bone",LL_BoneName_dbg(SelfID));
 			Msg("Result.Q %f,%f,%f,%f",Result.Q.x,Result.Q.y,Result.Q.z,Result.Q.w);
 			Log("Result.T",Result.T);
-			Log("lp parent",(u32)parent);
+			Log("lp parent",(unsigned int)parent);
 			Log("parent",*parent);
 			Log("RES",RES);
 			Log("mT",BONE_INST.mTransform);
@@ -1118,8 +1118,8 @@ void CKinematicsAnimated::CLBone(const CBoneData* bd,CBoneInstance& BONE_INST,co
 			CBlend*			B		=	*BI;
 			CMotion&		M		=	*LL_GetMotion(B->motionID,SelfID);
 			float			time	=	B->timeCurrent*float(SAMPLE_FPS);
-			u32				frame	=	iFloor(time);
-			u32				count	=	M.get_count();
+			unsigned int				frame	=	iFloor(time);
+			unsigned int				count	=	M.get_count();
 			float			delta	=	time-float(frame);
 
 			Log("flTKeyPresent",M.test_flag(flTKeyPresent));

@@ -27,7 +27,7 @@ void	resptrcode_shader::create		(IBlender* B, const char* s_shader, const char* 
 }
 
 //////////////////////////////////////////////////////////////////////////
-void	resptrcode_geom::create			(u32 FVF , IDirect3DVertexBuffer9* vb, IDirect3DIndexBuffer9* ib)
+void	resptrcode_geom::create			(unsigned int FVF , IDirect3DVertexBuffer9* vb, IDirect3DIndexBuffer9* ib)
 {
 	_set(Device.Resources->CreateGeom		(FVF,vb,ib));
 }
@@ -70,7 +70,7 @@ BOOL ShaderElement::equal	(ShaderElement& S)
 	if (flags.bWmark		!= S.flags.bWmark)		return FALSE;
 	if (flags.bDistort		!= S.flags.bDistort)	return FALSE;
 	if (passes.size() != S.passes.size())			return FALSE;
-	for (u32 p=0; p<passes.size(); p++)
+	for (unsigned int p=0; p<passes.size(); p++)
 		if (passes[p] != S.passes[p])				return FALSE;
 	return TRUE;
 }

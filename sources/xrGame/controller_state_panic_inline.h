@@ -20,3 +20,6 @@ CStateControllerPanicAbstract::~CStateControllerPanic()
 TEMPLATE_SPECIALIZATION
 void CStateControllerPanicAbstract::reselect_state()
 { }
+
+#undef TEMPLATE_SPECIALIZATION
+#undef CStateControllerPanicAbstract

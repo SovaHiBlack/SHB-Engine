@@ -2,23 +2,24 @@
 
 #include "r_constants.h"
 
-template <class T, u32 limit>
+template <class T, unsigned int limit>
 class	R_constant_cache
 {
 private:
 	ALIGN(16)	svector<T,limit>		array;
-	u32									lo,hi;
+	unsigned int									lo,hi;
+
 public:
 	R_constant_cache()
 	{
 		array.resize(limit);
 		flush		();
 	}
-	__forceinline T*					access	(u32 id)				{ return &array[id];						}
+	__forceinline T*					access	(unsigned int id)				{ return &array[id];						}
 	__forceinline void				flush	()						{ lo=hi=0;									}
-	__forceinline void				dirty	(u32 _lo, u32 _hi)		{ if (_lo<lo) lo=_lo; if (_hi>hi) hi=_hi;	}
-	__forceinline u32					r_lo	()						{ return lo;								}
-	__forceinline u32					r_hi	()						{ return hi;								}
+	__forceinline void				dirty	(unsigned int _lo, unsigned int _hi)		{ if (_lo<lo) lo=_lo; if (_hi>hi) hi=_hi;	}
+	__forceinline unsigned int					r_lo	()						{ return lo;								}
+	__forceinline unsigned int					r_hi	()						{ return hi;								}
 };
 
 class	R_constant_array
@@ -27,12 +28,12 @@ public:
 	typedef		R_constant_cache<Fvector4,256>	t_f;
 	typedef		R_constant_cache<Ivector4,16>	t_i;
 	typedef		R_constant_cache<BOOL,16>		t_b;
-public:
+
 	ALIGN(16)	t_f					c_f;
 //	ALIGN(16)	t_i					c_i;
 //	ALIGN(16)	t_b					c_b;
 	BOOL							b_dirty;
-public:
+
 	t_f&					get_array_f		()	{ return c_f;	}
 //	t_i&					get_array_i		()	{ return c_i;	}
 //	t_b&					get_array_b		()	{ return c_b;	}
@@ -80,10 +81,10 @@ public:
 		c_f.dirty	(L.index,L.index+1);
 	}
 
-	void					seta	(R_constant* C, R_constant_load& L, u32 e, const Fmatrix& A)
+	void					seta	(R_constant* C, R_constant_load& L, unsigned int e, const Fmatrix& A)
 	{
 		VERIFY		(RC_float == C->type);
-		u32			base;
+		unsigned int			base;
 		Fvector4*	it;
 		switch		(L.cls)
 		{
@@ -122,11 +123,11 @@ public:
 		}
 	}
 
-	void					seta	(R_constant* C, R_constant_load& L, u32 e, const Fvector4& A)
+	void					seta	(R_constant* C, R_constant_load& L, unsigned int e, const Fvector4& A)
 	{
 		VERIFY		(RC_float	== C->type);
 		VERIFY		(RC_1x4		== L.cls);
-		u32			base	= L.index + e;
+		unsigned int			base	= L.index + e;
 		c_f.access	(base)->set	(A);
 		c_f.dirty	(base,base+1);
 	}
@@ -139,7 +140,7 @@ public:
 	ALIGN(16)	R_constant_array	a_vertex;
 
 	void					flush_cache	();
-public:
+
 	// fp, non-array versions
 	__forceinline void				set		(R_constant* C, const Fmatrix& A)		{
 		if (C->destination&1)		{ a_pixel.set	(C,C->ps,A); a_pixel.b_dirty=TRUE;		}
@@ -155,15 +156,15 @@ public:
 	}
 
 	// fp, array versions
-	__forceinline void				seta	(R_constant* C, u32 e, const Fmatrix& A)		{
+	__forceinline void				seta	(R_constant* C, unsigned int e, const Fmatrix& A)		{
 		if (C->destination&1)		{ a_pixel.seta	(C,C->ps,e,A); a_pixel.b_dirty=TRUE;	}
 		if (C->destination&2)		{ a_vertex.seta	(C,C->vs,e,A); a_vertex.b_dirty=TRUE;	}
 	}
-	__forceinline void				seta	(R_constant* C, u32 e, const Fvector4& A)		{
+	__forceinline void				seta	(R_constant* C, unsigned int e, const Fvector4& A)		{
 		if (C->destination&1)		{ a_pixel.seta	(C,C->ps,e,A); a_pixel.b_dirty=TRUE;	}
 		if (C->destination&2)		{ a_vertex.seta	(C,C->vs,e,A); a_vertex.b_dirty=TRUE;	}
 	}
-	__forceinline void				seta	(R_constant* C, u32 e, float x, float y, float z, float w)	{
+	__forceinline void				seta	(R_constant* C, unsigned int e, float x, float y, float z, float w)	{
 		Fvector4 data;		data.set(x,y,z,w);
 		seta				(C,e,data);
 	}

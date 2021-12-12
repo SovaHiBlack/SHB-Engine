@@ -30,7 +30,7 @@ void _VertexStream::Destroy	()
 	_clear					();
 }
 
-void* _VertexStream::Lock	( u32 vl_Count, u32 Stride, u32& vOffset )
+void* _VertexStream::Lock	(unsigned int vl_Count, unsigned int Stride, unsigned int& vOffset )
 {
 
 #ifdef DEBUG
@@ -40,12 +40,12 @@ void* _VertexStream::Lock	( u32 vl_Count, u32 Stride, u32& vOffset )
 #endif // DEBUG
 
 	// Ensure there is enough space in the VB for this data
-	u32	bytes_need		= vl_Count*Stride;
+	unsigned int	bytes_need		= vl_Count*Stride;
 	R_ASSERT			((bytes_need<=mSize) && vl_Count);
 
 	// Vertex-local info
-	u32 vl_mSize		= mSize/Stride;
-	u32 vl_mPosition	= mPosition/Stride + 1;
+	unsigned int vl_mSize		= mSize/Stride;
+	unsigned int vl_mPosition	= mPosition/Stride + 1;
 
 	// Check if there is need to flush and perform lock
 	BYTE* pData			= 0;
@@ -69,7 +69,7 @@ void* _VertexStream::Lock	( u32 vl_Count, u32 Stride, u32& vOffset )
 	return LPVOID		( pData );
 }
 
-void	_VertexStream::Unlock		( u32 Count, u32 Stride)
+void	_VertexStream::Unlock		(unsigned int Count, unsigned int Stride)
 {
 
 #ifdef DEBUG
@@ -116,7 +116,7 @@ void	_IndexStream::Destroy()
 	_clear					();
 }
 
-unsigned short*	_IndexStream::Lock	( u32 Count, u32& vOffset )
+unsigned short*	_IndexStream::Lock	(unsigned int Count, unsigned int& vOffset )
 {
 	PGO						(Msg("PGO:IB_LOCK:%d",Count));
 	vOffset					= 0;
@@ -128,7 +128,7 @@ unsigned short*	_IndexStream::Lock	( u32 Count, u32& vOffset )
 	// If either user forced us to flush,
 	// or there is not enough space for the index data,
 	// then flush the buffer contents
-	u32 dwFlags = LOCKFLAGS_APPEND;
+	unsigned int dwFlags = LOCKFLAGS_APPEND;
 	if ( 2*( Count + mPosition ) >= mSize )
 	{
 		mPosition	= 0;						// clear position
@@ -143,7 +143,7 @@ unsigned short*	_IndexStream::Lock	( u32 Count, u32& vOffset )
 	return					LPWORD(pLockedData);
 }
 
-void	_IndexStream::Unlock(u32 RealCount)
+void	_IndexStream::Unlock(unsigned int RealCount)
 {
 	PGO						(Msg("PGO:IB_UNLOCK:%d",RealCount));
 	mPosition				+=	RealCount;

@@ -28,7 +28,7 @@
 #include "../../enemy_manager.h"
 #include "../../danger_manager.h"
 #include "../../visual_memory_manager.h"
-#include "../../agent_enemy_manager.h"
+#include "..\..\AgentEnemyManager.h"
 
 const u32 TOLLS_INTERVAL					= 2000;
 const u32 GRENADE_INTERVAL					= 0*1000;

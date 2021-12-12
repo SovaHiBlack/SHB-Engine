@@ -41,3 +41,5 @@ void CStateMonsterFindEnemyAbstract::reselect_state()
 	}
 }
 
+#undef TEMPLATE_SPECIALIZATION
+#undef CStateMonsterFindEnemyAbstract

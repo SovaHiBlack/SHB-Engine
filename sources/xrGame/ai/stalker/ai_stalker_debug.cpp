@@ -37,7 +37,7 @@
 #include "../ai_monsters_misc.h"
 #include "..\..\AgentManager.h"
 #include "../../agent_member_manager.h"
-#include "../../agent_enemy_manager.h"
+#include "..\..\AgentEnemyManager.h"
 #include "../../agent_corpse_manager.h"
 #include "../../agent_location_manager.h"
 #include "../../cover_point.h"

@@ -44,3 +44,5 @@ void CStateMonsterRestSleepAbstract::critical_finalize()
 	object->wake_up					();
 }
 
+#undef TEMPLATE_SPECIALIZATION
+#undef CStateMonsterRestSleepAbstract

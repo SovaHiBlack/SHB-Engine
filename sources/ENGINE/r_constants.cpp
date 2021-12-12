@@ -53,7 +53,7 @@ BOOL	R_constant_table::parse(void* _desc, unsigned short destination)
 	D3DXSHADER_CONSTANTTABLE* desc = (D3DXSHADER_CONSTANTTABLE*) _desc;
 	D3DXSHADER_CONSTANTINFO* it = (D3DXSHADER_CONSTANTINFO*) (LPBYTE(desc) + desc->ConstantInfo);
 	LPBYTE					 ptr = LPBYTE(desc);
-	for (u32 dwCount = desc->Constants; dwCount; dwCount--, it++)
+	for (unsigned int dwCount = desc->Constants; dwCount; dwCount--, it++)
 	{
 		// Name
 		const char* name = (const char*) (ptr + it->Name);
@@ -193,7 +193,7 @@ void R_constant_table::merge(R_constant_table* T)
 	if (0 == T)		return;
 
 	// Real merge
-	for (u32 it = 0; it < T->table.size( ); it++)
+	for (unsigned int it = 0; it < T->table.size( ); it++)
 	{
 		ref_constant src = T->table[it];
 		ref_constant C = get(*src->name);
@@ -225,7 +225,7 @@ void R_constant_table::merge(R_constant_table* T)
 
 void R_constant_table::clear( )
 {
-	for (u32 it = 0; it < table.size( ); it++)
+	for (unsigned int it = 0; it < table.size( ); it++)
 	{
 		table[it] = 0;
 	}
@@ -236,8 +236,8 @@ void R_constant_table::clear( )
 BOOL R_constant_table::equal(R_constant_table& C)
 {
 	if (table.size( ) != C.table.size( ))	return FALSE;
-	u32 size = table.size( );
-	for (u32 it = 0; it < size; it++)
+	unsigned int size = table.size( );
+	for (unsigned int it = 0; it < size; it++)
 	{
 		if (!table[it]->equal(&*C.table[it]))	return FALSE;
 	}

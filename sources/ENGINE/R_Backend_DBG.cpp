@@ -1,12 +1,12 @@
 #include "stdafx.h"
 
-void CBackend::dbg_DP(D3DPRIMITIVETYPE pt, ref_geom geom, u32 vBase, u32 pc)
+void CBackend::dbg_DP(D3DPRIMITIVETYPE pt, ref_geom geom, unsigned int vBase, unsigned int pc)
 {
 	RCache.set_Geometry		(geom);
 	RCache.Render			(pt,vBase,pc);
 }
 
-void CBackend::dbg_DIP(D3DPRIMITIVETYPE pt, ref_geom geom, u32 baseV, u32 startV, u32 countV, u32 startI, u32 PC)
+void CBackend::dbg_DIP(D3DPRIMITIVETYPE pt, ref_geom geom, unsigned int baseV, unsigned int startV, unsigned int countV, unsigned int startI, unsigned int PC)
 {
 	RCache.set_Geometry		(geom);
 	RCache.Render			(pt,baseV,startV,countV,startI,PC);
@@ -30,7 +30,7 @@ void CBackend::dbg_Draw			(D3DPRIMITIVETYPE T, FVF::L* pVerts, int pcnt)
 }
 
 #define RGBA_GETALPHA(rgb)      ((rgb) >> 24)
-void CBackend::dbg_DrawOBB		(Fmatrix& T, Fvector3& half_dim, u32 C)
+void CBackend::dbg_DrawOBB		(Fmatrix& T, Fvector3& half_dim, unsigned int C)
 {
 	Fmatrix mL2W_Transform,mScaleTransform;
 
@@ -53,7 +53,7 @@ void CBackend::dbg_DrawOBB		(Fmatrix& T, Fvector3& half_dim, u32 C)
 	set_xform_world	(mL2W_Transform);
 	dbg_Draw(D3DPT_LINELIST,aabb,8,aabb_id,12);
 }
-void CBackend::dbg_DrawTRI	(Fmatrix& T, Fvector3& p1, Fvector3& p2, Fvector3& p3, u32 C)
+void CBackend::dbg_DrawTRI	(Fmatrix& T, Fvector3& p1, Fvector3& p2, Fvector3& p3, unsigned int C)
 {
 	FVF::L	tri[3];
 	tri[0].p = p1; tri[0].color = C;
@@ -63,7 +63,7 @@ void CBackend::dbg_DrawTRI	(Fmatrix& T, Fvector3& p1, Fvector3& p2, Fvector3& p3
 	set_xform_world	(T);
 	dbg_Draw(D3DPT_TRIANGLESTRIP,tri,1);
 }
-void CBackend::dbg_DrawLINE(Fmatrix& T, Fvector3& p1, Fvector3& p2, u32 C)
+void CBackend::dbg_DrawLINE(Fmatrix& T, Fvector3& p1, Fvector3& p2, unsigned int C)
 {
 	FVF::L	line[2];
 	line[0].p = p1; line[0].color = C;
@@ -72,7 +72,7 @@ void CBackend::dbg_DrawLINE(Fmatrix& T, Fvector3& p1, Fvector3& p2, u32 C)
 	set_xform_world	(T);
 	dbg_Draw(D3DPT_LINELIST,line,1);
 }
-void CBackend::dbg_DrawEllipse(Fmatrix& T, u32 C)
+void CBackend::dbg_DrawEllipse(Fmatrix& T, unsigned int C)
 {
 	float gVertices[] =
 	{

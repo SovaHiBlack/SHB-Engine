@@ -8,12 +8,12 @@ class	ENGINE_API	IWriter;
 class	ENGINE_API	CConstant	: public xr_resource_named									{
 public:
 	enum			{ modeProgrammable=0, modeWaveForm	};
-public:
-	Fcolor			const_float;
-	u32				const_dword;
 
-	u32				dwFrame;
-	u32				dwMode;
+	Fcolor			const_float;
+	unsigned int				const_dword;
+
+	unsigned int				dwFrame;
+	unsigned int				dwMode;
 	WaveForm		_R;
 	WaveForm		_G;
 	WaveForm		_B;
@@ -33,7 +33,7 @@ public:
 		const_float.set	(c);
 		const_dword		= const_float.get();
 	}
-	inline void			set_dword	(u32 c)
+	inline void			set_dword	(unsigned int c)
 	{
 		const_float.set(c);
 		const_dword		= c;

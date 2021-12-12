@@ -87,4 +87,5 @@ void CStateMonsterSquadRestAbstract::setup_substates()
 	}
 }
 
-
+#undef TEMPLATE_SPECIALIZATION
+#undef CStateMonsterSquadRestAbstract

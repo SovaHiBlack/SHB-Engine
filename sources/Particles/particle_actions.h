@@ -1,49 +1,78 @@
-//---------------------------------------------------------------------------
-#ifndef particle_actionsH
-#define particle_actionsH
+#pragma once
 
-
-namespace PAPI{
-// refs
-	struct ParticleEffect;
-	struct PARTICLES_API			ParticleAction
+namespace PAPI
+{
+	// refs
+	struct SParticleEffect;
+	struct PARTICLES_API SParticleAction
 	{
-		enum{
-			ALLOW_ROTATE	= (1<<1)
+		enum
+		{
+			ALLOW_ROTATE = (1 << 1)
 		};
 		Flags32			m_Flags;
-		PActionEnum		type;	// Type field
-		ParticleAction	(){m_Flags.zero();}
-		
-		virtual void 	Execute		(ParticleEffect *pe, float dt)	= 0;
-		virtual void 	Transform	(const Fmatrix& m)				= 0;
-
-		virtual void 	Load		(IReader& F)=0;
-		virtual void 	Save		(IWriter& F)=0;
-	};
-//	DEFINE_VECTOR(ParticleAction*,PAVec,PAVecIt);
-	using PAVec = xr_vector<ParticleAction*>;
-	using PAVecIt = PAVec::iterator;
-
-	class ParticleActions{
-		PAVec			actions;
-	public:
-						ParticleActions()						{actions.reserve(4);	}
-						~ParticleActions()						{clear();				}
-		inline void			clear			()
+		EParticleAction		type;	// Type field
+										SParticleAction( )
 		{
-			for (PAVecIt it=actions.begin(); it!=actions.end(); it++) 
-				xr_delete(*it);
-			actions.clear();
+			m_Flags.zero( );
 		}
-		inline void			append			(ParticleAction* pa)	{actions.push_back(pa);	}
-		inline bool			empty			()						{return	actions.empty();}
-		inline PAVecIt		begin			()						{return	actions.begin();}
-		inline PAVecIt		end				()						{return actions.end();	}
-		inline int			size			()						{return actions.size();	}
-		inline void			resize			(int cnt)        		{actions.resize(cnt);	}
-		void			copy			(ParticleActions* src);
+
+		virtual void					Execute(SParticleEffect* pe, float dt) = 0;
+		virtual void					Transform(const Fmatrix& m) = 0;
+
+		virtual void					Load(IReader& F) = 0;
+		virtual void					Save(IWriter& F) = 0;
+	};
+
+	using ParticleActionVec = xr_vector<SParticleAction*>;
+	using ParticleActionVec_it = ParticleActionVec::iterator;
+
+	class CParticleActions
+	{
+		ParticleActionVec			actions;
+
+	public:
+										CParticleActions( )
+		{
+			actions.reserve(4);
+		}
+										~CParticleActions( )
+		{
+			clear( );
+		}
+		inline void						clear( )
+		{
+			for (ParticleActionVec_it it = actions.begin( ); it != actions.end( ); it++)
+			{
+				xr_delete(*it);
+			}
+
+			actions.clear( );
+		}
+		inline void						append(SParticleAction* pa)
+		{
+			actions.push_back(pa);
+		}
+		inline bool						empty( )
+		{
+			return actions.empty( );
+		}
+		inline ParticleActionVec_it		begin( )
+		{
+			return actions.begin( );
+		}
+		inline ParticleActionVec_it		end( )
+		{
+			return actions.end( );
+		}
+		inline int						size( )
+		{
+			return actions.size( );
+		}
+		inline void						resize(int cnt)
+		{
+			actions.resize(cnt);
+		}
+		void							copy(CParticleActions* src);
 	};
 };
-//---------------------------------------------------------------------------
-#endif

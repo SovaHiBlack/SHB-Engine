@@ -20,7 +20,7 @@ void CBoneInstance::construct( )
 	Callback_overwrite = FALSE;
 }
 
-void CBoneInstance::set_callback(u32 Type, BoneCallback C, void* Param, BOOL overwrite)
+void CBoneInstance::set_callback(unsigned int Type, BoneCallback C, void* Param, BOOL overwrite)
 {
 	Callback = C;
 	Callback_Param = Param;
@@ -36,13 +36,13 @@ void CBoneInstance::reset_callback( )
 	Callback_type = 0;
 }
 
-void CBoneInstance::set_param(u32 idx, float data)
+void CBoneInstance::set_param(unsigned int idx, float data)
 {
 	VERIFY(idx < MAX_BONE_PARAMS);
 	param[idx] = data;
 }
 
-float CBoneInstance::get_param(u32 idx)
+float CBoneInstance::get_param(unsigned int idx)
 {
 	VERIFY(idx < MAX_BONE_PARAMS);
 	return param[idx];
@@ -51,7 +51,7 @@ float CBoneInstance::get_param(u32 idx)
 #ifdef DEBUG
 void CBoneData::DebugQuery(BoneDebug& L)
 {
-	for (u32 i = 0; i < children.size( ); i++)
+	for (unsigned int i = 0; i < children.size( ); i++)
 	{
 		L.push_back(SelfID);
 		L.push_back(children[i]->SelfID);
@@ -63,7 +63,7 @@ void CBoneData::DebugQuery(BoneDebug& L)
 //////////////////////////////////////////////////////////////////////
 // Construction/Destruction
 //////////////////////////////////////////////////////////////////////
-bool pred_N(const std::pair<CSharedString, u32>& N, const char* B)
+bool pred_N(const std::pair<CSharedString, unsigned int>& N, const char* B)
 {
 	return xr_strcmp(*N.first, B) < 0;
 }
@@ -84,7 +84,7 @@ unsigned short CKinematics::LL_BoneID(const char* B)
 	return unsigned short(I->second);
 }
 
-bool pred_P(const std::pair<CSharedString, u32>& N, const CSharedString& B)
+bool pred_P(const std::pair<CSharedString, unsigned int>& N, const CSharedString& B)
 {
 	return N.first._get( ) < B._get( );
 }
@@ -134,7 +134,7 @@ void CKinematics::DebugRender(Fmatrix& XFORM)
 	H1.set(0.01f, 0.01f, 0.01f);
 	Fvector3 H2;
 	H2.mul(H1, 2);
-	for (u32 i = 0; i < dbgLines.size( ); i += 2)
+	for (unsigned int i = 0; i < dbgLines.size( ); i += 2)
 	{
 		Fmatrix& M1 = bone_instances[dbgLines[i]].mTransform;
 		Fmatrix& M2 = bone_instances[dbgLines[i + 1]].mTransform;
@@ -151,7 +151,7 @@ void CKinematics::DebugRender(Fmatrix& XFORM)
 		RCache.dbg_DrawOBB(M, H2, D3DCOLOR_XRGB(255, 255, 255));
 	}
 
-	for (u32 b = 0; b < bones->size( ); b++)
+	for (unsigned int b = 0; b < bones->size( ); b++)
 	{
 		Fobb& obb = (*bones)[b]->obb;
 		Fmatrix& Mbone = bone_instances[b].mTransform;
@@ -190,9 +190,9 @@ CKinematics::~CKinematics( )
 void CKinematics::IBoneInstances_Create( )
 {
 //	VERIFY2(bones->size( ) < 64, "More than 64 bones is a crazy thing!");
-	u32 size = bones->size( );
+	unsigned int size = bones->size( );
 	bone_instances = xr_alloc<CBoneInstance>(size);
-	for (u32 i = 0; i < size; i++)
+	for (unsigned int i = 0; i < size; i++)
 	{
 		bone_instances[i].construct( );
 	}
@@ -207,12 +207,12 @@ void CKinematics::IBoneInstances_Destroy( )
 	}
 }
 
-bool pred_sort_N(const std::pair<CSharedString, u32>& A, const std::pair<CSharedString, u32>& B)
+bool pred_sort_N(const std::pair<CSharedString, unsigned int>& A, const std::pair<CSharedString, unsigned int>& B)
 {
 	return xr_strcmp(A.first, B.first) < 0;
 }
 
-bool pred_sort_P(const std::pair<CSharedString, u32>& A, const std::pair<CSharedString, u32>& B)
+bool pred_sort_P(const std::pair<CSharedString, unsigned int>& A, const std::pair<CSharedString, unsigned int>& B)
 {
 	return A.first._get( ) < B.first._get( );
 }
@@ -231,14 +231,14 @@ void CBoneData::CalculateM2B(const Fmatrix& parent)
 	m2b_transform.invert( );
 }
 
-CSkeletonX* CKinematics::LL_GetChild(u32 idx)
+CSkeletonX* CKinematics::LL_GetChild(unsigned int idx)
 {
 	IRender_Visual* V = children[idx];
 	CSkeletonX* B = dynamic_cast<CSkeletonX*>(V);
 	return B;
 }
 
-void CKinematics::Load(const char* N, IReader* data, u32 dwFlags)
+void CKinematics::Load(const char* N, IReader* data, unsigned int dwFlags)
 {
 //	Msg("skeleton: %s", N);
 	inherited::Load(N, data, dwFlags);
@@ -327,7 +327,7 @@ void CKinematics::Load(const char* N, IReader* data, u32 dwFlags)
 
 	// Attach bones to their parents
 	iRoot = BI_NONE;
-	for (u32 i = 0; i < bones->size( ); i++)
+	for (unsigned int i = 0; i < bones->size( ); i++)
 	{
 		CSharedString P = L_parents[i];
 		CBoneData* B = (*bones)[i];
@@ -357,7 +357,7 @@ void CKinematics::Load(const char* N, IReader* data, u32 dwFlags)
 	IReader* IKD = data->open_chunk(OGF_S_IKDATA);
 	if (IKD)
 	{
-		for (u32 i = 0; i < bones->size( ); i++)
+		for (unsigned int i = 0; i < bones->size( ); i++)
 		{
 			CBoneData* B = (*bones)[i];
 			unsigned short vers = (unsigned short) IKD->r_u32( );
@@ -389,10 +389,10 @@ void CKinematics::Load(const char* N, IReader* data, u32 dwFlags)
 
 	// unique bone faces
 	{
-		for (u32 bone_idx = 0; bone_idx < bones->size( ); bone_idx++)
+		for (unsigned int bone_idx = 0; bone_idx < bones->size( ); bone_idx++)
 		{
 			CBoneData* B = (*bones)[bone_idx];
-			for (u32 child_idx = 0; child_idx < children.size( ); child_idx++)
+			for (unsigned int child_idx = 0; child_idx < children.size( ); child_idx++)
 			{
 				CBoneData::FacesVec faces = B->child_faces[child_idx];
 				std::sort(faces.begin( ), faces.end( ));
@@ -407,7 +407,7 @@ void CKinematics::Load(const char* N, IReader* data, u32 dwFlags)
 	// reset update_callback
 	Update_Callback = NULL;
 	// reset update frame
-	wm_frame = u32(-1);
+	wm_frame = unsigned int(-1);
 
 	LL_Validate( );
 }
@@ -455,7 +455,7 @@ void CKinematics::LL_Validate( )
 		{
 			xr_vector<unsigned short>& group	= groups[g];
 			unsigned short bp_id				= b_parts[group[0]];
-			for (u32 b = 1; b < groups[g].size( ); b++)
+			for (unsigned int b = 1; b < groups[g].size( ); b++)
 			{
 				if (bp_id != b_parts[groups[g][b]])
 				{
@@ -499,7 +499,7 @@ void CKinematics::Copy(IRender_Visual* P)
 
 	IBoneInstances_Create( );
 
-	for (u32 i = 0; i < children.size( ); i++)
+	for (unsigned int i = 0; i < children.size( ); i++)
 	{
 		LL_GetChild(i)->SetParent(this);
 	}
@@ -519,7 +519,7 @@ void CKinematics::Spawn( )
 {
 	inherited::Spawn( );
 	// bones
-	for (u32 i = 0; i < bones->size( ); i++)
+	for (unsigned int i = 0; i < bones->size( ); i++)
 	{
 		bone_instances[i].construct( );
 	}
@@ -541,7 +541,7 @@ void CKinematics::Depart( )
 	visimask.zero( );
 	if (bones)
 	{
-		for (u32 b = 0; b < bones->size( ); b++)
+		for (unsigned int b = 0; b < bones->size( ); b++)
 		{
 			visimask.set((unsigned __int64(1) << b), TRUE);
 		}
@@ -555,7 +555,7 @@ void CKinematics::Depart( )
 void CKinematics::Release( )
 {
 	// xr_free bones
-	for (u32 i = 0; i < bones->size( ); i++)
+	for (unsigned int i = 0; i < bones->size( ); i++)
 	{
 		CBoneData*& B = (*bones)[i];
 		xr_delete(B);
@@ -604,7 +604,7 @@ void CKinematics::LL_SetBoneVisible(unsigned short bone_id, BOOL val, BOOL bRecu
 void CKinematics::LL_SetBonesVisible(unsigned __int64 mask)
 {
 	visimask.assign(0);
-	for (u32 b = 0; b < bones->size( ); b++)
+	for (unsigned int b = 0; b < bones->size( ); b++)
 	{
 		unsigned __int64 bm = unsigned __int64(1) << b;
 		if (mask & bm)
@@ -628,7 +628,7 @@ void CKinematics::Visibility_Update( )
 {
 	Update_Visibility = FALSE;
 	// check visible
-	for (u32 c_it = 0; c_it < children.size( ); c_it++)
+	for (unsigned int c_it = 0; c_it < children.size( ); c_it++)
 	{
 		CSkeletonX* _c = dynamic_cast<CSkeletonX*>	(children[c_it]); VERIFY(_c);
 		if (!_c->has_visible_bones( ))
@@ -641,7 +641,7 @@ void CKinematics::Visibility_Update( )
 	}
 
 	// check invisible
-	for (u32 _it = 0; _it < children_invisible.size( ); _it++)
+	for (unsigned int _it = 0; _it < children_invisible.size( ); _it++)
 	{
 		CSkeletonX* _c = dynamic_cast<CSkeletonX*>	(children_invisible[_it]); VERIFY(_c);
 		if (_c->has_visible_bones( ))
@@ -696,15 +696,11 @@ void BuildMatrix(Fmatrix& mView, float invsz, const Fvector3 norm, const Fvector
 
 void CKinematics::EnumBoneVertices(SEnumVerticesCallback& C, unsigned short bone_id)
 {
-	for (u32 i = 0; i < children.size( ); i++)
+	for (unsigned int i = 0; i < children.size( ); i++)
 	{
 		LL_GetChild(i)->EnumBoneVertices(C, bone_id);
 	}
 }
-
-//DEFINE_VECTOR(Fobb,OBBVec,OBBVecIt);
-//using OBBVec = xr_vector<Fobb>;
-//using OBBVecIt = OBBVec::iterator;
 
 bool CKinematics::PickBone(const Fmatrix& parent_xform, Fvector3& normal, float& dist, const Fvector3& start, const Fvector3& dir, unsigned short bone_id)
 {

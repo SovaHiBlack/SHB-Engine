@@ -7,11 +7,11 @@ class ENGINE_API CSheduler
 private:
 	struct SItem
 	{
-		u32										dwTimeForExecute;
-		u32										dwTimeOfLastExecute;
+		unsigned int										dwTimeForExecute;
+		unsigned int										dwTimeOfLastExecute;
 		CSharedString								scheduled_name;
 		ISheduled*								Object;
-		u32										dwPadding;				// for align-issues
+		unsigned int										dwPadding;				// for align-issues
 
 		inline bool		operator <				(SItem& I)
 		{

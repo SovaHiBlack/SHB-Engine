@@ -17,7 +17,7 @@ void CSheduler::Destroy( )
 {
 	internal_Registration( );
 
-	for (u32 it = 0; it < Items.size( ); it++)
+	for (unsigned int it = 0; it < Items.size( ); it++)
 	{
 		if (0 == Items[it].Object)
 		{
@@ -33,7 +33,7 @@ void CSheduler::Destroy( )
 		_objects[0] = 0;
 
 		Msg("! Sheduler work-list is not empty");
-		for (u32 it = 0; it < Items.size( ); it++)
+		for (unsigned int it = 0; it < Items.size( ); it++)
 		{
 			Msg("%s", *Items[it].Object->shedule_Name( ).c_str( ));
 		}
@@ -48,7 +48,7 @@ void CSheduler::Destroy( )
 
 void CSheduler::internal_Registration( )
 {
-	for (u32 it = 0; it < Registration.size( ); it++)
+	for (unsigned int it = 0; it < Registration.size( ); it++)
 	{
 		ItemReg& R = Registration[it];
 		if (R.OP)
@@ -56,7 +56,7 @@ void CSheduler::internal_Registration( )
 // register
 // search for paired "unregister"
 			BOOL	bFoundAndErased = FALSE;
-			for (u32 pair = it + 1; pair < Registration.size( ); pair++)
+			for (unsigned int pair = it + 1; pair < Registration.size( ); pair++)
 			{
 				ItemReg& R_pair = Registration[pair];
 				if ((!R_pair.OP) && (R_pair.Object == R.Object))
@@ -125,7 +125,7 @@ bool CSheduler::internal_Unregister(ISheduled* O, BOOL RT, bool warn_on_not_foun
 	//VERIFY	(!O->shedule.b_locked)	;
 	if (RT)
 	{
-		for (u32 i = 0; i < ItemsRT.size( ); i++)
+		for (unsigned int i = 0; i < ItemsRT.size( ); i++)
 		{
 			if (ItemsRT[i].Object == O)
 			{
@@ -139,7 +139,7 @@ bool CSheduler::internal_Unregister(ISheduled* O, BOOL RT, bool warn_on_not_foun
 	}
 	else
 	{
-		for (u32 i = 0; i < Items.size( ); i++)
+		for (unsigned int i = 0; i < Items.size( ); i++)
 		{
 			if (Items[i].Object == O)
 			{
@@ -163,7 +163,7 @@ bool CSheduler::internal_Unregister(ISheduled* O, BOOL RT, bool warn_on_not_foun
 #ifdef DEBUG
 bool CSheduler::Registered(ISheduled* object) const
 {
-	u32 count = 0;
+	unsigned int count = 0;
 	using ItemsVec = xr_vector<SItem>;
 
 	{
@@ -280,7 +280,7 @@ void CSheduler::EnsureOrder(ISheduled* Before, ISheduled* After)
 {
 	VERIFY(Before->shedule.b_RT && After->shedule.b_RT);
 
-	for (u32 i = 0; i < ItemsRT.size( ); i++)
+	for (unsigned int i = 0; i < ItemsRT.size( ); i++)
 	{
 		if (ItemsRT[i].Object == After)
 		{
@@ -307,11 +307,11 @@ void CSheduler::Pop( )
 void CSheduler::ProcessStep( )
 {
 	// Normal priority
-	u32 dwTime = Device.dwTimeGlobal;
+	unsigned int dwTime = Device.dwTimeGlobal;
 	CTimer eTimer;
 	for (int i = 0; !Items.empty( ) && Top( ).dwTimeForExecute < dwTime; ++i)
 	{
-		u32 delta_ms = dwTime - Top( ).dwTimeForExecute;
+		unsigned int delta_ms = dwTime - Top( ).dwTimeForExecute;
 
 		// Update
 		SItem	T = Top( );
@@ -320,7 +320,7 @@ void CSheduler::ProcessStep( )
 		Msg("SCHEDULER: process step [%s][%x][false]", *T.scheduled_name, T.Object);
 #endif // def DEBUG_SCHEDULER
 
-		u32 Elapsed = dwTime - T.dwTimeOfLastExecute;
+		unsigned int Elapsed = dwTime - T.dwTimeOfLastExecute;
 		bool condition;
 
 #ifndef DEBUG
@@ -375,14 +375,14 @@ void CSheduler::ProcessStep( )
 #endif // def DEBUG
 
 			// Calc next update interval
-			u32 dwMin = _max(u32(30), T.Object->shedule.t_min);
-			u32 dwMax = (1000 + T.Object->shedule.t_max) / 2;
+			unsigned int dwMin = _max(unsigned int(30), T.Object->shedule.t_min);
+			unsigned int dwMax = (1000 + T.Object->shedule.t_max) / 2;
 			float scale = T.Object->shedule_Scale( );
-			u32 dwUpdate = dwMin + iFloor(float(dwMax - dwMin) * scale);
-			clamp(dwUpdate, u32(_max(dwMin, u32(20))), dwMax);
+			unsigned int dwUpdate = dwMin + iFloor(float(dwMax - dwMin) * scale);
+			clamp(dwUpdate, unsigned int(_max(dwMin, unsigned int(20))), dwMax);
 
 //			try {
-			T.Object->shedule_Update(clampr(Elapsed, u32(1), u32(_max(u32(T.Object->shedule.t_max), u32(1000)))));
+			T.Object->shedule_Update(clampr(Elapsed, unsigned int(1), unsigned int(_max(unsigned int(T.Object->shedule.t_max), unsigned int(1000)))));
 //			} catch (...) {
 
 #ifdef DEBUG
@@ -393,7 +393,7 @@ void CSheduler::ProcessStep( )
 //			}
 
 #ifdef DEBUG
-			u32 execTime = eTimer.GetElapsed_ms( );
+			unsigned int execTime = eTimer.GetElapsed_ms( );
 #endif // def DEBUG
 
 			// Fill item structure
@@ -406,7 +406,7 @@ void CSheduler::ProcessStep( )
 			ItemsProcessed.push_back(TNext);
 
 #ifdef DEBUG
-//			u32 execTime = eTimer.GetElapsed_ms();
+//			unsigned int execTime = eTimer.GetElapsed_ms();
 //			VERIFY3(T.Object->dbg_update_shedule == T.Object->dbg_startframe, "Broken sequence of calls to 'shedule_Update'", _obj_name );
 			if (delta_ms > 3 * dwUpdate)
 			{
@@ -471,8 +471,8 @@ void CSheduler::Update( )
 
 	// Realtime priority
 	m_processing_now = true;
-	u32 dwTime = Device.dwTimeGlobal;
-	for (u32 it = 0; it < ItemsRT.size( ); it++)
+	unsigned int dwTime = Device.dwTimeGlobal;
+	for (unsigned int it = 0; it < ItemsRT.size( ); it++)
 	{
 		SItem& T = ItemsRT[it];
 		R_ASSERT(T.Object);
@@ -492,7 +492,7 @@ void CSheduler::Update( )
 			continue;
 		}
 
-		u32 Elapsed = dwTime - T.dwTimeOfLastExecute;
+		unsigned int Elapsed = dwTime - T.dwTimeOfLastExecute;
 
 #ifdef DEBUG
 		VERIFY(T.Object->dbg_startframe != Device.dwFrame);

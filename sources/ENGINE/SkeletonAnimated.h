@@ -5,16 +5,16 @@
 #include		"skeletonmotions.h"
 
 // consts
-const	u32		MAX_BLENDED			=	16;
-const	u32		MAX_BLENDED_POOL	=	(MAX_BLENDED*MAX_PARTS*MAX_CHANNELS);
-const	u32		MAX_ANIM_SLOT		=	4;
+const unsigned int		MAX_BLENDED			=	16;
+const unsigned int		MAX_BLENDED_POOL	=	(MAX_BLENDED*MAX_PARTS*MAX_CHANNELS);
+const unsigned int		MAX_ANIM_SLOT		=	4;
 
 // refs
-class   ENGINE_API CBlend;
-class 	ENGINE_API CKinematicsAnimated;
-class   ENGINE_API CBoneInstanceAnimated;
-struct	ENGINE_API CKey;
-class	ENGINE_API CConfigurationFile;
+class ENGINE_API CBlend;
+class ENGINE_API CKinematicsAnimated;
+class ENGINE_API CBoneInstanceAnimated;
+struct ENGINE_API CKey;
+class ENGINE_API CConfigurationFile;
 
 struct MotionID {
 private:
@@ -58,7 +58,7 @@ public:
 //		eFixed,
 		eAccrue,
 		eFalloff,
-		eFORCEDWORD = u32(-1)
+		eFORCEDWORD = unsigned int(-1)
 	};
 
 public:
@@ -80,9 +80,9 @@ public:
 	PlayCallback	Callback;
 	void*			CallbackParam;
 	
-	u32				dwFrame;
+	unsigned int				dwFrame;
 
-	u32				mem_usage			(){ return sizeof(*this); }
+	unsigned int				mem_usage			(){ return sizeof(*this); }
 };
 
 typedef svector<CBlend*,MAX_BLENDED*MAX_CHANNELS>	BlendSVec;//*MAX_CHANNELS
@@ -107,9 +107,9 @@ inline	BlendSVec			&blend_vector	()	{ return Blend;}
 	void				blend_add		(CBlend* H);
 	void				blend_remove	(CBlend* H);
 
-	u32					mem_usage		()
+	unsigned int					mem_usage		()
 	{
-		u32 sz			= sizeof(*this);
+		unsigned int sz			= sizeof(*this);
 		for (BlendSVecIt it=Blend.begin(); it!=Blend.end(); it++)
 			sz			+= (*it)->mem_usage();
 		return			sz;
@@ -144,7 +144,7 @@ public:
 	virtual void				OnCalculateBones		();
 
 private:
-	u32											Update_LastTime;
+	unsigned int											Update_LastTime;
 
 	CBlendInstance*								blend_instances;
 
@@ -223,19 +223,19 @@ public:
 
 	// General "Visual" stuff
 	virtual void				Copy			(IRender_Visual *pFrom);
-	virtual void				Load			(const char* N, IReader *data, u32 dwFlags);
+	virtual void				Load			(const char* N, IReader *data, unsigned int dwFlags);
 	virtual void				Release			();
 	virtual void				Spawn			();
 	virtual	CKinematicsAnimated*	dcast_PKinematicsAnimated	()				{ return this;	}
 	virtual						~CKinematicsAnimated	();
 
-	virtual u32					mem_usage		(bool bInstance)
+	virtual unsigned int					mem_usage		(bool bInstance)
 	{
-		u32 sz					= CKinematics::mem_usage(bInstance)+sizeof(*this)+(bInstance&&blend_instances?blend_instances->mem_usage():0);
+		unsigned int sz					= CKinematics::mem_usage(bInstance)+sizeof(*this)+(bInstance&&blend_instances?blend_instances->mem_usage():0);
 		return sz;
 	}
 
-	inline	const BlendSVec			&blend_cycle	(const u32 &bone_part_id) const
+	inline	const BlendSVec			&blend_cycle	(const unsigned int& bone_part_id) const
 	{
 		VERIFY					(bone_part_id < MAX_PARTS);
 		return					(blend_cycles[bone_part_id]);

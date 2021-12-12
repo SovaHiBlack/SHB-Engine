@@ -6,22 +6,21 @@
 
 namespace PAPI
 {
-	struct Particle;
-	struct ParticleEffect;
+	struct SParticle;
+	struct SParticleEffect;
 	struct PAHeader;
-	struct ParticleAction;
-//	DEFINE_VECTOR(ParticleAction*,PAVec,PAVecIt);
-	using PAVec = xr_vector<ParticleAction*>;
-	using PAVecIt = PAVec::iterator;
+	struct SParticleAction;
+
+	using ParticleActionVec = xr_vector<SParticleAction*>;
+	using ParticleActionVec_it = ParticleActionVec::iterator;
 }
-//struct EParticleAction;        
 
 namespace PS
 {
 	class CParticleEffect;
 
-	typedef BOOL ( * CollisionCallback)(CParticleEffect* E, PAPI::Particle& P, const Fvector3& pt, const Fvector3& norm); // TRUE-continue collision exec
-	typedef void ( * DestroyCallback)	(CParticleEffect* E, PAPI::Particle& P);
+	typedef BOOL ( * CollisionCallback)(CParticleEffect* E, PAPI::SParticle& P, const Fvector3& pt, const Fvector3& norm); // TRUE-continue collision exec
+	typedef void ( * DestroyCallback)	(CParticleEffect* E, PAPI::SParticle& P);
 
 	class PFunction;
 	struct SFrame
@@ -91,8 +90,8 @@ namespace PS
 		float 				m_fCollideResilience;
 		float 				m_fCollideSqrCutoff; 
 	// execute
-		void				ExecuteAnimate		(PAPI::Particle *particles, u32 p_cnt, float dt);
-		void				ExecuteCollision	(PAPI::Particle *particles, u32 p_cnt, float dt, CParticleEffect* owner, CollisionCallback cb);
+		void				ExecuteAnimate		(PAPI::SParticle*particles, u32 p_cnt, float dt);
+		void				ExecuteCollision	(PAPI::SParticle*particles, u32 p_cnt, float dt, CParticleEffect* owner, CollisionCallback cb);
 
 	public:
 							CPEDef				();

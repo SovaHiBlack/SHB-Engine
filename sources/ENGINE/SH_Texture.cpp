@@ -32,7 +32,7 @@ CTexture::CTexture		()
 	flags.bUser			= false;
 	flags.seqCycles		= FALSE;
 	m_material			= 1.0f;
-	bind				= fastdelegate::FastDelegate1<u32>(this,&CTexture::apply_load);
+	bind				= fastdelegate::FastDelegate1<unsigned int>(this,&CTexture::apply_load);
 }
 
 CTexture::~CTexture()
@@ -59,19 +59,19 @@ IDirect3DBaseTexture9*	CTexture::surface_get	()
 
 void CTexture::PostLoad	()
 {
-	if (pTheora)				bind		= fastdelegate::FastDelegate1<u32>(this,&CTexture::apply_theora);
-	else if (pAVI)				bind		= fastdelegate::FastDelegate1<u32>(this,&CTexture::apply_avi);
-	else if (!seqDATA.empty())	bind		= fastdelegate::FastDelegate1<u32>(this,&CTexture::apply_seq);
-	else						bind		= fastdelegate::FastDelegate1<u32>(this,&CTexture::apply_normal);
+	if (pTheora)				bind		= fastdelegate::FastDelegate1<unsigned int>(this,&CTexture::apply_theora);
+	else if (pAVI)				bind		= fastdelegate::FastDelegate1<unsigned int>(this,&CTexture::apply_avi);
+	else if (!seqDATA.empty())	bind		= fastdelegate::FastDelegate1<unsigned int>(this,&CTexture::apply_seq);
+	else						bind		= fastdelegate::FastDelegate1<unsigned int>(this,&CTexture::apply_normal);
 }
 
-void CTexture::apply_load	(u32 dwStage)	{
+void CTexture::apply_load	(unsigned int dwStage)	{
 	if (!flags.bLoaded)		Load			()	;
 	else					PostLoad		()	;
 	bind					(dwStage)			;
 };
 
-void CTexture::apply_theora	(u32 dwStage)	{
+void CTexture::apply_theora	(unsigned int dwStage)	{
 	if (pTheora->Update(m_play_time!=0xFFFFFFFF?m_play_time:Device.dwTimeContinual)){
 		R_ASSERT(D3DRTYPE_TEXTURE == pSurface->GetType());
 		IDirect3DTexture9*	T2D		= (IDirect3DTexture9*)pSurface;
@@ -82,18 +82,18 @@ void CTexture::apply_theora	(u32 dwStage)	{
 		rect.right			= pTheora->Width(true);
 		rect.bottom			= pTheora->Height(true);
 
-		u32 _w				= pTheora->Width(false);
+		unsigned int _w				= pTheora->Width(false);
 
 		R_CHK				(T2D->LockRect(0,&R,&rect,0));
 		R_ASSERT			(R.Pitch == int(pTheora->Width(false)*4));
 		int _pos			= 0;
-		pTheora->DecompressFrame((u32*)R.pBits, _w - rect.right, _pos);
-		VERIFY				(u32(_pos) == rect.bottom*_w);
+		pTheora->DecompressFrame((unsigned int*)R.pBits, _w - rect.right, _pos);
+		VERIFY				(unsigned int(_pos) == rect.bottom*_w);
 		R_CHK				(T2D->UnlockRect(0));
 	}
 	CHK_DX(HW.pDevice->SetTexture(dwStage,pSurface));
 };
-void CTexture::apply_avi	(u32 dwStage)	{
+void CTexture::apply_avi	(unsigned int dwStage)	{
 	if (pAVI->NeedUpdate()){
 		R_ASSERT(D3DRTYPE_TEXTURE == pSurface->GetType());
 		IDirect3DTexture9*	T2D		= (IDirect3DTexture9*)pSurface;
@@ -102,7 +102,7 @@ void CTexture::apply_avi	(u32 dwStage)	{
 		D3DLOCKED_RECT R;
 		R_CHK	(T2D->LockRect(0,&R,NULL,0));
 		R_ASSERT(R.Pitch == int(pAVI->m_dwWidth*4));
-		//		R_ASSERT(pAVI->DecompressFrame((u32*)(R.pBits)));
+		//		R_ASSERT(pAVI->DecompressFrame((unsigned int*)(R.pBits)));
 		BYTE* ptr; pAVI->GetFrame(&ptr);
 		CopyMemory(R.pBits,ptr,pAVI->m_dwWidth*pAVI->m_dwHeight*4);
 		//		R_ASSERT(pAVI->GetFrame((BYTE*)(&R.pBits)));
@@ -111,21 +111,21 @@ void CTexture::apply_avi	(u32 dwStage)	{
 	}
 	CHK_DX(HW.pDevice->SetTexture(dwStage,pSurface));
 };
-void CTexture::apply_seq	(u32 dwStage)	{
+void CTexture::apply_seq	(unsigned int dwStage)	{
 	// SEQ
-	u32	frame		= Device.dwTimeContinual/seqMSPF; //Device.dwTimeGlobal
-	u32	frame_data	= seqDATA.size();
+	unsigned int	frame		= Device.dwTimeContinual/seqMSPF; //Device.dwTimeGlobal
+	unsigned int	frame_data	= seqDATA.size();
 	if (flags.seqCycles)		{
-		u32	frame_id	= frame%(frame_data*2);
+		unsigned int	frame_id	= frame%(frame_data*2);
 		if (frame_id>=frame_data)	frame_id = (frame_data-1) - (frame_id%frame_data);
 		pSurface 			= seqDATA[frame_id];
 	} else {
-		u32	frame_id	= frame%frame_data;
+		unsigned int	frame_id	= frame%frame_data;
 		pSurface 			= seqDATA[frame_id];
 	}
 	CHK_DX(HW.pDevice->SetTexture(dwStage,pSurface));
 };
-void CTexture::apply_normal	(u32 dwStage)	{
+void CTexture::apply_normal	(unsigned int dwStage)	{
 	CHK_DX(HW.pDevice->SetTexture(dwStage,pSurface));
 };
 
@@ -182,8 +182,8 @@ void CTexture::Load		()
 
 			// Now create texture
 			IDirect3DTexture9*	pTexture = 0;
-			u32 _w = pTheora->Width(false);
-			u32 _h = pTheora->Height(false);
+			unsigned int _w = pTheora->Width(false);
+			unsigned int _h = pTheora->Height(false);
 
 			HRESULT hrr = HW.pDevice->CreateTexture(
 				_w, _h, 1, 0, D3DFMT_A8R8G8B8, D3DPOOL_MANAGED, &pTexture, NULL );
@@ -239,7 +239,7 @@ void CTexture::Load		()
 			flags.seqCycles	= TRUE;
 			_fs->r_string	(buffer,sizeof(buffer));
 		}
-		u32 fps	= atoi(buffer);
+		unsigned int fps	= atoi(buffer);
 		seqMSPF		= 1000/fps;
 
 		while (!_fs->eof())
@@ -249,7 +249,7 @@ void CTexture::Load		()
 			if (buffer[0])	
 			{
 				// Load another texture
-				u32	mem  = 0;
+				unsigned int	mem  = 0;
 				pSurface = ::Render->texture_load	(buffer,mem);
 				if (pSurface)	
 				{
@@ -264,7 +264,7 @@ void CTexture::Load		()
 	} else
 	{
 		// Normal texture
-		u32	mem  = 0;
+		unsigned int	mem  = 0;
 		pSurface = ::Render->texture_load	(*cName,mem);
 
 		// Calc memory usage and preload into vid-mem
@@ -289,7 +289,7 @@ void CTexture::Unload	()
 	
 	flags.bLoaded			= FALSE;
 	if (!seqDATA.empty())	{
-		for (u32 I=0; I<seqDATA.size(); I++)
+		for (unsigned int I=0; I<seqDATA.size(); I++)
 		{
 			_RELEASE	(seqDATA[I]);
 		}
@@ -306,7 +306,7 @@ void CTexture::Unload	()
 	xr_delete		(pAVI);
 	xr_delete		(pTheora);
 
-	bind			= fastdelegate::FastDelegate1<u32>(this,&CTexture::apply_load);
+	bind			= fastdelegate::FastDelegate1<unsigned int>(this,&CTexture::apply_load);
 }
 
 void CTexture::desc_update	()
@@ -319,7 +319,7 @@ void CTexture::desc_update	()
 	}
 }
 
-void CTexture::video_Play		(BOOL looped, u32 _time)	
+void CTexture::video_Play		(BOOL looped, unsigned int _time)
 { 
 	if (pTheora) pTheora->Play	(looped,(_time!=0xFFFFFFFF)?(m_play_time=_time):Device.dwTimeContinual); 
 }

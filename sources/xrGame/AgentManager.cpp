@@ -5,7 +5,7 @@
 
 #include "AgentManager.h"
 #include "agent_corpse_manager.h"
-#include "agent_enemy_manager.h"
+#include "AgentEnemyManager.h"
 #include "agent_explosive_manager.h"
 #include "agent_location_manager.h"
 #include "agent_member_manager.h"

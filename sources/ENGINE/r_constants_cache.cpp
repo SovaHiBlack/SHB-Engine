@@ -11,7 +11,7 @@ void R_constants::flush_cache()
 		{
 			if (F.r_lo() <= 32) //. hack
 			{		
-				u32		count		= F.r_hi()-F.r_lo();
+				unsigned int		count		= F.r_hi()-F.r_lo();
 				if (count)			{
 					count = (count>31)?31:count;
 					PGO		(Msg("PGO:P_CONST:%d",count));
@@ -27,7 +27,7 @@ void R_constants::flush_cache()
 		// fp
 		R_constant_array::t_f&	F	= a_vertex.c_f;
 		{
-			u32		count		= F.r_hi()-F.r_lo();
+			unsigned int		count		= F.r_hi()-F.r_lo();
 			if (count)			{
 
 #ifdef DEBUG

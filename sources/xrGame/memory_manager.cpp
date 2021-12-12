@@ -22,7 +22,7 @@
 #include "ai_object_location.h"
 #include "level_graph.h"
 #include "Profiler.h"
-#include "agent_enemy_manager.h"
+#include "AgentEnemyManager.h"
 
 CMemoryManager::CMemoryManager		(CEntityAlive *entity_alive, CSound_UserDataVisitor *visitor)
 {

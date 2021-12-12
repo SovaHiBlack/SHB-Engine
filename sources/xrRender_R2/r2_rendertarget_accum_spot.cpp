@@ -113,7 +113,7 @@ void CRenderTarget::accum_spot	(light* L)
 	// Draw volume with projective texgen
 	{
 		// Select shader
-		u32		_id					= 0;
+		unsigned int		_id					= 0;
 		if (L->flags.bShadow)		{
 			bool	bFullSize			= (L->X.S.size == RImplementation.o.smapsize);
 			if (L->X.S.transluent)	_id	= SE_L_TRANSLUENT;
