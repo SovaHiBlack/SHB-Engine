@@ -43,7 +43,7 @@ public:
 			Msg("kW :%f,%f,%f", kW.x, kW.y, kW.z);
 			VERIFY2(0, "KD is zero");
 		}
-#endif // DEBUG
+#endif // def DEBUG
 
 		TYPE fDLength = kD.normalize_magn( );
 		TYPE fInvDLength = 1.0f / fDLength;

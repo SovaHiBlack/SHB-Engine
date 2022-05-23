@@ -4,7 +4,7 @@
 
 #ifndef DEBUG
 #undef BREAK_AT_STRCMP
-#endif // DEBUG
+#endif // def DEBUG
 
 #ifdef abs
 #undef abs

@@ -30,4 +30,4 @@
 //#define DEBUG_DISABLE_SCRIPTS
 //#define LOADING_SCRIPT_LOG
 
-#endif // DEBUG
+#endif // def DEBUG

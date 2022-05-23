@@ -90,7 +90,7 @@
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <CompileAs>Default</CompileAs>
-      <AdditionalIncludeDirectories>..\third-party\dxsdk\include;..\libogg\include;..\libtheora\include;..\third-party;.\;..\lua\luabind</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\;..\third-party\dxsdk\include;..\libogg\include;..\libtheora\include;..\third-party;..\lua\luabind</AdditionalIncludeDirectories>
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -108,7 +108,7 @@
       <SubSystem>Windows</SubSystem>
       <LargeAddressAware>true</LargeAddressAware>
       <ImportLibrary>$(SolutionDir)..\$(Configuration)-$(Platform)\libraries\$(ProjectName).lib</ImportLibrary>
-      <AdditionalLibraryDirectories>..\third-party\dxsdk\lib;$(SolutionDir)..\$(Configuration)-$(Platform)\libraries;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\third-party\dxsdk\lib;$(SolutionDir)..\$(Configuration)-$(Platform)\libraries</AdditionalLibraryDirectories>
       <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
     </Link>
     <Bscmake>
@@ -150,7 +150,7 @@
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <CompileAs>Default</CompileAs>
-      <AdditionalIncludeDirectories>..\third-party\dxsdk\include;..\libogg\include;..\libtheora\include;..\third-party;.\;..\lua\luabind</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\;..\third-party\dxsdk\include;..\libogg\include;..\libtheora\include;..\third-party;..\lua\luabind</AdditionalIncludeDirectories>
       <ExceptionHandling>false</ExceptionHandling>
     </ClCompile>
     <ResourceCompile>
@@ -172,7 +172,7 @@
       <LinkTimeCodeGeneration>UseLinkTimeCodeGeneration</LinkTimeCodeGeneration>
       <ImportLibrary>$(SolutionDir)..\$(Configuration)-$(Platform)\libraries\$(ProjectName).lib</ImportLibrary>
       <FixedBaseAddress>false</FixedBaseAddress>
-      <AdditionalLibraryDirectories>..\third-party\dxsdk\lib;$(SolutionDir)..\$(Configuration)-$(Platform)\libraries;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\third-party\dxsdk\lib;$(SolutionDir)..\$(Configuration)-$(Platform)\libraries</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>

@@ -78,7 +78,7 @@
       <WarningLevel>Level4</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
-      <AdditionalIncludeDirectories>..\libogg\include;..\libtheora\include;..\libvorbis\include;..\third-party\eax\Include;..\third-party\OpenAL\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\libogg\include;..\libtheora\include;..\libvorbis\include;..\third-party\eax\Include;..\xrOpenAL</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <AdditionalOptions>/NODEFAULTLIB:LIBCMTD %(AdditionalOptions)</AdditionalOptions>
@@ -91,7 +91,7 @@
       <LargeAddressAware>true</LargeAddressAware>
       <ImportLibrary>$(SolutionDir)..\$(Configuration)-$(Platform)\libraries\$(ProjectName).lib</ImportLibrary>
       <TargetMachine>MachineX86</TargetMachine>
-      <AdditionalLibraryDirectories>..\third-party\eax\lib;..\third-party\OpenAL\lib;$(SolutionDir)..\$(Configuration)-$(Platform)\libraries;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\third-party\eax\lib;$(SolutionDir)..\$(Configuration)-$(Platform)\libraries</AdditionalLibraryDirectories>
       <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
     </Link>
     <Bscmake>
@@ -123,7 +123,7 @@
       <ProgramDataBaseFileName>$(IntDir)</ProgramDataBaseFileName>
       <WarningLevel>Level4</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
-      <AdditionalIncludeDirectories>..\libogg\include;..\libtheora\include;..\libvorbis\include;..\third-party\eax\Include;..\third-party\OpenAL\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\libogg\include;..\libtheora\include;..\libvorbis\include;..\third-party\eax\Include;..\xrOpenAL</AdditionalIncludeDirectories>
       <ExceptionHandling>false</ExceptionHandling>
     </ClCompile>
     <Link>
@@ -138,7 +138,7 @@
       <LinkTimeCodeGeneration>UseLinkTimeCodeGeneration</LinkTimeCodeGeneration>
       <ImportLibrary>$(SolutionDir)..\$(Configuration)-$(Platform)\libraries\$(ProjectName).lib</ImportLibrary>
       <TargetMachine>MachineX86</TargetMachine>
-      <AdditionalLibraryDirectories>..\third-party\eax\lib;..\third-party\OpenAL\lib;$(SolutionDir)..\$(Configuration)-$(Platform)\libraries;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\third-party\eax\lib;$(SolutionDir)..\$(Configuration)-$(Platform)\libraries</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>

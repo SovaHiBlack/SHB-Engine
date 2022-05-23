@@ -407,7 +407,7 @@ public:
 		{
 			Debug.fatal(DEBUG_INFO, "Quaternion::slerp - invalid 'tm' arrived: %f", tm);
 		}
-#endif // DEBUG
+#endif // def DEBUG
 
 		T cosom = (Q0.w * Q1.w) + (Q0.x * Q1.x) + (Q0.y * Q1.y) + (Q0.z * Q1.z);
 

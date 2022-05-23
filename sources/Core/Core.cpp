@@ -9,7 +9,7 @@
 
 #ifdef DEBUG
 #	include	<malloc.h>
-#endif // DEBUG
+#endif // def DEBUG
 
 CORE_API		CCore	Core;
 CORE_API		unsigned int		build_id;
@@ -82,17 +82,33 @@ void CCore::_initialize(const char* _ApplicationName, LogCallback cb, BOOL init_
 	if (init_fs)
 	{
 		unsigned int flags = 0;
-		if (0 != strstr(Params, "-build"))	 flags |= CLocatorAPI::flBuildCopy;
-		if (0 != strstr(Params, "-ebuild")) flags |= CLocatorAPI::flBuildCopy | CLocatorAPI::flEBuildCopy;
+		if (0 != strstr(Params, "-build"))
+		{
+			flags |= CLocatorAPI::flBuildCopy;
+		}
+
+		if (0 != strstr(Params, "-ebuild"))
+		{
+			flags |= CLocatorAPI::flBuildCopy | CLocatorAPI::flEBuildCopy;
+		}
 
 #ifdef DEBUG
-		if (strstr(Params, "-cache"))  flags |= CLocatorAPI::flCacheFiles;
-		else flags &= ~CLocatorAPI::flCacheFiles;
-#endif // DEBUG
+		if (strstr(Params, "-cache"))
+		{
+			flags |= CLocatorAPI::flCacheFiles;
+		}
+		else
+		{
+			flags &= ~CLocatorAPI::flCacheFiles;
+		}
+#endif // def DEBUG
 
 		flags |= CLocatorAPI::flScanAppRoot;
 
-		if (0 != strstr(Params, "-file_activity"))	 flags |= CLocatorAPI::flDumpFileActivity;
+		if (0 != strstr(Params, "-file_activity"))
+		{
+			flags |= CLocatorAPI::flDumpFileActivity;
+		}
 
 		FS._initialize(flags, 0, fs_fname);
 		Msg("'%s' build %d, %s\n", "Core", build_id, build_date);
@@ -101,7 +117,7 @@ void CCore::_initialize(const char* _ApplicationName, LogCallback cb, BOOL init_
 #ifdef DEBUG
 		Msg("CRT heap 0x%08x", _get_heap_handle( ));
 		Msg("Process heap 0x%08x", GetProcessHeap( ));
-#endif // DEBUG
+#endif // def DEBUG
 
 	}
 	SetLogCB(cb);
