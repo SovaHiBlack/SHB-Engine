@@ -42,7 +42,7 @@ protected:
 public:
 							CDialogHolder			( );
 	virtual					~CDialogHolder			( );
-	virtual CSharedString		shedule_Name			( ) const
+	virtual CSharedString	shedule_Name			( ) const
 	{
 		return CSharedString("CDialogHolder");
 	}

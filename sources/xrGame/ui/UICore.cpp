@@ -5,14 +5,14 @@
 #include "UICursor.h"//
 #include "..\HUDManager.h"//
 
-CUICursor* GetUICursor( )
+CUICursor* GetUICursor()
 {
-	return UI( )->GetUICursor( );
+	return UI()->GetUICursor();
 }
 
-CUICore* UI( )
+CUICore* UI()
 {
-	return GamePersistent( ).m_pUI_core;
+	return GamePersistent().m_pUI_core;
 }
 
 extern ENGINE_API Fvector2		g_current_font_scale;
@@ -31,16 +31,16 @@ void C2DFrustum::CreateFromRect(const Frect& rect)
 {
 	m_rect.set(float(rect.x1), float(rect.y1), float(rect.x2), float(rect.y2));
 	planes.resize(4);
-	planes[0].build(rect.lt, Fvector2( ).set(-1, 0));
-	planes[1].build(rect.lt, Fvector2( ).set(0, -1));
-	planes[2].build(rect.rb, Fvector2( ).set(+1, 0));
-	planes[3].build(rect.rb, Fvector2( ).set(0, +1));
+	planes[0].build(rect.lt, Fvector2().set(-1, 0));
+	planes[1].build(rect.lt, Fvector2().set(0, -1));
+	planes[2].build(rect.rb, Fvector2().set(+1, 0));
+	planes[3].build(rect.rb, Fvector2().set(0, +1));
 }
 
 sPoly2D* C2DFrustum::ClipPoly(sPoly2D& S, sPoly2D& D) const
 {
 	bool bFullTest = false;
-	for (u32 j = 0; j < S.size( ); j++)
+	for (u32 j = 0; j < S.size(); j++)
 	{
 		if (!m_rect.in(S[j].pt))
 		{
@@ -56,25 +56,25 @@ sPoly2D* C2DFrustum::ClipPoly(sPoly2D& S, sPoly2D& D) const
 		return dest;
 	}
 
-	for (u32 i = 0; i < planes.size( ); i++)
+	for (u32 i = 0; i < planes.size(); i++)
 	{
 		// cache plane and swap lists
 		const Fplane2& P = planes[i];
 		std::swap(src, dest);
-		dest->clear( );
+		dest->clear();
 
 		// classify all points relative to plane #i
 		float cls[UI_FRUSTUM_SAFE];
-		for (u32 j = 0; j < src->size( ); j++)
+		for (u32 j = 0; j < src->size(); j++)
 		{
 			cls[j] = P.classify((*src)[j].pt);
 		}
 
 		// clip everything to this plane
-		cls[src->size( )] = cls[0];
+		cls[src->size()] = cls[0];
 		src->push_back((*src)[0]);
 		Fvector2 dir_pt, dir_uv;		float denum, t;
-		for (j = 0; j < src->size( ) - 1; j++)
+		for (j = 0; j < src->size() - 1; j++)
 		{
 			if ((*src)[j].pt.similar((*src)[j + 1].pt, EPS_S))
 			{
@@ -92,9 +92,9 @@ sPoly2D* C2DFrustum::ClipPoly(sPoly2D& S, sPoly2D& D) const
 					if (denum != 0)
 					{
 						t = -cls[j] / denum; //VERIFY(t<=1.f && t>=0);
-						dest->last( ).pt.mad((*src)[j].pt, dir_pt, t);
-						dest->last( ).uv.mad((*src)[j].uv, dir_uv, t);
-						dest->inc( );
+						dest->last().pt.mad((*src)[j].pt, dir_pt, t);
+						dest->last().uv.mad((*src)[j].uv, dir_uv, t);
+						dest->inc();
 					}
 				}
 			}
@@ -108,16 +108,16 @@ sPoly2D* C2DFrustum::ClipPoly(sPoly2D& S, sPoly2D& D) const
 					if (denum != 0)
 					{
 						t = -cls[j] / denum; //VERIFY(t<=1.f && t>=0);
-						dest->last( ).pt.mad((*src)[j].pt, dir_pt, t);
-						dest->last( ).uv.mad((*src)[j].uv, dir_uv, t);
-						dest->inc( );
+						dest->last().pt.mad((*src)[j].pt, dir_pt, t);
+						dest->last().uv.mad((*src)[j].uv, dir_uv, t);
+						dest->inc();
 					}
 				}
 			}
 		}
 
 		// here we end up with complete polygon in 'dest' which is inside plane #i
-		if (dest->size( ) < 3)
+		if (dest->size() < 3)
 		{
 			return 0;
 		}
@@ -126,10 +126,10 @@ sPoly2D* C2DFrustum::ClipPoly(sPoly2D& S, sPoly2D& D) const
 	return dest;
 }
 
-void CUICore::OnDeviceReset( )
+void CUICore::OnDeviceReset()
 {
 	m_scale_.set(float(Device.dwWidth) / UI_BASE_WIDTH, float(Device.dwHeight) / UI_BASE_HEIGHT);
-	m_2DFrustum.CreateFromRect(Frect( ).set(0.0f, 0.0f, float(Device.dwWidth), float(Device.dwHeight)));
+	m_2DFrustum.CreateFromRect(Frect().set(0.0f, 0.0f, float(Device.dwWidth), float(Device.dwHeight)));
 }
 
 void CUICore::ClientToScreenScaled(Fvector2& dest, float left, float top)
@@ -152,19 +152,19 @@ void CUICore::ClientToScreenScaledHeight(float& src_and_dest)
 	src_and_dest /= m_current_scale->y;
 }
 
-Frect CUICore::ScreenRect( )
+Frect CUICore::ScreenRect()
 {
-	static Frect R = { 0.0f, 0.0f, UI_BASE_WIDTH, UI_BASE_HEIGHT };
+	static Frect R = {0.0f, 0.0f, UI_BASE_WIDTH, UI_BASE_HEIGHT};
 	return R;
 }
 
 void CUICore::PushScissor(const Frect& r_tgt, bool overlapped)
 {
-	Frect r_top = ScreenRect( );
+	Frect r_top = ScreenRect();
 	Frect result = r_tgt;
-	if (!m_Scissors.empty( ) && !overlapped)
+	if (!m_Scissors.empty() && !overlapped)
 	{
-		r_top = m_Scissors.top( );
+		r_top = m_Scissors.top();
 	}
 
 	if (!result.intersection(r_top, r_tgt))
@@ -194,18 +194,18 @@ void CUICore::PushScissor(const Frect& r_tgt, bool overlapped)
 	RCache.set_Scissor(&r);
 }
 
-void CUICore::PopScissor( )
+void CUICore::PopScissor()
 {
-	VERIFY(!m_Scissors.empty( ));
-	m_Scissors.pop( );
+	VERIFY(!m_Scissors.empty());
+	m_Scissors.pop();
 
-	if (m_Scissors.empty( ))
+	if (m_Scissors.empty())
 	{
 		RCache.set_Scissor(NULL);
 	}
 	else
 	{
-		const Frect& top = m_Scissors.top( );
+		const Frect& top = m_Scissors.top();
 		Irect tgt;
 		tgt.lt.x = iFloor(ClientToScreenScaledX(top.lt.x));
 		tgt.lt.y = iFloor(ClientToScreenScaledY(top.lt.y));
@@ -216,49 +216,49 @@ void CUICore::PopScissor( )
 	}
 }
 
-CUICore::CUICore( )
+CUICore::CUICore()
 {
-	m_pUICursor = xr_new<CUICursor>( );
-	m_pFontManager = xr_new<CFontManager>( );
+	m_pUICursor = xr_new<CUICursor>();
+	m_pFontManager = xr_new<CFontManager>();
 
 	m_bPostprocess = false;
 
-	OnDeviceReset( );
+	OnDeviceReset();
 
 	m_current_scale = &m_scale_;
 	g_current_font_scale.set(1.0f, 1.0f);
 }
 
-CUICore::~CUICore( )
+CUICore::~CUICore()
 {
 	xr_delete(m_pFontManager);
 	xr_delete(m_pUICursor);
 }
 
-void CUICore::pp_start( )
+void CUICore::pp_start()
 {
 	m_bPostprocess = true;
 
-	m_pp_scale_.set(float(::Render->getTarget( )->get_width( )) / float(UI_BASE_WIDTH), float(::Render->getTarget( )->get_height( )) / float(UI_BASE_HEIGHT));
-	m_2DFrustumPP.CreateFromRect(Frect( ).set(0.0f, 0.0f, float(::Render->getTarget( )->get_width( )), float(::Render->getTarget( )->get_height( ))));
+	m_pp_scale_.set(float(::Render->getTarget()->get_width()) / float(UI_BASE_WIDTH), float(::Render->getTarget()->get_height()) / float(UI_BASE_HEIGHT));
+	m_2DFrustumPP.CreateFromRect(Frect().set(0.0f, 0.0f, float(::Render->getTarget()->get_width()), float(::Render->getTarget()->get_height())));
 
 	m_current_scale = &m_pp_scale_;
-	g_current_font_scale.set(float(::Render->getTarget( )->get_width( )) / float(Device.dwWidth), float(::Render->getTarget( )->get_height( )) / float(Device.dwHeight));
+	g_current_font_scale.set(float(::Render->getTarget()->get_width()) / float(Device.dwWidth), float(::Render->getTarget()->get_height()) / float(Device.dwHeight));
 }
 
-void CUICore::pp_stop( )
+void CUICore::pp_stop()
 {
 	m_bPostprocess = false;
 	m_current_scale = &m_scale_;
 	g_current_font_scale.set(1.0f, 1.0f);
 }
 
-void CUICore::RenderFont( )
+void CUICore::RenderFont()
 {
-	Font( )->Render( );
+	Font()->Render();
 }
 
-bool CUICore::is_16_9_mode( )
+bool CUICore::is_16_9_mode()
 {
 	return (Device.dwWidth) / float(Device.dwHeight) > (UI_BASE_WIDTH / UI_BASE_HEIGHT + 0.01f);
 }
@@ -266,7 +266,7 @@ bool CUICore::is_16_9_mode( )
 CSharedString CUICore::get_xml_name(const char* fn)
 {
 	string_path str;
-	if (!is_16_9_mode( ))
+	if (!is_16_9_mode())
 	{
 		sprintf_s(str, "%s", fn);
 		if (NULL == strext(fn))
