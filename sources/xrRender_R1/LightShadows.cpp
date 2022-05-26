@@ -252,18 +252,21 @@ void CLightShadows::calculate	()
 			float		p_hat	=	p_R/p_dist;
 			float		p_asp	=	1.f;
 			float		p_near	=	p_dist-p_R-eps;									
-			float		p_nearR	=	C.C.distance_to(L.source->position) + p_R*0.85f + eps;
-						p_nearR =	p_near;
+//			float		p_nearR	=	C.C.distance_to(L.source->position) + p_R*0.85f + eps;
+//						p_nearR =	p_near;
 			float		p_far	=	_min(Lrange,_max(p_dist+S_fade,p_dist+p_R));	
-			if (p_near<eps)			continue;
-			if (p_far<(p_near+eps))	continue;
+			//	Igor: make check here instead of assertion in buil_projection_hat
+			if (!(_abs(p_far - p_near) > eps)) continue;
 			if (p_hat>0.9f)			continue;
 			if (p_hat<0.01f)		continue;
 
 			//Msg			("* near(%f), near-x(%f)",p_near,p_nearR);
 			
 			mProject.build_projection_HAT	(p_hat,p_asp,p_near,	p_far);
-			mProjectR.build_projection_HAT	(p_hat,p_asp,p_nearR,	p_far);
+			//	Igor: strange bug with building projection_hat
+			//	building projection with the same parameters fails for the 
+			//	second time
+//			mProjectR.build_projection_HAT	(p_hat,p_asp,p_nearR,	p_far);
 			RCache.set_xform_project		(mProject);
 			
 			// calculate view-matrix

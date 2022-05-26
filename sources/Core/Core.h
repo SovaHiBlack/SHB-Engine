@@ -8,7 +8,7 @@
 
 #include "build defines.h"
 
-#pragma warning(disable:4996)
+//#pragma warning(disable:4996)
 
 #if (defined(DEBUG) && !defined(FORCE_NO_EXCEPTIONS))
 	// "debug"

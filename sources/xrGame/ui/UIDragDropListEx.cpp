@@ -149,7 +149,7 @@ void CUIDragDropListEx::OnItemDrop(CUIWindow* w, void* pData)
 {
 	OnItemSelected(w, pData);
 	CUICellItem* itm = smart_cast<CUICellItem*>(w);
-	VERIFY(itm->OwnerList( ) == itm->OwnerList( ));
+	VERIFY(itm->OwnerList( ) == itm->OwnerList( ));   // ??????wtf
 
 	if (m_f_item_drop && m_f_item_drop(itm))
 	{

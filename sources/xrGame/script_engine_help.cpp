@@ -89,11 +89,7 @@ xr_string member_to_string(luabind::object const& e, const char* function_signat
 			}
 		}
 
-#ifdef BOOST_NO_STRINGSTREAM
-		std::strstream s;
-#else
 		std::stringstream s;
-#endif
 
 		{
 			lua_getupvalue(L, -1, 2);

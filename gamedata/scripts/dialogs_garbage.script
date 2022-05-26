@@ -1,4 +1,3 @@
-
 function has_dolg_bribe(actor, npc)
 	return actor:money() >= 500
 end
@@ -17,14 +16,13 @@ function seryi_payment (stalker, player)
 end
 
 function blokpost_pass (actor, npc)
-	 if dialogs.actor_in_dolg() == true or
-		  has_alife_info("gar_free_pass")
-	 then
-		  return true
-	 end
-	 return false
+	if dialogs.actor_in_dolg() == true or has_alife_info("gar_free_pass") then
+		return true
+	end
+
+	return false
 end
 
-function give_money_from_newbie(first_speaker, second_speaker)	
+function give_money_from_newbie(first_speaker, second_speaker)
 	dialogs.relocate_money(first_speaker, 500, "in")
 end

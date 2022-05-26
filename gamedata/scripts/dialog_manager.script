@@ -19,6 +19,7 @@ function fill_phrase_table()
 	if not phrase_ini:section_exist("list") then
 		abort("There is no section [list] in dialog_manager.ltx")
 	end
+
 	local n = phrase_ini:line_count("list")
 	local id, value = "",""
 	local category = ""
@@ -29,48 +30,61 @@ function fill_phrase_table()
 		if not phrase_ini:section_exist(id) then
 			abort("There is no section [%s] in dialog_manager.ltx", id)
 		end
+
 		--' 2. Необходимо сформировать набор предикатов  table[string_id] = predicate()
 		if not phrase_ini:line_exist(id, "category") then
 			abort("Dialog manager error: not categoried section [%s]", id)
 		end
+
 		category = phrase_ini:r_string(id, "category")
 		local tt = {}
 		tt.name = id
 		if phrase_ini:line_exist(id, "community") then
 			tt.community = phrase_ini:r_string(id, "community")
 		end
+
 		if phrase_ini:line_exist(id, "npc_community") then
 			tt.npc_community = phrase_ini:r_string(id, "npc_community")
 		end
+
 		if phrase_ini:line_exist(id, "relation") then
 			tt.relation = phrase_ini:r_string(id, "relation")
 		end
+
 		if phrase_ini:line_exist(id, "npc_rank") then
 			tt.npc_rank = phrase_ini:r_u32(id, "npc_rank")
 		end
+
 		if phrase_ini:line_exist(id, "level") then
 			tt.level = phrase_ini:r_string(id, "level")
 		end
+
 		if phrase_ini:line_exist(id, "condlist") then
 			tt.condlist = xr_logic.parse_condlist(db.actor, "dialog_manager", "condlist", phrase_ini:r_string(id, "condlist"))
 		end
+
 		if phrase_ini:line_exist(id, "smart_terrain") then
 			tt.smart_terrain = phrase_ini:r_string(id, "smart_terrain")
 		end
+
 		if phrase_ini:line_exist(id, "cost") then
 			tt.price = phrase_ini:r_u32(id, "cost")
 		end
+
 		if phrase_ini:line_exist(id, "article_info") then
 			tt.article_info = parse_names(phrase_ini:r_string(id, "article_info"))
 		end
+
 		if phrase_ini:line_exist(id, "treasure") then
 			tt.treasure = phrase_ini:r_string(id, "treasure")
 		end
+
 		if phrase_ini:line_exist(id, "wounded") then
 			tt.wounded = phrase_ini:r_string(id, "wounded")
 		else
 			tt.wounded = "false"
 		end
+
 		tt.phr_id = gen_phrase_id_str()
 		tt.phr_id2 = gen_phrase_id_str()
 		phrase[category][tt.phr_id] = tt
@@ -168,6 +182,7 @@ function cool_info_treasure(npc, actor, p1, p2)
 			if v.treasure == nil then
 				return
 			end
+
 			treasure_manager.get_treasure_manager():give_treasure(v.treasure)
 		end
 	end
@@ -198,6 +213,7 @@ function precondition_cool_info_no_more(npc, actor, p1, p2, p3)
 	if selected_phrase_by_id.cool_info == nil or selected_phrase_by_id.cool_info[npc:id()] == nil then
 		return false
 	end
+
 	if selected_phrase_by_id.cool_info[npc:id()].count >= 1 then
 		return true
 	end
@@ -226,19 +242,18 @@ end
 function precondition(npc, actor, tbl, sel_tbl, p1, p2, p3)
 	--' Надо проверить доступна ли запомненная фраза
 	if ((sel_tbl ~= nil) and (sel_tbl[npc:id()] ~= nil)) then
-		
 		local lll = sel_tbl[npc:id()]
 		if (lll == nil) then
 			printf("lll is nil")
 		end
-		local ttt = tbl[lll.phrase]
 
+		local ttt = tbl[lll.phrase]
 		if (ttt==nil) then
 			printf("!!! %s", lll.phrase)
 			print_table(tbl)
 			local a = lll.phrase + 1
 
---[[		
+--[[
 			printf("%d", get_t_size(tbl))
 			printf("%d", get_t_size(sel_tbl))
 			printf("needed phrase=[%s]", lll.phrase)
@@ -271,6 +286,7 @@ function precondition(npc, actor, tbl, sel_tbl, p1, p2, p3)
 			printf("*** not memory phrase [%s] ~= [%s]", sel_tbl[npc:id()].phrase, phrase.phr_id)
 			return false
 		end
+
 		if (sel_tbl[npc:id()].count >= 1) then
 			return false
 		end
@@ -288,58 +304,75 @@ function calculate_predicate(npc, tbl, settings)
 		if tbl.community ~= db.actor:character_community() then
 			return false, 0
 		end
+
 		property_num = property_num + 1
 	end
+
 	if tbl.npc_community ~= nil then
 		if tbl.npc_community ~= npc:character_community() then return
 			false, 0
 		end
+
 		property_num = property_num + 1
 	end
+
 	if tbl.relation ~= nil then
 		if (tbl.relation == "friend" and npc:relation(db.actor) ~= game_object.friend) or (tbl.relation == "neutral" and npc:relation(db.actor) ~= game_object.neutral) or (tbl.relation == "enemy" and npc:relation(db.actor) ~= game_object.enemy) then
 			return false, 0
 		end
+
 		property_num = property_num + 1
 	end
+
 	if tbl.npc_rank ~= nil then
 		if tbl.npc_rank > npc:character_rank() then return
 			false, 0
 		end
+
 		property_num = property_num + 1
 	end
+
 	if tbl.level ~= nil then
 		if tbl.level ~= level.name() then return
 			false, 0
 		end
+
 		property_num = property_num + 1
 	end
+
 	if tbl.condlist ~= nil then
 		if xr_logic.pick_section_from_condlist(db.actor, db.actor, tbl.condlist) ~= "true" then
 			return false, 0
 		end
+
 		property_num = property_num + table.getn(tbl.condlist.infop_check)
 	end
+
 	if tbl.smart_terrain ~= nil then
 		if tbl.smart_terrain ~= xr_gulag.isUnderFraction(npc) then
 			return false, 0
 		end
+
 		property_num = property_num + 1
 	end
+
 	if tbl.wounded ~= nil then
 		if tbl.wounded == "true" and not (xr_wounded.is_wounded(npc) or xr_wounded.is_heavy_wounded_by_id(npc:id()) or xr_wounded.is_psy_wounded_by_id(npc:id())) then
 			return false, 0
 		end
+
 		if tbl.wounded == "false" and (xr_wounded.is_wounded(npc) or xr_wounded.is_heavy_wounded_by_id(npc:id()) or xr_wounded.is_psy_wounded_by_id(npc:id())) then
 			return false, 0
 		end
+
 		property_num = property_num + 1
 	end
+
 	if tbl.price ~= nil then
 		if (db.actor:money() < tbl.price) and (settings == nil or settings.no_price ~= true) then
 			return false, 0
 		end
-		
+
 		if tbl.article_info ~= nil then
 			for k, v in pairs(tbl.article_info) do
 				if has_alife_info(v) then
@@ -357,6 +390,7 @@ function precondition_info_global(actor, npc)
 	if xr_wounded.is_wounded(npc) or xr_wounded.is_heavy_wounded_by_id(npc:id()) or xr_wounded.is_psy_wounded_by_id(npc:id()) then
 		return false
 	end
+
 	return true
 end
 
@@ -367,6 +401,7 @@ function save(npc, p)
 	else
 		p:w_stringZ(selected_phrase_by_id.intro[npc:id()].phrase)
 	end
+
 	if selected_phrase_by_id.cool_info[npc:id()] == nil then
 		p:w_stringZ("-1")
 	else
@@ -401,6 +436,7 @@ function load(npc, reader, ver)
 	else
 		flag = tostring(reader:r_s16())
 	end
+
 	if flag ~= "-1" then
 		selected_phrase_by_id.cool_info[npc:id()] = { phrase = flag, count = 0 }
 	else

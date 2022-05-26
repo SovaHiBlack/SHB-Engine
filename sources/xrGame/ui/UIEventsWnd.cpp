@@ -227,6 +227,21 @@ void CUIEventsWnd::ShowDescription(CGameTask* t, int idx)
 		{
 			m_UIMapWnd->SetTargetMap(ml->LevelName( ), ml->Position( ), true);
 		}
+
+		int sz = m_ListWnd->GetSize();
+		for (int i = 0; i < sz; ++i)
+		{
+			CUITaskItem* itm = (CUITaskItem*)m_ListWnd->GetItem(i);
+
+			if ((itm->GameTask() == t) && (itm->ObjectiveIdx() == idx))
+			{
+				itm->MarkSelected(true);
+			}
+			else
+			{
+				itm->MarkSelected(false);
+			}
+		}
 	}
 	else
 	{	//articles

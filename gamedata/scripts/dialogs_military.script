@@ -14,7 +14,7 @@ function mil_dolg_payment2(stalker, player)
 end
 
 function lukash_payment(stalker, player)
-	dialogs.relocate_money (stalker, 7000, "in")
+	dialogs.relocate_money(stalker, 7000, "in")
 end
 
 --' Отмечаем провал задачи
@@ -24,50 +24,53 @@ function mil_dolg_sniper_failed(stalker, player)
 end
 
 -- отмечаем выполнение задачи
-function mil_dolg_sniper_complete (stalker, player)
-	level_tasks.set_task_state (task.completed, "mil_kill_sniper", 0)
+function mil_dolg_sniper_complete(stalker, player)
+	level_tasks.set_task_state(task.completed, "mil_kill_sniper", 0)
 end
 
-function transfer_flash (player, stalker)
+function transfer_flash(player, stalker)
 	dialogs.relocate_item_section(stalker, "crazy_flash", "out")
 end
 
-function is_player_help (player, stalker)
-	if db.storage[db.actor:id ()] == nil then return false end
+function is_player_help(player, stalker)
+	if db.storage[db.actor:id ()] == nil then
+		return false
+	end
+
 	return db.storage[db.actor:id ()].mil_dolg["killed_by_actor"]
 end
 
-function no_player_help (stalker, player)
+function no_player_help(stalker, player)
 	return not this.is_player_help (player, stalker)
 end
 
-function transfer_rg6 (stalker, player)
+function transfer_rg6(stalker, player)
 	return
 end
 
-function set_freedom_enemy (player, stalker)
-	--db.actor:set_character_community ("dolg")
-	relation_registry.set_community_goodwill ("freedom", db.actor:id (), -5000)
+function set_freedom_enemy(player, stalker)
+--	db.actor:set_character_community("dolg")
+	relation_registry.set_community_goodwill("freedom", db.actor:id (), -5000)
 end
 
-function set_task1_complete (player, stalker)
+function set_task1_complete(player, stalker)
 	if has_alife_info("mil_leader_quest1_start") then
-	   level_tasks.set_task_state (task.completed, "mil_lukash_job", 1)
-	end   
+		level_tasks.set_task_state(task.completed, "mil_lukash_job", 1)
+	end
 end
 
-function set_task3_complete (player, stalker)
+function set_task3_complete(player, stalker)
 	if has_alife_info("mil_leader_quest1_start") then
-	   level_tasks.set_task_state (task.completed, "mil_lukash_job", 0)
-	   level_tasks.set_task_state (task.completed, "mil_lukash_job", 3)
-	end   
+		level_tasks.set_task_state(task.completed, "mil_lukash_job", 0)
+		level_tasks.set_task_state(task.completed, "mil_lukash_job", 3)
+	end
 end
 
-function set_courier_task_complete (stalker, player)
-end    
+function set_courier_task_complete(stalker, player)
+end
 
-function actor_has_weapon (stalker, player)
-	return xr_conditions.actor_has_weapon (player, stalker)
+function actor_has_weapon(stalker, player)
+	return xr_conditions.actor_has_weapon(player, stalker)
 end
 
 function actor_dont_has_weapon (stalker, player)
