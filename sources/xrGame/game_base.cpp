@@ -196,6 +196,7 @@ CLASS_ID game_GameState::getCLASS_ID(const char* game_type_name, bool isServer)
 
 	return TEXT2CLSID(*clsid);
 
+#pragma todo("warning C4702 : недостижимый код - а оно вообще тут нужно")
 	if (isServer)
 	{
 		if (!xr_strcmp(game_type_name, "single"))

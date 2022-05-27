@@ -701,7 +701,7 @@ u32 CServer::OnMessage(CNetPacket& P, CClientID sender)			// Non-Zero means broa
 			CSharedString				user;
 			CSharedString				pass;
 			P.r_stringZ(user);
-			if (0 == stricmp(user.c_str( ), "logoff"))
+			if (0 == _stricmp(user.c_str( ), "logoff"))
 			{
 				CL->m_admin_rights.m_has_admin_rights = FALSE;
 				strcpy(reason, "logged off");
@@ -1059,7 +1059,7 @@ void CServer::GetServerInfo(CServerInfo* si)
 	string32  tmp;
 	string256 tmp256;
 
-	si->AddItem("Server port", itoa(GetPort( ), tmp, 10), RGB(128, 128, 255));
+	si->AddItem("Server port", _itoa(GetPort( ), tmp, 10), RGB(128, 128, 255));
 	const char* time = InventoryUtilities::GetTimeAsString(Device.dwTimeGlobal, InventoryUtilities::etpTimeToSecondsAndDay).c_str( );
 	si->AddItem("Uptime", time, RGB(255, 228, 0));
 

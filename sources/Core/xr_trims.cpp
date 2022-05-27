@@ -99,7 +99,7 @@ unsigned int _ParseItem(const char* src, xr_token* token_list)
 {
 	for (int i = 0; token_list[i].name; i++)
 	{
-		if (!stricmp(src, token_list[i].name))
+		if (!_stricmp(src, token_list[i].name))
 		{
 			return token_list[i].id;
 		}

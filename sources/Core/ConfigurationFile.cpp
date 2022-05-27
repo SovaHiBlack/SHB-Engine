@@ -273,7 +273,7 @@ void CConfigurationFile::Load(IReader* F, const char* path)
 			}
 
 			*strchr(str, ']') = 0;
-			Current->Name = strlwr(str + 1);
+			Current->Name = _strlwr(str + 1);
 		}
 		else
 		{
@@ -488,7 +488,7 @@ CConfigurationFile::Sect& CConfigurationFile::r_section(const char* S)
 {
 	string256 section;
 	strcpy_s(section, sizeof(section), S);
-	strlwr(section);
+	_strlwr(section);
 	RootIt I = std::lower_bound(DATA.begin( ), DATA.end( ), section, sect_pred);
 	if (!(I != DATA.end( ) && xr_strcmp(*(*I)->Name, section) == 0))
 	{
@@ -646,7 +646,7 @@ BOOL CConfigurationFile::r_bool(const char* S, const char* L)
 	const char* C = r_string(S, L);
 	char B[8];
 	strncpy(B, C, 7);
-	strlwr(B);
+	_strlwr(B);
 	return IsBOOL(B);
 }
 CLASS_ID CConfigurationFile::r_clsid(const char* S, const char* L)
@@ -660,7 +660,7 @@ int CConfigurationFile::r_token(const char* S, const char* L, const xr_token* to
 	const char* C = r_string(S, L);
 	for (int i = 0; token_list[i].name; i++)
 	{
-		if (!stricmp(C, token_list[i].name))
+		if (!_stricmp(C, token_list[i].name))
 		{
 			return token_list[i].id;
 		}

@@ -130,7 +130,7 @@ void CSoundRender_Source::load(const char* name)
 {
 	string_path			fn,N;
 	strcpy				(N,name);
-	strlwr				(N);
+	_strlwr				(N);
 	if (strext(N))		*strext(N) = 0;
 
 	fname				= N;

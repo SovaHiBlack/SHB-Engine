@@ -29,7 +29,7 @@ public:
 
 	BOOL			Equal			(CEvent& E)
 	{
-		return stricmp(Name, E.Name) == 0;
+		return _stricmp(Name, E.Name) == 0;
 	}
 
 	void			Attach			(IEventReceiver* H)
@@ -179,12 +179,12 @@ void CEventAPI::Defer(const char* N, unsigned __int64 P1, unsigned __int64 P2)
 #ifdef DEBUG
 void msParse(const char* c)
 {
-	if (0 == stricmp(c, "exit"))
+	if (0 == _stricmp(c, "exit"))
 	{
 		Console->Execute("quit");
 	}
 
-	if (0 == stricmp(c, "quit"))
+	if (0 == _stricmp(c, "quit"))
 	{
 		TerminateProcess(GetCurrentProcess( ), 0);
 		Console->Execute("quit");
@@ -229,7 +229,7 @@ BOOL CEventAPI::Peek(const char* EName)
 	for (unsigned int I = 0; I < Events_Deferred.size( ); I++)
 	{
 		Deferred& DEF = Events_Deferred[I];
-		if (stricmp(DEF.E->GetFull( ), EName) == 0)
+		if (_stricmp(DEF.E->GetFull( ), EName) == 0)
 		{
 			CS.Leave( );
 			return TRUE;

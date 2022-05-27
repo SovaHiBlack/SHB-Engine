@@ -75,7 +75,7 @@ void FHierrarhyVisual::Load(const char* N, IReader* data, unsigned int dwFlags)
 						*strext(short_name) = 0;
 					}
 
-					strconcat(sizeof(name_load), name_load, short_name, ":", itoa(count, num, 10));
+					strconcat(sizeof(name_load), name_load, short_name, ":", _itoa(count, num, 10));
 					children.push_back(::Render->model_CreateChild(name_load, O));
 					O->close( );
 					O = OBJ->open_chunk(count);

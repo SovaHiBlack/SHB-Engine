@@ -475,7 +475,7 @@ struct _uniq_mode
 	const char* _val;
 	bool operator() (const char* _other)
 	{
-		return !stricmp(_val, _other);
+		return !_stricmp(_val, _other);
 	}
 };
 

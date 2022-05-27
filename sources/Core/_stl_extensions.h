@@ -371,7 +371,7 @@ struct pred_stri : public std::binary_function<char*, char*, bool>
 {
 	inline bool operator()(const char* x, const char* y) const
 	{
-		return stricmp(x, y) < 0;
+		return _stricmp(x, y) < 0;
 	}
 };
 

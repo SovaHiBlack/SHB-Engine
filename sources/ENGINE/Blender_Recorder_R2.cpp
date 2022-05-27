@@ -30,7 +30,7 @@ void	CBlender_Compile::r_Pass		(const char* _vs, const char* _ps, bool bFog, BOO
 	SetMapping				();
 
 	// Last Stage - disable
-	if (0==stricmp(_ps,"null"))	{
+	if (0==_stricmp(_ps,"null"))	{
 		RS.SetTSS				(0,D3DTSS_COLOROP,D3DTOP_DISABLE);
 		RS.SetTSS				(0,D3DTSS_ALPHAOP,D3DTOP_DISABLE);
 	}

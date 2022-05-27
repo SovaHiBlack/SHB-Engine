@@ -119,7 +119,7 @@ CSE_Abstract* CAlifeSimulatorBase::spawn_item(const char* section, const Fvector
 	}
 
 	string16 S1;
-	strcat(s_name_replace, itoa(abstract->ID, S1, 10));
+	strcat(s_name_replace, _itoa(abstract->ID, S1, 10));
 	abstract->set_name_replace(s_name_replace);
 
 	CSE_ALifeDynamicObject* dynamic_object = smart_cast<CSE_ALifeDynamicObject*>(abstract);
@@ -188,7 +188,7 @@ CSE_Abstract* CAlifeSimulatorBase::create(CSE_ALifeGroupAbstract* tpALifeGroupAb
 	}
 
 	string16					S1;
-	strcat(s_name_replace, itoa(k->ID, S1, 10));
+	strcat(s_name_replace, _itoa(k->ID, S1, 10));
 	k->set_name_replace(s_name_replace);
 
 	register_object(k, true);

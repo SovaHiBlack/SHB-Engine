@@ -15,7 +15,7 @@ namespace SeniorityHierarchy
 	inline	CSharedString to_string(u32 number)
 	{
 		string16	S;
-		itoa(number, S, 10);
+		_itoa(number, S, 10);
 		return CSharedString(S);
 	}
 

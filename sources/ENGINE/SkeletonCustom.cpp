@@ -306,7 +306,7 @@ void CKinematics::Load(const char* N, IReader* data, unsigned int dwFlags)
 
 		// Bone
 		unsigned short ID = unsigned short(bones->size( ));
-		data->r_stringZ(buf, sizeof(buf));	strlwr(buf);
+		data->r_stringZ(buf, sizeof(buf));	_strlwr(buf);
 		CBoneData* pBone = CreateBoneData(ID);
 		pBone->name = CSharedString(buf);
 		pBone->child_faces.resize(children.size( ));
@@ -315,7 +315,7 @@ void CKinematics::Load(const char* N, IReader* data, unsigned int dwFlags)
 		bone_map_P->push_back(mk_pair(pBone->name, ID));
 
 		// It's parent
-		data->r_stringZ(buf, sizeof(buf));	strlwr(buf);
+		data->r_stringZ(buf, sizeof(buf));	_strlwr(buf);
 		L_parents.push_back(buf);
 
 		data->r(&pBone->obb, sizeof(Fobb));

@@ -1522,7 +1522,7 @@ BOOL CLocatorAPI::dir_delete(const char* path, const char* nm, BOOL remove_files
 					return FALSE;
 				}
 
-				unlink(entry.name);
+				_unlink(entry.name);
 				files.erase(cur_item);
 			}
 			else
@@ -1563,7 +1563,7 @@ void CLocatorAPI::file_delete(const char* path, const char* nm)
 	if (I != files.end( ))
 	{
 		// remove file
-		unlink(I->name);
+		_unlink(I->name);
 		char* str = (char*) (I->name);
 		xr_free(str);
 		files.erase(I);
@@ -1602,7 +1602,7 @@ void CLocatorAPI::file_rename(const char* src, const char* dest, bool bOwerwrite
 				return;
 			}
 
-			unlink(D->name);
+			_unlink(D->name);
 			char* str = (char*) (D->name);
 			xr_free(str);
 			files.erase(D);
@@ -1794,7 +1794,7 @@ BOOL CLocatorAPI::can_write_to_folder(const char* path)
 		else
 		{
 			fclose(hf);
-			unlink(temp);
+			_unlink(temp);
 			return TRUE;
 		}
 	}

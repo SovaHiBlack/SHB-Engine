@@ -108,7 +108,7 @@ void CStringContainer::verify( )
 		SStringValue* sv = *it;
 		unsigned int crc = crc32(sv->value, sv->dwLength);
 		char crc_str[32];
-		R_ASSERT3(crc == sv->dwCRC, "CorePanic: read-only memory corruption (shared_strings)", itoa(sv->dwCRC, crc_str, 16));
+		R_ASSERT3(crc == sv->dwCRC, "CorePanic: read-only memory corruption (shared_strings)", _itoa(sv->dwCRC, crc_str, 16));
 		R_ASSERT3(sv->dwLength == xr_strlen(sv->value), "CorePanic: read-only memory corruption (shared_strings, internal structures)", sv->value);
 	}
 

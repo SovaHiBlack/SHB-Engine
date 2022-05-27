@@ -83,7 +83,7 @@ unsigned short CKinematicsAnimated::LL_PartID		(const char* B)
 	for (unsigned short id=0; id<MAX_PARTS; id++) {
 		CPartDef&	P = (*m_Partition)[id];
 		if (0==P.Name)	continue;
-		if (0==stricmp(B,*P.Name)) return id;
+		if (0==_stricmp(B,*P.Name)) return id;
 	}
 	return BI_NONE;
 }

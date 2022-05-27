@@ -740,7 +740,7 @@ void game_sv_GameState::OnEvent(CNetPacket& tNetPacket, unsigned short type, u32
 		default:
 		{
 			string16 tmp;
-			R_ASSERT3(0, "Game Event not implemented!!!", itoa(type, tmp, 10));
+			R_ASSERT3(0, "Game Event not implemented!!!", _itoa(type, tmp, 10));
 		}
 	}
 }

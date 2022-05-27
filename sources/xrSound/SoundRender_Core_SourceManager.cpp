@@ -7,7 +7,7 @@ CSoundRender_Source*	CSoundRender_Core::i_create_source		(const char* name)
 {
 	// Search
 	string256			id;
-	strlwr				(strcpy(id,name));
+	_strlwr				(strcpy(id,name));
 	if (strext(id))		*strext(id) = 0;
 	for (unsigned int it=0; it<s_sources.size(); it++)		{
 		if (0==xr_strcmp(*s_sources[it]->fname,id))	return s_sources[it];

@@ -51,7 +51,7 @@ inline int get_token_id(xr_token* tokens, const char* key)
 {
 	for (int k = 0; tokens[k].name; k++)
 	{
-		if (stricmp(tokens[k].name, key) == 0)
+		if (_stricmp(tokens[k].name, key) == 0)
 		{
 			return tokens[k].id;
 		}
@@ -299,7 +299,7 @@ inline unsigned int							xr_strlen(const char* S)
 
 inline char* xr_strlwr(char* S)
 {
-	return strlwr(S);
+	return _strlwr(S);
 }
 
 #ifdef BREAK_AT_STRCMP

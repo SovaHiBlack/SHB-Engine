@@ -245,7 +245,7 @@ public:
 	{
 		for (GameMtlIt it = materials.begin( ); materials.end( ) != it; ++it)
 		{
-			if (0 == strcmpi(*(*it)->m_Name, name))
+			if (0 == _strcmpi(*(*it)->m_Name, name))
 			{
 				return it;
 			}

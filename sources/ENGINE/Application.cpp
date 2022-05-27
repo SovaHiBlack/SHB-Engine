@@ -999,7 +999,7 @@ int CApplication::Level_ID(const char* name)
 	strconcat(sizeof(buffer), buffer, name, "\\");
 	for (unsigned int I = 0; I < Levels.size( ); I++)
 	{
-		if (0 == stricmp(buffer, Levels[I].folder))
+		if (0 == _stricmp(buffer, Levels[I].folder))
 		{
 			return int(I);
 		}

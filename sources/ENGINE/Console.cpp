@@ -706,7 +706,7 @@ outloop:
 		{
 			if (C.bLowerCaseArgs)
 			{
-				strlwr(last_word);
+				_strlwr(last_word);
 			}
 
 			if (last_word[0] == 0)
