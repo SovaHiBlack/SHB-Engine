@@ -1,4 +1,8 @@
 ﻿/sources/.vs/SHB-Engine/v16
+
 /gamedata/levels
+/gamedata/meshes
 /gamedata/sounds
 /gamedata/textures
+
+/Release-Win32

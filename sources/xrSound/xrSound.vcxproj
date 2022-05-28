@@ -124,6 +124,7 @@
       <WarningLevel>Level4</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <AdditionalIncludeDirectories>..\libvorbis\include;..\libogg\include;..\SDK\eax\include;..\xrOpenAL</AdditionalIncludeDirectories>
+      <ExceptionHandling />
     </ClCompile>
     <Link>
       <AdditionalDependencies>vorbisfile_static.lib;ogg_static.lib;OpenAL32.lib;%(AdditionalDependencies)</AdditionalDependencies>

@@ -1,113 +1,698 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
+    <Filter Include="ai">
+      <UniqueIdentifier>{24541807-41c2-4a24-bfac-ac3cab9fdf02}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ai\alife">
+      <UniqueIdentifier>{190c4404-e22e-4650-ac36-88296ba909e3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ai\common">
+      <UniqueIdentifier>{4cd38ba7-8912-47ab-85c5-4b6c2fd26a13}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="anims">
+      <UniqueIdentifier>{0938cd08-18fe-401f-b6b3-fdb79f0f20d9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="anims\camera_effects">
+      <UniqueIdentifier>{a2d7089a-4251-42a3-a1fc-950bd5344710}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="anims\editor">
+      <UniqueIdentifier>{e88a50b7-79b5-4434-a507-39e375e032ad}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="anims\helicopter">
+      <UniqueIdentifier>{39ddfb25-3c55-49d2-a952-e3dbc5f9c065}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="anims\path">
+      <UniqueIdentifier>{4b827b62-b52d-4917-b4ca-e857f2f45ec6}</UniqueIdentifier>
+    </Filter>
     <Filter Include="config">
-      <UniqueIdentifier>{789f678b-a158-4141-8510-0ab93949ae2f}</UniqueIdentifier>
+      <UniqueIdentifier>{e1017dfd-a6d3-4e68-89b3-0e1e34fdc159}</UniqueIdentifier>
     </Filter>
     <Filter Include="config\creatures">
-      <UniqueIdentifier>{4def27b5-8f85-4c29-b11e-28978f10b0b8}</UniqueIdentifier>
+      <UniqueIdentifier>{a4b37a80-d948-45cf-a4f2-c7ed7550a18c}</UniqueIdentifier>
     </Filter>
     <Filter Include="config\gameplay">
-      <UniqueIdentifier>{a317fd00-312c-40e9-a8e6-e0360bdfe50a}</UniqueIdentifier>
+      <UniqueIdentifier>{59de2d11-685f-4c21-a519-cf5799eb0f3a}</UniqueIdentifier>
     </Filter>
     <Filter Include="config\misc">
-      <UniqueIdentifier>{8c48b271-250a-463d-ada5-a61870f85534}</UniqueIdentifier>
+      <UniqueIdentifier>{bdb5e723-5c1c-4b15-8d01-39f0cea4edef}</UniqueIdentifier>
     </Filter>
     <Filter Include="config\models">
-      <UniqueIdentifier>{64b14e55-d845-4802-852a-d013481a64d0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="config\models\capture">
-      <UniqueIdentifier>{521f4738-1045-4e55-9a2d-c85681855304}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="config\models\objects">
-      <UniqueIdentifier>{4c1675ff-bebc-4883-a4ec-4c64bef7cba5}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="config\models\vehicles">
-      <UniqueIdentifier>{7e08cd0a-652e-48c5-9521-4229d676da49}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="config\models\weapons">
-      <UniqueIdentifier>{03e5ca79-d6b2-47fc-8c7b-6cc1b7f0ba92}</UniqueIdentifier>
+      <UniqueIdentifier>{27844d64-61f8-4b1b-8b6d-6a945482305c}</UniqueIdentifier>
     </Filter>
     <Filter Include="config\prefetch">
-      <UniqueIdentifier>{183bbc75-72b1-44cb-9094-3fc00013f830}</UniqueIdentifier>
+      <UniqueIdentifier>{44c1988e-338d-4bec-a2fe-13cda6952bcc}</UniqueIdentifier>
     </Filter>
     <Filter Include="config\scripts">
-      <UniqueIdentifier>{2b9877cf-a6bb-41be-8a38-ba22ab6d974c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="config\scripts\agr">
-      <UniqueIdentifier>{93bc7f65-529c-484c-9a0d-a6d27ee9a573}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="config\scripts\cit">
-      <UniqueIdentifier>{2fd4f993-5038-42b4-bcd7-daeed90d464d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="config\scripts\dar">
-      <UniqueIdentifier>{e9b4bed4-6f4c-4dba-9575-1a8c11f8ac9d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="config\scripts\ds">
-      <UniqueIdentifier>{b423084a-6446-41af-bc5e-947e9bfdccb0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="config\scripts\mil">
-      <UniqueIdentifier>{852f78d5-f5c8-4d95-95d2-b472be688a9b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="config\scripts\pri">
-      <UniqueIdentifier>{8d7efb4a-3579-4d21-bee1-db6b163af318}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="config\scripts\rad">
-      <UniqueIdentifier>{7fa45d7d-7bb9-470d-979c-1701f0f290a0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="config\scripts\val">
-      <UniqueIdentifier>{f8c416d7-98eb-4185-a883-c55e86c523f1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="config\scripts\yan">
-      <UniqueIdentifier>{1b583460-6080-4fb6-b23e-cc95576a55f5}</UniqueIdentifier>
+      <UniqueIdentifier>{a8c7f563-0e61-4e7c-a17a-7d3645c94bb0}</UniqueIdentifier>
     </Filter>
     <Filter Include="config\text">
-      <UniqueIdentifier>{4bd82b6c-262a-4927-bf20-4d069e2268b0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="config\text\eng">
-      <UniqueIdentifier>{cd2e1f74-1f12-4fc7-b8a0-1de04c68ac8f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="config\text\map_desc">
-      <UniqueIdentifier>{47e689de-ff5b-49da-9639-bfdd6a61145e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="config\text\rus">
-      <UniqueIdentifier>{8e5a5855-f9fd-4071-9d86-31a4dd47e7aa}</UniqueIdentifier>
+      <UniqueIdentifier>{42a31c1b-b008-4a59-ab67-3e901110c66e}</UniqueIdentifier>
     </Filter>
     <Filter Include="config\ui">
-      <UniqueIdentifier>{f7bdb4af-c6a3-4f0a-9b11-5c90c68bc4eb}</UniqueIdentifier>
+      <UniqueIdentifier>{2a3f37a9-fd3b-4bbc-85b3-5ed6823e0e9c}</UniqueIdentifier>
     </Filter>
     <Filter Include="config\weapons">
-      <UniqueIdentifier>{1298e93d-fbc7-4a74-8f6a-252a276d69db}</UniqueIdentifier>
+      <UniqueIdentifier>{b6724438-8e7d-4d2b-9014-a8784f897915}</UniqueIdentifier>
     </Filter>
     <Filter Include="config\weathers">
-      <UniqueIdentifier>{1762277b-44d1-43eb-92f6-e9aeb3ac0620}</UniqueIdentifier>
+      <UniqueIdentifier>{43006803-0b79-48fa-b987-cfc5deede00c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="config\models\capture">
+      <UniqueIdentifier>{28a5875b-b2b5-4d94-8b45-91d38a2f3786}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="config\models\objects">
+      <UniqueIdentifier>{ffdc8317-9956-42fd-b1f8-3df71d02bd45}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="config\models\vehicles">
+      <UniqueIdentifier>{b3a60103-f8a4-44fb-8ae0-d7e47db213e1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="config\models\weapons">
+      <UniqueIdentifier>{7b26fb21-8dad-457d-bd5e-0dd5855b35de}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="config\scripts\agr">
+      <UniqueIdentifier>{d36ebf2a-b8f7-4724-b884-443fe0bc3d45}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="config\scripts\cit">
+      <UniqueIdentifier>{4719b1d8-04f8-4296-85e3-ecebf5db511b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="config\scripts\dar">
+      <UniqueIdentifier>{2bc4f6ab-bee1-484a-a84c-c56a27c02134}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="config\scripts\ds">
+      <UniqueIdentifier>{6106702c-febc-43e3-9480-9b410f144bef}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="config\scripts\mil">
+      <UniqueIdentifier>{eb65f4fe-aad3-446d-89d2-6b8387e15ce2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="config\scripts\pri">
+      <UniqueIdentifier>{d72cbb25-88d8-4733-8b26-d662174731de}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="config\scripts\rad">
+      <UniqueIdentifier>{82a95ec3-27d5-4a76-ba5e-292fffb269e9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="config\scripts\val">
+      <UniqueIdentifier>{b4f4f901-4f9a-4b0a-9185-f3d2c71c123d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="config\scripts\yan">
+      <UniqueIdentifier>{19a5eab9-4147-4cfd-8f09-253a3c0adf95}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="config\text\eng">
+      <UniqueIdentifier>{b9be7284-6f38-45ef-96c1-b08552cb0b70}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="config\text\map_desc">
+      <UniqueIdentifier>{623c5ed1-b31b-49ce-9ad2-766416cc17d9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="config\text\rus">
+      <UniqueIdentifier>{b04000bc-f9bb-4993-95e9-901e928c3ef5}</UniqueIdentifier>
     </Filter>
     <Filter Include="scripts">
-      <UniqueIdentifier>{e30887c2-6dba-4d6b-8646-eb54f9fb03a1}</UniqueIdentifier>
+      <UniqueIdentifier>{5146c083-4a5b-4cf3-9265-5080b98ff220}</UniqueIdentifier>
     </Filter>
-    <Filter Include="config\gameplay\info_portions">
-      <UniqueIdentifier>{224ebd71-8893-484c-9561-c164b37526bf}</UniqueIdentifier>
+    <Filter Include="shaders">
+      <UniqueIdentifier>{b618401c-9656-4a27-b066-abbbf64752f1}</UniqueIdentifier>
     </Filter>
-    <Filter Include="config\gameplay\encyclopedia">
-      <UniqueIdentifier>{97b69b9a-f961-4517-9f46-213e798d0e49}</UniqueIdentifier>
+    <Filter Include="shaders\r1">
+      <UniqueIdentifier>{47346569-a4dd-43d9-8ad2-5b3488c2ff82}</UniqueIdentifier>
     </Filter>
-    <Filter Include="config\gameplay\encyclopedia\storyline">
-      <UniqueIdentifier>{688b4be3-ec79-4fb8-8021-3923b8caf06a}</UniqueIdentifier>
+    <Filter Include="shaders\r2">
+      <UniqueIdentifier>{0a124b3d-c8bf-4b8f-8cbc-79e40c107c7d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="config\gameplay\dialogs">
-      <UniqueIdentifier>{1ef82141-6d15-4533-9f5c-3d9d09f7365e}</UniqueIdentifier>
+    <Filter Include="shaders\shared">
+      <UniqueIdentifier>{61431fae-7447-4146-980f-213db8b381b7}</UniqueIdentifier>
     </Filter>
-    <Filter Include="config\gameplay\game_tasks">
-      <UniqueIdentifier>{96d6d461-7701-4b98-8b65-e6e7c95fc845}</UniqueIdentifier>
+    <Filter Include="shaders\r1\shared">
+      <UniqueIdentifier>{fa826e7c-f86e-4fef-b1a2-681da61182f8}</UniqueIdentifier>
     </Filter>
-    <Filter Include="config\gameplay\profiles">
-      <UniqueIdentifier>{2f200aba-7cb5-40af-b18b-7b9236424a81}</UniqueIdentifier>
+    <Filter Include="shaders\r2\shared">
+      <UniqueIdentifier>{3639f920-bc60-4219-84d8-9fd05a5e8a6e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="config\gameplay\profiles\specific_characters">
-      <UniqueIdentifier>{d01d5021-1a1c-40ca-9cea-d5cb708197e8}</UniqueIdentifier>
+    <Filter Include="shaders\r2\test">
+      <UniqueIdentifier>{875d6eca-7115-442e-bddf-5c9519aa71ba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="spawns">
+      <UniqueIdentifier>{569b888e-e0da-4a94-9049-d62a9e157b31}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="spawns\unpack">
+      <UniqueIdentifier>{c150f9a0-adce-48c3-addd-c96ab9977057}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <None Include="ai\alife\anomalydetectprobability.efd">
+      <Filter>ai\alife</Filter>
+    </None>
+    <None Include="ai\alife\anomalyinteractprobability.efd">
+      <Filter>ai\alife</Filter>
+    </None>
+    <None Include="ai\alife\anomalyretreatprobability.efd">
+      <Filter>ai\alife</Filter>
+    </None>
+    <None Include="ai\alife\birthpercentage.efd">
+      <Filter>ai\alife</Filter>
+    </None>
+    <None Include="ai\alife\birthprobability.efd">
+      <Filter>ai\alife</Filter>
+    </None>
+    <None Include="ai\alife\birthspeed.efd">
+      <Filter>ai\alife</Filter>
+    </None>
+    <None Include="ai\alife\enemydetectability.efd">
+      <Filter>ai\alife</Filter>
+    </None>
+    <None Include="ai\alife\enemydetectprobability.efd">
+      <Filter>ai\alife</Filter>
+    </None>
+    <None Include="ai\alife\enemyretreatprobability.efd">
+      <Filter>ai\alife</Filter>
+    </None>
+    <None Include="ai\alife\terraintype.efd">
+      <Filter>ai\alife</Filter>
+    </None>
+    <None Include="ai\alife\weaponattacktimes.efd">
+      <Filter>ai\alife</Filter>
+    </None>
+    <None Include="ai\alife\weaponsuccessprobability.efd">
+      <Filter>ai\alife</Filter>
+    </None>
+    <None Include="ai\common\accweaponeffectiveness.efd">
+      <Filter>ai\common</Filter>
+    </None>
+    <None Include="ai\common\creatureeffectiveness.efd">
+      <Filter>ai\common</Filter>
+    </None>
+    <None Include="ai\common\entitycost.efd">
+      <Filter>ai\common</Filter>
+    </None>
+    <None Include="ai\common\equipmentvalue.efd">
+      <Filter>ai\common</Filter>
+    </None>
+    <None Include="ai\common\expediency.efd">
+      <Filter>ai\common</Filter>
+    </None>
+    <None Include="ai\common\fincreatureeffectiveness.efd">
+      <Filter>ai\common</Filter>
+    </None>
+    <None Include="ai\common\intcreatureeffectiveness.efd">
+      <Filter>ai\common</Filter>
+    </None>
+    <None Include="ai\common\mainweaponvalue.efd">
+      <Filter>ai\common</Filter>
+    </None>
+    <None Include="ai\common\smallweaponvalue.efd">
+      <Filter>ai\common</Filter>
+    </None>
+    <None Include="ai\common\surgedeathprobability.efd">
+      <Filter>ai\common</Filter>
+    </None>
+    <None Include="ai\common\victoryprobability.efd">
+      <Filter>ai\common</Filter>
+    </None>
+    <None Include="ai\common\weaponeffectiveness.efd">
+      <Filter>ai\common</Filter>
+    </None>
+    <None Include="anims\camera_effects\agroprom_demo.anm">
+      <Filter>anims\camera_effects</Filter>
+    </None>
+    <None Include="anims\camera_effects\agroprom_demo_nah.anm">
+      <Filter>anims\camera_effects</Filter>
+    </None>
+    <None Include="anims\camera_effects\agroprom_demo_nah1.anm">
+      <Filter>anims\camera_effects</Filter>
+    </None>
+    <None Include="anims\camera_effects\agroprom_doctor_cam.anm">
+      <Filter>anims\camera_effects</Filter>
+    </None>
+    <None Include="anims\camera_effects\arena.anm">
+      <Filter>anims\camera_effects</Filter>
+    </None>
+    <None Include="anims\camera_effects\bar_fly.anm">
+      <Filter>anims\camera_effects</Filter>
+    </None>
+    <None Include="anims\camera_effects\cut_scene1.anm">
+      <Filter>anims\camera_effects</Filter>
+    </None>
+    <None Include="anims\camera_effects\dis_consciousness.anm">
+      <Filter>anims\camera_effects</Filter>
+    </None>
+    <None Include="anims\camera_effects\dream.anm">
+      <Filter>anims\camera_effects</Filter>
+    </None>
+    <None Include="anims\camera_effects\drunk.anm">
+      <Filter>anims\camera_effects</Filter>
+    </None>
+    <None Include="anims\camera_effects\earthquake.anm">
+      <Filter>anims\camera_effects</Filter>
+    </None>
+    <None Include="anims\camera_effects\fatigue.anm">
+      <Filter>anims\camera_effects</Filter>
+    </None>
+    <None Include="anims\camera_effects\fusker.anm">
+      <Filter>anims\camera_effects</Filter>
+    </None>
+    <None Include="anims\camera_effects\head_shot.anm">
+      <Filter>anims\camera_effects</Filter>
+    </None>
+    <None Include="anims\camera_effects\hit_back.anm">
+      <Filter>anims\camera_effects</Filter>
+    </None>
+    <None Include="anims\camera_effects\hit_back_left.anm">
+      <Filter>anims\camera_effects</Filter>
+    </None>
+    <None Include="anims\camera_effects\hit_back_right.anm">
+      <Filter>anims\camera_effects</Filter>
+    </None>
+    <None Include="anims\camera_effects\hit_front.anm">
+      <Filter>anims\camera_effects</Filter>
+    </None>
+    <None Include="anims\camera_effects\hit_front_left.anm">
+      <Filter>anims\camera_effects</Filter>
+    </None>
+    <None Include="anims\camera_effects\hit_front_right.anm">
+      <Filter>anims\camera_effects</Filter>
+    </None>
+    <None Include="anims\camera_effects\hit_left.anm">
+      <Filter>anims\camera_effects</Filter>
+    </None>
+    <None Include="anims\camera_effects\hit_right.anm">
+      <Filter>anims\camera_effects</Filter>
+    </None>
+    <None Include="anims\camera_effects\oso_cam.anm">
+      <Filter>anims\camera_effects</Filter>
+    </None>
+    <None Include="anims\camera_effects\pl_test.anm">
+      <Filter>anims\camera_effects</Filter>
+    </None>
+    <None Include="anims\camera_effects\pri_fly_to_aes.anm">
+      <Filter>anims\camera_effects</Filter>
+    </None>
+    <None Include="anims\camera_effects\prison_0.anm">
+      <Filter>anims\camera_effects</Filter>
+    </None>
+    <None Include="anims\camera_effects\prison_1.anm">
+      <Filter>anims\camera_effects</Filter>
+    </None>
+    <None Include="anims\camera_effects\radar_stop.anm">
+      <Filter>anims\camera_effects</Filter>
+    </None>
+    <None Include="anims\camera_effects\rostok_camera.anm">
+      <Filter>anims\camera_effects</Filter>
+    </None>
+    <None Include="anims\camera_effects\shell_shock.anm">
+      <Filter>anims\camera_effects</Filter>
+    </None>
+    <None Include="anims\editor\8_negative.anm">
+      <Filter>anims\editor</Filter>
+    </None>
+    <None Include="anims\editor\8_positive.anm">
+      <Filter>anims\editor</Filter>
+    </None>
+    <None Include="anims\editor\eight.anm">
+      <Filter>anims\editor</Filter>
+    </None>
+    <None Include="anims\helicopter\aaa.anm">
+      <Filter>anims\helicopter</Filter>
+    </None>
+    <None Include="anims\helicopter\bbb.anm">
+      <Filter>anims\helicopter</Filter>
+    </None>
+    <None Include="anims\helicopter\vert_path.anm">
+      <Filter>anims\helicopter</Filter>
+    </None>
+    <None Include="anims\path\agroprom_zharka.anm">
+      <Filter>anims\path</Filter>
+    </None>
+    <None Include="anims\path\atp_zharka.anm">
+      <Filter>anims\path</Filter>
+    </None>
+    <None Include="anims\path\bar_rostok_jarka.anm">
+      <Filter>anims\path</Filter>
+    </None>
+    <None Include="anims\path\boloto_zharka_1.anm">
+      <Filter>anims\path</Filter>
+    </None>
+    <None Include="anims\path\dandy_phys.anm">
+      <Filter>anims\path</Filter>
+    </None>
+    <None Include="anims\path\darkvalley_torrid_path.anm">
+      <Filter>anims\path</Filter>
+    </None>
+    <None Include="anims\path\deadcity_zharka.anm">
+      <Filter>anims\path</Filter>
+    </None>
+    <None Include="anims\path\garbage_zharka.anm">
+      <Filter>anims\path</Filter>
+    </None>
+    <None Include="anims\path\generators_torrid_path.anm">
+      <Filter>anims\path</Filter>
+    </None>
+    <None Include="anims\path\generators_torrid_path_2.anm">
+      <Filter>anims\path</Filter>
+    </None>
+    <None Include="anims\path\generators_torrid_path_3.anm">
+      <Filter>anims\path</Filter>
+    </None>
+    <None Include="anims\path\generators_torrid_path_4.anm">
+      <Filter>anims\path</Filter>
+    </None>
+    <None Include="anims\path\lestat_military1.anm">
+      <Filter>anims\path</Filter>
+    </None>
+    <None Include="anims\path\lestat_test.anm">
+      <Filter>anims\path</Filter>
+    </None>
+    <None Include="anims\path\military_fireball1.anm">
+      <Filter>anims\path</Filter>
+    </None>
+    <None Include="anims\path\military_torrid1.anm">
+      <Filter>anims\path</Filter>
+    </None>
+    <None Include="anims\path\mp_workshop_fireball.anm">
+      <Filter>anims\path</Filter>
+    </None>
+    <None Include="anims\path\mp_workshop_fireball1.anm">
+      <Filter>anims\path</Filter>
+    </None>
+    <None Include="anims\path\path.anm">
+      <Filter>anims\path</Filter>
+    </None>
+    <None Include="anims\path\path_111.anm">
+      <Filter>anims\path</Filter>
+    </None>
+    <None Include="anims\path\path_jip_test.anm">
+      <Filter>anims\path</Filter>
+    </None>
+    <None Include="anims\path\pripyat_zharka1.anm">
+      <Filter>anims\path</Filter>
+    </None>
+    <None Include="anims\path\rostok_jarka_krondor.anm">
+      <Filter>anims\path</Filter>
+    </None>
+    <None Include="anims\path\rostok_jarka_krondor_2.anm">
+      <Filter>anims\path</Filter>
+    </None>
+    <None Include="anims\path\rostok_jarka_krondor_3.anm">
+      <Filter>anims\path</Filter>
+    </None>
+    <None Include="anims\path\ssss.anm">
+      <Filter>anims\path</Filter>
+    </None>
+    <None Include="anims\path\ssss1.anm">
+      <Filter>anims\path</Filter>
+    </None>
+    <None Include="anims\path\test.anm">
+      <Filter>anims\path</Filter>
+    </None>
+    <None Include="anims\path\torid_stancia_vxod1.anm">
+      <Filter>anims\path</Filter>
+    </None>
+    <None Include="anims\path\torrid_anims.anm">
+      <Filter>anims\path</Filter>
+    </None>
+    <None Include="anims\path\yantar_torrid_path.anm">
+      <Filter>anims\path</Filter>
+    </None>
+    <None Include="anims\path\zone_path.anm">
+      <Filter>anims\path</Filter>
+    </None>
+    <None Include="anims\agr_u_fade.bak">
+      <Filter>anims</Filter>
+    </None>
+    <None Include="anims\agr_u_fade.ppe">
+      <Filter>anims</Filter>
+    </None>
+    <None Include="anims\agroprom_demo.anm">
+      <Filter>anims</Filter>
+    </None>
+    <None Include="anims\alcohol.ppe">
+      <Filter>anims</Filter>
+    </None>
+    <None Include="anims\arena.anm">
+      <Filter>anims</Filter>
+    </None>
+    <None Include="anims\arg_u_fade.bak">
+      <Filter>anims</Filter>
+    </None>
+    <None Include="anims\blink.ppe">
+      <Filter>anims</Filter>
+    </None>
+    <None Include="anims\controller_hit.ppe">
+      <Filter>anims</Filter>
+    </None>
+    <None Include="anims\dead_zone.bak">
+      <Filter>anims</Filter>
+    </None>
+    <None Include="anims\dead_zone.ppe">
+      <Filter>anims</Filter>
+    </None>
+    <None Include="anims\deadcity_wake.ppe">
+      <Filter>anims</Filter>
+    </None>
+    <None Include="anims\deadcity_wake_old.ppe">
+      <Filter>anims</Filter>
+    </None>
+    <None Include="anims\deadcity_wake1.bak">
+      <Filter>anims</Filter>
+    </None>
+    <None Include="anims\duality_circle.bak">
+      <Filter>anims</Filter>
+    </None>
+    <None Include="anims\duality_circle.ppe">
+      <Filter>anims</Filter>
+    </None>
+    <None Include="anims\dx9_w.anm">
+      <Filter>anims</Filter>
+    </None>
+    <None Include="anims\dx9_wn.anm">
+      <Filter>anims</Filter>
+    </None>
+    <None Include="anims\effector_test.anm">
+      <Filter>anims</Filter>
+    </None>
+    <None Include="anims\escape.ppe">
+      <Filter>anims</Filter>
+    </None>
+    <None Include="anims\fire_hit.bak">
+      <Filter>anims</Filter>
+    </None>
+    <None Include="anims\fire_hit.ppe">
+      <Filter>anims</Filter>
+    </None>
+    <None Include="anims\garbage1.anm">
+      <Filter>anims</Filter>
+    </None>
+    <None Include="anims\l2.anm">
+      <Filter>anims</Filter>
+    </None>
+    <None Include="anims\labx18_1floor_1.anm">
+      <Filter>anims</Filter>
+    </None>
+    <None Include="anims\labx18_1floor_2.anm">
+      <Filter>anims</Filter>
+    </None>
+    <None Include="anims\labx18_1floor_3.anm">
+      <Filter>anims</Filter>
+    </None>
+    <None Include="anims\labx18_1floor_4.anm">
+      <Filter>anims</Filter>
+    </None>
+    <None Include="anims\labx18_1floor_5.anm">
+      <Filter>anims</Filter>
+    </None>
+    <None Include="anims\labx18_1floor_6.anm">
+      <Filter>anims</Filter>
+    </None>
+    <None Include="anims\labx18_1floor_6_2.anm">
+      <Filter>anims</Filter>
+    </None>
+    <None Include="anims\labx18_1floor_6_3.anm">
+      <Filter>anims</Filter>
+    </None>
+    <None Include="anims\labx18_1floor_6_4.anm">
+      <Filter>anims</Filter>
+    </None>
+    <None Include="anims\labx18_poltr_1.anm">
+      <Filter>anims</Filter>
+    </None>
+    <None Include="anims\labx18_poltr_2.anm">
+      <Filter>anims</Filter>
+    </None>
+    <None Include="anims\labx18_poltr_3.anm">
+      <Filter>anims</Filter>
+    </None>
+    <None Include="anims\mil_zharka.anm">
+      <Filter>anims</Filter>
+    </None>
+    <None Include="anims\monolith_off.ppe">
+      <Filter>anims</Filter>
+    </None>
+    <None Include="anims\nightvision.bak">
+      <Filter>anims</Filter>
+    </None>
+    <None Include="anims\nightvision.ppe">
+      <Filter>anims</Filter>
+    </None>
+    <None Include="anims\nightvision_bad.ppe">
+      <Filter>anims</Filter>
+    </None>
+    <None Include="anims\nightvision_good.ppe">
+      <Filter>anims</Filter>
+    </None>
+    <None Include="anims\nightvision2.ppe">
+      <Filter>anims</Filter>
+    </None>
+    <None Include="anims\p_proba.ppe">
+      <Filter>anims</Filter>
+    </None>
+    <None Include="anims\particle_test.anm">
+      <Filter>anims</Filter>
+    </None>
+    <None Include="anims\pl_test_doc.anm">
+      <Filter>anims</Filter>
+    </None>
+    <None Include="anims\proba.bak">
+      <Filter>anims</Filter>
+    </None>
+    <None Include="anims\proba.ppe">
+      <Filter>anims</Filter>
+    </None>
+    <None Include="anims\proba_gray.ppe">
+      <Filter>anims</Filter>
+    </None>
+    <None Include="anims\proba_test.ppe">
+      <Filter>anims</Filter>
+    </None>
+    <None Include="anims\proba2.ppe">
+      <Filter>anims</Filter>
+    </None>
+    <None Include="anims\psy_antenna.bak">
+      <Filter>anims</Filter>
+    </None>
+    <None Include="anims\psy_antenna.ppe">
+      <Filter>anims</Filter>
+    </None>
+    <None Include="anims\psy_antenna_indoor.ppe">
+      <Filter>anims</Filter>
+    </None>
+    <None Include="anims\punch_effector.anm">
+      <Filter>anims</Filter>
+    </None>
+    <None Include="anims\radar_psi.bak">
+      <Filter>anims</Filter>
+    </None>
+    <None Include="anims\radar_psi.ppe">
+      <Filter>anims</Filter>
+    </None>
+    <None Include="anims\radar_stop.bak">
+      <Filter>anims</Filter>
+    </None>
+    <None Include="anims\radar_stop.ppe">
+      <Filter>anims</Filter>
+    </None>
+    <None Include="anims\radar_wake.ppe">
+      <Filter>anims</Filter>
+    </None>
+    <None Include="anims\radiation.ppe">
+      <Filter>anims</Filter>
+    </None>
+    <None Include="anims\snd_shock.bak">
+      <Filter>anims</Filter>
+    </None>
+    <None Include="anims\snd_shock.ppe">
+      <Filter>anims</Filter>
+    </None>
+    <None Include="anims\teleport.bak">
+      <Filter>anims</Filter>
+    </None>
+    <None Include="anims\teleport.ppe">
+      <Filter>anims</Filter>
+    </None>
+    <None Include="anims\test.anm">
+      <Filter>anims</Filter>
+    </None>
+    <None Include="anims\total_recall.ppe">
+      <Filter>anims</Filter>
+    </None>
+    <None Include="anims\vibros.ppe">
+      <Filter>anims</Filter>
+    </None>
+    <None Include="anims\vibros_p.ppe">
+      <Filter>anims</Filter>
+    </None>
+    <None Include="anims\yantar_underground_psi.ppe">
+      <Filter>anims</Filter>
+    </None>
+    <None Include="config\alife.ltx">
+      <Filter>config</Filter>
+    </None>
+    <None Include="config\default_controls.ltx">
+      <Filter>config</Filter>
+    </None>
+    <None Include="config\defines.ltx">
+      <Filter>config</Filter>
+    </None>
+    <None Include="config\evaluation.ltx">
+      <Filter>config</Filter>
+    </None>
+    <None Include="config\external.ltx">
+      <Filter>config</Filter>
+    </None>
+    <None Include="config\extracontent.ltx">
+      <Filter>config</Filter>
+    </None>
+    <None Include="config\fonts.ltx">
+      <Filter>config</Filter>
+    </None>
+    <None Include="config\game.ltx">
+      <Filter>config</Filter>
+    </None>
+    <None Include="config\game_graphs.ltx">
+      <Filter>config</Filter>
+    </None>
+    <None Include="config\game_levels.ltx">
+      <Filter>config</Filter>
+    </None>
+    <None Include="config\game_levels_music.ltx">
+      <Filter>config</Filter>
+    </None>
+    <None Include="config\game_maps_single.ltx">
+      <Filter>config</Filter>
+    </None>
+    <None Include="config\game_spawn_story_ids.ltx">
+      <Filter>config</Filter>
+    </None>
+    <None Include="config\game_story_ids.ltx">
+      <Filter>config</Filter>
+    </None>
+    <None Include="config\localization.ltx">
+      <Filter>config</Filter>
+    </None>
+    <None Include="config\rspec_default.ltx">
+      <Filter>config</Filter>
+    </None>
+    <None Include="config\rspec_extreme.ltx">
+      <Filter>config</Filter>
+    </None>
+    <None Include="config\rspec_high.ltx">
+      <Filter>config</Filter>
+    </None>
+    <None Include="config\rspec_low.ltx">
+      <Filter>config</Filter>
+    </None>
+    <None Include="config\rspec_maximum.ltx">
+      <Filter>config</Filter>
+    </None>
+    <None Include="config\rspec_minimum.ltx">
+      <Filter>config</Filter>
+    </None>
+    <None Include="config\script.ltx">
+      <Filter>config</Filter>
+    </None>
+    <None Include="config\stalker_custom_data.ltx">
+      <Filter>config</Filter>
+    </None>
+    <None Include="config\system.ltx">
+      <Filter>config</Filter>
+    </None>
     <None Include="config\creatures\actor.ltx">
       <Filter>config\creatures</Filter>
     </None>
@@ -543,39 +1128,6 @@
     <None Include="config\models\capture\zombied_damage_med.ltx">
       <Filter>config\models\capture</Filter>
     </None>
-    <None Include="config\models\weapons\mounted_wpn_pkm.ltx">
-      <Filter>config\models\weapons</Filter>
-    </None>
-    <None Include="config\models\vehicles\niva_engine.ltx">
-      <Filter>config\models\vehicles</Filter>
-    </None>
-    <None Include="config\models\vehicles\veh_btr_script_u_01.ltx">
-      <Filter>config\models\vehicles</Filter>
-    </None>
-    <None Include="config\models\vehicles\veh_btr_u_01.ltx">
-      <Filter>config\models\vehicles</Filter>
-    </None>
-    <None Include="config\models\vehicles\veh_kamaz_u_01.ltx">
-      <Filter>config\models\vehicles</Filter>
-    </None>
-    <None Include="config\models\vehicles\veh_mi24_u_01.ltx">
-      <Filter>config\models\vehicles</Filter>
-    </None>
-    <None Include="config\models\vehicles\veh_niva_u_01.ltx">
-      <Filter>config\models\vehicles</Filter>
-    </None>
-    <None Include="config\models\vehicles\veh_tr13_u_01.ltx">
-      <Filter>config\models\vehicles</Filter>
-    </None>
-    <None Include="config\models\vehicles\veh_uaz_u_01.ltx">
-      <Filter>config\models\vehicles</Filter>
-    </None>
-    <None Include="config\models\vehicles\veh_zaz_u_01.ltx">
-      <Filter>config\models\vehicles</Filter>
-    </None>
-    <None Include="config\models\vehicles\veh_zaz_u_01_part0.ltx">
-      <Filter>config\models\vehicles</Filter>
-    </None>
     <None Include="config\models\objects\aes_zabor.ltx">
       <Filter>config\models\objects</Filter>
     </None>
@@ -617,6 +1169,39 @@
     </None>
     <None Include="config\models\objects\wood_fence.ltx">
       <Filter>config\models\objects</Filter>
+    </None>
+    <None Include="config\models\vehicles\niva_engine.ltx">
+      <Filter>config\models\vehicles</Filter>
+    </None>
+    <None Include="config\models\vehicles\veh_btr_script_u_01.ltx">
+      <Filter>config\models\vehicles</Filter>
+    </None>
+    <None Include="config\models\vehicles\veh_btr_u_01.ltx">
+      <Filter>config\models\vehicles</Filter>
+    </None>
+    <None Include="config\models\vehicles\veh_kamaz_u_01.ltx">
+      <Filter>config\models\vehicles</Filter>
+    </None>
+    <None Include="config\models\vehicles\veh_mi24_u_01.ltx">
+      <Filter>config\models\vehicles</Filter>
+    </None>
+    <None Include="config\models\vehicles\veh_niva_u_01.ltx">
+      <Filter>config\models\vehicles</Filter>
+    </None>
+    <None Include="config\models\vehicles\veh_tr13_u_01.ltx">
+      <Filter>config\models\vehicles</Filter>
+    </None>
+    <None Include="config\models\vehicles\veh_uaz_u_01.ltx">
+      <Filter>config\models\vehicles</Filter>
+    </None>
+    <None Include="config\models\vehicles\veh_zaz_u_01.ltx">
+      <Filter>config\models\vehicles</Filter>
+    </None>
+    <None Include="config\models\vehicles\veh_zaz_u_01_part0.ltx">
+      <Filter>config\models\vehicles</Filter>
+    </None>
+    <None Include="config\models\weapons\mounted_wpn_pkm.ltx">
+      <Filter>config\models\weapons</Filter>
     </None>
     <None Include="config\prefetch\prefetch.ltx">
       <Filter>config\prefetch</Filter>
@@ -780,6 +1365,36 @@
     <None Include="config\scripts\mil\mil_freedom_leader.ltx">
       <Filter>config\scripts\mil</Filter>
     </None>
+    <None Include="config\scripts\pri\pri_respawn_custom_data_dolg.ltx">
+      <Filter>config\scripts\pri</Filter>
+    </None>
+    <None Include="config\scripts\pri\pri_respawn_custom_data_freedom.ltx">
+      <Filter>config\scripts\pri</Filter>
+    </None>
+    <None Include="config\scripts\pri\pri_respawn_custom_data_military.ltx">
+      <Filter>config\scripts\pri</Filter>
+    </None>
+    <None Include="config\scripts\pri\pri_respawn_custom_data_neutral.ltx">
+      <Filter>config\scripts\pri</Filter>
+    </None>
+    <None Include="config\scripts\rad\rad_suicide_stalker.ltx">
+      <Filter>config\scripts\rad</Filter>
+    </None>
+    <None Include="config\scripts\val\val_respawn_custom_data_wt1.ltx">
+      <Filter>config\scripts\val</Filter>
+    </None>
+    <None Include="config\scripts\val\val_respawn_custom_data_wt2.ltx">
+      <Filter>config\scripts\val</Filter>
+    </None>
+    <None Include="config\scripts\val\val_respawn_custom_data_wt3.ltx">
+      <Filter>config\scripts\val</Filter>
+    </None>
+    <None Include="config\scripts\val\val_respawn_custom_data_wt4.ltx">
+      <Filter>config\scripts\val</Filter>
+    </None>
+    <None Include="config\scripts\val\val_respawn_custom_data_wt5.ltx">
+      <Filter>config\scripts\val</Filter>
+    </None>
     <None Include="config\scripts\yan\brain_system_message.ltx">
       <Filter>config\scripts\yan</Filter>
     </None>
@@ -797,36 +1412,6 @@
     </None>
     <None Include="config\scripts\yan\yan_sleep_restrictor.ltx">
       <Filter>config\scripts\yan</Filter>
-    </None>
-    <None Include="config\scripts\val\val_respawn_custom_data_wt1.ltx">
-      <Filter>config\scripts\val</Filter>
-    </None>
-    <None Include="config\scripts\val\val_respawn_custom_data_wt2.ltx">
-      <Filter>config\scripts\val</Filter>
-    </None>
-    <None Include="config\scripts\val\val_respawn_custom_data_wt3.ltx">
-      <Filter>config\scripts\val</Filter>
-    </None>
-    <None Include="config\scripts\val\val_respawn_custom_data_wt4.ltx">
-      <Filter>config\scripts\val</Filter>
-    </None>
-    <None Include="config\scripts\val\val_respawn_custom_data_wt5.ltx">
-      <Filter>config\scripts\val</Filter>
-    </None>
-    <None Include="config\scripts\rad\rad_suicide_stalker.ltx">
-      <Filter>config\scripts\rad</Filter>
-    </None>
-    <None Include="config\scripts\pri\pri_respawn_custom_data_dolg.ltx">
-      <Filter>config\scripts\pri</Filter>
-    </None>
-    <None Include="config\scripts\pri\pri_respawn_custom_data_freedom.ltx">
-      <Filter>config\scripts\pri</Filter>
-    </None>
-    <None Include="config\scripts\pri\pri_respawn_custom_data_military.ltx">
-      <Filter>config\scripts\pri</Filter>
-    </None>
-    <None Include="config\scripts\pri\pri_respawn_custom_data_neutral.ltx">
-      <Filter>config\scripts\pri</Filter>
     </None>
     <None Include="config\scripts\arena_respawn_custom_data.ltx">
       <Filter>config\scripts</Filter>
@@ -1424,78 +2009,6 @@
     </None>
     <None Include="config\weathers\weather_yantar.ltx">
       <Filter>config\weathers</Filter>
-    </None>
-    <None Include="config\alife.ltx">
-      <Filter>config</Filter>
-    </None>
-    <None Include="config\default_controls.ltx">
-      <Filter>config</Filter>
-    </None>
-    <None Include="config\defines.ltx">
-      <Filter>config</Filter>
-    </None>
-    <None Include="config\evaluation.ltx">
-      <Filter>config</Filter>
-    </None>
-    <None Include="config\external.ltx">
-      <Filter>config</Filter>
-    </None>
-    <None Include="config\extracontent.ltx">
-      <Filter>config</Filter>
-    </None>
-    <None Include="config\fonts.ltx">
-      <Filter>config</Filter>
-    </None>
-    <None Include="config\game.ltx">
-      <Filter>config</Filter>
-    </None>
-    <None Include="config\game_graphs.ltx">
-      <Filter>config</Filter>
-    </None>
-    <None Include="config\game_levels.ltx">
-      <Filter>config</Filter>
-    </None>
-    <None Include="config\game_levels_music.ltx">
-      <Filter>config</Filter>
-    </None>
-    <None Include="config\game_maps_single.ltx">
-      <Filter>config</Filter>
-    </None>
-    <None Include="config\game_spawn_story_ids.ltx">
-      <Filter>config</Filter>
-    </None>
-    <None Include="config\game_story_ids.ltx">
-      <Filter>config</Filter>
-    </None>
-    <None Include="config\localization.ltx">
-      <Filter>config</Filter>
-    </None>
-    <None Include="config\rspec_default.ltx">
-      <Filter>config</Filter>
-    </None>
-    <None Include="config\rspec_extreme.ltx">
-      <Filter>config</Filter>
-    </None>
-    <None Include="config\rspec_high.ltx">
-      <Filter>config</Filter>
-    </None>
-    <None Include="config\rspec_low.ltx">
-      <Filter>config</Filter>
-    </None>
-    <None Include="config\rspec_maximum.ltx">
-      <Filter>config</Filter>
-    </None>
-    <None Include="config\rspec_minimum.ltx">
-      <Filter>config</Filter>
-    </None>
-    <None Include="config\script.ltx">
-      <Filter>config</Filter>
-    </None>
-    <None Include="config\stalker_custom_data.ltx">
-      <Filter>config</Filter>
-    </None>
-    <None Include="config\system.ltx">
-      <Filter>config</Filter>
     </None>
     <None Include="scripts\.script">
       <Filter>scripts</Filter>
@@ -2775,8 +3288,1487 @@
     <None Include="scripts\zone_spawner.script">
       <Filter>scripts</Filter>
     </None>
+    <None Include="shaders\r1\.s">
+      <Filter>shaders\r1</Filter>
+    </None>
+    <None Include="shaders\r1\add_point.ps">
+      <Filter>shaders\r1</Filter>
+    </None>
+    <None Include="shaders\r1\add_ppa.ps">
+      <Filter>shaders\r1</Filter>
+    </None>
+    <None Include="shaders\r1\add_spot.ps">
+      <Filter>shaders\r1</Filter>
+    </None>
+    <None Include="shaders\r1\avg2.ps">
+      <Filter>shaders\r1</Filter>
+    </None>
+    <None Include="shaders\r1\avg4.ps">
+      <Filter>shaders\r1</Filter>
+    </None>
+    <None Include="shaders\r1\base_lplanes.ps">
+      <Filter>shaders\r1</Filter>
+    </None>
+    <None Include="shaders\r1\base_lplanes.vs">
+      <Filter>shaders\r1</Filter>
+    </None>
+    <None Include="shaders\r1\blur2.s">
+      <Filter>shaders\r1</Filter>
+    </None>
+    <None Include="shaders\r1\blur4.s">
+      <Filter>shaders\r1</Filter>
+    </None>
+    <None Include="shaders\r1\clouds.ps">
+      <Filter>shaders\r1</Filter>
+    </None>
+    <None Include="shaders\r1\clouds.s">
+      <Filter>shaders\r1</Filter>
+    </None>
+    <None Include="shaders\r1\clouds.vs">
+      <Filter>shaders\r1</Filter>
+    </None>
+    <None Include="shaders\r1\detail.ps">
+      <Filter>shaders\r1</Filter>
+    </None>
+    <None Include="shaders\r1\detail_still.vs">
+      <Filter>shaders\r1</Filter>
+    </None>
+    <None Include="shaders\r1\detail_wave.vs">
+      <Filter>shaders\r1</Filter>
+    </None>
+    <None Include="shaders\r1\details_lod.s">
+      <Filter>shaders\r1</Filter>
+    </None>
+    <None Include="shaders\r1\editor.vs">
+      <Filter>shaders\r1</Filter>
+    </None>
+    <None Include="shaders\r1\effects_lightplanes.s">
+      <Filter>shaders\r1</Filter>
+    </None>
+    <None Include="shaders\r1\effects_wallmarkblend.s">
+      <Filter>shaders\r1</Filter>
+    </None>
+    <None Include="shaders\r1\effects_wallmarkmult.s">
+      <Filter>shaders\r1</Filter>
+    </None>
+    <None Include="shaders\r1\effects_wallmarkset.s">
+      <Filter>shaders\r1</Filter>
+    </None>
+    <None Include="shaders\r1\effects_water.s">
+      <Filter>shaders\r1</Filter>
+    </None>
+    <None Include="shaders\r1\effects_waterryaska.s">
+      <Filter>shaders\r1</Filter>
+    </None>
+    <None Include="shaders\r1\effects_waterstuden.s">
+      <Filter>shaders\r1</Filter>
+    </None>
+    <None Include="shaders\r1\hud_crosshair.s">
+      <Filter>shaders\r1</Filter>
+    </None>
+    <None Include="shaders\r1\hud_movie.s">
+      <Filter>shaders\r1</Filter>
+    </None>
+    <None Include="shaders\r1\impl.ps">
+      <Filter>shaders\r1</Filter>
+    </None>
+    <None Include="shaders\r1\impl.vs">
+      <Filter>shaders\r1</Filter>
+    </None>
+    <None Include="shaders\r1\impl_dt.ps">
+      <Filter>shaders\r1</Filter>
+    </None>
+    <None Include="shaders\r1\impl_dt.vs">
+      <Filter>shaders\r1</Filter>
+    </None>
+    <None Include="shaders\r1\impl_l.ps">
+      <Filter>shaders\r1</Filter>
+    </None>
+    <None Include="shaders\r1\impl_l.vs">
+      <Filter>shaders\r1</Filter>
+    </None>
+    <None Include="shaders\r1\impl_point.vs">
+      <Filter>shaders\r1</Filter>
+    </None>
+    <None Include="shaders\r1\impl_spot.vs">
+      <Filter>shaders\r1</Filter>
+    </None>
+    <None Include="shaders\r1\lmap.ps">
+      <Filter>shaders\r1</Filter>
+    </None>
+    <None Include="shaders\r1\lmap.vs">
+      <Filter>shaders\r1</Filter>
+    </None>
+    <None Include="shaders\r1\lmap_dt.ps">
+      <Filter>shaders\r1</Filter>
+    </None>
+    <None Include="shaders\r1\lmap_dt.vs">
+      <Filter>shaders\r1</Filter>
+    </None>
+    <None Include="shaders\r1\lmap_l.ps">
+      <Filter>shaders\r1</Filter>
+    </None>
+    <None Include="shaders\r1\lmap_l.vs">
+      <Filter>shaders\r1</Filter>
+    </None>
+    <None Include="shaders\r1\lmap_point.vs">
+      <Filter>shaders\r1</Filter>
+    </None>
+    <None Include="shaders\r1\lmap_spot.vs">
+      <Filter>shaders\r1</Filter>
+    </None>
+    <None Include="shaders\r1\lmape.ps">
+      <Filter>shaders\r1</Filter>
+    </None>
+    <None Include="shaders\r1\lmape.vs">
+      <Filter>shaders\r1</Filter>
+    </None>
+    <None Include="shaders\r1\lod.ps">
+      <Filter>shaders\r1</Filter>
+    </None>
+    <None Include="shaders\r1\lod.vs">
+      <Filter>shaders\r1</Filter>
+    </None>
+    <None Include="shaders\r1\model_def_hq.ps">
+      <Filter>shaders\r1</Filter>
+    </None>
+    <None Include="shaders\r1\model_def_hq.vs">
+      <Filter>shaders\r1</Filter>
+    </None>
+    <None Include="shaders\r1\model_def_lplanes.vs">
+      <Filter>shaders\r1</Filter>
+    </None>
+    <None Include="shaders\r1\model_def_lq.ps">
+      <Filter>shaders\r1</Filter>
+    </None>
+    <None Include="shaders\r1\model_def_lq.vs">
+      <Filter>shaders\r1</Filter>
+    </None>
+    <None Include="shaders\r1\model_def_lqs.vs">
+      <Filter>shaders\r1</Filter>
+    </None>
+    <None Include="shaders\r1\model_def_point.vs">
+      <Filter>shaders\r1</Filter>
+    </None>
+    <None Include="shaders\r1\model_def_shadow.vs">
+      <Filter>shaders\r1</Filter>
+    </None>
+    <None Include="shaders\r1\model_def_spot.vs">
+      <Filter>shaders\r1</Filter>
+    </None>
+    <None Include="shaders\r1\model_distort.vs">
+      <Filter>shaders\r1</Filter>
+    </None>
+    <None Include="shaders\r1\model_distort_inv.vs">
+      <Filter>shaders\r1</Filter>
+    </None>
+    <None Include="shaders\r1\model_distort2t.vs">
+      <Filter>shaders\r1</Filter>
+    </None>
+    <None Include="shaders\r1\model_distort4ghost.vs">
+      <Filter>shaders\r1</Filter>
+    </None>
+    <None Include="shaders\r1\model_distort4glass.vs">
+      <Filter>shaders\r1</Filter>
+    </None>
+    <None Include="shaders\r1\model_env.ps">
+      <Filter>shaders\r1</Filter>
+    </None>
+    <None Include="shaders\r1\model_env_hq.ps">
+      <Filter>shaders\r1</Filter>
+    </None>
+    <None Include="shaders\r1\model_env_hq.vs">
+      <Filter>shaders\r1</Filter>
+    </None>
+    <None Include="shaders\r1\model_env_lq.ps">
+      <Filter>shaders\r1</Filter>
+    </None>
+    <None Include="shaders\r1\model_env_lq.vs">
+      <Filter>shaders\r1</Filter>
+    </None>
+    <None Include="shaders\r1\model_env_sl.ps">
+      <Filter>shaders\r1</Filter>
+    </None>
+    <None Include="shaders\r1\model_shadow.ps">
+      <Filter>shaders\r1</Filter>
+    </None>
+    <None Include="shaders\r1\models_lightplanes.s">
+      <Filter>shaders\r1</Filter>
+    </None>
+    <None Include="shaders\r1\models_pautina.s">
+      <Filter>shaders\r1</Filter>
+    </None>
+    <None Include="shaders\r1\models_selflight.s">
+      <Filter>shaders\r1</Filter>
+    </None>
+    <None Include="shaders\r1\models_selflightl.s">
+      <Filter>shaders\r1</Filter>
+    </None>
+    <None Include="shaders\r1\models_xanomaly.s">
+      <Filter>shaders\r1</Filter>
+    </None>
+    <None Include="shaders\r1\models_xdistort.s">
+      <Filter>shaders\r1</Filter>
+    </None>
+    <None Include="shaders\r1\models_xdistortcolor.s">
+      <Filter>shaders\r1</Filter>
+    </None>
+    <None Include="shaders\r1\models_xdistortcolorl.s">
+      <Filter>shaders\r1</Filter>
+    </None>
+    <None Include="shaders\r1\models_xdistortcolorlinv.s">
+      <Filter>shaders\r1</Filter>
+    </None>
+    <None Include="shaders\r1\models_xdistortinv.s">
+      <Filter>shaders\r1</Filter>
+    </None>
+    <None Include="shaders\r1\models_xglass.s">
+      <Filter>shaders\r1</Filter>
+    </None>
+    <None Include="shaders\r1\models_xglass2.s">
+      <Filter>shaders\r1</Filter>
+    </None>
+    <None Include="shaders\r1\models_xlens.s">
+      <Filter>shaders\r1</Filter>
+    </None>
+    <None Include="shaders\r1\models_xmonolith.s">
+      <Filter>shaders\r1</Filter>
+    </None>
+    <None Include="shaders\r1\models_xwindows.s">
+      <Filter>shaders\r1</Filter>
+    </None>
+    <None Include="shaders\r1\particle.ps">
+      <Filter>shaders\r1</Filter>
+    </None>
+    <None Include="shaders\r1\particle.vs">
+      <Filter>shaders\r1</Filter>
+    </None>
+    <None Include="shaders\r1\particle_alphaonly.ps">
+      <Filter>shaders\r1</Filter>
+    </None>
+    <None Include="shaders\r1\particle_distort.ps">
+      <Filter>shaders\r1</Filter>
+    </None>
+    <None Include="shaders\r1\particle2t.ps">
+      <Filter>shaders\r1</Filter>
+    </None>
+    <None Include="shaders\r1\particles_xadd.s">
+      <Filter>shaders\r1</Filter>
+    </None>
+    <None Include="shaders\r1\particles_xdistort.s">
+      <Filter>shaders\r1</Filter>
+    </None>
+    <None Include="shaders\r1\portal.s">
+      <Filter>shaders\r1</Filter>
+    </None>
+    <None Include="shaders\r1\portal.vs">
+      <Filter>shaders\r1</Filter>
+    </None>
+    <None Include="shaders\r1\postprocess.ps">
+      <Filter>shaders\r1</Filter>
+    </None>
+    <None Include="shaders\r1\postprocess.s">
+      <Filter>shaders\r1</Filter>
+    </None>
+    <None Include="shaders\r1\postprocess_d.ps">
+      <Filter>shaders\r1</Filter>
+    </None>
+    <None Include="shaders\r1\postprocess_d.s">
+      <Filter>shaders\r1</Filter>
+    </None>
+    <None Include="shaders\r1\selflight.s">
+      <Filter>shaders\r1</Filter>
+    </None>
+    <None Include="shaders\r1\simple.ps">
+      <Filter>shaders\r1</Filter>
+    </None>
+    <None Include="shaders\r1\simple.vs">
+      <Filter>shaders\r1</Filter>
+    </None>
+    <None Include="shaders\r1\simple_color.ps">
+      <Filter>shaders\r1</Filter>
+    </None>
+    <None Include="shaders\r1\simple_color.vs">
+      <Filter>shaders\r1</Filter>
+    </None>
+    <None Include="shaders\r1\simple_point.vs">
+      <Filter>shaders\r1</Filter>
+    </None>
+    <None Include="shaders\r1\simple_spot.vs">
+      <Filter>shaders\r1</Filter>
+    </None>
+    <None Include="shaders\r1\sky2.ps">
+      <Filter>shaders\r1</Filter>
+    </None>
+    <None Include="shaders\r1\sky2.vs">
+      <Filter>shaders\r1</Filter>
+    </None>
+    <None Include="shaders\r1\sun2.ps">
+      <Filter>shaders\r1</Filter>
+    </None>
+    <None Include="shaders\r1\tree_s.vs">
+      <Filter>shaders\r1</Filter>
+    </None>
+    <None Include="shaders\r1\tree_s_dt.vs">
+      <Filter>shaders\r1</Filter>
+    </None>
+    <None Include="shaders\r1\tree_s_point.vs">
+      <Filter>shaders\r1</Filter>
+    </None>
+    <None Include="shaders\r1\tree_s_spot.vs">
+      <Filter>shaders\r1</Filter>
+    </None>
+    <None Include="shaders\r1\tree_test.vs">
+      <Filter>shaders\r1</Filter>
+    </None>
+    <None Include="shaders\r1\tree_w.vs">
+      <Filter>shaders\r1</Filter>
+    </None>
+    <None Include="shaders\r1\tree_w_dt.vs">
+      <Filter>shaders\r1</Filter>
+    </None>
+    <None Include="shaders\r1\tree_w_point.vs">
+      <Filter>shaders\r1</Filter>
+    </None>
+    <None Include="shaders\r1\tree_w_spot.vs">
+      <Filter>shaders\r1</Filter>
+    </None>
+    <None Include="shaders\r1\tree_wave.vs">
+      <Filter>shaders\r1</Filter>
+    </None>
+    <None Include="shaders\r1\tree_wave_dt.vs">
+      <Filter>shaders\r1</Filter>
+    </None>
+    <None Include="shaders\r1\tree_wave_point.vs">
+      <Filter>shaders\r1</Filter>
+    </None>
+    <None Include="shaders\r1\tree_wave_spot.vs">
+      <Filter>shaders\r1</Filter>
+    </None>
+    <None Include="shaders\r1\vert.ps">
+      <Filter>shaders\r1</Filter>
+    </None>
+    <None Include="shaders\r1\vert.vs">
+      <Filter>shaders\r1</Filter>
+    </None>
+    <None Include="shaders\r1\vert_dt.ps">
+      <Filter>shaders\r1</Filter>
+    </None>
+    <None Include="shaders\r1\vert_dt.vs">
+      <Filter>shaders\r1</Filter>
+    </None>
+    <None Include="shaders\r1\vert_l.ps">
+      <Filter>shaders\r1</Filter>
+    </None>
+    <None Include="shaders\r1\vert_l.vs">
+      <Filter>shaders\r1</Filter>
+    </None>
+    <None Include="shaders\r1\vert_point.vs">
+      <Filter>shaders\r1</Filter>
+    </None>
+    <None Include="shaders\r1\vert_spot.vs">
+      <Filter>shaders\r1</Filter>
+    </None>
+    <None Include="shaders\r1\water.ps">
+      <Filter>shaders\r1</Filter>
+    </None>
+    <None Include="shaders\r1\water.vs">
+      <Filter>shaders\r1</Filter>
+    </None>
+    <None Include="shaders\r1\waterd.ps">
+      <Filter>shaders\r1</Filter>
+    </None>
+    <None Include="shaders\r1\waterd.vs">
+      <Filter>shaders\r1</Filter>
+    </None>
+    <None Include="shaders\r1\wmark.vs">
+      <Filter>shaders\r1</Filter>
+    </None>
+    <None Include="shaders\r1\wmark_point.vs">
+      <Filter>shaders\r1</Filter>
+    </None>
+    <None Include="shaders\r1\wmark_spot.vs">
+      <Filter>shaders\r1</Filter>
+    </None>
+    <None Include="shaders\r1\yuv2rgb.ps">
+      <Filter>shaders\r1</Filter>
+    </None>
+    <None Include="shaders\r2\test\p2b_accum_sun_far.ps">
+      <Filter>shaders\r2\test</Filter>
+    </None>
+    <None Include="shaders\r2\test\p2b_yuv2rgb.ps">
+      <Filter>shaders\r2\test</Filter>
+    </None>
+    <None Include="shaders\r2\test\p20_accum_sun_far.ps">
+      <Filter>shaders\r2\test</Filter>
+    </None>
+    <None Include="shaders\r2\test\p20_yuv2rgb.ps">
+      <Filter>shaders\r2\test</Filter>
+    </None>
+    <None Include="shaders\r2\test\p30_accum_sun_far.ps">
+      <Filter>shaders\r2\test</Filter>
+    </None>
+    <None Include="shaders\r2\test\p30_yuv2rgb.ps">
+      <Filter>shaders\r2\test</Filter>
+    </None>
+    <None Include="shaders\r2\.s">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\accum_base.ps">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\accum_emissive.ps">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\accum_emissivel.ps">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\accum_indirect.ps">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\accum_mask.vs">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\accum_omni_normal.ps">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\accum_omni_transluent.ps">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\accum_omni_unshadowed.ps">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\accum_spot_fullsize.ps">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\accum_spot_normal.ps">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\accum_spot_unshadowed.ps">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\accum_sun.ps">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\accum_sun_far.ps">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\accum_sun_mask.ps">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\accum_sun_near.ps">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\accum_sun_near_new.ps">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\accum_sun_near_old.ps">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\accum_sun_near_save.ps">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\accum_sun_near_var1.ps">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\accum_sun_near_var2.ps">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\accum_sun_test.ps">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\accum_volume.vs">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\avg4.ps">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\base_lplanes.ps">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\base_lplanes.vs">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\bloom_build.ps">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\bloom_filter.ps">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\bloom_filter_f.ps">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\bloom_luminance_1.ps">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\bloom_luminance_2.ps">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\bloom_luminance_3.ps">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\clouds.ps">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\clouds.s">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\clouds.vs">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\combine_1.ps">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\combine_1.vs">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\combine_2.ps">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\combine_2_aa.ps">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\combine_2_aa_d.ps">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\combine_2_naa.ps">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\combine_2_naa_d.ps">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\copy.ps">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\copy_p.ps">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\deffer_base_aref_bump.ps">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\deffer_base_aref_bump_d.ps">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\deffer_base_aref_bump_d-hq.ps">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\deffer_base_aref_bump-hq.ps">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\deffer_base_aref_flat.ps">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\deffer_base_aref_flat_d.ps">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\deffer_base_bump.ps">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\deffer_base_bump.vs">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\deffer_base_bump_d.ps">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\deffer_base_bump_d.vs">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\deffer_base_bump_d-hq.ps">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\deffer_base_bump_d-hq.vs">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\deffer_base_bump-hq.ps">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\deffer_base_bump-hq.vs">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\deffer_base_flat.ps">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\deffer_base_flat.vs">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\deffer_base_flat_d.ps">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\deffer_base_flat_d.vs">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\deffer_base_lmh_aref_bump.ps">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\deffer_base_lmh_aref_bump_d.ps">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\deffer_base_lmh_aref_bump_d-hq.ps">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\deffer_base_lmh_aref_bump-hq.ps">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\deffer_base_lmh_aref_flat.ps">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\deffer_base_lmh_aref_flat_d.ps">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\deffer_base_lmh_bump.ps">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\deffer_base_lmh_bump.vs">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\deffer_base_lmh_bump_d.ps">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\deffer_base_lmh_bump_d.vs">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\deffer_base_lmh_bump_d-hq.ps">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\deffer_base_lmh_bump_d-hq.vs">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\deffer_base_lmh_bump-hq.ps">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\deffer_base_lmh_bump-hq.vs">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\deffer_base_lmh_flat.ps">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\deffer_base_lmh_flat.vs">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\deffer_base_lmh_flat_d.ps">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\deffer_base_lmh_flat_d.vs">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\deffer_detail_s_flat.vs">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\deffer_detail_w_flat.vs">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\deffer_impl_bump.ps">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\deffer_impl_bump_d.ps">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\deffer_impl_bump_d-hq.ps">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\deffer_impl_bump-hq.ps">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\deffer_impl_flat.ps">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\deffer_impl_flat_d.ps">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\deffer_impl_flat_d.vs">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\deffer_model_bump.vs">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\deffer_model_bump_d.vs">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\deffer_model_bump_d-hq.vs">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\deffer_model_bump-hq.vs">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\deffer_model_flat.vs">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\deffer_model_flat_d.vs">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\deffer_particle.ps">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\deffer_particle.vs">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\deffer_tree_bump.vs">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\deffer_tree_bump_d.vs">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\deffer_tree_bump_d-hq.vs">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\deffer_tree_bump-hq.vs">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\deffer_tree_flat.vs">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\deffer_tree_flat_d.vs">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\deffer_tree_s_bump.vs">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\deffer_tree_s_bump_d.vs">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\deffer_tree_s_bump_d-hq.vs">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\deffer_tree_s_bump-hq.vs">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\deffer_tree_s_flat.vs">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\deffer_tree_s_flat_d.vs">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\depth.ps">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\details_lod.s">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\distort.ps">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\distort.s">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\dumb.ps">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\dumb.vs">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\editor.vs">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\effects_lightplanes.s">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\effects_wallmark.s_">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\effects_wallmarkblend.s">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\effects_wallmarkmult.s">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\effects_wallmarkset.s">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\effects_water.s">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\effects_waterryaska.s">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\effects_waterstuden.s">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\hud_crosshair.s">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\hud_movie.s">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\lmape.ps">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\lmape.vs">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\lod.ps">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\lod.vs">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\lod_.vs">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\model_def_lplanes.vs">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\model_def_lq.ps">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\model_def_lq.vs">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\model_distort.vs">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\model_distort_inv.vs">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\model_distort2t.vs">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\model_distort4ghost.vs">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\model_distort4glass.vs">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\model_env_lq.ps">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\model_env_lq.vs">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\models_lightplanes.s">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\models_metallreflect.s">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\models_pautina.s">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\models_selflight.s">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\models_selflightl.s">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\models_xanomaly.s">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\models_xdistort.s">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\models_xdistortcolor.s">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\models_xdistortcolorl.s">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\models_xdistortcolorlinv.s">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\models_xdistortinv.s">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\models_xglass.s">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\models_xglass2.s">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\models_xlens.s">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\models_xmonolith.s">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\models_xwindows.s">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\particle.ps">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\particle.vs">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\particle_alphaonly.ps">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\particle_distort.ps">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\particle_s-aadd.ps">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\particle_s-add.ps">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\particle_s-blend.ps">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\particle_s-mul.ps">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\particle2t.ps">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\particle-clip.vs">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\particles_xadd.s">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\particles_xdistort.s">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\portal.s">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\portal.vs">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\postprocess.ps">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\postprocess.s">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\selflight.s">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\shadow_direct_base.ps">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\shadow_direct_base.vs">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\shadow_direct_base_aref.ps">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\shadow_direct_base_aref.vs">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\shadow_direct_model.vs">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\shadow_direct_model_aref.vs">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\shadow_direct_tree.vs">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\shadow_direct_tree_s.vs">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\simple.ps">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\simple.vs">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\simple_color.ps">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\simple_color.vs">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\sky2.ps">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\sky2.vs">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\vert.ps">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\vert.vs">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\water.ps">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\water.vs">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\waterd.ps">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\waterd.vs">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\wmark.vs">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="shaders\r2\yuv2rgb.ps">
+      <Filter>shaders\r2</Filter>
+    </None>
+    <None Include="spawns\unpack\alife_l01_escape.ltx">
+      <Filter>spawns\unpack</Filter>
+    </None>
+    <None Include="spawns\unpack\alife_l02_garbage.ltx">
+      <Filter>spawns\unpack</Filter>
+    </None>
+    <None Include="spawns\unpack\alife_l03_agroprom.ltx">
+      <Filter>spawns\unpack</Filter>
+    </None>
+    <None Include="spawns\unpack\alife_l03u_agr_underground.ltx">
+      <Filter>spawns\unpack</Filter>
+    </None>
+    <None Include="spawns\unpack\alife_l04_darkvalley.ltx">
+      <Filter>spawns\unpack</Filter>
+    </None>
+    <None Include="spawns\unpack\alife_l04u_labx18.ltx">
+      <Filter>spawns\unpack</Filter>
+    </None>
+    <None Include="spawns\unpack\alife_l05_bar.ltx">
+      <Filter>spawns\unpack</Filter>
+    </None>
+    <None Include="spawns\unpack\alife_l06_rostok.ltx">
+      <Filter>spawns\unpack</Filter>
+    </None>
+    <None Include="spawns\unpack\alife_l07_military.ltx">
+      <Filter>spawns\unpack</Filter>
+    </None>
+    <None Include="spawns\unpack\alife_l08_yantar.ltx">
+      <Filter>spawns\unpack</Filter>
+    </None>
+    <None Include="spawns\unpack\alife_l08u_brainlab.ltx">
+      <Filter>spawns\unpack</Filter>
+    </None>
+    <None Include="spawns\unpack\alife_l10_radar.ltx">
+      <Filter>spawns\unpack</Filter>
+    </None>
+    <None Include="spawns\unpack\alife_l10u_bunker.ltx">
+      <Filter>spawns\unpack</Filter>
+    </None>
+    <None Include="spawns\unpack\alife_l11_pripyat.ltx">
+      <Filter>spawns\unpack</Filter>
+    </None>
+    <None Include="spawns\unpack\alife_l12_stancia.ltx">
+      <Filter>spawns\unpack</Filter>
+    </None>
+    <None Include="spawns\unpack\alife_l12_stancia_2.ltx">
+      <Filter>spawns\unpack</Filter>
+    </None>
+    <None Include="spawns\unpack\alife_l12u_control_monolith.ltx">
+      <Filter>spawns\unpack</Filter>
+    </None>
+    <None Include="spawns\unpack\alife_l12u_sarcofag.ltx">
+      <Filter>spawns\unpack</Filter>
+    </None>
+    <None Include="spawns\unpack\all.ltx">
+      <Filter>spawns\unpack</Filter>
+    </None>
+    <None Include="spawns\unpack\l01_escape.sections">
+      <Filter>spawns\unpack</Filter>
+    </None>
+    <None Include="spawns\unpack\l02_garbage.sections">
+      <Filter>spawns\unpack</Filter>
+    </None>
+    <None Include="spawns\unpack\l03_agroprom.sections">
+      <Filter>spawns\unpack</Filter>
+    </None>
+    <None Include="spawns\unpack\l03u_agr_underground.sections">
+      <Filter>spawns\unpack</Filter>
+    </None>
+    <None Include="spawns\unpack\l04_darkvalley.sections">
+      <Filter>spawns\unpack</Filter>
+    </None>
+    <None Include="spawns\unpack\l04u_labx18.sections">
+      <Filter>spawns\unpack</Filter>
+    </None>
+    <None Include="spawns\unpack\l05_bar.sections">
+      <Filter>spawns\unpack</Filter>
+    </None>
+    <None Include="spawns\unpack\l06_rostok.sections">
+      <Filter>spawns\unpack</Filter>
+    </None>
+    <None Include="spawns\unpack\l07_military.sections">
+      <Filter>spawns\unpack</Filter>
+    </None>
+    <None Include="spawns\unpack\l08_yantar.sections">
+      <Filter>spawns\unpack</Filter>
+    </None>
+    <None Include="spawns\unpack\l08u_brainlab.sections">
+      <Filter>spawns\unpack</Filter>
+    </None>
+    <None Include="spawns\unpack\l10_radar.sections">
+      <Filter>spawns\unpack</Filter>
+    </None>
+    <None Include="spawns\unpack\l10u_bunker.sections">
+      <Filter>spawns\unpack</Filter>
+    </None>
+    <None Include="spawns\unpack\l11_pripyat.sections">
+      <Filter>spawns\unpack</Filter>
+    </None>
+    <None Include="spawns\unpack\l12_stancia.sections">
+      <Filter>spawns\unpack</Filter>
+    </None>
+    <None Include="spawns\unpack\l12_stancia_2.sections">
+      <Filter>spawns\unpack</Filter>
+    </None>
+    <None Include="spawns\unpack\l12u_control_monolith.sections">
+      <Filter>spawns\unpack</Filter>
+    </None>
+    <None Include="spawns\unpack\l12u_sarcofag.sections">
+      <Filter>spawns\unpack</Filter>
+    </None>
+    <None Include="spawns\unpack\section2.bin">
+      <Filter>spawns\unpack</Filter>
+    </None>
+    <None Include="spawns\unpack\way__level_unknown.ltx">
+      <Filter>spawns\unpack</Filter>
+    </None>
+    <None Include="spawns\unpack\way_l01_escape.ltx">
+      <Filter>spawns\unpack</Filter>
+    </None>
+    <None Include="spawns\unpack\way_l02_garbage.ltx">
+      <Filter>spawns\unpack</Filter>
+    </None>
+    <None Include="spawns\unpack\way_l03_agroprom.ltx">
+      <Filter>spawns\unpack</Filter>
+    </None>
+    <None Include="spawns\unpack\way_l03u_agr_underground.ltx">
+      <Filter>spawns\unpack</Filter>
+    </None>
+    <None Include="spawns\unpack\way_l04_darkvalley.ltx">
+      <Filter>spawns\unpack</Filter>
+    </None>
+    <None Include="spawns\unpack\way_l04u_labx18.ltx">
+      <Filter>spawns\unpack</Filter>
+    </None>
+    <None Include="spawns\unpack\way_l05_bar.ltx">
+      <Filter>spawns\unpack</Filter>
+    </None>
+    <None Include="spawns\unpack\way_l06_rostok.ltx">
+      <Filter>spawns\unpack</Filter>
+    </None>
+    <None Include="spawns\unpack\way_l07_military.ltx">
+      <Filter>spawns\unpack</Filter>
+    </None>
+    <None Include="spawns\unpack\way_l08_yantar.ltx">
+      <Filter>spawns\unpack</Filter>
+    </None>
+    <None Include="spawns\unpack\way_l08u_brainlab.ltx">
+      <Filter>spawns\unpack</Filter>
+    </None>
+    <None Include="spawns\unpack\way_l10_radar.ltx">
+      <Filter>spawns\unpack</Filter>
+    </None>
+    <None Include="spawns\unpack\way_l10u_bunker.ltx">
+      <Filter>spawns\unpack</Filter>
+    </None>
+    <None Include="spawns\unpack\way_l11_pripyat.ltx">
+      <Filter>spawns\unpack</Filter>
+    </None>
+    <None Include="spawns\unpack\way_l12_stancia.ltx">
+      <Filter>spawns\unpack</Filter>
+    </None>
+    <None Include="spawns\unpack\way_l12_stancia_2.ltx">
+      <Filter>spawns\unpack</Filter>
+    </None>
+    <None Include="spawns\unpack\way_l12u_control_monolith.ltx">
+      <Filter>spawns\unpack</Filter>
+    </None>
+    <None Include="spawns\unpack\way_l12u_sarcofag.ltx">
+      <Filter>spawns\unpack</Filter>
+    </None>
+    <None Include="spawns\all.spawn">
+      <Filter>spawns</Filter>
+    </None>
+    <None Include="game.graph" />
+    <None Include="gamemtl.xr" />
+    <None Include="lanims.xr" />
+    <None Include="particles.xr" />
+    <None Include="senvironment.xr" />
+    <None Include="shaders.xr" />
+    <None Include="shaders_xrlc.xr" />
   </ItemGroup>
   <ItemGroup>
+    <Text Include="anims\postprocess editor_stohe.log">
+      <Filter>anims</Filter>
+    </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="config\gameplay\character_criticals_1.xml">
+      <Filter>config\gameplay</Filter>
+    </Xml>
+    <Xml Include="config\gameplay\character_criticals_2.xml">
+      <Filter>config\gameplay</Filter>
+    </Xml>
+    <Xml Include="config\gameplay\character_criticals_3.xml">
+      <Filter>config\gameplay</Filter>
+    </Xml>
+    <Xml Include="config\gameplay\character_criticals_4.xml">
+      <Filter>config\gameplay</Filter>
+    </Xml>
+    <Xml Include="config\gameplay\character_criticals_5.xml">
+      <Filter>config\gameplay</Filter>
+    </Xml>
+    <Xml Include="config\gameplay\character_criticals_6.xml">
+      <Filter>config\gameplay</Filter>
+    </Xml>
+    <Xml Include="config\gameplay\character_desc_aes.xml">
+      <Filter>config\gameplay</Filter>
+    </Xml>
+    <Xml Include="config\gameplay\character_desc_agroprom.xml">
+      <Filter>config\gameplay</Filter>
+    </Xml>
+    <Xml Include="config\gameplay\character_desc_bar.xml">
+      <Filter>config\gameplay</Filter>
+    </Xml>
+    <Xml Include="config\gameplay\character_desc_darkvalley.xml">
+      <Filter>config\gameplay</Filter>
+    </Xml>
+    <Xml Include="config\gameplay\character_desc_deadcity.xml">
+      <Filter>config\gameplay</Filter>
+    </Xml>
+    <Xml Include="config\gameplay\character_desc_escape.xml">
+      <Filter>config\gameplay</Filter>
+    </Xml>
+    <Xml Include="config\gameplay\character_desc_garbage.xml">
+      <Filter>config\gameplay</Filter>
+    </Xml>
+    <Xml Include="config\gameplay\character_desc_general.xml">
+      <Filter>config\gameplay</Filter>
+    </Xml>
+    <Xml Include="config\gameplay\character_desc_kishka.xml">
+      <Filter>config\gameplay</Filter>
+    </Xml>
+    <Xml Include="config\gameplay\character_desc_military.xml">
+      <Filter>config\gameplay</Filter>
+    </Xml>
+    <Xml Include="config\gameplay\character_desc_pripyat.xml">
+      <Filter>config\gameplay</Filter>
+    </Xml>
+    <Xml Include="config\gameplay\character_desc_radar.xml">
+      <Filter>config\gameplay</Filter>
+    </Xml>
+    <Xml Include="config\gameplay\character_desc_sarcofag.xml">
+      <Filter>config\gameplay</Filter>
+    </Xml>
+    <Xml Include="config\gameplay\character_desc_simulation.xml">
+      <Filter>config\gameplay</Filter>
+    </Xml>
+    <Xml Include="config\gameplay\character_desc_yantar.xml">
+      <Filter>config\gameplay</Filter>
+    </Xml>
+    <Xml Include="config\gameplay\character_dialogs.xml">
+      <Filter>config\gameplay</Filter>
+    </Xml>
+    <Xml Include="config\gameplay\character_drugs.xml">
+      <Filter>config\gameplay</Filter>
+    </Xml>
+    <Xml Include="config\gameplay\character_food.xml">
+      <Filter>config\gameplay</Filter>
+    </Xml>
+    <Xml Include="config\gameplay\character_items.xml">
+      <Filter>config\gameplay</Filter>
+    </Xml>
+    <Xml Include="config\gameplay\dialogs.xml">
+      <Filter>config\gameplay</Filter>
+    </Xml>
+    <Xml Include="config\gameplay\dialogs_aes.xml">
+      <Filter>config\gameplay</Filter>
+    </Xml>
+    <Xml Include="config\gameplay\dialogs_agroprom.xml">
+      <Filter>config\gameplay</Filter>
+    </Xml>
+    <Xml Include="config\gameplay\dialogs_bar.xml">
+      <Filter>config\gameplay</Filter>
+    </Xml>
+    <Xml Include="config\gameplay\dialogs_darkvalley.xml">
+      <Filter>config\gameplay</Filter>
+    </Xml>
+    <Xml Include="config\gameplay\dialogs_deadcity.xml">
+      <Filter>config\gameplay</Filter>
+    </Xml>
+    <Xml Include="config\gameplay\dialogs_escape.xml">
+      <Filter>config\gameplay</Filter>
+    </Xml>
+    <Xml Include="config\gameplay\dialogs_garbage.xml">
+      <Filter>config\gameplay</Filter>
+    </Xml>
+    <Xml Include="config\gameplay\dialogs_labx18.xml">
+      <Filter>config\gameplay</Filter>
+    </Xml>
+    <Xml Include="config\gameplay\dialogs_military.xml">
+      <Filter>config\gameplay</Filter>
+    </Xml>
+    <Xml Include="config\gameplay\dialogs_pripyat.xml">
+      <Filter>config\gameplay</Filter>
+    </Xml>
+    <Xml Include="config\gameplay\dialogs_radar.xml">
+      <Filter>config\gameplay</Filter>
+    </Xml>
+    <Xml Include="config\gameplay\dialogs_yantar.xml">
+      <Filter>config\gameplay</Filter>
+    </Xml>
+    <Xml Include="config\gameplay\encyclopedia_equipment.xml">
+      <Filter>config\gameplay</Filter>
+    </Xml>
+    <Xml Include="config\gameplay\encyclopedia_mutants.xml">
+      <Filter>config\gameplay</Filter>
+    </Xml>
+    <Xml Include="config\gameplay\encyclopedia_social.xml">
+      <Filter>config\gameplay</Filter>
+    </Xml>
+    <Xml Include="config\gameplay\encyclopedia_tutorial.xml">
+      <Filter>config\gameplay</Filter>
+    </Xml>
+    <Xml Include="config\gameplay\encyclopedia_weapons.xml">
+      <Filter>config\gameplay</Filter>
+    </Xml>
+    <Xml Include="config\gameplay\encyclopedia_zone.xml">
+      <Filter>config\gameplay</Filter>
+    </Xml>
+    <Xml Include="config\gameplay\game_tasks.xml">
+      <Filter>config\gameplay</Filter>
+    </Xml>
+    <Xml Include="config\gameplay\game_tasks_by_vendor.xml">
+      <Filter>config\gameplay</Filter>
+    </Xml>
+    <Xml Include="config\gameplay\info_known_objects.xml">
+      <Filter>config\gameplay</Filter>
+    </Xml>
+    <Xml Include="config\gameplay\info_l01escape.xml">
+      <Filter>config\gameplay</Filter>
+    </Xml>
+    <Xml Include="config\gameplay\info_l02garbage.xml">
+      <Filter>config\gameplay</Filter>
+    </Xml>
+    <Xml Include="config\gameplay\info_l03agroprom.xml">
+      <Filter>config\gameplay</Filter>
+    </Xml>
+    <Xml Include="config\gameplay\info_l05dark_valley.xml">
+      <Filter>config\gameplay</Filter>
+    </Xml>
+    <Xml Include="config\gameplay\info_l06dark_valley_u.xml">
+      <Filter>config\gameplay</Filter>
+    </Xml>
+    <Xml Include="config\gameplay\info_l07rostok.xml">
+      <Filter>config\gameplay</Filter>
+    </Xml>
+    <Xml Include="config\gameplay\info_l08deadcity.xml">
+      <Filter>config\gameplay</Filter>
+    </Xml>
+    <Xml Include="config\gameplay\info_l08yantar.xml">
+      <Filter>config\gameplay</Filter>
+    </Xml>
+    <Xml Include="config\gameplay\info_l10military.xml">
+      <Filter>config\gameplay</Filter>
+    </Xml>
+    <Xml Include="config\gameplay\info_l10radar.xml">
+      <Filter>config\gameplay</Filter>
+    </Xml>
+    <Xml Include="config\gameplay\info_l11pripyat.xml">
+      <Filter>config\gameplay</Filter>
+    </Xml>
+    <Xml Include="config\gameplay\info_l12u_sarcofag.xml">
+      <Filter>config\gameplay</Filter>
+    </Xml>
+    <Xml Include="config\gameplay\info_l16radar_antena.xml">
+      <Filter>config\gameplay</Filter>
+    </Xml>
+    <Xml Include="config\gameplay\info_l19stanciya.xml">
+      <Filter>config\gameplay</Filter>
+    </Xml>
+    <Xml Include="config\gameplay\info_lchanger_ico.xml">
+      <Filter>config\gameplay</Filter>
+    </Xml>
+    <Xml Include="config\gameplay\info_level_tips.xml">
+      <Filter>config\gameplay</Filter>
+    </Xml>
+    <Xml Include="config\gameplay\info_portions.xml">
+      <Filter>config\gameplay</Filter>
+    </Xml>
+    <Xml Include="config\gameplay\info_portions_light.xml">
+      <Filter>config\gameplay</Filter>
+    </Xml>
+    <Xml Include="config\gameplay\info_portions_test.xml">
+      <Filter>config\gameplay</Filter>
+    </Xml>
+    <Xml Include="config\gameplay\info_stories.xml">
+      <Filter>config\gameplay</Filter>
+    </Xml>
+    <Xml Include="config\gameplay\npc_profile.xml">
+      <Filter>config\gameplay</Filter>
+    </Xml>
+    <Xml Include="config\gameplay\stories.xml">
+      <Filter>config\gameplay</Filter>
+    </Xml>
+    <Xml Include="config\gameplay\storyline_info_aes.xml">
+      <Filter>config\gameplay</Filter>
+    </Xml>
+    <Xml Include="config\gameplay\storyline_info_agroprom.xml">
+      <Filter>config\gameplay</Filter>
+    </Xml>
+    <Xml Include="config\gameplay\storyline_info_bar.xml">
+      <Filter>config\gameplay</Filter>
+    </Xml>
+    <Xml Include="config\gameplay\storyline_info_darkvalley.xml">
+      <Filter>config\gameplay</Filter>
+    </Xml>
+    <Xml Include="config\gameplay\storyline_info_deadcity.xml">
+      <Filter>config\gameplay</Filter>
+    </Xml>
+    <Xml Include="config\gameplay\storyline_info_escape.xml">
+      <Filter>config\gameplay</Filter>
+    </Xml>
+    <Xml Include="config\gameplay\storyline_info_garbage.xml">
+      <Filter>config\gameplay</Filter>
+    </Xml>
+    <Xml Include="config\gameplay\storyline_info_military.xml">
+      <Filter>config\gameplay</Filter>
+    </Xml>
+    <Xml Include="config\gameplay\storyline_info_pripyat.xml">
+      <Filter>config\gameplay</Filter>
+    </Xml>
+    <Xml Include="config\gameplay\storyline_info_radar.xml">
+      <Filter>config\gameplay</Filter>
+    </Xml>
+    <Xml Include="config\gameplay\storyline_info_sarcofag.xml">
+      <Filter>config\gameplay</Filter>
+    </Xml>
+    <Xml Include="config\gameplay\storyline_info_taskmanager.xml">
+      <Filter>config\gameplay</Filter>
+    </Xml>
+    <Xml Include="config\gameplay\storyline_info_to_diary.xml">
+      <Filter>config\gameplay</Filter>
+    </Xml>
+    <Xml Include="config\gameplay\storyline_info_yantar.xml">
+      <Filter>config\gameplay</Filter>
+    </Xml>
+    <Xml Include="config\gameplay\tasks_aes.xml">
+      <Filter>config\gameplay</Filter>
+    </Xml>
+    <Xml Include="config\gameplay\tasks_agroprom.xml">
+      <Filter>config\gameplay</Filter>
+    </Xml>
+    <Xml Include="config\gameplay\tasks_bar.xml">
+      <Filter>config\gameplay</Filter>
+    </Xml>
+    <Xml Include="config\gameplay\tasks_darkvalley.xml">
+      <Filter>config\gameplay</Filter>
+    </Xml>
+    <Xml Include="config\gameplay\tasks_deadcity.xml">
+      <Filter>config\gameplay</Filter>
+    </Xml>
+    <Xml Include="config\gameplay\tasks_escape.xml">
+      <Filter>config\gameplay</Filter>
+    </Xml>
+    <Xml Include="config\gameplay\tasks_garbage.xml">
+      <Filter>config\gameplay</Filter>
+    </Xml>
+    <Xml Include="config\gameplay\tasks_military.xml">
+      <Filter>config\gameplay</Filter>
+    </Xml>
+    <Xml Include="config\gameplay\tasks_radar.xml">
+      <Filter>config\gameplay</Filter>
+    </Xml>
+    <Xml Include="config\gameplay\tasks_sarcofag.xml">
+      <Filter>config\gameplay</Filter>
+    </Xml>
+    <Xml Include="config\gameplay\tasks_yantar.xml">
+      <Filter>config\gameplay</Filter>
+    </Xml>
     <Xml Include="config\text\eng\dialogs_escape_1_string.xml">
       <Filter>config\text\eng</Filter>
     </Xml>
@@ -3815,287 +5807,85 @@
     <Xml Include="config\ui\zone_map_16.xml">
       <Filter>config\ui</Filter>
     </Xml>
-    <Xml Include="config\gameplay\info_portions.xml">
-      <Filter>config\gameplay\info_portions</Filter>
-    </Xml>
-    <Xml Include="config\gameplay\info_portions_light.xml">
-      <Filter>config\gameplay\info_portions</Filter>
-    </Xml>
-    <Xml Include="config\gameplay\info_portions_test.xml">
-      <Filter>config\gameplay\info_portions</Filter>
-    </Xml>
-    <Xml Include="config\gameplay\info_lchanger_ico.xml">
-      <Filter>config\gameplay\info_portions</Filter>
-    </Xml>
-    <Xml Include="config\gameplay\info_level_tips.xml">
-      <Filter>config\gameplay\info_portions</Filter>
-    </Xml>
-    <Xml Include="config\gameplay\info_known_objects.xml">
-      <Filter>config\gameplay\info_portions</Filter>
-    </Xml>
-    <Xml Include="config\gameplay\info_l01escape.xml">
-      <Filter>config\gameplay\info_portions</Filter>
-    </Xml>
-    <Xml Include="config\gameplay\info_l02garbage.xml">
-      <Filter>config\gameplay\info_portions</Filter>
-    </Xml>
-    <Xml Include="config\gameplay\info_l03agroprom.xml">
-      <Filter>config\gameplay\info_portions</Filter>
-    </Xml>
-    <Xml Include="config\gameplay\info_l05dark_valley.xml">
-      <Filter>config\gameplay\info_portions</Filter>
-    </Xml>
-    <Xml Include="config\gameplay\info_l06dark_valley_u.xml">
-      <Filter>config\gameplay\info_portions</Filter>
-    </Xml>
-    <Xml Include="config\gameplay\info_l07rostok.xml">
-      <Filter>config\gameplay\info_portions</Filter>
-    </Xml>
-    <Xml Include="config\gameplay\info_l08yantar.xml">
-      <Filter>config\gameplay\info_portions</Filter>
-    </Xml>
-    <Xml Include="config\gameplay\info_l08deadcity.xml">
-      <Filter>config\gameplay\info_portions</Filter>
-    </Xml>
-    <Xml Include="config\gameplay\info_l10military.xml">
-      <Filter>config\gameplay\info_portions</Filter>
-    </Xml>
-    <Xml Include="config\gameplay\info_l11pripyat.xml">
-      <Filter>config\gameplay\info_portions</Filter>
-    </Xml>
-    <Xml Include="config\gameplay\info_l10radar.xml">
-      <Filter>config\gameplay\info_portions</Filter>
-    </Xml>
-    <Xml Include="config\gameplay\info_l16radar_antena.xml">
-      <Filter>config\gameplay\info_portions</Filter>
-    </Xml>
-    <Xml Include="config\gameplay\info_l19stanciya.xml">
-      <Filter>config\gameplay\info_portions</Filter>
-    </Xml>
-    <Xml Include="config\gameplay\info_l12u_sarcofag.xml">
-      <Filter>config\gameplay\info_portions</Filter>
-    </Xml>
-    <Xml Include="config\gameplay\info_stories.xml">
-      <Filter>config\gameplay\info_portions</Filter>
-    </Xml>
-    <Xml Include="config\gameplay\storyline_info_escape.xml">
-      <Filter>config\gameplay\encyclopedia\storyline</Filter>
-    </Xml>
-    <Xml Include="config\gameplay\storyline_info_garbage.xml">
-      <Filter>config\gameplay\encyclopedia\storyline</Filter>
-    </Xml>
-    <Xml Include="config\gameplay\storyline_info_agroprom.xml">
-      <Filter>config\gameplay\encyclopedia\storyline</Filter>
-    </Xml>
-    <Xml Include="config\gameplay\storyline_info_bar.xml">
-      <Filter>config\gameplay\encyclopedia\storyline</Filter>
-    </Xml>
-    <Xml Include="config\gameplay\storyline_info_darkvalley.xml">
-      <Filter>config\gameplay\encyclopedia\storyline</Filter>
-    </Xml>
-    <Xml Include="config\gameplay\storyline_info_deadcity.xml">
-      <Filter>config\gameplay\encyclopedia\storyline</Filter>
-    </Xml>
-    <Xml Include="config\gameplay\storyline_info_military.xml">
-      <Filter>config\gameplay\encyclopedia\storyline</Filter>
-    </Xml>
-    <Xml Include="config\gameplay\storyline_info_radar.xml">
-      <Filter>config\gameplay\encyclopedia\storyline</Filter>
-    </Xml>
-    <Xml Include="config\gameplay\storyline_info_aes.xml">
-      <Filter>config\gameplay\encyclopedia\storyline</Filter>
-    </Xml>
-    <Xml Include="config\gameplay\storyline_info_pripyat.xml">
-      <Filter>config\gameplay\encyclopedia\storyline</Filter>
-    </Xml>
-    <Xml Include="config\gameplay\storyline_info_sarcofag.xml">
-      <Filter>config\gameplay\encyclopedia\storyline</Filter>
-    </Xml>
-    <Xml Include="config\gameplay\storyline_info_yantar.xml">
-      <Filter>config\gameplay\encyclopedia\storyline</Filter>
-    </Xml>
-    <Xml Include="config\gameplay\storyline_info_taskmanager.xml">
-      <Filter>config\gameplay\encyclopedia\storyline</Filter>
-    </Xml>
-    <Xml Include="config\gameplay\storyline_info_to_diary.xml">
-      <Filter>config\gameplay\encyclopedia\storyline</Filter>
-    </Xml>
-    <Xml Include="config\gameplay\stories.xml">
-      <Filter>config\gameplay\encyclopedia\storyline</Filter>
-    </Xml>
-    <Xml Include="config\gameplay\encyclopedia_weapons.xml">
-      <Filter>config\gameplay\encyclopedia</Filter>
-    </Xml>
-    <Xml Include="config\gameplay\encyclopedia_mutants.xml">
-      <Filter>config\gameplay\encyclopedia</Filter>
-    </Xml>
-    <Xml Include="config\gameplay\encyclopedia_zone.xml">
-      <Filter>config\gameplay\encyclopedia</Filter>
-    </Xml>
-    <Xml Include="config\gameplay\encyclopedia_social.xml">
-      <Filter>config\gameplay\encyclopedia</Filter>
-    </Xml>
-    <Xml Include="config\gameplay\encyclopedia_equipment.xml">
-      <Filter>config\gameplay\encyclopedia</Filter>
-    </Xml>
-    <Xml Include="config\gameplay\encyclopedia_tutorial.xml">
-      <Filter>config\gameplay\encyclopedia</Filter>
-    </Xml>
-    <Xml Include="config\gameplay\dialogs.xml">
-      <Filter>config\gameplay\dialogs</Filter>
-    </Xml>
-    <Xml Include="config\gameplay\dialogs_escape.xml">
-      <Filter>config\gameplay\dialogs</Filter>
-    </Xml>
-    <Xml Include="config\gameplay\dialogs_garbage.xml">
-      <Filter>config\gameplay\dialogs</Filter>
-    </Xml>
-    <Xml Include="config\gameplay\dialogs_agroprom.xml">
-      <Filter>config\gameplay\dialogs</Filter>
-    </Xml>
-    <Xml Include="config\gameplay\dialogs_deadcity.xml">
-      <Filter>config\gameplay\dialogs</Filter>
-    </Xml>
-    <Xml Include="config\gameplay\dialogs_darkvalley.xml">
-      <Filter>config\gameplay\dialogs</Filter>
-    </Xml>
-    <Xml Include="config\gameplay\dialogs_pripyat.xml">
-      <Filter>config\gameplay\dialogs</Filter>
-    </Xml>
-    <Xml Include="config\gameplay\dialogs_bar.xml">
-      <Filter>config\gameplay\dialogs</Filter>
-    </Xml>
-    <Xml Include="config\gameplay\dialogs_yantar.xml">
-      <Filter>config\gameplay\dialogs</Filter>
-    </Xml>
-    <Xml Include="config\gameplay\dialogs_military.xml">
-      <Filter>config\gameplay\dialogs</Filter>
-    </Xml>
-    <Xml Include="config\gameplay\dialogs_labx18.xml">
-      <Filter>config\gameplay\dialogs</Filter>
-    </Xml>
-    <Xml Include="config\gameplay\dialogs_radar.xml">
-      <Filter>config\gameplay\dialogs</Filter>
-    </Xml>
-    <Xml Include="config\gameplay\dialogs_aes.xml">
-      <Filter>config\gameplay\dialogs</Filter>
-    </Xml>
-    <Xml Include="config\gameplay\game_tasks.xml">
-      <Filter>config\gameplay\game_tasks</Filter>
-    </Xml>
-    <Xml Include="config\gameplay\tasks_escape.xml">
-      <Filter>config\gameplay\game_tasks</Filter>
-    </Xml>
-    <Xml Include="config\gameplay\tasks_garbage.xml">
-      <Filter>config\gameplay\game_tasks</Filter>
-    </Xml>
-    <Xml Include="config\gameplay\tasks_agroprom.xml">
-      <Filter>config\gameplay\game_tasks</Filter>
-    </Xml>
-    <Xml Include="config\gameplay\tasks_bar.xml">
-      <Filter>config\gameplay\game_tasks</Filter>
-    </Xml>
-    <Xml Include="config\gameplay\tasks_military.xml">
-      <Filter>config\gameplay\game_tasks</Filter>
-    </Xml>
-    <Xml Include="config\gameplay\tasks_darkvalley.xml">
-      <Filter>config\gameplay\game_tasks</Filter>
-    </Xml>
-    <Xml Include="config\gameplay\tasks_deadcity.xml">
-      <Filter>config\gameplay\game_tasks</Filter>
-    </Xml>
-    <Xml Include="config\gameplay\tasks_radar.xml">
-      <Filter>config\gameplay\game_tasks</Filter>
-    </Xml>
-    <Xml Include="config\gameplay\tasks_aes.xml">
-      <Filter>config\gameplay\game_tasks</Filter>
-    </Xml>
-    <Xml Include="config\gameplay\tasks_yantar.xml">
-      <Filter>config\gameplay\game_tasks</Filter>
-    </Xml>
-    <Xml Include="config\gameplay\tasks_sarcofag.xml">
-      <Filter>config\gameplay\game_tasks</Filter>
-    </Xml>
-    <Xml Include="config\gameplay\game_tasks_by_vendor.xml">
-      <Filter>config\gameplay\game_tasks</Filter>
-    </Xml>
-    <Xml Include="config\gameplay\npc_profile.xml">
-      <Filter>config\gameplay\profiles</Filter>
-    </Xml>
-    <Xml Include="config\gameplay\character_desc_general.xml">
-      <Filter>config\gameplay\profiles\specific_characters</Filter>
-    </Xml>
-    <Xml Include="config\gameplay\character_desc_simulation.xml">
-      <Filter>config\gameplay\profiles\specific_characters</Filter>
-    </Xml>
-    <Xml Include="config\gameplay\character_desc_escape.xml">
-      <Filter>config\gameplay\profiles\specific_characters</Filter>
-    </Xml>
-    <Xml Include="config\gameplay\character_desc_garbage.xml">
-      <Filter>config\gameplay\profiles\specific_characters</Filter>
-    </Xml>
-    <Xml Include="config\gameplay\character_desc_agroprom.xml">
-      <Filter>config\gameplay\profiles\specific_characters</Filter>
-    </Xml>
-    <Xml Include="config\gameplay\character_desc_darkvalley.xml">
-      <Filter>config\gameplay\profiles\specific_characters</Filter>
-    </Xml>
-    <Xml Include="config\gameplay\character_desc_deadcity.xml">
-      <Filter>config\gameplay\profiles\specific_characters</Filter>
-    </Xml>
-    <Xml Include="config\gameplay\character_desc_bar.xml">
-      <Filter>config\gameplay\profiles\specific_characters</Filter>
-    </Xml>
-    <Xml Include="config\gameplay\character_desc_yantar.xml">
-      <Filter>config\gameplay\profiles\specific_characters</Filter>
-    </Xml>
-    <Xml Include="config\gameplay\character_desc_military.xml">
-      <Filter>config\gameplay\profiles\specific_characters</Filter>
-    </Xml>
-    <Xml Include="config\gameplay\character_desc_radar.xml">
-      <Filter>config\gameplay\profiles\specific_characters</Filter>
-    </Xml>
-    <Xml Include="config\gameplay\character_desc_pripyat.xml">
-      <Filter>config\gameplay\profiles\specific_characters</Filter>
-    </Xml>
-    <Xml Include="config\gameplay\character_desc_aes.xml">
-      <Filter>config\gameplay\profiles\specific_characters</Filter>
-    </Xml>
-    <Xml Include="config\gameplay\character_desc_kishka.xml">
-      <Filter>config\gameplay\profiles\specific_characters</Filter>
-    </Xml>
-    <Xml Include="config\gameplay\character_desc_sarcofag.xml">
-      <Filter>config\gameplay\profiles\specific_characters</Filter>
-    </Xml>
-    <Xml Include="config\gameplay\character_criticals_1.xml">
-      <Filter>config\gameplay\profiles\specific_characters</Filter>
-    </Xml>
-    <Xml Include="config\gameplay\character_criticals_2.xml">
-      <Filter>config\gameplay\profiles\specific_characters</Filter>
-    </Xml>
-    <Xml Include="config\gameplay\character_criticals_3.xml">
-      <Filter>config\gameplay\profiles\specific_characters</Filter>
-    </Xml>
-    <Xml Include="config\gameplay\character_criticals_4.xml">
-      <Filter>config\gameplay\profiles\specific_characters</Filter>
-    </Xml>
-    <Xml Include="config\gameplay\character_criticals_5.xml">
-      <Filter>config\gameplay\profiles\specific_characters</Filter>
-    </Xml>
-    <Xml Include="config\gameplay\character_criticals_6.xml">
-      <Filter>config\gameplay\profiles\specific_characters</Filter>
-    </Xml>
-    <Xml Include="config\gameplay\character_dialogs.xml">
-      <Filter>config\gameplay\profiles\specific_characters</Filter>
-    </Xml>
-    <Xml Include="config\gameplay\character_drugs.xml">
-      <Filter>config\gameplay\profiles\specific_characters</Filter>
-    </Xml>
-    <Xml Include="config\gameplay\character_food.xml">
-      <Filter>config\gameplay\profiles\specific_characters</Filter>
-    </Xml>
-    <Xml Include="config\gameplay\character_items.xml">
-      <Filter>config\gameplay\profiles\specific_characters</Filter>
-    </Xml>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="shaders\r1\shared\cloudconfig.h">
+      <Filter>shaders\r1\shared</Filter>
+    </ClInclude>
+    <ClInclude Include="shaders\r1\shared\common.h">
+      <Filter>shaders\r1\shared</Filter>
+    </ClInclude>
+    <ClInclude Include="shaders\r1\shared\waterconfig.h">
+      <Filter>shaders\r1\shared</Filter>
+    </ClInclude>
+    <ClInclude Include="shaders\r1\shared\watermove.h">
+      <Filter>shaders\r1\shared</Filter>
+    </ClInclude>
+    <ClInclude Include="shaders\r1\shared\wmark.h">
+      <Filter>shaders\r1\shared</Filter>
+    </ClInclude>
+    <ClInclude Include="shaders\r1\common.h">
+      <Filter>shaders\r1</Filter>
+    </ClInclude>
+    <ClInclude Include="shaders\r1\skin.h">
+      <Filter>shaders\r1</Filter>
+    </ClInclude>
+    <ClInclude Include="shaders\r2\shared\cloudconfig.h">
+      <Filter>shaders\r2\shared</Filter>
+    </ClInclude>
+    <ClInclude Include="shaders\r2\shared\common.h">
+      <Filter>shaders\r2\shared</Filter>
+    </ClInclude>
+    <ClInclude Include="shaders\r2\shared\waterconfig.h">
+      <Filter>shaders\r2\shared</Filter>
+    </ClInclude>
+    <ClInclude Include="shaders\r2\shared\watermove.h">
+      <Filter>shaders\r2\shared</Filter>
+    </ClInclude>
+    <ClInclude Include="shaders\r2\shared\wmark.h">
+      <Filter>shaders\r2\shared</Filter>
+    </ClInclude>
+    <ClInclude Include="shaders\r2\common.h">
+      <Filter>shaders\r2</Filter>
+    </ClInclude>
+    <ClInclude Include="shaders\r2\fencode.h">
+      <Filter>shaders\r2</Filter>
+    </ClInclude>
+    <ClInclude Include="shaders\r2\hmodel.h">
+      <Filter>shaders\r2</Filter>
+    </ClInclude>
+    <ClInclude Include="shaders\r2\hmodel_f.h">
+      <Filter>shaders\r2</Filter>
+    </ClInclude>
+    <ClInclude Include="shaders\r2\lmodel.h">
+      <Filter>shaders\r2</Filter>
+    </ClInclude>
+    <ClInclude Include="shaders\r2\mblur.h">
+      <Filter>shaders\r2</Filter>
+    </ClInclude>
+    <ClInclude Include="shaders\r2\shadow.h">
+      <Filter>shaders\r2</Filter>
+    </ClInclude>
+    <ClInclude Include="shaders\r2\skin.h">
+      <Filter>shaders\r2</Filter>
+    </ClInclude>
+    <ClInclude Include="shaders\r2\sload.h">
+      <Filter>shaders\r2</Filter>
+    </ClInclude>
+    <ClInclude Include="shaders\shared\cloudconfig.h">
+      <Filter>shaders\shared</Filter>
+    </ClInclude>
+    <ClInclude Include="shaders\shared\common.h">
+      <Filter>shaders\shared</Filter>
+    </ClInclude>
+    <ClInclude Include="shaders\shared\waterconfig.h">
+      <Filter>shaders\shared</Filter>
+    </ClInclude>
+    <ClInclude Include="shaders\shared\watermove.h">
+      <Filter>shaders\shared</Filter>
+    </ClInclude>
+    <ClInclude Include="shaders\shared\wmark.h">
+      <Filter>shaders\shared</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
