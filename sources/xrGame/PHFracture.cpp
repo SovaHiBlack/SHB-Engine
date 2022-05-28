@@ -7,7 +7,7 @@
 
 #pragma warning(disable:4995)
 #pragma warning(disable:4267)
-#include "../../xrODE/ode/src/joint.h"
+#include "..\xrODE\joint.h"
 #pragma warning(default:4995)
 #pragma warning(default:4267)
 extern	class CPHWorld	*ph_world;

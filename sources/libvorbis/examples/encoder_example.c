@@ -25,6 +25,7 @@
 #include <string.h>
 #include <time.h>
 #include <math.h>
+
 #include <vorbis/vorbisenc.h>
 
 #ifdef _WIN32 /* We need the following two to set stdin/stdout to binary */

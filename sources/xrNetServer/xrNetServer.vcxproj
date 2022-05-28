@@ -18,6 +18,7 @@
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <PlatformToolset>v120</PlatformToolset>
     <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
@@ -42,12 +43,12 @@
     <_ProjectFileVersion>12.0.30501.0</_ProjectFileVersion>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <OutDir>$(SolutionDir)..\$(Configuration)-$(Platform)\binaries\</OutDir>
+    <OutDir>$(SolutionDir)..\$(Configuration)-$(Platform)\binary\</OutDir>
     <IntDir>$(SolutionDir)..\$(Configuration)-$(Platform)\intermediate\$(ProjectName)\</IntDir>
     <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <OutDir>$(SolutionDir)..\$(Configuration)-$(Platform)\binaries\</OutDir>
+    <OutDir>$(SolutionDir)..\$(Configuration)-$(Platform)\binary\</OutDir>
     <IntDir>$(SolutionDir)..\$(Configuration)-$(Platform)\intermediate\$(ProjectName)\</IntDir>
     <LinkIncremental>true</LinkIncremental>
   </PropertyGroup>
@@ -67,7 +68,7 @@
       <OmitFramePointers>true</OmitFramePointers>
       <EnableFiberSafeOptimizations>true</EnableFiberSafeOptimizations>
       <WholeProgramOptimization>true</WholeProgramOptimization>
-      <AdditionalIncludeDirectories>..\third-party;..\third-party\dxsdk\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\SDK\dxsdk\include</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>NDEBUG;WIN32;_WINDOWS;XR_NETSERVER_EXPORTS;_SECURE_SCL=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <ExceptionHandling />
@@ -98,7 +99,7 @@
       <AdditionalDependencies>Ws2_32.lib;dxerr.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <ProgramDatabaseFile>$(OutDir)$(ProjectName).pdb</ProgramDatabaseFile>
+      <ProgramDatabaseFile>$(OutDir)$(TargetName).pdb</ProgramDatabaseFile>
       <GenerateMapFile>false</GenerateMapFile>
       <MapFileName />
       <SubSystem>NotSet</SubSystem>
@@ -107,7 +108,7 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <LinkTimeCodeGeneration>UseLinkTimeCodeGeneration</LinkTimeCodeGeneration>
       <ImportLibrary>$(SolutionDir)..\$(Configuration)-$(Platform)\libraries\$(ProjectName).lib</ImportLibrary>
-      <AdditionalLibraryDirectories>..\third-party\dxsdk\lib;$(SolutionDir)..\$(Configuration)-$(Platform)\libraries</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\SDK\dxsdk\lib;$(SolutionDir)..\$(Configuration)-$(Platform)\libraries</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -121,7 +122,7 @@
     <ClCompile>
       <Optimization>Disabled</Optimization>
       <EnableFiberSafeOptimizations>true</EnableFiberSafeOptimizations>
-      <AdditionalIncludeDirectories>..\third-party;..\third-party\dxsdk\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\SDK\dxsdk\include</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>DEBUG;WIN32;_WINDOWS;XR_NETSERVER_EXPORTS;_SECURE_SCL=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>false</StringPooling>
       <MinimalRebuild>true</MinimalRebuild>
@@ -139,7 +140,7 @@
       <ProgramDataBaseFileName>$(IntDir)</ProgramDataBaseFileName>
       <WarningLevel>Level4</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <CompileAs>CompileAsCpp</CompileAs>
       <BrowseInformation>true</BrowseInformation>
     </ClCompile>
@@ -157,7 +158,8 @@
       <SubSystem>Windows</SubSystem>
       <LargeAddressAware>true</LargeAddressAware>
       <ImportLibrary>$(SolutionDir)..\$(Configuration)-$(Platform)\libraries\$(ProjectName).lib</ImportLibrary>
-      <AdditionalLibraryDirectories>..\third-party\dxsdk\lib;$(SolutionDir)..\$(Configuration)-$(Platform)\libraries</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\SDK\dxsdk\lib;$(SolutionDir)..\$(Configuration)-$(Platform)\libraries</AdditionalLibraryDirectories>
+      <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
     </Link>
     <Bscmake>
       <PreserveSbr>true</PreserveSbr>

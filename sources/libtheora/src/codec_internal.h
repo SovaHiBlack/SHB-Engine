@@ -22,6 +22,7 @@
 #endif
 
 #include <theora/theora.h>
+
 #include "huffman.h"
 #include "dsp.h"
 

@@ -42,13 +42,13 @@
     <_ProjectFileVersion>12.0.30501.0</_ProjectFileVersion>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <OutDir>$(SolutionDir)..\$(Configuration)-$(Platform)\binaries\</OutDir>
+    <OutDir>$(SolutionDir)..\$(Configuration)-$(Platform)\binary\</OutDir>
     <IntDir>$(SolutionDir)..\$(Configuration)-$(Platform)\intermediate\$(ProjectName)\</IntDir>
     <IgnoreImportLibrary>true</IgnoreImportLibrary>
     <LinkIncremental>true</LinkIncremental>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <OutDir>$(SolutionDir)..\$(Configuration)-$(Platform)\binaries\</OutDir>
+    <OutDir>$(SolutionDir)..\$(Configuration)-$(Platform)\binary\</OutDir>
     <IntDir>$(SolutionDir)..\$(Configuration)-$(Platform)\intermediate\$(ProjectName)\</IntDir>
     <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>
@@ -72,8 +72,8 @@
       <ObjectFileName>$(IntDir)</ObjectFileName>
       <ProgramDataBaseFileName>$(IntDir)</ProgramDataBaseFileName>
       <WarningLevel>Level4</WarningLevel>
-      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
-      <AdditionalIncludeDirectories>.\;..\third-party\dxsdk\include</AdditionalIncludeDirectories>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <AdditionalIncludeDirectories>.\;..\SDK\dxsdk\include</AdditionalIncludeDirectories>
       <BrowseInformation>true</BrowseInformation>
     </ClCompile>
     <Link>
@@ -85,7 +85,8 @@
       <LargeAddressAware>true</LargeAddressAware>
       <ImportLibrary>$(SolutionDir)..\$(Configuration)-$(Platform)\libraries\$(ProjectName).lib</ImportLibrary>
       <TargetMachine>MachineX86</TargetMachine>
-      <AdditionalLibraryDirectories>..\third-party\dxsdk\lib;$(SolutionDir)..\$(Configuration)-$(Platform)\libraries</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\SDK\dxsdk\lib;$(SolutionDir)..\$(Configuration)-$(Platform)\libraries</AdditionalLibraryDirectories>
+      <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
     </Link>
     <Bscmake>
       <PreserveSbr>true</PreserveSbr>
@@ -118,11 +119,11 @@
       <ProgramDataBaseFileName>$(IntDir)</ProgramDataBaseFileName>
       <WarningLevel>Level4</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
-      <AdditionalIncludeDirectories>.\;..\third-party\dxsdk\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\;..\SDK\dxsdk\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <ProgramDatabaseFile>$(OutDir)$(ProjectName).pdb</ProgramDatabaseFile>
+      <ProgramDatabaseFile>$(OutDir)$(TargetName).pdb</ProgramDatabaseFile>
       <GenerateMapFile>false</GenerateMapFile>
       <MapFileName />
       <SubSystem>NotSet</SubSystem>
@@ -132,7 +133,7 @@
       <LinkTimeCodeGeneration>UseLinkTimeCodeGeneration</LinkTimeCodeGeneration>
       <ImportLibrary>$(SolutionDir)..\$(Configuration)-$(Platform)\libraries\$(ProjectName).lib</ImportLibrary>
       <TargetMachine>MachineX86</TargetMachine>
-      <AdditionalLibraryDirectories>..\third-party\dxsdk\lib;$(SolutionDir)..\$(Configuration)-$(Platform)\libraries</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\SDK\dxsdk\lib;$(SolutionDir)..\$(Configuration)-$(Platform)\libraries</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>

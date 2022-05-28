@@ -44,13 +44,13 @@
     <_ProjectFileVersion>12.0.30501.0</_ProjectFileVersion>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <OutDir>$(SolutionDir)..\$(Configuration)-$(Platform)\binaries\</OutDir>
+    <OutDir>$(SolutionDir)..\$(Configuration)-$(Platform)\binary\</OutDir>
     <IntDir>$(SolutionDir)..\$(Configuration)-$(Platform)\intermediate\$(ProjectName)\</IntDir>
     <IgnoreImportLibrary>true</IgnoreImportLibrary>
     <LinkIncremental>true</LinkIncremental>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <OutDir>$(SolutionDir)..\$(Configuration)-$(Platform)\binaries\</OutDir>
+    <OutDir>$(SolutionDir)..\$(Configuration)-$(Platform)\binary\</OutDir>
     <IntDir>$(SolutionDir)..\$(Configuration)-$(Platform)\intermediate\$(ProjectName)\</IntDir>
     <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>
@@ -74,7 +74,7 @@
       <SmallerTypeCheck>true</SmallerTypeCheck>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <BufferSecurityCheck>true</BufferSecurityCheck>
-      <FunctionLevelLinking>false</FunctionLevelLinking>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
       <FloatingPointModel>Fast</FloatingPointModel>
       <ForceConformanceInForLoopScope>false</ForceConformanceInForLoopScope>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
@@ -87,9 +87,9 @@
       <BrowseInformation>true</BrowseInformation>
       <WarningLevel>Level4</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <DisableSpecificWarnings>4237;%(DisableSpecificWarnings)</DisableSpecificWarnings>
-      <AdditionalIncludeDirectories>..\third-party;..\third-party\dxsdk\include;..\third-party\loki;.\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\SDK;..\SDK\dxsdk\include;..\xrODE\include</AdditionalIncludeDirectories>
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -105,6 +105,7 @@
       <LargeAddressAware>true</LargeAddressAware>
       <ImportLibrary>$(SolutionDir)..\$(Configuration)-$(Platform)\libraries\$(ProjectName).lib</ImportLibrary>
       <AdditionalLibraryDirectories>$(SolutionDir)..\$(Configuration)-$(Platform)\libraries</AdditionalLibraryDirectories>
+      <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
     </Link>
     <Bscmake>
       <PreserveSbr>true</PreserveSbr>
@@ -145,7 +146,7 @@
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <DisableSpecificWarnings>4237;%(DisableSpecificWarnings)</DisableSpecificWarnings>
-      <AdditionalIncludeDirectories>..\third-party;..\third-party\dxsdk\include;..\third-party\loki;.\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\SDK;..\SDK\dxsdk\include;..\xrODE\include</AdditionalIncludeDirectories>
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -155,7 +156,7 @@
       <AdditionalOptions>/MACHINE:I386  %(AdditionalOptions)</AdditionalOptions>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <ProgramDatabaseFile>$(OutDir)$(ProjectName).pdb</ProgramDatabaseFile>
+      <ProgramDatabaseFile>$(OutDir)$(TargetName).pdb</ProgramDatabaseFile>
       <GenerateMapFile>false</GenerateMapFile>
       <SubSystem>NotSet</SubSystem>
       <LargeAddressAware>true</LargeAddressAware>
@@ -2517,10 +2518,10 @@
     <ProjectReference Include="..\xrNetServer\xrNetServer.vcxproj">
       <Project>{435bac9a-b225-457d-ab40-c9bd0cc8838c}</Project>
     </ProjectReference>
-    <ProjectReference Include="..\xrODE\contrib\msvc7\ode_default\default.vcxproj">
+    <ProjectReference Include="..\xrODE\ODE.vcxproj">
       <Project>{1bf75feb-87dd-486c-880b-227987d191c2}</Project>
     </ProjectReference>
-    <ProjectReference Include="..\xrOpenAL\OpenAL-Windows\Router\Router.vcxproj">
+    <ProjectReference Include="..\xrOpenAL\OpenAL32.vcxproj">
       <Project>{566551f4-4ef1-4cb4-a131-f982e7606907}</Project>
     </ProjectReference>
     <ProjectReference Include="..\xrParticles\xrParticles.vcxproj">

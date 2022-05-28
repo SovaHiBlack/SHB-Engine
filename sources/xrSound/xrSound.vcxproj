@@ -42,13 +42,13 @@
     <_ProjectFileVersion>12.0.30501.0</_ProjectFileVersion>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <OutDir>$(SolutionDir)..\$(Configuration)-$(Platform)\binaries\</OutDir>
+    <OutDir>$(SolutionDir)..\$(Configuration)-$(Platform)\binary\</OutDir>
     <IntDir>$(SolutionDir)..\$(Configuration)-$(Platform)\intermediate\$(ProjectName)\</IntDir>
     <IgnoreImportLibrary>true</IgnoreImportLibrary>
     <LinkIncremental>true</LinkIncremental>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <OutDir>$(SolutionDir)..\$(Configuration)-$(Platform)\binaries\</OutDir>
+    <OutDir>$(SolutionDir)..\$(Configuration)-$(Platform)\binary\</OutDir>
     <IntDir>$(SolutionDir)..\$(Configuration)-$(Platform)\intermediate\$(ProjectName)\</IntDir>
     <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>
@@ -77,8 +77,8 @@
       <BrowseInformation>true</BrowseInformation>
       <WarningLevel>Level4</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
-      <AdditionalIncludeDirectories>..\third-party\xiph\include;..\third-party\eax\Include;..\third-party\OpenAL\include</AdditionalIncludeDirectories>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <AdditionalIncludeDirectories>..\libvorbis\include;..\libogg\include;..\SDK\eax\include;..\xrOpenAL</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <AdditionalOptions>/NODEFAULTLIB:LIBCMTD %(AdditionalOptions)</AdditionalOptions>
@@ -86,13 +86,12 @@
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <GenerateMapFile>false</GenerateMapFile>
-      <MapFileName />
       <MapExports>false</MapExports>
       <SubSystem>Windows</SubSystem>
       <LargeAddressAware>true</LargeAddressAware>
       <ImportLibrary>$(SolutionDir)..\$(Configuration)-$(Platform)\libraries\$(ProjectName).lib</ImportLibrary>
       <TargetMachine>MachineX86</TargetMachine>
-      <AdditionalLibraryDirectories>..\third-party\xiph\lib;..\third-party\eax\lib;..\third-party\OpenAL\lib;$(SolutionDir)..\$(Configuration)-$(Platform)\libraries;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\SDK\eax\lib;$(SolutionDir)..\$(Configuration)-$(Platform)\libraries</AdditionalLibraryDirectories>
       <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
     </Link>
     <Bscmake>
@@ -110,7 +109,6 @@
       <WholeProgramOptimization>true</WholeProgramOptimization>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;XRSOUND_EXPORTS;_SECURE_SCL=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
-      <ExceptionHandling />
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <BufferSecurityCheck>false</BufferSecurityCheck>
       <FunctionLevelLinking>false</FunctionLevelLinking>
@@ -120,21 +118,18 @@
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderOutputFile>$(IntDir)$(ProjectName).pch</PrecompiledHeaderOutputFile>
-      <AssemblerOutput />
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <ObjectFileName>$(IntDir)</ObjectFileName>
       <ProgramDataBaseFileName>$(IntDir)</ProgramDataBaseFileName>
-      <BrowseInformation />
       <WarningLevel>Level4</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
-      <AdditionalIncludeDirectories>..\third-party\xiph\include;..\third-party\eax\Include;..\third-party\OpenAL\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\libvorbis\include;..\libogg\include;..\SDK\eax\include;..\xrOpenAL</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <AdditionalDependencies>vorbisfile_static.lib;ogg_static.lib;OpenAL32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <ProgramDatabaseFile>$(OutDir)$(ProjectName).pdb</ProgramDatabaseFile>
+      <ProgramDatabaseFile>$(OutDir)$(TargetName).pdb</ProgramDatabaseFile>
       <GenerateMapFile>false</GenerateMapFile>
-      <MapFileName />
       <SubSystem>NotSet</SubSystem>
       <LargeAddressAware>true</LargeAddressAware>
       <OptimizeReferences>true</OptimizeReferences>
@@ -142,7 +137,7 @@
       <LinkTimeCodeGeneration>UseLinkTimeCodeGeneration</LinkTimeCodeGeneration>
       <ImportLibrary>$(SolutionDir)..\$(Configuration)-$(Platform)\libraries\$(ProjectName).lib</ImportLibrary>
       <TargetMachine>MachineX86</TargetMachine>
-      <AdditionalLibraryDirectories>..\third-party\xiph\lib;..\third-party\eax\lib;..\third-party\OpenAL\lib;$(SolutionDir)..\$(Configuration)-$(Platform)\libraries;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\SDK\eax\lib;$(SolutionDir)..\$(Configuration)-$(Platform)\libraries</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -199,7 +194,7 @@
     <ProjectReference Include="..\xrCore\xrCore.vcxproj">
       <Project>{a0f7d1fb-59a7-4717-a7e4-96f37e91998e}</Project>
     </ProjectReference>
-    <ProjectReference Include="..\xrOpenAL\OpenAL-Windows\Router\Router.vcxproj">
+    <ProjectReference Include="..\xrOpenAL\OpenAL32.vcxproj">
       <Project>{566551f4-4ef1-4cb4-a131-f982e7606907}</Project>
     </ProjectReference>
   </ItemGroup>

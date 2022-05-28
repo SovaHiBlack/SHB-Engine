@@ -10,7 +10,7 @@
 #include "server_entity_wrapper.h"
 #include "xrServer_Objects.h"
 #include "xrmessages.h"
-#include "../../xrNetServer/net_utils.h"
+#include "..\xrNetServer\net_utils.h"
 
 struct ISE_Abstract;
 

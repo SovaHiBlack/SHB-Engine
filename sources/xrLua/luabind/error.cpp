@@ -22,7 +22,6 @@
 
 #include <luabind/error.hpp>
 
-
 namespace luabind
 {
 

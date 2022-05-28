@@ -22,7 +22,6 @@
 
 #define LUA_LIB
 #include <luabind/lua_include.hpp>
-
 #include <luabind/luabind.hpp>
 
 using namespace luabind::detail;

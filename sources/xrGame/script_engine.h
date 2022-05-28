@@ -14,9 +14,9 @@
 #include "associative_vector.h"
 
 extern "C" {
-	#include "..\..\xrLua\src\lua.h"
-	#include "..\..\xrLua\src\luajit.h"
-	#include "..\..\xrLua\src\lcoco.h"
+	#include "..\xrLua\src\lua.h"
+	#include "..\xrLua\src\luajit.h"
+	#include "..\xrLua\src\lcoco.h"
 };
 //#define DBG_DISABLE_SCRIPTS
 

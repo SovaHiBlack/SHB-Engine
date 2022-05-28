@@ -18,9 +18,10 @@
 #include <stdlib.h>
 #include <math.h>
 #include <string.h>
-#include "vorbis/codec.h"
-#include "codec_internal.h"
 
+#include <vorbis/codec.h>
+
+#include "codec_internal.h"
 #include "masking.h"
 #include "psy.h"
 #include "os.h"

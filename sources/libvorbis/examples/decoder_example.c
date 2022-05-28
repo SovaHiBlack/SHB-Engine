@@ -24,6 +24,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
+
 #include <vorbis/codec.h>
 
 #ifdef _WIN32 /* We need the following two to set stdin/stdout to binary */

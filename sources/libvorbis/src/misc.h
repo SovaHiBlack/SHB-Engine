@@ -17,7 +17,8 @@
 
 #ifndef _V_RANDOM_H_
 #define _V_RANDOM_H_
-#include "vorbis/codec.h"
+
+#include <vorbis/codec.h>
 
 extern int analysis_noisy;
 

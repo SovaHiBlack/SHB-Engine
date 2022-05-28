@@ -22,9 +22,9 @@
 
 #define LUA_LIB
 #include <luabind/lua_include.hpp>
-
 #include <luabind/detail/stack_utils.hpp>
 #include <luabind/luabind.hpp>
+
 #include <utility>
 
 using namespace luabind::detail;

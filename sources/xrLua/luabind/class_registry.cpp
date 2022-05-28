@@ -22,7 +22,6 @@
 
 #define LUA_LIB
 #include <luabind/lua_include.hpp>
-
 #include <luabind/luabind.hpp>
 #include <luabind/detail/class_registry.hpp>
 #include <luabind/detail/class_rep.hpp>

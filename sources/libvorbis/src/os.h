@@ -22,6 +22,7 @@
 #endif
 
 #include <math.h>
+
 #include <ogg/os_types.h>
 
 #include "misc.h"

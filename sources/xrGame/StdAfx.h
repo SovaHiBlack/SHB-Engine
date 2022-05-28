@@ -15,8 +15,14 @@
 
 
 #if XRAY_EXCEPTIONS
-IC	xr_string	string2xr_string(LPCSTR s) {return *shared_str(s ? s : "");}
-IC	void		throw_and_log(const xr_string &s) {Msg("! %s",s.c_str()); throw *shared_str(s.c_str());}
+IC	xr_string	string2xr_string(LPCSTR s)
+{
+	return *shared_str(s ? s : "");
+}
+IC	void		throw_and_log(const xr_string& s)
+{
+	Msg("! %s", s.c_str()); throw* shared_str(s.c_str());
+}
 #	define		THROW(xpr)				if (!(xpr)) {throw_and_log (__FILE__LINE__" Expression \""#xpr"\"");}
 #	define		THROW2(xpr,msg0)		if (!(xpr)) {throw *shared_str(xr_string(__FILE__LINE__).append(" \"").append(#xpr).append(string2xr_string(msg0)).c_str());}
 #	define		THROW3(xpr,msg0,msg1)	if (!(xpr)) {throw *shared_str(xr_string(__FILE__LINE__).append(" \"").append(#xpr).append(string2xr_string(msg0)).append(", ").append(string2xr_string(msg1)).c_str());}
@@ -37,10 +43,10 @@ IC	void		throw_and_log(const xr_string &s) {Msg("! %s",s.c_str()); throw *shared
 #endif
 
 extern "C" {
-#include "..\..\xrLua\src\lua.h"
-#include "..\..\xrLua\src\lualib.h"
-#include "..\..\xrLua\src\lauxlib.h"
-#include "..\..\xrLua\src\luajit.h"
+#include "..\xrLua\src\lua.h"
+#include "..\xrLua\src\lualib.h"
+#include "..\xrLua\src\lauxlib.h"
+#include "..\xrLua\src\luajit.h"
 };
 
 #pragma warning(push)

@@ -21,8 +21,8 @@
 #include <string.h>
 #include <math.h>
 
-#include "vorbis/codec.h"
-#include "vorbis/vorbisfile.h"
+#include <vorbis/codec.h>
+#include <vorbis/vorbisfile.h>
 
 #include "os.h"
 #include "misc.h"

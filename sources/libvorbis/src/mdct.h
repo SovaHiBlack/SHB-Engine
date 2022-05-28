@@ -18,11 +18,7 @@
 #ifndef _OGG_mdct_H_
 #define _OGG_mdct_H_
 
-#include "vorbis/codec.h"
-
-
-
-
+#include <vorbis/codec.h>
 
 /*#define MDCT_INTEGERIZED  <- be warned there could be some hurt left here*/
 #ifdef MDCT_INTEGERIZED

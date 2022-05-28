@@ -19,6 +19,7 @@
 
 #include <string.h>
 #include <stdlib.h>
+
 #include <ogg/ogg.h>
 
 #define BUFFER_INCREMENT 256

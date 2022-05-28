@@ -2,8 +2,8 @@
 
 #pragma warning(disable:4995)
 #pragma warning(disable:4267)
-#include "../../xrODE/ode/src/objects.h"
-#include "../../xrODE/ode/src/joint.h"
+#include "..\xrODE\objects.h"
+#include "..\xrODE\joint.h"
 #pragma warning(default:4995)
 #pragma warning(default:4267)
 #include "PhysicsCommon.h"

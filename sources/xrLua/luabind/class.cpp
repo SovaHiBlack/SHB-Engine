@@ -22,7 +22,6 @@
 #define LUA_LIB
 
 #include <luabind/lua_include.hpp>
-
 #include <luabind/config.hpp>
 #include <luabind/class.hpp>
 #include <luabind/detail/get_signature.hpp>

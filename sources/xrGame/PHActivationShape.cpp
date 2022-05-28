@@ -11,7 +11,7 @@
 #include "GameMtlLib.h"
 #include "Level.h"
 #include "PHWorld.h"
-#include "../../xrODE/ode/src/util.h"
+#include "..\xrODE\util.h"
 
 #ifdef DEBUG
 #	include "PHDebug.h"

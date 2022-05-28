@@ -12,7 +12,7 @@
 #pragma pack(push,4)
 #include "xrServer_Space.h"
 #ifdef XRGAME_EXPORTS
-#	include "../../xrCDB/xrCDB.h"
+#	include "..\xrCDB\xrCDB.h"
 #else // XRGAME_EXPORTS
 #	include "../xrCDB/xrCDB.h"
 #endif // XRGAME_EXPORTS

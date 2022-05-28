@@ -1,6 +1,6 @@
-;abbreviation	= recurs|	notif|	root|				add|			ext|                  description
+;abbreviation	= recurs|	notif|	root|				add|			ext|			description
 
-$app_data_root$	= true|		false|	..\app_data\
+$app_data_root$	= true|		false|	$fs_root$|			..\app_data\
 $game_data$		= false|	true|	$fs_root$|			..\gamedata\
 $game_ai$		= true|		false|	$game_data$|		ai\|			*.efd|			Evaluation Functions definition
 $game_spawn$	= true|		false|	$game_data$|		spawns\
@@ -12,7 +12,7 @@ $game_shaders$	= true|		true|	$game_data$|		shaders\
 $game_sounds$	= true|		true|	$game_data$|		sounds\|		*.ogg|			Game Sound files
 $game_textures$	= true|		true|	$game_data$|		textures\|		*.dds|			Game Textures files
 $game_scripts$	= true|		false|	$game_data$|		scripts\|		*.script|		Game Script files
-$game_config$	= true|		false|	$game_data$|		config\|			*.ltx;*.xml|	Configuration files
+$game_config$	= true|		false|	$game_data$|		config\|		*.ltx;*.xml|	Configuration files
 $level$			= false|	false|	$game_levels$
 $game_saves$	= true|		false|	$app_data_root$|	savedgames\|	*.sav|			Saved games
 $logs$			= true|		false|	$app_data_root$|	logs\|			*.log|			Log files

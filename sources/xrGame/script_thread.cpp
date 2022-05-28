@@ -8,7 +8,7 @@
 #include "stdafx.h"
 
 extern "C" {
-	#include "..\..\xrLua\src\lstate.h"
+	#include "..\xrLua\src\lstate.h"
 };
 #include "script_engine.h"
 #include "script_thread.h"

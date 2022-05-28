@@ -14,6 +14,6 @@
 #define Dst_REF		(J->D)
 #define DASM_FDEF	LUAI_FUNC
 
-#include "dasm_proto.h"
+#include <dasm_proto.h>
 
 #endif
