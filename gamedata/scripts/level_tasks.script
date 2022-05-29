@@ -58,6 +58,7 @@ function autojump()
 	db.actor:give_info_portion("autojump_enabled")
 end
 
+
 function process_info_portion(info_id)
 	if db.actor == nil then
 		return
