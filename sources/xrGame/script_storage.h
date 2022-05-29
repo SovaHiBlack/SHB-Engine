@@ -14,11 +14,11 @@
 struct lua_State;
 class CScriptThread;
 
-#ifdef	DEBUG
-	#ifndef ENGINE_BUILD
-	#	define	USE_DEBUGGER
-	#endif
-#endif
+#ifdef DEBUG
+#	ifndef ENGINE_BUILD
+#		define USE_DEBUGGER
+#	endif
+#endif // def DEBUG
 
 using namespace ScriptStorage;
 

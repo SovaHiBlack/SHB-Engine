@@ -44,45 +44,46 @@ void CALifeSpawnRegistry::save				(IWriter &memory_stream)
 	memory_stream.close_chunk	();
 }
 
-void CALifeSpawnRegistry::load				(IReader &file_stream, LPCSTR game_name)
+void CALifeSpawnRegistry::load(IReader& file_stream, LPCSTR game_name)
 {
 	R_ASSERT					(FS.exist(game_name));
 
-	IReader						*chunk, *chunk0;
+	IReader*					chunk;
+	IReader*					chunk0;
 	Msg							("* Loading spawn registry...");
-	R_ASSERT2					(file_stream.find_chunk(SPAWN_CHUNK_DATA),"Cannot find chunk SPAWN_CHUNK_DATA!");
+	R_ASSERT2					(file_stream.find_chunk(SPAWN_CHUNK_DATA), "Cannot find chunk SPAWN_CHUNK_DATA!");
 	chunk0						= file_stream.open_chunk(SPAWN_CHUNK_DATA);
-	
+
 	xrGUID						guid;
 	chunk						= chunk0->open_chunk(0);
 	VERIFY						(chunk);
 	chunk->r_stringZ			(m_spawn_name);
-	chunk->r					(&guid,sizeof(guid));
+	chunk->r					(&guid, sizeof(guid));
 	chunk->close				();
 
 	string_path					file_name;
 	bool						file_exists = !!FS.exist(file_name, "$game_spawn$", *m_spawn_name, ".spawn");
-	R_ASSERT3					(file_exists,"Can't find spawn file:",*m_spawn_name);
-	
-	IReader						*m_file = 0;
+	R_ASSERT3					(file_exists, "Can't find spawn file:", *m_spawn_name);
+
+	IReader* m_file				= 0;
 
 	VERIFY						(!m_file);
 	m_file						= FS.r_open(file_name);
-	load						(*m_file,&guid);
+	load						(*m_file, &guid);
 
 	FS.r_close					(m_file);
 
 	chunk0->close				();
 }
 
-void CALifeSpawnRegistry::load				(LPCSTR spawn_name)
+void CALifeSpawnRegistry::load(LPCSTR spawn_name)
 {
 	Msg							("* Loading spawn registry...");
 	m_spawn_name				= spawn_name;
 	string_path					file_name;
-	R_ASSERT3					(FS.exist(file_name, "$game_spawn$", *m_spawn_name, ".spawn"),"Can't find spawn file:",*m_spawn_name);
-	
-	IReader						*m_file = 0;
+	R_ASSERT3					(FS.exist(file_name, "$game_spawn$", *m_spawn_name, ".spawn"), "Can't find spawn file:", *m_spawn_name);
+
+	IReader* m_file				= 0;
 
 	VERIFY						(!m_file);
 	m_file						= FS.r_open(file_name);
@@ -91,59 +92,41 @@ void CALifeSpawnRegistry::load				(LPCSTR spawn_name)
 	FS.r_close					(m_file);
 }
 
-struct dummy {
-    int count;
-    lua_State* state;
-    int ref;
+struct dummy
+{
+	int							count;
+	lua_State*					state;
+	int							ref;
 };
 
-
-void CALifeSpawnRegistry::load				(IReader &file_stream, xrGUID *save_guid)
+void CALifeSpawnRegistry::load(IReader& file_stream, xrGUID* save_guid)
 {
-	IReader						*chunk;
+	IReader*					chunk;
 	chunk						= file_stream.open_chunk(0);
 	m_header.load				(*chunk);
 	chunk->close				();
-	R_ASSERT2					(!save_guid || (*save_guid == header().guid()),"Saved game doesn't correspond to the spawn : DELETE SAVED GAME!");
+	R_ASSERT2					(!save_guid || (*save_guid == header().guid()), "Saved game doesn't correspond to the spawn : DELETE SAVED GAME!");
 
 	chunk						= file_stream.open_chunk(1);
 	m_spawns.load				(*chunk);
 	chunk->close				();
 
-#if 0
-	SPAWN_GRAPH::vertex_iterator			I = m_spawns.vertices().begin();
-	SPAWN_GRAPH::vertex_iterator			E = m_spawns.vertices().end();
-	for ( ; I != E; ++I) {
-		luabind::wrap_base		*base = smart_cast<luabind::wrap_base*>(&(*I).second->data()->object());
-		if (!base)
-			continue;
-
-		if (xr_strcmp((*I).second->data()->object().name_replace(),"rostok_stalker_outfit"))
-			continue;
-
-		dummy					*_dummy = (dummy*)((void*)base->m_self.m_impl);
-		lua_State				**_state = &_dummy->state;
-		Msg						("0x%08x",*(int*)&_state);
-		break;
-	}
-#endif
-
 	chunk						= file_stream.open_chunk(2);
-	load_data					(m_artefact_spawn_positions,*chunk);
+	load_data					(m_artefact_spawn_positions, *chunk);
 	chunk->close				();
 
 	chunk						= file_stream.open_chunk(3);
-	R_ASSERT2					(chunk,"Spawn version mismatch - REBUILD SPAWN!");
+	R_ASSERT2					(chunk, "Spawn version mismatch - REBUILD SPAWN!");
 	ai().patrol_path_storage	(*chunk);
 	chunk->close				();
 
-	R_ASSERT2					(header().graph_guid() == ai().game_graph().header().guid(),"Spawn doesn't correspond to the graph : REBUILD SPAWN!");
+	R_ASSERT2					(header().graph_guid() == ai().game_graph().header().guid(), "Spawn doesn't correspond to the graph : REBUILD SPAWN!");
 
 	build_story_spawns			();
 
 	build_root_spawns			();
 
-	Msg							("* %d spawn points are successfully loaded",m_spawns.vertex_count());
+	Msg							("* %i spawn points are successfully loaded", m_spawns.vertex_count());
 }
 
 void CALifeSpawnRegistry::save_updates		(IWriter &stream)

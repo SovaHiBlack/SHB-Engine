@@ -219,10 +219,10 @@ int CScriptStorage::vscript_log		(ScriptStorage::ELuaMessageType tLuaMessageType
 	vsprintf(S1,caFormat,marker);
 	strcat	(S2,"\r\n");
 
-#ifndef ENGINE_BUILD
-#	ifdef DEBUG
+#ifdef DEBUG
+#	ifndef ENGINE_BUILD
 		ai().script_engine().m_output.w(S2,xr_strlen(S2)*sizeof(char));
-#	endif // DEBUG
+#	endif
 #endif // DEBUG
 
 	return	(l_iResult);
@@ -262,11 +262,15 @@ int __cdecl CScriptStorage::script_log	(ScriptStorage::ELuaMessageType tLuaMessa
 
 #ifdef DEBUG
 #	ifndef ENGINE_BUILD
-	static bool	reenterability = false;
-	if (!reenterability) {
+	static bool reenterability = false;
+	if (!reenterability)
+	{
 		reenterability = true;
 		if (eLuaMessageTypeError == tLuaMessageType)
-			ai().script_engine().print_stack	();
+		{
+			ai().script_engine().print_stack();
+		}
+
 		reenterability = false;
 	}
 #	endif
