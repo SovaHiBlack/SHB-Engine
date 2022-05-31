@@ -20,7 +20,7 @@ CDemoRecord * xrDemoRecord = 0;
 // Construction/Destruction
 //////////////////////////////////////////////////////////////////////
 
-CDemoRecord::CDemoRecord(const char *name,float life_time) : CEffectorCam(cefDemo,life_time/*,FALSE*/)
+CDemoRecord::CDemoRecord(const char *name, F32 life_time) : CEffectorCam(cefDemo,life_time/*,FALSE*/)
 {
 	_unlink	(name);
 	file	= FS.w_open	(name);
@@ -104,8 +104,8 @@ Fvector	g_DR_LM_Min, g_DR_LM_Max;
 
 void GetLM_BBox(Fbox &bb, INT Step)
 {
-	float half_x = bb.min.x + (bb.max.x - bb.min.x)/2;
-	float half_z = bb.min.z + (bb.max.z - bb.min.z)/2;
+	F32 half_x = bb.min.x + (bb.max.x - bb.min.x)/2;
+	F32 half_z = bb.min.z + (bb.max.z - bb.min.z)/2;
 	switch (Step)
 	{
 	case 0:
@@ -231,7 +231,7 @@ void CDemoRecord::MakeCubeMapFace(Fvector &D, Fvector &N)
 	m_Stage++;
 }
 
-BOOL CDemoRecord::Process(Fvector &P, Fvector &D, Fvector &N, float& fFov, float& fFar, float& fAspect)
+BOOL CDemoRecord::Process(Fvector &P, Fvector &D, Fvector &N, F32& fFov, F32& fFar, F32& fAspect)
 {
 	if (0==file)	return TRUE;
 
@@ -276,7 +276,7 @@ BOOL CDemoRecord::Process(Fvector &P, Fvector &D, Fvector &N, float& fFov, float
 		m_vVelocity.lerp		(m_vVelocity,m_vT,0.3f);
 		m_vAngularVelocity.lerp	(m_vAngularVelocity,m_vR,0.3f);
 
-		float speed = m_fSpeed1, ang_speed = m_fAngSpeed1;
+		F32 speed = m_fSpeed1, ang_speed = m_fAngSpeed1;
 		if (Console->IR_GetKeyState(DIK_LSHIFT))		{ speed=m_fSpeed0; ang_speed=m_fAngSpeed0;}
 		else if (Console->IR_GetKeyState(DIK_LALT))		{ speed=m_fSpeed2; ang_speed=m_fAngSpeed2;}
 		else if (Console->IR_GetKeyState(DIK_LCONTROL)) { speed=m_fSpeed3; ang_speed=m_fAngSpeed3;}
@@ -370,10 +370,10 @@ void CDemoRecord::IR_OnKeyboardHold	(int dik)
 
 void CDemoRecord::IR_OnMouseMove		(int dx, int dy)
 {
-	float scale			= .5f;//psMouseSens;
+	F32 scale			= .5f;//psMouseSens;
 	if (dx||dy){
-		m_vR.y			+= float(dx)*scale; // heading
-		m_vR.x			+= ((psMouseInvert.test(1))?-1:1)*float(dy)*scale*(3.f/4.f); // pitch
+		m_vR.y			+= F32(dx)*scale; // heading
+		m_vR.x			+= ((psMouseInvert.test(1))?-1:1)* F32(dy)*scale*(3.f/4.f); // pitch
 	}
 }
 

@@ -25,13 +25,14 @@
 //
 //For example, range( 3 pi, 0, 2 pi, i ) returns pi, with i = 1.
 //======================================================================
-static float range( float v, float lo, float hi, int *i ){
-   float v2, r = hi - lo;
+static F32 range(F32 v, F32 lo, F32 hi, int *i ){
+	F32 v2;
+	F32 r = hi - lo;
    if ( r == 0.0 ){
       if ( i ) *i = 0;
       return lo;
    }
-   v2 = lo + v - r * ( float ) floor(( float ) v / r );
+   v2 = lo + v - r * (F32) floor((F32) v / r );
    if ( i ) *i = -( int )(( v2 - v ) / r + ( v2 > v ? 0.5 : -0.5 ));
    return v2;
 }
@@ -42,8 +43,9 @@ static float range( float v, float lo, float hi, int *i ){
 //
 //Calculate the Hermite coefficients.
 //======================================================================
-static void hermite( float t, float *h1, float *h2, float *h3, float *h4 ){
-   float t2, t3;
+static void hermite(F32 t, F32* h1, F32* h2, F32* h3, F32* h4 ){
+	F32 t2;
+	F32 t3;
 
    t2 = t * t;
    t3 = t * t2;
@@ -60,8 +62,12 @@ static void hermite( float t, float *h1, float *h2, float *h3, float *h4 ){
 //
 //Interpolate the value of a 1D Bezier curve.
 //======================================================================
-static float bezier( float x0, float x1, float x2, float x3, float t ){
-   float a, b, c, t2, t3;
+static F32 bezier(F32 x0, F32 x1, F32 x2, F32 x3, F32 t ){
+	F32 a;
+	F32 b;
+	F32 c;
+	F32 t2;
+	F32 t3;
 
    t2 = t * t;
    t3 = t2 * t;
@@ -82,8 +88,9 @@ static float bezier( float x0, float x1, float x2, float x3, float t ){
 //(time, value) coordinates, so time is used as both a coordinate and a
 //parameter for this curve type.
 //======================================================================
-static float bez2_time( float x0, float x1, float x2, float x3, float time, float *t0, float *t1 ){
-   float v, t;
+static F32 bez2_time(F32 x0, F32 x1, F32 x2, F32 x3, F32 time, F32* t0, F32* t1 ){
+	F32 v;
+	F32 t;
 
    t = *t0 + ( *t1 - *t0 ) * 0.5f;
    v = bezier( x0, x1, x2, x3, t );
@@ -104,8 +111,12 @@ static float bez2_time( float x0, float x1, float x2, float x3, float time, floa
 //
 //Interpolate the value of a BEZ2 curve.
 //======================================================================
-static float bez2( st_Key *key0, st_Key *key1, float time ){
-   float x, y, t, t0 = 0.0f, t1 = 1.0f;
+static F32 bez2( st_Key *key0, st_Key *key1, F32 time ){
+	F32 x;
+	F32 y;
+	F32 t;
+	F32 t0 = 0.0f;
+	F32 t1 = 1.0f;
 
    if ( key0->shape == SHAPE_BEZ2 )
       x = key0->time + key0->param[ 2 ];
@@ -131,8 +142,12 @@ static float bez2( st_Key *key0, st_Key *key1, float time ){
 //for the BEZ2 case is used when extrapolating a linear pre behavior and
 //when interpolating a non-BEZ2 span.
 //======================================================================
-static float outgoing( st_Key *key0p, st_Key *key0, st_Key *key1 ){
-   float a, b, d, t, out;
+static F32 outgoing( st_Key *key0p, st_Key *key0, st_Key *key1 ){
+	F32 a;
+	F32 b;
+	F32 d;
+	F32 t;
+	F32 out;
 
    switch ( key0->shape ){
       case SHAPE_TCB:
@@ -187,8 +202,12 @@ static float outgoing( st_Key *key0p, st_Key *key0, st_Key *key1 ){
 //Return the incoming tangent to the curve at key1.  The value returned
 //for the BEZ2 case is used when extrapolating a linear post behavior.
 //======================================================================
-static float incoming( st_Key *key0, st_Key *key1, st_Key *key1n ){
-   float a, b, d, t, in;
+static F32 incoming( st_Key *key0, st_Key *key1, st_Key *key1n ){
+	F32 a;
+	F32 b;
+	F32 d;
+	F32 t;
+	F32 in;
 
    switch ( key1->shape ){
       case SHAPE_LINE:
@@ -246,9 +265,16 @@ static float incoming( st_Key *key0, st_Key *key1, st_Key *key1n ){
 //Given a _list_ of keys and a time, returns the interpolated value of the
 //envelope at that time.
 //======================================================================
-float evalEnvelope( CEnvelope *env, float time ){
+float evalEnvelope( CEnvelope *env, F32 time ){
    	st_Key *key0, *key1, *skey, *ekey, *skey_n, *ekey_p, *key0_p=0, *key1_n=0;
-   	float t, h1, h2, h3, h4, in, out, offset = 0.0f;
+	F32 t;
+	F32 h1;
+	F32 h2;
+	F32 h3;
+	F32 h4;
+	F32 in;
+	F32 out;
+	F32 offset = 0.0f;
    	int noff;
 
 

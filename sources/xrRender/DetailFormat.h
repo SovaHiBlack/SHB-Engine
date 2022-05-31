@@ -93,7 +93,7 @@ public:
 	void			w_y		(float base, float height)				
 	{	
 		s32	_base	= iFloor((base + 200)/.2f);			clamp(_base,	0,4095);	y_base		= _base;
-		f32 _error	= base - r_ybase();
+		F32 _error	= base - r_ybase();
 		s32	_height = iCeil ((height+_error) / .1f);	clamp(_height,	0,255);		y_height	= _height;
 	}
 

@@ -10,15 +10,15 @@ public:
     Fcolor          ambient;          /* Ambient color of light */
     Fvector         position;         /* Position in world space */
     Fvector         direction;        /* Direction in world space */
-    float		    range;            /* Cutoff range */
-    float	        falloff;          /* Falloff */
-    float	        attenuation0;     /* Constant attenuation */
-    float	        attenuation1;     /* Linear attenuation */
-    float	        attenuation2;     /* Quadratic attenuation */
-    float	        theta;            /* Inner angle of spotlight cone */
-    float	        phi;              /* Outer angle of spotlight cone */
+	F32		    range;            /* Cutoff range */
+	F32	        falloff;          /* Falloff */
+	F32	        attenuation0;     /* Constant attenuation */
+	F32	        attenuation1;     /* Linear attenuation */
+	F32	        attenuation2;     /* Quadratic attenuation */
+	F32	        theta;            /* Inner angle of spotlight cone */
+	F32	        phi;              /* Outer angle of spotlight cone */
 
-	IC	void		set	(u32 ltType, float x, float y, float z)
+	IC	void		set	(u32 ltType, F32 x, F32 y, F32 z)
 	{
 		ZeroMemory( this, sizeof(Flight) );
 		type=ltType;
@@ -29,7 +29,7 @@ public:
 		direction.normalize_safe();
 		range= _sqrt(flt_max);
 	}
-    IC	void		mul		(float brightness){
+    IC	void		mul		(F32 brightness){
 	    diffuse.mul_rgb		(brightness);
     	ambient.mul_rgb		(brightness);
 	    specular.mul_rgb	(brightness);
@@ -52,9 +52,9 @@ public:
     Fcolor			ambient;        /* Ambient color RGB */
     Fcolor		    specular;       /* Specular 'shininess' */
     Fcolor			emissive;       /* Emissive color RGB */
-    float			power;          /* Sharpness if specular highlight */
+	F32			power;          /* Sharpness if specular highlight */
 
-	IC	void		set	(float r, float g, float b)
+	IC	void		set	(F32 r, F32 g, F32 b)
 	{
 		ZeroMemory	(this, sizeof(Fmaterial));
 		diffuse.r = ambient.r = r;
@@ -63,7 +63,7 @@ public:
 		diffuse.a = ambient.a = 1.0f;
 		power	  = 0;
 	}
-	IC	void	set(float r, float g, float b, float a)
+	IC	void	set(F32 r, F32 g, F32 b, F32 a)
 	{
 		ZeroMemory	(this, sizeof(Fmaterial));
 		diffuse.r = ambient.r = r;

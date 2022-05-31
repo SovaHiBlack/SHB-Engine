@@ -23,8 +23,8 @@ enum EJointType
 struct SJointLimit
 {
 	Fvector2		limit;
-    float 			spring_factor;
-    float 			damping_factor;
+    F32 			spring_factor;
+    F32 			damping_factor;
     SJointLimit		(){Reset();}
     void 			Reset()
     {
@@ -80,16 +80,16 @@ struct SJointIKData
     // IK
     EJointType		type;
     SJointLimit		limits	[3];// by [axis XYZ on joint] and[Z-wheel,X-steer on wheel]
-    float			spring_factor;
-    float			damping_factor;
+    F32			spring_factor;
+    F32			damping_factor;
     enum{
     	flBreakable	= (1<<0),
     };
     Flags32			ik_flags;
-    float			break_force;	// [0..+INF]
-    float			break_torque;	// [0..+INF]
+    F32			break_force;	// [0..+INF]
+    F32			break_torque;	// [0..+INF]
 
-    float			friction;
+    F32			friction;
     			
     SJointIKData	(){ Reset();}
     void			Reset	()
@@ -154,11 +154,11 @@ class CBone
 	shared_str			wmap;
 	Fvector			    rest_offset;
 	Fvector			    rest_rotate;    // XYZ format (Game format)
-	float			    rest_length;
+    F32			    rest_length;
 
 	Fvector			    mot_offset;
 	Fvector			    mot_rotate;		// XYZ format (Game format)
-	float			    mot_length;
+    F32			    mot_length;
 
     Fmatrix			    mot_transform;
 
@@ -182,7 +182,7 @@ public:
     shared_str			   game_mtl;
     SBoneShape		    shape;
 
-    float			    mass;
+    F32			    mass;
     Fvector			    center_of_mass;
 public:
 					    CBone			();
@@ -191,7 +191,7 @@ public:
 	void			    SetName			(LPCSTR p){name		= p; xr_strlwr(name);		}
 	void			    SetParentName	(LPCSTR p){parent_name	= p; xr_strlwr(parent_name);}
 	void			    SetWMap			(LPCSTR p){wmap		= p;}
-	void			    SetRestParams	(float length, const Fvector& offset, const Fvector& rotate){rest_offset.set(offset);rest_rotate.set(rotate);rest_length=length;};
+	void			    SetRestParams	(F32 length, const Fvector& offset, const Fvector& rotate){rest_offset.set(offset);rest_rotate.set(rotate);rest_length=length;};
 
 	shared_str		    Name			(){return name;}
 	shared_str		    ParentName		(){return parent_name;}
@@ -202,7 +202,7 @@ public:
     // transformation
     const Fvector&      _Offset			(){return mot_offset;}
     const Fvector&      _Rotate			(){return mot_rotate;}
-    float			    _Length			(){return mot_length;}
+    F32			    _Length			(){return mot_length;}
     IC Fmatrix&		    _RTransform		(){return rest_transform;}
     IC Fmatrix&		    _RITransform	(){return rest_i_transform;}
     IC Fmatrix&		    _MTransform		(){return mot_transform;}

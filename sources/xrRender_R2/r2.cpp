@@ -432,12 +432,12 @@ void	CRender::Statistics	(CGameFont* _F)
 	F.OutNext	("smap use[%2d], merge[%2d], finalclip[%2d]",stats.s_used,stats.s_merged-stats.s_used,stats.s_finalclip);
 	stats.s_used = 0; stats.s_merged = 0; stats.s_finalclip = 0;
 	F.OutSkip	();
-	F.OutNext	(" **** Occ-Q(%03.1f) **** ",100.f*f32(stats.o_culled)/f32(stats.o_queries?stats.o_queries:1));
+	F.OutNext	(" **** Occ-Q(%03.1f) **** ",100.0f* F32(stats.o_culled)/ F32(stats.o_queries?stats.o_queries:1));
 	F.OutNext	(" total  : %2d",	stats.o_queries	);	stats.o_queries = 0;
 	F.OutNext	(" culled : %2d",	stats.o_culled	);	stats.o_culled	= 0;
 	F.OutSkip	();
 	u32	ict		= stats.ic_total + stats.ic_culled;
-	F.OutNext	(" **** iCULL(%03.1f) **** ",100.f*f32(stats.ic_culled)/f32(ict?ict:1));
+	F.OutNext	(" **** iCULL(%03.1f) **** ",100.0f* F32(stats.ic_culled)/ F32(ict?ict:1));
 	F.OutNext	(" visible: %2d",	stats.ic_total	);	stats.ic_total	= 0;
 	F.OutNext	(" culled : %2d",	stats.ic_culled	);	stats.ic_culled	= 0;
 #ifdef DEBUG

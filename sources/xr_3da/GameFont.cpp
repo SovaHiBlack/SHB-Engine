@@ -16,7 +16,7 @@ CGameFont::CGameFont(LPCSTR section, u32 flags)
 	TCMap						= NULL;
 	Initialize	(pSettings->r_string(section,"shader"),pSettings->r_string(section,"texture"));
 	if (pSettings->line_exist(section,"size")){
-		float sz = pSettings->r_float(section,"size");
+		F32 sz = pSettings->r_float(section,"size");
 		if (uFlags&fsDeviceIndependent)	SetHeightI(sz);
 		else							SetHeight(sz);
 	}
@@ -95,13 +95,13 @@ void CGameFont::Initialize		(LPCSTR cShader, LPCSTR cTextureName)
 		int cpl					= 16;
 		for (u32 i=0; i<nNumChars; i++){
 			sprintf_s			(buf,sizeof(buf),"%d",i);
-			float w				= ini->r_float("char widths",buf);
+			F32 w				= ini->r_float("char widths",buf);
 			TCMap[i].set		((i%cpl)*fHeight,(i/cpl)*fHeight,w);
 		}
 	}else{
 		R_ASSERT(ini->section_exist("font_size"));
 		fHeight					= ini->r_float("font_size","height");
-		float width				= ini->r_float("font_size","width");
+		F32 width				= ini->r_float("font_size","width");
 		const int cpl			= ini->r_s32	("font_size","cpl");
 		for (u32 i=0; i<nNumChars; i++)
 			TCMap[i].set		((i%cpl)*width,(i/cpl)*fHeight,width);
@@ -127,16 +127,16 @@ CGameFont::~CGameFont()
 	pGeom.destroy		();
 }
 
-#define DI2PX(x) float(iFloor((x+1)*float(::Render->getTarget()->get_width())*0.5f))
-#define DI2PY(y) float(iFloor((y+1)*float(::Render->getTarget()->get_height())*0.5f))
+#define DI2PX(x) F32(iFloor((x+1)*F32(::Render->getTarget()->get_width())*0.5f))
+#define DI2PY(y) F32(iFloor((y+1)*F32(::Render->getTarget()->get_height())*0.5f))
 
-void CGameFont::OutSet			(float x, float y)
+void CGameFont::OutSet			(F32 x, F32 y)
 {
 	fCurrentX=x;
 	fCurrentY=y;
 }
 
-void CGameFont::OutSetI			(float x, float y)
+void CGameFont::OutSetI			(F32 x, F32 y)
 {
 	OutSet(DI2PX(x),DI2PY(y));
 }
@@ -154,7 +154,7 @@ void CGameFont::OnRender()
 	if (!(uFlags&fsValid)){
 		CTexture* T		= RCache.get_ActiveTexture(0);
 		vTS.set			((int)T->get_Width(),(int)T->get_Height());
-		fTCHeight		= fHeight/float(vTS.y);
+		fTCHeight		= fHeight/ F32(vTS.y);
 		uFlags			|= fsValid;
 	}
 
@@ -190,11 +190,11 @@ void CGameFont::OnRender()
 				xr_strlen( PS.string );
 
 			if (len) {
-				float	X	= float(iFloor(PS.x));
-				float	Y	= float(iFloor(PS.y));
-				float	S	= PS.height*g_current_font_scale.y;
-				float	Y2	= Y+S;
-				float fSize = 0;
+				F32	X	= F32(iFloor(PS.x));
+				F32	Y	= F32(iFloor(PS.y));
+				F32	S	= PS.height*g_current_font_scale.y;
+				F32	Y2	= Y+S;
+				F32 fSize = 0.0f;
 
 				if ( PS.align )
 					fSize = IsMultibyte() ? SizeOf_( wsStr ) : SizeOf_( PS.string );
@@ -219,16 +219,17 @@ void CGameFont::OnRender()
 					clr2	= color_rgba	(_R,_G,_B,_A);
 				}
 
-				float	tu,tv;
+				F32	tu;
+				F32	tv;
 				for (int j=0; j<len; j++)
 				{
 					Fvector l;
 
 					l = IsMultibyte() ? GetCharTC( wsStr[ 1 + j ] ) : GetCharTC( ( u16 ) ( u8 ) PS.string[j] );
 
-					float scw		= l.z * g_current_font_scale.x;
+					F32 scw		= l.z * g_current_font_scale.x;
 
-					float fTCWidth	= l.z/vTS.x;
+					F32 fTCWidth	= l.z/vTS.x;
 
 					if (!fis_zero(l.z))
 					{
@@ -261,12 +262,13 @@ void CGameFont::OnRender()
 	strings.clear_not_free			();
 }
 
-u16 CGameFont::GetCutLengthPos( float fTargetWidth , const char * pszText )
+u16 CGameFont::GetCutLengthPos(F32 fTargetWidth , const char * pszText )
 {
 	VERIFY( pszText );
 
 	wide_char wsStr[ MAX_MB_CHARS ], wsPos[ MAX_MB_CHARS ];
-	float fCurWidth = 0.0f , fDelta = 0.0f;
+	F32 fCurWidth = 0.0f;
+	F32 fDelta = 0.0f;
 
 	u16	len	= mbhMulti2Wide( wsStr , wsPos , MAX_MB_CHARS , pszText );
 
@@ -286,12 +288,13 @@ u16 CGameFont::GetCutLengthPos( float fTargetWidth , const char * pszText )
 	return wsPos[ i - 1 ];
 }
 
-u16 CGameFont::SplitByWidth( u16 * puBuffer , u16 uBufferSize , float fTargetWidth , const char * pszText )
+u16 CGameFont::SplitByWidth( u16 * puBuffer , u16 uBufferSize , F32 fTargetWidth , const char * pszText )
 {
 	VERIFY( puBuffer && uBufferSize && pszText );
 
 	wide_char wsStr[ MAX_MB_CHARS ] , wsPos[ MAX_MB_CHARS ];
-	float fCurWidth = 0.0f , fDelta = 0.0f;
+	float fCurWidth = 0.0f;
+	F32 fDelta = 0.0f;
 	u16 nLines = 0;
 
 	u16	len	= mbhMulti2Wide( wsStr , wsPos , MAX_MB_CHARS , pszText );
@@ -322,7 +325,7 @@ u16 CGameFont::SplitByWidth( u16 * puBuffer , u16 uBufferSize , float fTargetWid
 
 void CGameFont::MasterOut(
 	BOOL bCheckDevice , BOOL bUseCoords , BOOL bScaleCoords , BOOL bUseSkip , 
-	float _x , float _y , float _skip , LPCSTR fmt , va_list p )
+	F32 _x , F32 _y , F32 _skip , LPCSTR fmt , va_list p )
 {
 	if ( bCheckDevice && ( ! Device.b_is_Active ) )
 		return;
@@ -354,12 +357,12 @@ void CGameFont::MasterOut(
 	  MasterOut( CHECK_DEVICE , USE_COORDS , SCALE_COORDS , USE_SKIP , X , Y , SKIP , FMT, p ); \
 	  va_end( p ); }
 
-void __cdecl CGameFont::OutI( float _x , float _y , LPCSTR fmt , ... )
+void __cdecl CGameFont::OutI(F32 _x , F32 _y , LPCSTR fmt , ... )
 {
 	MASTER_OUT( FALSE , TRUE , TRUE , FALSE , _x  , _y , 0.0f , fmt );
 };
 
-void __cdecl CGameFont::Out( float _x , float _y , LPCSTR fmt , ... )
+void __cdecl CGameFont::Out(F32 _x , F32 _y , LPCSTR fmt , ... )
 {
 	MASTER_OUT( TRUE , TRUE , FALSE , FALSE , _x , _y , 0.0f , fmt );
 };
@@ -375,19 +378,19 @@ void __cdecl CGameFont::OutPrev( LPCSTR fmt , ... )
 };
 
 
-void CGameFont::OutSkip( float val )
+void CGameFont::OutSkip(F32 val )
 {
 	fCurrentY += val*CurrentHeight_();
 }
 
-float CGameFont::SizeOf_( const char cChar )
+F32 CGameFont::SizeOf_( const char cChar )
 {
 	VERIFY( ! IsMultibyte() );
 
 	return ( ( GetCharTC( ( u16 ) ( u8 ) cChar ).z * vInterval.x ) );
 }
 
-float CGameFont::SizeOf_( LPCSTR s )
+F32 CGameFont::SizeOf_( LPCSTR s )
 {
 	if ( ! ( s && s[ 0 ] ) )
 		return 0;
@@ -401,20 +404,21 @@ float CGameFont::SizeOf_( LPCSTR s )
 	}
 
 	int		len			= xr_strlen(s);
-	float	X			= 0;
+	F32	X			= 0;
 	if (len)
 		for (int j=0; j<len; j++)
 			X			+= GetCharTC( ( u16 ) ( u8 ) s[ j ] ).z;
 	return				(X*vInterval.x/**vTS.x*/);
 }
 
-float CGameFont::SizeOf_( const wide_char *wsStr )
+F32 CGameFont::SizeOf_( const wide_char *wsStr )
 {
 	if ( ! ( wsStr && wsStr[ 0 ] ) )
 		return 0;
 
 	unsigned int len = wsStr[ 0 ];
-	float X	= 0.0f , fDelta = 0.0f;
+	F32 X = 0.0f;
+	F32 fDelta = 0.0f;
 
 	if ( len )
 		for ( unsigned int j=1 ; j <= len ; j++ ) {
@@ -427,18 +431,18 @@ float CGameFont::SizeOf_( const wide_char *wsStr )
 	return ( X * vInterval.x );
 }
 
-float CGameFont::CurrentHeight_	()
+F32 CGameFont::CurrentHeight_	()
 {
 	return fCurrentHeight * vInterval.y;
 }
 
-void CGameFont::SetHeightI(float S)
+void CGameFont::SetHeightI(F32 S)
 {
 	VERIFY			( uFlags&fsDeviceIndependent );
 	fCurrentHeight	= S*Device.dwHeight;
 };
 
-void CGameFont::SetHeight(float S)
+void CGameFont::SetHeight(F32 S)
 {
 	VERIFY			( uFlags&fsDeviceIndependent );
 	fCurrentHeight	= S;

@@ -119,11 +119,11 @@ u32 CLAItem::InterpolateRGB(int frame)
     R_ASSERT(Keys.size()>1);
     // интерполируем цвет
     Fcolor c, c0, c1;
-    float a0=(float)A->first;
-    float a1=(float)B->first;
+	F32 a0=(F32)A->first;
+	F32 a1=(F32)B->first;
     c0.set(A->second);
     c1.set(B->second);
-    float t = float(frame-a0)/float(a1-a0);
+	F32 t = F32(frame-a0)/ F32(a1-a0);
     c.lerp(c0,c1,t);
     return c.get();
 }
@@ -134,15 +134,15 @@ u32 CLAItem::InterpolateBGR(int frame)
     return color_rgba(color_get_B(c),color_get_G(c),color_get_R(c),color_get_A(c));
 }
 
-u32 CLAItem::CalculateRGB(float T, int& frame)
+u32 CLAItem::CalculateRGB(F32 T, int& frame)
 {
-    frame	= iFloor(fmodf(T,float(iFrameCount)/fFPS)*fFPS);
+    frame	= iFloor(fmodf(T, F32(iFrameCount)/fFPS)*fFPS);
     return InterpolateRGB(frame);
 }
 
-u32 CLAItem::CalculateBGR(float T, int& frame)
+u32 CLAItem::CalculateBGR(F32 T, int& frame)
 {
-    frame	= iFloor(fmodf(T,float(iFrameCount)/fFPS)*fFPS);
+    frame	= iFloor(fmodf(T, F32(iFrameCount)/fFPS)*fFPS);
     return InterpolateBGR(frame);
 }
 

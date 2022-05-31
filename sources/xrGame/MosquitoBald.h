@@ -12,7 +12,7 @@ public:
 	virtual ~CMosquitoBald(void);
 
 	virtual void Load(LPCSTR section);
-	virtual void Postprocess(f32 val);
+	virtual void Postprocess(F32 /** val **/);
 	virtual bool EnableEffector() {return true;}
 
 

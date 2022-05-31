@@ -3,7 +3,7 @@
 class ENGINE_API CLAItem				{
 public:
     shared_str		cName;
-    float   		fFPS;
+	F32				fFPS;
     DEFINE_MAP		(int,u32,KeyMap,KeyPairIt);
     KeyMap			Keys;
     int				iFrameCount;
@@ -13,12 +13,12 @@ public:
 	void			InitDefault			();
     void			Load				(IReader& F);
     void			Save				(IWriter& F);
-	float			Length_sec			(){return float(iFrameCount)/fFPS;}
+	float			Length_sec			(){return F32(iFrameCount)/fFPS;}
 	u32				Length_ms			(){return iFloor(Length_sec()*1000.f);}
     u32				InterpolateRGB		(int frame);
     u32				InterpolateBGR		(int frame);
-    u32				CalculateRGB		(float T, int& frame);
-    u32				CalculateBGR		(float T, int& frame);
+    u32				CalculateRGB		(F32 T, int& frame);
+    u32				CalculateBGR		(F32 T, int& frame);
     void		    Resize				(int new_len);
     void		    InsertKey			(int frame, u32 color);
     void		    DeleteKey			(int frame);

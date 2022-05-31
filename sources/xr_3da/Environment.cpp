@@ -21,8 +21,8 @@
 //////////////////////////////////////////////////////////////////////
 // Construction/Destruction
 //////////////////////////////////////////////////////////////////////
-ENGINE_API	float			psVisDistance	= 1.f;
-static const float			MAX_NOISE_FREQ	= 0.03f;
+ENGINE_API	F32				psVisDistance	= 1.0f;
+static const F32			MAX_NOISE_FREQ	= 0.03f;
 
 //#define WEATHER_LOGGING
 
@@ -78,16 +78,16 @@ void CEnvironment::Invalidate()
 	if (eff_LensFlare)		eff_LensFlare->Invalidate();
 }
 
-float CEnvironment::TimeDiff(float prev, float cur)
+F32 CEnvironment::TimeDiff(F32 prev, F32 cur)
 {
 	if (prev>cur)	return	(DAY_LENGTH-prev)+cur;
 	else			return	cur-prev;
 }
 
-float CEnvironment::TimeWeight(float val, float min_t, float max_t)
+F32 CEnvironment::TimeWeight(F32 val, F32 min_t, F32 max_t)
 {
-	float weight	= 0.f;
-	float length	= TimeDiff(min_t,max_t);
+	F32 weight	= 0.0f;
+	F32 length	= TimeDiff(min_t,max_t);
 	if (!fis_zero(length,EPS)){
 		if (min_t>max_t){
 			if ((val>=min_t)||(val<=max_t))	weight = TimeDiff(min_t,val)/length;
@@ -99,7 +99,7 @@ float CEnvironment::TimeWeight(float val, float min_t, float max_t)
 	return			weight;
 }
 
-void CEnvironment::SetGameTime(float game_time, float time_factor)
+void CEnvironment::SetGameTime(F32 game_time, F32 time_factor)
 { 
 	if (bWFX)
 		wfx_time			-= TimeDiff(fGameTime,game_time);
@@ -107,7 +107,7 @@ void CEnvironment::SetGameTime(float game_time, float time_factor)
 	fTimeFactor				= time_factor;	
 }
 
-float CEnvironment::NormalizeTime(float tm)
+F32 CEnvironment::NormalizeTime(F32 tm)
 {
 	if (tm<0.f)				return tm+DAY_LENGTH;
 	else if (tm>DAY_LENGTH)	return tm-DAY_LENGTH;
@@ -152,12 +152,12 @@ bool CEnvironment::SetWeatherFX(shared_str name)
 		CurrentWeather		= &it->second;
 		CurrentWeatherName	= it->first;
 
-		float rewind_tm		= WFX_TRANS_TIME*fTimeFactor;
-		float start_tm		= fGameTime+rewind_tm;
-		float current_length;
-		float current_weight;
+		F32 rewind_tm		= WFX_TRANS_TIME*fTimeFactor;
+		F32 start_tm		= fGameTime+rewind_tm;
+		F32 current_length;
+		F32 current_weight;
 		if (Current[0]->exec_time>Current[1]->exec_time){
-			float x			= fGameTime>Current[0]->exec_time?fGameTime-Current[0]->exec_time:(DAY_LENGTH-Current[0]->exec_time)+fGameTime;
+			F32 x			= fGameTime>Current[0]->exec_time?fGameTime-Current[0]->exec_time:(DAY_LENGTH-Current[0]->exec_time)+fGameTime;
 			current_length	= (DAY_LENGTH-Current[0]->exec_time)+Current[1]->exec_time;
 			current_weight	= x/current_length; 
 		}else{
@@ -209,10 +209,10 @@ void CEnvironment::StopWFX	()
 #endif
 }
 
-IC bool lb_env_pred(const CEnvDescriptor* x, float val)
+IC bool lb_env_pred(const CEnvDescriptor* x, F32 val)
 {	return x->exec_time < val;	}
 
-void CEnvironment::SelectEnv(EnvVec* envs, CEnvDescriptor*& e, float gt)
+void CEnvironment::SelectEnv(EnvVec* envs, CEnvDescriptor*& e, F32 gt)
 {
 	EnvIt env		= std::lower_bound(envs->begin(),envs->end(),gt,lb_env_pred);
 	if (env==envs->end()){
@@ -222,7 +222,7 @@ void CEnvironment::SelectEnv(EnvVec* envs, CEnvDescriptor*& e, float gt)
 	}
 }
 
-void CEnvironment::SelectEnvs(EnvVec* envs, CEnvDescriptor*& e0, CEnvDescriptor*& e1, float gt)
+void CEnvironment::SelectEnvs(EnvVec* envs, CEnvDescriptor*& e0, CEnvDescriptor*& e1, F32 gt)
 {
 	EnvIt env		= std::lower_bound(envs->begin(),envs->end(),gt,lb_env_pred);
 	if (env==envs->end()){
@@ -235,7 +235,7 @@ void CEnvironment::SelectEnvs(EnvVec* envs, CEnvDescriptor*& e0, CEnvDescriptor*
 	}
 }
 
-void CEnvironment::SelectEnvs(float gt)
+void CEnvironment::SelectEnvs(F32 gt)
 {
 	VERIFY				(CurrentWeather);
     if ((Current[0]==Current[1])&&(Current[0]==0)){
@@ -280,7 +280,7 @@ void CEnvironment::OnFrame()
 	SelectEnvs				(fGameTime);
     VERIFY					(Current[0]&&Current[1]);
 
-	float current_weight	= TimeWeight(fGameTime,Current[0]->exec_time,Current[1]->exec_time);
+	F32 current_weight	= TimeWeight(fGameTime,Current[0]->exec_time,Current[1]->exec_time);
 
 	// modifiers
 	CEnvModifier			EM;
@@ -291,7 +291,7 @@ void CEnvironment::OnFrame()
 	EM.sky_color.set		( 0,0,0 );
 	EM.hemi_color.set		( 0,0,0 );
 	Fvector	view			= Device.vCameraPosition;
-	float	mpower			= 0;
+	F32	mpower			= 0;
 	for (xr_vector<CEnvModifier>::iterator mit=Modifiers.begin(); mit!=Modifiers.end(); mit++)
 		mpower				+= EM.sum(*mit,view);
 

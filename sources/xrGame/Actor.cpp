@@ -66,11 +66,11 @@
 #include "location_manager.h"
 
 const u32		patch_frames	= 50;
-const float		respawn_delay	= 1.f;
-const float		respawn_auto	= 7.f;
+const F32		respawn_delay	= 1.f;
+const F32		respawn_auto	= 7.f;
 
-static float IReceived = 0;
-static float ICoincidenced = 0;
+static F32 IReceived = 0;
+static F32 ICoincidenced = 0;
 
 
 //skeleton
@@ -296,9 +296,9 @@ void CActor::Load	(LPCSTR section )
 	////m_PhysicMovementControl->SetFoots	(vFOOT_center,vFOOT_size);
 
 	// m_PhysicMovementControl: Crash speed and mass
-	float	cs_min		= pSettings->r_float	(section,"ph_crash_speed_min"	);
-	float	cs_max		= pSettings->r_float	(section,"ph_crash_speed_max"	);
-	float	mass		= pSettings->r_float	(section,"ph_mass"				);
+	F32	cs_min		= pSettings->r_float	(section,"ph_crash_speed_min"	);
+	F32	cs_max		= pSettings->r_float	(section,"ph_crash_speed_max"	);
+	F32	mass		= pSettings->r_float	(section,"ph_mass"				);
 	character_physics_support()->movement()->SetCrashSpeeds	(cs_min,cs_max);
 	character_physics_support()->movement()->SetMass		(mass);
 	if(pSettings->line_exist(section,"stalker_restrictor_radius"))
@@ -326,7 +326,7 @@ void CActor::Load	(LPCSTR section )
 
 	m_fCamHeightFactor			= pSettings->r_float(section,"camera_height_factor");
 	character_physics_support()->movement()		->SetJumpUpVelocity(m_fJumpSpeed);
-	float AirControlParam		= pSettings->r_float	(section,"air_control_param"	);
+	F32 AirControlParam		= pSettings->r_float	(section,"air_control_param"	);
 	character_physics_support()->movement()		->SetAirControlParam(AirControlParam);
 
 	m_fPickupInfoRadius	= pSettings->r_float(section,"pickup_info_radius");
@@ -409,7 +409,7 @@ void CActor::Load	(LPCSTR section )
 
 }
 
-void CActor::PHHit(float P,Fvector &dir, CObject *who,s16 element,Fvector p_in_object_space, float impulse, ALife::EHitType hit_type /* = ALife::eHitTypeWound */)
+void CActor::PHHit(F32 P,Fvector &dir, CObject *who,s16 element,Fvector p_in_object_space, F32 impulse, ALife::EHitType hit_type /* = ALife::eHitTypeWound */)
 {
 	m_pPhysics_support->in_Hit(P,dir,who,element,p_in_object_space,impulse,hit_type,!g_Alive());
 }
@@ -460,7 +460,7 @@ void	CActor::Hit							(SHit* pHDS)
 				S.set_volume(10.0f);
 				if(!m_sndShockEffector){
 					m_sndShockEffector = xr_new<SndShockEffector>();
-					m_sndShockEffector->Start(this, float(S._handle()->length_ms()), HDS.damage() );
+					m_sndShockEffector->Start(this, F32(S._handle()->length_ms()), HDS.damage() );
 				}
 			}
 			else
@@ -519,12 +519,12 @@ void	CActor::Hit							(SHit* pHDS)
 	};
 }
 
-void CActor::HitMark	(float P, 
+void CActor::HitMark	(F32 P,
 						 Fvector dir,			
 						 CObject* who, 
 						 s16 element, 
 						 Fvector position_in_bone_space, 
-						 float impulse,  
+						 F32 impulse,
 						 ALife::EHitType hit_type)
 {
 	// hit marker
@@ -542,7 +542,7 @@ void CActor::HitMark	(float P,
 			cam_dir.normalize_safe		();
 			dir.normalize_safe			();
 
-			float ang_diff				= angle_difference	(cam_dir.getH(), dir.getH());
+			F32 ang_diff				= angle_difference	(cam_dir.getH(), dir.getH());
 			Fvector						cp;
 			cp.crossproduct				(cam_dir,dir);
 			bool bUp					=(cp.y>0.0f);
@@ -551,10 +551,10 @@ void CActor::HitMark	(float P,
 			cross.crossproduct			(cam_dir, dir);
 			VERIFY						(ang_diff>=0.0f && ang_diff<=PI);
 
-			float _s1 = PI_DIV_8;
-			float _s2 = _s1+PI_DIV_4;
-			float _s3 = _s2+PI_DIV_4;
-			float _s4 = _s3+PI_DIV_4;
+			F32 _s1 = PI_DIV_8;
+			F32 _s2 = _s1+PI_DIV_4;
+			F32 _s3 = _s2+PI_DIV_4;
+			F32 _s4 = _s3+PI_DIV_4;
 
 			if(ang_diff<=_s1){
 				id = 2;
@@ -583,7 +583,7 @@ void CActor::HitMark	(float P,
 
 }
 
-void CActor::HitSignal(float perc, Fvector& vLocalDir, CObject* who, s16 element)
+void CActor::HitSignal(F32 perc, Fvector& vLocalDir, CObject* who, s16 element)
 {
 	if (g_Alive()) 
 	{
@@ -600,13 +600,14 @@ void CActor::HitSignal(float perc, Fvector& vLocalDir, CObject* who, s16 element
 		Fvector D;
 		XFORM().transform_dir(D,vLocalDir);
 
-		float	yaw, pitch;
+		F32 yaw;
+		F32 pitch;
 		D.getHP(yaw,pitch);
 		CKinematicsAnimated *tpKinematics = smart_cast<CKinematicsAnimated*>(Visual());
 		VERIFY(tpKinematics);
 #pragma todo("Dima to Dima : forward-back bone impulse direction has been determined incorrectly!")
 		MotionID motion_ID = m_anims->m_normal.m_damage[iFloor(tpKinematics->LL_GetBoneInstance(element).get_param(1) + (angle_difference(r_model_yaw + r_model_yaw_delta,yaw) <= PI_DIV_2 ? 0 : 1))];
-		float power_factor = perc/100.f; clamp(power_factor,0.f,1.f);
+		F32 power_factor = perc/100.f; clamp(power_factor,0.f,1.f);
 		VERIFY(motion_ID.valid());
 		tpKinematics->PlayFX(motion_ID,power_factor);
 	}
@@ -676,7 +677,7 @@ void	CActor::SwitchOutBorder(bool new_border_state)
 	m_bOutBorder=new_border_state;
 }
 
-void CActor::g_Physics(Fvector& _accel, float jump, float dt)
+void CActor::g_Physics(Fvector& _accel, F32 jump, F32 dt)
 {
 	// Correct accel
 	Fvector						accel;

@@ -211,9 +211,9 @@ void CPhysicsShellHolder::PHSetLinearVell(Fvector& velocity)
 
 
 
-f32 CPhysicsShellHolder::GetMass()
+F32 CPhysicsShellHolder::GetMass()
 {
-	return m_pPhysicsShell ? m_pPhysicsShell->getMass() : 0;
+	return m_pPhysicsShell ? m_pPhysicsShell->getMass() : 0.0f;
 }
 
 u16	CPhysicsShellHolder::PHGetSyncItemsNumber()

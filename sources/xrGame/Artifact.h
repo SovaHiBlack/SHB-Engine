@@ -67,11 +67,11 @@ public:
 	virtual void					PhTune								(dReal step)	{};
 
 	bool							m_bCanSpawnZone;
-	float							m_fHealthRestoreSpeed;
-	float 							m_fRadiationRestoreSpeed;
-	float 							m_fSatietyRestoreSpeed;
-	float							m_fPowerRestoreSpeed;
-	float							m_fBleedingRestoreSpeed;
+	F32							m_fHealthRestoreSpeed;
+	F32 							m_fRadiationRestoreSpeed;
+	F32 							m_fSatietyRestoreSpeed;
+	F32							m_fPowerRestoreSpeed;
+	F32							m_fBleedingRestoreSpeed;
 	CHitImmunity 					m_ArtefactHitImmunities;
 
 protected:

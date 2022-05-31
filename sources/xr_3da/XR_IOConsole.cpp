@@ -43,7 +43,6 @@ void CConsole::Initialize()
 	editor[0]		= 0;
 	bShift			= false;
 	RecordCommands	= false;
-	editor[0]		= 0;
 	cur_time		= rep_time = 0;
 	fAccel			= 1.0f;
 	bVisible		= false;

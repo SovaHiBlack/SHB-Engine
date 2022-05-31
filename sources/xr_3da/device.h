@@ -45,7 +45,8 @@ public:
 	u32										dwPrecacheTotal;
 
 	u32										dwWidth, dwHeight;
-	float									fWidth_2, fHeight_2;
+	F32										fWidth_2;
+	F32										fHeight_2;
 	BOOL									b_is_Ready;
 	BOOL									b_is_Active;
 	void									OnWM_Activate(WPARAM wParam, LPARAM lParam);
@@ -83,8 +84,8 @@ public:
 	CGammaControl							Gamma;
 
 	// Engine flow-control
-	float									fTimeDelta;
-	float									fTimeGlobal;
+	F32										fTimeDelta;
+	F32										fTimeGlobal;
 	u32										dwTimeDelta;
 	u32										dwTimeGlobal;
 	u32										dwTimeContinual;
@@ -98,8 +99,8 @@ public:
 	Fmatrix									mProject;
 	Fmatrix									mFullTransform;
 	Fmatrix									mInvFullTransform;
-	float									fFOV;
-	float									fASPECT;
+	F32										fFOV;
+	F32										fASPECT;
 	
 	CRenderDevice			()
 	{
@@ -139,13 +140,13 @@ public:
 	void ShutDown							(void);
 
 public:
-	void time_factor						(const float &time_factor)
+	void time_factor						(const F32& time_factor)
 	{
 		Timer.time_factor		(time_factor);
 		TimerGlobal.time_factor	(time_factor);
 	}
 	
-	IC	const float &time_factor			() const
+	IC	const F32& time_factor			() const
 	{
 		VERIFY					(Timer.time_factor() == TimerGlobal.time_factor());
 		return					(Timer.time_factor());

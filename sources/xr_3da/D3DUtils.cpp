@@ -26,7 +26,7 @@ static const int boxvertcount = 48;
 static Fvector boxvert[boxvertcount];
 
 #define DU_DRAW_RS	RCache.dbg_SetRS
-#define DU_DRAW_SH_C(sh,c){RCache.set_Shader(sh);	RCache.set_c	("tfactor",float(color_get_R(c))/255.f,float(color_get_G(c))/255.f,float(color_get_B(c))/255.f,float(color_get_A(c))/255.f);}
+#define DU_DRAW_SH_C(sh,c){RCache.set_Shader(sh);	RCache.set_c	("tfactor",F32(color_get_R(c))/255.f,F32(color_get_G(c))/255.f,F32(color_get_B(c))/255.f,F32(color_get_A(c))/255.f);}
 #define DU_DRAW_SH(sh){RCache.set_Shader(sh);		RCache.set_c	("tfactor",1,1,1,1);}
 
 #define FILL_MODE D3DFILL_SOLID
@@ -114,7 +114,7 @@ void SPrimitiveBuffer::Destroy()
 	}
 }
 
-void CDrawUtilities::UpdateGrid(int number_of_cell, float square_size, int subdiv){
+void CDrawUtilities::UpdateGrid(int number_of_cell, F32 square_size, int subdiv){
 	m_GridPoints.clear();
 // grid
 	int m_GridSubDiv[2];
@@ -174,8 +174,9 @@ void CDrawUtilities::OnDeviceCreate()
     m_WireCylinder.CreateFromData	(D3DPT_LINELIST,	DU_CYLINDER_NUMLINES,	D3DFVF_XYZ|D3DFVF_DIFFUSE,du_cylinder_vertices,	DU_CYLINDER_NUMVERTEX,		du_cylinder_lines,		DU_CYLINDER_NUMLINES*2);
 
 	for(int i=0;i<LINE_DIVISION;i++){                                
-		float angle = M_PI * 2.f * (i / (float)LINE_DIVISION);
-        float _sa=_sin(angle), _ca=_cos(angle);
+        F32 angle = M_PI * 2.f * (i / (F32)LINE_DIVISION);
+        F32 _sa = _sin(angle);
+        F32 _ca = _cos(angle);
 		circledef1[i].x = _ca;
 		circledef1[i].y = _sa;
 		circledef1[i].z = 0;
@@ -193,7 +194,7 @@ void CDrawUtilities::OnDeviceCreate()
     	Fvector S;
     	Fvector p;
         bb.getpoint(i,p);
-        S.set((float)SIGN(p.x),(float)SIGN(p.y),(float)SIGN(p.z));
+        S.set((F32)SIGN(p.x),(F32)SIGN(p.y),(F32)SIGN(p.z));
     	boxvert[i*6+0].set(p);
     	boxvert[i*6+1].set(p.x-S.x*0.25f,p.y,p.z);
     	boxvert[i*6+2].set(p);
@@ -230,23 +231,24 @@ void CDrawUtilities::OnDeviceDestroy()
 }
 //----------------
 
-void CDrawUtilities::DrawSpotLight(const Fvector& p, const Fvector& d, float range, float phi, u32 clr)
+void CDrawUtilities::DrawSpotLight(const Fvector& p, const Fvector& d, F32 range, F32 phi, u32 clr)
 {
     Fmatrix T;
 	Fvector p1;
-    float H,P;
-    float da	= PI_MUL_2/LINE_DIVISION;
-	float b		= range*_cos(PI_DIV_2-phi/2);
-	float a		= range*_sin(PI_DIV_2-phi/2);
+	F32 H;
+	F32 P;
+	F32 da	= PI_MUL_2/LINE_DIVISION;
+	F32 b		= range*_cos(PI_DIV_2-phi/2);
+	F32 a		= range*_sin(PI_DIV_2-phi/2);
     d.getHP		(H,P);
     T.setHPB	(H,P,0);     
     T.translate_over(p);
     _VertexStream*	Stream	= &RCache.Vertex;
     u32				vBase;
     FVF::L*	pv	 	= (FVF::L*)Stream->Lock(LINE_DIVISION*2+2,vs_L->vb_stride,vBase);
-	for (float angle=0; angle<PI_MUL_2; angle+=da){
-        float _sa	=_sin(angle);
-        float _ca	=_cos(angle);
+	for (F32 angle=0; angle<PI_MUL_2; angle+=da){
+		F32 _sa	=_sin(angle);
+		F32 _ca	=_cos(angle);
 		p1.x		= b * _ca;
 		p1.y		= b * _sa;
         p1.z		= a;
@@ -263,9 +265,9 @@ void CDrawUtilities::DrawSpotLight(const Fvector& p, const Fvector& d, float ran
     DU_DRAW_DP		(D3DPT_LINELIST,vs_L,vBase,LINE_DIVISION+1);
 }
 
-void CDrawUtilities::DrawDirectionalLight(const Fvector& p, const Fvector& d, float radius, float range, u32 c)
+void CDrawUtilities::DrawDirectionalLight(const Fvector& p, const Fvector& d, F32 radius, F32 range, u32 c)
 {
-    float r=radius*0.71f;
+	F32 r=radius*0.71f;
 	Fvector R,N,D; D.normalize(d);
 	Fmatrix rot;
 
@@ -274,7 +276,7 @@ void CDrawUtilities::DrawDirectionalLight(const Fvector& p, const Fvector& d, fl
 	R.crossproduct(N,D); R.normalize();
 	N.crossproduct(D,R); N.normalize();
     rot.set(R,N,D,p);
-	float sz=radius+range;
+	F32 sz=radius+range;
 
 	// fill VB
 	_VertexStream*	Stream	= &RCache.Vertex;
@@ -298,7 +300,7 @@ void CDrawUtilities::DrawDirectionalLight(const Fvector& p, const Fvector& d, fl
 	DrawLineSphere	( p, radius, c, true );
 }
 
-void CDrawUtilities::DrawPointLight(const Fvector& p, float radius, u32 c)
+void CDrawUtilities::DrawPointLight(const Fvector& p, F32 radius, u32 c)
 {
 	RCache.set_xform_world(Fidentity);
 	DrawCross(p, radius,radius,radius, radius,radius,radius, c, true);
@@ -336,7 +338,7 @@ void CDrawUtilities::DrawEntity(u32 clr, ref_shader s)
     }
 }
 
-void CDrawUtilities::DrawFlag(const Fvector& p, float heading, float height, float sz, float sz_fl, u32 clr, BOOL bDrawEntity){
+void CDrawUtilities::DrawFlag(const Fvector& p, F32 heading, F32 height, F32 sz, F32 sz_fl, u32 clr, BOOL bDrawEntity){
 	// fill VB
 	_VertexStream*	Stream	= &RCache.Vertex;
 	u32			vBase;
@@ -349,8 +351,8 @@ void CDrawUtilities::DrawFlag(const Fvector& p, float heading, float height, flo
 
     if (bDrawEntity){
 		// fill VB
-        float rx		= _sin(heading);
-        float rz		= _cos(heading);
+		F32 rx		= _sin(heading);
+		F32 rz		= _cos(heading);
 		FVF::L*	pv	 	= (FVF::L*)Stream->Lock(6,vs_L->vb_stride,vBase);
         sz				*= 0.8f;
         pv->set			(p.x,p.y+height,p.z,clr);											pv++;
@@ -380,7 +382,7 @@ void CDrawUtilities::DrawFlag(const Fvector& p, float heading, float height, flo
 
 //------------------------------------------------------------------------------
 
-void CDrawUtilities::DrawRomboid(const Fvector& p, float r, u32 c)
+void CDrawUtilities::DrawRomboid(const Fvector& p, F32 r, u32 c)
 {
 static const WORD IL[24]={0,2, 2,5, 0,5, 3,5, 3,0, 4,3, 4,0, 4,2, 1,2, 1,5, 1,3, 1,4};
 static const WORD IT[24]={2,4,0, 4,3,0, 3,5,0, 5,2,0, 4,2,1, 2,5,1, 5,3,1, 3,4,1};
@@ -432,7 +434,7 @@ static const WORD IT[24]={2,4,0, 4,3,0, 3,5,0, 5,2,0, 4,2,1, 2,5,1, 5,3,1, 3,4,1
 }
 //------------------------------------------------------------------------------
 
-void CDrawUtilities::DrawSound(const Fvector& p, float r, u32 c){
+void CDrawUtilities::DrawSound(const Fvector& p, F32 r, u32 c){
 	DrawCross(p, r,r,r, r,r,r, c, true);
 }
 //------------------------------------------------------------------------------
@@ -501,7 +503,7 @@ void CDrawUtilities::DrawIdentBox(BOOL bSolid, BOOL bWire, u32 clr_s, u32 clr_w)
 	DU_DRAW_RS	(D3DRS_TEXTUREFACTOR,	0xffffffff);
 }
 
-void CDrawUtilities::DrawLineSphere(const Fvector& p, float radius, u32 c, BOOL bCross)
+void CDrawUtilities::DrawLineSphere(const Fvector& p, F32 radius, u32 c, BOOL bCross)
 {
 	// fill VB
 	_VertexStream*	Stream	= &RCache.Vertex;
@@ -531,21 +533,22 @@ void CDrawUtilities::DrawLineSphere(const Fvector& p, float radius, u32 c, BOOL 
 }
 
 //----------------------------------------------------
-IC float 				_x2real			(float x)
+IC F32 				_x2real			(F32 x)
 { return (x+1)*Device.dwWidth*0.5f;	}
-IC float 				_y2real			(float y)
+IC F32 				_y2real			(F32 y)
 { return (y+1)*Device.dwHeight*0.5f;}
 
 void CDrawUtilities::dbgDrawPlacement(const Fvector& p, int sz, u32 clr, LPCSTR caption, u32 clr_font)
 {
 	VERIFY( Device.b_is_Ready );
     Fvector c;
-	float w	= p.x*Device.mFullTransform._14 + p.y*Device.mFullTransform._24 + p.z*Device.mFullTransform._34 + Device.mFullTransform._44;
+	F32 w	= p.x*Device.mFullTransform._14 + p.y*Device.mFullTransform._24 + p.z*Device.mFullTransform._34 + Device.mFullTransform._44;
     if (w<0) return; // culling
 
-	float s = (float)sz;
+	F32 s = (F32)sz;
 	Device.mFullTransform.transform(c,p);
-	c.x = (float)iFloor(_x2real(c.x)); c.y = (float)iFloor(_y2real(-c.y));
+	c.x = (F32)iFloor(_x2real(c.x));
+	c.y = (F32)iFloor(_y2real(-c.y));
 
 	_VertexStream*	Stream	= &RCache.Vertex;
     u32 vBase;
@@ -689,7 +692,7 @@ void CDrawUtilities::DrawAABB(const Fvector& p0, const Fvector& p1, u32 clr_s, u
 	DrawIdentBox	(bSolid,bWire,clr_s,clr_w);
 }
 
-void CDrawUtilities::DrawSphere(const Fmatrix& parent, const Fvector& center, float radius, u32 clr_s, u32 clr_w, BOOL bSolid, BOOL bWire)
+void CDrawUtilities::DrawSphere(const Fmatrix& parent, const Fvector& center, F32 radius, u32 clr_s, u32 clr_w, BOOL bSolid, BOOL bWire)
 {
     Fmatrix B;
     B.scale				(radius,radius,radius);
@@ -761,7 +764,7 @@ void CDrawUtilities::DD_DrawFace_end()
 }
 //----------------------------------------------------
 
-void CDrawUtilities::DrawCylinder(const Fmatrix& parent, const Fvector& center, const Fvector& dir, float height, float radius, u32 clr_s, u32 clr_w, BOOL bSolid, BOOL bWire)
+void CDrawUtilities::DrawCylinder(const Fmatrix& parent, const Fvector& center, const Fvector& dir, F32 height, F32 radius, u32 clr_s, u32 clr_w, BOOL bSolid, BOOL bWire)
 {
     Fmatrix mScale;
     mScale.scale		(2.f*radius,2.f*radius,height);
@@ -787,7 +790,7 @@ void CDrawUtilities::DrawCylinder(const Fmatrix& parent, const Fvector& center, 
 }
 //----------------------------------------------------
 
-void CDrawUtilities::DrawCone	(const Fmatrix& parent, const Fvector& apex, const Fvector& dir, float height, float radius, u32 clr_s, u32 clr_w, BOOL bSolid, BOOL bWire)
+void CDrawUtilities::DrawCone	(const Fmatrix& parent, const Fvector& apex, const Fvector& dir, F32 height, F32 radius, u32 clr_s, u32 clr_w, BOOL bSolid, BOOL bWire)
 {
     Fmatrix mScale;
     mScale.scale		(2.f*radius,2.f*radius,height);
@@ -930,7 +933,7 @@ void CDrawUtilities::DrawRectangle(const Fvector& o, const Fvector& u, const Fve
 }
 //----------------------------------------------------
 
-void CDrawUtilities::DrawCross(const Fvector& p, float szx1, float szy1, float szz1, float szx2, float szy2, float szz2, u32 clr, BOOL bRot45)
+void CDrawUtilities::DrawCross(const Fvector& p, F32 szx1, F32 szy1, F32 szz1, F32 szx2, F32 szy2, F32 szz2, u32 clr, BOOL bRot45)
 {
 	_VertexStream*	Stream	= &RCache.Vertex;
 	// actual rendering
@@ -957,7 +960,7 @@ void CDrawUtilities::DrawCross(const Fvector& p, float szx1, float szy1, float s
     DU_DRAW_DP			(D3DPT_LINELIST,vs_L,vBase,bRot45?6:3);
 }
 
-void CDrawUtilities::DrawPivot(const Fvector& pos, float sz){
+void CDrawUtilities::DrawPivot(const Fvector& pos, F32 sz){
 	DU_DRAW_SH(Device.m_WireShader);
     DrawCross(pos, sz, sz, sz, sz, sz, sz, 0xFF7FFF7F);
 }
@@ -982,12 +985,12 @@ void CDrawUtilities::DrawAxis(const Fmatrix& T)
     u32 vBase;
 	FVF::TL* pv	= (FVF::TL*)Stream->Lock(6,vs_TL->vb_stride,vBase);
     // transform to screen
-    float dx=-float(Device.dwWidth)/2.2f;
-    float dy=float(Device.dwHeight)/2.25f;
+    F32 dx=-F32(Device.dwWidth)/2.2f;
+	F32 dy= F32(Device.dwHeight)/2.25f;
 
     for (int i=0; i<6; i++,pv++){
 	    pv->color = c[i]; pv->transform(p[i],Device.mFullTransform);
-	    pv->p.set((float)iFloor(_x2real(pv->p.x)+dx),(float)iFloor(_y2real(pv->p.y)+dy),0,1);
+	    pv->p.set((F32)iFloor(_x2real(pv->p.x)+dx),(F32)iFloor(_y2real(pv->p.y)+dy),0,1);
         p[i].set(pv->p.x,pv->p.y,0);
     }
 
@@ -1008,23 +1011,23 @@ void CDrawUtilities::DrawAxis(const Fmatrix& T)
     m_Font->Out(p[5].x-1,p[5].y-1,"z");
 }
 
-void CDrawUtilities::DrawObjectAxis(const Fmatrix& T, float sz, BOOL sel)
+void CDrawUtilities::DrawObjectAxis(const Fmatrix& T, F32 sz, BOOL sel)
 {
 	VERIFY( Device.b_is_Ready );
 	_VertexStream*	Stream	= &RCache.Vertex;
     Fvector c,r,n,d;
-	float w	= T.c.x*Device.mFullTransform._14 + T.c.y*Device.mFullTransform._24 + T.c.z*Device.mFullTransform._34 + Device.mFullTransform._44;
+	F32 w	= T.c.x*Device.mFullTransform._14 + T.c.y*Device.mFullTransform._24 + T.c.z*Device.mFullTransform._34 + Device.mFullTransform._44;
     if (w<0) return; // culling
 
-	float s = w*sz;
+	F32 s = w*sz;
 								Device.mFullTransform.transform(c,T.c);
     r.mul(T.i,s); r.add(T.c); 	Device.mFullTransform.transform(r);
     n.mul(T.j,s); n.add(T.c); 	Device.mFullTransform.transform(n);
     d.mul(T.k,s); d.add(T.c); 	Device.mFullTransform.transform(d);
-	c.x = (float)iFloor(_x2real(c.x)); c.y = (float)iFloor(_y2real(-c.y));
-    r.x = (float)iFloor(_x2real(r.x)); r.y = (float)iFloor(_y2real(-r.y));
-    n.x = (float)iFloor(_x2real(n.x)); n.y = (float)iFloor(_y2real(-n.y));
-    d.x = (float)iFloor(_x2real(d.x)); d.y = (float)iFloor(_y2real(-d.y));
+	c.x = (F32)iFloor(_x2real(c.x)); c.y = (F32)iFloor(_y2real(-c.y));
+    r.x = (F32)iFloor(_x2real(r.x)); r.y = (F32)iFloor(_y2real(-r.y));
+    n.x = (F32)iFloor(_x2real(n.x)); n.y = (F32)iFloor(_y2real(-n.y));
+    d.x = (F32)iFloor(_x2real(d.x)); d.y = (F32)iFloor(_y2real(-d.y));
 
     u32 vBase;
 	FVF::TL* pv	= (FVF::TL*)Stream->Lock(6,vs_TL->vb_stride,vBase);
@@ -1135,7 +1138,7 @@ void CDrawUtilities::DrawPrimitiveLIT(D3DPRIMITIVETYPE pt, u32 pc, FVF::LIT* ver
     if (!bCull) DU_DRAW_RS(D3DRS_CULLMODE,D3DCULL_CCW);
 }
 
-void CDrawUtilities::DrawLink(const Fvector& p0, const Fvector& p1, float sz, u32 clr)
+void CDrawUtilities::DrawLink(const Fvector& p0, const Fvector& p1, F32 sz, u32 clr)
 {
 	DrawLine(p1,p0,clr);
     Fvector pp[2],D,R,N={0,1,0};
@@ -1155,7 +1158,7 @@ void CDrawUtilities::DrawLink(const Fvector& p0, const Fvector& p1, float sz, u3
     DrawLine(p1,pp[1],clr);
 }
 
-void CDrawUtilities::DrawJoint(const Fvector& p, float radius, u32 clr)
+void CDrawUtilities::DrawJoint(const Fvector& p, F32 radius, u32 clr)
 {
 	DrawLineSphere(p,radius,clr,false);
 }
@@ -1168,10 +1171,10 @@ void CDrawUtilities::OnRender()
 void CDrawUtilities::OutText(const Fvector& pos, LPCSTR text, u32 color, u32 shadow_color)
 {
 	Fvector p;
-	float w	= pos.x*Device.mFullTransform._14 + pos.y*Device.mFullTransform._24 + pos.z*Device.mFullTransform._34 + Device.mFullTransform._44;
+	F32 w	= pos.x*Device.mFullTransform._14 + pos.y*Device.mFullTransform._24 + pos.z*Device.mFullTransform._34 + Device.mFullTransform._44;
 	if (w>=0){
 		Device.mFullTransform.transform(p,pos);
-		p.x = (float)iFloor(_x2real(p.x)); p.y = (float)iFloor(_y2real(-p.y));
+		p.x = (F32)iFloor(_x2real(p.x)); p.y = (F32)iFloor(_y2real(-p.y));
 
 		m_Font->SetColor(shadow_color);
 		m_Font->Out(p.x,p.y,(LPSTR)text);

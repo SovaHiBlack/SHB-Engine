@@ -70,7 +70,7 @@ void COMotion::Clear()
 	for (int ch=0; ch<ctMaxChannel; ch++) xr_delete(envs[ch]);
 }
 
-void COMotion::_Evaluate(float t, Fvector& T, Fvector& R)
+void COMotion::_Evaluate(F32 t, Fvector& T, Fvector& R)
 {
 	T.x = envs[ctPositionX]->Evaluate(t);
 	T.y = envs[ctPositionY]->Evaluate(t);
@@ -134,7 +134,7 @@ bool COMotion::Load(IReader& F)
 	return true;
 }
 
-void SAnimParams::Set(float start_frame, float end_frame, float fps)
+void SAnimParams::Set(F32 start_frame, F32 end_frame, F32 fps)
 {
     min_t=start_frame/fps;
     max_t=end_frame/fps;
@@ -142,11 +142,11 @@ void SAnimParams::Set(float start_frame, float end_frame, float fps)
 
 void SAnimParams::Set(CCustomMotion* M)
 {
-    Set((float)M->FrameStart(),(float)M->FrameEnd(),M->FPS());
+    Set((F32)M->FrameStart(),(F32)M->FrameEnd(),M->FPS());
 	t=min_t;
 //    bPlay=true;
 }
-void SAnimParams::Update(float dt, float speed, bool loop)
+void SAnimParams::Update(F32 dt, F32 speed, bool loop)
 {
 	if (!bPlay) return;
 	bWrapped	= false;
@@ -155,8 +155,8 @@ void SAnimParams::Update(float dt, float speed, bool loop)
 		bWrapped= true;
 		if (loop)
         {
-        	float len = max_t-min_t;
-        	float k = float(iFloor((t-min_t)/len));
+			F32 len = max_t-min_t;
+			F32 k = F32(iFloor((t-min_t)/len));
         	t	= t-k*len;
         }else
             t   = max_t;

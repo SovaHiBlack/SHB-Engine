@@ -11,9 +11,9 @@
 #endif // _MM_ALIGN16
 
 struct	_MM_ALIGN16		vec_t	: public Fvector3	{ 
-	float		pad; 
+	F32		pad;
 };
-vec_t	vec_c	( float _x, float _y, float _z)	{ vec_t v; v.x=_x;v.y=_y;v.z=_z;v.pad=0; return v; }
+vec_t	vec_c	(F32 _x, F32 _y, F32 _z)	{ vec_t v; v.x=_x;v.y=_y;v.z=_z;v.pad=0; return v; }
 struct _MM_ALIGN16		aabb_t	{ 
 	vec_t		min;
 	vec_t		max;
@@ -24,10 +24,11 @@ struct _MM_ALIGN16		ray_t	{
 	vec_t		fwd_dir;
 };
 struct ray_segment_t {
-	float		t_near,t_far;
+	F32		t_near;
+	F32		t_far;
 };
 
-ICF u32&	uf			(float &x)	{ return (u32&)x; }
+ICF u32&	uf			(F32& x)	{ return (u32&)x; }
 ICF BOOL	isect_fpu	(const Fvector& min, const Fvector& max, const ray_t &ray, Fvector& coord)
 {
 	Fvector				MaxT;
@@ -102,8 +103,8 @@ ICF BOOL	isect_fpu	(const Fvector& min, const Fvector& max, const ray_t &ray, Fv
 }
 
 // turn those verbose intrinsics into something readable.
-#define loadps(mem)			_mm_load_ps((const float * const)(mem))
-#define storess(ss,mem)		_mm_store_ss((float * const)(mem),(ss))
+#define loadps(mem)			_mm_load_ps((const F32 * const)(mem))
+#define storess(ss,mem)		_mm_store_ss((F32 * const)(mem),(ss))
 #define minss				_mm_min_ss
 #define maxss				_mm_max_ss
 #define minps				_mm_min_ps
@@ -114,12 +115,12 @@ ICF BOOL	isect_fpu	(const Fvector& min, const Fvector& max, const ray_t &ray, Fv
 #define muxhps(low,high)	_mm_movehl_ps((low),(high))		// low{a,b,c,d}|high{e,f,g,h} = {c,d,g,h}
 
 
-static const float flt_plus_inf = -logf(0);	// let's keep C and C++ compilers happy.
-static const float _MM_ALIGN16
+static const F32 flt_plus_inf = -logf(0);	// let's keep C and C++ compilers happy.
+static const F32 _MM_ALIGN16
 ps_cst_plus_inf	[4]	=	{  flt_plus_inf,  flt_plus_inf,  flt_plus_inf,  flt_plus_inf },
 ps_cst_minus_inf[4]	=	{ -flt_plus_inf, -flt_plus_inf, -flt_plus_inf, -flt_plus_inf };
 
-ICF BOOL isect_sse			(const aabb_t &box, const ray_t &ray, float &dist)	{
+ICF BOOL isect_sse			(const aabb_t &box, const ray_t &ray, F32& dist)	{
 	// you may already have those values hanging around somewhere
 	const __m128
 		plus_inf	= loadps(ps_cst_plus_inf),
@@ -176,11 +177,11 @@ class	_MM_ALIGN16			walker
 public:
 	ray_t			ray;
 	u32				mask;
-	float			range;
-	float			range2;
+	F32			range;
+	F32			range2;
 	ISpatial_DB*	space;
 public:
-	walker					(ISpatial_DB*	_space, u32 _mask, const Fvector& _start, const Fvector&	_dir, float _range)
+	walker					(ISpatial_DB*	_space, u32 _mask, const Fvector& _start, const Fvector&	_dir, F32 _range)
 	{
 		mask			= _mask;
 		ray.pos.set		(_start);
@@ -197,28 +198,28 @@ public:
 		space	= _space;
 	}
 	// fpu
-	ICF BOOL		_box_fpu	(const Fvector& n_C, const float n_R, Fvector& coord)
+	ICF BOOL		_box_fpu	(const Fvector& n_C, const F32 n_R, Fvector& coord)
 	{
 		// box
-		float		n_vR	=		2*n_R;
+		F32		n_vR	=		2*n_R;
 		Fbox		BB;		BB.set	(n_C.x-n_vR, n_C.y-n_vR, n_C.z-n_vR, n_C.x+n_vR, n_C.y+n_vR, n_C.z+n_vR);
 		return 		isect_fpu		(BB.min,BB.max,ray,coord);
 	}
 	// sse
-	ICF BOOL		_box_sse	(const Fvector& n_C, const float n_R, float&  dist )
+	ICF BOOL		_box_sse	(const Fvector& n_C, const F32 n_R, F32&  dist )
 	{
 		aabb_t		box;
-		float		n_vR	=		2*n_R;
+		F32		n_vR	=		2*n_R;
 		box.min.set	(n_C.x-n_vR, n_C.y-n_vR, n_C.z-n_vR);	box.min.pad = 0;
 		box.max.set	(n_C.x+n_vR, n_C.y+n_vR, n_C.z+n_vR);	box.max.pad = 0;
 		return 		isect_sse		(box,ray,dist);
 	}
-	void			walk		(ISpatial_NODE* N, Fvector& n_C, float n_R)
+	void			walk		(ISpatial_NODE* N, Fvector& n_C, F32 n_R)
 	{
 		// Actual ray/aabb test
 		if (b_use_sse)		{
 			// use SSE
-			float		d;
+			F32		d;
 			if (!_box_sse(n_C,n_R,d))				return;
 			if (d>range)							return;
 		} else {
@@ -237,7 +238,7 @@ public:
 			if (mask!=(S->spatial.type&mask))	continue;
 			Fsphere&		sS	= S->spatial.sphere;
 			int				quantity;
-			float			afT[2];
+			F32			afT[2];
 			Fsphere::ERP_Result	result	= sS.intersect(ray.pos,ray.fwd_dir,range,quantity,afT);
 
 			if (result==Fsphere::rpOriginInside || ((result==Fsphere::rpOriginOutside)&&(afT[0]<range))){
@@ -254,7 +255,7 @@ public:
 		}
 
 		// recurse
-		float	c_R		= n_R/2;
+		F32	c_R		= n_R/2;
 		for (u32 octant=0; octant<8; octant++)
 		{
 			if (0==N->children[octant])	continue;
@@ -265,7 +266,7 @@ public:
 	}
 };
 
-void	ISpatial_DB::q_ray	(xr_vector<ISpatial*>& R, u32 _o, u32 _mask_and, const Fvector&	_start,  const Fvector&	_dir, float _range)
+void	ISpatial_DB::q_ray	(xr_vector<ISpatial*>& R, u32 _o, u32 _mask_and, const Fvector&	_start,  const Fvector&	_dir, F32 _range)
 {
 	cs.Enter						();
 	q_result						= &R;

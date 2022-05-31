@@ -14,14 +14,14 @@ public:
 		o_count	= 0;
 		n_count	= 0;
 	}
-	void		walk		(ISpatial_NODE* N, Fvector& n_C, float n_R)
+	void		walk		(ISpatial_NODE* N, Fvector& n_C, F32 n_R)
 	{
 		// test items
 		n_count			+=		1;
 		o_count			+=		N->items.size();
 
 		// recurse
-		float	c_R		=		n_R/2;
+		F32	c_R		=		n_R/2;
 		for (u32 octant=0; octant<8; octant++)
 		{
 			if (0==N->children[octant])	continue;

@@ -15,8 +15,9 @@ private:
 	struct String
 	{
 		string512	string;
-		float		x,y;
-		float		height;
+		F32			x;
+		F32			y;
+		F32			height;
 		u32			c;
 		EAligment	align;
 	};
@@ -26,15 +27,16 @@ protected:
 
 	EAligment				eCurrentAlignment;
 	u32						dwCurrentColor;
-	float					fCurrentHeight;
-	float					fCurrentX, fCurrentY;
+	F32						fCurrentHeight;
+	F32						fCurrentX;
+	F32						fCurrentY;
 	Fvector2				vInterval;
 
 	Fvector 				*TCMap;
-	float					fHeight;
-	float					fXStep;
-	float					fYStep;
-	float					fTCHeight;
+	F32						fHeight;
+	F32						fXStep;
+	F32						fYStep;
+	F32						fTCHeight;
 	xr_vector<String>		strings;
 
 	ref_shader				pShader;
@@ -68,38 +70,38 @@ public:
 
 	IC void					SetColor		(u32 C)		{dwCurrentColor=C;};
 
-	IC void					SetHeightI		(float S);
-	IC void					SetHeight		(float S);
+	IC void					SetHeightI		(F32 S);
+	IC void					SetHeight		(F32 S);
 
-	IC float				GetHeight		(){return fCurrentHeight;};
-	IC void					SetInterval		(float x, float y) {vInterval.set(x,y);};
+	IC F32				GetHeight		(){return fCurrentHeight;};
+	IC void					SetInterval		(F32 x, F32 y) {vInterval.set(x,y);};
 	IC void					SetInterval		(const Fvector2& v) {vInterval.set(v);};
 	IC void					SetAligment		(EAligment aligment){ eCurrentAlignment=aligment; }
 
-	float					SizeOf_			( LPCSTR s );
-	float					SizeOf_			( const wide_char *wsStr );
+	F32					SizeOf_			( LPCSTR s );
+	F32					SizeOf_			( const wide_char *wsStr );
 
-	float					SizeOf_			( const char cChar );
+	F32					SizeOf_			( const char cChar );
 
-	float					CurrentHeight_	();
+	F32					CurrentHeight_	();
 
-	void					OutSetI			(float x, float y);
-	void					OutSet			(float x, float y);
+	void					OutSetI			(F32 x, F32 y);
+	void					OutSet			(F32 x, F32 y);
 
 	void 					MasterOut( 	BOOL bCheckDevice , BOOL bUseCoords , BOOL bScaleCoords , BOOL bUseSkip ,
-										float _x , float _y , float _skip , LPCSTR fmt , va_list p );
+									  F32 _x , F32 _y , F32 _skip , LPCSTR fmt , va_list p );
 
 	u32						smart_strlen(LPCSTR S );
 	BOOL					IsMultibyte() { return ( uFlags & fsMultibyte ); };
-	u16						SplitByWidth( u16 * puBuffer , u16 uBufferSize , float fTargetWidth , const char * pszText );
-	u16						GetCutLengthPos( float fTargetWidth , const char * pszText );
+	u16						SplitByWidth( u16 * puBuffer , u16 uBufferSize , F32 fTargetWidth , const char * pszText );
+	u16						GetCutLengthPos(F32 fTargetWidth , const char * pszText );
 
-	void  					OutI			( float _x , float _y , LPCSTR fmt , ... );
-	void  					Out				( float _x , float _y , LPCSTR fmt , ... );
+	void  					OutI			(F32 _x , F32 _y , LPCSTR fmt , ... );
+	void  					Out				(F32 _x , F32 _y , LPCSTR fmt , ... );
 	void             		OutNext			( LPCSTR fmt , ... );
 	void             		OutPrev			( LPCSTR fmt , ... );
 
-	void					OutSkip			(float val=1.f);
+	void					OutSkip			(F32 val=1.0f);
 
 	virtual void			OnRender		();
 

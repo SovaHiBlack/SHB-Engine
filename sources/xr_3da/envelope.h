@@ -38,13 +38,13 @@ struct st_Key{
 	enum{
     	ktStepped = 1<<0,
     };
-	float		value;
-	float		time;
+	F32			value;
+	F32			time;
 	u8			shape;
-	float		tension;
-	float		continuity;
-	float		bias;
-	float		param[ 4 ];
+	F32			tension;
+	F32			continuity;
+	F32			bias;
+	F32			param[ 4 ];
 				st_Key		(){ZeroMemory(this,sizeof(st_Key));}
     IC bool		equal		(const st_Key& tgt)
     {
@@ -82,7 +82,7 @@ struct st_Key{
         tension		= F.r_float();
         continuity	= F.r_float();
         bias		= F.r_float();
-        F.r			(&param,sizeof(float)*4);
+        F.r			(&param,sizeof(F32)*4);
     }
 	IC void		Load_2		(IReader& F)
     {
@@ -116,7 +116,7 @@ public:
 				CEnvelope	(CEnvelope* source);
 	virtual		~CEnvelope	();
 
-	float		Evaluate	(float t);
+	F32			Evaluate	(F32 t);
 
 	void		Clear		();
 	void		Save		(IWriter& F);
@@ -125,14 +125,14 @@ public:
 	void		SaveA		(IWriter& F);
 	void		LoadA		(IReader& F);
 
-    void		RotateKeys	(float angle);
+    void		RotateKeys	(F32 angle);
 
-    KeyIt		FindKey		(float t, float eps);
-    void		FindNearestKey(float t, KeyIt& min, KeyIt& max, float eps);
-    void		InsertKey	(float t, float val);                                   
-    void		DeleteKey	(float t);
-    BOOL		ScaleKeys	(float from_time, float to_time, float scale_factor, float eps);
-    float		GetLength	(float* mn, float* mx);
+    KeyIt		FindKey		(F32 t, F32 eps);
+    void		FindNearestKey(F32 t, KeyIt& min, KeyIt& max, F32 eps);
+    void		InsertKey	(F32 t, F32 val);
+    void		DeleteKey	(F32 t);
+    BOOL		ScaleKeys	(F32 from_time, F32 to_time, F32 scale_factor, F32 eps);
+	F32			GetLength	(F32* mn, F32* mx);
 
     void		Optimize	();
 };

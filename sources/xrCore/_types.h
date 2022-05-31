@@ -14,6 +14,8 @@ typedef	signed		__int64	s64;
 typedef	unsigned	__int64	u64;
 
 typedef float				f32;
+typedef float				F32;
+
 typedef double				f64;
 
 typedef char*				pstr;

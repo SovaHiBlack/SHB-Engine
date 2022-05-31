@@ -73,7 +73,7 @@ void CObjectAnimator::Load(const char * name)
 	SetActiveMotion		(0);
 }
 
-void CObjectAnimator::Update(float dt)
+void CObjectAnimator::Update(F32 dt)
 {
 	if (m_Current){
 		Fvector R,P;
@@ -119,6 +119,6 @@ void CObjectAnimator::Stop()
 float CObjectAnimator::GetLength		()
 {
 	if(!m_Current) return 0.0f;
-	float res = m_Current->Length()/m_Current->FPS();
+	F32 res = m_Current->Length()/m_Current->FPS();
 	return res; 
 }

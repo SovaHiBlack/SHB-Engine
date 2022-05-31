@@ -21,10 +21,10 @@ public:
 		box.setb(center,size);
 		space	= _space;
 	}
-	void		walk		(ISpatial_NODE* N, Fvector& n_C, float n_R)
+	void		walk		(ISpatial_NODE* N, Fvector& n_C, F32 n_R)
 	{
 		// box
-		float	n_vR	=		2*n_R;
+		F32	n_vR	=		2*n_R;
 		Fbox	BB;		BB.set	(n_C.x-n_vR, n_C.y-n_vR, n_C.z-n_vR, n_C.x+n_vR, n_C.y+n_vR, n_C.z+n_vR);
 		if		(!BB.intersect(box))			return;
 
@@ -37,7 +37,7 @@ public:
 			if (0==(S->spatial.type&mask))	continue;
 
 			Fvector&		sC		= S->spatial.sphere.P;
-			float			sR		= S->spatial.sphere.R;
+			F32				sR		= S->spatial.sphere.R;
 			Fbox			sB;		sB.set	(sC.x-sR, sC.y-sR, sC.z-sR, sC.x+sR, sC.y+sR, sC.z+sR);
 			if (!sB.intersect(box))	continue;
 
@@ -46,7 +46,7 @@ public:
 		}
 
 		// recurse
-		float	c_R		= n_R/2;
+		F32	c_R		= n_R/2;
 		for (u32 octant=0; octant<8; octant++)
 		{
 			if (0==N->children[octant])	continue;
@@ -67,7 +67,7 @@ void	ISpatial_DB::q_box			(xr_vector<ISpatial*>& R, u32 _o, u32 _mask, const Fve
 	cs.Leave			();
 }
 
-void	ISpatial_DB::q_sphere		(xr_vector<ISpatial*>& R, u32 _o, u32 _mask, const Fvector& _center, const float _radius)
+void	ISpatial_DB::q_sphere		(xr_vector<ISpatial*>& R, u32 _o, u32 _mask, const Fvector& _center, const F32 _radius)
 {
 	Fvector			_size			= {_radius,_radius,_radius};
 	q_box							(R,_o,_mask,_center,_size);

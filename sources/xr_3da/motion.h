@@ -46,7 +46,7 @@ protected:
 	};
 	EMotionType		mtype;
 	int				iFrameStart, iFrameEnd;
-	float			fFPS;
+	F32			fFPS;
 public:
 	shared_str		name;
 public:
@@ -58,10 +58,10 @@ public:
 	LPCSTR			Name			()				{return name.c_str();}
     int				FrameStart		()				{return iFrameStart;}
     int				FrameEnd		()				{return iFrameEnd;}
-    float			FPS				()				{return fFPS;}
+	F32			FPS				()				{return fFPS;}
     int				Length			()				{return iFrameEnd-iFrameStart;}
 
-	void			SetParam		(int s, int e, float fps){iFrameStart=s; iFrameEnd=e; fFPS=fps;}
+	void			SetParam		(int s, int e, F32 fps){iFrameStart=s; iFrameEnd=e; fFPS=fps;}
 
 	virtual void	Save			(IWriter& F);
 	virtual bool	Load			(IReader& F);
@@ -81,7 +81,7 @@ public:
 
 	void			Clear			();
 
-	void			_Evaluate		(float t, Fvector& T, Fvector& R);
+	void			_Evaluate		(F32 t, Fvector& T, Fvector& R);
 	virtual void	Save			(IWriter& F);
 	virtual bool	Load			(IReader& F);
 
@@ -99,17 +99,17 @@ enum ESMFlags{
 };
 
 struct SAnimParams		{
-    float			t;
-    float			min_t;
-    float			max_t;
+	F32			t;
+	F32			min_t;
+	F32			max_t;
     BOOL			bPlay;
 	BOOL			bWrapped;
 public:
 					SAnimParams(){bWrapped=false;bPlay=false;t=0.f;min_t=0.f;max_t=0.f;}
     void			Set		(CCustomMotion* M);
-	void 			Set		(float start_frame, float end_frame, float fps);
-    float			Frame	()			{ return t;}
-    void			Update	(float dt, float speed, bool loop);
+	void 			Set		(F32 start_frame, F32 end_frame, F32 fps);
+	F32			Frame	()			{ return t;}
+    void			Update	(F32 dt, F32 speed, bool loop);
     void			Play	(){bPlay=true; t=min_t;}
     void			Stop	(){bPlay=false; t=min_t;}
     void			Pause	(bool val){bPlay=!val;}
@@ -130,8 +130,8 @@ public:
     AnimItem		cycles[4];
     AnimItem		fx;
     
-    float			fx_power;
-    float			length;
+	F32			fx_power;
+	F32			length;
 public:
 	virtual void	Save	(IWriter& F);
 	virtual bool	Load	(IReader& F);

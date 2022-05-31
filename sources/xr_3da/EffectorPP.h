@@ -9,9 +9,9 @@ class ENGINE_API CEffectorPP
 	EEffectorPPType		eType;
 	bool				bFreeOnRemove;
 protected:
-	float				fLifeTime;
+	F32				fLifeTime;
 public:
-						CEffectorPP		(EEffectorPPType type, f32 lifeTime, bool free_on_remove=true);
+						CEffectorPP		(EEffectorPPType type, F32 lifeTime, bool free_on_remove=true);
 						CEffectorPP		():bFreeOnRemove(true),fLifeTime(0.0f){};
 	virtual				~CEffectorPP	();
 	virtual	BOOL		Process			(SPPInfo &PPInfo);
@@ -19,5 +19,5 @@ public:
 	IC EEffectorPPType	Type			()	const					{return eType;}
 	IC bool				FreeOnRemove	()	const					{return bFreeOnRemove;}
 	IC void				SetType			(EEffectorPPType t)			{eType=t;}
-	virtual void		Stop            (float speed)				{fLifeTime=0.0f;};
+	virtual void		Stop            (F32 speed)				{fLifeTime=0.0f;};
 };

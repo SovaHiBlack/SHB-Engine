@@ -15,7 +15,7 @@ protected:
 	Fmatrix				m_XFORM;
     SAnimParams			m_MParam;
 	MotionVec			m_Motions;
-    float				m_Speed;
+	F32				m_Speed;
 
     COMotion*			m_Current;
 	void				LoadMotions		(LPCSTR fname);
@@ -28,7 +28,7 @@ public:
 	void				Clear			();
 	void				Load			(LPCSTR name);
     IC LPCSTR			Name			(){return *m_Name;}
-    float&				Speed			(){return m_Speed;}
+	F32&				Speed			(){return m_Speed;}
 
 	COMotion*			Play			(bool bLoop, LPCSTR name=0);
 	void				Pause			(bool val){return m_MParam.Pause(val);}
@@ -36,8 +36,8 @@ public:
 	IC BOOL				IsPlaying		(){return m_MParam.bPlay;}
 
     IC const Fmatrix&	XFORM			(){return m_XFORM;}
-	float				GetLength		();
+	F32				GetLength		();
 	// Update
-	void				Update			(float dt);
+	void				Update			(F32 dt);
     void				DrawPath		();
 };

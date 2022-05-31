@@ -38,18 +38,18 @@ class ENGINE_API	CEnvModifier
 {
 public:
 	Fvector3			position;
-	float				radius;
-	float				power;
+	F32				radius;
+	F32				power;
 
-	float				far_plane;
+	F32				far_plane;
 	Fvector3			fog_color;
-	float				fog_density;
+	F32				fog_density;
 	Fvector3			ambient;
 	Fvector3			sky_color;		
 	Fvector3			hemi_color;
 
 	void				load		(IReader*		fs);
-	float				sum			(CEnvModifier&	_another, Fvector3& view);
+	F32				sum			(CEnvModifier&	_another, Fvector3& view);
 };
 
 class ENGINE_API	CEnvAmbient{
@@ -59,7 +59,7 @@ public:
 		ref_sound		sound;		
 		shared_str		particles;
 		Fvector			offset;
-		float			wind_gust_factor;
+		F32			wind_gust_factor;
 	};
 	DEFINE_VECTOR(SEffect,EffectVec,EffectVecIt);
 protected:
@@ -75,15 +75,15 @@ public:
 	IC ref_sound*		get_rnd_sound		(){return sounds.empty()?0:&sounds[Random.randI(sounds.size())];}
 	IC const shared_str&name				(){return section;}
 	IC u32				get_rnd_sound_time	(){return Random.randI(sound_period.x,sound_period.y);}
-	IC float			get_rnd_sound_dist	(){return Random.randF(sound_dist.x,sound_dist.y);}
+	IC F32			get_rnd_sound_dist	(){return Random.randF(sound_dist.x,sound_dist.y);}
 	IC u32				get_rnd_effect_time (){return Random.randI(effect_period.x,effect_period.y);}
 };
 
 class ENGINE_API	CEnvDescriptor
 {
 public:
-	float				exec_time;
-	float				exec_time_loaded;
+	F32				exec_time;
+	F32				exec_time_loaded;
 	
 	shared_str			sky_texture_name	;
 	shared_str			sky_texture_env_name;
@@ -95,22 +95,22 @@ public:
 
 	Fvector4			clouds_color	;
 	Fvector3			sky_color		;
-	float				sky_rotation	;
+	F32				sky_rotation	;
 
-	float				far_plane;
+	F32				far_plane;
 
 	Fvector3			fog_color;
-	float				fog_density;
-	float				fog_distance;
+	F32				fog_density;
+	F32				fog_distance;
 
-	float				rain_density;
+	F32				rain_density;
 	Fvector3			rain_color;
 
-	float				bolt_period;
-	float				bolt_duration;
+	F32				bolt_period;
+	F32				bolt_duration;
 
-    float				wind_velocity;
-    float				wind_direction;  
+	F32				wind_velocity;
+	F32				wind_direction;
     
 	Fvector3			ambient		;
 	Fvector4			hemi_color	;	// w = R2 correction
@@ -131,8 +131,8 @@ public:
 	void				load			(LPCSTR exec_tm, LPCSTR sect, CEnvironment* parent);
 	void				copy			(const CEnvDescriptor& src)
 	{
-		float tm0		= exec_time;
-		float tm1		= exec_time_loaded; 
+		F32 tm0		= exec_time;
+		F32 tm1		= exec_time_loaded;
 		*this			= src;
 		exec_time		= tm0;
 		exec_time_loaded= tm1;
@@ -147,12 +147,12 @@ public:
 	STextureList		sky_r_textures;		
 	STextureList		sky_r_textures_env;	
 	STextureList		clouds_r_textures;	
-	float				weight;				
+	F32				weight;
 
-	float				fog_near;		
-	float				fog_far;		
+	F32				fog_near;
+	F32				fog_far;
 public:
-	void				lerp			(CEnvironment* parent, CEnvDescriptor& A, CEnvDescriptor& B, float f, CEnvModifier& M, float m_power);
+	void				lerp			(CEnvironment* parent, CEnvDescriptor& A, CEnvDescriptor& B, F32 f, CEnvModifier& M, F32 m_power);
 	void				clear			();
 	void				destroy			();
 };
@@ -172,11 +172,11 @@ private:
 	FvectorVec				CloudsVerts;
 	U16Vec					CloudsIndices;
 private:
-	float					NormalizeTime	(float tm);
-	float					TimeDiff		(float prev, float cur);
-	float					TimeWeight		(float val, float min_t, float max_t);
-	void					SelectEnvs		(EnvVec* envs, CEnvDescriptor*& e0, CEnvDescriptor*& e1, float tm);
-	void					SelectEnv		(EnvVec* envs, CEnvDescriptor*& e, float tm);
+	F32					NormalizeTime	(F32 tm);
+	F32					TimeDiff		(F32 prev, F32 cur);
+	F32					TimeWeight		(F32 val, F32 min_t, F32 max_t);
+	void					SelectEnvs		(EnvVec* envs, CEnvDescriptor*& e0, CEnvDescriptor*& e1, F32 tm);
+	void					SelectEnv		(EnvVec* envs, CEnvDescriptor*& e, F32 tm);
 	void					StopWFX			();
 public:
 	static bool sort_env_pred	(const CEnvDescriptor* x, const CEnvDescriptor* y)
@@ -187,7 +187,7 @@ protected:
 	CBlender_skybox			m_b_skybox;
 	CPerlinNoise1D*			PerlinNoise1D;
 
-	float					fGameTime;
+	F32					fGameTime;
 public:
 	float					wind_strength_factor;
 	float					wind_gust_factor;
@@ -196,7 +196,7 @@ public:
 	CEnvDescriptor*			Current[2];
 
 	bool					bWFX;
-	float					wfx_time;
+	F32					wfx_time;
 	CEnvDescriptor*			WFX_end_desc[2];
     
     EnvVec*					CurrentWeather;
@@ -218,11 +218,11 @@ public:
 	CLensFlare*				eff_LensFlare;
 	CEffect_Thunderbolt*	eff_Thunderbolt;
 
-	float					fTimeFactor;
+	F32					fTimeFactor;
 	ref_texture				tonemap;
 	ref_texture				tsky0,tsky1;
 
-	void					SelectEnvs			(float gt);
+	void					SelectEnvs			(F32 gt);
 
 	CEnvAmbient*			AppendEnvAmb		(const shared_str& sect);
 
@@ -248,11 +248,11 @@ public:
 	bool					IsWFXPlaying		(){return bWFX;}
     void					SetWeather			(shared_str name, bool forced=false);
     shared_str				GetWeather			()					{ return CurrentWeatherName;}
-	void					SetGameTime			(float game_time, float time_factor);
+	void					SetGameTime			(F32 game_time, F32 time_factor);
 
 	void					OnDeviceCreate		();
 	void					OnDeviceDestroy		();
 };
 
 ENGINE_API extern Flags32	psEnvFlags;
-ENGINE_API extern float		psVisDistance;
+ENGINE_API extern F32		psVisDistance;

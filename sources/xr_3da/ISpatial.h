@@ -23,7 +23,7 @@ Requirements:
 	* Should have at least "bounding-sphere" or "bounding-box"
 */
 
-const float						c_spatial_min	= 8.f;
+const F32						c_spatial_min	= 8.f;
 //////////////////////////////////////////////////////////////////////////
 enum
 {
@@ -68,7 +68,7 @@ public:
 		u32						type;
 		Fsphere					sphere;
 		Fvector					node_center;	// Cached node center for TBV optimization
-		float					node_radius;	// Cached node bounds for TBV optimization
+		F32					node_radius;	// Cached node bounds for TBV optimization
 		ISpatial_NODE*			node_ptr;		// Cached parent node for "empty-members" optimization
 		IRender_Sector*			sector;
 		ISpatial_DB*			space;			// allow different spaces
@@ -134,7 +134,7 @@ private:
 public:
 	ISpatial_NODE*					m_root;
 	Fvector							m_center;
-	float							m_bounds;
+	F32							m_bounds;
 	xr_vector<ISpatial*>*			q_result;
 	u32								stat_nodes;
 	u32								stat_objects;
@@ -154,7 +154,7 @@ private:
 	ISpatial_NODE*					_node_create	();
 	void 							_node_destroy	(ISpatial_NODE* &P);
 
-	void							_insert			(ISpatial_NODE* N, Fvector& n_center, float n_radius);
+	void							_insert			(ISpatial_NODE* N, Fvector& n_center, F32 n_radius);
 	void							_remove			(ISpatial_NODE* N, ISpatial_NODE* N_sub);
 public:
 	ISpatial_DB();
@@ -178,9 +178,9 @@ public:
 	};
 
 	// query
-	void							q_ray			(xr_vector<ISpatial*>& R, u32 _o, u32 _mask_and, const Fvector&		_start,  const Fvector&	_dir, float _range);
+	void							q_ray			(xr_vector<ISpatial*>& R, u32 _o, u32 _mask_and, const Fvector&		_start,  const Fvector&	_dir, F32 _range);
 	void							q_box			(xr_vector<ISpatial*>& R, u32 _o, u32 _mask_or,  const Fvector&		_center, const Fvector& _size);
-	void							q_sphere		(xr_vector<ISpatial*>& R, u32 _o, u32 _mask_or,  const Fvector&		_center, const float _radius);
+	void							q_sphere		(xr_vector<ISpatial*>& R, u32 _o, u32 _mask_or,  const Fvector&		_center, const F32 _radius);
 	void							q_frustum		(xr_vector<ISpatial*>& R, u32 _o, u32 _mask_or,  const CFrustum&	_frustum);
 };
 

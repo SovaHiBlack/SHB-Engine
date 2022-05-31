@@ -21,7 +21,7 @@ public:
 
     virtual u32		ParticlesCount		()=0;
 
-	virtual float	GetTimeLimit		()=0;
+	virtual F32	GetTimeLimit		()=0;
     virtual BOOL	IsLooped			(){return GetTimeLimit()<0.f;}
 
 	virtual const shared_str	Name		()=0;
