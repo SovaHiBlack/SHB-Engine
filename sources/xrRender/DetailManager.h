@@ -18,19 +18,19 @@ const int		dm_max_objects		= 64;
 const int		dm_obj_in_slot		= 4;
 const int		dm_cache_line		= dm_size+1+dm_size;
 const int		dm_cache_size		= dm_cache_line*dm_cache_line;
-const float		dm_fade				= float(2*dm_size)-.5f;
-const float		dm_slot_size		= DETAIL_SLOT_SIZE;
+const F32		dm_fade				= F32(2*dm_size)-.5f;
+const F32		dm_slot_size		= DETAIL_SLOT_SIZE;
 
 class CDetailManager
 {
 public:
 	struct	SlotItem	{								// один кустик
-		float						scale;
-		float						scale_calculated;
+		F32						scale;
+		F32						scale_calculated;
 		Fmatrix						mRotY;
 		u32							vis_ID;				// индекс в visibility списке он же тип [не качается, качается1, качается2]
-		float						c_hemi;
-		float						c_sun;
+		F32						c_hemi;
+		F32						c_sun;
 #if RENDER==R_R1
 		Fvector						c_rgb;
 #endif
@@ -75,12 +75,12 @@ public:
 public:
 	// swing values
 	struct SSwingValue{
-		float						rot1;
-		float						rot2;
-		float						amp1;
-		float						amp2;
-		float						speed;
-		void						lerp	(const SSwingValue& v1, const SSwingValue& v2, float factor);
+		F32						rot1;
+		F32						rot2;
+		F32						amp1;
+		F32						amp2;
+		F32						speed;
+		void						lerp	(const SSwingValue& v1, const SSwingValue& v2, F32 factor);
 	};
 	SSwingValue						swing_desc[2];
 	SSwingValue						swing_current; 

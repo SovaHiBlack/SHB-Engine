@@ -57,7 +57,7 @@ IC bool	pred_energy			(const CROS_impl::Light& L1, const CROS_impl::Light& L2)	{
 //////////////////////////////////////////////////////////////////////////
 #pragma warning(push)
 #pragma warning(disable:4305)
-const float		hdir		[lt_hemisamples][3] = 
+const F32		hdir		[lt_hemisamples][3] =
 {
 	{0.00000,	1.00000,	0.00000	},
 	{0.52573,	0.85065,	0.00000	},
@@ -97,13 +97,13 @@ void	CROS_impl::update	(IRenderable* O)
 	if					(0==O)								return;
 	if					(0==O->renderable.visual)			return;
 	VERIFY				(dynamic_cast<CROS_impl*>			(O->renderable_ROS()));
-	float	dt			=	Device.fTimeDelta;
+	F32	dt			=	Device.fTimeDelta;
 
 	CObject*	_object	= dynamic_cast<CObject*>	(O);
 
 	// select sample, randomize position inside object
 	Fvector	position;	O->renderable.xform.transform_tiny	(position,O->renderable.visual->vis.sphere.P);
-	float	radius;		radius	= O->renderable.visual->vis.sphere.R;
+	F32	radius;		radius	= O->renderable.visual->vis.sphere.R;
 	position.y			+=  .3f * radius;
 	Fvector	direction;	direction.random_dir();
 //.			position.mad(direction,0.25f*radius);
@@ -140,11 +140,11 @@ void	CROS_impl::update	(IRenderable* O)
 	}
 
 	// hemi & sun: update and smooth
-//	float	l_f				=	dt*lt_smooth;
-//	float	l_i				=	1.f-l_f;
+//	F32	l_f				=	dt*lt_smooth;
+//	F32	l_i				=	1.f-l_f;
 	int		_pass			=	0;
 	for (int it=0; it<result_count; it++)	if (result[it])	_pass	++;
-	hemi_value				=	float	(_pass)/float(result_count?result_count:1);
+	hemi_value				= F32(_pass)/ F32(result_count?result_count:1);
 	hemi_value				*=	ps_r2_dhemi_scale;
 	if (bFirstTime)			hemi_smooth		= hemi_value;
 	update_smooth			()	;
@@ -160,13 +160,13 @@ void	CROS_impl::update	(IRenderable* O)
 			ISpatial*	spatial		= RImplementation.lstSpatial[o_it];
 			light*		source		= (light*)	(spatial->dcast_Light());
 			VERIFY		(source);	// sanity check
-			float	R				= radius+source->range;
+			F32	R				= radius+source->range;
 			if (position.distance_to(source->position) < R)		add	(source);
 		}
 
 		// Trace visibility
 		lights.clear	();
-		float traceR	= radius*.5f;
+		F32 traceR	= radius*.5f;
 		for (s32 id=0; id<s32(track.size()); id++)
 		{
 			// remove untouched lights
@@ -175,20 +175,20 @@ void	CROS_impl::update	(IRenderable* O)
 
 			// Trace visibility
 			Fvector				P,D;
-			float		amount	= 0;
+			F32		amount	= 0;
 			light*		xrL		= I->source;
 			Fvector&	LP		= xrL->position;
 			P.mad				(position,P.random_dir(),traceR);		// Random point inside range
 
 			// point/spot
-			float	f			=	D.sub(P,LP).magnitude();
+			F32	f			=	D.sub(P,LP).magnitude();
 			if (g_pGameLevel->ObjectSpace.RayTest(LP,D.div(f),f,collide::rqtStatic,&I->cache,_object))	amount -=	lt_dec;
 			else																						amount +=	lt_inc;
 			I->test				+=	amount * dt;	clamp	(I->test,-.5f,1.f);
 			I->energy			=	.9f*I->energy + .1f*I->test;
 
 			// 
-			float	E			=	I->energy * xrL->color.intensity	();
+			F32	E			=	I->energy * xrL->color.intensity	();
 			if (E > EPS)		{
 				// Select light
 				lights.push_back			(CROS_impl::Light())		;
@@ -201,7 +201,7 @@ void	CROS_impl::update	(IRenderable* O)
 		}
 
 		// Sun
-		float	E			=	sun_smooth * sun->color.intensity	();
+		F32	E			=	sun_smooth * sun->color.intensity	();
 		if (E > EPS)		{
 			// Select light
 			lights.push_back			(CROS_impl::Light())		;
@@ -228,9 +228,9 @@ void	CROS_impl::update	(IRenderable* O)
 	if (MODE & IRender_ObjectSpecific::TRACE_LIGHTS )	{
 		Fvector		lacc	=	{ 0,0,0 };
 		for (u32 lit=0; lit<lights.size(); lit++)	{
-			float	d	=	lights[lit].source->position.distance_to(position);
-			float	r	=	lights[lit].source->range;
-			float	a	=	clampr(1.f - d/(r+EPS),0.f,1.f)*(lights[lit].source->flags.bStatic?1.f:2.f);
+			F32	d	=	lights[lit].source->position.distance_to(position);
+			F32	r	=	lights[lit].source->range;
+			F32	a	=	clampr(1.f - d/(r+EPS),0.f,1.f)*(lights[lit].source->flags.bStatic?1.f:2.f);
 			lacc.x		+=	lights[lit].color.r*a;
 			lacc.y		+=	lights[lit].color.g*a;
 			lacc.z		+=	lights[lit].color.b*a;

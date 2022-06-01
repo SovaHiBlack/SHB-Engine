@@ -96,20 +96,20 @@ void light::set_active		(bool a)
 
 void	light::set_position		(const Fvector& P)
 {
-	float	eps					=	EPS_L;	//_max	(range*0.001f,EPS_L);
+	F32	eps					=	EPS_L;	//_max	(range*0.001f,EPS_L);
 	if (position.similar(P,eps))return	;
 	position.set				(P);
 	spatial_move				();
 }
 
-void	light::set_range		(float R)			{
-	float	eps					=	_max	(range*0.1f,EPS_L);
+void	light::set_range		(F32 R)			{
+	F32	eps					=	_max	(range*0.1f,EPS_L);
 	if (fsimilar(range,R,eps))	return	;
 	range						= R		;
 	spatial_move				();
 };
 
-void	light::set_cone			(float angle)		{
+void	light::set_cone			(F32 angle)		{
 	if (fsimilar(cone,angle))	return	;
 	VERIFY						(cone < deg2rad(121.f));	// 120 is hard limit for lights
 	cone						= angle;
@@ -191,7 +191,7 @@ void	light::xform_calc			()
 
 	// dir
 	L_dir.set				(direction);
-	float l_dir_m			= L_dir.magnitude();
+	F32 l_dir_m			= L_dir.magnitude();
 	if (_valid(l_dir_m) && l_dir_m>EPS_S)	L_dir.div(l_dir_m);
 	else									L_dir.set(0,0,1);
 
@@ -221,7 +221,7 @@ void	light::xform_calc			()
 	case IRender_Light::POINT		:
 		{
 			// scale of identity sphere
-			float		L_R			= range;
+		F32		L_R			= range;
 			Fmatrix		mScale;		mScale.scale	(L_R,L_R,L_R);
 			m_xform.mul_43			(mR,mScale);
 		}
@@ -229,14 +229,14 @@ void	light::xform_calc			()
 	case IRender_Light::SPOT		:
 		{
 			// scale to account range and angle
-			float		s			= 2.f*range*tanf(cone/2.f);	
+		F32		s			= 2.f*range*tanf(cone/2.f);
 			Fmatrix		mScale;		mScale.scale(s,s,range);	// make range and radius
 			m_xform.mul_43			(mR,mScale);
 		}
 		break;
 	case IRender_Light::OMNIPART	:
 		{
-			float		L_R			= 2*range;		// volume is half-radius
+		F32		L_R			= 2*range;		// volume is half-radius
 			Fmatrix		mScale;		mScale.scale	(L_R,L_R,L_R);
 			m_xform.mul_43			(mR,mScale);
 		}
@@ -291,13 +291,13 @@ void	light::export		(light_Package& package)
 
 #endif
 
-extern float		r_ssaGLOD_start,	r_ssaGLOD_end;
-extern float		ps_r2_slight_fade;
+extern F32		r_ssaGLOD_start,	r_ssaGLOD_end;
+extern F32		ps_r2_slight_fade;
 float	light::get_LOD					()
 {
 	if	(!flags.bShadow)	return 1;
-	float	distSQ			= Device.vCameraPosition.distance_to_sqr(spatial.sphere.P)+EPS;
-	float	ssa				= ps_r2_slight_fade * spatial.sphere.R/distSQ;
-	float	lod				= _sqrt(clampr((ssa - r_ssaGLOD_end)/(r_ssaGLOD_start-r_ssaGLOD_end),0.f,1.f));
+	F32	distSQ			= Device.vCameraPosition.distance_to_sqr(spatial.sphere.P)+EPS;
+	F32	ssa				= ps_r2_slight_fade * spatial.sphere.R/distSQ;
+	F32	lod				= _sqrt(clampr((ssa - r_ssaGLOD_end)/(r_ssaGLOD_start-r_ssaGLOD_end),0.f,1.f));
 	return	lod	;
 }

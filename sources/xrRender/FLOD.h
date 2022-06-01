@@ -32,9 +32,9 @@ public:
 
 	ref_geom		geom		;
 	_face			facets		[8];
-	float			lod_factor	;
+	F32			lod_factor	;
 public:
-	virtual void Render			(float LOD		);									// LOD - Level Of Detail  [0.0f - min, 1.0f - max], Ignored
+	virtual void Render			(F32 LOD		);									// LOD - Level Of Detail  [0.0f - min, 1.0f - max], Ignored
 	virtual void Load			(LPCSTR N, IReader *data, u32 dwFlags);
 	virtual void Copy			(IRender_Visual *pFrom	);
 };

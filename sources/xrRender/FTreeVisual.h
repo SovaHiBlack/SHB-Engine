@@ -9,15 +9,15 @@ private:
 	struct	_5color
 	{
 		Fvector					rgb;		// - all static lighting
-		float					hemi;		// - hemisphere
-		float					sun;		// - sun
+		F32					hemi;		// - hemisphere
+		F32					sun;		// - sun
 	};
 protected:
 	_5color						c_scale;
 	_5color						c_bias;
 	Fmatrix						xform;
 public:
-	virtual void Render			(float LOD		);									// LOD - Level Of Detail  [0.0f - min, 1.0f - max], Ignored
+	virtual void Render			(F32 LOD		);									// LOD - Level Of Detail  [0.0f - min, 1.0f - max], Ignored
 	virtual void Load			(LPCSTR N, IReader *data, u32 dwFlags);
 	virtual void Copy			(IRender_Visual *pFrom	);
 	virtual void Release		();
@@ -33,7 +33,7 @@ public:
 					FTreeVisual_ST	(void);
 	virtual			~FTreeVisual_ST	(void);
 
-	virtual void	Render			(float LOD		);									// LOD - Level Of Detail  [0.0f - min, 1.0f - max], Ignored
+	virtual void	Render			(F32 LOD		);									// LOD - Level Of Detail  [0.0f - min, 1.0f - max], Ignored
 	virtual void	Load			(LPCSTR N, IReader *data, u32 dwFlags);
 	virtual void	Copy			(IRender_Visual *pFrom	);
 	virtual void	Release			();
@@ -52,7 +52,7 @@ public:
 					FTreeVisual_PM	(void);
 	virtual			~FTreeVisual_PM	(void);
 
-	virtual void	Render			(float LOD		);									// LOD - Level Of Detail  [0.0f - min, 1.0f - max], Ignored
+	virtual void	Render			(F32 LOD		);									// LOD - Level Of Detail  [0.0f - min, 1.0f - max], Ignored
 	virtual void	Load			(LPCSTR N, IReader *data, u32 dwFlags);
 	virtual void	Copy			(IRender_Visual *pFrom	);
 	virtual void	Release			();

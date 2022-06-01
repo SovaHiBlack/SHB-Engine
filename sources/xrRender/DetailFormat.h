@@ -47,8 +47,8 @@
 	char*			texture;
 
 	u32				flag;
-	float			min_scale;
-	float	 		max_scale;
+	F32			min_scale;
+	F32	 		max_scale;
 
 	u32				vert_count;
 	u32				index_count;
@@ -90,17 +90,17 @@ struct DetailSlot					// was(4+4+3*4+2 = 22b), now(8+2*4=16b)
 public:
 	enum			{	ID_Empty	= 0x3f	};
 public:
-	void			w_y		(float base, float height)				
+	void			w_y		(F32 base, F32 height)
 	{	
 		s32	_base	= iFloor((base + 200)/.2f);			clamp(_base,	0,4095);	y_base		= _base;
 		F32 _error	= base - r_ybase();
 		s32	_height = iCeil ((height+_error) / .1f);	clamp(_height,	0,255);		y_height	= _height;
 	}
 
-	float			r_ybase		()						{	return float(y_base)*.2f - 200.f;								}
-	float			r_yheight	()						{	return float(y_height)*.1f;									}
-	u32				w_qclr		(float v, u32 range)	{	s32 _v = iFloor(v * float(range)); clamp(_v,0,s32(range)); return _v; };
-	float			r_qclr		(u32 v,   u32 range)	{	return float(v)/float(range); }
+	F32			r_ybase		()						{	return F32(y_base)*.2f - 200.f;								}
+	F32			r_yheight	()						{	return F32(y_height)*.1f;									}
+	u32				w_qclr		(F32 v, u32 range)	{	s32 _v = iFloor(v * F32(range)); clamp(_v,0,s32(range)); return _v; };
+	F32			r_qclr		(u32 v,   u32 range)	{	return F32(v)/ F32(range); }
 
 //	static void		verify		()						{	VERIFY(16==sizeof(DetailSlot));	}
     void			color_editor(){c_dir=w_qclr(0.5f,15);c_hemi=w_qclr(0.5f,15);c_r=w_qclr(0.f,15);c_g=w_qclr(0.f,15);c_b=w_qclr(0.f,15);}

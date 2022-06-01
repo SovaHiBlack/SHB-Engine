@@ -18,9 +18,9 @@ void CDetailManager::soft_Unload	()
 void CDetailManager::soft_Render	()
 {
 	// Render itself
-	// float	fPhaseRange	= PI/16;
-	// float	fPhaseX		= _sin(Device.fTimeGlobal*0.1f)	*fPhaseRange;
-	// float	fPhaseZ		= _sin(Device.fTimeGlobal*0.11f)*fPhaseRange;
+	// F32	fPhaseRange	= PI/16;
+	// F32	fPhaseX		= _sin(Device.fTimeGlobal*0.1f)	*fPhaseRange;
+	// F32	fPhaseZ		= _sin(Device.fTimeGlobal*0.11f)*fPhaseRange;
 
 	// Get index-stream
 	_IndexStream&	_IS		= RCache.Index;
@@ -70,7 +70,7 @@ void CDetailManager::soft_Render	()
 				// Filling itself
                 for (u32 item_idx=item_start; item_idx<item_end; ++item_idx){
 					SlotItem&	Instance	= *items->at(item_idx);
-					float	scale			= Instance.scale_calculated;
+					F32	scale			= Instance.scale_calculated;
 
 					// Build matrix
 					Fmatrix& M = Instance.mRotY;

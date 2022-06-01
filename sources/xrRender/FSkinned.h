@@ -14,13 +14,13 @@ protected:
 	virtual void			_Load_hw			(Fvisual& V,		void *		data);
 	virtual void			_CollectBoneFaces	(Fvisual* V,		u32 iBase,	u32 iCount);
 			void			_EnumBoneVertices	( SEnumVerticesCallback &C, Fvisual* V, u16 bone_id, u32 iBase, u32 iCount ) const;
-	virtual void			_FillVerticesHW1W	(const Fmatrix& view, CSkeletonWallmark& wm, const Fvector& normal, float size, Fvisual* V, u16* indices, CBoneData::FacesVec& faces);
-	virtual void			_FillVerticesHW2W	(const Fmatrix& view, CSkeletonWallmark& wm, const Fvector& normal, float size, Fvisual* V, u16* indices, CBoneData::FacesVec& faces);
-	virtual void			_FillVertices		(const Fmatrix& view, CSkeletonWallmark& wm, const Fvector& normal, float size, Fvisual* V, u16 bone_id, u32 iBase, u32 iCount);
+	virtual void			_FillVerticesHW1W	(const Fmatrix& view, CSkeletonWallmark& wm, const Fvector& normal, F32 size, Fvisual* V, u16* indices, CBoneData::FacesVec& faces);
+	virtual void			_FillVerticesHW2W	(const Fmatrix& view, CSkeletonWallmark& wm, const Fvector& normal, F32 size, Fvisual* V, u16* indices, CBoneData::FacesVec& faces);
+	virtual void			_FillVertices		(const Fmatrix& view, CSkeletonWallmark& wm, const Fvector& normal, F32 size, Fvisual* V, u16 bone_id, u32 iBase, u32 iCount);
 
-	virtual BOOL			_PickBoneHW1W		(Fvector& normal, float& range, const Fvector& S, const Fvector& D, Fvisual* V, u16* indices, CBoneData::FacesVec& faces);
-	virtual BOOL			_PickBoneHW2W		(Fvector& normal, float& range, const Fvector& S, const Fvector& D, Fvisual* V, u16* indices, CBoneData::FacesVec& faces);
-	virtual BOOL			_PickBone			(Fvector& normal, float& range, const Fvector& S, const Fvector& D, Fvisual* V, u16 bone_id, u32 iBase, u32 iCount);
+	virtual BOOL			_PickBoneHW1W		(Fvector& normal, F32& range, const Fvector& S, const Fvector& D, Fvisual* V, u16* indices, CBoneData::FacesVec& faces);
+	virtual BOOL			_PickBoneHW2W		(Fvector& normal, F32& range, const Fvector& S, const Fvector& D, Fvisual* V, u16* indices, CBoneData::FacesVec& faces);
+	virtual BOOL			_PickBone			(Fvector& normal, F32& range, const Fvector& S, const Fvector& D, Fvisual* V, u16 bone_id, u32 iBase, u32 iCount);
 public:
 };
 
@@ -32,14 +32,14 @@ private:
 public:
 							CSkeletonX_ST	()	{}
 	virtual					~CSkeletonX_ST	()	{}
-	virtual void			Render			(float LOD);
+	virtual void			Render			(F32 LOD);
 	virtual void			Load			(LPCSTR N, IReader *data, u32 dwFlags);
 	virtual void			Copy			(IRender_Visual *pFrom);
 	virtual void			Release			();
 	virtual void			AfterLoad		(CKinematics* parent, u16 child_idx);
 	virtual void			EnumBoneVertices(SEnumVerticesCallback &C, u16 bone_id);
-	virtual BOOL			PickBone		(Fvector& normal, float& dist, const Fvector& start, const Fvector& dir, u16 bone_id);
-	virtual void			FillVertices	(const Fmatrix& view, CSkeletonWallmark& wm, const Fvector& normal, float size, u16 bone_id);
+	virtual BOOL			PickBone		(Fvector& normal, F32& dist, const Fvector& start, const Fvector& dir, u16 bone_id);
+	virtual void			FillVertices	(const Fmatrix& view, CSkeletonWallmark& wm, const Fvector& normal, F32 size, u16 bone_id);
 private:
 	CSkeletonX_ST				(const CSkeletonX_ST& other);
 	void	operator=			( const CSkeletonX_ST& other);
@@ -53,14 +53,14 @@ private:
 public:
 							CSkeletonX_PM	()	{}
 	virtual					~CSkeletonX_PM	()	{}
-	virtual void			Render			(float LOD);
+	virtual void			Render			(F32 LOD);
 	virtual void			Load			(LPCSTR N, IReader *data, u32 dwFlags);
 	virtual void			Copy			(IRender_Visual *pFrom);
 	virtual void			Release			();
 	virtual void			AfterLoad		(CKinematics* parent, u16 child_idx);
 	virtual void			EnumBoneVertices(SEnumVerticesCallback &C, u16 bone_id);
-	virtual BOOL			PickBone		(Fvector& normal, float& dist, const Fvector& start, const Fvector& dir, u16 bone_id);
-	virtual void			FillVertices	(const Fmatrix& view, CSkeletonWallmark& wm, const Fvector& normal, float size, u16 bone_id);
+	virtual BOOL			PickBone		(Fvector& normal, F32& dist, const Fvector& start, const Fvector& dir, u16 bone_id);
+	virtual void			FillVertices	(const Fmatrix& view, CSkeletonWallmark& wm, const Fvector& normal, F32 size, u16 bone_id);
 private:
 	CSkeletonX_PM				(const CSkeletonX_PM& other);
 	void	operator=			( const CSkeletonX_PM& other);
