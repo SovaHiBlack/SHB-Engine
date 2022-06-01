@@ -15,24 +15,24 @@ private:
 
 	Fvector				q0;
 
-	float				z[d+1];
-	float				f[d+1];
+	F32					z[d+1];
+	F32					f[d+1];
 	Fvector				v[d+1];
 	Fvector				a[d+1];
 	Fvector				c[d+1];
-	float				sqr_r[d+1];
+	F32					sqr_r[d+1];
 
 	Fvector*			current_c;      // vectors to some c[j]
-	float				current_sqr_r;
+	F32					current_sqr_r;
 public:
 	Basis();
 
 	// access
 	const Fvector*		center			() const;
-	float				squared_radius	() const;
+	F32					squared_radius	() const;
 	int                 size			() const;
 	int                 support_size	() const;
-	float				excess			(const Fvector& p) const;
+	F32					excess			(const Fvector& p) const;
 
 	// modification
 	void                reset			(); // generates empty sphere with m=s=0
@@ -60,9 +60,9 @@ private:
 	void		mtf_mb					(It k);
 	void		pivot_mb				(It k);
 	void		move_to_front			(It j);
-	float		max_excess				(It t, It i, It& pivot) const;
-	float		abs						(float r) const {return (r>0)? r: (-r);}
-	float		sqr						(float r) const {return r*r;}
+	F32			max_excess				(It t, It i, It& pivot) const;
+	F32			abs						(F32 r) const {return (r>0)? r: (-r);}
+	F32			sqr						(F32 r) const {return r*r;}
 public:
 	// construction
 	Miniball() {}
@@ -71,7 +71,7 @@ public:
 
 	// access
 	Fvector     center					() const;
-	float		squared_radius			() const;
+	F32			squared_radius			() const;
 	int         num_points				() const;
 	Cit         points_begin			() const;
 	Cit         points_end				() const;
@@ -134,7 +134,8 @@ void Miniball::pivot_mb (It i)
 {
 	It t = ++L.begin();
 	mtf_mb (t);
-	float max_e, old_sqr_r = 0;
+	F32 max_e;
+	F32 old_sqr_r = 0;
 	do 
 	{
 		It pivot = L.begin();
@@ -152,12 +153,13 @@ void Miniball::pivot_mb (It i)
 	} while ((max_e > 0) && (B.squared_radius() > old_sqr_r));
 }
 
-float Miniball::max_excess (It t, It i, It& pivot) const
+F32 Miniball::max_excess (It t, It i, It& pivot) const
 {
 	const	Fvector* pCenter = B.center();
-	float				sqr_r	= B.squared_radius();
+	F32				sqr_r	= B.squared_radius();
 
-	float e, max_e = 0;
+	F32 e;
+	F32 max_e = 0;
 
 	for (It k=t; k!=i; ++k)
 	{
@@ -181,7 +183,7 @@ Fvector Miniball::center () const
 	return *((Fvector *)B.center());
 }
 
-float Miniball::squared_radius () const
+F32 Miniball::squared_radius () const
 {
 	return B.squared_radius();
 }
@@ -225,7 +227,7 @@ const Fvector* Basis::center () const
 	return current_c;
 }
 
-float Basis::squared_radius() const
+F32 Basis::squared_radius() const
 {
 	return current_sqr_r;
 }
@@ -240,9 +242,9 @@ int Basis::support_size() const
 	return s;
 }
 
-float Basis::excess (const Fvector& p) const
+F32 Basis::excess (const Fvector& p) const
 {
-	float e = -current_sqr_r;
+	F32 e = -current_sqr_r;
 	e += p.distance_to_sqr(*current_c);
 	return e;
 }
@@ -279,7 +281,7 @@ bool Basis::push (const Fvector& p)
 	else
 	{
 		int i;
-		const float eps = 1e-16f;
+		const F32 eps = 1e-16f;
 
 		// set v_m to Q_m
 		v[m].sub(p,q0);
@@ -309,7 +311,7 @@ bool Basis::push (const Fvector& p)
 		}
 
 		// update c, sqr_r
-		float e = -sqr_r[m-1];
+		F32 e = -sqr_r[m-1];
 		e += p.distance_to_sqr(c[m-1]);
 
 		f[m]=e/z[m];

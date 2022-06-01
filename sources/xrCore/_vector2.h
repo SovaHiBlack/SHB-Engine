@@ -11,7 +11,7 @@ public:
 public:
 	T x,y;
 
-	IC SelfRef set(float _u, float _v)				{ x=T(_u); y=T(_v);				return *this;	}
+	IC SelfRef set(F32 _u, F32 _v)					{ x=T(_u); y=T(_v);				return *this;	}
 	IC SelfRef set(double _u, double _v)			{ x=T(_u); y=T(_v);				return *this;	}
 	IC SelfRef set(int _u, int _v)					{ x=T(_u); y=T(_v);				return *this;	}
 	IC SelfRef set(const Self &p)					{ x=p.x; y=p.y;					return *this;	}
@@ -23,20 +23,20 @@ public:
 	IC SelfRef sub(T p)								{ x-=p; y-=p;					return *this;	}
 	IC SelfRef sub(const Self &p)					{ x-=p.x; y-=p.y;				return *this;	}
 	IC SelfRef sub(const Self &p1, const Self &p2)	{ x=p1.x-p2.x; y=p1.y-p2.y;		return *this;	}
-	IC SelfRef sub(const Self &p, float d)			{ x=p.x-d; y=p.y-d;				return *this;	}
+	IC SelfRef sub(const Self &p, F32 d)			{ x=p.x-d; y=p.y-d;				return *this;	}
 	IC SelfRef add(T p)								{ x+=p; y+=p;					return *this;	}
 	IC SelfRef add(const Self &p)					{ x+=p.x; y+=p.y;				return *this;	}
 	IC SelfRef add(const Self &p1, const Self &p2)	{ x=p1.x+p2.x; y=p1.y+p2.y;		return *this;	}
-	IC SelfRef add(const Self &p, float d)			{ x=p.x+d; y=p.y+d;				return *this;	}
+	IC SelfRef add(const Self &p, F32 d)			{ x=p.x+d; y=p.y+d;				return *this;	}
 	IC SelfRef mul(const T s)						{ x*=s; y*=s;					return *this;	}
 	IC SelfRef mul(Self &p)							{ x*=p.x; y*=p.y;				return *this;	}
 	IC SelfRef div(const T s)						{ x/=s; y/=s;					return *this;	}
-	IC SelfRef rot90(void)							{ float t=-x; x=y; y=t;			return *this;	}
+	IC SelfRef rot90(void)							{ F32 t=-x; x=y; y=t;			return *this;	}
     IC SelfRef cross(Self &D)						{ x = D.y; y = -D.x;            return *this;	}
 	IC T dot(Self &p)								{ return x*p.x + y*p.y;			}
 	IC T dot(const Self &p) const					{ return x*p.x + y*p.y;			}
-	IC SelfRef norm(void)							{ float m=_sqrt(x*x+y*y); x/=m; y/=m;			return *this;	}
-	IC SelfRef norm_safe(void)						{ float m=_sqrt(x*x+y*y); if(m) {x/=m; y/=m;}	return *this;	}
+	IC SelfRef norm(void)							{ F32 m=_sqrt(x*x+y*y); x/=m; y/=m;			return *this;	}
+	IC SelfRef norm_safe(void)						{ F32 m=_sqrt(x*x+y*y); if(m) {x/=m; y/=m;}	return *this;	}
 	IC T distance_to(const Self &p) const 			{ return _sqrt((x-p.x)*(x-p.x) + (y-p.y)*(y-p.y)); } 
 	IC T square_magnitude(void) const				{ return x*x + y*y; }
 	IC T magnitude(void) const						{ return _sqrt(square_magnitude());	}
@@ -61,7 +61,7 @@ public:
 		return _abs(x-p.x)<eu && _abs(y-p.y)<ev;
 	}
 	
-	IC bool similar(const Self &p, float E=EPS_L) const
+	IC bool similar(const Self &p, F32 E=EPS_L) const
 	{ 
 		return _abs(x-p.x)<E && _abs(y-p.y)<E;
 	};
@@ -83,17 +83,17 @@ public:
 
     T& operator[] (int i) const
     {
-        // assert:  0 <= i < 2; x and y are packed into 2*sizeof(float) bytes
+        // assert:  0 <= i < 2; x and y are packed into 2*sizeof(F32) bytes
         return (T&) *(&x + i);
     }
 
 	IC SelfRef 	normalize		(void)					{ return norm();	 	}
 	IC SelfRef 	normalize_safe	(void)					{ return norm_safe();	}
-	IC SelfRef 	normalize		(const Self &v)			{ float m=_sqrt(v.x*v.x+v.y*v.y); x=v.x/m; y=v.y/m;			return *this; }
-	IC SelfRef 	normalize_safe	(const Self &v)			{ float m=_sqrt(v.x*v.x+v.y*v.y); if(m) {x=v.x/m; y=v.y/m;}	return *this; }
-	IC float 	dotproduct		(const Self &p) const	{ return dot(p);		}
-	IC float 	crossproduct	(const Self &p) const	{ return y*p.x - x*p.y; }
-	IC float 	getH			(void) const
+	IC SelfRef 	normalize		(const Self &v)			{ F32 m=_sqrt(v.x*v.x+v.y*v.y); x=v.x/m; y=v.y/m;			return *this; }
+	IC SelfRef 	normalize_safe	(const Self &v)			{ F32 m=_sqrt(v.x*v.x+v.y*v.y); if(m) {x=v.x/m; y=v.y/m;}	return *this; }
+	IC F32		dotproduct		(const Self &p) const	{ return dot(p);		}
+	IC F32		crossproduct	(const Self &p) const	{ return y*p.x - x*p.y; }
+	IC F32		getH			(void) const
 	{
         if (fis_zero(y))
 			if (fis_zero(x))
@@ -108,7 +108,7 @@ public:
 	}
 };
 
-typedef _vector2<float>		Fvector2;
+typedef _vector2<F32>		Fvector2;
 typedef _vector2<double>	Dvector2;
 typedef _vector2<int>		Ivector2;
 

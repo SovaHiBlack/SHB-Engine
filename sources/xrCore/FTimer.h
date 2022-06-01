@@ -27,11 +27,11 @@ public:
 	ICF	void	Start			()		{	if(bPause) return;	qwStartTime = CPU::QPC()-qwPauseAccum;		}
 	ICF u64		GetElapsed_ticks()const	{	if(bPause) return	qwPausedTime; else return CPU::QPC()-qwStartTime-CPU::qpc_overhead-qwPauseAccum; }
 	IC	u32		GetElapsed_ms	()const	{	return u32(GetElapsed_ticks()*u64(1000)/CPU::qpc_freq );	}
-	IC	float	GetElapsed_sec	()const	{
+	IC	F32		GetElapsed_sec	()const	{
 
 		FPU::m64r	()			;
        
-		float		_result		=		float(double(GetElapsed_ticks())/double(CPU::qpc_freq )	)	;
+		F32		_result		= F32(double(GetElapsed_ticks())/double(CPU::qpc_freq )	)	;
 
 		FPU::m24r	()			;
 
@@ -48,7 +48,7 @@ private:
 	typedef CTimerBase					inherited;
 
 private:
-	float				m_time_factor;
+	F32					m_time_factor;
 	u64					m_real_ticks;
 	u64					m_ticks;
 
@@ -77,12 +77,12 @@ public:
 		m_ticks			= 0;
 	}
 
-	IC	const float		&time_factor	() const
+	IC	const F32&		time_factor	() const
 	{
 		return			(m_time_factor);
 	}
 
-	IC	void			time_factor		(const float &time_factor)
+	IC	void			time_factor		(const F32& time_factor)
 	{
 		u64				current = inherited::GetElapsed_ticks();
 		m_ticks			= GetElapsed_ticks(current);
@@ -106,11 +106,11 @@ public:
 		return			(u32(GetElapsed_ticks()*u64(1000)/CPU::qpc_freq));
 	}
 	
-	float			GetElapsed_sec	() const
+	F32			GetElapsed_sec	() const
 	{
 		FPU::m64r		();
         
-		float			result = float(double(GetElapsed_ticks())/double(CPU::qpc_freq )	)	;
+		F32			result = F32(double(GetElapsed_ticks())/double(CPU::qpc_freq )	)	;
 
 		FPU::m24r		();
 
@@ -155,7 +155,7 @@ class XRCORE_API CStatTimer
 public:
 	CTimer		T;
 	u64			accum;
-	float		result;
+	F32			result;
 	u32			count;
 public:
 				CStatTimer		();
@@ -168,11 +168,11 @@ public:
 	ICF u64		GetElapsed_ticks()const	{	return accum;					}
 
 	IC	u32		GetElapsed_ms	()const	{	return u32(GetElapsed_ticks()*u64(1000)/CPU::qpc_freq );	}
-	IC	float	GetElapsed_sec	()const	{
+	IC	F32	GetElapsed_sec	()const	{
 
 		FPU::m64r	()			;
       
-		float		_result		=		float(double(GetElapsed_ticks())/double(CPU::qpc_freq )	)	;
+		F32		_result		= F32(double(GetElapsed_ticks())/double(CPU::qpc_freq )	)	;
 
 		FPU::m24r	()			;
 

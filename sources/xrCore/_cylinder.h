@@ -181,7 +181,7 @@ public:
 //----------------------------------------------------------------------------
 };
 
-typedef _cylinder<float>	Fcylinder;
+typedef _cylinder<F32>	Fcylinder;
 typedef _cylinder<double>	Dcylinder;
 
 template <class T>

@@ -21,18 +21,19 @@ inline_ BOOL AABBTreeCollider::BoxBoxOverlap(const Point& ea, const Point& ca, c
 	// Stats
 	mNbBVBVTests++;
 
-	float t,t2;
+	F32 t;
+	F32 t2;
 
 	// Class I : A's basis vectors
-	float Tx = (mR1to0.m[0][0]*cb.x + mR1to0.m[1][0]*cb.y + mR1to0.m[2][0]*cb.z) + mT1to0.x - ca.x;
+	F32 Tx = (mR1to0.m[0][0]*cb.x + mR1to0.m[1][0]*cb.y + mR1to0.m[2][0]*cb.z) + mT1to0.x - ca.x;
 	t = ea.x + eb.x*mAR.m[0][0] + eb.y*mAR.m[1][0] + eb.z*mAR.m[2][0];
 	if(GREATER(Tx, t))	return FALSE;
 
-	float Ty = (mR1to0.m[0][1]*cb.x + mR1to0.m[1][1]*cb.y + mR1to0.m[2][1]*cb.z) + mT1to0.y - ca.y;
+	F32 Ty = (mR1to0.m[0][1]*cb.x + mR1to0.m[1][1]*cb.y + mR1to0.m[2][1]*cb.z) + mT1to0.y - ca.y;
 	t = ea.y + eb.x*mAR.m[0][1] + eb.y*mAR.m[1][1] + eb.z*mAR.m[2][1];
 	if(GREATER(Ty, t))	return FALSE;
 
-	float Tz = (mR1to0.m[0][2]*cb.x + mR1to0.m[1][2]*cb.y + mR1to0.m[2][2]*cb.z) + mT1to0.z - ca.z;
+	F32 Tz = (mR1to0.m[0][2]*cb.x + mR1to0.m[1][2]*cb.y + mR1to0.m[2][2]*cb.z) + mT1to0.z - ca.z;
 	t = ea.z + eb.x*mAR.m[0][2] + eb.y*mAR.m[1][2] + eb.z*mAR.m[2][2];
 	if(GREATER(Tz, t))	return FALSE;
 
@@ -70,12 +71,13 @@ inline_ BOOL OBBCollider::BoxBoxOverlap(const Point& extents, const Point& cente
 	// Stats
 	mNbVolumeBVTests++;
 
-	float t,t2;
+	F32 t;
+	F32 t2;
 
 	// Class I : A's basis vectors
-	float Tx = mTBoxToModel.x - center.x;	t = extents.x + mBBx1;	if(GREATER(Tx, t))	return FALSE;
-	float Ty = mTBoxToModel.y - center.y;	t = extents.y + mBBy1;	if(GREATER(Ty, t))	return FALSE;
-	float Tz = mTBoxToModel.z - center.z;	t = extents.z + mBBz1;	if(GREATER(Tz, t))	return FALSE;
+	F32 Tx = mTBoxToModel.x - center.x;	t = extents.x + mBBx1;	if(GREATER(Tx, t))	return FALSE;
+	F32 Ty = mTBoxToModel.y - center.y;	t = extents.y + mBBy1;	if(GREATER(Ty, t))	return FALSE;
+	F32 Tz = mTBoxToModel.z - center.z;	t = extents.z + mBBz1;	if(GREATER(Tz, t))	return FALSE;
 
 	// Class II : B's basis vectors
 	t = Tx*mRBoxToModel.m[0][0] + Ty*mRBoxToModel.m[0][1] + Tz*mRBoxToModel.m[0][2];
@@ -114,9 +116,9 @@ inline_ BOOL AABBCollider::AABBAABBOverlap(const Point& extents, const Point& ce
 	// Stats
 	mNbVolumeBVTests++;
 
-	float tx = mBox.mCenter.x - center.x;	float ex = extents.x + mBox.mExtents.x;	if(GREATER(tx, ex))	return FALSE;
-	float ty = mBox.mCenter.y - center.y;	float ey = extents.y + mBox.mExtents.y;	if(GREATER(ty, ey))	return FALSE;
-	float tz = mBox.mCenter.z - center.z;	float ez = extents.z + mBox.mExtents.z;	if(GREATER(tz, ez))	return FALSE;
+	F32 tx = mBox.mCenter.x - center.x;	F32 ex = extents.x + mBox.mExtents.x;	if(GREATER(tx, ex))	return FALSE;
+	F32 ty = mBox.mCenter.y - center.y;	F32 ey = extents.y + mBox.mExtents.y;	if(GREATER(ty, ey))	return FALSE;
+	F32 tz = mBox.mCenter.z - center.z;	F32 ez = extents.z + mBox.mExtents.z;	if(GREATER(tz, ez))	return FALSE;
 
 	return TRUE;
 }

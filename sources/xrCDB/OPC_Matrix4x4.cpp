@@ -76,7 +76,7 @@ ICEMATHS_API void IceMaths::InvertPRMatrix(Matrix4x4& dest, const Matrix4x4& src
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Compute the cofactor of the Matrix at a specified location
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-float Matrix4x4::CoFactor(udword row, udword col) const
+F32 Matrix4x4::CoFactor(udword row, udword col) const
 {
 	return	 (( m[(row+1)&3][(col+1)&3]*m[(row+2)&3][(col+2)&3]*m[(row+3)&3][(col+3)&3] +
 				m[(row+1)&3][(col+2)&3]*m[(row+2)&3][(col+3)&3]*m[(row+3)&3][(col+1)&3] +
@@ -89,7 +89,7 @@ float Matrix4x4::CoFactor(udword row, udword col) const
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Compute the determinant of the Matrix
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-float Matrix4x4::Determinant() const
+F32 Matrix4x4::Determinant() const
 {
 	return	m[0][0] * CoFactor(0, 0) +
 			m[0][1] * CoFactor(0, 1) +
@@ -102,13 +102,13 @@ float Matrix4x4::Determinant() const
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 Matrix4x4& Matrix4x4::Invert()
 {
-	float Det = Determinant();
+	F32 Det = Determinant();
 	Matrix4x4 Temp;
 
 	if(_abs(Det) < MATRIX4X4_EPSILON)
 		return	*this;		// The matrix is not invertible! Singular case!
 
-	float IDet = 1.0f / Det;
+	F32 IDet = 1.0f / Det;
 
 	Temp.m[0][0] = CoFactor(0,0) * IDet;
 	Temp.m[1][0] = CoFactor(0,1) * IDet;
@@ -148,9 +148,9 @@ Matrix4x4& Matrix4x4::Shadow(const Point& light, const Point& p0, const Point& p
 
 	// Compute the plane equation
 	Point n = ((p0-p1)^(p1-p2)).Normalize();
-	float D		= -(p0|n);
+	F32 D		= -(p0|n);
 	Plane PlaneEquation;
-	float Coeff;
+	F32 Coeff;
 	if(_abs(D)<0.0001f)	Coeff = -1.0f;
 	else					Coeff = -1.0f / _abs(D);
 	PlaneEquation.n.x = n.x * Coeff;
@@ -159,7 +159,7 @@ Matrix4x4& Matrix4x4::Shadow(const Point& light, const Point& p0, const Point& p
 	PlaneEquation.d   = D * Coeff;
 
 	// Plane equation must be normalized!
-	float dot = PlaneEquation.n.x*light.x + PlaneEquation.n.y*light.y + PlaneEquation.n.z*light.z + PlaneEquation.d;
+	F32 dot = PlaneEquation.n.x*light.x + PlaneEquation.n.y*light.y + PlaneEquation.n.z*light.z + PlaneEquation.d;
 
 	m[0][0] = dot - light.x*PlaneEquation.n.x;
 	m[1][0] =     - light.x*PlaneEquation.n.y;
@@ -191,7 +191,7 @@ Matrix4x4& Matrix4x4::Shadow(const Point& light, const Point& p0, const Point& p
  *	\return		Self-Reference
  */
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-Matrix4x4& Matrix4x4::SphereMap(float scale)
+Matrix4x4& Matrix4x4::SphereMap(F32 scale)
 {
 	Identity();
 	m[0][0] = scale;
@@ -232,7 +232,7 @@ Matrix4x4& Matrix4x4::SelfShadow(const Point& light)
  *	\return		Self-Reference
  */
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-Matrix4x4& Matrix4x4::Rotozoom(float angle, float zoom, float posx, float posy)
+Matrix4x4& Matrix4x4::Rotozoom(F32 angle, F32 zoom, F32 posx, F32 posy)
 {
 	RotZ(angle);
 	Scale(zoom, zoom, zoom);
@@ -241,7 +241,7 @@ Matrix4x4& Matrix4x4::Rotozoom(float angle, float zoom, float posx, float posy)
 }
 
 // ### must be optimized... consider using the 3x3 version
-Matrix4x4& Matrix4x4::Rot(float angle, Point& p1, Point& p2)
+Matrix4x4& Matrix4x4::Rot(F32 angle, Point& p1, Point& p2)
 {
 	Point Axis = (p2 - p1).Normalize();
 
@@ -253,11 +253,11 @@ Matrix4x4& Matrix4x4::Rot(float angle, Point& p1, Point& p2)
 
 	Matrix4x4 Rx, InvRx;
 	Rx.Identity();
-	float d = _sqrt(Axis.y*Axis.y + Axis.z*Axis.z);
+	F32 d = _sqrt(Axis.y*Axis.y + Axis.z*Axis.z);
 	if(d!=0.0f)
 	{
-		float CosAngle = Axis.z / d;
-		float SinAngle = Axis.y / d;
+		F32 CosAngle = Axis.z / d;
+		F32 SinAngle = Axis.y / d;
 		Rx.SetRow(1, Point(0.0f, CosAngle, SinAngle));
 		Rx.SetRow(2, Point(0.0f, -SinAngle, CosAngle));
 	}
@@ -278,218 +278,3 @@ Matrix4x4& Matrix4x4::Rot(float angle, Point& p1, Point& p2)
 	*this = Combo;
 	return *this;
 }
-
-
-#ifdef OLDIES
-
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// LU Backward substitution
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// Input	: 
-//	- indx, 
-//	- b, 
-// Output	: None
-// Return	: None
-// Exception: None
-// Remark	: None
-
-void	Matrix::LUBackwardSubstitution( sdword *indx, float *b )
-{
-	sdword	i, j, ii=-1, ip;
-	float	sum;
-
-	for ( i=0; i<4; i++ )
-	{
-		ip = indx[i];
-		sum = b[ip];
-		b[ip] = b[i];
-
-		if (ii>=0)
-		{
-			for (j=ii; j<=i-1; j++)
-				sum -= (*this)(i, j) * b[j];
-		}
-		else if (sum != 0.0f)
-			ii = i;
-		b[i] = sum;
-	}
-
-	for ( i=3; i>=0; i-- )
-	{
-		sum = b[i];
-		for (j=i+1; j<4; j++)
-			sum -= (*this)(i, j) * b[j];
-		b[i] = sum / (*this)(i, i);
-	}
-}
-
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// LU decomposition
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// Input	: 
-//	- indx, 
-//	- d, 
-// Output	: None
-// Return	: None
-// Exception: None
-// Remark	: None
-
-void	Matrix::LUDecomposition( sdword* indx, float* d )
-{
-	float	vv[4];               /* implicit scale for each row */
-	float	big, dum, sum, tmp;
-	sdword		i, imax, j, k;
-
-	*d = 1.0f;
-	for ( i=0; i<4; i++ )
-	{
-		big = 0.0f;
-		for (j=0; j<4; j++)
-			if ((tmp = (float) _abs( (*this)(i, j) )) > big)
-				big = tmp;
-		/*
-		if (big == 0.0f) {
-			printf("ludcmp(): singular matrix found...\n");
-			exit(1);
-		}
-		*/
-		vv[i] = 1.0f/big;
-	}
-	for ( j=0; j<4; j++ )
-	{
-		for ( i=0; i<j; i++ )
-		{
-			sum = (*this)(i, j);
-			for (k=0; k<i; k++)
-				sum -= (*this)(i, k) * (*this)(k, j);
-			(*this)(i, j) = sum;
-		}
-		big = 0.0f;
-		for ( i=j; i<4; i++ )
-		{
-			sum = (*this)(i, j);
-			for (k=0; k<j; k++)
-				sum -= (*this)(i, k) * (*this)(k, j);
-			(*this)(i, j) = sum;
-			if ((dum = vv[i] * (float) _abs(sum)) >= big)
-			{
-				big = dum;
-				imax = i;
-			}
-		}
-		if (j != imax)
-		{
-			for (k=0; k<4; k++)
-			{
-				dum = (*this)(imax, k);
-				(*this)(imax, k) = (*this)(j, k);
-				(*this)(j, k) = dum;
-			}
-			*d = -(*d);
-			vv[imax] = vv[j];
-		}
-		indx[j] = imax;
-		if ((*this)(j, j) == 0.0f)
-			(*this)(j, j) = 1.0e-20f;      /* can be 0.0 also... */
-		if (j != 3)
-		{
-			dum = 1.0f / (*this)(j, j);
-			for (i=j+1; i<4; i++)
-				(*this)(i, j) *= dum;
-		}
-	}
-}
-
-
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// A method to compute a view matrix from an angle axis
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// Input	: axis, angle	the view parameters
-// Output	: None
-// Return	: None
-// Exception: None
-// Remark	: None
-
-Matrix& Matrix::ComputeAxisMatrix(Point& axis, float angle)
-{
-	MakeIdentity();
-
-	float length = axis.Magnitude();
-	// Normalize the z basis vector3
-	axis /= length;
-
-	// Get the dot product, and calculate the projection of the z basis
-	// vector3 onto the up vector3. The projection is the y basis vector3.
-	float dotProduct = Point(0, 1, 0) | axis;
-	Point Up = Point(0, 1, 0) - dotProduct * axis;
-
-	// This is to prevent bogus view matrix (up view vector3 equals to axis)
-	if (Up.Magnitude() < 1e-6f)	{
-		Up = Point(0, 0, 1);
-	}
-	else	{
-	// Normalize the y basis vector3
-		Up /= length;
-		Up.Normalize();
-	}
-
-	// The x basis vector3 is found simply with the cross product of the y
-	// and z basis vectors
-	Point Right = Up ^ axis;
-
-	SetCol( 0, Right );
-	SetCol( 1, Up );
-	SetCol( 2, axis );
-	Transpose();
-
-	return *this;
-}
-
-
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// Operator to cast a matrix to a PRS
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// Input	: None
-// Output	: None
-// Return	: None
-// Exception: None
-// Remark	: None
-
-Matrix::operator	PRS() const
-{
-	PRS			Cast;
-
-	udword		dwRow;
-	Matrix3x3	Orthonormal;
-	float		ScaleFactor;
-	Point		Scale, Row, NormalizedRow;
-
-	if ( IsIdentity() )
-	{	// The special case of the identity matrix
-		Cast.SetScale( 1.0f, 1.0f, 1.0f ).SetQuaternion( (Quat) (*this) );
-	}
-	else
-	{
-		for ( dwRow=0; dwRow<3; dwRow++ )
-		{
-			Row = *GetRow( dwRow );
-			Scale[dwRow] = ScaleFactor = Row.Magnitude();
-
-			if ( _abs(ScaleFactor) > mEpsilon )
-				NormalizedRow = Row / ScaleFactor;
-			else
-			{
-				NormalizedRow[0] = NormalizedRow[1] = NormalizedRow[2] = 0.0f;
-				NormalizedRow[dwRow] = 1.0f;
-			}
-			Orthonormal.SetRow( dwRow, NormalizedRow );
-		}
-
-		// Build the final PRS
-		Cast.SetQuaternion( (Quat) Orthonormal ).SetPosition( *GetRow( 3 ) ).SetScale( Scale );
-	}
-
-	return	Cast;
-}
-
-#endif

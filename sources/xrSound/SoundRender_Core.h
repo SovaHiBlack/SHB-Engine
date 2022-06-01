@@ -19,7 +19,7 @@ protected:
 	CSoundRender_Environment			e_current;
 	CSoundRender_Environment			e_target;
 public:
-	typedef	std::pair<ref_sound_data_ptr,float>	event;                                               
+	typedef	std::pair<ref_sound_data_ptr, F32>	event;
 	xr_vector<event>					s_events;
 public:
 	BOOL								bPresent;
@@ -76,10 +76,10 @@ public:
 	virtual void						stop_emitters			( );
 	virtual int							pause_emitters			( bool val );
 
-	virtual void						play					( ref_sound& S, CObject* O,								u32 flags=0, float delay=0.f);
-	virtual void						play_at_pos				( ref_sound& S, CObject* O,		const Fvector &pos,		u32 flags=0, float delay=0.f);
-	virtual void						play_no_feedback		( ref_sound& S, CObject* O,	u32 flags=0, float delay=0.f, Fvector* pos=0, float* vol=0, float* freq=0, Fvector2* range=0);
-	virtual void						set_master_volume		( float			f )=0;
+	virtual void						play					( ref_sound& S, CObject* O,								u32 flags=0, F32 delay=0.f);
+	virtual void						play_at_pos				( ref_sound& S, CObject* O,		const Fvector &pos,		u32 flags=0, F32 delay=0.f);
+	virtual void						play_no_feedback		( ref_sound& S, CObject* O,	u32 flags=0, F32 delay=0.f, Fvector* pos=0, F32* vol=0, F32* freq=0, Fvector2* range=0);
+	virtual void						set_master_volume		(F32			f )=0;
 	virtual void						set_geometry_env		( IReader*		I );
 	virtual void						set_geometry_som		( IReader*		I );
 	virtual void						set_geometry_occ		( CDB::MODEL*	M );
@@ -91,7 +91,7 @@ public:
 
 	// listener
 //	virtual const Fvector&				listener_position		( )=0;
-	virtual void						update_listener			(const Fvector& P, const Fvector& D, const Fvector& N, float dt)=0;
+	virtual void						update_listener			(const Fvector& P, const Fvector& D, const Fvector& N, F32 dt)=0;
 	// eax listener
 	void								i_eax_commit_setting	();
 	void								i_eax_listener_set		(CSound_environment* E);
@@ -100,7 +100,7 @@ public:
 public:
 	CSoundRender_Source*				i_create_source			( LPCSTR name				);
 	void								i_destroy_source		( CSoundRender_Source*  S	);
-	CSoundRender_Emitter*				i_play					( ref_sound* S, BOOL _loop, float delay	);
+	CSoundRender_Emitter*				i_play					( ref_sound* S, BOOL _loop, F32 delay	);
 	void								i_start					( CSoundRender_Emitter* E	);
 	void								i_stop					( CSoundRender_Emitter* E	);
 	void								i_rewind				( CSoundRender_Emitter* E	);
@@ -109,8 +109,8 @@ public:
 
 	virtual void						object_relcase			( CObject* obj );
 
-	virtual float						get_occlusion_to		( const Fvector& hear_pt, const Fvector& snd_pt, float dispersion=0.2f );
-	float								get_occlusion			( Fvector& P, float R, Fvector* occ );
+	virtual F32						get_occlusion_to		( const Fvector& hear_pt, const Fvector& snd_pt, F32 dispersion=0.2f );
+	F32								get_occlusion			( Fvector& P, F32 R, Fvector* occ );
 	CSoundRender_Environment*			get_environment			( const Fvector& P );
 
 	void								env_load				();

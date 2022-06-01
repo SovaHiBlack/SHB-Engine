@@ -20,9 +20,9 @@ public:
 	ICF	T&			operator[] (int i)	const			{ return *((T*)this + i); }
 
 	ICF	SelfRef	set(T _x, T _y, T _z)					{ x = _x;		y = _y;		z = _z;		return *this;	};
-	ICF SelfRef	set(const _vector3<float> &v)			{ x = T(v.x);	y = T(v.y);	z = T(v.z);	return *this;	};
+	ICF SelfRef	set(const _vector3<F32> &v)				{ x = T(v.x);	y = T(v.y);	z = T(v.z);	return *this;	};
 	ICF SelfRef	set(const _vector3<double> &v)			{ x = T(v.x);	y = T(v.y);	z = T(v.z);	return *this;	};
-	ICF	SelfRef	set(float* p)							{ x = p[0];	y = p[1];	z = p[2];		return *this;	};
+	ICF	SelfRef	set(F32* p)								{ x = p[0];	y = p[1];	z = p[2];		return *this;	};
 	ICF	SelfRef	set(double* p)							{ x = p[0];	y = p[1];	z = p[2];		return *this;	};
 
 	ICF	SelfRef	add(const Self &v)						{ x+=v.x;	y+=v.y;		z+=v.z;			return *this;	};
@@ -240,7 +240,7 @@ public:
 		y	= r * sa;
 		return *this;	
 	};
-	IC SelfRef	random_dir		(const Self& ConeAxis, float ConeAngle, CRandom& R = ::Random)
+	IC SelfRef	random_dir		(const Self& ConeAxis, F32 ConeAngle, CRandom& R = ::Random)
 	{
 		Self				rnd;
 		rnd.random_dir		(R);
@@ -335,22 +335,22 @@ public:
     }
     ICF	void	getHP	(T& h, T& p) const
     {
-        float hyp;
+		F32 hyp;
 
         if (fis_zero(x)&& fis_zero(z)){
             h = 0.0f;
-            if (!fis_zero(float(y)))	p = (y>0.0f)?PI_DIV_2:-PI_DIV_2;
+            if (!fis_zero(F32(y)))	p = (y>0.0f)?PI_DIV_2:-PI_DIV_2;
             else            			p = 0.0f;
         }else{
             if (fis_zero(z))			h = (x>0.0f)?-PI_DIV_2:PI_DIV_2;
             else if (z<0.0f)			h = -(atanf(x/z)-PI);
             else            			h = -atanf(x/z);
             hyp = _sqrt(x*x+z*z);
-            if (fis_zero(float(hyp)))	p = (y>0.0f)?PI_DIV_2:-PI_DIV_2;
+            if (fis_zero(F32(hyp)))	p = (y>0.0f)?PI_DIV_2:-PI_DIV_2;
             else						p = atanf(y/hyp);
         }
     }
-	ICF float 	getH	() const
+	ICF F32 	getH	() const
 	{
 		if (fis_zero(x)&& fis_zero(z)){
 			return	0.0f;
@@ -360,14 +360,14 @@ public:
 			else            			return -atanf(x/z);
 		}
 	}
-	ICF float 	getP	() const
+	ICF F32 	getP	() const
 	{
 		if (fis_zero(x)&& fis_zero(z)){
-			if (!fis_zero(float(y)))	return (y>0.0f)?PI_DIV_2:-PI_DIV_2;
+			if (!fis_zero(F32(y)))	return (y>0.0f)?PI_DIV_2:-PI_DIV_2;
 			else            			return 0.0f;
 		}else{
-			float hyp	= _sqrt(x*x+z*z);
-			if (fis_zero(float(hyp)))	return (y>0.0f)?PI_DIV_2:-PI_DIV_2;
+			F32 hyp	= _sqrt(x*x+z*z);
+			if (fis_zero(F32(hyp)))	return (y>0.0f)?PI_DIV_2:-PI_DIV_2;
 			else						return atanf(y/hyp);
 		}
 	}
@@ -430,8 +430,8 @@ public:
 		}
 	}
 };
-typedef _vector3<float>		Fvector;
-typedef _vector3<float>		Fvector3;
+typedef _vector3<F32>		Fvector;
+typedef _vector3<F32>		Fvector3;
 typedef _vector3<double>	Dvector;
 typedef _vector3<double>	Dvector3;
 typedef _vector3<s32>		Ivector;
@@ -444,7 +444,7 @@ BOOL	_valid			(const _vector3<T>& v)	{ return _valid((T)v.x) && _valid((T)v.y) &
 #pragma warning(push)
 #pragma warning(disable:4244)
 ICF		double	rsqrt			(double v)		{	return 1.0/_sqrt(v);			}
-IC		BOOL	exact_normalize (float* a)
+IC		BOOL	exact_normalize (F32* a)
 {
 	double	sqr_magnitude	= a[0]*a[0] + a[1]*a[1] + a[2]*a[2];
 	double	epsilon			= 1.192092896e-05F;

@@ -234,7 +234,7 @@ public:
 };
 
 
-typedef _color<float>	Fcolor;
+typedef _color<F32>	Fcolor;
 typedef _color<double>	Dcolor;
 
 template <class T>

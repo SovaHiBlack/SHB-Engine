@@ -48,7 +48,7 @@ public:
 	IC void			w_s32	(s32 d)					{	w(&d,sizeof(s32));	}
 	IC void			w_s16	(s16 d)					{	w(&d,sizeof(s16));	}
 	IC void			w_s8	(s8 d)					{	w(&d,sizeof(s8));	}
-	IC void			w_float	(float d)				{	w(&d,sizeof(float));}
+	IC void			w_float	(F32 d)				{	w(&d,sizeof(F32));}
 	IC void			w_string(LPCSTR p)			{	w(p,(u32)xr_strlen(p));w_u8(13);w_u8(10);	}
 	IC void			w_stringZ(LPCSTR p)		{	w(p,(u32)xr_strlen(p)+1);					}
 	IC void			w_stringZ(const shared_str& p) 	{	w(*p?*p:"",p.size());w_u8(0);		}
@@ -63,20 +63,20 @@ public:
 	IC void			w_ivector2(const Ivector2 &v)	{	w(&v,sizeof(Ivector2));	}
 
     // quant writing functions
-	IC void 		w_float_q16	(float a, float min, float max)
+	IC void 		w_float_q16	(F32 a, F32 min, F32 max)
 	{
 		VERIFY		(a>=min && a<=max);
-		float q		= (a-min)/(max-min);
+		F32 q		= (a-min)/(max-min);
 		w_u16		(u16(iFloor(q*65535.f+.5f)));
 	}
-	IC void 		w_float_q8	(float a, float min, float max)
+	IC void 		w_float_q8	(F32 a, F32 min, F32 max)
 	{
 		VERIFY		(a>=min && a<=max);
-		float q		= (a-min)/(max-min);
+		F32 q		= (a-min)/(max-min);
 		w_u8		(u8(iFloor(q*255.f+.5f)));
 	}
-	IC void 		w_angle16	(float a)		    {	w_float_q16	(angle_normalize(a),0,PI_MUL_2);}
-	IC void 		w_angle8	(float a)		    {	w_float_q8	(angle_normalize(a),0,PI_MUL_2);}
+	IC void 		w_angle16	(F32 a)		    {	w_float_q16	(angle_normalize(a),0,PI_MUL_2);}
+	IC void 		w_angle8	(F32 a)		    {	w_float_q8	(angle_normalize(a),0,PI_MUL_2);}
 	IC void 		w_dir		(const Fvector& D) 	{	w_u16(pvCompress(D));	}
 	void 			w_sdir		(const Fvector& D);
 	void	__cdecl	w_printf	(LPCSTR format, ...);
@@ -138,8 +138,8 @@ public:
 	
 	IC void			r			(void *p,int cnt) {impl().r(p,cnt);}
 
-	IC Fvector		r_vec3		()			{Fvector tmp;r(&tmp,3*sizeof(float));return tmp;	};
-	IC Fvector4		r_vec4		()			{Fvector4 tmp;r(&tmp,4*sizeof(float));return tmp;	};
+	IC Fvector		r_vec3		()			{Fvector tmp;r(&tmp,3*sizeof(F32));return tmp;	};
+	IC Fvector4		r_vec4		()			{Fvector4 tmp;r(&tmp,4*sizeof(F32));return tmp;	};
 	IC u64			r_u64		()			{	u64 tmp;	r(&tmp,sizeof(tmp)); return tmp;	};
 	IC u32			r_u32		()			{	u32 tmp;	r(&tmp,sizeof(tmp)); return tmp;	};
 	IC u16			r_u16		()			{	u16 tmp;	r(&tmp,sizeof(tmp)); return tmp;	};
@@ -148,7 +148,7 @@ public:
 	IC s32			r_s32		()			{	s32 tmp;	r(&tmp,sizeof(tmp)); return tmp;	};
 	IC s16			r_s16		()			{	s16 tmp;	r(&tmp,sizeof(tmp)); return tmp;	};
 	IC s8			r_s8		()			{	s8 tmp;		r(&tmp,sizeof(tmp)); return tmp;	};
-	IC float		r_float		()			{	float tmp;	r(&tmp,sizeof(tmp)); return tmp;	};
+	IC F32			r_float		()			{		F32 tmp;	r(&tmp,sizeof(tmp)); return tmp;	};
 	IC void			r_fvector4	(Fvector4 &v){	r(&v,sizeof(Fvector4));	}
 	IC void			r_fvector3	(Fvector3 &v){	r(&v,sizeof(Fvector3));	}
 	IC void			r_fvector2	(Fvector2 &v){	r(&v,sizeof(Fvector2));	}
@@ -157,27 +157,27 @@ public:
 	IC void			r_ivector4	(Ivector2 &v){	r(&v,sizeof(Ivector2));	}
 	IC void			r_fcolor	(Fcolor &v)	{	r(&v,sizeof(Fcolor));	}
 	
-	IC float		r_float_q16	(float min, float max)
+	IC F32		r_float_q16	(F32 min, F32 max)
 	{
 		u16	val 	= r_u16();
-		float A		= (float(val)*(max-min))/65535.f + min;		// floating-point-error possible
+		F32 A		= (F32(val)*(max-min))/65535.f + min;		// floating-point-error possible
 		VERIFY		((A >= min-EPS_S) && (A <= max+EPS_S));
         return A;
 	}
-	IC float		r_float_q8	(float min, float max)
+	IC F32		r_float_q8	(F32 min, F32 max)
 	{
 		u8 val		= r_u8();
-		float	A	= (float(val)/255.0001f) *(max-min) + min;	// floating-point-error possible
+		F32	A	= (F32(val)/255.0001f) *(max-min) + min;	// floating-point-error possible
 		VERIFY		((A >= min) && (A <= max));
         return	A;
 	}
-	IC float		r_angle16	()			{ return r_float_q16(0,PI_MUL_2);	}
-	IC float		r_angle8	()			{ return r_float_q8	(0,PI_MUL_2);	}
+	IC F32		r_angle16	()			{ return r_float_q16(0,PI_MUL_2);	}
+	IC F32		r_angle8	()			{ return r_float_q8	(0,PI_MUL_2);	}
 	IC void			r_dir		(Fvector& A){ u16 t=r_u16(); pvDecompress(A,t); }
 	IC void			r_sdir		(Fvector& A)
 	{
 		u16	t		= r_u16();
-		float s		= r_float();
+		F32 s		= r_float();
 		pvDecompress(A,t);
 		A.mul		(s);
 	}

@@ -108,6 +108,10 @@
 #	define XRCORE_API __declspec(dllimport)
 #endif
 
+#include "_types.h"
+#include "_constants.h"
+#include "_limits.h"
+
 #include "xrDebug.h"
 #include "vector.h"
 

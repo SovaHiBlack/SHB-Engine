@@ -589,7 +589,7 @@ public:
 	IC	void	getXYZi	(Tvector& xyz) const{getXYZ(xyz.x,xyz.y,xyz.z);xyz.mul(-1.f);}
 };
 
-typedef		_matrix<float>	Fmatrix;
+typedef		_matrix<F32>	Fmatrix;
 typedef		_matrix<double>	Dmatrix;
 
 template <class T>

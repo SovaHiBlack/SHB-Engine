@@ -67,11 +67,11 @@ template <class T>	IC T		_max	(T a, T b)	{ return a>b?a:b;	}
 template <class T>	IC T		_sqr	(T a)		{ return a*a;		}
 
 // float
-IC float	_abs	(float x)		{ return fabsf(x); }
-IC float	_sqrt	(float x)		{ return sqrtf(x); }
-IC float	_sin	(float x)		{ return sinf(x); }
-IC float	_cos	(float x)		{ return cosf(x); }
-IC BOOL		_valid	(const float x)
+IC F32	_abs	(F32 x)		{ return fabsf(x); }
+IC F32	_sqrt	(F32 x)		{ return sqrtf(x); }
+IC F32	_sin	(F32 x)		{ return sinf(x); }
+IC F32	_cos	(F32 x)		{ return cosf(x); }
+IC BOOL		_valid	(const F32 x)
 {
 	// check for: Signaling NaN, Quiet NaN, Negative infinity ( –INF), Positive infinity (+INF), Negative denormalized, Positive denormalized
 	int			cls			= _fpclass		(double(x));

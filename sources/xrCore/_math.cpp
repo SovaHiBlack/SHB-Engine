@@ -91,9 +91,9 @@ namespace CPU
 	XRCORE_API u64				clk_per_milisec	;
 	XRCORE_API u64				clk_per_microsec;
 	XRCORE_API u64				clk_overhead	;
-	XRCORE_API float			clk_to_seconds	;
-	XRCORE_API float			clk_to_milisec	;
-	XRCORE_API float			clk_to_microsec	;
+	XRCORE_API F32				clk_to_seconds	;
+	XRCORE_API F32				clk_to_milisec	;
+	XRCORE_API F32				clk_to_microsec	;
 	XRCORE_API u64				qpc_freq		= 0	;
 	XRCORE_API u64				qpc_overhead	= 0	;
 	XRCORE_API u32				qpc_counter		= 0	;
@@ -158,11 +158,11 @@ namespace CPU
 //		_control87	( _RC_CHOP, MCW_RC );
 		double a,b;
 		a = 1;		b = double(clk_per_second);
-		clk_to_seconds = float(double(a/b));
+		clk_to_seconds = F32(double(a/b));
 		a = 1000;	b = double(clk_per_second);
-		clk_to_milisec = float(double(a/b));
+		clk_to_milisec = F32(double(a/b));
 		a = 1000000;b = double(clk_per_second);
-		clk_to_microsec = float(double(a/b));
+		clk_to_microsec = F32(double(a/b));
 	}
 };
 
@@ -172,7 +172,7 @@ void _initialize_cpu	(void)
 	Msg("* Detected CPU: %s %s, F%d/M%d/S%d, %.2f mhz, %d-clk 'rdtsc'",
 		CPU::ID.v_name,CPU::ID.model_name,
 		CPU::ID.family,CPU::ID.model,CPU::ID.stepping,
-		float(CPU::clk_per_second/u64(1000000)),
+		F32(CPU::clk_per_second/u64(1000000)),
 		u32(CPU::clk_overhead)
 		);
 
@@ -282,11 +282,11 @@ void	thread_spawn	(thread_t*	entry, LPCSTR	name, unsigned	stack, void* arglist )
 	_beginthread		(thread_entry,stack,startup);
 }
 
-void spline1	( float t, Fvector *p, Fvector *ret )
+void spline1	(F32 t, Fvector *p, Fvector *ret )
 {
-	float     t2  = t * t;
-	float     t3  = t2 * t;
-	float     m[4];
+	F32     t2  = t * t;
+	F32     t3  = t2 * t;
+	F32     m[4];
 
 	ret->x=0.0f;
 	ret->y=0.0f;
@@ -304,12 +304,12 @@ void spline1	( float t, Fvector *p, Fvector *ret )
 	}
 }
 
-void spline2( float t, Fvector *p, Fvector *ret )
+void spline2(F32 t, Fvector *p, Fvector *ret )
 {
-	float	s= 1.0f - t;
-	float   t2 = t * t;
-	float   t3 = t2 * t;
-	float   m[4];
+	F32	s= 1.0f - t;
+	F32   t2 = t * t;
+	F32   t3 = t2 * t;
+	F32   m[4];
 
 	m[0] = s*s*s;
 	m[1] = 3.0f*t3 - 6.0f*t2 + 4.0f;
@@ -324,19 +324,19 @@ void spline2( float t, Fvector *p, Fvector *ret )
 #define beta1 1.0f
 #define beta2 0.8f
 
-void spline3( float t, Fvector *p, Fvector *ret )
+void spline3(F32 t, Fvector *p, Fvector *ret )
 {
-	float	s= 1.0f - t;
-	float   t2 = t * t;
-	float   t3 = t2 * t;
-	float	b12=beta1*beta2;
-	float	b13=b12*beta1;
-	float	delta=2.0f-b13+4.0f*b12+4.0f*beta1+beta2+2.0f;
-	float	d=1.0f/delta;
-	float	b0=2.0f*b13*d*s*s*s;
-	float	b3=2.0f*t3*d;
-	float	b1=d*(2*b13*t*(t2-3*t+3)+2*b12*(t3-3*t2+2)+2*beta1*(t3-3*t+2)+beta2*(2*t3-3*t2+1));
-	float	b2=d*(2*b12*t2*(-t+3)+2*beta1*t*(-t2+3)+beta2*t2*(-2*t+3)+2*(-t3+1));
+	F32	s= 1.0f - t;
+	F32   t2 = t * t;
+	F32   t3 = t2 * t;
+	F32	b12=beta1*beta2;
+	F32	b13=b12*beta1;
+	F32	delta=2.0f-b13+4.0f*b12+4.0f*beta1+beta2+2.0f;
+	F32	d=1.0f/delta;
+	F32	b0=2.0f*b13*d*s*s*s;
+	F32	b3=2.0f*t3*d;
+	F32	b1=d*(2*b13*t*(t2-3*t+3)+2*b12*(t3-3*t2+2)+2*beta1*(t3-3*t+2)+beta2*(2*t3-3*t2+1));
+	F32	b2=d*(2*b12*t2*(-t+3)+2*beta1*t*(-t2+3)+beta2*t2*(-2*t+3)+2*(-t3+1));
 
 	ret->x = p[0].x*b0+p[1].x*b1+p[2].x*b2+p[3].x*b3;
 	ret->y = p[0].y*b0+p[1].y*b1+p[2].y*b2+p[3].y*b3;

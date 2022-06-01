@@ -112,7 +112,7 @@ public:
     }
 };
 
-typedef		_obb<float>		Fobb;
+typedef		_obb<F32>		Fobb;
 typedef		_obb<double>	Dobb;
 
 template <class T>

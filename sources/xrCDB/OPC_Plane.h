@@ -20,29 +20,29 @@
 		//! Constructor
 		inline_			Plane()															{													}
 		//! Constructor
-		inline_			Plane(float nx, float ny, float nz, float d)					{ Set(nx, ny, nz, d);								}
+		inline_			Plane(F32 nx, F32 ny, F32 nz, F32 d)					{ Set(nx, ny, nz, d);								}
 		//! Constructor
 		inline_			Plane(const Point& p, const Point& n)							{ Set(p, n);										}
 		//! Constructor
 		inline_			Plane(const Point& p0, const Point& p1, const Point& p2)		{ Set(p0, p1, p2);									}
 		//! Constructor
-		inline_			Plane(const Point& n, float d)									{ this->n = n; this->d = d;							}
+		inline_			Plane(const Point& n, F32 d)									{ this->n = n; this->d = d;							}
 		//! Copy constructor
 		inline_			Plane(const Plane& plane) : n(plane.n), d(plane.d)				{													}
 		//! Destructor
 		inline_			~Plane()														{													}
 
 		inline_	Plane&	Zero()															{ n.Zero(); d = 0.0f;				return *this;	}
-		inline_	Plane&	Set(float nx, float ny, float nz, float d)						{ n.Set(nx, ny, nz); this->d = d;	return *this;	}
+		inline_	Plane&	Set(F32 nx, F32 ny, F32 nz, F32 d)						{ n.Set(nx, ny, nz); this->d = d;	return *this;	}
 		inline_	Plane&	Set(const Point& p, const Point& n)								{ this->n = n; d = - p | n;			return *this;	}
 				Plane&	Set(const Point& p0, const Point& p1, const Point& p2);
 
-		inline_	float	Distance(const Point& p)			const						{ return (p | n) + d;								}
+		inline_	F32	Distance(const Point& p)			const						{ return (p | n) + d;								}
 		inline_	bool	Belongs(const Point& p)				const						{ return _abs(Distance(p)) < PLANE_EPSILON;		}
 
 		inline_	void	Normalize()
 		{
-			float Denom = 1.0f / n.Magnitude();
+			F32 Denom = 1.0f / n.Magnitude();
 			n.x	*= Denom;
 			n.y	*= Denom;
 			n.z	*= Denom;
@@ -52,7 +52,7 @@
 		public:
 		// Members
 				Point	n;		//!< The normal to the plane
-				float	d;		//!< The distance from the origin
+				F32	d;		//!< The distance from the origin
 
 		// Cast operators
 		inline_			operator Point()					const	{ return n;											}

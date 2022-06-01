@@ -21,9 +21,9 @@ class CSoundRender_CoreD: public CSoundRender_Core
 		Fvector			vVelocity;
 		Fvector			vOrientFront; 
 		Fvector			vOrientTop; 
-		float			fDistanceFactor;
-		float			fRolloffFactor;
-		float			fDopplerFactor;
+		F32			fDistanceFactor;
+		F32			fRolloffFactor;
+		F32			fDopplerFactor;
 	};
     BOOL 				EAXQuerySupport			(const GUID* guid, u32 prop);
 	BOOL 				EAXTestSupport			(BOOL bDeferred);

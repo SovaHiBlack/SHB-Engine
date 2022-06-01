@@ -595,8 +595,8 @@ void RayCollider::_Stab(const AABBQuantizedNode* node)
 {
 	// Dequantize box
 	const QuantizedAABB* Box = &node->mAABB;
-	const Point Center(float(Box->mCenter[0]) * mCenterCoeff.x, float(Box->mCenter[1]) * mCenterCoeff.y, float(Box->mCenter[2]) * mCenterCoeff.z);
-	const Point Extents(float(Box->mExtents[0]) * mExtentsCoeff.x, float(Box->mExtents[1]) * mExtentsCoeff.y, float(Box->mExtents[2]) * mExtentsCoeff.z);
+	const Point Center(F32(Box->mCenter[0]) * mCenterCoeff.x, F32(Box->mCenter[1]) * mCenterCoeff.y, F32(Box->mCenter[2]) * mCenterCoeff.z);
+	const Point Extents(F32(Box->mExtents[0]) * mExtentsCoeff.x, F32(Box->mExtents[1]) * mExtentsCoeff.y, F32(Box->mExtents[2]) * mExtentsCoeff.z);
 
 	// Perform Segment-AABB overlap test
 	if(!SegmentAABBOverlap(Center, Extents))	return;
@@ -651,8 +651,8 @@ void RayCollider::_Stab(const AABBQuantizedNoLeafNode* node)
 {
 	// Dequantize box
 	const QuantizedAABB* Box = &node->mAABB;
-	const Point Center(float(Box->mCenter[0]) * mCenterCoeff.x, float(Box->mCenter[1]) * mCenterCoeff.y, float(Box->mCenter[2]) * mCenterCoeff.z);
-	const Point Extents(float(Box->mExtents[0]) * mExtentsCoeff.x, float(Box->mExtents[1]) * mExtentsCoeff.y, float(Box->mExtents[2]) * mExtentsCoeff.z);
+	const Point Center(F32(Box->mCenter[0]) * mCenterCoeff.x, F32(Box->mCenter[1]) * mCenterCoeff.y, F32(Box->mCenter[2]) * mCenterCoeff.z);
+	const Point Extents(F32(Box->mExtents[0]) * mExtentsCoeff.x, F32(Box->mExtents[1]) * mExtentsCoeff.y, F32(Box->mExtents[2]) * mExtentsCoeff.z);
 
 	// Perform Segment-AABB overlap test
 	if(!SegmentAABBOverlap(Center, Extents))	return;
@@ -733,8 +733,8 @@ void RayCollider::_UnboundedStab(const AABBQuantizedNode* node)
 {
 	// Dequantize box
 	const QuantizedAABB* Box = &node->mAABB;
-	const Point Center(float(Box->mCenter[0]) * mCenterCoeff.x, float(Box->mCenter[1]) * mCenterCoeff.y, float(Box->mCenter[2]) * mCenterCoeff.z);
-	const Point Extents(float(Box->mExtents[0]) * mExtentsCoeff.x, float(Box->mExtents[1]) * mExtentsCoeff.y, float(Box->mExtents[2]) * mExtentsCoeff.z);
+	const Point Center(F32(Box->mCenter[0]) * mCenterCoeff.x, F32(Box->mCenter[1]) * mCenterCoeff.y, F32(Box->mCenter[2]) * mCenterCoeff.z);
+	const Point Extents(F32(Box->mExtents[0]) * mExtentsCoeff.x, F32(Box->mExtents[1]) * mExtentsCoeff.y, F32(Box->mExtents[2]) * mExtentsCoeff.z);
 
 	// Perform Ray-AABB overlap test
 	if(!RayAABBOverlap(Center, Extents))	return;
@@ -789,8 +789,8 @@ void RayCollider::_UnboundedStab(const AABBQuantizedNoLeafNode* node)
 {
 	// Dequantize box
 	const QuantizedAABB* Box = &node->mAABB;
-	const Point Center(float(Box->mCenter[0]) * mCenterCoeff.x, float(Box->mCenter[1]) * mCenterCoeff.y, float(Box->mCenter[2]) * mCenterCoeff.z);
-	const Point Extents(float(Box->mExtents[0]) * mExtentsCoeff.x, float(Box->mExtents[1]) * mExtentsCoeff.y, float(Box->mExtents[2]) * mExtentsCoeff.z);
+	const Point Center(F32(Box->mCenter[0]) * mCenterCoeff.x, F32(Box->mCenter[1]) * mCenterCoeff.y, F32(Box->mCenter[2]) * mCenterCoeff.z);
+	const Point Extents(F32(Box->mExtents[0]) * mExtentsCoeff.x, F32(Box->mExtents[1]) * mExtentsCoeff.y, F32(Box->mExtents[2]) * mExtentsCoeff.z);
 
 	// Perform Ray-AABB overlap test
 	if(!RayAABBOverlap(Center, Extents))	return;

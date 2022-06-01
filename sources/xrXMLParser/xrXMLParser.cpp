@@ -216,32 +216,32 @@ int CXml::ReadInt(XML_NODE* start_node, LPCSTR path, int index, int default_int_
 	return atoi				(result_str);
 }
 
-float   CXml::ReadFlt(LPCSTR path, int index,  float default_flt_val)
+F32   CXml::ReadFlt(LPCSTR path, int index, F32 default_flt_val)
 {
 	LPCSTR result_str		= Read(path, index, NULL ); 
 	if(result_str==NULL)
 		return				default_flt_val;
 
-	return (float)atof		(result_str);
+	return (F32)atof		(result_str);
 }
 
-float   CXml::ReadFlt(XML_NODE* start_node,  LPCSTR path, int index,  float default_flt_val)
+F32   CXml::ReadFlt(XML_NODE* start_node,  LPCSTR path, int index, F32 default_flt_val)
 {
 	LPCSTR result_str		= Read(start_node, path, index, NULL ); 
 	if(result_str==NULL)
 		return				default_flt_val;
 
-	return (float)atof		(result_str);
+	return (F32)atof		(result_str);
 }
 
-float   CXml::ReadFlt(XML_NODE* node,  float default_flt_val)
+F32   CXml::ReadFlt(XML_NODE* node, F32 default_flt_val)
 {
 	LPCSTR result_str		= Read(node, NULL ); 
 
 	if(result_str==NULL)
 		return				default_flt_val;
 
-	return (float)atof		(result_str);
+	return (F32)atof		(result_str);
 }
 
 LPCSTR CXml::ReadAttrib(XML_NODE* start_node, LPCSTR path,  int index, 
@@ -324,34 +324,34 @@ int CXml::ReadAttribInt(XML_NODE* start_node, LPCSTR path, int index, LPCSTR att
 	return atoi				(result_str);
 }
 
-float   CXml::ReadAttribFlt(LPCSTR path,	int index,  LPCSTR attrib, float default_flt_val)
+F32   CXml::ReadAttribFlt(LPCSTR path,	int index,  LPCSTR attrib, F32 default_flt_val)
 {
 	LPCSTR result_str		= ReadAttrib(path, index, attrib, NULL); 
 
 	if(result_str==NULL)
 		return				default_flt_val;
 
-	return (float)atof		(result_str);
+	return (F32)atof		(result_str);
 }
 
-float   CXml::ReadAttribFlt(XML_NODE* start_node, LPCSTR path, int index,  LPCSTR attrib, float default_flt_val)
+F32   CXml::ReadAttribFlt(XML_NODE* start_node, LPCSTR path, int index,  LPCSTR attrib, F32 default_flt_val)
 {
 	LPCSTR result_str		= ReadAttrib(start_node, path, index, attrib, NULL); 
 
 	if(result_str==NULL)
 		return				default_flt_val;
 
-	return (float)atof		(result_str);
+	return (F32)atof		(result_str);
 }
 
-float   CXml::ReadAttribFlt(XML_NODE* node,	LPCSTR attrib, float default_flt_val)
+F32   CXml::ReadAttribFlt(XML_NODE* node,	LPCSTR attrib, F32 default_flt_val)
 {
 	LPCSTR result_str		= ReadAttrib(node, attrib, NULL); 
 
 	if(result_str==NULL)
 		return				default_flt_val;
 
-	return (float)atof		(result_str);
+	return (F32)atof		(result_str);
 }
 
 int CXml::GetNodesNum(LPCSTR path, int index, LPCSTR  tag_name)

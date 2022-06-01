@@ -437,7 +437,7 @@ public:
 	}
 };
 
-typedef _quaternion<float>	Fquaternion;
+typedef _quaternion<F32>	Fquaternion;
 typedef _quaternion<double>	Dquaternion;
 
 template <class T>

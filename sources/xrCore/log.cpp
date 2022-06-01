@@ -109,7 +109,7 @@ void Log				(LPCSTR msg, int dop) {
 	Log		(buf);
 }
 
-void Log				(LPCSTR msg, float dop) {
+void Log				(LPCSTR msg, F32 dop) {
 	char buf[1024];
 
 	sprintf_s	(buf, sizeof(buf),"%s %f",msg,dop);

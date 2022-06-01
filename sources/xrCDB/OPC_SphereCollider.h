@@ -28,9 +28,9 @@
 
 		// Cached faces signature
 		Point		Center;		//!< Sphere used when performing the query resulting in cached faces
-		float		FatRadius2;	//!< Sphere used when performing the query resulting in cached faces
+		F32			FatRadius2;	//!< Sphere used when performing the query resulting in cached faces
 		// User settings
-		float		FatCoeff;	//!< mRadius2 multiplier used to create a fat sphere
+		F32			FatCoeff;	//!< mRadius2 multiplier used to create a fat sphere
 	};
 
 	class OPCODE_API SphereCollider : public VolumeCollider
@@ -77,7 +77,7 @@
 		protected:
 		// Sphere in model space
 							Point			mCenter;			//!< Sphere center
-							float			mRadius2;			//!< Sphere radius squared
+							F32				mRadius2;			//!< Sphere radius squared
 		// Internal methods
 							void			_Collide(const AABBCollisionNode* node);
 							void			_Collide(const AABBNoLeafNode* node);

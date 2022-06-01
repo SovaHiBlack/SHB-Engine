@@ -17,12 +17,12 @@ public:
 	IC 	s32		randIs	(s32 range)					{ return randI(-range,range); }
 	IC 	s32		randIs	(s32 range, s32 offs)		{ return offs+randIs(range); }
 
-	IC 	float	maxF	()							{ return 32767.f;	}
-	IC 	float	randF	()							{ return float(randI())/maxF();	}
-	IC 	float	randF	(float max)					{ return randF()*max; }
-	IC 	float	randF	(float min,float max)		{ return min+randF(max-min); }
-	IC 	float	randFs	(float range)				{ return randF(-range,range); }
-	IC 	float	randFs	(float range, float offs)	{ return offs+randFs(range); }
+	IC 	F32	maxF	()							{ return 32767.0f;	}
+	IC 	F32	randF	()							{ return F32(randI())/maxF();	}
+	IC 	F32	randF	(F32 max)					{ return randF()*max; }
+	IC 	F32	randF	(F32 min, F32 max)		{ return min+randF(max-min); }
+	IC 	F32	randFs	(F32 range)				{ return randF(-range,range); }
+	IC 	F32	randFs	(F32 range, F32 offs)	{ return offs+randFs(range); }
 };
 
 XRCORE_API extern CRandom	Random;

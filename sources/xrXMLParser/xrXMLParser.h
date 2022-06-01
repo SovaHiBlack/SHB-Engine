@@ -44,9 +44,9 @@ public:
 	int   				ReadInt					(XML_NODE* start_node,  LPCSTR path, int index,  int default_int_val);
 	int   				ReadInt					(XML_NODE* node,  int default_int_val);
 
-	float   			ReadFlt					(LPCSTR path, int index,  float default_flt_val);
-	float   			ReadFlt					(XML_NODE* start_node,  LPCSTR path, int index,  float default_flt_val);
-	float   			ReadFlt					(XML_NODE* node,  float default_flt_val);
+	F32					ReadFlt					(LPCSTR path, int index, F32 default_flt_val);
+	F32					ReadFlt					(XML_NODE* start_node,  LPCSTR path, int index, F32 default_flt_val);
+	F32					ReadFlt					(XML_NODE* node, F32 default_flt_val);
 
 
 	LPCSTR				ReadAttrib				(LPCSTR path,  int index, LPCSTR attrib, LPCSTR default_str_val = "");
@@ -57,9 +57,9 @@ public:
 	int					ReadAttribInt			(XML_NODE* start_node, LPCSTR path, int index, LPCSTR attrib, int default_int_val = 0);
 	int					ReadAttribInt			(XML_NODE* node, LPCSTR attrib, int default_int_val);
 
-	float   			ReadAttribFlt			(LPCSTR path,	int index,  LPCSTR attrib, float default_flt_val = 0.0f);
-	float   			ReadAttribFlt			(XML_NODE* start_node, LPCSTR path, int index,  LPCSTR attrib, float default_flt_val = 0.0f);
-	float   			ReadAttribFlt			(XML_NODE* node,	LPCSTR attrib, float default_flt_val = 0.0f);
+	F32					ReadAttribFlt			(LPCSTR path,	int index,  LPCSTR attrib, F32 default_flt_val = 0.0f);
+	F32					ReadAttribFlt			(XML_NODE* start_node, LPCSTR path, int index,  LPCSTR attrib, F32 default_flt_val = 0.0f);
+	F32					ReadAttribFlt			(XML_NODE* node,	LPCSTR attrib, F32 default_flt_val = 0.0f);
 
 	XML_NODE*			SearchForAttribute		(LPCSTR path, int index, LPCSTR tag_name, LPCSTR attrib, LPCSTR attrib_value_pattern);
 	XML_NODE*			SearchForAttribute		(XML_NODE* start_node, LPCSTR tag_name, LPCSTR attrib, LPCSTR attrib_value_pattern);

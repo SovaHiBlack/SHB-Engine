@@ -104,7 +104,7 @@ public:
 		bc.add				(min,bd);
 		return				*this;
 	}
-	IC	SelfRef		scale		(float s)					// 0.1 means make 110%, -0.1 means make 90%
+	IC	SelfRef		scale		(F32 s)					// 0.1 means make 110%, -0.1 means make 90%
 	{
 		Fvector	bd;	bd.sub	(max,min).mul(s);
 		grow				(bd);
@@ -320,8 +320,8 @@ public:
 	}
 };
 
-typedef _box3<float>	Fbox;
-typedef _box3<float>	Fbox3;
+typedef _box3<F32>	Fbox;
+typedef _box3<F32>	Fbox3;
 typedef _box3<double>	Dbox;
 typedef _box3<double>	Dbox3;
 

@@ -87,7 +87,7 @@ void  AABBTreeNode::destroy		(AABBTreeBuilder*	_tree)
 udword AABBTreeNode::Split(udword axis, AABBTreeBuilder* builder)
 {
 	// Get node split value
-	float SplitValue = builder->GetSplittingValueEx(mNodePrimitives, mNbPrimitives, mBV, axis);
+	F32 SplitValue = builder->GetSplittingValueEx(mNodePrimitives, mNbPrimitives, mBV, axis);
 
 	udword NbPos = 0;
 	// Loop through all node-related primitives. Their indices range from mNodePrimitives[0] to mNodePrimitives[mNbPrimitives-1].
@@ -99,7 +99,7 @@ udword AABBTreeNode::Split(udword axis, AABBTreeBuilder* builder)
 
 		// Test against the splitting value. The primitive value is tested against the enclosing-box center.
 		// [We only need an approximate partition of the enclosing box here.]
-		float PrimitiveValue = builder->GetSplittingValue(Index, axis);
+		F32 PrimitiveValue = builder->GetSplittingValue(Index, axis);
 
 		// Reorganize the list of indices in this order: positive - negative.
 		if(PrimitiveValue > SplitValue)
@@ -171,21 +171,21 @@ bool AABBTreeNode::Subdivide(AABBTreeBuilder* builder)
 			Means.y+=builder->GetSplittingValue(Index, 1);
 			Means.z+=builder->GetSplittingValue(Index, 2);
 		}
-		Means/=float(mNbPrimitives);
+		Means/= F32(mNbPrimitives);
 
 		// Compute variances
 		Point Vars(0.0f, 0.0f, 0.0f);
 		for(i=0;i<mNbPrimitives;i++)
 		{
 			udword Index = mNodePrimitives[i];
-			float Cx = builder->GetSplittingValue(Index, 0);
-			float Cy = builder->GetSplittingValue(Index, 1);
-			float Cz = builder->GetSplittingValue(Index, 2);
+			F32 Cx = builder->GetSplittingValue(Index, 0);
+			F32 Cy = builder->GetSplittingValue(Index, 1);
+			F32 Cz = builder->GetSplittingValue(Index, 2);
 			Vars.x += (Cx - Means.x)*(Cx - Means.x);
 			Vars.y += (Cy - Means.y)*(Cy - Means.y);
 			Vars.z += (Cz - Means.z)*(Cz - Means.z);
 		}
-		Vars/=float(mNbPrimitives-1);
+		Vars/= F32(mNbPrimitives-1);
 
 		// Choose axis with greatest variance
 		udword Axis = Vars.LargestAxis();
@@ -199,10 +199,10 @@ bool AABBTreeNode::Subdivide(AABBTreeBuilder* builder)
 	else if(builder->mRules&SPLIT_BALANCED)
 	{
 		// Test 3 axis, take the best
-		float Results[3];
-		NbPos = Split(0, builder);	Results[0] = float(NbPos)/float(mNbPrimitives);
-		NbPos = Split(1, builder);	Results[1] = float(NbPos)/float(mNbPrimitives);
-		NbPos = Split(2, builder);	Results[2] = float(NbPos)/float(mNbPrimitives);
+		F32 Results[3];
+		NbPos = Split(0, builder);	Results[0] = F32(NbPos)/ F32(mNbPrimitives);
+		NbPos = Split(1, builder);	Results[1] = F32(NbPos)/ F32(mNbPrimitives);
+		NbPos = Split(2, builder);	Results[2] = F32(NbPos)/ F32(mNbPrimitives);
 		Results[0]-=0.5f;	Results[0]*=Results[0];
 		Results[1]-=0.5f;	Results[1]*=Results[1];
 		Results[2]-=0.5f;	Results[2]*=Results[2];
@@ -223,7 +223,7 @@ bool AABBTreeNode::Subdivide(AABBTreeBuilder* builder)
 		// Sort axis
 		Point Extents;	mBV.GetExtents(Extents);	// Box extents
 		udword SortedAxis[] = { 0, 1, 2 };
-		float* Keys = (float*)&Extents.x;
+		F32* Keys = (F32*)&Extents.x;
 		for(udword j=0;j<3;j++)
 		{
 			for(udword i=0;i<2;i++)

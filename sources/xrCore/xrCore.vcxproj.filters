@@ -451,6 +451,12 @@
     <ClInclude Include="build defines.h">
       <Filter>Kernel</Filter>
     </ClInclude>
+    <ClInclude Include="_limits.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="_constants.h">
+      <Filter>Math</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="FileSystem.h">

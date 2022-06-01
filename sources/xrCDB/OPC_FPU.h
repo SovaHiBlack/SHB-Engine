@@ -24,7 +24,7 @@
 	#define AIR(x)					(IR(x)&0x7fffffff)
 
 	//! Floating-point representation of an integer value.
-	#define FR(x)					((float&)(x))
+	#define FR(x)					((F32&)(x))
 
 	//! Integer-based comparison of a floating point value.
 	//! Don't use it blindly, it can be faster or slower than the FPU comparison, depends on the context.
@@ -32,78 +32,79 @@
 
 	//! Fast fabs for floating-point values. It just clears the sign bit.
 	//! Don't use it blindy, it can be faster or slower than the FPU comparison, depends on the context.
-	inline_ float FastFabs(float x)
+	inline_ F32 FastFabs(F32 x)
 	{
 		udword FloatBits = IR(x)&0x7fffffff;
 		return FR(FloatBits);
 	}
 
 	//! Saturates positive to zero.
-	inline_ float fsat(float f)
+	inline_ F32 fsat(F32 f)
 	{
 		udword y = (udword&)f & ~((sdword&)f >>31);
-		return (float&)y;
+		return (F32&)y;
 	}
 
 	//! Computes 1.0f / sqrtf(x).
-	inline_ float frsqrt(float f)
+	inline_ F32 frsqrt(F32 f)
 	{
-		float x = f * 0.5f;
+		F32 x = f * 0.5f;
 		udword y = 0x5f3759df - ((udword&)f >> 1);
 		// Iteration...
-		(float&)y  = (float&)y * ( 1.5f - ( x * (float&)y * (float&)y ) );
+		(F32&)y  = (F32&)y * ( 1.5f - ( x * (F32&)y * (F32&)y ) );
 		// Result
-		return (float&)y;
+		return (F32&)y;
 	}
 
 	//! Computes 1.0f / sqrtf(x). Comes from NVIDIA.
-	inline_ float InvSqrt(const float& x)
+	inline_ F32 InvSqrt(const F32& x)
 	{
 		udword tmp = (udword(IEEE_1_0 << 1) + IEEE_1_0 - *(udword*)&x) >> 1;   
-		float y = *(float*)&tmp;                                             
+		F32 y = *(F32*)&tmp;
 		return y * (1.47f - 0.47f * x * y * y);
 	}
 
 	//! Computes 1.0f / sqrtf(x). Comes from Quake3. Looks like the first one I had above.
 	//! See http://www.magic-software.com/3DGEDInvSqrt.html
-	inline_ float RSqrt(float number)
+	inline_ F32 RSqrt(F32 number)
 	{
 		long i;
-		float x2, y;
-		const float threehalfs = 1.5f;
+		F32 x2;
+		F32 y;
+		const F32 threehalfs = 1.5f;
 
 		x2 = number * 0.5f;
 		y  = number;
 		i  = * (long *) &y;
 		i  = 0x5f3759df - (i >> 1);
-		y  = * (float *) &i;
+		y  = * (F32*) &i;
 		y  = y * (threehalfs - (x2 * y * y));
 
 		return y;
 	}
 
 	//! TO BE DOCUMENTED
-	inline_ float fsqrt(float f)
+	inline_ F32 fsqrt(F32 f)
 	{
 		udword y = ( ( (sdword&)f - 0x3f800000 ) >> 1 ) + 0x3f800000;
 		// Iteration...?
-		// (float&)y = (3.0f - ((float&)y * (float&)y) / f) * (float&)y * 0.5f;
+		// (F32&)y = (3.0f - ((F32&)y * (F32&)y) / f) * (F32&)y * 0.5f;
 		// Result
-		return (float&)y;
+		return (F32&)y;
 	}
 
 	//! Returns the float ranged espilon value.
-	inline_ float fepsilon(float f)
+	inline_ F32 fepsilon(F32 f)
 	{
 		udword b = (udword&)f & 0xff800000;
 		udword a = b | 0x00000001;
-		(float&)a -= (float&)b;
+		(F32&)a -= (F32&)b;
 		// Result
-		return (float&)a;
+		return (F32&)a;
 	}
 
 	//! Is the float valid ?
-	inline_ bool IsNAN(float value)	{ return ((*(udword*)&value)&0x7f800000)==0x7f800000; }
+	inline_ bool IsNAN(F32 value)	{ return ((*(udword*)&value)&0x7f800000)==0x7f800000; }
 	#define	NaN(value) (!((value>=0) || (value<0)))
 
 /*
@@ -138,14 +139,14 @@
 	}
 */
 	//! This function computes the slowest possible floating-point value (you can also directly use FLT_EPSILON)
-	inline_ float ComputeFloatEpsilon()
+	inline_ F32 ComputeFloatEpsilon()
 	{
-		float f = 1.0f;
+		F32 f = 1.0f;
 		((udword&)f)^=1;
 		return f - 1.0f;	// You can check it's the same as FLT_EPSILON
 	}
 
-	inline_ bool IsFloatZero(float x, float epsilon=1e-6f)
+	inline_ bool IsFloatZero(F32 x, F32 epsilon=1e-6f)
 	{
 		return x*x < epsilon;
 	}
@@ -166,9 +167,9 @@
 	#define FCMOVNB_ST2	_asm	_emit	0xdb	_asm	_emit	0xc2
 
 	//! A global function to find MAX(a,b,c) using FCOMI/FCMOV
-/*	inline_ float FCMax3(float a, float b, float c)
+/*	inline_ F32 FCMax3(F32 a, F32 b, F32 c)
 	{
-		float Res;
+		F32 Res;
 		_asm	fld		[a]
 		_asm	fld		[b]
 		_asm	fld		[c]
@@ -182,9 +183,9 @@
 	}
 
 	//! A global function to find MIN(a,b,c) using FCOMI/FCMOV
-	inline_ float FCMin3(float a, float b, float c)
+	inline_ F32 FCMin3(F32 a, F32 b, F32 c)
 	{
-		float Res;
+		F32 Res;
 		_asm	fld		[a]
 		_asm	fld		[b]
 		_asm	fld		[c]
@@ -197,7 +198,7 @@
 		return Res;
 	}
 */
-	inline_ int ConvertToSortable(float f)
+	inline_ int ConvertToSortable(F32 f)
 	{
 		int& Fi = (int&)f;
 		int Fmask = (Fi>>31);
@@ -230,8 +231,8 @@
 	FUNCTION ICECORE_API void		SetFPURoundingDown();
 	FUNCTION ICECORE_API void		SetFPURoundingNear();
 
-	FUNCTION ICECORE_API int		intChop(const float& f);
-	FUNCTION ICECORE_API int		intFloor(const float& f);
-	FUNCTION ICECORE_API int		intCeil(const float& f);
+	FUNCTION ICECORE_API int		intChop(const F32& f);
+	FUNCTION ICECORE_API int		intFloor(const F32& f);
+	FUNCTION ICECORE_API int		intCeil(const F32& f);
 
 #endif // __ICEFPU_H__

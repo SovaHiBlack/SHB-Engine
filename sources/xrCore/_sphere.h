@@ -45,7 +45,7 @@ public:
 	}
 /*
 			int				quantity;
-			float			afT[2];
+			F32			afT[2];
 			Fsphere::ERP_Result	result	= sS.intersect(ray.pos,ray.fwd_dir,range,quantity,afT);
 
 			if (Fsphere::rpOriginInside || ((result==Fsphere::rpOriginOutside)&&(afT[0]<range))){
@@ -60,7 +60,7 @@ public:
 	ICF ERP_Result intersect_full	(const _vector3<T>& start, const _vector3<T>& dir, T& dist) const
 	{
 		int				quantity;
-		float			afT[2];
+		F32			afT[2];
 		Fsphere::ERP_Result	result	= intersect(start,dir,dist,quantity,afT);
 
 		if (result == Fsphere::rpOriginInside || ((result==Fsphere::rpOriginOutside)&&(afT[0]<dist))){
@@ -142,7 +142,7 @@ public:
 	}
 };
 
-typedef _sphere<float>	Fsphere;
+typedef _sphere<F32>	Fsphere;
 typedef _sphere<double> Dsphere;
 
 template <class T>
