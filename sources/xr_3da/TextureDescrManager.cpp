@@ -4,12 +4,12 @@
 #include "ETextureParams.h"
 
 // eye-params
-float					r__dtex_range	= 50;
+F32					r__dtex_range	= 50;
 class cl_dt_scaler		: public R_constant_setup {
 public:
-	float				scale;
+	F32				scale;
 
-	cl_dt_scaler		(float s) : scale(s)	{};
+	cl_dt_scaler		(F32 s) : scale(s)	{};
 	virtual void setup	(R_constant* C)
 	{
 		RCache.set_c	(C,scale,scale,scale,1/r__dtex_range);
@@ -48,7 +48,7 @@ void CTextureDescrMngr::LoadLTX()
 				desc.m_assoc			= xr_new<texture_assoc>();
 
 				string_path				T;
-				float					s;
+				F32					s;
 
 				int res = sscanf					(*item.second,"%[^,],%f",T,&s);
 				R_ASSERT(res==2);
@@ -194,7 +194,7 @@ shared_str CTextureDescrMngr::GetBumpName(const shared_str& tex_name) const
 	return "";
 }
 
-float CTextureDescrMngr::GetMaterial(const shared_str& tex_name) const
+F32 CTextureDescrMngr::GetMaterial(const shared_str& tex_name) const
 {
 	map_TD::const_iterator I = m_texture_details.find	(tex_name);
 	if (I!=m_texture_details.end())
@@ -270,7 +270,7 @@ BOOL CTextureDescrMngr::GetDetailTexture(const shared_str& tex_name, LPCSTR& res
 			{
 				texture_detail			D;
 				string256				T;
-				float					s;
+				F32					s;
 
 				CInifile::Item& item	= *I;
 				sscanf					(*item.second,"%[^,],%f",T,&s);

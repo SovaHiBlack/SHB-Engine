@@ -128,7 +128,7 @@ void	CResourceManager::OnDeviceCreate	(IReader* F)
 			{
 				texture_detail			D;
 				string256				T;
-				float					s;
+				F32					s;
 
 				CInifile::Item& item	= *I;
 				sscanf					(*item.second,"%[^,],%f",T,&s);

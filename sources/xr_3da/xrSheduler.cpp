@@ -4,9 +4,9 @@
 
 //#define DEBUG_SCHEDULER
 
-float			psShedulerCurrent		= 10.f	;
-float			psShedulerTarget		= 10.f	;
-const	float	psShedulerReaction		= 0.1f	;
+F32			psShedulerCurrent		= 10.f	;
+F32			psShedulerTarget		= 10.f	;
+const	F32	psShedulerReaction		= 0.1f	;
 BOOL			g_bSheduleInProgress	= FALSE	;
 
 //-------------------------------------------------------------------------------------
@@ -336,8 +336,8 @@ void CSheduler::ProcessStep			()
 			// Calc next update interval
 			u32		dwMin				= _max(u32(30),T.Object->shedule.t_min);
 			u32		dwMax				= (1000+T.Object->shedule.t_max)/2;
-			float	scale				= T.Object->shedule_Scale	(); 
-			u32		dwUpdate			= dwMin+iFloor(float(dwMax-dwMin)*scale);
+			F32	scale				= T.Object->shedule_Scale	();
+			u32		dwUpdate			= dwMin+iFloor(F32(dwMax-dwMin)*scale);
 			clamp	(dwUpdate,u32(_max(dwMin,u32(20))),dwMax);
 
 

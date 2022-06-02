@@ -57,7 +57,7 @@ public:
     void				set_count			(u32 cnt){VERIFY(cnt); _count=cnt;}
     u32					get_count			() const {return (u32(_count)&0x00FFFFFF);}
 
-	float				GetLength			(){ return float(_count)*SAMPLE_SPF; }
+	F32				GetLength			(){ return F32(_count)*SAMPLE_SPF; }
 
 	u32					mem_usage			(){ 
 		u32 sz			= sizeof(*this);
@@ -70,7 +70,7 @@ public:
 class ENGINE_API motion_marks
 {
 public:
-	typedef					std::pair<  float, float > 				interval;
+	typedef					std::pair<  F32, F32 > 				interval;
 
 private:
 	typedef xr_vector< interval >									STORAGE;
@@ -82,10 +82,10 @@ public:
 	shared_str		name;
 	void			Load			(IReader*);
 
-	bool			pick_mark		(const float& t) const;
+	bool			pick_mark		(const F32& t) const;
 };
 
-const float	fQuantizerRangeExt	= 1.5f;
+const F32	fQuantizerRangeExt	= 1.5f;
 class ENGINE_API		CMotionDef
 {
 public:
@@ -98,16 +98,16 @@ public:
     u16						flags;
 	xr_vector<motion_marks>	marks;
 
-	IC float				Dequantize			(u16 V)		{	return  float(V)/655.35f; }
-	IC u16					Quantize			(float V)	{	s32		t = iFloor(V*655.35f); clamp(t,0,65535); return u16(t); }
+	IC F32				Dequantize			(u16 V)		{	return  F32(V)/655.35f; }
+	IC u16					Quantize			(F32 V)	{	s32		t = iFloor(V*655.35f); clamp(t,0,65535); return u16(t); }
 
 	void					Load				(IReader* MP, u32 fl, u16 vers);
 	u32						mem_usage			(){ return sizeof(*this);}
 
-    ICF float				Accrue				(){return fQuantizerRangeExt*Dequantize(accrue);}
-    ICF float				Falloff				(){return fQuantizerRangeExt*Dequantize(falloff);}
-    ICF float				Speed				(){return Dequantize(speed);}
-    ICF float				Power				(){return Dequantize(power);}
+    ICF F32				Accrue				(){return fQuantizerRangeExt*Dequantize(accrue);}
+    ICF F32				Falloff				(){return fQuantizerRangeExt*Dequantize(falloff);}
+    ICF F32				Speed				(){return Dequantize(speed);}
+    ICF F32				Power				(){return Dequantize(power);}
     bool					StopAtEnd			();
 };
 struct accel_str_pred : public std::binary_function<shared_str, shared_str, bool>	{	

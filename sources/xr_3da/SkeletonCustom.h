@@ -39,14 +39,14 @@ public:
 	BoneCallback		Callback;
 	void*				Callback_Param;
 	BOOL				Callback_overwrite;					// performance hint - don't calc anims
-	float				param			[MAX_BONE_PARAMS];	// 
+	F32				param			[MAX_BONE_PARAMS];	// 
 	u32					Callback_type;						//
 	// methods
 	void				construct		();
 	void				set_callback	(u32 Type, BoneCallback C, void* Param, BOOL overwrite=FALSE);
 	void				reset_callback	();
-	void				set_param		(u32 idx, float data);
-	float				get_param		(u32 idx);
+	void				set_param		(u32 idx, F32 data);
+	F32				get_param		(u32 idx);
 
 	u32					mem_usage		(){return sizeof(*this);}
 };
@@ -70,7 +70,7 @@ public:
     shared_str			game_mtl_name;
 	u16					game_mtl_idx;
     SJointIKData		IK_data;
-    float				mass;
+	F32				mass;
     Fvector				center_of_mass;
 
 	DEFINE_VECTOR		(u16,FacesVec,FacesVecIt);
@@ -114,7 +114,7 @@ class ENGINE_API CSkeletonWallmark : public intrusive_base // 4+4+4+12+4+16+16 =
 	const Fmatrix*		m_XForm;		// 4
 	ref_shader			m_Shader;		// 4
 	Fvector3			m_ContactPoint;	// 12		model space
-	float				m_fTimeStart;	// 4
+	F32				m_fTimeStart;	// 4
 public:
 #ifdef DEBUG
 	u32					used_in_render;	
@@ -124,14 +124,14 @@ public:
 		Fvector3		vert	[3];
 		Fvector2		uv		[3];
 		u16				bone_id	[3][2];
-		float			weight	[3];
+		F32			weight	[3];
 	};
 	DEFINE_VECTOR		(WMFace,WMFacesVec,WMFacesVecIt);
 	WMFacesVec			m_Faces;		// 16 
 public:
 	Fsphere				m_Bounds;		// 16		world space
 public:									
-						CSkeletonWallmark	(CKinematics* p,const Fmatrix* m, ref_shader s, const Fvector& cp, float ts):
+						CSkeletonWallmark	(CKinematics* p,const Fmatrix* m, ref_shader s, const Fvector& cp, F32 ts):
 						m_Parent(p),m_XForm(m),m_Shader(s),m_fTimeStart(ts),m_ContactPoint(cp)
 						{
 #ifdef DEBUG
@@ -148,8 +148,8 @@ public:
 
 	IC CKinematics*		Parent				(){return m_Parent;}
 	IC u32				VCount				(){return m_Faces.size()*3;}
-	IC bool				Similar				(ref_shader& sh, const Fvector& cp, float eps){return (m_Shader==sh)&&m_ContactPoint.similar(cp,eps);}
-	IC float			TimeStart			(){return m_fTimeStart;}
+	IC bool				Similar				(ref_shader& sh, const Fvector& cp, F32 eps){return (m_Shader==sh)&&m_ContactPoint.similar(cp,eps);}
+	IC F32			TimeStart			(){return m_fTimeStart;}
 	IC const Fmatrix*	XFORM				(){return m_XForm;}
 	IC const Fvector3&	ContactPoint		(){return m_ContactPoint;}
 	IC ref_shader		Shader				(){return m_Shader;}
@@ -220,13 +220,13 @@ public:
 	void*						Update_Callback_Param;
 public:
 	// wallmarks
-	void						AddWallmark			(const Fmatrix* parent, const Fvector3& start, const Fvector3& dir, ref_shader shader, float size);
+	void						AddWallmark			(const Fmatrix* parent, const Fvector3& start, const Fvector3& dir, ref_shader shader, F32 size);
 	void						CalculateWallmarks	();
 	void						RenderWallmark		(intrusive_ptr<CSkeletonWallmark> wm, FVF::LIT* &verts);
 	void						ClearWallmarks		();
 public:
 				
-				bool			PickBone			(const Fmatrix &parent_xform, Fvector& normal, float& dist, const Fvector& start, const Fvector& dir, u16 bone_id);
+				bool			PickBone			(const Fmatrix &parent_xform, Fvector& normal, F32& dist, const Fvector& start, const Fvector& dir, u16 bone_id);
 	virtual		void			EnumBoneVertices	(SEnumVerticesCallback &C, u16 bone_id);
 public:
 								CKinematics			();

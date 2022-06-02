@@ -57,7 +57,7 @@ bool CCF_Skeleton::_ElementCenter(u16 elem_id, Fvector& e_center)
 	return false;
 }
 
-IC bool RAYvsOBB(const Fmatrix& IM, const Fvector& b_hsize, const Fvector &S, const Fvector &D, float &R, BOOL bCull)
+IC bool RAYvsOBB(const Fmatrix& IM, const Fvector& b_hsize, const Fvector &S, const Fvector &D, F32& R, BOOL bCull)
 {
 	Fbox E	= {-b_hsize.x, -b_hsize.y, -b_hsize.z,	b_hsize.x,	b_hsize.y,	b_hsize.z};
 	// XForm world-2-local
@@ -68,7 +68,7 @@ IC bool RAYvsOBB(const Fmatrix& IM, const Fvector& b_hsize, const Fvector &S, co
 	// Actual test
 	Fbox::ERP_Result rp_res = E.Pick2(SL,DL,PL);
 	if ((rp_res==Fbox::rpOriginOutside)||(!bCull&&(rp_res==Fbox::rpOriginInside))){
-		float d = PL.distance_to_sqr(SL);
+		F32 d = PL.distance_to_sqr(SL);
 		if (d<R*R) {
 			R		= _sqrt(d);
 			VERIFY	(R>=0.f);
@@ -77,13 +77,13 @@ IC bool RAYvsOBB(const Fmatrix& IM, const Fvector& b_hsize, const Fvector &S, co
 	}
 	return false;
 }
-IC bool RAYvsSPHERE(const Fsphere& s_sphere, const Fvector &S, const Fvector &D, float &R, BOOL bCull)
+IC bool RAYvsSPHERE(const Fsphere& s_sphere, const Fvector &S, const Fvector &D, F32& R, BOOL bCull)
 {
 	Fsphere::ERP_Result rp_res = s_sphere.intersect(S,D,R);
 	VERIFY				(R>=0.f);
 	return				((rp_res==Fsphere::rpOriginOutside)||(!bCull&&(rp_res==Fsphere::rpOriginInside)));
 }
-IC bool RAYvsCYLINDER(const Fcylinder& c_cylinder, const Fvector &S, const Fvector &D, float &R, BOOL bCull)
+IC bool RAYvsCYLINDER(const Fcylinder& c_cylinder, const Fvector &S, const Fvector &D, F32& R, BOOL bCull)
 {
 	// Actual test
 	Fcylinder::ERP_Result rp_res = c_cylinder.intersect(S,D,R);
@@ -186,8 +186,8 @@ BOOL CCF_Skeleton::_RayQuery( const collide::ray_defs& Q, collide::rq_results& R
 	w_bv_sphere.R						= bv_sphere.R;
 
 	// 
-	float tgt_dist						= Q.range;
-	float aft[2];
+	F32 tgt_dist						= Q.range;
+	F32 aft[2];
 	int quant;
 	Fsphere::ERP_Result res				= w_bv_sphere.intersect(Q.start,Q.dir,tgt_dist,quant,aft);
 	if ((Fsphere::rpNone==res)||((Fsphere::rpOriginOutside==res)&&(aft[0]>tgt_dist)) ) return FALSE;
@@ -206,7 +206,7 @@ BOOL CCF_Skeleton::_RayQuery( const collide::ray_defs& Q, collide::rq_results& R
 	for (ElementVecIt I=elements.begin(); I!=elements.end(); I++){
 		if (!I->valid())continue;
 		bool res		= false;
-		float range		= Q.range;
+		F32 range		= Q.range;
 		switch (I->type){
 		case SBoneShape::stBox:
 			res			= RAYvsOBB		(I->b_IM,I->b_hsize,Q.start,Q.dir,range,Q.flags&CDB::OPT_CULL);
@@ -263,7 +263,7 @@ BOOL CCF_EventBox::Contact(CObject* O)
 {
 	IRender_Visual*	V		= O->Visual();
 	Fvector&		P	= V->vis.sphere.P;
-	float			R	= V->vis.sphere.R;
+	F32			R	= V->vis.sphere.R;
 	
 	Fvector			PT;
 	O->XFORM().transform_tiny(PT,P);
@@ -302,7 +302,7 @@ BOOL CCF_Shape::_RayQuery(const collide::ray_defs& Q, collide::rq_results& R)
 	for (u32 el=0; el<shapes.size(); el++)
 	{
 		shape_def& shape= shapes[el];
-		float range		= Q.range;
+		F32 range		= Q.range;
 		switch (shape.type)
 		{
 		case 0:
@@ -325,7 +325,7 @@ BOOL CCF_Shape::_RayQuery(const collide::ray_defs& Q, collide::rq_results& R)
 				B.transform_dir		(D1,dD);
 				Fbox::ERP_Result	rp_res 	= box.Pick2(S1,D1,P);
 				if ((rp_res==Fbox::rpOriginOutside)||(!(Q.flags&CDB::OPT_CULL)&&(rp_res==Fbox::rpOriginInside))){
-					float d			= P.distance_to_sqr(dS);
+					F32 d			= P.distance_to_sqr(dS);
 					if (d<range*range) {
 						range		= _sqrt(d);
 						bHIT		= TRUE;

@@ -1,8 +1,8 @@
 #ifndef noiseH
 #define noiseH
 
-float	noise3(const Fvector& vec);
-float	fractalsum3(const Fvector& v, float freq, int octaves);
-float	turbulence3(const Fvector& v, float freq, int octaves);
+F32	noise3(const Fvector& vec);
+F32	fractalsum3(const Fvector& v, F32 freq, int octaves);
+F32	turbulence3(const Fvector& v, F32 freq, int octaves);
 
 #endif

@@ -66,7 +66,7 @@ void CConsole::Destroy	()
 void CConsole::OnFrame	()
 {
 	u32 mm_timer = Device.dwTimeContinual;
-	float fDelta = (mm_timer - last_mm_timer)/1000.0f;
+	F32 fDelta = (mm_timer - last_mm_timer)/1000.0f;
 	if (fDelta>.06666f) fDelta=.06666f;
 	last_mm_timer = mm_timer;
 
@@ -82,12 +82,12 @@ void CConsole::OnFrame	()
 */
 }
 
-void out_font(CGameFont* pFont, LPCSTR text, float& pos_y)
+void out_font(CGameFont* pFont, LPCSTR text, F32& pos_y)
 {
-	float str_length = pFont->SizeOf_(text);
+	F32 str_length = pFont->SizeOf_(text);
 	if(str_length>1024.0f)
 	{
-		float _l			= 0.0f;
+		F32 _l			= 0.0f;
 		int _sz				= 0;
 		int _ln				= 0;
 		string1024			_one_line;
@@ -96,7 +96,7 @@ void out_font(CGameFont* pFont, LPCSTR text, float& pos_y)
 		{
 			_one_line[_ln+_sz]			= text[_sz];
 			_one_line[_ln+_sz+1]		= 0;
-			float _t					= pFont->SizeOf_(_one_line+_ln);
+			F32 _t					= pFont->SizeOf_(_one_line+_ln);
 			if(_t > 1024.0f)
 			{
 				out_font				(pFont, text+_sz, pos_y);
@@ -115,7 +115,7 @@ void out_font(CGameFont* pFont, LPCSTR text, float& pos_y)
 
 void CConsole::OnRender	()
 {
-	float			fMaxY;
+	F32			fMaxY;
 	BOOL			bGame;
 
 	if (!bVisible) return;
@@ -135,8 +135,8 @@ void CConsole::OnRender	()
 
 	CHK_DX	(HW.pDevice->Clear(1,&R,D3DCLEAR_TARGET,D3DCOLOR_XRGB(32,32,32),1,0));
 
-	float dwMaxY=float(Device.dwHeight);
-	// float dwMaxX=float(Device.dwWidth/2);
+	F32 dwMaxY= F32(Device.dwHeight);
+	// F32 dwMaxX=F32(Device.dwWidth/2);
 	if (bGame) { fMaxY=0.f; dwMaxY/=2; } else fMaxY=1.f;
 
 	char		buf	[MAX_LEN+5];
@@ -148,7 +148,7 @@ void CConsole::OnRender	()
 	pFont->SetHeightI(0.025f);
 	pFont->OutI	( -1.f, fMaxY-LDIST, "%s", buf );
 
-	float ypos=fMaxY-LDIST-LDIST;
+	F32 ypos=fMaxY-LDIST-LDIST;
 	for (int i=LogFile->size()-1-scroll_delta; i>=0; i--) 
 	{
 		ypos-=LDIST;
@@ -401,7 +401,7 @@ void CConsole::IR_OnKeyboardRelease(int dik)
 
 void CConsole::IR_OnKeyboardHold(int dik)
 {
-	float fRep	= rep_time;
+	F32 fRep	= rep_time;
 	if (bRepeat) { OnPressKey(dik, true); bRepeat=false; }
 	rep_time	= fRep;
 }
@@ -554,7 +554,7 @@ BOOL CConsole::GetBool(LPCSTR cmd, BOOL& val)
 	return val;
 }
 
-float CConsole::GetFloat(LPCSTR cmd, float& val, float& min, float& max)
+F32 CConsole::GetFloat(LPCSTR cmd, F32& val, F32& min, F32& max)
 {
 	vecCMD_IT I = Commands.find(cmd);
 	if (I!=Commands.end()) {

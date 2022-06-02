@@ -36,9 +36,9 @@ struct	xrP_Integer
 
 struct	xrP_Float
 {
-	float				value;
-	float				min;
-	float				max;
+	F32				value;
+	F32				min;
+	F32				max;
 
 	xrP_Float()	: value(0), min(0), max(1)		{}
 };

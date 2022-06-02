@@ -20,7 +20,7 @@
 #define BLEND_DEC_SPEED 4.0f
 
 //------------------------------------------------------------------------------
-void CLensFlareDescriptor::SetSource(float fRadius, BOOL ign_color, LPCSTR tex_name, LPCSTR sh_name)
+void CLensFlareDescriptor::SetSource(F32 fRadius, BOOL ign_color, LPCSTR tex_name, LPCSTR sh_name)
 {
 	m_Source.fRadius	= fRadius;
     m_Source.shader		= sh_name;
@@ -28,7 +28,7 @@ void CLensFlareDescriptor::SetSource(float fRadius, BOOL ign_color, LPCSTR tex_n
     m_Source.ignore_color=ign_color;
 }
 
-void CLensFlareDescriptor::SetGradient(float fMaxRadius, float fOpacity, LPCSTR tex_name, LPCSTR sh_name)
+void CLensFlareDescriptor::SetGradient(F32 fMaxRadius, F32 fOpacity, LPCSTR tex_name, LPCSTR sh_name)
 {
 	m_Gradient.fRadius	= fMaxRadius;
 	m_Gradient.fOpacity	= fOpacity;
@@ -36,7 +36,7 @@ void CLensFlareDescriptor::SetGradient(float fMaxRadius, float fOpacity, LPCSTR 
     m_Gradient.texture	= tex_name;
 }
 
-void CLensFlareDescriptor::AddFlare(float fRadius, float fOpacity, float fPosition, LPCSTR tex_name, LPCSTR sh_name)
+void CLensFlareDescriptor::AddFlare(F32 fRadius, F32 fOpacity, F32 fPosition, LPCSTR tex_name, LPCSTR sh_name)
 {
 	SFlare F;
 	F.fRadius	= fRadius;
@@ -61,7 +61,7 @@ void CLensFlareDescriptor::load(CInifile* pIni, LPCSTR sect)
 	if (m_Flags.is(flSource)){
 		LPCSTR S= pIni->r_string 	( sect,"source_shader" );
 		LPCSTR T= pIni->r_string 	( sect,"source_texture" );
-		float r = pIni->r_float		( sect,"source_radius" );
+		F32 r = pIni->r_float		( sect,"source_radius" );
 		BOOL i 	= pIni->r_bool		( sect,"source_ignore_color" );
 		SetSource(r,i,T,S);
 	}
@@ -75,9 +75,9 @@ void CLensFlareDescriptor::load(CInifile* pIni, LPCSTR sect)
 		u32 tcnt= _GetItemCount(T);
         string256 name;
 		for (u32 i=0; i<tcnt; i++){
-			_GetItem(R,i,name); float r=(float)atof(name);
-			_GetItem(O,i,name); float o=(float)atof(name);
-			_GetItem(P,i,name); float p=(float)atof(name);
+			_GetItem(R,i,name); F32 r=(F32)atof(name);
+			_GetItem(O,i,name); F32 o=(F32)atof(name);
+			_GetItem(P,i,name); F32 p=(F32)atof(name);
 			_GetItem(T,i,name);
 			AddFlare(r,o,p,name,S);
 		}
@@ -86,8 +86,8 @@ void CLensFlareDescriptor::load(CInifile* pIni, LPCSTR sect)
 	if (m_Flags.is(flGradient)){
 		LPCSTR S= pIni->r_string 	( sect,"gradient_shader" );
 		LPCSTR T= pIni->r_string	( sect,"gradient_texture" );
-		float r	= pIni->r_float		( sect,"gradient_radius"  );
-		float o = pIni->r_float		( sect,"gradient_opacity" );
+		F32 r	= pIni->r_float		( sect,"gradient_radius"  );
+		F32 o = pIni->r_float		( sect,"gradient_opacity" );
 		SetGradient(r,o,T,S);
 	}
     m_StateBlendUpSpeed	= 1.f/(_max(pIni->r_float( sect,"blend_rise_time" ),0.f)+ EPSILON_7);
@@ -145,16 +145,16 @@ CLensFlare::~CLensFlare()
 struct STranspParam		{
 	Fvector				P;
 	Fvector				D;
-	float				f;
+	F32				f;
 	CLensFlare*			parent;
-	float				vis;
-	float				vis_threshold;
-	STranspParam		(CLensFlare* p, const Fvector& _P, const Fvector& _D, float _f, float _vis_threshold):P(_P),D(_D),f(_f),parent(p),vis(1.f),vis_threshold(_vis_threshold){}
+	F32				vis;
+	F32				vis_threshold;
+	STranspParam		(CLensFlare* p, const Fvector& _P, const Fvector& _D, F32 _f, F32 _vis_threshold):P(_P),D(_D),f(_f),parent(p),vis(1.f),vis_threshold(_vis_threshold){}
 };
 IC BOOL material_callback(collide::rq_result& result, LPVOID params)
 {
 	STranspParam* fp= (STranspParam*)params;
-	float vis		= 1.f;
+	F32 vis		= 1.f;
 	if (result.O){
 		vis			= 0.f;
 		CKinematics*K=PKinematics(result.O->renderable.visual);
@@ -175,12 +175,12 @@ IC BOOL material_callback(collide::rq_result& result, LPVOID params)
 	return (fp->vis>fp->vis_threshold); 
 }
 
-IC void	blend_lerp	(float& cur, float tgt, float speed, float dt)
+IC void	blend_lerp	(F32& cur, F32 tgt, F32 speed, F32 dt)
 {
-	float diff		= tgt - cur;
-	float diff_a	= _abs(diff);
+	F32 diff		= tgt - cur;
+	F32 diff_a	= _abs(diff);
 	if (diff_a< EPSILON_7)	return;
-	float mot		= speed*dt;
+	F32 mot		= speed*dt;
 	if (mot>diff_a) mot=diff_a;
 	cur				+= (diff/diff_a)*mot;
 }
@@ -196,7 +196,7 @@ void CLensFlare::OnFrame(int id)
 	vSunDir.mul		(g_pGamePersistent->Environment().CurrentEnv.sun_dir,-1);
 
 	// color
-    float tf		= g_pGamePersistent->Environment().fTimeFactor;
+	F32 tf		= g_pGamePersistent->Environment().fTimeFactor;
     Fvector& c		= g_pGamePersistent->Environment().CurrentEnv.sun_color;
 	LightColor.set	(c.x,c.y,c.z,1.f); 
 
@@ -225,7 +225,7 @@ void CLensFlare::OnFrame(int id)
 	//
 	// Compute center and axis of flares
 	//
-	float fDot;
+	F32 fDot;
 
 	Fvector vecPos;
 
@@ -251,7 +251,7 @@ void CLensFlare::OnFrame(int id)
 	if(fDot <= 0.01f){	bRender = false; return;} else bRender = true;
 
 	// Calculate the point directly in front of us, on the far clip plane
-	float 	fDistance	= FAR_DIST*0.75f;
+	F32 	fDistance	= FAR_DIST*0.75f;
 	vecCenter.mul(vecDir, fDistance);
 	vecCenter.add(vecPos);
 	// Calculate position of light on the far clip plane
@@ -274,7 +274,9 @@ void CLensFlare::OnFrame(int id)
 		// similar with previous query == 0
 		TP.vis				= 0.f;
 	}else{
-		float _u,_v,_range;
+		F32 _u;
+		F32 _v;
+		F32 _range;
 		if (CDB::TestRayTri(TP.P,TP.D,m_ray_cache.verts,_u,_v,_range,false)&&(_range>0 && _range<TP.f)){
 			TP.vis			= 0.f;
 		}else{
@@ -294,16 +296,17 @@ void CLensFlare::OnFrame(int id)
     {
 		Fvector				scr_pos;
 		Device.mFullTransform.transform	( scr_pos, vecLight );
-		float kx = 1, ky = 1;
-		float sun_blend		= 0.5f;
-		float sun_max		= 2.5f;
+		F32 kx = 1;
+		F32 ky = 1;
+		F32 sun_blend		= 0.5f;
+		F32 sun_max		= 2.5f;
 		scr_pos.y			*= -1;
 
-		if (_abs(scr_pos.x) > sun_blend)	kx = ((sun_max - (float)_abs(scr_pos.x))) / (sun_max - sun_blend);
-		if (_abs(scr_pos.y) > sun_blend)	ky = ((sun_max - (float)_abs(scr_pos.y))) / (sun_max - sun_blend);
+		if (_abs(scr_pos.x) > sun_blend)	kx = ((sun_max - (F32)_abs(scr_pos.x))) / (sun_max - sun_blend);
+		if (_abs(scr_pos.y) > sun_blend)	ky = ((sun_max - (F32)_abs(scr_pos.y))) / (sun_max - sun_blend);
 
 		if (!((_abs(scr_pos.x) > sun_max) || (_abs(scr_pos.y) > sun_max))){
-        	float op		= m_StateBlend*m_Current->m_Gradient.fOpacity;
+			F32 op		= m_StateBlend*m_Current->m_Gradient.fOpacity;
 			fGradientValue	= kx * ky *  op * fBlend;
 		}else
 			fGradientValue	= 0;
@@ -327,7 +330,7 @@ void CLensFlare::Render(BOOL bSun, BOOL bFlares, BOOL bGradient)
 	u32									VS_Offset;
 	FVF::LIT *pv						= (FVF::LIT*) RCache.Vertex.Lock(MAX_Flares*4,hGeom.stride(),VS_Offset);
 
-	float 	fDistance		= FAR_DIST*0.75f;
+	F32 	fDistance		= FAR_DIST*0.75f;
 
 	if (bSun){
     	if (m_Current->m_Flags.is(CLensFlareDescriptor::flSource)){
@@ -356,7 +359,7 @@ void CLensFlare::Render(BOOL bSun, BOOL bFlares, BOOL bGradient)
                     vec.add				(vecCenter);
                     vecSx.mul			(vecDx, F.fRadius*fDistance);
                     vecSy.mul			(vecDy, F.fRadius*fDistance);
-                    float    cl			= F.fOpacity * fBlend * m_StateBlend;
+					F32    cl			= F.fOpacity * fBlend * m_StateBlend;
                     color.set			( dwLight );
                     color.mul_rgba		( cl );
                     u32 c				= color.get();

@@ -16,7 +16,7 @@ struct SThunderboltDesc
     // gradient
 	struct SFlare
 	{
-    	float					fOpacity;
+		F32					fOpacity;
 	    Fvector2				fRadius;
         shared_str				texture;
         shared_str				shader;
@@ -67,31 +67,31 @@ private:
 	ref_geom			  		hGeom_gradient;
 
     Fvector						lightning_center;
-    float						lightning_size;
-    float						lightning_phase;
+	F32						lightning_size;
+	F32						lightning_phase;
 
-    float						life_time;
-    float						current_time;
-    float						next_lightning_time;
+	F32						life_time;
+	F32						current_time;
+	F32						next_lightning_time;
 	BOOL						bEnabled;
 
     // params
     Fvector2					p_var_alt;
-    float						p_var_long;
-    float						p_min_dist;
-    float						p_tilt;
-    float						p_second_prop;
-	float						p_sky_color;
-	float						p_sun_color;
-	float						p_fog_color;
+	F32						p_var_long;
+	F32						p_min_dist;
+	F32						p_tilt;
+	F32						p_second_prop;
+	F32						p_sky_color;
+	F32						p_sun_color;
+	F32						p_fog_color;
 private:
-	BOOL						RayPick				(const Fvector& s, const Fvector& d, float& range);
-    void						Bolt				(int id, float period, float life_time);
+	BOOL						RayPick				(const Fvector& s, const Fvector& d, F32& range);
+    void						Bolt				(int id, F32 period, F32 life_time);
 public:                     
 								CEffect_Thunderbolt	(); 
 								~CEffect_Thunderbolt();
 
-	void						OnFrame				(int id,float period, float duration);
+	void						OnFrame				(int id, F32 period, F32 duration);
 	void						Render				();
 
 	int							AppendDef			(CInifile* pIni, LPCSTR sect);

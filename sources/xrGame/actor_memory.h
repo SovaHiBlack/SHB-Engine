@@ -26,9 +26,9 @@ public:
 						Fvector &position,
 						Fvector &direction,
 						Fvector &normal,
-						float &field_of_view,
-						float &aspect_ratio,
-						float &near_plane,
-						float &far_plane
+		F32& field_of_view,
+		F32& aspect_ratio,
+		F32& near_plane,
+		F32& far_plane
 					);
 };

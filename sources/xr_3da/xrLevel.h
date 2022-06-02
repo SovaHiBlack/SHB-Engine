@@ -71,8 +71,8 @@ struct	hdrNODES
 {
 	u32		version;
 	u32		count;
-	float	size;
-	float	size_y;
+	F32	size;
+	F32	size_y;
 	Fbox	aabb;
 	xrGUID	guid;
 };

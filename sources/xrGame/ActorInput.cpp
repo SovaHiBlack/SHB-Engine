@@ -213,7 +213,7 @@ void CActor::IR_OnKeyboardHold(int cmd)
 		return;
 	}
 
-	float LookFactor = GetLookFactor();
+	F32 LookFactor = GetLookFactor();
 	switch(cmd)
 	{
 	case kUP:
@@ -250,16 +250,16 @@ void CActor::IR_OnMouseMove(int dx, int dy)
 		return;
 	}
 
-	float LookFactor = GetLookFactor();
+	F32 LookFactor = GetLookFactor();
 
 	CCameraBase* C	= cameras	[cam_active];
-	float scale		= (C->f_fov/g_fov)*psMouseSens * psMouseSensScale/50.f  / LookFactor;
+	F32 scale		= (C->f_fov/g_fov)*psMouseSens * psMouseSensScale/50.f  / LookFactor;
 	if (dx){
-		float d = float(dx)*scale;
+		F32 d = F32(dx)*scale;
 		cam_Active()->Move((d<0)?kLEFT:kRIGHT, _abs(d));
 	}
 	if (dy){
-		float d = ((psMouseInvert.test(1))?-1:1)*float(dy)*scale*3.f/4.f;
+		F32 d = ((psMouseInvert.test(1))?-1:1)* F32(dy)*scale*3.f/4.f;
 		cam_Active()->Move((d>0)?kUP:kDOWN, _abs(d));
 	}
 }
@@ -472,7 +472,7 @@ void	CActor::OnPrevWeaponSlot()
 	}
 };
 
-float	CActor::GetLookFactor()
+F32	CActor::GetLookFactor()
 {
 	if (m_input_external_handler) 
 		return m_input_external_handler->mouse_scale_factor();

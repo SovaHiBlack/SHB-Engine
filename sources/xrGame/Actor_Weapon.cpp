@@ -17,13 +17,13 @@
 #include "game_base_space.h"
 #include "Artifact.h"
 
-static const float VEL_MAX		= 10.f;
-static const float VEL_A_MAX	= 10.f;
+static const F32 VEL_MAX		= 10.f;
+static const F32 VEL_A_MAX	= 10.f;
 
 #define GetWeaponParam(pWeapon, func_name, def_value)	((pWeapon) ? (pWeapon->func_name) : def_value)
 
 //возвращает текуший разброс стрельбы (в радианах)с учетом движения
-float CActor::GetWeaponAccuracy() const
+F32 CActor::GetWeaponAccuracy() const
 {
 	CWeapon* W	= smart_cast<CWeapon*>(inventory().ActiveItem());
 	
@@ -31,7 +31,7 @@ float CActor::GetWeaponAccuracy() const
 	if(m_bZoomAimingMode&&W&&!GetWeaponParam(W, IsRotatingToZoom(), false))
 		return m_fDispAim;
 
-	float dispersion = m_fDispBase*GetWeaponParam(W, Get_PDM_Base(), 1.0f);
+	F32 dispersion = m_fDispBase*GetWeaponParam(W, Get_PDM_Base(), 1.0f);
 
 	CEntity::SEntityState state;
 	if (g_State(state))
@@ -176,7 +176,7 @@ void CActor::on_weapon_shot_start		(CWeapon *weapon)
 
 	effector->SetRndSeed			(GetShotRndSeed());
 	effector->SetActor				(this);
-	effector->Shot					(weapon->camDispersion + weapon->camDispersionInc*float(weapon->ShotsFired()));
+	effector->Shot					(weapon->camDispersion + weapon->camDispersionInc* F32(weapon->ShotsFired()));
 
 	if (pWM)
 	{

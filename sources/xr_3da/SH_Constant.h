@@ -23,7 +23,7 @@ public:
 	{
 		Memory.mem_fill	(this,0,sizeof(CConstant));
 	}
-	IC void			set_float	(float r, float g, float b, float a)
+	IC void			set_float	(F32 r, F32 g, F32 b, F32 a)
 	{
 		const_float.set	(r,g,b,a);
 		const_dword		= const_float.get();

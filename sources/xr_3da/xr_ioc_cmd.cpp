@@ -362,11 +362,13 @@ public:
 };
 
 //-----------------------------------------------------------------------
-float	ps_gamma=1.f,ps_brightness=1.f,ps_contrast=1.f;
+F32	ps_gamma = 1.f;
+F32 ps_brightness = 1.f;
+F32 ps_contrast = 1.f;
 class CCC_Gamma : public CCC_Float
 {
 public:
-	CCC_Gamma	(LPCSTR N, float* V) : CCC_Float(N,V,0.5f,1.5f)	{}
+	CCC_Gamma	(LPCSTR N, F32* V) : CCC_Float(N,V,0.5f,1.5f)	{}
 
 	virtual void Execute(LPCSTR args)
 	{
@@ -450,7 +452,7 @@ public:
 
 };
 //-----------------------------------------------------------------------
-ENGINE_API float	psHUD_FOV=0.45f;
+ENGINE_API F32	psHUD_FOV=0.45f;
 
 extern int			psSkeletonUpdate;
 extern int			rsDVB_Size;
@@ -462,7 +464,7 @@ extern int			psNET_ServerPending;
 extern int			psNET_DedicatedSleep;
 extern char			psNET_Name[32];
 extern Flags32		psEnvFlags;
-extern float		r__dtex_range;
+extern F32		r__dtex_range;
 
 extern int			g_ErrorLineCount;
 

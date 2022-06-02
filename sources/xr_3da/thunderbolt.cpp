@@ -9,13 +9,13 @@
 #include "xr_area.h"
 #include "xr_object.h"
 
-static const float MAX_DIST_FACTOR = 0.95f;
+static const F32 MAX_DIST_FACTOR = 0.95f;
 
 SThunderboltDesc::SThunderboltDesc(CInifile* pIni, LPCSTR sect)
 {
 	name						= sect;
 	color_anim					= LALib.FindItem (pIni->r_string ( sect,"color_anim" )); VERIFY(color_anim);
-	color_anim->fFPS			= (float)color_anim->iFrameCount;
+	color_anim->fFPS			= (F32)color_anim->iFrameCount;
     m_GradientTop.shader 		= pIni->r_string ( sect,"gradient_top_shader" );
     m_GradientTop.texture		= pIni->r_string ( sect,"gradient_top_texture" );
     m_GradientTop.fRadius		= pIni->r_fvector2(sect,"gradient_top_radius"  );
@@ -114,7 +114,7 @@ int CEffect_Thunderbolt::AppendDef(CInifile* pIni, LPCSTR sect)
 	return collection.size()-1;
 }
 
-BOOL CEffect_Thunderbolt::RayPick(const Fvector& s, const Fvector& d, float& dist)
+BOOL CEffect_Thunderbolt::RayPick(const Fvector& s, const Fvector& d, F32& dist)
 {
 	BOOL bRes 	= TRUE;
 
@@ -126,7 +126,7 @@ BOOL CEffect_Thunderbolt::RayPick(const Fvector& s, const Fvector& d, float& dis
         Fvector N	={0.f,-1.f,0.f};
         Fvector P	={0.f,0.f,0.f};
         Fplane PL; PL.build(P,N);
-        float dst	=dist;
+		F32 dst	=dist;
         if (PL.intersectRayDist(s,d,dst)&&(dst<=dist)){dist=dst; return true;}else return false;
     }
 
@@ -134,7 +134,7 @@ BOOL CEffect_Thunderbolt::RayPick(const Fvector& s, const Fvector& d, float& dis
 }
 #define FAR_DIST g_pGamePersistent->Environment().CurrentEnv.far_plane
 
-void CEffect_Thunderbolt::Bolt(int id, float period, float lt)
+void CEffect_Thunderbolt::Bolt(int id, F32 period, F32 lt)
 {
 	VERIFY					(id>=0 && id<(int)collection.size());
 	state 		            = stWorking;
@@ -144,11 +144,12 @@ void CEffect_Thunderbolt::Bolt(int id, float period, float lt)
 
     Fmatrix XF,S;
     Fvector pos,dev;
-    float sun_h, sun_p; 
+	F32 sun_h;
+	F32 sun_p;
     g_pGamePersistent->Environment().CurrentEnv.sun_dir.getHP			(sun_h,sun_p);
-    float alt	            = Random.randF(p_var_alt.x,p_var_alt.y);
-    float lng	            = Random.randF(sun_h-p_var_long+PI,sun_h+p_var_long+PI); 
-    float dist	            = Random.randF(FAR_DIST*p_min_dist,FAR_DIST*MAX_DIST_FACTOR);
+	F32 alt	            = Random.randF(p_var_alt.x,p_var_alt.y);
+	F32 lng	            = Random.randF(sun_h-p_var_long+PI,sun_h+p_var_long+PI);
+	F32 dist	            = Random.randF(FAR_DIST*p_min_dist,FAR_DIST*MAX_DIST_FACTOR);
     current_direction.setHP	(lng,alt);
     pos.mad		            (Device.vCameraPosition,current_direction,dist);
     dev.x		            = Random.randF(-p_tilt,p_tilt);
@@ -167,7 +168,7 @@ void CEffect_Thunderbolt::Bolt(int id, float period, float lt)
     XF.translate_over		(pos);
     current_xform.mul_43	(XF,S);
 
-    float next_v			= Random.randF();
+	F32 next_v			= Random.randF();
 
     if (next_v<p_second_prop){
 	    next_lightning_time = Device.fTimeGlobal+lt+EPS_L;
@@ -180,7 +181,7 @@ void CEffect_Thunderbolt::Bolt(int id, float period, float lt)
 	current_direction.invert			();	// for env-sun
 }
 
-void CEffect_Thunderbolt::OnFrame(int id, float period, float duration)
+void CEffect_Thunderbolt::OnFrame(int id, F32 period, F32 duration)
 {
 	BOOL enabled			= (id>=0);
 	if (bEnabled!=enabled){
@@ -195,7 +196,7 @@ void CEffect_Thunderbolt::OnFrame(int id, float period, float duration)
 		Fvector fClr;		
 		int frame;
 		u32 uClr		= current->color_anim->CalculateRGB(current_time/life_time,frame);
-		fClr.set		(float(color_get_R(uClr))/255.f,float(color_get_G(uClr)/255.f),float(color_get_B(uClr)/255.f));
+		fClr.set		(F32(color_get_R(uClr))/255.f, F32(color_get_G(uClr)/255.f), F32(color_get_B(uClr)/255.f));
 
         lightning_phase	= 1.5f*(current_time/life_time);
         clamp			(lightning_phase,0.f,1.f);
@@ -218,7 +219,7 @@ void CEffect_Thunderbolt::Render()
     	VERIFY	(current);
 
         // lightning model
-        float dv			= lightning_phase*0.5f;
+		F32 dv			= lightning_phase*0.5f;
         dv					= (lightning_phase>0.5f)?Random.randI(2)*0.5f:dv;
 
 		RCache.set_CullMode	(CULL_NONE);

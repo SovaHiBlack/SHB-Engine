@@ -97,7 +97,7 @@ BOOL CActor::CanPickItem(const CFrustum& frustum, const Fvector& from, CObject* 
 	BOOL	bOverlaped		= FALSE;
 	Fvector dir,to; 
 	item->Center			(to);
-	float range				= dir.sub(to,from).magnitude();
+	F32 range				= dir.sub(to,from).magnitude();
 	if (range>0.25f){
 		if (frustum.testSphere_dirty(to,item->Radius())){
 			dir.div						(range);
@@ -155,7 +155,7 @@ void	CActor::PickupModeUpdate_COD	()
 	g_SpatialSpace->q_frustum(ISpatialResult, 0, STYPE_COLLIDEABLE, frustum);
 	//---------------------------------------------------------------------------
 
-	float maxlen = 1000.0f;
+	F32 maxlen = 1000.0f;
 	CInventoryItem* pNearestItem = NULL;
 	for (u32 o_it=0; o_it<ISpatialResult.size(); o_it++)
 	{
@@ -179,7 +179,7 @@ void	CActor::PickupModeUpdate_COD	()
 
 		tmp.sub(A, cam_Active()->vPosition);
 		B.mad(cam_Active()->vPosition, cam_Active()->vDirection, tmp.dotproduct(cam_Active()->vDirection));
-		float len = B.distance_to_sqr(A);
+		F32 len = B.distance_to_sqr(A);
 		if (len > 1) continue;
 
 		if (maxlen>len && !pIItem->object().getDestroy())
@@ -236,15 +236,15 @@ void CActor::PickupInfoDraw(CObject* object)
 	if (v_res.z < 0 || v_res.w < 0)	return;
 	if (v_res.x < -1.f || v_res.x > 1.f || v_res.y<-1.f || v_res.y>1.f) return;
 
-	float x = (1.f + v_res.x)/2.f * (Device.dwWidth);
-	float y = (1.f - v_res.y)/2.f * (Device.dwHeight);
+	F32 x = (1.f + v_res.x)/2.f * (Device.dwWidth);
+	F32 y = (1.f - v_res.y)/2.f * (Device.dwHeight);
 
 	HUD().Font().pFontLetterica16Russian->SetAligment	(CGameFont::alCenter);
 	HUD().Font().pFontLetterica16Russian->SetColor		(PICKUP_INFO_COLOR);
 	HUD().Font().pFontLetterica16Russian->Out			(x,y,draw_str);
 }
 
-void CActor::feel_sound_new(CObject* who, int type, CSound_UserDataPtr user_data, const Fvector& Position, float power)
+void CActor::feel_sound_new(CObject* who, int type, CSound_UserDataPtr user_data, const Fvector& Position, F32 power)
 {
 	if(who == this)
 		m_snd_noise = _max(m_snd_noise,power);

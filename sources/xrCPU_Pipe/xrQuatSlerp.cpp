@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "mmintrin.h"
 
-void	__stdcall	xrSlerp_x86		(_quaternion<float>* D, _quaternion<float>* Q1, _quaternion<float>* Q2, float t)
+void	__stdcall	xrSlerp_x86		(_quaternion<F32>* D, _quaternion<F32>* Q1, _quaternion<F32>* Q2, F32 t)
 {
 	D->slerp(*Q1,*Q2,t);
 }
@@ -11,11 +11,11 @@ void	__stdcall	xrSlerp_x86		(_quaternion<float>* D, _quaternion<float>* Q1, _qua
 
 // scalar constants
 /*
-const float DELTA_1 = -0.999f;
-const float DELTA_2 = 0.999f;
-const float HALF_PI = 1.570796f;
+const F32 DELTA_1 = -0.999f;
+const F32 DELTA_2 = 0.999f;
+const F32 HALF_PI = 1.570796f;
 
-void	__stdcall	xrSlerp_3Dnow	(_quaternion* result, _quaternion* q1, _quaternion* q2, float t)
+void	__stdcall	xrSlerp_3Dnow	(_quaternion* result, _quaternion* q1, _quaternion* q2, F32 t)
 {
     __m64 omega, scale0, scale1, cosom, isinom, qwx, qyz, r0, r1, r2;
 

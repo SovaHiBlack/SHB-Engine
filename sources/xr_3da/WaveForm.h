@@ -15,8 +15,8 @@ struct WaveForm
 		fINVSAWTOOTH,
 		fFORCE32		= u32(-1)
 	};
-	IC float signf		(float t) { return t/_abs(t); }
-	IC float Func		(float t)
+	IC F32 signf		(F32 t) { return t/_abs(t); }
+	IC F32 Func		(F32 t)
 	{
 		switch (F)
 		{
@@ -31,12 +31,12 @@ struct WaveForm
 	}
 public:
 	EFunction	F;
-	float		arg[4];
+	F32		arg[4];
 
-	IC float Calculate	(float t)
+	IC F32 Calculate	(F32 t)
 	{
 		// y = arg0 + arg1*func( (time+arg2)*arg3 )
-		float x = (t+arg[2])*arg[3];
+		F32 x = (t+arg[2])*arg[3];
 		return arg[0] + arg[1]*Func(x-floorf(x));
 	}
 

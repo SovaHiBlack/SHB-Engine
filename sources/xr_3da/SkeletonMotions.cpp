@@ -259,7 +259,7 @@ bool CMotionDef::StopAtEnd()
 	return !!(flags&esmStopAtEnd);
 }
 
-bool motion_marks::pick_mark(const float& t) const
+bool motion_marks::pick_mark(const F32& t) const
 {
 	C_ITERATOR	it		= intervals.begin();
 	C_ITERATOR	it_e	= intervals.end();

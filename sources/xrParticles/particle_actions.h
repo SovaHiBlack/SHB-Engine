@@ -15,7 +15,7 @@ namespace PAPI{
 		PActionEnum		type;	// Type field
 		ParticleAction	(){m_Flags.zero();}
         
-		virtual void 	Execute		(ParticleEffect *pe, float dt)	= 0;
+		virtual void 	Execute		(ParticleEffect *pe, F32 dt)	= 0;
 		virtual void 	Transform	(const Fmatrix& m)				= 0;
 
 		virtual void 	Load		(IReader& F)=0;

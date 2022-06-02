@@ -14,13 +14,13 @@ ICF pVector RandVec()
 }
 
 // Return a random number with a normal distribution.
-float PAPI::NRand(float sigma)
+F32 PAPI::NRand(F32 sigma)
 {
 #define ONE_OVER_SIGMA_EXP (1.0f / 0.7975f)
 	
 	if(sigma == 0) return 0;
 	
-	float y;
+	F32 y;
 	do
 	{
 		y = -logf(drand48());
@@ -34,9 +34,9 @@ float PAPI::NRand(float sigma)
 }
 ////////////////////////////////////////////////////////////////////////////////
 // Stuff for the pDomain.
-pDomain::pDomain(PDomainEnum dtype, float a0, float a1,
-				 float a2, float a3, float a4, float a5,
-				 float a6, float a7, float a8)
+pDomain::pDomain(PDomainEnum dtype, F32 a0, F32 a1,
+				 F32 a2, F32 a3, F32 a4, F32 a5,
+				 F32 a6, F32 a7, F32 a8)
 {
 	type = dtype;
 	switch(type)
@@ -166,7 +166,7 @@ pDomain::pDomain(PDomainEnum dtype, float a0, float a1,
 			// Given an arbitrary nonzero vector3 n, make two orthonormal
 			// vectors u and v forming a frame [u,v,n.normalize()].
 			pVector n = p2;
-			float p2l2 = n.length2(); // Optimize this.
+			F32 p2l2 = n.length2(); // Optimize this.
 			n.normalize_safe();
 			
 			// radius2Sqr stores 1 / (p2.p2)
@@ -189,7 +189,7 @@ pDomain::pDomain(PDomainEnum dtype, float a0, float a1,
 		{
 			p1 = pVector(a0, a1, a2);
 			radius1 = a3;
-			float tmp = 1.f/radius1;
+			F32 tmp = 1.f/radius1;
 			radius2Sqr = -0.5f*_sqr(tmp);
 			radius2 = ONEOVERSQRT2PI * tmp;
 		}
@@ -241,7 +241,7 @@ BOOL pDomain::Within(const pVector &pos) const
 	case PDSphere:
 		{
 			pVector rvec(pos - p1);
-			float rSqr = rvec.length2();
+			F32 rSqr = rvec.length2();
 			return rSqr <= radius1Sqr && rSqr >= radius2Sqr;
 		}
 	case PDCylinder:
@@ -262,13 +262,13 @@ BOOL pDomain::Within(const pVector &pos) const
 			
 			// Check axial distance
 			// radius2Sqr stores 1 / (p2.p2)
-			float dist = (p2 * x) * radius2Sqr;
+			F32 dist = (p2 * x) * radius2Sqr;
 			if(dist < 0.0f || dist > 1.0f)
 				return FALSE;
 			
 			// Check radial distance; scale radius along axis for cones
 			pVector xrad = x - p2 * dist; // Radial component of x
-			float rSqr = xrad.length2();
+			F32 rSqr = xrad.length2();
 			
 			if(type == PDCone)
 				return (rSqr <= _sqr(dist * radius1) &&
@@ -280,7 +280,7 @@ BOOL pDomain::Within(const pVector &pos) const
 		{
 			pVector x(pos - p1);
 			// return exp(-0.5 * xSq * Sqr(oneOverSigma)) * ONEOVERSQRT2PI * oneOverSigma;
-			float Gx = expf(x.length2() * radius2Sqr) * radius2;
+			F32 Gx = expf(x.length2() * radius2Sqr) * radius2;
 			return (drand48() < Gx);
 		}
 	case PDPoint:
@@ -312,8 +312,8 @@ void pDomain::Generate(pVector &pos) const
 		break;
 	case PDTriangle:
 		{
-			float r1 = drand48();
-			float r2 = drand48();
+		F32 r1 = drand48();
+		F32 r2 = drand48();
 			if(r1 + r2 < 1.0f)
 				pos = p1 + u * r1 + v * r2;
 			else
@@ -342,13 +342,13 @@ void pDomain::Generate(pVector &pos) const
 	case PDCone:
 		{
 			// For a cone, p2 is the apex of the cone.
-			float dist = drand48(); // Distance between base and tip
-			float theta = drand48() * 2.0f * float(M_PI); // Angle around axis
+		F32 dist = drand48(); // Distance between base and tip
+		F32 theta = drand48() * 2.0f * F32(M_PI); // Angle around axis
 			// Distance from axis
-			float r = radius2 + drand48() * (radius1 - radius2);
+		F32 r = radius2 + drand48() * (radius1 - radius2);
 			
-			float x = r * _cos(theta); // Weighting of each frame vector3
-			float y = r * _sin(theta);
+		F32 x = r * _cos(theta); // Weighting of each frame vector3
+		F32 y = r * _sin(theta);
 			
 			// Scale radius along axis for cones
 			if(type == PDCone)
@@ -368,12 +368,12 @@ void pDomain::Generate(pVector &pos) const
 		break;
 	case PDDisc:
 		{
-			float theta = drand48() * 2.0f * float(M_PI); // Angle around normal
+		F32 theta = drand48() * 2.0f * F32(M_PI); // Angle around normal
 			// Distance from center
-			float r = radius2 + drand48() * (radius1 - radius2);
+		F32 r = radius2 + drand48() * (radius1 - radius2);
 			
-			float x = r * _cos(theta); // Weighting of each frame vector3
-			float y = r * _sin(theta);
+		F32 x = r * _cos(theta); // Weighting of each frame vector3
+		F32 y = r * _sin(theta);
 			
 			pos = p1 + u * x + v * y;
 		}

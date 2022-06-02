@@ -116,7 +116,7 @@ void CObjectAnimator::Stop()
 	m_MParam.Stop		();
 }
 
-float CObjectAnimator::GetLength		()
+F32 CObjectAnimator::GetLength		()
 {
 	if(!m_Current) return 0.0f;
 	F32 res = m_Current->Length()/m_Current->FPS();

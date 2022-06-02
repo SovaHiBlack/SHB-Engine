@@ -14,8 +14,8 @@ public:
 protected:
 	struct SElement{
     	u32 		color;
-        float		data;
-			        SElement(float d, u32 clr)
+		F32		data;
+			        SElement(F32 d, u32 clr)
         {
         	color	= clr;
             data	= d;
@@ -38,7 +38,8 @@ protected:
 	DEFINE_VECTOR	(SSubGraph,SubGraphVec,SubGraphVecIt);
 	SubGraphVec		subgraphs;
 	
-	float			mn, mx;
+	F32			mn;
+	F32 mx;
 	u32				max_item_count;
 	Ivector2 		lt,rb;
 	Ivector2 		grid;
@@ -53,7 +54,7 @@ protected:
 	
 	struct SMarker {
 		EStyle			m_eStyle;
-		float			m_fPos;
+		F32			m_fPos;
 		u32				m_dwColor;
 	};
 
@@ -88,14 +89,14 @@ public:
         rect_color	= rect_clr;
 		back_color	= back_clr;
     }
-    IC	void		SetGrid		(int w_div, float w_step, int h_div, float h_step, u32 grid_clr, u32 base_clr)
+    IC	void		SetGrid		(int w_div, F32 w_step, int h_div, F32 h_step, u32 grid_clr, u32 base_clr)
     {
         grid.set	(w_div,h_div);
 		grid_step.set (w_step, h_step);
         grid_color 	= grid_clr;
 		base_color	= base_clr;
     }
-    IC	void		SetMinMax	(float _mn, float _mx, u32 item_count)
+    IC	void		SetMinMax	(F32 _mn, F32 _mx, u32 item_count)
     {
         mn			= _mn;
         mx			= _mx;
@@ -105,7 +106,7 @@ public:
 			while(it->elements.size()>max_item_count) it->elements.pop_front();
 		};
     }
-    IC	void		AppendItem	(float d, u32 clr, u32 SubGraphID = 0)
+    IC	void		AppendItem	(F32 d, u32 clr, u32 SubGraphID = 0)
     {
 		if (SubGraphID>=subgraphs.size()) return;
 
@@ -121,7 +122,7 @@ public:
 		return subgraphs.size()-1;
 	};
 
-	IC	void		AddMarker (EStyle Style, float pos, u32 Color)
+	IC	void		AddMarker (EStyle Style, F32 pos, u32 Color)
 	{
 		SMarker NewMarker;
 		NewMarker.m_dwColor = Color;
@@ -137,7 +138,7 @@ public:
 		return m_Markers[ID];
 	};
 
-	IC	void		UpdateMarkerPos	(u32 ID, float NewPos)
+	IC	void		UpdateMarkerPos	(u32 ID, F32 NewPos)
 	{
 		if (ID >= m_Markers.size()) return;
 		SMarker &pMarker = m_Markers[ID];

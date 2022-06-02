@@ -95,7 +95,7 @@ void IGame_ObjectPool::prefetch	()
 	p_time = 1000.f*Device.GetTimerGlobal()->GetElapsed_sec() - p_time;
 	u32		p_mem		= Memory.mem_usage() - mem_0;
 	if (p_count){
-		F32 	a_time		= F32(p_time)/float(p_count);
+		F32 	a_time		= F32(p_time)/F32(p_count);
 		Msg					("* [Object-prefetch] objects: %d",		p_count);
 		Msg					("* [Object-prefetch] time:    %d ms",	iFloor(p_time));
 		Msg					("* [Object-prefetch] memory:  %dKb",	p_mem/1024);

@@ -34,12 +34,12 @@ void		CBoneInstance::reset_callback()
 	Callback_type		= 0;
 }
 
-void		CBoneInstance::set_param	(u32 idx, float data)
+void		CBoneInstance::set_param	(u32 idx, F32 data)
 {
 	VERIFY		(idx<MAX_BONE_PARAMS);
 	param[idx]	= data;
 }
-float		CBoneInstance::get_param	(u32 idx)
+F32		CBoneInstance::get_param	(u32 idx)
 {
 	VERIFY		(idx<MAX_BONE_PARAMS);
 	return		param[idx];
@@ -546,7 +546,7 @@ void CKinematics::LL_GetBindTransform(xr_vector<Fmatrix>& matrices)
 	RecursiveBindTransform	(this,matrices,iRoot,Fidentity);
 }
 
-void BuildMatrix		(Fmatrix &mView, float invsz, const Fvector norm, const Fvector& from)
+void BuildMatrix		(Fmatrix &mView, F32 invsz, const Fvector norm, const Fvector& from)
 {
 	// build projection
 	Fmatrix				mScale;
@@ -569,7 +569,7 @@ void CKinematics::EnumBoneVertices	(SEnumVerticesCallback &C, u16 bone_id)
 
 DEFINE_VECTOR(Fobb,OBBVec,OBBVecIt);
 
-bool	CKinematics::	PickBone			(const Fmatrix &parent_xform,  Fvector& normal, float& dist, const Fvector& start, const Fvector& dir, u16 bone_id)
+bool	CKinematics::	PickBone			(const Fmatrix &parent_xform,  Fvector& normal, F32& dist, const Fvector& start, const Fvector& dir, u16 bone_id)
 {
 	Fvector S,D;//normal		= {0,0,0}
 	// transform ray from world to model
@@ -585,7 +585,7 @@ bool	CKinematics::	PickBone			(const Fmatrix &parent_xform,  Fvector& normal, fl
 	return false;
 }
 
-void CKinematics::AddWallmark(const Fmatrix* parent_xform, const Fvector3& start, const Fvector3& dir, ref_shader shader, float size)
+void CKinematics::AddWallmark(const Fmatrix* parent_xform, const Fvector3& start, const Fvector3& dir, ref_shader shader, F32 size)
 {
 	Fvector S,D,normal		= {0,0,0};
 	// transform ray from world to model
@@ -593,7 +593,7 @@ void CKinematics::AddWallmark(const Fmatrix* parent_xform, const Fvector3& start
 	P.transform_tiny		(S,start);
 	P.transform_dir			(D,dir);
 	// find pick point
-	float dist				= flt_max;
+	F32 dist				= flt_max;
 	BOOL picked				= FALSE;
 
 	DEFINE_VECTOR			(Fobb,OBBVec,OBBVecIt);
@@ -665,7 +665,7 @@ void CKinematics::AddWallmark(const Fmatrix* parent_xform, const Fvector3& start
 	wallmarks.push_back		(wm);
 }
 
-static const float LIFE_TIME=30.f;
+static const F32 LIFE_TIME=30.f;
 struct zero_wm_pred : public std::unary_function<intrusive_ptr<CSkeletonWallmark>, bool>
 {
 	bool operator()(const intrusive_ptr<CSkeletonWallmark> x){ return x==0; }
@@ -678,7 +678,7 @@ void CKinematics::CalculateWallmarks()
 		bool need_remove	= false; 
 		for (SkeletonWMVecIt it=wallmarks.begin(); it!=wallmarks.end(); it++){
 			intrusive_ptr<CSkeletonWallmark>& wm = *it;
-			float w	= (Device.fTimeGlobal-wm->TimeStart())/LIFE_TIME;
+			F32 w	= (Device.fTimeGlobal-wm->TimeStart())/LIFE_TIME;
 			if (w<1.f){
 				// append wm to WallmarkEngine
 				if (::Render->ViewBase.testSphere_dirty(wm->m_Bounds.P,wm->m_Bounds.R))
@@ -707,7 +707,7 @@ void CKinematics::RenderWallmark(intrusive_ptr<CSkeletonWallmark> wm, FVF::LIT* 
 	// skin vertices
 	for (u32 f_idx=0; f_idx<wm->m_Faces.size(); f_idx++){
 		CSkeletonWallmark::WMFace F = wm->m_Faces[f_idx];
-		float w	= (Device.fTimeGlobal-wm->TimeStart())/LIFE_TIME;
+		F32 w	= (Device.fTimeGlobal-wm->TimeStart())/LIFE_TIME;
 		for (u32 k=0; k<3; k++){
 			Fvector P;
 			if (F.bone_id[k][0]==F.bone_id[k][1]){

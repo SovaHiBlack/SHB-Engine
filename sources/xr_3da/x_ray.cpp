@@ -590,7 +590,7 @@ void _InitializeFont(CGameFont*& F, LPCSTR section, u32 flags)
 		F->Initialize("font",font_tex_name);
 
 	if (pSettings->line_exist(section,"size")){
-		float sz = pSettings->r_float(section,"size");
+		F32 sz = pSettings->r_float(section,"size");
 		if (flags&CGameFont::fsDeviceIndependent)	F->SetHeightI(sz);
 		else										F->SetHeight(sz);
 	}
@@ -907,20 +907,20 @@ void CApplication::load_draw_internal()
 		FVF::TL* pv					= NULL;
 
 //progress
-		float bw					= 1024.0f;
-		float bh					= 768.0f;
-		Fvector2					k; k.set(float(_w)/bw, float(_h)/bh);
+		F32 bw					= 1024.0f;
+		F32 bh					= 768.0f;
+		Fvector2					k; k.set(F32(_w)/bw, F32(_h)/bh);
 
 		RCache.set_Shader			(sh_progress);
 		CTexture*	T				= RCache.get_ActiveTexture(0);
 		Fvector2					tsz;
-		tsz.set						((float)T->get_Width(),(float)T->get_Height());
+		tsz.set						((F32)T->get_Width(),(F32)T->get_Height());
 		Frect						back_text_coords;
 		Frect						back_coords;
 		Fvector2					back_size;
 
 //progress background
-		static float offs			= -0.5f;
+		static F32 offs			= -0.5f;
 
 		back_size.set				(1024,768);
 		back_text_coords.lt.set		(0,0);back_text_coords.rb.add(back_text_coords.lt,back_size);
@@ -951,8 +951,8 @@ void CApplication::load_draw_internal()
 		u32 v_cnt					= 40;
 		pv							= (FVF::TL*)RCache.Vertex.Lock	(2*(v_cnt+1),ll_hGeom2.stride(),Offset);
 		FVF::TL* _pv				= pv;
-		float pos_delta				= back_coords.width()/v_cnt;
-		float tc_delta				= back_text_coords.width()/v_cnt;
+		F32 pos_delta				= back_coords.width()/v_cnt;
+		F32 tc_delta				= back_text_coords.width()/v_cnt;
 		u32 clr = C;
 
 		for(u32 idx=0; idx<v_cnt+1; ++idx){
@@ -1001,8 +1001,8 @@ u32 calc_progress_color(u32 idx, u32 total, int stage, int max_stage)
 	if(idx>(total/2)) 
 		idx	= total-idx;
 
-	float kk			= (float(stage+1)/float(max_stage))*(total/2.0f);
-	float f				= 1/(exp((float(idx)-kk)*0.5f)+1.0f);
+	F32 kk			= (F32(stage+1)/ F32(max_stage))*(total/2.0f);
+	F32 f				= 1/(exp((F32(idx)-kk)*0.5f)+1.0f);
 
 	return color_argb_f		(f,1.0f,1.0f,1.0f);
 }

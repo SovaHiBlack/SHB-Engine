@@ -89,7 +89,7 @@ void CObject::setVisible			(BOOL _visible)
 }
 
 void	CObject::Center					(Fvector& C)	const	{ VERIFY2(renderable.visual,*cName()); renderable.xform.transform_tiny(C,renderable.visual->vis.sphere.P);	}
-float	CObject::Radius					()				const	{ VERIFY2(renderable.visual,*cName()); return renderable.visual->vis.sphere.R;								}
+F32	CObject::Radius					()				const	{ VERIFY2(renderable.visual,*cName()); return renderable.visual->vis.sphere.R;								}
 const	Fbox&	CObject::BoundingBox	()				const	{ VERIFY2(renderable.visual,*cName()); return renderable.visual->vis.box;									}
 
 //----------------------------------------------------------------------
@@ -183,9 +183,9 @@ void CObject::net_Destroy		()
 }
 
 //////////////////////////////////////////////////////////////////////////
-const	float	base_spu_epsP		= 0.05f;
-const	float	base_spu_epsR		= 0.05f;
-void	CObject::spatial_update		(float eps_P, float eps_R)
+const	F32	base_spu_epsP		= 0.05f;
+const	F32	base_spu_epsR		= 0.05f;
+void	CObject::spatial_update		(F32 eps_P, F32 eps_R)
 {
 	//
 	BOOL	bUpdate=FALSE;

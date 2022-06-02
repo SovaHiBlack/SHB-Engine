@@ -191,7 +191,7 @@ static void r_qt_q8(NET_Packet& P,Fquaternion& q)
 	//P.r_float_q8(q.x,-1.f,1.f);
 	//P.r_float_q8(q.y,-1.f,1.f);
 	//P.r_float_q8(q.z,-1.f,1.f);
-	//float w2=1.f-q.x*q.x-q.y*q.y-q.z*q.z;
+	//F32 w2=1.f-q.x*q.x-q.y*q.y-q.z*q.z;
 	//w2=w2<0.f ? 0.f : w2;
 	//q.w=_sqrt(w2);
 	/////////////////////////////////////////////////////
@@ -293,7 +293,7 @@ void		CActor::net_Import_Base				( NET_Packet& P)
 	u16					tmp;
 
 	//CSE_ALifeCreatureAbstract
-	float health;
+	F32 health;
 	P.r_float			(health);
 	//----------- for E3 -----------------------------
 	if (OnClient())SetfHealth(health);
@@ -338,7 +338,7 @@ void		CActor::net_Import_Base				( NET_Packet& P)
 	P.r_u16				(tmp			); N.mstate = u32(tmp);
 	P.r_sdir			(N.p_accel		);
 	P.r_sdir			(N.p_velocity	);
-	float				fRRadiation;
+	F32				fRRadiation;
 	P.r_float			(fRRadiation);
 	//----------- for E3 -----------------------------
 	if (OnClient())		
@@ -842,9 +842,9 @@ void	CActor::ChangeVisual			( shared_str NewVisual )
 	Visual()->dcast_PKinematics()->CalculateBones();
 };
 
-void ACTOR_DEFS::net_update::lerp(ACTOR_DEFS::net_update& A, ACTOR_DEFS::net_update& B, float f)
+void ACTOR_DEFS::net_update::lerp(ACTOR_DEFS::net_update& A, ACTOR_DEFS::net_update& B, F32 f)
 {
-//	float invf		= 1.f-f;
+//	F32 invf		= 1.f-f;
 //	// 
 //	o_model			= angle_lerp	(A.o_model,B.o_model,		f);
 //	o_torso.yaw		= angle_lerp	(A.o_torso.yaw,B.o_torso.yaw,f);
@@ -988,7 +988,7 @@ void CActor::PH_A_CrPr		()
 	mstate_wishful = mstate_real = NET_Last.mstate;
 	CalculateInterpolationParams();
 };
-extern	float		g_cl_lvInterp;
+extern	F32		g_cl_lvInterp;
 
 void	CActor::CalculateInterpolationParams()
 {	
@@ -1033,10 +1033,10 @@ void	CActor::CalculateInterpolationParams()
 	if (m_bInInterpolation)
 	{
 		u32 CurTime = Level().timeServer();
-		float factor	= float(CurTime - m_dwIStartTime)/(m_dwIEndTime - m_dwIStartTime);
+		F32 factor	= F32(CurTime - m_dwIStartTime)/(m_dwIEndTime - m_dwIStartTime);
 		if (factor > 1.0f) factor = 1.0f;
 
-		float c = factor;
+		F32 c = factor;
 		for (u32 k=0; k<3; k++)
 		{
 			SP0[k] = c*(c*(c*SCoeff[k][0]+SCoeff[k][1])+SCoeff[k][2])+SCoeff[k][3];
@@ -1072,7 +1072,7 @@ void	CActor::CalculateInterpolationParams()
 	Fvector d0, d1;
 	d0.sub(SP1, SP0);
 	d1.sub(SP3, SP0);
-	float res = d0.dotproduct(d1);
+	F32 res = d0.dotproduct(d1);
 	if (res < 0)
 	{
 	Msg ("! %f", res);
@@ -1084,13 +1084,13 @@ void	CActor::CalculateInterpolationParams()
 	/////////////////////////////////////////////////////////////////////////////
 	Fvector TotalPath;
 	TotalPath.sub(SP3, SP0);
-	float TotalLen = TotalPath.magnitude();
+	F32 TotalLen = TotalPath.magnitude();
 
 	SPHNetState	State0 = (NET_A.back()).State;
 	SPHNetState	State1 = PredictedState;
 
-	float lV0 = State0.linear_vel.magnitude();
-	float lV1 = State1.linear_vel.magnitude();
+	F32 lV0 = State0.linear_vel.magnitude();
+	F32 lV1 = State1.linear_vel.magnitude();
 
 	u32		ConstTime = u32((fixed_step - ph_world->m_frame_time)*1000)+ Level().GetInterpolationSteps()*u32(fixed_step*1000);
 
@@ -1181,10 +1181,10 @@ void CActor::make_Interpolation	()
 		}
 		else
 		{			
-			float factor = 0.0f;
+			F32 factor = 0.0f;
 
 			if (m_dwIEndTime != m_dwIStartTime)
-				factor = float(CurTime - m_dwIStartTime)/(m_dwIEndTime - m_dwIStartTime);
+				factor = F32(CurTime - m_dwIStartTime)/(m_dwIEndTime - m_dwIStartTime);
 			
 			Fvector NewPos;
 			NewPos.lerp(IStart.Pos, IEnd.Pos, factor);
@@ -1210,7 +1210,7 @@ void CActor::make_Interpolation	()
 				{
 					ResPosition.set(IPosL);
 					SpeedVector.sub(IEnd.Pos, IStart.Pos);
-					SpeedVector.div(float(m_dwIEndTime - m_dwIStartTime)/1000.0f);
+					SpeedVector.div(F32(m_dwIEndTime - m_dwIStartTime)/1000.0f);
 				}break;
 			case 1: 
 				{
@@ -1312,7 +1312,7 @@ void CActor::load(IReader &input_packet)
 #ifdef DEBUG
 
 extern	Flags32	dbg_net_Draw_Flags;
-void dbg_draw_piramid (Fvector pos, Fvector dir, float size, float xdir, u32 color)
+void dbg_draw_piramid (Fvector pos, Fvector dir, F32 size, F32 xdir, u32 color)
 {
 	
 	Fvector p0, p1, p2, p3, p4;
@@ -1377,7 +1377,7 @@ void	CActor::OnRender_Network()
 	RCache.OnFrameEnd();
 
 	//-----------------------------------------------------------------------------------------------------
-	float size = 0.2f;
+	F32 size = 0.2f;
 	
 //	dbg_draw_piramid(Position(), m_PhysicMovementControl->GetVelocity(), size/2, -r_model_yaw, color_rgba(255, 255, 255, 255));
 	//-----------------------------------------------------------------------------------------------------
@@ -1472,10 +1472,10 @@ void	CActor::OnRender_Network()
 		}
 
 		//drawing path trajectory
-		float c = 0;
+		F32 c = 0;
 		for (int i=0; i<11; i++)
 		{
-			c = float(i) * 0.1f;
+			c = F32(i) * 0.1f;
 			for (u32 k=0; k<3; k++)
 			{
 				point1S[k] = c*(c*(c*SCoeff[k][0]+SCoeff[k][1])+SCoeff[k][2])+SCoeff[k][3];
@@ -1494,7 +1494,7 @@ void	CActor::OnRender_Network()
 		//drawing speed vectors
 		for (i=0; i<2; i++)
 		{
-			c = float(i);
+			c = F32(i);
 			for (u32 k=0; k<3; k++)
 			{
 				point1S[k] = c*(c*(c*SCoeff[k][0]+SCoeff[k][1])+SCoeff[k][2])+SCoeff[k][3];

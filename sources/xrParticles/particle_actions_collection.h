@@ -7,16 +7,16 @@
 namespace PAPI{
 #define _METHODS	virtual void 	Load		(IReader& F);\
                     virtual void 	Save		(IWriter& F);\
-                    virtual void 	Execute		(ParticleEffect *pe, float dt);\
+                    virtual void 	Execute		(ParticleEffect *pe, F32 dt);\
                     virtual void 	Transform	(const Fmatrix& m);
 
 	struct PARTICLES_API PAAvoid : public ParticleAction
 	{
 		pDomain positionL;	// Avoid region (in local space)
 		pDomain position;	// Avoid region
-		float look_ahead;	// how many time units ahead to look
-		float magnitude;	// what percent of the way to go each time
-		float epsilon;		// add to r^2 for softening
+		F32 look_ahead;	// how many time units ahead to look
+		F32 magnitude;	// what percent of the way to go each time
+		F32 epsilon;		// add to r^2 for softening
 
         _METHODS;
 	};
@@ -25,9 +25,9 @@ namespace PAPI{
 	{
 		pDomain positionL;	// Bounce region (in local space)
 		pDomain position;	// Bounce region
-		float oneMinusFriction;	// Friction tangent to surface
-		float resilience;	// Resilence perpendicular to surface
-		float cutoffSqr;	// cutoff velocity; friction applies iff v > cutoff
+		F32 oneMinusFriction;	// Friction tangent to surface
+		F32 resilience;	// Resilence perpendicular to surface
+		F32 cutoffSqr;	// cutoff velocity; friction applies iff v > cutoff
 
         _METHODS;
 	};
@@ -42,8 +42,8 @@ namespace PAPI{
 	struct PARTICLES_API PADamping : public ParticleAction
 	{
 		pVector damping;	// Damping constant applied to velocity
-		float vlowSqr;		// Low and high cutoff velocities
-		float vhighSqr;
+		F32 vlowSqr;		// Low and high cutoff velocities
+		F32 vhighSqr;
 
         _METHODS;
 	};
@@ -52,29 +52,29 @@ namespace PAPI{
 	{
 		pVector centerL;	// The center of the explosion (in local space)
 		pVector center;		// The center of the explosion
-		float velocity;		// Of shock wave
-		float magnitude;	// At unit radius
-		float stdev;		// Sharpness or width of shock wave
-		float age;			// How long it's been going on
-		float epsilon;		// Softening parameter
+		F32 velocity;		// Of shock wave
+		F32 magnitude;	// At unit radius
+		F32 stdev;		// Sharpness or width of shock wave
+		F32 age;			// How long it's been going on
+		F32 epsilon;		// Softening parameter
 
         _METHODS;
 	};
 
 	struct PARTICLES_API PAFollow : public ParticleAction
 	{
-		float magnitude;	// The grav of each particle
-		float epsilon;		// Softening parameter
-		float max_radius;	// Only influence particles within max_radius
+		F32 magnitude;	// The grav of each particle
+		F32 epsilon;		// Softening parameter
+		F32 max_radius;	// Only influence particles within max_radius
 
         _METHODS;
 	};
 
 	struct PARTICLES_API PAGravitate : public ParticleAction
 	{
-		float magnitude;	// The grav of each particle
-		float epsilon;		// Softening parameter
-		float max_radius;	// Only influence particles within max_radius
+		F32 magnitude;	// The grav of each particle
+		F32 epsilon;		// Softening parameter
+		F32 max_radius;	// Only influence particles within max_radius
 
         _METHODS;
 	};
@@ -93,16 +93,16 @@ namespace PAPI{
 		pDomain accL;		// Acceleration vector domain  (in local space)
 		pVector	center;		// Center of the fan
 		pDomain acc;		// Acceleration vector domain
-		float magnitude;	// Scales acceleration
-		float epsilon;		// Softening parameter
-		float max_radius;	// Only influence particles within max_radius
+		F32 magnitude;	// Scales acceleration
+		F32 epsilon;		// Softening parameter
+		F32 max_radius;	// Only influence particles within max_radius
 
         _METHODS;
 	};
 
 	struct PARTICLES_API PAKillOld : public ParticleAction
 	{
-    	float age_limit;		// Exact age at which to kill particles.
+		F32 age_limit;		// Exact age at which to kill particles.
 		BOOL kill_less_than;	// True to kill particles less than limit.
 
         _METHODS;
@@ -110,9 +110,9 @@ namespace PAPI{
 
 	struct PARTICLES_API PAMatchVelocity : public ParticleAction
 	{
-		float magnitude;	// The grav of each particle
-		float epsilon;		// Softening parameter
-		float max_radius;	// Only influence particles within max_radius
+		F32 magnitude;	// The grav of each particle
+		F32 epsilon;		// Softening parameter
+		F32 max_radius;	// Only influence particles within max_radius
 
         _METHODS;
 	};
@@ -126,9 +126,9 @@ namespace PAPI{
 	{
 		pVector pL, axisL;	// Endpoints of line to which particles are attracted (in local space)
 		pVector p, axis;	// Endpoints of line to which particles are attracted
-		float magnitude;	// Scales acceleration
-		float epsilon;		// Softening parameter
-		float max_radius;	// Only influence particles within max_radius
+		F32 magnitude;	// Scales acceleration
+		F32 epsilon;		// Softening parameter
+		F32 max_radius;	// Only influence particles within max_radius
 
         _METHODS;
 	};
@@ -137,9 +137,9 @@ namespace PAPI{
 	{
 		pVector centerL;	// Point to which particles are attracted (in local space)
 		pVector center;		// Point to which particles are attracted
-		float magnitude;	// Scales acceleration
-		float epsilon;		// Softening parameter
-		float max_radius;	// Only influence particles within max_radius
+		F32 magnitude;	// Scales acceleration
+		F32 epsilon;		// Softening parameter
+		F32 max_radius;	// Only influence particles within max_radius
 
         _METHODS;
 	};
@@ -170,7 +170,7 @@ namespace PAPI{
 
 	struct PARTICLES_API PARestore : public ParticleAction
 	{
-		float time_left;	// Time remaining until they should be in position.
+		F32 time_left;	// Time remaining until they should be in position.
 
         _METHODS;
 	};
@@ -179,9 +179,9 @@ namespace PAPI{
 	{
 		pVector	centerL;	// Center of the fan (in local space)
 		pVector	center;		// Center of the fan
-		float magnitude;	// Scales acceleration
-		float epsilon;		// Softening parameter
-		float max_radius;	// Only influence particles within max_radius
+		F32 magnitude;	// Scales acceleration
+		F32 epsilon;		// Softening parameter
+		F32 max_radius;	// Only influence particles within max_radius
 
         _METHODS;
 	};
@@ -206,8 +206,8 @@ namespace PAPI{
 
 	struct PARTICLES_API PASpeedLimit : public ParticleAction
 	{
-		float min_speed;		// Clamp speed to this minimum.
-		float max_speed;		// Clamp speed to this maximum.
+		F32 min_speed;		// Clamp speed to this minimum.
+		F32 max_speed;		// Clamp speed to this maximum.
 
         _METHODS;
 	};
@@ -227,12 +227,12 @@ namespace PAPI{
 		pDomain rot;		// Choose a rotation in this domain.
 		pDomain size;		// Choose a size in this domain.
 		pDomain color;		// Choose a color in this domain.
-		float alpha;		// Alpha of all generated particles
-		float particle_rate;// Particles to generate per unit time
-		float age;			// Initial age of the particles
-		float age_sigma;	// St. dev. of initial age of the particles
+		F32 alpha;		// Alpha of all generated particles
+		F32 particle_rate;// Particles to generate per unit time
+		F32 age;			// Initial age of the particles
+		F32 age_sigma;	// St. dev. of initial age of the particles
 		pVector parent_vel;	
-		float parent_motion;
+		F32 parent_motion;
 
         _METHODS;
 	};
@@ -240,8 +240,8 @@ namespace PAPI{
 	struct PARTICLES_API PATargetColor : public ParticleAction
 	{
 		pVector color;		// Color to shift towards
-		float alpha;		// Alpha value to shift towards
-		float scale;		// Amount to shift by (1 == all the way)
+		F32 alpha;		// Alpha value to shift towards
+		F32 scale;		// Amount to shift by (1 == all the way)
 
         _METHODS;
 	};
@@ -257,7 +257,7 @@ namespace PAPI{
 	struct PARTICLES_API PATargetRotate : public ParticleAction
 	{
 		pVector rot;		// Rotation to shift towards
-		float scale;		// Amount to shift by per frame (1 == all the way)
+		F32 scale;		// Amount to shift by per frame (1 == all the way)
 
         _METHODS;
 	};
@@ -266,7 +266,7 @@ namespace PAPI{
 	{
 		pVector velocityL;	// Velocity to shift towards (in local space)
 		pVector velocity;	// Velocity to shift towards
-		float scale;		// Amount to shift by (1 == all the way)
+		F32 scale;		// Amount to shift by (1 == all the way)
 
         _METHODS;
 	};
@@ -277,21 +277,21 @@ namespace PAPI{
 		pVector axisL;		// Axis around which vortex is applied (in local space)
 		pVector center;		// Center of vortex
 		pVector axis;		// Axis around which vortex is applied
-		float magnitude;	// Scale for rotation around axis
-		float epsilon;		// Softening parameter
-		float max_radius;	// Only influence particles within max_radius
+		F32 magnitude;	// Scale for rotation around axis
+		F32 epsilon;		// Softening parameter
+		F32 max_radius;	// Only influence particles within max_radius
 
         _METHODS;
 	};
 
     struct PARTICLES_API PATurbulence : public ParticleAction
     {
-		float frequency;	// Frequency
+		F32 frequency;	// Frequency
 		int	octaves;		// Octaves
-		float magnitude;	// Scale for rotation around axis
-		float epsilon;		// Softening parameter
+		F32 magnitude;	// Scale for rotation around axis
+		F32 epsilon;		// Softening parameter
         pVector offset;		// Offset
-        float age;
+		F32 age;
 
         _METHODS;
     };

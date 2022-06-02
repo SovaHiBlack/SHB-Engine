@@ -82,17 +82,17 @@ Pixel	put_pixel	(Image* image, int x, int y, Pixel data)
 
 //
 #define	filter_support		(1.0)
-float	filter				(float t)
+F32	filter				(F32 t)
 {
 	/* f(t) = 2|t|^3 - 3|t|^2 + 1, -1 <= t <= 1 */
 	if(t < 0.0) t = -t;
-	if(t < 1.0) return		float((2.0 * t - 3.0) * t * t + 1.0);
+	if(t < 1.0) return		F32((2.0 * t - 3.0) * t * t + 1.0);
 	return(0.0);
 }
 
 //
 #define	box_support			(0.5)
-float	box_filter			(float t)
+F32	box_filter			(F32 t)
 {
 	if((t > -0.5) && (t <= 0.5)) return(1.0);
 	return(0.0);
@@ -100,7 +100,7 @@ float	box_filter			(float t)
 
 //
 #define	triangle_support	(1.0)
-float	triangle_filter		(float t)
+F32	triangle_filter		(F32 t)
 {
 	if(t < 0.0f) t = -t;
 	if(t < 1.0f) return(1.0f - t);
@@ -109,10 +109,10 @@ float	triangle_filter		(float t)
 
 //
 #define	bell_support		(1.5)
-float	bell_filter			(float t)		/* box (*) box (*) box */
+F32	bell_filter			(F32 t)		/* box (*) box (*) box */
 {
 	if(t < 0) t = -t;
-	if(t < .5) return float(.75 - (t * t));
+	if(t < .5) return F32(.75 - (t * t));
 	if(t < 1.5) {
 		t = (t - 1.5f);
 		return(.5f * (t * t));
@@ -122,9 +122,9 @@ float	bell_filter			(float t)		/* box (*) box (*) box */
 
 //
 #define	B_spline_support	(2.0)
-float	B_spline_filter		(float t)	/* box (*) box (*) box (*) box */
+F32	B_spline_filter		(F32 t)	/* box (*) box (*) box (*) box */
 {
-	float tt;
+	F32 tt;
 
 	if(t < 0) t = -t;
 	if(t < 1) {
@@ -139,16 +139,16 @@ float	B_spline_filter		(float t)	/* box (*) box (*) box (*) box */
 
 //
 #define	Lanczos3_support	(3.0)
-float	sinc				(float x)
+F32	sinc				(F32 x)
 {
 	x *= 3.1415926f;
 	if(x != 0) return(_sin(x) / x);
 	return(1.0);
 }
-float	Lanczos3_filter		(float t)
+F32	Lanczos3_filter		(F32 t)
 {
 	if(t < 0) t = -t;
-	if(t < 3.0f) return	float(sinc(t) * sinc(t/3.0f));
+	if(t < 3.0f) return	F32(sinc(t) * sinc(t/3.0f));
 	return(0.0);
 }
 
@@ -157,9 +157,9 @@ float	Lanczos3_filter		(float t)
 #define	B	(1.0f / 3.0f)
 #define	C	(1.0f / 3.0f)
 
-float	Mitchell_filter		(float t)
+F32	Mitchell_filter		(F32 t)
 {
-	float tt;
+	F32 tt;
 
 	tt = t * t;
 	if(t < 0) t = -t;
@@ -185,7 +185,7 @@ float	Mitchell_filter		(float t)
 struct CONTRIB
 {
 	int		pixel;
-	float	weight;
+	F32	weight;
 };
 
 struct CLIST
@@ -194,9 +194,9 @@ struct CLIST
 	CONTRIB	*p;					/* pointer to _list_ of contributions */
 };
 
-u32	CC	(float a)
+u32	CC	(F32 a)
 {
-	int	p		= iFloor(float(a)+.5f);
+	int	p		= iFloor(F32(a)+.5f);
 	if	(p<0)	return 0; else if (p>255) return 255;
 	return p;
 }
@@ -211,8 +211,8 @@ void	imf_Process	(u32* dstI, u32 dstW, u32 dstH, u32* srcI, u32 srcW, u32 srcH, 
 	Image		dst;	dst.xsize	= dstW;	dst.ysize	= dstH;	dst.data	= dstI;	dst.span	= dstW;
 
 	// Select filter
-	float		(*filterf)(float);	filterf		= 0;
-	float		fwidth	= 0;
+	F32(*filterf)(F32);	filterf		= 0;
+	F32		fwidth	= 0;
 	switch		(FILTER)
 	{
 	case imf_filter:	filterf=filter;				fwidth = filter_support;	break;
@@ -227,19 +227,19 @@ void	imf_Process	(u32* dstI, u32 dstW, u32 dstH, u32* srcI, u32 srcW, u32 srcH, 
 
 	//
 	Image	*tmp	= 0;			/* intermediate image */
-	float	xscale	= 0, yscale = 0;/* zoom scale factors */
+	F32	xscale	= 0, yscale = 0;/* zoom scale factors */
 	int		i, j, k;				/* loop variables */
 	int		n;						/* pixel number */
-	float	center, left,	right;	/* filter calculation variables */
-	float	width,	fscale, weight;	/* filter calculation variables */
+	F32	center, left,	right;	/* filter calculation variables */
+	F32	width,	fscale, weight;	/* filter calculation variables */
 	Pixel	*raster	= 0;			/* a row or column of pixels */
 	CLIST	*contrib= 0;			/* array of contribution lists */
 
 	/* create intermediate image to hold horizontal zoom */
 	try	{
 		tmp		= new_image	(dst.xsize, src.ysize);
-		xscale	= float	(dst.xsize) / float(src.xsize);
-		yscale	= float	(dst.ysize) / float(src.ysize);
+		xscale	= F32(dst.xsize) / F32(src.xsize);
+		yscale	= F32(dst.ysize) / F32(src.ysize);
 	} catch (...) {
 		Msg		("imf_Process::1");
 	};
@@ -260,12 +260,12 @@ void	imf_Process	(u32* dstI, u32 dstW, u32 dstH, u32* srcI, u32 srcW, u32 srcH, 
 				contrib[i].n	= 0;
 				contrib[i].p	= (CONTRIB *)xr_malloc((int) (width * 2 + 1)*sizeof(CONTRIB));
 				ZeroMemory(contrib[i].p,(int) (width * 2 + 1)*sizeof(CONTRIB));
-				center			= float(i) / xscale;
+				center			= F32(i) / xscale;
 				left			= ceil	(center - width);
 				right			= floor	(center + width);
 				for(j = int(left); j <= int(right); ++j)
 				{
-					weight	= center - float(j);
+					weight	= center - F32(j);
 					weight	= filterf(weight / fscale) / fscale;
 					if(j < 0) {
 						n = -j;
@@ -289,12 +289,12 @@ void	imf_Process	(u32* dstI, u32 dstW, u32 dstH, u32* srcI, u32 srcW, u32 srcH, 
 				contrib[i].n	= 0;
 				contrib[i].p	= (CONTRIB *)xr_malloc((int) (fwidth * 2 + 1)*sizeof(CONTRIB));
 				ZeroMemory(contrib[i].p,(int) (fwidth * 2 + 1)*sizeof(CONTRIB));
-				center			= float(i) / xscale;
+				center			= F32(i) / xscale;
 				left			= ceil	(center - fwidth);
 				right			= floor	(center + fwidth);
 				for(j = int(left); j <= int(right); ++j)
 				{
-					weight	= center - (float) j;
+					weight	= center - (F32) j;
 					weight	= (*filterf)(weight);
 					if(j < 0) {
 						n = -j;
@@ -324,16 +324,19 @@ void	imf_Process	(u32* dstI, u32 dstW, u32 dstH, u32* srcI, u32 srcW, u32 srcH, 
 			get_row	(raster, &src, k);
 			for(i = 0; i < tmp->xsize; ++i)
 			{
-				float	w_r	= 0., w_g = 0., w_b	= 0., w_a = 0.;
+				F32	w_r = 0.;
+				F32 w_g = 0.;
+				F32 w_b = 0.;
+				F32 w_a = 0.;
 
 				for	(j = 0; j < contrib[i].n; ++j)
 				{
-					float	W	=	contrib[i].p[j].weight;
+					F32	W	=	contrib[i].p[j].weight;
 					Pixel	P	=	raster[contrib[i].p[j].pixel];
-					w_r			+=	W*float(color_get_R(P));
-					w_g			+=	W*float(color_get_G(P));
-					w_b			+=	W*float(color_get_B(P));
-					w_a			+=	W*float(color_get_A(P));
+					w_r			+=	W* F32(color_get_R(P));
+					w_g			+=	W* F32(color_get_G(P));
+					w_b			+=	W* F32(color_get_B(P));
+					w_a			+=	W* F32(color_get_A(P));
 				}
 				put_pixel(tmp, i, k, color_rgba(CC(w_r),CC(w_g),CC(w_b),CC(w_a+0.5f)));
 			}
@@ -361,12 +364,12 @@ void	imf_Process	(u32* dstI, u32 dstW, u32 dstH, u32* srcI, u32 srcW, u32 srcH, 
 				contrib[i].n	= 0;
 				contrib[i].p	= (CONTRIB *)xr_malloc((int) (width * 2 + 1)*sizeof(CONTRIB));
 				ZeroMemory(contrib[i].p,(int) (width * 2 + 1)*sizeof(CONTRIB));
-				center			= (float) i / yscale;
+				center			= (F32) i / yscale;
 				left			= ceil	(center - width);
 				right			= floor	(center + width);
 				for(j = int(left); j <= int(right); ++j)
 				{
-					weight	= center - (float) j;
+					weight	= center - (F32) j;
 					weight	= filterf(weight / fscale) / fscale;
 					if(j < 0) {
 						n = -j;
@@ -388,11 +391,11 @@ void	imf_Process	(u32* dstI, u32 dstW, u32 dstH, u32* srcI, u32 srcW, u32 srcH, 
 				contrib[i].n	= 0;
 				contrib[i].p	= (CONTRIB *)xr_malloc((int) (fwidth * 2 + 1)*sizeof(CONTRIB));
 				ZeroMemory(contrib[i].p,(int) (fwidth * 2 + 1)*sizeof(CONTRIB));
-				center			= (float) i / yscale;
+				center			= (F32) i / yscale;
 				left			= ceil	(center - fwidth);
 				right			= floor	(center + fwidth);
 				for(j = int(left); j <= int(right); ++j) {
-					weight = center - (float) j;
+					weight = center - (F32) j;
 					weight = (*filterf)(weight);
 					if(j < 0) {
 						n = -j;
@@ -420,16 +423,19 @@ void	imf_Process	(u32* dstI, u32 dstW, u32 dstH, u32* srcI, u32 srcW, u32 srcH, 
 			get_column	(raster, tmp, k);
 			for(i = 0; i < dst.ysize; ++i)
 			{
-				float	w_r	= 0., w_g = 0., w_b	= 0., w_a = 0.;
+				F32	w_r = 0.;
+				F32 w_g = 0.;
+				F32 w_b = 0.;
+				F32 w_a = 0.;
 
 				for	(j = 0; j < contrib[i].n; ++j)
 				{
-					float	W	=	contrib[i].p[j].weight;
+					F32	W	=	contrib[i].p[j].weight;
 					Pixel	P	=	raster[contrib[i].p[j].pixel];
-					w_r			+=	W*float(color_get_R(P));
-					w_g			+=	W*float(color_get_G(P));
-					w_b			+=	W*float(color_get_B(P));
-					w_a			+=	W*float(color_get_A(P));
+					w_r			+=	W* F32(color_get_R(P));
+					w_g			+=	W* F32(color_get_G(P));
+					w_b			+=	W* F32(color_get_B(P));
+					w_a			+=	W* F32(color_get_A(P));
 				}
 				put_pixel(&dst, k, i, color_rgba(CC(w_r),CC(w_g),CC(w_b),CC(w_a+0.5f)));
 			}

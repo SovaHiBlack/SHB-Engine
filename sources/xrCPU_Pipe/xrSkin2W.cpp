@@ -12,8 +12,9 @@ struct vertBoned2W	// (1+3+3 + 1+3+3 + 2)*4 = 16*4 = 64 bytes
 	Fvector	N0;
 	Fvector	P1;
 	Fvector	N1;
-	float	w;
-	float	u,v;
+	F32	w;
+	F32	u;
+	F32 v;
 };
 */
 

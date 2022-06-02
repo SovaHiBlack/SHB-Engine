@@ -116,13 +116,13 @@ void CActorCondition::UpdateCondition()
 	};
 	
 	{
-		float k_max_power = 1.0f;
+		F32 k_max_power = 1.0f;
 
 		if( true )
 		{
-			float weight = object().inventory().TotalWeight();
+			F32 weight = object().inventory().TotalWeight();
 
-			float base_w = object().MaxCarryWeight();
+			F32 base_w = object().MaxCarryWeight();
 /*
 			CCustomOutfit* outfit	= m_object->GetOutfit();
 			if(outfit)
@@ -183,7 +183,7 @@ void CActorCondition::UpdateCondition()
 
 void CActorCondition::UpdateSatiety()
 {
-	float k = 1.0f;
+	F32 k = 1.0f;
 	if(m_fSatiety>0)
 	{
 		m_fSatiety -=	m_fV_Satiety*
@@ -203,8 +203,8 @@ void CActorCondition::UpdateSatiety()
 	}
 
 	//коэффициенты уменьшения восстановления силы от сытоти и радиации
-	float radiation_power_k		= 1.f;
-	float satiety_power_k		= 1.f;
+	F32 radiation_power_k		= 1.f;
+	F32 satiety_power_k		= 1.f;
 			
 	m_fDeltaPower += m_fV_SatietyPower*
 				radiation_power_k*
@@ -220,23 +220,23 @@ CWound* CActorCondition::ConditionHit(SHit* pHDS)
 }
 
 //weight - "удельный" вес от 0..1
-void CActorCondition::ConditionJump(float weight)
+void CActorCondition::ConditionJump(F32 weight)
 {
-	float power			=	m_fJumpPower;
+	F32 power			=	m_fJumpPower;
 	power				+=	m_fJumpWeightPower*weight*(weight>1.f?m_fOverweightJumpK:1.f);
 	m_fPower			-=	HitPowerEffect(power);
 }
-void CActorCondition::ConditionWalk(float weight, bool accel, bool sprint)
+void CActorCondition::ConditionWalk(F32 weight, bool accel, bool sprint)
 {	
-	float power			=	m_fWalkPower;
+	F32 power			=	m_fWalkPower;
 	power				+=	m_fWalkWeightPower*weight*(weight>1.f?m_fOverweightWalkK:1.f);
 	power				*=	m_fDeltaTime*(accel?(sprint?m_fSprintK:m_fAccelK):1.f);
 	m_fPower			-=	HitPowerEffect(power);
 }
 
-void CActorCondition::ConditionStand(float weight)
+void CActorCondition::ConditionStand(F32 weight)
 {	
-	float power			= m_fStandPower;
+	F32 power			= m_fStandPower;
 	power				*= m_fDeltaTime;
 	m_fPower			-= power;
 }
@@ -257,7 +257,7 @@ bool CActorCondition::IsCantWalkWeight()
 {
 	if(!GodMode())
 	{
-		float max_w				= m_MaxWalkWeight;
+		F32 max_w				= m_MaxWalkWeight;
 
 		CCustomOutfit* outfit	= m_object->GetOutfit();
 		if(outfit)
@@ -315,12 +315,12 @@ void CActorCondition::reinit	()
 	m_fSatiety					= 1.f;
 }
 
-void CActorCondition::ChangeAlcohol	(float value)
+void CActorCondition::ChangeAlcohol	(F32 value)
 {
 	m_fAlcohol += value;
 }
 
-void CActorCondition::ChangeSatiety(float value)
+void CActorCondition::ChangeSatiety(F32 value)
 {
 	m_fSatiety += value;
 	clamp		(m_fSatiety, 0.0f, 1.0f);
@@ -329,13 +329,13 @@ void CActorCondition::ChangeSatiety(float value)
 void CActorCondition::UpdateTutorialThresholds()
 {
 	string256						cb_name;
-	static float _cPowerThr			= pSettings->r_float("tutorial_conditions_thresholds","power");
-	static float _cPowerMaxThr		= pSettings->r_float("tutorial_conditions_thresholds","max_power");
-	static float _cBleeding			= pSettings->r_float("tutorial_conditions_thresholds","bleeding");
-	static float _cSatiety			= pSettings->r_float("tutorial_conditions_thresholds","satiety");
-	static float _cRadiation		= pSettings->r_float("tutorial_conditions_thresholds","radiation");
-	static float _cWpnCondition		= pSettings->r_float("tutorial_conditions_thresholds","weapon_jammed");
-	static float _cPsyHealthThr		= pSettings->r_float("tutorial_conditions_thresholds","psy_health");
+	static F32 _cPowerThr			= pSettings->r_float("tutorial_conditions_thresholds","power");
+	static F32 _cPowerMaxThr		= pSettings->r_float("tutorial_conditions_thresholds","max_power");
+	static F32 _cBleeding			= pSettings->r_float("tutorial_conditions_thresholds","bleeding");
+	static F32 _cSatiety			= pSettings->r_float("tutorial_conditions_thresholds","satiety");
+	static F32 _cRadiation		= pSettings->r_float("tutorial_conditions_thresholds","radiation");
+	static F32 _cWpnCondition		= pSettings->r_float("tutorial_conditions_thresholds","weapon_jammed");
+	static F32 _cPsyHealthThr		= pSettings->r_float("tutorial_conditions_thresholds","psy_health");
 
 
 

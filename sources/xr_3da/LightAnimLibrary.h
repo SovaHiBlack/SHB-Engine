@@ -13,7 +13,7 @@ public:
 	void			InitDefault			();
     void			Load				(IReader& F);
     void			Save				(IWriter& F);
-	float			Length_sec			(){return F32(iFrameCount)/fFPS;}
+	F32			Length_sec			(){return F32(iFrameCount)/fFPS;}
 	u32				Length_ms			(){return iFloor(Length_sec()*1000.f);}
     u32				InterpolateRGB		(int frame);
     u32				InterpolateBGR		(int frame);

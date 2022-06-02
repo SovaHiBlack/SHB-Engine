@@ -28,7 +28,7 @@ void	CConstant::Calculate()
 	dwFrame		= Device.dwFrame;
 	if (modeProgrammable==dwMode)	return;
 
-	float	t	= Device.fTimeGlobal;
+	F32	t	= Device.fTimeGlobal;
 	set_float	(_R.Calculate(t),_G.Calculate(t),_B.Calculate(t),_A.Calculate(t));
 }
 

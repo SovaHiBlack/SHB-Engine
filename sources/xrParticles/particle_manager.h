@@ -31,7 +31,7 @@ namespace PAPI{
         virtual void				StopEffect			(int effect_id, int alist_id, BOOL deffered=TRUE);
 
         // update&render
-        virtual void				Update				(int effect_id, int alist_id, float dt);
+        virtual void				Update				(int effect_id, int alist_id, F32 dt);
         virtual void				Render				(int effect_id);
         virtual void				Transform			(int alist_id, const Fmatrix& m, const Fvector& velocity);
 

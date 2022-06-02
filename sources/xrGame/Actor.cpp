@@ -502,7 +502,7 @@ void	CActor::Hit							(SHit* pHDS)
 
 	HitMark			(HDS.damage(), HDS.dir, HDS.who, HDS.bone(), HDS.p_in_bone_space, HDS.impulse, HDS.hit_type);
 
-	float hit_power	= HitArtefactsOnBelt(HDS.damage(), HDS.hit_type);
+	F32 hit_power	= HitArtefactsOnBelt(HDS.damage(), HDS.hit_type);
 
 	if (GodMode())//psActorFlags.test(AF_GODMODE))
 	{
@@ -724,9 +724,9 @@ void CActor::g_Physics(Fvector& _accel, F32 jump, F32 dt)
 		}
 	}
 }
-float g_fov = 67.5f;
+F32 g_fov = 67.5f;
 
-float CActor::currentFOV()
+F32 CActor::currentFOV()
 {
 	CWeapon* pWeapon = smart_cast<CWeapon*>(inventory().ActiveItem());	
 
@@ -771,7 +771,7 @@ void CActor::UpdateCL	()
 	CWeapon* pWeapon = smart_cast<CWeapon*>(inventory().ActiveItem());	
 
 	Device.Statistic->TEST1.Begin		();
-	cam_Update(float(Device.dwTimeDelta)/1000.0f, currentFOV());
+	cam_Update(F32(Device.dwTimeDelta)/1000.0f, currentFOV());
 	Device.Statistic->TEST1.End		();
 
 	if(Level().CurrentEntity() && this->ID()==Level().CurrentEntity()->ID() )
@@ -783,7 +783,7 @@ void CActor::UpdateCL	()
 	{
 		if(pWeapon->IsZoomed())
 		{
-			float full_fire_disp = pWeapon->GetFireDispersion(true);
+			F32 full_fire_disp = pWeapon->GetFireDispersion(true);
 
 			CEffectorZoomInertion* S = smart_cast<CEffectorZoomInertion*>	(Cameras().GetCamEffector(eCEZoom));
 			if(S) S->SetParams(full_fire_disp);
@@ -793,7 +793,7 @@ void CActor::UpdateCL	()
 
 		if(Level().CurrentEntity() && this->ID()==Level().CurrentEntity()->ID() )
 		{
-			float fire_disp_full = pWeapon->GetFireDispersion(true);
+			F32 fire_disp_full = pWeapon->GetFireDispersion(true);
 
 			HUD().SetCrosshairDisp(fire_disp_full, 0.02f);
 			HUD().ShowCrosshair(pWeapon->use_crosshair());
@@ -833,7 +833,7 @@ void CActor::UpdateCL	()
 	}
 }
 
-float	NET_Jump = 0;
+F32	NET_Jump = 0;
 void CActor::shedule_Update	(u32 DT)
 {
 	setSVU(OnServer());
@@ -862,7 +862,7 @@ void CActor::shedule_Update	(u32 DT)
 
 	// 
 	clamp					(DT,0u,100u);
-	float	dt	 			=  float(DT)/1000.f;
+	F32	dt	 			= F32(DT)/1000.f;
 
 	// Check controls, create accel, prelimitary setup "mstate_real"
 	
@@ -893,7 +893,8 @@ void CActor::shedule_Update	(u32 DT)
 		g_SetAnimation			(mstate_real);
 		
 		// Check for game-contacts
-		Fvector C; float R;		
+		Fvector C;
+		F32 R;
 		//m_PhysicMovementControl->GetBoundingSphere	(C,R);
 		
 		Center(C);
@@ -986,7 +987,7 @@ void CActor::shedule_Update	(u32 DT)
 			m_HeavyBreathSnd.stop		();
 		}
 
-		float bs = conditions().BleedingSpeed();
+		F32 bs = conditions().BleedingSpeed();
 		if(bs>0.6f)
 		{
 			Fvector snd_pos;
@@ -996,7 +997,7 @@ void CActor::shedule_Update	(u32 DT)
 			else
 				m_BloodSnd.set_position(snd_pos);
 
-			float v = bs+0.25f;
+			F32 v = bs+0.25f;
 
 			m_BloodSnd.set_volume	(v);
 		}else{
@@ -1146,7 +1147,7 @@ void CActor::OnHUDDraw	(CCustomHUD* /**hud/**/)
 
 		if (IReceived != 0)
 		{
-			float Size = 0;
+			F32 Size = 0;
 			Size = HUD().Font().pFontStat->GetSize();
 			HUD().Font().pFontStat->SetSize(Size*2);
 			HUD().Font().pFontStat->SetColor	(0xffff0000);
@@ -1157,7 +1158,7 @@ void CActor::OnHUDDraw	(CCustomHUD* /**hud/**/)
 #endif
 }
 
-void CActor::RenderIndicator			(Fvector dpos, float r1, float r2, ref_shader IndShader)
+void CActor::RenderIndicator			(Fvector dpos, F32 r1, F32 r2, ref_shader IndShader)
 {
 	if (!g_Alive()) return;
 
@@ -1201,10 +1202,10 @@ void CActor::RenderIndicator			(Fvector dpos, float r1, float r2, ref_shader Ind
 	RCache.Render	   			(D3DPT_TRIANGLESTRIP,dwOffset,0, dwCount, 0, 2);
 };
 
-static float mid_size = 0.097f;
-static float fontsize = 15.0f;
-static float upsize	= 0.33f;
-void CActor::RenderText				(LPCSTR Text, Fvector dpos, float* pdup, u32 color)
+static F32 mid_size = 0.097f;
+static F32 fontsize = 15.0f;
+static F32 upsize	= 0.33f;
+void CActor::RenderText				(LPCSTR Text, Fvector dpos, F32* pdup, u32 color)
 {
 	if (!g_Alive()) return;
 	
@@ -1221,16 +1222,16 @@ void CActor::RenderText				(LPCSTR Text, Fvector dpos, float* pdup, u32 color)
 	Fvector v0r, v1r;
 	Device.mFullTransform.transform(v0r,v0);
 	Device.mFullTransform.transform(v1r,v1);
-	float size = v1r.distance_to(v0r);
+	F32 size = v1r.distance_to(v0r);
 	CGameFont* pFont = HUD().Font().pFontArial14;
 	if (!pFont) return;
-//	float OldFontSize = pFont->GetHeight	();	
-	float delta_up = 0.0f;
+//	F32 OldFontSize = pFont->GetHeight	();	
+	F32 delta_up = 0.0f;
 	if (size < mid_size) delta_up = upsize;
 	else delta_up = upsize*(mid_size/size);
 	dpos.y += delta_up;
 	if (size > mid_size) size = mid_size;
-//	float NewFontSize = size/mid_size * fontsize;
+//	F32 NewFontSize = size/mid_size * fontsize;
 	//------------------------------------------------
 	M.c.y += dpos.y;
 
@@ -1240,8 +1241,8 @@ void CActor::RenderText				(LPCSTR Text, Fvector dpos, float* pdup, u32 color)
 	if (v_res.z < 0 || v_res.w < 0)	return;
 	if (v_res.x < -1.f || v_res.x > 1.f || v_res.y<-1.f || v_res.y>1.f) return;
 
-	float x = (1.f + v_res.x)/2.f * (Device.dwWidth);
-	float y = (1.f - v_res.y)/2.f * (Device.dwHeight);
+	F32 x = (1.f + v_res.x)/2.f * (Device.dwWidth);
+	F32 y = (1.f - v_res.y)/2.f * (Device.dwHeight);
 
 	pFont->SetAligment	(CGameFont::alCenter);
 	pFont->SetColor		(color);
@@ -1269,10 +1270,10 @@ void CActor::ForceTransform(const Fmatrix& m)
 	character_physics_support()->movement()->SetVelocity		(0,0,0);
 }
 
-ENGINE_API extern float		psHUD_FOV;
-float CActor::Radius()const
+ENGINE_API extern F32		psHUD_FOV;
+F32 CActor::Radius()const
 { 
-	float R		= inherited::Radius();
+	F32 R		= inherited::Radius();
 	CWeapon* W	= smart_cast<CWeapon*>(inventory().ActiveItem());
 	if (W) R	+= W->Radius();
 	//	if (HUDview()) R *= 1.f/psHUD_FOV;
@@ -1374,9 +1375,9 @@ void CActor::MoveArtefactBelt(const CArtefact* artefact, bool on_belt)
 
 void CActor::UpdateArtefactsOnBelt()
 {
-	static float update_time = 0;
+	static F32 update_time = 0;
 
-	float f_update_time = 0;
+	F32 f_update_time = 0;
 
 	if(update_time<ARTEFACTS_UPDATE_TIME)
 	{
@@ -1404,10 +1405,10 @@ void CActor::UpdateArtefactsOnBelt()
 	}
 }
 
-float	CActor::HitArtefactsOnBelt		(float hit_power, ALife::EHitType hit_type)
+F32	CActor::HitArtefactsOnBelt		(F32 hit_power, ALife::EHitType hit_type)
 {
-	float res_hit_power_k		= 1.0f;
-	float _af_count				= 0.0f;
+	F32 res_hit_power_k		= 1.0f;
+	F32 _af_count				= 0.0f;
 	for(TIItemContainer::iterator it = inventory().m_belt.begin(); 
 		inventory().m_belt.end() != it; ++it) 
 	{
@@ -1459,7 +1460,7 @@ void CActor::AnimTorsoPlayCallBack(CBlend* B)
 	actor->m_bAnimTorsoPlayed = FALSE;
 }
 
-void CActor::SetActorVisibility(u16 who, float value)
+void CActor::SetActorVisibility(u16 who, F32 value)
 {
 	CUIMotionIcon		&motion_icon	= HUD().GetUI()->UIMainIngameWnd->MotionIcon();
 	motion_icon.SetActorVisibility		(who, value);
@@ -1569,7 +1570,7 @@ CVisualMemoryManager	*CActor::visual_memory	() const
 	return							(&memory().visual());
 }
 
-float		CActor::GetMass				()
+F32		CActor::GetMass				()
 {
 	return g_Alive()?character_physics_support()->movement()->GetMass():m_pPhysicsShell?m_pPhysicsShell->getMass():0; 
 }

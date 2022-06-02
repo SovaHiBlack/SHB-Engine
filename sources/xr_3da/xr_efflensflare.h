@@ -9,9 +9,9 @@ class ENGINE_API CLensFlareDescriptor
 public:
 	struct SFlare
 	{
-    	float			fOpacity;
-	    float			fRadius;
-    	float			fPosition;
+		F32			fOpacity;
+		F32			fRadius;
+		F32			fPosition;
         shared_str			texture;
         shared_str			shader;
         ref_shader		hShader;
@@ -37,12 +37,12 @@ public:
 	// gradient
     SFlare				m_Gradient;
 
-    float				m_StateBlendUpSpeed;
-    float				m_StateBlendDnSpeed;
+	F32				m_StateBlendUpSpeed;
+	F32				m_StateBlendDnSpeed;
     
-	void				SetGradient		(float fMaxRadius, float fOpacity, LPCSTR tex_name, LPCSTR sh_name);
-    void				SetSource		(float fRadius, BOOL ign_color, LPCSTR tex_name, LPCSTR sh_name);
-    void				AddFlare		(float fRadius, float fOpacity, float fPosition, LPCSTR tex_name, LPCSTR sh_name);
+	void				SetGradient		(F32 fMaxRadius, F32 fOpacity, LPCSTR tex_name, LPCSTR sh_name);
+    void				SetSource		(F32 fRadius, BOOL ign_color, LPCSTR tex_name, LPCSTR sh_name);
+    void				AddFlare		(F32 fRadius, F32 fOpacity, F32 fPosition, LPCSTR tex_name, LPCSTR sh_name);
     ref_shader			CreateShader	(LPCSTR tex_name, LPCSTR sh_name);
 
 	shared_str			section;
@@ -61,7 +61,7 @@ private:
 	collide::rq_results	r_dest;
 
 protected:
-	float				fBlend;
+	F32				fBlend;
 	u32					dwFrame;
 
 	Fvector				vSunDir;
@@ -71,7 +71,7 @@ protected:
 
 	// variable
     Fcolor				LightColor;
-	float				fGradientValue;
+	F32				fGradientValue;
 
 	ref_geom			hGeom;
 
@@ -85,7 +85,7 @@ protected:
         lfsShow,
     };
     LFState				m_State;
-    float				m_StateBlend;
+	F32				m_StateBlend;
 
 public:
 	collide::ray_cache	m_ray_cache;

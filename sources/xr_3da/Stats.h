@@ -12,11 +12,11 @@ class ENGINE_API CStats: public pureRender
 public:
 	CGameFont*	pFont;
 
-	float		fFPS,fRFPS,fTPS		;			// FPS, RenderFPS, TPS
-	float		fMem_calls			;
+	F32		fFPS,fRFPS,fTPS		;			// FPS, RenderFPS, TPS
+	F32		fMem_calls			;
 	u32			dwMem_calls			;
 	u32			dwSND_Played,dwSND_Allocated;	// Play/Alloc
-	float		fShedulerLoad		;
+	F32		fShedulerLoad		;
 
 	CStatTimer	EngineTOTAL;			// 
 	CStatTimer	Sheduler;				// 

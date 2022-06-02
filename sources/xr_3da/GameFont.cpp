@@ -293,7 +293,7 @@ u16 CGameFont::SplitByWidth( u16 * puBuffer , u16 uBufferSize , F32 fTargetWidth
 	VERIFY( puBuffer && uBufferSize && pszText );
 
 	wide_char wsStr[ MAX_MB_CHARS ] , wsPos[ MAX_MB_CHARS ];
-	float fCurWidth = 0.0f;
+	F32 fCurWidth = 0.0f;
 	F32 fDelta = 0.0f;
 	u16 nLines = 0;
 

@@ -71,11 +71,11 @@ void CStatGraph::RenderBack	()
     RCache.Render	   		(D3DPT_LINESTRIP,dwOffset,4);
 
 	// draw grid
-	float elem_factor	= float(rb.y-lt.y)/float(mx-mn);
-	float base_y		= float(rb.y)+(mn*elem_factor);
+	F32 elem_factor	= F32(rb.y-lt.y)/ F32(mx-mn);
+	F32 base_y		= F32(rb.y)+(mn*elem_factor);
 
-	int PNum_H_LinesUp	= int((base_y - float(lt.y)) / (grid_step.y*elem_factor));
-	int PNum_H_LinesDwn = u32((float(rb.y) - base_y) / (grid_step.y*elem_factor));
+	int PNum_H_LinesUp	= int((base_y - F32(lt.y)) / (grid_step.y*elem_factor));
+	int PNum_H_LinesDwn = u32((F32(rb.y) - base_y) / (grid_step.y*elem_factor));
 	int Num_H_LinesUp = (grid.y < PNum_H_LinesUp) ? grid.y : PNum_H_LinesUp;
 	int Num_H_LinesDwn = (grid.y < PNum_H_LinesUp) ? grid.y : PNum_H_LinesDwn;
 
@@ -86,8 +86,8 @@ void CStatGraph::RenderBack	()
 	pv->set					(lt.x, int(base_y), base_color); pv++; // 0
 	pv->set					(rb.x, int(base_y), base_color); pv++;	// 0    
     // grid
-//    float grid_offs_x		= float(rb.x-lt.x)/float(grid.x+1);
-//    float grid_offs_y		= float(rb.y-lt.y)/float(grid.y+1);
+//    F32 grid_offs_x		= F32(rb.x-lt.x)/F32(grid.x+1);
+//    F32 grid_offs_y		= F32(rb.y-lt.y)/F32(grid.y+1);
     for (int g_x=1; g_x<=grid.x; g_x++)
 	{
 	    pv->set				(int(lt.x + g_x*grid_step.x*elem_factor),lt.y,grid_color); pv++; 	
@@ -119,17 +119,17 @@ void CStatGraph::RenderBack	()
 
 void CStatGraph::RenderBars(FVF::TL0uv** ppv, ElementsDeq* pelements)
 {
-	float elem_offs		= float(rb.x-lt.x)/max_item_count;
-	float elem_factor	= float(rb.y-lt.y)/float(mx-mn);
-	float base_y		= float(rb.y)+(mn*elem_factor);
+	F32 elem_offs		= F32(rb.x-lt.x)/max_item_count;
+	F32 elem_factor	= F32(rb.y-lt.y)/ F32(mx-mn);
+	F32 base_y		= F32(rb.y)+(mn*elem_factor);
 
-	float column_width = elem_offs;
+	F32 column_width = elem_offs;
 	if (column_width > 1) column_width--;
 	for (ElementsDeqIt it=pelements->begin(); it!=pelements->end(); it++)
 	{
-		float X		= float(it-pelements->begin())*elem_offs+lt.x;
-		float Y0	= base_y;
-		float Y1	= base_y - it->data*elem_factor;
+		F32 X		= F32(it-pelements->begin())*elem_offs+lt.x;
+		F32 Y0	= base_y;
+		F32 Y1	= base_y - it->data*elem_factor;
 
 		if (Y1 > Y0)
 		{
@@ -150,36 +150,36 @@ void CStatGraph::RenderBars(FVF::TL0uv** ppv, ElementsDeq* pelements)
 
 void CStatGraph::RenderLines( FVF::TL0uv** ppv, ElementsDeq* pelements )
 {
-	float elem_offs		= float(rb.x-lt.x)/max_item_count;
-	float elem_factor	= float(rb.y-lt.y)/float(mx-mn);
-	float base_y		= float(rb.y)+(mn*elem_factor);
+	F32 elem_offs		= F32(rb.x-lt.x)/max_item_count;
+	F32 elem_factor	= F32(rb.y-lt.y)/ F32(mx-mn);
+	F32 base_y		= F32(rb.y)+(mn*elem_factor);
 
 	for (ElementsDeqIt it=pelements->begin()+1;  it!=pelements->end() && it!=pelements->end()+1; it++)
 	{
 		ElementsDeqIt it_prev = it-1;
-		float X0	= float(it_prev-pelements->begin())*elem_offs+lt.x;
-		float Y0	= base_y-it_prev->data*elem_factor;
+		F32 X0	= F32(it_prev-pelements->begin())*elem_offs+lt.x;
+		F32 Y0	= base_y-it_prev->data*elem_factor;
 		(*ppv)->set		(X0,Y0,it->color); (*ppv)++;
-		float X1	= float(it-pelements->begin())*elem_offs+lt.x;
-		float Y1	= base_y-it->data*elem_factor;
+		F32 X1	= F32(it-pelements->begin())*elem_offs+lt.x;
+		F32 Y1	= base_y-it->data*elem_factor;
 		(*ppv)->set		(X1,Y1,it->color); (*ppv)++;
 	}
 };
 
 void CStatGraph::RenderBarLines( FVF::TL0uv** ppv, ElementsDeq* pelements )
 {
-	float elem_offs		= float(rb.x-lt.x)/max_item_count;
-	float elem_factor	= float(rb.y-lt.y)/float(mx-mn);
-	float base_y		= float(rb.y)+(mn*elem_factor);
+	F32 elem_offs		= F32(rb.x-lt.x)/max_item_count;
+	F32 elem_factor	= F32(rb.y-lt.y)/ F32(mx-mn);
+	F32 base_y		= F32(rb.y)+(mn*elem_factor);
 
 	for (ElementsDeqIt it=pelements->begin()+1; it!=pelements->end() && it!=pelements->end()+1; it++)
 	{
 		ElementsDeqIt it_prev = it-1;
-		float X0	= float(it_prev-pelements->begin())*elem_offs+lt.x+elem_offs;
-		float Y0	= base_y-it_prev->data*elem_factor;
+		F32 X0	= F32(it_prev-pelements->begin())*elem_offs+lt.x+elem_offs;
+		F32 Y0	= base_y-it_prev->data*elem_factor;
 		(*ppv)->set		(X0,Y0,it->color); (*ppv)++;
-		float X1	= float(it-pelements->begin())*elem_offs+lt.x;
-		float Y1	= base_y-it->data*elem_factor;
+		F32 X1	= F32(it-pelements->begin())*elem_offs+lt.x;
+		F32 Y1	= base_y-it->data*elem_factor;
 		(*ppv)->set		(X1,Y1,it->color); (*ppv)++;
 		(*ppv)->set		(X1,Y1,it->color); (*ppv)++;
 		X1 += elem_offs;
@@ -189,30 +189,33 @@ void CStatGraph::RenderBarLines( FVF::TL0uv** ppv, ElementsDeq* pelements )
 
 void	CStatGraph::RenderMarkers	( FVF::TL0uv** ppv, MarkersDeq* pmarkers )
 {
-	float elem_offs		= float(rb.x-lt.x)/max_item_count;
-	float elem_factor	= float(rb.y-lt.y)/float(mx-mn);
-	float base_y		= float(rb.y)+(mn*elem_factor);
+	F32 elem_offs		= F32(rb.x-lt.x)/max_item_count;
+	F32 elem_factor	= F32(rb.y-lt.y)/ F32(mx-mn);
+	F32 base_y		= F32(rb.y)+(mn*elem_factor);
 
 	for (MarkersDeqIt it=pmarkers->begin();  it!=pmarkers->end() && it!=pmarkers->end()+1; it++)
 	{
 		SMarker &CurMarker = *it;
-		float X0 = 0, Y0 = 0, X1 = 0, Y1 = 0;
+		F32 X0 = 0;
+		F32 Y0 = 0;
+		F32 X1 = 0;
+		F32 Y1 = 0;
 		switch (CurMarker.m_eStyle)
 		{
 		case stVert:
 			{
 				X0 = CurMarker.m_fPos*elem_offs+lt.x;
-				clamp(X0, float(lt.x), float(rb.x));
+				clamp(X0, F32(lt.x), F32(rb.x));
 				X1 = X0;
-				Y0 = float(lt.y);
-				Y1 = float(rb.y);
+				Y0 = F32(lt.y);
+				Y1 = F32(rb.y);
 			}break;
 		case stHor:
 			{
-				X0 = float(lt.x);
-				X1 = float(rb.x);
+				X0 = F32(lt.x);
+				X1 = F32(rb.x);
 				Y0 = base_y - CurMarker.m_fPos*elem_factor;
-				clamp(Y0, float(lt.y), float(rb.y));
+				clamp(Y0, F32(lt.y), F32(rb.y));
 				Y1 = Y0;
 			}break;
 		}

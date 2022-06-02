@@ -87,7 +87,7 @@ public:
 	virtual BOOL						Ready				()					{ return Props.net_Ready;	}
 	BOOL								GetTmpPreDestroy		()		const	{ return Props.bPreDestroy;	}
 	void								SetTmpPreDestroy	(BOOL b)			{ Props.bPreDestroy = b;}
-	virtual float						shedule_Scale		()					{ return Device.vCameraPosition.distance_to(Position())/200.f; }
+	virtual F32						shedule_Scale		()					{ return Device.vCameraPosition.distance_to(Position())/200.f; }
 	virtual bool						shedule_Needed		()					{return processing_enabled();};
 
 	// Parentness
@@ -104,13 +104,13 @@ public:
 	virtual void						spatial_register	();
 	virtual void						spatial_unregister	();
 	virtual void						spatial_move		();
-	void								spatial_update		(float eps_P, float eps_R);
+	void								spatial_update		(F32 eps_P, F32 eps_R);
 
 	ICF Fvector&						Direction			() 					{ return renderable.xform.k;		}
 	ICF const Fvector&					Direction			() 			const	{ return renderable.xform.k;		}
 	ICF Fvector&						Position			() 					{ return renderable.xform.c;		}
 	ICF const Fvector&					Position			() 			const	{ return renderable.xform.c;		}
-	virtual float						Radius				()			const;
+	virtual F32						Radius				()			const;
 	virtual const Fbox&					BoundingBox			()			const;
 	
 	IC IRender_Sector*					Sector				()					{ return H_Root()->spatial.sector;	}

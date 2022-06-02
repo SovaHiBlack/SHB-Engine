@@ -46,7 +46,7 @@ BOOL	ISpatial::spatial_inside()
 	return TRUE;
 }
 
-BOOL	verify_sp	(ISpatial* sp, Fvector& node_center, float node_radius)
+BOOL	verify_sp	(ISpatial* sp, Fvector& node_center, F32 node_radius)
 {
 	F32	dr	= -(- node_radius + sp->spatial.sphere.R);
 	if (sp->spatial.sphere.P.x < node_center.x - dr)	return FALSE;

@@ -76,7 +76,7 @@ void AddEffector		(CActor* A, int type, const shared_str& sect_name, GET_KOEFF_F
 	}
 };
 
-void AddEffector(CActor* A, int type, const shared_str& sect_name, float factor)
+void AddEffector(CActor* A, int type, const shared_str& sect_name, F32 factor)
 {
 	clamp(factor, 0.001f, 1.5f);
 	if(pSettings->line_exist(sect_name,"pp_eff_name")){
@@ -139,7 +139,7 @@ BOOL CAnimatorCamEffector::Valid()
 	return			inherited::Valid();
 }
 
-BOOL CAnimatorCamEffector::Process (Fvector &p, Fvector &d, Fvector &n, float& fFov, float& fFar, float& fAspect)
+BOOL CAnimatorCamEffector::Process (Fvector &p, Fvector &d, Fvector &n, F32& fFov, F32& fFar, F32& fAspect)
 {
 	if(!inherited::Process(p,d,n,fFov,fFar,fAspect))	return FALSE;
 
@@ -167,7 +167,7 @@ BOOL CAnimatorCamEffector::Process (Fvector &p, Fvector &d, Fvector &n, float& f
 	return						TRUE;
 }
 
-BOOL CAnimatorCamLerpEffector::Process(Fvector &p, Fvector &d, Fvector &n, float& fFov, float& fFar, float& fAspect)
+BOOL CAnimatorCamLerpEffector::Process(Fvector &p, Fvector &d, Fvector &n, F32& fFov, F32& fFar, F32& fAspect)
 {
 	if(!inherited::inherited::Process(p,d,n,fFov,fFar,fAspect))	return FALSE;
 
@@ -189,7 +189,7 @@ BOOL CAnimatorCamLerpEffector::Process(Fvector &p, Fvector &d, Fvector &n, float
 	q_src.set					(Mdef);
 	q_dst.set					(mr);
 
-	float	t					= m_func();
+	F32	t					= m_func();
 	clamp						(t,0.0f,1.0f);
 
 	VERIFY						(t>=0.f && t<=1.f);
@@ -260,15 +260,15 @@ BOOL SndShockEffector::InWork()
 	return inherited::Valid();
 }
 
-float SndShockEffector::GetFactor()
+F32 SndShockEffector::GetFactor()
 {
-	float f				= (m_end_time-Device.fTimeGlobal)/m_life_time;
+	F32 f				= (m_end_time-Device.fTimeGlobal)/m_life_time;
 	
-	float ff =	f*m_life_time/8.0f;
+	F32 ff =	f*m_life_time/8.0f;
 	return clampr(ff, 0.0f, 1.0f);
 }
 
-void SndShockEffector::Start(CActor* A, float snd_length, float power)
+void SndShockEffector::Start(CActor* A, F32 snd_length, F32 power)
 {
 	clamp			(power, 0.1f, 1.5f);
 	m_actor			= A;
@@ -281,7 +281,7 @@ void SndShockEffector::Start(CActor* A, float snd_length, float power)
 	m_cur_length		= 0;
 	psSoundVFactor		= m_stored_volume*SND_MIN_VOLUME_FACTOR;
 	
-	static float		xxx = 6.0f/1.50f; //6sec on max power(1.5)
+	static F32		xxx = 6.0f/1.50f; //6sec on max power(1.5)
 
 	m_life_time			= power*xxx;
 	m_end_time			= Device.fTimeGlobal + m_life_time;
@@ -292,8 +292,8 @@ void SndShockEffector::Start(CActor* A, float snd_length, float power)
 void SndShockEffector::Update()
 {
 	m_cur_length		+= Device.dwTimeDelta;
-	float x				= float(m_cur_length)/m_snd_length;
-	float y				= 2.f*x-1;
+	F32 x				= F32(m_cur_length)/m_snd_length;
+	F32 y				= 2.f*x-1;
 	if (y>0.f){
 		psSoundVFactor	= y*(m_stored_volume-m_stored_volume*SND_MIN_VOLUME_FACTOR)+m_stored_volume*SND_MIN_VOLUME_FACTOR;
 	}
@@ -307,7 +307,7 @@ void SndShockEffector::Update()
 #define DELTA_ANGLE_Z	0.5f * PI / 180
 #define ANGLE_SPEED		1.5f	
 
-CControllerPsyHitCamEffector::CControllerPsyHitCamEffector(ECamEffectorType type, const Fvector &src_pos, const Fvector &target_pos, float time)
+CControllerPsyHitCamEffector::CControllerPsyHitCamEffector(ECamEffectorType type, const Fvector &src_pos, const Fvector &target_pos, F32 time)
 	:inherited(eCEControllerPsyHit, flt_max)
 {
 	m_time_total			= time;
@@ -320,8 +320,8 @@ CControllerPsyHitCamEffector::CControllerPsyHitCamEffector(ECamEffectorType type
 	m_direction.normalize	();
 }
 
-const float	_base_fov		= 170.f;
-const float	_max_fov_add	= 160.f;
+const F32	_base_fov		= 170.f;
+const F32	_max_fov_add	= 160.f;
 
 
 BOOL CControllerPsyHitCamEffector::Process(Fvector &p, Fvector &d, Fvector &n, float& fFov, float& fFar, float& fAspect)
@@ -351,8 +351,8 @@ BOOL CControllerPsyHitCamEffector::Process(Fvector &p, Fvector &d, Fvector &n, f
 
 	if (m_time_current > m_time_total) m_time_current = m_time_total;
 
-	float perc_past	= m_time_current / m_time_total;
-	float cur_dist	= m_distance * perc_past;
+	F32 perc_past	= m_time_current / m_time_total;
+	F32 cur_dist	= m_distance * perc_past;
 
 	Mdef.c.mad	(m_position_source, m_direction, cur_dist);
 	fFov = _base_fov - _max_fov_add*perc_past;

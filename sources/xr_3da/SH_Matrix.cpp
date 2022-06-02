@@ -13,7 +13,9 @@ void CMatrix::Calculate()
 		case modeTCM:
 			{
 				Fmatrix		T;
-				float		sU=1,sV=1,t=Device.fTimeGlobal;
+				F32		sU = 1;
+				F32 sV = 1;
+				F32 t = Device.fTimeGlobal;
 				tc_trans	(xform,.5f,.5f);
 				if (tcm&tcmRotate) {
 					T.rotateZ		(rotate.Calculate(t)*t);
@@ -26,8 +28,8 @@ void CMatrix::Calculate()
 					xform.mulA_43	(T);
 				}
 				if (tcm&tcmScroll) {
-					float u = scrollU.Calculate(t)*t;
-					float v = scrollV.Calculate(t)*t;
+					F32 u = scrollU.Calculate(t)*t;
+					F32 v = scrollV.Calculate(t)*t;
 					u*=sU;
 					v*=sV;
 					tc_trans	(T, u, v );
@@ -39,8 +41,14 @@ void CMatrix::Calculate()
 			return;
 		case modeS_refl:
 			{
-				float Ux= .5f*Device.mView._11, Uy= .5f*Device.mView._21, Uz= .5f*Device.mView._31, Uw = .5f;
-				float Vx=-.5f*Device.mView._12, Vy=-.5f*Device.mView._22, Vz=-.5f*Device.mView._32, Vw = .5f;
+			F32 Ux = .5f * Device.mView._11;
+			F32 Uy = .5f * Device.mView._21;
+			F32 Uz = .5f * Device.mView._31;
+			F32 Uw = .5f;
+			F32 Vx = -.5f * Device.mView._12;
+			F32 Vy = -.5f * Device.mView._22;
+			F32 Vz = -.5f * Device.mView._32;
+			F32 Vw = .5f;
 
 				xform._11=Ux; xform._12=Vx; xform._13=0; xform._14=0;
 				xform._21=Uy; xform._22=Vy; xform._23=0; xform._24=0;

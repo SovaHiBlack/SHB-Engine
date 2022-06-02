@@ -189,8 +189,8 @@ protected:
 
 	F32					fGameTime;
 public:
-	float					wind_strength_factor;
-	float					wind_gust_factor;
+	F32					wind_strength_factor;
+	F32					wind_gust_factor;
 	// Environments
 	CEnvDescriptorMixer		CurrentEnv;
 	CEnvDescriptor*			Current[2];
