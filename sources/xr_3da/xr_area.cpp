@@ -54,11 +54,11 @@ void	IGame_Level::SoundEvent_Register	( ref_sound_data_ptr S, float range )
 		VERIFY2				(!fis_zero(p->max_ai_distance), S->handle->file_name());
 		float Power			= (1.f-dist/p->max_ai_distance)*p->volume;
 		VERIFY				(_valid(Power));
-		if (Power>EPS_S)	{
+		if (Power> EPSILON_7)	{
 			float occ		= Sound->get_occlusion_to((*it)->spatial.sphere.P,snd_position);
 			VERIFY			(_valid(occ))	;
 			Power			*= occ;
-			if (Power>EPS_S)	{
+			if (Power> EPSILON_7)	{
 				_esound_delegate	D	=	{ L, S, Power };
 				snd_Events.push_back	(D)	;
 			}

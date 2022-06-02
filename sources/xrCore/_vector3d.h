@@ -405,7 +405,7 @@ public:
 	{
 		T fInvLength;
 		dir.normalize();
-		if (fsimilar(dir.y,1.f,EPS)){	
+		if (fsimilar(dir.y,1.f, EPSILON_5)){
 			up.set		(0.f,0.f,1.f);
 			fInvLength	= 1.f/_sqrt(dir.x*dir.x+dir.y*dir.y);
 			// cross (up,dir) and normalize (right)

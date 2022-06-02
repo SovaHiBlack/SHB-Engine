@@ -811,7 +811,7 @@ void PAGravitate::Execute(ParticleEffect *effect, float dt)
 				Particle &mj = effect->particles[j];
 				
 				pVector tohim(mj.pos - m.pos); // tohim = p1 - p0
-				float tohimlenSqr = tohim.length2()+EPS_S;
+				float tohimlenSqr = tohim.length2()+ EPSILON_7;
 				
 				if(tohimlenSqr < max_radiusSqr)
 				{
@@ -836,7 +836,7 @@ void PAGravitate::Execute(ParticleEffect *effect, float dt)
 				Particle &mj = effect->particles[j];
 				
 				pVector tohim(mj.pos - m.pos); // tohim = p1 - p0
-				float tohimlenSqr = tohim.length2()+EPS_S;
+				float tohimlenSqr = tohim.length2()+ EPSILON_7;
 				
 				// Compute force exerted between the two bodies
 				pVector acc(tohim * (magdt / (_sqrt(tohimlenSqr) * (tohimlenSqr + epsilon))));

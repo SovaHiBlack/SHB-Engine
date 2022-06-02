@@ -82,10 +82,10 @@ void	CRenderTarget::calc_tc_noise		(Fvector2& p0, Fvector2& p1)
 {
 //.	CTexture*	T					= RCache.get_ActiveTexture	(2);
 //.	VERIFY2		(T, "Texture #3 in noise shader should be setted up");
-//.	u32			tw					= iCeil(float(T->get_Width	())*param_noise_scale+EPS_S);
-//.	u32			th					= iCeil(float(T->get_Height ())*param_noise_scale+EPS_S);
-	u32			tw					= iCeil(256*param_noise_scale+EPS_S);
-	u32			th					= iCeil(256*param_noise_scale+EPS_S);
+//.	u32			tw					= iCeil(float(T->get_Width	())*param_noise_scale+EPSILON_7);
+//.	u32			th					= iCeil(float(T->get_Height ())*param_noise_scale+EPSILON_7);
+	u32			tw					= iCeil(256*param_noise_scale+ EPSILON_7);
+	u32			th					= iCeil(256*param_noise_scale+ EPSILON_7);
 	VERIFY2		(tw && th, "Noise scale can't be zero in any way");
 //.	if (bDebug)	Msg			("%d,%d,%f",tw,th,param_noise_scale);
 
@@ -210,7 +210,7 @@ struct TL_2c3uv {
 	u32			color1;
 	Fvector2	uv	[3];
 	IC void	set	(float x, float y, u32 c0, u32 c1, float u0, float v0, float u1, float v1, float u2, float v2)	{	
-		p.set	(x,y,EPS_S,1.f); 
+		p.set	(x,y, EPSILON_7,1.f);
 		color0 = c0; 
 		color1 = c1;
 		uv[0].set(u0,v0); 

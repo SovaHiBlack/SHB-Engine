@@ -11,7 +11,7 @@
 CWeaponShotEffector::CWeaponShotEffector()
 {
 	fAngleHorz				= 0.f;
-	fAngleVert				= -EPS_S;
+	fAngleVert				= -EPSILON_7;
 	bActive					= FALSE;
 	bSingleShoot			= FALSE;
 	bSSActive				= FALSE;

@@ -820,7 +820,7 @@ void CPHElement::GetAnimBonePos(Fmatrix &bp)
 
 IC bool put_in_range( Fvector &v, float range )
 {
-	VERIFY( range > EPS_S );
+	VERIFY( range > EPSILON_7);
 	float sq_mag=v.square_magnitude( );
 	if( sq_mag > range*range )
 	{
@@ -852,8 +852,8 @@ bool CPHElement::AnimToVel(float dt, float l_limit,float a_limit )
 
 	cp.invert();
 	Fmatrix diff;diff.mul_43(cp,bp);
-	if(dt<EPS_S)
-		dt = EPS_S;
+	if(dt< EPSILON_7)
+		dt = EPSILON_7;
 	Fvector mc1;
 	CPHGeometryOwner::get_mc_vs_transform(mc1,bp);
 	Fvector mc0 = cast_fv(dBodyGetPosition(m_body));

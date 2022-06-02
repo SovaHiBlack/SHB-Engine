@@ -155,7 +155,7 @@ void CUIItemInfo::InitItem(CInventoryItem* pInvItem)
 	{
 		float cond							= pInvItem->GetConditionToShow();
 		UICondProgresBar->Show				(true);
-		UICondProgresBar->SetProgressPos	( cond*100.0f+1.0f-EPS );
+		UICondProgresBar->SetProgressPos	( cond*100.0f+1.0f- EPSILON_5);
 	}
 
 	if(UIDesc)

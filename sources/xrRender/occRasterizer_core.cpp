@@ -3,13 +3,17 @@
 
 static occTri*	currentTri	= 0;
 static u32		dwPixels	= 0;
-static float	currentA[3],currentB[3],currentC[3];
+static F32	currentA[3];
+static F32 currentB[3];
+static F32 currentC[3];
 
 const int BOTTOM = 0, TOP = 1;
 
-void i_order	(float* A, float* B, float* C)
+void i_order	(F32* A, F32* B, F32* C)
 {
-	float *min, *max, *mid;
+	F32* min;
+	F32* max;
+	F32* mid;
 	if (A[1] <= B[1])
 	{
         if (B[1] <= C[1]) 
@@ -61,27 +65,29 @@ IC BOOL shared(occTri* T1, occTri* T2)
 	if (T1->adjacent[2]==T2)	return TRUE;
 	return FALSE;
 }
-IC BOOL lesser(float& a, float& b)
+IC BOOL lesser(F32& a, F32& b)
 {
 	u32* A = (u32*)(&a);
 	u32* B = (u32*)(&b);
 	return *A<*B;
 }
 
-const float		one_div_3	= 1.f/3.f;
+const F32		one_div_3	= 1.f/3.f;
 
 // Rasterize a scan line between given X point values, corresponding Z values and current color
-void i_scan		(int curY, float leftX, float lhx, float rightX, float rhx, float startZ, float endZ)
+void i_scan		(int curY, F32 leftX, F32 lhx, F32 rightX, F32 rhx, F32 startZ, F32 endZ)
 {
 	// calculate span(s)
-	float	start_c	= leftX+lhx;
-	float	end_c	= rightX+rhx;
+	F32	start_c	= leftX+lhx;
+	F32	end_c	= rightX+rhx;
 	
-	float	startR	= leftX-lhx;
-	float	endR	= rightX-rhx;
+	F32	startR	= leftX-lhx;
+	F32	endR	= rightX-rhx;
 	
-	float	startT	=startR,	endT	=end_c;
-	float	startX	=start_c,	endX	=endR;
+	F32	startT = startR;
+	F32 endT = end_c;
+	F32	startX = start_c;
+	F32 endX = endR;
 	if (start_c<startR)		{startT	= start_c;	startX	= startR;	}
 	if (end_c<endR)			{endT	= endR;		endX	= end_c;	}
 	
@@ -99,15 +105,15 @@ void i_scan		(int curY, float leftX, float lhx, float rightX, float rhx, float s
 	else				{ limLeft=minX; limRight=maxX;	}
 	
 	// interpolate
-	float lenR		= endR - startR;
-	float Zlen		= endZ - startZ;
-	float Z			= startZ + (minT - startR)/lenR * Zlen;		// interpolate Z to the start
-	float Zend		= startZ + (maxT - startR)/lenR * Zlen;		// interpolate Z to the end
-	float dZ		= (Zend-Z)/(maxT-minT);						// incerement in Z / pixel wrt dX
+	F32 lenR		= endR - startR;
+	F32 Zlen		= endZ - startZ;
+	F32 Z			= startZ + (minT - startR)/lenR * Zlen;		// interpolate Z to the start
+	F32 Zend		= startZ + (maxT - startR)/lenR * Zlen;		// interpolate Z to the end
+	F32 dZ		= (Zend-Z)/(maxT-minT);						// incerement in Z / pixel wrt dX
 	
 	// gain access to buffers
 	occTri** pFrame	= Raster.get_frame();
-	float*	pDepth	= Raster.get_depth();
+	F32*	pDepth	= Raster.get_depth();
 	
 	// left connector
 	int	i_base		= curY*occ_dim;
@@ -117,7 +123,7 @@ void i_scan		(int curY, float leftX, float lhx, float rightX, float rhx, float s
 	{
 		if (shared(currentTri,pFrame[i-1])) 
 		{
-			float ZR = (Z+2*pDepth[i-1])*one_div_3;
+			F32 ZR = (Z+2*pDepth[i-1])*one_div_3;
 			if (ZR<pDepth[i])	{ pFrame[i]	= currentTri; pDepth[i]	= ZR; dwPixels++; }
 		}
 	}
@@ -136,7 +142,7 @@ void i_scan		(int curY, float leftX, float lhx, float rightX, float rhx, float s
 	for (; i>=limit; i--, Z-=dZ)
 	{
 		if (shared(currentTri,pFrame[i+1])) {
-			float ZR = (Z+2*pDepth[i+1])*one_div_3;
+			F32 ZR = (Z+2*pDepth[i+1])*one_div_3;
 			if (ZR<pDepth[i])	{ pFrame[i]	= currentTri; pDepth[i]	= ZR; dwPixels++; }
 		}
 	}
@@ -155,8 +161,8 @@ IC void i_test_micro( int x, int y)
 	occTri* T2	= pFrame[pos_down	];
 	if (T1 && shared(T1,T2))	
 	{
-		float*		pDepth	= Raster.get_depth();
-		float ZR			= (pDepth[pos_up]+pDepth[pos_down])/2;
+		F32*		pDepth	= Raster.get_depth();
+		F32 ZR			= (pDepth[pos_up]+pDepth[pos_down])/2;
 		if (ZR<pDepth[pos])	{ pFrame[pos] = T1; pDepth[pos] = ZR; }
 	}
 }
@@ -212,8 +218,10 @@ IC void i_section	(int Sect, BOOL bMiddle)
 {
 	// Find the start/end Y pixel coord, set the starting pts for scan line ends
 	int		startY, endY;
-	float	*startp1, *startp2;
-	float	E1[3], E2[3];
+	F32* startp1;
+	F32* startp2;
+	F32	E1[3];
+	F32 E2[3];
 
 	if (Sect == BOTTOM) { 
 		startY	= iCeil(currentA[1]); endY = iFloor(currentB[1])-1; 
@@ -248,12 +256,21 @@ IC void i_section	(int Sect, BOOL bMiddle)
 	if (startY >= endY) return;
 	
 	// Compute the inverse slopes of the lines, ie rate of change of X by Y
-	float mE1	= E1[0]/E1[1];
-	float mE2	= E2[0]/E2[1];
+	F32 mE1	= E1[0]/E1[1];
+	F32 mE2	= E2[0]/E2[1];
 	
 	// Initial Y offset for left and right (due to pixel rounding)
-	float	e1_init_dY = float(startY) - startp1[1], e2_init_dY = float(startY) - startp2[1];
-	float	t,leftX, leftZ, rightX, rightZ, left_dX, right_dX, left_dZ, right_dZ;
+	F32	e1_init_dY = F32(startY) - startp1[1];
+	F32 e2_init_dY = F32(startY) - startp2[1];
+	F32	t;
+	F32 leftX;
+	F32 leftZ;
+	F32 rightX;
+	F32 rightZ;
+	F32 left_dX;
+	F32 right_dX;
+	F32 left_dZ;
+	F32 right_dZ;
 	
 	// find initial values, step values
 	if ( ((mE1<mE2)&&(Sect==BOTTOM)) || ((mE1>mE2)&&(Sect==TOP)) ) 
@@ -283,8 +300,8 @@ IC void i_section	(int Sect, BOOL bMiddle)
 	}
 
 	// Now scan all lines in this section
-	float lhx = left_dX/2;	leftX	+= lhx;	// half pixel
-	float rhx = right_dX/2;	rightX	+= rhx;	// half pixel
+	F32 lhx = left_dX/2;	leftX	+= lhx;	// half pixel
+	F32 rhx = right_dX/2;	rightX	+= rhx;	// half pixel
 	for (; startY<=endY; startY++) 
 	{
 		i_scan	(startY, leftX, lhx, rightX, rhx, leftZ, rightZ);

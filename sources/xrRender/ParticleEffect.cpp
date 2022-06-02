@@ -6,7 +6,7 @@ using namespace PAPI;
 using namespace PS;
 
 const u32	PS::uDT_STEP 	= 33;
-const float	PS::fDT_STEP 	= float(uDT_STEP)/1000.f;
+const F32	PS::fDT_STEP 	= F32(uDT_STEP)/1000.f;
 
 void PS::OnEffectParticleBirth(void* owner, u32 , PAPI::Particle& m, u32 )
 {
@@ -117,7 +117,7 @@ void CParticleEffect::OnFrame(u32 frame_dt)
 			if (p_cnt)	
 			{
 				vis.box.invalidate	();
-				float p_size = 0.f;
+				F32 p_size = 0.f;
 				for(u32 i = 0; i < p_cnt; i++){
 					Particle &m 	= particles[i]; 
 					vis.box.modify((Fvector&)m.pos);
@@ -198,10 +198,10 @@ void CParticleEffect::OnDeviceDestroy()
 	}
 }
 //----------------------------------------------------
-IC void FillSprite	(FVF::LIT*& pv, const Fvector& T, const Fvector& R, const Fvector& pos, const Fvector2& lt, const Fvector2& rb, float r1, float r2, u32 clr, float angle)
+IC void FillSprite	(FVF::LIT*& pv, const Fvector& T, const Fvector& R, const Fvector& pos, const Fvector2& lt, const Fvector2& rb, F32 r1, F32 r2, u32 clr, F32 angle)
 {
-	float sa	= _sin(angle);  
-	float ca	= _cos(angle);  
+	F32 sa	= _sin(angle);
+	F32 ca	= _cos(angle);
 	Fvector Vr, Vt;
 	Vr.x 		= T.x*r1*sa+R.x*r1*ca;
 	Vr.y 		= T.y*r1*sa+R.y*r1*ca;
@@ -221,10 +221,10 @@ IC void FillSprite	(FVF::LIT*& pv, const Fvector& T, const Fvector& R, const Fve
 	pv->set		(b.x+pos.x,b.y+pos.y,b.z+pos.z,	clr, rb.x,lt.y);	pv++;
 }
 
-IC void FillSprite	(FVF::LIT*& pv, const Fvector& pos, const Fvector& dir, const Fvector2& lt, const Fvector2& rb, float r1, float r2, u32 clr, float angle)
+IC void FillSprite	(FVF::LIT*& pv, const Fvector& pos, const Fvector& dir, const Fvector2& lt, const Fvector2& rb, F32 r1, F32 r2, u32 clr, F32 angle)
 {
-	float sa	= _sin(angle);  
-	float ca	= _cos(angle);  
+	F32 sa	= _sin(angle);
+	F32 ca	= _cos(angle);
 	const Fvector& T 	= dir;
 	Fvector R; 	R.crossproduct(T,Device.vCameraDirection).normalize_safe();
 	Fvector Vr, Vt;
@@ -245,7 +245,7 @@ IC void FillSprite	(FVF::LIT*& pv, const Fvector& pos, const Fvector& dir, const
 	pv->set		(c.x+pos.x,c.y+pos.y,c.z+pos.z, clr, rb.x,rb.y);	pv++;
 	pv->set		(b.x+pos.x,b.y+pos.y,b.z+pos.z,	clr, rb.x,lt.y);	pv++;
 }
-void CParticleEffect::Render(float )
+void CParticleEffect::Render(F32)
 {
 	u32			dwOffset,dwCount;
 	// Get a pointer to the particles in gp memory
@@ -264,17 +264,17 @@ void CParticleEffect::Render(float )
 				Fvector2 lt,rb;
 				lt.set			(0.f,0.f);
 				rb.set			(1.f,1.f);
-				if (m_Def->m_Flags.is(CPEDef::dfFramed)) m_Def->m_Frame.CalculateTC(iFloor(float(m.frame)/255.f),lt,rb);
-				float r_x		= m.size.x*0.5f;
-				float r_y		= m.size.y*0.5f;
+				if (m_Def->m_Flags.is(CPEDef::dfFramed)) m_Def->m_Frame.CalculateTC(iFloor(F32(m.frame)/255.f),lt,rb);
+				F32 r_x		= m.size.x*0.5f;
+				F32 r_y		= m.size.y*0.5f;
 				if (m_Def->m_Flags.is(CPEDef::dfVelocityScale)){
-					float speed	= m.vel.magnitude();
+					F32 speed	= m.vel.magnitude();
 					r_x			+= speed*m_Def->m_VelocityScale.x;
 					r_y			+= speed*m_Def->m_VelocityScale.y;
 				}
 				if (m_Def->m_Flags.is(CPEDef::dfAlignToPath)){
-					float speed	= m.vel.magnitude();
-                    if ((speed<EPS_S)&&m_Def->m_Flags.is(CPEDef::dfWorldAlign)){
+					F32 speed	= m.vel.magnitude();
+                    if ((speed< EPSILON_7)&&m_Def->m_Flags.is(CPEDef::dfWorldAlign)){
                     	Fmatrix	M;  	
                         M.setXYZ			(m_Def->m_APDefaultRotation);
                         if (m_RT_Flags.is(flRT_XFORM)){
@@ -285,7 +285,7 @@ void CParticleEffect::Render(float )
                         }else{
                             FillSprite		(pv,M.k,M.i,m.pos,lt,rb,r_x,r_y,m.color,m.rot.x);
                         }
-                    }else if ((speed>=EPS_S)&&m_Def->m_Flags.is(CPEDef::dfFaceAlign)){
+                    }else if ((speed>= EPSILON_7)&&m_Def->m_Flags.is(CPEDef::dfFaceAlign)){
                     	Fmatrix	M;  		M.identity();
                         M.k.div				(m.vel,speed);            
                         M.j.set 			(0,1,0);	if (_abs(M.j.dotproduct(M.k))>.99f)  M.j.set(0,0,1);
@@ -301,7 +301,7 @@ void CParticleEffect::Render(float )
                         }
                     }else{
 						Fvector 			dir;
-                        if (speed>=EPS_S)	dir.div	(m.vel,speed);
+                        if (speed>= EPSILON_7)	dir.div	(m.vel,speed);
                         else				dir.setHP(-m_Def->m_APDefaultRotation.y,-m_Def->m_APDefaultRotation.x);
                         if (m_RT_Flags.is(flRT_XFORM)){
                             Fvector p,d;

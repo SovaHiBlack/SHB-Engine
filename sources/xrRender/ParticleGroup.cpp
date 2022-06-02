@@ -339,8 +339,8 @@ CParticleGroup::~CParticleGroup()
 void CParticleGroup::OnFrame(u32 u_dt)
 {
 	if (m_Def&&m_RT_Flags.is(flRT_Playing)){
-		float ct	= m_CurrentTime;
-		float f_dt	= float(u_dt)/1000.f;
+		F32 ct	= m_CurrentTime;
+		F32 f_dt	= F32(u_dt)/1000.f;
 		for (CPGDef::EffectVec::const_iterator e_it=m_Def->m_Effects.begin(); e_it!=m_Def->m_Effects.end(); e_it++){	
 			if ((*e_it)->m_Flags.is(CPGDef::SEffect::flEnabled)){
 				VERIFY				(items.size()==m_Def->m_Effects.size());

@@ -26,10 +26,10 @@ void CRenderTarget::accum_reflected		(light* L)
 	// 2D texgen (texture adjustment matrix)
 	Fmatrix			m_Texgen;
 	{
-		float	_w						= float(Device.dwWidth);
-		float	_h						= float(Device.dwHeight);
-		float	o_w						= (.5f / _w);
-		float	o_h						= (.5f / _h);
+		F32	_w						= F32(Device.dwWidth);
+		F32	_h						= F32(Device.dwHeight);
+		F32	o_w						= (.5f / _w);
+		F32	o_h						= (.5f / _h);
 		Fmatrix			m_TexelAdjust		= 
 		{
 			0.5f,				0.0f,				0.0f,			0.0f,
@@ -41,7 +41,8 @@ void CRenderTarget::accum_reflected		(light* L)
 	}
 
 	// Common constants
-	Fvector		L_dir,L_clr,L_pos;	float L_spec;
+	Fvector		L_dir,L_clr,L_pos;
+	F32 L_spec;
 	L_clr.set					(L->color.r,L->color.g,L->color.b);
 	L_spec						= u_diffuse2s	(L_clr);
 	Device.mView.transform_tiny	(L_pos,L->position);

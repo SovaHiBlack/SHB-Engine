@@ -244,7 +244,7 @@ void	CROS_impl::update	(IRenderable* O)
 	approximate				=	accum;
 }
 
-extern float ps_r2_lt_smooth;
+extern F32 ps_r2_lt_smooth;
 
 // hemi & sun: update and smooth
 void	CROS_impl::update_smooth	(IRenderable* O)
@@ -254,9 +254,9 @@ void	CROS_impl::update_smooth	(IRenderable* O)
 
 	dwFrameSmooth			=	Device.dwFrame					;
 	if (O && (0==result_count))	update(O)						;	// First time only
-	float	l_f				=	Device.fTimeDelta*ps_r2_lt_smooth;
+	F32	l_f				=	Device.fTimeDelta*ps_r2_lt_smooth;
 	clamp	(l_f,0.f,1.f)	;
-	float	l_i				=	1.f-l_f							;
+	F32	l_i				=	1.f-l_f							;
 	hemi_smooth				=	hemi_value*l_f + hemi_smooth*l_i;
 	sun_smooth				=	sun_value *l_f + sun_smooth *l_i;
 }

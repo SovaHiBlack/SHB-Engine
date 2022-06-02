@@ -302,7 +302,7 @@ sPoly*	CFrustum::ClipPoly(sPoly& S, sPoly& D) const
 		F32 t;
 		for (j=0; j<src->size()-1; j++)
 		{
-			if ((*src)[j].similar((*src)[j+1],EPS_S)) continue;
+			if ((*src)[j].similar((*src)[j+1], EPSILON_7)) continue;
 
 			if (negative(cls[j]))
 			{

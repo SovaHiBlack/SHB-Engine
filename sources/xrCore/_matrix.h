@@ -399,8 +399,8 @@ public:
 	// half_fov-angle-tangent
 	IC	SelfRef	build_projection_HAT	(T HAT, T fAspect, T fNearPlane, T fFarPlane) 
 	{
-		VERIFY( _abs(fFarPlane-fNearPlane) > EPS_S );
-		VERIFY( _abs(HAT) > EPS_S );
+		VERIFY( _abs(fFarPlane-fNearPlane) > EPSILON_7);
+		VERIFY( _abs(HAT) > EPSILON_7);
 		
 		T cot	= T(1)/HAT;
 		T w		= fAspect * cot;

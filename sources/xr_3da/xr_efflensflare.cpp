@@ -90,8 +90,8 @@ void CLensFlareDescriptor::load(CInifile* pIni, LPCSTR sect)
 		float o = pIni->r_float		( sect,"gradient_opacity" );
 		SetGradient(r,o,T,S);
 	}
-    m_StateBlendUpSpeed	= 1.f/(_max(pIni->r_float( sect,"blend_rise_time" ),0.f)+EPS_S);
-    m_StateBlendDnSpeed	= 1.f/(_max(pIni->r_float( sect,"blend_down_time" ),0.f)+EPS_S);
+    m_StateBlendUpSpeed	= 1.f/(_max(pIni->r_float( sect,"blend_rise_time" ),0.f)+ EPSILON_7);
+    m_StateBlendDnSpeed	= 1.f/(_max(pIni->r_float( sect,"blend_down_time" ),0.f)+ EPSILON_7);
 
 	OnDeviceCreate();
 }
@@ -179,7 +179,7 @@ IC void	blend_lerp	(float& cur, float tgt, float speed, float dt)
 {
 	float diff		= tgt - cur;
 	float diff_a	= _abs(diff);
-	if (diff_a<EPS_S)	return;
+	if (diff_a< EPSILON_7)	return;
 	float mot		= speed*dt;
 	if (mot>diff_a) mot=diff_a;
 	cur				+= (diff/diff_a)*mot;
@@ -206,11 +206,11 @@ void CLensFlare::OnFrame(int id)
     case lfsNone: m_State=lfsShow; m_Current=desc; break;
     case lfsIdle: if (desc!=m_Current) m_State=lfsHide; 	break;
     case lfsShow: 
-        m_StateBlend 	= m_Current?(m_StateBlend + m_Current->m_StateBlendUpSpeed * Device.fTimeDelta * tf):1.f+EPS;
+        m_StateBlend 	= m_Current?(m_StateBlend + m_Current->m_StateBlendUpSpeed * Device.fTimeDelta * tf):1.f+ EPSILON_5;
         if (m_StateBlend>=1.f) m_State=lfsIdle;
     break;
     case lfsHide: 
-        m_StateBlend 	= m_Current?(m_StateBlend - m_Current->m_StateBlendDnSpeed * Device.fTimeDelta * tf):0.f-EPS;
+        m_StateBlend 	= m_Current?(m_StateBlend - m_Current->m_StateBlendDnSpeed * Device.fTimeDelta * tf):0.f- EPSILON_5;
         if (m_StateBlend<=0.f){ 	
             m_State		= lfsShow;
             m_Current	= desc;

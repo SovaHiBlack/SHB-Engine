@@ -94,7 +94,7 @@ Point& Point::Unfold(Plane& p, Point& a, Point& b)
 	// Compute rotation angle
 	F32 CosAngle = p.n|TriPlane.n;
 	F32 Angle = acosf(CosAngle);
-	if(FastFabs(Angle)<0.0001f)	return *this;	// Point is already on plane // ## project
+	if(FastFabs(Angle)<EPSILON_4)	return *this;	// Point is already on plane // ## project
 
 	// Rotate around (a,b)
 	// 1) Move to origin
@@ -108,8 +108,8 @@ Point& Point::Unfold(Plane& p, Point& a, Point& b)
 	F32 DpX = FastFabs(Axis.x);
 	F32 DpY = FastFabs(Axis.y);
 	F32 DpZ = FastFabs(Axis.z);
-			if(FastFabs((Axis|Point(0.0f, 0.0f, 1.0f)) - 1.0f) < 0.0001f)	M.Identity();
-	else	if(FastFabs((Axis|Point(0.0f, 0.0f, 1.0f)) + 1.0f) < 0.0001f)	{ M.Identity(); Angle = -Angle; }
+			if(FastFabs((Axis|Point(0.0f, 0.0f, 1.0f)) - 1.0f) < EPSILON_4)	M.Identity();
+	else	if(FastFabs((Axis|Point(0.0f, 0.0f, 1.0f)) + 1.0f) < EPSILON_4)	{ M.Identity(); Angle = -Angle; }
 	else																	M.MapToZ(Axis);
 
 	Point p0r = M * p0t;

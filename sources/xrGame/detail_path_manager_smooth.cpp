@@ -93,8 +93,8 @@ bool CDetailPathManager::compute_tangent(
 
 	if (start_cp*dest_cp >= 0.f) {
 		// so, our tangents are outside
-		if (start_circle.center.similar(dest_circle.center,EPS_S)) {
-			if  (fsimilar(start_circle.radius,dest_circle.radius,EPS_S)) {
+		if (start_circle.center.similar(dest_circle.center, EPSILON_7)) {
+			if  (fsimilar(start_circle.radius,dest_circle.radius, EPSILON_7)) {
 				// so, our circles are equal
 				tangents[0]			= tangents[1] = start_circle;
 				adjust_point		(start_circle.center,dest_yaw,start_circle.radius,tangents[0].point);
@@ -116,7 +116,7 @@ bool CDetailPathManager::compute_tangent(
 			// radius difference
 			float			r_diff = start_circle.radius - dest_circle.radius;
 			float			r_diff_abs = _abs(r_diff);
-			if ((r_diff_abs > distance) && !fsimilar(r_diff_abs,distance,EPS_S))
+			if ((r_diff_abs > distance) && !fsimilar(r_diff_abs,distance, EPSILON_7))
 				return		(false);
 			// angle between external tangents and circle centers segment
 			float			temp = r_diff/distance;
@@ -128,7 +128,7 @@ bool CDetailPathManager::compute_tangent(
 	else {
 		distance		= start_circle.center.distance_to(dest_circle.center);
 		// so, our tangents are inside (crossing)
-		if ((start_circle.radius + dest_circle.radius > distance) && !fsimilar(start_circle.radius + dest_circle.radius,distance,EPS_S))
+		if ((start_circle.radius + dest_circle.radius > distance) && !fsimilar(start_circle.radius + dest_circle.radius,distance, EPSILON_7))
 			return		(false);
 	
 		// angle between internal tangents and circle centers segment
@@ -181,7 +181,7 @@ bool CDetailPathManager::build_circle_trajectory(
 			*vertex_id		= position.vertex_id;
 
 		t.position		= ai().level_graph().v3d(position.position);
-		if (vertex_id || (!path->empty() && !path->back().position.similar(t.position,EPS_S))) {
+		if (vertex_id || (!path->empty() && !path->back().position.similar(t.position, EPSILON_7))) {
 			VERIFY			(t.velocity != u32(-1));
 			t.vertex_id		= position.vertex_id;
 			path->push_back	(t);
@@ -764,7 +764,7 @@ void CDetailPathManager::postprocess_key_points(
 	if (m_key_points.size() < 3)
 		return;
 
-	if (m_key_points[m_key_points.size() - 2].position.similar(m_key_points[m_key_points.size() - 1].position,EPS_S))
+	if (m_key_points[m_key_points.size() - 2].position.similar(m_key_points[m_key_points.size() - 1].position, EPSILON_7))
 		m_key_points.pop_back();
 
 	for (int i=1, n=(int)m_key_points.size() - 1; i < n; ++i) {
@@ -798,7 +798,7 @@ void CDetailPathManager::postprocess_key_points(
 			m_key_points[i]	= key_point0;
 		else
 			m_key_points[i]	= key_point1;
-		VERIFY				(!m_key_points[i].position.similar(m_key_points[i-1].position,EPS_S));
+		VERIFY				(!m_key_points[i].position.similar(m_key_points[i-1].position, EPSILON_7));
 	}
 }
 
@@ -810,7 +810,7 @@ void CDetailPathManager::add_patrol_point()
 		Fvector							v;
 		v.sub							(m_path.back().position,m_path[m_last_patrol_point - 1].position);
 		v.y								= 0.f;
-		if (v.magnitude() > EPS_S)
+		if (v.magnitude() > EPSILON_7)
 			v.normalize					();
 		else
 			return;

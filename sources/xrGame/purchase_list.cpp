@@ -42,7 +42,7 @@ void CPurchaseList::process	(CInifile &ini_file, LPCSTR section, CInventoryOwner
 void CPurchaseList::process	(const CGameObject &owner, const shared_str &name, const u32 &count, const float &probability)
 {
 	VERIFY3					(count,"Invalid count for section in the purchase list",*name);
-	VERIFY3					(!fis_zero(probability,EPS_S),"Invalid probability for section in the purchase list",*name);
+	VERIFY3					(!fis_zero(probability, EPSILON_7),"Invalid probability for section in the purchase list",*name);
 
 	const Fvector			&position = owner.Position();
 	const u32				&level_vertex_id = owner.ai_location().level_vertex_id();

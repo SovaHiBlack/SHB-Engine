@@ -192,7 +192,7 @@ void	light::xform_calc			()
 	// dir
 	L_dir.set				(direction);
 	F32 l_dir_m			= L_dir.magnitude();
-	if (_valid(l_dir_m) && l_dir_m>EPS_S)	L_dir.div(l_dir_m);
+	if (_valid(l_dir_m) && l_dir_m> EPSILON_7)	L_dir.div(l_dir_m);
 	else									L_dir.set(0,0,1);
 
 	// R&N
@@ -293,7 +293,7 @@ void	light::export		(light_Package& package)
 
 extern F32		r_ssaGLOD_start,	r_ssaGLOD_end;
 extern F32		ps_r2_slight_fade;
-float	light::get_LOD					()
+F32	light::get_LOD					()
 {
 	if	(!flags.bShadow)	return 1;
 	F32	distSQ			= Device.vCameraPosition.distance_to_sqr(spatial.sphere.P)+EPS;

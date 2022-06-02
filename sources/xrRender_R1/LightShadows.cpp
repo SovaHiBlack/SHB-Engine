@@ -444,7 +444,7 @@ void CLightShadows::render	()
 				t2.sub				(A[0],A[2]);
 				n.crossproduct		(t1,t2);
 				mag	= n.square_magnitude();
-				if (mag<EPS_S)						continue;
+				if (mag< EPSILON_7)						continue;
 				n.mul				(1.f/_sqrt(mag));
 				P.build_unit_normal	(A[0],n);
 				float	DOT_Fade	= P.classify(S.L->position);

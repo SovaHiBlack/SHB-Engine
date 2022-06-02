@@ -4,7 +4,7 @@
 CUIProgressBar::CUIProgressBar(void)
 {
 	m_MinPos				= 1.0f;
-	m_MaxPos				= 1.0f+EPS;
+	m_MaxPos				= 1.0f+ EPSILON_5;
 
 	Enable					(false);
 
@@ -32,7 +32,7 @@ void CUIProgressBar::Init(float x, float y, float width, float height, bool bIsH
 
 void CUIProgressBar::UpdateProgressBar()
 {
-	if( fsimilar(m_MaxPos,m_MinPos) ) m_MaxPos	+= EPS;
+	if( fsimilar(m_MaxPos,m_MinPos) ) m_MaxPos	+= EPSILON_5;
 
 	float progressbar_unit = 1/(m_MaxPos-m_MinPos);
 
@@ -68,7 +68,7 @@ void CUIProgressBar::Update()
 	inherited::Update();
 	if(!fsimilar(m_ProgressPos.x, m_ProgressPos.y))
 	{
-		if( fsimilar(m_MaxPos,m_MinPos) ) m_MaxPos	+= EPS;	//hack ^(
+		if( fsimilar(m_MaxPos,m_MinPos) ) m_MaxPos	+= EPSILON_5;	//hack ^(
 		float _diff				= m_ProgressPos.y - m_ProgressPos.x;
 		
 		float _length			= (m_MaxPos-m_MinPos);

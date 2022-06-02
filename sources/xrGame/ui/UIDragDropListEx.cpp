@@ -674,8 +674,8 @@ void CUICellContainer::Draw()
 
 	Irect				tgt_cells;
 	tgt_cells.lt		= TopVisibleCell();
-	tgt_cells.x2		= iFloor( (float(clientArea.width())+float(cell_sz.x)-EPS)/float(cell_sz.x)) + tgt_cells.lt.x;
-	tgt_cells.y2		= iFloor( (float(clientArea.height())+float(cell_sz.y)-EPS)/float(cell_sz.y)) + tgt_cells.lt.y;
+	tgt_cells.x2		= iFloor( (float(clientArea.width())+float(cell_sz.x)- EPSILON_5)/float(cell_sz.x)) + tgt_cells.lt.x;
+	tgt_cells.y2		= iFloor( (float(clientArea.height())+float(cell_sz.y)- EPSILON_5)/float(cell_sz.y)) + tgt_cells.lt.y;
 
 	clamp				(tgt_cells.x2, 0, cell_cnt.x-1);
 	clamp				(tgt_cells.y2, 0, cell_cnt.y-1);

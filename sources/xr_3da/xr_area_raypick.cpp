@@ -23,7 +23,7 @@ BOOL CObjectSpace::RayTest	( const Fvector &start, const Fvector &dir, float ran
 }
 BOOL CObjectSpace::_RayTest	( const Fvector &start, const Fvector &dir, float range, collide::rq_target tgt, collide::ray_cache* cache, CObject* ignore_object)
 {
-	VERIFY					(_abs(dir.magnitude()-1)<EPS);
+	VERIFY					(_abs(dir.magnitude()-1)< EPSILON_5);
 	r_temp.r_clear			();
 
 	xrc.ray_options			(CDB::OPT_ONLYFIRST);
@@ -283,7 +283,7 @@ BOOL CObjectSpace::_RayQuery3	(collide::rq_results& r_dest, const collide::ray_d
 BOOL CObjectSpace::_RayQuery	(collide::rq_results& r_dest, const collide::ray_defs& R, collide::rq_callback* CB, LPVOID user_data, collide::test_callback* tb, CObject* ignore_object)
 {
 #ifdef DEBUG
-	if (R.range<EPS || !_valid(R.range))
+	if (R.range< EPSILON_5 || !_valid(R.range))
 		Debug.fatal			(DEBUG_INFO,"Invalid RayQuery range passed: %f.",R.range);
 #endif
 	// initialize query
@@ -307,7 +307,7 @@ BOOL CObjectSpace::_RayQuery	(collide::rq_results& r_dest, const collide::ray_de
 		if ((R.tgt&s_mask)&&sd_test.is(s_mask)&&(next_test&s_mask)){ 
 			s_res.set		(0,s_rd.range,-1);
 			// Test static model
-			if (s_rd.range>EPS){
+			if (s_rd.range> EPSILON_5){
 				xrc.ray_options	(s_rd.flags);
 				xrc.ray_query	(&Static,s_rd.start,s_rd.dir,s_rd.range);
 				if (xrc.r_count()){	
@@ -317,7 +317,7 @@ BOOL CObjectSpace::_RayQuery	(collide::rq_results& r_dest, const collide::ray_de
 						s_rd.start.mad	(s_rd.dir,s_res.range+EPS_L);
 						s_res.range	= R.range-s_rd.range-EPS_L;
 #ifdef DEBUG
-						if (!(fis_zero(s_res.range,EPS) || s_res.range>=0.f))
+						if (!(fis_zero(s_res.range, EPSILON_5) || s_res.range>=0.f))
 							Debug.fatal(DEBUG_INFO,"Invalid RayQuery static range: %f (%f). /#1/",s_res.range,s_rd.range);
 #endif
 					}
@@ -328,7 +328,7 @@ BOOL CObjectSpace::_RayQuery	(collide::rq_results& r_dest, const collide::ray_de
 		if ((R.tgt&d_mask)&&sd_test.is_any(d_mask)&&(next_test&d_mask)){ 
 			r_temp.r_clear	();
 
-			if (d_rd.range>EPS){
+			if (d_rd.range> EPSILON_5){
 				// Traverse object database
 				g_SpatialSpace->q_ray		(r_spatial,0,d_flags,d_rd.start,d_rd.dir,d_rd.range);
 				// Determine visibility for dynamic part of scene
@@ -343,7 +343,7 @@ BOOL CObjectSpace::_RayQuery	(collide::rq_results& r_dest, const collide::ray_de
 						cform->_RayQuery(d_rd,r_temp);
 					}
 #ifdef DEBUG
-					if (!((0==r_temp.r_count()) || (r_temp.r_count()&&(fis_zero(r_temp.r_begin()->range, EPS)||(r_temp.r_begin()->range>=0.f)))))
+					if (!((0==r_temp.r_count()) || (r_temp.r_count()&&(fis_zero(r_temp.r_begin()->range, EPSILON_5)||(r_temp.r_begin()->range>=0.f)))))
 						Debug.fatal(DEBUG_INFO,"Invalid RayQuery dynamic range: %f (%f). /#2/",r_temp.r_begin()->range,d_rd.range);
 #endif
 				}
@@ -355,7 +355,7 @@ BOOL CObjectSpace::_RayQuery	(collide::rq_results& r_dest, const collide::ray_de
 				d_rd.start.mad(d_rd.dir,d_res.range+EPS_L);
 				d_res.range	= R.range-d_rd.range-EPS_L;
 #ifdef DEBUG
-				if (!(fis_zero(d_res.range,EPS) || d_res.range>=0.f))
+				if (!(fis_zero(d_res.range, EPSILON_5) || d_res.range>=0.f))
 					Debug.fatal(DEBUG_INFO,"Invalid RayQuery dynamic range: %f (%f). /#3/",d_res.range,d_rd.range);
 #endif
 			}else{

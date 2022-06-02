@@ -207,7 +207,7 @@ BOOL CPostprocessAnimator::Process(SPPInfo &PPInfo)
 		R_ASSERT3(0,"noise.grain cant be zero! see postprocess",*m_Name);
 	}
 
-	if(fsimilar(m_factor,0.0001f,EPS_S))
+	if(fsimilar(m_factor,0.0001f, EPSILON_7))
 		return FALSE;
 
 	return TRUE;

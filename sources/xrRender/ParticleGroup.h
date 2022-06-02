@@ -12,7 +12,7 @@ namespace PS
 	public:
 		shared_str			m_Name;
 		Flags32				m_Flags;
-		float				m_fTimeLimit;
+		F32				m_fTimeLimit;
 		struct SEffect{
 			enum{
 				flDefferedStop		= (1<<0),
@@ -27,8 +27,8 @@ namespace PS
 			shared_str		m_OnPlayChildName;
 			shared_str		m_OnBirthChildName;
 			shared_str		m_OnDeadChildName;
-			float			m_Time0;
-			float			m_Time1;
+			F32			m_Time0;
+			F32			m_Time1;
 							SEffect				(){m_Flags.zero();/*set(flEnabled)*/m_Time0=0;m_Time1=0;}
 		};
 		DEFINE_VECTOR(SEffect*,EffectVec,EffectIt);
@@ -47,7 +47,7 @@ namespace PS
 	class CParticleGroup: public IParticleCustom
 	{
 		const CPGDef*		m_Def;
-		float				m_CurrentTime;
+		F32				m_CurrentTime;
 		Fvector				m_InitialPosition;
 	public:
     	DEFINE_VECTOR(IRender_Visual*,VisualVec,VisualVecIt);
@@ -111,7 +111,7 @@ namespace PS
 		virtual void		Stop			(BOOL bDefferedStop=TRUE);
 		virtual BOOL		IsPlaying		(){return m_RT_Flags.is(flRT_Playing);}
 
-		virtual float		GetTimeLimit	(){VERIFY(m_Def); return m_Def->m_fTimeLimit;}
+		virtual F32		GetTimeLimit	(){VERIFY(m_Def); return m_Def->m_fTimeLimit;}
 
 		virtual const shared_str	Name		(){VERIFY(m_Def); return m_Def->m_Name;}
 

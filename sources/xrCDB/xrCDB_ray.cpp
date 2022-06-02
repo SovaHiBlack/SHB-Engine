@@ -237,7 +237,7 @@ public:
 		det = edge1.dotproduct(pvec);
 		if (bCull)
 		{						
-			if (det < EPS)  return false;
+			if (det < EPSILON_5)  return false;
 			tvec.sub(ray.pos, p0);						// calculate distance from vert0 to ray origin
 			u = tvec.dotproduct(pvec);					// calculate U parameter and test bounds
 			if (u < 0.f || u > det) return false;
@@ -252,7 +252,7 @@ public:
 		}
 		else
 		{			
-			if (det > -EPS && det < EPS) return false;
+			if (det > -EPSILON_5 && det < EPSILON_5) return false;
 			inv_det = 1.0f / det;
 			tvec.sub(ray.pos, p0);						// calculate distance from vert0 to ray origin
 			u = tvec.dotproduct(pvec)*inv_det;			// calculate U parameter and test bounds

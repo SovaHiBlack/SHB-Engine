@@ -153,7 +153,7 @@ void CUIFrameRect::SetWndPos(float x, float y)
 {
 	Fvector2 _old_pos = GetWndPos();
 	Fvector2 _new_pos = Fvector2().set(x,y);
-	if(_old_pos.similar(_new_pos,EPS,EPS))	return;
+	if(_old_pos.similar(_new_pos, EPSILON_5, EPSILON_5))	return;
 
 	CUISimpleWindow::SetWndPos		(_new_pos);
 	uFlags.set						(flValidSize, false);
@@ -172,7 +172,7 @@ void CUIFrameRect::SetWndRect(const Frect& rect){
 void CUIFrameRect::SetWndPos(const Fvector2& pos){
 
 //.	Fvector2 _old_pos = GetWndPos();
-//.	if(_old_pos.similar(pos,EPS,EPS))	return;
+//.	if(_old_pos.similar(pos,EPSILON_5,EPSILON_5))	return;
 
 	CUISimpleWindow::SetWndPos(pos);
 	uFlags.set(flValidSize, false);

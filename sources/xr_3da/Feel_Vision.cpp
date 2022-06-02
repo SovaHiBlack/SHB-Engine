@@ -45,7 +45,7 @@ namespace Feel {
 		I.Cache.verts[0].set	(0,0,0);
 		I.Cache.verts[1].set	(0,0,0);
 		I.Cache.verts[2].set	(0,0,0);
-		I.fuzzy					= -EPS_S;
+		I.fuzzy					= -EPSILON_7;
 		I.cp_LP.set				(0,0,0);
 	}
 	void	Vision::o_delete	(CObject* O)

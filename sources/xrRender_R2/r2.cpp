@@ -21,15 +21,15 @@ public:
 	virtual bool					get_active			()							{ return bActive;	}
 	virtual void					set_position		(const Fvector& P)			{ }
 	virtual void					set_direction		(const Fvector& D)			{ }
-	virtual void					set_radius			(float R)					{ }
+	virtual void					set_radius			(F32 R)					{ }
 	virtual void					set_texture			(LPCSTR name)				{ }
 	virtual void					set_color			(const Fcolor& C)			{ }
-	virtual void					set_color			(float r, float g, float b)	{ }
+	virtual void					set_color			(F32 r, F32 g, F32 b)	{ }
 };
 
-float		r_dtex_range		= 50.f;
+F32		r_dtex_range		= 50.f;
 //////////////////////////////////////////////////////////////////////////
-ShaderElement*			CRender::rimp_select_sh_dynamic	(IRender_Visual	*pVisual, float cdist_sq)
+ShaderElement*			CRender::rimp_select_sh_dynamic	(IRender_Visual	*pVisual, F32 cdist_sq)
 {
 	int		id	= SE_R2_SHADOW;
 	if	(CRender::PHASE_NORMAL == RImplementation.phase)
@@ -39,7 +39,7 @@ ShaderElement*			CRender::rimp_select_sh_dynamic	(IRender_Visual	*pVisual, float
 	return pVisual->shader->E[id]._get();
 }
 //////////////////////////////////////////////////////////////////////////
-ShaderElement*			CRender::rimp_select_sh_static	(IRender_Visual	*pVisual, float cdist_sq)
+ShaderElement*			CRender::rimp_select_sh_static	(IRender_Visual	*pVisual, F32 cdist_sq)
 {
 	int		id	= SE_R2_SHADOW;
 	if	(CRender::PHASE_NORMAL == RImplementation.phase)
@@ -50,7 +50,7 @@ ShaderElement*			CRender::rimp_select_sh_static	(IRender_Visual	*pVisual, float 
 }
 static class cl_parallax		: public R_constant_setup		{	virtual void setup	(R_constant* C)
 {
-	float			h			=	ps_r2_df_parallax_h;
+	F32			h			=	ps_r2_df_parallax_h;
 	RCache.set_c	(C,h,-h/2.f,1.f/r_dtex_range,1.f/r_dtex_range);
 }}	binder_parallax;
 
@@ -185,7 +185,7 @@ void					CRender::create					()
 	char*	g			= strstr(Core.Params,"-gloss ");
 	o.forcegloss		= g?	TRUE	:FALSE	;
 	if (g)				{
-		o.forcegloss_v		= float	(atoi	(g+xr_strlen("-gloss ")))/255.f;
+		o.forcegloss_v		= F32(atoi	(g+xr_strlen("-gloss ")))/255.f;
 	}
 
 	// options
@@ -365,7 +365,7 @@ BOOL					CRender::occ_visible			(Fbox& P)			{ return HOM.visible(P);								}
 
 void					CRender::add_Visual				(IRender_Visual*		V )	{ add_leafs_Dynamic(V);								}
 void					CRender::add_Geometry			(IRender_Visual*		V )	{ add_Static(V,View->getMask());					}
-void					CRender::add_StaticWallmark		(ref_shader& S, const Fvector& P, float s, CDB::TRI* T, Fvector* verts)
+void					CRender::add_StaticWallmark		(ref_shader& S, const Fvector& P, F32 s, CDB::TRI* T, Fvector* verts)
 {
 	if (T->suppress_wm)	return;
 	VERIFY2							(_valid(P) && _valid(s) && T && verts && (s>EPS_L), "Invalid static wallmark params");
@@ -381,7 +381,7 @@ void					CRender::add_SkeletonWallmark	(intrusive_ptr<CSkeletonWallmark> wm)
 {
 	Wallmarks->AddSkeletonWallmark				(wm);
 }
-void					CRender::add_SkeletonWallmark	(const Fmatrix* xf, CKinematics* obj, ref_shader& sh, const Fvector& start, const Fvector& dir, float size)
+void					CRender::add_SkeletonWallmark	(const Fmatrix* xf, CKinematics* obj, ref_shader& sh, const Fvector& start, const Fvector& dir, F32 size)
 {
 	Wallmarks->AddSkeletonWallmark				(xf, obj, sh, start, dir, size);
 }

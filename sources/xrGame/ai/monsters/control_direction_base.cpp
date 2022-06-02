@@ -49,7 +49,7 @@ void CControlDirectionBase::use_path_direction(bool reversed)
 	float yaw,pitch;
 	m_man->path_builder().detail().direction().getHP	(yaw,pitch);
 
-	if (fsimilar(yaw,0.f,EPS_S)) return;
+	if (fsimilar(yaw,0.f, EPSILON_7)) return;
 
 	m_heading.target = angle_normalize((reversed) ? (-yaw + PI) : (-yaw));
 }

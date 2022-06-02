@@ -164,7 +164,7 @@ void CSoundRender_CoreD::set_master_volume(F32 f )
 {
 	if		(pBuffer)	
 	{
-		F32	_volume		= f;									clamp	(_volume,EPS_S,1.f);
+		F32	_volume		= f;									clamp	(_volume, EPSILON_7,1.f);
 		s32		hw_volume	= iFloor	(7000.f*logf(_volume)/5.f);	clamp	(hw_volume,DSBVOLUME_MIN,DSBVOLUME_MAX);
 		pBuffer->SetVolume	(hw_volume);
 	}
@@ -213,7 +213,7 @@ void CSoundRender_CoreD::update_listener( const Fvector& P, const Fvector& D, co
 	//last_pos						= P;
 	Listener.vOrientFront.set		(D);
 	Listener.vOrientTop.set			(N);
-	Listener.fDopplerFactor			= EPS_S;
+	Listener.fDopplerFactor			= EPSILON_7;
 	Listener.fRolloffFactor			= psSoundRolloff;
 	// apply listener params
     pListener->SetAllParameters		((DS3DLISTENER*)&Listener, DS3D_DEFERRED );

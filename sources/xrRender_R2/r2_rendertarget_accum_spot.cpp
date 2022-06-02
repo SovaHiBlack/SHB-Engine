@@ -60,13 +60,13 @@ void CRenderTarget::accum_spot	(light* L)
 	// Shadow xform (+texture adjustment matrix)
 	Fmatrix			m_Shadow,m_Lmap;
 	{
-		float			smapsize			= float(RImplementation.o.smapsize);
-		float			fTexelOffs			= (.5f / smapsize);
-		float			view_dim			= float(L->X.S.size-2)/smapsize;
-		float			view_sx				= float(L->X.S.posX+1)/smapsize;
-		float			view_sy				= float(L->X.S.posY+1)/smapsize;
-		float			fRange				= float(1.f)*ps_r2_ls_depth_scale;
-		float			fBias				= ps_r2_ls_depth_bias;
+		F32			smapsize			= F32(RImplementation.o.smapsize);
+		F32			fTexelOffs			= (.5f / smapsize);
+		F32			view_dim			= F32(L->X.S.size-2)/smapsize;
+		F32			view_sx				= F32(L->X.S.posX+1)/smapsize;
+		F32			view_sy				= F32(L->X.S.posY+1)/smapsize;
+		F32			fRange				= F32(1.f)*ps_r2_ls_depth_scale;
+		F32			fBias				= ps_r2_ls_depth_bias;
 		Fmatrix			m_TexelAdjust		= {
 			view_dim/2.f,							0.0f,									0.0f,		0.0f,
 			0.0f,									-view_dim/2.f,							0.0f,		0.0f,
@@ -99,7 +99,8 @@ void CRenderTarget::accum_spot	(light* L)
 	}
 
 	// Common constants
-	Fvector		L_dir,L_clr,L_pos;	float L_spec;
+	Fvector		L_dir,L_clr,L_pos;
+	F32 L_spec;
 	L_clr.set					(L->color.r,L->color.g,L->color.b);
 	L_clr.mul					(L->get_LOD());
 	L_spec						= u_diffuse2s	(L_clr);
@@ -123,8 +124,8 @@ void CRenderTarget::accum_spot	(light* L)
 		RCache.set_Element			(shader->E[ _id ]	);
 
 		// Constants
-		float	att_R				= L->range*.95f;
-		float	att_factor			= 1.f/(att_R*att_R);
+		F32	att_R				= L->range*.95f;
+		F32	att_factor			= 1.f/(att_R*att_R);
 		RCache.set_c				("Ldynamic_pos",	L_pos.x,L_pos.y,L_pos.z,att_factor);
 		RCache.set_c				("Ldynamic_color",	L_clr.x,L_clr.y,L_clr.z,L_spec);
 		RCache.set_c				("m_texgen",		m_Texgen	);

@@ -6,11 +6,11 @@
 #include	"_std_extensions.h"
 
 // comparisions
-IC BOOL  fsimilar		(F32		a, F32	b, F32	cmp=EPS )		{ return _abs(a-b)<cmp;	}
-IC BOOL  dsimilar		( double	a, double	b, double	cmp=EPS )		{ return _abs(a-b)<cmp;		}
+IC BOOL  fsimilar		(F32		a, F32	b, F32	cmp= EPSILON_5)		{ return _abs(a-b)<cmp;	}
+IC BOOL  dsimilar		( double	a, double	b, double	cmp= EPSILON_5)		{ return _abs(a-b)<cmp;		}
 
-IC BOOL  fis_zero		(F32		val, F32	cmp=EPS_S )					{ return _abs(val)<cmp;	}
-IC BOOL  dis_zero		( double	val, double	cmp=EPS_S )					{ return _abs(val)<cmp;		}
+IC BOOL  fis_zero		(F32		val, F32	cmp= EPSILON_7)					{ return _abs(val)<cmp;	}
+IC BOOL  dis_zero		( double	val, double	cmp= EPSILON_7)					{ return _abs(val)<cmp;		}
 
 // degree 2 radians and vice-versa
 namespace implement{
@@ -126,7 +126,7 @@ IC bool			angle_lerp		(F32& c, F32 t, F32 s, F32 dt)
 	}
 	F32 diff_a	= _abs(diff);
 
-	if (diff_a<EPS_S)	
+	if (diff_a< EPSILON_7)
 		return true;
 
 	F32 mot		= s*dt;

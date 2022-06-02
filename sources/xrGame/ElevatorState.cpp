@@ -198,7 +198,7 @@ void CElevatorState::UpdateStClimbingDown()
 
 	Fvector vel;
 	m_character->GetVelocity(vel);
-	if(vel.y>EPS_S)
+	if(vel.y> EPSILON_7)
 	{
 		m_character->ApplyForce(0.f,-m_character->Mass()*ph_world->Gravity(),0.f);
 	}

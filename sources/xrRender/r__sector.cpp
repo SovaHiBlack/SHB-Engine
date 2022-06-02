@@ -85,7 +85,7 @@ void	CPortal::Setup	(Fvector* V, int vcnt, CSector* face, CSector* back)
 	for (int i=2; i<vcnt; i++) {
 		T.mknormal_non_normalized		(poly[0],poly[i-1],poly[i]);
 		float		m	= T.magnitude	();
-		if (m>EPS_S)	{
+		if (m> EPSILON_7)	{
 			N.add		(T.div(m))	;
 			_cnt		++			;
 		}

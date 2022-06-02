@@ -218,7 +218,7 @@ void CGlowManager::render_sw		()
 		G.dwFrame	=	'test';
 		Fvector		dir;
 		dir.sub		(G.spatial.sphere.P,start); float range = dir.magnitude();
-		if (range>EPS_S)	{
+		if (range> EPSILON_7)	{
 			dir.div		(range);
 			G.bTestResult = g_pGameLevel->ObjectSpace.RayTest(start,dir,range,collide::rqtBoth,&G.RayCache,o_main);
 		}

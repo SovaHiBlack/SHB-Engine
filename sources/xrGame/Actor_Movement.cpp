@@ -255,12 +255,12 @@ void CActor::g_cl_CheckControls(u32 mstate_wf, Fvector &vControlAccel, float &Ju
 
 
 			// correct "mstate_real" if opposite keys pressed
-			if (_abs(vControlAccel.z)<EPS)	mstate_real &= ~(mcFwd+mcBack		);
-			if (_abs(vControlAccel.x)<EPS)	mstate_real &= ~(mcLStrafe+mcRStrafe);
+			if (_abs(vControlAccel.z)< EPSILON_5)	mstate_real &= ~(mcFwd+mcBack		);
+			if (_abs(vControlAccel.x)< EPSILON_5)	mstate_real &= ~(mcLStrafe+mcRStrafe);
 
 			// normalize and analyze crouch and run
 			float	scale				= vControlAccel.magnitude();
-			if (scale>EPS)	{
+			if (scale> EPSILON_5)	{
 				scale	=	m_fWalkAccel/scale;
 				if (bAccelerated)
 					if (mstate_real&mcBack)

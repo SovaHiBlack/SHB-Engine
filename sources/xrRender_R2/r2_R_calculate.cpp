@@ -16,7 +16,7 @@ void CRender::Calculate		()
 	// Transfer to global space to avoid deep pointer access
 	IRender_Target* T				=	getTarget	();
 	float	fov_factor				=	_sqr		(90.f / Device.fFOV);
-	g_fSCREEN						=	float(T->get_width()*T->get_height())*fov_factor*(EPS_S+ps_r__LOD);
+	g_fSCREEN						=	float(T->get_width()*T->get_height())*fov_factor*(EPSILON_7 +ps_r__LOD);
 	r_ssaDISCARD					=	_sqr(ps_r__ssaDISCARD)		/g_fSCREEN;
 	r_ssaDONTSORT					=	_sqr(ps_r__ssaDONTSORT/3)	/g_fSCREEN;
 	r_ssaLOD_A						=	_sqr(ps_r2_ssaLOD_A/3)		/g_fSCREEN;
@@ -27,7 +27,7 @@ void CRender::Calculate		()
 	r_dtex_range					=	ps_r2_df_parallax_range * g_fSCREEN / (1024.f * 768.f);
 	
 	// Detect camera-sector
-	if (!vLastCameraPos.similar(Device.vCameraPosition,EPS_S)) 
+	if (!vLastCameraPos.similar(Device.vCameraPosition, EPSILON_7))
 	{
 		CSector* pSector		= (CSector*)detectSector(Device.vCameraPosition);
 		if (0==pSector) pSector = pLastSector;

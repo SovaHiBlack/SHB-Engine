@@ -103,13 +103,13 @@ void CStats::Show()
 	}
 
 	// calc FPS & TPS
-	if (Device.fTimeDelta>EPS_S) {
+	if (Device.fTimeDelta> EPSILON_7) {
 		float fps  = 1.f/Device.fTimeDelta;
 		float fOne = 0.3f;
 		float fInv = 1.f-fOne;
 		fFPS = fInv*fFPS + fOne*fps;
 
-		if (RenderTOTAL.result>EPS_S) {
+		if (RenderTOTAL.result> EPSILON_7) {
 			fTPS = fInv*fTPS + fOne*float(RCache.stat.polys)/(RenderTOTAL.result*1000.f);
 			fRFPS= fInv*fRFPS+ fOne*1000.f/RenderTOTAL.result;
 		}

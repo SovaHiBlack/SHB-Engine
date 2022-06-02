@@ -28,7 +28,7 @@ namespace PS
 		Fvector2			reserved; 
 		int     			m_iFrameDimX;
 		int 				m_iFrameCount;
-		float				m_fSpeed;
+		F32				m_fSpeed;
 
 		void 				InitDefault()
 		{
@@ -80,17 +80,17 @@ namespace PS
 	// compiled actions
         CMemoryWriter		m_Actions;
 	// def        
-		float				m_fTimeLimit;			// time limit
+		F32				m_fTimeLimit;			// time limit
 		int					m_MaxParticles;			// max particle count
 	    Fvector				m_VelocityScale;		// velocity scale
 	    Fvector				m_APDefaultRotation;	// align to path
     // collision
-	    float 				m_fCollideOneMinusFriction;
-        float 				m_fCollideResilience;
-        float 				m_fCollideSqrCutoff; 
+		F32 				m_fCollideOneMinusFriction;
+		F32 				m_fCollideResilience;
+		F32 				m_fCollideSqrCutoff;
 	// execute
-		void				ExecuteAnimate		(PAPI::Particle *particles, u32 p_cnt, float dt);
-        void				ExecuteCollision	(PAPI::Particle *particles, u32 p_cnt, float dt, CParticleEffect* owner, CollisionCallback cb);
+		void				ExecuteAnimate		(PAPI::Particle *particles, u32 p_cnt, F32 dt);
+        void				ExecuteCollision	(PAPI::Particle *particles, u32 p_cnt, F32 dt, CParticleEffect* owner, CollisionCallback cb);
 
 	public:
                             CPEDef				();

@@ -109,7 +109,7 @@ BOOL IGame_Level::Load			(u32 dwNum)
 int		psNET_DedicatedSleep	= 5;
 void	IGame_Level::OnRender		( ) 
 {
-//	if (_abs(Device.fTimeDelta)<EPS_S) return;
+//	if (_abs(Device.fTimeDelta)<EPSILON_7) return;
 
 	// Level render, only when no client output required
 	Render->Calculate			();
@@ -123,7 +123,7 @@ void	IGame_Level::OnRender		( )
 void	IGame_Level::OnFrame		( ) 
 {
 	// Log				("- level:on-frame: ",u32(Device.dwFrame));
-//	if (_abs(Device.fTimeDelta)<EPS_S) return;
+//	if (_abs(Device.fTimeDelta)<EPSILON_7) return;
 
 	// Update all objects
 	VERIFY						(bReady);

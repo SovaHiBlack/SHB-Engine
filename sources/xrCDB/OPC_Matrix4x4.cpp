@@ -151,7 +151,7 @@ Matrix4x4& Matrix4x4::Shadow(const Point& light, const Point& p0, const Point& p
 	F32 D		= -(p0|n);
 	Plane PlaneEquation;
 	F32 Coeff;
-	if(_abs(D)<0.0001f)	Coeff = -1.0f;
+	if(_abs(D)< EPSILON_4)	Coeff = -1.0f;
 	else					Coeff = -1.0f / _abs(D);
 	PlaneEquation.n.x = n.x * Coeff;
 	PlaneEquation.n.y = n.y * Coeff;

@@ -223,7 +223,7 @@ void CCustomMonster::mk_orientation(Fvector &dir, Fmatrix& mR)
 	// orient only in XZ plane
 	dir.y		= 0;
 	float		len = dir.magnitude();
-	if			(len>EPS_S)
+	if			(len> EPSILON_7)
 	{
 		// normalize
 		dir.x /= len;

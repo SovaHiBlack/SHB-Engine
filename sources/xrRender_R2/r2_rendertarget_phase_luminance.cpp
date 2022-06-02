@@ -18,7 +18,7 @@ struct v_filter {
 void	CRenderTarget::phase_luminance()
 {
 	u32		Offset	= 0;
-	float	eps		= EPS_S;
+	float	eps		= EPSILON_7;
 
 	// Targets
 	RCache.set_Stencil						(FALSE);

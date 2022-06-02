@@ -122,7 +122,7 @@ public:
 	}
 	IC BOOL		contains(const _vector3<T>& PT) const 
 	{
-		return P.distance_to_sqr(PT) <= (R*R+EPS_S);
+		return P.distance_to_sqr(PT) <= (R*R+ EPSILON_7);
 	}
 	
 	// returns true if this wholly contains the argument sphere

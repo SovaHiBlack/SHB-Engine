@@ -372,7 +372,7 @@ public:
 			sign	= 1.f;
 		}
 		
-		if ( (1.0f - cosom) > EPS ) {
+		if ( (1.0f - cosom) > EPSILON_5) {
 			T	omega	= _acos_( cosom );
 			T	i_sinom = 1.f / _sin( omega );
 			T	t_omega	= tm*omega;
@@ -417,7 +417,7 @@ public:
 	{
 		T n	 = Q.x*Q.x+Q.y*Q.y+Q.z*Q.z;
 		T r  = _sqrt(n);
-		T t  = (r>EPS_S)?atan2f(r,Q.w)/r: 0.f;
+		T t  = (r> EPSILON_7)?atan2f(r,Q.w)/r: 0.f;
 		x = t*Q.x;
 		y = t*Q.y;
 		z = t*Q.z;
@@ -428,7 +428,7 @@ public:
 	{
 		T r  = _sqrt(Q.x*Q.x+Q.y*Q.y+Q.z*Q.z);
 		T et = expf(Q.w);
-		T s  = (r>=EPS_S)? et*_sin(r)/r: 0.f;
+		T s  = (r>= EPSILON_7)? et*_sin(r)/r: 0.f;
 		x = s*Q.x;
 		y = s*Q.y;
 		z = s*Q.z;

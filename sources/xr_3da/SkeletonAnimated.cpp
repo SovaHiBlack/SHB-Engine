@@ -162,7 +162,7 @@ void CKinematicsAnimated::IBlendSetup(CBlend& B,u16 part,u8 channel, MotionID mo
 	// Setup blend params
 	if (bMixing)	{
 		B.blend		= CBlend::eAccrue;
-		B.blendAmount	= EPS_S;
+		B.blendAmount	= EPSILON_7;
 	} else {
 		//B.blend		= CBlend::eFixed;
 		B.blend		= CBlend::eAccrue;
@@ -187,7 +187,7 @@ void CKinematicsAnimated::IBlendSetup(CBlend& B,u16 part,u8 channel, MotionID mo
 void CKinematicsAnimated::IFXBlendSetup(CBlend &B, MotionID motion_ID, float blendAccrue, float blendFalloff,float Power ,float Speed,u16 bone)
 {
 	B.blend		= CBlend::eAccrue;
-	B.blendAmount	= EPS_S;
+	B.blendAmount	= EPSILON_7;
 	B.blendAccrue	= blendAccrue;
 	B.blendFalloff	= blendFalloff;
 	B.blendPower	= Power;
@@ -332,8 +332,8 @@ IC bool UpdatePlayBlend(CBlend &B,float dt)
 
 	if (B.blendAmount>B.blendPower)	B.blendAmount = B.blendPower; 
 
-	if (B.stop_at_end && (B.timeCurrent > (B.timeTotal-SAMPLE_SPF/*-EPS*/) )) {
-		B.timeCurrent	= B.timeTotal-SAMPLE_SPF /*- EPS*/;		// stop@end - time frozen at the end
+	if (B.stop_at_end && (B.timeCurrent > (B.timeTotal-SAMPLE_SPF/*-EPSILON_5*/) )) {
+		B.timeCurrent	= B.timeTotal-SAMPLE_SPF /*- EPSILON_5*/;		// stop@end - time frozen at the end
 		if (B.playing&&B.Callback)	B.Callback(&B);		// callback only once
 		B.playing		= FALSE;
 

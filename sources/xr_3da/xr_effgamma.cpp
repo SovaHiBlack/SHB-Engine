@@ -18,7 +18,7 @@ void CGammaControl::Update()
 }
 void CGammaControl::GenLUT(D3DGAMMARAMP &G)
 {
-	float og	= 1.f / (fGamma + EPS);
+	float og	= 1.f / (fGamma + EPSILON_5);
 	float B		= fBrightness/2.f;
 	float C		= fContrast/2.f;
 	for (int i=0; i<256; i++) {

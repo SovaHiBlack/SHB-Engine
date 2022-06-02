@@ -41,9 +41,9 @@ void CSoundRender_Environment::set_identity	()
 	clamp				  	();
 }
 
-void CSoundRender_Environment::lerp			(CSoundRender_Environment& A, CSoundRender_Environment& B, float f)
+void CSoundRender_Environment::lerp			(CSoundRender_Environment& A, CSoundRender_Environment& B, F32 f)
 {
-	float	fi				= 1.f-f;
+	F32	fi				= 1.f-f;
 
     Room                    = fi*A.Room                	+ f*B.Room;                
     RoomHF                  = fi*A.RoomHF              	+ f*B.RoomHF;              
@@ -82,14 +82,14 @@ void CSoundRender_Environment::get			(EAXLISTENERPROPERTIES& ep)
 */
 void CSoundRender_Environment::clamp		()
 {
-    ::clamp(Room,             		(float)EAXLISTENER_MINROOM, 	  	(float)EAXLISTENER_MAXROOM			);
-    ::clamp(RoomHF,              	(float)EAXLISTENER_MINROOMHF, 	  	(float)EAXLISTENER_MAXROOMHF		);
+    ::clamp(Room,             		(F32)EAXLISTENER_MINROOM, 	  	(F32)EAXLISTENER_MAXROOM			);
+    ::clamp(RoomHF,              	(F32)EAXLISTENER_MINROOMHF, 	  	(F32)EAXLISTENER_MAXROOMHF		);
     ::clamp(RoomRolloffFactor,   	EAXLISTENER_MINROOMROLLOFFFACTOR, 	EAXLISTENER_MAXROOMROLLOFFFACTOR	);
     ::clamp(DecayTime,           	EAXLISTENER_MINDECAYTIME, 			EAXLISTENER_MAXDECAYTIME			);
     ::clamp(DecayHFRatio,        	EAXLISTENER_MINDECAYHFRATIO, 		EAXLISTENER_MAXDECAYHFRATIO			);
-    ::clamp(Reflections,         	(float)EAXLISTENER_MINREFLECTIONS,	(float)EAXLISTENER_MAXREFLECTIONS	);
+    ::clamp(Reflections,         	(F32)EAXLISTENER_MINREFLECTIONS,	(F32)EAXLISTENER_MAXREFLECTIONS	);
     ::clamp(ReflectionsDelay,    	EAXLISTENER_MINREFLECTIONSDELAY, 	EAXLISTENER_MAXREFLECTIONSDELAY		);
-    ::clamp(Reverb,              	(float)EAXLISTENER_MINREVERB, 	  	(float)EAXLISTENER_MAXREVERB		);
+    ::clamp(Reverb,              	(F32)EAXLISTENER_MINREVERB, 	  	(F32)EAXLISTENER_MAXREVERB		);
     ::clamp(ReverbDelay,         	EAXLISTENER_MINREVERBDELAY, 		EAXLISTENER_MAXREVERBDELAY			);
     ::clamp(EnvironmentSize,     	EAXLISTENER_MINENVIRONMENTSIZE, 	EAXLISTENER_MAXENVIRONMENTSIZE		);
     ::clamp(EnvironmentDiffusion,	EAXLISTENER_MINENVIRONMENTDIFFUSION,EAXLISTENER_MAXENVIRONMENTDIFFUSION	);

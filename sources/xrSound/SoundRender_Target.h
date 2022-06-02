@@ -11,7 +11,7 @@ protected:
 	CSoundRender_Emitter*		pEmitter;
 	BOOL						rendering;
 public:
-	float						priority;
+	F32						priority;
 protected:
 	OggVorbis_File				ovf;
 	IReader*					wave;					

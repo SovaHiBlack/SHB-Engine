@@ -239,7 +239,7 @@ void 	IWriter::w_sdir	(const Fvector& D)
 {
 	Fvector C;
 	F32 mag		= D.magnitude();
-	if (mag>EPS_S)	{
+	if (mag> EPSILON_7)	{
 		C.div		(D,mag);
 	} else {
 		C.set		(0,0,1);

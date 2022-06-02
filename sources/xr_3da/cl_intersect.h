@@ -120,7 +120,7 @@ namespace CDB
 		// if determinant is near zero, ray lies in plane of triangle
 		det = edge1.dotproduct(pvec);
 
-		if (_abs(det) < EPS_S)		{ range=-1; return false; }
+		if (_abs(det) < EPSILON_7)		{ range=-1; return false; }
 		inv_det = 1.0f / det;
 		tvec.sub(C, p[0]);					// calculate distance from vert0 to ray origin
 		u = tvec.dotproduct(pvec)*inv_det;	// calculate U parameter and test bounds
@@ -147,7 +147,7 @@ namespace CDB
 		// if determinant is near zero, ray lies in plane of triangle
 		det = edge1.dotproduct(pvec);
 
-		if (_abs(det) < EPS_S)		{ range=-1; return false; }
+		if (_abs(det) < EPSILON_7)		{ range=-1; return false; }
 		inv_det = 1.0f / det;
 		tvec.sub(C, *p[0]);					// calculate distance from vert0 to ray origin
 		u = tvec.dotproduct(pvec)*inv_det;	// calculate U parameter and test bounds

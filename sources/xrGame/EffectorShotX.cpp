@@ -36,7 +36,7 @@ void CCameraShotEffectorX::Shot			(float angle)
 
 void	CCameraShotEffectorX::Clear				()
 {
-	fAngleVert	= -EPS_S;
+	fAngleVert	= -EPSILON_7;
 	fAngleHorz	= 0.0f;
 };
 

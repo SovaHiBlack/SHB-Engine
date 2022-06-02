@@ -25,7 +25,7 @@ void R_dsgraph_structure::r_dsgraph_render_lods	(bool _setup_zb, bool _clear)
 	u32							vOffset		;
 	FLOD::_hw*					V			= (FLOD::_hw*)RCache.Vertex.Lock	(lstLODs.size()*4,firstV->geom->vb_stride, vOffset);
 	float	ssaRange						= r_ssaLOD_A - r_ssaLOD_B;
-	if		(ssaRange<EPS_S)	ssaRange	= EPS_S;
+	if		(ssaRange< EPSILON_7)	ssaRange	= EPSILON_7;
 	for (u32 i=0; i<lstLODs.size(); i++)
 	{
 		// sort out redundancy

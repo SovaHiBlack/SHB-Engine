@@ -204,12 +204,12 @@ public:
 
 	// Normalize
 	IC	SelfRef	normalize_rgb(void)				{
-		VERIFY(magnitude_sqr_rgb()>EPS_S);
+		VERIFY(magnitude_sqr_rgb()> EPSILON_7);
 		return mul_rgb(1.f/magnitude_rgb());
 	}
 	IC	SelfRef	normalize_rgb(SelfCRef c) 
 	{
-		VERIFY(c.magnitude_sqr_rgb()>EPS_S);
+		VERIFY(c.magnitude_sqr_rgb()> EPSILON_7);
 		return mul_rgb(c,1.f/c.magnitude_rgb());
 	}
 	IC	SelfRef	lerp(SelfCRef c1, SelfCRef c2, T t)

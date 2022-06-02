@@ -367,7 +367,7 @@ void CWallmarksEngine::Render()
 			} else {
 				W->ttl	-= Device.fTimeDelta;
 			}
-			if (W->ttl<=EPS){	
+			if (W->ttl<= EPSILON_5){
 				static_wm_destroy	(W);
 				*w_it				= slot->static_items.back();
 				slot->static_items.pop_back();

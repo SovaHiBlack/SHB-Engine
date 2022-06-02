@@ -98,7 +98,7 @@ IC	const CLevelGraph::CPosition &CLevelGraph::vertex_position	(CLevelGraph::CPos
 {
 	VERIFY				(iFloor((source_position.z - header().box().min.z)/header().cell_size() + .5f) < (int)m_row_length);
 	int					pxz	= iFloor(((source_position.x - header().box().min.x)/header().cell_size() + .5f))*m_row_length + iFloor((source_position.z - header().box().min.z)/header().cell_size() + .5f);
-	int					py	= iFloor(65535.f*(source_position.y - header().box().min.y)/header().factor_y() + EPS_S);
+	int					py	= iFloor(65535.f*(source_position.y - header().box().min.y)/header().factor_y() + EPSILON_7);
 	VERIFY				(pxz < (1 << MAX_NODE_BIT_COUNT) - 1);
 	dest_position.xz	(u32(pxz));
 	clamp				(py,0,65535);

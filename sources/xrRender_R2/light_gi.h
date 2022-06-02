@@ -4,6 +4,6 @@ struct	light_indirect
 {
 	Fvector			P;
 	Fvector			D;
-	float			E;
+	F32			E;
 	IRender_Sector*	S;
 };

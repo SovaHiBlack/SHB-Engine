@@ -169,7 +169,7 @@ void CRender::render_menu	()
 	u32		C						= color_rgba	(255,255,255,255);
 	float	_w						= float(Device.dwWidth);
 	float	_h						= float(Device.dwHeight);
-	float	d_Z						= EPS_S;
+	float	d_Z						= EPSILON_7;
 	float	d_W						= 1.f;
 	p0.set							(.5f/_w, .5f/_h);
 	p1.set							((_w+.5f)/_w, (_h+.5f)/_h );

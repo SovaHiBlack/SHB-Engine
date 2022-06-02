@@ -87,7 +87,7 @@ public:
 	IC void w_sdir		( const Fvector& D) {
 		Fvector C;
 		float mag		= D.magnitude();
-		if (mag>EPS_S)	{
+		if (mag> EPSILON_7)	{
 			C.div		(D,mag);
 		} else {
 			C.set		(0,0,1);
@@ -220,7 +220,7 @@ public:
 		u16				val;
 		r_u16			(val);
 		A				= (float(val)*(max-min))/65535.f + min;		// floating-point-error possible
-		VERIFY			((A >= min-EPS_S) && (A <= max+EPS_S));
+		VERIFY			((A >= min- EPSILON_7) && (A <= max+ EPSILON_7));
 	}
 	IC void		r_float_q8		(float& A, float min, float max)
 	{
