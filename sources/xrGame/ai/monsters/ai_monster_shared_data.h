@@ -5,8 +5,8 @@ struct SMonsterSettings {
 	
 	// float speed factors
 
-	float					m_fDistToCorpse;
-	float					m_fDamagedThreshold;		// порог здоровья, ниже которого устанавливается флаг m_bDamaged
+	F32					m_fDistToCorpse;
+	F32					m_fDamagedThreshold;		// порог здоровья, ниже которого устанавливается флаг m_bDamaged
 
 	// -------------------------------------------------------
 
@@ -15,27 +15,27 @@ struct SMonsterSettings {
 	u32						m_dwAttackSndDelay;
 
 	u32						m_dwDistantIdleSndDelay;
-	float					m_fDistantIdleSndRange;
+	F32					m_fDistantIdleSndRange;
 
 	// -------------------------------------------------------
 
 	u32						m_dwDayTimeBegin;
 	u32						m_dwDayTimeEnd;
-	float					satiety_threshold;
+	F32					satiety_threshold;
 	
 	// ----------------------------------------------------------- 
 
-	float					m_fSoundThreshold;
+	F32					m_fSoundThreshold;
 
-	float					m_fEatFreq;
-	float					m_fEatSlice;
-	float					m_fEatSliceWeight;
+	F32					m_fEatFreq;
+	F32					m_fEatSlice;
+	F32					m_fEatSliceWeight;
 
 	u8						m_legs_number;
 	SAttackEffector			m_attack_effector;
 
-	float					m_max_hear_dist;
+	F32					m_max_hear_dist;
 
-	float					m_run_attack_path_dist;
-	float					m_run_attack_start_dist;
+	F32					m_run_attack_path_dist;
+	F32					m_run_attack_start_dist;
 };

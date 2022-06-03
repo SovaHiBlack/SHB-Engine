@@ -5,7 +5,7 @@
 #include "ActorEffector.h"
 #include "..\XR_3DA\ObjectAnimator.h"
 
-void CAnimatorCamEffectorScriptCB::ProcessIfInvalid(Fvector &p, Fvector &d, Fvector &n, float& fFov, float& fFar, float& fAspect)
+void CAnimatorCamEffectorScriptCB::ProcessIfInvalid(Fvector &p, Fvector &d, Fvector &n, F32& fFov, F32& fFar, F32& fAspect)
 {
 	if(m_bAbsolutePositioning)
 	{

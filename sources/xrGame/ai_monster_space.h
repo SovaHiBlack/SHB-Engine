@@ -71,7 +71,7 @@ namespace MonsterSpace {
 	struct SBoneRotation {
 		SRotation		current;
 		SRotation		target;
-		float			speed;
+		F32			speed;
 	};
 
 	enum EScriptMonsterMoveAction {

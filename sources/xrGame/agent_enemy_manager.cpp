@@ -29,7 +29,7 @@
 #include <malloc.h>
 #pragma warning(pop)
 
-const float wounded_enemy_reached_distance = 3.f;
+const F32 wounded_enemy_reached_distance = 3.f;
 
 const unsigned __int32 __c0					= 0x55555555;
 const unsigned __int32 __c1					= 0x33333333;

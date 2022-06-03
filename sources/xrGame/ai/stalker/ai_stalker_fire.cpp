@@ -53,17 +53,17 @@
 
 using namespace StalkerSpace;
 
-const float DANGER_DISTANCE				= 3.f;
+const F32 DANGER_DISTANCE				= 3.f;
 const u32	DANGER_INTERVAL				= 120000;
 
-const float PRECISE_DISTANCE			= 2.5f;
-const float FLOOR_DISTANCE				= 2.f;
-const float NEAR_DISTANCE				= 2.5f;
+const F32 PRECISE_DISTANCE			= 2.5f;
+const F32 FLOOR_DISTANCE				= 2.f;
+const F32 NEAR_DISTANCE				= 2.5f;
 const u32	FIRE_MAKE_SENSE_INTERVAL	= 10000;
 
-float CAI_Stalker::GetWeaponAccuracy	() const
+F32 CAI_Stalker::GetWeaponAccuracy	() const
 {
-	float				base = PI/180.f;
+	F32				base = PI/180.f;
 	
 	//влияние ранга на меткость
 	base				*= m_fRankDisperison;
@@ -194,8 +194,8 @@ void			CAI_Stalker::Hit					(SHit* pHDS)
 	SHit							HDS = *pHDS;
 	HDS.power						*= m_fRankImmunity;
 	if (m_boneHitProtection && HDS.hit_type == ALife::eHitTypeFireWound){
-		float						BoneArmour = m_boneHitProtection->getBoneArmour(HDS.bone());	
-		float						NewHitPower = HDS.damage() - BoneArmour;
+		F32						BoneArmour = m_boneHitProtection->getBoneArmour(HDS.bone());
+		F32						NewHitPower = HDS.damage() - BoneArmour;
 		if (NewHitPower < HDS.power*m_boneHitProtection->m_fHitFrac) HDS.power = HDS.power*m_boneHitProtection->m_fHitFrac;
 		else
 			HDS.power				= NewHitPower;
@@ -237,11 +237,12 @@ void			CAI_Stalker::Hit					(SHit* pHDS)
 			)
 			{
 				Fvector					D;
-				float					yaw, pitch;
+				F32					yaw;
+				F32					pitch;
 				D.getHP					(yaw,pitch);
 
 	#pragma todo("Dima to Dima : forward-back bone impulse direction has been determined incorrectly!")
-				float					power_factor = m_power_fx_factor*pHDS->damage()/100.f;
+				F32					power_factor = m_power_fx_factor*pHDS->damage()/100.f;
 				clamp					(power_factor,0.f,1.f);
 
 				CKinematicsAnimated		*tpKinematics = smart_cast<CKinematicsAnimated*>(Visual());
@@ -271,7 +272,7 @@ void			CAI_Stalker::Hit					(SHit* pHDS)
 	inherited::Hit					(&HDS);
 }
 
-void CAI_Stalker::HitSignal				(float amount, Fvector& vLocalDir, CObject* who, s16 element)
+void CAI_Stalker::HitSignal				(F32 amount, Fvector& vLocalDir, CObject* who, s16 element)
 {
 	if (getDestroy())
 		return;
@@ -324,7 +325,7 @@ void CAI_Stalker::update_best_item_info	()
 		ai().ef_storage().non_alife().member()	= this;
 		ai().ef_storage().non_alife().enemy()	= memory().enemy().selected() ? memory().enemy().selected() : this;
 		ai().ef_storage().non_alife().member_item()	= &m_best_item_to_kill->object();
-		float									value;
+		F32									value;
 		value									= ai().ef_storage().m_pfWeaponEffectiveness->ffGetValue();
 		if (fsimilar(value,m_best_item_value))
 			return;
@@ -347,11 +348,11 @@ void CAI_Stalker::update_best_item_info	()
 		for ( ; I != E; ++I) {
 			if ((*I)->can_kill()) {
 				ai().ef_storage().non_alife().member_item()	= &(*I)->object();
-				float								value;
+				F32								value;
 				if (memory().enemy().selected())
 					value							= ai().ef_storage().m_pfWeaponEffectiveness->ffGetValue();
 				else
-					value							= (float)(*I)->object().ef_weapon_type();
+					value							= (F32)(*I)->object().ef_weapon_type();
 
 				if (!fsimilar(value,m_best_item_value) && (value < m_best_item_value))
 					continue;
@@ -391,7 +392,7 @@ void CAI_Stalker::update_best_item_info	()
 			CInventoryItem			*item			= inventory_item->can_kill(&inventory());
 			if (item) {
 				ai().ef_storage().non_alife().member_item()	= &inventory_item->object();
-				float value							= ai().ef_storage().m_pfWeaponEffectiveness->ffGetValue();
+				F32 value							= ai().ef_storage().m_pfWeaponEffectiveness->ffGetValue();
 				if (value > m_best_item_value) {
 					m_best_item_value				= value;
 					m_best_found_item_to_kill		= inventory_item;
@@ -405,7 +406,7 @@ void CAI_Stalker::update_best_item_info	()
 					continue;
 
 				ai().ef_storage().non_alife().member_item()	= &item->object();
-				float value							= ai().ef_storage().m_pfWeaponEffectiveness->ffGetValue();
+				F32 value							= ai().ef_storage().m_pfWeaponEffectiveness->ffGetValue();
 				if (value > m_best_item_value) {
 					m_best_item_value				= value;
 					m_best_item_to_kill				= item;
@@ -431,7 +432,7 @@ void CAI_Stalker::update_best_item_info	()
 		const CInventoryItem	*item = inventory_item->can_kill(memory().item().objects());
 		if (item) {
 			ai().ef_storage().non_alife().member_item()	= &inventory_item->object();
-			float value							= ai().ef_storage().m_pfWeaponEffectiveness->ffGetValue();
+			F32 value							= ai().ef_storage().m_pfWeaponEffectiveness->ffGetValue();
 			if (value > m_best_item_value) {
 				m_best_item_value			= value;
 				m_best_found_item_to_kill	= inventory_item;
@@ -490,14 +491,14 @@ bool CAI_Stalker::ready_to_detour		()
 class ray_query_param	{
 public:
 	CAI_Stalker				*m_holder;
-	float					m_power;
-	float					m_power_threshold;
+	F32					m_power;
+	F32					m_power_threshold;
 	bool					m_can_kill_enemy;
 	bool					m_can_kill_member;
-	float					m_pick_distance;
+	F32					m_pick_distance;
 
 public:
-	IC				ray_query_param		(const CAI_Stalker *holder, float power_threshold, float distance)
+	IC				ray_query_param		(const CAI_Stalker *holder, F32 power_threshold, F32 distance)
 	{
 		m_holder			= const_cast<CAI_Stalker*>(holder);
 		m_power_threshold	= power_threshold;
@@ -511,7 +512,7 @@ public:
 IC BOOL ray_query_callback	(collide::rq_result& result, LPVOID params)
 {
 	ray_query_param						*param = (ray_query_param*)params;
-	float								power = param->m_holder->feel_vision_mtl_transp(result.O,result.element);
+	F32								power = param->m_holder->feel_vision_mtl_transp(result.O,result.element);
 	param->m_power						*= power;
 
 //	if (power >= .05f) {
@@ -545,7 +546,7 @@ IC BOOL ray_query_callback	(collide::rq_result& result, LPVOID params)
 	return								(false);
 }
 
-void CAI_Stalker::can_kill_entity		(const Fvector &position, const Fvector &direction, float distance, collide::rq_results& rq_storage)
+void CAI_Stalker::can_kill_entity		(const Fvector &position, const Fvector &direction, F32 distance, collide::rq_results& rq_storage)
 {
 	VERIFY							(!fis_zero(direction.square_magnitude()));
 
@@ -560,7 +561,7 @@ void CAI_Stalker::can_kill_entity		(const Fvector &position, const Fvector &dire
 	m_pick_distance					= _max(m_pick_distance,params.m_pick_distance);
 }
 
-void CAI_Stalker::can_kill_entity_from	(const Fvector &position, Fvector direction, float distance)
+void CAI_Stalker::can_kill_entity_from	(const Fvector &position, Fvector direction, F32 distance)
 {
 	m_pick_distance			= 0.f;
 	rq_storage.r_clear		();
@@ -568,7 +569,9 @@ void CAI_Stalker::can_kill_entity_from	(const Fvector &position, Fvector directi
 	if (m_can_kill_member && m_can_kill_enemy)
 		return;
 
-	float					yaw, pitch, safety_fire_angle = 1.f*PI_DIV_8*.5f;
+	F32					yaw;
+	F32					pitch;
+	F32					safety_fire_angle = 1.f * PI_DIV_8 * .5f;
 	direction.getHP			(yaw,pitch);
 
 	direction.setHP			(yaw - safety_fire_angle,pitch);
@@ -590,9 +593,9 @@ void CAI_Stalker::can_kill_entity_from	(const Fvector &position, Fvector directi
 	can_kill_entity			(position,direction,distance,rq_storage);
 }
 
-IC	float CAI_Stalker::start_pick_distance	() const
+IC	F32 CAI_Stalker::start_pick_distance	() const
 {
-	float					result = 50.f;
+	F32					result = 50.f;
 	if (!memory().enemy().selected())
 		return				(result);
 
@@ -604,7 +607,7 @@ IC	float CAI_Stalker::start_pick_distance	() const
 	);
 }
 
-float CAI_Stalker::pick_distance		()
+F32 CAI_Stalker::pick_distance		()
 {
 	if (!inventory().ActiveItem())
 		return				(start_pick_distance());
@@ -676,9 +679,10 @@ bool CAI_Stalker::zoom_state			() const
 	return					(false);
 }
 
-void CAI_Stalker::update_range_fov		(float &new_range, float &new_fov, float start_range, float start_fov)
+void CAI_Stalker::update_range_fov		(F32& new_range, F32& new_fov, F32 start_range, F32 start_fov)
 {
-	float					range = start_range, fov = start_fov;
+	F32					range = start_range;
+	F32					fov = start_fov;
 
 	if (zoom_state())
 		inventory().ActiveItem()->modify_holder_params(range,fov);
@@ -727,7 +731,7 @@ bool CAI_Stalker::fire_make_sense		()
 void CAI_Stalker::on_weapon_shot_start		(CWeapon *weapon)
 {
 	weapon_shot_effector().SetRndSeed	(m_weapon_shot_random_seed);
-	weapon_shot_effector().Shot			(weapon->camDispersion + weapon->camDispersionInc*float(weapon->ShotsFired()));
+	weapon_shot_effector().Shot			(weapon->camDispersion + weapon->camDispersionInc* F32(weapon->ShotsFired()));
 }
 
 void CAI_Stalker::on_weapon_shot_stop		(CWeapon *weapon)
@@ -815,7 +819,7 @@ bool CAI_Stalker::use_throw_randomness		()
 	return					(false);
 }
 
-float CAI_Stalker::missile_throw_force		() 
+F32 CAI_Stalker::missile_throw_force		()
 {
 	update_throw_params		();
 	VERIFY					(_valid(m_throw_force));

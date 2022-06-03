@@ -6,7 +6,7 @@
 //****************************************************************************************************
 // class bonesBone
 //****************************************************************************************************
-void bonesBone::Set(CBoneInstance *b, u8 a, float ty, float cy, float r_s)
+void bonesBone::Set(CBoneInstance *b, u8 a, F32 ty, F32 cy, F32 r_s)
 {
 	bone			= b; 
 	axis			= a;
@@ -26,12 +26,12 @@ bool bonesBone::NeedTurn()
 
 void bonesBone::Turn(u32 dt)
 {
-	float PI_DIV_2m		= 8 * PI_DIV_6 / 3;		
-	float PIm			= PI_DIV_2m * 2;
+	F32 PI_DIV_2m		= 8 * PI_DIV_6 / 3;
+	F32 PIm			= PI_DIV_2m * 2;
 
-	float cur_speed = params.r_speed * _cos(PI_DIV_2m - PIm * _abs(params.target_yaw - params.cur_yaw) / params.dist_yaw);
+	F32 cur_speed = params.r_speed * _cos(PI_DIV_2m - PIm * _abs(params.target_yaw - params.cur_yaw) / params.dist_yaw);
 
-	float dy;
+	F32 dy;
 	dy =  cur_speed * dt / 1000;  // учитываем милисек и радианную меры
 
 	if (_abs(params.target_yaw - params.cur_yaw) < dy) params.cur_yaw = params.target_yaw;
@@ -41,7 +41,9 @@ void bonesBone::Turn(u32 dt)
 
 void bonesBone::Apply()
 {
-	float x = 0.f, y = 0.f, z = 0.f;
+	F32 x = 0.f;
+	F32 y = 0.f;
+	F32 z = 0.f;
 
 	if ((axis & AXIS_X) == AXIS_X) x = params.cur_yaw;
 	if ((axis & AXIS_Y) == AXIS_Y) y = params.cur_yaw;
@@ -76,7 +78,7 @@ void bonesManipulation::AddBone (CBoneInstance *bone, u8 axis_used)
 	m_Bones.push_back(tempB);
 }
 
-void bonesManipulation::SetMotion(CBoneInstance *bone, u8 axis, float target_yaw, float r_speed, u32 t)
+void bonesManipulation::SetMotion(CBoneInstance *bone, u8 axis, F32 target_yaw, F32 r_speed, u32 t)
 {
 	int index = -1;
 	// найти бону bone в m_Bones

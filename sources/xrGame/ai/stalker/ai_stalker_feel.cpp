@@ -46,7 +46,7 @@ void CAI_Stalker::renderable_Render	()
 #endif // DEBUG
 }
 
-void CAI_Stalker::Exec_Look			(float dt)
+void CAI_Stalker::Exec_Look			(F32 dt)
 {
 	if (animation_movement_controlled())
 		return;

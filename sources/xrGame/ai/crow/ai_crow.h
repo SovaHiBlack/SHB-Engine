@@ -71,19 +71,19 @@ protected:
 	Fvector			vGoalDir;
 	Fvector			vCurrentDir;
 	Fvector			vHPB;
-	float			fDHeading;
+	F32			fDHeading;
 
 	// constants
-	float			fGoalChangeDelta;
-	float			fSpeed;
-	float			fASpeed;
-	float			fMinHeight;
+	F32			fGoalChangeDelta;
+	F32			fSpeed;
+	F32			fASpeed;
+	F32			fMinHeight;
 	Fvector			vVarGoal;
-	float			fIdleSoundDelta;
+	F32			fIdleSoundDelta;
 
 	// variables
-	float			fGoalChangeTime;
-	float			fIdleSoundTime;
+	F32			fGoalChangeTime;
+	F32			fIdleSoundTime;
 
 	// 
 	bool			bPlayDeathIdle;
@@ -94,11 +94,11 @@ protected:
 	void			switch2_DeathDead			();
 
 	void			state_DeathFall				();
-	void			state_Flying				(float dt);
+	void			state_Flying				(F32 dt);
 
 	void			CreateSkeleton				();
 	
-	void			UpdateWorkload				(float DT);
+	void			UpdateWorkload				(F32 DT);
 
 public:						
 	u32				o_workload_frame	;
@@ -124,12 +124,12 @@ public:
 	virtual void	g_fireParams				(const CHudItem* /**pHudItem/**/, Fvector& /**P/**/, Fvector& /**D/**/)	{};
 	virtual void	g_WeaponBones				(int &/**L/**/, int &/**R1/**/, int &/**R2/**/)	{};
 
-	virtual void	HitSignal					(float	HitAmount,	Fvector& local_dir, CObject* who, s16 element);
-	virtual void	HitImpulse					(float	amount,		Fvector& vWorldDir, Fvector& vLocalDir);
+	virtual void	HitSignal					(F32	HitAmount,	Fvector& local_dir, CObject* who, s16 element);
+	virtual void	HitImpulse					(F32	amount,		Fvector& vWorldDir, Fvector& vLocalDir);
 	virtual	void	Hit							(SHit* pHDS);
 	virtual void	Die							(CObject* who);
-	virtual	float	ffGetFov					() const {return 150.f;	}
-	virtual	float	ffGetRange					() const {return 30.f;	}
+	virtual	F32	ffGetFov					() const {return 150.f;	}
+	virtual	F32	ffGetRange					() const {return 30.f;	}
 
 	virtual BOOL	IsVisibleForHUD	()			{ return FALSE;		}
 	virtual bool	IsVisibleForZones()			{ return false;		}

@@ -478,7 +478,7 @@ F32	CActor::GetLookFactor()
 		return m_input_external_handler->mouse_scale_factor();
 
 	
-	float factor	= 1.f;
+	F32 factor	= 1.f;
 
 	PIItem pItem	= inventory().ActiveItem();
 

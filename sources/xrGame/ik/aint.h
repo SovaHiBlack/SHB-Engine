@@ -39,28 +39,28 @@
 #define AINT_EPSILON     (1e-5f)
 #define AINT_BIG_EPSILON (.01f)
 
-inline int equal(float x, float y, const float eps = AINT_EPSILON)
+inline int equal(F32 x, F32 y, const F32 eps = AINT_EPSILON)
 {
     return (_abs(x - y) < eps);
 }
 
 
-inline int istwopi(float x, const float eps = AINT_EPSILON)
+inline int istwopi(F32 x, const F32 eps = AINT_EPSILON)
 {
     return equal(x, 2.0f*M_PI, eps);
 }
 
-inline int iszero(float x, const float eps = AINT_EPSILON)
+inline int iszero(F32 x, const F32 eps = AINT_EPSILON)
 {
     return _abs(x) < eps;
 }
 
-inline int le(float x, float y, const float eps = AINT_EPSILON)
+inline int le(F32 x, F32 y, const F32 eps = AINT_EPSILON)
 {
     return (x < y) || equal(x,y,eps);
 }
 
-inline int ge(float x, float y, const float eps = AINT_EPSILON)
+inline int ge(F32 x, F32 y, const F32 eps = AINT_EPSILON)
 {
     return (x > y) || equal(x,y,eps);
 }
@@ -69,7 +69,7 @@ inline int ge(float x, float y, const float eps = AINT_EPSILON)
 //
 // Puts an angle in the range 0..2*PI
 // 
-//inline float angle_normalize(float psi)
+//inline F32 angle_normalize(F32 psi)
 //{
 //    if (fabs(psi-2*M_PI) < AINT_EPSILON)
 //	psi = 2*M_PI;
@@ -89,9 +89,10 @@ inline int ge(float x, float y, const float eps = AINT_EPSILON)
 // Returns the closest distance between two angles measured either
 // clockwise or counterclockwise. Always return a positive value
 
-inline float angle_distance(float a1, float a2)
+inline F32 angle_distance(F32 a1, F32 a2)
 {
-    float t1, t2; 
+	F32 t1;
+	F32 t2;
 
     a1 = angle_normalize(a1);
     a2 = angle_normalize(a2);
@@ -133,10 +134,11 @@ class AngleInt
 private:
     friend class AngleIntIterator;
     friend class AngleIntList;
-    float low, high;
+	F32 low;
+	F32 high;
 
-    int merge_aux(const AngleInt &a, AngleInt &b, float eps) const;
-    int merge(const AngleInt &a, AngleInt &b, float eps) const;
+    int merge_aux(const AngleInt &a, AngleInt &b, F32 eps) const;
+    int merge(const AngleInt &a, AngleInt &b, F32 eps) const;
 
 public:
     // Splits an angle interval of the form low > high into two intervals with high > low
@@ -147,21 +149,21 @@ public:
     }
 
     AngleInt() : low(0), high(2*M_PI) {}
-    AngleInt(float l, float h);
+    AngleInt(F32 l, F32 h);
 
-    void SetLow(float l);
-    void SetHigh(float l);
-    void Set(float l, float h) { SetLow(l); SetHigh(h); }
+    void SetLow(F32 l);
+    void SetHigh(F32 l);
+    void Set(F32 l, F32 h) { SetLow(l); SetHigh(h); }
 
-    float Low() const { return low; }
-    float High() const { return high; }
+	F32 Low() const { return low; }
+	F32 High() const { return high; }
 
-    int IsFullRange(float eps = AINT_BIG_EPSILON) const
+    int IsFullRange(F32 eps = AINT_BIG_EPSILON) const
     {
 		return _abs(high-2*M_PI) < eps && _abs(low) < eps;
     }
 
-    int IsEmpty(float eps = AINT_BIG_EPSILON) const
+    int IsEmpty(F32 eps = AINT_BIG_EPSILON) const
     {
 		if (low <= high)
 			return (
@@ -171,7 +173,7 @@ public:
 		}
 
 		// returns T if a is in the angle range
-		int InRange(float a, float eps = AINT_EPSILON) const
+		int InRange(F32 a, F32 eps = AINT_EPSILON) const
 		{
 		if (IsEmpty())
 			return 0;
@@ -186,21 +188,21 @@ public:
 
 
     // returns the magnitude of the angle between low and high
-    float Range() const;
+		F32 Range() const;
 
     // returns the midpoint of the range
-    float Mid() const;
+		F32 Mid() const;
 
-    int IsSubsetOf(const AngleInt& a, float eps = AINT_BIG_EPSILON) const;
-    int IsSupersetOf(const AngleInt& a, float eps = AINT_BIG_EPSILON) const;
-    int OldIsSupersetOf(const AngleInt& a, float eps = AINT_BIG_EPSILON) const;
+    int IsSubsetOf(const AngleInt& a, F32 eps = AINT_BIG_EPSILON) const;
+    int IsSupersetOf(const AngleInt& a, F32 eps = AINT_BIG_EPSILON) const;
+    int OldIsSupersetOf(const AngleInt& a, F32 eps = AINT_BIG_EPSILON) const;
 
     // determines if a can be merged with *this. Returns 1 if the nodes
     // can be merged and returns the result in b
 
 
     // Returns how far a value is from being within the angle interval
-    float Distance(float a) const;
+	F32 Distance(F32 a) const;
 
 };
 
@@ -211,19 +213,19 @@ class AngleIntIterator
 {
     int count;
     int n;
-    float x;
-    float dx;
+	F32 x;
+	F32 dx;
 
 public:
 
     // Iterates through an angle range from low+eps .. high-eps num > 0 times
     // If reverse is 1 iterate outside the range
-    AngleIntIterator(const AngleInt &a, int num, float eps, int reverse = 0);
+    AngleIntIterator(const AngleInt &a, int num, F32 eps, int reverse = 0);
 
 
     // Retrieves next value in iteration. Returns 0 if last value has
     // been obtained
-    int Next(float &a);
+    int Next(F32& a);
 
 };
 
@@ -237,7 +239,7 @@ struct AngleIntListNode
     AngleIntListNode *next;
     short flag; 
 
-    AngleIntListNode(float low, float high, AngleIntListNode *n)
+    AngleIntListNode(F32 low, F32 high, AngleIntListNode *n)
 	: D(low,high), next(n), flag(0) {}
 };
 
@@ -247,7 +249,7 @@ class AngleIntList
     friend class AngleIntListIterator;
 
     void remove(AngleIntListNode *t); 
-    void add(float l, float h);
+    void add(F32 l, F32 h);
 
 public:
     AngleIntList() : head(0), tail(0) {}
@@ -265,11 +267,11 @@ public:
 
     ~AngleIntList() { Clear(); }
 
-    void AddList(AngleIntList &dest, float eps = AINT_BIG_EPSILON) const;
+    void AddList(AngleIntList &dest, F32 eps = AINT_BIG_EPSILON) const;
 
     void Copy(AngleIntList &dest) const;
 
-    void Add(float l, float h, float eps = AINT_BIG_EPSILON);
+    void Add(F32 l, F32 h, F32 eps = AINT_BIG_EPSILON);
 
     void Map(void (*f)(AngleInt &a, void *), void *data = 0) const
     {
@@ -283,7 +285,7 @@ public:
 
 	
     // returns T if a is in the angle range of any of the entries
-    int InRange(float a, float eps = AINT_BIG_EPSILON) const
+    int InRange(F32 a, F32 eps = AINT_BIG_EPSILON) const
     {
 	for (AngleIntListNode *t = head; t; t = t->next)
 	    if (t->D.InRange(a, eps))
@@ -291,9 +293,9 @@ public:
 	return 0;
     }
 
-    float Distance(float a) const;
+	F32 Distance(F32 a) const;
     
-    void wrap(float eps = AINT_BIG_EPSILON);
+    void wrap(F32 eps = AINT_BIG_EPSILON);
 
     int NumIntervals() const;
 };

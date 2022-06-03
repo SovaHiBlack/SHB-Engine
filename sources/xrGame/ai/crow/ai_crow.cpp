@@ -180,10 +180,10 @@ void CAI_Crow::switch2_DeathFall()
 	smart_cast<CKinematicsAnimated*>(Visual())->PlayCycle	(m_Anims.m_death.GetRandom(),TRUE,cb_OnHitEndPlaying,this);
 }
 
-void CAI_Crow::state_Flying		(float fdt)
+void CAI_Crow::state_Flying		(F32 fdt)
 {
 	// Update position and orientation of the planes
-	float fAT = fASpeed * fdt		;
+	F32 fAT = fASpeed * fdt		;
 	Fvector& vDirection = XFORM().k	;
 
 	// Tweak orientation based on last position and goal
@@ -207,7 +207,7 @@ void CAI_Crow::state_Flying		(float fdt)
 	vDirection.normalize();
 	vOffset.normalize	();
 
-	float fDot = vDirection.dotproduct(vOffset);
+	F32 fDot = vDirection.dotproduct(vOffset);
 	fDot = (1.0f-fDot)/2.0f * fAT * 10.0f;
 
 	vOffset.crossproduct(vOffset,vDirection);
@@ -250,7 +250,7 @@ void CAI_Crow::Die				(CObject* who)
 	
 };
 
-void CAI_Crow::UpdateWorkload	(float fdt)
+void CAI_Crow::UpdateWorkload	(F32 fdt)
 {
 	if (o_workload_frame	==	Device.dwFrame)	return;
 	o_workload_frame		=	Device.dwFrame	;
@@ -283,7 +283,7 @@ void CAI_Crow::renderable_Render	()
 
 void CAI_Crow::shedule_Update		(u32 DT)
 {
-	float fDT				= float(DT)/1000.F;
+	F32 fDT				= F32(DT)/1000.F;
 	spatial.type			&=~STYPE_VISIBLEFORAI;
 
 	inherited::shedule_Update(DT);
@@ -345,7 +345,9 @@ void CAI_Crow::net_Export	(NET_Packet& P)					// export to server
 	P.w_u32				(Level().timeServer());
 	P.w_u8				(flags);
 	
-	float				yaw, pitch, bank;
+	F32				yaw;
+	F32 pitch;
+	F32 bank;
 	XFORM().getHPB		(yaw,pitch,bank);
 	P.w_float /*w_angle8*/			(yaw);
 	P.w_float /*w_angle8*/			(yaw);
@@ -363,11 +365,11 @@ void CAI_Crow::net_Import	(NET_Packet& P)
 
 	u8					flags;
 	
-	float health;
+	F32 health;
 	P.r_float			(health);
 	SetfHealth			(health);
 
-	float fDummy;
+	F32 fDummy;
 	u32 dwDummy;
 	P.r_float			(fDummy);
 	P.r_u32				(dwDummy);
@@ -376,7 +378,9 @@ void CAI_Crow::net_Import	(NET_Packet& P)
 	P.r_u32				(dwDummy);
 	P.r_u8				(flags);
 	
-	float				yaw, pitch, bank = 0, roll = 0;
+	F32				yaw;
+	F32				pitch, bank = 0;
+	F32				roll = 0;
 	
 	P.r_float /*r_angle8*/			(yaw);
 	P.r_float /*r_angle8*/			(yaw);
@@ -390,7 +394,7 @@ void CAI_Crow::net_Import	(NET_Packet& P)
 	XFORM().setHPB		(yaw,pitch,bank);
 }
 //---------------------------------------------------------------------
-void CAI_Crow::HitSignal	(float /**HitAmount/**/, Fvector& /**local_dir/**/, CObject* who, s16 /**element/**/)
+void CAI_Crow::HitSignal	(F32 /**HitAmount/**/, Fvector& /**local_dir/**/, CObject* who, s16 /**element/**/)
 {
 	//bool				first_time = !!g_Alive(); 
 //	bool				first_time = !PPhysicsShell(); 
@@ -404,7 +408,7 @@ void CAI_Crow::HitSignal	(float /**HitAmount/**/, Fvector& /**local_dir/**/, COb
 	else smart_cast<CKinematicsAnimated*>(Visual())->PlayCycle(m_Anims.m_death_dead.GetRandom());
 }
 //---------------------------------------------------------------------
-void CAI_Crow::HitImpulse	(float	/**amount/**/,		Fvector& /**vWorldDir/**/, Fvector& /**vLocalDir/**/)
+void CAI_Crow::HitImpulse	(F32	/**amount/**/,		Fvector& /**vWorldDir/**/, Fvector& /**vLocalDir/**/)
 {
 }
 //---------------------------------------------------------------------
@@ -414,7 +418,7 @@ void CAI_Crow::CreateSkeleton()
 	m_pPhysicsShell->SetMaterial(smart_cast<CKinematics*>(Visual())->LL_GetData(smart_cast<CKinematics*>(Visual())->LL_GetBoneRoot()).game_mtl_idx);
 }
 
-//void CAI_Crow::Hit	(float P, Fvector &dir, CObject* who, s16 element,Fvector p_in_object_space, float impulse, ALife::EHitType hit_type)
+//void CAI_Crow::Hit	(F32 P, Fvector &dir, CObject* who, s16 element,Fvector p_in_object_space, F32 impulse, ALife::EHitType hit_type)
 void	CAI_Crow::Hit							(SHit* pHDS)
 {
 //	inherited::Hit	(P,dir,who,element,p_in_object_space,impulse/100.f, hit_type);

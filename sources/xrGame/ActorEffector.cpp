@@ -324,7 +324,7 @@ const F32	_base_fov		= 170.f;
 const F32	_max_fov_add	= 160.f;
 
 
-BOOL CControllerPsyHitCamEffector::Process(Fvector &p, Fvector &d, Fvector &n, float& fFov, float& fFar, float& fAspect)
+BOOL CControllerPsyHitCamEffector::Process(Fvector &p, Fvector &d, Fvector &n, F32& fFov, F32& fFar, F32& fAspect)
 {
 	Fmatrix	Mdef;
 	Mdef.identity		();

@@ -104,28 +104,28 @@ private:
 
 	// weapon dispersion
 private:
-	float							m_disp_walk_stand;
-	float							m_disp_walk_crouch;
-	float							m_disp_run_stand;
-	float							m_disp_run_crouch;
-	float							m_disp_stand_stand;
-	float							m_disp_stand_crouch;
-	float							m_disp_stand_stand_zoom;
-	float							m_disp_stand_crouch_zoom;
+	F32							m_disp_walk_stand;
+	F32							m_disp_walk_crouch;
+	F32							m_disp_run_stand;
+	F32							m_disp_run_crouch;
+	F32							m_disp_stand_stand;
+	F32							m_disp_stand_crouch;
+	F32							m_disp_stand_stand_zoom;
+	F32							m_disp_stand_crouch_zoom;
 
 private:
-	float							m_power_fx_factor;
+	F32							m_power_fx_factor;
 
 private:
-	float							m_fRankDisperison;
-	float							m_fRankVisibility;
-	float							m_fRankImmunity;
+	F32							m_fRankDisperison;
+	F32							m_fRankVisibility;
+	F32							m_fRankImmunity;
 
 	// best item/ammo selection members
 public:
 	bool							m_item_actuality;
 	CInventoryItem					*m_best_item_to_kill;
-	float							m_best_item_value;
+	F32							m_best_item_value;
 	CInventoryItem					*m_best_ammo;
 	const CInventoryItem			*m_best_found_item_to_kill;
 	const CInventoryItem			*m_best_found_ammo;
@@ -189,30 +189,30 @@ public:
 	virtual void						UpdateCL							();
 	virtual void						shedule_Update						(u32 dt);
 	virtual void						Think								();
-	virtual void						SelectAnimation						(const Fvector& _view, const Fvector& _move, float speed );
+	virtual void						SelectAnimation						(const Fvector& _view, const Fvector& _move, F32 speed );
 	virtual BOOL						UsedAI_Locations					();
 
 	virtual void						g_WeaponBones						(int &L, int &R1, int &R2);
 	virtual void						g_fireParams						(const CHudItem* pHudItem, Fvector& P, Fvector& D);
-	virtual void						HitSignal							(float P,	Fvector& vLocalDir, CObject* who, s16 element);
+	virtual void						HitSignal							(F32 P,	Fvector& vLocalDir, CObject* who, s16 element);
 	virtual void						Die									(CObject* who);
 
 	virtual void						OnEvent								(NET_Packet& P, u16 type);
 	virtual void						feel_touch_new						(CObject* O);
 
 	virtual void						renderable_Render					();
-	virtual void						Exec_Look							(float dt);
+	virtual void						Exec_Look							(F32 dt);
 	virtual	void						Hit									(SHit* pHDS);
-	virtual	void						PHHit								(float P,Fvector &dir, CObject *who,s16 element,Fvector p_in_object_space, float impulse, ALife::EHitType hit_type = ALife::eHitTypeWound);
+	virtual	void						PHHit								(F32 P,Fvector &dir, CObject *who,s16 element,Fvector p_in_object_space, F32 impulse, ALife::EHitType hit_type = ALife::eHitTypeWound);
 	virtual BOOL						feel_vision_isRelevant				(CObject* who);
-	virtual float						Radius								() const;
+	virtual F32						Radius								() const;
 #ifdef DEBUG
 	virtual void						OnHUDDraw							(CCustomHUD* hud);
 	virtual void						OnRender							();
 #endif
 
 	virtual bool						useful								(const CItemManager *manager, const CGameObject *object) const;
-	virtual	float						evaluate							(const CItemManager *manager, const CGameObject *object) const;
+	virtual	F32						evaluate							(const CItemManager *manager, const CGameObject *object) const;
 	virtual bool						useful								(const CEnemyManager *manager, const CEntityAlive *object) const;
 	
 	// PDA && Dialogs
@@ -260,7 +260,7 @@ public:
 			bool						ready_to_kill			();
 			bool						ready_to_detour			();
 			void						update_best_item_info	();
-	virtual float						GetWeaponAccuracy		() const;
+	virtual F32						GetWeaponAccuracy		() const;
 	virtual	void						spawn_supplies			();
 	IC		CAgentManager				&agent_manager			() const;
 	
@@ -275,20 +275,20 @@ public:
 private:
 	bool				m_can_kill_member;
 	bool				m_can_kill_enemy;
-	float				m_pick_distance;
+	F32				m_pick_distance;
 	u32					m_pick_frame_id;
 	collide::rq_results	rq_storage;
 
 private:
-			void						can_kill_entity			(const Fvector &position, const Fvector &direction, float distance, collide::rq_results& rq_storage);
-			void						can_kill_entity_from	(const Fvector &position, Fvector direction, float distance);
+			void						can_kill_entity			(const Fvector &position, const Fvector &direction, F32 distance, collide::rq_results& rq_storage);
+			void						can_kill_entity_from	(const Fvector &position, Fvector direction, F32 distance);
 			void						update_can_kill_info	();
 
 public:
 			bool						can_kill_member			();
 			bool						can_kill_enemy			();
-			float						pick_distance			();
-	IC		float						start_pick_distance		() const;
+			F32						pick_distance			();
+	IC		F32						start_pick_distance		() const;
 			bool						fire_make_sense			();
 			
 	virtual LPCSTR						Name					() const;
@@ -383,7 +383,7 @@ private:
 
 public:
 	IC		bool						group_behaviour					() const;
-	virtual	void						update_range_fov				(float &new_range, float &new_fov, float start_range, float start_fov);
+	virtual	void						update_range_fov				(F32& new_range, F32& new_fov, F32 start_range, F32 start_fov);
 			void __stdcall				update_object_handler			();
 			bool						zoom_state						() const;
 			void						react_on_grenades				();
@@ -446,13 +446,13 @@ private:
 private:
 	cover_delegates						m_cover_delegates;
 	const CCoverPoint					*m_best_cover;
-	float								m_best_cover_value;
+	F32								m_best_cover_value;
 	bool								m_best_cover_actual;
 	bool								m_best_cover_can_try_advance;
 	const CCoverPoint					*m_best_cover_advance_cover;
 
 private:
-			float						best_cover_value					(const Fvector &position_to_cover_from);
+	F32						best_cover_value					(const Fvector &position_to_cover_from);
 			const CCoverPoint			*find_best_cover					(const Fvector &position_to_cover_from);
 			void						update_best_cover_actuality			(const Fvector &position_to_cover_from);
 			void						on_best_cover_changed				(const CCoverPoint *new_cover, const CCoverPoint *old_cover);
@@ -486,13 +486,13 @@ private:
 	// target parameters
 	Fvector								m_throw_target;
 	// computed
-	float								m_throw_force;
+	F32								m_throw_force;
 	Fvector								m_throw_position;
 	Fvector								m_throw_direction;
 
 public:
 	virtual	bool						use_default_throw_force				();
-	virtual	float						missile_throw_force					(); 
+	virtual	F32						missile_throw_force					();
 	virtual	bool						use_throw_randomness				();
 			void						throw_target						(const Fvector &position); 
 			void						update_throw_params					(); 
@@ -513,7 +513,7 @@ private:
 
 			void						fill_bones_body_parts						(LPCSTR bone_id, const ECriticalWoundType &wound_type);
 public:
-	typedef xr_vector<float>			CRITICAL_WOUND_WEIGHTS;
+	typedef xr_vector<F32>			CRITICAL_WOUND_WEIGHTS;
 
 private:
 	CRITICAL_WOUND_WEIGHTS				m_critical_wound_weights;

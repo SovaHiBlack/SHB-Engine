@@ -7,7 +7,7 @@ class CMotionStats {
 	CBaseMonster	*pMonster;
 
 	struct elem {
-		float	speed;
+		F32	speed;
 		Fvector position;
 		TTime	time;
 	};

@@ -69,31 +69,31 @@ class CBlend;
 
 // StepSounds
 struct SStepSound {
-	float	vol;
-	float	freq;
+	F32	vol;
+	F32	freq;
 };
 
 struct SAttackEffector {
 	SPPInfo	ppi;
-	float	time;
-	float	time_attack;
-	float	time_release;
+	F32	time;
+	F32	time_attack;
+	F32	time_release;
 
 	// camera effects
-	float	ce_time;
-	float	ce_amplitude;
-	float	ce_period_number;
-	float	ce_power;
+	F32	ce_time;
+	F32	ce_amplitude;
+	F32	ce_period_number;
+	F32	ce_power;
 };
 
 struct SVelocityParam {
 	struct {
-		float linear;
-		float angular_path;
-		float angular_real;
+		F32 linear;
+		F32 angular_path;
+		F32 angular_real;
 	} velocity;
-	float	min_factor;
-	float	max_factor;
+	F32	min_factor;
+	F32	max_factor;
 
 	SVelocityParam() {
 		velocity.linear			= 0.f;
@@ -105,11 +105,11 @@ struct SVelocityParam {
 
 	void	Load (LPCSTR section, LPCSTR line) {
 		string32 buffer;
-		velocity.linear			= float(atof(_GetItem(pSettings->r_string(section,line),0,buffer)));
-		velocity.angular_real	= float(atof(_GetItem(pSettings->r_string(section,line),1,buffer)));
-		velocity.angular_path	= float(atof(_GetItem(pSettings->r_string(section,line),2,buffer)));
-		min_factor				= float(atof(_GetItem(pSettings->r_string(section,line),3,buffer)));
-		max_factor				= float(atof(_GetItem(pSettings->r_string(section,line),4,buffer)));
+		velocity.linear			= F32(atof(_GetItem(pSettings->r_string(section,line),0,buffer)));
+		velocity.angular_real	= F32(atof(_GetItem(pSettings->r_string(section,line),1,buffer)));
+		velocity.angular_path	= F32(atof(_GetItem(pSettings->r_string(section,line),2,buffer)));
+		min_factor				= F32(atof(_GetItem(pSettings->r_string(section,line),3,buffer)));
+		max_factor				= F32(atof(_GetItem(pSettings->r_string(section,line),4,buffer)));
 	}
 };
 
@@ -273,7 +273,7 @@ struct SMotionItem {
 	struct{
 		EMotionAnim	anim_left;			// speed, r_speed got from turn_left member
 		EMotionAnim	anim_right;
-		float		min_angle;
+		F32		min_angle;
 	} turn;
 };
 
@@ -297,36 +297,36 @@ typedef struct {
 
 	u32			flags;				// специальные флаги
 
-	float		damage;				// урон при данной атаке
+	F32		damage;				// урон при данной атаке
 	Fvector		hit_dir;			// угол направления приложения силы к объекту
 
 	//-----------------------------------------
 	// temp 
-	float	yaw_from;
-	float	yaw_to;
-	float	pitch_from;
-	float	pitch_to;
-	float	dist;
+	F32	yaw_from;
+	F32	yaw_to;
+	F32	pitch_from;
+	F32	pitch_to;
+	F32	dist;
 
 } SAttackAnimation;
 
 
 struct SAAParam {
 	MotionID	motion;
-	float		time;
-	float		hit_power;		// damage
-	float		impulse;
+	F32		time;
+	F32		hit_power;		// damage
+	F32		impulse;
 	Fvector		impulse_dir;
 
 	// field of hit
 	struct {
-		float	from_yaw;
-		float	to_yaw;
-		float	from_pitch;
-		float	to_pitch;
+		F32	from_yaw;
+		F32	to_yaw;
+		F32	from_pitch;
+		F32	to_pitch;
 	} foh;
 	
-	float		dist;
+	F32		dist;
 };
 
 DEFINE_VECTOR(SAAParam, AA_VECTOR, AA_VECTOR_IT);
@@ -340,16 +340,16 @@ struct SCurrentAnimationInfo {
 	TTime		time_started;
 
 	struct {
-		IC void		_set_current	(float v)			{ current=v; VERIFY2(_abs(v)<1000,"_set_current(). monster speed is too big"); }
-		IC void		_set_target		(float v)			{ target=v;	VERIFY2(_abs(v)<1000,"_set_target(). monster speed is too big");}
-		IC float	_get_current	()					{ return current; }
-		IC float	_get_target		()					{ return target; }
+		IC void		_set_current	(F32 v)			{ current=v; VERIFY2(_abs(v)<1000,"_set_current(). monster speed is too big"); }
+		IC void		_set_target		(F32 v)			{ target=v;	VERIFY2(_abs(v)<1000,"_set_target(). monster speed is too big");}
+		IC F32	_get_current	()					{ return current; }
+		IC F32	_get_target		()					{ return target; }
 	private:
-		float		current;
-		float		target;
+		F32		current;
+		F32		target;
 	} speed;
 
-	float			speed_change_vel;
+	F32			speed_change_vel;
 	CBlend			*blend;
 };
 
@@ -385,16 +385,16 @@ DEFINE_VECTOR	(SEQ_VECTOR, VELOCITY_CHAIN_VEC, VELOCITY_CHAIN_VEC_IT);
 
 
 struct SVelocity {
-	float	current;
-	float	target;
+	F32	current;
+	F32	target;
 	
-	void	set		(float c, float t) {current = c; target = t;}
+	void	set		(F32 c, F32 t) {current = c; target = t;}
 }; 
 
 struct SMotionVel {
-	float linear;
-	float angular;
-	void	set		(float l, float a) {linear = l; angular = a;}
+	F32 linear;
+	F32 angular;
+	void	set		(F32 l, F32 a) {linear = l; angular = a;}
 };
 
 enum EAccelType {
@@ -435,7 +435,7 @@ struct SMonsterEnemy {
 	Fvector position;
 	u32		vertex;
 	TTime	time;
-	float	danger;
+	F32	danger;
 };
 
 class CEntityAlive;
