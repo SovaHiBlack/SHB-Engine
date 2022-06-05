@@ -3,7 +3,7 @@
 
 struct SControlThreatenData : public ControlCom::IComData {
 	LPCSTR	animation;
-	float	time;
+	F32	time;
 };
 
 class CControlThreaten : public CControl_ComCustom<SControlThreatenData> {

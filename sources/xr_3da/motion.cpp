@@ -81,7 +81,7 @@ void COMotion::_Evaluate(F32 t, Fvector& T, Fvector& R)
 	R.z = envs[ctRotationB]->Evaluate(t);
 }
 
-void COMotion::SaveMotion(const char* buf){
+void COMotion::SaveMotion(pcstr buf){
 	CMemoryWriter	F;
 	F.open_chunk	(EOBJ_OMOTION);
 	Save			(F);
@@ -90,7 +90,7 @@ void COMotion::SaveMotion(const char* buf){
         Log			("!Can't save object motion:",buf);
 }
 
-bool COMotion::LoadMotion(const char* buf)
+bool COMotion::LoadMotion(pcstr buf)
 {
 	destructor<IReader>	F(FS.r_open(buf));
 	R_ASSERT(F().find_chunk(EOBJ_OMOTION));

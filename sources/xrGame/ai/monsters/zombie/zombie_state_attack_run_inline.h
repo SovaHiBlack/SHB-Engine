@@ -29,7 +29,7 @@ void CStateZombieAttackRunAbstract::initialize()
 TEMPLATE_SPECIALIZATION
 void CStateZombieAttackRunAbstract::execute()
 {
-	float dist = object->EnemyMan.get_enemy()->Position().distance_to(object->Position());
+	F32 dist = object->EnemyMan.get_enemy()->Position().distance_to(object->Position());
 	
 	object->path().set_try_min_time	(false);
 	
@@ -71,8 +71,8 @@ void CStateZombieAttackRunAbstract::execute()
 TEMPLATE_SPECIALIZATION
 bool CStateZombieAttackRunAbstract::check_completion()
 {
-	float m_fDistMin	= object->MeleeChecker.get_min_distance		();
-	float dist			= object->MeleeChecker.distance_to_enemy	(object->EnemyMan.get_enemy());
+	F32 m_fDistMin	= object->MeleeChecker.get_min_distance		();
+	F32 dist			= object->MeleeChecker.distance_to_enemy	(object->EnemyMan.get_enemy());
 
 	if (dist < m_fDistMin)	return true;
 
@@ -82,8 +82,8 @@ bool CStateZombieAttackRunAbstract::check_completion()
 TEMPLATE_SPECIALIZATION
 bool CStateZombieAttackRunAbstract::check_start_conditions()
 {
-	float m_fDistMax	= object->MeleeChecker.get_max_distance		();
-	float dist			= object->MeleeChecker.distance_to_enemy	(object->EnemyMan.get_enemy());
+	F32 m_fDistMax	= object->MeleeChecker.get_max_distance		();
+	F32 dist			= object->MeleeChecker.distance_to_enemy	(object->EnemyMan.get_enemy());
 	
 	if (dist > m_fDistMax)	return true;
 

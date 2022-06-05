@@ -69,7 +69,7 @@ private:
 	TORSO_MOTION_MAP	m_torso;
 
 	struct SPathRotations{
-		float			angle;
+		F32			angle;
 		ELegsActionType	legs_motion;
 	};
 	
@@ -88,7 +88,7 @@ public:
 
 			// load
 			void		load				();
-			void		add_path_rotation	(ELegsActionType action, float angle, ELegsActionType type);
+			void		add_path_rotation	(ELegsActionType action, F32 angle, ELegsActionType type);
 			
 			void		set_body_state		(ETorsoActionType, ELegsActionType);
 
@@ -101,7 +101,7 @@ private:
 			void		select_torso_animation	();
 			void		select_legs_animation	();
 
-			SPathRotations	get_path_rotation	(float cur_yaw);
+			SPathRotations	get_path_rotation	(F32 cur_yaw);
 
 			bool		is_moving				();
 };

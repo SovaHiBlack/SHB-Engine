@@ -93,10 +93,6 @@ float CEntity::CalcCondition(float hit)
 	return hit;
 }
 
-
-
-
-//void CEntity::Hit			(float perc, Fvector &dir, CObject* who, s16 element,Fvector position_in_object_space, float impulse, ALife::EHitType hit_type) 
 void	CEntity::Hit		(SHit* pHDS)
 {
 

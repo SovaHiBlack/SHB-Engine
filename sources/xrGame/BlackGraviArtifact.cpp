@@ -116,11 +116,6 @@ void CBlackGraviArtefact::UpdateCLChild()
 	}else if(H_Parent()) XFORM().set(H_Parent()->XFORM());
 }
 
-//void CBlackGraviArtefact::Hit(float P, Fvector &dir,
-//						CObject* who, s16 element,
-//						Fvector position_in_object_space,
-//						float impulse,
-//						ALife::EHitType hit_type)
 void	CBlackGraviArtefact::Hit					(SHit* pHDS)
 {
 	SHit HDS = *pHDS;
@@ -131,7 +126,6 @@ void	CBlackGraviArtefact::Hit					(SHit* pHDS)
 		HDS.impulse = 0;
 	}
 	
-//	inherited::Hit(P, dir, who, element, position_in_object_space, impulse, hit_type);
 	inherited::Hit(&HDS);
 }
 

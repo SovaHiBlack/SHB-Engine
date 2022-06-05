@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "base_monster.h"
 #include "../../../ai_space.h"
-#include "../../../hit.h"
+#include "../../../Hit.h"
 #include "../../../PHDestroyable.h"
 #include "../../../CharacterPhysicsSupport.h"
 #include "../../../phmovementcontrol.h"
@@ -43,7 +43,7 @@ void CBaseMonster::Load(LPCSTR section)
 
 	m_pPhysics_support				->in_Load(section);
 
-	SetfHealth						( (float)pSettings->r_u32		(section,"Health"));
+	SetfHealth						( (F32)pSettings->r_u32		(section,"Health"));
 
 	m_controlled					= smart_cast<CControlledEntityBase*>(this);
 
@@ -188,7 +188,7 @@ BOOL CBaseMonster::net_Spawn (CSE_Abstract* DC)
 //		VERIFY									(se_monster);
 //
 //		if (se_monster->m_flags.is(CSE_ALifeMonsterBase::flNeedCheckSpawnItem)) {
-//			float prob = Random.randF();
+//			F32 prob = Random.randF();
 //			if ((prob < m_spawn_probability) || fsimilar(m_spawn_probability,1.f)) 
 //				se_monster->m_flags.set(CSE_ALifeMonsterBase::flSkipSpawnItem, FALSE);
 //

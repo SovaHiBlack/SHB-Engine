@@ -12,7 +12,7 @@ void CRenderDevice::Initialize()
 	// Unless a substitute hWnd has been specified, create a window to render into
     if( m_hWnd == NULL)
     {
-		const char*	wndclass ="_XRAY_";
+		pcstr	wndclass ="_XRAY_";
 
         // Register the windows class
 		HINSTANCE hInstance = (HINSTANCE)GetModuleHandle(0);

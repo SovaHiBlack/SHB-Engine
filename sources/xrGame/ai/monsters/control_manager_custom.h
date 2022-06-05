@@ -34,7 +34,7 @@ class CControlManagerCustom : public CControl_ComBase {
 	SControlMeleeJumpData	m_melee_jump_data;
 
 	LPCSTR					m_threaten_anim;
-	float					m_threaten_time;
+	F32					m_threaten_time;
 
 public:
 					CControlManagerCustom	();
@@ -72,16 +72,16 @@ public:
 	void		jump					(const Fvector &position);
 	void		load_jump_data			(LPCSTR s1, LPCSTR s2, LPCSTR s3, LPCSTR s4, u32 vel_mask_prepare, u32 vel_mask_ground, u32 flags);
 	
-	void		script_jump				(const Fvector &position, float factor);
+	void		script_jump				(const Fvector &position, F32 factor);
 
 	//-------------------------------------------------------------------------------
 	// Rotation Jump
-	void		add_rotation_jump_data	(LPCSTR left1,LPCSTR left2,LPCSTR right1,LPCSTR right2, float angle, u32 flags = 0);
+	void		add_rotation_jump_data	(LPCSTR left1,LPCSTR left2,LPCSTR right1,LPCSTR right2, F32 angle, u32 flags = 0);
 	void		add_melee_jump_data		(LPCSTR left,LPCSTR right);
 
 	//-------------------------------------------------------------------------------
 	// Threaten Animation
-	void		set_threaten_data		(LPCSTR anim, float time) {m_threaten_anim = anim; m_threaten_time = time;}
+	void		set_threaten_data		(LPCSTR anim, F32 time) {m_threaten_anim = anim; m_threaten_time = time;}
 
 	void		critical_wound			(LPCSTR anim);
 
@@ -94,6 +94,6 @@ private:
 	void		check_run_attack		();
 	void		check_threaten			();
 
-	void		fill_rotation_data		(SControlRotationJumpData &data, LPCSTR left1,LPCSTR left2,LPCSTR right1,LPCSTR right2, float angle, u32 flags);
+	void		fill_rotation_data		(SControlRotationJumpData &data, LPCSTR left1,LPCSTR left2,LPCSTR right1,LPCSTR right2, F32 angle, u32 flags);
 };
 

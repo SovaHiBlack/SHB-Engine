@@ -29,9 +29,9 @@ XRCORE_API	xrDebug		Debug;
 
 static bool	error_after_dialog = false;
 
-extern void copy_to_clipboard	(LPCSTR string);
+extern void copy_to_clipboard	(pcstr string);
 
-void copy_to_clipboard	(LPCSTR string)
+void copy_to_clipboard	(pcstr string)
 {
 	if (IsDebuggerPresent())
 		return;
@@ -53,7 +53,7 @@ void copy_to_clipboard	(LPCSTR string)
 	CloseClipboard		();
 }
 
-void update_clipboard	(LPCSTR string)
+void update_clipboard	(pcstr string)
 {
 #ifdef DEBUG
 	if (IsDebuggerPresent())
@@ -86,7 +86,7 @@ extern void BuildStackTrace();
 extern char g_stackTrace[100][4096];
 extern int	g_stackTraceCount;
 
-void LogStackTrace	(LPCSTR header)
+void LogStackTrace	(pcstr header)
 {
 	if (!shared_str_initialized)
 		return;
@@ -99,11 +99,11 @@ void LogStackTrace	(LPCSTR header)
 		Msg			("%s",g_stackTrace[i]);
 }
 
-void gather_info		(LPCSTR expression, LPCSTR description, LPCSTR argument0, LPCSTR argument1, LPCSTR file, int line, LPCSTR function, LPSTR assertion_info)
+void gather_info		(pcstr expression, pcstr description, pcstr argument0, pcstr argument1, pcstr file, int line, pcstr function, LPSTR assertion_info)
 {
 	LPSTR				buffer = assertion_info;
-	LPCSTR				endline = "\n";
-	LPCSTR				prefix = "[error]";
+	pcstr				endline = "\n";
+	pcstr				prefix = "[error]";
 	bool				extended_description = (description && !argument0 && strchr(description,'\n'));
 	for (int i=0; i<2; ++i) {
 		if (!i)
@@ -186,7 +186,7 @@ void xrDebug::do_exit	(const std::string &message)
 	TerminateProcess	(GetCurrentProcess(),1);
 }
 
-void xrDebug::backend	(LPCSTR expression, LPCSTR description, LPCSTR argument0, LPCSTR argument1, LPCSTR file, int line, LPCSTR function, bool &ignore_always)
+void xrDebug::backend	(pcstr expression, pcstr description, pcstr argument0, pcstr argument1, pcstr file, int line, pcstr function, bool &ignore_always)
 {
 	static xrCriticalSection CS;
 
@@ -198,7 +198,7 @@ void xrDebug::backend	(LPCSTR expression, LPCSTR description, LPCSTR argument0, 
 	gather_info			(expression, description, argument0, argument1, file, line, function, assertion_info);
 
 #ifdef USE_OWN_ERROR_MESSAGE_WINDOW
-	LPCSTR				endline = "\r\n";
+	pcstr				endline = "\r\n";
 	LPSTR				buffer = assertion_info + xr_strlen(assertion_info);
 	buffer				+= sprintf(buffer,"%sPress CANCEL to abort execution%s",endline,endline);
 	buffer				+= sprintf(buffer,"Press TRY AGAIN to continue execution%s",endline);
@@ -247,9 +247,9 @@ void xrDebug::backend	(LPCSTR expression, LPCSTR description, LPCSTR argument0, 
 	CS.Leave			();
 }
 
-LPCSTR xrDebug::error2string	(long code)
+pcstr xrDebug::error2string	(long code)
 {
-	LPCSTR				result	= 0;
+	pcstr				result	= 0;
 	static	string1024	desc_storage;
 
 	result				= DXGetErrorDescription	(code);
@@ -262,42 +262,42 @@ LPCSTR xrDebug::error2string	(long code)
 	return		result	;
 }
 
-void xrDebug::error		(long hr, LPCSTR expr, LPCSTR file, int line, LPCSTR function, bool &ignore_always)
+void xrDebug::error		(long hr, pcstr expr, pcstr file, int line, pcstr function, bool &ignore_always)
 {
 	backend		(error2string(hr),expr,0,0,file,line,function,ignore_always);
 }
 
-void xrDebug::error		(long hr, LPCSTR expr, LPCSTR e2, LPCSTR file, int line, LPCSTR function, bool &ignore_always)
+void xrDebug::error		(long hr, pcstr expr, pcstr e2, pcstr file, int line, pcstr function, bool &ignore_always)
 {
 	backend		(error2string(hr),expr,e2,0,file,line,function,ignore_always);
 }
 
-void xrDebug::fail		(LPCSTR e1, LPCSTR file, int line, LPCSTR function, bool &ignore_always)
+void xrDebug::fail		(pcstr e1, pcstr file, int line, pcstr function, bool &ignore_always)
 {
 	backend		("assertion failed",e1,0,0,file,line,function,ignore_always);
 }
 
-void xrDebug::fail		(LPCSTR e1, const std::string &e2, LPCSTR file, int line, LPCSTR function, bool &ignore_always)
+void xrDebug::fail		(pcstr e1, const std::string &e2, pcstr file, int line, pcstr function, bool &ignore_always)
 {
 	backend		(e1,e2.c_str(),0,0,file,line,function,ignore_always);
 }
 
-void xrDebug::fail		(LPCSTR e1, LPCSTR e2, LPCSTR file, int line, LPCSTR function, bool &ignore_always)
+void xrDebug::fail		(pcstr e1, pcstr e2, pcstr file, int line, pcstr function, bool &ignore_always)
 {
 	backend		(e1,e2,0,0,file,line,function,ignore_always);
 }
 
-void xrDebug::fail		(LPCSTR e1, LPCSTR e2, LPCSTR e3, LPCSTR file, int line, LPCSTR function, bool &ignore_always)
+void xrDebug::fail		(pcstr e1, pcstr e2, pcstr e3, pcstr file, int line, pcstr function, bool &ignore_always)
 {
 	backend		(e1,e2,e3,0,file,line,function,ignore_always);
 }
 
-void xrDebug::fail		(LPCSTR e1, LPCSTR e2, LPCSTR e3, LPCSTR e4, LPCSTR file, int line, LPCSTR function, bool &ignore_always)
+void xrDebug::fail		(pcstr e1, pcstr e2, pcstr e3, pcstr e4, pcstr file, int line, pcstr function, bool &ignore_always)
 {
 	backend		(e1,e2,e3,e4,file,line,function,ignore_always);
 }
 
-void __cdecl xrDebug::fatal(LPCSTR file, int line, LPCSTR function, LPCSTR F,...)
+void __cdecl xrDebug::fatal(pcstr file, int line, pcstr function, pcstr F,...)
 {
 	string1024	buffer;
 
@@ -325,7 +325,7 @@ int out_of_memory_handler	(size_t size)
 	return					1;
 }
 
-extern LPCSTR log_name();
+extern pcstr log_name();
 
 void CALLBACK PreErrorHandler	(INT_PTR)
 { }
@@ -345,7 +345,7 @@ typedef BOOL (WINAPI *MINIDUMPWRITEDUMP)(HANDLE hProcess, DWORD dwPid, HANDLE hF
 										 CONST PMINIDUMP_CALLBACK_INFORMATION CallbackParam
 										 );
 
-void FlushLog				(LPCSTR file_name);
+void FlushLog				(pcstr file_name);
 
 void save_mini_dump			(_EXCEPTION_POINTERS *pExceptionInfo)
 {
@@ -571,7 +571,7 @@ _CRTIMP _PNH	__cdecl _set_new_handler( _PNH );
 			assertion_info
 		);
 		
-		LPCSTR					endline = "\r\n";
+		pcstr					endline = "\r\n";
 		LPSTR					buffer = assertion_info + xr_strlen(assertion_info);
 		buffer					+= sprintf(buffer,"Press OK to abort execution%s",endline);
 
@@ -591,7 +591,7 @@ _CRTIMP _PNH	__cdecl _set_new_handler( _PNH );
 		std::set_terminate				(_terminate);
 	}
 
-	static void handler_base				(LPCSTR reason_string)
+	static void handler_base				(pcstr reason_string)
 	{
 		bool							ignore_always = false;
 		Debug.backend					(

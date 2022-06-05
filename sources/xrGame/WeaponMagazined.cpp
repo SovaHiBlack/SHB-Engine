@@ -750,7 +750,7 @@ bool CWeaponMagazined::CanAttach(PIItem pIItem)
 		return inherited::CanAttach(pIItem);
 }
 
-bool CWeaponMagazined::CanDetach(const char* item_section_name)
+bool CWeaponMagazined::CanDetach(pcstr item_section_name)
 {
 	if( m_eScopeStatus == CSE_ALifeItemWeapon::eAddonAttachable &&
 	   0 != (m_flagsAddOnState&CSE_ALifeItemWeapon::eWeaponAddonScope) &&
@@ -820,7 +820,7 @@ bool CWeaponMagazined::Attach(PIItem pIItem, bool b_send_event)
 }
 
 
-bool CWeaponMagazined::Detach(const char* item_section_name, bool b_spawn_item)
+bool CWeaponMagazined::Detach(pcstr item_section_name, bool b_spawn_item)
 {
 	if(		m_eScopeStatus == CSE_ALifeItemWeapon::eAddonAttachable &&
 			0 != (m_flagsAddOnState&CSE_ALifeItemWeapon::eWeaponAddonScope) &&

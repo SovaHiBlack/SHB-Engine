@@ -5,7 +5,7 @@ class CAmebaZone :
 	public CPHUpdateObject
 {
 typedef				CVisualZone		inherited;	
-float m_fVelocityLimit;
+F32 m_fVelocityLimit;
 public:
 									CAmebaZone			()						;
 									~CAmebaZone			()						;
@@ -17,5 +17,5 @@ protected:
 	virtual				bool		BlowoutState		()						;
 	virtual				void		SwitchZoneState		(EZoneState new_state)	;
 	virtual				void		Load				(LPCSTR section)		;
-	virtual				float		distance_to_center	(CObject* O)			;	
+	virtual				F32		distance_to_center	(CObject* O)			;
 };

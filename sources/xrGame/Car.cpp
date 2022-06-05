@@ -7,7 +7,7 @@
 #	include "PHDebug.h"
 #endif // DEBUG
 
-#include "hit.h"
+#include "Hit.h"
 #include "PHDestroyable.h"
 #include "car.h"
 #include "hudmanager.h"
@@ -512,7 +512,6 @@ void	CCar::OnHUDDraw				(CCustomHUD* /**hud/**/)
 #endif
 }
 
-//void CCar::Hit(float P,Fvector &dir,CObject * who,s16 element,Fvector p_in_object_space, float impulse, ALife::EHitType hit_type)
 void	CCar::Hit							(SHit* pHDS)
 {
 

@@ -50,17 +50,17 @@ CScriptXmlInit&		CScriptXmlInit::operator =			(const CScriptXmlInit& other)
 	return								(*this);
 }
 
-void				CScriptXmlInit::ParseFile			(const char* xml_file)
+void				CScriptXmlInit::ParseFile			(pcstr xml_file)
 {
 	m_xml.Init							(CONFIG_PATH, UI_PATH, xml_file);
 }
 
-void				CScriptXmlInit::InitWindow			(const char* path, int index, CUIWindow* pWnd)
+void				CScriptXmlInit::InitWindow			(pcstr path, int index, CUIWindow* pWnd)
 {
 	CUIXmlInit::InitWindow				(m_xml, path, index, pWnd);
 }
 
-CUIFrameWindow*		CScriptXmlInit::InitFrame			(const char* path, CUIWindow* parent)
+CUIFrameWindow*		CScriptXmlInit::InitFrame			(pcstr path, CUIWindow* parent)
 {
 	CUIFrameWindow* pWnd				= xr_new<CUIFrameWindow>( );
 	CUIXmlInit::InitFrameWindow			(m_xml, path, 0, pWnd);
@@ -70,7 +70,7 @@ CUIFrameWindow*		CScriptXmlInit::InitFrame			(const char* path, CUIWindow* paren
 	return								pWnd;
 }
 
-CUIFrameLineWnd*	CScriptXmlInit::InitFrameLine		(const char* path, CUIWindow* parent)
+CUIFrameLineWnd*	CScriptXmlInit::InitFrameLine		(pcstr path, CUIWindow* parent)
 {
 	CUIFrameLineWnd* pWnd				= xr_new<CUIFrameLineWnd>( );
 	CUIXmlInit::InitFrameLine			(m_xml, path, 0, pWnd);
@@ -80,7 +80,7 @@ CUIFrameLineWnd*	CScriptXmlInit::InitFrameLine		(const char* path, CUIWindow* pa
 	return								pWnd;
 }
 
-CUILabel*			CScriptXmlInit::InitLabel			(const char* path, CUIWindow* parent)
+CUILabel*			CScriptXmlInit::InitLabel			(pcstr path, CUIWindow* parent)
 {
 	CUILabel* pWnd						= xr_new<CUILabel>( );
 	CUIXmlInit::InitLabel				(m_xml, path, 0, pWnd);
@@ -90,7 +90,7 @@ CUILabel*			CScriptXmlInit::InitLabel			(const char* path, CUIWindow* parent)
 	return								pWnd;
 }
 
-CUIEditBox*			CScriptXmlInit::InitEditBox			(const char* path, CUIWindow* parent)
+CUIEditBox*			CScriptXmlInit::InitEditBox			(pcstr path, CUIWindow* parent)
 {
 	CUIEditBox* pWnd					= xr_new<CUIEditBox>( );
 	CUIXmlInit::InitEditBox				(m_xml, path, 0, pWnd);
@@ -100,7 +100,7 @@ CUIEditBox*			CScriptXmlInit::InitEditBox			(const char* path, CUIWindow* parent
 	return								pWnd;
 }
 
-CUIStatic*			CScriptXmlInit::InitStatic			(const char* path, CUIWindow* parent)
+CUIStatic*			CScriptXmlInit::InitStatic			(pcstr path, CUIWindow* parent)
 {
 	CUIStatic* pWnd						= xr_new<CUIStatic>( );
 	CUIXmlInit::InitStatic				(m_xml, path, 0, pWnd);
@@ -110,12 +110,12 @@ CUIStatic*			CScriptXmlInit::InitStatic			(const char* path, CUIWindow* parent)
 	return								pWnd;
 }
 
-void				CScriptXmlInit::InitAutoStaticGroup	(const char* path, CUIWindow* pWnd)
+void				CScriptXmlInit::InitAutoStaticGroup	(pcstr path, CUIWindow* pWnd)
 {
 	CUIXmlInit::InitAutoStaticGroup		(m_xml, path, 0, pWnd);
 }
 
-CUIStatic*			CScriptXmlInit::InitAnimStatic		(const char* path, CUIWindow* parent)
+CUIStatic*			CScriptXmlInit::InitAnimStatic		(pcstr path, CUIWindow* parent)
 {
 	CUIAnimatedStatic* pWnd				= xr_new<CUIAnimatedStatic>( );
 	CUIXmlInit::InitAnimatedStatic		(m_xml, path, 0, pWnd);
@@ -125,7 +125,7 @@ CUIStatic*			CScriptXmlInit::InitAnimStatic		(const char* path, CUIWindow* paren
 	return								pWnd;
 }
 
-CUIScrollView*		CScriptXmlInit::InitScrollView		(const char* path, CUIWindow* parent)
+CUIScrollView*		CScriptXmlInit::InitScrollView		(pcstr path, CUIWindow* parent)
 {
 	CUIScrollView* pWnd					= xr_new<CUIScrollView>( );
 	CUIXmlInit::InitScrollView			(m_xml, path, 0, pWnd);
@@ -135,7 +135,7 @@ CUIScrollView*		CScriptXmlInit::InitScrollView		(const char* path, CUIWindow* pa
 	return								pWnd;
 }
 
-CUICheckButton*		CScriptXmlInit::InitCheck			(const char* path, CUIWindow* parent)
+CUICheckButton*		CScriptXmlInit::InitCheck			(pcstr path, CUIWindow* parent)
 {
 	CUICheckButton* pWnd				= xr_new<CUICheckButton>( );
 	CUIXmlInit::InitCheck				(m_xml, path, 0, pWnd);
@@ -145,7 +145,7 @@ CUICheckButton*		CScriptXmlInit::InitCheck			(const char* path, CUIWindow* paren
 	return								pWnd;
 }
 
-CUISpinNum*			CScriptXmlInit::InitSpinNum			(const char* path, CUIWindow* parent)
+CUISpinNum*			CScriptXmlInit::InitSpinNum			(pcstr path, CUIWindow* parent)
 {
 	CUISpinNum* pWnd					= xr_new<CUISpinNum>( );
 	CUIXmlInit::InitSpin				(m_xml, path, 0, pWnd);
@@ -155,7 +155,7 @@ CUISpinNum*			CScriptXmlInit::InitSpinNum			(const char* path, CUIWindow* parent
 	return								pWnd;
 }
 
-CUISpinFlt*			CScriptXmlInit::InitSpinFlt			(const char* path, CUIWindow* parent)
+CUISpinFlt*			CScriptXmlInit::InitSpinFlt			(pcstr path, CUIWindow* parent)
 {
 	CUISpinFlt* pWnd					= xr_new<CUISpinFlt>( );
 	CUIXmlInit::InitSpin				(m_xml, path, 0, pWnd);
@@ -165,7 +165,7 @@ CUISpinFlt*			CScriptXmlInit::InitSpinFlt			(const char* path, CUIWindow* parent
 	return								pWnd;
 }
 
-CUISpinText*		CScriptXmlInit::InitSpinText		(const char* path, CUIWindow* parent)
+CUISpinText*		CScriptXmlInit::InitSpinText		(pcstr path, CUIWindow* parent)
 {
 	CUISpinText* pWnd					= xr_new<CUISpinText>( );
 	CUIXmlInit::InitSpin				(m_xml, path, 0, pWnd);
@@ -178,7 +178,7 @@ CUISpinText*		CScriptXmlInit::InitSpinText		(const char* path, CUIWindow* parent
 	return								pWnd;
 }
 
-CUIComboBox*		CScriptXmlInit::InitComboBox		(const char* path, CUIWindow* parent)
+CUIComboBox*		CScriptXmlInit::InitComboBox		(pcstr path, CUIWindow* parent)
 {
 	CUIComboBox* pWnd					= xr_new<CUIComboBox>( );
 	CUIXmlInit::InitComboBox			(m_xml, path, 0, pWnd);
@@ -188,7 +188,7 @@ CUIComboBox*		CScriptXmlInit::InitComboBox		(const char* path, CUIWindow* parent
 	return								pWnd;
 }
 
-CUIButton*			CScriptXmlInit::InitButton			(const char* path, CUIWindow* parent)
+CUIButton*			CScriptXmlInit::InitButton			(pcstr path, CUIWindow* parent)
 {
 	CUIButton* pWnd						= xr_new<CUIButton>( );
 	CUIXmlInit::InitButton				(m_xml, path, 0, pWnd);
@@ -198,7 +198,7 @@ CUIButton*			CScriptXmlInit::InitButton			(const char* path, CUIWindow* parent)
 	return								pWnd;
 }
 
-CUI3tButton*		CScriptXmlInit::Init3tButton		(const char* path, CUIWindow* parent)
+CUI3tButton*		CScriptXmlInit::Init3tButton		(pcstr path, CUIWindow* parent)
 {
 	CUI3tButton* pWnd					= xr_new<CUI3tButton>( );
 	CUIXmlInit::Init3tButton			(m_xml, path, 0, pWnd);
@@ -208,7 +208,7 @@ CUI3tButton*		CScriptXmlInit::Init3tButton		(const char* path, CUIWindow* parent
 	return								pWnd;
 }
 
-CUIListWnd*			CScriptXmlInit::InitList			(const char* path, CUIWindow* parent)
+CUIListWnd*			CScriptXmlInit::InitList			(pcstr path, CUIWindow* parent)
 {
 	CUIListWnd* pWnd					= xr_new<CUIListWnd>( );
 	CUIXmlInit::InitListWnd				(m_xml, path, 0, pWnd);
@@ -218,7 +218,7 @@ CUIListWnd*			CScriptXmlInit::InitList			(const char* path, CUIWindow* parent)
 	return								pWnd;
 }
 
-CUITabControl*		CScriptXmlInit::InitTab				(const char* path, CUIWindow* parent)
+CUITabControl*		CScriptXmlInit::InitTab				(pcstr path, CUIWindow* parent)
 {
 	CUITabControl* pWnd					= xr_new<CUITabControl>( );
 	CUIXmlInit::InitTabControl			(m_xml, path, 0, pWnd);
@@ -228,12 +228,12 @@ CUITabControl*		CScriptXmlInit::InitTab				(const char* path, CUIWindow* parent)
 	return								pWnd;
 }
 
-void				CScriptXmlInit::ParseShTexInfo		(const char* xml_file)
+void				CScriptXmlInit::ParseShTexInfo		(pcstr xml_file)
 {
 	CUITextureMaster::ParseShTexInfo	(xml_file);
 }
 
-CUIMMShniaga*		CScriptXmlInit::InitMMShniaga		(const char* path, CUIWindow* parent)
+CUIMMShniaga*		CScriptXmlInit::InitMMShniaga		(pcstr path, CUIWindow* parent)
 {
 	CUIMMShniaga* pWnd					= xr_new<CUIMMShniaga>( );
 	pWnd->Init							(m_xml, path);
@@ -243,7 +243,7 @@ CUIMMShniaga*		CScriptXmlInit::InitMMShniaga		(const char* path, CUIWindow* pare
 	return								pWnd;
 }
 
-CUIWindow*			CScriptXmlInit::InitKeyBinding		(const char* path, CUIWindow* parent)
+CUIWindow*			CScriptXmlInit::InitKeyBinding		(pcstr path, CUIWindow* parent)
 {
 	CUIKeyBinding* pWnd					= xr_new<CUIKeyBinding>( );
 	pWnd->InitFromXml					(m_xml, path);
@@ -253,7 +253,7 @@ CUIWindow*			CScriptXmlInit::InitKeyBinding		(const char* path, CUIWindow* paren
 	return								pWnd;
 }
 
-CUITrackBar*		CScriptXmlInit::InitTrackBar		(const char* path, CUIWindow* parent)
+CUITrackBar*		CScriptXmlInit::InitTrackBar		(pcstr path, CUIWindow* parent)
 {
 	CUITrackBar* pWnd					= xr_new<CUITrackBar>( );
 	CUIXmlInit::InitTrackBar			(m_xml, path, 0, pWnd);
@@ -263,7 +263,7 @@ CUITrackBar*		CScriptXmlInit::InitTrackBar		(const char* path, CUIWindow* parent
 	return								pWnd;
 }
 
-CUIProgressBar*		CScriptXmlInit::InitProgressBar		(const char* path, CUIWindow* parent)
+CUIProgressBar*		CScriptXmlInit::InitProgressBar		(pcstr path, CUIWindow* parent)
 {
 	CUIProgressBar* pWnd				= xr_new<CUIProgressBar>( );
 	CUIXmlInit::InitProgressBar			(m_xml, path, 0, pWnd);

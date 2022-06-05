@@ -141,7 +141,7 @@ void CGameFont::OutSetI			(F32 x, F32 y)
 	OutSet(DI2PX(x),DI2PY(y));
 }
 
-u32 CGameFont::smart_strlen( const char* S )
+u32 CGameFont::smart_strlen(pcstr S )
 {
 	return ( IsMultibyte() ? mbhMulti2Wide( NULL , NULL , 0 , S ) : xr_strlen( S ) );
 }

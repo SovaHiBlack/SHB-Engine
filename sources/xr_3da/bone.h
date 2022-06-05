@@ -188,9 +188,9 @@ public:
 					    CBone			();
 	virtual			    ~CBone			();
 
-	void			    SetName			(LPCSTR p){name		= p; xr_strlwr(name);		}
-	void			    SetParentName	(LPCSTR p){parent_name	= p; xr_strlwr(parent_name);}
-	void			    SetWMap			(LPCSTR p){wmap		= p;}
+	void			    SetName			(pcstr p){name		= p; xr_strlwr(name);		}
+	void			    SetParentName	(pcstr p){parent_name	= p; xr_strlwr(parent_name);}
+	void			    SetWMap			(pcstr p){wmap		= p;}
 	void			    SetRestParams	(F32 length, const Fvector& offset, const Fvector& rotate){rest_offset.set(offset);rest_rotate.set(rotate);rest_length=length;};
 
 	shared_str		    Name			(){return name;}

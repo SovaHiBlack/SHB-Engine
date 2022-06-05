@@ -13,7 +13,7 @@
 
 XRCORE_API		xrCore	Core;
 XRCORE_API		u32		build_id;
-XRCORE_API		LPCSTR	build_date;
+XRCORE_API		pcstr	build_date;
 
 namespace CPU
 {
@@ -26,7 +26,7 @@ extern char g_application_path[256];
 
 //. extern xr_vector<shared_str>*	LogFile;
 
-void xrCore::_initialize	(LPCSTR _ApplicationName, LogCallback cb, BOOL init_fs, LPCSTR fs_fname)
+void xrCore::_initialize	(pcstr _ApplicationName, LogCallback cb, BOOL init_fs, pcstr fs_fname)
 {
 	strcpy_s					(ApplicationName,_ApplicationName);
 	if (0==init_counter) {

@@ -182,8 +182,8 @@ void CBurer::UpdateGraviObject()
 		return;
 	}
 
-	float dt = float(Device.dwTimeGlobal - m_gravi_object.time_last_update);
-	float dist = dt * float(m_gravi_speed)/1000.f;
+	F32 dt = F32(Device.dwTimeGlobal - m_gravi_object.time_last_update);
+	F32 dist = dt * F32(m_gravi_speed)/1000.f;
 		
 	if (dist < m_gravi_step) return;
 	
@@ -200,7 +200,7 @@ void CBurer::UpdateGraviObject()
 	dir.sub(enemy_center, new_pos);
 	dir.normalize();
 
-	float trace_dist = float(m_gravi_step);
+	F32 trace_dist = F32(m_gravi_step);
 
 	collide::rq_result	l_rq;
 	if (Level().ObjectSpace.RayPick(new_pos, dir, trace_dist, collide::rqtBoth, l_rq, NULL)) {
@@ -318,7 +318,6 @@ void CBurer::StopTeleObjectParticle(CGameObject *pO)
 	PP->StopParticles(particle_tele_object, BI_NONE, true);
 }
 
-//void CBurer::Hit(float P,Fvector &dir,CObject*who,s16 element,Fvector p_in_object_space,float impulse, ALife::EHitType hit_type)
 void	CBurer::Hit								(SHit* pHDS)
 {
 	if (m_shield_active && (pHDS->hit_type == ALife::eHitTypeFireWound) && (Device.dwFrame != last_hit_frame)) {
@@ -335,7 +334,6 @@ void	CBurer::Hit								(SHit* pHDS)
 		GamePersistent().ps_needtoplay.push_back(ps);
 
 	} else if (!m_shield_active)
-//				inherited::Hit(P,dir,who,element,p_in_object_space,impulse,hit_type);
 				inherited::Hit(pHDS);
 
 	last_hit_frame = Device.dwFrame;

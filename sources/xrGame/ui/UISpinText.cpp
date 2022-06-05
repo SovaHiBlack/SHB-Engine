@@ -7,7 +7,7 @@ CUISpinText::CUISpinText(){
     m_curItem = -1;
 }
 
-void CUISpinText::AddItem_(const char* item, int id)
+void CUISpinText::AddItem_(pcstr item, int id)
 {
 	SInfo			_info;
 	_info._orig		= item;

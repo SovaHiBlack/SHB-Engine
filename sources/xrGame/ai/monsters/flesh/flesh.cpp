@@ -125,10 +125,10 @@ void CAI_Flesh::CheckSpecParams(u32 spec_params)
 // Необходима для определения пересечения копыта плоти с баунд-сферой крысы
 // Параметры: ConeVertex - вершина конуса, ConeAngle - угол конуса (между поверхностью и высотой)
 // ConeDir - направление конуса, SphereCenter - центр сферы, SphereRadius - радиус сферы
-bool CAI_Flesh::ConeSphereIntersection(Fvector ConeVertex, float ConeAngle, Fvector ConeDir, Fvector SphereCenter, float SphereRadius)
+bool CAI_Flesh::ConeSphereIntersection(Fvector ConeVertex, F32 ConeAngle, Fvector ConeDir, Fvector SphereCenter, F32 SphereRadius)
 {
-	float fInvSin = 1.0f/_sin(ConeAngle);
-	float fCosSqr = _cos(ConeAngle)*_cos(ConeAngle);
+	F32 fInvSin = 1.0f/_sin(ConeAngle);
+	F32 fCosSqr = _cos(ConeAngle)*_cos(ConeAngle);
 
 	Fvector kCmV;	kCmV.sub(SphereCenter,ConeVertex);
 	Fvector kD		= kCmV;
@@ -136,16 +136,16 @@ bool CAI_Flesh::ConeSphereIntersection(Fvector ConeVertex, float ConeAngle, Fvec
 	tempV.mul		(SphereRadius* fInvSin);
 	kD.add			(tempV);
 
-	float fDSqrLen = kD.square_magnitude();
-	float fE = kD.dotproduct(ConeDir);
+	F32 fDSqrLen = kD.square_magnitude();
+	F32 fE = kD.dotproduct(ConeDir);
 	if ( fE > 0.0f && fE*fE >= fDSqrLen*fCosSqr ) {
 		
-		float fSinSqr = _sin(ConeAngle)*_sin(ConeAngle);
+		F32 fSinSqr = _sin(ConeAngle)*_sin(ConeAngle);
 
 		fDSqrLen = kCmV.square_magnitude();
 		fE = -kCmV.dotproduct(ConeDir);
 		if ( fE > 0.0f && fE*fE >= fDSqrLen*fSinSqr ) {
-			float fRSqr = SphereRadius*SphereRadius;
+			F32 fRSqr = SphereRadius*SphereRadius;
 			return fDSqrLen <= fRSqr;
 		} else return true;
 	}

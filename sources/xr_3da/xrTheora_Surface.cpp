@@ -65,7 +65,7 @@ BOOL CTheoraSurface::Update(u32 _time)
 	return redraw;
 } 
 
-BOOL CTheoraSurface::Load(const char* fname)
+BOOL CTheoraSurface::Load(pcstr fname)
 {
 	VERIFY				(FALSE==ready);
 	m_rgb				= xr_new<CTheoraStream>();

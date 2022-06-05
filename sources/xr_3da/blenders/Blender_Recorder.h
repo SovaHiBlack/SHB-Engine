@@ -14,7 +14,7 @@ public:
 	sh_list				L_constants;
 	sh_list				L_matrices;
 
-	LPCSTR				detail_texture;
+	pcstr				detail_texture;
 	R_constant_setup*	detail_scaler;
 
 	BOOL				bEditor;
@@ -60,8 +60,8 @@ public:
 	void				PassSET_Blend_MUL	(BOOL bAref=FALSE, u32 ref=0)	{ PassSET_Blend	(TRUE, D3DBLEND_DESTCOLOR,D3DBLEND_ZERO,bAref,ref);			}
 	void				PassSET_Blend_MUL2X	(BOOL bAref=FALSE, u32 ref=0)	{ PassSET_Blend	(TRUE, D3DBLEND_DESTCOLOR,D3DBLEND_SRCCOLOR,bAref,ref);		}
 	void				PassSET_LightFog	(BOOL bLight, BOOL bFog);
-	void				PassSET_PS			(LPCSTR name);
-	void				PassSET_VS			(LPCSTR name);
+	void				PassSET_PS			(pcstr name);
+	void				PassSET_VS			(pcstr name);
 	void				PassEnd				();
 
 	void				StageBegin			();
@@ -72,15 +72,15 @@ public:
 	void				StageSET_Color		(u32 a1, u32 op, u32 a2);
 	void				StageSET_Color3		(u32 a1, u32 op, u32 a2, u32 a3);
 	void				StageSET_Alpha		(u32 a1, u32 op, u32 a2);
-	void				StageSET_TMC		(LPCSTR T, LPCSTR M, LPCSTR C, int UVW_channel);
-	void				Stage_Texture		(LPCSTR name, u32 address=D3DTADDRESS_WRAP,	u32	 fmin=D3DTEXF_LINEAR, u32 fmip=D3DTEXF_LINEAR,	u32 fmag=D3DTEXF_LINEAR);
-	void				Stage_Matrix		(LPCSTR name, int UVW_channel);
-	void				Stage_Constant		(LPCSTR name);
+	void				StageSET_TMC		(pcstr T, pcstr M, pcstr C, int UVW_channel);
+	void				Stage_Texture		(pcstr name, u32 address=D3DTADDRESS_WRAP,	u32	 fmin=D3DTEXF_LINEAR, u32 fmip=D3DTEXF_LINEAR,	u32 fmag=D3DTEXF_LINEAR);
+	void				Stage_Matrix		(pcstr name, int UVW_channel);
+	void				Stage_Constant		(pcstr name);
 	void				StageEnd			();
 
 	// R1/R2-compiler	[programmable]
-	u32					i_Sampler			(LPCSTR name);
-	void				i_Texture			(u32 s, LPCSTR	name);
+	u32					i_Sampler			(pcstr name);
+	void				i_Texture			(u32 s, pcstr	name);
 	void				i_Projective		(u32 s, bool	b);
 	void				i_Address			(u32 s, u32		address);
 	void				i_Filter_Min		(u32 s, u32		f);
@@ -89,21 +89,21 @@ public:
 	void				i_Filter			(u32 s, u32 _min, u32 _mip, u32 _mag);
 
 	// R1/R2-compiler	[programmable]		- templates
-	void				r_Pass				(LPCSTR vs,		LPCSTR ps,		bool bFog,	BOOL	bZtest=TRUE,				BOOL	bZwrite=TRUE,			BOOL	bABlend=FALSE,			D3DBLEND	abSRC=D3DBLEND_ONE,		D3DBLEND abDST=D3DBLEND_ZERO,	BOOL aTest=FALSE,	u32 aRef=0);
-	void				r_Constant			(LPCSTR name,	R_constant_setup* s);
-	u32					r_Sampler			(LPCSTR name,	LPCSTR texture,		bool b_ps1x_ProjectiveDivide=false, u32	address=D3DTADDRESS_WRAP,	u32		fmin=D3DTEXF_LINEAR,	u32		fmip=D3DTEXF_LINEAR,	u32 fmag=D3DTEXF_LINEAR);
-	u32					r_Sampler			(LPCSTR name,	shared_str texture, bool b_ps1x_ProjectiveDivide=false, u32	address=D3DTADDRESS_WRAP,	u32		fmin=D3DTEXF_LINEAR,	u32		fmip=D3DTEXF_LINEAR,	u32 fmag=D3DTEXF_LINEAR)	{
+	void				r_Pass				(pcstr vs, pcstr ps,		bool bFog,	BOOL	bZtest=TRUE,				BOOL	bZwrite=TRUE,			BOOL	bABlend=FALSE,			D3DBLEND	abSRC=D3DBLEND_ONE,		D3DBLEND abDST=D3DBLEND_ZERO,	BOOL aTest=FALSE,	u32 aRef=0);
+	void				r_Constant			(pcstr name,	R_constant_setup* s);
+	u32					r_Sampler			(pcstr name, pcstr texture,		bool b_ps1x_ProjectiveDivide=false, u32	address=D3DTADDRESS_WRAP,	u32		fmin=D3DTEXF_LINEAR,	u32		fmip=D3DTEXF_LINEAR,	u32 fmag=D3DTEXF_LINEAR);
+	u32					r_Sampler			(pcstr name,	shared_str texture, bool b_ps1x_ProjectiveDivide=false, u32	address=D3DTADDRESS_WRAP,	u32		fmin=D3DTEXF_LINEAR,	u32		fmip=D3DTEXF_LINEAR,	u32 fmag=D3DTEXF_LINEAR)	{
 		return r_Sampler	(name,texture.c_str(),b_ps1x_ProjectiveDivide,address,fmin,fmip,fmag);
 	}
-	void				r_Sampler_rtf		(LPCSTR name,	LPCSTR texture,		bool b_ps1x_ProjectiveDivide=false);
-	void				r_Sampler_clf		(LPCSTR name,	LPCSTR texture,		bool b_ps1x_ProjectiveDivide=false);
-	void				r_Sampler_clw		(LPCSTR name,	LPCSTR texture,		bool b_ps1x_ProjectiveDivide=false);
+	void				r_Sampler_rtf		(pcstr name, pcstr texture,		bool b_ps1x_ProjectiveDivide=false);
+	void				r_Sampler_clf		(pcstr name, pcstr texture,		bool b_ps1x_ProjectiveDivide=false);
+	void				r_Sampler_clw		(pcstr name, pcstr texture,		bool b_ps1x_ProjectiveDivide=false);
 	void				r_End				();
 
 	CBlender_Compile	();
 	~CBlender_Compile	();
 	
 	void				_cpp_Compile		(ShaderElement* _SH);
-	ShaderElement* 		_lua_Compile		(LPCSTR namesp, LPCSTR name);
+	ShaderElement* 		_lua_Compile		(pcstr namesp, pcstr name);
 };
 #pragma pack(pop)

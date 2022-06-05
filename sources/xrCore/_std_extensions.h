@@ -30,11 +30,11 @@
 // ----------------------------------------------------------------------------
 struct XRCORE_API xr_token
 {
-	const char*		name;
+	pcstr		name;
 	int				id;
 };
 // ----------------------------------------------------------------------------
-IC const char* get_token_name(xr_token* tokens, int key)
+IC pcstr get_token_name(xr_token* tokens, int key)
 {
 	for (int k = 0; tokens[k].name; k++)
 	{
@@ -47,7 +47,7 @@ IC const char* get_token_name(xr_token* tokens, int key)
 	return "";
 }
 // ----------------------------------------------------------------------------
-IC int get_token_id(xr_token* tokens, const char* key)
+IC int get_token_id(xr_token* tokens, pcstr key)
 {
 	for (int k = 0; tokens[k].name; k++)
 	{
@@ -135,10 +135,10 @@ IC s64		_abs	(s64 x)			{ return (x>=0)? x : s64(-x); }
 IC s64		_min	(s64 x, s64 y)	{ return y + ((x - y) & ((x - y) >> (sizeof(s64) * 8 - 1))); };
 IC s64		_max	(s64 x, s64 y)	{ return x - ((x - y) & ((x - y) >> (sizeof(s64) * 8 - 1))); };
 
-IC u32							xr_strlen				(LPCSTR S );
+IC u32							xr_strlen				(pcstr S );
 
 // string management
-IC LPCSTR						strconcat				( int dest_sz, char* dest, LPCSTR S1, LPCSTR S2)
+IC pcstr						strconcat				( int dest_sz, char* dest, pcstr S1, pcstr S2)
 {
 	u32 l1 = xr_strlen(S1);
 	strcpy_s(dest,dest_sz,S1);
@@ -148,7 +148,7 @@ IC LPCSTR						strconcat				( int dest_sz, char* dest, LPCSTR S1, LPCSTR S2)
 }
 
 // dest = S1+S2+S3
-IC LPCSTR						strconcat				( int dest_sz, char* dest, LPCSTR S1, LPCSTR S2, LPCSTR S3)
+IC pcstr						strconcat				( int dest_sz, char* dest, pcstr S1, pcstr S2, pcstr S3)
 {
 	u32 l1 = xr_strlen(S1);
 	u32 l2 = xr_strlen(S2);
@@ -161,7 +161,7 @@ IC LPCSTR						strconcat				( int dest_sz, char* dest, LPCSTR S1, LPCSTR S2, LPC
 }
 
 // dest = S1+S2+S3+S4
-IC LPCSTR						strconcat				( int dest_sz, char* dest, LPCSTR S1, LPCSTR S2, LPCSTR S3, LPCSTR S4)
+IC pcstr						strconcat				( int dest_sz, char* dest, pcstr S1, pcstr S2, pcstr S3, pcstr S4)
 {
 	u32 l1 = xr_strlen(S1);
 	u32 l2 = xr_strlen(S2);
@@ -176,7 +176,7 @@ IC LPCSTR						strconcat				( int dest_sz, char* dest, LPCSTR S1, LPCSTR S2, LPC
 }
 
 // dest = S1+S2+S3+S4+S5
-IC LPCSTR						strconcat				( int dest_sz, char* dest, LPCSTR S1, LPCSTR S2, LPCSTR S3, LPCSTR S4, LPCSTR S5)
+IC pcstr						strconcat				( int dest_sz, char* dest, pcstr S1, pcstr S2, pcstr S3, pcstr S4, pcstr S5)
 {
 	u32 l1 = xr_strlen(S1);
 	u32 l2 = xr_strlen(S2);
@@ -193,7 +193,7 @@ IC LPCSTR						strconcat				( int dest_sz, char* dest, LPCSTR S1, LPCSTR S2, LPC
 }
 
 // dest = S1+S2+S3+S4+S5+S6
-IC LPCSTR						strconcat				( int dest_sz, char* dest, LPCSTR S1, LPCSTR S2, LPCSTR S3, LPCSTR S4, LPCSTR S5, LPCSTR S6)
+IC pcstr						strconcat				( int dest_sz, char* dest, pcstr S1, pcstr S2, pcstr S3, pcstr S4, pcstr S5, pcstr S6)
 {
 	u32 l1 = xr_strlen(S1);
 	u32 l2 = xr_strlen(S2);
@@ -213,19 +213,19 @@ IC LPCSTR						strconcat				( int dest_sz, char* dest, LPCSTR S1, LPCSTR S2, LPC
 
 
 // return pointer to ".ext"
-IC char*						strext					(LPCSTR S )
+IC char*						strext					(pcstr S )
 {	return (char*) strrchr(S,'.');	}
 
-IC u32							xr_strlen				(LPCSTR S )
+IC u32							xr_strlen				(pcstr S )
 {	return (u32)strlen(S);			}
 
 IC char*						xr_strlwr				(char* S)
 {	return strlwr(S);				}
 
 #ifdef BREAK_AT_STRCMP
-XRCORE_API	int					xr_strcmp				(LPCSTR S1, LPCSTR S2 );
+XRCORE_API	int					xr_strcmp				(pcstr S1, pcstr S2 );
 #else
-IC int							xr_strcmp				(LPCSTR S1, LPCSTR S2 )
+IC int							xr_strcmp				(pcstr S1, pcstr S2 )
 {	return (int)strcmp(S1,S2);  }
 #endif
 

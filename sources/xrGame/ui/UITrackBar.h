@@ -20,7 +20,7 @@ public:
 	virtual void 	Undo					();
 	virtual void	Draw					();
 	virtual bool	OnMouse					(float x, float y, EUIMessages mouse_action);
-	virtual	void 	OnMessage				(const char* message);
+	virtual	void 	OnMessage				(pcstr message);
 	// CUIWindow
 	virtual void	Init					(float x, float y, float width, float height);
 	virtual void	Enable					(bool status);

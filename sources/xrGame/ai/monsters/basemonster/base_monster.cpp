@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "base_monster.h"
 #include "../../../PhysicsShell.h"
-#include "../../../hit.h"
+#include "../../../Hit.h"
 #include "../../../PHDestroyable.h"
 #include "../../../CharacterPhysicsSupport.h"
 #include "../../../game_level_cross_table.h"
@@ -157,8 +157,6 @@ void CBaseMonster::Die(CObject* who)
 	if (m_controlled)			m_controlled->on_die();
 }
 
-
-//void CBaseMonster::Hit(float P,Fvector &dir,CObject*who,s16 element,Fvector p_in_object_space,float impulse, ALife::EHitType hit_type)
 void	CBaseMonster::Hit							(SHit* pHDS)
 {
 	if (ignore_collision_hit && (pHDS->hit_type == ALife::eHitTypeStrike)) return;
@@ -169,14 +167,12 @@ void	CBaseMonster::Hit							(SHit* pHDS)
 	if (g_Alive())
 		if (!critically_wounded()) 
 			update_critical_wounded(pHDS->boneID,pHDS->power);
-	
 
 
-//	inherited::Hit(P,dir,who,element,p_in_object_space,impulse,hit_type);
 	inherited::Hit(pHDS);
 }
 
-void CBaseMonster::PHHit(float P,Fvector &dir, CObject *who,s16 element,Fvector p_in_object_space, float impulse, ALife::EHitType hit_type /*=ALife::eHitTypeWound*/)
+void CBaseMonster::PHHit(F32 P,Fvector &dir, CObject *who,s16 element,Fvector p_in_object_space, F32 impulse, ALife::EHitType hit_type /*=ALife::eHitTypeWound*/)
 {
 	m_pPhysics_support->in_Hit(P,dir,who,element,p_in_object_space,impulse,hit_type);
 }
@@ -201,7 +197,7 @@ bool CBaseMonster::useful(const CItemManager *manager, const CGameObject *object
 	return false;
 }
 
-float CBaseMonster::evaluate(const CItemManager *manager, const CGameObject *object) const
+F32 CBaseMonster::evaluate(const CItemManager *manager, const CGameObject *object) const
 {
 	return (0.f);
 }
@@ -259,19 +255,19 @@ void CBaseMonster::set_state_sound(u32 type, bool once)
 				// check distance to actor
 
 				if (Actor()->Position().distance_to(Position()) > db().m_fDistantIdleSndRange) {
-					delay = u32(float(db().m_dwDistantIdleSndDelay) * _sqrt(float(objects_count)));
+					delay = u32(F32(db().m_dwDistantIdleSndDelay) * _sqrt(F32(objects_count)));
 					type  = MonsterSound::eMonsterSoundIdleDistant;
 				} else {
-					delay = u32(float(db().m_dwIdleSndDelay) * _sqrt(float(objects_count)));
+					delay = u32(F32(db().m_dwIdleSndDelay) * _sqrt(F32(objects_count)));
 				}
 				
 				break;
 			case MonsterSound::eMonsterSoundEat:
-				delay = u32(float(db().m_dwEatSndDelay) * _sqrt(float(objects_count)));
+				delay = u32(F32(db().m_dwEatSndDelay) * _sqrt(F32(objects_count)));
 				break;
 			case MonsterSound::eMonsterSoundAggressive:
 			case MonsterSound::eMonsterSoundPanic:
-				delay = u32(float(db().m_dwAttackSndDelay) * _sqrt(float(objects_count)));
+				delay = u32(F32(db().m_dwAttackSndDelay) * _sqrt(F32(objects_count)));
 				break;
 			}
 
@@ -362,7 +358,7 @@ void CBaseMonster::TranslateActionToPathParams()
 
 u32 CBaseMonster::get_attack_rebuild_time()
 {
-	float dist = EnemyMan.get_enemy()->Position().distance_to(Position());
+	F32 dist = EnemyMan.get_enemy()->Position().distance_to(Position());
 	return (100 + u32(50.f * dist));
 }
 

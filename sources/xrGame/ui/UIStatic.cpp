@@ -103,7 +103,7 @@ void CUIStatic::InitTexture(LPCSTR texture){
 	InitTextureEx(texture);
 }
 
-void CUIStatic::CreateShader(const char* tex, const char* sh){
+void CUIStatic::CreateShader(pcstr tex, pcstr sh){
 	m_UIStaticItem.CreateShader(tex,sh);	
 }
 

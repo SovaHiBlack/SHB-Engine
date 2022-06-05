@@ -828,7 +828,7 @@ F32 CAI_Stalker::missile_throw_force		()
 
 void CAI_Stalker::throw_target				(const Fvector &position)
 {
-	float					distance_to_sqr = position.distance_to_sqr(m_throw_target);
+	F32					distance_to_sqr = position.distance_to_sqr(m_throw_target);
 	m_throw_actual			= m_throw_actual && (distance_to_sqr < _sqr(.1f));
 	m_throw_target			= position;
 }
@@ -853,7 +853,7 @@ void CAI_Stalker::update_throw_params		()
 	// computing velocity with minimum magnitude
 	Fvector					velocity;
 	velocity.sub			(m_throw_target,m_throw_position);
-	float					time = ThrowMinVelTime(velocity,ph_world->Gravity());
+	F32					time = ThrowMinVelTime(velocity,ph_world->Gravity());
 	TransferenceToThrowVel	(velocity,time,ph_world->Gravity());
 	m_throw_force			= velocity.magnitude();
 	m_throw_direction		= velocity.normalize();

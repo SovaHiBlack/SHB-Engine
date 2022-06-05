@@ -31,8 +31,8 @@ private:
 	object_type							*m_object;
 	ALife::_TIME_ID						m_last_update_time;
 	parameters							m_destination;
-	float								m_walked_distance;
-	float								m_speed;
+	F32								m_walked_distance;
+	F32								m_speed;
 
 private:
 	PATH								m_path;						
@@ -65,15 +65,15 @@ public:
 			void		update							();
 			void		on_switch_online				();
 			void		on_switch_offline				();
-	IC		void		speed							(const float &speed);
+	IC		void		speed							(const F32& speed);
 
 public:
-	IC		const float	&speed							() const;
+	IC		const F32& speed							() const;
 			bool		completed						() const;
 			bool		actual							() const;
 			bool		failed							() const;
 	IC		const PATH	&path							() const;
-	IC		const float	&walked_distance				() const;
+	IC		const F32& walked_distance				() const;
 			Fvector		draw_level_position				() const;
 
 	DECLARE_SCRIPT_REGISTER_FUNCTION

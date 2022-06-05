@@ -16,7 +16,7 @@ void CStateControlCampAbstract::initialize()
 {
 	inherited::initialize			();
 
-	float angle			= ai().level_graph().vertex_cover_angle(object->ai_location().level_vertex_id(),deg(10), std::greater<float>());
+	F32 angle			= ai().level_graph().vertex_cover_angle(object->ai_location().level_vertex_id(),deg(10), std::greater<F32>());
 	
 	collide::rq_result	l_rq;
 
@@ -28,7 +28,7 @@ void CStateControlCampAbstract::initialize()
 	Fvector				direction;
 
 	// trace discretely left
-	for (float ang = angle; angle_difference(ang, angle) < ANGLE_DISP; ang = angle_normalize(ang - ANGLE_DISP_STEP)) {
+	for (F32 ang = angle; angle_difference(ang, angle) < ANGLE_DISP; ang = angle_normalize(ang - ANGLE_DISP_STEP)) {
 		
 		direction.setHP	(ang, 0.f);
 		
@@ -41,7 +41,7 @@ void CStateControlCampAbstract::initialize()
 	}
 	
 	// trace discretely right
-	for (float ang = angle; angle_difference(ang, angle) < ANGLE_DISP; ang = angle_normalize(ang + ANGLE_DISP_STEP)) {
+	for (F32 ang = angle; angle_difference(ang, angle) < ANGLE_DISP; ang = angle_normalize(ang + ANGLE_DISP_STEP)) {
 		
 		direction.setHP	(ang, 0.f);
 

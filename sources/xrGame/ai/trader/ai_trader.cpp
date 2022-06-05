@@ -43,7 +43,7 @@ void CAI_Trader::Load(LPCSTR section)
 	//fHealth							= pSettings->r_float	(section,"Health");
 	SetfHealth( pSettings->r_float	(section,"Health") );
 
-	float max_weight = pSettings->r_float	(section,"max_item_mass");
+	F32 max_weight = pSettings->r_float	(section,"max_item_mass");
 	inventory().SetMaxWeight(max_weight*1000);
 	//	inventory().SetMaxRuck(1000000);
 	inventory().CalcTotalWeight();
@@ -95,13 +95,16 @@ void CAI_Trader::LookAtActor(CBoneInstance *B)
 	Fvector dir;
 	dir.sub(Level().CurrentEntity()->Position(),Position());
 
-	float yaw,pitch;
+	F32 yaw;
+	F32 pitch;
 	dir.getHP(yaw, pitch);
 
-	float h,p,b;
+	F32 h;
+	F32 p;
+	F32 b;
 	XFORM().getHPB(h,p,b);
-	float cur_yaw	= h;
-	float dy		= _abs(angle_normalize_signed(yaw - cur_yaw));
+	F32 cur_yaw	= h;
+	F32 dy		= _abs(angle_normalize_signed(yaw - cur_yaw));
 
 	if (angle_normalize_signed(yaw - cur_yaw) > 0) dy *= -1.f;
 
@@ -152,7 +155,7 @@ void CAI_Trader::net_Import		(NET_Packet& P)
 {
 	R_ASSERT						(Remote());
 
-	float							fDummy;
+	F32							fDummy;
 	P.r_float						(fDummy);
 	set_money						( P.r_u32(), false );
 

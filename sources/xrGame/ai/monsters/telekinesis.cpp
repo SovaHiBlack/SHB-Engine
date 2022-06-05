@@ -15,7 +15,7 @@ CTelekinesis::~CTelekinesis()
 	}
 }
 
-CTelekineticObject*	CTelekinesis::activate			(CPhysicsShellHolder *obj, float strength, float height, u32 max_time_keep, bool rot)
+CTelekineticObject*	CTelekinesis::activate			(CPhysicsShellHolder *obj, F32 strength, F32 height, u32 max_time_keep, bool rot)
 {
 	active = true;
 
@@ -123,7 +123,7 @@ void CTelekinesis::fire_all(const Fvector &target)
 }
 
 // бросить объект 'obj' в позицию 'target' с учетом коэф силы 
-void CTelekinesis::fire(CPhysicsShellHolder *obj, const Fvector &target, float power)
+void CTelekinesis::fire(CPhysicsShellHolder *obj, const Fvector &target, F32 power)
 {
 	// найти объект
 
@@ -134,7 +134,7 @@ void CTelekinesis::fire(CPhysicsShellHolder *obj, const Fvector &target, float p
 	(*it)->fire(target,power);
 }
 
-void CTelekinesis::fire_t(CPhysicsShellHolder *obj, const Fvector &target, float time)
+void CTelekinesis::fire_t(CPhysicsShellHolder *obj, const Fvector &target, F32 time)
 {
 	TELE_OBJECTS_IT it = std::find_if(objects.begin(), objects.end(),SFindPred(obj));
 	if (it == objects.end()) return;

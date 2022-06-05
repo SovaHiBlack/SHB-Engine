@@ -230,7 +230,7 @@ RayCollider::~RayCollider()
  *	\return		null if everything is ok, else a string describing the problem
  */
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-const char* RayCollider::ValidateSettings()
+pcstr RayCollider::ValidateSettings()
 {
 #ifdef OPC_USE_CALLBACKS
 	if(!mObjCallback)											return "Object callback must be defined! Call: SetCallback().";

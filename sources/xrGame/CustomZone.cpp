@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "..\XR_3DA\xr_ioconsole.h"
 #include "customzone.h"
-#include "hit.h"
+#include "Hit.h"
 #include "PHDestroyable.h"
 #include "actor.h"
 #include "hudmanager.h"

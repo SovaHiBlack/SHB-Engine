@@ -61,7 +61,7 @@ void CMonsterHome::load(LPCSTR line)
 	m_aggressive = false;
 }
 
-void CMonsterHome::setup(LPCSTR path_name, float min_radius, float max_radius, bool aggressive)
+void CMonsterHome::setup(LPCSTR path_name, F32 min_radius, F32 max_radius, bool aggressive)
 {
 	m_path			= ai().patrol_paths().path(path_name);
 	check_path		(m_object,m_path);
@@ -122,7 +122,7 @@ bool CMonsterHome::at_home(const Fvector &pos)
 	// check every point and distance to it
 	for (u32 i=0; i<m_path->vertex_count(); i++) {
 		const CPatrolPath::CVertex *vertex = m_path->vertex(i);
-		float dist = pos.distance_to(ai().level_graph().vertex_position(vertex->data().level_vertex_id()));
+		F32 dist = pos.distance_to(ai().level_graph().vertex_position(vertex->data().level_vertex_id()));
 
 		if (dist < m_radius_max) return true;
 	}

@@ -333,7 +333,6 @@
     <ClInclude Include="ai\Monsters\control_sequencer.h" />
     <ClInclude Include="ai\Monsters\control_threaten.h" />
     <ClInclude Include="ai\Monsters\corpse_cover.h" />
-    <ClInclude Include="ai\Monsters\custom_events.h" />
     <ClInclude Include="ai\Monsters\Dog\dog.h" />
     <ClInclude Include="ai\Monsters\Dog\dog_state_manager.h" />
     <ClInclude Include="ai\Monsters\energy_holder.h" />
@@ -488,7 +487,6 @@
     <ClInclude Include="ai\Monsters\state_inline.h" />
     <ClInclude Include="ai\Monsters\state_manager.h" />
     <ClInclude Include="ai\Monsters\telekinesis.h" />
-    <ClInclude Include="ai\Monsters\telekinesis_inline.h" />
     <ClInclude Include="ai\Monsters\telekinetic_object.h" />
     <ClInclude Include="ai\Monsters\Tushkano\tushkano.h" />
     <ClInclude Include="ai\Monsters\Tushkano\tushkano_state_manager.h" />

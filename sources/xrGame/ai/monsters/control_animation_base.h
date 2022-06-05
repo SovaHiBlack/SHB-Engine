@@ -4,9 +4,9 @@
 #include "ai_monster_defs.h"
 
 struct SEventVelocityBounce : public ControlCom::IEventData {
-	float	m_ratio;
+	F32	m_ratio;
 
-	IC		SEventVelocityBounce(float ratio) : m_ratio(ratio) {}
+	IC		SEventVelocityBounce(F32 ratio) : m_ratio(ratio) {}
 };
 
 
@@ -40,8 +40,8 @@ protected:
 
 			EAccelType				type;	
 
-			float					calm;
-			float					aggressive;
+			F32					calm;
+			F32					aggressive;
 
 			VELOCITY_CHAIN_VEC		chain;
 		} m_accel;
@@ -75,7 +75,7 @@ public:
 
 	EAction					m_tAction;
 
-	float					m_prev_character_velocity;
+	F32					m_prev_character_velocity;
 
 public:
 				CControlAnimationBase	();
@@ -104,7 +104,7 @@ public:
 
 	// -------------------------------------
 
-	void		LinkAction				(EAction act, EMotionAnim pmt_motion, EMotionAnim pmt_left, EMotionAnim pmt_right, float pmt_angle);
+	void		LinkAction				(EAction act, EMotionAnim pmt_motion, EMotionAnim pmt_left, EMotionAnim pmt_right, F32 pmt_angle);
 	void		LinkAction				(EAction act, EMotionAnim pmt_motion);
 
 	// -------------------------------------
@@ -121,10 +121,10 @@ public:
 	// работа с анимациями атак
 	void		AA_reload				(LPCSTR section);
 	SAAParam	&AA_GetParams			(LPCSTR anim_name);
-	SAAParam	&AA_GetParams			(MotionID motion, float time_perc);
+	SAAParam	&AA_GetParams			(MotionID motion, F32 time_perc);
 
 	// FX's
-	void		FX_Play					(EHitSide side, float amount);
+	void		FX_Play					(EHitSide side, F32 amount);
 
 	MotionID	get_motion_id			(EMotionAnim a, u32 index = u32(-1));
 
@@ -143,7 +143,7 @@ protected:
 	CMotionDef	*get_motion_def			(SAnimItem *it, u32 index);
 
 public:
-	float		GetAnimSpeed			(EMotionAnim anim);
+	F32		GetAnimSpeed			(EMotionAnim anim);
 	bool		IsStandCurAnim			();
 	bool		IsTurningCurAnim		();
 	void		ValidateAnimation		();
@@ -183,15 +183,15 @@ public:
 	IC	void	accel_deactivate		() {m_accel.active = false;	m_accel.enable_braking = false;}
 	IC	void	accel_set_braking		(bool val = true) {m_accel.enable_braking = val;}
 
-	float	accel_get				(EAccelValue val = eAV_Accel);
+	F32	accel_get				(EAccelValue val = eAV_Accel);
 
 	IC	bool	accel_active			(EAccelValue val = eAV_Accel) {return (val == eAV_Accel) ? m_accel.active : m_accel.enable_braking;}
 
 	void	accel_chain_add			(EMotionAnim anim1, EMotionAnim anim2);
-	bool	accel_chain_get			(float cur_speed, EMotionAnim target_anim, EMotionAnim &new_anim, float &a_speed);
+	bool	accel_chain_get			(F32 cur_speed, EMotionAnim target_anim, EMotionAnim &new_anim, F32& a_speed);
 	bool	accel_chain_test		();
 
-	bool	accel_check_braking		(float before_interval, float nominal_speed);
+	bool	accel_check_braking		(F32 before_interval, F32 nominal_speed);
 	bool	braking_mode;
 
 	// --------------------------------------------------------------------------------	
@@ -213,6 +213,6 @@ public:
 	void					select_animation	(bool anim_end = false);
 	void					set_animation_speed	();
 
-	void					check_hit			(MotionID motion, float time_perc);
+	void					check_hit			(MotionID motion, F32 time_perc);
 };
 

@@ -210,7 +210,6 @@ void CPhantom::OnFlyState()
 		Center				(vP);
 		if (vP.distance_to_sqr(vE)<_sqr(Radius()+m_enemy->Radius())){
 			SwitchToState	(stContact);
-//			Hit				(1000.f,Fvector().set(0,0,1),this,-1,Fvector().set(0,0,0),100.f,ALife::eHitTypeFireWound);
 			SHit HDS(1000.f,Fvector().set(0,0,1),this,BI_NONE,Fvector().set(0,0,0),100.f,ALife::eHitTypeFireWound);
 			Hit(&HDS);
 		}
@@ -254,13 +253,11 @@ void CPhantom::UpdateCL()
 	if (m_TgtState!=m_CurState)	SwitchToState_internal(m_TgtState);
 }
 //---------------------------------------------------------------------
-//void CPhantom::Hit	(float P, Fvector &dir, CObject* who, s16 element,Fvector p_in_object_space, float impulse, ALife::EHitType hit_type)
 void	CPhantom::Hit							(SHit* pHDS)
 {
 	if (m_TgtState==stFly)	SwitchToState(stShoot);
 	if (g_Alive()){
 		SetfHealth		(-1.f);
-//		inherited::Hit	(P,dir,who,element,p_in_object_space,impulse/100.f, hit_type);
 		inherited::Hit	(pHDS);
 	}
 }
@@ -284,7 +281,8 @@ CParticlesObject* CPhantom::PlayParticles(const shared_str& name, BOOL bAutoRemo
 //---------------------------------------------------------------------
 void CPhantom::UpdatePosition(const Fvector& tgt_pos) 
 {
-	float			tgt_h,tgt_p;
+	F32				tgt_h;
+	F32				tgt_p;
 	Fvector			tgt_dir,cur_dir;
 	tgt_dir.sub		(tgt_pos,Position());
 	tgt_dir.getHP	(tgt_h,tgt_p);
@@ -299,7 +297,7 @@ void CPhantom::UpdatePosition(const Fvector& tgt_pos)
 	Position().mad	(prev_pos,cur_dir,fSpeed*Device.fTimeDelta);
 }
 
-void CPhantom::PsyHit(const CObject *object, float value) 
+void CPhantom::PsyHit(const CObject *object, F32 value)
 {
 	NET_Packet			P;
 	SHit				HS;
@@ -342,7 +340,9 @@ void CPhantom::net_Export	(NET_Packet& P)					// export to server
 	P.w_u32				(Device.dwTimeGlobal);
 	P.w_u8				(flags);
 
-	float				yaw, pitch, bank;
+	F32				yaw;
+	F32 pitch;
+	F32 bank;
 	XFORM().getHPB		(yaw,pitch,bank);
 	P.w_float /*w_angle8*/			(yaw);
 	P.w_float /*w_angle8*/			(yaw);
@@ -360,11 +360,11 @@ void CPhantom::net_Import	(NET_Packet& P)
 
 	u8					flags;
 
-	float health;
+	F32 health;
 	P.r_float			(health);
 	SetfHealth			(health);
 
-	float fDummy;
+	F32 fDummy;
 	u32 dwDummy;
 	P.r_float			(fDummy);
 	P.r_u32				(dwDummy);
@@ -373,7 +373,10 @@ void CPhantom::net_Import	(NET_Packet& P)
 	P.r_u32				(dwDummy);
 	P.r_u8				(flags);
 
-	float				yaw, pitch, bank = 0, roll = 0;
+	F32				yaw;
+	F32 pitch;
+	F32 bank = 0.0f;
+	F32 roll = 0.0f;
 
 	P.r_float /*r_angle8*/			(yaw);
 	P.r_float /*r_angle8*/			(yaw);

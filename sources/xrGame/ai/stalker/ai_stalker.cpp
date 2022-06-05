@@ -10,7 +10,7 @@
 #include "ai_stalker.h"
 #include "../ai_monsters_misc.h"
 #include "../../weapon.h"
-#include "../../hit.h"
+#include "../../Hit.h"
 #include "../../phdestroyable.h"
 #include "../../CharacterPhysicsSupport.h"
 #include "../../script_entity_action.h"

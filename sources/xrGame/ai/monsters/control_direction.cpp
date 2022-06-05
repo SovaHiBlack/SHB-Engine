@@ -40,7 +40,7 @@ void CControlDirection::update_frame()
 	bool pitch_similar			= false;
 
 	// difference
-	float diff = angle_difference(m_pitch.current_angle, m_data.pitch.target_angle) * 4.0f;
+	F32 diff = angle_difference(m_pitch.current_angle, m_data.pitch.target_angle) * 4.0f;
 	clamp(diff, PI_DIV_6, 5 * PI_DIV_6);
 
 	m_data.pitch.target_speed = m_pitch.current_speed = diff;
@@ -132,7 +132,8 @@ void CControlDirection::pitch_correction()
 	Fvector				target_dir;
 	target_dir.sub		(proj_point,position_on_plane);
 
-	float				yaw,pitch;
+	F32				yaw;
+	F32 pitch;
 	target_dir.getHP	(yaw,pitch);
 
 	m_data.pitch.target_angle = -pitch;
@@ -142,52 +143,53 @@ void CControlDirection::pitch_correction()
 // Services
 //////////////////////////////////////////////////////////////////////////
 
-bool CControlDirection::is_face_target(const Fvector &position, float eps_angle)
+bool CControlDirection::is_face_target(const Fvector &position, F32 eps_angle)
 {
-	float target_h	= Fvector().sub(position, m_object->Position()).getH();
-	float my_h		= m_object->Direction().getH();
+	F32 target_h	= Fvector().sub(position, m_object->Position()).getH();
+	F32 my_h		= m_object->Direction().getH();
 
 	if (angle_difference(target_h,my_h) > eps_angle) return false;
 
 	return true;
 }
 
-bool CControlDirection::is_face_target(const CObject *obj, float eps_angle) 
+bool CControlDirection::is_face_target(const CObject *obj, F32 eps_angle)
 {
 	return is_face_target(obj->Position(), eps_angle);
 }
 
 bool CControlDirection::is_from_right(const Fvector &position)
 {
-	float			yaw, pitch;
+	F32			yaw;
+	F32 pitch;
 	Fvector().sub	(position, m_object->Position()).getHP(yaw,pitch);
 	yaw				*= -1;
 
 	return (from_right(yaw,m_heading.current_angle));
 }
-bool CControlDirection::is_from_right(float yaw)
+bool CControlDirection::is_from_right(F32 yaw)
 {
 	return (from_right(yaw,m_heading.current_angle));
 }
 
-bool CControlDirection::is_turning(float eps_angle)
+bool CControlDirection::is_turning(F32 eps_angle)
 {
 	return (!fsimilar(m_heading.current_angle,m_data.heading.target_angle, eps_angle));
 }
-void CControlDirection::get_heading(float &current, float &target)
+void CControlDirection::get_heading(F32& current, F32& target)
 {
 	current = m_heading.current_angle;
 	target	= m_data.heading.target_angle;
 }
 
-float CControlDirection::get_heading_current()
+F32 CControlDirection::get_heading_current()
 {
 	return m_heading.current_angle;
 }
 
-float CControlDirection::angle_to_target(const Fvector &position)
+F32 CControlDirection::angle_to_target(const Fvector &position)
 {
-	float		angle = Fvector().sub(position, m_object->Position()).getH();
+	F32		angle = Fvector().sub(position, m_object->Position()).getH();
 	angle		*= -1;
 	
 	return		(angle_normalize(angle));

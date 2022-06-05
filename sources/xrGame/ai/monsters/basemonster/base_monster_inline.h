@@ -1,6 +1,6 @@
 #pragma once
 
-IC void CBaseMonster::set_custom_panic_threshold(float value)
+IC void CBaseMonster::set_custom_panic_threshold(F32 value)
 {
 	m_panic_threshold = value;
 }

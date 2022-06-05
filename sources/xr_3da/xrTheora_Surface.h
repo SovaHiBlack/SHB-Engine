@@ -23,7 +23,7 @@ public:
 	virtual				~CTheoraSurface	();
 
 	BOOL				Valid				();
-	BOOL				Load				(const char* fname);
+	BOOL				Load				(pcstr fname);
 
 	BOOL				Update				(u32 _time);
 	void				DecompressFrame		(u32* dst, u32 _width, int& count);

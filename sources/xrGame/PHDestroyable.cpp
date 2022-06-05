@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "alife_space.h"
-#include "hit.h"
+#include "Hit.h"
 #include "phdestroyable.h"
 #include "physicsshellholder.h"
 #include "xrMessages.h"

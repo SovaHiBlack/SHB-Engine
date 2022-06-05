@@ -7,8 +7,8 @@ protected:
 	typedef CCoverEvaluatorBase inherited;
 
 protected:
-	float				m_min_distance;
-	float				m_max_distance;
+	F32				m_min_distance;
+	F32				m_max_distance;
 
 public:
 
@@ -16,13 +16,13 @@ public:
 	{
 	}
 
-	IC		void		setup				(float min_enemy_distance, float max_enemy_distance){
+	IC		void		setup				(F32 min_enemy_distance, F32 max_enemy_distance){
 		inherited::setup		();
 		m_min_distance			= min_enemy_distance;
 		m_max_distance			= max_enemy_distance;
 	}
 
-			void		evaluate			(const CCoverPoint *cover_point, float weight);
+			void		evaluate			(const CCoverPoint *cover_point, F32 weight);
 };
 
 

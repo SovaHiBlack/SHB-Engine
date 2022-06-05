@@ -32,7 +32,7 @@ CCameraBase::~CCameraBase()
 {
 }
 
-void CCameraBase::Load(LPCSTR section)
+void CCameraBase::Load(pcstr section)
 {
 	rot_speed			= pSettings->r_fvector3	(section,"rot_speed");
 

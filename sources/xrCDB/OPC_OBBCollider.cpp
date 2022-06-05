@@ -92,7 +92,7 @@ OBBCollider::~OBBCollider()
  *	\return		null if everything is ok, else a string describing the problem
  */
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-const char* OBBCollider::ValidateSettings()
+pcstr OBBCollider::ValidateSettings()
 {
 	if(TemporalCoherenceEnabled() && !FirstContactEnabled())	return "Temporal coherence only works with ""First contact"" mode!";
 

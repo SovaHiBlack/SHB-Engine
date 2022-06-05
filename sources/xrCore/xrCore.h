@@ -130,10 +130,10 @@
 struct XRCORE_API xr_rtoken{
     shared_str	name;
     int	   	id;
-           	xr_rtoken	(LPCSTR _nm, int _id){name=_nm;id=_id;}
+           	xr_rtoken	(pcstr _nm, int _id){name=_nm;id=_id;}
 public:
-    void	rename		(LPCSTR _nm)		{name=_nm;}
-    bool	equal		(LPCSTR _nm)		{return (0==xr_strcmp(*name,_nm));}
+    void	rename		(pcstr _nm)		{name=_nm;}
+    bool	equal		(pcstr _nm)		{return (0==xr_strcmp(*name,_nm));}
 };
 
 #pragma pack (push,1)
@@ -194,7 +194,7 @@ public:
 	string512	Params;
 
 public:
-	void		_initialize	(LPCSTR ApplicationName, LogCallback cb=0, BOOL init_fs=TRUE, LPCSTR fs_fname=0);
+	void		_initialize	(pcstr ApplicationName, LogCallback cb=0, BOOL init_fs=TRUE, pcstr fs_fname=0);
 	void		_destroy	();
 };
 extern XRCORE_API xrCore Core;

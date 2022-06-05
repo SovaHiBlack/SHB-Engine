@@ -71,10 +71,10 @@ public:
 	
 	virtual	BOOL			renderable_ShadowReceive		()	{ return TRUE;	}  
 	virtual void			Die								(CObject* who);
-	virtual void			HitSignal						(float amount, Fvector& vLocalDir, CObject* who, s16 element);
+	virtual void			HitSignal						(F32 amount, Fvector& vLocalDir, CObject* who, s16 element);
 	virtual	void			Hit								(SHit* pHDS);
-	virtual	void			PHHit							(float P,Fvector &dir, CObject *who,s16 element,Fvector p_in_object_space, float impulse, ALife::EHitType hit_type = ALife::eHitTypeWound);
-	virtual void			SelectAnimation					(const Fvector& _view, const Fvector& _move, float speed );
+	virtual	void			PHHit							(F32 P,Fvector &dir, CObject *who,s16 element,Fvector p_in_object_space, F32 impulse, ALife::EHitType hit_type = ALife::eHitTypeWound);
+	virtual void			SelectAnimation					(const Fvector& _view, const Fvector& _move, F32 speed );
 
 	virtual void			Load							(LPCSTR section);
 	virtual DLL_Pure		*_construct						();
@@ -102,13 +102,13 @@ public:
 
 	virtual void			init							() {}
 
-	virtual void			feel_sound_new					(CObject* who, int eType, CSound_UserDataPtr user_data, const Fvector &Position, float power);
+	virtual void			feel_sound_new					(CObject* who, int eType, CSound_UserDataPtr user_data, const Fvector &Position, F32 power);
 	virtual BOOL			feel_vision_isRelevant			(CObject* O);
 	virtual BOOL			feel_touch_on_contact			(CObject* O);
 	virtual BOOL			feel_touch_contact				(CObject *);
 
 	virtual bool			useful							(const CItemManager *manager, const CGameObject *object) const;
-	virtual float			evaluate						(const CItemManager *manager, const CGameObject *object) const;
+	virtual F32			evaluate						(const CItemManager *manager, const CGameObject *object) const;
 
 	virtual void			OnEvent							(NET_Packet& P, u16 type);
 	virtual void			OnHUDDraw						(CCustomHUD* hud)			{return inherited::OnHUDDraw(hud);}
@@ -132,12 +132,12 @@ public:
 
 	virtual bool			IsTalkEnabled					() {return false;}
 
-	virtual void			HitEntity						(const CEntity *pEntity, float fDamage, float impulse, Fvector &dir);
+	virtual void			HitEntity						(const CEntity *pEntity, F32 fDamage, F32 impulse, Fvector &dir);
 	virtual	void			HitEntityInJump					(const CEntity *pEntity) {}
 
 	virtual	void			on_before_sell					(CInventoryItem *item);
-			float			GetSatiety						()							{return 0.5f;}
-			void			ChangeSatiety					(float v)					{}
+	F32			GetSatiety						()							{return 0.5f;}
+			void			ChangeSatiety					(F32 v)					{}
 	// ---------------------------------------------------------------------------------
 	// Process scripts
 	// ---------------------------------------------------------------------------------
@@ -164,7 +164,7 @@ public:
 	bool					m_script_state_must_execute;
 
 
-	virtual void			jump							(const Fvector &position, float factor) {}
+	virtual void			jump							(const Fvector &position, F32 factor) {}
 
 	bool					m_skip_transfer_enemy;			
 	IC		void			skip_transfer_enemy				(bool value){m_skip_transfer_enemy = value;}
@@ -178,7 +178,7 @@ public:
 	// установка специфических анимаций 
 	virtual	void			CheckSpecParams					(u32 /**spec_params/**/) {}
 	virtual void			ForceFinalAnimation				() {}
-	virtual void			LookPosition					(Fvector to_point, float angular_speed = PI_DIV_3);		// каждый монстр может по-разному реализвать эту функ (e.g. кровосос с поворотом головы и т.п.)
+	virtual void			LookPosition					(Fvector to_point, F32 angular_speed = PI_DIV_3);		// каждый монстр может по-разному реализвать эту функ (e.g. кровосос с поворотом головы и т.п.)
 
 	// Team	
 	virtual void			ChangeTeam						(int team, int squad, int group);
@@ -207,8 +207,8 @@ public:
 	// Cover
 			bool			GetCorpseCover					(Fvector &position, u32 &vertex_id);
 			bool			GetCoverFromEnemy				(const Fvector &enemy_pos, Fvector &position, u32 &vertex_id);
-			bool			GetCoverFromPoint				(const Fvector &pos, Fvector &position, u32 &vertex_id, float min_dist, float max_dist, float radius);
-			bool			GetCoverCloseToPoint			(const Fvector &dest_pos, float min_dist, float max_dist, float deviation, float radius ,Fvector &position, u32 &vertex_id);
+			bool			GetCoverFromPoint				(const Fvector &pos, Fvector &position, u32 &vertex_id, F32 min_dist, F32 max_dist, F32 radius);
+			bool			GetCoverCloseToPoint			(const Fvector &dest_pos, F32 min_dist, F32 max_dist, F32 deviation, F32 radius ,Fvector &position, u32 &vertex_id);
 
 
 
@@ -298,7 +298,7 @@ public:
 //	//-----------------------------------------------------------------
 //private:
 //	LPCSTR					m_item_section;
-//	float					m_spawn_probability;
+//	F32					m_spawn_probability;
 
 	//--------------------------------------------------------------------
 	// Berserk
@@ -312,8 +312,8 @@ public:
 	// Panic Threshold (extension for scripts)
 	//--------------------------------------------------------------------
 
-		float				m_default_panic_threshold;
-	IC	void				set_custom_panic_threshold	(float value);
+	F32				m_default_panic_threshold;
+	IC	void				set_custom_panic_threshold	(F32 value);
 	IC	void				set_default_panic_threshold	();
 	//--------------------------------------------------------------------
 
@@ -325,8 +325,8 @@ public:
 	// Special Services (refactoring needed)
 		
 	void				on_kill_enemy				(const CEntity *obj);
-	void				Hit_Psy						(CObject *object, float value);
-	void				Hit_Wound					(CObject *object, float value, const Fvector &dir, float impulse);
+	void				Hit_Psy						(CObject *object, F32 value);
+	void				Hit_Wound					(CObject *object, F32 value, const Fvector &dir, F32 impulse);
 	CParticlesObject	*PlayParticles				(const shared_str& name, const Fvector &position, const Fvector &dir, BOOL auto_remove = TRUE, BOOL xformed = TRUE);
 	void				load_effector				(LPCSTR section, LPCSTR line, SAttackEffector &effector);
 
@@ -364,7 +364,7 @@ IC	void					wake_up				(){m_bSleep = false;}
 	// Temp
 	u32						m_time_last_attack_success;
 	int						m_rank;
-	float					m_melee_rotation_factor;
+	F32					m_melee_rotation_factor;
 
 private:
 	bool					ignore_collision_hit;	
@@ -433,14 +433,14 @@ public:
 public:
 	struct SDebugInfo {
 		bool	active;
-		float	x;
-		float	y;
-		float	delta_y;
+		F32	x;
+		F32	y;
+		F32	delta_y;
 		u32		color;
 		u32		delimiter_color;
 
 		SDebugInfo() : active(false) {}
-		SDebugInfo(float px, float py, float dy, u32 c, u32 dc) : active(true), x(px), y(py), delta_y(dy), color (c), delimiter_color(dc) {}
+		SDebugInfo(F32 px, F32 py, F32 dy, u32 c, u32 dc) : active(true), x(px), y(py), delta_y(dy), color (c), delimiter_color(dc) {}
 	};
 	
 	u8						m_show_debug_info;	// 0 - none, 1 - first column, 2 - second column

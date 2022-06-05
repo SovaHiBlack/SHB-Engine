@@ -28,8 +28,8 @@ void CEngineAPI::Initialize(void)
 {
 	//////////////////////////////////////////////////////////////////////////
 	// render
-	LPCSTR			r1_name	= "xrRender_R1.dll";
-	LPCSTR			r2_name	= "xrRender_R2.dll";
+	pcstr			r1_name	= "xrRender_R1.dll";
+	pcstr			r2_name	= "xrRender_R2.dll";
 
 	if (psDeviceFlags.test(rsR2) )	{
 		// try to initialize R2
@@ -54,7 +54,7 @@ void CEngineAPI::Initialize(void)
 
 	// game	
 	{
-		LPCSTR			g_name	= "xrGame.dll";
+		pcstr			g_name	= "xrGame.dll";
 		Log				("Loading DLL:",g_name);
 		hGame			= LoadLibrary	(g_name);
 		if (0==hGame)	R_CHK			(GetLastError());

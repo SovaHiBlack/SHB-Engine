@@ -235,7 +235,7 @@ SAAParam &CControlAnimationBase::AA_GetParams(LPCSTR anim_name)
 	return (*(m_attack_anims.begin()));
 }
 
-SAAParam &CControlAnimationBase::AA_GetParams(MotionID motion, float time_perc)
+SAAParam &CControlAnimationBase::AA_GetParams(MotionID motion, F32 time_perc)
 {
 	// искать текущую анимацию в AA_VECTOR
 	for (AA_VECTOR_IT it = m_attack_anims.begin(); it != m_attack_anims.end(); it++) {
@@ -258,7 +258,7 @@ EPState	CControlAnimationBase::GetState (EMotionAnim a)
 
 #define FX_CAN_PLAY_MIN_INTERVAL	50
 
-void CControlAnimationBase::FX_Play(EHitSide side, float amount)
+void CControlAnimationBase::FX_Play(EHitSide side, F32 amount)
 {
 	if (fx_time_last_play + FX_CAN_PLAY_MIN_INTERVAL > m_object->m_dwCurrentTime) return;
 
@@ -280,7 +280,7 @@ void CControlAnimationBase::FX_Play(EHitSide side, float amount)
 	fx_time_last_play = m_object->m_dwCurrentTime;
 }
 
-float CControlAnimationBase::GetAnimSpeed(EMotionAnim anim)
+F32 CControlAnimationBase::GetAnimSpeed(EMotionAnim anim)
 {
 	SAnimItem *anim_it = m_anim_storage[anim];
 	VERIFY(anim_it);
@@ -483,7 +483,7 @@ void CControlAnimationBase::set_animation_speed()
 	ctrl_data->set_speed		(m_cur_anim.speed._get_target() );
 }
 
-void CControlAnimationBase::check_hit(MotionID motion, float time_perc)
+void CControlAnimationBase::check_hit(MotionID motion, F32 time_perc)
 {
 	if (!m_object->EnemyMan.get_enemy()) return;
 	const CEntityAlive *enemy = m_object->EnemyMan.get_enemy();
@@ -499,14 +499,16 @@ void CControlAnimationBase::check_hit(MotionID motion, float time_perc)
 	if (d.magnitude() > params.dist) should_hit = false;
 	
 	// проверка на  Field-Of-Hit
-	float my_h,my_p;
-	float h,p;
+	F32 my_h;
+	F32 my_p;
+	F32 h;
+	F32 p;
 
 	m_object->Direction().getHP(my_h,my_p);
 	d.getHP(h,p);
 	
-	float from	= angle_normalize(my_h + params.foh.from_yaw);
-	float to	= angle_normalize(my_h + params.foh.to_yaw);
+	F32 from	= angle_normalize(my_h + params.foh.from_yaw);
+	F32 to	= angle_normalize(my_h + params.foh.to_yaw);
 	
 	if (!is_angle_between(h, from, to)) should_hit = false;
 
@@ -526,21 +528,21 @@ void parse_anim_params(LPCSTR val, SAAParam &anim)
 {
 	string16			cur_elem;
 
-	_GetItem	(val,0,cur_elem);		anim.time			= float(atof(cur_elem));
-	_GetItem	(val,1,cur_elem);		anim.hit_power		= float(atof(cur_elem));
-	_GetItem	(val,2,cur_elem);		anim.impulse		= float(atof(cur_elem));
-	_GetItem	(val,3,cur_elem);		anim.impulse_dir.x	= float(atof(cur_elem));
-	_GetItem	(val,4,cur_elem);		anim.impulse_dir.y	= float(atof(cur_elem));
-	_GetItem	(val,5,cur_elem);		anim.impulse_dir.z	= float(atof(cur_elem));
-	_GetItem	(val,6,cur_elem);		anim.foh.from_yaw	= float(atof(cur_elem));
-	_GetItem	(val,7,cur_elem);		anim.foh.to_yaw		= float(atof(cur_elem));
-	_GetItem	(val,8,cur_elem);		anim.foh.from_pitch	= float(atof(cur_elem));
-	_GetItem	(val,9,cur_elem);		anim.foh.to_pitch	= float(atof(cur_elem));
-	_GetItem	(val,10,cur_elem);		anim.dist			= float(atof(cur_elem));
+	_GetItem	(val,0,cur_elem);		anim.time			= F32(atof(cur_elem));
+	_GetItem	(val,1,cur_elem);		anim.hit_power		= F32(atof(cur_elem));
+	_GetItem	(val,2,cur_elem);		anim.impulse		= F32(atof(cur_elem));
+	_GetItem	(val,3,cur_elem);		anim.impulse_dir.x	= F32(atof(cur_elem));
+	_GetItem	(val,4,cur_elem);		anim.impulse_dir.y	= F32(atof(cur_elem));
+	_GetItem	(val,5,cur_elem);		anim.impulse_dir.z	= F32(atof(cur_elem));
+	_GetItem	(val,6,cur_elem);		anim.foh.from_yaw	= F32(atof(cur_elem));
+	_GetItem	(val,7,cur_elem);		anim.foh.to_yaw		= F32(atof(cur_elem));
+	_GetItem	(val,8,cur_elem);		anim.foh.from_pitch	= F32(atof(cur_elem));
+	_GetItem	(val,9,cur_elem);		anim.foh.to_pitch	= F32(atof(cur_elem));
+	_GetItem	(val,10,cur_elem);		anim.dist			= F32(atof(cur_elem));
 
 	anim.impulse_dir.normalize();
 
-	float clamp_val = PI_DIV_2 - EPS_L;
+	F32 clamp_val = PI_DIV_2 - EPS_L;
 	clamp(anim.foh.from_yaw,	-clamp_val, clamp_val);
 	clamp(anim.foh.to_yaw,		-clamp_val, clamp_val);
 	clamp(anim.foh.from_pitch,	-clamp_val, clamp_val);

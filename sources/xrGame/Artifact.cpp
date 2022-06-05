@@ -25,10 +25,10 @@
 struct SArtefactActivation{
 	enum EActivationStates		{eNone=0, eStarting, eFlying, eBeforeSpawn, eSpawnZone, eMax};
 	struct SStateDef{
-		float		m_time;
+		F32		m_time;
 		shared_str	m_snd;
 		Fcolor		m_light_color;
-		float		m_light_range;
+		F32		m_light_range;
 		shared_str	m_particle;
 		shared_str	m_animation;
 		
@@ -41,7 +41,7 @@ struct SArtefactActivation{
 	CArtefact*					m_af;
 	svector<SStateDef,eMax>		m_activation_states;
 	EActivationStates			m_cur_activation_state;
-	float						m_cur_state_time;
+	F32						m_cur_state_time;
 
 	ref_light					m_light;
 	ref_sound					m_snd;
@@ -215,7 +215,7 @@ void CArtefact::shedule_Update		(u32 dt)
 	else					{
 		Fvector	center;			Center(center);
 		BOOL	rendering		= (Device.dwFrame==o_render_frame);
-		float	cam_distance	= Device.vCameraPosition.distance_to(center)-Radius();
+		F32	cam_distance	= Device.vCameraPosition.distance_to(center)-Radius();
 		if (rendering || (cam_distance < FASTMODE_DISTANCE))	o_switch_2_fast	();
 		else													o_switch_2_slow	();
 	}
@@ -562,8 +562,8 @@ void SArtefactActivation::SpawnAnomaly()
 	string128 tmp;
 	LPCSTR str			= pSettings->r_string("artefact_spawn_zones",*m_af->cNameSect());
 	VERIFY3(3==_GetItemCount(str),"Bad record format in artefact_spawn_zones",str);
-	float zone_radius	= (float)atof(_GetItem(str,1,tmp));
-	float zone_power	= (float)atof(_GetItem(str,2,tmp));
+	F32 zone_radius	= (F32)atof(_GetItem(str,1,tmp));
+	F32 zone_power	= (F32)atof(_GetItem(str,2,tmp));
 	LPCSTR zone_sect	= _GetItem(str,0,tmp); //must be last call of _GetItem... (LPCSTR !!!)
 
 		Fvector pos;
@@ -617,13 +617,13 @@ void SArtefactActivation::SStateDef::Load(LPCSTR section, LPCSTR name)
 
 	string128 tmp;
 
-	m_time			= (float)atof(		_GetItem(str,0,tmp) );
+	m_time			= (F32)atof(		_GetItem(str,0,tmp) );
 	
 	m_snd			= clear_brackets(	_GetItem(str,1,tmp) )	;
 
-	m_light_color.r = (float)atof(		_GetItem(str,2,tmp) );
-	m_light_color.g = (float)atof(		_GetItem(str,3,tmp) );
-	m_light_color.b = (float)atof(		_GetItem(str,4,tmp) );
+	m_light_color.r = (F32)atof(		_GetItem(str,2,tmp) );
+	m_light_color.g = (F32)atof(		_GetItem(str,3,tmp) );
+	m_light_color.b = (F32)atof(		_GetItem(str,4,tmp) );
 
 	m_light_range	= (float)atof(		_GetItem(str,5,tmp) );
 

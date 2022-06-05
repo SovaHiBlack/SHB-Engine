@@ -136,7 +136,7 @@ void CUIComboBox::SaveValue()
 {
 	CUIOptionsItem::SaveValue	();
 	xr_token* tok				= GetOptToken();
-	const char* cur_val				= get_token_name(tok, m_itoken_id);
+	pcstr cur_val				= get_token_name(tok, m_itoken_id);
 	SaveOptTokenValue			(cur_val);
 }
 
@@ -145,7 +145,7 @@ bool CUIComboBox::IsChanged()
 	return				(m_backup_itoken_id != m_itoken_id);
 /*
 	xr_token* tok		= GetOptToken();
-	const char* cur_val		= get_token_name(tok, m_itoken_id);
+	pcstr cur_val		= get_token_name(tok, m_itoken_id);
 
 	bool bChanged		= (0 != xr_strcmp(GetOptTokenValue(), cur_val));
 

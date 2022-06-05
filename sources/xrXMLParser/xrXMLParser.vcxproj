@@ -176,9 +176,6 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="tinystr.cpp">
-      <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)$(ProjectName).pch</PrecompiledHeaderOutputFile>
-    </ClCompile>
     <ClCompile Include="tinyxml.cpp" />
     <ClCompile Include="tinyxmlerror.cpp">
       <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)$(ProjectName).pch</PrecompiledHeaderOutputFile>
@@ -188,7 +185,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h" />
-    <ClInclude Include="tinystr.h" />
     <ClInclude Include="tinyxml.h" />
     <ClInclude Include="xrXMLParser.h" />
   </ItemGroup>

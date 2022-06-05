@@ -418,10 +418,8 @@ void CAI_Crow::CreateSkeleton()
 	m_pPhysicsShell->SetMaterial(smart_cast<CKinematics*>(Visual())->LL_GetData(smart_cast<CKinematics*>(Visual())->LL_GetBoneRoot()).game_mtl_idx);
 }
 
-//void CAI_Crow::Hit	(F32 P, Fvector &dir, CObject* who, s16 element,Fvector p_in_object_space, F32 impulse, ALife::EHitType hit_type)
 void	CAI_Crow::Hit							(SHit* pHDS)
 {
-//	inherited::Hit	(P,dir,who,element,p_in_object_space,impulse/100.f, hit_type);
 	SHit	HDS = *pHDS;
 	HDS.impulse /= 100.f;
 	inherited::Hit(&HDS);

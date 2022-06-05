@@ -254,7 +254,7 @@ void	CSoundRender_Core::verify_refsound		( ref_sound& S)
 */
 }
 
-void	CSoundRender_Core::create				( ref_sound& S, const char* fName, esound_type sound_type, int game_type )
+void	CSoundRender_Core::create				( ref_sound& S, pcstr fName, esound_type sound_type, int game_type )
 {
 	if (!bPresent)		return;
 	verify_refsound		(S);

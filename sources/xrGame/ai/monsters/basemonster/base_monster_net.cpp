@@ -5,7 +5,7 @@
 #include "../../../game_graph.h"
 #include "../../../../xrNetServer/net_utils.h"
 #include "../../../ai_space.h"
-#include "../../../hit.h"
+#include "../../../Hit.h"
 #include "../../../PHDestroyable.h"
 #include "../../../CharacterPhysicsSupport.h"
 void CBaseMonster::net_Save			(NET_Packet& P)
@@ -43,7 +43,7 @@ void CBaseMonster::net_Export(NET_Packet& P)
 	P.w						(&l_game_vertex_id,			sizeof(l_game_vertex_id));
 //	P.w						(&m_fGoingSpeed,			sizeof(m_fGoingSpeed));
 //	P.w						(&m_fGoingSpeed,			sizeof(m_fGoingSpeed));
-	float					f1 = 0;
+	F32					f1 = 0;
 	if (ai().game_graph().valid_vertex_id(l_game_vertex_id)) {
 		f1					= Position().distance_to	(ai().game_graph().vertex(l_game_vertex_id)->level_point());
 		P.w					(&f1,						sizeof(f1));
@@ -64,7 +64,7 @@ void CBaseMonster::net_Import(NET_Packet& P)
 
 	u8 flags;
 
-	float health;
+	F32 health;
 	P.r_float			(health);
 	SetfHealth			(health);
 
@@ -90,7 +90,7 @@ void CBaseMonster::net_Import(NET_Packet& P)
 
 //	P.r						(&m_fGoingSpeed,			sizeof(m_fGoingSpeed));
 //	P.r						(&m_fGoingSpeed,			sizeof(m_fGoingSpeed));
-	float					f1 = 0;
+	F32					f1 = 0;
 	if (ai().game_graph().valid_vertex_id(l_game_vertex_id)) {
 		f1					= Position().distance_to	(ai().game_graph().vertex(l_game_vertex_id)->level_point());
 		P.r					(&f1,						sizeof(f1));

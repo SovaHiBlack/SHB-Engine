@@ -30,7 +30,7 @@ void CStateMonsterHittedMoveOutAbstract::execute()
 	else
 		object->path().set_target_point	(object->HitMemory.get_last_hit_position());
 
-	float dist = object->HitMemory.get_last_hit_position().distance_to(object->Position());
+	F32 dist = object->HitMemory.get_last_hit_position().distance_to(object->Position());
 
 	if (dist > 10.f) object->set_action	(ACT_WALK_FWD);
 	else object->set_action				(ACT_STEAL);
@@ -45,7 +45,7 @@ bool CStateMonsterHittedMoveOutAbstract::check_completion()
 {
 	if (object->HitMemory.get_last_hit_time() > time_state_started) return true;
 
-	float dist = object->HitMemory.get_last_hit_position().distance_to(object->Position());
+	F32 dist = object->HitMemory.get_last_hit_position().distance_to(object->Position());
 	if (dist < DIST_TO_HIT_POINT) return true;
 
 	return false;

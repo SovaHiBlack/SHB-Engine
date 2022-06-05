@@ -14,7 +14,7 @@
 #include "monster_community.h"
 #include "entitycondition.h"
 #include "script_game_object.h"
-#include "hit.h"
+#include "Hit.h"
 #include "PHDestroyable.h"
 #include "CharacterPhysicsSupport.h"
 #include "script_callback_ex.h"
@@ -257,7 +257,6 @@ void CEntityAlive::HitImpulse	(float /**amount/**/, Fvector& /**vWorldDir/**/, F
 	//	m_PhysicMovementControl->vExternalImpulse.mad	(vWorldDir,Q);
 }
 
-//void CEntityAlive::Hit(float P, Fvector &dir,CObject* who, s16 element,Fvector position_in_object_space, float impulse, ALife::EHitType hit_type, float AP)
 void CEntityAlive::Hit(SHit* pHDS)
 {
 	SHit HDS = *pHDS;
@@ -296,7 +295,6 @@ void CEntityAlive::Hit(SHit* pHDS)
 			RELATION_REGISTRY().Action(EA, this, RELATION_REGISTRY::ATTACK);
 		}
 	}
-
 }
 
 void CEntityAlive::Die	(CObject* who)

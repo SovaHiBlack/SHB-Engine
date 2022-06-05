@@ -42,7 +42,7 @@ public:
 			void	RescaleRelative2Rect(const Frect& r);	//need to save proportions of texture			
 
 	// IUISingleTextureOwner--------------------------------------------------------------------------------
-	virtual void		CreateShader				(const char* tex, const char* sh = "hud\\default");
+	virtual void		CreateShader				(pcstr tex, pcstr sh = "hud\\default");
 	virtual ref_shader& GetShader					();
 	virtual void		SetTextureColor				(u32 color);
 	virtual u32			GetTextureColor				() const;

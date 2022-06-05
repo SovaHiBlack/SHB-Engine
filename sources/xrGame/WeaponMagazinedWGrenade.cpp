@@ -492,7 +492,7 @@ bool CWeaponMagazinedWGrenade::CanAttach(PIItem pIItem)
 		return inherited::CanAttach(pIItem);
 }
 
-bool CWeaponMagazinedWGrenade::CanDetach(const char* item_section_name)
+bool CWeaponMagazinedWGrenade::CanDetach(pcstr item_section_name)
 {
 	if(CSE_ALifeItemWeapon::eAddonAttachable == m_eGrenadeLauncherStatus &&
 	   0 != (m_flagsAddOnState&CSE_ALifeItemWeapon::eWeaponAddonGrenadeLauncher) &&
@@ -530,7 +530,7 @@ bool CWeaponMagazinedWGrenade::Attach(PIItem pIItem, bool b_send_event)
         return inherited::Attach(pIItem, b_send_event);
 }
 
-bool CWeaponMagazinedWGrenade::Detach(const char* item_section_name, bool b_spawn_item)
+bool CWeaponMagazinedWGrenade::Detach(pcstr item_section_name, bool b_spawn_item)
 {
 	if (CSE_ALifeItemWeapon::eAddonAttachable == m_eGrenadeLauncherStatus &&
 	   0 != (m_flagsAddOnState&CSE_ALifeItemWeapon::eWeaponAddonGrenadeLauncher) &&

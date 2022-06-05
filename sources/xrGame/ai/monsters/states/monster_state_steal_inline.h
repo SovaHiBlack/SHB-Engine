@@ -78,7 +78,7 @@ bool CStateMonsterStealAbstract::check_conditions()
 	//}
 	
 	// check distance to enemy
-	float dist = object->MeleeChecker.distance_to_enemy(object->EnemyMan.get_enemy());
+	F32 dist = object->MeleeChecker.distance_to_enemy(object->EnemyMan.get_enemy());
 	if (dist < STEAL_MIN_DISTANCE)								return false;
 	else if (dist > STEAL_MAX_DISTANCE)							return false;
 

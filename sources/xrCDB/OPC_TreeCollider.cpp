@@ -77,7 +77,7 @@ AABBTreeCollider::~AABBTreeCollider()
  *	\return		null if everything is ok, else a string describing the problem
  */
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-const char* AABBTreeCollider::ValidateSettings()
+pcstr AABBTreeCollider::ValidateSettings()
 {
 #ifdef OPC_USE_CALLBACKS
 	if(!mObjCallback0)											return "Callback for object 0 must be defined! Call: SetCallback0().";

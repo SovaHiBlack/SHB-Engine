@@ -152,9 +152,10 @@ void CControlAnimationBase::SelectAnimation()
 
 void CControlAnimationBase::SetTurnAnimation()
 {
-	float yaw_current, yaw_target;
+	F32 yaw_current;
+	F32 yaw_target;
 	m_man->direction().get_heading(yaw_current, yaw_target);
-	float delta_yaw	= angle_difference(yaw_target, yaw_current);
+	F32 delta_yaw	= angle_difference(yaw_target, yaw_current);
 
 	bool turn_left = true;
 	if (from_right(yaw_target, yaw_current)) turn_left = false; 
@@ -238,7 +239,7 @@ void CControlAnimationBase::SelectVelocities()
 	if (!m_object->state_invisible && !fis_zero(anim_vel.linear)) {
 			
 		EMotionAnim new_anim;
-		float		a_speed;
+		F32		a_speed;
 
 		if (accel_chain_get(m_man->movement().real_velocity(), cur_anim_info().motion, new_anim, a_speed)) {
 			cur_anim_info().motion			= new_anim;
@@ -262,7 +263,7 @@ void CControlAnimationBase::SelectVelocities()
 		
 		// Melee?
 		if (m_tAction == ACT_ATTACK) {
-			float vel = item_it->velocity.velocity.angular_real;
+			F32 vel = item_it->velocity.velocity.angular_real;
 			m_object->dir().set_heading_speed(vel * m_object->m_melee_rotation_factor); // todo: make as an external factor
 		} else 
 			m_object->dir().set_heading_speed(item_it->velocity.velocity.angular_real);
@@ -275,14 +276,14 @@ void CControlAnimationBase::CheckVelocityBounce()
 {
 	Fvector		temp_vec;
 	m_object->character_physics_support()->movement()->GetCharacterVelocity(temp_vec);
-	float		prev_speed	= m_prev_character_velocity;
-	float		cur_speed	= temp_vec.magnitude();
+	F32		prev_speed	= m_prev_character_velocity;
+	F32		cur_speed	= temp_vec.magnitude();
 
 	// prepare 
 	if (fis_zero(prev_speed))	prev_speed	= 0.01f;
 	if (fis_zero(cur_speed))	cur_speed	= 0.01f;
 
-	float ratio = ((prev_speed > cur_speed) ? (prev_speed / cur_speed) : (cur_speed / prev_speed));
+	F32 ratio = ((prev_speed > cur_speed) ? (prev_speed / cur_speed) : (cur_speed / prev_speed));
 
 	if (ratio > VELOCITY_BOUNCE_THRESHOLD) {
 		if (prev_speed > cur_speed) ratio = -ratio;

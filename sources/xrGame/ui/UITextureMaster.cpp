@@ -51,11 +51,11 @@ void CUITextureMaster::ParseShTexInfo(LPCSTR xml_file){
 //	}
 }
 
-bool CUITextureMaster::IsSh(const char* texture_name){
+bool CUITextureMaster::IsSh(pcstr texture_name){
 	return strstr(texture_name,"\\") ? false : true;
 }
 
-void CUITextureMaster::InitTexture(const char* texture_name, IUISimpleTextureControl* tc){
+void CUITextureMaster::InitTexture(pcstr texture_name, IUISimpleTextureControl* tc){
 #ifdef DEBUG
 	CTimer T;
 	T.Start();
@@ -80,7 +80,7 @@ void CUITextureMaster::InitTexture(const char* texture_name, IUISimpleTextureCon
 #endif
 }
 
-void CUITextureMaster::InitTexture(const char* texture_name, const char* shader_name, IUISimpleTextureControl* tc){
+void CUITextureMaster::InitTexture(pcstr texture_name, pcstr shader_name, IUISimpleTextureControl* tc){
 #ifdef DEBUG
 	CTimer T;
 	T.Start();
@@ -105,7 +105,7 @@ void CUITextureMaster::InitTexture(const char* texture_name, const char* shader_
 #endif
 }
 
-float CUITextureMaster::GetTextureHeight(const char* texture_name){
+float CUITextureMaster::GetTextureHeight(pcstr texture_name){
 	xr_map<shared_str, TEX_INFO>::iterator	it;
 	it = m_textures.find(texture_name);
 
@@ -115,7 +115,7 @@ float CUITextureMaster::GetTextureHeight(const char* texture_name){
 	return 0;
 }
 
-Frect CUITextureMaster::GetTextureRect(const char* texture_name){
+Frect CUITextureMaster::GetTextureRect(pcstr texture_name){
 	xr_map<shared_str, TEX_INFO>::iterator	it;
 	it = m_textures.find(texture_name);
 	if (it != m_textures.end())
@@ -125,7 +125,7 @@ Frect CUITextureMaster::GetTextureRect(const char* texture_name){
 	return Frect();
 }
 
-float CUITextureMaster::GetTextureWidth(const char* texture_name){
+float CUITextureMaster::GetTextureWidth(pcstr texture_name){
 	xr_map<shared_str, TEX_INFO>::iterator	it;
 	it = m_textures.find(texture_name);
 
@@ -135,7 +135,7 @@ float CUITextureMaster::GetTextureWidth(const char* texture_name){
 	return 0;
 }
 
-LPCSTR CUITextureMaster::GetTextureFileName(const char* texture_name){
+LPCSTR CUITextureMaster::GetTextureFileName(pcstr texture_name){
 	xr_map<shared_str, TEX_INFO>::iterator	it;
 	it = m_textures.find(texture_name);
 

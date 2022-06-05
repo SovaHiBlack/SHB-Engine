@@ -586,9 +586,6 @@
     <Filter Include="AI\AMonsters\common\components\Event Handler">
       <UniqueIdentifier>{4a707b1c-79fb-481c-a402-437058829531}</UniqueIdentifier>
     </Filter>
-    <Filter Include="AI\AMonsters\common\components\Event Handler\Custom Events">
-      <UniqueIdentifier>{4e1952b3-f6fd-4340-8f9d-6609c6c459e8}</UniqueIdentifier>
-    </Filter>
     <Filter Include="AI\AMonsters\common\components\Melee Checker">
       <UniqueIdentifier>{5d8bde6e-fa41-47ec-910d-6a62d756edad}</UniqueIdentifier>
     </Filter>
@@ -3303,9 +3300,6 @@
     <ClInclude Include="ai\Monsters\telekinesis.h">
       <Filter>AI\AMonsters\common\components\Abilities\Telekinesis</Filter>
     </ClInclude>
-    <ClInclude Include="ai\Monsters\telekinesis_inline.h">
-      <Filter>AI\AMonsters\common\components\Abilities\Telekinesis</Filter>
-    </ClInclude>
     <ClInclude Include="ai\Monsters\telekinetic_object.h">
       <Filter>AI\AMonsters\common\components\Abilities\Telekinesis</Filter>
     </ClInclude>
@@ -3338,9 +3332,6 @@
     </ClInclude>
     <ClInclude Include="ai\Monsters\monster_event_manager_defs.h">
       <Filter>AI\AMonsters\common\components\Event Handler</Filter>
-    </ClInclude>
-    <ClInclude Include="ai\Monsters\custom_events.h">
-      <Filter>AI\AMonsters\common\components\Event Handler\Custom Events</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\melee_checker.h">
       <Filter>AI\AMonsters\common\components\Melee Checker</Filter>

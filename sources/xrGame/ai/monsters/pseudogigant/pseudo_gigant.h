@@ -14,9 +14,9 @@ private:
 
 	// step_effector
 	struct {
-		float time;
-		float amplitude;	
-		float period_number;
+		F32 time;
+		F32 amplitude;
+		F32 period_number;
 	} step_effector;
 
 	SAttackEffector m_threaten_effector;
@@ -27,10 +27,10 @@ private:
 	
 	u32				m_threaten_delay_min;
 	u32				m_threaten_delay_max;
-	float			m_threaten_dist_min;
-	float			m_threaten_dist_max;
+	F32			m_threaten_dist_min;
+	F32			m_threaten_dist_max;
 
-	float			m_kick_damage;
+	F32			m_kick_damage;
 	
 	u32				m_time_kick_actor_slow_down;
 

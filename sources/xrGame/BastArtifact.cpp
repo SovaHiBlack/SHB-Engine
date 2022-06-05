@@ -201,12 +201,6 @@ void CBastArtefact::UpdateCLChild()
 	else if(H_Parent()) XFORM().set(H_Parent()->XFORM());
 }
 
-
-//void CBastArtefact::Hit(float P, Fvector &dir,	
-//						CObject* who, s16 element,
-//						Fvector position_in_object_space, 
-//						float impulse, 
-//						ALife::EHitType hit_type)
 void	CBastArtefact::Hit					(SHit* pHDS)
 {
 	SHit	HDS = *pHDS;
@@ -223,7 +217,6 @@ void	CBastArtefact::Hit					(SHit* pHDS)
 		HDS.impulse = 0;
 	}
 	
-//	inherited::Hit(P, dir, who, element, position_in_object_space, impulse, hit_type);
 	inherited::Hit(&HDS);
 }
 

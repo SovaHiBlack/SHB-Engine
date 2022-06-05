@@ -59,15 +59,15 @@ public:
 
 	virtual void		Die				(CObject* who);
 	virtual void		Think			();
-	virtual void		HitSignal		(float /**P/**/, Fvector &/**local_dir/**/,	CObject* /**who/**/, s16 /**element/**/){};
-	virtual void		HitImpulse		(float /**P/**/, Fvector &/**vWorldDir/**/, 	Fvector& /**vLocalDir/**/){};
+	virtual void		HitSignal		(F32 /**P/**/, Fvector &/**local_dir/**/,	CObject* /**who/**/, s16 /**element/**/){};
+	virtual void		HitImpulse		(F32 /**P/**/, Fvector &/**vWorldDir/**/, 	Fvector& /**vLocalDir/**/){};
 	virtual	void		Hit				(SHit* pHDS){inherited::Hit(pHDS);}
 	virtual	void		UpdateCL		();
 
 	virtual void		g_fireParams			(const CHudItem* pHudItem, Fvector& P, Fvector& D);
 	virtual void		g_WeaponBones			(int &L, int &R1, int &R2);
-	virtual	float		ffGetFov				()	const {return 150.f;}
-	virtual	float		ffGetRange				()	const {return 30.f;}
+	virtual	F32			ffGetFov				()	const {return 150.f;}
+	virtual	F32			ffGetRange				()	const {return 30.f;}
 	virtual	void		OnEvent					(NET_Packet& P, u16 type);
 	virtual	void		feel_touch_new			(CObject* O);
 	virtual	void		DropItemSendMessage		(CObject *O);

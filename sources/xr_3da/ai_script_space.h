@@ -33,7 +33,8 @@ extern "C" {
 #pragma warning(default:4995)
 #pragma warning(default:4267)
 
-typedef lua_State CLuaVirtualMachine;
+using CLuaVirtualMachine = lua_State;
+//typedef lua_State CLuaVirtualMachine;
 
 struct SMemberCallback {
 	luabind::functor<void>	*m_lua_function;

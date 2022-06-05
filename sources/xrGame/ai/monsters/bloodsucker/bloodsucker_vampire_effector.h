@@ -11,10 +11,10 @@ class CVampirePPEffector : public CEffectorPP {
 	typedef CEffectorPP inherited;	
 
 	SPPInfo state;			//current state
-	float	m_total;		// total PP time
+	F32	m_total;		// total PP time
 
 public:
-					CVampirePPEffector		(const SPPInfo &ppi, float life_time);
+					CVampirePPEffector		(const SPPInfo &ppi, F32 life_time);
 	virtual	BOOL	Process					(SPPInfo& pp);
 };
 
@@ -24,16 +24,16 @@ public:
 class CVampireCameraEffector : public CEffectorCam {
 	typedef CEffectorCam inherited;	
 
-	float	m_time_total;
+	F32	m_time_total;
 	Fvector	dangle_target;
 	Fvector dangle_current;
 
-	float	m_dist;
+	F32	m_dist;
 	Fvector m_direction;
 
 public:
-					CVampireCameraEffector	(float time, const Fvector &src, const Fvector &tgt);
-	virtual	BOOL	Process					(Fvector &p, Fvector &d, Fvector &n, float& fFov, float& fFar, float& fAspect);
+					CVampireCameraEffector	(F32 time, const Fvector &src, const Fvector &tgt);
+	virtual	BOOL	Process					(Fvector &p, Fvector &d, Fvector &n, F32& fFov, F32& fFar, F32& fAspect);
 };
 
 

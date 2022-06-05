@@ -88,7 +88,8 @@ void CMonsterEnemyManager::update()
 	if (prev_enemy && !prev_enemy->g_Alive())									flags.or(FLAG_ENEMY_DIE);
 	if (!enemy_see_me)															flags.or(FLAG_ENEMY_DOESNT_SEE_ME);
 	
-	float dist_now, dist_prev;
+	F32 dist_now;
+	F32 dist_prev;
 	if (prev_enemy == enemy) {
 		dist_now	= position.distance_to(monster->Position());
 		dist_prev	= prev_enemy_position.distance_to(monster->Position());
@@ -204,7 +205,13 @@ bool CMonsterEnemyManager::is_faced(const CEntityAlive *object0, const CEntityAl
 	if (object0->Position().distance_to(object1->Position()) > object0->ffGetRange())
 		return		(false);
 
-	float			yaw1, pitch1, yaw2, pitch2, fYawFov, fPitchFov, fRange;
+	F32			yaw1;
+	F32			pitch1;
+	F32			yaw2;
+	F32			pitch2;
+	F32			fYawFov;
+	F32			fPitchFov;
+	F32			fRange;
 	Fvector			tPosition = object0->Position();
 
 	yaw1			= object0->Orientation().yaw;

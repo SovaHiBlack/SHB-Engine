@@ -3,7 +3,7 @@
 #include "PhysicsShell.h"
 #include "PhysicsShellHolder.h"
 #include "level.h"
-#include "hit.h"
+#include "Hit.h"
 #include "phdestroyable.h"
 #include "xrmessages.h"
 #include "..\XR_3DA\SkeletonCustom.h"

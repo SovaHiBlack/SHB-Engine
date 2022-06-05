@@ -14,8 +14,8 @@ class CInvisibility {
 	bool			m_manual;
 	
 	bool			m_active;	// 
-	float			m_energy;	// [0..1]
-	float			m_speed;	// energy change speed (external)
+	F32			m_energy;	// [0..1]
+	F32			m_speed;	// energy change speed (external)
 
 protected:
 	virtual	void	reload					(LPCSTR section);
@@ -29,7 +29,7 @@ protected:
 public:
 			void	activate				();
 			void	deactivate				();
-	IC		float	energy					() {return m_energy;}
+	IC		F32	energy					() {return m_energy;}
 	IC		bool	active					() {return m_active;}
 	IC		bool	full_energy				() {return !!fsimilar(m_energy,1.f);}
 

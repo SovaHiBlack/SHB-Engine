@@ -28,7 +28,7 @@ public:
 						CTheoraStream		();
 	virtual				~CTheoraStream		();
 
-	BOOL				Load				(const char* fname);
+	BOOL				Load				(pcstr fname);
 
 	void				Reset				();
 

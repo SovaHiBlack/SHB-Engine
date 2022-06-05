@@ -5,11 +5,11 @@ class CScanningAbility {
 	_Object		*object;
 
 	// external members
-	float		critical_value;
-	float		scan_radius;
-	float		velocity_threshold;
-	float		decrease_value;
-	float		scan_trace_time_freq;
+	F32		critical_value;
+	F32		scan_radius;
+	F32		velocity_threshold;
+	F32		decrease_value;
+	F32		scan_trace_time_freq;
 
 	ref_sound	sound_scan;
 
@@ -20,12 +20,12 @@ class CScanningAbility {
 		eStateScanning
 	} state;
 
-	float		scan_value;
+	F32		scan_value;
 
 	SPPInfo		m_effector_info;
-	float		m_effector_time;
-	float		m_effector_time_attack;
-	float		m_effector_time_release;
+	F32		m_effector_time;
+	F32		m_effector_time_attack;
+	F32		m_effector_time_release;
 
 	u32			time_last_trace;
 
@@ -48,11 +48,11 @@ public:
 	virtual void	on_scanning				() {}
 
 private:
-			float	get_velocity			(CObject *obj);
+	F32	get_velocity			(CObject *obj);
 
 #ifdef DEBUG
 public:
-			float	get_scan_value			(){return scan_value;}
+	F32	get_scan_value			(){return scan_value;}
 #endif
 
 };

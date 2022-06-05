@@ -44,7 +44,7 @@ class CControlPathBuilderBase : public CControl_ComBase {
 
 	u32			m_time;					// время перестроения пути
 	u32			m_last_time_target_set;
-	float		m_distance_to_path_end;
+	F32		m_distance_to_path_end;
 	bool		m_failed;
 	u32			m_last_time_dir_set;
 
@@ -52,10 +52,10 @@ class CControlPathBuilderBase : public CControl_ComBase {
 
 	struct {
 		bool	use_covers;
-		float	min_dist;
-		float	max_dist;
-		float	deviation;
-		float	radius;
+		F32	min_dist;
+		F32	max_dist;
+		F32	deviation;
+		F32	radius;
 	} m_cover_info;
 
 	enum {
@@ -120,9 +120,9 @@ public:
 		void		set_retreat_from_point	(const Fvector &position);
 
 	IC	void		set_rebuild_time		(u32 time);
-	IC	void		set_cover_params		(float min, float max, float dev, float radius);
+	IC	void		set_cover_params		(F32 min, F32 max, F32 dev, F32 radius);
 	IC	void		set_use_covers			(bool val = true);
-	IC	void		set_distance_to_end		(float dist);
+	IC	void		set_distance_to_end		(F32 dist);
 
 
 		void		prepare_builder			();

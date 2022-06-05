@@ -2,8 +2,8 @@
 #include "control_combase.h"
 
 class CControlRunAttack : public CControl_ComCustom<> {
-	float			m_min_dist;
-	float			m_max_dist;
+	F32			m_min_dist;
+	F32			m_max_dist;
 
 	u32				m_min_delay;
 	u32				m_max_delay;

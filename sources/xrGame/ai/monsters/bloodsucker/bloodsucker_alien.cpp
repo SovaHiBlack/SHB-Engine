@@ -19,14 +19,14 @@ class CAlienEffectorPP : public CEffectorPP {
 	typedef CEffectorPP inherited;
 
 	SPPInfo		state;
-	float		factor;
-	float		target_factor;
+	F32		factor;
+	F32		target_factor;
 
 public:
 					CAlienEffectorPP	(const SPPInfo &ppi, EEffectorPPType type);
 	virtual			~CAlienEffectorPP	();
 
-	void	Update			(float new_factor) {factor = new_factor;}
+	void	Update			(F32 new_factor) {factor = new_factor;}
 	void	Destroy			();
 
 private:
@@ -78,19 +78,19 @@ void CAlienEffectorPP::Destroy()
 class CAlienEffector : public CEffectorCam {
 	typedef CEffectorCam inherited;	
 
-	float	m_time_total;
+	F32	m_time_total;
 	Fvector	dangle_target;
 	Fvector dangle_current;
 
 	CAI_Bloodsucker *monster;
 
-	float		m_current_fov;
+	F32		m_current_fov;
 	Fmatrix		m_prev_eye_matrix;
-	float		m_inertion;
+	F32		m_inertion;
 
 public:
 					CAlienEffector	(ECamEffectorType type, CAI_Bloodsucker *obj);
-	virtual	BOOL	Process			(Fvector &p, Fvector &d, Fvector &n, float& fFov, float& fFar, float& fAspect);
+	virtual	BOOL	Process			(Fvector &p, Fvector &d, Fvector &n, F32& fFov, F32& fFar, F32& fAspect);
 };
 
 
@@ -120,7 +120,7 @@ CAlienEffector::CAlienEffector(ECamEffectorType type, CAI_Bloodsucker *obj) :
 	m_current_fov			= MIN_FOV;
 }
 
-BOOL CAlienEffector::Process(Fvector &p, Fvector &d, Fvector &n, float& fFov, float& fFar, float& fAspect)
+BOOL CAlienEffector::Process(Fvector &p, Fvector &d, Fvector &n, F32& fFov, F32& fFar, F32& fAspect)
 {
 	// Инициализация
 	Fmatrix	Mdef;
@@ -149,7 +149,7 @@ BOOL CAlienEffector::Process(Fvector &p, Fvector &d, Fvector &n, float& fFov, fl
 	cur_matrix.k = monster->Direction();
 	cur_matrix.c = get_head_position(monster);
 
-	float	rel_dist = m_prev_eye_matrix.c.distance_to(cur_matrix.c) / MAX_CAMERA_DIST;
+	F32	rel_dist = m_prev_eye_matrix.c.distance_to(cur_matrix.c) / MAX_CAMERA_DIST;
 	clamp	(rel_dist, 0.f, 1.f);
 
 	def_lerp(m_inertion, 1 - rel_dist, rel_dist, Device.fTimeDelta);
@@ -163,10 +163,10 @@ BOOL CAlienEffector::Process(Fvector &p, Fvector &d, Fvector &n, float& fFov, fl
 	Mdef = m_prev_eye_matrix;
 
 	//set fov
-	float	rel_speed = monster->m_fCurSpeed / 15.f;
+	F32	rel_speed = monster->m_fCurSpeed / 15.f;
 	clamp	(rel_speed,0.f,1.f);
 
-	float	m_target_fov = MIN_FOV + (MAX_FOV-MIN_FOV) * rel_speed;
+	F32	m_target_fov = MIN_FOV + (MAX_FOV-MIN_FOV) * rel_speed;
 	def_lerp(m_current_fov, m_target_fov, FOV_SPEED, Device.fTimeDelta);
 	
 	fFov = m_current_fov;

@@ -110,10 +110,10 @@ void CControlJump::start_jump(const Fvector &point)
 
 		if (is_flag(SControlJumpData::ePrepareInMove)) {
 			// get animation time
-			float time			= m_man->animation().motion_time(m_data.state_prepare_in_move.motion, m_object->Visual());
+			F32 time			= m_man->animation().motion_time(m_data.state_prepare_in_move.motion, m_object->Visual());
 			// set acceleration and velocity
 			SVelocityParam &vel	= m_object->move().get_velocity(m_data.state_prepare_in_move.velocity_mask);
-			float dist = time * vel.velocity.linear;
+			F32 dist = time * vel.velocity.linear;
 
 			// check nodes in direction
 			Fvector target_point;
@@ -337,9 +337,9 @@ void CControlJump::on_event(ControlCom::EEventType type, ControlCom::IEventData 
 			// start jump here
 			//---------------------------------------------------------------------------------
 			// получить время физ.прыжка
-			float ph_time = m_object->character_physics_support()->movement()->JumpMinVelTime(m_target_position);
+			F32 ph_time = m_object->character_physics_support()->movement()->JumpMinVelTime(m_target_position);
 			// выполнить прыжок в соответствии с делителем времени
-			float cur_factor	= ((m_data.force_factor > 0) ? m_data.force_factor : m_jump_factor);
+			F32 cur_factor	= ((m_data.force_factor > 0) ? m_data.force_factor : m_jump_factor);
 			m_jump_time			= ph_time/cur_factor;
 			m_object->character_physics_support()->movement()->Jump(m_target_position,m_jump_time);
 			m_time_started		= time();
@@ -352,7 +352,8 @@ void CControlJump::on_event(ControlCom::EEventType type, ControlCom::IEventData 
 
 			ctrl_data_dir->heading.target_angle		= m_man->direction().angle_to_target(m_target_position);
 
-			float cur_yaw,target_yaw;
+			F32 cur_yaw;
+			F32 target_yaw;
 			m_man->direction().get_heading			(cur_yaw, target_yaw);
 			ctrl_data_dir->heading.target_speed		= angle_difference(cur_yaw,target_yaw)/ m_jump_time;
 			ctrl_data_dir->linear_dependency		= false;
@@ -392,14 +393,16 @@ void CControlJump::hit_test()
 		if (d.magnitude() > m_hit_trace_range) m_object_hitted = false;
 
 		// проверка на  Field-Of-Hit
-		float my_h,my_p;
-		float h,p;
+		F32 my_h;
+		F32 my_p;
+		F32 h;
+		F32 p;
 
 		m_object->Direction().getHP(my_h,my_p);
 		d.getHP(h,p);
 
-		float from	= angle_normalize(my_h - PI_DIV_6);
-		float to	= angle_normalize(my_h + PI_DIV_6);
+		F32 from	= angle_normalize(my_h - PI_DIV_6);
+		F32 to	= angle_normalize(my_h + PI_DIV_6);
 
 		if (!is_angle_between(h, from, to)) m_object_hitted = false;
 
@@ -423,15 +426,16 @@ bool CControlJump::can_jump(CObject *target)
 	target->Center				(target_position);
 
 	// проверка на dist
-	float dist = source_position.distance_to(target_position);
+	F32 dist = source_position.distance_to(target_position);
 	if ((dist < m_min_distance) || (dist > m_max_distance)) return false;
 
 	// получить вектор направления и его мир угол
-	float		dir_yaw = Fvector().sub(target_position, source_position).getH();
+	F32		dir_yaw = Fvector().sub(target_position, source_position).getH();
 	dir_yaw		= angle_normalize(-dir_yaw);
 
 	// проверка на angle
-	float yaw_current, yaw_target;
+	F32 yaw_current;
+	F32 yaw_target;
 	m_object->control().direction().get_heading(yaw_current, yaw_target);
 	if (angle_difference(yaw_current, dir_yaw) > m_max_angle) return false;
 	
@@ -450,10 +454,10 @@ bool CControlJump::can_jump(CObject *target)
 			bool good_trace_res = false;
 
 			// get animation time
-			float time			= m_man->animation().motion_time(m_data.state_prepare_in_move.motion, m_object->Visual());
+			F32 time			= m_man->animation().motion_time(m_data.state_prepare_in_move.motion, m_object->Visual());
 			// set acceleration and velocity
 			SVelocityParam &vel	= m_object->move().get_velocity(m_data.state_prepare_in_move.velocity_mask);
-			float dist = time * vel.velocity.linear;
+			F32 dist = time * vel.velocity.linear;
 
 			// check nodes in direction
 			Fvector target_point;
@@ -486,15 +490,15 @@ Fvector CControlJump::predict_position(CObject *obj, const Fvector &pos)
 	//CEntityAlive *entity_alive = smart_cast<CEntityAlive*>(obj);
 	//VERIFY(entity_alive);
 	//
-	//float velocity = entity_alive->movement_control()->GetVelocityActual();
-	//float jump_time = m_object->movement_control()->JumpMinVelTime(pos);
-	//float prediction_dist = jump_time * velocity;
+	//F32 velocity = entity_alive->movement_control()->GetVelocityActual();
+	//F32 jump_time = m_object->movement_control()->JumpMinVelTime(pos);
+	//F32 prediction_dist = jump_time * velocity;
 
 	//
 
 	//Fvector					dir;
 	//dir.set					(entity->movement_control()->GetVelocity());
-	//float speed				= dir.magnitude();
+	//F32 speed				= dir.magnitude();
 	//dir.normalize_safe		();
 
 	//Fvector					prediction_pos;
@@ -502,17 +506,19 @@ Fvector CControlJump::predict_position(CObject *obj, const Fvector &pos)
 	//prediction_pos.mad		(pos, dir, speed * jump_time / 2);
 
 	//// проверить prediction_pos на дистанцию и угол
-	//float dist = m_object->Position().distance_to(prediction_pos);
+	//F32 dist = m_object->Position().distance_to(prediction_pos);
 	//if ((dist < m_min_distance) || (dist > m_max_distance)) return pos;
 
 	//// получить вектор направления и его мир угол
-	//float		dir_yaw, dir_pitch;
+	//F32		dir_yaw;
+	//F32 dir_pitch;
 
 	//dir.sub		(prediction_pos, m_object->Position());
 	//dir.getHP	(dir_yaw, dir_pitch);
 
 	//// проверка на angle и на dist
-	//float yaw_current, yaw_target;
+	//F32 yaw_current;
+	//F32 yaw_target;
 	//m_object->control().direction().get_heading(yaw_current, yaw_target);
 	//if (angle_difference(yaw_current, -dir_yaw) > m_max_angle) return pos;
 	

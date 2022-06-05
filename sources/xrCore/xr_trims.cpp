@@ -26,9 +26,9 @@ LPSTR _Trim( LPSTR str )
 	return str;
 }
 
-LPCSTR _SetPos (LPCSTR src, u32 pos, char separator )
+pcstr _SetPos (pcstr src, u32 pos, char separator )
 {
-	LPCSTR	res			= src;
+	pcstr	res			= src;
 	u32		p			= 0;
 	while( (p<pos) && (0!=(res=strchr(res,separator))) )
 	{
@@ -38,9 +38,9 @@ LPCSTR _SetPos (LPCSTR src, u32 pos, char separator )
 	return		res;
 }
 
-LPCSTR _CopyVal ( LPCSTR src, LPSTR dst, char separator )
+pcstr _CopyVal (pcstr src, LPSTR dst, char separator )
 {
-	LPCSTR	p;
+	pcstr	p;
 	size_t	n;
 	p			= strchr	( src, separator );
 	n			= (p>0) ? (p-src) : xr_strlen(src);
@@ -49,12 +49,12 @@ LPCSTR _CopyVal ( LPCSTR src, LPSTR dst, char separator )
 	return		dst;
 }
 
-int	_GetItemCount ( LPCSTR src, char separator )
+int	_GetItemCount (pcstr src, char separator )
 {
 	u32		cnt			= 0;
 	if (src&&src[0]){
-		LPCSTR	res			= src;
-		LPCSTR	last_res	= res;
+		pcstr	res			= src;
+		pcstr	last_res	= res;
 		while( 0!=(res=strchr(res,separator)) )
 		{
 			res		++;
@@ -67,9 +67,9 @@ int	_GetItemCount ( LPCSTR src, char separator )
 	return		cnt;
 }
 
-LPSTR _GetItem ( LPCSTR src, int index, LPSTR dst, char separator, LPCSTR def, bool trim )
+LPSTR _GetItem (pcstr src, int index, LPSTR dst, char separator, pcstr def, bool trim )
 {
-	LPCSTR	ptr;
+	pcstr	ptr;
 	ptr			= _SetPos	( src, index, separator );
 	if( ptr )	_CopyVal	( ptr, dst, separator );
 		else	strcpy		( dst, def );
@@ -77,11 +77,11 @@ LPSTR _GetItem ( LPCSTR src, int index, LPSTR dst, char separator, LPCSTR def, b
 	return		dst;
 }
 
-LPSTR _GetItems ( LPCSTR src, int idx_start, int idx_end, LPSTR dst, char separator )
+LPSTR _GetItems (pcstr src, int idx_start, int idx_end, LPSTR dst, char separator )
 {
 	LPSTR n = dst;
     int level = 0;
- 	for (LPCSTR p=src; *p!=0; p++){
+ 	for (pcstr p=src; *p!=0; p++){
     	if ((level>=idx_start)&&(level<idx_end))
 			*n++ = *p;
     	if (*p==separator) level++;
@@ -91,7 +91,7 @@ LPSTR _GetItems ( LPCSTR src, int idx_start, int idx_end, LPSTR dst, char separa
 	return dst;
 }
 
-u32 _ParseItem(const char* src, xr_token* token_list)
+u32 _ParseItem(pcstr src, xr_token* token_list)
 {
 	for (int i = 0; token_list[i].name; i++)
 	{
@@ -104,21 +104,21 @@ u32 _ParseItem(const char* src, xr_token* token_list)
 	return u32(-1);
 }
 
-u32 _ParseItem(const char* src, int ind, xr_token* token_list)
+u32 _ParseItem(pcstr src, int ind, xr_token* token_list)
 {
 	char dst[128];
 	_GetItem(src, ind, dst);
 	return _ParseItem(dst, token_list);
 }
 
-LPSTR _ReplaceItems( LPCSTR src, int idx_start, int idx_end, LPCSTR new_items, LPSTR dst, char separator ){
+LPSTR _ReplaceItems(pcstr src, int idx_start, int idx_end, pcstr new_items, LPSTR dst, char separator ){
 	LPSTR n = dst;
     int level = 0;
     bool bCopy = true;
-	for (LPCSTR p=src; *p!=0; p++){
+	for (pcstr p=src; *p!=0; p++){
     	if ((level>=idx_start)&&(level<idx_end)){
         	if (bCopy){
-            	for (LPCSTR itm = new_items; *itm!=0;) *n++ = *itm++;
+            	for (pcstr itm = new_items; *itm!=0;) *n++ = *itm++;
                 bCopy=false;
             }
 	    	if (*p==separator) *n++ = separator;
@@ -131,14 +131,14 @@ LPSTR _ReplaceItems( LPCSTR src, int idx_start, int idx_end, LPCSTR new_items, L
 	return dst;
 }
 
-LPSTR _ReplaceItem ( LPCSTR src, int index, LPCSTR new_item, LPSTR dst, char separator ){
+LPSTR _ReplaceItem (pcstr src, int index, pcstr new_item, LPSTR dst, char separator ){
 	LPSTR n = dst;
     int level = 0;
     bool bCopy = true;
-	for (LPCSTR p=src; *p!=0; p++){
+	for (pcstr p=src; *p!=0; p++){
     	if (level==index){
         	if (bCopy){
-            	for (LPCSTR itm = new_item; *itm!=0;) *n++ = *itm++;
+            	for (pcstr itm = new_item; *itm!=0;) *n++ = *itm++;
                 bCopy=false;
             }
 	    	if (*p==separator) *n++ = separator;
@@ -168,7 +168,7 @@ xr_string& _ChangeSymbol	( xr_string& name, char src, char dest )
     return  name;
 }
 
-void _SequenceToList(LPSTRVec& lst, LPCSTR in, char separator)
+void _SequenceToList(LPSTRVec& lst, pcstr in, char separator)
 {
 	int t_cnt=_GetItemCount(in,separator);
 	string1024 T;
@@ -179,7 +179,7 @@ void _SequenceToList(LPSTRVec& lst, LPCSTR in, char separator)
 	}
 }
 
-void _SequenceToList(RStringVec& lst, LPCSTR in, char separator)
+void _SequenceToList(RStringVec& lst, pcstr in, char separator)
 {
 	lst.clear	();
 	int t_cnt	= _GetItemCount(in,separator);
@@ -191,7 +191,7 @@ void _SequenceToList(RStringVec& lst, LPCSTR in, char separator)
 	}
 }
 
-void _SequenceToList(SStringVec& lst, LPCSTR in, char separator)
+void _SequenceToList(SStringVec& lst, pcstr in, char separator)
 {
 	lst.clear	();
 	int t_cnt	= _GetItemCount(in,separator);
@@ -217,8 +217,8 @@ xr_string	_ListToSequence(const SStringVec& lst)
 
 xr_string& _TrimLeft( xr_string& str )
 {
-	LPCSTR b		= str.c_str();
-	LPCSTR p 		= str.c_str();
+	pcstr b		= str.c_str();
+	pcstr p 		= str.c_str();
 	while( *p && (u8(*p)<=u8(' ')) ) p++;
     if (p!=b)
     	str.erase	(0,p-b);
@@ -227,10 +227,10 @@ xr_string& _TrimLeft( xr_string& str )
 
 xr_string& _TrimRight( xr_string& str )
 {
-	LPCSTR b		= str.c_str();
+	pcstr b		= str.c_str();
     size_t l		= str.length();
     if (l){
-        LPCSTR p 		= str.c_str()+l-1;
+		pcstr p 		= str.c_str()+l-1;
         while( (p!=b) && (u8(*p)<=u8(' ')) ) p--;
         if (p!=(str+b))	str.erase	(p-b+1,l-(p-b));
     }
@@ -244,9 +244,9 @@ xr_string& _Trim( xr_string& str )
 	return str;
 }
 
-LPCSTR _CopyVal ( LPCSTR src, xr_string& dst, char separator )
+pcstr _CopyVal (pcstr src, xr_string& dst, char separator )
 {
-	LPCSTR		p;
+	pcstr		p;
 	ptrdiff_t	n;
 	p			= strchr	( src, separator );
 	n			= (p>0) ? (p-src) : xr_strlen(src);
@@ -255,9 +255,9 @@ LPCSTR _CopyVal ( LPCSTR src, xr_string& dst, char separator )
 	return		dst.c_str();
 }
 
-LPCSTR _GetItem ( LPCSTR src, int index, xr_string& dst, char separator, LPCSTR def, bool trim )
+pcstr _GetItem (pcstr src, int index, xr_string& dst, char separator, pcstr def, bool trim )
 {
-	LPCSTR	ptr;
+	pcstr	ptr;
 	ptr			= _SetPos	( src, index, separator );
 	if( ptr )	_CopyVal	( ptr, dst, separator );
 	else	dst = def;

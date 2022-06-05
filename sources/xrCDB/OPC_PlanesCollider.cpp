@@ -79,7 +79,7 @@ PlanesCollider::~PlanesCollider()
  *	\return		null if everything is ok, else a string describing the problem
  */
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-const char* PlanesCollider::ValidateSettings()
+pcstr PlanesCollider::ValidateSettings()
 {
 	if(TemporalCoherenceEnabled() && !FirstContactEnabled())	return "Temporal coherence only works with ""First contact"" mode!";
 

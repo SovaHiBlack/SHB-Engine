@@ -4,13 +4,13 @@
 
 class CUIOptionsManagerScript {
 public:
-	void SaveBackupValues(const char* group);
-	void SetCurrentValues(const char* group);
-	void SaveValues(const char* group);
-	bool IsGroupChanged(const char* group);
-	void UndoGroup(const char* group);
+	void SaveBackupValues(pcstr group);
+	void SetCurrentValues(pcstr group);
+	void SaveValues(pcstr group);
+	bool IsGroupChanged(pcstr group);
+	void UndoGroup(pcstr group);
 	void OptionsPostAccept();
-	void SendMessage2Group(const char* group, const char* message);
+	void SendMessage2Group(pcstr group, pcstr message);
 
 	DECLARE_SCRIPT_REGISTER_FUNCTION
 };

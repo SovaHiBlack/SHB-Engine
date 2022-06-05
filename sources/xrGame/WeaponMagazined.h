@@ -103,9 +103,9 @@ public:
 	virtual void	OnH_A_Chield		();
 
 	virtual bool	Attach(PIItem pIItem, bool b_send_event);
-	virtual bool	Detach(const char* item_section_name, bool b_spawn_item);
+	virtual bool	Detach(pcstr item_section_name, bool b_spawn_item);
 	virtual bool	CanAttach(PIItem pIItem);
-	virtual bool	CanDetach(const char* item_section_name);
+	virtual bool	CanDetach(pcstr item_section_name);
 
 	virtual void	InitAddons();
 

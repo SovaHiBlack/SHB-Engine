@@ -150,7 +150,7 @@ void CUICharacterInfo::Init(float x, float y, float width, float height, CUIXml*
 	}
 }
 
-void CUICharacterInfo::Init(float x, float y, float width, float height, const char* xml_name)
+void CUICharacterInfo::Init(float x, float y, float width, float height, pcstr xml_name)
 {
 	CUIXml							uiXml;
 	bool xml_result					= uiXml.Init(CONFIG_PATH, UI_PATH, xml_name);

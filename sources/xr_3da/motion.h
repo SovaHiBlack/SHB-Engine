@@ -54,7 +54,7 @@ public:
 					CCustomMotion	(CCustomMotion* src);
 	virtual			~CCustomMotion	();
 
-	void			SetName			(const char* n)	{string256 tmp; tmp[0]=0; if(n){strcpy_s(tmp,n); strlwr(tmp);} name=tmp;}
+	void			SetName			(pcstr n)	{string256 tmp; tmp[0]=0; if(n){strcpy_s(tmp,n); strlwr(tmp);} name=tmp;}
 	LPCSTR			Name			()				{return name.c_str();}
     int				FrameStart		()				{return iFrameStart;}
     int				FrameEnd		()				{return iFrameEnd;}
@@ -66,8 +66,8 @@ public:
 	virtual void	Save			(IWriter& F);
 	virtual bool	Load			(IReader& F);
 
-	virtual void	SaveMotion		(const char* buf)=0;
-	virtual bool	LoadMotion		(const char* buf)=0;
+	virtual void	SaveMotion		(pcstr buf)=0;
+	virtual bool	LoadMotion		(pcstr buf)=0;
 };
 
 //--------------------------------------------------------------------------
@@ -85,8 +85,8 @@ public:
 	virtual void	Save			(IWriter& F);
 	virtual bool	Load			(IReader& F);
 
-	virtual void	SaveMotion		(const char* buf);
-	virtual bool	LoadMotion		(const char* buf);
+	virtual void	SaveMotion		(pcstr buf);
+	virtual bool	LoadMotion		(pcstr buf);
 };
 
 //--------------------------------------------------------------------------

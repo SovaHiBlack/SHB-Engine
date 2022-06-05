@@ -55,8 +55,8 @@ void  CAmebaZone::Affect(SZoneObjectInfo* O)
 
 	Fvector position_in_bone_space;
 
-	float power = Power(distance_to_center(O->object));
-	float impulse = m_fHitImpulseScale*power*pGameObject->GetMass();
+	F32 power = Power(distance_to_center(O->object));
+	F32 impulse = m_fHitImpulseScale*power*pGameObject->GetMass();
 
 	//статистика по объекту
 	O->total_damage += power;
@@ -110,7 +110,7 @@ void CAmebaZone::SwitchZoneState(EZoneState new_state)
 	inherited::SwitchZoneState(new_state);
 }
 
-float CAmebaZone::distance_to_center(CObject* O)
+F32 CAmebaZone::distance_to_center(CObject* O)
 {
 	Fvector P; 
 	XFORM().transform_tiny(P,CFORM()->getSphere().P);

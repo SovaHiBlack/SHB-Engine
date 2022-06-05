@@ -26,7 +26,7 @@ CTelekineticObject::~CTelekineticObject()
 
 
 
-bool CTelekineticObject::init(CTelekinesis* tele,CPhysicsShellHolder *obj, float s, float h, u32 ttk, bool rot) 
+bool CTelekineticObject::init(CTelekinesis* tele,CPhysicsShellHolder *obj, F32 s, F32 h, u32 ttk, bool rot)
 {
 	if(!can_activate(obj)) return false;
 
@@ -99,7 +99,7 @@ void CTelekineticObject::switch_state(ETelekineticState new_state)
 	}
 	state=new_state;
 }
-void CTelekineticObject::raise(float step) 
+void CTelekineticObject::raise(F32 step)
 {
 	if (!object || !object->m_pPhysicsShell || !object->m_pPhysicsShell->isActive()) return;
 	
@@ -108,7 +108,7 @@ void CTelekineticObject::raise(float step)
 	Fvector dir;
 	dir.set(0.f,1.0f,0.f);
 
-	float elem_size = float(object->m_pPhysicsShell->Elements().size());
+	F32 elem_size = F32(object->m_pPhysicsShell->Elements().size());
 	dir.mul(elem_size*elem_size*strength);
 
 	if (OnServer()) (object->m_pPhysicsShell->Elements()[0])->applyGravityAccel(dir);
@@ -146,7 +146,7 @@ void CTelekineticObject::keep()
 	if (!object || !object->m_pPhysicsShell || !object->m_pPhysicsShell->isActive()) return;
 
 	// проверить высоту
-	float cur_h		= object->Position().y;
+	F32 cur_h		= object->Position().y;
 
 	// установить dir в соответствие с текущей высотой
 	Fvector dir;
@@ -157,7 +157,7 @@ void CTelekineticObject::keep()
 		dir.normalize_safe();
 	}
 
-	//float elem_size = float(object->m_pPhysicsShell->Elements().size());
+	//F32 elem_size = float(object->m_pPhysicsShell->Elements().size());
 	dir.mul(5.0f);
 
 	if (OnServer()) (object->m_pPhysicsShell->Elements()[0])->applyGravityAccel(dir);
@@ -187,7 +187,7 @@ void CTelekineticObject::release()
 	switch_state(TS_None);
 }
 
-void CTelekineticObject::fire_t(const Fvector &target, float time)
+void CTelekineticObject::fire_t(const Fvector &target, F32 time)
 {
 	switch_state(TS_Fire);
 	//time_fire_started	= Device.dwTimeGlobal;
@@ -209,7 +209,7 @@ void CTelekineticObject::fire_t(const Fvector &target, float time)
 		sound_hold.stop();
 
 }
-void CTelekineticObject::fire(const Fvector &target, float power)
+void CTelekineticObject::fire(const Fvector &target, F32 power)
 {
 	//state				= TS_Fire;
 	switch_state(TS_Fire);

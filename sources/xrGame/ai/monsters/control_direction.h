@@ -4,8 +4,8 @@
 
 struct SControlDirectionData : public ControlCom::IComData {
 	struct {
-		float	target_angle;
-		float	target_speed;
+		F32	target_angle;
+		F32	target_speed;
 	} heading, pitch;
 
 	bool		linear_dependency;
@@ -24,9 +24,9 @@ class CControlDirection : public CControl_ComPure<SControlDirectionData> {
 	typedef CControl_ComPure<SControlDirectionData> inherited;
 
 	struct {
-		float	current_angle;
-		float	current_speed;			// current speed
-		float	current_acc;
+		F32	current_angle;
+		F32	current_speed;			// current speed
+		F32	current_acc;
 
 		void	init	() {
 			current_angle	= 0;
@@ -41,18 +41,18 @@ public:
 	virtual void	update_frame		();
 	
 	// services
-			bool	is_face_target		(const Fvector &position,	float eps_angle);
-			bool	is_face_target		(const CObject *obj,		float eps_angle);
+			bool	is_face_target		(const Fvector &position, F32 eps_angle);
+			bool	is_face_target		(const CObject *obj, F32 eps_angle);
 
 			bool	is_from_right		(const Fvector &position);
-			bool	is_from_right		(float yaw);
+			bool	is_from_right		(F32 yaw);
 
-			bool	is_turning			(float eps_angle = EPS);
+			bool	is_turning			(F32 eps_angle = EPS);
 
-			void	get_heading			(float &current, float &target);
-			float	get_heading_current	();	
+			void	get_heading			(F32& current, F32& target);
+			F32	get_heading_current	();
 
-			float	angle_to_target		(const Fvector &position);	
+			F32	angle_to_target		(const Fvector &position);
 private:				
 			void	pitch_correction	();
 };

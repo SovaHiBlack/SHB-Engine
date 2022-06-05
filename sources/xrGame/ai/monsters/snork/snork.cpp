@@ -134,16 +134,16 @@ void CSnork::UpdateCL()
 
 #define TRACE_RANGE 30.f
 
-float CSnork::trace(const Fvector &dir)
+F32 CSnork::trace(const Fvector &dir)
 {
-	float ret_val = flt_max;
+	F32 ret_val = flt_max;
 
 	collide::rq_result	l_rq;
 
 	Fvector		trace_from;
 	Center		(trace_from);
 
-	float		trace_dist = Radius() + TRACE_RANGE;
+	F32		trace_dist = Radius() + TRACE_RANGE;
 
 	if (Level().ObjectSpace.RayPick(trace_from, dir, trace_dist, collide::rqtStatic, l_rq, this)) {
 		if ((l_rq.range < trace_dist))
@@ -158,7 +158,7 @@ bool CSnork::find_geometry(Fvector &dir)
 {
 	// 1. trace direction
 	dir		= Direction();
-	float	range;
+	F32	range;
 	
 	if (trace_geometry(dir, range)) {
 		if (range < JUMP_DISTANCE) {
@@ -169,10 +169,11 @@ bool CSnork::find_geometry(Fvector &dir)
 	return false;
 }
 
-bool CSnork::trace_geometry(const Fvector &d, float &range)
+bool CSnork::trace_geometry(const Fvector &d, F32& range)
 {
 	Fvector				dir;
-	float				h, p;
+	F32				h;
+	F32 p;
 
 	Fvector				Pl,Pc,Pr;
 	Fvector				center;
@@ -181,7 +182,7 @@ bool CSnork::trace_geometry(const Fvector &d, float &range)
 	range				= trace (d);
 	if (range > TRACE_RANGE) return false;
 	
-	float angle			= asin(1.f / range);
+	F32 angle			= asin(1.f / range);
 
 	// trace center ray
 	dir					= d;
@@ -219,7 +220,10 @@ bool CSnork::trace_geometry(const Fvector &d, float &range)
 
 	Pr.mad				(center, dir, range);
 
-	float				h1,p1,h2,p2;
+	F32				h1;
+	F32				p1;
+	F32				h2;
+	F32				p2;
 
 	Fvector().sub(Pl, Pc).getHP(h1,p1);
 	Fvector().sub(Pc, Pr).getHP(h2,p2);
@@ -246,7 +250,7 @@ void CSnork::HitEntityInJump(const CEntity *pEntity)
 }
 
 //////////////////////////////////////////////////////////////////////////
-void CSnork::jump(const Fvector &position, float factor)
+void CSnork::jump(const Fvector &position, F32 factor)
 {
 	com_man().script_jump	(position, factor);
 	sound().play			(MonsterSound::eMonsterSoundAggressive);

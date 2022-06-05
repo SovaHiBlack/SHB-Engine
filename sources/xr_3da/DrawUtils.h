@@ -24,10 +24,10 @@ public:
     virtual void __stdcall DrawSound		   	(const Fvector& p, F32 radius, u32 clr)=0;
     virtual void __stdcall DrawLineSphere	   	(const Fvector& p, F32 radius, u32 clr, BOOL bCross)=0;
 
-	virtual void __stdcall dbgDrawPlacement		(const Fvector& p, int sz, u32 clr, LPCSTR caption=0, u32 clr_font=0xffffffff)=0;
-    virtual void __stdcall dbgDrawVert			(const Fvector& p0, u32 clr, LPCSTR caption=0)=0;
-    virtual void __stdcall dbgDrawEdge			(const Fvector& p0,	const Fvector& p1, u32 clr, LPCSTR caption=0)=0;
-    virtual void __stdcall dbgDrawFace			(const Fvector& p0,	const Fvector& p1, const Fvector& p2, u32 clr, LPCSTR caption=0)=0;
+	virtual void __stdcall dbgDrawPlacement		(const Fvector& p, int sz, u32 clr, pcstr caption=0, u32 clr_font=0xffffffff)=0;
+    virtual void __stdcall dbgDrawVert			(const Fvector& p0, u32 clr, pcstr caption=0)=0;
+    virtual void __stdcall dbgDrawEdge			(const Fvector& p0,	const Fvector& p1, u32 clr, pcstr caption=0)=0;
+    virtual void __stdcall dbgDrawFace			(const Fvector& p0,	const Fvector& p1, const Fvector& p2, u32 clr, pcstr caption=0)=0;
 
     virtual void __stdcall DrawFace				(const Fvector& p0,	const Fvector& p1, const Fvector& p2, u32 clr_s, u32 clr_w, BOOL bSolid, BOOL bWire)=0;
     virtual void __stdcall DrawLine				(const Fvector& p0,	const Fvector& p1, u32 clr)=0;
@@ -62,7 +62,7 @@ public:
 	virtual void __stdcall DrawObjectAxis	   	(const Fmatrix& T, F32 sz, BOOL sel)=0;
 	virtual void __stdcall DrawSelectionRect   	(const Ivector2& m_SelStart, const Ivector2& m_SelEnd)=0;
 
-    virtual void __stdcall OutText				(const Fvector& pos, LPCSTR text, u32 color=0xFF000000, u32 shadow_color=0xFF909090)=0;
+    virtual void __stdcall OutText				(const Fvector& pos, pcstr text, u32 color=0xFF000000, u32 shadow_color=0xFF909090)=0;
 };
 //----------------------------------------------------
 #endif

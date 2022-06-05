@@ -14,7 +14,7 @@
 #include "game_cl_base.h"
 #include "game_cl_single.h"
 #include "game_sv_single.h"
-#include "hit.h"
+#include "Hit.h"
 #include "PHDestroyable.h"
 #include "actor.h"
 #include "Actor_Flags.h"

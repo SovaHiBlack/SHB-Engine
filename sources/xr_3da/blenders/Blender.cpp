@@ -6,7 +6,7 @@
 
 #include "Blender.h"
 
-void CBlender_DESC::Setup	(LPCSTR N)
+void CBlender_DESC::Setup	(pcstr N)
 {
 	// Name
 	VERIFY(xr_strlen(N)<128);

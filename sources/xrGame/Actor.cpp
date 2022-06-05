@@ -8,7 +8,7 @@
 #	include "PHDebug.h"
 #endif // DEBUG
 #include "alife_space.h"
-#include "hit.h"
+#include "Hit.h"
 #include "PHDestroyable.h"
 #include "Car.h"
 #include "xrserver_objects_alife_monsters.h"
@@ -707,11 +707,9 @@ void CActor::g_Physics(Fvector& _accel, F32 jump, F32 dt)
 			const ICollisionDamageInfo* di=character_physics_support()->movement()->CollisionDamageInfo();
 			Fvector hdir;di->HitDir(hdir);
 			SetHitInfo(this, NULL, 0, Fvector().set(0, 0, 0), hdir);
-			//				Hit	(m_PhysicMovementControl->gcontact_HealthLost,hdir,di->DamageInitiator(),m_PhysicMovementControl->ContactBone(),di->HitPos(),0.f,ALife::eHitTypeStrike);//s16(6 + 2*::Random.randI(0,2))
 			if (Level().CurrentControlEntity() == this)
 			{
-				SHit HDS = SHit(character_physics_support()->movement()->gcontact_HealthLost,hdir,di->DamageInitiator(),character_physics_support()->movement()->ContactBone(),di->HitPos(),0.f,di->HitType());
-//				Hit(&HDS);
+				SHit HDS = SHit(character_physics_support()->movement()->gcontact_HealthLost,hdir,di->DamageInitiator(),character_physics_support()->movement()->ContactBone(),di->HitPos(),0.0f,di->HitType());
 
 				NET_Packet	l_P;
 				HDS.GenHeader(GE_HIT, ID());
@@ -1556,7 +1554,7 @@ void CActor::OnDifficultyChanged	()
 {
 	// immunities
 	VERIFY(g_SingleGameDifficulty>=egdNovice && g_SingleGameDifficulty<=egdMaster); 
-	const char* diff_name			= get_token_name(difficulty_type_token, g_SingleGameDifficulty);
+	pcstr diff_name			= get_token_name(difficulty_type_token, g_SingleGameDifficulty);
 	string128						tmp;
 	strconcat						(sizeof(tmp),tmp,"actor_immunities_",diff_name);
 	conditions().LoadImmunities		(tmp,pSettings);

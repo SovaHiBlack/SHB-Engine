@@ -58,7 +58,7 @@ enum EActorAction
 	eaaSearchCorpse,
 };
 
-typedef const char*		EActorSleep;
+typedef pcstr		EActorSleep;
 extern EActorSleep		easCanSleepResult;
 /*
 //результат функции GoSleep у актера

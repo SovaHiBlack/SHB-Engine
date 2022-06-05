@@ -37,31 +37,31 @@ public:
 						CScriptXmlInit		(const CScriptXmlInit& other);
 	CScriptXmlInit&		operator =			(const CScriptXmlInit& other);
 
-	void				ParseFile			(const char* xml_file);
-	void				ParseShTexInfo		(const char* xml_file);
-	void				InitWindow			(const char* path, int index, CUIWindow* pWnd);
+	void				ParseFile			(pcstr xml_file);
+	void				ParseShTexInfo		(pcstr xml_file);
+	void				InitWindow			(pcstr path, int index, CUIWindow* pWnd);
 
-	CUIListWnd*			InitList			(const char* path, CUIWindow* parent);
-	CUIFrameWindow*		InitFrame			(const char* path, CUIWindow* parent);
-	CUIFrameLineWnd*	InitFrameLine		(const char* path, CUIWindow* parent);
-	CUILabel*			InitLabel			(const char* path, CUIWindow* parent);
-	CUIEditBox*			InitEditBox			(const char* path, CUIWindow* parent);
-	CUIStatic*			InitStatic			(const char* path, CUIWindow* parent);
-	CUIStatic*			InitAnimStatic		(const char* path, CUIWindow* parent);
-	CUICheckButton*		InitCheck			(const char* path, CUIWindow* parent);
-	CUISpinNum*			InitSpinNum			(const char* path, CUIWindow* parent);
-	CUISpinFlt*			InitSpinFlt			(const char* path, CUIWindow* parent);
-	CUISpinText*		InitSpinText		(const char* path, CUIWindow* parent);
-	CUIComboBox*		InitComboBox		(const char* path, CUIWindow* parent);
-	CUIButton*			InitButton			(const char* path, CUIWindow* parent);
-	CUI3tButton*		Init3tButton		(const char* path, CUIWindow* parent);
-	CUITabControl*		InitTab				(const char* path, CUIWindow* parent);
-	CUITrackBar*		InitTrackBar		(const char* path, CUIWindow* parent);
-	CUIMMShniaga*		InitMMShniaga		(const char* path, CUIWindow* parent);
-	CUIWindow*			InitKeyBinding		(const char* path, CUIWindow* parent);
-	CUIScrollView*		InitScrollView		(const char* path, CUIWindow* parent);
-	CUIProgressBar*		InitProgressBar		(const char* path, CUIWindow* parent);
-	void				InitAutoStaticGroup	(const char* path, CUIWindow* pWnd);
+	CUIListWnd*			InitList			(pcstr path, CUIWindow* parent);
+	CUIFrameWindow*		InitFrame			(pcstr path, CUIWindow* parent);
+	CUIFrameLineWnd*	InitFrameLine		(pcstr path, CUIWindow* parent);
+	CUILabel*			InitLabel			(pcstr path, CUIWindow* parent);
+	CUIEditBox*			InitEditBox			(pcstr path, CUIWindow* parent);
+	CUIStatic*			InitStatic			(pcstr path, CUIWindow* parent);
+	CUIStatic*			InitAnimStatic		(pcstr path, CUIWindow* parent);
+	CUICheckButton*		InitCheck			(pcstr path, CUIWindow* parent);
+	CUISpinNum*			InitSpinNum			(pcstr path, CUIWindow* parent);
+	CUISpinFlt*			InitSpinFlt			(pcstr path, CUIWindow* parent);
+	CUISpinText*		InitSpinText		(pcstr path, CUIWindow* parent);
+	CUIComboBox*		InitComboBox		(pcstr path, CUIWindow* parent);
+	CUIButton*			InitButton			(pcstr path, CUIWindow* parent);
+	CUI3tButton*		Init3tButton		(pcstr path, CUIWindow* parent);
+	CUITabControl*		InitTab				(pcstr path, CUIWindow* parent);
+	CUITrackBar*		InitTrackBar		(pcstr path, CUIWindow* parent);
+	CUIMMShniaga*		InitMMShniaga		(pcstr path, CUIWindow* parent);
+	CUIWindow*			InitKeyBinding		(pcstr path, CUIWindow* parent);
+	CUIScrollView*		InitScrollView		(pcstr path, CUIWindow* parent);
+	CUIProgressBar*		InitProgressBar		(pcstr path, CUIWindow* parent);
+	void				InitAutoStaticGroup	(pcstr path, CUIWindow* pWnd);
 
 protected:
 	CUIXml				m_xml;

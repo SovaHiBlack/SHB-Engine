@@ -39,10 +39,10 @@ extern XRCORE_API	void	_initialize_cpu_thread	();
 
 // threading
 typedef				void	thread_t				( void * );
-extern XRCORE_API	void	thread_name				(LPCSTR name);
+extern XRCORE_API	void	thread_name				(pcstr name);
 extern XRCORE_API	void	thread_spawn			(
 	thread_t*	entry,
-	LPCSTR	name,
+	pcstr	name,
 	unsigned	stack,
 	void*		arglist 
 	);

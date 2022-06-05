@@ -37,7 +37,7 @@ void SPPInfo::normalize()
 	*/
 }
 
-void SPPInfo::validate(LPCSTR str)
+void SPPInfo::validate(pcstr str)
 {
 	VERIFY2(_valid(duality.h),str);
 	VERIFY2(_valid(duality.v),str);

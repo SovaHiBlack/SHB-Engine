@@ -23,11 +23,12 @@ typedef	unsigned	__int64	u64;
 
 typedef float				f32;
 typedef double				f64;
-
 using F32 = float;
 
 typedef char*				pstr;
-typedef const char*			pcstr;
+//typedef const char*			pcstr;
+
+using pcstr = const char*;
 
 typedef	char	string16	[16];
 typedef	char	string32	[32];

@@ -32,7 +32,7 @@ public:
 	
 	virtual bool			use_center_to_aim		() const {return true;}
 	virtual bool			check_start_conditions	(ControlCom::EControlType);
-	virtual void			HitEntity				(const CEntity *pEntity, float fDamage, float impulse, Fvector &dir);
+	virtual void			HitEntity				(const CEntity *pEntity, F32 fDamage, F32 impulse, Fvector &dir);
 	
 	//--------------------------------------------------------------------
 	// Utils
@@ -45,7 +45,7 @@ public:
 private:
 	static	void			BoneCallback			(CBoneInstance *B);
 			void			vfAssignBones			();
-			void			LookDirection			(Fvector to_dir, float bone_turn_speed);
+			void			LookDirection			(Fvector to_dir, F32 bone_turn_speed);
 
 
 	bonesManipulation		Bones;
@@ -80,9 +80,9 @@ public:
 	IC		void			SatisfyVampire			() {m_vampire_want_value = 0.f;}
 
 private:
-	float					m_vampire_want_value;
-	float					m_vampire_want_speed;		// load from ltx
-	float					m_vampire_wound;
+	F32					m_vampire_want_value;
+	F32					m_vampire_want_speed;		// load from ltx
+	F32					m_vampire_wound;
 	
 			void			LoadVampirePPEffector	(LPCSTR section);	
 

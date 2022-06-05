@@ -25,10 +25,10 @@ public:
 	LPSTR		m_FilterCaption;
     Flags32		m_Flags;
 public:
-				FS_Path		(LPCSTR _Root, LPCSTR _Add, LPCSTR _DefExt=0, LPCSTR _FilterString=0, u32 flags=0);
+				FS_Path		(pcstr _Root, pcstr _Add, pcstr _DefExt=0, pcstr _FilterString=0, u32 flags=0);
 				~FS_Path	();
-	LPCSTR		_update		(string_path& dest, LPCSTR src) const;
-//.	void		_update		(xr_string& dest, LPCSTR src) const;
+				pcstr		_update		(string_path& dest, pcstr src) const;
+//.	void		_update		(xr_string& dest, pcstr src) const;
 	void		_set		(LPSTR add);
 	void		_set_root	(LPSTR root);
 
@@ -58,4 +58,4 @@ public:
 };
 DEFINE_SET		(FS_File,FS_FileSet,FS_FileSetIt);
 
-extern bool	XRCORE_API PatternMatch(LPCSTR s, LPCSTR mask);
+extern bool	XRCORE_API PatternMatch(pcstr s, pcstr mask);

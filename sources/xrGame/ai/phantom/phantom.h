@@ -44,11 +44,11 @@ private:
 private:
 	CObject*			m_enemy;
 
-	float				fSpeed;	
-	float				fASpeed;
+	F32				fSpeed;
+	F32				fASpeed;
 	Fvector2			vHP;
 
-	float				fContactHit;
+	F32				fContactHit;
 
 	Fmatrix				XFORM_center				();
 
@@ -57,7 +57,7 @@ private:
 
 	void				UpdatePosition				(const Fvector& tgt_pos);
 
-	void				PsyHit						(const CObject *object, float value);
+	void				PsyHit						(const CObject *object, F32 value);
 public:
 						CPhantom					();
 	virtual				~CPhantom					();
@@ -74,8 +74,8 @@ public:
 	virtual void		shedule_Update				(u32 DT); 
 	virtual void		UpdateCL					();
 
-	virtual void		HitSignal					(float	HitAmount,	Fvector& local_dir, CObject* who, s16 element){}
-	virtual void		HitImpulse					(float	amount,		Fvector& vWorldDir, Fvector& vLocalDir){}
+	virtual void		HitSignal					(F32	HitAmount,	Fvector& local_dir, CObject* who, s16 element){}
+	virtual void		HitImpulse					(F32	amount,		Fvector& vWorldDir, Fvector& vLocalDir){}
 	virtual	void		Hit							(SHit* pHDS);
 
 	virtual BOOL		IsVisibleForHUD				() {return false;}

@@ -21,7 +21,7 @@ enum EPdaTabs
 };
 
 
-extern const char* const ALL_PDA_HEADER_PREFIX;
+extern pcstr ALL_PDA_HEADER_PREFIX;
 
 namespace pda_section{
 	enum part{

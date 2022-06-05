@@ -8,7 +8,7 @@
 #include "Blender_Recorder.h"
 #include "Blender.h"
 
-static int ParseName(LPCSTR N)
+static int ParseName(pcstr N)
 {
 	if (0==xr_strcmp(N,"$null"))	return -1;
 	if (0==xr_strcmp(N,"$base0"))	return	0;
@@ -40,7 +40,7 @@ void	CBlender_Compile::_cpp_Compile	(ShaderElement* _SH)
 	// Analyze possibility to detail this shader
 	detail_texture	= NULL;
 	detail_scaler	= NULL;
-	LPCSTR	base	= NULL;
+	pcstr	base	= NULL;
 	if (bDetail && BT->canBeDetailed())
 	{
 		// 
@@ -66,7 +66,7 @@ void	CBlender_Compile::_cpp_Compile	(ShaderElement* _SH)
 /*
 	if (bDetail && Device.Resources->m_description->line_exist("association",base))	
 	{
-		LPCSTR		descr			=	Device.Resources->m_description->r_string("association",base);
+		pcstr		descr			=	Device.Resources->m_description->r_string("association",base);
 		if (strstr(descr,"usage[diffuse_or_bump]"))	
 		{ 
 			bDetail_Diffuse	= TRUE; 
@@ -132,13 +132,13 @@ void	CBlender_Compile::PassEnd			()
 	SH->passes.push_back	(_pass_);
 }
 
-void	CBlender_Compile::PassSET_PS		(LPCSTR name)
+void	CBlender_Compile::PassSET_PS		(pcstr name)
 {
 	strcpy_s	(pass_ps,name);
 	strlwr	(pass_ps);
 }
 
-void	CBlender_Compile::PassSET_VS		(LPCSTR name)
+void	CBlender_Compile::PassSET_VS		(pcstr name)
 {
 	strcpy_s	(pass_vs,name);
 	strlwr	(pass_vs);
@@ -215,7 +215,7 @@ void	CBlender_Compile::StageSET_Alpha	(u32 a1, u32 op, u32 a2)
 {
 	RS.SetAlpha	(Stage(),a1,op,a2);
 }
-void	CBlender_Compile::StageSET_TMC		(LPCSTR T, LPCSTR M, LPCSTR C, int UVW_channel)
+void	CBlender_Compile::StageSET_TMC		(pcstr T, pcstr M, pcstr C, int UVW_channel)
 {
 	Stage_Texture		(T);
 	Stage_Matrix		(M,UVW_channel);
@@ -230,11 +230,11 @@ void	CBlender_Compile::StageTemplate_LMAP0	()
 	StageSET_TMC		("$base1","$null","$null",1);
 }
 
-void	CBlender_Compile::Stage_Texture	(LPCSTR name, u32 ,	u32	 fmin, u32 fmip, u32 fmag)
+void	CBlender_Compile::Stage_Texture	(pcstr name, u32 ,	u32	 fmin, u32 fmip, u32 fmag)
 {
 	sh_list& lst=	L_textures;
 	int id		=	ParseName(name);
-	LPCSTR N	=	name;
+	pcstr N	=	name;
 	if (id>=0)	{
 		if (id>=int(lst.size()))	Debug.fatal(DEBUG_INFO,"Not enought textures for shader. Base texture: '%s'.",*lst[0]);
 		N = *lst [id];
@@ -243,7 +243,7 @@ void	CBlender_Compile::Stage_Texture	(LPCSTR name, u32 ,	u32	 fmin, u32 fmip, u3
 //	i_Address				(Stage(),address);
 	i_Filter				(Stage(),fmin,fmip,fmag);
 }
-void	CBlender_Compile::Stage_Matrix		(LPCSTR name, int iChannel)
+void	CBlender_Compile::Stage_Matrix		(pcstr name, int iChannel)
 {
 	sh_list& lst	= L_matrices; 
 	int id			= ParseName(name);
@@ -266,7 +266,7 @@ void	CBlender_Compile::Stage_Matrix		(LPCSTR name, int iChannel)
 		StageSET_XForm	(D3DTTFF_DISABLE,D3DTSS_TCI_PASSTHRU|iChannel);	
 	}
 }
-void	CBlender_Compile::Stage_Constant	(LPCSTR name)
+void	CBlender_Compile::Stage_Constant	(pcstr name)
 {
 	sh_list& lst= L_constants;
 	int id		= ParseName(name);

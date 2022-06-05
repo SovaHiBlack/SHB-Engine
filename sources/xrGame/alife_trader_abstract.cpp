@@ -79,7 +79,7 @@ void CSE_ALifeTraderAbstract::vfInitInventory()
 bool CSE_ALifeTraderAbstract::check_inventory_consistency	()
 {
 	int							volume = 0;
-	float						mass = 0.f;
+	F32						mass = 0.f;
 	xr_vector<ALife::_OBJECT_ID>::const_iterator	I = base()->children.begin();
 	xr_vector<ALife::_OBJECT_ID>::const_iterator	E = base()->children.end();
 	for ( ; I != E; ++I) {

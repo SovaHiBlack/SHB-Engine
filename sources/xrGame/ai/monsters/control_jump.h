@@ -5,7 +5,7 @@
 struct SControlJumpData : public ControlCom::IComData {
 	CObject					*target_object;
  	Fvector					target_position;
-	float					force_factor;
+	F32					force_factor;
 
 	enum EFlags {	
 		eEnablePredictPosition		= u32(1) << 0,
@@ -52,20 +52,20 @@ class CControlJump : public CControl_ComCustom<SControlJumpData> {
 
 	// loadable parameters
 	u32				m_delay_after_jump;
-	float			m_jump_factor;
-	float			m_trace_ground_range;
-	float			m_hit_trace_range;
-	float			m_build_line_distance;
-	float			m_min_distance;
-	float			m_max_distance;
-	float			m_max_angle;
-	float			m_max_height;
+	F32			m_jump_factor;
+	F32			m_trace_ground_range;
+	F32			m_hit_trace_range;
+	F32			m_build_line_distance;
+	F32			m_min_distance;
+	F32			m_max_distance;
+	F32			m_max_angle;
+	F32			m_max_height;
 
 	// run-time params
 	u32				m_time_next_allowed;
 	u32				m_time_started;			// time jump started
-	float			m_jump_time;			// physical-counted time of jump
-	float			m_blend_speed;			// current anim blend speed
+	F32			m_jump_time;			// physical-counted time of jump
+	F32			m_blend_speed;			// current anim blend speed
 	Fvector			m_target_position;		// save target position for internal needs
 
 

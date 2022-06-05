@@ -7,7 +7,7 @@ class CSnorkJump {
 	CSnork				*m_object;
 	//CJumpingAbility		*m_jumper;
 
-	float	m_cur_dist;
+	F32	m_cur_dist;
 	bool	m_specific_jump;
 
 	CObject *m_target_object;
@@ -27,5 +27,5 @@ public:
 //	void	try_jump_specific	();
 //
 //
-//	float	trace_current		(float dist);
+//	F32	trace_current		(F32 dist);
 };

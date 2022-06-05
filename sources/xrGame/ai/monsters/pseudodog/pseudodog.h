@@ -8,8 +8,8 @@ class CAI_PseudoDog : public CBaseMonster {
 
 public:
 
-	float			m_anger_hunger_threshold;
-	float			m_anger_loud_threshold;
+	F32			m_anger_hunger_threshold;
+	F32			m_anger_loud_threshold;
 
 	TTime			m_time_became_angry;
 

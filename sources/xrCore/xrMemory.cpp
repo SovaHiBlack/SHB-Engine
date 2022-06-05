@@ -79,7 +79,7 @@ void	xrMemory::mem_compact	()
 }
 
 // xr_strdup
-char*			xr_strdup		(LPCSTR string)
+char*			xr_strdup		(pcstr string)
 {	
 	VERIFY	(string);
 	u32		len			= u32(xr_strlen(string))+1	;

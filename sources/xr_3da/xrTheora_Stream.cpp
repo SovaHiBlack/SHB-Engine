@@ -204,7 +204,7 @@ BOOL CTheoraStream::Decode(u32 tm_play)
 	return FALSE;
 }
 
-BOOL CTheoraStream::Load(const char* fname)
+BOOL CTheoraStream::Load(pcstr fname)
 {
 	VERIFY				(0==source);
 	// open source

@@ -14,7 +14,7 @@ struct SControlledInfo {
 	const CEntity	*m_object;
 	Fvector			m_position;
 	u32				m_node;		
-	float			m_radius;
+	F32			m_radius;
 };
 
 class CControlledEntityBase {

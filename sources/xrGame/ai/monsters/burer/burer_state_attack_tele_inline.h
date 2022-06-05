@@ -181,7 +181,7 @@ void CStateBurerAttackTeleAbstract::FindObjects	()
 	FindFreeObjects					(m_nearest, object->Position());
 
 	// получить список объектов между монстром и врагом
-	float dist = object->EnemyMan.get_enemy()->Position().distance_to(object->Position());
+	F32 dist = object->EnemyMan.get_enemy()->Position().distance_to(object->Position());
 	Fvector dir;
 	dir.sub(object->EnemyMan.get_enemy()->Position(), object->Position());
 	dir.normalize();
@@ -275,7 +275,7 @@ bool CStateBurerAttackTeleAbstract::CheckTeleStart()
 	if (IsActiveObjects()) return false;
 
 	// проверить дистанцию до врага
-	float dist = object->Position().distance_to(object->EnemyMan.get_enemy()->Position());
+	F32 dist = object->Position().distance_to(object->EnemyMan.get_enemy()->Position());
 	if (dist < GOOD_DISTANCE_FOR_TELE) return false;
 
 	// найти телекинетические объекты
@@ -304,9 +304,9 @@ public:
 	bool operator()	 (const CGameObject *tpObject1, const CGameObject *tpObject2) const
 	{
 
-		float dist1 = monster_pos.distance_to(tpObject1->Position());
-		float dist2 = enemy_pos.distance_to(tpObject2->Position());
-		float dist3 = enemy_pos.distance_to(monster_pos);
+		F32 dist1 = monster_pos.distance_to(tpObject1->Position());
+		F32 dist2 = enemy_pos.distance_to(tpObject2->Position());
+		F32 dist3 = enemy_pos.distance_to(monster_pos);
 
 		return ((dist1 < dist3) && (dist2 > dist3));
 	};
@@ -323,8 +323,8 @@ public:
 
 	bool operator()	 (const CGameObject *tpObject1, const CGameObject *tpObject2) const
 	{
-		float dist1 = enemy_pos.distance_to(tpObject1->Position());
-		float dist2 = enemy_pos.distance_to(tpObject2->Position());
+		F32 dist1 = enemy_pos.distance_to(tpObject1->Position());
+		F32 dist2 = enemy_pos.distance_to(tpObject2->Position());
 
 		return (dist1 < dist2);		
 	};
@@ -342,7 +342,7 @@ void CStateBurerAttackTeleAbstract::SelectObjects()
 
 		// применить телекинез на объект
 		
-		float	height = (object->m_monster_type == CBaseMonster::eMonsterTypeIndoor) ? 1.3f : 2.f;
+		F32	height = (object->m_monster_type == CBaseMonster::eMonsterTypeIndoor) ? 1.3f : 2.f;
 		bool	rotate = (object->m_monster_type == CBaseMonster::eMonsterTypeIndoor) ? false : true;
 		
 		CTelekineticObject *tele_obj = object->CTelekinesis::activate		(obj, 3.f, height, 10000, rotate);

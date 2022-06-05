@@ -23,7 +23,7 @@ bool	g_use_pure_alloc		= false;
 
 void*	xrMemory::mem_alloc		(size_t size
 #	ifdef DEBUG_MEMORY_NAME
-								 , LPCSTR _name
+								 , pcstr _name
 #	endif // DEBUG_MEMORY_NAME
 								 )
 {
@@ -118,7 +118,7 @@ extern BOOL	g_bDbgFillMemory	;
 
 void*	xrMemory::mem_realloc	(void* P, size_t size
 #ifdef DEBUG_MEMORY_NAME
-								 , LPCSTR _name
+								 , pcstr _name
 #endif // DEBUG_MEMORY_NAME
 								 )
 {

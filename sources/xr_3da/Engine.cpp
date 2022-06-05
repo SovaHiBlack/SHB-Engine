@@ -22,7 +22,7 @@ CEngine::~CEngine()
 	
 }
 
-extern	void msCreate		(LPCSTR name);
+extern	void msCreate		(pcstr name);
 
 void CEngine::Initialize	(void)
 {

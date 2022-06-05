@@ -90,7 +90,7 @@
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <CompileAs>Default</CompileAs>
-      <AdditionalIncludeDirectories>..\libtheora\include;..\libogg\include;..\SDK\dxsdk\include;..\SDK</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\;..\libtheora\include;..\libogg\include;..\SDK\dxsdk\include;..\SDK</AdditionalIncludeDirectories>
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -154,7 +154,7 @@
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <CompileAs>Default</CompileAs>
-      <AdditionalIncludeDirectories>..\libtheora\include;..\libogg\include;..\SDK\dxsdk\include;..\SDK</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\;..\libtheora\include;..\libogg\include;..\SDK\dxsdk\include;..\SDK</AdditionalIncludeDirectories>
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>

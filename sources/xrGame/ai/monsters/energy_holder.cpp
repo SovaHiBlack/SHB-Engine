@@ -51,7 +51,7 @@ void CEnergyHolder::schedule_update()
 	
 	// Обновить значение энергии
 	u32		cur_time	= Device.dwTimeGlobal;
-	float	dt			= float(cur_time - m_time_last_update) / 1000.f;
+	F32	dt			= F32(cur_time - m_time_last_update) / 1000.f;
 
 	if (!is_active()) 
 		m_value += m_aggressive ? m_aggressive_restore_vel * dt : m_restore_vel * dt;

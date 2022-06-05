@@ -8,7 +8,7 @@ static xrCriticalSection	logCS;
 xr_vector<shared_str>*		LogFile			= NULL;
 static LogCallback			LogCB			= 0;
 
-void FlushLog			(LPCSTR file_name)
+void FlushLog			(pcstr file_name)
 {
 	if (no_log)
 		return;
@@ -18,7 +18,7 @@ void FlushLog			(LPCSTR file_name)
 	IWriter				*f = FS.w_open(file_name);
     if (f) {
         for (u32 it=0; it<LogFile->size(); it++)	{
-			LPCSTR		s	= *((*LogFile)[it]);
+			pcstr		s	= *((*LogFile)[it]);
 			f->w_string	(s?s:"");
 		}
         FS.w_close		(f);
@@ -32,7 +32,7 @@ void FlushLog			()
 	FlushLog		(logFName);
 }
 
-void AddOne				(LPCSTR split)
+void AddOne				(pcstr split)
 {
 	if(!LogFile)		
 						return;
@@ -57,7 +57,7 @@ void AddOne				(LPCSTR split)
 	logCS.Leave				();
 }
 
-void Log				(LPCSTR s)
+void Log				(pcstr s)
 {
 	int		i,j;
 	char	split[1024];
@@ -76,7 +76,7 @@ void Log				(LPCSTR s)
 	AddOne(split);
 }
 
-void __cdecl Msg		(LPCSTR format, ...)
+void __cdecl Msg		(pcstr format, ...)
 {
 	va_list mark;
 	string1024	buf;
@@ -86,7 +86,7 @@ void __cdecl Msg		(LPCSTR format, ...)
 	if (sz)		Log(buf);
 }
 
-void Log				(LPCSTR msg, LPCSTR dop) {
+void Log				(pcstr msg, pcstr dop) {
 	char buf[1024];
 
 	if (dop)	sprintf_s(buf,sizeof(buf),"%s %s",msg,dop);
@@ -95,35 +95,35 @@ void Log				(LPCSTR msg, LPCSTR dop) {
 	Log		(buf);
 }
 
-void Log				(LPCSTR msg, u32 dop) {
+void Log				(pcstr msg, u32 dop) {
 	char buf[1024];
 
 	sprintf_s	(buf,sizeof(buf),"%s %d",msg,dop);
 	Log			(buf);
 }
 
-void Log				(LPCSTR msg, int dop) {
+void Log				(pcstr msg, int dop) {
 	char buf[1024];
 
 	sprintf_s	(buf, sizeof(buf),"%s %d",msg,dop);
 	Log		(buf);
 }
 
-void Log				(LPCSTR msg, F32 dop) {
+void Log				(pcstr msg, F32 dop) {
 	char buf[1024];
 
 	sprintf_s	(buf, sizeof(buf),"%s %f",msg,dop);
 	Log		(buf);
 }
 
-void Log				(LPCSTR msg, const Fvector &dop) {
+void Log				(pcstr msg, const Fvector &dop) {
 	char buf[1024];
 
 	sprintf_s	(buf,sizeof(buf),"%s (%f,%f,%f)",msg,dop.x,dop.y,dop.z);
 	Log		(buf);
 }
 
-void Log				(LPCSTR msg, const Fmatrix &dop)	{
+void Log				(pcstr msg, const Fmatrix &dop)	{
 	char	buf	[1024];
 
 	sprintf_s	(buf,sizeof(buf),"%s:\n%f,%f,%f,%f\n%f,%f,%f,%f\n%f,%f,%f,%f\n%f,%f,%f,%f\n",msg,dop.i.x,dop.i.y,dop.i.z,dop._14_
@@ -133,7 +133,7 @@ void Log				(LPCSTR msg, const Fmatrix &dop)	{
 	Log		(buf);
 }
 
-void LogWinErr			(LPCSTR msg, long err_code)	{
+void LogWinErr			(pcstr msg, long err_code)	{
 	Msg					("%s: %s",msg,Debug.error2string(err_code)	);
 }
 
@@ -142,7 +142,7 @@ void SetLogCB			(LogCallback cb)
 	LogCB				= cb;
 }
 
-LPCSTR log_name			()
+pcstr log_name			()
 {
 	return				(logFName);
 }

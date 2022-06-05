@@ -4,9 +4,9 @@
 #include "../../ai_space.h"
 #include "../../level_graph.h"
 
-void CMonsterCorpseCoverEvaluator::evaluate			(const CCoverPoint *cover_point, float weight)
+void CMonsterCorpseCoverEvaluator::evaluate			(const CCoverPoint *cover_point, F32 weight)
 {
-	float					my_distance		= m_start_position.distance_to(cover_point->position());
+	F32					my_distance		= m_start_position.distance_to(cover_point->position());
 
 	if (my_distance <= m_min_distance)
 		return;
@@ -15,11 +15,12 @@ void CMonsterCorpseCoverEvaluator::evaluate			(const CCoverPoint *cover_point, f
 		return;
 
 	Fvector					direction;
-	float					y,p;
+	F32						y;
+	F32						p;
 	direction.sub			(m_start_position,cover_point->position());
 	direction.getHP			(y,p);
 	
-	float					cover_value = ai().level_graph().cover_in_direction(y,cover_point->level_vertex_id());
+	F32					cover_value = ai().level_graph().cover_in_direction(y,cover_point->level_vertex_id());
 	if (cover_value >= 2.f*m_best_value)
 		return;
 

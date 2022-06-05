@@ -14,7 +14,7 @@ private:
 	xr_vector<IEventReceiver*>		Handlers;
 	u32							dwRefCount;
 public:
-	CEvent	(const char* S);
+	CEvent	(pcstr S);
 	~CEvent	();
 
 	LPCSTR	GetFull()
@@ -43,7 +43,7 @@ public:
 	}
 };
 //-----------------------------------------
-CEvent::CEvent(const char* S)
+CEvent::CEvent(pcstr S)
 {	
 	Name=xr_strdup(S); 
 	_strupr(Name);
@@ -63,7 +63,7 @@ void CEventAPI::Dump()
 		Msg("* [%d] %s",Events[i]->RefCount(),Events[i]->GetFull());
 }
 
-EVENT	CEventAPI::Create(const char* N)
+EVENT	CEventAPI::Create(pcstr N)
 {
 	CS.Enter	();
 	CEvent	E	(N);
@@ -96,7 +96,7 @@ void	CEventAPI::Destroy(EVENT& E)
 	CS.Leave	();
 }
 
-EVENT	CEventAPI::Handler_Attach(const char* N, IEventReceiver* H)
+EVENT	CEventAPI::Handler_Attach(pcstr N, IEventReceiver* H)
 {
 	CS.Enter	();
 	EVENT	E = Create(N);
@@ -119,7 +119,7 @@ void	CEventAPI::Signal(EVENT E, u64 P1, u64 P2)
 	E->Signal	(P1,P2);	
 	CS.Leave	();
 }
-void	CEventAPI::Signal(const char* N, u64 P1, u64 P2)
+void	CEventAPI::Signal(pcstr N, u64 P1, u64 P2)
 {
 	CS.Enter	();
 	EVENT		E = Create(N);
@@ -137,7 +137,7 @@ void	CEventAPI::Defer(EVENT E, u64 P1, u64 P2)
 	Events_Deferred.back().P2	= P2;
 	CS.Leave	();
 }
-void	CEventAPI::Defer(const char* N, u64 P1, u64 P2)
+void	CEventAPI::Defer(pcstr N, u64 P1, u64 P2)
 {
 	CS.Enter	();
 	EVENT	E	= Create(N);

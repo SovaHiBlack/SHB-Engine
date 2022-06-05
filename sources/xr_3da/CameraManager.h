@@ -88,7 +88,7 @@ struct ENGINE_API SPPInfo {
 		color_add.set	(0.f,	0.f,	0.f);
 	}
 	SPPInfo&	lerp(const SPPInfo& def, const SPPInfo& to, F32 factor);
-	void		validate(LPCSTR str);
+	void		validate(pcstr str);
 };
 
 DEFINE_VECTOR				(CEffectorCam*,EffectorCamVec,EffectorCamIt);

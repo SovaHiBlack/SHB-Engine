@@ -24,7 +24,7 @@ public:
 	static void ParseShTexInfo			(LPCSTR xml_file);
 
 	static void		InitTexture			(LPCSTR texture_name,		IUISimpleTextureControl* tc);
-	static void		InitTexture			(LPCSTR texture_name, const char* shader_name, IUISimpleTextureControl* tc);
+	static void		InitTexture			(LPCSTR texture_name, pcstr shader_name, IUISimpleTextureControl* tc);
 	static float	GetTextureHeight	(LPCSTR texture_name);
 	static float	GetTextureWidth		(LPCSTR texture_name);
 	static Frect	GetTextureRect		(LPCSTR texture_name);
@@ -34,7 +34,7 @@ public:
 	static void WriteLog();
 
 protected:
-	IC	static bool IsSh					(const char* texture_name);
+	IC	static bool IsSh					(pcstr texture_name);
 
 
 

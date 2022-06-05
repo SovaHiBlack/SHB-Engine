@@ -233,7 +233,7 @@ void CUITrackBar::UpdatePos()
 	SaveValue					();
 }
 
-void CUITrackBar::OnMessage(const char* message)
+void CUITrackBar::OnMessage(pcstr message)
 {
 	if (0 == xr_strcmp(message,"set_default_value"))
 	{

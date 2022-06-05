@@ -6,16 +6,16 @@
 #include <sys\stat.h>
 #include <share.h>
 
-void*			FileDownload	(LPCSTR fn, u32* pdwSize=NULL);
-void			FileCompress	(LPCSTR fn, LPCSTR sign, void* data, u32 size);
-void*			FileDecompress	(LPCSTR fn, LPCSTR sign, u32* size=NULL);
+void*			FileDownload	(pcstr fn, u32* pdwSize=NULL);
+void			FileCompress	(pcstr fn, pcstr sign, void* data, u32 size);
+void*			FileDecompress	(pcstr fn, pcstr sign, u32* size=NULL);
 
 class CFileWriter : public IWriter
 {
 private:
 	FILE*			hf;
 public:
-	CFileWriter		(LPCSTR name, bool exclusive)
+	CFileWriter		(pcstr name, bool exclusive)
 	{
 		R_ASSERT	(name && name[0]);
 		fName		= name;
@@ -80,13 +80,13 @@ public:
 class CFileReader : public IReader
 {
 public:
-				CFileReader(LPCSTR name);
+				CFileReader(pcstr name);
 	virtual		~CFileReader();
 };
 class CCompressedReader : public IReader
 {
 public:
-				CCompressedReader(LPCSTR name, LPCSTR sign);
+				CCompressedReader(pcstr name, pcstr sign);
 	virtual		~CCompressedReader();
 };
 class CVirtualFileReader : public IReader
@@ -94,6 +94,6 @@ class CVirtualFileReader : public IReader
 private:
    void			*hSrcFile, *hSrcMap;
 public:
-				CVirtualFileReader(LPCSTR cFileName);
+				CVirtualFileReader(pcstr cFileName);
 	virtual		~CVirtualFileReader();
 };

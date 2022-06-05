@@ -107,7 +107,7 @@ void CControlAnimationBase::AddTransition(EPState from, EPState to, EMotionAnim 
 	m_tTransitions.push_back(new_item);
 }
 
-void CControlAnimationBase::LinkAction(EAction act, EMotionAnim pmt_motion, EMotionAnim pmt_left, EMotionAnim pmt_right, float pmt_angle)
+void CControlAnimationBase::LinkAction(EAction act, EMotionAnim pmt_motion, EMotionAnim pmt_left, EMotionAnim pmt_right, F32 pmt_angle)
 {
 
 	SMotionItem new_item;

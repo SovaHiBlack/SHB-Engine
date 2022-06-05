@@ -20,9 +20,9 @@ CBaseMonster::SDebugInfo CBaseMonster::show_debug_info()
 		return SDebugInfo();
 	}
 
-	float y				= 200;
-	float x				= (m_show_debug_info == 1) ? 40.f : float(::Render->getTarget()->get_width() / 2) + 40.f;
-	const float delta_y	= 12;
+	F32 y				= 200;
+	F32 x				= (m_show_debug_info == 1) ? 40.f : F32(::Render->getTarget()->get_width() / 2) + 40.f;
+	const F32 delta_y	= 12;
 
 	string256	text;
 

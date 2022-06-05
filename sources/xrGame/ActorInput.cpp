@@ -7,7 +7,7 @@
 #ifdef DEBUG
 #include "PHDebug.h"
 #endif
-#include "hit.h"
+#include "Hit.h"
 #include "PHDestroyable.h"
 #include "Car.h"
 #include "HudManager.h"
