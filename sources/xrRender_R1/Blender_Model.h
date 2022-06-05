@@ -12,7 +12,7 @@ public:
 	xrP_Integer	oAREF;
 	xrP_BOOL	oBlend;
 public:
-	virtual		LPCSTR		getComment()	{ return "MODEL: Default"; }
+	virtual		pcstr		getComment()	{ return "MODEL: Default"; }
 	virtual		BOOL		canBeLMAPped()	{ return FALSE; }
 	
 	virtual		void		Save			(IWriter&	fs);

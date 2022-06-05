@@ -40,14 +40,14 @@ public:
 private:
 	SE_VEC						library;
 public:
-	void						Load	(LPCSTR name);
-	bool						Save	(LPCSTR name);
+	void						Load	(pcstr name);
+	bool						Save	(pcstr name);
 	void						Unload	();
-	int							GetID	(LPCSTR name);
-	CSoundRender_Environment*	Get		(LPCSTR name);
+	int							GetID	(pcstr name);
+	CSoundRender_Environment*	Get		(pcstr name);
 	CSoundRender_Environment*	Get		(int id);
 	CSoundRender_Environment*	Append	(CSoundRender_Environment* parent=0);
-	void						Remove	(LPCSTR name);
+	void						Remove	(pcstr name);
 	void						Remove	(int id);
 	SE_VEC&						Library	();
 };

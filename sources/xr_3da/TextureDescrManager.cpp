@@ -64,7 +64,7 @@ void CTextureDescrMngr::LoadLTX()
 				if(strstr(item.second.c_str(),"usage[diffuse]"))
 					desc.m_assoc->usage	= (1<<0);
 			}
-		}//"association"
+		}
 
 		if (ini.section_exist("specification"))
 		{
@@ -85,8 +85,8 @@ void CTextureDescrMngr::LoadLTX()
 					desc.m_spec->m_bump_name	=	bmode+4;
 				}
 			}
-		}//"specification"
-	}//file-exist
+		}
+	}
 }
 
 void CTextureDescrMngr::LoadTHM()
@@ -119,32 +119,41 @@ void CTextureDescrMngr::LoadTHM()
 
 		texture_desc& desc		 = m_texture_details[fn];
 
-			if( tp.detail_name.size() &&
-				tp.flags.is_any(STextureParams::flDiffuseDetail|STextureParams::flBumpDetail) )
+		if (tp.detail_name.size() && tp.flags.is_any(STextureParams::flDiffuseDetail | STextureParams::flBumpDetail))
+		{
+			if (desc.m_assoc)
 			{
-				if(desc.m_assoc)
-					xr_delete				(desc.m_assoc);
-
-				desc.m_assoc				= xr_new<texture_assoc>();
-				desc.m_assoc->detail_name	= tp.detail_name;
-				desc.m_assoc->cs			= xr_new<cl_dt_scaler>(tp.detail_scale);
-				desc.m_assoc->usage			= 0;
-				
-				if( tp.flags.is(STextureParams::flDiffuseDetail) )
-					desc.m_assoc->usage		|= (1<<0);
-				
-				if( tp.flags.is(STextureParams::flBumpDetail) )
-					desc.m_assoc->usage		|= (1<<1);
-
+				xr_delete(desc.m_assoc);
 			}
-			if(desc.m_spec)
-				xr_delete				(desc.m_spec);
+
+			desc.m_assoc = xr_new<texture_assoc>();
+			desc.m_assoc->detail_name = tp.detail_name;
+			desc.m_assoc->cs = xr_new<cl_dt_scaler>(tp.detail_scale);
+			desc.m_assoc->usage = 0;
+
+			if (tp.flags.is(STextureParams::flDiffuseDetail))
+			{
+				desc.m_assoc->usage |= (1 << 0);
+			}
+
+			if (tp.flags.is(STextureParams::flBumpDetail))
+			{
+				desc.m_assoc->usage |= (1 << 1);
+			}
+		}
+
+			if (desc.m_spec)
+			{
+				xr_delete(desc.m_spec);
+			}
 
 			desc.m_spec					= xr_new<texture_spec>();
 			desc.m_spec->m_material		= tp.material+tp.material_weight;
 			
-			if(tp.bump_mode==STextureParams::tbmUse)
-				desc.m_spec->m_bump_name	= tp.bump_name;
+			if (tp.bump_mode == STextureParams::tbmUse)
+			{
+				desc.m_spec->m_bump_name = tp.bump_name;
+			}
 		}
 	}
 }
@@ -171,16 +180,7 @@ void CTextureDescrMngr::UnLoad()
 	}
 	m_texture_details.clear	();
 }
-/*
-		LPCSTR		descr			=	Device.Resources->m_description->r_string("specification",*cName);
-		string256	bmode;
-		sscanf		(descr,"bump_mode[%[^]]], material[%f]",bmode,&m_material);
-		if ((bmode[0]=='u')&&(bmode[1]=='s')&&(bmode[2]=='e')&&(bmode[3]==':'))
-		{
-			// bump-map specified
-			m_bumpmap		=	bmode+4;
-		}
-*/
+
 shared_str CTextureDescrMngr::GetBumpName(const shared_str& tex_name) const
 {
 	map_TD::const_iterator I = m_texture_details.find	(tex_name);
@@ -189,7 +189,7 @@ shared_str CTextureDescrMngr::GetBumpName(const shared_str& tex_name) const
 		if(I->second.m_spec)
 		{
 			return I->second.m_spec->m_bump_name;
-		}	
+		}
 	}
 	return "";
 }
@@ -206,24 +206,7 @@ F32 CTextureDescrMngr::GetMaterial(const shared_str& tex_name) const
 	}
 	return 1.0f;
 }
-/*
-		LPCSTR		descr			=	Device.Resources->m_description->r_string("association",base);
-		if (strstr(descr,"usage[diffuse_or_bump]"))	
-		{ 
-			bDetail_Diffuse	= TRUE; 
-			bDetail_Bump = TRUE; 
-		}
-		
-		if (strstr(descr,"usage[diffuse]"))			
-		{ 
-			bDetail_Diffuse	= TRUE; 
-		}
 
-		if (strstr(descr,"usage[bump]"))			
-		{ 
-			bDetail_Bump		= TRUE; 
-		}
-*/
 void CTextureDescrMngr::GetTextureUsage	(const shared_str& tex_name, BOOL& bDiffuse, BOOL& bBump) const
 {
 	map_TD::const_iterator I = m_texture_details.find	(tex_name);
@@ -234,18 +217,18 @@ void CTextureDescrMngr::GetTextureUsage	(const shared_str& tex_name, BOOL& bDiff
 			u8 usage	= I->second.m_assoc->usage;
 			bDiffuse	= !!(usage & (1<<0));
 			bBump		= !!(usage & (1<<1));
-		}	
+		}
 	}
 }
 
-BOOL CTextureDescrMngr::GetDetailTexture(const shared_str& tex_name, LPCSTR& res, R_constant_setup* &CS) const
+BOOL CTextureDescrMngr::GetDetailTexture(const shared_str& tex_name, pcstr& res, R_constant_setup* &CS) const
 {
 	map_TD::const_iterator I = m_texture_details.find	(tex_name);
 	if (I!=m_texture_details.end())
 	{
 		if(I->second.m_assoc)
 		{
-                        texture_assoc* TA = I->second.m_assoc;
+			texture_assoc* TA = I->second.m_assoc;
 			res	= TA->detail_name.c_str();
 			CS	= TA->cs;
 			return TRUE;
@@ -253,34 +236,3 @@ BOOL CTextureDescrMngr::GetDetailTexture(const shared_str& tex_name, LPCSTR& res
 	}
 	return FALSE;
 }
-/*
-	// Load detail textures association
-	string256		fname;		
-	FS.update_path	(fname,"$game_textures$","textures.ltx");
-	LPCSTR	Iname	= fname;
-	if (FS.exist(Iname))
-	{
-		xr_delete		(m_description);
-		m_description	= xr_new<CInifile>	(Iname);
-		CInifile&	ini	= *m_description;
-		if (ini.section_exist("association"))
-		{
-			CInifile::Sect& 	data = ini.r_section("association");
-			for (CInifile::SectIt I=data.begin(); I!=data.end(); I++)	
-			{
-				texture_detail			D;
-				string256				T;
-				F32					s;
-
-				CInifile::Item& item	= *I;
-				sscanf					(*item.second,"%[^,],%f",T,&s);
-
-				//
-				D.T				= xr_strdup				(T);
-				D.cs			= xr_new<cl_dt_scaler>	(s);
-				LPSTR N			= xr_strdup				(*item.first);
-				m_td.insert		(mk_pair(N,D));
-			}
-		}
-	}
-*/

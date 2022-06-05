@@ -22,7 +22,7 @@ void fix_texture_name(LPSTR fn)
 		*_ext = 0;
 }
 
-int get_texture_load_lod(LPCSTR fn)
+int get_texture_load_lod(pcstr fn)
 {
 	CInifile::Sect& sect	= pSettings->r_section("reduce_lod_texture_list");
 	CInifile::SectCIt it_	= sect.Data.begin();
@@ -93,7 +93,7 @@ IC void	Reduce				(int& w, int& h, int& l, int& skip)
 	if (h<1)	h=1;
 }
 
-void				TW_Save	(IDirect3DTexture9* T, LPCSTR name, LPCSTR prefix, LPCSTR postfix)
+void				TW_Save	(IDirect3DTexture9* T, pcstr name, pcstr prefix, pcstr postfix)
 {
 	string256		fn;		strconcat	(sizeof(fn),fn,name,"_",prefix,"-",postfix);
 	for (int it=0; it<int(xr_strlen(fn)); it++)	
@@ -263,7 +263,7 @@ IC u32 it_height_rev_base(u32 d, u32 s)	{	return	color_rgba	(
 	(color_get_R(s)+color_get_G(s)+color_get_B(s))/3	);	// height
 }
 
-IDirect3DBaseTexture9*	CRender::texture_load(LPCSTR fRName, u32& ret_msize)
+IDirect3DBaseTexture9*	CRender::texture_load(pcstr fRName, u32& ret_msize)
 {
 	IDirect3DTexture9*		pTexture2D		= NULL;
 	IDirect3DCubeTexture9*	pTextureCUBE	= NULL;

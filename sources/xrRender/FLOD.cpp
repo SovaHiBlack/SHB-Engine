@@ -28,7 +28,7 @@ static D3DVERTEXELEMENT9 dwDecl[]	=
 	D3DDECL_END()
 };
 
-void FLOD::Load			(LPCSTR N, IReader *data, u32 dwFlags)
+void FLOD::Load			(pcstr N, IReader *data, u32 dwFlags)
 {
 	inherited::Load		(N,data,dwFlags);
 

@@ -73,7 +73,8 @@ void	CBlender_Tree::Compile	(CBlender_Compile& C)
 		case SE_R1_NORMAL_HQ:
 			if (oNotAnTree.value)	{
 				// Level view
-				LPCSTR tsv	= "tree_s", tsp="vert";
+				pcstr tsv = "tree_s";
+				pcstr tsp="vert";
 				if (C.bDetail_Diffuse)	{ tsv="tree_s_dt"; tsp="vert_dt";}
 				if (oBlend.value)	C.r_Pass	(tsv,	tsp,	TRUE,TRUE,TRUE,TRUE,D3DBLEND_SRCALPHA,	D3DBLEND_INVSRCALPHA,	TRUE,tree_aref);
 				else				C.r_Pass	(tsv,	tsp,	TRUE,TRUE,TRUE,TRUE,D3DBLEND_ONE,		D3DBLEND_ZERO,			TRUE,tree_aref);
@@ -140,8 +141,8 @@ void	CBlender_Tree::Compile	(CBlender_Compile& C)
 	IBlender::Compile	(C);
 
 	//*************** codepath is the same, only shaders differ
-	LPCSTR	tvs				= "tree";
-	LPCSTR	tvs_s			= "shadow_direct_tree";
+	pcstr	tvs				= "tree";
+	pcstr	tvs_s			= "shadow_direct_tree";
 	if (oNotAnTree.value)	{ tvs="tree_s"; tvs_s="shadow_direct_tree_s"; }
 	switch (C.iElement)
 	{

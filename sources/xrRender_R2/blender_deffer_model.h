@@ -6,7 +6,7 @@ public:
 	xrP_Integer	oAREF;
 	xrP_BOOL	oBlend;
 public:
-	virtual		LPCSTR		getComment()	{ return "LEVEL: deffer-model-flat";	}
+	virtual		pcstr		getComment()	{ return "LEVEL: deffer-model-flat";	}
 	virtual		BOOL		canBeDetailed()	{ return TRUE;	}
 	virtual		BOOL		canBeLMAPped()	{ return FALSE;	}
 

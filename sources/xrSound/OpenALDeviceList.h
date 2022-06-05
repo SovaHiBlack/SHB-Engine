@@ -14,7 +14,7 @@ struct ALDeviceDesc{
 		u8				eax			:1;
 		u8				eax_unwanted:1;
 	};
-						ALDeviceDesc			(LPCSTR nm, int mn, int mj){name=nm;minor_ver=mn;major_ver=mj;selected=false;xram=false;eax=false;eax_unwanted=true;}
+						ALDeviceDesc			(pcstr nm, int mn, int mj){name=nm;minor_ver=mn;major_ver=mj;selected=false;xram=false;eax=false;eax_unwanted=true;}
 };
 
 class ALDeviceList

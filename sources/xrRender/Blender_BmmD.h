@@ -13,7 +13,7 @@ public:
 	string64	oB_Name	;	//. задел на будущее
 	string64	oA_Name	;	//. задел на будущее
 public:
-	virtual		LPCSTR		getComment()	{ return "LEVEL: Implicit**detail";	}
+	virtual		pcstr		getComment()	{ return "LEVEL: Implicit**detail";	}
 	virtual		BOOL		canBeDetailed()	{ return TRUE; }
 	virtual		BOOL		canBeLMAPped()	{ return TRUE; }
 

@@ -40,7 +40,4 @@ public:
 //	void maketga( int hf );
 };
 
-void	tga_save	(LPCSTR name, u32 w, u32 h, void* data, BOOL alpha );
-
 #endif /*_INCDEF_TARGASAVER_H_*/
-

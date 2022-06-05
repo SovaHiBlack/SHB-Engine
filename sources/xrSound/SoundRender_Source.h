@@ -26,18 +26,18 @@ public:
 private:
 	void 					i_decompress_fr			(OggVorbis_File* ovf, char* dest, u32 size);    
 	void 					i_decompress_hr			(OggVorbis_File* ovf, char* dest, u32 size);
-	void					LoadWave 				(LPCSTR name);
+	void					LoadWave 				(pcstr name);
 public:
 							CSoundRender_Source		();
 							~CSoundRender_Source	();
 
-	void					load					(LPCSTR name);
+	void					load					(pcstr name);
     void					unload					();
 	void					decompress				(u32 line, OggVorbis_File* ovf);
 	
 	virtual	u32				length_ms				()	{return dwTimeTotal;	}
 	virtual u32				game_type				()	{return m_uGameType;	}
-	virtual LPCSTR			file_name				()	{return *fname;	}
+	virtual pcstr			file_name				()	{return *fname;	}
 	virtual F32			base_volume				()	{return m_fBaseVolume; }
 };
 #endif

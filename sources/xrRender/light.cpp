@@ -44,7 +44,7 @@ light::~light	()
 }
 
 #if RENDER==R_R2 
-void light::set_texture		(LPCSTR name)
+void light::set_texture		(pcstr name)
 {
 	if ((0==name) || (0==name[0]))
 	{
@@ -62,7 +62,7 @@ void light::set_texture		(LPCSTR name)
 #endif
 
 #if RENDER==R_R1
-void light::set_texture		(LPCSTR name)
+void light::set_texture		(pcstr name)
 {
 }
 #endif

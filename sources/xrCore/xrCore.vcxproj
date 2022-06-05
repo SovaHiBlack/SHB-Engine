@@ -262,7 +262,7 @@
     <ClCompile Include="xrsharedmem.cpp" />
     <ClCompile Include="xrstring.cpp" />
     <ClCompile Include="xrSyncronize.cpp" />
-    <ClCompile Include="Xr_ini.cpp" />
+    <ClCompile Include="xr_ini.cpp" />
     <ClCompile Include="xr_trims.cpp" />
     <ClCompile Include="_compressed_normal.cpp" />
     <ClCompile Include="_math.cpp" />
@@ -281,7 +281,7 @@
     <ClInclude Include="build defines.h" />
     <ClInclude Include="clsid.h" />
     <ClInclude Include="cpuid.h" />
-    <ClInclude Include="fastdelegate.h" />
+    <ClInclude Include="FastDelegate.h" />
     <CustomBuild Include="FileSystem.h" />
     <ClInclude Include="file_stream_reader.h" />
     <ClInclude Include="FixedMap.h" />
@@ -294,7 +294,7 @@
     <ClInclude Include="LocatorAPI.h" />
     <ClInclude Include="LocatorAPI_defs.h" />
     <ClInclude Include="log.h" />
-    <ClInclude Include="lzhuf.h" />
+    <ClInclude Include="LzHuf.h" />
     <ClInclude Include="memory_monitor.h" />
     <ClInclude Include="rt_compressor.h" />
     <ClInclude Include="rt_config1x.h" />
@@ -302,7 +302,6 @@
     <ClInclude Include="rt_lzoconf.h" />
     <ClInclude Include="rt_lzodefs.h" />
     <ClInclude Include="rt_lzo_conf.h" />
-    <ClInclude Include="rt_lzo_config.h" />
     <ClInclude Include="rt_lzo_dict.h" />
     <ClInclude Include="rt_lzo_ptr.h" />
     <ClInclude Include="rt_miniacc.h" />
@@ -316,7 +315,7 @@
     <ClInclude Include="xrDebug_macros.h" />
     <ClInclude Include="xrMemory.h" />
     <ClInclude Include="xrMemory_align.h" />
-    <ClInclude Include="xrMEMORY_POOL.h" />
+    <ClInclude Include="xrMemory_POOL.h" />
     <ClInclude Include="xrMemory_pso.h" />
     <ClInclude Include="xrMemory_pure.h" />
     <ClInclude Include="xrMemory_subst_msvc.h" />
@@ -354,6 +353,14 @@
     <ClInclude Include="_vector2.h" />
     <ClInclude Include="_vector3d.h" />
     <ClInclude Include="_vector4.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="rt_lzo1x_c.ch" />
+    <None Include="rt_lzo1x_d.ch" />
+    <None Include="rt_lzo1_d.ch" />
+    <None Include="rt_lzo_dll.ch" />
+    <None Include="rt_lzo_mchw.ch" />
+    <None Include="rt_lzo_swd.ch" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

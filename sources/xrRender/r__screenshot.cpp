@@ -30,7 +30,7 @@ IC void MouseRayFromPoint	( Fvector& direction, int x, int y, Fmatrix& m_CamMat 
 	direction.normalize	();
 }
 
-void CRender::Screenshot		(IRender_interface::ScreenshotMode mode, LPCSTR name)
+void CRender::Screenshot		(IRender_interface::ScreenshotMode mode, pcstr name)
 {
 	if (!Device.b_is_Ready)			return;
 	if ((psDeviceFlags.test(rsFullscreen)) == 0) {

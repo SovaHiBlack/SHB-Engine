@@ -4,9 +4,9 @@
 
 static HANDLE hLocalSlot	= INVALID_HANDLE_VALUE;
 
-extern	void msParse(LPCSTR cmd);
+extern	void msParse(pcstr cmd);
 
-void msCreate		(LPCSTR name)
+void msCreate		(pcstr name)
 {
 	string256		fn;
 	sprintf_s		(fn,sizeof(fn),"\\\\.\\mailslot\\%s",name);

@@ -330,7 +330,7 @@ void CSheduler::ProcessStep			()
 #ifdef DEBUG
 			T.Object->dbg_startframe	= Device.dwFrame;
 			eTimer.Start				();
-			LPCSTR		_obj_name		= T.Object->shedule_Name().c_str();
+			pcstr		_obj_name		= T.Object->shedule_Name().c_str();
 #endif // DEBUG
 
 			// Calc next update interval

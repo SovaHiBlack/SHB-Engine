@@ -48,7 +48,6 @@ struct SActorMotions;
 struct SActorVehicleAnims;
 class  CActorCondition;
 class SndShockEffector;
-class CActorFollowerMngr;
 class CGameTaskManager;
 
 class CCameraShotEffector;
@@ -95,7 +94,7 @@ public:
 			CHolderCustom*				Holder						()						{return m_holder;}
 public:
 
-	virtual void						Load				( LPCSTR section );
+	virtual void						Load				(pcstr section );
 
 	virtual void						shedule_Update		( u32 T ); 
 	virtual void						UpdateCL			( );
@@ -152,19 +151,19 @@ public:
 	CGameNewsRegistryWrapper		*game_news_registry;
 	CCharacterPhysicsSupport		*m_pPhysics_support;
 
-	virtual LPCSTR	Name        () const {return CInventoryOwner::Name();}
+	virtual pcstr	Name        () const {return CInventoryOwner::Name();}
 
 public:
 	//PhraseDialogManager
 	virtual void ReceivePhrase				(DIALOG_SHARED_PTR& phrase_dialog);
 	virtual void UpdateAvailableDialogs		(CPhraseDialogManager* partner);
 	virtual void TryToTalk					();
-			bool OnDialogSoundHandlerStart	(CInventoryOwner *inv_owner, LPCSTR phrase);
+			bool OnDialogSoundHandlerStart	(CInventoryOwner *inv_owner, pcstr phrase);
 			bool OnDialogSoundHandlerStop	(CInventoryOwner *inv_owner);
 
 
 	virtual void reinit			();
-	virtual void reload			(LPCSTR section);
+	virtual void reload			(pcstr section);
 	virtual bool use_bolts		() const;
 
 	virtual void OnItemTake		(CInventoryItem *inventory_item);
@@ -360,10 +359,10 @@ protected:
 	F32					fCurAVelocity;
 	CEffectorBobbing*		pCamBobbing;
 
-//	void					LoadShootingEffector	(LPCSTR section);
+//	void					LoadShootingEffector	(pcstr section);
 //	SShootingEffector*		m_pShootingEffector;
 
-	void					LoadSleepEffector		(LPCSTR section);
+	void					LoadSleepEffector		(pcstr section);
 	SSleepEffector*			m_pSleepEffector;
 	CSleepEffectorPP*		m_pSleepEffectorPP;
 
@@ -382,14 +381,9 @@ public:
 
 	CGameObject*			ObjectWeLookingAt			() {return m_pObjectWeLookingAt;}
 	CInventoryOwner*		PersonWeLookingAt			() {return m_pPersonWeLookingAt;}
-	LPCSTR					GetDefaultActionForObject	() {return *m_sDefaultObjAction;}
-//.	void					AddFollower					(u16 id);
-//.	void					RemoveFollower				(u16 id);
-//.	void					SendCmdToFollowers			(int cmd);
+	pcstr					GetDefaultActionForObject	() {return *m_sDefaultObjAction;}
+
 protected:
-//.	void					DestroyFollowerInternal();//hack
-//.	CActorFollowerMngr&		Followers	();
-//.	CActorFollowerMngr*		m_followers;
 	CUsableScriptObject*	m_pUsableObject;
 	// Person we're looking at
 	CInventoryOwner*		m_pPersonWeLookingAt;
@@ -419,8 +413,6 @@ public:
 	void					PickupModeOn		();
 	void					PickupModeOff		();
 
-
-
 	//////////////////////////////////////////////////////////////////////////
 	// Motions (передвижения актрера)
 	//////////////////////////////////////////////////////////////////////////
@@ -436,7 +428,7 @@ public:
 	bool					CanAccelerate			();
 	bool					CanJump					();
 	bool					CanMove					();
-	F32					CameraHeight			();
+	F32						CameraHeight			();
 	bool					CanSprint				();
 	bool					CanRun					();
 	void					StopAnyMove				();
@@ -451,17 +443,17 @@ protected:
 
 	BOOL					m_bJumpKeyPressed;
 
-	F32					m_fWalkAccel;
-	F32					m_fJumpSpeed;
-	F32					m_fRunFactor;
-	F32					m_fRunBackFactor;
-	F32					m_fWalkBackFactor;
-	F32					m_fCrouchFactor;
-	F32					m_fClimbFactor;
-	F32					m_fSprintFactor;
+	F32						m_fWalkAccel;
+	F32						m_fJumpSpeed;
+	F32						m_fRunFactor;
+	F32						m_fRunBackFactor;
+	F32						m_fWalkBackFactor;
+	F32						m_fCrouchFactor;
+	F32						m_fClimbFactor;
+	F32						m_fSprintFactor;
 
-	F32					m_fWalk_StrafeFactor;
-	F32					m_fRun_StrafeFactor;
+	F32						m_fWalk_StrafeFactor;
+	F32						m_fRun_StrafeFactor;
 	//////////////////////////////////////////////////////////////////////////
 	// User input/output
 	//////////////////////////////////////////////////////////////////////////
@@ -471,7 +463,7 @@ public:
 	virtual void			IR_OnKeyboardRelease	(int dik);
 	virtual void			IR_OnKeyboardHold		(int dik);
 	virtual void			IR_OnMouseWheel			(int direction);
-	virtual	F32			GetLookFactor			();
+	virtual	F32				GetLookFactor			();
 
 	//////////////////////////////////////////////////////////////////////////
 	// Weapon fire control (оружие актрера)
@@ -480,7 +472,7 @@ public:
 	virtual void						g_WeaponBones		(int &L, int &R1, int &R2);
 	virtual void						g_fireParams		(const CHudItem* pHudItem, Fvector& P, Fvector& D);
 	virtual BOOL						g_State				(SEntityState& state) const;
-	virtual	F32						GetWeaponAccuracy	() const;
+	virtual	F32							GetWeaponAccuracy	() const;
 			bool						IsZoomAimingMode	() const {return m_bZoomAimingMode;}
 
 protected:
@@ -489,17 +481,17 @@ protected:
 
 	//настройки аккуратности стрельбы
 	//базовая дисперсия (когда игрок стоит на месте)
-	F32								m_fDispBase;
-	F32								m_fDispAim;
+	F32									m_fDispBase;
+	F32									m_fDispAim;
 	//коэффициенты на сколько процентов увеличится базовая дисперсия
 	//учитывает скорость актера 
-	F32								m_fDispVelFactor;
+	F32									m_fDispVelFactor;
 	//если актер бежит
-	F32								m_fDispAccelFactor;
+	F32									m_fDispAccelFactor;
 	//если актер сидит
-	F32								m_fDispCrouchFactor;
+	F32									m_fDispCrouchFactor;
 	//crouch+no acceleration
-	F32								m_fDispCrouchNoAccelFactor;
+	F32									m_fDispCrouchNoAccelFactor;
 	//смещение firepoint относительно default firepoint для бросания болтов и гранат
 	Fvector								m_vMissileOffset;
 public:
@@ -565,8 +557,8 @@ virtual	bool				can_validate_position_on_spawn	(){return false;}
 	//---------------------------------------------
 //	bool					m_bHasUpdate;	
 	/// spline coeff /////////////////////
-	F32			SCoeff[3][4];			//коэффициэнты для сплайна Бизье
-	F32			HCoeff[3][4];			//коэффициэнты для сплайна Эрмита
+	F32				SCoeff[3][4];			//коэффициэнты для сплайна Бизье
+	F32				HCoeff[3][4];			//коэффициэнты для сплайна Эрмита
 	Fvector			IPosS, IPosH, IPosL;	//положение актера после интерполяции Бизье, Эрмита, линейной
 
 #ifdef DEBUG
@@ -577,7 +569,6 @@ virtual	bool				can_validate_position_on_spawn	(){return false;}
 	VIS_POSITION	LastPosL;
 #endif
 
-	
 	SPHNetState				LastState;
 	SPHNetState				RecalculatedState;
 	SPHNetState				PredictedState;
@@ -601,6 +592,7 @@ virtual	bool				can_validate_position_on_spawn	(){return false;}
 	void					CalculateInterpolationParams();
 	//---------------------------------------------
 	virtual void			make_Interpolation ();
+
 #ifdef DEBUG
 	//---------------------------------------------
 	virtual void			OnRender_Network();

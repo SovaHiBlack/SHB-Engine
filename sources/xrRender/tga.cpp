@@ -2,22 +2,6 @@
 #include "stdafx.h"
 
 #include "tga.h"
-/*
-void	tga_save	(LPCSTR name, u32 w, u32 h, void* data, BOOL alpha )
-{
-	// Save
-	TGAdesc		tga;
-	tga.data	= data;
-	tga.format	= alpha?IMG_32B:IMG_24B;
-	tga.height	= h;
-	tga.width	= w;
-	tga.scanlenght=w*4;
-
-	int		hf	= _open(name,O_CREAT | O_WRONLY | O_BINARY, S_IREAD | S_IWRITE);
-	tga.maketga	(hf);
-	_close		(hf);
-}
-*/
 
 void TGAdesc::maketga( IWriter& fs ){
 	R_ASSERT(data);

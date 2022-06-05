@@ -30,7 +30,7 @@ public:
 			for (int i=0; i<4; ++i)
 				strcpy_s	(m_params[i],"");
 		}
-		void						parse_cmd_line		(LPCSTR cmd_line)
+		void						parse_cmd_line		(pcstr cmd_line)
 		{
 			reset					();
 			int						n = _min(4,_GetItemCount(cmd_line,'/'));
@@ -50,8 +50,8 @@ public:
 			void					destroy_particles	(const bool &all_particles);
 
 public:
-	virtual void					PreStart			(LPCSTR op);
-	virtual void					Start				(LPCSTR op);
+	virtual void					PreStart			(pcstr op);
+	virtual void					Start				(pcstr op);
 	virtual void					Disconnect			();
 
 	IGame_ObjectPool				ObjectPool;
@@ -87,7 +87,7 @@ public:
 			u32						GameType			() {return m_game_params.m_e_game_type;};
 	virtual void					Statistics			(CGameFont* F) = 0;
 
-	virtual	void					LoadTitle			(LPCSTR str){}
+	virtual	void					LoadTitle			(pcstr str){}
 //	virtual bool					CanBePaused			()		{ return true;}
 };
 

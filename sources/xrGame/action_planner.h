@@ -74,10 +74,10 @@ public:
 
 #ifdef LOG_ACTION
 public:
-	virtual LPCSTR				action2string			(const _action_id_type &action_id);
-	virtual LPCSTR				property2string			(const _condition_type &action_id);
-	virtual LPCSTR				object_name				() const;
-	virtual void				show					(LPCSTR offset = "");
+	virtual pcstr				action2string			(const _action_id_type &action_id);
+	virtual pcstr				property2string			(const _condition_type &action_id);
+	virtual pcstr				object_name				() const;
+	virtual void				show					(pcstr offset = "");
 	IC		void				show_current_world_state();
 	IC		void				show_target_world_state	();
 #endif

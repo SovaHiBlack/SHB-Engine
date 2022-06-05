@@ -6,7 +6,7 @@
 extern int	psSkeletonUpdate;
 
 #ifdef DEBUG
-void check_kinematics(CKinematics* _k, LPCSTR s);
+void check_kinematics(CKinematics* _k, pcstr s);
 #endif
 
 void CKinematics::CalculateBones			(BOOL bForceExact)
@@ -96,7 +96,7 @@ void CKinematics::CalculateBones			(BOOL bForceExact)
 }
 
 #ifdef DEBUG
-void check_kinematics(CKinematics* _k, LPCSTR s)
+void check_kinematics(CKinematics* _k, pcstr s)
 {
 	CKinematics* K = _k;
 	Fmatrix&	MrootBone		= K->LL_GetBoneInstance(K->LL_GetBoneRoot()).mTransform;

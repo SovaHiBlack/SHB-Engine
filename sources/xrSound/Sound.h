@@ -86,7 +86,7 @@ public:
 	CSound_UserDataPtr				g_userdata;
 public:
 									ref_sound_data	();
-									ref_sound_data	(LPCSTR fName, esound_type sound_type, int game_type);
+									ref_sound_data	(pcstr fName, esound_type sound_type, int game_type);
 	virtual							~ref_sound_data	();
 };
 typedef resptr_core<ref_sound_data,resptr_base<ref_sound_data> >	ref_sound_data_ptr;
@@ -122,7 +122,7 @@ public:
 		\param name Name of wave-file
 		\param type Sound type, usually for \a AI
 	*/
-	IC void					create					( LPCSTR name, esound_type sound_type,	int	game_type);
+	IC void					create					(pcstr name, esound_type sound_type,	int	game_type);
 
 	//! Clones ref_sound from another
 	/*!
@@ -172,7 +172,7 @@ class XRSOUND_API	CSound_source
 public:
 	virtual	u32				length_ms				( )		= 0;
 	virtual u32				game_type				( )		= 0;
-	virtual LPCSTR			file_name				( )		= 0;
+	virtual pcstr			file_name				( )		= 0;
 };
 
 /// definition (Sound Source)
@@ -261,7 +261,7 @@ class XRSOUND_API	CSound_manager_interface
 
 protected:
 	friend class 					ref_sound_data;
-	virtual void					_create_data			( ref_sound_data& S, LPCSTR fName, esound_type sound_type, int	game_type)				= 0;
+	virtual void					_create_data			( ref_sound_data& S, pcstr fName, esound_type sound_type, int	game_type)				= 0;
 	virtual void					_destroy_data			( ref_sound_data& S)																	= 0;
 public:
 	virtual							~CSound_manager_interface(){}
@@ -276,7 +276,7 @@ public:
 
 	//@{
 	/// Sound interface
-	virtual void					create					( ref_sound& S, LPCSTR fName,				esound_type sound_type, int		game_type)	= 0;
+	virtual void					create					( ref_sound& S, pcstr fName,				esound_type sound_type, int		game_type)	= 0;
 	virtual void					clone					( ref_sound& S, const ref_sound& from,		esound_type sound_type, int		game_type)	= 0;
 	virtual void					destroy					( ref_sound& S)																			= 0;
 	virtual void					stop_emitters			( )																						= 0;	
@@ -305,10 +305,10 @@ extern XRSOUND_API CSound_manager_interface*		Sound;
 
 /// ********* Sound ********* (utils, accessors, helpers)
 IC ref_sound_data::ref_sound_data				()																{	handle=0;feedback=0;g_type=0;g_object=0;s_type=st_Effect;												}
-IC ref_sound_data::ref_sound_data				( LPCSTR fName, 		esound_type sound_type, int	game_type )	{	::Sound->_create_data			(*this,fName, sound_type, game_type);									}
+IC ref_sound_data::ref_sound_data				(pcstr fName, 		esound_type sound_type, int	game_type )	{	::Sound->_create_data			(*this,fName, sound_type, game_type);									}
 IC ref_sound_data::~ref_sound_data				()																{	::Sound->_destroy_data			(*this);																}
 
-IC void	ref_sound::create						( LPCSTR name,			esound_type sound_type, int	game_type)	{	VERIFY(!::Sound->i_locked()); 	::Sound->create		(*this,name,sound_type,game_type);					}
+IC void	ref_sound::create						(pcstr name,			esound_type sound_type, int	game_type)	{	VERIFY(!::Sound->i_locked()); 	::Sound->create		(*this,name,sound_type,game_type);					}
 IC void	ref_sound::clone						( const ref_sound& from,esound_type sound_type, int	game_type)	{	VERIFY(!::Sound->i_locked()); 	::Sound->clone		(*this,from,sound_type,game_type);					}
 IC void	ref_sound::destroy						( )														{	VERIFY(!::Sound->i_locked()); 	::Sound->destroy	(*this);													}
 IC void	ref_sound::play							( CObject* O,						u32 flags, F32 d)	{	VERIFY(!::Sound->i_locked()); 	::Sound->play		(*this,O,flags,d);											}

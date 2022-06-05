@@ -113,8 +113,8 @@ public:
 };
 struct ENGINE_API		resptrcode_shader	: public resptr_base<Shader>
 {
-	void				create			(LPCSTR s_shader=0, LPCSTR s_textures=0, LPCSTR s_constants=0, LPCSTR s_matrices=0);
-	void				create			(IBlender*	B,	LPCSTR s_shader=0, LPCSTR s_textures=0, LPCSTR s_constants=0, LPCSTR s_matrices=0);
+	void				create			(pcstr s_shader=0, pcstr s_textures=0, pcstr s_constants=0, pcstr s_matrices=0);
+	void				create			(IBlender*	B, pcstr s_shader=0, pcstr s_textures=0, pcstr s_constants=0, pcstr s_matrices=0);
 	void				destroy			()	{ _set(NULL);		}
 };
 typedef	resptr_core<Shader,resptrcode_shader>												ref_shader;

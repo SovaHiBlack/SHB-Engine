@@ -76,7 +76,7 @@ IRender_Visual*	CModelPool::Instance_Duplicate	(IRender_Visual* V)
 	return N;
 }
 
-IRender_Visual*	CModelPool::Instance_Load		(LPCSTR N, BOOL allow_register)
+IRender_Visual*	CModelPool::Instance_Load		(pcstr N, BOOL allow_register)
 {
 	IRender_Visual	*V;
 	string_path		fn;
@@ -115,7 +115,7 @@ IRender_Visual*	CModelPool::Instance_Load		(LPCSTR N, BOOL allow_register)
 	return V;
 }
 
-IRender_Visual*	CModelPool::Instance_Load(LPCSTR name, IReader* data, BOOL allow_register)
+IRender_Visual*	CModelPool::Instance_Load(pcstr name, IReader* data, BOOL allow_register)
 {
 	IRender_Visual	*V;
 	
@@ -129,7 +129,7 @@ IRender_Visual*	CModelPool::Instance_Load(LPCSTR name, IReader* data, BOOL allow
 	return V;
 }
 
-void		CModelPool::Instance_Register(LPCSTR N, IRender_Visual* V)
+void		CModelPool::Instance_Register(pcstr N, IRender_Visual* V)
 {
 	// Registration
 	ModelDef			M;
@@ -183,7 +183,7 @@ CModelPool::~CModelPool()
 	xr_delete				(g_pMotionsContainer);
 }
 
-IRender_Visual* CModelPool::Instance_Find(LPCSTR N)
+IRender_Visual* CModelPool::Instance_Find(pcstr N)
 {
 	IRender_Visual*				Model=0;
 	xr_vector<ModelDef>::iterator	I;
@@ -197,7 +197,7 @@ IRender_Visual* CModelPool::Instance_Find(LPCSTR N)
 	return Model;
 }
 
-IRender_Visual* CModelPool::Create(LPCSTR name, IReader* data)
+IRender_Visual* CModelPool::Create(pcstr name, IReader* data)
 {
 	string_path low_name;	VERIFY	(xr_strlen(name)<sizeof(low_name));
 	strcpy(low_name,name);	strlwr	(low_name);
@@ -231,7 +231,7 @@ IRender_Visual* CModelPool::Create(LPCSTR name, IReader* data)
 	}
 }
 
-IRender_Visual* CModelPool::CreateChild(LPCSTR name, IReader* data)
+IRender_Visual* CModelPool::CreateChild(pcstr name, IReader* data)
 {
 	string256 low_name;		VERIFY	(xr_strlen(name)<256);
 	strcpy(low_name,name);	strlwr	(low_name);

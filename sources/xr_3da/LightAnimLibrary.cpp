@@ -255,7 +255,7 @@ void ELightAnimLibrary::Reload()
 	Load();
 }
 
-LAItemIt ELightAnimLibrary::FindItemI(LPCSTR name)
+LAItemIt ELightAnimLibrary::FindItemI(pcstr name)
 {
 	if (name&&name[0])
 		for (LAItemIt it=Items.begin(); it!=Items.end(); it++)
@@ -263,13 +263,13 @@ LAItemIt ELightAnimLibrary::FindItemI(LPCSTR name)
 	return Items.end();
 }
 
-CLAItem* ELightAnimLibrary::FindItem(LPCSTR name)
+CLAItem* ELightAnimLibrary::FindItem(pcstr name)
 {
 	LAItemIt it=FindItemI(name);
 	return (it!=Items.end())?*it:0;
 }
 
-CLAItem* ELightAnimLibrary::AppendItem(LPCSTR name, CLAItem* src)
+CLAItem* ELightAnimLibrary::AppendItem(pcstr name, CLAItem* src)
 {
     VERIFY2				(FindItem(name)==0,"Duplicate name found.");
     CLAItem* I			= xr_new<CLAItem>();

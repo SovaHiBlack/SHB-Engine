@@ -2,7 +2,7 @@
 #include "uber_deffer.h"
 void fix_texture_name(LPSTR fn);
 
-void	uber_deffer	(CBlender_Compile& C, bool hq, LPCSTR _vspec, LPCSTR _pspec, BOOL _aref, LPCSTR _detail_replace, bool DO_NOT_FINISH)
+void	uber_deffer	(CBlender_Compile& C, bool hq, pcstr _vspec, pcstr _pspec, BOOL _aref, pcstr _detail_replace, bool DO_NOT_FINISH)
 {
 	// Uber-parse
 	string256		fname,fnameA,fnameB;

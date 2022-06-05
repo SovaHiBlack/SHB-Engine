@@ -53,7 +53,7 @@ void CSoundRender_Source::decompress		(u32 line, OggVorbis_File* ovf)
 	else					i_decompress_fr(ovf,dest,left);
 }
 
-void CSoundRender_Source::LoadWave	(LPCSTR pName)
+void CSoundRender_Source::LoadWave	(pcstr pName)
 {
 	pname					= pName;
 
@@ -116,7 +116,7 @@ void CSoundRender_Source::LoadWave	(LPCSTR pName)
 	FS.r_close				(wave);
 }
 
-void CSoundRender_Source::load(LPCSTR name)
+void CSoundRender_Source::load(pcstr name)
 {
 	string_path			fn,N;
 	strcpy				(N,name);

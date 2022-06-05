@@ -46,15 +46,15 @@ public:
 	virtual 				~CModelPool			();
 	IRender_Visual*			Instance_Create		(u32 Type);
 	IRender_Visual*			Instance_Duplicate	(IRender_Visual* V);
-	IRender_Visual*			Instance_Load		(LPCSTR N, BOOL allow_register);
-	IRender_Visual*			Instance_Load		(LPCSTR N, IReader* data, BOOL allow_register);
-	void					Instance_Register	(LPCSTR N, IRender_Visual* V);
-	IRender_Visual*			Instance_Find		(LPCSTR N);
+	IRender_Visual*			Instance_Load		(pcstr N, BOOL allow_register);
+	IRender_Visual*			Instance_Load		(pcstr N, IReader* data, BOOL allow_register);
+	void					Instance_Register	(pcstr N, IRender_Visual* V);
+	IRender_Visual*			Instance_Find		(pcstr N);
 
 	IRender_Visual*			CreatePE			(PS::CPEDef* source);
 	IRender_Visual*			CreatePG			(PS::CPGDef* source);
-	IRender_Visual*			Create				(LPCSTR name, IReader* data=0);
-	IRender_Visual*			CreateChild			(LPCSTR name, IReader* data);
+	IRender_Visual*			Create				(pcstr name, IReader* data=0);
+	IRender_Visual*			CreateChild			(pcstr name, IReader* data);
 	void					Delete				(IRender_Visual* &V, BOOL bDiscard=FALSE);
 	void					Discard				(IRender_Visual* &V, BOOL b_complete);
 	void					DeleteInternal		(IRender_Visual* &V, BOOL bDiscard=FALSE);

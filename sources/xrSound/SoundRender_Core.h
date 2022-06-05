@@ -11,7 +11,7 @@ class CSoundRender_Core					: public CSound_manager_interface
 {
     volatile BOOL						bLocked;
 protected:
-	virtual void						_create_data			( ref_sound_data& S, LPCSTR fName,	esound_type sound_type, int game_type); 
+	virtual void						_create_data			( ref_sound_data& S, pcstr fName,	esound_type sound_type, int game_type);
 	virtual void						_destroy_data			( ref_sound_data& S);
 protected:
     BOOL								bListenerMoved;
@@ -70,7 +70,7 @@ public:
 
 	// Sound interface
 			void						verify_refsound			( ref_sound& S);
-	virtual void						create					( ref_sound& S, LPCSTR fName,			esound_type sound_type, int	game_type);
+	virtual void						create					( ref_sound& S, pcstr fName,			esound_type sound_type, int	game_type);
 	virtual void						clone					( ref_sound& S, const ref_sound& from,	esound_type sound_type, int	game_type);
 	virtual void						destroy					( ref_sound& S);
 	virtual void						stop_emitters			( );
@@ -98,7 +98,7 @@ public:
 	void								i_eax_listener_get		(CSound_environment* E);
 
 public:
-	CSoundRender_Source*				i_create_source			( LPCSTR name				);
+	CSoundRender_Source*				i_create_source			(pcstr name				);
 	void								i_destroy_source		( CSoundRender_Source*  S	);
 	CSoundRender_Emitter*				i_play					( ref_sound* S, BOOL _loop, F32 delay	);
 	void								i_start					( CSoundRender_Emitter* E	);

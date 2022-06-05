@@ -17,11 +17,11 @@ SGeometry::~SGeometry					()			{	Device.Resources->DeleteGeom			(this);			}
 Shader::~Shader							()			{	Device.Resources->Delete				(this);			}
 																							 
 //////////////////////////////////////////////////////////////////////////					 
-void	resptrcode_shader::create		(LPCSTR s_shader, LPCSTR s_textures, LPCSTR s_constants, LPCSTR s_matrices)
+void	resptrcode_shader::create		(pcstr s_shader, pcstr s_textures, pcstr s_constants, pcstr s_matrices)
 {
 	_set(Device.Resources->Create		(s_shader,s_textures,s_constants,s_matrices));
 }
-void	resptrcode_shader::create		(IBlender* B, LPCSTR s_shader, LPCSTR s_textures, LPCSTR s_constants, LPCSTR s_matrices)
+void	resptrcode_shader::create		(IBlender* B, pcstr s_shader, pcstr s_textures, pcstr s_constants, pcstr s_matrices)
 {
 	_set(Device.Resources->Create		(B,s_shader,s_textures,s_constants,s_matrices));
 }

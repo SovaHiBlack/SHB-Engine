@@ -114,7 +114,7 @@ ICF void CBackend::set_Format			(IDirect3DVertexDeclaration9* _decl)
 	}
 }
 
-ICF void CBackend::set_PS				(IDirect3DPixelShader9* _ps, LPCSTR _n)
+ICF void CBackend::set_PS				(IDirect3DPixelShader9* _ps, pcstr _n)
 {
 	if (ps!=_ps)
 	{
@@ -130,7 +130,7 @@ ICF void CBackend::set_PS				(IDirect3DPixelShader9* _ps, LPCSTR _n)
 	}
 }
 
-ICF void CBackend::set_VS				(IDirect3DVertexShader9* _vs, LPCSTR _n)
+ICF void CBackend::set_VS				(IDirect3DVertexShader9* _vs, pcstr _n)
 {
 	if (vs!=_vs)
 	{

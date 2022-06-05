@@ -157,19 +157,19 @@ IC	void CPlanner::add_effect		(_world_operator *action, _condition_type conditio
 
 #ifdef LOG_ACTION
 TEMPLATE_SPECIALIZATION
-LPCSTR CPlanner::action2string		(const _action_id_type &action_id)
+pcstr CPlanner::action2string		(const _action_id_type &action_id)
 {
 	return			(action(action_id).m_action_name);
 }
 
 TEMPLATE_SPECIALIZATION
-LPCSTR CPlanner::property2string	(const _condition_type &property_id)
+pcstr CPlanner::property2string	(const _condition_type &property_id)
 {
 	return			(evaluator(property_id).m_evaluator_name);//itoa(property_id,m_temp_string,10));
 }
 
 TEMPLATE_SPECIALIZATION
-LPCSTR CPlanner::object_name		() const
+pcstr CPlanner::object_name		() const
 {
 	return			(*m_object->cName());
 }
@@ -236,7 +236,7 @@ IC	void CPlanner::show_target_world_state	()
 }
 
 TEMPLATE_SPECIALIZATION
-IC	void CPlanner::show				(LPCSTR offset)
+IC	void CPlanner::show				(pcstr offset)
 {
 	string256		temp;
 	strconcat		(sizeof(temp),temp,offset,"    ");

@@ -3,7 +3,7 @@
 #include "SoundRender_Core.h"
 #include "SoundRender_Source.h"
 
-CSoundRender_Source*	CSoundRender_Core::i_create_source		(LPCSTR name)
+CSoundRender_Source*	CSoundRender_Core::i_create_source		(pcstr name)
 {
 	// Search
 	string256			id;

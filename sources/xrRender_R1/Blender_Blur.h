@@ -5,7 +5,7 @@
 class CBlender_Blur : public IBlender  
 {
 public:
-	virtual		LPCSTR		getComment()	{ return "INTERNAL: blur";	}
+	virtual		pcstr		getComment()	{ return "INTERNAL: blur";	}
 	virtual		BOOL		canBeLMAPped()	{ return FALSE; }
 
 	virtual		void		Save			(IWriter&  fs);

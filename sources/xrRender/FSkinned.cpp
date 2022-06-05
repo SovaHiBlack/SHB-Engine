@@ -196,7 +196,7 @@ void CSkeletonX_ST::Release()
 	inherited1::Release();
 }
 //////////////////////////////////////////////////////////////////////
-void CSkeletonX_PM::Load(LPCSTR N, IReader *data, u32 dwFlags)
+void CSkeletonX_PM::Load(pcstr N, IReader *data, u32 dwFlags)
 {
 	_Load							(N,data,vCount);
 	void*	_verts_					= data->pointer	();
@@ -205,7 +205,7 @@ void CSkeletonX_PM::Load(LPCSTR N, IReader *data, u32 dwFlags)
 	vBase							= 0;
 	_Load_hw						(*this,_verts_);
 }
-void CSkeletonX_ST::Load(LPCSTR N, IReader *data, u32 dwFlags)
+void CSkeletonX_ST::Load(pcstr N, IReader *data, u32 dwFlags)
 {
 	_Load							(N,data,vCount);
 	void*	_verts_					= data->pointer	();

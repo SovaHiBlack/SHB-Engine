@@ -36,7 +36,7 @@ BOOL	reclaim		(xr_vector<T*>& vec, const T* ptr)
 }
 
 //--------------------------------------------------------------------------------------------------------------
-IBlender* CResourceManager::_GetBlender		(LPCSTR Name)
+IBlender* CResourceManager::_GetBlender		(pcstr Name)
 {
 	R_ASSERT(Name && Name[0]);
 
@@ -47,7 +47,7 @@ IBlender* CResourceManager::_GetBlender		(LPCSTR Name)
 	else					return I->second;
 }
 
-IBlender* CResourceManager::_FindBlender		(LPCSTR Name)
+IBlender* CResourceManager::_FindBlender		(pcstr Name)
 {
 	if (!(Name && Name[0])) return 0;
 
@@ -57,23 +57,11 @@ IBlender* CResourceManager::_FindBlender		(LPCSTR Name)
 	else						return I->second;
 }
 
-void	CResourceManager::ED_UpdateBlender	(LPCSTR Name, IBlender* data)
-{
-	LPSTR N = LPSTR(Name);
-	map_Blender::iterator I = m_blenders.find	(N);
-	if (I!=m_blenders.end())	{
-		R_ASSERT	(data->getDescription().CLS == I->second->getDescription().CLS);
-		xr_delete	(I->second);
-		I->second	= data;
-	} else {
-		m_blenders.insert	(mk_pair(xr_strdup(Name),data));
-	}
-}
 
 //////////////////////////////////////////////////////////////////////
 // Construction/Destruction
 //////////////////////////////////////////////////////////////////////
-void	CResourceManager::_ParseList(sh_list& dest, LPCSTR names)
+void	CResourceManager::_ParseList(sh_list& dest, pcstr names)
 {
 	if (0==names) 		names 	= "$null";
 
@@ -131,7 +119,7 @@ void CResourceManager::_DeleteElement(const ShaderElement* S)
 	Msg	("! ERROR: Failed to find compiled 'shader-element'");
 }
 
-Shader*	CResourceManager::_cpp_Create	(IBlender* B, LPCSTR s_shader, LPCSTR s_textures, LPCSTR s_constants, LPCSTR s_matrices)
+Shader*	CResourceManager::_cpp_Create	(IBlender* B, pcstr s_shader, pcstr s_textures, pcstr s_constants, pcstr s_matrices)
 {
 	CBlender_Compile	C;
 	Shader				S;
@@ -153,7 +141,6 @@ Shader*	CResourceManager::_cpp_Create	(IBlender* B, LPCSTR s_shader, LPCSTR s_te
 	{
 		C.iElement			= 0;
 		C.bDetail			= m_textures_description.GetDetailTexture(C.L_textures[0],C.detail_texture,C.detail_scaler);
-//.		C.bDetail			= _GetDetailTexture(*C.L_textures[0],C.detail_texture,C.detail_scaler);
 		ShaderElement		E;
 		C._cpp_Compile		(&E);
 		S.E[0]				= _CreateElement	(E);
@@ -162,7 +149,6 @@ Shader*	CResourceManager::_cpp_Create	(IBlender* B, LPCSTR s_shader, LPCSTR s_te
 	// Compile element	(LOD1)
 	{
 		C.iElement			= 1;
-//.		C.bDetail			= _GetDetailTexture(*C.L_textures[0],C.detail_texture,C.detail_scaler);
 		C.bDetail			= m_textures_description.GetDetailTexture(C.L_textures[0],C.detail_texture,C.detail_scaler);
 		ShaderElement		E;
 		C._cpp_Compile		(&E);
@@ -216,17 +202,17 @@ Shader*	CResourceManager::_cpp_Create	(IBlender* B, LPCSTR s_shader, LPCSTR s_te
 	return N;
 }
 
-Shader*	CResourceManager::_cpp_Create	(LPCSTR s_shader, LPCSTR s_textures, LPCSTR s_constants, LPCSTR s_matrices)
+Shader*	CResourceManager::_cpp_Create	(pcstr s_shader, pcstr s_textures, pcstr s_constants, pcstr s_matrices)
 {
 	return	_cpp_Create(_GetBlender(s_shader?s_shader:"null"),s_shader,s_textures,s_constants,s_matrices);
 }
 
-Shader*		CResourceManager::Create	(IBlender*	B,		LPCSTR s_shader,	LPCSTR s_textures,	LPCSTR s_constants, LPCSTR s_matrices)
+Shader*		CResourceManager::Create	(IBlender*	B, pcstr s_shader, pcstr s_textures, pcstr s_constants, pcstr s_matrices)
 {
 	return	_cpp_Create	(B,s_shader,s_textures,s_constants,s_matrices);
 }
 
-Shader*		CResourceManager::Create	(LPCSTR s_shader,	LPCSTR s_textures,	LPCSTR s_constants,	LPCSTR s_matrices)
+Shader*		CResourceManager::Create	(pcstr s_shader, pcstr s_textures, pcstr s_constants, pcstr s_matrices)
 {
 	if	(_lua_HasShader(s_shader))		return	_lua_Create	(s_shader,s_textures);
 	else								return	_cpp_Create	(s_shader,s_textures,s_constants,s_matrices);
@@ -304,17 +290,3 @@ void	CResourceManager::Evict()
 {
 	CHK_DX	(HW.pDevice->EvictManagedResources());
 }
-/*
-BOOL	CResourceManager::_GetDetailTexture(LPCSTR Name,LPCSTR& T, R_constant_setup* &CS)
-{
-	LPSTR N = LPSTR(Name);
-	map_TD::iterator I = m_td.find	(N);
-	if (I!=m_td.end())
-	{
-		T	= I->second.T;
-		CS	= I->second.cs;
-		return TRUE;
-	} else {
-		return FALSE;
-	}
-}*/

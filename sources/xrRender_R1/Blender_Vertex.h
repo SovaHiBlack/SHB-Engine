@@ -9,7 +9,7 @@
 class CBlender_Vertex : public IBlender  
 {
 public:
-	virtual		LPCSTR		getComment()	{ return "LEVEL: diffuse*base";	}
+	virtual		pcstr		getComment()	{ return "LEVEL: diffuse*base";	}
 	virtual		BOOL		canBeDetailed()	{ return TRUE;	}
 	virtual		BOOL		canBeLMAPped()	{ return FALSE; }
 

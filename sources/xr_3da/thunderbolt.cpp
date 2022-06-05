@@ -11,7 +11,7 @@
 
 static const F32 MAX_DIST_FACTOR = 0.95f;
 
-SThunderboltDesc::SThunderboltDesc(CInifile* pIni, LPCSTR sect)
+SThunderboltDesc::SThunderboltDesc(CInifile* pIni, pcstr sect)
 {
 	name						= sect;
 	color_anim					= LALib.FindItem (pIni->r_string ( sect,"color_anim" )); VERIFY(color_anim);
@@ -29,7 +29,7 @@ SThunderboltDesc::SThunderboltDesc(CInifile* pIni, LPCSTR sect)
 
     // models
     IReader* F			= 0;
-    LPCSTR m_name;
+	pcstr m_name;
 	m_name				= pSettings->r_string(sect,"lightning_model");
 	F					= FS.r_open("$game_meshes$",m_name); R_ASSERT2(F,"Empty 'lightning_model'.");
 	l_model				= ::Render->model_CreateDM(F);
@@ -51,12 +51,13 @@ SThunderboltDesc::~SThunderboltDesc()
 //----------------------------------------------------------------------------------------------
 // collection
 //----------------------------------------------------------------------------------------------
-SThunderboltCollection::SThunderboltCollection(CInifile* pIni, LPCSTR sect)
+SThunderboltCollection::SThunderboltCollection(CInifile* pIni, pcstr sect)
 {
 	section			= sect;
 	int tb_count	= pIni->line_count(sect);
 	for (int tb_idx=0; tb_idx<tb_count; tb_idx++){
-		LPCSTR		N, V;
+		pcstr		N;
+		pcstr		V;
 		if (pIni->r_line(sect,tb_idx,&N,&V))
 			palette.push_back(xr_new<SThunderboltDesc>(pIni,N));
 	}
@@ -105,7 +106,7 @@ CEffect_Thunderbolt::~CEffect_Thunderbolt()
 	hGeom_gradient.destroy		();
 }
 
-int CEffect_Thunderbolt::AppendDef(CInifile* pIni, LPCSTR sect)
+int CEffect_Thunderbolt::AppendDef(CInifile* pIni, pcstr sect)
 {
 	if (!sect||(0==sect[0])) return -1;
 	for (CollectionVecIt it=collection.begin(); it!=collection.end(); it++)

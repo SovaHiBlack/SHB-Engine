@@ -30,7 +30,7 @@ void Fvisual::Release	()
 	IRender_Visual::Release	();
 }
 
-void Fvisual::Load		(LPCSTR N, IReader *data, u32 dwFlags)
+void Fvisual::Load		(pcstr N, IReader *data, u32 dwFlags)
 {
 	IRender_Visual::Load		(N,data,dwFlags);
 

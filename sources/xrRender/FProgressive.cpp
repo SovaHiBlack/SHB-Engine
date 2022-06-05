@@ -32,7 +32,7 @@ void FProgressive::Release	()
 	}
 }
 
-void FProgressive::Load		(LPCSTR N, IReader *data, u32 dwFlags)
+void FProgressive::Load		(pcstr N, IReader *data, u32 dwFlags)
 {
 	Fvisual::Load	(N,data,dwFlags);
 

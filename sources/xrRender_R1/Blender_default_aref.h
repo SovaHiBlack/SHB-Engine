@@ -12,7 +12,7 @@ public:
 	xrP_Integer	oAREF;
 	xrP_BOOL	oBlend;
 public:
-	virtual		LPCSTR		getComment()	{ return "LEVEL: lmap*base.aref";	}
+	virtual		pcstr		getComment()	{ return "LEVEL: lmap*base.aref";	}
 	virtual		BOOL		canBeDetailed()	{ return TRUE; }
 	virtual		BOOL		canBeLMAPped()	{ return TRUE; }
 

@@ -26,9 +26,6 @@ XRCORE_API DUMMY_STUFF	*g_temporary_stuff = 0;
 #	pragma warning(disable:4995)
 #	include <malloc.h>
 #	pragma warning(pop)
-//#	define TRIVIAL_ENCRYPTOR_DECODER
-//#	include "trivial_encryptor.h"
-//#	undef TRIVIAL_ENCRYPTOR_DECODER
 #endif // PROTECTED_BUILD
 
 CLocatorAPI*		xr_FS = NULL;

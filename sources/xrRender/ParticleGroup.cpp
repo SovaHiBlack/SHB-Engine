@@ -21,7 +21,7 @@ CPGDef::~CPGDef()
 	m_Effects.clear	();
 }
 
-void CPGDef::SetName(LPCSTR name)
+void CPGDef::SetName(pcstr name)
 {
 	m_Name			= name;
 }
@@ -120,7 +120,7 @@ void CParticleGroup::SItem::Clear()
 	for (VisualVecIt it=visuals.begin(); it!=visuals.end(); it++)
 		::Render->model_Delete(*it);
 }
-void CParticleGroup::SItem::StartRelatedChild(CParticleEffect* emitter, LPCSTR eff_name, PAPI::Particle& m)
+void CParticleGroup::SItem::StartRelatedChild(CParticleEffect* emitter, pcstr eff_name, PAPI::Particle& m)
 {
 	CParticleEffect*C		= static_cast<CParticleEffect*>(RImplementation.model_CreatePE(eff_name));
 	Fmatrix M; 				M.identity();
@@ -145,7 +145,7 @@ void CParticleGroup::SItem::StopRelatedChild(u32 idx)
 	_children_related[idx]		= _children_related.back();
 	_children_related.pop_back	();
 }
-void CParticleGroup::SItem::StartFreeChild(CParticleEffect* emitter, LPCSTR nm, PAPI::Particle& m)
+void CParticleGroup::SItem::StartFreeChild(CParticleEffect* emitter, pcstr nm, PAPI::Particle& m)
 {
 	CParticleEffect*C			= static_cast<CParticleEffect*>(RImplementation.model_CreatePE(nm));
 	if(!C->IsLooped()){

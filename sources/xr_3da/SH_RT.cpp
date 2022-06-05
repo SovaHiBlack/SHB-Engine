@@ -18,7 +18,7 @@ CRT::~CRT			()
 	Device.Resources->_DeleteRT	(this);	
 }
 
-void CRT::create	(LPCSTR Name, u32 w, u32 h,	D3DFORMAT f)
+void CRT::create	(pcstr Name, u32 w, u32 h,	D3DFORMAT f)
 {
 	if (pSurface)	return;
 
@@ -98,7 +98,7 @@ void CRT::reset_end		()
 {
 	create		(*cName,dwWidth,dwHeight,fmt);
 }
-void resptrcode_crt::create(LPCSTR Name, u32 w, u32 h, D3DFORMAT f)
+void resptrcode_crt::create(pcstr Name, u32 w, u32 h, D3DFORMAT f)
 {
 	_set			(Device.Resources->_CreateRT(Name,w,h,f));
 }
@@ -121,7 +121,7 @@ CRTC::~CRTC			()
 	Device.Resources->_DeleteRTC	(this);	
 }
 
-void CRTC::create	(LPCSTR Name, u32 size,	D3DFORMAT f)
+void CRTC::create	(pcstr Name, u32 size,	D3DFORMAT f)
 {
 	R_ASSERT	(HW.pDevice && Name && Name[0] && size && btwIsPow2(size));
 	_order		= CPU::GetCLK();	//Device.GetTimerGlobal()->GetElapsed_clk();
@@ -180,7 +180,7 @@ void CRTC::reset_end	()
 	create		(*cName,dwSize,fmt);
 }
 
-void resptrcode_crtc::create(LPCSTR Name, u32 size, D3DFORMAT f)
+void resptrcode_crtc::create(pcstr Name, u32 size, D3DFORMAT f)
 {
 	_set		(Device.Resources->_CreateRTC(Name,size,f));
 }

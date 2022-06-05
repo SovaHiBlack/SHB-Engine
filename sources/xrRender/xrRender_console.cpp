@@ -125,8 +125,8 @@ public:
 		for (u32 i=0; i<HW.Caps.raster.dwStages; i++)
 			CHK_DX(HW.pDevice->SetSamplerState( i, D3DSAMP_MAXANISOTROPY, val	));
 	}
-	CCC_tf_Aniso(LPCSTR N, int*	v) : CCC_Integer(N, v, 1, 16)		{ };
-	virtual void Execute	(LPCSTR args)
+	CCC_tf_Aniso(pcstr N, int*	v) : CCC_Integer(N, v, 1, 16)		{ };
+	virtual void Execute	(pcstr args)
 	{
 		CCC_Integer::Execute	(args);
 		apply					();
@@ -146,8 +146,8 @@ public:
 			CHK_DX(HW.pDevice->SetSamplerState( i, D3DSAMP_MIPMAPLODBIAS, *((LPDWORD) value)));
 	}
 
-	CCC_tf_MipBias(LPCSTR N, float*	v) : CCC_Float(N, v, -0.5f, +0.5f)	{ };
-	virtual void Execute(LPCSTR args)
+	CCC_tf_MipBias(pcstr N, float*	v) : CCC_Float(N, v, -0.5f, +0.5f)	{ };
+	virtual void Execute(pcstr args)
 	{
 		CCC_Float::Execute	(args);
 		apply				();
@@ -161,8 +161,8 @@ public:
 class CCC_R2GM		: public CCC_Float
 {
 public:
-	CCC_R2GM(LPCSTR N, float*	v) : CCC_Float(N, v, 0.f, 4.f) { *v = 0; };
-	virtual void	Execute	(LPCSTR args)
+	CCC_R2GM(pcstr N, float*	v) : CCC_Float(N, v, 0.f, 4.f) { *v = 0; };
+	virtual void	Execute	(pcstr args)
 	{
 		if (0==xr_strcmp(args,"on"))	{
 			ps_r2_ls_flags.set	(R2FLAG_GLOBALMATERIAL,TRUE);
@@ -171,7 +171,7 @@ public:
 		} else {
 			CCC_Float::Execute	(args);
 			if (ps_r2_ls_flags.test(R2FLAG_GLOBALMATERIAL))	{
-				static LPCSTR	name[4]	=	{ "oren", "blin", "phong", "metal" };
+				static pcstr	name[4]	=	{ "oren", "blin", "phong", "metal" };
 				float	mid		= *value	;
 				int		m0		= iFloor(mid)	% 4;
 				int		m1		= (m0+1)		% 4;
@@ -184,19 +184,19 @@ public:
 class CCC_Screenshot : public IConsole_Command
 {
 public:
-	CCC_Screenshot(LPCSTR N) : IConsole_Command(N)  { };
-	virtual void Execute(LPCSTR args) {
+	CCC_Screenshot(pcstr N) : IConsole_Command(N)  { };
+	virtual void Execute(pcstr args) {
 		string_path	name;	name[0]=0;
 		sscanf		(args,"%s",	name);
-		LPCSTR		image	= xr_strlen(name)?name:0;
+		pcstr		image	= xr_strlen(name)?name:0;
 		::Render->Screenshot(IRender_interface::SM_NORMAL,image);
 	}
 };
 class CCC_ModelPoolStat : public IConsole_Command
 {
 public:
-	CCC_ModelPoolStat(LPCSTR N) : IConsole_Command(N)  { bEmptyArgsHandled = TRUE; };
-	virtual void Execute(LPCSTR args) {
+	CCC_ModelPoolStat(pcstr N) : IConsole_Command(N)  { bEmptyArgsHandled = TRUE; };
+	virtual void Execute(pcstr args) {
 		RImplementation.Models->dump();
 	}
 };
@@ -204,9 +204,9 @@ public:
 class	CCC_Preset		: public CCC_Token
 {
 public:
-	CCC_Preset(LPCSTR N, u32* V, xr_token* T) : CCC_Token(N,V,T)	{}	;
+	CCC_Preset(pcstr N, u32* V, xr_token* T) : CCC_Token(N,V,T)	{}	;
 
-	virtual void	Execute	(LPCSTR args)	{
+	virtual void	Execute	(pcstr args)	{
 		CCC_Token::Execute	(args);
 		string_path		_cfg;
 		string_path		cmd;
@@ -229,8 +229,8 @@ public:
 class CCC_BuildSSA : public IConsole_Command
 {
 public:
-	CCC_BuildSSA(LPCSTR N) : IConsole_Command(N)  { bEmptyArgsHandled = TRUE; };
-	virtual void Execute(LPCSTR args) {
+	CCC_BuildSSA(pcstr N) : IConsole_Command(N)  { bEmptyArgsHandled = TRUE; };
+	virtual void Execute(pcstr args) {
 		r_pixel_calculator	c;
 		c.run				();
 	}

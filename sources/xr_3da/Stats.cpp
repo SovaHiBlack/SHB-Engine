@@ -371,7 +371,7 @@ void CStats::Show()
 	Particles_starting = Particles_active = Particles_destroy = 0;
 }
 
-void	_LogCallback				(LPCSTR string)
+void	_LogCallback				(pcstr string)
 {
 	if (string && '!'==string[0] && ' '==string[1])
 		Device.Statistic->errors.push_back	(shared_str(string));

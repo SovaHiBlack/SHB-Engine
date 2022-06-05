@@ -40,15 +40,15 @@ public:
 	F32				m_StateBlendUpSpeed;
 	F32				m_StateBlendDnSpeed;
     
-	void				SetGradient		(F32 fMaxRadius, F32 fOpacity, LPCSTR tex_name, LPCSTR sh_name);
-    void				SetSource		(F32 fRadius, BOOL ign_color, LPCSTR tex_name, LPCSTR sh_name);
-    void				AddFlare		(F32 fRadius, F32 fOpacity, F32 fPosition, LPCSTR tex_name, LPCSTR sh_name);
-    ref_shader			CreateShader	(LPCSTR tex_name, LPCSTR sh_name);
+	void				SetGradient		(F32 fMaxRadius, F32 fOpacity, pcstr tex_name, pcstr sh_name);
+    void				SetSource		(F32 fRadius, BOOL ign_color, pcstr tex_name, pcstr sh_name);
+    void				AddFlare		(F32 fRadius, F32 fOpacity, F32 fPosition, pcstr tex_name, pcstr sh_name);
+    ref_shader			CreateShader	(pcstr tex_name, pcstr sh_name);
 
 	shared_str			section;
 public:
     					CLensFlareDescriptor(){m_Flags.zero();section=0;m_StateBlendUpSpeed=m_StateBlendDnSpeed=0.1f;}
-    void				load				(CInifile* pIni, LPCSTR section);
+    void				load				(CInifile* pIni, pcstr section);
 	void 				OnDeviceCreate	();
 	void 				OnDeviceDestroy	();
 };
@@ -99,7 +99,7 @@ public:
 	void 				OnDeviceCreate	();         
 	void 				OnDeviceDestroy	();
 
-    int					AppendDef		(CInifile* pIni, LPCSTR sect);
+    int					AppendDef		(CInifile* pIni, pcstr sect);
 
 	void				Invalidate		(){m_State=lfsNone;}
 };

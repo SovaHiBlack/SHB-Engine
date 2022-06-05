@@ -16,7 +16,7 @@ u16 find_bone_id(vecBones* bones, shared_str nm)
 }
 
 //-----------------------------------------------------------------------
-BOOL motions_value::load		(LPCSTR N, IReader *data, vecBones* bones)
+BOOL motions_value::load		(pcstr N, IReader *data, vecBones* bones)
 {
 	m_id						= N;
 

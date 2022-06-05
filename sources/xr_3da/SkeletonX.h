@@ -72,7 +72,7 @@ protected:
 	void					_Copy				(CSkeletonX *V);
 	void					_Render_soft		(ref_geom& hGeom, 	u32 vCount,	u32 iOffset, u32 pCount);
 	void					_Render				(ref_geom& hGeom, 	u32 vCount,	u32 iOffset, u32 pCount);
-	void					_Load				(LPCSTR N,		IReader *data,	u32& dwVertCount);
+	void					_Load				(pcstr N,		IReader *data,	u32& dwVertCount);
 
 	virtual void			_Load_hw			(Fvisual& V,		void *data)			= 0;
 	virtual void			_CollectBoneFaces	(Fvisual* V, u32 iBase, u32 iCount)		= 0;

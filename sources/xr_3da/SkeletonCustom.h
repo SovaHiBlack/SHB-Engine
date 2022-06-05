@@ -233,9 +233,9 @@ public:
 	virtual						~CKinematics		();
 
 	// Low level interface
-	u16							LL_BoneID		(LPCSTR  B);
+	u16							LL_BoneID		(pcstr  B);
 	u16							LL_BoneID		(const shared_str& B);
-	LPCSTR						LL_BoneName_dbg	(u16 ID);
+	pcstr						LL_BoneName_dbg	(u16 ID);
 
     CInifile*					LL_UserData			(){return pUserData;}
 	accel*						LL_Bones			(){return bone_map_N;}
@@ -269,7 +269,7 @@ public:
 
 	// General "Visual" stuff
     virtual void				Copy				(IRender_Visual *pFrom);
-	virtual void				Load				(LPCSTR N, IReader *data, u32 dwFlags);
+	virtual void				Load				(pcstr N, IReader *data, u32 dwFlags);
 	virtual void 				Spawn				();
 	virtual void				Depart				();
     virtual void 				Release				();

@@ -96,8 +96,8 @@ namespace PS
                             CPEDef				();
                             ~CPEDef				();
         
-		void				SetName				(LPCSTR name);
-        IC LPCSTR			Name				()const{return *m_Name;}
+		void				SetName				(pcstr name);
+        IC pcstr			Name				()const{return *m_Name;}
         void				CreateShader		();
         void				DestroyShader		();
 

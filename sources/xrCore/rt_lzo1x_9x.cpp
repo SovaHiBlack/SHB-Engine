@@ -41,7 +41,7 @@
 #endif
 
 #if defined(LZO1X)
-#  include "rt_config1x.h"
+#	include "rt_config1x.h"
 #elif defined(LZO1Y)
 #  include "config1y.h"
 #elif defined(LZO1Z)

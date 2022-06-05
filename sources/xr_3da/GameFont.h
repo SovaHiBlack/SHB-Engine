@@ -62,11 +62,11 @@ protected:
 	IC const Fvector&		GetCharTC		(u16 c)		{return TCMap[c];}
 
 public:
-							CGameFont		(LPCSTR section, u32 flags=0);
-							CGameFont		(LPCSTR shader, LPCSTR texture, u32 flags=0);
+							CGameFont		(pcstr section, u32 flags=0);
+							CGameFont		(pcstr shader, pcstr texture, u32 flags=0);
 							~CGameFont		();
 
-	void					Initialize		(LPCSTR shader, LPCSTR texture);
+	void					Initialize		(pcstr shader, pcstr texture);
 
 	IC void					SetColor		(u32 C)		{dwCurrentColor=C;};
 
@@ -78,7 +78,7 @@ public:
 	IC void					SetInterval		(const Fvector2& v) {vInterval.set(v);};
 	IC void					SetAligment		(EAligment aligment){ eCurrentAlignment=aligment; }
 
-	F32					SizeOf_			( LPCSTR s );
+	F32					SizeOf_			(pcstr s );
 	F32					SizeOf_			( const wide_char *wsStr );
 
 	F32					SizeOf_			( const char cChar );
@@ -89,17 +89,17 @@ public:
 	void					OutSet			(F32 x, F32 y);
 
 	void 					MasterOut( 	BOOL bCheckDevice , BOOL bUseCoords , BOOL bScaleCoords , BOOL bUseSkip ,
-									  F32 _x , F32 _y , F32 _skip , LPCSTR fmt , va_list p );
+									  F32 _x , F32 _y , F32 _skip , pcstr fmt , va_list p );
 
-	u32						smart_strlen(LPCSTR S );
+	u32						smart_strlen(pcstr S );
 	BOOL					IsMultibyte() { return ( uFlags & fsMultibyte ); };
 	u16						SplitByWidth( u16 * puBuffer , u16 uBufferSize , F32 fTargetWidth , const char * pszText );
 	u16						GetCutLengthPos(F32 fTargetWidth , const char * pszText );
 
-	void  					OutI			(F32 _x , F32 _y , LPCSTR fmt , ... );
-	void  					Out				(F32 _x , F32 _y , LPCSTR fmt , ... );
-	void             		OutNext			( LPCSTR fmt , ... );
-	void             		OutPrev			( LPCSTR fmt , ... );
+	void  					OutI			(F32 _x , F32 _y , pcstr fmt , ... );
+	void  					Out				(F32 _x , F32 _y , pcstr fmt , ... );
+	void             		OutNext			(pcstr fmt , ... );
+	void             		OutPrev			(pcstr fmt , ... );
 
 	void					OutSkip			(F32 val=1.0f);
 

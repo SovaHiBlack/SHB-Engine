@@ -9,8 +9,8 @@
 bool ped_sort_pred	(const PS::CPEDef* a, 	const PS::CPEDef* b)	{	return xr_strcmp(a->Name(),b->Name())<0;}
 bool pgd_sort_pred	(const PS::CPGDef* a, 	const PS::CPGDef* b)	{	return xr_strcmp(a->m_Name,b->m_Name)<0;}
 
-bool ped_find_pred	(const PS::CPEDef* a, 	LPCSTR b)				{	return xr_strcmp(a->Name(),b)<0;}
-bool pgd_find_pred	(const PS::CPGDef* a, 	LPCSTR b)				{	return xr_strcmp(a->m_Name,b)<0;}
+bool ped_find_pred	(const PS::CPEDef* a, pcstr b)				{	return xr_strcmp(a->Name(),b)<0;}
+bool pgd_find_pred	(const PS::CPGDef* a, pcstr b)				{	return xr_strcmp(a->m_Name,b)<0;}
 //----------------------------------------------------
 void CPSLibrary::OnCreate()
 {
@@ -39,7 +39,7 @@ void CPSLibrary::OnDestroy()
 	m_PGDs.clear	();
 }
 //----------------------------------------------------
-PS::PEDIt CPSLibrary::FindPEDIt(LPCSTR Name)
+PS::PEDIt CPSLibrary::FindPEDIt(pcstr Name)
 {
 	if (!Name) return m_PEDs.end();
 
@@ -48,13 +48,13 @@ PS::PEDIt CPSLibrary::FindPEDIt(LPCSTR Name)
 	else														return I;
 }
 
-PS::CPEDef* CPSLibrary::FindPED(LPCSTR Name)
+PS::CPEDef* CPSLibrary::FindPED(pcstr Name)
 {
 	PS::PEDIt it = FindPEDIt(Name);
     return (it==m_PEDs.end())?0:*it;
 }
 
-PS::PGDIt CPSLibrary::FindPGDIt(LPCSTR Name)
+PS::PGDIt CPSLibrary::FindPGDIt(pcstr Name)
 {
 	if (!Name) return m_PGDs.end();
 
@@ -63,25 +63,25 @@ PS::PGDIt CPSLibrary::FindPGDIt(LPCSTR Name)
 	else														return I;
 }
 
-PS::CPGDef* CPSLibrary::FindPGD(LPCSTR Name)
+PS::CPGDef* CPSLibrary::FindPGD(pcstr Name)
 {
 	PS::PGDIt it = FindPGDIt(Name);
     return (it==m_PGDs.end())?0:*it;
 }
 
-void CPSLibrary::RenamePED(PS::CPEDef* src, LPCSTR new_name)
+void CPSLibrary::RenamePED(PS::CPEDef* src, pcstr new_name)
 {
 	R_ASSERT(src&&new_name&&new_name[0]);
 	src->SetName(new_name);
 }
 
-void CPSLibrary::RenamePGD(PS::CPGDef* src, LPCSTR new_name)
+void CPSLibrary::RenamePGD(PS::CPGDef* src, pcstr new_name)
 {
 	R_ASSERT(src&&new_name&&new_name[0]);
 	src->SetName(new_name);
 }
 
-void CPSLibrary::Remove(LPCSTR nm)
+void CPSLibrary::Remove(pcstr nm)
 {
 	PS::PEDIt it = FindPEDIt(nm);
 	if (it!=m_PEDs.end()){
@@ -98,7 +98,7 @@ void CPSLibrary::Remove(LPCSTR nm)
 }
 //----------------------------------------------------
 
-bool CPSLibrary::Load(LPCSTR nm)
+bool CPSLibrary::Load(pcstr nm)
 {
 	IReader*	F			= FS.r_open(nm);
 	bool bRes 				= true;

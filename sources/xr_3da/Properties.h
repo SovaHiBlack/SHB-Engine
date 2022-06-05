@@ -85,21 +85,21 @@ class ENGINE_API	CPropertyBase
 protected:
 
 public:
-	virtual 	LPCSTR		getName			()								= 0;
-	virtual		LPCSTR		getComment		()								= 0;
+	virtual 	pcstr		getName			()								= 0;
+	virtual		pcstr		getComment		()								= 0;
 
 	virtual		void		Save			(IWriter&	fs)					= 0;
 	virtual		void		Load			(IReader&	fs, u16 version)	= 0;
 };
 
 // Writers
-IC void		xrPWRITE		(IWriter& fs, u32 ID, LPCSTR name, LPCVOID data, u32 size )
+IC void		xrPWRITE		(IWriter& fs, u32 ID, pcstr name, LPCVOID data, u32 size )
 {
 	fs.w_u32			(ID);
 	fs.w_stringZ		(name);
 	if (data && size)	fs.w(data,size);
 }
-IC void		xrPWRITE_MARKER	(IWriter& fs, LPCSTR name)
+IC void		xrPWRITE_MARKER	(IWriter& fs, pcstr name)
 {
 	xrPWRITE	(fs,xrPID_MARKER,name,0,0);
 }
@@ -132,7 +132,7 @@ IC void		xrPREAD_MARKER	(IReader& fs)
 }
 
 //template <class T>
-//IC void		xrPWRITE_PROP	(IWriter& FS, LPCSTR name, u32 ID, T& data)
+//IC void		xrPWRITE_PROP	(IWriter& FS, pcstr name, u32 ID, T& data)
 //{
 //	xrPWRITE	(FS,ID,name,&data,sizeof(data));
 //}

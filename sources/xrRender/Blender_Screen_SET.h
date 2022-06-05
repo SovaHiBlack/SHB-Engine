@@ -13,7 +13,7 @@ class CBlender_Screen_SET : public IBlender
 	xrP_BOOL	oFog;
 	xrP_BOOL	oClamp;
 public:
-	virtual		LPCSTR		getComment()	{ return "basic (simple)"; }
+	virtual		pcstr		getComment()	{ return "basic (simple)"; }
 	virtual		BOOL		canBeLMAPped()	{ return FALSE; }
 	
 	virtual		void		Save			(IWriter&  fs);

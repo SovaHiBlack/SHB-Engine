@@ -38,7 +38,7 @@ void CPEDef::DestroyShader()
 {
     m_CachedShader.destroy();
 }
-void CPEDef::SetName(LPCSTR name)
+void CPEDef::SetName(pcstr name)
 {
     m_Name				= name;
 }

@@ -14,13 +14,13 @@
 
 R_constant_table::~R_constant_table	()	{	Device.Resources->_DeleteConstantTable(this);	}
 
-void	R_constant_table::fatal			(LPCSTR S)
+void	R_constant_table::fatal			(pcstr S)
 {
 	FATAL	(S);
 }
 
 // predicates
-IC bool	p_search	(ref_constant C, LPCSTR S)
+IC bool	p_search	(ref_constant C, pcstr S)
 {
 	return xr_strcmp(*C->name,S)<0;
 }
@@ -29,7 +29,7 @@ IC bool	p_sort		(ref_constant C1, ref_constant C2)
 	return xr_strcmp(C1->name,C2->name)<0;
 }
 
-ref_constant R_constant_table::get	(LPCSTR S)
+ref_constant R_constant_table::get	(pcstr S)
 {
 	// assumption - sorted by name
 	c_table::iterator I	= std::lower_bound(table.begin(),table.end(),S,p_search);
@@ -55,7 +55,7 @@ BOOL	R_constant_table::parse	(void* _desc, u16 destination)
 	for (u32 dwCount = desc->Constants; dwCount; dwCount--,it++)
 	{
 		// Name
-		LPCSTR	name		=	LPCSTR(ptr+it->Name);
+		pcstr	name		= pcstr(ptr+it->Name);
 
 		// Type
 		u16		type		=	RC_float;

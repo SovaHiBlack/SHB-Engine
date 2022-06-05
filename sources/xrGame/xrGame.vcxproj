@@ -620,6 +620,7 @@
     <ClInclude Include="character_info_defs.h" />
     <ClInclude Include="character_rank.h" />
     <ClInclude Include="character_reputation.h" />
+    <ClInclude Include="ChooseTypes.h" />
     <ClInclude Include="client_spawn_manager.h" />
     <ClInclude Include="client_spawn_manager_inline.h" />
     <ClInclude Include="ClimableObject.h" />
@@ -717,7 +718,6 @@
     <ClInclude Include="ExtendedGeom.h" />
     <ClInclude Include="F1.h" />
     <ClInclude Include="FadedBall.h" />
-    <ClInclude Include="FastDelegate.h" />
     <ClInclude Include="FoodItem.h" />
     <ClInclude Include="FryupZone.h" />
     <ClInclude Include="fs_registrator.h" />

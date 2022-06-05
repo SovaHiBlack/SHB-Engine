@@ -68,7 +68,7 @@ public:
 };
 struct ENGINE_API		resptrcode_texture	: public resptr_base<CTexture>
 {
-	void				create			(LPCSTR	_name);
+	void				create			(pcstr	_name);
 	void				destroy			()					{ _set(NULL);					}
 	shared_str			bump_get		()					{ return _get()->m_bumpmap;		}
 	bool				bump_exist		()					{ return 0!=bump_get().size();	}

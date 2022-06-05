@@ -12,8 +12,8 @@ class CPSLibrary	{
     PS::PGDVec			m_PGDs;
 
 public:
-    bool 				Load			(LPCSTR nm);
-    bool				Save			(LPCSTR nm);
+    bool 				Load			(pcstr nm);
+    bool				Save			(pcstr nm);
 
 public:
 						CPSLibrary		(){;}
@@ -22,10 +22,10 @@ public:
     void				OnCreate		();
     void				OnDestroy		();
 
-    PS::CPEDef*			FindPED			(LPCSTR name);
-    PS::PEDIt			FindPEDIt		(LPCSTR name);
-    PS::CPGDef*			FindPGD			(LPCSTR name);
-    PS::PGDIt			FindPGDIt		(LPCSTR name);
+    PS::CPEDef*			FindPED			(pcstr name);
+    PS::PEDIt			FindPEDIt		(pcstr name);
+    PS::CPGDef*			FindPGD			(pcstr name);
+    PS::PGDIt			FindPGDIt		(pcstr name);
 
     // get object properties methods
     IC PS::PEDIt		FirstPED		()	{return m_PEDs.begin();}
@@ -35,9 +35,9 @@ public:
 
     PS::CPEDef*			AppendPED		(PS::CPEDef* src=0);
     PS::CPGDef*			AppendPGD		(PS::CPGDef* src=0);
-    void				Remove			(LPCSTR name);
-    void				RenamePED		(PS::CPEDef* src, LPCSTR new_name);
-    void				RenamePGD		(PS::CPGDef* src, LPCSTR new_name);
+    void				Remove			(pcstr name);
+    void				RenamePED		(PS::CPEDef* src, pcstr new_name);
+    void				RenamePGD		(PS::CPGDef* src, pcstr new_name);
 
     void				Reload			();
     bool				Save			();

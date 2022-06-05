@@ -14,7 +14,7 @@ public:
     				FHierrarhyVisual();
 	virtual 		~FHierrarhyVisual();
 
-	virtual void	Load			(LPCSTR N, IReader *data, u32 dwFlags);
+	virtual void	Load			(pcstr N, IReader *data, u32 dwFlags);
 	virtual void	Copy			(IRender_Visual *pFrom);
 	virtual void	Release			();
 };

@@ -32,7 +32,7 @@ BOOL	CSoundRender_TargetA::_initialize		()
         A_CHK(alSourcef	(pSource, AL_PITCH,	cache_pitch));
         return			TRUE;
     }else{
-    	Msg				("! sound: OpenAL: Can't create source. Error: %s.",(LPCSTR)alGetString(error));
+    	Msg				("! sound: OpenAL: Can't create source. Error: %s.",(pcstr)alGetString(error));
         return 			FALSE;
     }
 }

@@ -30,7 +30,7 @@ private:
 	EVENT					eStartLoad;
 	EVENT					eDisconnect;
 
-	void					Level_Append		(LPCSTR lname);
+	void					Level_Append		(pcstr lname);
 public:
 	CGameFont*				pFontSystem;
 
@@ -38,13 +38,13 @@ public:
 	xr_vector<sLevelInfo>	Levels;
 	u32						Level_Current;
 	void					Level_Scan			();
-	int						Level_ID			(LPCSTR name);
+	int						Level_ID			(pcstr name);
 	void					Level_Set			(u32 ID);
 
 	// Loading
 	void					LoadBegin			();
 	void					LoadEnd				();
-	void					LoadTitleInt		(LPCSTR str);
+	void					LoadTitleInt		(pcstr str);
 	void					LoadDraw			();
 
 	virtual	void			OnEvent				(EVENT E, u64 P1, u64 P2);

@@ -7,7 +7,7 @@ public:
 	xrP_BOOL	oBlend;
 	bool		lmapped;
 public:
-	virtual		LPCSTR		getComment()	{ return "LEVEL: defer-base-aref";	}
+	virtual		pcstr		getComment()	{ return "LEVEL: defer-base-aref";	}
 	virtual		BOOL		canBeDetailed()	{ return TRUE;		}
 	virtual		BOOL		canBeLMAPped()	{ return lmapped;	}
 

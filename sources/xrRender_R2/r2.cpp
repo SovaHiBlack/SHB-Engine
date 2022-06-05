@@ -22,7 +22,7 @@ public:
 	virtual void					set_position		(const Fvector& P)			{ }
 	virtual void					set_direction		(const Fvector& D)			{ }
 	virtual void					set_radius			(F32 R)					{ }
-	virtual void					set_texture			(LPCSTR name)				{ }
+	virtual void					set_texture			(pcstr name)				{ }
 	virtual void					set_color			(const Fcolor& C)			{ }
 	virtual void					set_color			(F32 r, F32 g, F32 b)	{ }
 };
@@ -297,8 +297,8 @@ void CRender::OnFrame()
 // Implementation
 IRender_ObjectSpecific*	CRender::ros_create				(IRenderable* parent)				{ return xr_new<CROS_impl>();			}
 void					CRender::ros_destroy			(IRender_ObjectSpecific* &p)		{ xr_delete(p);							}
-IRender_Visual*			CRender::model_Create			(LPCSTR name, IReader* data)		{ return Models->Create(name,data);		}
-IRender_Visual*			CRender::model_CreateChild		(LPCSTR name, IReader* data)		{ return Models->CreateChild(name,data);}
+IRender_Visual*			CRender::model_Create			(pcstr name, IReader* data)		{ return Models->Create(name,data);		}
+IRender_Visual*			CRender::model_CreateChild		(pcstr name, IReader* data)		{ return Models->CreateChild(name,data);}
 IRender_Visual*			CRender::model_Duplicate		(IRender_Visual* V)					{ return Models->Instance_Duplicate(V);	}
 void					CRender::model_Delete			(IRender_Visual* &V, BOOL bDiscard)	{ Models->Delete(V, bDiscard);			}
 IRender_DetailModel*	CRender::model_CreateDM			(IReader*	F)
@@ -317,12 +317,12 @@ void					CRender::model_Delete			(IRender_DetailModel* & F)
 		F				= NULL;
 	}
 }
-IRender_Visual*			CRender::model_CreatePE			(LPCSTR name)	
+IRender_Visual*			CRender::model_CreatePE			(pcstr name)
 { 
 	PS::CPEDef*	SE			= PSLibrary.FindPED	(name);		R_ASSERT3(SE,"Particle effect doesn't exist",name);
 	return					Models->CreatePE	(SE);
 }
-IRender_Visual*			CRender::model_CreateParticles	(LPCSTR name)	
+IRender_Visual*			CRender::model_CreateParticles	(pcstr name)
 { 
 	PS::CPEDef*	SE			= PSLibrary.FindPED	(name);
 	if (SE) return			Models->CreatePE	(SE);
@@ -445,23 +445,15 @@ void	CRender::Statistics	(CGameFont* _F)
 #endif
 }
 
-/////////
 #pragma comment(lib,"d3dx9.lib")
-/*
-extern "C"
-{
-LPCSTR WINAPI	D3DXGetPixelShaderProfile	(LPDIRECT3DDEVICE9  pDevice);
-LPCSTR WINAPI	D3DXGetVertexShaderProfile	(LPDIRECT3DDEVICE9	pDevice);
-};
-*/
 HRESULT	CRender::shader_compile			(
-	LPCSTR							name,
-	LPCSTR                          pSrcData,
+	pcstr							name,
+	pcstr                          pSrcData,
 	UINT                            SrcDataLen,
 	void*							_pDefines,
 	void*							_pInclude,
-	LPCSTR                          pFunctionName,
-	LPCSTR                          pTarget,
+	pcstr                          pFunctionName,
+	pcstr                          pTarget,
 	DWORD                           Flags,
 	void*							_ppShader,
 	void*							_ppErrorMsgs,

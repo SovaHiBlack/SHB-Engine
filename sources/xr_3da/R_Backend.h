@@ -66,8 +66,8 @@ private:
 	IDirect3DVertexShader9*			vs;
 
 #ifdef DEBUG
-	LPCSTR							ps_name;
-	LPCSTR							vs_name;
+	pcstr							ps_name;
+	pcstr							vs_name;
 #endif // DEBUG
 
 	u32								stencil_enable;
@@ -154,10 +154,10 @@ public:
 
 	ICF  void						set_Format			(IDirect3DVertexDeclaration9* _decl);
 
-	ICF void						set_PS				(IDirect3DPixelShader9* _ps, LPCSTR _n=0);
+	ICF void						set_PS				(IDirect3DPixelShader9* _ps, pcstr _n=0);
 	ICF void						set_PS				(ref_ps& _ps)						{ set_PS(_ps->ps,_ps->cName.c_str());				}
 
-	ICF void						set_VS				(IDirect3DVertexShader9* _vs, LPCSTR _n=0);
+	ICF void						set_VS				(IDirect3DVertexShader9* _vs, pcstr _n=0);
 	ICF void						set_VS				(ref_vs& _vs)						{ set_VS(_vs->vs,_vs->cName.c_str());				}
 
 	ICF	void						set_Vertices		(IDirect3DVertexBuffer9* _vb, u32 _vb_stride);
@@ -173,7 +173,7 @@ public:
 	IC	void						set_Scissor			(Irect*	rect=NULL);
 
 	// constants
-	ICF	ref_constant				get_c				(LPCSTR			n)													{ if (ctable)	return ctable->get(n);else return 0;}
+	ICF	ref_constant				get_c				(pcstr			n)													{ if (ctable)	return ctable->get(n);else return 0;}
 	ICF	ref_constant				get_c				(shared_str&	n)													{ if (ctable)	return ctable->get(n);else return 0;}
 
 	// constants - direct (fast)
@@ -185,12 +185,12 @@ public:
 	ICF	void						set_ca				(R_constant* C, u32 e, F32 x, F32 y, F32 z, F32 w)			{ if (C)		constants.seta(C,e,x,y,z,w);		}
 
 	// constants - LPCSTR (slow)
-	ICF	void						set_c				(LPCSTR n, const Fmatrix& A)										{ if(ctable)	set_c	(&*ctable->get(n),A);		}
-	ICF	void						set_c				(LPCSTR n, const Fvector4& A)										{ if(ctable)	set_c	(&*ctable->get(n),A);		}
-	ICF	void						set_c				(LPCSTR n, F32 x, F32 y, F32 z, F32 w)						{ if(ctable)	set_c	(&*ctable->get(n),x,y,z,w);	}
-	ICF	void						set_ca				(LPCSTR n, u32 e, const Fmatrix& A)									{ if(ctable)	set_ca	(&*ctable->get(n),e,A);		}
-	ICF	void						set_ca				(LPCSTR n, u32 e, const Fvector4& A)								{ if(ctable)	set_ca	(&*ctable->get(n),e,A);		}
-	ICF	void						set_ca				(LPCSTR n, u32 e, F32 x, F32 y, F32 z, F32 w)				{ if(ctable)	set_ca	(&*ctable->get(n),e,x,y,z,w);}
+	ICF	void						set_c				(pcstr n, const Fmatrix& A)										{ if(ctable)	set_c	(&*ctable->get(n),A);		}
+	ICF	void						set_c				(pcstr n, const Fvector4& A)										{ if(ctable)	set_c	(&*ctable->get(n),A);		}
+	ICF	void						set_c				(pcstr n, F32 x, F32 y, F32 z, F32 w)						{ if(ctable)	set_c	(&*ctable->get(n),x,y,z,w);	}
+	ICF	void						set_ca				(pcstr n, u32 e, const Fmatrix& A)									{ if(ctable)	set_ca	(&*ctable->get(n),e,A);		}
+	ICF	void						set_ca				(pcstr n, u32 e, const Fvector4& A)								{ if(ctable)	set_ca	(&*ctable->get(n),e,A);		}
+	ICF	void						set_ca				(pcstr n, u32 e, F32 x, F32 y, F32 z, F32 w)				{ if(ctable)	set_ca	(&*ctable->get(n),e,x,y,z,w);}
 
 	// constants - shared_str (average)
 	ICF	void						set_c				(shared_str& n, const Fmatrix& A)									{ if(ctable)	set_c	(&*ctable->get(n),A);			}

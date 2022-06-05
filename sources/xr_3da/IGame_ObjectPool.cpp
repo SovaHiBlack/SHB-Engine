@@ -48,7 +48,7 @@ void IGame_ObjectPool::clear()
 	m_PrefetchObjects.clear	(); 
 }
 
-CObject*	IGame_ObjectPool::create			( LPCSTR	name	)
+CObject*	IGame_ObjectPool::create			(pcstr	name	)
 {
 	CLASS_ID CLS		=	pSettings->r_clsid		(name,"class");
 	CObject* O			=	(CObject*) NEW_INSTANCE	(CLS);
@@ -111,7 +111,7 @@ void IGame_ObjectPool::clear	( )
 	map_POOL.clear(); 
 }
 
-CObject*	IGame_ObjectPool::create			( LPCSTR	name	)
+CObject*	IGame_ObjectPool::create			( pcstr	name	)
 {
 	string256			l_name;
 	POOL_IT	it			=	map_POOL.find	(shared_str(strlwr(strcpy_s(l_name,name))));

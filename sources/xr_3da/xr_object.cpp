@@ -120,7 +120,7 @@ CObject::~CObject				( )
 	cNameSect_set				( 0 );
 }
 
-void CObject::Load				(LPCSTR section )
+void CObject::Load				(pcstr section )
 {
 	// Name
 	R_ASSERT					(section);

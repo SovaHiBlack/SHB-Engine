@@ -17,10 +17,10 @@ class ENGINE_API CConsole  :
 public:
 	//t-defs
 	struct str_pred : public std::binary_function<char*, char*, bool> {	
-		IC bool operator()(LPCSTR x, LPCSTR y) const
+		IC bool operator()(pcstr x, pcstr y) const
 		{	return xr_strcmp(x,y)<0;	}
 	};
-	typedef xr_map<LPCSTR,IConsole_Command*,str_pred>	vecCMD;
+	typedef xr_map<pcstr,IConsole_Command*,str_pred>	vecCMD;
 	typedef vecCMD::iterator							vecCMD_IT;
 	enum			{ MAX_LEN = 1024 };
 private:
@@ -57,19 +57,19 @@ public:
 	void			Hide				();
 
 	void			Save				();
-	void			Execute				(LPCSTR cmd);
-	void			ExecuteScript		(LPCSTR name);
+	void			Execute				(pcstr cmd);
+	void			ExecuteScript		(pcstr name);
 	void			ExecuteCommand		();
 
 	// get
-	BOOL			GetBool				(LPCSTR cmd, BOOL &val);
-	F32			GetFloat			(LPCSTR cmd, F32& val, F32& min, F32& max);
-	char *			GetString			(LPCSTR cmd);
-	int				GetInteger			(LPCSTR cmd, int& val, int& min, int& max);
-	char *			GetToken			(LPCSTR cmd);
-	xr_token*		GetXRToken			(LPCSTR cmd);
-//	char *			GetNextValue		(LPCSTR cmd);
-//	char *			GetPrevValue		(LPCSTR cmd);
+	BOOL			GetBool				(pcstr cmd, BOOL &val);
+	F32			GetFloat			(pcstr cmd, F32& val, F32& min, F32& max);
+	char *			GetString			(pcstr cmd);
+	int				GetInteger			(pcstr cmd, int& val, int& min, int& max);
+	char *			GetToken			(pcstr cmd);
+	xr_token*		GetXRToken			(pcstr cmd);
+//	char *			GetNextValue		(pcstr cmd);
+//	char *			GetPrevValue		(pcstr cmd);
 
 	void			SelectCommand		();
 

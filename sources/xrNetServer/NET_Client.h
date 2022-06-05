@@ -41,12 +41,12 @@ public:
 	IPureClient				(CTimer* tm);
 	virtual ~IPureClient	();
 
-	BOOL					Connect					(LPCSTR server_name);
+	BOOL					Connect					(pcstr server_name);
 	void					Disconnect				();
 
 
 	BOOL					net_isFails_Connect		()	{ return net_Connected==EnmConnectionFails;}
-	LPCSTR					net_SessionName			()	{ return nullptr; }
+	pcstr					net_SessionName			()	{ return nullptr; }
 
 	// receive
 	IC virtual	NET_Packet*	net_msg_Retreive		()	{ return net_Queue.Retreive();	}
@@ -66,5 +66,5 @@ public:
 	{
 		return net_Syncronised;
 	}
-	virtual void			OnSessionTerminate		(LPCSTR reason){};
+	virtual void			OnSessionTerminate		(pcstr reason){};
 };

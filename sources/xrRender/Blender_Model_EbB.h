@@ -10,7 +10,7 @@ public:
 	string64	oT2_xform;		// xform for secondary texture
 	xrP_BOOL	oBlend;
 public:
-	virtual		LPCSTR		getComment()	{ return "MODEL: env^base";	}
+	virtual		pcstr		getComment()	{ return "MODEL: env^base";	}
 	virtual		BOOL		canBeLMAPped()	{ return FALSE; }
 
 	virtual		void		Save			(IWriter&	fs);

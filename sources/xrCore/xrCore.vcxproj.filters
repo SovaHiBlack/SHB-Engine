@@ -105,7 +105,7 @@
     <ClCompile Include="log.cpp">
       <Filter>FS</Filter>
     </ClCompile>
-    <ClCompile Include="Xr_ini.cpp">
+    <ClCompile Include="xr_ini.cpp">
       <Filter>FS</Filter>
     </ClCompile>
     <ClCompile Include="stream_reader.cpp">
@@ -312,7 +312,7 @@
     <ClInclude Include="clsid.h">
       <Filter>Math\Extensions</Filter>
     </ClInclude>
-    <ClInclude Include="fastdelegate.h">
+    <ClInclude Include="FastDelegate.h">
       <Filter>Math\Extensions</Filter>
     </ClInclude>
     <ClInclude Include="xr_trims.h">
@@ -351,7 +351,7 @@
     <ClInclude Include="xrMemory_align.h">
       <Filter>Memory manager</Filter>
     </ClInclude>
-    <ClInclude Include="xrMEMORY_POOL.h">
+    <ClInclude Include="xrMemory_POOL.h">
       <Filter>Memory manager</Filter>
     </ClInclude>
     <ClInclude Include="xrMemory_pso.h">
@@ -417,7 +417,7 @@
     <ClInclude Include="rt_compressor.h">
       <Filter>Compression\rt</Filter>
     </ClInclude>
-    <ClInclude Include="lzhuf.h">
+    <ClInclude Include="LzHuf.h">
       <Filter>Compression\lz</Filter>
     </ClInclude>
     <ClInclude Include="rt_config1x.h">
@@ -427,9 +427,6 @@
       <Filter>Compression\lzo</Filter>
     </ClInclude>
     <ClInclude Include="rt_lzo_conf.h">
-      <Filter>Compression\lzo</Filter>
-    </ClInclude>
-    <ClInclude Include="rt_lzo_config.h">
       <Filter>Compression\lzo</Filter>
     </ClInclude>
     <ClInclude Include="rt_lzo_dict.h">
@@ -462,5 +459,25 @@
     <CustomBuild Include="FileSystem.h">
       <Filter>FS</Filter>
     </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="rt_lzo_dll.ch">
+      <Filter>Compression\lzo</Filter>
+    </None>
+    <None Include="rt_lzo_mchw.ch">
+      <Filter>Compression\lzo</Filter>
+    </None>
+    <None Include="rt_lzo_swd.ch">
+      <Filter>Compression\lzo</Filter>
+    </None>
+    <None Include="rt_lzo1_d.ch">
+      <Filter>Compression\lzo</Filter>
+    </None>
+    <None Include="rt_lzo1x_c.ch">
+      <Filter>Compression\lzo</Filter>
+    </None>
+    <None Include="rt_lzo1x_d.ch">
+      <Filter>Compression\lzo</Filter>
+    </None>
   </ItemGroup>
 </Project>

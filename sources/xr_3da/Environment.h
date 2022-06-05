@@ -128,7 +128,7 @@ public:
 
 						CEnvDescriptor	();
 
-	void				load			(LPCSTR exec_tm, LPCSTR sect, CEnvironment* parent);
+	void				load			(pcstr exec_tm, pcstr sect, CEnvironment* parent);
 	void				copy			(const CEnvDescriptor& src)
 	{
 		F32 tm0		= exec_time;

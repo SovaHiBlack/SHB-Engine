@@ -241,7 +241,7 @@ void CActor::reinit	()
 	m_time_lock_accel							= 0;
 }
 
-void CActor::reload	(LPCSTR section)
+void CActor::reload	(pcstr section)
 {
 	CEntityAlive::reload		(section);
 	CInventoryOwner::reload		(section);
@@ -251,7 +251,7 @@ void CActor::reload	(LPCSTR section)
 	m_location_manager->reload	(section);
 }
 
-void CActor::Load	(LPCSTR section )
+void CActor::Load	(pcstr section )
 {
 	// Msg						("Loading actor: %s",section);
 	inherited::Load				(section);
@@ -344,11 +344,11 @@ void CActor::Load	(LPCSTR section )
 	//Weapons				= xr_new<CWeaponList> (this);
 
 
-	LPCSTR hit_snd_sect = pSettings->r_string(section,"hit_sounds");
+	pcstr hit_snd_sect = pSettings->r_string(section,"hit_sounds");
 	for(int hit_type=0; hit_type<(int)ALife::eHitTypeMax; ++hit_type)
 	{
-		LPCSTR hit_name = ALife::g_cafHitType2String((ALife::EHitType)hit_type);
-		LPCSTR hit_snds = READ_IF_EXISTS(pSettings, r_string, hit_snd_sect, hit_name, "");
+		pcstr hit_name = ALife::g_cafHitType2String((ALife::EHitType)hit_type);
+		pcstr hit_snds = READ_IF_EXISTS(pSettings, r_string, hit_snd_sect, hit_name, "");
 		int cnt = _GetItemCount(hit_snds);
 		string128		tmp;
 		VERIFY			(cnt!=0);
@@ -388,7 +388,7 @@ void CActor::Load	(LPCSTR section )
 	m_fDispCrouchFactor			= pSettings->r_float		(section,"disp_crouch_factor");
 	m_fDispCrouchNoAccelFactor	= pSettings->r_float		(section,"disp_crouch_no_acc_factor");
 
-	LPCSTR							default_outfit = READ_IF_EXISTS(pSettings,r_string,section,"default_outfit",0);
+	pcstr							default_outfit = READ_IF_EXISTS(pSettings,r_string,section,"default_outfit",0);
 	SetDefaultVisualOutfit			(default_outfit);
 
 	invincibility_fire_shield_1st	= READ_IF_EXISTS(pSettings,r_string,section,"Invincibility_Shield_1st",0);
@@ -612,7 +612,7 @@ void CActor::HitSignal(F32 perc, Fvector& vLocalDir, CObject* who, s16 element)
 		tpKinematics->PlayFX(motion_ID,power_factor);
 	}
 }
-void start_tutorial(LPCSTR name);
+void start_tutorial(pcstr name);
 void CActor::Die(CObject* who)
 {
 	inherited::Die		(who);
@@ -1203,7 +1203,7 @@ void CActor::RenderIndicator			(Fvector dpos, F32 r1, F32 r2, ref_shader IndShad
 static F32 mid_size = 0.097f;
 static F32 fontsize = 15.0f;
 static F32 upsize	= 0.33f;
-void CActor::RenderText				(LPCSTR Text, Fvector dpos, F32* pdup, u32 color)
+void CActor::RenderText				(pcstr Text, Fvector dpos, F32* pdup, u32 color)
 {
 	if (!g_Alive()) return;
 	

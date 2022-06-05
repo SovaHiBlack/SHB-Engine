@@ -3,7 +3,7 @@
 #include "xr_ioconsole.h"
 
 extern	void msRead			();
-extern	void msCreate		(LPCSTR name);
+extern	void msCreate		(pcstr name);
 
 //---------------------------------------------------------------------
 class ENGINE_API CEvent
@@ -17,7 +17,7 @@ public:
 	CEvent	(pcstr S);
 	~CEvent	();
 
-	LPCSTR	GetFull()
+	pcstr	GetFull()
 	{	return Name; }
 	u32	RefCount()
 	{	return dwRefCount; }
@@ -147,7 +147,7 @@ void	CEventAPI::Defer(pcstr N, u64 P1, u64 P2)
 }
 
 #ifdef DEBUG
-void msParse			(LPCSTR c)
+void msParse			(pcstr c)
 {
 	if (0==stricmp(c,"exit")) 
 	{
@@ -180,7 +180,7 @@ void	CEventAPI::OnFrame	()
 	CS.Leave	();
 }
 
-BOOL CEventAPI::Peek(LPCSTR EName)
+BOOL CEventAPI::Peek(pcstr EName)
 {
 	CS.Enter	();
 	if (Events_Deferred.empty())	{ CS.Leave(); return FALSE; }

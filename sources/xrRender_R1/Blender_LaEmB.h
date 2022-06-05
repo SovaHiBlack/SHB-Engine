@@ -22,7 +22,7 @@ public:
 	void		compile_3	(CBlender_Compile& C);
 	void		compile_3c	(CBlender_Compile& C);
 public:
-	virtual		LPCSTR		getComment()	{ return "LEVEL: (lmap+env*const)*base";	}
+	virtual		pcstr		getComment()	{ return "LEVEL: (lmap+env*const)*base";	}
 	virtual		BOOL		canBeLMAPped()	{ return TRUE; }
 
 	virtual		void		Save			(IWriter&  fs);

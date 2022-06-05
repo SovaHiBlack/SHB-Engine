@@ -168,11 +168,11 @@ protected:
 private:
 	void						IBlendSetup				(CBlend& B,u16 part,u8 channel, MotionID motion_ID, BOOL  bMixing, F32 blendAccrue, F32 blendFalloff, F32 Speed, BOOL noloop, PlayCallback Callback, LPVOID CallbackParam);
 	void						IFXBlendSetup			(CBlend &B, MotionID motion_ID, F32 blendAccrue, F32 blendFalloff, F32 Power , F32 Speed,u16 bone);
-//.	bool						LoadMotions				(LPCSTR N, IReader *data);
+//.	bool						LoadMotions				(pcstr N, IReader *data);
 public:
 
 #ifdef DEBUG
-	std::pair<LPCSTR,LPCSTR>	LL_MotionDefName_dbg	(MotionID	ID);
+	std::pair<pcstr, pcstr>	LL_MotionDefName_dbg	(MotionID	ID);
 #endif
 
 	u16							LL_MotionsSlotCount(){return (u16)m_Motions.size();}
@@ -183,8 +183,8 @@ public:
 	IC CMotion*					LL_GetMotion	(MotionID id, u16 bone_id){return &m_Motions[id.slot].bone_motions[bone_id]->at(id.idx);}
 
 	// Low level interface
-	MotionID					LL_MotionID		(LPCSTR B);
-	u16							LL_PartID		(LPCSTR B);
+	MotionID					LL_MotionID		(pcstr B);
+	u16							LL_PartID		(pcstr B);
 
 	CBlend*						LL_PlayFX		(u16 bone,		MotionID motion, F32 blendAccrue, F32 blendFalloff, F32 Speed, F32 Power);
 	CBlend*						LL_PlayCycle	(u16 partition, MotionID motion, BOOL  bMixing, F32 blendAccrue, F32 blendFalloff, F32 Speed, BOOL noloop, PlayCallback Callback, LPVOID CallbackParam, u8 channel = 0);
@@ -199,21 +199,21 @@ public:
 	void						DestroyCycle	(CBlend &B);
 
 	// cycles
-	MotionID					ID_Cycle		(LPCSTR  N);
-	MotionID					ID_Cycle_Safe	(LPCSTR  N);
+	MotionID					ID_Cycle		(pcstr  N);
+	MotionID					ID_Cycle_Safe	(pcstr  N);
 	MotionID					ID_Cycle		(shared_str  N);
 	MotionID					ID_Cycle_Safe	(shared_str  N);
-	CBlend*						PlayCycle		(LPCSTR  N,  BOOL bMixIn=TRUE, PlayCallback Callback=0, LPVOID CallbackParam=0, u8 channel = 0);
+	CBlend*						PlayCycle		(pcstr  N,  BOOL bMixIn=TRUE, PlayCallback Callback=0, LPVOID CallbackParam=0, u8 channel = 0);
 	CBlend*						PlayCycle		(MotionID M, BOOL bMixIn=TRUE, PlayCallback Callback=0, LPVOID CallbackParam=0, u8 channel = 0);
 	// fx'es
-	MotionID					ID_FX			(LPCSTR  N);
-	MotionID					ID_FX_Safe		(LPCSTR  N);
-	CBlend*						PlayFX			(LPCSTR  N, F32 power_scale);
+	MotionID					ID_FX			(pcstr  N);
+	MotionID					ID_FX_Safe		(pcstr  N);
+	CBlend*						PlayFX			(pcstr  N, F32 power_scale);
 	CBlend*						PlayFX			(MotionID M, F32 power_scale);
 
 	// General "Visual" stuff
 	virtual void				Copy			(IRender_Visual *pFrom);
-	virtual void				Load			(LPCSTR N, IReader *data, u32 dwFlags);
+	virtual void				Load			(pcstr N, IReader *data, u32 dwFlags);
 	virtual void				Release			();
 	virtual void				Spawn			();
 	virtual	CKinematicsAnimated*	dcast_PKinematicsAnimated	()				{ return this;	}

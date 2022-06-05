@@ -3,7 +3,7 @@
 class CBlender_accum_reflected : public IBlender  
 {
 public:
-	virtual		LPCSTR		getComment()	{ return "INTERNAL: accumulate reflected light";	}
+	virtual		pcstr		getComment()	{ return "INTERNAL: accumulate reflected light";	}
 	virtual		BOOL		canBeDetailed()	{ return FALSE;	}
 	virtual		BOOL		canBeLMAPped()	{ return FALSE;	}
 

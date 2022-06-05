@@ -9,7 +9,7 @@
 class CBlender_Screen_GRAY : public IBlender  
 {
 public:
-	virtual		LPCSTR		getComment()	{ return "INTERNAL: gray-scale effect"; }
+	virtual		pcstr		getComment()	{ return "INTERNAL: gray-scale effect"; }
 	virtual		BOOL		canBeLMAPped()	{ return FALSE; }
 	
 	virtual		void		Save			(IWriter&  fs);

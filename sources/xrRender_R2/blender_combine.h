@@ -3,7 +3,7 @@
 class CBlender_combine : public IBlender  
 {
 public:
-	virtual		LPCSTR		getComment()	{ return "INTERNAL: combiner";	}
+	virtual		pcstr		getComment()	{ return "INTERNAL: combiner";	}
 	virtual		BOOL		canBeDetailed()	{ return FALSE;	}
 	virtual		BOOL		canBeLMAPped()	{ return FALSE;	}
 

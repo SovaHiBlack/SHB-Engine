@@ -3,8 +3,8 @@
 #include "..\XR_3DA\IGame_Persistent.h"
 
 
-static LPCSTR		RTname			= "$user$rendertarget";
-static LPCSTR		RTname_distort	= "$user$distort";
+static pcstr		RTname			= "$user$rendertarget";
+static pcstr		RTname_distort	= "$user$distort";
 
 CRenderTarget::CRenderTarget()
 {

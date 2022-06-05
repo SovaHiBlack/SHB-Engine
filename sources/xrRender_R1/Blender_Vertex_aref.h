@@ -12,7 +12,7 @@ public:
 	xrP_Integer	oAREF;
 	xrP_BOOL	oBlend;
 public:
-	virtual		LPCSTR		getComment()	{ return "LEVEL: diffuse*base.aref";	}
+	virtual		pcstr		getComment()	{ return "LEVEL: diffuse*base.aref";	}
 	virtual		BOOL		canBeLMAPped()	{ return FALSE; }
 
 	virtual		void		Save			(IWriter&	fs);

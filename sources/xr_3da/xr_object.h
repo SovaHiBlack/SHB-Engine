@@ -156,7 +156,7 @@ public:
 										CObject				();
 	virtual								~CObject			();
 
-	virtual void						Load				(LPCSTR section);
+	virtual void						Load				(pcstr section);
 	
 	// Update
 	virtual void						shedule_Update		(u32 dt);							// Called by sheduler

@@ -60,10 +60,10 @@ void	CBoneData::DebugQuery		(BoneDebug& L)
 //////////////////////////////////////////////////////////////////////
 // Construction/Destruction
 //////////////////////////////////////////////////////////////////////
-bool	pred_N(const std::pair<shared_str,u32>&	N, LPCSTR B)			{
+bool	pred_N(const std::pair<shared_str,u32>&	N, pcstr B)			{
 	return xr_strcmp(*N.first,B)<0;
 }
-u16		CKinematics::LL_BoneID		(LPCSTR B)			{
+u16		CKinematics::LL_BoneID		(pcstr B)			{
 	accel::iterator I	= std::lower_bound	(bone_map_N->begin(),bone_map_N->end(),B,pred_N);
 	if (I == bone_map_N->end())			return BI_NONE;
 	if (0 != xr_strcmp(*(I->first),B))	return BI_NONE;
@@ -80,7 +80,7 @@ u16		CKinematics::LL_BoneID		(const shared_str& B)	{
 }
 
 //
-LPCSTR CKinematics::LL_BoneName_dbg	(u16 ID)
+pcstr CKinematics::LL_BoneName_dbg	(u16 ID)
 {
 	CKinematics::accel::iterator _I, _E=bone_map_N->end();
 	for (_I	= bone_map_N->begin(); _I!=_E; ++_I)	if (_I->second==ID) return *_I->first;

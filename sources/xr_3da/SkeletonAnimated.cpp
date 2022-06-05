@@ -55,19 +55,19 @@ void	CKinematicsAnimated::Bone_Motion_Stop_IM	(CBoneData* bd, CBlend* handle)
 }
 
 #ifdef DEBUG
-std::pair<LPCSTR,LPCSTR> CKinematicsAnimated::LL_MotionDefName_dbg	(MotionID ID)
+std::pair<pcstr, pcstr> CKinematicsAnimated::LL_MotionDefName_dbg	(MotionID ID)
 {
 	shared_motions& s_mots	= m_Motions[ID.slot].motions;
 	accel_map::iterator _I, _E=s_mots.motion_map()->end();
 	for (_I	= s_mots.motion_map()->begin(); _I!=_E; ++_I)	if (_I->second==ID.idx) return std::make_pair(*_I->first,*s_mots.id());
-	return std::make_pair((LPCSTR)0,(LPCSTR)0);
+	return std::make_pair((pcstr)0,(pcstr)0);
 }
 #endif // DEBUG
 
 //////////////////////////////////////////////////////////////////////
 // Construction/Destruction
 //////////////////////////////////////////////////////////////////////
-MotionID CKinematicsAnimated::LL_MotionID	(LPCSTR B)
+MotionID CKinematicsAnimated::LL_MotionID	(pcstr B)
 {
 	MotionID motion_ID;
 	for (int k=int(m_Motions.size())-1; k>=0; --k){
@@ -77,7 +77,7 @@ MotionID CKinematicsAnimated::LL_MotionID	(LPCSTR B)
     }
     return motion_ID;
 }
-u16 CKinematicsAnimated::LL_PartID		(LPCSTR B)
+u16 CKinematicsAnimated::LL_PartID		(pcstr B)
 {
 	if (0==m_Partition)	return BI_NONE;
 	for (u16 id=0; id<MAX_PARTS; id++) {
@@ -89,7 +89,7 @@ u16 CKinematicsAnimated::LL_PartID		(LPCSTR B)
 }
 
 // cycles
-MotionID CKinematicsAnimated::ID_Cycle_Safe(LPCSTR  N)
+MotionID CKinematicsAnimated::ID_Cycle_Safe(pcstr  N)
 {
 	MotionID motion_ID;
 	for (int k=int(m_Motions.size())-1; k>=0; --k){
@@ -114,7 +114,7 @@ MotionID CKinematicsAnimated::ID_Cycle_Safe(shared_str  N)
 	}
 	return motion_ID;
 }
-MotionID CKinematicsAnimated::ID_Cycle	(LPCSTR  N)
+MotionID CKinematicsAnimated::ID_Cycle	(pcstr  N)
 {
 	MotionID motion_ID		= ID_Cycle_Safe	(N);	R_ASSERT3(motion_ID.valid(),"! MODEL: can't find cycle: ", N);
 	return motion_ID;
@@ -247,7 +247,7 @@ CBlend*	CKinematicsAnimated::LL_PlayCycle		(u16 part, MotionID motion_ID, BOOL b
     						 m_def->Accrue(),m_def->Falloff(),m_def->Speed(),m_def->StopAtEnd(), 
                              Callback,CallbackParam,channel);
 }
-CBlend*	CKinematicsAnimated::PlayCycle		(LPCSTR  N, BOOL bMixIn, PlayCallback Callback, LPVOID CallbackParam,u8 channel  /*= 0*/)
+CBlend*	CKinematicsAnimated::PlayCycle		(pcstr  N, BOOL bMixIn, PlayCallback Callback, LPVOID CallbackParam,u8 channel  /*= 0*/)
 {
 	MotionID motion_ID		= ID_Cycle(N);
 	if (motion_ID.valid())	return PlayCycle(motion_ID,bMixIn,Callback,CallbackParam,channel);
@@ -264,7 +264,7 @@ CBlend*	CKinematicsAnimated::PlayCycle		(MotionID motion_ID,  BOOL bMixIn, PlayC
 }
 
 // fx'es
-MotionID CKinematicsAnimated::ID_FX_Safe		(LPCSTR  N)
+MotionID CKinematicsAnimated::ID_FX_Safe		(pcstr  N)
 {
 	MotionID motion_ID;
 	for (int k=int(m_Motions.size())-1; k>=0; --k){
@@ -274,7 +274,7 @@ MotionID CKinematicsAnimated::ID_FX_Safe		(LPCSTR  N)
     }
     return motion_ID;
 }
-MotionID CKinematicsAnimated::ID_FX			(LPCSTR  N)
+MotionID CKinematicsAnimated::ID_FX			(pcstr  N)
 {
 	MotionID motion_ID		= ID_FX_Safe(N);R_ASSERT3(motion_ID.valid(),"! MODEL: can't find FX: ", N);
     return motion_ID;
@@ -288,7 +288,7 @@ CBlend*	CKinematicsAnimated::PlayFX			(MotionID motion_ID, F32 power_scale)
     						 m_def->Accrue(),m_def->Falloff(),
                              m_def->Speed(),m_def->Power()*power_scale);
 }
-CBlend*	CKinematicsAnimated::PlayFX			(LPCSTR  N, F32 power_scale)
+CBlend*	CKinematicsAnimated::PlayFX			(pcstr  N, F32 power_scale)
 {
 	MotionID motion_ID		= ID_FX(N);
     return PlayFX 			(motion_ID,power_scale);

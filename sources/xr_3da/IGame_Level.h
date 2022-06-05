@@ -27,8 +27,8 @@ public:
 	u32		Size()			{ return data.size(); }
 	void	ResetData()		{ data.clear(); }
 	
-	void	AddItem( LPCSTR name_,		LPCSTR value_, u32 color_ = RGB(255,255,255) );
-	void	AddItem( shared_str& name_,	LPCSTR value_, u32 color_ = RGB(255,255,255) );
+	void	AddItem(pcstr name_, pcstr value_, u32 color_ = RGB(255,255,255) );
+	void	AddItem( shared_str& name_, pcstr value_, u32 color_ = RGB(255,255,255) );
 
 	IC SItem_ServerInfo&	operator[] ( u32 id ) { VERIFY( id < max_item ); return data[id]; }
 
@@ -82,9 +82,9 @@ public:
 	virtual shared_str			name					() const = 0;
 	virtual void				GetLevelInfo			( CServerInfo* si ) = 0;
 
-	virtual BOOL				net_Start				( LPCSTR op_server, LPCSTR op_client)	= 0;
-	virtual void				net_Load				( LPCSTR name )							= 0;
-	virtual void				net_Save				( LPCSTR name )							= 0;
+	virtual BOOL				net_Start				(pcstr op_server, pcstr op_client)	= 0;
+	virtual void				net_Load				(pcstr name )							= 0;
+	virtual void				net_Save				(pcstr name )							= 0;
 	virtual void				net_Stop				( );
 	virtual void				net_Update				( )										= 0;
 

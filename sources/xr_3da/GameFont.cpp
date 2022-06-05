@@ -6,7 +6,7 @@
 extern ENGINE_API BOOL g_bRendering; 
 ENGINE_API Fvector2		g_current_font_scale={1.0f,1.0f};
 
-CGameFont::CGameFont(LPCSTR section, u32 flags)
+CGameFont::CGameFont(pcstr section, u32 flags)
 {
 	fCurrentHeight				= 0.0f;
 	fXStep						= 0.0f;
@@ -24,7 +24,7 @@ CGameFont::CGameFont(LPCSTR section, u32 flags)
 		SetInterval(pSettings->r_fvector2(section,"interval"));
 }
 
-CGameFont::CGameFont(LPCSTR shader, LPCSTR texture, u32 flags)
+CGameFont::CGameFont(pcstr shader, pcstr texture, u32 flags)
 {
 	fCurrentHeight				= 0.0f;
 	fXStep						= 0.0f;
@@ -35,11 +35,11 @@ CGameFont::CGameFont(LPCSTR shader, LPCSTR texture, u32 flags)
 	Initialize					(shader,texture);
 }
 
-void CGameFont::Initialize		(LPCSTR cShader, LPCSTR cTextureName)
+void CGameFont::Initialize		(pcstr cShader, pcstr cTextureName)
 {
 	string_path					cTexture;
 
-	LPCSTR _lang				= pSettings->r_string("string_table", "font_prefix");
+	pcstr _lang				= pSettings->r_string("string_table", "font_prefix");
 	bool is_di					= strstr(cTextureName, "ui_font_hud_01") || 
 								  strstr(cTextureName, "ui_font_hud_02") ||
 								  strstr(cTextureName, "ui_font_console_02");
@@ -325,7 +325,7 @@ u16 CGameFont::SplitByWidth( u16 * puBuffer , u16 uBufferSize , F32 fTargetWidth
 
 void CGameFont::MasterOut(
 	BOOL bCheckDevice , BOOL bUseCoords , BOOL bScaleCoords , BOOL bUseSkip , 
-	F32 _x , F32 _y , F32 _skip , LPCSTR fmt , va_list p )
+	F32 _x , F32 _y , F32 _skip , pcstr fmt , va_list p )
 {
 	if ( bCheckDevice && ( ! Device.b_is_Active ) )
 		return;
@@ -357,22 +357,22 @@ void CGameFont::MasterOut(
 	  MasterOut( CHECK_DEVICE , USE_COORDS , SCALE_COORDS , USE_SKIP , X , Y , SKIP , FMT, p ); \
 	  va_end( p ); }
 
-void __cdecl CGameFont::OutI(F32 _x , F32 _y , LPCSTR fmt , ... )
+void __cdecl CGameFont::OutI(F32 _x , F32 _y , pcstr fmt , ... )
 {
 	MASTER_OUT( FALSE , TRUE , TRUE , FALSE , _x  , _y , 0.0f , fmt );
 };
 
-void __cdecl CGameFont::Out(F32 _x , F32 _y , LPCSTR fmt , ... )
+void __cdecl CGameFont::Out(F32 _x , F32 _y , pcstr fmt , ... )
 {
 	MASTER_OUT( TRUE , TRUE , FALSE , FALSE , _x , _y , 0.0f , fmt );
 };
 
-void __cdecl CGameFont::OutNext( LPCSTR fmt , ... )
+void __cdecl CGameFont::OutNext(pcstr fmt , ... )
 {
 	MASTER_OUT( TRUE , FALSE , FALSE , TRUE , 0.0f , 0.0f , 1.0f , fmt );
 };
 
-void __cdecl CGameFont::OutPrev( LPCSTR fmt , ... )
+void __cdecl CGameFont::OutPrev(pcstr fmt , ... )
 {
 	MASTER_OUT( TRUE , FALSE , FALSE , TRUE , 0.0f , 0.0f , -1.0f , fmt );
 };
@@ -390,7 +390,7 @@ F32 CGameFont::SizeOf_( const char cChar )
 	return ( ( GetCharTC( ( u16 ) ( u8 ) cChar ).z * vInterval.x ) );
 }
 
-F32 CGameFont::SizeOf_( LPCSTR s )
+F32 CGameFont::SizeOf_(pcstr s )
 {
 	if ( ! ( s && s[ 0 ] ) )
 		return 0;

@@ -36,8 +36,8 @@ DEFINE_VECTOR(CLAItem*,LAItemVec,LAItemIt);
 class ENGINE_API ELightAnimLibrary{
 public:
     LAItemVec       Items;
-    LAItemIt		FindItemI			(LPCSTR name);
-    CLAItem*		FindItem			(LPCSTR name);
+    LAItemIt		FindItemI			(pcstr name);
+    CLAItem*		FindItem			(pcstr name);
 
 public:
 					ELightAnimLibrary	();
@@ -49,7 +49,7 @@ public:
     void			Save				();
     void			Reload				();
     void			Unload				();
-    CLAItem*		AppendItem			(LPCSTR name, CLAItem* src);
+    CLAItem*		AppendItem			(pcstr name, CLAItem* src);
     LAItemVec&		Objects				(){return Items;}
 };
 

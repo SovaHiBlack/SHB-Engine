@@ -16,7 +16,7 @@ public:
 	CRT					();
 	~CRT				();
 
-	void				create			(LPCSTR Name, u32 w, u32 h, D3DFORMAT f);
+	void				create			(pcstr Name, u32 w, u32 h, D3DFORMAT f);
 	void				destroy			();
 	void				reset_begin		();
 	void				reset_end		();
@@ -24,7 +24,7 @@ public:
 };
 struct ENGINE_API		resptrcode_crt	: public resptr_base<CRT>
 {
-	void				create			(LPCSTR Name, u32 w, u32 h, D3DFORMAT f);
+	void				create			(pcstr Name, u32 w, u32 h, D3DFORMAT f);
 	void				destroy			()	{ _set(NULL);		}
 };
 typedef	resptr_core<CRT,resptrcode_crt>		ref_rt;
@@ -44,7 +44,7 @@ public:
 	CRTC					();
 	~CRTC					();
 
-	void				create			(LPCSTR name, u32 size, D3DFORMAT f);
+	void				create			(pcstr name, u32 size, D3DFORMAT f);
 	void				destroy			();
 	void				reset_begin		();
 	void				reset_end		();
@@ -52,7 +52,7 @@ public:
 };
 struct ENGINE_API		resptrcode_crtc	: public resptr_base<CRTC>
 {
-	void				create			(LPCSTR Name, u32 size, D3DFORMAT f);
+	void				create			(pcstr Name, u32 size, D3DFORMAT f);
 	void				destroy			()	{ _set(NULL);		}
 };
 typedef	resptr_core<CRTC,resptrcode_crtc>		ref_rtc;

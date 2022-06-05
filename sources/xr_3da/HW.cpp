@@ -60,7 +60,7 @@ xr_token*				vid_mode_token = NULL;
 
 void CHW::CreateD3D	()
 {
-	LPCSTR		_name			= "d3d9.dll";
+	pcstr		_name			= "d3d9.dll";
 
 	hD3D9            			= LoadLibrary(_name);
 	R_ASSERT2	           	 	(hD3D9,"Can't find 'd3d9.dll'\nPlease install latest version of DirectX before running this program");
@@ -454,9 +454,9 @@ void	CHW::updateWindowProps	(HWND m_hWnd)
 
 struct _uniq_mode
 {
-	_uniq_mode(LPCSTR v):_val(v){}
-	LPCSTR _val;
-	bool operator() (LPCSTR _other) {return !stricmp(_val,_other);}
+	_uniq_mode(pcstr v):_val(v){}
+	pcstr _val;
+	bool operator() (pcstr _other) {return !stricmp(_val,_other);}
 };
 
 void free_vid_mode_list()
@@ -472,7 +472,7 @@ void free_vid_mode_list()
 void	fill_vid_mode_list			(CHW* _hw)
 {
 	if(vid_mode_token != NULL)		return;
-	xr_vector<LPCSTR>	_tmp;
+	xr_vector<pcstr>	_tmp;
 	u32 cnt = _hw->pD3D->GetAdapterModeCount	(_hw->DevAdapter, _hw->Caps.fTarget);
 
 	u32 i;

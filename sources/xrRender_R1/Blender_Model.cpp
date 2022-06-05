@@ -67,8 +67,8 @@ void	CBlender_Model::Compile	(CBlender_Compile& C)
 		}
 		C.PassEnd			();
 	} else {
-		LPCSTR	vsname		= 0;
-		LPCSTR	psname		= 0;
+		pcstr	vsname		= 0;
+		pcstr	psname		= 0;
 		switch (C.iElement)
 		{
 		case SE_R1_NORMAL_HQ:	

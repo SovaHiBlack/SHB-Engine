@@ -96,7 +96,7 @@ public:
 		w_dir	(C);
 		w_float (mag);
 	}
-	IC void w_stringZ			( LPCSTR S )
+	IC void w_stringZ			(pcstr S )
 	{
 		w	(S,(u32)xr_strlen(S)+1);
 	}
@@ -245,20 +245,20 @@ public:
 
 	IC void		r_stringZ		( LPSTR S )
 	{
-		LPCSTR	data	= LPCSTR(&B.data[r_pos]);
+		pcstr	data	= pcstr(&B.data[r_pos]);
 		size_t	len		= xr_strlen(data);
 		r		(S,(u32)len+1);
 	}
     
 	IC void		r_stringZ		( xr_string& dest )
 	{
-		dest		= LPCSTR(&B.data[r_pos]);
+		dest		= pcstr(&B.data[r_pos]);
 		r_advance	(u32(dest.size()+1));
 	}
 
 	void 		r_stringZ		(shared_str& dest)
     {
-        dest		= LPCSTR(&B.data[r_pos]);
+        dest		= pcstr(&B.data[r_pos]);
         r_advance	(dest.size()+1);
     }
 

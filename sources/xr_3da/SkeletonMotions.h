@@ -153,7 +153,7 @@ struct ENGINE_API		motions_value
 	shared_str			m_id;
 
 
-	BOOL				load				(LPCSTR N, IReader *data, vecBones* bones);
+	BOOL				load				(pcstr N, IReader *data, vecBones* bones);
 	MotionVec*			bone_motions		(shared_str bone_name);
 
 	u32					mem_usage			(){ 

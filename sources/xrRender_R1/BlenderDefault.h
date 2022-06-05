@@ -9,7 +9,7 @@
 class CBlender_default		: public IBlender  
 {
 public:
-	virtual		LPCSTR		getComment()	{ return "LEVEL: lmap*base (default)";	}
+	virtual		pcstr		getComment()	{ return "LEVEL: lmap*base (default)";	}
 	virtual		BOOL		canBeDetailed()	{ return TRUE; }
 	virtual		BOOL		canBeLMAPped()	{ return TRUE; }
 
