@@ -66,7 +66,7 @@ IC u32	time()
 //////////////////////////////////////////////////////////////////////////
 // bone routines
 //////////////////////////////////////////////////////////////////////////
-extern	Fvector get_bone_position	(CObject *object, LPCSTR bone_name);
+extern	Fvector get_bone_position	(CObject *object, pcstr bone_name);
 
 IC Fvector get_head_position(CObject *object) 
 {
@@ -76,9 +76,9 @@ IC Fvector get_head_position(CObject *object)
 //////////////////////////////////////////////////////////////////////////
 // LTX routines
 //////////////////////////////////////////////////////////////////////////
-IC void read_delay(LPCSTR section, LPCSTR name, u32 &delay_min, u32 &delay_max)
+IC void read_delay(pcstr section, pcstr name, u32 &delay_min, u32 &delay_max)
 {
-	LPCSTR	delay	= pSettings->r_string(section,name);
+	pcstr	delay	= pSettings->r_string(section,name);
 	string128 tempst;	
 
 	if (_GetItemCount(delay) == 2) {
@@ -90,9 +90,9 @@ IC void read_delay(LPCSTR section, LPCSTR name, u32 &delay_min, u32 &delay_max)
 	}
 }
 
-IC void read_distance(LPCSTR section, LPCSTR name, F32& dist_min, F32& dist_max)
+IC void read_distance(pcstr section, pcstr name, F32& dist_min, F32& dist_max)
 {
-	LPCSTR	dist	= pSettings->r_string(section,name);
+	pcstr	dist	= pSettings->r_string(section,name);
 	string128 tempst;
 
 	VERIFY			(_GetItemCount(dist) == 2);

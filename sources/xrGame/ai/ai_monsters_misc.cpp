@@ -172,7 +172,7 @@ u32 dwfChooseAction(u32 dwActionRefreshRate, F32 fMinProbability0, F32 fMinProba
 				}
 }
 
-void CAniVector::Load(CKinematicsAnimated *tpKinematics, LPCSTR caBaseName)
+void CAniVector::Load(CKinematicsAnimated *tpKinematics, pcstr caBaseName)
 {
 	A.clear		();
 	string256	S1, S2;

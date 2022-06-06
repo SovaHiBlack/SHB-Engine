@@ -216,7 +216,7 @@ void	CActor::PickupModeUpdate_COD	()
 
 void CActor::PickupInfoDraw(CObject* object)
 {
-	LPCSTR draw_str = NULL;
+	pcstr draw_str = NULL;
 	
 	CInventoryItem* item = smart_cast<CInventoryItem*>(object);
 //.	CInventoryOwner* inventory_owner = smart_cast<CInventoryOwner*>(object);

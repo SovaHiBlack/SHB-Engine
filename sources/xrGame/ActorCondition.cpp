@@ -55,7 +55,7 @@ void CActorCondition::LoadCondition(LPCSTR entity_section)
 {
 	inherited::LoadCondition(entity_section);
 
-	LPCSTR						section = READ_IF_EXISTS(pSettings,r_string,entity_section,"condition_sect",entity_section);
+	pcstr						section = READ_IF_EXISTS(pSettings,r_string,entity_section,"condition_sect",entity_section);
 
 	m_fJumpPower				= pSettings->r_float(section,"jump_power");
 	m_fStandPower				= pSettings->r_float(section,"stand_power");
@@ -392,8 +392,8 @@ void CActorCondition::UpdateTutorialThresholds()
 	}
 	
 	if(!b){
-		luabind::functor<LPCSTR>			fl;
-		R_ASSERT							(ai().script_engine().functor<LPCSTR>(cb_name,fl));
+		luabind::functor<pcstr>			fl;
+		R_ASSERT							(ai().script_engine().functor<pcstr>(cb_name,fl));
 		fl									();
 	}
 }

@@ -41,7 +41,7 @@ public:
 
 						CAnimatorCamEffector	();
 	virtual				~CAnimatorCamEffector	();
-			void		Start					(LPCSTR fn);
+			void		Start					(pcstr fn);
 	virtual	BOOL		Process					(Fvector &p, Fvector &d, Fvector &n, F32& fFov, F32& fFar, F32& fAspect);
 			void		SetCyclic				(bool b)				{m_bCyclic=b;}
 	virtual	BOOL		Valid					();
@@ -54,7 +54,7 @@ class CAnimatorCamEffectorScriptCB :public CAnimatorCamEffector
 
 	shared_str			cb_name;
 public:
-	CAnimatorCamEffectorScriptCB	(LPCSTR _cb){cb_name =_cb;};
+	CAnimatorCamEffectorScriptCB	(pcstr _cb){cb_name =_cb;};
 	virtual	BOOL		Valid					();
 	virtual BOOL		AllowProcessingIfInvalid()	{return m_bAbsolutePositioning;}
 	virtual	void		ProcessIfInvalid		(Fvector &p, Fvector &d, Fvector &n, F32& fFov, F32& fFar, F32& fAspect);

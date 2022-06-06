@@ -365,7 +365,7 @@ void CActor::OnRender	()
 }
 #endif
 /*
-void CActor::LoadShootingEffector (LPCSTR section)
+void CActor::LoadShootingEffector (pcstr section)
 {
 
 	if(!m_pShootingEffector) 
@@ -391,7 +391,7 @@ void CActor::LoadShootingEffector (LPCSTR section)
 
 }*/
 
-void CActor::LoadSleepEffector	(LPCSTR section)
+void CActor::LoadSleepEffector	(pcstr section)
 {
 	if(!m_pSleepEffector) 
 		m_pSleepEffector = xr_new<SSleepEffector>();

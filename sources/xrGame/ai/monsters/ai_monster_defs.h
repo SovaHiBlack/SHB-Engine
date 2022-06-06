@@ -103,7 +103,7 @@ struct SVelocityParam {
 		max_factor				= 1.0f;
 	}
 
-	void	Load (LPCSTR section, LPCSTR line) {
+	void	Load (pcstr section, pcstr line) {
 		string32 buffer;
 		velocity.linear			= F32(atof(_GetItem(pSettings->r_string(section,line),0,buffer)));
 		velocity.angular_real	= F32(atof(_GetItem(pSettings->r_string(section,line),1,buffer)));

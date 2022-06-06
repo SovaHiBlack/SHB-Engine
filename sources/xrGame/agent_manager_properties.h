@@ -26,7 +26,7 @@ protected:
 	typedef CAgentManagerPropertyEvaluator inherited;
 
 public:
-	IC					CAgentManagerPropertyEvaluatorItem	(CAgentManager *object = 0, LPCSTR evaluator_name = "");
+	IC					CAgentManagerPropertyEvaluatorItem	(CAgentManager *object = 0, pcstr evaluator_name = "");
 	virtual _value_type	evaluate						();
 };
 
@@ -39,7 +39,7 @@ protected:
 	typedef CAgentManagerPropertyEvaluator inherited;
 
 public:
-	IC					CAgentManagerPropertyEvaluatorEnemy	(CAgentManager *object = 0, LPCSTR evaluator_name = "");
+	IC					CAgentManagerPropertyEvaluatorEnemy	(CAgentManager *object = 0, pcstr evaluator_name = "");
 	virtual _value_type	evaluate						();
 };
 
@@ -52,7 +52,7 @@ protected:
 	typedef CAgentManagerPropertyEvaluator inherited;
 
 public:
-	IC					CAgentManagerPropertyEvaluatorDanger	(CAgentManager *object = 0, LPCSTR evaluator_name = "");
+	IC					CAgentManagerPropertyEvaluatorDanger	(CAgentManager *object = 0, pcstr evaluator_name = "");
 	virtual _value_type	evaluate								();
 };
 

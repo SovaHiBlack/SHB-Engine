@@ -34,7 +34,7 @@ class CAI_Crow : public CEntity
 		typedef			svector<MotionID,MAX_ANIM_COUNT> MotionSVec;
 		MotionSVec		m_Animations;
 		const MotionID	&GetRandom	(){return m_Animations[Random.randI(0,m_Animations.size())];}
-		void			Load		(CKinematicsAnimated* visual, LPCSTR prefix);
+		void			Load		(CKinematicsAnimated* visual, pcstr prefix);
 	};
 
 	struct SSound
@@ -42,7 +42,7 @@ class CAI_Crow : public CEntity
 		typedef			svector<ref_sound,MAX_SND_COUNT>		SoundSVec;
 		SoundSVec		m_Sounds;
 		ref_sound&		GetRandom		()	{return m_Sounds[Random.randI(0,m_Sounds.size())];}
-		void			Load			(LPCSTR prefix);
+		void			Load			(pcstr prefix);
 		void			SetPosition		(const Fvector& pos);
 		void			Unload			();
 	};
@@ -106,7 +106,7 @@ public:
 public:
 					CAI_Crow();
 	virtual			~CAI_Crow();
-	virtual void	Load						( LPCSTR section );
+	virtual void	Load						(pcstr section );
 			void	init						();
 	virtual BOOL	net_Spawn					( CSE_Abstract* DC );
 	virtual void	net_Destroy					();

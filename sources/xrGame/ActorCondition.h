@@ -35,7 +35,7 @@ public:
 						CActorCondition				(CActor *object);
 	virtual				~CActorCondition			(void);
 
-	virtual void		LoadCondition				(LPCSTR section);
+	virtual void		LoadCondition				(pcstr section);
 	virtual void		reinit						();
 
 	virtual CWound*		ConditionHit				(SHit* pHDS);

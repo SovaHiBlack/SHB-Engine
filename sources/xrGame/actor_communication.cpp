@@ -61,7 +61,8 @@ void CActor::AddEncyclopediaArticle	 (const CInfoPortion* info_portion) const
 		article.Load(*it);
 
 		article_vector.push_back(ARTICLE_DATA(*it, Level().GetGameTime(), article.data()->articleType));
-		LPCSTR g,n;
+		pcstr g;
+		pcstr n;
 		int _atype = article.data()->articleType;
 		g = *(article.data()->group);
 		n = *(article.data()->name);
@@ -303,7 +304,7 @@ void CActor::UpdateDefferedMessages()
 	}
 }
 
-bool CActor::OnDialogSoundHandlerStart(CInventoryOwner *inv_owner, LPCSTR phrase)
+bool CActor::OnDialogSoundHandlerStart(CInventoryOwner *inv_owner, pcstr phrase)
 {
 	CAI_Trader *trader = smart_cast<CAI_Trader*>(inv_owner);
 	if (!trader) return false;

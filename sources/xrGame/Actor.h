@@ -629,7 +629,7 @@ public:
 	virtual void			OnChangeVisual			();
 
 	virtual void			RenderIndicator			(Fvector dpos, F32 r1, F32 r2, ref_shader IndShader);
-	virtual void			RenderText				(LPCSTR Text, Fvector dpos, F32* pdup, u32 color);
+	virtual void			RenderText				(pcstr Text, Fvector dpos, F32* pdup, u32 color);
 
 	//////////////////////////////////////////////////////////////////////////
 	// Controlled Routines
@@ -651,8 +651,8 @@ protected:
 
 		shared_str				m_DefaultVisualOutfit;
 
-		LPCSTR					invincibility_fire_shield_3rd;
-		LPCSTR					invincibility_fire_shield_1st;
+		pcstr					invincibility_fire_shield_3rd;
+		pcstr					invincibility_fire_shield_1st;
 		shared_str				m_sHeadShotParticle;
 		u32						last_hit_frame;
 #ifdef DEBUG

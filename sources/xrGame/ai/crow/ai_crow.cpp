@@ -13,7 +13,7 @@
 #include "../../level.h"
 #include "../../..\XR_3DA\skeletonanimated.h"
 
-void CAI_Crow::SAnim::Load	(CKinematicsAnimated* visual, LPCSTR prefix)
+void CAI_Crow::SAnim::Load	(CKinematicsAnimated* visual, pcstr prefix)
 {
 	const MotionID		&M = visual->ID_Cycle_Safe(prefix);
 	if (M)				m_Animations.push_back(M);
@@ -26,7 +26,7 @@ void CAI_Crow::SAnim::Load	(CKinematicsAnimated* visual, LPCSTR prefix)
 	R_ASSERT			(m_Animations.size());
 }
 
-void CAI_Crow::SSound::Load	(LPCSTR prefix)
+void CAI_Crow::SSound::Load	(pcstr prefix)
 {
 	string_path	fn;
 	if (FS.exist(fn,"$game_sounds$",prefix,".ogg")){
@@ -97,7 +97,7 @@ void CAI_Crow::init		()
 	bPlayDeathIdle		= false;
 }
 
-void CAI_Crow::Load( LPCSTR section )
+void CAI_Crow::Load(pcstr section )
 {
 	inherited::Load				(section);
 	//////////////////////////////////////////////////////////////////////////

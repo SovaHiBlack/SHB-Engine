@@ -78,7 +78,7 @@ CAI_Space::~CAI_Space				()
 	xr_delete				(m_graph_engine);
 }
 
-void CAI_Space::load(LPCSTR level_name)
+void CAI_Space::load(pcstr level_name)
 {
 	unload										(true);
 
