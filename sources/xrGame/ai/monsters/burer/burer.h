@@ -60,9 +60,9 @@ public:
 
 	} m_gravi_object;
 
-	LPCSTR	 particle_gravi_wave;
-	LPCSTR   particle_gravi_prepare;
-	LPCSTR	 particle_tele_object;
+	pcstr	 particle_gravi_wave;
+	pcstr   particle_gravi_prepare;
+	pcstr	 particle_tele_object;
 
 	//////////////////////////////////////////////////////////////////////////
 	// Sounds
@@ -99,7 +99,7 @@ public:
 
 
 	bool	m_shield_active;
-	LPCSTR	particle_fire_shield;
+	pcstr	particle_fire_shield;
 
 	CBurerFastGravi	*m_fast_gravi;
 
@@ -109,9 +109,9 @@ public:
 
 
 	virtual void	reinit				();
-	virtual void	reload				(LPCSTR section);
+	virtual void	reload				(pcstr section);
 
-	virtual void	Load				(LPCSTR section);
+	virtual void	Load				(pcstr section);
 
 	virtual void	net_Destroy			();
 	virtual void	net_Relcase			(CObject *O);

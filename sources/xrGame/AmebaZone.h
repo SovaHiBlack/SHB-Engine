@@ -16,6 +16,6 @@ protected:
 	virtual				void		PhDataUpdate		(dReal step)			{;}
 	virtual				bool		BlowoutState		()						;
 	virtual				void		SwitchZoneState		(EZoneState new_state)	;
-	virtual				void		Load				(LPCSTR section)		;
+	virtual				void		Load				(pcstr section)		;
 	virtual				F32		distance_to_center	(CObject* O)			;
 };

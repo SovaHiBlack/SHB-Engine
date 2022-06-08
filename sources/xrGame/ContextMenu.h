@@ -17,7 +17,7 @@ public:
 	xr_vector<MenuItem>			Items;
 public:
 				~CContextMenu	();
-	void		Load			(CInifile* INI, LPCSTR S);
+	void		Load			(CInifile* INI, pcstr S);
 	void		Render			(CGameFont* F, u32 cT, u32 cI, float s);
 	void		Select			(int num);
 };

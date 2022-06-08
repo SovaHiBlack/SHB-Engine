@@ -33,7 +33,7 @@ CBlackGraviArtefact::~CBlackGraviArtefact(void)
 
 
 
-void CBlackGraviArtefact::Load(LPCSTR section) 
+void CBlackGraviArtefact::Load(pcstr section)
 {
 	inherited::Load(section);
 

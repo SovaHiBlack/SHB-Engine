@@ -126,7 +126,7 @@ namespace ALife {
 		eAddonAttachable			= 2		//можно присоединять
 	};
 
-	IC EHitType	g_tfString2HitType(LPCSTR caHitType)
+	IC EHitType	g_tfString2HitType(pcstr caHitType)
 	{
 		if (!stricmp(caHitType,"burn"))
 			return(eHitTypeBurn);

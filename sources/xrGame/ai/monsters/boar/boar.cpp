@@ -24,7 +24,7 @@ CAI_Boar::~CAI_Boar()
 
 
 
-void CAI_Boar::Load(LPCSTR section)
+void CAI_Boar::Load(pcstr section)
 {
 	inherited::Load	(section);
 

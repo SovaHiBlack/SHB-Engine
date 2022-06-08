@@ -29,7 +29,7 @@ protected:
 			void			spawn_new_objects			();
 
 public:
-	IC						CALifeSurgeManager			(xrServer *server, LPCSTR section);
+	IC						CALifeSurgeManager			(xrServer *server, pcstr section);
 	virtual					~CALifeSurgeManager			();
 };
 

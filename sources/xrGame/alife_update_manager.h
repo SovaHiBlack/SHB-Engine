@@ -35,12 +35,12 @@ public:
 			void __stdcall	update				();
 
 protected:
-			void		new_game				(LPCSTR	save_name);
+			void		new_game				(pcstr	save_name);
 			void		init_ef_storage			() const;
-	virtual	void		reload					(LPCSTR section);
+	virtual	void		reload					(pcstr section);
 
 public:
-						CALifeUpdateManager		(xrServer *server, LPCSTR section);
+						CALifeUpdateManager		(xrServer *server, pcstr section);
 	virtual 			~CALifeUpdateManager	();
 	virtual	shared_str	shedule_Name			() const		{ return shared_str("alife_simulator"); };
 	virtual F32		shedule_Scale			();
@@ -48,8 +48,8 @@ public:
 	virtual bool		shedule_Needed			()				{return true;};
 			void		update_switch			();
 			void		update_scheduled		(bool init_ef = true);
-			void		load					(LPCSTR game_name = 0, bool no_assert = false, bool new_only = false);
-			bool		load_game				(LPCSTR game_name, bool no_assert = false);
+			void		load					(pcstr game_name = 0, bool no_assert = false, bool new_only = false);
+			bool		load_game				(pcstr game_name, bool no_assert = false);
 	IC		F32		update_monster_factor	() const;
 			bool		change_level			(NET_Packet	&net_packet);
 			void		set_process_time		(int microseconds);
@@ -57,7 +57,7 @@ public:
 			void		set_switch_online		(ALife::_OBJECT_ID id, bool value);
 			void		set_switch_offline		(ALife::_OBJECT_ID id, bool value);
 			void		set_interactive			(ALife::_OBJECT_ID id, bool value);
-			void		jump_to_level			(LPCSTR level_name) const;
+			void		jump_to_level			(pcstr level_name) const;
 			void		teleport_object			(ALife::_OBJECT_ID id, GameGraph::_GRAPH_ID game_vertex_id, u32 level_vertex_id, const Fvector &position);
 			void		add_restriction			(ALife::_OBJECT_ID id, ALife::_OBJECT_ID restriction_id, const RestrictionSpace::ERestrictorTypes &restriction_type);
 			void		remove_restriction		(ALife::_OBJECT_ID id, ALife::_OBJECT_ID restriction_id, const RestrictionSpace::ERestrictorTypes &restriction_type);

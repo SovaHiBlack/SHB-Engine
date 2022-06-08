@@ -16,7 +16,7 @@ void CSE_ALifeObject::spawn_supplies		()
 	spawn_supplies(*m_ini_string);
 }
 
-void CSE_ALifeObject::spawn_supplies		(LPCSTR ini_string)
+void CSE_ALifeObject::spawn_supplies		(pcstr ini_string)
 {
 	if (!ini_string)
 		return;
@@ -36,7 +36,8 @@ void CSE_ALifeObject::spawn_supplies		(LPCSTR ini_string)
 #pragma warning(pop)
 
 	if (ini.section_exist("spawn")) {
-		LPCSTR					N,V;
+		pcstr					N;
+		pcstr					V;
 		F32					p;
 		for (u32 k = 0, j; ini.r_line("spawn",k,&N,&V); k++) {
 			VERIFY				(xr_strlen(N));

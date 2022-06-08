@@ -27,7 +27,7 @@ private:
 public:
 					car_memory				(CCar *object);
 
-	virtual	void	reload					(LPCSTR section);
+	virtual	void	reload					(pcstr section);
 
 	virtual	BOOL	feel_vision_isRelevant	(CObject *object);
 	virtual	void	camera					(

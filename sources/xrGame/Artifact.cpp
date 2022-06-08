@@ -33,7 +33,7 @@ struct SArtefactActivation{
 		shared_str	m_animation;
 		
 					SStateDef	():m_time(0.0f){};
-		void		Load		(LPCSTR section, LPCSTR name);
+		void		Load		(pcstr section, pcstr name);
 	};
 
 	SArtefactActivation			(CArtefact* af, u32 owner_id);
@@ -71,7 +71,7 @@ CArtefact::CArtefact(void)
 CArtefact::~CArtefact(void) 
 {}
 
-void CArtefact::Load(LPCSTR section) 
+void CArtefact::Load(pcstr section)
 {
 	inherited::Load			(section);
 
@@ -447,7 +447,7 @@ void SArtefactActivation::Load()
 	for(int i=0; i<(int)eMax; ++i)
 		m_activation_states.push_back(SStateDef());
 
-	LPCSTR activation_seq = pSettings->r_string(*m_af->cNameSect(),"artefact_activation_seq");
+	pcstr activation_seq = pSettings->r_string(*m_af->cNameSect(),"artefact_activation_seq");
 
 
 	m_activation_states[(int)eStarting].Load(activation_seq,	"starting");
@@ -560,11 +560,11 @@ void SArtefactActivation::SpawnAnomaly()
 {
 	VERIFY(!ph_world->Processing());
 	string128 tmp;
-	LPCSTR str			= pSettings->r_string("artefact_spawn_zones",*m_af->cNameSect());
+	pcstr str			= pSettings->r_string("artefact_spawn_zones",*m_af->cNameSect());
 	VERIFY3(3==_GetItemCount(str),"Bad record format in artefact_spawn_zones",str);
 	F32 zone_radius	= (F32)atof(_GetItem(str,1,tmp));
 	F32 zone_power	= (F32)atof(_GetItem(str,2,tmp));
-	LPCSTR zone_sect	= _GetItem(str,0,tmp); //must be last call of _GetItem... (LPCSTR !!!)
+	pcstr zone_sect	= _GetItem(str,0,tmp); //must be last call of _GetItem... (LPCSTR !!!)
 
 		Fvector pos;
 		m_af->Center(pos);
@@ -594,7 +594,7 @@ void SArtefactActivation::SpawnAnomaly()
 //. #endif
 }
 
-shared_str clear_brackets(LPCSTR src)
+shared_str clear_brackets(pcstr src)
 {
 	if	(0==src)					return	shared_str(0);
 	
@@ -609,9 +609,9 @@ shared_str clear_brackets(LPCSTR src)
 	return									shared_str(_original);
 
 }
-void SArtefactActivation::SStateDef::Load(LPCSTR section, LPCSTR name)
+void SArtefactActivation::SStateDef::Load(pcstr section, pcstr name)
 {
-	LPCSTR str = pSettings->r_string(section,name);
+	pcstr str = pSettings->r_string(section,name);
 	VERIFY(_GetItemCount(str)==8);
 
 

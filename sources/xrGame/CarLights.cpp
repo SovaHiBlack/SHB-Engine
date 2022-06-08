@@ -34,7 +34,7 @@ void SCarLight::Init(CCarLights* holder)
 	m_holder=holder;
 }
 
-void SCarLight::ParseDefinitions(LPCSTR section)
+void SCarLight::ParseDefinitions(pcstr section)
 {
 
 	light_render			= ::Render->light_create();
@@ -136,7 +136,7 @@ void CCarLights::ParseDefinitions()
 {
 	CInifile* ini= smart_cast<CKinematics*>(m_pcar->Visual())->LL_UserData();
 	if(!ini->section_exist("lights")) return;
-	LPCSTR S=  ini->r_string("lights","headlights");
+	pcstr S=  ini->r_string("lights","headlights");
 	string64					S1;
 	int count =					_GetItemCount(S);
 	for (int i=0 ;i<count; ++i) 

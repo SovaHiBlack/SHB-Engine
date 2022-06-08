@@ -8,7 +8,7 @@
 
 #pragma once
 
-IC	CALifeSimulatorHeader::CALifeSimulatorHeader							(LPCSTR	section)
+IC	CALifeSimulatorHeader::CALifeSimulatorHeader							(pcstr	section)
 {
 	m_version					= ALIFE_VERSION;
 }

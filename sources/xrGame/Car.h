@@ -167,7 +167,7 @@ public:
 		static	void			WheellCollisionCallback					(bool& do_colide,bool bo1,dContact& c,SGameMtl* material_1,SGameMtl* material_2)							;
 				
 				void 			Init									();//asumptions: bone_map is 1. ini parsed 2. filled in 3. bone_id is set 
-				void			Load									(LPCSTR section);
+				void			Load									(pcstr section);
 				void 			RestoreNetState							(const CSE_ALifeCar::SWheelState& a_state)														;
 				void 			SaveNetState							(NET_Packet& P)																					;
 				void 			ApplyDriveAxisVel						(float vel)																						;
@@ -199,7 +199,7 @@ virtual void ApplyDamage			(u16 level);
 		void	Neutral		()						;
 		void	UpdatePower	()						;
 		float	ASpeed		()						;
-		void	Load		(LPCSTR /*section*/){}	;
+		void	Load		(pcstr /*section*/){}	;
 	};
 	struct SWheelSteer 
 	{
@@ -219,7 +219,7 @@ virtual void ApplyDamage			(u16 level);
 		void	 SteerLeft	()						;
 		void	 SteerIdle	()						;
 		void	 Limit		()						;
-		void	 Load		(LPCSTR /*section*/){}	;
+		void	 Load		(pcstr /*section*/){}	;
 	};
 	struct SWheelBreak 
 	{
@@ -230,7 +230,7 @@ virtual void ApplyDamage			(u16 level);
 		void		 Break			(float k)			;
 		void		 HandBreak		()					;
 		void		 Neutral		()					;
-		void		 Load			(LPCSTR section)	;
+		void		 Load			(pcstr section)	;
 	};
 
 	struct SExhaust
@@ -540,7 +540,7 @@ public:
 	u16						DriverAnimationType 		();
 	// Core events
 	virtual DLL_Pure		*_construct					();
-	virtual void			Load						( LPCSTR section );
+	virtual void			Load						(pcstr section );
 	virtual BOOL			net_Spawn					( CSE_Abstract* DC );
 	virtual void			net_Destroy					();
 	virtual void			UpdateCL					( ); 
@@ -612,15 +612,15 @@ public:
 public:
 	virtual CEntity*					cast_entity				()						{return this;}
 private:
-	template <class T> IC void fill_wheel_vector(LPCSTR S,xr_vector<T>& type_wheels);
-	IC void fill_exhaust_vector(LPCSTR S,xr_vector<SExhaust>& exhausts);
-	IC void fill_doors_map(LPCSTR S,xr_map<u16,SDoor>& doors);
+	template <class T> IC void fill_wheel_vector(pcstr S,xr_vector<T>& type_wheels);
+	IC void fill_exhaust_vector(pcstr S,xr_vector<SExhaust>& exhausts);
+	IC void fill_doors_map(pcstr S,xr_map<u16,SDoor>& doors);
 
 	//Inventory for the car
 	CInventory	*inventory;
 	
 	virtual	void reinit			();
-	virtual	void reload			(LPCSTR section);
+	virtual	void reload			(pcstr section);
 	virtual CGameObject			*cast_game_object			()	{return this;}
 	virtual CExplosive			*cast_explosive				()	{return this;}
 	virtual CPhysicsShellHolder	*cast_physics_shell_holder	()	{return this;}

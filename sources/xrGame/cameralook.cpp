@@ -10,7 +10,7 @@ CCameraLook::CCameraLook(CObject* p, u32 flags )
 {
 }
 
-void CCameraLook::Load(LPCSTR section)
+void CCameraLook::Load(pcstr section)
 {
 	inherited::Load		(section);
 	style				= csLookAt;
@@ -183,7 +183,7 @@ void CCameraLook2::UpdateAutoAim()
 											Device.fTimeDelta);
 }
 
-void CCameraLook2::Load(LPCSTR section)
+void CCameraLook2::Load(pcstr section)
 {
 	CCameraLook::Load		(section);
 	m_cam_offset			= pSettings->r_fvector3	(section,"offset");

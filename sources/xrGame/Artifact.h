@@ -15,7 +15,7 @@ public:
 									CArtefact						();
 	virtual							~CArtefact						();
 
-	virtual void					Load							(LPCSTR section);
+	virtual void					Load							(pcstr section);
 	
 	virtual BOOL					net_Spawn						(CSE_Abstract* DC);
 	virtual void					net_Destroy						();

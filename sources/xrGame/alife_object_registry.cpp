@@ -11,7 +11,7 @@
 #include "..\xrNetServer\net_utils.h"
 #include "ai_debug.h"
 
-CALifeObjectRegistry::CALifeObjectRegistry	(LPCSTR section)
+CALifeObjectRegistry::CALifeObjectRegistry	(pcstr section)
 {
 }
 

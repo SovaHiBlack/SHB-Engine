@@ -27,7 +27,7 @@ public:
 
 /**/
 public:
-									CALifeInteractionManager	(xrServer *server, LPCSTR section);
+									CALifeInteractionManager	(xrServer *server, pcstr section);
 /**
 	virtual							~CALifeInteractionManager	();
 			void					check_for_interaction		(CSE_ALifeSchedulable		*tpALifeSchedulable);

@@ -222,7 +222,7 @@ void CControlAnimationBase::CheckReplacedAnim()
 		}
 }
 
-SAAParam &CControlAnimationBase::AA_GetParams(LPCSTR anim_name)
+SAAParam &CControlAnimationBase::AA_GetParams(pcstr anim_name)
 {
 	// искать текущую анимацию в AA_VECTOR
 	MotionID motion = smart_cast<CKinematicsAnimated*>(m_object->Visual())->LL_MotionID(anim_name);
@@ -350,7 +350,7 @@ EAction CControlAnimationBase::GetActionFromPath()
 //////////////////////////////////////////////////////////////////////////
 // Debug
 
-LPCSTR CControlAnimationBase::GetAnimationName(EMotionAnim anim)
+pcstr CControlAnimationBase::GetAnimationName(EMotionAnim anim)
 {
 	SAnimItem *item_it = m_anim_storage[anim];
 	VERIFY(item_it);
@@ -358,7 +358,7 @@ LPCSTR CControlAnimationBase::GetAnimationName(EMotionAnim anim)
 	return *item_it->target_name;
 }
 
-LPCSTR CControlAnimationBase::GetActionName(EAction action)
+pcstr CControlAnimationBase::GetActionName(EAction action)
 {
 	return dbg_action_name_table[action];
 }
@@ -410,7 +410,7 @@ void CControlAnimationBase::UpdateAnimCount()
 
 		for (int i=0; ; ++i) {
 			strconcat	(sizeof(s_temp),s_temp, *((*it)->target_name),itoa(i,s,10));
-			LPCSTR		name	= s_temp;
+			pcstr		name	= s_temp;
 			MotionID	id		= skel->ID_Cycle_Safe(name);
 
 			if (id.valid())  {
@@ -436,7 +436,7 @@ CMotionDef *CControlAnimationBase::get_motion_def(SAnimItem *it, u32 index)
 	return				(skeleton_animated->LL_GetMotionDef(motion_id));
 }
 
-void CControlAnimationBase::AddAnimTranslation(const MotionID &motion, LPCSTR str)
+void CControlAnimationBase::AddAnimTranslation(const MotionID &motion, pcstr str)
 {
 	m_anim_motion_map.insert(mk_pair(motion, str));	
 }
@@ -524,7 +524,7 @@ void CControlAnimationBase::check_hit(MotionID motion, F32 time_perc)
 	m_object->MeleeChecker.on_hit_attempt(should_hit);
 }
 
-void parse_anim_params(LPCSTR val, SAAParam &anim) 
+void parse_anim_params(pcstr val, SAAParam &anim)
 {
 	string16			cur_elem;
 
@@ -550,14 +550,15 @@ void parse_anim_params(LPCSTR val, SAAParam &anim)
 
 }
 
-void CControlAnimationBase::AA_reload(LPCSTR section)
+void CControlAnimationBase::AA_reload(pcstr section)
 {
 	if (!pSettings->section_exist(section)) return;
 
 	m_attack_anims.clear();
 	
 	SAAParam			anim;
-	LPCSTR				anim_name,val;
+	pcstr				anim_name;
+	pcstr				val;
 
 	CKinematicsAnimated	*skel_animated = smart_cast<CKinematicsAnimated*>(m_object->Visual());
 
@@ -569,8 +570,8 @@ void CControlAnimationBase::AA_reload(LPCSTR section)
 
 		// check if it is compound (if there is one item, mean it as a section)
 		if (_GetItemCount(val) == 1) {
-			LPCSTR compound_section = val;
-			LPCSTR unused_line_name;
+			pcstr compound_section = val;
+			pcstr unused_line_name;
 
 			for (u32 k=0; pSettings->r_line(compound_section,k,&unused_line_name,&val); ++k) {
 				parse_anim_params	(val, anim);

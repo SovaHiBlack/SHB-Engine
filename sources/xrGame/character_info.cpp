@@ -75,7 +75,7 @@ void CCharacterInfo::InitSpecificCharacter (shared_str new_id)
 
 #endif
 
-void CCharacterInfo::load_shared	(LPCSTR)
+void CCharacterInfo::load_shared	(pcstr)
 {
 	const ITEM_DATA& item_data = *id_to_index::GetById(m_ProfileId);
 
@@ -89,12 +89,12 @@ void CCharacterInfo::load_shared	(LPCSTR)
 
 
 
-	LPCSTR spec_char = pXML->Read("specific_character", 0, NULL);
+	pcstr spec_char = pXML->Read("specific_character", 0, NULL);
 	if(!spec_char)
 	{
 		data()->m_CharacterId	= NULL;
 		
-		LPCSTR char_class			= pXML->Read	("class",		0,	NULL);
+		pcstr char_class			= pXML->Read	("class",		0,	NULL);
 
 		if(char_class)
 		{
@@ -129,7 +129,7 @@ shared_str CCharacterInfo::Profile()			const
 	return m_ProfileId;
 }
 
-LPCSTR CCharacterInfo::Name() const
+pcstr CCharacterInfo::Name() const
 {
 	R_ASSERT2(m_SpecificCharacterId.size(), m_SpecificCharacter.Name());
 	return	m_SpecificCharacter.Name();

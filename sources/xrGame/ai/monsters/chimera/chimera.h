@@ -16,7 +16,7 @@ public:
 					CChimera			();
 	virtual			~CChimera			();	
 
-	virtual void	Load				(LPCSTR section);
+	virtual void	Load				(pcstr section);
 	virtual void	reinit				();
 	virtual	void	UpdateCL			();
 

@@ -22,11 +22,11 @@ private:
 	ALife::_TIME_ID					m_start_game_time;
 
 public:
-									CALifeTimeManager		(LPCSTR		section);
+									CALifeTimeManager		(pcstr		section);
 	virtual							~CALifeTimeManager		();
 	virtual void					save					(IWriter	&memory_stream);
 	virtual void					load					(IReader	&file_stream);
-			void					init					(LPCSTR		section);
+			void					init					(pcstr		section);
 	IC		void					set_time_factor			(F32		time_factor);
 	IC		ALife::_TIME_ID			game_time				() const;
 	IC		F32					time_factor				() const;

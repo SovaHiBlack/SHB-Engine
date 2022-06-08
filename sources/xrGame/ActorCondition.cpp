@@ -51,7 +51,7 @@ CActorCondition::~CActorCondition(void)
 {
 }
 
-void CActorCondition::LoadCondition(LPCSTR entity_section)
+void CActorCondition::LoadCondition(pcstr entity_section)
 {
 	inherited::LoadCondition(entity_section);
 

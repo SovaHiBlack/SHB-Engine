@@ -50,7 +50,7 @@ CAI_Bloodsucker::~CAI_Bloodsucker()
 	xr_delete	(StateMan);
 }
 
-void CAI_Bloodsucker::Load(LPCSTR section) 
+void CAI_Bloodsucker::Load(pcstr section)
 {
 	inherited::Load(section);
 
@@ -179,7 +179,7 @@ void CAI_Bloodsucker::reinit()
 	m_predator					= false;
 }
 
-void CAI_Bloodsucker::reload(LPCSTR section)
+void CAI_Bloodsucker::reload(pcstr section)
 {
 	inherited::reload(section);
 
@@ -193,7 +193,7 @@ void CAI_Bloodsucker::reload(LPCSTR section)
 }
 
 
-void CAI_Bloodsucker::LoadVampirePPEffector(LPCSTR section)
+void CAI_Bloodsucker::LoadVampirePPEffector(pcstr section)
 {
 	pp_vampire_effector.duality.h			= pSettings->r_float(section,"duality_h");
 	pp_vampire_effector.duality.v			= pSettings->r_float(section,"duality_v");

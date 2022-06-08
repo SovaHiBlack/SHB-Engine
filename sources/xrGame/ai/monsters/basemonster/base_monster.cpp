@@ -465,9 +465,9 @@ void CBaseMonster::on_restrictions_change()
 	if (StateMan) StateMan->reinit();
 }
 
-void CBaseMonster::load_effector(LPCSTR section, LPCSTR line, SAttackEffector &effector)
+void CBaseMonster::load_effector(pcstr section, pcstr line, SAttackEffector &effector)
 {
-	LPCSTR ppi_section = pSettings->r_string(section, line);
+	pcstr ppi_section = pSettings->r_string(section, line);
 	effector.ppi.duality.h			= pSettings->r_float(ppi_section,"duality_h");
 	effector.ppi.duality.v			= pSettings->r_float(ppi_section,"duality_v");
 	effector.ppi.gray				= pSettings->r_float(ppi_section,"gray");

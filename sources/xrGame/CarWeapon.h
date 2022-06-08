@@ -36,7 +36,7 @@ public:
 				virtual		~CCarWeapon			();
 	static void 			BoneCallbackX		(CBoneInstance *B);
 	static void				BoneCallbackY		(CBoneInstance *B);
-				void		Load				(LPCSTR section);
+				void		Load				(pcstr section);
 				void		UpdateCL			();
 			void			Action				(int id, u32 flags);
 			void			SetParam			(int id, Fvector2 val);

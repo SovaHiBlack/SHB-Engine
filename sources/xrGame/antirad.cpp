@@ -22,7 +22,7 @@ BOOL CAntirad::net_Spawn(CSE_Abstract* DC)
 	return		(inherited::net_Spawn(DC));
 }
 
-void CAntirad::Load(LPCSTR section) 
+void CAntirad::Load(pcstr section)
 {
 	inherited::Load(section);
 }

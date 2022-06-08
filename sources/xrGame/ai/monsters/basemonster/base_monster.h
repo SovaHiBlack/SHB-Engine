@@ -76,7 +76,7 @@ public:
 	virtual	void			PHHit							(F32 P,Fvector &dir, CObject *who,s16 element,Fvector p_in_object_space, F32 impulse, ALife::EHitType hit_type = ALife::eHitTypeWound);
 	virtual void			SelectAnimation					(const Fvector& _view, const Fvector& _move, F32 speed );
 
-	virtual void			Load							(LPCSTR section);
+	virtual void			Load							(pcstr section);
 	virtual DLL_Pure		*_construct						();
 
 	virtual BOOL			net_Spawn						(CSE_Abstract* DC);
@@ -98,7 +98,7 @@ public:
 	virtual void			InitThink						() {}
 	virtual void			Think							();
 	virtual	void			reinit							();
-	virtual void			reload							(LPCSTR section);
+	virtual void			reload							(pcstr section);
 
 	virtual void			init							() {}
 
@@ -227,8 +227,8 @@ public:
 	ref_smem<SMonsterSettings>	m_base_settings;
 	ref_smem<SMonsterSettings>	m_current_settings;
 	
-	void						settings_read			(CInifile *ini, LPCSTR section, SMonsterSettings &data);
-	void						settings_load			(LPCSTR section);
+	void						settings_read			(CInifile *ini, pcstr section, SMonsterSettings &data);
+	void						settings_load			(pcstr section);
 	void						settings_overrides		();
 
 	SMonsterSettings			&db						() {return *(*m_current_settings);}
@@ -297,7 +297,7 @@ public:
 //	// Spawn Inventory Item
 //	//-----------------------------------------------------------------
 //private:
-//	LPCSTR					m_item_section;
+//	pcstr					m_item_section;
 //	F32					m_spawn_probability;
 
 	//--------------------------------------------------------------------
@@ -328,7 +328,7 @@ public:
 	void				Hit_Psy						(CObject *object, F32 value);
 	void				Hit_Wound					(CObject *object, F32 value, const Fvector &dir, F32 impulse);
 	CParticlesObject	*PlayParticles				(const shared_str& name, const Fvector &position, const Fvector &dir, BOOL auto_remove = TRUE, BOOL xformed = TRUE);
-	void				load_effector				(LPCSTR section, LPCSTR line, SAttackEffector &effector);
+	void				load_effector				(pcstr section, pcstr line, SAttackEffector &effector);
 
 	// --------------------------------------------------------------------------------------
 	// Kill From Here
@@ -415,11 +415,11 @@ protected:
 	virtual bool			critical_wound_external_conditions_suitable	();
 	virtual void			critical_wounded_state_start				();
 	
-			void			fill_bones_body_parts						(LPCSTR body_part, CriticalWoundType wound_type);
+			void			fill_bones_body_parts						(pcstr body_part, CriticalWoundType wound_type);
 	
-	LPCSTR					m_critical_wound_anim_head;
-	LPCSTR					m_critical_wound_anim_torso;
-	LPCSTR					m_critical_wound_anim_legs;
+			pcstr					m_critical_wound_anim_head;
+			pcstr					m_critical_wound_anim_torso;
+			pcstr					m_critical_wound_anim_legs;
 
 	//////////////////////////////////////////////////////////////////////////
 	

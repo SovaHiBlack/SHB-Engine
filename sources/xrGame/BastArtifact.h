@@ -24,7 +24,7 @@ public:
 	CBastArtefact(void);
 	virtual ~CBastArtefact(void);
 
-	virtual void Load				(LPCSTR section);
+	virtual void Load				(pcstr section);
 	virtual void shedule_Update		(u32 dt);
 	
 	virtual BOOL net_Spawn			(CSE_Abstract* DC);

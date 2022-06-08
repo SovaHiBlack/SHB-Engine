@@ -74,7 +74,7 @@ CController::~CController()
 	xr_delete(m_aura);
 }
 
-void CController::Load(LPCSTR section)
+void CController::Load(pcstr section)
 {
 	inherited::Load	(section);
 
@@ -97,7 +97,7 @@ void CController::Load(LPCSTR section)
 	anim().AddReplacedAnim(&m_bDamaged, eAnimWalkFwd,	eAnimWalkDamaged);
 
 	// Load control postprocess --------------------------------------------------------
-	LPCSTR ppi_section = pSettings->r_string(section, "control_effector");
+	pcstr ppi_section = pSettings->r_string(section, "control_effector");
 	m_control_effector.ppi.duality.h		= pSettings->r_float(ppi_section,"duality_h");
 	m_control_effector.ppi.duality.v		= pSettings->r_float(ppi_section,"duality_v");
 	m_control_effector.ppi.gray				= pSettings->r_float(ppi_section,"gray");
@@ -237,9 +237,9 @@ void CController::Load(LPCSTR section)
 	m_aura->load		(section);
 }
 
-void CController::load_friend_community_overrides(LPCSTR section)
+void CController::load_friend_community_overrides(pcstr section)
 {
-	LPCSTR src = pSettings->r_string(section,"Friend_Community_Overrides");
+	pcstr src = pSettings->r_string(section,"Friend_Community_Overrides");
 	
 	// parse src
 	int item_count = _GetItemCount(src);
@@ -344,7 +344,7 @@ void CController::play_control_sound_hit()
 	control_hit_sound.play_at_pos(const_cast<CEntityAlive*>(EnemyMan.get_enemy()),pos);
 }
 
-void CController::reload(LPCSTR section)
+void CController::reload(pcstr section)
 {
 	inherited::reload			(section);
 	com_man().ta_fill_data(anim_triple_control,	"stand_sit_down_attack_0",	"control_attack_0",	"sit_stand_up_attack_0", true, false);

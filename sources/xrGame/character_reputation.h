@@ -13,7 +13,7 @@
 
 struct REPUTATION_DATA
 {
-	REPUTATION_DATA (int, shared_str, LPCSTR);
+	REPUTATION_DATA (int, shared_str, pcstr);
 
 	shared_str					id;
 	int							index;

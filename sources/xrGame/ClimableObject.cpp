@@ -76,7 +76,7 @@ void CPHLeaderGeomShell::near_callback	(CPHObject* obj)
 {
 
 }
-void CClimableObject::	Load				( LPCSTR section)
+void CClimableObject::	Load				(pcstr section)
 {
 	inherited::Load(section);
 }

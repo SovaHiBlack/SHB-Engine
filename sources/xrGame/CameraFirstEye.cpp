@@ -16,7 +16,7 @@ CCameraFirstEye::~CCameraFirstEye()
 {
 }
 
-void CCameraFirstEye::Load(LPCSTR section)
+void CCameraFirstEye::Load(pcstr section)
 {
 	inherited::Load		(section);
 	style				= csFirstEye;

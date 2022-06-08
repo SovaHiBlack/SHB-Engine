@@ -170,7 +170,7 @@ void CControllerAura::on_death()
 	}
 }
 
-void CControllerAura::load(LPCSTR section)
+void CControllerAura::load(pcstr section)
 {
 	inherited::load				(pSettings->r_string(section,"aura_effector"));
 	

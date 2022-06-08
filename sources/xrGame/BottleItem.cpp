@@ -22,7 +22,7 @@ CBottleItem::~CBottleItem(void)
 }
 
 
-void CBottleItem::Load(LPCSTR section) 
+void CBottleItem::Load(pcstr section)
 {
 	inherited::Load(section);
 

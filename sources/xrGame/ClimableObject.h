@@ -22,7 +22,7 @@ class CClimableObject: public CPhysicsShellHolder
 public:
 					CClimableObject		();
 					~CClimableObject	();
-	virtual void	Load				( LPCSTR section);
+	virtual void	Load				(pcstr section);
 	virtual BOOL	net_Spawn			( CSE_Abstract* DC);
 	virtual	void	net_Destroy			();
 	virtual void	shedule_Update		( u32 dt);							// Called by sheduler

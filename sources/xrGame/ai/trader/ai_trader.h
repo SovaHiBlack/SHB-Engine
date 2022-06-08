@@ -47,7 +47,7 @@ public:
 	virtual CScriptEntity*				cast_script_entity		()						{return this;}
 
 	virtual DLL_Pure	*_construct		();
-	virtual void		Load			( LPCSTR section );
+	virtual void		Load			(pcstr section );
 	virtual BOOL		net_Spawn		( CSE_Abstract* DC );
 	virtual void		net_Export		(NET_Packet& P);
 	virtual void		net_Import		(NET_Packet& P);
@@ -83,7 +83,7 @@ public:
 	///////////////////////////////////////////////////////////////////////
 
 	virtual void			reinit					();
-	virtual void			reload					(LPCSTR section);
+	virtual void			reload					(pcstr section);
 
 	static	void			BoneCallback			(CBoneInstance *B);
 			void			LookAtActor				(CBoneInstance *B);
@@ -92,7 +92,7 @@ public:
 			void			OnStopTrade				();
 
 	//игровое имя
-	virtual LPCSTR			Name					() const {return CInventoryOwner::Name();}
+	virtual pcstr			Name					() const {return CInventoryOwner::Name();}
 
 	virtual	bool			can_attach				(const CInventoryItem *inventory_item) const;
 	virtual bool			use_bolts				() const;
@@ -129,7 +129,7 @@ public:
 	virtual bool			natural_detector		() const {return false;}
 	virtual bool			AllowItemToTrade 		(CInventoryItem const * item, EItemPlace place) const;
 
-			void			dialog_sound_start		(LPCSTR phrase);
+			void			dialog_sound_start		(pcstr phrase);
 			void			dialog_sound_stop		();
 
 private:

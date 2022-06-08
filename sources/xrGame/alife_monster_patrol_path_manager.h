@@ -56,7 +56,7 @@ public:
 public:
 	IC		object_type				&object						() const;
 	IC		void					path						(const CPatrolPath *path);
-	IC		void					path						(LPCSTR path_name);
+	IC		void					path						(pcstr path_name);
 	IC		void					start_type					(const EPatrolStartType	&start_type);
 	IC		void					route_type					(const EPatrolRouteType	&route_type);
 	IC		const EPatrolStartType	&start_type					() const;

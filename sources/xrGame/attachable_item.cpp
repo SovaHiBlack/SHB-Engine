@@ -33,7 +33,7 @@ CAttachableItem::~CAttachableItem		()
 {
 }
 
-void CAttachableItem::reload			(LPCSTR section)
+void CAttachableItem::reload			(pcstr section)
 {
 	if (!pSettings->line_exist(section,"attach_angle_offset"))
 		return;

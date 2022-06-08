@@ -17,7 +17,7 @@ CCat::~CCat()
 	xr_delete(StateMan);
 }
 
-void CCat::Load(LPCSTR section)
+void CCat::Load(pcstr section)
 {
 	inherited::Load			(section);
 

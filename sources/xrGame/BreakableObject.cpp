@@ -26,7 +26,7 @@ CBreakableObject::~CBreakableObject	()
 {
 }
 
-void CBreakableObject::Load		(LPCSTR section)
+void CBreakableObject::Load		(pcstr section)
 {
 	inherited::Load			(section);
 	m_remove_time=pSettings	->r_u32(section,"remove_time")*1000;

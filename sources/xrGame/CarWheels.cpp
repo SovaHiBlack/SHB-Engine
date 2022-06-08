@@ -67,7 +67,7 @@ void CCar::SWheel::Init()
 	e->SetAirResistance(0,0);
 	inited=true;
 }
-void CCar::SWheel::Load(LPCSTR section)
+void CCar::SWheel::Load(pcstr section)
 {
 	CKinematics		*K			=PKinematics(car->Visual())		;
 	CInifile		*ini		=K->LL_UserData()				;
@@ -332,7 +332,7 @@ void CCar::SWheelBreak::Init()
 	break_torque			*=k;
 	hand_break_torque		*=k;
 }
-void CCar::SWheelBreak::Load(LPCSTR section)
+void CCar::SWheelBreak::Load(pcstr section)
 {
 	CKinematics		*K			=PKinematics(pwheel->car->Visual())												;
 	CInifile		*ini		=K->LL_UserData()																;

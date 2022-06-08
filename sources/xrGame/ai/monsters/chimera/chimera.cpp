@@ -23,7 +23,7 @@ CChimera::~CChimera()
 	xr_delete		(StateMan);
 }
 
-void CChimera::Load(LPCSTR section)
+void CChimera::Load(pcstr section)
 {
 	inherited::Load			(section);
 

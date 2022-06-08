@@ -50,7 +50,7 @@ void CBurer::net_Destroy()
 	TScanner::on_destroy();
 }
 
-void CBurer::reload(LPCSTR section)
+void CBurer::reload(pcstr section)
 {
 	inherited::reload	(section);
 
@@ -63,7 +63,7 @@ void CBurer::reload(LPCSTR section)
 	com_man().ta_fill_data(anim_triple_tele,	"stand_tele_0",		"stand_tele_1",		"stand_tele_2",		TA_EXECUTE_ONCE, TA_DONT_SKIP_PREPARE, ControlCom::eCapturePath | ControlCom::eCaptureMovement);
 }
 
-void CBurer::Load(LPCSTR section)
+void CBurer::Load(pcstr section)
 {
 	inherited::Load				(section);
 	TScanner::load				(section);

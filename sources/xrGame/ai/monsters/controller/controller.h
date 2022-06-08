@@ -24,7 +24,7 @@ class CController : public CBaseMonster {
 	u32					time_control_hit_started;
 	bool				active_control_fx;
 	
-	LPCSTR				particles_fire;
+	pcstr				particles_fire;
 
 	CControllerAnimation	*m_custom_anim_base;
 	CControllerDirection	*m_custom_dir_base;
@@ -80,8 +80,8 @@ public:
 					CController			();
 	virtual			~CController		();	
 
-	virtual void	Load				(LPCSTR section);
-	virtual void	reload				(LPCSTR section);
+	virtual void	Load				(pcstr section);
+	virtual void	reload				(pcstr section);
 	virtual void	reinit				();
 	virtual void	UpdateCL			();
 	virtual void	shedule_Update		(u32 dt);
@@ -106,7 +106,7 @@ public:
 
 	virtual	bool	is_relation_enemy	(const CEntityAlive *tpEntityAlive) const;
 	xr_vector<shared_str>				m_friend_community_overrides;
-	void								load_friend_community_overrides	(LPCSTR section);
+	void								load_friend_community_overrides	(pcstr section);
 	bool								is_community_friend_overrides	(const CEntityAlive *tpEntityAlive) const;
 	//-------------------------------------------------------------------
 	// Controller ability

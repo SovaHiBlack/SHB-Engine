@@ -103,7 +103,7 @@ void CBastArtefact::net_Destroy		()
 	m_AliveList.clear();
 }
 
-void CBastArtefact::Load(LPCSTR section) 
+void CBastArtefact::Load(pcstr section)
 {
 	inherited::Load(section);
 

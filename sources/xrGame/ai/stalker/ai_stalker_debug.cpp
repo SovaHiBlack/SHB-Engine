@@ -131,7 +131,7 @@ void restore_actor()
 }
 
 template <typename planner_type>
-void draw_planner						(const planner_type &brain, LPCSTR start_indent, LPCSTR indent, LPCSTR planner_id)
+void draw_planner						(const planner_type &brain, pcstr start_indent, pcstr indent, pcstr planner_id)
 {
 	planner_type						&_brain = const_cast<planner_type&>(brain);
 	if (brain.solution().empty())
@@ -175,17 +175,17 @@ void draw_planner						(const planner_type &brain, LPCSTR start_indent, LPCSTR i
 	}
 }
 
-LPCSTR animation_name(CAI_Stalker *self, const MotionID &animation)
+pcstr animation_name(CAI_Stalker *self, const MotionID &animation)
 {
 	if (!animation)
 		return			("");
 	CKinematicsAnimated	*skeleton_animated = smart_cast<CKinematicsAnimated*>(self->Visual());
 	VERIFY				(skeleton_animated);
-	LPCSTR				name = skeleton_animated->LL_MotionDefName_dbg(animation).first;
+	pcstr				name = skeleton_animated->LL_MotionDefName_dbg(animation).first;
 	return				(name);
 }
 
-void draw_restrictions(const shared_str &restrictions, LPCSTR start_indent, LPCSTR indent, LPCSTR header)
+void draw_restrictions(const shared_str &restrictions, pcstr start_indent, pcstr indent, pcstr header)
 {
 	HUD().Font().pFontStat->OutNext	("%s%s%s",start_indent,indent,header);
 	string256	temp;
@@ -193,7 +193,7 @@ void draw_restrictions(const shared_str &restrictions, LPCSTR start_indent, LPCS
 		HUD().Font().pFontStat->OutNext("%s%s%s%s",start_indent,indent,indent,_GetItem(*restrictions,i,temp));
 }
 
-LPCSTR movement_type(const MonsterSpace::EMovementType &movement_type)
+pcstr movement_type(const MonsterSpace::EMovementType &movement_type)
 {
 	switch (movement_type) {
 		case MonsterSpace::eMovementTypeStand :
@@ -207,7 +207,7 @@ LPCSTR movement_type(const MonsterSpace::EMovementType &movement_type)
 	return				("invalid");
 }
 
-LPCSTR danger_type(const CDangerObject::EDangerType &danger_type)
+pcstr danger_type(const CDangerObject::EDangerType &danger_type)
 {
 	switch (danger_type) {
 		case CDangerObject::eDangerTypeBulletRicochet		: return	("bullet ricochet");
@@ -244,7 +244,7 @@ void CAI_Stalker::OnHUDDraw				(CCustomHUD *hud)
 	}
 
 	F32								up_indent = 40.f;
-	LPCSTR								indent = "  ";
+	pcstr								indent = "  ";
 
 	HUD().Font().pFontStat->SetColor	(D3DCOLOR_XRGB(0,255,0));
 	HUD().Font().pFontStat->OutSet		(0,up_indent);
@@ -343,7 +343,7 @@ void CAI_Stalker::OnHUDDraw				(CCustomHUD *hud)
 		HUD().Font().pFontStat->OutNext	("%s%s%sobject    : %s",indent,indent,indent,*memory().enemy().selected()->cName());
 		if (g_Alive()) {
 			F32								interval = (1.f - panic_threshold())*.25f, left = -1.f, right = -1.f;
-			LPCSTR								description = "invalid";
+			pcstr								description = "invalid";
 			u32									result = dwfChooseAction(
 				2000,
 				1.f - interval,
@@ -539,7 +539,7 @@ void CAI_Stalker::OnHUDDraw				(CCustomHUD *hud)
 	HUD().Font().pFontStat->OutNext	("%smovement",indent);
 	HUD().Font().pFontStat->OutNext	("%s%senabled         : %s",indent,indent,movement().enabled() ? "+" : "-");
 
-	LPCSTR								mental_state = "invalid";
+	pcstr								mental_state = "invalid";
 	switch (movement().mental_state()) {
 		case MonsterSpace::eMentalStateFree : {
 			mental_state				= "free";
@@ -557,7 +557,7 @@ void CAI_Stalker::OnHUDDraw				(CCustomHUD *hud)
 	}
 	HUD().Font().pFontStat->OutNext	("%s%smental state    : %s",indent,indent,mental_state);
 
-	LPCSTR								body_state = "invalid";
+	pcstr								body_state = "invalid";
 	switch (movement().body_state()) {
 		case MonsterSpace::eBodyStateStand : {
 			body_state					= "stand";
@@ -573,7 +573,7 @@ void CAI_Stalker::OnHUDDraw				(CCustomHUD *hud)
 	HUD().Font().pFontStat->OutNext	("%s%smovement type   : %s (current)",indent,indent,movement_type(movement().movement_type()));
 	HUD().Font().pFontStat->OutNext	("%s%smovement type   : %s (target)",indent,indent, movement_type(movement().target_movement_type()));
 
-	LPCSTR						path_type = "invalid";
+	pcstr						path_type = "invalid";
 	switch (movement().path_type()) {
 		case MovementManager::ePathTypeGamePath : {
 			path_type			= "game path";
@@ -707,7 +707,7 @@ void CAI_Stalker::OnHUDDraw				(CCustomHUD *hud)
 	HUD().Font().pFontStat->OutNext	(" ");
 	HUD().Font().pFontStat->OutNext	("%ssight",indent);
 
-	LPCSTR								sight_type = "invalid";
+	pcstr								sight_type = "invalid";
 	switch (sight().current_action().sight_type()) {
 		case SightManager::eSightTypeCurrentDirection : {
 			sight_type					= "current direction";

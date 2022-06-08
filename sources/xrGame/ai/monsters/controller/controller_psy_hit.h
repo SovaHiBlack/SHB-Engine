@@ -22,7 +22,7 @@ class CControllerPsyHit : public CControl_ComCustom<> {
 	bool				m_blocked;
 
 public:
-	virtual void	load					(LPCSTR section);
+	virtual void	load					(pcstr section);
 	virtual	void	reinit					();
 	virtual	void	update_frame			();
 	virtual bool	check_start_conditions	();

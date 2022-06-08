@@ -18,7 +18,7 @@ public:
 	virtual ~CBottleItem(void);
 
 
-	virtual void Load				(LPCSTR section);
+	virtual void Load				(pcstr section);
 	
 
 	void	OnEvent					(NET_Packet& P, u16 type);

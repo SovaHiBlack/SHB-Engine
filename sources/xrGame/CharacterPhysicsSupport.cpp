@@ -128,7 +128,7 @@ void CCharacterPhysicsSupport::SetRemoved()
 	
 }
 
-void CCharacterPhysicsSupport::in_Load(LPCSTR section)
+void CCharacterPhysicsSupport::in_Load(pcstr section)
 {
 
 	skel_airr_ang_factor			= pSettings->r_float(section,"ph_skeleton_airr_ang_factor");

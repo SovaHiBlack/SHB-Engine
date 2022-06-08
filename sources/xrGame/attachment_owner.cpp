@@ -17,14 +17,14 @@ CAttachmentOwner::~CAttachmentOwner()
 {
 }
 
-void CAttachmentOwner::reload				(LPCSTR section)
+void CAttachmentOwner::reload				(pcstr section)
 {
 	if (!pSettings->line_exist(section,"attachable_items")) {
 		m_attach_item_sections.clear();
 		return;
 	}
 
-	LPCSTR						attached_sections = pSettings->r_string(section,"attachable_items");
+	pcstr						attached_sections = pSettings->r_string(section,"attachable_items");
 	u32							item_count = _GetItemCount(attached_sections);
 	string256					current_item_section;
 	m_attach_item_sections.resize(item_count);

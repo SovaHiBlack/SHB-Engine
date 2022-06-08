@@ -24,7 +24,7 @@ car_memory::car_memory					(CCar *object) :
 	m_far_plane			= 1.0f;
 }
 
-void car_memory::reload(LPCSTR section)
+void car_memory::reload(pcstr section)
 {
 	inherited::reload	(section);
 	m_fov_deg			= pSettings->r_float(section,"view_fov_deg");

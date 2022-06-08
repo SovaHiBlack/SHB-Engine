@@ -7,7 +7,7 @@
 #include "character_community.h"
 
 //////////////////////////////////////////////////////////////////////////
-COMMUNITY_DATA::COMMUNITY_DATA (CHARACTER_COMMUNITY_INDEX idx, CHARACTER_COMMUNITY_ID idn, LPCSTR team_str)
+COMMUNITY_DATA::COMMUNITY_DATA (CHARACTER_COMMUNITY_INDEX idx, CHARACTER_COMMUNITY_ID idn, pcstr team_str)
 {
 	index = idx;
 	id = idn;

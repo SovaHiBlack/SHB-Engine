@@ -30,7 +30,7 @@ CALifeStorageManager::~CALifeStorageManager	()
 {
 }
 
-void CALifeStorageManager::save	(LPCSTR save_name, bool update_name)
+void CALifeStorageManager::save	(pcstr save_name, bool update_name)
 {
 	strcpy_s					(g_last_saved_game,sizeof(g_last_saved_game),save_name);
 
@@ -84,7 +84,7 @@ void CALifeStorageManager::save	(LPCSTR save_name, bool update_name)
 		strcpy					(m_save_name,save);
 }
 
-void CALifeStorageManager::load	(void *buffer, const u32 &buffer_size, LPCSTR file_name)
+void CALifeStorageManager::load	(void *buffer, const u32 &buffer_size, pcstr file_name)
 {
 	IReader						source(buffer,buffer_size);
 	header().load				(source);
@@ -113,7 +113,7 @@ void CALifeStorageManager::load	(void *buffer, const u32 &buffer_size, LPCSTR fi
 		(*I).second->on_register();
 }
 
-bool CALifeStorageManager::load	(LPCSTR save_name)
+bool CALifeStorageManager::load	(pcstr save_name)
 {
 	CTimer						timer;
 	timer.Start					();

@@ -27,7 +27,7 @@
 #include "../../../inventory_item.h"
 #include "../../../xrServer_Objects_ALife.h"
 
-void CBaseMonster::Load(LPCSTR section)
+void CBaseMonster::Load(pcstr section)
 {
 	// load parameters from ".ltx" file
 	inherited::Load					(section);
@@ -70,7 +70,7 @@ void CBaseMonster::Load(LPCSTR section)
 	if (pSettings->line_exist(section,sound_name))						\
 		sound().add(pSettings->r_string(section,sound_name), DEFAULT_SAMPLE_COUNT,_type,_prior,u32(_mask),_int_type,"bip01_head");
 
-void CBaseMonster::reload	(LPCSTR section)
+void CBaseMonster::reload	(pcstr section)
 {
 	CCustomMonster::reload		(section);
 	
@@ -238,7 +238,7 @@ void CBaseMonster::net_Destroy()
 	else if (ltx->line_exist(section,name)) var = ltx->method(section,name);\
 }
 
-void CBaseMonster::settings_read(CInifile *ini, LPCSTR section, SMonsterSettings &data)
+void CBaseMonster::settings_read(CInifile *ini, pcstr section, SMonsterSettings &data)
 {
 	READ_SETTINGS(data.m_fSoundThreshold, "SoundThreshold", r_float, ini, section);
 
@@ -272,7 +272,7 @@ void CBaseMonster::settings_read(CInifile *ini, LPCSTR section, SMonsterSettings
 	// Load attack postprocess 
 	if (ini->line_exist(section,"attack_effector")) {
 
-		LPCSTR ppi_section = ini->r_string(section, "attack_effector");
+		pcstr ppi_section = ini->r_string(section, "attack_effector");
 
 		READ_SETTINGS(data.m_attack_effector.ppi.duality.h,			"duality_h",		r_float, ini, ppi_section);
 		READ_SETTINGS(data.m_attack_effector.ppi.duality.v,			"duality_v",		r_float, ini, ppi_section);
@@ -302,7 +302,7 @@ void CBaseMonster::settings_read(CInifile *ini, LPCSTR section, SMonsterSettings
 	}
 }
 
-void CBaseMonster::settings_load(LPCSTR section)
+void CBaseMonster::settings_load(pcstr section)
 {
 	SMonsterSettings		data;
 
@@ -356,9 +356,9 @@ void CBaseMonster::load_critical_wound_bones()
 	} 
 }
 
-void CBaseMonster::fill_bones_body_parts	(LPCSTR body_part, CriticalWoundType wound_type)
+void CBaseMonster::fill_bones_body_parts	(pcstr body_part, CriticalWoundType wound_type)
 {
-	LPCSTR					body_parts_section = pSettings->r_string(cNameSect(),body_part);
+	pcstr					body_parts_section = pSettings->r_string(cNameSect(),body_part);
 
 	CKinematics				*kinematics	= smart_cast<CKinematics*>(Visual());
 	VERIFY					(kinematics);

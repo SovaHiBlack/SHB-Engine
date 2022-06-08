@@ -12,7 +12,7 @@
 #include "../../../CharacterPhysicsSupport.h"
 #include "../../../level_debug.h"
 
-void CControllerPsyHit::load(LPCSTR section)
+void CControllerPsyHit::load(pcstr section)
 {
 	m_min_tube_dist = pSettings->r_float(section,"tube_min_dist");
 }

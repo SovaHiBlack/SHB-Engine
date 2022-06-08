@@ -21,7 +21,7 @@ class CALifeSimulator :
 {
 protected:
 	virtual void	setup_simulator		(CSE_ALifeObject *object);
-	virtual void	reload				(LPCSTR section);
+	virtual void	reload				(pcstr section);
 
 public:
 					CALifeSimulator		(xrServer *server, shared_str* command_line);
