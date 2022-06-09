@@ -50,14 +50,14 @@ void CControl_Manager::init_external()
 	//	it->second->init_external(this, m_object);
 }
 
-void CControl_Manager::load(LPCSTR section)
+void CControl_Manager::load(pcstr section)
 {
 	init_external	();
 
 	for (CONTROLLERS_MAP_IT it = m_control_elems.begin(); it != m_control_elems.end(); ++it)
 		it->second->load(section);
 }
-void CControl_Manager::reload(LPCSTR section)
+void CControl_Manager::reload(pcstr section)
 {
 	for (CONTROLLERS_MAP_IT it = m_control_elems.begin(); it != m_control_elems.end(); ++it) 
 		it->second->reload(section);
@@ -388,7 +388,7 @@ void CControl_Manager::check_active_com(CControl_Com *com, bool b_add)
 }
 
 
-void CControl_Manager::dump(CControl_Com *com, LPCSTR action, ControlCom::EControlType type)
+void CControl_Manager::dump(CControl_Com *com, pcstr action, ControlCom::EControlType type)
 {
 	Msg("---------------------------------------------------------------------------");
 	Msg("-- [%s] %s [%s]",dbg_control_name_table[com_type(com)], action, dbg_control_name_table[type]);

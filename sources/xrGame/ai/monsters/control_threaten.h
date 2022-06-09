@@ -2,7 +2,7 @@
 #include "control_combase.h"
 
 struct SControlThreatenData : public ControlCom::IComData {
-	LPCSTR	animation;
+	pcstr	animation;
 	F32	time;
 };
 

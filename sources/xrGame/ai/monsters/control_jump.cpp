@@ -28,7 +28,7 @@ void CControlJump::reinit()
 }
 
 
-void CControlJump::load(LPCSTR section)
+void CControlJump::load(pcstr section)
 {
 	m_delay_after_jump				= pSettings->r_u32	(section,"jump_delay");
 	m_jump_factor					= pSettings->r_float(section,"jump_factor");

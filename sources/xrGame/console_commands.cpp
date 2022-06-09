@@ -1177,7 +1177,7 @@ public:
 	{
 	}
 	
-	virtual void Execute(LPCSTR arguments)
+	virtual void Execute(pcstr arguments)
 	{
 		if (!arguments || !*arguments) {
 			Msg					("! no arguments passed");

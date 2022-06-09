@@ -57,7 +57,7 @@ extern int g_AI_inactive_time;
 	Flags32		psAI_Flags	= {0};
 #endif // MASTER_GOLD
 
-void CCustomMonster::SAnimState::Create(CKinematicsAnimated* K, LPCSTR base)
+void CCustomMonster::SAnimState::Create(CKinematicsAnimated* K, pcstr base)
 {
 	char	buf[128];
 	fwd		= K->ID_Cycle_Safe(strconcat(sizeof(buf),buf,base,"_fwd"));
@@ -104,7 +104,7 @@ CCustomMonster::~CCustomMonster	()
 	Level().client_spawn_manager().clear(ID());
 }
 
-void CCustomMonster::Load		(LPCSTR section)
+void CCustomMonster::Load		(pcstr section)
 {
 	inherited::Load				(section);
 	material().Load				(section);
@@ -204,7 +204,7 @@ void CCustomMonster::reinit		()
 	m_movement_enabled_before_animation_controller	= true;
 }
 
-void CCustomMonster::reload		(LPCSTR section)
+void CCustomMonster::reload		(pcstr section)
 {
 	sound().reload				(section);
 	CEntityAlive::reload		(section);
@@ -829,10 +829,10 @@ void CCustomMonster::set_ready_to_save		()
 	memory().enemy().set_ready_to_save	();
 }
 
-void CCustomMonster::load_killer_clsids(LPCSTR section)
+void CCustomMonster::load_killer_clsids(pcstr section)
 {
 	m_killer_clsids.clear			();
-	LPCSTR							killers = pSettings->r_string(section,"killer_clsids");
+	pcstr							killers = pSettings->r_string(section,"killer_clsids");
 	string16						temp;
 	for (u32 i=0, n=_GetItemCount(killers); i<n; ++i)
 		m_killer_clsids.push_back	(TEXT2CLSID(_GetItem(killers,i,temp)));
@@ -946,7 +946,7 @@ void CCustomMonster::on_restrictions_change	()
 	movement().on_restrictions_change	();
 }
 
-LPCSTR CCustomMonster::visual_name	(CSE_Abstract *server_entity) 
+pcstr CCustomMonster::visual_name	(CSE_Abstract *server_entity)
 {
 	m_already_dead				= false;
 

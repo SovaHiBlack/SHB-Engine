@@ -44,7 +44,7 @@ BOOL CCustomDetector::net_Spawn(CSE_Abstract* DC)
 	return		(inherited::net_Spawn(DC));
 }
 
-void CCustomDetector::Load(LPCSTR section) 
+void CCustomDetector::Load(pcstr section)
 {
 	inherited::Load			(section);
 
@@ -62,7 +62,7 @@ void CCustomDetector::Load(LPCSTR section)
 		sprintf_s			(temp, "zone_class_%d", i);
 		if(pSettings->line_exist(section,temp))
 		{
-			LPCSTR z_Class			= pSettings->r_string(section,temp);
+			pcstr z_Class			= pSettings->r_string(section,temp);
 			CLASS_ID zone_cls		= TEXT2CLSID(pSettings->r_string(z_Class,"class"));
 
 			m_ZoneTypeMap.insert	(std::make_pair(zone_cls,ZONE_TYPE()));

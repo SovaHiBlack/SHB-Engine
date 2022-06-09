@@ -149,7 +149,7 @@ void CControlManagerCustom::update_schedule()
 }
 
 //////////////////////////////////////////////////////////////////////////
-void CControlManagerCustom::ta_fill_data(SAnimationTripleData &data, LPCSTR s1, LPCSTR s2, LPCSTR s3, bool execute_once, bool skip_prep, u32 capture_type)
+void CControlManagerCustom::ta_fill_data(SAnimationTripleData &data, pcstr s1, pcstr s2, pcstr s3, bool execute_once, bool skip_prep, u32 capture_type)
 {
 	// Load triple animations
 	CKinematicsAnimated	*skel_animated = smart_cast<CKinematicsAnimated*>(m_object->Visual());
@@ -282,7 +282,7 @@ void CControlManagerCustom::jump(CObject *obj, const SControlJumpData &ta)
 	m_man->activate									(ControlCom::eControlJump);
 }
 
-void CControlManagerCustom::load_jump_data(LPCSTR s1, LPCSTR s2, LPCSTR s3, LPCSTR s4, u32 vel_mask_prepare, u32 vel_mask_ground, u32 flags)
+void CControlManagerCustom::load_jump_data(pcstr s1, pcstr s2, pcstr s3, pcstr s4, u32 vel_mask_prepare, u32 vel_mask_ground, u32 flags)
 {
 	m_jump->setup_data().flags.assign(flags);
 	
@@ -488,7 +488,7 @@ void CControlManagerCustom::check_rotation_jump()
 	m_man->activate				(ControlCom::eControlRotationJump);
 }
 
-void CControlManagerCustom::add_rotation_jump_data(LPCSTR left1,LPCSTR left2,LPCSTR right1,LPCSTR right2, F32 angle, u32 flags)
+void CControlManagerCustom::add_rotation_jump_data(pcstr left1, pcstr left2, pcstr right1, pcstr right2, F32 angle, u32 flags)
 {
 	SControlRotationJumpData	data;
 	fill_rotation_data			(data,left1,left2,right1,right2,angle,flags);
@@ -525,7 +525,7 @@ void CControlManagerCustom::check_threaten()
 // MELEE JUMP
 //////////////////////////////////////////////////////////////////////////
 
-void CControlManagerCustom::add_melee_jump_data(LPCSTR left,LPCSTR right)
+void CControlManagerCustom::add_melee_jump_data(pcstr left, pcstr right)
 {
 	CKinematicsAnimated	*skel_animated = smart_cast<CKinematicsAnimated*>(m_object->Visual());
 	m_melee_jump_data.anim_ls = skel_animated->ID_Cycle_Safe(left);
@@ -550,7 +550,7 @@ void CControlManagerCustom::check_melee_jump()
 //////////////////////////////////////////////////////////////////////////
 // Fill Rotation Data
 //////////////////////////////////////////////////////////////////////////
-void CControlManagerCustom::fill_rotation_data(SControlRotationJumpData	&data, LPCSTR left1,LPCSTR left2,LPCSTR right1,LPCSTR right2, F32 angle, u32 flags)
+void CControlManagerCustom::fill_rotation_data(SControlRotationJumpData	&data, pcstr left1, pcstr left2, pcstr right1, pcstr right2, F32 angle, u32 flags)
 {
 	VERIFY				(m_object->Visual());
 	CKinematicsAnimated	*skeleton_animated	= smart_cast<CKinematicsAnimated*>(m_object->Visual());
@@ -593,7 +593,7 @@ void CControlManagerCustom::fill_rotation_data(SControlRotationJumpData	&data, L
 }
 
 //////////////////////////////////////////////////////////////////////////
-void CControlManagerCustom::critical_wound(LPCSTR anim)
+void CControlManagerCustom::critical_wound(pcstr anim)
 {
 	if (!m_man->check_start_conditions(ControlCom::eComCriticalWound)) 
 		return;

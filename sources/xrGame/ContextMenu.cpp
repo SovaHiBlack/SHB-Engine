@@ -15,7 +15,7 @@ CContextMenu::~CContextMenu( )
 	xr_free(Name);
 }
 
-void CContextMenu::Load(CInifile* INI, LPCSTR SECT)
+void CContextMenu::Load(CInifile* INI, pcstr SECT)
 {
 	CInifile::Sect& S = INI->r_section(SECT);
 	for (CInifile::SectCIt I = S.Data.begin( ); S.Data.end( ) != I; ++I)

@@ -78,7 +78,7 @@ class CControlJump : public CControl_ComCustom<SControlJumpData> {
 	EStateAnimJump	m_anim_state_current;
 
 public:
-	virtual void	load					(LPCSTR section);
+	virtual void	load					(pcstr section);
 	virtual void	reinit					();
 	virtual bool	check_start_conditions	();
 	virtual void	activate				();
