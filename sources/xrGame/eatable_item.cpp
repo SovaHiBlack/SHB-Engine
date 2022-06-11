@@ -38,7 +38,7 @@ DLL_Pure *CEatableItem::_construct	()
 	return			(inherited::_construct());
 }
 
-void CEatableItem::Load(LPCSTR section)
+void CEatableItem::Load(pcstr section)
 {
 	inherited::Load(section);
 

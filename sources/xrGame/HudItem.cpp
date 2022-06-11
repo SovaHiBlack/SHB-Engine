@@ -43,7 +43,7 @@ DLL_Pure *CHudItem::_construct	()
 	return				(m_object);
 }
 
-void CHudItem::Load(LPCSTR section)
+void CHudItem::Load(pcstr section)
 {
 	//загрузить hud, если он нужен
 	if(pSettings->line_exist(section,"hud"))
@@ -281,7 +281,7 @@ void CHudItem::OnH_B_Independent	(bool just_before_destroy)
 void CHudItem::OnH_A_Independent	()
 {
 }
-void CHudItem::animGet	(MotionSVec& lst, LPCSTR prefix)
+void CHudItem::animGet	(MotionSVec& lst, pcstr prefix)
 {
 	const MotionID		&M = m_pHUD->animGet(prefix);
 	if (M)				lst.push_back(M);

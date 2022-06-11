@@ -35,13 +35,13 @@ public:
 	CCustomRocket(void);
 	virtual ~CCustomRocket(void);
 
-	virtual void Load(LPCSTR section);
+	virtual void Load(pcstr section);
 	virtual BOOL net_Spawn(CSE_Abstract* DC);
 	virtual void net_Destroy();
 	virtual BOOL						AlwaysTheCrow				()				{ return TRUE; }
 
 	virtual void reinit		();
-	virtual void reload		(LPCSTR section);
+	virtual void reload		(pcstr section);
 
 	virtual void OnH_A_Independent	();
 	virtual void OnH_B_Independent	(bool just_before_destroy);

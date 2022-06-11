@@ -37,8 +37,8 @@ void CScriptAnimationAction::script_register(lua_State *L)
 			]
 
 			.def(								constructor<>())
-			.def(								constructor<LPCSTR>())
-			.def(								constructor<LPCSTR,bool>())
+			.def(								constructor<pcstr>())
+			.def(								constructor<pcstr,bool>())
 			.def(								constructor<MonsterSpace::EMentalState>())
 			
 			// Monster specific

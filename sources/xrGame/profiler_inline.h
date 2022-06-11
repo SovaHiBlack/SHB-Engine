@@ -8,7 +8,7 @@
 
 #pragma once
 
-IC	CProfilePortion::CProfilePortion	(LPCSTR timer_id)
+IC	CProfilePortion::CProfilePortion	(pcstr timer_id)
 {
 	if (!psAI_Flags.test(aiStats))
 		return;

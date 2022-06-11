@@ -74,13 +74,13 @@ public:
 	//а не обычный указатель)
 	static bool				SayPhrase			(DIALOG_SHARED_PTR& phrase_dialog, const shared_str& phrase_id);
 
-		LPCSTR				GetPhraseText		(const shared_str& phrase_id, bool current_speaking = true);
-		LPCSTR				GetLastPhraseText	() {return GetPhraseText(m_SaidPhraseID, false);}
+	pcstr				GetPhraseText		(const shared_str& phrase_id, bool current_speaking = true);
+	pcstr				GetLastPhraseText	() {return GetPhraseText(m_SaidPhraseID, false);}
 		const shared_str&	GetDialogID			() const {return m_DialogId;}
 
 	//заголовок, диалога, если не задан, то 0-я фраза
 		const shared_str&	GetLastPhraseID		() {return m_SaidPhraseID;}
-			LPCSTR			DialogCaption		();
+		pcstr			DialogCaption		();
 			int				Priority			();
 
 
@@ -123,14 +123,14 @@ protected:
 	SPhraseDialogData*		data		()			{ VERIFY(inherited_shared::get_sd()); return inherited_shared::get_sd();}
 
 	//загрузка диалога из XML файла
-	virtual void			load_shared	(LPCSTR);
+	virtual void			load_shared	(pcstr);
 	
 	//рекурсивное добавление фраз в граф
 	void					AddPhrase	(CUIXml* pXml, XML_NODE* phrase_node, const shared_str& phrase_id, const shared_str& prev_phrase_id);
 public:
-	CPhrase*				AddPhrase			(LPCSTR text, const shared_str& phrase_id, const shared_str& prev_phrase_id, int goodwil_level);
-	CPhrase*				AddPhrase_script	(LPCSTR text, LPCSTR phrase_id, LPCSTR prev_phrase_id, int goodwil_level){return AddPhrase(text, phrase_id, prev_phrase_id, goodwil_level);};
-	void					SetCaption	(LPCSTR str);
+	CPhrase*				AddPhrase			(pcstr text, const shared_str& phrase_id, const shared_str& prev_phrase_id, int goodwil_level);
+	CPhrase*				AddPhrase_script	(pcstr text, pcstr phrase_id, pcstr prev_phrase_id, int goodwil_level){return AddPhrase(text, phrase_id, prev_phrase_id, goodwil_level);};
+	void					SetCaption	(pcstr str);
 	void					SetPriority	(int val);
 
 protected:

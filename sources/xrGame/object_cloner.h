@@ -25,7 +25,7 @@ struct CCloner {
 		}
 	};
 
-	IC	static void clone(LPCSTR _1, LPCSTR &_2)
+	IC	static void clone(pcstr _1, pcstr& _2)
 	{
 		_2							= _1;
 	}
@@ -176,7 +176,7 @@ struct CCloner {
 	}
 };
 
-IC	void clone(LPCSTR p0, LPSTR &p1)
+IC	void clone(pcstr p0, LPSTR &p1)
 {
 	p1				= xr_strdup(p0);
 }

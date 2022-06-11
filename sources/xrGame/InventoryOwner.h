@@ -41,9 +41,9 @@ public:
 	virtual BOOL		net_Spawn				(CSE_Abstract* DC);
 	virtual void		net_Destroy				();
 			void		Init					();
-	virtual void		Load					(LPCSTR section);
+	virtual void		Load					(pcstr section);
 	virtual void		reinit					();
-	virtual void		reload					(LPCSTR section);
+	virtual void		reload					(pcstr section);
 	virtual void		OnEvent					(NET_Packet& P, u16 type);
 
 	//serialization
@@ -89,7 +89,7 @@ public:
 	virtual void	 LostPdaContact		(CInventoryOwner*);
 
 	//игровое имя 
-	virtual LPCSTR	Name        () const;
+	virtual pcstr	Name        () const;
 	u32					get_money		() const				{return m_money;}
 	void				set_money		(u32 amount, bool bSendEvent);
 protected:
@@ -201,9 +201,9 @@ private:
 
 public:
 	IC		CTradeParameters	&trade_parameters		() const;
-	virtual	LPCSTR				trade_section			() const;
+	virtual	pcstr				trade_section			() const;
 			float				deficit_factor			(const shared_str &section) const;
-			void				buy_supplies			(CInifile &ini_file, LPCSTR section);
+			void				buy_supplies			(CInifile &ini_file, pcstr section);
 			void				sell_useless_items		();
 	virtual	void				on_before_sell			(CInventoryItem *item) {}
 	virtual	void				on_before_buy			(CInventoryItem *item) {}

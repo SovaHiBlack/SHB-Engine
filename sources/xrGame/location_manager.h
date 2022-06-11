@@ -20,8 +20,8 @@ private:
 public:
 	IC				CLocationManager			(CGameObject *object);
 	virtual			~CLocationManager			();
-	virtual void	Load						(LPCSTR section);
-	virtual void	reload						(LPCSTR section);
+	virtual void	Load						(pcstr section);
+	virtual void	reload						(pcstr section);
 	IC		const GameGraph::TERRAIN_VECTOR &vertex_types	() const;
 };
 

@@ -21,7 +21,7 @@ extern	u32 			dbg_joints_num							;
 extern	u32 			dbg_islands_num							;
 extern	u32 			dbg_contacts_num						;
 extern	float			dbg_vel_collid_damage_to_display		;
-extern	LPCSTR			dbg_trace_object						;
+extern	pcstr			dbg_trace_object						;
 #ifdef DRAW_CONTACTS
 
 struct SPHContactDBGDraw
@@ -117,12 +117,12 @@ void DBG_DrawMatrix( const Fmatrix &m, float size, u8 a=255 );
 void DBG_DrawRotationX( const Fmatrix &m, float ang0, float ang1, float size, u32 ac, bool solid = false, u32 tessel = 7 );
 void DBG_DrawRotationY( const Fmatrix &m, float ang0, float ang1, float size, u32 ac, bool solid = false, u32 tessel = 7 );
 void DBG_DrawRotationZ( const Fmatrix &m, float ang0, float ang1, float size, u32 ac, bool solid = false, u32 tessel = 7 );
-void _cdecl DBG_OutText( LPCSTR s,... );
+void _cdecl DBG_OutText(pcstr s,... );
 void DBG_DrawFrameStart( );
 void PH_DBG_Render( );
 void PH_DBG_Clear( );
-LPCSTR PH_DBG_ObjectTrack( );
-void PH_DBG_SetTrackObject( LPCSTR obj );
+pcstr PH_DBG_ObjectTrack( );
+void PH_DBG_SetTrackObject(pcstr obj );
 
 
 

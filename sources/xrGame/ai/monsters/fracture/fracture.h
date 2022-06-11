@@ -11,7 +11,7 @@ public:
 					CFracture 			();
 	virtual			~CFracture 			();	
 
-	virtual void	Load				(LPCSTR section);
+	virtual void	Load				(pcstr section);
 	virtual void	CheckSpecParams		(u32 spec_params);
 
 	DECLARE_SCRIPT_REGISTER_FUNCTION

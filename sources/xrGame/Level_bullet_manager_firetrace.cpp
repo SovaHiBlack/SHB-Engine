@@ -247,7 +247,7 @@ void CBulletManager::FireShotmark (SBullet* bullet, const Fvector& vDir, const F
 		bullet->m_mtl_snd.play_at_pos(O, vEnd, 0);
 	}
 
-	LPCSTR ps_name = (!mtl_pair || mtl_pair->CollideParticles.empty())?
+	pcstr ps_name = (!mtl_pair || mtl_pair->CollideParticles.empty())?
 NULL:*mtl_pair->CollideParticles[::Random.randI(0,mtl_pair->CollideParticles.size())];
 
 	SGameMtl*	tgt_mtl = GMLib.GetMaterialByIdx(target_material);

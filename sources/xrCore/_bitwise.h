@@ -14,33 +14,57 @@
 #define fdRLE10	0x03ede5bdb     // 1/ln10
 
 // integer math on floats
-IC BOOL negative(const F32& f)	{ return (*((unsigned*)(&f))&fdSGN);	}
-IC BOOL positive(const F32& f)	{ return (*((unsigned*)(&f))&fdSGN)==0;	}
-IC void set_negative(F32& f)		{ (*(unsigned*)(&f)) |= fdSGN;			}
-IC void set_positive(F32& f)		{ (*(unsigned*)(&f)) &= ~fdSGN;			}
+IC BOOL negative(const F32& f)
+{
+	return (*((unsigned*)(&f)) & fdSGN);
+}
+IC BOOL positive(const F32& f)
+{
+	return (*((unsigned*)(&f)) & fdSGN) == 0;
+}
+IC void set_negative(F32& f)
+{
+	(*(unsigned*)(&f)) |= fdSGN;
+}
+IC void set_positive(F32& f)
+{
+	(*(unsigned*)(&f)) &= ~fdSGN;
+}
 
 /*
  * Here are a few nice tricks for 2's complement based machines
  * that I discovered a few months ago.
  */
-IC	int		btwLowestBitMask(int v)		{	return (v & -v);	}
-IC	u32		btwLowestBitMask(u32 x)		{   return x & ~(x-1);	}
+IC	int		btwLowestBitMask(int v)
+{
+	return (v & -v);
+}
+IC	u32		btwLowestBitMask(u32 x)
+{
+	return x & ~(x - 1);
+}
 
 /* Ok, so now we are cooking on gass. Here we use this function for some */
 /* rather useful utility functions */
-IC	bool	btwIsPow2(int v)			{ return (btwLowestBitMask(v) == v); }
-IC	bool	btwIsPow2(u32 v)			{ return (btwLowestBitMask(v) == v); }
+IC	bool	btwIsPow2(int v)
+{
+	return (btwLowestBitMask(v) == v);
+}
+IC	bool	btwIsPow2(u32 v)
+{
+	return (btwLowestBitMask(v) == v);
+}
 
 IC	int		btwPow2_Ceil(int v)
 {
 	int i = btwLowestBitMask(v);
-	while(i < v) i <<= 1;
+	while (i < v) i <<= 1;
 	return i;
 }
 IC	u32		btwPow2_Ceil(u32 v)
 {
 	u32 i = btwLowestBitMask(v);
-	while(i < v) i <<= 1;
+	while (i < v) i <<= 1;
 	return i;
 }
 
@@ -65,83 +89,83 @@ IC	u32	btwCount1(u32 v)
 
 IC	u64	btwCount1(u64 v)
 {
-	return btwCount1(u32(v&u32(-1)))+btwCount1(u32(v>>u64(32)));
+	return btwCount1(u32(v & u32(-1))) + btwCount1(u32(v >> u64(32)));
 }
 
 
-ICF int iFloor (F32 x)
+ICF int iFloor(F32 x)
 {
-    int a			= *(const int*)(&x);
-    int exponent	= (127 + 31) - ((a >> 23) & 0xFF);
-    int r			= (((u32)(a) << 8) | (1U << 31)) >> exponent;
-    exponent		+= 31-127;
-    {
-        int imask	=	(!(((( (1<<(exponent)))-1)>>8)&a));
-        exponent	-=	(31-127)+32;
-        exponent	>>=	31;
-        a			>>=	31;
-        r			-=	(imask&a);
-        r			&=	exponent;
-        r			^=	a;
-    }
-    return r;
+	int a = *(const int*)(&x);
+	int exponent = (127 + 31) - ((a >> 23) & 0xFF);
+	int r = (((u32)(a) << 8) | (1U << 31)) >> exponent;
+	exponent += 31 - 127;
+	{
+		int imask = (!(((((1 << (exponent))) - 1) >> 8) & a));
+		exponent -= (31 - 127) + 32;
+		exponent >>= 31;
+		a >>= 31;
+		r -= (imask & a);
+		r &= exponent;
+		r ^= a;
+	}
+	return r;
 }
 
 /* intCeil() is a non-interesting variant, since effectively
    ceil(x) == -floor(-x)
 */
-ICF int iCeil (F32 x)
+ICF int iCeil(F32 x)
 {
-    int a			= (*(const int*)(&x));
-    int exponent	= (127 + 31) - ((a >> 23) & 0xFF);
-    int r			= (((u32)(a) << 8) | (1U << 31)) >> exponent;
-    exponent		+= 31-127;
-    {
-        int imask	=	(!(((( (1<<(exponent)))-1)>>8)&a));
-        exponent	-=	(31-127)+32;
-        exponent	>>=	31;
-        a			=	~((a-1)>>31);		/* change sign */
-        r			-=	(imask&a);
-        r			&=	exponent;
-        r			^=	a;
-        r			=	-r;                 /* change sign */
-    }
-    return r;								/* r = (int)(ceil(f)) */
+	int a = (*(const int*)(&x));
+	int exponent = (127 + 31) - ((a >> 23) & 0xFF);
+	int r = (((u32)(a) << 8) | (1U << 31)) >> exponent;
+	exponent += 31 - 127;
+	{
+		int imask = (!(((((1 << (exponent))) - 1) >> 8) & a));
+		exponent -= (31 - 127) + 32;
+		exponent >>= 31;
+		a = ~((a - 1) >> 31);		/* change sign */
+		r -= (imask & a);
+		r &= exponent;
+		r ^= a;
+		r = -r;                 /* change sign */
+	}
+	return r;								/* r = (int)(ceil(f)) */
 }
 
 // Validity checks
-IC bool fis_gremlin		( const F32& f )
+IC bool fis_gremlin(const F32& f)
 {
-	u8		value = u8(((*(int*)&f & 0x7f800000)>>23)-0x20);
-    return	value > 0xc0;
+	u8		value = u8(((*(int*)&f & 0x7f800000) >> 23) - 0x20);
+	return	value > 0xc0;
 }
-IC bool fis_denormal	( const F32& f )
+IC bool fis_denormal(const F32& f)
 {
-  return !(*(int*)&f & 0x7f800000);
+	return !(*(int*)&f & 0x7f800000);
 }
 
 // Approximated calculations
-IC F32 apx_InvSqrt( const F32& n )
+IC F32 apx_InvSqrt(const F32& n)
 {
-    long tmp	= (long(0xBE800000) - *(long*)&n) >> 1;
-	F32 y		= *(F32*)&tmp;
-    return y * (1.47f - 0.47f * n * y * y);
+	long tmp = (long(0xBE800000) - *(long*)&n) >> 1;
+	F32 y = *(F32*)&tmp;
+	return y * (1.47f - 0.47f * n * y * y);
 }
 // Only for [0..1] (positive) range 
-IC F32 apx_asin	(const F32 x)
+IC F32 apx_asin(const F32 x)
 {
 	const F32 c1 = 0.892399f;
 	const F32 c3 = 1.693204f;
-	const F32 c5 =-3.853735f;
+	const F32 c5 = -3.853735f;
 	const F32 c7 = 2.838933f;
-	
+
 	const F32 x2 = x * x;
 	const F32 d = x * (c1 + x2 * (c3 + x2 * (c5 + x2 * c7)));
-	
+
 	return d;
 }
 // Only for [0..1] (positive) range 
-IC F32 apx_acos	(const F32 x)
+IC F32 apx_acos(const F32 x)
 {
 	return PI_DIV_2 - apx_asin(x);
 }

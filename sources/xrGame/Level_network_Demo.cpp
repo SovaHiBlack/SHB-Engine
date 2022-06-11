@@ -160,7 +160,7 @@ void						CLevel::Demo_Clear				()
 	};
 };
 
-void						CLevel::Demo_Load				(LPCSTR DemoName)
+void						CLevel::Demo_Load				(pcstr DemoName)
 {	
 	string_path			DemoFileName;
 	FS.update_path      (DemoFileName,"$logs$",DemoName);
@@ -227,7 +227,7 @@ void						CLevel::Demo_Load				(LPCSTR DemoName)
 }
 
 static long lFileSize = 0;
-void						CLevel::Demo_Load_toFrame	(LPCSTR FileName, DWORD toFrame, long &ofs)
+void						CLevel::Demo_Load_toFrame	(pcstr FileName, DWORD toFrame, long &ofs)
 {
 	if (ofs == 1) g_dwDemoDeltaFrame = 1;
 

@@ -72,7 +72,7 @@ CMovementManager::~CMovementManager	()
 	xr_delete					(m_detail_path_builder		);
 }
 
-void CMovementManager::Load			(LPCSTR section)
+void CMovementManager::Load			(pcstr section)
 {
 	locations().Load			(section);
 }
@@ -97,7 +97,7 @@ void CMovementManager::reinit		()
 	game_selector().set_dest_path	(game_path().m_path);
 }
 
-void CMovementManager::reload		(LPCSTR section)
+void CMovementManager::reload		(pcstr section)
 {
 	locations().reload				(section);
 }

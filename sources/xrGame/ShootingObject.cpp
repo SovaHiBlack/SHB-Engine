@@ -57,7 +57,7 @@ void CShootingObject::reinit()
 	m_pFlameParticles	= NULL;
 }
 
-void CShootingObject::Load	(LPCSTR section)
+void CShootingObject::Load	(pcstr section)
 {
 	if(pSettings->line_exist(section,"light_disabled"))
 	{
@@ -89,7 +89,7 @@ void CShootingObject::Light_Destroy		()
 	light_render.destroy		();
 }
 
-void CShootingObject::LoadFireParams	(LPCSTR section, LPCSTR prefix)
+void CShootingObject::LoadFireParams	(pcstr section, pcstr prefix)
 {
 	string256	full_name;
 	string32	buffer;
@@ -132,7 +132,7 @@ void CShootingObject::LoadFireParams	(LPCSTR section, LPCSTR prefix)
 	}
 }
 
-void CShootingObject::LoadLights		(LPCSTR section, LPCSTR prefix)
+void CShootingObject::LoadLights		(pcstr section, pcstr prefix)
 {
 	string256				full_name;
 	// light
@@ -182,7 +182,7 @@ void CShootingObject::Light_Render	(const Fvector& P)
 // Particles
 //////////////////////////////////////////////////////////////////////////
 
-void CShootingObject::StartParticles (CParticlesObject*& pParticles, LPCSTR particles_name, 
+void CShootingObject::StartParticles (CParticlesObject*& pParticles, pcstr particles_name,
 									 const Fvector& pos, const  Fvector& vel, bool auto_remove_flag)
 {
 	if(!particles_name) return;
@@ -226,7 +226,7 @@ void CShootingObject::UpdateParticles (CParticlesObject*& pParticles,
 }
 
 
-void CShootingObject::LoadShellParticles (LPCSTR section, LPCSTR prefix)
+void CShootingObject::LoadShellParticles (pcstr section, pcstr prefix)
 {
 	string256 full_name;
 	strconcat(sizeof(full_name),full_name, prefix, "shell_particles");
@@ -238,7 +238,7 @@ void CShootingObject::LoadShellParticles (LPCSTR section, LPCSTR prefix)
 	}
 }
 
-void CShootingObject::LoadFlameParticles (LPCSTR section, LPCSTR prefix)
+void CShootingObject::LoadFlameParticles (pcstr section, pcstr prefix)
 {
 	string256 full_name;
 

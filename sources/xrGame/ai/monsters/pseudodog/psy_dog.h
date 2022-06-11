@@ -28,10 +28,10 @@ public:
 						CPsyDog				();
 		virtual			~CPsyDog			();
 
-		virtual void	Load				(LPCSTR section);
+		virtual void	Load				(pcstr section);
 		virtual BOOL	net_Spawn			(CSE_Abstract *dc);
 		virtual void	reinit				();
-		virtual void	reload				(LPCSTR section);
+		virtual void	reload				(pcstr section);
 		virtual void	net_Destroy			();
 		virtual void	Die					(CObject* who);
 
@@ -75,8 +75,8 @@ class CPsyDogPhantom : public CAI_PseudoDog {
 
 	SAttackEffector m_appear_effector;
 
-	LPCSTR			m_particles_appear;
-	LPCSTR			m_particles_disappear;
+	pcstr			m_particles_appear;
+	pcstr			m_particles_disappear;
 
 	u16				m_parent_id;
 		

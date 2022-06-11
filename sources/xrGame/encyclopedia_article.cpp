@@ -51,7 +51,7 @@ void CEncyclopediaArticle::Load	(shared_str  id)
 }
 
 
-void CEncyclopediaArticle::load_shared	(LPCSTR)
+void CEncyclopediaArticle::load_shared	(pcstr)
 {
 	const ITEM_DATA& item_data = *id_to_index::GetById(m_ArticleId);
 
@@ -69,8 +69,7 @@ void CEncyclopediaArticle::load_shared	(LPCSTR)
 	//группа
 	data()->group = pXML->ReadAttrib(pNode, "group", "");
 	//секция ltx, откуда читать данные
-	LPCSTR ltx = pXML->Read(pNode, "ltx", 0, NULL);
-
+	pcstr ltx = pXML->Read(pNode, "ltx", 0, NULL);
 
 	if(ltx)
 	{

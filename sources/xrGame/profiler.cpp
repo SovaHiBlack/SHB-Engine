@@ -11,7 +11,7 @@
 #include "..\XR_3DA\gamefont.h"
 
 CProfiler	*g_profiler			= 0;
-LPCSTR		indent				= "  ";
+pcstr		indent				= "  ";
 char		white_character		= '.';
 
 struct CProfilePortionPredicate {
@@ -29,9 +29,10 @@ CProfiler::CProfiler				()
 CProfiler::~CProfiler				()
 { }
 
-IC	u32 compute_string_length		(LPCSTR str)
+IC	u32 compute_string_length		(pcstr str)
 {
-	LPCSTR						i, j = str;
+	pcstr						i;
+	pcstr						j = str;
 	u32							count = 0;
 	while ((i = strchr(j,'/')) != 0) {
 		j = i					= i + 1;
@@ -40,10 +41,11 @@ IC	u32 compute_string_length		(LPCSTR str)
 	return						(count*xr_strlen(indent) + xr_strlen(j));
 }
 
-IC	void CProfiler::convert_string	(LPCSTR str, shared_str &out, u32 max_string_size)
+IC	void CProfiler::convert_string	(pcstr str, shared_str &out, u32 max_string_size)
 {
 	string256					m_temp;
-	LPCSTR						i, j = str;
+	pcstr						i;
+	pcstr						j = str;
 	u32							count = 0;
 	while ((i = strchr(j,'/')) != 0) {
 		j = i					= i + 1;
@@ -60,7 +62,7 @@ IC	void CProfiler::convert_string	(LPCSTR str, shared_str &out, u32 max_string_s
 	out							= m_temp;
 }
 
-void CProfiler::setup_timer			(LPCSTR timer_id, const u64 &timer_time, const u32 &call_count)
+void CProfiler::setup_timer			(pcstr timer_id, const u64 &timer_time, const u32 &call_count)
 {
 	string256					m_temp;
 	float						_time = float(timer_time)*1000.f/CPU::qpc_freq;

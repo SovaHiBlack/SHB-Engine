@@ -21,7 +21,7 @@ void DestroyPSs(PSVec& lst)
 //		Device.Resources->Delete(*it);
 }
 
-void CreateSounds(SoundVec& lst, LPCSTR buf)
+void CreateSounds(SoundVec& lst, pcstr buf)
 {
 	string128 tmp;
 	int cnt			=	_GetItemCount(buf);	R_ASSERT(cnt<=GAMEMTL_SUBITEM_COUNT);
@@ -30,7 +30,7 @@ void CreateSounds(SoundVec& lst, LPCSTR buf)
 		lst[k].create	(_GetItem(buf,k,tmp),st_Effect,sg_SourceType);
 }
 
-void CreateMarks(ShaderVec& lst, LPCSTR buf)
+void CreateMarks(ShaderVec& lst, pcstr buf)
 {
 	string256	tmp;
 	int cnt		=_GetItemCount(buf);	R_ASSERT(cnt<=GAMEMTL_SUBITEM_COUNT);
@@ -42,7 +42,7 @@ void CreateMarks(ShaderVec& lst, LPCSTR buf)
 	}
 }
 
-void CreatePSs(PSVec& lst, LPCSTR buf)
+void CreatePSs(PSVec& lst, pcstr buf)
 {
 	string256 tmp;
 	int cnt=_GetItemCount(buf);	R_ASSERT(cnt<=GAMEMTL_SUBITEM_COUNT);

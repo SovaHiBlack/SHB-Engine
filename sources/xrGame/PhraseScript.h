@@ -23,13 +23,13 @@ public:
 	virtual void Load			(CUIXml* ui_xml, XML_NODE* phrase_node);
 
 	//вызов с одним параметром (info_portion)
-	virtual bool				Precondition	(const CGameObject* pSpeaker, LPCSTR dialog_id, LPCSTR phrase_id) const;
-	virtual void				Action			(const CGameObject* pSpeaker, LPCSTR dialog_id, LPCSTR phrase_id) const;
+	virtual bool				Precondition	(const CGameObject* pSpeaker, pcstr dialog_id, pcstr phrase_id) const;
+	virtual void				Action			(const CGameObject* pSpeaker, pcstr dialog_id, pcstr phrase_id) const;
 	//вызов с двум€ параметрами (dialog, phrase)
-	virtual bool				Precondition	(const CGameObject* pSpeaker1, const CGameObject* pSpeaker2, LPCSTR dialog_id, LPCSTR phrase_id, LPCSTR next_phrase_id) const;
-	virtual void				Action			(const CGameObject* pSpeaker1, const CGameObject* pSpeaker2, LPCSTR dialog_id, LPCSTR phrase_id) const;
+	virtual bool				Precondition	(const CGameObject* pSpeaker1, const CGameObject* pSpeaker2, pcstr dialog_id, pcstr phrase_id, pcstr next_phrase_id) const;
+	virtual void				Action			(const CGameObject* pSpeaker1, const CGameObject* pSpeaker2, pcstr dialog_id, pcstr phrase_id) const;
 	//текст из скриптовой функции
-//	virtual LPCSTR Text			(LPCSTR original_text, const CGameObject* pSpeaker1, const CGameObject* pSpeaker2, LPCSTR dialog_id, int phrase_num) const;
+//	virtual LPCSTR Text			(pcstr original_text, const CGameObject* pSpeaker1, const CGameObject* pSpeaker2, pcstr dialog_id, int phrase_num) const;
 //	virtual bool   HasText		() const {return *m_sScriptTextFunc!=NULL;}
 
 
@@ -40,16 +40,16 @@ public:
 	virtual const ACTION_NAME_VECTOR& Actions() const {return m_ScriptActions;}
 
 
-			void				AddPrecondition	(LPCSTR str);
-			void				AddAction		(LPCSTR str);
-			void				AddHasInfo		(LPCSTR str);
-			void				AddDontHasInfo	(LPCSTR str);
-			void				AddGiveInfo		(LPCSTR str);
-			void				AddDisableInfo	(LPCSTR str);
+			void				AddPrecondition	(pcstr str);
+			void				AddAction		(pcstr str);
+			void				AddHasInfo		(pcstr str);
+			void				AddDontHasInfo	(pcstr str);
+			void				AddGiveInfo		(pcstr str);
+			void				AddDisableInfo	(pcstr str);
 protected:
 	//загрузка содержани€ последовательности тагов в контейнер строк 
 	template<class T> 
-		void					LoadSequence		(CUIXml* ui_xml, XML_NODE* phrase_node, LPCSTR tag, T&  str_vector);
+		void					LoadSequence		(CUIXml* ui_xml, XML_NODE* phrase_node, pcstr tag, T&  str_vector);
 
 	//манипул€ции с информацией во врем€ вызовов Precondition и Action 
 	virtual bool				CheckInfo		(const CInventoryOwner* pOwner) const;

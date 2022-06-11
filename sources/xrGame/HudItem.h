@@ -23,7 +23,7 @@ private:
 	u32				m_state;
 	u32				m_nextState;
 public:
-	virtual void	Load				(LPCSTR section);
+	virtual void	Load				(pcstr section);
 	virtual CHudItem*cast_hud_item		()	 { return this; }
 
 
@@ -90,7 +90,7 @@ public:
 
 
 	virtual	void	UpdateXForm			() = 0;
-	void					animGet		(MotionSVec& lst, LPCSTR prefix);
+	void					animGet		(MotionSVec& lst, pcstr prefix);
 
 	CWeaponHUD*		GetHUD				() {return m_pHUD;}
 

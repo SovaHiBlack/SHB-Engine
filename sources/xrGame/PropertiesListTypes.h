@@ -221,7 +221,7 @@ public:
     IC PropValueVec&	Values			(){return values;}
     IC PropValue*		GetFrontValue	(){VERIFY(!values.empty()); return values.front(); };
     IC EPropType		Type			(){return type;}
-	IC LPCSTR			Key				(){return key.c_str();}
+	IC pcstr			Key				(){return key.c_str();}
     IC void				Enable			(BOOL val){m_Flags.set(flDisabled,!val);}
     IC BOOL				Enabled			(){return !m_Flags.is(flDisabled);}
 	IC void				OnChange		()
@@ -377,7 +377,7 @@ public:
     {
         return (0==xr_strcmp(value,((CTextValue*)val)->value));
     }
-    bool				ApplyValue		(LPCSTR val)
+    bool				ApplyValue		(pcstr val)
     {
         if (0!=xr_strcmp(value,val)){
             strcpy		(value,val);
@@ -402,9 +402,9 @@ public:
     TOnDrawThumbnail	OnDrawThumbnailEvent;
     void*				m_FillParam;
 // utils
-    void				AppendChooseItem	(LPCSTR name, LPCSTR hint){VERIFY(m_Items); m_Items->push_back(SChooseItem(name,hint));}
+    void				AppendChooseItem	(pcstr name, pcstr hint){VERIFY(m_Items); m_Items->push_back(SChooseItem(name,hint));}
 public:
-						ChooseValue			(shared_str* val, u32 cid, LPCSTR path, void* param, u32 sub_item_count, u32 choose_flags):RTextValue(val),m_ChooseID(cid),m_StartPath(path),subitem(sub_item_count),m_Items(0),m_FillParam(param),OnChooseFillEvent(0),OnDrawThumbnailEvent(0),m_ChooseFlags(choose_flags){}
+						ChooseValue			(shared_str* val, u32 cid, pcstr path, void* param, u32 sub_item_count, u32 choose_flags):RTextValue(val),m_ChooseID(cid),m_StartPath(path),subitem(sub_item_count),m_Items(0),m_FillParam(param),OnChooseFillEvent(0),OnDrawThumbnailEvent(0),m_ChooseFlags(choose_flags){}
 };
 
 typedef CustomValue<BOOL>		BOOLValue;
@@ -516,7 +516,7 @@ public:
     };
     Flags32				m_Flags;
 public:
-						FlagValueCustom	(u32 mask, LPCSTR c0, LPCSTR c1)
+						FlagValueCustom	(u32 mask, pcstr c0, pcstr c1)
     {
         caption[0]		= c0;
         caption[1]		= c1;
@@ -535,7 +535,7 @@ public:
 public:
     FLAG_TYPE			mask;
 public:
-						FlagValue		(T* val, FLAG_TYPE _mask, LPCSTR c0, LPCSTR c1, u32 flags):CustomValue<T>(val),FlagValueCustom(flags,c0,c1),mask(_mask){}
+						FlagValue		(T* val, FLAG_TYPE _mask, pcstr c0, pcstr c1, u32 flags):CustomValue<T>(val),FlagValueCustom(flags,c0,c1),mask(_mask){}
     virtual xr_string	GetDrawText		(TOnDrawTextEvent OnDrawText)
     {	
         xr_string		draw_val;

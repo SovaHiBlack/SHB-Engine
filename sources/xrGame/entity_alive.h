@@ -34,9 +34,9 @@ public:
 
 	// Core events
 	virtual DLL_Pure		*_construct				();
-	virtual void			Load					(LPCSTR section);
+	virtual void			Load					(pcstr section);
 	virtual void			reinit					();
-	virtual void			reload					(LPCSTR section);
+	virtual void			reload					(pcstr section);
 
 	//object serialization
 	virtual void			save					(NET_Packet &output_packet);
@@ -92,7 +92,7 @@ protected:
 
 	virtual void				StartFireParticles(CWound* pWound);
 	virtual void				UpdateFireParticles();
-	virtual void				LoadFireParticles(LPCSTR section);
+	virtual void				LoadFireParticles(pcstr section);
 public:	
 	static  void				UnloadFireParticles	();
 protected:
@@ -103,7 +103,7 @@ protected:
 
 
 	virtual void				BloodyWallmarks			(float P, const Fvector &dir, s16 element, const Fvector& position_in_object_space);
-	static  void				LoadBloodyWallmarks		(LPCSTR section);
+	static  void				LoadBloodyWallmarks		(pcstr section);
 public:	
 	static  void				UnloadBloodyWallmarks	();
 

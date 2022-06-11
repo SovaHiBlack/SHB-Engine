@@ -31,7 +31,7 @@ public:
 				~CMonsterMorale		(){}
 	
 		void	init_external		(CBaseMonster *obj);
-		void	load				(LPCSTR section);
+		void	load				(pcstr section);
 		void	reinit				();
 
 		void	on_hit				();

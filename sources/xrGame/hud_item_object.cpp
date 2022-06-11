@@ -24,7 +24,7 @@ DLL_Pure *CHudItemObject::_construct	()
 	return						(this);
 }
 
-void CHudItemObject::Load				(LPCSTR section)
+void CHudItemObject::Load				(pcstr section)
 {
 	CInventoryItemObject::Load	(section);
 	CHudItem::Load				(section);

@@ -25,7 +25,7 @@ CZombie::~CZombie()
 	xr_delete		(StateMan);
 }
 
-void CZombie::Load(LPCSTR section)
+void CZombie::Load(pcstr section)
 {
 	inherited::Load	(section);
 
@@ -86,7 +86,7 @@ void CZombie::reinit()
 	active_triple_idx		= u8(-1);
 }
 
-void CZombie::reload(LPCSTR section)
+void CZombie::reload(pcstr section)
 {
 	inherited::reload(section);
 

@@ -30,9 +30,9 @@ private:
 public:
 					CSightManager						(CAI_Stalker *object);
 	virtual			~CSightManager						();
-	virtual	void	Load								(LPCSTR section);
+	virtual	void	Load								(pcstr section);
 	virtual	void	reinit								();
-	virtual	void	reload								(LPCSTR section);
+	virtual	void	reload								(pcstr section);
 			void	remove_links						(CObject *object);
 			void	Exec_Look							(float dt);
 			bool	bfIf_I_SeePosition					(Fvector tPosition) const;

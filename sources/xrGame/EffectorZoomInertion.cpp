@@ -24,7 +24,7 @@ CEffectorZoomInertion::~CEffectorZoomInertion	()
 
 }
 
-void CEffectorZoomInertion::LoadParams			(LPCSTR Section, LPCSTR Prefix)
+void CEffectorZoomInertion::LoadParams			(pcstr Section, pcstr Prefix)
 {
 	string256 full_name;
 	m_fCameraMoveEpsilon	= READ_IF_EXISTS(pSettings, r_float, Section, strconcat(sizeof(full_name),full_name, Prefix, "camera_move_epsilon"),	pSettings->r_float(EFFECTOR_ZOOM_SECTION, "camera_move_epsilon"));

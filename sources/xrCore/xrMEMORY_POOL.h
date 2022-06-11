@@ -11,31 +11,40 @@ private:
 	u32					s_count;		// element count = [s_sector/s_element]
 	u32					s_offset;		// header size
 	u32					block_count;	// block count
-	u8*					list;
+	u8* list;
 private:
-	ICF void**			access			(void* P)	{ return (void**) ((void*)(P));	}
-	void				block_create	();
-public:
-	void				_initialize		(u32 _element, u32 _sector, u32 _header);
-
-	ICF u32				get_block_count	()	{ return block_count; }
-	ICF u32				get_element		()	{ return s_element; }
-
-	ICF void*			create			()
+	ICF pvoid* access(pvoid P)
 	{
-		cs.Enter		();
-		if (0==list)	block_create();
+		return (pvoid*)((pvoid)(P));
+	}
+	void				block_create();
+public:
+	void				_initialize(u32 _element, u32 _sector, u32 _header);
 
-		void* E			= list;
-		list			= (u8*)*access(list);
-		cs.Leave		();
+	ICF u32				get_block_count()
+	{
+		return block_count;
+	}
+	ICF u32				get_element()
+	{
+		return s_element;
+	}
+
+	ICF pvoid create()
+	{
+		cs.Enter();
+		if (0 == list)	block_create();
+
+		pvoid E = list;
+		list = (u8*)*access(list);
+		cs.Leave();
 		return			E;
 	}
-	ICF void			destroy			(void* &P)
+	ICF void			destroy(pvoid& P)
 	{
-		cs.Enter		();
-		*access(P)		= list;
-		list			= (u8*)P;
-		cs.Leave		();
+		cs.Enter();
+		*access(P) = list;
+		list = (u8*)P;
+		cs.Leave();
 	}
 };

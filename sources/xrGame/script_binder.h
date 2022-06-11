@@ -22,8 +22,8 @@ public:
 			void				init			();
 			void				clear			();
 	virtual void				reinit			();
-	virtual void				Load			(LPCSTR section);
-	virtual void				reload			(LPCSTR section);
+	virtual void				Load			(pcstr section);
+	virtual void				reload			(pcstr section);
 	virtual BOOL				net_Spawn		(CSE_Abstract* DC);
 	virtual void				net_Destroy		();
 	virtual void				shedule_Update	(u32 time_delta);

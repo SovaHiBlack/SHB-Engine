@@ -43,7 +43,7 @@ public:
 						CGamePersistent			();
 	virtual				~CGamePersistent		();
 
-	virtual void		Start					(LPCSTR op);
+	virtual void		Start					(pcstr op);
 	virtual void		Disconnect				();
 
 	virtual	void		OnAppActivate			();
@@ -65,7 +65,7 @@ public:
 	virtual bool		OnRenderPPUI_query		();
 	virtual void		OnRenderPPUI_main		();
 	virtual void		OnRenderPPUI_PP			();
-	virtual	void		LoadTitle				(LPCSTR str);
+	virtual	void		LoadTitle				(pcstr str);
 
 //	virtual bool		CanBePaused				();
 };

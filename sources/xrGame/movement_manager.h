@@ -193,9 +193,9 @@ public:
 
 					CMovementManager		(CCustomMonster *object);
 	virtual			~CMovementManager		();
-	virtual void	Load					(LPCSTR caSection);
+	virtual void	Load					(pcstr caSection);
 	virtual void	reinit					();
-	virtual void	reload					(LPCSTR caSection);
+	virtual void	reload					(pcstr caSection);
 	virtual BOOL	net_Spawn				(CSE_Abstract* data);
 	virtual void	net_Destroy				();
 	virtual	void	on_frame				(CPHMovementControl *movement_control, Fvector &dest_position);

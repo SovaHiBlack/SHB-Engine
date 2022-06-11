@@ -17,7 +17,7 @@ public:
 
 	virtual BOOL					net_Spawn			( CSE_Abstract* DC)																;
 	virtual void					net_Destroy			()																				;
-	virtual void					Load				(LPCSTR section)																;
+	virtual void					Load				(pcstr section)																;
 	virtual void					UpdateCL			( )																				;// Called each frame, so no need for dt
 	virtual void					shedule_Update		(u32 dt)																		;	//
 	virtual void					net_Save			(NET_Packet& P)																	;

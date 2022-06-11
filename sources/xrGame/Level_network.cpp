@@ -258,7 +258,7 @@ pureFrame*	g_pNetProcessor	= &NET_processor;
 
 const int ConnectionTimeOut = 60000; //1 min
 
-BOOL			CLevel::Connect2Server				(LPCSTR options)
+BOOL			CLevel::Connect2Server				(pcstr options)
 {
 	NET_Packet					P;
 	m_bConnectResultReceived	= false	;
@@ -450,7 +450,7 @@ void				CLevel::net_OnChangeSelfName			(NET_Packet* P)
 		strcpy_s(tmpstr, *m_caClientOptions);
 		*(strstr(tmpstr, "name=")+5) = 0;
 		strcat_s(tmpstr, NewName);
-		LPCSTR ptmp = strstr(strstr(*m_caClientOptions, "name="), "/");
+		pcstr ptmp = strstr(strstr(*m_caClientOptions, "name="), "/");
 		if (ptmp)
 			strcat_s(tmpstr, ptmp);
 		m_caClientOptions = tmpstr;

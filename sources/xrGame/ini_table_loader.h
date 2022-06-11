@@ -34,31 +34,31 @@ public:
 
 	ITEM_TABLE&			table			();
 	void				clear			();
-	void				set_table_params(LPCSTR sect, int width = -1) {table_sect = sect; table_width = width;}
+	void				set_table_params(pcstr sect, int width = -1) {table_sect = sect; table_width = width;}
 
 private:
 	ITEM_TABLE*			m_pTable;
-	LPCSTR				table_sect;
+	pcstr				table_sect;
 	//ширина таблицы, если -1 то таблица делается квадратной (ширина равна высоте)
 	int					table_width;
 
 	//перобразование из LPCSTR в T_ITEM
 
 	template <typename T_CONVERT_ITEM>
-        T_ITEM				convert			(LPCSTR)
+        T_ITEM				convert			(pcstr)
 	{
 		STATIC_CHECK(false, Specialization_for_convert_in_CIni_Table_not_found);
 		NODEFAULT;
 	}
 
 	template <>
-		T_ITEM				convert<int>		(LPCSTR str)
+		T_ITEM				convert<int>		(pcstr str)
 	{
 		return atoi(str);
 	}
 
 	template <>
-		T_ITEM				convert<float>		(LPCSTR str)
+		T_ITEM				convert<float>		(pcstr str)
 	{
 		return (float)atof(str);
 	}
@@ -71,7 +71,7 @@ typename CSIni_Table::ITEM_TABLE* CSIni_Table::m_pTable = NULL;
 
 //имя секции таблицы
 TEMPLATE_SPECIALIZATION
-LPCSTR CSIni_Table::table_sect = NULL;
+pcstr CSIni_Table::table_sect = NULL;
 TEMPLATE_SPECIALIZATION
 int CSIni_Table::table_width = -1;
 */

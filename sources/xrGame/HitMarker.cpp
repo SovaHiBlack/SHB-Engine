@@ -15,7 +15,7 @@ CHitMarker::CHitMarker()
 	InitShader		(pSettings->r_string("hud_hitmark","hit_mark_texture"));
 }
 
-void CHitMarker::InitShader	(LPCSTR tex_name)
+void CHitMarker::InitShader	(pcstr tex_name)
 {
 	hShader2.create	("hud\\default", tex_name);
 }

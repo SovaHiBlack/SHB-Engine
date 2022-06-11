@@ -28,7 +28,7 @@ CPsyDog::~CPsyDog()
 	xr_delete(m_aura);
 }
 
-void CPsyDog::Load(LPCSTR section)
+void CPsyDog::Load(pcstr section)
 {
 	inherited::Load(section);
 	
@@ -53,7 +53,7 @@ void CPsyDog::reinit()
 	m_time_last_phantom_appear = 0;
 }
 
-void CPsyDog::reload(LPCSTR section)
+void CPsyDog::reload(pcstr section)
 {
 	inherited::reload(section);
 }

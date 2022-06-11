@@ -35,12 +35,12 @@ public:
 
 public:
 	IC					CScriptParticleAction	();
-	IC					CScriptParticleAction	(LPCSTR caPartcileToRun, LPCSTR caBoneName, const CParticleParams &tParticleParams = CParticleParams(), bool bAutoRemove = false);
-	IC					CScriptParticleAction	(LPCSTR caPartcileToRun, const CParticleParams &tParticleParams = CParticleParams(), bool bAutoRemove = false);
+	IC					CScriptParticleAction	(pcstr caPartcileToRun, pcstr caBoneName, const CParticleParams &tParticleParams = CParticleParams(), bool bAutoRemove = false);
+	IC					CScriptParticleAction	(pcstr caPartcileToRun, const CParticleParams &tParticleParams = CParticleParams(), bool bAutoRemove = false);
 	virtual				~CScriptParticleAction	();
-			void		SetParticle				(LPCSTR caParticleToRun, bool bAutoRemove);
+			void		SetParticle				(pcstr caParticleToRun, bool bAutoRemove);
 	IC		void		SetPosition				(const Fvector &tPosition);
-	IC		void		SetBone					(LPCSTR caBoneName);
+	IC		void		SetBone					(pcstr caBoneName);
 	IC		void		SetAngles				(const Fvector &tAngleOffset);
 	IC		void		SetVelocity				(const Fvector &tVelocity);
 	IC		void		initialize				();

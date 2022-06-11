@@ -27,7 +27,7 @@ protected:
 	typedef CStalkerActionCombatBase inherited;
 
 public:
-						CStalkerActionGetItemToKill	(CAI_Stalker *object, LPCSTR action_name = "");
+						CStalkerActionGetItemToKill	(CAI_Stalker *object, pcstr action_name = "");
 	virtual void		initialize					();
 	virtual void		execute						();
 	virtual void		finalize					();
@@ -42,7 +42,7 @@ protected:
 	typedef CStalkerActionCombatBase inherited;
 
 public:
-						CStalkerActionMakeItemKilling	(CAI_Stalker *object, LPCSTR action_name = "");
+						CStalkerActionMakeItemKilling	(CAI_Stalker *object, pcstr action_name = "");
 	virtual void		initialize						();
 	virtual void		execute							();
 	virtual void		finalize						();
@@ -57,7 +57,7 @@ protected:
 	typedef CStalkerActionCombatBase inherited;
 
 public:
-						CStalkerActionRetreatFromEnemy	(CAI_Stalker *object, LPCSTR action_name = "");
+						CStalkerActionRetreatFromEnemy	(CAI_Stalker *object, pcstr action_name = "");
 	virtual void		initialize						();
 	virtual void		execute							();
 	virtual void		finalize						();
@@ -79,7 +79,7 @@ private:
 	bool							m_enable_enemy_change;
 
 public:
-						CStalkerActionGetReadyToKill(bool affect_properties, CAI_Stalker *object, LPCSTR action_name = "");
+						CStalkerActionGetReadyToKill(bool affect_properties, CAI_Stalker *object, pcstr action_name = "");
 	virtual void		initialize					();
 	virtual void		execute						();
 	virtual void		finalize					();
@@ -94,7 +94,7 @@ protected:
 	typedef CStalkerActionCombatBase inherited;
 
 public:
-						CStalkerActionKillEnemy		(CAI_Stalker *object, LPCSTR action_name = "");
+						CStalkerActionKillEnemy		(CAI_Stalker *object, pcstr action_name = "");
 	virtual void		initialize					();
 	virtual void		execute						();
 	virtual void		finalize					();
@@ -113,7 +113,7 @@ private:
 	MonsterSpace::EMovementType		m_movement_type;
 
 public:
-						CStalkerActionTakeCover		(CAI_Stalker *object, LPCSTR action_name = "");
+						CStalkerActionTakeCover		(CAI_Stalker *object, pcstr action_name = "");
 	virtual void		initialize						();
 	virtual void		execute							();
 	virtual void		finalize						();
@@ -132,7 +132,7 @@ private:
 	CRandom32			m_crouch_look_out_random;
 
 public:
-						CStalkerActionLookOut		(CAI_Stalker *object, LPCSTR action_name = "");
+						CStalkerActionLookOut		(CAI_Stalker *object, pcstr action_name = "");
 	virtual void		initialize					();
 	virtual void		execute						();
 	virtual void		finalize					();
@@ -147,7 +147,7 @@ protected:
 	typedef CStalkerActionCombatBase inherited;
 
 public:
-						CStalkerActionHoldPosition	(CAI_Stalker *object, LPCSTR action_name = "");
+						CStalkerActionHoldPosition	(CAI_Stalker *object, pcstr action_name = "");
 	virtual void		initialize					();
 	virtual void		execute						();
 	virtual void		finalize					();
@@ -162,7 +162,7 @@ protected:
 	typedef CStalkerActionCombatBase inherited;
 
 public:
-						CStalkerActionGetDistance	(CAI_Stalker *object, LPCSTR action_name = "");
+						CStalkerActionGetDistance	(CAI_Stalker *object, pcstr action_name = "");
 	virtual void		initialize					();
 	virtual void		execute						();
 	virtual void		finalize					();

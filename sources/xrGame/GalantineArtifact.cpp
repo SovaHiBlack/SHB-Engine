@@ -15,7 +15,7 @@ CGalantineArtefact::~CGalantineArtefact(void)
 {
 }
 
-void CGalantineArtefact::Load(LPCSTR section) 
+void CGalantineArtefact::Load(pcstr section)
 {
 	inherited::Load(section);
 }

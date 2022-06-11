@@ -14,7 +14,7 @@
 CScriptSoundAction::~CScriptSoundAction	()
 { }
 
-void CScriptSoundAction::SetSound			(LPCSTR caSoundToPlay)
+void CScriptSoundAction::SetSound			(pcstr caSoundToPlay)
 {
 	m_caSoundToPlay		= caSoundToPlay;
 	m_tGoalType			= eGoalTypeSoundAttached;

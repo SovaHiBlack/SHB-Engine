@@ -79,8 +79,8 @@ public:
 			bool	testFlag				(u16 f) const;
 			void	setFlag					(u16 f);
 			void	resetFlag				(u16 f);
-			LPCSTR	getName					(){return name;}
-			void	setName					(LPCSTR s){strcpy(name,s);}
+			pcstr	getName					(){return name;}
+			void	setName					(pcstr s){strcpy(name,s);}
 			void	SetGameID				(u16 NewID);
 			bool	HasOldID				(u16 ID);
 			bool	IsSkip					() const {return testFlag(GAME_PLAYER_FLAG_SKIP);}
@@ -152,9 +152,9 @@ public:
 				s32					Round					() const						{return m_round;};
 				u32					StartTime				() const						{return m_start_time;};
 	virtual		void				Create					(shared_str& options)				{};
-	virtual		LPCSTR				type_name				() const						{return "base game";};
+	virtual		pcstr				type_name				() const						{return "base game";};
 //for scripting enhancement
-	static		CLASS_ID			getCLASS_ID				(LPCSTR game_type_name, bool bServer);
+	static		CLASS_ID			getCLASS_ID				(pcstr game_type_name, bool bServer);
 	virtual		game_PlayerState*	createPlayerState()		{return xr_new<game_PlayerState>(); };
 
 //moved from game_sv_base (time routines)

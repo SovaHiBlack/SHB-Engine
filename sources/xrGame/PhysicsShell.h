@@ -93,7 +93,7 @@ public:
 	virtual		bool			get_ApplyByGravity						()																														= 0;
 
 	virtual		void			SetMaterial								(u16 m)																													= 0;
-	virtual		void			SetMaterial								(LPCSTR m)																												= 0;
+	virtual		void			SetMaterial								(pcstr m)																												= 0;
 	virtual		void			set_DisableParams						(const SAllDDOParams& params)																							= 0;
 	virtual		void			SetTransform							(const Fmatrix& m0)																										= 0;
 	virtual						~CPhysicsBase							()																																		{};
@@ -275,13 +275,13 @@ IC					CKinematics					*PKinematics								()																{return m_pKinemati
 	virtual			ELEMENT_STORAGE				&Elements									()																							= 0;
 	virtual			CPhysicsElement				*get_Element								(u16 bone_id)																				= 0;
 	virtual			CPhysicsElement				*get_Element								(const shared_str & bone_name)																= 0;
-	virtual			CPhysicsElement				*get_Element								(LPCSTR bone_name)																			= 0;
+	virtual			CPhysicsElement				*get_Element								(pcstr bone_name)																			= 0;
 	virtual			CPhysicsElement				*get_ElementByStoreOrder					(u16 num)																					= 0;
 	virtual			u16							get_ElementsNumber							()																							= 0;
 	virtual			CPHSynchronize				*get_ElementSync							(u16 element)																				= 0;
 	virtual			CPhysicsJoint				*get_Joint									(u16 bone_id)																				= 0;
 	virtual			CPhysicsJoint				*get_Joint									(const shared_str & bone_name)																= 0;
-	virtual			CPhysicsJoint				*get_Joint									(LPCSTR bone_name)																			= 0;
+	virtual			CPhysicsJoint				*get_Joint									(pcstr bone_name)																			= 0;
 	virtual			CPhysicsJoint				*get_JointByStoreOrder						(u16 num)																					= 0;
 	virtual			u16							get_JointsNumber							()																							= 0;
 	virtual			CODEGeom					*get_GeomByID								(u16 bone_id)																				= 0;
@@ -332,10 +332,10 @@ CPhysicsJoint*				P_create_Joint				(CPhysicsJoint::enumType type ,CPhysicsEleme
 CPhysicsElement*			P_create_Element			()																					;
 CPhysicsShell*				P_create_Shell				()																					;
 CPhysicsShell*				P_create_splited_Shell		()																					;
-CPhysicsShell*				P_build_Shell				(CGameObject* obj,bool not_active_state,LPCSTR	fixed_bones)						;
+CPhysicsShell*				P_build_Shell				(CGameObject* obj,bool not_active_state, pcstr	fixed_bones)						;
 CPhysicsShell*				P_build_Shell				(CGameObject* obj,bool not_active_state,U16Vec& fixed_bones)						;
-CPhysicsShell*				P_build_Shell				(CGameObject* obj,bool not_active_state,BONE_P_MAP* bone_map,LPCSTR	fixed_bones)	;
+CPhysicsShell*				P_build_Shell				(CGameObject* obj,bool not_active_state,BONE_P_MAP* bone_map, pcstr	fixed_bones)	;
 CPhysicsShell*				P_build_Shell				(CGameObject* obj,bool not_active_state,BONE_P_MAP* bone_map=NULL)					;
 CPhysicsShell*				P_build_SimpleShell			(CGameObject* obj,float mass,bool not_active_state)									;
 		void				ApplySpawnIniToPhysicShell	(CInifile* ini,CPhysicsShell* physics_shell,bool fixed)								;
-		void				fix_bones					(LPCSTR	fixed_bones,CPhysicsShell* shell )											;
+		void				fix_bones					(pcstr	fixed_bones,CPhysicsShell* shell )											;

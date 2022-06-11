@@ -88,9 +88,9 @@ void CEntityCondition::ClearWounds()
 	m_bIsBleeding = false;
 }
 
-void CEntityCondition::LoadCondition(LPCSTR entity_section)
+void CEntityCondition::LoadCondition(pcstr entity_section)
 {
-	LPCSTR				section = READ_IF_EXISTS(pSettings,r_string,entity_section,"condition_sect",entity_section);
+	pcstr				section = READ_IF_EXISTS(pSettings,r_string,entity_section,"condition_sect",entity_section);
 
 	m_change_v.load		(section,"");
 
@@ -535,7 +535,7 @@ void CEntityCondition::load	(IReader &input_packet)
 	}
 }
 
-void CEntityCondition::SConditionChangeV::load(LPCSTR sect, LPCSTR prefix)
+void CEntityCondition::SConditionChangeV::load(pcstr sect, pcstr prefix)
 {
 	string256				str;
 	m_fV_Circumspection		= 0.01f;

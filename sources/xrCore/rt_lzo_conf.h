@@ -39,7 +39,7 @@
    to change.
  */
 
-
+#pragma once
 #ifndef __LZO_CONF_H
 #define __LZO_CONF_H
 
@@ -232,14 +232,14 @@
 #endif
 
 #if defined(LZO_UNALIGNED_OK_2)
-  LZO_COMPILE_TIME_ASSERT_HEADER(sizeof(short) == 2)
-#endif
-#if defined(LZO_UNALIGNED_OK_4)
-  LZO_COMPILE_TIME_ASSERT_HEADER(sizeof(lzo_uint32) == 4)
-#elif defined(LZO_ALIGNED_OK_4)
-  LZO_COMPILE_TIME_ASSERT_HEADER(sizeof(lzo_uint32) == 4)
+	LZO_COMPILE_TIME_ASSERT_HEADER(sizeof(short) == 2)
 #endif
 
+#if defined(LZO_UNALIGNED_OK_4)
+	LZO_COMPILE_TIME_ASSERT_HEADER(sizeof(lzo_uint32) == 4)
+#elif defined(LZO_ALIGNED_OK_4)
+	LZO_COMPILE_TIME_ASSERT_HEADER(sizeof(lzo_uint32) == 4)
+#endif
 
 /* Fast memcpy that copies multiples of 8 byte chunks.
  * len is the number of bytes.
@@ -260,18 +260,11 @@
 /***********************************************************************
 // some globals
 ************************************************************************/
-
 __LZO_EXTERN_C int __lzo_init_done;
-__LZO_EXTERN_C const char __lzo_copyright[];
-LZO_EXTERN(const lzo_bytep) lzo_copyright(void);
 
-
-/***********************************************************************
-//
-************************************************************************/
+/* ======================================================== */
 
 #include "rt_lzo_ptr.h"
-
 
 /* Generate compressed data in a deterministic way.
  * This is fully portable, and compression can be faster as well.
@@ -282,24 +275,18 @@ LZO_EXTERN(const lzo_bytep) lzo_copyright(void);
  */
 #define LZO_DETERMINISTIC
 
-
 #define LZO_DICT_USE_PTR
+
 #if 0 && (LZO_ARCH_I086)
-#  undef LZO_DICT_USE_PTR
+#	undef LZO_DICT_USE_PTR
 #endif
 
 #if defined(LZO_DICT_USE_PTR)
-#  define lzo_dict_t    const lzo_bytep
-#  define lzo_dict_p    lzo_dict_t __LZO_MMODEL *
+#	define lzo_dict_t    const lzo_bytep
+#	define lzo_dict_p    lzo_dict_t __LZO_MMODEL *
 #else
-#  define lzo_dict_t    lzo_uint
-#  define lzo_dict_p    lzo_dict_t __LZO_MMODEL *
+#	define lzo_dict_t    lzo_uint
+#	define lzo_dict_p    lzo_dict_t __LZO_MMODEL *
 #endif
 
-
 #endif /* already included */
-
-/*
-vi:ts=4:et
-*/
-

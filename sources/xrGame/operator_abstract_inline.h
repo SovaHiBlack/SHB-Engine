@@ -39,7 +39,7 @@ CAbstractOperator::~COperatorAbstract	()
 }
 
 TEMPLATE_SPECIALIZATION
-void CAbstractOperator::Load						(LPCSTR section)
+void CAbstractOperator::Load						(pcstr section)
 {
 }
 

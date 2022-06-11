@@ -30,7 +30,7 @@ CMaterialManager::~CMaterialManager	()
 {
 }
 
-void CMaterialManager::Load			(LPCSTR section)
+void CMaterialManager::Load			(pcstr section)
 {
 	R_ASSERT3				(pSettings->line_exist(section,"material"),"Material not found in the section ",*(m_object->cNameSect()));
 	m_my_material_idx		= GMLib.GetMaterialIdx(pSettings->r_string(section,"material"));
@@ -56,7 +56,7 @@ void CMaterialManager::reinit		()
 	}
 }
 
-void CMaterialManager::reload		(LPCSTR section)
+void CMaterialManager::reload		(pcstr section)
 {
 }
 

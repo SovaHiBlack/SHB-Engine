@@ -15,7 +15,7 @@ public:
 	CMercuryBall(void);
 	virtual ~CMercuryBall(void);
 
-	virtual void Load				(LPCSTR section);
+	virtual void Load				(pcstr section);
 protected:
 	virtual void	UpdateCLChild	();
 

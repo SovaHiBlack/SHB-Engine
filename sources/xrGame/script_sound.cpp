@@ -13,7 +13,7 @@
 #include "ai_space.h"
 #include "script_engine.h"
 
-CScriptSound::CScriptSound				(LPCSTR caSoundName, ESoundTypes sound_type)
+CScriptSound::CScriptSound				(pcstr caSoundName, ESoundTypes sound_type)
 {
 	m_caSoundToPlay			= caSoundName;
 	string_path				l_caFileName;
@@ -86,8 +86,8 @@ void CScriptSound::script_register(lua_State* L)
 		.property("min_distance", &CScriptSound::GetMinDistance, &CScriptSound::SetMinDistance)
 		.property("max_distance", &CScriptSound::GetMaxDistance, &CScriptSound::SetMaxDistance)
 		.property("volume", &CScriptSound::GetVolume, &CScriptSound::SetVolume)
-		.def(constructor<LPCSTR>( ))
-		.def(constructor<LPCSTR, ESoundTypes>( ))
+		.def(constructor<pcstr>( ))
+		.def(constructor<pcstr, ESoundTypes>( ))
 		.def("get_position", &CScriptSound::GetPosition)
 		.def("set_position", &CScriptSound::SetPosition)
 		.def("play", (void (CScriptSound::*)(CScriptGameObject*))(&CScriptSound::Play))

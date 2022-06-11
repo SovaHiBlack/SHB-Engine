@@ -368,8 +368,7 @@ void CMainMenu::OnDeviceCreate()
 {
 }
 
-
-void CMainMenu::Screenshot(IRender_interface::ScreenshotMode mode, LPCSTR name)
+void CMainMenu::Screenshot(IRender_interface::ScreenshotMode mode, pcstr name)
 {
 	if(mode != IRender_interface::SM_FOR_GAMESAVE)
 	{
@@ -423,7 +422,7 @@ void CMainMenu::DestroyInternal(bool bForce)
 		xr_delete		(m_startDialog);
 }
 
-void CMainMenu::OnSessionTerminate(LPCSTR reason)
+void CMainMenu::OnSessionTerminate(pcstr reason)
 {
 	if ( m_NeedErrDialog == SessionTerminate && (Device.dwTimeGlobal - m_start_time) < 8000 )
 		return;
@@ -447,7 +446,7 @@ void CMainMenu::OnDeviceReset()
 		SetNeedVidRestart();
 }
 
-LPCSTR CMainMenu::GetGSVer()
+pcstr CMainMenu::GetGSVer()
 {
 	static string256	buff;
 	strcpy(buff, "SHB-Engine 1.0001");

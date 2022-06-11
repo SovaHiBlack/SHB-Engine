@@ -31,7 +31,7 @@ public:
 	virtual BOOL						net_Spawn						( CSE_Abstract* DC)																	;
 	virtual void						CreatePhysicsShell				(CSE_Abstract* e)																;
 	virtual void						net_Destroy						()																				;
-	virtual void						Load							(LPCSTR section)																;
+	virtual void						Load							(pcstr section)																;
 	virtual void						shedule_Update					(u32 dt)																		;	//
 	virtual void						UpdateCL						()																				;
 	virtual void						net_Save						(NET_Packet& P)																	;

@@ -303,7 +303,7 @@ CPhysicsElement* CPHShell::get_Element		(const shared_str & bone_name)
 	VERIFY(m_pKinematics);
 	return get_Element(m_pKinematics->LL_BoneID(bone_name));
 }
-CPhysicsElement* CPHShell::get_Element		(LPCSTR bone_name)
+CPhysicsElement* CPHShell::get_Element		(pcstr bone_name)
 {
 		return get_Element((const shared_str&)(bone_name));
 }
@@ -350,7 +350,7 @@ CPhysicsJoint* CPHShell::get_Joint(const shared_str &bone_name)
 	return get_Joint(m_pKinematics->LL_BoneID(bone_name));
 }
 
-CPhysicsJoint* CPHShell::get_Joint(LPCSTR bone_name)
+CPhysicsJoint* CPHShell::get_Joint(pcstr bone_name)
 {
 	return get_Joint((const shared_str&)bone_name);
 }
@@ -463,7 +463,7 @@ void CPHShell::SetPhObjectInElements()
 		(*i)->SetPhObjectInGeomData((CPHObject*)this);
 }
 
-void CPHShell::SetMaterial(LPCSTR m)
+void CPHShell::SetMaterial(pcstr m)
 {
 	ELEMENT_I i;
 	for(i=elements.begin();elements.end() != i;++i)

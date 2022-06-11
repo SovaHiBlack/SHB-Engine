@@ -86,7 +86,7 @@ IC	CObjectFactory::CLIENT_BASE_CLASS *CObjectFactory::client_object	(const CLASS
 	return				(item(clsid).client_object());
 }
 
-IC	CObjectFactory::SERVER_BASE_CLASS *CObjectFactory::server_object	(const CLASS_ID &clsid, LPCSTR section) const
+IC	CObjectFactory::SERVER_BASE_CLASS *CObjectFactory::server_object	(const CLASS_ID &clsid, pcstr section) const
 {
 	return				(item(clsid).server_object(section));
 }

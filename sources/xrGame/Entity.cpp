@@ -127,7 +127,7 @@ void	CEntity::Hit		(SHit* pHDS)
 	inherited::Hit(pHDS);
 }
 
-void CEntity::Load		(LPCSTR section)
+void CEntity::Load		(pcstr section)
 {
 	inherited::Load		(section);
 
@@ -279,8 +279,7 @@ void CEntity::reinit			()
 	inherited::reinit			();
 }
 
-
-void CEntity::reload			(LPCSTR section)
+void CEntity::reload			(pcstr section)
 {
 	inherited::reload			(section);
 	if (!use_simplified_visual())

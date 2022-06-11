@@ -70,7 +70,7 @@ CEntityAlive::~CEntityAlive()
 	xr_delete				(m_material_manager);
 }
 
-void CEntityAlive::Load		(LPCSTR section)
+void CEntityAlive::Load		(pcstr section)
 {
 	CEntity::Load					(section);
 	conditions().LoadCondition		(section);
@@ -89,7 +89,7 @@ void CEntityAlive::Load		(LPCSTR section)
 	monster_community->set	(pSettings->r_string(section, "species"));
 }
 
-void CEntityAlive::LoadBloodyWallmarks (LPCSTR section)
+void CEntityAlive::LoadBloodyWallmarks (pcstr section)
 {
 	VERIFY					(0==m_pBloodMarksVector);
 	VERIFY					(0==m_pBloodDropsVector);
@@ -98,7 +98,7 @@ void CEntityAlive::LoadBloodyWallmarks (LPCSTR section)
 	
 	//кровавые отметки на стенах
 	string256	tmp;
-	LPCSTR wallmarks_name = pSettings->r_string(section, "wallmarks"); 
+	pcstr wallmarks_name = pSettings->r_string(section, "wallmarks");
 	
 	int cnt		=_GetItemCount(wallmarks_name);
 	
@@ -145,12 +145,12 @@ void CEntityAlive::UnloadBloodyWallmarks	()
 	}
 }
 
-void CEntityAlive::LoadFireParticles(LPCSTR section)
+void CEntityAlive::LoadFireParticles(pcstr section)
 {
 	m_pFireParticlesVector = xr_new<STR_VECTOR>();
 
 	string256	tmp;
-	LPCSTR particles_name = pSettings->r_string(section, "fire_particles"); 
+	pcstr particles_name = pSettings->r_string(section, "fire_particles");
 
 	int cnt		=_GetItemCount(particles_name);
 
@@ -183,7 +183,7 @@ void CEntityAlive::reinit()
 	m_fIntelligence			= 25.f;
 }
 
-void CEntityAlive::reload		(LPCSTR section)
+void CEntityAlive::reload		(pcstr section)
 {
 	CEntity::reload			(section);
 //	CEntityCondition::reload(section);

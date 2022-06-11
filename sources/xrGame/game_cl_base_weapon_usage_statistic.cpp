@@ -40,7 +40,7 @@ void			HitData::net_load			(NET_Packet* P)
 	Completed = true;
 };
 
-Weapon_Statistic::Weapon_Statistic(LPCSTR Name)
+Weapon_Statistic::Weapon_Statistic(pcstr Name)
 {
 	WName = Name;
 	InvName = NULL;
@@ -102,7 +102,7 @@ void Weapon_Statistic::net_load(NET_Packet* P)
 	}
 };
 
-Player_Statistic::Player_Statistic(LPCSTR Name)
+Player_Statistic::Player_Statistic(pcstr Name)
 {
 	PName					= Name;
 	m_dwTotalShots			= 0;
@@ -176,7 +176,7 @@ WeaponUsageStatistic::~WeaponUsageStatistic()
 	m_dwLastRequestSenderID			= 0;
 };
 
-bool WeaponUsageStatistic::GetPlayer(LPCSTR PlayerName, PLAYERS_STATS_it& pPlayerI)
+bool WeaponUsageStatistic::GetPlayer(pcstr PlayerName, PLAYERS_STATS_it& pPlayerI)
 {
 	pPlayerI	= std::find(aPlayersStatistic.begin(), aPlayersStatistic.end(), PlayerName);
 	if (pPlayerI == aPlayersStatistic.end() || !((*pPlayerI) == PlayerName))
@@ -184,7 +184,7 @@ bool WeaponUsageStatistic::GetPlayer(LPCSTR PlayerName, PLAYERS_STATS_it& pPlaye
 	return true;
 }
 
-PLAYERS_STATS_it WeaponUsageStatistic::FindPlayer(LPCSTR PlayerName)
+PLAYERS_STATS_it WeaponUsageStatistic::FindPlayer(pcstr PlayerName)
 {
 	PLAYERS_STATS_it pPlayerI;
 	if (!GetPlayer(PlayerName, pPlayerI))
@@ -195,14 +195,14 @@ PLAYERS_STATS_it WeaponUsageStatistic::FindPlayer(LPCSTR PlayerName)
 	return pPlayerI;
 };
 
-void WeaponUsageStatistic::ChangePlayerName( LPCSTR from, LPCSTR to )
-{
-	if ( !CollectData() ) return;
-	PLAYERS_STATS_it pPlayerI = FindPlayer( from );
-	pPlayerI->PName = to;
-}
+//void WeaponUsageStatistic::ChangePlayerName(pcstr from, pcstr to )
+//{
+//	if ( !CollectData() ) return;
+//	PLAYERS_STATS_it pPlayerI = FindPlayer( from );
+//	pPlayerI->PName = to;
+//}
 
-WEAPON_STATS_it	Player_Statistic::FindPlayersWeapon	(LPCSTR WeaponName)
+WEAPON_STATS_it	Player_Statistic::FindPlayersWeapon	(pcstr WeaponName)
 {
 	WEAPON_STATS_it pWeaponI = std::find(aWeaponStats.begin(), aWeaponStats.end(), WeaponName);
 	if (pWeaponI == aWeaponStats.end() || !((*pWeaponI) == WeaponName))
@@ -245,7 +245,7 @@ void WeaponUsageStatistic::RemoveBullet(ABULLETS_it& Bullet_it)
 	ActiveBullets.pop_back();
 }
 
-void WeaponUsageStatistic::OnWeaponBought(game_PlayerState* ps, LPCSTR WeaponName)
+void WeaponUsageStatistic::OnWeaponBought(game_PlayerState* ps, pcstr WeaponName)
 {
 	if (!CollectData()) return;
 	if (!ps) return;
@@ -566,20 +566,20 @@ void WeaponUsageStatistic::OnExplosionKill(game_PlayerState* ps, const SHit& hit
 	WeaponIt->m_Hits.push_back(NewHit);
 }
 
-void WeaponUsageStatistic::OnPlayerKilled(game_PlayerState* ps)
-{
-	if (!CollectData())							return;
-	if (!ps)									return;
-	u32 dwAliveTime								= ps->DeathTime - ps->RespawnTime;
-	
-	m_dwTotalPlayersAliveTime[ps->team]			+= dwAliveTime;
-
-	Player_Statistic& PlayerStat				= *(FindPlayer(ps->getName()));
-	PlayerStat.m_dwTotalAliveTime[ps->team]		+= dwAliveTime;
-	
-	PlayerStat.m_dwTotalMoneyRound[ps->team]	+= PlayerStat.m_dwCurMoneyRoundDelta;
-	m_dwTotalPlayersMoneyRound[ps->team]		+= PlayerStat.m_dwCurMoneyRoundDelta;
-};
+//void WeaponUsageStatistic::OnPlayerKilled(game_PlayerState* ps)
+//{
+//	if (!CollectData())							return;
+//	if (!ps)									return;
+//	u32 dwAliveTime								= ps->DeathTime - ps->RespawnTime;
+//	
+//	m_dwTotalPlayersAliveTime[ps->team]			+= dwAliveTime;
+//
+//	Player_Statistic& PlayerStat				= *(FindPlayer(ps->getName()));
+//	PlayerStat.m_dwTotalAliveTime[ps->team]		+= dwAliveTime;
+//	
+//	PlayerStat.m_dwTotalMoneyRound[ps->team]	+= PlayerStat.m_dwCurMoneyRoundDelta;
+//	m_dwTotalPlayersMoneyRound[ps->team]		+= PlayerStat.m_dwCurMoneyRoundDelta;
+//};
 
 void WeaponUsageStatistic::Update()
 {

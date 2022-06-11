@@ -52,9 +52,9 @@ public:
 	u32				*m_dwaVariableTypes;
 	u32				*m_dwaVariableValues;
 
-					CPatternFunction	(LPCSTR caEFFileName, CEF_Storage *storage);
+					CPatternFunction	(pcstr caEFFileName, CEF_Storage *storage);
 	virtual			~CPatternFunction	();
 
-	virtual	void	vfLoadEF			(LPCSTR caEFFileName);
+	virtual	void	vfLoadEF			(pcstr caEFFileName);
 	virtual float	ffGetValue			();
 };

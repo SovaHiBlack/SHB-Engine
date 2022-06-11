@@ -54,10 +54,10 @@ public:
 			void						Init						()																											;
 			void						RespawnInit					()																											;
 			void						SetFatalHit					(const SHit& hit)																							;
-			void						Destroy						(u16 ref_id=u16(-1),LPCSTR section="ph_skeleton_object")													;	
+			void						Destroy						(u16 ref_id=u16(-1), pcstr section="ph_skeleton_object")													;
 			SHit						&FatalHit					(){return m_fatal_hit;}
-			void						Load						(LPCSTR section)																							;
-			void						Load						(CInifile* ini,LPCSTR section)																				;
+			void						Load						(pcstr section)																							;
+			void						Load						(CInifile* ini, pcstr section)																				;
 virtual		void						NotificateDestroy			(CPHDestroyableNotificate *dn)																				;
 			void						PhysicallyRemoveSelf		()																											;
 IC			bool						Destroyable					()										{return !!m_flags.test(fl_destroyable);}
@@ -65,7 +65,7 @@ IC			bool						Destroyed					()										{return !!m_flags.test(fl_destroyed);}
 IC			bool						CanDestroy					()										{return m_flags.test(fl_destroyable)&&!m_flags.test(fl_destroyed)	;}
 virtual		bool						CanRemoveObject				()																								{return true;}
 virtual		void						SheduleUpdate				(u32 dt)																									;
-virtual		void						GenSpawnReplace				(u16 source_id,LPCSTR section,shared_str visual_name)														;
+virtual		void						GenSpawnReplace				(u16 source_id, pcstr section,shared_str visual_name)														;
 virtual		void						InitServerObject			(CSE_Abstract*				D)																				;
 private:
 			void						NotificatePart				(CPHDestroyableNotificate *dn)																				;

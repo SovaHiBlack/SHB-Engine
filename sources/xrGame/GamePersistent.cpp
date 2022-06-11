@@ -56,7 +56,7 @@ CGamePersistent::CGamePersistent(void)
 	if (bDemoMode)
 	{
 		string256	fname;
-		LPCSTR		name	=	strstr(Core.Params,"-demomode ") + 10;
+		pcstr		name	=	strstr(Core.Params,"-demomode ") + 10;
 		sscanf				(name,"%s",fname);
 		R_ASSERT2			(fname[0],"Missing filename for 'demomode'");
 		Msg					("- playing in demo mode '%s'",fname);
@@ -137,7 +137,7 @@ void CGamePersistent::OnAppEnd	()
 
 }
 
-void CGamePersistent::Start		(LPCSTR op)
+void CGamePersistent::Start		(pcstr op)
 {
 	__super::Start				(op);
 	m_intro_event.bind			(this,&CGamePersistent::start_game_intro);
@@ -424,7 +424,7 @@ void CGamePersistent::OnEvent(EVENT E, u64 P1, u64 P2)
 	if(E==eDemoStart)
 	{
 		string256			cmd;
-		LPCSTR				demo	= LPCSTR(P1);
+		pcstr				demo	= pcstr(P1);
 		sprintf_s				(cmd,"demo_play %s",demo);
 		Console->Execute	(cmd);
 		xr_free				(demo);
@@ -482,7 +482,7 @@ void CGamePersistent::OnRenderPPUI_PP()
 }
 #include "string_table.h"
 #include "..\XR_3DA\x_ray.h"
-void CGamePersistent::LoadTitle(LPCSTR str)
+void CGamePersistent::LoadTitle(pcstr str)
 {
 	string512			buff;
 	sprintf_s				(buff, "%s...", CStringTable().translate(str).c_str());

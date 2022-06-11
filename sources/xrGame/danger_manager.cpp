@@ -88,7 +88,7 @@ CDangerManager::~CDangerManager		()
 {
 }
 
-void CDangerManager::Load			(LPCSTR section)
+void CDangerManager::Load			(pcstr section)
 {
 }
 
@@ -100,7 +100,7 @@ void CDangerManager::reinit			()
 	m_selected				= 0;
 }
 
-void CDangerManager::reload			(LPCSTR section)
+void CDangerManager::reload			(pcstr section)
 {
 }
 

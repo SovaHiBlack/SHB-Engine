@@ -12,11 +12,11 @@ public:
 	void		RestoreGlobals				();
 	void		CoverGlobals				();
 	void		Describe					(char* szRet, int nIndex, int szRet_size);
-	bool		Eval						(LPCSTR szCode, char* szRet, int szret_size);
-	bool		GetCalltip					(LPCSTR szWord, char *szCalltip, int sz_calltip);
+	bool		Eval						(pcstr szCode, char* szRet, int szret_size);
+	bool		GetCalltip					(pcstr szWord, char *szCalltip, int sz_calltip);
 	void		DrawGlobalVariables			();
 	void		DrawLocalVariables			();
-	LPCSTR		GetSource					();
+	pcstr		GetSource					();
 
 	CDbgLuaHelper							(CScriptDebugger* d);
 	virtual ~CDbgLuaHelper					();
@@ -38,8 +38,8 @@ public:
 	static void line_hook					(lua_State *, lua_Debug *);
 	static void func_hook					(lua_State *, lua_Debug *);
 	static void set_lua						(lua_State *);
-	void		DrawVariable				(lua_State * l, LPCSTR name, bool bOpenTable);
-	void		DrawTable					(lua_State *l, LPCSTR name, bool bRecursive=true);
+	void		DrawVariable				(lua_State * l, pcstr name, bool bOpenTable);
+	void		DrawTable					(lua_State *l, pcstr name, bool bRecursive=true);
 	void		DrawVariableInfo			(char*);
 	CScriptDebugger*	debugger			(){return m_debugger;}
 protected:

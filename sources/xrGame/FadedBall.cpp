@@ -16,7 +16,7 @@ CFadedBall::~CFadedBall(void)
 {
 }
 
-void CFadedBall::Load(LPCSTR section) 
+void CFadedBall::Load(pcstr section)
 {
 	inherited::Load(section);
 }

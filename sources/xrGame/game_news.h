@@ -24,7 +24,7 @@ struct GAME_NEWS_DATA : public IPureSerializeObject<IReader,IWriter>
 	shared_str			texture_name;
 	Frect				tex_rect;
 
-	LPCSTR				SingleLineText();
+	pcstr				SingleLineText();
 
 private:
 	//полный текст новостей, формируется при первом обращении

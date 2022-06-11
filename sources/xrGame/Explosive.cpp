@@ -83,12 +83,12 @@ CExplosive::~CExplosive(void)
 	sndExplode.destroy		();
 }
 
-void CExplosive::Load(LPCSTR section) 
+void CExplosive::Load(pcstr section)
 {
 	Load				(pSettings,section);
 }
 
-void CExplosive::Load(CInifile *ini,LPCSTR section)
+void CExplosive::Load(CInifile *ini, pcstr section)
 {
 	m_fBlastHit			= ini->r_float(section,"blast");
 	m_fBlastRadius		= ini->r_float(section,"blast_r");
@@ -117,7 +117,7 @@ void CExplosive::Load(CInifile *ini,LPCSTR section)
 	//трассы для разлета осколков
 	m_fFragmentSpeed			= ini->r_float	(section,"fragment_speed"				);
 
-	LPCSTR	snd_name		= ini->r_string(section,"snd_explode");
+	pcstr	snd_name		= ini->r_string(section,"snd_explode");
 	sndExplode.create		(snd_name, st_Effect,m_eSoundExplode);
 
 	m_fExplodeDurationMax	= ini->r_float(section, "explode_duration");

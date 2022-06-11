@@ -42,7 +42,7 @@ void CInfoPortion::Load	(shared_str info_id)
 	inherited_shared::load_shared(m_InfoId, NULL);
 }
 
-void CInfoPortion::load_shared	(LPCSTR)
+void CInfoPortion::load_shared	(pcstr)
 {
 	const ITEM_DATA& item_data = *id_to_index::GetById(m_InfoId);
 
@@ -80,7 +80,7 @@ void CInfoPortion::load_shared	(LPCSTR)
 	int articles_num	= pXML->GetNodesNum(pNode, "article");
 	for(i=0; i<articles_num; ++i)
 	{
-		LPCSTR article_str_id = pXML->Read(pNode, "article", i, NULL);
+		pcstr article_str_id = pXML->Read(pNode, "article", i, NULL);
 		THROW(article_str_id);
 		info_data()->m_Articles.push_back(article_str_id);
 	}
@@ -89,7 +89,7 @@ void CInfoPortion::load_shared	(LPCSTR)
 	articles_num = pXML->GetNodesNum(pNode, "article_disable");
 	for(i=0; i<articles_num; ++i)
 	{
-		LPCSTR article_str_id = pXML->Read(pNode, "article_disable", i, NULL);
+		pcstr article_str_id = pXML->Read(pNode, "article_disable", i, NULL);
 		THROW(article_str_id);
 		info_data()->m_ArticlesDisable.push_back(article_str_id);
 	}
@@ -98,7 +98,7 @@ void CInfoPortion::load_shared	(LPCSTR)
 	int task_num = pXML->GetNodesNum(pNode, "task");
 	for(i=0; i<task_num; ++i)
 	{
-		LPCSTR task_str_id = pXML->Read(pNode, "task", i, NULL);
+		pcstr task_str_id = pXML->Read(pNode, "task", i, NULL);
 		THROW(task_str_id);
 		info_data()->m_GameTasks.push_back(task_str_id);
 	}

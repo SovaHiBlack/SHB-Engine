@@ -10,14 +10,14 @@
 #include "..\XR_3DA\xr_ioconsole.h"
 #include "MainMenu.h"
 
-BOOL CLevel::net_Start	( LPCSTR op_server, LPCSTR op_client )
+BOOL CLevel::net_Start	(pcstr op_server, pcstr op_client )
 {
 	net_start_result_total				= TRUE;
 
 	pApp->LoadBegin				();
 
 	//make Client Name if options doesn't have it
-	LPCSTR	NameStart	= strstr(op_client,"/name=");
+	pcstr	NameStart	= strstr(op_client,"/name=");
 	if (!NameStart)
 	{
 		string512 tmp;
@@ -27,7 +27,7 @@ BOOL CLevel::net_Start	( LPCSTR op_server, LPCSTR op_client )
 		m_caClientOptions			= tmp;
 	} else {
 		string1024	ret="";
-		LPCSTR		begin	= NameStart + xr_strlen("/name="); 
+		pcstr		begin	= NameStart + xr_strlen("/name=");
 		sscanf			(begin, "%[^/]",ret);
 		if (!xr_strlen(ret))
 		{
@@ -35,7 +35,7 @@ BOOL CLevel::net_Start	( LPCSTR op_server, LPCSTR op_client )
 			strcpy_s(tmpstr, op_client);
 			*(strstr(tmpstr, "name=")+5) = 0;
 			strcat_s(tmpstr, xr_strlen(Core.UserName) ? Core.UserName : Core.CompName);
-			LPCSTR ptmp = strstr(strstr(op_client, "name="), "/");
+			pcstr ptmp = strstr(strstr(op_client, "name="), "/");
 			if (ptmp)
 				strcat_s(tmpstr, ptmp);
 			m_caClientOptions = tmpstr;
@@ -104,7 +104,7 @@ bool CLevel::net_start1				()
 		if (xr_strcmp(p.m_alife,"alife"))
 		{
 			string64			l_name = "";
-			LPCSTR SOpts = *m_caServerOptions;
+			pcstr SOpts = *m_caServerOptions;
 			strncpy(l_name, *m_caServerOptions, strchr(SOpts, '/') - SOpts);
 			// Activate level
 			if (strchr(l_name,'/'))
@@ -163,7 +163,7 @@ bool CLevel::net_start3				()
 		if (strstr(m_caServerOptions.c_str(), "psw=") && !strstr(m_caClientOptions.c_str(), "psw="))
 		{
 			string64	PasswordStr = "";
-			LPCSTR PSW = strstr(m_caServerOptions.c_str(), "psw=") + 4;
+			pcstr PSW = strstr(m_caServerOptions.c_str(), "psw=") + 4;
 			if (strchr(PSW, '/')) 
 				strncpy(PasswordStr, PSW, strchr(PSW, '/') - PSW);
 			else

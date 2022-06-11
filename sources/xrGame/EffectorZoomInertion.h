@@ -36,7 +36,7 @@ class CEffectorZoomInertion : public CEffectorCam
 	CRandom		m_Random;
 
 	void			CalcNextPoint		();
-	void			LoadParams			(LPCSTR Section, LPCSTR Prefix);
+	void			LoadParams			(pcstr Section, pcstr Prefix);
 public:
 	CEffectorZoomInertion				();
 	virtual ~CEffectorZoomInertion		();

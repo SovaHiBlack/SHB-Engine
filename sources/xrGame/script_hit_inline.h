@@ -23,7 +23,7 @@ IC	CScriptHit::CScriptHit			(const CScriptHit *tpLuaHit)
 	*this				= *tpLuaHit;
 }
 
-IC	void CScriptHit::set_bone_name	(LPCSTR bone_name)
+IC	void CScriptHit::set_bone_name	(pcstr bone_name)
 {
 	m_caBoneName		= bone_name;
 }

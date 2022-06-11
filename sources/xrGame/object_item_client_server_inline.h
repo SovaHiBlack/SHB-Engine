@@ -11,7 +11,7 @@
 #define CSObjectItemClientServer CObjectItemClientServer<_client_type,_server_type>
 
 TEMPLATE_SPECIALIZATION
-IC	CSObjectItemClientServer::CObjectItemClientServer	(const CLASS_ID &clsid, LPCSTR script_clsid) :
+IC	CSObjectItemClientServer::CObjectItemClientServer	(const CLASS_ID &clsid, pcstr script_clsid) :
 	inherited			(clsid,script_clsid)
 {
 }
@@ -25,7 +25,7 @@ ObjectFactory::CLIENT_BASE_CLASS *CSObjectItemClientServer::client_object	() con
 #endif
 
 TEMPLATE_SPECIALIZATION
-ObjectFactory::SERVER_BASE_CLASS *CSObjectItemClientServer::server_object	(LPCSTR section) const
+ObjectFactory::SERVER_BASE_CLASS *CSObjectItemClientServer::server_object	(pcstr section) const
 {
 	ObjectFactory::SERVER_BASE_CLASS * o = xr_new<SERVER_TYPE>(section)->init();
 	R_ASSERT			(o);
@@ -40,7 +40,7 @@ ObjectFactory::SERVER_BASE_CLASS *CSObjectItemClientServer::server_object	(LPCST
 #	define CSObjectItemClientServerSingleMp CObjectItemClientServerSingleMp<_client_type_single,_client_type_mp,_server_type_single,_server_type_mp>
 
 	TEMPLATE_SPECIALIZATION
-	IC	CSObjectItemClientServerSingleMp::CObjectItemClientServerSingleMp				(const CLASS_ID &clsid, LPCSTR script_clsid) :
+	IC	CSObjectItemClientServerSingleMp::CObjectItemClientServerSingleMp				(const CLASS_ID &clsid, pcstr script_clsid) :
 		inherited			(clsid,script_clsid)
 	{
 	}
@@ -55,7 +55,7 @@ ObjectFactory::SERVER_BASE_CLASS *CSObjectItemClientServer::server_object	(LPCST
 	}
 
 	TEMPLATE_SPECIALIZATION
-	ObjectFactory::SERVER_BASE_CLASS *CSObjectItemClientServerSingleMp::server_object	(LPCSTR section) const
+	ObjectFactory::SERVER_BASE_CLASS *CSObjectItemClientServerSingleMp::server_object	(pcstr section) const
 	{
 		ObjectFactory::SERVER_BASE_CLASS	*result = 
 			xr_new<_server_type_single>(section);

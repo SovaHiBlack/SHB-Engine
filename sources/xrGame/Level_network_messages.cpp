@@ -244,8 +244,8 @@ void CLevel::ClientReceive()
 				}
 				else
 				{
-					LPCSTR m_SO = m_caServerOptions.c_str();
-//					LPCSTR m_CO = m_caClientOptions.c_str();
+					pcstr m_SO = m_caServerOptions.c_str();
+//					pcstr m_CO = m_caClientOptions.c_str();
 
 					m_SO = strchr(m_SO, '/'); if (m_SO) m_SO++;
 					m_SO = strchr(m_SO, '/'); 

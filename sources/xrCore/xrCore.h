@@ -11,28 +11,28 @@
 #pragma warning(disable:4996)
 
 #if (defined(DEBUG) && !defined(FORCE_NO_EXCEPTIONS))
-	// "debug"
-	#ifndef _CPPUNWIND
-		#error Please enable exceptions...
-	#endif
-	#define _HAS_EXCEPTIONS		1	// STL
-	#define XRAY_EXCEPTIONS		1	// XRAY
-	#define BOOST_NO_EXCEPTIONS
+// "debug"
+#ifndef _CPPUNWIND
+#error Please enable exceptions...
+#endif
+#define _HAS_EXCEPTIONS		1	// STL
+#define XRAY_EXCEPTIONS		1	// XRAY
+#define BOOST_NO_EXCEPTIONS
 #else
-	// "release"
-	#ifdef _CPPUNWIND
-		#error Please disable exceptions...
-	#endif
+// "release"
+#ifdef _CPPUNWIND
+#error Please disable exceptions...
+#endif
 //	#define _HAS_EXCEPTIONS		1	// STL
-	#define XRAY_EXCEPTIONS		0	// XRAY
-	#define LUABIND_NO_EXCEPTIONS
-	#define BOOST_NO_EXCEPTIONS
-	#pragma warning(disable:4530)
+#define XRAY_EXCEPTIONS		0	// XRAY
+#define LUABIND_NO_EXCEPTIONS
+#define BOOST_NO_EXCEPTIONS
+#pragma warning(disable:4530)
 #endif
 
 #ifndef _MT
 	// multithreading disabled
-	#error Please enable multi-threaded library...
+#error Please enable multi-threaded library...
 #endif
 
 #include "xrCore_platform.h"
@@ -63,9 +63,9 @@
 #define ICN			__declspec (noinline)	
 
 #ifndef DEBUG
-	#pragma inline_depth	( 254 )
-	#pragma inline_recursion( on )
-	#pragma intrinsic	(abs, fabs, fmod, sin, cos, tan, asin, acos, atan, sqrt, exp, log, log10, strcpy, strcat)
+#pragma inline_depth	( 254 )
+#pragma inline_recursion( on )
+#pragma intrinsic	(abs, fabs, fmod, sin, cos, tan, asin, acos, atan, sqrt, exp, log, log10, strcpy, strcat)
 #endif // DEBUG
 
 #include <time.h>
@@ -127,38 +127,61 @@
 #include "xr_shared.h"
 
 // stl ext
-struct XRCORE_API xr_rtoken{
-    shared_str	name;
-    int	   	id;
-           	xr_rtoken	(pcstr _nm, int _id){name=_nm;id=_id;}
+struct XRCORE_API xr_rtoken
+{
+	shared_str	name;
+	int	   	id;
+	xr_rtoken(pcstr _nm, int _id)
+	{
+		name = _nm; id = _id;
+	}
 public:
-    void	rename		(pcstr _nm)		{name=_nm;}
-    bool	equal		(pcstr _nm)		{return (0==xr_strcmp(*name,_nm));}
+	void	rename(pcstr _nm)
+	{
+		name = _nm;
+	}
+	bool	equal(pcstr _nm)
+	{
+		return (0 == xr_strcmp(*name, _nm));
+	}
 };
 
 #pragma pack (push,1)
-struct XRCORE_API xr_shortcut{
-    enum{
-        flShift	= 0x20,
-        flCtrl	= 0x40,
-        flAlt	= 0x80,
-    };
-    union{
-    	struct{
-            u8	 	key;
-            Flags8	ext;
-        };
-        u16		hotkey;
-    };
-                xr_shortcut		(u8 k, BOOL a, BOOL c, BOOL s):key(k){ext.assign(u8((a?flAlt:0)|(c?flCtrl:0)|(s?flShift:0)));}
-                xr_shortcut		(){ext.zero();key=0;}
-    bool		similar			(const xr_shortcut& v)const{return ext.equal(v.ext)&&(key==v.key);}
+struct XRCORE_API xr_shortcut
+{
+	enum
+	{
+		flShift = 0x20,
+		flCtrl = 0x40,
+		flAlt = 0x80,
+	};
+	union
+	{
+		struct
+		{
+			u8	 	key;
+			Flags8	ext;
+		};
+		u16		hotkey;
+	};
+	xr_shortcut(u8 k, BOOL a, BOOL c, BOOL s) :key(k)
+	{
+		ext.assign(u8((a ? flAlt : 0) | (c ? flCtrl : 0) | (s ? flShift : 0)));
+	}
+	xr_shortcut()
+	{
+		ext.zero(); key = 0;
+	}
+	bool		similar(const xr_shortcut& v)const
+	{
+		return ext.equal(v.ext) && (key == v.key);
+	}
 };
 #pragma pack (pop)
 
-DEFINE_VECTOR	(shared_str,RStringVec,RStringVecIt);
-DEFINE_SET		(shared_str,RStringSet,RStringSetIt);
-DEFINE_VECTOR	(xr_rtoken,RTokenVec,RTokenVecIt);
+DEFINE_VECTOR(shared_str, RStringVec, RStringVecIt);
+DEFINE_SET(shared_str, RStringSet, RStringSetIt);
+DEFINE_VECTOR(xr_rtoken, RTokenVec, RTokenVecIt);
 
 #include "FS.h"
 #include "log.h"
@@ -176,14 +199,22 @@ class destructor
 {
 	T* ptr;
 public:
-	destructor(T* p)	{ ptr=p;			}
-	~destructor()		{ xr_delete(ptr);	}
+	destructor(T* p)
+	{
+		ptr = p;
+	}
+	~destructor()
+	{
+		xr_delete(ptr);
+	}
 	IC T& operator() ()
-	{	return *ptr; }
+	{
+		return *ptr;
+	}
 };
 
 // ********************************************** The Core definition
-class XRCORE_API xrCore 
+class XRCORE_API xrCore
 {
 public:
 	string64	ApplicationName;
@@ -194,7 +225,7 @@ public:
 	string512	Params;
 
 public:
-	void		_initialize	(pcstr ApplicationName, LogCallback cb=0, BOOL init_fs=TRUE, pcstr fs_fname=0);
-	void		_destroy	();
+	void		_initialize(pcstr ApplicationName, LogCallback cb = 0, BOOL init_fs = TRUE, pcstr fs_fname = 0);
+	void		_destroy();
 };
 extern XRCORE_API xrCore Core;

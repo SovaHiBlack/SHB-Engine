@@ -32,7 +32,7 @@ CSightManager::~CSightManager		()
 {
 }
 
-void CSightManager::Load			(LPCSTR section)
+void CSightManager::Load			(pcstr section)
 {
 }
 
@@ -43,7 +43,7 @@ void CSightManager::reinit			()
 	m_turning_in_place			= false;
 }
 
-void CSightManager::reload			(LPCSTR section)
+void CSightManager::reload			(pcstr section)
 {
 	m_max_left_angle			= deg2rad(READ_IF_EXISTS(pSettings,r_float,section,"max_left_torso_angle",90.f));
 	m_max_right_angle			= deg2rad(READ_IF_EXISTS(pSettings,r_float,section,"max_right_torso_angle",60.f));

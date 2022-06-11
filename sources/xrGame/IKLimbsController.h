@@ -38,8 +38,8 @@ private:
 	};
 
 #ifdef	DEBUG
-	LPCSTR			anim_name;
-	LPCSTR			anim_set_name;
+	pcstr			anim_name;
+	pcstr			anim_set_name;
 #endif
 /*
 	CIKLimb				m_left_leg;

@@ -86,18 +86,17 @@ public:
 
 	void			OnDeviceCreate					();
 
-	void			Screenshot						(IRender_interface::ScreenshotMode mode=IRender_interface::SM_NORMAL, LPCSTR name = 0);
+	void			Screenshot						(IRender_interface::ScreenshotMode mode=IRender_interface::SM_NORMAL, pcstr name = 0);
 	void			RegisterPPDraw					(CUIWindow* w);
 	void			UnregisterPPDraw				(CUIWindow* w);
 
 	void			SetErrorDialog					(EErrorDlg ErrDlg);
 	EErrorDlg		GetErrorDialogType				() const { return m_NeedErrDialog; } ;
 	void			CheckForErrorDlg				();
-	void			SwitchToMultiplayerMenu			();
-	void			OnSessionTerminate				(LPCSTR reason);
+	void			OnSessionTerminate				(pcstr reason);
 	void			SetNeedVidRestart				();
 	virtual void	OnDeviceReset					();
-	LPCSTR			GetGSVer						();
+	pcstr			GetGSVer						();
 };
 
 extern CMainMenu*	MainMenu();

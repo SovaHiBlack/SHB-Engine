@@ -33,7 +33,7 @@ BOOL CInfoDocument::net_Spawn(CSE_Abstract* DC)
 	return					(res);
 }
 
-void CInfoDocument::Load(LPCSTR section) 
+void CInfoDocument::Load(pcstr section)
 {
 	inherited::Load(section);
 }

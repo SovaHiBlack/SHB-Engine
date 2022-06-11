@@ -50,7 +50,7 @@ void CHairsZone::CheckForAwaking()
 	}
 }
 
-void CHairsZone::Load(LPCSTR section) 
+void CHairsZone::Load(pcstr section)
 {
 	inherited::Load				(section);
 	m_min_speed_to_react		= pSettings->r_float(section,			"min_speed_to_react");

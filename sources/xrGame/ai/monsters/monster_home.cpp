@@ -41,7 +41,7 @@ void check_path	(const CBaseMonster *monster, const CPatrolPath *path)
 #	define check_path(a,b)
 #endif // DEBUG
 
-void CMonsterHome::load(LPCSTR line)
+void CMonsterHome::load(pcstr line)
 {
 	m_path			= 0;
 	m_radius_min	= 20.f;
@@ -61,7 +61,7 @@ void CMonsterHome::load(LPCSTR line)
 	m_aggressive = false;
 }
 
-void CMonsterHome::setup(LPCSTR path_name, F32 min_radius, F32 max_radius, bool aggressive)
+void CMonsterHome::setup(pcstr path_name, F32 min_radius, F32 max_radius, bool aggressive)
 {
 	m_path			= ai().patrol_paths().path(path_name);
 	check_path		(m_object,m_path);

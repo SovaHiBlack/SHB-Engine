@@ -56,11 +56,11 @@ void CScriptBinder::reinit			()
 	}
 }
 
-void CScriptBinder::Load			(LPCSTR section)
+void CScriptBinder::Load			(pcstr section)
 {
 }
 
-void CScriptBinder::reload			(LPCSTR section)
+void CScriptBinder::reload			(pcstr section)
 {
 
 #ifndef DBG_DISABLE_SCRIPTS

@@ -27,7 +27,7 @@ DLL_Pure *CDamageManager::_construct	()
 	return					(m_object);
 }
 
-void CDamageManager::reload				(LPCSTR section,CInifile* ini)
+void CDamageManager::reload				(pcstr section,CInifile* ini)
 {
 	m_default_hit_factor	= 1.f;
 	m_default_wound_factor	= 1.f;
@@ -38,7 +38,7 @@ void CDamageManager::reload				(LPCSTR section,CInifile* ini)
 	if (section_exist) {
 		string32 buffer;
 		if (ini->line_exist(section,"default")) {
-			LPCSTR value			= ini->r_string(section,"default");
+			pcstr value			= ini->r_string(section,"default");
 			m_default_hit_factor	= (float)atof(_GetItem(value,0,buffer));
 			m_default_wound_factor  = (float)atof(_GetItem(value,2,buffer));
 		}
@@ -53,7 +53,7 @@ void CDamageManager::reload				(LPCSTR section,CInifile* ini)
 	}
 }
 
-void CDamageManager::reload(LPCSTR section,LPCSTR line,CInifile* ini)
+void CDamageManager::reload(pcstr section, pcstr line,CInifile* ini)
 {
 	if (ini && ini->section_exist(section) && ini->line_exist(section,line)) 
 		reload(ini->r_string(section,line),ini);	
@@ -61,7 +61,7 @@ void CDamageManager::reload(LPCSTR section,LPCSTR line,CInifile* ini)
 		reload(section,0);
 }
 
-void CDamageManager::init_bones(LPCSTR section,CInifile* ini)
+void CDamageManager::init_bones(pcstr section,CInifile* ini)
 {
 	CKinematics				*kinematics = smart_cast<CKinematics*>(m_object->Visual());
 	VERIFY					(kinematics);
@@ -73,7 +73,7 @@ void CDamageManager::init_bones(LPCSTR section,CInifile* ini)
 		bone_instance.set_param	(2,m_default_wound_factor);
 	}
 }
-void CDamageManager::load_section(LPCSTR section,CInifile* ini)
+void CDamageManager::load_section(pcstr section,CInifile* ini)
 {
 	string32				buffer;
 	CKinematics				*kinematics = smart_cast<CKinematics*>(m_object->Visual());

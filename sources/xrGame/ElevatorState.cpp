@@ -84,7 +84,7 @@ void CElevatorState::EvaluateState()
 }
 
 #ifdef DEBUG
-LPCSTR	dbg_state[] =	{
+pcstr	dbg_state[] =	{
 		"clbNone"			,				
 		"clbNearUp"			,			
 		"clbNearDown"		,		

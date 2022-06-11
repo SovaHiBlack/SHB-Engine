@@ -18,7 +18,7 @@ class CInvisibility {
 	F32			m_speed;	// energy change speed (external)
 
 protected:
-	virtual	void	reload					(LPCSTR section);
+	virtual	void	reload					(pcstr section);
 	virtual	void	reinit					();
 	virtual void	frame_update			();
 

@@ -22,7 +22,7 @@ CMercuryBall::~CMercuryBall(void)
 {
 }
 
-void CMercuryBall::Load(LPCSTR section) 
+void CMercuryBall::Load(pcstr section)
 {
 	inherited::Load(section);
 

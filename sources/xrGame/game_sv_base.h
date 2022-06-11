@@ -54,9 +54,9 @@ protected:
 public:
 #define		TEAM_COUNT 4
 
-	bool							NewPlayerName_Exists	(void* pClient, LPCSTR NewName);
+	bool							NewPlayerName_Exists	(void* pClient, pcstr NewName);
 	void							NewPlayerName_Generate	(void* pClient, LPSTR NewPlayerName);
-	void							NewPlayerName_Replace	(void* pClient, LPCSTR NewPlayerName);
+	void							NewPlayerName_Replace	(void* pClient, pcstr NewPlayerName);
 
 	BOOL							sv_force_sync;
 	float							rpoints_MinDist [TEAM_COUNT];
@@ -83,7 +83,7 @@ public:
 	virtual		void				OnRoundStart			();									// старт раунда
 	virtual		void				OnRoundEnd				();	//	round_end_reason			// конец раунда
 
-	virtual		void				MapRotation_AddMap		(LPCSTR MapName);
+	virtual		void				MapRotation_AddMap		(pcstr MapName);
 	virtual		void				MapRotation_ListMaps	();
 	virtual		bool				OnNextMap				()									{return false;}
 	virtual		void				OnPrevMap				()									{}
@@ -93,7 +93,7 @@ public:
 	virtual		BOOL				IsVotingEnabled			(u16 flag);
 	virtual		bool				IsVotingActive			()	{ return false; };
 	virtual		void				SetVotingActive			( bool Active )	{ };
-	virtual		void				OnVoteStart				(LPCSTR VoteCommand, ClientID sender)			{};
+	virtual		void				OnVoteStart				(pcstr VoteCommand, ClientID sender)			{};
 	virtual		void				OnVoteStop				()				{};
 
 public:
@@ -105,9 +105,9 @@ public:
 	virtual		game_PlayerState*	get_it					(u32 it);
 	virtual		game_PlayerState*	get_id					(ClientID id);
 	
-	virtual		LPCSTR				get_name_it				(u32 it);
-	virtual		LPCSTR				get_name_id				(ClientID id);								
-				LPCSTR				get_player_name_id		(ClientID id);								
+	virtual		pcstr				get_name_it				(u32 it);
+	virtual		pcstr				get_name_id				(ClientID id);
+				pcstr				get_player_name_id		(ClientID id);
 	virtual		u16					get_id_2_eid			(ClientID id);
 	virtual		ClientID			get_it_2_id				(u32 it);
 	virtual		u32					get_players_count		();
@@ -125,13 +125,13 @@ public:
 #endif
 	
 	virtual		void				OnSwitchPhase			(u32 old_phase, u32 new_phase);	
-				CSE_Abstract*		spawn_begin				(LPCSTR N);
+				CSE_Abstract*		spawn_begin				(pcstr N);
 				CSE_Abstract*		spawn_end				(CSE_Abstract* E, ClientID id);
 
 	// Utilities
-	float							get_option_f			(LPCSTR lst, LPCSTR name, float def = 0.0f);
-	s32								get_option_i			(LPCSTR lst, LPCSTR name, s32 def = 0);
-	string64&						get_option_s			(LPCSTR lst, LPCSTR name, LPCSTR def = 0);
+	float							get_option_f			(pcstr lst, pcstr name, float def = 0.0f);
+	s32								get_option_i			(pcstr lst, pcstr name, s32 def = 0);
+	string64&						get_option_s			(pcstr lst, pcstr name, pcstr def = 0);
 	virtual		u32					get_alive_count			(u32 team);
 	virtual		xr_vector<u16>*		get_children			(ClientID id_who);
 	void							u_EventGen				(NET_Packet& P, u16 type, u16 dest	);

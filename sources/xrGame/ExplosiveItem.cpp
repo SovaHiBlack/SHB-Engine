@@ -16,7 +16,7 @@ CExplosiveItem::~CExplosiveItem(void)
 {
 }
 
-void CExplosiveItem::Load(LPCSTR section)
+void CExplosiveItem::Load(pcstr section)
 {
 	inherited::Load							(section);
 	CExplosive::Load						(section);

@@ -15,7 +15,7 @@ Flags32		ph_dbg_draw_mask						;
 Flags32		ph_dbg_draw_mask1						;
 bool		draw_frame=0;
 
-LPCSTR	dbg_trace_object						=NULL;
+pcstr	dbg_trace_object						=NULL;
 string64 s_dbg_tsrace_obj						;
 u32	 	dbg_bodies_num							=0;
 u32	 	dbg_joints_num							=0;
@@ -256,7 +256,7 @@ struct SPHDBGOutText : public SPHDBGDrawAbsract
 {
 string64 s;
 bool	 rendered;
-	SPHDBGOutText(LPCSTR t)
+	SPHDBGOutText(pcstr t)
 	{
 		strcpy(s,t);
 		rendered=false;
@@ -268,7 +268,7 @@ bool	 rendered;
 		rendered=true;
 	}
 };
-void _cdecl DBG_OutText(LPCSTR s,...)
+void _cdecl DBG_OutText(pcstr s,...)
 {
 	string64 t;
 	va_list   marker;
@@ -664,11 +664,11 @@ bool CFunctionGraph::IsActive()
 	return !!m_stat_graph;
 }
 
-LPCSTR PH_DBG_ObjectTrack()
+pcstr PH_DBG_ObjectTrack()
 {
 	return dbg_trace_object;
 }
-void PH_DBG_SetTrackObject(LPCSTR obj)
+void PH_DBG_SetTrackObject(pcstr obj)
 {
 	strcpy( s_dbg_tsrace_obj,obj);
 	dbg_trace_object=s_dbg_tsrace_obj;

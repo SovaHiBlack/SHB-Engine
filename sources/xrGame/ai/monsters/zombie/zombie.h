@@ -19,10 +19,10 @@ public:
 					CZombie		();
 	virtual			~CZombie	();	
 
-	virtual void	Load				(LPCSTR section);
+	virtual void	Load				(pcstr section);
 	virtual BOOL	net_Spawn			(CSE_Abstract* DC);
 	virtual void	reinit				();
-	virtual	void	reload				(LPCSTR section);
+	virtual	void	reload				(pcstr section);
 	
 	virtual	void	Hit					(SHit* pHDS);
 

@@ -48,7 +48,7 @@ void CPda::net_Destroy()
 	UpdateActiveContacts		();
 }
 
-void CPda::Load(LPCSTR section) 
+void CPda::Load(pcstr section)
 {
 	inherited::Load(section);
 
@@ -185,7 +185,7 @@ CObject* CPda::GetOwnerObject()
 {
 	return				Level().Objects.net_Find(GetOriginalOwnerID());
 }
-LPCSTR		CPda::Name				()
+pcstr		CPda::Name				()
 {
 	if( !m_SpecificChracterOwner.size() )
 		return inherited::Name();

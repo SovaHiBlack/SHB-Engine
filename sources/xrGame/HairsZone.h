@@ -10,7 +10,7 @@ class CHairsZone : public CVisualZone {
 typedef				CVisualZone		inherited;		
 public:
 	virtual			void		Affect				(SZoneObjectInfo* O)		;
-	virtual			void		Load				(LPCSTR section);
+	virtual			void		Load				(pcstr section);
 
 protected:
 					float		m_min_speed_to_react;

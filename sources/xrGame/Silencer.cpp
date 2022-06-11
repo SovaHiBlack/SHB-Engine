@@ -21,7 +21,7 @@ BOOL CSilencer::net_Spawn(CSE_Abstract* DC)
 	return		(inherited::net_Spawn(DC));
 }
 
-void CSilencer::Load(LPCSTR section) 
+void CSilencer::Load(pcstr section)
 {
 	inherited::Load(section);
 }

@@ -167,7 +167,7 @@ game_GameState::game_GameState()
 	m_fETimeFactor				= m_fTimeFactor			;
 }
 
-CLASS_ID game_GameState::getCLASS_ID(LPCSTR game_type_name, bool isServer)
+CLASS_ID game_GameState::getCLASS_ID(pcstr game_type_name, bool isServer)
 {
 	string_path		S;
 	FS.update_path	(S,"$game_config$","script.ltx");
@@ -177,7 +177,7 @@ CLASS_ID game_GameState::getCLASS_ID(LPCSTR game_type_name, bool isServer)
 	string256				I;
 	strcpy(I,l_tpIniFile->r_string("common","game_type_clsid_factory"));
 
-	luabind::functor<LPCSTR>	result;
+	luabind::functor<pcstr>	result;
 	R_ASSERT					(ai().script_engine().functor(I,result));
 	shared_str clsid = result	(game_type_name, isServer);
 

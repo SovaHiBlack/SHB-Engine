@@ -31,8 +31,8 @@ struct CFontManager :public pureDeviceReset			{
 	CGameFont*				pFontStat;
 
 	void					InitializeFonts			();
-	void					InitializeFont			(CGameFont*& F, LPCSTR section, u32 flags = 0);
-	LPCSTR					GetFontTexName			(LPCSTR section);				
+	void					InitializeFont			(CGameFont*& F, pcstr section, u32 flags = 0);
+	pcstr					GetFontTexName			(pcstr section);
 
 	virtual void			OnDeviceReset			();
 };
@@ -71,7 +71,7 @@ public:
 	void					SetCrosshairDisp	(float dispf, float disps = 0.f);
 	void					ShowCrosshair		(bool show);
 
-	void					SetHitmarkType		(LPCSTR tex_name);
+	void					SetHitmarkType		(pcstr tex_name);
 	virtual void			OnScreenRatioChanged();
 	virtual void			OnDisconnected		();
 	virtual void			OnConnected			();

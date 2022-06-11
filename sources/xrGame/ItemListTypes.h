@@ -34,12 +34,12 @@ public:
 public:
 						ListItem		(int _type):type(_type),prop_color(0),item(0),key(0),tag(0),icon_index(-1),OnDrawThumbnail(0),OnItemFocused(0),m_Object(0){m_Flags.zero();}
 	virtual 			~ListItem		(){};
-    void				SetName			(LPCSTR _key){key=_key;}
+    void				SetName			(pcstr _key){key=_key;}
 
     IC void				Visible			(BOOL val){m_Flags.set(flHidden, !val);}
     IC int				Type			(){return type;}
 	IC void*			Item			(){return item;}
-	IC LPCSTR			Key				(){return *key;}
+	IC pcstr			Key				(){return *key;}
     IC void				SetIcon			(int index){icon_index=index;}
 };
 

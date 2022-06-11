@@ -119,11 +119,11 @@ LRESULT CScriptDebugger::DebugMessage(UINT nMsg, WPARAM wParam, LPARAM lParam)
 
 	case DMSG_EVAL_WATCH:{
 			string2048 res; res[0]=0;
-			Eval((LPCSTR)wParam,res, sizeof(res) );
+			Eval((pcstr)wParam,res, sizeof(res) );
 
 			msg.w_int(DMSG_EVAL_WATCH);
 			msg.w_string(res);
-			msg.w_string((LPCSTR)wParam);
+			msg.w_string((pcstr)wParam);
 			SendMessageToIde(msg);
 		 }break;
 
@@ -156,7 +156,7 @@ CScriptDebugger::CScriptDebugger()
 	Connect(IDE_MAIL_SLOT);
 }
 
-void CScriptDebugger::Connect(LPCSTR mslot_name)
+void CScriptDebugger::Connect(pcstr mslot_name)
 {
 	m_bIdePresent = CheckExisting(IDE_MAIL_SLOT);
 	ZeroMemory(m_curr_connected_mslot,sizeof(m_curr_connected_mslot));
@@ -214,12 +214,12 @@ void CScriptDebugger::initiateDebugBreak()
 	m_nMode = DMOD_BREAK;
 }
 
-void CScriptDebugger::Write(LPCSTR szMsg)
+void CScriptDebugger::Write(pcstr szMsg)
 {
 	_SendMessage(DMSG_WRITE_DEBUG, (WPARAM)szMsg, 0);
 }
 
-void CScriptDebugger::LineHook(LPCSTR szFile, int nLine)
+void CScriptDebugger::LineHook(pcstr szFile, int nLine)
 {
 	CheckNewMessages();
 	if ( m_nMode == DMOD_STOP ){
@@ -242,7 +242,7 @@ void CScriptDebugger::LineHook(LPCSTR szFile, int nLine)
 	}
 }
 
-void CScriptDebugger::FunctionHook(LPCSTR szFile, int nLine, BOOL bCall)
+void CScriptDebugger::FunctionHook(pcstr szFile, int nLine, BOOL bCall)
 {
 	if ( m_nMode == DMOD_STOP )
 		return;
@@ -268,7 +268,7 @@ void CScriptDebugger::DrawCurrentState()
 	_SendMessage(DMSG_GOTO_STACKTRACE_LEVEL, GetStackTraceLevel(), 0);
 }
 
-void CScriptDebugger::DebugBreak(LPCSTR szFile, int nLine)
+void CScriptDebugger::DebugBreak(pcstr szFile, int nLine)
 {
 	m_nMode = DMOD_NONE;
 
@@ -288,7 +288,7 @@ void CScriptDebugger::GetBreakPointsFromIde()
 	WaitForReply(false);
 }
 
-void CScriptDebugger::ErrorBreak(LPCSTR szFile, int nLine)
+void CScriptDebugger::ErrorBreak(pcstr szFile, int nLine)
 {
 	if(Active())
 		DebugBreak(szFile, nLine);
@@ -299,7 +299,7 @@ void CScriptDebugger::ClearStackTrace()
 	_SendMessage(DMSG_CLEAR_STACKTRACE, 0, 0);
 }
 
-void CScriptDebugger::AddStackTrace(LPCSTR szDesc, LPCSTR szFile, int nLine)
+void CScriptDebugger::AddStackTrace(pcstr szDesc, pcstr szFile, int nLine)
 {
 	StackTrace st;
 	strcat(st.szDesc, szDesc);
@@ -338,7 +338,7 @@ void CScriptDebugger::ClearGlobalVariables()
 	_SendMessage(DMSG_CLEAR_GLOBALVARIABLES, 0, 0);
 }
 
-void CScriptDebugger::AddGlobalVariable(LPCSTR name, LPCSTR type, LPCSTR value)
+void CScriptDebugger::AddGlobalVariable(pcstr name, pcstr type, pcstr value)
 {
 	Variable var;
 	strcat(var.szName, name );
@@ -348,11 +348,11 @@ void CScriptDebugger::AddGlobalVariable(LPCSTR name, LPCSTR type, LPCSTR value)
 }
 
 
-void CScriptDebugger::Eval(LPCSTR strCode, char* res, int res_sz)
+void CScriptDebugger::Eval(pcstr strCode, char* res, int res_sz)
 {
 	string1024 strCodeFull;
 	strCodeFull[0] = 0;
-	LPCSTR r = "return  ";
+	pcstr r = "return  ";
 	strconcat(sizeof(strCodeFull),strCodeFull,r,strCode);
 	m_lua->Eval(strCodeFull, res, res_sz);
 }
@@ -466,7 +466,7 @@ bool CScriptDebugger::TranslateIdeMessage (CMailSlotMsg* msg)
 	}
 }
 
-bool CScriptDebugger::HasBreakPoint(LPCSTR fileName, s32 lineNum)
+bool CScriptDebugger::HasBreakPoint(pcstr fileName, s32 lineNum)
 {
 	string256 sFileName;
 	char drive[_MAX_DRIVE];

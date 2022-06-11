@@ -182,7 +182,7 @@ void CPhysicsShellHolder::PHSetMaterial(u16 m)
 		m_pPhysicsShell->SetMaterial(m);
 }
 
-void CPhysicsShellHolder::PHSetMaterial(LPCSTR m)
+void CPhysicsShellHolder::PHSetMaterial(pcstr m)
 {
 	if(m_pPhysicsShell)
 		m_pPhysicsShell->SetMaterial(m);

@@ -135,7 +135,7 @@ IC	const GameGraph::SLevel &GameGraph::CHeader::level				(const _LEVEL_ID &id) c
 	return						((*I).second);
 }
 
-IC	const GameGraph::SLevel &GameGraph::CHeader::level				(LPCSTR level_name) const
+IC	const GameGraph::SLevel &GameGraph::CHeader::level				(pcstr level_name) const
 {
 	LEVEL_MAP::const_iterator	I = levels().begin();
 	LEVEL_MAP::const_iterator	E = levels().end();
@@ -152,7 +152,7 @@ IC	const GameGraph::SLevel &GameGraph::CHeader::level				(LPCSTR level_name) con
 #endif
 }
 
-IC	const GameGraph::SLevel *GameGraph::CHeader::level				(LPCSTR level_name, bool) const
+IC	const GameGraph::SLevel *GameGraph::CHeader::level				(pcstr level_name, bool) const
 {
 	LEVEL_MAP::const_iterator	I = levels().begin();
 	LEVEL_MAP::const_iterator	E = levels().end();

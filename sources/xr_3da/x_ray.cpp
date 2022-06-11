@@ -536,7 +536,7 @@ int APIENTRY WinMain(HINSTANCE hInstance,
 {
 	__try 
 	{
-		Debug._initialize	(false);
+		Debug._initialize	();
 
 		WinMain_impl		(hInstance,hPrevInstance,lpCmdLine,nCmdShow);
 	}

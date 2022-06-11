@@ -20,7 +20,7 @@ CLevelDebug::~CLevelDebug()
 	free_mem();
 }
 
-CLevelDebug::CObjectInfo &CLevelDebug::object_info(CObject *obj, LPCSTR class_name)
+CLevelDebug::CObjectInfo &CLevelDebug::object_info(CObject *obj, pcstr class_name)
 {
 	OBJECT_INFO_MAP_IT	obj_it = m_objects_info.find(obj);
 	if (obj_it != m_objects_info.end()) {
@@ -45,7 +45,7 @@ CLevelDebug::CObjectInfo &CLevelDebug::object_info(CObject *obj, LPCSTR class_na
 	}
 }
 
-CLevelDebug::CTextInfo &CLevelDebug::text(void *class_ptr, LPCSTR class_name)
+CLevelDebug::CTextInfo &CLevelDebug::text(void *class_ptr, pcstr class_name)
 {
 	SKey key(class_ptr, class_name);
 
@@ -59,7 +59,7 @@ CLevelDebug::CTextInfo &CLevelDebug::text(void *class_ptr, LPCSTR class_name)
 	}
 }
 
-CLevelDebug::CLevelInfo &CLevelDebug::level_info(void *class_ptr, LPCSTR class_name)
+CLevelDebug::CLevelInfo &CLevelDebug::level_info(void *class_ptr, pcstr class_name)
 {
 	SKey key(class_ptr, class_name);
 
@@ -162,7 +162,7 @@ void CLevelDebug::draw_level_info()
 //////////////////////////////////////////////////////////////////////////
 
 
-void CLevelDebug::CObjectInfo::add_item	(LPCSTR text, u32 color, u32 id) 
+void CLevelDebug::CObjectInfo::add_item	(pcstr text, u32 color, u32 id)
 {
 	inherited::add_item(SInfoItem(text, color, id));
 }
@@ -198,7 +198,7 @@ void CLevelDebug::CObjectInfo::draw_info	(float x, float &y)
 // CTextInfo
 //////////////////////////////////////////////////////////////////////////
 
-void CLevelDebug::CTextInfo::add_item	(LPCSTR text, float x, float y, u32 color, u32 id) 
+void CLevelDebug::CTextInfo::add_item	(pcstr text, float x, float y, u32 color, u32 id)
 {
 	inherited::add_item(STextItem(text, x, y, color, id));
 }

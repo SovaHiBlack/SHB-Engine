@@ -17,11 +17,11 @@ private:
 
 private:
 	struct CStats {
-		LPCSTR		m_from;
-		LPCSTR		m_to;
+		pcstr		m_from;
+		pcstr		m_to;
 		u32			m_count;
 
-		IC		 CStats		(LPCSTR from, LPCSTR to, u32 count) :
+		IC		 CStats		(pcstr from, pcstr to, u32 count) :
 			m_from	(from),
 			m_to	(to),
 			m_count	(count)
@@ -53,7 +53,7 @@ public:
 	IC	static	void				_release	();
 
 public:
-	IC			void				add			(LPCSTR from, LPCSTR to);
+	IC			void				add			(pcstr from, pcstr to);
 	IC			void				clear		();
 	IC			void				show		();
 };
@@ -88,7 +88,7 @@ IC	CSmartCastStats	&stats_all					()
 }
 #endif
 
-IC	void CSmartCastStats::add					(LPCSTR from, LPCSTR to)
+IC	void CSmartCastStats::add					(pcstr from, pcstr to)
 {
 	CStats					temp(from,to,1);
 	STATS::iterator			I = m_stats.find(temp);
@@ -127,14 +127,14 @@ IC	void CSmartCastStats::show					()
 		Msg								("%8d %6.2f% : smart_cast<%s>(%s)",(*I).m_count,float((*I).m_count)*100.f/float(total),(*I).m_to,(*I).m_from);
 }
 
-void add_smart_cast_stats		(LPCSTR from, LPCSTR to)
+void add_smart_cast_stats		(pcstr from, pcstr to)
 {
 #ifdef SMART_CAST_STATS
 	stats().add					(from,to);
 #endif
 }
 
-void add_smart_cast_stats_all	(LPCSTR from, LPCSTR to)
+void add_smart_cast_stats_all	(pcstr from, pcstr to)
 {
 #ifdef SMART_CAST_STATS
 #	ifdef SMART_CAST_STATS_ALL

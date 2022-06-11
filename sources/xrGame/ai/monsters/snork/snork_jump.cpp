@@ -19,7 +19,7 @@
 //	xr_delete(m_jumper);
 //}
 //
-//void CSnorkJump::load(LPCSTR section)
+//void CSnorkJump::load(pcstr section)
 //{
 //	//m_jumper->load(section);
 //}

@@ -61,7 +61,7 @@ void SStaticSound::Update(u32 game_time, u32 global_time)
 //-----------------------------------------------------------------------------
 // music tracks
 //-----------------------------------------------------------------------------
-void SMusicTrack::Load(LPCSTR fn, LPCSTR params)
+void SMusicTrack::Load(pcstr fn, pcstr params)
 {
 #ifdef DEBUG
 	m_DbgName			= fn;
@@ -132,7 +132,7 @@ void CLevelSoundManager::Load()
 
 	if (gameLtx.section_exist(Level().name())){
 		if (gameLtx.line_exist(Level().name(),"music_tracks")){
-			LPCSTR music_sect		= gameLtx.r_string(Level().name(),"music_tracks");
+			pcstr music_sect		= gameLtx.r_string(Level().name(),"music_tracks");
 			if (music_sect && music_sect[0]){
 				Msg("- Loading music tracks from '%s'...",music_sect);
 				CInifile::Sect&	S	= gameLtx.r_section	(music_sect);

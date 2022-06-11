@@ -129,14 +129,14 @@ void CStalkerAnimationPair::play			(CKinematicsAnimated *skeleton_animated, Play
 	if (psAI_Flags.is(aiAnimation)) {
 		CMotionDef			*motion = skeleton_animated->LL_GetMotionDef(animation());
 		VERIFY				(motion);
-		LPCSTR				name = skeleton_animated->LL_MotionDefName_dbg(animation()).first;
+		pcstr				name = skeleton_animated->LL_MotionDefName_dbg(animation()).first;
 		Msg					("%6d [%s][%s][%s][%d] - LOOPED: %d",Device.dwTimeGlobal,m_object_name,m_animation_type_name,name,motion->bone_or_part,! (motion->flags & esmStopAtEnd));
 	}
 #endif
 }
 
 #ifdef DEBUG
-std::pair<LPCSTR,LPCSTR> *CStalkerAnimationPair::blend_id	(CKinematicsAnimated *skeleton_animated, std::pair<LPCSTR,LPCSTR> &result) const
+std::pair<pcstr, pcstr> *CStalkerAnimationPair::blend_id	(CKinematicsAnimated *skeleton_animated, std::pair<pcstr, pcstr> &result) const
 {
 	if (!blend())
 		return				(0);

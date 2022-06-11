@@ -112,7 +112,7 @@ void CBulletManager::Load		()
 
 	m_fHPMaxDist			= pSettings->r_float(BULLET_MANAGER_SECTION, "hit_probability_max_dist");
 
-	LPCSTR whine_sounds		= pSettings->r_string(BULLET_MANAGER_SECTION, "whine_sounds");
+	pcstr whine_sounds		= pSettings->r_string(BULLET_MANAGER_SECTION, "whine_sounds");
 	int cnt					= _GetItemCount(whine_sounds);
 	xr_string tmp;
 	for (int k=0; k<cnt; ++k){
@@ -120,7 +120,7 @@ void CBulletManager::Load		()
 		m_WhineSounds.back().create(_GetItem(whine_sounds,k,tmp),st_Effect,sg_SourceType);
 	}
 
-	LPCSTR explode_particles= pSettings->r_string(BULLET_MANAGER_SECTION, "explode_particles");
+	pcstr explode_particles= pSettings->r_string(BULLET_MANAGER_SECTION, "explode_particles");
 	cnt						= _GetItemCount(explode_particles);
 	for (int k=0; k<cnt; ++k)
 		m_ExplodeParticles.push_back	(_GetItem(explode_particles,k,tmp));

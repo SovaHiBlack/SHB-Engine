@@ -40,7 +40,7 @@ void CCustomOutfit::net_Import(NET_Packet& P)
 	P.r_float_q8			(m_fCondition,0.0f,1.0f);
 }
 
-void CCustomOutfit::Load(LPCSTR section) 
+void CCustomOutfit::Load(pcstr section)
 {
 	inherited::Load(section);
 

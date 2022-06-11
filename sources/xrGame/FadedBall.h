@@ -14,7 +14,7 @@ public:
 	CFadedBall(void);
 	virtual ~CFadedBall(void);
 
-	virtual void Load				(LPCSTR section);
+	virtual void Load				(pcstr section);
 
 protected:
 };

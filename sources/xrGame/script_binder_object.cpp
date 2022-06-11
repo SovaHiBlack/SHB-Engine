@@ -26,7 +26,7 @@ CScriptBinderObject::~CScriptBinderObject	()
 void CScriptBinderObject::reinit			()
 { }
 
-void CScriptBinderObject::reload			(LPCSTR section)
+void CScriptBinderObject::reload			(pcstr section)
 { }
 
 bool CScriptBinderObject::net_Spawn			(SpawnType DC)

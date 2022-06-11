@@ -5,27 +5,27 @@
 
 using namespace luabind;
 
-void CPhraseScript::AddPrecondition	(LPCSTR str)
+void CPhraseScript::AddPrecondition	(pcstr str)
 {
 	m_Preconditions.push_back	(str);
 }
-void CPhraseScript::AddAction		(LPCSTR str)
+void CPhraseScript::AddAction		(pcstr str)
 {
 	m_ScriptActions.push_back	(str);
 }
-void CPhraseScript::AddHasInfo		(LPCSTR str)
+void CPhraseScript::AddHasInfo		(pcstr str)
 {
 	m_HasInfo.push_back	(str);
 }
-void CPhraseScript::AddDontHasInfo	(LPCSTR str)
+void CPhraseScript::AddDontHasInfo	(pcstr str)
 {
 	m_DontHasInfo.push_back	(str);
 }
-void CPhraseScript::AddGiveInfo		(LPCSTR str)
+void CPhraseScript::AddGiveInfo		(pcstr str)
 {
 	m_GiveInfo.push_back	(str);
 }
-void CPhraseScript::AddDisableInfo	(LPCSTR str)
+void CPhraseScript::AddDisableInfo	(pcstr str)
 {
 	m_DisableInfo.push_back	(str);
 }

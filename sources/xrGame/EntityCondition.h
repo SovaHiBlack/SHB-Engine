@@ -33,7 +33,7 @@ public:
 							CEntityCondition		(CEntityAlive *object);
 	virtual					~CEntityCondition		(void);
 
-	virtual void			LoadCondition			(LPCSTR section);
+	virtual void			LoadCondition			(pcstr section);
 	virtual void			remove_links			(const CObject *object);
 
 	virtual void			save					(NET_Packet &output_packet);
@@ -143,7 +143,7 @@ protected:
 		float			m_fV_Bleeding;
 		float			m_fV_WoundIncarnation;
 		float			m_fV_HealthRestore;
-		void			load(LPCSTR sect, LPCSTR prefix);
+		void			load(pcstr sect, pcstr prefix);
 	};
 	
 	SConditionChangeV m_change_v;

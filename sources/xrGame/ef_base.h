@@ -64,7 +64,7 @@ public:
 		return	(m_fMinResultValue);
 	}
 
-	IC		LPCSTR	Name()
+	IC		pcstr	Name()
 	{
 		return	(m_caName);
 	}

@@ -37,19 +37,19 @@ struct SBreakPoint{
 class CScriptDebugger
 {
 public:
-	void			Connect				(LPCSTR mslot_name);
-	void			Eval				(LPCSTR strCode, char* res, int res_sz);
+	void			Connect				(pcstr mslot_name);
+	void			Eval				(pcstr strCode, char* res, int res_sz);
 	void			AddLocalVariable	(const Variable& var);
 	void			ClearLocalVariables	();
-	void			AddGlobalVariable	(LPCSTR name, LPCSTR type, LPCSTR value);
+	void			AddGlobalVariable	(pcstr name, pcstr type, pcstr value);
 	void			ClearGlobalVariables();
 	void			StackLevelChanged	();
 	void			initiateDebugBreak	();
-	void			DebugBreak			(LPCSTR szFile, int nLine);
-	void			ErrorBreak			(LPCSTR szFile = 0, int nLine = 0);
-	void			LineHook			(LPCSTR szFile, int nLine);
-	void			FunctionHook		(LPCSTR szFile, int nLine, BOOL bCall);
-	void			Write				(LPCSTR szMsg);
+	void			DebugBreak			(pcstr szFile, int nLine);
+	void			ErrorBreak			(pcstr szFile = 0, int nLine = 0);
+	void			LineHook			(pcstr szFile, int nLine);
+	void			FunctionHook		(pcstr szFile, int nLine, BOOL bCall);
+	void			Write				(pcstr szMsg);
 
 	int				PrepareLua			(lua_State* );
 	void			UnPrepareLua		(lua_State* l, int idx);
@@ -68,7 +68,7 @@ public:
 	void			AddThread			(SScriptThread&);
 
 	void			ClearStackTrace		();
-	void			AddStackTrace		(LPCSTR strDesc, LPCSTR strFile, int nLine);
+	void			AddStackTrace		(pcstr strDesc, pcstr strFile, int nLine);
 	int				GetStackTraceLevel	();
 	
 	BOOL			Active				();
@@ -81,7 +81,7 @@ protected:
 	void			DrawThreadInfo		(int nThreadID);
 	void			GetBreakPointsFromIde();
 	void			FillBreakPointsIn	(CMailSlotMsg* msg);
-	bool			HasBreakPoint		(LPCSTR fileName, s32 lineNum);
+	bool			HasBreakPoint		(pcstr fileName, s32 lineNum);
 	void			CheckNewMessages	();
 	LRESULT			DebugMessage		(UINT nMsg, WPARAM wParam, LPARAM lParam);
 	void			WaitForReply		(bool bWaitForModalResult);

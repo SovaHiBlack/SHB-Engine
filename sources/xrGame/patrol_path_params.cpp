@@ -11,7 +11,7 @@
 #include "patrol_path_manager.h"
 #include "ai_space.h"
 
-CPatrolPathParams::CPatrolPathParams	(LPCSTR caPatrolPathToGo, const PatrolPathManager::EPatrolStartType tPatrolPathStart, const PatrolPathManager::EPatrolRouteType tPatrolPathStop, bool bRandom, u32 index)
+CPatrolPathParams::CPatrolPathParams	(pcstr caPatrolPathToGo, const PatrolPathManager::EPatrolStartType tPatrolPathStart, const PatrolPathManager::EPatrolRouteType tPatrolPathStop, bool bRandom, u32 index)
 {
 	m_path_name			= caPatrolPathToGo;
 	m_path				= ai().patrol_paths().path(m_path_name,true);
@@ -56,7 +56,7 @@ GameGraph::_GRAPH_ID CPatrolPathParams::game_vertex_id	(u32 index) const
 	return				(m_path->vertex(index)->data().game_vertex_id());
 }
 
-u32	CPatrolPathParams::point			(LPCSTR name) const
+u32	CPatrolPathParams::point			(pcstr name) const
 {
 	if (m_path->point(name))
 		return			(m_path->point(name)->vertex_id());
@@ -80,7 +80,7 @@ Flags32 CPatrolPathParams::flags		(u32 index) const
 	return				(Flags32().assign(m_path->vertex(index)->data().flags()));
 }
 
-LPCSTR	CPatrolPathParams::name	(u32 index) const
+pcstr	CPatrolPathParams::name	(u32 index) const
 {
 	VERIFY				(m_path->vertex(index));
 	return				(*m_path->vertex(index)->data().name());

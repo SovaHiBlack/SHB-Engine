@@ -21,7 +21,7 @@ BOOL CMedkit::net_Spawn(CSE_Abstract* DC)
 	return		(inherited::net_Spawn(DC));
 }
 
-void CMedkit::Load(LPCSTR section) 
+void CMedkit::Load(pcstr section)
 {
 	inherited::Load(section);
 }

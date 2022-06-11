@@ -17,7 +17,7 @@ CTushkano::~CTushkano()
 	xr_delete(StateMan);
 }
 
-void CTushkano::Load(LPCSTR section)
+void CTushkano::Load(pcstr section)
 {
 	inherited::Load	(section);
 

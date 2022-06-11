@@ -70,24 +70,24 @@ public:
 	// »щет на по€се IItem дл€ указанного слота
 	PIItem					SameSlot			(const u32 slot, PIItem pIItem, bool bSearchRuck) const;
 	// »щет на по€се или в рюкзаке IItem с указанным именем (cName())
-	PIItem					Get					(LPCSTR name, bool bSearchRuck) const;
+	PIItem					Get					(pcstr name, bool bSearchRuck) const;
 	// »щет на по€се или в рюкзаке IItem с указанным именем (id)
 	PIItem					Get					(const u16  id,	 bool bSearchRuck) const;
 	// »щет на по€се или в рюкзаке IItem с указанным CLS_ID
 	PIItem					Get					(CLASS_ID cls_id,  bool bSearchRuck) const;
-	PIItem					GetAny				(LPCSTR name) const;//search both (ruck and belt)
+	PIItem					GetAny				(pcstr name) const;//search both (ruck and belt)
 	PIItem					item				(CLASS_ID cls_id) const;
 	
 	// get all the items with the same section name
-	virtual u32				dwfGetSameItemCount	(LPCSTR caSection, bool SearchAll = false);	
-	virtual u32				dwfGetGrenadeCount	(LPCSTR caSection, bool SearchAll);	
+	virtual u32				dwfGetSameItemCount	(pcstr caSection, bool SearchAll = false);
+	virtual u32				dwfGetGrenadeCount	(pcstr caSection, bool SearchAll);
 	// get all the items with the same object id
 	virtual bool			bfCheckForObject	(ALife::_OBJECT_ID tObjectID);	
 	PIItem					get_object_by_id	(ALife::_OBJECT_ID tObjectID);
 
 	u32						dwfGetObjectCount	();
 	PIItem					tpfGetObjectByIndex	(int iIndex);
-	PIItem					GetItemFromInventory(LPCSTR caItemName);
+	PIItem					GetItemFromInventory(pcstr caItemName);
 
 	bool					Eat					(PIItem pIItem);								
 

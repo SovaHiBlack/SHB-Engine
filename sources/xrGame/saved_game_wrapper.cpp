@@ -15,9 +15,9 @@
 #include "game_graph.h"
 #include "alife_simulator_header.h"
 
-extern LPCSTR alife_section;
+extern pcstr alife_section;
 
-LPCSTR CSavedGameWrapper::saved_game_full_name	(LPCSTR saved_game_name, string_path& result)
+pcstr CSavedGameWrapper::saved_game_full_name	(pcstr saved_game_name, string_path& result)
 {
 	string_path					temp;
 	strconcat					(sizeof(temp),temp,saved_game_name,SAVE_EXTENSION);
@@ -25,7 +25,7 @@ LPCSTR CSavedGameWrapper::saved_game_full_name	(LPCSTR saved_game_name, string_p
 	return						(result);
 }
 
-bool CSavedGameWrapper::saved_game_exist		(LPCSTR saved_game_name)
+bool CSavedGameWrapper::saved_game_exist		(pcstr saved_game_name)
 {
 	string_path					file_name;
 	return						(!!FS.exist(saved_game_full_name(saved_game_name,file_name)));
@@ -45,7 +45,7 @@ bool CSavedGameWrapper::valid_saved_game		(IReader &stream)
 	return						(true);
 }
 
-bool CSavedGameWrapper::valid_saved_game		(LPCSTR saved_game_name)
+bool CSavedGameWrapper::valid_saved_game		(pcstr saved_game_name)
 {
 	string_path					file_name;
 	if (!FS.exist(saved_game_full_name(saved_game_name,file_name)))
@@ -57,7 +57,7 @@ bool CSavedGameWrapper::valid_saved_game		(LPCSTR saved_game_name)
 	return						(result);
 }
 
-CSavedGameWrapper::CSavedGameWrapper		(LPCSTR saved_game_name)
+CSavedGameWrapper::CSavedGameWrapper		(pcstr saved_game_name)
 {
 	string_path					file_name;
 	saved_game_full_name		(saved_game_name,file_name);

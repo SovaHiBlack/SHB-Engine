@@ -39,7 +39,7 @@ void CMincer::OnStateSwitch(EZoneState new_state)
 	inherited::OnStateSwitch(new_state);
 }
 
-void CMincer::Load (LPCSTR section)
+void CMincer::Load (pcstr section)
 {
 	inherited::Load(section);
 	

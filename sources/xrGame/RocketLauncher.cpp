@@ -18,12 +18,12 @@ CRocketLauncher::CRocketLauncher()
 CRocketLauncher::~CRocketLauncher()
 {
 }
-void  CRocketLauncher::Load	(LPCSTR section)
+void  CRocketLauncher::Load	(pcstr section)
 {
 	m_fLaunchSpeed = pSettings->r_float(section, "launch_speed");
 }
 
-void CRocketLauncher::SpawnRocket(LPCSTR rocket_section, CGameObject* parent_rocket_launcher)
+void CRocketLauncher::SpawnRocket(pcstr rocket_section, CGameObject* parent_rocket_launcher)
 {
 //	VERIFY(m_pRocket == NULL);
 	if (OnClient()) return;

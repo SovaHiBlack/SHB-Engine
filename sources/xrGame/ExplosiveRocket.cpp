@@ -23,7 +23,7 @@ DLL_Pure *CExplosiveRocket::_construct	()
 	return						(this);
 }
 
-void CExplosiveRocket::Load(LPCSTR section) 
+void CExplosiveRocket::Load(pcstr section)
 {
 	inherited::Load(section);
 	CInventoryItem::Load(section);
@@ -127,7 +127,7 @@ void CExplosiveRocket::reinit				()
 	CInventoryItem::reinit			();
 }
 
-void CExplosiveRocket::reload					(LPCSTR section)
+void CExplosiveRocket::reload					(pcstr section)
 {
 	inherited::reload				(section);
 	CInventoryItem::reload			(section);

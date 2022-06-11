@@ -72,7 +72,7 @@ void CHitMemoryManager::add					(const CEntityAlive *entity_alive)
 	add						(0,Fvector().set(0,0,1),entity_alive,0);
 }
 
-void CHitMemoryManager::Load				(LPCSTR section)
+void CHitMemoryManager::Load				(pcstr section)
 {
 }
 
@@ -82,7 +82,7 @@ void CHitMemoryManager::reinit				()
 	m_last_hit_object_id	= ALife::_OBJECT_ID(-1);
 }
 
-void CHitMemoryManager::reload				(LPCSTR section)
+void CHitMemoryManager::reload				(pcstr section)
 {
 #ifdef USE_SELECTED_HIT
 	xr_delete				(m_selected_hit);

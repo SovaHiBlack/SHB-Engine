@@ -153,7 +153,7 @@ public:
     BOOL				SetParent		(int parent);
 
 #ifdef DEBUG
-	LPCSTR				dbg_Name		();
+	pcstr				dbg_Name		();
 #endif
 };
 
@@ -198,7 +198,7 @@ public:
 		material_pairs.clear();
 	}
     // material routine
-    IC GameMtlIt 		GetMaterialIt	(LPCSTR name)
+    IC GameMtlIt 		GetMaterialIt	(pcstr name)
     {
         for (GameMtlIt it=materials.begin(); materials.end() != it; ++it)
             if (0==strcmpi(*(*it)->m_Name,name)) return it;
@@ -216,14 +216,14 @@ public:
             if ((*it)->ID==id) return it;
         return materials.end();
     }
-	IC u32				GetMaterialID	(LPCSTR name)
+	IC u32				GetMaterialID	(pcstr name)
     {
     	GameMtlIt it	= GetMaterialIt	(name);
         return (it==materials.end())?GAMEMTL_NONE_ID:(*it)->ID;
     }
 
 	IC u16				GetMaterialIdx	(int ID)		{GameMtlIt it=GetMaterialItByID(ID);VERIFY(materials.end() != it); return (u16)(it-materials.begin());}
-	IC u16				GetMaterialIdx	(LPCSTR name)	{GameMtlIt it=GetMaterialIt(name);VERIFY(materials.end() != it); return (u16)(it-materials.begin());}
+	IC u16				GetMaterialIdx	(pcstr name)	{GameMtlIt it=GetMaterialIt(name);VERIFY(materials.end() != it); return (u16)(it-materials.begin());}
 	IC SGameMtl*		GetMaterialByIdx(u16 idx)		{VERIFY(idx<materials.size()); return materials[idx];}
 	IC SGameMtl*		GetMaterialByID (s32 id)		{return GetMaterialByIdx(GetMaterialIdx(id));}
 

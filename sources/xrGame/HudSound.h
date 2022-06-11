@@ -14,13 +14,13 @@ struct HUD_SOUND
 	////////////////////////////////////
 	// работа со звуками
 	/////////////////////////////////////
-	static void		LoadSound		(	LPCSTR section, LPCSTR line,
+	static void		LoadSound		(pcstr section, pcstr line,
 		ref_sound& hud_snd,
 		int type = sg_SourceType,
 		float* volume = NULL,
 		float* delay = NULL);
 
-	static void		LoadSound		(	LPCSTR section, LPCSTR line,
+	static void		LoadSound		(pcstr section, pcstr line,
 		HUD_SOUND& hud_snd,  int type = sg_SourceType);
 
 	static void		DestroySound	(	HUD_SOUND& hud_snd);

@@ -24,7 +24,7 @@ DLL_Pure *CEatableItemObject::_construct	()
 	return						(this);
 }
 
-void CEatableItemObject::Load				(LPCSTR section) 
+void CEatableItemObject::Load				(pcstr section)
 {
 	CPhysicItem::Load			(section);
 	CEatableItem::Load			(section);
@@ -113,7 +113,7 @@ void CEatableItemObject::renderable_Render()
 	CEatableItem::renderable_Render	();
 }
 
-void CEatableItemObject::reload			(LPCSTR section)
+void CEatableItemObject::reload			(pcstr section)
 {
 	CPhysicItem::reload					(section);
 	CEatableItem::reload				(section);

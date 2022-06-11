@@ -27,7 +27,7 @@ CProjector::~CProjector()
 	glow_render.destroy		();
 }
 
-void CProjector::Load(LPCSTR section)
+void CProjector::Load(pcstr section)
 {
 	inherited::Load(section);
 }

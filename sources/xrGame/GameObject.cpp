@@ -67,7 +67,7 @@ void CGameObject::init			()
 	m_spawned					= false;
 }
 
-void CGameObject::Load(LPCSTR section)
+void CGameObject::Load(pcstr section)
 {
 	inherited::Load			(section);
 	ISpatial*		self				= smart_cast<ISpatial*> (this);
@@ -87,7 +87,7 @@ void CGameObject::reinit	()
 	for (CALLBACK_MAP_IT it = m_callbacks->begin(); it != m_callbacks->end(); ++it) it->second.clear();
 }
 
-void CGameObject::reload	(LPCSTR section)
+void CGameObject::reload	(pcstr section)
 {
 	m_script_clsid				= object_factory().script_clsid(CLS_ID);
 }
@@ -434,7 +434,8 @@ void CGameObject::spawn_supplies()
 	if (!spawn_ini()->section_exist("spawn"))
 		return;
 
-	LPCSTR					N,V;
+	pcstr					N;
+	pcstr					V;
 	float					p;
 	bool bScope				=	false;
 	bool bSilencer			=	false;
@@ -780,7 +781,7 @@ BOOL CGameObject::net_SaveRelevant	()
 }
 
 //игровое имя объекта
-LPCSTR CGameObject::Name () const
+pcstr CGameObject::Name () const
 {
 	return	(*cName());
 }
@@ -841,7 +842,7 @@ CGameObject::CScriptCallbackExVoid &CGameObject::callback(GameObject::ECallbackT
 	return ((*m_callbacks)[type]);
 }
 
-LPCSTR CGameObject::visual_name			(CSE_Abstract *server_entity)
+pcstr CGameObject::visual_name			(CSE_Abstract *server_entity)
 {
 	const CSE_Visual			*visual	= smart_cast<const CSE_Visual*>(server_entity);
 	VERIFY						(visual);

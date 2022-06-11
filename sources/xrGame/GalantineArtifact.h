@@ -14,7 +14,7 @@ public:
 	CGalantineArtefact(void);
 	virtual ~CGalantineArtefact(void);
 
-	virtual void Load				(LPCSTR section);
+	virtual void Load				(pcstr section);
 
 protected:
 };

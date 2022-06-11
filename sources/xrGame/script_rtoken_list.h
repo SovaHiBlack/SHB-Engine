@@ -17,9 +17,9 @@ protected:
 	RTOKEN_LIST			m_values;
 
 public:
-	IC		void		add		(LPCSTR value);
+	IC		void		add		(pcstr value);
 	IC		void		remove	(u32 index);
-	IC		LPCSTR		get		(u32 index);
+	IC		pcstr		get		(u32 index);
 	IC		u32			size	();
 	IC		void		clear	();
 	IC		RTOKEN_LIST	&tokens	();

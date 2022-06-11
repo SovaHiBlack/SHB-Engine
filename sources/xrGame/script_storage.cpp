@@ -12,7 +12,7 @@
 #include <stdarg.h>
 #include "doug_lea_memory_allocator.h"
 
-LPCSTR	file_header_old = "\
+pcstr	file_header_old = "\
 local function script_name() \
 return \"%s\" \
 end \
@@ -22,7 +22,7 @@ setmetatable(this, {__index = _G}) \
 setfenv(1, this) \
 		";
 
-LPCSTR	file_header_new = "\
+pcstr	file_header_new = "\
 local function script_name() \
 return \"%s\" \
 end \
@@ -32,7 +32,7 @@ this._G = _G \
 setfenv(1, this) \
 		";
 
-LPCSTR	file_header = 0;
+pcstr	file_header = 0;
 
 #ifndef ENGINE_BUILD
 #	include "script_engine.h"
@@ -149,7 +149,7 @@ void CScriptStorage::reinit	()
 		file_header			= file_header_old;
 }
 
-int CScriptStorage::vscript_log		(ScriptStorage::ELuaMessageType tLuaMessageType, LPCSTR caFormat, va_list marker)
+int CScriptStorage::vscript_log		(ScriptStorage::ELuaMessageType tLuaMessageType, pcstr caFormat, va_list marker)
 {
 #ifndef NO_XRGAME_SCRIPT_ENGINE
 #	ifdef DEBUG
@@ -162,7 +162,8 @@ int CScriptStorage::vscript_log		(ScriptStorage::ELuaMessageType tLuaMessageType
 	return		(0);
 #else // DEBUG
 
-	LPCSTR		S = "", SS = "";
+	pcstr		S = "";
+	pcstr		SS = "";
 	LPSTR		S1;
 	string4096	S2;
 	switch (tLuaMessageType) {
@@ -252,7 +253,7 @@ void CScriptStorage::print_stack		()
 }
 #endif
 
-int __cdecl CScriptStorage::script_log	(ScriptStorage::ELuaMessageType tLuaMessageType, LPCSTR caFormat, ...)
+int __cdecl CScriptStorage::script_log	(ScriptStorage::ELuaMessageType tLuaMessageType, pcstr caFormat, ...)
 {
 
 	va_list		marker;
@@ -279,7 +280,7 @@ int __cdecl CScriptStorage::script_log	(ScriptStorage::ELuaMessageType tLuaMessa
 	return		(result);
 }
 
-bool CScriptStorage::parse_namespace(LPCSTR caNamespaceName, LPSTR b, LPSTR c)
+bool CScriptStorage::parse_namespace(pcstr caNamespaceName, LPSTR b, LPSTR c)
 {
 	strcpy			(b,"");
 	strcpy			(c,"");
@@ -310,13 +311,13 @@ bool CScriptStorage::parse_namespace(LPCSTR caNamespaceName, LPSTR b, LPSTR c)
 	return			(true);
 }
 
-bool CScriptStorage::load_buffer	(lua_State *L, LPCSTR caBuffer, size_t tSize, LPCSTR caScriptName, LPCSTR caNameSpaceName)
+bool CScriptStorage::load_buffer	(lua_State *L, pcstr caBuffer, size_t tSize, pcstr caScriptName, pcstr caNameSpaceName)
 {
 	int					l_iErrorCode;
 	if (caNameSpaceName && xr_strcmp("_G",caNameSpaceName)) {
 		string512		insert, a, b;
 
-		LPCSTR			header = file_header;
+		pcstr			header = file_header;
 
 		if (!parse_namespace(caNameSpaceName,a,b))
 			return		(false);
@@ -353,7 +354,7 @@ bool CScriptStorage::load_buffer	(lua_State *L, LPCSTR caBuffer, size_t tSize, L
 	return				(true);
 }
 
-bool CScriptStorage::do_file	(LPCSTR caScriptName, LPCSTR caNameSpaceName)
+bool CScriptStorage::do_file	(pcstr caScriptName, pcstr caNameSpaceName)
 {
 	int				start = lua_gettop(lua());
 	string_path		l_caLuaFileName;
@@ -364,7 +365,7 @@ bool CScriptStorage::do_file	(LPCSTR caScriptName, LPCSTR caNameSpaceName)
 	}
 	strconcat		(sizeof(l_caLuaFileName),l_caLuaFileName,"@",caScriptName);
 	
-	if (!load_buffer(lua(),static_cast<LPCSTR>(l_tpFileReader->pointer()),(size_t)l_tpFileReader->length(),l_caLuaFileName,caNameSpaceName)) {
+	if (!load_buffer(lua(),static_cast<pcstr>(l_tpFileReader->pointer()),(size_t)l_tpFileReader->length(),l_caLuaFileName,caNameSpaceName)) {
 //		VERIFY		(lua_gettop(lua()) >= 4);
 //		lua_pop		(lua(),4);
 //		VERIFY		(lua_gettop(lua()) == start - 3);
@@ -406,7 +407,7 @@ bool CScriptStorage::do_file	(LPCSTR caScriptName, LPCSTR caNameSpaceName)
 	return			(true);
 }
 
-bool CScriptStorage::load_file_into_namespace(LPCSTR caScriptName, LPCSTR caNamespaceName)
+bool CScriptStorage::load_file_into_namespace(pcstr caScriptName, pcstr caNamespaceName)
 {
 	int				start = lua_gettop(lua());
 	if (!do_file(caScriptName,caNamespaceName)) {
@@ -417,7 +418,7 @@ bool CScriptStorage::load_file_into_namespace(LPCSTR caScriptName, LPCSTR caName
 	return			(true);
 }
 
-bool CScriptStorage::namespace_loaded(LPCSTR N, bool remove_from_stack)
+bool CScriptStorage::namespace_loaded(pcstr N, bool remove_from_stack)
 {
 	int						start = lua_gettop(lua());
 	lua_pushstring 			(lua(),"_G"); 
@@ -466,7 +467,7 @@ bool CScriptStorage::namespace_loaded(LPCSTR N, bool remove_from_stack)
 	return					(true); 
 }
 
-bool CScriptStorage::object	(LPCSTR identifier, int type)
+bool CScriptStorage::object	(pcstr identifier, int type)
 {
 	int						start = lua_gettop(lua());
 	lua_pushnil				(lua()); 
@@ -485,7 +486,7 @@ bool CScriptStorage::object	(LPCSTR identifier, int type)
 	return					(false); 
 }
 
-bool CScriptStorage::object	(LPCSTR namespace_name, LPCSTR identifier, int type)
+bool CScriptStorage::object	(pcstr namespace_name, pcstr identifier, int type)
 {
 	int						start = lua_gettop(lua());
 	if (xr_strlen(namespace_name) && !namespace_loaded(namespace_name,false)) {
@@ -497,7 +498,7 @@ bool CScriptStorage::object	(LPCSTR namespace_name, LPCSTR identifier, int type)
 	return					(result); 
 }
 
-luabind::object CScriptStorage::name_space(LPCSTR namespace_name)
+luabind::object CScriptStorage::name_space(pcstr namespace_name)
 {
 	string256			S1;
 	strcpy				(S1,namespace_name);
@@ -515,7 +516,7 @@ luabind::object CScriptStorage::name_space(LPCSTR namespace_name)
 	}
 }
 
-bool CScriptStorage::print_output(lua_State *L, LPCSTR caScriptFileName, int iErorCode)
+bool CScriptStorage::print_output(lua_State *L, pcstr caScriptFileName, int iErorCode)
 {
 	if (iErorCode)
 		print_error		(L,iErorCode);
@@ -523,7 +524,7 @@ bool CScriptStorage::print_output(lua_State *L, LPCSTR caScriptFileName, int iEr
 	if (!lua_isstring(L,-1))
 		return			(false);
 
-	LPCSTR				S = lua_tostring(L,-1);
+	pcstr				S = lua_tostring(L,-1);
 	if (!xr_strcmp(S,"cannot resume dead coroutine")) {
 		VERIFY2	("Please do not return any values from main!!!",caScriptFileName);
 #ifdef USE_DEBUGGER

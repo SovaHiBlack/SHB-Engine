@@ -132,8 +132,8 @@ public:
 			CScriptGameObject	*Parent				() const;
 			void				Hit					(CScriptHit *tLuaHit);
 			int					clsid				() const;
-			void				play_cycle			(LPCSTR anim, bool mix_in);
-			void				play_cycle			(LPCSTR anim);
+			void				play_cycle			(pcstr anim, bool mix_in);
+			void				play_cycle			(pcstr anim);
 			Fvector				Center				();
 	_DECLARE_FUNCTION10	(Position	,	Fvector		);
 	_DECLARE_FUNCTION10	(Direction	,	Fvector		);
@@ -143,9 +143,9 @@ public:
 	_DECLARE_FUNCTION10	(getEnabled	,	BOOL		);
 	_DECLARE_FUNCTION10	(story_id	,	ALife::_STORY_ID);
 	
-			LPCSTR				Name				() const;
+	pcstr				Name				() const;
 			shared_str			cName				() const;
-			LPCSTR				Section				() const;
+			pcstr				Section				() const;
 	// CInventoryItem
 			u32					Cost				() const;
 			float				GetCondition		() const;
@@ -186,9 +186,9 @@ public:
 
 	// CScriptEntity
 	
-	_DECLARE_FUNCTION12	(SetScriptControl,	void, bool,				LPCSTR);
+	_DECLARE_FUNCTION12	(SetScriptControl,	void, bool, pcstr);
 	_DECLARE_FUNCTION10	(GetScriptControl	,			bool	);
-	_DECLARE_FUNCTION10	(GetScriptControlName,			LPCSTR	);
+	_DECLARE_FUNCTION10	(GetScriptControlName, pcstr);
 	_DECLARE_FUNCTION10	(GetEnemyStrength, int);
 	_DECLARE_FUNCTION10	(can_script_capture, bool);
 	
@@ -201,9 +201,9 @@ public:
 			void				SetActorDirection	(float dir);
 	// CCustomMonster
 			bool				CheckObjectVisibility(const CScriptGameObject *tpLuaGameObject);
-			bool				CheckTypeVisibility	(LPCSTR section_name);
-			LPCSTR				WhoHitName			();
-			LPCSTR				WhoHitSectionName	();
+			bool				CheckTypeVisibility	(pcstr section_name);
+			pcstr				WhoHitName			();
+			pcstr				WhoHitSectionName	();
 
 			void				ChangeTeam			(u8 team, u8 squad, u8 group);
 
@@ -225,17 +225,17 @@ public:
 
 	// CBaseMonster
 			void				skip_transfer_enemy		(bool val);
-			void				set_home				(LPCSTR name, float r_min, float r_max, bool aggressive);
+			void				set_home				(pcstr name, float r_min, float r_max, bool aggressive);
 			void				remove_home				();
 			void				berserk					();
 			void				set_custom_panic_threshold	(float value);
 			void				set_default_panic_threshold	();
 
 	// CAI_Trader
-			void				set_trader_global_anim	(LPCSTR anim);
-			void				set_trader_head_anim	(LPCSTR anim);
-			void				set_trader_sound		(LPCSTR sound, LPCSTR anim);
-			void				external_sound_start	(LPCSTR sound);
+			void				set_trader_global_anim	(pcstr anim);
+			void				set_trader_head_anim	(pcstr anim);
+			void				set_trader_sound		(pcstr sound, pcstr anim);
+			void				external_sound_start	(pcstr sound);
 			void				external_sound_stop		();
 
 			template <typename T>
@@ -245,18 +245,18 @@ public:
 			Fvector				GetCurrentDirection		();
 			bool				IsInvBoxEmpty			();
 	//передача порции информации InventoryOwner
-			bool				GiveInfoPortion		(LPCSTR info_id);
-			bool				DisableInfoPortion	(LPCSTR info_id);
-			bool				GiveGameNews		(LPCSTR news, LPCSTR texture_name, Frect tex_rect, int delay, int show_time);
+			bool				GiveInfoPortion		(pcstr info_id);
+			bool				DisableInfoPortion	(pcstr info_id);
+			bool				GiveGameNews		(pcstr news, pcstr texture_name, Frect tex_rect, int delay, int show_time);
 
-			void				AddIconedTalkMessage(LPCSTR text, LPCSTR texture_name, Frect tex_rect, LPCSTR templ_name);
+			void				AddIconedTalkMessage(pcstr text, pcstr texture_name, Frect tex_rect, pcstr templ_name);
 	//предикаты наличия/отсутствия порции информации у персонажа
-			bool				HasInfo				(LPCSTR info_id);
-			bool				DontHasInfo			(LPCSTR info_id);
-			xrTime				GetInfoTime			(LPCSTR info_id);
+			bool				HasInfo				(pcstr info_id);
+			bool				DontHasInfo			(pcstr info_id);
+			xrTime				GetInfoTime			(pcstr info_id);
 	//работа с заданиями
-			ETaskState			GetGameTaskState	(LPCSTR task_id, int objective_num);
-			void				SetGameTaskState	(ETaskState state, LPCSTR task_id, int objective_num);
+			ETaskState			GetGameTaskState	(pcstr task_id, int objective_num);
+			void				SetGameTaskState	(ETaskState state, pcstr task_id, int objective_num);
 			void				GiveTaskToActor		(CGameTask* t, u32 dt, bool bCheckExisting);
 			
 			bool				IsTalking			();
@@ -290,7 +290,7 @@ public:
 			void				SetGoodwill			(int goodwill, CScriptGameObject* pWhoToSet);
 			void				ChangeGoodwill		(int delta_goodwill, CScriptGameObject* pWhoToSet);
 
-			void				SetStartDialog		(LPCSTR dialog_id);
+			void				SetStartDialog		(pcstr dialog_id);
 			void				GetStartDialog		();
 			void				RestoreDefaultStartDialog();
 
@@ -302,22 +302,22 @@ public:
 			void				RestoreWeapon		();
 
 
-			LPCSTR				ProfileName			();
-			LPCSTR				CharacterName		();
-			LPCSTR				CharacterCommunity	();
+			pcstr				ProfileName			();
+			pcstr				CharacterName		();
+			pcstr				CharacterCommunity	();
 			int					CharacterRank		();
 			int					CharacterReputation	();
 
 			void SetCharacterRank			(int);
 			void ChangeCharacterRank		(int);
 			void ChangeCharacterReputation	(int);
-			void SetCharacterCommunity		(LPCSTR,int,int);
+			void SetCharacterCommunity		(pcstr,int,int);
 
 			u32					GetInventoryObjectCount() const;
 
 			CScriptGameObject	*GetActiveItem		();
 
-			CScriptGameObject	*GetObjectByName	(LPCSTR caObjectName) const;
+			CScriptGameObject	*GetObjectByName	(pcstr caObjectName) const;
 			CScriptGameObject	*GetObjectByIndex	(int iIndex) const;
 
 	// Callbacks			
@@ -335,7 +335,7 @@ public:
 	
 	//////////////////////////////////////////////////////////////////////////////////////
 	////////////////////////////use calback///////////////////////////////////////////////
-			void				SetTipText			(LPCSTR tip_text);
+			void				SetTipText			(pcstr tip_text);
 			void				SetTipTextDefault	();
 			void				SetNonscriptUsable	(bool nonscript_usable);
 ///////////////////////////////////////////////////////////////////////////////////////////
@@ -343,7 +343,7 @@ public:
 			void				set_const_force		(const Fvector &dir,float value,u32  time_interval)							;
 //////////////////////////////////////////////////////////////////////////
 
-			LPCSTR				GetPatrolPathName	();
+			pcstr				GetPatrolPathName	();
 			u32					GetAmmoElapsed		();
 			void				SetAmmoElapsed		(int ammo_elapsed);
 			u32					GetAmmoCurrent		() const;
@@ -363,7 +363,7 @@ public:
 			//////////////////////////////////////////////////////////////////////////
 			Flags32				get_actor_relation_flags	()			const;
 			void 				set_actor_relation_flags	(Flags32);
-			LPCSTR				sound_voice_prefix	()			const;
+			pcstr				sound_voice_prefix	()			const;
 
 			//////////////////////////////////////////////////////////////////////////
 			u32						memory_time		(const CScriptGameObject &lua_game_object);
@@ -395,9 +395,9 @@ public:
 	MovementManager::EPathType			path_type			() const;
 	DetailPathManager::EDetailPathType	detail_path_type	() const;
 
-			u32					add_sound				(LPCSTR prefix, u32 max_count, ESoundTypes type, u32 priority, u32 mask, u32 internal_type, LPCSTR bone_name);
-			u32					add_sound				(LPCSTR prefix, u32 max_count, ESoundTypes type, u32 priority, u32 mask, u32 internal_type);
-			u32					add_sound				(LPCSTR prefix, u32 max_count, ESoundTypes type, u32 priority, u32 mask, u32 internal_type, LPCSTR bone_name, LPCSTR head_anim);
+			u32					add_sound				(pcstr prefix, u32 max_count, ESoundTypes type, u32 priority, u32 mask, u32 internal_type, pcstr bone_name);
+			u32					add_sound				(pcstr prefix, u32 max_count, ESoundTypes type, u32 priority, u32 mask, u32 internal_type);
+			u32					add_sound				(pcstr prefix, u32 max_count, ESoundTypes type, u32 priority, u32 mask, u32 internal_type, pcstr bone_name, pcstr head_anim);
 			void				remove_sound			(u32 internal_type);
 			void				set_sound_mask			(u32 sound_mask);
 			void				set_sight				(SightManager::ESightType sight_type, const Fvector *vector3d, u32 dwLookOverDelay);
@@ -425,12 +425,12 @@ public:
 			void				set_desired_position	(const Fvector *desired_position);
 			void				set_desired_direction	();
 			void				set_desired_direction	(const Fvector *desired_direction);
-			void				set_patrol_path			(LPCSTR path_name, const PatrolPathManager::EPatrolStartType patrol_start_type, const PatrolPathManager::EPatrolRouteType patrol_route_type, bool random);
+			void				set_patrol_path			(pcstr path_name, const PatrolPathManager::EPatrolStartType patrol_start_type, const PatrolPathManager::EPatrolRouteType patrol_route_type, bool random);
 			void				set_dest_level_vertex_id(u32 level_vertex_id);
 			u32					level_vertex_id			() const;
 			float				level_vertex_light		(const u32 &level_vertex_id) const;
 			u32					game_vertex_id			() const;
-			void				add_animation			(LPCSTR animation, bool hand_usage, bool use_movement_controller);
+			void				add_animation			(pcstr animation, bool hand_usage, bool use_movement_controller);
 			void				clear_animations		();
 			int					animation_count			() const;
 			int					animation_slot			() const;
@@ -451,13 +451,13 @@ public:
 			bool				active_zone_contact		(u16 id);
 
 			///
-			void				add_restrictions		(LPCSTR out, LPCSTR in);
-			void				remove_restrictions		(LPCSTR out, LPCSTR in);
+			void				add_restrictions		(pcstr out, pcstr in);
+			void				remove_restrictions		(pcstr out, pcstr in);
 			void				remove_all_restrictions	();
-			LPCSTR				in_restrictions			();
-			LPCSTR				out_restrictions		();
-			LPCSTR				base_in_restrictions	();
-			LPCSTR				base_out_restrictions	();
+			pcstr				in_restrictions			();
+			pcstr				out_restrictions		();
+			pcstr				base_in_restrictions	();
+			pcstr				base_out_restrictions	();
 			bool				accessible_position		(const Fvector &position);
 			bool				accessible_vertex_id	(u32 level_vertex_id);
 			u32					accessible_nearest		(const Fvector &position, Fvector &result);
@@ -489,7 +489,7 @@ public:
 			CHolderCustom*		get_custom_holder		();
 			CHolderCustom*		get_current_holder		(); //actor only
 
-			Fvector				bone_position			(LPCSTR bone_name) const;
+			Fvector				bone_position			(pcstr bone_name) const;
 			bool				is_body_turning			() const;
 			CPhysicsShell*		get_physics_shell		() const;
 			bool				weapon_strapped			() const;
@@ -501,7 +501,7 @@ public:
 			Fvector				head_orientation		() const;
 			u32					vertex_in_direction		(u32 level_vertex_id, Fvector direction, float max_distance) const;
 			
-			void				info_add				(LPCSTR text);
+			void				info_add				(pcstr text);
 			void				info_clear				();
 			
 			// Monster Jumper
@@ -524,15 +524,15 @@ public:
 			void				debug_planner						(const script_planner *planner);
 #endif
 
-			void				sell_condition						(CScriptIniFile *ini_file, LPCSTR section);
+			void				sell_condition						(CScriptIniFile *ini_file, pcstr section);
 			void				sell_condition						(float friend_factor, float enemy_factor);
-			void				buy_condition						(CScriptIniFile *ini_file, LPCSTR section);
+			void				buy_condition						(CScriptIniFile *ini_file, pcstr section);
 			void				buy_condition						(float friend_factor, float enemy_factor);
-			void				show_condition						(CScriptIniFile *ini_file, LPCSTR section);
-			void				buy_supplies						(CScriptIniFile *ini_file, LPCSTR section);
+			void				show_condition						(CScriptIniFile *ini_file, pcstr section);
+			void				buy_supplies						(CScriptIniFile *ini_file, pcstr section);
 
-			LPCSTR				sound_prefix						() const;
-			void				sound_prefix						(LPCSTR sound_prefix);
+			pcstr				sound_prefix						() const;
+			void				sound_prefix						(pcstr sound_prefix);
 
 			u32					location_on_path					(float distance, Fvector *location);
 
@@ -556,8 +556,8 @@ add_to_type_list(CScriptGameObject)
 #undef script_type_list
 #define script_type_list save_type_list(CScriptGameObject)
 
-extern void sell_condition	(CScriptIniFile *ini_file, LPCSTR section);
+extern void sell_condition	(CScriptIniFile *ini_file, pcstr section);
 extern void sell_condition	(float friend_factor, float enemy_factor);
-extern void buy_condition	(CScriptIniFile *ini_file, LPCSTR section);
+extern void buy_condition	(CScriptIniFile *ini_file, pcstr section);
 extern void buy_condition	(float friend_factor, float enemy_factor);
-extern void show_condition	(CScriptIniFile *ini_file, LPCSTR section);
+extern void show_condition	(CScriptIniFile *ini_file, pcstr section);

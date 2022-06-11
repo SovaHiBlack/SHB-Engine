@@ -32,7 +32,7 @@ struct SHeliEnemy{
 	void Update						();
 	void save						(NET_Packet &output_packet);
 	void load						(IReader &input_packet);
-	void Load						(LPCSTR section);
+	void Load						(pcstr section);
 };
 
 enum EHeliBodyState{eBodyByPath,eBodyToPoint};
@@ -55,8 +55,7 @@ struct SHeliBodyState{
 
 	void save						(NET_Packet &output_packet);
 	void load						(IReader &input_packet);
-	void Load						(LPCSTR section);
-
+	void Load						(pcstr section);
 };
 
 enum EHeilMovementState{eMovNone,eMovToPoint,eMovPatrolPath,eMovRoundPath,eMovLanding,eMovTakeOff};
@@ -120,11 +119,11 @@ public:
 	float	GetDistanceToDestPosition	();
 	void	getPathAltitude				(Fvector& point, float base_altitude);
 	void	SetDestPosition				(Fvector* pos);
-	void	goPatrolByPatrolPath		(LPCSTR path_name,int start_idx);
+	void	goPatrolByPatrolPath		(pcstr path_name,int start_idx);
 	void	CreateRoundPoints			(Fvector center, float radius, float start_h, float end_h, xr_vector<STmpPt>& round_points);
 	void	save						(NET_Packet &output_packet);
 	void	load						(IReader &input_packet);
-	void	Load						(LPCSTR section);
+	void	Load						(pcstr section);
 	void	net_Destroy					();
 };
 
@@ -263,8 +262,8 @@ public:
 	void							init		();
 	virtual	void					reinit		();
 
-	virtual	void					Load				(LPCSTR		section);
-	virtual	void					reload				(LPCSTR		section);
+	virtual	void					Load				(pcstr		section);
+	virtual	void					reload				(pcstr		section);
 
 	virtual BOOL					net_Spawn			(CSE_Abstract*		DC);
 	virtual void					net_Destroy			();
@@ -307,7 +306,7 @@ public:
 	bool					isObjectVisible					(CObject* O);
 	bool			 		isOnAttack						()				{return m_enemy.type!=eEnemyNone;}
 
-	void					goPatrolByPatrolPath			(LPCSTR path_name,int start_idx);
+	void					goPatrolByPatrolPath			(pcstr path_name,int start_idx);
 	void					goByRoundPath					(Fvector center, float radius, bool clockwise);
 	void					LookAtPoint						(Fvector point, bool do_it);
 	void					SetDestPosition					(Fvector* pos);

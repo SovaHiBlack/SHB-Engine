@@ -42,8 +42,8 @@ struct HitData
 	bool			operator	==		(u32 ID)	{return ID == BulletID;};
 	bool			operator	!=		(u32 ID)	{return ID != BulletID;};
 	//-----------------------------------------------------------
-	void				Write						(FILE* pFile);
-	void				WriteLtx					(CInifile& ini, LPCSTR sect, LPCSTR perfix);
+//	void				Write						(FILE* pFile);
+//	void				WriteLtx					(CInifile& ini, pcstr sect, pcstr perfix);
 };
 
 DEF_VECTOR	(HITS_VEC, HitData);
@@ -66,17 +66,17 @@ struct Weapon_Statistic
 	HITS_VEC		m_Hits;
 	
 
-	Weapon_Statistic(LPCSTR Name);
+	Weapon_Statistic(pcstr Name);
 	~Weapon_Statistic();
 
 	void			net_save			(NET_Packet* P);
 	void			net_load			(NET_Packet* P);
 
 	bool			FindHit				(u32 BulletID, HITS_VEC_it& Hit_it);
-	bool			operator	==		(LPCSTR name){int res = xr_strcmp(WName.c_str(), name);return	res	 == 0;}
+	bool			operator	==		(pcstr name){int res = xr_strcmp(WName.c_str(), name);return	res	 == 0;}
 	//-----------------------------------------------------------
-	void				Write						(FILE* pFile);
-	void				WriteLtx					(CInifile& ini, LPCSTR sect);
+//	void				Write						(FILE* pFile);
+//	void				WriteLtx					(CInifile& ini, pcstr sect);
 };
 
 DEF_VECTOR		(WEAPON_STATS, Weapon_Statistic);
@@ -101,18 +101,18 @@ struct Player_Statistic
 	//-----------------------------------------------
 	u32				m_dwCurMoneyRoundDelta;
 
-	Player_Statistic(LPCSTR Name);
+	Player_Statistic(pcstr Name);
 	~Player_Statistic();
 
-	WEAPON_STATS_it	FindPlayersWeapon	(LPCSTR WeaponName);
+	WEAPON_STATS_it	FindPlayersWeapon	(pcstr WeaponName);
 
 	void			net_save			(NET_Packet* P);
 	void			net_load			(NET_Packet* P);
 
-	bool			operator	==		(LPCSTR name){int res = xr_strcmp(PName.c_str(), name);return	res	 == 0;}
+	bool			operator	==		(pcstr name){int res = xr_strcmp(PName.c_str(), name);return	res	 == 0;}
 	//-----------------------------------------------------------
-	void				Write						(FILE* pFile);
-	void				WriteLtx					(CInifile& ini, LPCSTR sect);
+//	void				Write						(FILE* pFile);
+//	void				WriteLtx					(CInifile& ini, pcstr sect);
 };
 
 DEF_VECTOR	(PLAYERS_STATS, Player_Statistic);
@@ -167,14 +167,14 @@ struct WeaponUsageStatistic {
 
 	void				Clear			();
 
-	PLAYERS_STATS_it					FindPlayer			(LPCSTR PlayerName);
-	bool								GetPlayer			(LPCSTR PlayerName, PLAYERS_STATS_it& pPlayerI);	
-	void								ChangePlayerName	( LPCSTR from, LPCSTR to );
+	PLAYERS_STATS_it					FindPlayer			(pcstr PlayerName);
+	bool								GetPlayer			(pcstr PlayerName, PLAYERS_STATS_it& pPlayerI);
+	//void								ChangePlayerName	(pcstr from, pcstr to );
 
 	bool								FindBullet			(u32 BulletID, ABULLETS_it& Bullet_it);
 	void								RemoveBullet		(ABULLETS_it& Bullet_it);
 	//-----------------------------------------------
-	void				OnWeaponBought			(game_PlayerState* ps, LPCSTR WeaponName);
+	void				OnWeaponBought			(game_PlayerState* ps, pcstr WeaponName);
 	void				OnBullet_Fire			(SBullet* pBullet, const CCartridge& cartridge);
 	void				OnBullet_Hit			(SBullet* pBullet, u16 TargetID, s16 element, Fvector HitLocation);
 	void				OnBullet_Remove			(SBullet* pBullet);
@@ -190,7 +190,7 @@ struct WeaponUsageStatistic {
 	void				Send_Check_Respond			();
 	void				On_Check_Respond			(NET_Packet* P);
 
-	void				OnPlayerKilled				(game_PlayerState* ps);
+	//void				OnPlayerKilled				(game_PlayerState* ps);
 	void				OnPlayerSpawned				(game_PlayerState* ps);
 	void				OnPlayerAddMoney			(game_PlayerState* ps, s32 MoneyAmount);
 	void				OnPlayerBringArtefact		(game_PlayerState* ps);
@@ -202,9 +202,9 @@ struct WeaponUsageStatistic {
 	void				OnUpdateRespond				(NET_Packet* P);
 	//-----------------------------------------------
 	string_path			mFileName;
-	void				Write						(FILE* pFile);
 
-	void				WriteLtx					(CInifile& ini);
+//	void				Write						(FILE* pFile);
+//	void				WriteLtx					(CInifile& ini);
 };
 
 struct Bullet_Check_Respond_True

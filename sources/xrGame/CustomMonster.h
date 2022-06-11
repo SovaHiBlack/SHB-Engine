@@ -55,7 +55,7 @@ protected:
 		MotionID		ls;
 		MotionID		rs;
 
-		void			Create(CKinematicsAnimated* K, LPCSTR base);
+		void			Create(CKinematicsAnimated* K, pcstr base);
 	};
 
 private:
@@ -186,9 +186,9 @@ public:
 	virtual void				PHFreeze				()			{return inherited ::PHFreeze();}
 	///////////////////////////////////////////////////////////////////////
 public:
-	virtual void				Load					(LPCSTR	section);				
+	virtual void				Load					(pcstr	section);
 	virtual	void				reinit					();
-	virtual void				reload					(LPCSTR	section);				
+	virtual void				reload					(pcstr	section);
 	virtual const SRotation		Orientation				() const;
 	virtual float				get_custom_pitch_speed	(float def_speed) {return def_speed;}
 	virtual bool				human_being				() const
@@ -210,7 +210,7 @@ public:
 	virtual CCustomMonster*		cast_custom_monster		()	{return this;}
 	virtual CScriptEntity*		cast_script_entity		()	{return this;}
 
-			void				load_killer_clsids		(LPCSTR section);
+			void				load_killer_clsids		(pcstr section);
 			bool				is_special_killer		(CObject *obj);
 
 	IC		CMemoryManager		&memory					() const;
@@ -254,7 +254,7 @@ public:
 public:
 			void __stdcall			update_sound_player		();
 	virtual	void					on_restrictions_change	();
-	virtual	LPCSTR					visual_name				(CSE_Abstract *server_entity);
+	virtual	pcstr					visual_name				(CSE_Abstract *server_entity);
 
 private:
 	bool							m_already_dead;

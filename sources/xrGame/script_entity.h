@@ -86,9 +86,9 @@ public:
 	virtual	void				vfFinishAction			(CScriptEntityAction		*tpEntityAction);
 	virtual	void				SetScriptControl		(const bool			bScriptControl, shared_str	caSciptName);
 	virtual	bool				GetScriptControl		() const;
-	virtual	LPCSTR				GetScriptControlName	() const;
+	virtual	pcstr				GetScriptControlName	() const;
 	virtual bool				CheckObjectVisibility	(const CGameObject	*tpObject);
-	virtual bool				CheckTypeVisibility		(LPCSTR section_name);
+	virtual bool				CheckTypeVisibility		(pcstr section_name);
 	virtual bool				CheckIfCompleted		() const										{return false;};
 	virtual	CScriptEntityAction	*GetCurrentAction		();
 	virtual	void				AddAction				(const CScriptEntityAction*tpEntityAction, bool bHighPriority = false);
@@ -105,7 +105,7 @@ public:
 
 	virtual void				sound_callback			(const CObject *object, int sound_type, const Fvector &position, float sound_power);
 
-	virtual LPCSTR				GetPatrolPathName		();
+	virtual pcstr				GetPatrolPathName		();
 			bool				bfScriptAnimation		();
 			u32					GetActionCount			() const;
 	const CScriptEntityAction	*GetActionByIndex		(u32 action_index) const;

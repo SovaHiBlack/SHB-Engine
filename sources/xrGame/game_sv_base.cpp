@@ -62,21 +62,21 @@ ClientID				game_sv_GameState::get_it_2_id				(u32 it)
 	else				return C->ID;
 }
 
-LPCSTR				game_sv_GameState::get_name_it				(u32 it)
+pcstr				game_sv_GameState::get_name_it				(u32 it)
 {
 	xrClientData*	C	= (xrClientData*)m_server->client_Get		(it);
 	if (0==C)			return 0;
 	else				return *C->name;
 }
 
-LPCSTR				game_sv_GameState::get_name_id				(ClientID id)							
+pcstr				game_sv_GameState::get_name_id				(ClientID id)
 {
 	xrClientData*	C	= (xrClientData*)m_server->ID_to_client	(id);
 	if (0==C)			return 0;
 	else				return *C->name;
 }
 
-LPCSTR				game_sv_GameState::get_player_name_id				(ClientID id)								
+pcstr				game_sv_GameState::get_player_name_id				(ClientID id)
 {
 	xrClientData* xrCData	=	m_server->ID_to_client(id);
 	if(xrCData)
@@ -172,7 +172,7 @@ xr_vector<u16>*		game_sv_GameState::get_children				(ClientID id)
 	return	&(E->children);
 }
 
-s32					game_sv_GameState::get_option_i				(LPCSTR lst, LPCSTR name, s32 def)
+s32					game_sv_GameState::get_option_i				(pcstr lst, pcstr name, s32 def)
 {
 	string64		op;
 	strconcat		(sizeof(op),op,"/",name,"=");
@@ -180,11 +180,11 @@ s32					game_sv_GameState::get_option_i				(LPCSTR lst, LPCSTR name, s32 def)
 	else				return def;
 }
 
-float					game_sv_GameState::get_option_f				(LPCSTR lst, LPCSTR name, float def)
+float					game_sv_GameState::get_option_f				(pcstr lst, pcstr name, float def)
 {
 	string64		op;
 	strconcat		(sizeof(op),op,"/",name,"=");
-	LPCSTR			found =	strstr(lst,op);
+	pcstr			found =	strstr(lst,op);
 
 	if (found)
 	{	
@@ -197,16 +197,16 @@ float					game_sv_GameState::get_option_f				(LPCSTR lst, LPCSTR name, float def
 		return def;
 }
 
-string64&			game_sv_GameState::get_option_s				(LPCSTR lst, LPCSTR name, LPCSTR def)
+string64&			game_sv_GameState::get_option_s				(pcstr lst, pcstr name, pcstr def)
 {
 	static string64	ret;
 
 	string64		op;
 	strconcat		(sizeof(op),op,"/",name,"=");
-	LPCSTR			start	= strstr(lst,op);
+	pcstr			start	= strstr(lst,op);
 	if (start)		
 	{
-		LPCSTR			begin	= start + xr_strlen(op); 
+		pcstr			begin	= start + xr_strlen(op);
 		sscanf			(begin, "%[^/]",ret);
 	}
 	else			
@@ -389,7 +389,7 @@ void game_sv_GameState::Create					(shared_str &options)
 //	pTmp->Execute				(Console->ConfigFile);
 //	xr_delete					(pTmp);
 	//---------------------------------------------------------------------
-	LPCSTR		svcfg_ltx_name = "-svcfg ";
+	pcstr		svcfg_ltx_name = "-svcfg ";
 	if (strstr(Core.Params, svcfg_ltx_name))
 	{
 		string_path svcfg_name = "";
@@ -493,7 +493,7 @@ void				game_sv_GameState::SetPointFreezed		(RPoint* rp)
 	rp->TimeToUnfreeze	= Level().timeServer() + g_sv_base_dwRPointFreezeTime;
 }
 
-CSE_Abstract*		game_sv_GameState::spawn_begin				(LPCSTR N)
+CSE_Abstract*		game_sv_GameState::spawn_begin				(pcstr N)
 {
 	CSE_Abstract*	A	=   F_entity_Create(N);	R_ASSERT(A);	// create SE
 	A->s_name			=   N;							// ltx-def
@@ -674,7 +674,7 @@ void game_sv_GameState::OnEvent (NET_Packet &tNetPacket, u16 type, u32 time, Cli
 	};
 }
 
-bool game_sv_GameState::NewPlayerName_Exists( void* pClient, LPCSTR NewName )
+bool game_sv_GameState::NewPlayerName_Exists( void* pClient, pcstr NewName )
 {
 	if ( !pClient || !NewName ) return false;
 	IClient* CL = (IClient*)pClient;
@@ -708,7 +708,7 @@ void game_sv_GameState::NewPlayerName_Generate( void* pClient, LPSTR NewPlayerNa
 	}
 }
 
-void game_sv_GameState::NewPlayerName_Replace( void* pClient, LPCSTR NewPlayerName )
+void game_sv_GameState::NewPlayerName_Replace( void* pClient, pcstr NewPlayerName )
 {
 	if ( !pClient || !NewPlayerName ) return;
 	IClient* CL = (IClient*)pClient;
@@ -776,7 +776,7 @@ void game_sv_GameState::remove_all_restrictions	(NET_Packet &packet, u16 id)
 {
 }
 
-void game_sv_GameState::MapRotation_AddMap		(LPCSTR MapName)
+void game_sv_GameState::MapRotation_AddMap		(pcstr MapName)
 {
 	m_pMapRotation_List.push_back(MapName);
 	if (m_pMapRotation_List.size() > 1)

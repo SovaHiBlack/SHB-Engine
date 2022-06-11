@@ -9,7 +9,7 @@ class CParticlesObject		:	public CPS_Instance
 	typedef CPS_Instance	inherited;
 
 	u32					dwLastTime;
-	void				Init				(LPCSTR p_name, IRender_Sector* S, BOOL bAutoRemove);
+	void				Init				(pcstr p_name, IRender_Sector* S, BOOL bAutoRemove);
 	void				UpdateSpatial		();
 
 protected:
@@ -23,7 +23,7 @@ protected:
 	virtual				~CParticlesObject	();
 
 public:
-						CParticlesObject	(LPCSTR p_name, BOOL bAutoRemove, bool destroy_on_game_load);
+						CParticlesObject	(pcstr p_name, BOOL bAutoRemove, bool destroy_on_game_load);
 
 	virtual bool		shedule_Needed		()	{return true;};
 	virtual float		shedule_Scale		()	;
@@ -49,7 +49,7 @@ public:
 
 	const shared_str			Name		();
 public:
-	static CParticlesObject*	Create		(LPCSTR p_name, BOOL bAutoRemove=TRUE, bool remove_on_game_load = true)
+	static CParticlesObject*	Create		(pcstr p_name, BOOL bAutoRemove=TRUE, bool remove_on_game_load = true)
 	{
 		return xr_new<CParticlesObject>(p_name, bAutoRemove, remove_on_game_load);
 	}

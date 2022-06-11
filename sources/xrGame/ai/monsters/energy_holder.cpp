@@ -20,7 +20,7 @@ void CEnergyHolder::reinit()
 	m_time_last_update			= Device.dwTimeGlobal;
 }
 
-void CEnergyHolder::reload(LPCSTR section, LPCSTR prefix, LPCSTR suffix) 
+void CEnergyHolder::reload(pcstr section, pcstr prefix, pcstr suffix)
 {
 	string128 line_name;
 	

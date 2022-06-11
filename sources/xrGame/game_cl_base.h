@@ -48,7 +48,7 @@ public:
 
 	WeaponUsageStatistic				*m_WeaponUsageStatistic;	
 	virtual		void				reset_ui				();
-	virtual		void				CommonMessageOut		(LPCSTR msg);
+	virtual		void				CommonMessageOut		(pcstr msg);
 
 private:
 				void				switch_Phase			(u32 new_phase)		{inherited::switch_Phase(new_phase);};
@@ -68,8 +68,8 @@ protected:
 public:
 									game_cl_GameState		();
 	virtual							~game_cl_GameState		();
-				LPCSTR				type_name				() const {return *m_game_type_name;};
-				void				set_type_name			(LPCSTR s);
+	pcstr				type_name				() const {return *m_game_type_name;};
+				void				set_type_name			(pcstr s);
 	virtual		void				Init					(){};
 	virtual		void				net_import_state		(NET_Packet& P);
 	virtual		void				net_import_update		(NET_Packet& P);
@@ -113,7 +113,7 @@ public:
 	virtual		bool				IsVotingEnabled			(u16 flag) {return (m_u16VotingEnabled & flag) != 0;};
 	virtual		bool				IsVotingActive			()	{ return false; };
 	virtual		void				SetVotingActive			( bool Active )	{ };
-	virtual		void				SendStartVoteMessage	(LPCSTR args)	{};
+	virtual		void				SendStartVoteMessage	(pcstr args)	{};
 	virtual		void				SendVoteYesMessage		()	{};
 	virtual		void				SendVoteNoMessage		()	{};
 	virtual		void				OnVoteStart				(NET_Packet& P)	{};

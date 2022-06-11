@@ -75,7 +75,7 @@ public:
 protected:
     shared_str		m_InfoId;
 
-	void			load_shared						(LPCSTR);
+	void			load_shared						(pcstr);
 	SInfoPortionData* info_data						() { VERIFY(inherited_shared::get_sd()); return inherited_shared::get_sd();}
 	const SInfoPortionData* info_data				() const { VERIFY(inherited_shared::get_sd()); return inherited_shared::get_sd();}
 

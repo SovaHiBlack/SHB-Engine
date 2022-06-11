@@ -38,7 +38,7 @@ CPoltergeist::~CPoltergeist()
 	xr_delete		(m_tele);
 }
 
-void CPoltergeist::Load(LPCSTR section)
+void CPoltergeist::Load(pcstr section)
 {
 	inherited::Load	(section);
 
@@ -96,7 +96,7 @@ void CPoltergeist::Load(LPCSTR section)
 	READ_IF_EXISTS(pSettings,r_u32,section,"PsyAura_Fake_Delay", 8000);
 	READ_IF_EXISTS(pSettings,r_float,section,"PsyAura_Fake_MaxAddDist", 90.f);
 
-	LPCSTR polter_type = pSettings->r_string(section,"type");
+	pcstr polter_type = pSettings->r_string(section,"type");
 	
 	if (xr_strcmp(polter_type,"flamer") == 0) {
 		m_flame			= xr_new<CPolterFlame>(this);
@@ -107,7 +107,7 @@ void CPoltergeist::Load(LPCSTR section)
 	}	
 }
 
-void CPoltergeist::reload(LPCSTR section)
+void CPoltergeist::reload(pcstr section)
 {
 	inherited::reload(section);
 	Energy::reload(section,"Invisible_");

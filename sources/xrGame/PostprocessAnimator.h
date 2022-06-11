@@ -115,8 +115,8 @@ public:
                     CPostprocessAnimator            ();
         virtual    ~CPostprocessAnimator            ();
         void        Clear                           ();
-        void        Load                            (LPCSTR name);
-    IC  LPCSTR      Name                            (){return *m_Name;}
+        void        Load                            (pcstr name);
+    IC  pcstr      Name                            (){return *m_Name;}
   virtual void      Stop                            (float speed);
 		void		SetDesiredFactor				(float f, float sp);
 		void		SetCurrentFactor				(float f);

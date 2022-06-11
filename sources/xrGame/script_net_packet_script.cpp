@@ -17,7 +17,7 @@ bool r_eof(NET_Packet *self)
 	return			(!!self->r_eof());
 }
 
-LPCSTR r_stringZ(NET_Packet *self)
+pcstr r_stringZ(NET_Packet *self)
 {
 	shared_str			temp;
 	self->r_stringZ	(temp);
@@ -80,7 +80,7 @@ void CScriptNetPacket::script_register(lua_State *L)
 			.def("w_angle8",		&NET_Packet::w_angle8		)
 			.def("w_dir",			&NET_Packet::w_dir			)
 			.def("w_sdir",			&NET_Packet::w_sdir			)
-			.def("w_stringZ",		(void (NET_Packet::*)(LPCSTR))(&NET_Packet::w_stringZ	))
+			.def("w_stringZ",		(void (NET_Packet::*)(pcstr))(&NET_Packet::w_stringZ	))
 			.def("w_matrix",		&NET_Packet::w_matrix		)
 			.def("w_clientID",		&NET_Packet::w_clientID		)
 			.def("w_chunk_open8",	&NET_Packet::w_chunk_open8	)

@@ -29,7 +29,7 @@ struct	SMusicTrack
 	Ivector2		m_PauseTime;
 	float			m_Volume;
 public:
-	void			Load			(LPCSTR fn, LPCSTR params);
+	void			Load			(pcstr fn, pcstr params);
 	BOOL			IsPlaying		(){return m_SourceLeft._feedback() || m_SourceRight._feedback();}
 	void			Play			();
 	void			Stop			();

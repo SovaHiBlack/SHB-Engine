@@ -25,10 +25,10 @@ public:
 
 	virtual DLL_Pure	*_construct		();
 
-	virtual void	Load				(LPCSTR section);
+	virtual void	Load				(pcstr section);
 
 	virtual void	reinit				();
-	virtual void	reload				(LPCSTR section);
+	virtual void	reload				(pcstr section);
 
 	virtual bool	ability_can_drag	() {return true;}
 	virtual bool	ability_psi_attack	() {return true;}

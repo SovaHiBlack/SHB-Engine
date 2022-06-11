@@ -22,21 +22,22 @@ using namespace luabind;
 CUISequencer* g_tutorial = NULL;
 CUISequencer* g_tutorial2 = NULL;
 
-void start_tutorial(LPCSTR name)
+void start_tutorial(pcstr name)
 {
 	if(g_tutorial){
 		VERIFY				(!g_tutorial2);
 		g_tutorial2			= g_tutorial;
-	};
+	}
 		
 	g_tutorial							= xr_new<CUISequencer>();
 	g_tutorial->Start					(name);
-	if(g_tutorial2)
+	if (g_tutorial2)
+	{
 		g_tutorial->m_pStoredInputReceiver = g_tutorial2->m_pStoredInputReceiver;
-
+	}
 }
 
-LPCSTR translate_string(LPCSTR str)
+pcstr translate_string(pcstr str)
 {
 	return *CStringTable().translate(str);
 }

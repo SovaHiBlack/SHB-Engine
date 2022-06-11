@@ -89,7 +89,7 @@ void CStalkerAnimationManager::assign_bone_callbacks	()
 	CKinematics						*kinematics = smart_cast<CKinematicsAnimated*>(m_visual);
 	VERIFY							(kinematics);
 
-	LPCSTR							section = *object().cNameSect();
+	pcstr							section = *object().cNameSect();
 	
 	int								head_bone = kinematics->LL_BoneID(pSettings->r_string(section,"bone_head"));
 	kinematics->LL_GetBoneInstance	(u16(head_bone)).set_callback(bctCustom,&head::callback,&object());

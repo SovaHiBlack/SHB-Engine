@@ -42,9 +42,7 @@ void GAME_NEWS_DATA::load (IReader& stream)
 	load_data(tex_rect,		stream);
 }
 
-
-
-LPCSTR GAME_NEWS_DATA::SingleLineText()
+pcstr GAME_NEWS_DATA::SingleLineText()
 {
 	if( xr_strlen(full_news_text.c_str()) )
 		return full_news_text.c_str();

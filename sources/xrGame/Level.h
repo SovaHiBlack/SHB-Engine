@@ -150,7 +150,7 @@ private:
 	u32							m_dwLastNetUpdateTime;
 	void						UpdateDeltaUpd					( u32 LastTime );
 
-	BOOL						Connect2Server					(LPCSTR options);
+	BOOL						Connect2Server					(pcstr options);
 private:
 	bool						m_bConnectResultReceived;
 	bool						m_bConnectResult;
@@ -182,7 +182,7 @@ private:
 	SoundRegistryMap			sound_registry;
 
 public:
-	void						PrefetchSound (LPCSTR name);
+	void						PrefetchSound (pcstr name);
 
 protected:
 	BOOL						net_start_result_total;
@@ -215,11 +215,11 @@ public:
 	shared_str					m_caClientOptions;
 
 	// Starting/Loading
-	virtual BOOL				net_Start				( LPCSTR op_server, LPCSTR op_client);
-	virtual void				net_Load				( LPCSTR name );
-	virtual void				net_Save				( LPCSTR name );
+	virtual BOOL				net_Start				(pcstr op_server, pcstr op_client);
+	virtual void				net_Load				(pcstr name );
+	virtual void				net_Save				(pcstr name );
 	virtual void				net_Stop				( );
-	virtual BOOL				net_Start_client		( LPCSTR name );
+	virtual BOOL				net_Start_client		(pcstr name );
 	virtual void				net_Update				( );
 
 
@@ -248,7 +248,7 @@ public:
 	virtual void				IR_OnMouseWheel			( int direction);
 	virtual void				IR_OnActivate			(void);
 	
-			int					get_RPID				(LPCSTR name);
+			int					get_RPID				(pcstr name);
 
 
 	// Game
@@ -259,11 +259,11 @@ public:
 			u32					Objects_net_Save		(NET_Packet* _Packet, u32 start, u32 count);
 	virtual	void				Send					(NET_Packet& P, u32 dwFlags=DPNSEND_GUARANTEED, u32 dwTimeout=0);
 	
-	void						g_cl_Spawn				(LPCSTR name, u8 rp, u16 flags, Fvector pos);	// only ask server
+	void						g_cl_Spawn				(pcstr name, u8 rp, u16 flags, Fvector pos);	// only ask server
 	void						g_sv_Spawn				(CSE_Abstract* E);					// server reply/command spawning
 	
 	// Save/Load/State
-	void						SLS_Load				(LPCSTR name);		// Game Load
+	void						SLS_Load				(pcstr name);		// Game Load
 	void						SLS_Default				();					// Default/Editor Load
 	
 	IC CSpaceRestrictionManager		&space_restriction_manager	();
@@ -324,7 +324,7 @@ public:
 	//by Mad Max 
 			bool			IsServer					();
 			bool			IsClient					();
-			CSE_Abstract	*spawn_item					(LPCSTR section, const Fvector &position, u32 level_vertex_id, u16 parent_id, bool return_item = false);
+			CSE_Abstract	*spawn_item					(pcstr section, const Fvector &position, u32 level_vertex_id, u16 parent_id, bool return_item = false);
 			
 protected:
 	u32		m_dwCL_PingDeltaSend;
@@ -335,7 +335,7 @@ public:
 
 public:
 			void			remove_objects				();
-	virtual void			OnSessionTerminate			(LPCSTR reason);
+	virtual void			OnSessionTerminate			(pcstr reason);
 
 	DECLARE_SCRIPT_REGISTER_FUNCTION
 };

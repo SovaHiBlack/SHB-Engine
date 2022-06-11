@@ -61,7 +61,7 @@ void CMissile::reinit		()
 	SetState			( MS_HIDDEN );
 }
 
-void CMissile::Load(LPCSTR section) 
+void CMissile::Load(pcstr section)
 {
 	inherited::Load		(section);
 

@@ -35,7 +35,7 @@ public:
 			void	init_external			(_Object *obj) {object = obj;}
 			void	on_destroy				();
 
-			void	load					(LPCSTR section);
+			void	load					(pcstr section);
 	virtual	void	reinit					();
 		
 			void	schedule_update			();

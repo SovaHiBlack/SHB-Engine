@@ -31,7 +31,7 @@ public:
 	virtual void						on_activate_physic_shell();
 public:
 
-	virtual void Load				(LPCSTR section);
+	virtual void Load				(pcstr section);
 	virtual BOOL net_Spawn			(CSE_Abstract* DC);
 	virtual void net_Destroy		();
 	virtual	void net_Relcase		(CObject* O );
@@ -67,7 +67,7 @@ public:
 #endif
 	virtual void			PH_A_CrPr			(); // actions & operations after phisic correction-prediction steps
 	virtual void			reinit				();
-	virtual void			reload				(LPCSTR section);
+	virtual void			reload				(pcstr section);
 	virtual void			activate_physic_shell	();
 	virtual void			setup_physic_shell		();
 	virtual void			create_physic_shell		();

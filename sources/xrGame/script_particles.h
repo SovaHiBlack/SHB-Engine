@@ -20,10 +20,10 @@ class CScriptParticlesCustom: public CParticlesObject{
 	virtual						~CScriptParticlesCustom();
 	CScriptParticles*			m_owner;
 public:
-								CScriptParticlesCustom(CScriptParticles* owner, LPCSTR caParticlesName);
+								CScriptParticlesCustom(CScriptParticles* owner, pcstr caParticlesName);
 	virtual void				shedule_Update		(u32 dt);
 
-	void						LoadPath			(LPCSTR caPathName);
+	void						LoadPath			(pcstr caPathName);
 	void						StartPath			(bool looped);
 	void						StopPath			();
 	void						PausePath			(bool val);
@@ -34,7 +34,7 @@ public:
 class CScriptParticles{
 public:
 	CScriptParticlesCustom*		m_particles;
-								CScriptParticles	(LPCSTR caParticlesName);
+								CScriptParticles	(pcstr caParticlesName);
 	virtual						~CScriptParticles	();
 
 	void						Play				();
@@ -47,7 +47,7 @@ public:
 
 	void						MoveTo				(const Fvector &pos, const Fvector& vel);
 
-	void						LoadPath			(LPCSTR caPathName);
+	void						LoadPath			(pcstr caPathName);
 	void						StartPath			(bool looped);
 	void						StopPath			();
 	void						PausePath			(bool val);

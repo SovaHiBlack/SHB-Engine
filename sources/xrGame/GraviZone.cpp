@@ -29,7 +29,7 @@ CBaseGraviZone ::~CBaseGraviZone (void)
 	
 }
 
-void CBaseGraviZone ::Load(LPCSTR section)
+void CBaseGraviZone ::Load(pcstr section)
 {
 	inherited::Load(section);
 

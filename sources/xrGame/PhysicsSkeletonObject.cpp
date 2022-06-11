@@ -48,7 +48,7 @@ void CPhysicsSkeletonObject::net_Destroy( )
 	CPHSkeleton::RespawnInit( );
 }
 
-void CPhysicsSkeletonObject::Load(LPCSTR section)
+void CPhysicsSkeletonObject::Load(pcstr section)
 {
 	inherited::Load(section);
 	CPHSkeleton::Load(section);

@@ -20,7 +20,7 @@
 #include "PHSimpleCalls.h"
 #include "phworld.h"
 
-void CScriptGameObject::SetTipText (LPCSTR tip_text)
+void CScriptGameObject::SetTipText (pcstr tip_text)
 {
 	CUsableScriptObject	*l_tpUseableScriptObject = smart_cast<CUsableScriptObject*>(&object());
 	if (!l_tpUseableScriptObject)
@@ -77,7 +77,7 @@ int	CScriptGameObject::clsid				() const
 	return			(object().clsid());
 }
 
-LPCSTR CScriptGameObject::Name				() const
+pcstr CScriptGameObject::Name				() const
 {
 	return			(*object().cName());
 }
@@ -87,7 +87,7 @@ shared_str CScriptGameObject::cName				() const
 	return			(object().cName());
 }
 
-LPCSTR CScriptGameObject::Section				() const
+pcstr CScriptGameObject::Section				() const
 {
 	return			(*object().cNameSect());
 }

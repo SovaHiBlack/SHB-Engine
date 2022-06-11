@@ -34,13 +34,13 @@ void CPhraseScript::Load		(CUIXml* uiXml, XML_NODE* phrase_node)
 
 template<class T> 
 void  CPhraseScript::LoadSequence (CUIXml* uiXml, XML_NODE* phrase_node, 
-								  LPCSTR tag, T&  str_vector)
+								   pcstr tag, T&  str_vector)
 {
 	int tag_num = uiXml->GetNodesNum(phrase_node, tag);
 	str_vector.clear();
 	for(int i=0; i<tag_num; i++)
 	{
-		LPCSTR tag_text = uiXml->Read(phrase_node, tag, i, NULL);
+		pcstr tag_text = uiXml->Read(phrase_node, tag, i, NULL);
 		str_vector.push_back(tag_text);
 	}
 }
@@ -102,7 +102,7 @@ void  CPhraseScript::TransferInfo	(const CInventoryOwner* pOwner) const
 
 
 
-bool CPhraseScript::Precondition(const CGameObject* pSpeakerGO, LPCSTR dialog_id, LPCSTR phrase_id) const 
+bool CPhraseScript::Precondition(const CGameObject* pSpeakerGO, pcstr dialog_id, pcstr phrase_id) const
 {
 	bool predicate_result = true;
 
@@ -133,7 +133,7 @@ bool CPhraseScript::Precondition(const CGameObject* pSpeakerGO, LPCSTR dialog_id
 	return predicate_result;
 }
 
-void CPhraseScript::Action(const CGameObject* pSpeakerGO, LPCSTR dialog_id, LPCSTR phrase_id) const 
+void CPhraseScript::Action(const CGameObject* pSpeakerGO, pcstr dialog_id, pcstr phrase_id) const
 {
 
 	for(u32 i = 0; i<Actions().size(); ++i)
@@ -149,9 +149,9 @@ void CPhraseScript::Action(const CGameObject* pSpeakerGO, LPCSTR dialog_id, LPCS
 
 bool CPhraseScript::Precondition	(	const CGameObject* pSpeakerGO1, 
 										const CGameObject* pSpeakerGO2, 
-										LPCSTR dialog_id, 
-										LPCSTR phrase_id,
-										LPCSTR next_phrase_id) const 
+									 pcstr dialog_id,
+									 pcstr phrase_id,
+									 pcstr next_phrase_id) const
 {
 	bool predicate_result = true;
 
@@ -181,7 +181,7 @@ bool CPhraseScript::Precondition	(	const CGameObject* pSpeakerGO1,
 	return predicate_result;
 }
 
-void CPhraseScript::Action(const CGameObject* pSpeakerGO1, const CGameObject* pSpeakerGO2, LPCSTR dialog_id, LPCSTR phrase_id) const 
+void CPhraseScript::Action(const CGameObject* pSpeakerGO1, const CGameObject* pSpeakerGO2, pcstr dialog_id, pcstr phrase_id) const
 {
 	TransferInfo(smart_cast<const CInventoryOwner*>(pSpeakerGO1));
 

@@ -64,7 +64,7 @@ CInventoryOwner::~CInventoryOwner			()
 	xr_delete					(m_purchase_list);
 }
 
-void CInventoryOwner::Load					(LPCSTR section)
+void CInventoryOwner::Load					(pcstr section)
 {
 	if(pSettings->line_exist(section, "inv_max_weight"))
 		m_inventory->SetMaxWeight( pSettings->r_float(section,"inv_max_weight") );
@@ -79,7 +79,7 @@ void CInventoryOwner::Load					(LPCSTR section)
 	}
 }
 
-void CInventoryOwner::reload				(LPCSTR section)
+void CInventoryOwner::reload				(pcstr section)
 {
 	inventory().Clear			();
 	inventory().m_pOwner		= this;
@@ -336,7 +336,7 @@ void CInventoryOwner::spawn_supplies		()
 }
 
 //игровое имя 
-LPCSTR	CInventoryOwner::Name () const
+pcstr	CInventoryOwner::Name () const
 {
 //	return CharacterInfo().Name();
 	return m_game_name.c_str();
@@ -457,7 +457,7 @@ void CInventoryOwner::on_weapon_hide			(CWeapon *weapon)
 {
 }
 
-LPCSTR CInventoryOwner::trade_section			() const
+pcstr CInventoryOwner::trade_section			() const
 {
 	const CGameObject			*game_object = smart_cast<const CGameObject*>(this);
 	VERIFY						(game_object);
@@ -472,7 +472,7 @@ float CInventoryOwner::deficit_factor			(const shared_str &section) const
 	return						(m_purchase_list->deficit(section));
 }
 
-void CInventoryOwner::buy_supplies				(CInifile &ini_file, LPCSTR section)
+void CInventoryOwner::buy_supplies				(CInifile &ini_file, pcstr section)
 {
 	if (!m_purchase_list)
 		m_purchase_list			= xr_new<CPurchaseList>();

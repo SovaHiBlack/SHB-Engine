@@ -61,7 +61,7 @@ float CHangingLamp::Radius	() const
 	return (renderable.visual)?renderable.visual->vis.sphere.R:EPS;
 }
 
-void CHangingLamp::Load		(LPCSTR section)
+void CHangingLamp::Load		(pcstr section)
 {
 	inherited::Load			(section);
 }
@@ -299,7 +299,7 @@ void CHangingLamp::CreateBody(CSE_ALifeObjectHangingLamp	*lamp)
 	m_pPhysicsShell			= P_create_Shell();
 
 	bone_map					.clear();
-	LPCSTR	fixed_bones=*lamp->fixed_bones;
+	pcstr	fixed_bones=*lamp->fixed_bones;
 	if(fixed_bones){
 		int count =					_GetItemCount(fixed_bones);
 		for (int i=0 ;i<count; ++i){

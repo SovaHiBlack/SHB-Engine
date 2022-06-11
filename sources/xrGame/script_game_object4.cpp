@@ -45,7 +45,7 @@ bool CScriptGameObject::is_body_turning		() const
 ////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////
 
-u32	CScriptGameObject::add_sound		(LPCSTR prefix, u32 max_count, ESoundTypes type, u32 priority, u32 mask, u32 internal_type, LPCSTR bone_name)
+u32	CScriptGameObject::add_sound		(pcstr prefix, u32 max_count, ESoundTypes type, u32 priority, u32 mask, u32 internal_type, pcstr bone_name)
 {
 	CCustomMonster				*monster = smart_cast<CCustomMonster*>(&object());
 	if (!monster) {
@@ -56,7 +56,7 @@ u32	CScriptGameObject::add_sound		(LPCSTR prefix, u32 max_count, ESoundTypes typ
 		return					(monster->sound().add(prefix,max_count,type,priority,mask,internal_type,bone_name));
 }
 
-u32	CScriptGameObject::add_sound		(LPCSTR prefix, u32 max_count, ESoundTypes type, u32 priority, u32 mask, u32 internal_type)
+u32	CScriptGameObject::add_sound		(pcstr prefix, u32 max_count, ESoundTypes type, u32 priority, u32 mask, u32 internal_type)
 {
 	return						(add_sound(prefix,max_count,type,priority,mask,internal_type,"bip01_head"));
 }

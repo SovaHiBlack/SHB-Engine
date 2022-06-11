@@ -116,7 +116,11 @@ void CCharacterPhysicsSupport::SetRemoved()
 		{
 			m_EntityAlife.processing_deactivate();
 		}
-		if(m_pPhysicsShell)m_pPhysicsShell->Deactivate();
+		if (m_pPhysicsShell)
+		{
+			m_pPhysicsShell->Deactivate();
+		}
+
 		xr_delete(m_pPhysicsShell);
 	}
 	else
@@ -125,7 +129,6 @@ void CCharacterPhysicsSupport::SetRemoved()
 		xr_delete(m_physics_skeleton);
 		m_EntityAlife.processing_deactivate();
 	}
-	
 }
 
 void CCharacterPhysicsSupport::in_Load(pcstr section)

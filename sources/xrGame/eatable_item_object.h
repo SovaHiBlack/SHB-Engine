@@ -32,7 +32,7 @@ public:
 	virtual CGameObject			*cast_game_object			()  {return this;};
 
 public:
-	virtual void	Load					(LPCSTR section);
+	virtual void	Load					(pcstr section);
 	virtual	void	Hit						(SHit* pHDS);
 
 	virtual void	OnH_B_Independent		(bool just_before_destroy);
@@ -49,7 +49,7 @@ public:
 	virtual void	load					(IReader &input_packet);
 	virtual BOOL	net_SaveRelevant		()								{return TRUE;}
 	virtual void	renderable_Render		();
-	virtual void	reload					(LPCSTR section);
+	virtual void	reload					(pcstr section);
 	virtual void	reinit					();
 	virtual void	activate_physic_shell	();
 	virtual void	on_activate_physic_shell();

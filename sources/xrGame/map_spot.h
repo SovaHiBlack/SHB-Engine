@@ -13,9 +13,9 @@ public:
 	Fvector2				m_originSize;
 							CMapSpot						(CMapLocation*);
 	virtual					~CMapSpot						();
-	virtual		void		Load							(CUIXml* xml, LPCSTR path);
+	virtual		void		Load							(CUIXml* xml, pcstr path);
 	CMapLocation*			MapLocation						()							{return m_map_location;}
-	virtual LPCSTR			GetHint							();
+	virtual pcstr			GetHint							();
 	virtual		void		Update							();
 	virtual		bool		OnMouseDown						(int mouse_btn);
 	virtual		void		OnFocusLost						();
@@ -29,7 +29,7 @@ class CMapSpotPointer :public CMapSpot
 public:
 							CMapSpotPointer					(CMapLocation*);
 	virtual					~CMapSpotPointer				();
-	virtual		LPCSTR		GetHint							();
+	virtual		pcstr		GetHint							();
 };
 
 class CMiniMapSpot :public CMapSpot
@@ -40,6 +40,6 @@ class CMiniMapSpot :public CMapSpot
 public:
 							CMiniMapSpot					(CMapLocation*);
 	virtual					~CMiniMapSpot					();
-	virtual		void		Load							(CUIXml* xml, LPCSTR path);
+	virtual		void		Load							(CUIXml* xml, pcstr path);
 	virtual		void		Draw							();
 };

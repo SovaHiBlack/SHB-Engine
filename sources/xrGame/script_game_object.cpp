@@ -79,9 +79,9 @@ BIND_FUNCTION01	(&object(),	CScriptGameObject::SetPower,			CEntityAlive,	conditi
 BIND_FUNCTION01	(&object(),	CScriptGameObject::SetRadiation,		CEntityAlive,	conditions().ChangeRadiation,	float,							float);
 BIND_FUNCTION01	(&object(),	CScriptGameObject::SetCircumspection,	CEntityAlive,	conditions().ChangeCircumspection,float,							float);
 BIND_FUNCTION01	(&object(),	CScriptGameObject::SetMorale,			CEntityAlive,	conditions().ChangeEntityMorale,	float,							float);
-BIND_FUNCTION02	(&object(),	CScriptGameObject::SetScriptControl,	CScriptEntity,	SetScriptControl,	bool,								LPCSTR,					bool,					shared_str);
+BIND_FUNCTION02	(&object(),	CScriptGameObject::SetScriptControl,	CScriptEntity,	SetScriptControl,	bool, pcstr,					bool,					shared_str);
 BIND_FUNCTION10	(&object(),	CScriptGameObject::GetScriptControl,	CScriptEntity,	GetScriptControl,	bool,								false);
-BIND_FUNCTION10	(&object(),	CScriptGameObject::GetScriptControlName,CScriptEntity,GetScriptControlName,LPCSTR,					"");
+BIND_FUNCTION10	(&object(),	CScriptGameObject::GetScriptControlName,CScriptEntity,GetScriptControlName, pcstr,					"");
 BIND_FUNCTION10	(&object(),	CScriptGameObject::GetEnemyStrength,	CScriptEntity,	get_enemy_strength,	int,					0);
 BIND_FUNCTION10	(&object(),	CScriptGameObject::GetActionCount,		CScriptEntity,	GetActionCount,		u32,					0);
 BIND_FUNCTION10	(&object(),	CScriptGameObject::can_script_capture,	CScriptEntity,	can_script_capture,	bool,					0);
@@ -198,7 +198,7 @@ CHolderCustom* CScriptGameObject::get_custom_holder()
 //////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////
 
-LPCSTR CScriptGameObject::WhoHitName()
+pcstr CScriptGameObject::WhoHitName()
 {
 	CEntityAlive *entity_alive = smart_cast<CEntityAlive*>(&object());
 	if (entity_alive)
@@ -210,7 +210,7 @@ LPCSTR CScriptGameObject::WhoHitName()
 	}
 }
 
-LPCSTR CScriptGameObject::WhoHitSectionName()
+pcstr CScriptGameObject::WhoHitSectionName()
 {
 	CEntityAlive *entity_alive = smart_cast<CEntityAlive*>(&object());
 	if (entity_alive)
@@ -289,7 +289,7 @@ u32 CScriptGameObject::get_current_patrol_point_index()
 //////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////
 
-Fvector	CScriptGameObject::bone_position	(LPCSTR bone_name) const
+Fvector	CScriptGameObject::bone_position	(pcstr bone_name) const
 {
 	u16					bone_id;
 	if (xr_strlen(bone_name))

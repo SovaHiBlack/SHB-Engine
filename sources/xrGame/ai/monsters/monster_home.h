@@ -15,8 +15,8 @@ class CMonsterHome {
 public:
 				CMonsterHome		(CBaseMonster *obj) {m_object = obj;}
 
-		void	load				(LPCSTR line);
-		void	setup				(LPCSTR path_name, F32 min_radius, F32 max_radius, bool aggressive = false);
+		void	load				(pcstr line);
+		void	setup				(pcstr path_name, F32 min_radius, F32 max_radius, bool aggressive = false);
 		void	remove_home			();
 
 		u32		get_place			();

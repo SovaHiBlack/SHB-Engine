@@ -16,22 +16,22 @@ protected:
 	typedef CInifile inherited;
 
 public:
-						CScriptIniFile		(IReader *F, LPCSTR path=0);
-						CScriptIniFile		(LPCSTR szFileName, BOOL ReadOnly=TRUE, BOOL bLoadAtStart=TRUE, BOOL SaveAtEnd=TRUE);
+						CScriptIniFile		(IReader *F, pcstr path=0);
+						CScriptIniFile		(pcstr szFileName, BOOL ReadOnly=TRUE, BOOL bLoadAtStart=TRUE, BOOL SaveAtEnd=TRUE);
 	virtual 			~CScriptIniFile		();
-			bool		line_exist			(LPCSTR S, LPCSTR L);
-			bool		section_exist		(LPCSTR S);
-			int			r_clsid				(LPCSTR S, LPCSTR L);
-			bool		r_bool				(LPCSTR S, LPCSTR L);
-			int			r_token				(LPCSTR S, LPCSTR L, const CScriptTokenList &token_list);
-			LPCSTR		r_string_wb			(LPCSTR S, LPCSTR L);
-			LPCSTR		update				(LPCSTR file_name);
-			u32			line_count			(LPCSTR S);
-			LPCSTR		r_string			(LPCSTR S, LPCSTR L);
-			u32			r_u32				(LPCSTR S, LPCSTR L);
-			int			r_s32				(LPCSTR S, LPCSTR L);
-			float		r_float				(LPCSTR S, LPCSTR L);
-			Fvector		r_fvector3			(LPCSTR S, LPCSTR L);
+			bool		line_exist			(pcstr S, pcstr L);
+			bool		section_exist		(pcstr S);
+			int			r_clsid				(pcstr S, pcstr L);
+			bool		r_bool				(pcstr S, pcstr L);
+			int			r_token				(pcstr S, pcstr L, const CScriptTokenList &token_list);
+			pcstr		r_string_wb			(pcstr S, pcstr L);
+			pcstr		update				(pcstr file_name);
+			u32			line_count			(pcstr S);
+			pcstr		r_string			(pcstr S, pcstr L);
+			u32			r_u32				(pcstr S, pcstr L);
+			int			r_s32				(pcstr S, pcstr L);
+			float		r_float				(pcstr S, pcstr L);
+			Fvector		r_fvector3			(pcstr S, pcstr L);
 			DECLARE_SCRIPT_REGISTER_FUNCTION
 };
 

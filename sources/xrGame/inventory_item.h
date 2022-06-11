@@ -65,11 +65,11 @@ public:
 	virtual						~CInventoryItem		();
 
 public:
-	virtual void				Load				(LPCSTR section);
+	virtual void				Load				(pcstr section);
 
-	virtual LPCSTR				Name				();
-	virtual LPCSTR				NameShort			();
-//.	virtual LPCSTR				NameComplex			();
+	virtual pcstr				Name				();
+	virtual pcstr				NameShort			();
+//.	virtual pcstr				NameComplex			();
 	shared_str					ItemDescription		() { return m_Description; }
 	virtual void				GetBriefInfo		(xr_string& str_name, xr_string& icon_sect_name, xr_string& str_count) {};
 	
@@ -79,9 +79,9 @@ public:
 	virtual bool				Attach				(PIItem pIItem, bool b_send_event) {return false;}
 	virtual bool				Detach				(PIItem pIItem) {return false;}
 	//при детаче спаунится новая вещь при заданно названии секции
-	virtual bool				Detach				(LPCSTR item_section_name, bool b_spawn_item);
+	virtual bool				Detach				(pcstr item_section_name, bool b_spawn_item);
 	virtual bool				CanAttach			(PIItem pIItem) {return false;}
-	virtual bool				CanDetach			(LPCSTR item_section_name) {return false;}
+	virtual bool				CanDetach			(pcstr item_section_name) {return false;}
 
 	virtual EHandDependence		HandDependence		()	const	{return hd1Hand;};
 	virtual bool				IsSingleHanded		()	const	{return true;};	
@@ -206,7 +206,7 @@ protected:
 public:
 	virtual BOOL				net_Spawn				(CSE_Abstract* DC);
 	virtual void				net_Destroy				();
-	virtual void				reload					(LPCSTR section);
+	virtual void				reload					(pcstr section);
 	virtual void				reinit					();
 	virtual bool				can_kill				() const;
 	virtual CInventoryItem*		can_kill				(CInventory *inventory) const;

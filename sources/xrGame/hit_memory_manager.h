@@ -50,9 +50,9 @@ private:
 public:
 	IC							CHitMemoryManager	(CCustomMonster *object, CAI_Stalker *stalker);
 	virtual						~CHitMemoryManager	();
-	virtual	void				Load				(LPCSTR section);
+	virtual	void				Load				(pcstr section);
 	virtual	void				reinit				();
-	virtual	void				reload				(LPCSTR section);
+	virtual	void				reload				(pcstr section);
 	virtual void				update				();
 			void				remove_links		(CObject *object);
 

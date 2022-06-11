@@ -1,8 +1,8 @@
 #pragma once
 
-u32		__stdcall xr_aligned_msize(void *);
-void    __stdcall xr_aligned_free(void *);
-void *  __stdcall xr_aligned_malloc(size_t, size_t);
-void *  __stdcall xr_aligned_offset_malloc(size_t, size_t, size_t);
-void *  __stdcall xr_aligned_realloc(void *, size_t, size_t);
-void *  __stdcall xr_aligned_offset_realloc(void *, size_t, size_t, size_t);
+u32		__stdcall xr_aligned_msize(pvoid);
+void    __stdcall xr_aligned_free(pvoid);
+pvoid __stdcall xr_aligned_malloc(size_t, size_t);
+pvoid __stdcall xr_aligned_offset_malloc(size_t, size_t, size_t);
+pvoid __stdcall xr_aligned_realloc(pvoid, size_t, size_t);
+pvoid __stdcall xr_aligned_offset_realloc(pvoid, size_t, size_t, size_t);

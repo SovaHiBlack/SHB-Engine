@@ -25,7 +25,7 @@ CGrenade::~CGrenade(void)
 	HUD_SOUND::DestroySound(sndCheckout);
 }
 
-void CGrenade::Load(LPCSTR section) 
+void CGrenade::Load(pcstr section)
 {
 	inherited::Load(section);
 	CExplosive::Load(section);

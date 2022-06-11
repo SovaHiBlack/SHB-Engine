@@ -7,43 +7,59 @@ class XRCORE_API				pauseMngr
 	xr_vector<CTimer_paused*>	m_timers;
 	BOOL						m_paused;
 public:
-			pauseMngr			();
-	BOOL	Paused				(){return m_paused;};
-	void	Pause				(BOOL b);
-	void	Register			(CTimer_paused* t);
-	void	UnRegister			(CTimer_paused* t);
+	pauseMngr();
+	BOOL	Paused()
+	{
+		return m_paused;
+	};
+	void	Pause(BOOL b);
+	void	Register(CTimer_paused* t);
+	void	UnRegister(CTimer_paused* t);
 };
 
 extern XRCORE_API pauseMngr		g_pauseMngr;
 
-class XRCORE_API CTimerBase		{
+class XRCORE_API CTimerBase
+{
 protected:
-	u64			qwStartTime		;
-	u64			qwPausedTime	;
-	u64			qwPauseAccum	;
-	BOOL		bPause			;
+	u64			qwStartTime;
+	u64			qwPausedTime;
+	u64			qwPauseAccum;
+	BOOL		bPause;
 public:
-				CTimerBase		()		: qwStartTime(0),qwPausedTime(0),qwPauseAccum(0),bPause(FALSE)		{ }
-	ICF	void	Start			()		{	if(bPause) return;	qwStartTime = CPU::QPC()-qwPauseAccum;		}
-	ICF u64		GetElapsed_ticks()const	{	if(bPause) return	qwPausedTime; else return CPU::QPC()-qwStartTime-CPU::qpc_overhead-qwPauseAccum; }
-	IC	u32		GetElapsed_ms	()const	{	return u32(GetElapsed_ticks()*u64(1000)/CPU::qpc_freq );	}
-	IC	F32		GetElapsed_sec	()const	{
-
-		FPU::m64r	()			;
-       
-		F32		_result		= F32(double(GetElapsed_ticks())/double(CPU::qpc_freq )	)	;
-
-		FPU::m24r	()			;
-
-		return		_result		;
-	}
-	IC	void	Dump			() const
+	CTimerBase() : qwStartTime(0), qwPausedTime(0), qwPauseAccum(0), bPause(FALSE)
+	{}
+	ICF	void	Start()
 	{
-		Msg("* Elapsed time (sec): %f",GetElapsed_sec());
+		if (bPause) return;	qwStartTime = CPU::QPC() - qwPauseAccum;
+	}
+	ICF u64		GetElapsed_ticks()const
+	{
+		if (bPause) return	qwPausedTime; else return CPU::QPC() - qwStartTime - CPU::qpc_overhead - qwPauseAccum;
+	}
+	IC	u32		GetElapsed_ms()const
+	{
+		return u32(GetElapsed_ticks() * u64(1000) / CPU::qpc_freq);
+	}
+	IC	F32		GetElapsed_sec()const
+	{
+
+		FPU::m64r();
+
+		F32		_result = F32(double(GetElapsed_ticks()) / double(CPU::qpc_freq));
+
+		FPU::m24r();
+
+		return		_result;
+	}
+	IC	void	Dump() const
+	{
+		Msg("* Elapsed time (sec): %f", GetElapsed_sec());
 	}
 };
 
-class XRCORE_API CTimer : public CTimerBase {
+class XRCORE_API CTimer : public CTimerBase
+{
 private:
 	typedef CTimerBase					inherited;
 
@@ -53,100 +69,118 @@ private:
 	u64					m_ticks;
 
 private:
-	IC	u64				GetElapsed_ticks(const u64 &current_ticks) const
+	IC	u64				GetElapsed_ticks(const u64& current_ticks) const
 	{
 		u64				delta = current_ticks - m_real_ticks;
 		double			delta_d = (double)delta;
 		double			time_factor_d = time_factor();
-		double			time = delta_d*time_factor_d + .5;
+		double			time = delta_d * time_factor_d + .5;
 		u64				result = (u64)time;
 		return			(m_ticks + result);
 	}
 
 public:
-	IC					CTimer			() : m_time_factor(1.f), m_real_ticks(0), m_ticks(0) {}
+	IC					CTimer() : m_time_factor(1.f), m_real_ticks(0), m_ticks(0)
+	{}
 
-	ICF	void			Start			()
+	ICF	void			Start()
 	{
 		if (bPause)
 			return;
 
 		inherited::Start();
 
-		m_real_ticks	= 0;
-		m_ticks			= 0;
+		m_real_ticks = 0;
+		m_ticks = 0;
 	}
 
-	IC	const F32&		time_factor	() const
+	IC	const F32& time_factor() const
 	{
 		return			(m_time_factor);
 	}
 
-	IC	void			time_factor		(const F32& time_factor)
+	IC	void			time_factor(const F32& time_factor)
 	{
 		u64				current = inherited::GetElapsed_ticks();
-		m_ticks			= GetElapsed_ticks(current);
-		m_real_ticks	= current;
-		m_time_factor	= time_factor;
+		m_ticks = GetElapsed_ticks(current);
+		m_real_ticks = current;
+		m_time_factor = time_factor;
 	}
 
 	IC	u64				GetElapsed_ticks() const
 	{
-		FPU::m64r		();
+		FPU::m64r();
 
 		u64				result = GetElapsed_ticks(inherited::GetElapsed_ticks());
 
-		FPU::m24r		();
+		FPU::m24r();
 
 		return			(result);
 	}
 
-	u32				GetElapsed_ms	() const
+	u32				GetElapsed_ms() const
 	{
-		return			(u32(GetElapsed_ticks()*u64(1000)/CPU::qpc_freq));
+		return			(u32(GetElapsed_ticks() * u64(1000) / CPU::qpc_freq));
 	}
-	
-	F32			GetElapsed_sec	() const
-	{
-		FPU::m64r		();
-        
-		F32			result = F32(double(GetElapsed_ticks())/double(CPU::qpc_freq )	)	;
 
-		FPU::m24r		();
+	F32			GetElapsed_sec() const
+	{
+		FPU::m64r();
+
+		F32			result = F32(double(GetElapsed_ticks()) / double(CPU::qpc_freq));
+
+		FPU::m24r();
 
 		return			(result);
 	}
 
-	void			Dump			() const
+	void			Dump() const
 	{
-		Msg				("* Elapsed time (sec): %f",GetElapsed_sec());
+		Msg("* Elapsed time (sec): %f", GetElapsed_sec());
 	}
 };
 
-class XRCORE_API CTimer_paused_ex : public CTimer		{
+class XRCORE_API CTimer_paused_ex : public CTimer
+{
 	u64							save_clock;
 public:
-	CTimer_paused_ex			()		{ }
-	virtual ~CTimer_paused_ex	()		{ }
-	IC BOOL		Paused			()const	{ return bPause;				}
-	IC void		Pause			(BOOL b){
-		if(bPause==b)			return	;
+	CTimer_paused_ex()
+	{}
+	virtual ~CTimer_paused_ex()
+	{}
+	IC BOOL		Paused()const
+	{
+		return bPause;
+	}
+	IC void		Pause(BOOL b)
+	{
+		if (bPause == b)			return;
 
-		u64		_current		=		CPU::QPC()-CPU::qpc_overhead	;
-		if( b )	{
-			save_clock			= _current				;
-			qwPausedTime		= CTimerBase::GetElapsed_ticks()	;
-		}else	{
-			qwPauseAccum		+=		_current - save_clock;
+		u64		_current = CPU::QPC() - CPU::qpc_overhead;
+		if (b)
+		{
+			save_clock = _current;
+			qwPausedTime = CTimerBase::GetElapsed_ticks();
+		}
+		else
+		{
+			qwPauseAccum += _current - save_clock;
 		}
 		bPause = b;
 	}
 };
 
-class XRCORE_API CTimer_paused  : public CTimer_paused_ex		{
+class XRCORE_API CTimer_paused : public CTimer_paused_ex
+{
 public:
-	CTimer_paused				()		{ g_pauseMngr.Register(this);	}
-	virtual ~CTimer_paused		()		{ g_pauseMngr.UnRegister(this);	}
+	CTimer_paused()
+	{
+		g_pauseMngr.Register(this);
+	}
+	virtual ~CTimer_paused()
+	{
+		g_pauseMngr.UnRegister(this);
+	}
 };
 
 extern XRCORE_API BOOL			g_bEnableStatGather;
@@ -158,24 +192,37 @@ public:
 	F32			result;
 	u32			count;
 public:
-				CStatTimer		();
-	void		FrameStart		();
-	void		FrameEnd		();
+	CStatTimer();
+	void		FrameStart();
+	void		FrameEnd();
 
-	ICF void	Begin			()		{	if (!g_bEnableStatGather) return;	count++; T.Start();				}
-	ICF void	End				()		{	if (!g_bEnableStatGather) return;	accum += T.GetElapsed_ticks();	}
+	ICF void	Begin()
+	{
+		if (!g_bEnableStatGather) return;	count++; T.Start();
+	}
+	ICF void	End()
+	{
+		if (!g_bEnableStatGather) return;	accum += T.GetElapsed_ticks();
+	}
 
-	ICF u64		GetElapsed_ticks()const	{	return accum;					}
+	ICF u64		GetElapsed_ticks()const
+	{
+		return accum;
+	}
 
-	IC	u32		GetElapsed_ms	()const	{	return u32(GetElapsed_ticks()*u64(1000)/CPU::qpc_freq );	}
-	IC	F32	GetElapsed_sec	()const	{
+	IC	u32		GetElapsed_ms()const
+	{
+		return u32(GetElapsed_ticks() * u64(1000) / CPU::qpc_freq);
+	}
+	IC	F32	GetElapsed_sec()const
+	{
 
-		FPU::m64r	()			;
-      
-		F32		_result		= F32(double(GetElapsed_ticks())/double(CPU::qpc_freq )	)	;
+		FPU::m64r();
 
-		FPU::m24r	()			;
+		F32		_result = F32(double(GetElapsed_ticks()) / double(CPU::qpc_freq));
 
-		return		_result		;
+		FPU::m24r();
+
+		return		_result;
 	}
 };

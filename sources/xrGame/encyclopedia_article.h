@@ -51,7 +51,7 @@ public:
 
 protected:
 	shared_str			m_ArticleId;
-	virtual	void		load_shared					(LPCSTR);
+	virtual	void		load_shared					(pcstr);
 	static  void		InitXmlIdToIndex			();
 public:
 	const shared_str	Id							()						{return m_ArticleId;}

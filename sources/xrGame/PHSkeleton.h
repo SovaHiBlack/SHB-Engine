@@ -51,7 +51,7 @@ protected:
 			void	RespawnInit			()																		;//net_Destroy
 			bool	Spawn				(CSE_Abstract	*D)														;//net_spawn
 			void	Update				(u32 dt)																;//shedule update
-			void	Load				(LPCSTR section)														;//client load
+			void	Load				(pcstr section)														;//client load
 public:
 			void	SetAutoRemove		(u32 time=existence_time)												;
 			void	SetNotNeedSave		()																		;

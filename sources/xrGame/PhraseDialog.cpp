@@ -123,7 +123,7 @@ bool CPhraseDialog::SayPhrase (DIALOG_SHARED_PTR& phrase_dialog, const shared_st
 				phrase_dialog->m_PhraseVector.push_back(next_phrase_vertex->data());
 #ifdef DEBUG
 				if(psAI_Flags.test(aiDialogs)){
-					LPCSTR phrase_text = next_phrase_vertex->data()->GetText();
+					pcstr phrase_text = next_phrase_vertex->data()->GetText();
 					shared_str id = next_phrase_vertex->data()->GetID();
 					Msg("----added phrase text [%s]phrase_id=[%s] id=[%s] to dialog [%s]",phrase_text, phrase_id, id, *phrase_dialog->m_DialogId);
 				}
@@ -158,7 +158,7 @@ bool CPhraseDialog::SayPhrase (DIALOG_SHARED_PTR& phrase_dialog, const shared_st
 	return phrase_dialog?!phrase_dialog->m_bFinished:true;
 }
 
-LPCSTR CPhraseDialog::GetPhraseText	(const shared_str& phrase_id, bool current_speaking)
+pcstr CPhraseDialog::GetPhraseText	(const shared_str& phrase_id, bool current_speaking)
 {
 	
 	CPhraseGraph::CVertex* phrase_vertex = data()->m_PhraseGraph.vertex(phrase_id);
@@ -167,7 +167,7 @@ LPCSTR CPhraseDialog::GetPhraseText	(const shared_str& phrase_id, bool current_s
 	return phrase_vertex->data()->GetText();
 }
 
-LPCSTR CPhraseDialog::DialogCaption()
+pcstr CPhraseDialog::DialogCaption()
 {
 	return data()->m_sCaption.size()?*data()->m_sCaption:GetPhraseText("0");
 }
@@ -188,7 +188,7 @@ void CPhraseDialog::Load(shared_str dialog_id)
 #include "script_engine.h"
 #include "ai_space.h"
 
-void CPhraseDialog::load_shared	(LPCSTR)
+void CPhraseDialog::load_shared	(pcstr)
 {
 	const ITEM_DATA& item_data = *id_to_index::GetById(m_DialogId);
 
@@ -215,7 +215,7 @@ void CPhraseDialog::load_shared	(LPCSTR)
 
 	XML_NODE* phrase_list_node = pXML->NavigateToNode(dialog_node, "phrase_list", 0);
 	if(NULL == phrase_list_node){
-		LPCSTR func = pXML->Read(dialog_node, "init_func", 0, "");
+		pcstr func = pXML->Read(dialog_node, "init_func", 0, "");
 
 		luabind::functor<void>	lua_function;
 		bool functor_exists = ai().script_engine().functor(func ,lua_function);
@@ -230,7 +230,7 @@ void CPhraseDialog::load_shared	(LPCSTR)
 	pXML->SetLocalRoot(phrase_list_node);
 
 #ifdef DEBUG // debug & mixed
-	LPCSTR wrong_phrase_id = pXML->CheckUniqueAttrib(phrase_list_node, "phrase", "id");
+	pcstr wrong_phrase_id = pXML->CheckUniqueAttrib(phrase_list_node, "phrase", "id");
 	THROW3(wrong_phrase_id == NULL, *item_data.id, wrong_phrase_id);
 #endif	
 
@@ -240,7 +240,7 @@ void CPhraseDialog::load_shared	(LPCSTR)
 	AddPhrase				(pXML, phrase_node, "0", "");
 }
 
-void CPhraseDialog::SetCaption	(LPCSTR str)
+void CPhraseDialog::SetCaption	(pcstr str)
 {
 	data()->m_sCaption = str;
 }
@@ -250,7 +250,7 @@ void CPhraseDialog::SetPriority	(int val)
 	data()->m_iPriority = val;
 }
 
-CPhrase* CPhraseDialog::AddPhrase	(LPCSTR text, const shared_str& phrase_id, const shared_str& prev_phrase_id, int goodwil_level)
+CPhrase* CPhraseDialog::AddPhrase	(pcstr text, const shared_str& phrase_id, const shared_str& prev_phrase_id, int goodwil_level)
 {
 	CPhrase* phrase					= NULL;
 	CPhraseGraph::CVertex* _vertex	= data()->m_PhraseGraph.vertex(phrase_id);
@@ -274,7 +274,7 @@ CPhrase* CPhraseDialog::AddPhrase	(LPCSTR text, const shared_str& phrase_id, con
 void CPhraseDialog::AddPhrase	(CUIXml* pXml, XML_NODE* phrase_node, const shared_str& phrase_id, const shared_str& prev_phrase_id)
 {
 
-	LPCSTR sText		= pXml->Read		(phrase_node, "text", 0, "");
+	pcstr sText		= pXml->Read		(phrase_node, "text", 0, "");
 	int		gw			= pXml->ReadInt		(phrase_node, "goodwill", 0, -10000);
 	CPhrase* ph			= AddPhrase			(sText, phrase_id, prev_phrase_id, gw);
 	if(!ph)				return;
@@ -285,7 +285,7 @@ void CPhraseDialog::AddPhrase	(CUIXml* pXml, XML_NODE* phrase_node, const shared
 	int next_num = pXml->GetNodesNum(phrase_node, "next");
 	for(int i=0; i<next_num; ++i)
 	{
-		LPCSTR next_phrase_id_str		= pXml->Read(phrase_node, "next", i, "");
+		pcstr next_phrase_id_str		= pXml->Read(phrase_node, "next", i, "");
 		XML_NODE* next_phrase_node		= pXml->NavigateToNodeWithAttribute("phrase", "id", next_phrase_id_str);
 		R_ASSERT2						(next_phrase_node, next_phrase_id_str );
 //.		int next_phrase_id				= atoi(next_phrase_id_str);

@@ -10,7 +10,7 @@
 
 IC	CScriptActionPlannerActionWrapper::CScriptActionPlannerActionWrapper	(
 	CScriptGameObject *object,
-	LPCSTR action_name
+	pcstr action_name
 ) : 
 	inherited(
 		object,

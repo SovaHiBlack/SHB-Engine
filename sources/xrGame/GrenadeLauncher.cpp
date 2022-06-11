@@ -22,7 +22,7 @@ BOOL CGrenadeLauncher::net_Spawn(CSE_Abstract* DC)
 	return		(inherited::net_Spawn(DC));
 }
 
-void CGrenadeLauncher::Load(LPCSTR section) 
+void CGrenadeLauncher::Load(pcstr section)
 {
 	m_fGrenadeVel = pSettings->r_float(section, "grenade_vel");
 	inherited::Load(section);

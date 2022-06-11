@@ -98,7 +98,7 @@ public:
 	static void				u_EventSend			(NET_Packet& P, u32 dwFlags = DPNSEND_GUARANTEED	);
 	
 	// Methods
-	virtual void			Load				(LPCSTR section);
+	virtual void			Load				(pcstr section);
 	virtual BOOL			net_Spawn			(CSE_Abstract* DC);
 	virtual void			net_Destroy			();
 	virtual	void			net_Relcase			( CObject* O );	
@@ -125,9 +125,8 @@ public:
 	virtual void			SetHitInfo				(CObject* who, CObject* weapon, s16 element, Fvector Pos, Fvector Dir)	{};
 	virtual	BOOL			BonePassBullet		(int boneID) { return FALSE; }
 
-
 	//игровое имя объекта
-	virtual LPCSTR			Name                () const;
+	virtual pcstr			Name                () const;
 	
 	//virtual void			OnH_A_Independent	();
 	virtual void			OnH_B_Chield		();
@@ -162,7 +161,7 @@ const animation_movement_controller*animation_movement		( ) const	{ return	m_ani
 
 			void			init				();
 	virtual	void			reinit				();
-	virtual	void			reload				(LPCSTR section);
+	virtual	void			reload				(pcstr section);
 	///////////////////// network /////////////////////////////////////////
 private:
 	bool					m_bCrPr_Activated;
@@ -277,7 +276,7 @@ private:
 
 public:
 	CScriptCallbackExVoid	&callback			(GameObject::ECallbackType type) const;
-	virtual	LPCSTR			visual_name			(CSE_Abstract *server_entity);
+	virtual	pcstr			visual_name			(CSE_Abstract *server_entity);
 
 	virtual	void			On_B_NotCurrentEntity () {};
 };

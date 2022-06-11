@@ -11,7 +11,7 @@ public:
 	CMosquitoBald(void);
 	virtual ~CMosquitoBald(void);
 
-	virtual void Load(LPCSTR section);
+	virtual void Load(pcstr section);
 	virtual void Postprocess(F32 /** val **/);
 	virtual bool EnableEffector() {return true;}
 

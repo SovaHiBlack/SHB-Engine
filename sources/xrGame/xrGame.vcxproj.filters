@@ -1786,9 +1786,6 @@
     <Filter Include="Core\Common\associative_vector\compare">
       <UniqueIdentifier>{0d040a8e-be54-48fe-a381-e001cbfc33ee}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Core\Common\Registry">
-      <UniqueIdentifier>{491f28fc-86ce-4238-bfb8-0a0724902e08}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Core\Server">
       <UniqueIdentifier>{42c00bf1-ba8b-4c79-8967-3911ae09e869}</UniqueIdentifier>
     </Filter>
@@ -5277,9 +5274,6 @@
     <ClInclude Include="associative_vector_compare_predicate_inline.h">
       <Filter>Core\Common\associative_vector\compare</Filter>
     </ClInclude>
-    <ClInclude Include="RegistryFuncs.h">
-      <Filter>Core\Common\Registry</Filter>
-    </ClInclude>
     <ClInclude Include="xrServer.h">
       <Filter>Core\Server</Filter>
     </ClInclude>
@@ -8038,9 +8032,6 @@
     </ClCompile>
     <ClCompile Include="string_table.cpp">
       <Filter>Core\Common\StringTable</Filter>
-    </ClCompile>
-    <ClCompile Include="RegistryFuncs.cpp">
-      <Filter>Core\Common\Registry</Filter>
     </ClCompile>
     <ClCompile Include="xrServer.cpp">
       <Filter>Core\Server</Filter>

@@ -25,7 +25,7 @@
 #include "visual_memory_manager.h"
 #include "location_manager.h"
 
-CMapLocation::CMapLocation(LPCSTR type, u16 object_id)
+CMapLocation::CMapLocation(pcstr type, u16 object_id)
 {
 	m_flags.zero			();
 	m_level_spot			= NULL;
@@ -63,7 +63,7 @@ void CMapLocation::destroy()
 }
 
 CUIXml*	g_uiSpotXml=NULL;
-void CMapLocation::LoadSpot(LPCSTR type, bool bReload)
+void CMapLocation::LoadSpot(pcstr type, bool bReload)
 {
 	if(!g_uiSpotXml){
 		g_uiSpotXml				= xr_new<CUIXml>();
@@ -76,7 +76,7 @@ void CMapLocation::LoadSpot(LPCSTR type, bool bReload)
 //	strconcat(path_base,"map_spots:",type);
 	strcpy_s		(path_base,type);
 	R_ASSERT3		(g_uiSpotXml->NavigateToNode(path_base,0), "XML node not found in file map_spots.xml", path_base);
-	LPCSTR s		= g_uiSpotXml->ReadAttrib(path_base, 0, "hint", "no hint");
+	pcstr s		= g_uiSpotXml->ReadAttrib(path_base, 0, "hint", "no hint");
 	SetHint			(s);
 	
 	s = g_uiSpotXml->ReadAttrib(path_base, 0, "store", NULL);
@@ -101,7 +101,7 @@ void CMapLocation::LoadSpot(LPCSTR type, bool bReload)
 	strconcat(sizeof(path),path,path_base,":level_map");
 	node = g_uiSpotXml->NavigateToNode(path,0);
 	if(node){
-		LPCSTR str = g_uiSpotXml->ReadAttrib(path, 0, "spot", "");
+		pcstr str = g_uiSpotXml->ReadAttrib(path, 0, "spot", "");
 		if( xr_strlen(str) ){
 			if(!bReload)
 				m_level_spot = xr_new<CMapSpot>(this);
@@ -123,7 +123,7 @@ void CMapLocation::LoadSpot(LPCSTR type, bool bReload)
 	strconcat(sizeof(path),path,path_base,":mini_map");
 	node = g_uiSpotXml->NavigateToNode(path,0);
 	if(node){
-		LPCSTR str = g_uiSpotXml->ReadAttrib(path, 0, "spot", "");
+		pcstr str = g_uiSpotXml->ReadAttrib(path, 0, "spot", "");
 		if( xr_strlen(str) ){
 			if(!bReload)
 				m_minimap_spot = xr_new<CMiniMapSpot>(this);
@@ -494,7 +494,7 @@ void CMapLocation::SetHint	(const shared_str& hint)
 	m_hint = hint;
 };
 
-LPCSTR CMapLocation::GetHint	()					
+pcstr CMapLocation::GetHint	()
 {
 	CStringTable	stbl;
 	return *stbl.translate(m_hint);
@@ -635,7 +635,7 @@ void CRelationMapLocation::Dump							()
 }
 #endif
 
-CUserDefinedMapLocation::CUserDefinedMapLocation		(LPCSTR type, u16 object_id)
+CUserDefinedMapLocation::CUserDefinedMapLocation		(pcstr type, u16 object_id)
 :inherited(type, object_id)
 {
 	m_flags.set			( eSerailizable, TRUE);

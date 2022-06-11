@@ -14,7 +14,7 @@ protected:
 public:
 			interactive_motion	( );
 	void	init				( );
-	void	setup				( LPCSTR m, CPhysicsShell *s );
+	void	setup				(pcstr m, CPhysicsShell *s );
 	void	update				( CPhysicsShell *s );
 IC	bool	is_enabled			( )	{ return !!flags.test(fl_use_death_motion); }
 

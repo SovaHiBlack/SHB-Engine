@@ -11,7 +11,7 @@ public:
 									CCustomOutfit		(void);
 	virtual							~CCustomOutfit		(void);
 
-	virtual void					Load				(LPCSTR section);
+	virtual void					Load				(pcstr section);
 	
 	//уменьшенная версия хита, для вызова, когда костюм надет на персонажа
 	virtual void					Hit					(float P, ALife::EHitType hit_type);
