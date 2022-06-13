@@ -316,7 +316,7 @@ protected:
 	typedef CObjectActionBase<CInventoryItem> inherited;
 
 public:
-						CObjectActionIdle		(CInventoryItem *item, CAI_Stalker *owner, CPropertyStorage *storage, LPCpcstrSTR action_name = "");
+						CObjectActionIdle		(CInventoryItem *item, CAI_Stalker *owner, CPropertyStorage *storage, pcstr action_name = "");
 	virtual void		initialize				();
 };
 

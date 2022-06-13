@@ -4,14 +4,11 @@ Smart Terrain (механизм, организовывающий всех сталкеров и некоторых монстров в 
 !без симуляции не работает!
 --------------------------------------------------------------------------------------------------------------------]]
 
---function printf()
---end
-
 local check_period
 
 if not editor() then
 	check_period = game.CTime()
-	check_period:setHMSms( 0, 0, 0, 50000 )
+	check_period:setHMSms(0, 0, 0, 50000)
 
 	CTime_0 = game.CTime()
 end

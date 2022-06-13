@@ -1,0 +1,35 @@
+* Detected CPU: GenuineIntel P3 family, F6/M10/S7, 1996.00 mhz, 32-clk 'rdtsc'
+* CPU Features: RDTSC, MMX, SSE, SSE2
+
+Initializing File System...
+using fs-ltx fsgame.ltx
+FS: 28122 files cached, 4645Kb memory used.
+Init FileSystem 1.849437 sec
+'xrCore' build 41, Jun 11 2022
+
+Initializing Engine...
+Executing config-script "user.ltx"...
+! Cannot open script file [user.ltx]
+Starting INPUT device...
+Loading DLL: xrRender_R1.dll
+Loading DLL: xrGame.dll
+ 
+FATAL ERROR
+ 
+[error]Expression    : hGame
+[error]Function      : CEngineAPI::Initialize
+[error]File          : EngineAPI.cpp
+[error]Line          : 61
+[error]Description   : Game DLL raised exception during loading or there is no game DLL at all
+ 
+
+stack trace:
+
+0023:51C9D1D1 xrCore.dll, xrDebug::fail(), c:\engine\shb-engine\sources\xrcore\xrdebugnew.cpp, 330
+0023:01107954 XR_3DA.exe, CEngineAPI::Initialize(), c:\engine\shb-engine\sources\xr_3da\engineapi.cpp, 62
+0023:01155532 XR_3DA.exe, WinMain_impl(), c:\engine\shb-engine\sources\xr_3da\x_ray.cpp, 485
+0023:01155272 XR_3DA.exe, WinMain(), c:\engine\shb-engine\sources\xr_3da\x_ray.cpp, 542
+0023:010F368F XR_3DA.exe, __tmainCRTStartup(), f:\dd\vctools\crt\crtw32\dllstuff\crtexe.c, 618
+0023:774C0419 KERNEL32.DLL, BaseThreadInitThunk()
+0023:77A672FD ntdll.dll, RtlGetAppContainerNamedObjectPath()
+0023:77A672CD ntdll.dll, RtlGetAppContainerNamedObjectPath()

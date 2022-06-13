@@ -270,33 +270,38 @@ void CScriptEngine::process_file	(pcstr file_name, bool reload_modules)
 	m_reload_modules		= false;
 }
 
-void CScriptEngine::register_script_classes		()
+void CScriptEngine::register_script_classes()
 {
 #ifdef DBG_DISABLE_SCRIPTS
 	return;
-#endif
+#endif // def DBG_DISABLE_SCRIPTS
+
 	string_path					S;
-	FS.update_path				(S,"$game_config$","script.ltx");
-	CInifile					*l_tpIniFile = xr_new<CInifile>(S);
+	FS.update_path				(S, "$game_config$", "script.ltx");
+	CInifile* l_tpIniFile		= xr_new<CInifile>(S);
 	R_ASSERT					(l_tpIniFile);
 
-	if (!l_tpIniFile->section_exist("common")) {
+	if (!l_tpIniFile->section_exist("common"))
+	{
 		xr_delete				(l_tpIniFile);
 		return;
 	}
 
-	m_class_registrators		= READ_IF_EXISTS(l_tpIniFile,r_string,"common","class_registrators","");
+	m_class_registrators		= READ_IF_EXISTS(l_tpIniFile, r_string, "common", "class_registrators", "");
 	xr_delete					(l_tpIniFile);
 
-	u32							n = _GetItemCount(*m_class_registrators);
+	u32 n						= _GetItemCount(*m_class_registrators);
 	string256					I;
-	for (u32 i=0; i<n; ++i) {
-		_GetItem				(*m_class_registrators,i,I);
+	for (u32 i = 0; i < n; ++i)
+	{
+		_GetItem				(*m_class_registrators, i, I);
 		luabind::functor<void>	result;
-		if (!functor(I,result)) {
-			script_log			(eLuaMessageTypeError,"Cannot load class registrator %s!",I);
+		if (!functor(I, result))
+		{
+			script_log			(eLuaMessageTypeError, "Cannot load class registrator %s!", I);
 			continue;
 		}
+
 		result					(const_cast<CObjectFactory*>(&object_factory()));
 	}
 }
