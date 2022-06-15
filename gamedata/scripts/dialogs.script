@@ -14,13 +14,14 @@ end
 function disable_talk_self(first_speaker, second_speaker)
 	first_speaker:disable_talk()
 end
+
 function disable_talk_victim(first_speaker, second_speaker)
 	second_speaker:disable_talk()
 end
 
 function punch(first_speaker, second_speaker)
-	--abort("KICK ASS !!!!")
-	--xr_punch.punch[first_speaker:id()] = second_speaker
+--	abort("KICK ASS !!!!")
+--	xr_punch.punch[first_speaker:id()] = second_speaker
 	db.storage[second_speaker:id()].punch.enabled = true
 end
 
@@ -30,33 +31,35 @@ function get_money_then_leave(first_speaker, second_speaker)
 end
 
 function is_wounded(first_speaker, second_speaker)
-    if db.storage[first_speaker:id()].wounded ~= nil and
-       db.storage[first_speaker:id()].wounded.wound_manager.can_use_medkit == true
-    then
-        return false
-    end
+	if db.storage[first_speaker:id()].wounded ~= nil and db.storage[first_speaker:id()].wounded.wound_manager.can_use_medkit == true then
+		return false
+	end
 
 	return xr_wounded.is_wounded(first_speaker)
 end
+
 function is_opp_wounded(first_speaker, second_speaker, dialog_id)
-    if db.storage[second_speaker:id()].wounded ~= nil and
-       db.storage[second_speaker:id()].wounded.wound_manager.can_use_medkit == true
-    then
-        return false
-    end
-	return	xr_wounded.is_wounded(second_speaker)
+	if db.storage[second_speaker:id()].wounded ~= nil and db.storage[second_speaker:id()].wounded.wound_manager.can_use_medkit == true then
+		return false
+	end
+
+	return xr_wounded.is_wounded(second_speaker)
 end
+
 function is_not_wounded(first_speaker, second_speaker)
 	return not this.is_wounded(first_speaker, second_speaker)
 end
+
 function actor_have_medkit(first_speaker, second_speaker)
 	return first_speaker:object("medkit") ~= nil or
 		   first_speaker:object("medkit_army") ~= nil or
 		   first_speaker:object("medkit_scientic") ~= nil
 end
+
 function actor_have_bandage(first_speaker, second_speaker)
 	return first_speaker:object("bandage") ~= nil
 end
+
 function transfer_medkit(first_speaker, second_speaker)
 	if first_speaker:object("medkit") ~= nil then
 		dialogs.relocate_item_section(second_speaker, "medkit", "out")
@@ -68,16 +71,19 @@ function transfer_medkit(first_speaker, second_speaker)
 
 	--' Тут надо анлочить аптечку для использования.
 	xr_wounded.unlock_medkit(second_speaker)
-		
+
 	if second_speaker:relation(first_speaker) ~= game_object.enemy then
 		second_speaker:set_relation(game_object.friend, first_speaker)
 	end
+
 	first_speaker:change_character_reputation(10);
 end
+
 function transfer_bandage(first_speaker, second_speaker)
 	dialogs.relocate_item_section(second_speaker, "bandage", "out")
 	second_speaker:set_relation(game_object.friend, first_speaker)
 end
+
 function kill_yourself(npc, actor)
 	npc:kill(actor)
 end
@@ -94,6 +100,7 @@ function relocate_item(victim, obj, type)
 		--'news_manager.relocate_item(db.actor, type, obj)
 	end
 end
+
 --' Use this function instead.
 function relocate_item_section(victim, section, type)
 	if db.actor and victim then

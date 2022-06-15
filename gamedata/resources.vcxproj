@@ -659,6 +659,8 @@
     <None Include="scripts\fx_sound.script" />
     <None Include="scripts\game_registrator.script" />
     <None Include="scripts\game_stats.script" />
+    <None Include="scripts\garbage_dialogs.script" />
+    <None Include="scripts\garbage_tasks.script" />
     <None Include="scripts\gulag_agroprom.script" />
     <None Include="scripts\gulag_agroprom_underground.script" />
     <None Include="scripts\gulag_bar.script" />
@@ -745,8 +747,6 @@
     <None Include="scripts\hide\game_last_tmp.script" />
     <None Include="scripts\hide\game_last_ui.script" />
     <None Include="scripts\hide\game_types.script" />
-    <None Include="scripts\hide\garbage_dialogs.script" />
-    <None Include="scripts\hide\garbage_tasks.script" />
     <None Include="scripts\hide\gramofon.script" />
     <None Include="scripts\hide\gulag_labx18.script" />
     <None Include="scripts\hide\gulag_selo.script" />
@@ -909,9 +909,7 @@
     <None Include="scripts\hide\x7.script" />
     <None Include="scripts\hide\xr_assistance.script" />
     <None Include="scripts\hide\xr_bodyguard.script" />
-    <None Include="scripts\hide\xr_combat_camper.script" />
     <None Include="scripts\hide\xr_combat_monolith.script" />
-    <None Include="scripts\hide\xr_combat_zombied.script" />
     <None Include="scripts\hide\xr_comm_ptr.script" />
     <None Include="scripts\hide\xr_companion.script" />
     <None Include="scripts\hide\xr_conditions_impl.script" />
@@ -1037,7 +1035,9 @@
     <None Include="scripts\xr_box.script" />
     <None Include="scripts\xr_camper.script" />
     <None Include="scripts\xr_combat.script" />
+    <None Include="scripts\xr_combat_camper.script" />
     <None Include="scripts\xr_combat_ignore.script" />
+    <None Include="scripts\xr_combat_zombied.script" />
     <None Include="scripts\xr_conditions.script" />
     <None Include="scripts\xr_danger.script" />
     <None Include="scripts\xr_death.script" />

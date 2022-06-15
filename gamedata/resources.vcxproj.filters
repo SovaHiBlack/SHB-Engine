@@ -3988,12 +3988,6 @@
     <None Include="scripts\hide\game_types.script">
       <Filter>scripts\hide</Filter>
     </None>
-    <None Include="scripts\hide\garbage_dialogs.script">
-      <Filter>scripts\hide</Filter>
-    </None>
-    <None Include="scripts\hide\garbage_tasks.script">
-      <Filter>scripts\hide</Filter>
-    </None>
     <None Include="scripts\hide\gramofon.script">
       <Filter>scripts\hide</Filter>
     </None>
@@ -4480,13 +4474,7 @@
     <None Include="scripts\hide\xr_bodyguard.script">
       <Filter>scripts\hide</Filter>
     </None>
-    <None Include="scripts\hide\xr_combat_camper.script">
-      <Filter>scripts\hide</Filter>
-    </None>
     <None Include="scripts\hide\xr_combat_monolith.script">
-      <Filter>scripts\hide</Filter>
-    </None>
-    <None Include="scripts\hide\xr_combat_zombied.script">
       <Filter>scripts\hide</Filter>
     </None>
     <None Include="scripts\hide\xr_comm_ptr.script">
@@ -4566,6 +4554,18 @@
     </None>
     <None Include="scripts\agroprom_tasks.script">
       <Filter>scripts\GP\Storyline\LevelTasks</Filter>
+    </None>
+    <None Include="scripts\xr_combat_zombied.script">
+      <Filter>scripts\GP\GenericSchemes\Stalker</Filter>
+    </None>
+    <None Include="scripts\xr_combat_camper.script">
+      <Filter>scripts\GP\BuildingBlocks\Stalker</Filter>
+    </None>
+    <None Include="scripts\garbage_tasks.script">
+      <Filter>scripts\GP\Storyline\LevelTasks</Filter>
+    </None>
+    <None Include="scripts\garbage_dialogs.script">
+      <Filter>scripts\GP\Storyline\DialogSupport</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
