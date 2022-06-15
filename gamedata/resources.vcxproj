@@ -640,6 +640,7 @@
     <None Include="lanims.xr" />
     <None Include="particles.xr" />
     <None Include="scripts\actor_proxy.script" />
+    <None Include="scripts\agroprom_tasks.script" />
     <None Include="scripts\bind_heli.script" />
     <None Include="scripts\bind_monster.script" />
     <None Include="scripts\bind_physic_object.script" />
@@ -682,7 +683,6 @@
     <None Include="scripts\hide\a3.script" />
     <None Include="scripts\hide\agro.script" />
     <None Include="scripts\hide\agroprom_dialog.script" />
-    <None Include="scripts\hide\agroprom_tasks.script" />
     <None Include="scripts\hide\alife_test.script" />
     <None Include="scripts\hide\andy_test.script" />
     <None Include="scripts\hide\anomaly.script" />
@@ -893,7 +893,6 @@
     <None Include="scripts\hide\ui_options_video_tab.script" />
     <None Include="scripts\hide\ui_registrator.script" />
     <None Include="scripts\hide\ui_spawn_dialog.script" />
-    <None Include="scripts\hide\ui_wpn_params.script" />
     <None Include="scripts\hide\val_test.script" />
     <None Include="scripts\hide\version.script" />
     <None Include="scripts\hide\vovan_script.script" />
@@ -1030,6 +1029,7 @@
     <None Include="scripts\ui_mm_opt_video.script" />
     <None Include="scripts\ui_mm_opt_video_adv.script" />
     <None Include="scripts\ui_save_dialog.script" />
+    <None Include="scripts\ui_wpn_params.script" />
     <None Include="scripts\utils.script" />
     <None Include="scripts\xr_abuse.script" />
     <None Include="scripts\xr_actions_id.script" />
