@@ -198,7 +198,7 @@ void CUIWeaponCellItem::OnAfterChild()
 		InitAddon	(GetIcon(eLauncher), *object()->GetGrenadeLauncherName(),m_addon_offset[eLauncher]);
 }
 
-void CUIWeaponCellItem::InitAddon(CUIStatic* s, LPCSTR section, Fvector2 addon_offset)
+void CUIWeaponCellItem::InitAddon(CUIStatic* s, pcstr section, Fvector2 addon_offset)
 {
 	
 		Frect					tex_rect;
@@ -271,7 +271,7 @@ bool CUIWeaponCellItem::EqualTo(CUICellItem* itm)
 	return							b_addons && b_place;
 }
 
-CBuyItemCustomDrawCell::CBuyItemCustomDrawCell	(LPCSTR str, CGameFont* pFont)
+CBuyItemCustomDrawCell::CBuyItemCustomDrawCell	(pcstr str, CGameFont* pFont)
 {
 	m_pFont		= pFont;
 	VERIFY		(xr_strlen(str)<16);

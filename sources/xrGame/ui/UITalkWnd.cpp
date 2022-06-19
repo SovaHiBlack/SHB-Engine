@@ -335,7 +335,7 @@ void CUITalkWnd::AddQuestion(const shared_str& text, const shared_str& value)
 
 //////////////////////////////////////////////////////////////////////////
 
-void CUITalkWnd::AddAnswer(const shared_str& text, LPCSTR SpeakerName)
+void CUITalkWnd::AddAnswer(const shared_str& text, pcstr SpeakerName)
 {
 	//для пустой фразы вообще ничего не выводим
 	if(text.size() == 0) return;
@@ -386,7 +386,7 @@ bool CUITalkWnd::OnKeyboard(int dik, EUIMessages keyboard_action)
 	return inherited::OnKeyboard(dik,keyboard_action);
 }
 
-void CUITalkWnd::PlaySnd(LPCSTR text)
+void CUITalkWnd::PlaySnd(pcstr text)
 {
 	if(xr_strlen(text) == 0) return;
 	StopSnd						();
@@ -410,7 +410,7 @@ void CUITalkWnd::StopSnd()
 		m_sound.stop	();
 }
 
-void CUITalkWnd::AddIconedMessage(LPCSTR text, LPCSTR texture_name, Frect texture_rect, LPCSTR templ_name)
+void CUITalkWnd::AddIconedMessage(pcstr text, pcstr texture_name, Frect texture_rect, pcstr templ_name)
 {
 	UITalkDialogWnd->AddIconedAnswer(text, texture_name, texture_rect, templ_name);
 }

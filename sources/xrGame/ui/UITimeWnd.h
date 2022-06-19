@@ -18,10 +18,10 @@ public:
 	virtual ~CUITimeWnd();
 	virtual void Init(float x, float y, float widht, float height);
 	virtual void Init(float x, float y);	
-	virtual void InitTexture(LPCSTR tex_name, LPCSTR sh_name="hud\\default") {};
+	virtual void InitTexture(pcstr tex_name, pcstr sh_name="hud\\default") {};
 	virtual void SetFont(CGameFont* pFont);
 	virtual void SetTextColor(u32 color);
-	virtual void SetText(LPCSTR str);
+	virtual void SetText(pcstr str);
 	virtual void SetTextX(float x);
 	virtual void SetTextY(float y);
 	virtual void Update();

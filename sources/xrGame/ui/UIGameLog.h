@@ -19,8 +19,8 @@ class CUIGameLog: public CUIScrollView
 public:
 	CUIGameLog();
 	virtual ~CUIGameLog();
-	CUIStatic*				AddLogMessage	(LPCSTR msg);
-	CUIPdaMsgListItem*		AddPdaMessage	(LPCSTR msg, float delay);
+	CUIStatic*				AddLogMessage	(pcstr msg);
+	CUIPdaMsgListItem*		AddPdaMessage	(pcstr msg, float delay);
 	virtual void			Update			();
 
 	void					SetTextAtrib	(CGameFont* pFont, u32 color);

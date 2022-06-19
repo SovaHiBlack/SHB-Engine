@@ -14,26 +14,25 @@ public:
 	virtual void					Load				(pcstr section);
 	
 	//уменьшенная версия хита, для вызова, когда костюм надет на персонажа
-	virtual void					Hit					(float P, ALife::EHitType hit_type);
+	virtual void					Hit					(f32 P, ALife::EHitType hit_type);
 
 	//коэффициенты на которые домножается хит
 	//при соответствующем типе воздействия
 	//если на персонаже надет костюм
-	float							GetHitTypeProtection(ALife::EHitType hit_type, s16 element);
-	float							GetDefHitTypeProtection(ALife::EHitType hit_type);
+	f32								GetHitTypeProtection(ALife::EHitType hit_type, s16 element);
+	f32								GetDefHitTypeProtection(ALife::EHitType hit_type);
 
-	float							HitThruArmour		(float hit_power, s16 element, float AP);
+	f32								HitThruArmour		(f32 hit_power, s16 element, f32 AP);
 	//коэффициент на который домножается потеря силы
 	//если на персонаже надет костюм
-	float							GetPowerLoss		();
-
+	f32								GetPowerLoss		();
 
 	virtual void					OnMoveToSlot		();
 	virtual void					OnMoveToRuck		();
 
 protected:
 	HitImmunity::HitTypeSVec		m_HitTypeProtection;
-	float							m_fPowerLoss;
+	f32								m_fPowerLoss;
 
 	shared_str						m_ActorVisual;
 	shared_str						m_full_icon_name;
@@ -42,8 +41,8 @@ protected:
 	u32								m_ef_equipment_type;
 
 public:
-	float							m_additional_weight;
-	float							m_additional_weight2;
+	f32								m_additional_weight;
+	f32								m_additional_weight2;
 	shared_str						m_NightVisionSect;
 	virtual u32						ef_equipment_type		() const;
 	virtual	BOOL					BonePassBullet			(int boneID);

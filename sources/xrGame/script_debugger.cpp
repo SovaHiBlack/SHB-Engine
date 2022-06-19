@@ -47,13 +47,13 @@ LRESULT CScriptDebugger::DebugMessage(UINT nMsg, WPARAM wParam, LPARAM lParam)
 
 	case DMSG_WRITE_DEBUG:{
 			msg.w_int(DMSG_WRITE_DEBUG);
-			msg.w_string((char*)wParam);
+			msg.w_string((pstr)wParam);
 			SendMessageToIde(msg);
 		}break;
 
 	case DMSG_GOTO_FILELINE:{
 			msg.w_int(DMSG_GOTO_FILELINE);
-			msg.w_string((char*)wParam);
+			msg.w_string((pstr)wParam);
 			msg.w_int((int)lParam);
 			SendMessageToIde(msg);
 		}break;
@@ -113,7 +113,7 @@ LRESULT CScriptDebugger::DebugMessage(UINT nMsg, WPARAM wParam, LPARAM lParam)
 		}break;
 
 	case DMSG_GET_VAR_TABLE:{
-			DrawVariableInfo((char*)wParam);
+			DrawVariableInfo((pstr)wParam);
 		}break;
 
 
@@ -318,7 +318,7 @@ void CScriptDebugger::StackLevelChanged()
 	m_lua->DrawLocalVariables();
 }
 
-void CScriptDebugger::DrawVariableInfo(char* varName)
+void CScriptDebugger::DrawVariableInfo(pstr varName)
 {
 	m_lua->DrawVariableInfo(varName);
 }
@@ -348,7 +348,7 @@ void CScriptDebugger::AddGlobalVariable(pcstr name, pcstr type, pcstr value)
 }
 
 
-void CScriptDebugger::Eval(pcstr strCode, char* res, int res_sz)
+void CScriptDebugger::Eval(pcstr strCode, pstr res, int res_sz)
 {
 	string1024 strCodeFull;
 	strCodeFull[0] = 0;

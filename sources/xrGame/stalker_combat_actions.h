@@ -180,7 +180,7 @@ protected:
 	typedef CStalkerActionCombatBase inherited;
 
 public:
-						CStalkerActionDetourEnemy	(CAI_Stalker *object, LPCSTR action_name = "");
+						CStalkerActionDetourEnemy	(CAI_Stalker *object, pcstr action_name = "");
 	virtual void		initialize					();
 	virtual void		execute						();
 	virtual void		finalize					();
@@ -198,7 +198,7 @@ protected:
 	typedef CStalkerActionCombatBase inherited;
 
 public:
-						CStalkerActionSearchEnemy	(CAI_Stalker *object, LPCSTR action_name = "");
+						CStalkerActionSearchEnemy	(CAI_Stalker *object, pcstr action_name = "");
 	virtual void		initialize					();
 	virtual void		execute						();
 	virtual void		finalize					();
@@ -214,7 +214,7 @@ protected:
 	typedef CStalkerActionCombatBase inherited;
 
 public:
-						CStalkerActionPostCombatWait(CAI_Stalker *object, LPCSTR action_name = "");
+						CStalkerActionPostCombatWait(CAI_Stalker *object, pcstr action_name = "");
 	virtual void		initialize					();
 	virtual void		execute						();
 	virtual void		finalize					();
@@ -229,7 +229,7 @@ protected:
 	typedef CStalkerActionCombatBase inherited;
 
 public:
-						CStalkerActionHideFromGrenade(CAI_Stalker *object, LPCSTR action_name = "");
+						CStalkerActionHideFromGrenade(CAI_Stalker *object, pcstr action_name = "");
 	virtual void		initialize					();
 	virtual void		execute						();
 	virtual void		finalize					();
@@ -244,7 +244,7 @@ protected:
 	typedef CStalkerActionCombatBase inherited;
 
 public:
-						CStalkerActionSuddenAttack	(CAI_Stalker *object, LPCSTR action_name = "");
+						CStalkerActionSuddenAttack	(CAI_Stalker *object, pcstr action_name = "");
 	virtual void		initialize					();
 	virtual void		execute						();
 	virtual void		finalize					();
@@ -259,7 +259,7 @@ protected:
 	typedef CStalkerActionCombatBase inherited;
 
 public:
-						CStalkerActionKillEnemyIfPlayerOnThePath(CAI_Stalker *object, LPCSTR action_name = "");
+						CStalkerActionKillEnemyIfPlayerOnThePath(CAI_Stalker *object, pcstr action_name = "");
 	virtual void		initialize								();
 	virtual void		execute									();
 	virtual void		finalize								();
@@ -274,7 +274,7 @@ protected:
 	typedef CStalkerActionCombatBase inherited;
 
 public:
-						CStalkerActionCriticalHit	(CAI_Stalker *object, LPCSTR action_name = "");
+						CStalkerActionCriticalHit	(CAI_Stalker *object, pcstr action_name = "");
 	virtual void		initialize					();
 	virtual void		execute						();
 	virtual void		finalize					();

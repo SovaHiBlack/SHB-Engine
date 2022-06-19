@@ -24,7 +24,7 @@
 #include "..\XR_3DA\igame_persistent.h"
 
 #ifdef DEBUG
-#	include "debug_renderer.h"
+#	include "DebugRenderer.h"
 #endif
 
 #define ITEM_REMOVE_TIME		30000

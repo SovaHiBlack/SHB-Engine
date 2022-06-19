@@ -26,7 +26,7 @@ CRestrictedObject::~CRestrictedObject		()
 {
 }
 
-IC	void construct_string					(LPSTR result, const xr_vector<ALife::_OBJECT_ID> &restrictions)
+IC	void construct_string					(pstr result, const xr_vector<ALife::_OBJECT_ID> &restrictions)
 {
 	u32		count = xr_strlen(result) ? _GetItemCount(result) : 0;
 	xr_vector<ALife::_OBJECT_ID>::const_iterator	I = restrictions.begin();
@@ -44,7 +44,7 @@ IC	void construct_string					(LPSTR result, const xr_vector<ALife::_OBJECT_ID> &
 }
 
 #if 0
-IC	void construct_id_string					(LPSTR result, const xr_vector<ALife::_OBJECT_ID> &restrictions)
+IC	void construct_id_string					(pstr result, const xr_vector<ALife::_OBJECT_ID> &restrictions)
 {
 	strcpy			(result,"");
 	string16		temp;
@@ -254,7 +254,7 @@ IC	void CRestrictedObject::remove_object_restriction(ALife::_OBJECT_ID id, const
 }
 
 template <typename P, bool value>
-IC	void CRestrictedObject::construct_restriction_string(LPSTR temp_restrictions, const xr_vector<ALife::_OBJECT_ID> &restrictions, shared_str current_restrictions, const P &p)
+IC	void CRestrictedObject::construct_restriction_string(pstr temp_restrictions, const xr_vector<ALife::_OBJECT_ID> &restrictions, shared_str current_restrictions, const P &p)
 {
 	u32							count = 0;
 	strcpy						(temp_restrictions,"");

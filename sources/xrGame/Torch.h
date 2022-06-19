@@ -34,7 +34,7 @@ public:
 					CTorch				(void);
 	virtual			~CTorch				(void);
 
-	virtual void	Load				(LPCSTR section);
+	virtual void	Load				(pcstr section);
 	virtual BOOL	net_Spawn			(CSE_Abstract* DC);
 	virtual void	net_Destroy			();
 	virtual void	net_Export			(NET_Packet& P);				// export to server

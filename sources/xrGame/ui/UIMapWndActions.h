@@ -15,6 +15,6 @@ public:
 					CMapActionPlanner	();
 	virtual			~CMapActionPlanner	();
 	virtual	void	setup				(CUIMapWnd *object);
-	virtual	LPCSTR	object_name			() const;
+	virtual	pcstr	object_name			() const;
 };
 

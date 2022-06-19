@@ -245,7 +245,7 @@ bool ui_core::is_16_9_mode()
 	return (Device.dwWidth)/float(Device.dwHeight) > (UI_BASE_WIDTH/UI_BASE_HEIGHT +0.01f);
 }
 
-shared_str	ui_core::get_xml_name(LPCSTR fn)
+shared_str	ui_core::get_xml_name(pcstr fn)
 {
 	string_path				str;
 	if(!is_16_9_mode()){

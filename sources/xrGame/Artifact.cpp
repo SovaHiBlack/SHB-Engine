@@ -625,7 +625,7 @@ void SArtefactActivation::SStateDef::Load(pcstr section, pcstr name)
 	m_light_color.g = (F32)atof(		_GetItem(str,3,tmp) );
 	m_light_color.b = (F32)atof(		_GetItem(str,4,tmp) );
 
-	m_light_range	= (float)atof(		_GetItem(str,5,tmp) );
+	m_light_range	= (f32)atof(		_GetItem(str,5,tmp) );
 
 	m_particle		= clear_brackets(	_GetItem(str,6,tmp) );
 	m_animation		= clear_brackets(	_GetItem(str,7,tmp) );

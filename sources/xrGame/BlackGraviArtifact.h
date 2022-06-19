@@ -41,13 +41,12 @@ protected:
 
 	GAME_OBJECT_LIST m_GameObjectList;
 
-
 	//которого артефакт активизируется
-	float m_fImpulseThreshold;
+	f32 m_fImpulseThreshold;
 	//радиус действия артефакта
-	float m_fRadius;
+	f32 m_fRadius;
 	//импульс передаваемый окружающим предметам
-	float m_fStrikeImpulse;
+	f32 m_fStrikeImpulse;
 
 	//флаг, того что артефакт получил хит 
 	//и теперь может совершить бросок

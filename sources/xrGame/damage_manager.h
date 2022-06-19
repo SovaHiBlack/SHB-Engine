@@ -10,8 +10,8 @@
 
 class CDamageManager {
 protected:
-	float				m_default_hit_factor;
-	float				m_default_wound_factor;
+	f32				m_default_hit_factor;
+	f32				m_default_wound_factor;
 	CObject				*m_object;
 
 public:
@@ -21,7 +21,7 @@ public:
 	virtual	void		reload			(pcstr section,CInifile* ini);
 	virtual	void		reload			(pcstr section, pcstr sub_section,CInifile* ini);
 	
-	virtual	void		HitScale		(const int bone_num, float& hit_scale, float& wound_scale, bool aim_bullet=false);
+	virtual	void		HitScale		(const int bone_num, f32& hit_scale, f32& wound_scale, bool aim_bullet=false);
 
 private:
 			void		load_section	(pcstr section,CInifile* ini);

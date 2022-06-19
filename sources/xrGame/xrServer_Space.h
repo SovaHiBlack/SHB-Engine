@@ -11,7 +11,7 @@
 
 #include "script_export_space.h"
 
-#define SERVER_ENTITY_EDITOR_METHODS					virtual void FillProps(LPCSTR pref, PropItemVec& values);
+#define SERVER_ENTITY_EDITOR_METHODS					virtual void FillProps(pcstr pref, PropItemVec& values);
 #define SERVER_ENTITY_SCRIPT_METHODS					DECLARE_SCRIPT_REGISTER_FUNCTION
 #define SERVER_ENTITY_DECLARE_BEGIN0(__A)				class __A	{ public: SERVER_ENTITY_SCRIPT_METHODS
 #define SERVER_ENTITY_DECLARE_BEGIN(__A,__B)			class __A : public __B	{ typedef __B inherited; public: SERVER_ENTITY_SCRIPT_METHODS
@@ -46,7 +46,7 @@ enum EPOType {
 DEFINE_VECTOR	(u32,						DWORD_VECTOR,					DWORD_IT);
 DEFINE_VECTOR	(bool,						BOOL_VECTOR,					BOOL_IT);
 DEFINE_VECTOR	(F32,						FLOAT_VECTOR,					FLOAT_IT);
-DEFINE_VECTOR	(LPSTR,						LPSTR_VECTOR,					LPSTR_IT);
+DEFINE_VECTOR	(pstr,						LPSTR_VECTOR,					LPSTR_IT);
 DEFINE_VECTOR	(Fvector,					FVECTOR_VECTOR,					FVECTOR_IT);
 
 #ifdef XRGAME_EXPORTS

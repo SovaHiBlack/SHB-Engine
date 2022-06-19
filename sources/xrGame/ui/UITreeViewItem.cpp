@@ -19,7 +19,7 @@
 
 // Смещение относительно родителя
 const int				subShift					= 1;
-const char * const		treeItemBackgroundTexture	= "ui\\ui_pda_over_list";
+pcstr					treeItemBackgroundTexture	= "ui\\ui_pda_over_list";
 // Цвет непрочитанного элемента
 static const u32		unreadColor					= 0xff00ff00;
 
@@ -225,7 +225,7 @@ void CUITreeViewItem::SetRoot(bool set)
 
 //////////////////////////////////////////////////////////////////////////
 
-void CUITreeViewItem::SetText(LPCSTR str)
+void CUITreeViewItem::SetText(pcstr str)
 {
 	xr_string s = str;
 	xr_string::size_type pos = s.find_first_not_of(" +-");
@@ -281,7 +281,7 @@ void CUITreeViewItem::SendMessage(CUIWindow* pWnd, s16 msg, void* pData)
 
 //////////////////////////////////////////////////////////////////////////
 
-CUITreeViewItem * CUITreeViewItem::Find(LPCSTR text) const
+CUITreeViewItem * CUITreeViewItem::Find(pcstr text) const
 {
 	// Пробегаемся по списку подчиненных элементов, и ищем элемент с заданным текстом
 	// Если среди подч. эл-тов есть root'ы, то ищем рекурсивно в них

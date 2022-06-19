@@ -41,12 +41,13 @@ shared_str CSpaceRestrictionHolder::normalize_string		(shared_str space_restrict
 		return				("");
 
 	//1. parse the string, copying to temp buffer with leading zeroes, storing pointers in vector
-	LPSTR					*strings = (LPSTR*)_alloca(MAX_RESTRICTION_PER_TYPE_COUNT*sizeof(LPSTR));
-	LPSTR					*string_current = strings;
+	pstr*					strings = (pstr*)_alloca(MAX_RESTRICTION_PER_TYPE_COUNT*sizeof(pstr));
+	pstr*					string_current = strings;
 
-	LPSTR					temp_string = (LPSTR)_alloca((n+1)*sizeof(char));
+	pstr					temp_string = (pstr)_alloca((n+1)*sizeof(char));
 	pcstr					I = *space_restrictors;
-	LPSTR					i = temp_string, j = i;
+	pstr					i = temp_string;
+	pstr					j = i;
 	for ( ; *I; ++I, ++i) {
 		if (*I != ',') {
 			*i				= *I;
@@ -71,13 +72,13 @@ shared_str CSpaceRestrictionHolder::normalize_string		(shared_str space_restrict
 	std::sort				(strings,string_current,pred_str());
 
 	//3. copy back to another temp string, based on sorted vector
-	LPSTR					result_string = (LPSTR)_alloca((n+1)*sizeof(char));
-	LPSTR					pointer = result_string;
+	pstr					result_string = (pstr)_alloca((n+1)*sizeof(char));
+	pstr					pointer = result_string;
 	{
-		LPSTR				*I = strings;
-		LPSTR				*E = string_current;
+		pstr*				I = strings;
+		pstr*				E = string_current;
 		for ( ; I != E; ++I) {
-			for (LPSTR i = *I; *i; ++i, ++pointer)
+			for (pstr i = *I; *i; ++i, ++pointer)
 				*pointer	= *i;
 
 			*pointer		= ',';

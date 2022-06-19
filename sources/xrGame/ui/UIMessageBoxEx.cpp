@@ -15,17 +15,17 @@ CUIMessageBoxEx::~CUIMessageBoxEx(){
 	xr_delete(m_pMessageBox);
 }
 
-void CUIMessageBoxEx::Init(LPCSTR xml_template){
+void CUIMessageBoxEx::Init(pcstr xml_template){
 	CUIDialogWnd::Init(0,0,1024,768);
 	m_pMessageBox->Init(xml_template);
 }
 
-void CUIMessageBoxEx::SetText(LPCSTR text){
+void CUIMessageBoxEx::SetText(pcstr text){
 	m_pMessageBox->SetText(text);
 
 }
 
-LPCSTR CUIMessageBoxEx::GetText ()
+pcstr CUIMessageBoxEx::GetText ()
 {
 	return m_pMessageBox->GetText();
 }
@@ -52,10 +52,10 @@ void CUIMessageBoxEx::SendMessage(CUIWindow* pWnd, s16 msg, void* pData /* = NUL
 	
 }
 
-LPCSTR CUIMessageBoxEx::GetHost(){
+pcstr CUIMessageBoxEx::GetHost(){
 	return m_pMessageBox->GetHost();
 }
 
-LPCSTR CUIMessageBoxEx::GetPassword(){
+pcstr CUIMessageBoxEx::GetPassword(){
 	return m_pMessageBox->GetPassword();
 }

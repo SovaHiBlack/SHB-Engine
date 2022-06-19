@@ -17,9 +17,11 @@ int get_console_integer(CConsole* c, pcstr cmd)
 	return val;
 }
 
-float get_console_float(CConsole* c, pcstr cmd)
+f32 get_console_float(CConsole* c, pcstr cmd)
 {
-	float val=0,min=0,max=0;
+	f32 val = 0.0f;
+	f32 min = 0.0f;
+	f32 max = 0.0f;
 	c->GetFloat ( cmd, val, min, max);
 	return val;
 }

@@ -44,7 +44,7 @@
 #include "clsid_game.h"
 
 #ifdef DEBUG
-#	include "debug_renderer.h"
+#	include "DebugRenderer.h"
 #endif
 
 int			g_cl_InterpolationType		= 0;

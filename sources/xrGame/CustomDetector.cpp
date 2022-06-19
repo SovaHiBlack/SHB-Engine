@@ -142,19 +142,19 @@ void CCustomDetector::UpdateCL()
 
 		ZONE_TYPE& zone_type = m_ZoneTypeMap[pZone->CLS_ID];
 
-		float dist_to_zone = H_Parent()->Position().distance_to(pZone->Position()) - 0.8f*pZone->Radius();
+		f32 dist_to_zone = H_Parent()->Position().distance_to(pZone->Position()) - 0.8f*pZone->Radius();
 		if(dist_to_zone<0) dist_to_zone = 0;
 		
-		float fRelPow = 1.f - dist_to_zone / m_fRadius;
-		clamp(fRelPow, 0.f, 1.f);
+		f32 fRelPow = 1.0f - dist_to_zone / m_fRadius;
+		clamp(fRelPow, 0.0f, 1.0f);
 
 		//определить текущую частоту срабатывания сигнала
 		zone_info.cur_freq = zone_type.min_freq + 
 			(zone_type.max_freq - zone_type.min_freq) * fRelPow* fRelPow* fRelPow* fRelPow;
 
-		float current_snd_time = 1000.f*1.f/zone_info.cur_freq;
+		f32 current_snd_time = 1000.0f * 1.0f / zone_info.cur_freq;
 			
-		if((float)zone_info.snd_time > current_snd_time)
+		if((f32)zone_info.snd_time > current_snd_time)
 		{
 			zone_info.snd_time	= 0;
 			HUD_SOUND::PlaySound	(zone_type.detect_snds, Fvector().set(0,0,0), this, true, false);

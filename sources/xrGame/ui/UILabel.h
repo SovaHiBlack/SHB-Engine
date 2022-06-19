@@ -21,7 +21,7 @@ public:
 
 	// own
 	CUILabel();
-			void			SetLightAnim			(LPCSTR lanim);
+			void			SetLightAnim			(pcstr lanim);
 
 protected:
 //	Fvector2 m_textPos;

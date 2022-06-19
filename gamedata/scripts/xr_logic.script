@@ -406,7 +406,7 @@ function reset_generic_schemes_on_scheme_switch(npc, scheme, section)
 	if st.stype == modules.stype_stalker then
 		--xr_reactions.reset_reactions(npc, scheme, st, section)
 		xr_meet.dialog_manager_reset(npc, st.stype)
-		xr_meet.reset_meet(npc, scheme, st, section)		
+		xr_meet.reset_meet(npc, scheme, st, section)
 		xr_abuse.reset_abuse(npc, scheme, st, section)
 		xr_wounded.reset_wounded(npc, scheme, st, section)
 		xr_death.reset_death(npc, scheme, st, section)

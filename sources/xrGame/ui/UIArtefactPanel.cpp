@@ -15,7 +15,7 @@ CUIArtefactPanel::~CUIArtefactPanel()
 {
 }
 
-void CUIArtefactPanel::InitFromXML	(CUIXml& xml, LPCSTR path, int index)
+void CUIArtefactPanel::InitFromXML	(CUIXml& xml, pcstr path, int index)
 {
 	CUIXmlInit::InitWindow		(xml, path, index, this);
 	m_cell_size.x				= xml.ReadAttribFlt(path, index, "cell_width");

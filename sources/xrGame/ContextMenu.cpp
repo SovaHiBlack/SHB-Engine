@@ -2,7 +2,7 @@
 #include "contextmenu.h"
 #include "..\XR_3DA\gamefont.h"
   
-const float fade_speed = 8.0f;
+const f32 fade_speed = 8.0f;
 
 CContextMenu::~CContextMenu( )
 {
@@ -31,7 +31,7 @@ void CContextMenu::Load(CInifile* INI, pcstr SECT)
 	}
 }
 
-void CContextMenu::Render(CGameFont* F, u32 cT, u32 cI, float s)
+void CContextMenu::Render(CGameFont* F, u32 cT, u32 cI, f32 s)
 {
 	F->SetHeightI	(0.05f);
 	F->SetColor		(cT);
@@ -40,7 +40,7 @@ void CContextMenu::Render(CGameFont* F, u32 cT, u32 cI, float s)
 	F->SetHeightI	(0.03f);
 
 	for (u32 i=0; i<Items.size(); ++i)
-		F->OutNext("%d. %s", i, (char*)Items[i].Name);
+		F->OutNext("%d. %s", i, (pstr)Items[i].Name);
 }
 
 void CContextMenu::Select(int I)

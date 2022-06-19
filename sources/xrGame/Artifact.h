@@ -53,7 +53,7 @@ protected:
 	//подсветка во время полета и работы двигателя
 	ref_light						m_pTrailLight;
 	Fcolor							m_TrailLightColor;
-	float							m_fTrailLightRange;
+	f32								m_fTrailLightRange;
 protected:
 	virtual void					UpdateLights();
 	

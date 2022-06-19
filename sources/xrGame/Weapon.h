@@ -28,11 +28,11 @@ private:
 	typedef CHudItemObject inherited;
 
 public:
-							CWeapon				(LPCSTR name);
+							CWeapon				(pcstr name);
 	virtual					~CWeapon			();
 
 	// Generic
-	virtual void			Load				(LPCSTR section);
+	virtual void			Load				(pcstr section);
 
 	virtual BOOL			net_Spawn			(CSE_Abstract* DC);
 	virtual void			net_Destroy			();
@@ -63,7 +63,7 @@ public:
 	virtual	void			Hit					(SHit* pHDS);
 
 	virtual void			reinit				();
-	virtual void			reload				(LPCSTR section);
+	virtual void			reload				(pcstr section);
 	virtual void			create_physic_shell	();
 	virtual void			activate_physic_shell();
 	virtual void			setup_physic_shell	();
@@ -99,7 +99,6 @@ protected:
 //////////////////////////////////////////////////////////////////////////
 public:
 
-//	void					animGet				(MotionSVec& lst, LPCSTR prefix);
 	void					signal_HideComplete	();
 
 //////////////////////////////////////////////////////////////////////////
@@ -250,7 +249,7 @@ public:
 	//показывает, что оружие находится в соостоянии поворота для приближенного прицеливания
 			bool			IsRotatingToZoom	() const		{	return (m_fZoomRotationFactor<1.f);}
 
-			void			LoadZoomOffset		(LPCSTR section, LPCSTR prefix);
+			void			LoadZoomOffset		(pcstr section, pcstr prefix);
 
 	virtual float				Weight			();		
 
@@ -259,14 +258,14 @@ public:
 			bool				IsSingleHanded		()	const		{	return m_bIsSingleHanded; }
 
 public:
-	IC		LPCSTR			strap_bone0			() const {return m_strap_bone0;}
-	IC		LPCSTR			strap_bone1			() const {return m_strap_bone1;}
+	IC		pcstr			strap_bone0			() const {return m_strap_bone0;}
+	IC		pcstr			strap_bone1			() const {return m_strap_bone1;}
 	IC		void			strapped_mode		(bool value) {m_strapped_mode = value;}
 	IC		bool			strapped_mode		() const {return m_strapped_mode;}
 
 protected:
-	LPCSTR					m_strap_bone0;
-	LPCSTR					m_strap_bone1;
+	pcstr					m_strap_bone0;
+	pcstr					m_strap_bone1;
 	Fmatrix					m_StrapOffset;
 	bool					m_strapped_mode;
 	bool					m_can_be_strapped;
@@ -305,7 +304,7 @@ protected:
 	virtual void			UpdateHudAdditonal		(Fmatrix&);
 	IC		void			UpdateFireDependencies	()			{ if (dwFP_Frame==Device.dwFrame) return; UpdateFireDependencies_internal(); };
 
-	virtual void			LoadFireParams		(LPCSTR section, LPCSTR prefix);
+	virtual void			LoadFireParams		(pcstr section, pcstr prefix);
 public:	
 	IC		const Fvector&	get_LastFP				()			{ UpdateFireDependencies(); return m_firedeps.vLastFP;	}
 	IC		const Fvector&	get_LastFP2				()			{ UpdateFireDependencies(); return m_firedeps.vLastFP2;	}
@@ -418,7 +417,7 @@ public:
 
 	virtual void			OnMagazineEmpty		();
 			void			SpawnAmmo			(u32 boxCurr = 0xffffffff, 
-													LPCSTR ammoSect = NULL, 
+												 pcstr ammoSect = NULL,
 													u32 ParentID = 0xffffffff);
 
 	//  [8/3/2005]
@@ -458,7 +457,7 @@ public:
 		bool				unlimited_ammo				();
 	IC	bool				can_be_strapped				() const {return m_can_be_strapped;};
 
-	LPCSTR					GetCurrentAmmo_ShortName	();
+	pcstr					GetCurrentAmmo_ShortName	();
 
 protected:
 	u32						m_ef_main_weapon_type;

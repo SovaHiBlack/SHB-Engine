@@ -322,7 +322,7 @@ void CDbgLuaHelper::DrawGlobalVariables()
 	lua_pop(L, 1); // pop table of globals;
 };
 
-bool CDbgLuaHelper::GetCalltip(pcstr szWord, char *szCalltip, int sz_calltip)
+bool CDbgLuaHelper::GetCalltip(pcstr szWord, pstr szCalltip, int sz_calltip)
 {
 	int nLevel = debugger()->GetStackTraceLevel();
 	lua_Debug ar;
@@ -368,7 +368,7 @@ bool CDbgLuaHelper::GetCalltip(pcstr szWord, char *szCalltip, int sz_calltip)
 	return false;
 }
 
-bool CDbgLuaHelper::Eval(pcstr szCode, char* szRet,int szret_size)
+bool CDbgLuaHelper::Eval(pcstr szCode, pstr szRet,int szret_size)
 {
 	CoverGlobals();
 
@@ -396,7 +396,7 @@ bool CDbgLuaHelper::Eval(pcstr szCode, char* szRet,int szret_size)
 	return !status;
 }
 
-void CDbgLuaHelper::Describe(char *szRet, int nIndex, int szRet_size)
+void CDbgLuaHelper::Describe(pstr szRet, int nIndex, int szRet_size)
 {
 	int ntype = lua_type(L, nIndex);
 	pcstr type = lua_typename(L, ntype);
@@ -542,7 +542,7 @@ void CDbgLuaHelper::DrawTable(lua_State *l, pcstr S, bool bRecursive)
 	}
 }
 
-void CDbgLuaHelper::DrawVariableInfo(char* varName)
+void CDbgLuaHelper::DrawVariableInfo(pstr varName)
 {
 
 }

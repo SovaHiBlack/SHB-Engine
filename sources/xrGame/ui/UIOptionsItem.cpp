@@ -10,28 +10,28 @@ CUIOptionsItem::~CUIOptionsItem()
 	m_optionsManager.UnRegisterItem(this);
 }
 
-void CUIOptionsItem::Register(LPCSTR entry, LPCSTR group)
+void CUIOptionsItem::Register(pcstr entry, pcstr group)
 {
 	m_optionsManager.RegisterItem	(this, group);
 	m_entry							= entry;	
 }
 
-void CUIOptionsItem::SendMessage2Group(LPCSTR group, LPCSTR message)
+void CUIOptionsItem::SendMessage2Group(pcstr group, pcstr message)
 {
 	m_optionsManager.SendMessage2Group(group,message);
 }
 
-void CUIOptionsItem::OnMessage(LPCSTR message)
+void CUIOptionsItem::OnMessage(pcstr message)
 {
 	// do nothing
 }
 
-LPCSTR CUIOptionsItem::GetOptStringValue()
+pcstr CUIOptionsItem::GetOptStringValue()
 {
 	return Console->GetString(m_entry.c_str());
 }
 
-void CUIOptionsItem::SaveOptStringValue(LPCSTR val)
+void CUIOptionsItem::SaveOptStringValue(pcstr val)
 {
 	xr_string command	= m_entry;
 	command				+= " ";
@@ -77,7 +77,7 @@ void CUIOptionsItem::SaveOptBoolValue(bool val)
 	Console->Execute	(command);
 }
 
-char* CUIOptionsItem::GetOptTokenValue()
+pstr CUIOptionsItem::GetOptTokenValue()
 {
 	return Console->GetToken(m_entry.c_str());
 }
@@ -87,7 +87,7 @@ xr_token* CUIOptionsItem::GetOptToken()
 	return Console->GetXRToken(m_entry.c_str());
 }
 
-void CUIOptionsItem::SaveOptTokenValue(LPCSTR val){
+void CUIOptionsItem::SaveOptTokenValue(pcstr val){
 	SaveOptStringValue(val);
 }
 

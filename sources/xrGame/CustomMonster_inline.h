@@ -1,6 +1,6 @@
 #pragma once
 
-IC	bool CCustomMonster::angle_lerp_bounds(float &a, float b, float c, float d)
+IC	bool CCustomMonster::angle_lerp_bounds(f32& a, f32 b, f32 c, f32 d)
 {
 	if (c*d >= angle_difference(a,b)) {
 		a = b;
@@ -14,7 +14,7 @@ IC	bool CCustomMonster::angle_lerp_bounds(float &a, float b, float c, float d)
 
 IC void CCustomMonster::vfNormalizeSafe(Fvector& Vector)
 {
-	float fMagnitude = Vector.magnitude(); 
+	f32 fMagnitude = Vector.magnitude();
 	if (fMagnitude > EPS_L) {
 		Vector.x /= fMagnitude;
 		Vector.y /= fMagnitude;
@@ -27,7 +27,7 @@ IC void CCustomMonster::vfNormalizeSafe(Fvector& Vector)
 	}
 }
 
-ICF	bool left_angle(float y1, float y2)
+ICF	bool left_angle(f32 y1, f32 y2)
 {
 	return			(_sin(y1)*_cos(y2) - _sin(y2)*_cos(y1) <= 0.f);
 }
@@ -56,14 +56,14 @@ IC	CSound_UserDataVisitor *CCustomMonster::sound_user_data_visitor	() const
 	return			(m_sound_user_data_visitor);
 }
 
-IC	float CCustomMonster::panic_threshold				() const
+IC	f32 CCustomMonster::panic_threshold				() const
 {
 	return			(m_panic_threshold);
 }
 
-IC	float CCustomMonster::client_update_fdelta			() const
+IC	f32 CCustomMonster::client_update_fdelta			() const
 {
-	return			((float)m_client_update_delta/1000.f);
+	return			((f32)m_client_update_delta/1000.f);
 }
 
 IC	const u32 &CCustomMonster::client_update_delta		() const

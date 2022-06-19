@@ -19,7 +19,7 @@ protected:
 
 public:
 	virtual			~CWeaponBM16					();
-	virtual void	Load							(LPCSTR section);
+	virtual void	Load							(pcstr section);
 
 protected:
 	virtual void	PlayAnimShoot					();

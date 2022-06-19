@@ -216,7 +216,7 @@ void remap_keys()
 	}
 }
 
-LPCSTR id_to_action_name(int _id)
+pcstr id_to_action_name(int _id)
 {
 	int idx				= 0;
 	while( actions[idx].action_name )
@@ -229,7 +229,7 @@ LPCSTR id_to_action_name(int _id)
 	return			NULL;
 }
 
-EGameActions action_name_to_id(LPCSTR _name)
+EGameActions action_name_to_id(pcstr _name)
 {
 	_action* action = action_name_to_ptr(_name);
 	if(action)
@@ -238,7 +238,7 @@ EGameActions action_name_to_id(LPCSTR _name)
 		return	kNOTBINDED;
 }
 
-_action* action_name_to_ptr(LPCSTR _name)
+_action* action_name_to_ptr(pcstr _name)
 {
 	int idx				= 0;
 	while( actions[idx].action_name )
@@ -251,7 +251,7 @@ _action* action_name_to_ptr(LPCSTR _name)
 	return			NULL;
 }
 
-LPCSTR	dik_to_keyname			(int _dik)
+pcstr	dik_to_keyname			(int _dik)
 {
 	_keyboard* kb = dik_to_ptr(_dik, true);
 	if(kb)
@@ -275,13 +275,13 @@ _keyboard* dik_to_ptr(int _dik, bool bSafe)
 	return			NULL;
 }
 
-int	keyname_to_dik (LPCSTR _name)
+int	keyname_to_dik (pcstr _name)
 {
 	_keyboard* _kb = keyname_to_ptr(_name);
 	return _kb->dik;
 }
 
-_keyboard*	keyname_to_ptr(LPCSTR _name)
+_keyboard*	keyname_to_ptr(pcstr _name)
 {
 	int idx =0;
 	while(keyboards[idx].key_name)
@@ -350,7 +350,7 @@ EGameActions get_binded_action(int _dik)
 	return kNOTBINDED;
 }
 
-void GetActionAllBinding		(LPCSTR _action, char* dst_buff, int dst_buff_sz)
+void GetActionAllBinding		(pcstr _action, pstr dst_buff, int dst_buff_sz)
 {
 	int			action_id	= action_name_to_id(_action);
 	_binding*	pbinding	= &g_key_bindings[action_id];
@@ -380,8 +380,8 @@ class CCC_Bind : public IConsole_Command
 {
 	int m_work_idx;
 public:
-	CCC_Bind(LPCSTR N, int idx) : IConsole_Command(N),m_work_idx(idx) {};
-	virtual void Execute(LPCSTR args) 
+	CCC_Bind(pcstr N, int idx) : IConsole_Command(N),m_work_idx(idx) {};
+	virtual void Execute(pcstr args)
 	{
 		string256							action;
 		string256							key;
@@ -457,9 +457,9 @@ class CCC_UnBind : public IConsole_Command
 {
 	int m_work_idx;
 public:
-	CCC_UnBind(LPCSTR N, int idx) : IConsole_Command(N),m_work_idx(idx) 
+	CCC_UnBind(pcstr N, int idx) : IConsole_Command(N),m_work_idx(idx)
 	{ bEmptyArgsHandled=TRUE; };
-	virtual void Execute(LPCSTR args)
+	virtual void Execute(pcstr args)
 	{
 		int action_id						= action_name_to_id			(args);
 		_binding*	pbinding				= &g_key_bindings[action_id];
@@ -472,10 +472,10 @@ public:
 class CCC_ListActions : public IConsole_Command
 {
 public:
-	CCC_ListActions(LPCSTR N) : IConsole_Command(N)
+	CCC_ListActions(pcstr N) : IConsole_Command(N)
 	{ bEmptyArgsHandled=TRUE; };
 
-	virtual void Execute(LPCSTR args) {
+	virtual void Execute(pcstr args) {
 		Log("- --- Action list start ---");
 		for(int idx=0; idx<bindings_count;++idx)
 		{
@@ -489,10 +489,10 @@ public:
 class CCC_UnBindAll : public IConsole_Command
 {
 public:
-	CCC_UnBindAll(LPCSTR N) : IConsole_Command(N)
+	CCC_UnBindAll(pcstr N) : IConsole_Command(N)
 	{ bEmptyArgsHandled=TRUE; };
 
-	virtual void Execute(LPCSTR args) 
+	virtual void Execute(pcstr args)
 	{
 		for(int idx=0; idx<bindings_count;++idx)
 		{
@@ -515,10 +515,10 @@ public:
 class CCC_BindList : public IConsole_Command
 {
 public:
-	CCC_BindList(LPCSTR N) : IConsole_Command(N)
+	CCC_BindList(pcstr N) : IConsole_Command(N)
 	{ bEmptyArgsHandled=TRUE; };
 
-	virtual void Execute(LPCSTR args) {
+	virtual void Execute(pcstr args) {
 		Log				("- --- Bind list start ---");
 		string512		buff;			
 		
@@ -538,8 +538,8 @@ public:
 class CCC_BindConsoleCmd : public IConsole_Command
 {
 public:
-	CCC_BindConsoleCmd(LPCSTR N) : IConsole_Command(N) {};
-	virtual void Execute(LPCSTR args) 
+	CCC_BindConsoleCmd(pcstr N) : IConsole_Command(N) {};
+	virtual void Execute(pcstr args)
 	{
 		string512				console_command;
 		string256				key;
@@ -562,17 +562,17 @@ public:
 class CCC_UnBindConsoleCmd : public IConsole_Command
 {
 public:
-	CCC_UnBindConsoleCmd(LPCSTR N) : IConsole_Command(N)
+	CCC_UnBindConsoleCmd(pcstr N) : IConsole_Command(N)
 	{ bEmptyArgsHandled=FALSE; };
 
-	virtual void Execute(LPCSTR args) 
+	virtual void Execute(pcstr args)
 	{
 		int _dik = keyname_to_dik	(args);
 		bindConsoleCmds.unbind		(_dik);
 	}
 };
 
-void ConsoleBindCmds::bind(int dik, LPCSTR N)
+void ConsoleBindCmds::bind(int dik, pcstr N)
 {
 	_conCmd& c	= m_bindConsoleCmds[dik];
 	c.cmd		= N;
@@ -607,7 +607,7 @@ void ConsoleBindCmds::save(IWriter* F)
 	
 	for(;it!=m_bindConsoleCmds.end();++it)
 	{
-		LPCSTR keyname		= dik_to_keyname(it->first);
+		pcstr keyname		= dik_to_keyname(it->first);
 		F->w_printf("bind_console %s %s\n", *it->second.cmd, keyname);
 	}
 }

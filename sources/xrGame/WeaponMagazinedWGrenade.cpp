@@ -19,7 +19,7 @@
 #include "phdebug.h"
 #endif
 
-CWeaponMagazinedWGrenade::CWeaponMagazinedWGrenade(LPCSTR name,ESoundTypes eSoundType) : CWeaponMagazined(name, eSoundType)
+CWeaponMagazinedWGrenade::CWeaponMagazinedWGrenade(pcstr name,ESoundTypes eSoundType) : CWeaponMagazined(name, eSoundType)
 {
 	m_ammoType2 = 0;
     m_bGrenadeMode = false;
@@ -42,7 +42,7 @@ void CWeaponMagazinedWGrenade::StopHUDSounds		()
 	inherited::StopHUDSounds();
 }
 
-void CWeaponMagazinedWGrenade::Load	(LPCSTR section)
+void CWeaponMagazinedWGrenade::Load	(pcstr section)
 {
 	inherited::Load			(section);
 	CRocketLauncher::Load	(section);
@@ -90,7 +90,7 @@ void CWeaponMagazinedWGrenade::Load	(LPCSTR section)
 
 	// load ammo classes SECOND (grenade_class)
 	m_ammoTypes2.clear	(); 
-	LPCSTR				S = pSettings->r_string(section,"grenade_class");
+	pcstr				S = pSettings->r_string(section,"grenade_class");
 	if (S && S[0]) 
 	{
 		string128		_ammoItem;

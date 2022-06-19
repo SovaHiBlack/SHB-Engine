@@ -16,7 +16,7 @@
 
 #ifdef DEBUG
 #	include "level.h"
-#	include "debug_renderer.h"
+#	include "DebugRenderer.h"
 #endif
 
 CScriptZone::CScriptZone		()

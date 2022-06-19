@@ -26,7 +26,7 @@ void CUIMapHint::Init		()
 
 }
 
-void CUIMapHint::SetText		(LPCSTR text)
+void CUIMapHint::SetText		(pcstr text)
 {
 	m_text->SetTextST			(text);
 	m_text->AdjustHeightToText	();

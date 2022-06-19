@@ -18,7 +18,7 @@ protected:
 public:
 					CUIEncyclopediaArticleWnd		();
 	virtual			~CUIEncyclopediaArticleWnd		();
-			void	Init							(LPCSTR xml_name, LPCSTR start_from);
+			void	Init							(pcstr xml_name, pcstr start_from);
 			void	SetArticle						(CEncyclopediaArticle*);
-			void	SetArticle						(LPCSTR);
+			void	SetArticle						(pcstr);
 };

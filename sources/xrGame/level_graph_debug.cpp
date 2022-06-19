@@ -21,7 +21,7 @@
 #include "alife_monster_movement_manager.h"
 #include "alife_monster_detail_path_manager.h"
 
-#include "debug_renderer.h"
+#include "DebugRenderer.h"
 
 void CLevelGraph::setup_current_level	(const int &level_id)
 {

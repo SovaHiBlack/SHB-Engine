@@ -25,7 +25,7 @@ struct dxRayMotions
 
 int dRayMotionsClassUser = -1;
 
-#define CONTACT(p,skip) ((dContactGeom*) (((char*)p) + (skip)))
+#define CONTACT(p,skip) ((dContactGeom*) (((pstr)p) + (skip)))
 
 
 

@@ -83,8 +83,7 @@ public:
 
 	// Функция чтения алайна из xml файла и применения его к координатам.
 	// Return true если для данного окна есть выравнивание
-	static bool					InitAlignment(CUIXml &xml_doc, const char *path,
-											  int index, float &x, float &y,CUIWindow* pWnd);
+	static bool					InitAlignment(CUIXml &xml_doc, pcstr path, int index, float &x, float &y,CUIWindow* pWnd);
 
 	// Автоматическая инициализация статических элеменитов
 	// Чтобы вернуть указатели на созданые статики (нам бывает необходимо прятать их, например)
@@ -93,7 +92,7 @@ public:
 	typedef		StaticsVec::iterator	StaticsVec_it;
 
 	static StaticsVec InitAutoStatic	(CUIXml& xml_doc, pcstr tag_name, CUIWindow* pParentWnd);
-	static StaticsVec InitAutoStaticGroup(CUIXml& xml_doc, LPCSTR path, int index, CUIWindow* pParentWnd);
+	static StaticsVec InitAutoStaticGroup(CUIXml& xml_doc, pcstr path, int index, CUIWindow* pParentWnd);
 
 	// Функции для пересчета координат для применения выравнивания
 	// Params:

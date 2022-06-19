@@ -77,28 +77,28 @@ void CCustomOutfit::Load(pcstr section)
 	m_full_icon_name								= pSettings->r_string(section,"full_icon_name");
 }
 
-void CCustomOutfit::Hit(float hit_power, ALife::EHitType hit_type)
+void CCustomOutfit::Hit(f32 hit_power, ALife::EHitType hit_type)
 {
 	hit_power *= m_HitTypeK[hit_type];
 	ChangeCondition(-hit_power);
 }
 
-float CCustomOutfit::GetDefHitTypeProtection(ALife::EHitType hit_type)
+f32 CCustomOutfit::GetDefHitTypeProtection(ALife::EHitType hit_type)
 {
 	return 1.0f - m_HitTypeProtection[hit_type]*GetCondition();
 }
 
-float CCustomOutfit::GetHitTypeProtection(ALife::EHitType hit_type, s16 element)
+f32 CCustomOutfit::GetHitTypeProtection(ALife::EHitType hit_type, s16 element)
 {
-	float fBase = m_HitTypeProtection[hit_type]*GetCondition();
-	float bone = m_boneProtection->getBoneProtection(element);
+	f32 fBase = m_HitTypeProtection[hit_type]*GetCondition();
+	f32 bone = m_boneProtection->getBoneProtection(element);
 	return 1.0f - fBase*bone;
 }
 
-float	CCustomOutfit::HitThruArmour(float hit_power, s16 element, float AP)
+f32	CCustomOutfit::HitThruArmour(f32 hit_power, s16 element, f32 AP)
 {
-	float BoneArmour = m_boneProtection->getBoneArmour(element)*GetCondition()*(1-AP);	
-	float NewHitPower = hit_power - BoneArmour;
+	f32 BoneArmour = m_boneProtection->getBoneArmour(element)*GetCondition()*(1-AP);
+	f32 NewHitPower = hit_power - BoneArmour;
 	if (NewHitPower < hit_power*m_boneProtection->m_fHitFrac) return hit_power*m_boneProtection->m_fHitFrac;
 	return NewHitPower;
 };
@@ -119,7 +119,7 @@ void	CCustomOutfit::OnMoveToSlot		()
 			if (m_ActorVisual.size())
 			{
 				shared_str NewVisual = NULL;
-				char* TeamSection = Game().getTeamSection(pActor->g_Team());
+				pstr TeamSection = Game().getTeamSection(pActor->g_Team());
 				if (TeamSection)
 				{
 					if (pSettings->line_exist(TeamSection, *cNameSect()))
@@ -175,7 +175,7 @@ u32	CCustomOutfit::ef_equipment_type	() const
 	return		(m_ef_equipment_type);
 }
 
-float CCustomOutfit::GetPowerLoss() 
+f32 CCustomOutfit::GetPowerLoss()
 {
 	if (m_fPowerLoss<1 && GetCondition() <= 0)
 	{

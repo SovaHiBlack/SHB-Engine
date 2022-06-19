@@ -11,9 +11,9 @@ class CDbgLuaHelper
 public:
 	void		RestoreGlobals				();
 	void		CoverGlobals				();
-	void		Describe					(char* szRet, int nIndex, int szRet_size);
-	bool		Eval						(pcstr szCode, char* szRet, int szret_size);
-	bool		GetCalltip					(pcstr szWord, char *szCalltip, int sz_calltip);
+	void		Describe					(pstr szRet, int nIndex, int szRet_size);
+	bool		Eval						(pcstr szCode, pstr szRet, int szret_size);
+	bool		GetCalltip					(pcstr szWord, pstr szCalltip, int sz_calltip);
 	void		DrawGlobalVariables			();
 	void		DrawLocalVariables			();
 	pcstr		GetSource					();
@@ -40,7 +40,7 @@ public:
 	static void set_lua						(lua_State *);
 	void		DrawVariable				(lua_State * l, pcstr name, bool bOpenTable);
 	void		DrawTable					(lua_State *l, pcstr name, bool bRecursive=true);
-	void		DrawVariableInfo			(char*);
+	void		DrawVariableInfo			(pstr);
 	CScriptDebugger*	debugger			(){return m_debugger;}
 protected:
 	CScriptDebugger*						m_debugger;

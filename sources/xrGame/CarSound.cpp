@@ -32,7 +32,7 @@ void CCar::SCarSound::Init()
 		snd_engine.create		(ini->r_string("car_sound","snd_name"),st_Effect,sg_SourceType);//
 		snd_engine_start.create	(READ_IF_EXISTS(ini,r_string,"car_sound","engine_start","car\\test_car_start"),st_Effect,sg_SourceType);
 		snd_engine_stop.create	(READ_IF_EXISTS(ini,r_string,"car_sound","engine_stop","car\\test_car_stop"),st_Effect,sg_SourceType);
-		float fengine_start_delay=READ_IF_EXISTS(ini,r_float,"car_sound","engine_sound_start_dellay",0.25f);
+		f32 fengine_start_delay=READ_IF_EXISTS(ini,r_float,"car_sound","engine_sound_start_dellay",0.25f);
 		engine_start_delay=iFloor((snd_engine_start._handle() ? snd_engine_start._handle()->length_ms() : 1.f)*fengine_start_delay);
 		if(ini->line_exist("car_sound","relative_pos"))
 		{
@@ -93,7 +93,7 @@ void CCar::SCarSound::UpdateStalling()
 void CCar::SCarSound::UpdateDrive()
 {
 VERIFY(!ph_world->Processing());
-float		scale							= 0.5f+0.5f*pcar->m_current_rpm/pcar->m_torque_rpm; clamp(scale,0.5f,1.25f);
+f32		scale							= 0.5f+0.5f*pcar->m_current_rpm/pcar->m_torque_rpm; clamp(scale,0.5f,1.25f);
 			snd_engine.set_frequency		(scale);
 			SetSoundPosition(snd_engine);
 }

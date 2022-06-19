@@ -81,7 +81,7 @@ public:
 
 	virtual void	OnDeviceReset					();
 	static	bool	is_16_9_mode					();
-	shared_str		get_xml_name					(LPCSTR fn);
+	shared_str		get_xml_name					(pcstr fn);
 };
 
 extern CUICursor*	GetUICursor						();

@@ -30,7 +30,7 @@ using namespace StalkerDecisionSpace;
 // CStalkerActionDangerGrenadeTakeCover
 //////////////////////////////////////////////////////////////////////////
 
-CStalkerActionDangerGrenadeTakeCover::CStalkerActionDangerGrenadeTakeCover	(CAI_Stalker *object, LPCSTR action_name) :
+CStalkerActionDangerGrenadeTakeCover::CStalkerActionDangerGrenadeTakeCover	(CAI_Stalker *object, pcstr action_name) :
 	inherited				(object,action_name)
 { }
 
@@ -108,7 +108,7 @@ void CStalkerActionDangerGrenadeTakeCover::finalize							()
 // CStalkerActionDangerGrenadeWaitForExplosion
 //////////////////////////////////////////////////////////////////////////
 
-CStalkerActionDangerGrenadeWaitForExplosion::CStalkerActionDangerGrenadeWaitForExplosion	(CAI_Stalker *object, LPCSTR action_name) :
+CStalkerActionDangerGrenadeWaitForExplosion::CStalkerActionDangerGrenadeWaitForExplosion	(CAI_Stalker *object, pcstr action_name) :
 	inherited				(object,action_name)
 { }
 
@@ -146,7 +146,7 @@ void CStalkerActionDangerGrenadeWaitForExplosion::finalize							()
 // CStalkerActionDangerGrenadeTakeCoverAfterExplosion
 //////////////////////////////////////////////////////////////////////////
 
-CStalkerActionDangerGrenadeTakeCoverAfterExplosion::CStalkerActionDangerGrenadeTakeCoverAfterExplosion	(CAI_Stalker *object, LPCSTR action_name) :
+CStalkerActionDangerGrenadeTakeCoverAfterExplosion::CStalkerActionDangerGrenadeTakeCoverAfterExplosion	(CAI_Stalker *object, pcstr action_name) :
 	inherited				(object,action_name)
 { }
 
@@ -203,7 +203,7 @@ void CStalkerActionDangerGrenadeTakeCoverAfterExplosion::finalize							()
 // CStalkerActionDangerGrenadeLookAround
 //////////////////////////////////////////////////////////////////////////
 
-CStalkerActionDangerGrenadeLookAround::CStalkerActionDangerGrenadeLookAround	(CAI_Stalker *object, LPCSTR action_name) :
+CStalkerActionDangerGrenadeLookAround::CStalkerActionDangerGrenadeLookAround	(CAI_Stalker *object, pcstr action_name) :
 	inherited				(object,action_name)
 { }
 
@@ -246,7 +246,7 @@ void CStalkerActionDangerGrenadeLookAround::finalize							()
 // CStalkerActionDangerGrenadeSearch
 //////////////////////////////////////////////////////////////////////////
 
-CStalkerActionDangerGrenadeSearch::CStalkerActionDangerGrenadeSearch	(CAI_Stalker *object, LPCSTR action_name) :
+CStalkerActionDangerGrenadeSearch::CStalkerActionDangerGrenadeSearch	(CAI_Stalker *object, pcstr action_name) :
 	inherited				(object,action_name)
 { }
 

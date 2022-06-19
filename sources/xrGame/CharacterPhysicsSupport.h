@@ -65,35 +65,35 @@ private:
 
 	interactive_motion					*m_interactive_motion;
 //skeleton modell(!share?)
-	float								skel_airr_lin_factor																																;
-	float								skel_airr_ang_factor																																;
-	float								hinge_force_factor1																																	;
-	float								skel_fatal_impulse_factor																															;
-	float								skel_ddelay																																			;
-	float								skel_remain_time																																	;	
+	f32									skel_airr_lin_factor																																;
+	f32									skel_airr_ang_factor																																;
+	f32									hinge_force_factor1																																	;
+	f32									skel_fatal_impulse_factor																															;
+	f32									skel_ddelay																																			;
+	f32									skel_remain_time																																	;
 /////////////////////////////////////////////////
 	//bool								b_death_anim_on																																		;
 	//bool								b_skeleton_in_shell																																	;
 ///////////////////////////////////////////////////////////////////////////
-	float								m_shot_up_factor																																	;
-	float								m_after_death_velocity_factor																														;
-	float								m_BonceDamageFactor																																	;
+	f32									m_shot_up_factor																																	;
+	f32									m_after_death_velocity_factor																														;
+	f32									m_BonceDamageFactor																																	;
 	//gray_wolf>Переменные для поддержки изменяющегося трения у персонажей во время смерти
-	float								skeleton_skin_ddelay;
-	float								skeleton_skin_remain_time;
-	float								skeleton_skin_friction_start;
-	float								skeleton_skin_friction_end;
-	float								skeleton_skin_ddelay_after_wound;
-	float								skeleton_skin_remain_time_after_wound;
+	f32									skeleton_skin_ddelay;
+	f32									skeleton_skin_remain_time;
+	f32									skeleton_skin_friction_start;
+	f32									skeleton_skin_friction_end;
+	f32									skeleton_skin_ddelay_after_wound;
+	f32									skeleton_skin_remain_time_after_wound;
 	bool								m_was_wounded;
-	float								m_Pred_Time;//Для вычисления дельта времени между пересчётами сопротивления в джоинтах и коэффициента NPC
-	float								m_time_delta;
-	float								pelvis_factor_low_pose_detect;
+	f32									m_Pred_Time;//Для вычисления дельта времени между пересчётами сопротивления в джоинтах и коэффициента NPC
+	f32									m_time_delta;
+	f32									pelvis_factor_low_pose_detect;
 	BOOL								character_have_wounded_state;
 	//gray_wolf<
 public:
 	//gray_wolf>
-	float								m_curr_skin_friction_in_death;
+	f32									m_curr_skin_friction_in_death;
 	//gray_wolf<
 EType Type()
 	{
@@ -127,7 +127,7 @@ IC		CIKLimbsController				*ik_controller					()	{return	m_ik_controller;}
 		void							SetRemoved						();
 		bool							IsRemoved						(){return m_eState==esRemoved;}
 		bool							IsSpecificDamager				()																{return !!m_flags.test(fl_specific_bonce_demager)	;}
-		float							BonceDamageFactor				(){return m_BonceDamageFactor;}
+		f32								BonceDamageFactor				(){return m_BonceDamageFactor;}
 		void							set_movement_position			( const Fvector &pos );
 //////////////////base hierarchi methods///////////////////////////////////////////////////
 		void							CreateCharacter					();
@@ -138,7 +138,7 @@ IC		CIKLimbsController				*ik_controller					()	{return	m_ik_controller;}
 		void							in_NetRelcase					(CObject* O)																										;
 		void 							in_Init							()																													;
 		void 							in_Load							(pcstr section)																									;
-		void 							in_Hit							(float P,Fvector &dir, CObject *who, s16 element,Fvector p_in_object_space, float impulse,ALife::EHitType hit_type ,bool is_killing=false);
+		void 							in_Hit							(f32 P,Fvector &dir, CObject *who, s16 element,Fvector p_in_object_space, f32 impulse,ALife::EHitType hit_type ,bool is_killing=false);
 		void							in_NetSave						(NET_Packet& P)																										;
 		void							in_ChangeVisual					();
 		void							on_create_anim_mov_ctrl			();
@@ -154,7 +154,7 @@ private:
 		void 							CreateSkeleton					(CPhysicsShell* &pShell)																							;
 		void 							CreateSkeleton					();
 		void 							ActivateShell					(CObject* who)																										;
-		void							KillHit							(CObject* who, ALife::EHitType hit_type, float &impulse)																										;
+		void							KillHit							(CObject* who, ALife::EHitType hit_type, f32& impulse)																										;
 static	void							DeathAnimCallback				(CBlend *B)																											;
 		void							CreateIKController				()																													;
 		void							DestroyIKController				()																													;

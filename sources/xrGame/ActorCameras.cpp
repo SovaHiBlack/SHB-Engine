@@ -128,7 +128,7 @@ ICF BOOL test_point(xrXRC& xrc, const Fmatrix& xform, const Fmatrix33& mat, cons
 
 #include "physics.h"
 #include "PHActivationShape.h"
-#include "debug_renderer.h"
+#include "DebugRenderer.h"
 void CActor::cam_Update(F32 dt, F32 fFOV)
 {
 	if(m_holder)		return;

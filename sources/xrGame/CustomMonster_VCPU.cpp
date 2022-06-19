@@ -2,7 +2,7 @@
 #include "custommonster.h"
 #include "movement_manager.h"
 
-IC void conv_angle(float& c)
+IC void conv_angle(f32& c)
 {
 	if (c<0)				c+=PI_MUL_2;
 	else if (c>PI_MUL_2)	c-=PI_MUL_2;
@@ -27,7 +27,7 @@ void CCustomMonster::mk_rotation	(Fvector &dir, SRotation &R)
 	R.pitch				= -asinf(dir.y);
 }
 
-void CCustomMonster::Exec_Look		( float dt )
+void CCustomMonster::Exec_Look		(f32 dt )
 {
 	if (animation_movement_controlled())
 		return;
@@ -37,7 +37,7 @@ void CCustomMonster::Exec_Look		( float dt )
 	movement().m_body.target.yaw	= angle_normalize_signed	(movement().m_body.target.yaw);
 	movement().m_body.target.pitch	= angle_normalize_signed	(movement().m_body.target.pitch);
 	
-	float pitch_speed				= get_custom_pitch_speed(movement().m_body.speed);
+	f32 pitch_speed				= get_custom_pitch_speed(movement().m_body.speed);
 	angle_lerp_bounds				(movement().m_body.current.yaw,movement().m_body.target.yaw,movement().m_body.speed,dt);
 	angle_lerp_bounds				(movement().m_body.current.pitch,movement().m_body.target.pitch,pitch_speed,dt);
 

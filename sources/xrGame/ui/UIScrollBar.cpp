@@ -24,7 +24,7 @@ CUIScrollBar::~CUIScrollBar(void)
 	xr_delete(m_StaticBackground);
 }
 
-void CUIScrollBar::Init(float x, float y, float length, bool bIsHorizontal, LPCSTR profile)
+void CUIScrollBar::Init(float x, float y, float length, bool bIsHorizontal, pcstr profile)
 {
 	string256 _path;
 	CUIXml xml_doc;
@@ -52,7 +52,7 @@ void CUIScrollBar::Init(float x, float y, float length, bool bIsHorizontal, LPCS
 		m_IncButton->SetWndPos		(0.0f, length/2);
 
 		strconcat					(sizeof(_path),_path, profile, ":back:texture");
-		LPCSTR texture				= xml_doc.Read(_path, 0, "");
+		pcstr texture				= xml_doc.Read(_path, 0, "");
 		R_ASSERT					(texture);
 		CUITextureMaster::InitTexture(texture, m_StaticBackground);
 		m_ScrollWorkArea			= _max(0,iFloor(GetWidth()-2*height));
@@ -72,7 +72,7 @@ void CUIScrollBar::Init(float x, float y, float length, bool bIsHorizontal, LPCS
 		strconcat					(sizeof(_path),_path, profile, ":box_v");
 		CUIXmlInit::InitStatic		(xml_doc, _path, 0, m_ScrollBox);		
 		strconcat					(sizeof(_path),_path, profile, ":back_v:texture");
-		LPCSTR texture				= xml_doc.Read(_path, 0, "");
+		pcstr texture				= xml_doc.Read(_path, 0, "");
 		R_ASSERT					(texture);
 
 		CUITextureMaster::InitTexture(texture, m_StaticBackground);

@@ -28,7 +28,7 @@ CWeaponKnife::~CWeaponKnife()
 
 }
 
-void CWeaponKnife::Load	(LPCSTR section)
+void CWeaponKnife::Load	(pcstr section)
 {
 	// verify class
 	inherited::Load		(section);
@@ -248,7 +248,7 @@ bool CWeaponKnife::Action(s32 cmd, u32 flags)
 	return false;
 }
 
-void CWeaponKnife::LoadFireParams(LPCSTR section, LPCSTR prefix)
+void CWeaponKnife::LoadFireParams(pcstr section, pcstr prefix)
 {
 	inherited::LoadFireParams(section, prefix);
 

@@ -5,7 +5,7 @@ class CCartridge
 {
 public:
 	CCartridge();
-	void Load(LPCSTR section, u8 LocalAmmoType);
+	void Load(pcstr section, u8 LocalAmmoType);
 
 	shared_str	m_ammoSect;
 	enum{
@@ -36,7 +36,7 @@ public:
 	virtual							~CWeaponAmmo		(void);
 
 	virtual CWeaponAmmo				*cast_weapon_ammo	()	{return this;}
-	virtual void					Load				(LPCSTR section);
+	virtual void					Load				(pcstr section);
 	virtual BOOL					net_Spawn			(CSE_Abstract* DC);
 	virtual void					net_Destroy			();
 	virtual void					net_Export			(NET_Packet& P);

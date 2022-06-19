@@ -9,15 +9,15 @@ class CContextMenu
 public:
 	struct MenuItem
 	{
-		char*					Name;
+		pstr					Name;
 		EVENT					Event;
-		char*					Param;
+		pstr					Param;
 	};
-	char*						Name;
+	pstr						Name;
 	xr_vector<MenuItem>			Items;
 public:
 				~CContextMenu	();
 	void		Load			(CInifile* INI, pcstr S);
-	void		Render			(CGameFont* F, u32 cT, u32 cI, float s);
+	void		Render			(CGameFont* F, u32 cT, u32 cI, f32 s);
 	void		Select			(int num);
 };

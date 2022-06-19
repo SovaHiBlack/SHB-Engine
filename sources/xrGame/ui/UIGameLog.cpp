@@ -12,7 +12,7 @@
 #include "UIPdaMsgListItem.h"//
 #include "UILines.h"
 
-LPCSTR const	CHAT_LOG_ITEMS_ANIMATION	= "ui_main_msgs_short";
+pcstr const	CHAT_LOG_ITEMS_ANIMATION	= "ui_main_msgs_short";
 
 CUIGameLog::CUIGameLog()
 {
@@ -25,7 +25,7 @@ CUIGameLog::~CUIGameLog()
 {}
 
 
-CUIStatic* CUIGameLog::AddLogMessage(LPCSTR msg)
+CUIStatic* CUIGameLog::AddLogMessage(pcstr msg)
 {
 	CUIStatic* pItem				= NULL;
 	ADD_TEXT_TO_VIEW3				(msg, pItem, this);
@@ -40,7 +40,7 @@ CUIStatic* CUIGameLog::AddLogMessage(LPCSTR msg)
 
 // warning: initialization of item is incomplete!
 // initialization of item's height, text static and icon still necessary
-CUIPdaMsgListItem* CUIGameLog::AddPdaMessage(LPCSTR msg, float delay){
+CUIPdaMsgListItem* CUIGameLog::AddPdaMessage(pcstr msg, float delay){
 	CUIPdaMsgListItem* pItem				= xr_new<CUIPdaMsgListItem>();
 	pItem->Init								(0,0, GetDesiredChildWidth(), 10);	//fake height
 	pItem->UIMsgText.SetTextST				(msg);

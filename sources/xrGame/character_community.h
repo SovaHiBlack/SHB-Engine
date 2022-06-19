@@ -51,7 +51,7 @@ public:
 	static CHARACTER_GOODWILL	relation			(CHARACTER_COMMUNITY_INDEX from, CHARACTER_COMMUNITY_INDEX to);
 	CHARACTER_GOODWILL			relation			(CHARACTER_COMMUNITY_INDEX to);
 	
-	static float				sympathy			(CHARACTER_COMMUNITY_INDEX);
+	static f32				sympathy			(CHARACTER_COMMUNITY_INDEX);
 	
 	static void					DeleteIdToIndexData	();
 private:
@@ -60,7 +60,7 @@ private:
 	static GOODWILL_TABLE m_relation_table;
 
 	//таблица коэффициентов "сочуствия" между участниками группировки
-	typedef CIni_Table<float, CHARACTER_COMMUNITY> SYMPATHY_TABLE;
+	typedef CIni_Table<f32, CHARACTER_COMMUNITY> SYMPATHY_TABLE;
 	friend SYMPATHY_TABLE;
 	static SYMPATHY_TABLE m_sympathy_table;
 };

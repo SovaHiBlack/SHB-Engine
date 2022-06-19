@@ -58,8 +58,8 @@ public:
 	virtual void			activate_physic_shell	();
 	virtual void			create_physic_shell		();
 
-	virtual void			PhDataUpdate			(float step);
-	virtual void			PhTune					(float step);
+	virtual void			PhDataUpdate			(f32 step);
+	virtual void			PhTune					(f32 step);
 
 	//////////////////////////////////////////////////////////////////////////
 	//	Rocket Properties
@@ -107,8 +107,8 @@ protected:
 	//время работы двигателя с момента старта
 	int			m_dwEngineWorkTime;
 	//сила работы двигателя (размер импульса в секунду)
-	float		m_fEngineImpulse;
-	float		m_fEngineImpulseUp;
+	f32			m_fEngineImpulse;
+	f32			m_fEngineImpulseUp;
 	//текущее время работы двигателя
 	int			m_dwEngineTime;
 
@@ -130,7 +130,7 @@ protected:
 	//подсветка во время полета и работы двигателя
 	ref_light		m_pTrailLight;
 	Fcolor			m_TrailLightColor;
-	float			m_fTrailLightRange;
+	f32				m_fTrailLightRange;
 	ref_sound		m_flyingSound;
 
 protected:
@@ -151,11 +151,13 @@ protected:
 	CParticlesObject*	m_pFlyParticles;
 
 	Fvector				m_vPrevVel;
-	float				m_time_to_explode;
+	f32					m_time_to_explode;
+
 #ifdef	DEBUG
-	float				gbg_rocket_speed1;
-	float				gbg_rocket_speed2;
+	f32					gbg_rocket_speed1;
+	f32					gbg_rocket_speed2;
 #endif
+
 protected:
 	virtual void		StartEngineParticles();
 	virtual void		StopEngineParticles();

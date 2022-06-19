@@ -5,7 +5,7 @@
 #include "HUDManager.h"
 
 #ifdef DEBUG
-#	include "debug_renderer.h"
+#	include "DebugRenderer.h"
 #endif
 
 #ifdef DEBUG

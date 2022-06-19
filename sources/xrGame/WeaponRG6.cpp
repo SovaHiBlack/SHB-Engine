@@ -42,7 +42,7 @@ BOOL	CWeaponRG6::net_Spawn				(CSE_Abstract* DC)
 	return l_res;
 };
 
-void CWeaponRG6::Load(LPCSTR section)
+void CWeaponRG6::Load(pcstr section)
 {
 	inheritedRL::Load(section);
 	inheritedSG::Load(section);

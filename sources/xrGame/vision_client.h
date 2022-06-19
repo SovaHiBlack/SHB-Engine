@@ -66,7 +66,7 @@ public:
 
 public:
 	virtual	void					reinit					();
-	virtual	void					reload					(LPCSTR section);
+	virtual	void					reload					(pcstr section);
 			void					remove_links			(CObject *object);
 
 public:

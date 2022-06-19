@@ -10,7 +10,7 @@ private:
 public:
 	CWeaponFN2000	();
 	virtual			~CWeaponFN2000	();
-/*	virtual void	Load			(LPCSTR section);
+/*	virtual void	Load			(pcstr section);
 	virtual void			Fire2Start			();
 	virtual void			Fire2End			();
 

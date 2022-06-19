@@ -23,14 +23,14 @@ using namespace luabind;
 export_class &script_register_ui_window2(export_class &instance)
 {
 	instance
-		.def("GetStatic",		(CUIStatic* (BaseType::*)(LPCSTR)) &BaseType::GetControl<CUIStatic>)
-		.def("GetEditBox",		(CUIEditBox* (BaseType::*)(LPCSTR)) &BaseType::GetControl<CUIEditBox>)
-		.def("GetDialogWnd",	(CUIDialogWnd* (BaseType::*)(LPCSTR)) &BaseType::GetControl<CUIDialogWnd>)
-		.def("GetFrameWindow",	(CUIFrameWindow* (BaseType::*)(LPCSTR)) &BaseType::GetControl<CUIFrameWindow>)
-		.def("GetFrameLineWnd",	(CUIFrameLineWnd* (BaseType::*)(LPCSTR)) &BaseType::GetControl<CUIFrameLineWnd>)
-		.def("GetProgressBar",	(CUIProgressBar* (BaseType::*)(LPCSTR)) &BaseType::GetControl<CUIProgressBar>)
-		.def("GetTabControl",	(CUITabControl* (BaseType::*)(LPCSTR)) &BaseType::GetControl<CUITabControl>)
-		.def("GetListWnd",		(CUIListWnd* (BaseType::*)(LPCSTR)) &BaseType::GetControl<CUIListWnd>)
+		.def("GetStatic",		(CUIStatic* (BaseType::*)(pcstr)) &BaseType::GetControl<CUIStatic>)
+		.def("GetEditBox",		(CUIEditBox* (BaseType::*)(pcstr)) &BaseType::GetControl<CUIEditBox>)
+		.def("GetDialogWnd",	(CUIDialogWnd* (BaseType::*)(pcstr)) &BaseType::GetControl<CUIDialogWnd>)
+		.def("GetFrameWindow",	(CUIFrameWindow* (BaseType::*)(pcstr)) &BaseType::GetControl<CUIFrameWindow>)
+		.def("GetFrameLineWnd",	(CUIFrameLineWnd* (BaseType::*)(pcstr)) &BaseType::GetControl<CUIFrameLineWnd>)
+		.def("GetProgressBar",	(CUIProgressBar* (BaseType::*)(pcstr)) &BaseType::GetControl<CUIProgressBar>)
+		.def("GetTabControl",	(CUITabControl* (BaseType::*)(pcstr)) &BaseType::GetControl<CUITabControl>)
+		.def("GetListWnd",		(CUIListWnd* (BaseType::*)(pcstr)) &BaseType::GetControl<CUIListWnd>)
 
 		.def("OnKeyboard",		&BaseType::OnKeyboard, &WrapType::OnKeyboard_static)
 		.def("Update",			&BaseType::Update, &WrapType::Update_static)

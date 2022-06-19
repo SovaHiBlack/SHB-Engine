@@ -59,8 +59,8 @@ extern	u64		g_qwStartGameTime;
 extern	u64		g_qwEStartGameTime;
 
 ENGINE_API
-extern	float	psHUD_FOV;
-extern	float	psSqueezeVelocity;
+extern	f32	psHUD_FOV;
+extern	f32	psSqueezeVelocity;
 extern	int		psLUA_GCSTEP;
 
 extern	int		x_m_x;
@@ -77,7 +77,7 @@ extern	ESingleGameDifficulty g_SingleGameDifficulty;
 extern	BOOL	g_show_wnd_rect			;
 extern	BOOL	g_show_wnd_rect2			;
 //-----------------------------------------------------------
-extern	float	g_fTimeFactor;
+extern	f32	g_fTimeFactor;
 
 
 		BOOL	g_bCheckTime			= FALSE;
@@ -93,10 +93,10 @@ extern	float	g_fTimeFactor;
 		u32		g_dwDebugNodeDest		= 0;
 extern	BOOL	g_bDrawBulletHit;
 
-		float	debug_on_frame_gather_stats_frequency	= 0.f;
+f32	debug_on_frame_gather_stats_frequency	= 0.f;
 #endif
 #ifdef DEBUG 
-extern LPSTR	dbg_stalker_death_anim;
+extern pstr	dbg_stalker_death_anim;
 extern BOOL		b_death_anim_velocity;
 #endif
 int g_AI_inactive_time = 0;
@@ -194,7 +194,7 @@ public:
 //						Sleep				(1);
 //						CTimer				timer;
 //						timer.Start			();
-//						float				fValue = ai().m_tpAStar->ffFindMinimalPath(id1,id2);
+//						f32				fValue = ai().m_tpAStar->ffFindMinimalPath(id1,id2);
 //						Msg					("* %7.2f[%d] : %11I64u cycles (%.3f microseconds)",fValue,ai().m_tpAStar->m_tpaNodes.size(),timer.GetElapsed_ticks(),timer.GetElapsed_ms()*1000.f);
 					}
 			else
@@ -208,7 +208,7 @@ class CCC_ALifeTimeFactor : public IConsole_Command {
 public:
 	CCC_ALifeTimeFactor(pcstr N) : IConsole_Command(N)  { };
 	virtual void Execute(pcstr args) {
-		float id1 = 0.0f;
+		f32 id1 = 0.0f;
 		sscanf(args ,"%f",&id1);
 		if (id1 < EPS_L)
 			Msg("Invalid time factor! (%.4f)",id1);
@@ -226,7 +226,7 @@ public:
 	CCC_ALifeSwitchDistance(pcstr N) : IConsole_Command(N)  { };
 	virtual void Execute(pcstr args) {
 		if (ai().get_alife()) {
-			float id1 = 0.0f;
+			f32 id1 = 0.0f;
 			sscanf(args ,"%f",&id1);
 			if (id1 < 2.0f)
 				Msg("Invalid online distance! (%.4f)",id1);
@@ -285,7 +285,7 @@ public:
 		if (ai().get_alife()) {
 			game_sv_Single	*tpGame = smart_cast<game_sv_Single *>(Level().Server->game);
 			VERIFY			(tpGame);
-			float id1 = 0;
+			f32 id1 = 0.0f;
 			sscanf(args ,"%f",&id1);
 			clamp(id1,.1f,1.f);
 			tpGame->alife().set_switch_factor(id1);
@@ -301,7 +301,7 @@ public:
 					CCC_TimeFactor	(pcstr N) : IConsole_Command(N) {}
 	virtual void	Execute			(pcstr args)
 	{
-		float				time_factor = (float)atof(args);
+		f32				time_factor = (f32)atof(args);
 		clamp				(time_factor,.001f,1000.f);
 		Device.time_factor	(time_factor);
 	}
@@ -348,7 +348,7 @@ public:
 			  Console->Hide			();
 			  string_path			fn;
 			  u32		loops	=	0;
-			  LPSTR		comma	=	strchr(const_cast<LPSTR>(args),',');
+			  pstr		comma	=	strchr(const_cast<pstr>(args),',');
 			  if (comma)	{
 				  loops			=	atoi	(comma+1);
 				  *comma		=	0;	//. :)
@@ -556,7 +556,7 @@ public:
 
 class CCC_FloatBlock : public CCC_Float {
 public:
-	CCC_FloatBlock(pcstr N, float* V, float _min=0, float _max=1) :
+	CCC_FloatBlock(pcstr N, f32* V, f32 _min=0.0f, f32 _max=1.0f) :
 	  CCC_Float(N,V,_min,_max)
 	  {};
 
@@ -897,7 +897,7 @@ public:
 	  virtual void	Execute	(pcstr args)
 	  {
 		  if(!ph_world)	return;
-		  ph_world->SetGravity(float(atof(args)));
+		  ph_world->SetGravity(f32(atof(args)));
 	  }
 	  virtual void	Status	(TStatus& S)
 	{	
@@ -918,8 +918,8 @@ public:
 	  {};
 	  virtual void	Execute	(pcstr args)
 	  {
-		  float				step_count = (float)atof(args);
-		  clamp				(step_count,50.f,200.f);
+		  f32				step_count = (f32)atof(args);
+		  clamp				(step_count,50.0f,200.0f);
 		  CPHWorld::SetStep(1.f/step_count);
 	  }
 	  virtual void	Status	(TStatus& S)
@@ -1037,7 +1037,7 @@ struct CCC_StartTimeSingle : public IConsole_Command {
 };
 
 struct CCC_TimeFactorSingle : public CCC_Float {
-	CCC_TimeFactorSingle(pcstr N, float* V, float _min=0.f, float _max=1.f) : CCC_Float(N,V,_min,_max) {};
+	CCC_TimeFactorSingle(pcstr N, f32* V, f32 _min=0.0f, f32 _max=1.0f) : CCC_Float(N,V,_min,_max) {};
 
 	virtual void	Execute	(pcstr args)
 	{

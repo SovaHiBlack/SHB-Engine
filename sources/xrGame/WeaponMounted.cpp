@@ -48,7 +48,7 @@ CWeaponMounted::~CWeaponMounted()
 	xr_delete(camera);
 }
 
-void	CWeaponMounted::Load(LPCSTR section)
+void	CWeaponMounted::Load(pcstr section)
 {
 	inherited::Load(section);
 	CShootingObject::Load	(section);

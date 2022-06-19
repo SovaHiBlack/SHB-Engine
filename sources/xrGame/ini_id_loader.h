@@ -44,7 +44,7 @@ protected:
 		{
 			string64 buf;
 			pcstr id_str  = _GetItem(cfgRecord, k, buf);
-			char* id_str_lwr = xr_strdup(id_str);
+			pstr id_str_lwr = xr_strdup(id_str);
 			xr_strlwr(id_str_lwr);
 			ITEM_DATA item_data(T_INDEX(m_pItemDataVector->size()), T_ID(id_str));
 			m_pItemDataVector->push_back(item_data);
@@ -59,7 +59,7 @@ protected:
 		{
 			string64 buf, buf1;
 			pcstr id_str  = _GetItem(cfgRecord, k, buf);
-			char* id_str_lwr = xr_strdup(id_str);
+			pstr id_str_lwr = xr_strdup(id_str);
 			xr_strlwr(id_str_lwr);
 			pcstr rec1	   = _GetItem(cfgRecord, k + 1, buf1);
 			ITEM_DATA item_data(T_INDEX(m_pItemDataVector->size()), T_ID(id_str), rec1);

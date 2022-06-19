@@ -16,11 +16,11 @@ public:
 	using CUIWindow::Draw;
 					CUIFrameWindow				();
 
-	virtual void	Init						(LPCSTR base_name, float x, float y, float width, float height);
+	virtual void	Init						(pcstr base_name, float x, float y, float width, float height);
 	virtual void	Init						(float x, float y, float width, float height);
-	virtual void	Init						(LPCSTR base_name, Frect* pRect);
+	virtual void	Init						(pcstr base_name, Frect* pRect);
 
-	virtual void	InitTexture					(LPCSTR texture);
+	virtual void	InitTexture					(pcstr texture);
 			void	SetTextureColor				(u32 color)										{m_UIWndFrame.SetTextureColor(color);}
 
 	virtual void	SetWidth					(float width);

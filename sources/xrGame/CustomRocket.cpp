@@ -144,7 +144,7 @@ void CCustomRocket::create_physic_shell	()
 	R_ASSERT							(E);
 
 	Fvector								ax;
-	float								radius;
+	f32									radius;
 	CHOOSE_MAX(
 		obb.m_halfsize.x,ax.set(obb.m_rotate.i) ; ax.mul(obb.m_halfsize.x); radius=_min(obb.m_halfsize.y,obb.m_halfsize.z) ;obb.m_halfsize.y/=2.f;obb.m_halfsize.z/=2.f,
 		obb.m_halfsize.y,ax.set(obb.m_rotate.j) ; ax.mul(obb.m_halfsize.y); radius=_min(obb.m_halfsize.x,obb.m_halfsize.z) ;obb.m_halfsize.x/=2.f;obb.m_halfsize.z/=2.f,
@@ -238,9 +238,9 @@ void CCustomRocket::ObjectContactCallback(bool& do_colide,bool bo1,dContact& c ,
 						velocity.normalize();
 						Triangle neg_tri;
 						CalculateTriangle(l_pUD->neg_tri,g,neg_tri);
-						float cosinus=velocity.dotproduct(*((Fvector*)neg_tri.norm));
+						f32 cosinus=velocity.dotproduct(*((Fvector*)neg_tri.norm));
 						VERIFY(_valid(neg_tri.dist));
-						float dist=neg_tri.dist/cosinus;
+						f32 dist=neg_tri.dist/cosinus;
 						velocity.mul(dist*1.1f);
 						l_pos.sub(velocity);
 #ifdef DEBUG
@@ -446,8 +446,8 @@ void CCustomRocket::StopEngine				()
 void CCustomRocket::UpdateEnginePh			()
 {
 	if (Level().In_NetCorrectionPrediction()) return;
-	float force = m_fEngineImpulse*fixed_step;// * Device.fTimeDelta;
-	float k_back=1.f;
+	f32 force = m_fEngineImpulse*fixed_step;// * Device.fTimeDelta;
+	f32 k_back=1.0f;
 	Fvector l_pos, l_dir; 
 	l_pos.set(0, 0,-2.f);
 	l_dir.set(XFORM().k);
@@ -519,18 +519,13 @@ void CCustomRocket::UpdateLights()
 	m_pTrailLight->set_position(Position());
 }
 
+void CCustomRocket::PhDataUpdate			(f32 step)
+{}
 
-void CCustomRocket::PhDataUpdate			(float step)
-{
-
-}
-void CCustomRocket::PhTune					(float step)
+void CCustomRocket::PhTune					(f32 step)
 {
 	UpdateEnginePh							();
-
 }
-
-
 
 //////////////////////////////////////////////////////////////////////////
 //	Particles

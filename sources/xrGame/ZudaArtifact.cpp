@@ -16,7 +16,7 @@ CZudaArtefact::~CZudaArtefact(void)
 {
 }
 
-void CZudaArtefact::Load(LPCSTR section) 
+void CZudaArtefact::Load(pcstr section)
 {
 	inherited::Load(section);
 }

@@ -5,23 +5,23 @@
 
 using namespace luabind;
 
-void CUIOptionsManagerScript::SetCurrentValues(LPCSTR group){
+void CUIOptionsManagerScript::SetCurrentValues(pcstr group){
 	CUIOptionsItem::GetOptionsManager()->SetCurrentValues(group);
 }
 
-void CUIOptionsManagerScript::SaveBackupValues(LPCSTR group){
+void CUIOptionsManagerScript::SaveBackupValues(pcstr group){
 	CUIOptionsItem::GetOptionsManager()->SeveBackupValues(group);
 }
 
-void CUIOptionsManagerScript::SaveValues(LPCSTR group){
+void CUIOptionsManagerScript::SaveValues(pcstr group){
 	CUIOptionsItem::GetOptionsManager()->SaveValues(group);
 }
 
-bool CUIOptionsManagerScript::IsGroupChanged(LPCSTR group){
+bool CUIOptionsManagerScript::IsGroupChanged(pcstr group){
 	return CUIOptionsItem::GetOptionsManager()->IsGroupChanged(group);
 }
 
-void CUIOptionsManagerScript::UndoGroup(LPCSTR group){
+void CUIOptionsManagerScript::UndoGroup(pcstr group){
 	CUIOptionsItem::GetOptionsManager()->UndoGroup(group);
 }
 
@@ -29,7 +29,7 @@ void CUIOptionsManagerScript::OptionsPostAccept(){
 	CUIOptionsItem::GetOptionsManager()->OptionsPostAccept();
 }
 
-void CUIOptionsManagerScript::SendMessage2Group(LPCSTR group, LPCSTR message){
+void CUIOptionsManagerScript::SendMessage2Group(pcstr group, pcstr message){
 	CUIOptionsItem::GetOptionsManager()->SendMessage2Group(group, message);
 }
 

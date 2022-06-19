@@ -228,7 +228,7 @@ CUIStalkerRankingInfoItem::CUIStalkerRankingInfoItem(CUIStalkersRankingWnd* w)
 {
 }
 
-void CUIStalkerRankingInfoItem::Init	(CUIXml* xml, LPCSTR path, int idx)
+void CUIStalkerRankingInfoItem::Init	(CUIXml* xml, pcstr path, int idx)
 {
 	XML_NODE* _stored_root					= xml->GetLocalRoot();
 

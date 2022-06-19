@@ -26,7 +26,7 @@ CCartridge::CCartridge()
 	bullet_material_idx = u16(-1);
 }
 
-void CCartridge::Load(LPCSTR section, u8 LocalAmmoType) 
+void CCartridge::Load(pcstr section, u8 LocalAmmoType)
 {
 	m_ammoSect				= section;
 	m_LocalAmmoType			= LocalAmmoType;
@@ -72,7 +72,7 @@ CWeaponAmmo::~CWeaponAmmo(void)
 {
 }
 
-void CWeaponAmmo::Load(LPCSTR section) 
+void CWeaponAmmo::Load(pcstr section)
 {
 	inherited::Load			(section);
 

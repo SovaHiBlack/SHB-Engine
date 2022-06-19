@@ -15,7 +15,7 @@ CWeaponRPG7::~CWeaponRPG7(void)
 {
 }
 
-void CWeaponRPG7::Load	(LPCSTR section)
+void CWeaponRPG7::Load	(pcstr section)
 {
 	inherited::Load			(section);
 	CRocketLauncher::Load	(section);

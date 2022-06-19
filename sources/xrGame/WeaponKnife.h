@@ -51,12 +51,12 @@ protected:
 	float				fCurrentHit;
 	float				fHitImpulse_2;
 protected:
-	virtual void		LoadFireParams					(LPCSTR section, LPCSTR prefix);
+	virtual void		LoadFireParams					(pcstr section, pcstr prefix);
 public:
 						CWeaponKnife(); 
 	virtual				~CWeaponKnife(); 
 
-	void				Load							(LPCSTR section);
+	void				Load							(pcstr section);
 
 	virtual void		Fire2Start						();
 	virtual void		FireStart						();

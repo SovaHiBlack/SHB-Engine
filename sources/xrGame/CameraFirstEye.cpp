@@ -50,7 +50,7 @@ void CCameraFirstEye::Update(Fvector& point, Fvector& noise_dangle)
 	vPosition.set	(point);
 }
 
-void CCameraFirstEye::Move( int cmd, float val, float factor )
+void CCameraFirstEye::Move( int cmd, f32 val, f32 factor )
 {
 	if (bClampPitch)
 	{

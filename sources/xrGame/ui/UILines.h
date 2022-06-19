@@ -22,8 +22,8 @@ public:
 	virtual ~CUILines();
 
 	// IUITextControl methods
-	virtual void			SetText(LPCSTR text);
-	virtual LPCSTR		GetText();
+	virtual void			SetText(pcstr text);
+	virtual pcstr		GetText();
 	virtual void			SetTextColor(u32 color);
 	virtual u32				GetTextColor()								{return m_dwTextColor;}
 			u32&			GetTextColorRef()							{return m_dwTextColor;}
@@ -120,8 +120,8 @@ public:
 	virtual ETextAlignment	GetTextAlignment				()								{return m_lines.GetTextAlignment();}
 
 	// IUITextControl : public IUIFontControl{
-	virtual void			SetText							(LPCSTR text)				{m_lines.SetText(text);}
-	virtual LPCSTR		GetText							()								{return m_lines.GetText();}
+	virtual void			SetText							(pcstr text)				{m_lines.SetText(text);}
+	virtual pcstr		GetText							()								{return m_lines.GetText();}
 
 	// own
 	virtual void			SetTextPosX						(float x)						{m_textPos.x = x;}

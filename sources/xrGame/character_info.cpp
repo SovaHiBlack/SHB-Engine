@@ -98,7 +98,7 @@ void CCharacterInfo::load_shared	(pcstr)
 
 		if(char_class)
 		{
-			char* buf_str = xr_strdup(char_class);
+			pstr buf_str = xr_strdup(char_class);
 			xr_strlwr(buf_str);
 			data()->m_Class				= buf_str;
 			xr_free(buf_str);

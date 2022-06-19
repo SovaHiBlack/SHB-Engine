@@ -51,7 +51,7 @@ void CUISequenceSimpleItem::Load(CUIXml* xml, int idx)
 	XML_NODE* _stored_root	= xml->GetLocalRoot();
 	xml->SetLocalRoot		(xml->NavigateToNode("item",idx));
 	
-	LPCSTR m_snd_name		= xml->Read				("sound",0,""			);
+	pcstr m_snd_name		= xml->Read				("sound",0,""			);
 	if (m_snd_name&&m_snd_name[0]){
 		m_sound.create		(m_snd_name,st_Effect,sg_Undefined);	
 		VERIFY				(m_sound._handle());
@@ -61,11 +61,11 @@ void CUISequenceSimpleItem::Load(CUIXml* xml, int idx)
 	m_desired_cursor_pos.y	= xml->ReadAttribFlt	("cursor_pos",0,"y",768	);
 	strcpy					(m_pda_section, xml->Read("pda_section",0,"")	);
 
-	LPCSTR str				= xml->Read				("pause_state",0,"ignore");
+	pcstr str				= xml->Read				("pause_state",0,"ignore");
 	m_flags.set										(etiNeedPauseOn, 0==_stricmp(str, "on"));
 	m_flags.set										(etiNeedPauseOff, 0==_stricmp(str, "off"));
 
-	LPCSTR str2				= xml->Read				("pause_sound",0,"ignore");
+	pcstr str2				= xml->Read				("pause_sound",0,"ignore");
 	m_flags.set										(etiNeedPauseSound, 0==_stricmp(str2, "on"));
 
 	str						= xml->Read				("guard_key",0,NULL		);

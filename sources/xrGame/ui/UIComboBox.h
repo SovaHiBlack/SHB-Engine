@@ -24,14 +24,14 @@ public:
 	virtual void 		SeveBackUpValue			();
 	virtual void 		Undo					();
 
-			LPCSTR		GetText					();
+			pcstr		GetText					();
 
 	// methods
 	CUIListBox*			GetListWnd				();
 			void		SetListLength			(int length);
 			void		SetVertScroll			(bool bVScroll = true){m_list.SetFixedScrollBar(bVScroll);};
-//.	virtual void		AddItem					(LPCSTR str, bool bSelected);
-	CUIListBoxItem*		AddItem_				(LPCSTR str, int _data);
+//.	virtual void		AddItem					(pcstr str, bool bSelected);
+	CUIListBoxItem*		AddItem_				(pcstr str, int _data);
 	virtual void		Init					(float x, float y, float width);
 			void		SetItem					(int i);
 

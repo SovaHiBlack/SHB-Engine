@@ -23,7 +23,7 @@ CScriptProcess *CScriptEngine::script_process	(const EScriptProcessors &process_
 	return									(0);
 }
 
-IC	void CScriptEngine::parse_script_namespace(pcstr function_to_call, LPSTR name_space, LPSTR function)
+IC	void CScriptEngine::parse_script_namespace(pcstr function_to_call, pstr name_space, pstr function)
 {
 	pcstr					I = function_to_call, J = 0;
 	for ( ; ; J=I,++I) {

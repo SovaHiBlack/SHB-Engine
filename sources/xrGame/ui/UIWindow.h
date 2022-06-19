@@ -31,9 +31,9 @@ public:
 							{	VERIFY(1==n);
 								return (pointer) ui_allocator.create();	
 							};
-							char*			__charalloc		(size_type n)							
+							pstr			__charalloc		(size_type n)
 							{	VERIFY	(1==n);
-								return	(char*) ui_allocator.create();	
+								return	(pstr) ui_allocator.create();
 							};
 							void					deallocate		(pointer p, size_type n) const			
 							{	
@@ -188,8 +188,8 @@ public:
 
 	// Name of the window
 	const shared_str		WindowName			() const					{ return m_windowName; }
-	void					SetWindowName		(LPCSTR wn)					{ m_windowName = wn; }
-	LPCSTR					WindowName_script	()							{return *m_windowName;}
+	void					SetWindowName		(pcstr wn)					{ m_windowName = wn; }
+	pcstr					WindowName_script	()							{return *m_windowName;}
 	CUIWindow*				FindChild			(const shared_str name);
 
 	IC bool					CursorOverWindow	() const					{ return m_bCursorOverWindow; }

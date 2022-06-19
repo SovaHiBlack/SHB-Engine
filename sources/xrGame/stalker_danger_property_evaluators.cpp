@@ -31,7 +31,7 @@ typedef CStalkerPropertyEvaluator::_value_type _value_type;
 // CStalkerPropertyEvaluatorDangers
 //////////////////////////////////////////////////////////////////////////
 
-CStalkerPropertyEvaluatorDangers::CStalkerPropertyEvaluatorDangers	(CAI_Stalker *object, LPCSTR evaluator_name) :
+CStalkerPropertyEvaluatorDangers::CStalkerPropertyEvaluatorDangers	(CAI_Stalker *object, pcstr evaluator_name) :
 	inherited			(object ? object->lua_game_object() : 0,evaluator_name)
 { }
 
@@ -46,7 +46,7 @@ _value_type CStalkerPropertyEvaluatorDangers::evaluate	()
 // CStalkerPropertyEvaluatorDangerUnknown
 //////////////////////////////////////////////////////////////////////////
 
-CStalkerPropertyEvaluatorDangerUnknown::CStalkerPropertyEvaluatorDangerUnknown	(CAI_Stalker *object, LPCSTR evaluator_name) :
+CStalkerPropertyEvaluatorDangerUnknown::CStalkerPropertyEvaluatorDangerUnknown	(CAI_Stalker *object, pcstr evaluator_name) :
 	inherited			(object ? object->lua_game_object() : 0,evaluator_name)
 { }
 
@@ -69,7 +69,7 @@ _value_type CStalkerPropertyEvaluatorDangerUnknown::evaluate	()
 // CStalkerPropertyEvaluatorDangerInDirection
 //////////////////////////////////////////////////////////////////////////
 
-CStalkerPropertyEvaluatorDangerInDirection::CStalkerPropertyEvaluatorDangerInDirection	(CAI_Stalker *object, LPCSTR evaluator_name) :
+CStalkerPropertyEvaluatorDangerInDirection::CStalkerPropertyEvaluatorDangerInDirection	(CAI_Stalker *object, pcstr evaluator_name) :
 	inherited			(object ? object->lua_game_object() : 0,evaluator_name)
 { }
 
@@ -97,7 +97,7 @@ _value_type CStalkerPropertyEvaluatorDangerInDirection::evaluate	()
 // CStalkerPropertyEvaluatorDangerWithGrenade
 //////////////////////////////////////////////////////////////////////////
 
-CStalkerPropertyEvaluatorDangerWithGrenade::CStalkerPropertyEvaluatorDangerWithGrenade	(CAI_Stalker *object, LPCSTR evaluator_name) :
+CStalkerPropertyEvaluatorDangerWithGrenade::CStalkerPropertyEvaluatorDangerWithGrenade	(CAI_Stalker *object, pcstr evaluator_name) :
 	inherited			(object ? object->lua_game_object() : 0,evaluator_name)
 { }
 
@@ -113,7 +113,7 @@ _value_type CStalkerPropertyEvaluatorDangerWithGrenade::evaluate	()
 // CStalkerPropertyEvaluatorDangerBySound
 //////////////////////////////////////////////////////////////////////////
 
-CStalkerPropertyEvaluatorDangerBySound::CStalkerPropertyEvaluatorDangerBySound	(CAI_Stalker *object, LPCSTR evaluator_name) :
+CStalkerPropertyEvaluatorDangerBySound::CStalkerPropertyEvaluatorDangerBySound	(CAI_Stalker *object, pcstr evaluator_name) :
 	inherited			(object ? object->lua_game_object() : 0,evaluator_name)
 { }
 
@@ -130,7 +130,7 @@ _value_type CStalkerPropertyEvaluatorDangerBySound::evaluate	()
 // CStalkerPropertyEvaluatorDangerUnknownCoverActual
 //////////////////////////////////////////////////////////////////////////
 
-CStalkerPropertyEvaluatorDangerUnknownCoverActual::CStalkerPropertyEvaluatorDangerUnknownCoverActual	(CAI_Stalker *object, LPCSTR evaluator_name) :
+CStalkerPropertyEvaluatorDangerUnknownCoverActual::CStalkerPropertyEvaluatorDangerUnknownCoverActual	(CAI_Stalker *object, pcstr evaluator_name) :
 	inherited			(object ? object->lua_game_object() : 0,evaluator_name)
 { }
 
@@ -193,7 +193,7 @@ _value_type CStalkerPropertyEvaluatorDangerUnknownCoverActual::evaluate	()
 // CStalkerPropertyEvaluatorDangerGrenadeExploded
 //////////////////////////////////////////////////////////////////////////
 
-CStalkerPropertyEvaluatorDangerGrenadeExploded::CStalkerPropertyEvaluatorDangerGrenadeExploded	(CAI_Stalker *object, LPCSTR evaluator_name) :
+CStalkerPropertyEvaluatorDangerGrenadeExploded::CStalkerPropertyEvaluatorDangerGrenadeExploded	(CAI_Stalker *object, pcstr evaluator_name) :
 	inherited			(object ? object->lua_game_object() : 0,evaluator_name)
 { }
 
@@ -212,7 +212,7 @@ _value_type CStalkerPropertyEvaluatorDangerGrenadeExploded::evaluate	()
 // CStalkerPropertyEvaluatorGrenadeToExplode
 //////////////////////////////////////////////////////////////////////////
 
-CStalkerPropertyEvaluatorGrenadeToExplode::CStalkerPropertyEvaluatorGrenadeToExplode	(CAI_Stalker *object, LPCSTR evaluator_name) :
+CStalkerPropertyEvaluatorGrenadeToExplode::CStalkerPropertyEvaluatorGrenadeToExplode	(CAI_Stalker *object, pcstr evaluator_name) :
 	inherited			(object ? object->lua_game_object() : 0,evaluator_name)
 { }
 
@@ -231,7 +231,7 @@ _value_type CStalkerPropertyEvaluatorGrenadeToExplode::evaluate	()
 // CStalkerPropertyEvaluatorEnemyWounded
 //////////////////////////////////////////////////////////////////////////
 
-CStalkerPropertyEvaluatorEnemyWounded::CStalkerPropertyEvaluatorEnemyWounded	(CAI_Stalker *object, LPCSTR evaluator_name) :
+CStalkerPropertyEvaluatorEnemyWounded::CStalkerPropertyEvaluatorEnemyWounded	(CAI_Stalker *object, pcstr evaluator_name) :
 	inherited		(object ? object->lua_game_object() : 0,evaluator_name)
 { }
 

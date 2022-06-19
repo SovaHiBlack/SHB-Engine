@@ -121,7 +121,7 @@ struct CLoader {
 		NODEFAULT;
 	}
 
-	IC	static void load_data(LPSTR &data, M &stream, const P &p)
+	IC	static void load_data(pstr& data, M &stream, const P &p)
 	{
 		shared_str						S;
 		stream.r_stringZ				(S);

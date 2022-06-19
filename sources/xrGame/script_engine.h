@@ -78,7 +78,7 @@ public:
 			void				process_file				(pcstr file_name, bool reload_modules);
 			bool				function_object				(pcstr function_to_call, luabind::object &object, int type = LUA_TFUNCTION);
 			void				register_script_classes		();
-	IC		void				parse_script_namespace		(pcstr function_to_call, LPSTR name_space, LPSTR functor);
+	IC		void				parse_script_namespace		(pcstr function_to_call, pstr name_space, pstr functor);
 
 	template <typename _result_type>
 	IC		bool				functor						(pcstr function_to_call, luabind::functor<_result_type> &lua_function);

@@ -14,23 +14,23 @@ class IUISimpleTextureControl;
 struct TEX_INFO{
 	shared_str	file;
 	Frect		rect;
-	LPCSTR		get_file_name	()	{return *file;}
+	pcstr		get_file_name	()	{return *file;}
 	Frect		get_rect		()	{return rect;}
 };
 
 class CUITextureMaster{
 public:
 
-	static void ParseShTexInfo			(LPCSTR xml_file);
+	static void ParseShTexInfo			(pcstr xml_file);
 
-	static void		InitTexture			(LPCSTR texture_name,		IUISimpleTextureControl* tc);
-	static void		InitTexture			(LPCSTR texture_name, pcstr shader_name, IUISimpleTextureControl* tc);
-	static float	GetTextureHeight	(LPCSTR texture_name);
-	static float	GetTextureWidth		(LPCSTR texture_name);
-	static Frect	GetTextureRect		(LPCSTR texture_name);
-	static LPCSTR	GetTextureFileName	(LPCSTR texture_name);
-	static void		GetTextureShader	(LPCSTR texture_name, ref_shader& sh);
-	static TEX_INFO	FindItem			(LPCSTR texture_name, LPCSTR def_texture_name);
+	static void		InitTexture			(pcstr texture_name,		IUISimpleTextureControl* tc);
+	static void		InitTexture			(pcstr texture_name, pcstr shader_name, IUISimpleTextureControl* tc);
+	static float	GetTextureHeight	(pcstr texture_name);
+	static float	GetTextureWidth		(pcstr texture_name);
+	static Frect	GetTextureRect		(pcstr texture_name);
+	static pcstr	GetTextureFileName	(pcstr texture_name);
+	static void		GetTextureShader	(pcstr texture_name, ref_shader& sh);
+	static TEX_INFO	FindItem			(pcstr texture_name, pcstr def_texture_name);
 	static void WriteLog();
 
 protected:

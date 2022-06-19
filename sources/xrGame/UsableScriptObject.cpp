@@ -28,11 +28,11 @@ bool CUsableScriptObject::use(CGameObject* who_use)
 	return true;
 }
 
-LPCSTR CUsableScriptObject::tip_text	()
+pcstr CUsableScriptObject::tip_text	()
 {
 	return *m_sTipText;
 }
-void CUsableScriptObject::set_tip_text	(LPCSTR new_text) 
+void CUsableScriptObject::set_tip_text	(pcstr new_text)
 {
 	m_sTipText = new_text;
 }

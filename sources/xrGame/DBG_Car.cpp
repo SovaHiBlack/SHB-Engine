@@ -30,8 +30,8 @@ void CCar::DbgSheduleUpdate()
 	}
 }
 
-static float torq_pow_max_ratio=1.f;
-static float rpm_pow_max_ratio=1.f;
+static f32 torq_pow_max_ratio=1.0f;
+static f32 rpm_pow_max_ratio=1.0f;
 
 void CCar::DbgCreatePlots()
 {
@@ -65,7 +65,7 @@ void CCar::DbgCreatePlots()
 		xr_vector<Fvector>::iterator i=m_gear_ratious.begin()+1,e=m_gear_ratious.end();
 		for(;i<e;i++)
 		{
-			float r=4*m_dbg_torque_rpm.ResolutionX();
+			f32 r=4*m_dbg_torque_rpm.ResolutionX();
 			m_dbg_torque_rpm.AddMarker(CStatGraph::stVert,(*i)[1]+r,D3DCOLOR_XRGB(255,255,0));
 			m_dbg_torque_rpm.AddMarker(CStatGraph::stVert,(*i)[2]+r,D3DCOLOR_XRGB(0,255,255));
 			r=4*m_dbg_power_rpm.ResolutionX();
@@ -164,14 +164,14 @@ void CCar::DbgUbdateCl()
 
 		if(ph_dbg_draw_mask.test(phDbgDrawCarPlots)&&b_plots)
 		{
-			float cur_torque=EngineCurTorque();
+			f32 cur_torque=EngineCurTorque();
 			m_dbg_dynamic_plot->AppendItem(m_current_engine_power,D3DCOLOR_XRGB(0,0,255));
 			m_dbg_dynamic_plot->AppendItem(cur_torque/torq_pow_max_ratio,D3DCOLOR_XRGB(0,255,0),1);
 			m_dbg_dynamic_plot->AppendItem(m_current_rpm/rpm_pow_max_ratio,D3DCOLOR_XRGB(255,0,0),2);
 
 			m_dbg_dynamic_plot->UpdateMarkerPos(0,m_current_rpm/rpm_pow_max_ratio);
 
-			float engine_wheels_rpm=EngineRpmFromWheels()			;
+			f32 engine_wheels_rpm=EngineRpmFromWheels()			;
 			m_dbg_power_rpm.UpdateMarker(0,m_current_rpm)			;
 			m_dbg_power_rpm.UpdateMarker(1,m_current_engine_power)	;
 			m_dbg_power_rpm.UpdateMarker(2,engine_wheels_rpm)		;

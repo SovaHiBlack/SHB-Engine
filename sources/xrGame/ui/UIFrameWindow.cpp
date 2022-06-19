@@ -12,7 +12,7 @@ CUIFrameWindow::CUIFrameWindow()
 	AttachChild					(UITitleText);
 }
 
-void CUIFrameWindow::Init(LPCSTR base_name, float x, float y, float width, float height)
+void CUIFrameWindow::Init(pcstr base_name, float x, float y, float width, float height)
 {
 	Init				(x,y,width,height);
 	InitTexture			(base_name);	
@@ -25,14 +25,14 @@ void CUIFrameWindow::Init(float x, float y, float width, float height)
 	UITitleText->Init	(0,0, width, 50);
 }
 
-void CUIFrameWindow::Init(LPCSTR base_name, Frect* pRect)
+void CUIFrameWindow::Init(pcstr base_name, Frect* pRect)
 {
 	Init(base_name, pRect->left, pRect->top, 
 				pRect->right - pRect->left, 
 				pRect->bottom - pRect->top);
 }
 
-void CUIFrameWindow::InitTexture(LPCSTR texture){
+void CUIFrameWindow::InitTexture(pcstr texture){
 	m_UIWndFrame.InitTexture	(texture);
 	m_bTextureVisible			= true;
 }

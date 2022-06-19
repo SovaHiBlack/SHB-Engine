@@ -13,7 +13,9 @@
 #include "..\XR_3DA\xr_ioc_cmd.h"
 #include "string_table.h"
 
-#include "debug_renderer.h"
+#ifdef DEBUG
+#	include "DebugRenderer.h"
+#endif
 
 #define			MAPROT_LIST_NAME		"maprot_list.ltx"
 string_path		MAPROT_LIST		= "";
@@ -311,7 +313,7 @@ void game_sv_GameState::OnPlayerConnect			(ClientID /**id_who/**/)
 	signal_Syncronize	();
 }
 
-void game_sv_GameState::OnPlayerDisconnect		(ClientID /**id_who/**/, LPSTR, u16 )
+void game_sv_GameState::OnPlayerDisconnect		(ClientID /**id_who/**/, pstr, u16 )
 {
 	signal_Syncronize	();
 }
@@ -692,7 +694,7 @@ bool game_sv_GameState::NewPlayerName_Exists( void* pClient, pcstr NewName )
 	return false;
 }
 
-void game_sv_GameState::NewPlayerName_Generate( void* pClient, LPSTR NewPlayerName )
+void game_sv_GameState::NewPlayerName_Generate( void* pClient, pstr NewPlayerName )
 {
 	if ( !pClient || !NewPlayerName ) return;
 	NewPlayerName[21] = 0;
@@ -871,7 +873,6 @@ void game_sv_GameState::on_death	(CSE_Abstract *e_dest, CSE_Abstract *e_src)
 	creature->m_killer_id		= e_src->ID;
 }
 
-//  [7/5/2005]
 #ifdef DEBUG
 extern	Flags32	dbg_net_Draw_Flags;
 
@@ -954,7 +955,6 @@ void		game_sv_GameState::OnRender				()
 	}
 };
 #endif
-//  [7/5/2005]
 
 BOOL	game_sv_GameState::IsVotingEnabled			()	{return g_sv_base_iVotingEnabled != 0;};
 BOOL	game_sv_GameState::IsVotingEnabled			(u16 flag) {return (g_sv_base_iVotingEnabled&flag) != 0;};

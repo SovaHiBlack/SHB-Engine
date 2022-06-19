@@ -15,15 +15,13 @@ CUIPointerGage::~CUIPointerGage	()
 {
 }
 
-void CUIPointerGage::Init    (LPCSTR tex_name, 
-								 float x, float y, 
-								 float width, float height)
+void CUIPointerGage::Init    (pcstr tex_name, float x, float y, float width, float height)
 {
 	inherited::Init(tex_name, x , y, width, height);
 }
 
 
-void CUIPointerGage::InitPointer(LPCSTR arrow_tex_name,  float arrow_offset_x , float arrow_offset_y,
+void CUIPointerGage::InitPointer(pcstr arrow_tex_name,  float arrow_offset_x , float arrow_offset_y,
 								 float angle_min, float angle_max)
 {
 	m_iArrowOffsetX = GetWidth()/2 + arrow_offset_x;

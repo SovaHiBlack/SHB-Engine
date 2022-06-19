@@ -4,7 +4,7 @@
 #include "ParticlesObject.h"
 #include "actor.h"
 
-CWeaponPistol::CWeaponPistol(LPCSTR name) : CWeaponCustomPistol(name)
+CWeaponPistol::CWeaponPistol(pcstr name) : CWeaponCustomPistol(name)
 {
 	m_eSoundClose		= ESoundTypes(SOUND_TYPE_WEAPON_RECHARGING /*| eSoundType*/);
 	m_opened = false;
@@ -24,7 +24,7 @@ void CWeaponPistol::net_Destroy()
 }
 
 
-void CWeaponPistol::Load	(LPCSTR section)
+void CWeaponPistol::Load	(pcstr section)
 {
 	inherited::Load		(section);
 

@@ -166,7 +166,7 @@ add_to_type_list(CSE_Shape)
 #define script_type_list save_type_list(CSE_Shape)
 
 SERVER_ENTITY_DECLARE_BEGIN(CSE_Spectator,CSE_Abstract)
-									CSE_Spectator	(LPCSTR caSection);
+									CSE_Spectator	(pcstr caSection);
 	virtual							~CSE_Spectator	();
 	virtual u8						g_team			();
 SERVER_ENTITY_DECLARE_END
@@ -175,14 +175,14 @@ add_to_type_list(CSE_Spectator)
 
 SERVER_ENTITY_DECLARE_BEGIN(CSE_Temporary,CSE_Abstract)
 	u32								m_tNodeID;
-									CSE_Temporary	(LPCSTR caSection);
+									CSE_Temporary	(pcstr caSection);
 	virtual							~CSE_Temporary	();
 SERVER_ENTITY_DECLARE_END
 add_to_type_list(CSE_Temporary)
 #define script_type_list save_type_list(CSE_Temporary)
 
 SERVER_ENTITY_DECLARE_BEGIN0(CSE_PHSkeleton)
-								CSE_PHSkeleton(LPCSTR caSection);
+								CSE_PHSkeleton(pcstr caSection);
 virtual							~CSE_PHSkeleton();
 
 enum{
@@ -211,20 +211,20 @@ SERVER_ENTITY_DECLARE_BEGIN2(CSE_AbstractVisual,CSE_Abstract,CSE_Visual)
 	typedef CSE_Abstract			inherited1;
 	typedef CSE_Visual				inherited2;
 
-	CSE_AbstractVisual										(LPCSTR caSection);
+	CSE_AbstractVisual										(pcstr caSection);
 	virtual	~CSE_AbstractVisual								();
 	virtual CSE_Visual* __stdcall	visual					();
-	LPCSTR							getStartupAnimation		();
+	pcstr							getStartupAnimation		();
 SERVER_ENTITY_DECLARE_END
 add_to_type_list(CSE_AbstractVisual)
 #define script_type_list save_type_list(CSE_AbstractVisual)
 
-extern CSE_Abstract	*F_entity_Create	(LPCSTR caSection);
+extern CSE_Abstract	*F_entity_Create	(pcstr caSection);
 
 /**
 SERVER_ENTITY_DECLARE_BEGIN(CSE_SpawnGroup,CSE_Abstract)
 public:
-									CSE_SpawnGroup	(LPCSTR caSection);
+									CSE_SpawnGroup	(pcstr caSection);
 	virtual							~CSE_SpawnGroup	();
 SERVER_ENTITY_DECLARE_END
 add_to_type_list(CSE_SpawnGroup)

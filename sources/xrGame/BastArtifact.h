@@ -53,16 +53,15 @@ protected:
 	
 	//пороговое значение импульса после получения 
 	//которого артефакт активизируется
-	float m_fImpulseThreshold;
+	f32 m_fImpulseThreshold;
 	
-	float m_fEnergy;
-	float m_fEnergyMax;
-	float m_fEnergyDecreasePerTime;
+	f32 m_fEnergy;
+	f32 m_fEnergyMax;
+	f32 m_fEnergyDecreasePerTime;
 	shared_str	m_sParticleName;
 
-
-	float m_fRadius;
-	float m_fStrikeImpulse;
+	f32 m_fRadius;
+	f32 m_fStrikeImpulse;
 
 	//флаг, того что артефакт получил хит 
 	//и теперь может совершить бросок

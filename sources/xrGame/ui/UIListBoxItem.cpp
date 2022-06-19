@@ -103,7 +103,7 @@ CGameFont* CUIListBoxItem::GetFont()
 	return CUILinesOwner::GetFont();
 }
 
-CUIStatic* CUIListBoxItem::AddField(LPCSTR txt, float len, LPCSTR key)
+CUIStatic* CUIListBoxItem::AddField(pcstr txt, float len, pcstr key)
 {
 	fields.push_back		(xr_new<CUIStatic>());
 	CUIStatic* st			= fields.back();
@@ -119,7 +119,7 @@ CUIStatic* CUIListBoxItem::AddField(LPCSTR txt, float len, LPCSTR key)
 	return st;
 }
 
-LPCSTR CUIListBoxItem::GetField(LPCSTR key)
+pcstr CUIListBoxItem::GetField(pcstr key)
 {
 	for (u32 i = 0; i<fields.size(); i++)
 	{

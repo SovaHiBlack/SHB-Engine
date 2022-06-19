@@ -671,8 +671,8 @@
     <ClInclude Include="data_storage_single_linked_list_inline.h" />
     <ClInclude Include="date_time.h" />
     <ClInclude Include="dCylinder\dCylinder.h" />
-    <ClInclude Include="debug_renderer.h" />
-    <ClInclude Include="debug_renderer_inline.h" />
+    <ClInclude Include="DebugRenderer.h" />
+    <ClInclude Include="DebugRenderer_inline.h" />
     <ClInclude Include="DelayedActionFuse.h" />
     <ClInclude Include="DestroyablePhysicsObject.h" />
     <ClInclude Include="detail_path_builder.h" />
@@ -1783,7 +1783,7 @@
       <DisableSpecificWarnings Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">4002;4390;%(DisableSpecificWarnings)</DisableSpecificWarnings>
       <DisableSpecificWarnings Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">4002;4390;%(DisableSpecificWarnings)</DisableSpecificWarnings>
     </ClCompile>
-    <ClCompile Include="debug_renderer.cpp" />
+    <ClCompile Include="DebugRenderer.cpp" />
     <ClCompile Include="DelayedActionFuse.cpp" />
     <ClCompile Include="DestroyablePhysicsObject.cpp" />
     <ClCompile Include="detail_path_manager.cpp" />

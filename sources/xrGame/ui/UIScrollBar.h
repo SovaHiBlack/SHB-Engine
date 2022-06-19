@@ -50,7 +50,7 @@ public:
 			bool	GetEnabled			()					{return m_b_enabled;}
 	virtual void	Show				(bool b);
 	virtual void	Enable				(bool b);
-	virtual void	Init				(float x, float y, float length, bool bIsHorizontal, LPCSTR profile = "default");
+	virtual void	Init				(float x, float y, float length, bool bIsHorizontal, pcstr profile = "default");
 
 	virtual void	SendMessage			(CUIWindow *pWnd, s16 msg, void *pData);
 	virtual bool	OnMouse				(float x, float y, EUIMessages mouse_action);

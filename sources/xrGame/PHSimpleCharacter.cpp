@@ -29,7 +29,7 @@ IC		bool	PhOutOfBoundaries			(const Fvector& v)
 	return v.y < phBoundaries.y1;
 }
 #ifdef DEBUG
-#	include "debug_renderer.h"
+#	include "DebugRenderer.h"
 #endif
 
 const float LOSE_CONTROL_DISTANCE=0.5f; //fly distance to lose control

@@ -45,8 +45,8 @@ public:
 	virtual void		update				();
 	virtual bool		useful				(const CDangerObject &object) const;
 	virtual bool		is_useful			(const CDangerObject &object) const;
-	virtual	float		evaluate			(const CDangerObject &object) const;
-	virtual	float		do_evaluate			(const CDangerObject &object) const;
+	virtual	f32			evaluate			(const CDangerObject &object) const;
+	virtual	f32			do_evaluate			(const CDangerObject &object) const;
 			void		remove_links		(const CObject *object);
 	IC		void		reset				();
 

@@ -26,7 +26,7 @@ typedef CWrapperBase<CUIDialogWndEx> WrapType;
 typedef CUIDialogWndEx BaseType;
 
 template<typename T>
-IC T*	CUIDialogWndEx::GetControl(LPCSTR name){
+IC T*	CUIDialogWndEx::GetControl(pcstr name){
 	shared_str n = name;
 	CUIWindow* pWnd = FindChild(n);
 	if(pWnd == NULL)

@@ -31,7 +31,7 @@
 #include "game_object_space.h"
 
 #ifdef DEBUG
-#	include "debug_renderer.h"
+#	include "DebugRenderer.h"
 #	include "PHDebug.h"
 #endif
 

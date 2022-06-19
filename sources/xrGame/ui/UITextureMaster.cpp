@@ -23,7 +23,7 @@ void CUITextureMaster::WriteLog(){
 	Msg("UI texture manager work time is %d ms", m_time);
 #endif
 }
-void CUITextureMaster::ParseShTexInfo(LPCSTR xml_file){
+void CUITextureMaster::ParseShTexInfo(pcstr xml_file){
 	CUIXml xml;
 	xml.Init(CONFIG_PATH, UI_PATH, xml_file);
 	shared_str file = xml.Read("file_name",0,""); 
@@ -135,7 +135,7 @@ float CUITextureMaster::GetTextureWidth(pcstr texture_name){
 	return 0;
 }
 
-LPCSTR CUITextureMaster::GetTextureFileName(pcstr texture_name){
+pcstr CUITextureMaster::GetTextureFileName(pcstr texture_name){
 	xr_map<shared_str, TEX_INFO>::iterator	it;
 	it = m_textures.find(texture_name);
 
@@ -145,7 +145,7 @@ LPCSTR CUITextureMaster::GetTextureFileName(pcstr texture_name){
 	return 0;
 }
 
-TEX_INFO CUITextureMaster::FindItem(LPCSTR texture_name, LPCSTR def_texture_name)
+TEX_INFO CUITextureMaster::FindItem(pcstr texture_name, pcstr def_texture_name)
 {
 	xr_map<shared_str, TEX_INFO>::iterator	it;
 	it = m_textures.find(texture_name);
@@ -158,7 +158,7 @@ TEX_INFO CUITextureMaster::FindItem(LPCSTR texture_name, LPCSTR def_texture_name
 	}
 }
 
-void CUITextureMaster::GetTextureShader(LPCSTR texture_name, ref_shader& sh){
+void CUITextureMaster::GetTextureShader(pcstr texture_name, ref_shader& sh){
 	xr_map<shared_str, TEX_INFO>::iterator	it;
 	it = m_textures.find(texture_name);
 

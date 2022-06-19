@@ -51,7 +51,7 @@ void CUITextBanner::Update()
 
 ////////////////////////////////////////////////////////////////////////////////
 
-void CUITextBanner::Out(float x, float y, const char *fmt, ...)
+void CUITextBanner::Out(float x, float y, pcstr fmt, ...)
 {
 	if (!fmt) return;
 

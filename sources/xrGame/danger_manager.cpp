@@ -119,13 +119,13 @@ void CDangerManager::update			()
 		m_objects.end()
 	);
 
-	float					result = flt_max;
+	f32					result = flt_max;
 	m_selected				= 0;
 	OBJECTS::const_iterator	I = m_objects.begin();
 	OBJECTS::const_iterator	E = m_objects.end();
 	for ( ; I != E; ++I) {
 //		Msg					("%6d : Danger : [%d][%d]",(*I).time(),(*I).type(),(*I).perceive_type());
-		float				value = do_evaluate(*I);
+		f32				value = do_evaluate(*I);
 		if (result > value) {
 			result			= value;
 			m_selected		= &*I;
@@ -183,14 +183,14 @@ bool CDangerManager::is_useful		(const CDangerObject &object) const
 	return					(m_object->useful(this,object));
 }
 
-float CDangerManager::evaluate		(const CDangerObject &object) const
+f32 CDangerManager::evaluate		(const CDangerObject &object) const
 {
 	return					(m_object->evaluate(this,object));
 }
 
-float CDangerManager::do_evaluate	(const CDangerObject &object) const
+f32 CDangerManager::do_evaluate	(const CDangerObject &object) const
 {
-	float					result = 0.f;
+	f32					result = 0.f;
 	switch (object.type()) {
 		case CDangerObject::eDangerTypeBulletRicochet : { // I perceived bullet(knife) ricochet
 			result			+= 3000.f;
@@ -228,7 +228,7 @@ float CDangerManager::do_evaluate	(const CDangerObject &object) const
 	}
 
 	result					*= 10.f;
-	result					+= float(Device.dwTimeGlobal - object.time());
+	result					+= f32(Device.dwTimeGlobal - object.time());
 
 	return					(result);
 }

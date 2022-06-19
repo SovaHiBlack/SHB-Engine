@@ -21,7 +21,7 @@ CUIOutfitInfo::~CUIOutfitInfo()
 	}
 }
 
-LPCSTR _imm_names []={
+pcstr _imm_names []={
 	"burn_immunity",
 	"strike_immunity",
 	"shock_immunity",
@@ -33,7 +33,7 @@ LPCSTR _imm_names []={
 	"fire_wound_immunity",
 };
 
-LPCSTR _imm_st_names[]={
+pcstr _imm_st_names[]={
 	"ui_inv_outfit_burn_protection",
 	"ui_inv_outfit_shock_protection",
 	"ui_inv_outfit_strike_protection",
@@ -47,7 +47,7 @@ LPCSTR _imm_st_names[]={
 
 void CUIOutfitInfo::InitFromXml(CUIXml& xml_doc)
 {
-	LPCSTR _base				= "outfit_info";
+	pcstr _base				= "outfit_info";
 
 	string256					_buff;
 	CUIXmlInit::InitWindow		(xml_doc, _base, 0, this);
@@ -105,8 +105,7 @@ void CUIOutfitInfo::SetItem(u32 hitType, bool force_add)
 		return;
 	}
 
-//	LPCSTR			_clr_outfit, _clr_af;
-	LPCSTR			_imm_name	= *CStringTable().translate(_imm_st_names[hitType]);
+	pcstr			_imm_name	= *CStringTable().translate(_imm_st_names[hitType]);
 
 	int _sz			= sprintf_s	(_buff,sizeof(_buff),"%s ", _imm_name);
 	_sz				+= sprintf_s	(_buff+_sz,sizeof(_buff)-_sz,"%s %+3.0f%%", (_val_outfit>0.0f)?"%c[green]":"%c[red]", _val_outfit*100.0f);

@@ -22,8 +22,8 @@ public:
 	using CUIButton::Init;
 
 	virtual void 	Init						(float x, float y, float width, float height);
-	virtual void 	InitTexture					(LPCSTR tex_name);
-	virtual void 	InitTexture					(LPCSTR tex_enabled, LPCSTR tex_disabled, LPCSTR tex_touched, LPCSTR tex_highlighted);	
+	virtual void 	InitTexture					(pcstr tex_name);
+	virtual void 	InitTexture					(pcstr tex_enabled, pcstr tex_disabled, pcstr tex_touched, pcstr tex_highlighted);
 
 			void 	SetTextColor				(u32 color);
 			void 	SetTextColorH				(u32 color);
@@ -32,8 +32,8 @@ public:
 	virtual void 	SetTextureOffset			(float x, float y);	
 	virtual void 	SetWidth					(float width);
 	virtual void 	SetHeight					(float height);
-			void 	InitSoundH					(LPCSTR sound_file);
-			void 	InitSoundT					(LPCSTR sound_file);
+			void 	InitSoundH					(pcstr sound_file);
+			void 	InitSoundT					(pcstr sound_file);
 
 	virtual void 	OnClick						();
 	virtual void 	OnFocusReceive				();

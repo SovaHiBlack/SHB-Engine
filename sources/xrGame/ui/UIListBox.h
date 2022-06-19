@@ -9,17 +9,17 @@ class CUIListBox : 	public CUIScrollView,
 {
 public:
 					CUIListBox						();
-	CUIListBoxItem* AddItem							(LPCSTR text);
+	CUIListBoxItem* AddItem							(pcstr text);
 	CUIListBoxItem* GetItemByTAG					(u32 tag_value);
 	CUIListBoxItem* GetItemByIDX					(u32 idx);
-	CUIListBoxItem* GetItemByText					(LPCSTR text);
+	CUIListBoxItem* GetItemByText					(pcstr text);
 	CUIListBoxItem* GetSelectedItem					();
 
-	LPCSTR			GetSelectedText					();
-	LPCSTR			GetText							(u32 idx);
+	pcstr			GetSelectedText					();
+	pcstr			GetText							(u32 idx);
 	void			MoveSelectedUp					();
 	void			MoveSelectedDown				();
-	void			SetSelectionTexture				(LPCSTR texture);
+	void			SetSelectionTexture				(pcstr texture);
 	void			SetItemHeight					(float h);
 	float			GetItemHeight					();
 	float			GetLongestLength				();
@@ -28,7 +28,7 @@ public:
 		u32			GetSelectedIDX					();
 		void		SetSelectedIDX					(u32 idx);
 		void		SetSelectedTAG					(u32 tag_val);
-		void		SetSelectedText					(LPCSTR txt);
+		void		SetSelectedText					(pcstr txt);
 		void		SetImmediateSelection			(bool f);
 
 virtual bool		OnMouse							(float x, float y, EUIMessages mouse_action);

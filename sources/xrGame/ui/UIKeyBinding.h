@@ -12,13 +12,13 @@ class CUIKeyBinding : public CUIWindow
 {
 public:
 					CUIKeyBinding			();
-	void			InitFromXml				(CUIXml& xml_doc, LPCSTR path);
+	void			InitFromXml				(CUIXml& xml_doc, pcstr path);
 #ifdef DEBUG
 	void			CheckStructure			(CUIXml& xml_doc);
-	bool			IsActionExist			(LPCSTR action, CUIXml& xml_doc);
+	bool			IsActionExist			(pcstr action, CUIXml& xml_doc);
 #endif
 protected:
-	void			FillUpList				(CUIXml& xml_doc, LPCSTR path);
+	void			FillUpList				(CUIXml& xml_doc, pcstr path);
 
 	CUILabel		m_header[3];
 	CUIFrameWindow	m_frame;

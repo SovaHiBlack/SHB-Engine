@@ -13,7 +13,7 @@
 #	include "..\XR_3DA\StatGraph.h"
 #	include "PHDebug.h"
 #	include "level.h"
-#	include "debug_renderer.h"
+#	include "DebugRenderer.h"
 #endif
 
 CPHAICharacter::CPHAICharacter()

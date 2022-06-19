@@ -164,7 +164,7 @@ void CSpecificCharacter::load_shared(pcstr)
 		pcstr char_class			= pXML->Read	("class", 0, "");
 		if(char_class)
 		{
-			char* buf_str			= xr_strdup(char_class);
+			pstr buf_str			= xr_strdup(char_class);
 			xr_strlwr				(buf_str);
 			data()->m_Classes.push_back(buf_str);
 			xr_free					(buf_str);
@@ -177,7 +177,7 @@ void CSpecificCharacter::load_shared(pcstr)
 	pcstr team = pXML->Read("community", 0, NULL);
 	R_ASSERT3(team != NULL, "'community' field not fulfiled for specific character", *m_OwnId);
 	
-	char* buf_str = xr_strdup(team);
+	pstr buf_str = xr_strdup(team);
 	xr_strlwr(buf_str);
 	data()->m_Community.set(buf_str);
 	xr_free(buf_str);

@@ -9,7 +9,7 @@
 #include "Level.h"
 #include "Hudmanager.h"
 
-#include "debug_renderer.h"
+#include "DebugRenderer.h"
 
 Flags32		ph_dbg_draw_mask						;
 Flags32		ph_dbg_draw_mask1						;

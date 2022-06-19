@@ -43,11 +43,11 @@ void CUISequenceVideoItem::Load(CUIXml* xml, int idx)
 	XML_NODE* _stored_root	= xml->GetLocalRoot();
 	xml->SetLocalRoot		(xml->NavigateToNode("item",idx));
 	
-	LPCSTR str				= xml->Read				("pause_state",0,"ignore");
+	pcstr str				= xml->Read				("pause_state",0,"ignore");
 	m_flags.set										(etiNeedPauseOn,	0==_stricmp(str, "on"));
 	m_flags.set										(etiNeedPauseOff,	0==_stricmp(str, "off"));
 	
-	LPCSTR str2				= xml->Read				("pause_sound",0,"ignore");
+	pcstr str2				= xml->Read				("pause_sound",0,"ignore");
 	m_flags.set										(etiNeedPauseSound, 0==_stricmp(str2, "on"));
 
 	str						= xml->Read				("can_be_stopped",0,"on");
@@ -83,7 +83,7 @@ void CUISequenceVideoItem::Load(CUIXml* xml, int idx)
 
 		m_wnd->SetWndSize								(wnd_size);
 	}
-	LPCSTR m_snd_name								= xml->Read("sound",0,"");
+	pcstr m_snd_name								= xml->Read("sound",0,"");
 
 	if (m_snd_name&&m_snd_name[0])
 	{

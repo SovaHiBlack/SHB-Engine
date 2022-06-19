@@ -28,7 +28,7 @@ void CUISpinText::SetItem()
 	m_pLines->SetText	(m_list[m_curItem]._transl.c_str());
 }
 
-LPCSTR CUISpinText::GetTokenText()
+pcstr CUISpinText::GetTokenText()
 {
 	R_ASSERT			(m_curItem != -1);
 	return				m_list[m_curItem]._orig.c_str();

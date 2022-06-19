@@ -141,13 +141,13 @@ public:
 	IC						ISheduledWrapper		() {};
 	virtual					~ISheduledWrapper		() {};
 	
-	virtual float			shedule_Scale			()
+	virtual f32			shedule_Scale			()
 	{
 		return 1;
-//		return	(call_member<float>(this,"shedule_Scale"));
+//		return	(call_member<f32>(this,"shedule_Scale"));
 	}
 
-/*	static float			shedule_Scale_static	(base *self)
+/*	static f32			shedule_Scale_static	(base *self)
 	{
 		ai().script_engine().script_log(eLuaMessageTypeError,"You are trying to call a pure virtual function ISheduled::shedule_Scale!\nReturning default value 1000.0");
 		return	(1000.f);
@@ -222,7 +222,7 @@ typedef IRenderableWrapper<IRenderable,luabind::wrap_base> CIRenderableWrapper;
 //	virtual BOOL			Ready				();
 //	virtual CObject*		H_SetParent			(CObject* O);
 //	virtual void			Center				(Fvector& C) const;
-//	virtual float			Radius				() const;
+//	virtual f32			Radius				() const;
 //	virtual const Fbox&		BoundingBox			() const;
 //	virtual void			Load				(pcstr section);
 //	virtual void			UpdateCL			();
@@ -301,22 +301,22 @@ public:
 	IC						CEntityWrapper		() {}
 	virtual					~CEntityWrapper		() {}
 
-	virtual void			HitSignal			(float P, Fvector &local_dir,	CObject* who, s16 element)
+	virtual void			HitSignal			(f32 P, Fvector &local_dir,	CObject* who, s16 element)
 	{
 		luabind::call_member<void>(this,"HitSignal",P,local_dir,who,element);
 	}
 
-	static	void			HitSignal_static	(CEntity *self, float P, Fvector &local_dir,	CObject* who, s16 element)
+	static	void			HitSignal_static	(CEntity *self, f32 P, Fvector &local_dir,	CObject* who, s16 element)
 	{
 		ai().script_engine().script_log(eLuaMessageTypeError,"You are trying to call a pure virtual function CEntity::HitSignal!");
 	}
 
-	virtual void			HitImpulse			(float P, Fvector &vWorldDir, 	Fvector& vLocalDir)
+	virtual void			HitImpulse			(f32 P, Fvector &vWorldDir, 	Fvector& vLocalDir)
 	{
 		luabind::call_member<void>(this,"HitImpulse",P,vWorldDir,vLocalDir);
 	}
 
-	static	void			HitImpulse_static	(float P, Fvector &vWorldDir, 	Fvector& vLocalDir)
+	static	void			HitImpulse_static	(f32 P, Fvector &vWorldDir, 	Fvector& vLocalDir)
 	{
 		ai().script_engine().script_log(eLuaMessageTypeError,"You are trying to call a pure virtual function CEntity::HitImpulse!");
 	}

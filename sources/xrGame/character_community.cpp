@@ -68,7 +68,7 @@ CHARACTER_GOODWILL  CHARACTER_COMMUNITY::relation		(CHARACTER_COMMUNITY_INDEX fr
 	return m_relation_table.table()[from][to];
 }
 
-float  CHARACTER_COMMUNITY::sympathy			(CHARACTER_COMMUNITY_INDEX comm)
+f32 CHARACTER_COMMUNITY::sympathy			(CHARACTER_COMMUNITY_INDEX comm)
 {
 	VERIFY(comm >= 0 && comm <(int)m_sympathy_table.table().size());
 	return m_sympathy_table.table()[comm][0];

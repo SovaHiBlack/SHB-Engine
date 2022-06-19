@@ -20,7 +20,7 @@ IC	CCoverManager::CPointQuadTree *CCoverManager::get_covers	()
 }
 
 template <typename _evaluator_type, typename _restrictor_type>
-IC	bool CCoverManager::inertia									(float radius, _evaluator_type &evaluator, const _restrictor_type &restrictor) const
+IC	bool CCoverManager::inertia									(f32 radius, _evaluator_type &evaluator, const _restrictor_type &restrictor) const
 {
 	// check if evaluator has no inertion or it's time to reevaluate
 	if (!evaluator.inertia(radius))
@@ -53,7 +53,7 @@ IC	bool CCoverManager::inertia									(float radius, _evaluator_type &evaluator
 }
 
 template <typename _evaluator_type, typename _restrictor_type>
-IC	const CCoverPoint *CCoverManager::best_cover				(const Fvector &position, float radius, _evaluator_type &evaluator, const _restrictor_type &restrictor) const
+IC	const CCoverPoint *CCoverManager::best_cover				(const Fvector &position, f32 radius, _evaluator_type &evaluator, const _restrictor_type &restrictor) const
 {
 	START_PROFILE("Covers/best_cover")
 
@@ -74,7 +74,7 @@ IC	const CCoverPoint *CCoverManager::best_cover				(const Fvector &position, flo
 
 	covers().nearest		(position,radius,m_nearest);
 
-	float					radius_sqr = _sqr(radius);
+	f32					radius_sqr = _sqr(radius);
 
 	xr_vector<CCoverPoint*>::const_iterator	I = m_nearest.begin();
 	xr_vector<CCoverPoint*>::const_iterator	E = m_nearest.end();
@@ -104,7 +104,7 @@ IC	const CCoverPoint *CCoverManager::best_cover				(const Fvector &position, flo
 }
 
 template <typename _evaluator_type>
-IC	const CCoverPoint *CCoverManager::best_cover				(const Fvector &position, float radius, _evaluator_type &evaluator) const
+IC	const CCoverPoint *CCoverManager::best_cover				(const Fvector &position, f32 radius, _evaluator_type &evaluator) const
 {
 	return					(best_cover<_evaluator_type,CCoverManager>(position,radius,evaluator,*this));
 }
@@ -114,9 +114,9 @@ IC	bool CCoverManager::operator()								(const CCoverPoint *) const
 	return					(true);
 }
 
-IC	float CCoverManager::weight									(const CCoverPoint *) const
+IC	f32 CCoverManager::weight									(const CCoverPoint *) const
 {
-	return					(1.f);
+	return					(1.0f);
 }
 
 IC	void CCoverManager::finalize								(const CCoverPoint *) const

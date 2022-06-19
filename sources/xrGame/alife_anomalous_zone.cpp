@@ -19,7 +19,7 @@
 #include <malloc.h>
 #pragma warning(pop)
 
-CSE_ALifeItemWeapon	*CSE_ALifeAnomalousZone::tpfGetBestWeapon(ALife::EHitType &tHitType, float &fHitPower)
+CSE_ALifeItemWeapon	*CSE_ALifeAnomalousZone::tpfGetBestWeapon(ALife::EHitType &tHitType, f32& fHitPower)
 {
 	m_tpCurrentBestWeapon		= 0;
 	m_tTimeID					= ai().alife().time_manager().game_time();

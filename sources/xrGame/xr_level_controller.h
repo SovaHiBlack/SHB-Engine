@@ -97,7 +97,7 @@ enum	EGameActions
 
 struct _keyboard		
 {
-	LPCSTR		key_name;
+	pcstr		key_name;
 	int			dik;
 	xr_string	key_local_name;
 };
@@ -113,19 +113,19 @@ bool is_group_not_conflicted(_key_group g1, _key_group g2);
 
 struct _action
 {
-	LPCSTR			action_name;
+	pcstr			action_name;
 	EGameActions	id;
 	_key_group		key_group;
 };
 
-LPCSTR			dik_to_keyname			(int _dik);
-int				keyname_to_dik			(LPCSTR _name);
-_keyboard*		keyname_to_ptr			(LPCSTR _name);
+pcstr			dik_to_keyname			(int _dik);
+int				keyname_to_dik			(pcstr _name);
+_keyboard*		keyname_to_ptr			(pcstr _name);
 _keyboard*		dik_to_ptr				(int _dik, bool bSafe);
 
-LPCSTR			id_to_action_name		(EGameActions _id);
-EGameActions	action_name_to_id		(LPCSTR _name);
-_action*		action_name_to_ptr		(LPCSTR _name);
+pcstr			id_to_action_name		(EGameActions _id);
+EGameActions	action_name_to_id		(pcstr _name);
+_action*		action_name_to_ptr		(pcstr _name);
 
 extern _action		actions		[];
 //extern _keyboard	keyboards	[];
@@ -154,14 +154,14 @@ class ConsoleBindCmds{
 public:
 	xr_map<int,_conCmd>		m_bindConsoleCmds;
 
-	void 	bind			(int dik, LPCSTR N);
+	void 	bind			(int dik, pcstr N);
 	void 	unbind			(int dik);
 	bool 	execute			(int dik);
 	void 	clear			();
 	void 	save			(IWriter* F);
 };
 
-void GetActionAllBinding	(LPCSTR action, char* dst_buff, int dst_buff_sz);
+void GetActionAllBinding	(pcstr action, pstr dst_buff, int dst_buff_sz);
 
 extern ConsoleBindCmds		bindConsoleCmds;
 

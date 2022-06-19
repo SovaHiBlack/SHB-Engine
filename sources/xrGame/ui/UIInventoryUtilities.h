@@ -66,18 +66,18 @@ const shared_str GetGameDateAsString(EDatePrecision datePrec, char dateSeparator
 const shared_str GetGameTimeAsString(ETimePrecision timePrec, char timeSeparator = ':');
 const shared_str GetDateAsString(ALife::_TIME_ID time, EDatePrecision datePrec, char dateSeparator = '/');
 const shared_str GetTimeAsString(ALife::_TIME_ID time, ETimePrecision timePrec, char timeSeparator = ':');
-LPCSTR GetTimePeriodAsString	(LPSTR _buff, u32 buff_sz, ALife::_TIME_ID _from, ALife::_TIME_ID _to);
+pcstr GetTimePeriodAsString	(pstr _buff, u32 buff_sz, ALife::_TIME_ID _from, ALife::_TIME_ID _to);
 // Отобразить вес, который несет актер
 void UpdateWeight(CUIStatic &wnd, bool withPrefix = false);
 
 // Функции получения строки-идентификатора ранга и отношения по их числовому идентификатору
-LPCSTR	GetRankAsText				(CHARACTER_RANK_VALUE		rankID);
-LPCSTR	GetReputationAsText			(CHARACTER_REPUTATION_VALUE rankID);
-LPCSTR	GetGoodwillAsText			(CHARACTER_GOODWILL			goodwill);
+pcstr	GetRankAsText				(CHARACTER_RANK_VALUE		rankID);
+pcstr	GetReputationAsText			(CHARACTER_REPUTATION_VALUE rankID);
+pcstr	GetGoodwillAsText			(CHARACTER_GOODWILL			goodwill);
 
 void	ClearCharacterInfoStrings	();
 
-void	SendInfoToActor				(LPCSTR info_id);
+void	SendInfoToActor				(pcstr info_id);
 u32		GetGoodwillColor			(CHARACTER_GOODWILL gw);
 u32		GetRelationColor			(ALife::ERelationType r);
 u32		GetReputationColor			(CHARACTER_REPUTATION_VALUE rv);

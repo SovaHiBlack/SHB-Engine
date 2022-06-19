@@ -16,7 +16,7 @@
 #include "CustomZone.h"
 
 #ifdef DEBUG
-#	include "debug_renderer.h"
+#	include "DebugRenderer.h"
 #endif
 
 CSpaceRestrictor::~CSpaceRestrictor	()

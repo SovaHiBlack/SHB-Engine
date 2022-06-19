@@ -135,7 +135,7 @@ public:
 	void					Process_event_destroy	(NET_Packet& P, ClientID sender, u32 time, u16 ID, NET_Packet* pEPack);
 	
 	xrClientData*			SelectBestClientToMigrateTo		(CSE_Abstract* E, BOOL bForceAnother=FALSE);
-	void					SendConnectResult		(IClient* CL, u8 res, u8 res1, char* ResultStr);
+	void					SendConnectResult		(IClient* CL, u8 res, u8 res1, pstr ResultStr);
 
 	void					AttachNewClient			(IClient* CL);
 	virtual void			OnBuildVersionRespond				(IClient* CL, NET_Packet& P);
@@ -172,7 +172,7 @@ public:
 	virtual void			client_Destroy		(IClient* C);					// destroy client info
 
 	// utilities
-	CSE_Abstract*			entity_Create		(LPCSTR name);
+	CSE_Abstract*			entity_Create		(pcstr name);
 	void					entity_Destroy		(CSE_Abstract *&P);
 	u32						GetEntitiesNum		()			{ return entities.size(); };
 	CSE_Abstract*			GetEntity			(u32 Num);

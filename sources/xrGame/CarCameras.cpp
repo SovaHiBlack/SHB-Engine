@@ -21,7 +21,7 @@ bool CCar::HUDView() const
 	return active_camera->tag==ectFirst;
 }
 
-void	CCar::cam_Update			(float dt, float fov)
+void	CCar::cam_Update			(f32 dt, f32 fov)
 {
 	VERIFY(!ph_world->Processing());
 	Fvector							P,Da;

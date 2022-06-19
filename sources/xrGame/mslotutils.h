@@ -29,7 +29,7 @@ public:
 	inline void	 SetLen(DWORD l){m_len=l;};
 	inline DWORD GetLen()const{return m_len;};
 	
-	inline BOOL	r_string(char* dst){
+	inline BOOL	r_string(pstr dst){
 		int sz;
 		r_int(sz);
 		Read(dst,sz+1); 
@@ -73,7 +73,7 @@ public:
 	};
 };
 
-inline HANDLE CreateMailSlotByName(LPSTR slotName)
+inline HANDLE CreateMailSlotByName(pstr slotName)
 {
   HANDLE  hSlot = CreateMailslot(slotName, 
         0,                             // no maximum message size 
@@ -82,7 +82,7 @@ inline HANDLE CreateMailSlotByName(LPSTR slotName)
  
     return hSlot; 
 }
-inline BOOL CheckExisting(LPSTR slotName)
+inline BOOL CheckExisting(pstr slotName)
 {
 	HANDLE hFile; 
 	BOOL res;
@@ -101,7 +101,7 @@ hFile = CreateFile(slotName,
 	
 	return res;
 }
-inline BOOL SendMailslotMessage(LPSTR slotName, CMailSlotMsg& msg){
+inline BOOL SendMailslotMessage(pstr slotName, CMailSlotMsg& msg){
 	BOOL fResult; 
 	HANDLE hFile; 
 	DWORD cbWritten; 

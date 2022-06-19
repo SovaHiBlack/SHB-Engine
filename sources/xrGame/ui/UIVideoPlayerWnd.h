@@ -22,10 +22,10 @@ private:
 	void			OnBtnPauseClicked		();
 	void __stdcall	OnTabChanged			(CUIWindow* pWnd, void* pData);
 public:
-	void			Init					(CUIXml* doc, LPCSTR start_from);
-	void			Init					(LPCSTR name);
+	void			Init					(CUIXml* doc, pcstr start_from);
+	void			Init					(pcstr name);
 	virtual void	SendMessage				(CUIWindow* pWnd, s16 msg, void* pData);
-	void			SetFile					(LPCSTR fn);
+	void			SetFile					(pcstr fn);
 
 	virtual void	Draw					();
 	virtual void	Update					();

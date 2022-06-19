@@ -4548,10 +4548,10 @@
     <ClInclude Include="level_sounds.h">
       <Filter>Core\Client\Level\Level Sounds</Filter>
     </ClInclude>
-    <ClInclude Include="debug_renderer.h">
+    <ClInclude Include="DebugRenderer.h">
       <Filter>Core\Client\Level\Debug Renderer</Filter>
     </ClInclude>
-    <ClInclude Include="debug_renderer_inline.h">
+    <ClInclude Include="DebugRenderer_inline.h">
       <Filter>Core\Client\Level\Debug Renderer</Filter>
     </ClInclude>
     <ClInclude Include="xr_level_controller.h">
@@ -7352,7 +7352,7 @@
     <ClCompile Include="level_sounds.cpp">
       <Filter>Core\Client\Level\Level Sounds</Filter>
     </ClCompile>
-    <ClCompile Include="debug_renderer.cpp">
+    <ClCompile Include="DebugRenderer.cpp">
       <Filter>Core\Client\Level\Debug Renderer</Filter>
     </ClCompile>
     <ClCompile Include="xr_level_controller.cpp">

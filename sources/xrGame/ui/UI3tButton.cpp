@@ -78,12 +78,12 @@ void CUI3tButton::OnFocusReceive()
 	PlaySoundH					();
 }
 
-void CUI3tButton::InitSoundH(LPCSTR sound_file)
+void CUI3tButton::InitSoundH(pcstr sound_file)
 {
 	::Sound->create		(m_sound_h, sound_file,st_Effect,sg_SourceType);
 }
 
-void CUI3tButton::InitSoundT(LPCSTR sound_file)
+void CUI3tButton::InitSoundT(pcstr sound_file)
 {
 	::Sound->create		(m_sound_t, sound_file,st_Effect,sg_SourceType); 
 }
@@ -118,7 +118,7 @@ void CUI3tButton::SetHeight(float height)
 	m_background.SetHeight		(height);
 }
 
-void CUI3tButton::InitTexture(LPCSTR tex_name)
+void CUI3tButton::InitTexture(pcstr tex_name)
 {
 	string_path 		tex_enabled;
 	string_path 		tex_disabled;
@@ -144,10 +144,10 @@ void CUI3tButton::InitTexture(LPCSTR tex_name)
 	this->InitTexture	(tex_enabled, tex_disabled, tex_touched, tex_highlighted);		
 }
 
-void CUI3tButton::InitTexture(LPCSTR tex_enabled, 
-							  LPCSTR tex_disabled, 
-							  LPCSTR tex_touched, 
-							  LPCSTR tex_highlighted)
+void CUI3tButton::InitTexture(pcstr tex_enabled,
+							  pcstr tex_disabled,
+							  pcstr tex_touched,
+							  pcstr tex_highlighted)
 {
 	m_background.InitEnabledState		(tex_enabled);
 	m_background.InitDisabledState		(tex_disabled);

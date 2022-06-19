@@ -17,7 +17,7 @@
 #include "object_broker.h"
 #include "string_table.h"
 
-CWeaponMagazined::CWeaponMagazined(LPCSTR name, ESoundTypes eSoundType) : CWeapon(name)
+CWeaponMagazined::CWeaponMagazined(pcstr name, ESoundTypes eSoundType) : CWeapon(name)
 {
 	m_eSoundShow		= ESoundTypes(SOUND_TYPE_ITEM_TAKING | eSoundType);
 	m_eSoundHide		= ESoundTypes(SOUND_TYPE_ITEM_HIDING | eSoundType);
@@ -66,7 +66,7 @@ void CWeaponMagazined::net_Destroy()
 }
 
 
-void CWeaponMagazined::Load	(LPCSTR section)
+void CWeaponMagazined::Load	(pcstr section)
 {
 	inherited::Load		(section);
 		
@@ -241,12 +241,12 @@ void CWeaponMagazined::OnMagazineEmpty()
 
 void CWeaponMagazined::UnloadMagazine(bool spawn_ammo)
 {
-	xr_map<LPCSTR, u16> l_ammo;
+	xr_map<pcstr, u16> l_ammo;
 	
 	while(!m_magazine.empty()) 
 	{
 		CCartridge &l_cartridge = m_magazine.back();
-		xr_map<LPCSTR, u16>::iterator l_it;
+		xr_map<pcstr, u16>::iterator l_it;
 		for(l_it = l_ammo.begin(); l_ammo.end() != l_it; ++l_it) 
 		{
             if(!xr_strcmp(*l_cartridge.m_ammoSect, l_it->first)) 
@@ -266,7 +266,7 @@ void CWeaponMagazined::UnloadMagazine(bool spawn_ammo)
 	if (!spawn_ammo)
 		return;
 
-	xr_map<LPCSTR, u16>::iterator l_it;
+	xr_map<pcstr, u16>::iterator l_it;
 	for(l_it = l_ammo.begin(); l_ammo.end() != l_it; ++l_it) 
 	{
 		CWeaponAmmo *l_pA = smart_cast<CWeaponAmmo*>(m_pCurrentInventory->GetAny(l_it->first));

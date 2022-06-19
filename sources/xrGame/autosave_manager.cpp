@@ -40,7 +40,7 @@ CAutosaveManager::~CAutosaveManager			()
 	shedule_unregister			();
 }
 
-float CAutosaveManager::shedule_Scale		()
+f32 CAutosaveManager::shedule_Scale		()
 {
 	return						(.5f);
 }

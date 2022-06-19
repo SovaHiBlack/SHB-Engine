@@ -6,29 +6,25 @@
 #include "MathUtils.h"
 
 #ifdef DEBUG
-#	include "debug_renderer.h"
+#	include "DebugRenderer.h"
 #	include "level.h"
 #	include "PHDebug.h"
 #endif
 
-#ifdef DEBUG
-#	include "debug_renderer.h"
-#endif
-
-static const float down_leader_extension_tolerance=0.2f;
-static const float up_leader_extension_tolerance=0.0f;
+static const f32 down_leader_extension_tolerance=0.2f;
+static const f32 up_leader_extension_tolerance=0.0f;
 
 IC void OrientToNorm(const Fvector& normal,Fmatrix& form,Fobb& box)
 {
 	
 	Fvector * ax_pointer= (Fvector*)&form;
-	float   * s_pointer = (float*) &(box.m_halfsize);
-	float max_dot=abs(ax_pointer[0].dotproduct(normal));
-	float min_size=box.m_halfsize.x;
+	f32* s_pointer = (f32*) &(box.m_halfsize);
+	f32 max_dot=abs(ax_pointer[0].dotproduct(normal));
+	f32 min_size=box.m_halfsize.x;
 	int max_ax_i=0,min_size_i=0;
 	for(int i=1;3>i;++i)
 	{
-		float dot_pr=abs(ax_pointer[i].dotproduct(normal));
+		f32 dot_pr=abs(ax_pointer[i].dotproduct(normal));
 		if(max_dot<dot_pr)
 		{
 			max_ax_i=i;max_dot=dot_pr;
@@ -67,7 +63,6 @@ void CPHLeaderGeomShell::near_callback	(CPHObject* obj)
 	}
 }
 
-
 	CClimableObject::CClimableObject		()
 {
 	m_pStaticShell=NULL;
@@ -90,7 +85,7 @@ BOOL CClimableObject::	net_Spawn			( CSE_Abstract* DC)
 
 	//m_box.m_halfsize.set(1.f,1.f,1.f);
 	BOOL ret	= inherited::net_Spawn(DC);
-	const float f_min_width=0.2f;
+	const f32 f_min_width = 0.2f;
 	Fvector shift;shift.set(0.f,0.f,0.f);
 	SORT(b._11,m_axis.set(XFORM().i);m_axis.mul(m_box.m_halfsize.x),m_side.set(XFORM().i);m_side.mul(m_box.m_halfsize.x),m_norm.set(XFORM().i);if(m_box.m_halfsize.x<f_min_width){m_box.m_halfsize.x=f_min_width;shift.set(1.f,0.f,0.f);};m_norm.mul(m_box.m_halfsize.x),
 		b._22,m_axis.set(XFORM().j);m_axis.mul(m_box.m_halfsize.y),m_side.set(XFORM().j);m_side.mul(m_box.m_halfsize.y),m_norm.set(XFORM().j);if(m_box.m_halfsize.y<f_min_width){m_box.m_halfsize.y=f_min_width;shift.set(0.f,1.f,0.f);};m_norm.mul(m_box.m_halfsize.y),
@@ -135,12 +130,12 @@ void	CClimableObject::Center				(Fvector &C) const
 {
 		C.set(XFORM().c);
 }
-float	CClimableObject::Radius				() const
+f32	CClimableObject::Radius				() const
 {
 		return							m_radius;
 }
 
-float		CClimableObject::	DDLowerP		(CPHCharacter	*actor,Fvector	&out_dir)const
+f32		CClimableObject::	DDLowerP		(CPHCharacter	*actor,Fvector	&out_dir)const
 {
 	VERIFY(actor);
 	Fvector pos;
@@ -149,7 +144,7 @@ float		CClimableObject::	DDLowerP		(CPHCharacter	*actor,Fvector	&out_dir)const
 	out_dir.sub(pos);
 	return to_mag_and_dir(out_dir);
 }
-float		CClimableObject::	DDUpperP		(CPHCharacter	*actor,Fvector	&out_dir)const
+f32		CClimableObject::	DDUpperP		(CPHCharacter	*actor,Fvector	&out_dir)const
 {
 	VERIFY(actor);
 	Fvector pos;
@@ -165,23 +160,23 @@ void		CClimableObject::	DefineClimbState	(CPHCharacter	*actor)const
 
 
 }
-float		CClimableObject::DDAxis(Fvector& dir)const
+f32		CClimableObject::DDAxis(Fvector& dir)const
 {
 	dir.set(m_axis);
 	return to_mag_and_dir(dir);
 }
 
-float	CClimableObject::DDSide(Fvector& dir)const
+f32	CClimableObject::DDSide(Fvector& dir)const
 {
 	dir.set(m_side);
 	return to_mag_and_dir(dir);
 }
-float	CClimableObject::DDNorm(Fvector &dir)const
+f32	CClimableObject::DDNorm(Fvector &dir)const
 {
 	dir.set(m_norm);
 	return to_mag_and_dir(dir);
 }
-float		CClimableObject::	DDToAxis			(CPHCharacter	*actor,Fvector &out_dir)const
+f32		CClimableObject::	DDToAxis			(CPHCharacter	*actor,Fvector &out_dir)const
 {
 	VERIFY(actor);
 	DToAxis(actor,out_dir);
@@ -223,12 +218,12 @@ void CClimableObject::DSideToAxis		(CPHCharacter	*actor,Fvector	&dir)const
 	dir.set(side);
 }
 
-float CClimableObject::DDSideToAxis(CPHCharacter *actor,Fvector &dir)const
+f32 CClimableObject::DDSideToAxis(CPHCharacter *actor,Fvector &dir)const
 {
 	VERIFY(actor);
 	DToAxis(actor,dir);
 	Fvector side;side.set(m_side);to_mag_and_dir(side);
-	float dot=side.dotproduct(dir);
+	f32 dot=side.dotproduct(dir);
 	if(dot>0.f)
 	{
 		dir.set(side);
@@ -243,18 +238,19 @@ float CClimableObject::DDSideToAxis(CPHCharacter *actor,Fvector &dir)const
 	
 }
 
-void CClimableObject::DToPlain(CPHCharacter *actor,Fvector &dist)const
+void CClimableObject::DToPlain(CPHCharacter* actor, Fvector& dist) const
 {
- VERIFY(actor);
- DToAxis(actor,dist);
- Fvector norm;norm.set(m_norm);
- to_mag_and_dir(norm);
- float dot=norm.dotproduct(dist);
- norm.mul(dot);
- dist.set(norm);
+	VERIFY(actor);
+	DToAxis(actor, dist);
+	Fvector norm;
+	norm.set(m_norm);
+	to_mag_and_dir(norm);
+	f32 dot = norm.dotproduct(dist);
+	norm.mul(dot);
+	dist.set(norm);
 }
 
-float CClimableObject::DDToPlain(CPHCharacter *actor,Fvector &dir)const
+f32 CClimableObject::DDToPlain(CPHCharacter *actor,Fvector &dir)const
 {
 	VERIFY(actor);
 	DToPlain(actor,dir);
@@ -265,14 +261,13 @@ bool CClimableObject::InTouch(CPHCharacter *actor)const
 {
 	VERIFY(actor);
 	Fvector dir;
-	const float normal_tolerance=0.05f;
-	float foot_radius=actor->FootRadius();
+	const f32 normal_tolerance=0.05f;
+	f32 foot_radius=actor->FootRadius();
 	return (DDToPlain(actor,dir)<foot_radius+m_norm.magnitude()+normal_tolerance&&
 			DDSideToAxis(actor,dir)<m_side.magnitude())&&InRange(actor);
-	
 }
 
-float CClimableObject::AxDistToUpperP(CPHCharacter *actor)const
+f32 CClimableObject::AxDistToUpperP(CPHCharacter *actor) const
 {
 	VERIFY(actor);
 	Fvector v1,v2;
@@ -283,7 +278,7 @@ float CClimableObject::AxDistToUpperP(CPHCharacter *actor)const
 	return v1.dotproduct(v2);
 }
 
-float CClimableObject::AxDistToLowerP(CPHCharacter *actor)const
+f32 CClimableObject::AxDistToLowerP(CPHCharacter *actor)const
 {
 	VERIFY(actor);
 	Fvector v1,v2;
@@ -300,13 +295,13 @@ bool CClimableObject::InRange(CPHCharacter *actor)const
 }
 
 
-bool CClimableObject::BeforeLadder(CPHCharacter *actor,float tolerance/*=0.f*/)const
+bool CClimableObject::BeforeLadder(CPHCharacter *actor, f32 tolerance/*=0.f*/)const
 {
 	VERIFY(actor);
 	Fvector d;
 	DToAxis(actor,d);
 	Fvector n;n.set(Norm());
-	float width=to_mag_and_dir(n);
+	f32 width=to_mag_and_dir(n);
 	return d.dotproduct(n)<-(width+actor->FootRadius()/2.f+tolerance);
 }
 
@@ -324,7 +319,7 @@ void CClimableObject::ObjectContactCallback(bool&	do_colide,bool bo1,dContact& c
 	dxGeomUserData* usr_data_lad=NULL;
 	CClimableObject* this_object=NULL;
 	CPHCharacter* ch=NULL;
-	float norm_sign=0.f;
+	f32 norm_sign = 0.0f;
 	if(bo1) {
 			usr_data_ch=usr_data_2;
 			usr_data_lad=usr_data_1;

@@ -412,7 +412,7 @@ void CGamePersistent::OnEvent(EVENT E, u64 P1, u64 P2)
 		if (Device.Paused())
 			Device.Pause		(FALSE, TRUE, TRUE, "eQuickLoad");
 		
-		LPSTR		saved_name	= (LPSTR)(P1);
+		pstr		saved_name	= (pstr)(P1);
 
 		Level().remove_objects	();
 		game_sv_Single			*game = smart_cast<game_sv_Single*>(Level().Server->game);

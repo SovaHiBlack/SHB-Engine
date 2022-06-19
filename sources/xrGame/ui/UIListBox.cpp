@@ -19,7 +19,7 @@ CUIListBox::CUIListBox()
 	Init					();
 }
 
-void CUIListBox::SetSelectionTexture(LPCSTR texture){
+void CUIListBox::SetSelectionTexture(pcstr texture){
 	m_selection_texture = texture;
 }
 
@@ -41,7 +41,7 @@ bool CUIListBox::OnMouse(float x, float y, EUIMessages mouse_action)
 }
 
 #include "../string_table.h"
-CUIListBoxItem* CUIListBox::AddItem(LPCSTR text)
+CUIListBoxItem* CUIListBox::AddItem(pcstr text)
 {
 	if (!text)			
 		return					NULL;
@@ -93,7 +93,7 @@ CUIListBoxItem* CUIListBox::GetSelectedItem()
 
 }
 
-LPCSTR CUIListBox::GetSelectedText()
+pcstr CUIListBox::GetSelectedText()
 {
 	CUIWindow* w	=	GetSelected();
 
@@ -122,7 +122,7 @@ u32 CUIListBox::GetSelectedIDX()
 	return u32(-1);
 }
 
-LPCSTR CUIListBox::GetText(u32 idx)
+pcstr CUIListBox::GetText(u32 idx)
 {
 	R_ASSERT				(idx<GetSize());
 	return smart_cast<IUITextControl*>(GetItem(idx))->GetText();
@@ -187,7 +187,7 @@ void CUIListBox::SetSelectedTAG(u32 tag_val)
 	SetSelected(GetItemByTAG(tag_val));
 }
 
-void CUIListBox::SetSelectedText(LPCSTR txt)
+void CUIListBox::SetSelectedText(pcstr txt)
 {
 	SetSelected(GetItemByText(txt));
 }
@@ -223,7 +223,7 @@ CUIListBoxItem* CUIListBox::GetItemByIDX(u32 idx)
 	return NULL;
 }
 
-CUIListBoxItem* CUIListBox::GetItemByText(LPCSTR txt)
+CUIListBoxItem* CUIListBox::GetItemByText(pcstr txt)
 {
 	for(WINDOW_LIST_it it = m_pad->GetChildWndList().begin(); m_pad->GetChildWndList().end()!=it; ++it)
 	{

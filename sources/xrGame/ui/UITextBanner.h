@@ -51,7 +51,7 @@ public:
 	~CUITextBanner				();
 
 	virtual void	Update		();
-	void			Out			(float x, float y, const char *fmt, ...);
+	void			Out			(float x, float y, pcstr fmt, ...);
 
 	// Установить параметры визуализации баннера. Флаги см. перечисление TextBannerStyles
 	EffectParams * SetStyleParams(const TextBannerStyles styleName);

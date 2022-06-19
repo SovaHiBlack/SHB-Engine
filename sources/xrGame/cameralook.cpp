@@ -39,19 +39,18 @@ void CCameraLook::Update(Fvector& point, Fvector& /**noise_dangle/**/)
 	Fvector				vDir;
 	collide::rq_result	R;
 
-	float				covariance = VIEWPORT_NEAR*6.f;
+	f32				covariance = VIEWPORT_NEAR*6.0f;
 	vDir.invert			(vDirection);
 	g_pGameLevel->ObjectSpace.RayPick( point, vDir, dist+covariance, collide::rqtBoth, R, parent);
 
-	float d				= psCamSlideInert*prev_d+(1.f-psCamSlideInert)*(R.range-covariance);
+	f32 d				= psCamSlideInert*prev_d+(1.f-psCamSlideInert)*(R.range-covariance);
 	prev_d = d;
 	
 	vPosition.mul		(vDirection,-d-VIEWPORT_NEAR);
 	vPosition.add		(point);
-
 }
 
-void CCameraLook::Move( int cmd, float val, float factor)
+void CCameraLook::Move( int cmd, f32 val, f32 factor)
 {
 	switch (cmd){
 	case kCAM_ZOOM_IN:	dist	-= val?val:(rot_speed.z*Device.fTimeDelta);	break;
@@ -105,7 +104,7 @@ void CCameraLook2::Update(Fvector& point, Fvector&)
 		{
 			const CVisualMemoryManager::VISIBLES& vVisibles = Actor()->memory().visual().objects();
 			CVisualMemoryManager::VISIBLES::const_iterator v_it = vVisibles.begin();
-			float _nearest_dst	= flt_max;
+			f32 _nearest_dst	= flt_max;
 
 			for (; v_it!=vVisibles.end(); ++v_it)
 			{
@@ -118,7 +117,7 @@ void CCameraLook2::Update(Fvector& point, Fvector&)
 				CEntityAlive*	EA					= smart_cast<CEntityAlive*>(object_);
 				if(!EA || !EA->g_Alive())			continue;
 				
-				float d = object_->Position().distance_to_xz(Actor()->Position());
+				f32 d = object_->Position().distance_to_xz(Actor()->Position());
 				if( !m_locked_enemy || d<_nearest_dst)
 				{
 					m_locked_enemy	= object_;

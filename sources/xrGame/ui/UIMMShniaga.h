@@ -17,7 +17,7 @@ public:
 						CUIMMShniaga			();
 	virtual				~CUIMMShniaga			();
 
-			void 		Init					(CUIXml& xml_doc, LPCSTR path);
+			void 		Init					(CUIXml& xml_doc, pcstr path);
 	virtual void 		Update					();
 	virtual void 		Draw					();
 
@@ -42,7 +42,7 @@ protected:
 	void 				ProcessEvent			(EVENT ev);
 
 	bool 				IsButton				(CUIWindow* st);
-	void 				CreateList				(xr_vector<CUIStatic*>& lst, CUIXml& xml_doc, LPCSTR path);
+	void 				CreateList				(xr_vector<CUIStatic*>& lst, CUIXml& xml_doc, pcstr path);
 	void 				ShowMain				();
 	void 				ShowNewGame				();
 	float				pos						(float x1, float x2, u32 t);

@@ -31,10 +31,10 @@ CUIGameCustom* game_cl_Single::createGameUI()
 	return pUIGame;
 }
 
-char*	game_cl_Single::getTeamSection(int Team)
+pstr	game_cl_Single::getTeamSection(int Team)
 {
 	return NULL;
-};
+}
 
 void game_cl_Single::OnDifficultyChanged()
 {

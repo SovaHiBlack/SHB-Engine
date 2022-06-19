@@ -17,9 +17,9 @@ private:
 
 private:
 	CCar			*m_object;
-	float			m_fov_deg;
-	float			m_aspect;
-	float			m_far_plane;
+	f32				m_fov_deg;
+	f32				m_aspect;
+	f32				m_far_plane;
 	Fvector			m_view_position;
 	Fvector			m_view_direction;
 	Fvector			m_view_normal;
@@ -34,10 +34,10 @@ public:
 						Fvector &position,
 						Fvector &direction,
 						Fvector &normal,
-						float &field_of_view,
-						float &aspect_ratio,
-						float &near_plane,
-						float &far_plane
+		f32& field_of_view,
+		f32& aspect_ratio,
+		f32& near_plane,
+		f32& far_plane
 					);
 			void	set_camera(
 						const Fvector &position,

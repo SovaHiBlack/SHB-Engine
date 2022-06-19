@@ -9,7 +9,7 @@ class CUIProgressBar;
 class CUIWpnParams;
 class CUIArtefactParams;
 
-extern LPCSTR const 		fieldsCaptionColor;
+extern pcstr const 		fieldsCaptionColor;
 
 class CUIItemInfo: public CUIWindow
 {
@@ -27,8 +27,8 @@ public:
 						CUIItemInfo			();
 	virtual				~CUIItemInfo		();
 
-	void				Init				(float x, float y, float width, float height, LPCSTR xml_name);
-	void				Init				(LPCSTR xml_name);
+	void				Init				(float x, float y, float width, float height, pcstr xml_name);
+	void				Init				(pcstr xml_name);
 	void				InitItem			(CInventoryItem* pInvItem);
 	void				TryAddWpnInfo		(const shared_str& wpn_section);
 	void				TryAddArtefactInfo	(const shared_str& af_section);

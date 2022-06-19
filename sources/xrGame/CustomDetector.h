@@ -8,8 +8,8 @@ class CCustomZone;
 struct ZONE_TYPE
 {
 	//интервал частот отыгрывани€ звука
-	float		min_freq;
-	float		max_freq;
+	f32		min_freq;
+	f32		max_freq;
 	//звук реакции детектора на конкретную зону
 //	ref_sound	detect_snd;
 	HUD_SOUND	detect_snds;
@@ -22,7 +22,7 @@ struct ZONE_INFO
 {
 	u32								snd_time;
 	//текуща€ частота работы датчика
-	float							cur_freq;
+	f32							cur_freq;
 	//particle for night-vision mode
 	CParticlesObject*				pParticle;
 
@@ -70,7 +70,7 @@ protected:
 
 	bool m_bWorking;
 
-	float m_fRadius;
+	f32 m_fRadius;
 
 	//если хоз€ин текущий актер
 	CActor*				m_pCurrentActor;

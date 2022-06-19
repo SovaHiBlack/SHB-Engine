@@ -1079,7 +1079,8 @@ void CActor::shedule_Update	(u32 DT)
 	m_pPhysics_support->in_shedule_Update		(DT);
 	Check_for_AutoPickUp						();
 };
-#include "debug_renderer.h"
+
+//#include "DebugRenderer.h"
 void CActor::renderable_Render	()
 {
 	inherited::renderable_Render			();

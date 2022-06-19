@@ -27,11 +27,11 @@ xrTime get_time_struct()
 	return xrTime(__game_time());
 }
 
-LPCSTR	xrTime::dateToString	(int mode)								
+pcstr	xrTime::dateToString	(int mode)
 { 
 	return *InventoryUtilities::GetDateAsString(m_time,(InventoryUtilities::EDatePrecision)mode);
 }
-LPCSTR	xrTime::timeToString	(int mode)								
+pcstr	xrTime::timeToString	(int mode)
 { 
 	return *InventoryUtilities::GetTimeAsString(m_time,(InventoryUtilities::ETimePrecision)mode);
 }

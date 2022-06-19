@@ -21,7 +21,7 @@ CWeaponBinoculars::~CWeaponBinoculars()
 	xr_delete				(m_binoc_vision);
 }
 
-void CWeaponBinoculars::Load	(LPCSTR section)
+void CWeaponBinoculars::Load	(pcstr section)
 {
 	inherited::Load(section);
 

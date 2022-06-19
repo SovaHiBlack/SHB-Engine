@@ -46,7 +46,7 @@
 #include "../../mt_config.h"
 #include "../../weaponmagazined.h"
 #include "../../object_handler_space.h"
-#include "../../debug_renderer.h"
+#include "..\..\DebugRenderer.h"
 #include "../../CharacterPhysicsSupport.h"
 
 CActor *g_debug_actor = 0;

@@ -48,7 +48,7 @@ CUIMapWnd::~CUIMapWnd()
 }
 
 
-void CUIMapWnd::Init(LPCSTR xml_name, LPCSTR start_from)
+void CUIMapWnd::Init(pcstr xml_name, pcstr start_from)
 {
 	CUIXml uiXml;
 	bool xml_result					= uiXml.Init(CONFIG_PATH, UI_PATH, xml_name);
@@ -715,7 +715,7 @@ bool is_in(const Frect& b1, const Frect& b2){
 	return (b1.x1<b2.x1)&&(b1.x2>b2.x2)&&(b1.y1<b2.y1)&&(b1.y2>b2.y2);
 }
 
-void CUIMapWnd::ShowHint					(CUIWindow* parent, LPCSTR text)
+void CUIMapWnd::ShowHint					(CUIWindow* parent, pcstr text)
 {
 	if(m_hint->GetOwner())	return;
 	if(!text)				return;

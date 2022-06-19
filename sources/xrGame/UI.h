@@ -47,7 +47,7 @@ public:
 	void					HideCrosshair			();
 	bool					CrosshairShown			();
 
-	SDrawStaticStruct*		AddInfoMessage			(LPCSTR message);
+	SDrawStaticStruct*		AddInfoMessage			(pcstr message);
 	void					OnConnected				();
 };
 

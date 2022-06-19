@@ -14,7 +14,7 @@ public:
 					CUIMapHint	():m_owner(NULL){};
 	virtual 		~CUIMapHint	();
 	void			Init		();
-	void			SetText		(LPCSTR text);
+	void			SetText		(pcstr text);
 	virtual void	Draw		(){return;};
 			void	Draw_		();
 	void			SetOwner	(CUIWindow* w)	{m_owner = w;}

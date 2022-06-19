@@ -48,7 +48,7 @@
 #include "client_spawn_manager.h"
 
 #ifdef DEBUG
-#	include "debug_renderer.h"
+#	include "DebugRenderer.h"
 #endif
 
 extern int g_AI_inactive_time;
@@ -137,16 +137,18 @@ void CCustomMonster::Load		(pcstr section)
 	//m_PhysicMovementControl->SetFoots	(vFOOT_center,vFOOT_size);
 
 	//// m_PhysicMovementControl: Crash speed and mass
-	//float	cs_min		= pSettings->r_float	(section,"ph_crash_speed_min"	);
-	//float	cs_max		= pSettings->r_float	(section,"ph_crash_speed_max"	);
-	//float	mass		= pSettings->r_float	(section,"ph_mass"				);
+	//f32	cs_min		= pSettings->r_float	(section,"ph_crash_speed_min"	);
+	//f32	cs_max		= pSettings->r_float	(section,"ph_crash_speed_max"	);
+	//f32	mass		= pSettings->r_float	(section,"ph_mass"				);
 	//m_PhysicMovementControl->SetCrashSpeeds	(cs_min,cs_max);
 	//m_PhysicMovementControl->SetMass		(mass);
 
 
 	// m_PhysicMovementControl: Frictions
 	/*
-	float af, gf, wf;
+	f32 af;
+	f32 gf;
+	f32 wf;
 	af					= pSettings->r_float	(section,"ph_friction_air"	);
 	gf					= pSettings->r_float	(section,"ph_friction_ground");
 	wf					= pSettings->r_float	(section,"ph_friction_wall"	);
@@ -222,7 +224,7 @@ void CCustomMonster::mk_orientation(Fvector &dir, Fmatrix& mR)
 {
 	// orient only in XZ plane
 	dir.y		= 0;
-	float		len = dir.magnitude();
+	f32		len = dir.magnitude();
 	if			(len> EPSILON_7)
 	{
 		// normalize
@@ -260,7 +262,7 @@ void CCustomMonster::net_Import(NET_Packet& P)
 
 	u8 flags;
 
-	float health;
+	f32 health;
 	P.r_float				(health);
 	SetfHealth				(health);
 
@@ -294,7 +296,7 @@ void CCustomMonster::shedule_Update	( u32 DT )
 	VERIFY				(!NET.empty());
 	while ((NET.size()>2) && (NET[1].dwTimeStamp<dwTimeCL)) NET.pop_front();
 
-	float dt			= float(DT)/1000.f;
+	f32 dt			= f32(DT)/1000.0f;
 	// *** general stuff
 	if (g_Alive()) {
 		if (g_mt_config.test(mtAiVision))
@@ -337,14 +339,14 @@ void CCustomMonster::shedule_Update	( u32 DT )
 		Device.Statistic->AI_Think.End	();
 
 		// Look and action streams
-		float							temp = conditions().health();
+		f32							temp = conditions().health();
 		if (temp > 0) {
 			Exec_Action				(dt);
 			VERIFY					(_valid(Position()));
 			//Exec_Visibility		();
 			VERIFY					(_valid(Position()));
 			//////////////////////////////////////
-			//Fvector C; float R;
+			//Fvector C; f32 R;
 			//////////////////////////////////////
 			// Ñ Îëåñÿ - ÏÈÂÎ!!!! (Äèìå :-))))
 			// m_PhysicMovementControl->GetBoundingSphere	(C,R);
@@ -376,7 +378,7 @@ void CCustomMonster::shedule_Update	( u32 DT )
 	}
 }
 
-void CCustomMonster::net_update::lerp(CCustomMonster::net_update& A, CCustomMonster::net_update& B, float f)
+void CCustomMonster::net_update::lerp(CCustomMonster::net_update& A, CCustomMonster::net_update& B, f32 f)
 {
 	// 
 	o_model			= angle_lerp	(A.o_model,B.o_model,				f);
@@ -452,7 +454,7 @@ void CCustomMonster::UpdateCL	()
 			u32	d1					= dwTime-A.dwTimeStamp;
 			u32	d2					= B.dwTimeStamp - A.dwTimeStamp;
 //			VERIFY					(d2);
-			float					factor = d2 ? (float(d1)/float(d2)) : 1.f;
+			f32					factor = d2 ? (f32(d1)/ f32(d2)) : 1.0f;
 			Fvector					l_tOldPosition = Position();
 			NET_Last.lerp			(A,B,factor);
 			if (Local()) {
@@ -535,13 +537,13 @@ void CCustomMonster::eye_pp_s0			( )
 	eye_matrix.c.add						(X.c,m_tEyeShift);
 }
 
-void CCustomMonster::update_range_fov	(float &new_range, float &new_fov, float start_range, float start_fov)
+void CCustomMonster::update_range_fov	(f32& new_range, f32& new_fov, f32 start_range, f32 start_fov)
 {
-	const float	standard_far_plane			= eye_range;
+	const f32	standard_far_plane			= eye_range;
 
-	float	current_fog_density				= GamePersistent().Environment().CurrentEnv.fog_density	;	
+	f32	current_fog_density				= GamePersistent().Environment().CurrentEnv.fog_density	;
 	// 0=no_fog, 1=full_fog, >1 = super-fog
-	float	current_far_plane				= GamePersistent().Environment().CurrentEnv.far_plane	;	
+	f32	current_far_plane				= GamePersistent().Environment().CurrentEnv.far_plane	;
 	// 300=standart, 50=super-fog
 
 	new_fov									= start_fov;
@@ -566,7 +568,8 @@ void CCustomMonster::update_range_fov	(float &new_range, float &new_fov, float s
 
 void CCustomMonster::eye_pp_s1			()
 {
-	float									new_range = eye_range, new_fov = eye_fov;
+	f32									new_range = eye_range;
+	f32									new_fov = eye_fov;
 	if (g_Alive()) {
 #ifndef USE_STALKER_VISION_FOR_MONSTERS
 		update_range_fov					(new_range, new_fov, human_being() ? memory().visual().current_state().m_max_view_distance*eye_range : eye_range, eye_fov);
@@ -592,7 +595,7 @@ void CCustomMonster::eye_pp_s2				( )
 	u32 dwTime			= Level().timeServer();
 	u32 dwDT			= dwTime-eye_pp_timestamp;
 	eye_pp_timestamp	= dwTime;
-	feel_vision_update						(this,eye_matrix.c,float(dwDT)/1000.f,memory().visual().transparency_threshold());
+	feel_vision_update						(this,eye_matrix.c, f32(dwDT)/1000.f,memory().visual().transparency_threshold());
 	Device.Statistic->AI_Vis_RayTests.End	();
 }
 
@@ -615,13 +618,14 @@ void CCustomMonster::Exec_Visibility	( )
 
 void CCustomMonster::UpdateCamera()
 {
-	float									new_range = eye_range, new_fov = eye_fov;
+	f32									new_range = eye_range;
+	f32									new_fov = eye_fov;
 	if (g_Alive())
 		update_range_fov					(new_range, new_fov, memory().visual().current_state().m_max_view_distance*eye_range, eye_fov);
 	g_pGameLevel->Cameras().Update(eye_matrix.c,eye_matrix.k,eye_matrix.j,new_fov,.75f,new_range);
 }
 
-void CCustomMonster::HitSignal(float /**perc/**/, Fvector& /**vLocalDir/**/, CObject* /**who/**/)
+void CCustomMonster::HitSignal(f32 /**perc/**/, Fvector& /**vLocalDir/**/, CObject* /**who/**/)
 {
 }
 
@@ -721,7 +725,7 @@ void CCustomMonster::OnHUDDraw(CCustomHUD *hud)
 }
 #endif
 
-void CCustomMonster::Exec_Action(float /**dt/**/)
+void CCustomMonster::Exec_Action(f32 /**dt/**/)
 {
 }
 
@@ -786,7 +790,8 @@ void CCustomMonster::PitchCorrection()
 	Fvector target_dir;
 	target_dir.sub(proj_point,position_on_plane);
 
-	float yaw,pitch;
+	f32 yaw;
+	f32 pitch;
 	target_dir.getHP(yaw,pitch);
 
 	movement().m_body.target.pitch = -pitch;
@@ -843,12 +848,12 @@ bool CCustomMonster::is_special_killer(CObject *obj)
 	return (obj && (std::find(m_killer_clsids.begin(),m_killer_clsids.end(),obj->CLS_ID) != m_killer_clsids.end()));  
 }
 
-float CCustomMonster::feel_vision_mtl_transp(CObject* O, u32 element)
+f32 CCustomMonster::feel_vision_mtl_transp(CObject* O, u32 element)
 {
 	return	(memory().visual().feel_vision_mtl_transp(O,element));
 }
 
-void CCustomMonster::feel_sound_new	(CObject* who, int type, CSound_UserDataPtr user_data, const Fvector &position, float power)
+void CCustomMonster::feel_sound_new	(CObject* who, int type, CSound_UserDataPtr user_data, const Fvector &position, f32 power)
 {
 	if (getDestroy())
 		return;
@@ -860,7 +865,7 @@ bool CCustomMonster::useful			(const CItemManager *manager, const CGameObject *o
 	return	(memory().item().useful(object));
 }
 
-float CCustomMonster::evaluate		(const CItemManager *manager, const CGameObject *object) const
+f32 CCustomMonster::evaluate		(const CItemManager *manager, const CGameObject *object) const
 {
 	return	(memory().item().evaluate(object));
 }
@@ -870,7 +875,7 @@ bool CCustomMonster::useful			(const CEnemyManager *manager, const CEntityAlive 
 	return	(memory().enemy().useful(object));
 }
 
-float CCustomMonster::evaluate		(const CEnemyManager *manager, const CEntityAlive *object) const
+f32 CCustomMonster::evaluate		(const CEnemyManager *manager, const CEntityAlive *object) const
 {
 	return	(memory().enemy().evaluate(object));
 }
@@ -880,7 +885,7 @@ bool CCustomMonster::useful			(const CDangerManager *manager, const CDangerObjec
 	return	(memory().danger().useful(object));
 }
 
-float CCustomMonster::evaluate		(const CDangerManager *manager, const CDangerObject &object) const
+f32 CCustomMonster::evaluate		(const CDangerManager *manager, const CDangerObject &object) const
 {
 	return	(memory().danger().evaluate(object));
 }
@@ -928,13 +933,13 @@ void CCustomMonster::net_Relcase	(CObject *object)
 	memory().remove_links		(object);
 }
 
-void CCustomMonster::set_fov		(float new_fov)
+void CCustomMonster::set_fov		(f32 new_fov)
 {
 	VERIFY		(new_fov > 0.f);
 	eye_fov		= new_fov;
 }	
 
-void CCustomMonster::set_range		(float new_range)
+void CCustomMonster::set_range		(f32 new_range)
 {
 	VERIFY		(new_range > 1.f);
 	eye_range	= new_range;
@@ -998,7 +1003,7 @@ void CCustomMonster::load (IReader &packet)
 }
 
 
-bool CCustomMonster::update_critical_wounded	(const u16 &bone_id, const float &power)
+bool CCustomMonster::update_critical_wounded	(const u16 &bone_id, const f32& power)
 {
 	// object should not be critical wounded
 	VERIFY							(m_critical_wound_type == u32(-1));
@@ -1008,7 +1013,7 @@ bool CCustomMonster::update_critical_wounded	(const u16 &bone_id, const float &p
 	if (m_critical_wound_threshold < 0) return (false);
 
 
-	float							time_delta = m_last_hit_time ? float(Device.dwTimeGlobal - m_last_hit_time)/1000.f : 0.f;
+	f32							time_delta = m_last_hit_time ? f32(Device.dwTimeGlobal - m_last_hit_time)/1000.f : 0.f;
 	m_critical_wound_accumulator	+= power - m_critical_wound_decrease_quant*time_delta;
 	clamp							(m_critical_wound_accumulator,0.f,m_critical_wound_threshold);
 
@@ -1048,7 +1053,7 @@ bool CCustomMonster::update_critical_wounded	(const u16 &bone_id, const float &p
 
 #ifdef DEBUG
 
-extern void dbg_draw_frustum (float FOV, float _FAR, float A, Fvector &P, Fvector &D, Fvector &U);
+extern void dbg_draw_frustum (f32 FOV, f32 _FAR, f32 A, Fvector &P, Fvector &D, Fvector &U);
 void draw_visiblity_rays	(CCustomMonster *self, const CObject *object, collide::rq_results& rq_storage);
 
 void CCustomMonster::OnRender()
@@ -1062,8 +1067,8 @@ void CCustomMonster::OnRender()
 		u32									color1	= !i ? D3DCOLOR_XRGB(255,0,0)		: D3DCOLOR_XRGB(255,255,0);
 		u32									color2	= !i ? D3DCOLOR_XRGB(0,0,255)		: D3DCOLOR_XRGB(0,255,255);
 		u32									color3	= !i ? D3DCOLOR_XRGB(255,255,255)	: D3DCOLOR_XRGB(255,0,255);
-		float								radius0 = !i ? .1f : .15f;
-		float								radius1 = !i ? .2f : .3f;
+		f32									radius0 = !i ? 0.1f : 0.15f;
+		f32									radius1 = !i ? 0.2f : 0.3f;
 		{
 			for (u32 I=1; I<path.size(); ++I) {
 				const DetailPathManager::STravelPathPoint&	N1 = path[I-1];	Fvector	P1; P1.set(N1.position); P1.y+=0.1f;
@@ -1117,7 +1122,8 @@ void CCustomMonster::OnRender()
 	}
 
 	if (psAI_Flags.test(aiFrustum)) {
-		float					new_range = eye_range, new_fov = eye_fov;
+		f32					new_range = eye_range;
+		f32					new_fov = eye_fov;
 		
 		if (g_Alive())
 			update_range_fov	(new_range, new_fov, memory().visual().current_state().m_max_view_distance*eye_range, eye_fov);
@@ -1147,7 +1153,7 @@ void CCustomMonster::destroy_anim_mov_ctrl	()
 	
 	movement().enable_movement		(m_movement_enabled_before_animation_controller);
 
-	float							roll;
+	f32							roll;
 	XFORM().getHPB					(movement().m_body.current.yaw, movement().m_body.current.pitch, roll);
 
 	movement().m_body.current.yaw	*= -1.f;

@@ -297,7 +297,7 @@ bool CALifeUpdateManager::load_game		(pcstr game_name, bool no_assert)
 	}
 	string512					S,S1;
 	strcpy						(S,**m_server_command_line);
-	LPSTR						temp = strchr(S,'/');
+	pstr						temp = strchr(S,'/');
 	R_ASSERT2					(temp,"Invalid server options!");
 	strconcat					(sizeof(S1),S1,game_name,temp);
 	*m_server_command_line		= S1;

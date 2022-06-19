@@ -49,7 +49,7 @@
 #ifdef DEBUG
 #	include "level_debug.h"
 #	include "ai/stalker/ai_stalker.h"
-#	include "debug_renderer.h"
+#	include "DebugRenderer.h"
 #	include "physicobject.h"
 #endif
 
@@ -588,17 +588,17 @@ void CLevel::OnEvent(EVENT E, u64 P1, u64 /**P2/**/)
 		Level().g_cl_Spawn	(Name,0xff, M_SPAWN_OBJECT_LOCAL, Fvector().set(0,0,0));
 	} else if (E==eChangeRP && P1) {
 	} else if (E==eDemoPlay && P1) {
-		char* name = (char*)P1;
+		pstr name = (pstr)P1;
 		string_path RealName;
 		strcpy_s		(RealName,name);
 		strcat			(RealName,".xrdemo");
 		Cameras().AddCamEffector(xr_new<CDemoPlay> (RealName,1.3f,0));
 	} else if (E==eChangeTrack && P1) {
-		// int id = atoi((char*)P1);
+		// int id = atoi((pstr)P1);
 		// Environment->Music_Play(id);
 	} else if (E==eEnvironment) {
 		// int id=0; float s=1;
-		// sscanf((char*)P1,"%d,%f",&id,&s);
+		// sscanf((pstr)P1,"%d,%f",&id,&s);
 		// Environment->set_EnvMode(id,s);
 	} else return;
 }

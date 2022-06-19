@@ -164,7 +164,7 @@ void CUIInventoryWnd::ActivatePropertiesBox()
 		 }
 
 	}
-	LPCSTR _action = NULL;
+	pcstr _action = NULL;
 
 	if(pMedkit || pAntirad)
 	{

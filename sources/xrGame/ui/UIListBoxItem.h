@@ -23,8 +23,8 @@ public:
 			void		SetData(void* data);
 			void*		GetData();
 
-		CUIStatic*		AddField(LPCSTR txt, float len, LPCSTR key = "");
-		LPCSTR			GetField(LPCSTR key);
+		CUIStatic*		AddField(pcstr txt, float len, pcstr key = "");
+		pcstr			GetField(pcstr key);
 
 protected:
 			float		FieldsLength();

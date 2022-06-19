@@ -11,7 +11,7 @@ CUINewsItemWnd::CUINewsItemWnd()
 CUINewsItemWnd::~CUINewsItemWnd()
 {}
 
-void CUINewsItemWnd::Init				(LPCSTR xml_name, LPCSTR start_from)
+void CUINewsItemWnd::Init				(pcstr xml_name, pcstr start_from)
 {
 	CUIXml uiXml;
 	bool xml_result = uiXml.Init(CONFIG_PATH, UI_PATH, xml_name);

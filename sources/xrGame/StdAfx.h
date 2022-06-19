@@ -15,7 +15,7 @@
 
 
 #if XRAY_EXCEPTIONS
-IC	xr_string	string2xr_string(LPCSTR s)
+IC	xr_string	string2xr_string(pcstr s)
 {
 	return *shared_str(s ? s : "");
 }

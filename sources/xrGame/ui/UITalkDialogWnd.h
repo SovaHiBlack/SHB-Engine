@@ -54,9 +54,9 @@ public:
 	CUICharacterInfo	UICharacterInfoLeft;
 	CUICharacterInfo	UICharacterInfoRight;
 
-	void				AddQuestion			(LPCSTR str, LPCSTR value);
-	void				AddAnswer			(LPCSTR SpeakerName, pcstr str, bool bActor);
-	void				AddIconedAnswer		(LPCSTR text, LPCSTR texture_name, Frect texture_rect, LPCSTR templ_name);
+	void				AddQuestion			(pcstr str, pcstr value);
+	void				AddAnswer			(pcstr SpeakerName, pcstr str, bool bActor);
+	void				AddIconedAnswer		(pcstr text, pcstr texture_name, Frect texture_rect, pcstr templ_name);
 	void				ClearAll			();
 	void				ClearQuestions		();
 
@@ -84,8 +84,8 @@ class CUIQuestionItem :public CUIWindow, public CUIWndCallback
 public:
 	CUI3tButton*	m_text;
 	shared_str		m_s_value;
-					CUIQuestionItem			(CUIXml* xml_doc, LPCSTR path);
-	void			Init					(LPCSTR val, LPCSTR text);
+					CUIQuestionItem			(CUIXml* xml_doc, pcstr path);
+	void			Init					(pcstr val, pcstr text);
 
 	virtual void	SendMessage				(CUIWindow* pWnd, s16 msg, void* pData = NULL);
 	void __stdcall	OnTextClicked			(CUIWindow* w, void*);
@@ -100,8 +100,8 @@ class CUIAnswerItem :public CUIWindow
 	CUIStatic*		m_text;
 	CUIStatic*		m_name;
 public:
-					CUIAnswerItem			(CUIXml* xml_doc, LPCSTR path);
-	void			Init					(LPCSTR text, LPCSTR name);
+					CUIAnswerItem			(CUIXml* xml_doc, pcstr path);
+	void			Init					(pcstr text, pcstr name);
 };
 
 class CUIAnswerItemIconed :public CUIAnswerItem
@@ -110,7 +110,7 @@ class CUIAnswerItemIconed :public CUIAnswerItem
 	CUIStatic*		m_icon;
 
 public:
-					CUIAnswerItemIconed		(CUIXml* xml_doc, LPCSTR path);
-	void			Init					(LPCSTR text, LPCSTR texture_name, Frect texture_rect);
+					CUIAnswerItemIconed		(CUIXml* xml_doc, pcstr path);
+	void			Init					(pcstr text, pcstr texture_name, Frect texture_rect);
 
 };

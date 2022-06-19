@@ -157,7 +157,7 @@ void CTelekineticObject::keep()
 		dir.normalize_safe();
 	}
 
-	//F32 elem_size = float(object->m_pPhysicsShell->Elements().size());
+	//F32 elem_size = f32(object->m_pPhysicsShell->Elements().size());
 	dir.mul(5.0f);
 
 	if (OnServer()) (object->m_pPhysicsShell->Elements()[0])->applyGravityAccel(dir);

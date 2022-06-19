@@ -17,7 +17,7 @@ public:
 
 
 	virtual void	Init				();
-	virtual void	SetText				(LPCSTR str);
+	virtual void	SetText				(pcstr str);
 
 	virtual void	SendMessage			(CUIWindow *pWnd, s16 msg, void *pData);
 

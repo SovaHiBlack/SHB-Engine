@@ -15,7 +15,7 @@ ICF void GetNormal(CDB::TRI*XTri,Fvector &n)
 ICF	void InitTriangle(CDB::TRI* XTri,Triangle& triangle)
 {
 	const Fvector* V_array=Level().ObjectSpace.GetStaticVerts();
-	const float* VRT[3]={(dReal*)&V_array[XTri->verts[0]],(dReal*)&V_array[XTri->verts[1]],(dReal*)&V_array[XTri->verts[2]]};
+	const f32* VRT[3] = { (dReal*)&V_array[XTri->verts[0]],(dReal*)&V_array[XTri->verts[1]],(dReal*)&V_array[XTri->verts[2]] };
 	dVectorSub(triangle.side0,VRT[1],VRT[0])						;
 	dVectorSub(triangle.side1,VRT[2],VRT[1])						;
 	triangle.T=XTri													;
@@ -23,7 +23,7 @@ ICF	void InitTriangle(CDB::TRI* XTri,Triangle& triangle)
 	cast_fv(triangle.norm).normalize()								;
 	triangle.pos=dDOT(VRT[0],triangle.norm)							;
 }
-ICF void CalculateTriangle(CDB::TRI* XTri,const float* pos,Triangle& triangle)
+ICF void CalculateTriangle(CDB::TRI* XTri,const f32* pos,Triangle& triangle)
 {
 	InitTriangle(XTri,triangle);
 	triangle.dist=dDOT(pos,triangle.norm)-triangle.pos;
@@ -32,8 +32,8 @@ ICF void CalculateTriangle(CDB::TRI* XTri,dGeomID g,Triangle& triangle)
 {
 	dVector3	v											;
 	dMatrix3	m											;
-	const float *p						=NULL				;
-	const float *r						=NULL				;
+	const f32* p						=NULL				;
+	const f32* r						=NULL				;
 	VERIFY								(g)					;
 	CODEGeom::get_final_tx				(g,p,r,v,m)			;
 	VERIFY								(p)					;
@@ -73,12 +73,12 @@ ICF bool  TriContainPoint(const dReal* v0,const dReal* v1,const dReal* v2,const 
 	 dVector3 triSideAx2={v0[0]-v2[0],v0[1]-v2[1],v0[2]-v2[2]};
 	 return TriContainPoint(v0,v1,v2,triSideAx0,triSideAx1,triSideAx2,triAx,pos,c);
 }
-ICF bool TriContainPoint(Triangle* T,const float *pos,u16 &c)
+ICF bool TriContainPoint(Triangle* T,const f32* pos,u16 &c)
 {
 	//TriContainPoint(const dReal* v0,const dReal* v1,const dReal* v2,const dReal* triAx,const dReal* triSideAx0,const dReal* triSideAx1, const dReal* pos)
 	const Fvector* V_array=Level().ObjectSpace.GetStaticVerts();
 	CDB::TRI	*XTri=T->T;
-	const float* VRT[3]={(dReal*)&V_array[XTri->verts[0]],(dReal*)&V_array[XTri->verts[1]],(dReal*)&V_array[XTri->verts[2]]};
+	const f32* VRT[3]={(dReal*)&V_array[XTri->verts[0]],(dReal*)&V_array[XTri->verts[1]],(dReal*)&V_array[XTri->verts[2]]};
 	return TriContainPoint(VRT[0],VRT[1],VRT[2],T->norm,T->side0,T->side1,pos,c);
 }
 
@@ -90,7 +90,7 @@ enum ETriDist
 	tdVert
 };
 
-IC float DistToFragmenton(const dReal	*point,const dReal* pt1, const dReal* pt2,dReal	*p,dReal* to_point,u16 &c)
+IC f32 DistToFragmenton(const dReal	*point,const dReal* pt1, const dReal* pt2,dReal	*p,dReal* to_point,u16 &c)
 {
 	dVector3 V={pt2[0]-pt1[0],pt2[1]-pt1[1],pt2[2]-pt1[2]};
 	dVector3 L={pt1[0]-point[0],pt1[1]-point[1],pt1[2]-point[2]};
@@ -119,7 +119,7 @@ IC float DistToFragmenton(const dReal	*point,const dReal* pt1, const dReal* pt2,
 	dVectorSet(to_point,Dc);
 	return dSqrt(dDOT(Dc,Dc));
 }
-ICF float DistToTri(Triangle* T,const float *pos,float *dir,float* p,ETriDist &c,const Fvector *V_array)
+ICF f32 DistToTri(Triangle* T, const f32* pos, f32* dir, f32* p, ETriDist& c, const Fvector* V_array)
 {
 	if(!TriPlaneContainPoint(T)) 
 	{
@@ -135,9 +135,9 @@ ICF float DistToTri(Triangle* T,const float *pos,float *dir,float* p,ETriDist &c
 		return T->dist;
 	}
 	CDB::TRI	*XTri=T->T;
-	const float* VRT[3]={(dReal*)&V_array[XTri->verts[0]],(dReal*)&V_array[XTri->verts[1]],(dReal*)&V_array[XTri->verts[2]]};
+	const f32* VRT[3]={(dReal*)&V_array[XTri->verts[0]],(dReal*)&V_array[XTri->verts[1]],(dReal*)&V_array[XTri->verts[2]]};
 	u16 cd=u16(-1);
-	float tdist=0.f;
+	f32 tdist=0.f;
 	
 	switch (code)
 	{
@@ -161,7 +161,7 @@ ICF float DistToTri(Triangle* T,const float *pos,float *dir,float* p,ETriDist &c
 		default: NODEFAULT;
 	}
 	dVectorSub(dir,p,pos);
-	float sqd=dDOT(dir,dir);
+	f32 sqd=dDOT(dir,dir);
 	if(sqd> EPSILON_7)
 	{
 		tdist=dSqrt(sqd);
@@ -170,10 +170,10 @@ ICF float DistToTri(Triangle* T,const float *pos,float *dir,float* p,ETriDist &c
 	else tdist =0.f;
 	return tdist;
 	//u16 c2;
-	//float tdist2=DistToFragmenton(pos,VRT[0],VRT[1],p,dir,c);
+	//f32 tdist2=DistToFragmenton(pos,VRT[0],VRT[1],p,dir,c);
 	//u16 c3;
-	//float tdist3=DistToFragmenton(pos,VRT[0],VRT[1],p,dir,c);
-	//u16 cc;float tdist;
+	//f32 tdist3=DistToFragmenton(pos,VRT[0],VRT[1],p,dir,c);
+	//u16 cc;f32 tdist;
 	//MIN_OF(tdist1,cc=c1;tdist=tdist1,tdist2,cc=c2;tdist=tdist2,tdist3,cc=c3;tdist=tdist3);
 
 	//return _min(_min(DistToFragmenton(pos)))

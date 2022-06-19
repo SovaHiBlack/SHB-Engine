@@ -27,7 +27,7 @@ void CStringTable::Init		()
 	//имя языка, если не задано (NULL), то первый <text> в <string> в XML
 	pData->m_sLanguage	= pSettings->r_string("string_table", "language");
 
-	LPCSTR S			= pSettings->r_string("string_table", "files");
+	pcstr S			= pSettings->r_string("string_table", "files");
 	if (S && S[0]) 
 	{
 		string128	xml_file;
@@ -40,7 +40,7 @@ void CStringTable::Init		()
 	}
 }
 
-void CStringTable::Load	(LPCSTR xml_file)
+void CStringTable::Load	(pcstr xml_file)
 {
 	CUIXml						uiXml;
 	string_path					xml_file_full;
@@ -57,11 +57,11 @@ void CStringTable::Load	(LPCSTR xml_file)
 
 	for(int i=0; i<string_num; ++i)
 	{
-		LPCSTR string_name = uiXml.ReadAttrib(uiXml.GetRoot(), "string", i, "id", NULL);
+		pcstr string_name = uiXml.ReadAttrib(uiXml.GetRoot(), "string", i, "id", NULL);
 
 		VERIFY3					(pData->m_StringTable.find(string_name) == pData->m_StringTable.end(), "duplicate string table id", string_name);
 
-		LPCSTR string_text		= uiXml.Read(uiXml.GetRoot(), "string:text", i,  NULL);
+		pcstr string_text		= uiXml.Read(uiXml.GetRoot(), "string:text", i,  NULL);
 
 		if(m_bWriteErrorsToLog && string_text)
 			Msg("[string table] '%s' no translation in '%s'", string_name, *(pData->m_sLanguage));
@@ -86,12 +86,12 @@ void CStringTable::ReparseKeyBindings()
 }
 
 
-STRING_VALUE CStringTable::ParseLine(LPCSTR str, LPCSTR skey, bool bFirst)
+STRING_VALUE CStringTable::ParseLine(pcstr str, pcstr skey, bool bFirst)
 {
-//	LPCSTR str = "1 $$action_left$$ 2 $$action_right$$ 3 $$action_left$$ 4";
+//	pcstr str = "1 $$action_left$$ 2 $$action_right$$ 3 $$action_left$$ 4";
 	xr_string			res;
 	int k = 0;
-	LPCSTR			b;
+	pcstr			b;
 	#define ACTION_STR "$$ACTION_"
 
 //.	int LEN				= (int)xr_strlen(ACTION_STR);
@@ -106,7 +106,7 @@ STRING_VALUE CStringTable::ParseLine(LPCSTR str, LPCSTR skey, bool bFirst)
 		buff[0]				= 0;
 		srcbuff[0]			= 0;
 		res.append			(str+k, b-str-k);
-		LPCSTR e		= strstr( b+LEN,"$$" );
+		pcstr e		= strstr( b+LEN,"$$" );
 
 		int len				= (int)(e-b-LEN);
 

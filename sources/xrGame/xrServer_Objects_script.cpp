@@ -14,12 +14,12 @@
 
 using namespace luabind;
 
-LPCSTR get_section_name(const CSE_Abstract *abstract)
+pcstr get_section_name(const CSE_Abstract *abstract)
 {
 	return	(abstract->name());
 }
 
-LPCSTR get_name(const CSE_Abstract *abstract)
+pcstr get_name(const CSE_Abstract *abstract)
 {
 	return	(abstract->name_replace());
 }
@@ -34,7 +34,7 @@ struct CWrapperBase : public T, public luabind::wrap_base {
 	typedef T inherited;
 	typedef CWrapperBase<T>	self_type;
 
-		IC			CWrapperBase(LPCSTR section) : T(section)
+		IC			CWrapperBase(pcstr section) : T(section)
 		{
 		}
 
@@ -114,7 +114,7 @@ void CSE_Abstract::script_register(lua_State *L)
 			.def			("STATE_Write",		&BaseType::STATE_Write, &WrapType::STATE_Write_static)
 			.def			("UPDATE_Read",		&BaseType::UPDATE_Read, &WrapType::UPDATE_Read_static)
 			.def			("UPDATE_Write",		&BaseType::UPDATE_Write, &WrapType::UPDATE_Write_static)
-//			.def(		constructor<LPCSTR>())
+//			.def(		constructor<pcstr>())
 	];
 }
 
@@ -133,7 +133,7 @@ void CSE_Visual::script_register(lua_State *L)
 		class_<CSE_Visual>
 			("cse_visual")
 //			.def(		constructor<>())
-//			.def(		constructor<LPCSTR>())
+//			.def(		constructor<pcstr>())
 	];
 }
 
@@ -143,7 +143,7 @@ void CSE_Motion::script_register(lua_State *L)
 		class_<CSE_Motion>
 			("cse_motion")
 //			.def(		constructor<>())
-//			.def(		constructor<LPCSTR>())
+//			.def(		constructor<pcstr>())
 	];
 }
 

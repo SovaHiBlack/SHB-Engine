@@ -12,7 +12,7 @@
 #include "game_cl_base_weapon_usage_statistic.h"
 
 #ifdef DEBUG
-#	include "debug_renderer.h"
+#	include "DebugRenderer.h"
 #endif
 
 #define HIT_POWER_EPSILON 0.05f

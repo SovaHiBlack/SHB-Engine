@@ -23,13 +23,13 @@ void	CCar::OnMouseMove(int dx, int dy)
 	if (Remote())					return;
 
 	CCameraBase* C	= active_camera;
-	float scale		= (C->f_fov/g_fov)*psMouseSens * psMouseSensScale/50.f;
+	f32 scale		= (C->f_fov/g_fov)*psMouseSens * psMouseSensScale/50.0f;
 	if (dx){
-		float d		= float(dx)*scale;
+		f32 d		= f32(dx)*scale;
 		C->Move		((d<0)?kLEFT:kRIGHT, _abs(d));
 	}
 	if (dy){
-		float d		= ((psMouseInvert.test(1))?-1:1)*float(dy)*scale*3.f/4.f;
+		f32 d		= ((psMouseInvert.test(1))?-1:1)* f32(dy)*scale*3.f/4.f;
 		C->Move		((d>0)?kUP:kDOWN, _abs(d));
 	}
 }
@@ -207,7 +207,7 @@ bool CCar::WpnCanHit()
 	return false;
 }
 
-float CCar::FireDirDiff()
+f32 CCar::FireDirDiff()
 {
 	if(m_car_weapon) return m_car_weapon->FireDirDiff();
 	return 0.0f;
@@ -243,7 +243,7 @@ bool CCar::isObjectVisible			(CScriptGameObject* O_)
 		}
 
 		dir_to_object.sub(to_point,from_point).normalize_safe();
-		float ray_length = from_point.distance_to(to_point);
+		f32 ray_length = from_point.distance_to(to_point);
 
 
 		BOOL res = Level().ObjectSpace.RayTest(from_point, dir_to_object, ray_length, collide::rqtStatic, NULL, NULL);

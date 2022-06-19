@@ -37,7 +37,7 @@ void CUILabel::SetHeight(float height){
 	CUIFrameLineWnd::SetHeight(height);
 }
 
-void CUILabel::SetLightAnim(LPCSTR lanim)
+void CUILabel::SetLightAnim(pcstr lanim)
 {
 	if(lanim&&xr_strlen(lanim))
 		m_lanim	= LALib.FindItem(lanim);

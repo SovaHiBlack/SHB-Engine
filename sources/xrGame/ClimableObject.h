@@ -18,7 +18,7 @@ class CClimableObject: public CPhysicsShellHolder
 	Fvector				m_axis;
 	Fvector				m_side;
 	Fvector				m_norm;
-	float				m_radius;
+	f32				m_radius;
 public:
 					CClimableObject		();
 					~CClimableObject	();
@@ -28,7 +28,7 @@ public:
 	virtual void	shedule_Update		( u32 dt);							// Called by sheduler
 	virtual void	UpdateCL			( );								// Called each frame, so no need for dt
 	virtual void	Center				(Fvector &C) const;
-	virtual float	Radius				() const;
+	virtual f32		Radius				() const;
 #ifdef DEBUG
 	virtual void	OnRender			();
 #endif
@@ -36,29 +36,29 @@ protected:
 	virtual BOOL	UsedAI_Locations	();
 public:
 	const Fvector&	Axis				()const		{return m_axis;}
-	float			DDAxis				(Fvector& dir)const;
+	f32			DDAxis				(Fvector& dir)const;
 
 	const Fvector&	Side				()const {return m_side;}
-	float			DDSide				(Fvector& dir)const;
+	f32			DDSide				(Fvector& dir)const;
 
 	const Fvector&	Norm				()const{return m_norm;} 
-	float			DDNorm				(Fvector &dir)const;
-	bool			BeforeLadder		(CPHCharacter *actor,float tolerance=0.f)const;
-	float			DDLowerP			(CPHCharacter	*actor,Fvector &out_dir)const;//returns distance and dir to lover point
-	float			DDUpperP			(CPHCharacter	*actor,Fvector &out_dir)const;//returns distance and dir to upper point
+	f32			DDNorm				(Fvector &dir)const;
+	bool			BeforeLadder		(CPHCharacter *actor, f32 tolerance=0.f)const;
+	f32			DDLowerP			(CPHCharacter	*actor,Fvector &out_dir)const;//returns distance and dir to lover point
+	f32			DDUpperP			(CPHCharacter	*actor,Fvector &out_dir)const;//returns distance and dir to upper point
 
 	void			DToAxis				(CPHCharacter	*actor,Fvector &dir)const;
-	float			DDToAxis			(CPHCharacter	*actor,Fvector &out_dir)const;//returns distance and dir to ladder axis
+	f32			DDToAxis			(CPHCharacter	*actor,Fvector &out_dir)const;//returns distance and dir to ladder axis
 	void			POnAxis				(CPHCharacter	*actor,Fvector	&P)const;
 	
-	float			AxDistToUpperP		(CPHCharacter	*actor)const;
-	float			AxDistToLowerP		(CPHCharacter	*actor)const;
+	f32			AxDistToUpperP		(CPHCharacter	*actor)const;
+	f32			AxDistToLowerP		(CPHCharacter	*actor)const;
 
 	void			DSideToAxis			(CPHCharacter	*actor,Fvector	&dir)const;
-	float			DDSideToAxis		(CPHCharacter	*actor,Fvector	&dir)const;
+	f32			DDSideToAxis		(CPHCharacter	*actor,Fvector	&dir)const;
 	
 	void			DToPlain			(CPHCharacter	*actor,Fvector	&dist)const;
-	float			DDToPlain			(CPHCharacter	*actor,Fvector	&dir)const;
+	f32			DDToPlain			(CPHCharacter	*actor,Fvector	&dir)const;
 	bool			InRange				(CPHCharacter	*actor)const;
 	bool			InTouch				(CPHCharacter	*actor)const;
 

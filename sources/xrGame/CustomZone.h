@@ -27,7 +27,7 @@ struct SZoneObjectInfo
 	//количество раз, сколько зона воздействовала на объект
 	u32						hit_num;
 	//количество повреждений нанесенных зоной
-	float					total_damage;
+	f32					total_damage;
 
 	bool operator == (const CGameObject* O) const {return object==O;}
 };
@@ -63,21 +63,21 @@ public:
 	virtual		void	feel_touch_delete				(CObject* O	);
 	virtual		BOOL	feel_touch_contact				(CObject* O	);
 	virtual		BOOL	feel_touch_on_contact			(CObject* O );
-	virtual		float	effective_radius				();
-	virtual		float	distance_to_center				(CObject* O	);			
-	virtual		void	Postprocess						(float val)					{}
+	virtual		f32		effective_radius				();
+	virtual		f32		distance_to_center				(CObject* O	);
+	virtual		void	Postprocess						(f32 val)					{}
 	virtual		void	net_Relcase						(CObject* O	);
 	virtual		void	OnEvent							(NET_Packet& P, u16 type);
 				void	OnOwnershipTake					(u16 id);
 
-				float	GetMaxPower						()							{return m_fMaxPower;}
-				void	SetMaxPower						(float p)					{m_fMaxPower = p;}
+				f32		GetMaxPower						()							{return m_fMaxPower;}
+				void	SetMaxPower						(f32 p)					{m_fMaxPower = p;}
 
 	//вычисление силы хита в зависимости от расстояния до центра зоны
 	//относительный размер силы (от 0 до 1)
-	virtual		float	RelativePower					(float dist);
+	virtual		f32		RelativePower					(f32 dist);
 	//абсолютный размер
-				float	Power							(float dist);
+				f32		Power							(f32 dist);
 
 	virtual CCustomZone	*cast_custom_zone				()							{return this;}
 
@@ -110,15 +110,15 @@ protected:
 	CActor*				m_pLocalActor;
 
 	//максимальная сила заряда зоны
-	float				m_fMaxPower;
+	f32					m_fMaxPower;
 
 	//линейный коэффициент затухания в зависимости от расстояния
-	float				m_fAttenuation;
+	f32					m_fAttenuation;
 	//процент удара зоны, который пойдет на физический импульс	
-	float				m_fHitImpulseScale;
+	f32					m_fHitImpulseScale;
 	//размер радиуса в процентах от оригинального, 
 	//где действует зона
-	float				m_fEffectiveRadius;
+	f32					m_fEffectiveRadius;
 
 	//тип наносимого хита
 	ALife::EHitType		m_eHitTypeBlowout;
@@ -194,8 +194,8 @@ protected:
 	u32						m_dwBlowoutWindTimePeak;
 	u32						m_dwBlowoutWindTimeEnd;
 	//сила ветра (увеличение текущего) (0,1) когда в аномалию попадает актер
-	float					m_fBlowoutWindPowerMax;
-	float					m_fStoreWindPower;
+	f32						m_fBlowoutWindPowerMax;
+	f32						m_fStoreWindPower;
 				
 	void					StartWind					();
 	void					StopWind					();
@@ -247,25 +247,22 @@ protected:
 	//подсветка idle состояния
 	ref_light				m_pIdleLight;
 	Fcolor					m_IdleLightColor;
-	float					m_fIdleLightRange;
-	float					m_fIdleLightHeight;
-	float					m_fIdleLightRangeDelta;
+	f32						m_fIdleLightRange;
+	f32						m_fIdleLightHeight;
+	f32						m_fIdleLightRangeDelta;
 	CLAItem*				m_pIdleLAnim;
 
 	void					StartIdleLight				();
 	void					StopIdleLight				();
 	void					UpdateIdleLight				();
 
-
 	//подсветка выброса
 	ref_light				m_pLight;
-	float					m_fLightRange;
+	f32						m_fLightRange;
 	Fcolor					m_LightColor;
-	float					m_fLightTime;
-	float					m_fLightTimeLeft;
-	float					m_fLightHeight;
-
-
+	f32						m_fLightTime;
+	f32						m_fLightTimeLeft;
+	f32						m_fLightHeight;
 
 	void					StartBlowoutLight			();
 	void					StopBlowoutLight			();
@@ -279,10 +276,10 @@ protected:
 	void					CreateHit					(	u16 id_to, 
 															u16 id_from, 
 															const Fvector& hit_dir, 
-															float hit_power, 
+														 f32 hit_power,
 															s16 bone_id, 
 															const Fvector& pos_in_bone, 
-															float hit_impulse, 
+														 f32 hit_impulse,
 															ALife::EHitType hit_type);
 		
 
@@ -338,11 +335,11 @@ protected:
 //	bool					m_bSpawnBlowoutArtefacts;
 	//вероятность того, что артефакт засповниться при единичном 
 	//срабатывании аномалии
-	float					m_fArtefactSpawnProbability;
+	f32					m_fArtefactSpawnProbability;
 	//величина импульса выкидывания артефакта из зоны
-	float					 m_fThrowOutPower;
+	f32					 m_fThrowOutPower;
 	//высота над центром зоны, где будет появляться артефакт
-	float					m_fArtefactSpawnHeight;
+	f32					m_fArtefactSpawnHeight;
 
 	//имя партиклов, которые проигрываются во время и на месте рождения артефакта
 	shared_str				m_sArtefactSpawnParticles;
@@ -352,14 +349,14 @@ protected:
 	struct ARTEFACT_SPAWN
 	{
 		shared_str	section;
-		float		probability;
+		f32		probability;
 	};
 
 	DEFINE_VECTOR(ARTEFACT_SPAWN, ARTEFACT_SPAWN_VECTOR, ARTEFACT_SPAWN_IT);
 	ARTEFACT_SPAWN_VECTOR	m_ArtefactSpawn;
 
 	//расстояние от зоны до текущего актера
-	float					m_fDistanceToCurEntity;
+	f32					m_fDistanceToCurEntity;
 
 protected:
 	u32						m_ef_anomaly_type;

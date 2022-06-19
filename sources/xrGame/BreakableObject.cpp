@@ -14,9 +14,9 @@
 // Construction/Destruction
 //////////////////////////////////////////////////////////////////////
 u32		CBreakableObject		::	m_remove_time		=0		;
-float	CBreakableObject		::	m_damage_threshold	=5.f	;
-float	CBreakableObject		::	m_health_threshhold	=0.f	;
-float	CBreakableObject		::  m_immunity_factor	=0.1f	;
+f32	CBreakableObject::m_damage_threshold = 5.0f;
+f32	CBreakableObject::m_health_threshhold = 0.0f;
+f32	CBreakableObject::m_immunity_factor = 0.1f;
 CBreakableObject::CBreakableObject	()
 {
 	Init();
@@ -247,7 +247,7 @@ void CBreakableObject::ObjectContactCallback(bool&/**do_colide/**/,bool bo1,dCon
 	dxGeomUserData* usr_data_2=retrieveGeomUserData(c.geom.g2);
 	CBreakableObject* this_object;
 	dBodyID	body;
-	float norm_sign;
+	f32 norm_sign;
 	if(
 		usr_data_1&&
 		usr_data_1->ph_ref_object&&
@@ -271,7 +271,7 @@ void CBreakableObject::ObjectContactCallback(bool&/**do_colide/**/,bool bo1,dCon
 		else return;
 
 	if(!this_object->m_pUnbrokenObject) return;
-	float c_damage=E_NlS(body,c.geom.normal,norm_sign);
+	f32 c_damage = E_NlS(body, c.geom.normal, norm_sign);
 	if(this_object->m_damage_threshold<c_damage&&
 		this_object->m_max_frame_damage<c_damage
 		){
@@ -302,11 +302,11 @@ void CBreakableObject::ProcessDamage()
 	m_max_frame_damage		= 0.f;
 	b_resived_damage		=false;
 }
-void CBreakableObject::CheckHitBreak(float power,ALife::EHitType hit_type)
+void CBreakableObject::CheckHitBreak(f32 power,ALife::EHitType hit_type)
 {
 	if( hit_type!=ALife::eHitTypeStrike)
 	{
-		float res_power=power*m_immunity_factor;
+		f32 res_power=power*m_immunity_factor;
 		if(power>m_health_threshhold) fHealth-=res_power;
 	}
 	if(fHealth<=0.f)	
@@ -317,7 +317,7 @@ void CBreakableObject::CheckHitBreak(float power,ALife::EHitType hit_type)
 	if(hit_type==ALife::eHitTypeStrike)Break();
 }
 
-void CBreakableObject::ApplyExplosion(const Fvector &dir,float impulse)
+void CBreakableObject::ApplyExplosion(const Fvector &dir, f32 impulse)
 {
 	if(!m_pPhysicsShell) return;
 	Fvector pos;pos.set(0.f,0.f,0.f);
@@ -328,7 +328,7 @@ void CBreakableObject::ApplyExplosion(const Fvector &dir,float impulse)
 		Fvector max_area_dir;
 		CPhysicsElement* element=m_pPhysicsShell->get_ElementByStoreOrder(i);
 		element->get_MaxAreaDir(max_area_dir);
-		float	sign=max_area_dir.dotproduct(dir)>0.f ? 1.f : -1.f;
+		f32 sign = max_area_dir.dotproduct(dir) > 0.0f ? 1.0f : -1.0f;
 		max_area_dir.mul(sign);
 		element->applyImpulseTrace(pos,max_area_dir,impulse/el_num,0);
 	}

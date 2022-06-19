@@ -112,28 +112,28 @@ CUIDialogWnd* CUIGameCustom::MainInputReceiver	()
 	return HUD().GetUI()->MainInputReceiver();
 };
 
-void CUIGameCustom::AddCustomMessage		(LPCSTR id, float x, float y, float font_size, CGameFont *pFont, u16 alignment, u32 color/* LPCSTR def_text*/ )
+void CUIGameCustom::AddCustomMessage		(pcstr id, float x, float y, float font_size, CGameFont *pFont, u16 alignment, u32 color/* pcstr def_text*/ )
 {
 	GameCaptions()->addCustomMessage(id,x,y,font_size,pFont,(CGameFont::EAligment)alignment,color,"");
 }
 
-void CUIGameCustom::AddCustomMessage		(LPCSTR id, float x, float y, float font_size, CGameFont *pFont, u16 alignment, u32 color, /*LPCSTR def_text,*/ float flicker )
+void CUIGameCustom::AddCustomMessage		(pcstr id, float x, float y, float font_size, CGameFont *pFont, u16 alignment, u32 color, /*pcstr def_text,*/ float flicker )
 {
 	AddCustomMessage(id,x,y,font_size, pFont, alignment, color);
 	GameCaptions()->customizeMessage(id, CUITextBanner::tbsFlicker)->fPeriod = flicker;
 }
 
-void CUIGameCustom::CustomMessageOut(LPCSTR id, LPCSTR msg, u32 color)
+void CUIGameCustom::CustomMessageOut(pcstr id, pcstr msg, u32 color)
 {
 	GameCaptions()->setCaption(id,msg,color,true);
 }
 
-void CUIGameCustom::RemoveCustomMessage		(LPCSTR id)
+void CUIGameCustom::RemoveCustomMessage		(pcstr id)
 {
 	GameCaptions()->removeCustomMessage(id);
 }
 
-SDrawStaticStruct* CUIGameCustom::AddCustomStatic			(LPCSTR id, bool bSingleInstance)
+SDrawStaticStruct* CUIGameCustom::AddCustomStatic			(pcstr id, bool bSingleInstance)
 {
 	if(bSingleInstance){
 		st_vec::iterator it = std::find(m_custom_statics.begin(),m_custom_statics.end(), id);
@@ -155,7 +155,7 @@ SDrawStaticStruct* CUIGameCustom::AddCustomStatic			(LPCSTR id, bool bSingleInst
 	return &sss;
 }
 
-SDrawStaticStruct* CUIGameCustom::GetCustomStatic		(LPCSTR id)
+SDrawStaticStruct* CUIGameCustom::GetCustomStatic		(pcstr id)
 {
 	st_vec::iterator it = std::find(m_custom_statics.begin(),m_custom_statics.end(), id);
 	if(it!=m_custom_statics.end()){
@@ -164,7 +164,7 @@ SDrawStaticStruct* CUIGameCustom::GetCustomStatic		(LPCSTR id)
 	return NULL;
 }
 
-void CUIGameCustom::RemoveCustomStatic		(LPCSTR id)
+void CUIGameCustom::RemoveCustomStatic		(pcstr id)
 {
 	st_vec::iterator it = std::find(m_custom_statics.begin(),m_custom_statics.end(), id);
 	if(it!=m_custom_statics.end()){

@@ -48,7 +48,7 @@ bool CUIMessageBox::OnMouse(float x, float y, EUIMessages mouse_action)
 	return inherited::OnMouse(x, y, mouse_action);
 }
 
-void CUIMessageBox::Init	(LPCSTR box_template)
+void CUIMessageBox::Init	(pcstr box_template)
 {
 	Clear();
 	CUIXml uiXml;
@@ -72,7 +72,7 @@ void CUIMessageBox::Init	(LPCSTR box_template)
 	strcpy		(str,box_template);
 	xml_init.InitStatic						(uiXml, str, 0, this);
 
-	LPCSTR _type							= uiXml.ReadAttrib(str,0,"type",NULL);
+	pcstr _type							= uiXml.ReadAttrib(str,0,"type",NULL);
 	R_ASSERT								(_type);
 	
 	m_eMessageBoxStyle	= MESSAGEBOX_OK;
@@ -250,17 +250,17 @@ void CUIMessageBox::SendMessage(CUIWindow *pWnd, s16 msg, void *pData)
 	inherited::SendMessage(pWnd, msg, pData);
 }
 
-void CUIMessageBox::SetText(LPCSTR str)
+void CUIMessageBox::SetText(pcstr str)
 {
 	m_UIStaticText->SetText(*(CStringTable().translate(str)));
 }
 
-LPCSTR CUIMessageBox::GetText()
+pcstr CUIMessageBox::GetText()
 {
 	return m_UIStaticText->GetText();
 }
 
-LPCSTR CUIMessageBox::GetHost(){
+pcstr CUIMessageBox::GetHost(){
 	if (m_UIEditHost){
 		m_ret_val.clear();
 		xr_string tmp= m_UIEditHost->GetText();
@@ -281,14 +281,14 @@ LPCSTR CUIMessageBox::GetHost(){
 		return NULL;
 }
 
-LPCSTR CUIMessageBox::GetPassword(){
+pcstr CUIMessageBox::GetPassword(){
 	if (m_UIEditPass)
 		return m_UIEditPass->GetText();
 	else 
 		return NULL;
 }
 
-LPCSTR CUIMessageBox::GetUserPassword(){
+pcstr CUIMessageBox::GetUserPassword(){
 	if (m_UIEditUserPass)
 		return m_UIEditUserPass->GetText();
 	else 

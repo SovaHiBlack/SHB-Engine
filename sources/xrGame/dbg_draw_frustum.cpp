@@ -3,20 +3,20 @@
 #include "..\XR_3DA\frustum.h"
 
 #ifdef DEBUG
-#	include "debug_renderer.h"
+#	include "DebugRenderer.h"
 #endif
 
 #ifdef DEBUG
-void MK_Frustum(CFrustum& F, float FOV, float _FAR, float A, Fvector &P, Fvector &D, Fvector &U)
+void MK_Frustum(CFrustum& F, f32 FOV, f32 _FAR, f32 A, Fvector &P, Fvector &D, Fvector &U)
 {
-	float YFov	= deg2rad(FOV);
-	float XFov	= deg2rad(FOV/A);
+	f32 YFov	= deg2rad(FOV);
+	f32 XFov	= deg2rad(FOV/A);
 
 	// calc window extents in camera coords
-	float wR=tanf(XFov*0.5f);
-	float wL=-wR;
-	float wT=tanf(YFov*0.5f);
-	float wB=-wT;
+	f32 wR=tanf(XFov*0.5f);
+	f32 wL=-wR;
+	f32 wT=tanf(YFov*0.5f);
+	f32 wB=-wT;
 
 	// calc x-axis (viewhoriz) and store cop
 	// here we are assuring that vectors are perpendicular & normalized
@@ -54,18 +54,18 @@ void MK_Frustum(CFrustum& F, float FOV, float _FAR, float A, Fvector &P, Fvector
 	F.CreateFromPoints(_F,4,COP);
 }
 
-void dbg_draw_frustum	(float FOV, float _FAR, float A, Fvector &P, Fvector &D, Fvector &U)
+void dbg_draw_frustum	(f32 FOV, f32 _FAR, f32 A, Fvector &P, Fvector &D, Fvector &U)
 {
 	//if (!bDebug)		return;
  
-	float YFov	= deg2rad(FOV*A);
-	float XFov	= deg2rad(FOV);
+	f32 YFov	= deg2rad(FOV*A);
+	f32 XFov	= deg2rad(FOV);
 
 	// calc window extents in camera coords
-	float wR=tanf(XFov*0.5f);
-	float wL=-wR;
-	float wT=tanf(YFov*0.5f);
-	float wB=-wT;
+	f32 wR=tanf(XFov*0.5f);
+	f32 wL=-wR;
+	f32 wT=tanf(YFov*0.5f);
+	f32 wB=-wT;
 
 	// calc x-axis (viewhoriz) and store cop
 	// here we are assuring that vectors are perpendicular & normalized

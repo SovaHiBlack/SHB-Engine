@@ -65,22 +65,22 @@ public:
 	// Eyes
 	Fmatrix				eye_matrix;
 	int					eye_bone;
-	float				eye_fov;
-	float				eye_range;
+	f32					eye_fov;
+	f32					eye_range;
 
-	float				m_fCurSpeed;
+	f32					m_fCurSpeed;
 
 	u32					eye_pp_stage;
 	u32					eye_pp_timestamp;
 	Fvector				m_tEyeShift;
-	float				m_fEyeShiftYaw;
+	f32					m_fEyeShiftYaw;
 	BOOL				NET_WasExtrapolating;
 
 	Fvector				tWatchDirection;
 
 	virtual void		Think() = 0;
 
-	float				m_fTimeUpdateDelta;
+	f32					m_fTimeUpdateDelta;
 	u32					m_dwLastUpdateTime;
 	u32					m_current_update;
 //	Fmatrix				m_tServerTransform;
@@ -89,10 +89,10 @@ public:
 
 	struct net_update	{
 		u32				dwTimeStamp;			// server(game) timestamp
-		float			o_model;				// model yaw
+		f32				o_model;				// model yaw
 		SRotation		o_torso;				// torso in world coords
 		Fvector			p_pos;					// in world coords
-		float			fHealth;
+		f32				fHealth;
 
 		// non-exported (temporal)
 
@@ -104,7 +104,7 @@ public:
 			p_pos.set		(0,0,0);
 			fHealth			= 0.f;
 		}
-		void	lerp	(net_update& A,net_update& B, float f);
+		void	lerp	(net_update& A,net_update& B, f32 f);
 	};
 	xr_deque<net_update>	NET;
 	net_update				NET_Last;
@@ -119,8 +119,8 @@ public:
 	void				mk_rotation				( Fvector& dir, SRotation &R);
 
 	// stream executors
-	virtual void		Exec_Action				( float dt );
-	virtual void		Exec_Look				( float dt );
+	virtual void		Exec_Action				(f32 dt );
+	virtual void		Exec_Look				(f32 dt );
 	void	__stdcall	Exec_Visibility			( );
 	void				eye_pp_s0				( );
 	void				eye_pp_s1				( );
@@ -137,12 +137,11 @@ public:
 	virtual CEntity*					cast_entity				()						{return this;}
 
 public:
-
 	virtual DLL_Pure	*_construct				();
 	virtual BOOL		net_Spawn				( CSE_Abstract* DC);
 	virtual void		Die						( CObject* who);
 
-	virtual void		HitSignal				( float P,	Fvector& vLocalDir, CObject* who);
+	virtual void		HitSignal				(f32 P,	Fvector& vLocalDir, CObject* who);
 	virtual void		g_WeaponBones			(int &/**L/**/, int &/**R1/**/, int &/**R2/**/) {};
 	virtual void		shedule_Update					( u32		DT		);
 	virtual void		UpdateCL				( );
@@ -152,7 +151,7 @@ public:
 	virtual void		net_Import				(NET_Packet& P);				// import from server
 	virtual void		net_Relcase				(CObject*	 O);
 
-	virtual void		SelectAnimation			( const Fvector& _view, const Fvector& _move, float speed ) = 0;
+	virtual void		SelectAnimation			( const Fvector& _view, const Fvector& _move, f32 speed ) = 0;
 
 	// debug
 #ifdef DEBUG
@@ -163,14 +162,14 @@ public:
 	virtual bool		bfExecMovement			(){return(false);};
 
 
-	IC	bool					angle_lerp_bounds		(float &a, float b, float c, float d);
+	IC	bool					angle_lerp_bounds		(f32& a, f32 b, f32 c, f32 d);
 	IC	void					vfNormalizeSafe			(Fvector& Vector);
 
 public:
-	virtual	float				ffGetFov				()	const								{return eye_fov;}	
-	virtual	float				ffGetRange				()	const								{return eye_range;}
-			void				set_fov					(float new_fov);
-			void				set_range				(float new_range);
+	virtual	f32					ffGetFov				()	const								{return eye_fov;}
+	virtual	f32					ffGetRange				()	const								{return eye_range;}
+			void				set_fov					(f32 new_fov);
+			void				set_range				(f32 new_range);
 //	virtual	void				feel_touch_new			(CObject	*O);
 	virtual BOOL				feel_visible_isRelevant	(CObject		*O);
 	virtual	Feel::Sound*		dcast_FeelSound			()			{ return this;	}
@@ -190,7 +189,7 @@ public:
 	virtual	void				reinit					();
 	virtual void				reload					(pcstr	section);
 	virtual const SRotation		Orientation				() const;
-	virtual float				get_custom_pitch_speed	(float def_speed) {return def_speed;}
+	virtual f32					get_custom_pitch_speed	(f32 def_speed) {return def_speed;}
 	virtual bool				human_being				() const
 	{
 		return					(false);
@@ -214,21 +213,21 @@ public:
 			bool				is_special_killer		(CObject *obj);
 
 	IC		CMemoryManager		&memory					() const;
-	virtual float				feel_vision_mtl_transp	(CObject* O, u32 element);
-	virtual	void				feel_sound_new			(CObject* who, int type, CSound_UserDataPtr user_data, const Fvector &Position, float power);
+	virtual f32					feel_vision_mtl_transp	(CObject* O, u32 element);
+	virtual	void				feel_sound_new			(CObject* who, int type, CSound_UserDataPtr user_data, const Fvector &Position, f32 power);
 
 	virtual bool				useful					(const CItemManager *manager, const CGameObject *object) const;
-	virtual float				evaluate				(const CItemManager *manager, const CGameObject *object) const;
+	virtual f32					evaluate				(const CItemManager *manager, const CGameObject *object) const;
 	virtual bool				useful					(const CEnemyManager *manager, const CEntityAlive *object) const;
-	virtual float				evaluate				(const CEnemyManager *manager, const CEntityAlive *object) const;
+	virtual f32					evaluate				(const CEnemyManager *manager, const CEntityAlive *object) const;
 	virtual bool				useful					(const CDangerManager *manager, const CDangerObject &object) const;
-	virtual float				evaluate				(const CDangerManager *manager, const CDangerObject &object) const;
+	virtual f32					evaluate				(const CDangerManager *manager, const CDangerObject &object) const;
 
 protected:
-	float						m_panic_threshold;
+	f32							m_panic_threshold;
 
 public:
-	IC		float				panic_threshold			() const;
+	IC		f32					panic_threshold			() const;
 
 
 private:
@@ -245,11 +244,11 @@ public:
 	IC		CSound_UserDataVisitor	*sound_user_data_visitor() const;
 
 protected:
-	float							m_far_plane_factor;
-	float							m_fog_density_factor;
+	f32								m_far_plane_factor;
+	f32								m_fog_density_factor;
 
 public:
-	virtual	void					update_range_fov		(float &new_range, float &new_fov, float start_range, float start_fov);
+	virtual	void					update_range_fov		(f32& new_range, f32& new_fov, f32 start_range, f32 start_fov);
 
 public:
 			void __stdcall			update_sound_player		();
@@ -266,7 +265,7 @@ public:
 	virtual	CVisualMemoryManager	*visual_memory			() const;
 
 public:
-	IC		float					client_update_fdelta	() const;
+	IC		f32						client_update_fdelta	() const;
 	IC		const u32				&client_update_delta	() const;
 	IC		const u32				&last_client_update_time() const;
 
@@ -280,9 +279,9 @@ private:
 
 protected:
 	u32								m_last_hit_time;
-	float							m_critical_wound_threshold;
-	float							m_critical_wound_decrease_quant;
-	float							m_critical_wound_accumulator;
+	f32								m_critical_wound_threshold;
+	f32								m_critical_wound_decrease_quant;
+	f32								m_critical_wound_accumulator;
 	CriticalWoundType				m_critical_wound_type;
 	BODY_PART						m_bones_body_parts;
 
@@ -292,7 +291,7 @@ protected:
 	virtual bool					critical_wound_external_conditions_suitable	() {return true;}
 	virtual void					critical_wounded_state_start				() {}
 
-			bool					update_critical_wounded						(const u16 &bone_id, const float &power);
+			bool					update_critical_wounded						(const u16 &bone_id, const f32& power);
 
 public:
 	IC		void					critical_wounded_state_stop					();

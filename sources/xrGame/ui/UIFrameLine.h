@@ -40,8 +40,8 @@ protected:
 	void		UpdateSize		();
 public:
 				CUIFrameLine	();
-	void		Init			(LPCSTR base_name, float x, float y, float size, bool horizontal, DWORD align);
-	void		InitTexture		(LPCSTR texture);
+	void		Init			(pcstr base_name, float x, float y, float size, bool horizontal, DWORD align);
+	void		InitTexture		(pcstr texture);
 	void		SetColor		(u32 cl);
 	IC void		SetPos			(float left, float top)		{ iPos.set(left,top);	uFlags &=~ flValidSize; }
 	IC void		SetSize			(float size)				{ iSize = size;			uFlags &=~ flValidSize; }

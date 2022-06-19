@@ -27,7 +27,7 @@
 ////////////////////////////////////////////////////////////////////////////
 // CSE_ALifeInventoryItem
 ////////////////////////////////////////////////////////////////////////////
-CSE_ALifeInventoryItem::CSE_ALifeInventoryItem(LPCSTR caSection)
+CSE_ALifeInventoryItem::CSE_ALifeInventoryItem(pcstr caSection)
 {
 	//текущее состояние вещи
 	m_fCondition				= 1.0f;
@@ -177,7 +177,7 @@ void CSE_ALifeInventoryItem::UPDATE_Read	(NET_Packet &tNetPacket)
 		State.linear_vel.set		(0.f,0.f,0.f);
 };
 
-void CSE_ALifeInventoryItem::FillProps		(LPCSTR pref, PropItemVec& values)
+void CSE_ALifeInventoryItem::FillProps		(pcstr pref, PropItemVec& values)
 {
 	PHelper().CreateFloat			(values, PrepareKey(pref, *base()->s_name, "Item condition"), 		&m_fCondition, 			0.f, 1.f);
 	CSE_ALifeObject					*alife_object = smart_cast<CSE_ALifeObject*>(base());
@@ -199,7 +199,7 @@ u32 CSE_ALifeInventoryItem::update_rate		() const
 ////////////////////////////////////////////////////////////////////////////
 // CSE_ALifeItem
 ////////////////////////////////////////////////////////////////////////////
-CSE_ALifeItem::CSE_ALifeItem				(LPCSTR caSection) : CSE_ALifeDynamicObjectVisual(caSection), CSE_ALifeInventoryItem(caSection)
+CSE_ALifeItem::CSE_ALifeItem				(pcstr caSection) : CSE_ALifeDynamicObjectVisual(caSection), CSE_ALifeInventoryItem(caSection)
 {
 	m_physics_disabled			= false;
 }
@@ -260,7 +260,7 @@ void CSE_ALifeItem::UPDATE_Read				(NET_Packet &tNetPacket)
 	m_physics_disabled			= false;
 };
 
-void CSE_ALifeItem::FillProps				(LPCSTR pref, PropItemVec& values)
+void CSE_ALifeItem::FillProps				(pcstr pref, PropItemVec& values)
 {
 	inherited1::FillProps		(pref,	 values);
 	inherited2::FillProps		(pref,	 values);
@@ -296,7 +296,7 @@ void CSE_ALifeItem::OnEvent					(NET_Packet &tNetPacket, u16 type, u32 time, Cli
 ////////////////////////////////////////////////////////////////////////////
 // CSE_ALifeItemTorch
 ////////////////////////////////////////////////////////////////////////////
-CSE_ALifeItemTorch::CSE_ALifeItemTorch		(LPCSTR caSection) : CSE_ALifeItem(caSection)
+CSE_ALifeItemTorch::CSE_ALifeItemTorch		(pcstr caSection) : CSE_ALifeItem(caSection)
 {
 	m_active					= false;
 	m_nightvision_active		= false;
@@ -347,7 +347,7 @@ void CSE_ALifeItemTorch::UPDATE_Write		(NET_Packet	&tNetPacket)
 	tNetPacket.w_u8(F);
 }
 
-void CSE_ALifeItemTorch::FillProps			(LPCSTR pref, PropItemVec& values)
+void CSE_ALifeItemTorch::FillProps			(pcstr pref, PropItemVec& values)
 {
 	inherited::FillProps			(pref,	 values);
 }
@@ -355,7 +355,7 @@ void CSE_ALifeItemTorch::FillProps			(LPCSTR pref, PropItemVec& values)
 ////////////////////////////////////////////////////////////////////////////
 // CSE_ALifeItemWeapon
 ////////////////////////////////////////////////////////////////////////////
-CSE_ALifeItemWeapon::CSE_ALifeItemWeapon	(LPCSTR caSection) : CSE_ALifeItem(caSection)
+CSE_ALifeItemWeapon::CSE_ALifeItemWeapon	(pcstr caSection) : CSE_ALifeItem(caSection)
 {
 	a_current					= 90;
 	a_elapsed					= 0;
@@ -494,7 +494,7 @@ BOOL CSE_ALifeItemWeapon::Net_Relevant()
 	return (wpn_flags==1);
 }
 
-void CSE_ALifeItemWeapon::FillProps			(LPCSTR pref, PropItemVec& items)
+void CSE_ALifeItemWeapon::FillProps			(pcstr pref, PropItemVec& items)
 {
 	inherited::FillProps			(pref, items);
 	PHelper().CreateU8			(items,PrepareKey(pref,*s_name,"Ammo type:"), &ammo_type,0,255,1);
@@ -513,7 +513,7 @@ void CSE_ALifeItemWeapon::FillProps			(LPCSTR pref, PropItemVec& items)
 ////////////////////////////////////////////////////////////////////////////
 // CSE_ALifeItemWeaponShotGun
 ////////////////////////////////////////////////////////////////////////////
-CSE_ALifeItemWeaponShotGun::CSE_ALifeItemWeaponShotGun	(LPCSTR caSection) : CSE_ALifeItemWeaponMagazined(caSection)
+CSE_ALifeItemWeaponShotGun::CSE_ALifeItemWeaponShotGun	(pcstr caSection) : CSE_ALifeItemWeaponMagazined(caSection)
 {
 	m_AmmoIDs.clear();
 }
@@ -552,7 +552,7 @@ void CSE_ALifeItemWeaponShotGun::STATE_Write		(NET_Packet& P)
 	inherited::STATE_Write(P);
 }
 
-void CSE_ALifeItemWeaponShotGun::FillProps			(LPCSTR pref, PropItemVec& items)
+void CSE_ALifeItemWeaponShotGun::FillProps			(pcstr pref, PropItemVec& items)
 {
 	inherited::FillProps			(pref, items);
 };
@@ -560,7 +560,7 @@ void CSE_ALifeItemWeaponShotGun::FillProps			(LPCSTR pref, PropItemVec& items)
 ////////////////////////////////////////////////////////////////////////////
 // CSE_ALifeItemWeaponMagazined
 ////////////////////////////////////////////////////////////////////////////
-CSE_ALifeItemWeaponMagazined::CSE_ALifeItemWeaponMagazined	(LPCSTR caSection) : CSE_ALifeItemWeapon(caSection)
+CSE_ALifeItemWeaponMagazined::CSE_ALifeItemWeaponMagazined	(pcstr caSection) : CSE_ALifeItemWeapon(caSection)
 {
 	m_u8CurFireMode = 0;
 }
@@ -590,7 +590,7 @@ void CSE_ALifeItemWeaponMagazined::STATE_Write		(NET_Packet& P)
 	inherited::STATE_Write(P);
 }
 
-void CSE_ALifeItemWeaponMagazined::FillProps			(LPCSTR pref, PropItemVec& items)
+void CSE_ALifeItemWeaponMagazined::FillProps			(pcstr pref, PropItemVec& items)
 {
 	inherited::FillProps			(pref, items);
 };
@@ -598,7 +598,7 @@ void CSE_ALifeItemWeaponMagazined::FillProps			(LPCSTR pref, PropItemVec& items)
 ////////////////////////////////////////////////////////////////////////////
 // CSE_ALifeItemWeaponMagazinedWGL
 ////////////////////////////////////////////////////////////////////////////
-CSE_ALifeItemWeaponMagazinedWGL::CSE_ALifeItemWeaponMagazinedWGL	(LPCSTR caSection) : CSE_ALifeItemWeaponMagazined(caSection)
+CSE_ALifeItemWeaponMagazinedWGL::CSE_ALifeItemWeaponMagazinedWGL	(pcstr caSection) : CSE_ALifeItemWeaponMagazined(caSection)
 {
 	m_bGrenadeMode = 0;
 }
@@ -628,7 +628,7 @@ void CSE_ALifeItemWeaponMagazinedWGL::STATE_Write		(NET_Packet& P)
 	inherited::STATE_Write(P);
 }
 
-void CSE_ALifeItemWeaponMagazinedWGL::FillProps			(LPCSTR pref, PropItemVec& items)
+void CSE_ALifeItemWeaponMagazinedWGL::FillProps			(pcstr pref, PropItemVec& items)
 {
 	inherited::FillProps			(pref, items);
 };
@@ -636,7 +636,7 @@ void CSE_ALifeItemWeaponMagazinedWGL::FillProps			(LPCSTR pref, PropItemVec& ite
 ////////////////////////////////////////////////////////////////////////////
 // CSE_ALifeItemAmmo
 ////////////////////////////////////////////////////////////////////////////
-CSE_ALifeItemAmmo::CSE_ALifeItemAmmo		(LPCSTR caSection) : CSE_ALifeItem(caSection)
+CSE_ALifeItemAmmo::CSE_ALifeItemAmmo		(pcstr caSection) : CSE_ALifeItem(caSection)
 {
 	a_elapsed					= m_boxSize = (u16)pSettings->r_s32(caSection, "box_size");
 	if (pSettings->section_exist(caSection) && pSettings->line_exist(caSection,"visual"))
@@ -673,7 +673,7 @@ void CSE_ALifeItemAmmo::UPDATE_Write		(NET_Packet	&tNetPacket)
 	tNetPacket.w_u16			(a_elapsed);
 }
 
-void CSE_ALifeItemAmmo::FillProps			(LPCSTR pref, PropItemVec& values) {
+void CSE_ALifeItemAmmo::FillProps			(pcstr pref, PropItemVec& values) {
   	inherited::FillProps			(pref,values);
 	PHelper().CreateU16			(values, PrepareKey(pref, *s_name, "Ammo: left"), &a_elapsed, 0, m_boxSize, m_boxSize);
 }
@@ -691,7 +691,7 @@ bool CSE_ALifeItemAmmo::can_switch_offline	() const
 ////////////////////////////////////////////////////////////////////////////
 // CSE_ALifeItemDetector
 ////////////////////////////////////////////////////////////////////////////
-CSE_ALifeItemDetector::CSE_ALifeItemDetector(LPCSTR caSection) : CSE_ALifeItem(caSection)
+CSE_ALifeItemDetector::CSE_ALifeItemDetector(pcstr caSection) : CSE_ALifeItem(caSection)
 {
 	m_ef_detector_type	= pSettings->r_u32(caSection,"ef_detector_type");
 }
@@ -726,7 +726,7 @@ void CSE_ALifeItemDetector::UPDATE_Write	(NET_Packet	&tNetPacket)
 	inherited::UPDATE_Write		(tNetPacket);
 }
 
-void CSE_ALifeItemDetector::FillProps		(LPCSTR pref, PropItemVec& items)
+void CSE_ALifeItemDetector::FillProps		(pcstr pref, PropItemVec& items)
 {
   	inherited::FillProps			(pref,items);
 }
@@ -734,7 +734,7 @@ void CSE_ALifeItemDetector::FillProps		(LPCSTR pref, PropItemVec& items)
 ////////////////////////////////////////////////////////////////////////////
 // CSE_ALifeItemDetector
 ////////////////////////////////////////////////////////////////////////////
-CSE_ALifeItemArtefact::CSE_ALifeItemArtefact(LPCSTR caSection) : CSE_ALifeItem(caSection)
+CSE_ALifeItemArtefact::CSE_ALifeItemArtefact(pcstr caSection) : CSE_ALifeItem(caSection)
 {
 	m_fAnomalyValue				= 100.f;
 }
@@ -763,7 +763,7 @@ void CSE_ALifeItemArtefact::UPDATE_Write	(NET_Packet	&tNetPacket)
 	inherited::UPDATE_Write		(tNetPacket);
 }
 
-void CSE_ALifeItemArtefact::FillProps		(LPCSTR pref, PropItemVec& items)
+void CSE_ALifeItemArtefact::FillProps		(pcstr pref, PropItemVec& items)
 {
 	inherited::FillProps			(pref,items);
 	PHelper().CreateFloat			(items, PrepareKey(pref, *s_name, "Anomaly value:"), &m_fAnomalyValue, 0.f, 200.f);
@@ -777,7 +777,7 @@ BOOL CSE_ALifeItemArtefact::Net_Relevant	()
 ////////////////////////////////////////////////////////////////////////////
 // CSE_ALifeItemPDA
 ////////////////////////////////////////////////////////////////////////////
-CSE_ALifeItemPDA::CSE_ALifeItemPDA		(LPCSTR caSection) : CSE_ALifeItem(caSection)
+CSE_ALifeItemPDA::CSE_ALifeItemPDA		(pcstr caSection) : CSE_ALifeItem(caSection)
 {
 	m_original_owner		= 0xffff;
 	m_specific_character	= NULL;
@@ -838,7 +838,7 @@ void CSE_ALifeItemPDA::UPDATE_Write	(NET_Packet	&tNetPacket)
 	inherited::UPDATE_Write		(tNetPacket);
 }
 
-void CSE_ALifeItemPDA::FillProps		(LPCSTR pref, PropItemVec& items)
+void CSE_ALifeItemPDA::FillProps		(pcstr pref, PropItemVec& items)
 {
 	inherited::FillProps			(pref,items);
 }
@@ -846,7 +846,7 @@ void CSE_ALifeItemPDA::FillProps		(LPCSTR pref, PropItemVec& items)
 ////////////////////////////////////////////////////////////////////////////
 // CSE_ALifeItemDocument
 ////////////////////////////////////////////////////////////////////////////
-CSE_ALifeItemDocument::CSE_ALifeItemDocument(LPCSTR caSection): CSE_ALifeItem(caSection)
+CSE_ALifeItemDocument::CSE_ALifeItemDocument(pcstr caSection): CSE_ALifeItem(caSection)
 {
 	m_wDoc					= NULL;
 }
@@ -883,7 +883,7 @@ void CSE_ALifeItemDocument::UPDATE_Write	(NET_Packet	&tNetPacket)
 	inherited::UPDATE_Write		(tNetPacket);
 }
 
-void CSE_ALifeItemDocument::FillProps		(LPCSTR pref, PropItemVec& items)
+void CSE_ALifeItemDocument::FillProps		(pcstr pref, PropItemVec& items)
 {
 	inherited::FillProps			(pref,items);
 //	PHelper().CreateU16			(items, PrepareKey(pref, *s_name, "Document index :"), &m_wDocIndex, 0, 65535);
@@ -893,7 +893,7 @@ void CSE_ALifeItemDocument::FillProps		(LPCSTR pref, PropItemVec& items)
 ////////////////////////////////////////////////////////////////////////////
 // CSE_ALifeItemGrenade
 ////////////////////////////////////////////////////////////////////////////
-CSE_ALifeItemGrenade::CSE_ALifeItemGrenade	(LPCSTR caSection): CSE_ALifeItem(caSection)
+CSE_ALifeItemGrenade::CSE_ALifeItemGrenade	(pcstr caSection): CSE_ALifeItem(caSection)
 {
 	m_ef_weapon_type	= READ_IF_EXISTS(pSettings,r_u32,caSection,"ef_weapon_type",u32(-1));
 }
@@ -928,7 +928,7 @@ void CSE_ALifeItemGrenade::UPDATE_Write		(NET_Packet	&tNetPacket)
 	inherited::UPDATE_Write		(tNetPacket);
 }
 
-void CSE_ALifeItemGrenade::FillProps			(LPCSTR pref, PropItemVec& items)
+void CSE_ALifeItemGrenade::FillProps			(pcstr pref, PropItemVec& items)
 {
 	inherited::FillProps			(pref,items);
 }
@@ -936,7 +936,7 @@ void CSE_ALifeItemGrenade::FillProps			(LPCSTR pref, PropItemVec& items)
 ////////////////////////////////////////////////////////////////////////////
 // CSE_ALifeItemExplosive
 ////////////////////////////////////////////////////////////////////////////
-CSE_ALifeItemExplosive::CSE_ALifeItemExplosive	(LPCSTR caSection): CSE_ALifeItem(caSection)
+CSE_ALifeItemExplosive::CSE_ALifeItemExplosive	(pcstr caSection): CSE_ALifeItem(caSection)
 {
 }
 
@@ -964,7 +964,7 @@ void CSE_ALifeItemExplosive::UPDATE_Write		(NET_Packet	&tNetPacket)
 	inherited::UPDATE_Write		(tNetPacket);
 }
 
-void CSE_ALifeItemExplosive::FillProps			(LPCSTR pref, PropItemVec& items)
+void CSE_ALifeItemExplosive::FillProps			(pcstr pref, PropItemVec& items)
 {
 	inherited::FillProps			(pref,items);
 }
@@ -972,7 +972,7 @@ void CSE_ALifeItemExplosive::FillProps			(LPCSTR pref, PropItemVec& items)
 ////////////////////////////////////////////////////////////////////////////
 // CSE_ALifeItemBolt
 ////////////////////////////////////////////////////////////////////////////
-CSE_ALifeItemBolt::CSE_ALifeItemBolt		(LPCSTR caSection) : CSE_ALifeItem(caSection)
+CSE_ALifeItemBolt::CSE_ALifeItemBolt		(pcstr caSection) : CSE_ALifeItem(caSection)
 {
 	m_flags.set					(flUseSwitches,FALSE);
 	m_flags.set					(flSwitchOffline,FALSE);
@@ -1017,7 +1017,7 @@ bool CSE_ALifeItemBolt::used_ai_locations		() const
 {
 	return false;
 }
-void CSE_ALifeItemBolt::FillProps			(LPCSTR pref, PropItemVec& values)
+void CSE_ALifeItemBolt::FillProps			(pcstr pref, PropItemVec& values)
 {
 	inherited::FillProps			(pref,	 values);
 }
@@ -1025,7 +1025,7 @@ void CSE_ALifeItemBolt::FillProps			(LPCSTR pref, PropItemVec& values)
 ////////////////////////////////////////////////////////////////////////////
 // CSE_ALifeItemCustomOutfit
 ////////////////////////////////////////////////////////////////////////////
-CSE_ALifeItemCustomOutfit::CSE_ALifeItemCustomOutfit	(LPCSTR caSection): CSE_ALifeItem(caSection)
+CSE_ALifeItemCustomOutfit::CSE_ALifeItemCustomOutfit	(pcstr caSection): CSE_ALifeItem(caSection)
 {
 	m_ef_equipment_type		= pSettings->r_u32(caSection,"ef_equipment_type");
 }
@@ -1061,7 +1061,7 @@ void CSE_ALifeItemCustomOutfit::UPDATE_Write		(NET_Packet	&tNetPacket)
 	tNetPacket.w_float_q8			(m_fCondition,0.0f,1.0f);
 }
 
-void CSE_ALifeItemCustomOutfit::FillProps			(LPCSTR pref, PropItemVec& items)
+void CSE_ALifeItemCustomOutfit::FillProps			(pcstr pref, PropItemVec& items)
 {
 	inherited::FillProps			(pref,items);
 }

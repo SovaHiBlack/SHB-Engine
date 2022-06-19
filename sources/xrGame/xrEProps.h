@@ -18,34 +18,34 @@ enum EItemType{
 	TYPE_OBJECT	= 1
 };
 
-typedef fastdelegate::FastDelegate1<ListItemsVec&> 				TOnILItemsFocused;
-typedef fastdelegate::FastDelegate0<>							TOnILCloseEvent;      
-typedef fastdelegate::FastDelegate3<LPCSTR, LPCSTR, EItemType>	TOnItemRename;
-typedef fastdelegate::FastDelegate3<LPCSTR, EItemType, bool&>	TOnItemRemove;
+typedef fastdelegate::FastDelegate1<ListItemsVec&>				TOnILItemsFocused;
+typedef fastdelegate::FastDelegate0<>							TOnILCloseEvent;
+typedef fastdelegate::FastDelegate3<pcstr, pcstr, EItemType>	TOnItemRename;
+typedef fastdelegate::FastDelegate3<pcstr, EItemType, bool&>	TOnItemRemove;
 typedef fastdelegate::FastDelegate0<>							TOnItemAfterRemove;
-typedef fastdelegate::FastDelegate0<> 							TOnCloseEvent;
-typedef fastdelegate::FastDelegate0<>		  					TOnModifiedEvent;
+typedef fastdelegate::FastDelegate0<>							TOnCloseEvent;
+typedef fastdelegate::FastDelegate0<>							TOnModifiedEvent;
 
 //------------------------------------------------------------------------------
 // Prepare Key
 //------------------------------------------------------------------------------
-IC xr_string FolderAppend	(LPCSTR val)
+IC xr_string FolderAppend	(pcstr val)
 {
 	xr_string	tmp 	= (val&&val[0])?val:"";
 	if (val&&val[0])tmp	+= "\\";
 	return 	tmp;
 }
-IC shared_str PrepareKey	(LPCSTR pref, 	LPCSTR key)
+IC shared_str PrepareKey	(pcstr pref, pcstr key)
 {
 	R_ASSERT	(key);
 	return 		shared_str(xr_string(FolderAppend(pref)+key).c_str());
 }
-IC shared_str PrepareKey (LPCSTR pref0, 	LPCSTR pref1,	LPCSTR key)
+IC shared_str PrepareKey (pcstr pref0, pcstr pref1, pcstr key)
 {
 	R_ASSERT	(key);
 	return 		shared_str(xr_string(FolderAppend(pref0)+FolderAppend(pref1)+key).c_str());
 }
-IC shared_str PrepareKey (LPCSTR pref0,	LPCSTR pref1, 	LPCSTR pref2,	LPCSTR key)
+IC shared_str PrepareKey (pcstr pref0, pcstr pref1, pcstr pref2, pcstr key)
 {
 	R_ASSERT	(key);
 	return 		shared_str(xr_string(FolderAppend(pref0)+FolderAppend(pref1)+FolderAppend(pref2)+key).c_str());
@@ -77,7 +77,7 @@ public:
 	virtual CaptionValue*  		__stdcall	CreateCaption	    (PropItemVec& items, shared_str key, shared_str val)=0;
 	virtual CanvasValue*		__stdcall	CreateCanvas	    (PropItemVec& items, shared_str key, shared_str val, int height)=0;
 	virtual ButtonValue*		__stdcall	CreateButton	    (PropItemVec& items, shared_str key, shared_str val, u32 flags)=0;
-	virtual ChooseValue*		__stdcall	CreateChoose	    (PropItemVec& items, shared_str key, shared_str* val, u32 mode, LPCSTR path=0, void* fill_param=0, u32 sub_item_count=1, u32 choose_flags=cfAllowNone)=0;
+	virtual ChooseValue*		__stdcall	CreateChoose	    (PropItemVec& items, shared_str key, shared_str* val, u32 mode, pcstr path=0, void* fill_param=0, u32 sub_item_count=1, u32 choose_flags=cfAllowNone)=0;
 	virtual S8Value* 			__stdcall	CreateS8		    (PropItemVec& items, shared_str key, s8* val, s8 mn=0, s8 mx=100, s8 inc=1)=0;
 	virtual S16Value* 			__stdcall	CreateS16		    (PropItemVec& items, shared_str key, s16* val, s16 mn=0, s16 mx=100, s16 inc=1)=0;
 	virtual S32Value* 	 		__stdcall	CreateS32		    (PropItemVec& items, shared_str key, s32* val, s32 mn=0, s32 mx=100, s32 inc=1)=0;
@@ -87,9 +87,9 @@ public:
 	virtual FloatValue* 		__stdcall	CreateFloat		    (PropItemVec& items, shared_str key, float* val, float mn=0.f, float mx=1.f, float inc=0.01f, int decim=2)=0;
 	virtual BOOLValue* 	  		__stdcall	CreateBOOL		    (PropItemVec& items, shared_str key, BOOL* val)=0;
 	virtual VectorValue*  	 	__stdcall	CreateVector	    (PropItemVec& items, shared_str key, Fvector* val, float mn=0.f, float mx=1.f, float inc=0.01f, int decim=2)=0;
-	virtual Flag8Value*			__stdcall	CreateFlag8		    (PropItemVec& items, shared_str key, Flags8* val, u8 mask, LPCSTR c0=0, LPCSTR c1=0, u32 flags=0)=0;
-	virtual Flag16Value*		__stdcall	CreateFlag16	    (PropItemVec& items, shared_str key, Flags16* val, u16 mask, LPCSTR c0=0, LPCSTR c1=0, u32 flags=0)=0;
-	virtual Flag32Value*		__stdcall	CreateFlag32	    (PropItemVec& items, shared_str key, Flags32* val, u32 mask, LPCSTR c0=0, LPCSTR c1=0, u32 flags=0)=0;
+	virtual Flag8Value*			__stdcall	CreateFlag8		    (PropItemVec& items, shared_str key, Flags8* val, u8 mask, pcstr c0=0, pcstr c1=0, u32 flags=0)=0;
+	virtual Flag16Value*		__stdcall	CreateFlag16	    (PropItemVec& items, shared_str key, Flags16* val, u16 mask, pcstr c0=0, pcstr c1=0, u32 flags=0)=0;
+	virtual Flag32Value*		__stdcall	CreateFlag32	    (PropItemVec& items, shared_str key, Flags32* val, u32 mask, pcstr c0=0, pcstr c1=0, u32 flags=0)=0;
 	virtual Token8Value*		__stdcall	CreateToken8	    (PropItemVec& items, shared_str key, u8* val, xr_token* token)=0;
 	virtual Token16Value*		__stdcall	CreateToken16	    (PropItemVec& items, shared_str key, u16* val, xr_token* token)=0;
 	virtual Token32Value*		__stdcall	CreateToken32	    (PropItemVec& items, shared_str key, u32* val, xr_token* token)=0;
@@ -112,11 +112,11 @@ public:
 	virtual RTextValue* 		__stdcall	CreateNameCB		(PropItemVec& items, shared_str key, shared_str* val, TOnDrawTextEvent=0, RTextValue::TOnBeforeEditEvent=0, RTextValue::TOnAfterEditEvent=0)=0;
 
 	// obsolette    
-	virtual CTextValue* 		__stdcall	CreateCText			(PropItemVec& items, shared_str key, LPSTR val, u32 sz)=0;
-	virtual CListValue* 	 	__stdcall	CreateCList		    (PropItemVec& items, shared_str key, LPSTR val, u32 sz, xr_string* lst, u32 cnt)=0;
-	virtual CTextValue* 		__stdcall	CreateCName		    (PropItemVec& items, shared_str key, LPSTR val, u32 sz, ListItem* owner)=0;
+	virtual CTextValue* 		__stdcall	CreateCText			(PropItemVec& items, shared_str key, pstr val, u32 sz)=0;
+	virtual CListValue* 	 	__stdcall	CreateCList		    (PropItemVec& items, shared_str key, pstr val, u32 sz, xr_string* lst, u32 cnt)=0;
+	virtual CTextValue* 		__stdcall	CreateCName		    (PropItemVec& items, shared_str key, pstr val, u32 sz, ListItem* owner)=0;
 	virtual TokenValueSH*   	__stdcall	CreateTokenSH	    (PropItemVec& items, shared_str key, u32* val, const TokenValueSH::Item* lst, u32 cnt)=0;
-	virtual CTextValue* 		__stdcall	CreateTexture		(PropItemVec& items, shared_str key, LPSTR val, u32 sz)=0;
+	virtual CTextValue* 		__stdcall	CreateTexture		(PropItemVec& items, shared_str key, pstr val, u32 sz)=0;
 };
 //---------------------------------------------------------------------------
 extern IPropHelper &PHelper();
@@ -128,10 +128,10 @@ extern IPropHelper &PHelper();
 //------------------------------------------------------------------------------
 class XR_EPROPS_API IListHelper{
 public:
-	virtual ListItem* 			__stdcall	FindItem			(ListItemsVec& items,	LPCSTR key)=0;
-	virtual bool 				__stdcall	NameAfterEdit		(ListItem* sender, LPCSTR value, shared_str& edit_val)=0;
+	virtual ListItem* 			__stdcall	FindItem			(ListItemsVec& items, pcstr key)=0;
+	virtual bool 				__stdcall	NameAfterEdit		(ListItem* sender, pcstr value, shared_str& edit_val)=0;
 public:
-	virtual ListItem*			__stdcall	CreateItem			(ListItemsVec& items, LPCSTR key, int type, u32 item_flags=0, void* object=0)=0;
+	virtual ListItem*			__stdcall	CreateItem			(ListItemsVec& items, pcstr key, int type, u32 item_flags=0, void* object=0)=0;
 };
 
 #endif

@@ -18,7 +18,7 @@ void CUIFrameLineWnd::Init(float x, float y, float width, float height){
 
 //////////////////////////////////////////////////////////////////////////
 
-void CUIFrameLineWnd::Init(LPCSTR base_name, float x, float y, float width, float height, bool horizontal)
+void CUIFrameLineWnd::Init(pcstr base_name, float x, float y, float width, float height, bool horizontal)
 {
 	Init(x,y,width,height);
 	InitTexture(base_name, horizontal);
@@ -30,7 +30,7 @@ void CUIFrameLineWnd::Init(LPCSTR base_name, float x, float y, float width, floa
 
 //////////////////////////////////////////////////////////////////////////
 
-void CUIFrameLineWnd::InitTexture(LPCSTR tex_name, bool horizontal){
+void CUIFrameLineWnd::InitTexture(pcstr tex_name, bool horizontal){
 
 	Frect			rect;
 	GetAbsoluteRect	(rect);

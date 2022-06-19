@@ -10,13 +10,13 @@ class CUIMessageBoxEx : public CUIDialogWnd, public CUIWndCallback{
 public:
 	CUIMessageBoxEx();
 	virtual ~CUIMessageBoxEx();
-			void SetText(LPCSTR text);
-			LPCSTR GetText ();
-	virtual void Init(LPCSTR xml_template);
+			void SetText(pcstr text);
+			pcstr GetText ();
+	virtual void Init(pcstr xml_template);
 	virtual void SendMessage(CUIWindow* pWnd, s16 msg, void* pData = NULL);
 
-	LPCSTR		 GetHost			();
-	LPCSTR		 GetPassword		();
+	pcstr		 GetHost			();
+	pcstr		 GetPassword		();
 
     CUIMessageBox*	m_pMessageBox;
 };

@@ -17,7 +17,7 @@ class "motivator_binder" (object_binder)
 function motivator_binder:__init (obj) super(obj)
 	self.loaded = false
 	self.last_update = 0
-	----memusage.collect_info(self.object, "__init")
+	--memusage.collect_info(self.object, "__init")
 
     self.first_update = false
 	self.treasure_processed = false
@@ -64,7 +64,7 @@ end
 ----------------------------------------------------------------------------------------------------------------------
 function motivator_binder:net_spawn(sobject)
 	printf("motivator_binder:net_spawn(): self.object:name()='%s'", self.object:name())
-	--memusage.collect_info(self.object, "netspawn_start")
+--	memusage.collect_info(self.object, "netspawn_start")
 	if not object_binder.net_spawn(self, sobject) then
 		return false
 	end
@@ -76,16 +76,16 @@ function motivator_binder:net_spawn(sobject)
 
 	db.add_obj(self.object)
 
-	-- Все CALLBACK-и ставить здесь:
+	--' Все CALLBACK-и ставить здесь:
 	self.object:set_patrol_extrapolate_callback(motivator_binder.extrapolate_callback, self)
 	self.object:set_callback(callback.hit, motivator_binder.hit_callback, self)
 	self.object:set_callback(callback.death, motivator_binder.death_callback, self)
 	self.object:set_callback(callback.use_object, motivator_binder.use_callback, self)
-	--memusage.collect_info(self.object, "after__callback")
+--	memusage.collect_info(self.object, "after__callback")
 
-	--self.object:set_callback(callback.sound, motivator_binder.hear_callback, self)
+--	self.object:set_callback(callback.sound, motivator_binder.hear_callback, self)
 
-    --' Загрузка историй для лагеря.
+	--' Загрузка историй для лагеря.
 	if self.loaded == false then
 		local char_ini = self.object:spawn_ini() or ini_file("scripts\\dummy.ltx")
 		xr_info.loadInfo(self.object, char_ini)
@@ -98,14 +98,14 @@ function motivator_binder:net_spawn(sobject)
 	--' Для зомбированных чуваков говорим что аномалий не существует
 --	if self.object:character_community() == "zombied" then
 		local manager = self.object:motivation_action_manager()
-		manager:remove_evaluator	(stalker_ids.property_anomaly)
-		manager:add_evaluator		(stalker_ids.property_anomaly, property_evaluator_const(false))
+		manager:remove_evaluator(stalker_ids.property_anomaly)
+		manager:add_evaluator(stalker_ids.property_anomaly, property_evaluator_const(false))
 --	end
 	
-    --' загрузка озвучки
-    --memusage.collect_info(self.object, "before_soundmgr")
-    xr_sound.load_sound(self.object)
-    --memusage.collect_info(self.object, "after_soundmgr_netspawn_end")
+	--' загрузка озвучки
+--	memusage.collect_info(self.object, "before_soundmgr")
+	xr_sound.load_sound(self.object)
+--	memusage.collect_info(self.object, "after_soundmgr_netspawn_end")
 
 	xr_gulag.setup_gulag_and_logic_on_spawn( self.object, self.st, sobject, modules.stype_stalker, self.loaded )
 
@@ -113,7 +113,7 @@ function motivator_binder:net_spawn(sobject)
 end
 
 function motivator_binder:net_destroy()
-	--printf("motivator_binder:net_destroy(): self.object:name()='%s'", self.object:name())
+--	printf("motivator_binder:net_destroy(): self.object:name()='%s'", self.object:name())
 
 	local st = db.storage[self.object:id()]
 	if st.active_scheme then
@@ -121,7 +121,6 @@ function motivator_binder:net_destroy()
 	end
 
 	db.del_obj(self.object)
-
 	db.storage[self.object:id()] = nil
 
 	self:clear_callbacks()
@@ -137,20 +136,24 @@ function motivator_binder:clear_callbacks()
 end
 
 function motivator_binder:hit_callback(obj, amount, local_direction, who, bone_index)
-	-- FIXME: коллбеки неплохо было бы регистрировать в общем storage, а не посхемно...
-	-- просто всегда ставить их при включении схемы и снимать при отключении.
+	--' FIXME: коллбеки неплохо было бы регистрировать в общем storage, а не посхемно...
+	--' просто всегда ставить их при включении схемы и снимать при отключении.
 	if self.st.active_section then
 		xr_logic.issue_event(self.object, self.st[self.st.active_scheme], "hit_callback", obj, amount, local_direction, who, bone_index)
 	end
+
 	if self.st.combat_ignore then
 		xr_logic.issue_event(self.object, self.st.combat_ignore, "hit_callback", obj, amount, local_direction, who, bone_index)
 	end
+
 	if self.st.combat then
 		xr_logic.issue_event(self.object, self.st.combat, "hit_callback", obj, amount, local_direction, who, bone_index)
 	end
+
 	if self.st.hit then
 		xr_logic.issue_event(self.object, self.st.hit, "hit_callback", obj, amount, local_direction, who, bone_index)
 	end
+
 	if amount > 0 then
 		printf("HIT_CALLBACK: %s amount=%s bone=%s", obj:name(), amount, tostring(bone_index))
 		sr_territory.issue_event(self.object, "hit_callback", obj, amount, local_direction, who, bone_index)
@@ -162,21 +165,19 @@ function motivator_binder:death_callback(victim, who)
 	if who:id() == db.actor:id() then
 		xr_statistic.addKillCount(self.object)
 	end
-	
+
 	if self.st.death then
 		xr_logic.issue_event(self.object, self.st.death, "death_callback", victim, who)
 	end
+
 	if self.st.active_section then
 		xr_logic.issue_event(self.object, self.st[self.st.active_scheme], "death_callback", victim, who)
 	end
+
 	sr_territory.issue_event(self.object, "death_callback", victim, who)
-
 	sr_light.check_light(self.object)
-
-	smart_terrain.on_death( self.object:id() )
-	
+	smart_terrain.on_death(self.object:id())	
 	death_manager.drop_manager(self.object):create_release_item()
-
 	self:clear_callbacks()
 
 	--' Наносим небольшой импульс вперед.
@@ -189,7 +190,7 @@ function motivator_binder:death_callback(victim, who)
 	h.impulse = 10
 	self.object:hit(h)
 
-	if(actor_stats.remove_from_ranking~=nil)then
+	if (actor_stats.remove_from_ranking ~= nil) then
 		local community = self.object:character_community()
 		if community == "zombied" or
 		   community == "monolith" or
@@ -197,9 +198,9 @@ function motivator_binder:death_callback(victim, who)
 		then
 			return
 		end
+
 		actor_stats.remove_from_ranking(self.object:id())
 	end
-
 end
 
 function motivator_binder:use_callback(obj, who)
@@ -218,34 +219,32 @@ end
 
 function motivator_binder:update(delta)
 	object_binder.update(self, delta)
-
-    if self.first_update == false then
-        if self.object:alive() == false then
+	if self.first_update == false then
+		if self.object:alive() == false then
 			death_manager.drop_manager(self.object):create_release_item()
-        end        
-        self.first_update = true
-    end
+		end
 
-    if time_global() - self.last_update > 1000 then
-       sr_light.check_light(self.object)
-       self.last_update = time_global()
-    end
+		self.first_update = true
+	end
+
+	if time_global() - self.last_update > 1000 then
+		sr_light.check_light(self.object)
+		self.last_update = time_global()
+	end
 
 	--' Апдейт менеджера состояний тела
 	if self.st.state_mgr then
 		if self.object:alive() then
 			self.st.state_mgr:update()
-			-- Апдейт торговли
-			if self.st.state_mgr.combat == false and
-			   self.st.state_mgr.alife == false
-			then
+			--' Апдейт торговли
+			if self.st.state_mgr.combat == false and self.st.state_mgr.alife == false then
 				trade_manager.update(self.object)
-			end			
+			end
 		else
 			self.st.state_mgr = nil
 		end
 	end
-	
+
 	--' Апдейт саундменеджера
 	if self.object:alive() then
 		xr_sound.update(self.object)
@@ -261,30 +260,29 @@ function motivator_binder:update(delta)
 		self.object:set_tip_text_default()
 	end
 
-
 	self.object:info_clear()
 	local best_enemy = self.object:best_enemy()
 	if best_enemy then
 		self.object:info_add('enemy -- ' .. best_enemy:name())
 	end
+
 	local active_section = db.storage[self.object:id()].active_section
 	if active_section then
 		self.object:info_add('section -- ' .. active_section)
 	end
+
 	self.object:info_add('name -- ' .. self.object:name())
 
 	--' Проверка потери жизни
 --[[
-	if lasttime == nil or
-	   game.get_game_time():diffSec(lasttime) > 1
-	then
+	if lasttime == nil or game.get_game_time():diffSec(lasttime) > 1 then
 		printf("%f * %f", self.object.health, self.object.health - lasthealth)
 		lasthealth = self.object.health
 		lasttime = game.get_game_time()
 	end
 ]]
 --[[	if not self.debug_smrt then
-		for k, v in pairs( db.smart_terrain_by_id ) do
+		for k, v in pairs(db.smart_terrain_by_id) do
 			self.debug_smrt = true
 
 			local o = alife():object( self.object:id() )
@@ -299,15 +297,15 @@ function motivator_binder:update(delta)
 end
 
 function motivator_binder:reload(section)
-	--memusage.collect_info(self.object, "reload_start")
+--	memusage.collect_info(self.object, "reload_start")
 	object_binder.reload(self, section)
-	--printf("motivator_binder:reload(): self.object:name()='%s'", self.object:name())
-	--self.object:set_pda_callback(pda_callback)
-	--memusage.collect_info(self.object, "reload_end")
+--	printf("motivator_binder:reload(): self.object:name()='%s'", self.object:name())
+--	self.object:set_pda_callback(pda_callback)
+--	memusage.collect_info(self.object, "reload_end")
 end
 
 function motivator_binder:net_save_relevant()
-	--printf("motivator_binder:net_save_relevant(): self.object:name()='%s'", self.object:name())
+--	printf("motivator_binder:net_save_relevant(): self.object:name()='%s'", self.object:name())
 	return true
 end
 
@@ -333,7 +331,6 @@ function motivator_binder:load(reader)
 		abort("SAVE FILE IS CORRUPT")
 	end
 
-
 	self.treasure_processed = reader:r_bool()
 
 	xr_logic.load_obj(self.object, reader)
@@ -347,6 +344,7 @@ function motivator_binder:hear_callback(self, who, sound_type, sound_position, s
 	if who:id() == self:id() then
 		return
 	end
+
 	local type = "NIL"
 	if bit_and(sound_type, snd_type.weapon) == snd_type.weapon then
 		type = "WPN"
@@ -388,6 +386,7 @@ function motivator_binder:hear_callback(self, who, sound_type, sound_position, s
 			type = "MST_eat"
 		end
 	end
+
 	if type ~= "NIL" then
 		printf("SND *%s* dist: %d [%f], %s -> %s", type, self:position():distance_to(who:position()), sound_power, who:name(), self:name())
 	end
@@ -399,11 +398,11 @@ function AddToMotivator(npc)
 	end
 end
 
--- Эвалюаторы, которые имеют высший приоритет, и, соответственно, перебивают остальные скрипты собой
+--' Эвалюаторы, которые имеют высший приоритет, и, соответственно, перебивают остальные скрипты собой
 function addCommonPrecondition(action)
-	--action:add_precondition (world_property(xr_evaluators_id.reaction,false))
-	action:add_precondition (world_property(xr_evaluators_id.stohe_meet_base + 1,false))
-	action:add_precondition (world_property(xr_evaluators_id.sidor_wounded_base + 0,  false))
-	action:add_precondition (world_property(xr_evaluators_id.chugai_heli_hunter_base, false))
-	action:add_precondition (world_property(xr_evaluators_id.abuse_base, false))
+--	action:add_precondition(world_property(xr_evaluators_id.reaction, false))
+	action:add_precondition(world_property(xr_evaluators_id.stohe_meet_base + 1,false))
+	action:add_precondition(world_property(xr_evaluators_id.sidor_wounded_base + 0, false))
+	action:add_precondition(world_property(xr_evaluators_id.chugai_heli_hunter_base, false))
+	action:add_precondition(world_property(xr_evaluators_id.abuse_base, false))
 end

@@ -57,11 +57,9 @@ void CUIScrollView::Init				()
 	m_VScrollBar->SetWindowName		("scroll_v");
 	m_VScrollBar->SetStepSize		(_max(1,iFloor(GetHeight()/10)));
 	m_VScrollBar->SetPageSize		(iFloor(GetHeight()));
-	
-
 }
 
-void CUIScrollView::SetScrollBarProfile(LPCSTR profile){
+void CUIScrollView::SetScrollBarProfile(pcstr profile){
 	m_scrollbar_profile = profile;
 }
 

@@ -169,7 +169,7 @@ void CUICustomSpin::Update()
 	}
 }
 
-LPCSTR CUICustomSpin::GetText()
+pcstr CUICustomSpin::GetText()
 {
 	return m_pLines->GetText();
 }

@@ -295,7 +295,7 @@ CMotion*        FindMotionKeys(MotionID motion_ID,IRender_Visual* V)
 #ifdef DEBUG
 BOOL	g_ShowAnimationInfo = TRUE;
 #endif // DEBUG
-char* mov_state[] ={
+pstr mov_state[] ={
 	"idle",
 	"walk",
 	"run",

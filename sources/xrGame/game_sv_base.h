@@ -55,7 +55,7 @@ public:
 #define		TEAM_COUNT 4
 
 	bool							NewPlayerName_Exists	(void* pClient, pcstr NewName);
-	void							NewPlayerName_Generate	(void* pClient, LPSTR NewPlayerName);
+	void							NewPlayerName_Generate	(void* pClient, pstr NewPlayerName);
 	void							NewPlayerName_Replace	(void* pClient, pcstr NewPlayerName);
 
 	BOOL							sv_force_sync;
@@ -71,7 +71,7 @@ public:
 	
 public:
 	virtual		void				OnPlayerConnect			(ClientID id_who);
-	virtual		void				OnPlayerDisconnect		(ClientID id_who, LPSTR Name, u16 GameID);
+	virtual		void				OnPlayerDisconnect		(ClientID id_who, pstr Name, u16 GameID);
 	virtual		void				OnPlayerReady			(ClientID id_who)							   {};
 	virtual		void				OnPlayerEnteredGame		(ClientID id_who)	{};
 	virtual		void				OnPlayerConnectFinished	(ClientID id_who)	{};

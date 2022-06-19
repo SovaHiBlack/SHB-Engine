@@ -10,8 +10,8 @@ public:
 	virtual ~CUIListItem(void);
 
 	virtual void Init(float x, float y, float width, float height);
-	virtual void Init(LPCSTR str, float x, float y, float width, float height);
-	virtual void InitTexture(LPCSTR tex_name);
+	virtual void Init(pcstr str, float x, float y, float width, float height);
+	virtual void InitTexture(pcstr tex_name);
 	
 			void* GetData() {return m_pData;}
 			void SetData(void* pData) { m_pData = pData;}

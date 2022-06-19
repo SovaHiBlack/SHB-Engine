@@ -16,7 +16,7 @@ public:
 
 private:
 	struct CScriptToRun {
-		LPSTR						m_script_name;
+		pstr						m_script_name;
 		bool						m_do_string;
 		bool						m_reload;
 

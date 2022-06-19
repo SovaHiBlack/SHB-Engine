@@ -20,7 +20,7 @@ public:
 public:
 	u32						m_level_time;
 	u32						m_interval;
-	float					m_radius;
+	f32					m_radius;
 	flags					m_mask;
 
 public:

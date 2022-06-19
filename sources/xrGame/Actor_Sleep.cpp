@@ -17,7 +17,7 @@
 #define MIN_SPRING_TO_SLEEP			0.8f	
 
 namespace ACTOR_DEFS{
-	const char * easCanSleepResult		= "can_sleep";
+	pcstr easCanSleepResult		= "can_sleep";
 };
 
 void CActor::UpdateSleep()

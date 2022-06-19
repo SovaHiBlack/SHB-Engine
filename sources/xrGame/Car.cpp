@@ -392,7 +392,7 @@ void CCar::shedule_Update(u32 dt)
 #endif
 }
 
-void CCar::UpdateEx			(float fov) 
+void CCar::UpdateEx			(f32 fov)
 {
 	#ifdef DEBUG
 	DbgUbdateCl();
@@ -435,7 +435,7 @@ void CCar::UpdateCL				( )
 
 }
 
- void CCar::VisualUpdate(float fov)
+ void CCar::VisualUpdate(f32 fov)
 {
 	m_pPhysicsShell->InterpolateGlobalTransform(&XFORM());
 
@@ -527,7 +527,8 @@ void	CCar::Hit							(SHit* pHDS)
 	//}
 	WheelHit(HDS.damage(),HDS.bone(),HDS.hit_type);
 	DoorHit(HDS.damage(),HDS.bone(),HDS.hit_type);
-	float hitScale=1.f,woundScale=1.f;
+	f32 hitScale = 1.0f;
+	f32 woundScale = 1.0f;
 	if(HDS.hit_type!=ALife::eHitTypeStrike) CDamageManager::HitScale(HDS.bone(), hitScale, woundScale);
 	HDS.power *= m_HitTypeK[HDS.hit_type]*hitScale;
 
@@ -541,7 +542,7 @@ void	CCar::Hit							(SHit* pHDS)
 		HUD().GetUI()->UIMainIngameWnd->CarPanel().SetCarHealth(GetfHealth()/* /100.f */);
 }
 
-void CCar::ChangeCondition	(float fDeltaCondition)	
+void CCar::ChangeCondition	(f32 fDeltaCondition)
 {
 	
 	CEntity::CalcCondition(-fDeltaCondition);
@@ -552,7 +553,7 @@ void CCar::ChangeCondition	(float fDeltaCondition)
 		HUD().GetUI()->UIMainIngameWnd->CarPanel().SetCarHealth(GetfHealth()/* /100.f */);
 }
 
-void CCar::PHHit(float P,Fvector &dir, CObject *who,s16 element,Fvector p_in_object_space, float impulse, ALife::EHitType hit_type)
+void CCar::PHHit(f32 P, Fvector& dir, CObject* who, s16 element, Fvector p_in_object_space, f32 impulse, ALife::EHitType hit_type)
 {
 	if(!m_pPhysicsShell)	return;
 	if(m_bone_steer==element) return;
@@ -561,7 +562,7 @@ void CCar::PHHit(float P,Fvector &dir, CObject *who,s16 element,Fvector p_in_obj
 		Fvector vimpulse;vimpulse.set(dir);
 		vimpulse.mul(impulse);
 		vimpulse.y *=GravityFactorImpulse();
-		float mag=vimpulse.magnitude();
+		f32 mag=vimpulse.magnitude();
 		if(!fis_zero(mag))
 		{
 			 vimpulse.mul(1.f/mag);
@@ -772,7 +773,7 @@ void CCar::ParseDefinitions()
 		m_break_time=ini->r_float("car_definition","break_time");
 	}
 	/////////////////////////transmission////////////////////////////////////////////////////////////////////////
-	float main_gear_ratio=ini->r_float("car_definition","main_gear_ratio");
+	f32 main_gear_ratio=ini->r_float("car_definition","main_gear_ratio");
 
 	R_ASSERT2(ini->section_exist("transmission_gear_ratio"),"no section transmission_gear_ratio");
 	m_gear_ratious.push_back(ini->r_fvector3("transmission_gear_ratio","R"));
@@ -878,7 +879,7 @@ void CCar::Init()
 	m_current_transmission_num=0;
 	m_pPhysicsShell->set_DynamicScales(1.f,1.f);
 	CDamagableItem::Init(GetfHealth(),3);
-	float l_time_to_explosion=READ_IF_EXISTS(ini,r_float,"car_definition","time_to_explosion",120.f);
+	f32 l_time_to_explosion=READ_IF_EXISTS(ini,r_float,"car_definition","time_to_explosion",120.f);
 	CDelayedActionFuse::Initialize(l_time_to_explosion,CDamagableItem::DamageLevelToHealth(2));
 	{
 		xr_map<u16,SWheel>::iterator i,e;
@@ -945,12 +946,12 @@ void CCar::Init()
 			xr_map   <u16,SWheel>::iterator i=m_wheels_map.find(index);
 			
 			if(i!=m_wheels_map.end())
-					i->second.CDamagableHealthItem::Init(float(atof(*item.second)),2);
+					i->second.CDamagableHealthItem::Init(f32(atof(*item.second)),2);
 			else 
 			{
 				xr_map   <u16,SDoor>::iterator i=m_doors.find(index);
 				R_ASSERT3(i!=m_doors.end(),"only wheel and doors bones allowed for damage defs",*item.first);
-				i->second.CDamagableHealthItem::Init(float(atof(*item.second)),1);
+				i->second.CDamagableHealthItem::Init(f32(atof(*item.second)),1);
 			}
 
 		}
@@ -1355,17 +1356,17 @@ void CCar::PhTune(dReal step)
 		if(e->isActive()&&e->isEnabled())dBodyAddForce(e->get_body(),0,e->getMass()*AntiGravityAccel(),0);
 	}
 }
-float CCar::EffectiveGravity()
+f32 CCar::EffectiveGravity()
 {
-	float g= ph_world->Gravity();
+	f32 g= ph_world->Gravity();
 	if(CPHUpdateObject::IsActive())g*=0.5f;
 	return g;
 }
-float CCar::AntiGravityAccel()
+f32 CCar::AntiGravityAccel()
 {
 	return ph_world->Gravity()-EffectiveGravity();
 }
-float CCar::GravityFactorImpulse()
+f32 CCar::GravityFactorImpulse()
 {
 	return _sqrt(EffectiveGravity()/ph_world->Gravity());
 }
@@ -1373,8 +1374,8 @@ void CCar::UpdateBack()
 {
 	if(b_breaks)
 	{
-		float k=1.f;
-		float time=(Device.fTimeGlobal-m_break_start);
+		f32 k=1.0f;
+		f32 time=(Device.fTimeGlobal-m_break_start);
 		if(time<m_break_time)
 		{
 			k*=(time/m_break_time);
@@ -1535,8 +1536,8 @@ bool CCar::DoorOpen(u16 id)
 }
 void CCar::InitParabola()
 {
-	//float t1=(m_power_rpm-m_torque_rpm);
-	//float t2=m_max_power/m_power_rpm;
+	//f32 t1=(m_power_rpm-m_torque_rpm);
+	//f32 t2=m_max_power/m_power_rpm;
 	//m_c = t2* (3.f*m_power_rpm - 4.f*m_torque_rpm)/t1/2.f;
 	//t2/=m_power_rpm;
 	//m_a = -t2/t1/2.f;
@@ -1556,21 +1557,20 @@ void CCar::InitParabola()
 
 
 }
-float CCar::Parabola(float rpm)
+f32 CCar::Parabola(f32 rpm)
 {
-	//float rpm_2=rpm*rpm;
-	//float value=(m_a*rpm_2*rpm_2*rpm_2+m_b*rpm_2+m_c)*rpm_2;
-	float ex=(rpm-m_b)/m_c;
-	float value=m_a*expf(-ex*ex)*rpm;
+	//f32 rpm_2=rpm*rpm;
+	//f32 value=(m_a*rpm_2*rpm_2*rpm_2+m_b*rpm_2+m_c)*rpm_2;
+	f32 ex=(rpm-m_b)/m_c;
+	f32 value=m_a*expf(-ex*ex)*rpm;
 	if(value<0.f) return 0.f;
 	if(e_state_drive==neutral) value*=m_power_neutral_factor;
 	return value;
 }
 
-float CCar::EnginePower()
+f32 CCar::EnginePower()
 {
-
-	float value;value = Parabola(m_current_rpm);
+	f32 value;value = Parabola(m_current_rpm);
 	if(b_starting)
 	{
 		if(m_current_rpm<m_min_rpm)
@@ -1584,12 +1584,12 @@ float CCar::EnginePower()
 	else
 		return value * m_power_decrement_factor+m_current_engine_power*(1.f-m_power_decrement_factor);
 }
-float CCar::DriveWheelsMeanAngleRate()
+f32 CCar::DriveWheelsMeanAngleRate()
 {
 	xr_vector<SWheelDrive>::iterator i,e;
 	i=m_driving_wheels.begin();
 	e=m_driving_wheels.end();
-	float drive_speed=0.f;
+	f32 drive_speed=0.0f;
 	for(;i!=e;++i)
 	{
 		drive_speed+=i->ASpeed();
@@ -1597,10 +1597,10 @@ float CCar::DriveWheelsMeanAngleRate()
 	}
 	return drive_speed/m_driving_wheels.size();
 }
-float CCar::EngineDriveSpeed()
+f32 CCar::EngineDriveSpeed()
 {
-	//float wheel_speed,drive_speed=dInfinity;
-	float calc_rpm=0.f;
+	//f32 wheel_speed,drive_speed=dInfinity;
+	f32 calc_rpm=0.f;
 	if(b_transmission_switching)
 	{
 		calc_rpm=m_max_rpm;
@@ -1629,7 +1629,7 @@ float CCar::EngineDriveSpeed()
 
 
 
-void CCar::UpdateFuel(float time_delta)
+void CCar::UpdateFuel(f32 time_delta)
 {
 	if(!b_engine_on) return;
 	if(m_current_rpm>m_min_rpm)
@@ -1639,9 +1639,9 @@ void CCar::UpdateFuel(float time_delta)
 	if(m_fuel<EPS) StopEngine();
 }
 
-float CCar::AddFuel(float ammount)
+f32 CCar::AddFuel(f32 ammount)
 {
-	float free_space=m_fuel_tank-m_fuel;
+	f32 free_space=m_fuel_tank-m_fuel;
 	if(ammount < free_space)
 	{
 		m_fuel+=ammount;
@@ -1938,16 +1938,16 @@ u16 CCar::Initiator()
 	else return ID()	;
 }
 
-float	CCar::RefWheelMaxSpeed()
+f32	CCar::RefWheelMaxSpeed()
 {
 	return m_max_rpm/m_current_gear_ratio;
 }
 
-float	CCar:: EngineCurTorque()
+f32	CCar:: EngineCurTorque()
 {
 	return m_current_engine_power/m_current_rpm;
 }
-float	CCar:: RefWheelCurTorque()
+f32	CCar:: RefWheelCurTorque()
 {
 	if(b_transmission_switching) return 0.f;
 	return EngineCurTorque()*((m_current_gear_ratio<0.f) ? -m_current_gear_ratio : m_current_gear_ratio);
@@ -1997,7 +1997,7 @@ bool CCar::CanRemoveObject()
 
 void		CCar::SetExplodeTime				(u32 et)	
 {
-	CDelayedActionFuse::Initialize(float(et)/1000.f,CDamagableItem::DamageLevelToHealth(2));
+	CDelayedActionFuse::Initialize(f32(et)/1000.f,CDamagableItem::DamageLevelToHealth(2));
 }
 u32			CCar::ExplodeTime					()			
 {

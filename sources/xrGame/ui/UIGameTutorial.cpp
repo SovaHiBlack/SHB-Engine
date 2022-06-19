@@ -16,11 +16,11 @@ void CUISequenceItem::Load(CUIXml* xml, int idx)
 	xml->SetLocalRoot				(xml->NavigateToNode("item",idx));
 	int disabled_cnt				= xml->GetNodesNum	(xml->GetLocalRoot(), "disabled_key");
 	for(int i=0; i<disabled_cnt;++i){
-		LPCSTR str					= xml->Read			("disabled_key", i, NULL);
+		pcstr str					= xml->Read			("disabled_key", i, NULL);
 		m_disabled_actions.push_back( action_name_to_id(str) );
 	};
 
-	LPCSTR		str;
+	pcstr		str;
 	bool		functor_exists;
 	int			j;
 	int			f_num				= xml->GetNodesNum(xml->GetLocalRoot(),"function_on_start");
@@ -76,7 +76,7 @@ CUISequencer::CUISequencer()
 	m_bPlayEachItem				= false;
 }
 
-void CUISequencer::Start(LPCSTR tutor_name)
+void CUISequencer::Start(pcstr tutor_name)
 {
 	VERIFY(m_items.size()==0);
 	Device.seqFrame.Add			(this, REG_PRIORITY_LOW-10000);
@@ -97,7 +97,7 @@ void CUISequencer::Start(LPCSTR tutor_name)
 //.	xml_init.InitAutoStaticGroup(uiXml, "global_wnd",		m_UIWindow);
 
 	for(int i=0;i<items_count;++i){
-		LPCSTR	_tp				= uiXml.ReadAttrib			("item",i,"type","");
+		pcstr	_tp				= uiXml.ReadAttrib			("item",i,"type","");
 		bool bVideo				= 0==_stricmp(_tp,"video");
 		CUISequenceItem* pItem	= 0;
 		if (bVideo)	pItem		= xr_new<CUISequenceVideoItem>(this);

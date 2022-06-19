@@ -164,7 +164,7 @@ int CScriptStorage::vscript_log		(ScriptStorage::ELuaMessageType tLuaMessageType
 
 	pcstr		S = "";
 	pcstr		SS = "";
-	LPSTR		S1;
+	pstr		S1;
 	string4096	S2;
 	switch (tLuaMessageType) {
 		case ScriptStorage::eLuaMessageTypeInfo : {
@@ -280,19 +280,19 @@ int __cdecl CScriptStorage::script_log	(ScriptStorage::ELuaMessageType tLuaMessa
 	return		(result);
 }
 
-bool CScriptStorage::parse_namespace(pcstr caNamespaceName, LPSTR b, LPSTR c)
+bool CScriptStorage::parse_namespace(pcstr caNamespaceName, pstr b, pstr c)
 {
 	strcpy			(b,"");
 	strcpy			(c,"");
-	LPSTR			S2	= xr_strdup(caNamespaceName);
-	LPSTR			S	= S2;
+	pstr			S2	= xr_strdup(caNamespaceName);
+	pstr			S	= S2;
 	for (int i=0;;++i) {
 		if (!xr_strlen(S)) {
 			script_log	(ScriptStorage::eLuaMessageTypeError,"the namespace name %s is incorrect!",caNamespaceName);
 			xr_free		(S2);
 			return		(false);
 		}
-		LPSTR			S1 = strchr(S,'.');
+		pstr			S1 = strchr(S,'.');
 		if (S1)
 			*S1				= 0;
 
@@ -323,7 +323,7 @@ bool CScriptStorage::load_buffer	(lua_State *L, pcstr caBuffer, size_t tSize, pc
 			return		(false);
 		sprintf_s			(insert,header,caNameSpaceName,a,b);
 		u32				str_len = xr_strlen(insert);
-		LPSTR			script = xr_alloc<char>(str_len + tSize);
+		pstr			script = xr_alloc<char>(str_len + tSize);
 		strcpy			(script,insert);
 		CopyMemory	(script + str_len,caBuffer,u32(tSize));
 //		try 
@@ -425,11 +425,11 @@ bool CScriptStorage::namespace_loaded(pcstr N, bool remove_from_stack)
 	lua_rawget 				(lua(),LUA_GLOBALSINDEX); 
 	string256				S2;
 	strcpy					(S2,N);
-	LPSTR					S = S2;
+	pstr					S = S2;
 	for (;;) { 
 		if (!xr_strlen(S))
 			return			(false); 
-		LPSTR				S1 = strchr(S,'.'); 
+		pstr				S1 = strchr(S,'.');
 		if (S1)
 			*S1				= 0; 
 		lua_pushstring 		(lua(),S); 
@@ -502,12 +502,12 @@ luabind::object CScriptStorage::name_space(pcstr namespace_name)
 {
 	string256			S1;
 	strcpy				(S1,namespace_name);
-	LPSTR				S = S1;
+	pstr				S = S1;
 	luabind::object		lua_namespace = luabind::get_globals(lua());
 	for (;;) {
 		if (!xr_strlen(S))
 			return		(lua_namespace);
-		LPSTR			I = strchr(S,'.');
+		pstr			I = strchr(S,'.');
 		if (!I)
 			return		(lua_namespace[S]);
 		*I				= 0;

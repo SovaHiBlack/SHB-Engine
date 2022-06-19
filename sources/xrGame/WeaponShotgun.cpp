@@ -30,7 +30,7 @@ void CWeaponShotgun::net_Destroy()
 	inherited::net_Destroy();
 }
 
-void CWeaponShotgun::Load	(LPCSTR section)
+void CWeaponShotgun::Load	(pcstr section)
 {
 	inherited::Load		(section);
 

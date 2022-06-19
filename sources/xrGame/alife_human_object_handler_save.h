@@ -5,7 +5,7 @@
 struct CSortItemPredicate {
 	IC bool							operator()							(const CSE_ALifeInventoryItem *tpALifeInventoryItem1, const CSE_ALifeInventoryItem *tpALifeInventoryItem2)  const
 	{
-		return						(float(tpALifeInventoryItem1->m_dwCost) > float(tpALifeInventoryItem2->m_dwCost));
+		return						(f32(tpALifeInventoryItem1->m_dwCost) > f32(tpALifeInventoryItem2->m_dwCost));
 	};
 };
 

@@ -142,7 +142,7 @@ protected:
 
 
 	void						AttachAddon					(PIItem item_to_upgrade);
-	void						DetachAddon					(LPCSTR addon_name);
+	void						DetachAddon					(pcstr addon_name);
 
 	void						SetCurrentItem				(CUICellItem* itm);
 	CUICellItem*				CurrentItem					();

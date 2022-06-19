@@ -33,8 +33,8 @@ public:
 	static	void				ReparseKeyBindings		();
 private:
 			void				Init					();
-			void				Load					(LPCSTR xml_file);
-	static STRING_VALUE			ParseLine				(LPCSTR str, LPCSTR key, bool bFirst);
-//.	bool						GetKeyboardItem			(LPCSTR src, char* dst);
+			void				Load					(pcstr xml_file);
+	static STRING_VALUE			ParseLine				(pcstr str, pcstr key, bool bFirst);
+//.	bool						GetKeyboardItem			(pcstr src, pstr dst);
 	static STRING_TABLE_DATA*	pData;
 };

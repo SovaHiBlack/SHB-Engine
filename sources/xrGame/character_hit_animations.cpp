@@ -35,7 +35,7 @@ void character_hit_animation_controller::SetupHitMotions(CKinematicsAnimated &ca
 		block_times[i] = 0;
 
 }
-ICF int sign(float x)
+ICF int sign(f32 x)
 {
 	return x < 0 ? -1 : 1;
 }
@@ -47,12 +47,12 @@ IC void set_blend_params(CBlend *B)
 	B->blendAmount = 1.0;
 }
 
-IC void	play_cycle(CKinematicsAnimated* CA,const MotionID &m,u8 channel,u32 &time_block,float base_power)
+IC void	play_cycle(CKinematicsAnimated* CA,const MotionID &m,u8 channel,u32 &time_block, f32 base_power)
 {
 	const BOOL mixin = TRUE;
 	const u32  dellay = 1;
 	const u32  dellay1 = 100;
-	float power = base_power;
+	f32 power = base_power;
 	if(Device.dwTimeGlobal>time_block)
 	{
 		CBlend*	B = (CA->PlayCycle(m,mixin,0,0,channel)) ;
@@ -85,7 +85,7 @@ void character_hit_animation_controller::PlayHitMotion(const Fvector &dir,const 
 		DBG_ClosedCashedDraw(1000);
 	}
 #endif
-	const float power_factor	=2.f;// 2.f;
+	const f32 power_factor	=2.0f;
 	m.invert();
 	m.transform_dir(dr);
 //
@@ -96,7 +96,7 @@ void character_hit_animation_controller::PlayHitMotion(const Fvector &dir,const 
 	Fvector torqu;		
 	torqu.crossproduct(dr,hit_point);
 	hit_point.x = 0;
-	float rotational_ammount = hit_point.magnitude()*power_factor*3;//_abs(torqu.x)
+	f32 rotational_ammount = hit_point.magnitude()*power_factor*3;//_abs(torqu.x)
 	
 	if(torqu.x<0)
 		play_cycle(CA,hit_downr,2,block_times[6],1) ;
@@ -116,7 +116,7 @@ void character_hit_animation_controller::PlayHitMotion(const Fvector &dir,const 
 	dr.x = 0;
 	dr.normalize_safe();
 
-	const float side_secretive_threshold = 0.2f;
+	const f32 side_secretive_threshold = 0.2f;
 	dr.mul(power_factor);
 	if(dr.y>side_secretive_threshold)
 		play_cycle(CA,rthit_motion,1,block_times[0],_abs(dr.y)) ;
@@ -135,7 +135,7 @@ void character_hit_animation_controller::PlayHitMotion(const Fvector &dir,const 
 	//CA->PlayCycle(hit_motion,TRUE,0,0,1) ;
 	//CA->PlayCycle(hit_motion,TRUE,0,0,2) ;
 	//CA->PlayCycle(hit_motion,TRUE,0,0,3) ;
-	//const float fade = 0.1f;
+	//const f32 fade = 0.1f;
 	//for(u16 ii=0;MAX_PARTS>ii;++ii)
 	//CA->LL_FadeCycle(ii,fade,1<<1);
 	//smart_cast<CKinematicsAnimated*>(m_EntityAlife.Visual())->LL_MotionID("actor_hit_ani_180_2");

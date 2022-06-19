@@ -19,7 +19,7 @@
 #include "ai/stalker/ai_stalker.h"
 #include "interactive_motion.h"
 #include "animation_movement_controller.h"
-//const float default_hinge_friction = 5.f;//gray_wolf comment
+//const f32 default_hinge_friction = 5.0f;//gray_wolf comment
 #ifdef DEBUG
 #	include "PHDebug.h"
 #endif // DEBUG
@@ -320,17 +320,18 @@ void CCharacterPhysicsSupport::in_shedule_Update( u32 DT )
 
 #ifdef DEBUG
 	string64 sdbg_stalker_death_anim = "none";
-	LPSTR dbg_stalker_death_anim = sdbg_stalker_death_anim;
+	pstr dbg_stalker_death_anim = sdbg_stalker_death_anim;
 	BOOL  b_death_anim_velocity = TRUE;
 #endif
-const float cmp_angle = M_PI/10.f;
-const float cmp_ldisp = 0.1f;
+const f32 cmp_angle = M_PI/10.f;
+const f32 cmp_ldisp = 0.1f;
 IC bool cmp(const Fmatrix &f0, const Fmatrix &f1 )
 {
 	Fmatrix if0;if0.invert(f0);
 	Fmatrix cm;cm.mul_43(if0,f1);
 	
-	Fvector ax;float ang;
+	Fvector ax;
+	f32 ang;
 	Fquaternion q;
 	q.set(cm);
 	q.get_axis_angle(ax,ang);
@@ -338,11 +339,12 @@ IC bool cmp(const Fmatrix &f0, const Fmatrix &f1 )
 	return ang < cmp_angle && cm.c.square_magnitude() < cmp_ldisp* cmp_ldisp ;
 }
 
-bool is_similar(const Fmatrix &m0,const Fmatrix &m1,float param)
+bool is_similar(const Fmatrix &m0,const Fmatrix &m1, f32 param)
 {
 	Fmatrix tmp1;tmp1.invert(m0);
 	Fmatrix tmp2;tmp2.mul(tmp1,m1);
-	Fvector ax;float ang;
+	Fvector ax;
+	f32 ang;
 	Fquaternion q;
 	q.set(tmp2);
 	q.get_axis_angle(ax,ang);
@@ -368,7 +370,7 @@ bool is_similar(const Fmatrix &m0,const Fmatrix &m1,float param)
 			*/
 }
 
-void CCharacterPhysicsSupport::KillHit(CObject *who, ALife::EHitType hit_type, float &impulse)
+void CCharacterPhysicsSupport::KillHit(CObject *who, ALife::EHitType hit_type, f32& impulse)
 {
 	TestForWounded();
 	Fmatrix prev_pose;prev_pose.set(mXFORM);
@@ -399,7 +401,7 @@ void CCharacterPhysicsSupport::KillHit(CObject *who, ALife::EHitType hit_type, f
 		m_flags.set(fl_block_hit,TRUE);
 }
 
-void CCharacterPhysicsSupport::in_Hit(float P,Fvector &dir, CObject *who,s16 element,Fvector p_in_object_space, float impulse,ALife::EHitType hit_type ,bool is_killing)
+void CCharacterPhysicsSupport::in_Hit(f32 P,Fvector &dir, CObject *who,s16 element,Fvector p_in_object_space, f32 impulse,ALife::EHitType hit_type ,bool is_killing)
 {
 	if(m_EntityAlife.use_simplified_visual	())	return;
 	if(m_flags.test(fl_block_hit))
@@ -489,7 +491,7 @@ void CCharacterPhysicsSupport::in_UpdateCL( )
 		Fmatrix &mp  = K->LL_GetTransform(pb);
 		Fmatrix &me	 = K->LL_GetTransform(eb);
 		Fmatrix &mn	 = K->LL_GetTransform(nb);
-		float d = DET(mh);
+		f32 d = DET(mh);
 		if(Fvector().sub(mh.c,mp.c).magnitude() < 0.3f||d<0.7 )//|| Fvector().sub(me.c,mn.c) < 0.5
 		{
 			
@@ -603,7 +605,7 @@ void CCharacterPhysicsSupport::ActivateShell			( CObject* who )
 	CBoneInstance	&BR = K->LL_GetBoneInstance( K->LL_GetBoneRoot( ) );
 	Fmatrix start_xform; start_xform.identity( );
 	CBlend *anim_mov_blend = 0;
-	//float	blend_time = 0;
+	//f32	blend_time = 0;
 	if( anim_mov_ctrl )
 	{
 		m_EntityAlife.animation_movement( )->ObjStartXform( start_xform );
@@ -828,7 +830,7 @@ void	StaticEnvironmentCB (bool& do_colide,bool bo1,dContact& c,SGameMtl* materia
 void						CCharacterPhysicsSupport::FlyTo(const	Fvector &disp)
 {
 		VERIFY(m_pPhysicsShell);
-		float ammount=disp.magnitude();
+		f32 ammount=disp.magnitude();
 		if(fis_zero(ammount,EPS_L))	return;
 		ph_world->Freeze();
 		bool g=m_pPhysicsShell->get_ApplyByGravity();
@@ -839,7 +841,7 @@ void						CCharacterPhysicsSupport::FlyTo(const	Fvector &disp)
 		m_pPhysicsShell->UnFreeze();
 		Fvector vel;vel.set(disp);
 		const	u16	steps_num=10;
-		const	float	fsteps_num=steps_num;
+		const	f32	fsteps_num=steps_num;
 		vel.mul(1.f/fsteps_num/fixed_step);
 
 
@@ -892,7 +894,7 @@ void CCharacterPhysicsSupport::UpdateFrictionAndJointResistanse()
 		skel_remain_time=0;
 	};
 			
-	float curr_joint_resistance=hinge_force_factor1-
+	f32 curr_joint_resistance=hinge_force_factor1-
 		(skel_remain_time*hinge_force_factor1)/skel_ddelay;
 	m_pPhysicsShell->set_JointResistance(curr_joint_resistance);
 
@@ -917,7 +919,8 @@ void CCharacterPhysicsSupport::UpdateFrictionAndJointResistanse()
 		skeleton_skin_remain_time_after_wound=0;
 	};
 
-	float ddelay,remain;
+	f32 ddelay;
+	f32 remain;
 	if (m_was_wounded)
 	{
 		ddelay=skeleton_skin_ddelay_after_wound;

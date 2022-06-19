@@ -57,7 +57,7 @@ private:
 	CFunctionGraph 					m_dbg_torque_rpm		;
 	CStatGraph	   					*m_dbg_dynamic_plot		;
 	bool							b_plots					;
-	float _stdcall			TorqueRpmFun		(float rpm)		{return Parabola(rpm)/rpm;}
+	f32 _stdcall			TorqueRpmFun		(f32 rpm)		{return Parabola(rpm)/rpm;}
 	void 					InitDebug			()				;
 	void 					DbgSheduleUpdate	()				;
 	void 					DbgUbdateCl			()				;
@@ -86,8 +86,8 @@ static	const u16				cAsCallsnum						=3;
 	virtual void						PhTune						(dReal step)			;
 /////////////////////////////////////////////////////////////////////////
 	virtual void						ApplyDamage					(u16 level)				;
-	virtual	float						Health						()						{return GetfHealth();}
-	virtual void						ChangeCondition				(float fDeltaCondition)	;
+	virtual	f32						Health						()						{return GetfHealth();}
+	virtual void						ChangeCondition				(f32 fDeltaCondition)	;
 	virtual void						StartTimerEffects			()						{};
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	virtual CPhysicsShellHolder*		PPhysicsShellHolder			()						{return static_cast<CPhysicsShellHolder*>(this);}
@@ -135,15 +135,15 @@ public:
 	bool b_transmission_switching;
 
 	u32	 m_dwStartTime;
-	float m_fuel;
-	float m_fuel_tank;
-	float m_fuel_consumption;
+	f32 m_fuel;
+	f32 m_fuel_tank;
+	f32 m_fuel_consumption;
 	u16	  m_driver_anim_type;
 
-	float   m_break_start;
-	float	m_break_time;
-	float	m_breaks_to_back_rate;
-	float	m_power_neutral_factor;//multiplier for power when accelerator is not pressed (0-1,0.25)
+	f32   m_break_start;
+	f32	m_break_time;
+	f32	m_breaks_to_back_rate;
+	f32	m_power_neutral_factor;//multiplier for power when accelerator is not pressed (0-1,0.25)
 	bool	b_exploded;
 
 	struct SWheel: 
@@ -152,14 +152,14 @@ public:
 		typedef		CDamagableHealthItem inherited;
 		u16									bone_id				;
 		bool								inited				;
-		float								radius				;
+		f32								radius				;
 		CPhysicsJoint						*joint				;
 		CCar								*car				;
 		struct			SWheelCollisionParams
 		{
-			float							spring_factor		;
-			float							damping_factor		;
-			float							mu_factor			;
+			f32							spring_factor		;
+			f32							damping_factor		;
+			f32							mu_factor			;
 			SWheelCollisionParams			();
 		}									collision_params	;
 
@@ -170,15 +170,15 @@ public:
 				void			Load									(pcstr section);
 				void 			RestoreNetState							(const CSE_ALifeCar::SWheelState& a_state)														;
 				void 			SaveNetState							(NET_Packet& P)																					;
-				void 			ApplyDriveAxisVel						(float vel)																						;
-				void 			ApplyDriveAxisTorque					(float torque)																					;
-				void 			ApplyDriveAxisVelTorque					(float vel,float torque)																		;
-				void 			ApplySteerAxisVel						(float vel)																						;
-				void 			ApplySteerAxisTorque					(float torque)																					;
-				void 			ApplySteerAxisVelTorque					(float vel,float torque)																		;
-				void 			SetSteerLoLimit							(float lo)																						;
-				void			SetSteerHiLimit							(float hi)																						;
-				void			SetSteerLimits							(float hi,float lo)																				;
+				void 			ApplyDriveAxisVel						(f32 vel)																						;
+				void 			ApplyDriveAxisTorque					(f32 torque)																					;
+				void 			ApplyDriveAxisVelTorque					(f32 vel, f32 torque)																		;
+				void 			ApplySteerAxisVel						(f32 vel)																						;
+				void 			ApplySteerAxisTorque					(f32 torque)																					;
+				void 			ApplySteerAxisVelTorque					(f32 vel, f32 torque)																		;
+				void 			SetSteerLoLimit							(f32 lo)																						;
+				void			SetSteerHiLimit							(f32 hi)																						;
+				void			SetSteerLimits							(f32 hi, f32 lo)																				;
 
 virtual void ApplyDamage			(u16 level);
 		SWheel(CCar* acar)
@@ -192,25 +192,25 @@ virtual void ApplyDamage			(u16 level);
 	struct SWheelDrive  
 	{
 		SWheel* pwheel;
-		float	pos_fvd;
-		float	gear_factor;
+		f32	pos_fvd;
+		f32	gear_factor;
 		void	Init		()						;
 		void	Drive		()						;
 		void	Neutral		()						;
 		void	UpdatePower	()						;
-		float	ASpeed		()						;
+		f32	ASpeed		()						;
 		void	Load		(pcstr /*section*/){}	;
 	};
 	struct SWheelSteer 
 	{
 		SWheel* pwheel;
-		float pos_right;
-		float lo_limit;
-		float hi_limit;
-		float steering_velocity;
-		float steering_torque;
+		f32 pos_right;
+		f32 lo_limit;
+		f32 hi_limit;
+		f32 steering_velocity;
+		f32 steering_torque;
 		bool  limited;			//zero limited for idle steering drive
-		float GetSteerAngle()
+		f32 GetSteerAngle()
 		{
 			return -pos_right*dJointGetHinge2Angle1 (pwheel->joint->GetDJoint());
 		}
@@ -224,10 +224,10 @@ virtual void ApplyDamage			(u16 level);
 	struct SWheelBreak 
 	{
 		SWheel			*pwheel							;
-		float			break_torque					;
-		float			hand_break_torque				;
+		f32			break_torque					;
+		f32			hand_break_torque				;
 		void		 Init			()					;
-		void		 Break			(float k)			;
+		void		 Break			(f32 k)			;
 		void		 HandBreak		()					;
 		void		 Neutral		()					;
 		void		 Load			(pcstr section)	;
@@ -265,11 +265,11 @@ virtual void ApplyDamage			(u16 level);
 		CCar* pcar;
 		bool  update;
 		CPhysicsJoint*  joint;
-		float			torque;
-		float			a_vel;
-		float			pos_open;
-		float			opened_angle;
-		float			closed_angle;
+		f32			torque;
+		f32			a_vel;
+		f32			pos_open;
+		f32			opened_angle;
+		f32			closed_angle;
 		u32				open_time;
 		struct SDoorway
 		{
@@ -293,7 +293,7 @@ virtual void ApplyDamage			(u16 level);
 		void Break();
 virtual void ApplyDamage(u16 level);
 		void Update();
-		float GetAngle();
+		f32 GetAngle();
 		bool CanEnter(const Fvector& pos,const Fvector& dir,const Fvector& foot_pos);
 		bool IsInArea(const Fvector& pos,const Fvector& dir);
 		bool IsFront (const Fvector& pos,const Fvector& dir);
@@ -302,9 +302,9 @@ virtual void ApplyDamage(u16 level);
 		//bool TestPass1(const Fvector& pos,const Fvector& dir);
 		void GetExitPosition(Fvector& pos);
 		void ApplyOpenTorque();
-		void ApplyTorque(float atorque,float aa_vel);
+		void ApplyTorque(f32 atorque, f32 aa_vel);
 		void ApplyCloseTorque();
-		void NeutralTorque(float atorque);
+		void NeutralTorque(f32 atorque);
 		void ClosingToClosed();
 		void ClosedToOpening();
 		void PlaceInUpdate();
@@ -367,7 +367,7 @@ virtual void ApplyDamage(u16 level);
 				SCarSound			(CCar* car)					;
 				~SCarSound			()							;
 		Fvector	relative_pos									;
-		float	volume											;
+		f32	volume											;
 		u32		engine_start_delay								;//snd_engine starts after engine_start_delay ms by snd_engine_start
 		u32		time_state_start								;
 		CCar*	pcar											;
@@ -377,7 +377,7 @@ private:
 	typedef CEntity			inherited;
 private:
 	CCarWeapon*				m_car_weapon;
-	float					m_steer_angle;
+	f32					m_steer_angle;
 	bool					m_repairing;
 	u16						m_bone_steer;
 	CCameraBase*			camera[3];
@@ -399,45 +399,46 @@ private:
 	xr_vector <SDoor*>		m_doors_update;
 	xr_vector <Fvector>		m_gear_ratious;
 	xr_vector <Fmatrix>		m_sits_transforms;// m_sits_transforms[0] - driver_place
-	float					m_current_gear_ratio;
+	f32					m_current_gear_ratio;
 
 	/////////////////////////////////////////////////////////////
 	bool					b_auto_switch_transmission;
 
 	/////////////////////////////////////////////////////////////
-	float					m_doors_torque_factor;
+	f32					m_doors_torque_factor;
 	/////////////////////////////////////////////////////////////
 
-	float					m_max_power					;//best rpm
-	float					m_power_increment_factor	;
-	float					m_power_decrement_factor	;
-	float					m_rpm_increment_factor		;
-	float					m_rpm_decrement_factor		;
+	f32					m_max_power					;//best rpm
+	f32					m_power_increment_factor	;
+	f32					m_power_decrement_factor	;
+	f32					m_rpm_increment_factor		;
+	f32					m_rpm_decrement_factor		;
 	/////////////////////porabola
-	float m_a,m_b,m_c;
+	f32 m_a;
+	f32 m_b;
+	f32 m_c;
 
-	float					m_current_engine_power;
-	float					m_current_rpm;
+	f32					m_current_engine_power;
+	f32					m_current_rpm;
 
-	float					m_axle_friction;
+	f32					m_axle_friction;
 
-	float					m_fSaveMaxRPM;
-	float					m_max_rpm;
-	float					m_min_rpm;
-	float					m_power_rpm;//max power
-	float					m_torque_rpm;//max torque
+	f32					m_fSaveMaxRPM;
+	f32					m_max_rpm;
+	f32					m_min_rpm;
+	f32					m_power_rpm;//max power
+	f32					m_torque_rpm;//max torque
 
-
-	float					m_steering_speed;
-	float					m_ref_radius;
+	f32					m_steering_speed;
+	f32					m_ref_radius;
 	size_t					m_current_transmission_num;
 	///////////////////////////////////////////////////
 	CCarLights				m_lights;
 	////////////////////////////////////////////////////
 	/////////////////////////////////////////////////
 	void				InitParabola();
-	float	_stdcall	Parabola(float rpm);
-	//float GetSteerAngle();
+	f32	_stdcall	Parabola(f32 rpm);
+
 	void				 LimitWheels						()	;
 	void				 Drive								()	;
 	void				 Starter							()	;
@@ -453,13 +454,13 @@ private:
 	void				 ResetKeys							()	;
 
 	////////////////////////////////////////////////////////////////////////////
-	float				RefWheelMaxSpeed					()	;
-	float				EngineCurTorque						()	;
-	float				RefWheelCurTorque					()	;
-	float	 			EnginePower							()	;
-	float	 			EngineDriveSpeed					()	;
-	float	 			DriveWheelsMeanAngleRate			()	;
-IC	float	 			EngineRpmFromWheels					(){return dFabs(DriveWheelsMeanAngleRate()*m_current_gear_ratio);}
+	f32				RefWheelMaxSpeed					()	;
+	f32				EngineCurTorque						()	;
+	f32				RefWheelCurTorque					()	;
+	f32	 			EnginePower							()	;
+	f32	 			EngineDriveSpeed					()	;
+	f32	 			DriveWheelsMeanAngleRate			()	;
+IC	f32	 			EngineRpmFromWheels					(){return dFabs(DriveWheelsMeanAngleRate()*m_current_gear_ratio);}
 	/////////////////////////////////////////////////////////////////////////	
 	void				SteerRight							();
 	void				SteerLeft							();
@@ -481,9 +482,9 @@ IC	size_t				CurrentTransmission					(){return m_current_transmission_num;}
 	void				ReleaseBack							();
 	void				ReleaseBreaks						();
 	void				Revert								();
-	float				EffectiveGravity					();
-	float				AntiGravityAccel					();
-	float				GravityFactorImpulse				();
+	f32				EffectiveGravity					();
+	f32				AntiGravityAccel					();
+	f32				GravityFactorImpulse				();
 	void StartBreaking									();
 	void StopBreaking									();
 	void UpdateBack										();
@@ -500,32 +501,28 @@ IC	size_t				CurrentTransmission					(){return m_current_transmission_num;}
 	void StopExhausts									();
 	void UpdateExhausts									();
 	void ClearExhausts									();
-	void UpdateFuel										(float time_delta);
-	float AddFuel										(float ammount); //ammount - fuel to load, ret - fuel loaded
+	void UpdateFuel										(f32 time_delta);
+	f32 AddFuel										(f32 ammount); //ammount - fuel to load, ret - fuel loaded
 	void CarExplode										();
 	////////////////////////////////////////////		////////
 
 	void					OnCameraChange				(int type);
-
-
-
-
 
 	bool					HUDview						( ) { return IsFocused(); }
 
 	static void				cb_Steer					(CBoneInstance* B);
 	virtual	void			Hit							(SHit* pHDS);
 	virtual void			Die							(CObject* who);
-	virtual void PHHit									(float P,Fvector &dir, CObject *who,s16 element,Fvector p_in_object_space, float impulse, ALife::EHitType hit_type/* =ALife::eHitTypeWound */);
-			bool WheelHit								(float P,s16 element,ALife::EHitType hit_type);
-			bool DoorHit								(float P,s16 element,ALife::EHitType hit_type);
+	virtual void PHHit									(f32 P,Fvector &dir, CObject *who,s16 element,Fvector p_in_object_space, f32 impulse, ALife::EHitType hit_type/* =ALife::eHitTypeWound */);
+			bool WheelHit								(f32 P,s16 element,ALife::EHitType hit_type);
+			bool DoorHit								(f32 P,s16 element,ALife::EHitType hit_type);
 public:
 	virtual bool			allowWeapon					() const		{return true;};
 	virtual bool			HUDView						() const;
 	virtual Fvector			ExitPosition				(){return m_exit_position;}
 	virtual Fvector			ExitVelocity				();
 	void					GetVelocity					(Fvector& vel)	{m_pPhysicsShell->get_LinearVel(vel);}
-	void					cam_Update					(float dt, float fov);
+	void					cam_Update					(f32 dt, f32 fov);
 	void					detach_Actor				();
 	bool					attach_Actor				(CGameObject* actor);
 	bool					is_Door						(u16 id,xr_map<u16,SDoor>::iterator& i);
@@ -544,7 +541,7 @@ public:
 	virtual BOOL			net_Spawn					( CSE_Abstract* DC );
 	virtual void			net_Destroy					();
 	virtual void			UpdateCL					( ); 
-	virtual	void			UpdateEx					(float fov); //called by owner
+	virtual	void			UpdateEx					(f32 fov); //called by owner
 
 	virtual void			shedule_Update				(u32 dt);
 	virtual void			renderable_Render			( ); 
@@ -575,15 +572,15 @@ public:
 	virtual void			SetParam					(int id, Fvector val);
 			bool			HasWeapon					();
 			bool			WpnCanHit					();
-			float			FireDirDiff					();
+			f32				FireDirDiff					();
 			bool			isObjectVisible				(CScriptGameObject* O);
 			Fvector			CurrentVel					();
-	virtual float			GetfHealth					() const		{return CEntity::GetfHealth();};
-	virtual float			SetfHealth					(float value)	{return CEntity::SetfHealth(value);};
+	virtual f32				GetfHealth					() const		{return CEntity::GetfHealth();};
+	virtual f32				SetfHealth					(f32 value)	{return CEntity::SetfHealth(value);};
 
 	// Hits
-	virtual void			HitSignal					(float /**HitAmount/**/,	Fvector& /**local_dir/**/, CObject* /**who/**/, s16 /**element/**/)	{};
-	virtual void			HitImpulse					(float /**amount/**/,		Fvector& /**vWorldDir/**/, Fvector& /**vLocalDir/**/)			{};
+	virtual void			HitSignal					(f32 /**HitAmount/**/,	Fvector& /**local_dir/**/, CObject* /**who/**/, s16 /**element/**/)	{};
+	virtual void			HitImpulse					(f32 /**amount/**/,		Fvector& /**vWorldDir/**/, Fvector& /**vLocalDir/**/)			{};
 	virtual void			g_fireParams				(const CHudItem* /**pHudItem/**/, Fvector& /**P/**/, Fvector& /**D/**/)											{};
 	virtual u16				Initiator					();
 	// HUD
@@ -594,7 +591,7 @@ public:
 			u32				ExplodeTime					()			;
 	// Inventory for the car	
 	CInventory*						GetInventory						(){return inventory;}
-		  void						VisualUpdate						(float fov=90.0f);
+		  void						VisualUpdate						(f32 fov=90.0f);
 protected:
 	virtual void					SpawnInitPhysics					(CSE_Abstract	*D)																;
 	virtual void					net_Save							(NET_Packet& P)																	;
@@ -603,7 +600,6 @@ protected:
 	virtual	void					RestoreNetState						(CSE_PHSkeleton* po)															;
 			void					SetDefaultNetState					(CSE_PHSkeleton* po)															;
 
-	
 public:
 	CCar(void);
 	virtual ~CCar(void);

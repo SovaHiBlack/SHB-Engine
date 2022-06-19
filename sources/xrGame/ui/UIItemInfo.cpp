@@ -37,7 +37,7 @@ CUIItemInfo::~CUIItemInfo()
 	xr_delete					(UIArtefactParams);
 }
 
-void CUIItemInfo::Init(LPCSTR xml_name){
+void CUIItemInfo::Init(pcstr xml_name){
 
 	CUIXml						uiXml;
 	bool xml_result				= uiXml.Init(CONFIG_PATH, UI_PATH, xml_name);
@@ -124,7 +124,7 @@ void CUIItemInfo::Init(LPCSTR xml_name){
 	xml_init.InitAutoStaticGroup	(uiXml, "auto", 0, this);
 }
 
-void CUIItemInfo::Init(float x, float y, float width, float height, LPCSTR xml_name)
+void CUIItemInfo::Init(float x, float y, float width, float height, pcstr xml_name)
 {
 	inherited::Init	(x, y, width, height);
     Init			(xml_name);

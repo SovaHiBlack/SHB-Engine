@@ -87,7 +87,7 @@ void CUILine::AddSubLine(const xr_string& str, u32 color){
 	m_subLines.push_back(sline);
 }
 
-void CUILine::AddSubLine(LPCSTR str, u32 color){
+void CUILine::AddSubLine(pcstr str, u32 color){
 	CUISubLine sline;
 	sline.m_color = color;
 	sline.m_text = str;

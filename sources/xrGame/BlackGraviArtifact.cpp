@@ -185,10 +185,9 @@ void CBlackGraviArtefact::GraviStrike()
 			object_pos.set(pGameObject->Position());
 
 		strike_dir.sub(object_pos, Position()); 
-		float distance = strike_dir.magnitude(); 
+		f32 distance = strike_dir.magnitude();
 
-		float impulse = 100.f*m_fStrikeImpulse * (1.f - (distance/m_fRadius)*
-										   (distance/m_fRadius));
+		f32 impulse = 100.0f * m_fStrikeImpulse * (1.0f - (distance / m_fRadius) * (distance / m_fRadius));
 						
 		if(impulse > .001f) 
 		{
@@ -198,7 +197,7 @@ void CBlackGraviArtefact::GraviStrike()
 //?			setEnabled	(enabled);
 		}
 
-		float hit_power		;
+		f32 hit_power;
 		CEntityAlive* pEntityAlive = smart_cast<CEntityAlive*>(pGameObject);
 		if(pGameObject->m_pPhysicsShell)	hit_power = 0;
 		else if(pEntityAlive && pEntityAlive->g_Alive() && 

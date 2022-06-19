@@ -34,13 +34,13 @@ void CUIListItem::Init(float x, float y, float width, float height)
 	SetPushOffset( Fvector2().set(0.0f,0.0f));
 }
 
-void CUIListItem::InitTexture(LPCSTR tex_name){
+void CUIListItem::InitTexture(pcstr tex_name){
 	CUIButton::InitTexture(tex_name);
 	SetTextX(m_UIStaticItem.GetRect().width());
 }
 
 
-void CUIListItem::Init(LPCSTR str, float x, float y, float width, float height)
+void CUIListItem::Init(pcstr str, float x, float y, float width, float height)
 {
 	Init(x,y,width, height);
 	SetTextST(str);	

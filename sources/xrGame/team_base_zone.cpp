@@ -21,7 +21,7 @@
 #include "..\XR_3DA\IGame_Persistent.h"
 
 #ifdef DEBUG
-#	include "debug_renderer.h"
+#	include "DebugRenderer.h"
 #endif
 
 CTeamBaseZone::CTeamBaseZone		()

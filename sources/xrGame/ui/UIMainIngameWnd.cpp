@@ -51,7 +51,7 @@
 #include "../game_news.h"
 
 #ifdef DEBUG
-#	include "../debug_renderer.h"
+#	include "../DebugRenderer.h"
 
 void test_draw	();
 void test_key	(int dik);
@@ -877,7 +877,7 @@ void CUIMainIngameWnd::RenderQuickInfos()
 		return;
 
 	static CGameObject *pObject			= NULL;
-	LPCSTR actor_action					= m_pActor->GetDefaultActionForObject();
+	pcstr actor_action					= m_pActor->GetDefaultActionForObject();
 	UIStaticQuickHelp.Show				(NULL!=actor_action);
 
 	if(NULL!=actor_action){
@@ -972,7 +972,7 @@ void CUIMainIngameWnd::SetFlashIconState_(EFlashingIcons type, bool enable)
 
 void CUIMainIngameWnd::InitFlashingIcons(CUIXml* node)
 {
-	LPCSTR const flashingIconNodeName = "flashing_icon";
+	pcstr const flashingIconNodeName = "flashing_icon";
 	int staticsCount = node->GetNodesNum("", 0, flashingIconNodeName);
 
 	CUIXmlInit xml_init;
@@ -1201,7 +1201,7 @@ void test_key	(int dik)
 }
 /*
 D3DCOLOR _clr	= D3DXCOLOR( 1.0f, 0.0f, 0.0f, 1.0f );
-LPCSTR _str		= "This is a trivial call to ID3DXFont::DrawText";
+pcstr _str		= "This is a trivial call to ID3DXFont::DrawText";
 int _len		= 43;
 */
 void test_draw	()

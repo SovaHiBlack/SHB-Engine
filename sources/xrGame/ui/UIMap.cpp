@@ -35,11 +35,10 @@ void CUICustomMap::Update()
 }
 
 
-void CUICustomMap::Init	(shared_str name, CInifile& gameLtx, LPCSTR sh_name)
+void CUICustomMap::Init	(shared_str name, CInifile& gameLtx, pcstr sh_name)
 {
-
 	m_name				= name;
-	LPCSTR tex;
+	pcstr tex;
 	Fvector4 tmp;
 	if( gameLtx.line_exist(m_name,"texture") ){
 		tex			= gameLtx.r_string(m_name,"texture");
@@ -245,7 +244,7 @@ CUIGlobalMap::~CUIGlobalMap()
 {
 }
 
-void CUIGlobalMap::Init		(shared_str name, CInifile& gameLtx, LPCSTR sh_name)
+void CUIGlobalMap::Init		(shared_str name, CInifile& gameLtx, pcstr sh_name)
 {
 	inherited::Init			(name, gameLtx, sh_name);
 	SetMaxZoom				(gameLtx.r_float(m_name,"max_zoom"));
@@ -360,7 +359,7 @@ void CUILevelMap::Draw()
 
 }
 
-void CUILevelMap::Init	(shared_str name, CInifile& gameLtx, LPCSTR sh_name)
+void CUILevelMap::Init	(shared_str name, CInifile& gameLtx, pcstr sh_name)
 {
 	inherited::Init(name, gameLtx, sh_name);
 	Fvector4 tmp = gameLtx.r_fvector4(MapName(),"global_rect");
@@ -378,7 +377,7 @@ void CUILevelMap::Init	(shared_str name, CInifile& gameLtx, LPCSTR sh_name)
 //	Msg("Succesfully loaded map %s. Zoom=%f",*name, kw);
 /*	
 	if(gameLtx.line_exist(MapName(),"anomalies_texture")){
-		LPCSTR texture						= gameLtx.r_string	(MapName(),"anomalies_texture");
+		pcstr texture						= gameLtx.r_string	(MapName(),"anomalies_texture");
 		Fvector4 tmp						= gameLtx.r_fvector4(MapName(),"anomalies_texture_rect"); //lt,wh
 		Frect rect; rect.set				(tmp.x,tmp.y,tmp.x+tmp.z,tmp.y+tmp.w);
 		m_anomalies_map						= xr_new<CUIStatic>();
@@ -518,7 +517,7 @@ CUIMiniMap::CUIMiniMap()
 CUIMiniMap::~CUIMiniMap()
 {}
 
-void CUIMiniMap::Init(shared_str name, CInifile& gameLtx, LPCSTR sh_name)
+void CUIMiniMap::Init(shared_str name, CInifile& gameLtx, pcstr sh_name)
 {
 	inherited::Init(name, gameLtx, sh_name);
 	CUIStatic::SetColor(0x7fffffff);

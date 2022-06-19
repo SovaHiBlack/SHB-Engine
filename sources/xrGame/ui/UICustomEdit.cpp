@@ -62,7 +62,7 @@ void CUICustomEdit::Init(float x, float y, float width, float height){
 	m_lines.SetWndSize(m_wndSize);
 }
 
-void CUICustomEdit::SetLightAnim(LPCSTR lanim)
+void CUICustomEdit::SetLightAnim(pcstr lanim)
 {
 	if(lanim&&xr_strlen(lanim))
 		m_lanim	= LALib.FindItem(lanim);
@@ -389,12 +389,12 @@ void  CUICustomEdit::Draw()
 	}
 }
 
-void CUICustomEdit::SetText(LPCSTR str)
+void CUICustomEdit::SetText(pcstr str)
 {
 	CUILinesOwner::SetText(str);
 }
 
-LPCSTR CUICustomEdit::GetText(){
+pcstr CUICustomEdit::GetText(){
 	return CUILinesOwner::GetText();
 }
 

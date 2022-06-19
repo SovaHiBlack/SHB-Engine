@@ -28,8 +28,8 @@ protected:
 	virtual void	StopHUDSounds		();
 
 	//дополнительная информация о глушителе
-	LPCSTR			m_sSilencerFlameParticles;
-	LPCSTR			m_sSilencerSmokeParticles;
+	pcstr			m_sSilencerFlameParticles;
+	pcstr			m_sSilencerSmokeParticles;
 	HUD_SOUND		sndSilencerShot;
 
 	ESoundTypes		m_eSoundShow;
@@ -83,10 +83,10 @@ protected:
 	virtual void	state_MagEmpty	(float dt);
 	virtual void	state_Misfire	(float dt);
 public:
-					CWeaponMagazined	(LPCSTR name="AK74",ESoundTypes eSoundType=SOUND_TYPE_WEAPON_SUBMACHINEGUN);
+					CWeaponMagazined	(pcstr name="AK74",ESoundTypes eSoundType=SOUND_TYPE_WEAPON_SUBMACHINEGUN);
 	virtual			~CWeaponMagazined	();
 
-	virtual void	Load			(LPCSTR section);
+	virtual void	Load			(pcstr section);
 	virtual CWeaponMagazined*cast_weapon_magazined	()		 {return this;}
 
 	virtual void	SetDefaults		();
@@ -165,7 +165,7 @@ public:
 	virtual	void	OnPrevFireMode		();
 	virtual bool	HasFireModes		() { return m_bHasDifferentFireModes; };
 	virtual	int		GetCurrentFireMode	() { return m_aFireModes[m_iCurFireMode]; };	
-	virtual LPCSTR	GetCurrentFireModeStr	() {return m_sCurFireMode;};
+	virtual pcstr	GetCurrentFireModeStr	() {return m_sCurFireMode;};
 
 	virtual void	save				(NET_Packet &output_packet);
 	virtual void	load				(IReader &input_packet);

@@ -46,7 +46,7 @@ SCallbackInfo*	CUIWndCallback::NewCallback ()
 	return m_callbacks.back();
 }
 
-void CUIWndCallback::AddCallback(LPCSTR control_id, s16 event, const void_function &f)
+void CUIWndCallback::AddCallback(pcstr control_id, s16 event, const void_function &f)
 {
 	SCallbackInfo* c	= NewCallback ();
 	c->m_cpp_callback	= f;

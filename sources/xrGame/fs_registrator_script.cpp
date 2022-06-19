@@ -20,9 +20,9 @@ pcstr update_path_script(CLocatorAPI* fs, pcstr initial, pcstr src)
 }
 
 class FS_file_list{
-	xr_vector<LPSTR>*	m_p;
+	xr_vector<pstr>*	m_p;
 public :
-				FS_file_list	(xr_vector<LPSTR>* p):m_p(p)	{ }
+				FS_file_list	(xr_vector<pstr>* p):m_p(p)	{ }
 	u32			Size			()								{ return m_p->size();}
 	pcstr		GetAt			(u32 idx)						{ return m_p->at(idx);}
 	void		Free			()								{ FS.file_list_close(m_p);};

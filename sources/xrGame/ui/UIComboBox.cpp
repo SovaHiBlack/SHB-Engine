@@ -83,7 +83,7 @@ void CUIComboBox::Init(float x, float y, float width, float height)
 }
 
 #include "uilistboxitem.h"
-CUIListBoxItem* CUIComboBox::AddItem_(LPCSTR str, int _data)
+CUIListBoxItem* CUIComboBox::AddItem_(pcstr str, int _data)
 {
     R_ASSERT2			(m_bInited, "Can't add item to ComboBox before Initialization");
 	CUIListBoxItem* itm = m_list.AddItem(str);
@@ -121,7 +121,7 @@ void CUIComboBox::SetCurrentValue()
 		tok++;
 	}
 
-	LPCSTR cur_val		= *CStringTable().translate( GetOptTokenValue());
+	pcstr cur_val		= *CStringTable().translate( GetOptTokenValue());
 	m_text.SetText		( cur_val );
 	m_list.SetSelectedText( cur_val );
 	
@@ -153,7 +153,7 @@ bool CUIComboBox::IsChanged()
 */
 }
 
-LPCSTR CUIComboBox::GetText()
+pcstr CUIComboBox::GetText()
 {
 	return m_text.GetText	();
 }

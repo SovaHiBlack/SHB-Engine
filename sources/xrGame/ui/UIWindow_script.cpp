@@ -52,17 +52,17 @@ int GetARGB(u16 a, u16 r, u16 g, u16 b)
 {return color_argb(a,r,g,b);}
 
 
-Frect	get_texture_rect(LPCSTR icon_name)
+Frect	get_texture_rect(pcstr icon_name)
 {
 	return CUITextureMaster::GetTextureRect(icon_name);
 }
 
-LPCSTR	get_texture_name(LPCSTR icon_name)
+pcstr	get_texture_name(pcstr icon_name)
 {
 	return CUITextureMaster::GetTextureFileName(icon_name);
 }
 
-TEX_INFO	get_texture_info(LPCSTR name, LPCSTR def_name)
+TEX_INFO	get_texture_info(pcstr name, pcstr def_name)
 {
 	return CUITextureMaster::FindItem(name, def_name);
 }
@@ -144,7 +144,7 @@ void CUIWindow::script_register(lua_State *L)
 		.def("SetHeight",				&CUIFrameWindow::SetHeight)
 		.def("SetColor",				&CUIFrameWindow::SetColor)
 		.def("GetTitleStatic",			&CUIFrameWindow::GetTitleStatic)
-		.def("Init",					(void(CUIFrameWindow::*)(LPCSTR,float,float,float,float))&CUIFrameWindow::Init),
+		.def("Init",					(void(CUIFrameWindow::*)(pcstr,float,float,float,float))&CUIFrameWindow::Init),
 
 		class_<CUIFrameLineWnd, CUIWindow>("CUIFrameLineWnd")
 		.def(					constructor<>())
@@ -153,7 +153,7 @@ void CUIWindow::script_register(lua_State *L)
 		.def("SetOrientation",					&CUIFrameLineWnd::SetOrientation)
 		.def("SetColor",						&CUIFrameLineWnd::SetColor)
 		.def("GetTitleStatic",					&CUIFrameLineWnd::GetTitleStatic)
-		.def("Init",							(void(CUIFrameLineWnd::*)(LPCSTR,float,float,float,float,bool))&CUIFrameLineWnd::Init),
+		.def("Init",							(void(CUIFrameLineWnd::*)(pcstr,float,float,float,float,bool))&CUIFrameLineWnd::Init),
 
 		class_<CUILabel, CUIFrameLineWnd>("CUILabel")
 		.def(					constructor<>())

@@ -13,14 +13,14 @@ class CBreakableObject: public CPhysicsShellHolder {
 	typedef	CPhysicsShellHolder		inherited;
 private:
 		bool				b_resived_damage;
-		float				m_max_frame_damage;
-static	float				m_damage_threshold;
-static	float				m_health_threshhold;
-static	float				m_immunity_factor;
+		f32				m_max_frame_damage;
+static	f32				m_damage_threshold;
+static	f32				m_health_threshhold;
+static	f32				m_immunity_factor;
 		Fvector				m_contact_damage_pos;
 		Fvector				m_contact_damage_dir;
 
-		float				fHealth;
+		f32				fHealth;
 		CPHStaticGeomShell	*m_pUnbrokenObject;
 		CPhysicsShell		*m_Shell;
 static	u32					m_remove_time;
@@ -52,8 +52,8 @@ private:
 	void			ActivateBroken		();
 	void			Split				();
 	void			Break				();
-	void			ApplyExplosion		(const Fvector &dir,float impulse);
-	void			CheckHitBreak		(float power,ALife::EHitType hit_type);
+	void			ApplyExplosion		(const Fvector &dir, f32 impulse);
+	void			CheckHitBreak		(f32 power,ALife::EHitType hit_type);
 	void			ProcessDamage		();
 	void			SendDestroy			();
 	void			enable_notificate	();

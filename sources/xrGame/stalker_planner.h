@@ -32,8 +32,8 @@ protected:
 			void			add_actions			();
 #ifdef LOG_ACTION
 public:
-	virtual LPCSTR			action2string		(const _action_id_type &action_id);
-	virtual LPCSTR			property2string		(const _condition_type &property_id);
+	virtual pcstr			action2string		(const _action_id_type &action_id);
+	virtual pcstr			property2string		(const _condition_type &property_id);
 #endif
 
 public:
@@ -45,7 +45,7 @@ public:
 	IC		bool			affect_cover		() const;
 
 #ifdef LOG_ACTION
-	virtual	LPCSTR			object_name			() const;
+	virtual	pcstr			object_name			() const;
 #endif
 };
 

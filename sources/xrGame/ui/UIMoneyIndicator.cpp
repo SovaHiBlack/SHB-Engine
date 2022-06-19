@@ -29,11 +29,11 @@ void CUIMoneyIndicator::InitFromXML(CUIXml& xml_doc){
 	m_money_change.SetVisible(false);
 }
 
-void CUIMoneyIndicator::SetMoneyAmount(LPCSTR money){
+void CUIMoneyIndicator::SetMoneyAmount(pcstr money){
 	m_money_amount.SetText(money);
 }
 
-void CUIMoneyIndicator::SetMoneyChange(LPCSTR money){
+void CUIMoneyIndicator::SetMoneyChange(pcstr money){
 	m_money_change.SetText(money);
 	m_money_change.SetVisible(true);
 	m_pAnimChange->Reset();

@@ -24,7 +24,7 @@ void CUIEditBox::Init(float x, float y, float width, float height){
 	CUICustomEdit::Init(x,y,width,height);
 }
 
-void CUIEditBox::InitTexture(LPCSTR texture){
+void CUIEditBox::InitTexture(pcstr texture){
 	m_frameLine.InitTexture(texture);
 }
 

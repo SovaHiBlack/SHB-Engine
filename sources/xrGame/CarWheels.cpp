@@ -38,7 +38,7 @@ void  CCar::SWheel::WheellCollisionCallback(bool& do_colide,bool bo1,dContact& c
 }
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-bool CCar::WheelHit(float P,s16 element,ALife::EHitType hit_type)
+bool CCar::WheelHit(f32 P,s16 element,ALife::EHitType hit_type)
 {
 	xr_map   <u16,SWheel>::iterator i=m_wheels_map.find(element);
 	if(i!=m_wheels_map.end())
@@ -86,53 +86,53 @@ void CCar::SWheel::Load(pcstr section)
 	}
 
 }
-void CCar::SWheel::ApplyDriveAxisTorque(float torque)
+void CCar::SWheel::ApplyDriveAxisTorque(f32 torque)
 {
 	if(!joint) return;
 	dJointSetHinge2Param(joint->GetDJoint(), dParamFMax2,torque);//car->m_axle_friction
 }
-void CCar::SWheel::ApplyDriveAxisVel(float vel)
+void CCar::SWheel::ApplyDriveAxisVel(f32 vel)
 {
 	if(!joint) return;
 	dJointSetHinge2Param(joint->GetDJoint(), dParamVel2, vel);
 }
 
 
-void CCar::SWheel::ApplyDriveAxisVelTorque(float vel,float torque)
+void CCar::SWheel::ApplyDriveAxisVelTorque(f32 vel, f32 torque)
 {
 	ApplyDriveAxisVel(vel);
 	ApplyDriveAxisTorque(torque);
 
 }
-void CCar::SWheel::ApplySteerAxisVel(float vel)
+void CCar::SWheel::ApplySteerAxisVel(f32 vel)
 {
 	if(!joint) return;
 	dJointSetHinge2Param(joint->GetDJoint(), dParamVel, vel);
 }
 
-void CCar::SWheel::ApplySteerAxisTorque(float torque)
+void CCar::SWheel::ApplySteerAxisTorque(f32 torque)
 {
 	if(!joint) return;
 	dJointSetHinge2Param(joint->GetDJoint(), dParamFMax, torque);
 }
 
-void CCar::SWheel::ApplySteerAxisVelTorque(float vel,float torque)
+void CCar::SWheel::ApplySteerAxisVelTorque(f32 vel, f32 torque)
 {
 	ApplySteerAxisVel(vel);
 	ApplySteerAxisTorque(torque);
 }
 
-void CCar::SWheel::SetSteerHiLimit(float hi)
+void CCar::SWheel::SetSteerHiLimit(f32 hi)
 {
 	if(!joint) return;
 	dJointSetHinge2Param(joint->GetDJoint(), dParamHiStop, hi);
 }
-void CCar::SWheel::SetSteerLoLimit(float lo)
+void CCar::SWheel::SetSteerLoLimit(f32 lo)
 {
 	if(!joint) return;
 	dJointSetHinge2Param(joint->GetDJoint(), dParamLoStop, lo);
 }
-void CCar::SWheel::SetSteerLimits(float hi,float lo)
+void CCar::SWheel::SetSteerLimits(f32 hi, f32 lo)
 {
 	SetSteerHiLimit(hi);
 	SetSteerLoLimit(lo);
@@ -143,7 +143,8 @@ void CCar::SWheel::ApplyDamage(u16 level)
 	inherited::ApplyDamage(level);
 	if(!joint) return;
 	if(level == 0 )return;
-	float sf,df;
+	f32 sf;
+	f32 df;
 	dJointID dj=joint->GetDJoint();
 	switch(level) {
 
@@ -203,7 +204,7 @@ void CCar::SWheelDrive::Init()
 }
 void CCar::SWheelDrive::Drive()
 {
-	float cur_speed=pwheel->car->RefWheelMaxSpeed()/gear_factor;
+	f32 cur_speed=pwheel->car->RefWheelMaxSpeed()/gear_factor;
 	pwheel->ApplyDriveAxisVel(pos_fvd*cur_speed);
 }
 void CCar::SWheelDrive::UpdatePower()
@@ -215,7 +216,7 @@ void CCar::SWheelDrive::Neutral()
 	pwheel->ApplyDriveAxisVelTorque(0.f,pwheel->car->m_axle_friction);
 }
 
-float CCar::SWheelDrive::ASpeed()
+f32 CCar::SWheelDrive::ASpeed()
 {
 	CPhysicsJoint* J=pwheel->joint;
 	if(!J) return 0.f;
@@ -238,7 +239,7 @@ void CCar::SWheelSteer::Init()
 	}
 	
 	pos_right=pos_right>0.f ? -1.f : 1.f;
-	float steering_torque=pKinematics->LL_UserData()->r_float("car_definition","steering_torque");
+	f32 steering_torque=pKinematics->LL_UserData()->r_float("car_definition","steering_torque");
 	pwheel->ApplySteerAxisTorque(steering_torque);
 	dJointSetHinge2Param(pwheel->joint->GetDJoint(), dParamFudgeFactor, 0.005f/steering_torque);
 	pwheel->ApplySteerAxisVel(0.f);
@@ -327,7 +328,7 @@ void CCar::SWheelSteer::Limit()
 void CCar::SWheelBreak::Init()
 {
 	pwheel->Init();
-	float k=pwheel->radius/pwheel->car->m_ref_radius;
+	f32 k=pwheel->radius/pwheel->car->m_ref_radius;
 
 	break_torque			*=k;
 	hand_break_torque		*=k;
@@ -345,7 +346,7 @@ void CCar::SWheelBreak::Load(pcstr section)
 		hand_break_torque				=READ_IF_EXISTS(ini,r_float,section,"hand_break_torque",hand_break_torque);
 	}
 }
-void CCar::SWheelBreak::Break(float k)
+void CCar::SWheelBreak::Break(f32 k)
 {
 	pwheel->ApplyDriveAxisVelTorque(0.f,100000.f*break_torque*k);
 }
