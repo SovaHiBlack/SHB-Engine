@@ -60,7 +60,7 @@ u32 calc_texture_size(int lod, u32 mip_cnt, u32 orig_size)
 		return orig_size;
 
 	int _lod		= lod;
-	float res		= float(orig_size);
+	f32 res		= f32(orig_size);
 
 	while(_lod>0){
 		--_lod;
@@ -69,7 +69,7 @@ u32 calc_texture_size(int lod, u32 mip_cnt, u32 orig_size)
 	return iFloor	(res);
 }
 
-const float		_BUMPHEIGH = 8.f;
+const f32		_BUMPHEIGH = 8.f;
 //////////////////////////////////////////////////////////////////////
 // Utility pack
 //////////////////////////////////////////////////////////////////////

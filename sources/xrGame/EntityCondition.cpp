@@ -132,44 +132,40 @@ void CEntityCondition::reinit	()
 	m_iWhoID				= NULL;
 
 	ClearWounds				();
-
 }
 
-void CEntityCondition::ChangeHealth(float value)
+void CEntityCondition::ChangeHealth(f32 value)
 {
 	VERIFY(_valid(value));	
 	m_fDeltaHealth += (CanBeHarmed() || (value > 0)) ? value : 0;
 }
 
-void CEntityCondition::ChangePower(float value)
+void CEntityCondition::ChangePower(f32 value)
 {
 	m_fDeltaPower += value;
 }
 
-
-
-void CEntityCondition::ChangeRadiation(float value)
+void CEntityCondition::ChangeRadiation(f32 value)
 {
 	m_fDeltaRadiation += value;
 }
 
-void CEntityCondition::ChangePsyHealth(float value)
+void CEntityCondition::ChangePsyHealth(f32 value)
 {
 	m_fDeltaPsyHealth += value;
 }
 
-
-void CEntityCondition::ChangeCircumspection(float value)
+void CEntityCondition::ChangeCircumspection(f32 value)
 {
 	m_fDeltaCircumspection += value;
 }
-void CEntityCondition::ChangeEntityMorale(float value)
+
+void CEntityCondition::ChangeEntityMorale(f32 value)
 {
 	m_fDeltaEntityMorale += value;
 }
 
-
-void CEntityCondition::ChangeBleeding(float percent)
+void CEntityCondition::ChangeBleeding(f32 percent)
 {
 	//затянуть раны
 	for(WOUND_VECTOR_IT it = m_WoundVector.begin(); m_WoundVector.end() != it; ++it)
@@ -209,7 +205,7 @@ void CEntityCondition::UpdateConditionTime()
 	if(m_bTimeValid)
 	{
 		if (_cur_time > m_iLastTimeCalled){
-			float x					= float(_cur_time-m_iLastTimeCalled)/1000.0f;
+			f32 x					= f32(_cur_time-m_iLastTimeCalled)/1000.0f;
 			SetConditionDeltaTime	(x);
 
 		}else 
@@ -282,9 +278,7 @@ void CEntityCondition::UpdateCondition()
 	clamp						(m_fPsyHealth,		0.0f,		m_fPsyHealthMax);
 }
 
-
-
-float CEntityCondition::HitOutfitEffect(float hit_power, ALife::EHitType hit_type, s16 element, float AP)
+f32 CEntityCondition::HitOutfitEffect(f32 hit_power, ALife::EHitType hit_type, s16 element, f32 AP)
 {
     CInventoryOwner* pInvOwner		= smart_cast<CInventoryOwner*>(m_object);
 	if(!pInvOwner)					return hit_power;
@@ -292,7 +286,7 @@ float CEntityCondition::HitOutfitEffect(float hit_power, ALife::EHitType hit_typ
 	CCustomOutfit* pOutfit			= (CCustomOutfit*)pInvOwner->inventory().m_slots[OUTFIT_SLOT].m_pIItem;
 	if(!pOutfit)					return hit_power;
 
-	float new_hit_power				= hit_power;
+	f32 new_hit_power				= hit_power;
 
 	if (hit_type == ALife::eHitTypeFireWound)
 		new_hit_power				= pOutfit->HitThruArmour(hit_power, element, AP);
@@ -305,7 +299,7 @@ float CEntityCondition::HitOutfitEffect(float hit_power, ALife::EHitType hit_typ
 	return							new_hit_power;
 }
 
-float CEntityCondition::HitPowerEffect(float power_loss)
+f32 CEntityCondition::HitPowerEffect(f32 power_loss)
 {
 	CInventoryOwner* pInvOwner		 = smart_cast<CInventoryOwner*>(m_object);
 	if(!pInvOwner)					 return power_loss;
@@ -313,12 +307,12 @@ float CEntityCondition::HitPowerEffect(float power_loss)
 	CCustomOutfit* pOutfit			= (CCustomOutfit*)pInvOwner->inventory().m_slots[OUTFIT_SLOT].m_pIItem;
 	if(!pOutfit)					return power_loss;
 
-	float new_power_loss			= power_loss*pOutfit->GetPowerLoss();
+	f32 new_power_loss			= power_loss*pOutfit->GetPowerLoss();
 
 	return							new_power_loss;
 }
 
-CWound* CEntityCondition::AddWound(float hit_power, ALife::EHitType hit_type, u16 element)
+CWound* CEntityCondition::AddWound(f32 hit_power, ALife::EHitType hit_type, u16 element)
 {
 	//максимальное число косточек 64
 	VERIFY(element  < 64 || BI_NONE == element);
@@ -357,8 +351,8 @@ CWound* CEntityCondition::ConditionHit(SHit* pHDS)
 	m_pWho = pHDS->who;
 	m_iWhoID = (NULL != pHDS->who) ? pHDS->who->ID() : 0;
 
-	float hit_power_org = pHDS->damage();
-	float hit_power = hit_power_org;
+	f32 hit_power_org = pHDS->damage();
+	f32 hit_power = hit_power_org;
 	hit_power = HitOutfitEffect(hit_power, pHDS->hit_type, pHDS->boneID, pHDS->ap);
 
 	bool bAddWound = true;
@@ -429,10 +423,9 @@ CWound* CEntityCondition::ConditionHit(SHit* pHDS)
 		return NULL;
 }
 
-
-float CEntityCondition::BleedingSpeed()
+f32 CEntityCondition::BleedingSpeed()
 {
-	float bleeding_speed		=0;
+	f32 bleeding_speed		=0.0f;
 
 	for(WOUND_VECTOR_IT it = m_WoundVector.begin(); m_WoundVector.end() != it; ++it)
 		bleeding_speed			+= (*it)->TotalSize();
@@ -441,10 +434,9 @@ float CEntityCondition::BleedingSpeed()
 	return (m_WoundVector.empty() ? 0.f : bleeding_speed / m_WoundVector.size());
 }
 
-
 void CEntityCondition::UpdateHealth()
 {
-	float bleeding_speed		= BleedingSpeed() * m_fDeltaTime * m_change_v.m_fV_Bleeding;
+	f32 bleeding_speed		= BleedingSpeed() * m_fDeltaTime * m_change_v.m_fV_Bleeding;
 	m_bIsBleeding				= fis_zero(bleeding_speed)?false:true;
 	m_fDeltaHealth				-= CanBeHarmed() ? bleeding_speed : 0;
 	m_fDeltaHealth				+= m_fDeltaTime * m_change_v.m_fV_HealthRestore;
@@ -457,7 +449,7 @@ void CEntityCondition::UpdatePower()
 {
 }
 
-void CEntityCondition::UpdatePsyHealth(float k)
+void CEntityCondition::UpdatePsyHealth(f32 k)
 {
 	if(m_fPsyHealth>0)
 	{
@@ -465,7 +457,7 @@ void CEntityCondition::UpdatePsyHealth(float k)
 	}
 }
 
-void CEntityCondition::UpdateRadiation(float k)
+void CEntityCondition::UpdateRadiation(f32 k)
 {
 	if(m_fRadiation>0)
 	{

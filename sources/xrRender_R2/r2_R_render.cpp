@@ -6,8 +6,8 @@
 
 IC	bool	pred_sp_sort	(ISpatial*	_1, ISpatial* _2)
 {
-	float	d1		= _1->spatial.sphere.P.distance_to_sqr	(Device.vCameraPosition);
-	float	d2		= _2->spatial.sphere.P.distance_to_sqr	(Device.vCameraPosition);
+	f32	d1		= _1->spatial.sphere.P.distance_to_sqr	(Device.vCameraPosition);
+	f32	d2		= _2->spatial.sphere.P.distance_to_sqr	(Device.vCameraPosition);
 	return	d1<d2	;
 }
 
@@ -93,7 +93,7 @@ void CRender::render_main	(Fmatrix&	m_ViewProjection, bool _fportals)
 				// lightsource
 				light*			L				= (light*)	(spatial->dcast_Light());
 				VERIFY							(L);
-				float	lod		= L->get_LOD	();
+				f32	lod		= L->get_LOD	();
 				if (lod>EPS_L)	{
 					vis_data&		vis		= L->get_homdata	( );
 					if	(HOM.visible(vis))	Lights.add_light	(L);
@@ -167,18 +167,18 @@ void CRender::render_menu	()
 	Fvector2						p0,p1;
 	u32								Offset;
 	u32		C						= color_rgba	(255,255,255,255);
-	float	_w						= float(Device.dwWidth);
-	float	_h						= float(Device.dwHeight);
-	float	d_Z						= EPSILON_7;
-	float	d_W						= 1.f;
+	f32	_w						= f32(Device.dwWidth);
+	f32	_h						= f32(Device.dwHeight);
+	f32	d_Z						= EPSILON_7;
+	f32	d_W						= 1.f;
 	p0.set							(.5f/_w, .5f/_h);
 	p1.set							((_w+.5f)/_w, (_h+.5f)/_h );
 
 	FVF::TL* pv						= (FVF::TL*) RCache.Vertex.Lock	(4,Target->g_menu->vb_stride,Offset);
-	pv->set							(EPS,			float(_h+EPS),	d_Z,	d_W, C, p0.x, p1.y);	pv++;
+	pv->set							(EPS, f32(_h+EPS),	d_Z,	d_W, C, p0.x, p1.y);	pv++;
 	pv->set							(EPS,			EPS,			d_Z,	d_W, C, p0.x, p0.y);	pv++;
-	pv->set							(float(_w+EPS),	float(_h+EPS),	d_Z,	d_W, C, p1.x, p1.y);	pv++;
-	pv->set							(float(_w+EPS),	EPS,			d_Z,	d_W, C, p1.x, p0.y);	pv++;
+	pv->set							(f32(_w+EPS), f32(_h+EPS),	d_Z,	d_W, C, p1.x, p1.y);	pv++;
+	pv->set							(f32(_w+EPS),	EPS,			d_Z,	d_W, C, p1.x, p0.y);	pv++;
 	RCache.Vertex.Unlock			(4,Target->g_menu->vb_stride);
 	RCache.Render					(D3DPT_TRIANGLELIST,Offset,0,4,0,2);
 }
@@ -215,7 +215,7 @@ void CRender::Render		()
 	//******* Z-prefill calc - DEFERRER RENDERER
 	if (ps_r2_ls_flags.test(R2FLAG_ZFILL))		{
 		Device.Statistic->RenderCALC.Begin			();
-		float		z_distance	= ps_r2_zfill		;
+		f32		z_distance	= ps_r2_zfill		;
 		Fmatrix		m_zfill, m_project				;
 		m_project.build_projection	(
 			deg2rad(Device.fFOV/* *Device.fASPECT*/), 

@@ -17,20 +17,20 @@ using namespace DetailPathManager;
 class CDetailPathManager {
 public:
 	struct STravelParams {
-		float			linear_velocity;
-		float			angular_velocity; 
-		float			real_angular_velocity; 
+		f32			linear_velocity;
+		f32			angular_velocity;
+		f32			real_angular_velocity;
 
 		STravelParams(){}
-		STravelParams(float l, float a) : linear_velocity(l), angular_velocity(a), real_angular_velocity(a) {}
-		STravelParams(float l, float a, float ra) : linear_velocity(l), angular_velocity(a), real_angular_velocity(ra) {}
+		STravelParams(f32 l, f32 a) : linear_velocity(l), angular_velocity(a), real_angular_velocity(a) {}
+		STravelParams(f32 l, f32 a, f32 ra) : linear_velocity(l), angular_velocity(a), real_angular_velocity(ra) {}
 	};
 
 	struct STravelParamsIndex : public STravelParams {
 		u32				index;
 		
 		STravelParamsIndex(){}
-		STravelParamsIndex(float l, float a, u32 i) : STravelParams(l,a), index(i) {}
+		STravelParamsIndex(f32 l, f32 a, u32 i) : STravelParams(l,a), index(i) {}
 	};
 
 	struct STravelPoint {
@@ -44,9 +44,9 @@ public:
 
 	struct SCirclePoint {
 		Fvector2		center;
-		float			radius;
+		f32			radius;
 		Fvector2		point;
-		float			angle;
+		f32			angle;
 	};
 
 	struct STrajectoryPoint :
@@ -57,7 +57,7 @@ public:
 
 	struct SDist {
 		u32		index;
-		float	time;
+		f32	time;
 
 		bool operator<(const SDist &d1) const
 		{
@@ -118,25 +118,25 @@ private:
 	bool										m_state_patrol_path;
 	u32											m_last_patrol_point;
 	u32											m_time_path_built;
-	float										m_extrapolate_length;
+	f32										m_extrapolate_length;
 
 private:
-	float										m_distance_to_target;
+	f32										m_distance_to_target;
 	bool										m_distance_to_target_actual;
 
 private:
 	IC	STravelPoint compute_better_key_point	(const STravelPoint		&point0,	const STravelPoint					&point1,		const STravelPoint					&point2,				bool								reverse_order);
 	IC		bool	better_key_point			(const STravelPoint		&point0,	const STravelPoint					&point2,		const STravelPoint					&point10,			const STravelPoint					&point11);
 	IC		bool	check_mask					(u32					mask,			  u32							test) const;
-	IC		void	adjust_point				(const Fvector2			&source,		  float							yaw,				  float							magnitude,				  Fvector2						&dest) const;
-	IC		void	assign_angle				(float					&angle,		const float							start_yaw,		const float							dest_yaw,			const bool							positive,			const EDirectionType				direction_type,				const bool				start = true) const;
+	IC		void	adjust_point				(const Fvector2			&source, f32							yaw, f32							magnitude,				  Fvector2						&dest) const;
+	IC		void	assign_angle				(f32& angle,		const f32							start_yaw,		const f32							dest_yaw,			const bool							positive,			const EDirectionType				direction_type,				const bool				start = true) const;
 	IC		void	compute_circles				(STrajectoryPoint		&point,			  SCirclePoint					*circles);
 			bool	compute_tangent				(const STrajectoryPoint	&start,		const SCirclePoint					&start_circle,	const STrajectoryPoint				&dest,				const SCirclePoint					&dest_circle,		      SCirclePoint					*tangents,					const EDirectionType	direction_type);
 			bool	build_circle_trajectory		(const STrajectoryPoint &position,		  xr_vector<STravelPathPoint>	*path,				  u32							*vertex_id,			const u32							velocity);
 			bool	build_line_trajectory		(const STrajectoryPoint &start,		const STrajectoryPoint				&dest,				  u32							vertex_id,				  xr_vector<STravelPathPoint>	*path,				const u32							velocity);
 			bool	build_trajectory			(const STrajectoryPoint &start,		const STrajectoryPoint				&dest,				  xr_vector<STravelPathPoint>	*path,				const u32							velocity1,			const u32							velocity2,					const u32				velocity3);
-			bool	build_trajectory			(	   STrajectoryPoint &start,			  STrajectoryPoint				&dest,			const SCirclePoint					tangents[4][2],		const u32							tangent_count,		      xr_vector<STravelPathPoint>	*path,							  float				&time,							const u32 velocity1, const u32				velocity2,		const u32 velocity3);
-			bool	compute_trajectory			(      STrajectoryPoint &start,			  STrajectoryPoint				&dest,				  xr_vector<STravelPathPoint>	*path,					  float							&time,				const u32							velocity1,					const u32				velocity2,						const u32 velocity3, const EDirectionType	direction_type);
+			bool	build_trajectory			(	   STrajectoryPoint &start,			  STrajectoryPoint				&dest,			const SCirclePoint					tangents[4][2],		const u32							tangent_count,		      xr_vector<STravelPathPoint>	*path, f32&time,							const u32 velocity1, const u32				velocity2,		const u32 velocity3);
+			bool	compute_trajectory			(      STrajectoryPoint &start,			  STrajectoryPoint				&dest,				  xr_vector<STravelPathPoint>	*path, f32& time,				const u32							velocity1,					const u32				velocity2,						const u32 velocity3, const EDirectionType	direction_type);
 			bool	compute_path				(      STrajectoryPoint &start,			  STrajectoryPoint				&dest,				  xr_vector<STravelPathPoint>	*m_tpTravelLine, 	const xr_vector<STravelParamsIndex> &m_start_params,	const xr_vector<STravelParamsIndex> &m_dest_params,				const u32				straight_line_index,			const u32 straight_line_index_negative);
 			void	validate_vertex_position	(	   STrajectoryPoint &point) const;
 			bool	init_build					(const xr_vector<u32>	&level_path,	  u32							intermediate_index,	  STrajectoryPoint				&start,					  STrajectoryPoint				&dest,					  u32							&straight_line_index,			  u32				&straight_line_index_negative);
@@ -199,13 +199,13 @@ public:
 	IC		void								set_use_dest_orientation(const bool use_dest_orientation);
 	IC		void								set_state_patrol_path	(const bool state_patrol_path);
 	IC		bool								state_patrol_path		() const;
-	IC		void								extrapolate_length		(float extrapolate_length);
-	IC		float								extrapolate_length		() const;
+	IC		void								extrapolate_length		(f32 extrapolate_length);
+	IC		f32								extrapolate_length		() const;
 
 public:
 			void								on_travel_point_change	(const u32 &previous_travel_point_index);
-	IC		const float							&distance_to_target		();
-			u32									location_on_path		(const CGameObject *object, float distance, Fvector &result) const;
+	IC		const f32&							distance_to_target		();
+			u32									location_on_path		(const CGameObject *object, f32 distance, Fvector &result) const;
 };
 
 #include "detail_path_manager_inline.h"

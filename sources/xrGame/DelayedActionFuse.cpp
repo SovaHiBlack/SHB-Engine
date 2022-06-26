@@ -8,7 +8,7 @@ CDelayedActionFuse::CDelayedActionFuse()
 	m_fSpeedChangeCondition		=0.f			;
 }
 
-void CDelayedActionFuse::SetTimer(float current_condition)
+void CDelayedActionFuse::SetTimer(f32 current_condition)
 {
 	VERIFY(isInitialized()&&!isActive());
 	m_dafflags.set(flActive,TRUE);
@@ -21,13 +21,13 @@ void CDelayedActionFuse::SetTimer(float current_condition)
 	StartTimerEffects();
 
 }
-float CDelayedActionFuse::Time()
+f32 CDelayedActionFuse::Time()
 {
 	VERIFY(isInitialized());
 	if(!isActive())	return m_fTime;
 	else			return m_fTime-Device.fTimeGlobal;
 }
-void CDelayedActionFuse::Initialize(float time,float critical_condition)
+void CDelayedActionFuse::Initialize(f32 time, f32 critical_condition)
 {
 	if(isActive())		return;
 
@@ -44,17 +44,17 @@ void CDelayedActionFuse::Initialize(float time,float critical_condition)
 	if(fis_zero(m_fSpeedChangeCondition))m_dafflags.set(flNoConditionChange,TRUE);
 	m_dafflags.set(flInitialized,TRUE);
 }
-bool CDelayedActionFuse::Update(float current_condition)
+bool CDelayedActionFuse::Update(f32 current_condition)
 {
 	VERIFY(isActive());
 	
 	bool ret=false;
-	float l_time_to_explosion=m_fTime-Device.fTimeGlobal;
+	f32 l_time_to_explosion=m_fTime-Device.fTimeGlobal;
 
 	if(!m_dafflags.test(flNoConditionChange))
 	{
-		float delta_condition=m_fSpeedChangeCondition*l_time_to_explosion-current_condition;
-		//float t=current_condition/m_fSpeedChangeCondition;
+		f32 delta_condition=m_fSpeedChangeCondition*l_time_to_explosion-current_condition;
+		//f32 t=current_condition/m_fSpeedChangeCondition;
 		//if(t<l_time_to_explosion) m_fTime;
 		//VERIFY(delta_condition<=0.f);
 		if(delta_condition>0.f)	delta_condition=0.f;//.

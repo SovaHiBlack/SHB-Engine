@@ -59,7 +59,7 @@ void CPortalTraverser::traverse			(IRender_Sector* start, CFrustum& F, Fvector& 
 	}
 }
 
-void CPortalTraverser::fade_portal	(CPortal* _p, float ssa)
+void CPortalTraverser::fade_portal	(CPortal* _p, f32 ssa)
 {
 	f_portals.push_back				(mk_pair(_p,ssa));
 }
@@ -73,14 +73,15 @@ void CPortalTraverser::destroy		()
 	f_geom.destroy					();
 	f_shader.destroy				();
 }
-ICF		bool	psort_pred			(const std::pair<CPortal*, float>& _1, const std::pair<CPortal*, float>& _2)
+ICF		bool	psort_pred			(const std::pair<CPortal*, f32>& _1, const std::pair<CPortal*, f32>& _2)
 {
-	float		d1		= PortalTraverser.i_vBase.distance_to_sqr(_1.first->S.P);
-	float		d2		= PortalTraverser.i_vBase.distance_to_sqr(_2.first->S.P);
+	f32		d1		= PortalTraverser.i_vBase.distance_to_sqr(_1.first->S.P);
+	f32		d2		= PortalTraverser.i_vBase.distance_to_sqr(_2.first->S.P);
 	return		d2>d1;	// descending, back to front
 }
-extern float r_ssaDISCARD			;
-extern float r_ssaLOD_A, r_ssaLOD_B ;
+extern f32 r_ssaDISCARD			;
+extern f32 r_ssaLOD_A;
+extern f32 r_ssaLOD_B;
 void CPortalTraverser::fade_render	()
 {
 	if (f_portals.empty())			return;
@@ -95,16 +96,16 @@ void CPortalTraverser::fade_render	()
 	// fill buffers
 	u32			_offset				= 0;
 	FVF::L*		_v					= (FVF::L*)RCache.Vertex.Lock(_pcount*3,f_geom.stride(),_offset);
-	float		ssaRange			= r_ssaLOD_A - r_ssaLOD_B;
+	f32		ssaRange			= r_ssaLOD_A - r_ssaLOD_B;
 	Fvector		_ambient_f			= g_pGamePersistent->Environment().CurrentEnv.ambient;
 	u32			_ambient			= color_rgba_f	(_ambient_f.x,_ambient_f.y,_ambient_f.z,0);
 	for (u32 _it = 0; _it<f_portals.size(); _it++)
 	{
-		std::pair<CPortal*, float>&	fp		= f_portals	[_it]	;
+		std::pair<CPortal*, f32>&	fp		= f_portals	[_it]	;
 		CPortal*					_P		= fp.first	;
-		float						_ssa	= fp.second	;
-		float		ssaDiff					= _ssa-r_ssaLOD_B	;
-		float		ssaScale				= ssaDiff/ssaRange	;
+		f32						_ssa	= fp.second	;
+		f32		ssaDiff					= _ssa-r_ssaLOD_B	;
+		f32		ssaScale				= ssaDiff/ssaRange	;
 		int			iA						= iFloor((1-ssaScale)*255.5f);	clamp(iA,0,255);
 		u32							_clr	= subst_alpha(_ambient,u32(iA));	
 

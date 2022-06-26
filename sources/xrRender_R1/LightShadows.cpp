@@ -9,21 +9,21 @@
 #include "..\XR_3DA\fbasicvisual.h"
 #include "..\XR_3DA\CustomHUD.h"
  
-const	float		S_distance		= 48;
-const	float		S_distance2		= S_distance*S_distance;
-const	float		S_ideal_size	= 4.f;		// ideal size for the object
-const	float		S_fade			= 4.5;
-const	float		S_fade2			= S_fade*S_fade;
+const	f32		S_distance		= 48;
+const	f32		S_distance2		= S_distance*S_distance;
+const	f32		S_ideal_size	= 4.f;		// ideal size for the object
+const	f32		S_fade			= 4.5;
+const	f32		S_fade2			= S_fade*S_fade;
 
-const	float		S_level			= .05f;		// clip by energy level
+const	f32			S_level			= .05f;		// clip by energy level
 const	int			S_size			= 85;
 const	int			S_rt_size		= 512;
 const	int			batch_size		= 256;
-const	float		S_tess			= .5f;
+const	f32			S_tess			= .5f;
 const	int 		S_ambient		= 32;
 const	int 		S_clip			= 256-8;
 const	D3DFORMAT	S_rtf			= D3DFMT_A8R8G8B8;
-const	float		S_blur_kernel	= 0.75f;
+const	f32		S_blur_kernel	= 0.75f;
 
 const	u32			cache_old		= 30*1000;	// 30 secs
 
@@ -93,11 +93,11 @@ void CLightShadows::set_object	(IRenderable* O)
 		}
 
 		Fvector		C;	O->renderable.xform.transform_tiny		(C,O->renderable.visual->vis.sphere.P);
-		float		R				= O->renderable.visual->vis.sphere.R;
-		float		D				= C.distance_to(Device.vCameraPosition)+R;
+		f32		R				= O->renderable.visual->vis.sphere.R;
+		f32		D				= C.distance_to(Device.vCameraPosition)+R;
 					// D=0 -> P=0; 
 					// R<S_ideal_size -> P=max, R>S_ideal_size -> P=min
-		float		_priority		= (D/S_distance)*(S_ideal_size/(R+EPS));
+		f32		_priority		= (D/S_distance)*(S_ideal_size/(R+EPS));
 		if (_priority<1.f)		current	= O;
 		else					current = 0;
 		
@@ -131,44 +131,44 @@ void CLightShadows::add_element	(NODE& N)
 	casters.back()->nodes.push_back		(N);
 }
 
-IC float PLC_energy	(Fvector& P, Fvector& N, light* L, float E)
+IC f32 PLC_energy	(Fvector& P, Fvector& N, light* L, f32 E)
 {
 	Fvector Ldir;
 	if (L->flags.type==IRender_Light::DIRECT)
 	{
 		// Cos
 		Ldir.invert	(L->direction);
-		float D		= Ldir.dotproduct( N );
+		f32 D		= Ldir.dotproduct( N );
 		if( D <=0 )						return 0;
 		
 		// Trace Light
-		float A		= D*E;
+		f32 A		= D*E;
 		return A;
 	} else {
 		// Distance
-		float sqD	= P.distance_to_sqr(L->position);
+		f32 sqD	= P.distance_to_sqr(L->position);
 		if (sqD > (L->range*L->range))	return 0;
 		
 		// Dir
 		Ldir.sub	(L->position,P);
 		Ldir.normalize_safe();
-		float D		= Ldir.dotproduct( N );
+		f32 D		= Ldir.dotproduct( N );
 		if( D <=0 )						return 0;
 		
 		// Trace Light
-		float R		= _sqrt		(sqD);
-		float att	= 1-(1/(1+R));
-		float A		= D * E * att;
+		f32 R		= _sqrt		(sqD);
+		f32 att	= 1-(1/(1+R));
+		f32 A		= D * E * att;
 		return A;
 	}
 }
 
-IC int PLC_calc	(Fvector& P, Fvector& N, light* L, float energy, Fvector& O)
+IC int PLC_calc	(Fvector& P, Fvector& N, light* L, f32 energy, Fvector& O)
 {
-	float	E		= PLC_energy(P,N,L,energy);
-	float	C1		= clampr(Device.vCameraPosition.distance_to_sqr(P)/S_distance2,	0.f,1.f);
-	float	C2		= clampr(O.distance_to_sqr(P)/S_fade2,							0.f,1.f);
-	float	A		= 1.f-1.5f*E*(1.f-C1)*(1.f-C2);
+	f32	E		= PLC_energy(P,N,L,energy);
+	f32	C1		= clampr(Device.vCameraPosition.distance_to_sqr(P)/S_distance2,	0.f,1.f);
+	f32	C2		= clampr(O.distance_to_sqr(P)/S_fade2,							0.f,1.f);
+	f32	A		= 1.f-1.5f*E*(1.f-C1)*(1.f-C2);
 	return			iCeil(255.f*A);
 }
 
@@ -185,7 +185,7 @@ void CLightShadows::calculate	()
 	int	slot_id		= 0;
 	int slot_line	= S_rt_size/S_size;
 	int slot_max	= slot_line*slot_line;
-	const float	eps = 2*EPS_L;
+	const f32	eps = 2*EPS_L;
 	for (u32 o_it=0; o_it<casters.size(); o_it++)
 	{
 		caster&	C	= *casters	[o_it];
@@ -213,7 +213,7 @@ void CLightShadows::calculate	()
 
 			// calculate light center
 			Fvector		Lpos	= L.source->position;
-			float		Lrange	= L.source->range;
+			f32		Lrange	= L.source->range;
 			//Log	("* l-pos:",Lpos);
 			//Msg	("* l-range: %f",Lrange);
 			if (L.source->flags.type==IRender_Light::DIRECT)
@@ -225,14 +225,14 @@ void CLightShadows::calculate	()
 			} else {
 				VERIFY		(_valid(Lpos));
 				VERIFY		(_valid(C.C));
-				float		_dist	;
+				f32		_dist	;
 				while		(true)	{
 					_dist	=	C.C.distance_to	(Lpos);
 					//Msg		("* o-dist: %f",	_dist);
 					if (_dist>EPS_L)		break;
 					Lpos.y					+=	.01f;	//. hack to avoid light-in-the-center-of-object
 				}
-				float		_R		=	C.O->renderable.visual->vis.sphere.R+0.1f;
+				f32		_R		=	C.O->renderable.visual->vis.sphere.R+0.1f;
 				//Msg	("* o-r: %f",_R);
 				if (_dist<_R)		{
 					Fvector			Ldir;
@@ -245,14 +245,14 @@ void CLightShadows::calculate	()
 			
 			// calculate projection-matrix
 			Fmatrix		mProject,mProjectR;
-			float		p_dist	=	C.C.distance_to(Lpos);
-			float		p_R		=	C.O->renderable.visual->vis.sphere.R;
-			float		p_hat	=	p_R/p_dist;
-			float		p_asp	=	1.f;
-			float		p_near	=	p_dist-p_R-eps;									
-			float		p_nearR	=	C.C.distance_to(L.source->position) + p_R*0.85f + eps;
+			f32		p_dist	=	C.C.distance_to(Lpos);
+			f32		p_R		=	C.O->renderable.visual->vis.sphere.R;
+			f32		p_hat	=	p_R/p_dist;
+			f32		p_asp	=	1.f;
+			f32		p_near	=	p_dist-p_R-eps;
+			f32		p_nearR	=	C.C.distance_to(L.source->position) + p_R*0.85f + eps;
 						p_nearR =	p_near;
-			float		p_far	=	_min(Lrange,_max(p_dist+S_fade,p_dist+p_R));	
+			f32		p_far	=	_min(Lrange,_max(p_dist+S_fade,p_dist+p_R));
 			if (p_near<eps)			continue;
 			if (p_far<(p_near+eps))	continue;
 			if (p_hat>0.9f)			continue;
@@ -363,7 +363,7 @@ void CLightShadows::render	()
 	int			slot_line	= S_rt_size/S_size;
 	
 	// Projection and xform
-	float _43					=	Device.mProject._43;
+	f32 _43					=	Device.mProject._43;
 	Device.mProject._43			-=	0.002f; 
 	RCache.set_xform_world		(Fidentity);
 	RCache.set_xform_project	(Device.mProject);
@@ -379,13 +379,13 @@ void CLightShadows::render	()
 	{
 		Device.Statistic->RenderDUMP_Srender.Begin	();
 		shadow&		S			=	shadows[s_it];
-		float		Le			=	S.L->color.intensity()*S.E;
+		f32		Le			=	S.L->color.intensity()*S.E;
 		int			s_x			=	S.slot%slot_line;
 		int			s_y			=	S.slot/slot_line;
 		Fvector2	t_scale, t_offset;
-		t_scale.set	(float(S_size)/float(S_rt_size),float(S_size)/float(S_rt_size));
+		t_scale.set	(f32(S_size)/ f32(S_rt_size), f32(S_size)/ f32(S_rt_size));
 		t_scale.mul (.5f);
-		t_offset.set(float(s_x)/float(slot_line),float(s_y)/float(slot_line));
+		t_offset.set(f32(s_x)/ f32(slot_line), f32(s_y)/ f32(slot_line));
 		t_offset.x	+= .5f/S_rt_size;
 		t_offset.y	+= .5f/S_rt_size;
 		
@@ -438,7 +438,8 @@ void CLightShadows::render	()
 				A.push_back			(VERTS[t.verts[2]]);
 
 				// Calc plane, throw away degenerate tris and invisible to light polygons
-				Fplane				P;	float mag = 0;
+				Fplane				P;
+				f32 mag = 0;
 				Fvector				t1,t2,n;
 				t1.sub				(A[0],A[1]);
 				t2.sub				(A[0],A[2]);
@@ -447,7 +448,7 @@ void CLightShadows::render	()
 				if (mag< EPSILON_7)						continue;
 				n.mul				(1.f/_sqrt(mag));
 				P.build_unit_normal	(A[0],n);
-				float	DOT_Fade	= P.classify(S.L->position);
+				f32	DOT_Fade	= P.classify(S.L->position);
 				if (DOT_Fade<0)		continue;
 
 				// Clip polygon

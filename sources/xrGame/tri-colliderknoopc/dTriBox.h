@@ -9,10 +9,10 @@ struct dxBox {
 	dVector3 side;	// side lengths (x,y,z)
 };
 
-IC float	dcTriListCollider::	dBoxProj(dxGeom* box,const dReal* normal)
+IC f32	dcTriListCollider::	dBoxProj(dxGeom* box,const dReal* normal)
 {
 	VERIFY (dGeomGetClass(box)== dBoxClass);
-	float hside[3];
+	f32 hside[3];
 	dGeomBoxGetLengths(box,hside);
 	hside[0]*=.5f;hside[1]*=0.5f;hside[2]*=0.5f;
 	const dReal* R=dGeomGetRotation(box);

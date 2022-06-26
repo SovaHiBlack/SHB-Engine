@@ -154,8 +154,8 @@ void CRenderTarget::phase_bloom	()
 		// SLOW FILTER
 		// Transfer into Bloom2, horizontal filter
 		{
-			float		_w				= BLOOM_size_X;
-			float		_h				= BLOOM_size_Y;
+			f32		_w				= BLOOM_size_X;
+			f32		_h				= BLOOM_size_Y;
 			Fvector2	two				= { 2.f/_w, 2.f/_h };
 			Fvector2	one				= { 1.f/_w, 1.f/_h };
 			Fvector2	half			= { .5f/_w, .5f/_h };
@@ -172,7 +172,7 @@ void CRenderTarget::phase_bloom	()
 			v_filter* pv				= (v_filter*) RCache.Vertex.Lock	(4,g_bloom_filter->vb_stride,Offset);
 
 			// 0 - LB
-			pv->p.set	(EPS,			float(_h+EPS),	EPS,1.f);	
+			pv->p.set	(EPS, f32(_h+EPS),	EPS,1.f);
 			pv->uv0.set	(a_0.x,1+a_0.y,0,0);	
 			pv->uv1.set	(a_1.x,1+a_1.y,1+a_1.z,a_1.w);	
 			pv->uv2.set	(a_2.x,1+a_2.y,1+a_2.z,a_2.w);	
@@ -196,7 +196,7 @@ void CRenderTarget::phase_bloom	()
 			pv++;
 
 			// 2 - RB
-			pv->p.set	(float(_w+EPS),	float(_h+EPS),	EPS,1.f);	
+			pv->p.set	(f32(_w+EPS), f32(_h+EPS),	EPS,1.f);
 			pv->uv0.set	(1+a_0.x,1+a_0.y,0,0);	
 			pv->uv1.set	(1+a_1.x,1+a_1.y,1+a_1.z,1+a_1.w);	
 			pv->uv2.set	(1+a_2.x,1+a_2.y,1+a_2.z,1+a_2.w);	
@@ -208,7 +208,7 @@ void CRenderTarget::phase_bloom	()
 			pv++;								
 
 			// 3 - RT
-			pv->p.set	(float(_w+EPS),	EPS,			EPS,1.f);	
+			pv->p.set	(f32(_w+EPS),	EPS,			EPS,1.f);
 			pv->uv0.set	(1+a_0.x,a_0.y,0,0);	
 			pv->uv1.set	(1+a_1.x,a_1.y,a_1.z,1+a_1.w);	
 			pv->uv2.set	(1+a_2.x,a_2.y,a_2.z,1+a_2.w);	
@@ -222,7 +222,7 @@ void CRenderTarget::phase_bloom	()
 
 			// Perform filtering
 			Fvector4	w0,w1;
-			float		kernel			= ps_r2_ls_bloom_kernel_g;
+			f32		kernel			= ps_r2_ls_bloom_kernel_g;
 			CalcGauss_wave				(w0,w1,kernel,kernel/3.f,ps_r2_ls_bloom_kernel_scale);
 			u_setrt						(rt_Bloom_2,NULL,NULL,NULL);		// No need for ZBuffer at all
 			RCache.set_Element			(s_bloom->E[1]);
@@ -234,8 +234,8 @@ void CRenderTarget::phase_bloom	()
 
 		// Transfer into Bloom1, vertical filter
 		{
-			float		_w				= BLOOM_size_X;
-			float		_h				= BLOOM_size_Y;
+			f32		_w				= BLOOM_size_X;
+			f32		_h				= BLOOM_size_Y;
 			Fvector2	two				= { 2.f/_w, 2.f/_h };
 			Fvector2	one				= { 1.f/_w, 1.f/_h };
 			Fvector2	half			= { .5f/_w, .5f/_h };
@@ -252,7 +252,7 @@ void CRenderTarget::phase_bloom	()
 			v_filter* pv				= (v_filter*) RCache.Vertex.Lock	(4,g_bloom_filter->vb_stride,Offset);
 
 			// 0 - LB
-			pv->p.set	(EPS,			float(_h+EPS),	EPS,1.f);	
+			pv->p.set	(EPS, f32(_h+EPS),	EPS,1.f);
 			pv->uv0.set	(a_0.x,1+a_0.y,0,0);	
 			pv->uv1.set	(a_1.x,1+a_1.y,1+a_1.z,a_1.w);	
 			pv->uv2.set	(a_2.x,1+a_2.y,1+a_2.z,a_2.w);	
@@ -276,7 +276,7 @@ void CRenderTarget::phase_bloom	()
 			pv++;
 
 			// 2 - RB
-			pv->p.set	(float(_w+EPS),	float(_h+EPS),	EPS,1.f);	
+			pv->p.set	(f32(_w+EPS), f32(_h+EPS),	EPS,1.f);
 			pv->uv0.set	(1+a_0.x,1+a_0.y,0,0);	
 			pv->uv1.set	(1+a_1.x,1+a_1.y,1+a_1.z,1+a_1.w);	
 			pv->uv2.set	(1+a_2.x,1+a_2.y,1+a_2.z,1+a_2.w);	
@@ -288,7 +288,7 @@ void CRenderTarget::phase_bloom	()
 			pv++;								
 
 			// 3 - RT
-			pv->p.set	(float(_w+EPS),	EPS,			EPS,1.f);	
+			pv->p.set	(f32(_w+EPS),	EPS,			EPS,1.f);
 			pv->uv0.set	(1+a_0.x,a_0.y,0,0);	
 			pv->uv1.set	(1+a_1.x,a_1.y,a_1.z,1+a_1.w);	
 			pv->uv2.set	(1+a_2.x,a_2.y,a_2.z,1+a_2.w);	
@@ -302,7 +302,7 @@ void CRenderTarget::phase_bloom	()
 
 			// Perform filtering
 			Fvector4	w0,w1;
-			float		kernel			= ps_r2_ls_bloom_kernel_g	* float(Device.dwHeight)/float(Device.dwWidth);
+			f32		kernel			= ps_r2_ls_bloom_kernel_g	* f32(Device.dwHeight)/ f32(Device.dwWidth);
 			CalcGauss_wave				(w0,w1,kernel,kernel/3.f,ps_r2_ls_bloom_kernel_scale);
 			u_setrt						(rt_Bloom_1,NULL,NULL,NULL);				// No need for ZBuffer at all
 			RCache.set_Element			(s_bloom->E[2]);

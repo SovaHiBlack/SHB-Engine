@@ -12,8 +12,10 @@ struct	CLightR_Vertex
 {
 	Fvector			P;
 	Fvector			N;
-	float			u0,v0;
-	float			u1,v1;
+	f32				u0;
+	f32				v0;
+	f32				u1;
+	f32				v1;
 };
 
 class	CLightR_Manager

@@ -150,7 +150,7 @@ void CDetailPathManager::on_travel_point_change	(const u32 &previous_travel_poin
 }
 
 #include "GameObject.h"
-u32 CDetailPathManager::location_on_path		(const CGameObject *object, float distance, Fvector &result) const
+u32 CDetailPathManager::location_on_path		(const CGameObject *object, f32 distance, Fvector &result) const
 {
 	VERIFY						(m_restricted_object);
 	result						= object->Position();
@@ -164,11 +164,11 @@ u32 CDetailPathManager::location_on_path		(const CGameObject *object, float dist
 	if (curr_travel_point_index() >= path().size() - 1)
 		return					(vertex_result);
 
-	float						current_distance = 0.f;
+	f32						current_distance = 0.0f;
 	xr_vector<STravelPathPoint>::const_iterator	I = path().begin() + curr_travel_point_index() + 1;
 	xr_vector<STravelPathPoint>::const_iterator	E = path().end();
 	for ( ; I != E; ++I) {
-		float					next = (*(I - 1)).position.distance_to((*I).position);
+		f32					next = (*(I - 1)).position.distance_to((*I).position);
 		if (current_distance + next > distance) {
 			result				= (*I).position;
 			return				((*I).vertex_id);

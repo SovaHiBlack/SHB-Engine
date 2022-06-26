@@ -10,16 +10,16 @@
 // tir2.xrdemo		-> 45.2
 // tir2.xrdemo		-> 61.8
 
-const	float		P_distance		= 50;					// switch distance between LOW-q light and HIGH-q light
-const	float		P_cam_dist		= 200;
-const	float		P_cam_range		= 7.f;
+const	f32		P_distance		= 50;					// switch distance between LOW-q light and HIGH-q light
+const	f32		P_cam_dist		= 200;
+const	f32		P_cam_range		= 7.f;
 const	D3DFORMAT	P_rtf			= D3DFMT_A8R8G8B8;
-const	float		P_blur_kernel	= .5f;
+const	f32		P_blur_kernel	= .5f;
 const	int			time_min		= 30*1000	;
 const	int			time_max		= 90*1000	;
-const	float		P_ideal_size	= 1.f		;
+const	f32		P_ideal_size	= 1.f		;
 
-float	clipD		(float R)		{ return P_distance*(R/P_ideal_size); }
+f32	clipD		(f32 R)		{ return P_distance*(R/P_ideal_size); }
 
 
 //////////////////////////////////////////////////////////////////////
@@ -61,8 +61,8 @@ void CLightProjector::set_object	(IRenderable* O)
 		}
 
 		Fvector		C;	O->renderable.xform.transform_tiny		(C,O->renderable.visual->vis.sphere.P);
-		float		R	= O->renderable.visual->vis.sphere.R;
-		float		D	= C.distance_to	(Device.vCameraPosition)+R;
+		f32		R	= O->renderable.visual->vis.sphere.R;
+		f32		D	= C.distance_to	(Device.vCameraPosition)+R;
 
 		if (D < clipD(R))	current	= O;
 		else				current = 0;
@@ -95,9 +95,9 @@ void CLightProjector::setup		(int id)
 		return;
 	}
 	recv&			R			= cache[id];
-	float			Rd			= R.O->renderable.visual->vis.sphere.R;
-	float			dist		= R.C.distance_to	(Device.vCameraPosition)+Rd;
-	float			factor		= _sqr(dist/clipD(Rd))*(1-ps_r1_lmodel_lerp) + ps_r1_lmodel_lerp;
+	f32			Rd			= R.O->renderable.visual->vis.sphere.R;
+	f32			dist		= R.C.distance_to	(Device.vCameraPosition)+Rd;
+	f32			factor		= _sqr(dist/clipD(Rd))*(1-ps_r1_lmodel_lerp) + ps_r1_lmodel_lerp;
 	RCache.set_c	(c_xform,	R.UVgen);
 	Fvector&	m	= R.UVclamp_min;
 	RCache.set_ca	(c_clamp,	0,m.x,m.y,m.z,factor);
@@ -183,12 +183,12 @@ void CLightProjector::calculate	()
 		// Msg					("[%f,%f,%f]-%f",C.C.x,C.C.y,C.C.z,C.O->renderable.visual->vis.sphere.R);
 		// calculate projection-matrix
 		Fmatrix		mProject;
-		float		p_R			=	R.O->renderable.visual->vis.sphere.R * 1.1f;
+		f32		p_R			=	R.O->renderable.visual->vis.sphere.R * 1.1f;
 		VERIFY2		(p_R>EPS_L,"Object has no physical size");
-		float		p_hat		=	p_R/P_cam_dist;
-		float		p_asp		=	1.f;
-		float		p_near		=	P_cam_dist-EPS_L;									
-		float		p_far		=	P_cam_dist+p_R+P_cam_range;	
+		f32		p_hat		=	p_R/P_cam_dist;
+		f32		p_asp		=	1.f;
+		f32		p_near		=	P_cam_dist-EPS_L;
+		f32		p_far		=	P_cam_dist+p_R+P_cam_range;
 		mProject.build_projection_HAT	(p_hat,p_asp,p_near,p_far);
 		RCache.set_xform_project		(mProject);
 		
@@ -258,10 +258,10 @@ void CLightProjector::calculate	()
 		// calculate uv-gen matrix and clamper
 		Fmatrix					mCombine;		mCombine.mul	(mProject,mView);
 		Fmatrix					mTemp;
-		float					fSlotSize		= float(P_o_size)/float(P_rt_size);
-		float					fSlotX			= float(s_x*P_o_size)/float(P_rt_size);
-		float					fSlotY			= float(s_y*P_o_size)/float(P_rt_size);
-		float					fTexelOffs		= (.5f / P_rt_size);
+		f32					fSlotSize		= f32(P_o_size)/ f32(P_rt_size);
+		f32					fSlotX			= f32(s_x*P_o_size)/ f32(P_rt_size);
+		f32					fSlotY			= f32(s_y*P_o_size)/ f32(P_rt_size);
+		f32					fTexelOffs		= (.5f / P_rt_size);
 		Fmatrix					m_TexelAdjust	= 
 		{
 			0.5f/*x-scale*/,	0.0f,							0.0f,				0.0f,
@@ -341,10 +341,10 @@ void CLightProjector::render	()
 		u32 C			=	0xffffffff, Offset;
 		u32 _w		=	P_rt_size/2, _h = P_rt_size/2;
 		FVF::TL* pv		=	(FVF::TL*) geom_Screen->Lock(4,Offset);
-		pv->set(0,			float(_h),	.0001f,.9999f, C, p0.x, p1.y);	pv++;
+		pv->set(0,			f32(_h),	.0001f,.9999f, C, p0.x, p1.y);	pv++;
 		pv->set(0,			0,			.0001f,.9999f, C, p0.x, p0.y);	pv++;
-		pv->set(float(_w),	float(_h),	.0001f,.9999f, C, p1.x, p1.y);	pv++;
-		pv->set(float(_w),	0,			.0001f,.9999f, C, p1.x, p0.y);	pv++;
+		pv->set(f32(_w),	f32(_h),	.0001f,.9999f, C, p1.x, p1.y);	pv++;
+		pv->set(f32(_w),	0,			.0001f,.9999f, C, p1.x, p0.y);	pv++;
 		geom_Screen->Unlock			(4);
 		
 		// Actual rendering

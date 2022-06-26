@@ -27,25 +27,24 @@
 
 //отметки крови на стенах 
 SHADER_VECTOR* CEntityAlive::m_pBloodMarksVector = NULL;
-float CEntityAlive::m_fBloodMarkSizeMin = 0.f;
-float CEntityAlive::m_fBloodMarkSizeMax = 0.f;
-float CEntityAlive::m_fBloodMarkDistance = 0.f;
-float CEntityAlive::m_fNominalHit = 0.f;
+f32 CEntityAlive::m_fBloodMarkSizeMin = 0.0f;
+f32 CEntityAlive::m_fBloodMarkSizeMax = 0.0f;
+f32 CEntityAlive::m_fBloodMarkDistance = 0.0f;
+f32 CEntityAlive::m_fNominalHit = 0.0f;
 
 //капание крови
 SHADER_VECTOR* CEntityAlive::m_pBloodDropsVector = NULL;
-float CEntityAlive::m_fStartBloodWoundSize = 0.3f;
-float CEntityAlive::m_fStopBloodWoundSize = 0.1f;
-float CEntityAlive::m_fBloodDropSize = 0.03f;
-
+f32 CEntityAlive::m_fStartBloodWoundSize = 0.3f;
+f32 CEntityAlive::m_fStopBloodWoundSize = 0.1f;
+f32 CEntityAlive::m_fBloodDropSize = 0.03f;
 
 //минимальный размер ожега, после которого горят партиклы
 //минимальное время горения
 u32	  CEntityAlive::m_dwMinBurnTime = 10000;
 //размер раны, чтоб запустить партиклы
-float CEntityAlive::m_fStartBurnWoundSize = 0.3f;
+f32 CEntityAlive::m_fStartBurnWoundSize = 0.3f;
 //размер раны, чтоб остановить партиклы
-float CEntityAlive::m_fStopBurnWoundSize = 0.1f;
+f32 CEntityAlive::m_fStopBurnWoundSize = 0.1f;
 
 STR_VECTOR* CEntityAlive::m_pFireParticlesVector = NULL;
 
@@ -53,8 +52,7 @@ STR_VECTOR* CEntityAlive::m_pFireParticlesVector = NULL;
 // CEntityAlive
 /////////////////////////////////////////////
 CEntityAlive::CEntityAlive()
-{
-	
+{	
 	monster_community		= xr_new<MONSTER_COMMUNITY>	();
 
 	m_ef_weapon_type		= u32(-1);
@@ -65,7 +63,6 @@ CEntityAlive::CEntityAlive()
 
 CEntityAlive::~CEntityAlive()
 {
-
 	xr_delete				(monster_community);
 	xr_delete				(m_material_manager);
 }
@@ -109,13 +106,10 @@ void CEntityAlive::LoadBloodyWallmarks (pcstr section)
 		m_pBloodMarksVector->push_back	(s);
 	}
 
-	
 	m_fBloodMarkSizeMin = pSettings->r_float(section, "min_size"); 
 	m_fBloodMarkSizeMax = pSettings->r_float(section, "max_size"); 
 	m_fBloodMarkDistance = pSettings->r_float(section, "dist"); 
 	m_fNominalHit = pSettings->r_float(section, "nominal_hit"); 
-
-
 
 	//капли крови с открытых ран
 	wallmarks_name = pSettings->r_string(section, "blood_drops");
@@ -126,7 +120,6 @@ void CEntityAlive::LoadBloodyWallmarks (pcstr section)
 		s.create ("effects\\wallmark",_GetItem(wallmarks_name,k,tmp));
 		m_pBloodDropsVector->push_back	(s);
 	}
-
 
 	m_fStartBloodWoundSize  = pSettings->r_float(section, "start_blood_size");
 	m_fStopBloodWoundSize   = pSettings->r_float(section, "stop_blood_size");
@@ -139,6 +132,7 @@ void CEntityAlive::UnloadBloodyWallmarks	()
 		m_pBloodMarksVector->clear	();
 		xr_delete					(m_pBloodMarksVector);
 	}
+
 	if (m_pBloodDropsVector){
 		m_pBloodDropsVector->clear	();
 		xr_delete					(m_pBloodDropsVector);
@@ -251,9 +245,9 @@ void CEntityAlive::net_Destroy	()
 	inherited::net_Destroy		();
 }
 
-void CEntityAlive::HitImpulse	(float /**amount/**/, Fvector& /**vWorldDir/**/, Fvector& /**vLocalDir/**/)
+void CEntityAlive::HitImpulse	(f32 /**amount/**/, Fvector& /**vWorldDir/**/, Fvector& /**vLocalDir/**/)
 {
-	//	float Q					= 2*float(amount)/m_PhysicMovementControl->GetMass();
+	//	f32 Q					= 2*f32(amount)/m_PhysicMovementControl->GetMass();
 	//	m_PhysicMovementControl->vExternalImpulse.mad	(vWorldDir,Q);
 }
 
@@ -318,7 +312,7 @@ void CEntityAlive::Die	(CObject* who)
 }
 
 //вывзывает при подсчете хита
-float CEntityAlive::CalcCondition(float /**hit/**/)
+f32 CEntityAlive::CalcCondition(f32 /**hit/**/)
 {	
 	conditions().UpdateCondition();
 
@@ -350,7 +344,7 @@ void CEntityAlive::PHFreeze()
 //////////////////////////////////////////////////////////////////////
 
 //добавление кровавых отметок на стенах, после получения хита
-void CEntityAlive::BloodyWallmarks (float P, const Fvector &dir, s16 element, 
+void CEntityAlive::BloodyWallmarks (f32 P, const Fvector &dir, s16 element,
 									const Fvector& position_in_object_space)
 {
 	if(BI_NONE == (u16)element)
@@ -367,11 +361,10 @@ void CEntityAlive::BloodyWallmarks (float P, const Fvector &dir, s16 element,
 	}
 	XFORM().transform_tiny(start_pos);
 
-	float small_entity = 1.f;
+	f32 small_entity = 1.0f;
 	if(Radius()<SMALL_ENTITY_RADIUS) small_entity = 0.5;
 
-
-	float wallmark_size = m_fBloodMarkSizeMax;
+	f32 wallmark_size = m_fBloodMarkSizeMax;
 	wallmark_size *= (P/m_fNominalHit);
 	wallmark_size *= small_entity;
 	clamp(wallmark_size, m_fBloodMarkSizeMin, m_fBloodMarkSizeMax);
@@ -383,7 +376,7 @@ void CEntityAlive::BloodyWallmarks (float P, const Fvector &dir, s16 element,
 }
 
 void CEntityAlive::PlaceBloodWallmark(const Fvector& dir, const Fvector& start_pos, 
-									  float trace_dist, float wallmark_size,
+									  f32 trace_dist, f32 wallmark_size,
 									  SHADER_VECTOR& wallmarks_vector)
 {
 	collide::rq_result	result;
@@ -452,14 +445,14 @@ void CEntityAlive::StartFireParticles(CWound* pWound)
 				pWound->GetParticleBoneNum(),
 				Fvector().set(0,1,0),
 				ID(), 
-				u32(float(m_dwMinBurnTime)*::Random.randF(0.5f,1.5f)), false);
+				u32(f32(m_dwMinBurnTime)*::Random.randF(0.5f,1.5f)), false);
 		}
 		else
 		{
 			CParticlesPlayer::StartParticles(pWound->GetParticleName(), 
 				Fvector().set(0,1,0),
 				ID(), 
-				u32(float(m_dwMinBurnTime)*::Random.randF(0.5f,1.5f)), false);
+				u32(f32(m_dwMinBurnTime)*::Random.randF(0.5f,1.5f)), false);
 		}
 	}
 }
@@ -474,14 +467,14 @@ void CEntityAlive::UpdateFireParticles()
 					  it != m_ParticleWounds.end();)
 	{
 		CWound* pWound = *it;
-		float burn_size = pWound->TypeSize(ALife::eHitTypeBurn);
+		f32 burn_size = pWound->TypeSize(ALife::eHitTypeBurn);
 
 		if(pWound->GetDestroy() || 
 			(burn_size>0 && (burn_size<m_fStopBurnWoundSize || !g_Alive())))
 		{
 			CParticlesPlayer::AutoStopParticles(pWound->GetParticleName(),
 												pWound->GetParticleBoneNum(),
-												u32(float(m_dwMinBurnTime)*::Random.randF(0.5f,1.5f))
+												u32(f32(m_dwMinBurnTime)*::Random.randF(0.5f,1.5f))
 												);
 			it = m_ParticleWounds.erase(it);
 			continue;
@@ -525,8 +518,8 @@ void CEntityAlive::StartBloodDrops			(CWound* pWound)
 
 void CEntityAlive::UpdateBloodDrops()
 {
-	static float m_fBloodDropTimeMax = pSettings->r_float(BLOOD_MARKS_SECT, "blood_drop_time_max");
-	static float m_fBloodDropTimeMin = pSettings->r_float(BLOOD_MARKS_SECT, "blood_drop_time_min");
+	static f32 m_fBloodDropTimeMax = pSettings->r_float(BLOOD_MARKS_SECT, "blood_drop_time_max");
+	static f32 m_fBloodDropTimeMin = pSettings->r_float(BLOOD_MARKS_SECT, "blood_drop_time_min");
 
 	if(m_BloodWounds.empty()) return;
 
@@ -542,7 +535,7 @@ void CEntityAlive::UpdateBloodDrops()
 		it != m_BloodWounds.end();)
 	{
 		CWound* pWound = *it;
-		float blood_size = pWound->BloodSize();
+		f32 blood_size = pWound->BloodSize();
 
 		if(pWound->GetDestroy() || blood_size < m_fStopBloodWoundSize)
 		{
@@ -552,7 +545,7 @@ void CEntityAlive::UpdateBloodDrops()
 
 		if(pWound->m_fDropTime<Device.fTimeGlobal)
 		{
-			float size_k = blood_size - m_fStopBloodWoundSize;
+			f32 size_k = blood_size - m_fStopBloodWoundSize;
 			size_k = size_k<1.f?size_k:1.f;
 			pWound->m_fDropTime = Device.fTimeGlobal + (m_fBloodDropTimeMax - (m_fBloodDropTimeMax-m_fBloodDropTimeMin)*size_k)*Random.randF(0.8f, 1.2f);
 			VERIFY(m_pBloodDropsVector);
@@ -601,35 +594,35 @@ CEntityConditionSimple* CEntityAlive::create_entity_condition	(CEntityConditionS
 }
 
 /*
-float CEntityAlive::GetfHealth	() const
+f32 CEntityAlive::GetfHealth	() const
 {
 	return conditions().health()*100.f;
 }
 
-float CEntityAlive::SetfHealth	(float value)
+f32 CEntityAlive::SetfHealth	(f32 value)
 {
 	conditions().health() = value/100.f;
 	return value;
 }
 */
-float CEntityAlive::SetfRadiation		(float value)
+f32 CEntityAlive::SetfRadiation		(f32 value)
 {
-	conditions().radiation() = value/100.f;
+	conditions().radiation() = value/100.0f;
 	return value;
 }
 /*
-float CEntityAlive::g_Health	() const
+f32 CEntityAlive::g_Health	() const
 {
-	return conditions().GetHealth()*100.f;
+	return conditions().GetHealth()*100.0f;
 }
-float CEntityAlive::g_MaxHealth	() const
+f32 CEntityAlive::g_MaxHealth	() const
 {
-	return conditions().GetMaxHealth()*100.f;
+	return conditions().GetMaxHealth()*100.0f;
 }
 */
-float CEntityAlive::g_Radiation	()	const
+f32 CEntityAlive::g_Radiation	()	const
 {
-	return conditions().GetRadiation()*100.f;
+	return conditions().GetRadiation()*100.0f;
 }
 
 

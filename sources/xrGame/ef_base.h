@@ -16,8 +16,8 @@ class CEF_Storage;
 
 class CBaseFunction {
 protected:
-	float					m_fMinResultValue;
-	float					m_fMaxResultValue;
+	f32					m_fMinResultValue;
+	f32					m_fMaxResultValue;
 	char					m_caName[260];
 	CEF_Storage				*m_storage;
 
@@ -40,26 +40,26 @@ public:
 		return		(*m_storage);
 	}
 
-	virtual float	ffGetValue() = 0;
+	virtual f32	ffGetValue() = 0;
 
 	virtual u32		dwfGetDiscreteValue(u32 dwDiscretizationValue = 2)
 	{
-		float fTemp = ffGetValue();
+		f32 fTemp = ffGetValue();
 		if (fTemp <= m_fMinResultValue)
 			return(0);
 		else
 			if (fTemp >= m_fMaxResultValue)
 				return(dwDiscretizationValue - 1);
 			else
-				return(iFloor((fTemp - m_fMinResultValue)/(m_fMaxResultValue - m_fMinResultValue)*float(dwDiscretizationValue - 1) + .5f));
+				return(iFloor((fTemp - m_fMinResultValue)/(m_fMaxResultValue - m_fMinResultValue)* f32(dwDiscretizationValue - 1) + .5f));
 	}
 
-	IC		float	ffGetMaxResultValue()
+	IC		f32	ffGetMaxResultValue()
 	{
 		return	(m_fMaxResultValue);
 	}
 
-	IC		float	ffGetMinResultValue()
+	IC		f32	ffGetMinResultValue()
 	{
 		return	(m_fMinResultValue);
 	}

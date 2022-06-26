@@ -14,19 +14,21 @@ using	namespace R_dsgraph;
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 // Scene graph actual insertion and sorting ////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-float		r_ssaDISCARD;
-float		r_ssaDONTSORT;
-float		r_ssaLOD_A,			r_ssaLOD_B;
-float		r_ssaGLOD_start,	r_ssaGLOD_end;
-float		r_ssaHZBvsTEX;
+f32		r_ssaDISCARD;
+f32		r_ssaDONTSORT;
+f32		r_ssaLOD_A;
+f32		r_ssaLOD_B;
+f32		r_ssaGLOD_start;
+f32		r_ssaGLOD_end;
+f32		r_ssaHZBvsTEX;
 
-ICF	float	CalcSSA				(float& distSQ, Fvector& C, IRender_Visual* V)
+ICF	f32	CalcSSA				(f32& distSQ, Fvector& C, IRender_Visual* V)
 {
-	float R	= V->vis.sphere.R + 0;
+	f32 R	= V->vis.sphere.R + 0;
 	distSQ	= Device.vCameraPosition.distance_to_sqr(C)+EPS;
 	return	R/distSQ;
 }
-ICF	float	CalcSSA				(float& distSQ, Fvector& C, float R)
+ICF	f32	CalcSSA				(f32& distSQ, Fvector& C, f32 R)
 {
 	distSQ	= Device.vCameraPosition.distance_to_sqr(C)+EPS;
 	return	R/distSQ;
@@ -44,8 +46,8 @@ void R_dsgraph_structure::r_dsgraph_insert_dynamic	(IRender_Visual *pVisual, Fve
 	pVisual->vis.accept_frame	=	Device.dwFrame	;
 #endif
 
-	float distSQ			;
-	float SSA				=	CalcSSA		(distSQ,Center,pVisual);
+	f32 distSQ			;
+	f32 SSA				=	CalcSSA		(distSQ,Center,pVisual);
 	if (SSA<=r_ssaDISCARD)		return;
 
 	// Distortive geometry should be marked and R2 special-cases it
@@ -180,8 +182,8 @@ void R_dsgraph_structure::r_dsgraph_insert_static	(IRender_Visual *pVisual)
 	pVisual->vis.accept_frame	=	Device.dwFrame		;
 #endif
 
-	float distSQ;
-	float SSA					=	CalcSSA		(distSQ,pVisual->vis.sphere.P,pVisual);
+	f32 distSQ;
+	f32 SSA					=	CalcSSA		(distSQ,pVisual->vis.sphere.P,pVisual);
 	if (SSA<=r_ssaDISCARD)		return;
 
 	// Distortive geometry should be marked and R2 special-cases it
@@ -312,9 +314,10 @@ void CRender::add_leafs_Dynamic	(IRender_Visual *pVisual)
 			BOOL	_use_lod			= FALSE	;
 			if (pV->m_lod)				
 			{
-				Fvector							Tpos;	float		D;
+				Fvector							Tpos;
+				f32		D;
 				val_pTransform->transform_tiny	(Tpos, pV->vis.sphere.P);
-				float		ssa		=	CalcSSA	(D,Tpos,pV->vis.sphere.R/2.f);	// assume dynamics never consume full sphere
+				f32		ssa		=	CalcSSA	(D,Tpos,pV->vis.sphere.R/2.f);	// assume dynamics never consume full sphere
 				if (ssa<r_ssaLOD_A)	_use_lod	= TRUE;
 			}
 			if (_use_lod)				
@@ -384,8 +387,8 @@ void CRender::add_leafs_Static(IRender_Visual *pVisual)
 	case MT_LOD:
 		{
 			FLOD		* pV	=		(FLOD*) pVisual;
-			float		D;
-			float		ssa		=		CalcSSA(D,pV->vis.sphere.P,pV);
+			f32		D;
+			f32		ssa		=		CalcSSA(D,pV->vis.sphere.P,pV);
 			ssa					*=		pV->lod_factor;
 			if (ssa<r_ssaLOD_A)
 			{
@@ -479,9 +482,10 @@ BOOL CRender::add_Dynamic(IRender_Visual *pVisual, u32 planes)
 			BOOL	_use_lod			= FALSE	;
 			if (pV->m_lod)				
 			{
-				Fvector							Tpos;	float		D;
+				Fvector							Tpos;
+				f32		D;
 				val_pTransform->transform_tiny	(Tpos, pV->vis.sphere.P);
-				float		ssa		=	CalcSSA	(D,Tpos,pV->vis.sphere.R/2.f);	// assume dynamics never consume full sphere
+				f32		ssa		=	CalcSSA	(D,Tpos,pV->vis.sphere.R/2.f);	// assume dynamics never consume full sphere
 				if (ssa<r_ssaLOD_A)	_use_lod	= TRUE		;
 			}
 			if (_use_lod)
@@ -578,8 +582,8 @@ void CRender::add_Static(IRender_Visual *pVisual, u32 planes)
 	case MT_LOD:
 		{
 			FLOD		* pV	= (FLOD*) pVisual;
-			float		D;
-			float		ssa		= CalcSSA	(D,pV->vis.sphere.P,pV);
+			f32		D;
+			f32		ssa		= CalcSSA	(D,pV->vis.sphere.P,pV);
 			ssa					*= pV->lod_factor;
 			if (ssa<r_ssaLOD_A)	
 			{

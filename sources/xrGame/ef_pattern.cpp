@@ -76,8 +76,8 @@ void CPatternFunction::vfLoadEF(pcstr caFileName)
 
 	F->r			(&m_dwFunctionType,sizeof(u32));
 
-	F->r			(&m_fMinResultValue,sizeof(float));
-	F->r			(&m_fMaxResultValue,sizeof(float));
+	F->r			(&m_fMinResultValue,sizeof(f32));
+	F->r			(&m_fMaxResultValue,sizeof(f32));
 
 	F->r			(&m_dwPatternCount,sizeof(m_dwPatternCount));
 	m_tpPatterns	= xr_alloc<SPattern>(m_dwPatternCount);
@@ -96,8 +96,8 @@ void CPatternFunction::vfLoadEF(pcstr caFileName)
 		m_dwParameterCount += m_dwComplexity;
 	}
 	
-	m_faParameters	= xr_alloc<float>(m_dwParameterCount);
-	F->r			(m_faParameters,m_dwParameterCount*sizeof(float));
+	m_faParameters	= xr_alloc<f32>(m_dwParameterCount);
+	F->r			(m_faParameters,m_dwParameterCount*sizeof(f32));
 	FS.r_close		(F);
 
 	m_dwaVariableValues = xr_alloc<u32>(m_dwVariableCount);
@@ -111,15 +111,15 @@ void CPatternFunction::vfLoadEF(pcstr caFileName)
 	// Msg			("* Evaluation function \"%s\" is successfully loaded",m_caName);
 }
 
-float CPatternFunction::ffEvaluate()
+f32 CPatternFunction::ffEvaluate()
 {
-	float fResult = 0.0;
+	f32 fResult = 0.0f;
 	for (u32 i=0; i<m_dwPatternCount; ++i)
 		fResult += m_faParameters[dwfGetPatternIndex(m_dwaVariableValues,i)];
 	return(fResult);
 }
 
-float CPatternFunction::ffGetValue()
+f32 CPatternFunction::ffGetValue()
 {
 	for (u32 i=0; i<m_dwVariableCount; ++i)
 		m_dwaVariableValues[i] = ef_storage().m_fpaBaseFunctions[m_dwaVariableTypes[i]]->dwfGetDiscreteValue(m_dwaAtomicFeatureRange[i]);
@@ -127,7 +127,7 @@ float CPatternFunction::ffGetValue()
 	
 #ifdef DEBUG	
 	if (psAI_Flags.test(aiFuncs)) {
-		float value = ffEvaluate();
+		f32 value = ffEvaluate();
 		string256 caString;
 		
 		int j = sprintf_s(caString,sizeof(caString),"%32s (",m_caName);

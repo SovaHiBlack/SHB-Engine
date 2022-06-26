@@ -5,8 +5,8 @@ void	CRenderTarget::u_calc_tc_noise		(Fvector2& p0, Fvector2& p1)
 {
 	CTexture*	T					= RCache.get_ActiveTexture	(2);
 	VERIFY2		(T, "Texture #3 in noise shader should be setted up");
-	u32			tw					= iCeil(float(T->get_Width	())*param_noise_scale+ EPSILON_7);
-	u32			th					= iCeil(float(T->get_Height ())*param_noise_scale+ EPSILON_7);
+	u32			tw					= iCeil(f32(T->get_Width	())*param_noise_scale+ EPSILON_7);
+	u32			th					= iCeil(f32(T->get_Height ())*param_noise_scale+ EPSILON_7);
 	VERIFY2		(tw && th, "Noise scale can't be zero in any way");
 
 	// calculate shift from FPSes
@@ -14,20 +14,20 @@ void	CRenderTarget::u_calc_tc_noise		(Fvector2& p0, Fvector2& p1)
 	if (im_noise_time<0)			{
 		im_noise_shift_w			= ::Random.randI(tw?tw:1);
 		im_noise_shift_h			= ::Random.randI(th?th:1);
-		float	fps_time			= 1/param_noise_fps;
+		f32	fps_time			= 1/param_noise_fps;
 		while (im_noise_time<0)		im_noise_time += fps_time;
 	}
 
 	u32			shift_w				= im_noise_shift_w;
 	u32			shift_h				= im_noise_shift_h;
-	float		start_u				= (float(shift_w)+.5f)/(tw);
-	float		start_v				= (float(shift_h)+.5f)/(th);
+	f32		start_u				= (f32(shift_w)+.5f)/(tw);
+	f32		start_v				= (f32(shift_h)+.5f)/(th);
 	u32			_w					= Device.dwWidth;
 	u32			_h					= Device.dwHeight;
 	u32			cnt_w				= _w / tw;
 	u32			cnt_h				= _h / th;
-	float		end_u				= start_u + float(cnt_w) + 1;
-	float		end_v				= start_v + float(cnt_h) + 1;
+	f32		end_u				= start_u + f32(cnt_w) + 1;
+	f32		end_v				= start_v + f32(cnt_h) + 1;
  
 	p0.set		(start_u,	start_v	);
 	p1.set		(end_u,		end_v	);
@@ -36,8 +36,8 @@ void	CRenderTarget::u_calc_tc_noise		(Fvector2& p0, Fvector2& p1)
 void CRenderTarget::u_calc_tc_duality_ss	(Fvector2& r0, Fvector2& r1, Fvector2& l0, Fvector2& l1)
 {
 	// Calculate ordinaty TCs from blur and SS
-	float	tw			= float(dwWidth);
-	float	th			= float(dwHeight);
+	f32	tw			= f32(dwWidth);
+	f32	th			= f32(dwHeight);
 	if (dwHeight!=Device.dwHeight)	param_blur = 1.f;
 	Fvector2			shift,p0,p1;
 	shift.set			(.5f/tw, .5f/th);
@@ -46,8 +46,8 @@ void CRenderTarget::u_calc_tc_duality_ss	(Fvector2& r0, Fvector2& r1, Fvector2& 
 	p1.set				((tw+.5f)/tw, (th+.5f)/th ).add	(shift);
 
 	// Calculate Duality TC
-	float	shift_u		= param_duality_h*.5f;
-	float	shift_v		= param_duality_v*.5f;
+	f32	shift_u		= param_duality_h*.5f;
+	f32	shift_v		= param_duality_v*.5f;
 
 	r0.set(p0.x,p0.y);					r1.set(p1.x-shift_u,p1.y-shift_v);
 	l0.set(p0.x+shift_u,p0.y+shift_v);	l1.set(p1.x,p1.y);
@@ -84,7 +84,7 @@ struct TL_2c3uv		{
 	u32			color0	;
 	u32			color1	;
 	Fvector2	uv	[3]	;
-	IC void	set	(float x, float y, u32 c0, u32 c1, float u0, float v0, float u1, float v1, float u2, float v2)	{	
+	IC void	set	(f32 x, f32 y, u32 c0, u32 c1, f32 u0, f32 v0, f32 u1, f32 v1, f32 u2, f32 v2)	{
 		p.set	(x,y, EPSILON_7,1.f);
 		color0 = c0; 
 		color1 = c1;
@@ -112,20 +112,21 @@ void CRenderTarget::phase_pp		()
 	
 	// Draw full-screen quad textured with our scene image
 	u32		Offset;
-	float	_w			= float(Device.dwWidth);
-	float	_h			= float(Device.dwHeight);
+	f32	_w			= f32(Device.dwWidth);
+	f32	_h			= f32(Device.dwHeight);
 	
 	Fvector2			n0,n1,r0,r1,l0,l1;
 	u_calc_tc_duality_ss	(r0,r1,l0,l1);
 	u_calc_tc_noise			(n0,n1);
 
 	// Fill vertex buffer
-	float				du	= ps_r1_pps_u, dv = ps_r1_pps_v;
+	f32				du = ps_r1_pps_u;
+	f32				dv = ps_r1_pps_v;
 	TL_2c3uv* pv			= (TL_2c3uv*) RCache.Vertex.Lock	(4,g_postprocess.stride(),Offset);
-	pv->set(du+0,			dv+float(_h),	p_color, p_gray, r0.x, r1.y, l0.x, l1.y, n0.x, n1.y);	pv++;
+	pv->set(du+0,			dv+ f32(_h),	p_color, p_gray, r0.x, r1.y, l0.x, l1.y, n0.x, n1.y);	pv++;
 	pv->set(du+0,			dv+0,			p_color, p_gray, r0.x, r0.y, l0.x, l0.y, n0.x, n0.y);	pv++;
-	pv->set(du+float(_w),	dv+float(_h),	p_color, p_gray, r1.x, r1.y, l1.x, l1.y, n1.x, n1.y);	pv++;
-	pv->set(du+float(_w),	dv+0,			p_color, p_gray, r1.x, r0.y, l1.x, l0.y, n1.x, n0.y);	pv++;
+	pv->set(du+ f32(_w),	dv+ f32(_h),	p_color, p_gray, r1.x, r1.y, l1.x, l1.y, n1.x, n1.y);	pv++;
+	pv->set(du+ f32(_w),	dv+0,			p_color, p_gray, r1.x, r0.y, l1.x, l0.y, n1.x, n0.y);	pv++;
 	RCache.Vertex.Unlock										(4,g_postprocess.stride());
 
 	// Actual rendering

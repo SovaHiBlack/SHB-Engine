@@ -4,7 +4,7 @@
 
 #define STENCIL_CULL 0
 
-float	hclip(float v, float dim)		{ return 2.f*v/dim - 1.f; }
+f32	hclip(f32 v, f32 dim)		{ return 2.f*v/dim - 1.f; }
 void	CRenderTarget::phase_combine	()
 {
 	bool	_menu_pp	= g_pGamePersistent?g_pGamePersistent->OnRenderPPUI_query():false;
@@ -56,7 +56,7 @@ void	CRenderTarget::phase_combine	()
 		m_previous.mul		(m_saved_viewproj,m_invview);
 		m_current.set		(Device.mProject)		;
 		m_saved_viewproj.set(Device.mFullTransform)	;
-		float	scale		= ps_r2_mblur/2.f;
+		f32	scale		= ps_r2_mblur/2.f;
 		m_blur_scale.set	(scale,-scale).div(12.f);
 	}
 
@@ -66,7 +66,7 @@ void	CRenderTarget::phase_combine	()
 		// Compute params
 		Fmatrix		m_v2w;			m_v2w.invert				(Device.mView		);
 		CEnvDescriptorMixer& envdesc= g_pGamePersistent->Environment().CurrentEnv		;
-		const float minamb			= 0.001f;
+		const f32 minamb			= 0.001f;
 		Fvector4	ambclr			= { _max(envdesc.ambient.x*2,minamb),	_max(envdesc.ambient.y*2,minamb),			_max(envdesc.ambient.z*2,minamb),	0	};
 					ambclr.mul		(ps_r2_sun_lumscale_amb);
 		Fvector4	envclr			= { envdesc.sky_color.x*2+EPS,	envdesc.sky_color.y*2+EPS,	envdesc.sky_color.z*2+EPS,	envdesc.weight					};
@@ -79,7 +79,8 @@ void	CRenderTarget::phase_combine	()
 		// sun-params
 		{
 			light*		fuckingsun		= (light*)RImplementation.Lights.sun_adapted._get()	;
-			Fvector		L_dir,L_clr;	float L_spec;
+			Fvector		L_dir,L_clr;
+			f32 L_spec;
 			L_clr.set					(fuckingsun->color.r,fuckingsun->color.g,fuckingsun->color.b);
 			L_spec						= u_diffuse2s	(L_clr);
 			Device.mView.transform_dir	(L_dir,fuckingsun->direction);
@@ -90,8 +91,8 @@ void	CRenderTarget::phase_combine	()
 		}
 
 		// Fill VB
-		float	_w					= float(Device.dwWidth);
-		float	_h					= float(Device.dwHeight);
+		f32	_w					= f32(Device.dwWidth);
+		f32	_h					= f32(Device.dwHeight);
 		p0.set						(.5f/_w, .5f/_h);
 		p1.set						((_w+.5f)/_w, (_h+.5f)/_h );
 
@@ -178,19 +179,19 @@ void	CRenderTarget::phase_combine	()
 			Fvector4	uv6;
 		};
 
-		float	_w					= float(Device.dwWidth);
-		float	_h					= float(Device.dwHeight);
-		float	ddw					= 1.f/_w;
-		float	ddh					= 1.f/_h;
+		f32	_w					= f32(Device.dwWidth);
+		f32	_h					= f32(Device.dwHeight);
+		f32	ddw					= 1.f/_w;
+		f32	ddh					= 1.f/_h;
 		p0.set						(.5f/_w, .5f/_h);
 		p1.set						((_w+.5f)/_w, (_h+.5f)/_h );
 
 		// Fill vertex buffer
 		v_aa* pv					= (v_aa*) RCache.Vertex.Lock	(4,g_aa_AA->vb_stride,Offset);
-		pv->p.set(EPS,			float(_h+EPS),	EPS,1.f); pv->uv0.set(p0.x, p1.y);pv->uv1.set(p0.x-ddw,p1.y-ddh);pv->uv2.set(p0.x+ddw,p1.y+ddh);pv->uv3.set(p0.x+ddw,p1.y-ddh);pv->uv4.set(p0.x-ddw,p1.y+ddh);pv->uv5.set(p0.x-ddw,p1.y,p1.y,p0.x+ddw);pv->uv6.set(p0.x,p1.y-ddh,p1.y+ddh,p0.x);pv++;
+		pv->p.set(EPS, f32(_h+EPS),	EPS,1.f); pv->uv0.set(p0.x, p1.y);pv->uv1.set(p0.x-ddw,p1.y-ddh);pv->uv2.set(p0.x+ddw,p1.y+ddh);pv->uv3.set(p0.x+ddw,p1.y-ddh);pv->uv4.set(p0.x-ddw,p1.y+ddh);pv->uv5.set(p0.x-ddw,p1.y,p1.y,p0.x+ddw);pv->uv6.set(p0.x,p1.y-ddh,p1.y+ddh,p0.x);pv++;
 		pv->p.set(EPS,			EPS,			EPS,1.f); pv->uv0.set(p0.x, p0.y);pv->uv1.set(p0.x-ddw,p0.y-ddh);pv->uv2.set(p0.x+ddw,p0.y+ddh);pv->uv3.set(p0.x+ddw,p0.y-ddh);pv->uv4.set(p0.x-ddw,p0.y+ddh);pv->uv5.set(p0.x-ddw,p0.y,p0.y,p0.x+ddw);pv->uv6.set(p0.x,p0.y-ddh,p0.y+ddh,p0.x);pv++;
-		pv->p.set(float(_w+EPS),float(_h+EPS),	EPS,1.f); pv->uv0.set(p1.x, p1.y);pv->uv1.set(p1.x-ddw,p1.y-ddh);pv->uv2.set(p1.x+ddw,p1.y+ddh);pv->uv3.set(p1.x+ddw,p1.y-ddh);pv->uv4.set(p1.x-ddw,p1.y+ddh);pv->uv5.set(p1.x-ddw,p1.y,p1.y,p1.x+ddw);pv->uv6.set(p1.x,p1.y-ddh,p1.y+ddh,p1.x);pv++;
-		pv->p.set(float(_w+EPS),EPS,			EPS,1.f); pv->uv0.set(p1.x, p0.y);pv->uv1.set(p1.x-ddw,p0.y-ddh);pv->uv2.set(p1.x+ddw,p0.y+ddh);pv->uv3.set(p1.x+ddw,p0.y-ddh);pv->uv4.set(p1.x-ddw,p0.y+ddh);pv->uv5.set(p1.x-ddw,p0.y,p0.y,p1.x+ddw);pv->uv6.set(p1.x,p0.y-ddh,p0.y+ddh,p1.x);pv++;
+		pv->p.set(f32(_w+EPS), f32(_h+EPS),	EPS,1.f); pv->uv0.set(p1.x, p1.y);pv->uv1.set(p1.x-ddw,p1.y-ddh);pv->uv2.set(p1.x+ddw,p1.y+ddh);pv->uv3.set(p1.x+ddw,p1.y-ddh);pv->uv4.set(p1.x-ddw,p1.y+ddh);pv->uv5.set(p1.x-ddw,p1.y,p1.y,p1.x+ddw);pv->uv6.set(p1.x,p1.y-ddh,p1.y+ddh,p1.x);pv++;
+		pv->p.set(f32(_w+EPS),EPS,			EPS,1.f); pv->uv0.set(p1.x, p0.y);pv->uv1.set(p1.x-ddw,p0.y-ddh);pv->uv2.set(p1.x+ddw,p0.y+ddh);pv->uv3.set(p1.x+ddw,p0.y-ddh);pv->uv4.set(p1.x-ddw,p0.y+ddh);pv->uv5.set(p1.x-ddw,p0.y,p0.y,p1.x+ddw);pv->uv6.set(p1.x,p0.y-ddh,p0.y+ddh,p1.x);pv++;
 		RCache.Vertex.Unlock		(4,g_aa_AA->vb_stride);
 
 		// Draw COLOR
@@ -242,7 +243,7 @@ void	CRenderTarget::phase_combine	()
 		L_dir.crossproduct  (L_right,L_up);         L_dir.normalize         ();
 
 		Fvector				p0,p1,p2,p3;
-		float				sz	= 100.f;
+		f32				sz	= 100.f;
 		p0.mad				(zero,L_right,sz).mad	(L_dir,sz);
 		p1.mad				(zero,L_right,sz).mad	(L_dir,-sz);
 		p2.mad				(zero,L_right,-sz).mad	(L_dir,-sz);
@@ -264,8 +265,8 @@ void	CRenderTarget::phase_combine	()
 	/*
 	if (0)		{
 		u32		C					= color_rgba	(255,255,255,255);
-		float	_w					= float(Device.dwWidth)/3;
-		float	_h					= float(Device.dwHeight)/3;
+		f32	_w					= f32(Device.dwWidth)/3;
+		f32	_h					= f32(Device.dwHeight)/3;
 
 		// draw light-spheres
 #ifdef DEBUG

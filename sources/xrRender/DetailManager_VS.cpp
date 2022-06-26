@@ -19,16 +19,16 @@ static D3DVERTEXELEMENT9 dwDecl[] =
 #pragma pack(push,1)
 struct	vertHW
 {
-	F32		x;
-	F32		y;
-	F32		z;
+	f32		x;
+	f32		y;
+	f32		z;
 	short		u,v,t,mid;
 };
 #pragma pack(pop)
 
-short QC (F32 v)
+short QC (f32 v)
 {
-	int t=iFloor(v* F32(quant)); clamp(t,-32768,32767);
+	int t=iFloor(v* f32(quant)); clamp(t,-32768,32767);
 	return short(t&0xffff);
 }
 
@@ -132,8 +132,8 @@ void CDetailManager::hw_Render()
 {
 	// Render-prepare
 	Fvector4	dir1,dir2;
-	F32		tm_rot1		= (PI_MUL_2*Device.fTimeGlobal/swing_current.rot1);
-	F32		tm_rot2		= (PI_MUL_2*Device.fTimeGlobal/swing_current.rot2);
+	f32		tm_rot1		= (PI_MUL_2*Device.fTimeGlobal/swing_current.rot1);
+	f32		tm_rot2		= (PI_MUL_2*Device.fTimeGlobal/swing_current.rot2);
 	dir1.set				(_sin(tm_rot1),0,_cos(tm_rot1),0).normalize().mul(swing_current.amp1);
 	dir2.set				(_sin(tm_rot2),0,_cos(tm_rot2),0).normalize().mul(swing_current.amp2);
 
@@ -141,7 +141,7 @@ void CDetailManager::hw_Render()
 	RCache.set_Geometry		(hw_Geom);
 
 	// Wave0
-	F32		scale			=	1.f/ F32(quant);
+	f32		scale			=	1.0f/ f32(quant);
 	Fvector4	wave;
 	wave.set				(1.f/5.f,		1.f/7.f,	1.f/3.f,	Device.fTimeGlobal*swing_current.speed);
 	RCache.set_c			(&*hwc_consts,	scale,		scale,		ps_r__Detail_l_aniso,	ps_r__Detail_l_ambient);				// consts
@@ -200,7 +200,7 @@ void	CDetailManager::hw_Render_dump		(ref_constant x_array, u32 var_id, u32 lod_
 					u32			base		= dwBatch*4;
 
 					// Build matrix ( 3x4 matrix, last row - color )
-					F32		scale		= Instance.scale_calculated;
+					f32		scale		= Instance.scale_calculated;
 					Fmatrix&	M			= Instance.mRotY;
 					c_storage[base+0].set	(M._11*scale,	M._21*scale,	M._31*scale,	M._41	);
 					c_storage[base+1].set	(M._12*scale,	M._22*scale,	M._32*scale,	M._42	);
@@ -216,8 +216,8 @@ void	CDetailManager::hw_Render_dump		(ref_constant x_array, u32 var_id, u32 lod_
 					c_storage[base+3].set	(C.x,			C.y,			C.z,			1.f		);
 #else
 					// R2 only needs hemisphere
-					F32		h			= Instance.c_hemi;
-					F32		s			= Instance.c_sun;
+					f32		h			= Instance.c_hemi;
+					f32		s			= Instance.c_sun;
 					c_storage[base+3].set	(s,				s,				s,				h		);
 #endif
 					dwBatch	++;

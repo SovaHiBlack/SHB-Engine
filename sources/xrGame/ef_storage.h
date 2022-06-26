@@ -106,17 +106,17 @@ struct CEnemyFunction : public T {
 	}
 
 	template <typename P>
-	IC		float	get_value		(P &params)
+	IC		f32	get_value		(P &params)
 	{
 		P						save = params;
 		params.member()			= params.enemy();
 		params.member_item()	= params.enemy_item();
-		float					value = T::ffGetValue();
+		f32					value = T::ffGetValue();
 		params					= save;
 		return					(value);
 	}
 
-	virtual float	ffGetValue		()
+	virtual f32	ffGetValue		()
 	{
 		if (ef_storage().non_alife().member())
 			return	(get_value(ef_storage().non_alife()));

@@ -10,16 +10,16 @@
 #include "..\XR_3DA\CustomHUD.h"
 
 const u32	MAX_POLYGONS			=	1024*8;
-const float MAX_DISTANCE			=	50.f;
-const float	SSM_near_plane			=	.1f;
-const float	SSM_tex_size 			=	32.f;
+const f32 MAX_DISTANCE			=	50.f;
+const f32	SSM_near_plane			=	.1f;
+const f32	SSM_tex_size 			=	32.f;
 
 //////////////////////////////////////////////////////////////////////////
 // binders for lighting
 //////////////////////////////////////////////////////////////////////////
 void cl_light_PR::setup		(R_constant* C)					{
 	Fvector&	P	= RImplementation.r1_dlight_light->position;
-	float		R	= RImplementation.r1_dlight_light->range;
+	f32		R	= RImplementation.r1_dlight_light->range;
 	if (RImplementation.phase==CRender::PHASE_POINT)		RCache.set_c	(C,P.x,P.y,P.z,.5f/R);
 	else													RCache.set_c	(C,P.x,P.y,P.z,1.f/R);
 }
@@ -34,7 +34,7 @@ void cl_light_XFORM::setup	(R_constant* C)					{
 
 //////////////////////////////////////////////////////////////////////////
 /*
-IC void mk_vertex					(CLightR_Vertex& D, Fvector& P, Fvector& N, Fvector& C, float r2)
+IC void mk_vertex					(CLightR_Vertex& D, Fvector& P, Fvector& N, Fvector& C, f32 r2)
 {
 	D.P.set	(P);
 	D.N.set	(P);
@@ -50,7 +50,7 @@ void CLightR_Manager::render_point	()
 	// return;
 
 	// World/View/Projection
-	float _43					 = Device.mProject._43;
+	f32 _43					 = Device.mProject._43;
 	Device.mProject._43			-= 0.001f; 
 	RCache.set_xform_world		(Fidentity);
 	RCache.set_xform_project	(Device.mProject);
@@ -66,7 +66,7 @@ void CLightR_Manager::render_point	()
 		// Culling
 		if (PPL.range<0.05f)														continue;
 		if (PPL.color.magnitude_sqr_rgb()<EPS)										continue;
-		float	alpha		= Device.vCameraPosition.distance_to(PPL.position)/MAX_DISTANCE;
+		f32	alpha		= Device.vCameraPosition.distance_to(PPL.position)/MAX_DISTANCE;
 		if (alpha>=1)																continue;
 		if (!RImplementation.ViewBase.testSphere_dirty (PPL.position,PPL.range))	continue;
 
@@ -77,7 +77,7 @@ void CLightR_Manager::render_point	()
 		RCache.set_c		(hPPAcolor,factor.r,factor.g,factor.b,1);
 		{
 			// Build bbox
-			float				size_f	= PPL.range+EPS_L;
+			f32				size_f	= PPL.range+EPS_L;
 			Fvector				size;	
 			size.set			(size_f,size_f,size_f);
 
@@ -97,7 +97,7 @@ void CLightR_Manager::render_point	()
 
 			// Cull and triangulate polygons
 			Fvector	cam		= Device.vCameraPosition;
-			float	r2		= PPL.range*2;
+			f32	r2		= PPL.range*2;
 			u32		actual	= 0;
 			for (u32 t=0; t<triCount; t++)
 			{
@@ -145,15 +145,15 @@ void CLightR_Manager::render_point	()
 {
 	// for each light
 	Fvector		lc_COP		= Device.vCameraPosition	;
-	float		lc_limit	= ps_r1_dlights_clip		;
+	f32		lc_limit	= ps_r1_dlights_clip		;
 	for (xr_vector<light*>::iterator it=selected_point.begin(); it!=selected_point.end(); it++)
 	{
 		light*	L					= *it;
 		VERIFY						(L->spatial.sector && _valid(L->range));
 
 		//		0. Dimm & Clip
-		float	lc_dist				= lc_COP.distance_to	(L->spatial.sphere.P) - L->spatial.sphere.R;
-		float	lc_scale			= 1 - lc_dist/lc_limit;
+		f32	lc_dist				= lc_COP.distance_to	(L->spatial.sphere.P) - L->spatial.sphere.R;
+		f32	lc_scale			= 1 - lc_dist/lc_limit;
 		if		(lc_scale<EPS)		continue;
 		if		(L->range<0.01f)	continue;
 
@@ -164,16 +164,16 @@ void CLightR_Manager::render_point	()
 		L_up.set					(0,	0, 1);				
 		L_right.crossproduct		(L_up,L_dir);			L_right.normalize	();
 		L_up.crossproduct			(L_dir,L_right);		L_up.normalize		();
-		float	_camrange			= 300.f;
+		f32	_camrange			= 300.f;
 		L_pos.set					(L->position);			L_pos.y	+=	_camrange;
 		L_view.build_camera_dir		(L_pos,L_dir,L_up);
 		L_project.build_projection	(deg2rad(2.f),1.f,_camrange-L->range,_camrange+L->range);
 		L_combine.mul				(L_project,L_view);
 
 		//		2. Calculate matrix for TC-gen
-		float			fTexelOffs			= (.5f / SSM_tex_size);
-		float			fRange				= 1.f  / L->range;
-		float			fBias				= 0.f;
+		f32			fTexelOffs			= (.5f / SSM_tex_size);
+		f32			fRange				= 1.f  / L->range;
+		f32			fBias				= 0.f;
 		Fmatrix			m_TexelAdjust		= 
 		{
 			0.5f,				0.0f,				0.0f,			0.0f,
@@ -218,15 +218,15 @@ void CLightR_Manager::render_spot	()
 	// for each light
 	//	Msg	("l=%d",selected_spot.size());
 	Fvector		lc_COP		= Device.vCameraPosition	;
-	float		lc_limit	= ps_r1_dlights_clip		;
+	f32		lc_limit	= ps_r1_dlights_clip		;
 
 	for (xr_vector<light*>::iterator it=selected_spot.begin(); it!=selected_spot.end(); it++)
 	{
 		light*	L					= *it;
 
 		//		0. Dimm & Clip
-		float	lc_dist				= lc_COP.distance_to	(L->spatial.sphere.P) - L->spatial.sphere.R;
-		float	lc_scale			= 1 - lc_dist/lc_limit;
+		f32	lc_dist				= lc_COP.distance_to	(L->spatial.sphere.P) - L->spatial.sphere.R;
+		f32	lc_scale			= 1 - lc_dist/lc_limit;
 		if		(lc_scale<EPS)		continue;
 
 		//		1. Calculate light frustum
@@ -242,9 +242,9 @@ void CLightR_Manager::render_spot	()
 		L_combine.mul				(L_project,L_view);
 
 		//		2. Calculate matrix for TC-gen
-		float			fTexelOffs			= (.5f / SSM_tex_size);
-		float			fRange				= 1.f  / L->range;
-		float			fBias				= 0.f;
+		f32			fTexelOffs			= (.5f / SSM_tex_size);
+		f32			fRange				= 1.f  / L->range;
+		f32			fBias				= 0.f;
 		Fmatrix			m_TexelAdjust		= 
 		{
 			0.5f,				0.0f,				0.0f,			0.0f,

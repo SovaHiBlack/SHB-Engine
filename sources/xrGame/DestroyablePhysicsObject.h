@@ -8,7 +8,7 @@ public	 CHitImmunity,
 public	 CDamageManager
 {
 typedef  CPhysicObject inherited;
-	float m_fHealth;
+f32 m_fHealth;
 	ref_sound							m_destroy_sound;
 	shared_str							m_destroy_particles;
 public:

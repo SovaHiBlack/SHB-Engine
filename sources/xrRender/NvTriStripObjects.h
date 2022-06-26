@@ -10,21 +10,21 @@
 /////////////////////////////////////////////////////////////////////////////////
 
 struct MyVertex {
-	F32 x;
-	F32 y;
-	F32 z;
-	F32 nx;
-	F32 ny;
-	F32 nz;
+	f32 x;
+	f32 y;
+	f32 z;
+	f32 nx;
+	f32 ny;
+	f32 nz;
 };
 
 typedef MyVertex MyVector;
 
 struct MyFace {
 	int v1, v2, v3;
-	F32 nx;
-	F32 ny;
-	F32 nz;
+	f32 nx;
+	f32 ny;
+	f32 nz;
 };
 
 
@@ -189,7 +189,7 @@ protected:
 	WordVec indices;
 	int cacheSize;
 	int minStripLength;
-	F32 meshJump;
+	f32 meshJump;
 	bool bFirstTimeResetPoint;
 	
 	/////////////////////////////////////////////////////////////////////////////////
@@ -214,12 +214,12 @@ protected:
 	
 	void CommitStrips(NvStripInfoVec &allStrips, const NvStripInfoVec &strips);
 	
-	F32 AvgStripSize(const NvStripInfoVec &strips);
+	f32 AvgStripSize(const NvStripInfoVec &strips);
 	int FindStartPoint(NvFaceInfoVec &faceInfos, NvEdgeInfoVec &edgeInfos);
 	
 	void UpdateCacheStrip(VertexCache* vcache, NvStripInfo* strip);
 	void UpdateCacheFace(VertexCache* vcache, NvFaceInfo* face);
-	F32 CalcNumHitsStrip(VertexCache* vcache, NvStripInfo* strip);
+	f32 CalcNumHitsStrip(VertexCache* vcache, NvStripInfo* strip);
 	int CalcNumHitsFace(VertexCache* vcache, NvFaceInfo* face);
 	int NumNeighbors(NvFaceInfo* face, NvEdgeInfoVec& edgeInfoVec);
 	

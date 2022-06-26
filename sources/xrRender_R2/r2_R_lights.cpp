@@ -197,12 +197,12 @@ void	CRender::render_indirect			(light* L)
 
 	xr_vector<light_indirect>&	Lvec		= L->indirect;
 	if (Lvec.empty())						return;
-	float	LE								= L->color.intensity	();
+	f32	LE								= L->color.intensity	();
 	for (u32 it=0; it<Lvec.size(); it++)	{
 		light_indirect&	LI				= Lvec[it];
 
 		// energy and color
-		float	LIE						= LE*LI.E;
+		f32	LIE						= LE*LI.E;
 		if (LIE < ps_r2_GI_clip)		continue;
 		Fvector T; T.set(L->color.r,L->color.g,L->color.b).mul(LI.E);
 		LIGEN.set_color					(T.x,T.y,T.z);
@@ -217,9 +217,9 @@ void	CRender::render_indirect			(light* L)
 		// range
 		// dist^2 / range^2 = A - has infinity number of solutions
 		// approximate energy by linear fallof Emax / (1 + x) = Emin
-		float	Emax					= LIE;
-		float	Emin					= 1.f / 255.f;
-		float	x						= (Emax - Emin)/Emin;
+		f32	Emax					= LIE;
+		f32	Emin					= 1.f / 255.f;
+		f32	x						= (Emax - Emin)/Emin;
 		if		(x < 0.1f)				continue;
 		LIGEN.set_range					(x);
 

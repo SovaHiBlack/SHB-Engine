@@ -69,7 +69,7 @@ inline bool  TriPlaneContainPoint(const dReal* v0,const dReal* v1,const dReal* v
 	 return T->dist>0.f;
  }
 
- inline void PlanePoint(const Triangle& tri,const dReal* from,const dReal* to,float from_dist,dReal* point)
+ inline void PlanePoint(const Triangle& tri,const dReal* from,const dReal* to, f32 from_dist,dReal* point)
  {
 	 dVector3	dir		=	{to[0]-from[0],to[1]-from[1],to[2]-from[2]}	;
 	 dReal		cosinus	=	(tri.dist-from_dist)							;
@@ -98,13 +98,13 @@ inline bool  TriPlaneContainPoint(const dReal* v0,const dReal* v1,const dReal* v
 	 InitTriangle(XTri,triangle,vertices);
  }
 
- ICF	void CalculateTri(CDB::TRI* XTri,const float* pos,Triangle& triangle,const Fvector* V_array)
+ ICF	void CalculateTri(CDB::TRI* XTri,const f32* pos,Triangle& triangle,const Fvector* V_array)
  {
 	 InitTriangle(XTri,triangle,V_array);
 	 triangle.dist=dDOT(pos,triangle.norm)-triangle.pos;
  }
 
- ICF	void CalculateTri(CDB::TRI* XTri,const float* pos,Triangle& triangle,const Point* VRT)
+ ICF	void CalculateTri(CDB::TRI* XTri,const f32* pos,Triangle& triangle,const Point* VRT)
  {
 	 InitTriangle(XTri,triangle,VRT);
 	 triangle.dist=dDOT(pos,triangle.norm)-triangle.pos;

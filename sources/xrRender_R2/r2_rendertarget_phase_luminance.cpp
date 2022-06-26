@@ -18,7 +18,7 @@ struct v_filter {
 void	CRenderTarget::phase_luminance()
 {
 	u32		Offset	= 0;
-	float	eps		= EPSILON_7;
+	f32	eps		= EPSILON_7;
 
 	// Targets
 	RCache.set_Stencil						(FALSE);
@@ -29,9 +29,9 @@ void	CRenderTarget::phase_luminance()
 	// 000: Perform LUM-SAT, pass 0, 256x256 => 64x64
 	u_setrt									(rt_LUM_64,NULL,NULL,NULL);
 	{
-		float		ts				= 64;
-		float		_w				= float(BLOOM_size_X);
-		float		_h				= float(BLOOM_size_Y);
+		f32		ts				= 64;
+		f32		_w				= f32(BLOOM_size_X);
+		f32		_h				= f32(BLOOM_size_Y);
 		Fvector2	one				= { 2.f/_w, 2.f/_h };	// two, infact
 		Fvector2	half			= { 1.f/_w, 1.f/_h };	// one, infact
 		Fvector2	a_0				= { half.x + 0,		half.y + 0		};
@@ -45,10 +45,10 @@ void	CRenderTarget::phase_luminance()
 
 		// Fill vertex buffer
 		v_build* pv					= (v_build*) RCache.Vertex.Lock	(4,g_bloom_build->vb_stride,Offset);
-		pv->p.set	(eps,			float(ts+eps),	eps,1.f);	pv->uv0.set	(a_0.x,b_0.y);	pv->uv1.set	(a_1.x,b_1.y);	pv->uv2.set	(a_2.x,b_2.y);	pv->uv3.set	(a_3.x,b_3.y);	pv++;
+		pv->p.set	(eps, f32(ts+eps),	eps,1.f);	pv->uv0.set	(a_0.x,b_0.y);	pv->uv1.set	(a_1.x,b_1.y);	pv->uv2.set	(a_2.x,b_2.y);	pv->uv3.set	(a_3.x,b_3.y);	pv++;
 		pv->p.set	(eps,			eps,			eps,1.f);	pv->uv0.set	(a_0.x,a_0.y);	pv->uv1.set	(a_1.x,a_1.y);	pv->uv2.set	(a_2.x,a_2.y);	pv->uv3.set	(a_3.x,a_3.y);	pv++;
-		pv->p.set	(float(ts+eps), float(ts+eps),	eps,1.f);	pv->uv0.set	(b_0.x,b_0.y);	pv->uv1.set	(b_1.x,b_1.y);	pv->uv2.set	(b_2.x,b_2.y);	pv->uv3.set	(b_3.x,b_3.y);	pv++;
-		pv->p.set	(float(ts+eps), eps,			eps,1.f);	pv->uv0.set	(b_0.x,a_0.y);	pv->uv1.set	(b_1.x,a_1.y);	pv->uv2.set	(b_2.x,a_2.y);	pv->uv3.set	(b_3.x,a_3.y);	pv++;
+		pv->p.set	(f32(ts+eps), f32(ts+eps),	eps,1.f);	pv->uv0.set	(b_0.x,b_0.y);	pv->uv1.set	(b_1.x,b_1.y);	pv->uv2.set	(b_2.x,b_2.y);	pv->uv3.set	(b_3.x,b_3.y);	pv++;
+		pv->p.set	(f32(ts+eps), eps,			eps,1.f);	pv->uv0.set	(b_0.x,a_0.y);	pv->uv1.set	(b_1.x,a_1.y);	pv->uv2.set	(b_2.x,a_2.y);	pv->uv3.set	(b_3.x,a_3.y);	pv++;
 		RCache.Vertex.Unlock		(4,g_bloom_build->vb_stride);
 		RCache.set_Element			(s_luminance->E[0]);
 		RCache.set_Geometry			(g_bloom_build		);
@@ -59,8 +59,8 @@ void	CRenderTarget::phase_luminance()
 	u_setrt									(rt_LUM_8,NULL,NULL,NULL);
 	{
 		// Build filter-kernel
-		float		_ts				= 8;
-		float		_src			= float(64);
+		f32		_ts				= 8;
+		f32		_src			= f32(64);
 		Fvector2	a[16],b[16];
 		for (int k=0; k<16; k++)	{
 			int	_x	= (k*2+1)%8;	// 1,3,5,7
@@ -71,13 +71,13 @@ void	CRenderTarget::phase_luminance()
 
 		// Fill vertex buffer
 		v_filter* pv				= (v_filter*) RCache.Vertex.Lock	(4,g_bloom_filter->vb_stride,Offset);
-		pv->p.set	(eps,			float(_ts+eps),	eps,1.f);	for (int t=0; t<8; t++)	pv->uv[t].set(a[t].x,b[t].y, b[t+8].y,a[t+8].x);	// xy/yx	- left+down
+		pv->p.set	(eps, f32(_ts+eps),	eps,1.f);	for (int t=0; t<8; t++)	pv->uv[t].set(a[t].x,b[t].y, b[t+8].y,a[t+8].x);	// xy/yx	- left+down
 		pv++;
 		pv->p.set	(eps,			eps,			eps,1.f);	for (int t=0; t<8; t++)	pv->uv[t].set(a[t].x,a[t].y, a[t+8].y,a[t+8].x);	// xy/yx	- left+up
 		pv++;
-		pv->p.set	(float(_ts+eps),float(_ts+eps),	eps,1.f);	for (int t=0; t<8; t++)	pv->uv[t].set(b[t].x,b[t].y, b[t+8].y,b[t+8].x);	// xy/yx	- right+down
+		pv->p.set	(f32(_ts+eps), f32(_ts+eps),	eps,1.f);	for (int t=0; t<8; t++)	pv->uv[t].set(b[t].x,b[t].y, b[t+8].y,b[t+8].x);	// xy/yx	- right+down
 		pv++;
-		pv->p.set	(float(_ts+eps),eps,			eps,1.f);	for (int t=0; t<8; t++)	pv->uv[t].set(b[t].x,a[t].y, a[t+8].y,b[t+8].x);	// xy/yx	- right+up
+		pv->p.set	(f32(_ts+eps),eps,			eps,1.f);	for (int t=0; t<8; t++)	pv->uv[t].set(b[t].x,a[t].y, a[t+8].y,b[t+8].x);	// xy/yx	- right+up
 		pv++;
 		RCache.Vertex.Unlock		(4,g_bloom_filter->vb_stride);
 		RCache.set_Element			(s_luminance->E[1]	);
@@ -90,8 +90,8 @@ void	CRenderTarget::phase_luminance()
 	u_setrt		(rt_LUM_pool[gpu_id*2+1],NULL,NULL,NULL);
 	{
 		// Build filter-kernel
-		float		_ts				= 1;
-		float		_src			= float(8);
+		f32		_ts				= 1;
+		f32		_src			= f32(8);
 		Fvector2	a[16],b[16];
 		for (int k=0; k<16; k++)	{
 			int	_x	= (k*2+1)%8;	// 1,3,5,7
@@ -102,18 +102,18 @@ void	CRenderTarget::phase_luminance()
 
 		// Fill vertex buffer
 		v_filter* pv				= (v_filter*) RCache.Vertex.Lock	(4,g_bloom_filter->vb_stride,Offset);
-		pv->p.set	(eps,			float(_ts+eps),	eps,1.f);	for (int t=0; t<8; t++)	pv->uv[t].set(a[t].x,b[t].y, b[t+8].y,a[t+8].x);	// xy/yx	- left+down
+		pv->p.set	(eps, f32(_ts+eps),	eps,1.f);	for (int t=0; t<8; t++)	pv->uv[t].set(a[t].x,b[t].y, b[t+8].y,a[t+8].x);	// xy/yx	- left+down
 		pv++;
 		pv->p.set	(eps,			eps,			eps,1.f);	for (int t=0; t<8; t++)	pv->uv[t].set(a[t].x,a[t].y, a[t+8].y,a[t+8].x);	// xy/yx	- left+up
 		pv++;
-		pv->p.set	(float(_ts+eps),float(_ts+eps),	eps,1.f);	for (int t=0; t<8; t++)	pv->uv[t].set(b[t].x,b[t].y, b[t+8].y,b[t+8].x);	// xy/yx	- right+down
+		pv->p.set	(f32(_ts+eps), f32(_ts+eps),	eps,1.f);	for (int t=0; t<8; t++)	pv->uv[t].set(b[t].x,b[t].y, b[t+8].y,b[t+8].x);	// xy/yx	- right+down
 		pv++;
-		pv->p.set	(float(_ts+eps),eps,			eps,1.f);	for (int t=0; t<8; t++)	pv->uv[t].set(b[t].x,a[t].y, a[t+8].y,b[t+8].x);	// xy/yx	- right+up
+		pv->p.set	(f32(_ts+eps),eps,			eps,1.f);	for (int t=0; t<8; t++)	pv->uv[t].set(b[t].x,a[t].y, a[t+8].y,b[t+8].x);	// xy/yx	- right+up
 		pv++;
 		RCache.Vertex.Unlock		(4,g_bloom_filter->vb_stride);
 
 		f_luminance_adapt			= .9f*f_luminance_adapt + .1f*Device.fTimeDelta*ps_r2_tonemap_adaptation;
-		float		amount			= ps_r2_ls_flags.test(R2FLAG_TONEMAP)?ps_r2_tonemap_amount:0;
+		f32		amount			= ps_r2_ls_flags.test(R2FLAG_TONEMAP)?ps_r2_tonemap_amount:0;
 		Fvector3	_none, _full, _result;
 				_none.set			(1,							0,		1						);
 				_full.set			(ps_r2_tonemap_middlegray,	1.f,	ps_r2_tonemap_low_lum	);

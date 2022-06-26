@@ -80,7 +80,8 @@ void	CDestroyablePhysicsObject::Hit					(SHit* pHDS)
 		HDS.bone()
 		);
 	HDS.power=CHitImmunity::AffectHit(HDS.power,HDS.hit_type);
-	float hit_scale=1.f,wound_scale=1.f;
+	f32 hit_scale = 1.0f;
+	f32 wound_scale = 1.0f;
 	CDamageManager::HitScale(HDS.bone(),hit_scale,wound_scale);
 	HDS.power*=hit_scale;
 

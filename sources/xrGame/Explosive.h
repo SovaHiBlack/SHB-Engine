@@ -38,7 +38,7 @@ private:
 public:
 	virtual void 				ExplodeParams	(const Fvector& pos, const Fvector& dir);
 
-	static float 				ExplosionEffect	(collide::rq_results& storage,CExplosive*exp_obj,CPhysicsShellHolder*blasted_obj,  const Fvector &expl_centre, const float expl_radius);
+	static f32 				ExplosionEffect	(collide::rq_results& storage,CExplosive*exp_obj,CPhysicsShellHolder*blasted_obj,  const Fvector &expl_centre, const f32 expl_radius);
 
 
 	virtual void 				OnEvent (NET_Packet& P, u16 type) ;//{inherited::OnEvent( P, type);}
@@ -73,7 +73,7 @@ static		void				GetRaySourcePos			(CExplosive	*exp_obj,const Fvector &expl_centr
 
 			void				ExplodeWaveProcessObject(collide::rq_results& storage,CPhysicsShellHolder*sh);
 			void				ExplodeWaveProcess		();
-static		float				TestPassEffect			(const	Fvector	&source_p,	const	Fvector	&dir,float range,float ef_radius,collide::rq_results& storage, CObject* blasted_obj);
+static		f32				TestPassEffect			(const	Fvector	&source_p,	const	Fvector	&dir, f32 range, f32 ef_radius,collide::rq_results& storage, CObject* blasted_obj);
 			void				LightCreate				();
 			void				LightDestroy			();
 protected:
@@ -88,14 +88,14 @@ protected:
 	Fvector 					m_vExplodeDir;
 
 	//параметры взрыва
-	float 						m_fBlastHit;
-	float 						m_fBlastHitImpulse;
-	float 						m_fBlastRadius;
+	f32 						m_fBlastHit;
+	f32 						m_fBlastHitImpulse;
+	f32 						m_fBlastRadius;
 	
 	//параметры и количество осколков
-	float 						m_fFragsRadius; 
-	float 						m_fFragHit;
-	float 						m_fFragHitImpulse;
+	f32 						m_fFragsRadius;
+	f32 						m_fFragHit;
+	f32 						m_fFragHitImpulse;
 	int	  						m_iFragsNum;
 
 	//типы наносимых хитов
@@ -103,17 +103,17 @@ protected:
 	ALife::EHitType 			m_eHitTypeFrag;
 
 	//фактор подпроса предмета вверх взрывной волной 
-	float						m_fUpThrowFactor;
+	f32						m_fUpThrowFactor;
 
 	//список пораженных объектов
 	BLASTED_OBJECTS_V			m_blasted_objects;
 
 	//текущая продолжительность взрыва
-	float						m_fExplodeDuration;
+	f32						m_fExplodeDuration;
 	//общее время взрыва
-	float						m_fExplodeDurationMax;
+	f32						m_fExplodeDurationMax;
 	//Время, через которое надо сделать взрывчатку невиимой, если она не становится невидимой во время взрыва
-	float						m_fExplodeHideDurationMax;
+	f32						m_fExplodeHideDurationMax;
 	//флаг состояния взрыва
 	enum{
 		flExploding				=1<<0	,
@@ -132,14 +132,14 @@ protected:
 
 	//////////////////////////////////////////////
 	//для разлета осколков
-	float						m_fFragmentSpeed;
+	f32						m_fFragmentSpeed;
 	
 	//звуки
 	ref_sound					sndExplode;
 	ESoundTypes					m_eSoundExplode;
 
 	//размер отметки на стенах
-	float						fWallmarkSize;
+	f32						fWallmarkSize;
 	
 	//эффекты и подсветка
 	shared_str					m_sExplodeParticles;
@@ -147,8 +147,8 @@ protected:
 	//подсветка взрыва
 	ref_light					m_pLight;
 	Fcolor						m_LightColor;
-	float						m_fLightRange;
-	float						m_fLightTime;
+	f32						m_fLightRange;
+	f32						m_fLightTime;
 	
 	virtual	void				StartLight	();
 	virtual	void				StopLight	();
@@ -159,9 +159,9 @@ protected:
 
 	// эффектор
 	struct {
-/*		float 					time;
-		float 					amplitude;	
-		float 					period_number;
+/*		f32 					time;
+		f32 					amplitude;	
+		f32 					period_number;
 		shared_str				file_name;*/
 		shared_str				effect_sect_name;
 	} effector;

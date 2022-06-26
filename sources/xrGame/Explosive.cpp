@@ -34,7 +34,7 @@
 #define EFFECTOR_RADIUS 30.f
 const u16	TEST_RAYS_PER_OBJECT=5;
 const u16	BLASTED_OBJ_PROCESSED_PER_FRAME=3;
-const float	exp_dist_extinction_factor=3.f;//(>1.f, 1.f -means no dist change of exp effect)	on the dist of m_fBlastRadius exp. wave effect in exp_dist_extinction_factor times less than maximum
+const f32	exp_dist_extinction_factor=3.f;//(>1.f, 1.f -means no dist change of exp effect)	on the dist of m_fBlastRadius exp. wave effect in exp_dist_extinction_factor times less than maximum
 
 CExplosive::CExplosive(void) 
 {
@@ -172,7 +172,7 @@ struct SExpQParams
 	}
 #endif
 
-	float		shoot_factor		;
+	f32		shoot_factor		;
 };
 //проверка на попадание "осколком" по объекту
 ICF static BOOL grenade_hit_callback(collide::rq_result& result, LPVOID params)
@@ -203,11 +203,8 @@ ICF static BOOL grenade_hit_callback(collide::rq_result& result, LPVOID params)
 	return				(ep.shoot_factor>0.01f);
 }
 
-
-
-float CExplosive::ExplosionEffect(collide::rq_results& storage, CExplosive*exp_obj,CPhysicsShellHolder*blasted_obj,  const Fvector &expl_centre, const float expl_radius) 
-{
-	
+f32 CExplosive::ExplosionEffect(collide::rq_results& storage, CExplosive*exp_obj,CPhysicsShellHolder*blasted_obj,  const Fvector &expl_centre, const f32 expl_radius)
+{	
 	const Fmatrix	&obj_xform=blasted_obj->XFORM();
 	Fmatrix	inv_obj_form;inv_obj_form.invert(obj_xform);
 	Fvector	local_exp_center;inv_obj_form.transform_tiny(local_exp_center,expl_centre);
@@ -216,14 +213,14 @@ float CExplosive::ExplosionEffect(collide::rq_results& storage, CExplosive*exp_o
 	if(l_b1.contains(local_exp_center)) 
 										return 1.f;
 	Fvector l_c, l_d;l_b1.get_CD(l_c,l_d);
-	float effective_volume=l_d.x*l_d.y*l_d.z;
-	float max_s=effective_volume/(_min(_min(l_d.x,l_d.y),l_d.z));
+	f32 effective_volume = l_d.x * l_d.y * l_d.z;
+	f32 max_s=effective_volume/(_min(_min(l_d.x,l_d.y),l_d.z));
 	if(blasted_obj->PPhysicsShell()&&blasted_obj->PPhysicsShell()->isActive())
 	{
-		float ph_volume=blasted_obj->PPhysicsShell()->getVolume();
+		f32 ph_volume=blasted_obj->PPhysicsShell()->getVolume();
 		if(ph_volume<effective_volume)effective_volume=ph_volume;
 	}
-	float effect=0.f;
+	f32 effect=0.0f;
 #ifdef DEBUG
 	if(ph_dbg_draw_mask.test(phDbgDrawExplosions))
 	{
@@ -245,7 +242,7 @@ float CExplosive::ExplosionEffect(collide::rq_results& storage, CExplosive*exp_o
 			effect+=1.f;continue;
 		}
 		Fvector l_dir; l_dir.sub(l_end_p,l_source_p);
-		float mag=l_dir.magnitude();
+		f32 mag=l_dir.magnitude();
 		
 		if(fis_zero(mag)) return 1.f;
 
@@ -260,8 +257,8 @@ float CExplosive::ExplosionEffect(collide::rq_results& storage, CExplosive*exp_o
 #endif
 		
 #ifdef DEBUG
-		float l_S=effective_volume*(_abs(l_dir.dotproduct(obj_xform.i))/l_d.x+_abs(l_dir.dotproduct(obj_xform.j))/l_d.y+_abs(l_dir.dotproduct(obj_xform.k))/l_d.z);
-		float add_eff=_sqrt(l_S/max_s)*TestPassEffect(l_source_p,l_dir,mag,expl_radius,storage,blasted_obj);
+			f32 l_S=effective_volume*(_abs(l_dir.dotproduct(obj_xform.i))/l_d.x+_abs(l_dir.dotproduct(obj_xform.j))/l_d.y+_abs(l_dir.dotproduct(obj_xform.k))/l_d.z);
+			f32 add_eff=_sqrt(l_S/max_s)*TestPassEffect(l_source_p,l_dir,mag,expl_radius,storage,blasted_obj);
 		effect+=add_eff;
 		if(ph_dbg_draw_mask.test(phDbgDrawExplosions))
 		{
@@ -271,7 +268,7 @@ float CExplosive::ExplosionEffect(collide::rq_results& storage, CExplosive*exp_o
 			Msg("dist/overlap effect, %f",add_eff/_sqrt(l_S/max_s));
 		}
 #else
-		float l_S=effective_volume*(_abs(l_dir.dotproduct(obj_xform.i))/l_d.x+_abs(l_dir.dotproduct(obj_xform.j))/l_d.y+_abs(l_dir.dotproduct(obj_xform.k))/l_d.z);
+			f32 l_S=effective_volume*(_abs(l_dir.dotproduct(obj_xform.i))/l_d.x+_abs(l_dir.dotproduct(obj_xform.j))/l_d.y+_abs(l_dir.dotproduct(obj_xform.k))/l_d.z);
 		effect+=_sqrt(l_S/max_s)*TestPassEffect(l_source_p,l_dir,mag,expl_radius,storage,blasted_obj);
 #endif
 
@@ -285,11 +282,11 @@ float CExplosive::ExplosionEffect(collide::rq_results& storage, CExplosive*exp_o
 	return effect/TEST_RAYS_PER_OBJECT;
 	
 }
-float CExplosive::TestPassEffect(const	Fvector	&source_p,	const	Fvector	&dir,float range,float ef_radius,collide::rq_results& storage, CObject* blasted_obj)
+f32 CExplosive::TestPassEffect(const	Fvector	&source_p,	const	Fvector	&dir, f32 range, f32 ef_radius,collide::rq_results& storage, CObject* blasted_obj)
 {
-	float sq_ef_radius=ef_radius*ef_radius;
-	float dist_factor	=		sq_ef_radius/(range*range*(exp_dist_extinction_factor-1.f)+sq_ef_radius);
-	float shoot_factor=1.f;
+	f32 sq_ef_radius=ef_radius*ef_radius;
+	f32 dist_factor	=		sq_ef_radius/(range*range*(exp_dist_extinction_factor-1.f)+sq_ef_radius);
+	f32 shoot_factor=1.f;
 	if(range>EPS_L)
 	{
 		VERIFY(!fis_zero(dir.square_magnitude()));
@@ -420,8 +417,8 @@ STOP_PROFILE
 	CActor* pActor = smart_cast<CActor*>(GO);
 	if(pActor)
 	{
-		float dist_to_actor = pActor->Position().distance_to(pos);
-		float max_dist		= EFFECTOR_RADIUS;
+		f32 dist_to_actor = pActor->Position().distance_to(pos);
+		f32 max_dist		= EFFECTOR_RADIUS;
 		if (dist_to_actor < max_dist)
 			AddEffector	(pActor, effExplodeHit, effector.effect_sect_name, (max_dist - dist_to_actor) / max_dist );
 	}
@@ -499,7 +496,7 @@ void CExplosive::UpdateCL()
 		{
 			if(m_fExplodeDuration > (m_fExplodeDurationMax - m_fLightTime))
 			{
-				float scale = (m_fExplodeDuration - (m_fExplodeDurationMax - m_fLightTime))/m_fLightTime;
+				f32 scale = (m_fExplodeDuration - (m_fExplodeDurationMax - m_fLightTime))/m_fLightTime;
 				m_pLight->set_color(m_LightColor.r*scale, m_LightColor.g*scale, m_LightColor.b*scale);
 				m_pLight->set_range(m_fLightRange*scale);
 			} 
@@ -666,16 +663,16 @@ void CExplosive::ExplodeWaveProcessObject(collide::rq_results& storage, CPhysics
 	}
 #endif
 
-	float l_effect=ExplosionEffect(storage,this,l_pGO,m_vExplodePos,m_fBlastRadius);
-	float l_impuls	= m_fBlastHitImpulse * l_effect;
-	float l_hit		= m_fBlastHit * l_effect;
+	f32 l_effect=ExplosionEffect(storage,this,l_pGO,m_vExplodePos,m_fBlastRadius);
+	f32 l_impuls	= m_fBlastHitImpulse * l_effect;
+	f32 l_hit		= m_fBlastHit * l_effect;
 
 	if(l_impuls > .001f||l_hit> 0.001) 
 	{
 	
 		Fvector l_dir;l_dir.sub(l_goPos,m_vExplodePos);
 		
-		float rmag=_sqrt(m_fUpThrowFactor*m_fUpThrowFactor+1.f+2.f*m_fUpThrowFactor*l_dir.y);
+		f32 rmag = _sqrt(m_fUpThrowFactor * m_fUpThrowFactor + 1.0f + 2.0f * m_fUpThrowFactor * l_dir.y);
 		l_dir.y += m_fUpThrowFactor;
 		//rmag -модуль l_dir после l_dir.y += m_fUpThrowFactor, модуль=_sqrt(l_dir^2+y^2+2.*(l_dir,y)),y=(0,m_fUpThrowFactor,0) (до этого модуль l_dir =1)
 		l_dir.mul(1.f/rmag);//перенормировка

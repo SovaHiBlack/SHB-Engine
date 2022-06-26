@@ -22,11 +22,11 @@ class	XRSOUND_API					CSound_environment;
 //
 XRSOUND_API extern u32				psSoundFreq				;
 XRSOUND_API extern u32				psSoundModel			;
-XRSOUND_API extern F32				psSoundVEffects			;
-XRSOUND_API extern F32				psSoundVFactor			;
-XRSOUND_API extern F32				psSoundVMusic			;
-XRSOUND_API extern F32				psSoundRolloff			;
-XRSOUND_API extern F32				psSoundOcclusionScale	;
+XRSOUND_API extern f32				psSoundVEffects			;
+XRSOUND_API extern f32				psSoundVFactor			;
+XRSOUND_API extern f32				psSoundVMusic			;
+XRSOUND_API extern f32				psSoundRolloff			;
+XRSOUND_API extern f32				psSoundOcclusionScale	;
 XRSOUND_API extern Flags32			psSoundFlags			;
 XRSOUND_API extern int				psSoundTargets			;
 XRSOUND_API extern int				psSoundCacheSizeMB		;
@@ -145,9 +145,9 @@ public:
 	/*!
 		\sa stop()
 	*/
-	IC void					play					( CObject* O /*!< Object */,											u32 flags=0 /*!< Looping */, F32 delay=0.f /*!< Delay */);
-	IC void					play_at_pos				( CObject* O /*!< Object */,	const Fvector &pos /*!< 3D position */,	u32 flags=0 /*!< Looping */, F32 delay=0.f /*!< Delay */);
-	IC void					play_no_feedback		( CObject* O /*!< Object */,											u32 flags=0 /*!< Looping */, F32 delay=0.f /*!< Delay */, Fvector* pos=0, F32* vol=0, F32* freq=0, Fvector2* range=0);
+	IC void					play					( CObject* O /*!< Object */,											u32 flags=0 /*!< Looping */, f32 delay=0.f /*!< Delay */);
+	IC void					play_at_pos				( CObject* O /*!< Object */,	const Fvector &pos /*!< 3D position */,	u32 flags=0 /*!< Looping */, f32 delay=0.f /*!< Delay */);
+	IC void					play_no_feedback		( CObject* O /*!< Object */,											u32 flags=0 /*!< Looping */, f32 delay=0.f /*!< Delay */, Fvector* pos=0, f32* vol=0, f32* freq=0, Fvector2* range=0);
 	//@}
 
 	//! Stops playing this source
@@ -157,10 +157,10 @@ public:
 	IC void					stop 					( );
 	IC void					stop_deffered			( );
 	IC void					set_position			( const Fvector &pos);
-	IC void					set_frequency			(F32 freq);
-	IC void					set_range				(F32 min, F32 max );
-	IC void					set_volume				(F32 vol );
-	IC void					set_priority			(F32 vol );
+	IC void					set_frequency			(f32 freq);
+	IC void					set_range				(f32 min, f32 max );
+	IC void					set_volume				(f32 vol );
+	IC void					set_priority			(f32 vol );
 
 	IC const CSound_params*	get_params				( );
     IC void					set_params				( CSound_params* p );
@@ -186,12 +186,12 @@ class XRSOUND_API			CSound_params
 {
 public:
 	Fvector					position;
-	F32						base_volume;
-	F32						volume;
-	F32						freq;
-	F32						min_distance;
-	F32						max_distance;
-	F32						max_ai_distance;
+	f32						base_volume;
+	f32						volume;
+	f32						freq;
+	f32						min_distance;
+	f32						max_distance;
+	f32						max_ai_distance;
 };
 
 /// definition (Sound Interface)
@@ -202,10 +202,10 @@ public:
 	virtual void					switch_to_2D			()															= 0;
 	virtual void					switch_to_3D			()															= 0;
 	virtual void					set_position			(const Fvector &pos)										= 0;
-	virtual void					set_frequency			(F32 freq)												= 0;
-	virtual void					set_range				(F32 min, F32 max)										= 0;
-	virtual void					set_volume				(F32 vol)													= 0;
-	virtual void					set_priority			(F32 vol)													= 0;
+	virtual void					set_frequency			(f32 freq)												= 0;
+	virtual void					set_range				(f32 min, f32 max)										= 0;
+	virtual void					set_volume				(f32 vol)													= 0;
+	virtual void					set_priority			(f32 vol)													= 0;
 	virtual void					stop					(BOOL bDeffered)											= 0;
 	virtual	const CSound_params*	get_params				( )															= 0;
 	virtual u32						play_time				( )															= 0;
@@ -234,7 +234,7 @@ public:
 	struct SItem{
 		shared_str			name;
 		CSound_params		params;
-		F32					volume;
+		f32					volume;
 		esound_type			type;
 		int					game_type;
 		CObject*			game_object;
@@ -251,7 +251,7 @@ void						append							(const SItem& itm)	{items.push_back(itm);}
 };
 
 /// definition (Sound Callback)
-typedef		void __stdcall sound_event						(ref_sound_data_ptr S, F32 range);
+typedef		void __stdcall sound_event						(ref_sound_data_ptr S, f32 range);
 
 /// definition (Sound Manager Interface)
 class XRSOUND_API	CSound_manager_interface
@@ -282,11 +282,11 @@ public:
 	virtual void					stop_emitters			( )																						= 0;	
 	virtual int						pause_emitters			( bool val )																			= 0;
 
-	virtual void					play					( ref_sound& S, CObject* O,						u32 flags=0, F32 delay=0.f)			= 0;
-	virtual void					play_at_pos				( ref_sound& S, CObject* O,	const Fvector &pos,	u32 flags=0, F32 delay=0.f)			= 0;
-	virtual void					play_no_feedback		( ref_sound& S, CObject* O,						u32 flags=0, F32 delay=0.f, Fvector* pos=0, F32* vol=0, F32* freq=0, Fvector2* range=0)= 0;
+	virtual void					play					( ref_sound& S, CObject* O,						u32 flags=0, f32 delay=0.f)			= 0;
+	virtual void					play_at_pos				( ref_sound& S, CObject* O,	const Fvector &pos,	u32 flags=0, f32 delay=0.f)			= 0;
+	virtual void					play_no_feedback		( ref_sound& S, CObject* O,						u32 flags=0, f32 delay=0.f, Fvector* pos=0, f32* vol=0, f32* freq=0, Fvector2* range=0)= 0;
 
-	virtual void					set_master_volume		(F32 f=1.f )																			= 0;
+	virtual void					set_master_volume		(f32 f=1.f )																			= 0;
 	virtual void					set_geometry_env		( IReader* I )																			= 0;
 	virtual void					set_geometry_som		( IReader* I )																			= 0;
 	virtual void					set_geometry_occ		( CDB::MODEL* M )																		= 0;
@@ -296,7 +296,7 @@ public:
 	virtual void					update					( const Fvector& P, const Fvector& D, const Fvector& N)									= 0;
 	virtual void					statistic				( CSound_stats*  s0, CSound_stats_ext* s1 )												= 0;
 
-	virtual F32						get_occlusion_to		( const Fvector& hear_pt, const Fvector& snd_pt, F32 dispersion=0.2f)					= 0;
+	virtual f32						get_occlusion_to		( const Fvector& hear_pt, const Fvector& snd_pt, f32 dispersion=0.2f)					= 0;
 
 	virtual void					object_relcase			( CObject* obj )																		= 0;
 	virtual const Fvector&			listener_position		()																						= 0;
@@ -311,14 +311,14 @@ IC ref_sound_data::~ref_sound_data				()																{	::Sound->_destroy_data
 IC void	ref_sound::create						(pcstr name,			esound_type sound_type, int	game_type)	{	VERIFY(!::Sound->i_locked()); 	::Sound->create		(*this,name,sound_type,game_type);					}
 IC void	ref_sound::clone						( const ref_sound& from,esound_type sound_type, int	game_type)	{	VERIFY(!::Sound->i_locked()); 	::Sound->clone		(*this,from,sound_type,game_type);					}
 IC void	ref_sound::destroy						( )														{	VERIFY(!::Sound->i_locked()); 	::Sound->destroy	(*this);													}
-IC void	ref_sound::play							( CObject* O,						u32 flags, F32 d)	{	VERIFY(!::Sound->i_locked()); 	::Sound->play		(*this,O,flags,d);											}
-IC void	ref_sound::play_at_pos					( CObject* O, const Fvector &pos,	u32 flags, F32 d)	{	VERIFY(!::Sound->i_locked()); 	::Sound->play_at_pos(*this,O,pos,flags,d);										}
-IC void	ref_sound::play_no_feedback				( CObject* O, u32 flags, F32 d, Fvector* pos, F32* vol, F32* freq, Fvector2* range){	VERIFY(!::Sound->i_locked()); ::Sound->play_no_feedback(*this,O,flags,d,pos,vol,freq,range);	}
+IC void	ref_sound::play							( CObject* O,						u32 flags, f32 d)	{	VERIFY(!::Sound->i_locked()); 	::Sound->play		(*this,O,flags,d);											}
+IC void	ref_sound::play_at_pos					( CObject* O, const Fvector &pos,	u32 flags, f32 d)	{	VERIFY(!::Sound->i_locked()); 	::Sound->play_at_pos(*this,O,pos,flags,d);										}
+IC void	ref_sound::play_no_feedback				( CObject* O, u32 flags, f32 d, Fvector* pos, f32* vol, f32* freq, Fvector2* range){	VERIFY(!::Sound->i_locked()); ::Sound->play_no_feedback(*this,O,flags,d,pos,vol,freq,range);	}
 IC void	ref_sound::set_position					( const Fvector &pos)									{	VERIFY(!::Sound->i_locked()); 	VERIFY(_feedback());_feedback()->set_position(pos);								}
-IC void	ref_sound::set_frequency				(F32 freq)											{	VERIFY(!::Sound->i_locked()); 	if (_feedback())	_feedback()->set_frequency(freq);							}
-IC void	ref_sound::set_range					(F32 min, F32 max )								{	VERIFY(!::Sound->i_locked()); 	if (_feedback())	_feedback()->set_range(min,max);							}
-IC void	ref_sound::set_volume					(F32 vol )											{	VERIFY(!::Sound->i_locked()); 	if (_feedback())	_feedback()->set_volume(vol);								}
-IC void	ref_sound::set_priority					(F32 p )												{	VERIFY(!::Sound->i_locked()); 	if (_feedback())	_feedback()->set_priority(p);								}
+IC void	ref_sound::set_frequency				(f32 freq)											{	VERIFY(!::Sound->i_locked()); 	if (_feedback())	_feedback()->set_frequency(freq);							}
+IC void	ref_sound::set_range					(f32 min, f32 max )								{	VERIFY(!::Sound->i_locked()); 	if (_feedback())	_feedback()->set_range(min,max);							}
+IC void	ref_sound::set_volume					(f32 vol )											{	VERIFY(!::Sound->i_locked()); 	if (_feedback())	_feedback()->set_volume(vol);								}
+IC void	ref_sound::set_priority					(f32 p )												{	VERIFY(!::Sound->i_locked()); 	if (_feedback())	_feedback()->set_priority(p);								}
 IC void	ref_sound::stop							( )														{	VERIFY(!::Sound->i_locked()); 	if (_feedback())	_feedback()->stop(FALSE);									}
 IC void	ref_sound::stop_deffered				( )														{	VERIFY(!::Sound->i_locked()); 	if (_feedback())	_feedback()->stop(TRUE);									}
 IC const CSound_params*	ref_sound::get_params	( )														{	VERIFY(!::Sound->i_locked()); 	if (_feedback())	return _feedback()->get_params(); else return NULL;			}

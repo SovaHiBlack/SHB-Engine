@@ -230,10 +230,10 @@ NvFaceInfo* NvStripifier::FindGoodResetPoint(NvFaceInfoVec &faceInfos, NvEdgeInf
 			bFirstTimeResetPoint = false;
 		}
 		else
-			startPoint = (int)(((F32) numFaces - 1) * meshJump);
+			startPoint = (int)(((f32) numFaces - 1) * meshJump);
 		
 		if(startPoint == -1)
-			startPoint = (int)(((F32) numFaces - 1) * meshJump);
+			startPoint = (int)(((f32) numFaces - 1) * meshJump);
 		
 		int i = startPoint;
 		do {
@@ -1012,12 +1012,12 @@ void NvStripifier::SplitUpStripsAndOptimize(NvStripInfoVec &allStrips, NvStripIn
 		//Optimize for the vertex cache
 		VertexCache* vcache = xr_new<VertexCache> (cacheSize);
 		
-		F32 bestNumHits	= -1.0f;
-		F32 numHits		= 0;
+		f32 bestNumHits	= -1.0f;
+		f32 numHits		= 0.0f;
 		int bestIndex		= 0;
 		
 		int firstIndex = 0;
-		F32 minCost = 10000.0f;
+		f32 minCost = 10000.0f;
 		
 		for(i = 0; i < tempStrips2.size(); i++)
 		{
@@ -1029,7 +1029,7 @@ void NvStripifier::SplitUpStripsAndOptimize(NvStripInfoVec &allStrips, NvStripIn
 				numNeighbors += NumNeighbors(tempStrips2[i]->m_faces[j], edgeInfos);
 			}
 			
-			F32 currCost = (F32)numNeighbors / (F32)tempStrips2[i]->m_faces.size();
+			f32 currCost = (f32)numNeighbors / (f32)tempStrips2[i]->m_faces.size();
 			if(currCost < minCost)
 			{
 				minCost = currCost;
@@ -1117,7 +1117,7 @@ void NvStripifier::UpdateCacheFace(VertexCache* vcache, NvFaceInfo* face)
 //
 // returns the number of cache hits per face in the strip
 //
-F32 NvStripifier::CalcNumHitsStrip(VertexCache* vcache, NvStripInfo* strip)
+f32 NvStripifier::CalcNumHitsStrip(VertexCache* vcache, NvStripInfo* strip)
 {
 	int numHits = 0;
 	int numFaces = 0;
@@ -1137,7 +1137,7 @@ F32 NvStripifier::CalcNumHitsStrip(VertexCache* vcache, NvStripInfo* strip)
 		
 	}
 	
-	return ((F32)numHits / (F32)numFaces);
+	return ((f32)numHits / (f32)numFaces);
 }
 
 
@@ -1196,14 +1196,14 @@ int NvStripifier::NumNeighbors(NvFaceInfo* face, NvEdgeInfoVec& edgeInfoVec)
 //
 // Finds the average strip size of the input _vector_ of strips
 //
-F32 NvStripifier::AvgStripSize(const NvStripInfoVec &strips){
+f32 NvStripifier::AvgStripSize(const NvStripInfoVec &strips){
 	int sizeAccum = 0;
 	int numStrips = strips.size();
 	for (int i = 0; i < numStrips; i++){
 		NvStripInfo *strip = strips[i];
 		sizeAccum += strip->m_faces.size();
 	}
-	return ((F32)sizeAccum) / ((F32)numStrips);
+	return ((f32)sizeAccum) / ((f32)numStrips);
 }
 
 
@@ -1326,14 +1326,14 @@ void NvStripifier::FindAllStrips(NvStripInfoVec &allStrips,
 		// Phase 3: Find the experiment that has the most promise
 		//
 		int bestIndex = 0;
-		F32 bestValue = 0;
+		f32 bestValue = 0.0f;
 		for (i = 0; i < numExperiments; i++)
 		{
-			const F32 avgStripSizeWeight = 1.0f;
-			const F32 numTrisWeight      = 1.0f;
-			F32 avgStripSize = AvgStripSize(experiments[i]);
-			F32 numStrips    = (F32) experiments[i].size();
-			F32 value        = avgStripSize * avgStripSizeWeight + (avgStripSize * numStrips * numTrisWeight);
+			const f32 avgStripSizeWeight = 1.0f;
+			const f32 numTrisWeight      = 1.0f;
+			f32 avgStripSize = AvgStripSize(experiments[i]);
+			f32 numStrips    = (f32) experiments[i].size();
+			f32 value        = avgStripSize * avgStripSizeWeight + (avgStripSize * numStrips * numTrisWeight);
 				
 			if (value > bestValue)
 			{

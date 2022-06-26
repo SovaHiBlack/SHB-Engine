@@ -43,14 +43,14 @@
 // Constructor stores the T and S matrices and the 
 // lengths of the upper and lower links
 // 
-void SRS::init(const Matrix  T1, const Matrix  T2, const float a[3], const float p[3]) 
+void SRS::init(const Matrix  T1, const Matrix  T2, const f32 a[3], const f32 p[3])
 {
     cpmatrix(T, T1); 
     cpmatrix(S, T2); 
     cpvector(proj_axis, a);
     cpvector(pos_axis, p);
 
-    float t[3];
+	f32 t[3];
 
     get_translation(T, t);
     upper_len = norm(t);
@@ -80,17 +80,17 @@ void SRS::init(const Matrix  T1, const Matrix  T2, const float a[3], const float
 //
 // Only return positive solution
 //
-static int solve_R_angle(const float g[3], 
-			 const float s[3], 
-			 const float t[3], 
+static int solve_R_angle(const f32 g[3],
+			 const f32 s[3],
+			 const f32 t[3],
 			 const Matrix  T, 
-			 float &r_angle)
+						 f32& r_angle)
 {
-    float rhs = DOT(g,g) - DOT(s,s) - DOT(t,t);
+	f32 rhs = DOT(g,g) - DOT(s,s) - DOT(t,t);
 
     // alpha = Rot(T)*t' NOT alpha = t*Rot(T)
 
-    float alpha[3];
+	f32 alpha[3];
 
     for (int j = 0; j < 3; j++)
     {
@@ -99,12 +99,12 @@ static int solve_R_angle(const float g[3],
 	    alpha[j] += T[j][i] * t[i]; 
     }
 
-    float a = alpha[0]*s[0] + alpha[2]*s[2];
-    float b = alpha[0]*s[2] - alpha[2]*s[0];
-    float c = alpha[1]*s[1];
+	f32 a = alpha[0]*s[0] + alpha[2]*s[2];
+	f32 b = alpha[0]*s[2] - alpha[2]*s[0];
+	f32 c = alpha[1]*s[1];
 
     int n; 
-    float temp[2];
+	f32 temp[2];
 
     a += a; 
     b += b;
@@ -163,18 +163,18 @@ static int solve_R_angle(const float g[3],
 // Returns radius of circle
 //
 
-float get_circle_equation(const float ee[3], 
-			  const float axis[3],
-			  const float pos_axis[3],
-			  float upper_len,
-			  float lower_len,
-			  float c[3],
-			  float u[3],
-			  float v[3],
-			  float n[3])
+f32 get_circle_equation(const f32 ee[3],
+			  const f32 axis[3],
+			  const f32 pos_axis[3],
+						f32 upper_len,
+						f32 lower_len,
+						f32 c[3],
+						f32 u[3],
+						f32 v[3],
+						f32 n[3])
 {
-    float wn = norm((float *)ee);
-    float radius;
+	f32 wn = norm((f32*)ee);
+	f32 radius;
 
     cpvector(n, ee);
     unitize(n);
@@ -183,7 +183,7 @@ float get_circle_equation(const float ee[3],
     // Use law of cosines to get angle between first spherical joint
     // and revolute joint
 
-    float alpha; 
+	f32 alpha;
 
     if (!law_of_cosines(wn, upper_len, lower_len, alpha))
 	return 0;
@@ -194,7 +194,7 @@ float get_circle_equation(const float ee[3],
     
     radius = _sin(alpha) * upper_len;
 
-    float temp[3];
+	f32 temp[3];
 
     //
     // A little kludgy. If the goal is behind the joint instead
@@ -206,7 +206,7 @@ float get_circle_equation(const float ee[3],
 	vecscalarmult(n,n,-1.0);
 
     vecscalarmult(temp, n, DOT(axis,n));
-    vecsub(u, (float *)axis, temp);
+    vecsub(u, (f32*)axis, temp);
     unitize(u);
 
     crossproduct(v, n, u);
@@ -233,15 +233,15 @@ float get_circle_equation(const float ee[3],
 // the inner workspace
 //
 
-int scale_goal(const float l1[3], 
-	       const float l2[3], 
-	       float g[3])
+int scale_goal(const f32 l1[3],
+	       const f32 l2[3],
+			   f32 g[3])
 {
-    float g_len = _sqrt(DOT(g,g));
-    float L1    = _sqrt(DOT(l1,l1));
-    float L2    = _sqrt(DOT(l2,l2));
-    float max_len = (L1 + L2) * 0.9999f;
-    //    float min_len = fabs(L1 - L2);
+	f32 g_len = _sqrt(DOT(g,g));
+	f32 L1    = _sqrt(DOT(l1,l1));
+	f32 L2    = _sqrt(DOT(l2,l2));
+	f32 max_len = (L1 + L2) * 0.9999f;
+    //    f32 min_len = fabs(L1 - L2);
 
     if (g_len > max_len)
     {
@@ -274,10 +274,10 @@ int scale_goal(const float l1[3],
 //     g = [0,0,0,1]*E*S*Ry*T*R1 
 //
 
-int SRS::SetGoalPos(const float eee[3],  const Matrix  E,  float &rangle)
+int SRS::SetGoalPos(const f32 eee[3],  const Matrix  E, f32& rangle)
 {
     Matrix Temp, RY;
-    float s[3]; 
+	f32 s[3];
 
 
 
@@ -286,7 +286,7 @@ int SRS::SetGoalPos(const float eee[3],  const Matrix  E,  float &rangle)
 
 
     get_translation(T, p_r1);
-    hmatmult(Temp,(float (*)[4]) E,S);
+    hmatmult(Temp,(f32(*)[4]) E,S);
     get_translation(Temp, s);
     cpvector(ee,eee);
 
@@ -319,7 +319,7 @@ int SRS::SetGoalPos(const float eee[3],  const Matrix  E,  float &rangle)
     return 1; 
 }
 
-void SRS::EvaluateCircle(const float p[3])
+void SRS::EvaluateCircle(const f32 p[3])
 {
 	 radius = get_circle_equation(p, proj_axis, pos_axis, 
 				 upper_len, lower_len, c, u, v, n);
@@ -333,10 +333,10 @@ void SRS::EvaluateCircle(const float p[3])
 //
 // Also compute the matrix S*RY*T and save it for future computations
 //
-int SRS::SetGoal(const Matrix  GG, float &rangle)
+int SRS::SetGoal(const Matrix  GG, f32& rangle)
 {
     Matrix RY;
-    float s[3]; 
+	f32 s[3];
 
     cpmatrix(G, GG);
     get_translation(G, ee);
@@ -377,35 +377,35 @@ int SRS::SetGoal(const Matrix  GG, float &rangle)
     return 1; 
 }
 
-inline void evalcircle(const float c[3],
-		       const float u[3],
-		       const float v[3],
-		       float radius,
-		       float angle,
-		       float p[3])
+inline void evalcircle(const f32 c[3],
+		       const f32 u[3],
+		       const f32 v[3],
+					   f32 radius,
+					   f32 angle,
+					   f32 p[3])
 {
     // p = o + r*cos(f)*u + r*sin(f)*v
 
-    float temp[3];
+	f32 temp[3];
 
     cpvector(p, c);
-    vecscalarmult(temp, (float*)u, radius*_cos(angle));
+    vecscalarmult(temp, (f32*)u, radius*_cos(angle));
     vecadd(p, p, temp);
-    vecscalarmult(temp, (float*)v, radius*_sin(angle));
+    vecscalarmult(temp, (f32*)v, radius*_sin(angle));
     vecadd(p, p, temp);
 }
 
 //
 // Evaluate a point on the circle given the swivel angle 
 //
-void SRS::evaluate_circle(float angle, float p[3])
+void SRS::evaluate_circle(f32 angle, f32 p[3])
 {
 #if 1
     evalcircle(c, u, v, radius, angle, p);
 #else
     // p = o + r*cos(f)*u + r*sin(f)*v
 
-    float temp[3];
+	f32 temp[3];
 
     cpvector(p, c);
     vecscalarmult(temp, u, radius*cos(angle));
@@ -422,20 +422,22 @@ void SRS::evaluate_circle(float angle, float p[3])
 // which as it turns out is already known. If the invert flag is true
 // construct the transpose of the rotation matrix instead
 //
-inline void make_frame(const float p[3], 
-		       float p_scale,
-		       const float q[3], 
+inline void make_frame(const f32 p[3],
+					   f32 p_scale,
+		       const f32 q[3],
 		       Matrix R, 
 		       int invert = 0)
 {
-    float x[3], y[3], t[3];
+	f32 x[3];
+	f32 y[3];
+	f32 t[3];
 
     // x vector is unit vector from origin to p
-    vecscalarmult(x, (float *)p, p_scale);
+    vecscalarmult(x, (f32*)p, p_scale);
 
     // y vector is unit perpendicular projection of q onto x 
     vecscalarmult(t, x, DOT(q,x));
-    vecsub(y, (float *) q, t);
+    vecsub(y, (f32*) q, t);
     unitize(y);
 
     // z vector is x cross y
@@ -466,9 +468,9 @@ inline void make_frame(const float p[3],
 }
 
 
-static void solve_R1(float p[3], float q[3], 
-		     float p2[3],float q2[3],
-		     float p_scale, Matrix  R1)	       
+static void solve_R1(f32 p[3], f32 q[3],
+					 f32 p2[3], f32 q2[3],
+					 f32 p_scale, Matrix  R1)
 {
     Matrix T, S;
 
@@ -485,15 +487,15 @@ static void solve_R1(float p[3], float q[3],
 // R jt and the last S jt in the R1 frame to their locations
 // in the global frame
 //  
-void SRS::SolveR1(float angle, Matrix  R1)
+void SRS::SolveR1(f32 angle, Matrix  R1)
 {
-    float p[3];
+	f32 p[3];
 
     evaluate_circle(angle, p);
     solve_R1(p_r1, ee_r1, p, ee, reciprocal_upper_len, R1);
 
 #ifdef SRSDEBUG
-    float t1[3], t2[3];
+	f32 t1[3], t2[3];
     vecsub(t1, p_r1, ee_r1);
     vecsub(t2, p, ee);
 
@@ -506,7 +508,7 @@ void SRS::SolveR1(float angle, Matrix  R1)
 #endif
 }
 
-void SRS::SolveR1R2(float angle, Matrix  R1, Matrix  R2)
+void SRS::SolveR1R2(f32 angle, Matrix  R1, Matrix  R2)
 {
     SolveR1(angle, R1);
 
@@ -532,12 +534,13 @@ void SRS::SolveR1R2(float angle, Matrix  R1, Matrix  R2)
 }
 
 
-float SRS::PosToAngle(const float p[3]) 
+f32 SRS::PosToAngle(const f32 p[3])
 {
     // Find vector from center of circle to pos and project it onto circle
-    float cp[3], pp[3];
+	f32 cp[3];
+	f32 pp[3];
 
-    vecsub(cp, (float *) p, c);
+    vecsub(cp, (f32*) p, c);
     project_plane(pp , cp, n);
 
     // Find angle between u and pp. This is the swivel angle
@@ -545,17 +548,17 @@ float SRS::PosToAngle(const float p[3])
     return angle_between_vectors(u, pp, n); 
 }
 
-void SRS::AngleToPos(float psi, float p[3]) 
+void SRS::AngleToPos(f32 psi, f32 p[3])
 {
     evaluate_circle(psi, p);
 }
 
-void SRS::SolveR1(const float p[3], Matrix  R1)
+void SRS::SolveR1(const f32 p[3], Matrix  R1)
 {
     SolveR1(PosToAngle(p), R1);
 }
 
-void SRS::SolveR1R2(const float pos[3], Matrix  R1, Matrix  R2)
+void SRS::SolveR1R2(const f32 pos[3], Matrix  R1, Matrix  R2)
 {
     SolveR1R2(PosToAngle(pos), R1, R2);
 }
@@ -567,22 +570,22 @@ void SRS::SolveR1R2(const float pos[3], Matrix  R1, Matrix  R2)
 // and constant componets. 
 // ie: R(n,psi) = cos(psi) * c + sin(psi) + s + o
 //  
-static void rotation_matrix(const float n[3], Matrix c, Matrix s, Matrix o)
+static void rotation_matrix(const f32 n[3], Matrix c, Matrix s, Matrix o)
 {
     cpmatrix(c, idmat);
     cpmatrix(s, idmat);
     cpmatrix(o, idmat); 
 
-    float u1 = n[0]; 
-    float u2 = n[1]; 
-    float u3 = n[2];
+	f32 u1 = n[0];
+	f32 u2 = n[1];
+	f32 u3 = n[2];
 
-    float u1u1 = u1*u1;
-    float u1u2 = u1*u2;
-    float u1u3 = u1*u3;
-    float u2u2 = u2*u2;
-    float u2u3 = u2*u3;
-    float u3u3 = u3*u3;
+	f32 u1u1 = u1*u1;
+	f32 u1u2 = u1*u2;
+	f32 u1u3 = u1*u3;
+	f32 u2u2 = u2*u2;
+	f32 u2u3 = u2*u3;
+	f32 u3u3 = u3*u3;
 
     c[0][0] = 1.0f-u1u1;
     c[0][1] = -u1u2;
@@ -620,7 +623,7 @@ int SRS::R1Psi(Matrix C, Matrix s, Matrix o)
 {
     Matrix R0;
 
-    SolveR1((float) 0, R0);
+    SolveR1((f32) 0, R0);
 
     // 
     // R1(psi)  = R0*R(n,psi) 
@@ -641,7 +644,7 @@ int SRS::R1R2Psi(Matrix C, Matrix s, Matrix o,
 {
     Matrix R0, Temp;
 
-    SolveR1((float) 0, R0);
+    SolveR1((f32) 0, R0);
 
     // 
     // R1(psi)  = R0*R(n,psi) 
@@ -679,19 +682,19 @@ int SRS::R1R2Psi(Matrix C, Matrix s, Matrix o,
 // Rewrite all this stuff 
 //
 
-static void get_aim_circle_equation(const float g[3], 
-			 const float a[3],
-			 const float ta[3],
-			 const float tb[3],
-			 const float proj_axis[3],
-			 float theta4,
-			 float center[3],
-			 float u[3],
-			 float v[3],
-			 float &radius)
+static void get_aim_circle_equation(const f32 g[3],
+			 const f32 a[3],
+			 const f32 ta[3],
+			 const f32 tb[3],
+			 const f32 proj_axis[3],
+									f32 theta4,
+									f32 center[3],
+									f32 u[3],
+									f32 v[3],
+									f32& radius)
 {
-    float L1 = DOT(ta,ta);
-    float L2 = DOT(tb,tb);
+	f32 L1 = DOT(ta,ta);
+	f32 L2 = DOT(tb,tb);
     Matrix Ry, Ryt;
 
     rotation_principal_axis_to_matrix('y', theta4, Ry);
@@ -699,11 +702,12 @@ static void get_aim_circle_equation(const float g[3],
 
     // Compute distance of hand to shoulder 
 
-    float t1[3], t2[3];
+	f32 t1[3];
+	f32 t2[3];
 
-    vecmult(t1, (float *) tb, Ry);
-    vecmult(t2, (float *) ta, Ryt);
-    float L3 = _sqrt(L1 + L2 + DOT(ta,t1) + DOT(tb,t2));
+    vecmult(t1, (f32*) tb, Ry);
+    vecmult(t2, (f32*) ta, Ryt);
+	f32 L3 = _sqrt(L1 + L2 + DOT(ta,t1) + DOT(tb,t2));
 
     // Lengths of upper and lower arms
     L1 = _sqrt(L1);
@@ -716,43 +720,43 @@ static void get_aim_circle_equation(const float g[3],
     // h = Ry*tb + ta
     // a = Ry*a 
 
-    vecadd(t2, t1, (float *) ta);
+    vecadd(t2, t1, (f32*) ta);
     unitize(t2);
 
-    vecmult(t1, (float *) a, Ry);
-    float alpha = acos(DOT(t1,t2));
+    vecmult(t1, (f32*) a, Ry);
+	f32 alpha = acos(DOT(t1,t2));
 
 
     //
     // Compute the angles of the triangle s,h,g
     //
-    float L4 = _sqrt(DOT(g,g));
-    float beta = M_PI - alpha;
+	f32 L4 = _sqrt(DOT(g,g));
+	f32 beta = M_PI - alpha;
 
-    float delta = asin(_sin(beta)*L3/L4);
+	f32 delta = asin(_sin(beta)*L3/L4);
     if (delta < 0)
 	delta = - delta;
-    float gamma = M_PI - delta - beta;
+	f32 gamma = M_PI - delta - beta;
 
-    float c_gamma = _cos(gamma);
-    float n[3]; 
+	f32 c_gamma = _cos(gamma);
+	f32 n[3];
     cpvector(n, g);
     unitize(n);
     vecscalarmult(center, n, c_gamma*L3);
 
     radius = _sqrt(1-c_gamma*c_gamma)*L3;
 
-    project_plane(u, (float *) proj_axis, n);
+    project_plane(u, (f32*) proj_axis, n);
     unitize(u);
     crossproduct(v, n, u);
 }
 
 
-void SRS::SetAimGoal(const float goal[3],
-		     const float ax[3],
-		     float flex_angle)
+void SRS::SetAimGoal(const f32 goal[3],
+		     const f32 ax[3],
+					 f32 flex_angle)
 {
-    float s[3];
+	f32 s[3];
 
     cpvector(ee, goal);
     cpvector(axis, ax);
@@ -763,15 +767,17 @@ void SRS::SetAimGoal(const float goal[3],
 	    axis, p_r1, s, proj_axis, flex_angle, c, u, v, radius);
 
     rotation_principal_axis_to_matrix('y', flex_angle, Ry);
-    vecmult(ee_r1, (float*)s, Ry); 
-    vecadd(ee_r1, ee_r1, (float*)p_r1);
+    vecmult(ee_r1, (f32*)s, Ry);
+    vecadd(ee_r1, ee_r1, (f32*)p_r1);
 }
 
 
 
-void SRS::SolveAim(float psi_angle, Matrix  R1)
+void SRS::SolveAim(f32 psi_angle, Matrix  R1)
 {
-    float h1[3], N[3], angle;
+	f32 h1[3];
+	f32 N[3];
+	f32 angle;
     Matrix S0, S1;
 
     // Get the final hand position 
@@ -784,13 +790,14 @@ void SRS::SolveAim(float psi_angle, Matrix  R1)
     rotation_axis_to_matrix(N, angle, S0);
 
     // Now rotate a0 to a
-    float a[3], a0[3];
+	f32 a[3];
+	f32 a0[3];
 
-    vecsub(a, (float*)ee, h1);
+    vecsub(a, (f32*)ee, h1);
     unitize(a);
     
     hmatmult(S1,Ry,S0);
-    vecmult0(a0, (float*)axis, S1);
+    vecmult0(a0, (f32*)axis, S1);
 
     cpvector(N, h1);
     unitize(N);

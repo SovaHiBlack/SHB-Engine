@@ -75,10 +75,10 @@ void CEncyclopediaArticle::load_shared	(pcstr)
 	{
 		data()->image.SetShader(InventoryUtilities::GetEquipmentIconsShader());
 
-		float x			= float(pSettings->r_u32(ltx, "inv_grid_x") * INV_GRID_WIDTH);
-		float y			= float(pSettings->r_u32(ltx, "inv_grid_y") * INV_GRID_HEIGHT);
-		float width		= float(pSettings->r_u32(ltx, "inv_grid_width") * INV_GRID_WIDTH);
-		float height	= float(pSettings->r_u32(ltx, "inv_grid_height") * INV_GRID_HEIGHT);
+		f32 x			= f32(pSettings->r_u32(ltx, "inv_grid_x") * INV_GRID_WIDTH);
+		f32 y			= f32(pSettings->r_u32(ltx, "inv_grid_y") * INV_GRID_HEIGHT);
+		f32 width		= f32(pSettings->r_u32(ltx, "inv_grid_width") * INV_GRID_WIDTH);
+		f32 height		= f32(pSettings->r_u32(ltx, "inv_grid_height") * INV_GRID_HEIGHT);
 
 		data()->image.GetUIStaticItem().SetOriginalRect(x, y, width, height);
 		data()->image.ClipperOn();
@@ -102,14 +102,14 @@ void CEncyclopediaArticle::load_shared	(pcstr)
 		// Сначала устанавливаем если надо минимально допустимые размеры иконки
 		if (r.width() < minSize)
 		{
-			float dx = minSize - r.width();
+			f32 dx = minSize - r.width();
 			r.x2 += dx;
 			data()->image.SetTextureOffset(dx / 2, data()->image.GetTextureOffeset()[1]);
 		}
 
 		if (r.height() < minSize)
 		{
-			float dy = minSize - r.height();
+			f32 dy = minSize - r.height();
 			r.y2 += dy;
 			data()->image.SetTextureOffset(data()->image.GetTextureOffeset()[0], dy / 2);
 		}

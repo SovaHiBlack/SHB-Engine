@@ -12,8 +12,8 @@ class CSoundRender_TargetA: public CSoundRender_Target
 // OpenAL
     ALuint						pSource;
 	ALuint						pBuffers[sdef_target_count];
-	F32						cache_gain;
-	F32						cache_pitch;
+	f32						cache_gain;
+	f32						cache_pitch;
 
     ALuint						buf_block;
 private:

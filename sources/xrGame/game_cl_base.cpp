@@ -46,15 +46,14 @@ void	game_cl_GameState::net_import_GameTime		(NET_Packet& P)
 	//time
 	u64				GameTime;
 	P.r_u64			(GameTime);
-	float			TimeFactor;
+	f32			TimeFactor;
 	P.r_float		(TimeFactor);
 
-	
 	Level().SetGameTimeFactor	(GameTime,TimeFactor);
 
 	u64				GameEnvironmentTime;
 	P.r_u64			(GameEnvironmentTime);
-	float			EnvironmentTimeFactor;
+	f32			EnvironmentTimeFactor;
 	P.r_float		(EnvironmentTimeFactor);
 
 // KRodin: закомментировано из-за бага с резкой сменой погоды при кручении таймфактора.
@@ -242,7 +241,7 @@ void game_cl_GameState::CommonMessageOut (pcstr msg)
 	HUD().GetUI()->m_pMessagesWnd->AddLogMessage(msg);
 }
 
-float game_cl_GameState::shedule_Scale		()
+f32 game_cl_GameState::shedule_Scale		()
 {
 	return 1.0f;
 }

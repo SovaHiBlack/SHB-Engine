@@ -114,7 +114,6 @@ public:
 	virtual BOOL			net_Relevant		()	{ return getLocal();	}	// send messages only if active and local
 	virtual void			spatial_move		();
 	virtual BOOL			Ready				()	{ return getReady();	}	// update only if active and fully initialized by/for network
-//	virtual float			renderable_Ambient	();
 
 	virtual void			shedule_Update		(u32 dt);	
 	virtual bool			shedule_Needed		();
@@ -184,7 +183,9 @@ public:
 	virtual const SRotation	Orientation			() const
 	{
 		SRotation			rotation;
-		float				h,p,b;
+		f32					h;
+		f32					p;
+		f32					b;
 		XFORM().getHPB		(h,p,b);
 		rotation.yaw		= h;
 		rotation.pitch		= p;

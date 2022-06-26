@@ -107,7 +107,7 @@ int dcTriListCollider::CollideCylinder(dxGeom* Cylinder, int Flags, dContactGeom
 					 ///////////////////////////////////////////////////////////////////////////
  int dcTriListCollider::CollideSphere(dxGeom* Sphere, int Flags, dContactGeom* Contacts, int Stride){
 
-						 const float SphereRadius = dGeomSphereGetRadius(Sphere);
+						 const f32 SphereRadius = dGeomSphereGetRadius(Sphere);
 						 Fvector AABB;
 
 

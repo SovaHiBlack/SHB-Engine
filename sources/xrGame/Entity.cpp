@@ -82,7 +82,7 @@ void CEntity::Die(CObject* who)
 }
 
 //обновление состояния
-float CEntity::CalcCondition(float hit)
+f32 CEntity::CalcCondition(f32 hit)
 {
 
 	// If Local() - perform some logic
@@ -101,7 +101,7 @@ void	CEntity::Hit		(SHit* pHDS)
 	// *** process hit calculations
 	// Calc impulse
 	Fvector					vLocalDir;
-	float					m = pHDS->dir.magnitude();
+	f32					m = pHDS->dir.magnitude();
 	VERIFY					(m>EPS);
 	
 	// convert impulse into local coordinate system
@@ -114,7 +114,7 @@ void	CEntity::Hit		(SHit* pHDS)
 	if(pHDS->impulse) HitImpulse				(pHDS->impulse,pHDS->dir,vLocalDir); // @@@: WT
 	
 	// Calc amount (correct only on local player)
-	float lost_health = CalcCondition(pHDS->damage());
+	f32 lost_health = CalcCondition(pHDS->damage());
 
 	// Signal hit
 	if(BI_NONE!=pHDS->bone())	HitSignal(lost_health,vLocalDir,pHDS->who,pHDS->boneID);

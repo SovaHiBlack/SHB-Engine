@@ -53,12 +53,12 @@ static double angle_normalize(double theta)
 }
 */
 
-static int solve_trig1_aux(float c, 
-			   float a2b2,
-			   float atan2ba,
-			   float theta[2])
+static int solve_trig1_aux(f32 c,
+						   f32 a2b2,
+						   f32 atan2ba,
+						   f32 theta[2])
 {
-    float temp  = a2b2-c*c;
+	f32 temp  = a2b2-c*c;
     int num;
 
     if (temp < 0.0f)
@@ -95,7 +95,7 @@ static int solve_trig1_aux(float c,
  *  Also sort the answers in increasing order.
  */
 
-static int solve_trig1(float a, float b, float c, float theta[2])
+static int solve_trig1(f32 a, f32 b, f32 c, f32 theta[2])
 {
     return solve_trig1_aux(c, a*a+b*b, atan2(b,a), theta);
 }
@@ -104,7 +104,7 @@ static int solve_trig1(float a, float b, float c, float theta[2])
 int consistency_check(double a, double b, double c, 
 		      double a2b2, double atan2ba)
 {
-    float t[2], t2[2];
+	f32 t[2], t2[2];
 
     int n  = solve_trig1(a, b, c, t);
     int n2 = solve_trig1_aux(a2b2, atan2ba, c, t2);
@@ -128,12 +128,12 @@ int consistency_check(double a, double b, double c,
 //
 // The critical points are where the derivative is 0
 //
-int PsiEquation::crit_points(float *t) const
+int PsiEquation::crit_points(f32* t) const
 {
     if (!(*status_ptr & GOT_CRITS))
     {
 	// CANNOT use solve_trig1_aux here 
-	*num_crits_ptr = (u8)solve_trig1(beta, -alpha, 0, (float *) crit_pts);
+	*num_crits_ptr = (u8)solve_trig1(beta, -alpha, 0, (f32*) crit_pts);
 	*status_ptr |= GOT_CRITS;
     }
 
@@ -156,11 +156,11 @@ int PsiEquation::crit_points(float *t) const
 //
 // Return the roots of the equation
 // 
-int PsiEquation::roots(float *t) const
+int PsiEquation::roots(f32* t) const
 {
     if (!(*status_ptr & GOT_ROOTS))
     {
-	*num_roots_ptr =(u8) solve_trig1_aux(-xi, a2b2, atan2ba, (float *) root_pts);
+	*num_roots_ptr =(u8) solve_trig1_aux(-xi, a2b2, atan2ba, (f32*) root_pts);
 	*status_ptr  |= GOT_ROOTS;
     }
 
@@ -179,7 +179,7 @@ int PsiEquation::roots(float *t) const
     return num_roots;
 }
 
-int PsiEquation::solve(float v, float *t) const
+int PsiEquation::solve(f32 v, f32* t) const
 {
     // consistency_check(alpha,beta,-xi+v,a2b2,atan2ba);
     // return solve_trig1(alpha, beta, -xi+v, t);
@@ -198,11 +198,13 @@ int PsiEquation::solve(float v, float *t) const
  */
 
 #if 0
-int PsiEquation::clip(float low, 
-		      float high, 
+int PsiEquation::clip(f32 low,
+					  f32 high,
 		      AngleIntList &a) const
 {
-    float s[2], t[2], psi[6];
+	f32 s[2];
+	f32 t[2];
+	f32 psi[6];
 
     int  m, n;
 
@@ -216,7 +218,7 @@ int PsiEquation::clip(float low,
     if (n == 0 && m == 0)
     {
 	/* Evaluate one point and see if it within range */
-	float t = eval(0.0);
+		f32 t = eval(0.0);
 
 	if (t > low && t < high)
 	{
@@ -302,11 +304,11 @@ int PsiEquation::clip(float low,
 //   0 >= y >=  alpha*cos(psi) + beta*sin(psi) + xi 
 //
 
-int PsiEquation::partition(float y,
+int PsiEquation::partition(f32 y,
 			   AngleIntList &above,
 			   AngleIntList &below) const
 {
-    float s[2];
+	f32 s[2];
     int n = solve_trig1(alpha, beta, y - xi, s); 
 
     // Curve is entirely above or below y
@@ -314,7 +316,7 @@ int PsiEquation::partition(float y,
     {
     case 0:
 	/* Evaluate one point and see if it within range */
-	float t = eval(0.0);
+		f32 t = eval(0.0);
 	if (t > y)
 	    above.Add(LowBound, HighBound);
 	else

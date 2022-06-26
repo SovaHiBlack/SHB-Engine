@@ -160,11 +160,12 @@ void CSoundRender_CoreD::_initialize	(u64 window)
 	}
 }
 
-void CSoundRender_CoreD::set_master_volume(F32 f )
+void CSoundRender_CoreD::set_master_volume(f32 f )
 {
 	if		(pBuffer)	
 	{
-		F32	_volume		= f;									clamp	(_volume, EPSILON_7,1.f);
+		f32	_volume		= f;
+		clamp	(_volume, EPSILON_7,1.f);
 		s32		hw_volume	= iFloor	(7000.f*logf(_volume)/5.f);	clamp	(hw_volume,DSBVOLUME_MIN,DSBVOLUME_MAX);
 		pBuffer->SetVolume	(hw_volume);
 	}
@@ -201,7 +202,7 @@ void	CSoundRender_CoreD::i_eax_get			(const GUID* guid, u32 prop, void* val, u32
 	R_CHK	(pExtensions->Get		(*guid, prop, NULL, 0, val, sz, &total_bytes));
 }
 
-void CSoundRender_CoreD::update_listener( const Fvector& P, const Fvector& D, const Fvector& N, F32 dt )
+void CSoundRender_CoreD::update_listener( const Fvector& P, const Fvector& D, const Fvector& N, f32 dt )
 {
 	inherited::update_listener(P,D,N,dt);
 	Listener.vVelocity.sub			(P, Listener.vPosition );

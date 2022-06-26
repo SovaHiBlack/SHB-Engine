@@ -24,8 +24,8 @@ public:
 private:
 	CCustomMonster				*m_object;
 	CAI_Stalker					*m_stalker;
-	float						m_ignore_monster_threshold;
-	float						m_max_ignore_distance;
+	f32							m_ignore_monster_threshold;
+	f32							m_max_ignore_distance;
 	mutable bool				m_ready_to_save;
 	u32							m_last_enemy_time;
 	const CEntityAlive			*m_last_enemy;
@@ -52,8 +52,8 @@ public:
 	virtual void				reload				(pcstr section);
 	virtual bool				useful				(const CEntityAlive *object) const;
 	virtual bool				is_useful			(const CEntityAlive *object) const;
-	virtual	float				evaluate			(const CEntityAlive *object) const;
-	virtual	float				do_evaluate			(const CEntityAlive *object) const;
+	virtual	f32					evaluate			(const CEntityAlive *object) const;
+	virtual	f32					do_evaluate			(const CEntityAlive *object) const;
 	virtual void				update				();
 	virtual void				set_ready_to_save	();
 	IC		u32					last_enemy_time		() const;
@@ -62,12 +62,12 @@ public:
 			void				remove_links		(CObject *object);
 
 public:
-			void				ignore_monster_threshold			(const float &ignore_monster_threshold);
+			void				ignore_monster_threshold			(const f32& ignore_monster_threshold);
 			void				restore_ignore_monster_threshold	();
-			float				ignore_monster_threshold			() const;
-			void				max_ignore_monster_distance			(const float &max_ignore_monster_distance);
+			f32					ignore_monster_threshold			() const;
+			void				max_ignore_monster_distance			(const f32& max_ignore_monster_distance);
 			void				restore_max_ignore_monster_distance	();
-			float				max_ignore_monster_distance			() const;
+			f32					max_ignore_monster_distance			() const;
 
 public:
 			void				wounded				(const CEntityAlive *wounded_enemy);

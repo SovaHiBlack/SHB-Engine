@@ -58,11 +58,10 @@ enum
 
 
 // Given a matrix find the corresponding euler angles
-void EulerSolve(int euler_type, const Matrix R, float t[3], int family = 1);
-void EulerSolve2(int euler_type, const Matrix R, float f1[3], float f2[3]);
+void EulerSolve(int euler_type, const Matrix R, f32 t[3], int family = 1);
+void EulerSolve2(int euler_type, const Matrix R, f32 f1[3], f32 f2[3]);
 
-void EulerEval(int euler_type, const float t[3], Matrix R);		 
-
+void EulerEval(int euler_type, const f32 t[3], Matrix R);
 
 class EulerPsiSolver
 {
@@ -73,7 +72,7 @@ private:
     short index[3];
 
     short num_singular;
-    float singular[2]; 
+	f32 singular[2];
 
     SimpleJtLimit  j0;
     ComplexJtLimit j1;
@@ -85,8 +84,8 @@ public:
 		   const Matrix c,
 		   const Matrix s,
 		   const Matrix o,
-		   const float low[3],
-		   const float high[3]);
+		   const f32 low[3],
+		   const f32 high[3]);
 
     ~EulerPsiSolver() {}
 
@@ -96,22 +95,17 @@ public:
 			AngleIntList psi2[3]) const;
 
     // Given a matrix or psi angle find the corresponding euler angles
-    void Solve(const Matrix R, float t[3], int family = 1) const;
-    void Solve(float psi, float t[3], int family = 1) const;
+    void Solve(const Matrix R, f32 t[3], int family = 1) const;
+    void Solve(f32 psi, f32 t[3], int family = 1) const;
 
     void Solve2(const Matrix R,
-		float f1[3], 
-		float f2[3]) const;
-
+				f32 f1[3],
+				f32 f2[3]) const;
 
     // Given a psi angle find the derivatives of the euler angles relative to psi
-    void Derivatives(float psi, float t[3], int family = 1) const;
+    void Derivatives(f32 psi, f32 t[3], int family = 1) const;
 
-    int Singularities(float psi[2]) const; 
+    int Singularities(f32 psi[2]) const;
 };
 
-
 #endif
-
-
-

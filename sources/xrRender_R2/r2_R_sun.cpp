@@ -2,11 +2,11 @@
 #include "..\XR_3DA\igame_persistent.h"
 #include "..\XR_3DA\irenderable.h"
 
-const	float	tweak_COP_initial_offs			= 1200.f	;
-const	float	tweak_ortho_xform_initial_offs	= 1000.f	;	//. ?
-const	float	tweak_guaranteed_range			= 20.f		;	//. ?
+const	f32	tweak_COP_initial_offs			= 1200.f	;
+const	f32	tweak_ortho_xform_initial_offs	= 1000.f	;	//. ?
+const	f32	tweak_guaranteed_range			= 20.f		;	//. ?
 
-float			OLES_SUN_LIMIT_27_01_07			= 180.f		;
+f32			OLES_SUN_LIMIT_27_01_07			= 180.f		;
 
 //////////////////////////////////////////////////////////////////////////
 // tables to calculate view-frustum bounds in world space
@@ -86,16 +86,16 @@ BOOL LineIntersection2D( D3DXVECTOR2* result, const D3DXVECTOR2* lineA, const D3
 	//  NOTE: assumes the rays are already normalized!!!!
 	VERIFY		( _abs(D3DXVec2Dot(&lineA[1], &lineB[1]))<1.f );
 
-	float x[2]	= { lineA[0].x, lineB[0].x };
-	float y[2]	= { lineA[0].y, lineB[0].y };
-	float dx[2] = { lineA[1].x, lineB[1].x };
-	float dy[2] = { lineA[1].y, lineB[1].y };
+	f32 x[2]	= { lineA[0].x, lineB[0].x };
+	f32 y[2]	= { lineA[0].y, lineB[0].y };
+	f32 dx[2] = { lineA[1].x, lineB[1].x };
+	f32 dy[2] = { lineA[1].y, lineB[1].y };
 
-	float x_diff = x[0] - x[1];
-	float y_diff = y[0] - y[1];
+	f32 x_diff = x[0] - x[1];
+	f32 y_diff = y[0] - y[1];
 
-	float s		= (x_diff - (dx[1]/dy[1])*y_diff) / ((dx[1]*dy[0]/dy[1])-dx[0]);
-	// float t	= (x_diff + s*dx[0]) / dx[1];
+	f32 s		= (x_diff - (dx[1]/dy[1])*y_diff) / ((dx[1]*dy[0]/dy[1])-dx[0]);
+	// f32 t	= (x_diff + s*dx[0]) / dx[1];
 
 	*result		= lineA[0] + s*lineA[1];
 	return		TRUE;
@@ -116,12 +116,12 @@ static inline BOOL PlaneIntersection( D3DXVECTOR3* intersectPt, const D3DXPLANE*
 	D3DXVec3Cross( &n2_n0, &n2, &n0 );
 	D3DXVec3Cross( &n0_n1, &n0, &n1 );
 
-	float cosTheta = D3DXVec3Dot( &n0, &n1_n2 );
+	f32 cosTheta = D3DXVec3Dot( &n0, &n1_n2 );
 
 	if ( ALMOST_ZERO(cosTheta) || IS_SPECIAL(cosTheta) )
 		return FALSE;
 
-	float secTheta = 1.f / cosTheta;
+	f32 secTheta = 1.f / cosTheta;
 
 	n1_n2 = n1_n2 * p0->d;
 	n2_n0 = n2_n0 * p1->d;
@@ -159,7 +159,7 @@ Frustum::Frustum(const D3DXMATRIX* matrix)
 
 	for (p=0; p<6; p++)  // normalize the planes
 	{
-		float dot = planes[p].x*planes[p].x + planes[p].y*planes[p].y + planes[p].z*planes[p].z;
+		f32 dot = planes[p].x*planes[p].x + planes[p].y*planes[p].y + planes[p].z*planes[p].z;
 		dot = 1.f / _sqrt(dot);
 		planes[p] = planes[p] * dot;
 	}
@@ -193,8 +193,8 @@ public:
 	{
 		xr_vector<int>	points;
 		Fvector3		planeN;
-		float			planeD;
-		float			classify	(Fvector3& p)	{	return planeN.dotproduct(p)+planeD; 	}
+		f32			planeD;
+		f32			classify	(Fvector3& p)	{	return planeN.dotproduct(p)+planeD; 	}
 	};
 	struct	_edge
 	{
@@ -241,7 +241,7 @@ public:
 		// COG
 		Fvector3	cog	= {0,0,0};
 		for			(int it=0; it<int(points.size()); it++)	cog.add	(points[it]);
-		cog.div		(float(points.size()));
+		cog.div		(f32(points.size()));
 
 		// planes
 		compute_planes	();
@@ -336,20 +336,20 @@ Fvector3		wform	(Fmatrix& m, Fvector3& v)
 // OLES: naive 3D clipper - roubustness around 0, but works for this sample
 // note: normals points to 'outside'
 //////////////////////////////////////////////////////////////////////////
-const	float	_eps	= 0.000001f;
+const	f32	_eps	= 0.000001f;
 struct	DumbClipper
 {
 	CFrustum				frustum;
 	xr_vector<D3DXPLANE>	planes;
 	BOOL					clip	(D3DXVECTOR3& p0, D3DXVECTOR3& p1)		// returns TRUE if result meaningfull
 	{
-		float		denum;
+		f32		denum;
 		D3DXVECTOR3	D;
 		for (int it=0; it<int(planes.size()); it++)
 		{
 			D3DXPLANE&	P		= planes			[it];
-			float		cls0	= D3DXPlaneDotCoord	(&P,&p0);
-			float		cls1	= D3DXPlaneDotCoord	(&P,&p1);
+			f32		cls0	= D3DXPlaneDotCoord	(&P,&p0);
+			f32		cls1	= D3DXPlaneDotCoord	(&P,&p1);
 			if (cls0>0 && cls1>0)	return			false;	// fully outside
 
 			if (cls0>0)	{
@@ -421,7 +421,8 @@ xr_vector<Fbox,render_alloc<Fbox> >	s_casters;
 
 D3DXVECTOR2 BuildTSMProjectionMatrix_caster_depth_bounds(D3DXMATRIX& lightSpaceBasis)
 {
-	float		min_z = 1e32f,	max_z=-1e32f;
+	f32		min_z = 1e32f;
+	f32		max_z = -1e32f;
 	D3DXMATRIX	minmax_xf;
 	D3DXMatrixMultiply	(&minmax_xf,(D3DXMATRIX*)&Device.mView,&lightSpaceBasis);
 	Fmatrix&	minmax_xform = *((Fmatrix*)&minmax_xf);
@@ -446,7 +447,7 @@ void CRender::render_sun				()
 	// calculate view-frustum bounds in world space
 	Fmatrix	ex_project, ex_full, ex_full_inverse;
 	{
-		float _far_	= min(OLES_SUN_LIMIT_27_01_07, g_pGamePersistent->Environment().CurrentEnv.far_plane);
+		f32 _far_	= min(OLES_SUN_LIMIT_27_01_07, g_pGamePersistent->Environment().CurrentEnv.far_plane);
 		ex_project.build_projection	(deg2rad(Device.fFOV/* *Device.fASPECT*/),Device.fASPECT,ps_r2_sun_near,_far_);
 		ex_full.mul					(ex_project,Device.mView);
 		D3DXMatrixInverse			((D3DXMATRIX*)&ex_full_inverse,0,(D3DXMATRIX*)&ex_full);
@@ -481,12 +482,12 @@ void CRender::render_sun				()
 		// Search for default sector - assume "default" or "outdoor" sector is the largest one
 		//. hack: need to know real outdoor sector
 		CSector*	largest_sector		= 0;
-		float		largest_sector_vol	= 0;
+		f32		largest_sector_vol	= 0;
 		for		(u32 s=0; s<Sectors.size(); s++)
 		{
 			CSector*			S		= (CSector*)Sectors[s]	;
 			IRender_Visual*		V		= S->root()				;
-			float				vol		= V->vis.box.getvolume();
+			f32				vol		= V->vis.box.getvolume();
 			if (vol>largest_sector_vol)	{
 				largest_sector_vol		= vol;
 				largest_sector			= S;
@@ -564,10 +565,10 @@ void CRender::render_sun				()
 
 	//  these are the limits specified by the physical camera
 	//  gamma is the "tilt angle" between the light and the view direction.
-	float m_fCosGamma = m_lightDir.x * m_View._13	+
+	f32 m_fCosGamma = m_lightDir.x * m_View._13	+
 						m_lightDir.y * m_View._23	+
 						m_lightDir.z * m_View._33	;
-	float m_fTSM_Delta= ps_r2_sun_tsm_projection;
+	f32 m_fTSM_Delta= ps_r2_sun_tsm_projection;
 
 	// Compute REAL sheared xform based on receivers/casters information
 	FPU::m64r			();
@@ -614,8 +615,8 @@ void CRender::render_sun				()
 		//  all shadow casters are in front of the near plane.
 		D3DXVECTOR2	depthbounds = BuildTSMProjectionMatrix_caster_depth_bounds	(lightSpaceBasis);
 
-		float min_z = min( depthbounds.x, frustumBox.minPt.z );
-		float max_z = max( depthbounds.y, frustumBox.maxPt.z );
+		f32 min_z = min( depthbounds.x, frustumBox.minPt.z );
+		f32 max_z = max( depthbounds.y, frustumBox.maxPt.z );
 
 		if ( min_z <= 1.f )	//?
 		{
@@ -652,12 +653,12 @@ void CRender::render_sun				()
 			-centerOrig.x, -centerOrig.y, 0.f, 1.f );
 
 		D3DXVECTOR2	center_dirl	= D3DXVECTOR2(centerPts[1] - centerOrig);
-		float half_center_len = D3DXVec2Length( &center_dirl);
-		float x_len = centerPts[1].x - centerOrig.x;
-		float y_len = centerPts[1].y - centerOrig.y;
+		f32 half_center_len = D3DXVec2Length( &center_dirl);
+		f32 x_len = centerPts[1].x - centerOrig.x;
+		f32 y_len = centerPts[1].y - centerOrig.y;
 
-		float cos_theta = x_len / half_center_len;
-		float sin_theta = y_len / half_center_len;
+		f32 cos_theta = x_len / half_center_len;
+		f32 sin_theta = y_len / half_center_len;
 
 		D3DXMATRIX rot_center( cos_theta, -sin_theta, 0.f, 0.f,
 			sin_theta,  cos_theta, 0.f, 0.f,
@@ -673,8 +674,8 @@ void CRender::render_sun				()
 
 		BoundingBox frustumAABB2D( frustumPnts, sizeof(frustumPnts)/sizeof(D3DXVECTOR3) );
 
-		float x_scale = max( _abs(frustumAABB2D.maxPt.x), _abs(frustumAABB2D.minPt.x) );
-		float y_scale = max( _abs(frustumAABB2D.maxPt.y), _abs(frustumAABB2D.minPt.y) );
+		f32 x_scale = max( _abs(frustumAABB2D.maxPt.x), _abs(frustumAABB2D.minPt.x) );
+		f32 y_scale = max( _abs(frustumAABB2D.maxPt.y), _abs(frustumAABB2D.minPt.y) );
 		x_scale = 1.f/x_scale;
 		y_scale = 1.f/y_scale;
 
@@ -693,23 +694,23 @@ void CRender::render_sun				()
 		frustumAABB2D.maxPt.y *= y_scale;
 
 		//  compute eta.
-		float lambda		= frustumAABB2D.maxPt.x - frustumAABB2D.minPt.x;
-		float delta_proj	= m_fTSM_Delta * lambda;	//focusPt.x - frustumAABB2D.minPt.x;
-		const float xi		= -0.6f;					// - 0.6f;  // 80% line
-		float		eta		= (lambda*delta_proj*(1.f+xi)) / (lambda*(1.f-xi)-2.f*delta_proj);
+		f32 lambda		= frustumAABB2D.maxPt.x - frustumAABB2D.minPt.x;
+		f32 delta_proj	= m_fTSM_Delta * lambda;	//focusPt.x - frustumAABB2D.minPt.x;
+		const f32 xi		= -0.6f;					// - 0.6f;  // 80% line
+		f32		eta		= (lambda*delta_proj*(1.f+xi)) / (lambda*(1.f-xi)-2.f*delta_proj);
 
 		//  compute the projection point a distance eta from the top line.  this point is on the center line, y=0
 		D3DXVECTOR2 projectionPtQ( frustumAABB2D.maxPt.x + eta, 0.f );
 
 		//  find the maximum slope from the projection point to any point in the frustum.  this will be the
 		//  projection field-of-view
-		float max_slope = -1e32f;
-		float min_slope =  1e32f;
+		f32 max_slope = -1e32f;
+		f32 min_slope =  1e32f;
 
 		for ( int i=0; i < sizeof(frustumPnts)/sizeof(D3DXVECTOR3); i++ )
 		{
 			D3DXVECTOR2 tmp( frustumPnts[i].x*x_scale, frustumPnts[i].y*y_scale );
-			float x_dist = tmp.x - projectionPtQ.x;
+			f32 x_dist = tmp.x - projectionPtQ.x;
 			if ( !(ALMOST_ZERO(tmp.y) || ALMOST_ZERO(x_dist)))
 			{
 				max_slope = max(max_slope, tmp.y/x_dist);
@@ -717,8 +718,8 @@ void CRender::render_sun				()
 			}
 		}
 
-		float xn = eta;
-		float xf = lambda + eta;
+		f32 xn = eta;
+		f32 xf = lambda + eta;
 
 		D3DXMATRIX ptQ_xlate(-1.f, 0.f, 0.f, 0.f,
 			0.f, 1.f, 0.f, 0.f,
@@ -728,7 +729,7 @@ void CRender::render_sun				()
 
 		//  this shear balances the "trapezoid" around the y=0 axis (no change to the projection pt position)
 		//  since we are redistributing the trapezoid, this affects the projection field of view (shear_amt)
-		float shear_amt = (max_slope + _abs(min_slope))*0.5f - max_slope;
+		f32 shear_amt = (max_slope + _abs(min_slope))*0.5f - max_slope;
 		max_slope = max_slope + shear_amt;
 
 		D3DXMATRIX trapezoid_shear( 1.f, shear_amt, 0.f, 0.f,
@@ -739,7 +740,7 @@ void CRender::render_sun				()
 		D3DXMatrixMultiply( &trapezoid_space, &trapezoid_space, &trapezoid_shear );
 
 
-		float z_aspect = (frustumBox.maxPt.z-frustumBox.minPt.z) / (frustumAABB2D.maxPt.y-frustumAABB2D.minPt.y);
+		f32 z_aspect = (frustumBox.maxPt.z-frustumBox.minPt.z) / (frustumAABB2D.maxPt.y-frustumAABB2D.minPt.y);
 
 		//  perform a 2DH projection to 'unsqueeze' the top line.
 		D3DXMATRIX trapezoid_projection(  xf/(xf-xn),          0.f, 0.f, 1.f,
@@ -825,17 +826,17 @@ void CRender::render_sun				()
 
 		// refit?
 		/*
-		const float EPS				= 0.001f;
+		const f32 EPS				= 0.001f;
 		D3DXMATRIX					refit;
 		D3DXMatrixOrthoOffCenterLH	( &refit, b_receivers.min.x, b_receivers.max.x, b_receivers.min.y, b_receivers.max.y, b_casters.min.z-EPS, b_casters.max.z+EPS );
 		D3DXMatrixMultiply			( &m_LightViewProj, &m_LightViewProj, &refit);
 		*/
 
-		float boxWidth  = b_receivers.max.x - b_receivers.min.x;
-		float boxHeight = b_receivers.max.y - b_receivers.min.y;
+		f32 boxWidth  = b_receivers.max.x - b_receivers.min.x;
+		f32 boxHeight = b_receivers.max.y - b_receivers.min.y;
 		//  the divide by two's cancel out in the translation, but included for clarity
-		float boxX		= (b_receivers.max.x+b_receivers.min.x) / 2.f;
-		float boxY		= (b_receivers.max.y+b_receivers.min.y) / 2.f;
+		f32 boxX		= (b_receivers.max.x+b_receivers.min.x) / 2.f;
+		f32 boxY		= (b_receivers.max.y+b_receivers.min.y) / 2.f;
 		D3DXMATRIX trapezoidUnitCube	( 2.f/boxWidth,			0.f,					0.f, 0.f,
 													0.f,		2.f/boxHeight,			0.f, 0.f,
 													0.f,		0.f,					1.f, 0.f,
@@ -938,12 +939,12 @@ void CRender::render_sun_near	()
 		// Search for default sector - assume "default" or "outdoor" sector is the largest one
 		//. hack: need to know real outdoor sector
 		CSector*	largest_sector		= 0;
-		float		largest_sector_vol	= 0;
+		f32		largest_sector_vol	= 0;
 		for		(u32 s=0; s<Sectors.size(); s++)
 		{
 			CSector*			S		= (CSector*)Sectors[s]	;
 			IRender_Visual*		V		= S->root()				;
-			float				vol		= V->vis.box.getvolume();
+			f32				vol		= V->vis.box.getvolume();
 			if (vol>largest_sector_vol)	{
 				largest_sector_vol		= vol;
 				largest_sector			= S;
@@ -971,34 +972,34 @@ void CRender::render_sun_near	()
 		mdir_View.build_camera_dir	(L_pos,L_dir,L_up);
 
 		// projection: box
-		float	_D					= ps_r2_sun_near;
-		float	a0					= deg2rad(Device.fFOV*Device.fASPECT)/2.f;
-		float	a1					= deg2rad(Device.fFOV)/2.f;
-		float	c0					= _D/_cos(a0);
-		float	c1					= _D/_cos(a1);
-		float	k0					= 2.f*c0*_sin(a0);
-		float	k1					= 2.f*c1*_sin(a1);
-		float	borderalpha			= (Device.fFOV-10) / (90-10);
+		f32	_D					= ps_r2_sun_near;
+		f32	a0					= deg2rad(Device.fFOV*Device.fASPECT)/2.f;
+		f32	a1					= deg2rad(Device.fFOV)/2.f;
+		f32	c0					= _D/_cos(a0);
+		f32	c1					= _D/_cos(a1);
+		f32	k0					= 2.f*c0*_sin(a0);
+		f32	k1					= 2.f*c1*_sin(a1);
+		f32	borderalpha			= (Device.fFOV-10) / (90-10);
 									
-		float	nearborder			= 1*borderalpha + 1.136363636364f*(1-borderalpha);
-		float	spherical_range		= ps_r2_sun_near_border * nearborder * _max(_max(c0,c1), _max(k0,k1)*1.414213562373f );
+		f32	nearborder			= 1*borderalpha + 1.136363636364f*(1-borderalpha);
+		f32	spherical_range		= ps_r2_sun_near_border * nearborder * _max(_max(c0,c1), _max(k0,k1)*1.414213562373f );
 		Fbox	frustum_bb;			frustum_bb.invalidate	();
 		hull.points.push_back		(Device.vCameraPosition);
 		for (int it=0; it<9; it++)	{
 			Fvector	xf	= wform		(mdir_View,hull.points[it]);
 			frustum_bb.modify		(xf);
 		}
-		float	size_x				= frustum_bb.max.x - frustum_bb.min.x;
-		float	size_y				= frustum_bb.max.y - frustum_bb.min.y;
-		float	diff_x				= (spherical_range - size_x)/2.f;	//VERIFY(diff_x>=0);
-		float	diff_y				= (spherical_range - size_y)/2.f;	//VERIFY(diff_y>=0);
+		f32	size_x				= frustum_bb.max.x - frustum_bb.min.x;
+		f32	size_y				= frustum_bb.max.y - frustum_bb.min.y;
+		f32	diff_x				= (spherical_range - size_x)/2.f;	//VERIFY(diff_x>=0);
+		f32	diff_y				= (spherical_range - size_y)/2.f;	//VERIFY(diff_y>=0);
 		frustum_bb.min.x -= diff_x; frustum_bb.max.x += diff_x;
 		frustum_bb.min.y -= diff_y; frustum_bb.max.y += diff_y;
 		Fbox&	bb					= frustum_bb;
 		D3DXMatrixOrthoOffCenterLH	((D3DXMATRIX*)&mdir_Project,bb.min.x,bb.max.x,  bb.min.y,bb.max.y,  bb.min.z-tweak_ortho_xform_initial_offs,bb.max.z);
 
 		// build viewport xform
-		float	view_dim			= float(RImplementation.o.smapsize);
+		f32	view_dim			= f32(RImplementation.o.smapsize);
 		Fmatrix	m_viewport			= {
 			view_dim/2.f,	0.0f,				0.0f,		0.0f,
 			0.0f,			-view_dim/2.f,		0.0f,		0.0f,

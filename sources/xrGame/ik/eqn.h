@@ -41,14 +41,14 @@
 // Evaluate alpha*cos(x) + beta*sin(x) efficiently
 // 
 
-inline float sin_and_cos(float x, float alpha, float beta)
+inline f32 sin_and_cos(f32 x, f32 alpha, f32 beta)
 {
     while (x < 0)
 	x += 2*M_PI;
     while (x > 2*M_PI)
 	x -= 2*M_PI;
 
-    float c = _cos(x);
+	f32 c = _cos(x);
     return (x > M_PI) ?
 	(alpha*c - beta*_sqrt(1-c*c)) : 
 	(alpha*c + beta*_sqrt(1-c*c));
@@ -68,14 +68,17 @@ struct PsiEquation
 {
     unsigned char  status, num_crits, num_roots;
     unsigned char *status_ptr, *num_roots_ptr, *num_crits_ptr;
-    float alpha, beta, xi; 
-    float crit_pts[2], root_pts[2];
+	f32 alpha;
+	f32 beta;
+	f32 xi;
+	f32 crit_pts[2];
+	f32 root_pts[2];
 
     // store temporary computations
-    float a2b2;
-    float atan2ba;
+	f32 a2b2;
+	f32 atan2ba;
 
-    void Reset(float a, float b, float x)  
+    void Reset(f32 a, f32 b, f32 x)
     { 
 		alpha = a; beta = b; xi = x;  
 		a2b2 = a*a + b*b;
@@ -87,19 +90,19 @@ struct PsiEquation
     }
 
     PsiEquation() {}
-    PsiEquation(float a, float b, float x)
+    PsiEquation(f32 a, f32 b, f32 x)
     {
 		Reset(a,b,x);
     }
 
 
-    float eval(float psi) const
+	f32 eval(f32 psi) const
     {
 		return sin_and_cos(psi, alpha, beta) + xi;
 		// return alpha*cos(psi) + beta*sin(psi) + xi;
     }
 
-    float deriv(float psi) const
+	f32 deriv(f32 psi) const
     {
 		return sin_and_cos(psi, beta, -alpha);
 		// return -alpha*sin(psi) + beta*cos(psi); 
@@ -109,18 +112,18 @@ struct PsiEquation
     //
     // Returns the critical points of the equation (1 or 2) 
     //
-    int crit_points(float *c) const;
+    int crit_points(f32* c) const;
 
     //
     // Return the roots of the equation (1 or 2)
     // 
-    int roots(float *c) const;
+    int roots(f32* c) const;
 
     //
     // Returns the solns of alpha*cos(v) + beta*sin(v) + xi = v
     // where -1 <= v <= 1 
     //
-    int solve(float v, float *c) const;
+    int solve(f32 v, f32* c) const;
 
     //
     // Calculates the set of intersections of psi such that 

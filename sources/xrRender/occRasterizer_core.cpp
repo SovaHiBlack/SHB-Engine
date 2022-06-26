@@ -3,17 +3,17 @@
 
 static occTri*	currentTri	= 0;
 static u32		dwPixels	= 0;
-static F32	currentA[3];
-static F32 currentB[3];
-static F32 currentC[3];
+static f32	currentA[3];
+static f32 currentB[3];
+static f32 currentC[3];
 
 const int BOTTOM = 0, TOP = 1;
 
-void i_order	(F32* A, F32* B, F32* C)
+void i_order	(f32* A, f32* B, f32* C)
 {
-	F32* min;
-	F32* max;
-	F32* mid;
+	f32* min;
+	f32* max;
+	f32* mid;
 	if (A[1] <= B[1])
 	{
         if (B[1] <= C[1]) 
@@ -65,29 +65,29 @@ IC BOOL shared(occTri* T1, occTri* T2)
 	if (T1->adjacent[2]==T2)	return TRUE;
 	return FALSE;
 }
-IC BOOL lesser(F32& a, F32& b)
+IC BOOL lesser(f32& a, f32& b)
 {
 	u32* A = (u32*)(&a);
 	u32* B = (u32*)(&b);
 	return *A<*B;
 }
 
-const F32		one_div_3	= 1.f/3.f;
+const f32		one_div_3	= 1.f/3.f;
 
 // Rasterize a scan line between given X point values, corresponding Z values and current color
-void i_scan		(int curY, F32 leftX, F32 lhx, F32 rightX, F32 rhx, F32 startZ, F32 endZ)
+void i_scan		(int curY, f32 leftX, f32 lhx, f32 rightX, f32 rhx, f32 startZ, f32 endZ)
 {
 	// calculate span(s)
-	F32	start_c	= leftX+lhx;
-	F32	end_c	= rightX+rhx;
+	f32	start_c	= leftX+lhx;
+	f32	end_c	= rightX+rhx;
 	
-	F32	startR	= leftX-lhx;
-	F32	endR	= rightX-rhx;
+	f32	startR	= leftX-lhx;
+	f32	endR	= rightX-rhx;
 	
-	F32	startT = startR;
-	F32 endT = end_c;
-	F32	startX = start_c;
-	F32 endX = endR;
+	f32	startT = startR;
+	f32 endT = end_c;
+	f32	startX = start_c;
+	f32 endX = endR;
 	if (start_c<startR)		{startT	= start_c;	startX	= startR;	}
 	if (end_c<endR)			{endT	= endR;		endX	= end_c;	}
 	

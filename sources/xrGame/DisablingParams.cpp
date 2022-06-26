@@ -16,7 +16,7 @@ SAllDDWParams	worldDisablingParams	=
 
 
 
-void SOneDDOParams::Mul(float v)
+void SOneDDOParams::Mul(f32 v)
 {
 	velocity			*=	v			;
 	acceleration		*=	v			;

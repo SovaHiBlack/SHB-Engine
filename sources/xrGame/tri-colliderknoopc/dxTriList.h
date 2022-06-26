@@ -2,46 +2,37 @@
 
 #include "../ode_include.h"
 
-struct dcVector3{
-
-	float x, y, z;
-
-
+struct dcVector3
+{
+	f32 x;
+	f32 y;
+	f32 z;
 
 	dcVector3(){}
 
 	dcVector3(dReal x, dReal y, dReal z){
 
-		this->x = (float)x;
+		this->x = (f32)x;
 
-		this->y = (float)y;
+		this->y = (f32)y;
 
-		this->z = (float)z;
-
+		this->z = (f32)z;
 	}
-
-
 
 	dcVector3(const dReal* v){
 
-		x = (float)v[0];
+		x = (f32)v[0];
 
-		y = (float)v[1];
+		y = (f32)v[1];
 
-		z = (float)v[2];
-
+		z = (f32)v[2];
 	}
-
-
 
 	~dcVector3(){}
 
+	operator f32* (){  //&slipch
 
-
-
-	operator float* (){  //&slipch
-
-	return reinterpret_cast<float*>(this);
+	return reinterpret_cast<f32*>(this);
 	}
 	/* Add */
 
@@ -125,7 +116,7 @@ struct dcVector3{
 
 
 
-	dcVector3 operator*(float Scalar) const{
+	dcVector3 operator*(f32 Scalar) const{
 
 		dcVector3 Out;
 
@@ -155,7 +146,7 @@ struct dcVector3{
 
 
 
-	dcVector3& operator*=(float Scalar){
+	dcVector3& operator*=(f32 Scalar){
 
 		x *= Scalar;
 
@@ -187,7 +178,7 @@ struct dcVector3{
 
 
 
-	dcVector3 operator/(float Scalar) const{
+	dcVector3 operator/(f32 Scalar) const{
 
 		dcVector3 Out;
 
@@ -217,7 +208,7 @@ struct dcVector3{
 
 
 
-	dcVector3& operator/=(float Scalar){
+	dcVector3& operator/=(f32 Scalar){
 
 		x /= Scalar;
 
@@ -265,7 +256,7 @@ struct dcVector3{
 
 
 
-	float DotProduct(const dcVector3& v) const{
+	f32 DotProduct(const dcVector3& v) const{
 
 		return x * v.x + y * v.y + z * v.z;
 
@@ -289,7 +280,7 @@ struct dcVector3{
 
 
 
-	float MagnitudeSq() const{
+	f32 MagnitudeSq() const{
 
 		return DotProduct(*this);
 
@@ -297,7 +288,7 @@ struct dcVector3{
 
 
 
-	float Magnitude() const{
+	f32 Magnitude() const{
 
 		return _sqrt(MagnitudeSq());
 
@@ -315,7 +306,7 @@ struct dcVector3{
 
 	/* Member access */
 
-	float& operator[](int Index){
+	f32& operator[](int Index){
 
 		return *(&x + Index);
 
@@ -323,7 +314,7 @@ struct dcVector3{
 
 
 
-	float operator[](int Index) const{
+	f32 operator[](int Index) const{
 
 		return *(&x + Index);
 
@@ -403,7 +394,7 @@ struct dcPlane{
 
 	dcVector3 Normal;
 
-	float Distance;
+	f32 Distance;
 
 
 
@@ -429,7 +420,7 @@ struct dcPlane{
 
 	void Normalize(){
 
-		float Factor = 1.0f / Normal.Magnitude();
+		f32 Factor = 1.0f / Normal.Magnitude();
 
 		Normal *= Factor;
 
@@ -439,7 +430,7 @@ struct dcPlane{
 
 
 
-	bool Contains(const dcVector3& RefObject, float Epsilon = 0.0f) const{
+	bool Contains(const dcVector3& RefObject, f32 Epsilon = 0.0f) const{
 
 		return Normal.DotProduct(RefObject) - Distance >= - Epsilon; //@slipch ">=" instead ">"
 

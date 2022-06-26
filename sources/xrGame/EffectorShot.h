@@ -10,16 +10,16 @@
 
 class CWeaponShotEffector{
 protected:
-	float			fAngleVert;
-	float			fAngleVertMax;
-	float			fAngleVertFrac;
-	float			fAngleHorz;
-	float			fAngleHorzMax;
-	float			fAngleHorzStep;
-	float			fRelaxSpeed;
+	f32			fAngleVert;
+	f32			fAngleVertMax;
+	f32			fAngleVertFrac;
+	f32			fAngleHorz;
+	f32			fAngleHorzMax;
+	f32			fAngleHorzStep;
+	f32			fRelaxSpeed;
 
-	float			fLastDeltaVert;
-	float			fLastDeltaHorz;
+	f32			fLastDeltaVert;
+	f32			fLastDeltaHorz;
 protected:
 	BOOL			bActive;
 	BOOL			bSingleShoot;
@@ -31,7 +31,7 @@ public:
 					CWeaponShotEffector	();
 	virtual			~CWeaponShotEffector(){};
 
-	void			Initialize			(float max_angle, float relax_speed, float max_angle_horz, float step_angle_horz, float angle_frac);
+	void			Initialize			(f32 max_angle, f32 relax_speed, f32 max_angle_horz, f32 step_angle_horz, f32 angle_frac);
 	IC BOOL			IsActive			(){return bActive;}
 	virtual void	SetActive			(BOOL Active) {bActive = Active;};
 	IC BOOL			IsSingleShot		(){return bSingleShoot;}
@@ -40,13 +40,13 @@ public:
 	
 	void			SetRndSeed			(s32 Seed);
 
-	virtual void	Shot				(float angle);
+	virtual void	Shot				(f32 angle);
 	virtual void	GetDeltaAngle		(Fvector& delta_angle);
 	virtual void	GetLastDelta		(Fvector& delta_angle);
 	virtual	void	Clear				();
 
-	virtual void	ApplyLastAngles			(float *pitch, float *yaw);
-	virtual void	ApplyDeltaAngles		(float *pitch, float *yaw);
+	virtual void	ApplyLastAngles			(f32* pitch, f32* yaw);
+	virtual void	ApplyDeltaAngles		(f32* pitch, f32* yaw);
 };
 
 class CCameraShotEffector : public CWeaponShotEffector, public CEffectorCam
@@ -54,10 +54,10 @@ class CCameraShotEffector : public CWeaponShotEffector, public CEffectorCam
 protected:
 	CActor*			m_pActor;
 public:
-					CCameraShotEffector	(float max_angle, float relax_speed, float max_angle_horz, float step_angle_horz, float angle_frac);
+					CCameraShotEffector	(f32 max_angle, f32 relax_speed, f32 max_angle_horz, f32 step_angle_horz, f32 angle_frac);
 	virtual			~CCameraShotEffector();
 	
-	virtual	BOOL	Process				(Fvector &delta_p, Fvector &delta_d, Fvector &delta_n, float& fFov, float& fFar, float& fAspect);
+	virtual	BOOL	Process				(Fvector &delta_p, Fvector &delta_d, Fvector &delta_n, f32& fFov, f32& fFar, f32& fAspect);
 
 	virtual void	SetActor			(CActor* pActor) {m_pActor = pActor;};
 	

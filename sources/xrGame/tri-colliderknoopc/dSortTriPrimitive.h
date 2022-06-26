@@ -131,7 +131,7 @@ IC int dcTriListCollider::dSortTriPrimitiveCollide (
 		//if(ignored_tries[I-B])continue;
 		CDB::TRI* T = T_array + *I;
 		const Point vertices[3]={Point((dReal*)&V_array[T->verts[0]]),Point((dReal*)&V_array[T->verts[1]]),Point((dReal*)&V_array[T->verts[2]])};
-		if(!aabb_tri_aabb(Point(p),Point((float*)&AABB),vertices))
+		if(!aabb_tri_aabb(Point(p),Point((f32*)&AABB),vertices))
 																continue;
 #ifdef DEBUG
 		if(ph_dbg_draw_mask.test(phDBgDrawIntersectedTries))
@@ -145,9 +145,9 @@ IC int dcTriListCollider::dSortTriPrimitiveCollide (
 			if(ph_dbg_draw_mask.test(phDBgDrawNegativeTries))
 				DBG_DrawTri(T,V_array,D3DCOLOR_XRGB(0,0,255));
 #endif
-			float last_pos_dist=dDOT(last_pos,tri.norm)-tri.pos;
+			f32 last_pos_dist=dDOT(last_pos,tri.norm)-tri.pos;
 			if((!(last_pos_dist<0.f))||b_pushing)
-				if(__aabb_tri(Point(p),Point((float*)&AABB),vertices))
+				if(__aabb_tri(Point(p),Point((f32*)&AABB),vertices))
 				{
 #ifdef DEBUG
 					if(ph_dbg_draw_mask.test(phDBgDrawTriesChangesSign))

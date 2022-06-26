@@ -15,13 +15,13 @@ public:
 	struct {
 		u32				bActive	:	1;
 	}					flags		;
-	float				fade		;
+	f32				fade		;
 	ref_shader			shader		;
 	u32					dwFrame		;
 
 	Fvector				position	;
 	Fvector				direction	;
-	float				radius		;
+	f32				radius		;
 	Fcolor				color		;
 
 	// Ray-testing cache
@@ -37,10 +37,10 @@ public:
 	virtual bool					get_active			();
 	virtual void					set_position		(const Fvector& P);
 	virtual void					set_direction		(const Fvector& P);
-	virtual void					set_radius			(float			R);
+	virtual void					set_radius			(f32			R);
 	virtual void					set_texture			(pcstr			name);
 	virtual void					set_color			(const Fcolor&	C);
-	virtual void					set_color			(float r, float g, float b);
+	virtual void					set_color			(f32 r, f32 g, f32 b);
 	virtual void					spatial_move		();
 };
 

@@ -10,7 +10,7 @@ public :
 	virtual			bool				IsServerControlHits		()	{return true;};
 
 	virtual		ALife::_TIME_ID			GetEnvironmentGameTime	()				{return GetGameTime();};
-	virtual		float					GetEnvironmentGameTimeFactor		()	{return GetGameTimeFactor();};
+	virtual		f32					GetEnvironmentGameTimeFactor		()	{return GetGameTimeFactor();};
 
 	void		OnDifficultyChanged		();
 };

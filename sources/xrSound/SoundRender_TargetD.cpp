@@ -162,15 +162,16 @@ void	CSoundRender_TargetD::fill_parameters()
 	
 	// 2. Set 2D params (volume, freq) + position(rewind)
 	{
-		F32	_volume				= pEmitter->smooth_volume;				clamp	(_volume, EPSILON_7,1.f);
+		f32	_volume				= pEmitter->smooth_volume;
+		clamp	(_volume, EPSILON_7,1.f);
 		s32		hw_volume			= iFloor	(7000.f*logf(_volume)/5.f);	clamp	(hw_volume,DSBVOLUME_MIN,DSBVOLUME_MAX);
 		if (_abs(hw_volume-cache_hw_volume)>50){
 			cache_hw_volume			= hw_volume;
 			R_CHK(pBuffer->SetVolume(hw_volume));
 		}
 
-		F32	_freq				= pEmitter->p_source.freq;
-		s32		hw_freq				= iFloor	(_freq * F32(wfx.nSamplesPerSec) + EPSILON_5);
+		f32	_freq				= pEmitter->p_source.freq;
+		s32		hw_freq				= iFloor	(_freq * f32(wfx.nSamplesPerSec) + EPSILON_5);
 		if (_abs(hw_freq-cache_hw_freq)>50)	{
 			cache_hw_freq			= hw_freq;
 			s32		hw_freq_set		= hw_freq;

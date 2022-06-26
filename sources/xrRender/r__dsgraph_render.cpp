@@ -7,12 +7,13 @@
 
 using namespace		R_dsgraph;
 
-extern float		r_ssaDISCARD;
-extern float		r_ssaDONTSORT;
-extern float		r_ssaHZBvsTEX;
-extern float		r_ssaGLOD_start,	r_ssaGLOD_end;
+extern f32		r_ssaDISCARD;
+extern f32		r_ssaDONTSORT;
+extern f32		r_ssaHZBvsTEX;
+extern f32		r_ssaGLOD_start;
+extern f32		r_ssaGLOD_end;
 
-ICF float calcLOD	(float ssa/*fDistSq*/, float R)
+ICF f32 calcLOD	(f32 ssa/*fDistSq*/, f32 R)
 {
 	return			_sqrt(clampr((ssa - r_ssaGLOD_end)/(r_ssaGLOD_start-r_ssaGLOD_end),0.f,1.f));
 }
@@ -361,7 +362,7 @@ void R_dsgraph_structure::r_dsgraph_render_graph	(u32	_priority, bool _clear)
 // HUD render
 void R_dsgraph_structure::r_dsgraph_render_hud	()
 {
-	ENGINE_API extern float		psHUD_FOV;
+	ENGINE_API extern f32		psHUD_FOV;
 
 	// Change projection
 	Fmatrix Pold				= Device.mProject;

@@ -60,9 +60,9 @@ void	CEffectorZoomInertion::Init				(CWeaponMagazined*	pWeapon)
 	LoadParams(*pWeapon->cNameSect(), "ezi_");
 };
 
-void CEffectorZoomInertion::SetParams	(float disp)
+void CEffectorZoomInertion::SetParams	(f32 disp)
 {
-	float old_disp = m_fDispRadius;
+	f32 old_disp = m_fDispRadius;
 
 	m_fDispRadius = disp*m_fZoomAimingDispK;
 	if(m_fDispRadius<m_fDispMin) 
@@ -83,7 +83,7 @@ void			CEffectorZoomInertion::CalcNextPoint		()
 {
 	m_fEpsilon = 2*m_fFloatSpeed;
 
-	float half_disp_radius = m_fDispRadius/2.f;
+	f32 half_disp_radius = m_fDispRadius/2.f;
 	m_vTargetPoint.x = m_Random.randF(-half_disp_radius,half_disp_radius);
 	m_vTargetPoint.y = m_Random.randF(-half_disp_radius,half_disp_radius);
 
@@ -91,7 +91,7 @@ void			CEffectorZoomInertion::CalcNextPoint		()
 };
 
 BOOL CEffectorZoomInertion::Process		(Fvector &p, Fvector &d, Fvector &n, 
-										 float& fFov, float& fFar, float& fAspect)
+										 f32& fFov, f32& fFar, f32& fAspect)
 {
 	bool camera_moved = false;
 
@@ -122,7 +122,7 @@ BOOL CEffectorZoomInertion::Process		(Fvector &p, Fvector &d, Fvector &n,
 		};
 	}
 
-	m_vCurrentPoint.lerp(m_vLastPoint, m_vTargetPoint, float(m_dwTimePassed)/m_dwDeltaTime);
+	m_vCurrentPoint.lerp(m_vLastPoint, m_vTargetPoint, f32(m_dwTimePassed)/m_dwDeltaTime);
 
 	m_vOldCameraDir = d;	
 

@@ -24,11 +24,11 @@ public:
 
 	virtual ~CDistanceFunction(){}
 
-	virtual float ffGetValue();
+	virtual f32 ffGetValue();
 
 	virtual u32	dwfGetDiscreteValue(u32 dwDiscretizationValue)
 	{
-		float fTemp = ffGetValue();
+		f32 fTemp = ffGetValue();
 		if (fTemp <= m_fMinResultValue)
 			return(0);
 		else
@@ -51,7 +51,7 @@ public:
 		OUT_MESSAGE("* Evaluation function \"%s\" is successfully initalized",m_caName);
 	};
 
-	virtual float ffGetValue();
+	virtual f32 ffGetValue();
 };
 
 class CPersonalMoraleFunction : public CBaseFunction {
@@ -68,7 +68,7 @@ public:
 
 	virtual ~CPersonalMoraleFunction(){}
 
-	virtual float ffGetValue();
+	virtual f32 ffGetValue();
 };
 
 class CPersonalCreatureTypeFunction : public CBaseFunction {
@@ -85,7 +85,7 @@ public:
 
 	virtual ~CPersonalCreatureTypeFunction(){}
 
-	virtual float ffGetValue();
+	virtual f32 ffGetValue();
 };
 
 class CPersonalWeaponTypeFunction : public CBaseFunction {
@@ -103,8 +103,8 @@ public:
 	virtual ~CPersonalWeaponTypeFunction(){}
 
 			u32	  dwfGetWeaponType	();
-			float ffGetTheBestWeapon();
-	virtual float ffGetValue		();
+			f32 ffGetTheBestWeapon();
+	virtual f32 ffGetValue		();
 };
 
 class CPersonalAccuracyFunction : public CBaseFunction {
@@ -121,7 +121,7 @@ public:
 
 	virtual ~CPersonalAccuracyFunction(){}
 
-	virtual float ffGetValue();
+	virtual f32 ffGetValue();
 };
 
 class CPersonalIntelligenceFunction : public CBaseFunction {
@@ -138,7 +138,7 @@ public:
 
 	virtual ~CPersonalIntelligenceFunction(){}
 
-	virtual float ffGetValue();
+	virtual f32 ffGetValue();
 };
 
 class CPersonalRelationFunction : public CBaseFunction {
@@ -155,7 +155,7 @@ public:
 
 	virtual ~CPersonalRelationFunction(){}
 
-	virtual float ffGetValue();
+	virtual f32 ffGetValue();
 };
 
 class CPersonalGreedFunction : public CBaseFunction {
@@ -172,7 +172,7 @@ public:
 
 	virtual ~CPersonalGreedFunction(){}
 
-	virtual float ffGetValue();
+	virtual f32 ffGetValue();
 };
 
 class CPersonalAggressivenessFunction : public CBaseFunction {
@@ -189,7 +189,7 @@ public:
 
 	virtual ~CPersonalAggressivenessFunction(){}
 
-	virtual float ffGetValue();
+	virtual f32 ffGetValue();
 };
 
 class CEnemyMoraleFunction : public CBaseFunction {
@@ -206,7 +206,7 @@ public:
 	
 	virtual ~CEnemyMoraleFunction(){}
 
-	virtual float ffGetValue();
+	virtual f32 ffGetValue();
 };
 
 class CEnemyEquipmentCostFunction : public CBaseFunction {
@@ -223,7 +223,7 @@ public:
 
 	virtual ~CEnemyEquipmentCostFunction(){}
 
-	virtual float ffGetValue();
+	virtual f32 ffGetValue();
 };
 
 class CEnemyRukzakWeightFunction : public CBaseFunction {
@@ -240,7 +240,7 @@ public:
 
 	virtual ~CEnemyRukzakWeightFunction(){}
 
-	virtual float ffGetValue();
+	virtual f32 ffGetValue();
 };
 
 class CEnemyAnomalityFunction : public CBaseFunction {
@@ -257,7 +257,7 @@ public:
 
 	virtual ~CEnemyAnomalityFunction(){}
 
-	virtual float ffGetValue();
+	virtual f32 ffGetValue();
 };
 
 class CGraphPointType0 : public CBaseFunction {
@@ -274,7 +274,7 @@ public:
 
 	virtual ~CGraphPointType0(){}
 
-	virtual float ffGetValue();
+	virtual f32 ffGetValue();
 };
 
 class CPersonalEyeRange : public CBaseFunction {
@@ -291,7 +291,7 @@ public:
 
 	virtual ~CPersonalEyeRange(){}
 
-	virtual float ffGetValue();
+	virtual f32 ffGetValue();
 };
 
 class CPersonalMaxHealth : public CBaseFunction {
@@ -308,7 +308,7 @@ public:
 
 	virtual ~CPersonalMaxHealth(){}
 
-	virtual float	ffGetValue();
+	virtual f32	ffGetValue();
 	virtual u32		dwfGetDiscreteValue(u32 dwDiscretizationValue = 1);
 };
 
@@ -326,7 +326,7 @@ public:
 
 	virtual ~CEquipmentType(){}
 
-	virtual float	ffGetValue();
+	virtual f32	ffGetValue();
 };
 
 class CItemDeterioration : public CBaseFunction {
@@ -343,7 +343,7 @@ public:
 
 	virtual ~CItemDeterioration(){}
 
-	virtual float	ffGetValue();
+	virtual f32	ffGetValue();
 };
 
 class CEquipmentPreference : public CBaseFunction {
@@ -360,7 +360,7 @@ public:
 
 	virtual ~CEquipmentPreference(){}
 
-	virtual float	ffGetValue();
+	virtual f32	ffGetValue();
 };
 
 class CMainWeaponType : public CBaseFunction {
@@ -377,7 +377,7 @@ public:
 
 	virtual ~CMainWeaponType(){}
 
-	virtual float	ffGetValue();
+	virtual f32	ffGetValue();
 };
 
 class CMainWeaponPreference : public CBaseFunction {
@@ -394,7 +394,7 @@ public:
 
 	virtual ~CMainWeaponPreference(){}
 
-	virtual float	ffGetValue();
+	virtual f32	ffGetValue();
 };
 
 class CItemValue : public CBaseFunction {
@@ -411,7 +411,7 @@ public:
 
 	virtual ~CItemValue(){}
 
-	virtual float	ffGetValue();
+	virtual f32	ffGetValue();
 };
 
 class CWeaponAmmoCount : public CBaseFunction {
@@ -428,7 +428,7 @@ public:
 
 	virtual ~CWeaponAmmoCount(){}
 
-	virtual float	ffGetValue();
+	virtual f32	ffGetValue();
 	virtual u32		dwfGetDiscreteValue(u32 dwDiscretizationValue = 1);
 };
 
@@ -446,7 +446,7 @@ public:
 
 	virtual ~CEnemyAnomalyType(){}
 
-	virtual float	ffGetValue();
+	virtual f32	ffGetValue();
 };
 
 class CDetectorType : public CBaseFunction {
@@ -463,7 +463,7 @@ public:
 
 	virtual ~CDetectorType(){}
 
-	virtual float	ffGetValue();
+	virtual f32	ffGetValue();
 };
 
 class CEnemyDistanceToGraphPoint : public CBaseFunction {
@@ -480,5 +480,5 @@ public:
 
 	virtual ~CEnemyDistanceToGraphPoint(){}
 
-	virtual float	ffGetValue();
+	virtual f32	ffGetValue();
 };

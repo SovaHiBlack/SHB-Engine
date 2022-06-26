@@ -59,7 +59,7 @@ occRasterizer::~occRasterizer	()
 void occRasterizer::clear		()
 {
 	u32 size			= occ_dim*occ_dim;
-	F32 f				= 1.f;
+	f32 f				= 1.0f;
 	Memory.mem_fill32	(bufFrame,0,size);
 	Memory.mem_fill32	(bufDepth,*LPDWORD(&f),size);
 }
@@ -77,7 +77,7 @@ void occRasterizer::propagade	()
 {
 	// Clip-and-propagade zero level
 	occTri**	pFrame	= get_frame	();
-	F32*		pDepth	= get_depth	();
+	f32*		pDepth	= get_depth	();
 	for (int y=0; y<occ_dim_0; y++)
 	{
 		for (int x=0; x<occ_dim_0; x++)
@@ -96,18 +96,18 @@ void occRasterizer::propagade	()
 				if (shared(Tu1,pFrame[pos_down]))
 				{
 					// We has pixel 1scan down
-					F32 ZR			= (pDepth[pos_up]+pDepth[pos_down])/2;
+					f32 ZR			= (pDepth[pos_up]+pDepth[pos_down])/2;
 					if (ZR<pDepth[pos])	{ pFrame[pos] = Tu1; pDepth[pos] = ZR; }
 				} else if (shared(Tu1,pFrame[pos_down2])) 
 				{
 					// We has pixel 2scan down
-					F32 ZR			= (pDepth[pos_up]+pDepth[pos_down2])/2;
+					f32 ZR			= (pDepth[pos_up]+pDepth[pos_down2])/2;
 					if (ZR<pDepth[pos])	{ pFrame[pos] = Tu1; pDepth[pos] = ZR; }
 				}
 			}
 			
 			//
-			F32 d				= pDepth[pos];
+			f32 d				= pDepth[pos];
 			clamp				(d,-1.99f,1.99f);
 			bufDepth_0[y][x]	= df_2_s32	(d);
 		}
@@ -119,7 +119,7 @@ void occRasterizer::propagade	()
 	propagade_depth	(bufDepth_3,bufDepth_2,occ_dim_3);
 }
 
-IC	BOOL			test_Level	(occD* depth, int dim, F32 _x0, F32 _y0, F32 _x1, F32 _y1, occD z)
+IC	BOOL			test_Level	(occD* depth, int dim, f32 _x0, f32 _y0, f32 _x1, f32 _y1, occD z)
 {
 	int x0		= iFloor	(_x0*dim+.5f);	clamp(x0,0,		dim-1);
 	int x1		= iFloor	(_x1*dim+.5f);	clamp(x1,x0,	dim-1);
@@ -140,7 +140,7 @@ IC	BOOL			test_Level	(occD* depth, int dim, F32 _x0, F32 _y0, F32 _x1, F32 _y1, 
 	return FALSE;
 }
 
-BOOL occRasterizer::test		(F32 _x0, F32 _y0, F32 _x1, F32 _y1, F32 _z)
+BOOL occRasterizer::test		(f32 _x0, f32 _y0, f32 _x1, f32 _y1, f32 _z)
 { 
 	occD	z	= df_2_s32up	(_z)+1;
 	return		test_Level		(get_depth_level(0),occ_dim_0,_x0,_y0,_x1,_y1,z);

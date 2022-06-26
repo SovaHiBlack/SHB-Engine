@@ -30,7 +30,7 @@ private:
 	u32				*m_dwaAtomicFeatureRange;
 	u32				*m_dwaPatternIndexes;
 	SPattern		*m_tpPatterns;
-	float			*m_faParameters;
+	f32*			m_faParameters;
 	u32				m_dwPatternCount;
 	u32				m_dwParameterCount;
 	SEFHeader		m_tEFHeader;
@@ -43,7 +43,7 @@ private:
 		return(dwIndex + m_dwaPatternIndexes[iPatternIndex]);
 	}
 	
-	float			ffEvaluate();
+	f32			ffEvaluate();
 
 public:
 	
@@ -56,5 +56,5 @@ public:
 	virtual			~CPatternFunction	();
 
 	virtual	void	vfLoadEF			(pcstr caEFFileName);
-	virtual float	ffGetValue			();
+	virtual f32	ffGetValue			();
 };

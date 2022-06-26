@@ -17,19 +17,19 @@ private:
 	struct	caster			{
 		IRenderable*		O;
 		Fvector				C;
-		float				D;
+		f32				D;
 		xr_vector<NODE>		nodes;
 	};
 	struct	shadow			{
 #ifdef	DEBUG
-		float				dbg_HAT;
+		f32				dbg_HAT;
 #endif
 		IRenderable*		O;
 		int					slot;
 		Fvector				C;
 		Fmatrix				M;
 		light*				L;
-		float				E;
+		f32				E;
 	};
 	struct	tess_tri		{
 		Fvector				v[3];

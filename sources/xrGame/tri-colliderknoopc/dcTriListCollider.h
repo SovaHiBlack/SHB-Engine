@@ -55,7 +55,7 @@ IC	int dSortTriPrimitiveCollide (T primitive,
 							dContactGeom* Contacts,
 							int			skip
 							);
-IC	float	dSphereProj(dxGeom* sphere,const dReal* /**normal/**/)
+IC	f32	dSphereProj(dxGeom* sphere,const dReal* /**normal/**/)
 		{
 			VERIFY (dGeomGetClass(sphere)== dSphereClass);
 			return	dGeomSphereGetRadius(sphere);
@@ -64,7 +64,7 @@ int dTriSphere(const dReal* v0,const dReal* v1,const dReal* v2,
 			Triangle* T,
 			dxGeom* Sphere,dxGeom* Geometry, int Flags, 
 			dContactGeom* Contacts,int /**skip/**/);
-IC	 float	dBoxProj(dxGeom* box,const dReal* normal);
+IC	 f32	dBoxProj(dxGeom* box,const dReal* normal);
 IC			void	CrossProjLine(const dReal* pt1,const dReal* vc1,const dReal* pt2,const dReal* vc2,dReal* proj);
 IC			void	CrossProjLine1(const dReal* pt1,const dReal* vc1,const dReal* pt2,const dReal* vc2,dReal* proj);
 IC			bool	CrossProjLine14(const dReal* pt1,const dReal* vc1,const dReal* pt2,const dReal* vc2,dReal hside,dReal* proj);
@@ -88,7 +88,7 @@ int dTriBox (
 			int flags, dContactGeom *contact, int skip
 			);
 IC	bool	circleLineIntersection(const dReal* cn,const dReal* cp,dReal r,const dReal* lv,const dReal* lp,dReal sign,dVector3 point);
-IC	float	dCylProj(dxGeom* cylinder,const dReal* normal);
+IC	f32	dCylProj(dxGeom* cylinder,const dReal* normal);
 	int		dSortedTriCyl (
 									  const dReal* triSideAx0,const dReal* triSideAx1,
 									  const dReal* triAx,
@@ -108,7 +108,7 @@ IC	float	dCylProj(dxGeom* cylinder,const dReal* normal);
 									);
 IC		bool  cylinderCrossesLine(const dReal* p,const dReal* R,dReal hlz,
 											 const dReal* v0,const dReal* v1,const dReal* l,dVector3 pos);
-IC	float	Proj  (dxGeom* o,const dReal* normal);
+IC	f32	Proj  (dxGeom* o,const dReal* normal);
 IC	int		Collide(
 					const dReal* v0,const dReal* v1,const dReal* v2,
 					Triangle* T,

@@ -139,11 +139,11 @@ void CGameObject::OnEvent		(NET_Packet& P, u16 type)
 /*
 			u16				id,weapon_id;
 			Fvector			dir;
-			float			power, impulse;
+			f32			power, impulse;
 			s16				element;
 			Fvector			position_in_bone_space;
 			u16				hit_type;
-			float			ap = 0.0f;
+			f32			ap = 0.0f;
 
 			P.r_u16			(id);
 			P.r_u16			(weapon_id);
@@ -436,7 +436,7 @@ void CGameObject::spawn_supplies()
 
 	pcstr					N;
 	pcstr					V;
-	float					p;
+	f32					p;
 	bool bScope				=	false;
 	bool bSilencer			=	false;
 	bool bLauncher			=	false;
@@ -446,7 +446,7 @@ void CGameObject::spawn_supplies()
 		j					= 1;
 		p					= 1.f;
 		
-		float f_cond						= 1.0f;
+		f32 f_cond						= 1.0f;
 		if (V && xr_strlen(V)) {
 			int				n = _GetItemCount(V);
 			string16		temp;
@@ -454,11 +454,11 @@ void CGameObject::spawn_supplies()
 				j			= atoi(_GetItem(V,0,temp)); //count
 			
 			if(NULL!=strstr(V,"prob="))
-				p			=(float)atof(strstr(V,"prob=")+5);
+				p			=(f32)atof(strstr(V,"prob=")+5);
 			if (fis_zero(p))p = 1.f;
 			if (!j)	j		= 1;
 			if(NULL!=strstr(V,"cond="))
-				f_cond		= (float)atof(strstr(V,"cond=")+5);
+				f_cond		= (f32)atof(strstr(V,"cond=")+5);
 			bScope			=	(NULL!=strstr(V,"scope"));
 			bSilencer		=	(NULL!=strstr(V,"silencer"));
 			bLauncher		=	(NULL!=strstr(V,"launcher"));
@@ -623,13 +623,6 @@ void CGameObject::renderable_Render	()
 	::Render->set_Transform		(&XFORM());
 	::Render->add_Visual		(Visual());
 }
-
-/*
-float CGameObject::renderable_Ambient	()
-{
-	return (ai().get_level_graph() && ai().level_graph().valid_vertex_id(level_vertex_id()) ? float(level_vertex()->light()/15.f) : 1.f);
-}
-*/
 
 CObject::SavedPosition CGameObject::ps_Element(u32 ID) const
 {

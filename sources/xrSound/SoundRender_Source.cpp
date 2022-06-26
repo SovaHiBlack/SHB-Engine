@@ -44,7 +44,7 @@ bool ov_error(int res)
 void CSoundRender_Source::i_decompress_fr(OggVorbis_File* ovf, char* _dest, u32 left)
 {
 //*
-	F32** pcm;
+	f32** pcm;
     int val;
     long channels		= ov_info(ovf,-1)->channels;
     long bytespersample	= 2 * channels;
@@ -55,7 +55,7 @@ void CSoundRender_Source::i_decompress_fr(OggVorbis_File* ovf, char* _dest, u32 
 		int samples		= ov_read_float	(ovf,&pcm,left,&dummy);
         if (samples>0){
 			for(int i=0;i<channels;i++) {
-				F32* src=pcm[i];
+				f32* src=pcm[i];
                 short *dest=((short *)buffer)+i;
                 for(int j=0;j<samples;j++) {
                   	val=iFloor(src[j]*32768.f);
@@ -75,7 +75,7 @@ void CSoundRender_Source::i_decompress_fr(OggVorbis_File* ovf, char* _dest, u32 
 void CSoundRender_Source::i_decompress_hr(OggVorbis_File* ovf, char* _dest, u32 left)
 {
 //*
-	F32** pcm;
+	f32** pcm;
     int val;
     long channels		= ov_info(ovf,-1)->channels;
     long bytespersample	= 2 * channels;
@@ -86,11 +86,11 @@ void CSoundRender_Source::i_decompress_hr(OggVorbis_File* ovf, char* _dest, u32 
 		int samples		= ov_read_float	(ovf,&pcm,left,&dummy);
         if (samples>0){
 			for(int i=0;i<channels;i++) {
-				F32* src=pcm[i];
+				f32* src=pcm[i];
                 short *dest=((short *)buffer)+i;
                 for(int j=0;j<samples/2;j++) {
-					F32 val0 = src[j*2];
-					F32 val1 = src[j*2+1];
+					f32 val0 = src[j*2];
+					f32 val1 = src[j*2+1];
                 	val=iFloor((val0+val1)*0.5f*32768.f);
                     if(val>32767)val=32767;
                     else if(val<-32768)val=-32768;

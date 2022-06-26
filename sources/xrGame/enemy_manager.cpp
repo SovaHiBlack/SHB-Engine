@@ -81,12 +81,12 @@ bool CEnemyManager::useful					(const CEntityAlive *entity_alive) const
 	return					(m_useful_callback ? m_useful_callback(m_object->lua_game_object(),entity_alive->lua_game_object()) : true);
 }
 
-float CEnemyManager::do_evaluate			(const CEntityAlive *object) const
+f32 CEnemyManager::do_evaluate			(const CEntityAlive *object) const
 {
 	return					(m_object->evaluate(this,object));
 }
 
-float CEnemyManager::evaluate				(const CEntityAlive *object) const
+f32 CEnemyManager::evaluate				(const CEntityAlive *object) const
 {
 //	Msg						("[%6d] enemy manager %s evaluates %s",Device.dwTimeGlobal,*m_object->cName(),*object->cName());
 
@@ -100,11 +100,11 @@ float CEnemyManager::evaluate				(const CEntityAlive *object) const
 		if (m_stalker && m_stalker->agent_manager().enemy().assigned_wounded(object,m_stalker))
 			return			(0.f);
 
-		float				distance = m_object->Position().distance_to_sqr(object->Position());
+		f32				distance = m_object->Position().distance_to_sqr(object->Position());
 		return				(distance);
 	}
 
-	float					penalty = 10000.f;
+	f32					penalty = 10000.0f;
 
 	// if we are hit
 	if (object->ID() == m_object->memory().hit().last_hit_object_id()) {
@@ -136,14 +136,14 @@ float CEnemyManager::evaluate				(const CEntityAlive *object) const
 	ai().ef_storage().non_alife().member()		= m_object;
 	ai().ef_storage().non_alife().enemy()		= object;
 
-	float					distance = m_object->Position().distance_to_sqr(object->Position());
+	f32					distance = m_object->Position().distance_to_sqr(object->Position());
 	return					(
 		penalty +
 		distance/100.f +
 		ai().ef_storage().m_pfVictoryProbability->ffGetValue()/100.f
 	);
 #else // USE_EVALUATOR
-	float					distance = m_object->Position().distance_to_sqr(object->Position());
+	f32					distance = m_object->Position().distance_to_sqr(object->Position());
 	return					(
 		1000.f*(visible ? 0.f : 1.f) +
 		distance
@@ -201,7 +201,7 @@ void CEnemyManager::remove_links			(CObject *object)
 		m_selected				= 0;
 }
 
-void CEnemyManager::ignore_monster_threshold			(const float &ignore_monster_threshold)
+void CEnemyManager::ignore_monster_threshold			(const f32& ignore_monster_threshold)
 {
 	m_ignore_monster_threshold	= ignore_monster_threshold;
 }
@@ -211,12 +211,12 @@ void CEnemyManager::restore_ignore_monster_threshold	()
 	m_ignore_monster_threshold	= READ_IF_EXISTS(pSettings,r_float,*m_object->cNameSect(),"ignore_monster_threshold",1.f);
 }
 
-float CEnemyManager::ignore_monster_threshold			() const
+f32 CEnemyManager::ignore_monster_threshold			() const
 {
 	return						(m_ignore_monster_threshold);
 }
 
-void CEnemyManager::max_ignore_monster_distance			(const float &max_ignore_monster_distance)
+void CEnemyManager::max_ignore_monster_distance			(const f32& max_ignore_monster_distance)
 {
 	m_max_ignore_distance		= max_ignore_monster_distance;
 }
@@ -226,7 +226,7 @@ void CEnemyManager::restore_max_ignore_monster_distance	()
 	m_max_ignore_distance		= READ_IF_EXISTS(pSettings,r_float,*m_object->cNameSect(),"max_ignore_distance",0.f);
 }
 
-float CEnemyManager::max_ignore_monster_distance		() const
+f32 CEnemyManager::max_ignore_monster_distance		() const
 {
 	return						(m_max_ignore_distance);
 }

@@ -23,7 +23,7 @@ private:
 	Estate m_state;
 
 	struct  SEnertionState {
-		float dist;
+		f32 dist;
 		u32	  time;
 	};
 
@@ -35,7 +35,7 @@ Fvector			m_start_position;//for depart state
 u32				m_start_time;
 public: 
 						CElevatorState					();
-			void		PhTune							(float step);
+			void		PhTune							(f32 step);
 			void		SetCharacter					(CPHCharacter *character);
 			void		SetElevator						(CClimableObject* climable);
 			void		EvaluateState					();
@@ -47,13 +47,13 @@ public:
 			bool		NearState						(){return m_state==clbNearUp || m_state == clbNearDown;}
 			bool		ClimbingState					(){return m_state==clbClimbingUp || m_state == clbClimbingDown;}
 			void		Depart							();
-			float		ClimbDirection					();
+			f32		ClimbDirection					();
 			void		Deactivate						();
 IC			Estate		State							(){return m_state;}
 private:
 			void		NewState						();
 
-			void		PhDataUpdate					(float step);
+			void		PhDataUpdate					(f32 step);
 			void		InitContact						(dContact* c,bool &do_collide,u16 /*material_idx_1*/,u16 /*material_2*/);
 			void		SwitchState						(Estate new_state);
 			bool		StateSwitchInertion				(Estate new_state);
@@ -62,6 +62,6 @@ private:
 			void		UpdateStNearDown				();
 			void		UpdateStClimbingUp				();
 			void		UpdateStClimbingDown			();
-			void		UpdateClimbingCommon			(const Fvector	&d_to_ax,float to_ax,const Fvector& control_accel,float ca);
+			void		UpdateClimbingCommon			(const Fvector	&d_to_ax, f32 to_ax,const Fvector& control_accel, f32 ca);
 			void		UpdateDepart					();
 };

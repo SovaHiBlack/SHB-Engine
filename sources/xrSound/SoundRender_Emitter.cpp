@@ -5,7 +5,7 @@
 
 extern	u32				psSoundModel;
 extern	u32				psSoundFreq;
-extern	F32				psSoundVEffects;
+extern	f32				psSoundVEffects;
 
 //////////////////////////////////////////////////////////////////////
 CSoundRender_Emitter::CSoundRender_Emitter(void)
@@ -68,8 +68,8 @@ void CSoundRender_Emitter::Event_Propagade	()
 
 	VERIFY						(_valid(p_source.volume));
 	// Calculate range
-	F32	clip				= p_source.max_ai_distance*p_source.volume;
-	F32	range				= _min(p_source.max_ai_distance,clip);
+	f32	clip				= p_source.max_ai_distance*p_source.volume;
+	f32	range				= _min(p_source.max_ai_distance,clip);
 	if (range<0.1f)				return;
 
 	// Inform objects

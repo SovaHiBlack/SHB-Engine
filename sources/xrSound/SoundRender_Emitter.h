@@ -7,7 +7,7 @@
 
 class CSoundRender_Emitter		:	public CSound_emitter
 {
-	F32						starting_delay;
+	f32						starting_delay;
 public:
 	enum State
 	{
@@ -36,10 +36,10 @@ public:
 	CSoundRender_Source*		source;
 	ref_sound_data_ptr			owner_data;
 
-	F32						priority_scale;
-	F32						smooth_volume;
-	F32 						occluder_volume;		// USER
-	F32						fade_volume;
+	f32						priority_scale;
+	f32						smooth_volume;
+	f32 						occluder_volume;		// USER
+	f32						fade_volume;
 	Fvector						occluder	[3];
 
 	State						state;
@@ -68,21 +68,21 @@ public:
 	virtual void				switch_to_2D			();
 	virtual void				switch_to_3D			();
 	virtual void				set_position			(const Fvector &pos)	{ p_source.position	= pos; bMoved=TRUE;					}
-	virtual void				set_frequency			(F32 scale)			{ VERIFY(_valid(scale));			p_source.freq=scale;}
-	virtual void				set_range				(F32 min, F32 max)	{ VERIFY(_valid(min)&&_valid(max));	p_source.min_distance=min; p_source.max_distance=max;}
-	virtual void				set_volume				(F32 vol)				{ VERIFY(_valid(vol));				p_source.volume=vol;}
-	virtual void				set_priority			(F32 p)				{ priority_scale = p;									}
+	virtual void				set_frequency			(f32 scale)			{ VERIFY(_valid(scale));			p_source.freq=scale;}
+	virtual void				set_range				(f32 min, f32 max)	{ VERIFY(_valid(min)&&_valid(max));	p_source.min_distance=min; p_source.max_distance=max;}
+	virtual void				set_volume				(f32 vol)				{ VERIFY(_valid(vol));				p_source.volume=vol;}
+	virtual void				set_priority			(f32 p)				{ priority_scale = p;									}
 	virtual	const CSound_params* get_params				( )						{ return &p_source;										}
 
 	void						fill_block				(void*	ptr, u32 size);
 	void						fill_data				(u8*	ptr, u32 offset, u32 size);
 
-	F32						priority				();
-	void						start					(ref_sound* _owner, BOOL _loop, F32 delay);
+	f32						priority				();
+	void						start					(ref_sound* _owner, BOOL _loop, f32 delay);
 	void						cancel					();						// manager forces out of rendering
-	void						update					(F32 dt);
-	BOOL						update_culling			(F32 dt);
-	void						update_environment		(F32 dt);
+	void						update					(f32 dt);
+	BOOL						update_culling			(f32 dt);
+	void						update_environment		(f32 dt);
 	void						rewind					();
 	virtual void				stop					(BOOL bDeffered);
 	void						pause					(BOOL bVal, int id);

@@ -5,7 +5,7 @@
 
 #define	GAMESAVE_SIZE	128
 
-IC u32 convert				(float c)	{
+IC u32 convert				(f32 c)	{
 	u32 C=iFloor(c);
 	if (C>255) C=255;
 	return C;
@@ -18,11 +18,11 @@ IC void MouseRayFromPoint	( Fvector& direction, int x, int y, Fmatrix& m_CamMat 
 	Ivector2 point2;
 	point2.set			(x-halfwidth, halfheight-y);
 
-	float size_y		= VIEWPORT_NEAR * tanf( deg2rad(60.f) * 0.5f );
-	float size_x		= size_y / (Device.fHeight_2/Device.fWidth_2);
+	f32 size_y		= VIEWPORT_NEAR * tanf( deg2rad(60.f) * 0.5f );
+	f32 size_x		= size_y / (Device.fHeight_2/Device.fWidth_2);
 
-	float r_pt			= float(point2.x) * size_x / (float) halfwidth;
-	float u_pt			= float(point2.y) * size_y / (float) halfheight;
+	f32 r_pt			= f32(point2.x) * size_x / (f32) halfwidth;
+	f32 u_pt			= f32(point2.y) * size_y / (f32) halfheight;
 
 	direction.mul		( m_CamMat.k, VIEWPORT_NEAR );
 	direction.mad		( direction, m_CamMat.j, u_pt );

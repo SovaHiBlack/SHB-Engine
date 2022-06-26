@@ -8,7 +8,7 @@ class	CSector;
 
 struct	_scissor					: public Fbox2
 {
-	float	depth;
+	f32	depth;
 };
 
 // Connector
@@ -34,7 +34,7 @@ public:
 	CSector*						getSector		(CSector* pFrom)	{ return pFrom==pFace?pBack:pFace; }
 	CSector*						getSectorFacing	(const Fvector& V)	{ if (P.classify(V)>0) return pFace; else return pBack; }
 	CSector*						getSectorBack	(const Fvector& V)	{ if (P.classify(V)>0) return pBack; else return pFace;	}
-	float							distance		(const Fvector &V)	{ return _abs(P.classify(V)); }
+	f32								distance		(const Fvector &V)	{ return _abs(P.classify(V)); }
 
 									CPortal			();
 	virtual							~CPortal		();
@@ -83,7 +83,7 @@ public:
 	Fmatrix									i_mXFORM_01;	// 
 	CSector*								i_start;		// input:	starting point
 	xr_vector<IRender_Sector*>				r_sectors;		// result
-	xr_vector<std::pair<CPortal*, float> >	f_portals;		// 
+	xr_vector<std::pair<CPortal*, f32> >	f_portals;		// 
 	ref_shader								f_shader;
 	ref_geom								f_geom;
 public:
@@ -91,7 +91,7 @@ public:
 	void							initialize			();
 	void							destroy				();
 	void							traverse			(IRender_Sector* start, CFrustum& F, Fvector& vBase, Fmatrix& mXFORM, u32 options);
-	void							fade_portal			(CPortal* _p, float ssa);
+	void							fade_portal			(CPortal* _p, f32 ssa);
 	void							fade_render			();
 #ifdef DEBUG
 	void							dbg_draw		();

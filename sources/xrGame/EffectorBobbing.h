@@ -5,27 +5,27 @@
 
 class CEffectorBobbing : public CEffectorCam  
 {
-	float	fTime;
+	f32	fTime;
 	Fvector	vAngleAmplitude;
-	float	fYAmplitude;
-	float	fSpeed;
+	f32	fYAmplitude;
+	f32	fSpeed;
 
 	u32		dwMState;
-	float	fReminderFactor;
+	f32	fReminderFactor;
 	bool	is_limping;
 	bool	m_bZoomMode;
 
-	float	m_fAmplitudeRun;
-	float	m_fAmplitudeWalk;
-	float	m_fAmplitudeLimp;
+	f32	m_fAmplitudeRun;
+	f32	m_fAmplitudeWalk;
+	f32	m_fAmplitudeLimp;
 
-	float	m_fSpeedRun;
-	float	m_fSpeedWalk;
-	float	m_fSpeedLimp;
+	f32	m_fSpeedRun;
+	f32	m_fSpeedWalk;
+	f32	m_fSpeedLimp;
 
 public:
 			CEffectorBobbing	();
 	virtual ~CEffectorBobbing	();
-	virtual	BOOL	Process		(Fvector &delta_p, Fvector &delta_d, Fvector &delta_n, float& fFov, float& fFar, float& fAspect);
+	virtual	BOOL	Process		(Fvector &delta_p, Fvector &delta_d, Fvector &delta_n, f32& fFov, f32& fFar, f32& fAspect);
 	void	SetState			(u32 st, bool limping, bool ZoomMode);
 };

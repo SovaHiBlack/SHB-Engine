@@ -11,10 +11,10 @@
 class CEffectorZoomInertion : public CEffectorCam
 {
 	//коэффициент скорости "покачивания" прицела
-	float	m_fFloatSpeed;
-	float	m_fDispRadius;
+	f32	m_fFloatSpeed;
+	f32	m_fDispRadius;
 
-	float	m_fEpsilon;
+	f32	m_fEpsilon;
 	Fvector	m_vCurrentPoint;
 	Fvector m_vLastPoint;
 	Fvector	m_vTargetPoint;
@@ -25,11 +25,11 @@ class CEffectorZoomInertion : public CEffectorCam
 	u32		m_dwTimePassed;
 
 	//параметры настройки эффектора
-	float	m_fCameraMoveEpsilon;
-	float	m_fDispMin;
-	float	m_fSpeedMin;
-	float	m_fZoomAimingDispK;
-	float	m_fZoomAimingSpeedK;
+	f32	m_fCameraMoveEpsilon;
+	f32	m_fDispMin;
+	f32	m_fSpeedMin;
+	f32	m_fZoomAimingDispK;
+	f32	m_fZoomAimingSpeedK;
 	//время через которое эффектор меняет направление движения
 	u32		m_dwDeltaTime;
 
@@ -42,11 +42,11 @@ public:
 	virtual ~CEffectorZoomInertion		();
 
 			void	Load				();
-			void	SetParams			(float disp);
+			void	SetParams			(f32 disp);
 
 	virtual	BOOL	Process				(Fvector &delta_p, Fvector &delta_d,
-											Fvector &delta_n, float& fFov,
-											float& fFar, float& fAspect);
+											Fvector &delta_n, f32& fFov,
+										 f32& fFar, f32& fAspect);
 	virtual	void	SetRndSeed				(s32 Seed) { m_Random.seed(Seed); };
 	virtual	void	Init				(CWeaponMagazined*	pWeapon);
 

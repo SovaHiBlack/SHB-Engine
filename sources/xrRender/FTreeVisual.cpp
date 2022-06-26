@@ -87,7 +87,7 @@ void FTreeVisual::Load		(pcstr N, IReader *data, u32 dwFlags)
 struct	FTreeVisual_setup
 {
 	u32			dwFrame;
-	F32		scale;
+	f32		scale;
 	Fvector4	wave;
 	Fvector4	wind;
 
@@ -101,9 +101,9 @@ struct	FTreeVisual_setup
 		dwFrame					= Device.dwFrame;
 
 		// Calc wind-vector3, scale
-		F32	tm_rot			= PI_MUL_2*Device.fTimeGlobal/ps_r__Tree_w_rot;
+		f32	tm_rot			= PI_MUL_2*Device.fTimeGlobal/ps_r__Tree_w_rot;
 		wind.set				(_sin(tm_rot),0,_cos(tm_rot),0);	wind.normalize	();	wind.mul(ps_r__Tree_w_amp);	// dir1*amplitude
-		scale					= 1.f/ F32(FTreeVisual_quant);
+		scale					= 1.0f/ f32(FTreeVisual_quant);
 
 		// setup constants
 		wave.set				(ps_r__Tree_Wave.x,	ps_r__Tree_Wave.y,	ps_r__Tree_Wave.z,	Device.fTimeGlobal*ps_r__Tree_w_speed);			// wave
@@ -111,7 +111,7 @@ struct	FTreeVisual_setup
 	}
 };
 
-void FTreeVisual::Render	(F32 LOD)
+void FTreeVisual::Render	(f32 LOD)
 {
 	static FTreeVisual_setup	tvs;
 	if (tvs.dwFrame!=Device.dwFrame)	tvs.calculate();
@@ -121,7 +121,7 @@ void FTreeVisual::Render	(F32 LOD)
 							xform_v.mul_43	(RCache.get_xform_view(),xform);
 							RCache.set_c	(m_xform_v,	xform_v);									// matrix
 #endif
-							F32	s				= ps_r__Tree_SBC;
+							f32	s				= ps_r__Tree_SBC;
 	RCache.set_c			(m_xform,	xform);														// matrix
 	RCache.set_c			(c_consts,	tvs.scale,tvs.scale,0,0);									// consts/scale
 	RCache.set_c			(c_wave,	tvs.wave);													// wave
@@ -180,7 +180,7 @@ void FTreeVisual_ST::Load		(pcstr N, IReader *data, u32 dwFlags)
 {
 	inherited::Load				(N,data,dwFlags);
 }
-void FTreeVisual_ST::Render		(F32 LOD)
+void FTreeVisual_ST::Render		(f32 LOD)
 {
 	inherited::Render			(LOD);
 	RCache.set_Geometry			(rm_geom);
@@ -216,12 +216,12 @@ void FTreeVisual_PM::Load		(pcstr N, IReader *data, u32 dwFlags)
 		pSWI					= RImplementation.getSWI	(ID);
 	}
 }
-void FTreeVisual_PM::Render		(F32 LOD)
+void FTreeVisual_PM::Render		(f32 LOD)
 {
 	inherited::Render			(LOD);
 	int lod_id					= last_lod;
 	if (LOD>=0.f) {
-		lod_id					= iFloor((1.f-LOD)* F32(pSWI->count-1)+0.5f);
+		lod_id					= iFloor((1.f-LOD)* f32(pSWI->count-1)+0.5f);
 		last_lod				= lod_id;
 	}
 	VERIFY						(lod_id>=0 && lod_id<int(pSWI->count));

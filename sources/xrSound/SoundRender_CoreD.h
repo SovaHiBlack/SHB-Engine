@@ -21,9 +21,9 @@ class CSoundRender_CoreD: public CSoundRender_Core
 		Fvector			vVelocity;
 		Fvector			vOrientFront; 
 		Fvector			vOrientTop; 
-		F32			fDistanceFactor;
-		F32			fRolloffFactor;
-		F32			fDopplerFactor;
+		f32			fDistanceFactor;
+		f32			fRolloffFactor;
+		f32			fDopplerFactor;
 	};
     BOOL 				EAXQuerySupport			(const GUID* guid, u32 prop);
 	BOOL 				EAXTestSupport			(BOOL bDeferred);
@@ -36,7 +36,7 @@ public:
 	DSCAPS						dsCaps;
 	SListener					Listener;
 private:
-	virtual void			update_listener			(const Fvector& P, const Fvector& D, const Fvector& N, F32 dt);
+	virtual void			update_listener			(const Fvector& P, const Fvector& D, const Fvector& N, f32 dt);
 	virtual void			i_eax_set				(const GUID* guid, u32 prop, void* val, u32 sz);
 	virtual void			i_eax_get				(const GUID* guid, u32 prop, void* val, u32 sz);
 public:
@@ -46,7 +46,7 @@ public:
 	virtual void			_initialize				( u64 window	);
 	virtual void			_clear					( );
 
-	virtual void			set_master_volume		(F32 f		);
+	virtual void			set_master_volume		(f32 f		);
     
 	virtual const Fvector&	listener_position		( )				{ return Listener.vPosition; }
 };

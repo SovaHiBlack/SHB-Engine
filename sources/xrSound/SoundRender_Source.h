@@ -18,10 +18,10 @@ public:
 //	u32						dwBytesPerSec;
 	u32						dwBytesPerMS;
 
-	F32					m_fBaseVolume;
-	F32					m_fMinDist;
-	F32					m_fMaxDist;
-	F32					m_fMaxAIDist;
+	f32					m_fBaseVolume;
+	f32					m_fMinDist;
+	f32					m_fMaxDist;
+	f32					m_fMaxAIDist;
 	u32						m_uGameType;
 private:
 	void 					i_decompress_fr			(OggVorbis_File* ovf, char* dest, u32 size);    
@@ -38,6 +38,6 @@ public:
 	virtual	u32				length_ms				()	{return dwTimeTotal;	}
 	virtual u32				game_type				()	{return m_uGameType;	}
 	virtual pcstr			file_name				()	{return *fname;	}
-	virtual F32			base_volume				()	{return m_fBaseVolume; }
+	virtual f32			base_volume				()	{return m_fBaseVolume; }
 };
 #endif

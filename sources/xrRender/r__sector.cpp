@@ -37,7 +37,7 @@ void CPortal::OnRender	()
 		Fvector C			= {0,0,0};
 		for (u32 k=0; k<poly.size(); k++){ C.add(poly[k]); V[k+1].set(poly[k],0x800000FF);}
 		V.back().set		(poly[0],0x800000FF);
-		C.div				((float)poly.size());
+		C.div				((f32)poly.size());
 		V[0].set			(C,0x800000FF);
 
 		RCache.set_xform_world(Fidentity);
@@ -84,14 +84,14 @@ void	CPortal::Setup	(Fvector* V, int vcnt, CSector* face, CSector* back)
 	u32	_cnt			= 0;
 	for (int i=2; i<vcnt; i++) {
 		T.mknormal_non_normalized		(poly[0],poly[i-1],poly[i]);
-		float		m	= T.magnitude	();
+		f32		m	= T.magnitude	();
 		if (m> EPSILON_7)	{
 			N.add		(T.div(m))	;
 			_cnt		++			;
 		}
 	}
 	R_ASSERT2	(_cnt, "Invalid portal detected");
-	N.div		(float(_cnt));
+	N.div		(f32(_cnt));
 	P.build		(poly[0],N);
 	FPU::m24r	();
 
@@ -107,8 +107,9 @@ CSector::~CSector()
 }
 
 //
-extern float r_ssaDISCARD			;
-extern float r_ssaLOD_A, r_ssaLOD_B ;
+extern f32 r_ssaDISCARD			;
+extern f32 r_ssaLOD_A;
+extern f32 r_ssaLOD_B;
 
 void CSector::traverse			(CFrustum &F, _scissor& R_scissor)
 {
@@ -148,9 +149,9 @@ void CSector::traverse			(CFrustum &F, _scissor& R_scissor)
 		{
 			Fvector				dir2portal;
 			dir2portal.sub		(PORTAL->S.P,	PortalTraverser.i_vBase);
-			float R				=	PORTAL->S.R	;
-			float distSQ		=	dir2portal.square_magnitude();
-			float ssa			=	R*R/distSQ;
+			f32 R				=	PORTAL->S.R	;
+			f32 distSQ		=	dir2portal.square_magnitude();
+			f32 ssa			=	R*R/distSQ;
 			dir2portal.div		(_sqrt(distSQ));
 			ssa					*=	_abs(PORTAL->P.n.dotproduct(dir2portal));
 			if (ssa<r_ssaDISCARD)	continue;
@@ -172,7 +173,9 @@ void CSector::traverse			(CFrustum &F, _scissor& R_scissor)
 		if (PortalTraverser.i_options&CPortalTraverser::VQ_SCISSOR && (!PORTAL->bDualRender))
 		{
 			// Build scissor rectangle in projection-space
-			Fbox2	bb;	bb.invalidate(); float depth = flt_max;
+			Fbox2	bb;
+			bb.invalidate();
+			f32 depth = flt_max;
 			sPoly&	p	= *P;
 			for		(u32 vit=0; vit<p.size(); vit++)	{
 				Fvector4	t;	

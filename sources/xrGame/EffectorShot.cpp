@@ -26,7 +26,7 @@ CWeaponShotEffector::CWeaponShotEffector()
 	fLastDeltaHorz			= 0.f;			
 }
 
-void CWeaponShotEffector::Initialize(float max_angle, float relax_speed, float max_angle_horz, float step_angle_horz, float angle_frac)
+void CWeaponShotEffector::Initialize(f32 max_angle, f32 relax_speed, f32 max_angle_horz, f32 step_angle_horz, f32 angle_frac)
 {
 	fRelaxSpeed				= _abs(relax_speed);
 	VERIFY(!fis_zero(fRelaxSpeed));
@@ -38,9 +38,10 @@ void CWeaponShotEffector::Initialize(float max_angle, float relax_speed, float m
 
 }
 
-void CWeaponShotEffector::Shot	(float angle)
+void CWeaponShotEffector::Shot	(f32 angle)
 {
-	float OldAngleVert = fAngleVert, OldAngleHorz = fAngleHorz;
+	f32 OldAngleVert = fAngleVert;
+	f32 OldAngleHorz = fAngleHorz;
 
 	fAngleVert				+= (angle*fAngleVertFrac+m_Random.randF(-1,1)*angle*(1-fAngleVertFrac));
 //	VERIFY(!fis_zero(fAngleVertMax));
@@ -64,15 +65,15 @@ void CWeaponShotEffector::Shot	(float angle)
 void CWeaponShotEffector::Update()
 {
 	if (bActive){
-		float time_to_relax	= _abs(fAngleVert)/fRelaxSpeed;
+		f32 time_to_relax	= _abs(fAngleVert)/fRelaxSpeed;
 //		VERIFY(_valid(time_to_relax));
-		float relax_speed	= (fis_zero(time_to_relax))?0.0f:_abs(fAngleHorz)/time_to_relax;
+		f32 relax_speed	= (fis_zero(time_to_relax))?0.0f:_abs(fAngleHorz)/time_to_relax;
 //		VERIFY(_valid(relax_speed));
 
-		float time_to_relax_l	= _abs(fLastDeltaVert)/fRelaxSpeed;
+		f32 time_to_relax_l	= _abs(fLastDeltaVert)/fRelaxSpeed;
 //		VERIFY(_valid(time_to_relax_l));
 
-		float relax_speed_l	= (fis_zero(time_to_relax_l))?0.0f:_abs(fLastDeltaHorz)/time_to_relax_l;
+		f32 relax_speed_l	= (fis_zero(time_to_relax_l))?0.0f:_abs(fLastDeltaHorz)/time_to_relax_l;
 //		VERIFY(_valid(relax_speed_l));
 		//-------------------------------------------------------
 		if (fAngleHorz>=0.f)
@@ -158,12 +159,12 @@ void CWeaponShotEffector::SetRndSeed	(s32 Seed)
 	};
 };
 
-void CWeaponShotEffector::ApplyLastAngles			(float *pitch, float *yaw)
+void CWeaponShotEffector::ApplyLastAngles			(f32* pitch, f32* yaw)
 {
 			*pitch	-= fLastDeltaVert;
 			*yaw	-= fLastDeltaHorz;
 }
-void CWeaponShotEffector::ApplyDeltaAngles			(float *pitch, float *yaw)
+void CWeaponShotEffector::ApplyDeltaAngles			(f32* pitch, f32* yaw)
 {
 	*pitch	-= fAngleVert;
 	*yaw	-= fAngleHorz;
@@ -172,7 +173,7 @@ void CWeaponShotEffector::ApplyDeltaAngles			(float *pitch, float *yaw)
 //-----------------------------------------------------------------------------
 // Camera shot effector
 //-----------------------------------------------------------------------------
-CCameraShotEffector::CCameraShotEffector(float max_angle, float relax_speed, float max_angle_horz, float step_angle_horz, float angle_frac) : CEffectorCam(eCEShot,100000.f)
+CCameraShotEffector::CCameraShotEffector(f32 max_angle, f32 relax_speed, f32 max_angle_horz, f32 step_angle_horz, f32 angle_frac) : CEffectorCam(eCEShot,100000.f)
 {
 	CWeaponShotEffector::Initialize(max_angle, relax_speed, max_angle_horz, step_angle_horz, angle_frac);
 	m_pActor		= NULL;
@@ -182,10 +183,11 @@ CCameraShotEffector::~CCameraShotEffector()
 {
 }
 
-BOOL CCameraShotEffector::Process	(Fvector &p, Fvector &d, Fvector &n, float& fFov, float& fFar, float& fAspect)
+BOOL CCameraShotEffector::Process	(Fvector &p, Fvector &d, Fvector &n, f32& fFov, f32& fFar, f32& fAspect)
 {
 	if (bActive){
-		float		h,p;
+		f32		h;
+		f32		p;
 		d.getHP		(h,p);
 		if (bSingleShoot)
 		{

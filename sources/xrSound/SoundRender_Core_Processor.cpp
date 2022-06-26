@@ -6,7 +6,7 @@
 #include "SoundRender_Target.h"
 #include "SoundRender_Source.h"
 
-CSoundRender_Emitter*	CSoundRender_Core::i_play(ref_sound* S, BOOL _loop, F32 delay)
+CSoundRender_Emitter*	CSoundRender_Core::i_play(ref_sound* S, BOOL _loop, f32 delay)
 {
 	VERIFY					(S->_p->feedback==0);
 	CSoundRender_Emitter* E	=	xr_new<CSoundRender_Emitter>();
@@ -24,7 +24,7 @@ void CSoundRender_Core::update	( const Fvector& P, const Fvector& D, const Fvect
     bLocked						= TRUE;
 	u32 new_tm					= Timer.GetElapsed_ms();
 	Timer_Delta					= new_tm-Timer_Value;
-	F32 dt					= F32(Timer_Delta)/1000.f;
+	f32 dt					= f32(Timer_Delta)/1000.f;
 	Timer_Value					= new_tm;
 
 	s_emitters_u	++	;
@@ -173,11 +173,9 @@ void	CSoundRender_Core::statistic			(CSound_stats*  dest, CSound_stats_ext*  ext
 	}
 }
 
-
-
-F32 CSoundRender_Core::get_occlusion_to( const Fvector& hear_pt, const Fvector& snd_pt, F32 dispersion )
+f32 CSoundRender_Core::get_occlusion_to( const Fvector& hear_pt, const Fvector& snd_pt, f32 dispersion )
 {
-	F32 occ_value			= 1.f;
+	f32 occ_value			= 1.0f;
 
 	if (0!=geom_SOM){
 		// Calculate RAY params
@@ -186,7 +184,7 @@ F32 CSoundRender_Core::get_occlusion_to( const Fvector& hear_pt, const Fvector& 
 		pos.mul					(dispersion);
 		pos.add					(snd_pt);
 		dir.sub					(pos,hear_pt);
-		F32 range				= dir.magnitude	();
+		f32 range				= dir.magnitude	();
 		dir.div					(range);
 
 		geom_DB.ray_options		(CDB::OPT_CULL);
@@ -197,21 +195,21 @@ F32 CSoundRender_Core::get_occlusion_to( const Fvector& hear_pt, const Fvector& 
 		if (0!=r_cnt){
 			for (u32 k=0; k<r_cnt; k++){
 				CDB::RESULT* R	 = _B+k;
-				occ_value		*= *(F32*)&R->dummy;
+				occ_value		*= *(f32*)&R->dummy;
 			}
 		}
 	}
 	return occ_value;
 }
 
-F32 CSoundRender_Core::get_occlusion(Fvector& P, F32 R, Fvector* occ)
+f32 CSoundRender_Core::get_occlusion(Fvector& P, f32 R, Fvector* occ)
 {
-	F32 occ_value			= 1.f;
+	f32 occ_value			= 1.0f;
 
 	// Calculate RAY params
 	Fvector base			= listener_position();
 	Fvector	pos,dir;
-	F32	range;
+	f32	range;
 	pos.random_dir			();
 	pos.mul					(R);
 	pos.add					(P);
@@ -222,9 +220,9 @@ F32 CSoundRender_Core::get_occlusion(Fvector& P, F32 R, Fvector* occ)
 	if (0!=geom_MODEL){
 		bool bNeedFullTest	= true;
 		// 1. Check cached polygon
-		F32 _u;
-		F32 _v;
-		F32 _range;
+		f32 _u;
+		f32 _v;
+		f32 _range;
 		if (CDB::TestRayTri(base,dir,occ,_u,_v,_range,true))
 			if (_range>0 && _range<range){occ_value=psSoundOcclusionScale; bNeedFullTest=false;}
 		// 2. Polygon doesn't picked up - real database query
@@ -253,7 +251,7 @@ F32 CSoundRender_Core::get_occlusion(Fvector& P, F32 R, Fvector* occ)
 		if (0!=r_cnt){
 			for (u32 k=0; k<r_cnt; k++){
 				CDB::RESULT* R	 = _B+k;
-				occ_value		*= *(F32*)&R->dummy;
+				occ_value		*= *(f32*)&R->dummy;
 			}
 		}
 	}

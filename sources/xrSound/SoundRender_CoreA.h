@@ -39,7 +39,7 @@ class CSoundRender_CoreA: public CSoundRender_Core
 protected:
 	virtual void			i_eax_set				(const GUID* guid, u32 prop, void* val, u32 sz);
 	virtual void			i_eax_get				(const GUID* guid, u32 prop, void* val, u32 sz);
-	virtual void			update_listener			( const Fvector& P, const Fvector& D, const Fvector& N, F32 dt );
+	virtual void			update_listener			( const Fvector& P, const Fvector& D, const Fvector& N, f32 dt );
 public:	
 						    CSoundRender_CoreA		();
     virtual					~CSoundRender_CoreA		();
@@ -47,7 +47,7 @@ public:
 	virtual void			_initialize				( u64 window );
 	virtual void			_clear					( );
     
-	virtual void			set_master_volume		(F32 f		);
+	virtual void			set_master_volume		(f32 f		);
 
 	virtual const Fvector&	listener_position		( ){return Listener.position;}
 };

@@ -29,7 +29,7 @@ IC	T cos_apb(T sina, T cosa, T sinb, T cosb)
 	return				(cosa*cosb - sina*sinb);
 }
 
-IC	bool is_negative(float a)
+IC	bool is_negative(f32 a)
 {
 	return				(!fis_zero(a) && (a < 0.f));
 }
@@ -37,22 +37,22 @@ IC	bool is_negative(float a)
 IC	bool coincide_directions	(
 	const Fvector2	&start_circle_center,
 	const Fvector2	&start_tangent_point,
-	float			start_cross_product,
+	f32			start_cross_product,
 	const Fvector2	&dest_circle_center,
 	const Fvector2	&dest_tangent_point,
-	float			dest_cross_product
+	f32			dest_cross_product
 )
 {
 	if (fis_zero(start_cross_product)) {
 		Fvector2		circle_tangent_point_direction = Fvector2().sub(dest_tangent_point,dest_circle_center);
 		Fvector2		start_tangent_dest_tangent_direction = Fvector2().sub(dest_tangent_point,start_tangent_point);
-		float			cp1 = start_tangent_dest_tangent_direction.crossproduct(circle_tangent_point_direction);
+		f32				cp1 = start_tangent_dest_tangent_direction.crossproduct(circle_tangent_point_direction);
 		return			(dest_cross_product*cp1 >= 0.f);
 	}
 
 	Fvector2			circle_tangent_point_direction = Fvector2().sub(start_tangent_point,start_circle_center);
 	Fvector2			start_tangent_dest_tangent_direction = Fvector2().sub(dest_tangent_point,start_tangent_point);
-	float				cp1 = start_tangent_dest_tangent_direction.crossproduct(circle_tangent_point_direction);
+	f32				cp1 = start_tangent_dest_tangent_direction.crossproduct(circle_tangent_point_direction);
 	return				(start_cross_product*cp1 >= 0.f);
 }
 
@@ -65,7 +65,14 @@ bool CDetailPathManager::compute_tangent(
 	const EDirectionType	direction_type
 )
 {
-	float				start_cp, dest_cp, distance, alpha, start_yaw, dest_yaw, yaw1, yaw2;
+	f32				start_cp;
+	f32				dest_cp;
+	f32				distance;
+	f32				alpha;
+	f32				start_yaw;
+	f32				dest_yaw;
+	f32				yaw1;
+	f32				yaw2;
 	Fvector2			direction;
 
 	// computing 2D cross product for start point
@@ -114,12 +121,12 @@ bool CDetailPathManager::compute_tangent(
 			// distance between circle centers
 			distance		= start_circle.center.distance_to(dest_circle.center);
 			// radius difference
-			float			r_diff = start_circle.radius - dest_circle.radius;
-			float			r_diff_abs = _abs(r_diff);
+			f32			r_diff = start_circle.radius - dest_circle.radius;
+			f32			r_diff_abs = _abs(r_diff);
 			if ((r_diff_abs > distance) && !fsimilar(r_diff_abs,distance, EPSILON_7))
 				return		(false);
 			// angle between external tangents and circle centers segment
-			float			temp = r_diff/distance;
+			f32			temp = r_diff/distance;
 			clamp			(temp,-.99999f,.99999f);
 			alpha			= acosf(temp);
 			alpha			= alpha >= 0.f ? alpha : alpha + PI_MUL_2;
@@ -132,7 +139,7 @@ bool CDetailPathManager::compute_tangent(
 			return		(false);
 	
 		// angle between internal tangents and circle centers segment
-		float			temp = (start_circle.radius + dest_circle.radius)/distance;
+		f32			temp = (start_circle.radius + dest_circle.radius)/distance;
 		clamp			(temp,-.99999f,.99999f);
 		alpha			= acosf(temp);
 		alpha			= alpha >= 0.f ? alpha : alpha + PI_MUL_2;
@@ -168,7 +175,7 @@ bool CDetailPathManager::build_circle_trajectory(
 	const u32					velocity
 )
 {
-	const float			min_dist = .1f;
+	const f32			min_dist = 0.1f;
 	STravelPathPoint	t;
 	t.velocity			= velocity;
 	if (position.radius*_abs(position.angle) <= min_dist) {
@@ -194,7 +201,7 @@ bool CDetailPathManager::build_circle_trajectory(
 	direction.sub		(position.position,position.center);
 	curr_pos.set		(position.position.x,0.f,position.position.y);
 	curr_vertex_id		= position.vertex_id;
-	float				angle = position.angle;
+	f32				angle = position.angle;
 	int					size = path ? (int)path->size() : -1;
 
 	if (!fis_zero(direction.square_magnitude()))
@@ -202,7 +209,13 @@ bool CDetailPathManager::build_circle_trajectory(
 	else
 		direction.set	(1.f,0.f);
 
-	float				sina, cosa, sinb, cosb, sini, cosi, temp;
+	f32				sina;
+	f32				cosa;
+	f32				sinb;
+	f32				cosb;
+	f32				sini;
+	f32				cosi;
+	f32				temp;
 	int					n;
 	if (fis_zero(position.angular_velocity))
 		n				= 1;
@@ -223,10 +236,10 @@ bool CDetailPathManager::build_circle_trajectory(
 
 	sina				= -direction.x;
 	cosa				= direction.y;
-	sinb				= _sin(angle/float(n));
-	cosb				= _cos(angle/float(n));
-	sini				= 0.f;
-	cosi				= 1.f;
+	sinb				= _sin(angle/ f32(n));
+	cosb				= _cos(angle/ f32(n));
+	sini				= 0.0f;
+	cosi				= 1.0f;
 
 	for (int i=0; i<=n + k; ++i) {
 		VERIFY			(t.velocity != u32(-1));
@@ -310,7 +323,7 @@ bool CDetailPathManager::build_trajectory(
 	const SCirclePoint			tangents[4][2], 
 	const u32					tangent_count,
 	xr_vector<STravelPathPoint>	*path,
-	float						&time,
+	f32&						time,
 	const u32					velocity1,
 	const u32					velocity2,
 	const u32					velocity3
@@ -318,7 +331,7 @@ bool CDetailPathManager::build_trajectory(
 {
 	time			= flt_max;
 	SDist			dist[4];
-	float			straight_velocity = _abs(velocity(velocity2).linear_velocity);
+	f32			straight_velocity = _abs(velocity(velocity2).linear_velocity);
 	{
 		for (u32 i=0; i<tangent_count; ++i) {
 			dist[i].index = i;
@@ -353,7 +366,7 @@ bool CDetailPathManager::compute_trajectory(
 	STrajectoryPoint			&start,
 	STrajectoryPoint			&dest,
 	xr_vector<STravelPathPoint>	*path,
-	float						&time,
+	f32&						time,
 	const u32					velocity1,
 	const u32					velocity2,
 	const u32					velocity3,
@@ -401,7 +414,8 @@ bool CDetailPathManager::compute_path(
 {
 	STrajectoryPoint			start = _start;
 	STrajectoryPoint			dest = _dest;
-	float						min_time = flt_max, time;
+	f32							min_time = flt_max;
+	f32							time;
 	u32							size = m_tpTravelLine ? m_tpTravelLine->size() : 0;
 	u32							real_straight_line_index;
 	xr_vector<STravelParamsIndex>::const_iterator I = start_params.begin();
@@ -515,8 +529,8 @@ bool CDetailPathManager::init_build(
 		dest.direction.normalize		();
 
 	// filling velocity parameters
-	float								max_linear_velocity = -flt_max;
-	float								min_linear_velocity = flt_max;
+	f32								max_linear_velocity = -flt_max;
+	f32								min_linear_velocity = flt_max;
 	straight_line_index					= u32(-1);
 	straight_line_index_negative		= u32(-1);
 	m_start_params.clear				();
@@ -608,17 +622,20 @@ IC	CDetailPathManager::STravelPoint CDetailPathManager::compute_better_key_point
 )
 {
 	CDetailPathManager::STravelPoint		result = point1;
-	float						dist02 = point2.position.distance_to(point0.position);
-	float						dist12 = point2.position.distance_to(point1.position);
+	f32						dist02 = point2.position.distance_to(point0.position);
+	f32						dist12 = point2.position.distance_to(point1.position);
 	Fvector2					direction21 = Fvector2().sub(point1.position,point2.position);
 	Fvector2					direction20 = Fvector2().sub(point0.position,point2.position);
 	direction21.normalize		();
 	direction20.normalize		();
-	float						cos_alpha = direction21.dot(direction20);
+	f32						cos_alpha = direction21.dot(direction20);
 	clamp						(cos_alpha,-.99999f,.99999f);
 	direction20					= direction21;
 	direction20.mul				(-1.f);
-	float						a = 0.f, b = 1.f, c = 1.f, d = dist12 - dist02/cos_alpha*.5f;
+	f32						a = 0.0f;
+	f32						b = 1.0f;
+	f32						c = 1.0f;
+	f32						d = dist12 - dist02 / cos_alpha * 0.5f;
 	u32							vertex_id;
 
 	do {
@@ -673,8 +690,8 @@ IC	bool CDetailPathManager::better_key_point(
 	direction120.normalize	();
 	direction101.normalize	();
 	direction121.normalize	();
-	float					cos_alpha0 = direction100.dot(direction120);
-	float					cos_alpha1 = direction101.dot(direction121);
+	f32					cos_alpha0 = direction100.dot(direction120);
+	f32					cos_alpha1 = direction101.dot(direction121);
 	return					(cos_alpha0 < cos_alpha1);
 }
 

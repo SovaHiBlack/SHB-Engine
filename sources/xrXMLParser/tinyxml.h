@@ -1124,13 +1124,13 @@ public:
 	/// QueryDoubleAttribute examines the attribute - see QueryIntAttribute().
 	int QueryDoubleAttribute(pcstr name, double* _value) const;
 	/// QueryFloatAttribute examines the attribute - see QueryIntAttribute().
-	int QueryFloatAttribute(pcstr name, F32* _value) const
+	int QueryFloatAttribute(pcstr name, f32* _value) const
 	{
 		double d;
 		int result = QueryDoubleAttribute(name, &d);
 		if (result == TIXML_SUCCESS)
 		{
-			*_value = (F32)d;
+			*_value = (f32)d;
 		}
 		return result;
 	}

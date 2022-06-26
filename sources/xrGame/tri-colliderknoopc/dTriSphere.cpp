@@ -43,7 +43,7 @@ inline dReal dcTriListCollider::FragmentonSphereTest(const dReal* center, const 
 			-pt1[2]-direction[2]*from1_dist+center[2]
 	};
 
-	float mag=dSqrt(dDOT(line_to_center,line_to_center));
+	f32 mag=dSqrt(dDOT(line_to_center,line_to_center));
 	//dNormalize3(norm);
 
 
@@ -108,7 +108,7 @@ IC bool	dcTriListCollider:: PointSphereTest(const dReal* center, const dReal rad
 	norm[2]=center[2]-pt[2];
 	dReal smag=dDOT(norm,norm);
 	if(smag >radius*radius)return false;
-	float mag=dSqrt(smag);
+	f32 mag=dSqrt(smag);
 	depth=radius-mag;
 	if(mag>0.f)
 	{
@@ -138,7 +138,7 @@ int dcTriListCollider::dSortedTriSphere(const dReal*	/**v1/**/,const dReal*	/**v
 						 //const dReal* v1=(dReal*)T->verts[1];
 						 //const dReal* v2=(dReal*)T->verts[2];
 						 const dReal* SphereCenter=dGeomGetPosition(Sphere);
-						 const float SphereRadius = dGeomSphereGetRadius(Sphere);
+						 const f32 SphereRadius = dGeomSphereGetRadius(Sphere);
 
 
 
@@ -146,7 +146,7 @@ int dcTriListCollider::dSortedTriSphere(const dReal*	/**v1/**/,const dReal*	/**v
 						 const dReal *ContactNormal=triAx;//{triAx[0],triAx[1],triAx[2]};
 						 dVector3 ContactPos={SphereCenter[0]-triAx[0]* SphereRadius,SphereCenter[1]-triAx[1]* SphereRadius,SphereCenter[2]-triAx[2]* SphereRadius};
 
-						 float ContactDepth= -dist + SphereRadius;
+						 f32 ContactDepth= -dist + SphereRadius;
 						 if (ContactDepth >= 0){
 
 							 Contacts->normal[0] =-ContactNormal[0];
@@ -187,7 +187,7 @@ int dcTriListCollider::dTriSphere(const dReal* v0,const dReal* v1,const dReal* v
 
 
 	 const dReal radius=dGeomSphereGetRadius(Sphere);
-	 float Depth=-T->dist+radius;
+	 f32 Depth=-T->dist+radius;
 	 if(Depth<0.f)	return 0;
 	 const dReal* pos=dGeomGetPosition(Sphere);
 	 dVector3 ContactNormal;

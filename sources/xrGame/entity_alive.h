@@ -22,8 +22,8 @@ public:
 public:
 
 	bool					m_bMobility;
-	float					m_fAccuracy;
-	float					m_fIntelligence;
+	f32					m_fAccuracy;
+	f32					m_fIntelligence;
 	//m_PhysicMovementControl
 	//CPHMovementControl		*m_PhysicMovementControl;
 
@@ -51,25 +51,25 @@ public:
 	virtual	void			create_anim_mov_ctrl	( CBlend* b );
 	virtual	void			destroy_anim_mov_ctrl	( );
 
-	virtual void			HitImpulse				(float amount, Fvector& vWorldDir, Fvector& vLocalDir);
+	virtual void			HitImpulse				(f32 amount, Fvector& vWorldDir, Fvector& vLocalDir);
 	virtual	void			Hit						(SHit* pHDS);
 	virtual void			Die						(CObject* who);
 	virtual void			g_WeaponBones			(int &L, int &R1, int &R2)										= 0;
 	
-//	virtual float			GetfHealth				() const;
-//	virtual float			SetfHealth				(float value);
+//	virtual f32			GetfHealth				() const;
+//	virtual f32			SetfHealth				(f32 value);
 
-//	virtual float			g_Health				()	const;
-//	virtual float			g_MaxHealth				()	const;
+//	virtual f32			g_Health				()	const;
+//	virtual f32			g_MaxHealth				()	const;
 
-	virtual float			g_Radiation				()	const;
-	virtual	float			SetfRadiation			(float value);
+	virtual f32			g_Radiation				()	const;
+	virtual	f32			SetfRadiation			(f32 value);
 
-	virtual float			CalcCondition			(float hit);
+	virtual f32			CalcCondition			(f32 hit);
 
 	// Visibility related
-	virtual	float			ffGetFov				()	const			= 0;	
-	virtual	float			ffGetRange				()	const			= 0;	
+	virtual	f32			ffGetFov				()	const			= 0;
+	virtual	f32			ffGetRange				()	const			= 0;
 	
 	virtual bool			human_being				() const			{return	(false);}
 public:
@@ -89,7 +89,6 @@ protected:
 	DEFINE_VECTOR				(CWound*, WOUND_VECTOR, WOUND_VECTOR_IT);
 	WOUND_VECTOR				m_ParticleWounds;
 
-
 	virtual void				StartFireParticles(CWound* pWound);
 	virtual void				UpdateFireParticles();
 	virtual void				LoadFireParticles(pcstr section);
@@ -98,11 +97,11 @@ public:
 protected:
 	static STR_VECTOR*			m_pFireParticlesVector;
 	static u32					m_dwMinBurnTime;
-	static float				m_fStartBurnWoundSize;
-	static float				m_fStopBurnWoundSize;
+	static f32				m_fStartBurnWoundSize;
+	static f32				m_fStopBurnWoundSize;
 
 
-	virtual void				BloodyWallmarks			(float P, const Fvector &dir, s16 element, const Fvector& position_in_object_space);
+	virtual void				BloodyWallmarks			(f32 P, const Fvector &dir, s16 element, const Fvector& position_in_object_space);
 	static  void				LoadBloodyWallmarks		(pcstr section);
 public:	
 	static  void				UnloadBloodyWallmarks	();
@@ -110,15 +109,15 @@ public:
 	void						ClearBloodWounds		() {m_BloodWounds.clear();};
 protected:
 	virtual void				PlaceBloodWallmark		(const Fvector& dir, const Fvector& start_pos, 
-														float trace_dist, float wallmark_size,
+														 f32 trace_dist, f32 wallmark_size,
 														SHADER_VECTOR& wallmarks_vector);
 
 	//информация о кровавых отметках на стенах, общая для всех CEntityAlive
 	static SHADER_VECTOR*		m_pBloodMarksVector;
-	static float				m_fBloodMarkSizeMax;
-	static float				m_fBloodMarkSizeMin;
-	static float				m_fBloodMarkDistance;
-	static float				m_fNominalHit;
+	static f32				m_fBloodMarkSizeMax;
+	static f32				m_fBloodMarkSizeMin;
+	static f32				m_fBloodMarkDistance;
+	static f32				m_fNominalHit;
 
 	//текстурки капель крови
 	static SHADER_VECTOR*		m_pBloodDropsVector;
@@ -127,15 +126,14 @@ protected:
 	DEFINE_VECTOR				(CWound*, WOUND_VECTOR, WOUND_VECTOR_IT);
 	WOUND_VECTOR				m_BloodWounds;
 	//размер раны, чтоб начала капать кровь
-	static float				m_fStartBloodWoundSize;
+	static f32				m_fStartBloodWoundSize;
 	//размер раны, чтоб остановить кровь
-	static float				m_fStopBloodWoundSize;
-	static float				m_fBloodDropSize;
+	static f32				m_fStopBloodWoundSize;
+	static f32				m_fBloodDropSize;
 
 	//обновление ран, и рисование отметок от капающей крови
 	virtual void				StartBloodDrops			(CWound* pWound);
 	virtual void				UpdateBloodDrops		();
-
 
 	//отношения между существами и персонажами в зоне
 public:

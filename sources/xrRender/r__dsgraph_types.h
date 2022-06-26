@@ -67,12 +67,12 @@ namespace	R_dsgraph
 {
 	// Elementary types
 	struct _NormalItem	{
-		float				ssa;
+		f32				ssa;
 		IRender_Visual*		pVisual;
 	};
 
 	struct _MatrixItem	{
-		float				ssa;
+		f32				ssa;
 		IRenderable*		pObject;
 		IRender_Visual*		pVisual;
 		Fmatrix				Matrix;				// matrix (copy)
@@ -84,7 +84,7 @@ namespace	R_dsgraph
 	};
 
 	struct _LodItem		{
-		float				ssa;
+		f32				ssa;
 		IRender_Visual*		pVisual;
 	};
 
@@ -98,31 +98,31 @@ namespace	R_dsgraph
 
 	// NORMAL
 	typedef xr_vector<_NormalItem,render_allocator::helper<_NormalItem>::result>			mapNormalDirect;
-	struct	mapNormalItems		: public	mapNormalDirect										{	float	ssa;	};
-	struct	mapNormalTextures	: public	FixedMAP<STextureList*,mapNormalItems,render_allocator>				{	float	ssa;	};
-	struct	mapNormalStates		: public	FixedMAP<IDirect3DStateBlock9*,mapNormalTextures,render_allocator>	{	float	ssa;	};
-	struct	mapNormalCS			: public	FixedMAP<R_constant_table*,mapNormalStates,render_allocator>			{	float	ssa;	};
-	struct	mapNormalPS			: public	FixedMAP<ps_type, mapNormalCS,render_allocator>						{	float	ssa;	};
+	struct	mapNormalItems		: public	mapNormalDirect										{	f32	ssa;	};
+	struct	mapNormalTextures	: public	FixedMAP<STextureList*,mapNormalItems,render_allocator>				{  f32	ssa;	};
+	struct	mapNormalStates		: public	FixedMAP<IDirect3DStateBlock9*,mapNormalTextures,render_allocator>	{ f32	ssa;	};
+	struct	mapNormalCS			: public	FixedMAP<R_constant_table*,mapNormalStates,render_allocator>			{  f32	ssa;	};
+	struct	mapNormalPS			: public	FixedMAP<ps_type, mapNormalCS,render_allocator>						{  	f32	ssa;	};
 	struct	mapNormalVS			: public	FixedMAP<vs_type, mapNormalPS,render_allocator>						{	};
 	typedef mapNormalVS			mapNormal_T;
 
 	// MATRIX
 	typedef xr_vector<_MatrixItem,render_allocator::helper<_MatrixItem>::result>	mapMatrixDirect;
-	struct	mapMatrixItems		: public	mapMatrixDirect										{	float	ssa;	};
-	struct	mapMatrixTextures	: public	FixedMAP<STextureList*,mapMatrixItems,render_allocator>				{	float	ssa;	};
-	struct	mapMatrixStates		: public	FixedMAP<IDirect3DStateBlock9*,mapMatrixTextures,render_allocator>	{	float	ssa;	};
-	struct	mapMatrixCS			: public	FixedMAP<R_constant_table*,mapMatrixStates,render_allocator>			{	float	ssa;	};
-	struct	mapMatrixPS			: public	FixedMAP<ps_type, mapMatrixCS,render_allocator>						{	float	ssa;	};
+	struct	mapMatrixItems		: public	mapMatrixDirect										{ 	f32	ssa;	};
+	struct	mapMatrixTextures	: public	FixedMAP<STextureList*,mapMatrixItems,render_allocator>				{ 	f32	ssa;	};
+	struct	mapMatrixStates		: public	FixedMAP<IDirect3DStateBlock9*,mapMatrixTextures,render_allocator>	{	 f32	ssa;	};
+	struct	mapMatrixCS			: public	FixedMAP<R_constant_table*,mapMatrixStates,render_allocator>			{	f32	ssa;	};
+	struct	mapMatrixPS			: public	FixedMAP<ps_type, mapMatrixCS,render_allocator>						{	f32	ssa;	};
 	struct	mapMatrixVS			: public	FixedMAP<vs_type, mapMatrixPS,render_allocator>						{	};
 	typedef mapMatrixVS			mapMatrix_T;
 
 	// Top level
-	typedef FixedMAP<float,_MatrixItemS,render_allocator>			mapSorted_T;
+	typedef FixedMAP<f32,_MatrixItemS,render_allocator>			mapSorted_T;
 	typedef mapSorted_T::TNode						mapSorted_Node;
 
-	typedef FixedMAP<float,_MatrixItemS,render_allocator>			mapHUD_T;
+	typedef FixedMAP<f32,_MatrixItemS,render_allocator>			mapHUD_T;
 	typedef mapHUD_T::TNode							mapHUD_Node;
 
-	typedef FixedMAP<float,_LodItem,render_allocator>				mapLOD_T;
+	typedef FixedMAP<f32,_LodItem,render_allocator>				mapLOD_T;
 	typedef mapLOD_T::TNode							mapLOD_Node;
 };

@@ -66,18 +66,18 @@ public:
 
     Flags32				Flags;
     // physics part
-    float				fPHFriction;            // ?
-    float				fPHDamping;             // ?
-    float				fPHSpring;              // ?
-    float				fPHBounceStartVelocity;	// ?
-	float				fPHBouncing;            // ?
+	f32				fPHFriction;            // ?
+	f32				fPHDamping;             // ?
+	f32				fPHSpring;              // ?
+	f32				fPHBounceStartVelocity;	// ?
+	f32				fPHBouncing;            // ?
 	// shoot&bounce&visibility&flotation
-    float		    	fFlotationFactor;		// 0.f - 1.f   	(1.f-полностью проходимый)
-    float				fShootFactor;			// 0.f - 1.f	(1.f-полностью простреливаемый)
-    float				fBounceDamageFactor;	// 0.f - 100.f
-    float				fInjuriousSpeed; 		// 0.f - ...	(0.f-не отбирает здоровье (скорость уменьшения здоровья))
-    float				fVisTransparencyFactor;	// 0.f - 1.f	(1.f-полностью прозрачный)
-    float				fSndOcclusionFactor;	// 0.f - 1.f    (1.f-полностью слышен)
+	f32		    	fFlotationFactor;		// 0.f - 1.f   	(1.f-полностью проходимый)
+	f32				fShootFactor;			// 0.f - 1.f	(1.f-полностью простреливаемый)
+	f32				fBounceDamageFactor;	// 0.f - 100.f
+	f32				fInjuriousSpeed; 		// 0.f - ...	(0.f-не отбирает здоровье (скорость уменьшения здоровья))
+	f32				fVisTransparencyFactor;	// 0.f - 1.f	(1.f-полностью прозрачный)
+	f32				fSndOcclusionFactor;	// 0.f - 1.f    (1.f-полностью слышен)
 public:
 	SGameMtl			()
     {

@@ -220,32 +220,32 @@ int CXml::ReadInt(XML_NODE* start_node, pcstr path, int index, int default_int_v
 	return atoi(result_str);
 }
 
-F32   CXml::ReadFlt(pcstr path, int index, F32 default_flt_val)
+f32 CXml::ReadFlt(pcstr path, int index, f32 default_flt_val)
 {
 	pcstr result_str = Read(path, index, NULL);
 	if (result_str == NULL)
 		return				default_flt_val;
 
-	return (F32)atof(result_str);
+	return (f32)atof(result_str);
 }
 
-F32   CXml::ReadFlt(XML_NODE* start_node, pcstr path, int index, F32 default_flt_val)
+f32 CXml::ReadFlt(XML_NODE* start_node, pcstr path, int index, f32 default_flt_val)
 {
 	pcstr result_str = Read(start_node, path, index, NULL);
 	if (result_str == NULL)
 		return				default_flt_val;
 
-	return (F32)atof(result_str);
+	return (f32)atof(result_str);
 }
 
-F32   CXml::ReadFlt(XML_NODE* node, F32 default_flt_val)
+f32 CXml::ReadFlt(XML_NODE* node, f32 default_flt_val)
 {
 	pcstr result_str = Read(node, NULL);
 
 	if (result_str == NULL)
 		return				default_flt_val;
 
-	return (F32)atof(result_str);
+	return (f32)atof(result_str);
 }
 
 pcstr CXml::ReadAttrib(XML_NODE* start_node, pcstr path, int index,
@@ -328,37 +328,37 @@ int CXml::ReadAttribInt(XML_NODE* start_node, pcstr path, int index, pcstr attri
 	return atoi(result_str);
 }
 
-F32   CXml::ReadAttribFlt(pcstr path, int index, pcstr attrib, F32 default_flt_val)
+f32 CXml::ReadAttribFlt(pcstr path, int index, pcstr attrib, f32 default_flt_val)
 {
 	pcstr result_str = ReadAttrib(path, index, attrib, NULL);
 
 	if (result_str == NULL)
 		return				default_flt_val;
 
-	return (F32)atof(result_str);
+	return (f32)atof(result_str);
 }
 
-F32   CXml::ReadAttribFlt(XML_NODE* start_node, pcstr path, int index, pcstr attrib, F32 default_flt_val)
+f32 CXml::ReadAttribFlt(XML_NODE* start_node, pcstr path, int index, pcstr attrib, f32 default_flt_val)
 {
 	pcstr result_str = ReadAttrib(start_node, path, index, attrib, NULL);
 
 	if (result_str == NULL)
 		return				default_flt_val;
 
-	return (F32)atof(result_str);
+	return (f32)atof(result_str);
 }
 
-F32   CXml::ReadAttribFlt(XML_NODE* node, pcstr attrib, F32 default_flt_val)
+f32 CXml::ReadAttribFlt(XML_NODE* node, pcstr attrib, f32 default_flt_val)
 {
 	pcstr result_str = ReadAttrib(node, attrib, NULL);
 
 	if (result_str == NULL)
 		return				default_flt_val;
 
-	return (F32)atof(result_str);
+	return (f32)atof(result_str);
 }
 
-int CXml::GetNodesNum(pcstr path, int index, pcstr  tag_name)
+int CXml::GetNodesNum(pcstr path, int index, pcstr tag_name)
 {
 	XML_NODE* node = NULL;
 

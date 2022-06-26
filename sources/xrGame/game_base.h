@@ -47,9 +47,9 @@ struct	game_PlayerState
 	s16			m_iDeaths;
 	s32			money_for_round;	
 
-	float		experience_Real;
-	float		experience_New;
-	float		experience_D;
+	f32			experience_Real;
+	f32			experience_New;
+	f32			experience_D;
 	u8			rank;
 	u8			af_count;
 	u16			flags__;
@@ -162,24 +162,23 @@ private:
 	// scripts
 	u64								m_qwStartProcessorTime;
 	u64								m_qwStartGameTime;
-	float							m_fTimeFactor;
+	f32							m_fTimeFactor;
 	//-------------------------------------------------------
 	u64								m_qwEStartProcessorTime;
 	u64								m_qwEStartGameTime;
-	float							m_fETimeFactor;
+	f32							m_fETimeFactor;
 	//-------------------------------------------------------
 public:
 
 	virtual		ALife::_TIME_ID		GetGameTime				();	
-	virtual		float				GetGameTimeFactor		();	
-				void				SetGameTimeFactor		(ALife::_TIME_ID GameTime, const float fTimeFactor);
-	virtual		void				SetGameTimeFactor		(const float fTimeFactor);
-	
+	virtual		f32				GetGameTimeFactor		();
+				void				SetGameTimeFactor		(ALife::_TIME_ID GameTime, const f32 fTimeFactor);
+	virtual		void				SetGameTimeFactor		(const f32 fTimeFactor);	
 
 	virtual		ALife::_TIME_ID		GetEnvironmentGameTime	();
-	virtual		float				GetEnvironmentGameTimeFactor		();
-				void				SetEnvironmentGameTimeFactor		(ALife::_TIME_ID GameTime, const float fTimeFactor);
-	virtual		void				SetEnvironmentGameTimeFactor		(const float fTimeFactor);
+	virtual		f32				GetEnvironmentGameTimeFactor		();
+				void				SetEnvironmentGameTimeFactor		(ALife::_TIME_ID GameTime, const f32 fTimeFactor);
+	virtual		void				SetEnvironmentGameTimeFactor		(const f32 fTimeFactor);
 
 	DECLARE_SCRIPT_REGISTER_FUNCTION
 };

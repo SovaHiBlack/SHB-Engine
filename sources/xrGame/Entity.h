@@ -30,9 +30,9 @@ protected:
 	virtual	CEntityConditionSimple	*create_entity_condition	(CEntityConditionSimple* ec);
 
 public:
-	/*virtual*/IC float			GetfHealth			() const			{ return m_entity_condition->GetHealth(); }
-	/*virtual*/IC float			SetfHealth			(float value)		{m_entity_condition->health()=value; return value;}
-	float						m_fMorale;
+	/*virtual*/IC f32			GetfHealth			() const			{ return m_entity_condition->GetHealth(); }
+	/*virtual*/IC f32			SetfHealth			(f32 value)		{m_entity_condition->health()=value; return value;}
+	f32						m_fMorale;
 	// Team params
 	int							id_Team;
 	int							id_Squad;
@@ -46,11 +46,11 @@ public:
 		u32		bCrouch	:1;
 		u32		bFall	:1;
 		u32		bSprint	:1;
-		float	fVelocity;
-		float	fAVelocity;
+		f32	fVelocity;
+		f32	fAVelocity;
 	};
 	
-	float					m_fFood;
+	f32					m_fFood;
 
 	// General
 	CEntity					();
@@ -71,9 +71,9 @@ public:
 	bool					IsFocused			()const;
 	bool					IsMyCamera			()const;
 
-//	virtual float			g_Health			()const	{ return GetfHealth();}
-/*	virtual*/ IC float			GetMaxHealth		()const	{ return m_entity_condition->max_health();	}
-/*	virtual*/ IC void			SetMaxHealth		(float v)	{ m_entity_condition->max_health()=v;}
+//	virtual f32			g_Health			()const	{ return GetfHealth();}
+/*	virtual*/ IC f32			GetMaxHealth		()const	{ return m_entity_condition->max_health();	}
+/*	virtual*/ IC void			SetMaxHealth		(f32 v)	{ m_entity_condition->max_health()=v;}
 
 	/*virtual*/ IC BOOL		g_Alive				()const	{ return GetfHealth()>0; }
 	virtual BOOL			g_State				(SEntityState&) const	{return FALSE;}
@@ -82,7 +82,7 @@ public:
 			ALife::_TIME_ID	GetGameDeathTime	()const		{return m_game_death_time;}
 			u32				GetLevelDeathTime	()const		{return m_level_death_time;}
 	
-	virtual float			CalcCondition		(float hit);
+	virtual f32				CalcCondition		(f32 hit);
 
 	int						g_Team				()const	{ return id_Team;	}
 	int						g_Squad				()const	{ return id_Squad;	}
@@ -90,8 +90,8 @@ public:
 
 	// Health calculations
 	virtual	void			Hit					(SHit* pHDS);
-	virtual void			HitSignal			(float P, Fvector &local_dir,	CObject* who, s16 element)		= 0;
-	virtual void			HitImpulse			(float P, Fvector &vWorldDir, 	Fvector& vLocalDir)	= 0;
+	virtual void			HitSignal			(f32 P, Fvector &local_dir,	CObject* who, s16 element)		= 0;
+	virtual void			HitImpulse			(f32 P, Fvector &vWorldDir, 	Fvector& vLocalDir)	= 0;
 
 	virtual void			Die					(CObject* who);
 //			void			KillEntity			(CObject* who);

@@ -39,7 +39,7 @@ public:
 
 	virtual void				UpdateCL				()											;
 	virtual void				renderable_Render		()											; 
-	virtual void				ChangeCondition			(float fDeltaCondition)						{CInventoryItem::ChangeCondition(fDeltaCondition);};
+	virtual void				ChangeCondition			(f32 fDeltaCondition)						{CInventoryItem::ChangeCondition(fDeltaCondition);};
 	virtual void				StartTimerEffects		()											;
 
 };

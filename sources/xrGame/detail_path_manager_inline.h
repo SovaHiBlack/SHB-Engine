@@ -95,8 +95,8 @@ IC	void CDetailPathManager::set_path_type				(const EDetailPathType path_type)
 
 IC	void CDetailPathManager::adjust_point(
 	const Fvector2		&source, 
-	float				yaw, 
-	float				magnitude, 
+	f32				yaw,
+	f32				magnitude,
 	Fvector2			&dest
 ) const
 {
@@ -106,9 +106,9 @@ IC	void CDetailPathManager::adjust_point(
 }
 
 IC	void CDetailPathManager::assign_angle(
-	float					&angle, 
-	const float				start_yaw, 
-	const float				dest_yaw, 
+	f32&					angle,
+	const f32				start_yaw,
+	const f32				dest_yaw,
 	const bool				positive,
 	const EDirectionType	direction_type,
 	const bool				start
@@ -226,13 +226,13 @@ IC	void CDetailPathManager::add_velocity				(const u32 &velocity_id, const STrav
 	m_movement_params.insert(std::make_pair(velocity_id,params));
 }
 
-IC	void CDetailPathManager::extrapolate_length			(float extrapolate_length)
+IC	void CDetailPathManager::extrapolate_length			(f32 extrapolate_length)
 {
 	m_actuality				= m_actuality && (fsimilar(m_extrapolate_length,extrapolate_length));
 	m_extrapolate_length	= extrapolate_length;
 }
 
-IC	float CDetailPathManager::extrapolate_length		() const
+IC	f32 CDetailPathManager::extrapolate_length		() const
 {
 	return					(m_extrapolate_length);
 }
@@ -242,7 +242,7 @@ IC	const CDetailPathManager::VELOCITIES &CDetailPathManager::velocities	() const
 	return					(m_movement_params);
 }
 
-IC	const float &CDetailPathManager::distance_to_target	()
+IC	const f32& CDetailPathManager::distance_to_target	()
 {
 	if (m_distance_to_target_actual)
 		return					(m_distance_to_target);

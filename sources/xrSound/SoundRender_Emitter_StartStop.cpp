@@ -4,7 +4,7 @@
 #include "SoundRender_Emitter.h"
 #include "SoundRender_Source.h"
 
-void CSoundRender_Emitter::start(ref_sound* _owner, BOOL _loop, F32 delay)
+void CSoundRender_Emitter::start(ref_sound* _owner, BOOL _loop, f32 delay)
 {
 	starting_delay			= delay;
 

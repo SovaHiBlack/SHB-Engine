@@ -2,9 +2,9 @@
 
 struct	SOneDDOParams
 {
-	void				Mul					(float v)	;
-	float				velocity						;
-	float				acceleration					;
+	void				Mul					(f32 v)	;
+	f32				velocity						;
+	f32				acceleration					;
 };
 
 struct	SAllDDOParams
@@ -19,7 +19,7 @@ struct	SAllDDOParams
 struct SAllDDWParams
 {
 	SAllDDOParams		objects_params					;
-	float				reanable_factor					;
+	f32				reanable_factor					;
 };
 
 extern SAllDDWParams	worldDisablingParams			;

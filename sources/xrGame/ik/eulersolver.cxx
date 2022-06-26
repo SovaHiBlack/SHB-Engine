@@ -33,12 +33,12 @@
 #include "eulersolver.h"
 
 
-typedef void (*euler_solver)(const Matrix G, float &t1, float &t2, float &t3, int family);
+typedef void (*euler_solver)(const Matrix G, f32& t1, f32& t2, f32& t3, int family);
 
-void euler_ZXY(const Matrix G, float &t1, float &t2, float &t3, int family);
-void euler_YXZ(const Matrix G, float &t1, float &t2, float &t3, int family);
-void euler_Yxz(const Matrix G, float &t1, float &t2, float &t3, int family);
-void euler_zxY(const Matrix G, float &t1, float &t2, float &t3, int family);
+void euler_ZXY(const Matrix G, f32& t1, f32& t2, f32& t3, int family);
+void euler_YXZ(const Matrix G, f32& t1, f32& t2, f32& t3, int family);
+void euler_Yxz(const Matrix G, f32& t1, f32& t2, f32& t3, int family);
+void euler_zxY(const Matrix G, f32& t1, f32& t2, f32& t3, int family);
 
 //
 // Encodes a location in a matrix and the sign of this term
@@ -118,11 +118,13 @@ struct EulerTableEntry
 
 void euler_extract(const EulerTableEntry &E, 
 		   const Matrix R, 
-		   float vals[3],
+				   f32 vals[3],
 		   int family)
 {
-    float *t[3];
-    float v, x[2], y[2]; 
+	f32* t[3];
+	f32 v;
+	f32 x[2];
+	f32 y[2];
     matrix_entry *p, *q;
 
     t[0] = vals + E.simple_jt;
@@ -174,11 +176,14 @@ void euler_extract(const EulerTableEntry &E,
 //
 void euler_extract2(const EulerTableEntry &E, 
 		    const Matrix R, 
-		    float f1[3],
-		    float f2[3])
+					f32 f1[3],
+					f32 f2[3])
 {
-    float *t1[3], *t2[3];
-    float v, x[2], y[2]; 
+	f32* t1[3];
+	f32* t2[3];
+	f32 v;
+	f32 x[2];
+	f32 y[2];
     matrix_entry *p, *q;
 
     t1[0] = f1 + E.simple_jt;
@@ -233,25 +238,25 @@ inline EulerTableEntry *euler_entry(int euler_type)
 //
 // Given a rotation matrix and a family to choose from find the euler angles
 //
-void EulerSolve(int euler_type, const Matrix R, float t[3], int family) 
+void EulerSolve(int euler_type, const Matrix R, f32 t[3], int family)
 {
     EulerTableEntry *e = euler_entry(euler_type);
     euler_extract(*e, R, t, family);
 }
 
-void EulerSolve2(int euler_type, const Matrix R, float f1[3], float f2[3])
+void EulerSolve2(int euler_type, const Matrix R, f32 f1[3], f32 f2[3])
 {
     EulerTableEntry *e = euler_entry(euler_type);
     euler_extract2(*e, R, f1, f2);
 }
 
-void EulerEval(int euler_type, const float t[3], Matrix R)
+void EulerEval(int euler_type, const f32 t[3], Matrix R)
 {
-    float X[] = {1,0,0};
-    float Y[] = {0,1,0};
-    float Z[] = {0,0,1};
+	f32 X[] = {1,0,0};
+	f32 Y[] = {0,1,0};
+	f32 Z[] = {0,0,1};
 
-    float *a[3];
+	f32* a[3];
     int s[3];
 
     switch(euler_type)
@@ -293,9 +298,9 @@ inline void get_psi_parameters(const Matrix c,
 			       const Matrix s,
 			       const Matrix o,
 			       const matrix_entry &m,
-			       float &alpha,
-			       float &beta,
-			       float &gamma)
+							   f32& alpha,
+							   f32& beta,
+							   f32& gamma)
 {
     if (m.sign == 1)
     {
@@ -319,8 +324,8 @@ EulerPsiSolver::EulerPsiSolver(int etype,
 			 const Matrix c, 
 			 const Matrix s, 
 			 const Matrix o,
-			 const float low[3],
-			 const float high[3]) : euler_type(etype)
+			 const f32 low[3],
+			 const f32 high[3]) : euler_type(etype)
 {
     EulerTableEntry *e = euler_entry(euler_type);
 
@@ -329,7 +334,15 @@ EulerPsiSolver::EulerPsiSolver(int etype,
     index[1] =(short)  e->complex_jt1;
     index[2] = (short) e->complex_jt2;
 
-    float a0, b0, c0, a1, b1, c1, a2, b2, c2;
+	f32 a0;
+	f32 b0;
+	f32 c0;
+	f32 a1;
+	f32 b1;
+	f32 c1;
+	f32 a2;
+	f32 b2;
+	f32 c2;
 
     get_psi_parameters(c, s, o, e->simple_jt_index, a0, b0, c0);
     j0.init(e->simple_jt_type, a0, b0, c0, 
@@ -349,7 +362,7 @@ EulerPsiSolver::EulerPsiSolver(int etype,
 }
 
 
-int EulerPsiSolver::Singularities(float psi[2]) const
+int EulerPsiSolver::Singularities(f32 psi[2]) const
 {
     for (int i = 0; i < num_singular; i++)
 	psi[i] = singular[i];
@@ -368,16 +381,16 @@ void EulerPsiSolver::SolvePsiRanges(AngleIntList psi1[3],
     EulerTableEntry *e = euler_entry(euler_type);
 
     j0.PsiLimits(psi1[e->simple_jt],   psi2[e->simple_jt]);
-    j1.PsiLimits(num_singular, (float *) singular, 
+    j1.PsiLimits(num_singular, (f32*) singular,
 		 psi1[e->complex_jt1], psi2[e->complex_jt1]); 
-    j2.PsiLimits(num_singular, (float *) singular, 
+    j2.PsiLimits(num_singular, (f32*) singular,
 		 psi1[e->complex_jt2], psi2[e->complex_jt2]); 
 }
 
 //
 // Given a rotation matrix and a family to choose from find the euler angles
 //
-void EulerPsiSolver::Solve(const Matrix R, float t[3], int family) const
+void EulerPsiSolver::Solve(const Matrix R, f32 t[3], int family) const
 {
     EulerTableEntry *e = euler_entry(euler_type);
 
@@ -390,7 +403,7 @@ void EulerPsiSolver::Solve(const Matrix R, float t[3], int family) const
 // Given a value of psi and a family to choose from find the euler angles
 //
 
-void EulerPsiSolver::Solve(float psi, float t[3], int family) const
+void EulerPsiSolver::Solve(f32 psi, f32 t[3], int family) const
 {
     t[ index[0] ] = j0.theta(family, psi);
     t[ index[1] ] = j1.theta(family, psi);
@@ -401,7 +414,7 @@ void EulerPsiSolver::Solve(float psi, float t[3], int family) const
 //
 // Same as Solve except return both families in f1 and f2
 //
-void EulerPsiSolver::Solve2(const Matrix R, float f1[3], float f2[3]) const
+void EulerPsiSolver::Solve2(const Matrix R, f32 f1[3], f32 f2[3]) const
 {
     EulerTableEntry *e = euler_entry(euler_type);
     euler_extract2(*e, R, f1, f2);
@@ -412,7 +425,7 @@ void EulerPsiSolver::Solve2(const Matrix R, float f1[3], float f2[3]) const
 // Find the derivatives of the euler angles wrt to psi
 //
 
-void EulerPsiSolver::Derivatives(float psi, float t[3], int family) const
+void EulerPsiSolver::Derivatives(f32 psi, f32 t[3], int family) const
 {
     t[ index[0] ] = j0.theta_d(family, psi);
     t[ index[1] ] = j1.theta_d(family, psi);

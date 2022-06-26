@@ -28,13 +28,13 @@ public:
 			bool			Empty						()	const				{return m_iPortionsNum==0;};
 protected:	
 	//влияние при поедании вещи на параметры игрока
-	float					m_fHealthInfluence;
-	float					m_fPowerInfluence;
-	float					m_fSatietyInfluence;
-	float					m_fRadiationInfluence;
-	float					m_fMaxPowerUpInfluence;
+	f32					m_fHealthInfluence;
+	f32					m_fPowerInfluence;
+	f32					m_fSatietyInfluence;
+	f32					m_fRadiationInfluence;
+	f32					m_fMaxPowerUpInfluence;
 	//заживление ран на кол-во процентов
-	float					m_fWoundsHealPerc;
+	f32					m_fWoundsHealPerc;
 
 	//количество порций еды, 
 	//-1 - порция одна и больше не бывает (чтоб не выводить надпись в меню)

@@ -4,23 +4,25 @@
 #include "..\XR_3DA\cl_intersect.h"
 
 //--------------------------------------------------- Decompression
-IC F32	Interpolate			(F32* base,		u32 x, u32 y, u32 size)
+IC f32	Interpolate			(f32* base,		u32 x, u32 y, u32 size)
 {
-	F32	f	= F32(size);
-	F32	fx	= F32(x)/f; F32 ifx = 1.f-fx;
-	F32	fy	= F32(y)/f; F32 ify = 1.f-fy;
+	f32	f	= f32(size);
+	f32	fx	= f32(x)/f;
+	f32 ifx = 1.f-fx;
+	f32	fy	= f32(y)/f;
+	f32 ify = 1.f-fy;
 
-	F32	c01	= base[0]*ifx + base[1]*fx;
-	F32	c23	= base[2]*ifx + base[3]*fx;
-	F32	c02	= base[0]*ify + base[2]*fy;
-	F32	c13	= base[1]*ify + base[3]*fy;
+	f32	c01	= base[0]*ifx + base[1]*fx;
+	f32	c23	= base[2]*ifx + base[3]*fx;
+	f32	c02	= base[0]*ify + base[2]*fy;
+	f32	c13	= base[1]*ify + base[3]*fy;
 
-	F32	cx	= ify*c01 + fy*c23;
-	F32	cy	= ifx*c02 + fx*c13;
+	f32	cx	= ify*c01 + fy*c23;
+	f32	cy	= ifx*c02 + fx*c13;
 	return	(cx+cy)/2;
 }
 
-IC bool		InterpolateAndDither(F32* alpha255,	u32 x, u32 y, u32 sx, u32 sy, u32 size, int dither[16][16] )
+IC bool		InterpolateAndDither(f32* alpha255,	u32 x, u32 y, u32 sx, u32 sy, u32 size, int dither[16][16] )
 {
 	clamp 	(x,(u32)0,size-1);
 	clamp 	(y,(u32)0,size-1);
@@ -54,18 +56,18 @@ void		CDetailManager::cache_Decompress(Slot* S)
 	if (0==triCount)	return;
 
 	// Build shading table
-	F32		alpha255	[dm_obj_in_slot][4];
+	f32		alpha255	[dm_obj_in_slot][4];
 	for (int i=0; i<dm_obj_in_slot; i++)
 	{
-		alpha255[i][0]	= 255.f* F32(DS.palette[i].a0)/15.f;
-		alpha255[i][1]	= 255.f* F32(DS.palette[i].a1)/15.f;
-		alpha255[i][2]	= 255.f* F32(DS.palette[i].a2)/15.f;
-		alpha255[i][3]	= 255.f* F32(DS.palette[i].a3)/15.f;
+		alpha255[i][0]	= 255.f* f32(DS.palette[i].a0)/15.f;
+		alpha255[i][1]	= 255.f* f32(DS.palette[i].a1)/15.f;
+		alpha255[i][2]	= 255.f* f32(DS.palette[i].a2)/15.f;
+		alpha255[i][3]	= 255.f* f32(DS.palette[i].a3)/15.f;
 	}
 
 	// Prepare to selection
-	F32		density		= ps_r__Detail_density;
-	F32		jitter		= density/1.7f;
+	f32		density		= ps_r__Detail_density;
+	f32		jitter		= density/1.7f;
 	u32			d_size		= iCeil	(dm_slot_size/density);
 	svector<int,dm_obj_in_slot>		selected;
 
@@ -106,18 +108,18 @@ void		CDetailManager::cache_Decompress(Slot* S)
 			SlotItem&	Item	= *ItemP;
 
 			// Position (XZ)
-			F32		rx = (F32(x)/ F32(d_size))*dm_slot_size + D.vis.box.min.x;
-			F32		rz = (F32(z)/ F32(d_size))*dm_slot_size + D.vis.box.min.z;
+			f32		rx = (f32(x)/ f32(d_size))*dm_slot_size + D.vis.box.min.x;
+			f32		rz = (f32(z)/ f32(d_size))*dm_slot_size + D.vis.box.min.z;
 			Fvector		Item_P;
 			Item_P.set	(rx + r_jitter.randFs(jitter), D.vis.box.max.y, rz + r_jitter.randFs(jitter));
 
 			// Position (Y)
-			F32 y		= D.vis.box.min.y-5;
+			f32 y		= D.vis.box.min.y-5;
 			Fvector	dir; dir.set(0,-1,0);
 
-			F32		r_u;
-			F32 r_v;
-			F32 r_range;
+			f32		r_u;
+			f32 r_v;
+			f32 r_range;
 			for (u32 tid=0; tid<triCount; tid++)
 			{
 				CDB::TRI&	T		= tris[xrc.r_begin()[tid].id];
@@ -125,7 +127,7 @@ void		CDetailManager::cache_Decompress(Slot* S)
 				if (CDB::TestRayTri(Item_P,dir,Tv,r_u,r_v,r_range,TRUE))
 				{
 					if (r_range>=0)	{
-						F32 y_test	= Item_P.y - r_range;
+						f32 y_test	= Item_P.y - r_range;
 						if (y_test>y)	y = y_test;
 					}
 				}
@@ -149,13 +151,13 @@ void		CDetailManager::cache_Decompress(Slot* S)
 			// Color
 			/*
 			DetailPalette*	c_pal			= (DetailPalette*)&DS.color;
-			F32 gray255	[4];
-			gray255[0]						=	255.f*F32(c_pal->a0)/15.f;
-			gray255[1]						=	255.f*F32(c_pal->a1)/15.f;
-			gray255[2]						=	255.f*F32(c_pal->a2)/15.f;
-			gray255[3]						=	255.f*F32(c_pal->a3)/15.f;
+			f32 gray255	[4];
+			gray255[0]						=	255.f*f32(c_pal->a0)/15.f;
+			gray255[1]						=	255.f*f32(c_pal->a1)/15.f;
+			gray255[2]						=	255.f*f32(c_pal->a2)/15.f;
+			gray255[3]						=	255.f*f32(c_pal->a3)/15.f;
 			*/
-			//F32 c_f						=	1.f;	//Interpolate		(gray255,x,z,d_size)+.5f;
+			//f32 c_f						=	1.f;	//Interpolate		(gray255,x,z,d_size)+.5f;
 			//int c_dw						=	255;	//iFloor			(c_f);
 			//clamp							(c_dw,0,255);
 			//Item.C_dw						=	color_rgba		(c_dw,c_dw,c_dw,255);

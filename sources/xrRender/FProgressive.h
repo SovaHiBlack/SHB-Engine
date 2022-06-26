@@ -15,7 +15,7 @@ protected:
 public:
     					FProgressive();
 	virtual 			~FProgressive();
-	virtual void 		Render		(F32 LOD);		// LOD - Level Of Detail  [0.0f - min, 1.0f - max], -1 = Ignored
+	virtual void 		Render		(f32 LOD);		// LOD - Level Of Detail  [0.0f - min, 1.0f - max], -1 = Ignored
 	virtual void 		Load		(pcstr N, IReader *data,u32 dwFlags);
 	virtual void 		Copy		(IRender_Visual *pFrom);
 	virtual void 		Release		();

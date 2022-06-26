@@ -65,36 +65,36 @@ private:
     //
     // Stores equation of circle for a given problem
     //
-    float u[3];
-    float v[3];
-    float n[3];
-    float c[3];
-    float radius;
+	f32 u[3];
+	f32 v[3];
+	f32 n[3];
+	f32 c[3];
+	f32 radius;
 
     //
     // Stores projection axis for determining u and the positive 
     // direction axis for determining positive direction of angle
-    float proj_axis[3];
-    float pos_axis[3];
+	f32 proj_axis[3];
+	f32 pos_axis[3];
     
     //
     // Stores end effector position in world frame and R1 frame
     //
-    float ee[3]; 
-    float ee_r1[3];
+	f32 ee[3];
+	f32 ee_r1[3];
     //
     // Stores position of middle revolute joint in R1 frame
     // 
-    float p_r1[3]; 
+	f32 p_r1[3];
 
     //
     // Stores angle of R joint
     //
-    float upper_len;   // Len of T pos vector
-    float lower_len;   // Len of S pos vector
-    float reciprocal_upper_len; 
+	f32 upper_len;   // Len of T pos vector
+	f32 lower_len;   // Len of S pos vector
+	f32 reciprocal_upper_len;
 
-    float r_angle;
+	f32 r_angle;
 
     // 
     // Stores goal transformation
@@ -111,9 +111,9 @@ private:
     // Ry = Rotation matrix by flexion joint (only used by aiming routines)
     // axis = axis of aiming vector in hand coordinates
     Matrix Ry;
-    float axis[3];
+	f32 axis[3];
 
-    void evaluate_circle(float angle, float p[3]);
+    void evaluate_circle(f32 angle, f32 p[3]);
 
 public:
     void ProjectOn() 
@@ -127,24 +127,24 @@ public:
     // swivel angle. Must call SetGoal or SetGoalPos first.
     // 
 
-    float PosToAngle(const float p[3]);
+	f32 PosToAngle(const f32 p[3]);
 
     //
     // Given the swivel angle calculate the pos of the R joint. 
     // Must call SetGoal or SetGoalPos first.
     // 
-    void AngleToPos(float psi, float p[3]);
+    void AngleToPos(f32 psi, f32 p[3]);
 
     // Sets the goal matrix, the projection axis, and the 
     // positive direction axis
     // Returns 1 if the goal is feasible
-    int  SetGoal(const Matrix  G, float &rangle);
-	void EvaluateCircle(const float p[3]);
+    int  SetGoal(const Matrix  G, f32& rangle);
+	void EvaluateCircle(const f32 p[3]);
     // Solve for both R1 and R2 given the pos or angle of the R joint
     // returns the angle of the R joint 
 
-    void SolveR1R2(const float pos[3], Matrix  R1, Matrix  R2);
-    void SolveR1R2(float angle, Matrix  R1, Matrix  R2);
+    void SolveR1R2(const f32 pos[3], Matrix  R1, Matrix  R2);
+    void SolveR1R2(f32 angle, Matrix  R1, Matrix  R2);
 
 
     // Must call SetGoal first 
@@ -174,17 +174,17 @@ public:
     //
     // g = [0,0,0,1]*EE*S*Ry*T*R1 
 
-    int  SetGoalPos(const float g[3], const Matrix  EE, float &rangle);
+    int  SetGoalPos(const f32 g[3], const Matrix  EE, f32& rangle);
 
     // Solves only for R1 after a call to SetGoalPos
-    void SolveR1(const float pos[3],  Matrix  R1);
-    void SolveR1(float angle,  Matrix  R);
+    void SolveR1(const f32 pos[3],  Matrix  R1);
+    void SolveR1(f32 angle,  Matrix  R);
 
 
     // Constructor takes the T and S matrices
-    void init(const Matrix  T, const Matrix  S, const float a[3], const float p[3]);
+    void init(const Matrix  T, const Matrix  S, const f32 a[3], const f32 p[3]);
 
-    SRS(const Matrix  T1, const Matrix  S1, const float a[3], const float p[3]) 
+    SRS(const Matrix  T1, const Matrix  S1, const f32 a[3], const f32 p[3])
     { 
         init(T1,S1,a,p); 
     }
@@ -217,11 +217,11 @@ public:
     // axis is the pointing axis in the hand frame
     // flex_angle is the amount of flexion in the elbow 
 /*
-    void SRS::SetAimGoal(const float goal[3],
+    void SRS::SetAimGoal(const f32 goal[3],
 */
-    void SetAimGoal(const float goal[3],
-		     const float axis[3],
-		     float flex_angle);
+    void SetAimGoal(const f32 goal[3],
+		     const f32 axis[3],
+					f32 flex_angle);
 
 
     //
@@ -229,9 +229,9 @@ public:
     // (Must call SetAimGoal first)
     //
 /*
-    void SRS::SolveAim(float psi_angle, Matrix  R1);
+    void SRS::SolveAim(f32 psi_angle, Matrix  R1);
 */
-    void SolveAim(float psi_angle, Matrix  R1);
+    void SolveAim(f32 psi_angle, Matrix  R1);
 }; 
 
 #endif

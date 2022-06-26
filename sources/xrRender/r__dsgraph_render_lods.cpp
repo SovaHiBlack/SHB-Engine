@@ -4,10 +4,10 @@
 #include "..\XR_3DA\igame_persistent.h"
 #include "..\XR_3DA\environment.h"
 
-extern float	r_ssaLOD_A;
-extern float	r_ssaLOD_B;
+extern f32	r_ssaLOD_A;
+extern f32	r_ssaLOD_B;
 
-ICF		bool	pred_dot		(const std::pair<float,u32>& _1, const std::pair<float,u32>& _2)	{ return _1.first < _2.first; }
+ICF		bool	pred_dot		(const std::pair<f32,u32>& _1, const std::pair<f32,u32>& _2)	{ return _1.first < _2.first; }
 void R_dsgraph_structure::r_dsgraph_render_lods	(bool _setup_zb, bool _clear)
 {
 	if (_setup_zb)	mapLOD.getLR	(lstLODs)	;	// front-to-back
@@ -24,7 +24,7 @@ void R_dsgraph_structure::r_dsgraph_render_lods	(bool _setup_zb, bool _clear)
 	int							cur_count	= 0;
 	u32							vOffset		;
 	FLOD::_hw*					V			= (FLOD::_hw*)RCache.Vertex.Lock	(lstLODs.size()*4,firstV->geom->vb_stride, vOffset);
-	float	ssaRange						= r_ssaLOD_A - r_ssaLOD_B;
+	f32	ssaRange						= r_ssaLOD_A - r_ssaLOD_B;
 	if		(ssaRange< EPSILON_7)	ssaRange	= EPSILON_7;
 	for (u32 i=0; i<lstLODs.size(); i++)
 	{
@@ -38,8 +38,8 @@ void R_dsgraph_structure::r_dsgraph_render_lods	(bool _setup_zb, bool _clear)
 		}
 
 		// calculate alpha
-		float	ssaDiff					= P.ssa - r_ssaLOD_B;
-		float	scale					= ssaDiff/ssaRange	;
+		f32	ssaDiff					= P.ssa - r_ssaLOD_B;
+		f32	scale					= ssaDiff/ssaRange	;
 		int		iA						= iFloor	((1-scale)*255.f);	
 		u32		uA						= u32		(clampr(iA,0,255));
 
@@ -51,19 +51,21 @@ void R_dsgraph_structure::r_dsgraph_render_lods	(bool _setup_zb, bool _clear)
 
 		// gen geometry
 		FLOD::_face*					facets		= lodV->facets;
-		svector<std::pair<float,u32>,8>	selector	;
+		svector<std::pair<f32,u32>,8>	selector	;
 		for (u32 s=0; s<8; s++)			selector.push_back	(mk_pair(Ldir.dotproduct(facets[s].N),s));
 		std::sort						(selector.begin(),selector.end(),pred_dot);
 
-		float							dot_best	= selector	[selector.size()-1].first	;
-		float							dot_next	= selector	[selector.size()-2].first	;
-		float							dot_next_2	= selector	[selector.size()-3].first	;
+		f32							dot_best	= selector	[selector.size()-1].first	;
+		f32							dot_next	= selector	[selector.size()-2].first	;
+		f32							dot_next_2	= selector	[selector.size()-3].first	;
 		u32								id_best		= selector	[selector.size()-1].second	;
 		u32								id_next		= selector	[selector.size()-2].second	;
 
 		// Now we have two "best" planes, calculate factor, and approx normal
-		float	fA = dot_best, fB = dot_next, fC = dot_next_2;
-		float	alpha	=	0.5f + 0.5f*(1-(fB-fC)/(fA-fC))	;
+		f32	fA = dot_best;
+		f32 fB = dot_next;
+		f32 fC = dot_next_2;
+		f32	alpha	=	0.5f + 0.5f*(1-(fB-fC)/(fA-fC))	;
 		int		iF		=	iFloor		(alpha*255.5f)		;
 		u32		uF 		=	u32			(clampr	(iF,0,255))	;
 

@@ -43,7 +43,7 @@ void CEffectorBobbing::SetState(u32 mstate, bool limping, bool ZoomMode){
 }
 
 
-BOOL CEffectorBobbing::Process		(Fvector &p, Fvector &d, Fvector &n, float& /**fFov/**/, float& /**fFar/**/, float& /**fAspect/**/)
+BOOL CEffectorBobbing::Process		(Fvector &p, Fvector &d, Fvector &n, f32& /**fFov/**/, f32& /**fFar/**/, f32& /**fAspect/**/)
 {
 	fTime			+= Device.fTimeDelta;
 	if (dwMState&ACTOR_DEFS::mcAnyMove){
@@ -63,9 +63,10 @@ BOOL CEffectorBobbing::Process		(Fvector &p, Fvector &d, Fvector &n, float& /**f
 		
 		// apply footstep bobbing effect
 		Fvector dangle;
-		float k		= ((dwMState& ACTOR_DEFS::mcCrouch)?CROUCH_FACTOR:1.f);
+		f32 k		= ((dwMState& ACTOR_DEFS::mcCrouch)?CROUCH_FACTOR:1.f);
 
-		float A, ST;
+		f32 A;
+		f32 ST;
 
 		if(isActorAccelerated(dwMState, m_bZoomMode))
 		{
@@ -83,8 +84,8 @@ BOOL CEffectorBobbing::Process		(Fvector &p, Fvector &d, Fvector &n, float& /**f
 			ST	= m_fSpeedWalk*fTime*k;
 		}
 	
-		float _sinA	= _abs(_sin(ST)*A)*fReminderFactor;
-		float _cosA	= _cos(ST)*A*fReminderFactor;
+		f32 _sinA	= _abs(_sin(ST)*A)*fReminderFactor;
+		f32 _cosA	= _cos(ST)*A*fReminderFactor;
 
 		p.y			+=	_sinA;
 		dangle.x	=	_cosA;

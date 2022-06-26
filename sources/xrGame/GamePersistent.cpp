@@ -206,7 +206,7 @@ void CGamePersistent::WeathersUpdate()
 				ambient_sound_next_time	= Device.dwTimeGlobal + env_amb->get_rnd_sound_time();
 				if (snd){
 					Fvector	pos;
-					float	angle		= ::Random.randF(PI_MUL_2);
+					f32	angle		= ::Random.randF(PI_MUL_2);
 					pos.x				= _cos(angle);
 					pos.y				= 0;
 					pos.z				= _sin(angle);
@@ -440,7 +440,7 @@ void CGamePersistent::Statistics	(CGameFont* F)
 #endif
 }
 
-float CGamePersistent::MtlTransparent(u32 mtl_idx)
+f32 CGamePersistent::MtlTransparent(u32 mtl_idx)
 {
 	return GMLib.GetMaterialByIdx((u16)mtl_idx)->fVisTransparencyFactor;
 }

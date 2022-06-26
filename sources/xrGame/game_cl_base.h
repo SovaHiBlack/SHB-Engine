@@ -60,7 +60,7 @@ protected:
 	virtual		void				TranslateGameMessage	(u32 msg, NET_Packet& P);
 
 	virtual		shared_str			shedule_Name			() const		{ return shared_str("game_cl_GameState"); };
-	virtual		float				shedule_Scale			();
+	virtual		f32				shedule_Scale			();
 	virtual		bool				shedule_Needed			()				{return true;};
 
 				void				sv_GameEventGen			(NET_Packet& P);

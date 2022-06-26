@@ -4,9 +4,9 @@
 #include "SoundRender_Core.h"
 #include "SoundRender_Source.h"
 
-XRSOUND_API extern F32			psSoundCull				;
+XRSOUND_API extern f32			psSoundCull				;
 
-void CSoundRender_Emitter::update	(F32 dt)
+void CSoundRender_Emitter::update	(f32 dt)
 {
 	u32	dwTime			= SoundRender->Timer_Value;
 	u32 dwDeltaTime		= SoundRender->Timer_Delta;
@@ -163,29 +163,29 @@ void CSoundRender_Emitter::update	(F32 dt)
 	}
 }
 
-IC void	volume_lerp		(F32& c, F32 t, F32 s, F32 dt)
+IC void	volume_lerp		(f32& c, f32 t, f32 s, f32 dt)
 {
-	F32 diff		= t - c;
-	F32 diff_a	= _abs(diff);
+	f32 diff		= t - c;
+	f32 diff_a	= _abs(diff);
 	if (diff_a< EPSILON_7) return;
-	F32 mot		= s*dt;
+	f32 mot		= s*dt;
 	if (mot>diff_a) mot=diff_a;
 	c				+= (diff/diff_a)*mot;
 }
 
-BOOL	CSoundRender_Emitter::update_culling	(F32 dt)
+BOOL	CSoundRender_Emitter::update_culling	(f32 dt)
 {
 	if (b2D){
 		occluder_volume		= 1.f;
 		fade_volume			+= dt*10.f*(bStopping?-1.f:1.f);
 	}else{
 		// Check range
-		F32	dist		= SoundRender->listener_position().distance_to	(p_source.position);
+		f32	dist		= SoundRender->listener_position().distance_to	(p_source.position);
 		if (dist>p_source.max_distance)										{ smooth_volume = 0; return FALSE; }
 
 		// Calc attenuated volume
-		F32 att			= p_source.min_distance/(psSoundRolloff*dist);	clamp(att,0.f,1.f);
-		F32 fade_scale	= bStopping||(att*p_source.base_volume*p_source.volume*(owner_data->s_type==st_Effect?psSoundVEffects*psSoundVFactor:psSoundVMusic)<psSoundCull)?-1.f:1.f;
+		f32 att			= p_source.min_distance/(psSoundRolloff*dist);	clamp(att,0.f,1.f);
+		f32 fade_scale	= bStopping||(att*p_source.base_volume*p_source.volume*(owner_data->s_type==st_Effect?psSoundVEffects*psSoundVFactor:psSoundVMusic)<psSoundCull)?-1.f:1.f;
 		fade_volume			+=	dt*10.f*fade_scale;
 
 		// Update occlusion
@@ -203,14 +203,14 @@ BOOL	CSoundRender_Emitter::update_culling	(F32 dt)
 	else				return	SoundRender->i_allow_play	(this);
 }
 
-F32	CSoundRender_Emitter::priority				()
+f32	CSoundRender_Emitter::priority				()
 {
-	F32	dist		= SoundRender->listener_position().distance_to	(p_source.position);
-	F32	att			= p_source.min_distance/(psSoundRolloff*dist);	clamp(att,0.f,1.f);
+	f32	dist		= SoundRender->listener_position().distance_to	(p_source.position);
+	f32	att			= p_source.min_distance/(psSoundRolloff*dist);	clamp(att,0.f,1.f);
 	return	smooth_volume*att*priority_scale;
 }
 
-void	CSoundRender_Emitter::update_environment	(F32 dt)
+void	CSoundRender_Emitter::update_environment	(f32 dt)
 {
 	if (bMoved)			e_target	= *SoundRender->get_environment	(p_source.position);
 	e_current.lerp		(e_current,e_target,dt);

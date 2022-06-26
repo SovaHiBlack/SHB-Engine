@@ -16,100 +16,100 @@ xr_token							qpreset_token							[ ]={
 //int		ps_r__Supersample			= 1		;
 int			ps_r__LightSleepFrames		= 10	;
 
-float		ps_r__Detail_l_ambient		= 0.9f	;
-float		ps_r__Detail_l_aniso		= 0.25f	;
-float		ps_r__Detail_density		= 0.3f	;
-float		ps_r__Detail_rainbow_hemi	= 0.75f	;
+f32		ps_r__Detail_l_ambient		= 0.9f	;
+f32		ps_r__Detail_l_aniso		= 0.25f	;
+f32		ps_r__Detail_density		= 0.3f	;
+f32		ps_r__Detail_rainbow_hemi	= 0.75f	;
 
-float		ps_r__Tree_w_rot			= 10.0f	;
-float		ps_r__Tree_w_speed			= 1.00f	;
-float		ps_r__Tree_w_amp			= 0.005f;
+f32		ps_r__Tree_w_rot			= 10.0f	;
+f32		ps_r__Tree_w_speed			= 1.00f	;
+f32		ps_r__Tree_w_amp			= 0.005f;
 Fvector		ps_r__Tree_Wave				= {.1f, .01f, .11f};
-float		ps_r__Tree_SBC				= 1.5f	;	// scale bias correct
+f32		ps_r__Tree_SBC				= 1.5f	;	// scale bias correct
 
-float		ps_r__WallmarkTTL			= 300.f	;
-float		ps_r__WallmarkSHIFT			= 0.0001f;
-float		ps_r__WallmarkSHIFT_V		= 0.0001f;
+f32		ps_r__WallmarkTTL			= 300.f	;
+f32		ps_r__WallmarkSHIFT			= 0.0001f;
+f32		ps_r__WallmarkSHIFT_V		= 0.0001f;
 
-float		ps_r__GLOD_ssa_start		= 256.f	;
-float		ps_r__GLOD_ssa_end			=  64.f	;
-float		ps_r__LOD					=  1.f	;
-//. float		ps_r__LOD_Power				=  1.5f	;
-float		ps_r__ssaDISCARD			=  3.5f	;					//RO
-float		ps_r__ssaDONTSORT			=  32.f	;					//RO
-float		ps_r__ssaHZBvsTEX			=  96.f	;					//RO
+f32		ps_r__GLOD_ssa_start		= 256.f	;
+f32		ps_r__GLOD_ssa_end			=  64.f	;
+f32		ps_r__LOD					=  1.f	;
+//. f32		ps_r__LOD_Power				=  1.5f	;
+f32		ps_r__ssaDISCARD			=  3.5f	;					//RO
+f32		ps_r__ssaDONTSORT			=  32.f	;					//RO
+f32		ps_r__ssaHZBvsTEX			=  96.f	;					//RO
 
 int			ps_r__tf_Anisotropic		= 4		;
 
 // R1
-float		ps_r1_ssaLOD_A				= 64.f	;
-float		ps_r1_ssaLOD_B				= 48.f	;
-float		ps_r1_tf_Mipbias			= 0.0f	;
+f32		ps_r1_ssaLOD_A				= 64.f	;
+f32		ps_r1_ssaLOD_B				= 48.f	;
+f32		ps_r1_tf_Mipbias			= 0.0f	;
 Flags32		ps_r1_flags					= { R1FLAG_DLIGHTS };		// r1-only
-float		ps_r1_lmodel_lerp			= 0.1f	;
-float		ps_r1_dlights_clip			= 30.f	;
-float		ps_r1_pps_u					= 0.f	;
-float		ps_r1_pps_v					= 0.f	;
+f32		ps_r1_lmodel_lerp			= 0.1f	;
+f32		ps_r1_dlights_clip			= 30.f	;
+f32		ps_r1_pps_u					= 0.f	;
+f32		ps_r1_pps_v					= 0.f	;
 
 // R1-specific
 int			ps_r1_GlowsPerFrame			= 16	;					// r1-only
 
 // R2
-float		ps_r2_ssaLOD_A				= 48.f	;
-float		ps_r2_ssaLOD_B				= 32.f	;
-float		ps_r2_tf_Mipbias			= 0.0f	;
+f32		ps_r2_ssaLOD_A				= 48.f	;
+f32		ps_r2_ssaLOD_B				= 32.f	;
+f32		ps_r2_tf_Mipbias			= 0.0f	;
 
 // R2-specific
 Flags32		ps_r2_ls_flags				= { R2FLAG_SUN | R2FLAG_SUN_IGNORE_PORTALS | R2FLAG_EXP_DONT_TEST_UNSHADOWED | R2FLAG_USE_NVSTENCIL | R2FLAG_EXP_SPLIT_SCENE | R2FLAG_EXP_MT_CALC};	// r2-only
-float		ps_r2_df_parallax_h			= 0.02f;
-float		ps_r2_df_parallax_range		= 75.f;
-float		ps_r2_tonemap_middlegray	= 0.25f;			// r2-only
-float		ps_r2_tonemap_adaptation	= 5.f;				// r2-only
-float		ps_r2_tonemap_low_lum		= 0.001f;			// r2-only
-float		ps_r2_tonemap_amount		= 0.5f;				// r2-only
-float		ps_r2_ls_bloom_kernel_g		= 3.3f;				// r2-only
-float		ps_r2_ls_bloom_kernel_b		= .7f;				// r2-only
-float		ps_r2_ls_bloom_speed		= 10.f;				// r2-only
-float		ps_r2_ls_bloom_kernel_scale	= 1.0f;				// r2-only	// gauss
-float		ps_r2_ls_dsm_kernel			= .7f;				// r2-only
-float		ps_r2_ls_psm_kernel			= .7f;				// r2-only
-float		ps_r2_ls_ssm_kernel			= .7f;				// r2-only
-float		ps_r2_ls_bloom_threshold	= .3f;				// r2-only
+f32		ps_r2_df_parallax_h			= 0.02f;
+f32		ps_r2_df_parallax_range		= 75.f;
+f32		ps_r2_tonemap_middlegray	= 0.25f;			// r2-only
+f32		ps_r2_tonemap_adaptation	= 5.f;				// r2-only
+f32		ps_r2_tonemap_low_lum		= 0.001f;			// r2-only
+f32		ps_r2_tonemap_amount		= 0.5f;				// r2-only
+f32		ps_r2_ls_bloom_kernel_g		= 3.3f;				// r2-only
+f32		ps_r2_ls_bloom_kernel_b		= .7f;				// r2-only
+f32		ps_r2_ls_bloom_speed		= 10.f;				// r2-only
+f32		ps_r2_ls_bloom_kernel_scale	= 1.0f;				// r2-only	// gauss
+f32		ps_r2_ls_dsm_kernel			= .7f;				// r2-only
+f32		ps_r2_ls_psm_kernel			= .7f;				// r2-only
+f32		ps_r2_ls_ssm_kernel			= .7f;				// r2-only
+f32		ps_r2_ls_bloom_threshold	= .3f;				// r2-only
 Fvector		ps_r2_aa_barier				= { .8f, .1f, 0};	// r2-only
 Fvector		ps_r2_aa_weight				= { .25f,.25f,0};	// r2-only
-float		ps_r2_aa_kernel				= .5f;				// r2-only
-float		ps_r2_mblur					= .5f;				// .5f
+f32		ps_r2_aa_kernel				= .5f;				// r2-only
+f32		ps_r2_mblur					= .5f;				// .5f
 int			ps_r2_GI_depth				= 1;				// 1..5
 int			ps_r2_GI_photons			= 16;				// 8..64
-float		ps_r2_GI_clip				= EPS_L;			// EPS
-float		ps_r2_GI_refl				= .9f;				// .9f
-float		ps_r2_ls_depth_scale		= 1.00001f;			// 1.00001f
-float		ps_r2_ls_depth_bias			= -0.0001f;			// -0.0001f
-float		ps_r2_ls_squality			= 1.0f;				// 1.00f
-float		ps_r2_sun_tsm_projection	= 0.18f;			// 0.18f
-float		ps_r2_sun_tsm_bias			= -0.05f;			// 
-float		ps_r2_sun_near				= 12.f;				// 12.0f
-float		ps_r2_sun_near_border		= 0.66f;			// 1.0f
-float		ps_r2_sun_depth_far_scale	= 1.00000f;			// 1.00001f
-float		ps_r2_sun_depth_far_bias	= 0.00000f;			// -0.0000f
-float		ps_r2_sun_depth_near_scale	= 1.00001f;			// 1.00001f
-float		ps_r2_sun_depth_near_bias	= -0.00004f;		// -0.00005f
-float		ps_r2_sun_lumscale			= 1.0f;				// 1.0f
-float		ps_r2_sun_lumscale_hemi		= 1.0f;				// 1.0f
-float		ps_r2_sun_lumscale_amb		= 1.0f;
-float		ps_r2_gmaterial				= 0.f;				// 
-float		ps_r2_zfill					= 0.1f;				// .1f
+f32		ps_r2_GI_clip				= EPS_L;			// EPS
+f32		ps_r2_GI_refl				= .9f;				// .9f
+f32		ps_r2_ls_depth_scale		= 1.00001f;			// 1.00001f
+f32		ps_r2_ls_depth_bias			= -0.0001f;			// -0.0001f
+f32		ps_r2_ls_squality			= 1.0f;				// 1.00f
+f32		ps_r2_sun_tsm_projection	= 0.18f;			// 0.18f
+f32		ps_r2_sun_tsm_bias			= -0.05f;			// 
+f32		ps_r2_sun_near				= 12.f;				// 12.0f
+f32		ps_r2_sun_near_border		= 0.66f;			// 1.0f
+f32		ps_r2_sun_depth_far_scale	= 1.00000f;			// 1.00001f
+f32		ps_r2_sun_depth_far_bias	= 0.00000f;			// -0.0000f
+f32		ps_r2_sun_depth_near_scale	= 1.00001f;			// 1.00001f
+f32		ps_r2_sun_depth_near_bias	= -0.00004f;		// -0.00005f
+f32		ps_r2_sun_lumscale			= 1.0f;				// 1.0f
+f32		ps_r2_sun_lumscale_hemi		= 1.0f;				// 1.0f
+f32		ps_r2_sun_lumscale_amb		= 1.0f;
+f32		ps_r2_gmaterial				= 0.f;				// 
+f32		ps_r2_zfill					= 0.1f;				// .1f
 
-float		ps_r2_dhemi_scale			= 1.f;				// 1.5f
+f32		ps_r2_dhemi_scale			= 1.f;				// 1.5f
 int			ps_r2_dhemi_count			= 5;				// 5
 int			ps_r2_wait_sleep			= 0;
 
-float		ps_r2_lt_smooth				= 1.f;				// 1.f
-float		ps_r2_slight_fade			= 1.f;				// 1.f
+f32		ps_r2_lt_smooth				= 1.f;				// 1.f
+f32		ps_r2_slight_fade			= 1.f;				// 1.f
 
 
 //- Mad Max
-float		ps_r2_gloss_factor			= 1.0f;
+f32		ps_r2_gloss_factor			= 1.0f;
 //- Mad Max
 
 #include	"..\XR_3DA\xr_ioconsole.h"
@@ -146,7 +146,7 @@ public:
 			CHK_DX(HW.pDevice->SetSamplerState( i, D3DSAMP_MIPMAPLODBIAS, *((LPDWORD) value)));
 	}
 
-	CCC_tf_MipBias(pcstr N, float*	v) : CCC_Float(N, v, -0.5f, +0.5f)	{ };
+	CCC_tf_MipBias(pcstr N, f32*	v) : CCC_Float(N, v, -0.5f, +0.5f)	{ };
 	virtual void Execute(pcstr args)
 	{
 		CCC_Float::Execute	(args);
@@ -161,7 +161,7 @@ public:
 class CCC_R2GM		: public CCC_Float
 {
 public:
-	CCC_R2GM(pcstr N, float*	v) : CCC_Float(N, v, 0.f, 4.f) { *v = 0; };
+	CCC_R2GM(pcstr N, f32*	v) : CCC_Float(N, v, 0.f, 4.f) { *v = 0; };
 	virtual void	Execute	(pcstr args)
 	{
 		if (0==xr_strcmp(args,"on"))	{
@@ -172,10 +172,10 @@ public:
 			CCC_Float::Execute	(args);
 			if (ps_r2_ls_flags.test(R2FLAG_GLOBALMATERIAL))	{
 				static pcstr	name[4]	=	{ "oren", "blin", "phong", "metal" };
-				float	mid		= *value	;
+				f32	mid		= *value	;
 				int		m0		= iFloor(mid)	% 4;
 				int		m1		= (m0+1)		% 4;
-				float	frc		= mid - float(iFloor(mid));
+				f32	frc		= mid - f32(iFloor(mid));
 				Msg		("* material set to [%s]-[%s], with lerp of [%f]",name[m0],name[m1],frc);
 			}
 		}
