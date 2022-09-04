@@ -140,118 +140,132 @@ public:
 	}
 
 
-#define ROT(a,i,j,k,l) g=a.m[i][j]; h=a.m[k][l]; a.m[i][j]=g-s*(h+g*tau); a.m[k][l]=h+s*(g-h*tau);
-
-	int IC Meigen(Tvector& dout, SelfRef a)
-	{
-		int i;
-		F32 tresh;
-		F32 theta;
-		F32 tau;
-		F32 t;
-		F32 sm;
-		F32 s;
-		F32 h;
-		F32 g;
-		F32 c;
-		int nrot;
-		Tvector b;
-		Tvector z;
-		_matrix33 v;
-		Tvector d;
-
-		v.identity();
-
-		b.set(a.m[0][0], a.m[1][1], a.m[2][2]);
-		d.set(a.m[0][0], a.m[1][1], a.m[2][2]);
-		z.set(0, 0, 0);
-
-		nrot = 0;
-
-		for (i = 0; i < 50; i++)
-		{
-			sm = 0.0f; sm += _abs(a.m[0][1]); sm += _abs(a.m[0][2]); sm += _abs(a.m[1][2]);
-			if (sm == 0.0)
-			{
-				set(v); dout.set(d); return i;
-			}
-			if (i < 3) tresh = 0.2f * sm / (3.0f * 3.0f); else tresh = 0.0f;
-			{
-				g = 100.0f * _abs(a.m[0][1]);
-				if (i > 3 && _abs(d.x) + g == _abs(d.x) && _abs(d.y) + g == _abs(d.y))
-					a.m[0][1] = 0.0;
-				else if (_abs(a.m[0][1]) > tresh)
-				{
-					h = d.y - d.x;
-					if (_abs(h) + g == _abs(h)) t = (a.m[0][1]) / h;
-					else
-					{
-						theta = 0.5f * h / (a.m[0][1]);
-						t = 1.0f / (_abs(theta) + _sqrt(1.0f + theta * theta));
-						if (theta < 0.0f) t = -t;
-					}
-					c = 1.0f / _sqrt(1 + t * t); s = t * c; tau = s / (1.0f + c); h = t * a.m[0][1];
-					z.x -= h; z.y += h; d.x -= h; d.y += h;
-					a.m[0][1] = 0.0f;
-					ROT(a, 0, 2, 1, 2); ROT(v, 0, 0, 0, 1); ROT(v, 1, 0, 1, 1); ROT(v, 2, 0, 2, 1);
-					nrot++;
-				}
-			}
-			{
-				g = 100.0f * _abs(a.m[0][2]);
-				if (i > 3 && _abs(d.x) + g == _abs(d.x) && _abs(d.z) + g == _abs(d.z))
-					a.m[0][2] = 0.0f;
-				else if (_abs(a.m[0][2]) > tresh)
-				{
-					h = d.z - d.x;
-					if (_abs(h) + g == _abs(h)) t = (a.m[0][2]) / h;
-					else
-					{
-						theta = 0.5f * h / (a.m[0][2]);
-						t = 1.0f / (_abs(theta) + _sqrt(1.0f + theta * theta));
-						if (theta < 0.0f) t = -t;
-					}
-					c = 1.0f / _sqrt(1 + t * t); s = t * c; tau = s / (1.0f + c); h = t * a.m[0][2];
-					z.x -= h; z.z += h; d.x -= h; d.z += h;
-					a.m[0][2] = 0.0f;
-					ROT(a, 0, 1, 1, 2); ROT(v, 0, 0, 0, 2); ROT(v, 1, 0, 1, 2); ROT(v, 2, 0, 2, 2);
-					nrot++;
-				}
-			}
-			{
-				g = 100.0f * _abs(a.m[1][2]);
-				if (i > 3 && _abs(d.y) + g == _abs(d.y) && _abs(d.z) + g == _abs(d.z))
-					a.m[1][2] = 0.0f;
-				else if (_abs(a.m[1][2]) > tresh)
-				{
-					h = d.z - d.y;
-					if (_abs(h) + g == _abs(h)) t = (a.m[1][2]) / h;
-					else
-					{
-						theta = 0.5f * h / (a.m[1][2]);
-						t = 1.0f / (_abs(theta) + _sqrt(1.0f + theta * theta));
-						if (theta < 0.0) t = -t;
-					}
-					c = 1.0f / _sqrt(1 + t * t); s = t * c; tau = s / (1.0f + c); h = t * a.m[1][2];
-					z.y -= h; z.z += h; d.y -= h; d.z += h;
-					a.m[1][2] = 0.0f;
-					ROT(a, 0, 1, 0, 2); ROT(v, 0, 1, 0, 2); ROT(v, 1, 1, 1, 2); ROT(v, 2, 1, 2, 2);
-					nrot++;
-				}
-			}
-			b.add(z);
-			d.set(b);
-			z.set(0, 0, 0);
-		}
-		//        Log.Msg("eigen: too many iterations in Jacobi transform (%d).\n", i);
-		return i;
-	}
-#undef ROT
+//#define ROT(a,i,j,k,l) g=a.m[i][j]; h=a.m[k][l]; a.m[i][j]=g-s*(h+g*tau); a.m[k][l]=h+s*(g-h*tau);
+//
+//	int IC Meigen(Tvector& dout, SelfRef a)
+//	{
+//		int i;
+//		F32 tresh;
+//		F32 theta;
+//		F32 tau;
+//		F32 t;
+//		F32 sm;
+//		F32 s;
+//		F32 h;
+//		F32 g;
+//		F32 c;
+//		int nrot;
+//		Tvector b;
+//		Tvector z;
+//		_matrix33 v;
+//		Tvector d;
+//
+//		v.identity();
+//
+//		b.set(a.m[0][0], a.m[1][1], a.m[2][2]);
+//		d.set(a.m[0][0], a.m[1][1], a.m[2][2]);
+//		z.set(0, 0, 0);
+//
+//		nrot = 0;
+//
+//		for (i = 0; i < 50; i++)
+//		{
+//			sm = 0.0f;
+//			sm += _abs(a.m[0][1]);
+//			sm += _abs(a.m[0][2]);
+//			sm += _abs(a.m[1][2]);
+//			if (sm == 0.0)
+//			{
+//				set(v);
+//				dout.set(d);
+//				return i;
+//			}
+//
+//			if (i < 3)
+//			{
+//				tresh = 0.2f * sm / (3.0f * 3.0f);
+//			}
+//			else
+//			{
+//				tresh = 0.0f;
+//			}
+//
+//			{
+//				g = 100.0f * _abs(a.m[0][1]);
+//				if (i > 3 && _abs(d.x) + g == _abs(d.x) && _abs(d.y) + g == _abs(d.y))
+//					a.m[0][1] = 0.0;
+//				else if (_abs(a.m[0][1]) > tresh)
+//				{
+//					h = d.y - d.x;
+//					if (_abs(h) + g == _abs(h)) t = (a.m[0][1]) / h;
+//					else
+//					{
+//						theta = 0.5f * h / (a.m[0][1]);
+//						t = 1.0f / (_abs(theta) + _sqrt(1.0f + theta * theta));
+//						if (theta < 0.0f) t = -t;
+//					}
+//					c = 1.0f / _sqrt(1 + t * t); s = t * c; tau = s / (1.0f + c); h = t * a.m[0][1];
+//					z.x -= h; z.y += h; d.x -= h; d.y += h;
+//					a.m[0][1] = 0.0f;
+//					ROT(a, 0, 2, 1, 2); ROT(v, 0, 0, 0, 1); ROT(v, 1, 0, 1, 1); ROT(v, 2, 0, 2, 1);
+//					nrot++;
+//				}
+//			}
+//			{
+//				g = 100.0f * _abs(a.m[0][2]);
+//				if (i > 3 && _abs(d.x) + g == _abs(d.x) && _abs(d.z) + g == _abs(d.z))
+//					a.m[0][2] = 0.0f;
+//				else if (_abs(a.m[0][2]) > tresh)
+//				{
+//					h = d.z - d.x;
+//					if (_abs(h) + g == _abs(h)) t = (a.m[0][2]) / h;
+//					else
+//					{
+//						theta = 0.5f * h / (a.m[0][2]);
+//						t = 1.0f / (_abs(theta) + _sqrt(1.0f + theta * theta));
+//						if (theta < 0.0f) t = -t;
+//					}
+//					c = 1.0f / _sqrt(1 + t * t); s = t * c; tau = s / (1.0f + c); h = t * a.m[0][2];
+//					z.x -= h; z.z += h; d.x -= h; d.z += h;
+//					a.m[0][2] = 0.0f;
+//					ROT(a, 0, 1, 1, 2); ROT(v, 0, 0, 0, 2); ROT(v, 1, 0, 1, 2); ROT(v, 2, 0, 2, 2);
+//					nrot++;
+//				}
+//			}
+//			{
+//				g = 100.0f * _abs(a.m[1][2]);
+//				if (i > 3 && _abs(d.y) + g == _abs(d.y) && _abs(d.z) + g == _abs(d.z))
+//					a.m[1][2] = 0.0f;
+//				else if (_abs(a.m[1][2]) > tresh)
+//				{
+//					h = d.z - d.y;
+//					if (_abs(h) + g == _abs(h)) t = (a.m[1][2]) / h;
+//					else
+//					{
+//						theta = 0.5f * h / (a.m[1][2]);
+//						t = 1.0f / (_abs(theta) + _sqrt(1.0f + theta * theta));
+//						if (theta < 0.0) t = -t;
+//					}
+//					c = 1.0f / _sqrt(1 + t * t); s = t * c; tau = s / (1.0f + c); h = t * a.m[1][2];
+//					z.y -= h; z.z += h; d.y -= h; d.z += h;
+//					a.m[1][2] = 0.0f;
+//					ROT(a, 0, 1, 0, 2); ROT(v, 0, 1, 0, 2); ROT(v, 1, 1, 1, 2); ROT(v, 2, 1, 2, 2);
+//					nrot++;
+//				}
+//			}
+//			b.add(z);
+//			d.set(b);
+//			z.set(0, 0, 0);
+//		}
+//		//        Log.Msg("eigen: too many iterations in Jacobi transform (%d).\n", i);
+//		return i;
+//	}
+//#undef ROT
 
 	//--------------------------------------------------------------------------------
 	// other unused function
 	//--------------------------------------------------------------------------------
-	IC SelfRef McolcMcol(int cr, SelfCRef M, int c)
+	/*IC SelfRef McolcMcol(int cr, SelfCRef M, int c)
 	{
 		m[0][cr] = M.m[0][c];
 		m[1][cr] = M.m[1][c];
@@ -381,6 +395,7 @@ public:
 		R.x = s1 * (m[0][0] * V1.x + m[1][0] * V1.y + m[2][0] * V1.z);
 		R.y = s1 * (m[0][1] * V1.x + m[1][1] * V1.y + m[2][1] * V1.z);
 		R.z = s1 * (m[0][2] * V1.x + m[1][2] * V1.y + m[2][2] * V1.z);
+		return *this;
 	}
 	IC SelfRef MxV(Tvector& R, const Tvector& V1) const
 	{
@@ -388,7 +403,8 @@ public:
 		R.y = (m[1][0] * V1.x + m[1][1] * V1.y + m[1][2] * V1.z);
 		R.z = (m[2][0] * V1.x + m[2][1] * V1.y + m[2][2] * V1.z);
 		return *this;
-	}
+	}*/
+
 	IC	void transform_dir(_vector2<T>& dest, const _vector2<T>& v)	const 	// preferred to use
 	{
 		dest.x = v.x * _11 + v.y * _21;
