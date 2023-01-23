@@ -184,6 +184,7 @@ ICF	u32	script_time_global	()	{ return 0; }
 void CScriptEngine::script_register(lua_State *L)
 {
 	module(L)[
+		def("log", (void (*)(LPCSTR)) & Log),
 		class_<profile_timer_script>("profile_timer")
 			.def(constructor<>())
 			.def(constructor<profile_timer_script&>())
@@ -195,7 +196,7 @@ void CScriptEngine::script_register(lua_State *L)
 			.def("time",&profile_timer_script::time)
 	];
 
-	function	(L,	"log",							LuaLog);
+//	function	(L,	"log",							LuaLog);
 	function	(L,	"error_log",					ErrorLog);
 	function	(L,	"flush",						FlushLogs);
 	function	(L,	"prefetch",						prefetch_module);
