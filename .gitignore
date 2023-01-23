@@ -1,10 +1,7 @@
-﻿/.vs
-/sources/.vs/SHB-Engine/v16
-/gamedata/ai
-/gamedata/anims
+## Ignore Visual Studio temporary files
+
+/sources/.vs
+
 /gamedata/levels
-/gamedata/meshes
 /gamedata/sounds
-/gamedata/spawns
 /gamedata/textures
-/Debug-Win32
