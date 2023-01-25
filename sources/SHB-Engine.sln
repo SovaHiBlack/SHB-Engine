@@ -1,6 +1,6 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29728.190
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "bugtrap", "bugtrap", "{6BE93BFF-E2B4-43F2-ADBB-F8971E43CD5A}"
 EndProject
@@ -74,8 +74,6 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LWO", "LWO\LWO.vcxproj", "{
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "resources", "resources", "{065F585F-72BF-4C12-8965-C2F106B85BA5}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "xrStalker", "resources\xrstalker.vcxproj", "{90F938A1-176A-4379-A3D1-DD516E8A6DC1}"
-EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libogg", "third-party\libogg\win32\VS2003\libogg\libogg.vcxproj", "{15CBFEFF-7965-41F5-B4E2-21E8795C9159}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libtheora", "third-party\libtheora\win32\VS2003\libtheora\libtheora.vcxproj", "{653F3841-3F26-49B9-AFCF-091DB4B67031}"
@@ -86,7 +84,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libvorbisfile", "third-part
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "vorbisenc", "third-party\libvorbis\win32\VS2003\vorbisenc\vorbisenc.vcxproj", "{E48B6A8B-F7FE-4DA8-8248-E64DBAC4F56C}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "resources", "..\gamedata\resources.vcxproj", "{15AF67F4-A374-405B-A79D-30B55014C81C}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "gamedata", "..\gamedata\resources.vcxproj", "{15AF67F4-A374-405B-A79D-30B55014C81C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -671,20 +669,6 @@ Global
 		{A6EBBBBB-5FEF-4C20-8460-DFAB11734DED}.Release_SSE2|Win32.ActiveCfg = Release|Win32
 		{A6EBBBBB-5FEF-4C20-8460-DFAB11734DED}.Release_SSE2|Win32.Build.0 = Release|Win32
 		{A6EBBBBB-5FEF-4C20-8460-DFAB11734DED}.Release|Win32.ActiveCfg = Release|Win32
-		{90F938A1-176A-4379-A3D1-DD516E8A6DC1}.Debug_Dedicated|Win32.ActiveCfg = Debug|Win32
-		{90F938A1-176A-4379-A3D1-DD516E8A6DC1}.Debug_Priquel|Win32.ActiveCfg = Debug|Win32
-		{90F938A1-176A-4379-A3D1-DD516E8A6DC1}.Debug|Win32.ActiveCfg = Debug|Win32
-		{90F938A1-176A-4379-A3D1-DD516E8A6DC1}.Mixed_Dedicated|Win32.ActiveCfg = Release|Win32
-		{90F938A1-176A-4379-A3D1-DD516E8A6DC1}.Mixed_Priquel|Win32.ActiveCfg = Release|Win32
-		{90F938A1-176A-4379-A3D1-DD516E8A6DC1}.Mixed|Win32.ActiveCfg = Release|Win32
-		{90F938A1-176A-4379-A3D1-DD516E8A6DC1}.Release_Dedicated|Win32.ActiveCfg = Release|Win32
-		{90F938A1-176A-4379-A3D1-DD516E8A6DC1}.Release_Dedicated|Win32.Build.0 = Release|Win32
-		{90F938A1-176A-4379-A3D1-DD516E8A6DC1}.Release_Priquel|Win32.ActiveCfg = Release|Win32
-		{90F938A1-176A-4379-A3D1-DD516E8A6DC1}.Release_SSE|Win32.ActiveCfg = Release|Win32
-		{90F938A1-176A-4379-A3D1-DD516E8A6DC1}.Release_SSE|Win32.Build.0 = Release|Win32
-		{90F938A1-176A-4379-A3D1-DD516E8A6DC1}.Release_SSE2|Win32.ActiveCfg = Release|Win32
-		{90F938A1-176A-4379-A3D1-DD516E8A6DC1}.Release_SSE2|Win32.Build.0 = Release|Win32
-		{90F938A1-176A-4379-A3D1-DD516E8A6DC1}.Release|Win32.ActiveCfg = Release|Win32
 		{15CBFEFF-7965-41F5-B4E2-21E8795C9159}.Debug_Dedicated|Win32.ActiveCfg = Debug|Win32
 		{15CBFEFF-7965-41F5-B4E2-21E8795C9159}.Debug_Priquel|Win32.ActiveCfg = Debug|Win32
 		{15CBFEFF-7965-41F5-B4E2-21E8795C9159}.Debug|Win32.ActiveCfg = Debug|Win32
@@ -800,7 +784,6 @@ Global
 		{893279CB-0805-405F-B484-9BB728A18261} = {6BE93BFF-E2B4-43F2-ADBB-F8971E43CD5A}
 		{F1066EAC-EE25-4C7A-9023-5957A6F7BA27} = {89F6A7EE-3BBE-45D3-A8A8-5D9366CD987B}
 		{A6EBBBBB-5FEF-4C20-8460-DFAB11734DED} = {89F6A7EE-3BBE-45D3-A8A8-5D9366CD987B}
-		{90F938A1-176A-4379-A3D1-DD516E8A6DC1} = {065F585F-72BF-4C12-8965-C2F106B85BA5}
 		{15CBFEFF-7965-41F5-B4E2-21E8795C9159} = {2BFC806B-CE92-4EA4-8FE8-5F2EA54BA348}
 		{653F3841-3F26-49B9-AFCF-091DB4B67031} = {2BFC806B-CE92-4EA4-8FE8-5F2EA54BA348}
 		{3A214E06-B95E-4D61-A291-1F8DF2EC10FD} = {2BFC806B-CE92-4EA4-8FE8-5F2EA54BA348}
