@@ -450,7 +450,7 @@
     <None Include="Config\script.ltx">
       <Filter>config</Filter>
     </None>
-    <None Include="Config\System.ltx">
+    <None Include="Config\system.ltx">
       <Filter>config</Filter>
     </None>
     <None Include="Config\creatures\actor.ltx">
@@ -2745,76 +2745,76 @@
     <None Include="Config\stalker_custom_data.ltx">
       <Filter>config</Filter>
     </None>
-    <None Include="ai\alife\anomalydetectprobability.efd">
+    <None Include="ai\alife\AnomalyDetectProbability.efd">
       <Filter>ai\alife</Filter>
     </None>
-    <None Include="ai\alife\anomalyinteractprobability.efd">
+    <None Include="ai\alife\AnomalyInteractProbability.efd">
       <Filter>ai\alife</Filter>
     </None>
-    <None Include="ai\alife\anomalyretreatprobability.efd">
+    <None Include="ai\alife\AnomalyRetreatProbability.efd">
       <Filter>ai\alife</Filter>
     </None>
-    <None Include="ai\alife\birthpercentage.efd">
+    <None Include="ai\alife\BirthPercentage.efd">
       <Filter>ai\alife</Filter>
     </None>
-    <None Include="ai\alife\birthprobability.efd">
+    <None Include="ai\alife\BirthProbability.efd">
       <Filter>ai\alife</Filter>
     </None>
-    <None Include="ai\alife\birthspeed.efd">
+    <None Include="ai\alife\BirthSpeed.efd">
       <Filter>ai\alife</Filter>
     </None>
-    <None Include="ai\alife\enemydetectability.efd">
+    <None Include="ai\alife\EnemyDetectability.efd">
       <Filter>ai\alife</Filter>
     </None>
-    <None Include="ai\alife\enemydetectprobability.efd">
+    <None Include="ai\alife\EnemyDetectProbability.efd">
       <Filter>ai\alife</Filter>
     </None>
-    <None Include="ai\alife\enemyretreatprobability.efd">
+    <None Include="ai\alife\EnemyRetreatProbability.efd">
       <Filter>ai\alife</Filter>
     </None>
-    <None Include="ai\alife\terraintype.efd">
+    <None Include="ai\alife\TerrainType.efd">
       <Filter>ai\alife</Filter>
     </None>
-    <None Include="ai\alife\weaponattacktimes.efd">
+    <None Include="ai\alife\WeaponAttackTimes.efd">
       <Filter>ai\alife</Filter>
     </None>
-    <None Include="ai\alife\weaponsuccessprobability.efd">
+    <None Include="ai\alife\WeaponSuccessProbability.efd">
       <Filter>ai\alife</Filter>
     </None>
-    <None Include="ai\common\accweaponeffectiveness.efd">
+    <None Include="ai\common\AccWeaponEffectiveness.efd">
       <Filter>ai\common</Filter>
     </None>
-    <None Include="ai\common\creatureeffectiveness.efd">
+    <None Include="ai\common\CreatureEffectiveness.efd">
       <Filter>ai\common</Filter>
     </None>
-    <None Include="ai\common\entitycost.efd">
+    <None Include="ai\common\EntityCost.efd">
       <Filter>ai\common</Filter>
     </None>
-    <None Include="ai\common\equipmentvalue.efd">
+    <None Include="ai\common\EquipmentValue.efd">
       <Filter>ai\common</Filter>
     </None>
-    <None Include="ai\common\expediency.efd">
+    <None Include="ai\common\Expediency.efd">
       <Filter>ai\common</Filter>
     </None>
-    <None Include="ai\common\fincreatureeffectiveness.efd">
+    <None Include="ai\common\FinCreatureEffectiveness.efd">
       <Filter>ai\common</Filter>
     </None>
-    <None Include="ai\common\intcreatureeffectiveness.efd">
+    <None Include="ai\common\IntCreatureEffectiveness.efd">
       <Filter>ai\common</Filter>
     </None>
-    <None Include="ai\common\mainweaponvalue.efd">
+    <None Include="ai\common\MainWeaponValue.efd">
       <Filter>ai\common</Filter>
     </None>
-    <None Include="ai\common\smallweaponvalue.efd">
+    <None Include="ai\common\SmallWeaponValue.efd">
       <Filter>ai\common</Filter>
     </None>
-    <None Include="ai\common\surgedeathprobability.efd">
+    <None Include="ai\common\SurgeDeathProbability.efd">
       <Filter>ai\common</Filter>
     </None>
-    <None Include="ai\common\victoryprobability.efd">
+    <None Include="ai\common\VictoryProbability.efd">
       <Filter>ai\common</Filter>
     </None>
-    <None Include="ai\common\weaponeffectiveness.efd">
+    <None Include="ai\common\WeaponEffectiveness.efd">
       <Filter>ai\common</Filter>
     </None>
     <None Include="anims\camera_effects\agroprom_demo.anm">
