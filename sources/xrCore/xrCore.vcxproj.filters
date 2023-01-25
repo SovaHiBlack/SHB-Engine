@@ -255,9 +255,6 @@
     <ClInclude Include="FTimer.h">
       <Filter>Kernel</Filter>
     </ClInclude>
-    <ClInclude Include="resource.h">
-      <Filter>Kernel</Filter>
-    </ClInclude>
     <ClInclude Include="stdafx.h">
       <Filter>Kernel</Filter>
     </ClInclude>
@@ -520,11 +517,9 @@
       <Filter>Compression\lzo</Filter>
     </ClInclude>
     <ClInclude Include="xrSyncronize.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ResourceCompile Include="xrCore.rc">
+    <ClInclude Include="build_config_defines.h">
       <Filter>Kernel</Filter>
-    </ResourceCompile>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="FileSystem.h">
