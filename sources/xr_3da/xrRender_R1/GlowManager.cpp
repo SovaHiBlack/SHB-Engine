@@ -12,8 +12,8 @@
 
 #define FADE_SCALE_UP		4096.f
 #define FADE_SCALE_DOWN		1024.f
-#define MAX_GlowsDist1		float(g_pGamePersistent->Environment().CurrentEnv.far_plane)
-#define MAX_GlowsDist2		float(MAX_GlowsDist1*MAX_GlowsDist1)
+#define MAX_GlowsDist1		f32(g_pGamePersistent->Environment().CurrentEnv.far_plane)
+#define MAX_GlowsDist2		f32(MAX_GlowsDist1*MAX_GlowsDist1)
 
 
 //////////////////////////////////////////////////////////////////////
@@ -60,7 +60,7 @@ void	CGlow::set_position		(const Fvector& P)	{
 void	CGlow::set_direction	(const Fvector& D)	{
 	direction.normalize_safe	(D);
 };
-void	CGlow::set_radius		(float R)			{
+void	CGlow::set_radius		(f32 R)			{
 	if (fsimilar(radius,R))		return;
 	radius						= R;
 	spatial_move				();
@@ -71,7 +71,7 @@ void	CGlow::set_texture		(LPCSTR name)		{
 void	CGlow::set_color		(const Fcolor& C)	{
 	color						= C;
 }
-void	CGlow::set_color		(float r, float g, float b)	{
+void	CGlow::set_color		(f32 r, f32 g, f32 b)	{
 	color.set					(r,g,b,1);
 }
 void	CGlow::spatial_move		()
@@ -96,7 +96,7 @@ void CGlowManager::Load		(IReader* fs)
 	// glows itself
 	u32 size	= fs->length();
 	R_ASSERT	(size);
-	u32 one		= 4*sizeof(float)+1*sizeof(u16);
+	u32 one		= 4*sizeof(f32)+1*sizeof(u16);
 	R_ASSERT	(size%one == 0);
 	u32 count	= size/one;
 	Glows.reserve(count);
@@ -104,8 +104,8 @@ void CGlowManager::Load		(IReader* fs)
 	for (;count;count--)
 	{
 		CGlow* G			= xr_new<CGlow>();
-		fs->r				(&G->position,	3*sizeof(float));
-		fs->r				(&G->radius,	1*sizeof(float));
+		fs->r				(&G->position,	3*sizeof(f32));
+		fs->r				(&G->radius,	1*sizeof(f32));
 		G->spatial.sphere.set(G->position, G->radius);
 		G->direction.set	( 0,0,0 );
 
@@ -149,10 +149,10 @@ void CGlowManager::add	(ref_glow G_)
 	Device.Statistic->RenderDUMP_Glows.Begin();
 #endif
 
-	float	dt		= Device.fTimeDelta;
-	float	dlim2	= MAX_GlowsDist2;
+	f32	dt		= Device.fTimeDelta;
+	f32	dlim2	= MAX_GlowsDist2;
 
-	float	range = Device.vCameraPosition.distance_to_sqr	(G->spatial.sphere.P);
+	f32	range = Device.vCameraPosition.distance_to_sqr	(G->spatial.sphere.P);
 	if (range < dlim2) 
 	{
 		// 2. Use result of test
@@ -174,7 +174,7 @@ void CGlowManager::add	(ref_glow G_)
 #endif
 }
 
-IC void FillSprite	(FVF::LIT*& pv, const Fvector& pos, float r, u32 clr)
+IC void FillSprite	(FVF::LIT*& pv, const Fvector& pos, f32 r, u32 clr)
 {
 	const Fvector& T 	= Device.vCameraTop;
 	const Fvector& R 	= Device.vCameraRight;
@@ -217,7 +217,7 @@ void CGlowManager::render_sw		()
 		if (G.dwFrame=='test')	break;
 		G.dwFrame	=	'test';
 		Fvector		dir;
-		dir.sub		(G.spatial.sphere.P,start); float range = dir.magnitude();
+		dir.sub		(G.spatial.sphere.P,start); f32 range = dir.magnitude();
 		if (range>EPS_S)	{
 			dir.div		(range);
 			G.bTestResult = g_pGameLevel->ObjectSpace.RayTest(start,dir,range,collide::rqtBoth,&G.RayCache,o_main);
@@ -263,7 +263,7 @@ void CGlowManager::render_selected()
 	Fplane			NP;
 	NP.build		(Device.vCameraPosition,Device.vCameraDirection);
 
-	float		dlim2	= MAX_GlowsDist2;
+	f32		dlim2	= MAX_GlowsDist2;
 	for (;pos<Selected.size();) 
 	{
 		T		= ((CGlow*)Selected[pos]._get())->shader;
@@ -280,7 +280,8 @@ void CGlowManager::render_selected()
 			if (G.fade<=1.f)			continue;
 
 			// Now perform dotproduct if need it
-			float	scale	= 1.f, dist_sq;
+			f32		scale = 1.0f;
+			f32		dist_sq;
 			Fvector	dir;
 			dir.sub			(Device.vCameraPosition,G.position);
 			dist_sq			= dir.square_magnitude();
@@ -291,8 +292,8 @@ void CGlowManager::render_selected()
 			if (G.fade*scale<=1.f)		continue;
 
 			// near fade
-			float dist_np	= NP.distance(G.position)-VIEWPORT_NEAR;
-			float snear		= dist_np/0.15f;	clamp	(snear,0.f,1.f);
+			f32 dist_np	= NP.distance(G.position)-VIEWPORT_NEAR;
+			f32 snear		= dist_np/0.15f;	clamp	(snear,0.f,1.f);
 			scale			*=	snear;
 			if (G.fade*scale<=1.f)		continue;
 

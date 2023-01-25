@@ -10,16 +10,16 @@
 #include "..\CustomHUD.h"
 
 const u32	MAX_POLYGONS			=	1024*8;
-const float MAX_DISTANCE			=	50.f;
-const float	SSM_near_plane			=	.1f;
-const float	SSM_tex_size 			=	32.f;
+const f32 MAX_DISTANCE			=	50.f;
+const f32	SSM_near_plane			=	.1f;
+const f32	SSM_tex_size 			=	32.f;
 
 //////////////////////////////////////////////////////////////////////////
 // binders for lighting
 //////////////////////////////////////////////////////////////////////////
 void cl_light_PR::setup		(R_constant* C)					{
 	Fvector&	P	= RImplementation.r1_dlight_light->position;
-	float		R	= RImplementation.r1_dlight_light->range;
+	f32		R	= RImplementation.r1_dlight_light->range;
 	if (RImplementation.phase==CRender::PHASE_POINT)		RCache.set_c	(C,P.x,P.y,P.z,.5f/R);
 	else													RCache.set_c	(C,P.x,P.y,P.z,1.f/R);
 }
@@ -34,7 +34,7 @@ void cl_light_XFORM::setup	(R_constant* C)					{
 
 //////////////////////////////////////////////////////////////////////////
 /*
-IC void mk_vertex					(CLightR_Vertex& D, Fvector& P, Fvector& N, Fvector& C, float r2)
+IC void mk_vertex					(CLightR_Vertex& D, Fvector& P, Fvector& N, Fvector& C, f32 r2)
 {
 	D.P.set	(P);
 	D.N.set	(P);
@@ -50,7 +50,7 @@ void CLightR_Manager::render_point	()
 	// return;
 
 	// World/View/Projection
-	float _43					 = Device.mProject._43;
+	f32 _43					 = Device.mProject._43;
 	Device.mProject._43			-= 0.001f; 
 	RCache.set_xform_world		(Fidentity);
 	RCache.set_xform_project	(Device.mProject);

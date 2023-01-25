@@ -7,7 +7,7 @@ IRender_Sector* CRender::detectSector(const Fvector& P)
 
 	// Portals model
 	int		id1		= -1;
-	float	range1	= 500.f;
+	f32	range1	= 500.0f;
 	if (rmPortals)	
 	{
 		Sectors_xrc.ray_query	(rmPortals,P,dir,range1);
@@ -19,7 +19,7 @@ IRender_Sector* CRender::detectSector(const Fvector& P)
 
 	// Geometry model
 	int		id2		= -1;
-	float	range2	= range1;
+	f32	range2	= range1;
 	Sectors_xrc.ray_query	(g_pGameLevel->ObjectSpace.GetStaticModel(),P,dir,range2);
 	if (Sectors_xrc.r_count()) {
 		CDB::RESULT *RP2 = Sectors_xrc.r_begin();

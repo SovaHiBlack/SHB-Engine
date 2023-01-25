@@ -6,8 +6,8 @@
 #define AFX_LIGHTTRACK_H__89914D61_AC0B_4C7C_BA8C_D7D810738CE7__INCLUDED_
 #pragma once
 
-const	float				lt_inc			= 4.f	;
-const	float				lt_dec			= 2.f	;
+const	f32					lt_inc			= 4.f	;
+const	f32					lt_dec			= 2.f	;
 const	int					lt_hemisamples	= 26	;
 
 class	CROS_impl			: public IRender_ObjectSpecific
@@ -17,12 +17,12 @@ public:
 		u32					frame_touched		;	// to track creation & removal
 		light*				source				;	// 
 		collide::ray_cache	cache				;	//
-		float				test				;	// note range: (-1[no]..1[yes])
-		float				energy				;	//
+		f32					test				;	// note range: (-1[no]..1[yes])
+		f32					energy				;	//
 	};
 	struct	Light			{
 		light*				source				;
-		float				energy				;
+		f32					energy				;
 		Fcolor				color				;
 	};
 public:
@@ -47,26 +47,26 @@ public:
 	u32						shadow_recv_frame	;
 	int						shadow_recv_slot	;
 private:
-	float					hemi_value			;
-	float					hemi_smooth			;
-	float					sun_value			;
-	float					sun_smooth			;
+	f32						hemi_value			;
+	f32						hemi_smooth			;
+	f32						sun_value			;
+	f32						sun_smooth			;
 
 	Fvector					approximate			;
 public:
 	virtual	void			force_mode			(u32 mode)		{ MODE = mode;															};
-	virtual float			get_luminocity		()				{ Fvector one; return one.set(1,1,1).div(3.f).dotproduct(approximate);	};
-	virtual float			get_luminocity_hemi	()				{ return get_hemi();}
+	virtual f32				get_luminocity		()				{ Fvector one; return one.set(1,1,1).div(3.f).dotproduct(approximate);	};
+	virtual f32				get_luminocity_hemi	()				{ return get_hemi();}
 
 	void					add					(light*			L);
 	void					update				(IRenderable*	O);
 	void					update_smooth		(IRenderable*	O=0);
 	
-	ICF	float				get_hemi			()	{
+	ICF	f32					get_hemi			()	{
 		if (dwFrameSmooth!=Device.dwFrame)		update_smooth();
 		return									hemi_smooth;
 	}
-	ICF	float				get_sun				()	{
+	ICF	f32					get_sun				()	{
 		if (dwFrameSmooth!=Device.dwFrame)		update_smooth();
 		return									sun_smooth;
 	}

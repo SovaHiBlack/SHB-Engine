@@ -7,7 +7,7 @@
 #include "occRasterizer.h"
 #include "../GameFont.h"
  
-float	psOSSR		= .001f;
+f32	psOSSR		= 0.001f;
 
 void __stdcall	CHOM::MT_RENDER()
 {
@@ -52,13 +52,13 @@ struct HOM_poly
 };
 #pragma pack(pop)
 
-IC float	Area		(Fvector& v0, Fvector& v1, Fvector& v2)
+IC f32	Area		(Fvector& v0, Fvector& v1, Fvector& v2)
 {
-	float	e1 = v0.distance_to(v1);
-	float	e2 = v0.distance_to(v2);
-	float	e3 = v1.distance_to(v2);
+	f32	e1 = v0.distance_to(v1);
+	f32	e2 = v0.distance_to(v2);
+	f32	e3 = v1.distance_to(v2);
 	
-	float	p  = (e1+e2+e3)/2.f;
+	f32	p  = (e1+e2+e3)/2.f;
 	return	_sqrt( p*(p-e1)*(p-e2)*(p-e3) );
 }
 
@@ -160,7 +160,7 @@ void CHOM::Render_DB			(CFrustum& base)
 	end				= std::remove_if	(it,end,pred_fb(m_pTris));
 	std::sort		(it,end,pred_fb(m_pTris,COP));
 
-	float			view_dim	= occ_dim_0;
+	f32			view_dim	= occ_dim_0;
 	Fmatrix			m_viewport		= {
 		view_dim/2.f,			0.0f,					0.0f,		0.0f,
 		0.0f,					-view_dim/2.f,			0.0f,		0.0f,
@@ -235,20 +235,20 @@ void CHOM::Render		(CFrustum& base)
 	Device.Statistic->RenderCALC_HOM.End	();
 }
 
-ICF	BOOL	xform_b0	(Fvector2& min, Fvector2& max, float& minz, Fmatrix& X, float _x, float _y, float _z)
+ICF	BOOL	xform_b0	(Fvector2& min, Fvector2& max, f32& minz, Fmatrix& X, f32 _x, f32 _y, f32 _z)
 {
-	float z		= _x*X._13 + _y*X._23 + _z*X._33 + X._43;			if (z<EPS) return TRUE;
-	float iw	= 1.f/(_x*X._14 + _y*X._24 + _z*X._34 + X._44);		
+	f32 z		= _x*X._13 + _y*X._23 + _z*X._33 + X._43;			if (z<EPS) return TRUE;
+	f32 iw	= 1.f/(_x*X._14 + _y*X._24 + _z*X._34 + X._44);
 	min.x=max.x	= (_x*X._11 + _y*X._21 + _z*X._31 + X._41)*iw;
 	min.y=max.y	= (_x*X._12 + _y*X._22 + _z*X._32 + X._42)*iw;	
 	minz		= 0.f+z*iw;
 	return FALSE;
 }
-ICF	BOOL	xform_b1	(Fvector2& min, Fvector2& max, float& minz, Fmatrix& X, float _x, float _y, float _z)
+ICF	BOOL	xform_b1	(Fvector2& min, Fvector2& max, f32& minz, Fmatrix& X, f32 _x, f32 _y, f32 _z)
 {
-	float t;
-	float z		= _x*X._13 + _y*X._23 + _z*X._33 + X._43;		if (z<EPS)	return TRUE;
-	float iw	= 1.f/(_x*X._14 + _y*X._24 + _z*X._34 + X._44);
+	f32 t;
+	f32 z		= _x*X._13 + _y*X._23 + _z*X._33 + X._43;		if (z<EPS)	return TRUE;
+	f32 iw	= 1.f/(_x*X._14 + _y*X._24 + _z*X._34 + X._44);
 	t 			= (_x*X._11 + _y*X._21 + _z*X._31 + X._41)*iw;	if (t<min.x) min.x=t; else if (t>max.x) max.x=t;
 	t			= (_x*X._12 + _y*X._22 + _z*X._32 + X._42)*iw;	if (t<min.y) min.y=t; else if (t>max.y) max.y=t;
 	t			= 0.f+z*iw;										if (t<minz)	 minz =t;
@@ -258,7 +258,7 @@ IC	BOOL	_visible	(Fbox& B, Fmatrix& m_xform_01)
 {
 	// Find min/max points of xformed-box
 	Fvector2	min,max;
-	float		z;
+	f32		z;
 	if (xform_b0(min,max,z,m_xform_01,B.min.x, B.min.y, B.min.z)) return TRUE;
 	if (xform_b1(min,max,z,m_xform_01,B.min.x, B.min.y, B.max.z)) return TRUE;
 	if (xform_b1(min,max,z,m_xform_01,B.max.x, B.min.y, B.max.z)) return TRUE;
@@ -277,7 +277,7 @@ BOOL CHOM::visible		(Fbox3& B)
 	return _visible		(B,m_xform_01)		;
 }
 
-BOOL CHOM::visible		(Fbox2& B, float depth)
+BOOL CHOM::visible		(Fbox2& B, f32 depth)
 {
 	if (!bEnabled)		return TRUE;
 	return Raster.test	(B.min.x,B.min.y,B.max.x,B.max.y,depth);
@@ -322,7 +322,7 @@ BOOL CHOM::visible		(sPoly& P)
 
 	// Find min/max points of xformed-box
 	Fvector2	min,max;
-	float		z;
+	f32		z;
 	
 	if (xform_b0(min,max,z,m_xform_01,P.front().x,P.front().y,P.front().z)) return TRUE;
 	for (u32 it=1; it<P.size(); it++)

@@ -19,8 +19,8 @@ public:
 	Fvector			position	;
 	Fvector			direction	;
 	Fvector			right		;
-	float			range		;
-	float			cone		;
+	f32			range		;
+	f32			cone		;
 	Fcolor			color		;
 
 	vis_data		hom			;
@@ -83,11 +83,11 @@ public:
 	}
 	virtual void	set_position			(const Fvector& P);
 	virtual void	set_rotation			(const Fvector& D, const Fvector& R);
-	virtual void	set_cone				(float angle);
-	virtual void	set_range				(float R);
-	virtual void	set_virtual_size		(float R)						{};
+	virtual void	set_cone				(f32 angle);
+	virtual void	set_range				(f32 R);
+	virtual void	set_virtual_size		(f32 R)						{};
 	virtual void	set_color				(const Fcolor& C)				{ color.set(C);				}
-	virtual void	set_color				(float r, float g, float b)		{ color.set(r,g,b,1);		}
+	virtual void	set_color				(f32 r, f32 g, f32 b)		{ color.set(r,g,b,1);		}
 	virtual void	set_texture				(LPCSTR name);
 
 	virtual	void	spatial_move			();
@@ -104,7 +104,7 @@ public:
 	void			export 					(light_Package& dest);
 #endif
 
-	float			get_LOD					();
+	f32			get_LOD					();
 
 	light();
 	virtual ~light();

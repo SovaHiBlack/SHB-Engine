@@ -7,7 +7,7 @@ using namespace PAPI;
 using namespace PS;
 
 const u32	PS::uDT_STEP 	= 33;
-const float	PS::fDT_STEP 	= float(uDT_STEP)/1000.f;
+const f32	PS::fDT_STEP 	= f32(uDT_STEP)/1000.0f;
 
 void PS::OnEffectParticleBirth(void* owner, u32 , PAPI::Particle& m, u32 )
 {
@@ -118,7 +118,7 @@ void CParticleEffect::OnFrame(u32 frame_dt)
 			if (p_cnt)	
 			{
 				vis.box.invalidate	();
-				float p_size = 0.f;
+				f32 p_size = 0.f;
 				for(u32 i = 0; i < p_cnt; i++){
 					Particle &m 	= particles[i]; 
 					vis.box.modify((Fvector&)m.pos);
@@ -199,10 +199,10 @@ void CParticleEffect::OnDeviceDestroy()
 	}
 }
 //----------------------------------------------------
-IC void FillSprite	(FVF::LIT*& pv, const Fvector& T, const Fvector& R, const Fvector& pos, const Fvector2& lt, const Fvector2& rb, float r1, float r2, u32 clr, float angle)
+IC void FillSprite	(FVF::LIT*& pv, const Fvector& T, const Fvector& R, const Fvector& pos, const Fvector2& lt, const Fvector2& rb, f32 r1, f32 r2, u32 clr, f32 angle)
 {
-	float sa	= _sin(angle);  
-	float ca	= _cos(angle);  
+	f32 sa	= _sin(angle);
+	f32 ca	= _cos(angle);
 	Fvector Vr, Vt;
 	Vr.x 		= T.x*r1*sa+R.x*r1*ca;
 	Vr.y 		= T.y*r1*sa+R.y*r1*ca;
@@ -222,7 +222,7 @@ IC void FillSprite	(FVF::LIT*& pv, const Fvector& T, const Fvector& R, const Fve
 	pv->set		(b.x+pos.x,b.y+pos.y,b.z+pos.z,	clr, rb.x,lt.y);	pv++;
 }
 
-IC void FillSprite	(FVF::LIT*& pv, const Fvector& pos, const Fvector& dir, const Fvector2& lt, const Fvector2& rb, float r1, float r2, u32 clr, float angle)
+IC void FillSprite	(FVF::LIT*& pv, const Fvector& pos, const Fvector& dir, const Fvector2& lt, const Fvector2& rb, f32 r1, f32 r2, u32 clr, f32 angle)
 {
 	float sa	= _sin(angle);  
 	float ca	= _cos(angle);  

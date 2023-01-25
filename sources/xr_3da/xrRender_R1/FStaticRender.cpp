@@ -17,7 +17,7 @@ using	namespace		R_dsgraph;
 CRender													RImplementation;
 
 //////////////////////////////////////////////////////////////////////////
-ShaderElement*			CRender::rimp_select_sh_dynamic	(IRender_Visual	*pVisual, float cdist_sq)
+ShaderElement*			CRender::rimp_select_sh_dynamic	(IRender_Visual	*pVisual, f32 cdist_sq)
 {
 	switch (phase)		{
 	case PHASE_NORMAL:	return (RImplementation.L_Projector->shadowing()?pVisual->shader->E[SE_R1_NORMAL_HQ]:pVisual->shader->E[SE_R1_NORMAL_LQ])._get();
@@ -30,7 +30,7 @@ ShaderElement*			CRender::rimp_select_sh_dynamic	(IRender_Visual	*pVisual, float
 #endif
 }
 //////////////////////////////////////////////////////////////////////////
-ShaderElement*			CRender::rimp_select_sh_static	(IRender_Visual	*pVisual, float cdist_sq)
+ShaderElement*			CRender::rimp_select_sh_static	(IRender_Visual	*pVisual, f32 cdist_sq)
 {
 	switch (phase)		{
 	case PHASE_NORMAL:	return (((_sqrt(cdist_sq) - pVisual->vis.sphere.R)<44)?pVisual->shader->E[SE_R1_NORMAL_HQ]:pVisual->shader->E[SE_R1_NORMAL_LQ])._get();
@@ -187,7 +187,7 @@ void					CRender::add_Visual				(IRender_Visual* V )
 	add_leafs_Dynamic	(V);									
 }
 void					CRender::add_Geometry			(IRender_Visual* V ){ add_Static(V,View->getMask());						}
-void					CRender::add_StaticWallmark		(ref_shader& S, const Fvector& P, float s, CDB::TRI* T, Fvector* verts)
+void					CRender::add_StaticWallmark		(ref_shader& S, const Fvector& P, f32 s, CDB::TRI* T, Fvector* verts)
 {
 	if (T->suppress_wm)	return;
 	VERIFY2							(_valid(P) && _valid(s) && T && verts && (s>EPS_L), "Invalid static wallmark params");
@@ -203,7 +203,7 @@ void					CRender::add_SkeletonWallmark	(intrusive_ptr<CSkeletonWallmark> wm)
 {
 	Wallmarks->AddSkeletonWallmark				(wm);
 }
-void					CRender::add_SkeletonWallmark	(const Fmatrix* xf, CKinematics* obj, ref_shader& sh, const Fvector& start, const Fvector& dir, float size)
+void					CRender::add_SkeletonWallmark	(const Fmatrix* xf, CKinematics* obj, ref_shader& sh, const Fvector& start, const Fvector& dir, f32 size)
 {
 	Wallmarks->AddSkeletonWallmark				(xf, obj, sh, start, dir, size);
 }
@@ -243,8 +243,8 @@ void					CRender::apply_object			(IRenderable*		O )
 		CROS_impl& LT		= *((CROS_impl*)O->renderable.pROS);
 		VERIFY(dynamic_cast<CObject*>(O)||dynamic_cast<CPS_Instance*>(O));
 		VERIFY(dynamic_cast<CROS_impl*>(O->renderable.pROS));
-		float o_hemi		= 0.5f*LT.get_hemi						();
-		float o_sun			= 0.5f*LT.get_sun						();
+		f32 o_hemi		= 0.5f*LT.get_hemi						();
+		f32 o_sun			= 0.5f*LT.get_sun						();
 		RCache.set_c		(c_ldynamic_props,o_sun,o_sun,o_sun,o_hemi);
 		// shadowing
 		if ((LT.shadow_recv_frame==Device.dwFrame) && O->renderable_ShadowReceive())	
@@ -253,7 +253,7 @@ void					CRender::apply_object			(IRenderable*		O )
 }
 
 // Misc
-float					g_fSCREEN;
+f32					g_fSCREEN;
 static	BOOL			gm_Nearer	= 0;
 
 IC		void			gm_SetNearer		(BOOL bNearer)
@@ -277,16 +277,18 @@ CRender::~CRender	()
 {
 }
 
-extern float		r_ssaDISCARD;
-extern float		r_ssaDONTSORT;
-extern float		r_ssaLOD_A,			r_ssaLOD_B;
-extern float		r_ssaGLOD_start,	r_ssaGLOD_end;
-extern float		r_ssaHZBvsTEX;
+extern f32		r_ssaDISCARD;
+extern f32		r_ssaDONTSORT;
+extern f32		r_ssaLOD_A;
+extern f32		r_ssaLOD_B;
+extern f32		r_ssaGLOD_start;
+extern f32		r_ssaGLOD_end;
+extern f32		r_ssaHZBvsTEX;
 
 ICF bool			pred_sp_sort		(ISpatial* _1, ISpatial* _2)
 {
-	float	d1		= _1->spatial.sphere.P.distance_to_sqr(Device.vCameraPosition);
-	float	d2		= _2->spatial.sphere.P.distance_to_sqr(Device.vCameraPosition);
+	f32	d1		= _1->spatial.sphere.P.distance_to_sqr(Device.vCameraPosition);
+	f32	d2		= _2->spatial.sphere.P.distance_to_sqr(Device.vCameraPosition);
 	return	d1<d2;
 }
 
@@ -296,8 +298,8 @@ void CRender::Calculate				()
 
 	// Transfer to global space to avoid deep pointer access
 	IRender_Target* T				=	getTarget	();
-	float	fov_factor				=	_sqr		(90.f / Device.fFOV);
-	g_fSCREEN						=	float(T->get_width()*T->get_height())*fov_factor*(EPS_S+ps_r__LOD);
+	f32	fov_factor					=	_sqr		(90.f / Device.fFOV);
+	g_fSCREEN						=	f32(T->get_width()*T->get_height())*fov_factor*(EPS_S+ps_r__LOD);
 	r_ssaDISCARD					=	_sqr(ps_r__ssaDISCARD)		/g_fSCREEN;
 	r_ssaDONTSORT					=	_sqr(ps_r__ssaDONTSORT/3)	/g_fSCREEN;
 	r_ssaLOD_A						=	_sqr(ps_r1_ssaLOD_A/3)		/g_fSCREEN;
@@ -539,22 +541,22 @@ void	CRender::Render		()
 	Device.Statistic->RenderDUMP.End	();
 }
 
-void	CRender::ApplyBlur4		(FVF::TL4uv* pv, u32 w, u32 h, float k)
+void	CRender::ApplyBlur4		(FVF::TL4uv* pv, u32 w, u32 h, f32 k)
 {
-	float	_w					= float(w);
-	float	_h					= float(h);
-	float	kw					= (1.f/_w)*k;
-	float	kh					= (1.f/_h)*k;
+	f32	_w					= f32(w);
+	f32	_h					= f32(h);
+	f32	kw					= (1.f/_w)*k;
+	f32	kh					= (1.f/_h)*k;
 	Fvector2					p0,p1;
 	p0.set						(.5f/_w, .5f/_h);
 	p1.set						((_w+.5f)/_w, (_h+.5f)/_h );
 	u32		_c					= 0xffffffff;
 
 	// Fill vertex buffer
-	pv->p.set(EPS,			float(_h+EPS),	EPS,1.f); pv->color=_c; pv->uv[0].set(p0.x-kw,p1.y-kh);pv->uv[1].set(p0.x+kw,p1.y+kh);pv->uv[2].set(p0.x+kw,p1.y-kh);pv->uv[3].set(p0.x-kw,p1.y+kh);pv++;
+	pv->p.set(EPS, f32(_h+EPS),	EPS,1.f); pv->color=_c; pv->uv[0].set(p0.x-kw,p1.y-kh);pv->uv[1].set(p0.x+kw,p1.y+kh);pv->uv[2].set(p0.x+kw,p1.y-kh);pv->uv[3].set(p0.x-kw,p1.y+kh);pv++;
 	pv->p.set(EPS,			EPS,			EPS,1.f); pv->color=_c; pv->uv[0].set(p0.x-kw,p0.y-kh);pv->uv[1].set(p0.x+kw,p0.y+kh);pv->uv[2].set(p0.x+kw,p0.y-kh);pv->uv[3].set(p0.x-kw,p0.y+kh);pv++;
-	pv->p.set(float(_w+EPS),float(_h+EPS),	EPS,1.f); pv->color=_c; pv->uv[0].set(p1.x-kw,p1.y-kh);pv->uv[1].set(p1.x+kw,p1.y+kh);pv->uv[2].set(p1.x+kw,p1.y-kh);pv->uv[3].set(p1.x-kw,p1.y+kh);pv++;
-	pv->p.set(float(_w+EPS),EPS,			EPS,1.f); pv->color=_c; pv->uv[0].set(p1.x-kw,p0.y-kh);pv->uv[1].set(p1.x+kw,p0.y+kh);pv->uv[2].set(p1.x+kw,p0.y-kh);pv->uv[3].set(p1.x-kw,p0.y+kh);pv++;
+	pv->p.set(f32(_w+EPS), f32(_h+EPS),	EPS,1.f); pv->color=_c; pv->uv[0].set(p1.x-kw,p1.y-kh);pv->uv[1].set(p1.x+kw,p1.y+kh);pv->uv[2].set(p1.x+kw,p1.y-kh);pv->uv[3].set(p1.x-kw,p1.y+kh);pv++;
+	pv->p.set(f32(_w+EPS),EPS,			EPS,1.f); pv->color=_c; pv->uv[0].set(p1.x-kw,p0.y-kh);pv->uv[1].set(p1.x+kw,p0.y+kh);pv->uv[2].set(p1.x+kw,p0.y-kh);pv->uv[3].set(p1.x-kw,p0.y+kh);pv++;
 }
 
 #include "..\GameFont.h"

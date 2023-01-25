@@ -19,7 +19,7 @@
 #	include "..\environment.h"
 #endif
 
-const float dbgOffset			= 0.f;
+const f32	dbgOffset			= 0.0f;
 const int	dbgItems			= 128;
 
 //--------------------------------------------------- Decompression
@@ -34,7 +34,7 @@ static int magic4x4[4][4] =
 void bwdithermap	(int levels, int magic[16][16])
 {
 	/* Get size of each step */
-    float N = 255.0f / (levels - 1);
+	f32 N = 255.0f / (levels - 1);
 
 	/*
 	* Expand 4x4 dither pattern to 16x16.  4x4 leaves obvious patterning,
@@ -46,7 +46,7 @@ void bwdithermap	(int levels, int magic[16][16])
 	* pixel value with mod N == 0 at the next level).
 	*/
 
-    float	magicfact = (N - 1) / 16;
+	f32	magicfact = (N - 1) / 16;
     for ( int i = 0; i < 4; i++ )
 		for ( int j = 0; j < 4; j++ )
 			for ( int k = 0; k < 4; k++ )
@@ -57,9 +57,9 @@ void bwdithermap	(int levels, int magic[16][16])
 }
 //--------------------------------------------------- Decompression
 
-void CDetailManager::SSwingValue::lerp(const SSwingValue& A, const SSwingValue& B, float f)
+void CDetailManager::SSwingValue::lerp(const SSwingValue& A, const SSwingValue& B, f32 f)
 {
-	float fi	= 1.f-f;
+	f32 fi		= 1.0f-f;
 	amp1		= fi*A.amp1  + f*B.amp1;
 	amp2		= fi*A.amp2  + f*B.amp2;
 	rot1		= fi*A.rot1  + f*B.rot1;
@@ -177,7 +177,7 @@ void CDetailManager::Unload		()
 	FS.r_close			(dtFS);
 }
 
-extern ECORE_API float r_ssaDISCARD;
+extern ECORE_API f32 r_ssaDISCARD;
 
 void CDetailManager::UpdateVisibleM()
 {
@@ -186,10 +186,10 @@ void CDetailManager::UpdateVisibleM()
 	CFrustum	View;
 	View.CreateFromMatrix		(Device.mFullTransform, FRUSTUM_P_LRTB + FRUSTUM_P_FAR);
 
-	float fade_limit			= dm_fade;	fade_limit=fade_limit*fade_limit;
-	float fade_start			= 1.f;		fade_start=fade_start*fade_start;
-	float fade_range			= fade_limit-fade_start;
-	float		r_ssaCHEAP		= 16*r_ssaDISCARD;
+	f32 fade_limit			= dm_fade;	fade_limit=fade_limit*fade_limit;
+	f32 fade_start			= 1.0f;		fade_start=fade_start*fade_start;
+	f32 fade_range			= fade_limit-fade_start;
+	f32 r_ssaCHEAP			= 16*r_ssaDISCARD;
 
 	// Initialize 'vis' and 'cache'
 	// Collect objects for rendering
@@ -221,11 +221,11 @@ void CDetailManager::UpdateVisibleM()
 				// Add to visibility structures
 				if (Device.dwFrame>S.frame){
 					// Calc fade factor	(per slot)
-					float	dist_sq		= EYE.distance_to_sqr	(S.vis.sphere.P);
+					f32	dist_sq		= EYE.distance_to_sqr	(S.vis.sphere.P);
 					if		(dist_sq>fade_limit)				continue;
-					float	alpha		= (dist_sq<fade_start)?0.f:(dist_sq-fade_start)/fade_range;
-					float	alpha_i		= 1.f - alpha;
-					float	dist_sq_rcp	= 1.f / dist_sq;
+					f32	alpha		= (dist_sq<fade_start)?0.f:(dist_sq-fade_start)/fade_range;
+					f32	alpha_i		= 1.f - alpha;
+					f32	dist_sq_rcp	= 1.f / dist_sq;
 
 					S.frame			= Device.dwFrame+Random.randI(15,30);
 					for (int sp_id=0; sp_id<dm_obj_in_slot; sp_id++){
@@ -236,14 +236,14 @@ void CDetailManager::UpdateVisibleM()
 						sp.r_items[1].clear_not_free();
 						sp.r_items[2].clear_not_free();
 
-						float				R		= objects	[sp.id]->bv_sphere.R;
-						float				Rq_drcp	= R*R*dist_sq_rcp;	// reordered expression for 'ssa' calc
+						f32				R		= objects	[sp.id]->bv_sphere.R;
+						f32				Rq_drcp	= R*R*dist_sq_rcp;	// reordered expression for 'ssa' calc
 
 						SlotItem			**siIT=&(*sp.items.begin()), **siEND=&(*sp.items.end());
 						for (; siIT!=siEND; siIT++){
 							SlotItem& Item			= *(*siIT);
-							float   scale			= Item.scale_calculated	= Item.scale*alpha_i;
-							float	ssa				= scale*scale*Rq_drcp;
+							f32 scale			= Item.scale_calculated	= Item.scale*alpha_i;
+							f32 ssa				= scale*scale*Rq_drcp;
 							if (ssa < r_ssaDISCARD) continue;
 							u32		vis_id			= 0;
 							if (ssa > r_ssaCHEAP)	vis_id = Item.vis_ID;
@@ -279,7 +279,7 @@ void CDetailManager::Render	()
 
 	Device.Statistic->RenderDUMP_DT_Render.Begin	();
 
-	float factor			= g_pGamePersistent->Environment().wind_strength_factor;
+	f32 factor				= g_pGamePersistent->Environment().wind_strength_factor;
 	swing_current.lerp		(swing_desc[0],swing_desc[1],factor);
 
 	RCache.set_CullMode		(CULL_NONE);

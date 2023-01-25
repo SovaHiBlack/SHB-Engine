@@ -451,7 +451,7 @@ IC bool	_IsValidShader(IRender_Visual* visual, u32 priority, bool strictB2F)
     return false;
 }
 
-void 	CModelPool::Render(IRender_Visual* m_pVisual, const Fmatrix& mTransform, int priority, bool strictB2F, float m_fLOD)
+void 	CModelPool::Render(IRender_Visual* m_pVisual, const Fmatrix& mTransform, int priority, bool strictB2F, f32 m_fLOD)
 {
     // render visual
     xr_vector<IRender_Visual*>::iterator I,E;
@@ -528,7 +528,7 @@ void 	CModelPool::Render(IRender_Visual* m_pVisual, const Fmatrix& mTransform, i
     }
 }
 
-void 	CModelPool::RenderSingle(IRender_Visual* m_pVisual, const Fmatrix& mTransform, float m_fLOD)
+void 	CModelPool::RenderSingle(IRender_Visual* m_pVisual, const Fmatrix& mTransform, f32 m_fLOD)
 {
 	for (int p=0; p<4; p++){
     	Render(m_pVisual,mTransform,p,false,m_fLOD);

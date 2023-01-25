@@ -149,7 +149,7 @@ void	CDetailManager::cache_Update	(int v_x, int v_z, Fvector& view, int limit)
 
 	for (int iteration=0; cache_task.size() && (iteration<limit); iteration++){
 		u32		best_id		= 0;
-		float	best_dist	= flt_max;
+		f32	best_dist	= flt_max;
 
 		if (bFullUnpack){
 			best_id			= cache_task.size()-1;
@@ -162,7 +162,7 @@ void	CDetailManager::cache_Update	(int v_x, int v_z, Fvector& view, int limit)
 				// Estimate
 				Fvector		C;
 				S->vis.box.getcenter	(C);
-				float		D	= view.distance_to_sqr	(C);
+				f32		D	= view.distance_to_sqr	(C);
 
 				// Select
 				if (D<best_dist)

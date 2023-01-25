@@ -56,11 +56,11 @@ void FLOD::Load			(LPCSTR N, IReader *data, u32 dwFlags)
 	// lod correction
 	Fvector3			S;
 	vis.box.getradius	(S);
-	float r 			= vis.sphere.R;
+	f32 r 			= vis.sphere.R;
 	std::sort			(&S.x,&S.x+3);
-	float a				= S.y;
-	float Sf			= 4.f*(0.5f*(r*r*asin(a/r)+a*_sqrt(r*r-a*a)));
-	float Ss			= M_PI*r*r;
+	f32 a				= S.y;
+	f32 Sf			= 4.f*(0.5f*(r*r*asin(a/r)+a*_sqrt(r*r-a*a)));
+	f32 Ss			= M_PI*r*r;
 	lod_factor			= Sf/Ss;
 }
 void FLOD::Copy			(IRender_Visual *pFrom	)
@@ -72,7 +72,7 @@ void FLOD::Copy			(IRender_Visual *pFrom	)
 	lod_factor			= F->lod_factor	;
 	CopyMemory		(facets,F->facets,sizeof(facets));
 }
-void FLOD::Render		(float LOD)
+void FLOD::Render		(f32 LOD)
 {
 	/*
 	Fvector				Ldir;
@@ -80,8 +80,8 @@ void FLOD::Render		(float LOD)
 	Ldir.normalize		();
 
 	int					best_id		= 0;
-	float				best_dot	= Ldir.dotproduct(facets[0].N);
-	float				dot;
+	f32					best_dot	= Ldir.dotproduct(facets[0].N);
+	f32					dot;
 
 	dot	= Ldir.dotproduct	(facets[1].N); if (dot>best_dot) { best_id=1; best_dot=dot; }
 	dot	= Ldir.dotproduct	(facets[2].N); if (dot>best_dot) { best_id=2; best_dot=dot; }
