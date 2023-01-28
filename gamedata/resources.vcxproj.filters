@@ -4847,6 +4847,96 @@
     <None Include="shaders.xr" />
     <None Include="shaders_xrlc.xr" />
     <None Include="stalkergame.inf" />
+    <None Include="scripts\aem_bind.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\aem_grenade.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\aem_lights.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\aem_manager.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\amk.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\amk_particle.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\anomaly_evader.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\anomaly_holder.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\ar_sleep.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\dunin_ammo.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\fake_net_packet.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\ogsm_anomaly.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\ogsm_debug.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\ogsm_effector.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\ogsm_freeplay.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\ogsm_hideout.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\ogsm_mutants.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\ogsm_psyzones.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\ogsm_quests.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\ogsm_repair.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\ogsm_respawn.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\ogsm_surge.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\sleep_manager.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\ui_cheat.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\ui_rad.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\vars.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\xrs_ai.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\xrs_grenade.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\xrs_medic.script">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\xrs_utils.script">
+      <Filter>scripts</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Xml Include="config\gameplay\character_criticals_1.xml">

@@ -9,7 +9,7 @@
 		<texture>ui_charinfo_right</texture>
 	</static_icon>
 
-	<main x=0 y=0 width=1024 height=768 />
+	<main x=0 y=0 width=1024 height=768/>
 
 	<top_background x=0 y=0 width=1024 height=128>
 		<texture>ui\ui_top_background</texture>

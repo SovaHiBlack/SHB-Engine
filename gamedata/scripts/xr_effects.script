@@ -3,103 +3,104 @@
 -- ----------------------------------------------------------------------------------------------------
 
 function disable_ui_elements(actor, npc, p)
-	local i, v = 0, 0
-	for i, v in pairs(p) do
-		if v == "all" then
-			db.actor:hide_weapon()
-			level.disable_input()
-			level.hide_indicators()
-			break
-		elseif v == "weapon" then
-			db.actor:hide_weapon()
-		elseif v == "input" then
-			level.disable_input()
-		elseif v == "hud" then
-			level.hide_indicators()
-		end
-	end
---	printf("i xr_effects <disable_ui_elements>")
+    local i, v = 0, 0
+    for i, v in pairs(p) do
+        if v == "all" then
+            db.actor:hide_weapon()
+            level.disable_input()
+            level.hide_indicators()
+            break
+        elseif v == "weapon" then
+            db.actor:hide_weapon()
+        elseif v == "input" then
+            level.disable_input()
+        elseif v == "hud" then
+            level.hide_indicators()
+        end
+    end
+    --printf("xr_effects <disable_ui_elements>")
 end
 
 function enable_ui_elements(actor, npc, p)
-	local i, v = 0, 0
-	for i, v in pairs(p) do
-		if v == "all" then
-			level.show_indicators()
-			level.enable_input()
-			db.actor:restore_weapon()
-			break
-		elseif v == "hud" then
-			level.show_indicators()
-		elseif v == "input" then
-			level.enable_input()
-		elseif v == "weapon" then
-			db.actor:restore_weapon()
-		end
-	end
---	printf("i xr_effects <enable_ui_elements>")
+    local i, v = 0, 0
+    for i, v in pairs(p) do
+        if v == "all" then
+            level.show_indicators()
+            level.enable_input()
+            db.actor:restore_weapon()
+            break
+        elseif v == "hud" then
+            level.show_indicators()
+        elseif v == "input" then
+            level.enable_input()
+        elseif v == "weapon" then
+            db.actor:restore_weapon()
+        end
+    end
 end
 
 function disable_ui(actor, npc)
-	db.actor:hide_weapon()
-	level.disable_input()
-	level.hide_indicators()
---	printf("i xr_effects <disable_ui>")
+    db.actor:hide_weapon()
+    level.disable_input()
+    level.hide_indicators()
+    --printf("xr_effects <disable_ui>")
 end
 
 function enable_ui(actor, npc)
-	level.show_indicators()
-	level.enable_input()
-	db.actor:restore_weapon()
---	printf("i xr_effects <enable_ui>")
+    level.show_indicators()
+    level.enable_input()
+    db.actor:restore_weapon()
+    --printf("xr_effects <enable_ui>")
 end
 
 function run_cam_effector(actor, npc, p)
-	if p[1] then
-		local loop, num = false, (1000 + math.random(100))
-		if p[2] and type(p[2]) == "number" and p[2] > 0 then
-			num = p[2]
-		end
+    if p[1] then
+        local loop, num = false, (1000 + math.random(100))
+        
+        if p[2] and type(p[2]) == "number" and p[2] > 0 then
+            num = p[2]
+        end
 
-		if p[3] and p[3] == "true" then
-			loop = true
-		end
-
-		level.add_cam_effector("camera_effects\\" .. p[1] .. ".anm", num, loop, "")
-	end
+        if p[3] and p[3] == "true" then
+            loop = true
+        end
+        
+        --level.add_pp_effector(p[1] .. ".ppe", num, loop)
+	    level.add_cam_effector("camera_effects\\" .. p[1] .. ".anm", num, loop, "")	                  
+    end
 end
 
 function stop_cam_effector(actor, npc, p)
-	if p[1] and type(p[1]) == "number" and p[1] > 0 then
-		level.remove_cam_effector(p[1])
-	end
+    if p[1] and type(p[1]) == "number" and p[1] > 0 then
+        level.remove_cam_effector(p[1])
+    end
 end
 
 function run_postprocess(actor, npc, p)
-	if p[1] then
-		local loop, num = false, (2000 + math.random(100))
-		if p[2] and type(p[2]) == "number" and p[2] > 0 then
-			num = p[2]
-		end
+    if p[1] then
+        local loop, num = false, (2000 + math.random(100))
+        
+        if p[2] and type(p[2]) == "number" and p[2] > 0 then
+            num = p[2]
+        end
 
-		if p[3] and p[3] == "true" then
-			loop = true
-		end
-
-		level.add_pp_effector(p[1] .. ".ppe", num, loop)
-	end
+        if p[3] and p[3] == "true" then
+            loop = true
+        end
+        
+        level.add_pp_effector(p[1] .. ".ppe", num, loop)
+    end
 end
 
 function stop_postprocess(actor, npc, p)
-	if p[1] and type(p[1]) == "number" and p[1] > 0 then
-		level.remove_pp_effector(p[1])
-	end
+    if p[1] and type(p[1]) == "number" and p[1] > 0 then
+        level.remove_pp_effector(p[1])
+    end
 end
 
 function run_tutorial(actor, npc, p)
 	game.start_tutorial(p[1])
 end
-
 function run_tutorial_if_newbie(actor, npc, p)
 	if has_alife_info("esc_trader_newbie") then
 		game.start_tutorial(p[1])
@@ -109,15 +110,16 @@ end
 function teleport_actor(actor, npc, p)
 	local point = patrol(p[1])
 	local look = patrol(p[2])
+	
 	db.actor:set_actor_position(point:point(0))
 	local dir = look:point(0):sub(point:point(0))
-	db.actor:set_actor_direction(-dir:getH())
+	db.actor:set_actor_direction(-dir:getH())	
 end
 
 -----------------------------------------------------------------------------
 local drop_point, drop_object = 0, 0
 local function drop_object_item(item)
-	drop_object:drop_item_and_teleport(item, drop_point)
+    drop_object:drop_item_and_teleport(item, drop_point)
 end
 
 function drop_actor_inventory(actor, npc, p)
@@ -452,7 +454,7 @@ function actor_punch(npc)
 	local snd_obj = xr_sound.get_safe_sound_object([[affects\hit_fist]])
 	snd_obj:play_no_feedback(db.actor, sound_object.s2d, 0, vector(), 1.0)
 
-	level.add_cam_effector("camera_effects\\fusker.anm", 999, false, "")
+	level.add_cam_effector("camera_effects\\fusker.anm", 999, false, "")		
 end
 
 -- Принудительное усыпание игрока на радаре.
@@ -1832,8 +1834,8 @@ function aes_earthshake (npc)
     --set_postprocess ("scripts\\earthshake.ltx")
 end
 
-function vovan_camera_test(npc)
-	level.add_cam_effector("camera_effects\\test.anm", "")
+function vovan_camera_test (npc)
+	level.add_cam_effector("camera_effects\\test.anm", "")	                  
 end
 -------------------------------------------------------------------------------------
 -- Функции для Янтаря
@@ -1850,31 +1852,37 @@ function yan_actor_sleep_1 (actor, npc)
 	db.actor:set_actor_direction(-dir:getH())
 end
 
-function yan_dream_voices(actor, npc)
-	local sound_obj_l = xr_sound.get_safe_sound_object( [[characters_voice\scenario\yantar\dream_talk_l]] )
-	local sound_obj_r = xr_sound.get_safe_sound_object( [[characters_voice\scenario\yantar\dream_talk_r]] )
-	sound_obj_l:play_no_feedback(actor, sound_object.s2d, 0, vector():set(-1, 0, 1), 1.0)
-	sound_obj_r:play_no_feedback(actor, sound_object.s2d, 0, vector():set( 1, 0, 1), 1.0)
+function yan_dream_voices (actor, npc)
+        local sound_obj_l		= xr_sound.get_safe_sound_object( [[characters_voice\scenario\yantar\dream_talk_l]] )
+        local sound_obj_r		= xr_sound.get_safe_sound_object( [[characters_voice\scenario\yantar\dream_talk_r]] )
+        
+		sound_obj_l:play_no_feedback(actor, sound_object.s2d, 0, vector():set(-1, 0, 1), 1.0)
+		sound_obj_r:play_no_feedback(actor, sound_object.s2d, 0, vector():set( 1, 0, 1), 1.0)
 end
 
-function yan_gluk(actor, npc)
-	local sound_obj_l = xr_sound.get_safe_sound_object( [[affects\psy_blackout_l]] )
-	local sound_obj_r = xr_sound.get_safe_sound_object( [[affects\psy_blackout_r]] )
-	sound_obj_l:play_no_feedback(actor, sound_object.s2d, 0, vector():set(-1, 0, 1), 1.0)
-	sound_obj_r:play_no_feedback(actor, sound_object.s2d, 0, vector():set( 1, 0, 1), 1.0)
+function yan_gluk (actor, npc)
+		
+		local sound_obj_l		= xr_sound.get_safe_sound_object( [[affects\psy_blackout_l]] )
+        local sound_obj_r		= xr_sound.get_safe_sound_object( [[affects\psy_blackout_r]] )
+        
+		sound_obj_l:play_no_feedback(actor, sound_object.s2d, 0, vector():set(-1, 0, 1), 1.0)
+		sound_obj_r:play_no_feedback(actor, sound_object.s2d, 0, vector():set( 1, 0, 1), 1.0)
 	level.add_cam_effector("camera_effects\\earthquake.anm", 1974, false, "")
+
+end
+function x18_gluk (actor, npc)
+		level.add_pp_effector ("blink.ppe", 234, false)
+		local sound_obj_l		= xr_sound.get_safe_sound_object( [[affects\psy_blackout_l]] )
+        local sound_obj_r		= xr_sound.get_safe_sound_object( [[affects\psy_blackout_r]] )
+        local snd_obj			= xr_sound.get_safe_sound_object( [[affects\tinnitus3a]] )
+		snd_obj:play_no_feedback(db.actor, sound_object.s2d, 0, vector(), 1.0)
+		sound_obj_l:play_no_feedback(actor, sound_object.s2d, 0, vector():set(-1, 0, 1), 1.0)
+		sound_obj_r:play_no_feedback(actor, sound_object.s2d, 0, vector():set( 1, 0, 1), 1.0)
+	level.add_cam_effector("camera_effects\\earthquake.anm", 1974, false, "")
+
 end
 
-function x18_gluk(actor, npc)
-	level.add_pp_effector("blink.ppe", 234, false)
-	local sound_obj_l = xr_sound.get_safe_sound_object( [[affects\psy_blackout_l]] )
-	local sound_obj_r = xr_sound.get_safe_sound_object( [[affects\psy_blackout_r]] )
-	local snd_obj     = xr_sound.get_safe_sound_object( [[affects\tinnitus3a]] )
-	snd_obj:play_no_feedback(db.actor, sound_object.s2d, 0, vector(), 1.0)
-	sound_obj_l:play_no_feedback(actor, sound_object.s2d, 0, vector():set(-1, 0, 1), 1.0)
-	sound_obj_r:play_no_feedback(actor, sound_object.s2d, 0, vector():set( 1, 0, 1), 1.0)
-	level.add_cam_effector("camera_effects\\earthquake.anm", 1974, false, "")
-end
+
 
 function yan_sleep_not_relocate (actor, npc)
 		db.actor:actor_sleep(0, 180)
@@ -1924,9 +1932,11 @@ function rad_sos_spam(actor, npc)
 	news_manager.send_tip(actor, "tips_rad_sos_suicide", nil, "stalker", nil, 1004)
 end
 
+
 function monolith_generator_hit (actor, npc)
-	printf ("ON GENERATOR HIT !!!")
+    printf ("ON GENERATOR HIT !!!")
 end
+
 
 function start_x18_dream(actor, npc)
 	game.start_tutorial("x18_dream")
@@ -1941,8 +1951,8 @@ end
 ------------------------------------------------------------------------------------
 -- Функции для Радара
 ------------------------------------------------------------------------------------
-function rad_psi_hit(actor, npc)
-	level.add_pp_effector("radar_psi.ppe", 2006, false)
+function rad_psi_hit (actor, npc)
+	level.add_pp_effector ("radar_psi.ppe", 2006, false)
 end
 
 function start_radar_dream(actor, npc)
@@ -1981,30 +1991,32 @@ end
 
 function sar_monolith_miracle(actor, npc)
 	--' Убил лидеров группировок
-	if has_alife_info("mil_lukash_dead") and has_alife_info("bar_voronin_dead") then
+	if has_alife_info("mil_lukash_dead") and
+	   has_alife_info("bar_voronin_dead")
+	then
 		game.start_tutorial("mov_desire_3")
 		return
 	end
 
 	--' Много денег
 	if db.actor:money() >= 50000 then
-		game.start_tutorial("mov_desire_2")
+		game.start_tutorial("mov_desire_2")	
 		return
 	end
 
 	--' Хорошая репутация
 	if db.actor:character_reputation() >= 1000 then
-		game.start_tutorial("mov_desire_1")
+		game.start_tutorial("mov_desire_1")	
 		return
 	end
 
 	--' плохая репутация
 	if db.actor:character_reputation() <= -1000 then
-		game.start_tutorial("mov_desire_4")
+		game.start_tutorial("mov_desire_4")	
 		return
 	end
 
-	game.start_tutorial("mov_desire_5")
+	game.start_tutorial("mov_desire_5")	
 end
 
 function game_credits(actor, npc)
@@ -2016,9 +2028,8 @@ function game_over(actor, npc)
 	if db.gameover_credits_started ~= true then
 		return
 	end
-
 	local c = get_console()
-	--c:execute("disconnect")
+--	c:execute("disconnect")
 	printf("main_menu on console command is executed")
 	c:execute("main_menu on")
 end
@@ -2031,25 +2042,26 @@ function after_credits(actor, npc)
 	c:execute("disconnect")
 end
 
+
 function pri_game_over(actor, npc)
 	local c = get_console()
-	--c:execute("disconnect")
+--	c:execute("disconnect")
 	printf("main_menu on console command is executed")
 	c:execute("main_menu on")
 end
 
-function esc_init_dialod()
+function esc_init_dialod ()
 	local trader = level_object_by_sid(003)
 	db.actor:run_talk_dialog(trader)
 end
 
-function oso_init_dialod()
-	--local oso = level_object_by_sid(1307)
-	--db.actor:run_talk_dialog(oso)
+function oso_init_dialod ()
+	-- local oso = level_object_by_sid(1307)
+	-- db.actor:run_talk_dialog(oso)
 end
-
 -- DELME:only for presentation!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-function actor_inventory_by_levels()
+
+function actor_inventory_by_levels ()
 	local level = level.name()
     local spawn_items = {}
     local start_point = ""
@@ -2066,15 +2078,21 @@ function actor_inventory_by_levels()
 	db.actor:set_actor_position(patrol(start_point):point(0))
 	local dir = patrol(start_point):point(1):sub(patrol(start_point):point(0))
 	db.actor:set_actor_direction(-dir:getH())
+	
 end
 
-function presentation_tutorial()
-
+function presentation_tutorial ()
+		
 end
 
-function presentation_task()
-
+function presentation_task ()
+	
 end
+
+
+
+
+
 
 function change_leader(actor, npc)
 	if xr_gulag.getGulagPopulation(823) == 0 then
