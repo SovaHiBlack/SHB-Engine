@@ -12,8 +12,8 @@
 
 class CEF_Storage;
 
-class CPatternFunction : public CBaseFunction {
-	
+class CPatternFunction : public CBaseFunction
+{
 private:
 	typedef CBaseFunction inherited;
 	enum {EFC_VERSION	= 1};
@@ -42,11 +42,10 @@ private:
 			dwIndex = dwIndex*m_dwaAtomicFeatureRange[tPattern.dwaVariableIndexes[i]] + dwpTest[tPattern.dwaVariableIndexes[i]];
 		return(dwIndex + m_dwaPatternIndexes[iPatternIndex]);
 	}
-	
+
 	float			ffEvaluate();
 
 public:
-	
 	u32				m_dwVariableCount;
 	u32				m_dwFunctionType;
 	u32				*m_dwaVariableTypes;
@@ -55,6 +54,6 @@ public:
 					CPatternFunction	(LPCSTR caEFFileName, CEF_Storage *storage);
 	virtual			~CPatternFunction	();
 
-	virtual	void	vfLoadEF			(LPCSTR caEFFileName);
+	virtual void	vfLoadEF			(LPCSTR caEFFileName);
 	virtual float	ffGetValue			();
 };

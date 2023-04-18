@@ -282,10 +282,11 @@ void CTexture::Load		()
 
 void CTexture::Unload	()
 {
-#ifdef DEBUG
+
+#ifdef TEXTURE_UNLOADED_LOG
 	string_path				msg_buff;
-	sprintf_s				(msg_buff,sizeof(msg_buff),"* Unloading texture [%s] pSurface RefCount=",cName.c_str());
-#endif // DEBUG
+	sprintf_s				(msg_buff,sizeof(msg_buff),"* texture unloaded: [%s] pSurface RefCount =",cName.c_str());
+#endif // def TEXTURE_UNLOADED_LOG
 
 //.	if (flags.bLoaded)		Msg		("* Unloaded: %s",cName.c_str());
 	
@@ -299,9 +300,10 @@ void CTexture::Unload	()
 		pSurface	= 0;
 	}
 
-#ifdef DEBUG
+#ifdef TEXTURE_UNLOADED_LOG
 	_SHOW_REF		(msg_buff, pSurface);
-#endif // DEBUG
+#endif // def TEXTURE_UNLOADED_LOG
+
 	_RELEASE		(pSurface);
 
 	xr_delete		(pAVI);

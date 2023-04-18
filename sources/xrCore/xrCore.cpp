@@ -5,7 +5,7 @@
 
 #include <mmsystem.h>
 #include <objbase.h>
-#include "xrCore.h"
+//#include "xrCore.h"
  
 #pragma comment(lib,"winmm.lib")
 

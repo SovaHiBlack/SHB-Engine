@@ -24,6 +24,8 @@
 	#pragma warning(disable:4530)
 #endif
 
+#include "build_config_defines.h"
+
 #if !defined(_MT)
 	// multithreading disabled
 	#error Please enable multi-threaded library...
@@ -159,7 +161,7 @@
 #ifdef _M_AMD64
 #pragma warning (disable : 4512 )
 #endif
-       
+
 // stl
 #pragma warning (push)
 #pragma warning (disable:4702)

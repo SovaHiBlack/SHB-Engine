@@ -262,10 +262,12 @@ CSoundPlayer::CSoundCollection::CSoundCollection	(const CSoundCollectionParams &
 			}
 		}
 	}
+
 #ifdef DEBUG
 	if (m_sounds.empty())
-		Msg							("- There are no sounds with prefix %s",*params.m_sound_prefix);
-#endif
+		Msg							("- There are no sounds with prefix [%s]",*params.m_sound_prefix);
+#endif // def DEBUG
+
 }
 
 CSoundPlayer::CSoundCollection::~CSoundCollection	()

@@ -393,6 +393,7 @@
     <ClInclude Include="blackbox\SymbolEngine.h" />
     <ClInclude Include="blackbox\WarningsOff.h" />
     <ClInclude Include="blackbox\WarningsOn.h" />
+    <ClInclude Include="build_config_defines.h" />
     <ClInclude Include="clsid.h" />
     <ClInclude Include="Coder.hpp" />
     <ClInclude Include="compression_ppmd_stream.h" />
@@ -422,7 +423,6 @@
     <ClInclude Include="PPMd.h" />
     <ClInclude Include="PPMdType.h" />
     <ClInclude Include="ppmd_compressor.h" />
-    <ClInclude Include="resource.h" />
     <ClInclude Include="rt_compressor.h" />
     <ClInclude Include="rt_config1x.h" />
     <ClInclude Include="rt_lzo1x.h" />
@@ -481,9 +481,6 @@
     <ClInclude Include="_vector2.h" />
     <ClInclude Include="_vector3d.h" />
     <ClInclude Include="_vector4.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ResourceCompile Include="xrCore.rc" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BugTrap\BugTrap.vcxproj">
