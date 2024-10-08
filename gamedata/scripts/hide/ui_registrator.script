@@ -1,0 +1,3 @@
+function get_ui_clsid(game_type_option)
+	return "UI_SINGL"
+end

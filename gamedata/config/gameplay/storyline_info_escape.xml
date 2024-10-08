@@ -1,0 +1,72 @@
+	<!-- Артиклы энциклопедии -->
+	<article id="about_enciclopedia" name="about_pda" group="about_pda" article_type="encyclopedia">
+		<text>about_enciclopedia</text>
+	</article>
+
+	<!-- Артиклы журнала -->
+	<article id="storyline_fox_flash_info" name="Tolik flash" group="Found_PDA" article_type="journal">
+		<texture x="200" y="650" width="200" height="150">ui\ui_icon_photo</texture>
+		<text>storyline_fox_flash_info</text>
+	</article>
+
+	<article id="storyline_seryi_info" name="Seryi flash" group="Found_PDA" article_type="journal">
+		<text>storyline_seryi_info</text>
+	</article>
+
+	<article id="tutorial_secret_place" name="Flash dead stalker" group="Found_PDA" article_type="journal">
+		<text>tutorial_secret_place</text>
+	</article>
+
+	<article id="esc_kolyan_lost" name="Bandit's flash" group="Found_PDA" article_type="journal">
+		<text>esc_kolyan_lost</text>
+	</article>
+
+	<article id="tutorial_moving_anomaly" name="Dead novice's flash" group="Found_PDA" article_type="journal">
+		<text>tutorial_moving_anomaly_text</text>
+	</article>
+
+	<article id="esc_provodnik_pda" name="doctor_meet" group="Found_PDA" article_type="journal">
+		<text>doctor_meet_text</text>
+	</article>
+
+	<!-- Артиклы заданий -->
+	<article id="storyline_gunslinger" name="storyline_eliminate_gunslinger" group="storyline_eliminate_gunslinger/0" article_type="task">
+		<texture x="0" y="0" width="350" height="250">ui\ui_icon_photo</texture>
+		<text>gunslinger_clan_cache</text>
+	</article>
+
+	<article id="tutorial_artefact" name="tutorial_find_artefact" group="tutorial_find_artefact" article_type="task">
+		<text>tutorial_artefact_find</text>
+	</article>
+
+	<article id="esc_flash_task_descr" name="esc_flash_task" group="esc_flash_task/0" article_type="task">
+		<text>esc_flash_task_descr</text>
+	</article>
+
+	<article id="esc_blokpost_case" name="esc_blockpost_case_to_trader" group="esc_blockpost_case_to_trader" article_type="task">
+		<text>blokpost_case_text</text>
+	</article>
+
+	<article id="defend_novice" name="esc_defend_lager" group="esc_defend_lager" article_type="task">
+		<text>defend_lager_text</text>
+	</article>
+
+	<article id="kill_factory_bandits" name="esc_dinamit_to_volk" group="esc_dinamit_to_volk" article_type="task">
+		<text>factory_trader_text</text>
+	</article>
+
+	<article id="meet_seryi_start" name="garbage_meet_stalker" group="garbage_meet_stalker/0" article_type="task">
+		<text>meet_seryi_text</text>
+	</article>
+
+	<article id="esc_fox_help" name="esc_help_wounded_from_raid" group="esc_help_wounded_from_raid/0" article_type="task">
+		<text>help_to_fox</text>
+	</article>
+
+	<article id="esc_doctor_meet" name="doctor_meet" group="doctor_meet/0" article_type="task">
+		<text>doctor_meet_quest_text</text>
+	</article>
+
+	<article id="find_railroad_passage_descr" name="find_railroad_passage" group="find_railroad_passage/0" article_type="task">
+		<text>find_railroad_passage_text</text>
+	</article>

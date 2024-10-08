@@ -1,0 +1,69 @@
+	<!-- Артиклы журнала -->
+	<article id="dar_password_info1" name="LabX18 first key" group="Found_PDA" article_type="journal">
+		<text>pass_to_1st_door</text>
+	</article>
+
+	<article id="dar_password_info2" name="LabX18 second key" group="Found_PDA" article_type="journal">
+		<text>pass_to_2nd_door</text>
+	</article>
+
+	<article id="dar_document1" name="dar_document1" group="LabX18_information" article_type="journal">
+		<text>documents_1</text>
+	</article>
+
+	<article id="dar_document2" name="dar_document2" group="LabX18_information" article_type="journal">
+		<text>documents_2</text>
+	</article>
+
+	<article id="dar_document3" name="dar_document3" group="LabX18_information" article_type="journal">
+		<text>documents_3</text>
+	</article>
+
+	<article id="dar_document4" name="dar_document4" group="LabX18_information" article_type="journal">
+		<text>documents_4</text>
+	</article>
+
+	<article id="dar_document5" name="dar_document5" group="LabX18_information" article_type="journal">
+		<text>documents_5</text>
+	</article>
+
+	<article id="val_x18_conclusion_art" name="val_x18_conclusion" group="memuars" article_type="journal">
+		<text>val_x18_conclusion_txt</text>
+	</article>
+
+	<article id="sl_x18_dream" name="sl_x18_dream_name" group="memuars" article_type="journal">
+		<text>sl_x18_dream_text</text>
+	</article>
+
+	<!-- Артиклы заданий -->
+	<article id="dar_password_info11" name="LabX18 first key" group="dar_codedoor_1/0" article_type="task">
+		<text>pass_to_1st_door</text>
+	</article>
+
+	<article id="dar_password_info22" name="LabX18 second key" group="dar_codedoor_2/0" article_type="task">
+		<text>pass_to_2nd_door</text>
+	</article>
+
+	<article id="val_captive_help_art" name="val_captive_help" group="val_captive_help/0" article_type="task">
+		<text>val_captive_help_txt</text>
+	</article>
+
+	<article id="val_prisoner_help_art" name="val_prisoner_help" group="val_prisoner_help/0" article_type="task">
+		<text>val_prisoner_help_art_txt</text>
+	</article>
+
+	<article id="bar_darklab_documents_art" name="bar_darklab_documents" group="bar_darklab_documents/0" article_type="task">
+		<text>bar_darklab_documents_txt</text>
+	</article>
+
+	<article id="bar_darklab_documents2_art" name="bar_darklab_documents2" group="bar_darklab_documents2/0" article_type="task">
+		<text>bar_darklab_documents2_txt</text>
+	</article>
+
+	<article id="dar_codedoor_1_art" name="dar_codedoor_1" group="dar_codedoor_1/0" article_type="task">
+		<text>dar_codedoor_1_txt</text>
+	</article>
+
+	<article id="dar_codedoor_2_art" name="dar_codedoor_2" group="dar_codedoor_2/0" article_type="task">
+		<text>dar_codedoor_2_txt</text>
+	</article>

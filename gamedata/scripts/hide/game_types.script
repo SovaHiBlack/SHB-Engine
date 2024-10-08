@@ -1,0 +1,8 @@
+game_types={
+		--s.t.a.l.k.e.r internal types, do not change
+		GAME_ANY				= 0,
+		GAME_SINGLE				= 1,
+		--script game types
+		GAME_LASTSTANDING		=100,
+		GAME_DUMMY				=255 --max(unsigned8)
+}

@@ -1,0 +1,54 @@
+	<!-- Артиклы журнала -->
+	<article id="sl_beginning" name="sl_beginning" group="memuars" article_type="journal">
+		<text>sl_beginning_text</text>
+	</article>
+
+	<article id="sl_first_opinions" name="sl_first_opinions" group="memuars" article_type="journal">
+		<text>sl_first_opinions_text</text>
+	</article>
+
+	<article id="sl_wishmaster_legend" name="sl_wishmaster_legend" group="memuars" article_type="journal">
+		<text>sl_wishmaster_legend_text</text>
+	</article>
+
+	<article id="sl_first_deep_raid" name="sl_first_deep_raid" group="memuars" article_type="journal">
+		<text>sl_first_deep_raid_text</text>
+	</article>
+
+	<article id="sl_usefull_info" name="sl_usefull_info" group="memuars" article_type="journal">
+		<text>sl_usefull_info_text</text>
+	</article>
+
+	<article id="sl_fox_meet" name="sl_fox_meet" group="memuars" article_type="journal">
+		<text>sl_fox_meet_text</text>
+	</article>
+
+	<article id="sl_seryi_meet" name="sl_seryi_meet" group="memuars" article_type="journal">
+		<text>sl_seryi_meet_text</text>
+	</article>
+
+	<article id="sl_provodnik" name="sl_provodnik" group="memuars" article_type="journal">
+		<text>sl_provodnik_text</text>
+	</article>
+
+	<article id="sl_monolith_off" name="sl_monolith_off" group="memuars" article_type="journal">
+		<text>sl_monolith_off_text</text>
+	</article>
+
+	<!-- Артиклы заданий -->
+	<article id="storyline_seriy_flash_info" name="agr_meet_krot_band" group="agr_meet_krot_band/0" article_type="task">
+		<texture x="200" y="800" width="200" height="150">ui\ui_icon_photo</texture>
+		<text>storyline_seriy_flash_info</text>
+	</article>
+
+	<article id="help_for_hellcar" name="gar_car_graveyard_quest" group="gar_car_graveyard_quest/0" article_type="task">
+		<text>help_for_neitrals_text</text>
+	</article>
+
+	<article id="graveyard_raid" name="gar_help_dymon" group="gar_help_dymon/0" article_type="task">
+		<text>graveyard_raid_text</text>
+	</article>
+
+	<article id="gar_kill_boars_descr" name="gar_kill_boars_descr" group="gar_kill_boars/0" article_type="task">
+		<text>gar_kill_boars_descr</text>
+	</article>

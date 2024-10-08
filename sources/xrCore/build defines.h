@@ -1,0 +1,18 @@
+#pragma once
+
+#ifdef DEBUG
+
+//#define LOADED_TEXTURE_LOG
+//#define UNLOADING_TEXTURE_LOG
+//#define ADDING_STORY_ITEM_ID_LOG
+//#define GOING_ONLINE_LOG
+//#define ENTITY_DESTROY_LOG
+//#define SERVER_DESTROY_OBJECT_LOG
+//#define SERVER_REJECT_LOG
+//#define DESTROYING_OBJECT_LOG
+//#define DESTROYING_BINDED_OBJECT_LOG
+
+
+
+
+#endif // DEBUG
